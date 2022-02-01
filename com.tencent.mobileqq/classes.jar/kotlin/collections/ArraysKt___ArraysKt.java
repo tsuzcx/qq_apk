@@ -40,7 +40,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={"", ""}, d2={"indices", "Lkotlin/ranges/IntRange;", "T", "", "getIndices", "([Ljava/lang/Object;)Lkotlin/ranges/IntRange;", "", "([Z)Lkotlin/ranges/IntRange;", "", "([B)Lkotlin/ranges/IntRange;", "", "([C)Lkotlin/ranges/IntRange;", "", "([D)Lkotlin/ranges/IntRange;", "", "([F)Lkotlin/ranges/IntRange;", "", "([I)Lkotlin/ranges/IntRange;", "", "([J)Lkotlin/ranges/IntRange;", "", "([S)Lkotlin/ranges/IntRange;", "lastIndex", "", "getLastIndex", "([Ljava/lang/Object;)I", "([Z)I", "([B)I", "([C)I", "([D)I", "([F)I", "([I)I", "([J)I", "([S)I", "all", "", "predicate", "Lkotlin/Function1;", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Z", "", "", "", "", "", "", "any", "([Ljava/lang/Object;)Z", "asIterable", "", "([Ljava/lang/Object;)Ljava/lang/Iterable;", "asSequence", "Lkotlin/sequences/Sequence;", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "associate", "", "K", "V", "transform", "Lkotlin/Pair;", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateBy", "keySelector", "valueTransform", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateByTo", "M", "", "destination", "([Ljava/lang/Object;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([Ljava/lang/Object;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([ZLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([ZLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([BLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([BLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([CLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([CLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([DLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([DLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([FLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([FLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([ILjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([ILjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([JLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([JLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([SLjava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "([SLjava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateTo", "average", "averageOfByte", "([Ljava/lang/Byte;)D", "averageOfDouble", "([Ljava/lang/Double;)D", "averageOfFloat", "([Ljava/lang/Float;)D", "averageOfInt", "([Ljava/lang/Integer;)D", "averageOfLong", "([Ljava/lang/Long;)D", "averageOfShort", "([Ljava/lang/Short;)D", "component1", "([Ljava/lang/Object;)Ljava/lang/Object;", "component2", "component3", "component4", "component5", "contains", "Lkotlin/internal/OnlyInputTypes;", "element", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "count", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)I", "distinct", "", "([Ljava/lang/Object;)Ljava/util/List;", "distinctBy", "selector", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "drop", "n", "([Ljava/lang/Object;I)Ljava/util/List;", "dropLast", "dropLastWhile", "dropWhile", "elementAtOrElse", "index", "defaultValue", "([Ljava/lang/Object;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "elementAtOrNull", "([Ljava/lang/Object;I)Ljava/lang/Object;", "([ZI)Ljava/lang/Boolean;", "([BI)Ljava/lang/Byte;", "([CI)Ljava/lang/Character;", "([DI)Ljava/lang/Double;", "([FI)Ljava/lang/Float;", "([II)Ljava/lang/Integer;", "([JI)Ljava/lang/Long;", "([SI)Ljava/lang/Short;", "filter", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "filterIndexedTo", "C", "", "([Ljava/lang/Object;Ljava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([ZLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([BLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([CLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([DLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([FLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([ILjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([JLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "([SLjava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIsInstance", "R", "Lkotlin/internal/NoInfer;", "filterIsInstanceTo", "([Ljava/lang/Object;Ljava/util/Collection;)Ljava/util/Collection;", "filterNot", "filterNotNull", "", "filterNotNullTo", "filterNotTo", "([Ljava/lang/Object;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([ZLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([BLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([CLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([DLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([FLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([ILjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([JLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "([SLjava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "find", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "([ZLkotlin/jvm/functions/Function1;)Ljava/lang/Boolean;", "([BLkotlin/jvm/functions/Function1;)Ljava/lang/Byte;", "([CLkotlin/jvm/functions/Function1;)Ljava/lang/Character;", "([DLkotlin/jvm/functions/Function1;)Ljava/lang/Double;", "([FLkotlin/jvm/functions/Function1;)Ljava/lang/Float;", "([ILkotlin/jvm/functions/Function1;)Ljava/lang/Integer;", "([JLkotlin/jvm/functions/Function1;)Ljava/lang/Long;", "([SLkotlin/jvm/functions/Function1;)Ljava/lang/Short;", "findLast", "first", "firstOrNull", "([Z)Ljava/lang/Boolean;", "([B)Ljava/lang/Byte;", "([C)Ljava/lang/Character;", "([D)Ljava/lang/Double;", "([F)Ljava/lang/Float;", "([I)Ljava/lang/Integer;", "([J)Ljava/lang/Long;", "([S)Ljava/lang/Short;", "flatMap", "flatMapTo", "fold", "initial", "operation", "acc", "([Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([ZLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([CLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([DLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([FLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "([Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([ZLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([CLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([DLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([FLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "foldRight", "foldRightIndexed", "forEach", "", "action", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "forEachIndexed", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "getOrElse", "getOrNull", "groupBy", "groupByTo", "", "groupingBy", "Lkotlin/collections/Grouping;", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/collections/Grouping;", "indexOf", "([Ljava/lang/Object;Ljava/lang/Object;)I", "indexOfFirst", "indexOfLast", "intersect", "", "other", "([Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/Set;", "isEmpty", "isNotEmpty", "joinTo", "A", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "buffer", "separator", "", "prefix", "postfix", "limit", "truncated", "([Ljava/lang/Object;Ljava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([ZLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([BLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([CLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([DLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([FLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([ILjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([JLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "([SLjava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "joinToString", "", "([Ljava/lang/Object;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/String;", "last", "lastIndexOf", "lastOrNull", "map", "mapIndexed", "mapIndexedNotNull", "mapIndexedNotNullTo", "mapIndexedTo", "mapNotNull", "mapNotNullTo", "mapTo", "max", "", "([Ljava/lang/Comparable;)Ljava/lang/Comparable;", "([Ljava/lang/Double;)Ljava/lang/Double;", "([Ljava/lang/Float;)Ljava/lang/Float;", "maxBy", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "([Ljava/lang/Object;Ljava/util/Comparator;)Ljava/lang/Object;", "([ZLjava/util/Comparator;)Ljava/lang/Boolean;", "([BLjava/util/Comparator;)Ljava/lang/Byte;", "([CLjava/util/Comparator;)Ljava/lang/Character;", "([DLjava/util/Comparator;)Ljava/lang/Double;", "([FLjava/util/Comparator;)Ljava/lang/Float;", "([ILjava/util/Comparator;)Ljava/lang/Integer;", "([JLjava/util/Comparator;)Ljava/lang/Long;", "([SLjava/util/Comparator;)Ljava/lang/Short;", "min", "minBy", "minWith", "none", "partition", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/Pair;", "random", "Lkotlin/random/Random;", "([Ljava/lang/Object;Lkotlin/random/Random;)Ljava/lang/Object;", "randomOrNull", "([ZLkotlin/random/Random;)Ljava/lang/Boolean;", "([BLkotlin/random/Random;)Ljava/lang/Byte;", "([CLkotlin/random/Random;)Ljava/lang/Character;", "([DLkotlin/random/Random;)Ljava/lang/Double;", "([FLkotlin/random/Random;)Ljava/lang/Float;", "([ILkotlin/random/Random;)Ljava/lang/Integer;", "([JLkotlin/random/Random;)Ljava/lang/Long;", "([SLkotlin/random/Random;)Ljava/lang/Short;", "reduce", "S", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceIndexed", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceOrNull", "([ZLkotlin/jvm/functions/Function2;)Ljava/lang/Boolean;", "([BLkotlin/jvm/functions/Function2;)Ljava/lang/Byte;", "([CLkotlin/jvm/functions/Function2;)Ljava/lang/Character;", "([DLkotlin/jvm/functions/Function2;)Ljava/lang/Double;", "([FLkotlin/jvm/functions/Function2;)Ljava/lang/Float;", "([ILkotlin/jvm/functions/Function2;)Ljava/lang/Integer;", "([JLkotlin/jvm/functions/Function2;)Ljava/lang/Long;", "([SLkotlin/jvm/functions/Function2;)Ljava/lang/Short;", "reduceRight", "reduceRightIndexed", "reduceRightOrNull", "requireNoNulls", "([Ljava/lang/Object;)[Ljava/lang/Object;", "reverse", "([Ljava/lang/Object;)V", "reversed", "reversedArray", "scan", "([Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([ZLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([CLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([DLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([FLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "scanIndexed", "([Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([ZLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([BLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([CLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([DLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([FLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([ILjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([JLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "([SLjava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "scanReduce", "scanReduceIndexed", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/util/List;", "single", "singleOrNull", "slice", "([Ljava/lang/Object;Ljava/lang/Iterable;)Ljava/util/List;", "([Ljava/lang/Object;Lkotlin/ranges/IntRange;)Ljava/util/List;", "sliceArray", "", "([Ljava/lang/Object;Ljava/util/Collection;)[Ljava/lang/Object;", "([Ljava/lang/Object;Lkotlin/ranges/IntRange;)[Ljava/lang/Object;", "sortBy", "sortByDescending", "sortDescending", "([Ljava/lang/Comparable;)V", "sorted", "([Ljava/lang/Comparable;)Ljava/util/List;", "sortedArray", "([Ljava/lang/Comparable;)[Ljava/lang/Comparable;", "sortedArrayDescending", "sortedArrayWith", "([Ljava/lang/Object;Ljava/util/Comparator;)[Ljava/lang/Object;", "sortedBy", "sortedByDescending", "sortedDescending", "sortedWith", "([Ljava/lang/Object;Ljava/util/Comparator;)Ljava/util/List;", "subtract", "sum", "sumOfByte", "([Ljava/lang/Byte;)I", "sumOfDouble", "sumOfFloat", "([Ljava/lang/Float;)F", "sumOfInt", "([Ljava/lang/Integer;)I", "sumOfLong", "([Ljava/lang/Long;)J", "sumOfShort", "([Ljava/lang/Short;)I", "sumBy", "sumByDouble", "([Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)D", "take", "takeLast", "takeLastWhile", "takeWhile", "toBooleanArray", "([Ljava/lang/Boolean;)[Z", "toByteArray", "([Ljava/lang/Byte;)[B", "toCharArray", "([Ljava/lang/Character;)[C", "toCollection", "([ZLjava/util/Collection;)Ljava/util/Collection;", "([BLjava/util/Collection;)Ljava/util/Collection;", "([CLjava/util/Collection;)Ljava/util/Collection;", "([DLjava/util/Collection;)Ljava/util/Collection;", "([FLjava/util/Collection;)Ljava/util/Collection;", "([ILjava/util/Collection;)Ljava/util/Collection;", "([JLjava/util/Collection;)Ljava/util/Collection;", "([SLjava/util/Collection;)Ljava/util/Collection;", "toDoubleArray", "([Ljava/lang/Double;)[D", "toFloatArray", "([Ljava/lang/Float;)[F", "toHashSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "([Ljava/lang/Object;)Ljava/util/HashSet;", "toIntArray", "([Ljava/lang/Integer;)[I", "toList", "toLongArray", "([Ljava/lang/Long;)[J", "toMutableList", "toMutableSet", "", "([Ljava/lang/Object;)Ljava/util/Set;", "toSet", "toShortArray", "([Ljava/lang/Short;)[S", "union", "withIndex", "Lkotlin/collections/IndexedValue;", "zip", "([Ljava/lang/Object;[Ljava/lang/Object;)Ljava/util/List;", "a", "b", "([Ljava/lang/Object;[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([Ljava/lang/Object;Ljava/lang/Iterable;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([Z[Ljava/lang/Object;)Ljava/util/List;", "([Z[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([B[Ljava/lang/Object;)Ljava/util/List;", "([B[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([C[Ljava/lang/Object;)Ljava/util/List;", "([C[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([D[Ljava/lang/Object;)Ljava/util/List;", "([D[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([F[Ljava/lang/Object;)Ljava/util/List;", "([F[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([I[Ljava/lang/Object;)Ljava/util/List;", "([I[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([J[Ljava/lang/Object;)Ljava/util/List;", "([J[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "([S[Ljava/lang/Object;)Ljava/util/List;", "([S[Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/util/List;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/ArraysKt")
-public class ArraysKt___ArraysKt
+class ArraysKt___ArraysKt
   extends ArraysKt___ArraysJvmKt
 {
   public static final boolean all(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
@@ -190,11 +190,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$any");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
@@ -216,11 +218,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$any");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, Boolean> paramFunction1)
@@ -242,11 +246,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$any");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, Boolean> paramFunction1)
@@ -268,11 +274,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$any");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, Boolean> paramFunction1)
@@ -294,11 +302,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$any");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, Boolean> paramFunction1)
@@ -320,11 +330,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$any");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, Boolean> paramFunction1)
@@ -346,11 +358,13 @@ public class ArraysKt___ArraysKt
   public static final <T> boolean any(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$any");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final <T> boolean any(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -372,11 +386,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$any");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, Boolean> paramFunction1)
@@ -398,11 +414,13 @@ public class ArraysKt___ArraysKt
   public static final boolean any(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$any");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   public static final boolean any(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, Boolean> paramFunction1)
@@ -425,8 +443,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Byte> asIterable(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$asIterable");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.2(paramArrayOfByte);
@@ -436,8 +459,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Character> asIterable(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$asIterable");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.9(paramArrayOfChar);
@@ -447,8 +475,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Double> asIterable(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$asIterable");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.7(paramArrayOfDouble);
@@ -458,8 +491,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Float> asIterable(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$asIterable");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.6(paramArrayOfFloat);
@@ -469,8 +507,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Integer> asIterable(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$asIterable");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.4(paramArrayOfInt);
@@ -480,8 +523,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Long> asIterable(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$asIterable");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.5(paramArrayOfLong);
@@ -491,8 +539,13 @@ public class ArraysKt___ArraysKt
   public static final <T> Iterable<T> asIterable(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$asIterable");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.1(paramArrayOfT);
@@ -502,8 +555,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Short> asIterable(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$asIterable");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.3(paramArrayOfShort);
@@ -513,8 +571,13 @@ public class ArraysKt___ArraysKt
   public static final Iterable<Boolean> asIterable(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$asIterable");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return (Iterable)CollectionsKt.emptyList();
     }
     return (Iterable)new ArraysKt___ArraysKt.asIterable..inlined.Iterable.8(paramArrayOfBoolean);
@@ -524,8 +587,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Byte> asSequence(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$asSequence");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.2(paramArrayOfByte);
@@ -535,8 +603,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Character> asSequence(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$asSequence");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.9(paramArrayOfChar);
@@ -546,8 +619,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Double> asSequence(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$asSequence");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.7(paramArrayOfDouble);
@@ -557,8 +635,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Float> asSequence(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$asSequence");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.6(paramArrayOfFloat);
@@ -568,8 +651,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Integer> asSequence(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$asSequence");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.4(paramArrayOfInt);
@@ -579,8 +667,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Long> asSequence(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$asSequence");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.5(paramArrayOfLong);
@@ -590,8 +683,13 @@ public class ArraysKt___ArraysKt
   public static final <T> Sequence<T> asSequence(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$asSequence");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.1(paramArrayOfT);
@@ -601,8 +699,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Short> asSequence(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$asSequence");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.3(paramArrayOfShort);
@@ -612,8 +715,13 @@ public class ArraysKt___ArraysKt
   public static final Sequence<Boolean> asSequence(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$asSequence");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return SequencesKt.emptySequence();
     }
     return (Sequence)new ArraysKt___ArraysKt.asSequence..inlined.Sequence.8(paramArrayOfBoolean);
@@ -1557,236 +1665,280 @@ public class ArraysKt___ArraysKt
   
   public static final double average(@NotNull byte[] paramArrayOfByte)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfByte.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfByte[i];
+      d2 = paramArrayOfByte[i];
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static final double average(@NotNull double[] paramArrayOfDouble)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfDouble.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfDouble[i];
+      d1 += paramArrayOfDouble[i];
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static final double average(@NotNull float[] paramArrayOfFloat)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfFloat.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfFloat[i];
+      d2 = paramArrayOfFloat[i];
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static final double average(@NotNull int[] paramArrayOfInt)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfInt.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfInt[i];
+      d2 = paramArrayOfInt[i];
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static final double average(@NotNull long[] paramArrayOfLong)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfLong.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfLong[i];
+      d2 = paramArrayOfLong[i];
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   public static final double average(@NotNull short[] paramArrayOfShort)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfShort.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfShort[i];
+      d2 = paramArrayOfShort[i];
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfByte")
   public static final double averageOfByte(@NotNull Byte[] paramArrayOfByte)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfByte.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfByte[i].byteValue();
+      d2 = paramArrayOfByte[i].byteValue();
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfDouble")
   public static final double averageOfDouble(@NotNull Double[] paramArrayOfDouble)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfDouble.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfDouble[i].doubleValue();
+      d1 += paramArrayOfDouble[i].doubleValue();
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfFloat")
   public static final double averageOfFloat(@NotNull Float[] paramArrayOfFloat)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfFloat.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfFloat[i].floatValue();
+      d2 = paramArrayOfFloat[i].floatValue();
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfInt")
   public static final double averageOfInt(@NotNull Integer[] paramArrayOfInteger)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInteger, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfInteger.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfInteger[i].intValue();
+      d2 = paramArrayOfInteger[i].intValue();
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfLong")
   public static final double averageOfLong(@NotNull Long[] paramArrayOfLong)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfLong.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfLong[i].longValue();
+      d2 = paramArrayOfLong[i].longValue();
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @JvmName(name="averageOfShort")
   public static final double averageOfShort(@NotNull Short[] paramArrayOfShort)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$average");
-    double d = 0.0D;
     int k = paramArrayOfShort.length;
+    int i = 0;
+    double d1 = 0.0D;
     int j = 0;
     while (i < k)
     {
-      d += paramArrayOfShort[i].shortValue();
+      d2 = paramArrayOfShort[i].shortValue();
+      Double.isNaN(d2);
+      d1 += d2;
       j += 1;
       i += 1;
     }
     if (j == 0) {
       return DoubleCompanionObject.INSTANCE.getNaN();
     }
-    return d / j;
+    double d2 = j;
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   @InlineOnly
@@ -2168,23 +2320,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfByte.length;
-    int j = 0;
+    int m = paramArrayOfByte.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Byte.valueOf(paramArrayOfByte[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Byte.valueOf(paramArrayOfByte[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2197,23 +2344,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfChar.length;
-    int j = 0;
+    int m = paramArrayOfChar.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Character.valueOf(paramArrayOfChar[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(paramArrayOfChar[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2226,23 +2368,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfDouble.length;
-    int j = 0;
+    int m = paramArrayOfDouble.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Double.valueOf(paramArrayOfDouble[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Double.valueOf(paramArrayOfDouble[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2255,23 +2392,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfFloat.length;
-    int j = 0;
+    int m = paramArrayOfFloat.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Float.valueOf(paramArrayOfFloat[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Float.valueOf(paramArrayOfFloat[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2284,23 +2416,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfInt.length;
-    int j = 0;
+    int m = paramArrayOfInt.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Integer.valueOf(paramArrayOfInt[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Integer.valueOf(paramArrayOfInt[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2313,23 +2440,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfLong.length;
-    int j = 0;
+    int m = paramArrayOfLong.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Long.valueOf(paramArrayOfLong[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Long.valueOf(paramArrayOfLong[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2342,23 +2464,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfT.length;
-    int j = 0;
+    int m = paramArrayOfT.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(paramArrayOfT[j])).booleanValue()) {
-        break label59;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(paramArrayOfT[i])).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label59:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2371,23 +2488,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfShort.length;
-    int j = 0;
+    int m = paramArrayOfShort.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Short.valueOf(paramArrayOfShort[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Short.valueOf(paramArrayOfShort[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @InlineOnly
@@ -2400,23 +2512,18 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$count");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfBoolean.length;
-    int j = 0;
+    int m = paramArrayOfBoolean.length;
     int i = 0;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(paramArrayOfBoolean[j]))).booleanValue()) {
-        break label62;
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue()) {
+        k = j + 1;
       }
       i += 1;
     }
-    label62:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return i;
-    }
+    return j;
   }
   
   @NotNull
@@ -2666,198 +2773,360 @@ public class ArraysKt___ArraysKt
   public static final List<Byte> drop(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfByte, RangesKt.coerceAtLeast(paramArrayOfByte.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfByte, RangesKt.coerceAtLeast(paramArrayOfByte.length - paramInt, 0));
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString()));
   }
   
   @NotNull
   public static final List<Character> drop(@NotNull char[] paramArrayOfChar, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfChar, RangesKt.coerceAtLeast(paramArrayOfChar.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfChar, RangesKt.coerceAtLeast(paramArrayOfChar.length - paramInt, 0));
+    }
+    paramArrayOfChar = new StringBuilder();
+    paramArrayOfChar.append("Requested element count ");
+    paramArrayOfChar.append(paramInt);
+    paramArrayOfChar.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfChar.toString().toString()));
   }
   
   @NotNull
   public static final List<Double> drop(@NotNull double[] paramArrayOfDouble, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfDouble, RangesKt.coerceAtLeast(paramArrayOfDouble.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfDouble, RangesKt.coerceAtLeast(paramArrayOfDouble.length - paramInt, 0));
+    }
+    paramArrayOfDouble = new StringBuilder();
+    paramArrayOfDouble.append("Requested element count ");
+    paramArrayOfDouble.append(paramInt);
+    paramArrayOfDouble.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfDouble.toString().toString()));
   }
   
   @NotNull
   public static final List<Float> drop(@NotNull float[] paramArrayOfFloat, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfFloat, RangesKt.coerceAtLeast(paramArrayOfFloat.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfFloat, RangesKt.coerceAtLeast(paramArrayOfFloat.length - paramInt, 0));
+    }
+    paramArrayOfFloat = new StringBuilder();
+    paramArrayOfFloat.append("Requested element count ");
+    paramArrayOfFloat.append(paramInt);
+    paramArrayOfFloat.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfFloat.toString().toString()));
   }
   
   @NotNull
   public static final List<Integer> drop(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfInt, RangesKt.coerceAtLeast(paramArrayOfInt.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfInt, RangesKt.coerceAtLeast(paramArrayOfInt.length - paramInt, 0));
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString()));
   }
   
   @NotNull
   public static final List<Long> drop(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfLong, RangesKt.coerceAtLeast(paramArrayOfLong.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfLong, RangesKt.coerceAtLeast(paramArrayOfLong.length - paramInt, 0));
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString()));
   }
   
   @NotNull
   public static final <T> List<T> drop(@NotNull T[] paramArrayOfT, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfT, RangesKt.coerceAtLeast(paramArrayOfT.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfT, RangesKt.coerceAtLeast(paramArrayOfT.length - paramInt, 0));
+    }
+    paramArrayOfT = new StringBuilder();
+    paramArrayOfT.append("Requested element count ");
+    paramArrayOfT.append(paramInt);
+    paramArrayOfT.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfT.toString().toString()));
   }
   
   @NotNull
   public static final List<Short> drop(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfShort, RangesKt.coerceAtLeast(paramArrayOfShort.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfShort, RangesKt.coerceAtLeast(paramArrayOfShort.length - paramInt, 0));
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString()));
   }
   
   @NotNull
   public static final List<Boolean> drop(@NotNull boolean[] paramArrayOfBoolean, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$drop");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.takeLast(paramArrayOfBoolean, RangesKt.coerceAtLeast(paramArrayOfBoolean.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.takeLast(paramArrayOfBoolean, RangesKt.coerceAtLeast(paramArrayOfBoolean.length - paramInt, 0));
+    }
+    paramArrayOfBoolean = new StringBuilder();
+    paramArrayOfBoolean.append("Requested element count ");
+    paramArrayOfBoolean.append(paramInt);
+    paramArrayOfBoolean.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfBoolean.toString().toString()));
   }
   
   @NotNull
   public static final List<Byte> dropLast(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfByte, RangesKt.coerceAtLeast(paramArrayOfByte.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfByte, RangesKt.coerceAtLeast(paramArrayOfByte.length - paramInt, 0));
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString()));
   }
   
   @NotNull
   public static final List<Character> dropLast(@NotNull char[] paramArrayOfChar, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfChar, RangesKt.coerceAtLeast(paramArrayOfChar.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfChar, RangesKt.coerceAtLeast(paramArrayOfChar.length - paramInt, 0));
+    }
+    paramArrayOfChar = new StringBuilder();
+    paramArrayOfChar.append("Requested element count ");
+    paramArrayOfChar.append(paramInt);
+    paramArrayOfChar.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfChar.toString().toString()));
   }
   
   @NotNull
   public static final List<Double> dropLast(@NotNull double[] paramArrayOfDouble, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfDouble, RangesKt.coerceAtLeast(paramArrayOfDouble.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfDouble, RangesKt.coerceAtLeast(paramArrayOfDouble.length - paramInt, 0));
+    }
+    paramArrayOfDouble = new StringBuilder();
+    paramArrayOfDouble.append("Requested element count ");
+    paramArrayOfDouble.append(paramInt);
+    paramArrayOfDouble.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfDouble.toString().toString()));
   }
   
   @NotNull
   public static final List<Float> dropLast(@NotNull float[] paramArrayOfFloat, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfFloat, RangesKt.coerceAtLeast(paramArrayOfFloat.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfFloat, RangesKt.coerceAtLeast(paramArrayOfFloat.length - paramInt, 0));
+    }
+    paramArrayOfFloat = new StringBuilder();
+    paramArrayOfFloat.append("Requested element count ");
+    paramArrayOfFloat.append(paramInt);
+    paramArrayOfFloat.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfFloat.toString().toString()));
   }
   
   @NotNull
   public static final List<Integer> dropLast(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfInt, RangesKt.coerceAtLeast(paramArrayOfInt.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfInt, RangesKt.coerceAtLeast(paramArrayOfInt.length - paramInt, 0));
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString()));
   }
   
   @NotNull
   public static final List<Long> dropLast(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfLong, RangesKt.coerceAtLeast(paramArrayOfLong.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfLong, RangesKt.coerceAtLeast(paramArrayOfLong.length - paramInt, 0));
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString()));
   }
   
   @NotNull
   public static final <T> List<T> dropLast(@NotNull T[] paramArrayOfT, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfT, RangesKt.coerceAtLeast(paramArrayOfT.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfT, RangesKt.coerceAtLeast(paramArrayOfT.length - paramInt, 0));
+    }
+    paramArrayOfT = new StringBuilder();
+    paramArrayOfT.append("Requested element count ");
+    paramArrayOfT.append(paramInt);
+    paramArrayOfT.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfT.toString().toString()));
   }
   
   @NotNull
   public static final List<Short> dropLast(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfShort, RangesKt.coerceAtLeast(paramArrayOfShort.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfShort, RangesKt.coerceAtLeast(paramArrayOfShort.length - paramInt, 0));
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString()));
   }
   
   @NotNull
   public static final List<Boolean> dropLast(@NotNull boolean[] paramArrayOfBoolean, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$dropLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return ArraysKt.take(paramArrayOfBoolean, RangesKt.coerceAtLeast(paramArrayOfBoolean.length - paramInt, 0));
+    if (i != 0) {
+      return ArraysKt.take(paramArrayOfBoolean, RangesKt.coerceAtLeast(paramArrayOfBoolean.length - paramInt, 0));
+    }
+    paramArrayOfBoolean = new StringBuilder();
+    paramArrayOfBoolean.append("Requested element count ");
+    paramArrayOfBoolean.append(paramInt);
+    paramArrayOfBoolean.append(" is less than zero.");
+    throw ((Throwable)new IllegalArgumentException(paramArrayOfBoolean.toString().toString()));
   }
   
   @NotNull
@@ -3011,28 +3280,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfByte.length;
-    int j = 0;
     int i = 0;
-    byte b;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      b = paramArrayOfByte[j];
-      if (i != 0) {
-        localArrayList.add(Byte.valueOf(b));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue())
+      byte b = paramArrayOfByte[i];
+      if (j != 0)
       {
         localArrayList.add(Byte.valueOf(b));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue())
+      {
+        localArrayList.add(Byte.valueOf(b));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3042,28 +3306,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfChar.length;
-    int j = 0;
     int i = 0;
-    char c;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      c = paramArrayOfChar[j];
-      if (i != 0) {
-        localArrayList.add(Character.valueOf(c));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue())
+      char c = paramArrayOfChar[i];
+      if (j != 0)
       {
         localArrayList.add(Character.valueOf(c));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue())
+      {
+        localArrayList.add(Character.valueOf(c));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3073,28 +3332,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfDouble.length;
-    int j = 0;
     int i = 0;
-    double d;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      d = paramArrayOfDouble[j];
-      if (i != 0) {
-        localArrayList.add(Double.valueOf(d));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue())
+      double d = paramArrayOfDouble[i];
+      if (j != 0)
       {
         localArrayList.add(Double.valueOf(d));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue())
+      {
+        localArrayList.add(Double.valueOf(d));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3104,28 +3358,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfFloat.length;
-    int j = 0;
     int i = 0;
-    float f;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      f = paramArrayOfFloat[j];
-      if (i != 0) {
-        localArrayList.add(Float.valueOf(f));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue())
+      float f = paramArrayOfFloat[i];
+      if (j != 0)
       {
         localArrayList.add(Float.valueOf(f));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue())
+      {
+        localArrayList.add(Float.valueOf(f));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3135,28 +3384,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfInt.length;
-    int j = 0;
     int i = 0;
-    int m;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      m = paramArrayOfInt[j];
-      if (i != 0) {
-        localArrayList.add(Integer.valueOf(m));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Integer.valueOf(m))).booleanValue())
+      int m = paramArrayOfInt[i];
+      if (j != 0)
       {
         localArrayList.add(Integer.valueOf(m));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Integer.valueOf(m))).booleanValue())
+      {
+        localArrayList.add(Integer.valueOf(m));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3166,28 +3410,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfLong.length;
-    int j = 0;
     int i = 0;
-    long l;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      l = paramArrayOfLong[j];
-      if (i != 0) {
-        localArrayList.add(Long.valueOf(l));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue())
+      long l = paramArrayOfLong[i];
+      if (j != 0)
       {
         localArrayList.add(Long.valueOf(l));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue())
+      {
+        localArrayList.add(Long.valueOf(l));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3197,28 +3436,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfT.length;
-    int j = 0;
     int i = 0;
-    T ?;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      ? = paramArrayOfT[j];
-      if (i != 0) {
-        localArrayList.add(?);
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(?)).booleanValue())
+      T ? = paramArrayOfT[i];
+      if (j != 0)
       {
         localArrayList.add(?);
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(?)).booleanValue())
+      {
+        localArrayList.add(?);
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3228,28 +3462,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfShort.length;
-    int j = 0;
     int i = 0;
-    short s;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      s = paramArrayOfShort[j];
-      if (i != 0) {
-        localArrayList.add(Short.valueOf(s));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue())
+      short s = paramArrayOfShort[i];
+      if (j != 0)
       {
         localArrayList.add(Short.valueOf(s));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue())
+      {
+        localArrayList.add(Short.valueOf(s));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -3259,28 +3488,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     ArrayList localArrayList = new ArrayList();
     int k = paramArrayOfBoolean.length;
-    int j = 0;
     int i = 0;
-    int m;
-    if (j < k)
+    int j = 0;
+    while (i < k)
     {
-      m = paramArrayOfBoolean[j];
-      if (i != 0) {
-        localArrayList.add(Boolean.valueOf(m));
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(m))).booleanValue())
+      int m = paramArrayOfBoolean[i];
+      if (j != 0)
       {
         localArrayList.add(Boolean.valueOf(m));
-        i = 1;
-        continue;
-        return (List)localArrayList;
       }
+      else if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(m))).booleanValue())
+      {
+        localArrayList.add(Boolean.valueOf(m));
+        j = 1;
+      }
+      i += 1;
     }
+    return (List)localArrayList;
   }
   
   @InlineOnly
@@ -3592,12 +3816,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Byte> filterIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Integer, ? super Byte, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfByte.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       byte b = paramArrayOfByte[j];
@@ -3613,12 +3837,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Character> filterIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Integer, ? super Character, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfChar.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       char c = paramArrayOfChar[j];
@@ -3634,12 +3858,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Double> filterIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Integer, ? super Double, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfDouble.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       double d = paramArrayOfDouble[j];
@@ -3655,12 +3879,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Float> filterIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Integer, ? super Float, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfFloat.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       float f = paramArrayOfFloat[j];
@@ -3676,12 +3900,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Integer> filterIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfInt.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfInt[j];
@@ -3697,12 +3921,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Long> filterIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Integer, ? super Long, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfLong.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       long l = paramArrayOfLong[j];
@@ -3718,12 +3942,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T> List<T> filterIndexed(@NotNull T[] paramArrayOfT, @NotNull Function2<? super Integer, ? super T, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfT.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       T ? = paramArrayOfT[j];
@@ -3739,12 +3963,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Short> filterIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Integer, ? super Short, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfShort.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       short s = paramArrayOfShort[j];
@@ -3760,12 +3984,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Boolean> filterIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Integer, ? super Boolean, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$filterIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfBoolean.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfBoolean[j];
@@ -3781,12 +4005,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Byte>> C filterIndexedTo(@NotNull byte[] paramArrayOfByte, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Byte, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfByte.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       byte b = paramArrayOfByte[j];
@@ -3802,12 +4026,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Character>> C filterIndexedTo(@NotNull char[] paramArrayOfChar, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Character, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfChar.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       char c = paramArrayOfChar[j];
@@ -3823,12 +4047,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Double>> C filterIndexedTo(@NotNull double[] paramArrayOfDouble, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Double, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfDouble.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       double d = paramArrayOfDouble[j];
@@ -3844,12 +4068,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Float>> C filterIndexedTo(@NotNull float[] paramArrayOfFloat, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Float, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfFloat.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       float f = paramArrayOfFloat[j];
@@ -3865,12 +4089,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Integer>> C filterIndexedTo(@NotNull int[] paramArrayOfInt, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Integer, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfInt.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfInt[j];
@@ -3886,12 +4110,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Long>> C filterIndexedTo(@NotNull long[] paramArrayOfLong, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Long, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfLong.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       long l = paramArrayOfLong[j];
@@ -3907,12 +4131,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, C extends Collection<? super T>> C filterIndexedTo(@NotNull T[] paramArrayOfT, @NotNull C paramC, @NotNull Function2<? super Integer, ? super T, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfT.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       T ? = paramArrayOfT[j];
@@ -3928,12 +4152,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Short>> C filterIndexedTo(@NotNull short[] paramArrayOfShort, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Short, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfShort.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       short s = paramArrayOfShort[j];
@@ -3949,12 +4173,12 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <C extends Collection<? super Boolean>> C filterIndexedTo(@NotNull boolean[] paramArrayOfBoolean, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Boolean, Boolean> paramFunction2)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$filterIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "predicate");
     int k = paramArrayOfBoolean.length;
     int j = 0;
+    int i = 0;
     while (j < k)
     {
       int m = paramArrayOfBoolean[j];
@@ -4652,146 +4876,169 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final Boolean findLast(@NotNull boolean[] paramArrayOfBoolean, Function1<? super Boolean, Boolean> paramFunction1)
   {
-    int i = paramArrayOfBoolean.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfBoolean.length;
+    int j;
+    do
     {
-      int j = paramArrayOfBoolean[i];
-      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue()) {
-        return Boolean.valueOf(j);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfBoolean[i];
+    } while (!((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue());
+    return Boolean.valueOf(j);
     return null;
   }
   
   @InlineOnly
   private static final Byte findLast(@NotNull byte[] paramArrayOfByte, Function1<? super Byte, Boolean> paramFunction1)
   {
-    int i = paramArrayOfByte.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfByte.length;
+    byte b;
+    do
     {
-      byte b = paramArrayOfByte[i];
-      if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
-        return Byte.valueOf(b);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      b = paramArrayOfByte[i];
+    } while (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue());
+    return Byte.valueOf(b);
     return null;
   }
   
   @InlineOnly
   private static final Character findLast(@NotNull char[] paramArrayOfChar, Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = paramArrayOfChar.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfChar.length;
+    char c;
+    do
     {
-      char c = paramArrayOfChar[i];
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return Character.valueOf(c);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      c = paramArrayOfChar[i];
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return Character.valueOf(c);
     return null;
   }
   
   @InlineOnly
   private static final Double findLast(@NotNull double[] paramArrayOfDouble, Function1<? super Double, Boolean> paramFunction1)
   {
-    int i = paramArrayOfDouble.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfDouble.length;
+    double d;
+    do
     {
-      double d = paramArrayOfDouble[i];
-      if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
-        return Double.valueOf(d);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      d = paramArrayOfDouble[i];
+    } while (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue());
+    return Double.valueOf(d);
     return null;
   }
   
   @InlineOnly
   private static final Float findLast(@NotNull float[] paramArrayOfFloat, Function1<? super Float, Boolean> paramFunction1)
   {
-    int i = paramArrayOfFloat.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfFloat.length;
+    float f;
+    do
     {
-      float f = paramArrayOfFloat[i];
-      if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
-        return Float.valueOf(f);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      f = paramArrayOfFloat[i];
+    } while (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue());
+    return Float.valueOf(f);
     return null;
   }
   
   @InlineOnly
   private static final Integer findLast(@NotNull int[] paramArrayOfInt, Function1<? super Integer, Boolean> paramFunction1)
   {
-    int i = paramArrayOfInt.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfInt.length;
+    int j;
+    do
     {
-      int j = paramArrayOfInt[i];
-      if (((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue()) {
-        return Integer.valueOf(j);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfInt[i];
+    } while (!((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue());
+    return Integer.valueOf(j);
     return null;
   }
   
   @InlineOnly
   private static final Long findLast(@NotNull long[] paramArrayOfLong, Function1<? super Long, Boolean> paramFunction1)
   {
-    int i = paramArrayOfLong.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfLong.length;
+    long l;
+    do
     {
-      long l = paramArrayOfLong[i];
-      if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
-        return Long.valueOf(l);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      l = paramArrayOfLong[i];
+    } while (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue());
+    return Long.valueOf(l);
     return null;
   }
   
   @InlineOnly
   private static final <T> T findLast(@NotNull T[] paramArrayOfT, Function1<? super T, Boolean> paramFunction1)
   {
-    int i = paramArrayOfT.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfT.length;
+    T ?;
+    do
     {
-      T ? = paramArrayOfT[i];
-      if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {
-        return ?;
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      ? = paramArrayOfT[i];
+    } while (!((Boolean)paramFunction1.invoke(?)).booleanValue());
+    return ?;
     return null;
   }
   
   @InlineOnly
   private static final Short findLast(@NotNull short[] paramArrayOfShort, Function1<? super Short, Boolean> paramFunction1)
   {
-    int i = paramArrayOfShort.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfShort.length;
+    short s;
+    do
     {
-      short s = paramArrayOfShort[i];
-      if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
-        return Short.valueOf(s);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      s = paramArrayOfShort[i];
+    } while (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue());
+    return Short.valueOf(s);
     return null;
   }
   
   public static final byte first(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$first");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfByte[0];
+    if (i == 0) {
+      return paramArrayOfByte[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final byte first(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
@@ -4808,17 +5055,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static final char first(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$first");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfChar[0];
+    if (i == 0) {
+      return paramArrayOfChar[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final char first(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, Boolean> paramFunction1)
@@ -4835,17 +5091,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfChar = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
   
   public static final double first(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$first");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfDouble[0];
+    if (i == 0) {
+      return paramArrayOfDouble[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final double first(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, Boolean> paramFunction1)
@@ -4862,17 +5127,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfDouble = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
   }
   
   public static final float first(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$first");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfFloat[0];
+    if (i == 0) {
+      return paramArrayOfFloat[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final float first(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, Boolean> paramFunction1)
@@ -4889,17 +5163,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfFloat = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
   }
   
   public static final int first(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$first");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfInt[0];
+    if (i == 0) {
+      return paramArrayOfInt[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final int first(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, Boolean> paramFunction1)
@@ -4916,17 +5199,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   public static final long first(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$first");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfLong[0];
+    if (i == 0) {
+      return paramArrayOfLong[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final long first(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, Boolean> paramFunction1)
@@ -4943,17 +5235,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   public static final <T> T first(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$first");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfT[0];
+    if (i == 0) {
+      return paramArrayOfT[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final <T> T first(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -4970,17 +5271,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfT = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
   
   public static final short first(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$first");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfShort[0];
+    if (i == 0) {
+      return paramArrayOfShort[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final short first(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, Boolean> paramFunction1)
@@ -4997,17 +5307,26 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   public static final boolean first(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$first");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfBoolean[0];
+    if (i == 0) {
+      return paramArrayOfBoolean[0];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final boolean first(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, Boolean> paramFunction1)
@@ -5024,15 +5343,24 @@ public class ArraysKt___ArraysKt
       }
       i += 1;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
+    paramArrayOfBoolean = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
   }
   
   @Nullable
   public static final Boolean firstOrNull(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$firstOrNull");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Boolean.valueOf(paramArrayOfBoolean[0]);
@@ -5060,8 +5388,13 @@ public class ArraysKt___ArraysKt
   public static final Byte firstOrNull(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$firstOrNull");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Byte.valueOf(paramArrayOfByte[0]);
@@ -5089,8 +5422,13 @@ public class ArraysKt___ArraysKt
   public static final Character firstOrNull(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$firstOrNull");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramArrayOfChar[0]);
@@ -5118,8 +5456,13 @@ public class ArraysKt___ArraysKt
   public static final Double firstOrNull(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$firstOrNull");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Double.valueOf(paramArrayOfDouble[0]);
@@ -5147,8 +5490,13 @@ public class ArraysKt___ArraysKt
   public static final Float firstOrNull(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$firstOrNull");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Float.valueOf(paramArrayOfFloat[0]);
@@ -5176,8 +5524,13 @@ public class ArraysKt___ArraysKt
   public static final Integer firstOrNull(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$firstOrNull");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Integer.valueOf(paramArrayOfInt[0]);
@@ -5205,8 +5558,13 @@ public class ArraysKt___ArraysKt
   public static final Long firstOrNull(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$firstOrNull");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Long.valueOf(paramArrayOfLong[0]);
@@ -5234,8 +5592,13 @@ public class ArraysKt___ArraysKt
   public static final <T> T firstOrNull(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$firstOrNull");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return paramArrayOfT[0];
@@ -5263,8 +5626,13 @@ public class ArraysKt___ArraysKt
   public static final Short firstOrNull(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$firstOrNull");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Short.valueOf(paramArrayOfShort[0]);
@@ -5704,10 +6072,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull byte[] paramArrayOfByte, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Byte, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5725,10 +6093,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull char[] paramArrayOfChar, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Character, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfChar.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5746,10 +6114,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull double[] paramArrayOfDouble, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Double, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfDouble.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5767,10 +6135,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull float[] paramArrayOfFloat, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Float, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfFloat.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5788,10 +6156,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull int[] paramArrayOfInt, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Integer, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5809,10 +6177,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull long[] paramArrayOfLong, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Long, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5830,10 +6198,10 @@ public class ArraysKt___ArraysKt
   
   public static final <T, R> R foldIndexed(@NotNull T[] paramArrayOfT, R paramR, @NotNull Function3<? super Integer, ? super R, ? super T, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5851,10 +6219,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull short[] paramArrayOfShort, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Short, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -5872,10 +6240,10 @@ public class ArraysKt___ArraysKt
   
   public static final <R> R foldIndexed(@NotNull boolean[] paramArrayOfBoolean, R paramR, @NotNull Function3<? super Integer, ? super R, ? super Boolean, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$foldIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int m = paramArrayOfBoolean.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6244,10 +6612,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Integer, ? super Byte, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6264,10 +6632,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Integer, ? super Character, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfChar.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6284,10 +6652,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Integer, ? super Double, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfDouble.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6304,10 +6672,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Integer, ? super Float, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfFloat.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6324,10 +6692,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6344,10 +6712,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Integer, ? super Long, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6364,10 +6732,10 @@ public class ArraysKt___ArraysKt
   
   public static final <T> void forEachIndexed(@NotNull T[] paramArrayOfT, @NotNull Function2<? super Integer, ? super T, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6384,10 +6752,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Integer, ? super Short, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6404,10 +6772,10 @@ public class ArraysKt___ArraysKt
   
   public static final void forEachIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Integer, ? super Boolean, Unit> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$forEachIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "action");
     int m = paramArrayOfBoolean.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -6718,22 +7086,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(Byte.valueOf(b));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Byte.valueOf(b));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Byte.valueOf(b));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Byte.valueOf(b));
+      i += 1;
     }
     return localMap;
   }
@@ -6747,22 +7112,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(Byte.valueOf(b));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Byte.valueOf(b));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Byte.valueOf(b)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Byte.valueOf(b)));
+      i += 1;
     }
     return localMap;
   }
@@ -6775,22 +7137,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfChar.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramArrayOfChar[i];
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Character.valueOf(c));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Character.valueOf(c));
+      i += 1;
     }
     return localMap;
   }
@@ -6804,22 +7163,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfChar.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramArrayOfChar[i];
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
+      i += 1;
     }
     return localMap;
   }
@@ -6832,22 +7188,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfDouble.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       double d = paramArrayOfDouble[i];
-      Object localObject2 = paramFunction1.invoke(Double.valueOf(d));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Double.valueOf(d));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Double.valueOf(d));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Double.valueOf(d));
+      i += 1;
     }
     return localMap;
   }
@@ -6861,22 +7214,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfDouble.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       double d = paramArrayOfDouble[i];
-      Object localObject2 = paramFunction1.invoke(Double.valueOf(d));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Double.valueOf(d));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Double.valueOf(d)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Double.valueOf(d)));
+      i += 1;
     }
     return localMap;
   }
@@ -6889,22 +7239,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfFloat.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       float f = paramArrayOfFloat[i];
-      Object localObject2 = paramFunction1.invoke(Float.valueOf(f));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Float.valueOf(f));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Float.valueOf(f));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Float.valueOf(f));
+      i += 1;
     }
     return localMap;
   }
@@ -6918,22 +7265,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfFloat.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       float f = paramArrayOfFloat[i];
-      Object localObject2 = paramFunction1.invoke(Float.valueOf(f));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Float.valueOf(f));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Float.valueOf(f)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Float.valueOf(f)));
+      i += 1;
     }
     return localMap;
   }
@@ -6946,22 +7290,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(Integer.valueOf(k));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Integer.valueOf(k));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Integer.valueOf(k));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Integer.valueOf(k));
+      i += 1;
     }
     return localMap;
   }
@@ -6975,22 +7316,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(Integer.valueOf(k));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Integer.valueOf(k));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Integer.valueOf(k)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Integer.valueOf(k)));
+      i += 1;
     }
     return localMap;
   }
@@ -7003,22 +7341,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(Long.valueOf(l));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Long.valueOf(l));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Long.valueOf(l));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Long.valueOf(l));
+      i += 1;
     }
     return localMap;
   }
@@ -7032,22 +7367,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(Long.valueOf(l));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Long.valueOf(l));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Long.valueOf(l)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Long.valueOf(l)));
+      i += 1;
     }
     return localMap;
   }
@@ -7060,22 +7392,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT[i];
-      Object localObject2 = paramFunction1.invoke(?);
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(?);
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(?);
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(?);
+      i += 1;
     }
     return localMap;
   }
@@ -7089,22 +7418,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT[i];
-      Object localObject2 = paramFunction1.invoke(?);
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(?);
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(?));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(?));
+      i += 1;
     }
     return localMap;
   }
@@ -7117,22 +7443,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(Short.valueOf(s));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Short.valueOf(s));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Short.valueOf(s));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Short.valueOf(s));
+      i += 1;
     }
     return localMap;
   }
@@ -7146,22 +7469,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(Short.valueOf(s));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Short.valueOf(s));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Short.valueOf(s)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Short.valueOf(s)));
+      i += 1;
     }
     return localMap;
   }
@@ -7174,22 +7494,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfBoolean[i];
-      Object localObject2 = paramFunction1.invoke(Boolean.valueOf(k));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Boolean.valueOf(k));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Boolean.valueOf(k));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Boolean.valueOf(k));
+      i += 1;
     }
     return localMap;
   }
@@ -7203,22 +7520,19 @@ public class ArraysKt___ArraysKt
     Map localMap = (Map)new LinkedHashMap();
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfBoolean[i];
-      Object localObject2 = paramFunction1.invoke(Boolean.valueOf(k));
-      Object localObject1 = localMap.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Boolean.valueOf(k));
+      Object localObject2 = localMap.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        localMap.put(localObject2, localObject1);
+        localMap.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Boolean.valueOf(k)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Boolean.valueOf(k)));
+      i += 1;
     }
     return localMap;
   }
@@ -7231,22 +7545,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(Byte.valueOf(b));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Byte.valueOf(b));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Byte.valueOf(b));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Byte.valueOf(b));
+      i += 1;
     }
     return paramM;
   }
@@ -7260,22 +7571,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
-      Object localObject2 = paramFunction1.invoke(Byte.valueOf(b));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Byte.valueOf(b));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Byte.valueOf(b)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Byte.valueOf(b)));
+      i += 1;
     }
     return paramM;
   }
@@ -7288,22 +7596,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfChar.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramArrayOfChar[i];
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Character.valueOf(c));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Character.valueOf(c));
+      i += 1;
     }
     return paramM;
   }
@@ -7317,22 +7622,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfChar.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramArrayOfChar[i];
-      Object localObject2 = paramFunction1.invoke(Character.valueOf(c));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Character.valueOf(c));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Character.valueOf(c)));
+      i += 1;
     }
     return paramM;
   }
@@ -7345,22 +7647,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfDouble.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       double d = paramArrayOfDouble[i];
-      Object localObject2 = paramFunction1.invoke(Double.valueOf(d));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Double.valueOf(d));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Double.valueOf(d));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Double.valueOf(d));
+      i += 1;
     }
     return paramM;
   }
@@ -7374,22 +7673,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfDouble.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       double d = paramArrayOfDouble[i];
-      Object localObject2 = paramFunction1.invoke(Double.valueOf(d));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Double.valueOf(d));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Double.valueOf(d)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Double.valueOf(d)));
+      i += 1;
     }
     return paramM;
   }
@@ -7402,22 +7698,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfFloat.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       float f = paramArrayOfFloat[i];
-      Object localObject2 = paramFunction1.invoke(Float.valueOf(f));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Float.valueOf(f));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Float.valueOf(f));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Float.valueOf(f));
+      i += 1;
     }
     return paramM;
   }
@@ -7431,22 +7724,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfFloat.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       float f = paramArrayOfFloat[i];
-      Object localObject2 = paramFunction1.invoke(Float.valueOf(f));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Float.valueOf(f));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Float.valueOf(f)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Float.valueOf(f)));
+      i += 1;
     }
     return paramM;
   }
@@ -7459,22 +7749,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(Integer.valueOf(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Integer.valueOf(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Integer.valueOf(k));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Integer.valueOf(k));
+      i += 1;
     }
     return paramM;
   }
@@ -7488,22 +7775,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
-      Object localObject2 = paramFunction1.invoke(Integer.valueOf(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Integer.valueOf(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Integer.valueOf(k)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Integer.valueOf(k)));
+      i += 1;
     }
     return paramM;
   }
@@ -7516,22 +7800,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(Long.valueOf(l));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Long.valueOf(l));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Long.valueOf(l));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Long.valueOf(l));
+      i += 1;
     }
     return paramM;
   }
@@ -7545,22 +7826,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
-      Object localObject2 = paramFunction1.invoke(Long.valueOf(l));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Long.valueOf(l));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Long.valueOf(l)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Long.valueOf(l)));
+      i += 1;
     }
     return paramM;
   }
@@ -7573,22 +7851,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT[i];
-      Object localObject2 = paramFunction1.invoke(?);
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(?);
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(?);
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(?);
+      i += 1;
     }
     return paramM;
   }
@@ -7602,22 +7877,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT[i];
-      Object localObject2 = paramFunction1.invoke(?);
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(?);
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(?));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(?));
+      i += 1;
     }
     return paramM;
   }
@@ -7630,22 +7902,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(Short.valueOf(s));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Short.valueOf(s));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Short.valueOf(s));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Short.valueOf(s));
+      i += 1;
     }
     return paramM;
   }
@@ -7659,22 +7928,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
-      Object localObject2 = paramFunction1.invoke(Short.valueOf(s));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Short.valueOf(s));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Short.valueOf(s)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Short.valueOf(s)));
+      i += 1;
     }
     return paramM;
   }
@@ -7687,22 +7953,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction1, "keySelector");
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfBoolean[i];
-      Object localObject2 = paramFunction1.invoke(Boolean.valueOf(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Boolean.valueOf(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(Boolean.valueOf(k));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(Boolean.valueOf(k));
+      i += 1;
     }
     return paramM;
   }
@@ -7716,22 +7979,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction11, "valueTransform");
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfBoolean[i];
-      Object localObject2 = paramFunction1.invoke(Boolean.valueOf(k));
-      Object localObject1 = paramM.get(localObject2);
-      if (localObject1 == null)
+      Object localObject3 = paramFunction1.invoke(Boolean.valueOf(k));
+      Object localObject2 = paramM.get(localObject3);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
       {
         localObject1 = new ArrayList();
-        paramM.put(localObject2, localObject1);
+        paramM.put(localObject3, localObject1);
       }
-      for (;;)
-      {
-        ((List)localObject1).add(paramFunction11.invoke(Boolean.valueOf(k)));
-        i += 1;
-        break;
-      }
+      ((List)localObject1).add(paramFunction11.invoke(Boolean.valueOf(k)));
+      i += 1;
     }
     return paramM;
   }
@@ -7748,8 +8008,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull byte[] paramArrayOfByte, byte paramByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfByte.length;
+    int i = 0;
     while (i < j)
     {
       if (paramByte == paramArrayOfByte[i]) {
@@ -7763,8 +8023,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull char[] paramArrayOfChar, char paramChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfChar.length;
+    int i = 0;
     while (i < j)
     {
       if (paramChar == paramArrayOfChar[i]) {
@@ -7778,8 +8038,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull double[] paramArrayOfDouble, double paramDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfDouble.length;
+    int i = 0;
     while (i < j)
     {
       if (paramDouble == paramArrayOfDouble[i]) {
@@ -7793,8 +8053,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull float[] paramArrayOfFloat, float paramFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfFloat.length;
+    int i = 0;
     while (i < j)
     {
       if (paramFloat == paramArrayOfFloat[i]) {
@@ -7808,8 +8068,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfInt.length;
+    int i = 0;
     while (i < j)
     {
       if (paramInt == paramArrayOfInt[i]) {
@@ -7823,8 +8083,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull long[] paramArrayOfLong, long paramLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfLong.length;
+    int i = 0;
     while (i < j)
     {
       if (paramLong == paramArrayOfLong[i]) {
@@ -7837,44 +8097,37 @@ public class ArraysKt___ArraysKt
   
   public static final <T> int indexOf(@NotNull T[] paramArrayOfT, T paramT)
   {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$indexOf");
     int j = 0;
     int i = 0;
-    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$indexOf");
     if (paramT == null)
     {
       j = paramArrayOfT.length;
       while (i < j)
       {
-        if (paramArrayOfT[i] == null)
-        {
-          j = i;
-          return j;
+        if (paramArrayOfT[i] == null) {
+          return i;
         }
         i += 1;
       }
     }
     int k = paramArrayOfT.length;
     i = j;
-    for (;;)
+    while (i < k)
     {
-      if (i >= k) {
-        break label71;
-      }
-      j = i;
       if (Intrinsics.areEqual(paramT, paramArrayOfT[i])) {
-        break;
+        return i;
       }
       i += 1;
     }
-    label71:
     return -1;
   }
   
   public static final int indexOf(@NotNull short[] paramArrayOfShort, short paramShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfShort.length;
+    int i = 0;
     while (i < j)
     {
       if (paramShort == paramArrayOfShort[i]) {
@@ -7888,8 +8141,8 @@ public class ArraysKt___ArraysKt
   public static final int indexOf(@NotNull boolean[] paramArrayOfBoolean, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$indexOf");
-    int i = 0;
     int j = paramArrayOfBoolean.length;
+    int i = 0;
     while (i < j)
     {
       if (paramBoolean == paramArrayOfBoolean[i]) {
@@ -7904,8 +8157,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfByte.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Byte.valueOf(paramArrayOfByte[i]))).booleanValue()) {
@@ -7920,8 +8173,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfChar.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Character.valueOf(paramArrayOfChar[i]))).booleanValue()) {
@@ -7936,8 +8189,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfDouble.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Double.valueOf(paramArrayOfDouble[i]))).booleanValue()) {
@@ -7952,8 +8205,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfFloat.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Float.valueOf(paramArrayOfFloat[i]))).booleanValue()) {
@@ -7968,8 +8221,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfInt.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Integer.valueOf(paramArrayOfInt[i]))).booleanValue()) {
@@ -7984,8 +8237,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfLong.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Long.valueOf(paramArrayOfLong[i]))).booleanValue()) {
@@ -8000,8 +8253,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfT.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(paramArrayOfT[i])).booleanValue()) {
@@ -8016,8 +8269,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfShort.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Short.valueOf(paramArrayOfShort[i]))).booleanValue()) {
@@ -8032,8 +8285,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$indexOfFirst");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = 0;
     int j = paramArrayOfBoolean.length;
+    int i = 0;
     while (i < j)
     {
       if (((Boolean)paramFunction1.invoke(Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue()) {
@@ -8326,97 +8579,114 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull char[] paramArrayOfChar)
   {
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull double[] paramArrayOfDouble)
   {
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull float[] paramArrayOfFloat)
   {
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull int[] paramArrayOfInt)
   {
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull long[] paramArrayOfLong)
   {
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final <T> boolean isNotEmpty(@NotNull T[] paramArrayOfT)
   {
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull short[] paramArrayOfShort)
   {
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @InlineOnly
   private static final boolean isNotEmpty(@NotNull boolean[] paramArrayOfBoolean)
   {
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return i ^ 0x1;
   }
   
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull byte[] paramArrayOfByte, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Byte, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8426,27 +8696,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfByte.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       byte b = paramArrayOfByte[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Byte.valueOf(b)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(b));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Byte.valueOf(b)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(b));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8458,7 +8733,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull char[] paramArrayOfChar, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Character, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8468,27 +8742,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfChar.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       char c = paramArrayOfChar[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Character.valueOf(c)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append(c);
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Character.valueOf(c)));
+      } else {
+        paramA.append(c);
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8500,7 +8779,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull double[] paramArrayOfDouble, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Double, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8510,27 +8788,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfDouble.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       double d = paramArrayOfDouble[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Double.valueOf(d)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(d));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Double.valueOf(d)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(d));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8542,7 +8825,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull float[] paramArrayOfFloat, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Float, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8552,27 +8834,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfFloat.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       float f = paramArrayOfFloat[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Float.valueOf(f)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(f));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Float.valueOf(f)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(f));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8584,7 +8871,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull int[] paramArrayOfInt, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Integer, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8594,27 +8880,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfInt.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
-      k = paramArrayOfInt[j];
+      k = i;
+      if (j >= m) {
+        break;
+      }
+      int n = paramArrayOfInt[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Integer.valueOf(k)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(k));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Integer.valueOf(n)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(n));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8626,7 +8917,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull long[] paramArrayOfLong, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Long, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8636,27 +8926,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfLong.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       long l = paramArrayOfLong[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Long.valueOf(l)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(l));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Long.valueOf(l)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(l));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8668,7 +8963,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, A extends Appendable> A joinTo(@NotNull T[] paramArrayOfT, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super T, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8678,6 +8972,7 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfT.length;
     int j = 0;
+    int i = 0;
     int k;
     for (;;)
     {
@@ -8710,7 +9005,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull short[] paramArrayOfShort, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Short, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8720,27 +9014,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfShort.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       short s = paramArrayOfShort[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Short.valueOf(s)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(s));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Short.valueOf(s)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(s));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8752,7 +9051,6 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <A extends Appendable> A joinTo(@NotNull boolean[] paramArrayOfBoolean, @NotNull A paramA, @NotNull CharSequence paramCharSequence1, @NotNull CharSequence paramCharSequence2, @NotNull CharSequence paramCharSequence3, int paramInt, @NotNull CharSequence paramCharSequence4, @Nullable Function1<? super Boolean, ? extends CharSequence> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$joinTo");
     Intrinsics.checkParameterIsNotNull(paramA, "buffer");
     Intrinsics.checkParameterIsNotNull(paramCharSequence1, "separator");
@@ -8762,27 +9060,32 @@ public class ArraysKt___ArraysKt
     paramA.append(paramCharSequence2);
     int m = paramArrayOfBoolean.length;
     int j = 0;
-    int k = i;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
+      k = i;
+      if (j >= m) {
+        break;
+      }
       int n = paramArrayOfBoolean[j];
       i += 1;
       if (i > 1) {
         paramA.append(paramCharSequence1);
       }
-      if ((paramInt < 0) || (i <= paramInt))
+      if (paramInt >= 0)
       {
-        if (paramFunction1 != null) {
-          paramA.append((CharSequence)paramFunction1.invoke(Boolean.valueOf(n)));
-        }
-        for (;;)
-        {
-          j += 1;
+        k = i;
+        if (i > paramInt) {
           break;
-          paramA.append((CharSequence)String.valueOf(n));
         }
       }
-      k = i;
+      if (paramFunction1 != null) {
+        paramA.append((CharSequence)paramFunction1.invoke(Boolean.valueOf(n)));
+      } else {
+        paramA.append((CharSequence)String.valueOf(n));
+      }
+      j += 1;
     }
     if ((paramInt >= 0) && (k > paramInt)) {
       paramA.append(paramCharSequence4);
@@ -8911,235 +9214,334 @@ public class ArraysKt___ArraysKt
   public static final byte last(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$last");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfByte[ArraysKt.getLastIndex(paramArrayOfByte)];
+    if (i == 0) {
+      return paramArrayOfByte[ArraysKt.getLastIndex(paramArrayOfByte)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final byte last(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfByte.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfByte.length;
+    byte b;
+    do
     {
-      byte b = paramArrayOfByte[i];
-      if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
-        return b;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      b = paramArrayOfByte[i];
+    } while (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue());
+    return b;
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final char last(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$last");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfChar[ArraysKt.getLastIndex(paramArrayOfChar)];
+    if (i == 0) {
+      return paramArrayOfChar[ArraysKt.getLastIndex(paramArrayOfChar)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final char last(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfChar.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfChar.length;
+    char c;
+    do
     {
-      char c = paramArrayOfChar[i];
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return c;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      c = paramArrayOfChar[i];
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return c;
+    paramArrayOfChar = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final double last(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$last");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfDouble[ArraysKt.getLastIndex(paramArrayOfDouble)];
+    if (i == 0) {
+      return paramArrayOfDouble[ArraysKt.getLastIndex(paramArrayOfDouble)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final double last(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfDouble.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfDouble.length;
+    double d;
+    do
     {
-      double d = paramArrayOfDouble[i];
-      if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
-        return d;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      d = paramArrayOfDouble[i];
+    } while (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue());
+    return d;
+    paramArrayOfDouble = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final float last(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$last");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfFloat[ArraysKt.getLastIndex(paramArrayOfFloat)];
+    if (i == 0) {
+      return paramArrayOfFloat[ArraysKt.getLastIndex(paramArrayOfFloat)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final float last(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfFloat.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfFloat.length;
+    float f;
+    do
     {
-      float f = paramArrayOfFloat[i];
-      if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
-        return f;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      f = paramArrayOfFloat[i];
+    } while (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue());
+    return f;
+    paramArrayOfFloat = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final int last(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$last");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfInt[ArraysKt.getLastIndex(paramArrayOfInt)];
+    if (i == 0) {
+      return paramArrayOfInt[ArraysKt.getLastIndex(paramArrayOfInt)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final int last(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfInt.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfInt.length;
+    int j;
+    do
     {
-      int j = paramArrayOfInt[i];
-      if (((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue()) {
-        return j;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfInt[i];
+    } while (!((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue());
+    return j;
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final long last(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$last");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfLong[ArraysKt.getLastIndex(paramArrayOfLong)];
+    if (i == 0) {
+      return paramArrayOfLong[ArraysKt.getLastIndex(paramArrayOfLong)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final long last(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfLong.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfLong.length;
+    long l;
+    do
     {
-      long l = paramArrayOfLong[i];
-      if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
-        return l;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      l = paramArrayOfLong[i];
+    } while (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue());
+    return l;
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final <T> T last(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$last");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfT[ArraysKt.getLastIndex(paramArrayOfT)];
+    if (i == 0) {
+      return paramArrayOfT[ArraysKt.getLastIndex(paramArrayOfT)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final <T> T last(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfT.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfT.length;
+    T ?;
+    do
     {
-      T ? = paramArrayOfT[i];
-      if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {
-        return ?;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      ? = paramArrayOfT[i];
+    } while (!((Boolean)paramFunction1.invoke(?)).booleanValue());
+    return ?;
+    paramArrayOfT = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfT;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final short last(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$last");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfShort[ArraysKt.getLastIndex(paramArrayOfShort)];
+    if (i == 0) {
+      return paramArrayOfShort[ArraysKt.getLastIndex(paramArrayOfShort)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final short last(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfShort.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfShort.length;
+    short s;
+    do
     {
-      short s = paramArrayOfShort[i];
-      if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
-        return s;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      s = paramArrayOfShort[i];
+    } while (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue());
+    return s;
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final boolean last(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$last");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfBoolean[ArraysKt.getLastIndex(paramArrayOfBoolean)];
+    if (i == 0) {
+      return paramArrayOfBoolean[ArraysKt.getLastIndex(paramArrayOfBoolean)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final boolean last(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$last");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfBoolean.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfBoolean.length;
+    int j;
+    do
     {
-      int j = paramArrayOfBoolean[i];
-      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue()) {
-        return j;
-      }
       i -= 1;
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfBoolean[i];
+    } while (!((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue());
+    return j;
+    paramArrayOfBoolean = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
     }
-    throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
   }
   
   public static final int lastIndexOf(@NotNull byte[] paramArrayOfByte, byte paramByte)
@@ -9229,33 +9631,25 @@ public class ArraysKt___ArraysKt
   public static final <T> int lastIndexOf(@NotNull T[] paramArrayOfT, T paramT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$lastIndexOf");
-    int j;
     if (paramT == null)
     {
       i = paramArrayOfT.length - 1;
       while (i >= 0)
       {
-        if (paramArrayOfT[i] == null)
-        {
-          j = i;
-          return j;
+        if (paramArrayOfT[i] == null) {
+          return i;
         }
         i -= 1;
       }
     }
     int i = paramArrayOfT.length - 1;
-    for (;;)
+    while (i >= 0)
     {
-      if (i < 0) {
-        break label65;
-      }
-      j = i;
       if (Intrinsics.areEqual(paramT, paramArrayOfT[i])) {
-        break;
+        return i;
       }
       i -= 1;
     }
-    label65:
     return -1;
   }
   
@@ -9291,8 +9685,13 @@ public class ArraysKt___ArraysKt
   public static final Boolean lastOrNull(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$lastOrNull");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Boolean.valueOf(paramArrayOfBoolean[(paramArrayOfBoolean.length - 1)]);
@@ -9303,15 +9702,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfBoolean.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfBoolean.length;
+    int j;
+    do
     {
-      int j = paramArrayOfBoolean[i];
-      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue()) {
-        return Boolean.valueOf(j);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfBoolean[i];
+    } while (!((Boolean)paramFunction1.invoke(Boolean.valueOf(j))).booleanValue());
+    return Boolean.valueOf(j);
     return null;
   }
   
@@ -9319,8 +9720,13 @@ public class ArraysKt___ArraysKt
   public static final Byte lastOrNull(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$lastOrNull");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Byte.valueOf(paramArrayOfByte[(paramArrayOfByte.length - 1)]);
@@ -9331,15 +9737,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfByte.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfByte.length;
+    byte b;
+    do
     {
-      byte b = paramArrayOfByte[i];
-      if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
-        return Byte.valueOf(b);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      b = paramArrayOfByte[i];
+    } while (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue());
+    return Byte.valueOf(b);
     return null;
   }
   
@@ -9347,8 +9755,13 @@ public class ArraysKt___ArraysKt
   public static final Character lastOrNull(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$lastOrNull");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramArrayOfChar[(paramArrayOfChar.length - 1)]);
@@ -9359,15 +9772,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfChar.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfChar.length;
+    char c;
+    do
     {
-      char c = paramArrayOfChar[i];
-      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        return Character.valueOf(c);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      c = paramArrayOfChar[i];
+    } while (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue());
+    return Character.valueOf(c);
     return null;
   }
   
@@ -9375,8 +9790,13 @@ public class ArraysKt___ArraysKt
   public static final Double lastOrNull(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$lastOrNull");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Double.valueOf(paramArrayOfDouble[(paramArrayOfDouble.length - 1)]);
@@ -9387,15 +9807,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfDouble.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfDouble.length;
+    double d;
+    do
     {
-      double d = paramArrayOfDouble[i];
-      if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
-        return Double.valueOf(d);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      d = paramArrayOfDouble[i];
+    } while (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue());
+    return Double.valueOf(d);
     return null;
   }
   
@@ -9403,8 +9825,13 @@ public class ArraysKt___ArraysKt
   public static final Float lastOrNull(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$lastOrNull");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Float.valueOf(paramArrayOfFloat[(paramArrayOfFloat.length - 1)]);
@@ -9415,15 +9842,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfFloat.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfFloat.length;
+    float f;
+    do
     {
-      float f = paramArrayOfFloat[i];
-      if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
-        return Float.valueOf(f);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      f = paramArrayOfFloat[i];
+    } while (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue());
+    return Float.valueOf(f);
     return null;
   }
   
@@ -9431,8 +9860,13 @@ public class ArraysKt___ArraysKt
   public static final Integer lastOrNull(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$lastOrNull");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Integer.valueOf(paramArrayOfInt[(paramArrayOfInt.length - 1)]);
@@ -9443,15 +9877,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfInt.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfInt.length;
+    int j;
+    do
     {
-      int j = paramArrayOfInt[i];
-      if (((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue()) {
-        return Integer.valueOf(j);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      j = paramArrayOfInt[i];
+    } while (!((Boolean)paramFunction1.invoke(Integer.valueOf(j))).booleanValue());
+    return Integer.valueOf(j);
     return null;
   }
   
@@ -9459,8 +9895,13 @@ public class ArraysKt___ArraysKt
   public static final Long lastOrNull(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$lastOrNull");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Long.valueOf(paramArrayOfLong[(paramArrayOfLong.length - 1)]);
@@ -9471,15 +9912,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfLong.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfLong.length;
+    long l;
+    do
     {
-      long l = paramArrayOfLong[i];
-      if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
-        return Long.valueOf(l);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      l = paramArrayOfLong[i];
+    } while (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue());
+    return Long.valueOf(l);
     return null;
   }
   
@@ -9487,8 +9930,13 @@ public class ArraysKt___ArraysKt
   public static final <T> T lastOrNull(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$lastOrNull");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return paramArrayOfT[(paramArrayOfT.length - 1)];
@@ -9499,15 +9947,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfT.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfT.length;
+    T ?;
+    do
     {
-      T ? = paramArrayOfT[i];
-      if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {
-        return ?;
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      ? = paramArrayOfT[i];
+    } while (!((Boolean)paramFunction1.invoke(?)).booleanValue());
+    return ?;
     return null;
   }
   
@@ -9515,8 +9965,13 @@ public class ArraysKt___ArraysKt
   public static final Short lastOrNull(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$lastOrNull");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Short.valueOf(paramArrayOfShort[(paramArrayOfShort.length - 1)]);
@@ -9527,15 +9982,17 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$lastOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int i = paramArrayOfShort.length - 1;
-    while (i >= 0)
+    int i = paramArrayOfShort.length;
+    short s;
+    do
     {
-      short s = paramArrayOfShort[i];
-      if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
-        return Short.valueOf(s);
-      }
       i -= 1;
-    }
+      if (i < 0) {
+        break;
+      }
+      s = paramArrayOfShort[i];
+    } while (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue());
+    return Short.valueOf(s);
     return null;
   }
   
@@ -9686,11 +10143,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Integer, ? super Byte, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfByte.length);
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9709,11 +10166,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfChar.length);
     int m = paramArrayOfChar.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9732,11 +10189,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Integer, ? super Double, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfDouble.length);
     int m = paramArrayOfDouble.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9755,11 +10212,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Integer, ? super Float, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfFloat.length);
     int m = paramArrayOfFloat.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9778,11 +10235,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfInt.length);
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9801,11 +10258,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Integer, ? super Long, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfLong.length);
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9824,11 +10281,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R> List<R> mapIndexed(@NotNull T[] paramArrayOfT, @NotNull Function2<? super Integer, ? super T, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfT.length);
     int m = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9847,11 +10304,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Integer, ? super Short, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfShort.length);
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9870,11 +10327,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R> List<R> mapIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Integer, ? super Boolean, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$mapIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfBoolean.length);
     int m = paramArrayOfBoolean.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9893,11 +10350,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R> List<R> mapIndexedNotNull(@NotNull T[] paramArrayOfT, @NotNull Function2<? super Integer, ? super T, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$mapIndexedNotNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     Collection localCollection = (Collection)new ArrayList();
     int k = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     while (j < k)
     {
@@ -9914,11 +10371,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R, C extends Collection<? super R>> C mapIndexedNotNullTo(@NotNull T[] paramArrayOfT, @NotNull C paramC, @NotNull Function2<? super Integer, ? super T, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$mapIndexedNotNullTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int k = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     while (j < k)
     {
@@ -9935,11 +10392,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull byte[] paramArrayOfByte, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Byte, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfByte.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9958,11 +10415,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull char[] paramArrayOfChar, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Character, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfChar.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -9981,11 +10438,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull double[] paramArrayOfDouble, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Double, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfDouble.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10004,11 +10461,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull float[] paramArrayOfFloat, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Float, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfFloat.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10027,11 +10484,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull int[] paramArrayOfInt, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Integer, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfInt.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10050,11 +10507,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull long[] paramArrayOfLong, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Long, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfLong.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10073,11 +10530,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R, C extends Collection<? super R>> C mapIndexedTo(@NotNull T[] paramArrayOfT, @NotNull C paramC, @NotNull Function2<? super Integer, ? super T, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfT.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10096,11 +10553,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull short[] paramArrayOfShort, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Short, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfShort.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10119,11 +10576,11 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <R, C extends Collection<? super R>> C mapIndexedTo(@NotNull boolean[] paramArrayOfBoolean, @NotNull C paramC, @NotNull Function2<? super Integer, ? super Boolean, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$mapIndexedTo");
     Intrinsics.checkParameterIsNotNull(paramC, "destination");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int m = paramArrayOfBoolean.length;
+    int j = 0;
     int i = 0;
     for (;;)
     {
@@ -10324,10 +10781,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Byte max(@NotNull byte[] paramArrayOfByte)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$max");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -10335,9 +10797,8 @@ public class ArraysKt___ArraysKt
     byte b2 = b1;
     if (1 <= k)
     {
-      b2 = b1;
       i = j;
-      for (;;)
+      for (b2 = b1;; b2 = b1)
       {
         byte b3 = paramArrayOfByte[i];
         b1 = b2;
@@ -10349,7 +10810,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        b2 = b1;
       }
     }
     return Byte.valueOf(b2);
@@ -10358,10 +10818,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Character max(@NotNull char[] paramArrayOfChar)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$max");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -10369,9 +10834,8 @@ public class ArraysKt___ArraysKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramArrayOfChar[i];
         c1 = c2;
@@ -10383,7 +10847,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -10392,53 +10855,52 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <T extends Comparable<? super T>> T max(@NotNull T[] paramArrayOfT)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$max");
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label31;
-      }
-      localObject2 = null;
-    }
-    label31:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (1 > k);
-    Object localObject2 = localObject1;
-    int i = j;
-    for (;;)
-    {
-      T ? = paramArrayOfT[i];
-      localObject1 = localObject2;
-      if (((Comparable)localObject2).compareTo(?) < 0) {
-        localObject1 = ?;
-      }
-      localObject2 = localObject1;
-      if (i == k) {
-        break;
-      }
-      i += 1;
-      localObject2 = localObject1;
     }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    Object localObject2 = localObject1;
+    if (1 <= k)
+    {
+      i = j;
+      for (localObject2 = localObject1;; localObject2 = localObject1)
+      {
+        T ? = paramArrayOfT[i];
+        localObject1 = localObject2;
+        if (localObject2.compareTo(?) < 0) {
+          localObject1 = ?;
+        }
+        localObject2 = localObject1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return localObject2;
   }
   
   @Nullable
   public static final Double max(@NotNull double[] paramArrayOfDouble)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$max");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -10449,9 +10911,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i];
         if (Double.isNaN(d3)) {
@@ -10466,7 +10927,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -10476,10 +10936,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Double max(@NotNull Double[] paramArrayOfDouble)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$max");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0].doubleValue();
@@ -10490,9 +10955,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i].doubleValue();
         if (Double.isNaN(d3)) {
@@ -10507,7 +10971,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -10516,10 +10979,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float max(@NotNull float[] paramArrayOfFloat)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$max");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -10530,9 +10998,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i];
         if (Float.isNaN(f3)) {
@@ -10547,7 +11014,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -10557,10 +11023,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float max(@NotNull Float[] paramArrayOfFloat)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$max");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0].floatValue();
@@ -10571,9 +11042,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i].floatValue();
         if (Float.isNaN(f3)) {
@@ -10588,7 +11058,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -10597,10 +11066,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Integer max(@NotNull int[] paramArrayOfInt)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$max");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -10627,10 +11101,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Long max(@NotNull long[] paramArrayOfLong)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$max");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -10638,9 +11117,8 @@ public class ArraysKt___ArraysKt
     long l2 = l1;
     if (1 <= k)
     {
-      l2 = l1;
       i = j;
-      for (;;)
+      for (l2 = l1;; l2 = l1)
       {
         long l3 = paramArrayOfLong[i];
         l1 = l2;
@@ -10652,7 +11130,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        l2 = l1;
       }
     }
     return Long.valueOf(l2);
@@ -10661,10 +11138,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Short max(@NotNull short[] paramArrayOfShort)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$max");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -10672,9 +11154,8 @@ public class ArraysKt___ArraysKt
     short s2 = s1;
     if (1 <= k)
     {
-      s2 = s1;
       i = j;
-      for (;;)
+      for (s2 = s1;; s2 = s1)
       {
         short s3 = paramArrayOfShort[i];
         s1 = s2;
@@ -10686,7 +11167,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        s2 = s1;
       }
     }
     return Short.valueOf(s2);
@@ -10695,11 +11175,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <R extends Comparable<? super R>> Boolean maxBy(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     int m = paramArrayOfBoolean[0];
@@ -10708,20 +11193,22 @@ public class ArraysKt___ArraysKt
       return Boolean.valueOf(m);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Boolean.valueOf(m));
+    int n = m;
+    int i1;
     if (1 <= k)
     {
       i = j;
       for (;;)
       {
-        n = paramArrayOfBoolean[i];
-        Comparable localComparable = (Comparable)paramFunction1.invoke(Boolean.valueOf(n));
+        i1 = paramArrayOfBoolean[i];
+        Comparable localComparable = (Comparable)paramFunction1.invoke(Boolean.valueOf(i1));
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
+          m = i1;
           localObject2 = localComparable;
-          m = n;
         }
-        n = m;
+        i1 = m;
         if (i == k) {
           break;
         }
@@ -10729,18 +11216,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    int n = m;
-    return Boolean.valueOf(n);
+    return Boolean.valueOf(i1);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Byte maxBy(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -10749,6 +11240,7 @@ public class ArraysKt___ArraysKt
       return Byte.valueOf(b1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Byte.valueOf(b1));
+    byte b2 = b1;
     if (1 <= k)
     {
       i = j;
@@ -10759,8 +11251,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           b1 = b2;
+          localObject2 = localComparable;
         }
         b2 = b1;
         if (i == k) {
@@ -10770,18 +11262,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    byte b2 = b1;
     return Byte.valueOf(b2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Character maxBy(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -10790,6 +11286,7 @@ public class ArraysKt___ArraysKt
       return Character.valueOf(c1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Character.valueOf(c1));
+    char c2 = c1;
     if (1 <= k)
     {
       i = j;
@@ -10800,8 +11297,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           c1 = c2;
+          localObject2 = localComparable;
         }
         c2 = c1;
         if (i == k) {
@@ -10811,18 +11308,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    char c2 = c1;
     return Character.valueOf(c2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Double maxBy(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -10831,6 +11332,7 @@ public class ArraysKt___ArraysKt
       return Double.valueOf(d1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Double.valueOf(d1));
+    double d2 = d1;
     if (1 <= k)
     {
       i = j;
@@ -10841,8 +11343,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           d1 = d2;
+          localObject2 = localComparable;
         }
         d2 = d1;
         if (i == k) {
@@ -10852,18 +11354,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    double d2 = d1;
     return Double.valueOf(d2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Float maxBy(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -10872,6 +11378,7 @@ public class ArraysKt___ArraysKt
       return Float.valueOf(f1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Float.valueOf(f1));
+    float f2 = f1;
     if (1 <= k)
     {
       i = j;
@@ -10882,8 +11389,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           f1 = f2;
+          localObject2 = localComparable;
         }
         f2 = f1;
         if (i == k) {
@@ -10893,18 +11400,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    float f2 = f1;
     return Float.valueOf(f2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Integer maxBy(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -10913,6 +11424,7 @@ public class ArraysKt___ArraysKt
       return Integer.valueOf(i);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Integer.valueOf(i));
+    int k = i;
     if (1 <= m) {
       for (;;)
       {
@@ -10921,8 +11433,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           i = k;
+          localObject2 = localComparable;
         }
         k = i;
         if (j == m) {
@@ -10932,18 +11444,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    int k = i;
     return Integer.valueOf(k);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Long maxBy(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -10952,6 +11468,7 @@ public class ArraysKt___ArraysKt
       return Long.valueOf(l1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Long.valueOf(l1));
+    long l2 = l1;
     if (1 <= k)
     {
       i = j;
@@ -10962,8 +11479,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           l1 = l2;
+          localObject2 = localComparable;
         }
         l2 = l1;
         if (i == k) {
@@ -10973,51 +11490,44 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    long l2 = l1;
     return Long.valueOf(l2);
   }
   
   @Nullable
   public static final <T, R extends Comparable<? super R>> T maxBy(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    int i;
-    Object localObject2;
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label38;
-      }
-      localObject2 = null;
-    }
-    label38:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (k == 0);
-    Object localObject3 = (Comparable)paramFunction1.invoke(localObject1);
+    }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    if (k == 0) {
+      return localObject1;
+    }
+    Object localObject2 = (Comparable)paramFunction1.invoke(localObject1);
+    Object localObject3 = localObject1;
     if (1 <= k)
     {
+      localObject3 = localObject2;
       i = j;
       for (;;)
       {
         T ? = paramArrayOfT[i];
         Comparable localComparable = (Comparable)paramFunction1.invoke(?);
         localObject2 = localObject3;
-        if (((Comparable)localObject3).compareTo(localComparable) < 0)
+        if (localObject3.compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           localObject1 = ?;
+          localObject2 = localComparable;
         }
         localObject3 = localObject1;
         if (i == k) {
@@ -11027,18 +11537,22 @@ public class ArraysKt___ArraysKt
         localObject3 = localObject2;
       }
     }
-    localObject3 = localObject1;
     return localObject3;
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Short maxBy(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$maxBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -11047,6 +11561,7 @@ public class ArraysKt___ArraysKt
       return Short.valueOf(s1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Short.valueOf(s1));
+    short s2 = s1;
     if (1 <= k)
     {
       i = j;
@@ -11057,8 +11572,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) < 0)
         {
-          localObject2 = localComparable;
           s1 = s2;
+          localObject2 = localComparable;
         }
         s2 = s1;
         if (i == k) {
@@ -11068,18 +11583,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    short s2 = s1;
     return Short.valueOf(s2);
   }
   
   @Nullable
   public static final Boolean maxWith(@NotNull boolean[] paramArrayOfBoolean, @NotNull Comparator<? super Boolean> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     int m = paramArrayOfBoolean[0];
@@ -11087,9 +11606,8 @@ public class ArraysKt___ArraysKt
     int n = m;
     if (1 <= k)
     {
-      n = m;
       i = j;
-      for (;;)
+      for (n = m;; n = m)
       {
         int i1 = paramArrayOfBoolean[i];
         m = n;
@@ -11101,7 +11619,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        n = m;
       }
     }
     return Boolean.valueOf(n);
@@ -11110,11 +11627,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Byte maxWith(@NotNull byte[] paramArrayOfByte, @NotNull Comparator<? super Byte> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -11122,9 +11644,8 @@ public class ArraysKt___ArraysKt
     byte b2 = b1;
     if (1 <= k)
     {
-      b2 = b1;
       i = j;
-      for (;;)
+      for (b2 = b1;; b2 = b1)
       {
         byte b3 = paramArrayOfByte[i];
         b1 = b2;
@@ -11136,7 +11657,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        b2 = b1;
       }
     }
     return Byte.valueOf(b2);
@@ -11145,11 +11665,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Character maxWith(@NotNull char[] paramArrayOfChar, @NotNull Comparator<? super Character> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -11157,9 +11682,8 @@ public class ArraysKt___ArraysKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramArrayOfChar[i];
         c1 = c2;
@@ -11171,7 +11695,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -11180,11 +11703,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Double maxWith(@NotNull double[] paramArrayOfDouble, @NotNull Comparator<? super Double> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -11192,9 +11720,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i];
         d1 = d2;
@@ -11206,7 +11733,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -11215,11 +11741,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float maxWith(@NotNull float[] paramArrayOfFloat, @NotNull Comparator<? super Float> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -11227,9 +11758,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i];
         f1 = f2;
@@ -11241,7 +11771,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -11250,11 +11779,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Integer maxWith(@NotNull int[] paramArrayOfInt, @NotNull Comparator<? super Integer> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -11281,11 +11815,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Long maxWith(@NotNull long[] paramArrayOfLong, @NotNull Comparator<? super Long> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -11293,9 +11832,8 @@ public class ArraysKt___ArraysKt
     long l2 = l1;
     if (1 <= k)
     {
-      l2 = l1;
       i = j;
-      for (;;)
+      for (l2 = l1;; l2 = l1)
       {
         long l3 = paramArrayOfLong[i];
         l1 = l2;
@@ -11307,7 +11845,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        l2 = l1;
       }
     }
     return Long.valueOf(l2);
@@ -11316,55 +11853,54 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <T> T maxWith(@NotNull T[] paramArrayOfT, @NotNull Comparator<? super T> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label38;
-      }
-      localObject2 = null;
-    }
-    label38:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (1 > k);
-    Object localObject2 = localObject1;
-    int i = j;
-    for (;;)
-    {
-      T ? = paramArrayOfT[i];
-      localObject1 = localObject2;
-      if (paramComparator.compare(localObject2, ?) < 0) {
-        localObject1 = ?;
-      }
-      localObject2 = localObject1;
-      if (i == k) {
-        break;
-      }
-      i += 1;
-      localObject2 = localObject1;
     }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    Object localObject2 = localObject1;
+    if (1 <= k)
+    {
+      i = j;
+      for (localObject2 = localObject1;; localObject2 = localObject1)
+      {
+        T ? = paramArrayOfT[i];
+        localObject1 = localObject2;
+        if (paramComparator.compare(localObject2, ?) < 0) {
+          localObject1 = ?;
+        }
+        localObject2 = localObject1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return localObject2;
   }
   
   @Nullable
   public static final Short maxWith(@NotNull short[] paramArrayOfShort, @NotNull Comparator<? super Short> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$maxWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -11372,9 +11908,8 @@ public class ArraysKt___ArraysKt
     short s2 = s1;
     if (1 <= k)
     {
-      s2 = s1;
       i = j;
-      for (;;)
+      for (s2 = s1;; s2 = s1)
       {
         short s3 = paramArrayOfShort[i];
         s1 = s2;
@@ -11386,7 +11921,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        s2 = s1;
       }
     }
     return Short.valueOf(s2);
@@ -11395,10 +11929,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Byte min(@NotNull byte[] paramArrayOfByte)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$min");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -11406,9 +11945,8 @@ public class ArraysKt___ArraysKt
     byte b2 = b1;
     if (1 <= k)
     {
-      b2 = b1;
       i = j;
-      for (;;)
+      for (b2 = b1;; b2 = b1)
       {
         byte b3 = paramArrayOfByte[i];
         b1 = b2;
@@ -11420,7 +11958,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        b2 = b1;
       }
     }
     return Byte.valueOf(b2);
@@ -11429,10 +11966,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Character min(@NotNull char[] paramArrayOfChar)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$min");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -11440,9 +11982,8 @@ public class ArraysKt___ArraysKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramArrayOfChar[i];
         c1 = c2;
@@ -11454,7 +11995,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -11463,53 +12003,52 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <T extends Comparable<? super T>> T min(@NotNull T[] paramArrayOfT)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$min");
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label31;
-      }
-      localObject2 = null;
-    }
-    label31:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (1 > k);
-    Object localObject2 = localObject1;
-    int i = j;
-    for (;;)
-    {
-      T ? = paramArrayOfT[i];
-      localObject1 = localObject2;
-      if (((Comparable)localObject2).compareTo(?) > 0) {
-        localObject1 = ?;
-      }
-      localObject2 = localObject1;
-      if (i == k) {
-        break;
-      }
-      i += 1;
-      localObject2 = localObject1;
     }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    Object localObject2 = localObject1;
+    if (1 <= k)
+    {
+      i = j;
+      for (localObject2 = localObject1;; localObject2 = localObject1)
+      {
+        T ? = paramArrayOfT[i];
+        localObject1 = localObject2;
+        if (localObject2.compareTo(?) > 0) {
+          localObject1 = ?;
+        }
+        localObject2 = localObject1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return localObject2;
   }
   
   @Nullable
   public static final Double min(@NotNull double[] paramArrayOfDouble)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$min");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -11520,9 +12059,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i];
         if (Double.isNaN(d3)) {
@@ -11537,7 +12075,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -11547,10 +12084,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Double min(@NotNull Double[] paramArrayOfDouble)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$min");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0].doubleValue();
@@ -11561,9 +12103,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i].doubleValue();
         if (Double.isNaN(d3)) {
@@ -11578,7 +12119,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -11587,10 +12127,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float min(@NotNull float[] paramArrayOfFloat)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$min");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -11601,9 +12146,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i];
         if (Float.isNaN(f3)) {
@@ -11618,7 +12162,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -11628,10 +12171,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float min(@NotNull Float[] paramArrayOfFloat)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$min");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0].floatValue();
@@ -11642,9 +12190,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i].floatValue();
         if (Float.isNaN(f3)) {
@@ -11659,7 +12206,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -11668,10 +12214,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Integer min(@NotNull int[] paramArrayOfInt)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$min");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -11698,10 +12249,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Long min(@NotNull long[] paramArrayOfLong)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$min");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -11709,9 +12265,8 @@ public class ArraysKt___ArraysKt
     long l2 = l1;
     if (1 <= k)
     {
-      l2 = l1;
       i = j;
-      for (;;)
+      for (l2 = l1;; l2 = l1)
       {
         long l3 = paramArrayOfLong[i];
         l1 = l2;
@@ -11723,7 +12278,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        l2 = l1;
       }
     }
     return Long.valueOf(l2);
@@ -11732,10 +12286,15 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Short min(@NotNull short[] paramArrayOfShort)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$min");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -11743,9 +12302,8 @@ public class ArraysKt___ArraysKt
     short s2 = s1;
     if (1 <= k)
     {
-      s2 = s1;
       i = j;
-      for (;;)
+      for (s2 = s1;; s2 = s1)
       {
         short s3 = paramArrayOfShort[i];
         s1 = s2;
@@ -11757,7 +12315,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        s2 = s1;
       }
     }
     return Short.valueOf(s2);
@@ -11766,11 +12323,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <R extends Comparable<? super R>> Boolean minBy(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     int m = paramArrayOfBoolean[0];
@@ -11779,20 +12341,22 @@ public class ArraysKt___ArraysKt
       return Boolean.valueOf(m);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Boolean.valueOf(m));
+    int n = m;
+    int i1;
     if (1 <= k)
     {
       i = j;
       for (;;)
       {
-        n = paramArrayOfBoolean[i];
-        Comparable localComparable = (Comparable)paramFunction1.invoke(Boolean.valueOf(n));
+        i1 = paramArrayOfBoolean[i];
+        Comparable localComparable = (Comparable)paramFunction1.invoke(Boolean.valueOf(i1));
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
+          m = i1;
           localObject2 = localComparable;
-          m = n;
         }
-        n = m;
+        i1 = m;
         if (i == k) {
           break;
         }
@@ -11800,18 +12364,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    int n = m;
-    return Boolean.valueOf(n);
+    return Boolean.valueOf(i1);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Byte minBy(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -11820,6 +12388,7 @@ public class ArraysKt___ArraysKt
       return Byte.valueOf(b1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Byte.valueOf(b1));
+    byte b2 = b1;
     if (1 <= k)
     {
       i = j;
@@ -11830,8 +12399,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           b1 = b2;
+          localObject2 = localComparable;
         }
         b2 = b1;
         if (i == k) {
@@ -11841,18 +12410,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    byte b2 = b1;
     return Byte.valueOf(b2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Character minBy(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -11861,6 +12434,7 @@ public class ArraysKt___ArraysKt
       return Character.valueOf(c1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Character.valueOf(c1));
+    char c2 = c1;
     if (1 <= k)
     {
       i = j;
@@ -11871,8 +12445,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           c1 = c2;
+          localObject2 = localComparable;
         }
         c2 = c1;
         if (i == k) {
@@ -11882,18 +12456,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    char c2 = c1;
     return Character.valueOf(c2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Double minBy(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -11902,6 +12480,7 @@ public class ArraysKt___ArraysKt
       return Double.valueOf(d1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Double.valueOf(d1));
+    double d2 = d1;
     if (1 <= k)
     {
       i = j;
@@ -11912,8 +12491,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           d1 = d2;
+          localObject2 = localComparable;
         }
         d2 = d1;
         if (i == k) {
@@ -11923,18 +12502,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    double d2 = d1;
     return Double.valueOf(d2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Float minBy(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -11943,6 +12526,7 @@ public class ArraysKt___ArraysKt
       return Float.valueOf(f1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Float.valueOf(f1));
+    float f2 = f1;
     if (1 <= k)
     {
       i = j;
@@ -11953,8 +12537,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           f1 = f2;
+          localObject2 = localComparable;
         }
         f2 = f1;
         if (i == k) {
@@ -11964,18 +12548,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    float f2 = f1;
     return Float.valueOf(f2);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Integer minBy(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -11984,6 +12572,7 @@ public class ArraysKt___ArraysKt
       return Integer.valueOf(i);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Integer.valueOf(i));
+    int k = i;
     if (1 <= m) {
       for (;;)
       {
@@ -11992,8 +12581,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           i = k;
+          localObject2 = localComparable;
         }
         k = i;
         if (j == m) {
@@ -12003,18 +12592,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    int k = i;
     return Integer.valueOf(k);
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Long minBy(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -12023,6 +12616,7 @@ public class ArraysKt___ArraysKt
       return Long.valueOf(l1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Long.valueOf(l1));
+    long l2 = l1;
     if (1 <= k)
     {
       i = j;
@@ -12033,8 +12627,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           l1 = l2;
+          localObject2 = localComparable;
         }
         l2 = l1;
         if (i == k) {
@@ -12044,51 +12638,44 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    long l2 = l1;
     return Long.valueOf(l2);
   }
   
   @Nullable
   public static final <T, R extends Comparable<? super R>> T minBy(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    int i;
-    Object localObject2;
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label38;
-      }
-      localObject2 = null;
-    }
-    label38:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (k == 0);
-    Object localObject3 = (Comparable)paramFunction1.invoke(localObject1);
+    }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    if (k == 0) {
+      return localObject1;
+    }
+    Object localObject2 = (Comparable)paramFunction1.invoke(localObject1);
+    Object localObject3 = localObject1;
     if (1 <= k)
     {
+      localObject3 = localObject2;
       i = j;
       for (;;)
       {
         T ? = paramArrayOfT[i];
         Comparable localComparable = (Comparable)paramFunction1.invoke(?);
         localObject2 = localObject3;
-        if (((Comparable)localObject3).compareTo(localComparable) > 0)
+        if (localObject3.compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           localObject1 = ?;
+          localObject2 = localComparable;
         }
         localObject3 = localObject1;
         if (i == k) {
@@ -12098,18 +12685,22 @@ public class ArraysKt___ArraysKt
         localObject3 = localObject2;
       }
     }
-    localObject3 = localObject1;
     return localObject3;
   }
   
   @Nullable
   public static final <R extends Comparable<? super R>> Short minBy(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, ? extends R> paramFunction1)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$minBy");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -12118,6 +12709,7 @@ public class ArraysKt___ArraysKt
       return Short.valueOf(s1);
     }
     Object localObject1 = (Comparable)paramFunction1.invoke(Short.valueOf(s1));
+    short s2 = s1;
     if (1 <= k)
     {
       i = j;
@@ -12128,8 +12720,8 @@ public class ArraysKt___ArraysKt
         Object localObject2 = localObject1;
         if (((Comparable)localObject1).compareTo(localComparable) > 0)
         {
-          localObject2 = localComparable;
           s1 = s2;
+          localObject2 = localComparable;
         }
         s2 = s1;
         if (i == k) {
@@ -12139,18 +12731,22 @@ public class ArraysKt___ArraysKt
         localObject1 = localObject2;
       }
     }
-    short s2 = s1;
     return Short.valueOf(s2);
   }
   
   @Nullable
   public static final Boolean minWith(@NotNull boolean[] paramArrayOfBoolean, @NotNull Comparator<? super Boolean> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     int m = paramArrayOfBoolean[0];
@@ -12158,9 +12754,8 @@ public class ArraysKt___ArraysKt
     int n = m;
     if (1 <= k)
     {
-      n = m;
       i = j;
-      for (;;)
+      for (n = m;; n = m)
       {
         int i1 = paramArrayOfBoolean[i];
         m = n;
@@ -12172,7 +12767,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        n = m;
       }
     }
     return Boolean.valueOf(n);
@@ -12181,11 +12775,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Byte minWith(@NotNull byte[] paramArrayOfByte, @NotNull Comparator<? super Byte> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     byte b1 = paramArrayOfByte[0];
@@ -12193,9 +12792,8 @@ public class ArraysKt___ArraysKt
     byte b2 = b1;
     if (1 <= k)
     {
-      b2 = b1;
       i = j;
-      for (;;)
+      for (b2 = b1;; b2 = b1)
       {
         byte b3 = paramArrayOfByte[i];
         b1 = b2;
@@ -12207,7 +12805,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        b2 = b1;
       }
     }
     return Byte.valueOf(b2);
@@ -12216,11 +12813,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Character minWith(@NotNull char[] paramArrayOfChar, @NotNull Comparator<? super Character> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     char c1 = paramArrayOfChar[0];
@@ -12228,9 +12830,8 @@ public class ArraysKt___ArraysKt
     char c2 = c1;
     if (1 <= k)
     {
-      c2 = c1;
       i = j;
-      for (;;)
+      for (c2 = c1;; c2 = c1)
       {
         char c3 = paramArrayOfChar[i];
         c1 = c2;
@@ -12242,7 +12843,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        c2 = c1;
       }
     }
     return Character.valueOf(c2);
@@ -12251,11 +12851,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Double minWith(@NotNull double[] paramArrayOfDouble, @NotNull Comparator<? super Double> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     double d1 = paramArrayOfDouble[0];
@@ -12263,9 +12868,8 @@ public class ArraysKt___ArraysKt
     double d2 = d1;
     if (1 <= k)
     {
-      d2 = d1;
       i = j;
-      for (;;)
+      for (d2 = d1;; d2 = d1)
       {
         double d3 = paramArrayOfDouble[i];
         d1 = d2;
@@ -12277,7 +12881,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        d2 = d1;
       }
     }
     return Double.valueOf(d2);
@@ -12286,11 +12889,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float minWith(@NotNull float[] paramArrayOfFloat, @NotNull Comparator<? super Float> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     float f1 = paramArrayOfFloat[0];
@@ -12298,9 +12906,8 @@ public class ArraysKt___ArraysKt
     float f2 = f1;
     if (1 <= k)
     {
-      f2 = f1;
       i = j;
-      for (;;)
+      for (f2 = f1;; f2 = f1)
       {
         float f3 = paramArrayOfFloat[i];
         f1 = f2;
@@ -12312,7 +12919,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        f2 = f1;
       }
     }
     return Float.valueOf(f2);
@@ -12321,11 +12927,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Integer minWith(@NotNull int[] paramArrayOfInt, @NotNull Comparator<? super Integer> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     i = paramArrayOfInt[0];
@@ -12352,11 +12963,16 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Long minWith(@NotNull long[] paramArrayOfLong, @NotNull Comparator<? super Long> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     long l1 = paramArrayOfLong[0];
@@ -12364,9 +12980,8 @@ public class ArraysKt___ArraysKt
     long l2 = l1;
     if (1 <= k)
     {
-      l2 = l1;
       i = j;
-      for (;;)
+      for (l2 = l1;; l2 = l1)
       {
         long l3 = paramArrayOfLong[i];
         l1 = l2;
@@ -12378,7 +12993,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        l2 = l1;
       }
     }
     return Long.valueOf(l2);
@@ -12387,55 +13001,54 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final <T> T minWith(@NotNull T[] paramArrayOfT, @NotNull Comparator<? super T> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      if (i == 0) {
-        break label38;
-      }
-      localObject2 = null;
-    }
-    label38:
-    Object localObject1;
-    int k;
-    do
-    {
-      return localObject2;
+    } else {
       i = 0;
-      break;
-      localObject1 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject2 = localObject1;
-    } while (1 > k);
-    Object localObject2 = localObject1;
-    int i = j;
-    for (;;)
-    {
-      T ? = paramArrayOfT[i];
-      localObject1 = localObject2;
-      if (paramComparator.compare(localObject2, ?) > 0) {
-        localObject1 = ?;
-      }
-      localObject2 = localObject1;
-      if (i == k) {
-        break;
-      }
-      i += 1;
-      localObject2 = localObject1;
     }
+    if (i != 0) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfT[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfT);
+    Object localObject2 = localObject1;
+    if (1 <= k)
+    {
+      i = j;
+      for (localObject2 = localObject1;; localObject2 = localObject1)
+      {
+        T ? = paramArrayOfT[i];
+        localObject1 = localObject2;
+        if (paramComparator.compare(localObject2, ?) > 0) {
+          localObject1 = ?;
+        }
+        localObject2 = localObject1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return localObject2;
   }
   
   @Nullable
   public static final Short minWith(@NotNull short[] paramArrayOfShort, @NotNull Comparator<? super Short> paramComparator)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$minWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     short s1 = paramArrayOfShort[0];
@@ -12443,9 +13056,8 @@ public class ArraysKt___ArraysKt
     short s2 = s1;
     if (1 <= k)
     {
-      s2 = s1;
       i = j;
-      for (;;)
+      for (s2 = s1;; s2 = s1)
       {
         short s3 = paramArrayOfShort[i];
         s1 = s2;
@@ -12457,7 +13069,6 @@ public class ArraysKt___ArraysKt
           break;
         }
         i += 1;
-        s2 = s1;
       }
     }
     return Short.valueOf(s2);
@@ -12670,18 +13281,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       byte b = paramArrayOfByte[i];
       if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
         localArrayList1.add(Byte.valueOf(b));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Byte.valueOf(b));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12695,18 +13303,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfChar.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramArrayOfChar[i];
       if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
         localArrayList1.add(Character.valueOf(c));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Character.valueOf(c));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12720,18 +13325,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfDouble.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       double d = paramArrayOfDouble[i];
       if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
         localArrayList1.add(Double.valueOf(d));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Double.valueOf(d));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12745,18 +13347,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfFloat.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       float f = paramArrayOfFloat[i];
       if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
         localArrayList1.add(Float.valueOf(f));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Float.valueOf(f));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12770,18 +13369,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfInt.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfInt[i];
       if (((Boolean)paramFunction1.invoke(Integer.valueOf(k))).booleanValue()) {
         localArrayList1.add(Integer.valueOf(k));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Integer.valueOf(k));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12795,18 +13391,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfLong.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       long l = paramArrayOfLong[i];
       if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
         localArrayList1.add(Long.valueOf(l));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Long.valueOf(l));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12820,18 +13413,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT[i];
       if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {
         localArrayList1.add(?);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(?);
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12845,18 +13435,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfShort.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       short s = paramArrayOfShort[i];
       if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
         localArrayList1.add(Short.valueOf(s));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Short.valueOf(s));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12870,18 +13457,15 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList2 = new ArrayList();
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       int k = paramArrayOfBoolean[i];
       if (((Boolean)paramFunction1.invoke(Boolean.valueOf(k))).booleanValue()) {
         localArrayList1.add(Boolean.valueOf(k));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localArrayList2.add(Boolean.valueOf(k));
       }
+      i += 1;
     }
     return new Pair(localArrayList1, localArrayList2);
   }
@@ -12898,11 +13482,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfByte[paramRandom.nextInt(paramArrayOfByte.length)];
+    if (i == 0) {
+      return paramArrayOfByte[paramRandom.nextInt(paramArrayOfByte.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -12917,11 +13506,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfChar[paramRandom.nextInt(paramArrayOfChar.length)];
+    if (i == 0) {
+      return paramArrayOfChar[paramRandom.nextInt(paramArrayOfChar.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -12936,11 +13530,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfDouble[paramRandom.nextInt(paramArrayOfDouble.length)];
+    if (i == 0) {
+      return paramArrayOfDouble[paramRandom.nextInt(paramArrayOfDouble.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -12955,11 +13554,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfFloat[paramRandom.nextInt(paramArrayOfFloat.length)];
+    if (i == 0) {
+      return paramArrayOfFloat[paramRandom.nextInt(paramArrayOfFloat.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -12974,11 +13578,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfInt[paramRandom.nextInt(paramArrayOfInt.length)];
+    if (i == 0) {
+      return paramArrayOfInt[paramRandom.nextInt(paramArrayOfInt.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -12993,11 +13602,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfLong[paramRandom.nextInt(paramArrayOfLong.length)];
+    if (i == 0) {
+      return paramArrayOfLong[paramRandom.nextInt(paramArrayOfLong.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -13012,11 +13626,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfT[paramRandom.nextInt(paramArrayOfT.length)];
+    if (i == 0) {
+      return paramArrayOfT[paramRandom.nextInt(paramArrayOfT.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -13031,11 +13650,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfShort[paramRandom.nextInt(paramArrayOfShort.length)];
+    if (i == 0) {
+      return paramArrayOfShort[paramRandom.nextInt(paramArrayOfShort.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @SinceKotlin(version="1.3")
@@ -13050,11 +13674,16 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return paramArrayOfBoolean[paramRandom.nextInt(paramArrayOfBoolean.length)];
+    if (i == 0) {
+      return paramArrayOfBoolean[paramRandom.nextInt(paramArrayOfBoolean.length)];
+    }
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -13072,8 +13701,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Boolean.valueOf(paramArrayOfBoolean[paramRandom.nextInt(paramArrayOfBoolean.length)]);
@@ -13094,8 +13728,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Byte.valueOf(paramArrayOfByte[paramRandom.nextInt(paramArrayOfByte.length)]);
@@ -13116,8 +13755,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Character.valueOf(paramArrayOfChar[paramRandom.nextInt(paramArrayOfChar.length)]);
@@ -13138,8 +13782,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Double.valueOf(paramArrayOfDouble[paramRandom.nextInt(paramArrayOfDouble.length)]);
@@ -13160,8 +13809,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Float.valueOf(paramArrayOfFloat[paramRandom.nextInt(paramArrayOfFloat.length)]);
@@ -13182,8 +13836,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Integer.valueOf(paramArrayOfInt[paramRandom.nextInt(paramArrayOfInt.length)]);
@@ -13204,8 +13863,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Long.valueOf(paramArrayOfLong[paramRandom.nextInt(paramArrayOfLong.length)]);
@@ -13226,8 +13890,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return paramArrayOfT[paramRandom.nextInt(paramArrayOfT.length)];
@@ -13248,8 +13917,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$randomOrNull");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
     return Short.valueOf(paramArrayOfShort[paramRandom.nextInt(paramArrayOfShort.length)]);
@@ -13259,172 +13933,954 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    byte b1 = paramArrayOfByte[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
-    {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        b1 = ((Number)paramFunction2.invoke(Byte.valueOf(b1), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
-        b2 = b1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    byte b2 = b1;
-    return b2;
+    if (i == 0)
+    {
+      byte b2 = paramArrayOfByte[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfByte);
+      byte b1 = b2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          b2 = ((Number)paramFunction2.invoke(Byte.valueOf(b2), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
+          b1 = b2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return b1;
+    }
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static final char reduce(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Character, ? super Character, Character> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    char c1 = paramArrayOfChar[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (1 <= j)
-    {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        c1 = ((Character)paramFunction2.invoke(Character.valueOf(c1), Character.valueOf(paramArrayOfChar[i]))).charValue();
-        c2 = c1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    char c2 = c1;
-    return c2;
+    if (i == 0)
+    {
+      char c2 = paramArrayOfChar[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfChar);
+      char c1 = c2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          c2 = ((Character)paramFunction2.invoke(Character.valueOf(c2), Character.valueOf(paramArrayOfChar[i]))).charValue();
+          c1 = c2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return c1;
+    }
+    paramArrayOfChar = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
   
   public static final double reduce(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Double, ? super Double, Double> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    double d2 = paramArrayOfDouble[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfDouble);
-    double d1 = d2;
-    if (1 <= j)
-    {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        d2 = ((Number)paramFunction2.invoke(Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
-        d1 = d2;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    return d1;
+    if (i == 0)
+    {
+      double d2 = paramArrayOfDouble[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfDouble);
+      double d1 = d2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          d2 = ((Number)paramFunction2.invoke(Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
+          d1 = d2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return d1;
+    }
+    paramArrayOfDouble = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
   }
   
   public static final float reduce(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Float, ? super Float, Float> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    float f1 = paramArrayOfFloat[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (1 <= j)
-    {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        f1 = ((Number)paramFunction2.invoke(Float.valueOf(f1), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
-        f2 = f1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    float f2 = f1;
-    return f2;
+    if (i == 0)
+    {
+      float f2 = paramArrayOfFloat[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfFloat);
+      float f1 = f2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          f2 = ((Number)paramFunction2.invoke(Float.valueOf(f2), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
+          f1 = f2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return f1;
+    }
+    paramArrayOfFloat = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
   }
   
   public static final int reduce(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Integer> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int j = paramArrayOfInt[0];
-    int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
-    {
+    int i = paramArrayOfInt.length;
+    int m = 1;
+    if (i == 0) {
       i = 1;
-      for (;;)
-      {
-        j = ((Number)paramFunction2.invoke(Integer.valueOf(j), Integer.valueOf(paramArrayOfInt[i]))).intValue();
-        k = j;
-        if (i == m) {
-          break;
-        }
-        i += 1;
-      }
+    } else {
+      i = 0;
     }
-    int k = j;
-    return k;
+    if (i == 0)
+    {
+      int k = paramArrayOfInt[0];
+      int n = ArraysKt.getLastIndex(paramArrayOfInt);
+      int j = k;
+      if (1 <= n)
+      {
+        i = m;
+        for (;;)
+        {
+          k = ((Number)paramFunction2.invoke(Integer.valueOf(k), Integer.valueOf(paramArrayOfInt[i]))).intValue();
+          j = k;
+          if (i == n) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return j;
+    }
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   public static final long reduce(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Long, ? super Long, Long> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    long l2 = paramArrayOfLong[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    long l1 = l2;
-    if (1 <= j)
-    {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
       i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      long l2 = paramArrayOfLong[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfLong);
+      long l1 = l2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          l2 = ((Number)paramFunction2.invoke(Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
+          l1 = l2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return l1;
+    }
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
+  }
+  
+  public static final <S, T extends S> S reduce(@NotNull T[] paramArrayOfT, @NotNull Function2<? super S, ? super T, ? extends S> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduce");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      Object localObject2 = paramArrayOfT[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfT);
+      Object localObject1 = localObject2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          localObject2 = paramFunction2.invoke(localObject2, paramArrayOfT[i]);
+          localObject1 = localObject2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return localObject1;
+    }
+    paramArrayOfT = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
+  }
+  
+  public static final short reduce(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Short, ? super Short, Short> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduce");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      short s2 = paramArrayOfShort[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfShort);
+      short s1 = s2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          s2 = ((Number)paramFunction2.invoke(Short.valueOf(s2), Short.valueOf(paramArrayOfShort[i]))).shortValue();
+          s1 = s2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return s1;
+    }
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
+  }
+  
+  public static final boolean reduce(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduce");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      int n = paramArrayOfBoolean[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfBoolean);
+      int m = n;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          int i1 = ((Boolean)paramFunction2.invoke(Boolean.valueOf(n), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
+          m = i1;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return m;
+    }
+    paramArrayOfBoolean = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
+  }
+  
+  public static final byte reduceIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function3<? super Integer, ? super Byte, ? super Byte, Byte> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      byte b2 = paramArrayOfByte[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfByte);
+      byte b1 = b2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          b2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Byte.valueOf(b2), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
+          b1 = b2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return b1;
+    }
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
+  }
+  
+  public static final char reduceIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      char c2 = paramArrayOfChar[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfChar);
+      char c1 = c2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          c2 = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c2), Character.valueOf(paramArrayOfChar[i]))).charValue();
+          c1 = c2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return c1;
+    }
+    paramArrayOfChar = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
+  }
+  
+  public static final double reduceIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function3<? super Integer, ? super Double, ? super Double, Double> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      double d2 = paramArrayOfDouble[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfDouble);
+      double d1 = d2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          d2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
+          d1 = d2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return d1;
+    }
+    paramArrayOfDouble = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
+  }
+  
+  public static final float reduceIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function3<? super Integer, ? super Float, ? super Float, Float> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      float f2 = paramArrayOfFloat[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfFloat);
+      float f1 = f2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          f2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Float.valueOf(f2), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
+          f1 = f2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return f1;
+    }
+    paramArrayOfFloat = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
+  }
+  
+  public static final int reduceIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function3<? super Integer, ? super Integer, ? super Integer, Integer> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfInt.length;
+    int m = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      int k = paramArrayOfInt[0];
+      int n = ArraysKt.getLastIndex(paramArrayOfInt);
+      int j = k;
+      if (1 <= n)
+      {
+        i = m;
+        for (;;)
+        {
+          k = ((Number)paramFunction3.invoke(Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(paramArrayOfInt[i]))).intValue();
+          j = k;
+          if (i == n) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return j;
+    }
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
+  }
+  
+  public static final long reduceIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function3<? super Integer, ? super Long, ? super Long, Long> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      long l2 = paramArrayOfLong[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfLong);
+      long l1 = l2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          l2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
+          l1 = l2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return l1;
+    }
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
+  }
+  
+  public static final <S, T extends S> S reduceIndexed(@NotNull T[] paramArrayOfT, @NotNull Function3<? super Integer, ? super S, ? super T, ? extends S> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      Object localObject2 = paramArrayOfT[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfT);
+      Object localObject1 = localObject2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          localObject2 = paramFunction3.invoke(Integer.valueOf(i), localObject2, paramArrayOfT[i]);
+          localObject1 = localObject2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return localObject1;
+    }
+    paramArrayOfT = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
+  }
+  
+  public static final short reduceIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function3<? super Integer, ? super Short, ? super Short, Short> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      short s2 = paramArrayOfShort[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfShort);
+      short s1 = s2;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          s2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Short.valueOf(s2), Short.valueOf(paramArrayOfShort[i]))).shortValue();
+          s1 = s2;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return s1;
+    }
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
+  }
+  
+  public static final boolean reduceIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function3<? super Integer, ? super Boolean, ? super Boolean, Boolean> paramFunction3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceIndexed");
+    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      int n = paramArrayOfBoolean[0];
+      int k = ArraysKt.getLastIndex(paramArrayOfBoolean);
+      int m = n;
+      if (1 <= k)
+      {
+        i = j;
+        for (;;)
+        {
+          int i1 = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(n), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
+          m = i1;
+          if (i == k) {
+            break;
+          }
+          i += 1;
+        }
+      }
+      return m;
+    }
+    paramArrayOfBoolean = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Boolean reduceOrNull(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    int n = paramArrayOfBoolean[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfBoolean);
+    int m = n;
+    if (1 <= k)
+    {
+      i = j;
       for (;;)
       {
-        l2 = ((Number)paramFunction2.invoke(Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
-        l1 = l2;
-        if (i == j) {
+        int i1 = ((Boolean)paramFunction2.invoke(Boolean.valueOf(n), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
+        m = i1;
+        if (i == k) {
           break;
         }
         i += 1;
       }
     }
-    return l1;
+    return Boolean.valueOf(m);
   }
   
-  public static final <S, T extends S> S reduce(@NotNull T[] paramArrayOfT, @NotNull Function2<? super S, ? super T, ? extends S> paramFunction2)
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Byte reduceOrNull(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Byte, ? super Byte, Byte> paramFunction2)
   {
-    int j = 1;
-    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduce");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    byte b2 = paramArrayOfByte[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfByte);
+    byte b1 = b2;
+    if (1 <= k)
+    {
+      i = j;
+      for (;;)
+      {
+        b2 = ((Number)paramFunction2.invoke(Byte.valueOf(b2), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
+        b1 = b2;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Byte.valueOf(b1);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Character reduceOrNull(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Character, ? super Character, Character> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    char c2 = paramArrayOfChar[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfChar);
+    char c1 = c2;
+    if (1 <= k)
+    {
+      i = j;
+      for (;;)
+      {
+        c2 = ((Character)paramFunction2.invoke(Character.valueOf(c2), Character.valueOf(paramArrayOfChar[i]))).charValue();
+        c1 = c2;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Character.valueOf(c1);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Double reduceOrNull(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Double, ? super Double, Double> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    double d2 = paramArrayOfDouble[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfDouble);
+    double d1 = d2;
+    if (1 <= k)
+    {
+      i = j;
+      for (;;)
+      {
+        d2 = ((Number)paramFunction2.invoke(Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
+        d1 = d2;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Double.valueOf(d1);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Float reduceOrNull(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Float, ? super Float, Float> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    float f2 = paramArrayOfFloat[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfFloat);
+    float f1 = f2;
+    if (1 <= k)
+    {
+      i = j;
+      for (;;)
+      {
+        f2 = ((Number)paramFunction2.invoke(Float.valueOf(f2), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
+        f1 = f2;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Float.valueOf(f1);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Integer reduceOrNull(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Integer> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfInt.length;
+    int m = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    int k = paramArrayOfInt[0];
+    int n = ArraysKt.getLastIndex(paramArrayOfInt);
+    int j = k;
+    if (1 <= n)
+    {
+      i = m;
+      for (;;)
+      {
+        k = ((Number)paramFunction2.invoke(Integer.valueOf(k), Integer.valueOf(paramArrayOfInt[i]))).intValue();
+        j = k;
+        if (i == n) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Integer.valueOf(j);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final Long reduceOrNull(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Long, ? super Long, Long> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    long l2 = paramArrayOfLong[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfLong);
+    long l1 = l2;
+    if (1 <= k)
+    {
+      i = j;
+      for (;;)
+      {
+        l2 = ((Number)paramFunction2.invoke(Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
+        l1 = l2;
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return Long.valueOf(l1);
+  }
+  
+  @ExperimentalStdlibApi
+  @SinceKotlin(version="1.3")
+  @Nullable
+  public static final <S, T extends S> S reduceOrNull(@NotNull T[] paramArrayOfT, @NotNull Function2<? super S, ? super T, ? extends S> paramFunction2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceOrNull");
+    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
     }
     Object localObject2 = paramArrayOfT[0];
     int k = ArraysKt.getLastIndex(paramArrayOfT);
@@ -13445,558 +14901,6 @@ public class ArraysKt___ArraysKt
     return localObject1;
   }
   
-  public static final short reduce(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Short, ? super Short, Short> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduce");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    short s1 = paramArrayOfShort[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        s1 = ((Number)paramFunction2.invoke(Short.valueOf(s1), Short.valueOf(paramArrayOfShort[i]))).shortValue();
-        s2 = s1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    short s2 = s1;
-    return s2;
-  }
-  
-  public static final boolean reduce(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduce");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int k = paramArrayOfBoolean[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    boolean bool1;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        bool1 = ((Boolean)paramFunction2.invoke(Boolean.valueOf(k), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
-        bool2 = bool1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    boolean bool2 = bool1;
-    return bool2;
-  }
-  
-  public static final byte reduceIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function3<? super Integer, ? super Byte, ? super Byte, Byte> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    byte b1 = paramArrayOfByte[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        b1 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Byte.valueOf(b1), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
-        b2 = b1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    byte b2 = b1;
-    return b2;
-  }
-  
-  public static final char reduceIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    char c1 = paramArrayOfChar[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        c1 = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c1), Character.valueOf(paramArrayOfChar[i]))).charValue();
-        c2 = c1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    char c2 = c1;
-    return c2;
-  }
-  
-  public static final double reduceIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function3<? super Integer, ? super Double, ? super Double, Double> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    double d2 = paramArrayOfDouble[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfDouble);
-    double d1 = d2;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        d2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
-        d1 = d2;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return d1;
-  }
-  
-  public static final float reduceIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function3<? super Integer, ? super Float, ? super Float, Float> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    float f1 = paramArrayOfFloat[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        f1 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Float.valueOf(f1), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
-        f2 = f1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    float f2 = f1;
-    return f2;
-  }
-  
-  public static final int reduceIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function3<? super Integer, ? super Integer, ? super Integer, Integer> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int j = paramArrayOfInt[0];
-    int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
-    {
-      i = 1;
-      for (;;)
-      {
-        j = ((Number)paramFunction3.invoke(Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramArrayOfInt[i]))).intValue();
-        k = j;
-        if (i == m) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    int k = j;
-    return k;
-  }
-  
-  public static final long reduceIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function3<? super Integer, ? super Long, ? super Long, Long> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    long l2 = paramArrayOfLong[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    long l1 = l2;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        l2 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
-        l1 = l2;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return l1;
-  }
-  
-  public static final <S, T extends S> S reduceIndexed(@NotNull T[] paramArrayOfT, @NotNull Function3<? super Integer, ? super S, ? super T, ? extends S> paramFunction3)
-  {
-    int j = 1;
-    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    Object localObject2 = paramArrayOfT[0];
-    int k = ArraysKt.getLastIndex(paramArrayOfT);
-    Object localObject1 = localObject2;
-    if (1 <= k)
-    {
-      i = j;
-      for (;;)
-      {
-        localObject2 = paramFunction3.invoke(Integer.valueOf(i), localObject2, paramArrayOfT[i]);
-        localObject1 = localObject2;
-        if (i == k) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return localObject1;
-  }
-  
-  public static final short reduceIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function3<? super Integer, ? super Short, ? super Short, Short> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    short s1 = paramArrayOfShort[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        s1 = ((Number)paramFunction3.invoke(Integer.valueOf(i), Short.valueOf(s1), Short.valueOf(paramArrayOfShort[i]))).shortValue();
-        s2 = s1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    short s2 = s1;
-    return s2;
-  }
-  
-  public static final boolean reduceIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function3<? super Integer, ? super Boolean, ? super Boolean, Boolean> paramFunction3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceIndexed");
-    Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int k = paramArrayOfBoolean[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    boolean bool1;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        bool1 = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(k), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
-        bool2 = bool1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    boolean bool2 = bool1;
-    return bool2;
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Boolean reduceOrNull(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    int k = paramArrayOfBoolean[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    boolean bool1;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        bool1 = ((Boolean)paramFunction2.invoke(Boolean.valueOf(k), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
-        bool2 = bool1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    boolean bool2 = bool1;
-    return Boolean.valueOf(bool2);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Byte reduceOrNull(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Byte, ? super Byte, Byte> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    byte b1 = paramArrayOfByte[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        b1 = ((Number)paramFunction2.invoke(Byte.valueOf(b1), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
-        b2 = b1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    byte b2 = b1;
-    return Byte.valueOf(b2);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Character reduceOrNull(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Character, ? super Character, Character> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    char c1 = paramArrayOfChar[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        c1 = ((Character)paramFunction2.invoke(Character.valueOf(c1), Character.valueOf(paramArrayOfChar[i]))).charValue();
-        c2 = c1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    char c2 = c1;
-    return Character.valueOf(c2);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Double reduceOrNull(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Double, ? super Double, Double> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    double d2 = paramArrayOfDouble[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfDouble);
-    double d1 = d2;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        d2 = ((Number)paramFunction2.invoke(Double.valueOf(d2), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
-        d1 = d2;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return Double.valueOf(d1);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Float reduceOrNull(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Float, ? super Float, Float> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    float f1 = paramArrayOfFloat[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        f1 = ((Number)paramFunction2.invoke(Float.valueOf(f1), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
-        f2 = f1;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    float f2 = f1;
-    return Float.valueOf(f2);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Integer reduceOrNull(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Integer> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    int j = paramArrayOfInt[0];
-    int m = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (1 <= m)
-    {
-      i = 1;
-      for (;;)
-      {
-        j = ((Number)paramFunction2.invoke(Integer.valueOf(j), Integer.valueOf(paramArrayOfInt[i]))).intValue();
-        k = j;
-        if (i == m) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    int k = j;
-    return Integer.valueOf(k);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final Long reduceOrNull(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Long, ? super Long, Long> paramFunction2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
-      return null;
-    }
-    long l2 = paramArrayOfLong[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    long l1 = l2;
-    if (1 <= j)
-    {
-      i = 1;
-      for (;;)
-      {
-        l2 = ((Number)paramFunction2.invoke(Long.valueOf(l2), Long.valueOf(paramArrayOfLong[i]))).longValue();
-        l1 = l2;
-        if (i == j) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    return Long.valueOf(l1);
-  }
-  
-  @ExperimentalStdlibApi
-  @SinceKotlin(version="1.3")
-  @Nullable
-  public static final <S, T extends S> S reduceOrNull(@NotNull T[] paramArrayOfT, @NotNull Function2<? super S, ? super T, ? extends S> paramFunction2)
-  {
-    int j = 1;
-    Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceOrNull");
-    Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    Object localObject1;
-    if (paramArrayOfT.length == 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label38;
-      }
-      localObject1 = null;
-    }
-    label38:
-    Object localObject2;
-    int k;
-    do
-    {
-      return localObject1;
-      i = 0;
-      break;
-      localObject2 = paramArrayOfT[0];
-      k = ArraysKt.getLastIndex(paramArrayOfT);
-      localObject1 = localObject2;
-    } while (1 > k);
-    int i = j;
-    for (;;)
-    {
-      localObject2 = paramFunction2.invoke(localObject2, paramArrayOfT[i]);
-      localObject1 = localObject2;
-      if (i == k) {
-        break;
-      }
-      i += 1;
-    }
-  }
-  
   @ExperimentalStdlibApi
   @SinceKotlin(version="1.3")
   @Nullable
@@ -14004,27 +14908,33 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduceOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return null;
     }
-    short s1 = paramArrayOfShort[0];
-    int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (1 <= j)
+    short s2 = paramArrayOfShort[0];
+    int k = ArraysKt.getLastIndex(paramArrayOfShort);
+    short s1 = s2;
+    if (1 <= k)
     {
-      i = 1;
+      i = j;
       for (;;)
       {
-        s1 = ((Number)paramFunction2.invoke(Short.valueOf(s1), Short.valueOf(paramArrayOfShort[i]))).shortValue();
-        s2 = s1;
-        if (i == j) {
+        s2 = ((Number)paramFunction2.invoke(Short.valueOf(s2), Short.valueOf(paramArrayOfShort[i]))).shortValue();
+        s1 = s2;
+        if (i == k) {
           break;
         }
         i += 1;
       }
     }
-    short s2 = s1;
-    return Short.valueOf(s2);
+    return Short.valueOf(s1);
   }
   
   public static final byte reduceRight(@NotNull byte[] paramArrayOfByte, @NotNull Function2<? super Byte, ? super Byte, Byte> paramFunction2)
@@ -14032,17 +14942,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    byte b = paramArrayOfByte[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      b = ((Number)paramFunction2.invoke(Byte.valueOf(paramArrayOfByte[i]), Byte.valueOf(b))).byteValue();
-      i -= 1;
+      int i = j - 1;
+      byte b = paramArrayOfByte[j];
+      while (i >= 0)
+      {
+        b = ((Number)paramFunction2.invoke(Byte.valueOf(paramArrayOfByte[i]), Byte.valueOf(b))).byteValue();
+        i -= 1;
+      }
+      return b;
     }
-    return b;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static final char reduceRight(@NotNull char[] paramArrayOfChar, @NotNull Function2<? super Character, ? super Character, Character> paramFunction2)
@@ -14050,17 +14965,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    char c = paramArrayOfChar[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      c = ((Character)paramFunction2.invoke(Character.valueOf(paramArrayOfChar[i]), Character.valueOf(c))).charValue();
-      i -= 1;
+      int i = j - 1;
+      char c = paramArrayOfChar[j];
+      while (i >= 0)
+      {
+        c = ((Character)paramFunction2.invoke(Character.valueOf(paramArrayOfChar[i]), Character.valueOf(c))).charValue();
+        i -= 1;
+      }
+      return c;
     }
-    return c;
+    paramArrayOfChar = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
   
   public static final double reduceRight(@NotNull double[] paramArrayOfDouble, @NotNull Function2<? super Double, ? super Double, Double> paramFunction2)
@@ -14068,17 +14988,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfDouble);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    double d = paramArrayOfDouble[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      d = ((Number)paramFunction2.invoke(Double.valueOf(paramArrayOfDouble[i]), Double.valueOf(d))).doubleValue();
-      i -= 1;
+      int i = j - 1;
+      double d = paramArrayOfDouble[j];
+      while (i >= 0)
+      {
+        d = ((Number)paramFunction2.invoke(Double.valueOf(paramArrayOfDouble[i]), Double.valueOf(d))).doubleValue();
+        i -= 1;
+      }
+      return d;
     }
-    return d;
+    paramArrayOfDouble = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
   }
   
   public static final float reduceRight(@NotNull float[] paramArrayOfFloat, @NotNull Function2<? super Float, ? super Float, Float> paramFunction2)
@@ -14086,17 +15011,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    float f = paramArrayOfFloat[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      f = ((Number)paramFunction2.invoke(Float.valueOf(paramArrayOfFloat[i]), Float.valueOf(f))).floatValue();
-      i -= 1;
+      int i = j - 1;
+      float f = paramArrayOfFloat[j];
+      while (i >= 0)
+      {
+        f = ((Number)paramFunction2.invoke(Float.valueOf(paramArrayOfFloat[i]), Float.valueOf(f))).floatValue();
+        i -= 1;
+      }
+      return f;
     }
-    return f;
+    paramArrayOfFloat = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
   }
   
   public static final int reduceRight(@NotNull int[] paramArrayOfInt, @NotNull Function2<? super Integer, ? super Integer, Integer> paramFunction2)
@@ -14104,17 +15034,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    j = paramArrayOfInt[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      j = ((Number)paramFunction2.invoke(Integer.valueOf(paramArrayOfInt[i]), Integer.valueOf(j))).intValue();
-      i -= 1;
+      int i = j - 1;
+      j = paramArrayOfInt[j];
+      while (i >= 0)
+      {
+        j = ((Number)paramFunction2.invoke(Integer.valueOf(paramArrayOfInt[i]), Integer.valueOf(j))).intValue();
+        i -= 1;
+      }
+      return j;
     }
-    return j;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   public static final long reduceRight(@NotNull long[] paramArrayOfLong, @NotNull Function2<? super Long, ? super Long, Long> paramFunction2)
@@ -14122,17 +15057,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    long l = paramArrayOfLong[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      l = ((Number)paramFunction2.invoke(Long.valueOf(paramArrayOfLong[i]), Long.valueOf(l))).longValue();
-      i -= 1;
+      int i = j - 1;
+      long l = paramArrayOfLong[j];
+      while (i >= 0)
+      {
+        l = ((Number)paramFunction2.invoke(Long.valueOf(paramArrayOfLong[i]), Long.valueOf(l))).longValue();
+        i -= 1;
+      }
+      return l;
     }
-    return l;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   public static final <S, T extends S> S reduceRight(@NotNull T[] paramArrayOfT, @NotNull Function2<? super T, ? super S, ? extends S> paramFunction2)
@@ -14140,17 +15080,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfT);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    Object localObject = paramArrayOfT[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      localObject = paramFunction2.invoke(paramArrayOfT[i], localObject);
-      i -= 1;
+      int i = j - 1;
+      Object localObject = paramArrayOfT[j];
+      while (i >= 0)
+      {
+        localObject = paramFunction2.invoke(paramArrayOfT[i], localObject);
+        i -= 1;
+      }
+      return localObject;
     }
-    return localObject;
+    paramArrayOfT = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
   
   public static final short reduceRight(@NotNull short[] paramArrayOfShort, @NotNull Function2<? super Short, ? super Short, Short> paramFunction2)
@@ -14158,17 +15103,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    short s = paramArrayOfShort[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      s = ((Number)paramFunction2.invoke(Short.valueOf(paramArrayOfShort[i]), Short.valueOf(s))).shortValue();
-      i -= 1;
+      int i = j - 1;
+      short s = paramArrayOfShort[j];
+      while (i >= 0)
+      {
+        s = ((Number)paramFunction2.invoke(Short.valueOf(paramArrayOfShort[i]), Short.valueOf(s))).shortValue();
+        i -= 1;
+      }
+      return s;
     }
-    return s;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   public static final boolean reduceRight(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
@@ -14176,18 +15126,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceRight");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    int k = paramArrayOfBoolean[j];
-    boolean bool;
-    while (i >= 0)
+    if (j >= 0)
     {
-      bool = ((Boolean)paramFunction2.invoke(Boolean.valueOf(paramArrayOfBoolean[i]), Boolean.valueOf(k))).booleanValue();
-      i -= 1;
+      int i = j - 1;
+      int k = paramArrayOfBoolean[j];
+      boolean bool;
+      while (i >= 0)
+      {
+        bool = ((Boolean)paramFunction2.invoke(Boolean.valueOf(paramArrayOfBoolean[i]), Boolean.valueOf(k))).booleanValue();
+        i -= 1;
+      }
+      return bool;
     }
-    return bool;
+    paramArrayOfBoolean = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
   }
   
   public static final byte reduceRightIndexed(@NotNull byte[] paramArrayOfByte, @NotNull Function3<? super Integer, ? super Byte, ? super Byte, Byte> paramFunction3)
@@ -14195,17 +15150,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    byte b = paramArrayOfByte[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      b = ((Number)paramFunction3.invoke(Integer.valueOf(i), Byte.valueOf(paramArrayOfByte[i]), Byte.valueOf(b))).byteValue();
-      i -= 1;
+      int i = j - 1;
+      byte b = paramArrayOfByte[j];
+      while (i >= 0)
+      {
+        b = ((Number)paramFunction3.invoke(Integer.valueOf(i), Byte.valueOf(paramArrayOfByte[i]), Byte.valueOf(b))).byteValue();
+        i -= 1;
+      }
+      return b;
     }
-    return b;
+    paramArrayOfByte = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static final char reduceRightIndexed(@NotNull char[] paramArrayOfChar, @NotNull Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
@@ -14213,17 +15173,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    char c = paramArrayOfChar[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(paramArrayOfChar[i]), Character.valueOf(c))).charValue();
-      i -= 1;
+      int i = j - 1;
+      char c = paramArrayOfChar[j];
+      while (i >= 0)
+      {
+        c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(paramArrayOfChar[i]), Character.valueOf(c))).charValue();
+        i -= 1;
+      }
+      return c;
     }
-    return c;
+    paramArrayOfChar = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
   
   public static final double reduceRightIndexed(@NotNull double[] paramArrayOfDouble, @NotNull Function3<? super Integer, ? super Double, ? super Double, Double> paramFunction3)
@@ -14231,17 +15196,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfDouble);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    double d = paramArrayOfDouble[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      d = ((Number)paramFunction3.invoke(Integer.valueOf(i), Double.valueOf(paramArrayOfDouble[i]), Double.valueOf(d))).doubleValue();
-      i -= 1;
+      int i = j - 1;
+      double d = paramArrayOfDouble[j];
+      while (i >= 0)
+      {
+        d = ((Number)paramFunction3.invoke(Integer.valueOf(i), Double.valueOf(paramArrayOfDouble[i]), Double.valueOf(d))).doubleValue();
+        i -= 1;
+      }
+      return d;
     }
-    return d;
+    paramArrayOfDouble = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
   }
   
   public static final float reduceRightIndexed(@NotNull float[] paramArrayOfFloat, @NotNull Function3<? super Integer, ? super Float, ? super Float, Float> paramFunction3)
@@ -14249,17 +15219,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    float f = paramArrayOfFloat[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      f = ((Number)paramFunction3.invoke(Integer.valueOf(i), Float.valueOf(paramArrayOfFloat[i]), Float.valueOf(f))).floatValue();
-      i -= 1;
+      int i = j - 1;
+      float f = paramArrayOfFloat[j];
+      while (i >= 0)
+      {
+        f = ((Number)paramFunction3.invoke(Integer.valueOf(i), Float.valueOf(paramArrayOfFloat[i]), Float.valueOf(f))).floatValue();
+        i -= 1;
+      }
+      return f;
     }
-    return f;
+    paramArrayOfFloat = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
   }
   
   public static final int reduceRightIndexed(@NotNull int[] paramArrayOfInt, @NotNull Function3<? super Integer, ? super Integer, ? super Integer, Integer> paramFunction3)
@@ -14267,17 +15242,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    j = paramArrayOfInt[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      j = ((Number)paramFunction3.invoke(Integer.valueOf(i), Integer.valueOf(paramArrayOfInt[i]), Integer.valueOf(j))).intValue();
-      i -= 1;
+      int i = j - 1;
+      j = paramArrayOfInt[j];
+      while (i >= 0)
+      {
+        j = ((Number)paramFunction3.invoke(Integer.valueOf(i), Integer.valueOf(paramArrayOfInt[i]), Integer.valueOf(j))).intValue();
+        i -= 1;
+      }
+      return j;
     }
-    return j;
+    paramArrayOfInt = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   public static final long reduceRightIndexed(@NotNull long[] paramArrayOfLong, @NotNull Function3<? super Integer, ? super Long, ? super Long, Long> paramFunction3)
@@ -14285,17 +15265,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfLong);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    long l = paramArrayOfLong[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      l = ((Number)paramFunction3.invoke(Integer.valueOf(i), Long.valueOf(paramArrayOfLong[i]), Long.valueOf(l))).longValue();
-      i -= 1;
+      int i = j - 1;
+      long l = paramArrayOfLong[j];
+      while (i >= 0)
+      {
+        l = ((Number)paramFunction3.invoke(Integer.valueOf(i), Long.valueOf(paramArrayOfLong[i]), Long.valueOf(l))).longValue();
+        i -= 1;
+      }
+      return l;
     }
-    return l;
+    paramArrayOfLong = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   public static final <S, T extends S> S reduceRightIndexed(@NotNull T[] paramArrayOfT, @NotNull Function3<? super Integer, ? super T, ? super S, ? extends S> paramFunction3)
@@ -14303,17 +15288,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfT);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    Object localObject = paramArrayOfT[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      localObject = paramFunction3.invoke(Integer.valueOf(i), paramArrayOfT[i], localObject);
-      i -= 1;
+      int i = j - 1;
+      Object localObject = paramArrayOfT[j];
+      while (i >= 0)
+      {
+        localObject = paramFunction3.invoke(Integer.valueOf(i), paramArrayOfT[i], localObject);
+        i -= 1;
+      }
+      return localObject;
     }
-    return localObject;
+    paramArrayOfT = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
   
   public static final short reduceRightIndexed(@NotNull short[] paramArrayOfShort, @NotNull Function3<? super Integer, ? super Short, ? super Short, Short> paramFunction3)
@@ -14321,17 +15311,22 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    short s = paramArrayOfShort[j];
-    while (i >= 0)
+    if (j >= 0)
     {
-      s = ((Number)paramFunction3.invoke(Integer.valueOf(i), Short.valueOf(paramArrayOfShort[i]), Short.valueOf(s))).shortValue();
-      i -= 1;
+      int i = j - 1;
+      short s = paramArrayOfShort[j];
+      while (i >= 0)
+      {
+        s = ((Number)paramFunction3.invoke(Integer.valueOf(i), Short.valueOf(paramArrayOfShort[i]), Short.valueOf(s))).shortValue();
+        i -= 1;
+      }
+      return s;
     }
-    return s;
+    paramArrayOfShort = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   public static final boolean reduceRightIndexed(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function3<? super Integer, ? super Boolean, ? super Boolean, Boolean> paramFunction3)
@@ -14339,18 +15334,23 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reduceRightIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    if (j < 0) {
-      throw ((Throwable)new UnsupportedOperationException("Empty array can't be reduced."));
-    }
-    int i = j - 1;
-    int k = paramArrayOfBoolean[j];
-    boolean bool;
-    while (i >= 0)
+    if (j >= 0)
     {
-      bool = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(paramArrayOfBoolean[i]), Boolean.valueOf(k))).booleanValue();
-      i -= 1;
+      int i = j - 1;
+      int k = paramArrayOfBoolean[j];
+      boolean bool;
+      while (i >= 0)
+      {
+        bool = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(paramArrayOfBoolean[i]), Boolean.valueOf(k))).booleanValue();
+        i -= 1;
+      }
+      return bool;
     }
-    return bool;
+    paramArrayOfBoolean = (Throwable)new UnsupportedOperationException("Empty array can't be reduced.");
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
   }
   
   @ExperimentalStdlibApi
@@ -14509,23 +15509,17 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reduceRightOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
     int j = ArraysKt.getLastIndex(paramArrayOfT);
-    Object localObject2;
-    if (j < 0)
-    {
-      localObject2 = null;
-      return localObject2;
+    if (j < 0) {
+      return null;
     }
     int i = j - 1;
-    Object localObject1 = paramArrayOfT[j];
-    for (;;)
+    Object localObject = paramArrayOfT[j];
+    while (i >= 0)
     {
-      localObject2 = localObject1;
-      if (i < 0) {
-        break;
-      }
-      localObject1 = paramFunction2.invoke(paramArrayOfT[i], localObject1);
+      localObject = paramFunction2.invoke(paramArrayOfT[i], localObject);
       i -= 1;
     }
+    return localObject;
   }
   
   @ExperimentalStdlibApi
@@ -14555,12 +15549,19 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$requireNoNulls");
     int j = paramArrayOfT.length;
     int i = 0;
-    while (i < j)
-    {
-      if (paramArrayOfT[i] == null) {
-        throw ((Throwable)new IllegalArgumentException("null element found in " + paramArrayOfT + '.'));
+    while (i < j) {
+      if (paramArrayOfT[i] != null)
+      {
+        i += 1;
       }
-      i += 1;
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("null element found in ");
+        localStringBuilder.append(paramArrayOfT);
+        localStringBuilder.append('.');
+        throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
+      }
     }
     return paramArrayOfT;
   }
@@ -14569,25 +15570,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reverse");
     int m = paramArrayOfByte.length / 2 - 1;
-    if (m < 0) {}
-    int k;
-    int j;
-    do
-    {
+    if (m < 0) {
       return;
-      k = ArraysKt.getLastIndex(paramArrayOfByte);
-      j = 0;
-    } while (m > 0);
-    for (;;)
-    {
-      int i = paramArrayOfByte[j];
-      paramArrayOfByte[j] = paramArrayOfByte[k];
-      paramArrayOfByte[k] = i;
-      k -= 1;
-      if (j == m) {
-        break;
+    }
+    int k = ArraysKt.getLastIndex(paramArrayOfByte);
+    int j = 0;
+    if (m >= 0) {
+      for (;;)
+      {
+        int i = paramArrayOfByte[j];
+        paramArrayOfByte[j] = paramArrayOfByte[k];
+        paramArrayOfByte[k] = i;
+        k -= 1;
+        if (j == m) {
+          break;
+        }
+        j += 1;
       }
-      j += 1;
     }
   }
   
@@ -14595,25 +15594,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reverse");
     int m = paramArrayOfChar.length / 2 - 1;
-    if (m < 0) {}
-    int k;
-    int j;
-    do
-    {
+    if (m < 0) {
       return;
-      k = ArraysKt.getLastIndex(paramArrayOfChar);
-      j = 0;
-    } while (m > 0);
-    for (;;)
-    {
-      int i = paramArrayOfChar[j];
-      paramArrayOfChar[j] = paramArrayOfChar[k];
-      paramArrayOfChar[k] = i;
-      k -= 1;
-      if (j == m) {
-        break;
+    }
+    int k = ArraysKt.getLastIndex(paramArrayOfChar);
+    int j = 0;
+    if (m >= 0) {
+      for (;;)
+      {
+        int i = paramArrayOfChar[j];
+        paramArrayOfChar[j] = paramArrayOfChar[k];
+        paramArrayOfChar[k] = i;
+        k -= 1;
+        if (j == m) {
+          break;
+        }
+        j += 1;
       }
-      j += 1;
     }
   }
   
@@ -14621,25 +15618,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reverse");
     int k = paramArrayOfDouble.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfDouble);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      double d = paramArrayOfDouble[i];
-      paramArrayOfDouble[i] = paramArrayOfDouble[j];
-      paramArrayOfDouble[j] = d;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfDouble);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        double d = paramArrayOfDouble[i];
+        paramArrayOfDouble[i] = paramArrayOfDouble[j];
+        paramArrayOfDouble[j] = d;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14647,25 +15642,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reverse");
     int k = paramArrayOfFloat.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfFloat);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      float f = paramArrayOfFloat[i];
-      paramArrayOfFloat[i] = paramArrayOfFloat[j];
-      paramArrayOfFloat[j] = f;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfFloat);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        float f = paramArrayOfFloat[i];
+        paramArrayOfFloat[i] = paramArrayOfFloat[j];
+        paramArrayOfFloat[j] = f;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14673,25 +15666,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reverse");
     int k = paramArrayOfInt.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfInt);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      int m = paramArrayOfInt[i];
-      paramArrayOfInt[i] = paramArrayOfInt[j];
-      paramArrayOfInt[j] = m;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfInt);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        int m = paramArrayOfInt[i];
+        paramArrayOfInt[i] = paramArrayOfInt[j];
+        paramArrayOfInt[j] = m;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14699,25 +15690,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reverse");
     int k = paramArrayOfLong.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfLong);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      long l = paramArrayOfLong[i];
-      paramArrayOfLong[i] = paramArrayOfLong[j];
-      paramArrayOfLong[j] = l;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfLong);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        long l = paramArrayOfLong[i];
+        paramArrayOfLong[i] = paramArrayOfLong[j];
+        paramArrayOfLong[j] = l;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14725,25 +15714,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reverse");
     int k = paramArrayOfT.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfT);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      T ? = paramArrayOfT[i];
-      paramArrayOfT[i] = paramArrayOfT[j];
-      paramArrayOfT[j] = ?;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfT);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        T ? = paramArrayOfT[i];
+        paramArrayOfT[i] = paramArrayOfT[j];
+        paramArrayOfT[j] = ?;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14751,25 +15738,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reverse");
     int m = paramArrayOfShort.length / 2 - 1;
-    if (m < 0) {}
-    int k;
-    int j;
-    do
-    {
+    if (m < 0) {
       return;
-      k = ArraysKt.getLastIndex(paramArrayOfShort);
-      j = 0;
-    } while (m > 0);
-    for (;;)
-    {
-      int i = paramArrayOfShort[j];
-      paramArrayOfShort[j] = paramArrayOfShort[k];
-      paramArrayOfShort[k] = i;
-      k -= 1;
-      if (j == m) {
-        break;
+    }
+    int k = ArraysKt.getLastIndex(paramArrayOfShort);
+    int j = 0;
+    if (m >= 0) {
+      for (;;)
+      {
+        int i = paramArrayOfShort[j];
+        paramArrayOfShort[j] = paramArrayOfShort[k];
+        paramArrayOfShort[k] = i;
+        k -= 1;
+        if (j == m) {
+          break;
+        }
+        j += 1;
       }
-      j += 1;
     }
   }
   
@@ -14777,25 +15762,23 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reverse");
     int k = paramArrayOfBoolean.length / 2 - 1;
-    if (k < 0) {}
-    int j;
-    int i;
-    do
-    {
+    if (k < 0) {
       return;
-      j = ArraysKt.getLastIndex(paramArrayOfBoolean);
-      i = 0;
-    } while (k > 0);
-    for (;;)
-    {
-      int m = paramArrayOfBoolean[i];
-      paramArrayOfBoolean[i] = paramArrayOfBoolean[j];
-      paramArrayOfBoolean[j] = m;
-      j -= 1;
-      if (i == k) {
-        break;
+    }
+    int j = ArraysKt.getLastIndex(paramArrayOfBoolean);
+    int i = 0;
+    if (k >= 0) {
+      for (;;)
+      {
+        int m = paramArrayOfBoolean[i];
+        paramArrayOfBoolean[i] = paramArrayOfBoolean[j];
+        paramArrayOfBoolean[j] = m;
+        j -= 1;
+        if (i == k) {
+          break;
+        }
+        i += 1;
       }
-      i += 1;
     }
   }
   
@@ -14803,8 +15786,13 @@ public class ArraysKt___ArraysKt
   public static final List<Byte> reversed(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reversed");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfByte = ArraysKt.toMutableList(paramArrayOfByte);
@@ -14816,8 +15804,13 @@ public class ArraysKt___ArraysKt
   public static final List<Character> reversed(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reversed");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfChar = ArraysKt.toMutableList(paramArrayOfChar);
@@ -14829,8 +15822,13 @@ public class ArraysKt___ArraysKt
   public static final List<Double> reversed(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reversed");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfDouble = ArraysKt.toMutableList(paramArrayOfDouble);
@@ -14842,8 +15840,13 @@ public class ArraysKt___ArraysKt
   public static final List<Float> reversed(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reversed");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfFloat = ArraysKt.toMutableList(paramArrayOfFloat);
@@ -14855,8 +15858,13 @@ public class ArraysKt___ArraysKt
   public static final List<Integer> reversed(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reversed");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfInt = ArraysKt.toMutableList(paramArrayOfInt);
@@ -14868,8 +15876,13 @@ public class ArraysKt___ArraysKt
   public static final List<Long> reversed(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reversed");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfLong = ArraysKt.toMutableList(paramArrayOfLong);
@@ -14881,8 +15894,13 @@ public class ArraysKt___ArraysKt
   public static final <T> List<T> reversed(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reversed");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfT = ArraysKt.toMutableList(paramArrayOfT);
@@ -14894,8 +15912,13 @@ public class ArraysKt___ArraysKt
   public static final List<Short> reversed(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reversed");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfShort = ArraysKt.toMutableList(paramArrayOfShort);
@@ -14907,8 +15930,13 @@ public class ArraysKt___ArraysKt
   public static final List<Boolean> reversed(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reversed");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfBoolean.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     paramArrayOfBoolean = ArraysKt.toMutableList(paramArrayOfBoolean);
@@ -14919,15 +15947,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final byte[] reversedArray(@NotNull byte[] paramArrayOfByte)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$reversedArray");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfByte;
     }
     byte[] arrayOfByte = new byte[paramArrayOfByte.length];
     int k = ArraysKt.getLastIndex(paramArrayOfByte);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -14945,15 +15978,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final char[] reversedArray(@NotNull char[] paramArrayOfChar)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$reversedArray");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfChar;
     }
     char[] arrayOfChar = new char[paramArrayOfChar.length];
     int k = ArraysKt.getLastIndex(paramArrayOfChar);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -14971,15 +16009,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final double[] reversedArray(@NotNull double[] paramArrayOfDouble)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$reversedArray");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfDouble;
     }
     double[] arrayOfDouble = new double[paramArrayOfDouble.length];
     int k = ArraysKt.getLastIndex(paramArrayOfDouble);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -14997,15 +16040,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final float[] reversedArray(@NotNull float[] paramArrayOfFloat)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$reversedArray");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfFloat;
     }
     float[] arrayOfFloat = new float[paramArrayOfFloat.length];
     int k = ArraysKt.getLastIndex(paramArrayOfFloat);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15023,15 +16071,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final int[] reversedArray(@NotNull int[] paramArrayOfInt)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$reversedArray");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfInt;
     }
     int[] arrayOfInt = new int[paramArrayOfInt.length];
     int k = ArraysKt.getLastIndex(paramArrayOfInt);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15049,15 +16102,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final long[] reversedArray(@NotNull long[] paramArrayOfLong)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$reversedArray");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfLong;
     }
     long[] arrayOfLong = new long[paramArrayOfLong.length];
     int k = ArraysKt.getLastIndex(paramArrayOfLong);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15075,15 +16133,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T> T[] reversedArray(@NotNull T[] paramArrayOfT)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$reversedArray");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfT.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfT;
     }
     Object[] arrayOfObject = ArraysKt.arrayOfNulls(paramArrayOfT, paramArrayOfT.length);
     int k = ArraysKt.getLastIndex(paramArrayOfT);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15101,15 +16164,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final short[] reversedArray(@NotNull short[] paramArrayOfShort)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$reversedArray");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfShort;
     }
     short[] arrayOfShort = new short[paramArrayOfShort.length];
     int k = ArraysKt.getLastIndex(paramArrayOfShort);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15127,15 +16195,20 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final boolean[] reversedArray(@NotNull boolean[] paramArrayOfBoolean)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$reversedArray");
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfBoolean;
     }
     boolean[] arrayOfBoolean = new boolean[paramArrayOfBoolean.length];
     int k = ArraysKt.getLastIndex(paramArrayOfBoolean);
-    if (k <= 0)
+    if (k >= 0)
     {
       i = j;
       for (;;)
@@ -15155,9 +16228,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull byte[] paramArrayOfByte, R paramR, Function2<? super R, ? super Byte, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfByte.length;
     int j = 0;
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfByte.length + 1);
@@ -15178,9 +16256,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull char[] paramArrayOfChar, R paramR, Function2<? super R, ? super Character, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfChar.length;
     int j = 0;
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfChar.length + 1);
@@ -15201,9 +16284,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull double[] paramArrayOfDouble, R paramR, Function2<? super R, ? super Double, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfDouble.length;
     int j = 0;
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfDouble.length + 1);
@@ -15224,9 +16312,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull float[] paramArrayOfFloat, R paramR, Function2<? super R, ? super Float, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfFloat.length;
     int j = 0;
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfFloat.length + 1);
@@ -15247,9 +16340,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull int[] paramArrayOfInt, R paramR, Function2<? super R, ? super Integer, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfInt.length;
     int j = 0;
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfInt.length + 1);
@@ -15270,9 +16368,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull long[] paramArrayOfLong, R paramR, Function2<? super R, ? super Long, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfLong.length;
     int j = 0;
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfLong.length + 1);
@@ -15293,11 +16396,16 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R> List<R> scan(@NotNull T[] paramArrayOfT, R paramR, @NotNull Function2<? super R, ? super T, ? extends R> paramFunction2)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$scan");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfT.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfT.length + 1);
@@ -15318,9 +16426,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull short[] paramArrayOfShort, R paramR, Function2<? super R, ? super Short, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfShort.length;
     int j = 0;
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfShort.length + 1);
@@ -15341,9 +16454,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scan(@NotNull boolean[] paramArrayOfBoolean, R paramR, Function2<? super R, ? super Boolean, ? extends R> paramFunction2)
   {
+    int i = paramArrayOfBoolean.length;
     int j = 0;
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfBoolean.length + 1);
@@ -15364,9 +16482,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull byte[] paramArrayOfByte, R paramR, Function3<? super Integer, ? super R, ? super Byte, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfByte.length;
     int j = 0;
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfByte.length + 1);
@@ -15387,9 +16510,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull char[] paramArrayOfChar, R paramR, Function3<? super Integer, ? super R, ? super Character, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfChar.length;
     int j = 0;
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfChar.length + 1);
@@ -15410,9 +16538,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull double[] paramArrayOfDouble, R paramR, Function3<? super Integer, ? super R, ? super Double, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfDouble.length;
     int j = 0;
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfDouble.length + 1);
@@ -15433,9 +16566,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull float[] paramArrayOfFloat, R paramR, Function3<? super Integer, ? super R, ? super Float, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfFloat.length;
     int j = 0;
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfFloat.length + 1);
@@ -15456,9 +16594,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull int[] paramArrayOfInt, R paramR, Function3<? super Integer, ? super R, ? super Integer, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfInt.length;
     int j = 0;
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfInt.length + 1);
@@ -15479,9 +16622,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull long[] paramArrayOfLong, R paramR, Function3<? super Integer, ? super R, ? super Long, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfLong.length;
     int j = 0;
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfLong.length + 1);
@@ -15502,11 +16650,16 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <T, R> List<R> scanIndexed(@NotNull T[] paramArrayOfT, R paramR, @NotNull Function3<? super Integer, ? super R, ? super T, ? extends R> paramFunction3)
   {
-    int j = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$scanIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfT.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfT.length + 1);
@@ -15527,9 +16680,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull short[] paramArrayOfShort, R paramR, Function3<? super Integer, ? super R, ? super Short, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfShort.length;
     int j = 0;
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfShort.length + 1);
@@ -15550,9 +16708,14 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final <R> List<R> scanIndexed(@NotNull boolean[] paramArrayOfBoolean, R paramR, Function3<? super Integer, ? super R, ? super Boolean, ? extends R> paramFunction3)
   {
+    int i = paramArrayOfBoolean.length;
     int j = 0;
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.listOf(paramR);
     }
     ArrayList localArrayList = new ArrayList(paramArrayOfBoolean.length + 1);
@@ -15573,16 +16736,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Byte> scanReduce(@NotNull byte[] paramArrayOfByte, Function2<? super Byte, ? super Byte, Byte> paramFunction2)
   {
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     byte b = paramArrayOfByte[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfByte.length);
     localArrayList.add(Byte.valueOf(b));
-    int j = paramArrayOfByte.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfByte.length;
+    i = j;
+    while (i < k)
     {
       b = ((Number)paramFunction2.invoke(Byte.valueOf(b), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
       localArrayList.add(Byte.valueOf(b));
@@ -15596,16 +16765,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Character> scanReduce(@NotNull char[] paramArrayOfChar, Function2<? super Character, ? super Character, Character> paramFunction2)
   {
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     char c = paramArrayOfChar[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfChar.length);
     localArrayList.add(Character.valueOf(c));
-    int j = paramArrayOfChar.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfChar.length;
+    i = j;
+    while (i < k)
     {
       c = ((Character)paramFunction2.invoke(Character.valueOf(c), Character.valueOf(paramArrayOfChar[i]))).charValue();
       localArrayList.add(Character.valueOf(c));
@@ -15619,16 +16794,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Double> scanReduce(@NotNull double[] paramArrayOfDouble, Function2<? super Double, ? super Double, Double> paramFunction2)
   {
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     double d = paramArrayOfDouble[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfDouble.length);
     localArrayList.add(Double.valueOf(d));
-    int j = paramArrayOfDouble.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfDouble.length;
+    i = j;
+    while (i < k)
     {
       d = ((Number)paramFunction2.invoke(Double.valueOf(d), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
       localArrayList.add(Double.valueOf(d));
@@ -15642,16 +16823,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Float> scanReduce(@NotNull float[] paramArrayOfFloat, Function2<? super Float, ? super Float, Float> paramFunction2)
   {
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     float f = paramArrayOfFloat[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfFloat.length);
     localArrayList.add(Float.valueOf(f));
-    int j = paramArrayOfFloat.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfFloat.length;
+    i = j;
+    while (i < k)
     {
       f = ((Number)paramFunction2.invoke(Float.valueOf(f), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
       localArrayList.add(Float.valueOf(f));
@@ -15665,16 +16852,23 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Integer> scanReduce(@NotNull int[] paramArrayOfInt, Function2<? super Integer, ? super Integer, Integer> paramFunction2)
   {
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
-    int j = paramArrayOfInt[0];
+    int k = paramArrayOfInt[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfInt.length);
-    localArrayList.add(Integer.valueOf(j));
-    int k = paramArrayOfInt.length;
-    i = 1;
-    while (i < k)
+    localArrayList.add(Integer.valueOf(k));
+    int m = paramArrayOfInt.length;
+    i = j;
+    j = k;
+    while (i < m)
     {
       j = ((Number)paramFunction2.invoke(Integer.valueOf(j), Integer.valueOf(paramArrayOfInt[i]))).intValue();
       localArrayList.add(Integer.valueOf(j));
@@ -15688,16 +16882,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Long> scanReduce(@NotNull long[] paramArrayOfLong, Function2<? super Long, ? super Long, Long> paramFunction2)
   {
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     long l = paramArrayOfLong[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfLong.length);
     localArrayList.add(Long.valueOf(l));
-    int j = paramArrayOfLong.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfLong.length;
+    i = j;
+    while (i < k)
     {
       l = ((Number)paramFunction2.invoke(Long.valueOf(l), Long.valueOf(paramArrayOfLong[i]))).longValue();
       localArrayList.add(Long.valueOf(l));
@@ -15711,11 +16911,16 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <S, T extends S> List<S> scanReduce(@NotNull T[] paramArrayOfT, @NotNull Function2<? super S, ? super T, ? extends S> paramFunction2)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$scanReduce");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     Object localObject = paramArrayOfT[0];
@@ -15737,16 +16942,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Short> scanReduce(@NotNull short[] paramArrayOfShort, Function2<? super Short, ? super Short, Short> paramFunction2)
   {
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     short s = paramArrayOfShort[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfShort.length);
     localArrayList.add(Short.valueOf(s));
-    int j = paramArrayOfShort.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfShort.length;
+    i = j;
+    while (i < k)
     {
       s = ((Number)paramFunction2.invoke(Short.valueOf(s), Short.valueOf(paramArrayOfShort[i]))).shortValue();
       localArrayList.add(Short.valueOf(s));
@@ -15760,18 +16971,24 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Boolean> scanReduce(@NotNull boolean[] paramArrayOfBoolean, Function2<? super Boolean, ? super Boolean, Boolean> paramFunction2)
   {
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
-    int k = paramArrayOfBoolean[0];
+    int m = paramArrayOfBoolean[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfBoolean.length);
-    localArrayList.add(Boolean.valueOf(k));
-    int j = paramArrayOfBoolean.length;
-    i = 1;
-    while (i < j)
+    localArrayList.add(Boolean.valueOf(m));
+    int k = paramArrayOfBoolean.length;
+    i = j;
+    while (i < k)
     {
-      boolean bool = ((Boolean)paramFunction2.invoke(Boolean.valueOf(k), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
+      boolean bool = ((Boolean)paramFunction2.invoke(Boolean.valueOf(m), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
       localArrayList.add(Boolean.valueOf(bool));
       i += 1;
     }
@@ -15783,16 +17000,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Byte> scanReduceIndexed(@NotNull byte[] paramArrayOfByte, Function3<? super Integer, ? super Byte, ? super Byte, Byte> paramFunction3)
   {
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfByte.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     byte b = paramArrayOfByte[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfByte.length);
     localArrayList.add(Byte.valueOf(b));
-    int j = paramArrayOfByte.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfByte.length;
+    i = j;
+    while (i < k)
     {
       b = ((Number)paramFunction3.invoke(Integer.valueOf(i), Byte.valueOf(b), Byte.valueOf(paramArrayOfByte[i]))).byteValue();
       localArrayList.add(Byte.valueOf(b));
@@ -15806,16 +17029,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Character> scanReduceIndexed(@NotNull char[] paramArrayOfChar, Function3<? super Integer, ? super Character, ? super Character, Character> paramFunction3)
   {
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfChar.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     char c = paramArrayOfChar[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfChar.length);
     localArrayList.add(Character.valueOf(c));
-    int j = paramArrayOfChar.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfChar.length;
+    i = j;
+    while (i < k)
     {
       c = ((Character)paramFunction3.invoke(Integer.valueOf(i), Character.valueOf(c), Character.valueOf(paramArrayOfChar[i]))).charValue();
       localArrayList.add(Character.valueOf(c));
@@ -15829,16 +17058,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Double> scanReduceIndexed(@NotNull double[] paramArrayOfDouble, Function3<? super Integer, ? super Double, ? super Double, Double> paramFunction3)
   {
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfDouble.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     double d = paramArrayOfDouble[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfDouble.length);
     localArrayList.add(Double.valueOf(d));
-    int j = paramArrayOfDouble.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfDouble.length;
+    i = j;
+    while (i < k)
     {
       d = ((Number)paramFunction3.invoke(Integer.valueOf(i), Double.valueOf(d), Double.valueOf(paramArrayOfDouble[i]))).doubleValue();
       localArrayList.add(Double.valueOf(d));
@@ -15852,16 +17087,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Float> scanReduceIndexed(@NotNull float[] paramArrayOfFloat, Function3<? super Integer, ? super Float, ? super Float, Float> paramFunction3)
   {
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfFloat.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     float f = paramArrayOfFloat[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfFloat.length);
     localArrayList.add(Float.valueOf(f));
-    int j = paramArrayOfFloat.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfFloat.length;
+    i = j;
+    while (i < k)
     {
       f = ((Number)paramFunction3.invoke(Integer.valueOf(i), Float.valueOf(f), Float.valueOf(paramArrayOfFloat[i]))).floatValue();
       localArrayList.add(Float.valueOf(f));
@@ -15875,16 +17116,23 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Integer> scanReduceIndexed(@NotNull int[] paramArrayOfInt, Function3<? super Integer, ? super Integer, ? super Integer, Integer> paramFunction3)
   {
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfInt.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
-    int j = paramArrayOfInt[0];
+    int k = paramArrayOfInt[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfInt.length);
-    localArrayList.add(Integer.valueOf(j));
-    int k = paramArrayOfInt.length;
-    i = 1;
-    while (i < k)
+    localArrayList.add(Integer.valueOf(k));
+    int m = paramArrayOfInt.length;
+    i = j;
+    j = k;
+    while (i < m)
     {
       j = ((Number)paramFunction3.invoke(Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramArrayOfInt[i]))).intValue();
       localArrayList.add(Integer.valueOf(j));
@@ -15898,16 +17146,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Long> scanReduceIndexed(@NotNull long[] paramArrayOfLong, Function3<? super Integer, ? super Long, ? super Long, Long> paramFunction3)
   {
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfLong.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     long l = paramArrayOfLong[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfLong.length);
     localArrayList.add(Long.valueOf(l));
-    int j = paramArrayOfLong.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfLong.length;
+    i = j;
+    while (i < k)
     {
       l = ((Number)paramFunction3.invoke(Integer.valueOf(i), Long.valueOf(l), Long.valueOf(paramArrayOfLong[i]))).longValue();
       localArrayList.add(Long.valueOf(l));
@@ -15921,11 +17175,16 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final <S, T extends S> List<S> scanReduceIndexed(@NotNull T[] paramArrayOfT, @NotNull Function3<? super Integer, ? super S, ? super T, ? extends S> paramFunction3)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$scanReduceIndexed");
     Intrinsics.checkParameterIsNotNull(paramFunction3, "operation");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfT.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     Object localObject = paramArrayOfT[0];
@@ -15947,16 +17206,22 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Short> scanReduceIndexed(@NotNull short[] paramArrayOfShort, Function3<? super Integer, ? super Short, ? super Short, Short> paramFunction3)
   {
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfShort.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
     short s = paramArrayOfShort[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfShort.length);
     localArrayList.add(Short.valueOf(s));
-    int j = paramArrayOfShort.length;
-    i = 1;
-    while (i < j)
+    int k = paramArrayOfShort.length;
+    i = j;
+    while (i < k)
     {
       s = ((Number)paramFunction3.invoke(Integer.valueOf(i), Short.valueOf(s), Short.valueOf(paramArrayOfShort[i]))).shortValue();
       localArrayList.add(Short.valueOf(s));
@@ -15970,18 +17235,24 @@ public class ArraysKt___ArraysKt
   @InlineOnly
   private static final List<Boolean> scanReduceIndexed(@NotNull boolean[] paramArrayOfBoolean, Function3<? super Integer, ? super Boolean, ? super Boolean, Boolean> paramFunction3)
   {
-    if (paramArrayOfBoolean.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i = paramArrayOfBoolean.length;
+    int j = 1;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return CollectionsKt.emptyList();
     }
-    int k = paramArrayOfBoolean[0];
+    int m = paramArrayOfBoolean[0];
     ArrayList localArrayList = new ArrayList(paramArrayOfBoolean.length);
-    localArrayList.add(Boolean.valueOf(k));
-    int j = paramArrayOfBoolean.length;
-    i = 1;
-    while (i < j)
+    localArrayList.add(Boolean.valueOf(m));
+    int k = paramArrayOfBoolean.length;
+    i = j;
+    while (i < k)
     {
-      boolean bool = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(k), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
+      boolean bool = ((Boolean)paramFunction3.invoke(Integer.valueOf(i), Boolean.valueOf(m), Boolean.valueOf(paramArrayOfBoolean[i]))).booleanValue();
       localArrayList.add(Boolean.valueOf(bool));
       i += 1;
     }
@@ -15991,429 +17262,473 @@ public class ArraysKt___ArraysKt
   public static final byte single(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$single");
-    switch (paramArrayOfByte.length)
+    int i = paramArrayOfByte.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfByte[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfByte[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final byte single(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Byte localByte = (Byte)null;
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfByte.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      byte b = paramArrayOfByte[j];
-      if (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
-        break label135;
+      byte b = paramArrayOfByte[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
+        if (j == 0)
+        {
+          localByte = Byte.valueOf(b);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localByte = Byte.valueOf(b);
-      i = 1;
+      i += 1;
     }
-    label135:
+    if (j != 0)
+    {
+      if (localByte != null) {
+        return localByte.byteValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Byte");
+    }
+    paramArrayOfByte = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localByte == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Byte");
-      }
-      return localByte.byteValue();
+      throw paramArrayOfByte;
     }
   }
   
   public static final char single(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$single");
-    switch (paramArrayOfChar.length)
+    int i = paramArrayOfChar.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfChar[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfChar[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final char single(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Character localCharacter = (Character)null;
-    int k = paramArrayOfChar.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfChar.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      char c = paramArrayOfChar[j];
-      if (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        break label135;
+      char c = paramArrayOfChar[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
+        if (j == 0)
+        {
+          localCharacter = Character.valueOf(c);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localCharacter = Character.valueOf(c);
-      i = 1;
+      i += 1;
     }
-    label135:
+    if (j != 0)
+    {
+      if (localCharacter != null) {
+        return localCharacter.charValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Char");
+    }
+    paramArrayOfChar = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localCharacter == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Char");
-      }
-      return localCharacter.charValue();
+      throw paramArrayOfChar;
     }
   }
   
   public static final double single(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$single");
-    switch (paramArrayOfDouble.length)
+    int i = paramArrayOfDouble.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfDouble[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfDouble[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final double single(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Double localDouble = (Double)null;
-    int k = paramArrayOfDouble.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfDouble.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      double d = paramArrayOfDouble[j];
-      if (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
-        break label139;
+      double d = paramArrayOfDouble[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
+        if (j == 0)
+        {
+          localDouble = Double.valueOf(d);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localDouble = Double.valueOf(d);
-      i = 1;
+      i += 1;
     }
-    label139:
+    if (j != 0)
+    {
+      if (localDouble != null) {
+        return localDouble.doubleValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Double");
+    }
+    paramArrayOfDouble = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localDouble == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Double");
-      }
-      return localDouble.doubleValue();
+      throw paramArrayOfDouble;
     }
   }
   
   public static final float single(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$single");
-    switch (paramArrayOfFloat.length)
+    int i = paramArrayOfFloat.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfFloat[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfFloat[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final float single(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Float localFloat = (Float)null;
-    int k = paramArrayOfFloat.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfFloat.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      float f = paramArrayOfFloat[j];
-      if (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
-        break label135;
+      float f = paramArrayOfFloat[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
+        if (j == 0)
+        {
+          localFloat = Float.valueOf(f);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localFloat = Float.valueOf(f);
-      i = 1;
+      i += 1;
     }
-    label135:
+    if (j != 0)
+    {
+      if (localFloat != null) {
+        return localFloat.floatValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    }
+    paramArrayOfFloat = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localFloat == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
-      }
-      return localFloat.floatValue();
+      throw paramArrayOfFloat;
     }
   }
   
   public static final int single(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$single");
-    switch (paramArrayOfInt.length)
+    int i = paramArrayOfInt.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfInt[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfInt[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final int single(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Integer localInteger = (Integer)null;
-    int k = paramArrayOfInt.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfInt.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfInt[j];
-      if (!((Boolean)paramFunction1.invoke(Integer.valueOf(m))).booleanValue()) {
-        break label133;
+      int n = paramArrayOfInt[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Integer.valueOf(n))).booleanValue()) {
+        if (j == 0)
+        {
+          localInteger = Integer.valueOf(n);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localInteger = Integer.valueOf(m);
-      i = 1;
+      i += 1;
     }
-    label133:
+    if (j != 0)
+    {
+      if (localInteger != null) {
+        return localInteger.intValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    }
+    paramArrayOfInt = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localInteger == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-      }
-      return localInteger.intValue();
+      throw paramArrayOfInt;
     }
   }
   
   public static final long single(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$single");
-    switch (paramArrayOfLong.length)
+    int i = paramArrayOfLong.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfLong[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfLong[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final long single(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Long localLong = (Long)null;
-    int k = paramArrayOfLong.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfLong.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      long l = paramArrayOfLong[j];
-      if (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
-        break label133;
+      long l = paramArrayOfLong[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
+        if (j == 0)
+        {
+          localLong = Long.valueOf(l);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localLong = Long.valueOf(l);
-      i = 1;
+      i += 1;
     }
-    label133:
+    if (j != 0)
+    {
+      if (localLong != null) {
+        return localLong.longValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+    }
+    paramArrayOfLong = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localLong == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
-      }
-      return localLong.longValue();
+      throw paramArrayOfLong;
     }
   }
   
   public static final <T> T single(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$single");
-    switch (paramArrayOfT.length)
+    int i = paramArrayOfT.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfT[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfT[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final <T> T single(@NotNull T[] paramArrayOfT, @NotNull Function1<? super T, Boolean> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    Object localObject = null;
-    int k = paramArrayOfT.length;
-    int j = 0;
+    int m = paramArrayOfT.length;
     int i = 0;
-    if (j < k)
+    Object localObject = null;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      T ? = paramArrayOfT[j];
-      if (!((Boolean)paramFunction1.invoke(?)).booleanValue()) {
-        break label105;
+      T ? = paramArrayOfT[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {
+        if (j == 0)
+        {
+          k = 1;
+          localObject = ?;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      i = 1;
-      localObject = ?;
+      i += 1;
     }
-    label105:
+    if (j != 0) {
+      return localObject;
+    }
+    paramArrayOfT = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      return localObject;
+      throw paramArrayOfT;
     }
   }
   
   public static final short single(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$single");
-    switch (paramArrayOfShort.length)
+    int i = paramArrayOfShort.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfShort[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfShort[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final short single(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Short localShort = (Short)null;
-    int k = paramArrayOfShort.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfShort.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      short s = paramArrayOfShort[j];
-      if (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
-        break label135;
+      short s = paramArrayOfShort[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
+        if (j == 0)
+        {
+          localShort = Short.valueOf(s);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localShort = Short.valueOf(s);
-      i = 1;
+      i += 1;
     }
-    label135:
+    if (j != 0)
+    {
+      if (localShort != null) {
+        return localShort.shortValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Short");
+    }
+    paramArrayOfShort = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localShort == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Short");
-      }
-      return localShort.shortValue();
+      throw paramArrayOfShort;
     }
   }
   
   public static final boolean single(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$single");
-    switch (paramArrayOfBoolean.length)
+    int i = paramArrayOfBoolean.length;
+    if (i != 0)
     {
-    default: 
+      if (i == 1) {
+        return paramArrayOfBoolean[0];
+      }
       throw ((Throwable)new IllegalArgumentException("Array has more than one element."));
-    case 0: 
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
     }
-    return paramArrayOfBoolean[0];
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   public static final boolean single(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$single");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Boolean localBoolean = (Boolean)null;
-    int k = paramArrayOfBoolean.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfBoolean.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfBoolean[j];
-      if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(m))).booleanValue()) {
-        break label133;
+      int n = paramArrayOfBoolean[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(n))).booleanValue()) {
+        if (j == 0)
+        {
+          localBoolean = Boolean.valueOf(n);
+          k = 1;
+        }
+        else
+        {
+          throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
+        }
       }
-      if (i != 0) {
-        throw ((Throwable)new IllegalArgumentException("Array contains more than one matching element."));
-      }
-      localBoolean = Boolean.valueOf(m);
-      i = 1;
+      i += 1;
     }
-    label133:
+    if (j != 0)
+    {
+      if (localBoolean != null) {
+        return localBoolean.booleanValue();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Boolean");
+    }
+    paramArrayOfBoolean = (Throwable)new NoSuchElementException("Array contains no element matching the predicate.");
     for (;;)
     {
-      j += 1;
-      break;
-      if (i == 0) {
-        throw ((Throwable)new NoSuchElementException("Array contains no element matching the predicate."));
-      }
-      if (localBoolean == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Boolean");
-      }
-      return localBoolean.booleanValue();
+      throw paramArrayOfBoolean;
     }
   }
   
@@ -16430,35 +17745,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Boolean singleOrNull(@NotNull boolean[] paramArrayOfBoolean, @NotNull Function1<? super Boolean, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Boolean localBoolean = (Boolean)null;
-    int k = paramArrayOfBoolean.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfBoolean.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfBoolean[j];
-      if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(m))).booleanValue()) {
-        break label88;
+      int n = paramArrayOfBoolean[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Boolean.valueOf(n))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localBoolean = Boolean.valueOf(n);
+        k = 1;
       }
-      if (i != 0) {
-        label63:
-        return null;
-      }
-      localBoolean = Boolean.valueOf(m);
-      i = 1;
+      i += 1;
     }
-    label88:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label63;
-      }
-      return localBoolean;
+    if (j == 0) {
+      return null;
     }
+    return localBoolean;
   }
   
   @Nullable
@@ -16474,35 +17784,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Byte singleOrNull(@NotNull byte[] paramArrayOfByte, @NotNull Function1<? super Byte, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Byte localByte = (Byte)null;
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfByte.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      byte b = paramArrayOfByte[j];
-      if (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
-        break label90;
+      byte b = paramArrayOfByte[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localByte = Byte.valueOf(b);
+        k = 1;
       }
-      if (i != 0) {
-        label64:
-        return null;
-      }
-      localByte = Byte.valueOf(b);
-      i = 1;
+      i += 1;
     }
-    label90:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label64;
-      }
-      return localByte;
+    if (j == 0) {
+      return null;
     }
+    return localByte;
   }
   
   @Nullable
@@ -16518,35 +17823,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Character singleOrNull(@NotNull char[] paramArrayOfChar, @NotNull Function1<? super Character, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Character localCharacter = (Character)null;
-    int k = paramArrayOfChar.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfChar.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      char c = paramArrayOfChar[j];
-      if (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
-        break label90;
+      char c = paramArrayOfChar[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localCharacter = Character.valueOf(c);
+        k = 1;
       }
-      if (i != 0) {
-        label64:
-        return null;
-      }
-      localCharacter = Character.valueOf(c);
-      i = 1;
+      i += 1;
     }
-    label90:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label64;
-      }
-      return localCharacter;
+    if (j == 0) {
+      return null;
     }
+    return localCharacter;
   }
   
   @Nullable
@@ -16562,35 +17862,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Double singleOrNull(@NotNull double[] paramArrayOfDouble, @NotNull Function1<? super Double, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Double localDouble = (Double)null;
-    int k = paramArrayOfDouble.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfDouble.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      double d = paramArrayOfDouble[j];
-      if (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
-        break label94;
+      double d = paramArrayOfDouble[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localDouble = Double.valueOf(d);
+        k = 1;
       }
-      if (i != 0) {
-        label66:
-        return null;
-      }
-      localDouble = Double.valueOf(d);
-      i = 1;
+      i += 1;
     }
-    label94:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label66;
-      }
-      return localDouble;
+    if (j == 0) {
+      return null;
     }
+    return localDouble;
   }
   
   @Nullable
@@ -16606,35 +17901,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Float singleOrNull(@NotNull float[] paramArrayOfFloat, @NotNull Function1<? super Float, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Float localFloat = (Float)null;
-    int k = paramArrayOfFloat.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfFloat.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      float f = paramArrayOfFloat[j];
-      if (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
-        break label90;
+      float f = paramArrayOfFloat[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localFloat = Float.valueOf(f);
+        k = 1;
       }
-      if (i != 0) {
-        label64:
-        return null;
-      }
-      localFloat = Float.valueOf(f);
-      i = 1;
+      i += 1;
     }
-    label90:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label64;
-      }
-      return localFloat;
+    if (j == 0) {
+      return null;
     }
+    return localFloat;
   }
   
   @Nullable
@@ -16650,35 +17940,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Integer singleOrNull(@NotNull int[] paramArrayOfInt, @NotNull Function1<? super Integer, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Integer localInteger = (Integer)null;
-    int k = paramArrayOfInt.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfInt.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int m = paramArrayOfInt[j];
-      if (!((Boolean)paramFunction1.invoke(Integer.valueOf(m))).booleanValue()) {
-        break label88;
+      int n = paramArrayOfInt[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Integer.valueOf(n))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localInteger = Integer.valueOf(n);
+        k = 1;
       }
-      if (i != 0) {
-        label63:
-        return null;
-      }
-      localInteger = Integer.valueOf(m);
-      i = 1;
+      i += 1;
     }
-    label88:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label63;
-      }
-      return localInteger;
+    if (j == 0) {
+      return null;
     }
+    return localInteger;
   }
   
   @Nullable
@@ -16694,35 +17979,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Long singleOrNull(@NotNull long[] paramArrayOfLong, @NotNull Function1<? super Long, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Long localLong = (Long)null;
-    int k = paramArrayOfLong.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfLong.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      long l = paramArrayOfLong[j];
-      if (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
-        break label88;
+      long l = paramArrayOfLong[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localLong = Long.valueOf(l);
+        k = 1;
       }
-      if (i != 0) {
-        label63:
-        return null;
-      }
-      localLong = Long.valueOf(l);
-      i = 1;
+      i += 1;
     }
-    label88:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label63;
-      }
-      return localLong;
+    if (j == 0) {
+      return null;
     }
+    return localLong;
   }
   
   @Nullable
@@ -16740,35 +18020,28 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
-    int k = paramArrayOfT.length;
-    int j = 0;
+    int m = paramArrayOfT.length;
     int i = 0;
     Object localObject = null;
-    if (j < k)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      T ? = paramArrayOfT[j];
-      if (!((Boolean)paramFunction1.invoke(?)).booleanValue()) {
-        break label82;
-      }
-      if (i != 0)
+      T ? = paramArrayOfT[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(?)).booleanValue())
       {
-        localObject = null;
-        label60:
-        return localObject;
+        if (j != 0) {
+          return null;
+        }
+        k = 1;
+        localObject = ?;
       }
-      i = 1;
-      localObject = ?;
+      i += 1;
     }
-    label82:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i != 0) {
-        break label60;
-      }
+    if (j == 0) {
       return null;
     }
+    return localObject;
   }
   
   @Nullable
@@ -16784,35 +18057,30 @@ public class ArraysKt___ArraysKt
   @Nullable
   public static final Short singleOrNull(@NotNull short[] paramArrayOfShort, @NotNull Function1<? super Short, Boolean> paramFunction1)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$singleOrNull");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "predicate");
     Short localShort = (Short)null;
-    int k = paramArrayOfShort.length;
-    int j = 0;
-    if (j < k)
+    int m = paramArrayOfShort.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      short s = paramArrayOfShort[j];
-      if (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
-        break label90;
+      short s = paramArrayOfShort[i];
+      k = j;
+      if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue())
+      {
+        if (j != 0) {
+          return null;
+        }
+        localShort = Short.valueOf(s);
+        k = 1;
       }
-      if (i != 0) {
-        label64:
-        return null;
-      }
-      localShort = Short.valueOf(s);
-      i = 1;
+      i += 1;
     }
-    label90:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i == 0) {
-        break label64;
-      }
-      return localShort;
+    if (j == 0) {
+      return null;
     }
+    return localShort;
   }
   
   @NotNull
@@ -17410,11 +18678,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sorted");
     paramArrayOfByte = ArraysKt.toTypedArray(paramArrayOfByte);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfByte;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfByte);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfByte);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17423,11 +18692,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$sorted");
     paramArrayOfChar = ArraysKt.toTypedArray(paramArrayOfChar);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfChar;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfChar);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfChar);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17436,11 +18706,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sorted");
     paramArrayOfDouble = ArraysKt.toTypedArray(paramArrayOfDouble);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfDouble;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfDouble);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfDouble);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17449,11 +18720,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sorted");
     paramArrayOfFloat = ArraysKt.toTypedArray(paramArrayOfFloat);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfFloat;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfFloat);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfFloat);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17462,11 +18734,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$sorted");
     paramArrayOfInt = ArraysKt.toTypedArray(paramArrayOfInt);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfInt;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfInt);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfInt);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17475,11 +18748,12 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sorted");
     paramArrayOfLong = ArraysKt.toTypedArray(paramArrayOfLong);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfLong;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfLong);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfLong);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
@@ -17495,19 +18769,25 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sorted");
     paramArrayOfShort = ArraysKt.toTypedArray(paramArrayOfShort);
     Comparable[] arrayOfComparable = (Comparable[])paramArrayOfShort;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (arrayOfComparable != null)
+    {
+      ArraysKt.sort((Object[])arrayOfComparable);
+      return ArraysKt.asList((Object[])paramArrayOfShort);
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return ArraysKt.asList((Object[])paramArrayOfShort);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
   public static final byte[] sortedArray(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sortedArray");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfByte;
     }
     paramArrayOfByte = Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length);
@@ -17520,8 +18800,13 @@ public class ArraysKt___ArraysKt
   public static final char[] sortedArray(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$sortedArray");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfChar;
     }
     paramArrayOfChar = Arrays.copyOf(paramArrayOfChar, paramArrayOfChar.length);
@@ -17534,8 +18819,13 @@ public class ArraysKt___ArraysKt
   public static final double[] sortedArray(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sortedArray");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfDouble;
     }
     paramArrayOfDouble = Arrays.copyOf(paramArrayOfDouble, paramArrayOfDouble.length);
@@ -17548,8 +18838,13 @@ public class ArraysKt___ArraysKt
   public static final float[] sortedArray(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sortedArray");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfFloat;
     }
     paramArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
@@ -17562,8 +18857,13 @@ public class ArraysKt___ArraysKt
   public static final int[] sortedArray(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$sortedArray");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfInt;
     }
     paramArrayOfInt = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
@@ -17576,8 +18876,13 @@ public class ArraysKt___ArraysKt
   public static final long[] sortedArray(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sortedArray");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfLong;
     }
     paramArrayOfLong = Arrays.copyOf(paramArrayOfLong, paramArrayOfLong.length);
@@ -17590,26 +18895,37 @@ public class ArraysKt___ArraysKt
   public static final <T extends Comparable<? super T>> T[] sortedArray(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$sortedArray");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfT;
     }
     paramArrayOfT = Arrays.copyOf(paramArrayOfT, paramArrayOfT.length);
     Intrinsics.checkExpressionValueIsNotNull(paramArrayOfT, "java.util.Arrays.copyOf(this, size)");
-    Comparable[] arrayOfComparable = (Comparable[])paramArrayOfT;
-    if (arrayOfComparable == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    paramArrayOfT = (Comparable[])paramArrayOfT;
+    if (paramArrayOfT != null)
+    {
+      ArraysKt.sort((Object[])paramArrayOfT);
+      return paramArrayOfT;
     }
-    ArraysKt.sort((Object[])arrayOfComparable);
-    return (Comparable[])paramArrayOfT;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   @NotNull
   public static final short[] sortedArray(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sortedArray");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfShort;
     }
     paramArrayOfShort = Arrays.copyOf(paramArrayOfShort, paramArrayOfShort.length);
@@ -17622,8 +18938,13 @@ public class ArraysKt___ArraysKt
   public static final byte[] sortedArrayDescending(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sortedArrayDescending");
-    if (paramArrayOfByte.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfByte.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfByte;
     }
     paramArrayOfByte = Arrays.copyOf(paramArrayOfByte, paramArrayOfByte.length);
@@ -17636,8 +18957,13 @@ public class ArraysKt___ArraysKt
   public static final char[] sortedArrayDescending(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$sortedArrayDescending");
-    if (paramArrayOfChar.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfChar.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfChar;
     }
     paramArrayOfChar = Arrays.copyOf(paramArrayOfChar, paramArrayOfChar.length);
@@ -17650,8 +18976,13 @@ public class ArraysKt___ArraysKt
   public static final double[] sortedArrayDescending(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sortedArrayDescending");
-    if (paramArrayOfDouble.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfDouble.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfDouble;
     }
     paramArrayOfDouble = Arrays.copyOf(paramArrayOfDouble, paramArrayOfDouble.length);
@@ -17664,8 +18995,13 @@ public class ArraysKt___ArraysKt
   public static final float[] sortedArrayDescending(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sortedArrayDescending");
-    if (paramArrayOfFloat.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfFloat.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfFloat;
     }
     paramArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
@@ -17678,8 +19014,13 @@ public class ArraysKt___ArraysKt
   public static final int[] sortedArrayDescending(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$sortedArrayDescending");
-    if (paramArrayOfInt.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfInt.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfInt;
     }
     paramArrayOfInt = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
@@ -17692,8 +19033,13 @@ public class ArraysKt___ArraysKt
   public static final long[] sortedArrayDescending(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sortedArrayDescending");
-    if (paramArrayOfLong.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfLong.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfLong;
     }
     paramArrayOfLong = Arrays.copyOf(paramArrayOfLong, paramArrayOfLong.length);
@@ -17706,22 +19052,33 @@ public class ArraysKt___ArraysKt
   public static final <T extends Comparable<? super T>> T[] sortedArrayDescending(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$sortedArrayDescending");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfT;
     }
     paramArrayOfT = Arrays.copyOf(paramArrayOfT, paramArrayOfT.length);
     Intrinsics.checkExpressionValueIsNotNull(paramArrayOfT, "java.util.Arrays.copyOf(this, size)");
-    ArraysKt.sortWith((Comparable[])paramArrayOfT, ComparisonsKt.reverseOrder());
-    return (Comparable[])paramArrayOfT;
+    paramArrayOfT = (Comparable[])paramArrayOfT;
+    ArraysKt.sortWith(paramArrayOfT, ComparisonsKt.reverseOrder());
+    return paramArrayOfT;
   }
   
   @NotNull
   public static final short[] sortedArrayDescending(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sortedArrayDescending");
-    if (paramArrayOfShort.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfShort.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfShort;
     }
     paramArrayOfShort = Arrays.copyOf(paramArrayOfShort, paramArrayOfShort.length);
@@ -17735,8 +19092,13 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$sortedArrayWith");
     Intrinsics.checkParameterIsNotNull(paramComparator, "comparator");
-    if (paramArrayOfT.length == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (paramArrayOfT.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramArrayOfT;
     }
     paramArrayOfT = Arrays.copyOf(paramArrayOfT, paramArrayOfT.length);
@@ -18147,8 +19509,8 @@ public class ArraysKt___ArraysKt
   public static final double sum(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sum");
-    double d = 0.0D;
     int j = paramArrayOfDouble.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18161,8 +19523,8 @@ public class ArraysKt___ArraysKt
   public static final float sum(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sum");
-    float f = 0.0F;
     int j = paramArrayOfFloat.length;
+    float f = 0.0F;
     int i = 0;
     while (i < j)
     {
@@ -18174,9 +19536,9 @@ public class ArraysKt___ArraysKt
   
   public static final int sum(@NotNull byte[] paramArrayOfByte)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sum");
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18188,9 +19550,9 @@ public class ArraysKt___ArraysKt
   
   public static final int sum(@NotNull int[] paramArrayOfInt)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$sum");
     int k = paramArrayOfInt.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18202,9 +19564,9 @@ public class ArraysKt___ArraysKt
   
   public static final int sum(@NotNull short[] paramArrayOfShort)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sum");
     int k = paramArrayOfShort.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18217,8 +19579,8 @@ public class ArraysKt___ArraysKt
   public static final long sum(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sum");
-    long l = 0L;
     int j = paramArrayOfLong.length;
+    long l = 0L;
     int i = 0;
     while (i < j)
     {
@@ -18367,8 +19729,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfByte.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18382,8 +19744,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfChar.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18397,8 +19759,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfDouble.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18412,8 +19774,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfFloat.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18427,8 +19789,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfInt.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18442,8 +19804,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfLong.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18457,8 +19819,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfT.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18472,8 +19834,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfShort.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18487,8 +19849,8 @@ public class ArraysKt___ArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$sumByDouble");
     Intrinsics.checkParameterIsNotNull(paramFunction1, "selector");
-    double d = 0.0D;
     int j = paramArrayOfBoolean.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18501,9 +19863,9 @@ public class ArraysKt___ArraysKt
   @JvmName(name="sumOfByte")
   public static final int sumOfByte(@NotNull Byte[] paramArrayOfByte)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$sum");
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18517,8 +19879,8 @@ public class ArraysKt___ArraysKt
   public static final double sumOfDouble(@NotNull Double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$sum");
-    double d = 0.0D;
     int j = paramArrayOfDouble.length;
+    double d = 0.0D;
     int i = 0;
     while (i < j)
     {
@@ -18532,8 +19894,8 @@ public class ArraysKt___ArraysKt
   public static final float sumOfFloat(@NotNull Float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$sum");
-    float f = 0.0F;
     int j = paramArrayOfFloat.length;
+    float f = 0.0F;
     int i = 0;
     while (i < j)
     {
@@ -18546,9 +19908,9 @@ public class ArraysKt___ArraysKt
   @JvmName(name="sumOfInt")
   public static final int sumOfInt(@NotNull Integer[] paramArrayOfInteger)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInteger, "$this$sum");
     int k = paramArrayOfInteger.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18562,8 +19924,8 @@ public class ArraysKt___ArraysKt
   public static final long sumOfLong(@NotNull Long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$sum");
-    long l = 0L;
     int j = paramArrayOfLong.length;
+    long l = 0L;
     int i = 0;
     while (i < j)
     {
@@ -18576,9 +19938,9 @@ public class ArraysKt___ArraysKt
   @JvmName(name="sumOfShort")
   public static final int sumOfShort(@NotNull Short[] paramArrayOfShort)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$sum");
     int k = paramArrayOfShort.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -18591,342 +19953,432 @@ public class ArraysKt___ArraysKt
   @NotNull
   public static final List<Byte> take(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfByte.length) {
-      return ArraysKt.toList(paramArrayOfByte);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfByte.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfByte.length) {
+        return ArraysKt.toList(paramArrayOfByte);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfByte.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Byte.valueOf(paramArrayOfByte[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    paramArrayOfByte = (Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfByte;
     }
   }
   
   @NotNull
   public static final List<Character> take(@NotNull char[] paramArrayOfChar, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfChar.length) {
-      return ArraysKt.toList(paramArrayOfChar);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfChar.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfChar.length) {
+        return ArraysKt.toList(paramArrayOfChar);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfChar.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Character.valueOf(paramArrayOfChar[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfChar = new StringBuilder();
+    paramArrayOfChar.append("Requested element count ");
+    paramArrayOfChar.append(paramInt);
+    paramArrayOfChar.append(" is less than zero.");
+    paramArrayOfChar = (Throwable)new IllegalArgumentException(paramArrayOfChar.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfChar;
     }
   }
   
   @NotNull
   public static final List<Double> take(@NotNull double[] paramArrayOfDouble, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfDouble.length) {
-      return ArraysKt.toList(paramArrayOfDouble);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfDouble.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfDouble.length) {
+        return ArraysKt.toList(paramArrayOfDouble);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfDouble.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Double.valueOf(paramArrayOfDouble[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfDouble = new StringBuilder();
+    paramArrayOfDouble.append("Requested element count ");
+    paramArrayOfDouble.append(paramInt);
+    paramArrayOfDouble.append(" is less than zero.");
+    paramArrayOfDouble = (Throwable)new IllegalArgumentException(paramArrayOfDouble.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfDouble;
     }
   }
   
   @NotNull
   public static final List<Float> take(@NotNull float[] paramArrayOfFloat, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfFloat.length) {
-      return ArraysKt.toList(paramArrayOfFloat);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfFloat.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfFloat.length) {
+        return ArraysKt.toList(paramArrayOfFloat);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfFloat.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Float.valueOf(paramArrayOfFloat[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfFloat = new StringBuilder();
+    paramArrayOfFloat.append("Requested element count ");
+    paramArrayOfFloat.append(paramInt);
+    paramArrayOfFloat.append(" is less than zero.");
+    paramArrayOfFloat = (Throwable)new IllegalArgumentException(paramArrayOfFloat.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfFloat;
     }
   }
   
   @NotNull
   public static final List<Integer> take(@NotNull int[] paramArrayOfInt, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfInt.length) {
-      return ArraysKt.toList(paramArrayOfInt);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfInt.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfInt.length) {
+        return ArraysKt.toList(paramArrayOfInt);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfInt.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Integer.valueOf(paramArrayOfInt[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    paramArrayOfInt = (Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfInt;
     }
   }
   
   @NotNull
   public static final List<Long> take(@NotNull long[] paramArrayOfLong, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfLong.length) {
-      return ArraysKt.toList(paramArrayOfLong);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfLong.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfLong.length) {
+        return ArraysKt.toList(paramArrayOfLong);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfLong.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Long.valueOf(paramArrayOfLong[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    paramArrayOfLong = (Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfLong;
     }
   }
   
   @NotNull
   public static final <T> List<T> take(@NotNull T[] paramArrayOfT, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfT.length) {
-      return ArraysKt.toList(paramArrayOfT);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(paramArrayOfT[0]);
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfT.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfT.length) {
+        return ArraysKt.toList(paramArrayOfT);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(paramArrayOfT[0]);
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfT.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(paramArrayOfT[i]);
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfT = new StringBuilder();
+    paramArrayOfT.append("Requested element count ");
+    paramArrayOfT.append(paramInt);
+    paramArrayOfT.append(" is less than zero.");
+    paramArrayOfT = (Throwable)new IllegalArgumentException(paramArrayOfT.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfT;
     }
   }
   
   @NotNull
   public static final List<Short> take(@NotNull short[] paramArrayOfShort, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfShort.length) {
-      return ArraysKt.toList(paramArrayOfShort);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfShort.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfShort.length) {
+        return ArraysKt.toList(paramArrayOfShort);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfShort.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Short.valueOf(paramArrayOfShort[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    paramArrayOfShort = (Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfShort;
     }
   }
   
   @NotNull
   public static final List<Boolean> take(@NotNull boolean[] paramArrayOfBoolean, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$take");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int k = 0;
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    if (paramInt >= paramArrayOfBoolean.length) {
-      return ArraysKt.toList(paramArrayOfBoolean);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[0]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    int m = paramArrayOfBoolean.length;
-    int j = 0;
-    i = k;
-    for (;;)
+    if (i != 0)
     {
-      if (i < m)
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      if (paramInt >= paramArrayOfBoolean.length) {
+        return ArraysKt.toList(paramArrayOfBoolean);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[0]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      int m = paramArrayOfBoolean.length;
+      int j = 0;
+      i = k;
+      while (i < m)
       {
         localArrayList.add(Boolean.valueOf(paramArrayOfBoolean[i]));
         j += 1;
-        if (j != paramInt) {}
+        if (j == paramInt) {
+          break;
+        }
+        i += 1;
       }
-      else
-      {
-        return (List)localArrayList;
-      }
-      i += 1;
+      return (List)localArrayList;
+    }
+    paramArrayOfBoolean = new StringBuilder();
+    paramArrayOfBoolean.append("Requested element count ");
+    paramArrayOfBoolean.append(paramInt);
+    paramArrayOfBoolean.append(" is less than zero.");
+    paramArrayOfBoolean = (Throwable)new IllegalArgumentException(paramArrayOfBoolean.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
     }
   }
   
@@ -18934,252 +20386,378 @@ public class ArraysKt___ArraysKt
   public static final List<Byte> takeLast(@NotNull byte[] paramArrayOfByte, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfByte.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfByte);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Byte.valueOf(paramArrayOfByte[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfByte.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfByte);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Byte.valueOf(paramArrayOfByte[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("Requested element count ");
+    paramArrayOfByte.append(paramInt);
+    paramArrayOfByte.append(" is less than zero.");
+    paramArrayOfByte = (Throwable)new IllegalArgumentException(paramArrayOfByte.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   @NotNull
   public static final List<Character> takeLast(@NotNull char[] paramArrayOfChar, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfChar.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfChar);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Character.valueOf(paramArrayOfChar[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfChar.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfChar);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Character.valueOf(paramArrayOfChar[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfChar = new StringBuilder();
+    paramArrayOfChar.append("Requested element count ");
+    paramArrayOfChar.append(paramInt);
+    paramArrayOfChar.append(" is less than zero.");
+    paramArrayOfChar = (Throwable)new IllegalArgumentException(paramArrayOfChar.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
   
   @NotNull
   public static final List<Double> takeLast(@NotNull double[] paramArrayOfDouble, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfDouble.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfDouble);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Double.valueOf(paramArrayOfDouble[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfDouble.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfDouble);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Double.valueOf(paramArrayOfDouble[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfDouble = new StringBuilder();
+    paramArrayOfDouble.append("Requested element count ");
+    paramArrayOfDouble.append(paramInt);
+    paramArrayOfDouble.append(" is less than zero.");
+    paramArrayOfDouble = (Throwable)new IllegalArgumentException(paramArrayOfDouble.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfDouble;
+    }
   }
   
   @NotNull
   public static final List<Float> takeLast(@NotNull float[] paramArrayOfFloat, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfFloat.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfFloat);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Float.valueOf(paramArrayOfFloat[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfFloat.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfFloat);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Float.valueOf(paramArrayOfFloat[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfFloat = new StringBuilder();
+    paramArrayOfFloat.append("Requested element count ");
+    paramArrayOfFloat.append(paramInt);
+    paramArrayOfFloat.append(" is less than zero.");
+    paramArrayOfFloat = (Throwable)new IllegalArgumentException(paramArrayOfFloat.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfFloat;
+    }
   }
   
   @NotNull
   public static final List<Integer> takeLast(@NotNull int[] paramArrayOfInt, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfInt.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfInt);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Integer.valueOf(paramArrayOfInt[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfInt.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfInt);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Integer.valueOf(paramArrayOfInt[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfInt = new StringBuilder();
+    paramArrayOfInt.append("Requested element count ");
+    paramArrayOfInt.append(paramInt);
+    paramArrayOfInt.append(" is less than zero.");
+    paramArrayOfInt = (Throwable)new IllegalArgumentException(paramArrayOfInt.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfInt;
+    }
   }
   
   @NotNull
   public static final List<Long> takeLast(@NotNull long[] paramArrayOfLong, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfLong.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfLong);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Long.valueOf(paramArrayOfLong[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfLong.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfLong);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Long.valueOf(paramArrayOfLong[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfLong = new StringBuilder();
+    paramArrayOfLong.append("Requested element count ");
+    paramArrayOfLong.append(paramInt);
+    paramArrayOfLong.append(" is less than zero.");
+    paramArrayOfLong = (Throwable)new IllegalArgumentException(paramArrayOfLong.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfLong;
+    }
   }
   
   @NotNull
   public static final <T> List<T> takeLast(@NotNull T[] paramArrayOfT, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfT.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfT);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(paramArrayOfT[(i - 1)]);
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(paramArrayOfT[paramInt]);
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfT.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfT);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(paramArrayOfT[(i - 1)]);
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(paramArrayOfT[paramInt]);
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfT = new StringBuilder();
+    paramArrayOfT.append("Requested element count ");
+    paramArrayOfT.append(paramInt);
+    paramArrayOfT.append(" is less than zero.");
+    paramArrayOfT = (Throwable)new IllegalArgumentException(paramArrayOfT.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
   
   @NotNull
   public static final List<Short> takeLast(@NotNull short[] paramArrayOfShort, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfShort.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfShort);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Short.valueOf(paramArrayOfShort[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfShort.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfShort);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Short.valueOf(paramArrayOfShort[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfShort = new StringBuilder();
+    paramArrayOfShort.append("Requested element count ");
+    paramArrayOfShort.append(paramInt);
+    paramArrayOfShort.append(" is less than zero.");
+    paramArrayOfShort = (Throwable)new IllegalArgumentException(paramArrayOfShort.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfShort;
+    }
   }
   
   @NotNull
   public static final List<Boolean> takeLast(@NotNull boolean[] paramArrayOfBoolean, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$takeLast");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Requested element count " + paramInt + " is less than zero.").toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt == 0) {
-      return CollectionsKt.emptyList();
-    }
-    i = paramArrayOfBoolean.length;
-    if (paramInt >= i) {
-      return ArraysKt.toList(paramArrayOfBoolean);
-    }
-    if (paramInt == 1) {
-      return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[(i - 1)]));
-    }
-    ArrayList localArrayList = new ArrayList(paramInt);
-    paramInt = i - paramInt;
-    while (paramInt < i)
+    if (i != 0)
     {
-      localArrayList.add(Boolean.valueOf(paramArrayOfBoolean[paramInt]));
-      paramInt += 1;
+      if (paramInt == 0) {
+        return CollectionsKt.emptyList();
+      }
+      i = paramArrayOfBoolean.length;
+      if (paramInt >= i) {
+        return ArraysKt.toList(paramArrayOfBoolean);
+      }
+      if (paramInt == 1) {
+        return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[(i - 1)]));
+      }
+      ArrayList localArrayList = new ArrayList(paramInt);
+      paramInt = i - paramInt;
+      while (paramInt < i)
+      {
+        localArrayList.add(Boolean.valueOf(paramArrayOfBoolean[paramInt]));
+        paramInt += 1;
+      }
+      return (List)localArrayList;
     }
-    return (List)localArrayList;
+    paramArrayOfBoolean = new StringBuilder();
+    paramArrayOfBoolean.append("Requested element count ");
+    paramArrayOfBoolean.append(paramInt);
+    paramArrayOfBoolean.append(" is less than zero.");
+    paramArrayOfBoolean = (Throwable)new IllegalArgumentException(paramArrayOfBoolean.toString().toString());
+    for (;;)
+    {
+      throw paramArrayOfBoolean;
+    }
   }
   
   @NotNull
@@ -19334,21 +20912,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfByte.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      byte b;
-      if (i < j)
-      {
-        b = paramArrayOfByte[i];
-        if (((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      byte b = paramArrayOfByte[i];
+      if (!((Boolean)paramFunction1.invoke(Byte.valueOf(b))).booleanValue()) {
+        break;
       }
       localArrayList.add(Byte.valueOf(b));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19359,21 +20932,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfChar.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      char c;
-      if (i < j)
-      {
-        c = paramArrayOfChar[i];
-        if (((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      char c = paramArrayOfChar[i];
+      if (!((Boolean)paramFunction1.invoke(Character.valueOf(c))).booleanValue()) {
+        break;
       }
       localArrayList.add(Character.valueOf(c));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19384,21 +20952,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfDouble.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      double d;
-      if (i < j)
-      {
-        d = paramArrayOfDouble[i];
-        if (((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      double d = paramArrayOfDouble[i];
+      if (!((Boolean)paramFunction1.invoke(Double.valueOf(d))).booleanValue()) {
+        break;
       }
       localArrayList.add(Double.valueOf(d));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19409,21 +20972,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfFloat.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      float f;
-      if (i < j)
-      {
-        f = paramArrayOfFloat[i];
-        if (((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      float f = paramArrayOfFloat[i];
+      if (!((Boolean)paramFunction1.invoke(Float.valueOf(f))).booleanValue()) {
+        break;
       }
       localArrayList.add(Float.valueOf(f));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19434,21 +20992,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      int k;
-      if (i < j)
-      {
-        k = paramArrayOfInt[i];
-        if (((Boolean)paramFunction1.invoke(Integer.valueOf(k))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      int k = paramArrayOfInt[i];
+      if (!((Boolean)paramFunction1.invoke(Integer.valueOf(k))).booleanValue()) {
+        break;
       }
       localArrayList.add(Integer.valueOf(k));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19459,21 +21012,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfLong.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      long l;
-      if (i < j)
-      {
-        l = paramArrayOfLong[i];
-        if (((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      long l = paramArrayOfLong[i];
+      if (!((Boolean)paramFunction1.invoke(Long.valueOf(l))).booleanValue()) {
+        break;
       }
       localArrayList.add(Long.valueOf(l));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19484,21 +21032,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfT.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      T ?;
-      if (i < j)
-      {
-        ? = paramArrayOfT[i];
-        if (((Boolean)paramFunction1.invoke(?)).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      T ? = paramArrayOfT[i];
+      if (!((Boolean)paramFunction1.invoke(?)).booleanValue()) {
+        break;
       }
       localArrayList.add(?);
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19509,21 +21052,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfShort.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      short s;
-      if (i < j)
-      {
-        s = paramArrayOfShort[i];
-        if (((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      short s = paramArrayOfShort[i];
+      if (!((Boolean)paramFunction1.invoke(Short.valueOf(s))).booleanValue()) {
+        break;
       }
       localArrayList.add(Short.valueOf(s));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19534,21 +21072,16 @@ public class ArraysKt___ArraysKt
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      int k;
-      if (i < j)
-      {
-        k = paramArrayOfBoolean[i];
-        if (((Boolean)paramFunction1.invoke(Boolean.valueOf(k))).booleanValue()) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      int k = paramArrayOfBoolean[i];
+      if (!((Boolean)paramFunction1.invoke(Boolean.valueOf(k))).booleanValue()) {
+        break;
       }
       localArrayList.add(Boolean.valueOf(k));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -19843,126 +21376,135 @@ public class ArraysKt___ArraysKt
   public static final List<Byte> toList(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$toList");
-    switch (paramArrayOfByte.length)
+    int i = paramArrayOfByte.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfByte);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfByte);
+      }
+      return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[0]));
     }
-    return CollectionsKt.listOf(Byte.valueOf(paramArrayOfByte[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Character> toList(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$toList");
-    switch (paramArrayOfChar.length)
+    int i = paramArrayOfChar.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfChar);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfChar);
+      }
+      return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[0]));
     }
-    return CollectionsKt.listOf(Character.valueOf(paramArrayOfChar[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Double> toList(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$toList");
-    switch (paramArrayOfDouble.length)
+    int i = paramArrayOfDouble.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfDouble);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfDouble);
+      }
+      return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[0]));
     }
-    return CollectionsKt.listOf(Double.valueOf(paramArrayOfDouble[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Float> toList(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$toList");
-    switch (paramArrayOfFloat.length)
+    int i = paramArrayOfFloat.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfFloat);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfFloat);
+      }
+      return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[0]));
     }
-    return CollectionsKt.listOf(Float.valueOf(paramArrayOfFloat[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Integer> toList(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$toList");
-    switch (paramArrayOfInt.length)
+    int i = paramArrayOfInt.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfInt);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfInt);
+      }
+      return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[0]));
     }
-    return CollectionsKt.listOf(Integer.valueOf(paramArrayOfInt[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Long> toList(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$toList");
-    switch (paramArrayOfLong.length)
+    int i = paramArrayOfLong.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfLong);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfLong);
+      }
+      return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[0]));
     }
-    return CollectionsKt.listOf(Long.valueOf(paramArrayOfLong[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final <T> List<T> toList(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$toList");
-    switch (paramArrayOfT.length)
+    int i = paramArrayOfT.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfT);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfT);
+      }
+      return CollectionsKt.listOf(paramArrayOfT[0]);
     }
-    return CollectionsKt.listOf(paramArrayOfT[0]);
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Short> toList(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$toList");
-    switch (paramArrayOfShort.length)
+    int i = paramArrayOfShort.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfShort);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfShort);
+      }
+      return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[0]));
     }
-    return CollectionsKt.listOf(Short.valueOf(paramArrayOfShort[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
   public static final List<Boolean> toList(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$toList");
-    switch (paramArrayOfBoolean.length)
+    int i = paramArrayOfBoolean.length;
+    if (i != 0)
     {
-    default: 
-      return ArraysKt.toMutableList(paramArrayOfBoolean);
-    case 0: 
-      return CollectionsKt.emptyList();
+      if (i != 1) {
+        return ArraysKt.toMutableList(paramArrayOfBoolean);
+      }
+      return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[0]));
     }
-    return CollectionsKt.listOf(Boolean.valueOf(paramArrayOfBoolean[0]));
+    return CollectionsKt.emptyList();
   }
   
   @NotNull
@@ -20246,126 +21788,135 @@ public class ArraysKt___ArraysKt
   public static final Set<Byte> toSet(@NotNull byte[] paramArrayOfByte)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$toSet");
-    switch (paramArrayOfByte.length)
+    int i = paramArrayOfByte.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfByte, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfByte.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfByte, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfByte.length)));
+      }
+      return SetsKt.setOf(Byte.valueOf(paramArrayOfByte[0]));
     }
-    return SetsKt.setOf(Byte.valueOf(paramArrayOfByte[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Character> toSet(@NotNull char[] paramArrayOfChar)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$toSet");
-    switch (paramArrayOfChar.length)
+    int i = paramArrayOfChar.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfChar, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfChar.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfChar, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfChar.length)));
+      }
+      return SetsKt.setOf(Character.valueOf(paramArrayOfChar[0]));
     }
-    return SetsKt.setOf(Character.valueOf(paramArrayOfChar[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Double> toSet(@NotNull double[] paramArrayOfDouble)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$toSet");
-    switch (paramArrayOfDouble.length)
+    int i = paramArrayOfDouble.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfDouble, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfDouble.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfDouble, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfDouble.length)));
+      }
+      return SetsKt.setOf(Double.valueOf(paramArrayOfDouble[0]));
     }
-    return SetsKt.setOf(Double.valueOf(paramArrayOfDouble[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Float> toSet(@NotNull float[] paramArrayOfFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$toSet");
-    switch (paramArrayOfFloat.length)
+    int i = paramArrayOfFloat.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfFloat, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfFloat.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfFloat, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfFloat.length)));
+      }
+      return SetsKt.setOf(Float.valueOf(paramArrayOfFloat[0]));
     }
-    return SetsKt.setOf(Float.valueOf(paramArrayOfFloat[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Integer> toSet(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$toSet");
-    switch (paramArrayOfInt.length)
+    int i = paramArrayOfInt.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfInt, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfInt.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfInt, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfInt.length)));
+      }
+      return SetsKt.setOf(Integer.valueOf(paramArrayOfInt[0]));
     }
-    return SetsKt.setOf(Integer.valueOf(paramArrayOfInt[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Long> toSet(@NotNull long[] paramArrayOfLong)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$toSet");
-    switch (paramArrayOfLong.length)
+    int i = paramArrayOfLong.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfLong, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfLong.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfLong, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfLong.length)));
+      }
+      return SetsKt.setOf(Long.valueOf(paramArrayOfLong[0]));
     }
-    return SetsKt.setOf(Long.valueOf(paramArrayOfLong[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final <T> Set<T> toSet(@NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$toSet");
-    switch (paramArrayOfT.length)
+    int i = paramArrayOfT.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfT, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfT.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfT, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfT.length)));
+      }
+      return SetsKt.setOf(paramArrayOfT[0]);
     }
-    return SetsKt.setOf(paramArrayOfT[0]);
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Short> toSet(@NotNull short[] paramArrayOfShort)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$toSet");
-    switch (paramArrayOfShort.length)
+    int i = paramArrayOfShort.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfShort, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfShort.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfShort, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfShort.length)));
+      }
+      return SetsKt.setOf(Short.valueOf(paramArrayOfShort[0]));
     }
-    return SetsKt.setOf(Short.valueOf(paramArrayOfShort[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
   public static final Set<Boolean> toSet(@NotNull boolean[] paramArrayOfBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$toSet");
-    switch (paramArrayOfBoolean.length)
+    int i = paramArrayOfBoolean.length;
+    if (i != 0)
     {
-    default: 
-      return (Set)ArraysKt.toCollection(paramArrayOfBoolean, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfBoolean.length)));
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return (Set)ArraysKt.toCollection(paramArrayOfBoolean, (Collection)new LinkedHashSet(MapsKt.mapCapacity(paramArrayOfBoolean.length)));
+      }
+      return SetsKt.setOf(Boolean.valueOf(paramArrayOfBoolean[0]));
     }
-    return SetsKt.setOf(Boolean.valueOf(paramArrayOfBoolean[0]));
+    return SetsKt.emptySet();
   }
   
   @NotNull
@@ -20543,23 +22094,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfByte.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Byte.valueOf(paramArrayOfByte[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20570,23 +22116,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfByte.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Byte.valueOf(paramArrayOfByte[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20662,23 +22203,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfChar.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Character.valueOf(paramArrayOfChar[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20689,23 +22225,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfChar.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Character.valueOf(paramArrayOfChar[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20781,23 +22312,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfDouble.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Double.valueOf(paramArrayOfDouble[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20808,23 +22334,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfDouble.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Double.valueOf(paramArrayOfDouble[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20900,23 +22421,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfFloat.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Float.valueOf(paramArrayOfFloat[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -20927,23 +22443,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfFloat.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Float.valueOf(paramArrayOfFloat[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21019,23 +22530,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfInt.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Integer.valueOf(paramArrayOfInt[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21046,23 +22552,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfInt.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Integer.valueOf(paramArrayOfInt[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21138,23 +22639,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfLong.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Long.valueOf(paramArrayOfLong[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21165,23 +22661,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfLong.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Long.valueOf(paramArrayOfLong[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21257,23 +22748,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfT.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(paramArrayOfT[i], localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21284,23 +22770,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfT.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(paramArrayOfT[i], localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21343,23 +22824,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfShort.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Short.valueOf(paramArrayOfShort[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21370,23 +22846,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfShort.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Short.valueOf(paramArrayOfShort[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21462,23 +22933,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramIterable, "other");
     int j = paramArrayOfBoolean.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(TuplesKt.to(Boolean.valueOf(paramArrayOfBoolean[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21489,23 +22955,18 @@ public class ArraysKt___ArraysKt
     Intrinsics.checkParameterIsNotNull(paramFunction2, "transform");
     int j = paramArrayOfBoolean.length;
     ArrayList localArrayList = new ArrayList(Math.min(CollectionsKt.collectionSizeOrDefault(paramIterable, 10), j));
-    int i = 0;
     paramIterable = paramIterable.iterator();
-    for (;;)
+    int i = 0;
+    while (paramIterable.hasNext())
     {
-      Object localObject;
-      if (paramIterable.hasNext())
-      {
-        localObject = paramIterable.next();
-        if (i < j) {}
-      }
-      else
-      {
-        return (List)localArrayList;
+      Object localObject = paramIterable.next();
+      if (i >= j) {
+        break;
       }
       localArrayList.add(paramFunction2.invoke(Boolean.valueOf(paramArrayOfBoolean[i]), localObject));
       i += 1;
     }
+    return (List)localArrayList;
   }
   
   @NotNull
@@ -21576,7 +23037,7 @@ public class ArraysKt___ArraysKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.ArraysKt___ArraysKt
  * JD-Core Version:    0.7.0.1
  */

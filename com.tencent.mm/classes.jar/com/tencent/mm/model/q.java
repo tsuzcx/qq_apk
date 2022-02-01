@@ -1,275 +1,208 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.api.a;
-import com.tencent.mm.kernel.api.h;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.api.r;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
 
-public class q
-  implements a, com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.api.f, h, com.tencent.mm.kernel.b.c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/model/BizTeenModeService;", "Lcom/tencent/mm/api/IBizTeenModeService;", "()V", "BIZ_TEEN_MODE_ACCT_OPTION", "", "BIZ_TEEN_MODE_MMKV_KEY_SUFFIX", "BIZ_TEEN_MODE_NO_ACCESS_URL", "IS_TEEN_MODE", "TAG", "bizTeenModeAcctOption", "", "isInit", "", "isTeenMode", "mTeenModeDataChangedListener", "Lcom/tencent/mm/plugin/teenmode/api/TeenModeDataChangedListener;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "checkInit", "", "init", "isBizTeenModeAllowAll", "isBizTeenModeDenyAll", "release", "reportRemoveBizContact", "bizInfo", "Lcom/tencent/mm/api/BizInfo;", "reportTeenModeToast", "scene", "username", "nickname", "updateTeenModeData", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class q
+  implements r
 {
-  private static ConcurrentHashMap<String, q> fkZ;
-  private volatile a fkV;
-  private volatile Class<? extends at> fkW;
-  private volatile at fkX;
-  private volatile boolean fkY;
+  private static MultiProcessMMKV eMf;
+  private static boolean epi;
+  private static boolean isInit;
+  public static final q ojI;
+  private static int ojJ;
+  private static g ojK;
   
   static
   {
-    AppMethodBeat.i(59738);
-    fkZ = new ConcurrentHashMap();
-    AppMethodBeat.o(59738);
+    AppMethodBeat.i(241885);
+    ojI = new q();
+    ojK = q..ExternalSyntheticLambda0.INSTANCE;
+    AppMethodBeat.o(241885);
   }
   
-  public q(a parama)
+  private static void bAB()
   {
-    this.fkY = false;
-    this.fkV = parama;
+    AppMethodBeat.i(241878);
+    Log.v("MicroMsg.BizTeenModeService", "alvinluo updateTeenModeData isTeenMode: %s, bizTeenModeOption: %s", new Object[] { Boolean.valueOf(epi), Integer.valueOf(ojJ) });
+    MultiProcessMMKV localMultiProcessMMKV = eMf;
+    if (localMultiProcessMMKV != null) {
+      localMultiProcessMMKV.putBoolean("is_teen_mode", epi);
+    }
+    localMultiProcessMMKV = eMf;
+    if (localMultiProcessMMKV != null) {
+      localMultiProcessMMKV.putInt("biz_teen_mode_acct_option", ojJ);
+    }
+    localMultiProcessMMKV = eMf;
+    if (localMultiProcessMMKV != null) {
+      localMultiProcessMMKV.apply();
+    }
+    AppMethodBeat.o(241878);
   }
   
-  public q(Class<? extends at> paramClass)
+  private static final void bAC()
   {
-    AppMethodBeat.i(59723);
-    this.fkY = false;
-    this.fkW = paramClass;
-    a(this.fkW.getName(), this);
-    AppMethodBeat.o(59723);
-  }
-  
-  public static <T extends at> T S(Class<T> paramClass)
-  {
-    AppMethodBeat.i(59731);
-    q localq2 = nA(paramClass.getName());
-    q localq1 = localq2;
-    if (localq2 == null)
+    AppMethodBeat.i(241882);
+    boolean bool2 = ((d)com.tencent.mm.kernel.h.ax(d.class)).aBu();
+    int i = ((d)com.tencent.mm.kernel.h.ax(d.class)).hEq();
+    if ((bool2 != epi) || (i != ojJ)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localq1 = new q(paramClass);
-      a(paramClass.getName(), localq1);
-    }
-    paramClass = localq1.Zk();
-    AppMethodBeat.o(59731);
-    return paramClass;
-  }
-  
-  public static void Zl()
-  {
-    AppMethodBeat.i(59729);
-    Iterator localIterator = fkZ.values().iterator();
-    while (localIterator.hasNext()) {
-      ((q)localIterator.next()).reset();
-    }
-    AppMethodBeat.o(59729);
-  }
-  
-  public static q a(String paramString, q paramq)
-  {
-    AppMethodBeat.i(59727);
-    q localq = (q)fkZ.putIfAbsent(paramString, paramq);
-    if (localq == null) {
-      com.tencent.mm.kernel.a.c.RX().as(paramq);
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.CompatSubCore", "registerCompatSubCoreWithNameIfAbsent %s, %s", new Object[] { paramString, paramq });
-      AppMethodBeat.o(59727);
-      return paramq;
-      paramq = localq;
-    }
-  }
-  
-  private at createSubCore()
-  {
-    AppMethodBeat.i(59726);
-    try
-    {
-      ab.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.fkW, this.fkV });
-      if (this.fkV != null)
+      Log.i("MicroMsg.BizTeenModeService", "alvinluo onTeenModeDataChanged isTeenMode: %b, bizAcctOption: %d, isChanged: %b", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i), Boolean.valueOf(bool1) });
+      if (bool1)
       {
-        localat = this.fkV.createSubCore();
-        AppMethodBeat.o(59726);
-        return localat;
+        epi = bool2;
+        ojJ = i;
+        bAB();
+        com.tencent.mm.plugin.brandservice.api.c localc = (com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class);
+        if (localc != null) {
+          localc.dby();
+        }
       }
-      at localat = (at)this.fkW.newInstance();
-      AppMethodBeat.o(59726);
-      return localat;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      ab.printErrStackTrace("MicroMsg.CompatSubCore", localInstantiationException, "", new Object[0]);
-      IllegalAccessError localIllegalAccessError1 = new IllegalAccessError(localInstantiationException.getMessage());
-      AppMethodBeat.o(59726);
-      throw localIllegalAccessError1;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      ab.printErrStackTrace("MicroMsg.CompatSubCore", localIllegalAccessException, "", new Object[0]);
-      IllegalAccessError localIllegalAccessError2 = new IllegalAccessError(localIllegalAccessException.getMessage());
-      AppMethodBeat.o(59726);
-      throw localIllegalAccessError2;
-    }
-  }
-  
-  public static void ks(int paramInt)
-  {
-    AppMethodBeat.i(59730);
-    Iterator localIterator = fkZ.values().iterator();
-    while (localIterator.hasNext())
-    {
-      at localat = ((q)localIterator.next()).Zk();
-      if (localat != null) {
-        localat.clearPluginData(paramInt);
-      }
-    }
-    AppMethodBeat.o(59730);
-  }
-  
-  public static q nA(String paramString)
-  {
-    AppMethodBeat.i(59728);
-    q localq = (q)fkZ.get(paramString);
-    if (localq == null) {
-      ab.i("MicroMsg.CompatSubCore", "compatSubCore is null by name %s", new Object[] { paramString });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(59728);
-      return localq;
-      com.tencent.mm.kernel.a.c.RX().ar(localq);
-    }
-  }
-  
-  private void reset()
-  {
-    try
-    {
-      this.fkX = null;
-      this.fkY = false;
+      AppMethodBeat.o(241882);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
   
-  public final void RS()
+  private static void checkInit()
   {
-    AppMethodBeat.i(59735);
-    at localat = Zk();
-    if (localat == null)
+    AppMethodBeat.i(241869);
+    if (!isInit)
     {
-      AppMethodBeat.o(59735);
+      init();
+      isInit = true;
+    }
+    AppMethodBeat.o(241869);
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(241866);
+    if ((d)com.tencent.mm.kernel.h.ax(d.class) == null)
+    {
+      Log.e("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService service null and ignore");
+      AppMethodBeat.o(241866);
       return;
     }
-    if (!this.fkY)
+    ((d)com.tencent.mm.kernel.h.ax(d.class)).a(ojK);
+    epi = ((d)com.tencent.mm.kernel.h.ax(d.class)).aBu();
+    ojJ = ((d)com.tencent.mm.kernel.h.ax(d.class)).hEq();
+    int i = b.aZP();
+    if (i == 0)
     {
-      AppMethodBeat.o(59735);
+      Log.e("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService invalid account");
+      eMf = null;
+      AppMethodBeat.o(241866);
       return;
     }
-    localat.onSdcardMount(com.tencent.mm.compatible.util.f.Mi());
-    AppMethodBeat.o(59735);
+    String str = i + "_biz_teen_mode_mmkv";
+    eMf = MultiProcessMMKV.getMMKV(str, 2);
+    bAB();
+    isInit = true;
+    Log.i("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService key: %s, isTeenMode: %b, bizAcctOption: %d", new Object[] { str, Boolean.valueOf(epi), Integer.valueOf(ojJ) });
+    AppMethodBeat.o(241866);
   }
   
-  public final void RT()
+  public static void release()
   {
-    AppMethodBeat.i(59736);
-    Zk();
-    AppMethodBeat.o(59736);
-  }
-  
-  public final at Zk()
-  {
-    try
-    {
-      AppMethodBeat.i(59724);
-      if (this.fkX == null) {
-        a(createSubCore());
-      }
-      at localat = this.fkX;
-      AppMethodBeat.o(59724);
-      return localat;
+    AppMethodBeat.i(241872);
+    d locald = (d)com.tencent.mm.kernel.h.ax(d.class);
+    if (locald != null) {
+      locald.b(ojK);
     }
-    finally {}
+    AppMethodBeat.o(241872);
   }
   
-  public final void a(at paramat)
+  public final boolean aBu()
   {
-    AppMethodBeat.i(59725);
-    try
+    AppMethodBeat.i(241889);
+    checkInit();
+    boolean bool = epi;
+    AppMethodBeat.o(241889);
+    return bool;
+  }
+  
+  public final boolean aBv()
+  {
+    AppMethodBeat.i(241891);
+    checkInit();
+    if ((!epi) || (ojJ == 1))
     {
-      this.fkX = paramat;
-      if ((this.fkW == null) && (this.fkX != null)) {
-        this.fkW = this.fkX.getClass();
-      }
+      AppMethodBeat.o(241891);
+      return true;
+    }
+    AppMethodBeat.o(241891);
+    return false;
+  }
+  
+  public final boolean aBw()
+  {
+    AppMethodBeat.i(241893);
+    checkInit();
+    if ((epi) && (ojJ == 2))
+    {
+      AppMethodBeat.o(241893);
+      return true;
+    }
+    AppMethodBeat.o(241893);
+    return false;
+  }
+  
+  public final void c(com.tencent.mm.api.c paramc)
+  {
+    AppMethodBeat.i(241897);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(241897);
       return;
     }
-    finally
+    if (epi)
     {
-      AppMethodBeat.o(59725);
+      paramc = paramc.field_username;
+      String str = aa.getDisplayName(paramc);
+      Log.d("MicroMsg.BizTeenModeService", "reportRemoveBizContact username: %s, nickname: %s", new Object[] { paramc, str });
+      com.tencent.mm.plugin.report.service.h.OAn.b(20911, new Object[] { Integer.valueOf(1), paramc, str });
     }
+    AppMethodBeat.o(241897);
   }
   
-  public HashMap<Integer, h.d> collectDatabaseFactory()
+  public final void e(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(59732);
-    Object localObject = Zk();
-    if (localObject == null)
+    AppMethodBeat.i(241908);
+    if (paramString1 == null)
     {
-      AppMethodBeat.o(59732);
-      return null;
-    }
-    localObject = ((at)localObject).getBaseDBFactories();
-    AppMethodBeat.o(59732);
-    return localObject;
-  }
-  
-  public void mE(String paramString) {}
-  
-  public void onAccountInitialized(e.c paramc)
-  {
-    AppMethodBeat.i(59733);
-    at localat = Zk();
-    if (localat == null)
-    {
-      AppMethodBeat.o(59733);
+      AppMethodBeat.o(241908);
       return;
     }
-    localat.onAccountPostReset(paramc.eIj);
-    this.fkY = true;
-    AppMethodBeat.o(59733);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(59734);
-    at localat = Zk();
-    if (localat == null)
+    if (paramString2 == null)
     {
-      AppMethodBeat.o(59734);
+      AppMethodBeat.o(241908);
       return;
     }
-    localat.onAccountRelease();
-    AppMethodBeat.o(59734);
+    Log.d("MicroMsg.BizTeenModeService", "reportTeenModeToast username: %s, nickname: %s, scene: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(20912, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt), paramString1, paramString2 });
+    AppMethodBeat.o(241908);
   }
   
-  public String toString()
+  public final void p(int paramInt, String paramString)
   {
-    AppMethodBeat.i(59737);
-    String str = super.toString() + " " + this.fkW + " " + this.fkV + " " + this.fkX;
-    AppMethodBeat.o(59737);
-    return str;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract at createSubCore();
+    AppMethodBeat.i(241902);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(241902);
+      return;
+    }
+    if (epi) {
+      e(paramInt, paramString, aa.getDisplayName(paramString));
+    }
+    AppMethodBeat.o(241902);
   }
 }
 

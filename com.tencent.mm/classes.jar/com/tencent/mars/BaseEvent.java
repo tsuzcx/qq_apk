@@ -10,13 +10,15 @@ public class BaseEvent
   
   public static native void onForeground(boolean paramBoolean);
   
+  public static native void onInitConfigBeforeOnCreate(int paramInt);
+  
   public static native void onNetworkChange();
   
   public static native void onSingalCrash(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.BaseEvent
  * JD-Core Version:    0.7.0.1
  */

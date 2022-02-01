@@ -11,15 +11,15 @@ final class NetworkDiagnoseUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(26026);
-    NetworkDiagnoseUI.g(this.tnM);
-    AppMethodBeat.o(26026);
+    AppMethodBeat.i(29709);
+    NetworkDiagnoseUI.g(this.TRG);
+    AppMethodBeat.o(29709);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseUI.4
  * JD-Core Version:    0.7.0.1
  */

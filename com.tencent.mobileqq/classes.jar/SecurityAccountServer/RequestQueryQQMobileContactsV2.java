@@ -8,10 +8,10 @@ public final class RequestQueryQQMobileContactsV2
   extends JceStruct
 {
   static byte[] cache_sessionSid;
-  public boolean Compressd;
-  public long nextFlag;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public boolean Compressd = false;
+  public long nextFlag = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   public RequestQueryQQMobileContactsV2() {}
   
@@ -46,7 +46,7 @@ public final class RequestQueryQQMobileContactsV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryQQMobileContactsV2
  * JD-Core Version:    0.7.0.1
  */

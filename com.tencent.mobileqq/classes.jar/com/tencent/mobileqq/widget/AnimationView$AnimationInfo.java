@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import ajeu;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bdhb;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.AnimationTools;
 import java.io.File;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -56,69 +56,73 @@ public class AnimationView$AnimationInfo
   
   protected static int a(String paramString)
   {
-    int i = 0;
     if (!new File(paramString).exists()) {
       return 2;
     }
-    String str = paramString + "Folder";
-    File localFile = new File(str);
-    if ((!localFile.exists()) && (!ajeu.a(paramString, str))) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("Folder");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if ((!localFile.exists()) && (!AnimationTools.a(paramString, (String)localObject))) {
       return 3;
     }
     paramString = localFile.listFiles();
-    if ((paramString == null) || (paramString.length <= 0))
+    int i = 0;
+    if ((paramString != null) && (paramString.length > 0))
     {
-      bdhb.a(str, false);
-      return 4;
-    }
-    do
-    {
-      i += 1;
-      if (i >= paramString.length) {
-        break;
+      while (i < paramString.length)
+      {
+        if ((paramString[i] != null) && (paramString[i].isFile()) && (FileUtils.isPicFile(paramString[i].getAbsolutePath()))) {
+          return 1;
+        }
+        i += 1;
       }
-    } while ((paramString[i] == null) || (!paramString[i].isFile()) || (!bdhb.e(paramString[i].getAbsolutePath())));
-    return 1;
-    return 5;
+      return 5;
+    }
+    FileUtils.delete((String)localObject, false);
+    return 4;
   }
   
   protected static AnimationInfo a(File paramFile)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {}
-    do
+    if (paramFile != null)
     {
-      return null;
+      if (!paramFile.exists()) {
+        return null;
+      }
       try
       {
-        paramFile = bdhb.b(paramFile);
-        if (paramFile == null) {
-          break;
+        paramFile = FileUtils.getByte(paramFile);
+        if (paramFile != null) {
+          paramFile = new String(paramFile, "UTF-8");
         }
-        paramFile = new String(paramFile, "UTF-8");
       }
       catch (Exception paramFile)
       {
-        for (;;)
-        {
-          paramFile.printStackTrace();
-          paramFile = null;
-        }
+        paramFile.printStackTrace();
+        paramFile = null;
       }
-    } while (TextUtils.isEmpty(paramFile));
-    return a(paramFile);
+      if (TextUtils.isEmpty(paramFile)) {
+        return null;
+      }
+      return b(paramFile);
+    }
+    return null;
   }
   
-  protected static AnimationInfo a(String paramString)
+  protected static AnimationInfo b(String paramString)
   {
-    int i = 0;
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     for (;;)
     {
+      int i;
       try
       {
         Object localObject = new JSONObject(paramString);
+        i = 0;
         int j = ((JSONObject)localObject).optInt("cycle", 0);
         int k = ((JSONObject)localObject).optInt("interval", 100);
         int m = ((JSONObject)localObject).optInt("delay", 100);
@@ -127,78 +131,66 @@ public class AnimationView$AnimationInfo
         if ((localObject != null) && (i < ((JSONArray)localObject).length()))
         {
           AnimationView.PlayItem localPlayItem = AnimationView.PlayItem.a(((JSONArray)localObject).getJSONObject(i));
-          if (localPlayItem != null) {
-            paramString.add(localPlayItem);
+          if (localPlayItem == null) {
+            break label156;
           }
+          paramString.add(localPlayItem);
+          break label156;
         }
-        else
+        if (paramString.size() > 0)
         {
-          if (paramString.size() <= 0) {
-            break;
-          }
           localObject = new AnimationInfo(j, k, m);
           ((AnimationInfo)localObject).mPlay = paramString;
-          ((AnimationInfo)localObject).a();
+          ((AnimationInfo)localObject).b();
           return localObject;
         }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
       }
       catch (Throwable paramString)
       {
         paramString.printStackTrace();
         return null;
       }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return null;
+      label156:
       i += 1;
     }
   }
   
   public static AnimationInfo loadFromFolder(String paramString)
   {
-    int m = 0;
-    int k = 0;
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     Object localObject = new File(paramString, "play.cfg");
-    if (((File)localObject).exists()) {}
-    for (localObject = a((File)localObject);; localObject = null)
+    if (((File)localObject).exists()) {
+      localObject = a((File)localObject);
+    } else {
+      localObject = null;
+    }
+    ArrayList localArrayList1;
+    if (localObject != null) {
+      localArrayList1 = ((AnimationInfo)localObject).a();
+    } else {
+      localArrayList1 = null;
+    }
+    int m = 0;
+    int i = 0;
+    int k = 0;
+    if ((localObject != null) && (localArrayList1 != null) && (localArrayList1.size() > 0))
     {
-      if (localObject != null) {}
-      for (ArrayList localArrayList1 = ((AnimationInfo)localObject).a();; localArrayList1 = null)
+      paramString = new File(paramString).listFiles();
+      if ((paramString != null) && (paramString.length > 0))
       {
-        if ((localObject == null) || (localArrayList1 == null) || (localArrayList1.size() <= 0))
-        {
-          paramString = ajeu.a(paramString);
-          if ((paramString == null) || (paramString.length <= 0)) {
-            return null;
-          }
-          localObject = new ArrayList();
-          i = 0;
-          while (i < paramString.length)
-          {
-            ((ArrayList)localObject).add(paramString[i]);
-            i += 1;
-          }
-          return loadFromFrames((ArrayList)localObject, 100, 100);
-        }
-        paramString = new File(paramString).listFiles();
-        if ((paramString == null) || (paramString.length <= 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AnimationView", 2, "nothing in unzip folder");
-          }
-          return null;
-        }
-        ajeu.a(paramString);
+        AnimationTools.a(paramString);
         ArrayList localArrayList2 = new ArrayList();
-        int i = 0;
+        i = 0;
         while (i < paramString.length)
         {
-          if ((paramString[i] != null) && (paramString[i].isFile()) && (bdhb.e(paramString[i].getAbsolutePath()))) {
+          if ((paramString[i] != null) && (paramString[i].isFile()) && (FileUtils.isPicFile(paramString[i].getAbsolutePath()))) {
             localArrayList2.add(paramString[i]);
           }
           i += 1;
@@ -206,53 +198,58 @@ public class AnimationView$AnimationInfo
         SparseArray localSparseArray = new SparseArray();
         int j = 0;
         i = 0;
-        if (j < localArrayList2.size())
+        while (j < localArrayList2.size())
         {
-          if (!localArrayList1.contains(Integer.valueOf(j + 1))) {}
-          for (;;)
+          int n = j + 1;
+          if (localArrayList1.contains(Integer.valueOf(n)))
           {
-            j += 1;
-            break;
             try
             {
               paramString = new BitmapDrawable(((File)localArrayList2.get(j)).getAbsolutePath());
-              if ((i == 0) && (paramString != null) && (paramString.getBitmap() != null)) {
-                break label424;
-              }
-              i = k;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("AnimationView", 2, "decode fail till" + ((File)localArrayList2.get(j)).getAbsolutePath());
-                i = k;
-              }
-              while (i < localSparseArray.size())
-              {
-                ajeu.a((Drawable)localSparseArray.valueAt(i));
-                i += 1;
-              }
             }
             catch (OutOfMemoryError paramString)
             {
-              for (;;)
+              if (QLog.isColorLevel())
               {
-                if (QLog.isColorLevel()) {
-                  QLog.e("AnimationView", 2, "decode fail - OutOfMemoryError" + paramString);
-                }
-                i = 1;
-                paramString = null;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("decode fail - OutOfMemoryError");
+                localStringBuilder.append(paramString);
+                QLog.e("AnimationView", 2, localStringBuilder.toString());
               }
+              i = 1;
+              paramString = null;
             }
-            return null;
-            label424:
-            localSparseArray.append(j + 1, paramString);
+            if ((i == 0) && (paramString != null) && (paramString.getBitmap() != null)) {
+              localSparseArray.append(n, paramString);
+            }
           }
+          else
+          {
+            j = n;
+            continue;
+          }
+          i = k;
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("decode fail till");
+            paramString.append(((File)localArrayList2.get(j)).getAbsolutePath());
+            QLog.e("AnimationView", 2, paramString.toString());
+            i = k;
+          }
+          while (i < localSparseArray.size())
+          {
+            AnimationTools.a((Drawable)localSparseArray.valueAt(i));
+            i += 1;
+          }
+          return null;
         }
         if (localArrayList1.size() != localSparseArray.size())
         {
           i = m;
           while (i < localSparseArray.size())
           {
-            ajeu.a((Drawable)localSparseArray.valueAt(i));
+            AnimationTools.a((Drawable)localSparseArray.valueAt(i));
             i += 1;
           }
           return null;
@@ -260,44 +257,70 @@ public class AnimationView$AnimationInfo
         ((AnimationInfo)localObject).mFrames = localSparseArray;
         return localObject;
       }
+      if (QLog.isColorLevel()) {
+        QLog.e("AnimationView", 2, "nothing in unzip folder");
+      }
+      return null;
     }
+    paramString = AnimationTools.a(paramString);
+    if (paramString != null)
+    {
+      if (paramString.length <= 0) {
+        return null;
+      }
+      localObject = new ArrayList();
+      while (i < paramString.length)
+      {
+        ((ArrayList)localObject).add(paramString[i]);
+        i += 1;
+      }
+      return loadFromFrames((ArrayList)localObject, 100, 100);
+    }
+    return null;
   }
   
   public static AnimationInfo loadFromFrames(ArrayList<Drawable> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return null;
-    }
-    AnimationInfo localAnimationInfo = new AnimationInfo(paramInt2, paramInt1, paramInt1);
-    paramInt1 = 0;
-    while (paramInt1 < paramArrayList.size())
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      localAnimationInfo.mPlay.add(new AnimationView.PlayItem(paramInt1 + 1));
-      localAnimationInfo.mFrames.append(paramInt1 + 1, paramArrayList.get(paramInt1));
-      paramInt1 += 1;
+      AnimationInfo localAnimationInfo = new AnimationInfo(paramInt2, paramInt1, paramInt1);
+      for (paramInt1 = 0; paramInt1 < paramArrayList.size(); paramInt1 = paramInt2)
+      {
+        ArrayList localArrayList = localAnimationInfo.mPlay;
+        paramInt2 = paramInt1 + 1;
+        localArrayList.add(new AnimationView.PlayItem(paramInt2));
+        localAnimationInfo.mFrames.append(paramInt2, paramArrayList.get(paramInt1));
+      }
+      localAnimationInfo.b();
+      return localAnimationInfo;
     }
-    localAnimationInfo.a();
-    return localAnimationInfo;
+    return null;
   }
   
   public static AnimationInfo loadFromZip(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (a(paramString) != 1) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return loadFromFolder(paramString + "Folder");
+    if (a(paramString) != 1) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("Folder");
+    return loadFromFolder(localStringBuilder.toString());
   }
   
   protected ArrayList<Integer> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.mPlay != null) && (this.mPlay.size() > 0))
+    Object localObject = this.mPlay;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
       int i = 0;
       while (i < this.mPlay.size())
       {
-        Object localObject = (AnimationView.PlayItem)this.mPlay.get(i);
+        localObject = (AnimationView.PlayItem)this.mPlay.get(i);
         if (localObject != null)
         {
           localObject = ((AnimationView.PlayItem)localObject).getFrames();
@@ -316,49 +339,47 @@ public class AnimationView$AnimationInfo
     return localArrayList;
   }
   
-  protected void a()
+  protected void b()
   {
     this.mInfiniteFromInOnCycle = -1;
     this.mInfiniteToInOnCycle = -1;
     this.mOneCycleFrames.clear();
     int i = 0;
-    if (i < this.mPlay.size())
+    while (i < this.mPlay.size())
     {
       AnimationView.PlayItem localPlayItem = (AnimationView.PlayItem)this.mPlay.get(i);
-      if (localPlayItem != null)
-      {
-        if (localPlayItem.mFrame <= 0) {
-          break label79;
-        }
-        this.mOneCycleFrames.add(Integer.valueOf(localPlayItem.mFrame));
-      }
-      label79:
-      do
-      {
-        do
+      if (localPlayItem != null) {
+        if (localPlayItem.mFrame > 0)
         {
-          i += 1;
-          break;
-        } while ((localPlayItem.mFrom <= 0) || (localPlayItem.mTo <= 0) || (localPlayItem.mTo <= localPlayItem.mFrom));
-        int k = localPlayItem.mCycle;
-        int j = k;
-        if (k <= 0) {
-          j = 1;
+          this.mOneCycleFrames.add(Integer.valueOf(localPlayItem.mFrame));
         }
-        k = 0;
-        while (k < j)
+        else if ((localPlayItem.mFrom > 0) && (localPlayItem.mTo > 0) && (localPlayItem.mTo > localPlayItem.mFrom))
         {
-          int m = localPlayItem.mFrom;
-          while (m < localPlayItem.mTo + 1)
-          {
-            this.mOneCycleFrames.add(Integer.valueOf(m));
-            m += 1;
+          int k = localPlayItem.mCycle;
+          int j = k;
+          if (k <= 0) {
+            j = 1;
           }
-          k += 1;
+          k = 0;
+          while (k < j)
+          {
+            int m = localPlayItem.mFrom;
+            while (m < localPlayItem.mTo + 1)
+            {
+              this.mOneCycleFrames.add(Integer.valueOf(m));
+              m += 1;
+            }
+            k += 1;
+          }
+          if (localPlayItem.mCycle == 0)
+          {
+            this.mInfiniteFromInOnCycle = localPlayItem.mFrom;
+            this.mInfiniteToInOnCycle = localPlayItem.mTo;
+            return;
+          }
         }
-      } while (localPlayItem.mCycle != 0);
-      this.mInfiniteFromInOnCycle = localPlayItem.mFrom;
-      this.mInfiniteToInOnCycle = localPlayItem.mTo;
+      }
+      i += 1;
     }
   }
   
@@ -367,7 +388,7 @@ public class AnimationView$AnimationInfo
     int i = 0;
     while (i < this.mFrames.size())
     {
-      ajeu.a((Drawable)this.mFrames.valueAt(i));
+      AnimationTools.a((Drawable)this.mFrames.valueAt(i));
       i += 1;
     }
     this.mFrames.clear();
@@ -375,7 +396,7 @@ public class AnimationView$AnimationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.AnimationInfo
  * JD-Core Version:    0.7.0.1
  */

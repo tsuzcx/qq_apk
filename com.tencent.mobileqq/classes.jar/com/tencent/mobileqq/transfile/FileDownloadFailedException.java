@@ -3,10 +3,10 @@ package com.tencent.mobileqq.transfile;
 public class FileDownloadFailedException
   extends RuntimeException
 {
-  public int errorCode;
-  public long errorDetailCode;
-  public boolean needReport = true;
-  private boolean needRetry;
+  int errorCode;
+  long errorDetailCode;
+  boolean needReport = true;
+  private boolean needRetry = false;
   
   public FileDownloadFailedException(int paramInt1, int paramInt2, String paramString, Throwable paramThrowable, boolean paramBoolean)
   {
@@ -32,7 +32,7 @@ public class FileDownloadFailedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileDownloadFailedException
  * JD-Core Version:    0.7.0.1
  */

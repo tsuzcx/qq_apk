@@ -41,17 +41,19 @@ public final class ilive$iLiveRequest
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72, 80, 90, 98, 104, 112, 120, 128, 136, 144, 154, 162, 168, 176, 184, 192, 200 }, new String[] { "version", "cmd", "subcmd", "seq", "uid", "binary_body", "ex", "client_type", "client_ip", "service_ip", "business", "auth_key", "auth_type", "auth_ip", "auth_appid", "tinyid", "client_port", "flag", "original_id", "original_key", "original_key_type", "original_id_type", "original_auth_appid", "buss_id", "codec" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, iLiveRequest.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50, 58, 64, 72, 80, 90, 98, 104, 112, 120, 128, 136, 144, 154, 162, 168, 176, 184, 192, 200 }, new String[] { "version", "cmd", "subcmd", "seq", "uid", "binary_body", "ex", "client_type", "client_ip", "service_ip", "business", "auth_key", "auth_type", "auth_ip", "auth_appid", "tinyid", "client_port", "flag", "original_id", "original_key", "original_key_type", "original_id_type", "original_auth_appid", "buss_id", "codec" }, new Object[] { localInteger, localInteger, localInteger, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, "", localByteStringMicro3, localInteger, localInteger, localLong, localLong, localInteger, localInteger, localByteStringMicro4, localByteStringMicro5, localInteger, localInteger, localLong, localLong, localInteger }, iLiveRequest.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive.iLiveRequest
  * JD-Core Version:    0.7.0.1
  */

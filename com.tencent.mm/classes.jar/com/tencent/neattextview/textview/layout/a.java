@@ -5,35 +5,39 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int dTo();
+  public abstract int H(int paramInt, float paramFloat);
   
-  public abstract List<c> dTp();
+  public abstract int aGH(int paramInt);
   
-  public abstract int getLineBaseline(int paramInt);
+  public abstract int aGI(int paramInt);
   
-  public abstract int getLineBottom(int paramInt);
+  public abstract int aGJ(int paramInt);
   
-  public abstract int getLineForOffset(int paramInt);
+  public abstract float aGK(int paramInt);
   
-  public abstract int getLineForVertical(int paramInt);
+  public abstract float aGL(int paramInt);
   
-  public abstract float getLineRight(int paramInt);
+  public abstract int aGM(int paramInt);
   
-  public abstract int getLineStart(int paramInt);
+  public abstract int aGN(int paramInt);
   
-  public abstract int getLineTop(int paramInt);
+  public abstract int di(int paramInt);
   
-  public abstract float getLineWidth(int paramInt);
+  public abstract int dk(int paramInt);
   
-  public abstract int getOffsetForHorizontal(int paramInt, float paramFloat);
+  public abstract int du(int paramInt);
   
-  public abstract float getPrimaryHorizontal(int paramInt);
+  public abstract float dv(int paramInt);
   
-  public abstract int ii(int paramInt1, int paramInt2);
+  public abstract int jQH();
+  
+  public abstract List<c> jQI();
+  
+  public abstract int pB(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.a
  * JD-Core Version:    0.7.0.1
  */

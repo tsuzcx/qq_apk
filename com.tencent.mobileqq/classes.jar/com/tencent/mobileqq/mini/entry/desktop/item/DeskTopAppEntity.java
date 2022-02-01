@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class DeskTopAppEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "DeskTopAppInfoEntity";
   public String appId;
   public byte[] appInfo;
   public String name;
-  @awhs
+  @unique
   public String uniqueId;
   public int verType;
   
@@ -19,7 +19,11 @@ public class DeskTopAppEntity
   
   public DeskTopAppEntity(MiniAppInfo paramMiniAppInfo)
   {
-    this.uniqueId = (paramMiniAppInfo.appId + "_" + this.verType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.verType);
+    this.uniqueId = localStringBuilder.toString();
     this.appId = paramMiniAppInfo.appId;
     this.name = paramMiniAppInfo.name;
     this.verType = paramMiniAppInfo.verType;
@@ -30,94 +34,107 @@ public class DeskTopAppEntity
   private byte[] packAppInfo(MiniAppInfo paramMiniAppInfo)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: invokestatic 65	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: astore_3
-    //   9: aload_2
-    //   10: iconst_0
-    //   11: invokevirtual 69	android/os/Parcel:setDataPosition	(I)V
-    //   14: aload_2
-    //   15: astore_3
-    //   16: aload_2
-    //   17: aload_1
-    //   18: iconst_0
-    //   19: invokevirtual 73	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
-    //   22: aload_2
-    //   23: astore_3
-    //   24: aload_2
-    //   25: invokevirtual 77	android/os/Parcel:marshall	()[B
-    //   28: astore_1
-    //   29: aload_1
-    //   30: astore_3
-    //   31: aload_3
-    //   32: astore_1
-    //   33: aload_2
-    //   34: ifnull +9 -> 43
-    //   37: aload_2
-    //   38: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   0: invokestatic 65	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: astore_2
+    //   6: aload_3
+    //   7: iconst_0
+    //   8: invokevirtual 69	android/os/Parcel:setDataPosition	(I)V
+    //   11: aload_3
+    //   12: astore_2
+    //   13: aload_3
+    //   14: aload_1
+    //   15: iconst_0
+    //   16: invokevirtual 73	android/os/Parcel:writeParcelable	(Landroid/os/Parcelable;I)V
+    //   19: aload_3
+    //   20: astore_2
+    //   21: aload_3
+    //   22: invokevirtual 77	android/os/Parcel:marshall	()[B
+    //   25: astore_1
+    //   26: aload_3
+    //   27: ifnull +7 -> 34
+    //   30: aload_3
+    //   31: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   34: aload_1
+    //   35: areturn
+    //   36: astore_1
+    //   37: goto +76 -> 113
+    //   40: astore_2
     //   41: aload_3
     //   42: astore_1
-    //   43: aload_1
-    //   44: areturn
-    //   45: astore_1
-    //   46: aconst_null
-    //   47: astore_2
-    //   48: aload_2
-    //   49: astore_3
-    //   50: ldc 8
-    //   52: iconst_1
-    //   53: new 24	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   60: ldc 82
-    //   62: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: aload_1
-    //   66: invokestatic 88	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   69: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   78: aload 4
-    //   80: astore_1
-    //   81: aload_2
-    //   82: ifnull -39 -> 43
-    //   85: aload_2
-    //   86: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   89: aconst_null
-    //   90: areturn
-    //   91: astore_1
-    //   92: aconst_null
-    //   93: astore_3
-    //   94: aload_3
-    //   95: ifnull +7 -> 102
-    //   98: aload_3
-    //   99: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   102: aload_1
-    //   103: athrow
-    //   104: astore_1
-    //   105: goto -11 -> 94
-    //   108: astore_1
-    //   109: goto -61 -> 48
+    //   43: aload_2
+    //   44: astore_3
+    //   45: goto +12 -> 57
+    //   48: astore_1
+    //   49: aconst_null
+    //   50: astore_2
+    //   51: goto +62 -> 113
+    //   54: astore_3
+    //   55: aconst_null
+    //   56: astore_1
+    //   57: aload_1
+    //   58: astore_2
+    //   59: new 24	java/lang/StringBuilder
+    //   62: dup
+    //   63: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   66: astore 4
+    //   68: aload_1
+    //   69: astore_2
+    //   70: aload 4
+    //   72: ldc 82
+    //   74: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload_1
+    //   79: astore_2
+    //   80: aload 4
+    //   82: aload_3
+    //   83: invokestatic 88	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   86: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: aload_1
+    //   91: astore_2
+    //   92: ldc 8
+    //   94: iconst_1
+    //   95: aload 4
+    //   97: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   103: aload_1
+    //   104: ifnull +7 -> 111
+    //   107: aload_1
+    //   108: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   111: aconst_null
+    //   112: areturn
+    //   113: aload_2
+    //   114: ifnull +7 -> 121
+    //   117: aload_2
+    //   118: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   121: aload_1
+    //   122: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	112	0	this	DeskTopAppEntity
-    //   0	112	1	paramMiniAppInfo	MiniAppInfo
-    //   6	80	2	localParcel	android.os.Parcel
-    //   8	91	3	localObject1	java.lang.Object
-    //   1	78	4	localObject2	java.lang.Object
+    //   0	123	0	this	DeskTopAppEntity
+    //   0	123	1	paramMiniAppInfo	MiniAppInfo
+    //   5	16	2	localObject1	java.lang.Object
+    //   40	4	2	localThrowable1	java.lang.Throwable
+    //   50	68	2	localMiniAppInfo	MiniAppInfo
+    //   3	42	3	localObject2	java.lang.Object
+    //   54	29	3	localThrowable2	java.lang.Throwable
+    //   66	30	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   3	7	45	java/lang/Throwable
-    //   3	7	91	finally
-    //   9	14	104	finally
-    //   16	22	104	finally
-    //   24	29	104	finally
-    //   50	78	104	finally
-    //   9	14	108	java/lang/Throwable
-    //   16	22	108	java/lang/Throwable
-    //   24	29	108	java/lang/Throwable
+    //   6	11	36	finally
+    //   13	19	36	finally
+    //   21	26	36	finally
+    //   59	68	36	finally
+    //   70	78	36	finally
+    //   80	90	36	finally
+    //   92	103	36	finally
+    //   6	11	40	java/lang/Throwable
+    //   13	19	40	java/lang/Throwable
+    //   21	26	40	java/lang/Throwable
+    //   0	4	48	finally
+    //   0	4	54	java/lang/Throwable
   }
   
   /* Error */
@@ -125,120 +142,139 @@ public class DeskTopAppEntity
   {
     // Byte code:
     //   0: invokestatic 65	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: astore_3
-    //   6: aload_2
+    //   3: astore_3
+    //   4: aload_3
+    //   5: astore_2
+    //   6: aload_3
     //   7: aload_1
     //   8: iconst_0
     //   9: aload_1
     //   10: arraylength
     //   11: invokevirtual 102	android/os/Parcel:unmarshall	([BII)V
-    //   14: aload_2
-    //   15: astore_3
-    //   16: aload_2
+    //   14: aload_3
+    //   15: astore_2
+    //   16: aload_3
     //   17: iconst_0
     //   18: invokevirtual 69	android/os/Parcel:setDataPosition	(I)V
-    //   21: aload_2
-    //   22: astore_3
-    //   23: aload_2
+    //   21: aload_3
+    //   22: astore_2
+    //   23: aload_3
     //   24: ldc 27
     //   26: invokevirtual 108	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   29: invokevirtual 112	android/os/Parcel:readParcelable	(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
     //   32: checkcast 27	com/tencent/mobileqq/mini/apkg/MiniAppInfo
     //   35: astore_1
-    //   36: aload_2
+    //   36: aload_3
     //   37: ifnull +7 -> 44
-    //   40: aload_2
+    //   40: aload_3
     //   41: invokevirtual 80	android/os/Parcel:recycle	()V
     //   44: aload_1
     //   45: areturn
     //   46: astore_1
-    //   47: aconst_null
-    //   48: astore_1
-    //   49: ldc 8
-    //   51: iconst_1
-    //   52: ldc 114
-    //   54: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: aload_1
-    //   58: ifnull +7 -> 65
-    //   61: aload_1
-    //   62: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   47: goto +93 -> 140
+    //   50: astore_2
+    //   51: aload_3
+    //   52: astore_1
+    //   53: aload_2
+    //   54: astore_3
+    //   55: goto +12 -> 67
+    //   58: astore_1
+    //   59: aconst_null
+    //   60: astore_2
+    //   61: goto +79 -> 140
+    //   64: astore_3
     //   65: aconst_null
-    //   66: areturn
-    //   67: astore_1
-    //   68: aconst_null
-    //   69: astore_2
-    //   70: aload_2
-    //   71: astore_3
-    //   72: ldc 8
-    //   74: iconst_1
-    //   75: new 24	java/lang/StringBuilder
-    //   78: dup
-    //   79: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   82: ldc 116
+    //   66: astore_1
+    //   67: aload_1
+    //   68: astore_2
+    //   69: new 24	java/lang/StringBuilder
+    //   72: dup
+    //   73: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   76: astore 4
+    //   78: aload_1
+    //   79: astore_2
+    //   80: aload 4
+    //   82: ldc 114
     //   84: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_1
-    //   88: invokestatic 88	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   91: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   97: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: aload_2
-    //   101: ifnull -36 -> 65
-    //   104: aload_2
-    //   105: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   108: goto -43 -> 65
-    //   111: astore_1
-    //   112: aconst_null
-    //   113: astore_3
-    //   114: aload_3
-    //   115: ifnull +7 -> 122
-    //   118: aload_3
-    //   119: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   122: aload_1
-    //   123: athrow
-    //   124: astore_1
-    //   125: goto -11 -> 114
-    //   128: astore_2
-    //   129: aload_1
-    //   130: astore_3
-    //   131: aload_2
-    //   132: astore_1
-    //   133: goto -19 -> 114
-    //   136: astore_1
-    //   137: goto -67 -> 70
-    //   140: astore_1
-    //   141: aload_2
-    //   142: astore_1
-    //   143: goto -94 -> 49
+    //   87: pop
+    //   88: aload_1
+    //   89: astore_2
+    //   90: aload 4
+    //   92: aload_3
+    //   93: invokestatic 88	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   96: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: aload_1
+    //   101: astore_2
+    //   102: ldc 8
+    //   104: iconst_1
+    //   105: aload 4
+    //   107: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   113: aload_1
+    //   114: ifnull +24 -> 138
+    //   117: goto +17 -> 134
+    //   120: aload_1
+    //   121: astore_2
+    //   122: ldc 8
+    //   124: iconst_1
+    //   125: ldc 116
+    //   127: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: aload_1
+    //   131: ifnull +7 -> 138
+    //   134: aload_1
+    //   135: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: aload_2
+    //   141: ifnull +7 -> 148
+    //   144: aload_2
+    //   145: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   148: aload_1
+    //   149: athrow
+    //   150: astore_1
+    //   151: goto +9 -> 160
+    //   154: astore_1
+    //   155: aload_3
+    //   156: astore_1
+    //   157: goto -37 -> 120
+    //   160: aconst_null
+    //   161: astore_1
+    //   162: goto -42 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	146	0	this	DeskTopAppEntity
-    //   0	146	1	paramArrayOfByte	byte[]
-    //   3	102	2	localParcel	android.os.Parcel
-    //   128	14	2	localObject1	java.lang.Object
-    //   5	126	3	localObject2	java.lang.Object
+    //   0	165	0	this	DeskTopAppEntity
+    //   0	165	1	paramArrayOfByte	byte[]
+    //   5	18	2	localObject1	java.lang.Object
+    //   50	4	2	localThrowable1	java.lang.Throwable
+    //   60	85	2	arrayOfByte	byte[]
+    //   3	52	3	localObject2	java.lang.Object
+    //   64	92	3	localThrowable2	java.lang.Throwable
+    //   76	30	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	4	46	java/lang/OutOfMemoryError
-    //   0	4	67	java/lang/Throwable
-    //   0	4	111	finally
-    //   6	14	124	finally
-    //   16	21	124	finally
-    //   23	36	124	finally
-    //   72	100	124	finally
-    //   49	57	128	finally
-    //   6	14	136	java/lang/Throwable
-    //   16	21	136	java/lang/Throwable
-    //   23	36	136	java/lang/Throwable
-    //   6	14	140	java/lang/OutOfMemoryError
-    //   16	21	140	java/lang/OutOfMemoryError
-    //   23	36	140	java/lang/OutOfMemoryError
+    //   6	14	46	finally
+    //   16	21	46	finally
+    //   23	36	46	finally
+    //   69	78	46	finally
+    //   80	88	46	finally
+    //   90	100	46	finally
+    //   102	113	46	finally
+    //   122	130	46	finally
+    //   6	14	50	java/lang/Throwable
+    //   16	21	50	java/lang/Throwable
+    //   23	36	50	java/lang/Throwable
+    //   0	4	58	finally
+    //   0	4	64	java/lang/Throwable
+    //   0	4	150	java/lang/OutOfMemoryError
+    //   6	14	154	java/lang/OutOfMemoryError
+    //   16	21	154	java/lang/OutOfMemoryError
+    //   23	36	154	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DeskTopAppEntity
  * JD-Core Version:    0.7.0.1
  */

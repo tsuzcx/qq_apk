@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/zi" android:background="@color/ei" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/ef" android:gravity="center" android:id="@id/zj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lw" />
-    <android.support.v7.widget.RecyclerView android:id="@id/zk" android:background="@color/ei" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/a7e" android:gravity="center|left" android:id="@id/btz" android:background="@color/rv" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/ng" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/ng" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/cl6" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/n9" android:layout_alignParentBottom="true">
-        <ImageButton android:id="@id/btx" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xs" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/cl7" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xp" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/ay2" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xq" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/cl8" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xr" android:scaleType="center" android:layout_weight="1.0" />
+<RelativeLayout android:id="@id/dcn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/dcm" android:background="@drawable/ym" android:paddingTop="@dimen/cv" android:paddingBottom="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:weightSum="2.0" android:layout_alignParentBottom="true" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+        <RelativeLayout android:gravity="center_horizontal" android:id="@id/dcr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dcs" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/icons_filled_live_screencast" android:layout_centerHorizontal="true" app:iconColor="@color/al6" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/dct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/e6n" android:layout_below="@id/dcs" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_horizontal" android:id="@id/dco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dcp" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:src="@raw/icons_filled_link" android:layout_centerHorizontal="true" app:iconColor="@color/al6" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/dcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/e5e" android:layout_below="@id/dcp" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

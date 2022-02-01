@@ -21,12 +21,12 @@ public class WXWebpageObject
   
   public boolean checkArgs()
   {
-    if ((this.webpageUrl == null) || (this.webpageUrl.length() == 0) || (this.webpageUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
-      return false;
+    String str = this.webpageUrl;
+    if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240)) {
+      return true;
     }
-    return true;
+    Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)
@@ -50,7 +50,7 @@ public class WXWebpageObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXWebpageObject
  * JD-Core Version:    0.7.0.1
  */

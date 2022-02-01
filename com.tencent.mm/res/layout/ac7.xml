@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/ebw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="#ff222222" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/kp_" android:layout_width="fill_parent" android:layout_height="@dimen/d6" />
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/egv" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+            <TextView android:textSize="14.0dip" android:textColor="@color/yc" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d4e" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_arrow" android:rotation="-90.0" android:layout_marginStart="@dimen/df" app:iconColor="@color/yc" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

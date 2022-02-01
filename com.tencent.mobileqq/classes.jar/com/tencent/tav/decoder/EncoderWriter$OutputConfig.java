@@ -1,5 +1,6 @@
 package com.tencent.tav.decoder;
 
+@Deprecated
 public final class EncoderWriter$OutputConfig
 {
   public int AUDIO_AAC_PROFILE = 2;
@@ -16,7 +17,7 @@ public final class EncoderWriter$OutputConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.EncoderWriter.OutputConfig
  * JD-Core Version:    0.7.0.1
  */

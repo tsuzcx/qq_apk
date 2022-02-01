@@ -2,10 +2,10 @@ package com.tencent.mobileqq.emosm.web;
 
 import java.util.HashMap;
 
-public final class IPCConstants$1
+final class IPCConstants$1
   extends HashMap<String, Integer>
 {
-  public IPCConstants$1()
+  IPCConstants$1()
   {
     put("queryFontInfo", Integer.valueOf(2));
     put("setupChatFont", Integer.valueOf(1));

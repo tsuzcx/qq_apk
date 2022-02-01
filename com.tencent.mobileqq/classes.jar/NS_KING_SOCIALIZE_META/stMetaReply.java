@@ -10,12 +10,12 @@ public final class stMetaReply
   static stMetaPerson cache_poster = new stMetaPerson();
   static stMetaPerson cache_receiver = new stMetaPerson();
   public String beReplyReplyId = "";
-  public int createtime;
+  public int createtime = 0;
   public String id = "";
-  public int mask;
-  public stMetaPerson poster;
-  public stMetaPerson receiver;
-  public int robotMode;
+  public int mask = 0;
+  public stMetaPerson poster = null;
+  public stMetaPerson receiver = null;
+  public int robotMode = 0;
   public String wording = "";
   
   public stMetaReply() {}
@@ -46,29 +46,34 @@ public final class stMetaReply
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.wording != null) {
-      paramJceOutputStream.write(this.wording, 1);
+    localObject = this.wording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.poster != null) {
-      paramJceOutputStream.write(this.poster, 2);
+    localObject = this.poster;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.receiver != null) {
-      paramJceOutputStream.write(this.receiver, 3);
+    localObject = this.receiver;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.createtime, 4);
     paramJceOutputStream.write(this.mask, 5);
     paramJceOutputStream.write(this.robotMode, 6);
-    if (this.beReplyReplyId != null) {
-      paramJceOutputStream.write(this.beReplyReplyId, 7);
+    localObject = this.beReplyReplyId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaReply
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import java.util.regex.Pattern;
 
 public class a
 {
-  private static final Pattern bgF;
-  private static a bgG;
-  public final FirebaseInstanceId bfN;
+  private static final Pattern dEd;
+  private static a dEe;
+  public final FirebaseInstanceId dDl;
   
   static
   {
-    AppMethodBeat.i(77208);
-    bgF = Pattern.compile("[a-zA-Z0-9-_.~%]{1,900}");
-    AppMethodBeat.o(77208);
+    AppMethodBeat.i(116779);
+    dEd = Pattern.compile("[a-zA-Z0-9-_.~%]{1,900}");
+    AppMethodBeat.o(116779);
   }
   
   private a(FirebaseInstanceId paramFirebaseInstanceId)
   {
-    this.bfN = paramFirebaseInstanceId;
+    this.dDl = paramFirebaseInstanceId;
   }
   
-  public static a si()
+  public static a YE()
   {
     try
     {
-      AppMethodBeat.i(77207);
-      if (bgG == null) {
-        bgG = new a(FirebaseInstanceId.rL());
+      AppMethodBeat.i(116778);
+      if (dEe == null) {
+        dEe = new a(FirebaseInstanceId.Yh());
       }
-      a locala = bgG;
-      AppMethodBeat.o(77207);
+      a locala = dEe;
+      AppMethodBeat.o(116778);
       return locala;
     }
     finally {}

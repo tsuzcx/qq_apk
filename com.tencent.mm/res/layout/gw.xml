@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a9o" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="24.0dip" android:text="@string/a9s" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-        <CheckBox android:id="@id/a7r" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/l6" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/bx6" />
-    </LinearLayout>
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="32.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/a7s" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9p" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/a7t" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9r" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7k" android:gravity="center_horizontal" android:id="@id/a7u" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9n" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/fp8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/r" android:text="@string/b6v" />
+    <ListView android:id="@id/fpo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" />
 </LinearLayout>

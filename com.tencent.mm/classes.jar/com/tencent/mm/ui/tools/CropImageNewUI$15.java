@@ -11,14 +11,14 @@ final class CropImageNewUI$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(34828);
-    CropImageNewUI.a(this.AqU, false);
-    AppMethodBeat.o(34828);
+    AppMethodBeat.i(39020);
+    CropImageNewUI.a(this.afEk, false);
+    AppMethodBeat.o(39020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageNewUI.15
  * JD-Core Version:    0.7.0.1
  */

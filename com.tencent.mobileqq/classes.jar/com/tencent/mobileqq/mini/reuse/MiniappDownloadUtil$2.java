@@ -12,47 +12,53 @@ class MiniappDownloadUtil$2
   
   public void onDownloadCanceled(String paramString)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadCanceled(paramString);
+    Downloader.DownloadListener localDownloadListener = this.val$listener;
+    if (localDownloadListener != null) {
+      localDownloadListener.onDownloadCanceled(paramString);
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadFailed(paramString, paramDownloadResult);
+    Downloader.DownloadListener localDownloadListener = this.val$listener;
+    if (localDownloadListener != null) {
+      localDownloadListener.onDownloadFailed(paramString, paramDownloadResult);
     }
-    if (!this.val$isSubApkg) {}
-    for (int i = 1;; i = 2)
-    {
-      MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, i, this.val$miniAppConfig);
-      return;
+    int i;
+    if (!this.val$isSubApkg) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, i, this.val$miniAppConfig);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadProgress(paramString, paramLong, paramFloat);
+    Downloader.DownloadListener localDownloadListener = this.val$listener;
+    if (localDownloadListener != null) {
+      localDownloadListener.onDownloadProgress(paramString, paramLong, paramFloat);
     }
   }
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onDownloadSucceed(paramString, paramDownloadResult);
+    Downloader.DownloadListener localDownloadListener = this.val$listener;
+    if (localDownloadListener != null) {
+      localDownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
     }
-    if (!this.val$isSubApkg) {}
-    for (int i = 1;; i = 2)
-    {
-      MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, i, this.val$miniAppConfig);
-      return;
+    int i;
+    if (!this.val$isSubApkg) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    MiniProgramLpReportDC05325.reportApiReport(paramDownloadResult, i, this.val$miniAppConfig);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil.2
  * JD-Core Version:    0.7.0.1
  */

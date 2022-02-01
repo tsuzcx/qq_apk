@@ -8,7 +8,7 @@ public final class PicContInfo
   extends JceStruct
 {
   public String md5 = "";
-  public long size;
+  public long size = 0L;
   
   public PicContInfo() {}
   
@@ -26,15 +26,16 @@ public final class PicContInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 0);
+    String str = this.md5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.size, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PicContInfo
  * JD-Core Version:    0.7.0.1
  */

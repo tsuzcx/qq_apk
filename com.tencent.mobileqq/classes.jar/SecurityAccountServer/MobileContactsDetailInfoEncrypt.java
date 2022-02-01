@@ -8,15 +8,15 @@ public final class MobileContactsDetailInfoEncrypt
   extends JceStruct
 {
   static byte[] cache_MobileNoMask;
-  public byte[] MobileNoMask;
+  public byte[] MobileNoMask = null;
   public String QQ = "";
   public int accountAbi = 0;
-  public long bindingDate;
+  public long bindingDate = 0L;
   public String contactsInfoEncrypt = "";
-  public long isRecommend;
+  public long isRecommend = 0L;
   public String nickname = "";
-  public long originBinder;
-  public short rmdScore;
+  public long originBinder = 0L;
+  public short rmdScore = 0;
   
   public MobileContactsDetailInfoEncrypt() {}
   
@@ -56,8 +56,9 @@ public final class MobileContactsDetailInfoEncrypt
     paramJceOutputStream.write(this.QQ, 0);
     paramJceOutputStream.write(this.bindingDate, 1);
     paramJceOutputStream.write(this.isRecommend, 2);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 3);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.contactsInfoEncrypt, 4);
     paramJceOutputStream.write(this.MobileNoMask, 5);
@@ -68,7 +69,7 @@ public final class MobileContactsDetailInfoEncrypt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.MobileContactsDetailInfoEncrypt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,32 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.widget.CameraPreview;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.CharJumpAnimView;
 
 public class hfv
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  public hfv(CameraPreview paramCameraPreview) {}
+  public hfv(CharJumpAnimView paramCharJumpAnimView) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera) {}
+  public void run()
+  {
+    if (CharJumpAnimView.a(this.a) == 0L)
+    {
+      if (CharJumpAnimView.a(this.a) != null) {
+        CharJumpAnimView.a(this.a).onAnimationStart(null);
+      }
+      CharJumpAnimView.a(this.a, System.currentTimeMillis());
+    }
+    this.a.a(CharJumpAnimView.a(this.a), 3500L);
+    this.a.invalidate();
+    if (this.a.a())
+    {
+      this.a.postDelayed(this, 20L);
+      return;
+    }
+    if (CharJumpAnimView.a(this.a) != null) {
+      CharJumpAnimView.a(this.a).onAnimationEnd(null);
+    }
+    CharJumpAnimView.a(this.a, null);
+  }
 }
 
 

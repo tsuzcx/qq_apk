@@ -9,7 +9,7 @@ public final class sweet_upgrade_key_notify_req
   extends JceStruct
 {
   static sweet_req_comm cache_req_comm = new sweet_req_comm();
-  public sweet_req_comm req_comm;
+  public sweet_req_comm req_comm = null;
   
   public sweet_upgrade_key_notify_req() {}
   
@@ -30,7 +30,7 @@ public final class sweet_upgrade_key_notify_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_ICON.sweet_upgrade_key_notify_req
  * JD-Core Version:    0.7.0.1
  */

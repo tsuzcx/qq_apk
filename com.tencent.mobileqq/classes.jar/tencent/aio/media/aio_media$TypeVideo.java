@@ -26,17 +26,19 @@ public final class aio_media$TypeVideo
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 74, 82 }, new String[] { "uint32_type", "uint64_id", "bytes_jump", "bytes_cover", "uint32_polling", "bytes_name", "enum_video_type", "enum_video_jump_type", "bytes_video_jump_value", "match_id" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(1), Integer.valueOf(1), localByteStringMicro4, localByteStringMicro5 }, TypeVideo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 74, 82 }, new String[] { "uint32_type", "uint64_id", "bytes_jump", "bytes_cover", "uint32_polling", "bytes_name", "enum_video_type", "enum_video_jump_type", "bytes_video_jump_value", "match_id" }, new Object[] { localInteger1, Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localInteger1, localByteStringMicro3, localInteger2, localInteger2, localByteStringMicro4, localByteStringMicro5 }, TypeVideo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.aio.media.aio_media.TypeVideo
  * JD-Core Version:    0.7.0.1
  */

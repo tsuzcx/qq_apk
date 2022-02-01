@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.emojicapture.c;
 
-import a.l;
-import com.tencent.mm.api.k;
-import com.tencent.mm.plugin.emojicapture.model.a.a;
+import android.graphics.Matrix;
+import com.tencent.mm.api.t;
+import com.tencent.mm.plugin.emojicapture.model.a.b;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IPresenter;", "", "addEmoji", "", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "destroy", "mix", "onBack", "", "onVoiceTextFinished", "voiceText", "", "pause", "removeBg", "resume", "setup", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "speedUp", "updateText", "text", "color", "", "change", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/contract/EditorContract$IPresenter;", "", "addEmoji", "", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "touchMatrix", "Landroid/graphics/Matrix;", "destroy", "mix", "onBack", "", "onVoiceTextFinished", "voiceText", "", "pause", "removeBg", "resume", "setup", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "speedUp", "updateText", "text", "color", "", "change", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b$a
 {
-  public abstract void Lm(String paramString);
+  public abstract void a(t paramt, Matrix paramMatrix);
   
-  public abstract void b(a parama);
+  public abstract void a(b paramb);
   
-  public abstract boolean bnA();
+  public abstract boolean aAx();
   
-  public abstract boolean bnB();
+  public abstract void api(String paramString);
   
-  public abstract void bnC();
+  public abstract boolean dDx();
   
-  public abstract void c(k paramk);
+  public abstract boolean dDy();
+  
+  public abstract void dDz();
   
   public abstract void destroy();
-  
-  public abstract void n(String paramString, int paramInt, boolean paramBoolean);
   
   public abstract void pause();
   
   public abstract void resume();
   
-  public abstract boolean zY();
+  public abstract void s(String paramString, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.c.b.a
  * JD-Core Version:    0.7.0.1
  */

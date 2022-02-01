@@ -91,10 +91,10 @@ final class GifInfoHandle
   
   static GifInfoHandle openMarkableInputStream(InputStream paramInputStream, boolean paramBoolean, NewGifDecoder.Options paramOptions)
   {
-    if (!paramInputStream.markSupported()) {
-      throw new IllegalArgumentException("InputStream does not support marking");
+    if (paramInputStream.markSupported()) {
+      return openStream(paramInputStream, paramBoolean, paramOptions);
     }
-    return openStream(paramInputStream, paramBoolean, paramOptions);
+    throw new IllegalArgumentException("InputStream does not support marking");
   }
   
   static native GifInfoHandle openStream(InputStream paramInputStream, boolean paramBoolean, NewGifDecoder.Options paramOptions);
@@ -256,47 +256,19 @@ final class GifInfoHandle
     }
   }
   
-  /* Error */
   int getFrameDuration(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iload_1
-    //   3: iflt +11 -> 14
-    //   6: iload_1
-    //   7: aload_0
-    //   8: getfield 39	com/tencent/component/media/gif/GifInfoHandle:frameCount	I
-    //   11: if_icmplt +18 -> 29
-    //   14: new 190	java/lang/IndexOutOfBoundsException
-    //   17: dup
-    //   18: ldc 192
-    //   20: invokespecial 193	java/lang/IndexOutOfBoundsException:<init>	(Ljava/lang/String;)V
-    //   23: athrow
-    //   24: astore_2
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: aload_2
-    //   28: athrow
-    //   29: aload_0
-    //   30: getfield 33	com/tencent/component/media/gif/GifInfoHandle:gifInfoPtr	J
-    //   33: iload_1
-    //   34: invokestatic 195	com/tencent/component/media/gif/GifInfoHandle:getFrameDuration	(JI)I
-    //   37: istore_1
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: iload_1
-    //   41: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	GifInfoHandle
-    //   0	42	1	paramInt	int
-    //   24	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	14	24	finally
-    //   14	24	24	finally
-    //   29	38	24	finally
+    if (paramInt >= 0) {}
+    try
+    {
+      if (paramInt < this.frameCount)
+      {
+        paramInt = getFrameDuration(this.gifInfoPtr, paramInt);
+        return paramInt;
+      }
+      throw new IndexOutOfBoundsException("Frame index is out of bounds");
+    }
+    finally {}
   }
   
   int getImageCount()
@@ -389,42 +361,24 @@ final class GifInfoHandle
     }
   }
   
-  /* Error */
   boolean isRecycled()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 33	com/tencent/component/media/gif/GifInfoHandle:gifInfoPtr	J
-    //   6: lstore_1
-    //   7: lload_1
-    //   8: lconst_0
-    //   9: lcmp
-    //   10: ifne +9 -> 19
-    //   13: iconst_1
-    //   14: istore_3
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: iload_3
-    //   18: ireturn
-    //   19: iconst_0
-    //   20: istore_3
-    //   21: goto -6 -> 15
-    //   24: astore 4
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: aload 4
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	GifInfoHandle
-    //   6	2	1	l	long
-    //   14	7	3	bool	boolean
-    //   24	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	24	finally
+    try
+    {
+      long l = this.gifInfoPtr;
+      boolean bool;
+      if (l == 0L) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   void postUnbindSurface()
@@ -589,32 +543,33 @@ final class GifInfoHandle
   
   void setLoopCount(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("Loop count of range <0, 65535>");
+    if ((paramInt >= 0) && (paramInt <= 65535)) {
+      try
+      {
+        setLoopCount(this.gifInfoPtr, paramInt);
+        return;
+      }
+      finally {}
     }
-    try
-    {
-      setLoopCount(this.gifInfoPtr, paramInt);
-      return;
-    }
-    finally {}
+    throw new IllegalArgumentException("Loop count of range <0, 65535>");
   }
   
   void setSpeedFactor(float paramFloat)
   {
-    if ((paramFloat <= 0.0F) || (Float.isNaN(paramFloat))) {
-      throw new IllegalArgumentException("Speed factor is not positive");
-    }
-    float f = paramFloat;
-    if (paramFloat < 0.0F) {
-      f = 0.0F;
-    }
-    try
+    if ((paramFloat > 0.0F) && (!Float.isNaN(paramFloat)))
     {
-      setSpeedFactor(this.gifInfoPtr, f);
-      return;
+      float f = paramFloat;
+      if (paramFloat < 0.0F) {
+        f = 0.0F;
+      }
+      try
+      {
+        setSpeedFactor(this.gifInfoPtr, f);
+        return;
+      }
+      finally {}
     }
-    finally {}
+    throw new IllegalArgumentException("Speed factor is not positive");
   }
   
   void updateFile(String paramString)
@@ -633,7 +588,7 @@ final class GifInfoHandle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.gif.GifInfoHandle
  * JD-Core Version:    0.7.0.1
  */

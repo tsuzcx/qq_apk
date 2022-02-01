@@ -26,16 +26,15 @@ public class j
     System.arraycopy(this._buf, j, this.a, 0, i);
     i = j + i;
     this.d = util.buf_to_int16(this._buf, i);
-    j = i + 2;
-    i = util.buf_to_int16(this._buf, j);
-    j += 2;
-    this.b = new byte[i];
-    System.arraycopy(this._buf, j, this.b, 0, i);
+    i += 2;
+    j = util.buf_to_int16(this._buf, i);
+    this.b = new byte[j];
+    System.arraycopy(this._buf, i + 2, this.b, 0, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.devicelock.j
  * JD-Core Version:    0.7.0.1
  */

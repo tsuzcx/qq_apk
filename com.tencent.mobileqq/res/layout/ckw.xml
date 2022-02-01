@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/pyq" android:layout_width="fill_parent" android:layout_height="48.0dip" android:src="@drawable/jtd" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nfu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/osf" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/2e" android:textColor="#b3ffffff" android:id="@id/osg" android:visibility="invisible" android:text="@string/za6" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/8p" />
+    <ImageView android:id="@id/pyt" android:padding="@dimen/3b" android:visibility="gone" android:layout_width="@dimen/bq8" android:layout_height="@dimen/bq8" android:src="@drawable/jte" />
+</merge>

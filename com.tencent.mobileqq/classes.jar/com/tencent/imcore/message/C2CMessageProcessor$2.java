@@ -1,21 +1,21 @@
 package com.tencent.imcore.message;
 
-import absu;
-import amdu;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class C2CMessageProcessor$2
-  implements Runnable
+class C2CMessageProcessor$2
+  implements Comparator<MessageRecord>
 {
-  public C2CMessageProcessor$2(absu paramabsu, amdu paramamdu, String paramString) {}
+  C2CMessageProcessor$2(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_Amdu.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor.2
  * JD-Core Version:    0.7.0.1
  */

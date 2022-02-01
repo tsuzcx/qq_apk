@@ -5,43 +5,38 @@ import com.tencent.mm.kernel.a.a;
 
 public abstract class g
 {
-  public Application bX;
-  public a eHJ;
-  private Boolean eKv;
-  public a eKw = new a();
+  public Application bGP;
+  public a mCB;
+  private Boolean mFG;
+  public a mFH = new a();
   public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
     this.mProcessName = paramString;
-    this.eHJ = new a();
-    this.bX = paramApplication;
+    this.mCB = new a();
+    this.bGP = paramApplication;
   }
   
-  public final a SC()
-  {
-    return this.eKw;
-  }
-  
-  public final boolean SD()
-  {
-    if (this.eKv == null) {
-      this.eKv = Boolean.valueOf(mI(""));
-    }
-    return this.eKv.booleanValue();
-  }
-  
-  public abstract String getPackageName();
-  
-  public final String getProcessName()
-  {
-    return this.mProcessName;
-  }
-  
-  public final boolean mI(String paramString)
+  public final boolean FH(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
   }
+  
+  public final boolean FI(String paramString)
+  {
+    return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
+  }
+  
+  public final boolean bbA()
+  {
+    if (this.mFG == null) {
+      this.mFG = Boolean.valueOf(FH(""));
+    }
+    return this.mFG.booleanValue();
+  }
+  
+  public abstract String getPackageName();
   
   public String toString()
   {
@@ -53,15 +48,16 @@ public abstract class g
   
   public static final class a
   {
-    public long eKA;
-    public long eKB;
-    public long eKC;
-    public long eKD;
-    public long eKE;
-    public long eKF;
-    public long eKx;
-    public long eKy;
-    public long eKz;
+    public long mFI;
+    public long mFJ;
+    public long mFK;
+    public long mFL;
+    public long mFM;
+    public long mFN;
+    public long mFO;
+    public long mFP;
+    public long mFQ;
+    public long mFR;
   }
 }
 

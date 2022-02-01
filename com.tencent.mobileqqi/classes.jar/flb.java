@@ -1,57 +1,36 @@
-import android.os.Build.VERSION;
-import java.util.AbstractCollection;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.graphics.Bitmap;
+import android.os.Message;
+import android.os.Process;
+import android.os.SystemClock;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import java.util.concurrent.Callable;
 
 public class flb
+  implements Callable
 {
-  final AbstractCollection a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public flb(int paramInt)
+  public flb(QQAnimationDrawable paramQQAnimationDrawable, int paramInt, long paramLong)
   {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      this.a = new ArrayDeque();
-      return;
-    }
-    this.a = new ArrayBlockingQueue(30);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public int a()
+  public Bitmap a()
   {
-    return this.a.size();
-  }
-  
-  public Object a()
-  {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
-      }
+    Process.setThreadPriority(10);
+    QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, false, this.jdField_a_of_type_Int));
+    QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, this.jdField_a_of_type_Int);
+    if ((QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable) == null) && (this.jdField_a_of_type_Int == 0)) {
+      QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable, QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable));
     }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramObject);
-      }
-    }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
-      return;
-    }
-    ((ArrayBlockingQueue)this.a).offer(paramObject);
+    long l1 = SystemClock.uptimeMillis();
+    Message localMessage = QQAnimationDrawable.a(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable).obtainMessage();
+    long l2 = SystemClock.uptimeMillis();
+    localMessage.obj = Long.valueOf(Long.valueOf(Math.max(this.jdField_a_of_type_Long - l1, 0L)).longValue() + l2);
+    localMessage.sendToTarget();
+    return QQAnimationDrawable.b(this.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable);
   }
 }
 

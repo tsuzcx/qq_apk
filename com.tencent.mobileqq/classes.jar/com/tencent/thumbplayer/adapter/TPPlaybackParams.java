@@ -3,6 +3,8 @@ package com.tencent.thumbplayer.adapter;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
+import android.view.SurfaceHolder;
+import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -20,6 +22,7 @@ public class TPPlaybackParams
 {
   private static final String TAG = "TPPlaybackParams";
   private float mAudioGainRatio;
+  private String mAudioNormalizeVolumeParams;
   private Map<String, TPPlaybackParams.AudioTrackAttribute> mAudioTrackSources = new HashMap(0);
   private TPPlayerDataSource mDataSource = new TPPlayerDataSource();
   private TPPlaybackParams.LoopbackAttribute mLoopback;
@@ -28,7 +31,7 @@ public class TPPlaybackParams
   private ArrayList<TPPlaybackParams.SelectTrackAttribute> mSelectTrackAttributes = new ArrayList();
   private float mSpeedRatio;
   private Map<String, TPPlaybackParams.SubtitleAttribute> mSubtitleSources = new HashMap(0);
-  private Surface mSurface;
+  private Object mSurfaceObj;
   private TPProgramInfo mTpProgramInfo;
   private Map<Integer, TPTrackInfo> mTpSelectedTypeTrackInfoMap = new HashMap(0);
   private ArrayList<TPTrackInfo> mTpTrackInfoList = new ArrayList();
@@ -60,8 +63,10 @@ public class TPPlaybackParams
   
   public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (TextUtils.isEmpty(paramString2)) {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2)) {
       return;
     }
     TPPlaybackParams.AudioTrackAttribute localAudioTrackAttribute = new TPPlaybackParams.AudioTrackAttribute();
@@ -82,37 +87,44 @@ public class TPPlaybackParams
   public void addSelectedTrackInfo(int paramInt, long paramLong, TPTrackInfo paramTPTrackInfo)
   {
     this.mTpSelectedTypeTrackInfoMap.put(Integer.valueOf(paramTPTrackInfo.getTrackType()), paramTPTrackInfo);
-    if ((paramInt < 0) || (paramInt >= this.mTpTrackInfoList.size()))
+    if ((paramInt >= 0) && (paramInt < this.mTpTrackInfoList.size()))
     {
-      TPLogUtil.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.mTpTrackInfoList.size());
-      return;
-    }
-    TPPlaybackParams.SelectTrackAttribute localSelectTrackAttribute = new TPPlaybackParams.SelectTrackAttribute();
-    localSelectTrackAttribute.trackIndex = paramInt;
-    localSelectTrackAttribute.opaque = paramLong;
-    Iterator localIterator = this.mTpTrackInfoList.iterator();
-    while (localIterator.hasNext())
-    {
-      TPTrackInfo localTPTrackInfo = (TPTrackInfo)localIterator.next();
-      if (localTPTrackInfo.trackType == paramTPTrackInfo.trackType) {
-        if (((TextUtils.isEmpty(localTPTrackInfo.name)) && (TextUtils.isEmpty(paramTPTrackInfo.name))) || (localTPTrackInfo.name.equals(paramTPTrackInfo.name)))
-        {
-          localTPTrackInfo.isSelected = true;
-          localSelectTrackAttribute.trackInfo = localTPTrackInfo;
-        }
-        else
-        {
-          localTPTrackInfo.isSelected = false;
+      TPPlaybackParams.SelectTrackAttribute localSelectTrackAttribute = new TPPlaybackParams.SelectTrackAttribute();
+      localSelectTrackAttribute.trackIndex = paramInt;
+      localSelectTrackAttribute.opaque = paramLong;
+      Iterator localIterator = this.mTpTrackInfoList.iterator();
+      while (localIterator.hasNext())
+      {
+        TPTrackInfo localTPTrackInfo = (TPTrackInfo)localIterator.next();
+        if (localTPTrackInfo.trackType == paramTPTrackInfo.trackType) {
+          if (((TextUtils.isEmpty(localTPTrackInfo.name)) && (TextUtils.isEmpty(paramTPTrackInfo.name))) || (localTPTrackInfo.name.equals(paramTPTrackInfo.name)))
+          {
+            localTPTrackInfo.isSelected = true;
+            localSelectTrackAttribute.trackInfo = localTPTrackInfo;
+          }
+          else
+          {
+            localTPTrackInfo.isSelected = false;
+          }
         }
       }
+      this.mSelectTrackAttributes.add(localSelectTrackAttribute);
+      return;
     }
-    this.mSelectTrackAttributes.add(localSelectTrackAttribute);
+    paramTPTrackInfo = new StringBuilder();
+    paramTPTrackInfo.append("track Index:");
+    paramTPTrackInfo.append(paramInt);
+    paramTPTrackInfo.append(" is invalid, trackInfoList size:");
+    paramTPTrackInfo.append(this.mTpTrackInfoList.size());
+    TPLogUtil.w("TPPlaybackParams", paramTPTrackInfo.toString());
   }
   
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (TextUtils.isEmpty(paramString3)) {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString3)) {
       return;
     }
     TPPlaybackParams.SubtitleAttribute localSubtitleAttribute = new TPPlaybackParams.SubtitleAttribute();
@@ -126,6 +138,11 @@ public class TPPlaybackParams
   public float audioGainRatio()
   {
     return this.mAudioGainRatio;
+  }
+  
+  public String audioNormalizeVolumeParams()
+  {
+    return this.mAudioNormalizeVolumeParams;
   }
   
   public List<TPPlaybackParams.AudioTrackAttribute> audioTrackSources()
@@ -194,9 +211,10 @@ public class TPPlaybackParams
     this.mAudioTrackSources.clear();
     this.mOutputMute = false;
     this.mAudioGainRatio = 1.0F;
+    this.mAudioNormalizeVolumeParams = "";
     this.mSpeedRatio = 1.0F;
     this.mTpSelectedTypeTrackInfoMap.clear();
-    this.mSurface = null;
+    this.mSurfaceObj = null;
     this.mOptionalParams.clear();
     this.mDataSource = new TPPlayerDataSource();
     this.mLoopback = null;
@@ -211,9 +229,20 @@ public class TPPlaybackParams
     this.mAudioGainRatio = paramFloat;
   }
   
+  public void setAudioNormalizeVolumeParams(String paramString)
+  {
+    this.mAudioNormalizeVolumeParams = paramString;
+  }
+  
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
     this.mDataSource.setFileDescriptor(paramParcelFileDescriptor);
+  }
+  
+  public void setDataSource(TPUrlDataSource paramTPUrlDataSource, Map<String, String> paramMap)
+  {
+    this.mDataSource.setTpUrlDataSource(paramTPUrlDataSource);
+    this.mDataSource.setHttpHeaders(paramMap);
   }
   
   public void setDataSource(ITPMediaAsset paramITPMediaAsset)
@@ -235,29 +264,33 @@ public class TPPlaybackParams
   public void setDeselectTrackInfo(int paramInt, long paramLong, TPTrackInfo paramTPTrackInfo)
   {
     this.mTpSelectedTypeTrackInfoMap.remove(Integer.valueOf(paramTPTrackInfo.getTrackType()));
-    if ((paramInt < 0) || (paramInt >= this.mTpTrackInfoList.size())) {
-      TPLogUtil.w("TPPlaybackParams", "track Index:" + paramInt + " is invalid, trackInfoList size:" + this.mTpTrackInfoList.size());
-    }
-    Object localObject;
-    do
+    if ((paramInt >= 0) && (paramInt < this.mTpTrackInfoList.size()))
     {
-      return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
+      Iterator localIterator = this.mTpTrackInfoList.iterator();
+      Object localObject;
+      while (localIterator.hasNext())
       {
-        localIterator = this.mTpTrackInfoList.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = (TPTrackInfo)localIterator.next();
-          if ((((TPTrackInfo)localObject).trackType == paramTPTrackInfo.trackType) && (((TextUtils.isEmpty(((TPTrackInfo)localObject).name)) && (TextUtils.isEmpty(paramTPTrackInfo.name))) || (((TPTrackInfo)localObject).name.equals(paramTPTrackInfo.name)))) {
-            ((TPTrackInfo)localObject).isSelected = false;
-          }
+        localObject = (TPTrackInfo)localIterator.next();
+        if ((((TPTrackInfo)localObject).trackType == paramTPTrackInfo.trackType) && (((TextUtils.isEmpty(((TPTrackInfo)localObject).name)) && (TextUtils.isEmpty(paramTPTrackInfo.name))) || (((TPTrackInfo)localObject).name.equals(paramTPTrackInfo.name)))) {
+          ((TPTrackInfo)localObject).isSelected = false;
         }
-        localIterator = this.mSelectTrackAttributes.iterator();
       }
-      localObject = (TPPlaybackParams.SelectTrackAttribute)localIterator.next();
-    } while ((((TPPlaybackParams.SelectTrackAttribute)localObject).trackInfo == null) || (!((TPPlaybackParams.SelectTrackAttribute)localObject).trackInfo.equals(paramTPTrackInfo)));
-    this.mSelectTrackAttributes.remove(localObject);
+      localIterator = this.mSelectTrackAttributes.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (TPPlaybackParams.SelectTrackAttribute)localIterator.next();
+        if ((((TPPlaybackParams.SelectTrackAttribute)localObject).trackInfo != null) && (((TPPlaybackParams.SelectTrackAttribute)localObject).trackInfo.equals(paramTPTrackInfo))) {
+          this.mSelectTrackAttributes.remove(localObject);
+        }
+      }
+      return;
+    }
+    paramTPTrackInfo = new StringBuilder();
+    paramTPTrackInfo.append("track Index:");
+    paramTPTrackInfo.append(paramInt);
+    paramTPTrackInfo.append(" is invalid, trackInfoList size:");
+    paramTPTrackInfo.append(this.mTpTrackInfoList.size());
+    TPLogUtil.w("TPPlaybackParams", paramTPTrackInfo.toString());
   }
   
   public void setLoopback(boolean paramBoolean)
@@ -265,9 +298,10 @@ public class TPPlaybackParams
     if (this.mLoopback == null) {
       this.mLoopback = new TPPlaybackParams.LoopbackAttribute();
     }
-    this.mLoopback.isLoopback = paramBoolean;
-    this.mLoopback.startPositionMs = 0L;
-    this.mLoopback.endPositionMs = -1L;
+    TPPlaybackParams.LoopbackAttribute localLoopbackAttribute = this.mLoopback;
+    localLoopbackAttribute.isLoopback = paramBoolean;
+    localLoopbackAttribute.startPositionMs = 0L;
+    localLoopbackAttribute.endPositionMs = -1L;
   }
   
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
@@ -275,9 +309,10 @@ public class TPPlaybackParams
     if (this.mLoopback == null) {
       this.mLoopback = new TPPlaybackParams.LoopbackAttribute();
     }
-    this.mLoopback.isLoopback = paramBoolean;
-    this.mLoopback.startPositionMs = paramLong1;
-    this.mLoopback.endPositionMs = paramLong2;
+    TPPlaybackParams.LoopbackAttribute localLoopbackAttribute = this.mLoopback;
+    localLoopbackAttribute.isLoopback = paramBoolean;
+    localLoopbackAttribute.startPositionMs = paramLong1;
+    localLoopbackAttribute.endPositionMs = paramLong2;
   }
   
   public void setOutputMute(boolean paramBoolean)
@@ -297,7 +332,12 @@ public class TPPlaybackParams
   
   public void setSurface(Surface paramSurface)
   {
-    this.mSurface = paramSurface;
+    this.mSurfaceObj = paramSurface;
+  }
+  
+  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mSurfaceObj = paramSurfaceHolder;
   }
   
   public float speedRatio()
@@ -317,9 +357,10 @@ public class TPPlaybackParams
   
   public boolean supportClip()
   {
+    TPPlayerDataSource localTPPlayerDataSource = dataSource();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (dataSource() != null)
+    if (localTPPlayerDataSource != null)
     {
       bool1 = bool2;
       if (dataSource().getType() == 2) {
@@ -329,19 +370,20 @@ public class TPPlaybackParams
     return bool1;
   }
   
-  public Surface surface()
+  public Object surface()
   {
-    return this.mSurface;
+    return this.mSurfaceObj;
   }
   
   public boolean validDataSource()
   {
-    return (this.mDataSource != null) && (this.mDataSource.isValid());
+    TPPlayerDataSource localTPPlayerDataSource = this.mDataSource;
+    return (localTPPlayerDataSource != null) && (localTPPlayerDataSource.isValid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackParams
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,21 @@
+package com.tencent.livesdk.servicefactory.builder.weibosdk;
+
+import com.tencent.falco.base.libapi.ServiceBaseInterface;
+import com.tencent.falco.base.weibosdk.WeiboSdkImpl;
+import com.tencent.livesdk.servicefactory.ServiceAccessor;
+import com.tencent.livesdk.servicefactory.builder.BaseServiceBuilder;
+
+public class WeiboSdkBuilder
+  implements BaseServiceBuilder
+{
+  public ServiceBaseInterface build(ServiceAccessor paramServiceAccessor)
+  {
+    return new WeiboSdkImpl(new WeiboSdkBuilder.1(this, paramServiceAccessor));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.livesdk.servicefactory.builder.weibosdk.WeiboSdkBuilder
+ * JD-Core Version:    0.7.0.1
+ */

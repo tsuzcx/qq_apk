@@ -14,12 +14,21 @@ public class AVPhoneUserInfo$TelInfo
   
   public String toString()
   {
-    return "TelInfo--> Nation = " + this.nation + ", Prefix = " + this.prefix + ", Mobile = " + this.mobile + ", nationState = " + this.nationState;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TelInfo--> Nation = ");
+    localStringBuilder.append(this.nation);
+    localStringBuilder.append(", Prefix = ");
+    localStringBuilder.append(this.prefix);
+    localStringBuilder.append(", Mobile = ");
+    localStringBuilder.append(this.mobile);
+    localStringBuilder.append(", nationState = ");
+    localStringBuilder.append(this.nationState);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a3x" style="@style/q1"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eb_" android:background="@color/vy" android:visibility="gone" style="@style/l0">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="2.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/apf" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:layout_marginTop="15.0dip" android:text="@string/el_" style="@style/l1" />
-        <TextView android:gravity="center" android:id="@id/eba" android:layout_marginTop="15.0dip" android:text="@string/el9" style="@style/l1" />
-        <Button android:id="@id/ebb" android:layout_marginTop="35.0dip" style="@style/nq" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/d4">
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/a11" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/esr" />
     </LinearLayout>
-</LinearLayout>
+    <ScrollView android:id="@id/ksy" android:layout_width="fill_parent" android:layout_height="318.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/ksz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+</merge>

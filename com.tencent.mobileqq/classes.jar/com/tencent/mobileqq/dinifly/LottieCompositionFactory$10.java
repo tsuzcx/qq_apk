@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.dinifly;
 
-import com.tencent.mobileqq.dinifly.model.LottieCompositionCache;
 import java.util.Map;
 
 final class LottieCompositionFactory$10
@@ -10,9 +9,6 @@ final class LottieCompositionFactory$10
   
   public void onResult(LottieComposition paramLottieComposition)
   {
-    if (this.val$cacheKey != null) {
-      LottieCompositionCache.getInstance().put(this.val$cacheKey, paramLottieComposition);
-    }
     LottieCompositionFactory.access$000().remove(this.val$cacheKey);
   }
 }

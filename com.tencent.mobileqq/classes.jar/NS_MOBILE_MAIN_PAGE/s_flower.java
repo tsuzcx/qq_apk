@@ -30,17 +30,19 @@ public final class s_flower
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.count, 0);
-    if (this.flowericonurl != null) {
-      paramJceOutputStream.write(this.flowericonurl, 1);
+    String str = this.flowericonurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.update_desc != null) {
-      paramJceOutputStream.write(this.update_desc, 2);
+    str = this.update_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_flower
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,59 @@
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
+import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.mobileqq.subaccount.SubAccountDataControll;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class dls
   implements ActionSheet.OnButtonClickListener
 {
-  public dls(SubAccountMessageActivity paramSubAccountMessageActivity, ActionSheet paramActionSheet, boolean paramBoolean) {}
+  public dls(SubAccountMessageActivity paramSubAccountMessageActivity, ActionSheet paramActionSheet, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = true;
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      paramView = SubAccountAssistantImpl.a();
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
-      if (!this.jdField_a_of_type_Boolean)
+    }
+    do
+    {
+      do
       {
-        paramView.a(localQQAppInterface, bool);
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b;
-        if (this.jdField_a_of_type_Boolean) {
-          break label112;
-        }
-      }
-      for (paramView = "1";; paramView = "0")
-      {
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "Bind_account", "Top_bind_account", 0, 0, paramView, "", "", "");
         return;
-        bool = false;
-        break;
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        paramView = "";
+        if (SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity) != null) {
+          paramView = SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin;
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b, "CliOper", "", paramView, "Bind_account", "Clean_msg_tipslist", 0, 0, "", "", "", "");
+      } while (SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity) == null);
+      SubAccountDataControll.a().a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b, SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b.a().c(AppConstants.O, 7000);
+      if (SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity)) {
+        ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b.a(0)).a().a(SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin, null);
       }
-    case 1: 
-      label112:
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, true, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.getString(2131561834));
+      SubAccountMessageActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity);
+      return;
+    } while ((!this.b) || (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.f()) || ((SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity) != null) && (TextUtils.isEmpty(SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin))));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.d();
+    if (SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity))
+    {
+      ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b.a(0)).a().a(SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin, "sub.account.unbind");
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity, false, true);
+    SubAccountAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity.b, SubAccountMessageActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountMessageActivity).subuin);
   }
 }
 

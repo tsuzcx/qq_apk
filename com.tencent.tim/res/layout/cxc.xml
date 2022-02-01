@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/a6c" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+        <RelativeLayout android:id="@id/a6d" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/aih" android:gravity="center" android:id="@id/iim" android:background="@drawable/common_strip_setting_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/b6x" android:drawablePadding="6.0dip" style="@style/i_" />
+        <RelativeLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/fue" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+    <com.tencent.tim.filemanager.widget.SendBottomBar android:id="@id/imz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.tim.filemanager.widget.QfileEditBottomBar android:id="@id/brm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

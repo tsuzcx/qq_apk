@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:background="#72000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805d4" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03013b" />
-    <TextView android:textSize="18.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805df" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0170" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d074e" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0805d4" android:layout_centerHorizontal="true" />
-    <com.tencent.av.ui.MultiVideoMembersHolderUI android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805e0" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0152" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0805d4" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805c8" android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030134" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805d3" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03013b" />
+    <TextView android:textSize="18.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805de" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0170" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d074e" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0805d3" android:layout_centerHorizontal="true" />
+    <com.tencent.av.ui.MultiVideoMembersHolderUI android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805df" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0152" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0805d3" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805c7" android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030134" />
 </RelativeLayout>

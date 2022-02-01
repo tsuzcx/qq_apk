@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="45">48.0dip</dimen>
+    <dimen name="65">12.0dip</dimen>
+    <dimen name="67">14.0dip</dimen>
+    <dimen name="8v">24.0dip</dimen>
+    <dimen name="8w">52.0dip</dimen>
+    <item type="dimen" name="8y">@dimen/91</item>
+    <dimen name="91">24.0dip</dimen>
+    <dimen name="bh0">24.0dip</dimen>
+    <dimen name="bh3">24.0dip</dimen>
+    <dimen name="bif">20.0dip</dimen>
+    <dimen name="bih">4.0dip</dimen>
+    <dimen name="bil">96.0dip</dimen>
+    <dimen name="bio">0.0dip</dimen>
+    <dimen name="bip">0.0dip</dimen>
+    <dimen name="biq">104.0dip</dimen>
+    <dimen name="biy">68.0dip</dimen>
+    <dimen name="bj0">28.0dip</dimen>
+    <dimen name="bj1">64.0dip</dimen>
+    <dimen name="bj2">32.0dip</dimen>
+    <dimen name="bj3">24.0dip</dimen>
+    <dimen name="bj4">32.0dip</dimen>
+    <item type="dimen" name="bsp">0.0371</item>
+    <item type="dimen" name="bsq">0.99</item>
+    <item type="dimen" name="bsr">0.34</item>
+    <dimen name="bss">188.0dip</dimen>
+    <item type="dimen" name="bst">0.6</item>
+    <item type="dimen" name="bsu">0.04</item>
+    <item type="dimen" name="bsv">0.44</item>
+</resources>

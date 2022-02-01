@@ -14,15 +14,15 @@ public class RegionBitmap$DrawData
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass())) {
+      return ((DrawData)paramObject).mDrawRect.equals(this.mDrawRect);
     }
-    return ((DrawData)paramObject).mDrawRect.equals(this.mDrawRect);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.RegionBitmap.DrawData
  * JD-Core Version:    0.7.0.1
  */

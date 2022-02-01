@@ -154,24 +154,24 @@ public final class PluginCommunicationHandler
       return transferInner(paramString, paramBundle);
     }
     
-    public void transferAsync(String paramString, Bundle paramBundle, RemoteCallback paramRemoteCallback)
+    public void transferAsync(String paramString, Bundle paramBundle, RemotesCallback paramRemotesCallback)
       throws RemoteException
     {
-      PluginCommunicationHandler.this.mChannelHandler.post(new TransferRunnable(paramString, paramBundle, paramRemoteCallback));
+      PluginCommunicationHandler.this.mChannelHandler.post(new TransferRunnable(paramString, paramBundle, paramRemotesCallback));
     }
     
     private class TransferRunnable
       implements Runnable
     {
-      private RemoteCallback mCb;
+      private RemotesCallback mCb;
       private String mCmd;
       private RemoteCommand.OnInvokeFinishLinstener mListener;
       private Bundle mParams;
       
-      TransferRunnable(String paramString, Bundle paramBundle, RemoteCallback paramRemoteCallback)
+      TransferRunnable(String paramString, Bundle paramBundle, RemotesCallback paramRemotesCallback)
       {
         this.mCmd = paramString;
-        this.mCb = paramRemoteCallback;
+        this.mCb = paramRemotesCallback;
         this.mParams = paramBundle;
         if (this.mCb != null) {
           this.mListener = new RemoteCommand.OnInvokeFinishLinstener()

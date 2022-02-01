@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ah9" android:background="#fff3f3f3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="64.0dip" android:layout_height="47.0dip" android:src="@raw/card_empty_icon" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/h6" android:id="@id/ah_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ai4" android:alpha="0.2" />
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="@dimen/vc" android:layout_height="108.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/adb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/bv" android:layout_weight="1.0">
+        <ImageView android:id="@id/acz" android:background="@drawable/hx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="no" />
+        <ImageView android:id="@id/acx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-12.0dip" android:layout_alignTop="@id/adj" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/acy" android:background="@drawable/hy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-12.0dip" android:layout_alignTop="@id/adj" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/adk" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cd" android:text="title" android:maxLines="1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <LinearLayout android:id="@id/adj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_above="@id/adk" android:layout_centerInParent="true">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:id="@id/ade" android:background="@drawable/hw" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerInParent="true" />
+                <com.tencent.mm.pluginsdk.ui.NotCopyUserNameImageView android:id="@id/ad_" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/b94" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/ada" android:background="@drawable/hv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ad8" android:layout_width="7.0dip" android:layout_height="fill_parent">
+        <ImageView android:id="@id/ad7" android:layout_width="1.0dip" android:layout_height="fill_parent" android:src="@drawable/byc" android:scaleType="fitXY" android:layout_alignParentRight="true" />
+    </RelativeLayout>
 </LinearLayout>

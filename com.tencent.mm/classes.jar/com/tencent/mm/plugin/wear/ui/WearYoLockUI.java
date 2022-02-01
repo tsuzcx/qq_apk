@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wear.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WearYoLockUI
@@ -14,7 +13,7 @@ public class WearYoLockUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.ui.WearYoLockUI
  * JD-Core Version:    0.7.0.1
  */

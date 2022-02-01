@@ -17,13 +17,17 @@ final class Hpack
   
   static ByteString checkLowercase(ByteString paramByteString)
   {
-    int i = 0;
     int j = paramByteString.size();
+    int i = 0;
     while (i < j)
     {
       int k = paramByteString.getByte(i);
-      if ((k >= 65) && (k <= 90)) {
-        throw new IOException("PROTOCOL_ERROR response malformed: mixed case name: " + paramByteString.utf8());
+      if ((k >= 65) && (k <= 90))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PROTOCOL_ERROR response malformed: mixed case name: ");
+        localStringBuilder.append(paramByteString.utf8());
+        throw new IOException(localStringBuilder.toString());
       }
       i += 1;
     }
@@ -34,9 +38,13 @@ final class Hpack
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap(STATIC_HEADER_TABLE.length);
     int i = 0;
-    while (i < STATIC_HEADER_TABLE.length)
+    for (;;)
     {
-      if (!localLinkedHashMap.containsKey(STATIC_HEADER_TABLE[i].name)) {
+      Header[] arrayOfHeader = STATIC_HEADER_TABLE;
+      if (i >= arrayOfHeader.length) {
+        break;
+      }
+      if (!localLinkedHashMap.containsKey(arrayOfHeader[i].name)) {
         localLinkedHashMap.put(STATIC_HEADER_TABLE[i].name, Integer.valueOf(i));
       }
       i += 1;
@@ -46,7 +54,7 @@ final class Hpack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.Hpack
  * JD-Core Version:    0.7.0.1
  */

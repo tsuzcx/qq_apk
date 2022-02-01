@@ -1,6 +1,5 @@
 package com.tencent.recovery.wx;
 
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.job.JobInfo.Builder;
@@ -18,7 +17,35 @@ import java.util.List;
 
 public class RecoveryTinkerManager
 {
-  private static boolean bH(Context paramContext, String paramString)
+  private static final int MIN_SDKVER_TO_USE_JOBSCHEDULER = 26;
+  public static final int OTHER_ERROR = -1;
+  public static final int PATCH_SERVICE_RUNNING = -2;
+  private static final String TAG = "Recovery.RecoveryTinkerManager";
+  public static final String TINKER_PATCH_INTENT_SERVICE = "com.tencent.tinker.lib.service.IntentServiceRunner";
+  public static final String TINKER_PATCH_JOB_SERVICE = "com.tencent.tinker.lib.service.JobServiceRunner";
+  
+  private static String getExpectedServiceRunnerClassName()
+  {
+    if (Build.VERSION.SDK_INT < 26) {
+      return "com.tencent.tinker.lib.service.IntentServiceRunner";
+    }
+    return "com.tencent.tinker.lib.service.JobServiceRunner";
+  }
+  
+  private static String getServiceProcessName(Context paramContext)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = new ComponentName(paramContext, getExpectedServiceRunnerClassName());
+    try
+    {
+      paramContext = localPackageManager.getServiceInfo(paramContext, 0);
+      return paramContext.processName;
+    }
+    finally {}
+    return null;
+  }
+  
+  private static boolean isProcessRunning(Context paramContext, String paramString)
   {
     try
     {
@@ -39,18 +66,7 @@ public class RecoveryTinkerManager
     return false;
   }
   
-  public static int bX(Context paramContext, String paramString)
-  {
-    if (bH(paramContext, iV(paramContext))) {
-      return -2;
-    }
-    if (Build.VERSION.SDK_INT < 26) {
-      return bY(paramContext, paramString);
-    }
-    return bZ(paramContext, paramString);
-  }
-  
-  private static int bY(Context paramContext, String paramString)
+  private static int startPatchByIntentService(Context paramContext, String paramString)
   {
     try
     {
@@ -61,15 +77,14 @@ public class RecoveryTinkerManager
       paramContext.startService(localIntent);
       return 0;
     }
-    catch (Throwable paramContext)
+    finally
     {
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "start patch service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
     return -1;
   }
   
-  @TargetApi(21)
-  private static int bZ(Context paramContext, String paramString)
+  private static int startPatchByJobScheduler(Context paramContext, String paramString)
   {
     try
     {
@@ -91,33 +106,27 @@ public class RecoveryTinkerManager
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "fail to get job scheduler service.", new Object[0]);
       return -1;
     }
-    catch (Throwable paramContext)
+    finally
     {
       RecoveryLog.e("Recovery.RecoveryTinkerManager", "start patch service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
     return -1;
   }
   
-  private static String iV(Context paramContext)
+  public static int startToPatch(Context paramContext, String paramString)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    if (Build.VERSION.SDK_INT < 26) {}
-    for (String str = "com.tencent.tinker.lib.service.IntentServiceRunner";; str = "com.tencent.tinker.lib.service.JobServiceRunner")
-    {
-      paramContext = new ComponentName(paramContext, str);
-      try
-      {
-        paramContext = localPackageManager.getServiceInfo(paramContext, 0);
-        return paramContext.processName;
-      }
-      catch (Throwable paramContext) {}
+    if (isProcessRunning(paramContext, getServiceProcessName(paramContext))) {
+      return -2;
     }
-    return null;
+    if (Build.VERSION.SDK_INT < 26) {
+      return startPatchByIntentService(paramContext, paramString);
+    }
+    return startPatchByJobScheduler(paramContext, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.wx.RecoveryTinkerManager
  * JD-Core Version:    0.7.0.1
  */

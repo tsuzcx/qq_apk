@@ -1,23 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
 import com.tencent.mobileqq.international.activity.FeedbackActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class fzh
-  implements View.OnClickListener
+  implements Runnable
 {
   public fzh(FeedbackActivity paramFeedbackActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = FeedbackActivity.a(this.a).getEditableText().toString().trim();
-    if (TextUtils.isEmpty(paramView)) {
-      return;
-    }
-    FeedbackActivity.b(this.a);
-    paramView.trim();
-    FeedbackActivity.a(this.a, paramView);
+    FeedbackActivity.c(this.a);
+    QQToast.a(this.a, 2131559865, 0).a();
+    this.a.finish();
   }
 }
 

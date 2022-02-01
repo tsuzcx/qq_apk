@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/on4" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black_theme_version2" android:id="@id/olm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="16.0dip" android:text="@string/cancel" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <EditText android:textSize="16.0dip" android:textColor="@color/skin_input_theme_version2" android:textColorHint="@color/skin_hint_input_theme_version2" android:id="@id/omv" android:background="@drawable/skin_searchbar_input_theme_version2" android:paddingLeft="15.0dip" android:paddingTop="0.0dip" android:paddingRight="30.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="12.0dip" android:hint="@string/xgk" android:singleLine="true" android:maxLength="200" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/olm" android:layout_centerVertical="true" android:inputType="textNoSuggestions" android:imeOptions="actionSearch" />
+        <ImageButton android:id="@id/omx" android:background="@null" android:padding="0.0dip" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/cross" android:scaleType="centerCrop" android:layout_alignRight="@id/omv" android:layout_centerVertical="true" android:contentDescription="@string/r2_" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/on_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/olv" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/on2" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/on3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/xgi" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <ImageView android:id="@id/omw" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/iec" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+                <com.tencent.mobileqq.mini.entry.search.widget.BubbleViewGroup android:id="@id/on1" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/on3" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/onf" android:background="@drawable/skin_list_item_normal_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView android:id="@id/onc" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/onn" android:background="@drawable/skin_list_item_normal_theme_version2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/on9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center" android:id="@id/onp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xgl" android:layout_centerInParent="true" />
+                <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="16.0dip" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <TextView android:textColor="@color/skin_black_theme_version2" android:id="@id/ont" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:text="@string/xgo" android:layout_below="@id/on9" />
+            <ListView android:id="@id/onr" android:background="@android:color/transparent" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:layout_below="@id/ont" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

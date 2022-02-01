@@ -75,7 +75,11 @@ public final class i
       boolean bool = this.l.await(this.j, TimeUnit.MILLISECONDS);
       return bool;
     }
-    catch (InterruptedException localInterruptedException) {}
+    catch (InterruptedException localInterruptedException)
+    {
+      label18:
+      break label18;
+    }
     return true;
   }
   
@@ -95,25 +99,43 @@ public final class i
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:" + this.a);
-    localStringBuilder.append(",body:" + cn.b(this.b));
-    localStringBuilder.append(",isGet:false");
-    localStringBuilder.append(",timeout:" + this.e);
-    localStringBuilder.append(",tag:" + null);
-    localStringBuilder.append(",httpCallback:" + null);
-    localStringBuilder.append(",testMode:0");
-    localStringBuilder.append(",httpCallback:" + null);
-    localStringBuilder.append(",testMode:0");
-    localStringBuilder.append(",followRedirects:" + this.d);
-    localStringBuilder.append(",isAbort:" + this.i);
-    localStringBuilder.append(",headers:" + this.c);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("url:");
+    localStringBuilder2.append(this.a);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",body:");
+    localStringBuilder2.append(cn.b(this.b));
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",isGet:false");
+    localStringBuilder2 = new StringBuilder(",timeout:");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",tag:");
+    localStringBuilder2.append(null);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",httpCallback:");
+    localStringBuilder2.append(null);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",testMode:0");
+    localStringBuilder2 = new StringBuilder(",httpCallback:");
+    localStringBuilder2.append(null);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",testMode:0");
+    localStringBuilder2 = new StringBuilder(",followRedirects:");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",isAbort:");
+    localStringBuilder2.append(this.i);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder(",headers:");
+    localStringBuilder2.append(this.c);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.i
  * JD-Core Version:    0.7.0.1
  */

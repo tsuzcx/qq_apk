@@ -5,24 +5,37 @@ public class idh
 {
   public String b(String paramString)
   {
-    if (paramString == null) {}
+    if (paramString == null) {
+      return null;
+    }
+    int i;
+    if (UrlKeyGenerator.a(paramString, "http://"))
+    {
+      i = paramString.indexOf("/", "http://".length());
+      int j = paramString.lastIndexOf("#");
+      if (i == -1) {
+        break label96;
+      }
+      if (j == -1) {
+        break label87;
+      }
+      paramString = paramString.substring(i, j);
+    }
     for (;;)
     {
-      return null;
-      paramString = paramString.toLowerCase();
-      int i;
-      if (paramString.startsWith("http://")) {
-        i = paramString.indexOf("/", "http://".length());
-      }
-      while (i != -1)
+      return paramString;
+      if (UrlKeyGenerator.a(paramString, "https://"))
       {
-        return paramString.substring(i);
-        if (paramString.startsWith("https://")) {
-          i = paramString.indexOf("/", "https://".length());
-        } else {
-          i = paramString.indexOf("/");
-        }
+        i = paramString.indexOf("/", "https://".length());
+        break;
       }
+      i = paramString.indexOf("/");
+      break;
+      label87:
+      paramString = paramString.substring(i);
+      continue;
+      label96:
+      paramString = null;
     }
   }
 }

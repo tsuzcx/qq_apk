@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/nh" android:textColor="@color/a6q" android:background="@color/rv" android:padding="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/emc" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="172.0dip" android:src="@raw/game_logo" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/emd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/emc" android:layout_centerHorizontal="true" />
+</RelativeLayout>

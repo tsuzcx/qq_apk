@@ -64,12 +64,18 @@ public enum a$d
   
   public String toString()
   {
-    return "[" + dC[ordinal()] + "," + this.dD + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(dC[ordinal()]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.dD);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.connect.a.d
  * JD-Core Version:    0.7.0.1
  */

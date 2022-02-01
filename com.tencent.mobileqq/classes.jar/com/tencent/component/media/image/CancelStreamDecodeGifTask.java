@@ -6,7 +6,7 @@ public class CancelStreamDecodeGifTask
   extends StreamDecodeGifTask
 {
   private static int mObjectPoolSize;
-  private static CancelStreamDecodeGifTask sPool = null;
+  private static CancelStreamDecodeGifTask sPool;
   private static final Object sPoolSync = new Object();
   private CancelStreamDecodeGifTask next = null;
   
@@ -42,42 +42,48 @@ public class CancelStreamDecodeGifTask
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static CancelStreamDecodeGifTask obtain(ImageKey paramImageKey)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
-        sPool = sPool.next;
-        localCancelStreamDecodeGifTask.next = null;
-        mObjectPoolSize -= 1;
-        localCancelStreamDecodeGifTask.setImageKey(paramImageKey);
-        return localCancelStreamDecodeGifTask;
+        if (sPool != null)
+        {
+          CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
+          sPool = sPool.next;
+          localCancelStreamDecodeGifTask.next = null;
+          mObjectPoolSize -= 1;
+          localCancelStreamDecodeGifTask.setImageKey(paramImageKey);
+          return localCancelStreamDecodeGifTask;
+        }
       }
-      return new CancelStreamDecodeGifTask(paramImageKey);
     }
+    return new CancelStreamDecodeGifTask(paramImageKey);
   }
   
   public static CancelStreamDecodeGifTask obtain(ImageTask paramImageTask)
   {
-    if (needRecycle) {}
-    synchronized (sPoolSync)
-    {
-      if (sPool != null)
+    if (needRecycle) {
+      synchronized (sPoolSync)
       {
-        CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
-        sPool = sPool.next;
-        localCancelStreamDecodeGifTask.next = null;
-        mObjectPoolSize -= 1;
-        localCancelStreamDecodeGifTask.setImageTask(paramImageTask);
-        return localCancelStreamDecodeGifTask;
+        if (sPool != null)
+        {
+          CancelStreamDecodeGifTask localCancelStreamDecodeGifTask = sPool;
+          sPool = sPool.next;
+          localCancelStreamDecodeGifTask.next = null;
+          mObjectPoolSize -= 1;
+          localCancelStreamDecodeGifTask.setImageTask(paramImageTask);
+          return localCancelStreamDecodeGifTask;
+        }
       }
-      return new CancelStreamDecodeGifTask(paramImageTask);
     }
+    return new CancelStreamDecodeGifTask(paramImageTask);
   }
   
   public void excuteTask()
@@ -103,8 +109,14 @@ public class CancelStreamDecodeGifTask
       return;
     }
     removeRecord((String)paramVarArgs[0]);
-    if (this.mImageKey != null) {
-      ImageManagerLog.d("CancelStreamDecodeGifTask", "onResult type:" + paramInt + " hashcode:" + this.mImageKey.hashCodeEx());
+    if (this.mImageKey != null)
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("onResult type:");
+      paramVarArgs.append(paramInt);
+      paramVarArgs.append(" hashcode:");
+      paramVarArgs.append(this.mImageKey.hashCodeEx());
+      ImageManagerLog.d("CancelStreamDecodeGifTask", paramVarArgs.toString());
     }
     setResult(13, new Object[0]);
   }
@@ -139,7 +151,7 @@ public class CancelStreamDecodeGifTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.CancelStreamDecodeGifTask
  * JD-Core Version:    0.7.0.1
  */

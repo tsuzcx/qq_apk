@@ -11,7 +11,7 @@ public final class app_type_mask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.app_type_mask
  * JD-Core Version:    0.7.0.1
  */

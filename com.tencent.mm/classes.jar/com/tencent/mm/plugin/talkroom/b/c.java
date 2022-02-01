@@ -1,84 +1,74 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aqn;
-import com.tencent.mm.protocal.protobuf.aqo;
-import com.tencent.mm.protocal.protobuf.cjn;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cth;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.protocal.protobuf.fly;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
   extends f
 {
-  private com.tencent.mm.ai.f callback;
-  private final String odS;
-  private final b rr;
+  private final String Kgc;
+  public int SNS;
+  public LinkedList<fly> SOm;
+  private h callback;
+  private final com.tencent.mm.am.c rr;
   private int sceneType;
-  public int tcT;
-  public LinkedList<cjn> tdp;
   
   public c(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(25875);
+    AppMethodBeat.i(29557);
     this.sceneType = 0;
     this.sceneType = paramInt2;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new aqn();
-    ((b.a)localObject).fsY = new aqo();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/gettalkroommember";
-    ((b.a)localObject).funcId = 336;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (aqn)this.rr.fsV.fta;
-    ((aqn)localObject).wQP = paramInt1;
-    ((aqn)localObject).wQQ = paramLong;
-    this.odS = paramString;
-    ((aqn)localObject).Scene = paramInt2;
-    AppMethodBeat.o(25875);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cth();
+    ((c.a)localObject).otF = new cti();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/gettalkroommember";
+    ((c.a)localObject).funcId = 336;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cth)c.b.b(this.rr.otB);
+    ((cth)localObject).Zvz = paramInt1;
+    ((cth)localObject).ZvA = paramLong;
+    this.Kgc = paramString;
+    ((cth)localObject).IJG = paramInt2;
+    AppMethodBeat.o(29557);
   }
   
-  private static LinkedList<cjn> aw(LinkedList<cjn> paramLinkedList)
+  private static LinkedList<fly> bW(LinkedList<fly> paramLinkedList)
   {
-    AppMethodBeat.i(25878);
+    AppMethodBeat.i(29560);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      cjn localcjn = (cjn)paramLinkedList.next();
-      if (!bo.isNullOrNil(localcjn.jJA)) {
-        localLinkedList.add(localcjn);
+      fly localfly = (fly)paramLinkedList.next();
+      if (!Util.isNullOrNil(localfly.UserName)) {
+        localLinkedList.add(localfly);
       }
     }
-    AppMethodBeat.o(25878);
+    AppMethodBeat.o(29560);
     return localLinkedList;
   }
   
-  public final String cHO()
+  public final int doScene(g paramg, h paramh)
   {
-    return this.odS;
-  }
-  
-  public final int cHP()
-  {
-    return this.sceneType;
-  }
-  
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
-  {
-    AppMethodBeat.i(25876);
-    ab.d("MicroMsg.NetSceneGetTalkRoomMember", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(25876);
+    AppMethodBeat.i(29558);
+    Log.d("MicroMsg.NetSceneGetTalkRoomMember", "doScene");
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(29558);
     return i;
   }
   
@@ -87,27 +77,37 @@ public final class c
     return 336;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final String hCL()
   {
-    AppMethodBeat.i(25877);
-    ab.d("MicroMsg.NetSceneGetTalkRoomMember", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    return this.Kgc;
+  }
+  
+  public final int hCM()
+  {
+    return this.sceneType;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(29559);
+    Log.d("MicroMsg.NetSceneGetTalkRoomMember", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(25877);
+      AppMethodBeat.o(29559);
       return;
     }
-    paramq = (aqo)this.rr.fsW.fta;
-    ab.i("MicroMsg.NetSceneGetTalkRoomMember", "resp %s", new Object[] { paramq.toString() });
-    this.tcT = paramq.wQR;
-    this.tdp = aw(paramq.wov);
+    params = (cti)c.c.b(this.rr.otC);
+    Log.i("MicroMsg.NetSceneGetTalkRoomMember", "resp %s", new Object[] { params.toString() });
+    this.SNS = params.ZvB;
+    this.SOm = bW(params.YFm);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(25877);
+    AppMethodBeat.o(29559);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.b.c
  * JD-Core Version:    0.7.0.1
  */

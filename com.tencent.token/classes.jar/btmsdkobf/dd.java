@@ -47,29 +47,43 @@ public class dd
     finally {}
   }
   
-  public WeakReference a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct paramJceStruct1, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
+  public WeakReference<cw> a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct paramJceStruct1, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
   {
-    eh.e("SharkProcessProxy", Process.myPid() + " sendShark() from pid: " + paramInt1 + " ipcSeqNo: " + paramInt2 + " callerIdent: " + paramLong2 + " cmdId: " + paramInt4 + " flag: " + paramInt5 + " callBackTimeout: " + paramLong3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append(" sendShark() from pid: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" ipcSeqNo: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" callerIdent: ");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append(" cmdId: ");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(" flag: ");
+    localStringBuilder.append(paramInt5);
+    localStringBuilder.append(" callBackTimeout: ");
+    localStringBuilder.append(paramLong3);
+    eh.e("SharkProcessProxy", localStringBuilder.toString());
     if (cx.ax()) {
       return cf().a(paramInt1, paramInt2, paramInt3, paramLong1, paramLong2, paramInt4, paramJceStruct1, paramArrayOfByte, paramJceStruct2, paramInt5, paramcj, paramck, paramLong3, paramLong4);
     }
     if ((cx.ay()) && ((!cx.az()) || ((paramInt5 & 0x1000) != 0)))
     {
-      if (((paramInt5 & 0x800) != 0) || ((paramInt5 & 0x200) != 0)) {
-        return cf().a(paramInt1, paramInt2, paramInt3, paramLong1, paramLong2, paramInt4, paramJceStruct1, paramArrayOfByte, paramJceStruct2, paramInt5, paramcj, paramck, paramLong3, paramLong4);
+      if (((paramInt5 & 0x800) == 0) && ((paramInt5 & 0x200) == 0)) {
+        throw new IllegalArgumentException("semi-send process can only use http channel!");
       }
-      throw new IllegalArgumentException("semi-send process can only use http channel!");
+      return cf().a(paramInt1, paramInt2, paramInt3, paramLong1, paramLong2, paramInt4, paramJceStruct1, paramArrayOfByte, paramJceStruct2, paramInt5, paramcj, paramck, paramLong3, paramLong4);
     }
     ce().a(paramInt1, this.t, paramInt3, paramLong1, paramInt4, paramJceStruct1, paramJceStruct2, paramInt5, paramcj, paramLong3, paramLong4);
     return null;
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj)
+  public WeakReference<cw> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj)
   {
     return b(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, 0L);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong1, long paramLong2)
+  public WeakReference<cw> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong1, long paramLong2)
   {
     return a(Process.myPid(), 0, 0, 0L, this.t, paramInt1, paramJceStruct1, null, paramJceStruct2, paramInt2, paramcj, null, paramLong1, paramLong2);
   }
@@ -83,16 +97,22 @@ public class dd
   {
     if (cx.ax())
     {
-      eh.e("SharkProcessProxy", "sending process registerSharkPush() from cmdId: " + paramInt1 + " flag: " + paramInt2);
-      if (paramBoolean) {}
-      for (;;)
-      {
-        cf().a(paramLong, paramInt1, paramJceStruct, paramInt2, paramcm, paramBoolean);
-        return;
+      localStringBuilder = new StringBuilder("sending process registerSharkPush() from cmdId: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" flag: ");
+      localStringBuilder.append(paramInt2);
+      eh.e("SharkProcessProxy", localStringBuilder.toString());
+      if (!paramBoolean) {
         paramLong = this.t;
       }
+      cf().a(paramLong, paramInt1, paramJceStruct, paramInt2, paramcm, paramBoolean);
+      return;
     }
-    eh.e("SharkProcessProxy", "other process registerSharkPush() from cmdId: " + paramInt1 + " flag: " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder("other process registerSharkPush() from cmdId: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" flag: ");
+    localStringBuilder.append(paramInt2);
+    eh.e("SharkProcessProxy", localStringBuilder.toString());
     ce().a(this.t, paramInt1, paramJceStruct, paramInt2, paramcm);
   }
   
@@ -103,7 +123,7 @@ public class dd
     }
   }
   
-  public WeakReference b(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong)
+  public WeakReference<cw> b(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong)
   {
     return a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, paramLong, 0L);
   }
@@ -117,7 +137,13 @@ public class dd
   
   public cm e(int paramInt1, int paramInt2)
   {
-    eh.e("SharkProcessProxy", Process.myPid() + " unregisterSharkPush() from cmdId: " + paramInt1 + " flag: " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append(" unregisterSharkPush() from cmdId: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" flag: ");
+    localStringBuilder.append(paramInt2);
+    eh.e("SharkProcessProxy", localStringBuilder.toString());
     if (cx.ax()) {
       return cf().e(paramInt1, paramInt2);
     }

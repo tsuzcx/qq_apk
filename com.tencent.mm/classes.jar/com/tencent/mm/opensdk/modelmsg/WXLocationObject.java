@@ -17,8 +17,10 @@ public class WXLocationObject
   
   public WXLocationObject(double paramDouble1, double paramDouble2)
   {
+    AppMethodBeat.i(242963);
     this.lat = paramDouble1;
     this.lng = paramDouble2;
+    AppMethodBeat.o(242963);
   }
   
   public boolean checkArgs()
@@ -28,10 +30,10 @@ public class WXLocationObject
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128338);
+    AppMethodBeat.i(4038);
     paramBundle.putDouble("_wxlocationobject_lat", this.lat);
     paramBundle.putDouble("_wxlocationobject_lng", this.lng);
-    AppMethodBeat.o(128338);
+    AppMethodBeat.o(4038);
   }
   
   public int type()
@@ -41,15 +43,15 @@ public class WXLocationObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128339);
+    AppMethodBeat.i(4039);
     this.lat = paramBundle.getDouble("_wxlocationobject_lat");
     this.lng = paramBundle.getDouble("_wxlocationobject_lng");
-    AppMethodBeat.o(128339);
+    AppMethodBeat.o(4039);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXLocationObject
  * JD-Core Version:    0.7.0.1
  */

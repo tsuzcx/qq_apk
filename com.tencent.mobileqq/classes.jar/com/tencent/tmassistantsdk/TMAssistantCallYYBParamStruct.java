@@ -40,14 +40,53 @@ public class TMAssistantCallYYBParamStruct
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SNGAppId = " + this.SNGAppId).append(",taskAppId = " + this.taskAppId).append(",taskApkId = " + this.taskApkId).append(",taskVersion = " + this.taskVersion).append(",via = " + this.via).append(",taskPackageName = " + this.taskPackageName).append(",uin = " + this.uin).append(",uinType = " + this.uinType).append(",channelId = " + this.channelId).append(",actionFlag = " + this.actionFlag);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("SNGAppId = ");
+    localStringBuilder2.append(this.SNGAppId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",taskAppId = ");
+    localStringBuilder2.append(this.taskAppId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",taskApkId = ");
+    localStringBuilder2.append(this.taskApkId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",taskVersion = ");
+    localStringBuilder2.append(this.taskVersion);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",via = ");
+    localStringBuilder2.append(this.via);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",taskPackageName = ");
+    localStringBuilder2.append(this.taskPackageName);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",uin = ");
+    localStringBuilder2.append(this.uin);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",uinType = ");
+    localStringBuilder2.append(this.uinType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",channelId = ");
+    localStringBuilder2.append(this.channelId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",actionFlag = ");
+    localStringBuilder2.append(this.actionFlag);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct
  * JD-Core Version:    0.7.0.1
  */

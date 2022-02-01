@@ -1,35 +1,37 @@
 package com.tencent.biz.subscribe.utils;
 
-import bdhb;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.util.Pair;
-import ymb;
-import ymf;
 
-public class SubscribeDraftManager$4
+class SubscribeDraftManager$4
   implements Runnable
 {
-  public SubscribeDraftManager$4(ymb paramymb, String paramString1, String paramString2, ymf paramymf) {}
+  SubscribeDraftManager$4(SubscribeDraftManager paramSubscribeDraftManager, String paramString1, String paramString2, SubscribeDraftManager.SubDraftListener paramSubDraftListener) {}
   
   public void run()
   {
-    Pair localPair = ymb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
-    if (localPair != null)
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.a, this.b);
+    if (localObject != null)
     {
-      bdhb.d((String)localPair.first);
-      bdhb.d((String)localPair.second);
-      if (this.jdField_a_of_type_Ymf != null) {
-        this.jdField_a_of_type_Ymf.a(2, true, this.b, new Object[0]);
+      FileUtils.deleteFile((String)((Pair)localObject).first);
+      FileUtils.deleteFile((String)((Pair)localObject).second);
+      localObject = this.c;
+      if (localObject != null) {
+        ((SubscribeDraftManager.SubDraftListener)localObject).a(2, true, this.b, new Object[0]);
       }
     }
-    while (this.jdField_a_of_type_Ymf == null) {
-      return;
+    else
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        ((SubscribeDraftManager.SubDraftListener)localObject).a(2, false, this.b, new Object[0]);
+      }
     }
-    this.jdField_a_of_type_Ymf.a(2, false, this.b, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.4
  * JD-Core Version:    0.7.0.1
  */

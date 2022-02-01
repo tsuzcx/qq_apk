@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.bv.a;
+import com.tencent.mm.am.i;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.jniinterface.AesEcb;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.backup.i.x;
-import com.tencent.mm.plugin.backup.i.y;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.protocal.protobuf.gy;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.protocal.protobuf.je;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -20,80 +20,103 @@ public final class c
 {
   private static int progress;
   private String filePath;
-  private int fsd;
-  public x jFp;
-  private y jFq;
-  private com.tencent.mm.ai.g jIi;
-  private byte[] jIj;
   private byte[] key;
   private int offset;
+  private int osy;
   private int start;
   private int type;
+  public x vcM;
+  private com.tencent.mm.plugin.backup.i.y vcN;
+  private i vfE;
+  private byte[] vfF;
   
-  public c(String paramString1, int paramInt, LinkedList<gx> paramLinkedList, String paramString2, com.tencent.mm.ai.g paramg, byte[] paramArrayOfByte)
+  public c(String paramString1, int paramInt, LinkedList<jd> paramLinkedList, String paramString2, i parami, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(17883);
-    this.jFp = new x();
-    this.jFq = new y();
-    this.jIi = null;
+    AppMethodBeat.i(21940);
+    this.vcM = new x();
+    this.vcN = new com.tencent.mm.plugin.backup.i.y();
+    this.vfE = null;
     this.start = 0;
     this.offset = 0;
-    this.fsd = 0;
-    this.jFp.jKw = paramString1;
-    this.jFp.jKx = paramInt;
+    this.osy = 0;
+    this.vcM.vhN = paramString1;
+    this.vcM.vhO = paramInt;
     this.type = paramInt;
     if (paramInt == 1)
     {
-      paramString1 = new gy();
-      paramString1.jJv = paramLinkedList;
-      paramString1.jJu = paramLinkedList.size();
+      paramString1 = new je();
+      paramString1.vgO = paramLinkedList;
+      paramString1.vgN = paramLinkedList.size();
     }
     for (;;)
     {
       try
       {
-        this.jIj = paramString1.toByteArray();
-        this.fsd = this.jIj.length;
-        paramInt = this.fsd;
-        this.jFp.jKy = (16 - paramInt % 16 + this.fsd);
-        ab.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.jFp.jKw, Integer.valueOf(this.jFp.jKx), Integer.valueOf(this.fsd), Integer.valueOf(this.jFp.jKy) });
-        this.jIi = paramg;
+        this.vfF = paramString1.toByteArray();
+        this.osy = this.vfF.length;
+        paramInt = this.osy;
+        this.vcM.vhP = (16 - paramInt % 16 + this.osy);
+        Log.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.vcM.vhN, Integer.valueOf(this.vcM.vhO), Integer.valueOf(this.osy), Integer.valueOf(this.vcM.vhP) });
+        this.vfE = parami;
         this.key = paramArrayOfByte;
-        AppMethodBeat.o(17883);
+        AppMethodBeat.o(21940);
         return;
       }
       catch (IOException paramString1)
       {
-        ab.e("MicroMsg.BakSceneDataPush", "backList to buffer error");
-        ab.printErrStackTrace("MicroMsg.BakSceneDataPush", paramString1, "", new Object[0]);
+        Log.e("MicroMsg.BakSceneDataPush", "backList to buffer error");
+        Log.printErrStackTrace("MicroMsg.BakSceneDataPush", paramString1, "", new Object[0]);
         continue;
       }
       this.filePath = paramString2;
-      this.fsd = e.cM(paramString2);
+      this.osy = ((int)com.tencent.mm.vfs.y.bEl(paramString2));
     }
   }
   
   public static void setProgress(int paramInt)
   {
-    AppMethodBeat.i(17884);
-    ab.i("MicroMsg.BakSceneDataPush", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(21941);
+    Log.i("MicroMsg.BakSceneDataPush", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
     progress = paramInt;
-    AppMethodBeat.o(17884);
+    AppMethodBeat.o(21941);
   }
   
-  public final a aUl()
+  public final void Fo(int paramInt)
   {
-    return this.jFq;
+    AppMethodBeat.i(21943);
+    Log.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.vcN.vhN, Integer.valueOf(this.vcN.vhO), Integer.valueOf(this.vcN.vhQ), Integer.valueOf(this.vcN.vhR), Integer.valueOf(this.vcN.vhk) });
+    if (this.vcN.vhk != 0)
+    {
+      Log.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.vcN.vhk) });
+      u(4, this.vcN.vhk, "error");
+      AppMethodBeat.o(21943);
+      return;
+    }
+    this.vfE.a(this.vcM.vhR - this.vcM.vhQ, this.osy, this);
+    if (this.offset == this.osy)
+    {
+      Log.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.vcM.vhN, Integer.valueOf(this.osy) });
+      u(0, 0, "success");
+      AppMethodBeat.o(21943);
+      return;
+    }
+    cWw();
+    AppMethodBeat.o(21943);
   }
   
-  public final a aUm()
+  public final a cWm()
   {
-    return this.jFp;
+    return this.vcN;
   }
   
-  public final boolean aUv()
+  public final a cWn()
   {
-    AppMethodBeat.i(17885);
+    return this.vcM;
+  }
+  
+  public final boolean cWw()
+  {
+    AppMethodBeat.i(21942);
     Object localObject1 = null;
     Object localObject2;
     boolean bool;
@@ -101,41 +124,41 @@ public final class c
     int j;
     if (this.type == 1)
     {
-      i = this.fsd;
-      localObject1 = this.jIj;
+      i = this.osy;
+      localObject1 = this.vfF;
       this.start = this.offset;
       this.offset = (i + this.start);
       localObject2 = localObject1;
       if (this.key != null)
       {
         localObject2 = this.key;
-        if (this.offset != this.fsd) {
-          break label517;
+        if (this.offset != this.osy) {
+          break label518;
         }
         bool = true;
         localObject2 = AesEcb.aesCryptEcb((byte[])localObject1, (byte[])localObject2, true, bool);
       }
-      this.jFp.jKz = this.start;
-      localObject1 = this.jFp;
+      this.vcM.vhQ = this.start;
+      localObject1 = this.vcM;
       j = this.start;
       if (localObject2 != null) {
-        break label523;
+        break label524;
       }
     }
-    label517:
-    label523:
+    label518:
+    label524:
     for (int i = 0;; i = localObject2.length)
     {
-      ((x)localObject1).jKA = (i + j);
-      this.jFp.jJh = new com.tencent.mm.bv.b((byte[])localObject2);
-      this.jFp.jKC = progress;
-      ab.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.jFp.jKw, Integer.valueOf(this.fsd), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.jFp.jKA) });
-      bool = super.aUv();
-      AppMethodBeat.o(17885);
+      ((x)localObject1).vhR = (i + j);
+      this.vcM.vgA = new com.tencent.mm.bx.b((byte[])localObject2);
+      this.vcM.vhT = progress;
+      Log.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.vcM.vhN, Integer.valueOf(this.osy), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.vcM.vhR) });
+      bool = super.cWw();
+      AppMethodBeat.o(21942);
       return bool;
       long l;
       int k;
-      if (this.fsd - this.offset > 524288L)
+      if (this.osy - this.offset > 524288L)
       {
         l = 524288L;
         k = (int)l;
@@ -147,36 +170,36 @@ public final class c
         if ((i <= 0) || (localObject1 != null)) {
           break label479;
         }
-        if (!bo.isNullOrNil(this.filePath))
+        if (!Util.isNullOrNil(this.filePath))
         {
           localObject1 = this.filePath;
-          aw.aaz();
-          if (((String)localObject1).startsWith(com.tencent.mm.model.c.YP()))
+          bh.bCz();
+          if (((String)localObject1).startsWith(com.tencent.mm.model.c.bzQ()))
           {
             localObject1 = this.filePath.substring(this.filePath.lastIndexOf("/") + 1);
-            ab.i("MicroMsg.BakSceneDataPush", "md5:%s", new Object[] { localObject1 });
-            localObject1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt((String)localObject1);
-            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.APx) == EmojiInfo.APx))
+            Log.i("MicroMsg.BakSceneDataPush", "md5:%s", new Object[] { localObject1 });
+            localObject1 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe((String)localObject1);
+            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.akmb) == EmojiInfo.akmb))
             {
-              localObject2 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().l((EmojiInfo)localObject1);
+              localObject2 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().a((EmojiInfo)localObject1);
               localObject1 = new byte[k];
               System.arraycopy(localObject2, this.offset, localObject1, 0, k);
               i = j;
               continue;
-              l = this.fsd - this.offset;
+              l = this.osy - this.offset;
               break;
             }
-            localObject1 = e.i(this.filePath, this.offset, k);
+            localObject1 = com.tencent.mm.vfs.y.bi(this.filePath, this.offset, k);
             i = j;
             continue;
           }
         }
-        localObject1 = e.i(this.filePath, this.offset, k);
+        localObject1 = com.tencent.mm.vfs.y.bi(this.filePath, this.offset, k);
         i = j;
       }
       label479:
       if (localObject1 == null) {
-        ab.e("MicroMsg.BakSceneDataPush", "read file error, offset%d, len:%d", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(k) });
+        Log.e("MicroMsg.BakSceneDataPush", "read file error, offset%d, len:%d", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(k) });
       }
       i = k;
       break;
@@ -189,33 +212,10 @@ public final class c
   {
     return 5;
   }
-  
-  public final void rt(int paramInt)
-  {
-    AppMethodBeat.i(17886);
-    ab.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.jFq.jKw, Integer.valueOf(this.jFq.jKx), Integer.valueOf(this.jFq.jKz), Integer.valueOf(this.jFq.jKA), Integer.valueOf(this.jFq.jJS) });
-    if (this.jFq.jJS != 0)
-    {
-      ab.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.jFq.jJS) });
-      n(4, this.jFq.jJS, "error");
-      AppMethodBeat.o(17886);
-      return;
-    }
-    this.jIi.a(this.jFp.jKA - this.jFp.jKz, this.fsd, this);
-    if (this.offset == this.fsd)
-    {
-      ab.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.jFp.jKw, Integer.valueOf(this.fsd) });
-      n(0, 0, "success");
-      AppMethodBeat.o(17886);
-      return;
-    }
-    aUv();
-    AppMethodBeat.o(17886);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.c
  * JD-Core Version:    0.7.0.1
  */

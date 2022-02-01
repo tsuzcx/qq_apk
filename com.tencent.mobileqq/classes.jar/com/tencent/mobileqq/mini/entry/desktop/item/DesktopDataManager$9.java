@@ -15,47 +15,58 @@ class DesktopDataManager$9
   public void run()
   {
     QLog.d("DesktopDataManager", 1, "updateCardModuleInfo");
-    if ((this.val$moduleInfos == null) || (this.val$moduleInfos.size() <= 0)) {
-      QLog.e("DesktopDataManager", 1, "updateCardModuleInfo, moduleInfos is null.");
-    }
-    label381:
-    do
+    Object localObject1 = this.val$moduleInfos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      do
-      {
+      if (DesktopDataManager.access$1600(this.this$0).size() <= 0) {
         return;
-      } while (DesktopDataManager.access$1600(this.this$0).size() <= 0);
-      Object localObject1 = new ArrayList();
+      }
+      localObject1 = new ArrayList();
       Object localObject2 = this.val$moduleInfos.iterator();
       Object localObject3;
+      int i;
       Object localObject4;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (INTERFACE.StModuleInfo)((Iterator)localObject2).next();
-        if (localObject3 != null) {
-          if (((INTERFACE.StModuleInfo)localObject3).moduleType.get() == 6)
+        if (localObject3 != null)
+        {
+          i = ((INTERFACE.StModuleInfo)localObject3).moduleType.get();
+          if (6 == i)
           {
             localObject4 = new DesktopPopularModuleInfo(6);
             ((DesktopPopularModuleInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
             ((List)localObject1).add(localObject4);
           }
-          else if (((INTERFACE.StModuleInfo)localObject3).moduleType.get() == 4)
+          else if (4 == i)
           {
             ((List)localObject1).add(new DesktopRecommendModuleInfo(4, (INTERFACE.StModuleInfo)localObject3));
           }
-          else if (((INTERFACE.StModuleInfo)localObject3).moduleType.get() == 7)
+          else if (7 == i)
           {
             localObject4 = new DesktopDittoInfo(7);
             ((DesktopDittoInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
             ((List)localObject1).add(localObject4);
           }
+          else if (10 == i)
+          {
+            localObject4 = new DesktopChessRoomModuleInfo(10);
+            ((DesktopChessRoomModuleInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
+            ((List)localObject1).add(localObject4);
+          }
+          else if (9 == i)
+          {
+            localObject4 = new DesktopChessRoomCardModuleInfo(9);
+            ((DesktopChessRoomCardModuleInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
+            ((List)localObject1).add(localObject4);
+          }
         }
       }
       localObject1 = ((List)localObject1).iterator();
+      label531:
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
-        int i;
         if (((DesktopItemInfo)localObject2).getModuleType() == 7)
         {
           localObject3 = (DesktopDittoInfo)localObject2;
@@ -63,14 +74,17 @@ class DesktopDataManager$9
           for (;;)
           {
             if (i < 0) {
-              break label381;
+              break label448;
             }
             localObject4 = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
             if ((((DesktopItemInfo)localObject4).getModuleType() == 7) && (((DesktopDittoInfo)localObject4).subType == ((DesktopDittoInfo)localObject3).subType))
             {
               DesktopDataManager.access$1600(this.this$0).remove(i);
               DesktopDataManager.access$1600(this.this$0).add(i, localObject3);
-              QLog.d("DesktopDataManager", 1, "updateCardModuleInfo, update ditto " + localObject2.toString());
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("updateCardModuleInfo, update ditto ");
+              ((StringBuilder)localObject3).append(localObject2.toString());
+              QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject3).toString());
               break;
             }
             i -= 1;
@@ -78,11 +92,12 @@ class DesktopDataManager$9
         }
         else
         {
+          label448:
           i = DesktopDataManager.access$1600(this.this$0).size() - 1;
           for (;;)
           {
             if (i < 0) {
-              break label464;
+              break label531;
             }
             if (((DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i)).getModuleType() == ((DesktopItemInfo)localObject2).getModuleType())
             {
@@ -94,14 +109,17 @@ class DesktopDataManager$9
           }
         }
       }
-    } while (DesktopDataManager.access$1500(this.this$0) == null);
-    label464:
-    DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      if (DesktopDataManager.access$1500(this.this$0) != null) {
+        DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      }
+      return;
+    }
+    QLog.e("DesktopDataManager", 1, "updateCardModuleInfo, moduleInfos is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.9
  * JD-Core Version:    0.7.0.1
  */

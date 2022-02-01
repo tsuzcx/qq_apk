@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/note_ol_unpress" />
-    <item android:drawable="@raw/note_ol_unpress" />
-</selector>
+    <corners android:radius="4.0dip" />
+    <stroke android:width="1.0dip" android:color="@color/FG_3" android:dashWidth="3.0dip" android:dashGap="3.0dip" />
+</shape>

@@ -1,52 +1,40 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.crh;
+import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
+  extends com.tencent.mm.am.b<cri>
 {
-  public aus omW;
-  public String omX;
-  public boolean omY;
-  public String omZ;
-  
-  public static d Sq(String paramString)
+  public d(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
   {
-    AppMethodBeat.i(42273);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(42273);
-      return null;
+    AppMethodBeat.i(283966);
+    Log.i("MicroMsg.CgiGetRedpacketFission", "packetId: %s senderUsername：%s msgCreateTime:%s,packetSource：%s sceneType:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    crh localcrh = new crh();
+    c.a locala = new c.a();
+    locala.otE = localcrh;
+    locala.otF = new cri();
+    locala.funcId = 6957;
+    locala.uri = "/cgi-bin/micromsg-bin/getredpacketfission";
+    localcrh.nQE = paramString1;
+    localcrh.aaxU = paramString2;
+    localcrh.aaxV = paramInt1;
+    localcrh.nQF = paramInt2;
+    localcrh.scene_type = paramInt3;
+    if (!Util.isNullOrNil(paramString3)) {
+      localcrh.aaxW = com.tencent.mm.bx.b.cX(paramString3.getBytes());
     }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new d();
-      paramString.omX = localJSONObject.optString("showSourceMac");
-      paramString.omZ = localJSONObject.optString("illegal_msg");
-      paramString.omY = localJSONObject.optBoolean("is_illegal");
-      localJSONObject = localJSONObject.optJSONObject("showSource");
-      if (localJSONObject != null) {
-        paramString.omW = v.ah(localJSONObject);
-      }
-      AppMethodBeat.o(42273);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.EnvelopSourceMac", paramString, "", new Object[0]);
-      AppMethodBeat.o(42273);
-    }
-    return null;
+    c(locala.bEF());
+    AppMethodBeat.o(283966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.d
  * JD-Core Version:    0.7.0.1
  */

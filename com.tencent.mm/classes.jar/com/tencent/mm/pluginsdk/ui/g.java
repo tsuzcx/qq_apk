@@ -1,14 +1,19 @@
 package com.tencent.mm.pluginsdk.ui;
 
-public abstract interface g
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class g
 {
-  public abstract void Ef(int paramInt);
+  private static final Drawable backgroundDrawable;
   
-  public abstract int getVideoTotalTime();
-  
-  public abstract void oi(boolean paramBoolean);
-  
-  public abstract void setVideoTotalTime(int paramInt);
+  static
+  {
+    AppMethodBeat.i(31192);
+    backgroundDrawable = new ColorDrawable();
+    AppMethodBeat.o(31192);
+  }
 }
 
 

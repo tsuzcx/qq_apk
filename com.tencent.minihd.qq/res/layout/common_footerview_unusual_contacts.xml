@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/unusual_contacts_footerview" android:layout_width="fill_parent" android:layout_height="79.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:gravity="center" android:id="@id/tv" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="15.0dip" android:text="@string/qq_gather_uncommonly_used_contacts" android:contentDescription="@string/qq_gather_uncommonly_used_contacts" />
+</RelativeLayout>

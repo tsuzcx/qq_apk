@@ -11,8 +11,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
+import androidx.annotation.CallSuper;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
@@ -32,6 +32,7 @@ import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.dinifly.animation.content.Content;>;
 
 public abstract class BaseStrokeContent
   implements DrawingContent, KeyPathElementContent, BaseKeyframeAnimation.AnimationListener
@@ -63,28 +64,31 @@ public abstract class BaseStrokeContent
     this.paint.setStrokeMiter(paramFloat);
     this.opacityAnimation = paramAnimatableIntegerValue.createAnimation();
     this.widthAnimation = paramAnimatableFloatValue1.createAnimation();
-    if (paramAnimatableFloatValue2 == null) {}
-    for (this.dashPatternOffsetAnimation = null;; this.dashPatternOffsetAnimation = paramAnimatableFloatValue2.createAnimation())
+    if (paramAnimatableFloatValue2 == null) {
+      this.dashPatternOffsetAnimation = null;
+    } else {
+      this.dashPatternOffsetAnimation = paramAnimatableFloatValue2.createAnimation();
+    }
+    this.dashPatternAnimations = new ArrayList(paramList.size());
+    this.dashPatternValues = new float[paramList.size()];
+    int j = 0;
+    int i = 0;
+    while (i < paramList.size())
     {
-      this.dashPatternAnimations = new ArrayList(paramList.size());
-      this.dashPatternValues = new float[paramList.size()];
-      i = 0;
-      while (i < paramList.size())
-      {
-        this.dashPatternAnimations.add(((AnimatableFloatValue)paramList.get(i)).createAnimation());
-        i += 1;
-      }
+      this.dashPatternAnimations.add(((AnimatableFloatValue)paramList.get(i)).createAnimation());
+      i += 1;
     }
     paramBaseLayer.addAnimation(this.opacityAnimation);
     paramBaseLayer.addAnimation(this.widthAnimation);
-    int i = 0;
+    i = 0;
     while (i < this.dashPatternAnimations.size())
     {
       paramBaseLayer.addAnimation((BaseKeyframeAnimation)this.dashPatternAnimations.get(i));
       i += 1;
     }
-    if (this.dashPatternOffsetAnimation != null) {
-      paramBaseLayer.addAnimation(this.dashPatternOffsetAnimation);
+    paramLottieDrawable = this.dashPatternOffsetAnimation;
+    if (paramLottieDrawable != null) {
+      paramBaseLayer.addAnimation(paramLottieDrawable);
     }
     this.opacityAnimation.addUpdateListener(this);
     this.widthAnimation.addUpdateListener(this);
@@ -94,8 +98,9 @@ public abstract class BaseStrokeContent
       ((BaseKeyframeAnimation)this.dashPatternAnimations.get(i)).addUpdateListener(this);
       i += 1;
     }
-    if (this.dashPatternOffsetAnimation != null) {
-      this.dashPatternOffsetAnimation.addUpdateListener(this);
+    paramLottieDrawable = this.dashPatternOffsetAnimation;
+    if (paramLottieDrawable != null) {
+      paramLottieDrawable.addUpdateListener(this);
     }
   }
   
@@ -109,32 +114,35 @@ public abstract class BaseStrokeContent
     }
     float f = Utils.getScale(paramMatrix);
     int i = 0;
-    if (i < this.dashPatternAnimations.size())
+    while (i < this.dashPatternAnimations.size())
     {
       this.dashPatternValues[i] = ((Float)((BaseKeyframeAnimation)this.dashPatternAnimations.get(i)).getValue()).floatValue();
-      if (i % 2 == 0) {
-        if (this.dashPatternValues[i] < 1.0F) {
-          this.dashPatternValues[i] = 1.0F;
-        }
-      }
-      for (;;)
+      if (i % 2 == 0)
       {
         paramMatrix = this.dashPatternValues;
-        paramMatrix[i] *= f;
-        i += 1;
-        break;
-        if (this.dashPatternValues[i] < 0.1F) {
-          this.dashPatternValues[i] = 0.1F;
+        if (paramMatrix[i] < 1.0F) {
+          paramMatrix[i] = 1.0F;
         }
       }
+      else
+      {
+        paramMatrix = this.dashPatternValues;
+        if (paramMatrix[i] < 0.1F) {
+          paramMatrix[i] = 0.1F;
+        }
+      }
+      paramMatrix = this.dashPatternValues;
+      paramMatrix[i] *= f;
+      i += 1;
     }
-    if (this.dashPatternOffsetAnimation == null) {}
-    for (f = 0.0F;; f = ((Float)this.dashPatternOffsetAnimation.getValue()).floatValue())
-    {
-      this.paint.setPathEffect(new DashPathEffect(this.dashPatternValues, f));
-      L.endSection("StrokeContent#applyDashPattern");
-      return;
+    paramMatrix = this.dashPatternOffsetAnimation;
+    if (paramMatrix == null) {
+      f = 0.0F;
+    } else {
+      f *= ((Float)paramMatrix.getValue()).floatValue();
     }
+    this.paint.setPathEffect(new DashPathEffect(this.dashPatternValues, f));
+    L.endSection("StrokeContent#applyDashPattern");
   }
   
   private void applyTrimPath(Canvas paramCanvas, BaseStrokeContent.PathGroup paramPathGroup, Matrix paramMatrix)
@@ -153,62 +161,59 @@ public abstract class BaseStrokeContent
       i -= 1;
     }
     this.pm.setPath(this.path, false);
-    for (float f1 = this.pm.getLength(); this.pm.nextContour(); f1 = this.pm.getLength() + f1) {}
+    for (float f1 = this.pm.getLength(); this.pm.nextContour(); f1 += this.pm.getLength()) {}
     float f2 = ((Float)BaseStrokeContent.PathGroup.access$200(paramPathGroup).getOffset().getValue()).floatValue() * f1 / 360.0F;
     float f5 = ((Float)BaseStrokeContent.PathGroup.access$200(paramPathGroup).getStart().getValue()).floatValue() * f1 / 100.0F + f2;
     float f6 = ((Float)BaseStrokeContent.PathGroup.access$200(paramPathGroup).getEnd().getValue()).floatValue() * f1 / 100.0F + f2;
     i = BaseStrokeContent.PathGroup.access$100(paramPathGroup).size() - 1;
     f2 = 0.0F;
-    if (i >= 0)
+    while (i >= 0)
     {
       this.trimPathPath.set(((PathContent)BaseStrokeContent.PathGroup.access$100(paramPathGroup).get(i)).getPath());
       this.trimPathPath.transform(paramMatrix);
       this.pm.setPath(this.trimPathPath, false);
       float f7 = this.pm.getLength();
+      float f4 = 1.0F;
       float f3;
-      if ((f6 > f1) && (f6 - f1 < f2 + f7) && (f2 < f6 - f1)) {
-        if (f5 > f1)
+      if (f6 > f1)
+      {
+        f8 = f6 - f1;
+        if ((f8 < f2 + f7) && (f2 < f8))
         {
-          f3 = (f5 - f1) / f7;
-          label331:
-          f4 = Math.min((f6 - f1) / f7, 1.0F);
+          if (f5 > f1) {
+            f3 = (f5 - f1) / f7;
+          } else {
+            f3 = 0.0F;
+          }
+          f4 = Math.min(f8 / f7, 1.0F);
+          Utils.applyTrimPathIfNeeded(this.trimPathPath, f3, f4, 0.0F);
+          paramCanvas.drawPath(this.trimPathPath, this.paint);
+          break label505;
+        }
+      }
+      float f8 = f2 + f7;
+      if ((f8 >= f5) && (f2 <= f6)) {
+        if ((f8 <= f6) && (f5 < f2))
+        {
+          paramCanvas.drawPath(this.trimPathPath, this.paint);
+        }
+        else
+        {
+          if (f5 < f2) {
+            f3 = 0.0F;
+          } else {
+            f3 = (f5 - f2) / f7;
+          }
+          if (f6 <= f8) {
+            f4 = (f6 - f2) / f7;
+          }
           Utils.applyTrimPathIfNeeded(this.trimPathPath, f3, f4, 0.0F);
           paramCanvas.drawPath(this.trimPathPath, this.paint);
         }
       }
-      for (;;)
-      {
-        i -= 1;
-        f2 += f7;
-        break;
-        f3 = 0.0F;
-        break label331;
-        if ((f2 + f7 >= f5) && (f2 <= f6))
-        {
-          if ((f2 + f7 > f6) || (f5 >= f2)) {
-            break label444;
-          }
-          paramCanvas.drawPath(this.trimPathPath, this.paint);
-        }
-      }
-      label444:
-      if (f5 < f2)
-      {
-        f3 = 0.0F;
-        label455:
-        if (f6 <= f2 + f7) {
-          break label509;
-        }
-      }
-      label509:
-      for (float f4 = 1.0F;; f4 = (f6 - f2) / f7)
-      {
-        Utils.applyTrimPathIfNeeded(this.trimPathPath, f3, f4, 0.0F);
-        paramCanvas.drawPath(this.trimPathPath, this.paint);
-        break;
-        f3 = (f5 - f2) / f7;
-        break label455;
-      }
+      label505:
+      f2 += f7;
+      i -= 1;
     }
     L.endSection("StrokeContent#applyTrimPath");
   }
@@ -216,26 +221,31 @@ public abstract class BaseStrokeContent
   @CallSuper
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.OPACITY) {
-      this.opacityAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    do
+    if (paramT == LottieProperty.OPACITY)
     {
+      this.opacityAnimation.setValueCallback(paramLottieValueCallback);
       return;
-      if (paramT == LottieProperty.STROKE_WIDTH)
+    }
+    if (paramT == LottieProperty.STROKE_WIDTH)
+    {
+      this.widthAnimation.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.COLOR_FILTER)
+    {
+      paramT = this.colorFilterAnimation;
+      if (paramT != null) {
+        this.layer.removeAnimation(paramT);
+      }
+      if (paramLottieValueCallback == null)
       {
-        this.widthAnimation.setValueCallback(paramLottieValueCallback);
+        this.colorFilterAnimation = null;
         return;
       }
-    } while (paramT != LottieProperty.COLOR_FILTER);
-    if (paramLottieValueCallback == null)
-    {
-      this.colorFilterAnimation = null;
-      return;
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorFilterAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorFilterAnimation);
     }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorFilterAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorFilterAnimation);
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -246,9 +256,10 @@ public abstract class BaseStrokeContent
       L.endSection("StrokeContent#draw");
       return;
     }
-    float f = paramInt / 255.0F;
-    paramInt = (int)(((IntegerKeyframeAnimation)this.opacityAnimation).getIntValue() * f / 100.0F * 255.0F);
-    this.paint.setAlpha(MiscUtils.clamp(paramInt, 0, 255));
+    paramInt = (int)(paramInt / 255.0F * ((IntegerKeyframeAnimation)this.opacityAnimation).getIntValue() / 100.0F * 255.0F);
+    Object localObject = this.paint;
+    int i = 0;
+    ((Paint)localObject).setAlpha(MiscUtils.clamp(paramInt, 0, 255));
     this.paint.setStrokeWidth(((FloatKeyframeAnimation)this.widthAnimation).getFloatValue() * Utils.getScale(paramMatrix));
     if (this.paint.getStrokeWidth() <= 0.0F)
     {
@@ -256,26 +267,28 @@ public abstract class BaseStrokeContent
       return;
     }
     applyDashPatternIfNeeded(paramMatrix);
-    if (this.colorFilterAnimation != null) {
-      this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
-    }
-    paramInt = 0;
-    if (paramInt < this.pathGroups.size())
+    localObject = this.colorFilterAnimation;
+    paramInt = i;
+    if (localObject != null)
     {
-      BaseStrokeContent.PathGroup localPathGroup = (BaseStrokeContent.PathGroup)this.pathGroups.get(paramInt);
-      if (BaseStrokeContent.PathGroup.access$200(localPathGroup) != null) {
-        applyTrimPath(paramCanvas, localPathGroup, paramMatrix);
-      }
-      for (;;)
+      this.paint.setColorFilter((ColorFilter)((BaseKeyframeAnimation)localObject).getValue());
+      paramInt = i;
+    }
+    while (paramInt < this.pathGroups.size())
+    {
+      localObject = (BaseStrokeContent.PathGroup)this.pathGroups.get(paramInt);
+      if (BaseStrokeContent.PathGroup.access$200((BaseStrokeContent.PathGroup)localObject) != null)
       {
-        paramInt += 1;
-        break;
+        applyTrimPath(paramCanvas, (BaseStrokeContent.PathGroup)localObject, paramMatrix);
+      }
+      else
+      {
         L.beginSection("StrokeContent#buildPath");
         this.path.reset();
-        int i = BaseStrokeContent.PathGroup.access$100(localPathGroup).size() - 1;
+        i = BaseStrokeContent.PathGroup.access$100((BaseStrokeContent.PathGroup)localObject).size() - 1;
         while (i >= 0)
         {
-          this.path.addPath(((PathContent)BaseStrokeContent.PathGroup.access$100(localPathGroup).get(i)).getPath(), paramMatrix);
+          this.path.addPath(((PathContent)BaseStrokeContent.PathGroup.access$100((BaseStrokeContent.PathGroup)localObject).get(i)).getPath(), paramMatrix);
           i -= 1;
         }
         L.endSection("StrokeContent#buildPath");
@@ -283,6 +296,7 @@ public abstract class BaseStrokeContent
         paramCanvas.drawPath(this.path, this.paint);
         L.endSection("StrokeContent#drawPath");
       }
+      paramInt += 1;
     }
     L.endSection("StrokeContent#draw");
   }
@@ -304,16 +318,11 @@ public abstract class BaseStrokeContent
       i += 1;
     }
     this.path.computeBounds(this.rect, false);
-    float f1 = ((FloatKeyframeAnimation)this.widthAnimation).getFloatValue();
+    float f2 = ((FloatKeyframeAnimation)this.widthAnimation).getFloatValue();
     paramMatrix = this.rect;
-    float f2 = this.rect.left;
-    float f3 = f1 / 2.0F;
-    float f4 = this.rect.top;
-    float f5 = f1 / 2.0F;
-    float f6 = this.rect.right;
-    float f7 = f1 / 2.0F;
-    float f8 = this.rect.bottom;
-    paramMatrix.set(f2 - f3, f4 - f5, f6 + f7, f1 / 2.0F + f8);
+    float f1 = paramMatrix.left;
+    f2 /= 2.0F;
+    paramMatrix.set(f1 - f2, this.rect.top - f2, this.rect.right + f2, this.rect.bottom + f2);
     paramRectF.set(this.rect);
     paramRectF.set(paramRectF.left - 1.0F, paramRectF.top - 1.0F, paramRectF.right + 1.0F, paramRectF.bottom + 1.0F);
     L.endSection("StrokeContent#getBounds");
@@ -332,58 +341,56 @@ public abstract class BaseStrokeContent
   public void setContents(List<Content> paramList1, List<Content> paramList2)
   {
     int i = paramList1.size() - 1;
-    TrimPathContent localTrimPathContent = null;
-    Content localContent;
-    if (i >= 0)
+    Object localObject3;
+    Object localObject1;
+    for (Object localObject2 = null; i >= 0; localObject2 = localObject1)
     {
-      localContent = (Content)paramList1.get(i);
-      if ((!(localContent instanceof TrimPathContent)) || (((TrimPathContent)localContent).getType() != ShapeTrimPath.Type.INDIVIDUALLY)) {
-        break label232;
-      }
-      localTrimPathContent = (TrimPathContent)localContent;
-    }
-    label232:
-    for (;;)
-    {
-      i -= 1;
-      break;
-      if (localTrimPathContent != null) {
-        localTrimPathContent.addListener(this);
-      }
-      i = paramList2.size() - 1;
-      paramList1 = null;
-      if (i >= 0)
+      localObject3 = (Content)paramList1.get(i);
+      localObject1 = localObject2;
+      if ((localObject3 instanceof TrimPathContent))
       {
-        localContent = (Content)paramList2.get(i);
-        if (((localContent instanceof TrimPathContent)) && (((TrimPathContent)localContent).getType() == ShapeTrimPath.Type.INDIVIDUALLY))
+        localObject3 = (TrimPathContent)localObject3;
+        localObject1 = localObject2;
+        if (((TrimPathContent)localObject3).getType() == ShapeTrimPath.Type.INDIVIDUALLY) {
+          localObject1 = localObject3;
+        }
+      }
+      i -= 1;
+    }
+    if (localObject2 != null) {
+      localObject2.addListener(this);
+    }
+    i = paramList2.size() - 1;
+    for (paramList1 = null; i >= 0; paramList1 = (List<Content>)localObject1)
+    {
+      localObject3 = (Content)paramList2.get(i);
+      if ((localObject3 instanceof TrimPathContent))
+      {
+        TrimPathContent localTrimPathContent = (TrimPathContent)localObject3;
+        if (localTrimPathContent.getType() == ShapeTrimPath.Type.INDIVIDUALLY)
         {
           if (paramList1 != null) {
             this.pathGroups.add(paramList1);
           }
-          paramList1 = new BaseStrokeContent.PathGroup((TrimPathContent)localContent, null);
-          ((TrimPathContent)localContent).addListener(this);
+          localObject1 = new BaseStrokeContent.PathGroup(localTrimPathContent, null);
+          localTrimPathContent.addListener(this);
+          break label223;
         }
       }
-      for (;;)
+      localObject1 = paramList1;
+      if ((localObject3 instanceof PathContent))
       {
-        i -= 1;
-        break;
-        if ((localContent instanceof PathContent))
-        {
-          if (paramList1 == null) {
-            paramList1 = new BaseStrokeContent.PathGroup(localTrimPathContent, null);
-          }
-          for (;;)
-          {
-            BaseStrokeContent.PathGroup.access$100(paramList1).add((PathContent)localContent);
-            break;
-            if (paramList1 != null) {
-              this.pathGroups.add(paramList1);
-            }
-            return;
-          }
+        localObject1 = paramList1;
+        if (paramList1 == null) {
+          localObject1 = new BaseStrokeContent.PathGroup(localObject2, null);
         }
+        BaseStrokeContent.PathGroup.access$100((BaseStrokeContent.PathGroup)localObject1).add((PathContent)localObject3);
       }
+      label223:
+      i -= 1;
+    }
+    if (paramList1 != null) {
+      this.pathGroups.add(paramList1);
     }
   }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ui.widget.ad.AdRoundedCornerFrameLayout android:id="@id/hk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/at_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/gq8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/m2">
+            <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/js3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+            <include android:id="@id/js5" android:visibility="gone" layout="@layout/c09" />
+            <FrameLayout android:id="@id/js4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <include android:visibility="gone" layout="@layout/c52" />
+            <ViewStub android:layout_gravity="bottom" android:id="@id/ib" android:layout="@layout/c2k" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+            <ViewStub android:layout_gravity="start|center|top" android:id="@id/i8" android:layout="@layout/ci" android:layout_width="60.0dip" android:layout_height="20.0dip" android:layout_marginTop="6.0dip" android:layout_marginStart="6.0dip" />
+            <ViewStub android:layout_gravity="bottom" android:id="@id/i5" android:layout="@layout/ch" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+            <ViewStub android:layout_gravity="bottom" android:id="@id/ie" android:layout="@layout/ch" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/hpx" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+            <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/c26" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:lineSpacingExtra="5.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a7b" android:id="@id/c27" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:lineSpacingExtra="5.0dip" />
+            <include layout="@layout/c14" />
+            <ViewStub android:id="@id/jot" android:layout="@layout/c17" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+            <com.tencent.mm.plugin.sns.ui.widget.SnsCardAdTagListView android:orientation="horizontal" android:id="@id/arz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/asr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginTop="12.0dip">
+                <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatButton android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/gm" android:id="@id/ass" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="11.0dip" android:layout_weight="1.0" android:textAllCaps="false" app:autoSizeMaxTextSize="14.0sp" app:autoSizeMinTextSize="1.0sp" app:autoSizeTextType="l08" style="@style/uc" />
+                <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatButton android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/gm" android:id="@id/ast" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:textAllCaps="false" app:autoSizeMaxTextSize="14.0sp" app:autoSizeMinTextSize="1.0sp" app:autoSizeTextType="l08" style="@style/uc" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/axq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="4.0dip">
+                <ImageView android:id="@id/lm4" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/album_ad_link_tag_weapp" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="10.0dip" android:textColor="@color/xo" android:id="@id/lm5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/j9q" android:includeFontPadding="false" android:layout_toRightOf="@id/lm4" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/lm2" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="12.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" android:layout_toRightOf="@id/lm5" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ViewStub android:id="@id/hz" android:layout="@layout/cg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.plugin.sns.ui.widget.ad.AdRoundedCornerFrameLayout>

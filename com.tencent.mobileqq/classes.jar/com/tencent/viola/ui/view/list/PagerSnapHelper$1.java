@@ -12,18 +12,28 @@ class PagerSnapHelper$1
   
   private void onPagerDataChanged(int paramInt1, int paramInt2)
   {
-    View localView = this.this$0.findCenterView(PagerSnapHelper.access$200(this.this$0));
-    if (localView != null) {}
-    for (int i = PagerSnapHelper.access$200(this.this$0).getPosition(localView);; i = -1)
+    Object localObject = this.this$0;
+    localObject = ((PagerSnapHelper)localObject).findCenterView(PagerSnapHelper.access$200((PagerSnapHelper)localObject));
+    int i;
+    if (localObject != null) {
+      i = PagerSnapHelper.access$200(this.this$0).getPosition((View)localObject);
+    } else {
+      i = -1;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPagerDataChanged: positionStart=");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", itemCount=");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(", centerPosition=");
+    ((StringBuilder)localObject).append(PagerSnapHelper.access$1200(this.this$0));
+    ((StringBuilder)localObject).append(", currentPosition=");
+    ((StringBuilder)localObject).append(i);
+    ViolaLogUtils.d("PagerSnapHelper", ((StringBuilder)localObject).toString());
+    if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
     {
-      ViolaLogUtils.d("PagerSnapHelper", "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + PagerSnapHelper.access$900(this.this$0) + ", currentPosition=" + i);
-      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
-      {
-        PagerSnapHelper.OnLayoutChangedListenerImpl.access$1602(PagerSnapHelper.access$1500(this.this$0), true);
-        PagerSnapHelper.access$1000(this.this$0).addOnLayoutChangeListener(PagerSnapHelper.access$1500(this.this$0));
-        PagerSnapHelper.access$1000(this.this$0).requestLayout();
-      }
-      return;
+      PagerSnapHelper.access$1300(this.this$0).addOnLayoutChangeListener(PagerSnapHelper.access$1900(this.this$0));
+      PagerSnapHelper.access$1300(this.this$0).requestLayout();
     }
   }
   
@@ -46,31 +56,31 @@ class PagerSnapHelper$1
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.access$900(this.this$0)) {
-      PagerSnapHelper.access$902(this.this$0, PagerSnapHelper.access$900(this.this$0) + paramInt2);
+    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0)) {
+      PagerSnapHelper.access$1212(this.this$0, paramInt2);
     }
     onPagerDataChanged(paramInt1, paramInt2);
   }
   
   public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 == PagerSnapHelper.access$900(this.this$0)) {
-      PagerSnapHelper.access$902(this.this$0, paramInt2);
+    if (paramInt1 == PagerSnapHelper.access$1200(this.this$0)) {
+      PagerSnapHelper.access$1202(this.this$0, paramInt2);
     }
     onPagerDataChanged(paramInt1, paramInt3);
   }
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.access$900(this.this$0)) {
-      PagerSnapHelper.access$902(this.this$0, PagerSnapHelper.access$900(this.this$0) - paramInt2);
+    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0)) {
+      PagerSnapHelper.access$1220(this.this$0, paramInt2);
     }
     onPagerDataChanged(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.1
  * JD-Core Version:    0.7.0.1
  */

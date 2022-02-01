@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class SnsTimeLineUI$44
   implements Runnable
@@ -9,9 +10,10 @@ final class SnsTimeLineUI$44
   
   public final void run()
   {
-    AppMethodBeat.i(39518);
-    this.rYv.ctC();
-    AppMethodBeat.o(39518);
+    AppMethodBeat.i(179256);
+    Log.i("MicroMsg.SnsTimeLineUI", "selectImageOrVideo");
+    SnsTimeLineUI.L(this.RAo);
+    AppMethodBeat.o(179256);
   }
 }
 

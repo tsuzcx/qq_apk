@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class tMobileQbossFeedBackInfo
   extends JceStruct
 {
-  public int iOperSource;
+  public int iOperSource = 0;
   public int iOperTimes = 1;
-  public int iOperType;
+  public int iOperType = 0;
   public String idfa = "";
   public String sQBosstrace = "";
   public String sQua = "";
   public String sUserID = "";
-  public long uiUin;
+  public long uiUin = 0L;
   
   public tMobileQbossFeedBackInfo() {}
   
@@ -48,21 +48,24 @@ public final class tMobileQbossFeedBackInfo
     paramJceOutputStream.write(this.sQBosstrace, 1);
     paramJceOutputStream.write(this.iOperType, 2);
     paramJceOutputStream.write(this.iOperSource, 3);
-    if (this.sQua != null) {
-      paramJceOutputStream.write(this.sQua, 4);
+    String str = this.sQua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sUserID != null) {
-      paramJceOutputStream.write(this.sUserID, 5);
+    str = this.sUserID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.idfa != null) {
-      paramJceOutputStream.write(this.idfa, 6);
+    str = this.idfa;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.iOperTimes, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/f" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/card" />
+    <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/gf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/kuw" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gf" android:gravity="center_horizontal" android:id="@id/ltx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ld5" />
+    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:textStyle="bold" android:id="@id/lt4" android:text="@string/ld4" style="@style/oh" />
+    <Button android:textStyle="bold" android:id="@id/lt5" android:layout_marginTop="16.0dip" android:layout_marginBottom="96.0dip" android:text="@string/ldp" style="@style/op" />
+</LinearLayout>

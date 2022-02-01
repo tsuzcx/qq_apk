@@ -10,7 +10,7 @@ public final class s_qzone_reward_data
 {
   static ArrayList<s_reward_node> cache_vec_nodes = new ArrayList();
   public boolean show_entry = true;
-  public ArrayList<s_reward_node> vec_nodes;
+  public ArrayList<s_reward_node> vec_nodes = null;
   
   static
   {
@@ -35,14 +35,15 @@ public final class s_qzone_reward_data
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.show_entry, 0);
-    if (this.vec_nodes != null) {
-      paramJceOutputStream.write(this.vec_nodes, 1);
+    ArrayList localArrayList = this.vec_nodes;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_qzone_reward_data
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,26 @@
 package com.tencent.mm.opensdk.modelbiz;
 
-public class OpenRankList {}
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+
+public class OpenRankList
+{
+  public static class Req
+    extends BaseReq
+  {
+    public boolean checkArgs()
+    {
+      return true;
+    }
+    
+    public int getType()
+    {
+      return 11;
+    }
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.OpenRankList
  * JD-Core Version:    0.7.0.1
  */

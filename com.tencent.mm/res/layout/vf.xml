@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bh6" android:background="@color/a6q" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/a0y"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bh7" android:padding="@dimen/m1" android:layout_width="@dimen/a10" android:layout_height="@dimen/a10" android:scaleType="fitXY" />
-    <ImageView android:id="@id/bjh" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/a10" android:layout_height="@dimen/a10" />
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/bhg" android:visibility="gone" android:layout_width="@dimen/a10" android:layout_height="@dimen/a0w" android:max="100" android:progress="0" android:layout_below="@id/bh7" style="@style/ld" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="@dimen/a10" android:layout_height="@dimen/a0w" android:layout_below="@id/bh7">
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/bh8" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="0.0dip" android:layout_height="@dimen/a0w" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/nf" android:ellipsize="end" android:id="@id/bcz" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="{xxxxxx}" android:layout_weight="1.0" style="@style/ln" />
-            <TextView android:textSize="@dimen/nq" android:textColor="@color/s4" android:ellipsize="end" android:id="@id/bh_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{Y6.00}" android:singleLine="true" />
-            <TextView android:id="@id/bha" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lm" />
-        </LinearLayout>
-        <FrameLayout android:gravity="center" android:id="@id/bh9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/a0w">
-            <LinearLayout android:orientation="vertical" android:id="@id/bhb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textSize="14.0dip" android:textColor="@color/t_" android:gravity="center" android:id="@id/bhc" android:background="@drawable/emoji_download_item" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:shadowRadius="1.2" />
-            </LinearLayout>
-            <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/bhd" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/emoji_download_item" />
-            <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bhe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-        </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/cnc" />
+        <View android:id="@id/jzz" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

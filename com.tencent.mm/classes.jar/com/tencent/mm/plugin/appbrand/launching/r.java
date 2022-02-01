@@ -1,54 +1,46 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.protocal.protobuf.ast;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.autogen.b.bf;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-class r
-  implements n
+public final class r
+  extends bf
 {
-  final String appId;
-  final int cxS;
-  final int hcr;
-  final String hiw;
-  final String hkj;
-  final int iln;
-  final int ilo;
-  private final AtomicInteger ilp;
-  private volatile boolean ilq;
-  final List<WxaAttributes.WxaVersionModuleInfo> moduleList;
+  static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  static final String[] qDJ;
   
-  r(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, String paramString3, List<WxaAttributes.WxaVersionModuleInfo> paramList)
+  static
   {
-    AppMethodBeat.i(131836);
-    this.ilp = new AtomicInteger(0);
-    this.ilq = false;
-    this.appId = paramString1;
-    this.hcr = paramInt1;
-    this.hiw = paramString2;
-    this.cxS = paramInt2;
-    this.iln = paramInt3;
-    this.ilo = paramInt4;
-    this.hkj = paramString3;
-    this.moduleList = paramList;
-    AppMethodBeat.o(131836);
+    int i = 0;
+    AppMethodBeat.i(146064);
+    qDJ = new String[] { "appId", "versionType" };
+    DB_INFO = bf.aJm();
+    String str = " PRIMARY KEY (";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(146064);
   }
   
-  public void aGL() {}
-  
-  public void aGQ() {}
-  
-  public void onDownloadProgress(int paramInt) {}
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return DB_INFO;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.r
  * JD-Core Version:    0.7.0.1
  */

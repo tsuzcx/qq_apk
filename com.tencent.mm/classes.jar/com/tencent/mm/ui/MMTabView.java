@@ -1,7 +1,6 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.text.TextUtils.TruncateAt;
@@ -11,234 +10,254 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.a.a.a;
-import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.tools.v;
 
 public class MMTabView
   extends ViewGroup
 {
-  private TextView gpL;
   private int index;
+  private TextView pJJ;
   private int padding;
   public int total;
-  private TextView yZM;
-  private ImageView zct;
+  private ImageView yaP;
+  private TextView yaQ;
   
   private MMTabView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(106112);
+    AppMethodBeat.i(141470);
     this.total = 3;
     this.padding = 0;
     init();
-    AppMethodBeat.o(106112);
+    AppMethodBeat.o(141470);
   }
   
   public MMTabView(Context paramContext, int paramInt)
   {
     this(paramContext);
-    AppMethodBeat.i(106113);
+    AppMethodBeat.i(141471);
     this.index = paramInt;
-    dCA();
-    AppMethodBeat.o(106113);
+    dCS();
+    AppMethodBeat.o(141471);
   }
   
   public MMTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106111);
+    AppMethodBeat.i(141469);
     this.total = 3;
     this.padding = 0;
     init();
-    AppMethodBeat.o(106111);
+    AppMethodBeat.o(141469);
   }
   
   public MMTabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106110);
+    AppMethodBeat.i(141468);
     this.total = 3;
     this.padding = 0;
     init();
-    AppMethodBeat.o(106110);
+    AppMethodBeat.o(141468);
   }
   
   private void init()
   {
-    AppMethodBeat.i(106115);
-    this.padding = getResources().getDimensionPixelSize(2131427861);
-    Object localObject = aa.dsG();
-    boolean bool1 = aa.dsC();
+    AppMethodBeat.i(141473);
+    this.padding = getResources().getDimensionPixelSize(a.e.SmallestPadding);
+    Object localObject = LocaleUtil.getApplicationLanguage();
+    boolean bool1 = LocaleUtil.isChineseAppLang();
     boolean bool2 = ((String)localObject).equalsIgnoreCase("en");
     if (bool1) {}
-    for (int i = (int)(com.tencent.mm.cb.a.dr(getContext()) * com.tencent.mm.cb.a.fromDPToPix(getContext(), 2));; i = 0)
+    for (int i = (int)(com.tencent.mm.cd.a.getScaleSize(getContext()) * com.tencent.mm.cd.a.fromDPToPix(getContext(), 2));; i = 0)
     {
-      this.gpL = new TextView(getContext());
-      this.gpL.setSingleLine();
-      this.gpL.setEllipsize(TextUtils.TruncateAt.END);
-      this.gpL.setTextColor(getResources().getColorStateList(2131690701));
-      this.gpL.setTextSize(0, com.tencent.mm.cb.a.ao(getContext(), 2131427758));
-      this.gpL.setText("");
+      this.pJJ = new TextView(getContext());
+      this.pJJ.setSingleLine();
+      this.pJJ.setEllipsize(TextUtils.TruncateAt.END);
+      this.pJJ.setTextColor(getResources().getColorStateList(a.d.wechat_green));
+      this.pJJ.setTextSize(0, com.tencent.mm.cd.a.br(getContext(), a.e.HintTextSize));
+      this.pJJ.setText("");
       if (bool1)
       {
-        localObject = this.gpL;
-        float f = this.gpL.getTextSize();
+        localObject = this.pJJ;
+        float f = this.pJJ.getTextSize();
         ((TextView)localObject).setTextSize(0, i + f);
-        this.gpL.setTypeface(null, 0);
+        this.pJJ.setTypeface(null, 0);
       }
       for (;;)
       {
-        addView(this.gpL);
-        this.zct = new ImageView(getContext());
-        this.zct.setBackgroundResource(2130840641);
-        this.zct.setVisibility(4);
-        addView(this.zct);
-        this.yZM = new TextView(getContext());
-        this.yZM.setTextColor(getResources().getColor(2131690709));
-        this.yZM.setTextSize(1, 11.0F);
-        this.yZM.setBackgroundResource(t.iF(getContext()));
-        this.yZM.setTypeface(Typeface.DEFAULT_BOLD);
-        this.yZM.setGravity(17);
-        this.yZM.setVisibility(4);
-        addView(this.yZM);
-        setBackgroundResource(2130839285);
-        AppMethodBeat.o(106115);
+        addView(this.pJJ);
+        this.yaP = new ImageView(getContext());
+        this.yaP.setBackgroundResource(a.f.unread_dot_shape);
+        this.yaP.setVisibility(4);
+        addView(this.yaP);
+        this.yaQ = new TextView(getContext());
+        this.yaQ.setTextColor(getResources().getColor(a.d.white_text_color));
+        this.yaQ.setTextSize(1, 11.0F);
+        this.yaQ.setBackgroundResource(v.nH(getContext()));
+        this.yaQ.setTypeface(Typeface.DEFAULT_BOLD);
+        this.yaQ.setGravity(17);
+        this.yaQ.setVisibility(4);
+        addView(this.yaQ);
+        setBackgroundResource(a.f.list_thicklinecell_bg);
+        AppMethodBeat.o(141473);
         return;
         if (bool2) {
-          this.gpL.setTypeface(null, 1);
+          this.pJJ.setTypeface(null, 1);
         }
       }
     }
   }
   
-  public final void dCA()
+  public final void dCS()
   {
-    AppMethodBeat.i(106114);
-    ab.d("MicroMsg.MMTabView", "jacks build : %d desc, unread: %s", new Object[] { Integer.valueOf(this.index), getUnread() });
-    a.a.dDt().a(this, getText(), getUnread(), this.index);
-    AppMethodBeat.o(106114);
+    AppMethodBeat.i(141472);
+    Log.d("MicroMsg.MMTabView", "jacks build : %d desc, unread: %s", new Object[] { Integer.valueOf(this.index), getUnread() });
+    a.a.jlv().a(this, getText(), getUnread(), this.index);
+    AppMethodBeat.o(141472);
   }
   
   public String getText()
   {
-    AppMethodBeat.i(106119);
-    String str = this.gpL.getText().toString();
-    AppMethodBeat.o(106119);
+    AppMethodBeat.i(141477);
+    String str = this.pJJ.getText().toString();
+    AppMethodBeat.o(141477);
     return str;
   }
   
   public String getUnread()
   {
-    AppMethodBeat.i(106120);
-    String str = this.yZM.getText().toString();
-    AppMethodBeat.o(106120);
+    AppMethodBeat.i(141478);
+    String str = this.yaQ.getText().toString();
+    AppMethodBeat.o(141478);
     return str;
+  }
+  
+  public final void kb(final String paramString, final int paramInt)
+  {
+    AppMethodBeat.i(369619);
+    if (Util.isNullOrNil(paramString))
+    {
+      this.yaQ.setVisibility(4);
+      AppMethodBeat.o(369619);
+      return;
+    }
+    this.yaQ.setVisibility(0);
+    this.yaQ.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(141467);
+        MMTabView.a(MMTabView.this).setText(paramString);
+        MMTabView.a(MMTabView.this).setBackgroundResource(paramInt);
+        MMTabView.this.dCS();
+        AppMethodBeat.o(141467);
+      }
+    });
+    AppMethodBeat.o(369619);
+  }
+  
+  public final void ol(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141480);
+    ImageView localImageView = this.yaP;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(141480);
+      return;
+    }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106124);
+    AppMethodBeat.i(141482);
     paramInt3 -= paramInt1;
     paramInt1 = paramInt4 - paramInt2;
-    paramInt2 = (paramInt3 - this.gpL.getMeasuredWidth()) / 2;
-    paramInt4 = this.gpL.getMeasuredWidth() + paramInt2;
-    int i = (paramInt1 - this.gpL.getMeasuredHeight()) / 2;
-    int j = this.gpL.getMeasuredHeight();
-    this.gpL.layout(paramInt2, i, paramInt4, j + i);
+    paramInt2 = (paramInt3 - this.pJJ.getMeasuredWidth()) / 2;
+    paramInt4 = this.pJJ.getMeasuredWidth() + paramInt2;
+    int i = (paramInt1 - this.pJJ.getMeasuredHeight()) / 2;
+    int j = this.pJJ.getMeasuredHeight();
+    this.pJJ.layout(paramInt2, i, paramInt4, j + i);
     i = this.padding + paramInt4;
-    j = this.zct.getMeasuredWidth();
-    int k = (paramInt1 - this.zct.getMeasuredHeight()) / 2;
-    int m = this.zct.getMeasuredHeight();
-    this.zct.layout(i, k, j + i, m + k);
-    if (paramInt2 - this.padding < this.yZM.getMeasuredWidth())
+    j = this.yaP.getMeasuredWidth();
+    int k = (paramInt1 - this.yaP.getMeasuredHeight()) / 2;
+    int m = this.yaP.getMeasuredHeight();
+    this.yaP.layout(i, k, j + i, m + k);
+    if (paramInt2 - this.padding < this.yaQ.getMeasuredWidth())
     {
-      paramInt2 = paramInt3 - this.yZM.getMeasuredWidth();
-      paramInt3 = this.yZM.getMeasuredWidth();
-      paramInt1 = (paramInt1 - this.yZM.getMeasuredHeight()) / 2;
-      paramInt4 = this.yZM.getMeasuredHeight();
-      this.yZM.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
-      AppMethodBeat.o(106124);
+      paramInt2 = paramInt3 - this.yaQ.getMeasuredWidth();
+      paramInt3 = this.yaQ.getMeasuredWidth();
+      paramInt1 = (paramInt1 - this.yaQ.getMeasuredHeight()) / 2;
+      paramInt4 = this.yaQ.getMeasuredHeight();
+      this.yaQ.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
+      AppMethodBeat.o(141482);
       return;
     }
     paramInt2 = this.padding + paramInt4;
-    paramInt3 = this.yZM.getMeasuredWidth();
-    paramInt1 = (paramInt1 - this.yZM.getMeasuredHeight()) / 2;
-    paramInt4 = this.yZM.getMeasuredHeight();
-    this.yZM.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
-    AppMethodBeat.o(106124);
+    paramInt3 = this.yaQ.getMeasuredWidth();
+    paramInt1 = (paramInt1 - this.yaQ.getMeasuredHeight()) / 2;
+    paramInt4 = this.yaQ.getMeasuredHeight();
+    this.yaQ.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
+    AppMethodBeat.o(141482);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106123);
+    AppMethodBeat.i(141481);
     int i = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int j = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     if (View.MeasureSpec.getMode(paramInt2) == -2147483648) {}
     for (paramInt1 = View.MeasureSpec.makeMeasureSpec(j, -2147483648);; paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0))
     {
-      this.gpL.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
-      this.zct.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
-      this.yZM.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
+      this.pJJ.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
+      this.yaP.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
+      this.yaQ.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), paramInt1);
       setMeasuredDimension(i, j);
-      AppMethodBeat.o(106123);
-      return;
-    }
-  }
-  
-  public final void qs(boolean paramBoolean)
-  {
-    AppMethodBeat.i(106122);
-    ImageView localImageView = this.zct;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
-    {
-      localImageView.setVisibility(i);
-      AppMethodBeat.o(106122);
+      AppMethodBeat.o(141481);
       return;
     }
   }
   
   public void setText(int paramInt)
   {
-    AppMethodBeat.i(106116);
-    this.gpL.setText(paramInt);
-    AppMethodBeat.o(106116);
+    AppMethodBeat.i(141474);
+    this.pJJ.setText(paramInt);
+    AppMethodBeat.o(141474);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(106117);
-    this.gpL.setText(paramString);
-    AppMethodBeat.o(106117);
+    AppMethodBeat.i(141475);
+    this.pJJ.setText(paramString);
+    AppMethodBeat.o(141475);
   }
   
-  public void setTextColor(ColorStateList paramColorStateList)
+  public void setTextColor(int paramInt)
   {
-    AppMethodBeat.i(106118);
-    this.gpL.setTextColor(paramColorStateList);
-    AppMethodBeat.o(106118);
+    AppMethodBeat.i(141476);
+    this.pJJ.setTextColor(paramInt);
+    AppMethodBeat.o(141476);
   }
   
   public void setUnread(String paramString)
   {
-    AppMethodBeat.i(106121);
-    if (bo.isNullOrNil(paramString))
-    {
-      this.yZM.setVisibility(4);
-      AppMethodBeat.o(106121);
-      return;
-    }
-    this.yZM.setVisibility(0);
-    this.yZM.post(new MMTabView.1(this, paramString));
-    AppMethodBeat.o(106121);
+    AppMethodBeat.i(141479);
+    kb(paramString, v.bC(getContext(), Integer.parseInt(paramString)));
+    AppMethodBeat.o(141479);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.MMTabView
  * JD-Core Version:    0.7.0.1
  */

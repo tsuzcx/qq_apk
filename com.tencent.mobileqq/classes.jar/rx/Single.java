@@ -152,9 +152,8 @@ public class Single<T>
     }
     Object localObject = new Single[8];
     Iterator localIterator = paramIterable.iterator();
-    paramIterable = (Iterable<? extends Single<? extends T>>)localObject;
     int i = 0;
-    while (localIterator.hasNext())
+    for (paramIterable = (Iterable<? extends Single<? extends T>>)localObject; localIterator.hasNext(); paramIterable = (Iterable<? extends Single<? extends T>>)localObject)
     {
       Single localSingle = (Single)localIterator.next();
       localObject = paramIterable;
@@ -165,7 +164,6 @@ public class Single<T>
       }
       localObject[i] = localSingle;
       i += 1;
-      paramIterable = (Iterable<? extends Single<? extends T>>)localObject;
     }
     if (paramIterable.length == i) {
       return paramIterable;
@@ -247,16 +245,18 @@ public class Single<T>
   @Experimental
   public static <T, Resource> Single<T> using(Func0<Resource> paramFunc0, Func1<? super Resource, ? extends Single<? extends T>> paramFunc1, Action1<? super Resource> paramAction1, boolean paramBoolean)
   {
-    if (paramFunc0 == null) {
-      throw new NullPointerException("resourceFactory is null");
-    }
-    if (paramFunc1 == null) {
+    if (paramFunc0 != null)
+    {
+      if (paramFunc1 != null)
+      {
+        if (paramAction1 != null) {
+          return create(new SingleOnSubscribeUsing(paramFunc0, paramFunc1, paramAction1, paramBoolean));
+        }
+        throw new NullPointerException("disposeAction is null");
+      }
       throw new NullPointerException("singleFactory is null");
     }
-    if (paramAction1 == null) {
-      throw new NullPointerException("disposeAction is null");
-    }
-    return create(new SingleOnSubscribeUsing(paramFunc0, paramFunc1, paramAction1, paramBoolean));
+    throw new NullPointerException("resourceFactory is null");
   }
   
   public static <R> Single<R> zip(Iterable<? extends Single<?>> paramIterable, FuncN<? extends R> paramFuncN)
@@ -439,10 +439,10 @@ public class Single<T>
   
   public final Subscription subscribe(Observer<? super T> paramObserver)
   {
-    if (paramObserver == null) {
-      throw new NullPointerException("observer is null");
+    if (paramObserver != null) {
+      return subscribe(new Single.17(this, paramObserver));
     }
-    return subscribe(new Single.17(this, paramObserver));
+    throw new NullPointerException("observer is null");
   }
   
   public final Subscription subscribe(SingleSubscriber<? super T> paramSingleSubscriber)
@@ -455,58 +455,65 @@ public class Single<T>
   
   public final Subscription subscribe(Subscriber<? super T> paramSubscriber)
   {
-    if (paramSubscriber == null) {
-      throw new IllegalArgumentException("observer can not be null");
-    }
-    if (this.onSubscribe == null) {
+    if (paramSubscriber != null)
+    {
+      if (this.onSubscribe != null)
+      {
+        paramSubscriber.onStart();
+        Object localObject = paramSubscriber;
+        if (!(paramSubscriber instanceof SafeSubscriber)) {
+          localObject = new SafeSubscriber(paramSubscriber);
+        }
+        try
+        {
+          hook.onSubscribeStart(this, this.onSubscribe).call(localObject);
+          paramSubscriber = hook.onSubscribeReturn((Subscription)localObject);
+          return paramSubscriber;
+        }
+        catch (Throwable paramSubscriber)
+        {
+          Exceptions.throwIfFatal(paramSubscriber);
+          try
+          {
+            ((Subscriber)localObject).onError(hook.onSubscribeError(paramSubscriber));
+            return Subscriptions.empty();
+          }
+          catch (Throwable localThrowable)
+          {
+            Exceptions.throwIfFatal(localThrowable);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Error occurred attempting to subscribe [");
+            localStringBuilder.append(paramSubscriber.getMessage());
+            localStringBuilder.append("] and then again while trying to pass to onError.");
+            paramSubscriber = new RuntimeException(localStringBuilder.toString(), localThrowable);
+            hook.onSubscribeError(paramSubscriber);
+            throw paramSubscriber;
+          }
+        }
+      }
       throw new IllegalStateException("onSubscribe function can not be null.");
     }
-    paramSubscriber.onStart();
-    Object localObject = paramSubscriber;
-    if (!(paramSubscriber instanceof SafeSubscriber)) {
-      localObject = new SafeSubscriber(paramSubscriber);
-    }
-    try
-    {
-      hook.onSubscribeStart(this, this.onSubscribe).call(localObject);
-      paramSubscriber = hook.onSubscribeReturn((Subscription)localObject);
-      return paramSubscriber;
-    }
-    catch (Throwable paramSubscriber)
-    {
-      Exceptions.throwIfFatal(paramSubscriber);
-      try
-      {
-        ((Subscriber)localObject).onError(hook.onSubscribeError(paramSubscriber));
-        return Subscriptions.empty();
-      }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwIfFatal(localThrowable);
-        paramSubscriber = new RuntimeException("Error occurred attempting to subscribe [" + paramSubscriber.getMessage() + "] and then again while trying to pass to onError.", localThrowable);
-        hook.onSubscribeError(paramSubscriber);
-        throw paramSubscriber;
-      }
-    }
+    throw new IllegalArgumentException("observer can not be null");
   }
   
   public final Subscription subscribe(Action1<? super T> paramAction1)
   {
-    if (paramAction1 == null) {
-      throw new IllegalArgumentException("onSuccess can not be null");
+    if (paramAction1 != null) {
+      return subscribe(new Single.15(this, paramAction1));
     }
-    return subscribe(new Single.15(this, paramAction1));
+    throw new IllegalArgumentException("onSuccess can not be null");
   }
   
   public final Subscription subscribe(Action1<? super T> paramAction1, Action1<Throwable> paramAction11)
   {
-    if (paramAction1 == null) {
-      throw new IllegalArgumentException("onSuccess can not be null");
-    }
-    if (paramAction11 == null) {
+    if (paramAction1 != null)
+    {
+      if (paramAction11 != null) {
+        return subscribe(new Single.16(this, paramAction11, paramAction1));
+      }
       throw new IllegalArgumentException("onError can not be null");
     }
-    return subscribe(new Single.16(this, paramAction11, paramAction1));
+    throw new IllegalArgumentException("onSuccess can not be null");
   }
   
   public final Single<T> subscribeOn(Scheduler paramScheduler)
@@ -587,7 +594,11 @@ public class Single<T>
       catch (Throwable paramSubscriber)
       {
         Exceptions.throwIfFatal(paramSubscriber);
-        paramSubscriber = new RuntimeException("Error occurred attempting to subscribe [" + localThrowable.getMessage() + "] and then again while trying to pass to onError.", paramSubscriber);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Error occurred attempting to subscribe [");
+        localStringBuilder.append(localThrowable.getMessage());
+        localStringBuilder.append("] and then again while trying to pass to onError.");
+        paramSubscriber = new RuntimeException(localStringBuilder.toString(), paramSubscriber);
         hook.onSubscribeError(paramSubscriber);
         throw paramSubscriber;
       }
@@ -601,7 +612,7 @@ public class Single<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.Single
  * JD-Core Version:    0.7.0.1
  */

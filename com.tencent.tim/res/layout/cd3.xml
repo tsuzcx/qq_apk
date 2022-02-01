@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/abz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <View android:gravity="center" android:id="@id/jok" android:background="@drawable/b09" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/kdn" android:layout_width="wrap_content" android:layout_height="30.0dip" android:text="@string/rkx" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/m43" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfAnimationStyle="cd6" ptf:ptfDrawableStart="@drawable/ci9" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfMode="g5g" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
+        <include android:id="@id/m42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/au7" />
+    </FrameLayout>
+</LinearLayout>

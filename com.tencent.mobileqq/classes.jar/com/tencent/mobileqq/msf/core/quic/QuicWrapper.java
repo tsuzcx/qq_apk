@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.core.quic;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.os.SystemClock;
@@ -55,16 +56,38 @@ public class QuicWrapper
   {
     if (!isLoaded)
     {
-      DEFAULT_QUIC_FLL_PATH = Environment.getDataDirectory() + "/data/" + BaseApplication.getContext().getPackageName() + "/app_lib/quic/";
-      String str2 = getQuicResLoadPath();
-      String str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = DEFAULT_QUIC_FLL_PATH;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getDataDirectory());
+      ((StringBuilder)localObject1).append("/data/");
+      ((StringBuilder)localObject1).append(BaseApplication.getContext().getPackageName());
+      ((StringBuilder)localObject1).append("/app_lib/quic/");
+      DEFAULT_QUIC_FLL_PATH = ((StringBuilder)localObject1).toString();
+      Object localObject2 = getQuicResLoadPath();
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = DEFAULT_QUIC_FLL_PATH;
       }
       long l = SystemClock.elapsedRealtime();
-      boolean bool = StringUtils.loadLibrary("QuicWrapper", BaseApplication.getContext(), str1 + "libsaturn.so", null);
-      isLoaded = StringUtils.loadLibrary("QuicWrapper", BaseApplication.getContext(), str1 + "libquic.so", null);
-      QLog.i("QuicWrapper", 1, "load quic library " + str1 + " loadSaturn=" + bool + " loadQuic=" + isLoaded + " cost=" + (SystemClock.elapsedRealtime() - l));
+      localObject2 = BaseApplication.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("libsaturn.so");
+      boolean bool = StringUtils.loadLibrary("QuicWrapper", (Context)localObject2, localStringBuilder.toString(), null);
+      localObject2 = BaseApplication.getContext();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("libquic.so");
+      isLoaded = StringUtils.loadLibrary("QuicWrapper", (Context)localObject2, localStringBuilder.toString(), null);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("load quic library ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(" loadSaturn=");
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(" loadQuic=");
+      ((StringBuilder)localObject2).append(isLoaded);
+      ((StringBuilder)localObject2).append(" cost=");
+      ((StringBuilder)localObject2).append(SystemClock.elapsedRealtime() - l);
+      QLog.i("QuicWrapper", 1, ((StringBuilder)localObject2).toString());
       if (isLoaded) {
         setLogLevel(0, false);
       }
@@ -78,7 +101,7 @@ public class QuicWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quic.QuicWrapper
  * JD-Core Version:    0.7.0.1
  */

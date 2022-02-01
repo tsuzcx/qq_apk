@@ -1,8 +1,14 @@
 package com.tencent.token;
 
-public class ew
+public final class ew
 {
-  public Object a;
+  public static <T> T a(T paramT)
+  {
+    if (paramT != null) {
+      return paramT;
+    }
+    throw new NullPointerException();
+  }
 }
 
 

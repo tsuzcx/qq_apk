@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import alud;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class CameraCaptureView$12
   implements Runnable
@@ -11,12 +11,12 @@ class CameraCaptureView$12
   
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), alud.a(2131701684), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131899538), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.12
  * JD-Core Version:    0.7.0.1
  */

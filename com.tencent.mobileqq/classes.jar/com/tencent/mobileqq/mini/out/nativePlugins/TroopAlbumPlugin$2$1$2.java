@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
 import cooperation.qzone.QzonePluginProxyActivity;
 import mqq.app.AppRuntime;
 
@@ -20,17 +20,17 @@ class TroopAlbumPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     Intent localIntent = new Intent();
-    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131718162);
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131914660);
+    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);
     localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.a(this.this$2.this$1.val$jsContext.getActivity(), paramDialogInterface, localIntent, 4);
+    QzonePluginProxyActivity.launchPluingActivityForResult(this.this$2.this$1.val$jsContext.getActivity(), paramDialogInterface, localIntent, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin.2.1.2
  * JD-Core Version:    0.7.0.1
  */

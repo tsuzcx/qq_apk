@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 
 public class NetworkUtils
 {
@@ -18,35 +19,43 @@ public class NetworkUtils
   
   public static String convert2IP(int paramInt)
   {
-    StringBuffer localStringBuffer1 = new StringBuffer();
-    StringBuffer localStringBuffer2 = localStringBuffer1.append(paramInt & 0xFF).append('.');
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
     paramInt >>>= 8;
-    localStringBuffer2 = localStringBuffer2.append(paramInt & 0xFF).append('.');
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
     paramInt >>>= 8;
-    localStringBuffer2.append(paramInt & 0xFF).append('.').append(paramInt >>> 8 & 0xFF);
-    return localStringBuffer1.toString();
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
+    localStringBuffer.append(paramInt >>> 8 & 0xFF);
+    return localStringBuffer.toString();
   }
   
   private static int convertNetworkType(int paramInt)
   {
-    switch (paramInt)
+    int i = 3;
+    if (paramInt != 1)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 3;
-    case 2: 
-      return 1;
+      if (paramInt != 2)
+      {
+        if ((paramInt != 3) && (paramInt != 4)) {
+          return 0;
+        }
+        return 2;
+      }
+      i = 1;
     }
-    return 2;
+    return i;
   }
   
   public static NetworkInfo getActiveNetworkInfo(Context paramContext)
   {
-    if (sNetworkInfoProvider == null) {
+    NetworkUtils.INetworkInfoProvider localINetworkInfoProvider = sNetworkInfoProvider;
+    if (localINetworkInfoProvider == null) {
       return null;
     }
-    return sNetworkInfoProvider.getNetworkInfo(paramContext);
+    return localINetworkInfoProvider.getNetworkInfo(paramContext);
   }
   
   public static String getDnsInfo(Context paramContext)
@@ -58,69 +67,79 @@ public class NetworkUtils
     if (paramContext == null) {
       return "none";
     }
-    return convert2IP(paramContext.dns1) + ';' + convert2IP(paramContext.dns2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(convert2IP(paramContext.dns1));
+    localStringBuilder.append(';');
+    localStringBuilder.append(convert2IP(paramContext.dns2));
+    return localStringBuilder.toString();
   }
   
   public static int getNetworkType(Context paramContext)
   {
     paramContext = getActiveNetworkInfo(paramContext);
-    if ((paramContext == null) || (!paramContext.isConnected())) {
-      return 0;
+    if ((paramContext != null) && (paramContext.isConnected())) {
+      return convertNetworkType(getNetworkType(paramContext));
     }
-    return convertNetworkType(getNetworkType(paramContext));
+    return 0;
   }
   
   private static int getNetworkType(NetworkInfo paramNetworkInfo)
   {
-    switch (paramNetworkInfo.getType())
+    int j = paramNetworkInfo.getType();
+    int i = 1;
+    if (j != 0)
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
+      if (j == 1) {
+        return i;
+      }
     }
-    switch (paramNetworkInfo.getSubtype())
-    {
-    case 0: 
-    default: 
-      return 0;
-    case 1: 
-    case 2: 
-    case 4: 
-    case 7: 
-    case 11: 
-      return 2;
-    case 3: 
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 14: 
-    case 15: 
-      return 3;
+    else {
+      switch (paramNetworkInfo.getSubtype())
+      {
+      default: 
+        break;
+      case 13: 
+        return 4;
+      case 3: 
+      case 5: 
+      case 6: 
+      case 8: 
+      case 9: 
+      case 10: 
+      case 12: 
+      case 14: 
+      case 15: 
+        return 3;
+      case 1: 
+      case 2: 
+      case 4: 
+      case 7: 
+      case 11: 
+        return 2;
+      }
     }
-    return 4;
+    i = 0;
+    return i;
   }
   
   public static int getNetworkTypeDiff4G(Context paramContext)
   {
     paramContext = getActiveNetworkInfo(paramContext);
-    if ((paramContext == null) || (!paramContext.isConnected())) {
-      return 0;
+    if ((paramContext != null) && (paramContext.isConnected())) {
+      return getNetworkType(paramContext);
     }
-    return getNetworkType(paramContext);
+    return 0;
   }
   
   public static String getWifiBSSID(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return null;
-      paramContext = getWifiInfo(paramContext);
-    } while (paramContext == null);
+    }
+    paramContext = getWifiInfo(paramContext);
+    if (paramContext == null) {
+      return null;
+    }
     return paramContext.getBSSID();
   }
   
@@ -130,10 +149,10 @@ public class NetworkUtils
       return null;
     }
     paramContext = (WifiManager)paramContext.getSystemService("wifi");
-    if (paramContext == null) {}
-    for (paramContext = null;; paramContext = paramContext.getConnectionInfo()) {
-      return paramContext;
+    if (paramContext == null) {
+      return null;
     }
+    return NetworkMonitor.getConnectionInfo(paramContext);
   }
   
   public static String getWifiMacAddress(Context paramContext)
@@ -176,7 +195,7 @@ public class NetworkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.utils.NetworkUtils
  * JD-Core Version:    0.7.0.1
  */

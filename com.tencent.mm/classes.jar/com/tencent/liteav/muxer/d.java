@@ -1,6 +1,5 @@
 package com.tencent.liteav.muxer;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import com.tencent.liteav.basic.log.TXCLog;
@@ -10,7 +9,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@TargetApi(18)
 public class d
   implements a
 {
@@ -27,15 +25,15 @@ public class d
   private int k;
   private boolean l;
   private boolean m;
-  private ConcurrentLinkedQueue<d.a> n;
-  private ConcurrentLinkedQueue<d.a> o;
+  private ConcurrentLinkedQueue<a> n;
+  private ConcurrentLinkedQueue<a> o;
   private long p;
   private long q;
   private long r;
   
   public d()
   {
-    AppMethodBeat.i(67121);
+    AppMethodBeat.i(14911);
     this.e = 2;
     this.g = null;
     this.h = null;
@@ -49,36 +47,36 @@ public class d
     this.p = -1L;
     this.q = -1L;
     this.r = -1L;
-    AppMethodBeat.o(67121);
+    AppMethodBeat.o(14911);
   }
   
   private void a(long paramLong)
   {
-    AppMethodBeat.i(67140);
+    AppMethodBeat.i(14930);
     while (this.o.size() > 0) {
-      if (((d.a)this.o.peek()).b() == null)
+      if (((a)this.o.peek()).b() == null)
       {
         TXCLog.e("TXCMP4SWMuxer", "flushAudioCache, bufferInfo is null");
         this.o.remove();
       }
       else
       {
-        if (((d.a)this.o.peek()).b().presentationTimeUs >= paramLong) {
+        if (((a)this.o.peek()).b().presentationTimeUs >= paramLong) {
           break;
         }
-        d.a locala = (d.a)this.o.poll();
+        a locala = (a)this.o.poll();
         d(locala.a(), locala.b());
       }
     }
-    AppMethodBeat.o(67140);
+    AppMethodBeat.o(14930);
   }
   
   private void a(boolean paramBoolean, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(67136);
+    AppMethodBeat.i(14926);
     if ((paramByteBuffer == null) || (paramBufferInfo == null))
     {
-      AppMethodBeat.o(67136);
+      AppMethodBeat.o(14926);
       return;
     }
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramByteBuffer.capacity());
@@ -92,28 +90,28 @@ public class d
     localByteBuffer.put(paramByteBuffer);
     paramByteBuffer = new MediaCodec.BufferInfo();
     paramByteBuffer.set(paramBufferInfo.offset, paramBufferInfo.size, paramBufferInfo.presentationTimeUs, paramBufferInfo.flags);
-    paramByteBuffer = new d.a(localByteBuffer, paramByteBuffer);
+    paramByteBuffer = new a(localByteBuffer, paramByteBuffer);
     if (paramBoolean)
     {
       if (this.n.size() < 200)
       {
         this.n.add(paramByteBuffer);
-        AppMethodBeat.o(67136);
+        AppMethodBeat.o(14926);
         return;
       }
       TXCLog.e("TXCMP4SWMuxer", "drop video frame. video cache size is larger than 200");
-      AppMethodBeat.o(67136);
+      AppMethodBeat.o(14926);
       return;
     }
     this.o.add(paramByteBuffer);
-    AppMethodBeat.o(67136);
+    AppMethodBeat.o(14926);
   }
   
   private void c(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
     long l2 = 0L;
     int i1 = 1;
-    AppMethodBeat.i(67134);
+    AppMethodBeat.i(14924);
     long l1 = paramBufferInfo.presentationTimeUs - this.p;
     if (l1 < 0L)
     {
@@ -137,7 +135,7 @@ public class d
           }
         }
         else {
-          label158:
+          label159:
           paramBufferInfo.presentationTimeUs = l1;
         }
         try
@@ -154,26 +152,26 @@ public class d
             if ((paramBufferInfo.flags & 0x1) != 0) {
               this.m = true;
             }
-            AppMethodBeat.o(67134);
+            AppMethodBeat.o(14924);
             return;
             this.q = l2;
             break;
             if (this.e == 4)
             {
               l1 = ((float)l2 * a);
-              break label158;
+              break label159;
             }
             if (this.e == 1)
             {
               l1 = ((float)l2 * c);
-              break label158;
+              break label159;
             }
             l1 = l2;
             if (this.e != 0) {
-              break label158;
+              break label159;
             }
             l1 = ((float)l2 * d);
-            break label158;
+            break label159;
             i1 = 0;
           }
           l2 = l1;
@@ -181,13 +179,13 @@ public class d
         catch (IllegalStateException paramByteBuffer)
         {
           TXCLog.e("TXCMP4SWMuxer", "write frame IllegalStateException: ".concat(String.valueOf(paramByteBuffer)));
-          AppMethodBeat.o(67134);
+          AppMethodBeat.o(14924);
           return;
         }
         catch (IllegalArgumentException paramByteBuffer)
         {
           TXCLog.e("TXCMP4SWMuxer", "write frame IllegalArgumentException: ".concat(String.valueOf(paramByteBuffer)));
-          AppMethodBeat.o(67134);
+          AppMethodBeat.o(14924);
           return;
         }
       }
@@ -196,21 +194,23 @@ public class d
   
   private ByteBuffer d()
   {
-    AppMethodBeat.i(67124);
+    AppMethodBeat.i(14914);
     ByteBuffer localByteBuffer = this.i.getByteBuffer("csd-0");
-    localByteBuffer.position(0);
-    AppMethodBeat.o(67124);
+    if (localByteBuffer != null) {
+      localByteBuffer.position(0);
+    }
+    AppMethodBeat.o(14914);
     return localByteBuffer;
   }
   
   private void d(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(67135);
+    AppMethodBeat.i(14925);
     long l2 = paramBufferInfo.presentationTimeUs - this.p;
     if ((this.p < 0L) || (l2 < 0L))
     {
       TXCLog.w("TXCMP4SWMuxer", "drop sample. first frame offset timeus = " + this.p + ", current sample timeus = " + paramBufferInfo.presentationTimeUs);
-      AppMethodBeat.o(67135);
+      AppMethodBeat.o(14925);
       return;
     }
     long l1;
@@ -222,7 +222,7 @@ public class d
       if (this.e != 2)
       {
         if (this.e != 3) {
-          break label228;
+          break label231;
         }
         l1 = ((float)l2 * b);
       }
@@ -235,23 +235,23 @@ public class d
         paramByteBuffer.position(paramBufferInfo.offset);
         paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
         this.f.a(paramByteBuffer, 0, paramBufferInfo.offset, paramBufferInfo.size, paramBufferInfo.flags, paramBufferInfo.presentationTimeUs);
-        AppMethodBeat.o(67135);
+        AppMethodBeat.o(14925);
         return;
       }
       catch (IllegalStateException paramByteBuffer)
       {
         TXCLog.e("TXCMP4SWMuxer", "write sample IllegalStateException: ".concat(String.valueOf(paramByteBuffer)));
-        AppMethodBeat.o(67135);
+        AppMethodBeat.o(14925);
         return;
       }
       catch (IllegalArgumentException paramByteBuffer)
       {
         TXCLog.e("TXCMP4SWMuxer", "write sample IllegalArgumentException: ".concat(String.valueOf(paramByteBuffer)));
-        AppMethodBeat.o(67135);
+        AppMethodBeat.o(14925);
       }
       this.r = l2;
       break;
-      label228:
+      label231:
       if (this.e == 4)
       {
         l1 = ((float)l2 * a);
@@ -272,37 +272,37 @@ public class d
   
   private ByteBuffer e()
   {
-    AppMethodBeat.i(67125);
+    AppMethodBeat.i(14915);
     ByteBuffer localByteBuffer = this.h.getByteBuffer("csd-0");
-    AppMethodBeat.o(67125);
+    AppMethodBeat.o(14915);
     return localByteBuffer;
   }
   
   private ByteBuffer f()
   {
-    AppMethodBeat.i(67126);
+    AppMethodBeat.i(14916);
     ByteBuffer localByteBuffer = this.h.getByteBuffer("csd-1");
-    AppMethodBeat.o(67126);
+    AppMethodBeat.o(14916);
     return localByteBuffer;
   }
   
   private long g()
   {
-    AppMethodBeat.i(67137);
+    AppMethodBeat.i(14927);
     if (this.n.size() > 0) {}
-    for (long l1 = ((d.a)this.n.peek()).b().presentationTimeUs;; l1 = 0L)
+    for (long l1 = ((a)this.n.peek()).b().presentationTimeUs;; l1 = 0L)
     {
       long l2 = l1;
       if (this.o.size() > 0)
       {
-        d.a locala = (d.a)this.o.peek();
+        a locala = (a)this.o.peek();
         l2 = l1;
         if (locala != null)
         {
           l2 = l1;
           if (locala.b() != null)
           {
-            long l3 = ((d.a)this.o.peek()).b().presentationTimeUs;
+            long l3 = ((a)this.o.peek()).b().presentationTimeUs;
             l2 = l1;
             if (l1 > l3) {
               l2 = l3;
@@ -310,38 +310,38 @@ public class d
           }
         }
       }
-      AppMethodBeat.o(67137);
+      AppMethodBeat.o(14927);
       return l2;
     }
   }
   
   private void h()
   {
-    AppMethodBeat.i(67138);
-    d.a locala;
+    AppMethodBeat.i(14928);
+    a locala;
     while (this.n.size() > 0)
     {
-      locala = (d.a)this.n.poll();
+      locala = (a)this.n.poll();
       c(locala.a(), locala.b());
     }
     while (this.o.size() > 0)
     {
-      locala = (d.a)this.o.poll();
+      locala = (a)this.o.poll();
       d(locala.a(), locala.b());
     }
-    AppMethodBeat.o(67138);
+    AppMethodBeat.o(14928);
   }
   
   private void i()
   {
-    AppMethodBeat.i(67139);
+    AppMethodBeat.i(14929);
     while (this.n.size() > 0)
     {
-      d.a locala = (d.a)this.n.poll();
+      a locala = (a)this.n.poll();
       a(locala.b().presentationTimeUs);
       c(locala.a(), locala.b());
     }
-    AppMethodBeat.o(67139);
+    AppMethodBeat.o(14929);
   }
   
   public int a()
@@ -351,19 +351,19 @@ public class d
     {
       try
       {
-        AppMethodBeat.i(67127);
+        AppMethodBeat.i(14917);
         if ((this.g == null) || (this.g.isEmpty()))
         {
           TXCLog.e("TXCMP4SWMuxer", "target path not set yet!");
           i1 = -1;
-          AppMethodBeat.o(67127);
+          AppMethodBeat.o(14917);
           return i1;
         }
         if (!c())
         {
           TXCLog.e("TXCMP4SWMuxer", "video track not set yet!");
           i1 = -2;
-          AppMethodBeat.o(67127);
+          AppMethodBeat.o(14917);
           continue;
         }
         if (this.f == null) {
@@ -372,7 +372,7 @@ public class d
       }
       finally {}
       TXCLog.w("TXCMP4SWMuxer", "start has been called. stop must be called before start");
-      AppMethodBeat.o(67127);
+      AppMethodBeat.o(14917);
       i1 = i2;
     }
     TXCLog.d("TXCMP4SWMuxer", "start");
@@ -408,7 +408,7 @@ public class d
       for (;;)
       {
         TXCLog.e("TXCMP4SWMuxer", "video format contains error csd!");
-        AppMethodBeat.o(67127);
+        AppMethodBeat.o(14917);
         i1 = -3;
         break;
         do
@@ -416,7 +416,7 @@ public class d
           if ((this.i != null) && (localByteBuffer1 == null))
           {
             TXCLog.e("TXCMP4SWMuxer", "audio format contains error csd!");
-            AppMethodBeat.o(67127);
+            AppMethodBeat.o(14917);
             i1 = -3;
             break;
           }
@@ -432,7 +432,7 @@ public class d
           this.m = false;
           this.q = -1L;
           this.r = -1L;
-          AppMethodBeat.o(67127);
+          AppMethodBeat.o(14917);
           i1 = i2;
           break;
           if (localByteBuffer2 == null) {
@@ -447,11 +447,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(67122);
+      AppMethodBeat.i(14912);
       TXCLog.d("TXCMP4SWMuxer", "addVideoTrack:".concat(String.valueOf(paramMediaFormat)));
       this.h = paramMediaFormat;
       this.n.clear();
-      AppMethodBeat.o(67122);
+      AppMethodBeat.o(14912);
       return;
     }
     finally
@@ -467,55 +467,71 @@ public class d
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 356
-    //   5: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: sipush 14919
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: putfield 65	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
+    //   10: putfield 61	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
     //   13: aload_0
-    //   14: getfield 65	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
-    //   17: invokestatic 361	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   20: ifne +42 -> 62
-    //   23: new 363	java/io/File
+    //   14: getfield 61	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
+    //   17: invokestatic 344	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   20: ifne +68 -> 88
+    //   23: new 346	java/io/File
     //   26: dup
     //   27: aload_0
-    //   28: getfield 65	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
-    //   31: invokespecial 364	java/io/File:<init>	(Ljava/lang/String;)V
+    //   28: getfield 61	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
+    //   31: invokespecial 347	java/io/File:<init>	(Ljava/lang/String;)V
     //   34: astore_1
     //   35: aload_1
-    //   36: invokevirtual 367	java/io/File:exists	()Z
-    //   39: ifeq +8 -> 47
-    //   42: aload_1
-    //   43: invokevirtual 370	java/io/File:delete	()Z
-    //   46: pop
-    //   47: aload_1
-    //   48: invokevirtual 373	java/io/File:createNewFile	()Z
+    //   36: invokevirtual 351	java/io/File:getParentFile	()Ljava/io/File;
+    //   39: astore_2
+    //   40: aload_2
+    //   41: invokevirtual 354	java/io/File:exists	()Z
+    //   44: ifne +8 -> 52
+    //   47: aload_2
+    //   48: invokevirtual 357	java/io/File:mkdirs	()Z
     //   51: pop
-    //   52: ldc_w 356
-    //   55: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: return
-    //   61: astore_1
-    //   62: ldc_w 356
-    //   65: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   68: goto -10 -> 58
-    //   71: astore_1
-    //   72: aload_0
-    //   73: monitorexit
-    //   74: aload_1
-    //   75: athrow
+    //   52: aload_1
+    //   53: invokevirtual 354	java/io/File:exists	()Z
+    //   56: ifeq +8 -> 64
+    //   59: aload_1
+    //   60: invokevirtual 360	java/io/File:delete	()Z
+    //   63: pop
+    //   64: aload_1
+    //   65: invokevirtual 363	java/io/File:createNewFile	()Z
+    //   68: pop
+    //   69: sipush 14919
+    //   72: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: return
+    //   78: astore_1
+    //   79: ldc 104
+    //   81: ldc_w 365
+    //   84: aload_1
+    //   85: invokestatic 368	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   88: sipush 14919
+    //   91: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: goto -19 -> 75
+    //   97: astore_1
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: aload_1
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	76	0	this	d
-    //   0	76	1	paramString	String
+    //   0	102	0	this	d
+    //   0	102	1	paramString	String
+    //   39	9	2	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   47	52	61	java/io/IOException
-    //   2	47	71	finally
-    //   47	52	71	finally
-    //   52	58	71	finally
-    //   62	68	71	finally
+    //   64	69	78	java/io/IOException
+    //   2	52	97	finally
+    //   52	64	97	finally
+    //   64	69	97	finally
+    //   69	75	97	finally
+    //   79	88	97	finally
+    //   88	94	97	finally
   }
   
   public void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
@@ -524,12 +540,12 @@ public class d
     {
       try
       {
-        AppMethodBeat.i(67132);
+        AppMethodBeat.i(14922);
         if (this.f == null)
         {
           a(true, paramByteBuffer, paramBufferInfo);
           TXCLog.w("TXCMP4SWMuxer", "cache frame before muexer ready. ptsUs: " + paramBufferInfo.presentationTimeUs);
-          AppMethodBeat.o(67132);
+          AppMethodBeat.o(14922);
           return;
         }
         if (this.p < 0L)
@@ -538,14 +554,14 @@ public class d
           this.p = g();
           TXCLog.d("TXCMP4SWMuxer", "first frame offset = " + this.p);
           i();
-          AppMethodBeat.o(67132);
+          AppMethodBeat.o(14922);
           continue;
         }
         a(paramBufferInfo.presentationTimeUs);
       }
       finally {}
       c(paramByteBuffer, paramBufferInfo);
-      AppMethodBeat.o(67132);
+      AppMethodBeat.o(14922);
     }
   }
   
@@ -553,7 +569,7 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(67131);
+      AppMethodBeat.i(14921);
       ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramInt2);
       localByteBuffer.put(paramArrayOfByte, paramInt1, paramInt2);
       paramArrayOfByte = new MediaCodec.BufferInfo();
@@ -562,7 +578,7 @@ public class d
       paramArrayOfByte.size = paramInt2;
       paramArrayOfByte.flags = paramInt3;
       b(localByteBuffer, paramArrayOfByte);
-      AppMethodBeat.o(67131);
+      AppMethodBeat.o(14921);
       return;
     }
     finally
@@ -580,115 +596,115 @@ public class d
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 394
-    //   7: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: sipush 14918
+    //   7: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: getfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   11: getfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   14: ifnull +132 -> 146
     //   17: aload_0
-    //   18: invokespecial 396	com/tencent/liteav/muxer/d:h	()V
-    //   21: ldc 109
-    //   23: new 187	java/lang/StringBuilder
+    //   18: invokespecial 388	com/tencent/liteav/muxer/d:h	()V
+    //   21: ldc 104
+    //   23: new 180	java/lang/StringBuilder
     //   26: dup
-    //   27: ldc_w 398
-    //   30: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   27: ldc_w 390
+    //   30: invokespecial 185	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 75	com/tencent/liteav/muxer/d:l	Z
-    //   37: invokevirtual 401	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   40: ldc_w 403
-    //   43: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: getfield 71	com/tencent/liteav/muxer/d:l	Z
+    //   37: invokevirtual 393	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   40: ldc_w 395
+    //   43: invokevirtual 194	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: aload_0
-    //   47: getfield 77	com/tencent/liteav/muxer/d:m	Z
-    //   50: invokevirtual 401	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 286	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: getfield 73	com/tencent/liteav/muxer/d:m	Z
+    //   50: invokevirtual 393	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 271	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: aload_0
-    //   60: getfield 75	com/tencent/liteav/muxer/d:l	Z
+    //   60: getfield 71	com/tencent/liteav/muxer/d:l	Z
     //   63: ifeq +18 -> 81
     //   66: aload_0
-    //   67: getfield 77	com/tencent/liteav/muxer/d:m	Z
+    //   67: getfield 73	com/tencent/liteav/muxer/d:m	Z
     //   70: ifeq +11 -> 81
     //   73: aload_0
-    //   74: getfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
-    //   77: invokevirtual 405	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:b	()I
+    //   74: getfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   77: invokevirtual 397	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:b	()I
     //   80: pop
     //   81: aload_0
-    //   82: getfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
-    //   85: invokevirtual 407	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:c	()V
+    //   82: getfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   85: invokevirtual 399	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:c	()V
     //   88: aload_0
     //   89: aconst_null
-    //   90: putfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   90: putfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   93: aload_0
     //   94: iconst_0
-    //   95: putfield 75	com/tencent/liteav/muxer/d:l	Z
+    //   95: putfield 71	com/tencent/liteav/muxer/d:l	Z
     //   98: aload_0
     //   99: aconst_null
-    //   100: putfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   100: putfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   103: aload_0
     //   104: iconst_0
-    //   105: putfield 77	com/tencent/liteav/muxer/d:m	Z
+    //   105: putfield 73	com/tencent/liteav/muxer/d:m	Z
     //   108: aload_0
-    //   109: getfield 82	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   112: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   109: getfield 78	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   112: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   115: aload_0
-    //   116: getfield 84	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   119: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   116: getfield 80	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   119: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   122: aload_0
     //   123: aconst_null
-    //   124: putfield 67	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
+    //   124: putfield 63	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
     //   127: aload_0
     //   128: aconst_null
-    //   129: putfield 69	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
+    //   129: putfield 65	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
     //   132: aload_0
-    //   133: ldc2_w 85
-    //   136: putfield 90	com/tencent/liteav/muxer/d:q	J
+    //   133: ldc2_w 81
+    //   136: putfield 86	com/tencent/liteav/muxer/d:q	J
     //   139: aload_0
-    //   140: ldc2_w 85
-    //   143: putfield 92	com/tencent/liteav/muxer/d:r	J
-    //   146: ldc_w 394
-    //   149: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: ldc2_w 81
+    //   143: putfield 88	com/tencent/liteav/muxer/d:r	J
+    //   146: sipush 14918
+    //   149: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_0
     //   153: monitorexit
     //   154: iload_1
     //   155: ireturn
     //   156: astore_2
-    //   157: ldc 109
-    //   159: ldc_w 409
+    //   157: ldc 104
+    //   159: ldc_w 401
     //   162: aload_2
-    //   163: invokestatic 229	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   166: invokevirtual 233	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   169: invokestatic 116	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   163: invokestatic 222	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   166: invokevirtual 226	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: invokestatic 111	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   172: aload_0
     //   173: iconst_0
-    //   174: putfield 75	com/tencent/liteav/muxer/d:l	Z
+    //   174: putfield 71	com/tencent/liteav/muxer/d:l	Z
     //   177: aload_0
     //   178: aconst_null
-    //   179: putfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   179: putfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   182: aload_0
     //   183: iconst_0
-    //   184: putfield 77	com/tencent/liteav/muxer/d:m	Z
+    //   184: putfield 73	com/tencent/liteav/muxer/d:m	Z
     //   187: aload_0
-    //   188: getfield 82	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   191: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   188: getfield 78	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   191: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   194: aload_0
-    //   195: getfield 84	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   198: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   195: getfield 80	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   198: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   201: aload_0
     //   202: aconst_null
-    //   203: putfield 67	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
+    //   203: putfield 63	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
     //   206: aload_0
     //   207: aconst_null
-    //   208: putfield 69	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
+    //   208: putfield 65	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
     //   211: aload_0
-    //   212: ldc2_w 85
-    //   215: putfield 90	com/tencent/liteav/muxer/d:q	J
+    //   212: ldc2_w 81
+    //   215: putfield 86	com/tencent/liteav/muxer/d:q	J
     //   218: aload_0
-    //   219: ldc2_w 85
-    //   222: putfield 92	com/tencent/liteav/muxer/d:r	J
+    //   219: ldc2_w 81
+    //   222: putfield 88	com/tencent/liteav/muxer/d:r	J
     //   225: iconst_m1
     //   226: istore_1
-    //   227: ldc_w 394
-    //   230: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   227: sipush 14918
+    //   230: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   233: goto -81 -> 152
     //   236: astore_2
     //   237: aload_0
@@ -698,33 +714,33 @@ public class d
     //   241: astore_2
     //   242: aload_0
     //   243: iconst_0
-    //   244: putfield 75	com/tencent/liteav/muxer/d:l	Z
+    //   244: putfield 71	com/tencent/liteav/muxer/d:l	Z
     //   247: aload_0
     //   248: aconst_null
-    //   249: putfield 216	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
+    //   249: putfield 209	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   252: aload_0
     //   253: iconst_0
-    //   254: putfield 77	com/tencent/liteav/muxer/d:m	Z
+    //   254: putfield 73	com/tencent/liteav/muxer/d:m	Z
     //   257: aload_0
-    //   258: getfield 82	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   261: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   258: getfield 78	com/tencent/liteav/muxer/d:n	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   261: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   264: aload_0
-    //   265: getfield 84	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
-    //   268: invokevirtual 353	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
+    //   265: getfield 80	com/tencent/liteav/muxer/d:o	Ljava/util/concurrent/ConcurrentLinkedQueue;
+    //   268: invokevirtual 337	java/util/concurrent/ConcurrentLinkedQueue:clear	()V
     //   271: aload_0
     //   272: aconst_null
-    //   273: putfield 67	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
+    //   273: putfield 63	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
     //   276: aload_0
     //   277: aconst_null
-    //   278: putfield 69	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
+    //   278: putfield 65	com/tencent/liteav/muxer/d:i	Landroid/media/MediaFormat;
     //   281: aload_0
-    //   282: ldc2_w 85
-    //   285: putfield 90	com/tencent/liteav/muxer/d:q	J
+    //   282: ldc2_w 81
+    //   285: putfield 86	com/tencent/liteav/muxer/d:q	J
     //   288: aload_0
-    //   289: ldc2_w 85
-    //   292: putfield 92	com/tencent/liteav/muxer/d:r	J
-    //   295: ldc_w 394
-    //   298: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   289: ldc2_w 81
+    //   292: putfield 88	com/tencent/liteav/muxer/d:r	J
+    //   295: sipush 14918
+    //   298: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   301: aload_2
     //   302: athrow
     // Local variable table:
@@ -753,11 +769,11 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(67123);
+      AppMethodBeat.i(14913);
       TXCLog.d("TXCMP4SWMuxer", "addAudioTrack:".concat(String.valueOf(paramMediaFormat)));
       this.i = paramMediaFormat;
       this.o.clear();
-      AppMethodBeat.o(67123);
+      AppMethodBeat.o(14913);
       return;
     }
     finally
@@ -771,9 +787,9 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(67133);
+      AppMethodBeat.i(14923);
       a(false, paramByteBuffer, paramBufferInfo);
-      AppMethodBeat.o(67133);
+      AppMethodBeat.o(14923);
       return;
     }
     finally
@@ -787,7 +803,7 @@ public class d
   {
     try
     {
-      AppMethodBeat.i(67130);
+      AppMethodBeat.i(14920);
       ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramInt2);
       localByteBuffer.put(paramArrayOfByte, paramInt1, paramInt2);
       paramArrayOfByte = new MediaCodec.BufferInfo();
@@ -796,7 +812,7 @@ public class d
       paramArrayOfByte.size = paramInt2;
       paramArrayOfByte.flags = paramInt3;
       a(localByteBuffer, paramArrayOfByte);
-      AppMethodBeat.o(67130);
+      AppMethodBeat.o(14920);
       return;
     }
     finally
@@ -813,7 +829,7 @@ public class d
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 67	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
+    //   3: getfield 63	com/tencent/liteav/muxer/d:h	Landroid/media/MediaFormat;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -841,10 +857,32 @@ public class d
     //   from	to	target	type
     //   2	7	22	finally
   }
+  
+  static class a
+  {
+    ByteBuffer a;
+    MediaCodec.BufferInfo b;
+    
+    public a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+    {
+      this.a = paramByteBuffer;
+      this.b = paramBufferInfo;
+    }
+    
+    public ByteBuffer a()
+    {
+      return this.a;
+    }
+    
+    public MediaCodec.BufferInfo b()
+    {
+      return this.b;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.liteav.muxer.d
  * JD-Core Version:    0.7.0.1
  */

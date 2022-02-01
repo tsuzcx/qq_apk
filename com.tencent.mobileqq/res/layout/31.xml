@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jsc" android:background="@color/2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/jsf" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/jq7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="12.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/0" android:textColor="@color/av_" android:gravity="center" android:id="@id/jqj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:id="@id/jsk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ViewStub android:id="@id/kuk" android:layout="@layout/3e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

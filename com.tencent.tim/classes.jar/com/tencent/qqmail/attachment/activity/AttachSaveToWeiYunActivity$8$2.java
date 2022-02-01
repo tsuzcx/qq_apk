@@ -1,0 +1,19 @@
+package com.tencent.qqmail.attachment.activity;
+
+class AttachSaveToWeiYunActivity$8$2
+  implements Runnable
+{
+  AttachSaveToWeiYunActivity$8$2(AttachSaveToWeiYunActivity.8 param8) {}
+  
+  public void run()
+  {
+    AttachSaveToWeiYunActivity.access$808(this.this$1.this$0);
+    this.this$1.this$0.saveNormalAttachToWeiYunChecking(this.this$1.val$taskid);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qqmail.attachment.activity.AttachSaveToWeiYunActivity.8.2
+ * JD-Core Version:    0.7.0.1
+ */

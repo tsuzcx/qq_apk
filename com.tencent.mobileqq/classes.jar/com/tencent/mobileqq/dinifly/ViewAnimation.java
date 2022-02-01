@@ -33,9 +33,10 @@ public class ViewAnimation
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     paramTransformation = paramTransformation.getMatrix();
-    if (this.mImageLayer != null)
+    ImageLayer localImageLayer = this.mImageLayer;
+    if (localImageLayer != null)
     {
-      this.resMatrix.set(this.mImageLayer.getMatrix());
+      this.resMatrix.set(localImageLayer.getMatrix());
       if (this.enableXCoordinateMirrored) {
         mirrorXCoordinate(this.resMatrix);
       }

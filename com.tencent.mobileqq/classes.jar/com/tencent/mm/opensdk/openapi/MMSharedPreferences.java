@@ -6,9 +6,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.c.a;
-import com.tencent.mm.opensdk.utils.c.b;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -33,22 +32,28 @@ class MMSharedPreferences
     {
       try
       {
-        Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, "key = ?", new String[] { paramString }, null);
-        if (localCursor == null) {
+        localObject = this.cr;
+        Uri localUri = com.tencent.mm.opensdk.utils.a.a;
+        String[] arrayOfString = this.columns;
+        localObject = ((ContentResolver)localObject).query(localUri, arrayOfString, "key = ?", new String[] { paramString }, null);
+        if (localObject == null) {
           return null;
         }
-        int i = localCursor.getColumnIndex("type");
-        int j = localCursor.getColumnIndex("value");
-        if (localCursor.moveToFirst())
+        int i = ((Cursor)localObject).getColumnIndex("type");
+        int j = ((Cursor)localObject).getColumnIndex("value");
+        if (((Cursor)localObject).moveToFirst())
         {
-          paramString = c.a.a(localCursor.getInt(i), localCursor.getString(j));
-          localCursor.close();
+          paramString = com.tencent.mm.opensdk.channel.a.a.a(((Cursor)localObject).getInt(i), ((Cursor)localObject).getString(j));
+          ((Cursor)localObject).close();
           return paramString;
         }
       }
       catch (Exception paramString)
       {
-        Log.e("MicroMsg.SDK.SharedPreferences", "getValue exception:" + paramString.getMessage());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getValue exception:");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        Log.e("MicroMsg.SDK.SharedPreferences", ((StringBuilder)localObject).toString());
         return null;
       }
       paramString = null;
@@ -72,27 +77,30 @@ class MMSharedPreferences
   {
     try
     {
-      Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, null, null, null);
-      if (localCursor == null) {
+      Object localObject1 = this.cr.query(com.tencent.mm.opensdk.utils.a.a, this.columns, null, null, null);
+      if (localObject1 == null) {
         return null;
       }
-      int i = localCursor.getColumnIndex("key");
-      int j = localCursor.getColumnIndex("type");
-      int k = localCursor.getColumnIndex("value");
-      while (localCursor.moveToNext())
+      int i = ((Cursor)localObject1).getColumnIndex("key");
+      int j = ((Cursor)localObject1).getColumnIndex("type");
+      int k = ((Cursor)localObject1).getColumnIndex("value");
+      while (((Cursor)localObject1).moveToNext())
       {
-        Object localObject = c.a.a(localCursor.getInt(j), localCursor.getString(k));
-        this.values.put(localCursor.getString(i), localObject);
+        localObject2 = com.tencent.mm.opensdk.channel.a.a.a(((Cursor)localObject1).getInt(j), ((Cursor)localObject1).getString(k));
+        this.values.put(((Cursor)localObject1).getString(i), localObject2);
       }
-      localException.close();
+      ((Cursor)localObject1).close();
+      localObject1 = this.values;
+      return localObject1;
     }
     catch (Exception localException)
     {
-      Log.e("MicroMsg.SDK.SharedPreferences", "getAll exception:" + localException.getMessage());
-      return this.values;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAll exception:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      Log.e("MicroMsg.SDK.SharedPreferences", ((StringBuilder)localObject2).toString());
     }
-    HashMap localHashMap = this.values;
-    return localHashMap;
+    return this.values;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
@@ -153,11 +161,16 @@ class MMSharedPreferences
   
   public String getString(String paramString1, String paramString2)
   {
-    paramString1 = getValue(paramString1);
-    if ((paramString1 != null) && ((paramString1 instanceof String))) {
-      return (String)paramString1;
+    Object localObject = getValue(paramString1);
+    paramString1 = paramString2;
+    if (localObject != null)
+    {
+      paramString1 = paramString2;
+      if ((localObject instanceof String)) {
+        paramString1 = (String)localObject;
+      }
     }
-    return paramString2;
+    return paramString1;
   }
   
   public Set<String> getStringSet(String paramString, Set<String> paramSet)
@@ -171,7 +184,7 @@ class MMSharedPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.MMSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

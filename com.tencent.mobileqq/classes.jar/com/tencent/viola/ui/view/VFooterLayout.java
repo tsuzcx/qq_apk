@@ -29,8 +29,14 @@ public class VFooterLayout
     paramContext = new JSONObject();
     try
     {
-      paramContext.put("width", FlexConvertUtils.px2dip(getWidth()) + "dp");
-      paramContext.put("height", FlexConvertUtils.px2dip(getHeight()) + "dp");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getWidth()));
+      localStringBuilder.append("dp");
+      paramContext.put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getHeight()));
+      localStringBuilder.append("dp");
+      paramContext.put("height", localStringBuilder.toString());
       this.mFireEventJsonObject.put("size", paramContext);
       return;
     }
@@ -47,9 +53,10 @@ public class VFooterLayout
   
   public void destroy()
   {
-    if (this.mWeakReference != null)
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null)
     {
-      this.mWeakReference.clear();
+      localWeakReference.clear();
       this.mWeakReference = null;
     }
   }
@@ -57,8 +64,9 @@ public class VFooterLayout
   @Nullable
   public VFooter getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VFooter)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VFooter)localWeakReference.get();
     }
     return null;
   }
@@ -80,22 +88,25 @@ public class VFooterLayout
   
   public void onFingerRelease()
   {
-    if (this.listener != null) {
-      this.listener.onFooterFingerRelease();
+    VFooterLayout.OnFooterStateChangeListener localOnFooterStateChangeListener = this.listener;
+    if (localOnFooterStateChangeListener != null) {
+      localOnFooterStateChangeListener.onFooterFingerRelease();
     }
   }
   
   public void onFooterReachEnd()
   {
-    if (this.listener != null) {
-      this.listener.onFooterReachEnd();
+    VFooterLayout.OnFooterStateChangeListener localOnFooterStateChangeListener = this.listener;
+    if (localOnFooterStateChangeListener != null) {
+      localOnFooterStateChangeListener.onFooterReachEnd();
     }
   }
   
   public void onMove(int paramInt)
   {
-    if (this.listener != null) {
-      this.listener.onFooterMove(paramInt);
+    VFooterLayout.OnFooterStateChangeListener localOnFooterStateChangeListener = this.listener;
+    if (localOnFooterStateChangeListener != null) {
+      localOnFooterStateChangeListener.onFooterMove(paramInt);
     }
   }
   
@@ -115,19 +126,20 @@ public class VFooterLayout
   
   public void onStateFinish(boolean paramBoolean)
   {
-    if (this.listener != null) {
-      this.listener.onFooterFinish();
+    Object localObject = this.listener;
+    if (localObject != null) {
+      ((VFooterLayout.OnFooterStateChangeListener)localObject).onFooterFinish();
     }
-    JSONArray localJSONArray = new JSONArray();
+    localObject = new JSONArray();
     if (getComponent().getDomObject() != null)
     {
       String str = getComponent().getDomObject().getRef();
       if (str != null) {
-        localJSONArray.put(str);
+        ((JSONArray)localObject).put(str);
       }
     }
-    localJSONArray.put("idle");
-    getComponent().footerFireEvent("idle", localJSONArray, this.mFireEventJsonObject);
+    ((JSONArray)localObject).put("idle");
+    getComponent().footerFireEvent("idle", (JSONArray)localObject, this.mFireEventJsonObject);
   }
   
   public void onStateReady()
@@ -178,7 +190,7 @@ public class VFooterLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VFooterLayout
  * JD-Core Version:    0.7.0.1
  */

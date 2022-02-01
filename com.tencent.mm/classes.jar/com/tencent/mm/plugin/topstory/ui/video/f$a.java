@@ -6,19 +6,19 @@ public enum f$a
 {
   static
   {
-    AppMethodBeat.i(1712);
-    tii = new a("UNKNOWN", 0);
-    tij = new a("MOBILE_NET", 1);
-    tik = new a("NO_NET", 2);
-    til = new a[] { tii, tij, tik };
-    AppMethodBeat.o(1712);
+    AppMethodBeat.i(126071);
+    TLI = new a("UNKNOWN", 0);
+    TLJ = new a("MOBILE_NET", 1);
+    TLK = new a("NO_NET", 2);
+    TLL = new a[] { TLI, TLJ, TLK };
+    AppMethodBeat.o(126071);
   }
   
   private f$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.f.a
  * JD-Core Version:    0.7.0.1
  */

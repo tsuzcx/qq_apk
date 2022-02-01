@@ -10,7 +10,7 @@ public class MQPhotoCell
 {
   public static final String TAG = "QZoneMsgManager.MQMsgNewCell";
   public String coverUrl = "";
-  public int type;
+  public int type = 0;
   
   public static MQPhotoCell parseFromJson(JSONObject paramJSONObject)
   {
@@ -57,7 +57,7 @@ public class MQPhotoCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQPhotoCell
  * JD-Core Version:    0.7.0.1
  */

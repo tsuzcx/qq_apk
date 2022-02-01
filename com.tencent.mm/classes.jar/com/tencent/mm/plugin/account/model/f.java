@@ -1,61 +1,65 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bzd;
-import com.tencent.mm.protocal.protobuf.bze;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.zk;
+import com.tencent.mm.protocal.protobuf.zl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private com.tencent.mm.ai.f callback;
-  private final b rr;
+  private h callback;
+  public String kDc;
+  private c oDw;
   
-  public f(bzd parambzd)
+  public f(String paramString)
   {
-    AppMethodBeat.i(124682);
-    this.callback = null;
-    b.a locala = new b.a();
-    locala.fsX = parambzd;
-    locala.fsY = new bze();
-    locala.uri = "/cgi-bin/micromsg-bin/sendphoto2fbwall";
-    locala.funcId = 433;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    AppMethodBeat.o(124682);
+    AppMethodBeat.i(304858);
+    c.a locala = new c.a();
+    zk localzk = new zk();
+    localzk.kDc = paramString;
+    this.kDc = paramString;
+    locala.otE = localzk;
+    locala.otF = new zl();
+    locala.uri = "/cgi-bin/micromsg-bin/checkaliasvalid";
+    locala.funcId = getType();
+    this.oDw = locala.bEF();
+    AppMethodBeat.o(304858);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(124683);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(124683);
+    AppMethodBeat.i(304861);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
+    AppMethodBeat.o(304861);
     return i;
   }
   
   public final int getType()
   {
-    return 433;
+    return 3516;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(124684);
+    AppMethodBeat.i(304865);
+    Log.i("MicroMsg.NetSceneCheckAliasValid", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(124684);
+    AppMethodBeat.o(304865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.f
  * JD-Core Version:    0.7.0.1
  */

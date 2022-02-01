@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/n5k" android:layout_width="113.0dip" android:layout_height="150.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/n5l" android:background="@drawable/eoe" android:layout_width="113.0dip" android:layout_height="150.0dip" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:id="@id/n5n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="7.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_alignBottom="@id/n5k" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/n5o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/n5k" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/n5m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/n5o" />
+</RelativeLayout>

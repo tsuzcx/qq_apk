@@ -19,13 +19,14 @@ public final class oidb_0xe31$TopicListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uid", "cookie", "num", "top_topic_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, TopicListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uid", "cookie", "num", "top_topic_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger }, TopicListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListReq
  * JD-Core Version:    0.7.0.1
  */

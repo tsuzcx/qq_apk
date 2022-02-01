@@ -20,29 +20,29 @@ import java.util.Arrays;
 public class RoundCornerLayout
   extends RelativeLayout
 {
-  public static final float[] a;
-  private static boolean jdField_b_of_type_Boolean;
-  private float jdField_a_of_type_Float;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  Path jdField_a_of_type_AndroidGraphicsPath;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  public boolean a;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  RectF jdField_b_of_type_AndroidGraphicsRectF;
-  float[] jdField_b_of_type_ArrayOfFloat;
+  public static final float[] a = { 7.0F, 9.0F, 0.0F, 6.0F, 2.5F, 9.0F, 5.5F, 15.0F, 0.5F, 13.0F };
+  private static boolean l;
+  Paint b;
+  float[] c;
+  Path d;
+  RectF e;
+  RectF f;
+  public boolean g;
+  private float h;
+  private Resources i;
+  private Paint j;
+  private Path k;
   
   static
   {
-    jdField_a_of_type_ArrayOfFloat = new float[] { 7.0F, 9.0F, 0.0F, 6.0F, 2.5F, 9.0F, 5.5F, 15.0F, 0.5F, 13.0F };
     String str = Build.MODEL.toUpperCase();
-    if ((str.contains("BV0720")) || (str.contains("M821")) || ((Build.VERSION.SDK_INT == 21) && ((str.contains("NX511J")) || (str.contains("MI 5")) || (str.contains("GT-I9508")) || (str.contains("X9077")) || (str.contains("COOLPAD 8675-A"))))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_b_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if ((!str.contains("BV0720")) && (!str.contains("M821")) && ((Build.VERSION.SDK_INT != 21) || ((!str.contains("NX511J")) && (!str.contains("MI 5")) && (!str.contains("GT-I9508")) && (!str.contains("X9077")) && (!str.contains("COOLPAD 8675-A"))))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    l = bool;
   }
   
   public RoundCornerLayout(Context paramContext)
@@ -70,51 +70,51 @@ public class RoundCornerLayout
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_AndroidContentResResources = getResources();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_ArrayOfFloat = new float[8];
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(4.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
+    this.g = l;
+    this.i = getResources();
+    this.b = new Paint();
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setAntiAlias(true);
+    this.b.setFilterBitmap(true);
+    this.b.setColor(-1);
+    this.b.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+    this.d = new Path();
+    this.e = new RectF();
+    this.f = new RectF();
+    this.c = new float[8];
+    this.j = new Paint();
+    this.j.setColor(-1);
+    this.j.setAntiAlias(true);
+    this.j.setStrokeWidth(4.0F);
+    this.j.setStyle(Paint.Style.STROKE);
+    this.k = new Path();
     setWillNotDraw(false);
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CW);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(2.0F, 2.0F, paramFloat1 - 2.0F, paramFloat2 - 2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CW);
+    this.e.set(0.0F, 0.0F, paramFloat1, paramFloat2);
+    this.d.reset();
+    this.d.addRoundRect(this.e, this.c, Path.Direction.CW);
+    this.f.set(2.0F, 2.0F, paramFloat1 - 2.0F, paramFloat2 - 2.0F);
+    this.k.reset();
+    this.k.addRoundRect(this.f, this.c, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int i = paramCanvas.getSaveCount();
+    int m = paramCanvas.getSaveCount();
     paramCanvas.save();
     super.draw(paramCanvas);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(i);
+    paramCanvas.drawPath(this.d, this.b);
+    paramCanvas.drawPath(this.k, this.j);
+    paramCanvas.restoreToCount(m);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
       setLayerType(1, null);
       return;
@@ -138,15 +138,16 @@ public class RoundCornerLayout
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = a(paramFloat, this.jdField_a_of_type_AndroidContentResResources);
-    if (this.jdField_b_of_type_ArrayOfFloat != null) {
-      Arrays.fill(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_Float);
+    this.h = a(paramFloat, this.i);
+    float[] arrayOfFloat = this.c;
+    if (arrayOfFloat != null) {
+      Arrays.fill(arrayOfFloat, this.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.RoundCornerLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class bvd
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
   public bvd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561834));
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2130839721);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131561702));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
+    AssistantSettingActivity.b(this.a).setContentDescription(this.a.getString(2131231141));
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131563451), "qqsetting_auto_receive_magic_face_key", paramBoolean);
   }
 }
 

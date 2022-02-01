@@ -3,49 +3,54 @@ package com.tencent.mobileqq.bubble;
 import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
-import anye;
 import com.tencent.qphone.base.util.QLog;
 
 class QQAnimationDrawable$WorkerRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private int a;
+  private long b;
   
   public QQAnimationDrawable$WorkerRunnable(QQAnimationDrawable paramQQAnimationDrawable, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramInt;
+    this.b = paramLong;
   }
   
   public void run()
   {
-    Object localObject = new StringBuilder().append("WorkerRunnable run | drawtime:").append(this.jdField_a_of_type_Long).append(" main:");
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("QQAnimationDrawable", 2, bool);
-      Process.setThreadPriority(10);
-      long l1 = SystemClock.uptimeMillis();
-      this.this$0.b = this.this$0.a(false, this.jdField_a_of_type_Int);
-      QQAnimationDrawable.a(this.this$0, this.jdField_a_of_type_Int);
-      if ((this.this$0.a == null) && (this.jdField_a_of_type_Int == 0)) {
-        this.this$0.a = this.this$0.b;
-      }
-      if (QQAnimationDrawable.a(this.this$0) != null) {
-        QQAnimationDrawable.a(this.this$0).a(this.jdField_a_of_type_Int);
-      }
-      localObject = this.this$0;
-      QQAnimationDrawable localQQAnimationDrawable = this.this$0;
-      long l2 = SystemClock.uptimeMillis();
-      ((QQAnimationDrawable)localObject).scheduleSelf(localQQAnimationDrawable, Math.max(this.jdField_a_of_type_Long - l1, 0L) + l2);
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WorkerRunnable run | drawtime:");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(" main:");
+    boolean bool;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("QQAnimationDrawable", 2, ((StringBuilder)localObject).toString());
+    Process.setThreadPriority(10);
+    long l = SystemClock.uptimeMillis();
+    localObject = this.this$0;
+    ((QQAnimationDrawable)localObject).c = ((QQAnimationDrawable)localObject).a(false, this.a);
+    QQAnimationDrawable.a(this.this$0, this.a);
+    if ((this.this$0.b == null) && (this.a == 0))
+    {
+      localObject = this.this$0;
+      ((QQAnimationDrawable)localObject).b = ((QQAnimationDrawable)localObject).c;
+    }
+    if (QQAnimationDrawable.a(this.this$0) != null) {
+      QQAnimationDrawable.a(this.this$0).a(this.a);
+    }
+    localObject = this.this$0;
+    ((QQAnimationDrawable)localObject).scheduleSelf((Runnable)localObject, SystemClock.uptimeMillis() + Math.max(this.b - l, 0L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.QQAnimationDrawable.WorkerRunnable
  * JD-Core Version:    0.7.0.1
  */

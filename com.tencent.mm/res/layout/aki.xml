@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/dna" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/dnb" layout="@layout/b4f" />
-    <ImageView android:id="@id/dnc" android:background="@drawable/aw4" android:layout_width="@dimen/x8" android:layout_height="@dimen/x8" android:layout_marginTop="@dimen/l6" android:layout_below="@id/dnb" android:layout_centerHorizontal="true" />
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l6" android:layout_below="@id/dnc" android:layout_centerHorizontal="true">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/dnd" android:layout_width="30.0dip" android:layout_height="30.0dip" />
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dne" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/f9c" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/du" android:textColor="@color/i0" android:id="@id/dnf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="80.0dip" android:text="@string/tz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/i4b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <View android:layout_gravity="center_vertical" android:id="@id/i4a" android:background="@color/rq" android:visibility="gone" android:layout_width="1.0px" android:layout_height="8.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" />
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/i4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+</merge>

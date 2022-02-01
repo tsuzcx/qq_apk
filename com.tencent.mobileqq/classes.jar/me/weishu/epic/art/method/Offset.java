@@ -8,155 +8,141 @@ import me.weishu.epic.art.EpicNative;
 
 class Offset
 {
-  static Offset ART_ACCESS_FLAG_OFFSET;
-  static Offset ART_JNI_ENTRY_OFFSET;
-  static Offset ART_QUICK_CODE_OFFSET;
-  private Offset.BitWidth length;
-  private long offset;
+  static Offset a;
+  static Offset b;
+  static Offset c;
+  private long d;
+  private Offset.BitWidth e;
   
   static {}
   
-  private static void initFields()
+  public static long a(long paramLong, Offset paramOffset)
   {
-    ART_QUICK_CODE_OFFSET = new Offset();
-    ART_ACCESS_FLAG_OFFSET = new Offset();
-    ART_JNI_ENTRY_OFFSET = new Offset();
-    ART_ACCESS_FLAG_OFFSET.setLength(Offset.BitWidth.DWORD);
-    int i = Build.VERSION.SDK_INT;
-    if (i > 27) {
-      throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
-    }
-    if (Runtime.is64Bit())
-    {
-      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
-      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
-      switch (i)
-      {
-      case 20: 
-      default: 
-        throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
-      case 26: 
-      case 27: 
-        ART_QUICK_CODE_OFFSET.setOffset(40L);
-        ART_JNI_ENTRY_OFFSET.setOffset(32L);
-        ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-        return;
-      case 24: 
-      case 25: 
-        ART_QUICK_CODE_OFFSET.setOffset(48L);
-        ART_JNI_ENTRY_OFFSET.setOffset(40L);
-        ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-        return;
-      case 23: 
-        ART_QUICK_CODE_OFFSET.setOffset(48L);
-        ART_JNI_ENTRY_OFFSET.setOffset(40L);
-        ART_ACCESS_FLAG_OFFSET.setOffset(12L);
-        return;
-      case 22: 
-        ART_QUICK_CODE_OFFSET.setOffset(52L);
-        ART_JNI_ENTRY_OFFSET.setOffset(44L);
-        ART_ACCESS_FLAG_OFFSET.setOffset(20L);
-        return;
-      case 21: 
-        ART_QUICK_CODE_OFFSET.setOffset(40L);
-        ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
-        ART_JNI_ENTRY_OFFSET.setOffset(32L);
-        ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
-        ART_ACCESS_FLAG_OFFSET.setOffset(56L);
-        return;
-      }
-      ART_QUICK_CODE_OFFSET.setOffset(32L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(28L);
-      return;
-    }
-    ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.DWORD);
-    ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.DWORD);
-    switch (i)
-    {
-    case 20: 
-    default: 
-      throw new RuntimeException("API LEVEL: " + i + " is not supported now : (");
-    case 26: 
-    case 27: 
-      ART_QUICK_CODE_OFFSET.setOffset(28L);
-      ART_JNI_ENTRY_OFFSET.setOffset(24L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-      return;
-    case 24: 
-    case 25: 
-      ART_QUICK_CODE_OFFSET.setOffset(32L);
-      ART_JNI_ENTRY_OFFSET.setOffset(28L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(4L);
-      return;
-    case 23: 
-      ART_QUICK_CODE_OFFSET.setOffset(36L);
-      ART_JNI_ENTRY_OFFSET.setOffset(32L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(12L);
-      return;
-    case 22: 
-      ART_QUICK_CODE_OFFSET.setOffset(44L);
-      ART_JNI_ENTRY_OFFSET.setOffset(40L);
-      ART_ACCESS_FLAG_OFFSET.setOffset(20L);
-      return;
-    case 21: 
-      ART_QUICK_CODE_OFFSET.setOffset(40L);
-      ART_QUICK_CODE_OFFSET.setLength(Offset.BitWidth.QWORD);
-      ART_JNI_ENTRY_OFFSET.setOffset(32L);
-      ART_JNI_ENTRY_OFFSET.setLength(Offset.BitWidth.QWORD);
-      ART_ACCESS_FLAG_OFFSET.setOffset(56L);
-      return;
-    }
-    ART_QUICK_CODE_OFFSET.setOffset(32L);
-    ART_ACCESS_FLAG_OFFSET.setOffset(28L);
-  }
-  
-  public static long read(long paramLong, Offset paramOffset)
-  {
-    byte[] arrayOfByte = EpicNative.get(paramOffset.offset + paramLong, paramOffset.length.width);
-    if (paramOffset.length == Offset.BitWidth.DWORD) {
+    byte[] arrayOfByte = EpicNative.b(paramLong + paramOffset.d, paramOffset.e.width);
+    if (paramOffset.e == Offset.BitWidth.DWORD) {
       return ByteBuffer.wrap(arrayOfByte).order(ByteOrder.LITTLE_ENDIAN).getInt() & 0xFFFFFFFF;
     }
     return ByteBuffer.wrap(arrayOfByte).order(ByteOrder.LITTLE_ENDIAN).getLong();
   }
   
-  public static void write(long paramLong1, Offset paramOffset, long paramLong2)
+  private static void a()
   {
-    long l = paramOffset.offset;
-    if (paramOffset.length == Offset.BitWidth.DWORD) {
-      if (paramLong2 > 4294967295L) {
-        throw new IllegalStateException("overflow may occur");
-      }
-    }
-    for (paramOffset = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt((int)paramLong2).array();; paramOffset = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(paramLong2).array())
+    a = new Offset();
+    b = new Offset();
+    c = new Offset();
+    b.a(Offset.BitWidth.DWORD);
+    int i = Build.VERSION.SDK_INT;
+    if (i <= 27)
     {
-      EpicNative.put(paramOffset, paramLong1 + l);
+      if (Runtime.a())
+      {
+        a.a(Offset.BitWidth.QWORD);
+        c.a(Offset.BitWidth.QWORD);
+        switch (i)
+        {
+        case 20: 
+        default: 
+          localStringBuilder = new StringBuilder("API LEVEL: ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" is not supported now : (");
+          throw new RuntimeException(localStringBuilder.toString());
+        case 26: 
+        case 27: 
+          a.a(40L);
+          c.a(32L);
+          b.a(4L);
+          return;
+        case 24: 
+        case 25: 
+          a.a(48L);
+          c.a(40L);
+          b.a(4L);
+          return;
+        case 23: 
+          a.a(48L);
+          c.a(40L);
+          b.a(12L);
+          return;
+        case 22: 
+          a.a(52L);
+          c.a(44L);
+          b.a(20L);
+          return;
+        case 21: 
+          a.a(40L);
+          a.a(Offset.BitWidth.QWORD);
+          c.a(32L);
+          c.a(Offset.BitWidth.QWORD);
+          b.a(56L);
+          return;
+        }
+        a.a(32L);
+        b.a(28L);
+        return;
+      }
+      a.a(Offset.BitWidth.DWORD);
+      c.a(Offset.BitWidth.DWORD);
+      switch (i)
+      {
+      case 20: 
+      default: 
+        localStringBuilder = new StringBuilder("API LEVEL: ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" is not supported now : (");
+        throw new RuntimeException(localStringBuilder.toString());
+      case 26: 
+      case 27: 
+        a.a(28L);
+        c.a(24L);
+        b.a(4L);
+        return;
+      case 24: 
+      case 25: 
+        a.a(32L);
+        c.a(28L);
+        b.a(4L);
+        return;
+      case 23: 
+        a.a(36L);
+        c.a(32L);
+        b.a(12L);
+        return;
+      case 22: 
+        a.a(44L);
+        c.a(40L);
+        b.a(20L);
+        return;
+      case 21: 
+        a.a(40L);
+        a.a(Offset.BitWidth.QWORD);
+        c.a(32L);
+        c.a(Offset.BitWidth.QWORD);
+        b.a(56L);
+        return;
+      }
+      a.a(32L);
+      b.a(28L);
       return;
     }
+    StringBuilder localStringBuilder = new StringBuilder("API LEVEL: ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" is not supported now : (");
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
-  public Offset.BitWidth getLength()
+  public void a(long paramLong)
   {
-    return this.length;
+    this.d = paramLong;
   }
   
-  public long getOffset()
+  public void a(Offset.BitWidth paramBitWidth)
   {
-    return this.offset;
-  }
-  
-  public void setLength(Offset.BitWidth paramBitWidth)
-  {
-    this.length = paramBitWidth;
-  }
-  
-  public void setOffset(long paramLong)
-  {
-    this.offset = paramLong;
+    this.e = paramBitWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     me.weishu.epic.art.method.Offset
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,12 @@ public class UploadTransferListHelper
   public static String getLocalFilePath(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   5: iconst_1
-    //   6: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
-    //   9: astore_3
+    //   0: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   3: iconst_1
+    //   4: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
+    //   7: astore_3
+    //   8: aconst_null
+    //   9: astore_2
     //   10: aload_3
     //   11: ifnonnull +12 -> 23
     //   14: ldc 8
@@ -45,338 +45,422 @@ public class UploadTransferListHelper
     //   23: new 72	java/lang/StringBuilder
     //   26: dup
     //   27: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 75
-    //   32: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 81
-    //   37: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc 83
-    //   42: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: ldc 85
-    //   47: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc 81
+    //   30: astore 4
+    //   32: aload 4
+    //   34: ldc 75
+    //   36: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload 4
+    //   42: ldc 81
+    //   44: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload 4
+    //   50: ldc 83
     //   52: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: astore 4
-    //   60: aload_3
-    //   61: ldc 50
-    //   63: iconst_1
-    //   64: anewarray 54	java/lang/String
-    //   67: dup
-    //   68: iconst_0
-    //   69: ldc 91
-    //   71: aastore
+    //   55: pop
+    //   56: aload 4
+    //   58: ldc 85
+    //   60: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload 4
+    //   66: ldc 81
+    //   68: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: pop
     //   72: aload 4
-    //   74: iconst_2
-    //   75: anewarray 54	java/lang/String
-    //   78: dup
-    //   79: iconst_0
-    //   80: aload_0
-    //   81: aastore
-    //   82: dup
-    //   83: iconst_1
-    //   84: aload_1
-    //   85: aastore
-    //   86: aconst_null
-    //   87: aconst_null
-    //   88: aconst_null
-    //   89: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   92: astore_1
-    //   93: aload_1
-    //   94: ifnull +30 -> 124
-    //   97: aload_1
-    //   98: astore_0
-    //   99: aload_1
-    //   100: invokeinterface 101 1 0
-    //   105: ifeq +19 -> 124
-    //   108: aload_1
-    //   109: astore_0
-    //   110: aload_1
-    //   111: iconst_0
-    //   112: invokeinterface 105 2 0
-    //   117: astore_2
-    //   118: aload_1
-    //   119: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   122: aload_2
-    //   123: areturn
-    //   124: aload_1
-    //   125: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   128: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   131: aload_3
-    //   132: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
-    //   135: goto -114 -> 21
-    //   138: astore_2
-    //   139: aconst_null
-    //   140: astore_1
-    //   141: aload_1
-    //   142: astore_0
-    //   143: ldc 8
+    //   74: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: astore 4
+    //   79: aload_3
+    //   80: ldc 50
+    //   82: iconst_1
+    //   83: anewarray 54	java/lang/String
+    //   86: dup
+    //   87: iconst_0
+    //   88: ldc 91
+    //   90: aastore
+    //   91: aload 4
+    //   93: iconst_2
+    //   94: anewarray 54	java/lang/String
+    //   97: dup
+    //   98: iconst_0
+    //   99: aload_0
+    //   100: aastore
+    //   101: dup
+    //   102: iconst_1
+    //   103: aload_1
+    //   104: aastore
+    //   105: aconst_null
+    //   106: aconst_null
+    //   107: aconst_null
+    //   108: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   111: astore_0
+    //   112: aload_0
+    //   113: astore_2
+    //   114: aload_0
+    //   115: ifnull +55 -> 170
+    //   118: aload_0
+    //   119: astore_2
+    //   120: aload_0
+    //   121: astore_1
+    //   122: aload_0
+    //   123: invokeinterface 101 1 0
+    //   128: ifeq +42 -> 170
+    //   131: aload_0
+    //   132: astore_1
+    //   133: aload_0
+    //   134: iconst_0
+    //   135: invokeinterface 105 2 0
+    //   140: astore_2
+    //   141: aload_0
+    //   142: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
     //   145: aload_2
-    //   146: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   149: aload_1
-    //   150: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   153: goto -25 -> 128
-    //   156: astore_0
-    //   157: aload_2
-    //   158: astore_1
-    //   159: aload_1
-    //   160: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   163: aload_0
-    //   164: athrow
-    //   165: astore_2
-    //   166: aload_0
-    //   167: astore_1
-    //   168: aload_2
-    //   169: astore_0
-    //   170: goto -11 -> 159
-    //   173: astore_2
-    //   174: goto -33 -> 141
+    //   146: areturn
+    //   147: astore_2
+    //   148: goto +12 -> 160
+    //   151: astore_0
+    //   152: aload_2
+    //   153: astore_1
+    //   154: goto +30 -> 184
+    //   157: astore_2
+    //   158: aconst_null
+    //   159: astore_0
+    //   160: aload_0
+    //   161: astore_1
+    //   162: ldc 8
+    //   164: aload_2
+    //   165: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   168: aload_0
+    //   169: astore_2
+    //   170: aload_2
+    //   171: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   174: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   177: aload_3
+    //   178: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
+    //   181: aconst_null
+    //   182: areturn
+    //   183: astore_0
+    //   184: aload_1
+    //   185: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   188: aload_0
+    //   189: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	177	0	paramString1	String
-    //   0	177	1	paramString2	String
-    //   1	122	2	str1	String
-    //   138	20	2	localThrowable1	java.lang.Throwable
-    //   165	4	2	localObject	Object
-    //   173	1	2	localThrowable2	java.lang.Throwable
-    //   9	123	3	localJobDbWrapper	JobDbWrapper
-    //   58	15	4	str2	String
+    //   0	190	0	paramString1	String
+    //   0	190	1	paramString2	String
+    //   9	137	2	str1	String
+    //   147	6	2	localThrowable1	java.lang.Throwable
+    //   157	8	2	localThrowable2	java.lang.Throwable
+    //   169	2	2	str2	String
+    //   7	171	3	localJobDbWrapper	JobDbWrapper
+    //   30	62	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   23	93	138	java/lang/Throwable
-    //   23	93	156	finally
-    //   99	108	165	finally
-    //   110	118	165	finally
-    //   143	149	165	finally
-    //   99	108	173	java/lang/Throwable
-    //   110	118	173	java/lang/Throwable
+    //   122	131	147	java/lang/Throwable
+    //   133	141	147	java/lang/Throwable
+    //   23	112	151	finally
+    //   23	112	157	java/lang/Throwable
+    //   122	131	183	finally
+    //   133	141	183	finally
+    //   162	168	183	finally
   }
   
   /* Error */
   public static UploadBean getTransferItemByFileId(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   5: iconst_1
-    //   6: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
-    //   9: astore_3
-    //   10: aload_3
-    //   11: ifnonnull +12 -> 23
-    //   14: ldc 8
-    //   16: ldc 70
-    //   18: invokestatic 33	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: aconst_null
-    //   22: areturn
-    //   23: new 72	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 75
-    //   32: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 81
-    //   37: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: astore_2
-    //   41: aload_3
-    //   42: ldc 50
-    //   44: getstatic 122	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper$TransferQuery:PROJECTION	[Ljava/lang/String;
-    //   47: aload_2
-    //   48: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: iconst_1
-    //   52: anewarray 54	java/lang/String
-    //   55: dup
-    //   56: iconst_0
-    //   57: aload_0
-    //   58: aastore
-    //   59: aconst_null
-    //   60: aconst_null
-    //   61: aconst_null
-    //   62: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   65: astore_0
-    //   66: aload_0
-    //   67: ifnull +71 -> 138
-    //   70: aload_0
-    //   71: astore_1
-    //   72: aload_0
-    //   73: invokeinterface 101 1 0
-    //   78: ifeq +60 -> 138
+    //   0: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   3: iconst_1
+    //   4: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
+    //   7: astore 5
+    //   9: aconst_null
+    //   10: astore_1
+    //   11: aconst_null
+    //   12: astore 4
+    //   14: aload 5
+    //   16: ifnonnull +12 -> 28
+    //   19: ldc 8
+    //   21: ldc 70
+    //   23: invokestatic 33	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   26: aconst_null
+    //   27: areturn
+    //   28: new 72	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   35: astore_2
+    //   36: aload_2
+    //   37: ldc 75
+    //   39: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_2
+    //   44: ldc 81
+    //   46: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 5
+    //   52: ldc 50
+    //   54: getstatic 122	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper$TransferQuery:PROJECTION	[Ljava/lang/String;
+    //   57: aload_2
+    //   58: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: iconst_1
+    //   62: anewarray 54	java/lang/String
+    //   65: dup
+    //   66: iconst_0
+    //   67: aload_0
+    //   68: aastore
+    //   69: aconst_null
+    //   70: aconst_null
+    //   71: aconst_null
+    //   72: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   75: astore_0
+    //   76: aload 4
+    //   78: astore_2
+    //   79: aload_0
+    //   80: astore_3
     //   81: aload_0
-    //   82: astore_1
-    //   83: aload_0
-    //   84: invokestatic 126	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/weiyun/transmission/upload/transferlist/UploadBean;
+    //   82: ifnull +55 -> 137
+    //   85: aload 4
     //   87: astore_2
-    //   88: aload_2
-    //   89: astore_1
+    //   88: aload_0
+    //   89: astore_3
     //   90: aload_0
-    //   91: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   94: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   97: aload_3
-    //   98: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
-    //   101: aload_1
-    //   102: areturn
-    //   103: astore_2
-    //   104: aconst_null
-    //   105: astore_0
-    //   106: aload_0
-    //   107: astore_1
-    //   108: ldc 8
-    //   110: aload_2
-    //   111: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   114: aload_0
-    //   115: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   118: aconst_null
-    //   119: astore_1
-    //   120: goto -26 -> 94
+    //   91: astore_1
+    //   92: aload_0
+    //   93: invokeinterface 101 1 0
+    //   98: ifeq +39 -> 137
+    //   101: aload_0
+    //   102: astore_1
+    //   103: aload_0
+    //   104: invokestatic 126	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/weiyun/transmission/upload/transferlist/UploadBean;
+    //   107: astore_2
+    //   108: aload_0
+    //   109: astore_3
+    //   110: goto +27 -> 137
+    //   113: astore_2
+    //   114: goto +10 -> 124
+    //   117: astore_0
+    //   118: goto +34 -> 152
+    //   121: astore_2
+    //   122: aconst_null
     //   123: astore_0
-    //   124: aload_1
-    //   125: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   128: aload_0
-    //   129: athrow
-    //   130: astore_0
-    //   131: goto -7 -> 124
-    //   134: astore_2
-    //   135: goto -29 -> 106
-    //   138: aconst_null
-    //   139: astore_1
-    //   140: goto -50 -> 90
+    //   124: aload_0
+    //   125: astore_1
+    //   126: ldc 8
+    //   128: aload_2
+    //   129: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   132: aload_0
+    //   133: astore_3
+    //   134: aload 4
+    //   136: astore_2
+    //   137: aload_3
+    //   138: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   141: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   144: aload 5
+    //   146: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
+    //   149: aload_2
+    //   150: areturn
+    //   151: astore_0
+    //   152: aload_1
+    //   153: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   156: aload_0
+    //   157: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	143	0	paramString	String
-    //   1	139	1	localObject1	Object
-    //   40	49	2	localObject2	Object
-    //   103	8	2	localThrowable1	java.lang.Throwable
-    //   134	1	2	localThrowable2	java.lang.Throwable
-    //   9	89	3	localJobDbWrapper	JobDbWrapper
+    //   0	158	0	paramString	String
+    //   10	143	1	str1	String
+    //   35	73	2	localObject1	Object
+    //   113	1	2	localThrowable1	java.lang.Throwable
+    //   121	8	2	localThrowable2	java.lang.Throwable
+    //   136	14	2	localObject2	Object
+    //   80	58	3	str2	String
+    //   12	123	4	localObject3	Object
+    //   7	138	5	localJobDbWrapper	JobDbWrapper
     // Exception table:
     //   from	to	target	type
-    //   23	66	103	java/lang/Throwable
-    //   23	66	123	finally
-    //   72	81	130	finally
-    //   83	88	130	finally
-    //   108	114	130	finally
-    //   72	81	134	java/lang/Throwable
-    //   83	88	134	java/lang/Throwable
+    //   92	101	113	java/lang/Throwable
+    //   103	108	113	java/lang/Throwable
+    //   28	76	117	finally
+    //   28	76	121	java/lang/Throwable
+    //   92	101	151	finally
+    //   103	108	151	finally
+    //   126	132	151	finally
   }
   
   /* Error */
   public static java.util.ArrayList<UploadBean> getTransferList(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: new 130	java/util/ArrayList
-    //   5: dup
-    //   6: invokespecial 131	java/util/ArrayList:<init>	()V
-    //   9: astore_3
-    //   10: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   13: iconst_1
-    //   14: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
-    //   17: astore 4
-    //   19: aload 4
-    //   21: ifnonnull +12 -> 33
-    //   24: ldc 8
-    //   26: ldc 133
-    //   28: invokestatic 33	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: aload_3
+    //   0: new 130	java/util/ArrayList
+    //   3: dup
+    //   4: invokespecial 131	java/util/ArrayList:<init>	()V
+    //   7: astore 5
+    //   9: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   12: iconst_1
+    //   13: invokevirtual 25	com/tencent/weiyun/transmission/db/JobDbManager:openJobDb	(Z)Lcom/tencent/weiyun/transmission/db/JobDbWrapper;
+    //   16: astore 6
+    //   18: aload 6
+    //   20: ifnonnull +13 -> 33
+    //   23: ldc 8
+    //   25: ldc 133
+    //   27: invokestatic 33	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: aload 5
     //   32: areturn
-    //   33: new 72	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   40: ldc 135
-    //   42: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: ldc 137
-    //   47: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: ldc 38
-    //   52: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc 139
-    //   57: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: ldc 141
-    //   62: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: ldc 143
-    //   67: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: astore_2
-    //   71: aload 4
-    //   73: ldc 50
-    //   75: getstatic 122	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper$TransferQuery:PROJECTION	[Ljava/lang/String;
-    //   78: aload_2
-    //   79: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: iconst_1
-    //   83: anewarray 54	java/lang/String
-    //   86: dup
-    //   87: iconst_0
-    //   88: aload_0
-    //   89: aastore
-    //   90: aconst_null
-    //   91: aconst_null
-    //   92: ldc 145
-    //   94: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   97: astore_0
-    //   98: aload_0
-    //   99: astore_1
-    //   100: aload_1
-    //   101: ifnull +51 -> 152
-    //   104: aload_1
-    //   105: astore_0
-    //   106: aload_1
-    //   107: invokeinterface 101 1 0
-    //   112: ifeq +40 -> 152
-    //   115: aload_1
-    //   116: astore_0
+    //   33: aconst_null
+    //   34: astore 4
+    //   36: aconst_null
+    //   37: astore_3
+    //   38: aload_3
+    //   39: astore_2
+    //   40: aload 4
+    //   42: astore_1
+    //   43: new 72	java/lang/StringBuilder
+    //   46: dup
+    //   47: invokespecial 73	java/lang/StringBuilder:<init>	()V
+    //   50: astore 7
+    //   52: aload_3
+    //   53: astore_2
+    //   54: aload 4
+    //   56: astore_1
+    //   57: aload 7
+    //   59: ldc 135
+    //   61: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: aload_3
+    //   66: astore_2
+    //   67: aload 4
+    //   69: astore_1
+    //   70: aload 7
+    //   72: ldc 137
+    //   74: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload_3
+    //   79: astore_2
+    //   80: aload 4
+    //   82: astore_1
+    //   83: aload 7
+    //   85: ldc 38
+    //   87: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_3
+    //   92: astore_2
+    //   93: aload 4
+    //   95: astore_1
+    //   96: aload 7
+    //   98: ldc 139
+    //   100: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: aload_3
+    //   105: astore_2
+    //   106: aload 4
+    //   108: astore_1
+    //   109: aload 7
+    //   111: ldc 141
+    //   113: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
     //   117: aload_3
-    //   118: aload_1
-    //   119: invokestatic 126	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/weiyun/transmission/upload/transferlist/UploadBean;
-    //   122: invokevirtual 149	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   125: pop
-    //   126: goto -22 -> 104
-    //   129: astore_2
-    //   130: aload_1
-    //   131: astore_0
-    //   132: ldc 8
-    //   134: aload_2
-    //   135: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   138: aload_1
-    //   139: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   142: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
-    //   145: aload 4
-    //   147: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
-    //   150: aload_3
-    //   151: areturn
-    //   152: aload_1
-    //   153: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   156: goto -14 -> 142
-    //   159: astore_0
-    //   160: aload_1
-    //   161: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
-    //   164: aload_0
-    //   165: athrow
-    //   166: astore_2
-    //   167: aload_0
-    //   168: astore_1
-    //   169: aload_2
-    //   170: astore_0
-    //   171: goto -11 -> 160
-    //   174: astore_2
-    //   175: aconst_null
-    //   176: astore_1
-    //   177: goto -47 -> 130
+    //   118: astore_2
+    //   119: aload 4
+    //   121: astore_1
+    //   122: aload 7
+    //   124: ldc 143
+    //   126: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: pop
+    //   130: aload_3
+    //   131: astore_2
+    //   132: aload 4
+    //   134: astore_1
+    //   135: aload 6
+    //   137: ldc 50
+    //   139: getstatic 122	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper$TransferQuery:PROJECTION	[Ljava/lang/String;
+    //   142: aload 7
+    //   144: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: iconst_1
+    //   148: anewarray 54	java/lang/String
+    //   151: dup
+    //   152: iconst_0
+    //   153: aload_0
+    //   154: aastore
+    //   155: aconst_null
+    //   156: aconst_null
+    //   157: ldc 145
+    //   159: invokevirtual 95	com/tencent/weiyun/transmission/db/JobDbWrapper:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   162: astore_0
+    //   163: aload_0
+    //   164: astore_3
+    //   165: aload_0
+    //   166: ifnull +50 -> 216
+    //   169: aload_0
+    //   170: astore_2
+    //   171: aload_0
+    //   172: astore_1
+    //   173: aload_0
+    //   174: astore_3
+    //   175: aload_0
+    //   176: invokeinterface 101 1 0
+    //   181: ifeq +35 -> 216
+    //   184: aload_0
+    //   185: astore_2
+    //   186: aload_0
+    //   187: astore_1
+    //   188: aload 5
+    //   190: aload_0
+    //   191: invokestatic 126	com/tencent/weiyun/transmission/upload/transferlist/UploadTransferListHelper:readFromCursor	(Landroid/database/Cursor;)Lcom/tencent/weiyun/transmission/upload/transferlist/UploadBean;
+    //   194: invokevirtual 149	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   197: pop
+    //   198: goto -29 -> 169
+    //   201: astore_0
+    //   202: goto +29 -> 231
+    //   205: astore_0
+    //   206: aload_1
+    //   207: astore_2
+    //   208: ldc 8
+    //   210: aload_0
+    //   211: invokestatic 114	com/tencent/weiyun/transmission/utils/TsLog:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   214: aload_1
+    //   215: astore_3
+    //   216: aload_3
+    //   217: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   220: invokestatic 21	com/tencent/weiyun/transmission/db/JobDbManager:getInstance	()Lcom/tencent/weiyun/transmission/db/JobDbManager;
+    //   223: aload 6
+    //   225: invokevirtual 64	com/tencent/weiyun/transmission/db/JobDbManager:closeJobDb	(Lcom/tencent/weiyun/transmission/db/JobDbWrapper;)V
+    //   228: aload 5
+    //   230: areturn
+    //   231: aload_2
+    //   232: invokestatic 111	com/tencent/weiyun/utils/IOUtils:closeSilently	(Landroid/database/Cursor;)V
+    //   235: goto +5 -> 240
+    //   238: aload_0
+    //   239: athrow
+    //   240: goto -2 -> 238
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	180	0	paramString	String
-    //   1	176	1	str	String
-    //   70	9	2	localStringBuilder	java.lang.StringBuilder
-    //   129	6	2	localThrowable1	java.lang.Throwable
-    //   166	4	2	localObject	Object
-    //   174	1	2	localThrowable2	java.lang.Throwable
-    //   9	142	3	localArrayList	java.util.ArrayList
-    //   17	129	4	localJobDbWrapper	JobDbWrapper
+    //   0	243	0	paramString	String
+    //   42	173	1	localObject1	Object
+    //   39	193	2	localObject2	Object
+    //   37	180	3	localObject3	Object
+    //   34	99	4	localObject4	Object
+    //   7	222	5	localArrayList	java.util.ArrayList
+    //   16	208	6	localJobDbWrapper	JobDbWrapper
+    //   50	93	7	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   106	115	129	java/lang/Throwable
-    //   117	126	129	java/lang/Throwable
-    //   33	98	159	finally
-    //   106	115	166	finally
-    //   117	126	166	finally
-    //   132	138	166	finally
-    //   33	98	174	java/lang/Throwable
+    //   43	52	201	finally
+    //   57	65	201	finally
+    //   70	78	201	finally
+    //   83	91	201	finally
+    //   96	104	201	finally
+    //   109	117	201	finally
+    //   122	130	201	finally
+    //   135	163	201	finally
+    //   175	184	201	finally
+    //   188	198	201	finally
+    //   208	214	201	finally
+    //   43	52	205	java/lang/Throwable
+    //   57	65	205	java/lang/Throwable
+    //   70	78	205	java/lang/Throwable
+    //   83	91	205	java/lang/Throwable
+    //   96	104	205	java/lang/Throwable
+    //   109	117	205	java/lang/Throwable
+    //   122	130	205	java/lang/Throwable
+    //   135	163	205	java/lang/Throwable
+    //   175	184	205	java/lang/Throwable
+    //   188	198	205	java/lang/Throwable
   }
   
   private static UploadBean readFromCursor(Cursor paramCursor)
@@ -418,7 +502,7 @@ public class UploadTransferListHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.transferlist.UploadTransferListHelper
  * JD-Core Version:    0.7.0.1
  */

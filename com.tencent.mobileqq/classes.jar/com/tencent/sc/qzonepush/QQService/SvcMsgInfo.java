@@ -13,22 +13,12 @@ public final class SvcMsgInfo
 {
   static Map<String, byte[]> cache_msgByteInfos;
   static Map<String, String> cache_msgInfos;
-  public int iMsgType;
-  public long lFromUin;
-  public Map<String, byte[]> msgByteInfos;
-  public Map<String, String> msgInfos;
+  public int iMsgType = 0;
+  public long lFromUin = 0L;
+  public Map<String, byte[]> msgByteInfos = null;
+  public Map<String, String> msgInfos = null;
   public String strOther = "";
-  public int tTimeStamp;
-  
-  static
-  {
-    if (!SvcMsgInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public int tTimeStamp = 0;
   
   public SvcMsgInfo() {}
   
@@ -49,18 +39,17 @@ public final class SvcMsgInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -108,17 +97,19 @@ public final class SvcMsgInfo
     paramJceOutputStream.write(this.tTimeStamp, 1);
     paramJceOutputStream.write(this.iMsgType, 2);
     paramJceOutputStream.write(this.strOther, 3);
-    if (this.msgInfos != null) {
-      paramJceOutputStream.write(this.msgInfos, 4);
+    Map localMap = this.msgInfos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
-    if (this.msgByteInfos != null) {
-      paramJceOutputStream.write(this.msgByteInfos, 5);
+    localMap = this.msgByteInfos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgInfo
  * JD-Core Version:    0.7.0.1
  */

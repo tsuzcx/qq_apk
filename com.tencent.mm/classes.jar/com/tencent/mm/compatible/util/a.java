@@ -4,59 +4,96 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static int bL(Context paramContext)
+  public static int c(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(93058);
+    AppMethodBeat.i(240840);
+    if (paramActivity == null)
+    {
+      Log.w("MicroMsg.ActionBarCompatHelper", "[getActionBarHeight] activity is null!");
+      AppMethodBeat.o(240840);
+      return paramInt;
+    }
+    int i;
+    if ((paramActivity instanceof AppCompatActivity))
+    {
+      if (((AppCompatActivity)paramActivity).getSupportActionBar() == null) {
+        break label109;
+      }
+      i = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i <= 0) {
+        j = paramInt;
+      }
+      Log.i("MicroMsg.ActionBarCompatHelper", "[getActionBarHeight] real:%s defaultVal:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(240840);
+      return j;
+      if (paramActivity.getActionBar() != null) {
+        i = paramActivity.getActionBar().getHeight();
+      } else {
+        label109:
+        i = 0;
+      }
+    }
+  }
+  
+  public static int di(Context paramContext)
+  {
+    AppMethodBeat.i(155863);
     TypedValue localTypedValue = new TypedValue();
     int i;
-    if (paramContext.getTheme().resolveAttribute(2130772143, localTypedValue, true))
+    if (paramContext.getTheme().resolveAttribute(a.a.actionBarSize, localTypedValue, true))
     {
       i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
-      AppMethodBeat.o(93058);
+      AppMethodBeat.o(155863);
       return i;
     }
     if (paramContext.getTheme().resolveAttribute(16843499, localTypedValue, true))
     {
       i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
-      AppMethodBeat.o(93058);
+      AppMethodBeat.o(155863);
       return i;
     }
-    AppMethodBeat.o(93058);
+    AppMethodBeat.o(155863);
     return 0;
   }
   
-  public static int p(Activity paramActivity)
+  public static int v(Activity paramActivity)
   {
-    AppMethodBeat.i(93057);
+    AppMethodBeat.i(155862);
     if ((paramActivity instanceof AppCompatActivity))
     {
       if (((AppCompatActivity)paramActivity).getSupportActionBar() != null)
       {
         i = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
-        AppMethodBeat.o(93057);
+        AppMethodBeat.o(155862);
         return i;
       }
     }
     else if (paramActivity.getActionBar() != null)
     {
       i = paramActivity.getActionBar().getHeight();
-      AppMethodBeat.o(93057);
+      AppMethodBeat.o(155862);
       return i;
     }
-    int i = bL(paramActivity);
-    AppMethodBeat.o(93057);
+    int i = di(paramActivity);
+    AppMethodBeat.o(155862);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.util.a
  * JD-Core Version:    0.7.0.1
  */

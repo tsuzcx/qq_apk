@@ -10,25 +10,25 @@ final class ExdeviceProfileUI$6
 {
   ExdeviceProfileUI$6(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final boolean bil()
+  public final boolean dsp()
   {
-    AppMethodBeat.i(20028);
-    if (ExdeviceProfileUI.z(this.lOl).getFirstVisiblePosition() == 0)
+    AppMethodBeat.i(24100);
+    if (ExdeviceProfileUI.u(this.yBy).getFirstVisiblePosition() == 0)
     {
-      View localView = ExdeviceProfileUI.z(this.lOl).getChildAt(ExdeviceProfileUI.z(this.lOl).getFirstVisiblePosition());
+      View localView = ExdeviceProfileUI.u(this.yBy).getChildAt(ExdeviceProfileUI.u(this.yBy).getFirstVisiblePosition());
       if ((localView != null) && (localView.getTop() >= 0))
       {
-        AppMethodBeat.o(20028);
+        AppMethodBeat.o(24100);
         return true;
       }
     }
-    AppMethodBeat.o(20028);
+    AppMethodBeat.o(24100);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.6
  * JD-Core Version:    0.7.0.1
  */

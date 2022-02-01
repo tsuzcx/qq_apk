@@ -1,0 +1,33 @@
+material farPOI
+{
+        u_worldViewProjectionMatrix = WORLD_VIEW_PROJECTION_MATRIX
+
+
+        renderState
+        {
+            cullFace = true
+            depthTest = true
+        }
+
+
+     technique technique_default
+     {
+        pass 0
+        {
+            defines = TEXTURE_DISCARD_ALPHA
+            vertexShader = res/shaders/textured.vert
+            fragmentShader = res/shaders/textured.frag
+        }
+     }
+
+     technique technique_grayscale
+     {
+        pass 0
+        {
+            defines = FORCE_GRAY;TEXTURE_DISCARD_ALPHA
+            vertexShader = res/shaders/textured.vert
+            fragmentShader = res/shaders/textured.frag
+        }
+     }
+}
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="150.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/img_cover" android:background="#ff87c9e2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:id="@id/img_cover_forground" android:background="@color/translucent_background" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/img_loading_progress_bar" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/qzone_title_progressbar" android:indeterminateBehavior="repeat" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cover_layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textColor="@color/white" android:gravity="center" android:id="@id/tv_album_desc" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:maxLines="3" android:layout_weight="1.0" />
+        <TextView android:textColor="@color/white" android:gravity="center" android:id="@id/tv_album_face_msg" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/loading_album_faces" android:layout_weight="1.0" />
+        <com.qzone.widget.HorizontalListView android:id="@id/tv_album_face" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginBottom="@dimen/common_16dp">
+            <com.qzone.widget.FeedOperationLinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/tv_visitors_container" android:background="@drawable/qzone_button_eye_cover" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="32.0dip" android:layout_alignParentRight="true" android:contentDescription="浏览次数">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/tv_visitor_icon" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:src="@drawable/qzone_button_eye" />
+                <TextView android:textSize="@dimen/sp14" android:textColor="@color/qzone_55pre_black" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/tv_visitors" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="20.0dip" android:singleLine="true" />
+            </com.qzone.widget.FeedOperationLinearLayout>
+            <com.qzone.widget.FeedOperationLinearLayout android:gravity="center" android:id="@id/tv_like_container" android:background="@drawable/qzone_button_eye_cover" android:paddingLeft="10.0dip" android:focusableInTouchMode="true" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/tv_visitors_container" android:contentDescription="赞">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/tv_like_icon" android:paddingLeft="3.0dip" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:src="@drawable/qzone_button_zan" />
+                <TextView android:textSize="@dimen/sp14" android:textColor="@color/qzone_55pre_black" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/tv_like" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="20.0dip" android:singleLine="true" />
+            </com.qzone.widget.FeedOperationLinearLayout>
+            <LinearLayout android:id="@id/tv_face_container" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/tv_face_icon" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/qzone_selector_album_headerview_button_head" />
+                <TextView android:textSize="@dimen/sp13" android:textColor="@color/white" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/tv_face" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="20.0dip" android:singleLine="true" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/tv_face_arrow" android:paddingLeft="6.0dip" android:paddingTop="5.0dip" android:paddingRight="6.0dip" android:paddingBottom="5.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/qzone_album_headerview_button_uparrow" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/topline" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</FrameLayout>

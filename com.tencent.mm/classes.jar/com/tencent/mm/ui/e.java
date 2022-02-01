@@ -1,119 +1,186 @@
 package com.tencent.mm.ui;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.util.HashMap;
 
 public final class e
 {
-  public static String atl(String paramString)
+  private static a advS;
+  private static HashMap<Integer, Long> advT;
+  private static int advU;
+  private static int advV;
+  private static long advW;
+  
+  static
   {
-    AppMethodBeat.i(105954);
-    paramString = paramString + "_" + System.currentTimeMillis();
-    AppMethodBeat.o(105954);
-    return paramString;
+    AppMethodBeat.i(141281);
+    advT = new HashMap();
+    advU = 1100;
+    advV = 2000;
+    advW = 0L;
+    AppMethodBeat.o(141281);
   }
   
-  public static final class a
+  public static void a(a parama)
   {
-    public static int NY(int paramInt)
+    advS = parama;
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean, Intent[] paramArrayOfIntent, Object... paramVarArgs)
+  {
+    for (;;)
     {
-      switch (paramInt)
+      long l;
+      Object localObject;
+      Long localLong2;
+      try
       {
-      default: 
-        return 0;
-      case 0: 
-        return 1;
-      case 1: 
-        return 2;
+        AppMethodBeat.i(141278);
+        int j = paramArrayOfIntent.length;
+        int i = 0;
+        if (i < j)
+        {
+          if (cb(paramArrayOfIntent[i]))
+          {
+            paramBoolean = false;
+            AppMethodBeat.o(141278);
+            return paramBoolean;
+          }
+          i += 1;
+          continue;
+        }
+        l = System.currentTimeMillis();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.toString()).append(",");
+        j = paramArrayOfIntent.length;
+        i = 0;
+        if (i < j)
+        {
+          ((StringBuilder)localObject).append(paramArrayOfIntent[i]);
+          ((StringBuilder)localObject).append(",");
+          i += 1;
+          continue;
+        }
+        j = paramVarArgs.length;
+        i = 0;
+        if (i < j)
+        {
+          ((StringBuilder)localObject).append(paramVarArgs[i]);
+          ((StringBuilder)localObject).append(",");
+          i += 1;
+          continue;
+        }
+        paramVarArgs = ((StringBuilder)localObject).toString();
+        localObject = Integer.valueOf(paramVarArgs.hashCode());
+        Long localLong1 = (Long)advT.get(localObject);
+        localLong2 = Long.valueOf(System.currentTimeMillis());
+        if ((!paramBoolean) || (localLong1 == null)) {
+          break label370;
+        }
+        if (localLong2.longValue() - localLong1.longValue() <= advV)
+        {
+          String str = bzF(paramContext.getClass().toString());
+          if (paramArrayOfIntent[0].getComponent() != null)
+          {
+            paramContext = bzF(paramArrayOfIntent[0].getComponent().getClassName());
+            advS.d(localLong2.longValue() - localLong1.longValue(), str, paramContext);
+          }
+        }
+        else
+        {
+          if (localLong2.longValue() - localLong1.longValue() > advU) {
+            break label370;
+          }
+          advT.put(localObject, localLong2);
+          Log.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(advU), paramVarArgs, localLong1, localLong2 });
+          paramBoolean = true;
+          AppMethodBeat.o(141278);
+          continue;
+        }
+        paramContext = "None";
       }
-      return 3;
+      finally {}
+      continue;
+      label370:
+      if ((advT.size() > 100) && (advW != 0L) && (System.currentTimeMillis() - advW > advU)) {
+        advT.clear();
+      }
+      advT.put(localObject, localLong2);
+      advW = System.currentTimeMillis();
+      Log.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      paramBoolean = false;
+      AppMethodBeat.o(141278);
     }
   }
   
-  public static final class b
+  private static String bzF(String paramString)
   {
-    public static String yUZ = "AntispamTicket";
-  }
-  
-  public static final class c
-  {
-    public static final String yVa;
-    
-    static
+    AppMethodBeat.i(141279);
+    paramString = paramString.split("\\.");
+    if (paramString.length > 0)
     {
-      AppMethodBeat.i(105952);
-      yVa = com.tencent.mm.compatible.util.e.eQz + "switchAccountBg";
-      AppMethodBeat.o(105952);
+      paramString = paramString[(paramString.length - 1)];
+      AppMethodBeat.o(141279);
+      return paramString;
     }
+    AppMethodBeat.o(141279);
+    return "";
   }
   
-  public static abstract interface d
+  private static boolean cb(Intent paramIntent)
   {
-    public static final String yVb = "FREE_WIFI_IS_DEFAULT_FOCUS".toLowerCase();
-  }
-  
-  public static final class e
-  {
-    public static String yVc = "key_envelope_source";
-    public static String yVd = "key_source_resp";
-  }
-  
-  public static final class f {}
-  
-  public static final class g
-  {
-    public static int yVe = 0;
-    public static int yVf = 1;
-    public static int yVg = 2;
-  }
-  
-  public static final class h
-  {
-    public static final String etD = null;
-  }
-  
-  public static final class i
-  {
-    public static String yVh = "trust_friend_show_tips";
-  }
-  
-  public static final class j
-  {
-    public static final String yVi;
-    
-    static
+    AppMethodBeat.i(141280);
+    if (paramIntent != null) {}
+    try
     {
-      AppMethodBeat.i(105953);
-      yVi = "Kdescription" + System.currentTimeMillis();
-      AppMethodBeat.o(105953);
+      if (paramIntent.getComponent() != null)
+      {
+        boolean bool = Util.isNullOrNil(paramIntent.getComponent().getClassName());
+        if (!bool) {}
+      }
+      else
+      {
+        AppMethodBeat.o(141280);
+        return false;
+      }
+      if (Class.forName(paramIntent.getComponent().getClassName()).getAnnotation(b.class) != null)
+      {
+        AppMethodBeat.o(141280);
+        return true;
+      }
     }
+    catch (Exception paramIntent)
+    {
+      Log.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
+      AppMethodBeat.o(141280);
+      return false;
+    }
+    AppMethodBeat.o(141280);
+    return false;
   }
   
-  public static abstract interface k
+  public static int jhM()
   {
-    public static final String hoC = ah.getPackageName() + ":tools";
-    public static final String iXz = ;
+    return advU;
   }
   
-  public static final class l
+  public static abstract interface a
   {
-    public static String yVj = "k_tmpl_params";
-    public static String yVk = "k_tmpl_next_webview";
-    public static String yVl = "k_tmpl_start_load_page";
-    public static String yVm = "k_tmpl_page_info";
-    public static String yVn = "k_tmpl_data_key";
-    public static String yVo = "k_tmpl_session_id";
-    public static String yVp = "k_tmpl_scene";
-    public static String yVq = "k_tmpl_sub_scene";
-    public static String yVr = "k_tmpl_is_webview_prc_created";
-    public static String yVs = "k_tmpl_orig_prc_pid";
-    public static String yVt = "k_tmpl_item_show_type";
-    public static String yVu = "k_tmpl_open_type";
-    public static String yVv = "k_tmpl_session";
-    public static String yVw = "k_tmpl_force_url";
-    public static String yVx = "k_serach_log_id";
-    public static String yVy = "k_serach_log_args";
+    public abstract void d(long paramLong, String paramString1, String paramString2);
   }
+  
+  @Retention(RetentionPolicy.RUNTIME)
+  @Target({java.lang.annotation.ElementType.TYPE})
+  public static @interface b {}
 }
 
 

@@ -9,7 +9,7 @@ public final class SvcRspBindUin
   extends JceStruct
 {
   static ArrayList<BindUinResult> cache_vecResult;
-  public ArrayList<BindUinResult> vecResult;
+  public ArrayList<BindUinResult> vecResult = null;
   
   public SvcRspBindUin() {}
   
@@ -36,7 +36,7 @@ public final class SvcRspBindUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcRspBindUin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import afbn;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 
@@ -11,27 +10,18 @@ class LineLayer$SaveTempFileJob$1
   
   public void run()
   {
-    afbn localafbn;
-    if (LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob) != null)
+    if (LineLayer.SaveTempFileJob.a(this.b) != null)
     {
-      localafbn = (afbn)LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob).get();
-      if (localafbn != null) {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label66;
-        }
+      SaveTempFileJobListener localSaveTempFileJobListener = (SaveTempFileJobListener)LineLayer.SaveTempFileJob.a(this.b).get();
+      if (localSaveTempFileJobListener != null) {
+        localSaveTempFileJobListener.a(TextUtils.isEmpty(this.a) ^ true, LineLayer.SaveTempFileJob.b(this.b), LineLayer.SaveTempFileJob.c(this.b), this.a);
       }
-    }
-    label66:
-    for (boolean bool = true;; bool = false)
-    {
-      localafbn.a(bool, LineLayer.SaveTempFileJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), LineLayer.SaveTempFileJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$SaveTempFileJob), this.jdField_a_of_type_JavaLangString);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer.SaveTempFileJob.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class BindGroupConfirmActivity$4
   public void run()
   {
     if (this.a != null) {
-      this.this$0.a.setImageBitmap(this.a);
+      this.this$0.f.setImageBitmap(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.4
  * JD-Core Version:    0.7.0.1
  */

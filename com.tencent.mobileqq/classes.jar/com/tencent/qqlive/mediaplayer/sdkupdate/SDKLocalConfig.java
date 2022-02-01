@@ -15,18 +15,28 @@ public class SDKLocalConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(" SDKLocalConfig[");
-    localStringBuilder.append("filename:").append(this.filename).append("\n");
-    localStringBuilder.append("version:").append(this.version).append("\n");
-    localStringBuilder.append("URL:").append(this.URL).append("\n");
-    localStringBuilder.append("MD5:").append(this.MD5).append("\n");
-    localStringBuilder.append("JARMD5:").append(this.JARMD5).append("\n");
+    localStringBuilder.append("filename:");
+    localStringBuilder.append(this.filename);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("version:");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("URL:");
+    localStringBuilder.append(this.URL);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("MD5:");
+    localStringBuilder.append(this.MD5);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("JARMD5:");
+    localStringBuilder.append(this.JARMD5);
+    localStringBuilder.append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.sdkupdate.SDKLocalConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -7,40 +7,50 @@ import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjko;
-import bjkp;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bjko();
+  public static final int BABY_ALBUM_TYPE = 8;
+  public static final int BABY_ANONYMITY_TYPE_VALUE = 5;
+  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new BusinessAlbumInfo.1();
+  public static final int DEFAULT_ALBUM_TYPE = 1;
+  public static final int DEFAULT_ANONYMITY_TYPE = 1;
+  public static final int LOVE_ALBUM_TYPE = 11;
+  public static final int LOVE_ANONYMITY_TYPE_VALUE = 8;
+  public static final int MULTI_ALBUM_TYPE = 12;
+  public static final int MULTI_ANONYMITY_TYPE_VALUT = 9;
+  public static final int TRAVEL_ALBUM_TYPE = 9;
+  public static final int TRAVEL_ANONYMITY_TYPE_VALUE = 6;
+  public static final int TRAVEL_BIG_EVENT_TYPE = 1001;
+  public static final int VIDEO_ALBUM_TYPE = 7;
+  public static final int VIDEO_TYPE = 10;
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.e = paramParcel.readInt();
-      this.f = paramParcel.readInt();
-      this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      this.g = paramParcel.readInt();
-      this.h = paramParcel.readInt();
-      this.i = paramParcel.readInt();
-      return;
+    this.mUin = paramParcel.readLong();
+    this.mAlbumId = paramParcel.readString();
+    this.mPrivacy = paramParcel.readInt();
+    this.mTotal = paramParcel.readInt();
+    this.mCover = paramParcel.readString();
+    this.mTitle = paramParcel.readString();
+    this.mLastUploadTime = paramParcel.readLong();
+    this.mAlbumType = paramParcel.readInt();
+    this.mSvrTime = paramParcel.readLong();
+    this.mAnonymity = paramParcel.readInt();
+    int i = paramParcel.readInt();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.isIndividualityAlbum = bool;
+    this.opmask = paramParcel.readInt();
+    this.allow_share = paramParcel.readInt();
+    this.individualCover = paramParcel.readString();
+    this.isShare = paramParcel.readInt();
+    this.isSharingOwner = paramParcel.readInt();
+    this.sortType = paramParcel.readInt();
   }
   
   public BusinessAlbumInfo(String paramString)
@@ -48,51 +58,34 @@ public class BusinessAlbumInfo
     super(paramString);
   }
   
-  public static int a(int paramInt)
+  public static BusinessAlbumInfo create(Album paramAlbum)
   {
-    int i = 8;
-    if (paramInt == 8) {
-      i = 5;
-    }
-    do
-    {
-      return i;
-      if (paramInt == 9) {
-        return 6;
-      }
-    } while (paramInt == 11);
-    return 1;
-  }
-  
-  public static BusinessAlbumInfo a(Album paramAlbum)
-  {
-    boolean bool = true;
     if (paramAlbum == null) {
       return null;
     }
     BusinessAlbumInfo localBusinessAlbumInfo = new BusinessAlbumInfo(paramAlbum.albumid);
-    localBusinessAlbumInfo.jdField_b_of_type_Int = paramAlbum.priv;
-    localBusinessAlbumInfo.jdField_b_of_type_JavaLangString = paramAlbum.name;
-    localBusinessAlbumInfo.jdField_a_of_type_Int = paramAlbum.total;
-    localBusinessAlbumInfo.jdField_a_of_type_Long = paramAlbum.uin;
-    localBusinessAlbumInfo.jdField_c_of_type_Int = paramAlbum.type;
-    localBusinessAlbumInfo.jdField_c_of_type_Long = paramAlbum.svrtime;
-    localBusinessAlbumInfo.jdField_c_of_type_JavaLangString = paramAlbum.coverurl;
-    if ((a(paramAlbum.type) == 1) && (paramAlbum.material != null) && (paramAlbum.individual != 0L)) {}
-    for (;;)
-    {
-      localBusinessAlbumInfo.jdField_a_of_type_Boolean = bool;
-      localBusinessAlbumInfo.e = paramAlbum.opmask;
-      localBusinessAlbumInfo.f = paramAlbum.allow_share;
-      localBusinessAlbumInfo.jdField_d_of_type_JavaLangString = a(paramAlbum);
-      localBusinessAlbumInfo.g = paramAlbum.is_share;
-      localBusinessAlbumInfo.i = paramAlbum.sort_type;
-      return localBusinessAlbumInfo;
+    localBusinessAlbumInfo.mPrivacy = paramAlbum.priv;
+    localBusinessAlbumInfo.mTitle = paramAlbum.name;
+    localBusinessAlbumInfo.mTotal = paramAlbum.total;
+    localBusinessAlbumInfo.mUin = paramAlbum.uin;
+    localBusinessAlbumInfo.mAlbumType = paramAlbum.type;
+    localBusinessAlbumInfo.mSvrTime = paramAlbum.svrtime;
+    localBusinessAlbumInfo.mCover = paramAlbum.coverurl;
+    int i = getAlbumAnonymityByType(paramAlbum.type);
+    boolean bool = true;
+    if ((i != 1) || (paramAlbum.material == null) || (paramAlbum.individual == 0L)) {
       bool = false;
     }
+    localBusinessAlbumInfo.isIndividualityAlbum = bool;
+    localBusinessAlbumInfo.opmask = paramAlbum.opmask;
+    localBusinessAlbumInfo.allow_share = paramAlbum.allow_share;
+    localBusinessAlbumInfo.individualCover = getIndividualCoverUrl(paramAlbum);
+    localBusinessAlbumInfo.isShare = paramAlbum.is_share;
+    localBusinessAlbumInfo.sortType = paramAlbum.sort_type;
+    return localBusinessAlbumInfo;
   }
   
-  public static BusinessAlbumInfo a(String paramString)
+  public static BusinessAlbumInfo create(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -100,92 +93,78 @@ public class BusinessAlbumInfo
     return new BusinessAlbumInfo(paramString);
   }
   
-  public static BusinessAlbumInfo a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, int paramInt6, boolean paramBoolean1, String paramString4, boolean paramBoolean2)
+  public static BusinessAlbumInfo createFrom(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, int paramInt6, boolean paramBoolean1, String paramString4, boolean paramBoolean2)
   {
-    paramString1 = new BusinessAlbumInfo(paramString1);
-    paramString1.jdField_c_of_type_Int = paramInt1;
-    paramString1.jdField_b_of_type_JavaLangString = paramString2;
-    paramString1.jdField_c_of_type_JavaLangString = paramString3;
-    paramString1.jdField_b_of_type_Int = paramInt2;
-    paramString1.jdField_a_of_type_Int = paramInt3;
-    paramString1.jdField_d_of_type_Int = paramInt4;
-    boolean bool;
-    if (paramLong == 1L)
-    {
-      bool = true;
-      paramString1.jdField_a_of_type_Boolean = bool;
-      paramString1.e = paramInt5;
-      paramString1.f = paramInt6;
-      if (!paramBoolean1) {
-        break label115;
-      }
-      paramInt1 = 1;
-      label77:
-      paramString1.g = paramInt1;
-      if (paramLong == 1L) {
-        paramString1.jdField_d_of_type_JavaLangString = paramString4;
-      }
-      if (!paramBoolean2) {
-        break label120;
-      }
-    }
-    label115:
-    label120:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      paramString1.h = paramInt1;
-      return paramString1;
-      bool = false;
-      break;
-      paramInt1 = 0;
-      break label77;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static String a(int paramInt)
+  public static int getAlbumAnonymityByType(int paramInt)
   {
-    int j = 0;
-    int i = j;
+    if (paramInt == 8) {
+      return 5;
+    }
+    if (paramInt == 9) {
+      return 6;
+    }
+    if (paramInt == 11) {
+      return 8;
+    }
+    return 1;
+  }
+  
+  public static String getIndividualCoverUrl(Album paramAlbum)
+  {
+    if ((paramAlbum != null) && (paramAlbum.individual == 1L))
+    {
+      if (paramAlbum.material == null) {
+        return null;
+      }
+      if (paramAlbum.material.stBanner == null) {
+        return null;
+      }
+      if (!TextUtils.isEmpty(paramAlbum.material.stBanner.strUrl)) {
+        return paramAlbum.material.stBanner.strUrl;
+      }
+    }
+    return null;
+  }
+  
+  public static String getPrivNameFromAlbum(int paramInt)
+  {
     switch (paramInt)
     {
+    case 7: 
     default: 
-      i = j;
+      paramInt = 0;
+      break;
+    case 8: 
+      paramInt = 2131914580;
+      break;
+    case 6: 
+      paramInt = 2131914584;
+      break;
+    case 4: 
+      paramInt = 2131914581;
+      break;
+    case 3: 
+      paramInt = 2131914836;
+      break;
+    case 2: 
+    case 5: 
+      paramInt = 2131914579;
+      break;
+    case 1: 
+      paramInt = 2131914835;
     }
-    while (i == 0)
-    {
-      return null;
-      i = 2131718336;
-      continue;
-      i = 2131718337;
-      continue;
-      i = 2131718083;
-      continue;
-      i = 2131718081;
-      continue;
-      i = 2131718086;
-      continue;
-      i = 2131718082;
-    }
-    return BaseApplication.getContext().getResources().getString(i);
-  }
-  
-  public static String a(Album paramAlbum)
-  {
-    if ((paramAlbum == null) || (paramAlbum.individual != 1L) || (paramAlbum.material == null)) {}
-    while ((paramAlbum.material.stBanner == null) || (TextUtils.isEmpty(paramAlbum.material.stBanner.strUrl))) {
+    if (paramInt == 0) {
       return null;
     }
-    return paramAlbum.material.stBanner.strUrl;
+    return BaseApplication.getContext().getResources().getString(paramInt);
   }
   
-  public boolean a()
+  public static boolean isEmpty(String paramString)
   {
-    return this.g == 1;
-  }
-  
-  public String c()
-  {
-    return bjkp.a(this.jdField_b_of_type_Int);
+    return (paramString == null) || (paramString.length() == 0);
   }
   
   public int describeContents()
@@ -195,39 +174,78 @@ public class BusinessAlbumInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (BusinessAlbumInfo)paramObject;
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          break;
-        }
-      } while (paramObject.jdField_a_of_type_JavaLangString == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (BusinessAlbumInfo)paramObject;
+    if (this.mAlbumId == null)
+    {
+      if (paramObject.mAlbumId != null) {
+        return false;
+      }
+    }
+    else if (!this.mAlbumId.equals(paramObject.mAlbumId)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String getPrivacyDescription()
+  {
+    return BusinessAlbumInfo.Privacy.getDescription(this.mPrivacy);
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return i + 31;
+    int i;
+    if (this.mAlbumId == null) {
+      i = 0;
+    } else {
+      i = this.mAlbumId.hashCode();
     }
+    return 31 + i;
+  }
+  
+  public boolean isShareAlbum()
+  {
+    return this.isShare == 1;
+  }
+  
+  public void updateFrom(BusinessAlbumInfo paramBusinessAlbumInfo)
+  {
+    if (paramBusinessAlbumInfo == null) {
+      return;
+    }
+    this.mUin = paramBusinessAlbumInfo.mUin;
+    this.mTotal = paramBusinessAlbumInfo.mTotal;
+    this.mPrivacy = paramBusinessAlbumInfo.mPrivacy;
+    this.mAlbumType = paramBusinessAlbumInfo.mAlbumType;
+    if (!isEmpty(paramBusinessAlbumInfo.mTitle)) {
+      this.mTitle = paramBusinessAlbumInfo.mTitle;
+    }
+    if (!isEmpty(paramBusinessAlbumInfo.mCover)) {
+      this.mCover = paramBusinessAlbumInfo.mCover;
+    }
+    this.mSvrTime = paramBusinessAlbumInfo.mSvrTime;
+    this.mAnonymity = paramBusinessAlbumInfo.mAnonymity;
+    this.isIndividualityAlbum = paramBusinessAlbumInfo.isIndividualityAlbum;
+    this.opmask = paramBusinessAlbumInfo.opmask;
+    this.allow_share = paramBusinessAlbumInfo.allow_share;
+    this.individualCover = paramBusinessAlbumInfo.individualCover;
+    this.isShare = paramBusinessAlbumInfo.isShare;
+    this.isSharingOwner = paramBusinessAlbumInfo.isSharingOwner;
+    this.sortType = paramBusinessAlbumInfo.sortType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.BusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

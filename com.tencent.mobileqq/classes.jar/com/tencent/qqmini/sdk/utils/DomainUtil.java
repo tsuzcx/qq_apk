@@ -3,31 +3,191 @@ package com.tencent.qqmini.sdk.utils;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
-import bgpx;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.DomainConfig;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.jetbrains.annotations.Nullable;
 
 public class DomainUtil
 {
   private static final String CONFIG_SPLIT = ";";
-  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview" };
-  public static final int DOMIAN_TYPE_DOWNLOAD = 2;
-  public static final int DOMIAN_TYPE_REQUEST = 0;
-  public static final int DOMIAN_TYPE_UPLOAD = 3;
-  public static final int DOMIAN_TYPE_WEBSOCKET = 1;
-  public static final int DOMIAN_TYPE_WEBVIEW = 4;
+  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview", "UDP" };
+  public static final int DOMAIN_TYPE_DOWNLOAD = 2;
+  public static final int DOMAIN_TYPE_DUP = 5;
+  public static final int DOMAIN_TYPE_REQUEST = 0;
+  public static final int DOMAIN_TYPE_UPLOAD = 3;
+  public static final int DOMAIN_TYPE_WEBSOCKET = 1;
+  public static final int DOMAIN_TYPE_WEBVIEW = 4;
   private static ConcurrentHashMap<Integer, ArrayList<DomainConfig>> mCachedDomainConfigMap;
   private static String mCurWhiteListConfig;
-  private static ArrayList<String> sDominWhiteList;
+  private static ArrayList<String> sDominWhiteList = null;
+  
+  private static boolean checkAppConfig(MiniAppInfo paramMiniAppInfo, String paramString, int paramInt, DomainConfig paramDomainConfig)
+  {
+    if ((paramDomainConfig != null) && (!TextUtils.isEmpty(paramDomainConfig.host)) && (paramMiniAppInfo != null))
+    {
+      Object localObject = paramMiniAppInfo.requestDomainList;
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                paramMiniAppInfo = (MiniAppInfo)localObject;
+              } else {
+                paramMiniAppInfo = paramMiniAppInfo.udpIpList;
+              }
+            }
+            else {
+              paramMiniAppInfo = paramMiniAppInfo.businessDomainList;
+            }
+          }
+          else {
+            paramMiniAppInfo = paramMiniAppInfo.uploadFileDomainList;
+          }
+        }
+        else {
+          paramMiniAppInfo = paramMiniAppInfo.downloadFileDomainList;
+        }
+      }
+      else {
+        paramMiniAppInfo = paramMiniAppInfo.socketDomainList;
+      }
+      if (paramMiniAppInfo != null)
+      {
+        paramMiniAppInfo = paramMiniAppInfo.iterator();
+        while (paramMiniAppInfo.hasNext())
+        {
+          localObject = (String)paramMiniAppInfo.next();
+          try
+          {
+            if (!TextUtils.isEmpty((CharSequence)localObject))
+            {
+              localObject = DomainConfig.getDomainConfig(((String)localObject).toLowerCase());
+              if (DomainConfig.isDomainConfigMatch((DomainConfig)localObject, paramDomainConfig))
+              {
+                putDomainConfigToCache(paramDomainConfig, paramInt);
+                return true;
+              }
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("request:");
+              localStringBuilder.append(paramDomainConfig);
+              localStringBuilder.append(",allow:");
+              localStringBuilder.append(localObject);
+              QMLog.i("[mini] http.domainValid", localStringBuilder.toString());
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("check domainValid error, requestUrl:");
+            localStringBuilder.append(paramString);
+            QMLog.e("[mini] http.domainValid", localStringBuilder.toString(), localThrowable);
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  private static boolean checkIsReportDomain(String paramString)
+  {
+    if (((QUAUtil.isRdmBuild()) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())) && (paramString.startsWith(WnsConfig.getConfig("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rdm mode, https://www.urlshare.cn/ is valid, current Url is: ");
+      localStringBuilder.append(paramString);
+      QMLog.d("[mini] http.domainValid", localStringBuilder.toString());
+      return true;
+    }
+    return false;
+  }
+  
+  private static boolean checkProtocol(MiniAppInfo paramMiniAppInfo, String paramString1, int paramInt, String paramString2)
+  {
+    if (!needCheckProtocol(paramInt)) {
+      return false;
+    }
+    boolean bool;
+    if (paramInt == 4) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (!isValidPrefix(paramString2, bool))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(DOMAIN_NAME_LIST[paramInt]);
+      localStringBuilder.append(":请求域名不合法，请使用https或wss协议,reqeustUrl:");
+      localStringBuilder.append(paramString1);
+      QMLog.e("[mini] http.domainValid", localStringBuilder.toString());
+      if (!isOnlineVersion(paramMiniAppInfo)) {
+        ThreadManager.getUIHandler().post(new DomainUtil.2(paramInt, paramString2));
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  @Nullable
+  private static Boolean checkVersionAndDebug(MiniAppInfo paramMiniAppInfo, String paramString1, int paramInt, String paramString2)
+  {
+    if ((!isOnlineVersion(paramMiniAppInfo)) && (getEnableDebug(paramMiniAppInfo.appId)))
+    {
+      if (!isValidPrefix(paramString2, true))
+      {
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append(DOMAIN_NAME_LIST[paramInt]);
+        paramMiniAppInfo.append("域名不合法，需使用https或wss协议:");
+        paramMiniAppInfo.append(paramString1);
+        QMLog.d("[mini] http.domainValid", paramMiniAppInfo.toString());
+        return Boolean.valueOf(false);
+      }
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("debug opened and not online version, skip:");
+      paramMiniAppInfo.append(paramString1);
+      QMLog.d("[mini] http.domainValid", paramMiniAppInfo.toString());
+      return Boolean.valueOf(true);
+    }
+    return null;
+  }
+  
+  private static boolean checkWnsConfig(String paramString, int paramInt, DomainConfig paramDomainConfig)
+  {
+    Object localObject = getDomainWhiteList();
+    try
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (DomainConfig.isDomainMatchRfc2019((String)((Iterator)localObject).next(), paramDomainConfig))
+        {
+          putDomainConfigToCache(paramDomainConfig, paramInt);
+          return true;
+        }
+      }
+    }
+    catch (Throwable paramDomainConfig)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("check domainValid error, requestUrl:");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.e("[mini] http.domainValid", ((StringBuilder)localObject).toString(), paramDomainConfig);
+    }
+    return false;
+  }
   
   private static ArrayList<String> getDomainWhiteList()
   {
@@ -35,23 +195,26 @@ public class DomainUtil
     {
       if (sDominWhiteList == null)
       {
-        String str1 = bgpx.a("qqminiapp", "defaultAllowedHostList", ".qq.com;.qlogo.cn;.tcb.qcloud.la");
-        if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
+        String str = WnsConfig.getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com;api-report.q.qq.com;rpt.gdt.qq.com;.gtimg.cn");
+        if ((str != null) && (!str.equals(mCurWhiteListConfig)))
         {
-          QMLog.i("[mini] http.domainValid", "Default white domain:" + str1);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Default white domain:");
+          ((StringBuilder)localObject2).append(str);
+          QMLog.i("[mini] http.domainValid", ((StringBuilder)localObject2).toString());
           sDominWhiteList = new ArrayList();
           try
           {
-            String[] arrayOfString = str1.split(";");
-            if (arrayOfString != null)
+            localObject2 = str.split(";");
+            if (localObject2 != null)
             {
-              int j = arrayOfString.length;
+              int j = localObject2.length;
               int i = 0;
               while (i < j)
               {
-                String str2 = arrayOfString[i];
-                if (!TextUtils.isEmpty(str2)) {
-                  sDominWhiteList.add(str2);
+                CharSequence localCharSequence = localObject2[i];
+                if (!TextUtils.isEmpty(localCharSequence)) {
+                  sDominWhiteList.add(localCharSequence);
                 }
                 i += 1;
               }
@@ -60,18 +223,26 @@ public class DomainUtil
           catch (Throwable localThrowable)
           {
             localThrowable.printStackTrace();
-            mCurWhiteListConfig = str1;
+            mCurWhiteListConfig = str;
           }
         }
       }
       return sDominWhiteList;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
-  private static boolean getEnableDebug(String paramString)
+  public static boolean getEnableDebug(String paramString)
   {
-    return StorageUtil.getPreference().getBoolean(paramString + "_debug", false);
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_debug");
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   private static boolean isDomainConfigCached(DomainConfig paramDomainConfig, int paramInt)
@@ -89,126 +260,69 @@ public class DomainUtil
   
   public static boolean isDomainValid(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if (paramBoolean)
+    if ((!TextUtils.isEmpty(paramString)) && (paramMiniAppInfo != null))
     {
-      QMLog.d("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":域名检查 skipDomainCheckFromJs:" + paramString);
-      return true;
-    }
-    if (paramMiniAppInfo.skipDomainCheck == 1) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      QMLog.d("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":域名检查 skip:" + paramString);
-      return true;
-    }
-    Object localObject1 = paramString.toLowerCase();
-    if ((!isOnlineVersion(paramMiniAppInfo)) && (getEnableDebug(paramMiniAppInfo.appId)))
-    {
-      if (!isValidPrefix((String)localObject1, true))
+      if (paramBoolean)
       {
-        QMLog.d("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + "域名不合法，需使用https或wss协议:" + paramString);
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append(DOMAIN_NAME_LIST[paramInt]);
+        paramMiniAppInfo.append(":域名检查 skipDomainCheckFromJs:");
+        paramMiniAppInfo.append(paramString);
+        QMLog.d("[mini] http.domainValid", paramMiniAppInfo.toString());
+        return true;
+      }
+      int i;
+      if (paramMiniAppInfo.skipDomainCheck == 1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        paramMiniAppInfo = new StringBuilder();
+        paramMiniAppInfo.append(DOMAIN_NAME_LIST[paramInt]);
+        paramMiniAppInfo.append(":域名检查 skip:");
+        paramMiniAppInfo.append(paramString);
+        QMLog.d("[mini] http.domainValid", paramMiniAppInfo.toString());
+        return true;
+      }
+      localObject1 = paramString.toLowerCase();
+      Object localObject2 = checkVersionAndDebug(paramMiniAppInfo, paramString, paramInt, (String)localObject1);
+      if (localObject2 != null) {
+        return ((Boolean)localObject2).booleanValue();
+      }
+      if (checkIsReportDomain(paramString)) {
+        return true;
+      }
+      if (checkProtocol(paramMiniAppInfo, paramString, paramInt, (String)localObject1)) {
         return false;
       }
-      QMLog.d("[mini] http.domainValid", "debug opened and not online version, skip:" + paramString);
-      return true;
-    }
-    if (((QUAUtil.isRdmBuild()) || (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())) && (paramString.startsWith(bgpx.a("qqminiapp", "MiniAppRMDDomainWhiteList", "https://www.urlshare.cn/"))))
-    {
-      QMLog.d("[mini] http.domainValid", "rdm mode, https://www.urlshare.cn/ is valid, current Url is: " + paramString);
-      return true;
-    }
-    if (!isValidPrefix((String)localObject1, false))
-    {
-      QMLog.e("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString);
-      if (!isOnlineVersion(paramMiniAppInfo))
-      {
-        ThreadManager.c().post(new DomainUtil.1(paramInt, (String)localObject1));
-        return false;
+      localObject1 = DomainConfig.getDomainConfig((String)localObject1);
+      if (isDomainConfigCached((DomainConfig)localObject1, paramInt)) {
+        return true;
+      }
+      if (checkAppConfig(paramMiniAppInfo, paramString, paramInt, (DomainConfig)localObject1)) {
+        return true;
+      }
+      if (checkWnsConfig(paramString, paramInt, (DomainConfig)localObject1)) {
+        return true;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(DOMAIN_NAME_LIST[paramInt]);
+      ((StringBuilder)localObject2).append(":请求域名不合法，请配置，requestUrl:");
+      ((StringBuilder)localObject2).append(paramString);
+      QMLog.e("[mini] http.domainValid", ((StringBuilder)localObject2).toString());
+      if (!isOnlineVersion(paramMiniAppInfo)) {
+        ThreadManager.getUIHandler().post(new DomainUtil.1(paramInt, (DomainConfig)localObject1));
       }
       return false;
     }
-    DomainConfig localDomainConfig = DomainConfig.getDomainConfig((String)localObject1);
-    if (isDomainConfigCached(localDomainConfig, paramInt)) {
-      return true;
-    }
-    if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)) && (paramMiniAppInfo != null))
-    {
-      localObject1 = paramMiniAppInfo.requestDomainList;
-      switch (paramInt)
-      {
-      default: 
-        if (localObject1 != null) {
-          localObject1 = ((List)localObject1).iterator();
-        }
-        break;
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-        for (;;)
-        {
-          for (;;)
-          {
-            if (!((Iterator)localObject1).hasNext()) {
-              break label580;
-            }
-            Object localObject2 = (String)((Iterator)localObject1).next();
-            try
-            {
-              if (!TextUtils.isEmpty((CharSequence)localObject2))
-              {
-                localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase());
-                if (DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig))
-                {
-                  putDomainConfigToCache(localDomainConfig, paramInt);
-                  return true;
-                  localObject1 = paramMiniAppInfo.socketDomainList;
-                  break;
-                  localObject1 = paramMiniAppInfo.downloadFileDomainList;
-                  break;
-                  localObject1 = paramMiniAppInfo.uploadFileDomainList;
-                  break;
-                  localObject1 = paramMiniAppInfo.businessDomainList;
-                  break;
-                }
-                QMLog.i("[mini] http.domainValid", "request:" + localDomainConfig + ",allow:" + localObject2);
-              }
-            }
-            catch (Throwable localThrowable2)
-            {
-              QMLog.e("[mini] http.domainValid", "check domainValid error, requestUrl:" + paramString, localThrowable2);
-            }
-          }
-        }
-        label580:
-        localObject1 = getDomainWhiteList();
-        try
-        {
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            String str = (String)((Iterator)localObject1).next();
-            if (((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(localDomainConfig.host)) && (str.startsWith(".")) && (str.split("\\.").length >= 1) && (localDomainConfig.host.endsWith(str))) || (str.equals(localDomainConfig.host)))
-            {
-              putDomainConfigToCache(localDomainConfig, paramInt);
-              return true;
-            }
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          QMLog.e("[mini] http.domainValid", "check domainValid error, requestUrl:" + paramString, localThrowable1);
-        }
-      }
-    }
-    QMLog.e("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请配置，requestUrl:" + paramString);
-    if (!isOnlineVersion(paramMiniAppInfo))
-    {
-      ThreadManager.c().post(new DomainUtil.2(paramInt, localDomainConfig));
-      return false;
-    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("url or appcconfig is null. url : ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("; appconfig : ");
+    ((StringBuilder)localObject1).append(paramMiniAppInfo);
+    QMLog.e("[mini] http.domainValid", ((StringBuilder)localObject1).toString());
     return false;
   }
   
@@ -219,41 +333,49 @@ public class DomainUtil
   
   private static boolean isValidPrefix(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("https://")) && (!paramString.startsWith("wss://")) && (!paramString.startsWith("http://")))) {}
-    }
-    while ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("wss://"))))
+    if (!TextUtils.isEmpty(paramString))
     {
-      return true;
-      return false;
+      if (paramString.startsWith("https://")) {
+        return true;
+      }
+      if (paramString.startsWith("wss://")) {
+        return true;
+      }
+      if ((paramBoolean) && ((paramString.startsWith("http://")) || (paramString.startsWith("ws://")))) {
+        return true;
+      }
     }
     return false;
   }
   
+  private static boolean needCheckProtocol(int paramInt)
+  {
+    return paramInt != 5;
+  }
+  
   private static void putDomainConfigToCache(DomainConfig paramDomainConfig, int paramInt)
   {
-    if (paramDomainConfig == null) {}
-    ArrayList localArrayList1;
-    do
-    {
+    if (paramDomainConfig == null) {
       return;
-      if (mCachedDomainConfigMap == null) {
-        mCachedDomainConfigMap = new ConcurrentHashMap();
-      }
-      ArrayList localArrayList2 = (ArrayList)mCachedDomainConfigMap.get(Integer.valueOf(paramInt));
-      localArrayList1 = localArrayList2;
-      if (localArrayList2 == null)
-      {
-        localArrayList1 = new ArrayList();
-        mCachedDomainConfigMap.put(Integer.valueOf(paramInt), localArrayList1);
-      }
-    } while (localArrayList1.contains(paramDomainConfig));
-    localArrayList1.add(paramDomainConfig);
+    }
+    if (mCachedDomainConfigMap == null) {
+      mCachedDomainConfigMap = new ConcurrentHashMap();
+    }
+    ArrayList localArrayList2 = (ArrayList)mCachedDomainConfigMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      mCachedDomainConfigMap.put(Integer.valueOf(paramInt), localArrayList1);
+    }
+    if (!localArrayList1.contains(paramDomainConfig)) {
+      localArrayList1.add(paramDomainConfig);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DomainUtil
  * JD-Core Version:    0.7.0.1
  */

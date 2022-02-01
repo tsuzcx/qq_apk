@@ -10,7 +10,7 @@ public final class CustomTrackDeco
   static byte[] cache_strExtFields = (byte[])new byte[1];
   public int iAppID = 149;
   public int iItemId = -1;
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   
   static
   {
@@ -37,14 +37,15 @@ public final class CustomTrackDeco
   {
     paramJceOutputStream.write(this.iAppID, 0);
     paramJceOutputStream.write(this.iItemId, 1);
-    if (this.strExtFields != null) {
-      paramJceOutputStream.write(this.strExtFields, 2);
+    byte[] arrayOfByte = this.strExtFields;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.CustomTrackDeco
  * JD-Core Version:    0.7.0.1
  */

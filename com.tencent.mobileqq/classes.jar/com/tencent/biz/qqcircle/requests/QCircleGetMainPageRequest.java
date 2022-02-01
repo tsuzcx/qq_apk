@@ -1,10 +1,17 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.biz.qqcircle.beans.QCircleInitBean;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import feedcloud.FeedCloudRead.StGetMainPageReq;
 import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.HashMap;
+import qqcircle.QQCircleFeedBase.StMainPageBusiReqData;
 
 public class QCircleGetMainPageRequest
   extends QCircleBaseRequest
@@ -18,10 +25,10 @@ public class QCircleGetMainPageRequest
   
   public QCircleGetMainPageRequest(String paramString1, String paramString2)
   {
-    this(paramString1, paramString2, 0);
+    this(paramString1, paramString2, null);
   }
   
-  public QCircleGetMainPageRequest(String paramString1, String paramString2, int paramInt)
+  public QCircleGetMainPageRequest(String paramString1, String paramString2, QCircleInitBean paramQCircleInitBean)
   {
     if (paramString2 != null) {
       this.mRequest.feedAttchInfo.set(paramString2);
@@ -29,13 +36,36 @@ public class QCircleGetMainPageRequest
     if (paramString1 != null) {
       this.mRequest.userId.set(paramString1);
     }
-    this.mRequest.from.set(paramInt);
+    this.mRequest.from.set(0);
+    if (paramQCircleInitBean != null)
+    {
+      if (paramQCircleInitBean.isNeedShowGoHomeButton()) {
+        this.mRequest.isMiddlePage.set(true);
+      }
+      if ((paramQCircleInitBean.getSchemeAttrs() != null) && (paramQCircleInitBean.getSchemeAttrs().containsKey("key_scheme")))
+      {
+        paramString1 = (String)paramQCircleInitBean.getSchemeAttrs().get("key_scheme");
+        paramString2 = new QQCircleFeedBase.StMainPageBusiReqData();
+        if (paramString1 != null) {
+          paramString2.entrySchema.set(paramString1);
+        }
+        this.mRequest.busiReqData.set(ByteStringMicro.copyFrom(paramString2.toByteArray()));
+      }
+    }
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudRead.StGetMainPageRsp localStGetMainPageRsp = new FeedCloudRead.StGetMainPageRsp();
-    localStGetMainPageRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStGetMainPageRsp.mergeFrom(paramArrayOfByte);
+      return localStGetMainPageRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStGetMainPageRsp;
   }
   
@@ -44,14 +74,14 @@ public class QCircleGetMainPageRequest
     return "FeedCloudSvr.trpc.feedcloud.commreader.ComReader.GetMainpage";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mRequest.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest
  * JD-Core Version:    0.7.0.1
  */

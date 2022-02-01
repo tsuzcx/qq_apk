@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:id="@id/bpb" android:background="@color/c" android:paddingTop="@dimen/iq" android:paddingBottom="@dimen/iq" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/buh" style="@style/hv" />
+    <include layout="@layout/buh" style="@style/hv" />
+    <include layout="@layout/buh" style="@style/hv" />
+    <include layout="@layout/buh" style="@style/hv" />
+    <include layout="@layout/buh" style="@style/hv" />
+</LinearLayout>

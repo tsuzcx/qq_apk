@@ -36,31 +36,36 @@ class NoGenericTypeParametersValidator
   
   private void validateNoTypeParameterOnType(Type paramType, List<Throwable> paramList)
   {
-    if ((paramType instanceof TypeVariable)) {
-      paramList.add(new Exception("Method " + this.method.getName() + "() contains unresolved type variable " + paramType));
-    }
-    do
+    if ((paramType instanceof TypeVariable))
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Method ");
+      localStringBuilder.append(this.method.getName());
+      localStringBuilder.append("() contains unresolved type variable ");
+      localStringBuilder.append(paramType);
+      paramList.add(new Exception(localStringBuilder.toString()));
       return;
-      if ((paramType instanceof ParameterizedType))
-      {
-        validateNoTypeParameterOnParameterizedType((ParameterizedType)paramType, paramList);
-        return;
-      }
-      if ((paramType instanceof WildcardType))
-      {
-        validateNoTypeParameterOnWildcardType((WildcardType)paramType, paramList);
-        return;
-      }
-    } while (!(paramType instanceof GenericArrayType));
-    validateNoTypeParameterOnGenericArrayType((GenericArrayType)paramType, paramList);
+    }
+    if ((paramType instanceof ParameterizedType))
+    {
+      validateNoTypeParameterOnParameterizedType((ParameterizedType)paramType, paramList);
+      return;
+    }
+    if ((paramType instanceof WildcardType))
+    {
+      validateNoTypeParameterOnWildcardType((WildcardType)paramType, paramList);
+      return;
+    }
+    if ((paramType instanceof GenericArrayType)) {
+      validateNoTypeParameterOnGenericArrayType((GenericArrayType)paramType, paramList);
+    }
   }
   
   private void validateNoTypeParameterOnWildcardType(WildcardType paramWildcardType, List<Throwable> paramList)
   {
-    int j = 0;
     Type[] arrayOfType = paramWildcardType.getUpperBounds();
     int k = arrayOfType.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -91,7 +96,7 @@ class NoGenericTypeParametersValidator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.model.NoGenericTypeParametersValidator
  * JD-Core Version:    0.7.0.1
  */

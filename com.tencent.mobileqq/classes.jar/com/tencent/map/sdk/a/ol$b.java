@@ -29,7 +29,9 @@ public final class ol$b
       return null;
     }
     os.a locala = os.a("DispatchUtil");
-    new StringBuilder("dispatchHandler:").append(this.c).toString();
+    StringBuilder localStringBuilder = new StringBuilder("dispatchHandler:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.toString();
     locala.a();
     paramc = new ol.b.a(this, this.c, paramc, locale);
     paramc.a(new ol.b.b(this, paramc));
@@ -44,7 +46,9 @@ public final class ol$b
     try
     {
       os.a locala = os.a("DispatchUtil");
-      new StringBuilder("prepared:").append(this.a).toString();
+      StringBuilder localStringBuilder = new StringBuilder("prepared:");
+      localStringBuilder.append(this.a);
+      localStringBuilder.toString();
       locala.a();
       if ((!this.a) && (!this.b))
       {
@@ -72,7 +76,9 @@ public final class ol$b
         ol.b.a locala = (ol.b.a)localIterator.next();
         locala.g = this.c;
         os.a locala1 = os.a("DispatchUtil");
-        new StringBuilder("to active:").append(locala.j).toString();
+        StringBuilder localStringBuilder = new StringBuilder("to active:");
+        localStringBuilder.append(locala.j);
+        localStringBuilder.toString();
         locala1.a();
         if (!locala.j) {
           locala.b(locala.d);
@@ -84,7 +90,7 @@ public final class ol$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ol.b
  * JD-Core Version:    0.7.0.1
  */

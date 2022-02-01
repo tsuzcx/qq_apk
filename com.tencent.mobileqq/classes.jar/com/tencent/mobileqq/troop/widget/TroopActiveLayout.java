@@ -2,6 +2,7 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -11,15 +12,17 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import azkz;
-import bdfz;
 import com.tencent.commonsdk.cache.Sizeable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.theme.ThemeConstants;
+import com.tencent.mobileqq.utils.CommonImageCacheHelper;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,22 +31,22 @@ public class TroopActiveLayout
   extends View
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842179, 2130842180, 2130842180, 2130842181, 2130842182, 2130842183 };
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private TroopActiveLayout.SizeableBitmapCache jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 10;
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private ArrayList<Bitmap> jdField_b_of_type_JavaUtilArrayList;
-  private int c;
-  private volatile int d = 0;
+  private static final int[] a = { 2130843576, 2130843577, 2130843577, 2130843578, 2130843579, 2130843580 };
+  private Context b;
+  private Handler c;
+  private Handler d;
+  private int e = 0;
+  private int f = 10;
+  private int g;
+  private volatile int h = 0;
+  private TroopActiveLayout.SizeableBitmapCache i;
+  private volatile ArrayList<Bitmap> j;
+  private final Object k = new Object();
+  private Paint l;
+  private ArrayList<Bitmap> m;
+  private Rect n;
+  private RectF o;
+  private boolean p;
   
   public TroopActiveLayout(Context paramContext)
   {
@@ -58,74 +61,351 @@ public class TroopActiveLayout
   public TroopActiveLayout(Context arg1, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(???, paramAttributeSet, paramInt);
-    Sizeable localSizeable = bdfz.a("TroopActiveLayout_cache");
+    Sizeable localSizeable = CommonImageCacheHelper.b("TroopActiveLayout_cache");
     paramAttributeSet = localSizeable;
     if (!(localSizeable instanceof TroopActiveLayout.SizeableBitmapCache))
     {
       paramAttributeSet = new TroopActiveLayout.SizeableBitmapCache(41702);
-      bdfz.a("TroopActiveLayout_cache", paramAttributeSet);
+      CommonImageCacheHelper.a("TroopActiveLayout_cache", paramAttributeSet);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = ???;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.i = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
+    this.b = ???;
+    this.c = new Handler(this);
+    synchronized (this.k)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
-      this.c = azkz.a(3.0F);
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-      setHotLevel(this.d);
-      this.jdField_a_of_type_Boolean = "1103".equals(ThemeUtil.getCurrentThemeId());
+      this.j = new ArrayList(this.f / 2 + 1);
+      this.g = ScreenUtil.dip2px(3.0F);
+      this.m = new ArrayList(this.f / 2 + 1);
+      this.d = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
+      this.l = new Paint();
+      this.l.setAntiAlias(true);
+      this.n = new Rect();
+      this.o = new RectF();
+      setHotLevel(this.h);
+      this.p = "1103".equals(ThemeUtil.getCurrentThemeId());
       return;
     }
   }
   
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt2 > paramInt3) {
-      throw new IllegalArgumentException(String.format("getValueWithLimit min value %s is greater than max value %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+    if (paramInt2 <= paramInt3) {
+      return Math.min(Math.max(paramInt1, paramInt2), paramInt3);
     }
-    return Math.min(Math.max(paramInt1, paramInt2), paramInt3);
+    throw new IllegalArgumentException(String.format("getValueWithLimit min value %s is greater than max value %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
   }
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    int i = View.MeasureSpec.getMode(paramInt);
+    int i3 = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    switch (i)
+    int i2 = 0;
+    int i1 = 0;
+    if ((i3 != -2147483648) && (i3 != 0))
     {
-    default: 
-      return 0;
-    case 0: 
-    case -2147483648: 
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (i3 != 1073741824) {
+        return 0;
+      }
+    }
+    else {
+      this.m.clear();
+    }
+    synchronized (this.k)
+    {
+      this.m.addAll(this.j);
+      if (paramBoolean)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-        if (!paramBoolean) {
-          break label164;
-        }
-        i = this.jdField_b_of_type_JavaUtilArrayList.size();
-        if (i <= 0) {
+        i2 = this.m.size();
+        if (i2 <= 0) {
           return paramInt;
         }
+        ??? = this.m.iterator();
+        paramInt = i1;
+        while (((Iterator)???).hasNext()) {
+          paramInt += ((Bitmap)((Iterator)???).next()).getWidth();
+        }
+        paramInt += (i2 - 1) * this.g;
+        i1 = getPaddingLeft();
+        i2 = getPaddingRight();
       }
-      ??? = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      for (paramInt = 0; ((Iterator)???).hasNext(); paramInt = ((Bitmap)((Iterator)???).next()).getWidth() + paramInt) {}
-      return (i - 1) * this.c + paramInt + (getPaddingLeft() + getPaddingRight());
-      label164:
-      ??? = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      for (paramInt = 0; ((Iterator)???).hasNext(); paramInt = Math.max(paramInt, ((Bitmap)((Iterator)???).next()).getHeight())) {}
-      return getPaddingTop() + getPaddingBottom() + paramInt;
+      else
+      {
+        ??? = this.m.iterator();
+        for (paramInt = i2; ((Iterator)???).hasNext(); paramInt = Math.max(paramInt, ((Bitmap)((Iterator)???).next()).getHeight())) {}
+        i1 = getPaddingTop();
+        i2 = getPaddingBottom();
+      }
+      paramInt = i1 + i2 + paramInt;
+      return paramInt;
     }
-    return paramInt;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
-  private Bitmap a(int paramInt)
+  private Bitmap a(@NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2)
+  {
+    Bitmap localBitmap2 = null;
+    Bitmap localBitmap1 = localBitmap2;
+    try
+    {
+      Paint localPaint = new Paint();
+      localBitmap1 = localBitmap2;
+      localPaint.setAntiAlias(true);
+      localBitmap1 = localBitmap2;
+      localBitmap2 = Bitmap.createBitmap(paramBitmap1.getWidth(), paramBitmap1.getHeight(), Bitmap.Config.ARGB_8888);
+      localBitmap1 = localBitmap2;
+      Canvas localCanvas = new Canvas(localBitmap2);
+      localBitmap1 = localBitmap2;
+      localCanvas.drawBitmap(paramBitmap1, new Rect(0, 0, paramBitmap1.getWidth() / 2, paramBitmap1.getHeight()), new Rect(0, 0, paramBitmap1.getWidth() / 2, paramBitmap1.getHeight()), localPaint);
+      localBitmap1 = localBitmap2;
+      localCanvas.drawBitmap(paramBitmap2, new Rect(paramBitmap2.getWidth() / 2, 0, paramBitmap2.getWidth(), paramBitmap2.getHeight()), new Rect(paramBitmap1.getWidth() / 2, 0, paramBitmap1.getWidth(), paramBitmap1.getHeight()), localPaint);
+      return localBitmap2;
+    }
+    catch (Throwable paramBitmap1)
+    {
+      QLog.e("TroopActiveLayout", 1, paramBitmap1, new Object[0]);
+    }
+    return localBitmap1;
+  }
+  
+  private Bitmap[] a(int paramInt)
+  {
+    int i4 = getIconSize();
+    Object localObject1 = this.i;
+    int i3 = 0;
+    int i2 = 0;
+    localObject1 = (Bitmap)((TroopActiveLayout.SizeableBitmapCache)localObject1).get(Integer.valueOf(0));
+    int i1;
+    if (paramInt % 2 == 1) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    Bitmap localBitmap;
+    Object localObject2;
+    if (i1 != 0)
+    {
+      localBitmap = (Bitmap)this.i.get(Integer.valueOf(paramInt));
+      localObject2 = (Bitmap)this.i.get(Integer.valueOf(paramInt - 1));
+      if ((localBitmap != null) && (localObject2 != null))
+      {
+        i1 = paramInt / 2;
+        Bitmap[] arrayOfBitmap = new Bitmap[i4];
+        paramInt = i2;
+        while (paramInt < i1)
+        {
+          arrayOfBitmap[paramInt] = localObject2;
+          paramInt += 1;
+        }
+        arrayOfBitmap[i1] = localBitmap;
+        paramInt = i1 + 1;
+        while (paramInt < i4)
+        {
+          arrayOfBitmap[paramInt] = localObject1;
+          paramInt += 1;
+        }
+        return arrayOfBitmap;
+      }
+    }
+    else
+    {
+      localBitmap = (Bitmap)this.i.get(Integer.valueOf(paramInt));
+      if (localBitmap != null)
+      {
+        i2 = paramInt / 2;
+        localObject2 = new Bitmap[i4];
+        paramInt = i3;
+        for (;;)
+        {
+          i1 = i2;
+          if (paramInt >= i2) {
+            break;
+          }
+          localObject2[paramInt] = localBitmap;
+          paramInt += 1;
+        }
+        while (i1 < i4)
+        {
+          localObject2[i1] = localObject1;
+          i1 += 1;
+        }
+        return localObject2;
+      }
+    }
+    return null;
+  }
+  
+  private void b(int paramInt)
+  {
+    Bitmap[] arrayOfBitmap = a(paramInt);
+    int i1 = 0;
+    if (arrayOfBitmap == null)
+    {
+      ??? = this.d;
+      ((Handler)???).sendMessage(Message.obtain((Handler)???, 102, paramInt, 0));
+      return;
+    }
+    synchronized (this.k)
+    {
+      this.j.clear();
+      int i2 = arrayOfBitmap.length;
+      paramInt = i1;
+      if (paramInt < i2)
+      {
+        Bitmap localBitmap = arrayOfBitmap[paramInt];
+        if (localBitmap != null) {
+          this.j.add(localBitmap);
+        }
+      }
+      else
+      {
+        requestLayout();
+        invalidate();
+        return;
+      }
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    Looper.myLooper();
+    Looper.getMainLooper();
+    int i5 = 1;
+    if (paramInt % 2 == 1) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    if (i2 != 0) {
+      i1 = paramInt - 1;
+    } else {
+      i1 = paramInt;
+    }
+    int i3 = i1;
+    if (i1 == 0) {
+      i3 = 2;
+    }
+    int i4;
+    if (i2 != 0) {
+      i4 = paramInt;
+    } else {
+      i4 = paramInt + 1;
+    }
+    if (!this.i.containsKey(Integer.valueOf(0)))
+    {
+      localObject1 = d(a[0]);
+      if (localObject1 != null)
+      {
+        this.i.put(Integer.valueOf(0), localObject1);
+      }
+      else
+      {
+        i1 = 1;
+        localObject2 = localObject1;
+        break label141;
+      }
+    }
+    else
+    {
+      localObject1 = (Bitmap)this.i.get(Integer.valueOf(0));
+    }
+    int i1 = 0;
+    Object localObject2 = localObject1;
+    label141:
+    Bitmap localBitmap = null;
+    int i2 = i1;
+    Object localObject1 = localBitmap;
+    if (i3 >= this.e)
+    {
+      i2 = i1;
+      localObject1 = localBitmap;
+      if (i3 <= this.f) {
+        if (!this.i.containsKey(Integer.valueOf(i3)))
+        {
+          int i6 = paramInt / 2;
+          if (i6 <= 0)
+          {
+            i2 = 1;
+          }
+          else
+          {
+            localObject1 = a;
+            i2 = i6;
+            if (i6 >= localObject1.length) {
+              i2 = localObject1.length - 1;
+            }
+          }
+          localObject1 = d(a[i2]);
+          if (localObject1 != null)
+          {
+            this.i.put(Integer.valueOf(i3), localObject1);
+            i2 = i1;
+          }
+          else
+          {
+            i2 = 1;
+          }
+        }
+        else
+        {
+          localObject1 = (Bitmap)this.i.get(Integer.valueOf(i3));
+          i2 = i1;
+        }
+      }
+    }
+    i1 = i2;
+    if (localObject2 != null)
+    {
+      i1 = i2;
+      if (localObject1 != null)
+      {
+        i1 = i2;
+        if (i4 >= this.e)
+        {
+          i1 = i2;
+          if (i4 <= this.f) {
+            if (!this.i.containsKey(Integer.valueOf(i4)))
+            {
+              localBitmap = a((Bitmap)localObject1, localObject2);
+              if (localBitmap != null)
+              {
+                this.i.put(Integer.valueOf(i4), localBitmap);
+                i1 = i2;
+              }
+              else
+              {
+                i1 = 1;
+              }
+            }
+            else
+            {
+              localBitmap = (Bitmap)this.i.get(Integer.valueOf(i4));
+              i1 = i2;
+            }
+          }
+        }
+      }
+    }
+    if ((localObject2 == null) && (localObject1 == null)) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    if ((i1 == 0) && (i2 == 0)) {
+      i1 = i5;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0)
+    {
+      localObject1 = this.c;
+      ((Handler)localObject1).sendMessage(Message.obtain((Handler)localObject1, 101, paramInt, 0));
+    }
+  }
+  
+  private Bitmap d(int paramInt)
   {
     try
     {
@@ -139,424 +419,112 @@ public class TroopActiveLayout
     return null;
   }
   
-  /* Error */
-  private Bitmap a(@android.support.annotation.NonNull Bitmap paramBitmap1, @android.support.annotation.NonNull Bitmap paramBitmap2)
+  public int getHotLevel()
   {
-    // Byte code:
-    //   0: new 110	android/graphics/Paint
-    //   3: dup
-    //   4: invokespecial 111	android/graphics/Paint:<init>	()V
-    //   7: astore 4
-    //   9: aload 4
-    //   11: iconst_1
-    //   12: invokevirtual 117	android/graphics/Paint:setAntiAlias	(Z)V
-    //   15: aload_1
-    //   16: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   19: aload_1
-    //   20: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   23: getstatic 259	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   26: invokestatic 263	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   29: astore_3
-    //   30: new 265	android/graphics/Canvas
-    //   33: dup
-    //   34: aload_3
-    //   35: invokespecial 268	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   38: astore 5
-    //   40: aload 5
-    //   42: aload_1
-    //   43: new 119	android/graphics/Rect
-    //   46: dup
-    //   47: iconst_0
-    //   48: iconst_0
-    //   49: aload_1
-    //   50: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   53: iconst_2
-    //   54: idiv
-    //   55: aload_1
-    //   56: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   59: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   62: new 119	android/graphics/Rect
-    //   65: dup
-    //   66: iconst_0
-    //   67: iconst_0
-    //   68: aload_1
-    //   69: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   72: iconst_2
-    //   73: idiv
-    //   74: aload_1
-    //   75: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   78: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   81: aload 4
-    //   83: invokevirtual 275	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   86: aload 5
-    //   88: aload_2
-    //   89: new 119	android/graphics/Rect
-    //   92: dup
-    //   93: aload_2
-    //   94: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   97: iconst_2
-    //   98: idiv
-    //   99: iconst_0
-    //   100: aload_2
-    //   101: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   104: aload_2
-    //   105: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   108: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   111: new 119	android/graphics/Rect
-    //   114: dup
-    //   115: aload_1
-    //   116: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   119: iconst_2
-    //   120: idiv
-    //   121: iconst_0
-    //   122: aload_1
-    //   123: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
-    //   126: aload_1
-    //   127: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   130: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   133: aload 4
-    //   135: invokevirtual 275	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   138: aload_3
-    //   139: areturn
-    //   140: astore_1
-    //   141: aconst_null
-    //   142: astore_3
-    //   143: ldc 243
-    //   145: iconst_1
-    //   146: aload_1
-    //   147: iconst_0
-    //   148: anewarray 45	java/lang/Object
-    //   151: invokestatic 249	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   154: aload_3
-    //   155: areturn
-    //   156: astore_1
-    //   157: goto -14 -> 143
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	160	0	this	TroopActiveLayout
-    //   0	160	1	paramBitmap1	Bitmap
-    //   0	160	2	paramBitmap2	Bitmap
-    //   29	126	3	localBitmap	Bitmap
-    //   7	127	4	localPaint	Paint
-    //   38	49	5	localCanvas	Canvas
-    // Exception table:
-    //   from	to	target	type
-    //   0	30	140	java/lang/Throwable
-    //   30	138	156	java/lang/Throwable
+    return this.h;
   }
   
-  private void a(int paramInt)
+  public int getIconSize()
   {
-    int i = 0;
-    Bitmap[] arrayOfBitmap = a(paramInt);
-    if (arrayOfBitmap == null)
-    {
-      this.jdField_b_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 102, paramInt, 0));
-      return;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        int j = arrayOfBitmap.length;
-        paramInt = i;
-        if (paramInt < j)
-        {
-          Bitmap localBitmap = arrayOfBitmap[paramInt];
-          if (localBitmap != null) {
-            this.jdField_a_of_type_JavaUtilArrayList.add(localBitmap);
-          }
-        }
-        else
-        {
-          requestLayout();
-          invalidate();
-          return;
-        }
-      }
-      paramInt += 1;
-    }
-  }
-  
-  private Bitmap[] a(int paramInt)
-  {
-    int i = 1;
-    int k = 0;
-    int j = 0;
-    int m = a();
-    Bitmap localBitmap1 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(0));
-    if (paramInt % 2 == 1) {}
-    Object localObject;
-    while (i != 0)
-    {
-      localBitmap2 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(paramInt));
-      localObject = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(paramInt - 1));
-      if ((localBitmap2 == null) || (localObject == null)) {
-        break label229;
-      }
-      i = paramInt / 2;
-      Bitmap[] arrayOfBitmap = new Bitmap[m];
-      paramInt = j;
-      for (;;)
-      {
-        if (paramInt < i)
-        {
-          arrayOfBitmap[paramInt] = localObject;
-          paramInt += 1;
-          continue;
-          i = 0;
-          break;
-        }
-      }
-      arrayOfBitmap[i] = localBitmap2;
-      paramInt = i + 1;
-      while (paramInt < m)
-      {
-        arrayOfBitmap[paramInt] = localBitmap1;
-        paramInt += 1;
-      }
-      return arrayOfBitmap;
-    }
-    Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(paramInt));
-    if (localBitmap2 != null)
-    {
-      i = paramInt / 2;
-      localObject = new Bitmap[m];
-      paramInt = k;
-      while (paramInt < i)
-      {
-        localObject[paramInt] = localBitmap2;
-        paramInt += 1;
-      }
-      paramInt = i;
-      while (paramInt < m)
-      {
-        localObject[paramInt] = localBitmap1;
-        paramInt += 1;
-      }
-      return localObject;
-    }
-    label229:
-    return null;
-  }
-  
-  private void b(int paramInt)
-  {
-    int n = 1;
-    int j;
-    int i;
-    if ((Looper.myLooper() != Looper.getMainLooper()) || (paramInt % 2 == 1))
-    {
-      j = 1;
-      if (j == 0) {
-        break label290;
-      }
-      i = paramInt - 1;
-      label29:
-      if (i != 0) {
-        break label420;
-      }
-    }
-    label134:
-    label290:
-    label420:
-    for (int k = 2;; k = i)
-    {
-      int m;
-      label43:
-      Bitmap localBitmap1;
-      label89:
-      int i1;
-      Bitmap localBitmap2;
-      if (j != 0)
-      {
-        m = paramInt;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.containsKey(Integer.valueOf(0))) {
-          break label308;
-        }
-        localBitmap1 = a(jdField_a_of_type_ArrayOfInt[0]);
-        if (localBitmap1 == null) {
-          break label303;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.put(Integer.valueOf(0), localBitmap1);
-        i = 0;
-        if ((k < this.jdField_a_of_type_Int) || (k > this.jdField_b_of_type_Int)) {
-          break label414;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.containsKey(Integer.valueOf(k))) {
-          break label356;
-        }
-        i1 = paramInt / 2;
-        if (i1 > 0) {
-          break label329;
-        }
-        j = 1;
-        localBitmap2 = a(jdField_a_of_type_ArrayOfInt[j]);
-        if (localBitmap2 == null) {
-          break label351;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.put(Integer.valueOf(k), localBitmap2);
-      }
-      for (;;)
-      {
-        label165:
-        Bitmap localBitmap3;
-        if ((localBitmap1 != null) && (localBitmap2 != null) && (m >= this.jdField_a_of_type_Int) && (m <= this.jdField_b_of_type_Int)) {
-          if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.containsKey(Integer.valueOf(m)))
-          {
-            localBitmap3 = a(localBitmap2, localBitmap1);
-            if (localBitmap3 != null) {
-              this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.put(Integer.valueOf(m), localBitmap3);
-            }
-          }
-        }
-        for (;;)
-        {
-          label238:
-          if ((localBitmap1 == null) && (localBitmap2 == null))
-          {
-            j = 1;
-            label250:
-            if ((i != 0) || (j != 0)) {
-              break label406;
-            }
-          }
-          for (i = n;; i = 0)
-          {
-            if (i != 0) {
-              this.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 101, paramInt, 0));
-            }
-            return;
-            j = 0;
-            break;
-            i = paramInt;
-            break label29;
-            m = paramInt + 1;
-            break label43;
-            label303:
-            i = 1;
-            break label89;
-            label308:
-            localBitmap1 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(0));
-            i = 0;
-            break label89;
-            label329:
-            j = i1;
-            if (i1 < jdField_a_of_type_ArrayOfInt.length) {
-              break label134;
-            }
-            j = jdField_a_of_type_ArrayOfInt.length - 1;
-            break label134;
-            label351:
-            i = 1;
-            break label165;
-            label356:
-            localBitmap2 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(k));
-            break label165;
-            i = 1;
-            break label238;
-            localBitmap3 = (Bitmap)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache.get(Integer.valueOf(m));
-            break label238;
-            j = 0;
-            break label250;
-          }
-        }
-        localBitmap2 = null;
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return (this.jdField_b_of_type_Int + 1) / 2;
+    return (this.f + 1) / 2;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i1 = paramMessage.what;
+    if (i1 != 101)
     {
+      if (i1 == 102) {
+        c(paramMessage.arg1);
+      }
     }
-    for (;;)
-    {
-      return false;
-      a(paramMessage.arg1);
-      continue;
+    else {
       b(paramMessage.arg1);
     }
+    return false;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int n = getWidth();
-    int i = getHeight();
-    int k = getPaddingLeft();
-    int i1 = getPaddingRight();
-    int m = getPaddingTop();
-    int j = getPaddingBottom();
-    k = a(k, 0, n);
-    n = a(n - i1, 0, n);
-    m = a(m, 0, i);
-    i = a(i - j, 0, i);
-    k = n - k;
-    j = i - m;
-    if ((k <= 0) || (j <= 0)) {
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    label496:
-    for (;;)
+    int i5 = getWidth();
+    int i1 = getHeight();
+    int i3 = getPaddingLeft();
+    int i6 = getPaddingRight();
+    int i4 = getPaddingTop();
+    int i2 = getPaddingBottom();
+    i3 = a(i3, 0, i5);
+    i5 = a(i5 - i6, 0, i5);
+    i4 = a(i4, 0, i1);
+    i1 = a(i1 - i2, 0, i1);
+    i2 = i5 - i3;
+    i1 -= i4;
+    if (i2 > 0)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-        i = this.jdField_b_of_type_JavaUtilArrayList.size();
-        if (i <= 0) {
-          break;
-        }
-        k = (k - this.c * (i - 1)) / i;
-        if (k <= 0) {
-          break;
-        }
-        float f1 = j / k;
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
-        }
-        ??? = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        i = 0;
-        if (!((Iterator)???).hasNext()) {
-          break;
-        }
-        Bitmap localBitmap = (Bitmap)((Iterator)???).next();
-        if (localBitmap == null) {
-          break label496;
-        }
-        m = localBitmap.getHeight();
-        n = localBitmap.getWidth();
-        f3 = m / n;
-        this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-        this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
-        this.jdField_a_of_type_AndroidGraphicsRect.right = localBitmap.getWidth();
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = localBitmap.getHeight();
-        if (f1 > f3)
-        {
-          f2 = f3 * k;
-          f3 = k;
-          this.jdField_a_of_type_AndroidGraphicsRectF.left = i;
-          this.jdField_a_of_type_AndroidGraphicsRectF.top = ((j - f2) / 2.0F);
-          this.jdField_a_of_type_AndroidGraphicsRectF.right = (f3 + i);
-          this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j - (j - f2) / 2.0F);
-          paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-          i = this.c + k + i;
-        }
+      if (i1 <= 0) {
+        return;
       }
-      float f2 = j;
-      float f3 = j / f3;
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (i + (k - f3) / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (i + k - (k - f3) / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f2;
+      this.m.clear();
+      synchronized (this.k)
+      {
+        this.m.addAll(this.j);
+        i3 = this.m.size();
+        if (i3 <= 0) {
+          return;
+        }
+        i2 = (i2 - this.g * (i3 - 1)) / i3;
+        if (i2 <= 0) {
+          return;
+        }
+        float f1 = i1;
+        float f2 = i2;
+        float f3 = f1 / f2;
+        if (this.p) {
+          this.l.setColorFilter(ThemeConstants.NIGHTMODE_COLORFILTER);
+        }
+        ??? = this.m.iterator();
+        i1 = 0;
+        while (((Iterator)???).hasNext())
+        {
+          Bitmap localBitmap = (Bitmap)((Iterator)???).next();
+          if (localBitmap != null)
+          {
+            i3 = localBitmap.getHeight();
+            i4 = localBitmap.getWidth();
+            float f5 = i3 / i4;
+            Object localObject2 = this.n;
+            ((Rect)localObject2).left = 0;
+            ((Rect)localObject2).top = 0;
+            ((Rect)localObject2).right = localBitmap.getWidth();
+            this.n.bottom = localBitmap.getHeight();
+            float f4;
+            if (f3 > f5)
+            {
+              localObject2 = this.o;
+              f4 = i1;
+              ((RectF)localObject2).left = f4;
+              f5 = (f1 - f5 * f2) / 2.0F;
+              ((RectF)localObject2).top = f5;
+              ((RectF)localObject2).right = (f4 + f2);
+              ((RectF)localObject2).bottom = (f1 - f5);
+            }
+            else
+            {
+              f5 = f1 / f5;
+              localObject2 = this.o;
+              f4 = i1;
+              f5 = (f2 - f5) / 2.0F;
+              ((RectF)localObject2).left = (f4 + f5);
+              ((RectF)localObject2).top = 0.0F;
+              ((RectF)localObject2).right = (i1 + i2 - f5);
+              ((RectF)localObject2).bottom = f1;
+            }
+            paramCanvas.drawBitmap(localBitmap, this.n, this.o, this.l);
+            i1 += this.g + i2;
+          }
+        }
+        return;
+      }
     }
   }
   
@@ -568,16 +536,19 @@ public class TroopActiveLayout
   
   public void setHotLevel(int paramInt)
   {
-    if ((paramInt < this.jdField_a_of_type_Int) || (paramInt > this.jdField_b_of_type_Int)) {
-      throw new IllegalArgumentException(String.format("setHotLevel error, level[%s] is out of range", new Object[] { Integer.valueOf(paramInt) }));
+    if ((paramInt >= this.e) && (paramInt <= this.f))
+    {
+      this.h = paramInt;
+      Handler localHandler = this.c;
+      localHandler.sendMessage(Message.obtain(localHandler, 101, paramInt, 0));
+      return;
     }
-    this.d = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 101, paramInt, 0));
+    throw new IllegalArgumentException(String.format("setHotLevel error, level[%s] is out of range", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopActiveLayout
  * JD-Core Version:    0.7.0.1
  */

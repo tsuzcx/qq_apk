@@ -22,7 +22,7 @@ public class MatrixCursor
   
   public MatrixCursor(String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(12175);
+    AppMethodBeat.i(2856);
     this.rowCount = 0;
     this.columnNames = paramArrayOfString;
     this.columnCount = paramArrayOfString.length;
@@ -31,17 +31,17 @@ public class MatrixCursor
       i = 1;
     }
     this.data = new Object[this.columnCount * i];
-    AppMethodBeat.o(12175);
+    AppMethodBeat.o(2856);
   }
   
   private void addRow(ArrayList<?> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(12180);
+    AppMethodBeat.i(2861);
     int j = paramArrayList.size();
     if (j != this.columnCount)
     {
       paramArrayList = new IllegalArgumentException("columnNames.length = " + this.columnCount + ", columnValues.size() = " + j);
-      AppMethodBeat.o(12180);
+      AppMethodBeat.o(2861);
       throw paramArrayList;
     }
     this.rowCount += 1;
@@ -52,12 +52,12 @@ public class MatrixCursor
       arrayOfObject[(paramInt + i)] = paramArrayList.get(i);
       i += 1;
     }
-    AppMethodBeat.o(12180);
+    AppMethodBeat.o(2861);
   }
   
   private void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(12181);
+    AppMethodBeat.i(2862);
     Object[] arrayOfObject;
     int i;
     if (paramInt > this.data.length)
@@ -72,7 +72,7 @@ public class MatrixCursor
     {
       this.data = new Object[paramInt];
       System.arraycopy(arrayOfObject, 0, this.data, 0, arrayOfObject.length);
-      AppMethodBeat.o(12181);
+      AppMethodBeat.o(2862);
       return;
       label60:
       paramInt = i;
@@ -81,40 +81,40 @@ public class MatrixCursor
   
   private Object get(int paramInt)
   {
-    AppMethodBeat.i(12176);
+    AppMethodBeat.i(2857);
     if ((paramInt < 0) || (paramInt >= this.columnCount))
     {
       localObject = new CursorIndexOutOfBoundsException("Requested column: " + paramInt + ", # of columns: " + this.columnCount);
-      AppMethodBeat.o(12176);
+      AppMethodBeat.o(2857);
       throw ((Throwable)localObject);
     }
     if (this.mPos < 0)
     {
       localObject = new CursorIndexOutOfBoundsException("Before first row.");
-      AppMethodBeat.o(12176);
+      AppMethodBeat.o(2857);
       throw ((Throwable)localObject);
     }
     if (this.mPos >= this.rowCount)
     {
       localObject = new CursorIndexOutOfBoundsException("After last row.");
-      AppMethodBeat.o(12176);
+      AppMethodBeat.o(2857);
       throw ((Throwable)localObject);
     }
     Object localObject = this.data[(this.mPos * this.columnCount + paramInt)];
-    AppMethodBeat.o(12176);
+    AppMethodBeat.o(2857);
     return localObject;
   }
   
   public void addRow(Iterable<?> paramIterable)
   {
-    AppMethodBeat.i(12179);
+    AppMethodBeat.i(2860);
     int i = this.rowCount * this.columnCount;
     int j = i + this.columnCount;
     ensureCapacity(j);
     if ((paramIterable instanceof ArrayList))
     {
       addRow((ArrayList)paramIterable, i);
-      AppMethodBeat.o(12179);
+      AppMethodBeat.o(2860);
       return;
     }
     Object[] arrayOfObject = this.data;
@@ -125,7 +125,7 @@ public class MatrixCursor
       if (i == j)
       {
         paramIterable = new IllegalArgumentException("columnValues.size() > columnNames.length");
-        AppMethodBeat.o(12179);
+        AppMethodBeat.o(2860);
         throw paramIterable;
       }
       arrayOfObject[i] = localObject;
@@ -134,20 +134,20 @@ public class MatrixCursor
     if (i != j)
     {
       paramIterable = new IllegalArgumentException("columnValues.size() < columnNames.length");
-      AppMethodBeat.o(12179);
+      AppMethodBeat.o(2860);
       throw paramIterable;
     }
     this.rowCount += 1;
-    AppMethodBeat.o(12179);
+    AppMethodBeat.o(2860);
   }
   
   public void addRow(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(12178);
+    AppMethodBeat.i(2859);
     if (paramArrayOfObject.length != this.columnCount)
     {
       paramArrayOfObject = new IllegalArgumentException("columnNames.length = " + this.columnCount + ", columnValues.length = " + paramArrayOfObject.length);
-      AppMethodBeat.o(12178);
+      AppMethodBeat.o(2859);
       throw paramArrayOfObject;
     }
     int i = this.rowCount;
@@ -155,16 +155,16 @@ public class MatrixCursor
     i *= this.columnCount;
     ensureCapacity(this.columnCount + i);
     System.arraycopy(paramArrayOfObject, 0, this.data, i, this.columnCount);
-    AppMethodBeat.o(12178);
+    AppMethodBeat.o(2859);
   }
   
   public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
   public byte[] getBlob(int paramInt)
   {
-    AppMethodBeat.i(12188);
+    AppMethodBeat.i(2869);
     byte[] arrayOfByte = (byte[])get(paramInt);
-    AppMethodBeat.o(12188);
+    AppMethodBeat.o(2869);
     return arrayOfByte;
   }
   
@@ -180,146 +180,146 @@ public class MatrixCursor
   
   public double getDouble(int paramInt)
   {
-    AppMethodBeat.i(12187);
+    AppMethodBeat.i(2868);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12187);
+      AppMethodBeat.o(2868);
       return 0.0D;
     }
     if ((localObject instanceof Number))
     {
       d = ((Number)localObject).doubleValue();
-      AppMethodBeat.o(12187);
+      AppMethodBeat.o(2868);
       return d;
     }
     double d = Double.parseDouble(localObject.toString());
-    AppMethodBeat.o(12187);
+    AppMethodBeat.o(2868);
     return d;
   }
   
   public float getFloat(int paramInt)
   {
-    AppMethodBeat.i(12186);
+    AppMethodBeat.i(2867);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12186);
+      AppMethodBeat.o(2867);
       return 0.0F;
     }
     if ((localObject instanceof Number))
     {
       f = ((Number)localObject).floatValue();
-      AppMethodBeat.o(12186);
+      AppMethodBeat.o(2867);
       return f;
     }
     float f = Float.parseFloat(localObject.toString());
-    AppMethodBeat.o(12186);
+    AppMethodBeat.o(2867);
     return f;
   }
   
   public int getInt(int paramInt)
   {
-    AppMethodBeat.i(12184);
+    AppMethodBeat.i(2865);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12184);
+      AppMethodBeat.o(2865);
       return 0;
     }
     if ((localObject instanceof Number))
     {
       paramInt = ((Number)localObject).intValue();
-      AppMethodBeat.o(12184);
+      AppMethodBeat.o(2865);
       return paramInt;
     }
     paramInt = Integer.parseInt(localObject.toString());
-    AppMethodBeat.o(12184);
+    AppMethodBeat.o(2865);
     return paramInt;
   }
   
   public long getLong(int paramInt)
   {
-    AppMethodBeat.i(12185);
+    AppMethodBeat.i(2866);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12185);
+      AppMethodBeat.o(2866);
       return 0L;
     }
     if ((localObject instanceof Number))
     {
       l = ((Number)localObject).longValue();
-      AppMethodBeat.o(12185);
+      AppMethodBeat.o(2866);
       return l;
     }
     long l = Long.parseLong(localObject.toString());
-    AppMethodBeat.o(12185);
+    AppMethodBeat.o(2866);
     return l;
   }
   
   public short getShort(int paramInt)
   {
-    AppMethodBeat.i(12183);
+    AppMethodBeat.i(2864);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12183);
+      AppMethodBeat.o(2864);
       return 0;
     }
     if ((localObject instanceof Number))
     {
       s = ((Number)localObject).shortValue();
-      AppMethodBeat.o(12183);
+      AppMethodBeat.o(2864);
       return s;
     }
     short s = Short.parseShort(localObject.toString());
-    AppMethodBeat.o(12183);
+    AppMethodBeat.o(2864);
     return s;
   }
   
   public String getString(int paramInt)
   {
-    AppMethodBeat.i(12182);
+    AppMethodBeat.i(2863);
     Object localObject = get(paramInt);
     if (localObject == null)
     {
-      AppMethodBeat.o(12182);
+      AppMethodBeat.o(2863);
       return null;
     }
     localObject = localObject.toString();
-    AppMethodBeat.o(12182);
+    AppMethodBeat.o(2863);
     return localObject;
   }
   
   public int getType(int paramInt)
   {
-    AppMethodBeat.i(12189);
+    AppMethodBeat.i(2870);
     paramInt = DatabaseUtils.getTypeOfObject(get(paramInt));
-    AppMethodBeat.o(12189);
+    AppMethodBeat.o(2870);
     return paramInt;
   }
   
   public boolean isNull(int paramInt)
   {
-    AppMethodBeat.i(12190);
+    AppMethodBeat.i(2871);
     if (get(paramInt) == null)
     {
-      AppMethodBeat.o(12190);
+      AppMethodBeat.o(2871);
       return true;
     }
-    AppMethodBeat.o(12190);
+    AppMethodBeat.o(2871);
     return false;
   }
   
   public MatrixCursor.RowBuilder newRow()
   {
-    AppMethodBeat.i(12177);
+    AppMethodBeat.i(2858);
     this.rowCount += 1;
     int i = this.rowCount * this.columnCount;
     ensureCapacity(i);
     MatrixCursor.RowBuilder localRowBuilder = new MatrixCursor.RowBuilder(this, i - this.columnCount, i);
-    AppMethodBeat.o(12177);
+    AppMethodBeat.o(2858);
     return localRowBuilder;
   }
   
@@ -333,7 +333,7 @@ public class MatrixCursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.MatrixCursor
  * JD-Core Version:    0.7.0.1
  */

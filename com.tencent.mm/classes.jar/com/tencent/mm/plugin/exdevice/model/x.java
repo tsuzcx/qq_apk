@@ -1,98 +1,67 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.protocal.protobuf.cmd;
-import com.tencent.mm.protocal.protobuf.cme;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.evr;
+import com.tencent.mm.protocal.protobuf.evs;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class x
-  extends com.tencent.mm.ai.m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public auh lFz;
-  private com.tencent.mm.ai.b rr;
+  private h callback;
+  c rr;
   
-  public x(auh paramauh, int paramInt)
+  public x(String paramString)
   {
-    AppMethodBeat.i(19350);
-    this.lFz = paramauh;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cmd();
-    ((b.a)localObject).fsY = new cme();
-    ((b.a)localObject).funcId = 537;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/unbindharddevice";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cmd)this.rr.fsV.fta;
-    ((cmd)localObject).wvw = paramauh;
-    ((cmd)localObject).woE = paramInt;
-    AppMethodBeat.o(19350);
+    AppMethodBeat.i(23410);
+    this.callback = null;
+    this.rr = null;
+    c.a locala = new c.a();
+    locala.otE = new evr();
+    locala.otF = new evs();
+    locala.uri = "/cgi-bin/micromsg-bin/searchharddevice";
+    locala.funcId = 540;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((evr)c.b.b(this.rr.otB)).abyu = paramString;
+    AppMethodBeat.o(23410);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(19351);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(19351);
+    AppMethodBeat.i(23412);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(23412);
     return i;
   }
   
   public final int getType()
   {
-    return 537;
+    return 540;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19352);
-    ab.i("MicroMsg.exdevice.NetSceneUnBindHardDevice", "onGYNetEnd netId = %d, errType= %d, errCode = %d , errMsg =%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = i.lFf;
-    i.jf(0L);
-    paramq = ad.bpY().LI(this.lFz.jJD);
-    if (paramq != null)
-    {
-      if ((u.bqA().lCQ != null) && (!u.bqA().lCQ.jr(paramq.field_mac))) {
-        ab.e("MicroMsg.exdevice.NetSceneUnBindHardDevice", "stopChannel Failed!!!");
-      }
-      if (!ad.bpY().dW(this.lFz.jJD, this.lFz.wsq)) {
-        ab.e("MicroMsg.exdevice.NetSceneUnBindHardDevice", "deleteByDeviceId Failed!!!");
-      }
-      if ((paramInt2 != 0) || (paramInt3 != 0)) {
-        ab.e("MicroMsg.exdevice.NetSceneUnBindHardDevice", "scene.getType() = %s", new Object[] { Integer.valueOf(getType()) });
-      }
-      if ((this.rr == null) || (this.rr.fsW.fta == null)) {
-        break label258;
-      }
-    }
-    label258:
-    for (paramq = (cme)this.rr.fsW.fta;; paramq = null)
-    {
-      if (paramq == null) {
-        ab.e("MicroMsg.exdevice.NetSceneUnBindHardDevice", "UnbindHardDevice resp or req is null");
-      }
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(19352);
-      return;
-      ab.e("MicroMsg.exdevice.NetSceneUnBindHardDevice", "getByDeviceIdServer Failed!!! DeviceIDServer = %s", new Object[] { this.lFz.jJD });
-      break;
-    }
+    AppMethodBeat.i(23411);
+    Log.i("MicroMsg.exdevice.NetSceneSearchHardDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(23411);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/hje" android:background="@color/a72" android:layout_width="fill_parent" android:layout_height="14.0dip" />
+    <RelativeLayout android:id="@id/ida" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/dxe" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="9.5dip" android:src="@drawable/skin_my_story_video_take_video_no_bg" />
+        <TextView android:textSize="17.0dip" android:textColor="#ff000000" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/k_p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="20.0dip" android:singleLine="true" android:layout_toRightOf="@id/dxe" android:layout_alignTop="@id/dxe" android:layout_alignBottom="@id/dxe" />
+        <ImageView android:id="@id/had" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:src="@drawable/aug" android:layout_alignTop="@id/dxe" android:layout_alignParentRight="true" />
+        <com.tencent.biz.videostory.widget.view.CustomHorizontallyScrollRecyclerView android:id="@id/ebl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.5dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/dxe" />
+    </RelativeLayout>
+</LinearLayout>

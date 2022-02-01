@@ -1,53 +1,57 @@
 package com.tencent.feedback.eup;
 
 import android.content.Context;
+import android.os.Process;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public final class c
   implements Thread.UncaughtExceptionHandler
 {
-  private static c c = null;
+  private static c c;
   private Thread.UncaughtExceptionHandler a = null;
   private Context b = null;
   
   private c(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (paramContext != null)
     {
-      this.b = paramContext;
-      return;
       Context localContext = paramContext.getApplicationContext();
       if (localContext != null) {
         paramContext = localContext;
       }
     }
+    this.b = paramContext;
   }
   
-  private int a(List paramList, int paramInt, boolean paramBoolean)
+  private int a(List<e> paramList, int paramInt, boolean paramBoolean)
   {
     Context localContext = this.b;
-    if ((paramList == null) || (paramInt <= 0)) {
-      return 0;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Collections.sort(paramList, new b.2());
-    paramList = paramList.iterator();
-    while ((paramList.hasNext()) && (paramInt > localArrayList.size()))
+    if (paramList != null)
     {
-      e locale = (e)paramList.next();
-      if ((locale.b()) && (!paramBoolean)) {
-        break;
+      if (paramInt <= 0) {
+        return 0;
       }
-      localArrayList.add(locale);
-      paramList.remove();
-    }
-    if (localArrayList.size() > 0) {
-      return b.a(localContext, localArrayList);
+      ArrayList localArrayList = new ArrayList();
+      Collections.sort(paramList, new b.2());
+      paramList = paramList.iterator();
+      while ((paramList.hasNext()) && (paramInt > localArrayList.size()))
+      {
+        e locale = (e)paramList.next();
+        if ((locale.b()) && (!paramBoolean)) {
+          break;
+        }
+        localArrayList.add(locale);
+        paramList.remove();
+      }
+      if (localArrayList.size() > 0) {
+        return b.a(localContext, localArrayList);
+      }
     }
     return 0;
   }
@@ -65,52 +69,22 @@ public final class c
     finally {}
   }
   
-  /* Error */
   private void a(Thread paramThread, Throwable paramThrowable)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	com/tencent/feedback/eup/c:a	Ljava/lang/Thread$UncaughtExceptionHandler;
-    //   6: ifnull +27 -> 33
-    //   9: ldc 86
-    //   11: iconst_0
-    //   12: anewarray 4	java/lang/Object
-    //   15: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   18: pop
-    //   19: aload_0
-    //   20: getfield 23	com/tencent/feedback/eup/c:a	Ljava/lang/Thread$UncaughtExceptionHandler;
-    //   23: aload_1
-    //   24: aload_2
-    //   25: invokeinterface 94 3 0
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: return
-    //   33: ldc 96
-    //   35: iconst_0
-    //   36: anewarray 4	java/lang/Object
-    //   39: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   42: pop
-    //   43: invokestatic 101	android/os/Process:myPid	()I
-    //   46: invokestatic 105	android/os/Process:killProcess	(I)V
-    //   49: iconst_1
-    //   50: invokestatic 110	java/lang/System:exit	(I)V
-    //   53: goto -23 -> 30
-    //   56: astore_1
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_1
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	c
-    //   0	61	1	paramThread	Thread
-    //   0	61	2	paramThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   2	30	56	finally
-    //   33	53	56	finally
+    try
+    {
+      if (this.a != null)
+      {
+        com.tencent.feedback.common.e.b("rqdp{ sys crhandle!}", new Object[0]);
+        this.a.uncaughtException(paramThread, paramThrowable);
+        return;
+      }
+      com.tencent.feedback.common.e.b("rqdp{ kill!}", new Object[0]);
+      Process.killProcess(Process.myPid());
+      System.exit(1);
+      return;
+    }
+    finally {}
   }
   
   private static void c()
@@ -125,8 +99,9 @@ public final class c
     }
     catch (InterruptedException localInterruptedException)
     {
-      while (com.tencent.feedback.common.e.a(localInterruptedException)) {}
-      localInterruptedException.printStackTrace();
+      if (!com.tencent.feedback.common.e.a(localInterruptedException)) {
+        localInterruptedException.printStackTrace();
+      }
     }
   }
   
@@ -154,28 +129,25 @@ public final class c
       return false;
     }
     Object localObject1;
-    boolean bool;
     Object localObject3;
     if (paramCrashStrategyBean.isMerged())
     {
       localObject1 = this.b;
-      if (parame == null) {
-        localObject1 = null;
-      }
-      while (localObject1 != null)
+      if (parame == null) {}
+      for (;;)
       {
-        com.tencent.feedback.common.e.a("merge success return", new Object[0]);
-        if ((!((e)localObject1).w()) && (((e)localObject1).m() >= 2))
-        {
-          com.tencent.feedback.common.e.a("rqdp{ may be crash too frequent! do immediate upload in merge!}", new Object[0]);
-          c();
-        }
-        return true;
-        localObject2 = com.tencent.feedback.proguard.a.c((parame.P() + "\n" + parame.e() + "\n" + parame.h()).getBytes());
+        localObject1 = null;
+        break;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(parame.P());
+        ((StringBuilder)localObject2).append("\n");
+        ((StringBuilder)localObject2).append(parame.e());
+        ((StringBuilder)localObject2).append("\n");
+        ((StringBuilder)localObject2).append(parame.h());
+        localObject2 = com.tencent.feedback.proguard.a.c(((StringBuilder)localObject2).toString().getBytes());
         if (localObject2 == null)
         {
           com.tencent.feedback.common.e.c("rqdp{  md5 error!}", new Object[0]);
-          localObject1 = null;
         }
         else
         {
@@ -184,59 +156,76 @@ public final class c
           parame.b(1);
           parame.a(0);
           localObject2 = b.a((Context)localObject1, 1, "desc", -1, (String)localObject2, -1, -1, -1, -1, -1L, -1L, null);
-          if ((localObject2 == null) || (((List)localObject2).size() <= 0))
-          {
-            com.tencent.feedback.common.e.b("rqdp{  new one ,no merged!}", new Object[0]);
-            localObject1 = null;
-          }
-          else
+          if ((localObject2 != null) && (((List)localObject2).size() > 0))
           {
             localObject2 = (e)((List)localObject2).get(0);
-            if ((((e)localObject2).l() != null) && (((e)localObject2).l().contains(parame.i())))
+            if (((e)localObject2).l() != null)
             {
-              com.tencent.feedback.common.e.b("rqdp{ already merged} %d", new Object[] { Long.valueOf(parame.i()) });
-              localObject1 = localObject2;
+              localObject3 = ((e)localObject2).l();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(parame.i());
+              if (((String)localObject3).contains(localStringBuilder.toString()))
+              {
+                com.tencent.feedback.common.e.b("rqdp{ already merged} %d", new Object[] { Long.valueOf(parame.i()) });
+                localObject1 = localObject2;
+                break;
+              }
+            }
+            ((e)localObject2).b(((e)localObject2).m() + 1);
+            if (((e)localObject2).l() == null) {
+              ((e)localObject2).f("");
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(((e)localObject2).l());
+            ((StringBuilder)localObject3).append(parame.i());
+            ((StringBuilder)localObject3).append("\n");
+            ((e)localObject2).f(((StringBuilder)localObject3).toString());
+            com.tencent.feedback.common.e.b("rqdp{  EUPDAO.insertOrUpdateEUP() start}", new Object[0]);
+            if ((localObject1 != null) && (localObject2 != null))
+            {
+              localObject3 = new ArrayList();
+              ((List)localObject3).add(localObject2);
+              bool = b.b((Context)localObject1, (List)localObject3);
             }
             else
             {
-              ((e)localObject2).b(((e)localObject2).m() + 1);
-              if (((e)localObject2).l() == null) {
-                ((e)localObject2).f("");
-              }
-              ((e)localObject2).f(((e)localObject2).l() + parame.i() + "\n");
-              com.tencent.feedback.common.e.b("rqdp{  EUPDAO.insertOrUpdateEUP() start}", new Object[0]);
-              if ((localObject1 == null) || (localObject2 == null)) {
-                com.tencent.feedback.common.e.c("rqdp{  context == null || bean == null,pls check}", new Object[0]);
-              }
-              for (bool = false;; bool = b.b((Context)localObject1, (List)localObject3))
-              {
-                localObject1 = localObject2;
-                if (!bool) {
-                  break;
-                }
-                com.tencent.feedback.common.e.a("rqdp{  eupMeg update success} %b , c:%d , at:%s up:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(((e)localObject2).m()), ((e)localObject2).l(), Integer.valueOf(((e)localObject2).j()) });
-                localObject1 = localObject2;
-                if (parame.p() == null) {
-                  break;
-                }
-                localObject3 = new File(parame.p());
-                localObject1 = localObject2;
-                if (!((File)localObject3).exists()) {
-                  break;
-                }
-                localObject1 = localObject2;
-                if (!((File)localObject3).isFile()) {
-                  break;
-                }
-                ((File)localObject3).delete();
-                localObject1 = localObject2;
-                break;
-                localObject3 = new ArrayList();
-                ((List)localObject3).add(localObject2);
-              }
+              com.tencent.feedback.common.e.c("rqdp{  context == null || bean == null,pls check}", new Object[0]);
+              bool = false;
             }
+            localObject1 = localObject2;
+            if (!bool) {
+              break;
+            }
+            com.tencent.feedback.common.e.a("rqdp{  eupMeg update success} %b , c:%d , at:%s up:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(((e)localObject2).m()), ((e)localObject2).l(), Integer.valueOf(((e)localObject2).j()) });
+            localObject1 = localObject2;
+            if (parame.p() == null) {
+              break;
+            }
+            localObject3 = new File(parame.p());
+            localObject1 = localObject2;
+            if (!((File)localObject3).exists()) {
+              break;
+            }
+            localObject1 = localObject2;
+            if (!((File)localObject3).isFile()) {
+              break;
+            }
+            ((File)localObject3).delete();
+            localObject1 = localObject2;
+            break;
           }
+          com.tencent.feedback.common.e.b("rqdp{  new one ,no merged!}", new Object[0]);
         }
+      }
+      if (localObject1 != null)
+      {
+        com.tencent.feedback.common.e.a("merge success return", new Object[0]);
+        if ((!((e)localObject1).w()) && (((e)localObject1).m() >= 2))
+        {
+          com.tencent.feedback.common.e.a("rqdp{ may be crash too frequent! do immediate upload in merge!}", new Object[0]);
+          c();
+        }
+        return true;
       }
     }
     int i = paramCrashStrategyBean.getMaxStoredNum();
@@ -254,412 +243,184 @@ public final class c
     {
       localObject1 = (e)((List)localObject2).get(0);
       localObject3 = ((List)localObject2).iterator();
-      if (((Iterator)localObject3).hasNext())
+      while (((Iterator)localObject3).hasNext())
       {
         localObject2 = (e)((Iterator)localObject3).next();
-        if ((((e)localObject1).i() >= ((e)localObject2).i()) || (!((e)localObject2).b())) {
-          break label890;
+        if ((((e)localObject1).i() < ((e)localObject2).i()) && (((e)localObject2).b())) {
+          localObject1 = localObject2;
         }
-        localObject1 = localObject2;
       }
-    }
-    label890:
-    for (;;)
-    {
-      break;
       if ((((e)localObject1).b()) && (parame.i() - ((e)localObject1).i() < 60000L))
       {
         com.tencent.feedback.common.e.c("rqdp{ may be crash too frequent! do immediate upload in not merge!}", new Object[0]);
         c();
       }
-      b.a(this.b, parame, paramCrashStrategyBean);
-      if (com.tencent.feedback.common.a.e(this.b))
-      {
-        com.tencent.feedback.common.e.b("save log", new Object[0]);
-        parame.a(com.tencent.feedback.proguard.a.a(paramCrashStrategyBean.getOnlyLogTag(), paramCrashStrategyBean.getMaxLogRow()));
-      }
-      for (;;)
-      {
-        bool = b.a(this.b, parame);
-        com.tencent.feedback.common.e.a("store new eup pn:%s, isMe:%b , isNa:%b , res:%b ", new Object[] { parame.q(), Boolean.valueOf(parame.c()), Boolean.valueOf(parame.b()), Boolean.valueOf(bool) });
-        return bool;
-        parame.a(null);
-      }
     }
+    b.a(this.b, parame, paramCrashStrategyBean);
+    if (com.tencent.feedback.common.a.e(this.b))
+    {
+      com.tencent.feedback.common.e.b("save log", new Object[0]);
+      parame.a(com.tencent.feedback.proguard.a.a(paramCrashStrategyBean.getOnlyLogTag(), paramCrashStrategyBean.getMaxLogRow()));
+    }
+    else
+    {
+      parame.a(null);
+    }
+    boolean bool = b.a(this.b, parame);
+    com.tencent.feedback.common.e.a("store new eup pn:%s, isMe:%b , isNa:%b , res:%b ", new Object[] { parame.q(), Boolean.valueOf(parame.c()), Boolean.valueOf(parame.b()), Boolean.valueOf(bool) });
+    return bool;
   }
   
-  /* Error */
   public final boolean a(String paramString1, Throwable paramThrowable, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   4: invokestatic 352	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
-    //   7: invokevirtual 355	com/tencent/feedback/common/c:E	()Ljava/lang/String;
-    //   10: astore 16
-    //   12: ldc_w 258
-    //   15: astore 15
-    //   17: ldc_w 258
-    //   20: astore 11
-    //   22: aload_2
-    //   23: ifnull +463 -> 486
-    //   26: aload_2
-    //   27: invokevirtual 358	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   30: astore 12
-    //   32: aload_2
-    //   33: ifnull +461 -> 494
-    //   36: aload_2
-    //   37: invokevirtual 362	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   40: invokevirtual 367	java/lang/Class:getName	()Ljava/lang/String;
-    //   43: astore 10
-    //   45: invokestatic 372	com/tencent/feedback/eup/f:l	()Lcom/tencent/feedback/eup/f;
-    //   48: astore 13
-    //   50: aload 13
-    //   52: ifnonnull +450 -> 502
-    //   55: ldc_w 374
-    //   58: iconst_0
-    //   59: anewarray 4	java/lang/Object
-    //   62: invokestatic 155	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   65: pop
-    //   66: aconst_null
-    //   67: astore 13
-    //   69: new 376	java/util/Date
-    //   72: dup
-    //   73: invokespecial 377	java/util/Date:<init>	()V
-    //   76: invokevirtual 380	java/util/Date:getTime	()J
-    //   79: lstore 8
-    //   81: aload_2
-    //   82: invokestatic 386	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
-    //   85: invokestatic 389	com/tencent/feedback/eup/b:a	(Ljava/lang/Throwable;Lcom/tencent/feedback/eup/CrashStrategyBean;)Ljava/lang/String;
-    //   88: astore 14
-    //   90: aload 11
-    //   92: astore 15
-    //   94: aload 14
-    //   96: ifnull +32 -> 128
-    //   99: aload 11
-    //   101: astore 15
-    //   103: aload 14
-    //   105: ldc 185
-    //   107: invokevirtual 248	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   110: ifeq +18 -> 128
-    //   113: aload 14
-    //   115: iconst_0
-    //   116: aload 14
-    //   118: ldc 185
-    //   120: invokevirtual 393	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   123: invokevirtual 397	java/lang/String:substring	(II)Ljava/lang/String;
-    //   126: astore 15
-    //   128: ldc_w 399
-    //   131: iconst_1
-    //   132: anewarray 4	java/lang/Object
-    //   135: dup
-    //   136: iconst_0
-    //   137: aload 14
-    //   139: aastore
-    //   140: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   143: pop
-    //   144: aload_3
-    //   145: astore 11
-    //   147: iload 5
-    //   149: ifeq +474 -> 623
-    //   152: aload_3
-    //   153: astore 11
-    //   155: aload 13
-    //   157: ifnull +466 -> 623
-    //   160: ldc_w 401
-    //   163: iconst_0
-    //   164: anewarray 4	java/lang/Object
-    //   167: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   170: pop
-    //   171: aload_3
-    //   172: astore_2
-    //   173: aload 13
-    //   175: ifnull +34 -> 209
-    //   178: ldc_w 403
-    //   181: iconst_0
-    //   182: anewarray 4	java/lang/Object
-    //   185: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   188: pop
-    //   189: aload 13
-    //   191: iconst_0
-    //   192: aload 10
-    //   194: aload 15
-    //   196: aload 14
-    //   198: sipush -10000
-    //   201: lload 8
-    //   203: invokeinterface 409 8 0
-    //   208: astore_2
-    //   209: aload_2
-    //   210: astore 11
-    //   212: aload 13
-    //   214: ifnull +409 -> 623
-    //   217: ldc_w 411
-    //   220: iconst_0
-    //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   227: pop
-    //   228: aload 13
-    //   230: iconst_0
-    //   231: aload 10
-    //   233: aload 15
-    //   235: aload 14
-    //   237: sipush -10000
-    //   240: lload 8
-    //   242: invokeinterface 415 8 0
-    //   247: astore_3
-    //   248: aload_0
-    //   249: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   252: invokestatic 352	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
-    //   255: astore 4
-    //   257: aload_0
-    //   258: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   261: aload 4
-    //   263: invokevirtual 417	com/tencent/feedback/common/c:g	()Ljava/lang/String;
-    //   266: aload 4
-    //   268: invokevirtual 418	com/tencent/feedback/common/c:h	()Ljava/lang/String;
-    //   271: aload 4
-    //   273: invokevirtual 420	com/tencent/feedback/common/c:j	()J
-    //   276: aload 4
-    //   278: invokevirtual 424	com/tencent/feedback/common/c:y	()Ljava/util/Map;
-    //   281: aload 16
-    //   283: aload_1
-    //   284: aload 15
-    //   286: aload 10
-    //   288: aload 12
-    //   290: aload 14
-    //   292: lload 8
-    //   294: aload_2
-    //   295: aload_3
-    //   296: invokestatic 427	com/tencent/feedback/eup/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JLjava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;[B)Lcom/tencent/feedback/eup/e;
-    //   299: astore_2
-    //   300: iload 5
-    //   302: ifeq +330 -> 632
-    //   305: iconst_0
-    //   306: istore 6
-    //   308: aload_2
-    //   309: iload 6
-    //   311: invokevirtual 430	com/tencent/feedback/eup/e:a	(B)V
-    //   314: invokestatic 432	com/tencent/feedback/proguard/a:b	()Ljava/util/Map;
-    //   317: astore_3
-    //   318: aload_3
-    //   319: ifnull +38 -> 357
-    //   322: aload_2
-    //   323: invokevirtual 435	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
-    //   326: aload_3
-    //   327: invokeinterface 441 2 0
-    //   332: aload_1
-    //   333: ifnull +24 -> 357
-    //   336: aload_1
-    //   337: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   340: invokevirtual 447	java/lang/String:length	()I
-    //   343: ifle +14 -> 357
-    //   346: aload_2
-    //   347: invokevirtual 435	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
-    //   350: aload_1
-    //   351: invokeinterface 450 2 0
-    //   356: pop
-    //   357: iload 5
-    //   359: ifeq +335 -> 694
-    //   362: aload 13
-    //   364: ifnull +330 -> 694
-    //   367: ldc_w 452
-    //   370: iconst_0
-    //   371: anewarray 4	java/lang/Object
-    //   374: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   377: pop
-    //   378: aload 10
-    //   380: astore_1
-    //   381: aload 12
-    //   383: ifnull +44 -> 427
-    //   386: aload 10
-    //   388: astore_1
-    //   389: aload 12
-    //   391: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   394: invokevirtual 447	java/lang/String:length	()I
-    //   397: ifle +30 -> 427
-    //   400: new 174	java/lang/StringBuilder
-    //   403: dup
-    //   404: invokespecial 175	java/lang/StringBuilder:<init>	()V
-    //   407: aload 10
-    //   409: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: ldc_w 454
-    //   415: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   418: aload 12
-    //   420: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   426: astore_1
-    //   427: aload 13
-    //   429: iconst_0
-    //   430: aload_1
-    //   431: aload 15
-    //   433: aload 14
-    //   435: sipush -10000
-    //   438: lload 8
-    //   440: aload_2
-    //   441: invokevirtual 457	com/tencent/feedback/eup/e:k	()Ljava/lang/String;
-    //   444: aload_2
-    //   445: invokevirtual 460	com/tencent/feedback/eup/e:D	()Ljava/lang/String;
-    //   448: aload_2
-    //   449: invokevirtual 463	com/tencent/feedback/eup/e:v	()Ljava/lang/String;
-    //   452: invokeinterface 467 11 0
-    //   457: istore 7
-    //   459: iload 5
-    //   461: ifeq +11 -> 472
-    //   464: aload_0
-    //   465: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   468: aload_2
-    //   469: invokestatic 473	com/tencent/feedback/eup/BuglyBroadcastRecevier:brocastCrash	(Landroid/content/Context;Lcom/tencent/feedback/eup/e;)V
-    //   472: iload 7
-    //   474: ifeq +226 -> 700
-    //   477: aload_0
-    //   478: aload_2
-    //   479: invokestatic 386	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
-    //   482: invokevirtual 475	com/tencent/feedback/eup/c:a	(Lcom/tencent/feedback/eup/e;Lcom/tencent/feedback/eup/CrashStrategyBean;)Z
-    //   485: ireturn
-    //   486: ldc_w 258
-    //   489: astore 12
-    //   491: goto -459 -> 32
-    //   494: ldc_w 258
-    //   497: astore 10
-    //   499: goto -454 -> 45
-    //   502: aload 13
-    //   504: invokevirtual 479	com/tencent/feedback/eup/f:r	()Lcom/tencent/feedback/eup/CrashHandleListener;
-    //   507: astore 13
-    //   509: goto -440 -> 69
-    //   512: astore_2
-    //   513: ldc_w 481
-    //   516: iconst_0
-    //   517: anewarray 4	java/lang/Object
-    //   520: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   523: pop
-    //   524: aload 15
-    //   526: astore 14
-    //   528: aload_2
-    //   529: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   532: ifne -442 -> 90
-    //   535: aload_2
-    //   536: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
-    //   539: aload 15
-    //   541: astore 14
-    //   543: goto -453 -> 90
-    //   546: astore 11
-    //   548: ldc_w 487
-    //   551: iconst_1
-    //   552: anewarray 4	java/lang/Object
-    //   555: dup
-    //   556: iconst_0
-    //   557: aload 11
-    //   559: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   562: aastore
-    //   563: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   566: pop
-    //   567: aload_3
-    //   568: astore_2
-    //   569: aload 11
-    //   571: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   574: ifne -365 -> 209
-    //   577: aload 11
-    //   579: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
-    //   582: aload_3
-    //   583: astore_2
-    //   584: goto -375 -> 209
-    //   587: astore_3
-    //   588: ldc_w 487
-    //   591: iconst_1
-    //   592: anewarray 4	java/lang/Object
-    //   595: dup
-    //   596: iconst_0
-    //   597: aload_3
-    //   598: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   601: aastore
-    //   602: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   605: pop
-    //   606: aload_2
-    //   607: astore 11
-    //   609: aload_3
-    //   610: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   613: ifne +10 -> 623
-    //   616: aload_3
-    //   617: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
-    //   620: aload_2
-    //   621: astore 11
-    //   623: aload 4
-    //   625: astore_3
-    //   626: aload 11
-    //   628: astore_2
-    //   629: goto -381 -> 248
-    //   632: iconst_1
-    //   633: istore 6
-    //   635: goto -327 -> 308
-    //   638: astore_1
-    //   639: ldc_w 490
-    //   642: iconst_0
-    //   643: anewarray 4	java/lang/Object
-    //   646: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   649: pop
-    //   650: aload_1
-    //   651: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   654: ifne -297 -> 357
-    //   657: aload_1
-    //   658: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
-    //   661: goto -304 -> 357
-    //   664: astore_1
-    //   665: ldc_w 487
-    //   668: iconst_1
-    //   669: anewarray 4	java/lang/Object
-    //   672: dup
-    //   673: iconst_0
-    //   674: aload_1
-    //   675: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   678: aastore
-    //   679: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   682: pop
-    //   683: aload_1
-    //   684: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
-    //   687: ifne +7 -> 694
-    //   690: aload_1
-    //   691: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
-    //   694: iconst_1
-    //   695: istore 7
-    //   697: goto -238 -> 459
-    //   700: ldc_w 492
-    //   703: iconst_0
-    //   704: anewarray 4	java/lang/Object
-    //   707: invokestatic 155	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
-    //   710: pop
-    //   711: iconst_0
-    //   712: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	713	0	this	c
-    //   0	713	1	paramString1	String
-    //   0	713	2	paramThrowable	Throwable
-    //   0	713	3	paramString2	String
-    //   0	713	4	paramArrayOfByte	byte[]
-    //   0	713	5	paramBoolean	boolean
-    //   306	328	6	b1	byte
-    //   457	239	7	bool	boolean
-    //   79	360	8	l	long
-    //   43	455	10	str1	String
-    //   20	191	11	localObject1	Object
-    //   546	32	11	localThrowable1	Throwable
-    //   607	20	11	localThrowable2	Throwable
-    //   30	460	12	str2	String
-    //   48	460	13	localObject2	Object
-    //   88	454	14	localObject3	Object
-    //   15	525	15	localObject4	Object
-    //   10	272	16	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   81	90	512	java/lang/Throwable
-    //   178	209	546	java/lang/Throwable
-    //   217	248	587	java/lang/Throwable
-    //   314	318	638	java/lang/Throwable
-    //   322	332	638	java/lang/Throwable
-    //   336	357	638	java/lang/Throwable
-    //   367	378	664	java/lang/Throwable
-    //   389	427	664	java/lang/Throwable
-    //   427	459	664	java/lang/Throwable
+    String str5 = com.tencent.feedback.common.c.a(this.b).E();
+    String str2;
+    if (paramThrowable != null) {
+      str2 = paramThrowable.getMessage();
+    } else {
+      str2 = "";
+    }
+    String str1;
+    if (paramThrowable != null) {
+      str1 = paramThrowable.getClass().getName();
+    } else {
+      str1 = "";
+    }
+    Object localObject = f.l();
+    if (localObject == null)
+    {
+      com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
+      localObject = null;
+    }
+    else
+    {
+      localObject = ((f)localObject).r();
+    }
+    long l = new Date().getTime();
+    String str3;
+    try
+    {
+      str3 = b.a(paramThrowable, CrashReport.getCrashRuntimeStrategy());
+    }
+    catch (Throwable paramThrowable)
+    {
+      com.tencent.feedback.common.e.d("create stack from throw fail!", new Object[0]);
+      if (!com.tencent.feedback.common.e.a(paramThrowable)) {
+        paramThrowable.printStackTrace();
+      }
+      str3 = "";
+    }
+    String str4;
+    if ((str3 != null) && (str3.contains("\n"))) {
+      str4 = str3.substring(0, str3.indexOf("\n"));
+    } else {
+      str4 = "";
+    }
+    com.tencent.feedback.common.e.b("rqdp{ stack:}%s", new Object[] { str3 });
+    if ((paramBoolean) && (localObject != null))
+    {
+      com.tencent.feedback.common.e.b("get crash extra...", new Object[0]);
+      if (localObject != null) {
+        try
+        {
+          com.tencent.feedback.common.e.a("your crmsg", new Object[0]);
+          paramThrowable = ((CrashHandleListener)localObject).getCrashExtraMessage(false, str1, str4, str3, -10000, l);
+        }
+        catch (Throwable paramThrowable)
+        {
+          com.tencent.feedback.common.e.d("rqdp{ get extra msg error} %s", new Object[] { paramThrowable.toString() });
+          if (!com.tencent.feedback.common.e.a(paramThrowable)) {
+            paramThrowable.printStackTrace();
+          }
+        }
+      } else {
+        paramThrowable = paramString2;
+      }
+      if (localObject != null) {
+        try
+        {
+          com.tencent.feedback.common.e.a("your crdata", new Object[0]);
+          paramString2 = ((CrashHandleListener)localObject).getCrashExtraData(false, str1, str4, str3, -10000, l);
+        }
+        catch (Throwable paramString2)
+        {
+          com.tencent.feedback.common.e.d("rqdp{ get extra msg error} %s", new Object[] { paramString2.toString() });
+          if (!com.tencent.feedback.common.e.a(paramString2)) {
+            paramString2.printStackTrace();
+          }
+        }
+      } else {
+        paramString2 = paramArrayOfByte;
+      }
+    }
+    else
+    {
+      paramThrowable = paramString2;
+      paramString2 = paramArrayOfByte;
+    }
+    paramArrayOfByte = com.tencent.feedback.common.c.a(this.b);
+    paramThrowable = b.a(this.b, paramArrayOfByte.g(), paramArrayOfByte.h(), paramArrayOfByte.j(), paramArrayOfByte.y(), str5, paramString1, str4, str1, str2, str3, l, paramThrowable, paramString2);
+    paramThrowable.a(paramBoolean ^ true);
+    try
+    {
+      paramString2 = com.tencent.feedback.proguard.a.b();
+      if (paramString2 != null)
+      {
+        paramThrowable.C().putAll(paramString2);
+        if ((paramString1 != null) && (paramString1.trim().length() > 0)) {
+          paramThrowable.C().remove(paramString1);
+        }
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      com.tencent.feedback.common.e.d("get all threads stack fail", new Object[0]);
+      if (!com.tencent.feedback.common.e.a(paramString1)) {
+        paramString1.printStackTrace();
+      }
+    }
+    if ((paramBoolean) && (localObject != null)) {}
+    for (;;)
+    {
+      boolean bool2;
+      try
+      {
+        com.tencent.feedback.common.e.a("your ask2save", new Object[0]);
+        if ((str2 == null) || (str2.trim().length() <= 0)) {
+          break label688;
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append(str1);
+        paramString1.append(":");
+        paramString1.append(str2);
+        paramString1 = paramString1.toString();
+        bool1 = ((CrashHandleListener)localObject).onCrashSaving(false, paramString1, str4, str3, -10000, l, paramThrowable.k(), paramThrowable.D(), paramThrowable.v());
+      }
+      catch (Throwable paramString1)
+      {
+        bool2 = true;
+        com.tencent.feedback.common.e.d("rqdp{ get extra msg error} %s", new Object[] { paramString1.toString() });
+        bool1 = bool2;
+        if (com.tencent.feedback.common.e.a(paramString1)) {
+          break label645;
+        }
+      }
+      paramString1.printStackTrace();
+      boolean bool1 = bool2;
+      break label645;
+      bool1 = true;
+      label645:
+      if (paramBoolean) {
+        BuglyBroadcastRecevier.brocastCrash(this.b, paramThrowable);
+      }
+      if (bool1) {
+        return a(paramThrowable, CrashReport.getCrashRuntimeStrategy());
+      }
+      com.tencent.feedback.common.e.c("not to save", new Object[0]);
+      return false;
+      label688:
+      paramString1 = str1;
+    }
   }
   
   public final void b()
@@ -684,67 +445,71 @@ public final class c
   public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     if (paramThrowable != null) {}
-    for (;;)
+    Object localObject;
+    boolean bool2;
+    try
     {
-      try
+      if (!com.tencent.feedback.common.e.a(paramThrowable)) {
+        paramThrowable.printStackTrace();
+      }
+      localObject = f.l();
+      if (localObject == null)
       {
-        if (!com.tencent.feedback.common.e.a(paramThrowable)) {
-          paramThrowable.printStackTrace();
-        }
-        Object localObject = f.l();
-        if (localObject == null)
-        {
-          com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
-          localObject = null;
-          if (localObject == null) {}
-        }
+        com.tencent.feedback.common.e.c("rqdp{  instance == null}", new Object[0]);
+        localObject = null;
+      }
+      else
+      {
+        localObject = ((f)localObject).r();
+      }
+      bool2 = true;
+      if (localObject != null)
+      {
         try
         {
           com.tencent.feedback.common.e.a("your crhandler start", new Object[0]);
           ((CrashHandleListener)localObject).onCrashHandleStart(false);
-          if (paramThread == null)
-          {
-            String str1 = "";
-            com.tencent.feedback.common.e.b("rqdp{ handle eup result} %b", new Object[] { Boolean.valueOf(a(str1, paramThrowable, null, null, true)) });
-            if (localObject == null) {
-              break label234;
-            }
-          }
-          try
-          {
-            com.tencent.feedback.common.e.a("your crhandler end", new Object[0]);
-            bool = ((CrashHandleListener)localObject).onCrashHandleEnd(false);
-            if (bool) {
-              a(paramThread, paramThrowable);
-            }
-            return;
-          }
-          catch (Throwable localThrowable1)
-          {
-            String str2;
-            com.tencent.feedback.common.e.d("rqdp{ your crash handle end error} %s", new Object[] { localThrowable1.toString() });
-            if (com.tencent.feedback.common.e.a(localThrowable1)) {
-              break label234;
-            }
-            localThrowable1.printStackTrace();
-          }
-          localObject = ((f)localObject).r();
         }
         catch (Throwable localThrowable2)
         {
           com.tencent.feedback.common.e.d("rqdp{ handle start error} %s", new Object[] { localThrowable2.toString() });
           if (com.tencent.feedback.common.e.a(localThrowable2)) {
-            continue;
+            break label240;
           }
-          localThrowable2.printStackTrace();
-          continue;
         }
-        str2 = paramThread.getName();
+        localThrowable2.printStackTrace();
       }
-      finally {}
-      continue;
-      label234:
-      boolean bool = true;
+    }
+    finally {}
+    for (String str = paramThread.getName();; str = "")
+    {
+      com.tencent.feedback.common.e.b("rqdp{ handle eup result} %b", new Object[] { Boolean.valueOf(a(str, paramThrowable, null, null, true)) });
+      boolean bool1 = bool2;
+      if (localObject != null) {
+        try
+        {
+          com.tencent.feedback.common.e.a("your crhandler end", new Object[0]);
+          bool1 = ((CrashHandleListener)localObject).onCrashHandleEnd(false);
+        }
+        catch (Throwable localThrowable1)
+        {
+          com.tencent.feedback.common.e.d("rqdp{ your crash handle end error} %s", new Object[] { localThrowable1.toString() });
+          bool1 = bool2;
+          if (!com.tencent.feedback.common.e.a(localThrowable1))
+          {
+            localThrowable1.printStackTrace();
+            bool1 = bool2;
+          }
+        }
+      }
+      if (bool1) {
+        a(paramThread, paramThrowable);
+      }
+      return;
+      label240:
+      if (paramThread != null) {
+        break;
+      }
     }
   }
 }

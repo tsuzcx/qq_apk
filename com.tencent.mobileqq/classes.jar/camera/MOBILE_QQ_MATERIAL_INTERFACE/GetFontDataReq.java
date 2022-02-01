@@ -26,17 +26,19 @@ public final class GetFontDataReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.FontName != null) {
-      paramJceOutputStream.write(this.FontName, 0);
+    String str = this.FontName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.Content != null) {
-      paramJceOutputStream.write(this.Content, 1);
+    str = this.Content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataReq
  * JD-Core Version:    0.7.0.1
  */

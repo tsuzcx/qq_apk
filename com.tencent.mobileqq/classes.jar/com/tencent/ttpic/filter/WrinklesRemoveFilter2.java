@@ -65,12 +65,14 @@ public class WrinklesRemoveFilter2
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.isFaceImageReady = false;
     super.clearGLSLSelf();
   }
@@ -100,13 +102,21 @@ public class WrinklesRemoveFilter2
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AttributeParam localAttributeParam = getAttribParam("position");
-    if ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690)) {}
-    do
+    if (localAttributeParam != null)
     {
-      return false;
+      if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+        return false;
+      }
       localAttributeParam = getAttribParam("inputTextureCoordinate");
-    } while ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690));
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      if (localAttributeParam != null)
+      {
+        if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+          return false;
+        }
+        return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      }
+    }
+    return false;
   }
   
   public void setWrinklesAlpha(float paramFloat)
@@ -135,7 +145,7 @@ public class WrinklesRemoveFilter2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.WrinklesRemoveFilter2
  * JD-Core Version:    0.7.0.1
  */

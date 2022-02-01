@@ -1,3 +1,4 @@
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
@@ -9,6 +10,7 @@ public class ewm
   public void run()
   {
     this.a.a.hide();
+    QRUtils.a(1, 2131562452);
     this.a.finish();
   }
 }

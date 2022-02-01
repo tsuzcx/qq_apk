@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.nearlife.ui.LogoImageView android:layout_gravity="center" android:id="@id/dsw" android:layout_width="wrap_content" android:layout_height="33.0dip" android:scaleType="centerInside" />
-</LinearLayout>
+<FrameLayout android:id="@id/e3_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/e3g" android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/e3d" android:background="@drawable/a2w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e3c" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginBottom="@dimen/bv" android:src="@raw/icons_outlined_error" app:iconColor="@android:color/white" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/e3e" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center" android:id="@id/e3f" android:background="@drawable/ag9" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+    <FrameLayout android:id="@id/e3b" android:background="@drawable/wt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end" android:id="@id/e3a" android:padding="@dimen/bv" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_close" app:iconColor="@color/al6" />
+    </FrameLayout>
+    <include android:id="@id/m1m" android:visibility="gone" layout="@layout/cm0" />
+</FrameLayout>

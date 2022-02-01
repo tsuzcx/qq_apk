@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class UserCntlData
   extends JceStruct
 {
-  public long lLastPos;
-  public int nVersion;
+  public long lLastPos = 0L;
+  public int nVersion = 0;
   
   public UserCntlData() {}
   
@@ -32,7 +32,7 @@ public final class UserCntlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.UserCntlData
  * JD-Core Version:    0.7.0.1
  */

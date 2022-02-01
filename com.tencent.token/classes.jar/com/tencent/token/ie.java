@@ -1,122 +1,103 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLSocket;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
+import android.view.KeyEvent.DispatcherState;
+import android.view.View;
+import android.view.Window;
+import android.widget.ListAdapter;
 
-class ie
-  extends ih
+final class ie
+  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, ik.a
 {
-  private final Method a;
-  private final Method b;
-  private final Method c;
-  private final Class d;
-  private final Class e;
+  id a;
+  AlertDialog b;
+  ib c;
+  private ik.a d;
   
-  ie(Method paramMethod1, Method paramMethod2, Method paramMethod3, Class paramClass1, Class paramClass2)
+  public ie(id paramid)
   {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
-    this.c = paramMethod3;
-    this.d = paramClass1;
-    this.e = paramClass2;
+    this.a = paramid;
   }
   
-  public static ih a()
+  public final void a(id paramid, boolean paramBoolean)
   {
-    try
+    if ((paramBoolean) || (paramid == this.a))
     {
-      Object localObject = Class.forName("org.eclipse.jetty.alpn.ALPN");
-      Class localClass1 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$Provider");
-      Class localClass2 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$ClientProvider");
-      Class localClass3 = Class.forName("org.eclipse.jetty.alpn.ALPN" + "$ServerProvider");
-      localObject = new ie(((Class)localObject).getMethod("put", new Class[] { SSLSocket.class, localClass1 }), ((Class)localObject).getMethod("get", new Class[] { SSLSocket.class }), ((Class)localObject).getMethod("remove", new Class[] { SSLSocket.class }), localClass2, localClass3);
-      return localObject;
+      localObject = this.b;
+      if (localObject != null) {
+        ((AlertDialog)localObject).dismiss();
+      }
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      return null;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label140:
-      break label140;
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((ik.a)localObject).a(paramid, paramBoolean);
     }
   }
   
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
+  public final boolean a(id paramid)
   {
-    try
-    {
-      paramSSLSocket = (if)Proxy.getInvocationHandler(this.b.invoke(null, new Object[] { paramSSLSocket }));
-      if ((!paramSSLSocket.a) && (paramSSLSocket.b == null))
+    ik.a locala = this.d;
+    if (locala != null) {
+      return locala.a(paramid);
+    }
+    return false;
+  }
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a((if)this.c.b().getItem(paramInt), null, 0);
+  }
+  
+  public final void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.c.a(this.a, true);
+  }
+  
+  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 82) || (paramInt == 4)) {
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
       {
-        ih.c().a(4, "ALPN callback dropped: HTTP/2 is disabled. Is alpn-boot on the boot class path?", null);
-        return null;
+        paramDialogInterface = this.b.getWindow();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface = paramDialogInterface.getDecorView();
+          if (paramDialogInterface != null)
+          {
+            paramDialogInterface = paramDialogInterface.getKeyDispatcherState();
+            if (paramDialogInterface != null)
+            {
+              paramDialogInterface.startTracking(paramKeyEvent, this);
+              return true;
+            }
+          }
+        }
       }
-      if (paramSSLSocket.a) {
-        paramSSLSocket = null;
-      } else {
-        paramSSLSocket = paramSSLSocket.b;
+      else if ((paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+      {
+        Object localObject = this.b.getWindow();
+        if (localObject != null)
+        {
+          localObject = ((Window)localObject).getDecorView();
+          if (localObject != null)
+          {
+            localObject = ((View)localObject).getKeyDispatcherState();
+            if ((localObject != null) && (((KeyEvent.DispatcherState)localObject).isTracking(paramKeyEvent)))
+            {
+              this.a.a(true);
+              paramDialogInterface.dismiss();
+              return true;
+            }
+          }
+        }
       }
     }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw gn.a("unable to get selected protocol", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label70:
-      break label70;
-    }
-    return paramSSLSocket;
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List paramList)
-  {
-    Object localObject = a(paramList);
-    try
-    {
-      paramString = ih.class.getClassLoader();
-      paramList = this.d;
-      Class localClass = this.e;
-      localObject = new if((List)localObject);
-      paramString = Proxy.newProxyInstance(paramString, new Class[] { paramList, localClass }, (InvocationHandler)localObject);
-      this.a.invoke(null, new Object[] { paramSSLSocket, paramString });
-      return;
-    }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw gn.a("unable to set alpn", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label77:
-      break label77;
-    }
-  }
-  
-  public void b(SSLSocket paramSSLSocket)
-  {
-    try
-    {
-      this.c.invoke(null, new Object[] { paramSSLSocket });
-      return;
-    }
-    catch (IllegalAccessException paramSSLSocket)
-    {
-      throw gn.a("unable to remove alpn", paramSSLSocket);
-    }
-    catch (InvocationTargetException paramSSLSocket)
-    {
-      label19:
-      break label19;
-    }
+    return this.a.performShortcut(paramInt, paramKeyEvent, 0);
   }
 }
 

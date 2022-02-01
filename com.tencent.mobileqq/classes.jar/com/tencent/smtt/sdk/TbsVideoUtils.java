@@ -4,50 +4,53 @@ import android.content.Context;
 
 public class TbsVideoUtils
 {
-  private static TbsVideoUtilsWizard tbsVideoUtilsWizard = null;
+  private static t a;
   
-  public static void deleteVideoCache(Context paramContext, String paramString)
+  private static void a(Context paramContext)
   {
-    initUtilsWizard(paramContext);
-    if (tbsVideoUtilsWizard != null) {
-      tbsVideoUtilsWizard.deleteVideoCache(paramContext, paramString);
-    }
-  }
-  
-  public static String getCurWDPDecodeType(Context paramContext)
-  {
-    initUtilsWizard(paramContext);
-    if (tbsVideoUtilsWizard != null) {
-      return tbsVideoUtilsWizard.getCurWDPDecodeType(paramContext);
-    }
-    return "";
-  }
-  
-  private static void initUtilsWizard(Context paramContext)
-  {
-    Object localObject = null;
     try
     {
-      if (tbsVideoUtilsWizard == null)
+      if (a == null)
       {
-        SDKEngine.getInstance(true).init(paramContext, false, false, null);
-        TbsWizard localTbsWizard = SDKEngine.getInstance(true).wizard();
-        paramContext = localObject;
-        if (localTbsWizard != null) {
-          paramContext = localTbsWizard.dexLoader();
+        Object localObject2 = f.a(true);
+        Object localObject1 = null;
+        ((f)localObject2).a(paramContext, false, false, null);
+        localObject2 = f.a(true).a();
+        paramContext = localObject1;
+        if (localObject2 != null) {
+          paramContext = ((v)localObject2).b();
         }
         if (paramContext != null) {
-          tbsVideoUtilsWizard = new TbsVideoUtilsWizard(paramContext);
+          a = new t(paramContext);
         }
       }
       return;
     }
     finally {}
   }
+  
+  public static void deleteVideoCache(Context paramContext, String paramString)
+  {
+    a(paramContext);
+    t localt = a;
+    if (localt != null) {
+      localt.a(paramContext, paramString);
+    }
+  }
+  
+  public static String getCurWDPDecodeType(Context paramContext)
+  {
+    a(paramContext);
+    t localt = a;
+    if (localt != null) {
+      return localt.a(paramContext);
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideoUtils
  * JD-Core Version:    0.7.0.1
  */

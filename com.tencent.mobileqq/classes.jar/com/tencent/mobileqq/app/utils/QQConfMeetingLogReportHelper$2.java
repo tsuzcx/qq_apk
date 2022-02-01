@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app.utils;
 
-import amrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,34 +8,48 @@ import java.lang.ref.WeakReference;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 
-public class QQConfMeetingLogReportHelper$2
+class QQConfMeetingLogReportHelper$2
   implements Runnable
 {
-  public QQConfMeetingLogReportHelper$2(amrn paramamrn, String paramString) {}
+  QQConfMeetingLogReportHelper$2(QQConfMeetingLogReportHelper paramQQConfMeetingLogReportHelper, String paramString) {}
   
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = ((QQAppInterface)amrn.a(this.this$0).get()).getCurrentAccountUin();
-    String str1 = "MSFSDK_LogReport" + (String)localObject;
-    localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null)
+    Object localObject1 = ((QQAppInterface)QQConfMeetingLogReportHelper.a(this.this$0).get()).getCurrentAccountUin();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("MSFSDK_LogReport");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject3 != null)
     {
-      TicketManager localTicketManager = (TicketManager)((AppRuntime)localObject).getManager(2);
-      String str2 = ((AppRuntime)localObject).getAccount();
-      localObject = "";
-      if (localTicketManager != null) {
-        localObject = localTicketManager.getSkey(str2);
+      localObject1 = (TicketManager)((AppRuntime)localObject3).getManager(2);
+      localObject3 = ((AppRuntime)localObject3).getAccount();
+      if (localObject1 != null) {
+        localObject1 = ((TicketManager)localObject1).getSkey((String)localObject3);
+      } else {
+        localObject1 = "";
       }
-      QLog.syncReportLogSelf(AppSetting.a(), this.a, str1, "", str2, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQConfMeetingLogReportHelper", 2, new Object[] { "[report] run: invoked. ", Integer.valueOf(AppSetting.d()), this.a, localObject2, "", localObject3, localObject1 });
+      }
     }
     long l2 = System.currentTimeMillis();
-    QLog.w("QQConfMeetingLogReportHelper", 1, "sendFile, Runnable, path[" + this.a + "], Thread[" + Thread.currentThread().getId() + "], cost[" + (l2 - l1) + "]");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sendFile, Runnable, path[");
+    ((StringBuilder)localObject1).append(this.a);
+    ((StringBuilder)localObject1).append("], Thread[");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+    ((StringBuilder)localObject1).append("], cost[");
+    ((StringBuilder)localObject1).append(l2 - l1);
+    ((StringBuilder)localObject1).append("]");
+    QLog.w("QQConfMeetingLogReportHelper", 1, ((StringBuilder)localObject1).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper.2
  * JD-Core Version:    0.7.0.1
  */

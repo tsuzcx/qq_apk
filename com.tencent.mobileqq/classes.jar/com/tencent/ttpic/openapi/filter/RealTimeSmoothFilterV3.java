@@ -40,7 +40,10 @@ public class RealTimeSmoothFilterV3
   {
     int i = paramFrame.height * 360 / paramFrame.width;
     Object localObject = GlUtil.ORIGIN_POSITION_COORDS;
-    this.mBilaterialFilter.updateParam(360, i);
+    RealTimeBilateralFilterV3 localRealTimeBilateralFilterV3 = this.mBilaterialFilter;
+    float f1 = 360;
+    float f2 = i;
+    localRealTimeBilateralFilterV3.updateParam(f1, f2);
     this.mBilaterialFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame1);
     FrameUtil.clearFrame(this.mVarianceFrame1, 0.0F, 0.0F, 0.0F, 1.0F, 360, i);
     this.mVarianceFilter.setPositions((float[])localObject);
@@ -48,112 +51,124 @@ public class RealTimeSmoothFilterV3
     this.mVarianceFilter.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
     this.mVarianceFilter.setSkinAlpha(1.0F);
     this.mVarianceFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mVarianceFrame1);
-    this.mBilaterialFilter.updateParam(360, i);
+    this.mBilaterialFilter.updateParam(f1, f2);
     this.mBilaterialFilter.RenderProcess(this.mVarianceFrame1.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame2);
     if (this.ifDenoise)
     {
       this.mProcessVarianceFilterDenoise.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
       this.mProcessVarianceFilterDenoise.setTexture3(this.mBoxFrame2.getLastRenderTextureId());
       this.mProcessVarianceFilterDenoise.setDenoiseTexture(this.mlastBeforeDenoiseFrame.getTextureId());
+      localObject = this.mProcessVarianceFilterDenoise.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
     }
-    for (localObject = this.mProcessVarianceFilterDenoise.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);; localObject = this.mProcessVarianceFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height))
+    else
     {
-      paramFrame.unlock();
-      this.ifDenoise = false;
-      this.mBgSharpenFilter.setVarianceMask(this.mBoxFrame2.getLastRenderTextureId());
-      paramFrame = this.mBgSharpenFilter.RenderProcess(((Frame)localObject).getTextureId(), ((Frame)localObject).width, ((Frame)localObject).height);
-      ((Frame)localObject).unlock();
-      return paramFrame;
       this.mProcessVarianceFilter.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
       this.mProcessVarianceFilter.setTexture3(this.mBoxFrame2.getLastRenderTextureId());
+      localObject = this.mProcessVarianceFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
     }
+    paramFrame.unlock();
+    this.ifDenoise = false;
+    this.mBgSharpenFilter.setVarianceMask(this.mBoxFrame2.getLastRenderTextureId());
+    paramFrame = this.mBgSharpenFilter.RenderProcess(((Frame)localObject).getTextureId(), ((Frame)localObject).width, ((Frame)localObject).height);
+    ((Frame)localObject).unlock();
+    return paramFrame;
   }
   
   private Frame renderSmoothSingle(Frame paramFrame, List<List<PointF>> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramFrame.height * 360 / paramFrame.width;
-    paramList = AlgoUtils.getFaceRectF((List)paramList.get(0));
-    if (paramList == null) {
+    Object localObject = AlgoUtils.getFaceRectF((List)paramList.get(0));
+    if (localObject == null) {
       return paramFrame;
     }
-    float f1;
-    float f2;
     if (paramInt3 == 0)
     {
-      f1 = paramList.width();
-      f2 = paramList.height();
-      paramList.left -= 0.1F * f1;
-      paramList.top -= 0.1F * f2;
-      paramList.right = (f1 * 0.1F + paramList.right);
-      paramList.bottom += f2 * 0.5F;
-      float[] arrayOfFloat = AlgoUtils.calPositions(paramList.left, paramList.top, paramList.right, paramList.bottom, paramInt1, paramInt2);
-      f1 = Math.min(0.16F, paramList.width() * paramList.height() / paramInt1 / paramInt2) / 0.16F;
-      this.mBilaterialFilter.updateParam(360, i);
-      this.mBilaterialFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame1);
-      FrameUtil.clearFrame(this.mVarianceFrame1, 0.0F, 0.0F, 0.0F, 1.0F, 360, i);
-      this.mVarianceFilter.setPositions(arrayOfFloat);
-      this.mVarianceFilter.setTexCords(GlUtil.ORIGIN_TEX_COORDS);
-      this.mVarianceFilter.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
-      this.mVarianceFilter.setSkinAlpha(f1);
-      this.mVarianceFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mVarianceFrame1);
-      this.mBilaterialFilter.updateParam(360, i);
-      this.mBilaterialFilter.RenderProcess(this.mVarianceFrame1.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame2);
-      if (!this.ifDenoise) {
-        break label663;
-      }
+      f3 = ((RectF)localObject).width();
+      f1 = ((RectF)localObject).height();
+      f2 = ((RectF)localObject).left;
+      f3 *= 0.1F;
+      ((RectF)localObject).left = (f2 - f3);
+      ((RectF)localObject).top -= 0.1F * f1;
+      ((RectF)localObject).right += f3;
+      ((RectF)localObject).bottom += f1 * 0.5F;
+    }
+    else if (paramInt3 == 90)
+    {
+      f1 = ((RectF)localObject).width();
+      f3 = ((RectF)localObject).height();
+      ((RectF)localObject).left -= 0.5F * f1;
+      f2 = ((RectF)localObject).top;
+      f3 *= 0.1F;
+      ((RectF)localObject).top = (f2 - f3);
+      ((RectF)localObject).right += f1 * 0.1F;
+      ((RectF)localObject).bottom += f3;
+    }
+    else if (paramInt3 == 180)
+    {
+      f3 = ((RectF)localObject).width();
+      f1 = ((RectF)localObject).height();
+      f2 = ((RectF)localObject).left;
+      f3 *= 0.1F;
+      ((RectF)localObject).left = (f2 - f3);
+      ((RectF)localObject).top -= 0.5F * f1;
+      ((RectF)localObject).right += f3;
+      ((RectF)localObject).bottom += f1 * 0.1F;
+    }
+    else
+    {
+      f1 = ((RectF)localObject).width();
+      f3 = ((RectF)localObject).height();
+      ((RectF)localObject).left -= f1 * 0.1F;
+      f2 = ((RectF)localObject).top;
+      f3 *= 0.1F;
+      ((RectF)localObject).top = (f2 - f3);
+      ((RectF)localObject).right += f1 * 0.5F;
+      ((RectF)localObject).bottom += f3;
+    }
+    paramList = AlgoUtils.calPositions(((RectF)localObject).left, ((RectF)localObject).top, ((RectF)localObject).right, ((RectF)localObject).bottom, paramInt1, paramInt2);
+    float f1 = Math.min(0.16F, ((RectF)localObject).width() * ((RectF)localObject).height() / paramInt1 / paramInt2) / 0.16F;
+    localObject = this.mBilaterialFilter;
+    float f2 = 360;
+    float f3 = i;
+    ((RealTimeBilateralFilterV3)localObject).updateParam(f2, f3);
+    this.mBilaterialFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame1);
+    FrameUtil.clearFrame(this.mVarianceFrame1, 0.0F, 0.0F, 0.0F, 1.0F, 360, i);
+    this.mVarianceFilter.setPositions(paramList);
+    this.mVarianceFilter.setTexCords(GlUtil.ORIGIN_TEX_COORDS);
+    this.mVarianceFilter.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
+    this.mVarianceFilter.setSkinAlpha(f1);
+    this.mVarianceFilter.RenderProcess(paramFrame.getTextureId(), 360, i, -1, 0.0D, this.mVarianceFrame1);
+    this.mBilaterialFilter.updateParam(f2, f3);
+    this.mBilaterialFilter.RenderProcess(this.mVarianceFrame1.getTextureId(), 360, i, -1, 0.0D, this.mBoxFrame2);
+    if (this.ifDenoise)
+    {
       this.mProcessVarianceFilterDenoise.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
       this.mProcessVarianceFilterDenoise.setTexture3(this.mBoxFrame2.getLastRenderTextureId());
       this.mProcessVarianceFilterDenoise.setDenoiseTexture(this.mlastBeforeDenoiseFrame.getTextureId());
+      paramList = this.mProcessVarianceFilterDenoise.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
     }
-    for (paramList = this.mProcessVarianceFilterDenoise.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);; paramList = this.mProcessVarianceFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height))
+    else
     {
-      paramFrame.unlock();
-      this.ifDenoise = false;
-      this.mBgSharpenFilter.setVarianceMask(this.mBoxFrame2.getLastRenderTextureId());
-      paramFrame = this.mBgSharpenFilter.RenderProcess(paramList.getTextureId(), paramList.width, paramList.height);
-      paramList.unlock();
-      return paramFrame;
-      if (paramInt3 == 90)
-      {
-        f1 = paramList.width();
-        f2 = paramList.height();
-        paramList.left -= 0.5F * f1;
-        paramList.top -= 0.1F * f2;
-        paramList.right = (f1 * 0.1F + paramList.right);
-        paramList.bottom += f2 * 0.1F;
-        break;
-      }
-      if (paramInt3 == 180)
-      {
-        f1 = paramList.width();
-        f2 = paramList.height();
-        paramList.left -= 0.1F * f1;
-        paramList.top -= 0.5F * f2;
-        paramList.right = (f1 * 0.1F + paramList.right);
-        paramList.bottom += f2 * 0.1F;
-        break;
-      }
-      f1 = paramList.width();
-      f2 = paramList.height();
-      paramList.left -= 0.1F * f1;
-      paramList.top -= 0.1F * f2;
-      paramList.right = (f1 * 0.5F + paramList.right);
-      paramList.bottom += f2 * 0.1F;
-      break;
-      label663:
       this.mProcessVarianceFilter.setTexture2(this.mBoxFrame1.getLastRenderTextureId());
       this.mProcessVarianceFilter.setTexture3(this.mBoxFrame2.getLastRenderTextureId());
+      paramList = this.mProcessVarianceFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
     }
+    paramFrame.unlock();
+    this.ifDenoise = false;
+    this.mBgSharpenFilter.setVarianceMask(this.mBoxFrame2.getLastRenderTextureId());
+    paramFrame = this.mBgSharpenFilter.RenderProcess(paramList.getTextureId(), paramList.width, paramList.height);
+    paramList.unlock();
+    return paramFrame;
   }
   
   public void clear()
   {
     this.mVarianceFilter.clearGLSLSelf();
-    this.mBgSharpenFilter.ClearGLSL();
-    this.mBilaterialFilter.ClearGLSL();
+    this.mBgSharpenFilter.clearGLSL();
+    this.mBilaterialFilter.clearGLSL();
     this.mProcessVarianceFilter.clearGLSLSelf();
     this.mProcessVarianceFilterDenoise.clearGLSLSelf();
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mBoxFrame1.clear();
     this.mBoxFrame2.clear();
     this.mVarianceFrame1.clear();
@@ -188,46 +203,57 @@ public class RealTimeSmoothFilterV3
   {
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      this.mProcessVarianceFilter.setSize(paramInt1, paramInt2);
-      this.mProcessVarianceFilterDenoise.setSize(paramInt1, paramInt2);
-      this.mBgSharpenFilter.setStepSize(1.0F / paramInt1, 1.0F / paramInt2);
+      RealTimeProcessVarianceFilterV3 localRealTimeProcessVarianceFilterV3 = this.mProcessVarianceFilter;
+      float f1 = paramInt1;
+      float f2 = paramInt2;
+      localRealTimeProcessVarianceFilterV3.setSize(f1, f2);
+      this.mProcessVarianceFilterDenoise.setSize(f1, f2);
+      this.mBgSharpenFilter.setStepSize(1.0F / f1, 1.0F / f2);
     }
   }
   
   public Frame updateAndRender(Frame paramFrame, PTFaceAttr paramPTFaceAttr, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramFrame.width <= 0) || (paramFrame.height <= 0)) {
-      return paramFrame;
-    }
-    List localList = paramPTFaceAttr.getAllFacePoints();
-    if (localList.size() == 1)
+    Object localObject = paramFrame;
+    if (paramFrame.width > 0)
     {
-      int i = ((FaceStatus)paramPTFaceAttr.getFaceStatusList().get(0)).gender;
-      if ((i == 2) || (i == 0)) {
-        updateBlurAlphaValue(this.alphaValue * this.malePercent);
+      if (paramFrame.height <= 0) {
+        return paramFrame;
       }
-      for (;;)
+      localObject = paramPTFaceAttr.getAllFacePoints();
+      if (((List)localObject).size() == 1)
       {
-        return renderSmoothSingle(paramFrame, localList, paramInt1, paramInt2, paramInt3);
-        updateBlurAlphaValue(this.alphaValue * this.femalePercent);
+        int i = ((FaceStatus)paramPTFaceAttr.getFaceStatusList().get(0)).gender;
+        if ((i != 2) && (i != 0)) {
+          updateBlurAlphaValue(this.alphaValue * this.femalePercent);
+        } else {
+          updateBlurAlphaValue(this.alphaValue * this.malePercent);
+        }
+        return renderSmoothSingle(paramFrame, (List)localObject, paramInt1, paramInt2, paramInt3);
       }
+      updateBlurAlphaValue(this.alphaValue * this.femalePercent);
+      localObject = renderSmoothMulti(paramFrame);
     }
-    updateBlurAlphaValue(this.alphaValue * this.femalePercent);
-    return renderSmoothMulti(paramFrame);
+    return localObject;
   }
   
   public Frame updateAndRender(Frame paramFrame, List<List<PointF>> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramFrame.width <= 0) || (paramFrame.height <= 0)) {
-      return paramFrame;
-    }
-    if (paramList.size() == 1)
+    Frame localFrame = paramFrame;
+    if (paramFrame.width > 0)
     {
-      updateBlurAlphaValue(this.alphaValue * this.malePercent);
-      return renderSmoothSingle(paramFrame, paramList, paramInt1, paramInt2, paramInt3);
+      if (paramFrame.height <= 0) {
+        return paramFrame;
+      }
+      if (paramList.size() == 1)
+      {
+        updateBlurAlphaValue(this.alphaValue * this.malePercent);
+        return renderSmoothSingle(paramFrame, paramList, paramInt1, paramInt2, paramInt3);
+      }
+      updateBlurAlphaValue(this.alphaValue * this.femalePercent);
+      localFrame = renderSmoothMulti(paramFrame);
     }
-    updateBlurAlphaValue(this.alphaValue * this.femalePercent);
-    return renderSmoothMulti(paramFrame);
+    return localFrame;
   }
   
   public void updateBlurAlpha(float paramFloat)
@@ -259,7 +285,7 @@ public class RealTimeSmoothFilterV3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RealTimeSmoothFilterV3
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class VideoInfo
 {
   static VideoSpec cache_stVideoSpec = new VideoSpec();
   static VideoUrl cache_stVideoUrl = new VideoUrl();
-  public VideoSpec stVideoSpec;
-  public VideoUrl stVideoUrl;
+  public VideoSpec stVideoSpec = null;
+  public VideoUrl stVideoUrl = null;
   
   public VideoInfo() {}
   
@@ -28,17 +28,19 @@ public final class VideoInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stVideoUrl != null) {
-      paramJceOutputStream.write(this.stVideoUrl, 0);
+    Object localObject = this.stVideoUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stVideoSpec != null) {
-      paramJceOutputStream.write(this.stVideoSpec, 1);
+    localObject = this.stVideoSpec;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

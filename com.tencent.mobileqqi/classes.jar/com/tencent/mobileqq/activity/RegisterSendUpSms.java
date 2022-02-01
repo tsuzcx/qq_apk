@@ -11,13 +11,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
+import dgn;
 import dgo;
-import dgp;
+import dgq;
 import dgr;
 import dgs;
 import dgt;
-import dgu;
-import dgx;
+import dgw;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 
@@ -30,8 +30,8 @@ public class RegisterSendUpSms
   private Button jdField_a_of_type_AndroidWidgetButton = null;
   private TextView jdField_a_of_type_AndroidWidgetTextView = null;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new dgx(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dgu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new dgw(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new dgt(this);
   private String b;
   private int jdField_c_of_type_Int = 60;
   private ViewGroup jdField_c_of_type_AndroidViewViewGroup;
@@ -44,7 +44,7 @@ public class RegisterSendUpSms
   
   private void a(String paramString)
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dgp(this, paramString));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dgo(this, paramString));
   }
   
   private void b(int paramInt)
@@ -57,11 +57,11 @@ public class RegisterSendUpSms
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131234388));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131234389));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131234387));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131234388));
     String str = getResources().getString(2131562865, new Object[] { this.f, this.jdField_b_of_type_JavaLangString });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dgo(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new dgn(this));
   }
   
   private void f()
@@ -75,10 +75,10 @@ public class RegisterSendUpSms
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle(getString(2131562738));
     localQQCustomDialog.setMessage(getString(2131561968));
+    dgq localdgq = new dgq(this);
     dgr localdgr = new dgr(this);
-    dgs localdgs = new dgs(this);
-    localQQCustomDialog.setPositiveButton(2131562539, localdgr);
-    localQQCustomDialog.setNegativeButton(2131561746, localdgs);
+    localQQCustomDialog.setPositiveButton(2131562539, localdgq);
+    localQQCustomDialog.setNegativeButton(2131561746, localdgr);
     localQQCustomDialog.show();
   }
   
@@ -97,7 +97,7 @@ public class RegisterSendUpSms
   
   private void k()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new dgt(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new dgs(this));
   }
   
   protected boolean a()

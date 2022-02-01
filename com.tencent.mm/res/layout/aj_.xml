@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/azb" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acy" android:layout_alignParentLeft="true" />
-        <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b_e" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acz" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <ImageView android:layout_gravity="bottom" style="@style/he" />
-    <LinearLayout android:orientation="vertical" android:id="@id/dja" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@color/w_" android:gravity="center_vertical" android:id="@id/bu5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/uy" android:minHeight="@dimen/ux" />
-        <ImageView android:layout_gravity="bottom" android:id="@id/pm" style="@style/he" />
-    </LinearLayout>
-    <ListView android:id="@id/djb" android:background="@color/a3x" android:layout_height="wrap_content" style="@style/mn" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/hot" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" app:cornerRadius="@dimen/df">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_0_Alpha_0_5" />
+            <TextView android:textSize="@dimen/cp" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/e0r" />
+        </LinearLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/how" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" />
+</FrameLayout>

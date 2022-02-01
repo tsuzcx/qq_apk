@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin,type")
 public class DraftTextInfo
-  extends awge
+  extends Entity
 {
   public String mAtInfoStr;
   public String mSourceAtInfoStr;
   public int mSourceMsgTime;
   public String mSourceRichMsg;
   public int mSourceSummaryFlag;
-  public int mSourceType;
+  public int mSourceType = 0;
   public long mSourceUid;
+  public String mixedMsgInfoHtml;
   public long sourceMsgSeq;
   public String sourceMsgText;
   public String sourceMsgTroopName;
@@ -24,7 +25,7 @@ public class DraftTextInfo
   public String text;
   public long time;
   public int type;
-  @awhs
+  @unique
   public String uin;
 }
 

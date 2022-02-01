@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class VideoSpec
   extends JceStruct
 {
-  public long uiDuration;
-  public long uiHeight;
-  public long uiSize;
-  public long uiWidth;
+  public long uiDuration = 0L;
+  public long uiHeight = 0L;
+  public long uiSize = 0L;
+  public long uiWidth = 0L;
   
   public VideoSpec() {}
   
@@ -40,7 +40,7 @@ public final class VideoSpec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.VideoSpec
  * JD-Core Version:    0.7.0.1
  */

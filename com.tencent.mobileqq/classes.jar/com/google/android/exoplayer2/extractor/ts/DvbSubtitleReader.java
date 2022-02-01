@@ -37,23 +37,29 @@ public final class DvbSubtitleReader
   
   public void consume(ParsableByteArray paramParsableByteArray)
   {
-    int i = 0;
-    if ((!this.writingSample) || ((this.bytesToCheck == 2) && (!checkNextByte(paramParsableByteArray, 32)))) {}
-    while ((this.bytesToCheck == 1) && (!checkNextByte(paramParsableByteArray, 0))) {
-      return;
-    }
-    int j = paramParsableByteArray.getPosition();
-    int k = paramParsableByteArray.bytesLeft();
-    TrackOutput[] arrayOfTrackOutput = this.outputs;
-    int m = arrayOfTrackOutput.length;
-    while (i < m)
+    if (this.writingSample)
     {
-      TrackOutput localTrackOutput = arrayOfTrackOutput[i];
-      paramParsableByteArray.setPosition(j);
-      localTrackOutput.sampleData(paramParsableByteArray, k);
-      i += 1;
+      if ((this.bytesToCheck == 2) && (!checkNextByte(paramParsableByteArray, 32))) {
+        return;
+      }
+      int j = this.bytesToCheck;
+      int i = 0;
+      if ((j == 1) && (!checkNextByte(paramParsableByteArray, 0))) {
+        return;
+      }
+      j = paramParsableByteArray.getPosition();
+      int k = paramParsableByteArray.bytesLeft();
+      TrackOutput[] arrayOfTrackOutput = this.outputs;
+      int m = arrayOfTrackOutput.length;
+      while (i < m)
+      {
+        TrackOutput localTrackOutput = arrayOfTrackOutput[i];
+        paramParsableByteArray.setPosition(j);
+        localTrackOutput.sampleData(paramParsableByteArray, k);
+        i += 1;
+      }
+      this.sampleBytesWritten += k;
     }
-    this.sampleBytesWritten += k;
   }
   
   public void createTracks(ExtractorOutput paramExtractorOutput, TsPayloadReader.TrackIdGenerator paramTrackIdGenerator)
@@ -104,7 +110,7 @@ public final class DvbSubtitleReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.DvbSubtitleReader
  * JD-Core Version:    0.7.0.1
  */

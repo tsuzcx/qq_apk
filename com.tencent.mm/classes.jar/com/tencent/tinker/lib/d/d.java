@@ -11,17 +11,17 @@ public abstract interface d
   
   public abstract void a(File paramFile1, File paramFile2, String paramString, int paramInt);
   
-  public abstract void a(File paramFile, String paramString1, String paramString2);
-  
   public abstract void a(File paramFile, Throwable paramThrowable);
   
   public abstract void a(File paramFile, List<File> paramList, Throwable paramThrowable);
   
   public abstract void a(File paramFile, boolean paramBoolean, long paramLong);
   
-  public abstract void ac(Intent paramIntent);
+  public abstract void aW(Intent paramIntent);
   
-  public abstract void e(File paramFile, int paramInt);
+  public abstract void b(File paramFile, String paramString1, String paramString2);
+  
+  public abstract void h(File paramFile, int paramInt);
 }
 
 

@@ -1,44 +1,105 @@
 package com.tencent.mm.ui;
 
-public abstract interface c
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public class c
 {
-  public abstract void NU(int paramInt);
+  private int YjR;
+  private int aduA;
+  private boolean aduv;
+  private a aduw;
+  public View adux;
+  private int aduy;
+  public ViewGroup.LayoutParams aduz;
+  private Context mContext;
+  public ViewTreeObserver.OnGlobalLayoutListener qZ;
   
-  public abstract void NV(int paramInt);
+  private c(Activity paramActivity, boolean paramBoolean)
+  {
+    AppMethodBeat.i(141275);
+    this.aduv = false;
+    this.qZ = new ViewTreeObserver.OnGlobalLayoutListener()
+    {
+      public final void onGlobalLayout()
+      {
+        AppMethodBeat.i(141271);
+        c.a(c.this);
+        AppMethodBeat.o(141271);
+      }
+    };
+    this.mContext = paramActivity;
+    this.aduv = paramBoolean;
+    paramActivity = (FrameLayout)paramActivity.findViewById(16908290);
+    if (paramActivity == null)
+    {
+      AppMethodBeat.o(141275);
+      return;
+    }
+    this.adux = paramActivity.getChildAt(0);
+    this.adux.getViewTreeObserver().addOnGlobalLayoutListener(this.qZ);
+    this.aduz = this.adux.getLayoutParams();
+    AppMethodBeat.o(141275);
+  }
   
-  public abstract void NW(int paramInt);
+  private c(Activity paramActivity, boolean paramBoolean, View paramView, a parama)
+  {
+    AppMethodBeat.i(141276);
+    this.aduv = false;
+    this.qZ = new ViewTreeObserver.OnGlobalLayoutListener()
+    {
+      public final void onGlobalLayout()
+      {
+        AppMethodBeat.i(141271);
+        c.a(c.this);
+        AppMethodBeat.o(141271);
+      }
+    };
+    this.mContext = paramActivity;
+    this.aduv = paramBoolean;
+    this.adux = paramView;
+    this.aduw = parama;
+    this.adux.getViewTreeObserver().addOnGlobalLayoutListener(this.qZ);
+    this.aduz = this.adux.getLayoutParams();
+    AppMethodBeat.o(141276);
+  }
   
-  public abstract void NX(int paramInt);
+  public static void a(Activity paramActivity, boolean paramBoolean, View paramView, a parama)
+  {
+    AppMethodBeat.i(141274);
+    new c(paramActivity, paramBoolean, paramView, parama);
+    AppMethodBeat.o(141274);
+  }
   
-  public abstract void dAP();
+  public static c bM(Activity paramActivity)
+  {
+    AppMethodBeat.i(249373);
+    paramActivity = new c(paramActivity, false);
+    AppMethodBeat.o(249373);
+    return paramActivity;
+  }
   
-  public abstract int getContactTabUnread();
+  public static void h(Activity paramActivity, boolean paramBoolean)
+  {
+    AppMethodBeat.i(141273);
+    new c(paramActivity, paramBoolean);
+    AppMethodBeat.o(141273);
+  }
   
-  public abstract int getCurIdx();
-  
-  public abstract int getFriendTabUnread();
-  
-  public abstract int getMainTabUnread();
-  
-  public abstract boolean getSettingsPoint();
-  
-  public abstract int getSettingsTabUnread();
-  
-  public abstract boolean getShowFriendPoint();
-  
-  public abstract void k(int paramInt, float paramFloat);
-  
-  public abstract void qa(boolean paramBoolean);
-  
-  public abstract void qb(boolean paramBoolean);
-  
-  public abstract void setOnTabClickListener(c.a parama);
-  
-  public abstract void setTo(int paramInt);
+  public static abstract interface a
+  {
+    public abstract void cK(boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.c
  * JD-Core Version:    0.7.0.1
  */

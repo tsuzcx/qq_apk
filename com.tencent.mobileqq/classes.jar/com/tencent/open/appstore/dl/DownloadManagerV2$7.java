@@ -1,90 +1,93 @@
 package com.tencent.open.appstore.dl;
 
-import amqe;
 import android.text.TextUtils;
-import bfkr;
-import bflg;
-import bflp;
-import bflq;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.UpgradeController;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.open.appstore.report.AppCenterReporter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.MD5;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.io.File;
 import protocol.KQQConfig.UpgradeInfo;
 
-public class DownloadManagerV2$7
+class DownloadManagerV2$7
   implements Runnable
 {
-  public DownloadManagerV2$7(bfkr parambfkr, DownloadInfo paramDownloadInfo) {}
+  DownloadManagerV2$7(DownloadManagerV2 paramDownloadManagerV2, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.this$0.a(this.a.d);
-      if (localTMAssistantDownloadTaskInfo != null)
+      Object localObject1 = this.this$0.g(this.a.d);
+      if (localObject1 != null)
       {
-        this.a.l = localTMAssistantDownloadTaskInfo.mSavePath;
-        if ((this.a.jdField_e_of_type_Boolean) && ("com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString)))
+        this.a.q = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+        boolean bool = this.a.P;
+        if ((bool) && ("com.tencent.mobileqq".equals(this.a.e)))
         {
-          File localFile = new File(this.a.l);
-          UpgradeDetailWrapper localUpgradeDetailWrapper = amqe.a().a();
-          if ((localFile.exists()) && (localUpgradeDetailWrapper != null))
+          localObject2 = new File(this.a.q);
+          UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().d();
+          if ((((File)localObject2).exists()) && (localUpgradeDetailWrapper != null))
           {
-            String str = bflq.a(localFile);
-            if (!TextUtils.equals(localUpgradeDetailWrapper.a.strNewSoftwareMD5.toUpperCase(), str.toUpperCase()))
+            String str = MD5.a((File)localObject2);
+            if (!TextUtils.equals(localUpgradeDetailWrapper.b.strNewSoftwareMD5.toUpperCase(), str.toUpperCase()))
             {
-              bfkr.a(this.this$0, this.a, -51, "download file md5 check failed(not patche)");
-              localFile.delete();
+              DownloadManagerV2.a(this.this$0, this.a, -51, "download file md5 check failed(not patche)");
+              ((File)localObject2).delete();
               return;
             }
           }
         }
-        this.a.c = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        bflp.b("DownloadManagerV2", "onDownload complete, info.filePath = " + this.a.l);
-        if ((!"com.tencent.mobileqq".equals(this.a.jdField_e_of_type_JavaLangString)) || (!this.this$0.a())) {
-          break label388;
+        this.a.E = ((TMAssistantDownloadTaskInfo)localObject1).mTotalDataLen;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onDownload complete, info.filePath = ");
+        ((StringBuilder)localObject2).append(this.a.q);
+        LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject2).toString());
+        if (("com.tencent.mobileqq".equals(this.a.e)) && (this.this$0.f()))
+        {
+          LogUtility.b("DownloadManagerV2", "QQ Download complete begin write code ......");
+          this.a.D = DownloadManagerV2.b(this.this$0, this.a);
+          if (this.a.D != 0)
+          {
+            LogUtility.b("DownloadManagerV2", "QQ apk write code fail......");
+            this.a.a(-2);
+            this.this$0.e(this.a);
+            DownloadManagerV2.a(this.this$0, this.a, this.a.D, null);
+            return;
+          }
+          LogUtility.b("DownloadManagerV2", "QQ apk code suc......");
         }
-        bflp.b("DownloadManagerV2", "QQ Download complete begin write code ......");
-        this.a.j = bfkr.a(this.this$0, this.a);
-        if (this.a.j == 0) {
-          break label338;
+        else if (!TextUtils.isEmpty(this.a.e))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.a.e);
+          ((StringBuilder)localObject1).append(" Download complete begin write code ......");
+          LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject1).toString());
+          DownloadManagerV2.c(this.this$0, this.a);
+          return;
         }
-        bflp.b("DownloadManagerV2", "QQ apk write code fail......");
-        this.a.a(-2);
-        this.this$0.c(this.a);
-        bfkr.a(this.this$0, this.a, this.a.j, null);
+        this.this$0.e(this.a);
+        this.this$0.a(4, this.a);
+        long l = ((TMAssistantDownloadTaskInfo)localObject1).mTotalDataLen;
+        this.this$0.a(this.a, l);
       }
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
-      bflp.b("AppCenterReporter", "from:[doMd5CheckAndWriteCode]");
-      bflg.b(this.a);
-      if (this.a.a)
-      {
-        this.this$0.a(this.a, false);
-        return;
-        label338:
-        bflp.b("DownloadManagerV2", "QQ apk code suc......");
-        label388:
-        do
-        {
-          this.this$0.c(this.a);
-          this.this$0.a(4, this.a);
-          long l = localException.mTotalDataLen;
-          this.this$0.a(this.a, l);
-          break;
-        } while (TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString));
-        bflp.b("DownloadManagerV2", this.a.jdField_e_of_type_JavaLangString + " Download complete begin write code ......");
-        bfkr.b(this.this$0, this.a);
-      }
+      LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
+    }
+    LogUtility.b("AppCenterReporter", "from:[doMd5CheckAndWriteCode]");
+    AppCenterReporter.b(this.a);
+    if (this.a.w) {
+      this.this$0.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.7
  * JD-Core Version:    0.7.0.1
  */

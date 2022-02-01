@@ -5,16 +5,16 @@ import android.content.ContentResolver;
 @Deprecated
 public class WebIconDatabase
 {
-  private static WebIconDatabase mInstance;
+  private static WebIconDatabase a;
   
-  private static WebIconDatabase createInstance()
+  private static WebIconDatabase a()
   {
     try
     {
-      if (mInstance == null) {
-        mInstance = new WebIconDatabase();
+      if (a == null) {
+        a = new WebIconDatabase();
       }
-      WebIconDatabase localWebIconDatabase = mInstance;
+      WebIconDatabase localWebIconDatabase = a;
       return localWebIconDatabase;
     }
     finally {}
@@ -22,17 +22,17 @@ public class WebIconDatabase
   
   public static WebIconDatabase getInstance()
   {
-    return createInstance();
+    return a();
   }
   
-  public void bulkRequestIconForPageUrl(ContentResolver paramContentResolver, String paramString, WebIconDatabase.IconListener paramIconListener) {}
+  public void bulkRequestIconForPageUrl(ContentResolver paramContentResolver, String paramString, WebIconDatabase.a parama) {}
   
   public void close()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().closeIconDB();
+      localx.c().m();
       return;
     }
     android.webkit.WebIconDatabase.getInstance().close();
@@ -40,10 +40,10 @@ public class WebIconDatabase
   
   public void open(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().openIconDB(paramString);
+      localx.c().b(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().open(paramString);
@@ -51,10 +51,10 @@ public class WebIconDatabase
   
   public void releaseIconForPageUrl(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().releaseIconForPageUrl(paramString);
+      localx.c().d(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().releaseIconForPageUrl(paramString);
@@ -62,32 +62,32 @@ public class WebIconDatabase
   
   public void removeAllIcons()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().removeAllIcons();
+      localx.c().l();
       return;
     }
     android.webkit.WebIconDatabase.getInstance().removeAllIcons();
   }
   
-  public void requestIconForPageUrl(String paramString, WebIconDatabase.IconListener paramIconListener)
+  public void requestIconForPageUrl(String paramString, WebIconDatabase.a parama)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().requestIconForPageUrl(paramString, new WebIconDatabase.1(this, paramIconListener));
+      localx.c().a(paramString, new WebIconDatabase.1(this, parama));
       return;
     }
-    android.webkit.WebIconDatabase.getInstance().requestIconForPageUrl(paramString, new WebIconDatabase.2(this, paramIconListener));
+    android.webkit.WebIconDatabase.getInstance().requestIconForPageUrl(paramString, new WebIconDatabase.2(this, parama));
   }
   
   public void retainIconForPageUrl(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localX5CoreEngine.wizard().retainIconForPageUrl(paramString);
+      localx.c().c(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().retainIconForPageUrl(paramString);
@@ -95,7 +95,7 @@ public class WebIconDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebIconDatabase
  * JD-Core Version:    0.7.0.1
  */

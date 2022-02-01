@@ -1,71 +1,68 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.game.d.au;
-import com.tencent.mm.plugin.game.d.av;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.evp;
+import com.tencent.mm.protocal.protobuf.evq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class at
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private final b lFp;
+  private h callback;
+  final c mtC;
   
-  public at(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public at(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(111454);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new au();
-    ((b.a)localObject).fsY = new av();
-    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/gamereport";
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    localObject = (au)this.lFp.fsV.fta;
-    ((au)localObject).npZ = paramString1;
-    ((au)localObject).nrS = paramInt1;
-    ((au)localObject).nrT = paramInt2;
-    ((au)localObject).nrU = paramString2;
-    ((au)localObject).nrV = paramString3;
-    ((au)localObject).nrR = ((int)(System.currentTimeMillis() / 1000L));
-    AppMethodBeat.o(111454);
+    AppMethodBeat.i(41622);
+    Log.i("MicroMsg.NetSceneSearchGameList", "offset: %d, limit: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new evp();
+    ((c.a)localObject).otF = new evq();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/searchgamelist";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (evp)c.b.b(this.mtC.otB);
+    ((evp)localObject).IKo = paramInt1;
+    ((evp)localObject).IKp = paramInt2;
+    AppMethodBeat.o(41622);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(111455);
-    this.callback = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(111455);
+    AppMethodBeat.i(41623);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(41623);
     return i;
   }
   
   public final int getType()
   {
-    return 1223;
+    return 1215;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111456);
-    ab.i("MicroMsg.NetSceneGetGameIndex", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    AppMethodBeat.i(41624);
+    Log.i("MicroMsg.NetSceneSearchGameList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(111456);
+    AppMethodBeat.o(41624);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.at
  * JD-Core Version:    0.7.0.1
  */

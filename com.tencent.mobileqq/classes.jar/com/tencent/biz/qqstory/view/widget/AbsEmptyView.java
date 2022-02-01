@@ -10,22 +10,21 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import xsm;
-import xvq;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public abstract class AbsEmptyView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private int jdField_c_of_type_Int = 0;
-  private View jdField_c_of_type_AndroidViewView;
+  private TextView a;
+  private ImageView b;
+  private View c;
   private View d;
+  private View e;
+  private View f;
+  private Button g;
+  private int h;
+  private int i;
+  private int j = 0;
   
   public AbsEmptyView(Context paramContext)
   {
@@ -41,97 +40,100 @@ public abstract class AbsEmptyView
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      if (this.jdField_c_of_type_Int != paramInt) {}
-    }
-    do
+    if (!paramBoolean)
     {
-      do
-      {
+      int k = this.j;
+      if (k == paramInt) {
         return;
-      } while ((this.jdField_c_of_type_Int == 0) && (paramInt == 3));
-      this.jdField_c_of_type_Int = paramInt;
+      }
+      if ((k == 0) && (paramInt == 3)) {
+        return;
+      }
+    }
+    this.j = paramInt;
+    this.f.setVisibility(8);
+    if (paramInt == 0)
+    {
+      this.c.setVisibility(8);
       this.d.setVisibility(8);
-      if (paramInt == 0)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        return;
-      }
-      if (paramInt == 3)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        return;
-      }
-      if (paramInt == 1)
-      {
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380237));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131380221));
-        return;
-      }
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377898));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363337));
-        return;
-      }
-    } while (paramInt != 4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.d.setVisibility(0);
+      this.e.setVisibility(8);
+      return;
+    }
+    if (paramInt == 3)
+    {
+      this.c.setVisibility(0);
+      this.d.setVisibility(8);
+      this.e.setVisibility(8);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.e.setVisibility(0);
+      this.d.setVisibility(8);
+      this.c.setVisibility(8);
+      this.a = ((TextView)super.findViewById(2131450155));
+      this.b = ((ImageView)super.findViewById(2131450140));
+      return;
+    }
+    if (paramInt == 2)
+    {
+      this.c.setVisibility(8);
+      this.d.setVisibility(0);
+      this.e.setVisibility(8);
+      this.a = ((TextView)super.findViewById(2131447419));
+      this.b = ((ImageView)super.findViewById(2131429584));
+      return;
+    }
+    if (paramInt == 4)
+    {
+      this.c.setVisibility(8);
+      this.d.setVisibility(8);
+      this.e.setVisibility(8);
+      this.f.setVisibility(0);
+    }
   }
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561555, this);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131369781);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377891);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131377890);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131375738));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377898));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363337));
-    this.d = super.findViewById(2131378366);
-    this.jdField_a_of_type_Int = xsm.a(getContext());
-    this.jdField_b_of_type_Int = a();
+    LayoutInflater.from(paramContext).inflate(2131628135, this);
+    this.c = super.findViewById(2131437648);
+    this.d = super.findViewById(2131447411);
+    this.e = super.findViewById(2131447410);
+    this.g = ((Button)super.findViewById(2131444737));
+    this.a = ((TextView)super.findViewById(2131447419));
+    this.b = ((ImageView)super.findViewById(2131429584));
+    this.f = super.findViewById(2131447937);
+    this.h = UIUtils.b(getContext());
+    this.i = getViewHeight();
     a(0, true);
     super.postDelayed(new AbsEmptyView.2(this), 500L);
   }
-  
-  public abstract int a();
   
   public void a(int paramInt)
   {
     a(paramInt, false);
   }
   
+  public abstract int getViewHeight();
+  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_b_of_type_Int, 1073741824));
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.h, 1073741824), View.MeasureSpec.makeMeasureSpec(this.i, 1073741824));
   }
   
   public void setRetryClickListener(View.OnClickListener paramOnClickListener)
   {
     if (paramOnClickListener == null)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
+      this.g.setOnClickListener(null);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xvq(this, paramOnClickListener));
+    this.g.setOnClickListener(new AbsEmptyView.1(this, paramOnClickListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AbsEmptyView
  * JD-Core Version:    0.7.0.1
  */

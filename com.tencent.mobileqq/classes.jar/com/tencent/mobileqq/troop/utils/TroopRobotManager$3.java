@@ -1,28 +1,32 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcpg;
-import bcpp;
-import java.lang.ref.WeakReference;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 
-public class TroopRobotManager$3
-  implements Runnable
+final class TroopRobotManager$3
+  extends ClickableSpan
 {
-  public TroopRobotManager$3(bcpg parambcpg) {}
+  TroopRobotManager$3(String paramString, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      bcpp localbcpp = (bcpp)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbcpp != null) {
-        localbcpp.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
-      }
-    }
+    String str = URLUtil.guessUrl(this.a);
+    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.b);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.3
  * JD-Core Version:    0.7.0.1
  */

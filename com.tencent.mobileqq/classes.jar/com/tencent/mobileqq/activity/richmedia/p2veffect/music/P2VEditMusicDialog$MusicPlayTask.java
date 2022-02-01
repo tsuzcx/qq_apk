@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import ajti;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
@@ -12,12 +11,12 @@ public class P2VEditMusicDialog$MusicPlayTask
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Ajti.a() != null)
+    if (this.this$0.A.a() != null)
     {
       P2VEditMusicDialog localP2VEditMusicDialog = this.this$0;
-      localP2VEditMusicDialog.b += 1;
-      if (QLog.isColorLevel()) {}
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      localP2VEditMusicDialog.u += 1;
+      QLog.isColorLevel();
+      this.this$0.B.sendEmptyMessage(8);
     }
   }
 }

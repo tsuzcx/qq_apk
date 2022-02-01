@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox android:background="@null" android:layout_width="@dimen/ev" android:layout_height="@dimen/et" android:button="@drawable/vm"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/dd5" android:background="@color/a1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/dcu" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/dri" app:layout_constraintHeight_percent="0.25" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/dcv" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHeight_percent="0.75" app:layout_constraintLeft_toLeftOf="hr_">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aej" />
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+    <include android:id="@id/dcx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/dcv" app:layout_constraintTop_toTopOf="@id/dcv" layout="@layout/aef" />
+</androidx.constraintlayout.widget.ConstraintLayout>

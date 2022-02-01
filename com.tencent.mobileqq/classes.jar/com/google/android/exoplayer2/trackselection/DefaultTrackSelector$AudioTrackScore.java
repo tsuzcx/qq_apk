@@ -14,77 +14,64 @@ final class DefaultTrackSelector$AudioTrackScore
   private final int sampleRate;
   private final int withinRendererCapabilitiesScore;
   
-  public DefaultTrackSelector$AudioTrackScore(Format paramFormat, DefaultTrackSelector.Parameters paramParameters, int paramInt)
-  {
-    this.parameters = paramParameters;
-    if (DefaultTrackSelector.isSupported(paramInt, false))
-    {
-      paramInt = 1;
-      this.withinRendererCapabilitiesScore = paramInt;
-      if (!DefaultTrackSelector.formatHasLanguage(paramFormat, paramParameters.preferredAudioLanguage)) {
-        break label92;
-      }
-      paramInt = 1;
-      label40:
-      this.matchLanguageScore = paramInt;
-      if ((paramFormat.selectionFlags & 0x1) == 0) {
-        break label97;
-      }
-    }
-    label92:
-    label97:
-    for (paramInt = i;; paramInt = 0)
-    {
-      this.defaultSelectionFlagScore = paramInt;
-      this.channelCount = paramFormat.channelCount;
-      this.sampleRate = paramFormat.sampleRate;
-      this.bitrate = paramFormat.bitrate;
-      return;
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label40;
-    }
-  }
+  public DefaultTrackSelector$AudioTrackScore(Format paramFormat, DefaultTrackSelector.Parameters paramParameters, int paramInt) {}
   
   public int compareTo(@NonNull AudioTrackScore paramAudioTrackScore)
   {
-    int i = 1;
-    if (this.withinRendererCapabilitiesScore != paramAudioTrackScore.withinRendererCapabilitiesScore) {
-      return DefaultTrackSelector.access$200(this.withinRendererCapabilitiesScore, paramAudioTrackScore.withinRendererCapabilitiesScore);
+    int i = this.withinRendererCapabilitiesScore;
+    int j = paramAudioTrackScore.withinRendererCapabilitiesScore;
+    if (i != j) {
+      return DefaultTrackSelector.access$200(i, j);
     }
-    if (this.matchLanguageScore != paramAudioTrackScore.matchLanguageScore) {
-      return DefaultTrackSelector.access$200(this.matchLanguageScore, paramAudioTrackScore.matchLanguageScore);
+    i = this.matchLanguageScore;
+    j = paramAudioTrackScore.matchLanguageScore;
+    if (i != j) {
+      return DefaultTrackSelector.access$200(i, j);
     }
-    if (this.defaultSelectionFlagScore != paramAudioTrackScore.defaultSelectionFlagScore) {
-      return DefaultTrackSelector.access$200(this.defaultSelectionFlagScore, paramAudioTrackScore.defaultSelectionFlagScore);
+    i = this.defaultSelectionFlagScore;
+    j = paramAudioTrackScore.defaultSelectionFlagScore;
+    if (i != j) {
+      return DefaultTrackSelector.access$200(i, j);
     }
     if (this.parameters.forceLowestBitrate) {
       return DefaultTrackSelector.access$200(paramAudioTrackScore.bitrate, this.bitrate);
     }
-    if (this.withinRendererCapabilitiesScore == 1) {}
-    while (this.channelCount != paramAudioTrackScore.channelCount)
+    i = this.withinRendererCapabilitiesScore;
+    j = 1;
+    if (i != 1) {
+      j = -1;
+    }
+    i = this.channelCount;
+    int k = paramAudioTrackScore.channelCount;
+    if (i != k) {
+      i = DefaultTrackSelector.access$200(i, k);
+    }
+    for (;;)
     {
-      return i * DefaultTrackSelector.access$200(this.channelCount, paramAudioTrackScore.channelCount);
-      i = -1;
+      return j * i;
+      i = this.sampleRate;
+      k = paramAudioTrackScore.sampleRate;
+      if (i != k) {
+        i = DefaultTrackSelector.access$200(i, k);
+      } else {
+        i = DefaultTrackSelector.access$200(this.bitrate, paramAudioTrackScore.bitrate);
+      }
     }
-    if (this.sampleRate != paramAudioTrackScore.sampleRate) {
-      return i * DefaultTrackSelector.access$200(this.sampleRate, paramAudioTrackScore.sampleRate);
-    }
-    return i * DefaultTrackSelector.access$200(this.bitrate, paramAudioTrackScore.bitrate);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (AudioTrackScore)paramObject;
-    } while ((this.withinRendererCapabilitiesScore == paramObject.withinRendererCapabilitiesScore) && (this.matchLanguageScore == paramObject.matchLanguageScore) && (this.defaultSelectionFlagScore == paramObject.defaultSelectionFlagScore) && (this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (this.bitrate == paramObject.bitrate));
+      return (this.withinRendererCapabilitiesScore == paramObject.withinRendererCapabilitiesScore) && (this.matchLanguageScore == paramObject.matchLanguageScore) && (this.defaultSelectionFlagScore == paramObject.defaultSelectionFlagScore) && (this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (this.bitrate == paramObject.bitrate);
+    }
     return false;
   }
   
@@ -95,7 +82,7 @@ final class DefaultTrackSelector$AudioTrackScore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.DefaultTrackSelector.AudioTrackScore
  * JD-Core Version:    0.7.0.1
  */

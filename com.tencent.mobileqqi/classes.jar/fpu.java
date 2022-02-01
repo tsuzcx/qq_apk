@@ -1,14 +1,15 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity;
 
 public class fpu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   public fpu(CloudFileBrowserActivity paramCloudFileBrowserActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.g();
+    CloudFileBrowserActivity.a(this.a);
   }
 }
 

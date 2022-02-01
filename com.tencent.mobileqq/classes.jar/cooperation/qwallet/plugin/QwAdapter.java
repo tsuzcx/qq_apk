@@ -12,7 +12,7 @@ public class QwAdapter<V>
 {
   protected LayoutInflater layoutInflater;
   protected List<V> list;
-  private QwAdapter.IViewHolder mCloneObj;
+  private QwAdapter.IViewHolder mCloneObj = null;
   private QwAdapter.IViewHolder mHolder;
   protected int resource;
   
@@ -46,11 +46,9 @@ public class QwAdapter<V>
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {
-      paramView = this.layoutInflater.inflate(this.resource, paramViewGroup, false);
-    }
-    for (;;)
+    if (paramView == null)
     {
+      paramView = this.layoutInflater.inflate(this.resource, paramViewGroup, false);
       try
       {
         if (this.mCloneObj != null) {
@@ -62,18 +60,20 @@ public class QwAdapter<V>
       catch (CloneNotSupportedException paramViewGroup)
       {
         paramViewGroup.printStackTrace();
-        continue;
       }
-      paramViewGroup = this.list.get(paramInt);
-      this.mHolder.setItemView(paramInt, paramView, paramViewGroup);
-      return paramView;
+    }
+    else
+    {
       this.mHolder = ((QwAdapter.IViewHolder)paramView.getTag());
     }
+    paramViewGroup = this.list.get(paramInt);
+    this.mHolder.setItemView(paramInt, paramView, paramViewGroup);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QwAdapter
  * JD-Core Version:    0.7.0.1
  */

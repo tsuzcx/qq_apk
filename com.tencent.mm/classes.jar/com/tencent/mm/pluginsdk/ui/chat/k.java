@@ -1,48 +1,45 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.t;
-import com.tencent.mm.api.t.a;
+import com.tencent.mm.api.ad;
+import com.tencent.mm.api.ad.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class k
-  extends t
+  extends ad
   implements j
 {
-  public final void B(EmojiInfo paramEmojiInfo)
+  public final void cSg()
   {
-    AppMethodBeat.i(62452);
-    this.bWo.a(paramEmojiInfo);
-    AppMethodBeat.o(62452);
+    AppMethodBeat.i(104689);
+    this.hej.onHide();
+    AppMethodBeat.o(104689);
   }
   
-  public final void C(EmojiInfo paramEmojiInfo)
+  public final void cSh() {}
+  
+  public final boolean cSi()
   {
-    AppMethodBeat.i(62453);
-    this.bWo.a(paramEmojiInfo);
-    AppMethodBeat.o(62453);
+    return false;
   }
   
-  public final boolean bPD()
+  public final boolean cSj()
   {
-    return true;
+    return false;
   }
   
-  public final boolean bPE()
+  public final void o(EmojiInfo paramEmojiInfo)
   {
-    return true;
+    AppMethodBeat.i(104687);
+    this.hej.a(paramEmojiInfo);
+    AppMethodBeat.o(104687);
   }
   
-  public final void bPF()
-  {
-    AppMethodBeat.i(62454);
-    this.bWo.onHide();
-    AppMethodBeat.o(62454);
-  }
+  public final void y(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.k
  * JD-Core Version:    0.7.0.1
  */

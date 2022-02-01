@@ -1,29 +1,33 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.a;
+import com.tencent.mm.ui.widget.a.e;
 
 final class WalletPayUI$26
-  implements c.a
+  implements CompoundButton.OnCheckedChangeListener
 {
-  WalletPayUI$26(WalletPayUI paramWalletPayUI) {}
+  WalletPayUI$26(WalletPayUI paramWalletPayUI, e parame) {}
   
-  public final Intent p(int paramInt, Bundle paramBundle)
+  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppMethodBeat.i(46064);
-    ab.i(this.tXq.TAG, "pay process end");
-    this.tXq.tWF = false;
-    paramBundle = new Intent();
-    AppMethodBeat.o(46064);
-    return paramBundle;
+    AppMethodBeat.i(315519);
+    paramCompoundButton = this.VoO.aEJ(-2);
+    if (paramBoolean)
+    {
+      paramCompoundButton.setEnabled(false);
+      AppMethodBeat.o(315519);
+      return;
+    }
+    paramCompoundButton.setEnabled(true);
+    AppMethodBeat.o(315519);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.26
  * JD-Core Version:    0.7.0.1
  */

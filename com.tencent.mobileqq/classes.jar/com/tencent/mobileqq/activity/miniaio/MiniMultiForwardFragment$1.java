@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aupg;
-import axnb;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.replymsg.ForwardMsgManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -16,37 +17,37 @@ class MiniMultiForwardFragment$1
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
-      ChatMessage localChatMessage = ((axnb)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
-      if (localChatMessage == null) {
-        break label161;
+      ChatMessage localChatMessage = ((ForwardMsgManager)this.this$0.c.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(MiniMultiForwardFragment.b(this.this$0));
+      if (localChatMessage != null)
+      {
+        localObject = new ArrayList(1);
+        ((ArrayList)localObject).add(localChatMessage);
+        localObject = MiniMultiForwardFragment.a(this.this$0, (ArrayList)localObject);
       }
-      localArrayList = new ArrayList(1);
-      localArrayList.add(localChatMessage);
-      localArrayList = MiniMultiForwardFragment.a(this.this$0, localArrayList);
     }
-    label161:
-    for (;;)
+    else if (MiniMultiForwardFragment.a(this.this$0) == 2)
     {
-      if (localArrayList != null) {
-        ThreadManager.getUIHandler().post(new MiniMultiForwardFragment.1.1(this, localArrayList));
-      }
-      return;
-      if (MiniMultiForwardFragment.a(this.this$0) == 2)
-      {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0);
-        MiniMultiForwardFragment.a(this.this$0, localArrayList);
-      }
-      else if (MiniMultiForwardFragment.a(this.this$0) == 1)
-      {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, aupg.a().a);
-      }
-      else
-      {
-        QLog.e("MiniMultiForwardPreviewFragment", 2, "Forward type unknown");
-      }
+      localObject = MiniMultiForwardFragment.c(this.this$0);
+      MiniMultiForwardFragment.b(this.this$0, (ArrayList)localObject);
+    }
+    else if (MiniMultiForwardFragment.a(this.this$0) == 1)
+    {
+      localObject = MiniMultiForwardFragment.a(this.this$0, MultiMsgManager.a().c);
+    }
+    else if (MiniMultiForwardFragment.a(this.this$0) == 4)
+    {
+      localObject = this.this$0;
+      localObject = MiniMultiForwardFragment.a((MiniMultiForwardFragment)localObject, ((MiniMultiForwardFragment)localObject).e);
+    }
+    else
+    {
+      QLog.e("MiniMultiForwardPreviewFragment", 2, "Forward type unknown");
+    }
+    if (localObject != null) {
+      ThreadManager.getUIHandler().post(new MiniMultiForwardFragment.1.1(this, (ArrayList)localObject));
     }
   }
 }

@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aepc;
-import ahap;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
 
-public class TipsManager$2
+class TipsManager$2
   implements Runnable
 {
-  public TipsManager$2(ahap paramahap) {}
+  TipsManager$2(TipsManager paramTipsManager) {}
   
   public void run()
   {
-    if (ahap.a(this.this$0) != null) {
-      ahap.a(this.this$0).a(ahap.a(this.this$0));
+    if (TipsManager.a(this.this$0) != null) {
+      TipsManager.a(this.this$0).a(this.this$0.b);
     }
-    ahap.a(this.this$0, null);
-    if (this.this$0.a != null) {
-      this.this$0.a.clear();
-    }
+    TipsManager localTipsManager = this.this$0;
+    localTipsManager.b = null;
+    localTipsManager.a(2000, new Object[0]);
   }
 }
 

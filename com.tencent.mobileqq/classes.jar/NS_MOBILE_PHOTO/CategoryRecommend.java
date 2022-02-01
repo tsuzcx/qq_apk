@@ -9,7 +9,7 @@ public final class CategoryRecommend
   extends JceStruct
 {
   static ArrayList<CategoryRecommendItem> cache_items = new ArrayList();
-  public ArrayList<CategoryRecommendItem> items;
+  public ArrayList<CategoryRecommendItem> items = null;
   
   static
   {
@@ -31,14 +31,15 @@ public final class CategoryRecommend
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.items != null) {
-      paramJceOutputStream.write(this.items, 0);
+    ArrayList localArrayList = this.items;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.CategoryRecommend
  * JD-Core Version:    0.7.0.1
  */

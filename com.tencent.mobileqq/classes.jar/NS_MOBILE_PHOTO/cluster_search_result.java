@@ -8,11 +8,11 @@ public final class cluster_search_result
   extends JceStruct
 {
   public String categoryid = "";
-  public float confidence;
+  public float confidence = 0.0F;
   public String groupid = "";
-  public boolean has_identify;
+  public boolean has_identify = false;
   public String nickname = "";
-  public long uin;
+  public long uin = 0L;
   
   public cluster_search_result() {}
   
@@ -38,23 +38,26 @@ public final class cluster_search_result
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 0);
+    String str = this.categoryid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.confidence, 1);
     paramJceOutputStream.write(this.uin, 2);
     paramJceOutputStream.write(this.has_identify, 3);
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 4);
+    str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 5);
+    str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.cluster_search_result
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/cxi" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mbq" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black_group_item" android:id="@id/mbn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:text="@string/iwi" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/mbp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dip" android:text="@string/ps1" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="12.0dip" android:layout_alignBaseline="@id/mbn" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/jx5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <include android:layout_gravity="center" android:id="@id/jwx" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jwy" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jwz" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jx0" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jx1" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/jx6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <include android:layout_gravity="center" android:id="@id/jx2" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jx3" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/jx4" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/mbl" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+        <include android:layout_gravity="center" android:id="@id/mbm" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aj8" />
+    </LinearLayout>
+</LinearLayout>

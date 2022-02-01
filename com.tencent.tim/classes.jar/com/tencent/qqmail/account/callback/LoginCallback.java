@@ -1,0 +1,14 @@
+package com.tencent.qqmail.account.callback;
+
+public abstract interface LoginCallback
+{
+  public abstract void loginFail();
+  
+  public abstract void loginSuccess();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qqmail.account.callback.LoginCallback
+ * JD-Core Version:    0.7.0.1
+ */

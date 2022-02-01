@@ -27,7 +27,8 @@ public final class JsonTreeWriter
   
   private JsonElement peek()
   {
-    return (JsonElement)this.stack.get(this.stack.size() - 1);
+    List localList = this.stack;
+    return (JsonElement)localList.get(localList.size() - 1);
   }
   
   private void put(JsonElement paramJsonElement)
@@ -72,34 +73,40 @@ public final class JsonTreeWriter
   
   public void close()
   {
-    if (!this.stack.isEmpty()) {
-      throw new IOException("Incomplete document");
+    if (this.stack.isEmpty())
+    {
+      this.stack.add(SENTINEL_CLOSED);
+      return;
     }
-    this.stack.add(SENTINEL_CLOSED);
+    throw new IOException("Incomplete document");
   }
   
   public JsonWriter endArray()
   {
-    if ((this.stack.isEmpty()) || (this.pendingName != null)) {
-      throw new IllegalStateException();
-    }
-    if ((peek() instanceof JsonArray))
+    if ((!this.stack.isEmpty()) && (this.pendingName == null))
     {
-      this.stack.remove(this.stack.size() - 1);
-      return this;
+      if ((peek() instanceof JsonArray))
+      {
+        List localList = this.stack;
+        localList.remove(localList.size() - 1);
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
   
   public JsonWriter endObject()
   {
-    if ((this.stack.isEmpty()) || (this.pendingName != null)) {
-      throw new IllegalStateException();
-    }
-    if ((peek() instanceof JsonObject))
+    if ((!this.stack.isEmpty()) && (this.pendingName == null))
     {
-      this.stack.remove(this.stack.size() - 1);
-      return this;
+      if ((peek() instanceof JsonObject))
+      {
+        List localList = this.stack;
+        localList.remove(localList.size() - 1);
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
@@ -108,21 +115,25 @@ public final class JsonTreeWriter
   
   public JsonElement get()
   {
-    if (!this.stack.isEmpty()) {
-      throw new IllegalStateException("Expected one JSON element but was " + this.stack);
+    if (this.stack.isEmpty()) {
+      return this.product;
     }
-    return this.product;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected one JSON element but was ");
+    localStringBuilder.append(this.stack);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public JsonWriter name(String paramString)
   {
-    if ((this.stack.isEmpty()) || (this.pendingName != null)) {
-      throw new IllegalStateException();
-    }
-    if ((peek() instanceof JsonObject))
+    if ((!this.stack.isEmpty()) && (this.pendingName == null))
     {
-      this.pendingName = paramString;
-      return this;
+      if ((peek() instanceof JsonObject))
+      {
+        this.pendingName = paramString;
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
@@ -135,8 +146,12 @@ public final class JsonTreeWriter
   
   public JsonWriter value(double paramDouble)
   {
-    if ((!isLenient()) && ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble)))) {
-      throw new IllegalArgumentException("JSON forbids NaN and infinities: " + paramDouble);
+    if ((!isLenient()) && ((Double.isNaN(paramDouble)) || (Double.isInfinite(paramDouble))))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("JSON forbids NaN and infinities: ");
+      localStringBuilder.append(paramDouble);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     put(new JsonPrimitive(Double.valueOf(paramDouble)));
     return this;
@@ -165,8 +180,12 @@ public final class JsonTreeWriter
     if (!isLenient())
     {
       double d = paramNumber.doubleValue();
-      if ((Double.isNaN(d)) || (Double.isInfinite(d))) {
-        throw new IllegalArgumentException("JSON forbids NaN and infinities: " + paramNumber);
+      if ((Double.isNaN(d)) || (Double.isInfinite(d)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JSON forbids NaN and infinities: ");
+        localStringBuilder.append(paramNumber);
+        throw new IllegalArgumentException(localStringBuilder.toString());
       }
     }
     put(new JsonPrimitive(paramNumber));
@@ -190,7 +209,7 @@ public final class JsonTreeWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.JsonTreeWriter
  * JD-Core Version:    0.7.0.1
  */

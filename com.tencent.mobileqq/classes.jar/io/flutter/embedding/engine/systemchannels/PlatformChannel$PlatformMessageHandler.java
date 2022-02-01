@@ -1,11 +1,13 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import java.util.List;
 
 public abstract interface PlatformChannel$PlatformMessageHandler
 {
+  public abstract boolean clipboardHasStrings();
+  
   @Nullable
   public abstract CharSequence getClipboardData(@Nullable PlatformChannel.ClipboardContentFormat paramClipboardContentFormat);
   
@@ -29,7 +31,7 @@ public abstract interface PlatformChannel$PlatformMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessageHandler
  * JD-Core Version:    0.7.0.1
  */

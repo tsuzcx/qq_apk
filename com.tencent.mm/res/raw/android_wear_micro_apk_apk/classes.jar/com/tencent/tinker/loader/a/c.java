@@ -5,45 +5,45 @@ import java.util.ArrayList;
 
 public final class c
 {
-  public final String aat;
-  public final String alV;
-  public final String alW;
-  public final String alX;
-  public final String alY;
-  public final String alZ;
-  public final String ama;
-  public final String amb;
-  public final boolean amc;
-  public final String amd;
+  public final String adU;
+  public final String apA;
+  public final String apB;
+  public final boolean apC;
+  public final String apD;
+  public final String apv;
+  public final String apw;
+  public final String apx;
+  public final String apy;
+  public final String apz;
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    this.alV = paramString1;
-    this.aat = paramString2;
-    this.alW = paramString3;
-    this.alX = paramString4;
-    this.ama = paramString5;
-    this.alY = paramString6;
-    this.alZ = paramString7;
-    this.amb = paramString8;
+    this.apv = paramString1;
+    this.adU = paramString2;
+    this.apw = paramString3;
+    this.apx = paramString4;
+    this.apA = paramString5;
+    this.apy = paramString6;
+    this.apz = paramString7;
+    this.apB = paramString8;
     if (paramString8.equals("jar"))
     {
-      this.amc = true;
-      if (f.ai(paramString1))
+      this.apC = true;
+      if (f.am(paramString1))
       {
-        this.amd = (paramString1 + ".jar");
+        this.apD = (paramString1 + ".jar");
         return;
       }
-      this.amd = paramString1;
+      this.apD = paramString1;
       return;
     }
     if (paramString8.equals("raw"))
     {
-      this.amc = false;
-      this.amd = paramString1;
+      this.apC = false;
+      this.apD = paramString1;
       return;
     }
-    throw new TinkerRuntimeException("can't recognize dex mode:" + paramString8);
+    throw new TinkerRuntimeException("can't recognize dex mode:".concat(String.valueOf(paramString8)));
   }
   
   public static void c(String paramString, ArrayList<c> paramArrayList)
@@ -73,21 +73,21 @@ public final class c
   public final String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.alV);
+    localStringBuffer.append(this.apv);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.aat);
+    localStringBuffer.append(this.adU);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.alW);
+    localStringBuffer.append(this.apw);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.alX);
+    localStringBuffer.append(this.apx);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.alY);
+    localStringBuffer.append(this.apy);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.alZ);
+    localStringBuffer.append(this.apz);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.ama);
+    localStringBuffer.append(this.apA);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.amb);
+    localStringBuffer.append(this.apB);
     return localStringBuffer.toString();
   }
 }

@@ -15,12 +15,24 @@ final class BaseHandler$4
       int j = Process.getThreadPriority(Process.myTid());
       BaseHandler.InitalPriority.set(Integer.valueOf(j));
       BaseHandler.isRegulated.set(Boolean.valueOf(true));
-      if (BaseHandler.access$400(BaseHandler.access$300(Thread.currentThread().getName()))) {}
-      for (int i = BaseHandler.regulalteCount.incrementAndGet();; i = BaseHandler.regulalteCount.get())
-      {
-        QLog.i("BaseHandler", 1, "regultorPriority ThreadName:" + Thread.currentThread().getName() + "(" + Long.valueOf(l) + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
-        return;
+      int i;
+      if (BaseHandler.access$400(BaseHandler.access$300(Thread.currentThread().getName()))) {
+        i = BaseHandler.regulalteCount.incrementAndGet();
+      } else {
+        i = BaseHandler.regulalteCount.get();
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("regultorPriority ThreadName:");
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(Long.valueOf(l));
+      localStringBuilder.append(") currentPriority: ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(",changed:");
+      localStringBuilder.append(Process.getThreadPriority(Process.myTid()));
+      localStringBuilder.append(" regulated:");
+      localStringBuilder.append(i);
+      QLog.i("BaseHandler", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
@@ -31,7 +43,7 @@ final class BaseHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.thread.BaseHandler.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,18 @@
-import com.dataline.util.file.ImageInfo;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public final class fxl
-  implements Comparator
+  implements Parcelable.Creator
 {
-  public int a(ImageInfo paramImageInfo1, ImageInfo paramImageInfo2)
+  public FileInfo a(Parcel paramParcel)
   {
-    return -Long.valueOf(paramImageInfo1.a()).compareTo(Long.valueOf(paramImageInfo2.a()));
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/a6q" android:gravity="center_vertical" android:id="@id/axy" android:focusable="false" android:clickable="false" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_weight="1.0" />
-    <TextView android:textColor="#ffaaaaaa" android:gravity="center_vertical" android:id="@id/axz" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginRight="8.0dip" android:text="@string/d4c" />
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/ay0" android:background="@drawable/vn" android:focusable="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginRight="6.0dip" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/cv" android:layout_marginBottom="4.0dip">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/ivx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bw7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp">
+            <ImageView android:id="@id/bw6" android:layout_width="12.0dip" android:layout_height="12.0dip" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/bw9" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hui" android:background="@drawable/am3" android:paddingLeft="@dimen/cp" android:paddingTop="12.0dip" android:paddingRight="@dimen/cp" android:paddingBottom="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/df" android:layout_marginBottom="4.0dip">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="14.0dip" android:textColor="@color/FG_1" android:id="@id/hup" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:singleLine="false" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hud" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_game_notice_close" app:iconColor="@color/FG_1" />
+    </LinearLayout>
 </LinearLayout>

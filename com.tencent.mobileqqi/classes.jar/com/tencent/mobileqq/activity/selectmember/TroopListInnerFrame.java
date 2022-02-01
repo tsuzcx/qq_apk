@@ -16,8 +16,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.SlideDetectListView;
-import err;
-import eru;
+import erq;
+import ert;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,13 +140,13 @@ public class TroopListInnerFrame
   {
     super.a(paramBundle);
     setContentView(2130903444);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232612));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232382));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232611));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232381));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelector(2131361815);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter = new TroopListInnerFrame.TroopListAdapter(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, 4, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter);
     TroopListInnerFrame.TroopListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopListInnerFrame$TroopListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new err(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(new erq(this));
   }
   
   public void b(Bundle paramBundle)
@@ -170,7 +170,7 @@ public class TroopListInnerFrame
   
   public void onClick(View paramView)
   {
-    paramView = (eru)paramView.getTag();
+    paramView = (ert)paramView.getTag();
     TroopInfo localTroopInfo;
     int i;
     if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null))

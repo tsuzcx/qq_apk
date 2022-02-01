@@ -7,11 +7,13 @@ public abstract interface ITAVStickerRenderer
 {
   public abstract void setImageData(int paramInt, PAGImage paramPAGImage);
   
+  public abstract void setLayerColor(String paramString, int paramInt);
+  
   public abstract void setTextData(int paramInt, PAGText paramPAGText);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.core.ITAVStickerRenderer
  * JD-Core Version:    0.7.0.1
  */

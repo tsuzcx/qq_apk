@@ -50,7 +50,7 @@ public class NetstatsParserPatterns
   
   static
   {
-    AppMethodBeat.i(113994);
+    AppMethodBeat.i(73492);
     String str;
     if (PlatformVersion.isAtLeastLollipopMR1())
     {
@@ -72,7 +72,7 @@ public class NetstatsParserPatterns
     {
       TS_TO_MILLIS = i;
       zzafe = Pattern.compile("\\?<([a-zA-Z0-9]+)>");
-      AppMethodBeat.o(113994);
+      AppMethodBeat.o(73492);
       return;
       str = "\\[(?:type=(?<type>-1|\\w+))[, ]*(?:subType=(?<subtype>[^,]+))?[, ]*(?:subscriberId=(?<subscriberId>[0-9]+)(?:...)?)?[, ]*(?<roaming>ROAMING)?[^]]*\\]";
       break;
@@ -83,7 +83,7 @@ public class NetstatsParserPatterns
   
   public NetstatsParserPatterns()
   {
-    AppMethodBeat.i(113981);
+    AppMethodBeat.i(73479);
     String str = (String)G.netStats.patterns.IDENTS.getBinderSafe();
     this.zzaen = zzp(str);
     this.zzaeo = zzo(str);
@@ -105,12 +105,12 @@ public class NetstatsParserPatterns
     this.zzafb = Pattern.compile((String)G.netStats.patterns.TYPE_DEBUG_VPN_OUT_PATTERN.getBinderSafe());
     this.zzafc = ((Integer)G.netStats.patterns.TAG_RADIX.getBinderSafe()).intValue();
     this.zzafd = ((Integer)G.netStats.patterns.TS_TO_MILLIS.getBinderSafe()).intValue();
-    AppMethodBeat.o(113981);
+    AppMethodBeat.o(73479);
   }
   
   private static Map<String, Integer> zzo(String paramString)
   {
-    AppMethodBeat.i(113982);
+    AppMethodBeat.i(73480);
     HashMap localHashMap = new HashMap();
     paramString = zzafe.matcher(paramString);
     int i = 1;
@@ -119,99 +119,99 @@ public class NetstatsParserPatterns
       localHashMap.put(paramString.group(1), Integer.valueOf(i));
       i += 1;
     }
-    AppMethodBeat.o(113982);
+    AppMethodBeat.o(73480);
     return localHashMap;
   }
   
   private static Pattern zzp(String paramString)
   {
-    AppMethodBeat.i(113983);
+    AppMethodBeat.i(73481);
     paramString = Pattern.compile(zzafe.matcher(paramString).replaceAll(""));
-    AppMethodBeat.o(113983);
+    AppMethodBeat.o(73481);
     return paramString;
   }
   
   public NetstatsParserPatterns.NetstatsMatcher bucket(String paramString)
   {
-    AppMethodBeat.i(113987);
+    AppMethodBeat.i(73485);
     paramString = new NetstatsParserPatterns.NetstatsMatcher(this.zzaet.matcher(paramString), this.zzaeu);
-    AppMethodBeat.o(113987);
+    AppMethodBeat.o(73485);
     return paramString;
   }
   
   public NetstatsParserPatterns.NetstatsMatcher history(String paramString)
   {
-    AppMethodBeat.i(113986);
+    AppMethodBeat.i(73484);
     paramString = new NetstatsParserPatterns.NetstatsMatcher(this.zzaer.matcher(paramString), this.zzaes);
-    AppMethodBeat.o(113986);
+    AppMethodBeat.o(73484);
     return paramString;
   }
   
   public NetstatsParserPatterns.NetstatsMatcher ident(String paramString)
   {
-    AppMethodBeat.i(113985);
+    AppMethodBeat.i(73483);
     paramString = new NetstatsParserPatterns.NetstatsMatcher(this.zzaep.matcher(paramString), this.zzaeq);
-    AppMethodBeat.o(113985);
+    AppMethodBeat.o(73483);
     return paramString;
   }
   
   public NetstatsParserPatterns.NetstatsMatcher idents(String paramString)
   {
-    AppMethodBeat.i(113984);
+    AppMethodBeat.i(73482);
     paramString = new NetstatsParserPatterns.NetstatsMatcher(this.zzaen.matcher(paramString), this.zzaeo);
-    AppMethodBeat.o(113984);
+    AppMethodBeat.o(73482);
     return paramString;
   }
   
   public boolean isTypeBackground(String paramString)
   {
-    AppMethodBeat.i(113991);
+    AppMethodBeat.i(73489);
     boolean bool = this.zzaey.matcher(paramString).matches();
-    AppMethodBeat.o(113991);
+    AppMethodBeat.o(73489);
     return bool;
   }
   
   public boolean isTypeBoth(String paramString)
   {
-    AppMethodBeat.i(113990);
+    AppMethodBeat.i(73488);
     boolean bool = this.zzaex.matcher(paramString).matches();
-    AppMethodBeat.o(113990);
+    AppMethodBeat.o(73488);
     return bool;
   }
   
   public boolean isTypeDebugVpn(String paramString)
   {
-    AppMethodBeat.i(113993);
+    AppMethodBeat.i(73491);
     if ((this.zzafa.matcher(paramString).matches()) || (this.zzafb.matcher(paramString).matches()))
     {
-      AppMethodBeat.o(113993);
+      AppMethodBeat.o(73491);
       return true;
     }
-    AppMethodBeat.o(113993);
+    AppMethodBeat.o(73491);
     return false;
   }
   
   public boolean isTypeForeground(String paramString)
   {
-    AppMethodBeat.i(113992);
+    AppMethodBeat.i(73490);
     boolean bool = this.zzaez.matcher(paramString).matches();
-    AppMethodBeat.o(113992);
+    AppMethodBeat.o(73490);
     return bool;
   }
   
   public boolean isUidStart(String paramString)
   {
-    AppMethodBeat.i(113988);
+    AppMethodBeat.i(73486);
     boolean bool = this.zzaev.matcher(paramString).matches();
-    AppMethodBeat.o(113988);
+    AppMethodBeat.o(73486);
     return bool;
   }
   
   public boolean isUidTagStart(String paramString)
   {
-    AppMethodBeat.i(113989);
+    AppMethodBeat.i(73487);
     boolean bool = this.zzaew.matcher(paramString).matches();
-    AppMethodBeat.o(113989);
+    AppMethodBeat.o(73487);
     return bool;
   }
   
@@ -227,7 +227,7 @@ public class NetstatsParserPatterns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.stats.netstats.NetstatsParserPatterns
  * JD-Core Version:    0.7.0.1
  */

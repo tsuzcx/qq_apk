@@ -35,7 +35,7 @@ public class FFSegmentMediaPlayer
   private static final int STATE_PLAYING = 3;
   private static final int STATE_PREPARED = 2;
   private static final int STATE_PREPARING = 1;
-  private static Object sIsSupported = null;
+  private static Object sIsSupported;
   private boolean isLooping;
   private int mCurrentState = 0;
   private final FFSegmentMediaPlayer.AbstractMediaPlayerListenerHolder mInternalListenerAdapter;
@@ -51,11 +51,13 @@ public class FFSegmentMediaPlayer
   
   public FFSegmentMediaPlayer()
   {
-    if (!isSupported()) {
-      throw new UnsupportedOperationException("FFSegmentMediaPlayer is not available to use");
+    if (isSupported())
+    {
+      this.mInternalListenerAdapter = new FFSegmentMediaPlayer.AbstractMediaPlayerListenerHolder(this, this);
+      initPlayer();
+      return;
     }
-    this.mInternalListenerAdapter = new FFSegmentMediaPlayer.AbstractMediaPlayerListenerHolder(this, this);
-    initPlayer();
+    throw new UnsupportedOperationException("FFSegmentMediaPlayer is not available to use");
   }
   
   private void attachInternalListeners()
@@ -90,322 +92,417 @@ public class FFSegmentMediaPlayer
     //   0: aload_1
     //   1: getfield 187	com/tencent/oskplayer/model/SegmentVideoInfo$StreamInfo:segmentInfos	Ljava/util/ArrayList;
     //   4: invokevirtual 193	java/util/ArrayList:size	()I
-    //   7: iconst_1
-    //   8: if_icmpne +14 -> 22
-    //   11: aload_2
-    //   12: iconst_0
-    //   13: invokeinterface 199 2 0
-    //   18: checkcast 201	java/lang/String
-    //   21: areturn
-    //   22: aload_0
-    //   23: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
-    //   26: ifnonnull +302 -> 328
-    //   29: invokestatic 209	com/tencent/oskplayer/PlayerConfig:g	()Lcom/tencent/oskplayer/PlayerConfig;
-    //   32: invokevirtual 213	com/tencent/oskplayer/PlayerConfig:getTempDir	()Ljava/lang/String;
-    //   35: astore 4
-    //   37: aload 4
-    //   39: ifnonnull +14 -> 53
-    //   42: bipush 6
-    //   44: ldc 10
-    //   46: ldc 215
-    //   48: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   51: aconst_null
-    //   52: areturn
-    //   53: new 223	java/io/File
-    //   56: dup
-    //   57: aload 4
-    //   59: invokespecial 224	java/io/File:<init>	(Ljava/lang/String;)V
-    //   62: astore 5
-    //   64: aload_0
-    //   65: new 223	java/io/File
-    //   68: dup
-    //   69: new 226	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   76: aload 4
-    //   78: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: getstatic 234	java/io/File:separator	Ljava/lang/String;
-    //   84: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokestatic 240	java/lang/System:currentTimeMillis	()J
-    //   90: invokevirtual 243	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   93: ldc 245
-    //   95: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokespecial 224	java/io/File:<init>	(Ljava/lang/String;)V
-    //   104: putfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
-    //   107: aload 5
-    //   109: invokevirtual 251	java/io/File:exists	()Z
-    //   112: ifne +9 -> 121
-    //   115: aload 5
-    //   117: invokevirtual 254	java/io/File:mkdirs	()Z
-    //   120: pop
-    //   121: iconst_4
-    //   122: ldc 10
-    //   124: new 226	java/lang/StringBuilder
-    //   127: dup
-    //   128: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   131: ldc_w 256
-    //   134: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: aload_0
-    //   138: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
-    //   141: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   144: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   150: new 261	java/io/FileOutputStream
-    //   153: dup
-    //   154: aload_0
-    //   155: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
-    //   158: invokespecial 264	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   161: astore 5
-    //   163: aload 5
-    //   165: astore 4
-    //   167: new 226	java/lang/StringBuilder
-    //   170: dup
-    //   171: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   174: astore 6
-    //   176: aload 5
-    //   178: astore 4
-    //   180: aload 6
-    //   182: ldc_w 266
-    //   185: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: pop
-    //   189: aload 5
-    //   191: astore 4
-    //   193: aload_1
-    //   194: getfield 187	com/tencent/oskplayer/model/SegmentVideoInfo$StreamInfo:segmentInfos	Ljava/util/ArrayList;
-    //   197: invokevirtual 270	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   200: astore_1
-    //   201: iconst_0
-    //   202: istore_3
-    //   203: aload 5
-    //   205: astore 4
-    //   207: aload_1
-    //   208: invokeinterface 275 1 0
-    //   213: ifeq +88 -> 301
-    //   216: aload 5
-    //   218: astore 4
-    //   220: aload_1
-    //   221: invokeinterface 279 1 0
-    //   226: checkcast 281	com/tencent/oskplayer/model/SegmentVideoInfo$SegmentInfo
-    //   229: astore 7
-    //   231: aload 5
-    //   233: astore 4
-    //   235: aload 6
-    //   237: ldc_w 283
-    //   240: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: aload_2
-    //   244: iload_3
-    //   245: invokeinterface 199 2 0
-    //   250: checkcast 201	java/lang/String
-    //   253: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: ldc_w 285
-    //   259: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: pop
-    //   263: aload 5
-    //   265: astore 4
-    //   267: aload 6
-    //   269: ldc_w 287
-    //   272: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: aload 7
-    //   277: getfield 290	com/tencent/oskplayer/model/SegmentVideoInfo$SegmentInfo:duration	I
-    //   280: sipush 1000
-    //   283: idiv
-    //   284: invokevirtual 293	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   287: ldc_w 285
+    //   7: istore 4
+    //   9: iconst_0
+    //   10: istore_3
+    //   11: iload 4
+    //   13: iconst_1
+    //   14: if_icmpne +14 -> 28
+    //   17: aload_2
+    //   18: iconst_0
+    //   19: invokeinterface 199 2 0
+    //   24: checkcast 201	java/lang/String
+    //   27: areturn
+    //   28: aload_0
+    //   29: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
+    //   32: ifnonnull +675 -> 707
+    //   35: invokestatic 209	com/tencent/oskplayer/PlayerConfig:g	()Lcom/tencent/oskplayer/PlayerConfig;
+    //   38: invokevirtual 213	com/tencent/oskplayer/PlayerConfig:getTempDir	()Ljava/lang/String;
+    //   41: astore 5
+    //   43: aload 5
+    //   45: ifnonnull +14 -> 59
+    //   48: bipush 6
+    //   50: ldc 10
+    //   52: ldc 215
+    //   54: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   57: aconst_null
+    //   58: areturn
+    //   59: new 223	java/io/File
+    //   62: dup
+    //   63: aload 5
+    //   65: invokespecial 224	java/io/File:<init>	(Ljava/lang/String;)V
+    //   68: astore 6
+    //   70: new 226	java/lang/StringBuilder
+    //   73: dup
+    //   74: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   77: astore 7
+    //   79: aload 7
+    //   81: aload 5
+    //   83: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload 7
+    //   89: getstatic 234	java/io/File:separator	Ljava/lang/String;
+    //   92: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: aload 7
+    //   98: invokestatic 240	java/lang/System:currentTimeMillis	()J
+    //   101: invokevirtual 243	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   104: pop
+    //   105: aload 7
+    //   107: ldc 245
+    //   109: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload_0
+    //   114: new 223	java/io/File
+    //   117: dup
+    //   118: aload 7
+    //   120: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: invokespecial 224	java/io/File:<init>	(Ljava/lang/String;)V
+    //   126: putfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
+    //   129: aload 6
+    //   131: invokevirtual 251	java/io/File:exists	()Z
+    //   134: ifne +9 -> 143
+    //   137: aload 6
+    //   139: invokevirtual 254	java/io/File:mkdirs	()Z
+    //   142: pop
+    //   143: new 226	java/lang/StringBuilder
+    //   146: dup
+    //   147: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   150: astore 5
+    //   152: aload 5
+    //   154: ldc_w 256
+    //   157: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: aload 5
+    //   163: aload_0
+    //   164: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
+    //   167: invokevirtual 259	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: iconst_4
+    //   172: ldc 10
+    //   174: aload 5
+    //   176: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   182: new 261	java/io/FileOutputStream
+    //   185: dup
+    //   186: aload_0
+    //   187: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
+    //   190: invokespecial 264	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   193: astore 6
+    //   195: aload 6
+    //   197: astore 5
+    //   199: new 226	java/lang/StringBuilder
+    //   202: dup
+    //   203: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   206: astore 7
+    //   208: aload 6
+    //   210: astore 5
+    //   212: aload 7
+    //   214: ldc_w 266
+    //   217: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload 6
+    //   223: astore 5
+    //   225: aload_1
+    //   226: getfield 187	com/tencent/oskplayer/model/SegmentVideoInfo$StreamInfo:segmentInfos	Ljava/util/ArrayList;
+    //   229: invokevirtual 270	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   232: astore_1
+    //   233: aload 6
+    //   235: astore 5
+    //   237: aload_1
+    //   238: invokeinterface 275 1 0
+    //   243: ifeq +116 -> 359
+    //   246: aload 6
+    //   248: astore 5
+    //   250: aload_1
+    //   251: invokeinterface 279 1 0
+    //   256: checkcast 281	com/tencent/oskplayer/model/SegmentVideoInfo$SegmentInfo
+    //   259: astore 8
+    //   261: aload 6
+    //   263: astore 5
+    //   265: aload 7
+    //   267: ldc_w 283
+    //   270: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: aload 6
+    //   276: astore 5
+    //   278: aload 7
+    //   280: aload_2
+    //   281: iload_3
+    //   282: invokeinterface 199 2 0
+    //   287: checkcast 201	java/lang/String
     //   290: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: pop
-    //   294: iload_3
-    //   295: iconst_1
-    //   296: iadd
-    //   297: istore_3
-    //   298: goto -95 -> 203
-    //   301: aload 5
-    //   303: astore 4
-    //   305: aload 5
+    //   294: aload 6
+    //   296: astore 5
+    //   298: aload 7
+    //   300: ldc_w 285
+    //   303: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
     //   307: aload 6
-    //   309: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   312: invokevirtual 297	java/lang/String:getBytes	()[B
-    //   315: invokevirtual 303	java/io/OutputStream:write	([B)V
-    //   318: aload 5
-    //   320: ifnull +8 -> 328
-    //   323: aload 5
-    //   325: invokevirtual 306	java/io/OutputStream:close	()V
-    //   328: aload_0
-    //   329: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
-    //   332: invokevirtual 309	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   335: areturn
-    //   336: astore_1
-    //   337: bipush 6
-    //   339: ldc 10
-    //   341: new 226	java/lang/StringBuilder
-    //   344: dup
-    //   345: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   348: ldc_w 311
-    //   351: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   354: aload_1
-    //   355: invokevirtual 314	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   358: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   361: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   364: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   367: aconst_null
-    //   368: areturn
-    //   369: astore_2
-    //   370: aconst_null
-    //   371: astore_1
-    //   372: bipush 6
-    //   374: ldc 10
-    //   376: new 226	java/lang/StringBuilder
-    //   379: dup
-    //   380: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   383: ldc_w 316
-    //   386: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: aload_2
-    //   390: invokevirtual 317	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   393: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   309: astore 5
+    //   311: aload 7
+    //   313: ldc_w 287
+    //   316: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   319: pop
+    //   320: aload 6
+    //   322: astore 5
+    //   324: aload 7
+    //   326: aload 8
+    //   328: getfield 290	com/tencent/oskplayer/model/SegmentVideoInfo$SegmentInfo:duration	I
+    //   331: sipush 1000
+    //   334: idiv
+    //   335: invokevirtual 293	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   338: pop
+    //   339: aload 6
+    //   341: astore 5
+    //   343: aload 7
+    //   345: ldc_w 285
+    //   348: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: pop
+    //   352: iload_3
+    //   353: iconst_1
+    //   354: iadd
+    //   355: istore_3
+    //   356: goto -123 -> 233
+    //   359: aload 6
+    //   361: astore 5
+    //   363: aload 6
+    //   365: aload 7
+    //   367: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   370: invokevirtual 297	java/lang/String:getBytes	()[B
+    //   373: invokevirtual 303	java/io/OutputStream:write	([B)V
+    //   376: aload 6
+    //   378: invokevirtual 306	java/io/OutputStream:close	()V
+    //   381: goto +326 -> 707
+    //   384: astore_1
+    //   385: new 226	java/lang/StringBuilder
+    //   388: dup
+    //   389: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   392: astore_2
+    //   393: aload_2
+    //   394: ldc_w 308
+    //   397: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   400: pop
+    //   401: aload_2
     //   402: aload_1
-    //   403: ifnull +7 -> 410
-    //   406: aload_1
-    //   407: invokevirtual 306	java/io/OutputStream:close	()V
-    //   410: aconst_null
-    //   411: areturn
-    //   412: astore_1
-    //   413: bipush 6
-    //   415: ldc 10
-    //   417: new 226	java/lang/StringBuilder
-    //   420: dup
-    //   421: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   424: ldc_w 311
-    //   427: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: aload_1
-    //   431: invokevirtual 314	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   434: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   437: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   440: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   443: aconst_null
-    //   444: areturn
-    //   445: astore_1
-    //   446: aconst_null
-    //   447: astore 5
-    //   449: aload 5
-    //   451: astore 4
-    //   453: bipush 6
-    //   455: ldc 10
-    //   457: new 226	java/lang/StringBuilder
-    //   460: dup
-    //   461: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   464: ldc_w 319
-    //   467: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: aload_1
-    //   471: invokevirtual 314	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   474: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   477: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   480: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   483: aload 5
-    //   485: ifnull +8 -> 493
-    //   488: aload 5
-    //   490: invokevirtual 306	java/io/OutputStream:close	()V
-    //   493: aconst_null
-    //   494: areturn
-    //   495: astore_1
-    //   496: bipush 6
-    //   498: ldc 10
-    //   500: new 226	java/lang/StringBuilder
-    //   503: dup
-    //   504: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   507: ldc_w 311
-    //   510: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   513: aload_1
-    //   514: invokevirtual 314	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   517: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   523: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   526: aconst_null
-    //   527: areturn
-    //   528: astore_1
-    //   529: aconst_null
-    //   530: astore 4
-    //   532: aload 4
-    //   534: ifnull +8 -> 542
-    //   537: aload 4
-    //   539: invokevirtual 306	java/io/OutputStream:close	()V
-    //   542: aload_1
-    //   543: athrow
-    //   544: astore_1
-    //   545: bipush 6
-    //   547: ldc 10
-    //   549: new 226	java/lang/StringBuilder
-    //   552: dup
-    //   553: invokespecial 227	java/lang/StringBuilder:<init>	()V
-    //   556: ldc_w 311
-    //   559: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   562: aload_1
-    //   563: invokevirtual 314	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   566: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   569: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   572: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   575: aconst_null
-    //   576: areturn
-    //   577: astore_1
-    //   578: goto -46 -> 532
-    //   581: astore_2
-    //   582: aload_1
-    //   583: astore 4
-    //   585: aload_2
-    //   586: astore_1
-    //   587: goto -55 -> 532
-    //   590: astore_1
-    //   591: goto -142 -> 449
-    //   594: astore_2
-    //   595: aload 5
-    //   597: astore_1
-    //   598: goto -226 -> 372
+    //   403: invokevirtual 311	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   406: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: pop
+    //   410: bipush 6
+    //   412: ldc 10
+    //   414: aload_2
+    //   415: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   418: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   421: aconst_null
+    //   422: areturn
+    //   423: astore_1
+    //   424: goto +18 -> 442
+    //   427: astore_1
+    //   428: goto +121 -> 549
+    //   431: astore_1
+    //   432: aconst_null
+    //   433: astore 5
+    //   435: goto +218 -> 653
+    //   438: astore_1
+    //   439: aconst_null
+    //   440: astore 6
+    //   442: aload 6
+    //   444: astore 5
+    //   446: new 226	java/lang/StringBuilder
+    //   449: dup
+    //   450: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   453: astore_2
+    //   454: aload 6
+    //   456: astore 5
+    //   458: aload_2
+    //   459: ldc_w 313
+    //   462: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   465: pop
+    //   466: aload 6
+    //   468: astore 5
+    //   470: aload_2
+    //   471: aload_1
+    //   472: invokevirtual 311	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   475: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   478: pop
+    //   479: aload 6
+    //   481: astore 5
+    //   483: bipush 6
+    //   485: ldc 10
+    //   487: aload_2
+    //   488: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   494: aload 6
+    //   496: ifnull +47 -> 543
+    //   499: aload 6
+    //   501: invokevirtual 306	java/io/OutputStream:close	()V
+    //   504: aconst_null
+    //   505: areturn
+    //   506: astore_1
+    //   507: new 226	java/lang/StringBuilder
+    //   510: dup
+    //   511: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   514: astore_2
+    //   515: aload_2
+    //   516: ldc_w 308
+    //   519: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: pop
+    //   523: aload_2
+    //   524: aload_1
+    //   525: invokevirtual 311	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   528: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: pop
+    //   532: bipush 6
+    //   534: ldc 10
+    //   536: aload_2
+    //   537: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   540: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   543: aconst_null
+    //   544: areturn
+    //   545: astore_1
+    //   546: aconst_null
+    //   547: astore 6
+    //   549: aload 6
+    //   551: astore 5
+    //   553: new 226	java/lang/StringBuilder
+    //   556: dup
+    //   557: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   560: astore_2
+    //   561: aload 6
+    //   563: astore 5
+    //   565: aload_2
+    //   566: ldc_w 315
+    //   569: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   572: pop
+    //   573: aload 6
+    //   575: astore 5
+    //   577: aload_2
+    //   578: aload_1
+    //   579: invokevirtual 316	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   582: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: pop
+    //   586: aload 6
+    //   588: astore 5
+    //   590: bipush 6
+    //   592: ldc 10
+    //   594: aload_2
+    //   595: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   598: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   601: aload 6
+    //   603: ifnull +47 -> 650
+    //   606: aload 6
+    //   608: invokevirtual 306	java/io/OutputStream:close	()V
+    //   611: aconst_null
+    //   612: areturn
+    //   613: astore_1
+    //   614: new 226	java/lang/StringBuilder
+    //   617: dup
+    //   618: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   621: astore_2
+    //   622: aload_2
+    //   623: ldc_w 308
+    //   626: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   629: pop
+    //   630: aload_2
+    //   631: aload_1
+    //   632: invokevirtual 311	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   635: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   638: pop
+    //   639: bipush 6
+    //   641: ldc 10
+    //   643: aload_2
+    //   644: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   647: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   650: aconst_null
+    //   651: areturn
+    //   652: astore_1
+    //   653: aload 5
+    //   655: ifnull +50 -> 705
+    //   658: aload 5
+    //   660: invokevirtual 306	java/io/OutputStream:close	()V
+    //   663: goto +42 -> 705
+    //   666: astore_1
+    //   667: new 226	java/lang/StringBuilder
+    //   670: dup
+    //   671: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   674: astore_2
+    //   675: aload_2
+    //   676: ldc_w 308
+    //   679: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   682: pop
+    //   683: aload_2
+    //   684: aload_1
+    //   685: invokevirtual 311	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   688: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   691: pop
+    //   692: bipush 6
+    //   694: ldc 10
+    //   696: aload_2
+    //   697: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   700: invokestatic 221	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   703: aconst_null
+    //   704: areturn
+    //   705: aload_1
+    //   706: athrow
+    //   707: aload_0
+    //   708: getfield 203	com/tencent/oskplayer/player/FFSegmentMediaPlayer:mPlayListFile	Ljava/io/File;
+    //   711: invokevirtual 319	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   714: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	601	0	this	FFSegmentMediaPlayer
-    //   0	601	1	paramStreamInfo	SegmentVideoInfo.StreamInfo
-    //   0	601	2	paramList	List<String>
-    //   202	96	3	i	int
-    //   35	549	4	localObject1	Object
-    //   62	534	5	localObject2	Object
-    //   174	134	6	localStringBuilder	java.lang.StringBuilder
-    //   229	47	7	localSegmentInfo	SegmentVideoInfo.SegmentInfo
+    //   0	715	0	this	FFSegmentMediaPlayer
+    //   0	715	1	paramStreamInfo	SegmentVideoInfo.StreamInfo
+    //   0	715	2	paramList	List<String>
+    //   10	346	3	i	int
+    //   7	8	4	j	int
+    //   41	618	5	localObject1	Object
+    //   68	539	6	localObject2	Object
+    //   77	289	7	localStringBuilder	StringBuilder
+    //   259	68	8	localSegmentInfo	SegmentVideoInfo.SegmentInfo
     // Exception table:
     //   from	to	target	type
-    //   323	328	336	java/io/IOException
-    //   150	163	369	java/io/FileNotFoundException
-    //   406	410	412	java/io/IOException
-    //   150	163	445	java/io/IOException
-    //   488	493	495	java/io/IOException
-    //   150	163	528	finally
-    //   537	542	544	java/io/IOException
-    //   167	176	577	finally
-    //   180	189	577	finally
-    //   193	201	577	finally
-    //   207	216	577	finally
-    //   220	231	577	finally
-    //   235	263	577	finally
-    //   267	294	577	finally
-    //   305	318	577	finally
-    //   453	483	577	finally
-    //   372	402	581	finally
-    //   167	176	590	java/io/IOException
-    //   180	189	590	java/io/IOException
-    //   193	201	590	java/io/IOException
-    //   207	216	590	java/io/IOException
-    //   220	231	590	java/io/IOException
-    //   235	263	590	java/io/IOException
-    //   267	294	590	java/io/IOException
-    //   305	318	590	java/io/IOException
-    //   167	176	594	java/io/FileNotFoundException
-    //   180	189	594	java/io/FileNotFoundException
-    //   193	201	594	java/io/FileNotFoundException
-    //   207	216	594	java/io/FileNotFoundException
-    //   220	231	594	java/io/FileNotFoundException
-    //   235	263	594	java/io/FileNotFoundException
-    //   267	294	594	java/io/FileNotFoundException
-    //   305	318	594	java/io/FileNotFoundException
+    //   376	381	384	java/io/IOException
+    //   199	208	423	java/io/IOException
+    //   212	221	423	java/io/IOException
+    //   225	233	423	java/io/IOException
+    //   237	246	423	java/io/IOException
+    //   250	261	423	java/io/IOException
+    //   265	274	423	java/io/IOException
+    //   278	294	423	java/io/IOException
+    //   298	307	423	java/io/IOException
+    //   311	320	423	java/io/IOException
+    //   324	339	423	java/io/IOException
+    //   343	352	423	java/io/IOException
+    //   363	376	423	java/io/IOException
+    //   199	208	427	java/io/FileNotFoundException
+    //   212	221	427	java/io/FileNotFoundException
+    //   225	233	427	java/io/FileNotFoundException
+    //   237	246	427	java/io/FileNotFoundException
+    //   250	261	427	java/io/FileNotFoundException
+    //   265	274	427	java/io/FileNotFoundException
+    //   278	294	427	java/io/FileNotFoundException
+    //   298	307	427	java/io/FileNotFoundException
+    //   311	320	427	java/io/FileNotFoundException
+    //   324	339	427	java/io/FileNotFoundException
+    //   343	352	427	java/io/FileNotFoundException
+    //   363	376	427	java/io/FileNotFoundException
+    //   182	195	431	finally
+    //   182	195	438	java/io/IOException
+    //   499	504	506	java/io/IOException
+    //   182	195	545	java/io/FileNotFoundException
+    //   606	611	613	java/io/IOException
+    //   199	208	652	finally
+    //   212	221	652	finally
+    //   225	233	652	finally
+    //   237	246	652	finally
+    //   250	261	652	finally
+    //   265	274	652	finally
+    //   278	294	652	finally
+    //   298	307	652	finally
+    //   311	320	652	finally
+    //   324	339	652	finally
+    //   343	352	652	finally
+    //   363	376	652	finally
+    //   446	454	652	finally
+    //   458	466	652	finally
+    //   470	479	652	finally
+    //   483	494	652	finally
+    //   553	561	652	finally
+    //   565	573	652	finally
+    //   577	586	652	finally
+    //   590	601	652	finally
+    //   658	663	666	java/io/IOException
   }
   
   private void initPlayer()
@@ -415,90 +512,90 @@ public class FFSegmentMediaPlayer
     this.mTargetState = 0;
     if (PlayerConfig.g().isEnableHevcHwDecode()) {
       this.mInternalMediaPlayer.setOption(4, "mediacodec-all-videos", 1L);
-    }
-    for (;;)
-    {
-      this.mInternalMediaPlayer.setOption(2, "skip_loop_filter", 0L);
-      this.mInternalMediaPlayer.setOption(4, "http-detect-range-support", 0L);
-      this.mInternalMediaPlayer.setOption(4, "start-on-prepared", 0L);
-      this.mInternalMediaPlayer.setOption(4, "infbuf", 1L);
-      this.mInternalMediaPlayer.setOption(4, "fast", 1L);
-      this.mInternalMediaPlayer.setOption(4, "framedrop", 5L);
-      this.mInternalMediaPlayer.setOption(4, "enable-accurate-seek", 1L);
-      this.mInternalMediaPlayer.setOption(4, "max-fps", 30L);
-      this.mInternalMediaPlayer.setOption(1, "analyzeduration", 1L);
-      this.mInternalMediaPlayer.setOption(4, "opensles", 0L);
-      this.mInternalMediaPlayer.setOption(1, "protocol_whitelist", "file,http,https,tcp,tls");
-      this.mInternalMediaPlayer.setOption(1, "safe", 0L);
-      this.mInternalMediaPlayer.setLooping(false);
-      this.mInternalMediaPlayer.setSurface(null);
-      this.mInternalMediaPlayer.setSeekParameters(this.mSeekParameters);
-      attachInternalListeners();
-      this.mPath = null;
-      return;
+    } else {
       this.mInternalMediaPlayer.setOption(4, "mediacodec", 0L);
     }
+    this.mInternalMediaPlayer.setOption(2, "skip_loop_filter", 0L);
+    this.mInternalMediaPlayer.setOption(4, "http-detect-range-support", 0L);
+    this.mInternalMediaPlayer.setOption(4, "start-on-prepared", 0L);
+    this.mInternalMediaPlayer.setOption(4, "infbuf", 1L);
+    this.mInternalMediaPlayer.setOption(4, "fast", 1L);
+    this.mInternalMediaPlayer.setOption(4, "framedrop", 5L);
+    this.mInternalMediaPlayer.setOption(4, "enable-accurate-seek", 1L);
+    this.mInternalMediaPlayer.setOption(4, "max-fps", 30L);
+    this.mInternalMediaPlayer.setOption(1, "analyzeduration", 1L);
+    this.mInternalMediaPlayer.setOption(4, "opensles", 0L);
+    this.mInternalMediaPlayer.setOption(1, "protocol_whitelist", "file,http,https,tcp,tls");
+    this.mInternalMediaPlayer.setOption(1, "safe", 0L);
+    this.mInternalMediaPlayer.setLooping(false);
+    this.mInternalMediaPlayer.setSurface(null);
+    this.mInternalMediaPlayer.setSeekParameters(this.mSeekParameters);
+    attachInternalListeners();
+    this.mPath = null;
   }
   
   private boolean isInPlaybackState()
   {
-    return (this.mInternalMediaPlayer != null) && (this.mCurrentState != -1) && (this.mCurrentState != 0) && (this.mCurrentState != 1);
+    if (this.mInternalMediaPlayer != null)
+    {
+      int i = this.mCurrentState;
+      if ((i != -1) && (i != 0) && (i != 1)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static boolean isSupported()
   {
-    boolean bool1 = false;
-    boolean bool2;
-    do
+    try
     {
-      try
+      if (sIsSupported != null)
       {
-        if (sIsSupported != null) {
-          bool1 = ((Boolean)sIsSupported).booleanValue();
-        }
-        for (;;)
+        bool = ((Boolean)sIsSupported).booleanValue();
+        return bool;
+      }
+      if (Build.VERSION.SDK_INT <= 14)
+      {
+        PlayerUtils.log(4, "FFSegmentMediaPlayer", "AllowPlayerNativeLibLoad false below 4.0");
+        sIsSupported = Boolean.valueOf(false);
+        return false;
+      }
+      boolean bool = IjkMediaPlayer.isNativeLibReady(PlayerConfig.g().getNativeLibLoader());
+      if (bool)
+      {
+        StringBuilder localStringBuilder = null;
+        Object localObject1;
+        try
         {
-          return bool1;
-          if (Build.VERSION.SDK_INT > 14) {
-            break;
+          localObject1 = new IjkMediaPlayer(PlayerConfig.g().getNativeLibLoader());
+          try
+          {
+            sIsSupported = Boolean.valueOf(true);
           }
-          PlayerUtils.log(4, "FFSegmentMediaPlayer", "AllowPlayerNativeLibLoad false below 4.0");
+          catch (Throwable localThrowable1) {}
           sIsSupported = Boolean.valueOf(false);
         }
-        bool2 = IjkMediaPlayer.isNativeLibReady(PlayerConfig.g().getNativeLibLoader());
+        catch (Throwable localThrowable2)
+        {
+          localObject1 = localStringBuilder;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("error init hero player ");
+        localStringBuilder.append(PlayerUtils.getPrintableStackTrace(localThrowable2));
+        PlayerUtils.log(4, "FFSegmentMediaPlayer", localStringBuilder.toString());
+        if ((localObject1 != null) && (IjkMediaPlayer.sIsLibLoadSuccess)) {
+          ((IjkMediaPlayer)localObject1).release();
+        }
+        if (!IjkMediaPlayer.sIsLibLoadSuccess) {
+          sIsSupported = Boolean.valueOf(false);
+        }
+        bool = ((Boolean)sIsSupported).booleanValue();
+        return bool;
       }
-      finally {}
-    } while (!bool2);
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          localIjkMediaPlayer = new IjkMediaPlayer(PlayerConfig.g().getNativeLibLoader());
-        }
-        catch (Throwable localThrowable3)
-        {
-          Throwable localThrowable1;
-          IjkMediaPlayer localIjkMediaPlayer = null;
-          continue;
-        }
-        try
-        {
-          sIsSupported = Boolean.valueOf(true);
-          if ((localIjkMediaPlayer != null) && (IjkMediaPlayer.sIsLibLoadSuccess)) {
-            localIjkMediaPlayer.release();
-          }
-          if (!IjkMediaPlayer.sIsLibLoadSuccess) {
-            sIsSupported = Boolean.valueOf(false);
-          }
-          bool1 = ((Boolean)sIsSupported).booleanValue();
-        }
-        catch (Throwable localThrowable2) {}
-      }
-      sIsSupported = Boolean.valueOf(false);
-      PlayerUtils.log(4, "FFSegmentMediaPlayer", "error init hero player " + PlayerUtils.getPrintableStackTrace(localThrowable1));
+      return false;
     }
+    finally {}
   }
   
   public int getAudioSessionId()
@@ -511,7 +608,10 @@ public class FFSegmentMediaPlayer
     if (isInPlaybackState())
     {
       long l = this.mInternalMediaPlayer.getCurrentPosition();
-      PlayerUtils.log(2, "FFSegmentMediaPlayer", "getCurrentPosition=" + l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurrentPosition=");
+      localStringBuilder.append(l);
+      PlayerUtils.log(2, "FFSegmentMediaPlayer", localStringBuilder.toString());
       return l;
     }
     PlayerUtils.log(5, "FFSegmentMediaPlayer", "getCurrentPosition failed, state error");
@@ -520,16 +620,18 @@ public class FFSegmentMediaPlayer
   
   public String getCurrentProxySegmentUrl()
   {
-    if (this.mProxyUrls != null) {
-      return (String)this.mProxyUrls.get(0);
+    List localList = this.mProxyUrls;
+    if (localList != null) {
+      return (String)localList.get(0);
     }
     return null;
   }
   
   public String getCurrentSegmentUrl()
   {
-    if (this.mSourceUrls != null) {
-      return (String)this.mSourceUrls.get(0);
+    List localList = this.mSourceUrls;
+    if (localList != null) {
+      return (String)localList.get(0);
     }
     return null;
   }
@@ -544,7 +646,10 @@ public class FFSegmentMediaPlayer
     if (isInPlaybackState())
     {
       long l = this.mInternalMediaPlayer.getDuration();
-      PlayerUtils.log(2, "FFSegmentMediaPlayer", "getDuration=" + l);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDuration=");
+      localStringBuilder.append(l);
+      PlayerUtils.log(2, "FFSegmentMediaPlayer", localStringBuilder.toString());
       return l;
     }
     PlayerUtils.log(5, "FFSegmentMediaPlayer", "getDuration failed, state error");
@@ -606,7 +711,7 @@ public class FFSegmentMediaPlayer
     return (isInPlaybackState()) && (this.mInternalMediaPlayer.isPlaying());
   }
   
-  public void notifyOnSeekComplete()
+  protected void notifyOnSeekComplete()
   {
     PlayerUtils.log(4, "FFSegmentMediaPlayer", "onSeekComplete");
     super.notifyOnSeekComplete();
@@ -615,21 +720,22 @@ public class FFSegmentMediaPlayer
   public void pause()
   {
     PlayerUtils.log(4, "FFSegmentMediaPlayer", "pause");
-    if (isInPlaybackState()) {
+    if (isInPlaybackState())
+    {
       if (this.mInternalMediaPlayer.isPlaying())
       {
         this.mInternalMediaPlayer.pause();
         this.mCurrentState = 4;
       }
+      else
+      {
+        PlayerUtils.log(5, "FFSegmentMediaPlayer", "pause failed, state error");
+      }
     }
-    for (;;)
-    {
-      this.mTargetState = 4;
-      return;
-      PlayerUtils.log(5, "FFSegmentMediaPlayer", "pause failed, state error");
-      continue;
+    else {
       PlayerUtils.log(5, "FFSegmentMediaPlayer", "pause failed, state error");
     }
+    this.mTargetState = 4;
   }
   
   public void prepareAsync()
@@ -649,7 +755,8 @@ public class FFSegmentMediaPlayer
       this.mTargetState = 0;
       this.mInternalMediaPlayer = null;
     }
-    if ((this.mPlayListFile != null) && (this.mPlayListFile.exists()) && (!this.mPlayListFile.delete())) {
+    File localFile = this.mPlayListFile;
+    if ((localFile != null) && (localFile.exists()) && (!this.mPlayListFile.delete())) {
       PlayerUtils.log(5, "FFSegmentMediaPlayer", "playlist file delete failed!");
     }
     this.mPlayListFile = null;
@@ -659,15 +766,19 @@ public class FFSegmentMediaPlayer
   public void reset()
   {
     PlayerUtils.log(4, "FFSegmentMediaPlayer", "reset");
-    if (this.mInternalMediaPlayer == null) {
+    IjkMediaPlayer localIjkMediaPlayer = this.mInternalMediaPlayer;
+    if (localIjkMediaPlayer == null) {
       return;
     }
-    this.mInternalMediaPlayer.reset();
+    localIjkMediaPlayer.reset();
   }
   
   public void seekTo(long paramLong)
   {
-    PlayerUtils.log(4, "FFSegmentMediaPlayer", "seekTo " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekTo ");
+    localStringBuilder.append(paramLong);
+    PlayerUtils.log(4, "FFSegmentMediaPlayer", localStringBuilder.toString());
     if (this.mCurrentState == 2) {
       this.mInternalMediaPlayer.start();
     }
@@ -696,11 +807,12 @@ public class FFSegmentMediaPlayer
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo)
   {
-    if ((this.mInternalMediaPlayer == null) || (paramStreamInfo == null) || (paramStreamInfo.segmentInfos == null) || (paramStreamInfo.segmentInfos.get(0) == null)) {}
-    do
+    if ((this.mInternalMediaPlayer != null) && (paramStreamInfo != null) && (paramStreamInfo.segmentInfos != null))
     {
-      return;
-      Object localObject = paramStreamInfo.segmentInfos;
+      if (paramStreamInfo.segmentInfos.get(0) == null) {
+        return;
+      }
+      localObject = paramStreamInfo.segmentInfos;
       this.mSourceUrls = new ArrayList();
       if (localObject != null)
       {
@@ -713,41 +825,55 @@ public class FFSegmentMediaPlayer
       }
       this.mProxyUrls = VideoManager.getInstance().getUrl(this.mSourceUrls);
       paramStreamInfo = generatePlayListFile(paramStreamInfo, this.mProxyUrls);
-    } while ((this.mPath != null) && (this.mPath.equals(paramStreamInfo)));
-    this.mPath = paramStreamInfo;
-    if (this.mInternalMediaPlayer.isPlaying())
+      localObject = this.mPath;
+      if ((localObject != null) && (((String)localObject).equals(paramStreamInfo))) {
+        return;
+      }
+      this.mPath = paramStreamInfo;
+      if (this.mInternalMediaPlayer.isPlaying())
+      {
+        this.mInternalMediaPlayer.stop();
+        localObject = this.mInternalMediaPlayer;
+        if (localObject != null)
+        {
+          ((IjkMediaPlayer)localObject).release();
+          this.mInternalMediaPlayer = null;
+          this.mCurrentState = 0;
+        }
+        initPlayer();
+      }
+      if (paramStreamInfo == null) {}
+    }
+    try
     {
-      this.mInternalMediaPlayer.stop();
-      if (this.mInternalMediaPlayer != null)
-      {
-        this.mInternalMediaPlayer.release();
-        this.mInternalMediaPlayer = null;
-        this.mCurrentState = 0;
-      }
-      initPlayer();
+      this.mInternalMediaPlayer.setDataSource(paramStreamInfo);
+      this.mCurrentState = 1;
+      return;
     }
-    if (paramStreamInfo != null) {
-      try
-      {
-        this.mInternalMediaPlayer.setDataSource(paramStreamInfo);
-        this.mCurrentState = 1;
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        PlayerUtils.log(6, "FFSegmentMediaPlayer", "IOException:Unable to open content: " + paramStreamInfo);
-        this.mCurrentState = -1;
-        this.mTargetState = -1;
-        return;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        PlayerUtils.log(6, "FFSegmentMediaPlayer", "IllegalArgumentException:Unable to open content: " + paramStreamInfo);
-        this.mCurrentState = -1;
-        this.mTargetState = -1;
-        return;
-      }
+    catch (IOException localIOException)
+    {
+      break label244;
     }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      label200:
+      break label200;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("IllegalArgumentException:Unable to open content: ");
+    ((StringBuilder)localObject).append(paramStreamInfo);
+    PlayerUtils.log(6, "FFSegmentMediaPlayer", ((StringBuilder)localObject).toString());
+    this.mCurrentState = -1;
+    this.mTargetState = -1;
+    return;
+    label244:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("IOException:Unable to open content: ");
+    ((StringBuilder)localObject).append(paramStreamInfo);
+    PlayerUtils.log(6, "FFSegmentMediaPlayer", ((StringBuilder)localObject).toString());
+    this.mCurrentState = -1;
+    this.mTargetState = -1;
+    return;
     throw new IOException("path is null");
   }
   
@@ -769,10 +895,11 @@ public class FFSegmentMediaPlayer
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
     PlayerUtils.log(4, "FFSegmentMediaPlayer", "setSurfaceHolder");
-    if (this.mInternalMediaPlayer == null) {
+    IjkMediaPlayer localIjkMediaPlayer = this.mInternalMediaPlayer;
+    if (localIjkMediaPlayer == null) {
       return;
     }
-    this.mInternalMediaPlayer.setDisplay(paramSurfaceHolder);
+    localIjkMediaPlayer.setDisplay(paramSurfaceHolder);
   }
   
   public void setKeepInBackground(boolean paramBoolean)
@@ -788,7 +915,10 @@ public class FFSegmentMediaPlayer
   public void setLooping(boolean paramBoolean)
   {
     this.isLooping = paramBoolean;
-    PlayerUtils.log(4, "FFSegmentMediaPlayer", "setLooping " + this.isLooping);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLooping ");
+    localStringBuilder.append(this.isLooping);
+    PlayerUtils.log(4, "FFSegmentMediaPlayer", localStringBuilder.toString());
   }
   
   public void setNextMediaPlayer(IMediaPlayer paramIMediaPlayer)
@@ -809,15 +939,21 @@ public class FFSegmentMediaPlayer
   public void setSurface(Surface paramSurface)
   {
     PlayerUtils.log(4, "FFSegmentMediaPlayer", "setSurface");
-    if (this.mInternalMediaPlayer == null) {
+    IjkMediaPlayer localIjkMediaPlayer = this.mInternalMediaPlayer;
+    if (localIjkMediaPlayer == null) {
       return;
     }
-    this.mInternalMediaPlayer.setSurface(paramSurface);
+    localIjkMediaPlayer.setSurface(paramSurface);
   }
   
   public void setVolume(float paramFloat1, float paramFloat2)
   {
-    PlayerUtils.log(4, "FFSegmentMediaPlayer", "setVolume leftVolume=" + paramFloat1 + " rightVolume" + paramFloat2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVolume leftVolume=");
+    localStringBuilder.append(paramFloat1);
+    localStringBuilder.append(" rightVolume");
+    localStringBuilder.append(paramFloat2);
+    PlayerUtils.log(4, "FFSegmentMediaPlayer", localStringBuilder.toString());
     this.mInternalMediaPlayer.setVolume(paramFloat1, paramFloat2);
   }
   
@@ -836,12 +972,11 @@ public class FFSegmentMediaPlayer
       this.mInternalMediaPlayer.start();
       this.mCurrentState = 3;
     }
-    for (;;)
+    else
     {
-      this.mTargetState = 3;
-      return;
       PlayerUtils.log(5, "FFSegmentMediaPlayer", "start failed, state error");
     }
+    this.mTargetState = 3;
   }
   
   public void stop()
@@ -851,7 +986,7 @@ public class FFSegmentMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.player.FFSegmentMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

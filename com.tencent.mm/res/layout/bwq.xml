@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/fpg" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MMLoadMoreListView android:id="@id/grp" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/na" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/j_o" android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <ProgressBar android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/ck" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/grm" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/j_n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/ck" android:gravity="center" android:id="@id/j_m" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/h9z" android:layout_weight="0.5" />
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+    </LinearLayout>
+</RelativeLayout>

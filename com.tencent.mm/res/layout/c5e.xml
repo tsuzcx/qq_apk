@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/jx_" android:background="@drawable/auu" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/d6">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/Brand" android:id="@id/jxb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jjs" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.StoryAvatarDotsView android:id="@id/jx9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_toRightOf="@id/jxb" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+</LinearLayout>

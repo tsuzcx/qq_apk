@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class TroopStoryEntry
-  extends awge
+  extends Entity
 {
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_VIDEO = 2;
@@ -22,7 +22,12 @@ public class TroopStoryEntry
   
   public static String getQueryByPageSql(long paramLong)
   {
-    return "select * from " + TroopStoryEntry.class.getSimpleName() + " where troopId = " + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select * from ");
+    localStringBuilder.append(TroopStoryEntry.class.getSimpleName());
+    localStringBuilder.append(" where troopId = ");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public void from(TroopStoryItemInfo paramTroopStoryItemInfo)
@@ -41,7 +46,7 @@ public class TroopStoryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TroopStoryEntry
  * JD-Core Version:    0.7.0.1
  */

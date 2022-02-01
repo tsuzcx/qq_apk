@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@color/al3" android:layout_width="300.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditText android:textColor="@color/black" android:id="@id/qbu" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:minHeight="50.0dip" android:hint="请输入测试scheme，长按可以黏贴" android:textIsSelectable="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/qb8" android:background="@color/b2b" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="测试跳转" />
+</LinearLayout>

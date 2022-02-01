@@ -12,8 +12,8 @@ public final class OperateDownloadTaskRequest
   extends JceStruct
   implements Cloneable
 {
-  static IPCBaseParam cache_baseParam;
-  static Map<String, Long> cache_timePoint;
+  static IPCBaseParam cache_baseParam = new IPCBaseParam();
+  static Map<String, Long> cache_timePoint = new HashMap();
   public String actionFlag = "";
   public IPCBaseParam baseParam = null;
   public String opList = "";
@@ -23,15 +23,7 @@ public final class OperateDownloadTaskRequest
   
   static
   {
-    if (!OperateDownloadTaskRequest.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_baseParam = new IPCBaseParam();
-      cache_timePoint = new HashMap();
-      cache_timePoint.put("", Long.valueOf(0L));
-      return;
-    }
+    cache_timePoint.put("", Long.valueOf(0L));
   }
   
   public OperateDownloadTaskRequest() {}
@@ -53,18 +45,17 @@ public final class OperateDownloadTaskRequest
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -91,13 +82,36 @@ public final class OperateDownloadTaskRequest
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (OperateDownloadTaskRequest)paramObject;
-    } while ((!JceUtil.equals(this.requestType, paramObject.requestType)) || (!JceUtil.equals(this.baseParam, paramObject.baseParam)) || (!JceUtil.equals(this.opList, paramObject.opList)) || (!JceUtil.equals(this.actionFlag, paramObject.actionFlag)) || (!JceUtil.equals(this.verifyType, paramObject.verifyType)) || (!JceUtil.equals(this.timePoint, paramObject.timePoint)));
-    return true;
+    }
+    paramObject = (OperateDownloadTaskRequest)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.requestType, paramObject.requestType))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.baseParam, paramObject.baseParam))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.opList, paramObject.opList))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.actionFlag, paramObject.actionFlag))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.verifyType, paramObject.verifyType))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.timePoint, paramObject.timePoint)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -192,23 +206,27 @@ public final class OperateDownloadTaskRequest
   {
     paramJceOutputStream.write(this.requestType, 0);
     paramJceOutputStream.write(this.baseParam, 1);
-    if (this.opList != null) {
-      paramJceOutputStream.write(this.opList, 2);
+    Object localObject = this.opList;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.actionFlag != null) {
-      paramJceOutputStream.write(this.actionFlag, 3);
+    localObject = this.actionFlag;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.verifyType != null) {
-      paramJceOutputStream.write(this.verifyType, 4);
+    localObject = this.verifyType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.timePoint != null) {
-      paramJceOutputStream.write(this.timePoint, 5);
+    localObject = this.timePoint;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.OperateDownloadTaskRequest
  * JD-Core Version:    0.7.0.1
  */

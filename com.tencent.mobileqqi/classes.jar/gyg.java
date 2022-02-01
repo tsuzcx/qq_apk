@@ -1,35 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApi;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiListener;
-import com.tencent.map.lbsapi.api.SOSOMapLBSApiResult;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
 import com.tencent.tencentmap.mapsdk.map.GeoPoint;
+import com.tencent.tencentmap.mapsdk.map.MapView;
+import com.tencent.tencentmap.mapsdk.map.Overlay;
+import com.tencent.tencentmap.mapsdk.map.Projection;
 
 public class gyg
-  extends SOSOMapLBSApiListener
+  extends Overlay
 {
-  public gyg(AutoLocationMapView paramAutoLocationMapView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private GeoPoint jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint;
+  
+  public gyg(Bitmap paramBitmap, GeoPoint paramGeoPoint)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint = paramGeoPoint;
   }
   
-  public void onLocationUpdate(SOSOMapLBSApiResult paramSOSOMapLBSApiResult)
+  public void draw(Canvas paramCanvas, MapView paramMapView)
   {
-    SOSOMapLBSApi.getInstance().removeLocationUpdate();
-    Message localMessage = this.a.a.obtainMessage(1);
-    if (paramSOSOMapLBSApiResult.Info == 1)
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint != null))
     {
-      paramSOSOMapLBSApiResult = new GeoPoint((int)(paramSOSOMapLBSApiResult.Latitude * 1000000.0D), (int)(paramSOSOMapLBSApiResult.Longitude * 1000000.0D));
-      localMessage.arg1 = 0;
-      localMessage.obj = paramSOSOMapLBSApiResult;
+      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapGeoPoint, null);
+      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      Paint localPaint = new Paint();
+      localPaint.setAntiAlias(true);
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
     }
-    for (;;)
-    {
-      localMessage.sendToTarget();
-      return;
-      localMessage.arg2 = -1;
-    }
+    super.draw(paramCanvas, paramMapView);
   }
 }
 

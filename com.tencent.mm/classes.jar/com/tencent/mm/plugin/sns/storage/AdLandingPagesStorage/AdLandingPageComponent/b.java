@@ -1,32 +1,42 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import android.content.Intent;
+
 public final class b
-  extends l
+  extends r
 {
-  public String Ca;
+  public String PLD;
+  public String QIO;
+  public boolean QIP = false;
+  public String QIQ;
+  public boolean QIR = true;
+  public int QIS;
+  public String QIT;
+  public String QIU = "";
+  public String QIV = "";
+  public String QIW = "";
+  public String QIX = "";
+  public String QIY = "";
+  public String QIZ = "";
+  public String QJa = "";
+  public String QJb = "";
+  public String QJc = "";
+  public int QJd = -1;
+  public boolean QJe = false;
+  public int QJf;
+  public int QJg;
+  public Intent QJh;
+  public String QJi;
+  public String appid;
+  public String bJH;
   public String channelId;
-  public String cqq;
-  public String cwc;
   public String downloadUrl;
   public long fileSize;
-  public String rrD;
-  public boolean rrE = true;
-  public int rrF;
-  public String rrG;
-  public String rrH = "";
-  public String rrI = "";
-  public String rrJ = "";
-  public String rrK = "";
-  public String rrL = "";
-  public String rrM = "";
-  public String rrN = "";
-  public String rrO = "";
-  public String rrP = "";
-  public String rrQ;
+  public String md5;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b
  * JD-Core Version:    0.7.0.1
  */

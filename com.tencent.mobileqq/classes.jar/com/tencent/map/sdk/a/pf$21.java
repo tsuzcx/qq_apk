@@ -27,13 +27,13 @@ final class pf$21
     double d2 = localDoublePoint1.x;
     double d3 = localDoublePoint2.y;
     double d4 = localDoublePoint1.y;
-    localObject = ((fu)localObject).a(new DoublePoint(d1 - d2 + localDoublePoint2.x, d3 - d4 + localDoublePoint2.y));
+    localObject = ((fu)localObject).a(new DoublePoint(localDoublePoint2.x + (d1 - d2), localDoublePoint2.y + (d3 - d4)));
     pf.b(this.d).nativeSetCenter(pf.a(this.d), (GeoPoint)localObject, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pf.21
  * JD-Core Version:    0.7.0.1
  */

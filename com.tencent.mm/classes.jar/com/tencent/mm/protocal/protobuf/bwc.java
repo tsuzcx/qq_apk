@@ -1,74 +1,145 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public final class bwc
-  extends com.tencent.mm.bv.a
+public class bwc
+  extends com.tencent.mm.bx.a
 {
-  public String xJE;
-  private boolean xJF;
+  public long ECY;
+  public int aadB;
+  public int aaed;
+  public bwd aaee;
+  public String akkR;
+  public String icon_url;
+  public int type;
+  public String wording;
   
-  public final bwc aoF(String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    this.xJE = paramString;
-    this.xJF = true;
-    return this;
-  }
-  
-  public final int computeSize()
-  {
-    AppMethodBeat.i(51853);
-    int i = 0;
-    if (this.xJF) {
-      i = e.a.a.b.b.a.f(1, this.xJE) + 0;
-    }
-    AppMethodBeat.o(51853);
-    return i + 0;
-  }
-  
-  public final boolean populateBuilderWithField(e.a.a.a.a parama, com.tencent.mm.bv.a parama1, int paramInt)
-  {
-    AppMethodBeat.i(51856);
-    parama1 = (bwc)parama1;
-    boolean bool = true;
-    switch (paramInt)
+    AppMethodBeat.i(258731);
+    if (paramInt == 0)
     {
-    default: 
-      bool = false;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.aaed);
+      if (this.wording != null) {
+        paramVarArgs.g(2, this.wording);
+      }
+      paramVarArgs.bS(3, this.aadB);
+      paramVarArgs.bv(4, this.ECY);
+      if (this.aaee != null)
+      {
+        paramVarArgs.qD(5, this.aaee.computeSize());
+        this.aaee.writeFields(paramVarArgs);
+      }
+      if (this.akkR != null) {
+        paramVarArgs.g(6, this.akkR);
+      }
+      paramVarArgs.bS(7, this.type);
+      if (this.icon_url != null) {
+        paramVarArgs.g(8, this.icon_url);
+      }
+      AppMethodBeat.o(258731);
+      return 0;
     }
-    for (;;)
+    int i;
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(51856);
-      return bool;
-      parama1.aoF(parama.CLY.readString());
+      i = i.a.a.b.b.a.cJ(1, this.aaed) + 0;
+      paramInt = i;
+      if (this.wording != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.wording);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(3, this.aadB) + i.a.a.b.b.a.q(4, this.ECY);
+      paramInt = i;
+      if (this.aaee != null) {
+        paramInt = i + i.a.a.a.qC(5, this.aaee.computeSize());
+      }
+      i = paramInt;
+      if (this.akkR != null) {
+        i = paramInt + i.a.a.b.b.a.h(6, this.akkR);
+      }
+      i += i.a.a.b.b.a.cJ(7, this.type);
+      paramInt = i;
+      if (this.icon_url != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.icon_url);
+      }
+      AppMethodBeat.o(258731);
+      return paramInt;
     }
-  }
-  
-  public final byte[] toByteArray()
-  {
-    AppMethodBeat.i(51854);
-    byte[] arrayOfByte = super.toByteArray();
-    AppMethodBeat.o(51854);
-    return arrayOfByte;
-  }
-  
-  public final String toString()
-  {
-    return this.xJE;
-  }
-  
-  public final void writeFields(e.a.a.c.a parama)
-  {
-    AppMethodBeat.i(51855);
-    if (this.xJF) {
-      parama.e(1, this.xJE);
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(258731);
+      return 0;
     }
-    AppMethodBeat.o(51855);
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      bwc localbwc = (bwc)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(258731);
+        return -1;
+      case 1: 
+        localbwc.aaed = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(258731);
+        return 0;
+      case 2: 
+        localbwc.wording = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258731);
+        return 0;
+      case 3: 
+        localbwc.aadB = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(258731);
+        return 0;
+      case 4: 
+        localbwc.ECY = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(258731);
+        return 0;
+      case 5: 
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          bwd localbwd = new bwd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localbwd.parseFrom((byte[])localObject);
+          }
+          localbwc.aaee = localbwd;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(258731);
+        return 0;
+      case 6: 
+        localbwc.akkR = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258731);
+        return 0;
+      case 7: 
+        localbwc.type = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(258731);
+        return 0;
+      }
+      localbwc.icon_url = ((i.a.a.a.a)localObject).ajGk.readString();
+      AppMethodBeat.o(258731);
+      return 0;
+    }
+    AppMethodBeat.o(258731);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bwc
  * JD-Core Version:    0.7.0.1
  */

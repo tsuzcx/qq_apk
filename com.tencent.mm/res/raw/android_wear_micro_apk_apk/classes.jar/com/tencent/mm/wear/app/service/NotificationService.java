@@ -25,13 +25,13 @@ public class NotificationService
       for (;;)
       {
         paramIntent = new e(paramInt1, paramInt2, paramIntent);
-        paramIntent.G(bool);
-        h.mc().a(paramIntent);
+        paramIntent.J(bool);
+        h.mP().a(paramIntent);
         return;
         int i = paramIntent.getIntExtra("key_unread_count", 0);
         paramIntent = new x();
-        paramIntent.VN = paramString;
-        paramIntent.We = i;
+        paramIntent.XI = paramString;
+        paramIntent.XZ = i;
         try
         {
           paramIntent = paramIntent.toByteArray();

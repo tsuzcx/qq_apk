@@ -1,321 +1,510 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.plugin.i.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.setting.ui.widget.HeadImgNewPreference;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.aar;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.o;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.findersdk.a.bv;
+import com.tencent.mm.plugin.findersdk.a.ca;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.patmsg.PluginPatMsg;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.ui.tools.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.base.preference.HeadImgNewPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import java.io.File;
+import com.tencent.mm.ui.base.preference.SummaryTextPreference;
+import com.tencent.mm.vfs.u;
 
 public class SettingsPersonalInfoUI
   extends MMPreference
-  implements com.tencent.mm.ai.f, n.b
+  implements com.tencent.mm.am.h, MStorageEx.IOnStorageChange
 {
-  private boolean gsE;
-  private com.tencent.mm.plugin.setting.model.g qJq;
+  private com.tencent.mm.plugin.setting.model.l Pvm;
+  private boolean pNU;
   private com.tencent.mm.ui.base.preference.f screen;
   
-  private void ckf()
+  private void CR(boolean paramBoolean)
   {
-    AppMethodBeat.i(127375);
-    Preference localPreference = this.screen.atx("settings_username");
-    String str1 = r.Zo();
-    String str2 = r.Zn();
-    if (bo.isNullOrNil(str1))
+    AppMethodBeat.i(299233);
+    if (!((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderSwitchApi().ffE()) {}
+    for (int i = 1; (i != 0) && (paramBoolean); i = 0)
     {
-      if (ad.ari(str2)) {
-        localPreference.setSummary(getString(2131303357));
-      }
-      while (!ad.arj(r.Zn()))
-      {
-        localPreference.OW(8);
-        AppMethodBeat.o(127375);
-        return;
-        localPreference.setSummary(str2);
-      }
-    }
-    localPreference.setSummary(str1);
-    localPreference.OW(8);
-    AppMethodBeat.o(127375);
-  }
-  
-  private void ckt()
-  {
-    AppMethodBeat.i(127376);
-    HeadImgNewPreference localHeadImgNewPreference = (HeadImgNewPreference)this.screen.atx("settings_change_avatar");
-    localHeadImgNewPreference.YZ(r.Zn());
-    localHeadImgNewPreference.qMg = new SettingsPersonalInfoUI.2(this);
-    AppMethodBeat.o(127376);
-  }
-  
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(127378);
-    int i = bo.f(paramObject, 0);
-    ab.d("MicroMsg.SettingsPersonalInfoUI", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    if ((paramn != com.tencent.mm.kernel.g.RL().Ru()) || (i <= 0))
-    {
-      ab.e("MicroMsg.SettingsPersonalInfoUI", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(127378);
+      this.screen.eh("settings_finder_recent_like", false);
+      AppMethodBeat.o(299233);
       return;
     }
-    ckf();
-    AppMethodBeat.o(127378);
+    this.screen.eh("settings_finder_recent_like", true);
+    AppMethodBeat.o(299233);
+  }
+  
+  private void gVx()
+  {
+    AppMethodBeat.i(74313);
+    Preference localPreference = this.screen.bAi("settings_username");
+    String str1 = z.bAN();
+    String str2 = z.bAM();
+    if (Util.isNullOrNil(str1)) {
+      if (au.bxb(str2))
+      {
+        localPreference.aS(getString(b.i.settings_notset));
+        if ((!au.bxc(z.bAM())) && (com.tencent.mm.k.i.aRC().getInt("EnableModAlias", 0) == 0)) {
+          localPreference.aBq(8);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (WeChatBrands.Business.Entries.MeAvatarWeChatId.restricted()) {
+        localPreference.aBq(8);
+      }
+      AppMethodBeat.o(74313);
+      return;
+      localPreference.aS(str2);
+      break;
+      localPreference.aS(str1);
+      if (com.tencent.mm.k.i.aRC().getInt("EnableModAlias", 0) == 0) {
+        localPreference.aBq(8);
+      }
+    }
+  }
+  
+  private void gWb()
+  {
+    AppMethodBeat.i(74314);
+    HeadImgNewPreference localHeadImgNewPreference = (HeadImgNewPreference)this.screen.bAi("settings_change_avatar");
+    localHeadImgNewPreference.bAh(z.bAM());
+    localHeadImgNewPreference.tyA = new SettingsPersonalInfoUI.2(this);
+    AppMethodBeat.o(74314);
+  }
+  
+  private void gWc()
+  {
+    AppMethodBeat.i(299225);
+    Object localObject = new Intent();
+    ((Intent)localObject).setClass(this, SettingsModifyPatSuffixUI.class);
+    ((Intent)localObject).putExtras(getIntent());
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "goToSetPatSuffix", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "goToSetPatSuffix", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(299225);
   }
   
   public int getResourceId()
   {
-    return 2131165290;
+    return b.k.settings_pref_personal_info_new;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127372);
-    setMMTitle(2131303363);
-    com.tencent.mm.kernel.g.RL().Ru().a(this);
+    AppMethodBeat.i(74310);
+    setMMTitle(b.i.settings_personal_info);
+    com.tencent.mm.kernel.h.baE().ban().add(this);
     this.screen = getPreferenceScreen();
     setBackBtn(new SettingsPersonalInfoUI.1(this));
-    AppMethodBeat.o(127372);
+    AppMethodBeat.o(74310);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(127377);
-    ab.i("MicroMsg.SettingsPersonalInfoUI", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(74315);
+    Log.i("MicroMsg.SettingsPersonalInfoUI", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 != -1)
     {
       if ((paramInt1 == 3) || (paramInt1 == 2) || (paramInt1 == 4)) {
-        new ak(Looper.getMainLooper()).post(new SettingsPersonalInfoUI.3(this));
+        new MMHandler(Looper.getMainLooper()).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(74306);
+            aar localaar = new aar();
+            localaar.iel.ien = true;
+            localaar.publish();
+            AppMethodBeat.o(74306);
+          }
+        });
       }
-      AppMethodBeat.o(127377);
+      AppMethodBeat.o(74315);
       return;
     }
     switch (paramInt1)
     {
     default: 
-      AppMethodBeat.o(127377);
+      AppMethodBeat.o(74315);
       return;
     case 3: 
-      paramIntent = com.tencent.mm.pluginsdk.ui.tools.n.h(getApplicationContext(), paramIntent, c.YK());
+      paramIntent = t.g(getApplicationContext(), paramIntent, com.tencent.mm.plugin.image.d.bzL());
       if (paramIntent == null)
       {
-        AppMethodBeat.o(127377);
+        AppMethodBeat.o(74315);
         return;
       }
       localObject = new Intent();
       ((Intent)localObject).putExtra("CropImageMode", 1);
       ((Intent)localObject).putExtra("CropImage_OutputPath", paramIntent);
       ((Intent)localObject).putExtra("CropImage_ImgPath", paramIntent);
-      com.tencent.mm.plugin.setting.b.gmO.a(this, (Intent)localObject, 4);
-      AppMethodBeat.o(127377);
+      ((Intent)localObject).putExtra("CropImage_from_scene", 3);
+      com.tencent.mm.plugin.setting.c.pFn.a(this, (Intent)localObject, 4);
+      AppMethodBeat.o(74315);
       return;
     case 2: 
       if (paramIntent == null)
       {
-        AppMethodBeat.o(127377);
+        AppMethodBeat.o(74315);
         return;
       }
       localObject = new Intent();
       ((Intent)localObject).putExtra("CropImageMode", 1);
       ((Intent)localObject).putExtra("CropImage_Filter", true);
-      o.acQ();
-      ((Intent)localObject).putExtra("CropImage_OutputPath", com.tencent.mm.ah.d.E(r.Zn() + ".crop", true));
+      q.bFp();
+      ((Intent)localObject).putExtra("CropImage_OutputPath", AvatarStorage.R(z.bAM() + ".crop", true));
       ((Intent)localObject).putExtra("CropImage_ImgPath", null);
-      com.tencent.mm.plugin.setting.b.gmO.a(this, paramIntent, (Intent)localObject, c.YK(), 4, null);
-      AppMethodBeat.o(127377);
+      ((Intent)localObject).putExtra("CropImage_from_scene", 3);
+      com.tencent.mm.plugin.setting.c.pFn.a(this, paramIntent, (Intent)localObject, com.tencent.mm.plugin.image.d.bzL(), null);
+      AppMethodBeat.o(74315);
       return;
     }
-    new ak(Looper.getMainLooper()).post(new SettingsPersonalInfoUI.4(this));
-    if (paramIntent == null)
-    {
-      AppMethodBeat.o(127377);
-      return;
-    }
-    paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
-    Object localObject = r.Zn();
-    o.acQ();
-    localObject = com.tencent.mm.ah.d.rb((String)localObject);
-    if (paramIntent == null)
-    {
-      ab.e("MicroMsg.SettingsPersonalInfoUI", "crop picture failed");
-      AppMethodBeat.o(127377);
-      return;
-    }
-    ab.i("MicroMsg.SettingsPersonalInfoUI", "onActivityResult(CONTEXT_MENU_CROP_PICTURE)  file:%s, size:%d", new Object[] { paramIntent, Long.valueOf(new File(paramIntent).length()) });
-    new com.tencent.mm.ah.m(getContext(), paramIntent).v(new Runnable()
+    new MMHandler(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(127369);
-        ab.d("MicroMsg.SettingsPersonalInfoUI", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.g.RG()), r.Zn() });
-        if (com.tencent.mm.kernel.g.RG())
+        AppMethodBeat.i(74307);
+        aar localaar = new aar();
+        localaar.iel.ien = true;
+        localaar.publish();
+        AppMethodBeat.o(74307);
+      }
+    });
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(74315);
+      return;
+    }
+    paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
+    Object localObject = z.bAM();
+    q.bFp();
+    localObject = AvatarStorage.LJ((String)localObject);
+    if (paramIntent == null)
+    {
+      Log.e("MicroMsg.SettingsPersonalInfoUI", "crop picture failed");
+      AppMethodBeat.o(74315);
+      return;
+    }
+    Log.i("MicroMsg.SettingsPersonalInfoUI", "onActivityResult(CONTEXT_MENU_CROP_PICTURE)  file:%s, size:%d", new Object[] { paramIntent, Long.valueOf(new u(paramIntent).length()) });
+    new o(getContext(), paramIntent, false).L(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(298871);
+        Log.d("MicroMsg.SettingsPersonalInfoUI", "updateHeadImg hasUin:%b user:%s", new Object[] { Boolean.valueOf(com.tencent.mm.kernel.h.baz()), z.bAM() });
+        if (com.tencent.mm.kernel.h.baz())
         {
           if (this.val$bitmap != null)
           {
-            o.acQ();
-            str = com.tencent.mm.ah.d.E(r.Zn() + ".last", true);
-            PreviewHdHeadImg.e(this.val$bitmap, str);
+            q.bFp();
+            str = AvatarStorage.R(z.bAM() + ".last", true);
+            PreviewHdHeadImg.h(this.val$bitmap, str);
           }
-          String str = com.tencent.mm.ah.b.qS(r.Zn());
-          av.flM.po(str);
+          String str = com.tencent.mm.modelavatar.d.Lz(z.bAM());
+          bg.okT.JD(str);
         }
         SettingsPersonalInfoUI.a(SettingsPersonalInfoUI.this);
         if (SettingsPersonalInfoUI.b(SettingsPersonalInfoUI.this)) {
-          h.qsU.e(11002, new Object[] { Integer.valueOf(4), Integer.valueOf(4) });
+          com.tencent.mm.plugin.report.service.h.OAn.b(11002, new Object[] { Integer.valueOf(4), Integer.valueOf(4) });
         }
-        AppMethodBeat.o(127369);
+        AppMethodBeat.o(298871);
       }
     });
-    AppMethodBeat.o(127377);
+    AppMethodBeat.o(74315);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127370);
+    AppMethodBeat.i(74308);
     super.onCreate(paramBundle);
+    if (getIntent().getBooleanExtra("jumptoPat", false)) {
+      gWc();
+    }
     initView();
     if (getIntent().getBooleanExtra("intent_set_avatar", false))
     {
-      this.gsE = getIntent().getBooleanExtra("KEnterFromBanner", false);
-      a.gmP.n(this);
+      this.pNU = getIntent().getBooleanExtra("KEnterFromBanner", false);
+      com.tencent.mm.plugin.account.sdk.a.pFo.t(this);
     }
-    com.tencent.mm.kernel.g.Rc().a(1191, this);
-    AppMethodBeat.o(127370);
+    com.tencent.mm.kernel.h.aZW().a(1191, this);
+    AppMethodBeat.o(74308);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(127371);
-    ab.d("MicroMsg.SettingsPersonalInfoUI", "SettingsPersonalInfoUI.onDestroy()");
-    if (com.tencent.mm.kernel.g.RG()) {
-      com.tencent.mm.kernel.g.RL().Ru().b(this);
+    AppMethodBeat.i(74309);
+    Log.d("MicroMsg.SettingsPersonalInfoUI", "SettingsPersonalInfoUI.onDestroy()");
+    if (com.tencent.mm.kernel.h.baz()) {
+      com.tencent.mm.kernel.h.baE().ban().remove(this);
     }
-    if (this.qJq != null) {
-      com.tencent.mm.kernel.g.Rc().a(this.qJq);
+    if (this.Pvm != null) {
+      com.tencent.mm.kernel.h.aZW().a(this.Pvm);
     }
-    com.tencent.mm.kernel.g.Rc().b(1191, this);
+    com.tencent.mm.kernel.h.aZW().b(1191, this);
     super.onDestroy();
-    AppMethodBeat.o(127371);
+    AppMethodBeat.o(74309);
+  }
+  
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(74316);
+    int i = Util.nullAsInt(paramObject, 0);
+    Log.d("MicroMsg.SettingsPersonalInfoUI", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
+    if ((paramMStorageEx != com.tencent.mm.kernel.h.baE().ban()) || (i <= 0))
+    {
+      Log.e("MicroMsg.SettingsPersonalInfoUI", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
+      AppMethodBeat.o(74316);
+      return;
+    }
+    gVx();
+    AppMethodBeat.o(74316);
   }
   
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(127374);
+    AppMethodBeat.i(74312);
     paramf = paramPreference.mKey;
-    ab.d("MicroMsg.SettingsPersonalInfoUI", "key = ".concat(String.valueOf(paramf)));
+    Log.d("MicroMsg.SettingsPersonalInfoUI", "key = ".concat(String.valueOf(paramf)));
     if (paramf.equals("settings_change_avatar"))
     {
-      boolean bool = a.gmP.n(this);
-      AppMethodBeat.o(127374);
+      boolean bool = com.tencent.mm.plugin.account.sdk.a.pFo.t(this);
+      AppMethodBeat.o(74312);
       return bool;
     }
     if (paramf.equals("settings_username"))
     {
-      if ((bo.isNullOrNil(r.Zo())) && (ad.arj(r.Zn()))) {
-        startActivity(SettingsAliasUI.class);
+      if (WeChatBrands.Business.Entries.MeAvatarWeChatId.restricted())
+      {
+        AppMethodBeat.o(74312);
+        return true;
       }
-      AppMethodBeat.o(127374);
+      if ((Util.isNullOrNil(z.bAN())) && (au.bxc(z.bAM())) && (com.tencent.mm.k.i.aRC().getInt("EnableModAlias", 0) == 0))
+      {
+        startActivity(SettingsCreateAliasUI.class);
+        AppMethodBeat.o(74312);
+        return true;
+      }
+      if (com.tencent.mm.k.i.aRC().getInt("EnableModAlias", 0) != 0)
+      {
+        paramf = new Intent(this, SettingsAliasUI.class);
+        paramf.putExtra("WizardRootClass", SettingsPersonalInfoUI.class.getCanonicalName());
+        MMWizardActivity.aQ(this, paramf);
+      }
+      AppMethodBeat.o(74312);
       return true;
     }
     if (paramf.equals("settings_name"))
     {
       paramf = new Intent();
       paramf.setClass(this, SettingsModifyNameUI.class);
-      startActivity(paramf);
-      AppMethodBeat.o(127374);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().cG(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "goTosetName", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "goTosetName", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(74312);
       return true;
     }
     if (paramf.equals("settings_qrcode"))
     {
-      h.qsU.e(11264, new Object[] { Integer.valueOf(2) });
-      getContext().startActivity(new Intent(this, SelfQRCodeUI.class));
+      com.tencent.mm.plugin.report.service.h.OAn.b(11264, new Object[] { Integer.valueOf(2) });
+      paramf = getContext();
+      paramPreference = new Intent(this, SelfQRCodeUI.class);
+      paramPreference = new com.tencent.mm.hellhoundlib.b.a().cG(paramPreference);
+      com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf.startActivity((Intent)paramPreference.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramf, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     do
     {
       for (;;)
       {
-        AppMethodBeat.o(127374);
+        AppMethodBeat.o(74312);
         return false;
-        if (!paramf.equals("settings_more_info")) {
-          break;
+        if (paramf.equals("settings_more_info"))
+        {
+          paramf = new Intent(this, SettingsPersonalMoreUI.class);
+          paramf = new com.tencent.mm.hellhoundlib.b.a().cG(paramf);
+          com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramf.sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
-        startActivity(new Intent(this, SettingsPersonalMoreUI.class));
+        else
+        {
+          if (paramf.equals("settings_address"))
+          {
+            if (!WeChatBrands.Business.Entries.MeAvatarAddress.checkAvailable(getContext()))
+            {
+              AppMethodBeat.o(74312);
+              return true;
+            }
+            paramf = new Intent();
+            paramf.putExtra("launch_from_webview", false);
+            com.tencent.mm.br.c.c(getContext(), "address", ".ui.WalletSelectAddrUI", paramf);
+            AppMethodBeat.o(74312);
+            return true;
+          }
+          if (paramf.equals("settings_invoice"))
+          {
+            if (!WeChatBrands.Business.Entries.MeAvatarInvoiceTitle.checkAvailable(getContext()))
+            {
+              AppMethodBeat.o(74312);
+              return true;
+            }
+            com.tencent.mm.plugin.report.service.h.OAn.b(14199, new Object[] { Integer.valueOf(1) });
+            paramf = new Intent();
+            paramf.putExtra("launch_from_webview", false);
+            com.tencent.mm.br.c.c(getContext(), "address", ".ui.InvoiceListUI", paramf);
+            AppMethodBeat.o(74312);
+            return true;
+          }
+          if (paramf.equals("settings_pat"))
+          {
+            gWc();
+          }
+          else
+          {
+            if (!paramf.equals("settings_wecoin")) {
+              break;
+            }
+            if (!((com.tencent.mm.plugin.wallet.wecoin.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wallet.wecoin.a.d.class)).ihl())
+            {
+              com.tencent.mm.plugin.setting.ui.b.a.a(this, true, new SettingsPersonalInfoUI.3(this));
+            }
+            else
+            {
+              com.tencent.mm.plugin.report.service.h.OAn.b(21650, new Object[] { Integer.valueOf(0) });
+              paramf = new Intent();
+              paramf.putExtra("launch_from_webview", false);
+              com.tencent.mm.br.c.c(getContext(), "wallet", ".wecoin.ui.WeCoinRechargeView", paramf);
+            }
+          }
+        }
       }
-      if (paramf.equals("settings_address"))
-      {
-        paramf = new Intent();
-        paramf.putExtra("launch_from_webview", false);
-        com.tencent.mm.bq.d.c(getContext(), "address", ".ui.WalletSelectAddrUI", paramf);
-        AppMethodBeat.o(127374);
-        return true;
-      }
-    } while (!paramf.equals("settings_invoice"));
-    h.qsU.e(14199, new Object[] { Integer.valueOf(1) });
-    paramf = new Intent();
-    paramf.putExtra("launch_from_webview", false);
-    com.tencent.mm.bq.d.c(getContext(), "address", ".ui.InvoiceListUI", paramf);
-    AppMethodBeat.o(127374);
-    return true;
+    } while (!paramf.equals("settings_finder_recent_like"));
+    paramf = (String)com.tencent.mm.kernel.h.baE().ban().d(4, null);
+    if (Util.isNullOrNil(paramf)) {
+      paramf = "";
+    }
+    for (;;)
+    {
+      ((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderUtilApi().e(this, z.bAM(), paramf, 92);
+      break;
+    }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(127373);
-    ckf();
-    ckt();
-    String str = (String)com.tencent.mm.kernel.g.RL().Ru().get(4, null);
-    if ((str != null) && (str.length() > 0)) {
-      this.screen.atx("settings_name").setSummary(j.b(this, str));
+    AppMethodBeat.i(74311);
+    gVx();
+    gWb();
+    Object localObject = (String)com.tencent.mm.kernel.h.baE().ban().d(4, null);
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      this.screen.bAi("settings_name").aS(com.tencent.mm.pluginsdk.ui.span.p.b(this, (CharSequence)localObject));
     }
-    boolean bool = bo.hl(this);
-    this.screen.cl("settings_address", bool);
-    if (!bo.e(Boolean.valueOf(com.tencent.mm.kernel.g.RL().Ru().getBoolean(ac.a.yFF, false))))
+    localObject = this.screen.bAi("settings_pat");
+    boolean bool;
+    label150:
+    label194:
+    label227:
+    final SummaryTextPreference localSummaryTextPreference;
+    long l;
+    if (((PluginPatMsg)com.tencent.mm.kernel.h.az(PluginPatMsg.class)).isPatEnable())
     {
-      this.screen.cl("settings_invoice", true);
-      this.qJq = new com.tencent.mm.plugin.setting.model.g();
-      com.tencent.mm.kernel.g.Rc().a(this.qJq, 0);
+      this.screen.eh("settings_pat", false);
+      ((Preference)localObject).aS(com.tencent.mm.pluginsdk.ui.span.p.b(this, (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.adgr, null)));
+      if ((!Util.isOverseasUser(this)) && (!WeChatBrands.Business.Entries.MeAvatarAddress.banned())) {
+        break label463;
+      }
+      bool = true;
+      this.screen.eh("settings_address", bool);
+      if (!((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu()) {
+        break label468;
+      }
+      this.screen.eh("settings_finder_recent_like", true);
+      if ((!WeChatBrands.Business.Entries.MeAvatarInvoiceTitle.banned()) && (Util.nullAsFalse(Boolean.valueOf(com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.acQL, false))))) {
+        break label501;
+      }
+      bool = true;
+      this.screen.eh("settings_invoice", bool);
+      if (bool)
+      {
+        this.Pvm = new com.tencent.mm.plugin.setting.model.l();
+        com.tencent.mm.kernel.h.aZW().a(this.Pvm, 0);
+      }
+      bool = ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).aBu();
+      localSummaryTextPreference = (SummaryTextPreference)this.screen.bAi("settings_wecoin");
+      this.screen.eh("settings_wecoin", bool);
+      if (!bool)
+      {
+        l = ((com.tencent.mm.plugin.wallet.wecoin.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wallet.wecoin.a.d.class)).ihk().longValue();
+        Log.i("MicroMsg.SettingsPersonalInfoUI", "updateWeCoinEntry balance catch: %s", new Object[] { Long.valueOf(l) });
+        if (l <= 0L) {
+          break label506;
+        }
+      }
     }
-    for (;;)
+    label463:
+    label468:
+    label501:
+    label506:
+    for (localObject = l + " " + getString(b.i.settings_weconin_unit_text);; localObject = "")
     {
+      localSummaryTextPreference.aeas = "fonts/WeChatSansSS-Regular.ttf";
+      localSummaryTextPreference.aS((CharSequence)localObject);
+      ((com.tencent.mm.plugin.wallet.wecoin.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wallet.wecoin.a.d.class)).a(new com.tencent.mm.plugin.wallet.wecoin.a.i()
+      {
+        public final void s(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString) {}
+      });
       super.onResume();
-      AppMethodBeat.o(127373);
+      AppMethodBeat.o(74311);
       return;
-      this.screen.cl("settings_invoice", false);
+      this.screen.eh("settings_pat", true);
+      break;
+      bool = false;
+      break label150;
+      CR(((cn)com.tencent.mm.kernel.h.az(cn.class)).getFinderSwitchApi().c(new SettingsPersonalInfoUI.7(this)));
+      break label194;
+      bool = false;
+      break label227;
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(127379);
-    if (!bo.e(Boolean.valueOf(com.tencent.mm.kernel.g.RL().Ru().getBoolean(ac.a.yFF, false))))
-    {
-      this.screen.cl("settings_invoice", true);
-      AppMethodBeat.o(127379);
-      return;
+    boolean bool = false;
+    AppMethodBeat.i(74317);
+    if ((WeChatBrands.Business.Entries.MeAvatarInvoiceTitle.banned()) || (!Util.nullAsFalse(Boolean.valueOf(com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.acQL, false))))) {
+      bool = true;
     }
-    this.screen.cl("settings_invoice", false);
-    AppMethodBeat.o(127379);
+    this.screen.eh("settings_invoice", bool);
+    AppMethodBeat.o(74317);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

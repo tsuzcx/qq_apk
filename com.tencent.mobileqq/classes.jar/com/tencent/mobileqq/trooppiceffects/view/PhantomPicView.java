@@ -18,42 +18,35 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcxg;
 
 public class PhantomPicView
   extends FrameLayout
-  implements bcxg
+  implements IPicView
 {
-  protected Handler a;
-  protected FrameLayout a;
   protected ImageView a;
-  protected boolean a;
-  protected FrameLayout b;
   protected ImageView b;
   protected ImageView c;
+  protected FrameLayout d;
+  protected FrameLayout e;
+  protected Handler f = new Handler(Looper.getMainLooper());
+  protected boolean g;
   
   public PhantomPicView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.a = new ImageView(paramContext);
+    this.b = new ImageView(paramContext);
     this.c = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.d = new FrameLayout(paramContext);
+    this.e = new FrameLayout(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
     this.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, -1, -1);
-    addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -1, -1);
-    addView(this.jdField_b_of_type_AndroidWidgetFrameLayout, -1, -1);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, -1, -1);
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(this.c, -1, -1);
-  }
-  
-  public View a()
-  {
-    return this;
+    addView(this.a, -1, -1);
+    addView(this.d, -1, -1);
+    addView(this.e, -1, -1);
+    this.d.addView(this.b, -1, -1);
+    this.e.addView(this.c, -1, -1);
   }
   
   public void a()
@@ -63,20 +56,20 @@ public class PhantomPicView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(null);
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.clearAnimation();
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.setTag(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d.clearAnimation();
+    this.d.setTag(null);
+    this.e.clearAnimation();
+    this.e.setTag(null);
+    this.g = true;
+    this.f.removeCallbacksAndMessages(null);
   }
   
-  public void c()
+  protected void c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+    this.d.setVisibility(0);
     Object localObject4 = new Keyframe[3];
     localObject4[0] = Keyframe.ofFloat(0.0F, 1.0F);
     localObject4[1] = Keyframe.ofFloat(0.33F, 1.1F);
@@ -87,33 +80,38 @@ public class PhantomPicView
     Keyframe localKeyframe2 = Keyframe.ofFloat(1.0F, 0.0F);
     Object localObject1 = PropertyValuesHolder.ofKeyframe("scaleX", (Keyframe[])localObject4);
     localObject4 = PropertyValuesHolder.ofKeyframe("scaleY", (Keyframe[])localObject4);
-    localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetFrameLayout, new PropertyValuesHolder[] { localObject1 }).setDuration(320L);
-    localObject4 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetFrameLayout, new PropertyValuesHolder[] { localObject4 }).setDuration(320L);
+    localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.d, new PropertyValuesHolder[] { localObject1 }).setDuration(320L);
+    localObject4 = ObjectAnimator.ofPropertyValuesHolder(this.d, new PropertyValuesHolder[] { localObject4 }).setDuration(320L);
     localObject2 = PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { localObject2, localObject3, localKeyframe1, localKeyframe2 });
-    localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidWidgetFrameLayout, new PropertyValuesHolder[] { localObject2 }).setDuration(320L);
+    localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.d, new PropertyValuesHolder[] { localObject2 }).setDuration(320L);
     localObject3 = new AnimatorSet();
     ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject4).with((Animator)localObject2);
     ((AnimatorSet)localObject3).start();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setTag(localObject3);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PhantomPicView.1(this), 80L);
+    this.d.setTag(localObject3);
+    this.f.postDelayed(new PhantomPicView.1(this), 80L);
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(getResources(), paramBitmap);
     localBitmapDrawable.setColorFilter(Color.parseColor("#D000FF"), PorterDuff.Mode.ADD);
     paramBitmap = new BitmapDrawable(getResources(), paramBitmap);
     paramBitmap.setColorFilter(Color.parseColor("#0005FF"), PorterDuff.Mode.ADD);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localBitmapDrawable);
+    this.b.setImageDrawable(localBitmapDrawable);
     this.c.setImageDrawable(paramBitmap);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+    this.d.setVisibility(4);
+    this.e.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.PhantomPicView
  * JD-Core Version:    0.7.0.1
  */

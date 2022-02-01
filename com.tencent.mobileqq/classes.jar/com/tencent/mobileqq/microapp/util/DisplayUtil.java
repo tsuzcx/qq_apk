@@ -12,7 +12,7 @@ public class DisplayUtil
   
   public static int dip2px(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   public static int getBarHeight(Context paramContext)
@@ -32,14 +32,16 @@ public class DisplayUtil
   
   public static float getDensity(Context paramContext)
   {
-    if (density != 0.0F) {
+    float f = density;
+    if (f != 0.0F) {
+      return f;
+    }
+    if (paramContext != null)
+    {
+      density = paramContext.getResources().getDisplayMetrics().density;
       return density;
     }
-    if (paramContext == null) {
-      throw new IllegalArgumentException("");
-    }
-    density = paramContext.getResources().getDisplayMetrics().density;
-    return density;
+    throw new IllegalArgumentException("");
   }
   
   public static int parseColor(String paramString)
@@ -55,7 +57,15 @@ public class DisplayUtil
           str1 = paramString.substring(1, 2);
           String str2 = paramString.substring(2, 3);
           paramString = paramString.substring(3, 4);
-          str1 = "#" + str1 + str1 + str2 + str2 + paramString + paramString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("#");
+          localStringBuilder.append(str1);
+          localStringBuilder.append(str1);
+          localStringBuilder.append(str2);
+          localStringBuilder.append(str2);
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(paramString);
+          str1 = localStringBuilder.toString();
         }
       }
       int i = Color.parseColor(str1);
@@ -72,12 +82,12 @@ public class DisplayUtil
   
   public static int sp2px(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.util.DisplayUtil
  * JD-Core Version:    0.7.0.1
  */

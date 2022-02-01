@@ -20,7 +20,11 @@ public final class cy
       int i = a((WifiManager)paramContext.getSystemService("wifi"));
       return i;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label15:
+      break label15;
+    }
     return 4;
   }
   
@@ -48,46 +52,45 @@ public final class cy
       if (localObject != null)
       {
         String str = ((WifiInfo)localObject).getBSSID();
-        if ((str != null) && (!str.equals("000000000000")) && (!str.equals("00-00-00-00-00-00")) && (!str.equals("00:00:00:00:00:00")))
+        if ((str != null) && (!str.equals("000000000000")) && (!str.equals("00-00-00-00-00-00")))
         {
-          int i = ((WifiInfo)localObject).getRssi();
-          if ((i < -100) || (i > -20)) {
-            break label167;
+          if (str.equals("00:00:00:00:00:00")) {
+            return "{}";
           }
-          localObject = ((WifiInfo)localObject).getSSID().replace("\"", "").replace("|", "");
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("{");
-          localStringBuilder.append("\"mac\":\"");
-          localStringBuilder.append(str);
-          localStringBuilder.append("\",\"rssi\":");
-          localStringBuilder.append(i);
-          localStringBuilder.append(",\"ssid\":\"");
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("\"}");
-          str = localStringBuilder.toString();
-          return str;
+          int i = ((WifiInfo)localObject).getRssi();
+          if (i >= -100)
+          {
+            if (i > -20) {
+              return "{}";
+            }
+            localObject = ((WifiInfo)localObject).getSSID().replace("\"", "").replace("|", "");
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("{");
+            localStringBuilder.append("\"mac\":\"");
+            localStringBuilder.append(str);
+            localStringBuilder.append("\",\"rssi\":");
+            localStringBuilder.append(i);
+            localStringBuilder.append(",\"ssid\":\"");
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append("\"}");
+            str = localStringBuilder.toString();
+            return str;
+          }
         }
       }
-      else
-      {
-        return "{}";
-      }
-    }
-    catch (Throwable localThrowable)
-    {
       return "{}";
     }
-    return "{}";
-    label167:
+    catch (Throwable localThrowable) {}
     return "{}";
   }
   
   public static boolean a(List<ScanResult> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 1)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return true;
+      if (paramList.size() <= 1) {
+        return true;
+      }
       String str = ((ScanResult)paramList.get(0)).BSSID;
       int i = 1;
       while (i < paramList.size())
@@ -98,91 +101,78 @@ public final class cy
         i += 1;
       }
     }
+    return true;
   }
   
   public static boolean a(List<ScanResult> paramList1, List<ScanResult> paramList2)
   {
-    boolean bool;
     if (paramList1 == paramList2) {
-      bool = true;
+      return true;
     }
-    for (;;)
+    int i;
+    if (paramList1 == null) {
+      i = 0;
+    } else {
+      try
+      {
+        i = paramList1.size();
+      }
+      finally {}
+    }
+    for (int j = paramList2.size();; j = 0)
     {
-      return bool;
-      int i;
-      if (paramList1 == null)
-      {
-        i = 0;
-        label23:
-        if (paramList2 != null) {
-          break label50;
-        }
+      if (i != j) {
+        return false;
       }
-      for (int j = 0;; j = paramList2.size()) {
-        for (;;)
+      if (i == 0) {
+        return true;
+      }
+      try
+      {
+        HashMap localHashMap = a;
+        localHashMap.clear();
+        paramList1 = paramList1.iterator();
+        while (paramList1.hasNext())
         {
-          if (i == j) {
-            break label60;
-          }
-          bool = false;
-          break;
-          label50:
-          try
-          {
-            i = paramList1.size();
-            break label23;
-          }
-          finally {}
+          ScanResult localScanResult = (ScanResult)paramList1.next();
+          localHashMap.put(localScanResult.BSSID, Integer.valueOf(localScanResult.level));
         }
-      }
-      label60:
-      if (i == 0)
-      {
-        bool = true;
-      }
-      else
-      {
-        label87:
-        do
+        paramList1 = paramList2.iterator();
+        while (paramList1.hasNext())
         {
-          HashMap localHashMap;
-          while (!paramList1.hasNext())
-          {
-            try
-            {
-              localHashMap = a;
-              localHashMap.clear();
-              paramList1 = paramList1.iterator();
-              if (paramList1.hasNext())
-              {
-                ScanResult localScanResult = (ScanResult)paramList1.next();
-                localHashMap.put(localScanResult.BSSID, Integer.valueOf(localScanResult.level));
-                break label87;
-              }
-            }
-            catch (Throwable paramList1)
-            {
-              co.a("", paramList1);
-              bool = true;
-            }
-            paramList1 = paramList2.iterator();
-          }
           paramList2 = (ScanResult)paramList1.next();
-          if (!localHashMap.containsKey(paramList2.BSSID)) {
-            break label206;
+          if (localHashMap.containsKey(paramList2.BSSID))
+          {
+            i = paramList2.level;
+            j = ((Integer)localHashMap.get(paramList2.BSSID)).intValue();
+            if (i == j) {
+              break;
+            }
           }
-          i = paramList2.level;
-          j = ((Integer)localHashMap.get(paramList2.BSSID)).intValue();
-        } while (i == j);
-        label206:
-        bool = false;
+          else
+          {
+            return false;
+          }
+        }
+      }
+      catch (Throwable paramList1)
+      {
+        co.a("", paramList1);
+        return true;
+      }
+      for (;;)
+      {
+        throw paramList1;
+      }
+      if (paramList2 != null) {
+        break;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cy
  * JD-Core Version:    0.7.0.1
  */

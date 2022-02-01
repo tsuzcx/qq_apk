@@ -10,30 +10,30 @@ import android.widget.RelativeLayout.LayoutParams;
 public class ADViewIndividuation
   extends ADView
 {
-  private int a;
+  private int a = 0;
   
   public ADViewIndividuation(Context paramContext)
   {
     super(paramContext);
-    this.i = 8;
-    this.j = 18;
-    this.g = 2130846574;
-    this.h = this.g;
+    this.A = 8;
+    this.B = 18;
+    this.v = 2130848911;
+    this.w = this.v;
   }
   
   public ADViewIndividuation(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.i = 4;
-    this.j = 8;
-    this.g = 2130846574;
-    this.h = this.g;
+    this.A = 4;
+    this.B = 8;
+    this.v = 2130848911;
+    this.w = this.v;
   }
   
   public void a(View paramView, int paramInt)
   {
     super.a(paramView, paramInt);
-    setNavVisible(this.jdField_a_of_type_Int, false);
+    setNavVisible(this.a, false);
   }
   
   protected void a(LinearLayout paramLinearLayout)
@@ -41,43 +41,43 @@ public class ADViewIndividuation
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(8, 100000);
     localLayoutParams.addRule(7, 100000);
-    localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
+    localLayoutParams.setMargins(0, 0, 0, (int)(this.z * 6.0F));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
+    paramLinearLayout.setPadding((int)(this.z * 4.0F), 0, (int)(this.z * 2.0F), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   public void setNavVisible(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 0) {}
-    do
-    {
+    if (paramInt == 0) {
       return;
-      Object localObject = (ViewGroup)this.b.getChildAt(0);
+    }
+    Object localObject = (ViewGroup)this.x.getChildAt(0);
+    if (localObject != null)
+    {
+      localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
       if (localObject != null)
       {
-        localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
-        if (localObject != null)
-        {
-          if (paramInt > 0) {}
-          for (paramInt = 0;; paramInt = 8)
-          {
-            ((LinearLayout)localObject).setVisibility(paramInt);
-            if (!paramBoolean) {
-              break;
-            }
-            this.jdField_a_of_type_Int = 0;
-            return;
-          }
+        if (paramInt > 0) {
+          paramInt = 0;
+        } else {
+          paramInt = 8;
         }
+        ((LinearLayout)localObject).setVisibility(paramInt);
+        if (paramBoolean) {
+          this.a = 0;
+        }
+        return;
       }
-    } while (!paramBoolean);
-    this.jdField_a_of_type_Int = paramInt;
+    }
+    if (paramBoolean) {
+      this.a = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADViewIndividuation
  * JD-Core Version:    0.7.0.1
  */

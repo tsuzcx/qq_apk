@@ -31,6 +31,10 @@ public class cj
       }
       return null;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public ci d(String paramString1, String paramString2, int paramInt)
@@ -50,11 +54,15 @@ public class cj
       }
       return null;
     }
+    for (;;)
+    {
+      throw paramString1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cj
  * JD-Core Version:    0.7.0.1
  */

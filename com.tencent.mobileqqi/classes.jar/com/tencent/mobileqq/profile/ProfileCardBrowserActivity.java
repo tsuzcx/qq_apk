@@ -41,17 +41,17 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import geg;
 import geh;
 import gei;
 import gej;
 import gek;
 import gel;
-import gem;
+import gen;
 import geo;
 import gep;
 import geq;
 import ger;
-import ges;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -107,10 +107,10 @@ public class ProfileCardBrowserActivity
   public TextView a;
   public ProfileActivity.AllInOne a;
   public CardHandler a;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new gej(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new gei(this);
   public ProfileCardBrowserActivity.ImageGalleryAdapter a;
   public QQCustomDialog a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new gei(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new geh(this);
   public List a;
   public ConcurrentHashMap a;
   public AtomicBoolean a;
@@ -151,14 +151,14 @@ public class ProfileCardBrowserActivity
     this.jdField_c_of_type_AndroidWidgetTextView = null;
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new geh(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new gep(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new geq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new geg(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new geo(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new gep(this);
   }
   
   private void a(long paramLong, int paramInt)
   {
-    ThreadManager.a(new gem(this, paramLong, paramInt));
+    ThreadManager.a(new gel(this, paramLong, paramInt));
   }
   
   private void k()
@@ -221,7 +221,7 @@ public class ProfileCardBrowserActivity
     Object localObject = a(paramInt1);
     if (localObject != null)
     {
-      localObject = (CircularProgressBar)((View)localObject).findViewById(2131233399);
+      localObject = (CircularProgressBar)((View)localObject).findViewById(2131233398);
       if ((localObject != null) && (((CircularProgressBar)localObject).getTag() != null) && (((Integer)((CircularProgressBar)localObject).getTag()).intValue() == paramInt1)) {}
     }
     else
@@ -237,7 +237,7 @@ public class ProfileCardBrowserActivity
     if (paramObject == null) {
       return;
     }
-    paramObject = (ges)paramObject;
+    paramObject = (ger)paramObject;
     Object localObject = paramObject.jdField_a_of_type_AndroidWidgetImageView;
     int i1;
     if ((paramInt & 0x4) == 4)
@@ -356,7 +356,7 @@ public class ProfileCardBrowserActivity
       continue;
       i();
       ((ProfileCardTemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).jdField_a_of_type_Int = 4;
-      ThreadManager.a(new ger(this));
+      ThreadManager.a(new geq(this));
       continue;
       if (paramInt1 != -1) {
         ((ProfileCardTemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).jdField_a_of_type_Int = 2;
@@ -385,7 +385,7 @@ public class ProfileCardBrowserActivity
   
   public void d()
   {
-    ThreadManager.b(new geo(this));
+    ThreadManager.b(new gen(this));
   }
   
   @TargetApi(9)
@@ -393,7 +393,7 @@ public class ProfileCardBrowserActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130903692);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131233079);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131233078);
     int i1;
     if ((this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) && (ThemeUtil.isInNightMode(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
@@ -436,7 +436,7 @@ public class ProfileCardBrowserActivity
         }
         if (!this.jdField_c_of_type_Boolean)
         {
-          paramBundle = (ViewStub)findViewById(2131233442);
+          paramBundle = (ViewStub)findViewById(2131233441);
           if (QLog.isColorLevel()) {
             QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "onCreate, viewStub inflate start.");
           }
@@ -456,19 +456,19 @@ public class ProfileCardBrowserActivity
       e();
       d();
       paramBundle = new LinearLayout.LayoutParams(this.C, -1);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233437));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233436));
       this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233439));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233438));
       this.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233438));
+      this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131233437));
       this.jdField_a_of_type_AndroidWidgetGridView.setFadingEdgeLength(0);
-      this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new gek(this));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233440));
+      this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(new gej(this));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131233439));
       if (this.y == 1) {
         break label682;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233441));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new gel(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233440));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new gek(this));
     }
     for (;;)
     {

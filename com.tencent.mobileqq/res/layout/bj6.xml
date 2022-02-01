@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="13.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="3.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="28.0dip" android:textColor="@color/bp" android:id="@id/he5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" />
-    <TextView android:textSize="28.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rnk" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/he8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="/2018" />
+    <TextView android:textSize="28.0dip" android:textColor="@color/black" android:id="@id/he5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" />
+    <TextView android:textSize="28.0dip" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rnk" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/black" android:id="@id/he8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="/2018" />
 </LinearLayout>

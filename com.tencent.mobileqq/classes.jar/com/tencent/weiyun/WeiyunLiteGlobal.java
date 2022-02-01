@@ -25,10 +25,11 @@ public final class WeiyunLiteGlobal
   
   public CommandManager getCommandManager()
   {
-    if (this.mCommandManager == null) {
-      throw new IllegalStateException("Please call WeiyunLiteGlobal.initLite(...) in advance.");
+    CommandManager localCommandManager = this.mCommandManager;
+    if (localCommandManager != null) {
+      return localCommandManager;
     }
-    return this.mCommandManager;
+    throw new IllegalStateException("Please call WeiyunLiteGlobal.initLite(...) in advance.");
   }
   
   public Context getContext()
@@ -43,28 +44,29 @@ public final class WeiyunLiteGlobal
   
   public PoiManager getPoiManager()
   {
-    if (this.mPoiManager == null) {
-      throw new IllegalStateException("Please call WeiyunLiteGlobal.initLite(...) in advance.");
+    PoiManager localPoiManager = this.mPoiManager;
+    if (localPoiManager != null) {
+      return localPoiManager;
     }
-    return this.mPoiManager;
+    throw new IllegalStateException("Please call WeiyunLiteGlobal.initLite(...) in advance.");
   }
   
   public void initLite(Application paramApplication, WeiyunLiteGlobal.HostInterface paramHostInterface, ILog paramILog)
   {
-    if ((paramApplication == null) || (paramHostInterface == null)) {
-      try
-      {
-        throw new IllegalArgumentException("The params appInfo, context and hostInterface should be no-null.");
-      }
-      finally {}
+    if ((paramApplication != null) && (paramHostInterface != null)) {}
+    try
+    {
+      this.mContext = paramApplication;
+      this.mHostInterface = paramHostInterface;
+      WyLog.setLog(paramILog);
+      NetworkUtils.setNetworkInfoProvider(new WeiyunLiteGlobal.2(this));
+      this.mCommandManager = CommandManager.getInstance();
+      this.mPoiManager = PoiManager.getInstance();
+      this.mPoiManager.init();
+      return;
     }
-    this.mContext = paramApplication;
-    this.mHostInterface = paramHostInterface;
-    WyLog.setLog(paramILog);
-    NetworkUtils.setNetworkInfoProvider(new WeiyunLiteGlobal.2(this));
-    this.mCommandManager = CommandManager.getInstance();
-    this.mPoiManager = PoiManager.getInstance();
-    this.mPoiManager.init();
+    finally {}
+    throw new IllegalArgumentException("The params appInfo, context and hostInterface should be no-null.");
   }
   
   public void resetCommandCache()
@@ -74,7 +76,7 @@ public final class WeiyunLiteGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.WeiyunLiteGlobal
  * JD-Core Version:    0.7.0.1
  */

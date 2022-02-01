@@ -40,20 +40,22 @@ public abstract class IBaseActionListener$Stub
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qphone.base.remote.IBaseActionListener");
-      return true;
-    case 1: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("com.tencent.qphone.base.remote.IBaseActionListener");
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseActionListener");
       paramParcel2 = localObject1;
       if (paramParcel1.readInt() != 0) {
         paramParcel2 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
       }
-      onRecvFromMsg(paramParcel2);
+      onActionResult(paramParcel2);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseActionListener");
@@ -61,13 +63,13 @@ public abstract class IBaseActionListener$Stub
     if (paramParcel1.readInt() != 0) {
       paramParcel2 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
     }
-    onActionResult(paramParcel2);
+    onRecvFromMsg(paramParcel2);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IBaseActionListener.Stub
  * JD-Core Version:    0.7.0.1
  */

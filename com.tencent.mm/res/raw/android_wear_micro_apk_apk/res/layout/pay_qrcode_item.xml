@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_marginTop="42.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/content_iv" android:layout_width="wrap_content" android:layout_height="113.0dip" android:scaleType="fitCenter" />
+    <TextView android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/pay_way_tv" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginBottom="5.0dip" android:text="@string/wear_load_pay" android:layout_weight="1.0" />
+</LinearLayout>

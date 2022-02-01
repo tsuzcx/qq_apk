@@ -13,9 +13,9 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bvv;
 import bvw;
 import bvx;
-import bvy;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,7 +56,7 @@ public class AuthDevOpenUgActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bvy(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new bvx(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
   private boolean jdField_a_of_type_Boolean = false;
   private Button jdField_b_of_type_AndroidWidgetButton;
@@ -158,7 +158,7 @@ public class AuthDevOpenUgActivity
   
   private void a(String paramString, int paramInt)
   {
-    Object localObject1 = (LinearLayout)super.findViewById(2131233356);
+    Object localObject1 = (LinearLayout)super.findViewById(2131233355);
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
     Object localObject2 = new LinearLayout.LayoutParams(-1, -2);
     ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, 0, AIOUtils.a(0.5F, getResources()));
@@ -179,8 +179,8 @@ public class AuthDevOpenUgActivity
   
   private void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131231456);
-    localTextView = (TextView)findViewById(2131232950);
+    TextView localTextView = (TextView)findViewById(2131231455);
+    localTextView = (TextView)findViewById(2131232949);
     if (TextUtils.isEmpty(paramString)) {
       localTextView.setVisibility(8);
     }
@@ -343,7 +343,7 @@ public class AuthDevOpenUgActivity
     {
     default: 
       return;
-    case 2131232962: 
+    case 2131232961: 
       if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface != null) {
         this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.sendWirelessMeibaoReq(1);
       }
@@ -371,7 +371,7 @@ public class AuthDevOpenUgActivity
       }
       EquipLockWebEntrance.a(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-    case 2131232951: 
+    case 2131232950: 
       paramView = getString(2131561753);
       str = getString(2131561863);
     }
@@ -379,7 +379,7 @@ public class AuthDevOpenUgActivity
     {
       ReportController.b(null, "P_CliOper", "Safe_DeviceLock", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "UserBehavior", "Manually", 0, 3, "", "", "", "");
       label304:
-      QQCustomDialogDevLock.a(this, this.u, this.v, this.w, paramView, str, new bvw(this), new bvx(this)).show();
+      QQCustomDialogDevLock.a(this, this.u, this.v, this.w, paramView, str, new bvv(this), new bvw(this)).show();
       return;
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "onClick.cancelVerifyCode mVerifyObserver.seq=" + this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.getSeq());
@@ -434,7 +434,7 @@ public class AuthDevOpenUgActivity
     super.onCreate(paramBundle);
     super.setContentView(2130903570);
     super.setTitle(2131561941);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232951));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232950));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
       a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.ProtectIntro);

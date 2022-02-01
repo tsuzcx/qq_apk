@@ -28,6 +28,7 @@ public final class galleryFeeds$GalleryFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -37,12 +38,12 @@ public final class galleryFeeds$GalleryFeedsInfo
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 72, 82, 90, 98, 106 }, new String[] { "enum_article_style", "bytes_attachment_icon_url", "bytes_attachment_content", "bytes_attachment_jump_url", "bytes_note_icon_url", "bytes_note_content", "bytes_topic_icon_url", "bytes_operation_id", "uint32_is_account_derelict", "bytes_jump_url", "bytes_topic_pic_url", "msg_custom_cover", "msg_publisher_info" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), localByteStringMicro8, localByteStringMicro9, null, null }, GalleryFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 72, 82, 90, 98, 106 }, new String[] { "enum_article_style", "bytes_attachment_icon_url", "bytes_attachment_content", "bytes_attachment_jump_url", "bytes_note_icon_url", "bytes_note_content", "bytes_topic_icon_url", "bytes_operation_id", "uint32_is_account_derelict", "bytes_jump_url", "bytes_topic_pic_url", "msg_custom_cover", "msg_publisher_info" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localInteger, localByteStringMicro8, localByteStringMicro9, null, null }, GalleryFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

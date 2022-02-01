@@ -9,8 +9,8 @@ public final class ReqUpdateIntro
 {
   static ReqHead cache_stHeader;
   static Intro cache_stIntro;
-  public ReqHead stHeader;
-  public Intro stIntro;
+  public ReqHead stHeader = null;
+  public Intro stIntro = null;
   
   public ReqUpdateIntro() {}
   
@@ -40,7 +40,7 @@ public final class ReqUpdateIntro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqUpdateIntro
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,18 @@ class c
   
   public void onActionResult(byte[] paramArrayOfByte)
   {
-    ab.c("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramArrayOfByte + "  mListeners.size:" + this.a.a.size());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onActionResult  callBack data:");
+    localStringBuilder.append(paramArrayOfByte);
+    localStringBuilder.append("  mListeners.size:");
+    localStringBuilder.append(this.a.a.size());
+    ab.c("TMAssistantDownloadOpenSDKClient", localStringBuilder.toString());
     t.a().a(paramArrayOfByte, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.b.c
  * JD-Core Version:    0.7.0.1
  */

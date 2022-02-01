@@ -7,56 +7,57 @@ public class CoreUtil
 {
   public static String getTxLib(Context paramContext)
   {
-    return paramContext.getFilesDir().getParent() + "/txlib/";
+    paramContext = new StringBuilder(String.valueOf(paramContext.getFilesDir().getParent()));
+    paramContext.append("/txlib/");
+    return paramContext.toString();
   }
   
   public static boolean loadLibrary(String paramString, Context paramContext)
   {
-    boolean bool2;
-    if (paramContext == null)
+    if (paramContext == null) {
+      return false;
+    }
+    Object localObject = new StringBuilder(String.valueOf(getTxLib(paramContext)));
+    ((StringBuilder)localObject).append("lib");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".so");
+    File localFile = new File(((StringBuilder)localObject).toString());
+    localObject = localFile;
+    if (!localFile.exists())
     {
-      bool2 = false;
-      return bool2;
+      paramContext = new StringBuilder(String.valueOf(paramContext.getFilesDir().getParent()));
+      paramContext.append("/lib/lib");
+      paramContext.append(paramString);
+      paramContext.append(".so");
+      localObject = new File(paramContext.toString());
     }
-    File localFile2 = new File(getTxLib(paramContext) + "lib" + paramString + ".so");
-    File localFile1 = localFile2;
-    if (!localFile2.exists()) {
-      localFile1 = new File(paramContext.getFilesDir().getParent() + "/lib/lib" + paramString + ".so");
-    }
-    if (localFile1.exists()) {}
-    for (;;)
+    if (((File)localObject).exists()) {}
+    try
     {
-      try
-      {
-        System.load(localFile1.getAbsolutePath());
-        bool1 = true;
-      }
-      catch (UnsatisfiedLinkError paramContext)
-      {
-        try
-        {
-          System.loadLibrary(paramString);
-          return true;
-        }
-        catch (UnsatisfiedLinkError paramString)
-        {
-          return false;
-        }
-        paramContext = paramContext;
-        bool1 = false;
-        continue;
-      }
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      boolean bool1 = false;
+      System.load(((File)localObject).getAbsolutePath());
+      bool = true;
     }
+    catch (UnsatisfiedLinkError paramContext)
+    {
+      boolean bool;
+      label134:
+      break label134;
+    }
+    bool = false;
+    if (!bool) {}
+    try
+    {
+      System.loadLibrary(paramString);
+      return true;
+    }
+    catch (UnsatisfiedLinkError paramString) {}
+    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mqsafeedit.CoreUtil
  * JD-Core Version:    0.7.0.1
  */

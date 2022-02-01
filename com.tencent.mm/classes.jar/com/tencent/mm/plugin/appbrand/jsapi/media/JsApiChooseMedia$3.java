@@ -1,41 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.support.v4.app.a.a;
+import android.content.Context;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.ba.i;
 
 final class JsApiChooseMedia$3
-  implements a.a
+  implements View.OnCreateContextMenuListener
 {
-  JsApiChooseMedia$3(JsApiChooseMedia paramJsApiChooseMedia, c paramc, JSONObject paramJSONObject, int paramInt) {}
+  JsApiChooseMedia$3(JsApiChooseMedia paramJsApiChooseMedia, Context paramContext) {}
   
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(131156);
-    if (paramInt != 120)
-    {
-      ab.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission requestCode is not for choose media");
-      AppMethodBeat.o(131156);
-      return;
-    }
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
-    {
-      ab.i("MicroMsg.JsApiChooseMedia", "requestAudioPermission permission is grant for choose media");
-      this.hQU.a(this.hxW, this.bBa, this.bAX);
-      AppMethodBeat.o(131156);
-      return;
-    }
-    ab.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission sys perm denied for choose media");
-    this.hxW.h(this.bAX, this.hQU.j("fail:system permission denied", null));
-    AppMethodBeat.o(131156);
+    AppMethodBeat.i(329254);
+    paramContextMenu.add(0, 1, 0, this.rXK.getString(ba.i.app_field_mmsight));
+    paramContextMenu.add(0, 2, 1, this.rXK.getString(ba.i.app_field_select_new_pic));
+    AppMethodBeat.o(329254);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMedia.3
  * JD-Core Version:    0.7.0.1
  */

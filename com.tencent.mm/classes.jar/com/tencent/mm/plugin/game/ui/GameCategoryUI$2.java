@@ -12,25 +12,29 @@ final class GameCategoryUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(111746);
-    paramMenuItem = new Intent(this.nvT, GameSearchUI.class);
-    switch (GameCategoryUI.a(this.nvT))
+    AppMethodBeat.i(41913);
+    Object localObject = new Intent(this.INK, GameSearchUI.class);
+    switch (GameCategoryUI.a(this.INK))
     {
     }
     for (;;)
     {
-      this.nvT.startActivity(paramMenuItem);
-      AppMethodBeat.o(111746);
+      paramMenuItem = this.INK;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/game/ui/GameCategoryUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramMenuItem, "com/tencent/mm/plugin/game/ui/GameCategoryUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(41913);
       return true;
-      paramMenuItem.putExtra("game_report_from_scene", 1602);
+      ((Intent)localObject).putExtra("game_report_from_scene", 1602);
       continue;
-      paramMenuItem.putExtra("game_report_from_scene", 1502);
+      ((Intent)localObject).putExtra("game_report_from_scene", 1502);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCategoryUI.2
  * JD-Core Version:    0.7.0.1
  */

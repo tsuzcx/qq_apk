@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import arcp;
-import ayuh;
-import ayuu;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 class FileManagerSearchEngine$SearchRunnable
   implements Runnable
 {
-  ayuh<arcp> jdField_a_of_type_Ayuh;
-  ayuu jdField_a_of_type_Ayuu;
+  SearchRequest a;
+  ISearchListener<FileEntitySearchResultModel> b;
   
   private FileManagerSearchEngine$SearchRunnable(FileManagerSearchEngine paramFileManagerSearchEngine) {}
   
@@ -18,18 +17,18 @@ class FileManagerSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_Ayuu == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_Ayuh.a(new ArrayList(), 6);
+        this.b.a(new ArrayList(), 6);
         return;
       }
-      ayuu localayuu = this.jdField_a_of_type_Ayuu;
-      String str = this.jdField_a_of_type_Ayuu.a;
-      List localList = this.this$0.a(localayuu);
+      SearchRequest localSearchRequest = this.a;
+      String str = this.a.a;
+      List localList = this.this$0.a(localSearchRequest);
       try
       {
-        if ((this.jdField_a_of_type_Ayuh != null) && (localayuu == this.jdField_a_of_type_Ayuu) && (str.equals(this.jdField_a_of_type_Ayuu.a))) {
-          this.jdField_a_of_type_Ayuh.a(localList, 1);
+        if ((this.b != null) && (localSearchRequest == this.a) && (str.equals(this.a.a))) {
+          this.b.a(localList, 1);
         }
         return;
       }
@@ -44,7 +43,7 @@ class FileManagerSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

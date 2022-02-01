@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.wifisdk.ui.api.RProxy.dimen;
 import com.wifisdk.ui.api.RProxy.drawable;
 import com.wifisdk.ui.api.RProxy.id;
@@ -48,159 +49,108 @@ public class e
   
   private View a(hr paramhr, View paramView)
   {
-    e.a locala;
-    int i;
+    View localView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(RProxy.layout.wifi_sdk_list_view_item, null);
-      locala = d(paramView);
-      a(locala, paramhr);
-      i = this.mContext.getResources().getConfiguration().orientation;
-      if (i != 1) {
-        break label84;
-      }
-      paramView.setMinimumHeight((int)this.mContext.getResources().getDimension(RProxy.dimen.tmsdk_wifi_item_height));
+      localView = LayoutInflater.from(this.mContext).inflate(RProxy.layout.wifi_sdk_list_view_item, null);
+      paramView = d(localView);
     }
-    label84:
-    while (i != 2)
+    else
     {
-      return paramView;
-      locala = (e.a)paramView.getTag();
-      break;
+      e.a locala = (e.a)paramView.getTag();
+      localView = paramView;
+      paramView = locala;
     }
-    paramView.setMinimumHeight((int)this.mContext.getResources().getDimension(RProxy.dimen.tmsdk_wifi_item_height_landscape));
-    return paramView;
+    a(paramView, paramhr);
+    int i = this.mContext.getResources().getConfiguration().orientation;
+    if (i == 1)
+    {
+      localView.setMinimumHeight((int)this.mContext.getResources().getDimension(RProxy.dimen.tmsdk_wifi_item_height));
+      return localView;
+    }
+    if (i == 2) {
+      localView.setMinimumHeight((int)this.mContext.getResources().getDimension(RProxy.dimen.tmsdk_wifi_item_height_landscape));
+    }
+    return localView;
   }
   
   private void a(e.a parama, hr paramhr)
   {
-    int j = 0;
-    label533:
-    label564:
-    label586:
-    label594:
-    label603:
-    label606:
-    for (;;)
+    try
     {
-      int i;
-      try
+      parama.vK.setText(paramhr.ssid);
+      i = paramhr.level;
+      if (i != 0)
       {
-        parama.vK.setText(paramhr.ssid);
-        switch (paramhr.level)
+        if (i != 1)
         {
-        case 0: 
-          if (paramhr.tI == 1)
+          if (i != 2)
           {
-            i = RProxy.drawable.tmsdk_wifi_wifi_1_2;
-            parama.vL.setBackgroundResource(i);
-            if (paramhr.tI != 1) {
-              break label606;
-            }
-            parama.vR.setVisibility(0);
-            parama.vR.setBackgroundResource(RProxy.drawable.tmsdk_wifi_item_connect_button_selector);
-            if ((!paramhr.isBestWiFi) || (!paramhr.tN)) {
-              break label479;
-            }
-            parama.vM.setVisibility(0);
-            parama.vM.setImageResource(RProxy.drawable.tmsdk_wifi_tag);
-            parama.vK.setMaxWidth(this.vJ);
-            if (!TextUtils.isEmpty(paramhr.recommendReason)) {
-              continue;
-            }
-            parama.vQ.setVisibility(8);
-            if (!TextUtils.isEmpty(paramhr.tL)) {
-              break label564;
-            }
-            parama.vN.setVisibility(8);
-            if (paramhr.starLevel <= 0) {
-              break label594;
-            }
-            parama.vO.setVisibility(0);
-            i = j;
-            if (i >= parama.vP.length) {
-              break label603;
-            }
-            ImageView localImageView = parama.vP[i];
-            if (localImageView == null) {
-              break label676;
-            }
-            if (i >= paramhr.starLevel) {
-              break label586;
-            }
-            j = RProxy.drawable.tmsdk_wifi_star_on;
-            localImageView.setBackgroundResource(j);
-            break label676;
-            if (paramhr.tI == 1)
+            if (i != 3)
             {
-              i = RProxy.drawable.tmsdk_wifi_wifi_1_1;
-              continue;
+              if (paramhr.tI == 1) {
+                i = RProxy.drawable.tmsdk_wifi_wifi_1_2;
+              } else if ((paramhr.tJ != 2) && (paramhr.tJ != 1)) {
+                i = RProxy.drawable.tmsdk_wifi_wifi_5_2;
+              } else {
+                i = RProxy.drawable.tmsdk_wifi_wifi_config_2;
+              }
             }
-            if ((paramhr.tJ == 2) || (paramhr.tJ == 1))
-            {
-              i = RProxy.drawable.tmsdk_wifi_wifi_config_1;
-              continue;
+            else if (paramhr.tI == 1) {
+              i = RProxy.drawable.tmsdk_wifi_wifi_1_4;
+            } else if ((paramhr.tJ != 2) && (paramhr.tJ != 1)) {
+              i = RProxy.drawable.tmsdk_wifi_wifi_5_4;
+            } else {
+              i = RProxy.drawable.tmsdk_wifi_wifi_config_4;
             }
-            i = RProxy.drawable.tmsdk_wifi_wifi_5_1;
           }
-          break;
-        case 1: 
-          if (paramhr.tI == 1)
-          {
-            i = RProxy.drawable.tmsdk_wifi_wifi_1_2;
-            continue;
-          }
-          if ((paramhr.tJ == 2) || (paramhr.tJ == 1))
-          {
-            i = RProxy.drawable.tmsdk_wifi_wifi_config_2;
-            continue;
-          }
-          i = RProxy.drawable.tmsdk_wifi_wifi_5_2;
-          break;
-        case 2: 
-          if (paramhr.tI == 1)
-          {
+          else if (paramhr.tI == 1) {
             i = RProxy.drawable.tmsdk_wifi_wifi_1_3;
-            continue;
-          }
-          if ((paramhr.tJ == 2) || (paramhr.tJ == 1))
-          {
+          } else if ((paramhr.tJ != 2) && (paramhr.tJ != 1)) {
+            i = RProxy.drawable.tmsdk_wifi_wifi_5_3;
+          } else {
             i = RProxy.drawable.tmsdk_wifi_wifi_config_3;
-            continue;
-          }
-          i = RProxy.drawable.tmsdk_wifi_wifi_5_3;
-          break;
-        case 3: 
-          if (paramhr.tI == 1)
-          {
-            i = RProxy.drawable.tmsdk_wifi_wifi_1_4;
-            continue;
-          }
-          if ((paramhr.tJ == 2) || (paramhr.tJ == 1))
-          {
-            i = RProxy.drawable.tmsdk_wifi_wifi_config_4;
-            continue;
-          }
-          i = RProxy.drawable.tmsdk_wifi_wifi_5_4;
-          continue;
-          if ((paramhr.tJ == 2) || (paramhr.tJ == 1))
-          {
-            i = RProxy.drawable.tmsdk_wifi_wifi_config_2;
-            continue;
-          }
-          i = RProxy.drawable.tmsdk_wifi_wifi_5_2;
-          continue;
-          parama.vQ.setVisibility(0);
-          parama.vQ.setText(paramhr.recommendReason);
-          continue;
-          if (!paramhr.tM) {
-            break label533;
           }
         }
+        else if (paramhr.tI == 1) {
+          i = RProxy.drawable.tmsdk_wifi_wifi_1_2;
+        } else if ((paramhr.tJ != 2) && (paramhr.tJ != 1)) {
+          i = RProxy.drawable.tmsdk_wifi_wifi_5_2;
+        } else {
+          i = RProxy.drawable.tmsdk_wifi_wifi_config_2;
+        }
       }
-      finally {}
-      label479:
-      if (paramhr.tO)
+      else if (paramhr.tI == 1) {
+        i = RProxy.drawable.tmsdk_wifi_wifi_1_1;
+      } else if ((paramhr.tJ != 2) && (paramhr.tJ != 1)) {
+        i = RProxy.drawable.tmsdk_wifi_wifi_5_1;
+      } else {
+        i = RProxy.drawable.tmsdk_wifi_wifi_config_1;
+      }
+      parama.vL.setBackgroundResource(i);
+      j = paramhr.tI;
+      i = 0;
+      if (j != 1) {
+        break label603;
+      }
+      parama.vR.setVisibility(0);
+      parama.vR.setBackgroundResource(RProxy.drawable.tmsdk_wifi_item_connect_button_selector);
+      if ((paramhr.isBestWiFi) && (paramhr.tN))
+      {
+        parama.vM.setVisibility(0);
+        parama.vM.setImageResource(RProxy.drawable.tmsdk_wifi_tag);
+        parama.vK.setMaxWidth(this.vJ);
+        if (TextUtils.isEmpty(paramhr.recommendReason))
+        {
+          parama.vQ.setVisibility(8);
+        }
+        else
+        {
+          parama.vQ.setVisibility(0);
+          parama.vQ.setText(paramhr.recommendReason);
+        }
+      }
+      else if ((paramhr.tM) && (paramhr.tO))
       {
         parama.vM.setVisibility(0);
         parama.vM.setImageResource(RProxy.drawable.tmsdk_wifi_subway_tag);
@@ -212,27 +162,61 @@ public class e
         parama.vM.setVisibility(8);
         parama.vK.setMaxWidth(2147483647);
         parama.vQ.setVisibility(8);
-        continue;
+      }
+      if (TextUtils.isEmpty(paramhr.tL))
+      {
+        parama.vN.setVisibility(8);
+      }
+      else
+      {
         parama.vN.setText(paramhr.tL);
         parama.vN.setVisibility(0);
-        continue;
-        j = RProxy.drawable.tmsdk_wifi_star_off;
-        continue;
-        parama.vO.setVisibility(8);
+      }
+      if (paramhr.starLevel <= 0) {
+        break label591;
+      }
+      parama.vO.setVisibility(0);
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        int j;
+        ImageView localImageView;
+        label666:
         for (;;)
         {
-          return;
-          parama.vR.setVisibility(0);
-          parama.vR.setBackgroundResource(RProxy.drawable.tmsdk_wifi_item_connect_button_selector);
-          parama.vO.setVisibility(8);
-          parama.vQ.setVisibility(8);
-          parama.vN.setVisibility(8);
-          parama.vK.setMaxWidth(2147483647);
-          parama.vM.setVisibility(8);
+          label591:
+          label603:
+          throw parama;
         }
-        continue;
+        label680:
         i += 1;
       }
+    }
+    if (i < parama.vP.length)
+    {
+      localImageView = parama.vP[i];
+      if (localImageView == null) {
+        break label680;
+      }
+      if (i < paramhr.starLevel) {
+        j = RProxy.drawable.tmsdk_wifi_star_on;
+      } else {
+        j = RProxy.drawable.tmsdk_wifi_star_off;
+      }
+      localImageView.setBackgroundResource(j);
+      break label680;
+      parama.vO.setVisibility(8);
+      break label666;
+      parama.vR.setVisibility(0);
+      parama.vR.setBackgroundResource(RProxy.drawable.tmsdk_wifi_item_connect_button_selector);
+      parama.vO.setVisibility(8);
+      parama.vQ.setVisibility(8);
+      parama.vN.setVisibility(8);
+      parama.vK.setMaxWidth(2147483647);
+      parama.vM.setVisibility(8);
     }
   }
   
@@ -284,11 +268,14 @@ public class e
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    paramViewGroup = getItem(paramInt);
+    Object localObject = getItem(paramInt);
     if (i == 0) {
-      return a((hr)paramViewGroup, paramView);
+      localObject = a((hr)localObject, paramView);
+    } else {
+      localObject = a((ho)localObject, paramView);
     }
-    return a((ho)paramViewGroup, paramView);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public int getViewTypeCount()
@@ -305,7 +292,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.wifisdk.ui.view.e
  * JD-Core Version:    0.7.0.1
  */

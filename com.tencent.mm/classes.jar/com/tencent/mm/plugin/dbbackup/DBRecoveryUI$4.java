@@ -11,21 +11,21 @@ final class DBRecoveryUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(18947);
-    if (DBRecoveryUI.f(this.kTI)) {
-      DBRecoveryUI.e(this.kTI);
+    AppMethodBeat.i(23056);
+    if (DBRecoveryUI.f(this.xiC)) {
+      DBRecoveryUI.e(this.xiC);
     }
     for (;;)
     {
-      AppMethodBeat.o(18947);
+      AppMethodBeat.o(23056);
       return true;
-      this.kTI.finish();
+      this.xiC.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.DBRecoveryUI.4
  * JD-Core Version:    0.7.0.1
  */

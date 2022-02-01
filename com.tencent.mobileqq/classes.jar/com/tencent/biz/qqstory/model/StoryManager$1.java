@@ -1,38 +1,37 @@
 package com.tencent.biz.qqstory.model;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler;
+import com.tencent.biz.qqstory.network.handler.VidToBasicInfoHandler.GetVideoBasicInfoListEvent;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import umc;
-import uvx;
-import vei;
-import vej;
 
-public class StoryManager$1
+class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(uvx paramuvx, String paramString) {}
+  StoryManager$1(StoryManager paramStoryManager, String paramString) {}
   
   public void run()
   {
     Object localObject = this.this$0.a(this.a);
-    if ((localObject == null) || (!((StoryVideoItem)localObject).isBasicInfoOK()))
+    if ((localObject != null) && (((StoryVideoItem)localObject).isBasicInfoOK()))
     {
-      localObject = new ArrayList(1);
-      ((List)localObject).add(this.a);
-      new vei((List)localObject, true).a();
+      VidToBasicInfoHandler.GetVideoBasicInfoListEvent localGetVideoBasicInfoListEvent = new VidToBasicInfoHandler.GetVideoBasicInfoListEvent();
+      localGetVideoBasicInfoListEvent.a = Collections.singletonList(localObject);
+      StoryDispatcher.a().dispatch(localGetVideoBasicInfoListEvent);
       return;
     }
-    vej localvej = new vej();
-    localvej.a = Collections.singletonList(localObject);
-    umc.a().dispatch(localvej);
+    localObject = new ArrayList(1);
+    ((List)localObject).add(this.a);
+    new VidToBasicInfoHandler((List)localObject, true).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.1
  * JD-Core Version:    0.7.0.1
  */

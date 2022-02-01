@@ -1,48 +1,73 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
+import java.util.List;
 
-public class fx
-  implements gd
+public final class fx
 {
-  public String a;
-  public String b;
+  public final Object a;
   
-  public gd a(Cursor paramCursor)
+  public fx()
   {
-    fx localfx = new fx();
-    localfx.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localfx.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
-    return localfx;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      this.a = new b(this);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a = new a(this);
+      return;
+    }
+    this.a = null;
   }
   
-  public void a(SQLiteDatabase paramSQLiteDatabase)
+  public fx(Object paramObject)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    this.a = paramObject;
   }
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
+  static class a
+    extends AccessibilityNodeProvider
   {
-    a(paramSQLiteDatabase);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
+    final fx a;
+    
+    a(fx paramfx)
+    {
+      this.a = paramfx;
+    }
+    
+    public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+    {
+      return null;
+    }
+    
+    public List<AccessibilityNodeInfo> findAccessibilityNodeInfosByText(String paramString, int paramInt)
+    {
+      return null;
+    }
+    
+    public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      return false;
+    }
   }
   
-  public String b()
+  static final class b
+    extends fx.a
   {
-    return "qqface";
-  }
-  
-  public ContentValues c()
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
+    b(fx paramfx)
+    {
+      super();
+    }
+    
+    public final AccessibilityNodeInfo findFocus(int paramInt)
+    {
+      return null;
+    }
   }
 }
 

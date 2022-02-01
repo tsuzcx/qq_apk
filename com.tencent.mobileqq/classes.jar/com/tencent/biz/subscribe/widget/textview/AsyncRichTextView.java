@@ -26,101 +26,80 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.TextView.BufferType;
-import bamp;
+import com.tencent.biz.subscribe.comment.Patterns;
+import com.tencent.biz.subscribe.widget.span.CustomSchemaSpan.OnCustomSchemaClickListener;
+import com.tencent.biz.subscribe.widget.span.CustomUrlSpan.OnCustomUrlClickListener;
+import com.tencent.biz.subscribe.widget.span.UserNameSapn.OnUserNameClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.theme.ISkinIgnoreTypeface;
-import com.tencent.theme.TextHook;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import yhp;
-import ypp;
-import ypr;
-import ypt;
-import ypu;
-import ypv;
-import ypw;
-import yqc;
-import yqd;
-import yqe;
 
 public class AsyncRichTextView
   extends SafeTextView
   implements Handler.Callback, ISkinIgnoreTypeface
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected ColorStateList a;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  protected View.OnClickListener a;
-  protected URLDrawable.URLDrawableListener a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  protected ypp a;
-  protected ypr a;
-  protected ypt a;
-  private ypw jdField_a_of_type_Ypw;
-  private boolean jdField_a_of_type_Boolean = true;
-  protected int b;
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  public ypt b;
-  private boolean jdField_b_of_type_Boolean;
-  protected int c;
-  protected ypt c;
-  private boolean c;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int e = -2147483648;
-  private int f = -2147483648;
+  private boolean A;
+  protected UserNameSapn.OnUserNameClickListener a;
+  protected UserNameSapn.OnUserNameClickListener b;
+  protected CustomUrlSpan.OnCustomUrlClickListener c;
+  protected CustomSchemaSpan.OnCustomSchemaClickListener d;
+  protected View.OnClickListener e;
+  protected int f;
+  protected int g = Color.parseColor("#CFB027");
+  protected ColorStateList h = BaseApplicationImpl.getContext().getResources().getColorStateList(2131168236);
+  protected int i = -1;
+  protected UserNameSapn.OnUserNameClickListener j = new AsyncRichTextView.1(this);
+  protected URLDrawable.URLDrawableListener k = new AsyncRichTextView.AsyncRichImageLoadListener(this);
+  private Context l;
+  private CharSequence m;
+  private ColorStateList n;
+  private int o;
+  private int p = -2147483648;
+  private int q = -2147483648;
+  private Drawable.Callback r;
+  private boolean s = true;
+  private boolean t = false;
+  private Handler u = new Handler(Looper.getMainLooper(), this);
+  private double v = 1.0D;
+  private String w;
+  private boolean x = false;
+  private boolean y;
+  private AsyncRichTextView.onTriggerEllipseListener z;
   
   public AsyncRichTextView(Context paramContext)
   {
     super(paramContext, null);
-    this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167071);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Ypt = new ypu(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ypv(this);
     a(paramContext, null);
   }
   
   public AsyncRichTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167071);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Ypt = new ypu(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ypv(this);
     a(paramContext, paramAttributeSet);
   }
   
   public AsyncRichTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167071);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Ypt = new ypu(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ypv(this);
     a(paramContext, paramAttributeSet);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.l = paramContext;
     paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.EmoText);
     try
     {
-      this.jdField_a_of_type_Double = paramContext.getFloat(1, 1.0F);
-      if ((this.jdField_a_of_type_Double <= 0.1D) || (this.jdField_a_of_type_Double >= 10.0D)) {
-        this.jdField_a_of_type_Double = 1.0D;
+      this.v = paramContext.getFloat(1, 1.0F);
+      if ((this.v <= 0.1D) || (this.v >= 10.0D)) {
+        this.v = 1.0D;
       }
-      this.jdField_a_of_type_Int = paramContext.getInt(0, 0);
+      this.f = paramContext.getInt(0, 0);
       return;
     }
     finally
@@ -129,31 +108,31 @@ public class AsyncRichTextView
     }
   }
   
-  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, ypt paramypt, Drawable.Callback paramCallback)
+  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener, Drawable.Callback paramCallback)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Ypt = paramypt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = paramCallback;
-    paramCallback = new yqe();
-    paramCallback.jdField_a_of_type_Float = ((int)(getTextSize() * this.jdField_a_of_type_Double));
-    paramCallback.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramCallback.jdField_a_of_type_JavaLangCharSequence = getText();
-    paramCharSequence = yqc.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.e, paramInt2, paramypt, this.jdField_a_of_type_Ypr, this.jdField_a_of_type_Ypp, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-    if ((paramCharSequence != null) && (paramCharSequence.jdField_a_of_type_Boolean)) {
-      if (paramypt != null) {
-        setMovementMethod(getDefaultMovementMethod());
-      }
-    }
-    for (;;)
+    this.m = paramCharSequence;
+    this.n = paramColorStateList;
+    this.o = paramInt1;
+    this.a = paramOnUserNameClickListener;
+    this.r = paramCallback;
+    paramCallback = new RichTextParser.TextImageSpanConfig();
+    double d1 = getTextSize();
+    double d2 = this.v;
+    Double.isNaN(d1);
+    paramCallback.a = ((int)(d1 * d2));
+    paramCallback.b = this.f;
+    paramCallback.c = getText();
+    paramCharSequence = RichTextParser.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.p, paramInt2, paramOnUserNameClickListener, this.c, this.d, this.k, this.s, this.t);
+    if ((paramCharSequence != null) && (paramCharSequence.a))
     {
-      super.setText(new bamp(a(paramCharSequence), 3, 16), null);
-      return;
-      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ypp != null)) {
+      if (paramOnUserNameClickListener != null) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
+    else if ((paramCharSequence != null) && (paramCharSequence.b) && (this.d != null)) {
+      setMovementMethod(getDefaultMovementMethod());
+    }
+    super.setText(new QQText(a(paramCharSequence), 3, 16), null);
   }
   
   protected Spannable a(Spannable paramSpannable)
@@ -161,121 +140,91 @@ public class AsyncRichTextView
     return paramSpannable;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
   @RequiresApi(api=16)
-  protected void b()
+  protected void a()
   {
     if (Build.VERSION.SDK_INT < 16) {
-      break label8;
-    }
-    label8:
-    while ((getEllipsize() != TextUtils.TruncateAt.END) || (getLayout() == null) || (getLineCount() <= getMaxLines()) || (getMaxLines() <= 0)) {
       return;
     }
-    int m = getLayout().getLineStart(getMaxLines() - 1);
-    Object localObject1 = TextUtils.ellipsize(getText().subSequence(m, getText().length()), getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), TextUtils.TruncateAt.END);
-    Object localObject2;
-    int i;
-    int j;
-    label239:
-    int k;
-    if (this.jdField_d_of_type_Boolean)
+    this.A = false;
+    if ((getEllipsize() == TextUtils.TruncateAt.END) && (getLayout() != null) && (getLineCount() > getMaxLines()) && (getMaxLines() > 0))
     {
-      localObject2 = new SpannableStringBuilder(getText());
-      localObject2 = (ImageSpan[])((SpannableStringBuilder)localObject2).getSpans(((SpannableStringBuilder)localObject2).length() - 1, ((SpannableStringBuilder)localObject2).length(), ImageSpan.class);
-      if ((localObject2.length > 0) && (localObject2[0].getDrawable() != null))
+      int i5 = getLayout().getLineStart(getMaxLines() - 1);
+      Object localObject2 = TextUtils.ellipsize(getText().subSequence(i5, getText().length()), getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), TextUtils.TruncateAt.END);
+      Object localObject1 = localObject2;
+      if (this.y)
       {
-        i = localObject2[0].getDrawable().getIntrinsicWidth();
-        int n = 0 + i;
-        if (n <= 0) {
-          break label538;
+        localObject1 = new SpannableStringBuilder(getText());
+        ImageSpan[] arrayOfImageSpan = (ImageSpan[])((SpannableStringBuilder)localObject1).getSpans(((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), ImageSpan.class);
+        int i1;
+        if ((arrayOfImageSpan.length > 0) && (arrayOfImageSpan[0].getDrawable() != null)) {
+          i1 = arrayOfImageSpan[0].getDrawable().getIntrinsicWidth();
+        } else {
+          i1 = 0;
         }
-        localObject1 = ((CharSequence)localObject1).subSequence(0, ((CharSequence)localObject1).length() - 1);
-        int i1 = (int)Math.ceil(getPaint().measureText("...".toString()));
-        j = ((CharSequence)localObject1).length();
-        i = 0;
-        if (i >= n + i1) {
-          break label394;
-        }
-        if (!((CharSequence)localObject1).toString().endsWith("[/em]")) {
-          break label346;
-        }
-        Matcher localMatcher = yhp.g.matcher((CharSequence)localObject1);
-        int i2;
-        do
+        int i6 = i1 + 0;
+        localObject1 = localObject2;
+        if (i6 > 0)
         {
-          if (!localMatcher.find()) {
-            break;
+          localObject1 = ((CharSequence)localObject2).subSequence(0, ((CharSequence)localObject2).length() - 1);
+          int i7 = (int)Math.ceil(getPaint().measureText("...".toString()));
+          int i3 = ((CharSequence)localObject1).length();
+          int i4 = 0;
+          while (i4 < i6 + i7)
+          {
+            int i2;
+            if (((CharSequence)localObject1).toString().endsWith("[/em]"))
+            {
+              localObject2 = Patterns.m.matcher((CharSequence)localObject1);
+              do
+              {
+                i1 = i4;
+                i2 = i3;
+                if (!((Matcher)localObject2).find()) {
+                  break;
+                }
+                i2 = ((Matcher)localObject2).start();
+                i1 = ((Matcher)localObject2).end();
+              } while ((i2 >= i3) || (i1 != i3));
+              i1 = (int)(i4 + getTextSize());
+            }
+            else
+            {
+              i1 = i4;
+              i2 = i3;
+              if (i3 > 0)
+              {
+                i1 = i4 + (int)Math.floor(getPaint().measureText(((CharSequence)localObject1).subSequence(i3 - 1, i3).toString()));
+                i2 = i3 - 1;
+              }
+            }
+            i4 = i1;
+            i3 = i2;
+            if (i2 >= 0)
+            {
+              localObject1 = ((CharSequence)localObject1).subSequence(0, i2);
+              i4 = i1;
+              i3 = i2;
+            }
           }
-          k = localMatcher.start();
-          i2 = localMatcher.end();
-        } while ((k >= j) || (i2 != j));
-        j = (int)(i + getTextSize());
-        i = k;
-      }
-      for (;;)
-      {
-        label317:
-        if (i < 0) {
-          break label520;
+          localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
+          ((SpannableStringBuilder)localObject1).append("...");
+          ((SpannableStringBuilder)localObject1).append(" ");
+          ((SpannableStringBuilder)localObject1).setSpan(arrayOfImageSpan[0], ((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), 33);
         }
-        localObject1 = ((CharSequence)localObject1).subSequence(0, i);
-        k = j;
-        j = i;
-        i = k;
-        break label239;
-        i = 0;
-        break;
-        label346:
-        if (j <= 0) {
-          break label529;
-        }
-        k = (int)Math.floor(getPaint().measureText(((CharSequence)localObject1).subSequence(j - 1, j).toString()));
-        j -= 1;
-        k = i + k;
-        i = j;
-        j = k;
       }
-      label394:
-      localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
-      ((SpannableStringBuilder)localObject1).append("...");
-      ((SpannableStringBuilder)localObject1).append(" ");
-      ((SpannableStringBuilder)localObject1).setSpan(localObject2[0], ((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), 33);
-    }
-    label520:
-    label529:
-    label538:
-    for (;;)
-    {
       localObject2 = new SpannableStringBuilder();
-      if (m > 0) {
-        ((SpannableStringBuilder)localObject2).append(getText().subSequence(0, m));
+      if (i5 > 0) {
+        ((SpannableStringBuilder)localObject2).append(getText().subSequence(0, i5));
       }
       ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-      super.setText(new bamp((CharSequence)localObject2, 3, 16), null);
-      if (this.jdField_a_of_type_Ypw == null) {
-        break;
+      super.setText(new QQText((CharSequence)localObject2, 3, 16), null);
+      localObject1 = this.z;
+      if (localObject1 != null) {
+        ((AsyncRichTextView.onTriggerEllipseListener)localObject1).a();
       }
-      this.jdField_a_of_type_Ypw.a();
-      return;
-      k = j;
-      j = i;
-      i = k;
-      break label239;
-      k = i;
-      i = j;
-      j = k;
-      break label317;
+      this.A = true;
     }
-  }
-  
-  public void c()
-  {
-    setTypeface(TextHook.getInstance().getSystemDefaultFont());
   }
   
   protected MovementMethod getDefaultMovementMethod()
@@ -283,13 +232,23 @@ public class AsyncRichTextView
     return LinkMovementMethod.getInstance();
   }
   
+  public ImageSpan getLastJumpImageSpan()
+  {
+    return null;
+  }
+  
+  public String getOrgText()
+  {
+    return this.w;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1)
     {
       paramMessage = (CharSequence)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.equals(this.jdField_a_of_type_JavaLangCharSequence))) {
-        a(paramMessage, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_d_of_type_Int, this.f, this.jdField_a_of_type_Ypt, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+      if ((paramMessage != null) && (paramMessage.equals(this.m))) {
+        a(paramMessage, this.n, this.o, this.q, this.a, this.r);
       }
     }
     return false;
@@ -308,10 +267,10 @@ public class AsyncRichTextView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_c_of_type_Boolean) && (Build.VERSION.SDK_INT > 16))
+    if ((this.x) && (Build.VERSION.SDK_INT > 16))
     {
-      b();
-      this.jdField_c_of_type_Boolean = false;
+      a();
+      this.x = false;
     }
   }
   
@@ -331,79 +290,79 @@ public class AsyncRichTextView
   
   public void setDefaultAtColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public void setDefaultAtColor(String paramString)
   {
-    this.jdField_b_of_type_Int = Color.parseColor(paramString);
+    this.g = Color.parseColor(paramString);
   }
   
-  public void setDefaultUserNameClickListener(ypt paramypt)
+  public void setDefaultUserNameClickListener(UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_c_of_type_Ypt = paramypt;
+    this.j = paramOnUserNameClickListener;
   }
   
   public void setNeedParseColor(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
   }
   
   public void setNoNeedAtOrSchema(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.t = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.e = paramOnClickListener;
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnCustomSchemaClickListener(ypp paramypp)
+  public void setOnCustomSchemaClickListener(CustomSchemaSpan.OnCustomSchemaClickListener paramOnCustomSchemaClickListener)
   {
-    this.jdField_a_of_type_Ypp = paramypp;
+    this.d = paramOnCustomSchemaClickListener;
   }
   
-  public void setOnCustomUrlClickListener(ypr paramypr)
+  public void setOnCustomUrlClickListener(CustomUrlSpan.OnCustomUrlClickListener paramOnCustomUrlClickListener)
   {
-    this.jdField_a_of_type_Ypr = paramypr;
+    this.c = paramOnCustomUrlClickListener;
   }
   
-  public void setOnTriggerEllipseListener(ypw paramypw)
+  public void setOnTriggerEllipseListener(AsyncRichTextView.onTriggerEllipseListener paramonTriggerEllipseListener)
   {
-    this.jdField_a_of_type_Ypw = paramypw;
+    this.z = paramonTriggerEllipseListener;
   }
   
-  public void setOnUserNewClickListener(ypt paramypt)
+  public void setOnUserNewClickListener(UserNameSapn.OnUserNameClickListener paramOnUserNameClickListener)
   {
-    this.jdField_b_of_type_Ypt = paramypt;
+    this.b = paramOnUserNameClickListener;
   }
   
   public void setOrgText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.w = paramString;
   }
   
   public void setSchemaColorRes(int paramInt)
   {
-    this.f = paramInt;
+    this.q = paramInt;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    this.jdField_c_of_type_Boolean = true;
-    a(paramCharSequence, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_Ypt, null);
+    this.x = true;
+    a(paramCharSequence, this.h, this.g, this.i, this.j, null);
   }
   
   public void setUrlColorRes(int paramInt)
   {
-    this.e = paramInt;
+    this.p = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AsyncRichTextView
  * JD-Core Version:    0.7.0.1
  */

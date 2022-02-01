@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 public class RoundRectRelativeLayout
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int a;
   private int b;
   private int c;
   private int d = 0;
+  private Path e;
   
   public RoundRectRelativeLayout(Context paramContext)
   {
@@ -24,23 +24,31 @@ public class RoundRectRelativeLayout
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    if (this.jdField_a_of_type_Int == 0)
+    this.e = new Path();
+    int i = this.a;
+    if (i == 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.addRect(0.0F, 0.0F, this.b, this.c, Path.Direction.CCW);
+      this.e.addRect(0.0F, 0.0F, this.b, this.c, Path.Direction.CCW);
       return;
     }
-    int i = Math.min(this.jdField_a_of_type_Int * 2, Math.min(this.b, this.c)) / 2;
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.b, this.c), i, i, Path.Direction.CCW);
+    i = Math.min(i * 2, Math.min(this.b, this.c)) / 2;
+    Path localPath = this.e;
+    RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
+    float f = i;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    Integer localInteger = null;
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    Integer localInteger;
+    if (this.e != null)
     {
       localInteger = Integer.valueOf(paramCanvas.save());
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.e);
+    }
+    else
+    {
+      localInteger = null;
     }
     paramCanvas.drawColor(this.d);
     super.dispatchDraw(paramCanvas);
@@ -69,10 +77,10 @@ public class RoundRectRelativeLayout
     if (paramInt < 0) {
       i = 0;
     }
-    if (this.jdField_a_of_type_Int == i) {
+    if (this.a == i) {
       return;
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
     a();
     invalidate();
   }
@@ -88,7 +96,7 @@ public class RoundRectRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.RoundRectRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

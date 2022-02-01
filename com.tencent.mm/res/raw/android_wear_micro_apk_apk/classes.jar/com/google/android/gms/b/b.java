@@ -11,7 +11,7 @@ public abstract class b<TResult>
   
   public abstract Exception getException();
   
-  public abstract boolean km();
+  public abstract boolean kv();
 }
 
 

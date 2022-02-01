@@ -89,34 +89,33 @@ public abstract class BaseContinuationImpl
       }
       catch (Throwable paramObject)
       {
-        for (;;)
-        {
-          Result.Companion localCompanion = Result.Companion;
-          paramObject = Result.constructor-impl(ResultKt.createFailure(paramObject));
-        }
-        localContinuation.resumeWith(paramObject);
+        Result.Companion localCompanion = Result.Companion;
+        paramObject = Result.constructor-impl(ResultKt.createFailure(paramObject));
       }
       localBaseContinuationImpl.releaseIntercepted();
       if (!(localContinuation instanceof BaseContinuationImpl)) {
         break;
       }
     }
+    localContinuation.resumeWith(paramObject);
   }
   
   @NotNull
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Continuation at ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Continuation at ");
     Object localObject = getStackTraceElement();
-    if (localObject != null) {}
-    for (localObject = (Serializable)localObject;; localObject = (Serializable)getClass().getName()) {
-      return localObject;
+    if (localObject == null) {
+      localObject = getClass().getName();
     }
+    localStringBuilder.append((Serializable)localObject);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.BaseContinuationImpl
  * JD-Core Version:    0.7.0.1
  */

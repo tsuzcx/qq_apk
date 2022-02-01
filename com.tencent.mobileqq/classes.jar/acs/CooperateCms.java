@@ -8,11 +8,11 @@ public final class CooperateCms
   extends JceStruct
 {
   public String androidPackage = "";
-  public int elementid;
-  public int fileid;
+  public int elementid = 0;
+  public int fileid = 0;
   public String picUrl = "";
-  public int productid;
-  public int softid;
+  public int productid = 0;
+  public int softid = 0;
   public String title = "";
   public String url = "";
   
@@ -56,7 +56,7 @@ public final class CooperateCms
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.CooperateCms
  * JD-Core Version:    0.7.0.1
  */

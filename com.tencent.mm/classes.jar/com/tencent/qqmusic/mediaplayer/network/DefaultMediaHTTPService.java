@@ -10,16 +10,16 @@ public class DefaultMediaHTTPService
   
   public IMediaHTTPConnection makeHTTPConnection()
   {
-    AppMethodBeat.i(104799);
+    AppMethodBeat.i(76587);
     Logger.d("DefaultMediaHTTPService", "makeHTTPConnection");
     DefaultMediaHTTPConnection localDefaultMediaHTTPConnection = new DefaultMediaHTTPConnection();
-    AppMethodBeat.o(104799);
+    AppMethodBeat.o(76587);
     return localDefaultMediaHTTPConnection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.network.DefaultMediaHTTPService
  * JD-Core Version:    0.7.0.1
  */

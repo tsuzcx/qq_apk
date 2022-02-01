@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/c5i" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/c4d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/c45" android:background="@drawable/azd" android:layout_width="4.0dip" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/aes" android:id="@id/c4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="10.0dip" android:lineSpacingExtra="0.0dip" />
+    </LinearLayout>
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:id="@id/knv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:text="@string/sgt" android:layout_alignParentLeft="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/c4a" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:id="@id/c47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:text="@string/sg3" />
+    </LinearLayout>
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:id="@id/c49" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:text="共上传XX张图片" />
+    <LinearLayout android:id="@id/c6o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="3.0dip">
+        <ImageView android:id="@id/c6p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bvf" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:ellipsize="end" android:id="@id/c6n" android:paddingTop="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/c70" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip">
+        <ImageView android:id="@id/c71" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/g71" android:scaleType="fitXY" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/aw4" android:textColor="@color/a_f" android:ellipsize="end" android:id="@id/c6z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:ellipsize="end" android:id="@id/c4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:text="发自我的Nexus6" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/aw4" android:textColor="@color/a_f" android:ellipsize="end" android:id="@id/c48" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="3.0dip" android:text="@string/sg1" />
+    <LinearLayout android:id="@id/fl8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="3.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/flb" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@drawable/bw6" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/aw4" android:textColor="@color/aes" android:id="@id/flc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/sgd" />
+    </LinearLayout>
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c7g" android:paddingTop="7.5dip" android:paddingBottom="7.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:id="@id/c5k" android:background="@drawable/azw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true">
+            <ImageView android:layout_gravity="center" android:id="@id/c5j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ayx" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/c5h" android:background="@drawable/azw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true">
+            <ImageView android:layout_gravity="center" android:id="@id/c5g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ayu" />
+        </LinearLayout>
+        <FrameLayout android:gravity="center" android:id="@id/c5q" android:background="@drawable/azw" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/c5h">
+            <ImageView android:layout_gravity="center" android:id="@id/c5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_skin_feed_icon_praise" />
+        </FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,57 +1,118 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.h.a;
+import com.tencent.mm.audio.mix.h.b;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class f
-  extends c
 {
-  public f(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public static final Long hrF;
+  public static final Long hrG;
+  public static final Long hrH;
+  public static final Long hrI;
+  public static final Long hrJ;
+  public static final Long hrK;
+  public static final Long hrL;
+  public static final Long hrM;
+  public static final Long hrN;
+  public static long hrP;
+  public String appId;
+  private List<String> hrO;
+  
+  static
   {
-    AppMethodBeat.i(137032);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioVariableConvertProcess", "AudioVariableConvertProcess src:%s, srcSampleRate:%d, srcChannels:%d, srcBitDepth:%d, desSampleRate:%d, desChannels:%d, desBitDepth:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
-    this.ceU = paramString;
-    this.ceV = a.eD(paramString);
-    b.Di();
-    int i;
-    if (paramInt4 <= 0)
+    AppMethodBeat.i(136779);
+    hrF = Long.valueOf(2592000000L);
+    hrG = Long.valueOf(604800000L);
+    hrH = Long.valueOf(259200000L);
+    hrI = Long.valueOf(172800000L);
+    hrJ = Long.valueOf(86400000L);
+    hrK = Long.valueOf(43200000L);
+    hrL = Long.valueOf(240000L);
+    hrM = hrJ;
+    hrN = Long.valueOf(60000L);
+    hrP = 0L;
+    AppMethodBeat.o(136779);
+  }
+  
+  public f()
+  {
+    AppMethodBeat.i(136775);
+    this.hrO = new ArrayList(10);
+    AppMethodBeat.o(136775);
+  }
+  
+  private void iV(String paramString)
+  {
+    AppMethodBeat.i(136776);
+    Object localObject = new File(paramString);
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
-      i = 0;
-      if (i != 0) {
-        this.ceO = paramInt4;
+      localObject = ((File)localObject).list();
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        b.i("MicroMsg.Mix.AudioScanConvertCacheController", "none files exist");
+        AppMethodBeat.o(136776);
+        return;
       }
-      if (paramInt5 > 0) {
-        break label169;
+      int j = localObject.length;
+      int i = 0;
+      if (i < j)
+      {
+        String str = localObject[i];
+        if (iW(str)) {
+          b.i("MicroMsg.Mix.AudioScanConvertCacheController", "file is the block file, don't delete");
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          str = paramString + File.separator + str;
+          File localFile = new File(str);
+          if (!localFile.exists())
+          {
+            b.i("MicroMsg.Mix.AudioScanConvertCacheController", "file not exist");
+          }
+          else if (localFile.isDirectory())
+          {
+            b.i("MicroMsg.Mix.AudioScanConvertCacheController", "file is directory, scan and delete subFilePath:%s", new Object[] { str });
+            iV(str);
+          }
+          else if (System.currentTimeMillis() - localFile.lastModified() > hrI.longValue())
+          {
+            b.e("MicroMsg.Mix.AudioScanConvertCacheController", "Clean 2 days file in mix convert file name=%s, path:%s", new Object[] { localFile.getName(), localFile.getAbsolutePath() });
+            localFile.delete();
+          }
+        }
       }
-      i = 0;
-      label118:
-      if (i != 0) {
-        this.ceP = paramInt5;
-      }
-      if (paramInt4 > 0) {
-        break label175;
-      }
-    }
-    label169:
-    label175:
-    for (paramInt4 = j;; paramInt4 = 1)
-    {
-      if (paramInt4 != 0) {
-        this.ceQ = paramInt6;
-      }
-      C(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(137032);
+      AppMethodBeat.o(136776);
       return;
-      i = 1;
-      break;
-      i = 1;
-      break label118;
     }
+    b.i("MicroMsg.Mix.AudioScanConvertCacheController", "%s is not exist or not Directory", new Object[] { paramString });
+    AppMethodBeat.o(136776);
+  }
+  
+  private boolean iW(String paramString)
+  {
+    AppMethodBeat.i(136777);
+    Iterator localIterator = this.hrO.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.contains((String)localIterator.next()))
+      {
+        AppMethodBeat.o(136777);
+        return true;
+      }
+    }
+    AppMethodBeat.o(136777);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
-import mpd;
 
 public class VideoChatRoomListView
   extends ListView
 {
-  private mpd a;
+  private VideoChatRoomListView.OnDispatchTouchEventResponseListener a;
   
   public VideoChatRoomListView(Context paramContext)
   {
@@ -29,8 +28,9 @@ public class VideoChatRoomListView
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (this.a != null) {
-      this.a.a(paramMotionEvent, bool);
+    VideoChatRoomListView.OnDispatchTouchEventResponseListener localOnDispatchTouchEventResponseListener = this.a;
+    if (localOnDispatchTouchEventResponseListener != null) {
+      localOnDispatchTouchEventResponseListener.a(paramMotionEvent, bool);
     }
     return bool;
   }
@@ -40,14 +40,14 @@ public class VideoChatRoomListView
     return 0.0F;
   }
   
-  public void setOnDispatchTouchEventResponseListener(mpd parammpd)
+  public void setOnDispatchTouchEventResponseListener(VideoChatRoomListView.OnDispatchTouchEventResponseListener paramOnDispatchTouchEventResponseListener)
   {
-    this.a = parammpd;
+    this.a = paramOnDispatchTouchEventResponseListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomListView
  * JD-Core Version:    0.7.0.1
  */

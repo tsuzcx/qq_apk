@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/he" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/h7" />
-    <LinearLayout android:id="@id/a_v" android:background="@drawable/jp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/hd" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/br7" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/bb" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/j7k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/bb">
+        <View android:background="@color/FG_3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/iem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kpd" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ie">
+                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/h3b" android:paddingLeft="@dimen/iw" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="{ddddd}" android:maxLines="2" android:singleLine="false" style="@style/m4" />
+                        <TextView android:gravity="left" android:id="@android:id/summary" android:paddingLeft="@dimen/iw" android:paddingRight="@dimen/iw" android:layout_marginTop="@dimen/m9" android:text="" style="@style/lk" />
+                    </LinearLayout>
+                    <include android:gravity="center|right" layout="@layout/bdp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="@color/FG_3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
     </LinearLayout>
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ht" />
 </LinearLayout>

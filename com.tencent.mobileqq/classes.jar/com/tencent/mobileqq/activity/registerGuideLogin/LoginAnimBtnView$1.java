@@ -9,10 +9,18 @@ class LoginAnimBtnView$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginAnimBtnView", 2, "mUpdateRunnable isEnabled:" + this.this$0.isEnabled() + "  mLottieDrawable:" + LoginAnimBtnView.a(this.this$0) + " mIsDestroyed:" + LoginAnimBtnView.a(this.this$0));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mUpdateRunnable isEnabled:");
+      ((StringBuilder)localObject).append(this.this$0.isEnabled());
+      ((StringBuilder)localObject).append("  mLottieDrawable:");
+      ((StringBuilder)localObject).append(LoginAnimBtnView.a(this.this$0));
+      ((StringBuilder)localObject).append(" mIsDestroyed:");
+      ((StringBuilder)localObject).append(LoginAnimBtnView.b(this.this$0));
+      QLog.i("LoginAnimBtnView", 2, ((StringBuilder)localObject).toString());
     }
-    if (LoginAnimBtnView.a(this.this$0)) {
+    if (LoginAnimBtnView.b(this.this$0)) {
       return;
     }
     if (this.this$0.isEnabled())
@@ -21,17 +29,20 @@ class LoginAnimBtnView$1
       {
         LoginAnimBtnView.a(this.this$0, true);
         LoginAnimBtnView.b(this.this$0, true);
-        this.this$0.setBackgroundDrawable(LoginAnimBtnView.a(this.this$0));
-        LoginAnimBtnView.a(this.this$0);
+        localObject = this.this$0;
+        ((LoginAnimBtnView)localObject).setBackgroundDrawable(LoginAnimBtnView.a((LoginAnimBtnView)localObject));
+        LoginAnimBtnView.c(this.this$0);
         return;
       }
       LoginAnimBtnView.b(this.this$0, false);
-      this.this$0.setBackgroundColor(LoginAnimBtnView.a(this.this$0));
+      localObject = this.this$0;
+      ((LoginAnimBtnView)localObject).setBackgroundColor(LoginAnimBtnView.d((LoginAnimBtnView)localObject));
       return;
     }
     LoginAnimBtnView.b(this.this$0, false);
-    this.this$0.setBackgroundColor(LoginAnimBtnView.b(this.this$0));
-    LoginAnimBtnView.b(this.this$0);
+    Object localObject = this.this$0;
+    ((LoginAnimBtnView)localObject).setBackgroundColor(LoginAnimBtnView.e((LoginAnimBtnView)localObject));
+    LoginAnimBtnView.f(this.this$0);
   }
 }
 

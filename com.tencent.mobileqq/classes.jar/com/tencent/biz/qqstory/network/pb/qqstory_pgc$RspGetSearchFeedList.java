@@ -22,14 +22,15 @@ public final class qqstory_pgc$RspGetSearchFeedList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50 }, new String[] { "result", "result_type", "feed_list", "is_end", "next_cookie", "key_word_list" }, new Object[] { null, Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, RspGetSearchFeedList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50 }, new String[] { "result", "result_type", "feed_list", "is_end", "next_cookie", "key_word_list" }, new Object[] { null, localInteger, null, localInteger, localByteStringMicro1, localByteStringMicro2 }, RspGetSearchFeedList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_pgc.RspGetSearchFeedList
  * JD-Core Version:    0.7.0.1
  */

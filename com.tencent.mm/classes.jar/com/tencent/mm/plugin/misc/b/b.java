@@ -1,83 +1,140 @@
 package com.tencent.mm.plugin.misc.b;
 
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
-import com.tencent.mm.model.bj;
-import com.tencent.mm.network.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.s;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.k.f;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.plugin.misc.a.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 public final class b
-  implements f, c, com.tencent.mm.plugin.misc.a.a
+  implements com.tencent.mm.am.h, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.misc.a.a
 {
-  private static ap caS = null;
-  private static String oEu = "";
-  private static String oEv = "";
-  private int fne;
-  private int fnf;
-  private n fyJ;
-  private boolean oEr;
-  private long oEs;
-  private long oEt;
-  private final Map<Integer, Set<Object>> oEw;
+  private static String KSu = "";
+  private static String KSv = "";
+  private static MTimerHandler timer = null;
+  private boolean KSr;
+  private long KSs;
+  private long KSt;
+  private boolean KSw;
+  private final Map<Integer, Set<a.a>> KSx;
+  private com.tencent.mm.network.p oAk;
+  private int omD;
+  private int omE;
   private int type;
   
   public b()
   {
-    AppMethodBeat.i(50514);
-    this.oEr = false;
-    this.fne = 0;
-    this.fnf = 0;
+    AppMethodBeat.i(127615);
+    this.KSr = false;
+    this.omD = 0;
+    this.omE = 0;
     this.type = 0;
-    this.oEs = 0L;
-    this.oEt = 60L;
-    this.oEw = new HashMap();
-    this.fyJ = new b.2(this);
-    AppMethodBeat.o(50514);
+    this.KSs = 0L;
+    this.KSt = 60L;
+    this.KSw = false;
+    this.KSx = new HashMap();
+    this.oAk = new p.a()
+    {
+      public final void onNetworkChange(int paramAnonymousInt)
+      {
+        paramAnonymousInt = 1;
+        AppMethodBeat.i(127614);
+        for (;;)
+        {
+          try
+          {
+            if (!b.gbx())
+            {
+              b.a(b.this, 0);
+              AppMethodBeat.o(127614);
+              return;
+            }
+            if (b.b(b.this))
+            {
+              String str1 = "";
+              Log.i("MicroMsg.SimcardService", "onNetworkChange imsi[%s]", new Object[] { str1 });
+              if ((b.b(b.this)) || (str1.equals(b.KSu))) {
+                break label161;
+              }
+              Log.i("MicroMsg.SimcardService", "imsi change old[%s] new[%s]", new Object[] { b.KSu, str1 });
+              b.aGP(str1);
+              if (paramAnonymousInt == 0) {
+                break label204;
+              }
+              b.c(b.this);
+              b.d(b.this);
+              b.this.aaH(2);
+              AppMethodBeat.o(127614);
+              return;
+            }
+          }
+          catch (Exception localException)
+          {
+            Log.printErrStackTrace("MicroMsg.SimcardService", localException, "", new Object[0]);
+            AppMethodBeat.o(127614);
+            return;
+          }
+          String str2 = q.aOZ();
+          continue;
+          label161:
+          str2 = b.gby();
+          if (!str2.equals(b.KSv))
+          {
+            Log.i("MicroMsg.SimcardService", "clientIp change old[%s] new[%s]", new Object[] { b.KSv, str2 });
+            b.aMn(str2);
+            continue;
+            label204:
+            b.a(b.this, b.e(b.this));
+            AppMethodBeat.o(127614);
+          }
+          else
+          {
+            paramAnonymousInt = 0;
+          }
+        }
+      }
+    };
+    boolean bool1;
+    if (Build.VERSION.SDK_INT < 29)
+    {
+      bool1 = bool2;
+      if (Build.VERSION.SDK_INT >= 28)
+      {
+        bool1 = bool2;
+        if (Build.VERSION.PREVIEW_SDK_INT == 0) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    this.KSw = bool1;
+    AppMethodBeat.o(127615);
   }
   
-  private static boolean bQl()
+  private static String atl()
   {
-    AppMethodBeat.i(50522);
-    if (!at.isMobile(ah.getContext()))
-    {
-      AppMethodBeat.o(50522);
-      return false;
-    }
-    int i = at.getISPCode(ah.getContext());
-    ab.i("MicroMsg.SimcardService", "isUnicomNetwork ispcode[%d]", new Object[] { Integer.valueOf(i) });
-    if ((i == 46001) || (i == 46006) || (i == 46009))
-    {
-      AppMethodBeat.o(50522);
-      return true;
-    }
-    AppMethodBeat.o(50522);
-    return false;
-  }
-  
-  private static String bQm()
-  {
-    AppMethodBeat.i(50523);
+    AppMethodBeat.i(127624);
     try
     {
       InetAddress localInetAddress;
@@ -98,197 +155,276 @@ public final class b
         }
         localInetAddress = (InetAddress)((Enumeration)localObject2).nextElement();
       } while ((localInetAddress == null) || (localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
-      if (bo.isNullOrNil(localInetAddress.getHostAddress()))
+      if (Util.isNullOrNil(localInetAddress.getHostAddress()))
       {
-        AppMethodBeat.o(50523);
+        AppMethodBeat.o(127624);
         return "127.0.0.1";
       }
       Object localObject1 = localInetAddress.getHostAddress();
-      AppMethodBeat.o(50523);
+      AppMethodBeat.o(127624);
       return localObject1;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(50523);
+      AppMethodBeat.o(127624);
     }
     return "127.0.0.1";
   }
   
-  private void yY(int paramInt)
+  public static boolean gbx()
   {
-    AppMethodBeat.i(50521);
-    ab.i("MicroMsg.SimcardService", "NotifySimTypeChange flag[%d]", new Object[] { Integer.valueOf(paramInt) });
-    if (this.oEw == null)
+    AppMethodBeat.i(127623);
+    if (!NetStatusUtil.isMobile(MMApplicationContext.getContext()))
     {
-      AppMethodBeat.o(50521);
-      return;
+      AppMethodBeat.o(127623);
+      return false;
     }
-    Iterator localIterator = this.oEw.entrySet().iterator();
-    while (localIterator.hasNext())
+    int i = NetStatusUtil.getISPCode(MMApplicationContext.getContext());
+    Log.i("MicroMsg.SimcardService", "isUnicomNetwork ispcode[%d]", new Object[] { Integer.valueOf(i) });
+    if ((i == 46001) || (i == 46006) || (i == 46009))
     {
-      Object localObject = (Map.Entry)localIterator.next();
-      ((Integer)((Map.Entry)localObject).getKey()).intValue();
-      localObject = ((Set)((Map.Entry)localObject).getValue()).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((Iterator)localObject).next();
-      }
+      AppMethodBeat.o(127623);
+      return true;
     }
-    AppMethodBeat.o(50521);
+    AppMethodBeat.o(127623);
+    return false;
   }
   
-  public final int bQj()
+  private void jH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(50519);
-    if (!bQl())
+    AppMethodBeat.i(260846);
+    Log.i("MicroMsg.SimcardService", "NotifySimTypeChange flag[%d]", new Object[] { Integer.valueOf(paramInt1) });
+    if (this.KSx == null)
     {
-      AppMethodBeat.o(50519);
+      AppMethodBeat.o(260846);
+      return;
+    }
+    Iterator localIterator = this.KSx.entrySet().iterator();
+    if (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      if ((((Integer)((Map.Entry)localObject).getKey()).intValue() & paramInt1) == 0) {}
+      for (int i = 2;; i = 1)
+      {
+        localObject = ((Set)((Map.Entry)localObject).getValue()).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((a.a)((Iterator)localObject).next()).onSIMCardChange(i, paramInt2);
+        }
+        break;
+      }
+    }
+    AppMethodBeat.o(260846);
+  }
+  
+  public final void a(int paramInt, a.a parama)
+  {
+    AppMethodBeat.i(260914);
+    if (parama == null)
+    {
+      AppMethodBeat.o(260914);
+      return;
+    }
+    if (!this.KSx.containsKey(Integer.valueOf(paramInt))) {
+      this.KSx.put(Integer.valueOf(paramInt), new HashSet());
+    }
+    ((Set)this.KSx.get(Integer.valueOf(paramInt))).add(parama);
+    AppMethodBeat.o(260914);
+  }
+  
+  public final int aaG(int paramInt)
+  {
+    AppMethodBeat.i(127619);
+    if (!gbx())
+    {
+      if ((!NetStatusUtil.isMobile(MMApplicationContext.getContext())) && (this.KSr))
+      {
+        if ((this.omD & paramInt) == 0)
+        {
+          AppMethodBeat.o(127619);
+          return 2;
+        }
+        AppMethodBeat.o(127619);
+        return 3;
+      }
+      AppMethodBeat.o(127619);
+      return 2;
+    }
+    aaH(1);
+    if (2 == this.type)
+    {
+      AppMethodBeat.o(127619);
       return 0;
     }
-    int i = this.fnf;
-    AppMethodBeat.o(50519);
+    if (this.KSr)
+    {
+      if ((this.omD & paramInt) == 0)
+      {
+        AppMethodBeat.o(127619);
+        return 2;
+      }
+      AppMethodBeat.o(127619);
+      return 1;
+    }
+    AppMethodBeat.o(127619);
+    return 0;
+  }
+  
+  public final void aaH(int paramInt)
+  {
+    AppMethodBeat.i(127621);
+    if (!gbx())
+    {
+      AppMethodBeat.o(127621);
+      return;
+    }
+    if (this.KSs != 0L)
+    {
+      long l3 = Util.nowSecond();
+      Log.i("MicroMsg.SimcardService", "CheckMobileSIMType scene[%d] cacheExpiredTime[%d] lastCheckMobileSIMTypeTime[%d] now[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.KSt), Long.valueOf(this.KSs), Long.valueOf(l3) });
+      if (paramInt != 2)
+      {
+        long l2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getInt("NetInfoCheckMobileSimTypeCacheTime", 28800);
+        long l1 = l2;
+        if (l2 > this.KSt) {
+          l1 = this.KSt;
+        }
+        if (l3 - this.KSs < l1) {
+          AppMethodBeat.o(127621);
+        }
+      }
+      else if (l3 - this.KSs < 60L)
+      {
+        AppMethodBeat.o(127621);
+        return;
+      }
+    }
+    this.KSs = Util.nowSecond();
+    KSv = atl();
+    Log.i("MicroMsg.SimcardService", "CheckMobileSIMType start");
+    if (!this.KSw) {
+      KSu = q.aOZ();
+    }
+    String str2;
+    String str3;
+    for (Object localObject = new bv(paramInt, KSv, q.eD(true), KSu, null, null);; localObject = new bv(paramInt, str2, null, null, str3, (String)localObject))
+    {
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localObject, 0);
+      AppMethodBeat.o(127621);
+      return;
+      String str1 = q.aPk();
+      str2 = KSv;
+      str3 = q.aPj();
+      localObject = str1;
+      if (str1 == "") {
+        localObject = null;
+      }
+    }
+  }
+  
+  public final void b(int paramInt, a.a parama)
+  {
+    AppMethodBeat.i(260917);
+    if (parama == null)
+    {
+      AppMethodBeat.o(260917);
+      return;
+    }
+    if (!this.KSx.containsKey(Integer.valueOf(paramInt)))
+    {
+      AppMethodBeat.o(260917);
+      return;
+    }
+    ((Set)this.KSx.get(Integer.valueOf(paramInt))).remove(parama);
+    AppMethodBeat.o(260917);
+  }
+  
+  public final int gbv()
+  {
+    AppMethodBeat.i(127620);
+    if (!gbx())
+    {
+      AppMethodBeat.o(127620);
+      return 0;
+    }
+    int i = this.omE;
+    AppMethodBeat.o(127620);
     return i;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(50515);
-    if (caS == null)
+    AppMethodBeat.i(127616);
+    if (timer == null)
     {
-      paramc = new ap(new ap.a()
+      paramc = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(50512);
-          if (!g.RJ().QU())
+          AppMethodBeat.i(127613);
+          if (!com.tencent.mm.kernel.h.baC().aZN())
           {
-            ab.w("MicroMsg.SimcardService", "account not init.");
-            AppMethodBeat.o(50512);
+            Log.w("MicroMsg.SimcardService", "account not init.");
+            AppMethodBeat.o(127613);
             return true;
           }
-          ab.i("MicroMsg.SimcardService", "CheckMobileSIMType Timer");
+          Log.i("MicroMsg.SimcardService", "CheckMobileSIMType Timer");
           if (b.a(b.this) == 0L) {
-            b.this.yX(0);
+            b.this.aaH(0);
           }
           for (;;)
           {
-            AppMethodBeat.o(50512);
+            AppMethodBeat.o(127613);
             return true;
-            b.this.yX(3);
+            b.this.aaH(3);
           }
         }
       }, true);
-      caS = paramc;
-      paramc.ag(30000L, 30000L);
+      timer = paramc;
+      paramc.startTimer(30000L);
     }
-    g.Rc().a(813, this);
-    g.RK().a(this.fyJ);
-    AppMethodBeat.o(50515);
+    com.tencent.mm.kernel.h.aZW().a(813, this);
+    com.tencent.mm.kernel.h.baD().a(this.oAk);
+    AppMethodBeat.o(127616);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(50516);
-    g.Rc().b(813, this);
-    AppMethodBeat.o(50516);
+    AppMethodBeat.i(127617);
+    com.tencent.mm.kernel.h.aZW().b(813, this);
+    AppMethodBeat.o(127617);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(50517);
-    caS.stopTimer();
-    caS.ag(86400000L, 86400000L);
+    AppMethodBeat.i(127618);
+    timer.stopTimer();
+    timer.startTimer(86400000L);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      this.oEt = 60L;
-      ab.e("MicroMsg.SimcardService", "CheckMobileSimType error:(" + paramInt1 + "," + paramInt2 + ")");
-      yY(this.fne);
-      AppMethodBeat.o(50517);
+      this.KSt = 60L;
+      Log.e("MicroMsg.SimcardService", "CheckMobileSimType error:(" + paramInt1 + "," + paramInt2 + ")");
+      jH(this.omD, 2);
+      AppMethodBeat.o(127618);
       return;
     }
-    paramString = (bj)paramm;
-    this.oEr = true;
-    this.fnf = paramString.fnf;
+    paramString = (bv)paramp;
+    this.KSr = true;
+    this.omE = paramString.omE;
     this.type = paramString.type;
-    this.fne = paramString.fne;
-    if ((paramString.fng < 60L) || (paramString.fng > 86400L)) {}
-    for (this.oEt = 28800L;; this.oEt = paramString.fng)
+    this.omD = paramString.omD;
+    if ((paramString.omF < 60L) || (paramString.omF > 86400L)) {}
+    for (this.KSt = 28800L;; this.KSt = paramString.omF)
     {
-      ab.i("MicroMsg.SimcardService", "CheckMobileSIMTypeResp type[%d], productType[%d], businessFlag[%d] expiredTime[%d]", new Object[] { Integer.valueOf(this.type), Integer.valueOf(this.fnf), Integer.valueOf(this.fne), Integer.valueOf(paramString.fng) });
-      yY(this.fne);
-      AppMethodBeat.o(50517);
+      Log.i("MicroMsg.SimcardService", "CheckMobileSIMTypeResp type[%d], productType[%d], businessFlag[%d] expiredTime[%d]", new Object[] { Integer.valueOf(this.type), Integer.valueOf(this.omE), Integer.valueOf(this.omD), Integer.valueOf(paramString.omF) });
+      jH(this.omD, 3);
+      AppMethodBeat.o(127618);
       return;
     }
-  }
-  
-  public final int yW(int paramInt)
-  {
-    AppMethodBeat.i(142688);
-    if (!bQl())
-    {
-      AppMethodBeat.o(142688);
-      return 2;
-    }
-    yX(1);
-    if (2 == this.type)
-    {
-      AppMethodBeat.o(142688);
-      return 0;
-    }
-    if (this.oEr)
-    {
-      if ((this.fne & paramInt) == 0)
-      {
-        AppMethodBeat.o(142688);
-        return 2;
-      }
-      AppMethodBeat.o(142688);
-      return 1;
-    }
-    AppMethodBeat.o(142688);
-    return 0;
-  }
-  
-  public final void yX(int paramInt)
-  {
-    AppMethodBeat.i(50520);
-    if (!bQl())
-    {
-      AppMethodBeat.o(50520);
-      return;
-    }
-    if (this.oEs != 0L)
-    {
-      long l3 = bo.aox();
-      ab.i("MicroMsg.SimcardService", "CheckMobileSIMType scene[%d] cacheExpiredTime[%d] lastCheckMobileSIMTypeTime[%d] now[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.oEt), Long.valueOf(this.oEs), Long.valueOf(l3) });
-      if (paramInt != 2)
-      {
-        long l2 = ((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getInt("NetInfoCheckMobileSimTypeCacheTime", 28800);
-        long l1 = l2;
-        if (l2 > this.oEt) {
-          l1 = this.oEt;
-        }
-        if (l3 - this.oEs < l1) {
-          AppMethodBeat.o(50520);
-        }
-      }
-      else if (l3 - this.oEs < 60L)
-      {
-        AppMethodBeat.o(50520);
-        return;
-      }
-    }
-    this.oEs = bo.aox();
-    oEu = q.LE();
-    oEv = bQm();
-    ab.i("MicroMsg.SimcardService", "CheckMobileSIMType start");
-    bj localbj = new bj(paramInt, oEv, q.bP(true), oEu);
-    g.Rc().a(localbj, 0);
-    AppMethodBeat.o(50520);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.misc.b.b
  * JD-Core Version:    0.7.0.1
  */

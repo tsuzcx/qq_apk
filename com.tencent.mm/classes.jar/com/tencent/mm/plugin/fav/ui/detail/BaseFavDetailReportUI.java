@@ -1,59 +1,62 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.b.f;
+import com.tencent.mm.plugin.fav.a.ah;
 import com.tencent.mm.plugin.fav.a.b;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.h.a;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.plugin.fav.ui.c;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.fav.ui.q.b;
 import com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView.a;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.widget.MMLoadScrollView;
+import com.tencent.mm.ui.widget.MMLoadScrollView.a;
 
 public abstract class BaseFavDetailReportUI
-  extends MMActivity
+  extends MMSecDataActivity
 {
-  public h.a mzH = new h.a();
-  protected boolean mzI;
-  private String mzJ = null;
+  public h.a Akw = new h.a();
+  protected boolean Akx;
+  private String Aky = null;
   
-  protected final void F(com.tencent.mm.plugin.fav.a.g paramg)
+  protected final void H(g paramg)
   {
-    if ((paramg != null) && (this.mzH.scene > 0))
+    if ((paramg != null) && (this.Akw.scene > 0))
     {
-      this.mzH.msZ = paramg.field_id;
-      this.mzH.type = paramg.field_type;
-      this.mzH.cpt = paramg.field_sourceType;
-      this.mzH.timestamp = (paramg.field_sourceCreateTime / 1000L);
-      if (this.mzH.timestamp == 0L) {
-        this.mzH.timestamp = (paramg.field_updateTime / 1000L);
+      this.Akw.Acx = paramg.field_id;
+      this.Akw.type = paramg.field_type;
+      this.Akw.source = paramg.field_sourceType;
+      this.Akw.timestamp = (paramg.field_sourceCreateTime / 1000L);
+      if (this.Akw.timestamp == 0L) {
+        this.Akw.timestamp = (paramg.field_updateTime / 1000L);
       }
-      if (this.mzH.timestamp == 0L) {
-        this.mzH.timestamp = paramg.field_edittime;
+      if (this.Akw.timestamp == 0L) {
+        this.Akw.timestamp = paramg.field_edittime;
       }
-      this.mzH.mta = b.r(paramg);
-      this.mzI = true;
+      this.Akw.Acy = b.r(paramg);
+      this.Akx = true;
     }
   }
   
-  protected MMLoadScrollView bxU()
+  protected MMLoadScrollView dSo()
   {
     return null;
   }
   
-  protected final void ki(long paramLong)
+  protected final void mQ(long paramLong)
   {
-    com.tencent.mm.plugin.fav.a.g localg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(paramLong);
+    g localg = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().mK(paramLong);
     if (localg != null) {
-      F(localg);
+      H(localg);
     }
   }
   
@@ -62,9 +65,9 @@ public abstract class BaseFavDetailReportUI
     if ((paramInt1 == 1) && (paramIntent != null))
     {
       long l = paramIntent.getLongExtra("key_activity_browse_time", 0L);
-      h.a locala = this.mzH;
-      locala.mtc += l;
-      ab.v("MicroMsg.Fav.BaseFavDetailReportUI", "onActivityResult subDetailPeriod[%d] subUIBrowserTime[%d]", new Object[] { Long.valueOf(this.mzH.mtc), Long.valueOf(l) });
+      h.a locala = this.Akw;
+      locala.AcA += l;
+      Log.v("MicroMsg.Fav.BaseFavDetailReportUI", "onActivityResult subDetailPeriod[%d] subUIBrowserTime[%d]", new Object[] { Long.valueOf(this.Akw.AcA), Long.valueOf(l) });
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -72,88 +75,118 @@ public abstract class BaseFavDetailReportUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mzH.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
-    this.mzH.kbN = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
-    this.mzH.index = getIntent().getIntExtra("key_detail_fav_index", 0);
-    this.mzH.query = getIntent().getStringExtra("key_detail_fav_query");
-    this.mzH.sid = getIntent().getStringExtra("key_detail_fav_sessionid");
-    this.mzH.mtm = getIntent().getStringExtra("key_detail_fav_tags");
-    h.a locala = this.mzH;
-    if (this.mzH.query == null)
+    this.Akw.scene = getIntent().getIntExtra("key_detail_fav_scene", 0);
+    this.Akw.AcJ = getIntent().getIntExtra("key_detail_fav_sub_scene", 0);
+    this.Akw.index = getIntent().getIntExtra("key_detail_fav_index", 0);
+    this.Akw.query = getIntent().getStringExtra("key_detail_fav_query");
+    this.Akw.zIC = getIntent().getStringExtra("key_detail_fav_sessionid");
+    this.Akw.AcL = getIntent().getStringExtra("key_detail_fav_tags");
+    h.a locala = this.Akw;
+    if (this.Akw.query == null)
     {
       paramBundle = "";
       locala.query = paramBundle;
-      locala = this.mzH;
-      if (this.mzH.sid != null) {
-        break label265;
+      locala = this.Akw;
+      if (this.Akw.zIC != null) {
+        break label266;
       }
       paramBundle = "";
       label145:
-      locala.sid = paramBundle;
-      locala = this.mzH;
-      if (this.mzH.mtm != null) {
-        break label276;
+      locala.zIC = paramBundle;
+      locala = this.Akw;
+      if (this.Akw.AcL != null) {
+        break label277;
       }
     }
-    label265:
-    label276:
-    for (paramBundle = "";; paramBundle = this.mzH.mtm)
+    label266:
+    label277:
+    for (paramBundle = "";; paramBundle = this.Akw.AcL)
     {
-      locala.mtm = paramBundle;
-      paramBundle = bxU();
+      locala.AcL = paramBundle;
+      paramBundle = dSo();
       if (paramBundle != null)
       {
-        paramBundle.setOnTopOrBottomListerner(new BaseFavDetailReportUI.1(this));
+        paramBundle.setOnTopOrBottomListerner(new MMLoadScrollView.a()
+        {
+          public final void dCr()
+          {
+            BaseFavDetailReportUI.this.Akw.AcI = true;
+          }
+        });
         if ((paramBundle instanceof FavDetailScrollView)) {
-          ((FavDetailScrollView)paramBundle).setOnScrollChangeListener(new BaseFavDetailReportUI.2(this));
+          ((FavDetailScrollView)paramBundle).setOnScrollChangeListener(new FavDetailScrollView.a()
+          {
+            public final void dSp()
+            {
+              AppMethodBeat.i(107110);
+              BaseFavDetailReportUI.this.showActionbarLine();
+              AppMethodBeat.o(107110);
+            }
+            
+            public final void dSq()
+            {
+              AppMethodBeat.i(107111);
+              BaseFavDetailReportUI.this.hideActionbarLine();
+              AppMethodBeat.o(107111);
+            }
+          });
         }
       }
-      if (this.mzH.scene == 0) {
-        ab.i("MicroMsg.Fav.BaseFavDetailReportUI", "report object scene is 0");
+      if (this.Akw.scene == 0) {
+        Log.i("MicroMsg.Fav.BaseFavDetailReportUI", "report object scene is 0");
       }
-      setActionbarColor(getContext().getResources().getColor(2131689653));
+      setActionbarColor(getContext().getResources().getColor(q.b.white));
       hideActionbarLine();
       return;
-      paramBundle = this.mzH.query;
+      paramBundle = this.Akw.query;
       break;
-      paramBundle = this.mzH.sid;
+      paramBundle = this.Akw.zIC;
       break label145;
     }
   }
   
   public void onDestroy()
   {
-    if (this.mzI) {
-      d.post(new BaseFavDetailReportUI.3(this), "BaseFavReport");
+    if (this.Akx) {
+      ThreadPool.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(107112);
+          BaseFavDetailReportUI.this.Akw.AcK = (((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().ME((int)BaseFavDetailReportUI.this.Akw.Acx) + 1);
+          com.tencent.mm.plugin.fav.a.h.a(BaseFavDetailReportUI.this.Akw);
+          AppMethodBeat.o(107112);
+        }
+      }, "BaseFavReport");
     }
     setResult(-1, getIntent().putExtra("key_activity_browse_time", getActivityBrowseTimeMs()));
-    c.bxt();
+    com.tencent.mm.plugin.fav.ui.e.dRE();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.mzH.mtb = getActivityBrowseTimeMs();
-    String str1 = com.tencent.mm.modelstat.f.akB().fTm;
+    this.Akw.Acz = getActivityBrowseTimeMs();
+    String str1 = com.tencent.mm.modelstat.e.bNb().oWh;
     h.a locala;
     long l2;
-    com.tencent.mm.modelstat.f localf;
+    com.tencent.mm.modelstat.e locale;
     String str2;
-    if ((!bo.isEqual(getClass().getName(), str1)) && (!bo.isEqual(str1, this.mzJ)))
+    if ((!Util.isEqual(getClass().getName(), str1)) && (!Util.isEqual(str1, this.Aky)))
     {
-      locala = this.mzH;
-      l2 = locala.mtc;
-      localf = com.tencent.mm.modelstat.f.akB();
-      str2 = com.tencent.mm.modelstat.f.akB().fTm;
-      if (localf.fTl == null) {
+      locala = this.Akw;
+      l2 = locala.AcA;
+      locale = com.tencent.mm.modelstat.e.bNb();
+      str2 = com.tencent.mm.modelstat.e.bNb().oWh;
+      if (locale.oWg == null) {
         break label154;
       }
     }
     label154:
-    for (long l1 = ((Long)localf.fTl.get(str2)).longValue();; l1 = 0L)
+    for (long l1 = ((Long)locale.oWg.get(str2)).longValue();; l1 = 0L)
     {
-      locala.mtc = (l1 + l2);
-      ab.v("MicroMsg.Fav.BaseFavDetailReportUI", "onPause lastClassname[%s] detailPeriod[%d] subDetailPeriod[%d]", new Object[] { str1, Long.valueOf(this.mzH.mtb), Long.valueOf(this.mzH.mtc) });
+      locala.AcA = (l1 + l2);
+      Log.v("MicroMsg.Fav.BaseFavDetailReportUI", "onPause lastClassname[%s] detailPeriod[%d] subDetailPeriod[%d]", new Object[] { str1, Long.valueOf(this.Akw.Acz), Long.valueOf(this.Akw.AcA) });
       super.onPause();
       return;
     }
@@ -162,10 +195,10 @@ public abstract class BaseFavDetailReportUI
   public void onResume()
   {
     super.onResume();
-    if (bo.isNullOrNil(this.mzJ)) {
-      this.mzJ = com.tencent.mm.modelstat.f.akB().fTm;
+    if (Util.isNullOrNil(this.Aky)) {
+      this.Aky = com.tencent.mm.modelstat.e.bNb().oWh;
     }
-    ab.v("MicroMsg.Fav.BaseFavDetailReportUI", "onResume firstResumeClassname[%s]", new Object[] { this.mzJ });
+    Log.v("MicroMsg.Fav.BaseFavDetailReportUI", "onResume firstResumeClassname[%s]", new Object[] { this.Aky });
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -176,7 +209,7 @@ public abstract class BaseFavDetailReportUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.BaseFavDetailReportUI
  * JD-Core Version:    0.7.0.1
  */

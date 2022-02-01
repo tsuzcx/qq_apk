@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/3c" android:textColor="@color/7a" android:id="@id/aou" android:background="@drawable/26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/0p" android:minHeight="48.0dip" android:text="@string/xd" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/3c" android:textColor="@color/6_" android:id="@id/fcw" android:background="@drawable/26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/0p" android:minHeight="48.0dip" android:text="@string/xe" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" style="@style/58" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nvk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/av_" android:gravity="center_vertical" android:id="@id/d4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ba8" android:minHeight="@dimen/ba7" />
+        <ImageView android:layout_gravity="bottom" android:id="@id/bmt" style="@style/58" />
+    </LinearLayout>
+    <ListView android:id="@id/osh" android:background="@color/ajr" android:layout_height="wrap_content" style="@style/66" />
+</LinearLayout>

@@ -29,58 +29,58 @@ public final class Handshake
   public static Handshake get(SSLSession paramSSLSession)
   {
     Object localObject = paramSSLSession.getCipherSuite();
-    if (localObject == null) {
-      throw new IllegalStateException("cipherSuite == null");
+    CipherSuite localCipherSuite;
+    TlsVersion localTlsVersion;
+    if (localObject != null) {
+      if (!"SSL_NULL_WITH_NULL_NULL".equals(localObject))
+      {
+        localCipherSuite = CipherSuite.forJavaName((String)localObject);
+        localObject = paramSSLSession.getProtocol();
+        if (localObject != null) {
+          if (!"NONE".equals(localObject)) {
+            localTlsVersion = TlsVersion.forJavaName((String)localObject);
+          }
+        }
+      }
     }
-    if ("SSL_NULL_WITH_NULL_NULL".equals(localObject)) {
-      throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
-    }
-    CipherSuite localCipherSuite = CipherSuite.forJavaName((String)localObject);
-    localObject = paramSSLSession.getProtocol();
-    if (localObject == null) {
-      throw new IllegalStateException("tlsVersion == null");
-    }
-    if ("NONE".equals(localObject)) {
-      throw new IOException("tlsVersion == NONE");
-    }
-    TlsVersion localTlsVersion = TlsVersion.forJavaName((String)localObject);
     try
     {
       localObject = paramSSLSession.getPeerCertificates();
-      if (localObject != null)
-      {
-        localObject = Util.immutableList((Object[])localObject);
-        paramSSLSession = paramSSLSession.getLocalCertificates();
-        if (paramSSLSession == null) {
-          break label147;
-        }
-        paramSSLSession = Util.immutableList(paramSSLSession);
-        return new Handshake(localTlsVersion, localCipherSuite, (List)localObject, paramSSLSession);
-      }
     }
     catch (SSLPeerUnverifiedException localSSLPeerUnverifiedException)
     {
-      for (;;)
-      {
-        List localList = null;
-        continue;
-        localList = Collections.emptyList();
-        continue;
-        label147:
-        paramSSLSession = Collections.emptyList();
-      }
+      label60:
+      break label60;
     }
+    localObject = null;
+    if (localObject != null) {
+      localObject = Util.immutableList((Object[])localObject);
+    } else {
+      localObject = Collections.emptyList();
+    }
+    paramSSLSession = paramSSLSession.getLocalCertificates();
+    if (paramSSLSession != null) {
+      paramSSLSession = Util.immutableList(paramSSLSession);
+    } else {
+      paramSSLSession = Collections.emptyList();
+    }
+    return new Handshake(localTlsVersion, localCipherSuite, (List)localObject, paramSSLSession);
+    throw new IOException("tlsVersion == NONE");
+    throw new IllegalStateException("tlsVersion == null");
+    throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
+    throw new IllegalStateException("cipherSuite == null");
   }
   
   public static Handshake get(TlsVersion paramTlsVersion, CipherSuite paramCipherSuite, List<Certificate> paramList1, List<Certificate> paramList2)
   {
-    if (paramTlsVersion == null) {
-      throw new NullPointerException("tlsVersion == null");
-    }
-    if (paramCipherSuite == null) {
+    if (paramTlsVersion != null)
+    {
+      if (paramCipherSuite != null) {
+        return new Handshake(paramTlsVersion, paramCipherSuite, Util.immutableList(paramList1), Util.immutableList(paramList2));
+      }
       throw new NullPointerException("cipherSuite == null");
     }
-    return new Handshake(paramTlsVersion, paramCipherSuite, Util.immutableList(paramList1), Util.immutableList(paramList2));
+    throw new NullPointerException("tlsVersion == null");
   }
   
   public CipherSuite cipherSuite()
@@ -90,18 +90,34 @@ public final class Handshake
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof Handshake)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof Handshake;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Handshake)paramObject;
-    } while ((!this.tlsVersion.equals(paramObject.tlsVersion)) || (!this.cipherSuite.equals(paramObject.cipherSuite)) || (!this.peerCertificates.equals(paramObject.peerCertificates)) || (!this.localCertificates.equals(paramObject.localCertificates)));
-    return true;
+    }
+    paramObject = (Handshake)paramObject;
+    bool1 = bool2;
+    if (this.tlsVersion.equals(paramObject.tlsVersion))
+    {
+      bool1 = bool2;
+      if (this.cipherSuite.equals(paramObject.cipherSuite))
+      {
+        bool1 = bool2;
+        if (this.peerCertificates.equals(paramObject.peerCertificates))
+        {
+          bool1 = bool2;
+          if (this.localCertificates.equals(paramObject.localCertificates)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
-    return (((this.tlsVersion.hashCode() + 527) * 31 + this.cipherSuite.hashCode()) * 31 + this.peerCertificates.hashCode()) * 31 + this.localCertificates.hashCode();
+    return (((527 + this.tlsVersion.hashCode()) * 31 + this.cipherSuite.hashCode()) * 31 + this.peerCertificates.hashCode()) * 31 + this.localCertificates.hashCode();
   }
   
   public List<Certificate> localCertificates()
@@ -139,7 +155,7 @@ public final class Handshake
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Handshake
  * JD-Core Version:    0.7.0.1
  */

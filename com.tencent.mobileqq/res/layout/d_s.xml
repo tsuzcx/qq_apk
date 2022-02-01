@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ncp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/bs1">
+        <RelativeLayout android:id="@id/q0f" android:background="@drawable/gh2" android:paddingBottom="6.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="56.0dip" android:translationY="6.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/qij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" />
+            <com.tencent.mobileqq.wink.view.StartPointSeekBar android:id="@id/q5v" android:layout_width="fill_parent" android:layout_height="39.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentBottom="true" app:backgroundDrawable="@drawable/j5v" app:defaultProgressDrawable="@drawable/j5w" app:maxValue="100.0" app:minValue="0.0" app:sectionDrawable="@drawable/h7w" app:sectionProgressedDrawable="@drawable/h8c" app:splitTrack="false" app:thumbAnimEnable="false" app:thumbDrawable="@drawable/jm2" app:thumbPressedDrawable="@drawable/jm3" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.wink.view.WinkMaterialPanel android:id="@id/oit" android:background="@drawable/glq" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/bsa" app:categoryContentGap="14.0dip" />
+    </LinearLayout>
+</FrameLayout>

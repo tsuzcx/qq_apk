@@ -1,159 +1,87 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.h;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Process;
+import android.util.TypedValue;
+import java.io.File;
 
 public class dj
-  implements dc
 {
-  public long a = 0L;
-  public dh b = null;
-  private Handler d = null;
-  private gg e = null;
+  private static final Object a = new Object();
+  private static TypedValue b;
   
-  static
+  public static int a(Context paramContext, String paramString)
   {
-    if (!dj.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if (paramString != null) {
+      return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
+    }
+    throw new IllegalArgumentException("permission is null");
+  }
+  
+  public static Drawable a(Context paramContext, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramContext.getDrawable(paramInt);
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      return paramContext.getResources().getDrawable(paramInt);
+    }
+    synchronized (a)
     {
-      c = bool;
-      return;
-    }
-  }
-  
-  public dj()
-  {
-    d();
-  }
-  
-  public void a()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(10);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("serTime", paramInt);
-    localMessage.what = 13;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 9;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void a(Handler paramHandler)
-  {
-    this.d = paramHandler;
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 14;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(12);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("errCode", paramInt);
-    localBundle.putString("error", paramString);
-    localMessage.what = 11;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ucSmsPort", paramString);
-    localMessage.what = 1;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void c()
-  {
-    if (this.d == null) {
-      return;
-    }
-    this.d.sendEmptyMessage(15);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.d == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("error", paramString);
-    localMessage.what = 2;
-    localMessage.setData(localBundle);
-    this.d.sendMessage(localMessage);
-  }
-  
-  public void d()
-  {
-    try
-    {
-      this.e = gf.a();
-      if ((!c) && (this.e == null)) {
-        throw new AssertionError();
+      if (b == null) {
+        b = new TypedValue();
       }
+      paramContext.getResources().getValue(paramInt, b, true);
+      paramInt = b.resourceId;
+      return paramContext.getResources().getDrawable(paramInt);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      h.c("RESULT_ERROR!!!" + localException.getMessage());
-      return;
+  }
+  
+  public static boolean a(Context paramContext, Intent[] paramArrayOfIntent)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramContext.startActivities(paramArrayOfIntent, null);
+    } else {
+      paramContext.startActivities(paramArrayOfIntent);
     }
-    this.b = new dh(this);
-    this.b.a(this.e);
+    return true;
+  }
+  
+  public static File[] a(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramContext.getExternalFilesDirs(null);
+    }
+    return new File[] { paramContext.getExternalFilesDir(null) };
+  }
+  
+  public static ColorStateList b(Context paramContext, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColorStateList(paramInt);
+    }
+    return paramContext.getResources().getColorStateList(paramInt);
+  }
+  
+  public static File[] b(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramContext.getExternalCacheDirs();
+    }
+    return new File[] { paramContext.getExternalCacheDir() };
+  }
+  
+  public static int c(Context paramContext, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColor(paramInt);
+    }
+    return paramContext.getResources().getColor(paramInt);
   }
 }
 

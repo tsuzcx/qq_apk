@@ -6,30 +6,41 @@ public class Memory
 {
   public static int peekInt(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)
   {
+    int i;
+    int j;
     if (paramByteOrder == ByteOrder.BIG_ENDIAN)
     {
       i = paramInt + 1;
-      paramInt = paramArrayOfByte[paramInt];
-      j = i + 1;
-      return (paramArrayOfByte[i] & 0xFF) << 16 | (paramInt & 0xFF) << 24 | (paramArrayOfByte[j] & 0xFF) << 8 | (paramArrayOfByte[(j + 1)] & 0xFF) << 0;
+      j = paramArrayOfByte[paramInt];
+      paramInt = i + 1;
+      i = (j & 0xFF) << 24 | (paramArrayOfByte[i] & 0xFF) << 16 | (paramArrayOfByte[paramInt] & 0xFF) << 8;
     }
-    int i = paramInt + 1;
-    paramInt = paramArrayOfByte[paramInt];
-    int j = i + 1;
-    return (paramArrayOfByte[i] & 0xFF) << 8 | (paramInt & 0xFF) << 0 | (paramArrayOfByte[j] & 0xFF) << 16 | (paramArrayOfByte[(j + 1)] & 0xFF) << 24;
+    for (paramInt = (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 0;; paramInt = (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 24)
+    {
+      return paramInt | i;
+      i = paramInt + 1;
+      j = paramArrayOfByte[paramInt];
+      paramInt = i + 1;
+      i = (j & 0xFF) << 0 | (paramArrayOfByte[i] & 0xFF) << 8 | (paramArrayOfByte[paramInt] & 0xFF) << 16;
+    }
   }
   
   public static short peekShort(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)
   {
+    int i;
     if (paramByteOrder == ByteOrder.BIG_ENDIAN) {
-      return (short)(paramArrayOfByte[paramInt] << 8 | paramArrayOfByte[(paramInt + 1)] & 0xFF);
+      i = paramArrayOfByte[paramInt] << 8;
     }
-    return (short)(paramArrayOfByte[(paramInt + 1)] << 8 | paramArrayOfByte[paramInt] & 0xFF);
+    for (paramInt = paramArrayOfByte[(paramInt + 1)];; paramInt = paramArrayOfByte[paramInt])
+    {
+      return (short)(paramInt & 0xFF | i);
+      i = paramArrayOfByte[(paramInt + 1)] << 8;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.soload.Memory
  * JD-Core Version:    0.7.0.1
  */

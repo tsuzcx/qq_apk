@@ -3,6 +3,9 @@ package com.tencent.mobileqq.emoticon;
 public class QQSysAndEmojiResInfo$QQEmoConfigItem
 {
   public String AQLid;
+  public String AniStickerId;
+  public String AniStickerPackId;
+  public int AniStickerType;
   public String EMCode;
   public String QCid;
   public String QDes;

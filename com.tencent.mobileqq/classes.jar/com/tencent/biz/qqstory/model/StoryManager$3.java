@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import uvx;
 
-public class StoryManager$3
+class StoryManager$3
   implements Runnable
 {
-  public StoryManager$3(uvx paramuvx, String paramString) {}
+  StoryManager$3(StoryManager paramStoryManager, String paramString) {}
   
   public void run()
   {
@@ -20,7 +19,7 @@ public class StoryManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.3
  * JD-Core Version:    0.7.0.1
  */

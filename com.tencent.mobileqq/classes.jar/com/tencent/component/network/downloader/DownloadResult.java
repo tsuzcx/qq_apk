@@ -35,13 +35,8 @@ public final class DownloadResult
   
   public DownloadResult(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtil.assertTrue(bool);
-      this.mUrl = paramString;
-      return;
-    }
+    AssertUtil.assertTrue(TextUtils.isEmpty(paramString) ^ true);
+    this.mUrl = paramString;
   }
   
   public int describeContents()
@@ -132,7 +127,7 @@ public final class DownloadResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.DownloadResult
  * JD-Core Version:    0.7.0.1
  */

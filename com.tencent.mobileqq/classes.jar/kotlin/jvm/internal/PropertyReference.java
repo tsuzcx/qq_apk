@@ -1,7 +1,6 @@
 package kotlin.jvm.internal;
 
 import kotlin.SinceKotlin;
-import kotlin.reflect.KCallable;
 import kotlin.reflect.KProperty;
 
 public abstract class PropertyReference
@@ -18,16 +17,14 @@ public abstract class PropertyReference
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof PropertyReference)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof PropertyReference))
+    {
       paramObject = (PropertyReference)paramObject;
-    } while ((getOwner().equals(paramObject.getOwner())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (Intrinsics.areEqual(getBoundReceiver(), paramObject.getBoundReceiver())));
-    return false;
+      return (getOwner().equals(paramObject.getOwner())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (Intrinsics.areEqual(getBoundReceiver(), paramObject.getBoundReceiver()));
+    }
     if ((paramObject instanceof KProperty)) {
       return paramObject.equals(compute());
     }
@@ -59,16 +56,20 @@ public abstract class PropertyReference
   
   public String toString()
   {
-    KCallable localKCallable = compute();
-    if (localKCallable != this) {
-      return localKCallable.toString();
+    Object localObject = compute();
+    if (localObject != this) {
+      return localObject.toString();
     }
-    return "property " + getName() + " (Kotlin reflection is not available)";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("property ");
+    ((StringBuilder)localObject).append(getName());
+    ((StringBuilder)localObject).append(" (Kotlin reflection is not available)");
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jvm.internal.PropertyReference
  * JD-Core Version:    0.7.0.1
  */

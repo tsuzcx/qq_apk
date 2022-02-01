@@ -1,55 +1,32 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.f;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/InvokeOnCancelling;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "_invoked", "Lkotlinx/atomicfu/AtomicInt;", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class ba
-  extends be<bc>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/Delay;", "", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "context", "Lkotlin/coroutines/CoroutineContext;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface ba
 {
-  private static final AtomicIntegerFieldUpdater CIj;
-  private final b<Throwable, y> CIh;
-  private volatile int CIi;
+  public abstract bi a(long paramLong, Runnable paramRunnable, f paramf);
   
-  static
-  {
-    AppMethodBeat.i(118533);
-    CIj = AtomicIntegerFieldUpdater.newUpdater(ba.class, "CIi");
-    AppMethodBeat.o(118533);
-  }
+  public abstract void a(long paramLong, p<? super ah> paramp);
   
-  public ba(bc parambc, b<? super Throwable, y> paramb)
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    super(parambc);
-    AppMethodBeat.i(118532);
-    this.CIh = paramb;
-    this.CIi = 0;
-    AppMethodBeat.o(118532);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118531);
-    String str = "InvokeOnCancelling[" + af.ea(this) + '@' + af.dZ(this) + ']';
-    AppMethodBeat.o(118531);
-    return str;
-  }
-  
-  public final void v(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118529);
-    if (CIj.compareAndSet(this, 0, 1)) {
-      this.CIh.S(paramThrowable);
+    public static bi b(long paramLong, Runnable paramRunnable, f paramf)
+    {
+      AppMethodBeat.i(188923);
+      paramRunnable = ax.kCf().a(paramLong, paramRunnable, paramf);
+      AppMethodBeat.o(188923);
+      return paramRunnable;
     }
-    AppMethodBeat.o(118529);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.ba
  * JD-Core Version:    0.7.0.1
  */

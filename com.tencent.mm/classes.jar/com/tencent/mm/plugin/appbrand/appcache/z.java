@@ -1,62 +1,27 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.app.f;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/PkgDownloadCDNDownloaderQualityReporter;", "", "()V", "setup", "", "cronetProfile", "Lcom/tencent/mars/cdn/CdnLogic$WebPageProfile;", "Lcom/tencent/mm/pluginsdk/res/downloader/model/NetworkResponse;", "ConstantsIDKey", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class z
 {
-  private static final Set<b> gVk;
+  public static final z qET;
   
   static
   {
-    AppMethodBeat.i(59444);
-    gVk = new HashSet();
-    AppMethodBeat.o(59444);
+    AppMethodBeat.i(320336);
+    qET = new z();
+    AppMethodBeat.o(320336);
   }
   
-  static z.a a(a parama)
+  public static final void setup()
   {
-    AppMethodBeat.i(59443);
-    for (;;)
-    {
-      int i;
-      synchronized (gVk)
-      {
-        Object[] arrayOfObject = gVk.toArray();
-        int j = arrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        ??? = ((b)arrayOfObject[i]).a(parama);
-        if (??? != null)
-        {
-          AppMethodBeat.o(59443);
-          return ???;
-        }
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(59443);
-    return null;
-  }
-  
-  public static void a(b paramb)
-  {
-    AppMethodBeat.i(59442);
-    synchronized (gVk)
-    {
-      gVk.add(paramb);
-      AppMethodBeat.o(59442);
-      return;
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract z.a a(a parama);
+    AppMethodBeat.i(320328);
+    new PkgDownloadCDNDownloaderQualityReporter.setup.1(f.hfK).alive();
+    new PkgDownloadCDNDownloaderQualityReporter.setup.2(f.hfK).alive();
+    AppMethodBeat.o(320328);
   }
 }
 

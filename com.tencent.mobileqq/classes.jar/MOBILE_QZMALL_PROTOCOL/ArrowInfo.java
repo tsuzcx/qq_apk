@@ -8,7 +8,7 @@ public final class ArrowInfo
   extends JceStruct
 {
   static LocationInfo cache_stLocationInfo = new LocationInfo();
-  public LocationInfo stLocationInfo;
+  public LocationInfo stLocationInfo = null;
   public String strUrl = "";
   
   public ArrowInfo() {}
@@ -27,17 +27,19 @@ public final class ArrowInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLocationInfo != null) {
-      paramJceOutputStream.write(this.stLocationInfo, 0);
+    Object localObject = this.stLocationInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 1);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.ArrowInfo
  * JD-Core Version:    0.7.0.1
  */

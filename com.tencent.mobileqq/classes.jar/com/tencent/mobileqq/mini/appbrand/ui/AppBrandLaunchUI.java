@@ -4,15 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Parcelable;
-import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bdhk;
-import bdib;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.launch.MiniAppStartUtils;
@@ -20,7 +13,6 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class AppBrandLaunchUI
   extends BaseActivity
@@ -49,92 +41,7 @@ public class AppBrandLaunchUI
   
   private void initData()
   {
-    QLog.i("miniapp-start", 1, "LoadingFragment doTask");
-    Object localObject3 = getIntent();
-    if (localObject3 == null)
-    {
-      finish();
-      return;
-    }
-    Object localObject1 = ((Intent)localObject3).getStringExtra("from");
-    Object localObject4;
-    int i;
-    int j;
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && ("SchemeJsPlugin".equals(localObject1)))
-    {
-      localObject1 = ((Intent)localObject3).getStringExtra("scheme");
-      localObject2 = (ResultReceiver)((Intent)localObject3).getParcelableExtra("result_receiver");
-      localObject3 = bdib.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
-      localObject4 = new Bundle();
-      if (localObject3 != null)
-      {
-        boolean bool = ((bdhk)localObject3).c();
-        if (bool)
-        {
-          i = 1;
-          j = i;
-          if (!bool) {
-            ((Bundle)localObject4).putString("errMsg", "can not find scheme : " + (String)localObject1);
-          }
-        }
-      }
-      for (j = i;; j = 0)
-      {
-        if (localObject2 != null) {
-          ((ResultReceiver)localObject2).send(j, (Bundle)localObject4);
-        }
-        finish();
-        return;
-        i = 0;
-        break;
-        ((Bundle)localObject4).putString("errMsg", "parse scheme error : " + (String)localObject1);
-      }
-    }
-    if (!BaseApplicationImpl.getApplication().getRuntime().isLogin())
-    {
-      localObject1 = new Intent(this, LoginActivity.class);
-      ((Intent)localObject1).putExtra("MINI_SHORTCUT_JUMP_KEY", (Parcelable)localObject3);
-      startActivity((Intent)localObject1);
-      finish();
-      return;
-    }
-    Object localObject2 = MiniAppStartUtils.parserStringToMiniAppInfo(((Intent)localObject3).getStringExtra("CONFIG_base64"));
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject4 = ((Intent)localObject3).getStringExtra("CONFIG_APPID");
-      String str1 = ((Intent)localObject3).getStringExtra("CONFIG_APPNAME");
-      String str2 = ((Intent)localObject3).getStringExtra("CONFIG_APPICON");
-      i = ((Intent)localObject3).getIntExtra("CONFIG_REPORTTYPE", 0);
-      j = ((Intent)localObject3).getIntExtra("CONFIG_ENGINETYPE", 0);
-      int k = ((Intent)localObject3).getIntExtra("MINI_CONFIG_SCENE", 10086);
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
-      {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str1))
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(str2))
-          {
-            localObject1 = new MiniAppInfo();
-            ((MiniAppInfo)localObject1).appId = ((String)localObject4);
-            ((MiniAppInfo)localObject1).name = str1;
-            ((MiniAppInfo)localObject1).iconUrl = str2;
-            ((MiniAppInfo)localObject1).setEngineType(j);
-            ((MiniAppInfo)localObject1).setReportType(i);
-            localObject1 = new MiniAppConfig((MiniAppInfo)localObject1);
-            ((MiniAppConfig)localObject1).launchParam = new LaunchParam();
-            ((MiniAppConfig)localObject1).launchParam.miniAppId = ((String)localObject4);
-            ((MiniAppConfig)localObject1).launchParam.scene = k;
-          }
-        }
-      }
-    }
-    if (localObject1 != null) {
-      doStartMiniApp((MiniAppConfig)localObject1);
-    }
-    finish();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private boolean isMiniAppInfoValid(MiniAppConfig paramMiniAppConfig)
@@ -142,12 +49,15 @@ public class AppBrandLaunchUI
     return (paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (!TextUtils.isEmpty(paramMiniAppConfig.config.downloadUrl));
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
-    switch (paramInt1)
-    {
-    default: 
+    paramIntent = new StringBuilder();
+    paramIntent.append("doOnActivityResult requestCode=");
+    paramIntent.append(paramInt1);
+    paramIntent.append(" resultCode=");
+    paramIntent.append(paramInt2);
+    QLog.i("miniapp-start_AppBrandLaunchUI", 1, paramIntent.toString());
+    if (paramInt1 != 100001) {
       return;
     }
     if (paramInt2 == -1)
@@ -163,7 +73,7 @@ public class AppBrandLaunchUI
     finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
@@ -171,45 +81,45 @@ public class AppBrandLaunchUI
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnDestroy");
     super.doOnDestroy();
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnResume");
     super.doOnNewIntent(paramIntent);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnPause");
     super.doOnPause();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnResume");
     super.doOnResume();
     initData();
   }
   
-  public void doOnStop()
+  protected void doOnStop()
   {
     QLog.i("miniapp-start_AppBrandLaunchUI", 1, "doOnStop");
     super.doOnStop();
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI
  * JD-Core Version:    0.7.0.1
  */

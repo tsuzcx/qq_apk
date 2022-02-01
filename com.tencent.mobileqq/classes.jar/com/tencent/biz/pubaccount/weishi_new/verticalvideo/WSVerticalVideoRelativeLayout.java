@@ -4,12 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import tmq;
 
 public class WSVerticalVideoRelativeLayout
   extends RelativeLayout
 {
-  private tmq a;
+  private WSVerticalVideoRelativeLayout.DispatchTouchEventListener a;
   
   public WSVerticalVideoRelativeLayout(Context paramContext)
   {
@@ -23,20 +22,21 @@ public class WSVerticalVideoRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.a(paramMotionEvent))) {
+    WSVerticalVideoRelativeLayout.DispatchTouchEventListener localDispatchTouchEventListener = this.a;
+    if ((localDispatchTouchEventListener != null) && (localDispatchTouchEventListener.a(paramMotionEvent))) {
       return true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setDispatchTouchEventListener(tmq paramtmq)
+  public void setDispatchTouchEventListener(WSVerticalVideoRelativeLayout.DispatchTouchEventListener paramDispatchTouchEventListener)
   {
-    this.a = paramtmq;
+    this.a = paramDispatchTouchEventListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

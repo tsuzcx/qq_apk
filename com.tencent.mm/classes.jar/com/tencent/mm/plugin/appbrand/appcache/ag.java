@@ -1,80 +1,93 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.plugin.appbrand.r.b;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
+import com.tencent.mm.pluginsdk.res.downloader.model.l;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class ag
-  extends dy
-  implements b
 {
-  static final c.a fkk;
-  static final String[] gUa;
+  private static final Set<b> qFD;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(59451);
-    gUa = new String[] { "appId", "appVersion" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).yrK = new Field[5];
-    ((c.a)localObject1).columns = new String[6];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).yrM.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "appVersion";
-    ((c.a)localObject1).yrM.put("appVersion", "INTEGER");
-    ((StringBuilder)localObject2).append(" appVersion INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "decryptKey";
-    ((c.a)localObject1).yrM.put("decryptKey", "TEXT");
-    ((StringBuilder)localObject2).append(" decryptKey TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "pkgMd5";
-    ((c.a)localObject1).yrM.put("pkgMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "reportId";
-    ((c.a)localObject1).yrM.put("reportId", "INTEGER");
-    ((StringBuilder)localObject2).append(" reportId INTEGER");
-    ((c.a)localObject1).columns[5] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    fkk = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = gUa;
-    int j = localObject2.length;
-    while (i < j)
+    AppMethodBeat.i(90557);
+    qFD = new HashSet();
+    AppMethodBeat.o(90557);
+  }
+  
+  public static void a(b paramb)
+  {
+    AppMethodBeat.i(90555);
+    synchronized (qFD)
     {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      qFD.add(paramb);
+      AppMethodBeat.o(90555);
+      return;
+    }
+  }
+  
+  static a b(a parama)
+  {
+    AppMethodBeat.i(90556);
+    for (;;)
+    {
+      int i;
+      synchronized (qFD)
+      {
+        Object[] arrayOfObject = qFD.toArray();
+        int j = arrayOfObject.length;
+        i = 0;
+        if (i >= j) {
+          break;
+        }
+        ??? = ((b)arrayOfObject[i]).b(parama);
+        if (??? != null)
+        {
+          AppMethodBeat.o(90556);
+          return ???;
+        }
+      }
       i += 1;
     }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = fkk;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(59451);
+    AppMethodBeat.o(90556);
+    return null;
   }
   
-  public final c.a getDBInfo()
+  public static abstract interface a
   {
-    return fkk;
+    public abstract void a(l paraml);
+    
+    public abstract void cfP();
+    
+    public abstract void cfQ();
+    
+    public abstract void cfR();
+    
+    public abstract void cfS();
+    
+    public abstract void cfT();
+    
+    public abstract void cfU();
+    
+    public abstract void cfV();
+    
+    public abstract void ig(boolean paramBoolean);
+    
+    public abstract void ih(boolean paramBoolean);
+    
+    public abstract void zo(int paramInt);
   }
   
-  public final String[] getKeys()
+  public static abstract interface b
   {
-    return gUa;
+    public abstract ag.a b(a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ag
  * JD-Core Version:    0.7.0.1
  */

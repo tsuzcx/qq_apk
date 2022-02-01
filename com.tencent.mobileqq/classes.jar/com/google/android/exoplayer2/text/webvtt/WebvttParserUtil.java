@@ -36,19 +36,19 @@ public final class WebvttParserUtil
   
   public static float parsePercentage(String paramString)
   {
-    if (!paramString.endsWith("%")) {
-      throw new NumberFormatException("Percentages must end with %");
+    if (paramString.endsWith("%")) {
+      return Float.parseFloat(paramString.substring(0, paramString.length() - 1)) / 100.0F;
     }
-    return Float.parseFloat(paramString.substring(0, paramString.length() - 1)) / 100.0F;
+    throw new NumberFormatException("Percentages must end with %");
   }
   
   public static long parseTimestampUs(String paramString)
   {
-    int i = 0;
-    long l1 = 0L;
     paramString = paramString.split("\\.", 2);
+    int i = 0;
     String[] arrayOfString = paramString[0].split(":");
     int j = arrayOfString.length;
+    long l1 = 0L;
     while (i < j)
     {
       l1 = l1 * 60L + Long.parseLong(arrayOfString[i]);
@@ -65,14 +65,18 @@ public final class WebvttParserUtil
   public static void validateWebvttHeaderLine(ParsableByteArray paramParsableByteArray)
   {
     paramParsableByteArray = paramParsableByteArray.readLine();
-    if ((paramParsableByteArray == null) || (!HEADER.matcher(paramParsableByteArray).matches())) {
-      throw new SubtitleDecoderException("Expected WEBVTT. Got " + paramParsableByteArray);
+    if ((paramParsableByteArray != null) && (HEADER.matcher(paramParsableByteArray).matches())) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected WEBVTT. Got ");
+    localStringBuilder.append(paramParsableByteArray);
+    throw new SubtitleDecoderException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.WebvttParserUtil
  * JD-Core Version:    0.7.0.1
  */

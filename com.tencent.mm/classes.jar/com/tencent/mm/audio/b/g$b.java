@@ -2,82 +2,113 @@ package com.tencent.mm.audio.b;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.m;
+import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import junit.framework.Assert;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g$b
 {
-  private static boolean ckl;
-  private static boolean ckm;
+  private static boolean hxi;
+  private static boolean hxj;
   
   static
   {
-    AppMethodBeat.i(55758);
-    ckl = false;
-    ckm = false;
-    int i = m.Lo();
-    ab.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
-    if ((!bo.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!bo.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
-    {
-      ab.i("MicroMsg.RecorderUtil", "don't contains armeabi");
-      k.a("wechatvoicesilk_v5", g.class.getClassLoader());
-      Assert.assertTrue("Can't remove libwechatvoicesilk.so yet.", false);
-      ckl = true;
-      ckm = false;
+    AppMethodBeat.i(130007);
+    hxi = false;
+    hxj = false;
+    init();
+    AppMethodBeat.o(130007);
+  }
+  
+  public static boolean aGY()
+  {
+    return hxi;
+  }
+  
+  public static boolean aGZ()
+  {
+    return hxj;
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(177008);
+    c localc = (c)h.ax(c.class);
+    if (localc != null) {
+      if (localc.a(c.a.znk, 1) != 1) {}
     }
-    for (;;)
+    for (boolean bool = true;; bool = true)
     {
-      ab.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(ckl), Boolean.valueOf(ckm) });
-      AppMethodBeat.o(55758);
-      return;
-      if ((i & 0x400) != 0)
+      Log.i("MicroMsg.RecorderUtil", "load wechatvoicesilk, ignore cpu: %s", new Object[] { Boolean.valueOf(bool) });
+      int i = m.aOK();
+      Log.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
+      if (bool) {}
+      for (;;)
       {
         try
         {
-          k.a("wechatvoicesilk_v7a", g.class.getClassLoader());
-          ckl = true;
-          ckm = true;
+          g.class.getClassLoader();
+          k.DA("wechatvoicesilk");
+          hxi = true;
+          hxj = true;
+          Log.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(hxi), Boolean.valueOf(hxj) });
+          AppMethodBeat.o(177008);
+          return;
+          bool = false;
         }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
         {
-          ab.e("MicroMsg.RecorderUtil", "load library failed!");
-          ckl = false;
-          ckm = false;
+          Log.e("MicroMsg.RecorderUtil", "load library failed!");
+          hxi = false;
+          hxj = false;
+          continue;
         }
-      }
-      else if ((i & 0x200) != 0)
-      {
-        k.a("wechatvoicesilk", g.class.getClassLoader());
-        Assert.assertTrue("Can't remove libwechatvoicesilk.so yet.", false);
-        ckl = true;
-        ckm = true;
-      }
-      else
-      {
-        k.a("wechatvoicesilk_v5", g.class.getClassLoader());
-        Assert.assertTrue("Can't remove libwechatvoicesilk.so yet.", false);
-        ckl = true;
-        ckm = false;
+        if ((!Util.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!Util.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
+        {
+          Log.i("MicroMsg.RecorderUtil", "don't contains armeabi");
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          hxi = false;
+          hxj = false;
+        }
+        else if ((i & 0x400) != 0)
+        {
+          try
+          {
+            g.class.getClassLoader();
+            k.DA("wechatvoicesilk");
+            hxi = true;
+            hxj = true;
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+          {
+            Log.e("MicroMsg.RecorderUtil", "load library failed!");
+            hxi = false;
+            hxj = false;
+          }
+        }
+        else if ((i & 0x200) != 0)
+        {
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv6!!!!");
+          hxi = false;
+          hxj = false;
+        }
+        else
+        {
+          Log.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          hxi = false;
+          hxj = false;
+        }
       }
     }
-  }
-  
-  public static boolean EI()
-  {
-    return ckl;
-  }
-  
-  public static boolean EJ()
-  {
-    return ckm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.audio.b.g.b
  * JD-Core Version:    0.7.0.1
  */

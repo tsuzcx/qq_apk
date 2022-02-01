@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class get_user_gashapon_req
   extends JceStruct
 {
-  public long lUin;
+  public long lUin = 0L;
   
   public get_user_gashapon_req() {}
   
@@ -28,7 +28,7 @@ public final class get_user_gashapon_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_GASHAPON.get_user_gashapon_req
  * JD-Core Version:    0.7.0.1
  */

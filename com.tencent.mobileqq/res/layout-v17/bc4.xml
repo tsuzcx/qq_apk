@@ -8,7 +8,7 @@
                 <RelativeLayout android:id="@id/ah2" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true">
                     <View android:background="@drawable/bq8" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
                 </RelativeLayout>
-                <android.support.v4.view.ViewPager android:id="@id/bux" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_centerInParent="true" />
+                <androidx.viewpager.widget.ViewPager android:id="@id/bux" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_centerInParent="true" />
                 <RelativeLayout android:id="@id/ah3" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
                     <View android:background="@drawable/bwp" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
                 </RelativeLayout>

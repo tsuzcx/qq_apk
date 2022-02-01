@@ -1,156 +1,111 @@
 package com.tencent.av.opengl.effects;
 
-import android.os.Build.VERSION;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import axpm;
-import azkv;
-import bdgk;
+import com.tencent.aelight.camera.api.ICameraCompatible;
+import com.tencent.aelight.camera.constants.CameraCompatibleConstants;
+import com.tencent.aelight.camera.download.api.IAEKitForQQ;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.av.utils.QAVConfigUtils;
+import com.tencent.av.utils.machine.MachineLevelHelper;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
 import com.tencent.qphone.base.util.QLog;
-import lnz;
-import lrm;
-import lrn;
-import lsa;
-import mvh;
+import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
+import org.light.DeviceSupportUtil;
 
 public class AEFilterSupport
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static lrm jdField_a_of_type_Lrm;
-  private static final lrn jdField_a_of_type_Lrn = new lrn(21, 4, 1.1F, 3.0F);
-  private static int jdField_b_of_type_Int = 0;
-  private static final lrn jdField_b_of_type_Lrn = new lrn(21, 4, 1.4F, 2.7F);
-  private static int jdField_c_of_type_Int;
-  private static final lrn jdField_c_of_type_Lrn = new lrn(27, 8, 1.8F, 5.0F);
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
+  private static MachineLevelHelper a;
+  private static long b;
+  private static Runnable c;
+  private static final Object d = new Object();
+  private static int e = 0;
   
   public static int a()
   {
-    if (jdField_c_of_type_Int != 0) {
-      return jdField_c_of_type_Int;
+    if (a == null) {
+      a = new MachineLevelHelper(QAVConfigUtils.b("machineMiddleLine"), QAVConfigUtils.b("machineHighLine"));
     }
-    String str1 = mvh.a("machineMiddleLine");
-    String str2 = mvh.a("machineHighLine");
-    jdField_b_of_type_Lrn.a(str1);
-    jdField_c_of_type_Lrn.a(str2);
-    lrm locallrm = a();
-    if (jdField_c_of_type_Lrn.a(locallrm)) {
-      jdField_c_of_type_Int = 7;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("getCurMachineLevel, level: %s, middle[%s], high[%s], cur[%s], config[%s, %s]", new Object[] { Integer.valueOf(jdField_c_of_type_Int), jdField_b_of_type_Lrn, jdField_c_of_type_Lrn, locallrm, str1, str2 }));
-      }
-      return jdField_c_of_type_Int;
-      if (jdField_b_of_type_Lrn.a(locallrm)) {
-        jdField_c_of_type_Int = 4;
-      } else {
-        jdField_c_of_type_Int = 3;
-      }
-    }
-  }
-  
-  @NonNull
-  public static lrm a()
-  {
-    if (jdField_a_of_type_Lrm == null)
-    {
-      lrm locallrm = new lrm();
-      locallrm.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-      locallrm.jdField_b_of_type_Float = ((float)bdgk.d() / 1.073742E+009F);
-      locallrm.jdField_b_of_type_Int = bdgk.b();
-      locallrm.jdField_a_of_type_Float = ((float)lnz.d() / 1048576.0F);
-      jdField_a_of_type_Lrm = locallrm;
-    }
-    return jdField_a_of_type_Lrm;
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = true;
-    if (!lsa.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, "isSupportPtuNew, not support AEKit.");
-      }
-      return false;
-    }
-    if (jdField_b_of_type_Int == 0)
-    {
-      String str = mvh.a("ptuNewRenderLimit");
-      jdField_a_of_type_Lrn.a(str);
-      lrm locallrm = a();
-      if (!jdField_a_of_type_Lrn.a(locallrm)) {
-        break label114;
-      }
-      jdField_b_of_type_Int = 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("AEFilterSupport", 2, String.format("isSupportPtuNew, flag: %s, line: %s, cur: %s, config[%s]", new Object[] { Integer.valueOf(jdField_b_of_type_Int), jdField_a_of_type_Lrn, locallrm, str }));
-      }
-    }
-    if (jdField_b_of_type_Int == 1) {}
-    for (;;)
-    {
-      return bool;
-      label114:
-      jdField_b_of_type_Int = -1;
-      break;
-      bool = false;
-    }
+    return a.a();
   }
   
   public static boolean a(int paramInt)
   {
-    boolean bool = true;
-    if (!lsa.a())
+    boolean bool2 = EffectsRenderController.c();
+    boolean bool1 = false;
+    if (!bool2)
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "isAEKitSoReady, not support AEKit.");
       }
-      bool = false;
+      return false;
     }
-    for (;;)
+    if (e != 1)
     {
-      return bool;
-      if (jdField_a_of_type_Int != 1)
+      if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEBaseSoReady())
       {
-        if (azkv.a())
-        {
-          jdField_a_of_type_Int = 1;
-          return true;
-        }
-        if (paramInt != 1) {
-          break label68;
-        }
-        jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        b();
+        e = 1;
+        return true;
       }
-      while (jdField_a_of_type_Int != 1)
+      if (paramInt == 1)
       {
-        return false;
-        label68:
-        if ((paramInt == 2) && (jdField_a_of_type_JavaLangRunnable == null) && (Math.abs(SystemClock.elapsedRealtime() - jdField_a_of_type_Long) > 30000L))
-        {
-          jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          jdField_a_of_type_JavaLangRunnable = new AEFilterSupport.CheckAEFilterTask();
-          ThreadManager.excute(jdField_a_of_type_JavaLangRunnable, 16, null, false);
-        }
+        b = SystemClock.elapsedRealtime();
+        e();
+      }
+      else if ((paramInt == 2) && (c == null) && (Math.abs(SystemClock.elapsedRealtime() - b) > 30000L))
+      {
+        b = SystemClock.elapsedRealtime();
+        c = new AEFilterSupport.CheckAEFilterTask();
+        ThreadManager.excute(c, 16, null, false);
       }
     }
+    if (e == 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
-  private static void b()
+  public static boolean b()
   {
-    if (!lsa.a())
+    boolean bool1 = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductManufacturer(CameraCompatibleConstants.x);
+    boolean bool2 = false;
+    if (bool1)
+    {
+      QLog.d("lgx", 1, "KEY_BLACK_NOT_SUPPORT_AVATAR2D_PHONE return false.");
+      return false;
+    }
+    int i;
+    if (((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init()) {
+      i = AEOfflineConfig.getPhonePerfLevel();
+    } else {
+      i = -1;
+    }
+    boolean bool3 = DeviceSupportUtil.isAbilityDeviceSupport("avatar2d");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isAbilityDeviceSupport=");
+    localStringBuilder.append(bool3);
+    localStringBuilder.append(" getPhonePerfLevel=");
+    localStringBuilder.append(i);
+    QLog.d("lgx", 1, localStringBuilder.toString());
+    bool1 = bool2;
+    if (bool3) {
+      if (i <= 1)
+      {
+        bool1 = bool2;
+        if (i != -1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  private static void e()
+  {
+    if (!EffectsRenderController.c())
     {
       if (QLog.isColorLevel()) {
         QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo, not support AEKit.");
@@ -161,40 +116,43 @@ public class AEFilterSupport
     if (QLog.isColorLevel()) {
       l1 = SystemClock.elapsedRealtime();
     }
-    boolean bool = azkv.a();
-    if (!bool) {
-      bool = axpm.a(false);
+    boolean bool2 = ((IAEResUtil)QRoute.api(IAEResUtil.class)).isAEBaseSoReady();
+    boolean bool1 = bool2;
+    if (!bool2) {
+      bool1 = CaptureUtil.b();
     }
-    for (;;)
-    {
-      for (;;)
+    int i;
+    if (bool1) {
+      i = 1;
+    } else {
+      i = -1;
+    }
+    if (e != 1) {
+      synchronized (d)
       {
-        int i;
-        if (bool)
-        {
-          i = 1;
-          if (jdField_a_of_type_Int == 1) {}
-        }
-        synchronized (jdField_a_of_type_JavaLangObject)
-        {
-          if (jdField_a_of_type_Int != 1) {
-            jdField_a_of_type_Int = i;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          long l2 = SystemClock.elapsedRealtime();
-          QLog.i("AEFilterSupport", 2, "checkAndLoadAEKitSo ret[" + bool + "], cost[" + (l2 - l1) + "], flag[" + jdField_a_of_type_Int + "]");
-          return;
-          i = -1;
+        if (e != 1) {
+          e = i;
         }
       }
+    }
+    if (QLog.isColorLevel())
+    {
+      long l2 = SystemClock.elapsedRealtime();
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("checkAndLoadAEKitSo ret[");
+      ((StringBuilder)???).append(bool1);
+      ((StringBuilder)???).append("], cost[");
+      ((StringBuilder)???).append(l2 - l1);
+      ((StringBuilder)???).append("], flag[");
+      ((StringBuilder)???).append(e);
+      ((StringBuilder)???).append("]");
+      QLog.i("AEFilterSupport", 2, ((StringBuilder)???).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.AEFilterSupport
  * JD-Core Version:    0.7.0.1
  */

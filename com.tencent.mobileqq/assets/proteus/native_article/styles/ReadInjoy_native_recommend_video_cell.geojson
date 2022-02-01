@@ -23,6 +23,20 @@
                     "type":"match_parent"
                 },
                 "attributes":{
+                    "setDTElementID:withParams:": [
+                        "card",
+                        {
+                            "parent_rowkey": "$dt_parent_rowkey",
+                            "parent_content_type": "5",
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_card",
+                            "area": "relevant_contentid",
+                            "actionid": "click_card",
+                            "click_type": "single"
+                        }
+                    ],
                     "setAttatchInfo:":"-1"
                 },
                 "subviews":[
@@ -62,7 +76,7 @@
                         "attributes":{
                             "setTextColorString:":"#262626",
                             "setText:":"-1",
-                            "setFontSizeString:":"16",
+                            "setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
                             "setNumberOfLinesString:":"2"
                         }
                     },
@@ -136,7 +150,7 @@
                                 },
                                 "attributes":{
                                     "setImageWithURLString:lineup:":[
-                                        "http://qqpublic.qpic.cn/qq_public/0/0-3030705149-B735C794A2F2BCD2E20AF146D98BFF73/0",
+                                        "https://pub.idqqimg.com/pc/misc/files/20200609/fc8e82577f894da2a35eeb26a4e79c73.png",
                                         "1"
                                     ]
                                 }
@@ -159,7 +173,7 @@
                                 "attributes":{
                                     "setText:":"$video_time_txt",
                                     "setTextColorString:":"#FFFFFF",
-                                    "setFontSizeString:":"9.6",
+                                    "setFontSizeString:":"9",
                                     "setNumberOfLinesString:":"1"
                                 }
                             }
@@ -183,7 +197,6 @@
                             "type":"wrap_content"
                         },
                         "attributes":{
-                            "setFrameString:":"-1",
                             "setText:":"-1",
                             "setTextColorString:":"#FF110D",
                             "setFontSizeString:":"11",

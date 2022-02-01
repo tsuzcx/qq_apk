@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="#90000000" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/boss_unipay_linear.tipframe">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout style="@style/boss_unipay_tips_header">
+                <LinearLayout android:layout_weight="100.0" style="@style/boss_unipay_tips_title">
+                    <TextView android:id="@id/boss_unipay_id_express_buyInfo" android:text="60钻石" android:layout_weight="1.0" style="@style/boss_unipay_tx" />
+                    <TextView android:id="@id/boss_unipay_id_express_cost" android:layout_marginRight="15.0dip" android:text="6.00" style="@style/boss_unipay_tx.price" />
+                </LinearLayout>
+                <ImageButton android:id="@id/boss_unipay_id_close" style="@style/boss_unipay_ic_tipsclose" />
+            </LinearLayout>
+            <View style="@style/boss_unipay_line" />
+        </LinearLayout>
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="5.0dip" android:paddingBottom="10.0dip" style="@style/boss_unipay_bar">
+                <TextView android:text="请输入以下字符，不区分大小写。" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin.middle" />
+            </LinearLayout>
+            <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:paddingRight="0.0dip" style="@style/boss_unipay_edit_bar_c">
+                    <EditText android:id="@id/boss_unipay_id_vercode" android:hint="验证码" android:layout_weight="100.0" style="@style/boss_unipay_edit.noborder" />
+                    <ImageButton android:id="@id/boss_unipay_id_apEdittextImg" android:visibility="gone" android:layout_marginRight="5.0dip" style="@style/boss_unipay_ic_wrong_s" />
+                    <View style="@style/boss_unipay_partline" />
+                    <ImageView android:id="@id/boss_unipay_id_getVerCode" android:layout_width="115.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="1.0dip" android:layout_marginBottom="1.0dip" android:src="@drawable/boss_unipay_ic_warn" style="@style/boss_unipay_btn.noborder" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+        <Button android:id="@id/boss_unipay_id_vercodeButton" android:layout_marginTop="20.0dip" android:text="验证" style="@style/boss_unipay_btn_main" />
+    </LinearLayout>
+</LinearLayout>

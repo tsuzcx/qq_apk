@@ -16,7 +16,7 @@ public class TbsPVConfig
   {
     try
     {
-      AppMethodBeat.i(64545);
+      AppMethodBeat.i(54664);
       if (b == null)
       {
         TbsPVConfig localTbsPVConfig = new TbsPVConfig();
@@ -24,7 +24,7 @@ public class TbsPVConfig
         localTbsPVConfig.init(paramContext);
       }
       paramContext = b;
-      AppMethodBeat.o(64545);
+      AppMethodBeat.o(54664);
       return paramContext;
     }
     finally {}
@@ -254,7 +254,7 @@ public class TbsPVConfig
     label43:
     try
     {
-      AppMethodBeat.i(139365);
+      AppMethodBeat.i(54670);
       try
       {
         bool = "true".equals((String)this.a.get("tbs_core_sandbox_mode_enable"));
@@ -262,14 +262,14 @@ public class TbsPVConfig
           break label43;
         }
         bool = true;
-        AppMethodBeat.o(139365);
+        AppMethodBeat.o(54670);
       }
       catch (Exception localException)
       {
         for (;;)
         {
           boolean bool = false;
-          AppMethodBeat.o(139365);
+          AppMethodBeat.o(54670);
         }
       }
       return bool;
@@ -282,7 +282,7 @@ public class TbsPVConfig
     label52:
     try
     {
-      AppMethodBeat.i(64551);
+      AppMethodBeat.i(54671);
       try
       {
         String str = (String)this.a.get("disable_host_backup");
@@ -294,14 +294,46 @@ public class TbsPVConfig
           break label52;
         }
         bool = true;
-        AppMethodBeat.o(64551);
+        AppMethodBeat.o(54671);
       }
       catch (Exception localException)
       {
         for (;;)
         {
           boolean bool = false;
-          AppMethodBeat.o(64551);
+          AppMethodBeat.o(54671);
+        }
+      }
+      return bool;
+    }
+    finally {}
+  }
+  
+  public boolean isDisableTbsOneGrey()
+  {
+    label52:
+    try
+    {
+      AppMethodBeat.i(54672);
+      try
+      {
+        String str = (String)this.a.get("disable_tbs_one_grey");
+        if (TextUtils.isEmpty(str)) {
+          break label52;
+        }
+        bool = str.equals("true");
+        if (!bool) {
+          break label52;
+        }
+        bool = true;
+        AppMethodBeat.o(54672);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          boolean bool = false;
+          AppMethodBeat.o(54672);
         }
       }
       return bool;
@@ -314,7 +346,7 @@ public class TbsPVConfig
     label52:
     try
     {
-      AppMethodBeat.i(64550);
+      AppMethodBeat.i(54669);
       try
       {
         String str = (String)this.a.get("enable_no_share_gray");
@@ -326,14 +358,14 @@ public class TbsPVConfig
           break label52;
         }
         bool = true;
-        AppMethodBeat.o(64550);
+        AppMethodBeat.o(54669);
       }
       catch (Exception localException)
       {
         for (;;)
         {
           boolean bool = false;
-          AppMethodBeat.o(64550);
+          AppMethodBeat.o(54669);
         }
       }
       return bool;
@@ -345,9 +377,9 @@ public class TbsPVConfig
   {
     try
     {
-      AppMethodBeat.i(64552);
+      AppMethodBeat.i(54673);
       this.a.put(paramString1, paramString2);
-      AppMethodBeat.o(64552);
+      AppMethodBeat.o(54673);
       return;
     }
     finally

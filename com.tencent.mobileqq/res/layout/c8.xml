@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.widget.ScrollView android:scrollbarStyle="insideOverlay" android:id="@id/j8l" android:scrollbars="vertical" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="135.0dip">
         <RelativeLayout android:id="@id/lyv" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mobileqq.widget.ParticipleView android:id="@id/m0t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <com.tencent.mobileqq.widget.participle.ParticipleView android:id="@id/m0t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" />
             <com.tencent.mobileqq.widget.ContainerView android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </RelativeLayout>
     </com.tencent.widget.ScrollView>
@@ -24,7 +24,7 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/lif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:id="@id/llh" android:background="@drawable/hh4" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="14.0sp" android:textColor="#ff00cafc" android:id="@id/mr7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/vt0" android:layout_below="@id/llh" android:layout_centerHorizontal="true" android:contentDescription="@string/vt0" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff00cafc" android:id="@id/qbx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/vt0" android:layout_below="@id/llh" android:layout_centerHorizontal="true" android:contentDescription="@string/vt0" />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/acj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="159.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentBottom="true">
@@ -53,5 +53,5 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-    <com.tencent.mobileqq.widget.ParticipleBottomMenuView android:id="@id/lyt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" app:participle_bottom_view_style="l2w" />
+    <com.tencent.mobileqq.widget.participle.ParticipleBottomMenuView android:id="@id/lyt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" app:participle_bottom_view_style="l2w" />
 </RelativeLayout>

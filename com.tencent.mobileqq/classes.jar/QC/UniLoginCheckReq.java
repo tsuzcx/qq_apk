@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UniLoginCheckReq
   extends JceStruct
@@ -11,10 +12,10 @@ public final class UniLoginCheckReq
   static ArrayList<Hamlet> cache_stHamletList;
   static GetUsrKeyWordInfoReq cache_stKeyWord = new GetUsrKeyWordInfoReq();
   static LoginInfo cache_stLogin = new LoginInfo();
-  public ArrayList<Hamlet> stHamletList;
-  public GetUsrKeyWordInfoReq stKeyWord;
-  public LoginInfo stLogin;
-  public long uAppidMask;
+  public ArrayList<Hamlet> stHamletList = null;
+  public GetUsrKeyWordInfoReq stKeyWord = null;
+  public LoginInfo stLogin = null;
+  public long uAppidMask = 0L;
   
   static
   {
@@ -43,21 +44,24 @@ public final class UniLoginCheckReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    Object localObject = this.stLogin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stHamletList != null) {
-      paramJceOutputStream.write(this.stHamletList, 1);
+    localObject = this.stHamletList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.uAppidMask, 2);
-    if (this.stKeyWord != null) {
-      paramJceOutputStream.write(this.stKeyWord, 3);
+    localObject = this.stKeyWord;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniLoginCheckReq
  * JD-Core Version:    0.7.0.1
  */

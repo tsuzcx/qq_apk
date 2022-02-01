@@ -6,8 +6,8 @@ import com.tencent.mm.wear.app.emoji.gif.MMGIFImageView;
 public final class d
   extends b
 {
-  public TextView afL;
-  public MMGIFImageView ahg;
+  public TextView ajn;
+  public MMGIFImageView akI;
   
   public d(c paramc)
   {

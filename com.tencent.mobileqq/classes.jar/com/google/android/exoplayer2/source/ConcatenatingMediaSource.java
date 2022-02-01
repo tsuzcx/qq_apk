@@ -24,6 +24,7 @@ public final class ConcatenatingMediaSource
   public ConcatenatingMediaSource(boolean paramBoolean, ShuffleOrder paramShuffleOrder, MediaSource... paramVarArgs)
   {
     int j = paramVarArgs.length;
+    boolean bool = false;
     int i = 0;
     while (i < j)
     {
@@ -57,18 +58,15 @@ public final class ConcatenatingMediaSource
     boolean[] arrayOfBoolean = new boolean[paramArrayOfMediaSource.length];
     IdentityHashMap localIdentityHashMap = new IdentityHashMap(paramArrayOfMediaSource.length);
     int i = 0;
-    if (i < paramArrayOfMediaSource.length)
+    while (i < paramArrayOfMediaSource.length)
     {
       MediaSource localMediaSource = paramArrayOfMediaSource[i];
       if (!localIdentityHashMap.containsKey(localMediaSource)) {
         localIdentityHashMap.put(localMediaSource, null);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         arrayOfBoolean[i] = true;
       }
+      i += 1;
     }
     return arrayOfBoolean;
   }
@@ -86,15 +84,21 @@ public final class ConcatenatingMediaSource
   {
     this.timelines[paramInteger.intValue()] = paramTimeline;
     this.manifests[paramInteger.intValue()] = paramObject;
-    int i = paramInteger.intValue() + 1;
-    while (i < this.mediaSources.length)
+    int i = paramInteger.intValue();
+    for (;;)
     {
-      if (this.mediaSources[i] == paramMediaSource)
-      {
-        this.timelines[i] = paramTimeline;
-        this.manifests[i] = paramObject;
+      j = i + 1;
+      paramInteger = this.mediaSources;
+      if (j >= paramInteger.length) {
+        break;
       }
-      i += 1;
+      i = j;
+      if (paramInteger[j] == paramMediaSource)
+      {
+        this.timelines[j] = paramTimeline;
+        this.manifests[j] = paramObject;
+        i = j;
+      }
     }
     paramInteger = this.timelines;
     int j = paramInteger.length;
@@ -115,20 +119,18 @@ public final class ConcatenatingMediaSource
     super.prepareSource(paramExoPlayer, paramBoolean, paramListener);
     this.listener = paramListener;
     paramExoPlayer = buildDuplicateFlags(this.mediaSources);
-    if (this.mediaSources.length == 0) {
-      paramListener.onSourceInfoRefreshed(this, Timeline.EMPTY, null);
-    }
-    for (;;)
+    if (this.mediaSources.length == 0)
     {
+      paramListener.onSourceInfoRefreshed(this, Timeline.EMPTY, null);
       return;
-      int i = 0;
-      while (i < this.mediaSources.length)
-      {
-        if (paramExoPlayer[i] == 0) {
-          prepareChildSource(Integer.valueOf(i), this.mediaSources[i]);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < this.mediaSources.length)
+    {
+      if (paramExoPlayer[i] == 0) {
+        prepareChildSource(Integer.valueOf(i), this.mediaSources[i]);
       }
+      i += 1;
     }
   }
   
@@ -148,7 +150,7 @@ public final class ConcatenatingMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ConcatenatingMediaSource
  * JD-Core Version:    0.7.0.1
  */

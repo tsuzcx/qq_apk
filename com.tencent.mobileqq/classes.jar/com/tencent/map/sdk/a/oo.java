@@ -26,17 +26,25 @@ public final class oo
       if ((localObject2 == null) || (!((String)localObject2).contains("../"))) {
         if (((ZipEntry)localObject3).isDirectory())
         {
-          new File(paramString + File.separator + ((ZipEntry)localObject3).getName()).mkdir();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramString);
+          ((StringBuilder)localObject2).append(File.separator);
+          ((StringBuilder)localObject2).append(((ZipEntry)localObject3).getName());
+          new File(((StringBuilder)localObject2).toString()).mkdir();
         }
         else
         {
           localObject2 = paramFile.getInputStream((ZipEntry)localObject3);
-          localObject3 = new File(paramString + File.separator + ((ZipEntry)localObject3).getName());
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramString);
+          ((StringBuilder)localObject4).append(File.separator);
+          ((StringBuilder)localObject4).append(((ZipEntry)localObject3).getName());
+          localObject3 = new File(((StringBuilder)localObject4).toString());
           if (!((File)localObject3).exists())
           {
-            File localFile = ((File)localObject3).getParentFile();
-            if (!localFile.exists()) {
-              localFile.mkdirs();
+            localObject4 = ((File)localObject3).getParentFile();
+            if (!((File)localObject4).exists()) {
+              ((File)localObject4).mkdirs();
             }
             ((File)localObject3).createNewFile();
           }
@@ -101,36 +109,37 @@ public final class oo
     //   64: invokevirtual 132	java/io/ByteArrayOutputStream:close	()V
     //   67: aload_2
     //   68: areturn
-    //   69: astore_0
-    //   70: aload_2
-    //   71: invokevirtual 127	java/util/zip/InflaterInputStream:close	()V
-    //   74: aconst_null
-    //   75: areturn
-    //   76: astore_0
-    //   77: goto -3 -> 74
-    //   80: astore_2
-    //   81: goto -23 -> 58
-    //   84: astore_0
-    //   85: aload_2
-    //   86: areturn
+    //   69: aload_2
+    //   70: invokevirtual 127	java/util/zip/InflaterInputStream:close	()V
+    //   73: aconst_null
+    //   74: areturn
+    //   75: astore_0
+    //   76: goto -7 -> 69
+    //   79: astore_2
+    //   80: goto -22 -> 58
+    //   83: astore_0
+    //   84: aload_2
+    //   85: areturn
+    //   86: astore_0
+    //   87: goto -14 -> 73
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	87	0	paramArrayOfByte	byte[]
-    //   0	87	1	paramInt	int
-    //   18	53	2	localObject	Object
-    //   80	6	2	localIOException	java.io.IOException
+    //   0	90	0	paramArrayOfByte	byte[]
+    //   0	90	1	paramInt	int
+    //   18	52	2	localObject	Object
+    //   79	6	2	localIOException	java.io.IOException
     //   32	13	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   33	39	69	java/io/IOException
-    //   70	74	76	java/io/IOException
-    //   54	58	80	java/io/IOException
-    //   63	67	84	java/io/IOException
+    //   33	39	75	java/io/IOException
+    //   54	58	79	java/io/IOException
+    //   63	67	83	java/io/IOException
+    //   69	73	86	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.oo
  * JD-Core Version:    0.7.0.1
  */

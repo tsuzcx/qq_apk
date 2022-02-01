@@ -6,7 +6,20 @@ public class ChatHistorySearchData
 {
   public List<MessageRecord> mSearchData1;
   public List<Integer> mSearchData2;
-  public int offset;
+  public int offset = 0;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChatHistorySearchData{mSearchData1=");
+    localStringBuilder.append(this.mSearchData1);
+    localStringBuilder.append(", mSearchData2=");
+    localStringBuilder.append(this.mSearchData2);
+    localStringBuilder.append(", offset=");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
 }
 
 

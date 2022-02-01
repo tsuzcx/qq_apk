@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qav_title_margin_top">32.0dip</dimen>
+    <dimen name="qav_title_bar_height">50.0dip</dimen>
+    <dimen name="qav_gaudio_grid_net_tip_margin_top_two_line">310.0dip</dimen>
+</resources>

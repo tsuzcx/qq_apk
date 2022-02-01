@@ -17,28 +17,33 @@ public class TextureManager
   {
     if (paramTAVBaseFilter != null)
     {
-      if ((!(paramTAVBaseFilter instanceof TAVFilterGroup)) || (!((TAVFilterGroup)paramTAVBaseFilter).hasRender())) {
-        break label91;
-      }
-      if (this.customVideoFilterGroup == null) {}
-    }
-    try
-    {
-      if (this.releaseFilterGroup != null)
+      if ((paramTAVBaseFilter instanceof TAVFilterGroup))
       {
-        this.releaseFilterGroup.release();
-        this.releaseFilterGroup = null;
+        TAVFilterGroup localTAVFilterGroup = (TAVFilterGroup)paramTAVBaseFilter;
+        if (localTAVFilterGroup.hasRender())
+        {
+          if (this.customVideoFilterGroup != null) {
+            try
+            {
+              if (this.releaseFilterGroup != null)
+              {
+                this.releaseFilterGroup.release();
+                this.releaseFilterGroup = null;
+              }
+              this.releaseFilterGroup = this.customVideoFilterGroup;
+            }
+            finally {}
+          }
+          this.customVideoFilterGroup = localTAVFilterGroup;
+          if (this.lookupFilter == null) {
+            return;
+          }
+          this.customVideoFilterGroup.add(this.lookupFilter);
+          return;
+        }
       }
-      this.releaseFilterGroup = this.customVideoFilterGroup;
-      this.customVideoFilterGroup = ((TAVFilterGroup)paramTAVBaseFilter);
-      if (this.lookupFilter != null) {
-        this.customVideoFilterGroup.add(this.lookupFilter);
-      }
-      return;
+      this.defaultVideoFilterGroup.add(paramTAVBaseFilter);
     }
-    finally {}
-    label91:
-    this.defaultVideoFilterGroup.add(paramTAVBaseFilter);
   }
   
   public VideoFrameListener getVideoFrameListener()
@@ -52,14 +57,16 @@ public class TextureManager
     if (this.lookupFilter != null) {
       this.lookupFilter.release();
     }
-    if (this.defaultVideoFilterGroup != null) {
-      this.defaultVideoFilterGroup.release();
+    Object localObject = this.defaultVideoFilterGroup;
+    if (localObject != null) {
+      ((TAVFilterGroup)localObject).release();
     }
     if (this.customVideoFilterGroup != null) {
       this.customVideoFilterGroup.release();
     }
-    if (this.stickerRenderFilter != null) {
-      this.stickerRenderFilter.release();
+    localObject = this.stickerRenderFilter;
+    if (localObject != null) {
+      ((TAVStickerRenderFilter)localObject).release();
     }
   }
   
@@ -85,7 +92,7 @@ public class TextureManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.TextureManager
  * JD-Core Version:    0.7.0.1
  */

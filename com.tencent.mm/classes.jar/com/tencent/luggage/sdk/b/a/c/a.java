@@ -1,168 +1,131 @@
 package com.tencent.luggage.sdk.b.a.c;
 
-import android.text.TextUtils;
-import android.webkit.JavascriptInterface;
-import com.tencent.mm.plugin.appbrand.ag;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
-import com.tencent.mm.plugin.appbrand.config.h;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.i.g;
-import com.tencent.mm.plugin.appbrand.i.q;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.t.o;
-import com.tencent.mm.plugin.appbrand.t.o.a;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Locale;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Configuration;
+import com.tencent.luggage.sdk.b.a.a.a;
+import com.tencent.luggage.sdk.b.a.c;
+import com.tencent.luggage.sdk.e.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.cb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 
-public abstract class a<SERVICE extends r>
-  implements com.tencent.luggage.sdk.b.a.d
+public abstract class a<PAGE extends c>
+  extends a.a<PAGE>
+  implements af
 {
-  public final SERVICE bEw;
-  private final q bEx;
-  private final g bEy;
-  
-  protected a(SERVICE paramSERVICE, q paramq)
+  public a(PAGE paramPAGE)
   {
-    this.bEw = paramSERVICE;
-    this.bEx = paramq;
-    this.bEy = paramq.aGC();
+    super(paramPAGE);
   }
   
-  protected abstract int a(SERVICE paramSERVICE);
+  public void a(Map<String, Object> paramMap, cb paramcb) {}
   
-  protected String a(SERVICE paramSERVICE, String paramString)
+  public final <T extends com.tencent.luggage.a.b> T ab(Class<T> paramClass)
   {
-    paramSERVICE = ax.c(paramSERVICE.getRuntime(), paramString);
-    if (TextUtils.isEmpty(paramSERVICE)) {
-      throw new a.a(paramString);
+    return ((c)aqX()).T(paramClass);
+  }
+  
+  public d aqZ()
+  {
+    c localc = (c)aqX();
+    if (localc == null) {
+      return null;
     }
-    return paramSERVICE;
+    return localc.aqZ();
   }
   
-  protected void a(g paramg, String paramString1, String paramString2)
+  public void aqe()
   {
-    long l1 = System.currentTimeMillis();
-    PBool localPBool = new PBool();
-    o.a(this.bEw.getRuntime(), paramg, paramString1, paramString1.replace('/', '_') + "_" + this.bEw.getAppId(), this.bEw.getRuntime().wY().hiX.cqq, paramString2, o.a.iXQ, new a.2(this, localPBool));
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s), contextId(%d), appScriptPath(%s), succeed(%b)", new Object[] { this.bEw.getAppId(), Integer.valueOf(paramg.aGA()), paramString1, Boolean.valueOf(localPBool.value) });
-    long l2 = System.currentTimeMillis();
-    a(paramString1, paramString2, localPBool.value, l1, l2);
-  }
-  
-  @JavascriptInterface
-  public final int alloc()
-  {
-    g localg = vk();
-    if (localg == null)
+    Iterator localIterator = aqY().iterator();
+    while (localIterator.hasNext())
     {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "alloc with appID(%s), allocJsContext failed", new Object[] { this.bEw.getAppId() });
-      return -2;
-    }
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "hy: created context id is %d", new Object[] { Integer.valueOf(localg.aGA()) });
-    localg.setJsExceptionHandler(new a.1(this, localg));
-    this.bEy.a(localg, "WeixinJSContext");
-    if (this.bEw.getRuntime() == null) {}
-    for (Object localObject = this.bEw.auh();; localObject = this.bEw.wE())
-    {
-      localg.evaluateJavascript(String.format(Locale.US, "var __wxConfig = %s;", new Object[] { ((JSONObject)localObject).toString() }), null);
-      try
-      {
-        localObject = b(this.bEw);
-        String str = vm();
-        long l1 = System.currentTimeMillis();
-        PBool localPBool = new PBool();
-        o.a(this.bEw, localg, str, str, "v" + a(this.bEw), (String)localObject, o.a.iXP, new a.3(this, localPBool));
-        ag.a(this.bEw.getRuntime(), localg);
-        long l2 = System.currentTimeMillis();
-        a(str, (String)localObject, localPBool.value, l1, l2);
-        return localg.aGA();
-      }
-      catch (a.a locala)
-      {
-        com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "inject sdk %s", new Object[] { locala.getMessage() });
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onForeground();
       }
     }
-    return 0;
   }
   
-  protected abstract String b(SERVICE paramSERVICE);
-  
-  @JavascriptInterface
-  public final int create(String paramString)
+  public void aqf()
   {
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s) appScriptPath(%s)", new Object[] { this.bEw.getAppId(), paramString });
-    if (bo.isNullOrNil(paramString))
+    Iterator localIterator = aqY().iterator();
+    while (localIterator.hasNext())
     {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s), nil appScriptPath", new Object[] { this.bEw.getAppId() });
-      return -1;
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onBackground();
+      }
     }
-    int i = alloc();
-    if (i <= 0) {
-      return i;
-    }
-    g localg = this.bEx.ow(i);
-    i = evaluateScriptFile(i, paramString);
-    if (i != 1)
-    {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s), appScriptPath(%s), eval ret = %d", new Object[] { this.bEw.getAppId(), paramString, Integer.valueOf(i) });
-      return -1;
-    }
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s) appScriptPath(%s), success with contextId(%d)", new Object[] { this.bEw.getAppId(), paramString, Integer.valueOf(localg.aGA()) });
-    return localg.aGA();
   }
   
-  @JavascriptInterface
-  public final void destroy(int paramInt)
+  public void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
   {
-    this.bEx.ox(paramInt);
+    Iterator localIterator = aqY().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).a(paramb);
+      }
+    }
   }
   
-  @JavascriptInterface
-  public final int evaluateScriptFile(int paramInt, String paramString)
+  public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    com.tencent.luggage.g.d.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d) appScriptPath(%s)", new Object[] { this.bEw.getAppId(), Integer.valueOf(paramInt), paramString });
-    g localg = this.bEx.ow(paramInt);
-    if (localg == null)
+    Iterator localIterator = aqY().iterator();
+    while (localIterator.hasNext())
     {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d), appScriptPath(%s), get null context", new Object[] { this.bEw.getAppId(), Integer.valueOf(paramInt), paramString });
-      return -1;
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onConfigurationChanged(paramConfiguration);
+      }
     }
-    if (localg.aGz())
-    {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) scriptPath(%s), but want to inject main-context", new Object[] { this.bEw.getAppId(), paramString });
-      return -1;
-    }
-    try
-    {
-      String str = a(this.bEw, paramString);
-      a(localg, paramString, str);
-      return 1;
-    }
-    catch (a.a locala)
-    {
-      com.tencent.luggage.g.d.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d), appScriptPath(%s), %s", new Object[] { this.bEw.getAppId(), Integer.valueOf(paramInt), paramString, locala.getMessage() });
-    }
-    return 0;
   }
   
-  protected g vk()
+  public void dispatchDestroy()
   {
-    return this.bEx.aGC();
+    Iterator localIterator = aqY().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onDestroy();
+      }
+    }
+    super.cleanup();
   }
   
-  protected void vl()
+  public void dispatchStart() {}
+  
+  public final String getAppId()
   {
-    this.bEx.aGB().a(this.bEy, "WeixinJSContext");
+    f localf = aqX();
+    if (localf == null)
+    {
+      Log.printErrStackTrace("Luggage.AbstractPageViewRenderer", new Throwable(), "getAppId", new Object[0]);
+      return null;
+    }
+    return localf.getAppId();
   }
   
-  protected abstract String vm();
+  public final Context getContext()
+  {
+    Context localContext2 = ((c)aqX()).getContext();
+    Context localContext1 = localContext2;
+    if (localContext2 == null) {
+      localContext1 = MMApplicationContext.getContext();
+    }
+    return localContext1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

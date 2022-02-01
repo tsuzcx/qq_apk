@@ -2,7 +2,7 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXDynamicVideoMiniProgramObject
   extends WXMiniProgramObject
@@ -13,22 +13,27 @@ public class WXDynamicVideoMiniProgramObject
   
   public boolean checkArgs()
   {
-    if (d.b(this.webpageUrl))
-    {
-      Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "webPageUrl is null");
-      return false;
+    String str;
+    if (b.b(this.webpageUrl)) {
+      str = "webPageUrl is null";
     }
-    if (d.b(this.userName))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "userName is null");
+      Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", str);
       return false;
+      if (b.b(this.userName))
+      {
+        str = "userName is null";
+      }
+      else
+      {
+        int i = this.miniprogramType;
+        if ((i >= 0) && (i <= 2)) {
+          return true;
+        }
+        str = "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW";
+      }
     }
-    if ((this.miniprogramType < 0) || (this.miniprogramType > 2))
-    {
-      Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
-      return false;
-    }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -62,7 +67,7 @@ public class WXDynamicVideoMiniProgramObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXDynamicVideoMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

@@ -29,11 +29,9 @@ final class FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
     if ((!this.failed) && (this.fileList == null))
     {
       localObject = FileTreeWalk.access$getOnEnter$p(this.this$0.this$0);
-      if ((localObject == null) || (((Boolean)((Function1)localObject).invoke(getRoot())).booleanValue())) {}
-    }
-    do
-    {
-      return null;
+      if ((localObject != null) && (!((Boolean)((Function1)localObject).invoke(getRoot())).booleanValue())) {
+        return null;
+      }
       this.fileList = getRoot().listFiles();
       if (this.fileList == null)
       {
@@ -43,38 +41,40 @@ final class FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
         }
         this.failed = true;
       }
-      if (this.fileList != null)
+    }
+    Object localObject = this.fileList;
+    if (localObject != null)
+    {
+      int i = this.fileIndex;
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      if (i < localObject.length)
       {
-        int i = this.fileIndex;
         localObject = this.fileList;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
-        if (i < localObject.length)
-        {
-          localObject = this.fileList;
-          if (localObject == null) {
-            Intrinsics.throwNpe();
-          }
-          i = this.fileIndex;
-          this.fileIndex = (i + 1);
-          return localObject[i];
-        }
+        i = this.fileIndex;
+        this.fileIndex = (i + 1);
+        return localObject[i];
       }
-      if (!this.rootVisited)
-      {
-        this.rootVisited = true;
-        return getRoot();
-      }
-      localObject = FileTreeWalk.access$getOnLeave$p(this.this$0.this$0);
-    } while (localObject == null);
-    Object localObject = (Unit)((Function1)localObject).invoke(getRoot());
+    }
+    if (!this.rootVisited)
+    {
+      this.rootVisited = true;
+      return getRoot();
+    }
+    localObject = FileTreeWalk.access$getOnLeave$p(this.this$0.this$0);
+    if (localObject != null) {
+      localObject = (Unit)((Function1)localObject).invoke(getRoot());
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.io.FileTreeWalk.FileTreeWalkIterator.BottomUpDirectoryState
  * JD-Core Version:    0.7.0.1
  */

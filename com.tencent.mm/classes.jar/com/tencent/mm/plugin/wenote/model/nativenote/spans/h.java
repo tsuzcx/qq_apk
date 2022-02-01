@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends o<Integer, IndentationSpan>
 {
-  private p vAV;
+  private p XBM;
   
   public h()
   {
-    AppMethodBeat.i(26940);
-    this.vAV = new p();
-    AppMethodBeat.o(26940);
+    AppMethodBeat.i(30634);
+    this.XBM = new p();
+    AppMethodBeat.o(30634);
   }
   
-  public final int djz()
+  public final int dxp()
   {
     return 0;
   }

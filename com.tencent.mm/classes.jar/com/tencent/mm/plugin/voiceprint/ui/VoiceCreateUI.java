@@ -1,84 +1,91 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.ach;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.plugin.voiceprint.model.f;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.voiceprint.model.l;
 import com.tencent.mm.plugin.voiceprint.model.l.a;
 import com.tencent.mm.plugin.voiceprint.model.o;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class VoiceCreateUI
   extends BaseVoicePrintUI
   implements l.a
 {
-  private View jYD;
-  private View kTD;
-  private int trt;
-  private l tsg;
-  private o tsh;
-  private NoiseDetectMaskView tsi;
-  private Button tsj;
-  private int tsk;
-  private c tsl;
+  private int Utp;
+  private l Uue;
+  private o Uuf;
+  private NoiseDetectMaskView Uug;
+  private Button Uuh;
+  private int Uui;
+  private IListener Uuj;
+  private View vNn;
+  private View xix;
   
   public VoiceCreateUI()
   {
-    AppMethodBeat.i(26168);
-    this.tsh = null;
-    this.kTD = null;
-    this.tsj = null;
-    this.trt = 1;
-    this.tsk = 0;
-    this.tsl = new VoiceCreateUI.1(this);
-    AppMethodBeat.o(26168);
+    AppMethodBeat.i(29849);
+    this.Uuf = null;
+    this.xix = null;
+    this.Uuh = null;
+    this.Utp = 1;
+    this.Uui = 0;
+    this.Uuj = new IListener(com.tencent.mm.app.f.hfK) {};
+    AppMethodBeat.o(29849);
   }
   
-  private void cLt()
+  private void hVa()
   {
-    AppMethodBeat.i(26172);
-    ab.d("MicroMsg.VoiceCreateUI", "start noise detect");
-    this.kTD.setVisibility(4);
-    this.jYD.setVisibility(4);
-    this.trM.setVisibility(4);
-    this.tsi.setVisibility(0);
-    this.tsh.cLi();
-    AppMethodBeat.o(26172);
+    AppMethodBeat.i(29853);
+    Log.d("MicroMsg.VoiceCreateUI", "start noise detect");
+    this.xix.setVisibility(4);
+    this.vNn.setVisibility(4);
+    this.UtJ.setVisibility(4);
+    this.Uug.setVisibility(0);
+    this.Uuf.aAq();
+    AppMethodBeat.o(29853);
   }
   
-  private void cLu()
+  private void hVb()
   {
-    AppMethodBeat.i(26177);
+    AppMethodBeat.i(29859);
     Intent localIntent = new Intent();
     localIntent.putExtra("KIsCreateSuccess", false);
     setResult(-1, localIntent);
-    AppMethodBeat.o(26177);
+    AppMethodBeat.o(29859);
   }
   
   private void start()
   {
-    AppMethodBeat.i(26171);
-    ab.d("MicroMsg.VoiceCreateUI", "start create");
-    this.tsh.reset();
-    this.tsi.reset();
-    cLt();
-    AppMethodBeat.o(26171);
+    AppMethodBeat.i(29852);
+    Log.d("MicroMsg.VoiceCreateUI", "start create");
+    this.Uuf.reset();
+    this.Uug.reset();
+    hVa();
+    AppMethodBeat.o(29852);
   }
   
-  public final void F(boolean paramBoolean, int paramInt)
+  public final void an(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(26175);
-    ab.d("MicroMsg.VoiceCreateUI", "onCreate, result:%b, step:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(29856);
+    Log.d("MicroMsg.VoiceCreateUI", "onCreate, result:%b, step:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    Object localObject;
     if (paramBoolean)
     {
       switch (paramInt)
@@ -86,24 +93,43 @@ public class VoiceCreateUI
       }
       for (;;)
       {
-        AppMethodBeat.o(26175);
+        AppMethodBeat.o(29856);
         return;
-        ab.d("MicroMsg.VoiceCreateUI", "finish create step 1");
-        this.trL.setEnabled(false);
-        this.trt = 2;
-        cLl();
-        a.a(this.trO, new VoiceCreateUI.7(this));
-        AppMethodBeat.o(26175);
+        Log.d("MicroMsg.VoiceCreateUI", "finish create step 1");
+        this.UtI.setEnabled(false);
+        this.Utp = 2;
+        hUS();
+        a.a(this.UtL, new a.a()
+        {
+          public final void hUV()
+          {
+            AppMethodBeat.i(29848);
+            VoiceCreateUI.this.UtL.reset();
+            VoiceCreateUI.this.UtL.hVe();
+            VoiceCreateUI.this.UtL.hVf();
+            VoiceCreateUI.this.UtI.setVisibility(4);
+            VoiceCreateUI.this.UtL.setTitleText(R.l.gYh);
+            VoiceCreateUI.c(VoiceCreateUI.this).setVisibility(0);
+            VoiceCreateUI.this.UtL.gdb();
+            AppMethodBeat.o(29848);
+          }
+          
+          public final void hUW() {}
+        });
+        AppMethodBeat.o(29856);
         return;
-        this.tsk = 0;
-        ab.d("MicroMsg.VoiceCreateUI", "finish create step 2");
-        Intent localIntent = new Intent();
-        localIntent.putExtra("KIsCreateSuccess", true);
-        setResult(-1, localIntent);
-        localIntent = new Intent();
-        localIntent.setClass(this, VoicePrintFinishUI.class);
-        localIntent.putExtra("kscene_type", 72);
-        startActivity(localIntent);
+        this.Uui = 0;
+        Log.d("MicroMsg.VoiceCreateUI", "finish create step 2");
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("KIsCreateSuccess", true);
+        setResult(-1, (Intent)localObject);
+        localObject = new Intent();
+        ((Intent)localObject).setClass(this, VoicePrintFinishUI.class);
+        ((Intent)localObject).putExtra("kscene_type", 72);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI", "finishCreateSecondStep", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI", "finishCreateSecondStep", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
       }
     }
@@ -112,174 +138,213 @@ public class VoiceCreateUI
     }
     for (;;)
     {
-      AppMethodBeat.o(26175);
+      AppMethodBeat.o(29856);
       return;
-      AppMethodBeat.o(26175);
+      AppMethodBeat.o(29856);
       return;
-      cLu();
-      this.tsk += 1;
-      if (this.tsk >= 2)
+      hVb();
+      this.Uui += 1;
+      if (this.Uui >= 2)
       {
-        ab.d("MicroMsg.VoiceCreateUI", "in second step, verify two times failed");
-        this.tsk = 0;
-        startActivity(new Intent(this, VoiceReCreatePromptUI.class));
-        overridePendingTransition(2131034266, 2131034263);
+        Log.d("MicroMsg.VoiceCreateUI", "in second step, verify two times failed");
+        this.Uui = 0;
+        localObject = new Intent(this, VoiceReCreatePromptUI.class);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI", "promptToReCreate", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI", "promptToReCreate", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        overridePendingTransition(R.a.slide_right_in, R.a.slide_left_out);
         finish();
-        AppMethodBeat.o(26175);
+        AppMethodBeat.o(29856);
         return;
       }
-      this.trL.setEnabled(true);
-      this.trO.bRO();
-      this.trO.setErr(2131304579);
-      this.trO.cLz();
+      this.UtI.setEnabled(true);
+      this.UtL.gdb();
+      this.UtL.setErr(R.l.gYl);
+      this.UtL.hVg();
     }
   }
   
-  public final void aeB(String paramString)
+  public final void bfC(String paramString)
   {
-    AppMethodBeat.i(26173);
-    ab.d("MicroMsg.VoiceCreateUI", "onGetFirstText");
-    cLk();
-    this.tru = paramString;
-    this.trO.bRO();
-    this.trO.cLx();
-    this.trO.setTipText(paramString);
-    this.trL.setEnabled(true);
-    AppMethodBeat.o(26173);
+    AppMethodBeat.i(29854);
+    Log.d("MicroMsg.VoiceCreateUI", "onGetFirstText");
+    hUR();
+    this.Utq = paramString;
+    this.UtL.gdb();
+    this.UtL.hVe();
+    this.UtL.setTipText(paramString);
+    this.UtI.setEnabled(true);
+    AppMethodBeat.o(29854);
   }
   
-  public final void aeC(String paramString)
+  public final void bfD(String paramString)
   {
-    AppMethodBeat.i(26174);
-    ab.d("MicroMsg.VoiceCreateUI", "onGetSecondText");
-    this.tru = paramString;
-    this.trO.bRO();
-    this.trO.cLx();
-    this.trO.setTipText(paramString);
-    this.trL.setEnabled(true);
-    AppMethodBeat.o(26174);
+    AppMethodBeat.i(29855);
+    Log.d("MicroMsg.VoiceCreateUI", "onGetSecondText");
+    this.Utq = paramString;
+    this.UtL.gdb();
+    this.UtL.hVe();
+    this.UtL.setTipText(paramString);
+    this.UtI.setEnabled(true);
+    AppMethodBeat.o(29855);
   }
   
-  protected final void bMe()
+  public final void bfE(String paramString)
   {
-    AppMethodBeat.i(26170);
-    this.tsg = new l(this);
-    findViewById(2131823890).setVisibility(8);
-    this.trO.setTitleText(2131304577);
-    this.trO.cLy();
-    this.trL.setEnabled(false);
-    this.tsh = new o();
-    this.jYD = findViewById(2131828768);
-    this.tsi = ((NoiseDetectMaskView)findViewById(2131827529));
-    this.kTD = findViewById(2131823924);
-    this.tsj = ((Button)findViewById(2131823890));
-    this.tsj.setVisibility(8);
-    this.tsj.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(272759);
+    String str = paramString;
+    if (Util.isNullOrNil(paramString)) {
+      str = getString(R.l.gYb);
+    }
+    bfG(str);
+    hVb();
+    AppMethodBeat.o(272759);
+  }
+  
+  protected final void fVu()
+  {
+    AppMethodBeat.i(29851);
+    this.Uue = new l(this);
+    findViewById(R.h.right_btn).setVisibility(8);
+    this.UtL.setTitleText(R.l.gYj);
+    this.UtL.hVf();
+    this.UtI.setEnabled(false);
+    this.Uuf = new o();
+    this.vNn = findViewById(R.h.gcH);
+    this.Uug = ((NoiseDetectMaskView)findViewById(R.h.mask));
+    this.xix = findViewById(R.h.left_btn);
+    this.Uuh = ((Button)findViewById(R.h.right_btn));
+    this.Uuh.setVisibility(8);
+    this.Uuh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(26162);
-        VoiceCreateUI.this.cLl();
-        a.a(VoiceCreateUI.this.trO, new VoiceCreateUI.2.1(this));
-        AppMethodBeat.o(26162);
+        AppMethodBeat.i(29843);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        VoiceCreateUI.this.hUS();
+        a.a(VoiceCreateUI.this.UtL, new a.a()
+        {
+          public final void hUV()
+          {
+            AppMethodBeat.i(29842);
+            VoiceCreateUI.c(VoiceCreateUI.this).setVisibility(8);
+            VoiceCreateUI.this.UtL.setTitleText(R.l.gYj);
+            VoiceCreateUI.this.UtL.MYG.setVisibility(0);
+            VoiceCreateUI.this.UtI.setEnabled(true);
+            VoiceCreateUI.this.UtI.setVisibility(0);
+            AppMethodBeat.o(29842);
+          }
+          
+          public final void hUW() {}
+        });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(29843);
       }
     });
-    this.tsi.setOnClickRetryCallback(new VoiceCreateUI.3(this));
-    this.tsi.setOnCancelDetectCallback(new NoiseDetectMaskView.a()
+    this.Uug.setOnClickRetryCallback(new NoiseDetectMaskView.b()
     {
-      public final void cLq()
+      public final void hUY()
       {
-        AppMethodBeat.i(26164);
+        AppMethodBeat.i(29844);
+        h.OAn.b(11390, new Object[] { Integer.valueOf(5) });
+        VoiceCreateUI.d(VoiceCreateUI.this);
+        AppMethodBeat.o(29844);
+      }
+    });
+    this.Uug.setOnCancelDetectCallback(new NoiseDetectMaskView.a()
+    {
+      public final void hUX()
+      {
+        AppMethodBeat.i(29845);
         VoiceCreateUI.e(VoiceCreateUI.this);
         o localo = VoiceCreateUI.f(VoiceCreateUI.this);
-        ab.d("MicroMsg.VoicePrintNoiseDetector", "stopDetect");
-        localo.jdField_try.Et();
-        localo.trz.stopTimer();
+        Log.d("MicroMsg.VoicePrintNoiseDetector", "stopDetect");
+        localo.Utu.aGH();
+        localo.Utv.stopTimer();
         VoiceCreateUI.this.finish();
-        AppMethodBeat.o(26164);
+        AppMethodBeat.o(29845);
       }
     });
-    com.tencent.mm.sdk.b.a.ymk.c(this.tsl);
-    this.kTD.setOnClickListener(new View.OnClickListener()
+    this.Uuj.alive();
+    this.xix.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(26165);
+        AppMethodBeat.i(29846);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         VoiceCreateUI.e(VoiceCreateUI.this);
         VoiceCreateUI.this.finish();
-        AppMethodBeat.o(26165);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceCreateUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(29846);
       }
     });
     start();
-    AppMethodBeat.o(26170);
+    AppMethodBeat.o(29851);
   }
   
-  public final void cLf()
+  public final void hUN()
   {
-    AppMethodBeat.i(26176);
-    cLm();
-    cLu();
-    AppMethodBeat.o(26176);
+    AppMethodBeat.i(29857);
+    hUT();
+    hVb();
+    AppMethodBeat.o(29857);
   }
   
-  public final void cLg()
+  protected final void hUU()
   {
-    AppMethodBeat.i(153682);
-    GY(2131304562);
-    cLu();
-    AppMethodBeat.o(153682);
-  }
-  
-  protected final void cLn()
-  {
-    AppMethodBeat.i(26169);
-    ab.d("MicroMsg.VoiceCreateUI", "sendVoice, filename:%s", new Object[] { this.trQ });
-    if (!bo.isNullOrNil(this.trQ))
+    AppMethodBeat.i(29850);
+    Log.d("MicroMsg.VoiceCreateUI", "sendVoice, filename:%s", new Object[] { this.UtN });
+    if (!Util.isNullOrNil(this.UtN))
     {
-      this.trL.setEnabled(false);
-      this.trO.bRN();
+      this.UtI.setEnabled(false);
+      this.UtL.eAg();
       l locall;
-      f localf;
-      if (this.trt == 1)
+      com.tencent.mm.plugin.voiceprint.model.f localf;
+      if (this.Utp == 1)
       {
-        locall = this.tsg;
-        localf = new f(this.trQ, 71, locall.trv, 0);
-        localf.tre = true;
-        aw.Rc().a(localf, 0);
-        locall.trt = 71;
-        AppMethodBeat.o(26169);
+        locall = this.Uue;
+        localf = new com.tencent.mm.plugin.voiceprint.model.f(this.UtN, 71, locall.Utr, 0);
+        localf.Utc = true;
+        bh.aZW().a(localf, 0);
+        locall.Utp = 71;
+        AppMethodBeat.o(29850);
         return;
       }
-      if (this.trt == 2)
+      if (this.Utp == 2)
       {
-        locall = this.tsg;
-        localf = new f(this.trQ, 72, locall.trv, locall.trh);
-        localf.tre = true;
-        aw.Rc().a(localf, 0);
-        locall.trt = 72;
+        locall = this.Uue;
+        localf = new com.tencent.mm.plugin.voiceprint.model.f(this.UtN, 72, locall.Utr, locall.Ute);
+        localf.Utc = true;
+        bh.aZW().a(localf, 0);
+        locall.Utp = 72;
       }
     }
-    AppMethodBeat.o(26169);
+    AppMethodBeat.o(29850);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(26179);
+    AppMethodBeat.i(29861);
     super.onBackPressed();
-    cLu();
-    AppMethodBeat.o(26179);
+    hVb();
+    AppMethodBeat.o(29861);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(26178);
+    AppMethodBeat.i(29860);
     super.onDestroy();
-    l locall = this.tsg;
-    aw.Rc().b(611, locall);
-    aw.Rc().b(612, locall);
-    locall.trw = null;
-    com.tencent.mm.sdk.b.a.ymk.d(this.tsl);
-    AppMethodBeat.o(26178);
+    l locall = this.Uue;
+    bh.aZW().b(611, locall);
+    bh.aZW().b(612, locall);
+    locall.Uts = null;
+    this.Uuj.dead();
+    AppMethodBeat.o(29860);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -290,7 +355,7 @@ public class VoiceCreateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceCreateUI
  * JD-Core Version:    0.7.0.1
  */

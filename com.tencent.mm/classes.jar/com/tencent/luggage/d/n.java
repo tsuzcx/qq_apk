@@ -1,140 +1,128 @@
 package com.tencent.luggage.d;
 
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.luggage.webview.a;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.bridge.l;
+import com.tencent.luggage.bridge.o;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
-public class n
-  extends e
-  implements b
+public abstract class n
+  implements c
 {
-  public View Qz;
-  private l bze;
-  public k bzs;
-  SwipeBackLayout bzt;
-  public Bundle bzu;
-  private String bzv;
+  final ConcurrentHashMap<String, Class<? extends b>> ejx = new ConcurrentHashMap();
+  public a ejy;
   
-  public n(g paramg, Bundle paramBundle)
+  public final void a(final d paramd)
   {
-    this(paramg, null, paramBundle);
+    com.tencent.luggage.d.a.c local3 = new com.tencent.luggage.d.a.c()
+    {
+      public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
+      {
+        AppMethodBeat.i(219940);
+        if (paramd == null)
+        {
+          Log.e("Luggage.LuggageRuntime", "Null Event, Ignore");
+          AppMethodBeat.o(219940);
+          return;
+        }
+        if (paramAnonymousb == com.tencent.luggage.d.a.b.eka) {
+          n.this.getBridge().b(paramd.name(), paramd.aoe());
+        }
+        AppMethodBeat.o(219940);
+      }
+    };
+    a locala = aoA();
+    paramd.name();
+    locala.a(local3);
   }
   
-  public n(g paramg, k paramk, Bundle paramBundle)
+  public final void a(Class<? extends b> paramClass, c paramc)
   {
-    super(paramg);
-    AppMethodBeat.i(90850);
-    this.bzv = null;
-    this.bze = new n.2(this);
-    if (paramBundle != null) {}
-    for (;;)
+    try
     {
-      this.bzu = paramBundle;
-      this.bzs = paramk;
-      paramk = this.bzs;
-      paramg = paramk;
-      if (paramk == null) {
-        paramg = this.byJ.ui();
+      final b localb = (b)paramClass.newInstance();
+      Object localObject = paramc;
+      if (paramc == null) {
+        localObject = this;
       }
-      paramk = paramg;
-      if (paramg == null) {
-        paramk = new k(this.mContext, this.byJ.uj());
-      }
-      this.bzs = paramk;
-      paramg = this.bzs;
-      paramg.a(this.byJ.uo(), this);
-      paramg.bze = this.bze;
-      paramg = tZ();
-      this.bzt = new SwipeBackLayout(this.mContext);
-      this.bzt.setScrimColor(0);
-      this.bzt.addView(paramg);
-      this.bzt.setContentView(paramg);
-      this.bzt.a(new n.1(this, new boolean[] { false }));
-      this.Qz = this.bzt;
-      AppMethodBeat.o(90850);
-      return;
-      paramBundle = new Bundle();
-    }
-  }
-  
-  public final void a(e.a parama)
-  {
-    AppMethodBeat.i(90853);
-    if ((parama instanceof n.a))
-    {
-      this.byK = parama;
-      AppMethodBeat.o(90853);
       return;
     }
-    this.byK = new n.a(parama);
-    AppMethodBeat.o(90853);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(90855);
-    ue();
-    this.bzs.destroy();
-    AppMethodBeat.o(90855);
-  }
-  
-  public void g(String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(90851);
-    this.bzs.loadUrl(paramString);
-    AppMethodBeat.o(90851);
-  }
-  
-  public final View getContentView()
-  {
-    return this.Qz;
-  }
-  
-  protected final boolean onBackPressed()
-  {
-    AppMethodBeat.i(90854);
-    if (this.bzs.bzf.canGoBack())
+    catch (Exception paramc)
     {
-      this.bzs.bzf.goBack();
-      AppMethodBeat.o(90854);
-      return true;
+      try
+      {
+        localb.eiX = ((c)localObject);
+        this.ejx.put(localb.name(), paramClass);
+        getBridge().a(localb.name(), new l()
+        {
+          public final void a(k paramAnonymousk)
+          {
+            AppMethodBeat.i(219941);
+            n localn = n.this;
+            b localb = localb;
+            paramAnonymousk = new n.2(localn, localb, paramAnonymousk);
+            localn.aoA().a(localb.name(), paramAnonymousk);
+            AppMethodBeat.o(219941);
+          }
+        });
+        return;
+      }
+      catch (Exception paramClass)
+      {
+        Log.e("Luggage.LuggageRuntime", "registerJsApi: ".concat(String.valueOf(paramClass)));
+      }
+      paramc = paramc;
+      Log.e("Luggage.LuggageRuntime", "JsApi Initialize failed, %s, %s", new Object[] { paramClass.getName(), paramc });
+      return;
     }
-    AppMethodBeat.o(90854);
-    return false;
   }
   
-  protected View tZ()
+  public final void a(List<Class<? extends b>> paramList, c paramc)
   {
-    AppMethodBeat.i(90852);
-    View localView = this.bzs.getView();
-    AppMethodBeat.o(90852);
-    return localView;
-  }
-  
-  protected String ux()
-  {
-    return "";
-  }
-  
-  public final void uy()
-  {
-    AppMethodBeat.i(141785);
-    if (this.bzt != null) {
-      this.bzt.setEnableGesture(false);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a((Class)paramList.next(), paramc);
     }
-    AppMethodBeat.o(141785);
   }
   
-  public final n.a uz()
+  public final a aoA()
   {
-    return (n.a)this.byK;
+    if (this.ejy == null) {
+      return a.ejX;
+    }
+    return this.ejy;
   }
+  
+  public final void b(final String paramString, final JSONObject paramJSONObject)
+  {
+    paramString = new com.tencent.luggage.d.a.c()
+    {
+      public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
+      {
+        AppMethodBeat.i(219939);
+        if (paramAnonymousb == com.tencent.luggage.d.a.b.eka) {
+          n.this.getBridge().b(paramString, paramJSONObject);
+        }
+        AppMethodBeat.o(219939);
+      }
+    };
+    aoA().a(paramString);
+  }
+  
+  public void destroy() {}
+  
+  public abstract o getBridge();
+  
+  public abstract String getUserAgent();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.n
  * JD-Core Version:    0.7.0.1
  */

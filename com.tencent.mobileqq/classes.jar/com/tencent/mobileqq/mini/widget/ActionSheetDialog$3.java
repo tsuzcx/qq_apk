@@ -11,7 +11,8 @@ class ActionSheetDialog$3
   
   public void run()
   {
-    ActionSheetDialog.access$202(this.this$0, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheetDialog.access$000(this.this$0).getHeight()));
+    ActionSheetDialog localActionSheetDialog = this.this$0;
+    ActionSheetDialog.access$202(localActionSheetDialog, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheetDialog.access$000(localActionSheetDialog).getHeight()));
     ActionSheetDialog.access$200(this.this$0).setInterpolator(AnimationUtils.loadInterpolator(ActionSheetDialog.access$300(this.this$0), 17432582));
     ActionSheetDialog.access$200(this.this$0).setDuration(200L);
     ActionSheetDialog.access$200(this.this$0).setFillAfter(true);
@@ -21,7 +22,7 @@ class ActionSheetDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.ActionSheetDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -7,56 +7,59 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.j;
 
 public class IPCallAddressCountView
   extends FrameLayout
 {
-  private View gcq;
-  private TextView nRK;
+  private TextView JLz;
+  private View hDw;
   
   private IPCallAddressCountView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(22045);
+    AppMethodBeat.i(25661);
     init();
-    AppMethodBeat.o(22045);
+    AppMethodBeat.o(25661);
   }
   
   public IPCallAddressCountView(Context paramContext, int paramInt)
   {
     this(paramContext);
-    AppMethodBeat.i(22046);
+    AppMethodBeat.i(25662);
     setAddressCount(paramInt);
-    AppMethodBeat.o(22046);
+    AppMethodBeat.o(25662);
   }
   
   public IPCallAddressCountView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(22044);
+    AppMethodBeat.i(25660);
     init();
-    AppMethodBeat.o(22044);
+    AppMethodBeat.o(25660);
   }
   
   private void init()
   {
-    AppMethodBeat.i(22047);
-    inflate(getContext(), 2130969920, this);
-    this.gcq = findViewById(2131823033);
-    this.nRK = ((TextView)findViewById(2131823034));
-    AppMethodBeat.o(22047);
+    AppMethodBeat.i(25663);
+    inflate(getContext(), R.i.gkE, this);
+    this.hDw = findViewById(R.h.fBH);
+    this.JLz = ((TextView)findViewById(R.h.fBG));
+    AppMethodBeat.o(25663);
   }
   
   public void setAddressCount(int paramInt)
   {
-    AppMethodBeat.i(22048);
-    this.nRK.setText(getContext().getResources().getQuantityString(2131361793, paramInt, new Object[] { Integer.valueOf(paramInt) }));
-    AppMethodBeat.o(22048);
+    AppMethodBeat.i(25664);
+    this.JLz.setText(getContext().getResources().getQuantityString(R.j.gpl, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+    AppMethodBeat.o(25664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAddressCountView
  * JD-Core Version:    0.7.0.1
  */

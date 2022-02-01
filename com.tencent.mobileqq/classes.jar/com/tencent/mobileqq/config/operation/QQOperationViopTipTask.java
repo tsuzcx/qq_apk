@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.operation;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskid")
 public class QQOperationViopTipTask
-  extends awge
+  extends Entity
 {
   public String adwords;
   public String begin;
@@ -25,7 +25,7 @@ public class QQOperationViopTipTask
   public int limitTotalAIOCount;
   public int limitTotalShowCount;
   public int linkOffset;
-  @awhs
+  @unique
   public int taskid;
   public int tipType;
   public int uinType;
@@ -64,25 +64,23 @@ public class QQOperationViopTipTask
   public ArrayList<String> getKeywordList()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.keywordString != null) && (this.keywordString.length() > 0))
+    Object localObject = this.keywordString;
+    if ((localObject != null) && (((String)localObject).length() > 0))
     {
-      if (this.keywordString.contains("|")) {
-        break label48;
-      }
-      localArrayList.add(this.keywordString);
-    }
-    for (;;)
-    {
-      return localArrayList;
-      label48:
-      String[] arrayOfString = this.keywordString.split("\\|");
-      int i = 0;
-      while (i < arrayOfString.length)
+      if (!this.keywordString.contains("|"))
       {
-        localArrayList.add(arrayOfString[i]);
+        localArrayList.add(this.keywordString);
+        return localArrayList;
+      }
+      localObject = this.keywordString.split("\\|");
+      int i = 0;
+      while (i < localObject.length)
+      {
+        localArrayList.add(localObject[i]);
         i += 1;
       }
     }
+    return localArrayList;
   }
   
   public boolean isBlueTipsTask()
@@ -112,7 +110,7 @@ public class QQOperationViopTipTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.operation.QQOperationViopTipTask
  * JD-Core Version:    0.7.0.1
  */

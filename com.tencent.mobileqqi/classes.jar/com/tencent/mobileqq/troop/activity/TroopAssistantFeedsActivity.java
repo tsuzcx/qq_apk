@@ -61,7 +61,7 @@ public class TroopAssistantFeedsActivity
   {
     getWindow().setFormat(-3);
     super.doOnCreate(paramBundle);
-    paramBundle = (FrameLayout)findViewById(2131231180);
+    paramBundle = (FrameLayout)findViewById(2131231179);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     paramBundle.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);

@@ -8,7 +8,7 @@ public final class SSummaryCardOidbInfo
   extends JceStruct
 {
   public String bgurl = "";
-  public long styleid;
+  public long styleid = 0L;
   public String version = "";
   
   public SSummaryCardOidbInfo() {}
@@ -30,17 +30,19 @@ public final class SSummaryCardOidbInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.styleid, 1);
-    if (this.bgurl != null) {
-      paramJceOutputStream.write(this.bgurl, 2);
+    String str = this.bgurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.SSummaryCardOidbInfo
  * JD-Core Version:    0.7.0.1
  */

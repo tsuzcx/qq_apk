@@ -26,15 +26,16 @@ public class VModalView
   @Nullable
   public VModal getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VModal)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VModal)localWeakReference.get();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VModalView
  * JD-Core Version:    0.7.0.1
  */

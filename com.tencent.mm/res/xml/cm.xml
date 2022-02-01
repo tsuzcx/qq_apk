@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <Preference android:title="" android:key="revert_pref" android:layout="@layout/b2j" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <Preference mm:key="settings_sex" mm:layout="@layout/bdi" mm:title="@string/iyn" />
+    <Preference mm:key="settings_district" mm:layout="@layout/bdi" mm:title="@string/irj" />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference mm:key="settings_signature" mm:layout="@layout/bdi" mm:title="@string/iyv" />
     <PreferenceSmallCategory />
-    <Preference android:title="" android:key="desc" android:layout="@layout/b2i" />
+    <Preference mm:key="settings_linkedin" mm:layout="@layout/bdi" mm:title="@string/it8" />
     <PreferenceSmallCategory />
 </PreferenceScreen>

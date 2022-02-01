@@ -44,18 +44,18 @@ public final class KTypeProjection
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof KTypeProjection))
       {
         paramObject = (KTypeProjection)paramObject;
-        if ((!Intrinsics.areEqual(this.variance, paramObject.variance)) || (!Intrinsics.areEqual(this.type, paramObject.type))) {}
+        if ((Intrinsics.areEqual(this.variance, paramObject.variance)) && (Intrinsics.areEqual(this.type, paramObject.type))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -72,28 +72,36 @@ public final class KTypeProjection
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.variance;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.type;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.type;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "KTypeProjection(variance=" + this.variance + ", type=" + this.type + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KTypeProjection(variance=");
+    localStringBuilder.append(this.variance);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.reflect.KTypeProjection
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public final class zzj
   
   public zzj()
   {
-    AppMethodBeat.i(70698);
+    AppMethodBeat.i(100681);
     this.zzgd = zzw.zzhy;
     this.zzge = "";
     this.zzgf = 0.0D;
@@ -40,120 +40,120 @@ public final class zzj
     this.zzgq = 0L;
     this.zzhc = null;
     this.zzhl = -1;
-    AppMethodBeat.o(70698);
+    AppMethodBeat.o(100681);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70699);
+    AppMethodBeat.i(100682);
     if (paramObject == this)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return true;
     }
     if (!(paramObject instanceof zzj))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     paramObject = (zzj)paramObject;
     if (!Arrays.equals(this.zzgd, paramObject.zzgd))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzge == null)
     {
       if (paramObject.zzge != null)
       {
-        AppMethodBeat.o(70699);
+        AppMethodBeat.o(100682);
         return false;
       }
     }
     else if (!this.zzge.equals(paramObject.zzge))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (Double.doubleToLongBits(this.zzgf) != Double.doubleToLongBits(paramObject.zzgf))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (Float.floatToIntBits(this.zzgg) != Float.floatToIntBits(paramObject.zzgg))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzgh != paramObject.zzgh)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzgi != paramObject.zzgi)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzgj != paramObject.zzgj)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzgk != paramObject.zzgk)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (!zzr.equals(this.zzgl, paramObject.zzgl))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (!zzr.equals(this.zzgm, paramObject.zzgm))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (!zzr.equals(this.zzgn, paramObject.zzgn))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (!zzr.equals(this.zzgo, paramObject.zzgo))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (!zzr.equals(this.zzgp, paramObject.zzgp))
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if (this.zzgq != paramObject.zzgq)
     {
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     if ((this.zzhc == null) || (this.zzhc.isEmpty()))
     {
       if ((paramObject.zzhc == null) || (paramObject.zzhc.isEmpty()))
       {
-        AppMethodBeat.o(70699);
+        AppMethodBeat.o(100682);
         return true;
       }
-      AppMethodBeat.o(70699);
+      AppMethodBeat.o(100682);
       return false;
     }
     boolean bool = this.zzhc.equals(paramObject.zzhc);
-    AppMethodBeat.o(70699);
+    AppMethodBeat.o(100682);
     return bool;
   }
   
   public final int hashCode()
   {
     int m = 0;
-    AppMethodBeat.i(70700);
+    AppMethodBeat.i(100683);
     int n = getClass().getName().hashCode();
     int i1 = Arrays.hashCode(this.zzgd);
     int i;
@@ -200,7 +200,7 @@ public final class zzj
     label305:
     for (int k = m;; k = this.zzhc.hashCode())
     {
-      AppMethodBeat.o(70700);
+      AppMethodBeat.o(100683);
       return (((((((j + ((((((i + ((n + 527) * 31 + i1) * 31) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31) * 31 + i7) * 31 + i8) * 31 + i9) * 31 + i10) * 31 + i11) * 31 + i12) * 31 + k;
       i = this.zzge.hashCode();
       break;
@@ -213,7 +213,7 @@ public final class zzj
   {
     int i = 1;
     int j = 0;
-    AppMethodBeat.i(70701);
+    AppMethodBeat.i(100684);
     Object localObject;
     if (!Arrays.equals(this.zzgd, zzw.zzhy))
     {
@@ -318,12 +318,12 @@ public final class zzj
       }
     }
     super.zza(paramzzl);
-    AppMethodBeat.o(70701);
+    AppMethodBeat.o(100684);
   }
   
   protected final int zzg()
   {
-    AppMethodBeat.i(70702);
+    AppMethodBeat.i(100685);
     int j = super.zzg();
     int i = j;
     Object localObject;
@@ -491,13 +491,13 @@ public final class zzj
         i = j + this.zzgp.length * 4 + this.zzgp.length * 1;
       }
     }
-    AppMethodBeat.o(70702);
+    AppMethodBeat.o(100685);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zzj
  * JD-Core Version:    0.7.0.1
  */

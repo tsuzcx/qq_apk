@@ -10,53 +10,49 @@ class DiskLruCache$1
   
   public void run()
   {
-    int i = 1;
-    synchronized (this.this$0)
+    for (;;)
     {
-      if (!this.this$0.initialized)
+      synchronized (this.this$0)
       {
-        if ((i | this.this$0.closed) == 0) {}
-      }
-      else {
-        i = 0;
-      }
-    }
-    try
-    {
-      this.this$0.trimToSize();
-    }
-    catch (IOException localIOException1)
-    {
-      try
-      {
-        for (;;)
+        if (!this.this$0.initialized)
         {
-          if (this.this$0.journalRebuildRequired())
+          i = 1;
+          if ((i | this.this$0.closed) != 0) {
+            return;
+          }
+          try
           {
+            this.this$0.trimToSize();
+          }
+          catch (IOException localIOException1)
+          {
+            continue;
+          }
+          this.this$0.mostRecentTrimFailed = true;
+          try
+          {
+            if (!this.this$0.journalRebuildRequired()) {
+              continue;
+            }
             this.this$0.rebuildJournal();
             this.this$0.redundantOpCount = 0;
           }
-          return;
-          localObject = finally;
-          throw localObject;
-          localIOException1 = localIOException1;
-          this.this$0.mostRecentTrimFailed = true;
-        }
-      }
-      catch (IOException localIOException2)
-      {
-        for (;;)
-        {
+          catch (IOException localIOException2)
+          {
+            continue;
+          }
           this.this$0.mostRecentRebuildFailed = true;
           this.this$0.journalWriter = Okio.buffer(Okio.blackhole());
+          return;
         }
       }
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.cache.DiskLruCache.1
  * JD-Core Version:    0.7.0.1
  */

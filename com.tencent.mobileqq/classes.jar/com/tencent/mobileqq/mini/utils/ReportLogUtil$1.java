@@ -11,7 +11,13 @@ final class ReportLogUtil$1
   
   public void onFail(String paramString)
   {
-    QLog.d("ReportLogUtil", 1, "upload log fail: " + this.val$logPath);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("upload log fail: ");
+      paramString.append(this.val$logPath);
+      QLog.d("ReportLogUtil", 2, paramString.toString());
+    }
     paramString = new File(this.val$logPath);
     if (paramString.exists()) {
       paramString.delete();
@@ -20,7 +26,13 @@ final class ReportLogUtil$1
   
   public void onSuccess(String paramString)
   {
-    QLog.d("ReportLogUtil", 1, " upload log success: " + this.val$logPath);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" upload log success: ");
+      localStringBuilder.append(this.val$logPath);
+      QLog.d("ReportLogUtil", 2, localStringBuilder.toString());
+    }
     MiniAppCmdUtil.getInstance().reportLogFileUrl(null, this.val$appid, paramString, this.val$fileSize, new ReportLogUtil.1.1(this, paramString));
     paramString = new File(this.val$logPath);
     if (paramString.exists()) {
@@ -30,7 +42,7 @@ final class ReportLogUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.ReportLogUtil.1
  * JD-Core Version:    0.7.0.1
  */

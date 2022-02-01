@@ -1,29 +1,5 @@
 package com.tencent.mobileqq.ar.view;
 
-import aepi;
-import alud;
-import amsg;
-import amsm;
-import amsq;
-import amtj;
-import amts;
-import amup;
-import amuu;
-import amvj;
-import amvm;
-import amwo;
-import amwp;
-import amxp;
-import amxu;
-import anau;
-import anav;
-import anby;
-import ancc;
-import ancg;
-import ancs;
-import ancu;
-import ancy;
-import ando;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -49,6 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
@@ -58,64 +35,75 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anft;
-import anfu;
-import anfx;
-import anga;
-import angb;
-import angc;
-import ange;
-import angf;
-import angs;
-import angt;
-import angu;
-import angw;
-import angx;
-import angy;
-import angz;
-import anha;
-import anhb;
-import anhc;
-import anhd;
-import anhe;
-import anhf;
-import anhg;
-import anhh;
-import anhx;
-import ansc;
-import ansd;
-import awaw;
-import awbi;
-import awbu;
-import awbx;
-import awby;
-import azkz;
-import azqs;
-import azri;
-import bdgm;
-import bdjz;
-import bdnn;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.ARTransparentWebviewPlugin;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem;
 import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderTrackInfo;
 import com.tencent.mobileqq.ar.ARScanAR;
+import com.tencent.mobileqq.ar.ARTarget;
+import com.tencent.mobileqq.ar.ARVideoUtil;
+import com.tencent.mobileqq.ar.DrawView2.FaceData;
+import com.tencent.mobileqq.ar.FaceUIController;
 import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult.POIInfo;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARLocalRecogResultBase;
+import com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult;
+import com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult.MIGObjectSearchResult;
+import com.tencent.mobileqq.ar.arengine.ARReport;
 import com.tencent.mobileqq.ar.model.ArLBSActivity;
 import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.ar.model.CameraProxy;
+import com.tencent.mobileqq.ar.model.CameraProxy.CameraOperationStatusCallBack;
+import com.tencent.mobileqq.ar.model.QQARSession;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate.ARBaseResDownLoadCallBack;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate.AsyncFaceResDownloadCallBack;
+import com.tencent.mobileqq.ar.model.UniformGLRenderManager;
+import com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl;
+import com.tencent.mobileqq.ar.utils.UniformUtils;
+import com.tencent.mobileqq.armap.ArMapConstant;
+import com.tencent.mobileqq.armap.ArMapHandler;
+import com.tencent.mobileqq.armap.ArMapObserver;
+import com.tencent.mobileqq.armap.ArMapUtil;
 import com.tencent.mobileqq.armap.ScanSuccessView;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.PromotionGuide;
+import com.tencent.mobileqq.olympic.activity.PromotionGuide.OnPromotionStatusListener;
+import com.tencent.mobileqq.olympic.activity.PromotionRes;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.AppIntefaceReportWrap;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.UiSettings;
@@ -128,335 +116,432 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.TimeZone;
 import mqq.os.MqqHandler;
-import zdb;
 
 public class ARScanEntryView
   extends ScanEntryProviderView
-  implements anby, Handler.Callback, View.OnClickListener, anfu, awbx
+  implements Handler.Callback, View.OnClickListener, AREngineCallback, CameraProxy.CameraOperationStatusCallBack, PromotionGuide.OnPromotionStatusListener
 {
-  private boolean A;
-  private boolean B = true;
-  private boolean C;
-  private boolean D;
-  private boolean E;
-  private boolean F;
-  private boolean G;
-  private boolean H;
-  private boolean I;
-  private boolean J;
-  private boolean K;
+  int A;
+  boolean B;
+  private ARTipsManager K;
   private boolean L;
-  public int a;
-  long jdField_a_of_type_Long = -1L;
-  private amsq jdField_a_of_type_Amsq;
-  amtj jdField_a_of_type_Amtj;
-  private amuu jdField_a_of_type_Amuu;
-  private amwo jdField_a_of_type_Amwo;
-  amxu jdField_a_of_type_Amxu;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new angt(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new angu(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public FrameLayout a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public LinearLayout a;
+  private Runnable M;
+  private Handler N;
+  private MqqHandler O;
+  private FrameLayout P;
+  private TouchWebView Q;
+  private ViewGroup R;
+  private TextView S;
+  private TextView T;
+  private TextView U;
+  private QQARSession V;
+  private ARTarget W = null;
+  private boolean Z = false;
   public RelativeLayout a;
-  public TextView a;
-  private anfx jdField_a_of_type_Anfx;
-  private angb jdField_a_of_type_Angb = new anhg(this);
-  private angc jdField_a_of_type_Angc = new anhh(this);
-  private ansc jdField_a_of_type_Ansc = new anhf(this);
-  private awaw jdField_a_of_type_Awaw;
-  private awbu jdField_a_of_type_Awbu;
-  private bdjz jdField_a_of_type_Bdjz;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  public ObjectSurfaceView a;
-  public ScanningSurfaceView a;
-  private volatile ARCommonConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-  public ScanSuccessView a;
-  private ScanIconAnimateView jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView;
-  private MapView jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  public String a;
-  private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  public boolean a;
-  int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private boolean aA = false;
+  private RelativeLayout aB;
+  private boolean aC = false;
+  private boolean aD = false;
+  private boolean aE = false;
+  private PromotionGuide aF = null;
+  private boolean aG;
+  private MessageQueue.IdleHandler aH = new ARScanEntryView.1(this);
+  private View.OnTouchListener aI = new ARScanEntryView.2(this);
+  private Rect aJ;
+  private long aK = -1L;
+  private boolean aL = false;
+  private boolean aM = false;
+  private boolean aN = false;
+  private QQCustomDialog aO = null;
+  private ARLBSPOIDialog aP = null;
+  private MapView aQ = null;
+  private Runnable aR;
+  private boolean aS;
+  private ScanEntryResourceDelegate.ARBaseResDownLoadCallBack aT = new ARScanEntryView.3(this);
+  private boolean aU = false;
+  private ScanEntryResourceDelegate.AsyncFaceResDownloadCallBack aV = new ARScanEntryView.4(this);
+  private ArMapObserver aW = new ARScanEntryView.5(this);
+  private SimpleDateFormat aX;
+  private boolean aa = false;
+  private boolean ab = false;
+  private boolean ac = false;
+  private String ad;
+  private String ae;
+  private volatile ARCommonConfigInfo af;
+  private boolean ag = false;
+  private Bundle ah;
+  private long ai;
+  private boolean aj = false;
+  private boolean ak = false;
+  private boolean al = false;
+  private boolean am = false;
+  private int an = 0;
+  private int ao = 0;
+  private boolean ap = false;
+  private boolean aq = false;
+  private volatile boolean ar = true;
+  private HashMap<String, Integer> as = new HashMap();
+  private ARVideoRecordViewProxy at;
+  private boolean au = false;
+  private RelativeLayout av;
+  private ScanIconAnimateView aw;
+  private ImageView ax;
+  private boolean ay = false;
+  private boolean az = true;
   public TextView b;
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long = -1L;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
   public TextView c;
-  private String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  boolean jdField_d_of_type_Boolean = false;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  boolean jdField_e_of_type_Boolean = false;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  boolean jdField_f_of_type_Boolean = false;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  volatile boolean jdField_g_of_type_Boolean = false;
-  volatile boolean h = false;
-  boolean i;
-  public boolean j;
-  private boolean n;
-  private boolean o;
-  private boolean p;
-  private boolean q;
-  private boolean r;
-  private boolean s;
-  private boolean t;
-  private boolean u;
-  private boolean v;
-  private boolean w;
-  private boolean x;
-  private volatile boolean y = true;
-  private boolean z;
+  public TextView d;
+  public FrameLayout e;
+  public LinearLayout f;
+  public ScanSuccessView g;
+  public ObjectSurfaceView h;
+  public String i = null;
+  public String j = null;
+  public String k = null;
+  public String l = null;
+  public int m = -1;
+  public boolean n = false;
+  public boolean o = false;
+  TextView p;
+  FaceUIController q;
+  boolean r = true;
+  boolean s = false;
+  boolean t = false;
+  boolean u = false;
+  boolean v = false;
+  volatile boolean w = false;
+  volatile boolean x = false;
+  long y = -1L;
+  ARTransferDoorLogicManager z;
   
-  public ARScanEntryView(Context paramContext, anhx paramanhx)
+  public ARScanEntryView(Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
-    super(paramContext, paramanhx);
-    this.jdField_a_of_type_Int = -1;
+    super(paramContext, paramScanEntryContainerViewListener);
   }
   
   private void A()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("checkArDependenceReady time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_c_of_type_Long) }));
-    }
-    boolean bool1 = amsg.a().a();
-    boolean bool2 = amsg.a().b();
-    QLog.i("AREngine_ARScanEntryView", 1, "checkArDependenceReady. isAREnable = " + bool1 + ", isSupportAr = " + bool2 + ", mIsArSoReady = " + false + ", mIsVideoPluginReady = " + false);
-    anga localanga = this.jdField_a_of_type_Anhx.a();
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if ((bool1) && (bool2) && (localanga.a(2)) && (localanga.a(8)) && (!this.r))
-    {
-      if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
-      {
-        if (!this.jdField_a_of_type_Anfx.c()) {
-          q();
-        }
-        if ((this.m) && (this.jdField_a_of_type_Anfx.c()) && (this.jdField_a_of_type_Anfx.b()) && (this.jdField_a_of_type_Anfx.b() == 1)) {
-          this.jdField_a_of_type_Anfx.g();
-        }
-      }
-      if (this.jdField_a_of_type_Anhx.a() != null) {
-        if (this.jdField_a_of_type_Anhx.a().isEnableVideoRecord != 1L) {
-          break label333;
-        }
-      }
-    }
-    label333:
-    for (bool1 = true;; bool1 = false)
-    {
-      amup.a().a(bool1);
-      QLog.d("AREngine_ARScanEntryView", 1, String.format("checkARVideoRecordEnable enable=%s", new Object[] { Boolean.valueOf(bool1) }));
-      if ((!this.H) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(321)))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(321, 100L);
-        QLog.d("AREngine_ARScanEntryView", 1, "checkArDependenceReady do delay initARView");
-      }
+    TextView localTextView = this.b;
+    if (localTextView == null) {
       return;
     }
+    localTextView.setVisibility(8);
+    this.c.setVisibility(8);
+    this.d.setVisibility(8);
+    this.l = null;
+    this.f.setVisibility(8);
   }
   
   private void B()
   {
-    if (this.jdField_b_of_type_JavaLangRunnable == null)
-    {
-      this.jdField_b_of_type_JavaLangRunnable = new ARScanEntryView.37(this);
-      QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck");
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "showTouchView");
     }
-    this.K = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 10000L);
+    this.f.setVisibility(8);
+    this.e.setVisibility(0);
+    ARTarget localARTarget = this.W;
+    if ((localARTarget != null) && (localARTarget.a != null)) {
+      return;
+    }
+    QLog.d("AREngine_ARScanEntryView", 1, "mArTarget == null || mArTarget.arResourceInfo == null");
   }
   
   private void C()
   {
-    QLog.d("AREngine_ARScanEntryView", 2, "stopDownloadTimeoutCheck");
-    if (this.jdField_b_of_type_JavaLangRunnable != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      this.jdField_b_of_type_JavaLangRunnable = null;
+    FrameLayout localFrameLayout = this.e;
+    if (localFrameLayout == null) {
+      return;
     }
+    localFrameLayout.setVisibility(8);
   }
   
-  private void D()
+  private boolean D()
   {
-    long l2 = 8000L;
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("addTimeoutCheck mArEnabled=%s mHasCallRemoveTimeoutCheck=%s", new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.L) }));
+    if (this.H.getRenderEngine() != null) {
+      return this.H.getRenderEngine().h();
     }
-    if (this.L) {}
-    while (this.jdField_a_of_type_AndroidOsHandler == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new ARScanEntryView.38(this);
-    }
-    long l1 = l2;
-    if (this.jdField_a_of_type_Anhx.a() != null)
-    {
-      l1 = this.jdField_a_of_type_Anhx.a().mARNoResultCheckTime;
-      if (l1 > 0L) {
-        break label126;
-      }
-      l1 = l2;
-    }
-    label126:
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l1);
-      return;
-    }
+    return true;
   }
   
   private void E()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "removeTimeoutCheck");
-    }
+    QLog.d("AREngine_ARScanEntryView", 1, "handleARStartFail");
     this.L = true;
-    this.u = false;
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "do removeTimeoutCheck");
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+    if (this.M == null) {
+      c(HardCodeUtil.a(2131898988));
     }
   }
   
   private void F()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "doAfterAREngineReady = ");
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("checkArDependenceReady time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.aK) }));
     }
-    if (this.jdField_a_of_type_Amtj != null) {
-      this.jdField_a_of_type_Amtj.a(this.jdField_a_of_type_Anfx);
+    boolean bool1 = ARDeviceController.a().b();
+    boolean bool2 = ARDeviceController.a().c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("checkArDependenceReady. isAREnable = ");
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(", isSupportAr = ");
+    ((StringBuilder)localObject).append(bool2);
+    ((StringBuilder)localObject).append(", mIsArSoReady = ");
+    ((StringBuilder)localObject).append(false);
+    ((StringBuilder)localObject).append(", mIsVideoPluginReady = ");
+    ((StringBuilder)localObject).append(false);
+    QLog.i("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    localObject = this.H.getUniformResManger();
+    Activity localActivity = (Activity)this.E;
+    if ((bool1) && (bool2) && (((ScanEntryResourceDelegate)localObject).c(2)) && (((ScanEntryResourceDelegate)localObject).c(8)) && (!this.ag))
+    {
+      localObject = this.V;
+      if ((localObject != null) && (((QQARSession)localObject).u()))
+      {
+        if (!this.V.v()) {
+          u();
+        }
+        if ((this.J) && (this.V.v()) && (this.V.u()) && (this.V.l() == 1)) {
+          this.V.k();
+        }
+      }
+      if (this.H.getARCommonConfig() != null)
+      {
+        if (this.H.getARCommonConfig().isEnableVideoRecord == 1L) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        ARVideoRecordUIControllerImpl.a().a(bool1);
+        QLog.d("AREngine_ARScanEntryView", 1, String.format("checkARVideoRecordEnable enable=%s", new Object[] { Boolean.valueOf(bool1) }));
+      }
+      if ((!this.aL) && (!this.N.hasMessages(321)))
+      {
+        this.N.sendEmptyMessageDelayed(321, 100L);
+        QLog.d("AREngine_ARScanEntryView", 1, "checkArDependenceReady do delay initARView");
+      }
     }
-    awby localawby = this.jdField_a_of_type_Anhx.a();
-    if (localawby != null) {
-      localawby.e(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
-    this.z = true;
   }
   
   private void G()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "doHideNonPromotionUI = ");
+    if (this.aR == null)
+    {
+      this.aR = new ARScanEntryView.35(this);
+      QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck");
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.aS = false;
+    this.N.removeCallbacks(this.aR);
+    this.N.postDelayed(this.aR, 10000L);
   }
   
   private void H()
   {
-    if ((!this.s) || (this.K)) {}
-    while (!this.u) {
-      return;
+    QLog.d("AREngine_ARScanEntryView", 2, "stopDownloadTimeoutCheck");
+    Runnable localRunnable = this.aR;
+    if (localRunnable != null)
+    {
+      this.N.removeCallbacks(localRunnable);
+      this.aR = null;
     }
-    b("updateDownloadProgress");
   }
   
   private void I()
   {
-    QLog.i("AREngine_ARScanEntryView", 1, "checkReadyToStartARSession = " + this.m);
-    if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.c()) && (this.m)) {
-      this.jdField_a_of_type_Anfx.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("addTimeoutCheck mArEnabled=%s mHasCallRemoveTimeoutCheck=%s", new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.aU) }));
+    }
+    if (this.aU) {
+      return;
+    }
+    if (this.N != null)
+    {
+      if (this.M == null) {
+        this.M = new ARScanEntryView.36(this);
+      }
+      ARCommonConfigInfo localARCommonConfigInfo = this.H.getARCommonConfig();
+      long l2 = 8000L;
+      long l1 = l2;
+      if (localARCommonConfigInfo != null)
+      {
+        l1 = this.H.getARCommonConfig().mARNoResultCheckTime;
+        if (l1 <= 0L) {
+          l1 = l2;
+        }
+      }
+      this.N.postDelayed(this.M, l1);
     }
   }
   
-  private void J() {}
+  private void J()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "removeTimeoutCheck");
+    }
+    this.aU = true;
+    this.al = false;
+    if ((this.N != null) && (this.M != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARScanEntryView", 2, "do removeTimeoutCheck");
+      }
+      this.N.removeCallbacks(this.M);
+      this.M = null;
+    }
+  }
   
   private void K()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "checkIfNeedAutoFocus isCameraPrviewing=" + anft.a().b() + ";mIsResumed=" + this.m);
-    if ((anft.a().b()) && (this.m)) {
-      anft.a().a(angf.jdField_a_of_type_Int, angf.jdField_b_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "doAfterAREngineReady = ");
     }
+    Object localObject = this.z;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).a(this.V);
+    }
+    localObject = this.H.getPromotionManager();
+    if (localObject != null) {
+      ((PromotionRes)localObject).f(this.C);
+    }
+    this.au = true;
   }
   
   private void L()
   {
-    QLog.i("AREngine_ARScanEntryView", 1, "stopAutoFoucus ");
-    anft.a().a();
-  }
-  
-  private TouchWebView a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
-      t();
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "doHideNonPromotionUI = ");
     }
-    return this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+    this.av.setVisibility(8);
+    this.p.setVisibility(8);
   }
   
-  private MapView a()
+  private void M()
   {
-    if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView == null)
+    if (this.aj)
     {
-      this.j = false;
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView = new MapView(this.jdField_a_of_type_AndroidContentContext);
-      if (this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getUiSettings() != null)
-      {
-        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getUiSettings().setLogoPosition(0);
-        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getUiSettings().setScaleViewEnabled(false);
-        this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap().getUiSettings().setScrollGesturesEnabled(false);
+      if (this.aS) {
+        return;
       }
-      TencentMap localTencentMap = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.getMap();
-      localTencentMap.setOnCameraChangeListener(new anhb(this));
-      localTencentMap.setOnMapLoadedCallback(new anhc(this));
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.setEnabled(true);
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView.setClickable(true);
+      if (this.al) {
+        d("updateDownloadProgress");
+      }
     }
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsMapView;
+  }
+  
+  private void N()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("checkReadyToStartARSession = ");
+    ((StringBuilder)localObject).append(this.J);
+    QLog.i("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    localObject = this.V;
+    if ((localObject != null) && (((QQARSession)localObject).v()) && (this.J)) {
+      this.V.j();
+    }
+  }
+  
+  private void O() {}
+  
+  private void P()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkIfNeedAutoFocus isCameraPrviewing=");
+    localStringBuilder.append(CameraProxy.a().g());
+    localStringBuilder.append(";mIsResumed=");
+    localStringBuilder.append(this.J);
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+    if ((CameraProxy.a().g()) && (this.J)) {
+      CameraProxy.a().a(UniformGLRenderManagerImpl.b, UniformGLRenderManagerImpl.c);
+    }
+  }
+  
+  private void Q()
+  {
+    QLog.i("AREngine_ARScanEntryView", 1, "stopAutoFoucus ");
+    CameraProxy.a().b();
+  }
+  
+  private boolean R()
+  {
+    SharedPreferences localSharedPreferences = ArMapUtil.a(this.C);
+    boolean bool = localSharedPreferences.getBoolean("key_show_reddot", false);
+    if (!S()) {
+      try
+      {
+        localArMapHandler = (ArMapHandler)this.C.getBusinessHandler(ArMapConstant.a);
+        l1 = localSharedPreferences.getLong("key_ar_act_id", 0L);
+        if (localArMapHandler == null) {}
+      }
+      catch (Exception localException)
+      {
+        ArMapHandler localArMapHandler;
+        long l1;
+        label79:
+        localException.printStackTrace();
+        QLog.d("AREngine_ARScanEntryView", 1, "shouldShowActRedDot  getBusinessHandler fail ");
+        return bool;
+      }
+    }
+    try
+    {
+      localArMapHandler.a(Long.parseLong(this.C.getCurrentAccountUin()), l1);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      StringBuilder localStringBuilder;
+      break label79;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shouldShowActRedDot  result = ");
+      localStringBuilder.append(bool);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
+  private boolean S()
+  {
+    String str1 = ArMapUtil.a(this.C).getString("key_click_reddot_date", null);
+    String str2 = a(NetConnInfoCenter.getServerTimeMillis());
+    boolean bool;
+    if ((str1 != null) && (str1.equals(str2))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasClickedRedDotToday  result = ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",curDate = ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(",clickDate = ");
+      localStringBuilder.append(str1);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   private String a(long paramLong)
   {
-    Object localObject = null;
-    if (this.jdField_a_of_type_JavaTextSimpleDateFormat == null)
+    if (this.aX == null)
     {
-      this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-      this.jdField_a_of_type_JavaTextSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      this.aX = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+      this.aX.setTimeZone(TimeZone.getTimeZone("GMT+8"));
     }
     try
     {
-      String str = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
-      localObject = str;
+      String str = this.aX.format(Long.valueOf(paramLong));
+      return str;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AREngine_ARScanEntryView", 2, "getCurrentDateString exception", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARScanEntryView", 2, "getCurrentDateString exception", localException);
+      }
     }
-    return localObject;
     return null;
-  }
-  
-  private void a(anav paramanav, ArLBSActivity paramArLBSActivity)
-  {
-    if (this.jdField_a_of_type_Amsq == null)
-    {
-      this.jdField_a_of_type_Amsq = new amsq((Activity)this.jdField_a_of_type_AndroidContentContext, a(), this);
-      this.jdField_a_of_type_Amsq.setOnDismissListener(new anha(this));
-    }
-    this.jdField_a_of_type_Amsq.a();
-    this.jdField_a_of_type_Amsq.a(paramanav, paramArLBSActivity);
   }
   
   private void a(ARCommonConfigInfo paramARCommonConfigInfo, long paramLong)
@@ -464,84 +549,53 @@ public class ARScanEntryView
     if ((paramARCommonConfigInfo.recognitions != null) && (paramARCommonConfigInfo.recognitions.size() > 0))
     {
       ArrayList localArrayList = new ArrayList();
+      int i1 = 0;
       if (paramLong != 0L)
       {
         Object localObject = paramARCommonConfigInfo.recognitions.iterator();
-        int k = 0;
         while (((Iterator)localObject).hasNext())
         {
           ARRecognition localARRecognition = (ARRecognition)((Iterator)localObject).next();
-          int m = k;
-          if (localARRecognition.jdField_a_of_type_Long == 12L) {
-            m = 1;
+          int i2 = i1;
+          if (localARRecognition.a == 12L) {
+            i2 = 1;
           }
-          k = m;
-          if ((1 << (int)localARRecognition.jdField_a_of_type_Long & paramLong) != 0L)
+          i1 = i2;
+          if ((1 << (int)localARRecognition.a & paramLong) != 0L)
           {
             localArrayList.add(localARRecognition);
-            k = m;
+            i1 = i2;
           }
         }
-        if ((k == 0) && ((0x1000 & paramLong) != 0L))
+        if ((i1 == 0) && ((paramLong & 0x1000) != 0L))
         {
           localObject = new ARRecognition();
-          ((ARRecognition)localObject).jdField_a_of_type_Long = 12L;
-          ((ARRecognition)localObject).jdField_a_of_type_Int = 1;
-          ((ARRecognition)localObject).jdField_b_of_type_Int = 1;
-          ((ARRecognition)localObject).jdField_c_of_type_Int = 4;
-          ((ARRecognition)localObject).jdField_d_of_type_Int = 1;
+          ((ARRecognition)localObject).a = 12L;
+          ((ARRecognition)localObject).b = 1;
+          ((ARRecognition)localObject).c = 1;
+          ((ARRecognition)localObject).d = 4;
+          ((ARRecognition)localObject).f = 1;
         }
         paramARCommonConfigInfo.recognitions = localArrayList;
       }
     }
   }
   
-  private String b(String paramString)
+  private void a(ARCloudLBSLocationCheckResult.POIInfo paramPOIInfo, ArLBSActivity paramArLBSActivity)
   {
-    paramString = new StringBuilder(paramString);
-    paramString.append("&_wv=");
-    paramString.append(Integer.toString(17367040));
-    return paramString.toString();
-  }
-  
-  private void b(anau paramanau, ArLBSActivity paramArLBSActivity)
-  {
-    if (paramArLBSActivity == null) {
-      new ArLBSActivity();
-    }
-    do
+    if (this.aP == null)
     {
-      return;
-      if (paramanau.jdField_a_of_type_Int == 0)
-      {
-        if (paramanau.jdField_a_of_type_Anav == null)
-        {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramArLBSActivity.f, 1).a();
-          return;
-        }
-        this.jdField_a_of_type_Anfx.h();
-        g(false);
-        a(paramanau.jdField_a_of_type_Anav, paramArLBSActivity);
-        return;
-      }
-      if (paramanau.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_Anfx.g();
-        g(false);
-        if (this.jdField_a_of_type_Bdjz == null) {
-          this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230, paramArLBSActivity.g, paramArLBSActivity.h, alud.a(2131701130), alud.a(2131701122), new angx(this), new angy(this));
-        }
-        this.jdField_a_of_type_Bdjz.setOnDismissListener(new angz(this));
-        this.jdField_a_of_type_Bdjz.show();
-        return;
-      }
-    } while (paramanau.jdField_a_of_type_Int != -1);
+      this.aP = new ARLBSPOIDialog((Activity)this.E, getDailogMapView(), this);
+      this.aP.setOnDismissListener(new ARScanEntryView.32(this));
+    }
+    this.aP.a();
+    this.aP.a(paramPOIInfo, paramArLBSActivity);
   }
   
   private void b(ARCommonConfigInfo paramARCommonConfigInfo)
   {
     QLog.d("AREngine_ARScanEntryView", 1, "doWhenGetARConfig ");
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
+    if (this.af != null) {
       return;
     }
     if ((paramARCommonConfigInfo != null) && (paramARCommonConfigInfo.arControllers != null))
@@ -550,1222 +604,1201 @@ public class ARScanEntryView
       while (localIterator.hasNext())
       {
         ARScanAR localARScanAR = (ARScanAR)localIterator.next();
-        if ((localARScanAR != null) && (localARScanAR.jdField_a_of_type_Int == 1))
+        if ((localARScanAR != null) && (localARScanAR.a == 1))
         {
-          this.jdField_c_of_type_JavaLangString = localARScanAR.j;
-          this.jdField_b_of_type_JavaLangString = localARScanAR.f;
+          this.ae = localARScanAR.q;
+          this.ad = localARScanAR.m;
         }
       }
     }
-    if (!this.D)
+    if (!this.aC)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(325);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(325);
+      this.N.removeMessages(325);
+      this.N.sendEmptyMessage(325);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
-    if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("NoLimitParams", true)) {
-      a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo, this.jdField_a_of_type_AndroidOsBundle.getLong("recognitionMask", 0L));
+    this.af = paramARCommonConfigInfo;
+    if (!this.ah.getBoolean("NoLimitParams", true)) {
+      a(this.af, this.ah.getLong("recognitionMask", 0L));
     }
-    paramARCommonConfigInfo = this.jdField_a_of_type_Anhx.a();
-    ThreadManager.postImmediately(new ARScanEntryView.7(this, this.jdField_b_of_type_Long, paramARCommonConfigInfo), null, false);
+    paramARCommonConfigInfo = this.H.getUniformResManger();
+    ThreadManager.postImmediately(new ARScanEntryView.8(this, this.ai, paramARCommonConfigInfo), null, false);
   }
   
-  private void c(String paramString)
+  private void b(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity)
+  {
+    if (paramArLBSActivity == null)
+    {
+      new ArLBSActivity();
+      return;
+    }
+    if (paramARCloudLBSLocationCheckResult.a == 0)
+    {
+      if (paramARCloudLBSLocationCheckResult.c == null)
+      {
+        QQToast.makeText(this.E, paramArLBSActivity.f, 1).show();
+        return;
+      }
+      this.V.m();
+      setHaveEdge(false);
+      a(paramARCloudLBSLocationCheckResult.c, paramArLBSActivity);
+      return;
+    }
+    if (paramARCloudLBSLocationCheckResult.a == 2)
+    {
+      this.V.k();
+      setHaveEdge(false);
+      if (this.aO == null) {
+        this.aO = DialogUtil.a(this.E, 230, paramArLBSActivity.g, paramArLBSActivity.h, HardCodeUtil.a(2131899883), HardCodeUtil.a(2131898986), new ARScanEntryView.29(this), new ARScanEntryView.30(this));
+      }
+      this.aO.setOnDismissListener(new ARScanEntryView.31(this));
+      this.aO.show();
+      return;
+    }
+    int i1 = paramARCloudLBSLocationCheckResult.a;
+  }
+  
+  private String e(String paramString)
+  {
+    paramString = new StringBuilder(paramString);
+    paramString.append("&_wv=");
+    paramString.append(17367040);
+    return paramString.toString();
+  }
+  
+  private void f(String paramString)
   {
     QLog.d("AREngine_ARScanEntryView", 1, "scanTorch preLaunchToQQBrowseActivity ");
-    paramString = b(paramString);
-    a();
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    paramString = e(paramString);
+    getLazyWebView();
+    TouchWebView localTouchWebView = this.Q;
+    if (localTouchWebView != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onResume();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramString);
+      localTouchWebView.onResume();
+      this.Q.loadUrl(paramString);
     }
-  }
-  
-  private boolean d()
-  {
-    return !this.jdField_a_of_type_AndroidOsBundle.getBoolean("NoLimitParams", true);
-  }
-  
-  private boolean e()
-  {
-    if (this.jdField_a_of_type_Anhx.a() != null) {
-      return this.jdField_a_of_type_Anhx.a().b();
-    }
-    return true;
-  }
-  
-  /* Error */
-  private boolean f()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 350	com/tencent/mobileqq/ar/view/ARScanEntryView:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   4: invokestatic 772	ansd:a	(Lmqq/app/AppRuntime;)Landroid/content/SharedPreferences;
-    //   7: astore 4
-    //   9: aload 4
-    //   11: ldc_w 774
-    //   14: iconst_0
-    //   15: invokeinterface 777 3 0
-    //   20: istore_1
-    //   21: aload_0
-    //   22: invokespecial 779	com/tencent/mobileqq/ar/view/ARScanEntryView:g	()Z
-    //   25: ifne +49 -> 74
-    //   28: aload_0
-    //   29: getfield 350	com/tencent/mobileqq/ar/view/ARScanEntryView:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   32: iconst_2
-    //   33: invokevirtual 785	com/tencent/common/app/AppInterface:getBusinessHandler	(I)Ljava/lang/Object;
-    //   36: checkcast 787	ansb
-    //   39: astore 5
-    //   41: aload 4
-    //   43: ldc_w 789
-    //   46: lconst_0
-    //   47: invokeinterface 790 4 0
-    //   52: lstore_2
-    //   53: aload 5
-    //   55: ifnull +19 -> 74
-    //   58: aload 5
-    //   60: aload_0
-    //   61: getfield 350	com/tencent/mobileqq/ar/view/ARScanEntryView:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   64: invokevirtual 793	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   67: invokestatic 797	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   70: lload_2
-    //   71: invokevirtual 800	ansb:a	(JJ)V
-    //   74: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   77: ifeq +29 -> 106
-    //   80: ldc 159
-    //   82: iconst_2
-    //   83: new 195	java/lang/StringBuilder
-    //   86: dup
-    //   87: invokespecial 196	java/lang/StringBuilder:<init>	()V
-    //   90: ldc_w 802
-    //   93: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: iload_1
-    //   97: invokevirtual 205	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   100: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   106: iload_1
-    //   107: ireturn
-    //   108: astore 4
-    //   110: aload 4
-    //   112: invokevirtual 805	java/lang/Exception:printStackTrace	()V
-    //   115: ldc 159
-    //   117: iconst_1
-    //   118: ldc_w 807
-    //   121: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   124: iload_1
-    //   125: ireturn
-    //   126: astore 4
-    //   128: goto -54 -> 74
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	131	0	this	ARScanEntryView
-    //   20	105	1	bool	boolean
-    //   52	19	2	l	long
-    //   7	35	4	localSharedPreferences	SharedPreferences
-    //   108	3	4	localException	Exception
-    //   126	1	4	localNumberFormatException	java.lang.NumberFormatException
-    //   39	20	5	localansb	ansb
-    // Exception table:
-    //   from	to	target	type
-    //   28	41	108	java/lang/Exception
-    //   58	74	126	java/lang/NumberFormatException
   }
   
   private void g(boolean paramBoolean)
   {
+    if (paramBoolean)
+    {
+      this.N.post(new ARScanEntryView.11(this));
+      return;
+    }
+    this.N.post(new ARScanEntryView.12(this));
+  }
+  
+  private MapView getDailogMapView()
+  {
+    if (this.aQ == null)
+    {
+      this.o = false;
+      this.aQ = new MapView(this.E);
+      if (this.aQ.getMap().getUiSettings() != null)
+      {
+        this.aQ.getMap().getUiSettings().setLogoPosition(0);
+        this.aQ.getMap().getUiSettings().setScaleViewEnabled(false);
+        this.aQ.getMap().getUiSettings().setScrollGesturesEnabled(false);
+      }
+      TencentMap localTencentMap = this.aQ.getMap();
+      localTencentMap.setOnCameraChangeListener(new ARScanEntryView.33(this));
+      localTencentMap.setOnMapLoadedCallback(new ARScanEntryView.34(this));
+      this.aQ.setEnabled(true);
+      this.aQ.setClickable(true);
+    }
+    return this.aQ;
+  }
+  
+  private TouchWebView getLazyWebView()
+  {
+    if (this.Q == null) {
+      x();
+    }
+    return this.Q;
+  }
+  
+  private void h(boolean paramBoolean)
+  {
+    Object localObject = this.W;
+    if (localObject != null)
+    {
+      if (((ARTarget)localObject).a == null) {
+        return;
+      }
+      if (this.W.a.m != null) {
+        this.l = this.W.a.m.c;
+      }
+      if (this.aM)
+      {
+        this.aM = false;
+        localObject = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(170.0F, getResources());
+        ((RelativeLayout.LayoutParams)localObject).addRule(13, 0);
+      }
+      if (paramBoolean) {
+        AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X80069D2", "0X80069D2", 0, 0, "1", this.C.getCurrentAccountUin(), "", "");
+      }
+    }
+  }
+  
+  private void q()
+  {
+    long l1 = System.currentTimeMillis();
+    this.a = ((RelativeLayout)findViewById(2131445137));
+    this.R = ((ViewGroup)findViewById(2131447484));
+    UniformUtils.a(this.E, this.R);
+    this.T = ((TextView)findViewById(2131447486));
+    this.S = ((TextView)findViewById(2131447488));
+    Object localObject = this.ah.getString("Title");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      this.S.setText((CharSequence)localObject);
+    }
+    this.T.setOnClickListener(this);
+    this.T.setContentDescription(HardCodeUtil.a(2131901576));
+    this.p = ((TextView)findViewById(2131428703));
+    this.P = ((FrameLayout)findViewById(2131450086));
+    this.av = ((RelativeLayout)findViewById(2131431387));
+    this.av.setOnTouchListener(this.aI);
+    this.av.setOnClickListener(this);
+    this.av.setContentDescription(HardCodeUtil.a(2131898989));
+    this.aw = ((ScanIconAnimateView)findViewById(2131431390));
+    this.aw.setPopUpListener(new ARScanEntryView.7(this));
+    this.ax = ((ImageView)findViewById(2131433176));
+    localObject = (ViewStub)findViewById(2131428700);
+    if (localObject != null)
+    {
+      ((ViewStub)localObject).inflate();
+      this.at = new ARVideoRecordViewProxy(findViewById(2131428726));
+    }
+    this.aB = ((RelativeLayout)findViewById(2131428696));
+    if (this.z == null)
+    {
+      this.z = new ARTransferDoorLogicManager();
+      localObject = (ScanTorchActivity)this.E;
+      this.z.a(this.C, (ScanTorchActivity)localObject, this.aB);
+      this.z.i = this;
+    }
+    if (this.aC) {
+      L();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("initView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
+    }
+  }
+  
+  private void r()
+  {
+    Activity localActivity = (Activity)this.E;
+    ARVideoRecordUIControllerImpl.a().a(localActivity);
+    ARVideoRecordUIControllerImpl.a().a(localActivity);
+    ARVideoRecordUIControllerImpl.a().a(this.at);
+  }
+  
+  private void s()
+  {
+    if (!QQARSession.s())
+    {
+      QLog.d("AREngine_ARScanEntryView", 1, "ARScanEntryView onCreate error happen");
+      return;
+    }
+    QQARSession localQQARSession = QQARSession.p();
+    this.V = localQQARSession;
+    this.G = localQQARSession;
+    this.V.a(this.E, this.C);
+  }
+  
+  private void setHaveEdge(boolean paramBoolean)
+  {
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_ARScanEntryView", 2, String.format("setHaveEdge flag=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if (this.J == paramBoolean)
+    if (this.aN == paramBoolean)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARScanEntryView", 2, "edge show equal so refuse");
       }
       return;
     }
-    this.J = paramBoolean;
-    if (this.jdField_a_of_type_Anhx.a() != null)
+    this.aN = paramBoolean;
+    if (this.H.getRenderEngine() != null)
     {
-      this.jdField_a_of_type_Anhx.a().a(paramBoolean, 0.0F, 1.0F);
+      this.H.getRenderEngine().a(paramBoolean, 0.0F, 1.0F);
       if (QLog.isColorLevel()) {
         QLog.d("AREngine_ARScanEntryView", 2, String.format("setHaveEdge do real call flag=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.9(this, paramBoolean));
-    this.jdField_a_of_type_Anhx.b(paramBoolean);
-    f(paramBoolean);
+    this.N.post(new ARScanEntryView.10(this, paramBoolean));
+    this.H.b(paramBoolean);
+    setAllowShowEntry(paramBoolean);
   }
   
-  private boolean g()
+  private boolean t()
   {
-    boolean bool2 = false;
-    String str1 = ansd.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).getString("key_click_reddot_date", null);
-    String str2 = a(NetConnInfoCenter.getServerTimeMillis());
-    boolean bool1 = bool2;
-    if (str1 != null)
-    {
-      bool1 = bool2;
-      if (str1.equals(str2)) {
-        bool1 = true;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "hasClickedRedDotToday  result = " + bool1 + ",curDate = " + str2 + ",clickDate = " + str1);
-    }
-    return bool1;
-  }
-  
-  private void h(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.10(this));
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.11(this));
-  }
-  
-  private void i(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Amwo == null) || (this.jdField_a_of_type_Amwo.a == null)) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
-      }
-      if (this.I)
-      {
-        this.I = false;
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
-        localLayoutParams.addRule(13, 0);
-      }
-    } while (!paramBoolean);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D2", "0X80069D2", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "", "");
-  }
-  
-  private void n()
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376034));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377957));
-    angs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377959));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377961));
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("Title");
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    }
-    this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidWidgetTextView.setContentDescription(alud.a(2131701124));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362757));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380173));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364825));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setContentDescription(alud.a(2131701126));
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView = ((ScanIconAnimateView)findViewById(2131364829));
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.setPopUpListener(new anhe(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366369));
-    localObject = (ViewStub)findViewById(2131362754);
-    if (localObject != null)
-    {
-      ((ViewStub)localObject).inflate();
-      this.jdField_a_of_type_Amuu = new amuu(findViewById(2131362780));
-    }
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362750));
-    if (this.jdField_a_of_type_Amtj == null)
-    {
-      this.jdField_a_of_type_Amtj = new amtj();
-      localObject = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
-      this.jdField_a_of_type_Amtj.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (ScanTorchActivity)localObject, this.jdField_c_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_Amtj.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView = this;
-    }
-    if (this.D) {
-      G();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("initView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-    }
-  }
-  
-  private void o()
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    amup.a().a(localActivity);
-    amup.a().a(localActivity);
-    amup.a().a(this.jdField_a_of_type_Amuu);
-  }
-  
-  private void p()
-  {
-    if (!anfx.f())
-    {
-      QLog.d("AREngine_ARScanEntryView", 1, "ARScanEntryView onCreate error happen");
-      return;
-    }
-    anfx localanfx = anfx.a();
-    this.jdField_a_of_type_Anfx = localanfx;
-    this.jdField_a_of_type_Anfl = localanfx;
-    this.jdField_a_of_type_Anfx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-  }
-  
-  private void q()
-  {
-    if (this.r) {
-      return;
-    }
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ARScanStarFaceConfigInfo localARScanStarFaceConfigInfo = amsm.a(localActivity).a();
-    for (;;)
-    {
-      try
-      {
-        if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
-        {
-          long l = System.currentTimeMillis();
-          k = this.jdField_a_of_type_Anfx.a(false, this.B, this.D, false, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo, null, localARScanStarFaceConfigInfo, this, localActivity, this.jdField_a_of_type_Amtj, this.jdField_a_of_type_Anhx.a());
-          ando.a().a(System.currentTimeMillis() - l, k);
-          if ((k != 0) || (!this.jdField_a_of_type_Anfx.c())) {
-            continue;
-          }
-          I();
-        }
-      }
-      catch (Exception localException)
-      {
-        int k;
-        QLog.e("AREngine_ARScanEntryView", 1, "initAr fail.", localException);
-        continue;
-      }
-      this.r = true;
-      return;
-      QLog.e("AREngine_ARScanEntryView", 1, String.format("initAr fail. result=%s", new Object[] { Integer.valueOf(k) }));
-    }
-  }
-  
-  private void r()
-  {
-    if (this.jdField_a_of_type_Awbu != null)
-    {
-      this.jdField_a_of_type_Awbu.a(null);
-      this.jdField_a_of_type_Awbu = null;
-    }
-  }
-  
-  private void s()
-  {
-    if (this.H) {}
-    long l;
-    do
-    {
-      return;
-      this.H = true;
-      l = System.currentTimeMillis();
-      ViewStub localViewStub = (ViewStub)findViewById(2131362747);
-      if (localViewStub != null)
-      {
-        localViewStub.inflate();
-        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView = ((ScanningSurfaceView)super.findViewById(2131376155));
-        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.setVisibility(8);
-        this.jdField_a_of_type_Amxu = new amxu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awaw);
-        this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.jdField_a_of_type_Amxu = this.jdField_a_of_type_Amxu;
-        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView = ((ObjectSurfaceView)super.findViewById(2131371328));
-        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.setVisibility(8);
-        this.jdField_a_of_type_Amxu = new amxu(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awaw);
-        this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.jdField_a_of_type_Amxu = this.jdField_a_of_type_Amxu;
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131380281));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377700));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377701));
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377702));
-        this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131378230));
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setClickable(true);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-        w();
-        y();
-        if (ImmersiveUtils.isSupporImmersive() == 1)
-        {
-          int k = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, k, 0, 0);
-        }
-        u();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AREngine_ARScanEntryView", 2, String.format("lazyInitARView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-  }
-  
-  private void t()
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)
-    {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).b(null);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(4);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(null);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundResource(0);
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getBackground();
-      if (localDrawable != null) {
-        localDrawable.setAlpha(0);
-      }
-      this.jdField_b_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView, localLayoutParams);
-      ando.a().a(System.currentTimeMillis() - l);
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, String.format("lazyInitWebView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      }
-    }
+    return this.ah.getBoolean("NoLimitParams", true) ^ true;
   }
   
   private void u()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("showViewFinder mHasViewFinderShow=%s isPause=%s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(this.l) }));
-    }
-    if ((this.jdField_b_of_type_Boolean) || (this.l)) {}
-    for (;;)
-    {
+    if (this.ag) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_g_of_type_AndroidWidgetTextView != null) {
-        this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      while (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    }
+    Activity localActivity = (Activity)this.E;
+    try
+    {
+      if ((this.V != null) && (this.V.u()))
       {
-        int k = aepi.a(15.0F, getResources());
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2131167140);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, k, k, 0);
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
-        if (this.I)
-        {
-          this.I = false;
-          localLayoutParams.addRule(13, 0);
-        }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-        w();
-        return;
-        if (this.jdField_g_of_type_AndroidWidgetTextView != null) {
-          this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
+        long l1 = System.currentTimeMillis();
+        int i1 = this.V.a(false, this.az, this.aC, false, this.af, null, null, this, localActivity, this.z, this.H.getRenderEngine());
+        ARReport.a().a(System.currentTimeMillis() - l1, i1);
+        if ((i1 == 0) && (this.V.v())) {
+          N();
+        } else {
+          QLog.e("AREngine_ARScanEntryView", 1, String.format("initAr fail. result=%s", new Object[] { Integer.valueOf(i1) }));
         }
       }
     }
+    catch (Exception localException)
+    {
+      QLog.e("AREngine_ARScanEntryView", 1, "initAr fail.", localException);
+    }
+    this.ag = true;
   }
   
   private void v()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "hideViewFinder");
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130845242);
-    int k = aepi.a(15.0F, getResources());
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.bottomMargin = aepi.a(170.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(k, k, k, aepi.a(7.0F, getResources()));
-    if (this.I)
+    PromotionGuide localPromotionGuide = this.aF;
+    if (localPromotionGuide != null)
     {
-      this.I = false;
-      localLayoutParams.addRule(13, 0);
+      localPromotionGuide.a(null);
+      this.aF = null;
     }
-    if (this.jdField_g_of_type_AndroidWidgetTextView != null) {
-      this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    this.jdField_b_of_type_Boolean = false;
   }
   
   private void w()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
+    if (this.aL) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.aL = true;
+    long l1 = System.currentTimeMillis();
+    ViewStub localViewStub = (ViewStub)findViewById(2131428693);
+    if (localViewStub != null)
+    {
+      localViewStub.inflate();
+      this.h = ((ObjectSurfaceView)super.findViewById(2131439510));
+      this.h.setVisibility(8);
+      this.q = new FaceUIController(this.E, this.K);
+      this.h.a = this.q;
+      this.f = ((LinearLayout)super.findViewById(2131450234));
+      this.b = ((TextView)super.findViewById(2131447174));
+      this.c = ((TextView)super.findViewById(2131447175));
+      this.d = ((TextView)super.findViewById(2131447176));
+      this.d.setOnClickListener(this);
+      this.e = ((FrameLayout)super.findViewById(2131447802));
+      this.e.setClickable(true);
+      this.e.setOnClickListener(this);
+      A();
+      C();
+      if (ImmersiveUtils.isSupporImmersive() == 1)
+      {
+        int i1 = ImmersiveUtils.getStatusBarHeight(this.E);
+        this.e.setPadding(0, i1, 0, 0);
+      }
+      y();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("lazyInitARView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
+    }
   }
   
   private void x()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "showTouchView");
+    if (this.Q == null)
+    {
+      long l1 = System.currentTimeMillis();
+      this.Q = ((ScanTorchActivity)this.E).getWebView(null);
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+      this.Q.setVisibility(4);
+      this.Q.setOnScrollChangedListener(null);
+      this.Q.setBackgroundColor(0);
+      this.Q.setBackgroundResource(0);
+      Drawable localDrawable = this.Q.getBackground();
+      if (localDrawable != null) {
+        localDrawable.setAlpha(0);
+      }
+      this.P.setVisibility(0);
+      this.P.addView(this.Q, localLayoutParams);
+      ARReport.a().a(System.currentTimeMillis() - l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_ARScanEntryView", 2, String.format("lazyInitWebView time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Amwo != null) && (this.jdField_a_of_type_Amwo.a != null)) {
-      return;
-    }
-    QLog.d("AREngine_ARScanEntryView", 1, "mArTarget == null || mArTarget.arResourceInfo == null");
   }
   
   private void y()
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("showViewFinder mHasViewFinderShow=%s isPause=%s", new Object[] { Boolean.valueOf(this.r), Boolean.valueOf(this.I) }));
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    if (!this.r)
+    {
+      if (this.I) {
+        return;
+      }
+      this.r = true;
+      Object localObject = this.U;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(0);
+      } else if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
+      if (this.f != null)
+      {
+        int i1 = AIOUtils.b(15.0F, getResources());
+        this.f.setBackgroundResource(2131168376);
+        this.f.setPadding(i1, i1, i1, 0);
+        localObject = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(170.0F, getResources());
+        if (this.aM)
+        {
+          this.aM = false;
+          ((RelativeLayout.LayoutParams)localObject).addRule(13, 0);
+        }
+        this.f.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        A();
+      }
+    }
   }
   
   private void z()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "handleARStartFail");
-    this.n = true;
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      d_(alud.a(2131701125));
-    }
-  }
-  
-  public int a()
-  {
-    return getResources().getDimensionPixelSize(2131298914);
-  }
-  
-  public amts a()
-  {
-    return this.jdField_a_of_type_Anhx.a().a();
-  }
-  
-  public awbu a(boolean paramBoolean)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "getPromotionGuide create = " + paramBoolean);
+      QLog.d("AREngine_ARScanEntryView", 2, "hideViewFinder");
     }
-    if (!this.m) {
-      return null;
+    Object localObject = this.f;
+    if (localObject == null) {
+      return;
     }
-    if ((this.jdField_a_of_type_Awbu == null) && (paramBoolean))
+    ((LinearLayout)localObject).setBackgroundResource(2130847277);
+    int i1 = AIOUtils.b(15.0F, getResources());
+    localObject = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(170.0F, getResources());
+    this.f.setPadding(i1, i1, i1, AIOUtils.b(7.0F, getResources()));
+    if (this.aM)
     {
-      this.jdField_a_of_type_Awbu = new awbu((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Awbu.a(this);
+      this.aM = false;
+      ((RelativeLayout.LayoutParams)localObject).addRule(13, 0);
     }
-    return this.jdField_a_of_type_Awbu;
-  }
-  
-  public String a(String paramString)
-  {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      str = paramString;
-      if (!paramString.startsWith("http")) {
-        str = "http://" + paramString;
-      }
+    localObject = this.U;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(8);
     }
-    return str;
-  }
-  
-  public void a()
-  {
-    QLog.d("AREngine_ARScanEntryView", 2, "ARTransferDoorLogicManager onRenderManagerStarted");
-    if ((this.m) && (this.E) && (this.C))
-    {
-      QLog.d("AREngine_ARScanEntryView", 2, "start for next Time");
-      this.jdField_a_of_type_Amtj.e();
-      this.jdField_a_of_type_Amtj.a(null);
-    }
+    this.r = false;
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    Object localObject = this.N;
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 1, "onARStartComplete mUIhandler null retCode " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onARStartComplete mUIhandler null retCode ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
-      if (localScanTorchActivity.f < 0L) {
-        localScanTorchActivity.f = System.currentTimeMillis();
+      if (paramInt != 7)
+      {
+        if (paramInt != 8) {
+          return;
+        }
+        ((Handler)localObject).sendEmptyMessage(310);
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "onArReady success + time is " + (System.currentTimeMillis() - this.jdField_c_of_type_Long));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "onArReady success-visiable + time is " + (System.currentTimeMillis() - localScanTorchActivity.a()));
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(295);
-      return;
-    case 7: 
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(309);
+      ((Handler)localObject).sendEmptyMessage(309);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(310);
+    localObject = (ScanTorchActivity)this.E;
+    if (((ScanTorchActivity)localObject).mTimeArReady < 0L) {
+      ((ScanTorchActivity)localObject).mTimeArReady = System.currentTimeMillis();
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onArReady success + time is ");
+      localStringBuilder.append(System.currentTimeMillis() - this.aK);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onArReady success-visiable + time is ");
+      localStringBuilder.append(System.currentTimeMillis() - ((ScanTorchActivity)localObject).getTimeActivityVisible());
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    }
+    this.N.sendEmptyMessage(295);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
-      return;
-    case 0: 
-      g(false);
-      E();
-      j();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(306);
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2) {
+          return;
+        }
+        this.A = paramInt2;
+        this.N.sendEmptyMessage(311);
+        return;
+      }
+      this.N.sendEmptyMessage(307);
       return;
     }
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(311);
+    setHaveEdge(false);
+    J();
+    l();
+    this.N.sendEmptyMessage(306);
   }
   
-  public void a(int paramInt1, amwo paramamwo, int paramInt2)
+  public void a(int paramInt1, ARTarget paramARTarget, int paramInt2)
   {
-    if ((paramamwo == null) || (paramamwo.a == null))
+    boolean bool2 = true;
+    int i2;
+    int i1;
+    int i3;
+    StringBuilder localStringBuilder3;
+    if ((paramARTarget != null) && (paramARTarget.a != null))
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, arTarget == null || arTarget.arResourceInfo == null");
-      return;
-    }
-    QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, remainCount " + paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, new Object[] { "onARAnimationStateChanged, mLastArAnimState=", Integer.valueOf(this.jdField_a_of_type_Int), ", newState=", paramInt1 + ", target=" + paramamwo });
-    }
-    label220:
-    int k;
-    boolean bool;
-    int m;
-    switch (paramInt1)
-    {
-    default: 
-    case 0: 
-      for (;;)
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onARAnimationStateChanged, remainCount ");
+      localStringBuilder1.append(paramInt2);
+      QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder1.toString());
+      boolean bool1 = QLog.isColorLevel();
+      i2 = 2;
+      if (bool1)
       {
-        this.jdField_a_of_type_Int = paramInt1;
-        return;
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Amwo = paramamwo;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.21(this, paramamwo));
-        for (paramInt2 = 100;; paramInt2 = 100)
-        {
-          try
-          {
-            switch (paramamwo.a.jdField_d_of_type_Int)
-            {
-            case 0: 
-              azqs.b(null, "CliOper", "", "", "0X80081DF", "0X80081DF", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
-            }
-          }
-          catch (Exception localException1)
-          {
-            for (;;)
-            {
-              QLog.d("AREngine_ARScanEntryView", 1, "0X80081DF ReportController  error " + localException1.getMessage());
-            }
-            this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CC", "0X80069CC", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "2");
-          }
-          if ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (!paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean)) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.22(this, paramamwo));
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
-          return;
-          if (paramamwo.a.j())
-          {
-            paramInt2 = 3;
-            break label1349;
-          }
-          if (!paramamwo.a.d()) {
-            break label1349;
-          }
-          paramInt2 = 0;
-          break label1349;
-          if (paramamwo.a.j())
-          {
-            paramInt2 = 1;
-            break label1355;
-          }
-          if (!paramamwo.a.i()) {
-            break label1355;
-          }
-          paramInt2 = 5;
-          break label1355;
-          if (paramamwo.a.d())
-          {
-            paramInt2 = 2;
-            break label1361;
-          }
-          bool = paramamwo.a.j();
-          if (bool)
-          {
-            paramInt2 = 4;
-            break label1361;
-          }
-          paramInt2 = 6;
-          break label1361;
-          k = 0;
-        }
+        i1 = this.m;
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(paramInt1);
+        localStringBuilder1.append(", target=");
+        localStringBuilder1.append(paramARTarget);
+        QLog.d("AREngine_ARScanEntryView", 2, new Object[] { "onARAnimationStateChanged, mLastArAnimState=", Integer.valueOf(i1), ", newState=", localStringBuilder1.toString() });
       }
-    case 1: 
-      this.jdField_a_of_type_Amwo = paramamwo;
-      if (!paramamwo.a.d()) {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008144", "0X8008144", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "2");
-      }
-      if ((paramamwo.a.jdField_d_of_type_Int != 0) && (paramamwo.a.jdField_d_of_type_Int != 5))
+      i1 = 100;
+      if (paramInt1 != 0)
       {
-        m = amwp.a(paramamwo);
-        k = m;
-        if (m == 0) {
-          k = 2147483647;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARScanEntryView", 2, "AREngineCallback.AR_ANIMATION_STATE_END, remainCount is " + k + ",remainCount" + paramInt2);
-        }
-        if (paramInt2 == 0) {}
-        for (k = 100;; k = 100)
+        if (paramInt1 != 1)
         {
-          try
+          if (paramInt1 != 2)
           {
-            switch (paramamwo.a.jdField_d_of_type_Int)
+            if (paramInt1 == 3)
             {
-            case 0: 
-              label700:
-              azqs.b(null, "CliOper", "", "", "0X80081E1", "0X80081E1", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
+              this.n = false;
+              this.W = null;
+              this.N.post(new ARScanEntryView.24(this));
             }
           }
-          catch (Exception localException2)
+          else
           {
-            for (;;)
+            try
             {
-              QLog.d("AREngine_ARScanEntryView", 1, "0X80081E1 ReportController  error " + localException2.getMessage());
-              continue;
-              bool = false;
+              paramInt2 = paramARTarget.a.e;
+              if (paramInt2 != 0)
+              {
+                if (paramInt2 != 2)
+                {
+                  if (paramInt2 != 3)
+                  {
+                    if (paramInt2 == 4) {
+                      break label1389;
+                    }
+                    i3 = i2;
+                    paramInt2 = i1;
+                  }
+                  else
+                  {
+                    if (paramARTarget.a.d())
+                    {
+                      paramInt2 = 2;
+                      break label1401;
+                    }
+                    if (!paramARTarget.a.j()) {
+                      break label1398;
+                    }
+                    paramInt2 = 4;
+                    break label1401;
+                  }
+                }
+                else
+                {
+                  if (paramARTarget.a.j())
+                  {
+                    paramInt2 = 1;
+                    break label1401;
+                  }
+                  paramInt2 = i1;
+                  if (!paramARTarget.a.i()) {
+                    break label1401;
+                  }
+                  paramInt2 = 5;
+                  break label1401;
+                }
+              }
+              else if (paramARTarget.a.j())
+              {
+                paramInt2 = 3;
+                i3 = i2;
+              }
+              else
+              {
+                i3 = i2;
+                paramInt2 = i1;
+                if (paramARTarget.a.d())
+                {
+                  paramInt2 = 0;
+                  i3 = i2;
+                }
+              }
+              ReportController.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramARTarget.a.f, String.valueOf(paramInt2), String.valueOf(i3), "");
+            }
+            catch (Exception localException1)
+            {
+              localStringBuilder3 = new StringBuilder();
+              localStringBuilder3.append("0X80081E1 ReportController  error ");
+              localStringBuilder3.append(localException1.getMessage());
+              QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder3.toString());
+            }
+            this.n = false;
+            this.W = null;
+            this.N.post(new ARScanEntryView.23(this));
+            AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X80069D0", "0X80069D0", 0, 0, "1", this.C.getCurrentAccountUin(), paramARTarget.a.f, "");
+          }
+        }
+        else
+        {
+          this.W = paramARTarget;
+          if (!paramARTarget.a.d()) {
+            AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X8008144", "0X8008144", 0, 0, "1", this.C.getCurrentAccountUin(), paramARTarget.a.f, "2");
+          }
+          if ((paramARTarget.a.e != 0) && (paramARTarget.a.e != 5))
+          {
+            int i4 = ARVideoUtil.a(paramARTarget);
+            i3 = i4;
+            if (i4 == 0) {
+              i3 = 2147483647;
             }
           }
-          if ((paramamwo.a.jdField_a_of_type_Int != 0) && ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo == null) || (TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))) {
-            break label999;
-          }
-          bool = true;
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.23(this, paramamwo, paramInt2, bool));
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069CF", "0X80069CF", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "");
-          break;
-          if (paramamwo.a.j())
+          else
           {
-            k = 3;
-            break label1377;
+            i3 = 1;
           }
-          if (!paramamwo.a.d()) {
-            break label1377;
-          }
-          k = 0;
-          break label1377;
-          if (paramamwo.a.j())
+          if (QLog.isColorLevel())
           {
-            k = 1;
-            break label1383;
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("AREngineCallback.AR_ANIMATION_STATE_END, remainCount is ");
+            localStringBuilder2.append(i3);
+            localStringBuilder2.append(",remainCount");
+            localStringBuilder2.append(paramInt2);
+            QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder2.toString());
           }
-          if (!paramamwo.a.i()) {
-            break label1383;
+          if (paramInt2 == 0) {
+            try
+            {
+              i3 = paramARTarget.a.e;
+              if (i3 != 0)
+              {
+                if (i3 != 2)
+                {
+                  if (i3 != 3)
+                  {
+                    if (i3 == 4) {
+                      break label1407;
+                    }
+                    i3 = i2;
+                  }
+                  else
+                  {
+                    if (paramARTarget.a.d())
+                    {
+                      i1 = 2;
+                      break label1417;
+                    }
+                    if (!paramARTarget.a.j()) {
+                      break label1413;
+                    }
+                    i1 = 4;
+                    break label1417;
+                  }
+                }
+                else
+                {
+                  if (paramARTarget.a.j())
+                  {
+                    i1 = 1;
+                    break label1417;
+                  }
+                  if (!paramARTarget.a.i()) {
+                    break label1417;
+                  }
+                  i1 = 5;
+                  break label1417;
+                }
+              }
+              else if (paramARTarget.a.j())
+              {
+                i1 = 3;
+                i3 = i2;
+              }
+              else
+              {
+                i3 = i2;
+                if (paramARTarget.a.d())
+                {
+                  i1 = 0;
+                  i3 = i2;
+                }
+              }
+              label814:
+              ReportController.b(null, "CliOper", "", "", "0X80081E1", "0X80081E1", 0, 0, paramARTarget.a.f, String.valueOf(i1), String.valueOf(i3), "");
+            }
+            catch (Exception localException2)
+            {
+              localStringBuilder3 = new StringBuilder();
+              localStringBuilder3.append("0X80081E1 ReportController  error ");
+              localStringBuilder3.append(localException2.getMessage());
+              QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder3.toString());
+            }
           }
-          k = 5;
-          break label1383;
-          if (paramamwo.a.d())
-          {
-            k = 2;
-            break label1389;
+          bool1 = bool2;
+          if (paramARTarget.a.a != 0) {
+            if ((paramARTarget.a.m != null) && (!TextUtils.isEmpty(paramARTarget.a.m.c))) {
+              bool1 = bool2;
+            } else {
+              bool1 = false;
+            }
           }
-          bool = paramamwo.a.j();
-          if (bool)
-          {
-            k = 4;
-            break label1389;
-          }
-          k = 6;
-          break label1389;
-          m = 0;
+          this.N.post(new ARScanEntryView.22(this, paramARTarget, paramInt2, bool1));
+          AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X80069CF", "0X80069CF", 0, 0, "1", this.C.getCurrentAccountUin(), paramARTarget.a.f, "");
         }
       }
-      break;
-    case 2: 
-      label606:
-      label999:
-      paramInt2 = 100;
+      else
+      {
+        this.n = true;
+        this.W = paramARTarget;
+        this.N.post(new ARScanEntryView.20(this, paramARTarget));
+      }
     }
     for (;;)
     {
       try
       {
-        switch (paramamwo.a.jdField_d_of_type_Int)
+        paramInt2 = paramARTarget.a.e;
+        if (paramInt2 != 0)
         {
-        case 0: 
-          azqs.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(paramInt2), String.valueOf(k), "");
+          if (paramInt2 != 2)
+          {
+            if (paramInt2 != 3)
+            {
+              if (paramInt2 == 4) {
+                break label1423;
+              }
+              i3 = i2;
+              paramInt2 = i1;
+            }
+            else
+            {
+              if (paramARTarget.a.d())
+              {
+                paramInt2 = 2;
+                break label1435;
+              }
+              if (!paramARTarget.a.j()) {
+                break label1432;
+              }
+              paramInt2 = 4;
+              break label1435;
+            }
+          }
+          else
+          {
+            if (paramARTarget.a.j())
+            {
+              paramInt2 = 1;
+              break label1435;
+            }
+            paramInt2 = i1;
+            if (!paramARTarget.a.i()) {
+              break label1435;
+            }
+            paramInt2 = 5;
+            break label1435;
+          }
         }
+        else if (paramARTarget.a.j())
+        {
+          paramInt2 = 3;
+          i3 = i2;
+        }
+        else
+        {
+          i3 = i2;
+          paramInt2 = i1;
+          if (paramARTarget.a.d())
+          {
+            paramInt2 = 0;
+            i3 = i2;
+          }
+        }
+        ReportController.b(null, "CliOper", "", "", "0X80081DF", "0X80081DF", 0, 0, paramARTarget.a.f, String.valueOf(paramInt2), String.valueOf(i3), "");
       }
       catch (Exception localException3)
       {
-        QLog.d("AREngine_ARScanEntryView", 1, "0X80081E1 ReportController  error " + localException3.getMessage());
-        continue;
+        localStringBuilder3 = new StringBuilder();
+        localStringBuilder3.append("0X80081DF ReportController  error ");
+        localStringBuilder3.append(localException3.getMessage());
+        QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder3.toString());
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Amwo = null;
-      this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.24(this));
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D0", "0X80069D0", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramamwo.a.jdField_b_of_type_JavaLangString, "");
+      if ((paramARTarget.a.m != null) && (paramARTarget.a.m.b))
+      {
+        this.N.post(new ARScanEntryView.21(this, paramARTarget));
+        this.N.sendEmptyMessageDelayed(312, 100000L);
+        return;
+      }
+      AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X80069CC", "0X80069CC", 0, 0, "1", this.C.getCurrentAccountUin(), paramARTarget.a.f, "2");
+      this.m = paramInt1;
+      return;
+      QLog.d("AREngine_ARScanEntryView", 1, "onARAnimationStateChanged, arTarget == null || arTarget.arResourceInfo == null");
+      return;
+      label1389:
+      i3 = 0;
+      paramInt2 = i1;
       break;
-      if (paramamwo.a.j())
-      {
-        paramInt2 = 3;
-      }
-      else if (paramamwo.a.d())
-      {
-        paramInt2 = 0;
-        break label1404;
-        if (paramamwo.a.j())
-        {
-          paramInt2 = 1;
-          break label1410;
-        }
-        if (!paramamwo.a.i()) {
-          break label1410;
-        }
-        paramInt2 = 5;
-        break label1410;
-        if (paramamwo.a.d())
-        {
-          paramInt2 = 2;
-          break label1416;
-        }
-        bool = paramamwo.a.j();
-        if (bool)
-        {
-          paramInt2 = 4;
-          break label1416;
-        }
-        paramInt2 = 6;
-        break label1416;
-        k = 0;
-        paramInt2 = 100;
-        continue;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Amwo = null;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.25(this));
-        break;
-        k = 1;
-        break label606;
-        k = 2;
-        paramInt2 = 100;
-        break label220;
-        label1349:
-        k = 2;
-        break label220;
-        label1355:
-        k = 1;
-        break label220;
-        label1361:
-        k = 1;
-        break label220;
-        m = 2;
-        k = 100;
-        break label700;
-        label1377:
-        m = 2;
-        break label700;
-        label1383:
-        m = 1;
-        break label700;
-        label1389:
-        m = 1;
-        break label700;
-        k = 2;
-        paramInt2 = 100;
-        continue;
-      }
-      label1404:
-      k = 2;
+      label1398:
+      paramInt2 = 6;
+      label1401:
+      i3 = 1;
+      break;
+      label1407:
+      i3 = 0;
+      break label814;
+      label1413:
+      i1 = 6;
+      label1417:
+      i3 = 1;
+      break label814;
+      label1423:
+      i3 = 0;
+      paramInt2 = i1;
       continue;
-      label1410:
-      k = 1;
-      continue;
-      label1416:
-      k = 1;
+      label1432:
+      paramInt2 = 6;
+      label1435:
+      i3 = 1;
     }
   }
   
   public void a(int paramInt, String paramString)
   {
     QLog.d("AREngine_ARScanEntryView", 2, "onStartLoadUrl");
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.27(this, paramString));
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
+    this.s = true;
+    this.N.post(new ARScanEntryView.26(this, paramString));
+    this.N.sendEmptyMessageDelayed(312, 100000L);
   }
   
-  public void a(long paramLong, int paramInt, amvm paramamvm, ancs paramancs)
+  public void a(long paramLong, int paramInt, ARRenderTrackInfo paramARRenderTrackInfo, ARLocalRecogResultBase paramARLocalRecogResultBase)
   {
-    E();
-    if ((paramLong == 128L) && ((paramancs instanceof ancu)))
+    J();
+    Object localObject;
+    if ((paramLong == 128L) && ((paramARLocalRecogResultBase instanceof ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)))
     {
-      paramancs = (ancu)paramancs;
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 1, " externalRenderResult info is isValidData=" + paramancs.jdField_a_of_type_Boolean + "isNeedShowViewFinder " + paramancs.jdField_b_of_type_Boolean);
+      localObject = (ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)paramARLocalRecogResultBase;
+      if (QLog.isColorLevel())
+      {
+        paramARRenderTrackInfo = new StringBuilder();
+        paramARRenderTrackInfo.append(" externalRenderResult info is isValidData=");
+        paramARRenderTrackInfo.append(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).b);
+        paramARRenderTrackInfo.append("isNeedShowViewFinder ");
+        paramARRenderTrackInfo.append(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).c);
+        QLog.d("AREngine_ARScanEntryView", 1, paramARRenderTrackInfo.toString());
       }
-      if (!paramancs.jdField_a_of_type_Boolean)
+      if (!((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).b)
       {
-        this.y = false;
-        h(paramancs.jdField_b_of_type_Boolean);
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.12(this));
-      }
-    }
-    label432:
-    label458:
-    label634:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder().append("MIG object RectF(协议原始的数据) ");
-              if (paramancs.jdField_a_of_type_Ancy == null) {
-                break;
-              }
-              paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_AndroidGraphicsRectF.toString();
-              QLog.d("AREngine_MIGObjectClassifyResult", 1, paramamvm);
-            }
-            h(false);
-          } while (paramancs.jdField_a_of_type_Ancy == null);
-          Object localObject = new amxp();
-          ((amxp)localObject).jdField_a_of_type_Float = 99.0F;
-          ((amxp)localObject).jdField_c_of_type_JavaLangString = (alud.a(2131701123) + (int)(paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_Double * 100.0D) + "%");
-          if (QLog.isColorLevel()) {
-            QLog.d("AREngine_MIGObjectClassifyResult", 1, " scantorch activitity result ok " + paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_Double);
-          }
-          ((amxp)localObject).jdField_a_of_type_Int = 10;
-          ((amxp)localObject).jdField_a_of_type_AndroidGraphicsRectF = amxp.a(paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_AndroidGraphicsRectF);
-          if (QLog.isColorLevel()) {
-            QLog.d("AREngine_MIGObjectClassifyResult", 1, "MIG mapMigObjectRect2Screen(协议转化后的数据) object RectF " + ((amxp)localObject).jdField_a_of_type_AndroidGraphicsRectF);
-          }
-          ((amxp)localObject).jdField_a_of_type_ArrayOfFloat = null;
-          ((amxp)localObject).h = null;
-          ((amxp)localObject).jdField_c_of_type_Boolean = paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_Boolean;
-          ((amxp)localObject).jdField_d_of_type_Boolean = false;
-          ((amxp)localObject).jdField_a_of_type_Boolean = true;
-          ((amxp)localObject).jdField_b_of_type_Boolean = true;
-          ((amxp)localObject).jdField_e_of_type_Boolean = false;
-          ((amxp)localObject).jdField_a_of_type_JavaLangString = paramancs.jdField_a_of_type_Ancy.jdField_a_of_type_JavaLangString;
-          if (TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_JavaLangString))
-          {
-            paramamvm = " ";
-            ((amxp)localObject).jdField_d_of_type_JavaLangString = paramamvm;
-            if (!TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString)) {
-              break label634;
-            }
-            paramamvm = " ";
-            ((amxp)localObject).jdField_e_of_type_JavaLangString = paramamvm;
-            ((amxp)localObject).jdField_b_of_type_JavaLangString = null;
-            ((amxp)localObject).f = null;
-            ((amxp)localObject).g = paramancs.jdField_a_of_type_Ancy.jdField_d_of_type_JavaLangString;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AREngine_ARScanEntryView", 1, " label name is " + ((amxp)localObject).jdField_a_of_type_JavaLangString + "isAutoJump " + ((amxp)localObject).jdField_c_of_type_Boolean);
-              if (TextUtils.isEmpty(paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString)) {
-                QLog.d("AREngine_ARScanEntryView", 1, " profileContent    null  ");
-              }
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView == null) {
-              break label647;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.post(new ARScanEntryView.13(this));
-          }
-          for (;;)
-          {
-            paramamvm = new ArrayList();
-            paramamvm.add(localObject);
-            this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.setFaceData(paramamvm);
-            return;
-            paramamvm = "error happen";
-            break;
-            paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_b_of_type_JavaLangString;
-            break label432;
-            paramamvm = paramancs.jdField_a_of_type_Ancy.jdField_c_of_type_JavaLangString;
-            break label458;
-            QLog.d("AREngine_ARScanEntryView", 1, " scanningSurfaceView not ready ");
-          }
-          if (paramLong != 4L) {
-            break;
-          }
-          if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw != null))
-          {
-            int k = this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw.a();
-            if ((k != 3) && (k != 2) && (k != 0)) {
-              j();
-            }
-          }
-          if ((QLog.isColorLevel()) && (ancc.jdField_a_of_type_Boolean)) {
-            QLog.d("AREngine_ARScanEntryView", 2, "onARTrackComplete, recogType = " + paramLong + ",trackMode = " + paramInt + ",trackResult = " + paramamvm + ",localRecogResult = " + paramancs + ",isPause = " + this.h);
-          }
-        } while ((this.h) || (paramLong != 4L) || (!(paramancs instanceof ancg)));
-        paramamvm = (ancg)paramancs;
-      } while (paramamvm == null);
-      paramancs = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      if ((paramamvm.jdField_a_of_type_JavaUtilArrayList != null) && (paramamvm.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {}
-      for (;;)
-      {
-        if (!paramamvm.jdField_a_of_type_Boolean) {
-          break label994;
-        }
-        this.jdField_g_of_type_Boolean = false;
-        if (this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.c();
-          this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a();
-          this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.post(new ARScanEntryView.15(this));
-        }
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.16(this));
+        this.ar = false;
+        g(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).c);
+        this.N.post(new ARScanEntryView.13(this));
         return;
-        j();
-        break;
-        if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.isShowing()) && (!paramancs.isFinishing())) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.14(this));
+      }
+      if (QLog.isColorLevel())
+      {
+        paramARLocalRecogResultBase = new StringBuilder();
+        paramARLocalRecogResultBase.append("MIG object RectF(协议原始的数据) ");
+        if (((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e != null) {
+          paramARRenderTrackInfo = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.b.toString();
+        } else {
+          paramARRenderTrackInfo = "error happen";
+        }
+        paramARLocalRecogResultBase.append(paramARRenderTrackInfo);
+        QLog.d("AREngine_MIGObjectClassifyResult", 1, paramARLocalRecogResultBase.toString());
+      }
+      g(false);
+      if (((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e == null) {
+        return;
+      }
+      DrawView2.FaceData localFaceData = new DrawView2.FaceData();
+      localFaceData.o = 99.0F;
+      paramARRenderTrackInfo = new StringBuilder();
+      paramARRenderTrackInfo.append(HardCodeUtil.a(2131898987));
+      paramARRenderTrackInfo.append((int)(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.d * 100.0D));
+      paramARRenderTrackInfo.append("%");
+      localFaceData.g = paramARRenderTrackInfo.toString();
+      if (QLog.isColorLevel())
+      {
+        paramARRenderTrackInfo = new StringBuilder();
+        paramARRenderTrackInfo.append(" scantorch activitity result ok ");
+        paramARRenderTrackInfo.append(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.d);
+        QLog.d("AREngine_MIGObjectClassifyResult", 1, paramARRenderTrackInfo.toString());
+      }
+      localFaceData.f = 10;
+      localFaceData.c = DrawView2.FaceData.a(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.b);
+      if (QLog.isColorLevel())
+      {
+        paramARRenderTrackInfo = new StringBuilder();
+        paramARRenderTrackInfo.append("MIG mapMigObjectRect2Screen(协议转化后的数据) object RectF ");
+        paramARRenderTrackInfo.append(localFaceData.c);
+        QLog.d("AREngine_MIGObjectClassifyResult", 1, paramARRenderTrackInfo.toString());
+      }
+      localFaceData.a = null;
+      localFaceData.p = null;
+      localFaceData.n = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.i;
+      localFaceData.q = false;
+      localFaceData.h = true;
+      localFaceData.m = true;
+      localFaceData.r = false;
+      localFaceData.d = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.c;
+      boolean bool = TextUtils.isEmpty(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.e);
+      paramARLocalRecogResultBase = " ";
+      if (bool) {
+        paramARRenderTrackInfo = " ";
+      } else {
+        paramARRenderTrackInfo = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.e;
+      }
+      localFaceData.i = paramARRenderTrackInfo;
+      if (TextUtils.isEmpty(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.f)) {
+        paramARRenderTrackInfo = paramARLocalRecogResultBase;
+      } else {
+        paramARRenderTrackInfo = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.f;
+      }
+      localFaceData.j = paramARRenderTrackInfo;
+      localFaceData.e = null;
+      localFaceData.k = null;
+      localFaceData.l = ((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.g;
+      if (QLog.isColorLevel())
+      {
+        paramARRenderTrackInfo = new StringBuilder();
+        paramARRenderTrackInfo.append(" label name is ");
+        paramARRenderTrackInfo.append(localFaceData.d);
+        paramARRenderTrackInfo.append("isAutoJump ");
+        paramARRenderTrackInfo.append(localFaceData.n);
+        QLog.d("AREngine_ARScanEntryView", 1, paramARRenderTrackInfo.toString());
+        if (TextUtils.isEmpty(((ARMIGObjectClassifyResult.ARMigObjectClassifyExternalRenderResult)localObject).e.f)) {
+          QLog.d("AREngine_ARScanEntryView", 1, " profileContent    null  ");
         }
       }
-      if (!this.jdField_g_of_type_Boolean)
+      paramARRenderTrackInfo = this.h;
+      if (paramARRenderTrackInfo == null)
       {
-        this.jdField_g_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.17(this));
+        QLog.d("AREngine_ARScanEntryView", 1, " mObjectSurfaceView not ready ");
+        return;
       }
-      if (this.jdField_a_of_type_Long < 0L) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView == null);
-    label647:
-    label994:
-    if (this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.post(new ARScanEntryView.18(this));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.setFaceData(paramamvm.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void a(long paramLong, amwo paramamwo)
-  {
-    E();
-    j();
-    if ((paramamwo == null) || (paramamwo.a == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete empty value");
-      }
-    }
-    for (;;)
-    {
+      paramARRenderTrackInfo.post(new ARScanEntryView.14(this));
+      paramARRenderTrackInfo = new ArrayList();
+      paramARRenderTrackInfo.add(localFaceData);
+      this.h.setFaceData(paramARRenderTrackInfo);
       return;
-      if (!this.G) {}
-      try
+    }
+    if (paramLong == 4L)
+    {
+      localObject = this.q;
+      if ((localObject != null) && (((FaceUIController)localObject).a != null))
       {
-        localObject = this.jdField_a_of_type_Anfx.a();
-        if (localObject != null)
-        {
-          ((ArrayList)localObject).size();
-          ((ArrayList)localObject).toString();
+        int i1 = this.q.a.b();
+        if ((i1 != 3) && (i1 != 2) && (i1 != 0)) {
+          l();
         }
       }
-      catch (Exception localException)
-      {
-        Object localObject;
-        label68:
-        Intent localIntent;
-        break label68;
+    }
+    else
+    {
+      l();
+    }
+    if ((QLog.isColorLevel()) && (ARLocalFaceRecog.a))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onARTrackComplete, recogType = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",trackMode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",trackResult = ");
+      ((StringBuilder)localObject).append(paramARRenderTrackInfo);
+      ((StringBuilder)localObject).append(",localRecogResult = ");
+      ((StringBuilder)localObject).append(paramARLocalRecogResultBase);
+      ((StringBuilder)localObject).append(",isPause = ");
+      ((StringBuilder)localObject).append(this.x);
+      QLog.d("AREngine_ARScanEntryView", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((!this.x) && (paramLong == 4L) && ((paramARLocalRecogResultBase instanceof ARLocalFaceRecogResult)))
+    {
+      paramARRenderTrackInfo = (ARLocalFaceRecogResult)paramARLocalRecogResultBase;
+      if (paramARRenderTrackInfo == null) {
+        return;
       }
-      this.G = true;
-      if (!paramamwo.a.f()) {
-        if ((paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
-        {
-          this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.8(this, paramamwo));
-          if (!this.jdField_c_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(306);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageAtTime(313, 100L);
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(312, 100000L);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete start jump :" + paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString);
-          }
+      paramARLocalRecogResultBase = (Activity)this.E;
+      if ((paramARRenderTrackInfo.c == null) || (paramARRenderTrackInfo.c.size() <= 0))
+      {
+        localObject = this.q;
+        if ((localObject != null) && (((FaceUIController)localObject).b != null) && (this.q.b.isShowing()) && (!paramARLocalRecogResultBase.isFinishing())) {
+          this.N.post(new ARScanEntryView.15(this));
         }
-        else if ((paramamwo.a.jdField_d_of_type_Int == 6) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) && (paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
-        {
-          azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, "1", "0", "");
-          paramamwo = paramamwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
-          localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-          if (a(paramamwo))
-          {
-            localIntent = new Intent("android.intent.action.VIEW");
-            localIntent.setData(Uri.parse(paramamwo));
-            localIntent.addFlags(268435456);
-            localIntent.addCategory("android.intent.category.DEFAULT");
-            localIntent.setPackage(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getPackageName());
-            this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-          }
-          while ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-          {
-            ((Activity)localObject).overridePendingTransition(2130771997, 0);
-            return;
-            localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
-            localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
-            localIntent.putExtra("url", paramamwo);
-            localIntent.putExtra("finish_animation_up_down", true);
-            ((Activity)localObject).startActivity(localIntent);
-          }
-        }
+      }
+      if (paramARRenderTrackInfo.b)
+      {
+        this.w = false;
+        this.N.post(new ARScanEntryView.16(this));
+        return;
+      }
+      if (!this.w)
+      {
+        this.w = true;
+        this.N.post(new ARScanEntryView.17(this));
+      }
+      if (this.y < 0L) {
+        this.y = System.currentTimeMillis();
       }
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean, amwo paramamwo)
+  public void a(long paramLong, ARTarget paramARTarget)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onAREnableModelRender, isEnable = " + paramBoolean);
+    J();
+    l();
+    if ((paramARTarget == null) || (paramARTarget.a == null) || (!this.aG)) {}
+    try
+    {
+      localObject = this.V.F();
+      if (localObject != null)
+      {
+        ((ArrayList)localObject).size();
+        ((ArrayList)localObject).toString();
+      }
     }
-    int k;
+    catch (Exception localException)
+    {
+      Object localObject;
+      label55:
+      Intent localIntent;
+      break label55;
+    }
+    this.aG = true;
+    if (paramARTarget.a.f()) {
+      return;
+    }
+    if ((paramARTarget.a.m != null) && (paramARTarget.a.m.b) && (paramARTarget.a.m.a) && (!TextUtils.isEmpty(paramARTarget.a.m.c)))
+    {
+      this.N.post(new ARScanEntryView.9(this, paramARTarget));
+      if (!this.s)
+      {
+        this.N.sendEmptyMessage(306);
+        this.N.sendEmptyMessageAtTime(313, 100L);
+        this.N.sendEmptyMessageDelayed(312, 100000L);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onARRecogComplete start jump :");
+        ((StringBuilder)localObject).append(paramARTarget.a.m.c);
+        QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if ((paramARTarget.a.e == 6) && (paramARTarget.a.m != null) && (!paramARTarget.a.m.b) && (paramARTarget.a.m.a) && (!TextUtils.isEmpty(paramARTarget.a.m.c)))
+    {
+      ReportController.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, paramARTarget.a.f, "1", "0", "");
+      paramARTarget = paramARTarget.a.m.c;
+      localObject = (Activity)this.E;
+      if (a(paramARTarget))
+      {
+        localIntent = new Intent("android.intent.action.VIEW");
+        localIntent.setData(Uri.parse(paramARTarget));
+        localIntent.addFlags(268435456);
+        localIntent.addCategory("android.intent.category.DEFAULT");
+        localIntent.setPackage(this.C.getApp().getPackageName());
+        this.E.startActivity(localIntent);
+      }
+      else
+      {
+        localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
+        localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+        localIntent.putExtra("url", paramARTarget);
+        localIntent.putExtra("finish_animation_up_down", true);
+        ((Activity)localObject).startActivity(localIntent);
+      }
+      if ((this.E instanceof Activity)) {
+        ((Activity)localObject).overridePendingTransition(2130772014, 0);
+      }
+    }
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 1, "onARRecogComplete empty value");
+    }
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, ARTarget paramARTarget)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("onAREnableModelRender, isEnable = ");
+      localStringBuilder1.append(paramBoolean);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder1.toString());
+    }
+    int i1 = 1;
     if (!paramBoolean) {
-      k = 100;
+      i1 = 100;
     }
     for (;;)
     {
       try
       {
-        switch (paramamwo.a.jdField_d_of_type_Int)
+        i2 = paramARTarget.a.e;
+        if (i2 != 0)
         {
-        case 0: 
-          azqs.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramamwo.a.jdField_b_of_type_JavaLangString, String.valueOf(k), String.valueOf(m), "");
+          if (i2 != 2)
+          {
+            if (i2 != 3)
+            {
+              if (i2 == 4) {
+                break label425;
+              }
+            }
+            else
+            {
+              if (paramARTarget.a.d())
+              {
+                i1 = 2;
+                break label435;
+              }
+              if (!paramARTarget.a.j()) {
+                break label431;
+              }
+              i1 = 4;
+              break label435;
+            }
+          }
+          else
+          {
+            if (paramARTarget.a.j())
+            {
+              i1 = 1;
+              break label435;
+            }
+            if (!paramARTarget.a.i()) {
+              break label435;
+            }
+            i1 = 5;
+            break label435;
+          }
+        }
+        else if (paramARTarget.a.j()) {
+          i1 = 3;
+        } else if (paramARTarget.a.d()) {
+          i1 = 0;
         }
       }
       catch (Exception localException)
       {
-        QLog.d("AREngine_ARScanEntryView", 1, "0X80081E0 ReportController  error " + localException.getMessage());
-        continue;
-        g(true);
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.19(this));
-        return;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("0X80081E0 ReportController  error ");
+        localStringBuilder2.append(localException.getMessage());
+        QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder2.toString());
       }
-      if ((!this.jdField_a_of_type_JavaUtilHashMap.containsValue(Integer.valueOf(0))) || (!paramamwo.a.d()))
+      ReportController.b(null, "CliOper", "", "", "0X80081E0", "0X80081E0", 0, 0, paramARTarget.a.f, String.valueOf(i1), String.valueOf(i2), "");
+      if ((!this.as.containsValue(Integer.valueOf(0))) || (!paramARTarget.a.d()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AREngine_ARScanEntryView", 2, "onARStateChanged, AR_RECOG_STATE_LOST in");
         }
-        if (this.o != true) {}
-      }
-      else
-      {
+        if (this.aa == true) {
+          return;
+        }
+        setHaveEdge(true);
+        this.N.post(new ARScanEntryView.18(this));
         return;
-        if (paramamwo.a.j())
+        if ((paramARTarget.a.a != 1) || (paramARTarget.a.g != 0)) {
+          i1 = 0;
+        }
+        if ((i1 == 0) || (paramARTarget.a.d()))
         {
-          k = 3;
-          break label433;
+          setHaveEdge(false);
+          this.N.post(new ARScanEntryView.19(this));
         }
-        if (!paramamwo.a.d()) {
-          break label433;
-        }
-        k = 0;
-        break label433;
-        if (paramamwo.a.j())
-        {
-          k = 1;
-          break label439;
-        }
-        if (!paramamwo.a.i()) {
-          break label439;
-        }
-        k = 5;
-        break label439;
-        if (paramamwo.a.d())
-        {
-          k = 2;
-          break label445;
-        }
-        paramBoolean = paramamwo.a.j();
-        if (paramBoolean)
-        {
-          k = 4;
-          break label445;
-        }
-        k = 6;
-        break label445;
-        m = 0;
-        k = 100;
-        continue;
       }
-      if ((paramamwo.a.jdField_a_of_type_Int == 1) && (paramamwo.a.e == 0)) {}
-      for (k = 1; (k == 0) || (paramamwo.a.d()); k = 0)
-      {
-        g(false);
-        this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.20(this));
-        return;
-      }
-      continue;
-      int m = 2;
-      k = 100;
-      continue;
-      label433:
-      m = 2;
-      continue;
-      label439:
-      m = 1;
-      continue;
-      label445:
-      m = 1;
-    }
-  }
-  
-  public void a(amts paramamts)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "loadTransferDoorGuide ");
-    }
-    awbu localawbu = a(true);
-    if (localawbu == null) {
       return;
+      int i2 = 2;
+      continue;
+      label425:
+      i2 = 0;
+      continue;
+      label431:
+      i1 = 6;
+      label435:
+      i2 = 1;
     }
-    localawbu.a(paramamts);
-  }
-  
-  public void a(anau paramanau, ArLBSActivity paramArLBSActivity)
-  {
-    QLog.d("AREngine_ARScanEntryView", 2, "onLBSLocationComplete. retCode = " + paramanau.jdField_a_of_type_Int + ", LBSActivity = " + paramArLBSActivity);
-    ThreadManager.getUIHandler().post(new ARScanEntryView.30(this, paramanau, paramArLBSActivity));
   }
   
   public void a(Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("downloadItems", 14L);
-    this.D = this.jdField_a_of_type_AndroidOsBundle.getBoolean("arTransferPromotion", false);
-    this.B = this.jdField_a_of_type_AndroidOsBundle.getBoolean("enableARCloud", true);
-    if (this.jdField_b_of_type_AndroidViewView == null)
+    long l1 = System.currentTimeMillis();
+    this.N = new Handler(this);
+    this.ah = paramBundle;
+    this.ai = this.ah.getLong("downloadItems", 14L);
+    this.aC = this.ah.getBoolean("arTransferPromotion", false);
+    this.az = this.ah.getBoolean("enableARCloud", true);
+    if (this.F == null)
     {
-      paramBundle = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560836, this, false);
+      paramBundle = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131627301, this, false);
       addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-      n();
-      o();
-      this.jdField_b_of_type_AndroidViewView = paramBundle;
+      q();
+      r();
+      this.F = paramBundle;
     }
-    this.jdField_a_of_type_Awaw = new awaw(this.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.jdField_b_of_type_AndroidViewView, new angw(this));
-    this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
-    p();
-    anft.a().a(this);
+    this.K = new ARTipsManager(this.E, (RelativeLayout)this.F, new ARScanEntryView.6(this));
+    this.O = ThreadManager.getSubThreadHandler();
+    s();
+    CameraProxy.a().a(this);
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("onCreate time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) }));
     }
-    this.z = false;
-    this.k = true;
+    this.au = false;
+    this.D = true;
+  }
+  
+  public void a(PromotionConfigInfo.PromotionItem paramPromotionItem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "loadTransferDoorGuide ");
+    }
+    PromotionGuide localPromotionGuide = d(true);
+    if (localPromotionGuide == null) {
+      return;
+    }
+    localPromotionGuide.a(paramPromotionItem);
   }
   
   public void a(ARCommonConfigInfo paramARCommonConfigInfo)
@@ -1775,596 +1808,837 @@ public class ARScanEntryView
   
   public void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onCommonCallbackFromUI, config=" + paramArCloudConfigInfo1 + ", action=" + paramInt1 + ", result=" + paramInt2 + ", data=" + paramObject);
+    if (QLog.isColorLevel())
+    {
+      paramArCloudConfigInfo2 = new StringBuilder();
+      paramArCloudConfigInfo2.append("onCommonCallbackFromUI, config=");
+      paramArCloudConfigInfo2.append(paramArCloudConfigInfo1);
+      paramArCloudConfigInfo2.append(", action=");
+      paramArCloudConfigInfo2.append(paramInt1);
+      paramArCloudConfigInfo2.append(", result=");
+      paramArCloudConfigInfo2.append(paramInt2);
+      paramArCloudConfigInfo2.append(", data=");
+      paramArCloudConfigInfo2.append(paramObject);
+      QLog.d("AREngine_ARScanEntryView", 2, paramArCloudConfigInfo2.toString());
     }
   }
   
-  public void a(ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj)
+  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.26(this, paramamvj, paramArVideoResourceInfo));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLBSLocationComplete. retCode = ");
+    localStringBuilder.append(paramARCloudLBSLocationCheckResult.a);
+    localStringBuilder.append(", LBSActivity = ");
+    localStringBuilder.append(paramArLBSActivity);
+    QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    ThreadManager.getUIHandler().post(new ARScanEntryView.28(this, paramARCloudLBSLocationCheckResult, paramArLBSActivity));
   }
   
-  public void a(String paramString, amts paramamts, boolean paramBoolean)
+  public void a(ArVideoResourceInfo paramArVideoResourceInfo, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "tryToEnterTransferMode[" + paramString + "], mIsTransferDoorMode[" + this.E + "], ready[" + paramBoolean + "]");
-    this.E = true;
-    this.D = true;
-    if (paramamts != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(paramamts.jdField_b_of_type_JavaLangString);
+    this.N.post(new ARScanEntryView.25(this, paramARRenderMangerInnerCallback, paramArVideoResourceInfo));
+  }
+  
+  public void a(String paramString, PromotionConfigInfo.PromotionItem paramPromotionItem, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tryToEnterTransferMode[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], mIsTransferDoorMode[");
+    localStringBuilder.append(this.aD);
+    localStringBuilder.append("], ready[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+    this.aD = true;
+    this.aC = true;
+    if (paramPromotionItem != null) {
+      this.S.setText(paramPromotionItem.f);
     }
-    G();
-    if ((this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((anfx)this.jdField_a_of_type_Amtj.jdField_a_of_type_JavaLangRefWeakReference.get()).q();
+    L();
+    if ((this.z.j != null) && (this.z.j.get() != null)) {
+      ((QQARSession)this.z.j.get()).G();
     }
-    if ((!paramBoolean) || (paramamts == null)) {
-      return;
+    if (paramBoolean)
+    {
+      if (paramPromotionItem == null) {
+        return;
+      }
+      this.aE = true;
+      e(false);
+      b(1);
+      paramString = paramPromotionItem.a();
+      this.z.a(2);
+      this.z.d();
+      this.z.g();
+      this.z.a(paramString);
+      J();
+      l();
     }
-    this.F = true;
-    d(false);
-    b(1);
-    paramString = paramamts.a();
-    this.jdField_a_of_type_Amtj.a(2);
-    this.jdField_a_of_type_Amtj.c();
-    this.jdField_a_of_type_Amtj.e();
-    this.jdField_a_of_type_Amtj.a(paramString);
-    E();
-    j();
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (this.jdField_a_of_type_Awaw != null)
+    if (this.K != null)
     {
-      QLog.w("AREngine_ARScanEntryView", 1, "showTipsWithProgress, from[" + paramString1 + "], tips[" + paramString2 + "], progress[" + paramInt + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]");
-      this.jdField_a_of_type_Awaw.a(paramString2, paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTipsWithProgress, from[");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("], tips[");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("], progress[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], isVisible[");
+      localStringBuilder.append(this.K.c());
+      localStringBuilder.append("]");
+      QLog.w("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+      this.K.a(paramString2, paramInt);
     }
   }
   
-  public void a(String paramString1, String paramString2, awbi paramawbi)
+  public void a(String paramString1, String paramString2, ARTipsManager.ButtonClickListener paramButtonClickListener)
   {
-    if (this.jdField_a_of_type_Awaw != null)
+    if (this.K != null)
     {
-      QLog.d("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString1 + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]", new Throwable("打印调用栈"));
-      this.jdField_a_of_type_Awaw.a(paramString1, paramString2, paramawbi);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showErrorTips, str[");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("], isVisible[");
+      localStringBuilder.append(this.K.c());
+      localStringBuilder.append("]");
+      QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
+      this.K.a(paramString1, paramString2, paramButtonClickListener);
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && ((this.F) || (this.v)) && (!this.n))
+    if ((paramBoolean) && ((this.aE) || (this.am)) && (!this.L))
     {
-      QLog.w("AREngine_ARScanEntryView", 1, "showLoadProgress, 已经在穿越门里面了, from[" + paramString + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showLoadProgress, 已经在穿越门里面了, from[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    this.jdField_a_of_type_Anhx.a();
-    int i2 = (this.jdField_d_of_type_Int + this.jdField_c_of_type_Int) / 2;
-    QLog.d("AREngine_ARScanEntryView", 1, "showLoadProgress mCurrentAsyncProgress:=" + this.jdField_d_of_type_Int + ",mCurrentSyncProgress:=" + this.jdField_c_of_type_Int);
-    int k;
-    label142:
-    int m;
-    if ((this.jdField_a_of_type_Amuu != null) && (this.jdField_a_of_type_Amuu.a()))
-    {
-      k = 1;
-      awby localawby = this.jdField_a_of_type_Anhx.a();
-      if ((localawby == null) || (!this.D)) {
-        break label274;
-      }
-      paramBoolean = localawby.c();
-      m = localawby.a();
+    this.H.getUniformResManger();
+    int i4 = (this.ao + this.an) / 2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showLoadProgress mCurrentAsyncProgress:=");
+    ((StringBuilder)localObject).append(this.ao);
+    ((StringBuilder)localObject).append(",mCurrentSyncProgress:=");
+    ((StringBuilder)localObject).append(this.an);
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    localObject = this.at;
+    paramBoolean = false;
+    int i1;
+    if ((localObject != null) && (((ARVideoRecordViewProxy)localObject).d())) {
+      i1 = 1;
+    } else {
+      i1 = 0;
     }
-    for (;;)
+    localObject = this.H.getPromotionManager();
+    int i2;
+    if ((localObject != null) && (this.aC))
     {
-      int i1 = i2;
-      if (paramBoolean) {
-        i1 = (i2 + m) / 2;
-      }
-      if (k != 0) {
-        j();
-      }
-      for (;;)
-      {
-        B();
-        if (this.x) {
-          break;
-        }
-        this.x = true;
-        azqs.b(null, "dc00898", "", "", "0X80085B6", "0X80085B6", 0, 0, "", "", "", "");
-        return;
-        k = 0;
-        break label142;
-        a(paramString, alud.a(2131701131), i1);
-      }
-      label274:
-      m = 0;
-      paramBoolean = false;
+      paramBoolean = ((PromotionRes)localObject).f();
+      i2 = ((PromotionRes)localObject).b();
+    }
+    else
+    {
+      i2 = 0;
+    }
+    int i3 = i4;
+    if (paramBoolean) {
+      i3 = (i4 + i2) / 2;
+    }
+    if (i1 != 0) {
+      l();
+    } else {
+      a(paramString, HardCodeUtil.a(2131898993), i3);
+    }
+    G();
+    if (!this.aq)
+    {
+      this.aq = true;
+      ReportController.b(null, "dc00898", "", "", "0X80085B6", "0X80085B6", 0, 0, "", "", "", "");
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "onEnginePause resetFaceUI = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnginePause resetFaceUI = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      this.jdField_g_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.c();
-      this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a();
-      this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.post(new ARScanEntryView.28(this));
-      this.jdField_a_of_type_AndroidOsHandler.post(new ARScanEntryView.29(this));
+      this.w = false;
+      this.N.post(new ARScanEntryView.27(this));
     }
-  }
-  
-  public boolean a()
-  {
-    return this.m;
   }
   
   public boolean a(String paramString)
   {
+    boolean bool2 = StringUtil.isEmpty(paramString);
     boolean bool1 = false;
-    boolean bool2 = false;
-    if (bdnn.a(paramString)) {}
-    do
+    if (bool2) {
+      return false;
+    }
+    Object localObject = paramString.toLowerCase();
+    if ((((String)localObject).startsWith("mqqapi://miniapp/open")) || (((String)localObject).startsWith("mqqapi://microapp/open"))) {
+      bool1 = true;
+    }
+    if (QLog.isColorLevel())
     {
-      return bool2;
-      String str = paramString.toLowerCase();
-      if ((str.startsWith("mqqapi://miniapp/open")) || (str.startsWith("mqqapi://microapp/open"))) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("AREngine_ARScanEntryView", 2, "checkUrlIsMiniAppJumpSchema, retValue is " + bool1 + ",strUrl" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkUrlIsMiniAppJumpSchema, retValue is ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(",strUrl");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("AREngine_ARScanEntryView", 2, ((StringBuilder)localObject).toString());
+    }
     return bool1;
+  }
+  
+  public String b(String paramString)
+  {
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = paramString;
+      if (!paramString.startsWith("https"))
+      {
+        if (paramString.startsWith("http")) {
+          return paramString;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("https://");
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    return localObject;
   }
   
   public void b()
   {
     QLog.i("AREngine_ARScanEntryView", 1, "onStartPreviewSuccess");
-    I();
-    J();
-    K();
+    N();
+    O();
+    P();
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "showTransferDoorGuideText textIndex = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTransferDoorGuideText textIndex = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
-    if (a(false) == null) {
+    if (d(false) == null) {
       return;
     }
-    this.jdField_a_of_type_Awbu.a(paramInt);
+    this.aF.a(paramInt);
   }
   
   public void b(int paramInt1, int paramInt2) {}
   
-  public void b(String paramString)
-  {
-    a(paramString, false);
-  }
-  
   public void b(boolean paramBoolean) {}
   
-  public boolean b()
+  public void bZ_()
   {
-    return (this.C) && (this.m) && (this.jdField_a_of_type_Anfx.b() == 2);
+    QLog.d("AREngine_ARScanEntryView", 2, "ARTransferDoorLogicManager onRenderManagerStarted");
+    if ((this.J) && (this.aD) && (this.aA))
+    {
+      QLog.d("AREngine_ARScanEntryView", 2, "start for next Time");
+      this.z.g();
+      this.z.a(null);
+    }
   }
   
   public void c()
   {
     QLog.d("AREngine_ARScanEntryView", 1, "onResume ");
     super.c();
-    K();
-    if ((!this.D) && (!this.E)) {
-      g(true);
+    P();
+    if ((!this.aC) && (!this.aD)) {
+      setHaveEdge(true);
     }
-    this.h = false;
-    if (!this.jdField_b_of_type_Boolean) {
-      u();
+    this.x = false;
+    if (!this.r) {
+      y();
     }
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onResume();
+    Object localObject = this.Q;
+    if (localObject != null) {
+      ((TouchWebView)localObject).onResume();
     }
-    if (this.p) {
-      g(true);
+    if (this.ab) {
+      setHaveEdge(true);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    localObject = this.as;
+    if (localObject != null) {
+      ((HashMap)localObject).clear();
     }
-    if (this.o == true)
+    if (this.aa == true)
     {
-      g(true);
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(4);
+      setHaveEdge(true);
+      localObject = this.Q;
+      if (localObject != null) {
+        ((TouchWebView)localObject).setVisibility(4);
       }
     }
-    this.o = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.isShowing())) {
-      this.jdField_a_of_type_Amxu.jdField_a_of_type_Bdjz.dismiss();
+    this.aa = false;
+    this.s = false;
+    this.t = false;
+    localObject = this.q;
+    if ((localObject != null) && (((FaceUIController)localObject).b != null) && (this.q.b.isShowing())) {
+      this.q.b.dismiss();
     }
-    if ((this.jdField_a_of_type_Amxu != null) && (this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw != null)) {
-      this.jdField_a_of_type_Amxu.jdField_a_of_type_Awaw.a();
+    localObject = this.q;
+    if ((localObject != null) && (((FaceUIController)localObject).a != null)) {
+      this.q.a.a();
     }
-    if (this.jdField_a_of_type_Amtj != null) {
-      this.jdField_a_of_type_Amtj.b();
+    localObject = this.z;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).c();
     }
-    amup.a().a();
+    ARVideoRecordUIControllerImpl.a().b();
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.K != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showErrorTips, str[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], isVisible[");
+      localStringBuilder.append(this.K.c());
+      localStringBuilder.append("]");
+      QLog.w("AREngine_ARScanEntryView", 1, localStringBuilder.toString(), new Throwable("打印调用栈"));
+      this.K.a(paramString);
+    }
   }
   
   public void c(boolean paramBoolean)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "doAfterProviderViewClose isPromotionPage =  " + d() + "mHasReachEntryReady:" + this.z);
-    if ((d()) || (paramBoolean) || (!this.z)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doAfterProviderViewClose isPromotionPage =  ");
+    localStringBuilder.append(t());
+    localStringBuilder.append("mHasReachEntryReady:");
+    localStringBuilder.append(this.au);
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+    if ((t()) || (paramBoolean) || (!this.au)) {
       e();
     }
+  }
+  
+  public PromotionGuide d(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPromotionGuide create = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
+    }
+    if (!this.J) {
+      return null;
+    }
+    if ((this.aF == null) && (paramBoolean))
+    {
+      this.aF = new PromotionGuide((Activity)this.E);
+      this.aF.a(this);
+    }
+    return this.aF;
   }
   
   public void d()
   {
     QLog.d("AREngine_ARScanEntryView", 1, "onPause ");
-    g(false);
-    L();
-    if (this.jdField_a_of_type_Amtj != null) {
-      this.jdField_a_of_type_Amtj.g();
+    setHaveEdge(false);
+    Q();
+    Object localObject = this.z;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).k();
     }
-    amup.a().e();
-    this.h = true;
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onPause();
+    ARVideoRecordUIControllerImpl.a().i();
+    this.x = true;
+    localObject = this.Q;
+    if (localObject != null) {
+      ((TouchWebView)localObject).onPause();
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
+    localObject = this.N;
+    if (localObject != null) {
+      ((Handler)localObject).sendEmptyMessage(307);
     }
-    if (this.jdField_a_of_type_Amsq != null) {
-      this.jdField_a_of_type_Amsq.dismiss();
+    localObject = this.aP;
+    if (localObject != null) {
+      ((ARLBSPOIDialog)localObject).dismiss();
     }
-    if (this.jdField_a_of_type_Bdjz != null) {
-      this.jdField_a_of_type_Bdjz.dismiss();
+    localObject = this.aO;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
     }
     super.d();
   }
   
-  public void d(boolean paramBoolean)
+  public void d(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "showTransferDoorGuideImage show = " + paramBoolean);
-    }
-    if (a(true) == null) {
-      return;
-    }
-    this.jdField_a_of_type_Awbu.a(paramBoolean);
-  }
-  
-  public void d_(String paramString)
-  {
-    if (this.jdField_a_of_type_Awaw != null)
-    {
-      QLog.w("AREngine_ARScanEntryView", 1, "showErrorTips, str[" + paramString + "], isVisible[" + this.jdField_a_of_type_Awaw.a() + "]", new Throwable("打印调用栈"));
-      this.jdField_a_of_type_Awaw.a(paramString);
-    }
+    a(paramString, false);
   }
   
   public void e()
   {
     QLog.d("AREngine_ARScanEntryView", 1, "onDestroy ");
-    if (this.A) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("dc00898", "", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8008614", "0X8008614", 0, 0, "", "", "", "");
+    if (this.ay) {
+      AppIntefaceReportWrap.a(this.C, "dc00898", "", this.C.getCurrentAccountUin(), "0X8008614", "0X8008614", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_Anhx.a().f();
-    if ((this.jdField_a_of_type_Anfx != null) && (this.jdField_a_of_type_Anfx.b()))
+    this.H.getUniformResManger().f();
+    Object localObject = this.V;
+    if ((localObject != null) && (((QQARSession)localObject).u()))
     {
-      this.jdField_a_of_type_Anfx.i();
-      this.jdField_a_of_type_Anfx.j();
+      this.V.n();
+      this.V.o();
     }
-    this.jdField_a_of_type_Anfx = null;
-    anfx.r();
-    anft.a().b(this);
-    if (this.jdField_a_of_type_Amtj != null)
+    this.V = null;
+    QQARSession.r();
+    CameraProxy.a().b(this);
+    localObject = this.z;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Amtj.h();
-      this.jdField_a_of_type_Amtj = null;
+      ((ARTransferDoorLogicManager)localObject).l();
+      this.z = null;
     }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ansc);
-    amup.a().f();
+    this.C.removeObserver(this.aW);
+    ARVideoRecordUIControllerImpl.a().j();
     removeAllViews();
-    this.jdField_b_of_type_AndroidViewView = null;
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ScanTorchActivity))) {
-      ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).h();
+    this.F = null;
+    if ((this.E != null) && ((this.E instanceof ScanTorchActivity))) {
+      ((ScanTorchActivity)this.E).doReport();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView != null)
+    localObject = this.aw;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.d();
-      this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView = null;
+      ((ScanIconAnimateView)localObject).e();
+      this.aw.b();
+      this.aw = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    localObject = this.N;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+      this.N = null;
     }
-    this.s = false;
-    this.t = false;
-    this.u = false;
-    this.K = false;
-    r();
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = null;
-    this.r = false;
-    this.k = false;
-    this.n = false;
-    this.H = false;
+    this.aj = false;
+    this.ak = false;
+    this.al = false;
+    this.aS = false;
+    v();
+    this.af = null;
+    this.ag = false;
+    this.D = false;
+    this.L = false;
+    this.aL = false;
     super.e();
   }
   
   public void e(boolean paramBoolean)
   {
-    Object localObject = new StringBuilder().append("updateDownloadStatus, from[");
-    if (!paramBoolean)
+    if (QLog.isColorLevel())
     {
-      bool = true;
-      localObject = ((StringBuilder)localObject).append(bool).append("]!mAfterDependenceTimeout=");
-      if (this.s) {
-        break label96;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTransferDoorGuideImage show = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
-    label96:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("AREngine_ARScanEntryView", 1, bool + ";mIsDownloadTimeout=" + this.K);
-      if (((this.s) || (paramBoolean)) && (!this.K)) {
-        break label101;
-      }
-      return;
-      bool = false;
-      break;
-    }
-    label101:
-    localObject = this.jdField_a_of_type_Anhx.a();
-    awby localawby = this.jdField_a_of_type_Anhx.a();
-    if ((this.D) && (localawby != null)) {}
-    for (bool = localawby.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);; bool = true)
-    {
-      QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 2222, " + ((anga)localObject).a() + ";" + bool);
-      if ((((anga)localObject).a()) && (bool))
-      {
-        if ((!this.t) && (!this.u) && (!paramBoolean)) {
-          break;
-        }
-        j();
-        this.t = false;
-        this.u = false;
-        C();
-        return;
-      }
-      int k;
-      if (this.D) {
-        if ((localawby != null) && (!localawby.a()) && (!((anga)localObject).b())) {
-          k = 1;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("AREngine_ARScanEntryView", 1, "updateDownloadStatus 333, " + ((anga)localObject).b());
-        if (k == 0) {
-          break label406;
-        }
-        a("AR组件加载失败", alud.a(2131701129), new anhd(this, (anga)localObject, localawby));
-        this.v = true;
-        this.t = true;
-        C();
-        if (this.w) {
-          break;
-        }
-        this.w = true;
-        azqs.b(null, "dc00898", "", "", "0X80085B5", "0X80085B5", 0, 0, "", "", "", "");
-        return;
-        k = 0;
-        continue;
-        if (!((anga)localObject).b()) {
-          k = 1;
-        } else {
-          k = 0;
-        }
-      }
-      label406:
-      b("updateDownloadStatus");
-      this.u = true;
+    if (d(true) == null) {
       return;
     }
+    this.aF.a(paramBoolean);
   }
   
   public void f()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewShow. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anfx.b());
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onProviderViewShow. mQQARSession mCurrentStatus:=");
+    ((StringBuilder)localObject).append(this.V.l());
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    this.aK = System.currentTimeMillis();
     super.f();
-    K();
-    D();
-    if (!this.D)
+    P();
+    I();
+    if (!this.aC)
     {
-      J();
-      g(true);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ansc);
-      if (f())
+      O();
+      setHaveEdge(true);
+      this.C.addObserver(this.aW);
+      if (R())
       {
-        this.A = true;
-        Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+        this.ay = true;
+        Looper.myQueue().addIdleHandler(this.aH);
       }
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_Amtj != null) {
-        this.jdField_a_of_type_Amtj.b();
-      }
-      amup.a().a();
+      setHaveEdge(false);
+    }
+    localObject = this.z;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).c();
+    }
+    ARVideoRecordUIControllerImpl.a().b();
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateDownloadStatus, from[");
+    ((StringBuilder)localObject).append(paramBoolean ^ true);
+    ((StringBuilder)localObject).append("]!mAfterDependenceTimeout=");
+    ((StringBuilder)localObject).append(this.aj ^ true);
+    ((StringBuilder)localObject).append(";mIsDownloadTimeout=");
+    ((StringBuilder)localObject).append(this.aS);
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    if (((!this.aj) && (!paramBoolean)) || (this.aS)) {
       return;
-      g(false);
+    }
+    localObject = this.H.getUniformResManger();
+    PromotionRes localPromotionRes = this.H.getPromotionManager();
+    boolean bool1;
+    if ((this.aC) && (localPromotionRes != null)) {
+      bool1 = localPromotionRes.e(this.C);
+    } else {
+      bool1 = true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateDownloadStatus 2222, ");
+    localStringBuilder.append(((ScanEntryResourceDelegate)localObject).j());
+    localStringBuilder.append(";");
+    localStringBuilder.append(bool1);
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+    boolean bool2 = ((ScanEntryResourceDelegate)localObject).j();
+    int i2 = 0;
+    if ((bool2) && (bool1))
+    {
+      if ((this.ak) || (this.al) || (paramBoolean))
+      {
+        l();
+        this.ak = false;
+        this.al = false;
+        H();
+      }
+    }
+    else
+    {
+      if (this.aC)
+      {
+        i1 = i2;
+        if (localPromotionRes == null) {
+          break label312;
+        }
+        i1 = i2;
+        if (localPromotionRes.d()) {
+          break label312;
+        }
+        i1 = i2;
+        if (((ScanEntryResourceDelegate)localObject).k()) {
+          break label312;
+        }
+      }
+      else
+      {
+        i1 = i2;
+        if (((ScanEntryResourceDelegate)localObject).k()) {
+          break label312;
+        }
+      }
+      int i1 = 1;
+      label312:
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateDownloadStatus 333, ");
+      localStringBuilder.append(((ScanEntryResourceDelegate)localObject).k());
+      QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
+      if (i1 != 0)
+      {
+        a("AR组件加载失败", HardCodeUtil.a(2131898992), new ARScanEntryView.37(this, (ScanEntryResourceDelegate)localObject, localPromotionRes));
+        this.am = true;
+        this.ak = true;
+        H();
+        if (!this.ap)
+        {
+          this.ap = true;
+          ReportController.b(null, "dc00898", "", "", "0X80085B5", "0X80085B5", 0, 0, "", "", "", "");
+        }
+      }
+      else
+      {
+        d("updateDownloadStatus");
+        this.al = true;
+      }
     }
   }
   
   public void g()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onProviderViewClose. mQQARSession mCurrentStatus:=" + this.jdField_a_of_type_Anfx.b());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onProviderViewClose. mQQARSession mCurrentStatus:=");
+    ((StringBuilder)localObject).append(this.V.l());
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
     super.g();
-    L();
-    this.jdField_a_of_type_Anhx.a().f();
-    g(false);
-    E();
-    j();
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.d();
-    this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-    Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Ansc);
-    if (this.jdField_a_of_type_Amtj != null) {
-      this.jdField_a_of_type_Amtj.g();
+    Q();
+    this.H.getUniformResManger().f();
+    setHaveEdge(false);
+    J();
+    l();
+    this.aw.e();
+    this.aw.b();
+    Looper.myQueue().removeIdleHandler(this.aH);
+    this.C.removeObserver(this.aW);
+    localObject = this.z;
+    if (localObject != null) {
+      ((ARTransferDoorLogicManager)localObject).k();
     }
-    amup.a().e();
-    this.jdField_a_of_type_Anhx.b(true);
-    this.L = false;
+    ARVideoRecordUIControllerImpl.a().i();
+    this.H.b(true);
+    this.aU = false;
+  }
+  
+  public PromotionConfigInfo.PromotionItem getCurrentPromotionItem()
+  {
+    return this.H.getPromotionManager().a();
+  }
+  
+  public int getTitleBarHeight()
+  {
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
   public void h()
   {
-    this.i = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(312);
-    QLog.d("AREngine_ARScanEntryView", 1, "scanTorch notifyRenderReady " + this.jdField_d_of_type_Boolean);
-    if (this.jdField_d_of_type_Boolean)
+    this.B = true;
+    this.N.removeMessages(312);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scanTorch notifyRenderReady ");
+    ((StringBuilder)localObject).append(this.t);
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
+    if (this.t)
     {
       i();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(313);
+      this.N.sendEmptyMessage(307);
+      this.N.removeMessages(313);
     }
-    if (this.jdField_a_of_type_Anfx != null) {
-      this.jdField_a_of_type_Anfx.p();
+    localObject = this.V;
+    if (localObject != null) {
+      ((QQARSession)localObject).E();
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i1 = paramMessage.what;
+    if (i1 != 295)
     {
-    }
-    do
-    {
-      do
+      if (i1 != 296)
       {
-        do
+        if (i1 != 321)
         {
-          do
+          if (i1 != 352)
           {
-            do
+            if (i1 != 324)
             {
-              do
+              if (i1 != 325)
               {
-                do
+                switch (i1)
                 {
-                  do
+                default: 
+                  return true;
+                case 313: 
+                  this.N.sendEmptyMessageDelayed(313, 50L);
+                  this.A += 1;
+                  paramMessage = this.g;
+                  if (paramMessage == null) {
+                    break;
+                  }
+                  paramMessage.setTotalProgress(this.A);
+                  return true;
+                case 312: 
+                  paramMessage = this.Q;
+                  if (paramMessage == null) {
+                    break;
+                  }
+                  paramMessage.onPause();
+                  return true;
+                case 311: 
+                  paramMessage = this.g;
+                  if (paramMessage == null) {
+                    break;
+                  }
+                  paramMessage.setTotalProgress(this.A);
+                  return true;
+                case 310: 
+                  E();
+                  return true;
+                case 309: 
+                  E();
+                  return true;
+                case 308: 
+                  E();
+                  return true;
+                case 307: 
+                  paramMessage = this.g;
+                  if (paramMessage == null) {
+                    break;
+                  }
+                  this.a.removeView(paramMessage);
+                  this.g = null;
+                  if (this.ac)
                   {
-                    return true;
-                  } while (this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView != null);
+                    paramMessage = this.N;
+                    if (paramMessage != null) {
+                      paramMessage.sendEmptyMessageDelayed(352, 2500L);
+                    }
+                  }
+                  QLog.d("AREngine_ARScanEntryView", 1, "MSG_HIDE_SCAN_SUCCESS_PROGRESS,juhua has call finished ");
+                  return true;
+                case 306: 
+                  if (this.g != null) {
+                    break;
+                  }
                   paramMessage = new RelativeLayout.LayoutParams(-1, -1);
-                  this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView = new ScanSuccessView(this.jdField_a_of_type_AndroidContentContext);
-                  this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setBackgroundColor(2130706432);
-                  this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setScale(azkz.jdField_a_of_type_Int);
-                  this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView, paramMessage);
-                  this.jdField_a_of_type_AndroidOsHandler.removeMessages(352);
-                } while (!e());
-                g(false);
-                this.q = true;
-                return true;
-              } while (this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView == null);
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView);
-              this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView = null;
-              if ((this.q) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-                this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(352, 2500L);
+                  this.g = new ScanSuccessView(this.E);
+                  this.g.setBackgroundColor(2130706432);
+                  this.g.setScale(ScreenUtil.SCREEN_WIDTH);
+                  this.a.addView(this.g, paramMessage);
+                  this.N.removeMessages(352);
+                  if (!D()) {
+                    break;
+                  }
+                  setHaveEdge(false);
+                  this.ac = true;
+                  return true;
+                }
               }
-              QLog.d("AREngine_ARScanEntryView", 1, "MSG_HIDE_SCAN_SUCCESS_PROGRESS,juhua has call finished ");
+              else
+              {
+                if (!TextUtils.isEmpty(this.ad))
+                {
+                  paramMessage = this.p;
+                  if (paramMessage != null) {
+                    paramMessage.setText(this.ad.replace("\\n", "\n"));
+                  }
+                }
+                if ((!this.aC) && (!this.aD))
+                {
+                  paramMessage = this.p;
+                  if (paramMessage != null)
+                  {
+                    paramMessage.setVisibility(0);
+                    return true;
+                  }
+                }
+              }
+            }
+            else
+            {
+              F();
               return true;
-            } while (this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView == null);
-            this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setTotalProgress(this.jdField_b_of_type_Int);
-            return true;
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(313, 50L);
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView == null);
-          this.jdField_a_of_type_ComTencentMobileqqArmapScanSuccessView.setTotalProgress(this.jdField_b_of_type_Int);
+            }
+          }
+          else
+          {
+            paramMessage = (Activity)this.E;
+            if ((this.ac) && (!paramMessage.isFinishing()))
+            {
+              setHaveEdge(true);
+              return true;
+            }
+          }
+        }
+        else
+        {
+          w();
           return true;
-          paramMessage = (Activity)this.jdField_a_of_type_AndroidContentContext;
-        } while ((!this.q) || (paramMessage.isFinishing()));
-        g(true);
-        return true;
-        A();
-        return true;
-        s();
-        return true;
-        QLog.d("AREngine_ARScanEntryView", 1, "start AR ready");
-        i(false);
-        this.C = true;
-        F();
-        return true;
-        z();
-        return true;
-        z();
-        return true;
-        z();
-        return true;
-        z();
-        return true;
-      } while (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.onPause();
-      return true;
-      if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_d_of_type_AndroidWidgetTextView != null)) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString.replace("\\n", "\n"));
+        }
       }
-    } while ((this.D) || (this.E) || (this.jdField_d_of_type_AndroidWidgetTextView == null));
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+      else
+      {
+        E();
+        return true;
+      }
+    }
+    else
+    {
+      QLog.d("AREngine_ARScanEntryView", 1, "start AR ready");
+      h(false);
+      this.aA = true;
+      K();
+    }
     return true;
   }
   
   public void i()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "scanTorch notifyRenderReady isNotifyRecivied " + this.i);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scanTorch notifyRenderReady isNotifyRecivied ");
+    ((StringBuilder)localObject).append(this.B);
+    QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
     if (Build.VERSION.SDK_INT >= 16)
     {
-      a();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      amup.a().b(6);
+      getLazyWebView();
+      this.Q.setVisibility(0);
+      this.S.setVisibility(8);
+      ARVideoRecordUIControllerImpl.a().b(6);
     }
-    for (;;)
+    else
     {
-      if (this.i)
-      {
-        zdb.b();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(307);
-      }
-      return;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("ar_model", Build.MODEL);
-      localHashMap.put("ar_type", "3");
-      localHashMap.put("ar_reason", "1");
-      azri.a(BaseApplication.getContext()).a("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("ar_model", Build.MODEL);
+      ((HashMap)localObject).put("ar_type", "3");
+      ((HashMap)localObject).put("ar_reason", "1");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidARException", true, 0L, 0L, (HashMap)localObject, "", true);
+    }
+    if (this.B)
+    {
+      ARTransparentWebviewPlugin.b();
+      this.N.sendEmptyMessage(307);
     }
   }
   
-  public void j()
+  public boolean j()
   {
-    if (this.jdField_a_of_type_Awaw != null)
+    return this.J;
+  }
+  
+  public boolean k()
+  {
+    return (this.aA) && (this.J) && (this.V.l() == 2);
+  }
+  
+  public void l()
+  {
+    ARTipsManager localARTipsManager = this.K;
+    if (localARTipsManager != null)
     {
       Throwable localThrowable = null;
-      if (this.jdField_a_of_type_Awaw.a()) {
+      if (localARTipsManager.c()) {
         localThrowable = new Throwable("打印调用栈");
       }
       QLog.w("AREngine_ARScanEntryView", 1, "hideTips", localThrowable);
-      this.jdField_a_of_type_Awaw.a();
+      this.K.a();
     }
   }
   
-  public void k()
+  public void m()
   {
-    e(false);
+    f(false);
   }
   
   public void onAttachedToWindow()
@@ -2375,128 +2649,145 @@ public class ARScanEntryView
   
   public void onClick(View paramView)
   {
-    Object localObject1 = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
-    label312:
-    label459:
-    Object localObject2;
-    switch (paramView.getId())
+    Object localObject2 = (ScanTorchActivity)this.E;
+    int i1 = paramView.getId();
+    Object localObject1;
+    Object localObject3;
+    if (i1 != 2131431387)
     {
-    default: 
-      return;
-    case 2131377959: 
-      ((ScanTorchActivity)localObject1).a(false);
-      return;
-    case 2131378230: 
-      if (QLog.isColorLevel()) {
-        QLog.i("AREngine_ARScanEntryView", 2, "onClick R.id.touch_view");
-      }
-      if ((this.jdField_a_of_type_Amwo != null) && (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString)))
+      if (i1 != 2131447486)
       {
-        if (this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_b_of_type_Boolean) {
-          break label503;
-        }
-        azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "0", "1", "");
-        if (this.jdField_a_of_type_Amwo.a.c()) {
-          azqs.b(null, "CliOper", "", "", "0X80098D1", "0X80098D1", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "1", "0", "");
-        }
-        paramView = this.jdField_a_of_type_Amwo.a.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo.jdField_a_of_type_JavaLangString;
-        ((ScanTorchActivity)localObject1).setResult(11);
-        amup.a().b(3);
-        if (!a(paramView)) {
-          break label459;
-        }
-        localObject1 = new Intent("android.intent.action.VIEW");
-        ((Intent)localObject1).setData(Uri.parse(paramView));
-        ((Intent)localObject1).addFlags(268435456);
-        ((Intent)localObject1).addCategory("android.intent.category.DEFAULT");
-        ((Intent)localObject1).setPackage(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getPackageName());
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
-        this.p = true;
-      }
-      for (;;)
-      {
-        if ((this.jdField_a_of_type_Amwo != null) && (!this.jdField_a_of_type_Amwo.a.d())) {
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "2");
-        }
-        y();
-        if ((this.jdField_a_of_type_Amwo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString))) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", "0X80069D1", "0X80069D1", 0, 0, "1", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "");
-        return;
-        localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_sacan");
-        ((Intent)localObject2).putExtra("url", a(paramView));
-        ((ScanTorchActivity)localObject1).startActivity((Intent)localObject2);
-        break label312;
-        label503:
-        azqs.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.jdField_a_of_type_Amwo.a.jdField_b_of_type_JavaLangString, "0", "0", "");
-        this.o = true;
-        g(false);
-        v();
-        w();
-        if (this.jdField_a_of_type_Anfx != null)
+        if (i1 == 2131447802)
         {
-          this.jdField_a_of_type_Anfx.a(1L);
-          this.jdField_a_of_type_Anfx.l();
+          if (QLog.isColorLevel()) {
+            QLog.i("AREngine_ARScanEntryView", 2, "onClick R.id.touch_view");
+          }
+          localObject1 = this.W;
+          if ((localObject1 != null) && (((ARTarget)localObject1).a.m != null) && (!TextUtils.isEmpty(this.W.a.m.c)))
+          {
+            if (!this.W.a.m.b)
+            {
+              ReportController.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.W.a.f, "0", "1", "");
+              if (this.W.a.c()) {
+                ReportController.b(null, "CliOper", "", "", "0X80098D1", "0X80098D1", 0, 0, this.W.a.f, "1", "0", "");
+              }
+              localObject1 = this.W.a.m.c;
+              ((ScanTorchActivity)localObject2).setResult(11);
+              ARVideoRecordUIControllerImpl.a().b(3);
+              if (a((String)localObject1))
+              {
+                localObject2 = new Intent("android.intent.action.VIEW");
+                ((Intent)localObject2).setData(Uri.parse((String)localObject1));
+                ((Intent)localObject2).addFlags(268435456);
+                ((Intent)localObject2).addCategory("android.intent.category.DEFAULT");
+                ((Intent)localObject2).setPackage(this.C.getApp().getPackageName());
+                this.E.startActivity((Intent)localObject2);
+              }
+              else
+              {
+                localObject3 = new Intent((Context)localObject2, QQBrowserActivity.class);
+                ((Intent)localObject3).putExtra("big_brother_source_key", "biz_src_jc_sacan");
+                ((Intent)localObject3).putExtra("url", b((String)localObject1));
+                ((ScanTorchActivity)localObject2).startActivity((Intent)localObject3);
+              }
+              this.ab = true;
+            }
+            else
+            {
+              ReportController.b(null, "CliOper", "", "", "0X80081E2", "0X80081E2", 0, 0, this.W.a.f, "0", "0", "");
+              this.aa = true;
+              setHaveEdge(false);
+              z();
+              A();
+              localObject1 = this.V;
+              if (localObject1 != null)
+              {
+                ((QQARSession)localObject1).a(1L);
+                this.V.y();
+              }
+              i();
+            }
+            localObject1 = this.W;
+            if ((localObject1 != null) && (!((ARTarget)localObject1).a.d())) {
+              AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X8008145", "0X8008145", 0, 0, "1", this.C.getCurrentAccountUin(), this.W.a.f, "2");
+            }
+            C();
+          }
+          localObject1 = this.W;
+          if ((localObject1 != null) && (!TextUtils.isEmpty(((ARTarget)localObject1).a.f))) {
+            AppIntefaceReportWrap.a(this.C, "CliOper", "", "", "0X80069D1", "0X80069D1", 0, 0, "1", this.C.getCurrentAccountUin(), this.W.a.f, "");
+          }
         }
-        i();
+      }
+      else {
+        ((ScanTorchActivity)localObject2).doOnBackPressed(false);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "find button clicked what2scanUrl = " + this.jdField_c_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("dc00898", "", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8008615", "0X8008615", 0, 0, "", "", "", "");
-    paramView = ansd.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "isPendulumRunning runiing");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("find button clicked what2scanUrl = ");
+        ((StringBuilder)localObject1).append(this.ae);
+        QLog.d("AREngine_ARScanEntryView", 2, ((StringBuilder)localObject1).toString());
+      }
+      AppIntefaceReportWrap.a(this.C, "dc00898", "", this.C.getCurrentAccountUin(), "0X8008615", "0X8008615", 0, 0, "", "", "", "");
+      localObject1 = ArMapUtil.a(this.C);
+      if (this.aw.c())
+      {
+        this.aw.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARScanEntryView", 2, "isPendulumRunning runiing");
+        }
+      }
+      this.ax.setVisibility(4);
+      if (((SharedPreferences)localObject1).getBoolean("key_show_reddot", false))
+      {
+        localObject3 = a(NetConnInfoCenter.getServerTimeMillis());
+        ((SharedPreferences)localObject1).edit().putString("key_click_reddot_date", (String)localObject3).commit();
+        ((SharedPreferences)localObject1).edit().putBoolean("key_show_reddot", false).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARScanEntryView", 2, "isPendulumRunning KEY_SHOW_REDDOT true");
+        }
+      }
+      try
+      {
+        localObject1 = this.ae;
+        if (TextUtils.isEmpty(this.ae)) {
+          localObject1 = "https://ti.qq.com/arinfo/index.html?_nav_alpha=true";
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("find button clicked jumpurl  = ");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          QLog.d("AREngine_ARScanEntryView", 2, ((StringBuilder)localObject3).toString());
+        }
+        localObject3 = new Intent((Context)localObject2, QQBrowserActivity.class);
+        ((Intent)localObject3).putExtra("big_brother_source_key", "biz_src_jc_sacan");
+        ((Intent)localObject3).putExtra("url", (String)localObject1);
+        ((Intent)localObject3).putExtra("finish_animation_up_down", false);
+        ((ScanTorchActivity)localObject2).startActivity((Intent)localObject3);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("AREngine_ARScanEntryView", 1, "find button clicked start QQBrowserActivity catch an Exception.", localException);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    if (paramView.getBoolean("key_show_reddot", false))
-    {
-      localObject2 = a(NetConnInfoCenter.getServerTimeMillis());
-      paramView.edit().putString("key_click_reddot_date", (String)localObject2).commit();
-      paramView.edit().putBoolean("key_show_reddot", false).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "isPendulumRunning KEY_SHOW_REDDOT true");
-      }
-    }
-    try
-    {
-      paramView = this.jdField_c_of_type_JavaLangString;
-      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        paramView = "https://ti.qq.com/arinfo/index.html?_nav_alpha=true";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARScanEntryView", 2, "find button clicked jumpurl  = " + paramView);
-      }
-      localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_sacan");
-      ((Intent)localObject2).putExtra("url", paramView);
-      ((Intent)localObject2).putExtra("finish_animation_up_down", false);
-      ((ScanTorchActivity)localObject1).startActivity((Intent)localObject2);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e("AREngine_ARScanEntryView", 1, "find button clicked start QQBrowserActivity catch an Exception.", paramView);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setRectAreas(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-    paramRect = (ViewGroup.MarginLayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
-    paramRect.setMargins(paramRect.leftMargin, this.jdField_a_of_type_AndroidGraphicsRect.bottom + aepi.a(30.0F, getResources()), paramRect.rightMargin, paramRect.bottomMargin);
+    this.aJ = new Rect(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    paramRect = (ViewGroup.MarginLayoutParams)this.p.getLayoutParams();
+    paramRect.setMargins(paramRect.leftMargin, this.aJ.bottom + AIOUtils.b(30.0F, getResources()), paramRect.rightMargin, paramRect.bottomMargin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView
  * JD-Core Version:    0.7.0.1
  */

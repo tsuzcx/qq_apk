@@ -1,35 +1,53 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.f.b.j;
-import a.l;
-import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "Landroid/os/Parcel;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
-final class aj
-  implements i<QueryParams, Parcel>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/NotifyType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "MODIFY_HISTORY_LIST", "MODIFY_STAR_LIST", "DELETE_HISTORY_LIST", "DELETE_STAR_LIST", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum aj
 {
-  private static Parcel a(QueryParams paramQueryParams)
+  public static final a qQg;
+  final int value;
+  
+  static
   {
-    AppMethodBeat.i(134561);
-    Parcel localParcel = Parcel.obtain();
-    if ((g.RG()) && (paramQueryParams != null)) {}
-    try
+    AppMethodBeat.i(319381);
+    qQh = new aj("MODIFY_HISTORY_LIST", 0, 1);
+    qQi = new aj("MODIFY_STAR_LIST", 1, 2);
+    qQj = new aj("DELETE_HISTORY_LIST", 2, 3);
+    qQk = new aj("DELETE_STAR_LIST", 3, 4);
+    qQl = new aj[] { qQh, qQi, qQj, qQk };
+    qQg = new a((byte)0);
+    AppMethodBeat.o(319381);
+  }
+  
+  private aj(int paramInt)
+  {
+    this.value = paramInt;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/NotifyType$Companion;", "", "()V", "getByValue", "Lcom/tencent/mm/plugin/appbrand/appusage/NotifyType;", "value", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static aj zy(int paramInt)
     {
-      localParcel.writeTypedList(((af)g.E(af.class)).a(paramQueryParams.count, paramQueryParams.hcQ));
-      j.p(localParcel, "Parcel.obtain().apply {\n…}\n            }\n        }");
-      AppMethodBeat.o(134561);
-      return localParcel;
-    }
-    catch (Exception paramQueryParams)
-    {
-      for (;;)
+      AppMethodBeat.i(319329);
+      aj[] arrayOfaj = aj.values();
+      int k = arrayOfaj.length;
+      int i = 0;
+      while (i < k)
       {
-        ab.e("MicroMsg.AppBrandCollectionStorageIPC", "QueryCall, writeTypedList e = ".concat(String.valueOf(paramQueryParams)));
+        aj localaj = arrayOfaj[i];
+        if (localaj.value == paramInt) {}
+        for (int j = 1; j != 0; j = 0)
+        {
+          AppMethodBeat.o(319329);
+          return localaj;
+        }
+        i += 1;
       }
+      AppMethodBeat.o(319329);
+      return null;
     }
   }
 }

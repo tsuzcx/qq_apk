@@ -11,6 +11,8 @@ public class TPReportParams$FirstLoadParams
   public int cgiUrlIndex;
   public long endTimeUnix;
   public String errCodeString;
+  public long firstOpenTimeUnix;
+  public long firstPacketReadTimeUnix;
   public long starTimeUnix;
   
   public TPReportParams$FirstLoadParams(TPReportParams paramTPReportParams) {}
@@ -21,6 +23,8 @@ public class TPReportParams$FirstLoadParams
     {
       paramJSONObject.put("stime", this.starTimeUnix);
       paramJSONObject.put("etime", this.endTimeUnix);
+      paramJSONObject.put("fileopenedtime", this.firstOpenTimeUnix);
+      paramJSONObject.put("firstpacketreadtime", this.firstPacketReadTimeUnix);
       paramJSONObject.put("url", this.cdnUrlString);
       paramJSONObject.put("urlindex", this.cgiUrlIndex);
       paramJSONObject.put("code", this.errCodeString);
@@ -36,6 +40,8 @@ public class TPReportParams$FirstLoadParams
   {
     paramITPReportProperties.put("stime", this.starTimeUnix);
     paramITPReportProperties.put("etime", this.endTimeUnix);
+    paramITPReportProperties.put("fileopenedtime", this.firstOpenTimeUnix);
+    paramITPReportProperties.put("firstpacketreadtime", this.firstPacketReadTimeUnix);
     paramITPReportProperties.put("url", this.cdnUrlString);
     paramITPReportProperties.put("urlindex", this.cgiUrlIndex);
     paramITPReportProperties.put("code", this.errCodeString);
@@ -44,6 +50,8 @@ public class TPReportParams$FirstLoadParams
   public void reset()
   {
     this.starTimeUnix = 0L;
+    this.firstOpenTimeUnix = 0L;
+    this.firstPacketReadTimeUnix = 0L;
     this.endTimeUnix = 0L;
     this.cdnUrlString = "";
     this.cgiUrlIndex = 0;
@@ -52,7 +60,7 @@ public class TPReportParams$FirstLoadParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.FirstLoadParams
  * JD-Core Version:    0.7.0.1
  */

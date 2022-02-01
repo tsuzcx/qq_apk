@@ -8,13 +8,13 @@ public final class RespondHeader
   extends JceStruct
 {
   static byte[] cache_tips;
-  public int cmd;
-  public long requestID;
-  public int result;
-  public long svrSeqNo;
-  public byte[] tips;
+  public int cmd = 0;
+  public long requestID = 0L;
+  public int result = 0;
+  public long svrSeqNo = 0L;
+  public byte[] tips = null;
   public String uin = "";
-  public int ver;
+  public int ver = 0;
   
   public RespondHeader() {}
   
@@ -53,14 +53,15 @@ public final class RespondHeader
     paramJceOutputStream.write(this.uin, 3);
     paramJceOutputStream.write(this.svrSeqNo, 4);
     paramJceOutputStream.write(this.result, 5);
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 6);
+    byte[] arrayOfByte = this.tips;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IPwdPxyMQQ.RespondHeader
  * JD-Core Version:    0.7.0.1
  */

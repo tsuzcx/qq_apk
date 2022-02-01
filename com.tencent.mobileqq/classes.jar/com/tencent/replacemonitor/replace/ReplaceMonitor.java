@@ -11,7 +11,7 @@ import java.util.Map;
 public class ReplaceMonitor
 {
   public static final String WASH_TAG = "WashMonitor";
-  private static ReplaceMonitor sInstance = null;
+  private static ReplaceMonitor sInstance;
   private a mRealMonitor = new a();
   
   public static ReplaceMonitor get()
@@ -74,7 +74,7 @@ public class ReplaceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.ReplaceMonitor
  * JD-Core Version:    0.7.0.1
  */

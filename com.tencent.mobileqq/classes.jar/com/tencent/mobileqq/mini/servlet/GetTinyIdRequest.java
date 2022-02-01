@@ -20,16 +20,20 @@ public class GetTinyIdRequest
   
   public static INTERFACE.StTrans4TinyidRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StTrans4TinyidRsp localStTrans4TinyidRsp = new INTERFACE.StTrans4TinyidRsp();
+    Object localObject = new INTERFACE.StTrans4TinyidRsp();
     try
     {
-      localStTrans4TinyidRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStTrans4TinyidRsp;
+      ((INTERFACE.StTrans4TinyidRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetTinyIdRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetTinyIdRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -42,7 +46,7 @@ public class GetTinyIdRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetTinyIdRequest
  * JD-Core Version:    0.7.0.1
  */

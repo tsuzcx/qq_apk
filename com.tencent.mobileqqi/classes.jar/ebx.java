@@ -1,25 +1,50 @@
-import android.os.MessageQueue.IdleHandler;
+import android.media.ExifInterface;
+import android.os.AsyncTask;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageInfo;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class ebx
-  implements MessageQueue.IdleHandler
+  extends AsyncTask
 {
-  public ebx(AIOGalleryScene paramAIOGalleryScene) {}
+  public ebx(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
   
-  public boolean queueIdle()
+  protected Void a(Void... paramVarArgs)
   {
-    Object localObject = this.a.a.a();
-    if (localObject != null)
+    try
     {
-      localObject = ((AIOImageInfo)localObject).a;
-      if ((localObject != null) && (((AIOImageData)localObject).a(4)) && (((AIOImageData)localObject).a(4) == null)) {
-        this.a.c(true);
+      paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      if (this.jdField_a_of_type_Int == 0) {
+        paramVarArgs.setAttribute("Orientation", String.valueOf(1));
+      }
+      for (;;)
+      {
+        paramVarArgs.saveAttributes();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
+        paramVarArgs.c += 1;
+        break label138;
+        if (this.jdField_a_of_type_Int != 1) {
+          break;
+        }
+        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
       }
     }
-    return false;
+    catch (IOException paramVarArgs)
+    {
+      while (QLog.isColorLevel())
+      {
+        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+        break;
+        if (this.jdField_a_of_type_Int == 2) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(3));
+        } else if (this.jdField_a_of_type_Int == 3) {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(8));
+        }
+      }
+    }
+    label138:
+    return null;
   }
 }
 

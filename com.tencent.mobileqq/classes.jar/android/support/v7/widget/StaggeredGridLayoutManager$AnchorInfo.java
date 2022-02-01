@@ -11,12 +11,13 @@ class StaggeredGridLayoutManager$AnchorInfo
   
   void assignCoordinateFromPadding()
   {
-    if (this.mLayoutFromEnd) {}
-    for (int i = this.this$0.mPrimaryOrientation.getEndAfterPadding();; i = this.this$0.mPrimaryOrientation.getStartAfterPadding())
-    {
-      this.mOffset = i;
-      return;
+    int i;
+    if (this.mLayoutFromEnd) {
+      i = this.this$0.mPrimaryOrientation.getEndAfterPadding();
+    } else {
+      i = this.this$0.mPrimaryOrientation.getStartAfterPadding();
     }
+    this.mOffset = i;
   }
   
   void assignCoordinateFromPadding(int paramInt)

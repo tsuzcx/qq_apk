@@ -1,173 +1,168 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.util.Pair;
-import android.widget.Toast;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.config.b;
-import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.h;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.t;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Locale;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.modelappbrand.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.g.b.s;
 
-public class d
-  implements Runnable
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic;", "", "()V", "RELATED_SCENE", "", "", "[Ljava/lang/Integer;", "TAG", "", "parseCodeScene", "scene", "statObj", "Landroid/os/Bundle;", "CodeScene", "ScanScene", "StatKey", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
 {
-  protected volatile String appId;
-  protected final int gXf;
-  protected final int hcr;
-  protected final String hiw;
-  private final d.a ijO;
-  protected AppBrandStatObject ijP;
-  protected final ActivityStarterIpcDelegate ijQ;
-  protected final String username;
+  public static final d sVF;
+  private static final Integer[] sVG;
   
-  public d(LaunchParcel paramLaunchParcel, d.a parama)
+  static
   {
-    this.ijO = parama;
-    this.hcr = paramLaunchParcel.hcr;
-    this.appId = paramLaunchParcel.appId;
-    this.username = paramLaunchParcel.username;
-    this.gXf = paramLaunchParcel.version;
-    this.ijP = paramLaunchParcel.inG;
-    this.hiw = paramLaunchParcel.hiw;
-    this.ijQ = paramLaunchParcel.ijQ;
+    AppMethodBeat.i(320779);
+    sVF = new d();
+    sVG = new Integer[] { Integer.valueOf(1012), Integer.valueOf(1031), Integer.valueOf(1048), Integer.valueOf(1125) };
+    AppMethodBeat.o(320779);
   }
   
-  static boolean Dj(String paramString)
+  public static final int n(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(102098);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(320772);
+    Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", s.X("parseCodeScene, scene: ", Integer.valueOf(paramInt)));
+    if (!k.contains(sVG, Integer.valueOf(paramInt)))
     {
-      AppMethodBeat.o(102098);
-      return false;
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scene is not related");
+      AppMethodBeat.o(320772);
+      return 0;
     }
-    try
+    if (paramBundle == null)
     {
-      paramString = new JSONObject(paramString).optJSONArray("call_plugin_info");
-      if ((paramString != null) && (paramString.length() > 0))
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, statObj is null");
+      AppMethodBeat.o(320772);
+      return 9;
+    }
+    paramInt = paramBundle.getInt("LaunchCodeScene_ScanScene");
+    Object localObject = b.sVI;
+    if (!b.uB(paramInt))
+    {
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scanScene(" + paramInt + ") is invalid 1");
+      AppMethodBeat.o(320772);
+      return 9;
+    }
+    if (1 == paramInt)
+    {
+      int i = paramBundle.getInt("LaunchCodeScene_ChatType");
+      Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", s.X("parseCodeScene, chatType: ", Integer.valueOf(i)));
+      localObject = a.opM;
+      paramInt = i;
+      if (!a.uB(i))
       {
-        AppMethodBeat.o(102098);
-        return true;
+        paramBundle = paramBundle.getString("LaunchCodeScene_Username");
+        if (paramBundle == null)
+        {
+          Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, chatType is invalid, username is null");
+          AppMethodBeat.o(320772);
+          return 9;
+        }
+        paramInt = a.KG(paramBundle);
+        Log.i("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, username: " + paramBundle + ", chatType: " + paramInt);
       }
-      AppMethodBeat.o(102098);
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(102098);
-    }
-    return false;
-  }
-  
-  protected final void a(AppBrandInitConfigLU paramAppBrandInitConfigLU, AppBrandStatObject paramAppBrandStatObject)
-  {
-    AppMethodBeat.i(102100);
-    if (this.ijO != null) {
-      this.ijO.a(paramAppBrandInitConfigLU, paramAppBrandStatObject, 1);
-    }
-    AppMethodBeat.o(102100);
-  }
-  
-  public final void aGI()
-  {
-    AppMethodBeat.i(138194);
-    com.tencent.mm.sdk.g.d.ysm.b(this, String.format(Locale.US, "Luggage.AppBrandPreLaunchProcess|appId[%s]", new Object[] { this.appId }));
-    AppMethodBeat.o(138194);
-  }
-  
-  protected Pair<WxaAttributes, Boolean> aGJ()
-  {
-    AppMethodBeat.i(102097);
-    t.ayI();
-    Pair localPair = new Pair(t.AF(this.appId), Boolean.FALSE);
-    AppMethodBeat.o(102097);
-    return localPair;
-  }
-  
-  protected boolean e(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(140850);
-    if ((j.a.nk(this.hcr)) && (1 == paramWxaAttributes.ayE().bDd))
-    {
-      Toast.makeText(ah.getContext(), 2131296728, 1).show();
-      AppMethodBeat.o(140850);
-      return true;
-    }
-    AppMethodBeat.o(140850);
-    return false;
-  }
-  
-  protected final void onError()
-  {
-    AppMethodBeat.i(102099);
-    if (this.ijO != null) {
-      this.ijO.a(null, null, 2);
-    }
-    AppMethodBeat.o(102099);
-  }
-  
-  public void run()
-  {
-    AppMethodBeat.i(102096);
-    Object localObject = (WxaAttributes)aGJ().first;
-    if (localObject == null)
-    {
-      ab.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
-      onError();
-      AppMethodBeat.o(102096);
-      return;
-    }
-    if (e((WxaAttributes)localObject))
-    {
-      onError();
-      AppMethodBeat.o(102096);
-      return;
-    }
-    AppBrandInitConfigLU localAppBrandInitConfigLU = b.vW().a((WxaAttributes)localObject);
-    localAppBrandInitConfigLU.gXd = this.hcr;
-    this.appId = localAppBrandInitConfigLU.appId;
-    if (this.hcr == 0)
-    {
-      localAppBrandInitConfigLU.hha = ((WxaAttributes)localObject).ayE().hke;
-      localAppBrandInitConfigLU.bDb = ((WxaAttributes)localObject).ayE().bDb;
-    }
-    for (;;)
-    {
-      localAppBrandInitConfigLU.bCX = Dj(localAppBrandInitConfigLU.bDb);
-      if (this.ijP == null) {
-        this.ijP = new AppBrandStatObject();
-      }
-      a(localAppBrandInitConfigLU, this.ijP);
-      AppMethodBeat.o(102096);
-      return;
-      l.aGS();
-      localAppBrandInitConfigLU.extInfo = l.bm(this.appId, this.hcr);
-      try
+      switch (paramInt)
       {
-        localObject = h.mo(localAppBrandInitConfigLU.extInfo);
-        localAppBrandInitConfigLU.hha = ((JSONObject)localObject).optString("device_orientation");
-        localAppBrandInitConfigLU.bDb = ((JSONObject)localObject).optString("client_js_ext_info");
-        localAppBrandInitConfigLU.bCW = ((JSONObject)localObject).optBoolean("open_remote", false);
+      default: 
+        Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, chatType is invalid");
+        AppMethodBeat.o(320772);
+        return 9;
+      case 1: 
+        AppMethodBeat.o(320772);
+        return 1;
+      case 2: 
+        AppMethodBeat.o(320772);
+        return 2;
+      case 3: 
+        AppMethodBeat.o(320772);
+        return 3;
       }
-      catch (Exception localException) {}
+      AppMethodBeat.o(320772);
+      return 4;
+    }
+    switch (paramInt)
+    {
+    default: 
+      Log.w("MicroMsg.AppBrandLaunchCodeSceneLogic", "parseCodeScene, scanScene(" + paramInt + ") is invalid 2");
+      AppMethodBeat.o(320772);
+      return 9;
+    case 2: 
+      AppMethodBeat.o(320772);
+      return 5;
+    case 3: 
+      AppMethodBeat.o(320772);
+      return 6;
+    case 4: 
+      AppMethodBeat.o(320772);
+      return 7;
+    case 5: 
+      AppMethodBeat.o(320772);
+      return 8;
+    }
+    AppMethodBeat.o(320772);
+    return 9;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic$CodeScene;", "", "()V", "APP_BRAND", "", "FAV", "GROUP_CHAT", "H5", "INVALID", "OTHER", "SINGLE_CHAT", "SNS", "WEWORK_GROUP_CHAT", "WEWORK_SINGLE_CHAT", "isValid", "", "scene", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static final a sVH;
+    
+    static
+    {
+      AppMethodBeat.i(320681);
+      sVH = new a();
+      AppMethodBeat.o(320681);
+    }
+    
+    public static final boolean uB(int paramInt)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramInt <= 9)
+      {
+        bool1 = bool2;
+        if (paramInt > 0) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandLaunchCodeSceneLogic$ScanScene;", "", "()V", "APP_BRAND", "", "CHAT", "FAV", "H5", "INVALID", "OTHER", "SNS", "isValid", "", "scene", "api-protocol_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+  {
+    public static final b sVI;
+    
+    static
+    {
+      AppMethodBeat.i(320667);
+      sVI = new b();
+      AppMethodBeat.o(320667);
+    }
+    
+    public static boolean uB(int paramInt)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramInt > 0)
+      {
+        bool1 = bool2;
+        if (paramInt <= 6) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.d
  * JD-Core Version:    0.7.0.1
  */

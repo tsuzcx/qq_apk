@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/z_" android:layout_width="fill_parent" android:layout_height="64.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="#ffd4a20f" android:id="@id/dyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-</LinearLayout>
+<RelativeLayout android:id="@id/d0f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_marginBottom="21.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ita" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_toStartOf="@id/ita">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/finder_filled_activity" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0_5" android:ellipsize="end" android:id="@id/hzx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/czs" android:singleLine="true" android:layout_toEndOf="@id/gb" style="@style/z8" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/hzw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="@string/cye" android:singleLine="true" android:layout_below="@id/gb" android:layout_toEndOf="@id/gb" />
+    </RelativeLayout>
+</RelativeLayout>

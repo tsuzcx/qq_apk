@@ -13,8 +13,8 @@ public final class ReqFavorite
   public int cOpType = 0;
   public int emSource = 65535;
   public int iCount = 1;
-  public long lMID;
-  public ReqHead stHeader;
+  public long lMID = 0L;
+  public ReqHead stHeader = null;
   
   public ReqFavorite() {}
   
@@ -47,7 +47,7 @@ public final class ReqFavorite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqFavorite
  * JD-Core Version:    0.7.0.1
  */

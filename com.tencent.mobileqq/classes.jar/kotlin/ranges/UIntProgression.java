@@ -24,20 +24,35 @@ public class UIntProgression
   
   private UIntProgression(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt3 == 0) {
-      throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
-    }
-    if (paramInt3 == -2147483648) {
+    if (paramInt3 != 0)
+    {
+      if (paramInt3 != -2147483648)
+      {
+        this.first = paramInt1;
+        this.last = UProgressionUtilKt.getProgressionLastElement-Nkh28Cs(paramInt1, paramInt2, paramInt3);
+        this.step = paramInt3;
+        return;
+      }
       throw ((Throwable)new IllegalArgumentException("Step must be greater than Int.MIN_VALUE to avoid overflow on negation."));
     }
-    this.first = paramInt1;
-    this.last = UProgressionUtilKt.getProgressionLastElement-Nkh28Cs(paramInt1, paramInt2, paramInt3);
-    this.step = paramInt3;
+    throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof UIntProgression)) && (((isEmpty()) && (((UIntProgression)paramObject).isEmpty())) || ((this.first == ((UIntProgression)paramObject).first) && (this.last == ((UIntProgression)paramObject).last) && (this.step == ((UIntProgression)paramObject).step)));
+    if ((paramObject instanceof UIntProgression)) {
+      if ((!isEmpty()) || (!((UIntProgression)paramObject).isEmpty()))
+      {
+        int i = this.first;
+        paramObject = (UIntProgression)paramObject;
+        if ((i != paramObject.first) || (this.last != paramObject.last) || (this.step != paramObject.step)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final int getFirst()
@@ -65,13 +80,14 @@ public class UIntProgression
   
   public boolean isEmpty()
   {
-    if (this.step > 0) {
-      if (UnsignedKt.uintCompare(this.first, this.last) <= 0) {}
-    }
-    while (UnsignedKt.uintCompare(this.first, this.last) < 0)
+    if (this.step > 0)
     {
+      if (UnsignedKt.uintCompare(this.first, this.last) > 0) {
+        return true;
+      }
+    }
+    else if (UnsignedKt.uintCompare(this.first, this.last) < 0) {
       return true;
-      return false;
     }
     return false;
   }
@@ -85,15 +101,33 @@ public class UIntProgression
   @NotNull
   public String toString()
   {
-    if (this.step > 0) {
-      return UInt.toString-impl(this.first) + ".." + UInt.toString-impl(this.last) + " step " + this.step;
+    StringBuilder localStringBuilder;
+    int i;
+    if (this.step > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(UInt.toString-impl(this.first));
+      localStringBuilder.append("..");
+      localStringBuilder.append(UInt.toString-impl(this.last));
+      localStringBuilder.append(" step ");
+      i = this.step;
     }
-    return UInt.toString-impl(this.first) + " downTo " + UInt.toString-impl(this.last) + " step " + -this.step;
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(UInt.toString-impl(this.first));
+      localStringBuilder.append(" downTo ");
+      localStringBuilder.append(UInt.toString-impl(this.last));
+      localStringBuilder.append(" step ");
+      i = -this.step;
+    }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.UIntProgression
  * JD-Core Version:    0.7.0.1
  */

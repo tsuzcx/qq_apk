@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:persistent="false" android:summary="@string/erx" android:title="@string/eru" android:key="sns_outside_permiss" android:defaultValue="false" />
-    <CheckBoxPreference android:persistent="false" android:summary="@string/eo_" android:title="@string/eo7" android:key="sns_black_permiss" android:defaultValue="false" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_bind_qq" android:layout="@layout/bdi" android:title="@string/j1c" />
+    <Preference android:key="settings_email_addr" android:layout="@layout/bdi" android:title="@string/irl" />
+    <Preference android:key="settings_about_domainmail" android:layout="@layout/bdi" android:title="@string/ipm" />
+    <Preference android:key="settings_facebook" android:layout="@layout/bdi" android:title="@string/fhc" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_dump_personal_data" android:layout="@layout/bdi" android:title="@string/irk" />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_phone_security" android:layout="@layout/bdi" android:title="@string/hip" />
+    <Preference android:key="settings_delete_account" android:layout="@layout/bdi" android:title="@string/imx" />
 </PreferenceScreen>

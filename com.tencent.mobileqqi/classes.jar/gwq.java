@@ -1,13 +1,16 @@
 import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.smtt.sdk.WebView;
 
 public class gwq
   implements Runnable
 {
-  public gwq(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
+  public gwq(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    }
   }
 }
 

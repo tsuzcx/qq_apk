@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class LoginInfoActivity$8
   implements Runnable
@@ -9,43 +9,41 @@ class LoginInfoActivity$8
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      if (!this.this$0.isFinishing())
       {
-        if (!this.this$0.isFinishing())
+        if ((LoginInfoActivity.access$2200(this.this$0) != null) && (LoginInfoActivity.access$2200(this.this$0).isShowing()))
         {
-          if ((LoginInfoActivity.a(this.this$0) != null) && (LoginInfoActivity.a(this.this$0).isShowing()))
-          {
-            LoginInfoActivity.a(this.this$0).dismiss();
-            LoginInfoActivity.a(this.this$0).cancel();
-            LoginInfoActivity.a(this.this$0, null);
-          }
-          LoginInfoActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-          int i = this.a;
-          switch (i)
-          {
+          LoginInfoActivity.access$2200(this.this$0).dismiss();
+          LoginInfoActivity.access$2200(this.this$0).cancel();
+          LoginInfoActivity.access$2202(this.this$0, null);
+        }
+        LoginInfoActivity.access$2202(this.this$0, new QQProgressDialog(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        int i = this.a;
+        if (i != 0)
+        {
+          if (i == 1) {
+            LoginInfoActivity.access$2200(this.this$0).c(2131892360);
           }
         }
+        else {
+          LoginInfoActivity.access$2200(this.this$0).c(2131915649);
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        continue;
-        LoginInfoActivity.a(this.this$0).c(2131695090);
-        continue;
-      }
-      if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
-        LoginInfoActivity.a(this.this$0).show();
-      }
-      return;
-      LoginInfoActivity.a(this.this$0).c(2131719164);
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    if ((LoginInfoActivity.access$2200(this.this$0) != null) && (!LoginInfoActivity.access$2200(this.this$0).isShowing())) {
+      LoginInfoActivity.access$2200(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.8
  * JD-Core Version:    0.7.0.1
  */

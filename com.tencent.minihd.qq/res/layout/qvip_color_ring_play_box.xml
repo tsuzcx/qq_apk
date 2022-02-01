@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/color_white_transparent_95" android:layout_width="fill_parent" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/progress" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/qvip_color_ring_progress_layer" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff808080" android:id="@id/showMsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/color_ring_showmsg" android:layout_below="@id/progress" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_below="@id/showMsg">
+        <ImageView android:id="@id/cover" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/qvip_color_ring_cover_when_not_exist" />
+        <ImageView android:id="@id/progress_circle" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+        <ImageView android:id="@id/cover_btn" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/detail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/cover">
+            <TextView android:textSize="17.0dip" android:textColor="#ff000000" android:id="@id/color_ring_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:text="" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/color_ring_singer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:id="@id/color_ring_duration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true">
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/setup_progress" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:indeterminateDrawable="@drawable/common_loading3" />
+            <Button android:id="@id/action_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/color_ring_download" style="@style/SmallButtonBlue" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

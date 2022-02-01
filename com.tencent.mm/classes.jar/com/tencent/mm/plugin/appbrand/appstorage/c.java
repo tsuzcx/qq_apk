@@ -1,316 +1,304 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import a.f.b.j;
-import a.l;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.plugin.appbrand.appstorage.a.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.plugin.appbrand.x.a;
+import com.tencent.mm.plugin.appbrand.x.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.security.Key;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.d;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "appid", "", "(Ljava/lang/String;)V", "appBrandMMKVStorage", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "kotlin.jvm.PlatformType", "mAppId", "mUin", "", "clearOldSchemeData", "", "sharedPreferences", "Landroid/content/SharedPreferences;", "getTag", "markHadTransferToMMKV", "needTransfer", "", "sVer", "", "reportTransferResult", "bytesMatch", "sizeMatch", "transfer", "transferToMMKV", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Result;", "storageId", "Companion", "Result", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandEncryptMMKVStorage;", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage;", "uin", "", "appId", "", "encryptMMKVStorageSecretKey", "multiWrite", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "(JLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;)V", "encryptMMKVStorageSecretKeyByteArray", "", "kotlin.jvm.PlatformType", "storage", "clear", "", "storageId", "", "clearAll", "decrypt", "raw", "encrypt", "get", "", "", "key", "(ILjava/lang/String;Ljava/lang/String;)[Ljava/lang/Object;", "getAllStorageId", "", "getTotalDataSizeAll", "info", "(ILjava/lang/String;)[Ljava/lang/Object;", "keysSize", "remove", "Lcom/tencent/mm/plugin/appbrand/appstorage/IAppBrandKVStorage$ErrorType;", "set", "data", "dataType", "dataSize", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends ai
+  implements v
 {
-  private static final String gZc = "hadTransferToMMKV";
-  private static final String gZd = "keyHadCleanOldScheme";
-  private static final String gZe = "keyHadFinishTransfer";
-  public static final a gZf;
-  private final f gZb;
-  private final String mAppId;
-  private final long mUin;
+  public static final a qLN;
+  private static final Map<String, c> qLS;
+  private static final Map<String, c> qLT;
+  private final l qLO;
+  final l qLP;
+  private final String qLQ;
+  private final byte[] qLR;
   
   static
   {
-    AppMethodBeat.i(134486);
-    gZf = new a((byte)0);
-    gZc = "hadTransferToMMKV";
-    gZd = "keyHadCleanOldScheme";
-    gZe = "keyHadFinishTransfer";
-    AppMethodBeat.o(134486);
+    AppMethodBeat.i(323154);
+    qLN = new a((byte)0);
+    qLS = (Map)new LinkedHashMap();
+    qLT = (Map)new LinkedHashMap();
+    AppMethodBeat.o(323154);
   }
   
-  public c(String paramString)
+  private c(long paramLong, String paramString1, String paramString2, l paraml)
   {
-    AppMethodBeat.i(134485);
-    this.mAppId = paramString;
-    this.gZb = ((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).cc(this.mAppId);
-    this.mUin = new p(((a)com.tencent.mm.kernel.g.E(a.class)).zt(this.mAppId)).longValue();
-    AppMethodBeat.o(134485);
+    AppMethodBeat.i(323123);
+    this.qLO = paraml;
+    this.qLP = new l(paramLong, "AppBrandEncryptMMKVStorage#" + paramString1 + '#');
+    this.qLQ = paramString2;
+    this.qLR = Base64.decode(paramString2, 0);
+    AppMethodBeat.o(323123);
   }
   
-  private final void a(SharedPreferences paramSharedPreferences)
+  public static final c a(long paramLong, String paramString1, String paramString2, l paraml)
   {
-    AppMethodBeat.i(134483);
-    if (paramSharedPreferences.getBoolean(a.b(gZd, this.mUin, this.mAppId), false))
-    {
-      ab.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had clear old scheme data, return");
-      AppMethodBeat.o(134483);
-      return;
-    }
-    ab.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] clear old scheme data");
-    com.tencent.mm.plugin.appbrand.app.g.wf().yR(this.mAppId);
-    paramSharedPreferences.edit().putBoolean(a.b(gZd, this.mUin, this.mAppId), true).apply();
-    AppMethodBeat.o(134483);
+    AppMethodBeat.i(323144);
+    paramString1 = a.a(paramLong, paramString1, paramString2, paraml);
+    AppMethodBeat.o(323144);
+    return paramString1;
   }
   
-  public final String getTag()
+  private v.a a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    return "MicroMsg.AppBrandKVStorageTransfer";
-  }
-  
-  public final boolean kv(int paramInt)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(134484);
-    if (!ah.dsQ().getBoolean(a.b(gZe, this.mUin, this.mAppId), false)) {
-      bool = true;
+    AppMethodBeat.i(323140);
+    s.u(paramString4, "dataType");
+    Object localObject1 = this.qLO;
+    if (localObject1 != null) {
+      ((l)localObject1).a(paramInt1, paramString1, paramString2, paramString3, paramString4, paramInt2);
     }
-    ab.i("MicroMsg.AppBrandKVStorageTransfer", "needTransfer ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(134484);
-    return bool;
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(134481);
-    if (!d.gZl.awD())
+    localObject1 = (CharSequence)paramString1;
+    int i;
+    label92:
+    Object localObject3;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
     {
-      ab.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] isNeedTransfer = false");
-      AppMethodBeat.o(134481);
-      return;
-    }
-    SharedPreferences localSharedPreferences = ah.dsQ();
-    if (d.gZl.awB())
-    {
-      ab.i("MicroMsg.AppBrandKVStorageTransfer", "rollback phases, clear [had transfer to mmkv] flag");
-      localSharedPreferences.edit().putBoolean(a.b(gZc, this.mUin, this.mAppId), false).apply();
-      this.gZb.yR(this.mAppId);
-      AppMethodBeat.o(134481);
-      return;
-    }
-    boolean bool = localSharedPreferences.getBoolean(a.b(gZc, this.mUin, this.mAppId), false);
-    if ((bool) && (d.gZl.awA()))
-    {
-      j.p(localSharedPreferences, "sharedPreferences");
-      a(localSharedPreferences);
-      localSharedPreferences.edit().putBoolean(a.b(gZe, this.mUin, this.mAppId), true).apply();
-      AppMethodBeat.o(134481);
-      return;
-    }
-    if (bool)
-    {
-      ab.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] had transfer to mmkv, return");
-      AppMethodBeat.o(134481);
-      return;
-    }
-    ab.i("MicroMsg.AppBrandKVStorageTransfer", "start transfer");
-    h.qsU.B(1016L, 0L);
-    long l5 = System.currentTimeMillis();
-    ab.i("MicroMsg.AppBrandKVStorageTransfer", "clear MMKV");
-    this.gZb.yR(this.mAppId);
-    int[] arrayOfInt = com.tencent.mm.plugin.appbrand.app.g.wf().yS(this.mAppId);
-    j.p(arrayOfInt, "SubCoreAppBrand.getAppKV…).getAllStorageId(mAppId)");
-    int j = com.tencent.mm.plugin.appbrand.app.g.wf().yT(this.mAppId);
-    int k = arrayOfInt.length;
-    int i = 0;
-    long l3 = 0L;
-    long l2 = 0L;
-    paramInt = 0;
-    int m;
-    Object localObject2;
-    Object localObject1;
-    ArrayList localArrayList;
-    long l1;
-    long l4;
-    if (i < k)
-    {
-      m = arrayOfInt[i];
-      localObject2 = com.tencent.mm.plugin.appbrand.app.g.wf().J(m, this.mAppId)[0];
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof ArrayList)) {
-        localObject1 = null;
+      i = 1;
+      if (i != 0) {
+        break label360;
       }
-      localArrayList = (ArrayList)localObject1;
-      if (localArrayList == null) {}
-      for (localObject1 = new c.b(0L, 0L, 0);; localObject1 = new c.b(0L, 0L, 0))
+      localObject1 = (CharSequence)paramString3;
+      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+        break label287;
+      }
+      i = 1;
+      if (i != 0) {
+        break label360;
+      }
+      try
       {
-        l1 = ((c.b)localObject1).gZg;
-        l4 = ((c.b)localObject1).gZh;
-        m = ((c.b)localObject1).size;
-        i += 1;
-        l3 += l4;
-        l2 += l1;
-        paramInt += m;
-        break;
-        if (localArrayList.size() != 0) {
-          break label427;
+        localObject3 = this.qLR;
+        s.s(localObject3, "encryptMMKVStorageSecretKeyByteArray");
+        localObject1 = d.UTF_8;
+        if (paramString3 == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(323140);
+          throw ((Throwable)localObject1);
         }
       }
-      label427:
-      ab.i("MicroMsg.AppBrandKVStorageTransfer", "[transfer] key size = " + localArrayList.size());
-      l4 = 0L;
-      Iterator localIterator = ((Iterable)localArrayList).iterator();
-      l1 = 0L;
-      label471:
-      if (localIterator.hasNext())
+      catch (Exception localException)
       {
-        localObject2 = localIterator.next();
-        localObject1 = localObject2;
-        if (!(localObject2 instanceof String)) {
-          localObject1 = null;
-        }
-        localObject1 = (String)localObject1;
-        if (localObject1 != null) {
-          break label1194;
-        }
-        localObject1 = "";
+        Log.i("MicroMsg.AppBrandEncryptMMKVStorage", s.X("[set] encrypt fail: ", localException.getMessage()));
+        ((a)e.U(a.class)).ag(1817L, 11L);
+        localObject3 = new StringWriter();
+        localException.printStackTrace(new PrintWriter((Writer)localObject3));
+        ((b)e.U(b.class)).b(24463, new Object[] { paramString1, Integer.valueOf(1), ((StringWriter)localObject3).toString(), this.qLQ, paramString2, paramString3 });
       }
     }
-    label1194:
+    label287:
+    label360:
     for (;;)
     {
-      long l6 = System.currentTimeMillis();
-      localObject2 = com.tencent.mm.plugin.appbrand.app.g.wf().k(m, this.mAppId, (String)localObject1);
-      j.p(localObject2, "SubCoreAppBrand.getAppKV…t(storageId, mAppId, key)");
-      long l7 = System.currentTimeMillis();
-      Object localObject3 = localObject2[1];
-      Object localObject4 = localObject2[2];
-      if (((j.e(localObject1, "") ^ true)) && (localObject2[0] == m.a.gZV) && ((localObject3 instanceof String)) && ((localObject4 instanceof String)))
-      {
-        long l8 = System.currentTimeMillis();
-        this.gZb.b(m, this.mAppId, (String)localObject1, (String)localObject3, (String)localObject4);
-        l1 += System.currentTimeMillis() - l8;
-      }
-      for (;;)
-      {
-        l4 = l7 - l6 + l4;
-        break label471;
-        localObject1 = new c.b(l4, l1, localArrayList.size());
-        break;
-        l1 = System.currentTimeMillis() - l5;
-        if (5000L < l1)
-        {
-          h.qsU.B(1016L, 12L);
-          ab.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, cost total time= " + l1 + " ms read time = " + l2 + " ms, write time = " + l3 + " ms");
-          k = this.gZb.yT(this.mAppId);
-          m = this.gZb.zc(this.mAppId);
-          ab.i("MicroMsg.AppBrandKVStorageTransfer", "newbytes =" + k + " oldbytes =" + j + "  newsize =" + m + "  oldsize =" + paramInt + ' ');
-          if (k != j) {
-            break label942;
-          }
-          i = 1;
-          label856:
-          if (m != paramInt) {
-            break label947;
-          }
-          j = 1;
-          label864:
-          if ((i == 0) || (j == 0)) {
-            break label952;
-          }
-          h.qsU.B(1016L, 1L);
-        }
-        for (;;)
-        {
-          if (m != paramInt)
-          {
-            localObject1 = new IllegalStateException("tansfer failed ");
-            if ((com.tencent.mm.sdk.platformtools.f.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.f.DEBUG))
-            {
-              localObject1 = (Throwable)localObject1;
-              AppMethodBeat.o(134481);
-              throw ((Throwable)localObject1);
-              h.qsU.B(1016L, 11L);
-              break;
-              label942:
-              i = 0;
-              break label856;
-              label947:
-              j = 0;
-              break label864;
-              label952:
-              if ((i == 0) && (j == 0))
-              {
-                h.qsU.B(1016L, 4L);
-                continue;
-              }
-              if (i == 0)
-              {
-                h.qsU.B(1016L, 3L);
-                continue;
-              }
-              if (j != 0) {
-                continue;
-              }
-              h.qsU.B(1016L, 2L);
-              continue;
-            }
-            ab.printErrStackTrace("MicroMsg.AppBrandKVStorageTransfer", (Throwable)localObject1, "transfer failed", new Object[0]);
-          }
-        }
-        ab.i("MicroMsg.AppBrandKVStorageTransfer", "finish transfer, prev ");
-        h.qsU.e(16335, new Object[] { this.mAppId, Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(this.gZb.zc(this.mAppId)) });
-        j.p(localSharedPreferences, "sharedPreferences");
-        localSharedPreferences.edit().putBoolean(a.b(gZc, this.mUin, this.mAppId), true).apply();
-        if (d.gZl.awA())
-        {
-          a(localSharedPreferences);
-          localSharedPreferences.edit().putBoolean(a.b(gZe, this.mUin, this.mAppId), true).apply();
-        }
-        AppMethodBeat.o(134481);
-        return;
-      }
+      paramString1 = this.qLP.a(paramInt1, paramString1, paramString2, paramString3, paramString4, paramInt2);
+      AppMethodBeat.o(323140);
+      return paramString1;
+      i = 0;
+      break;
+      i = 0;
+      break label92;
+      Object localObject2 = paramString3.getBytes(localException);
+      s.s(localObject2, "(this as java.lang.String).getBytes(charset)");
+      localObject3 = new SecretKeySpec((byte[])localObject3, "AES");
+      Cipher localCipher = Cipher.getInstance("AES");
+      localCipher.init(1, (Key)localObject3);
+      localObject2 = Base64.encodeToString(localCipher.doFinal((byte[])localObject2), 0);
+      paramString3 = (String)localObject2;
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransfer$Companion;", "", "()V", "KEY_HAD_CLEAN_OLD_SCHEME", "", "KEY_HAD_FINISH_TRANSFER", "KEY_HAD_TRANSFER_TO_MMKV", "TAG", "getKey", "key", "uin", "", "appId", "getStorageScheme", "", "plugin-appbrand-integration_release"})
+  public final int VT(String paramString)
+  {
+    AppMethodBeat.i(323177);
+    s.u(paramString, "appId");
+    int i = this.qLP.VT(paramString);
+    AppMethodBeat.o(323177);
+    return i;
+  }
+  
+  public final void ai(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(323158);
+    l locall = this.qLO;
+    if (locall != null) {
+      locall.ai(paramInt, paramString);
+    }
+    this.qLP.ai(paramInt, paramString);
+    AppMethodBeat.o(323158);
+  }
+  
+  public final Object[] aj(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(323166);
+    paramString = this.qLP.aj(paramInt, paramString);
+    AppMethodBeat.o(323166);
+    return paramString;
+  }
+  
+  public final void chU()
+  {
+    AppMethodBeat.i(323172);
+    this.qLP.qMp.count();
+    this.qLP.qMp.clearAll();
+    String[] arrayOfString = this.qLP.qMp.allKeys();
+    if (arrayOfString == null) {}
+    for (int i = 0;; i = arrayOfString.length)
+    {
+      Log.i("MicroMsg.AppBrandEncryptMMKVStorage", "storage after clearAll keySize = [" + i + ']');
+      if (i > 0) {
+        ((a)e.U(a.class)).ag(1817L, 13L);
+      }
+      AppMethodBeat.o(323172);
+      return;
+    }
+  }
+  
+  public final v.a d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(323176);
+    s.u(paramString4, "dataType");
+    paramString1 = a(paramInt, paramString1, paramString2, paramString3, paramString4, aa.dg(paramString2, paramString3));
+    AppMethodBeat.o(323176);
+    return paramString1;
+  }
+  
+  public final v.a o(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(323161);
+    l locall = this.qLO;
+    if (locall != null) {
+      locall.o(paramInt, paramString1, paramString2);
+    }
+    paramString1 = this.qLP.o(paramInt, paramString1, paramString2);
+    AppMethodBeat.o(323161);
+    return paramString1;
+  }
+  
+  public final Object[] p(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(323171);
+    Object[] arrayOfObject = this.qLP.p(paramInt, paramString1, paramString2);
+    if (((v.a)arrayOfObject[0] != v.a.qNg) || (arrayOfObject.length <= 1))
+    {
+      AppMethodBeat.o(323171);
+      return arrayOfObject;
+    }
+    str = (String)arrayOfObject[1];
+    Object localObject1;
+    if (((CharSequence)str).length() > 0)
+    {
+      paramInt = 1;
+      if (paramInt != 0)
+      {
+        localObject1 = (CharSequence)paramString1;
+        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+          break label213;
+        }
+      }
+    }
+    label213:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0) {}
+      try
+      {
+        localObject2 = this.qLR;
+        s.s(localObject2, "encryptMMKVStorageSecretKeyByteArray");
+        localObject1 = Base64.decode(str, 0);
+        s.s(localObject1, "decode(value, Base64.DEFAULT)");
+        localObject2 = new SecretKeySpec((byte[])localObject2, "AES");
+        Cipher localCipher = Cipher.getInstance("AES");
+        localCipher.init(2, (Key)localObject2);
+        localObject1 = localCipher.doFinal((byte[])localObject1);
+        paramString1 = (String)localObject1;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.i("MicroMsg.AppBrandEncryptMMKVStorage", s.X("[get] decrypt fail: ", localException.getMessage()));
+          ((a)e.U(a.class)).ag(1817L, 12L);
+          Object localObject2 = new StringWriter();
+          localException.printStackTrace(new PrintWriter((Writer)localObject2));
+          ((b)e.U(b.class)).b(24463, new Object[] { paramString1, Integer.valueOf(2), ((StringWriter)localObject2).toString(), this.qLQ, paramString2, str });
+          paramString1 = null;
+        }
+      }
+      if (paramString1 != null)
+      {
+        paramString1 = new String(paramString1, d.UTF_8);
+        paramString2 = ah.aiuX;
+        arrayOfObject[1] = paramString1;
+      }
+      AppMethodBeat.o(323171);
+      return arrayOfObject;
+      paramInt = 0;
+      break;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandEncryptMMKVStorage$Companion;", "", "()V", "CACHE", "", "", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandEncryptMMKVStorage;", "MULTI_WRITE_MODE_CACHE", "TAG", "clearAll", "", "uin", "", "appId", "obtain", "encryptMMKVStorageSecretKey", "multiWrite", "Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandMMKVStorage;", "onAccountRelease", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static String b(String paramString1, long paramLong, String paramString2)
+    public static c a(long paramLong, String paramString1, String paramString2, l arg4)
     {
-      AppMethodBeat.i(143733);
-      j.q(paramString1, "key");
-      j.q(paramString2, "appId");
-      paramString1 = paramString1 + '#' + paramLong + '#' + paramString2;
-      AppMethodBeat.o(143733);
-      return paramString1;
-    }
-    
-    public static int yV(String paramString)
-    {
-      AppMethodBeat.i(134479);
-      j.q(paramString, "appId");
-      SharedPreferences localSharedPreferences = ah.dsQ();
-      long l = new p(((a)com.tencent.mm.kernel.g.E(a.class)).zt(paramString)).longValue();
-      int i;
-      if (localSharedPreferences.getBoolean(b(c.awF(), l, paramString), false)) {
-        i = 2;
-      }
-      for (;;)
-      {
-        ab.i("MicroMsg.AppBrandKVStorageTransfer", "getStorageScheme:".concat(String.valueOf(i)));
-        AppMethodBeat.o(134479);
-        return i;
-        if ((localSharedPreferences.getBoolean(b(c.aOC(), l, paramString), false)) && (!d.gZl.awB())) {
-          i = 3;
-        } else {
-          i = 1;
+      AppMethodBeat.i(323272);
+      s.u(paramString1, "appId");
+      s.u(paramString2, "encryptMMKVStorageSecretKey");
+      String str = paramLong + '-' + paramString1;
+      if (??? != null) {
+        synchronized (c.chV())
+        {
+          if (!c.chV().keySet().contains(str)) {
+            c.chV().put(str, new c(paramLong, paramString1, paramString2, ???, (byte)0));
+          }
+          paramString1 = ah.aiuX;
+          paramString1 = c.chV().get(str);
+          s.checkNotNull(paramString1);
+          paramString1 = (c)paramString1;
+          AppMethodBeat.o(323272);
+          return paramString1;
         }
+      }
+      synchronized (c.chW())
+      {
+        if (!c.chW().keySet().contains(str)) {
+          c.chW().put(str, new c(paramLong, paramString1, paramString2));
+        }
+        paramString1 = ah.aiuX;
+        paramString1 = c.chW().get(str);
+        s.checkNotNull(paramString1);
+        paramString1 = (c)paramString1;
+        AppMethodBeat.o(323272);
+        return paramString1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.c
  * JD-Core Version:    0.7.0.1
  */

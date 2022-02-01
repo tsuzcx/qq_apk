@@ -10,8 +10,8 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.cy;
-import com.tencent.token.global.h;
+import com.tencent.token.sw;
+import com.tencent.token.xv;
 
 public class StartPwdDigitVerifyActivity
   extends BaseActivity
@@ -34,25 +34,28 @@ public class StartPwdDigitVerifyActivity
   protected int getBtnStringId()
   {
     if (1 == this.mEnterType) {
-      return 2131231490;
+      return 2131493645;
     }
-    return 2131230897;
+    return 2131493041;
   }
   
   public void onClick(View paramView)
   {
-    if (this.mTokenPwdInpuText != null) {
-      this.mTokenPwdInpuText.clearFocus();
+    paramView = this.mTokenPwdInpuText;
+    if (paramView != null) {
+      paramView.clearFocus();
     }
-    if (cy.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (sw.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
-      h.a("verify_token_pwd: " + this.mEnterType);
+      paramView = new StringBuilder("verify_token_pwd: ");
+      paramView.append(this.mEnterType);
+      xv.a(paramView.toString());
       setResult(257);
       finish();
       return;
     }
-    showToast(2131231494);
+    showToast(2131493649);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -64,22 +67,27 @@ public class StartPwdDigitVerifyActivity
       this.mEnterType = paramBundle.getInt("enter_type");
       this.mUin = paramBundle.getLong("uin");
     }
-    setContentView(2130968816);
-    paramBundle = findViewById(2131559451);
+    setContentView(2131296511);
+    paramBundle = findViewById(2131165343);
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131559450));
-    if (this.mTokenPwdInpuText != null) {
-      this.mTokenPwdInpuText.clearFocus();
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131166119));
+    paramBundle = this.mTokenPwdInpuText;
+    if (paramBundle != null) {
+      paramBundle.clearFocus();
     }
-    h.a("verify_token_pwd: " + this.mEnterType + ", uin: " + this.mUin);
+    paramBundle = new StringBuilder("verify_token_pwd: ");
+    paramBundle.append(this.mEnterType);
+    paramBundle.append(", uin: ");
+    paramBundle.append(this.mUin);
+    xv.a(paramBundle.toString());
   }
   
   protected void setBtnWidth(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (1 == this.mEnterType) {
-      paramLayoutParams.width = ((int)getResources().getDimension(2131296365));
+      paramLayoutParams.width = ((int)getResources().getDimension(2131034192));
     }
   }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioGroup android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/m62" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/axz" android:gravity="center" android:id="@id/pr4" android:background="@drawable/fpe" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="true" android:button="@null" android:text="@string/y8h" android:includeFontPadding="false" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/axz" android:gravity="center" android:id="@id/pr6" android:background="@drawable/fpe" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:button="@null" android:text="@string/y8i" android:includeFontPadding="false" />
+            <RadioButton android:textSize="14.0dip" android:textColor="@color/axz" android:gravity="center" android:id="@id/pr3" android:background="@drawable/fpe" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:button="@null" android:text="@string/y8g" android:includeFontPadding="false" android:drawablePadding="2.0dip" />
+        </RadioGroup>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/ofe" android:background="@drawable/fpi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="6.0dip">
+        <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/iut" android:layout_marginStart="10.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/akh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="10.0dip" android:text="@string/y8j" android:layout_marginStart="4.0dip" android:layout_marginEnd="10.0dip" />
+    </LinearLayout>
+    <androidx.viewpager2.widget.ViewPager2 android:id="@id/qzf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="44.0dip" />
+</FrameLayout>

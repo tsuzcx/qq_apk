@@ -28,107 +28,107 @@ public class SafeSubscriber<T>
     //   12: aload_0
     //   13: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
     //   16: return
-    //   17: astore_2
-    //   18: aload_2
-    //   19: instanceof 41
-    //   22: ifeq +49 -> 71
-    //   25: aload_0
-    //   26: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
-    //   29: aload_2
-    //   30: checkcast 41	rx/exceptions/OnErrorNotImplementedException
-    //   33: athrow
-    //   34: astore_2
-    //   35: aload_2
-    //   36: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   39: new 27	java/lang/RuntimeException
-    //   42: dup
-    //   43: ldc 43
-    //   45: new 45	rx/exceptions/CompositeException
-    //   48: dup
-    //   49: iconst_2
-    //   50: anewarray 25	java/lang/Throwable
-    //   53: dup
-    //   54: iconst_0
-    //   55: aload_1
-    //   56: aastore
-    //   57: dup
-    //   58: iconst_1
-    //   59: aload_2
-    //   60: aastore
-    //   61: invokestatic 51	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   64: invokespecial 54	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
-    //   67: invokespecial 57	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   70: athrow
-    //   71: aload_2
-    //   72: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   75: aload_0
-    //   76: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
-    //   79: new 59	rx/exceptions/OnErrorFailedException
-    //   82: dup
-    //   83: ldc 61
-    //   85: new 45	rx/exceptions/CompositeException
-    //   88: dup
-    //   89: iconst_2
-    //   90: anewarray 25	java/lang/Throwable
-    //   93: dup
-    //   94: iconst_0
-    //   95: aload_1
-    //   96: aastore
-    //   97: dup
-    //   98: iconst_1
-    //   99: aload_2
-    //   100: aastore
-    //   101: invokestatic 51	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   104: invokespecial 54	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
-    //   107: invokespecial 62	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   110: athrow
-    //   111: astore_3
-    //   112: aload_3
-    //   113: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   116: new 59	rx/exceptions/OnErrorFailedException
-    //   119: dup
-    //   120: ldc 64
-    //   122: new 45	rx/exceptions/CompositeException
-    //   125: dup
-    //   126: iconst_3
-    //   127: anewarray 25	java/lang/Throwable
-    //   130: dup
-    //   131: iconst_0
-    //   132: aload_1
-    //   133: aastore
-    //   134: dup
-    //   135: iconst_1
-    //   136: aload_2
-    //   137: aastore
-    //   138: dup
-    //   139: iconst_2
-    //   140: aload_3
-    //   141: aastore
-    //   142: invokestatic 51	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
-    //   145: invokespecial 54	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
-    //   148: invokespecial 62	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   151: athrow
-    //   152: astore_1
-    //   153: aload_1
-    //   154: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   157: new 59	rx/exceptions/OnErrorFailedException
-    //   160: dup
-    //   161: aload_1
-    //   162: invokespecial 66	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   17: astore_1
+    //   18: aload_1
+    //   19: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   22: new 41	rx/exceptions/OnErrorFailedException
+    //   25: dup
+    //   26: aload_1
+    //   27: invokespecial 43	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/Throwable;)V
+    //   30: athrow
+    //   31: astore_2
+    //   32: aload_2
+    //   33: instanceof 45
+    //   36: ifeq +49 -> 85
+    //   39: aload_0
+    //   40: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
+    //   43: aload_2
+    //   44: checkcast 45	rx/exceptions/OnErrorNotImplementedException
+    //   47: athrow
+    //   48: astore_2
+    //   49: aload_2
+    //   50: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   53: new 27	java/lang/RuntimeException
+    //   56: dup
+    //   57: ldc 47
+    //   59: new 49	rx/exceptions/CompositeException
+    //   62: dup
+    //   63: iconst_2
+    //   64: anewarray 25	java/lang/Throwable
+    //   67: dup
+    //   68: iconst_0
+    //   69: aload_1
+    //   70: aastore
+    //   71: dup
+    //   72: iconst_1
+    //   73: aload_2
+    //   74: aastore
+    //   75: invokestatic 55	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   78: invokespecial 58	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
+    //   81: invokespecial 61	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   84: athrow
+    //   85: aload_2
+    //   86: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   89: aload_0
+    //   90: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
+    //   93: new 41	rx/exceptions/OnErrorFailedException
+    //   96: dup
+    //   97: ldc 63
+    //   99: new 49	rx/exceptions/CompositeException
+    //   102: dup
+    //   103: iconst_2
+    //   104: anewarray 25	java/lang/Throwable
+    //   107: dup
+    //   108: iconst_0
+    //   109: aload_1
+    //   110: aastore
+    //   111: dup
+    //   112: iconst_1
+    //   113: aload_2
+    //   114: aastore
+    //   115: invokestatic 55	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   118: invokespecial 58	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
+    //   121: invokespecial 64	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   124: athrow
+    //   125: astore_3
+    //   126: aload_3
+    //   127: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   130: new 41	rx/exceptions/OnErrorFailedException
+    //   133: dup
+    //   134: ldc 66
+    //   136: new 49	rx/exceptions/CompositeException
+    //   139: dup
+    //   140: iconst_3
+    //   141: anewarray 25	java/lang/Throwable
+    //   144: dup
+    //   145: iconst_0
+    //   146: aload_1
+    //   147: aastore
+    //   148: dup
+    //   149: iconst_1
+    //   150: aload_2
+    //   151: aastore
+    //   152: dup
+    //   153: iconst_2
+    //   154: aload_3
+    //   155: aastore
+    //   156: invokestatic 55	java/util/Arrays:asList	([Ljava/lang/Object;)Ljava/util/List;
+    //   159: invokespecial 58	rx/exceptions/CompositeException:<init>	(Ljava/util/Collection;)V
+    //   162: invokespecial 64	rx/exceptions/OnErrorFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   165: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	166	0	this	SafeSubscriber
     //   0	166	1	paramThrowable	Throwable
-    //   17	13	2	localThrowable1	Throwable
-    //   34	103	2	localThrowable2	Throwable
-    //   111	30	3	localThrowable3	Throwable
+    //   31	13	2	localThrowable1	Throwable
+    //   48	103	2	localThrowable2	Throwable
+    //   125	30	3	localThrowable3	Throwable
     // Exception table:
     //   from	to	target	type
-    //   4	12	17	java/lang/Throwable
-    //   25	29	34	java/lang/Throwable
-    //   75	79	111	java/lang/Throwable
-    //   12	16	152	java/lang/RuntimeException
+    //   12	16	17	java/lang/RuntimeException
+    //   4	12	31	java/lang/Throwable
+    //   39	43	48	java/lang/Throwable
+    //   89	93	125	java/lang/Throwable
   }
   
   public Subscriber<? super T> getActual()
@@ -142,7 +142,7 @@ public class SafeSubscriber<T>
     // Byte code:
     //   0: aload_0
     //   1: getfield 16	rx/observers/SafeSubscriber:done	Z
-    //   4: ifne +19 -> 23
+    //   4: ifne +88 -> 92
     //   7: aload_0
     //   8: iconst_1
     //   9: putfield 16	rx/observers/SafeSubscriber:done	Z
@@ -163,46 +163,48 @@ public class SafeSubscriber<T>
     //   38: invokespecial 79	rx/exceptions/UnsubscribeFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   41: athrow
     //   42: astore_1
-    //   43: aload_1
-    //   44: invokestatic 84	rx/exceptions/Exceptions:throwIfFatal	(Ljava/lang/Throwable;)V
+    //   43: goto +25 -> 68
+    //   46: astore_1
     //   47: aload_1
-    //   48: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   51: new 86	rx/exceptions/OnCompletedFailedException
-    //   54: dup
-    //   55: aload_1
-    //   56: invokevirtual 78	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   48: invokestatic 84	rx/exceptions/Exceptions:throwIfFatal	(Ljava/lang/Throwable;)V
+    //   51: aload_1
+    //   52: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   55: new 86	rx/exceptions/OnCompletedFailedException
+    //   58: dup
     //   59: aload_1
-    //   60: invokespecial 87	rx/exceptions/OnCompletedFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   63: athrow
-    //   64: astore_1
-    //   65: aload_0
-    //   66: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
-    //   69: aload_1
-    //   70: athrow
-    //   71: astore_1
+    //   60: invokevirtual 78	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   63: aload_1
+    //   64: invokespecial 87	rx/exceptions/OnCompletedFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   67: athrow
+    //   68: aload_0
+    //   69: invokevirtual 39	rx/observers/SafeSubscriber:unsubscribe	()V
     //   72: aload_1
-    //   73: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
-    //   76: new 74	rx/exceptions/UnsubscribeFailedException
-    //   79: dup
-    //   80: aload_1
-    //   81: invokevirtual 78	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   84: aload_1
-    //   85: invokespecial 79	rx/exceptions/UnsubscribeFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   88: athrow
+    //   73: athrow
+    //   74: astore_1
+    //   75: aload_1
+    //   76: invokestatic 32	rx/internal/util/RxJavaPluginUtils:handleException	(Ljava/lang/Throwable;)V
+    //   79: new 74	rx/exceptions/UnsubscribeFailedException
+    //   82: dup
+    //   83: aload_1
+    //   84: invokevirtual 78	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   87: aload_1
+    //   88: invokespecial 79	rx/exceptions/UnsubscribeFailedException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   91: athrow
+    //   92: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	89	0	this	SafeSubscriber
+    //   0	93	0	this	SafeSubscriber
     //   24	14	1	localThrowable1	Throwable
-    //   42	18	1	localThrowable2	Throwable
-    //   64	6	1	localObject	Object
-    //   71	14	1	localThrowable3	Throwable
+    //   42	1	1	localObject	Object
+    //   46	27	1	localThrowable2	Throwable
+    //   74	14	1	localThrowable3	Throwable
     // Exception table:
     //   from	to	target	type
     //   19	23	24	java/lang/Throwable
-    //   12	19	42	java/lang/Throwable
-    //   12	19	64	finally
-    //   43	64	64	finally
-    //   65	69	71	java/lang/Throwable
+    //   12	19	42	finally
+    //   47	68	42	finally
+    //   12	19	46	java/lang/Throwable
+    //   68	72	74	java/lang/Throwable
   }
   
   public void onError(Throwable paramThrowable)
@@ -219,10 +221,11 @@ public class SafeSubscriber<T>
   {
     try
     {
-      if (!this.done) {
+      if (!this.done)
+      {
         this.actual.onNext(paramT);
+        return;
       }
-      return;
     }
     catch (Throwable paramT)
     {
@@ -232,7 +235,7 @@ public class SafeSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.observers.SafeSubscriber
  * JD-Core Version:    0.7.0.1
  */

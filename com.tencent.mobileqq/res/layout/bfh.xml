@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/g3t" formItem:leftTextColor="ab6"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" />

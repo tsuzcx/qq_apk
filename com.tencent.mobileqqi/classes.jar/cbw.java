@@ -1,14 +1,13 @@
 import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
-public class cbw
-  extends ProxyObserver
+class cbw
+  implements Runnable
 {
-  public cbw(ChatHistory paramChatHistory) {}
+  cbw(cbv paramcbv) {}
   
-  public void b()
+  public void run()
   {
-    this.a.runOnUiThread(new cbx(this));
+    this.a.a.e();
   }
 }
 

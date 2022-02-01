@@ -30,18 +30,21 @@ final class TPDownloadProxyFactory$1
     }
     catch (Throwable paramComponentName)
     {
-      TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "onServiceConnected failed, error:" + paramComponentName.toString());
+      paramIBinder = new StringBuilder();
+      paramIBinder.append("onServiceConnected failed, error:");
+      paramIBinder.append(paramComponentName.toString());
+      TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", paramIBinder.toString());
       TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected!");
-      if (TPDownloadProxyFactory.access$000() == null) {
-        TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl is null!");
-      }
-      do
+      if (TPDownloadProxyFactory.access$000() == null)
       {
+        TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl is null!");
         return;
-        TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl not null!");
-        TPDownloadProxyFactory.access$200(true);
-      } while (TPDownloadProxyFactory.access$300() == null);
-      TPDownloadProxyFactory.access$300().onBindSuccess();
+      }
+      TPDLProxyLog.i("TPDownloadProxyFactory", 0, "tpdlnative", "on service connected, aidl not null!");
+      TPDownloadProxyFactory.access$200(true);
+      if (TPDownloadProxyFactory.access$300() != null) {
+        TPDownloadProxyFactory.access$300().onBindSuccess();
+      }
     }
   }
   
@@ -55,7 +58,7 @@ final class TPDownloadProxyFactory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyFactory.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package android.support.v4.app;
 
-abstract interface m
+public final class m
+  extends RuntimeException
 {
-  public abstract void Q();
-  
-  public abstract void startListening();
+  public m(String paramString, Exception paramException)
+  {
+    super(paramString, paramException);
+  }
 }
 
 

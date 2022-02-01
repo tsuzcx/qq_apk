@@ -115,10 +115,10 @@ public class Ad
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231184);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = ((CustomWebView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231185));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231186));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231183));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231183);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = ((CustomWebView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231184));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231185));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131231182));
     if (this.jdField_d_of_type_Int >= 11) {
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setLayerType(1, null);
     }
@@ -129,7 +129,7 @@ public class Ad
     if (str == null) {
       localObject = "";
     }
-    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.2" + "." + "6602");
+    localWebSettings.setUserAgentString((String)localObject + " " + QZoneHelper.a() + " " + "QQ/" + "6.0.3" + "." + "6604");
     localWebSettings.setSaveFormData(false);
     localWebSettings.setSavePassword(false);
     localWebSettings.setBuiltInZoomControls(true);

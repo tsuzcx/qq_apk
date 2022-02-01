@@ -53,30 +53,32 @@ public class MQUserPersonalProfile
   
   public JSONObject convertToJson()
   {
-    localJSONObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("vip", this.vip);
       localJSONObject.put("vipLevel", this.vipLevel);
       localJSONObject.put("isAnnualVip", this.isAnnualVip);
       localJSONObject.put("isLoversVip", this.isLoversVip);
-      if (this.userClientShowInfo == null) {}
-      for (Object localObject = "null";; localObject = this.userClientShowInfo.convertToJson())
-      {
-        localJSONObject.put("userClientShowInfo", localObject);
-        return localJSONObject;
+      Object localObject;
+      if (this.userClientShowInfo == null) {
+        localObject = "null";
+      } else {
+        localObject = this.userClientShowInfo.convertToJson();
       }
+      localJSONObject.put("userClientShowInfo", localObject);
       return localJSONObject;
     }
     catch (Exception localException)
     {
       QZLog.e("MsgVip.MQUserPersonalProfile", "convertToJson error", localException);
     }
+    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserPersonalProfile
  * JD-Core Version:    0.7.0.1
  */

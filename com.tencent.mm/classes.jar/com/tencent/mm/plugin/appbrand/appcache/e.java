@@ -1,84 +1,51 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.content.res.Resources;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.aa.h;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.launching.m;
-import com.tencent.mm.protocal.protobuf.aqp;
-import com.tencent.mm.protocal.protobuf.aqq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class e
-  extends a<aqq>
 {
-  public final b rr;
+  private static final SparseIntArray qDT;
   
-  public e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  static
   {
-    AppMethodBeat.i(129323);
-    b.a locala = new b.a();
-    locala.funcId = 1718;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/gettestcodedownloadinfo";
-    aqp localaqp = new aqp();
-    localaqp.cwc = paramString1;
-    if (paramInt2 != 12) {
-      localaqp.xfV = paramString2;
-    }
-    localaqp.xfW = paramString3;
-    localaqp.wDT = paramInt1;
-    localaqp.xfY = paramInt2;
-    if (paramInt1 == 1) {
-      paramString3 = ((m)g.w(m.class)).bm(paramString1, paramInt1);
-    }
-    try
-    {
-      localaqp.xfX = new p(h.mo(paramString3).optLong("dev_key")).intValue();
-      locala.fsX = localaqp;
-      locala.fsY = new aqq();
-      paramString3 = locala.ado();
-      this.rr = paramString3;
-      this.rr = paramString3;
-      ab.d("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "appid:%s,module_name:%s,code_type:%d,package type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(129323);
-      return;
-    }
-    catch (Exception paramString3)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.AppBrand.CgiGetTestCodeDownloadInfo", "opt devKey %s", new Object[] { paramString3 });
-      }
-    }
+    AppMethodBeat.i(44236);
+    SparseIntArray localSparseIntArray = new SparseIntArray(3);
+    qDT = localSparseIntArray;
+    localSparseIntArray.put(0, ba.i.app_empty_string);
+    qDT.put(1, ba.i.app_brand_app_debug_type_testing);
+    qDT.put(2, ba.i.app_brand_app_debug_type_previewing);
+    AppMethodBeat.o(44236);
   }
   
-  public final f<a.a<aqq>> adl()
+  public static String UZ(String paramString)
   {
-    try
-    {
-      AppMethodBeat.i(129324);
-      long l = bo.aoy();
-      f localf = super.adl().b(new e.1(this, l));
-      AppMethodBeat.o(129324);
-      return localf;
+    AppMethodBeat.i(320288);
+    String str = LaunchParcel.Wu(paramString);
+    paramString = str;
+    if (str.endsWith("/")) {
+      paramString = str.substring(0, str.length() - 1);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.o(320288);
+    return paramString;
+  }
+  
+  public static String zm(int paramInt)
+  {
+    AppMethodBeat.i(44234);
+    paramInt = qDT.get(paramInt, ba.i.app_empty_string);
+    String str = MMApplicationContext.getResources().getString(paramInt);
+    AppMethodBeat.o(44234);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.e
  * JD-Core Version:    0.7.0.1
  */

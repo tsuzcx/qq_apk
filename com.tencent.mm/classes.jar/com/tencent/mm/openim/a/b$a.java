@@ -1,23 +1,12 @@
 package com.tencent.mm.openim.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-public enum b$a
-{
-  static
-  {
-    AppMethodBeat.i(128604);
-    gfD = new a("TYPE_WORDING", 0);
-    gfE = new a("TYPE_URL", 1);
-    gfF = new a[] { gfD, gfE };
-    AppMethodBeat.o(128604);
-  }
-  
-  private b$a() {}
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/openim/contact/OpenIMKefuCardExtension$Companion;", "", "()V", "TAG", "", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.a.b.a
  * JD-Core Version:    0.7.0.1
  */

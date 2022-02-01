@@ -11,9 +11,9 @@ public final class ReqGetEncounter
   static UserData cache_stUserData;
   static ReqUserInfo cache_stUserInfo;
   public int iListSize = -1;
-  public ReqHeader stHeader;
-  public UserData stUserData;
-  public ReqUserInfo stUserInfo;
+  public ReqHeader stHeader = null;
+  public UserData stUserData = null;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetEncounter() {}
   
@@ -52,7 +52,7 @@ public final class ReqGetEncounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.ReqGetEncounter
  * JD-Core Version:    0.7.0.1
  */

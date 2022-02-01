@@ -3,27 +3,27 @@ package com.tencent.xweb.sys;
 import android.content.Context;
 import android.webkit.CookieSyncManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.b.b;
+import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 
 public final class b
-  implements b.b
+  implements CookieInternal.ICookieSyncManagerInternal
 {
-  CookieSyncManager BHh;
+  private CookieSyncManager aima;
   
   public final void init(Context paramContext)
   {
-    AppMethodBeat.i(84647);
-    this.BHh = CookieSyncManager.createInstance(paramContext);
-    AppMethodBeat.o(84647);
+    AppMethodBeat.i(153655);
+    this.aima = CookieSyncManager.createInstance(paramContext);
+    AppMethodBeat.o(153655);
   }
   
   public final void sync()
   {
-    AppMethodBeat.i(84648);
-    if (this.BHh != null) {
-      this.BHh.sync();
+    AppMethodBeat.i(153656);
+    if (this.aima != null) {
+      this.aima.sync();
     }
-    AppMethodBeat.o(84648);
+    AppMethodBeat.o(153656);
   }
 }
 

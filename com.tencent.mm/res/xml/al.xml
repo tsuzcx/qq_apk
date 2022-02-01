@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContactsSource
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-</ContactsSource>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="facebook_auth_tip" android:layout="@layout/bf0" android:title="@string/cl2" />
+    <PreferenceCategory android:key="facebook_auth_cat" />
+    <Preference android:key="facebook_auth_bind_btn" android:layout="@layout/a63" android:title="@string/cl1" />
+    <Preference android:key="facebook_auth_account" android:layout="@layout/bdi" android:title="@string/cl4" />
+    <PreferenceCategory android:key="facebook_auth_cat2" />
+    <Preference android:key="facebook_auth_unbind_btn" android:layout="@layout/blo" android:title="@string/cla" />
+</PreferenceScreen>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/qxv" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/qxz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/qye" android:background="@drawable/hqk" android:layout_width="fill_parent" android:layout_height="134.0dip" />
+    <ViewStub android:id="@id/qv7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" />
+</RelativeLayout>

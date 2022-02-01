@@ -1,84 +1,76 @@
 package com.tencent.mm.am;
 
-import android.database.Cursor;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.d.b;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelbase/AsyncMediaPlayerWrapper;", "", "()V", "TAG", "", "handlerMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/modelbase/HandlerData;", "Lkotlin/collections/HashMap;", "createNewHandler", "tag", "dead", "", "play", "callback", "Lkotlin/Function0;", "plugin-audiologic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends ai
 {
-  public final String getTag()
+  private static final String TAG;
+  public static final a otm;
+  private static final HashMap<String, d> otn;
+  
+  static
   {
-    return "MicroMsg.App.BizInfoDataTransfer";
+    AppMethodBeat.i(236793);
+    otm = new a();
+    TAG = "MicroMsg.AsyncMediaPlayerWrapper";
+    otn = new HashMap();
+    AppMethodBeat.o(236793);
   }
   
-  public final boolean kv(int paramInt)
+  public static void LV(String paramString)
   {
-    return (paramInt != 0) && (paramInt < 604372991);
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(16429);
-    ab.d("MicroMsg.App.BizInfoDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramInt != 0) && (paramInt < 604372991))
-    {
-      com.tencent.mm.plugin.report.service.h.qsU.cT(336, 12);
-      aw.aaz();
-      Object localObject2 = c.Rq();
-      Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("select BizInfo.username, BizInfo.extInfo");
-      ((StringBuilder)localObject3).append(" from rcontact , BizInfo");
-      ((StringBuilder)localObject3).append(" where rcontact.username = BizInfo.username");
-      ((StringBuilder)localObject3).append(" and (rcontact.type & 1 ) != 0 ");
-      ((StringBuilder)localObject3).append(" and ( rcontact.verifyFlag & 8 ) != 0 ");
-      String str = ((StringBuilder)localObject3).toString();
-      Object localObject1 = new ArrayList();
-      ab.d("MicroMsg.App.BizInfoDataTransfer", "sql %s", new Object[] { str });
-      localObject2 = ((com.tencent.mm.cg.h)localObject2).a(((StringBuilder)localObject3).toString(), null, 2);
-      if (localObject2 != null)
-      {
-        while (((Cursor)localObject2).moveToNext())
-        {
-          localObject3 = new d();
-          ((d)localObject3).convertFrom((Cursor)localObject2);
-          if (((d)localObject3).cU(false).getServiceType() == 1) {
-            ((List)localObject1).add(((d)localObject3).field_username);
-          }
-        }
-        ((Cursor)localObject2).close();
-      }
-      if (((List)localObject1).size() > 0)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("Update BizInfo set type = 1 where 1 !=1 ");
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (String)((Iterator)localObject1).next();
-          ((StringBuilder)localObject2).append(" or username = '").append((String)localObject3).append("'");
-        }
-        localObject1 = ((StringBuilder)localObject2).toString();
-        ab.d("MicroMsg.App.BizInfoDataTransfer", "update sql %s", new Object[] { localObject1 });
-        z.afi().execSQL("BizInfo", (String)localObject1);
-      }
+    AppMethodBeat.i(236789);
+    s.u(paramString, "tag");
+    Log.i(TAG, s.X("dead, tag:", paramString));
+    d locald = (d)otn.get(paramString);
+    if (locald != null) {
+      locald.thread.quitSafely();
     }
-    AppMethodBeat.o(16429);
+    otn.remove(paramString);
+    AppMethodBeat.o(236789);
+  }
+  
+  private static final void ad(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(236791);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(236791);
+  }
+  
+  public static void k(String paramString, kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(236786);
+    s.u(paramString, "tag");
+    s.u(parama, "callback");
+    Log.i(TAG, s.X("play, tag:", paramString));
+    Object localObject = (d)otn.get(paramString);
+    if ((localObject != null) && (((d)localObject).thread.isAlive())) {}
+    for (paramString = ((d)localObject).handler;; paramString = ((d)localObject).handler)
+    {
+      paramString.post(new a..ExternalSyntheticLambda0(parama));
+      AppMethodBeat.o(236786);
+      return;
+      Log.i(TAG, s.X("createNewHandler, tag:", paramString));
+      localObject = new HandlerThread(paramString);
+      ((HandlerThread)localObject).start();
+      localObject = new d((HandlerThread)localObject, new MMHandler(((HandlerThread)localObject).getLooper()));
+      ((Map)otn).put(paramString, localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.am.a
  * JD-Core Version:    0.7.0.1
  */

@@ -22,22 +22,21 @@ public final class Streams
   
   public static JsonElement parse(JsonReader paramJsonReader)
   {
-    int i = 1;
     try
     {
       paramJsonReader.peek();
-      i = 0;
-      paramJsonReader = (JsonElement)TypeAdapters.JSON_ELEMENT.read(paramJsonReader);
-      return paramJsonReader;
-    }
-    catch (EOFException paramJsonReader)
-    {
-      if (i != 0) {
-        return JsonNull.INSTANCE;
+      int i = 0;
+      try
+      {
+        paramJsonReader = (JsonElement)TypeAdapters.JSON_ELEMENT.read(paramJsonReader);
+        return paramJsonReader;
       }
-      throw new JsonSyntaxException(paramJsonReader);
+      catch (EOFException paramJsonReader) {}
+      if (i == 0) {
+        break label65;
+      }
     }
-    catch (MalformedJsonException paramJsonReader)
+    catch (NumberFormatException paramJsonReader)
     {
       throw new JsonSyntaxException(paramJsonReader);
     }
@@ -45,10 +44,17 @@ public final class Streams
     {
       throw new JsonIOException(paramJsonReader);
     }
-    catch (NumberFormatException paramJsonReader)
+    catch (MalformedJsonException paramJsonReader)
     {
       throw new JsonSyntaxException(paramJsonReader);
     }
+    catch (EOFException paramJsonReader)
+    {
+      i = 1;
+    }
+    return JsonNull.INSTANCE;
+    label65:
+    throw new JsonSyntaxException(paramJsonReader);
   }
   
   public static void write(JsonElement paramJsonElement, JsonWriter paramJsonWriter)
@@ -66,7 +72,7 @@ public final class Streams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.Streams
  * JD-Core Version:    0.7.0.1
  */

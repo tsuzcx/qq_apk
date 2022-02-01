@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.dating;
 
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 
 class BaseMsgBoxActivity$6
   implements Runnable
 {
-  BaseMsgBoxActivity$6(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  BaseMsgBoxActivity$6(BaseMsgBoxActivity paramBaseMsgBoxActivity, boolean paramBoolean) {}
   
   public void run()
   {
-    NearbyActivity.a(this.this$0.a, this.this$0.c);
+    if ((this.this$0.mDragHost.getMode() == -1) && (this.a)) {
+      this.this$0.refreshListGlobal();
+    }
   }
 }
 

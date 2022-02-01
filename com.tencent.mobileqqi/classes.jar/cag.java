@@ -1,31 +1,22 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
+import android.app.Dialog;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
 
-public class cag
-  extends QZoneObserver
+public final class cag
+  implements Runnable
 {
-  public ChatAdapter1 a;
-  public SessionInfo a;
-  public QQAppInterface a;
+  public cag(Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null)) {
-      return;
+    if (this.a.isShowing())
+    {
+      TextView localTextView = (TextView)this.a.findViewById(2131231132);
+      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.9F, 0.0F);
+      localAlphaAnimation.setDuration(500L);
+      localAlphaAnimation.setAnimationListener(new cah(this));
+      localTextView.startAnimation(localAlphaAnimation);
     }
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(ChatActivityFacade.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
   }
 }
 

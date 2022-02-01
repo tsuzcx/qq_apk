@@ -1,11 +1,13 @@
 package com.google.gson;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -44,8 +46,18 @@ final class DefaultDateTypeAdapter
   
   DefaultDateTypeAdapter(Class<? extends java.util.Date> paramClass, DateFormat paramDateFormat1, DateFormat paramDateFormat2)
   {
-    if ((paramClass != java.util.Date.class) && (paramClass != java.sql.Date.class) && (paramClass != Timestamp.class)) {
-      throw new IllegalArgumentException("Date type must be one of " + java.util.Date.class + ", " + Timestamp.class + ", or " + java.sql.Date.class + " but was " + paramClass);
+    if ((paramClass != java.util.Date.class) && (paramClass != java.sql.Date.class) && (paramClass != Timestamp.class))
+    {
+      paramDateFormat1 = new StringBuilder();
+      paramDateFormat1.append("Date type must be one of ");
+      paramDateFormat1.append(java.util.Date.class);
+      paramDateFormat1.append(", ");
+      paramDateFormat1.append(Timestamp.class);
+      paramDateFormat1.append(", or ");
+      paramDateFormat1.append(java.sql.Date.class);
+      paramDateFormat1.append(" but was ");
+      paramDateFormat1.append(paramClass);
+      throw new IllegalArgumentException(paramDateFormat1.toString());
     }
     this.dateType = paramClass;
     this.enUsFormat = paramDateFormat1;
@@ -54,16 +66,41 @@ final class DefaultDateTypeAdapter
   
   private java.util.Date deserializeToDate(String paramString)
   {
-    java.util.Date localDate2;
-    synchronized (this.localFormat)
+    for (;;)
     {
       try
       {
-        java.util.Date localDate1 = this.localFormat.parse(paramString);
-        return localDate1;
+        synchronized (this.localFormat)
+        {
+          localDate = this.localFormat.parse(paramString);
+          return localDate;
+        }
       }
-      catch (ParseException localParseException1) {}
+      catch (ParseException localParseException2)
+      {
+        java.util.Date localDate;
+        continue;
+      }
+      try
+      {
+        localDate = this.enUsFormat.parse(paramString);
+        return localDate;
+      }
+      catch (ParseException localParseException3)
+      {
+        continue;
+      }
+      try
+      {
+        localDate = ISO8601Utils.parse(paramString, new ParsePosition(0));
+        return localDate;
+      }
+      catch (ParseException localParseException1)
+      {
+        throw new JsonSyntaxException(paramString, localParseException1);
+      }
     }
+    throw paramString;
   }
   
   public java.util.Date read(JsonReader paramJsonReader)
@@ -71,20 +108,18 @@ final class DefaultDateTypeAdapter
     if (paramJsonReader.peek() == JsonToken.NULL)
     {
       paramJsonReader.nextNull();
-      paramJsonReader = null;
+      return null;
     }
-    java.util.Date localDate;
-    do
-    {
+    paramJsonReader = deserializeToDate(paramJsonReader.nextString());
+    Class localClass = this.dateType;
+    if (localClass == java.util.Date.class) {
       return paramJsonReader;
-      localDate = deserializeToDate(paramJsonReader.nextString());
-      paramJsonReader = localDate;
-    } while (this.dateType == java.util.Date.class);
-    if (this.dateType == Timestamp.class) {
-      return new Timestamp(localDate.getTime());
     }
-    if (this.dateType == java.sql.Date.class) {
-      return new java.sql.Date(localDate.getTime());
+    if (localClass == Timestamp.class) {
+      return new Timestamp(paramJsonReader.getTime());
+    }
+    if (localClass == java.sql.Date.class) {
+      return new java.sql.Date(paramJsonReader.getTime());
     }
     throw new AssertionError();
   }
@@ -93,7 +128,9 @@ final class DefaultDateTypeAdapter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DefaultDateTypeAdapter");
-    localStringBuilder.append('(').append(this.localFormat.getClass().getSimpleName()).append(')');
+    localStringBuilder.append('(');
+    localStringBuilder.append(this.localFormat.getClass().getSimpleName());
+    localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
   
@@ -113,7 +150,7 @@ final class DefaultDateTypeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.DefaultDateTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

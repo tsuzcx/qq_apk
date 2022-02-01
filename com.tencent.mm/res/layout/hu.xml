@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/he" />
-    <LinearLayout android:orientation="vertical" android:background="@drawable/jp" android:paddingBottom="@dimen/ug" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/h7" />
-        <TextView android:textSize="@dimen/a9m" android:textColor="@color/rs" android:gravity="left" android:id="@id/a07" android:paddingTop="@dimen/ug" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ug" android:layout_marginRight="@dimen/ug" android:text="@string/a_p" />
+<LinearLayout android:id="@id/a7i" android:background="@drawable/abw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:id="@id/a4s" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aum">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/a4t" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_display_mobile" android:contentDescription="@string/a0t" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/agv" android:id="@id/a4u" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/a8i" />
     </LinearLayout>
 </LinearLayout>

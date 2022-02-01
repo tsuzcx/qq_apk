@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class AddGroupResp
   extends JceStruct
 {
-  public byte cGroupId;
-  public byte cSortId;
-  public long dwSequence;
-  public long dwToUin;
+  public byte cGroupId = 0;
+  public byte cSortId = 0;
+  public long dwSequence = 0L;
+  public long dwToUin = 0L;
   
   public AddGroupResp() {}
   
@@ -40,7 +40,7 @@ public final class AddGroupResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.AddGroupResp
  * JD-Core Version:    0.7.0.1
  */

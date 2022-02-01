@@ -1,28 +1,27 @@
 package com.tencent.gamecenter.common.util;
 
-import aahi;
-import aahx;
-import aahz;
+import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
 
-public class ScreenshotManager$2
+class ScreenshotManager$2
   implements Runnable
 {
-  public ScreenshotManager$2(aahx paramaahx, String paramString, aahz paramaahz) {}
+  ScreenshotManager$2(ScreenshotManager paramScreenshotManager, String paramString, ScreenshotManager.ShotCallback paramShotCallback) {}
   
   public void run()
   {
-    if (this.this$0.a(aahx.a(this.this$0), this.jdField_a_of_type_JavaLangString))
+    ScreenshotManager localScreenshotManager = this.this$0;
+    if (localScreenshotManager.a(ScreenshotManager.a(localScreenshotManager), this.a))
     {
-      this.jdField_a_of_type_Aahz.a(0, "succ");
-      aahi.a("gamecenter_shot_key", this.jdField_a_of_type_JavaLangString);
+      this.b.a(0, "succ");
+      GameCenterSpUtils.b("gamecenter_shot_key", this.a);
       return;
     }
-    this.jdField_a_of_type_Aahz.a(-200, "save file fail");
+    this.b.a(-200, "save file fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ScreenshotManager.2
  * JD-Core Version:    0.7.0.1
  */

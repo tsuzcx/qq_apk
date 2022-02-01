@@ -10,8 +10,8 @@ public final class ReportInfo
 {
   static ReportBody cache_body;
   static ReportHeader cache_header;
-  public ReportBody body;
-  public ReportHeader header;
+  public ReportBody body = null;
+  public ReportHeader header = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -28,14 +28,15 @@ public final class ReportInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.header, 0);
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 1);
+    ReportBody localReportBody = this.body;
+    if (localReportBody != null) {
+      paramJceOutputStream.write(localReportBody, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,13 +18,13 @@ public final class cell_decorate
   static ArrayList<s_PolyPraise> cache_pokePraise;
   static s_PolyPraise cache_polyPraise = new s_PolyPraise();
   static s_PrdData cache_sprdData;
-  public stcustomPraise customPraise;
-  public s_HighFive highFive;
-  public ArrayList<s_KapuPraise> kapuPraise;
-  public Map<String, byte[]> mapInfoData;
-  public ArrayList<s_PolyPraise> pokePraise;
-  public s_PolyPraise polyPraise;
-  public s_PrdData sprdData;
+  public stcustomPraise customPraise = null;
+  public s_HighFive highFive = null;
+  public ArrayList<s_KapuPraise> kapuPraise = null;
+  public Map<String, byte[]> mapInfoData = null;
+  public ArrayList<s_PolyPraise> pokePraise = null;
+  public s_PolyPraise polyPraise = null;
+  public s_PrdData sprdData = null;
   
   static
   {
@@ -67,32 +68,39 @@ public final class cell_decorate
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.customPraise != null) {
-      paramJceOutputStream.write(this.customPraise, 0);
+    Object localObject = this.customPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.polyPraise != null) {
-      paramJceOutputStream.write(this.polyPraise, 1);
+    localObject = this.polyPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.highFive != null) {
-      paramJceOutputStream.write(this.highFive, 2);
+    localObject = this.highFive;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.mapInfoData != null) {
-      paramJceOutputStream.write(this.mapInfoData, 3);
+    localObject = this.mapInfoData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.sprdData != null) {
-      paramJceOutputStream.write(this.sprdData, 4);
+    localObject = this.sprdData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.pokePraise != null) {
-      paramJceOutputStream.write(this.pokePraise, 5);
+    localObject = this.pokePraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.kapuPraise != null) {
-      paramJceOutputStream.write(this.kapuPraise, 6);
+    localObject = this.kapuPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_decorate
  * JD-Core Version:    0.7.0.1
  */

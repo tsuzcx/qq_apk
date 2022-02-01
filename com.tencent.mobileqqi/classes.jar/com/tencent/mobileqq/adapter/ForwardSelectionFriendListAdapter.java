@@ -209,8 +209,8 @@ public class ForwardSelectionFriendListAdapter
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130903141, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.GroupViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231389));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131231390));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231388));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131231389));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this);
       localGroups = (Groups)getGroup(paramInt);

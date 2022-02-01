@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/eru" android:key="timline_outside_permiss" />
-    <Preference android:title="@string/eo7" android:key="timeline_black_permiss" />
+    <Preference android:key="settings_room_size" android:layout="@layout/bdi" android:title="@string/iyc" />
+    <Preference android:key="room_right_max_tip" android:layout="@layout/bf0" android:title="@string/i8q" />
     <PreferenceCategory />
-    <CheckBoxPreference android:title="@string/ay4" android:key="timeline_stranger_show" android:layout="@layout/afi" />
+    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/bdi" android:title="@string/iy_" />
+    <PreferenceCategory />
+    <Preference android:key="room_grant_to_friend" android:layout="@layout/az3" android:title="@string/i8m" />
+    <PreferenceCategory />
+    <Preference android:key="room_right_grant_tip" android:layout="@layout/bf0" android:title="@string/i8n" />
 </PreferenceScreen>

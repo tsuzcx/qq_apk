@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="@drawable/y7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/c6i" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nh" android:textColor="@color/en" android:gravity="center" android:id="@id/amk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c6t" android:drawableTop="@drawable/y8" android:drawablePadding="@dimen/n_" android:layout_centerInParent="true" />
-</com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+    <View android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="448.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/lmk" android:layout_width="fill_parent" android:layout_height="400.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/beq" android:background="@drawable/il" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginBottom="400.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bq2" android:rotation="-90.0" />
+    </FrameLayout>
+</RelativeLayout>

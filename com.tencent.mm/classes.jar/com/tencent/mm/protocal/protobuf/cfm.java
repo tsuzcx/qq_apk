@@ -1,72 +1,153 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cfm
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String jJA;
-  public String jKG;
+  public elf YRW;
+  public cam ZpT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94626);
+    AppMethodBeat.i(124497);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.jJA != null) {
-        paramVarArgs.e(1, this.jJA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(124497);
+        throw paramVarArgs;
       }
-      if (this.jKG != null) {
-        paramVarArgs.e(2, this.jKG);
+      if (this.YRW == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: qy_base_resp");
+        AppMethodBeat.o(124497);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(94626);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.YRW != null)
+      {
+        paramVarArgs.qD(2, this.YRW.computeSize());
+        this.YRW.writeFields(paramVarArgs);
+      }
+      if (this.ZpT != null)
+      {
+        paramVarArgs.qD(3, this.ZpT.computeSize());
+        this.ZpT.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(124497);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jJA == null) {
-        break label274;
+      if (this.BaseResponse == null) {
+        break label644;
       }
     }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.jJA) + 0;; paramInt = 0)
+    label644:
+    for (int i = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.jKG != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.jKG);
+      paramInt = i;
+      if (this.YRW != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YRW.computeSize());
       }
-      AppMethodBeat.o(94626);
+      i = paramInt;
+      if (this.ZpT != null) {
+        i = paramInt + i.a.a.a.qC(3, this.ZpT.computeSize());
+      }
+      AppMethodBeat.o(124497);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(94626);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(124497);
+          throw paramVarArgs;
+        }
+        if (this.YRW == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: qy_base_resp");
+          AppMethodBeat.o(124497);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124497);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cfm localcfm = (cfm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(94626);
+          AppMethodBeat.o(124497);
           return -1;
         case 1: 
-          localcfm.jJA = locala.CLY.readString();
-          AppMethodBeat.o(94626);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcfm.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124497);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new elf();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((elf)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcfm.YRW = ((elf)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124497);
           return 0;
         }
-        localcfm.jKG = locala.CLY.readString();
-        AppMethodBeat.o(94626);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new cam();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((cam)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcfm.ZpT = ((cam)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(124497);
         return 0;
       }
-      AppMethodBeat.o(94626);
+      AppMethodBeat.o(124497);
       return -1;
     }
   }

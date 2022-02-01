@@ -16,26 +16,24 @@ public final class GaplessInfoHolder
   
   private boolean setFromComment(String paramString1, String paramString2)
   {
-    if (!"iTunSMPB".equals(paramString1)) {}
-    for (;;)
-    {
+    if (!"iTunSMPB".equals(paramString1)) {
       return false;
-      paramString1 = GAPLESS_COMMENT_PATTERN.matcher(paramString2);
-      if (paramString1.find()) {
-        try
-        {
-          int i = Integer.parseInt(paramString1.group(1), 16);
-          int j = Integer.parseInt(paramString1.group(2), 16);
-          if ((i > 0) || (j > 0))
-          {
-            this.encoderDelay = i;
-            this.encoderPadding = j;
-            return true;
-          }
-        }
-        catch (NumberFormatException paramString1) {}
-      }
     }
+    paramString1 = GAPLESS_COMMENT_PATTERN.matcher(paramString2);
+    if (paramString1.find()) {}
+    try
+    {
+      int i = Integer.parseInt(paramString1.group(1), 16);
+      int j = Integer.parseInt(paramString1.group(2), 16);
+      if ((i > 0) || (j > 0))
+      {
+        this.encoderDelay = i;
+        this.encoderPadding = j;
+        return true;
+      }
+      return false;
+    }
+    catch (NumberFormatException paramString1) {}
     return false;
   }
   
@@ -46,46 +44,37 @@ public final class GaplessInfoHolder
   
   public boolean setFromMetadata(Metadata paramMetadata)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < paramMetadata.length())
     {
-      boolean bool1 = bool2;
-      if (i < paramMetadata.length())
+      Object localObject = paramMetadata.get(i);
+      if ((localObject instanceof CommentFrame))
       {
-        Object localObject = paramMetadata.get(i);
-        if ((localObject instanceof CommentFrame))
-        {
-          localObject = (CommentFrame)localObject;
-          if (setFromComment(((CommentFrame)localObject).description, ((CommentFrame)localObject).text)) {
-            bool1 = true;
-          }
+        localObject = (CommentFrame)localObject;
+        if (setFromComment(((CommentFrame)localObject).description, ((CommentFrame)localObject).text)) {
+          return true;
         }
-      }
-      else
-      {
-        return bool1;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean setFromXingHeaderValue(int paramInt)
   {
     int i = paramInt >> 12;
     paramInt &= 0xFFF;
-    if ((i > 0) || (paramInt > 0))
-    {
-      this.encoderDelay = i;
-      this.encoderPadding = paramInt;
-      return true;
+    if ((i <= 0) && (paramInt <= 0)) {
+      return false;
     }
-    return false;
+    this.encoderDelay = i;
+    this.encoderPadding = paramInt;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.GaplessInfoHolder
  * JD-Core Version:    0.7.0.1
  */

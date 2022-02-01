@@ -17,18 +17,20 @@ public final class FeedCloudRead$StGetMainPageReq
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
   public final PBStringField feedAttchInfo = PBField.initString("");
   public final PBInt32Field from = PBField.initInt32(0);
+  public final PBBoolField isMiddlePage = PBField.initBool(false);
   public final PBBoolField needFeed = PBField.initBool(false);
   public final PBStringField userId = PBField.initString("");
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48 }, new String[] { "extInfo", "userId", "from", "feedAttchInfo", "busiReqData", "needFeed" }, new Object[] { null, "", Integer.valueOf(0), "", localByteStringMicro, Boolean.valueOf(false) }, StGetMainPageReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 56 }, new String[] { "extInfo", "userId", "from", "feedAttchInfo", "busiReqData", "needFeed", "isMiddlePage" }, new Object[] { null, "", Integer.valueOf(0), "", localByteStringMicro, localBoolean, localBoolean }, StGetMainPageReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetMainPageReq
  * JD-Core Version:    0.7.0.1
  */

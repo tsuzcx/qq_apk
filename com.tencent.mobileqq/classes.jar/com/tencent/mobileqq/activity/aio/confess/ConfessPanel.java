@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.aio.confess;
 
-import aezl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,48 +9,47 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import bida;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.WebViewUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.widget.ResetPanelInterface;
 import com.tencent.widget.XPanelContainer;
 
 public class ConfessPanel
   extends RelativeLayout
-  implements View.OnClickListener, View.OnLongClickListener, bida
+  implements View.OnClickListener, View.OnLongClickListener, ResetPanelInterface
 {
-  public static int a;
-  public static final int b;
-  public static int c;
-  private aezl jdField_a_of_type_Aezl;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public static int b = -1;
+  public static final int c;
+  public static int d;
   public QQAppInterface a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private int d;
-  private int e;
+  private boolean e = false;
   private int f;
+  private boolean g = false;
+  private FrameLayout h;
+  private ConfessWebViewBuilder i;
+  private TouchWebView j;
+  private BaseChatPie k;
+  private Context l;
+  private int m;
+  private int n;
+  private boolean o = false;
   
   static
   {
-    jdField_a_of_type_Int = -1;
-    int i = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().widthPixels;
-    jdField_b_of_type_Int = a(i);
-    jdField_c_of_type_Int = i;
+    int i1 = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().widthPixels;
+    c = a(i1);
+    d = i1;
   }
   
   public ConfessPanel(Context paramContext)
@@ -71,44 +69,48 @@ public class ConfessPanel
   
   public static int a(Resources paramResources, int paramInt1, int paramInt2)
   {
-    int j = paramInt1 + paramInt2;
-    int k = paramResources.getDisplayMetrics().heightPixels;
-    int i;
-    if (j <= k)
+    int i2 = paramInt1 + paramInt2;
+    int i3 = paramResources.getDisplayMetrics().heightPixels;
+    int i1;
+    if (i2 <= i3)
     {
-      i = j;
-      if (j <= k * 0.6F) {}
+      i1 = i2;
+      if (i2 <= i3 * 0.6F) {}
     }
     else
     {
-      i = (int)(k * 0.6F);
+      i1 = (int)(i3 * 0.6F);
     }
-    j = i;
-    if (i < XPanelContainer.jdField_b_of_type_Int + paramInt2) {
-      j = XPanelContainer.jdField_b_of_type_Int + paramInt2;
+    i2 = i1;
+    if (i1 < XPanelContainer.b + paramInt2) {
+      i2 = XPanelContainer.b + paramInt2;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessPanel", 2, String.format("adjustPanelHeight [maxPanelH,toolbarH,screenH,ExternalH,dstHeight]=[%d,%d,%d,%d,%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(k), Integer.valueOf(XPanelContainer.jdField_b_of_type_Int), Integer.valueOf(j) }));
+      QLog.i("ConfessPanel", 2, String.format("adjustPanelHeight [maxPanelH,toolbarH,screenH,ExternalH,dstHeight]=[%d,%d,%d,%d,%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i3), Integer.valueOf(XPanelContainer.b), Integer.valueOf(i2) }));
     }
-    return j;
+    return i2;
   }
   
   public static int a(BaseChatPie paramBaseChatPie)
   {
-    int i = 0;
-    InputLinearLayout localInputLinearLayout = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout;
-    paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+    InputLinearLayout localInputLinearLayout = paramBaseChatPie.X;
+    paramBaseChatPie = paramBaseChatPie.W;
+    int i1 = 0;
     if (localInputLinearLayout != null) {
-      i = 0 + localInputLinearLayout.getHeight();
+      i1 = 0 + localInputLinearLayout.getHeight();
     }
-    int j = i;
+    int i2 = i1;
     if (paramBaseChatPie != null) {
-      j = i + paramBaseChatPie.getHeight();
+      i2 = i1 + paramBaseChatPie.getHeight();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPanel", 2, "getToolbarHeight =" + j);
+    if (QLog.isColorLevel())
+    {
+      paramBaseChatPie = new StringBuilder();
+      paramBaseChatPie.append("getToolbarHeight =");
+      paramBaseChatPie.append(i2);
+      QLog.d("ConfessPanel", 2, paramBaseChatPie.toString());
     }
-    return j;
+    return i2;
   }
   
   private void a(BaseChatPie paramBaseChatPie, int paramInt)
@@ -116,139 +118,183 @@ public class ConfessPanel
     if (paramBaseChatPie == null) {
       return;
     }
-    this.e = a(paramBaseChatPie);
-    this.f = (a(getResources(), paramInt, this.e) - this.e);
+    this.m = a(paramBaseChatPie);
+    this.n = (a(getResources(), paramInt, this.m) - this.m);
   }
   
   private void c()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.g)
     {
-      this.jdField_a_of_type_Aezl = new aezl(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = this.jdField_a_of_type_Aezl.a(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(this.jdField_a_of_type_Aezl);
-      this.jdField_b_of_type_Boolean = true;
+      this.i = new ConfessWebViewBuilder(this.l, this.k.aX(), this.a);
+      this.j = this.i.a(this.h);
+      this.j.getSettings().setMediaPlaybackRequiresUserGesture(false);
+      this.j.getPluginEngine().a(this.i);
+      this.g = true;
     }
   }
   
   private void d()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+      Object localObject = this.j;
+      if (localObject != null)
       {
-        ViewParent localViewParent = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent();
-        if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {
-          ((ViewGroup)localViewParent).removeAllViewsInLayout();
+        localObject = ((TouchWebView)localObject).getParent();
+        if ((localObject != null) && ((localObject instanceof ViewGroup))) {
+          ((ViewGroup)localObject).removeAllViewsInLayout();
         }
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.removeAllViews();
+        this.j.removeAllViews();
       }
-      if (this.jdField_a_of_type_Aezl != null) {
-        this.jdField_a_of_type_Aezl.a();
+      localObject = this.i;
+      if (localObject != null) {
+        ((ConfessWebViewBuilder)localObject).a();
       }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-      this.jdField_b_of_type_Boolean = false;
+      this.j = null;
+      this.g = false;
     }
-  }
-  
-  public int a()
-  {
-    this.d = b();
-    QLog.d("ConfessPanel", 2, "getDefaultExternalPanelheight , orginal:" + XPanelContainer.jdField_a_of_type_Int + " return:" + this.d);
-    return this.d;
   }
   
   public void a()
   {
     QLog.d("ConfessPanel", 2, "unInit");
     d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a = null;
   }
   
   public void a(int paramInt, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPanel", 2, "onActivityResult, requestCode = " + paramInt);
-    }
-    if (this.jdField_c_of_type_Boolean)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      WebViewPlugin localWebViewPlugin = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine().a(42, true);
-      if (localWebViewPlugin != null) {
-        localWebViewPlugin.onActivityResult(paramIntent, (byte)1, -1);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityResult, requestCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.o)
+    {
+      localObject = this.j.getPluginEngine().a(WebViewUtil.a("QQApi"), true);
+      if (localObject != null) {
+        ((WebViewPlugin)localObject).onActivityResult(paramIntent, (byte)1, -1);
       }
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, jdField_b_of_type_Int);
-    jdField_a_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364683));
+    this.a = paramQQAppInterface;
+    this.l = paramContext;
+    this.k = paramBaseChatPie;
+    a(this.k, c);
+    b = XPanelContainer.a;
+    this.h = ((FrameLayout)findViewById(2131431205));
   }
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPanel", 2, "onHide :" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHide :");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("ConfessPanel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.d = 0;
+    this.e = false;
+    this.f = 0;
     if (!paramBoolean) {
-      XPanelContainer.jdField_a_of_type_Int = jdField_a_of_type_Int;
+      XPanelContainer.a = b;
     }
-    QLog.d("ConfessPanel", 2, "set mExternalPanelheight :" + XPanelContainer.jdField_a_of_type_Int);
-    if (this.jdField_c_of_type_Boolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set mExternalPanelheight :");
+    localStringBuilder.append(XPanelContainer.a);
+    QLog.d("ConfessPanel", 2, localStringBuilder.toString());
+    if (this.o) {
       d();
     }
     setVisibility(8);
   }
   
-  public int b()
+  public void b()
   {
-    if ((BaseApplicationImpl.sApplication != null) && (BaseApplicationImpl.sApplication.getResources() != null))
-    {
-      ViewParent localViewParent = getParent();
-      if ((localViewParent instanceof View))
-      {
-        int i = ((View)localViewParent).getWidth();
-        if ((jdField_c_of_type_Int != i) && (i > 0))
-        {
-          jdField_c_of_type_Int = i;
-          QLog.d("ConfessPanel", 2, "getPanelHeight , sLastScreenWidth:" + jdField_c_of_type_Int + " winwidth:" + i);
-          int j = a(i);
-          a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, j);
-          QLog.d("ConfessPanel", 2, "getPanelHeight , sLastScreenWidth:" + jdField_c_of_type_Int + " winwidth:" + i + " nWinHeight:" + j);
-          return this.f;
-        }
-      }
+    b = XPanelContainer.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onShow mOriginPanelHeight:");
+    ((StringBuilder)localObject).append(b);
+    QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+    this.e = true;
+    this.f = getPanelHeight();
+    XPanelContainer.a = this.f;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("set mExternalPanelheight :");
+    ((StringBuilder)localObject).append(XPanelContainer.a);
+    QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+    if ((this.o) && (!this.g)) {
+      c();
     }
-    QLog.d("ConfessPanel", 2, "getPanelHeight , use max height:" + this.f);
+    if (this.o)
+    {
+      localObject = this.k.aX().getIntent().getStringExtra("url");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onShow url :");
+        localStringBuilder.append((String)localObject);
+        QLog.d("ConfessPanel", 2, localStringBuilder.toString());
+      }
+      this.i.a((String)localObject);
+    }
+  }
+  
+  public int getDefaultExternalPanelheight()
+  {
+    this.f = getPanelHeight();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getDefaultExternalPanelheight , orginal:");
+    localStringBuilder.append(XPanelContainer.a);
+    localStringBuilder.append(" return:");
+    localStringBuilder.append(this.f);
+    QLog.d("ConfessPanel", 2, localStringBuilder.toString());
     return this.f;
   }
   
-  public void b()
+  public int getPanelHeight()
   {
-    jdField_a_of_type_Int = XPanelContainer.jdField_a_of_type_Int;
-    QLog.d("ConfessPanel", 2, "onShow mOriginPanelHeight:" + jdField_a_of_type_Int);
-    this.jdField_a_of_type_Boolean = true;
-    this.d = b();
-    XPanelContainer.jdField_a_of_type_Int = this.d;
-    QLog.d("ConfessPanel", 2, "set mExternalPanelheight :" + XPanelContainer.jdField_a_of_type_Int);
-    if ((this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-      c();
-    }
-    if (this.jdField_c_of_type_Boolean)
+    if ((BaseApplicationImpl.sApplication != null) && (BaseApplicationImpl.sApplication.getResources() != null))
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getStringExtra("url");
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfessPanel", 2, "onShow url :" + str);
+      localObject = getParent();
+      if ((localObject instanceof View))
+      {
+        int i1 = ((View)localObject).getWidth();
+        if ((d != i1) && (i1 > 0))
+        {
+          d = i1;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getPanelHeight , sLastScreenWidth:");
+          ((StringBuilder)localObject).append(d);
+          ((StringBuilder)localObject).append(" winwidth:");
+          ((StringBuilder)localObject).append(i1);
+          QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+          int i2 = a(i1);
+          a(this.k, i2);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getPanelHeight , sLastScreenWidth:");
+          ((StringBuilder)localObject).append(d);
+          ((StringBuilder)localObject).append(" winwidth:");
+          ((StringBuilder)localObject).append(i1);
+          ((StringBuilder)localObject).append(" nWinHeight:");
+          ((StringBuilder)localObject).append(i2);
+          QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+          return this.n;
+        }
       }
-      this.jdField_a_of_type_Aezl.a(str);
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getPanelHeight , use max height:");
+    ((StringBuilder)localObject).append(this.n);
+    QLog.d("ConfessPanel", 2, ((StringBuilder)localObject).toString());
+    return this.n;
   }
   
   public void onClick(View paramView) {}
@@ -256,14 +302,17 @@ public class ConfessPanel
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      if (XPanelContainer.jdField_a_of_type_Int == this.d) {
-        XPanelContainer.jdField_a_of_type_Int = jdField_a_of_type_Int;
+      if (XPanelContainer.a == this.f) {
+        XPanelContainer.a = b;
       }
-      QLog.d("ConfessPanel", 2, "onDetachedFromWindow, set mExternalPanelheight :" + XPanelContainer.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDetachedFromWindow, set mExternalPanelheight :");
+      localStringBuilder.append(XPanelContainer.a);
+      QLog.d("ConfessPanel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
   }
   
   public boolean onLongClick(View paramView)
@@ -273,7 +322,7 @@ public class ConfessPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class SensorManagerWorker$LightSensorListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.SensorManagerWorker.LightSensorListener
  * JD-Core Version:    0.7.0.1
  */

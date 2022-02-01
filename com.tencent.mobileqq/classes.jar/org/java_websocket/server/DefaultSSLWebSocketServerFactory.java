@@ -29,11 +29,13 @@ public class DefaultSSLWebSocketServerFactory
   
   public DefaultSSLWebSocketServerFactory(SSLContext paramSSLContext, ExecutorService paramExecutorService)
   {
-    if ((paramSSLContext == null) || (paramExecutorService == null)) {
-      throw new IllegalArgumentException();
+    if ((paramSSLContext != null) && (paramExecutorService != null))
+    {
+      this.sslcontext = paramSSLContext;
+      this.exec = paramExecutorService;
+      return;
     }
-    this.sslcontext = paramSSLContext;
-    this.exec = paramExecutorService;
+    throw new IllegalArgumentException();
   }
   
   public void close()
@@ -63,7 +65,7 @@ public class DefaultSSLWebSocketServerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.server.DefaultSSLWebSocketServerFactory
  * JD-Core Version:    0.7.0.1
  */

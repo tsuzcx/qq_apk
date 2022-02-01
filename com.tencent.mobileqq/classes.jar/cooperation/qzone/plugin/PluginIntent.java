@@ -2,7 +2,6 @@ package cooperation.qzone.plugin;
 
 import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
 import android.content.Context;
-import bjon;
 import java.util.ArrayList;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
@@ -10,28 +9,28 @@ import mqq.app.Servlet;
 public class PluginIntent
   extends NewIntent
 {
-  bjon a;
-  public ArrayList<UPDATE_INFO> a;
-  public ArrayList<UPDATE_INFO> b;
+  public ArrayList<UPDATE_INFO> module_update_infos;
+  PluginIntent.OnResultListner onResultListner;
+  public ArrayList<UPDATE_INFO> update_infos;
   
   public PluginIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public bjon a()
+  public PluginIntent.OnResultListner getResultListner()
   {
-    return this.a;
+    return this.onResultListner;
   }
   
-  public void a(bjon parambjon)
+  public void setResultListner(PluginIntent.OnResultListner paramOnResultListner)
   {
-    this.a = parambjon;
+    this.onResultListner = paramOnResultListner;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.plugin.PluginIntent
  * JD-Core Version:    0.7.0.1
  */

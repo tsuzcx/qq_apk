@@ -22,11 +22,11 @@ final class zzi
   
   public zzi(zzh paramzzh, GmsClientSupervisor.ConnectionStatusConfig paramConnectionStatusConfig)
   {
-    AppMethodBeat.i(89870);
+    AppMethodBeat.i(4892);
     this.zztx = paramConnectionStatusConfig;
     this.zztv = new HashSet();
     this.mState = 2;
-    AppMethodBeat.o(89870);
+    AppMethodBeat.o(4892);
   }
   
   public final IBinder getBinder()
@@ -51,7 +51,7 @@ final class zzi
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AppMethodBeat.i(89871);
+    AppMethodBeat.i(4893);
     synchronized (zzh.zza(this.zzty))
     {
       zzh.zzb(this.zzty).removeMessages(1, this.zztx);
@@ -63,12 +63,12 @@ final class zzi
       }
     }
     this.mState = 1;
-    AppMethodBeat.o(89871);
+    AppMethodBeat.o(4893);
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(89872);
+    AppMethodBeat.i(4894);
     synchronized (zzh.zza(this.zzty))
     {
       zzh.zzb(this.zzty).removeMessages(1, this.zztx);
@@ -80,79 +80,79 @@ final class zzi
       }
     }
     this.mState = 2;
-    AppMethodBeat.o(89872);
+    AppMethodBeat.o(4894);
   }
   
   public final void zza(ServiceConnection paramServiceConnection, String paramString)
   {
-    AppMethodBeat.i(89875);
+    AppMethodBeat.i(4897);
     zzh.zzd(this.zzty).logConnectService(zzh.zzc(this.zzty), paramServiceConnection, paramString, this.zztx.getStartServiceIntent(zzh.zzc(this.zzty)));
     this.zztv.add(paramServiceConnection);
-    AppMethodBeat.o(89875);
+    AppMethodBeat.o(4897);
   }
   
   public final boolean zza(ServiceConnection paramServiceConnection)
   {
-    AppMethodBeat.i(89877);
+    AppMethodBeat.i(4899);
     boolean bool = this.zztv.contains(paramServiceConnection);
-    AppMethodBeat.o(89877);
+    AppMethodBeat.o(4899);
     return bool;
   }
   
   public final void zzb(ServiceConnection paramServiceConnection, String paramString)
   {
-    AppMethodBeat.i(89876);
+    AppMethodBeat.i(4898);
     zzh.zzd(this.zzty).logDisconnectService(zzh.zzc(this.zzty), paramServiceConnection);
     this.zztv.remove(paramServiceConnection);
-    AppMethodBeat.o(89876);
+    AppMethodBeat.o(4898);
   }
   
   public final boolean zzcv()
   {
-    AppMethodBeat.i(89878);
+    AppMethodBeat.i(4900);
     boolean bool = this.zztv.isEmpty();
-    AppMethodBeat.o(89878);
+    AppMethodBeat.o(4900);
     return bool;
   }
   
   public final void zzj(String paramString)
   {
-    AppMethodBeat.i(89873);
+    AppMethodBeat.i(4895);
     this.mState = 3;
     this.zztw = zzh.zzd(this.zzty).bindService(zzh.zzc(this.zzty), paramString, this.zztx.getStartServiceIntent(zzh.zzc(this.zzty)), this, this.zztx.getBindFlags());
     if (this.zztw)
     {
       paramString = zzh.zzb(this.zzty).obtainMessage(1, this.zztx);
       zzh.zzb(this.zzty).sendMessageDelayed(paramString, zzh.zze(this.zzty));
-      AppMethodBeat.o(89873);
+      AppMethodBeat.o(4895);
       return;
     }
     this.mState = 2;
     try
     {
       zzh.zzd(this.zzty).unbindService(zzh.zzc(this.zzty), this);
-      AppMethodBeat.o(89873);
+      AppMethodBeat.o(4895);
       return;
     }
     catch (IllegalArgumentException paramString)
     {
-      AppMethodBeat.o(89873);
+      AppMethodBeat.o(4895);
     }
   }
   
   public final void zzk(String paramString)
   {
-    AppMethodBeat.i(89874);
+    AppMethodBeat.i(4896);
     zzh.zzb(this.zzty).removeMessages(1, this.zztx);
     zzh.zzd(this.zzty).unbindService(zzh.zzc(this.zzty), this);
     this.zztw = false;
     this.mState = 2;
-    AppMethodBeat.o(89874);
+    AppMethodBeat.o(4896);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzi
  * JD-Core Version:    0.7.0.1
  */

@@ -90,57 +90,50 @@ public final class HlsPlaylistTracker
   
   private int getLoadedPlaylistDiscontinuitySequence(HlsMediaPlaylist paramHlsMediaPlaylist1, HlsMediaPlaylist paramHlsMediaPlaylist2)
   {
-    int j;
-    if (paramHlsMediaPlaylist2.hasDiscontinuitySequence)
-    {
-      j = paramHlsMediaPlaylist2.discontinuitySequence;
-      return j;
+    if (paramHlsMediaPlaylist2.hasDiscontinuitySequence) {
+      return paramHlsMediaPlaylist2.discontinuitySequence;
     }
-    if (this.primaryUrlSnapshot != null) {}
-    for (int i = this.primaryUrlSnapshot.discontinuitySequence;; i = 0)
-    {
-      j = i;
-      if (paramHlsMediaPlaylist1 == null) {
-        break;
-      }
-      HlsMediaPlaylist.Segment localSegment = getFirstOldOverlappingSegment(paramHlsMediaPlaylist1, paramHlsMediaPlaylist2);
-      j = i;
-      if (localSegment == null) {
-        break;
-      }
-      i = paramHlsMediaPlaylist1.discontinuitySequence;
-      return localSegment.relativeDiscontinuitySequence + i - ((HlsMediaPlaylist.Segment)paramHlsMediaPlaylist2.segments.get(0)).relativeDiscontinuitySequence;
+    Object localObject = this.primaryUrlSnapshot;
+    int i;
+    if (localObject != null) {
+      i = ((HlsMediaPlaylist)localObject).discontinuitySequence;
+    } else {
+      i = 0;
     }
+    if (paramHlsMediaPlaylist1 == null) {
+      return i;
+    }
+    localObject = getFirstOldOverlappingSegment(paramHlsMediaPlaylist1, paramHlsMediaPlaylist2);
+    if (localObject != null) {
+      return paramHlsMediaPlaylist1.discontinuitySequence + ((HlsMediaPlaylist.Segment)localObject).relativeDiscontinuitySequence - ((HlsMediaPlaylist.Segment)paramHlsMediaPlaylist2.segments.get(0)).relativeDiscontinuitySequence;
+    }
+    return i;
   }
   
   private long getLoadedPlaylistStartTimeUs(HlsMediaPlaylist paramHlsMediaPlaylist1, HlsMediaPlaylist paramHlsMediaPlaylist2)
   {
-    long l2;
     if (paramHlsMediaPlaylist2.hasProgramDateTime) {
-      l2 = paramHlsMediaPlaylist2.startTimeUs;
+      return paramHlsMediaPlaylist2.startTimeUs;
     }
-    int i;
-    label79:
-    do
-    {
-      return l2;
-      if (this.primaryUrlSnapshot != null) {}
-      for (long l1 = this.primaryUrlSnapshot.startTimeUs;; l1 = 0L)
-      {
-        l2 = l1;
-        if (paramHlsMediaPlaylist1 == null) {
-          break;
-        }
-        i = paramHlsMediaPlaylist1.segments.size();
-        HlsMediaPlaylist.Segment localSegment = getFirstOldOverlappingSegment(paramHlsMediaPlaylist1, paramHlsMediaPlaylist2);
-        if (localSegment == null) {
-          break label79;
-        }
-        return paramHlsMediaPlaylist1.startTimeUs + localSegment.relativeStartTimeUs;
-      }
-      l2 = l1;
-    } while (i != paramHlsMediaPlaylist2.mediaSequence - paramHlsMediaPlaylist1.mediaSequence);
-    return paramHlsMediaPlaylist1.getEndTimeUs();
+    Object localObject = this.primaryUrlSnapshot;
+    long l;
+    if (localObject != null) {
+      l = ((HlsMediaPlaylist)localObject).startTimeUs;
+    } else {
+      l = 0L;
+    }
+    if (paramHlsMediaPlaylist1 == null) {
+      return l;
+    }
+    int i = paramHlsMediaPlaylist1.segments.size();
+    localObject = getFirstOldOverlappingSegment(paramHlsMediaPlaylist1, paramHlsMediaPlaylist2);
+    if (localObject != null) {
+      return paramHlsMediaPlaylist1.startTimeUs + ((HlsMediaPlaylist.Segment)localObject).relativeStartTimeUs;
+    }
+    if (i == paramHlsMediaPlaylist2.mediaSequence - paramHlsMediaPlaylist1.mediaSequence) {
+      return paramHlsMediaPlaylist1.getEndTimeUs();
+    }
+    return l;
   }
   
   private boolean maybeSelectNewPrimaryUrl()
@@ -165,11 +158,15 @@ public final class HlsPlaylistTracker
   
   private void maybeSetPrimaryUrl(HlsMasterPlaylist.HlsUrl paramHlsUrl)
   {
-    if ((paramHlsUrl == this.primaryHlsUrl) || (!this.masterPlaylist.variants.contains(paramHlsUrl)) || ((this.primaryUrlSnapshot != null) && (this.primaryUrlSnapshot.hasEndTag))) {
-      return;
+    if ((paramHlsUrl != this.primaryHlsUrl) && (this.masterPlaylist.variants.contains(paramHlsUrl)))
+    {
+      HlsMediaPlaylist localHlsMediaPlaylist = this.primaryUrlSnapshot;
+      if ((localHlsMediaPlaylist != null) && (localHlsMediaPlaylist.hasEndTag)) {
+        return;
+      }
+      this.primaryHlsUrl = paramHlsUrl;
+      ((HlsPlaylistTracker.MediaPlaylistBundle)this.playlistBundles.get(this.primaryHlsUrl)).loadPlaylist();
     }
-    this.primaryHlsUrl = paramHlsUrl;
-    ((HlsPlaylistTracker.MediaPlaylistBundle)this.playlistBundles.get(this.primaryHlsUrl)).loadPlaylist();
   }
   
   private void notifyPlaylistBlacklisting(HlsMasterPlaylist.HlsUrl paramHlsUrl, long paramLong)
@@ -185,27 +182,22 @@ public final class HlsPlaylistTracker
   
   private void onPlaylistUpdated(HlsMasterPlaylist.HlsUrl paramHlsUrl, HlsMediaPlaylist paramHlsMediaPlaylist)
   {
-    int i = 0;
-    if (paramHlsUrl == this.primaryHlsUrl) {
-      if (this.primaryUrlSnapshot == null) {
-        if (paramHlsMediaPlaylist.hasEndTag) {
-          break label98;
-        }
-      }
-    }
-    label98:
-    for (boolean bool = true;; bool = false)
+    if (paramHlsUrl == this.primaryHlsUrl)
     {
-      this.isLive = bool;
-      this.initialStartTimeUs = paramHlsMediaPlaylist.startTimeUs;
+      if (this.primaryUrlSnapshot == null)
+      {
+        this.isLive = (paramHlsMediaPlaylist.hasEndTag ^ true);
+        this.initialStartTimeUs = paramHlsMediaPlaylist.startTimeUs;
+      }
       this.primaryUrlSnapshot = paramHlsMediaPlaylist;
       this.primaryPlaylistListener.onPrimaryPlaylistRefreshed(paramHlsMediaPlaylist);
-      int j = this.listeners.size();
-      while (i < j)
-      {
-        ((HlsPlaylistTracker.PlaylistEventListener)this.listeners.get(i)).onPlaylistChanged();
-        i += 1;
-      }
+    }
+    int j = this.listeners.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((HlsPlaylistTracker.PlaylistEventListener)this.listeners.get(i)).onPlaylistChanged();
+      i += 1;
     }
   }
   
@@ -251,8 +243,9 @@ public final class HlsPlaylistTracker
   public void maybeThrowPrimaryPlaylistRefreshError()
   {
     this.initialPlaylistLoader.maybeThrowError();
-    if (this.primaryHlsUrl != null) {
-      maybeThrowPlaylistRefreshError(this.primaryHlsUrl);
+    HlsMasterPlaylist.HlsUrl localHlsUrl = this.primaryHlsUrl;
+    if (localHlsUrl != null) {
+      maybeThrowPlaylistRefreshError(localHlsUrl);
     }
   }
   
@@ -265,32 +258,25 @@ public final class HlsPlaylistTracker
   {
     HlsPlaylist localHlsPlaylist = (HlsPlaylist)paramParsingLoadable.getResult();
     boolean bool = localHlsPlaylist instanceof HlsMediaPlaylist;
-    Object localObject;
-    if (bool)
-    {
+    if (bool) {
       localObject = HlsMasterPlaylist.createSingleVariantMasterPlaylist(localHlsPlaylist.baseUri);
-      this.masterPlaylist = ((HlsMasterPlaylist)localObject);
-      this.primaryHlsUrl = ((HlsMasterPlaylist.HlsUrl)((HlsMasterPlaylist)localObject).variants.get(0));
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(((HlsMasterPlaylist)localObject).variants);
-      localArrayList.addAll(((HlsMasterPlaylist)localObject).audios);
-      localArrayList.addAll(((HlsMasterPlaylist)localObject).subtitles);
-      createBundles(localArrayList);
-      localObject = (HlsPlaylistTracker.MediaPlaylistBundle)this.playlistBundles.get(this.primaryHlsUrl);
-      if (!bool) {
-        break label164;
-      }
-      HlsPlaylistTracker.MediaPlaylistBundle.access$000((HlsPlaylistTracker.MediaPlaylistBundle)localObject, (HlsMediaPlaylist)localHlsPlaylist);
-    }
-    for (;;)
-    {
-      this.eventDispatcher.loadCompleted(paramParsingLoadable.dataSpec, 4, paramLong1, paramLong2, paramParsingLoadable.bytesLoaded());
-      return;
+    } else {
       localObject = (HlsMasterPlaylist)localHlsPlaylist;
-      break;
-      label164:
+    }
+    this.masterPlaylist = ((HlsMasterPlaylist)localObject);
+    this.primaryHlsUrl = ((HlsMasterPlaylist.HlsUrl)((HlsMasterPlaylist)localObject).variants.get(0));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(((HlsMasterPlaylist)localObject).variants);
+    localArrayList.addAll(((HlsMasterPlaylist)localObject).audios);
+    localArrayList.addAll(((HlsMasterPlaylist)localObject).subtitles);
+    createBundles(localArrayList);
+    Object localObject = (HlsPlaylistTracker.MediaPlaylistBundle)this.playlistBundles.get(this.primaryHlsUrl);
+    if (bool) {
+      HlsPlaylistTracker.MediaPlaylistBundle.access$000((HlsPlaylistTracker.MediaPlaylistBundle)localObject, (HlsMediaPlaylist)localHlsPlaylist);
+    } else {
       ((HlsPlaylistTracker.MediaPlaylistBundle)localObject).loadPlaylist();
     }
+    this.eventDispatcher.loadCompleted(paramParsingLoadable.dataSpec, 4, paramLong1, paramLong2, paramParsingLoadable.bytesLoaded());
   }
   
   public int onLoadError(ParsingLoadable<HlsPlaylist> paramParsingLoadable, long paramLong1, long paramLong2, IOException paramIOException)
@@ -332,7 +318,7 @@ public final class HlsPlaylistTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.playlist.HlsPlaylistTracker
  * JD-Core Version:    0.7.0.1
  */

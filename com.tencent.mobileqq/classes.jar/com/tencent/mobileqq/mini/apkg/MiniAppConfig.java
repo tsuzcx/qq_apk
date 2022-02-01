@@ -11,17 +11,16 @@ public class MiniAppConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniAppConfig> CREATOR = new MiniAppConfig.1();
-  public static final int FLAG_NEED_KILL = 2;
-  public static final int FLAG_NEED_NEW_PROCESS = 1;
   public static final int TYPE_MINI_APP = 0;
   public static final int TYPE_MINI_GAME = 1;
   public BaseLibInfo baseLibInfo;
   public MiniAppInfo config;
   public String entryPath;
-  public int forceReroad;
-  public int gameAdsTotalTime;
+  @Deprecated
+  private int forceReroad = 0;
+  public int gameAdsTotalTime = 0;
   public boolean isFromShowInfo;
-  public boolean isSdkMode;
+  public boolean isSdkMode = false;
   public LaunchParam launchParam;
   public String link;
   public int linkType;
@@ -53,7 +52,14 @@ public class MiniAppConfig
   
   public static boolean isValid(MiniAppConfig paramMiniAppConfig)
   {
-    return (paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId));
+    if (paramMiniAppConfig != null)
+    {
+      paramMiniAppConfig = paramMiniAppConfig.config;
+      if ((paramMiniAppConfig != null) && (!TextUtils.isEmpty(paramMiniAppConfig.appId))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int describeContents()
@@ -63,44 +69,72 @@ public class MiniAppConfig
   
   public boolean equals(MiniAppConfig paramMiniAppConfig)
   {
-    boolean bool = true;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
     if (paramMiniAppConfig == null) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool;
-          if (paramMiniAppConfig.config != null) {
-            break;
-          }
-        } while (this.config == null);
-        return false;
-        if (!isEngineTypeMiniGame()) {
-          break;
-        }
-      } while ((equalObj(this.config.appId, paramMiniAppConfig.config.appId)) && (equalObj(Integer.valueOf(this.config.verType), Integer.valueOf(paramMiniAppConfig.config.verType))) && (equalObj(this.config.version, paramMiniAppConfig.config.version)));
       return false;
-    } while ((equalObj(this.config.appId, paramMiniAppConfig.config.appId)) && (equalObj(Integer.valueOf(this.config.verType), Integer.valueOf(paramMiniAppConfig.config.verType))) && (equalObj(this.config.version, paramMiniAppConfig.config.version)) && (equalObj(this.config.firstPage, paramMiniAppConfig.config.firstPage)));
-    return false;
+    }
+    if (paramMiniAppConfig.config == null)
+    {
+      if (this.config == null) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (isEngineTypeMiniGame())
+    {
+      bool1 = bool2;
+      if (equalObj(this.config.appId, paramMiniAppConfig.config.appId))
+      {
+        bool1 = bool2;
+        if (equalObj(Integer.valueOf(this.config.verType), Integer.valueOf(paramMiniAppConfig.config.verType)))
+        {
+          bool1 = bool2;
+          if (equalObj(this.config.version, paramMiniAppConfig.config.version)) {
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
+    }
+    bool1 = bool3;
+    if (equalObj(this.config.appId, paramMiniAppConfig.config.appId))
+    {
+      bool1 = bool3;
+      if (equalObj(Integer.valueOf(this.config.verType), Integer.valueOf(paramMiniAppConfig.config.verType)))
+      {
+        bool1 = bool3;
+        if (equalObj(this.config.version, paramMiniAppConfig.config.version))
+        {
+          bool1 = bool3;
+          if (equalObj(this.config.firstPage, paramMiniAppConfig.config.firstPage)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String getConfigInfo()
   {
-    return "config =" + this.config;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("config =");
+    localStringBuilder.append(this.config);
+    return localStringBuilder.toString();
   }
   
   public boolean isBackToMiniApp()
   {
-    return (this.launchParam != null) && (this.launchParam.fromBackToMiniApp == 1);
+    LaunchParam localLaunchParam = this.launchParam;
+    return (localLaunchParam != null) && (localLaunchParam.fromBackToMiniApp == 1);
   }
   
   public boolean isEngineTypeMiniGame()
   {
-    return (this.config != null) && (this.config.isEngineTypeMiniGame());
+    MiniAppInfo localMiniAppInfo = this.config;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.isEngineTypeMiniGame());
   }
   
   public boolean isFromShowInfo()
@@ -110,60 +144,56 @@ public class MiniAppConfig
   
   public boolean isInternalApp()
   {
-    return (this.config != null) && (this.config.isInternalApp());
+    MiniAppInfo localMiniAppInfo = this.config;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.isInternalApp());
   }
   
   public boolean isLimitedAccessApp()
   {
-    return (this.config != null) && (this.config.isLimitedAccessApp());
+    MiniAppInfo localMiniAppInfo = this.config;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.isLimitedAccessApp());
   }
   
   public boolean isReportTypeMiniGame()
   {
-    return (this.config != null) && (this.config.isReportTypeMiniGame());
+    MiniAppInfo localMiniAppInfo = this.config;
+    return (localMiniAppInfo != null) && (localMiniAppInfo.isReportTypeMiniGame());
   }
   
   public boolean isShortcutFakeApp()
   {
-    return (this.launchParam != null) && (this.launchParam.scene == 1023) && (this.config != null) && (TextUtils.isEmpty(this.config.downloadUrl));
+    Object localObject = this.launchParam;
+    if ((localObject != null) && (((LaunchParam)localObject).scene == 1023))
+    {
+      localObject = this.config;
+      if ((localObject != null) && (TextUtils.isEmpty(((MiniAppInfo)localObject).downloadUrl))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public String toString()
   {
-    return "MiniAppConfig{config=" + this.config + ", launchParam=" + this.launchParam + ", baseLibInfo=" + this.baseLibInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppConfig{config=");
+    localStringBuilder.append(this.config);
+    localStringBuilder.append(", launchParam=");
+    localStringBuilder.append(this.launchParam);
+    localStringBuilder.append(", baseLibInfo=");
+    localStringBuilder.append(this.baseLibInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeParcelable(this.config, 0);
-    paramParcel.writeParcelable(this.launchParam, 0);
-    paramParcel.writeParcelable(this.baseLibInfo, 0);
-    paramParcel.writeInt(this.forceReroad);
-    if (this.isFromShowInfo)
-    {
-      paramInt = 1;
-      paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.link);
-      paramParcel.writeInt(this.linkType);
-      paramParcel.writeString(this.entryPath);
-      if (!this.isSdkMode) {
-        break label95;
-      }
-    }
-    label95:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      return;
-      paramInt = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppConfig
  * JD-Core Version:    0.7.0.1
  */

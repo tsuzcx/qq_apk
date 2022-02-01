@@ -1,105 +1,79 @@
 package com.tencent.mm.plugin.wallet.a;
 
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/accessibility/BalanceAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.bv.a
+  extends MMBaseAccessibilityConfig
 {
-  public LinkedList<c> tTL;
-  public n tTM;
-  
-  public a()
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(56640);
-    this.tTL = new LinkedList();
-    AppMethodBeat.o(56640);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(315536);
+    AppMethodBeat.o(315536);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final void initConfig()
   {
-    AppMethodBeat.i(56641);
-    if (paramInt == 0)
+    AppMethodBeat.i(315545);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.g.wallet_balance_manager_ui);
+    localConfigHelper.view(a.f.tips).disable();
+    localConfigHelper.view(a.f.wallet_balance_maincontent_layout).disable();
+    localConfigHelper.view(a.f.wallet_balance_view).descFormat(a.i.wallet_balance_manager_double_wording_format).valueByString(a.i.wallet_balance_manager_tips).valueByView(a.f.mlv_money_tv);
+    localConfigHelper.view(a.f.balance_action_layout).expand(12, 12, 12, 12).type(ViewType.Button).desc(a.f.balance_action_tv);
+    localConfigHelper.view(a.f.wallet_balance_manager_qanda).expand(12, 12, 12, 12).type(ViewType.Button);
+    localConfigHelper.focusFirst(a.f.wallet_balance_view);
+    localConfigHelper = root(a.g.wallet_balance_save_ui);
+    localConfigHelper.view(a.f.balance_bankcard_layout).type(ViewType.Button);
+    localConfigHelper.view(a.f.lqt_save_hint).disable();
+    view(a.f.money_ev, a.f.wallet_title).disable();
+    view(a.f.money_ev, a.f.wallet_content).desc((b)new a(this)).type(ViewType.TextView);
+    localConfigHelper.view(a.f.lqt_entrance_layout).type(ViewType.Button);
+    localConfigHelper = root(a.g.wallet_balance_fetch_ui);
+    localConfigHelper.view(a.f.balance_bankcard_layout).type(ViewType.Button);
+    localConfigHelper.view(a.f.lq_fetch_hint).disable();
+    view(a.f.balance_fee, a.f.wallet_title).disable();
+    view(a.f.balance_fee, a.f.wallet_content).desc((b)new b(this)).type(ViewType.TextView);
+    localConfigHelper.view(a.f.fetch_desc_tips_tv).expand(12, 12, 12, 12).type(ViewType.Button);
+    localConfigHelper.view(a.f.fetch_all_tv).expand(12, 12, 12, 12).type(ViewType.Button);
+    localConfigHelper.view(a.f.lq_fetch_limit_guild_action).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.lq_fetch_limit_guild_desc).valueByView(a.f.lq_fetch_limit_guild_action).expand(12, 12, 12, 12).type(ViewType.Button);
+    root(a.g.lqt_select_bankcard_header).view(a.f.lqt_header_close_icon_iv).type(ViewType.Button).desc(a.i.talkback_close_normal);
+    root(a.g.action_option_view).view(a.f.action_option_icon).desc(a.i.wallet_menu_more);
+    AppMethodBeat.o(315545);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
+  {
+    a(a parama)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.tTL);
-      if (this.tTM != null)
-      {
-        paramVarArgs.iQ(2, this.tTM.computeSize());
-        this.tTM.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(56641);
-      return 0;
+      super();
     }
-    int i;
-    if (paramInt == 1)
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
+  {
+    b(a parama)
     {
-      i = e.a.a.a.c(1, 8, this.tTL) + 0;
-      paramInt = i;
-      if (this.tTM != null) {
-        paramInt = i + e.a.a.a.iP(2, this.tTM.computeSize());
-      }
-      AppMethodBeat.o(56641);
-      return paramInt;
+      super();
     }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.tTL.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(56641);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      a locala = (a)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(56641);
-        return -1;
-      case 1: 
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new c();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((c)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          locala.tTL.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(56641);
-        return 0;
-      }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new n();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((n)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        locala.tTM = ((n)localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(56641);
-      return 0;
-    }
-    AppMethodBeat.o(56641);
-    return -1;
   }
 }
 

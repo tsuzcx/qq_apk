@@ -9,9 +9,9 @@ public final class QQHeadUrlReq
   extends JceStruct
 {
   static ArrayList<DestQQHeadInfo> cache_destUserInfo;
-  public ArrayList<DestQQHeadInfo> destUserInfo;
-  public byte dstUsrType;
-  public long myUin;
+  public ArrayList<DestQQHeadInfo> destUserInfo = null;
+  public byte dstUsrType = 0;
+  public long myUin = 0L;
   
   public QQHeadUrlReq() {}
   
@@ -44,7 +44,7 @@ public final class QQHeadUrlReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AvatarInfo.QQHeadUrlReq
  * JD-Core Version:    0.7.0.1
  */

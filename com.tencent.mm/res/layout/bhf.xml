@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoTextureView android:id="@id/h17" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/h11" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <ImageView android:id="@id/h16" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center" android:id="@id/kbh" android:background="@drawable/ahw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/akd" android:maxLines="1" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/l6m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a75" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/l68" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

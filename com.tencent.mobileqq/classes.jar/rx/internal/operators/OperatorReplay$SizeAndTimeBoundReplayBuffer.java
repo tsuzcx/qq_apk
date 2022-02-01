@@ -67,28 +67,25 @@ final class OperatorReplay$SizeAndTimeBoundReplayBuffer<T>
   {
     long l1 = this.scheduler.now();
     long l2 = this.maxAgeInMillis;
-    Object localObject1 = (OperatorReplay.Node)get();
-    Object localObject2 = (OperatorReplay.Node)((OperatorReplay.Node)localObject1).get();
+    Object localObject2 = (OperatorReplay.Node)get();
+    Object localObject1 = (OperatorReplay.Node)((OperatorReplay.Node)localObject2).get();
     int i = 0;
-    Object localObject3 = localObject1;
-    localObject1 = localObject2;
     while ((localObject1 != null) && (this.size > 1) && (((Timestamped)((OperatorReplay.Node)localObject1).value).getTimestampMillis() <= l1 - l2))
     {
       i += 1;
       this.size -= 1;
-      localObject3 = (OperatorReplay.Node)((OperatorReplay.Node)localObject1).get();
+      OperatorReplay.Node localNode = (OperatorReplay.Node)((OperatorReplay.Node)localObject1).get();
       localObject2 = localObject1;
-      localObject1 = localObject3;
-      localObject3 = localObject2;
+      localObject1 = localNode;
     }
     if (i != 0) {
-      setFirst((OperatorReplay.Node)localObject3);
+      setFirst((OperatorReplay.Node)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorReplay.SizeAndTimeBoundReplayBuffer
  * JD-Core Version:    0.7.0.1
  */

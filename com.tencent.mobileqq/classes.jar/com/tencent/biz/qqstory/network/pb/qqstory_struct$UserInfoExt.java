@@ -8,14 +8,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qqstory_struct$UserInfoExt
   extends MessageMicro<UserInfoExt>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "my_story_forbidden", "his_story_forbidden", "deny_comment" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, UserInfoExt.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field deny_comment = PBField.initUInt32(0);
   public final PBUInt32Field his_story_forbidden = PBField.initUInt32(0);
   public final PBUInt32Field my_story_forbidden = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "my_story_forbidden", "his_story_forbidden", "deny_comment" }, new Object[] { localInteger, localInteger, localInteger }, UserInfoExt.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfoExt
  * JD-Core Version:    0.7.0.1
  */

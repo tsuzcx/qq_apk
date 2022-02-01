@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="@dimen/h" android:layout_height="@dimen/h"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel android:id="@id/fvf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <ImageView android:layout_gravity="center" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/aed" />
+    <ImageView android:id="@id/gfd" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_margin="@dimen/m2" android:scaleType="fitXY" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/gf7" android:paddingRight="@dimen/j9" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c03" />
+</FrameLayout>

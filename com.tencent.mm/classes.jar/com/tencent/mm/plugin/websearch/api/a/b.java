@@ -1,40 +1,61 @@
 package com.tencent.mm.plugin.websearch.api.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 
 public final class b
 {
-  public static int ID = 811;
-  public static int uKR = 1;
-  public static int uKS = 2;
-  public static int uKT = 3;
-  public static int uKU = 4;
-  public static int uKV = 5;
-  public static int uKW = 6;
-  public static int uKX = 7;
-  public static int uKY = 8;
-  public static int uKZ = 9;
-  public static int uLa = 10;
-  public static int uLb = 11;
-  public static int uLc = 12;
-  public static int uLd = 13;
-  public static int uLe = 14;
-  public static int uLf = 15;
-  public static int uLg = 16;
-  public static int uLh = 17;
-  public static int uLi = 255;
+  public static int FtQ;
+  public static int FtR;
+  public static int FtS;
+  public static int FtT;
+  public static int FtU;
+  public static int FtV;
+  public static int FtW;
+  public static int FtX;
+  public static int FtY;
+  public static int FtZ;
+  public static int Fua;
+  public static int Fub;
+  public static int Fuc;
+  public static int Fud;
+  public static int Fue;
+  public static int Fuf;
+  public static int Fug = 255;
+  public static int Wqz;
+  public static int hjP = 811;
   
-  public static void kS(int paramInt)
+  static
   {
-    AppMethodBeat.i(124289);
-    e.qrI.idkeyStat(ID, paramInt, 1L, false);
-    AppMethodBeat.o(124289);
+    FtQ = 1;
+    FtR = 2;
+    FtS = 3;
+    FtT = 4;
+    FtU = 5;
+    FtV = 6;
+    FtW = 7;
+    FtX = 8;
+    FtY = 9;
+    FtZ = 10;
+    Fua = 11;
+    Fub = 12;
+    Fuc = 13;
+    Fud = 14;
+    Fue = 15;
+    Fuf = 16;
+    Wqz = 17;
+  }
+  
+  public static void rG(int paramInt)
+  {
+    AppMethodBeat.i(117835);
+    f.Ozc.idkeyStat(hjP, paramInt, 1L, false);
+    AppMethodBeat.o(117835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a.b
  * JD-Core Version:    0.7.0.1
  */

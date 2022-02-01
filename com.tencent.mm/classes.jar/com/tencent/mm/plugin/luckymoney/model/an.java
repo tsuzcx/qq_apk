@@ -1,157 +1,158 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class an
   extends ak
 {
-  public String cMO;
-  long cpO;
-  public String ojA;
-  public RealnameGuideHelper okp;
-  public k ooO;
-  public String opb;
-  public int opc;
-  public LuckyMoneyEmojiSwitch opd;
-  public String opw;
-  public int opx;
-  public String talker;
+  public String CAf;
+  public String KrL;
+  public j Ksa;
+  public bi Ksc;
+  public String Ksd;
+  public String KtM;
+  public String KtN;
+  public int KtQ;
+  public String KtR;
+  public String KtS;
+  public int KtT;
+  public int KtW;
+  public String KtX;
+  public String KtY;
+  public int KtZ;
+  public String Kua;
+  public String Kub;
+  public String Kuc;
+  public String Kud;
+  public String Kue;
+  public String Kuf;
+  public long Kug;
+  public int ihA;
+  public String ihx;
+  public int ihy;
+  public int ihz;
   
-  public an(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public an()
   {
-    AppMethodBeat.i(42413);
-    this.ooO = null;
-    this.opx = 0;
-    this.ojA = paramString1;
-    this.cMO = paramString2;
-    this.talker = paramString5;
+    this.KtZ = 1;
+    this.Kua = null;
+    this.Kub = null;
+    this.Kuc = null;
+    this.Kud = null;
+    this.Kue = null;
+    this.Kuf = null;
+    this.Kug = 0L;
+  }
+  
+  public an(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    AppMethodBeat.i(65281);
+    this.KtZ = 1;
+    this.Kua = null;
+    this.Kub = null;
+    this.Kuc = null;
+    this.Kud = null;
+    this.Kue = null;
+    this.Kuf = null;
+    this.Kug = 0L;
+    Log.i("MicroMsg.NetSceneLuckyMoneyBusiBase", "sendId:%s nativeUrl:%s way:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    this.ihx = paramString2;
+    this.CAf = paramString1;
+    this.KtW = paramInt;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", String.valueOf(paramInt1));
-    localHashMap.put("channelId", String.valueOf(paramInt2));
     localHashMap.put("sendId", paramString1);
-    if (!bo.isNullOrNil(paramString2)) {
+    if (!Util.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
-    if (!bo.isNullOrNil(paramString3))
+    localHashMap.put("way", String.valueOf(paramInt));
+    localHashMap.put("channelId", "2");
+    localHashMap.put("package", paramString3);
+    h.baF();
+    long l = ((Long)h.baE().ban().get(at.a.acML, Long.valueOf(0L))).longValue();
+    if (l > 0L)
     {
-      localHashMap.put("headImg", URLEncoder.encode(paramString3));
-      localHashMap.put("nickName", URLEncoder.encode(bo.nullAsNil(paramString4)));
+      if (System.currentTimeMillis() >= l) {
+        break label237;
+      }
+      localHashMap.put("agreeDuty", "0");
     }
-    localHashMap.put("sessionUserName", paramString5);
-    localHashMap.put("ver", paramString6);
-    localHashMap.put("timingIdentifier", paramString7);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(42413);
+    for (;;)
+    {
+      setRequestData(localHashMap);
+      AppMethodBeat.o(65281);
+      return;
+      label237:
+      paramString1 = new StringBuilder();
+      h.baF();
+      localHashMap.put("agreeDuty", (Integer)h.baE().ban().get(at.a.acMM, Integer.valueOf(1)));
+    }
   }
   
-  public final String bhG()
+  public final int drJ()
   {
-    return "/cgi-bin/mmpay-bin/openwxhb";
-  }
-  
-  public final int getType()
-  {
-    return 1685;
+    return 0;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(42414);
-    for (;;)
+    AppMethodBeat.i(65282);
+    Log.i("MicroMsg.NetSceneLuckyMoneyBusiBase", "errCode：%s errMsg：%s json：%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
+    this.Kuf = paramJSONObject.toString();
+    this.KtX = paramJSONObject.optString("spidLogo");
+    this.KtY = paramJSONObject.optString("spidWishing");
+    this.KtM = paramJSONObject.optString("spidName");
+    this.KtX = paramJSONObject.optString("spidLogo");
+    this.ihz = paramJSONObject.optInt("hbStatus");
+    this.ihA = paramJSONObject.optInt("receiveStatus");
+    this.KrL = paramJSONObject.optString("statusMess");
+    this.KtN = paramJSONObject.optString("hintMess");
+    this.Ksd = paramJSONObject.optString("watermark");
+    this.CAf = paramJSONObject.optString("sendId");
+    this.KtQ = paramJSONObject.optInt("focusFlag");
+    this.KtR = paramJSONObject.optString("focusWording");
+    this.KtS = paramJSONObject.optString("focusAppidUserName");
+    this.KtT = paramJSONObject.optInt("isFocus");
+    this.ihy = paramJSONObject.optInt("hbType");
+    this.Ksa = new j();
+    paramString = paramJSONObject.optJSONObject("atomicFunc");
+    if (paramString != null)
     {
-      try
-      {
-        this.ooO = v.ae(paramJSONObject);
-        this.opd = LuckyMoneyEmojiSwitch.ad(paramJSONObject);
-        ab.i("NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.opd.toString() });
-        this.opb = paramJSONObject.optString("expression_md5");
-        this.opc = paramJSONObject.optInt("expression_type");
-        ab.i("NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.opb, Integer.valueOf(this.opc) });
-        if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
-        {
-          Object localObject = paramJSONObject.optJSONObject("real_name_info");
-          if (localObject != null)
-          {
-            paramString = ((JSONObject)localObject).optString("guide_flag");
-            String str1 = ((JSONObject)localObject).optString("guide_wording");
-            String str2 = ((JSONObject)localObject).optString("left_button_wording");
-            String str3 = ((JSONObject)localObject).optString("right_button_wording");
-            localObject = ((JSONObject)localObject).optString("upload_credit_url");
-            this.okp = new RealnameGuideHelper();
-            this.okp.a(paramString, str1, str2, str3, (String)localObject, 1003);
-          }
-        }
-        this.opw = paramJSONObject.optString("SystemMsgContext");
-        this.opx = paramJSONObject.optInt("showYearExpression");
-        ab.i("NetSceneLuckyMoneyDetail", "showYearExpression:%s", new Object[] { Integer.valueOf(this.opx) });
-        if ((paramInt == 0) && (!bo.isNullOrNil(this.opw)))
-        {
-          boolean bool = bo.isNullOrNil(this.ooO.onN);
-          if (bool) {}
-        }
-        try
-        {
-          if (!r.Zn().equals(this.ooO.onN)) {
-            continue;
-          }
-          paramString = ah.getContext().getString(2131301327);
-          this.opw = this.opw.replace("$" + this.ooO.onN + "$", paramString);
-          x.fd(this.opw, this.talker);
-        }
-        catch (Exception paramString)
-        {
-          int i;
-          ab.e("NetSceneLuckyMoneyDetail", "insertLocalSysMsgIfNeed error: %s", new Object[] { paramString.getMessage() });
-          continue;
-        }
-        g.RM();
-        paramInt = ((Integer)g.RL().Ru().get(ac.a.yLJ, Integer.valueOf(0))).intValue();
-        i = ((a)g.E(a.class)).a(a.a.lVp, 0);
-        if ((bo.hl(paramInt, 1)) || (bo.hl(i, 1)))
-        {
-          if (this.opd == null) {
-            this.opd = new LuckyMoneyEmojiSwitch();
-          }
-          this.opd.onR = 1;
-          this.opd.onS = 1;
-          this.opd.onT = 1;
-          this.opd.onU = 1;
-          this.opx = 1;
-        }
-        ab.i("NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.opd.toString() });
-        AppMethodBeat.o(42414);
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        ab.w("NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
-        AppMethodBeat.o(42414);
-      }
-      paramString = ((b)g.E(b.class)).nE(this.ooO.onN);
+      this.Ksa.lTH = paramString.optInt("enable");
+      this.Ksa.Krr = paramString.optString("fissionContent");
+      this.Ksa.Krq = paramString.optString("fissionUrl");
     }
+    paramString = paramJSONObject.optJSONObject("agree_duty");
+    if (paramString != null)
+    {
+      this.Kua = paramString.optString("agreed_flag", "-1");
+      this.Kub = paramString.optString("title", "");
+      this.Kuc = paramString.optString("service_protocol_wording", "");
+      this.Kud = paramString.optString("service_protocol_url", "");
+      this.Kue = paramString.optString("button_wording", "");
+      this.Kug = paramString.optLong("delay_expired_time", 0L);
+    }
+    if (this.Kug > 0L)
+    {
+      h.baF();
+      h.baE().ban().set(at.a.acML, Long.valueOf(System.currentTimeMillis() + this.Kug * 1000L));
+    }
+    this.Ksc = ae.bv(paramJSONObject.optJSONObject("operationTail"));
+    AppMethodBeat.o(65282);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.an
  * JD-Core Version:    0.7.0.1
  */

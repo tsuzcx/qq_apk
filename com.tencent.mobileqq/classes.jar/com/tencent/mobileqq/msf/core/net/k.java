@@ -17,59 +17,78 @@ public class k
   
   public static void a(k.b paramb)
   {
-    if (!NetConnInfoCenter.isNetSupport()) {}
-    long l;
-    do
-    {
+    if (!NetConnInfoCenter.isNetSupport()) {
       return;
-      if (b.size() >= 100)
+    }
+    if (b.size() >= 100)
+    {
+      paramb = new StringBuilder();
+      paramb.append("addNetException NetExceptionEvent count = ");
+      paramb.append(b.size());
+      paramb.append("too much drop");
+      QLog.d("MSF.C.NetExceptionStat", 2, paramb.toString());
+      return;
+    }
+    k.a locala = new k.a();
+    locala.a = paramb;
+    long l = System.currentTimeMillis();
+    locala.b = l;
+    try
+    {
+      b.addLast(locala);
+      paramb = new StringBuilder();
+      paramb.append("addNetException NetExceptionEvent count = ");
+      paramb.append(b.size());
+      paramb.append("");
+      QLog.d("MSF.C.NetExceptionStat", 2, paramb.toString());
+      for (;;)
       {
-        QLog.d("MSF.C.NetExceptionStat", 2, "addNetException NetExceptionEvent count = " + b.size() + "too much drop");
-        return;
-      }
-      k.a locala = new k.a();
-      locala.a = paramb;
-      l = System.currentTimeMillis();
-      locala.b = l;
-      try
-      {
-        b.addLast(locala);
-        QLog.d("MSF.C.NetExceptionStat", 2, "addNetException NetExceptionEvent count = " + b.size() + "");
         try
         {
-          for (;;)
+          paramb = (k.a)b.peek();
+          if ((paramb != null) && (l - paramb.b >= a.U()))
           {
-            paramb = (k.a)b.peek();
-            if ((paramb == null) || (l - paramb.b < a.U())) {
-              break;
-            }
             b.removeFirst();
+          }
+          else
+          {
+            paramb = new StringBuilder();
+            paramb.append("addNetException after remove expire event NetExceptionEvent count = ");
+            paramb.append(b.size());
+            QLog.d("MSF.C.NetExceptionStat", 2, paramb.toString());
+            if ((l - c > a.U()) && (b.size() >= a.W()))
+            {
+              paramb = new StringBuilder();
+              paramb.append("NetExceptionEvent count = ");
+              paramb.append(b.size());
+              paramb.append(" report to ui now");
+              QLog.d("MSF.C.NetExceptionStat", 2, paramb.toString());
+              paramb = new FromServiceMsg(NetConnInfoCenter.msfCore.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connWeakNet");
+              paramb.setMsgSuccess();
+              paramb.setMsfCommand(MsfCommand.onConnWeakNet);
+              MsfSdkUtils.addFromMsgProcessName("*", paramb);
+              NetConnInfoCenter.msfCore.addRespToQuque(null, paramb);
+              c = l;
+            }
+            return;
           }
         }
         catch (Exception paramb)
         {
           paramb.printStackTrace();
         }
-        QLog.d("MSF.C.NetExceptionStat", 2, "addNetException after remove expire event NetExceptionEvent count = " + b.size());
       }
-      catch (Exception paramb)
-      {
-        paramb.printStackTrace();
-        return;
-      }
-    } while ((l - c <= a.U()) || (b.size() < a.W()));
-    QLog.d("MSF.C.NetExceptionStat", 2, "NetExceptionEvent count = " + b.size() + " report to ui now");
-    paramb = new FromServiceMsg(NetConnInfoCenter.msfCore.getMsfAppid(), MsfCore.getNextSeq(), "0", "cmd_connWeakNet");
-    paramb.setMsgSuccess();
-    paramb.setMsfCommand(MsfCommand.onConnWeakNet);
-    MsfSdkUtils.addFromMsgProcessName("*", paramb);
-    NetConnInfoCenter.msfCore.addRespToQuque(null, paramb);
-    c = l;
+      return;
+    }
+    catch (Exception paramb)
+    {
+      paramb.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.k
  * JD-Core Version:    0.7.0.1
  */

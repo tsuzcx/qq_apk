@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "sdk_settings": {
+    "action_settings": {
+      "manual_trigger": true,
+      "resource_online": true,
+      "force_pose_check": true,
+      "timeout_countdown_ms": 0,
+      "predetect_countdown_ms": 0,
+      "app_id": "com_tencent_mm",
+      "same_tips_filter": false,
+      "action_security_level": 1,
+      "action_default_seq": [
+        1,
+        2,
+        1
+      ],
+      "request_options": {
+        "best_image": true,
+        "do_live": true,
+        "do_mouth_detect": true,
+        "do_eye_detect": true
+      },
+      "config_api_url": "wechat_face_config",
+      "result_api_url": "wechat_face_verify",
+      "resource_download_path": "/data/user/0/com.tencent.mm/face_detect/",
+      "control_config": "need_action_video=true",
+      "pitch_threshold": 30,
+      "yaw_threshold":25
+    },
+    "reflect_settings": {
+      "manual_trigger": true,
+      "resource_online": true,
+      "force_pose_check": true,
+      "timeout_countdown_ms": 0,
+      "predetect_countdown_ms": 0,
+      "same_tips_filter": false,
+      "app_id": "com_tencent_mm",
+      "reflect_security_level": 2,
+      "backend_proto_type": 2,
+      "config_api_url": "wechat_face_config",
+      "result_api_url": "wechat_face_verify",
+      "resource_download_path": "/data/user/0/com.tencent.mm/face_detect/",
+      "pitch_threshold": 30,
+      "yaw_threshold":25
+    },
+    "action+reflect_settings": {
+      "manual_trigger": true,
+      "resource_online": true,
+      "force_pose_check": true,
+      "timeout_countdown_ms": 0,
+      "predetect_countdown_ms": 0,
+      "app_id": "com_tencent_mm",
+      "same_tips_filter": false,
+      "action_security_level": 1,
+      "reflect_security_level": 2,
+      "config_api_url": "wechat_face_config",
+      "result_api_url": "wechat_face_verify",
+      "resource_download_path": "/data/user/0/com.tencent.mm/face_detect/",
+      "pitch_threshold": 30,
+      "yaw_threshold":25
+    },
+    "lipread_settings": {
+      "manual_trigger": true,
+      "resource_online": true,
+      "force_pose_check": false,
+      "timeout_countdown_ms": 0,
+      "predetect_countdown_ms": 0,
+      "same_tips_filter": false,
+      "num_interval_ms": 1300,
+      "app_id": "com_tencent_mm",
+      "config_api_url": "wechat_face_config",
+      "result_api_url": "wechat_face_verify",
+      "backend_proto_type": 2,
+      "request_options": {
+        "business_id": "wx_default",
+        "person_id": "wx_default4",
+        "person_type": "youtu",
+        "req_type": "live",
+        "live_type": 0
+      },
+      "resource_download_path": "/data/user/0/com.tencent.mm/face_detect/",
+      "pitch_threshold": 30,
+      "yaw_threshold":25
+    },
+    "need_network": true
+  }
+}

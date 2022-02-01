@@ -8,16 +8,15 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bepw;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 
 public class FormItemRelativeLayout
   extends RelativeLayout
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  int jdField_a_of_type_Int = 0;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  static boolean a = true;
+  int b = 0;
+  private final Rect c = new Rect();
+  private final Paint d = new Paint();
   
   public FormItemRelativeLayout(Context paramContext)
   {
@@ -27,49 +26,53 @@ public class FormItemRelativeLayout
   public FormItemRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(bepw.c);
-    setBackgroundDrawable(a(getResources(), this.jdField_a_of_type_Int));
+    this.d.setAntiAlias(true);
+    this.d.setColor(FormItemConstants.h);
+    setBackgroundDrawable(a(getResources(), this.b));
   }
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839254);
+      if (a) {
+        return paramResources.getDrawable(2130839622);
       }
-      return paramResources.getDrawable(2130849752);
+      return paramResources.getDrawable(2130852507);
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getDrawable(2130839254);
-    case 0: 
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839254);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramResources.getDrawable(2130839622);
+          }
+          if (a) {
+            return paramResources.getDrawable(2130839629);
+          }
+          return paramResources.getDrawable(2130852512);
+        }
+        if (a) {
+          return paramResources.getDrawable(2130839632);
+        }
+        return paramResources.getDrawable(2130852521);
       }
-      return paramResources.getDrawable(2130849752);
-    case 1: 
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839264);
+      if (a) {
+        return paramResources.getDrawable(2130839632);
       }
-      return paramResources.getDrawable(2130849766);
-    case 2: 
-      if (jdField_a_of_type_Boolean) {
-        return paramResources.getDrawable(2130839264);
-      }
-      return paramResources.getDrawable(2130849766);
+      return paramResources.getDrawable(2130852521);
     }
-    if (jdField_a_of_type_Boolean) {
-      return paramResources.getDrawable(2130839261);
+    if (a) {
+      return paramResources.getDrawable(2130839622);
     }
-    return paramResources.getDrawable(2130849757);
+    return paramResources.getDrawable(2130852507);
   }
   
   private boolean a()
   {
-    return ("1000".equals(ThemeUtil.curThemeId)) || ("999".equals(ThemeUtil.curThemeId));
+    return QQTheme.isDefaultOrDIYTheme();
   }
   
   protected Drawable a(Resources paramResources, int paramInt)
@@ -79,39 +82,35 @@ public class FormItemRelativeLayout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
+    int i = this.b;
+    if ((i == 1) || (i == 2))
     {
-      if (!a()) {
-        break label73;
+      if (a()) {
+        this.d.setColor(FormItemConstants.h);
+      } else {
+        this.d.setColor(0);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(bepw.c);
-    }
-    for (;;)
-    {
-      int i = getMeasuredWidth();
+      i = getMeasuredWidth();
       int j = getMeasuredHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(bepw.d, j - bepw.b, i, j);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-      label73:
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
+      this.c.set(FormItemConstants.i, j - FormItemConstants.g, i, j);
+      paramCanvas.drawRect(this.c, this.d);
     }
   }
   
   public void setBGType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    setBackgroundDrawable(a(getResources(), this.jdField_a_of_type_Int));
+    this.b = paramInt;
+    setBackgroundDrawable(a(getResources(), this.b));
   }
   
   public void setNeedFocusBg(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormItemRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

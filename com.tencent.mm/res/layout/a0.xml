@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="?eq" android:minWidth="196.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="?ek" android:ellipsize="marquee" android:layout_gravity="center_vertical" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" />
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/m" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:layout_gravity="left" android:id="@id/ad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/g4w" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/xo" android:gravity="left" android:layout_gravity="left" android:id="@id/ac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/g49" />
+        <Button android:textSize="17.0dip" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/f19" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="56.0dip" android:layout_marginBottom="64.0dip" android:text="@string/gu4" style="@style/on" />
+    </LinearLayout>
+</LinearLayout>

@@ -8,19 +8,19 @@ public final class UpgradeInfo
   extends JceStruct
 {
   static PublicAccountInfo cache_stAccountInfo;
-  public byte bAppType;
-  public byte bGray;
+  public byte bAppType = 0;
+  public byte bGray = 0;
   public byte bNewSwitch = 1;
-  public int iActionType;
-  public int iAppid;
-  public int iDisplayDay;
-  public int iIncrementUpgrade;
-  public int iNewTimeStamp;
-  public int iTipsType;
-  public int iTipsWaitDay;
-  public int iUpgradeSdkId;
-  public int iUpgradeType;
-  public PublicAccountInfo stAccountInfo;
+  public int iActionType = 0;
+  public int iAppid = 0;
+  public int iDisplayDay = 0;
+  public int iIncrementUpgrade = 0;
+  public int iNewTimeStamp = 0;
+  public int iTipsType = 0;
+  public int iTipsWaitDay = 0;
+  public int iUpgradeSdkId = 0;
+  public int iUpgradeType = 0;
+  public PublicAccountInfo stAccountInfo = null;
   public String strBannerPicUrl = "";
   public String strButtonDesc = "";
   public String strCancelButtonDesc = "";
@@ -101,55 +101,67 @@ public final class UpgradeInfo
     paramJceOutputStream.write(this.bAppType, 2);
     paramJceOutputStream.write(this.iUpgradeType, 3);
     paramJceOutputStream.write(this.iUpgradeSdkId, 4);
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 5);
+    Object localObject = this.strTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strUpgradeDesc != null) {
-      paramJceOutputStream.write(this.strUpgradeDesc, 6);
+    localObject = this.strUpgradeDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 7);
+    localObject = this.strUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.iActionType, 8);
     paramJceOutputStream.write(this.bNewSwitch, 9);
     paramJceOutputStream.write(this.iNewTimeStamp, 10);
-    if (this.strUpgradePageUrl != null) {
-      paramJceOutputStream.write(this.strUpgradePageUrl, 11);
+    localObject = this.strUpgradePageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.iIncrementUpgrade, 12);
     paramJceOutputStream.write(this.iTipsType, 13);
-    if (this.strBannerPicUrl != null) {
-      paramJceOutputStream.write(this.strBannerPicUrl, 14);
+    localObject = this.strBannerPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.strNewUpgradeDescURL != null) {
-      paramJceOutputStream.write(this.strNewUpgradeDescURL, 15);
+    localObject = this.strNewUpgradeDescURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.iDisplayDay, 16);
     paramJceOutputStream.write(this.iTipsWaitDay, 17);
-    if (this.strProgressName != null) {
-      paramJceOutputStream.write(this.strProgressName, 18);
+    localObject = this.strProgressName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.strNewTipsDescURL != null) {
-      paramJceOutputStream.write(this.strNewTipsDescURL, 19);
+    localObject = this.strNewTipsDescURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strNewSoftwareURL != null) {
-      paramJceOutputStream.write(this.strNewSoftwareURL, 20);
+    localObject = this.strNewSoftwareURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.stAccountInfo != null) {
-      paramJceOutputStream.write(this.stAccountInfo, 21);
+    localObject = this.stAccountInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 21);
     }
     paramJceOutputStream.write(this.bGray, 22);
-    if (this.strButtonDesc != null) {
-      paramJceOutputStream.write(this.strButtonDesc, 23);
+    localObject = this.strButtonDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.strCancelButtonDesc != null) {
-      paramJceOutputStream.write(this.strCancelButtonDesc, 24);
+    localObject = this.strCancelButtonDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.UpgradeInfo
  * JD-Core Version:    0.7.0.1
  */

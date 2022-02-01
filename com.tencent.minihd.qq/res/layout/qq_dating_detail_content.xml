@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/qq_dating_detail_tip_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qq_dating_detail_tip_bar" />
+    <include android:id="@id/qq_dating_detail_publish" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qq_dating_detail_publish" />
+    <View android:id="@id/v_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dating_info_paddingLR" android:layout_marginRight="@dimen/dating_info_paddingLR" />
+    <include android:id="@id/qq_dating_detail_dateinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qq_dating_detail_dateinfo" />
+</LinearLayout>

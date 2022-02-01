@@ -59,46 +59,48 @@ public class DomObjectWaterfallList
     if (getAttributes().containsKey("column"))
     {
       paramJSONObject = getAttributes().get("column");
-      if (!(paramJSONObject instanceof Integer)) {
-        break label231;
+      if ((paramJSONObject instanceof Integer)) {
+        this.mColumn = ((Integer)paramJSONObject).intValue();
+      } else {
+        this.mColumn = Integer.valueOf((String)paramJSONObject).intValue();
       }
     }
-    label231:
-    for (this.mColumn = ((Integer)paramJSONObject).intValue();; this.mColumn = Integer.valueOf((String)paramJSONObject).intValue())
+    if (getAttributes().containsKey("lineSpacing"))
     {
-      if (getAttributes().containsKey("lineSpacing"))
-      {
-        paramJSONObject = (String)getAttributes().get("lineSpacing");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.mLineSpacing = ((int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject, 750));
-        }
+      paramJSONObject = (String)getAttributes().get("lineSpacing");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.mLineSpacing = ((int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject, 750));
       }
-      if (getAttributes().containsKey("itemSpacing"))
-      {
-        paramJSONObject = (String)getAttributes().get("itemSpacing");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.mItemSpacing = ((int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject, 750));
-        }
-      }
-      if (getAttributes().containsKey("inset"))
-      {
-        paramJSONObject = (String)getAttributes().get("inset");
-        if (!TextUtils.isEmpty(paramJSONObject))
-        {
-          paramJSONObject = paramJSONObject.substring(1, paramJSONObject.length() - 1);
-          if (!TextUtils.isEmpty(paramJSONObject)) {
-            this.mInsetArry = FlexConvertUtils.converStringArrayToIntArray(paramJSONObject);
-          }
-        }
-      }
-      this.mCellWidth = ((FlexConvertUtils.getScreenWidth() - this.mInsetArry[3] - this.mInsetArry[1] - (this.mColumn - 1) * this.mItemSpacing) / this.mColumn);
-      return;
     }
+    if (getAttributes().containsKey("itemSpacing"))
+    {
+      paramJSONObject = (String)getAttributes().get("itemSpacing");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.mItemSpacing = ((int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject, 750));
+      }
+    }
+    if (getAttributes().containsKey("inset"))
+    {
+      paramJSONObject = (String)getAttributes().get("inset");
+      if (!TextUtils.isEmpty(paramJSONObject))
+      {
+        paramJSONObject = paramJSONObject.substring(1, paramJSONObject.length() - 1);
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          this.mInsetArry = FlexConvertUtils.converStringArrayToIntArray(paramJSONObject);
+        }
+      }
+    }
+    int i = FlexConvertUtils.getScreenWidth();
+    paramJSONObject = this.mInsetArry;
+    int j = paramJSONObject[3];
+    int k = paramJSONObject[1];
+    int m = this.mColumn;
+    this.mCellWidth = ((i - j - k - (m - 1) * this.mItemSpacing) / m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectWaterfallList
  * JD-Core Version:    0.7.0.1
  */

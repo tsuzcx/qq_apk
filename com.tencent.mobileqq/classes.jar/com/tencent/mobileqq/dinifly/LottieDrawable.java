@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.dinifly;
 
 import android.animation.Animator.AnimatorListener;
+import android.animation.Animator.AnimatorPauseListener;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,14 +15,16 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IntRange;
-import android.support.annotation.MainThread;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.util.SparseArrayCompat;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IntRange;
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.RestrictTo;
+import androidx.collection.SparseArrayCompat;
 import com.tencent.mobileqq.dinifly.manager.FontAssetManager;
 import com.tencent.mobileqq.dinifly.manager.ImageAssetManager;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
@@ -30,16 +33,15 @@ import com.tencent.mobileqq.dinifly.model.LottieCompositionCache;
 import com.tencent.mobileqq.dinifly.model.Marker;
 import com.tencent.mobileqq.dinifly.model.layer.CompositionLayer;
 import com.tencent.mobileqq.dinifly.parser.LayerParser;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import com.tencent.mobileqq.dinifly.utils.LottieValueAnimator;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import com.tencent.mobileqq.dinifly.value.SimpleLottieValueCallback;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class LottieDrawable
   extends Drawable
@@ -48,10 +50,8 @@ public class LottieDrawable
   public static final int INFINITE = -1;
   public static final int RESTART = 1;
   public static final int REVERSE = 2;
-  private static final String TAG = LottieDrawable.class.getSimpleName();
   private int alpha = 255;
   private final LottieValueAnimator animator = new LottieValueAnimator();
-  private final Set<LottieDrawable.ColorFilterData> colorFilterData = new HashSet();
   private LottieComposition composition;
   @Nullable
   private CompositionLayer compositionLayer;
@@ -60,34 +60,174 @@ public class LottieDrawable
   FontAssetDelegate fontAssetDelegate;
   @Nullable
   private FontAssetManager fontAssetManager;
+  private boolean ignoreSystemAnimationsDisabled = false;
   @Nullable
   private ImageAssetDelegate imageAssetDelegate;
   @Nullable
   private ImageAssetManager imageAssetManager;
   @Nullable
+  private ImageAssetManager imageAssetManagerOverride;
+  @Nullable
   private String imageAssetsFolder;
+  private boolean isApplyingOpacityToLayersEnabled;
   private boolean isDirty = false;
+  private boolean isExtraScaleEnabled = true;
   private final ArrayList<LottieDrawable.LazyCompositionTask> lazyCompositionTasks = new ArrayList();
   private final Matrix matrix = new Matrix();
+  private boolean outlineMasksAndMattes;
   private boolean performanceTrackingEnabled;
+  private final ValueAnimator.AnimatorUpdateListener progressUpdateListener = new LottieDrawable.1(this);
+  private boolean safeMode = false;
   private float scaleX = 1.0F;
   private float scaleY = 1.0F;
+  private boolean systemAnimationsEnabled = true;
   @Nullable
   TextDelegate textDelegate;
   
   public LottieDrawable()
   {
-    this.animator.addUpdateListener(new LottieDrawable.1(this));
+    this.animator.addUpdateListener(this.progressUpdateListener);
+  }
+  
+  private boolean animationsEnabled()
+  {
+    return (this.systemAnimationsEnabled) || (this.ignoreSystemAnimationsDisabled);
+  }
+  
+  private float aspectRatio(Rect paramRect)
+  {
+    return paramRect.width() / paramRect.height();
+  }
+  
+  private boolean boundsMatchesCompositionAspectRatio()
+  {
+    LottieComposition localLottieComposition = this.composition;
+    boolean bool = true;
+    if (localLottieComposition != null)
+    {
+      if (getBounds().isEmpty()) {
+        return true;
+      }
+      if (aspectRatio(getBounds()) == aspectRatio(localLottieComposition.getBounds())) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private void buildCompositionLayer()
   {
     long l = SystemClock.uptimeMillis();
-    if (this.composition.compositionLayer != null) {}
-    for (this.compositionLayer = this.composition.compositionLayer;; this.compositionLayer = new CompositionLayer(this, LayerParser.parse(this.composition), this.composition.getLayers(), this.composition))
+    if (this.composition.compositionLayer != null) {
+      this.compositionLayer = this.composition.compositionLayer;
+    } else {
+      this.compositionLayer = new CompositionLayer(this, LayerParser.parse(this.composition), this.composition.getLayers(), this.composition);
+    }
+    this.composition.layerInfo.buildLayerTime = (SystemClock.uptimeMillis() - l);
+    if (this.outlineMasksAndMattes) {
+      this.compositionLayer.setOutlineMasksAndMattes(true);
+    }
+  }
+  
+  private void drawInternal(@NonNull Canvas paramCanvas)
+  {
+    if (!boundsMatchesCompositionAspectRatio())
     {
-      this.composition.layerInfo.buildLayerTime = (SystemClock.uptimeMillis() - l);
+      drawWithNewAspectRatio(paramCanvas);
       return;
+    }
+    drawWithOriginalAspectRatio(paramCanvas);
+  }
+  
+  private void drawWithNewAspectRatio(Canvas paramCanvas)
+  {
+    if (this.compositionLayer == null) {
+      return;
+    }
+    int j = -1;
+    Rect localRect = getBounds();
+    float f1 = localRect.width() / this.composition.getBounds().width();
+    float f2 = localRect.height() / this.composition.getBounds().height();
+    int i = j;
+    float f4 = f1;
+    float f5 = f2;
+    if (this.isExtraScaleEnabled)
+    {
+      float f6 = Math.min(f1, f2);
+      float f3;
+      if (f6 < 1.0F)
+      {
+        f3 = 1.0F / f6;
+        f1 /= f3;
+        f2 /= f3;
+      }
+      else
+      {
+        f3 = 1.0F;
+      }
+      i = j;
+      f4 = f1;
+      f5 = f2;
+      if (f3 > 1.0F)
+      {
+        i = paramCanvas.save();
+        f4 = localRect.width() / 2.0F;
+        f5 = localRect.height() / 2.0F;
+        float f7 = f4 * f6;
+        f6 *= f5;
+        paramCanvas.translate(f4 - f7, f5 - f6);
+        paramCanvas.scale(f3, f3, f7, f6);
+        f5 = f2;
+        f4 = f1;
+      }
+    }
+    this.matrix.reset();
+    this.matrix.preScale(f4, f5);
+    this.compositionLayer.draw(paramCanvas, this.matrix, this.alpha);
+    if (i > 0) {
+      paramCanvas.restoreToCount(i);
+    }
+  }
+  
+  private void drawWithOriginalAspectRatio(Canvas paramCanvas)
+  {
+    if (this.compositionLayer == null) {
+      return;
+    }
+    float f3 = this.scaleX;
+    float f4 = this.scaleY;
+    float f1 = getMaxScale(paramCanvas);
+    float f2;
+    if (f3 > f1)
+    {
+      f2 = this.scaleX / f1;
+      f3 = f1;
+    }
+    else
+    {
+      f2 = 1.0F;
+    }
+    if (f4 > f1)
+    {
+      f4 = this.scaleY / f1;
+    }
+    else
+    {
+      f1 = f4;
+      f4 = 1.0F;
+    }
+    int i = -1;
+    if ((f2 > 1.0F) || (f4 > 1.0F))
+    {
+      i = paramCanvas.save();
+      paramCanvas.scale(f2, f4);
+    }
+    this.matrix.reset();
+    this.matrix.preScale(f3, f1);
+    this.compositionLayer.draw(paramCanvas, this.matrix, this.alpha);
+    if (i > 0) {
+      paramCanvas.restoreToCount(i);
     }
   }
   
@@ -117,10 +257,15 @@ public class LottieDrawable
   
   private ImageAssetManager getImageAssetManager()
   {
+    ImageAssetManager localImageAssetManager = this.imageAssetManagerOverride;
+    if (localImageAssetManager != null) {
+      return localImageAssetManager;
+    }
     if (getCallback() == null) {
       return null;
     }
-    if ((this.imageAssetManager != null) && (!this.imageAssetManager.hasSameContext(getContext()))) {
+    localImageAssetManager = this.imageAssetManager;
+    if ((localImageAssetManager != null) && (!localImageAssetManager.hasSameContext(getContext()))) {
       this.imageAssetManager = null;
     }
     if (this.imageAssetManager == null) {
@@ -136,15 +281,22 @@ public class LottieDrawable
   
   private void updateBounds()
   {
-    if (this.composition == null) {
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null) {
       return;
     }
-    setBounds(0, 0, (int)(this.composition.getBounds().width() * this.scaleX), (int)(this.composition.getBounds().height() * this.scaleY));
+    setBounds(0, 0, (int)(localLottieComposition.getBounds().width() * this.scaleX), (int)(this.composition.getBounds().height() * this.scaleY));
   }
   
   public void addAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
   {
     this.animator.addListener(paramAnimatorListener);
+  }
+  
+  @RequiresApi(api=19)
+  public void addAnimatorPauseListener(Animator.AnimatorPauseListener paramAnimatorPauseListener)
+  {
+    this.animator.addPauseListener(paramAnimatorPauseListener);
   }
   
   public void addAnimatorUpdateListener(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
@@ -154,47 +306,45 @@ public class LottieDrawable
   
   public <T> void addValueCallback(KeyPath paramKeyPath, T paramT, LottieValueCallback<T> paramLottieValueCallback)
   {
-    int i = 1;
-    int j = 0;
-    if (this.compositionLayer == null) {
-      this.lazyCompositionTasks.add(new LottieDrawable.15(this, paramKeyPath, paramT, paramLottieValueCallback));
-    }
-    label143:
-    for (;;)
+    if (this.compositionLayer == null)
     {
+      this.lazyCompositionTasks.add(new LottieDrawable.16(this, paramKeyPath, paramT, paramLottieValueCallback));
       return;
-      if (paramKeyPath.getResolvedElement() != null) {
-        paramKeyPath.getResolvedElement().addValueCallback(paramT, paramLottieValueCallback);
-      }
-      for (;;)
+    }
+    KeyPath localKeyPath = KeyPath.COMPOSITION;
+    int i = 1;
+    boolean bool;
+    if (paramKeyPath == localKeyPath)
+    {
+      this.compositionLayer.addValueCallback(paramT, paramLottieValueCallback);
+    }
+    else if (paramKeyPath.getResolvedElement() != null)
+    {
+      paramKeyPath.getResolvedElement().addValueCallback(paramT, paramLottieValueCallback);
+    }
+    else
+    {
+      paramKeyPath = resolveKeyPath(paramKeyPath);
+      i = 0;
+      while (i < paramKeyPath.size())
       {
-        if (i == 0) {
-          break label143;
-        }
-        invalidateSelf();
-        if (paramT != LottieProperty.TIME_REMAP) {
-          break;
-        }
+        ((KeyPath)paramKeyPath.get(i)).getResolvedElement().addValueCallback(paramT, paramLottieValueCallback);
+        i += 1;
+      }
+      bool = true ^ paramKeyPath.isEmpty();
+    }
+    if (bool)
+    {
+      invalidateSelf();
+      if (paramT == LottieProperty.TIME_REMAP) {
         setProgress(getProgress());
-        return;
-        paramKeyPath = resolveKeyPath(paramKeyPath);
-        i = 0;
-        while (i < paramKeyPath.size())
-        {
-          ((KeyPath)paramKeyPath.get(i)).getResolvedElement().addValueCallback(paramT, paramLottieValueCallback);
-          i += 1;
-        }
-        i = j;
-        if (!paramKeyPath.isEmpty()) {
-          i = 1;
-        }
       }
     }
   }
   
   public <T> void addValueCallback(KeyPath paramKeyPath, T paramT, SimpleLottieValueCallback<T> paramSimpleLottieValueCallback)
   {
-    addValueCallback(paramKeyPath, paramT, new LottieDrawable.16(this, paramSimpleLottieValueCallback));
+    addValueCallback(paramKeyPath, paramT, new LottieDrawable.17(this, paramSimpleLottieValueCallback));
   }
   
   public void cancelAnimation()
@@ -224,71 +374,57 @@ public class LottieDrawable
   
   public LayerInfo collectLayerInfo()
   {
-    if ((this.composition == null) || (this.compositionLayer == null)) {
-      return null;
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition != null)
+    {
+      CompositionLayer localCompositionLayer = this.compositionLayer;
+      if (localCompositionLayer != null)
+      {
+        localCompositionLayer.collectLayers(localLottieComposition.layerInfo);
+        return this.composition.layerInfo;
+      }
     }
-    this.compositionLayer.collectLayers(this.composition.layerInfo);
-    return this.composition.layerInfo;
+    return null;
+  }
+  
+  public void disableExtraScaleModeInFitXY()
+  {
+    this.isExtraScaleEnabled = false;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     this.isDirty = false;
     L.beginSection("Drawable#draw");
-    if (this.compositionLayer == null) {
-      return;
-    }
-    float f2 = this.scaleX;
-    float f4 = this.scaleY;
-    float f3 = getMaxScale(paramCanvas);
-    float f1;
-    if (f2 > f3)
-    {
-      f1 = this.scaleX / f3;
-      f2 = f3;
-    }
-    for (;;)
-    {
-      if (f4 > f3) {}
-      float f5;
-      for (f4 = this.scaleY / f3;; f4 = f5)
+    if (this.safeMode) {
+      try
       {
-        int i = -1;
-        if ((f1 > 1.0F) || (f4 > 1.0F))
-        {
-          i = paramCanvas.save();
-          paramCanvas.scale(f1, f4);
-        }
-        this.matrix.reset();
-        this.matrix.preScale(f2, f3);
-        this.compositionLayer.draw(paramCanvas, this.matrix, this.alpha);
-        L.endSection("Drawable#draw");
-        if (i <= 0) {
-          break;
-        }
-        paramCanvas.restoreToCount(i);
-        return;
-        f5 = 1.0F;
-        f3 = f4;
+        drawInternal(paramCanvas);
       }
-      f1 = 1.0F;
+      catch (Throwable paramCanvas)
+      {
+        Logger.error("Lottie crashed in draw!", paramCanvas);
+      }
+    } else {
+      drawInternal(paramCanvas);
     }
+    L.endSection("Drawable#draw");
   }
   
   public void enableMergePathsForKitKatAndAbove(boolean paramBoolean)
   {
-    if (this.enableMergePaths == paramBoolean) {}
-    do
-    {
+    if (this.enableMergePaths == paramBoolean) {
       return;
-      if (Build.VERSION.SDK_INT < 19)
-      {
-        Log.w(TAG, "Merge paths are not supported pre-Kit Kat.");
-        return;
-      }
-      this.enableMergePaths = paramBoolean;
-    } while (this.composition == null);
-    buildCompositionLayer();
+    }
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      Logger.warning("Merge paths are not supported pre-Kit Kat.");
+      return;
+    }
+    this.enableMergePaths = paramBoolean;
+    if (this.composition != null) {
+      buildCompositionLayer();
+    }
   }
   
   public boolean enableMergePathsForKitKatAndAbove()
@@ -342,18 +478,20 @@ public class LottieDrawable
   
   public int getIntrinsicHeight()
   {
-    if (this.composition == null) {
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null) {
       return -1;
     }
-    return (int)(this.composition.getBounds().height() * this.scaleY);
+    return (int)(localLottieComposition.getBounds().height() * this.scaleY);
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.composition == null) {
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null) {
       return -1;
     }
-    return (int)(this.composition.getBounds().width() * this.scaleX);
+    return (int)(localLottieComposition.getBounds().width() * this.scaleX);
   }
   
   public float getMaxFrame()
@@ -374,8 +512,9 @@ public class LottieDrawable
   @Nullable
   public PerformanceTracker getPerformanceTracker()
   {
-    if (this.composition != null) {
-      return this.composition.getPerformanceTracker();
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition != null) {
+      return localLottieComposition.getPerformanceTracker();
     }
     return null;
   }
@@ -424,12 +563,14 @@ public class LottieDrawable
   
   public boolean hasMasks()
   {
-    return (this.compositionLayer != null) && (this.compositionLayer.hasMasks());
+    CompositionLayer localCompositionLayer = this.compositionLayer;
+    return (localCompositionLayer != null) && (localCompositionLayer.hasMasks());
   }
   
   public boolean hasMatte()
   {
-    return (this.compositionLayer != null) && (this.compositionLayer.hasMatte());
+    CompositionLayer localCompositionLayer = this.compositionLayer;
+    return (localCompositionLayer != null) && (localCompositionLayer.hasMatte());
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
@@ -443,20 +584,28 @@ public class LottieDrawable
   
   public void invalidateSelf()
   {
-    if (this.isDirty) {}
-    Drawable.Callback localCallback;
-    do
-    {
+    if (this.isDirty) {
       return;
-      this.isDirty = true;
-      localCallback = getCallback();
-    } while (localCallback == null);
-    localCallback.invalidateDrawable(this);
+    }
+    this.isDirty = true;
+    Drawable.Callback localCallback = getCallback();
+    if (localCallback != null) {
+      localCallback.invalidateDrawable(this);
+    }
   }
   
   public boolean isAnimating()
   {
-    return this.animator.isRunning();
+    LottieValueAnimator localLottieValueAnimator = this.animator;
+    if (localLottieValueAnimator == null) {
+      return false;
+    }
+    return localLottieValueAnimator.isRunning();
+  }
+  
+  public boolean isApplyingOpacityToLayersEnabled()
+  {
+    return this.isApplyingOpacityToLayersEnabled;
   }
   
   public boolean isLooping()
@@ -478,12 +627,13 @@ public class LottieDrawable
   public void loop(boolean paramBoolean)
   {
     LottieValueAnimator localLottieValueAnimator = this.animator;
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      localLottieValueAnimator.setRepeatCount(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = -1;
+    } else {
+      i = 0;
     }
+    localLottieValueAnimator.setRepeatCount(i);
   }
   
   protected void onBoundsChange(Rect paramRect)
@@ -513,13 +663,27 @@ public class LottieDrawable
       this.lazyCompositionTasks.add(new LottieDrawable.2(this));
       return;
     }
-    this.animator.playAnimation();
+    if ((animationsEnabled()) || (getRepeatCount() == 0)) {
+      this.animator.playAnimation();
+    }
+    if (!animationsEnabled())
+    {
+      float f;
+      if (getSpeed() < 0.0F) {
+        f = getMinFrame();
+      } else {
+        f = getMaxFrame();
+      }
+      setFrame((int)f);
+      this.animator.endAnimation();
+    }
   }
   
   public void recycleBitmaps()
   {
-    if (this.imageAssetManager != null) {
-      this.imageAssetManager.recycleBitmaps();
+    ImageAssetManager localImageAssetManager = this.imageAssetManager;
+    if (localImageAssetManager != null) {
+      localImageAssetManager.recycleBitmaps();
     }
   }
   
@@ -531,11 +695,18 @@ public class LottieDrawable
   public void removeAllUpdateListeners()
   {
     this.animator.removeAllUpdateListeners();
+    this.animator.addUpdateListener(this.progressUpdateListener);
   }
   
   public void removeAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
   {
     this.animator.removeListener(paramAnimatorListener);
+  }
+  
+  @RequiresApi(api=19)
+  public void removeAnimatorPauseListener(Animator.AnimatorPauseListener paramAnimatorPauseListener)
+  {
+    this.animator.removePauseListener(paramAnimatorPauseListener);
   }
   
   public void removeAnimatorUpdateListener(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
@@ -547,7 +718,7 @@ public class LottieDrawable
   {
     if (this.compositionLayer == null)
     {
-      Log.w("LOTTIE", "Cannot resolve KeyPath. Composition is not set yet.");
+      Logger.warning("Cannot resolve KeyPath. Composition is not set yet.");
       return Collections.emptyList();
     }
     ArrayList localArrayList = new ArrayList();
@@ -563,7 +734,20 @@ public class LottieDrawable
       this.lazyCompositionTasks.add(new LottieDrawable.3(this));
       return;
     }
-    this.animator.resumeAnimation();
+    if ((animationsEnabled()) || (getRepeatCount() == 0)) {
+      this.animator.resumeAnimation();
+    }
+    if (!animationsEnabled())
+    {
+      float f;
+      if (getSpeed() < 0.0F) {
+        f = getMinFrame();
+      } else {
+        f = getMaxFrame();
+      }
+      setFrame((int)f);
+      this.animator.endAnimation();
+    }
   }
   
   public void reverseAnimationSpeed()
@@ -583,11 +767,17 @@ public class LottieDrawable
   public void setAlpha(@IntRange(from=0L, to=255L) int paramInt)
   {
     this.alpha = paramInt;
+    invalidateSelf();
+  }
+  
+  public void setApplyingOpacityToLayersEnabled(boolean paramBoolean)
+  {
+    this.isApplyingOpacityToLayersEnabled = paramBoolean;
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    Log.w("LOTTIE", "Use addColorFilter instead.");
+    Logger.warning("Use addColorFilter instead.");
   }
   
   public boolean setComposition(LottieComposition paramLottieComposition)
@@ -602,23 +792,33 @@ public class LottieDrawable
     this.animator.setComposition(paramLottieComposition);
     setProgress(this.animator.getAnimatedFraction());
     setScale(this.scaleX, this.scaleY);
-    updateBounds();
     Iterator localIterator = new ArrayList(this.lazyCompositionTasks).iterator();
     while (localIterator.hasNext())
     {
-      ((LottieDrawable.LazyCompositionTask)localIterator.next()).run(paramLottieComposition);
+      LottieDrawable.LazyCompositionTask localLazyCompositionTask = (LottieDrawable.LazyCompositionTask)localIterator.next();
+      if (localLazyCompositionTask != null) {
+        localLazyCompositionTask.run(paramLottieComposition);
+      }
       localIterator.remove();
     }
     this.lazyCompositionTasks.clear();
     paramLottieComposition.setPerformanceTrackingEnabled(this.performanceTrackingEnabled);
+    paramLottieComposition = getCallback();
+    if ((paramLottieComposition instanceof ImageView))
+    {
+      paramLottieComposition = (ImageView)paramLottieComposition;
+      paramLottieComposition.setImageDrawable(null);
+      paramLottieComposition.setImageDrawable(this);
+    }
     return true;
   }
   
   public void setFontAssetDelegate(FontAssetDelegate paramFontAssetDelegate)
   {
     this.fontAssetDelegate = paramFontAssetDelegate;
-    if (this.fontAssetManager != null) {
-      this.fontAssetManager.setDelegate(paramFontAssetDelegate);
+    FontAssetManager localFontAssetManager = this.fontAssetManager;
+    if (localFontAssetManager != null) {
+      localFontAssetManager.setDelegate(paramFontAssetDelegate);
     }
   }
   
@@ -626,18 +826,30 @@ public class LottieDrawable
   {
     if (this.composition == null)
     {
-      this.lazyCompositionTasks.add(new LottieDrawable.13(this, paramInt));
+      this.lazyCompositionTasks.add(new LottieDrawable.14(this, paramInt));
       return;
     }
     this.animator.setFrame(paramInt);
   }
   
+  public void setIgnoreDisabledSystemAnimations(boolean paramBoolean)
+  {
+    this.ignoreSystemAnimationsDisabled = paramBoolean;
+  }
+  
   public void setImageAssetDelegate(ImageAssetDelegate paramImageAssetDelegate)
   {
     this.imageAssetDelegate = paramImageAssetDelegate;
-    if (this.imageAssetManager != null) {
-      this.imageAssetManager.setDelegate(paramImageAssetDelegate);
+    ImageAssetManager localImageAssetManager = this.imageAssetManager;
+    if (localImageAssetManager != null) {
+      localImageAssetManager.setDelegate(paramImageAssetDelegate);
     }
+  }
+  
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  void setImageAssetManager(@Nullable ImageAssetManager paramImageAssetManager)
+  {
+    this.imageAssetManagerOverride = paramImageAssetManager;
   }
   
   public void setImagesAssetsFolder(@Nullable String paramString)
@@ -657,34 +869,41 @@ public class LottieDrawable
   
   public void setMaxFrame(String paramString)
   {
-    if (this.composition == null)
+    Object localObject = this.composition;
+    if (localObject == null)
     {
       this.lazyCompositionTasks.add(new LottieDrawable.9(this, paramString));
       return;
     }
-    Marker localMarker = this.composition.getMarker(paramString);
-    if (localMarker == null) {
-      throw new IllegalArgumentException("Cannot find marker with name " + paramString + ".");
+    localObject = ((LottieComposition)localObject).getMarker(paramString);
+    if (localObject != null)
+    {
+      setMaxFrame((int)(((Marker)localObject).startFrame + ((Marker)localObject).durationFrames));
+      return;
     }
-    float f = localMarker.startFrame;
-    setMaxFrame((int)(localMarker.durationFrames + f));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Cannot find marker with name ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void setMaxProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    if (this.composition == null)
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null)
     {
       this.lazyCompositionTasks.add(new LottieDrawable.7(this, paramFloat));
       return;
     }
-    setMaxFrame((int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
+    setMaxFrame((int)MiscUtils.lerp(localLottieComposition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
   }
   
   public void setMinAndMaxFrame(int paramInt1, int paramInt2)
   {
     if (this.composition == null)
     {
-      this.lazyCompositionTasks.add(new LottieDrawable.11(this, paramInt1, paramInt2));
+      this.lazyCompositionTasks.add(new LottieDrawable.12(this, paramInt1, paramInt2));
       return;
     }
     this.animator.setMinAndMaxFrames(paramInt1, paramInt2 + 0.99F);
@@ -692,27 +911,73 @@ public class LottieDrawable
   
   public void setMinAndMaxFrame(String paramString)
   {
-    if (this.composition == null)
+    Object localObject = this.composition;
+    if (localObject == null)
     {
       this.lazyCompositionTasks.add(new LottieDrawable.10(this, paramString));
       return;
     }
-    Marker localMarker = this.composition.getMarker(paramString);
-    if (localMarker == null) {
-      throw new IllegalArgumentException("Cannot find marker with name " + paramString + ".");
+    localObject = ((LottieComposition)localObject).getMarker(paramString);
+    if (localObject != null)
+    {
+      int i = (int)((Marker)localObject).startFrame;
+      setMinAndMaxFrame(i, (int)((Marker)localObject).durationFrames + i);
+      return;
     }
-    int i = (int)localMarker.startFrame;
-    setMinAndMaxFrame(i, (int)localMarker.durationFrames + i);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Cannot find marker with name ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+  }
+  
+  public void setMinAndMaxFrame(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    Object localObject = this.composition;
+    if (localObject == null)
+    {
+      this.lazyCompositionTasks.add(new LottieDrawable.11(this, paramString1, paramString2, paramBoolean));
+      return;
+    }
+    localObject = ((LottieComposition)localObject).getMarker(paramString1);
+    if (localObject != null)
+    {
+      int i = (int)((Marker)localObject).startFrame;
+      paramString1 = this.composition.getMarker(paramString2);
+      if (paramString1 != null)
+      {
+        float f2 = paramString1.startFrame;
+        float f1;
+        if (paramBoolean) {
+          f1 = 1.0F;
+        } else {
+          f1 = 0.0F;
+        }
+        setMinAndMaxFrame(i, (int)(f2 + f1));
+        return;
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append("Cannot find marker with name ");
+      paramString1.append(paramString2);
+      paramString1.append(".");
+      throw new IllegalArgumentException(paramString1.toString());
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("Cannot find marker with name ");
+    paramString2.append(paramString1);
+    paramString2.append(".");
+    throw new IllegalArgumentException(paramString2.toString());
   }
   
   public void setMinAndMaxProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat1, @FloatRange(from=0.0D, to=1.0D) float paramFloat2)
   {
-    if (this.composition == null)
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null)
     {
-      this.lazyCompositionTasks.add(new LottieDrawable.12(this, paramFloat1, paramFloat2));
+      this.lazyCompositionTasks.add(new LottieDrawable.13(this, paramFloat1, paramFloat2));
       return;
     }
-    setMinAndMaxFrame((int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat1), (int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat2));
+    setMinAndMaxFrame((int)MiscUtils.lerp(localLottieComposition.getStartFrame(), this.composition.getEndFrame(), paramFloat1), (int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat2));
   }
   
   public void setMinFrame(int paramInt)
@@ -727,33 +992,54 @@ public class LottieDrawable
   
   public void setMinFrame(String paramString)
   {
-    if (this.composition == null)
+    Object localObject = this.composition;
+    if (localObject == null)
     {
       this.lazyCompositionTasks.add(new LottieDrawable.8(this, paramString));
       return;
     }
-    Marker localMarker = this.composition.getMarker(paramString);
-    if (localMarker == null) {
-      throw new IllegalArgumentException("Cannot find marker with name " + paramString + ".");
+    localObject = ((LottieComposition)localObject).getMarker(paramString);
+    if (localObject != null)
+    {
+      setMinFrame((int)((Marker)localObject).startFrame);
+      return;
     }
-    setMinFrame((int)localMarker.startFrame);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Cannot find marker with name ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void setMinProgress(float paramFloat)
   {
-    if (this.composition == null)
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null)
     {
       this.lazyCompositionTasks.add(new LottieDrawable.5(this, paramFloat));
       return;
     }
-    setMinFrame((int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
+    setMinFrame((int)MiscUtils.lerp(localLottieComposition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
+  }
+  
+  public void setOutlineMasksAndMattes(boolean paramBoolean)
+  {
+    if (this.outlineMasksAndMattes == paramBoolean) {
+      return;
+    }
+    this.outlineMasksAndMattes = paramBoolean;
+    CompositionLayer localCompositionLayer = this.compositionLayer;
+    if (localCompositionLayer != null) {
+      localCompositionLayer.setOutlineMasksAndMattes(paramBoolean);
+    }
   }
   
   public void setPerformanceTrackingEnabled(boolean paramBoolean)
   {
     this.performanceTrackingEnabled = paramBoolean;
-    if (this.composition != null) {
-      this.composition.setPerformanceTrackingEnabled(paramBoolean);
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition != null) {
+      localLottieComposition.setPerformanceTrackingEnabled(paramBoolean);
     }
   }
   
@@ -761,10 +1047,12 @@ public class LottieDrawable
   {
     if (this.composition == null)
     {
-      this.lazyCompositionTasks.add(new LottieDrawable.14(this, paramFloat));
+      this.lazyCompositionTasks.add(new LottieDrawable.15(this, paramFloat));
       return;
     }
-    setFrame((int)MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
+    L.beginSection("Drawable#setProgress");
+    this.animator.setFrame(MiscUtils.lerp(this.composition.getStartFrame(), this.composition.getEndFrame(), paramFloat));
+    L.endSection("Drawable#setProgress");
   }
   
   public void setRepeatCount(int paramInt)
@@ -775,6 +1063,11 @@ public class LottieDrawable
   public void setRepeatMode(int paramInt)
   {
     this.animator.setRepeatMode(paramInt);
+  }
+  
+  public void setSafeMode(boolean paramBoolean)
+  {
+    this.safeMode = paramBoolean;
   }
   
   public void setScale(float paramFloat1, float paramFloat2)
@@ -789,6 +1082,11 @@ public class LottieDrawable
     this.animator.setSpeed(paramFloat);
   }
   
+  void setSystemAnimationsAreEnabled(Boolean paramBoolean)
+  {
+    this.systemAnimationsEnabled = paramBoolean.booleanValue();
+  }
+  
   public void setTextDelegate(TextDelegate paramTextDelegate)
   {
     this.textDelegate = paramTextDelegate;
@@ -797,7 +1095,10 @@ public class LottieDrawable
   @MainThread
   public void start()
   {
-    playAnimation();
+    Drawable.Callback localCallback = getCallback();
+    if (((localCallback instanceof View)) && (!((View)localCallback).isInEditMode())) {
+      playAnimation();
+    }
   }
   
   @MainThread
@@ -821,7 +1122,7 @@ public class LottieDrawable
     ImageAssetManager localImageAssetManager = getImageAssetManager();
     if (localImageAssetManager == null)
     {
-      Log.w("LOTTIE", "Cannot update bitmap. Most likely the drawable is not added to a View which prevents Lottie from getting a Context.");
+      Logger.warning("Cannot update bitmap. Most likely the drawable is not added to a View which prevents Lottie from getting a Context.");
       return null;
     }
     paramString = localImageAssetManager.updateBitmap(paramString, paramBitmap);

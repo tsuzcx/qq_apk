@@ -1,20 +1,51 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
+import android.app.Dialog;
+import android.os.Handler;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import java.util.HashMap;
 
-public class PublicAccountChatPie$58
-  implements Runnable
+class PublicAccountChatPie$58
+  extends QidianBusinessObserver
 {
-  public PublicAccountChatPie$58(agti paramagti) {}
+  PublicAccountChatPie$58(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    boolean bool = false;
-    agti localagti = this.this$0;
-    if ((this.this$0.b(true)) || (this.this$0.b(false))) {
-      bool = true;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      if (((Integer)paramHashMap.get("result")).intValue() == 0)
+      {
+        this.a.u(1);
+        this.a.ce.sendEmptyMessageDelayed(10, 3000L);
+        return;
+      }
+      paramHashMap = this.a;
+      paramHashMap.cC = true;
+      paramHashMap.bS();
+      if ((PublicAccountChatPie.H(this.a) != null) && (PublicAccountChatPie.H(this.a).isShowing())) {
+        PublicAccountChatPie.H(this.a).dismiss();
+      }
+      this.a.bT();
+      return;
     }
-    localagti.as = bool;
+    this.a.u(2);
+    this.a.ce.sendEmptyMessageDelayed(10, 3000L);
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if (paramBoolean)
+    {
+      if (paramHashMap == null) {
+        return;
+      }
+      PublicAccountChatPie localPublicAccountChatPie = this.a;
+      localPublicAccountChatPie.cF = true;
+      localPublicAccountChatPie.cE = ((Boolean)paramHashMap.get("result")).booleanValue();
+      this.a.bS();
+      this.a.bT();
+    }
   }
 }
 

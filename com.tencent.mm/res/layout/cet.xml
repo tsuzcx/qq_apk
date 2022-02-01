@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="@color/a3y" android:paddingTop="46.0dip" android:paddingBottom="46.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/aml" android:paddingTop="8.0dip" android:layout_width="@dimen/it" android:layout_height="wrap_content" android:minHeight="168.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/ljm" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/leu" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/icon_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/ljv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/l94" android:maxLines="3" android:includeFontPadding="false" />
+                <TextView android:textSize="12.0dip" android:ellipsize="end" android:id="@id/f84" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:maxLines="2" />
+            </LinearLayout>
+        </RelativeLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/fob" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:src="@color/abn" />
+        <ListView android:id="@id/jey" android:background="@null" android:layout_width="fill_parent" android:layout_height="0.0dip" android:choiceMode="singleChoice" android:layout_weight="1.0" />
+        <Button android:textSize="@dimen/j7" android:textColor="@color/aks" android:id="@id/hs7" android:background="@drawable/c2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/j1" android:text="@string/a17" />
+    </LinearLayout>
+</RelativeLayout>

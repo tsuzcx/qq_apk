@@ -26,12 +26,21 @@ public class AVDecodeError
   
   public static void throwException(int paramInt)
   {
-    throw new AVideoException(-(paramInt & 0xFFFF), paramInt >> 16 & 0xFFFF, "[err=" + (paramInt & 0xFFFF) + "]" + "[subcode=" + (paramInt >> 16 & 0xFFFF) + "]");
+    int i = paramInt & 0xFFFF;
+    int j = -i;
+    paramInt = paramInt >> 16 & 0xFFFF;
+    StringBuilder localStringBuilder = new StringBuilder("[err=");
+    localStringBuilder.append(i);
+    localStringBuilder.append("]");
+    localStringBuilder.append("[subcode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    throw new AVideoException(j, paramInt, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.video.decode.AVDecodeError
  * JD-Core Version:    0.7.0.1
  */

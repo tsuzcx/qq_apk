@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/n01" android:background="@color/2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/aze" android:padding="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/eew" />
+    <TextView android:gravity="center" android:id="@id/oua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/r3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_above="@id/oua">
+        <ImageView android:id="@id/a38" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="fitXY" />
+        <TextView android:gravity="center" android:id="@id/f5q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:drawablePadding="2.6999817dip" android:drawableEnd="@drawable/eev" />
+        <TextView android:gravity="center" android:id="@id/jq_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/owe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_below="@id/oua">
+        <com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar android:id="@id/osv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/p1k" android:background="@drawable/eez" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/fuz" android:background="@drawable/eey" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/q6s" android:background="@drawable/ef3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/otz" android:background="@drawable/eex" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,59 +1,54 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amtd;
-import amte;
-import amvz;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingYUVProgram;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
-public class ARPromotionMediaPlayerWrapper$2
+class ARPromotionMediaPlayerWrapper$2
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$2(amtd paramamtd, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2) {}
-  
   public void run()
   {
-    if (amtd.a(this.this$0)) {}
-    for (;;)
-    {
+    if (ARPromotionMediaPlayerWrapper.a(this.this$0)) {
       return;
-      try
+    }
+    try
+    {
+      ARPromotionMediaPlayerWrapper.e(this.this$0);
+      ARPromotionMediaPlayerWrapper.d(this.this$0);
+      if (ARPromotionMediaPlayerWrapper.g(this.this$0) != null)
       {
-        amtd.a(this.this$0);
-        amtd.a(this.this$0);
-        if ((amtd.a(this.this$0) != null) && (amtd.a(this.this$0) != null))
+        if (ARPromotionMediaPlayerWrapper.m(this.this$0) == null) {
+          return;
+        }
+        ARPromotionMediaPlayerWrapper.g(this.this$0).bind();
+        ARPromotionMediaPlayerWrapper.a(this.this$0, this.a, this.b, this.c);
+        if (!ARPromotionMediaPlayerWrapper.m(this.this$0).a())
         {
-          amtd.a(this.this$0).bind();
-          amtd.a(this.this$0, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-          if (!amtd.a(this.this$0).a())
-          {
-            amtd.a(this.this$0).a();
-            amvz localamvz = amtd.a(this.this$0);
-            amtd.a(this.this$0);
-            localamvz.a(amvz.f);
-          }
-          amtd.a(this.this$0).a(amtd.a(this.this$0)[0], amtd.a(this.this$0)[1], amtd.a(this.this$0)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          amtd.a(this.this$0).b();
-          amtd.a(this.this$0).unbind();
-          if ((amtd.b(this.this$0) == 2L) && (amtd.a(this.this$0) != null))
-          {
-            amtd.a(this.this$0).a(amtd.b(this.this$0), 0, amtd.a(this.this$0).getTexId());
-            QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
-            return;
-          }
+          ARPromotionMediaPlayerWrapper.m(this.this$0).b();
+          ARPromotionMediaPlayerWrapper.m(this.this$0).a(GreetingYUVProgram.h);
+        }
+        ARPromotionMediaPlayerWrapper.m(this.this$0).a(ARPromotionMediaPlayerWrapper.n(this.this$0)[0], ARPromotionMediaPlayerWrapper.n(this.this$0)[1], ARPromotionMediaPlayerWrapper.n(this.this$0)[2], this.d, this.e);
+        ARPromotionMediaPlayerWrapper.m(this.this$0).c();
+        ARPromotionMediaPlayerWrapper.g(this.this$0).unbind();
+        if ((ARPromotionMediaPlayerWrapper.j(this.this$0) == 2L) && (ARPromotionMediaPlayerWrapper.k(this.this$0) != null))
+        {
+          ARPromotionMediaPlayerWrapper.k(this.this$0).a(ARPromotionMediaPlayerWrapper.l(this.this$0), 0, ARPromotionMediaPlayerWrapper.g(this.this$0).getTexId());
+          QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        QLog.i("ARWorldCupMediaPlayerWrapper", 1, "drawSoftFrame render error happen");
-      }
+      else {}
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      QLog.i("ARWorldCupMediaPlayerWrapper", 1, "drawSoftFrame render error happen");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.2
  * JD-Core Version:    0.7.0.1
  */

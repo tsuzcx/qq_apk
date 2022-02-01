@@ -1,50 +1,49 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.NearbyOpenTroop;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.troop.group_activity_info.GroupActInfo;
-import java.util.Iterator;
-import java.util.List;
 
 public class gut
-  extends BizTroopObserver
+  extends MessageObserver
 {
   public gut(NearbyOpenTroop paramNearbyOpenTroop) {}
   
-  private void a(group_activity_info.GroupActInfo paramGroupActInfo)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1001;
-    localMessage.obj = paramGroupActInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, List paramList)
-  {
-    if ((!paramBoolean2) || (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
+    int k = 0;
+    int j = k;
+    int i;
+    if (paramArrayOfString != null) {
+      i = 0;
     }
-    int j = 0;
-    int i = j;
-    if (paramBoolean1)
+    for (;;)
     {
-      paramString = paramList.iterator();
-      i = j;
-      if (paramString.hasNext())
+      j = k;
+      if (i < paramArrayOfString.length)
       {
-        a((group_activity_info.GroupActInfo)paramString.next());
-        i = 1;
+        if (paramArrayOfString[i].equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+          j = 1;
+        }
       }
-    }
-    if (i == 0)
-    {
-      NearbyOpenTroop.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("EnterTroopTipsMsg", 2, "没有群活动消息，之后直接生成tips");
+      else
+      {
+        if (j != 0)
+        {
+          if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.a.jdField_a_of_type_JavaLangString, true))
+          {
+            NearbyOpenTroop.b(this.a);
+            if (QLog.isColorLevel()) {
+              QLog.d("EnterTroopTipsMsg", 2, "显示拉群活动失败，直接生成tips");
+            }
+            NearbyOpenTroop.a(this.a);
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(this.a.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+        }
+        return;
       }
+      i += 1;
     }
-    NearbyOpenTroop.a(this.a);
   }
 }
 

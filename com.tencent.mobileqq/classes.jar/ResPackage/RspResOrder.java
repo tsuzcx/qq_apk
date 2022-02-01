@@ -14,19 +14,9 @@ public final class RspResOrder
   public String ButtonDesc = "";
   public String ButtonUrl = "";
   public String ErrMsg = "";
-  public int Ret;
-  public int SeqID;
+  public int Ret = 0;
+  public int SeqID = 0;
   public String Title = "";
-  
-  static
-  {
-    if (!RspResOrder.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   public RspResOrder() {}
   
@@ -47,18 +37,17 @@ public final class RspResOrder
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -85,13 +74,36 @@ public final class RspResOrder
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RspResOrder)paramObject;
-    } while ((!JceUtil.equals(this.Ret, paramObject.Ret)) || (!JceUtil.equals(this.SeqID, paramObject.SeqID)) || (!JceUtil.equals(this.Title, paramObject.Title)) || (!JceUtil.equals(this.ErrMsg, paramObject.ErrMsg)) || (!JceUtil.equals(this.ButtonDesc, paramObject.ButtonDesc)) || (!JceUtil.equals(this.ButtonUrl, paramObject.ButtonUrl)));
-    return true;
+    }
+    paramObject = (RspResOrder)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.Ret, paramObject.Ret))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.SeqID, paramObject.SeqID))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.Title, paramObject.Title))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.ErrMsg, paramObject.ErrMsg))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.ButtonDesc, paramObject.ButtonDesc))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.ButtonUrl, paramObject.ButtonUrl)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -186,23 +198,27 @@ public final class RspResOrder
   {
     paramJceOutputStream.write(this.Ret, 0);
     paramJceOutputStream.write(this.SeqID, 1);
-    if (this.Title != null) {
-      paramJceOutputStream.write(this.Title, 2);
+    String str = this.Title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.ErrMsg != null) {
-      paramJceOutputStream.write(this.ErrMsg, 3);
+    str = this.ErrMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.ButtonDesc != null) {
-      paramJceOutputStream.write(this.ButtonDesc, 4);
+    str = this.ButtonDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.ButtonUrl != null) {
-      paramJceOutputStream.write(this.ButtonUrl, 5);
+    str = this.ButtonUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ResPackage.RspResOrder
  * JD-Core Version:    0.7.0.1
  */

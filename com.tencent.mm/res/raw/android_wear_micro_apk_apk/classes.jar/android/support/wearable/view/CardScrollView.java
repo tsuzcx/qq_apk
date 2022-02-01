@@ -18,19 +18,28 @@ import android.widget.FrameLayout.LayoutParams;
 public class CardScrollView
   extends FrameLayout
 {
-  private boolean AE;
-  private CardFrame AN;
-  private final int AO = (int)(8.0F * getResources().getDisplayMetrics().density);
+  private CardFrame CC;
+  private final int CD = (int)(8.0F * getResources().getDisplayMetrics().density);
+  private boolean Ct;
   
   public CardScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, 0);
   }
   
-  public final int aQ(int paramInt)
+  public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    if ((getChildCount() > 0) || (!(paramView instanceof CardFrame))) {
+      throw new IllegalStateException("CardScrollView may contain only a single CardFrame.");
+    }
+    super.addView(paramView, paramInt, paramLayoutParams);
+    this.CC = ((CardFrame)paramView);
+  }
+  
+  public final int bk(int paramInt)
   {
     int i;
-    if (this.AN == null)
+    if (this.CC == null)
     {
       Log.w("CardScrollView", "No CardFrame has been added.");
       i = 0;
@@ -46,13 +55,13 @@ public class CardScrollView
       break;
       i = getPaddingTop();
       j = getPaddingBottom();
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.AN.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.CC.getLayoutParams();
       int k = localLayoutParams.topMargin;
-      i = localLayoutParams.bottomMargin + k + (j + i + this.AN.getMeasuredHeight());
+      i = localLayoutParams.bottomMargin + k + (j + i + this.CC.getMeasuredHeight());
     } while (i <= getMeasuredHeight());
     i -= getMeasuredHeight();
     int j = getScrollY();
-    if (this.AN.eK() == 1)
+    if (this.CC.fa() == 1)
     {
       if (j < 0) {
         break label209;
@@ -71,7 +80,7 @@ public class CardScrollView
       {
         paramInt = Math.max(0, i - j);
         continue;
-        if ((this.AN.eK() == -1) && (j <= 0))
+        if ((this.CC.fa() == -1) && (j <= 0))
         {
           if (paramInt > 0)
           {
@@ -90,15 +99,6 @@ public class CardScrollView
     }
   }
   
-  public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    if ((getChildCount() > 0) || (!(paramView instanceof CardFrame))) {
-      throw new IllegalStateException("CardScrollView may contain only a single CardFrame.");
-    }
-    super.addView(paramView, paramInt, paramLayoutParams);
-    this.AN = ((CardFrame)paramView);
-  }
-  
   public boolean canScrollHorizontally(int paramInt)
   {
     return false;
@@ -108,14 +108,14 @@ public class CardScrollView
   {
     boolean bool = paramWindowInsets.isRound();
     Object localObject;
-    if (this.AE != bool)
+    if (this.Ct != bool)
     {
-      this.AE = bool;
-      localObject = (FrameLayout.LayoutParams)this.AN.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).leftMargin = (-this.AO);
-      ((FrameLayout.LayoutParams)localObject).rightMargin = (-this.AO);
-      ((FrameLayout.LayoutParams)localObject).bottomMargin = (-this.AO);
-      this.AN.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.Ct = bool;
+      localObject = (FrameLayout.LayoutParams)this.CC.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).leftMargin = (-this.CD);
+      ((FrameLayout.LayoutParams)localObject).rightMargin = (-this.CD);
+      ((FrameLayout.LayoutParams)localObject).bottomMargin = (-this.CD);
+      this.CC.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     if (paramWindowInsets.getSystemWindowInsetBottom() > 0)
     {
@@ -125,8 +125,8 @@ public class CardScrollView
         ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = i;
       }
     }
-    if ((this.AE) && (this.AN != null)) {
-      this.AN.onApplyWindowInsets(paramWindowInsets);
+    if ((this.Ct) && (this.CC != null)) {
+      this.CC.onApplyWindowInsets(paramWindowInsets);
     }
     requestLayout();
     return paramWindowInsets;
@@ -150,11 +150,11 @@ public class CardScrollView
   {
     paramInt1 = 1;
     int i;
-    if (this.AN != null)
+    if (this.CC != null)
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.AN.getLayoutParams();
-      i = this.AN.getMeasuredHeight();
-      paramInt3 = this.AN.getMeasuredWidth();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.CC.getLayoutParams();
+      i = this.CC.getMeasuredHeight();
+      paramInt3 = this.CC.getMeasuredWidth();
       int j = paramInt4 - paramInt2;
       if (getPaddingTop() + i + localLayoutParams.topMargin > j) {
         break label148;
@@ -174,13 +174,13 @@ public class CardScrollView
     }
     for (;;)
     {
-      this.AN.layout(paramInt4, paramInt2, paramInt3 + paramInt4, paramInt1);
+      this.CC.layout(paramInt4, paramInt2, paramInt3 + paramInt4, paramInt1);
       return;
       label143:
       paramInt1 = 0;
       break;
       label148:
-      if (this.AN.eK() == -1) {
+      if (this.CC.fa() == -1) {
         break;
       }
       paramInt1 = 0;
@@ -192,9 +192,9 @@ public class CardScrollView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.AN != null)
+    if (this.CC != null)
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.AN.getLayoutParams();
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.CC.getLayoutParams();
       int i1 = getPaddingLeft();
       int i2 = getPaddingRight();
       int i = getPaddingTop();
@@ -207,7 +207,7 @@ public class CardScrollView
       int n = localMarginLayoutParams.bottomMargin;
       i1 = View.MeasureSpec.makeMeasureSpec(i3 - (i1 + i2) - (i4 + i5), 1073741824);
       i = View.MeasureSpec.makeMeasureSpec(k - (i + j) - (n + m), -2147483648);
-      this.AN.measure(i1, i);
+      this.CC.measure(i1, i);
     }
     setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), paramInt1), getDefaultSize(getSuggestedMinimumWidth(), paramInt2));
   }

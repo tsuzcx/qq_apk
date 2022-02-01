@@ -8,7 +8,7 @@ public class zzcg
   extends zza
 {
   public static final Parcelable.Creator<zzcg> CREATOR = new bd();
-  public final long TQ;
+  public final long VF;
   public final String label;
   public final String packageName;
   
@@ -16,7 +16,7 @@ public class zzcg
   {
     this.packageName = paramString1;
     this.label = paramString2;
-    this.TQ = paramLong;
+    this.VF = paramLong;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.mini.entry.search.ui;
 
-import android.support.v4.app.FragmentActivity;
-import android.view.inputmethod.InputMethodManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class MiniAppSearchFragment$1
-  implements Runnable
+  extends GridLayoutManager.SpanSizeLookup
 {
   MiniAppSearchFragment$1(MiniAppSearchFragment paramMiniAppSearchFragment) {}
   
-  public void run()
+  public int getSpanSize(int paramInt)
   {
-    if (this.this$0.getActivity() != null) {
-      ((InputMethodManager)this.this$0.getActivity().getSystemService("input_method")).showSoftInput(MiniAppSearchFragment.access$000(this.this$0), 0);
+    if (MiniAppSearchFragment.access$000(this.this$0).getItemViewType(paramInt) == 1) {
+      return 2;
     }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

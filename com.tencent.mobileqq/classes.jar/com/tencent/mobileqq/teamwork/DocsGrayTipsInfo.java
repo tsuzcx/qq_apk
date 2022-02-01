@@ -3,14 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bafx;
-import bagj;
 import com.tencent.qphone.base.util.QLog;
 
 public class DocsGrayTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new bafx();
+  public static final Parcelable.Creator<DocsGrayTipsInfo> CREATOR = new DocsGrayTipsInfo.1();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -70,7 +68,11 @@ public class DocsGrayTipsInfo
     }
     catch (Exception localException)
     {
-      QLog.e(bagj.i, 1, "get height light area exception = " + localException.toString());
+      String str = TeamWorkConstants.j;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get height light area exception = ");
+      localStringBuilder.append(localException.toString());
+      QLog.e(str, 1, localStringBuilder.toString());
     }
     return arrayOfInt;
   }
@@ -82,7 +84,48 @@ public class DocsGrayTipsInfo
   
   public String toString()
   {
-    return "DocsGrayTipsInfo | uin =" + this.a + " , url=" + this.b + " , type = " + this.c + " , optType = " + this.d + " , authTips =" + this.e + " , highlightText =" + this.f + " , setflag =" + this.g + " , setPolicy =" + this.h + " , setOnly =" + this.i + " , sucResult =" + this.j + " , failResult =" + this.k + " , netFailResult =" + this.l + " , policy = " + this.m + " , privilege = " + this.n + " , member_num= " + this.o + " , remainTime=" + this.p + " , setTime= " + this.q + " , bNeedSetTime =" + this.r + " , tipType =" + this.s + " , tipUrl =" + this.t;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DocsGrayTipsInfo | uin =");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" , url=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" , type = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" , optType = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" , authTips =");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" , highlightText =");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" , setflag =");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" , setPolicy =");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" , setOnly =");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(" , sucResult =");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(" , failResult =");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(" , netFailResult =");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(" , policy = ");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(" , privilege = ");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(" , member_num= ");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(" , remainTime=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(" , setTime= ");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(" , bNeedSetTime =");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(" , tipType =");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(" , tipUrl =");
+    localStringBuilder.append(this.t);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -111,7 +154,7 @@ public class DocsGrayTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.DocsGrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

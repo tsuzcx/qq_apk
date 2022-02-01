@@ -4,82 +4,150 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ha
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean wtM;
-  public LinkedList<hb> wtN;
-  
-  public ha()
-  {
-    AppMethodBeat.i(56705);
-    this.wtN = new LinkedList();
-    AppMethodBeat.o(56705);
-  }
+  public hc YIC;
+  public com.tencent.mm.bx.b YID;
+  public hb YIx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56706);
+    AppMethodBeat.i(32124);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.wtM);
-      paramVarArgs.e(2, 8, this.wtN);
-      AppMethodBeat.o(56706);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.eW(1);
-      i = e.a.a.a.c(2, 8, this.wtN);
-      AppMethodBeat.o(56706);
-      return paramInt + 1 + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wtN.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(56706);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      ha localha = (ha)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YIC == null)
       {
-      default: 
-        AppMethodBeat.o(56706);
-        return -1;
-      case 1: 
-        localha.wtM = ((e.a.a.a.a)localObject1).CLY.emu();
-        AppMethodBeat.o(56706);
+        paramVarArgs = new i.a.a.b("Not all required fields were included: VoiceAttr");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
+      }
+      if (this.YIx == null)
+      {
+        paramVarArgs = new i.a.a.b("Not all required fields were included: UploadCtx");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
+      }
+      if (this.YID == null)
+      {
+        paramVarArgs = new i.a.a.b("Not all required fields were included: VoiceData");
+        AppMethodBeat.o(32124);
+        throw paramVarArgs;
+      }
+      if (this.YIC != null)
+      {
+        paramVarArgs.qD(1, this.YIC.computeSize());
+        this.YIC.writeFields(paramVarArgs);
+      }
+      if (this.YIx != null)
+      {
+        paramVarArgs.qD(2, this.YIx.computeSize());
+        this.YIx.writeFields(paramVarArgs);
+      }
+      if (this.YID != null) {
+        paramVarArgs.d(3, this.YID);
+      }
+      AppMethodBeat.o(32124);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.YIC == null) {
+        break label635;
+      }
+    }
+    label635:
+    for (int i = i.a.a.a.qC(1, this.YIC.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.YIx != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YIx.computeSize());
+      }
+      i = paramInt;
+      if (this.YID != null) {
+        i = paramInt + i.a.a.b.b.a.c(3, this.YID);
+      }
+      AppMethodBeat.o(32124);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.YIC == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: VoiceAttr");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        if (this.YIx == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: UploadCtx");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        if (this.YID == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: VoiceData");
+          AppMethodBeat.o(32124);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32124);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new hb();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((hb)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localha.wtN.add(localObject1);
-        paramInt += 1;
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        ha localha = (ha)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32124);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new hc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((hc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localha.YIC = ((hc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32124);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new hb();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((hb)localObject2).parseFrom((byte[])localObject1);
+            }
+            localha.YIx = ((hb)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32124);
+          return 0;
+        }
+        localha.YID = ((i.a.a.a.a)localObject1).ajGk.kFX();
+        AppMethodBeat.o(32124);
+        return 0;
       }
-      AppMethodBeat.o(56706);
-      return 0;
+      AppMethodBeat.o(32124);
+      return -1;
     }
-    AppMethodBeat.o(56706);
-    return -1;
   }
 }
 

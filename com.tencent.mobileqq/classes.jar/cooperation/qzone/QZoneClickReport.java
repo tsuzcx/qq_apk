@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import bjdn;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
@@ -17,8 +16,8 @@ public class QZoneClickReport
   public static final String SUB_ACTION_TYPE_LIVE_OS_NOT_SUPPORT = "125";
   public static final int SUB_ACTION_TYPE_LIVE_PLUGIN_MANUL_DOWNLOAD = 129;
   public static final String SUB_ACTION_TYPE_LIVE_PLUS_CLICK = "1";
-  private static String TAG = QZoneClickReport.class.getSimpleName();
-  public static boolean isShowToast;
+  private static String TAG = "QZoneClickReport";
+  public static boolean isShowToast = false;
   public static int reportAmount;
   public static int reportRate;
   
@@ -31,14 +30,24 @@ public class QZoneClickReport
     }
     catch (Exception localException)
     {
-      QLog.e(TAG, 2, "long string(" + paramString + ") is ill-format, return default value " + paramLong);
+      label7:
+      String str;
+      StringBuilder localStringBuilder;
+      break label7;
     }
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("long string(");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(") is ill-format, return default value ");
+    localStringBuilder.append(paramLong);
+    QLog.e(str, 2, localStringBuilder.toString());
     return paramLong;
   }
   
-  public static void report(String paramString, bjdn parambjdn, boolean paramBoolean)
+  public static void report(String paramString, QZoneClickReport.ReportInfo paramReportInfo, boolean paramBoolean)
   {
-    if (parambjdn == null) {
+    if (paramReportInfo == null) {
       return;
     }
     for (;;)
@@ -46,12 +55,12 @@ public class QZoneClickReport
       try
       {
         paramString = new LpReportInfo_pf00064();
-        paramString.extraInfo = parambjdn.a().toString();
-        parambjdn = LpReportManager.getInstance();
+        paramString.extraInfo = paramReportInfo.toJSON().toString();
+        paramReportInfo = LpReportManager.getInstance();
         if (!paramBoolean)
         {
           paramBoolean = true;
-          parambjdn.reportToPF00064(paramString, paramBoolean, false);
+          paramReportInfo.reportToPF00064(paramString, paramBoolean, false);
           return;
         }
       }
@@ -66,30 +75,33 @@ public class QZoneClickReport
   
   public static void report(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    bjdn localbjdn = new bjdn();
-    localbjdn.a = getLong(paramString1, 0L);
-    localbjdn.c = paramString2;
-    localbjdn.d = paramString3;
-    localbjdn.e = paramString4;
-    localbjdn.f = paramString5;
-    report(paramString1, localbjdn, paramBoolean);
+    QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+    localReportInfo.toUin = getLong(paramString1, 0L);
+    localReportInfo.actionType = paramString2;
+    localReportInfo.subactionType = paramString3;
+    localReportInfo.reserves = paramString4;
+    localReportInfo.readSource = paramString5;
+    report(paramString1, localReportInfo, paramBoolean);
   }
   
-  public static void startReportImediately(String paramString, bjdn parambjdn)
+  public static void startReportImediately(String paramString, QZoneClickReport.ReportInfo paramReportInfo)
   {
-    if ((getLong(paramString, 0L) <= 0L) || (parambjdn == null)) {
-      return;
-    }
-    try
+    if (getLong(paramString, 0L) > 0L)
     {
-      paramString = new LpReportInfo_pf00064();
-      paramString.extraInfo = parambjdn.a().toString();
-      LpReportManager.getInstance().reportToPF00064(paramString, false, true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QZoneClickReport", 1, paramString, new Object[0]);
+      if (paramReportInfo == null) {
+        return;
+      }
+      try
+      {
+        paramString = new LpReportInfo_pf00064();
+        paramString.extraInfo = paramReportInfo.toJSON().toString();
+        LpReportManager.getInstance().reportToPF00064(paramString, false, true);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("QZoneClickReport", 1, paramString, new Object[0]);
+      }
     }
   }
   
@@ -98,17 +110,17 @@ public class QZoneClickReport
     long l = getLong(paramString1, 0L);
     if (l > 0L)
     {
-      bjdn localbjdn = new bjdn();
-      localbjdn.a(paramString2);
-      localbjdn.a(l);
-      localbjdn.b(paramString3);
-      startReportImediately(paramString1, localbjdn);
+      QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+      localReportInfo.setActionType(paramString2);
+      localReportInfo.setToUin(l);
+      localReportInfo.setSubactionType(paramString3);
+      startReportImediately(paramString1, localReportInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneClickReport
  * JD-Core Version:    0.7.0.1
  */

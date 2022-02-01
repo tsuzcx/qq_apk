@@ -9,8 +9,8 @@ public final class AcsPullMsgReq
 {
   static AcsHead cache_head = new AcsHead();
   public String day = "";
-  public AcsHead head;
-  public long uin;
+  public AcsHead head = null;
+  public long uin = 0L;
   
   public AcsPullMsgReq() {}
   
@@ -30,18 +30,20 @@ public final class AcsPullMsgReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.head != null) {
-      paramJceOutputStream.write(this.head, 0);
+    Object localObject = this.head;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.day != null) {
-      paramJceOutputStream.write(this.day, 2);
+    localObject = this.day;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsPullMsgReq
  * JD-Core Version:    0.7.0.1
  */

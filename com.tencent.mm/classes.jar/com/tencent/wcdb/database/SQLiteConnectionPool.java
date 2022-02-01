@@ -31,7 +31,7 @@ public final class SQLiteConnectionPool
   private static final long CONNECTION_POOL_BUSY_MILLIS = 3000L;
   private static final int OPEN_FLAG_REOPEN_MASK = 268435473;
   private static final String TAG = "WCDB.SQLiteConnectionPool";
-  private final WeakHashMap<SQLiteConnection, AcquiredConnectionStatus> mAcquiredConnections;
+  private final WeakHashMap<SQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus> mAcquiredConnections;
   private final ArrayList<SQLiteConnection> mAvailableNonPrimaryConnections;
   private SQLiteConnection mAvailablePrimaryConnection;
   private volatile SQLiteChangeListener mChangeListener;
@@ -51,19 +51,19 @@ public final class SQLiteConnectionPool
   
   static
   {
-    AppMethodBeat.i(12404);
+    AppMethodBeat.i(3088);
     if (!SQLiteConnectionPool.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(12404);
+      AppMethodBeat.o(3088);
       return;
     }
   }
   
   private SQLiteConnectionPool(SQLiteDatabase paramSQLiteDatabase, SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, int paramInt)
   {
-    AppMethodBeat.i(12362);
+    AppMethodBeat.i(3045);
     this.mLock = new Object();
     this.mConnectionLeaked = new AtomicBoolean();
     this.mAvailableNonPrimaryConnections = new ArrayList();
@@ -71,15 +71,15 @@ public final class SQLiteConnectionPool
     this.mDB = new WeakReference(paramSQLiteDatabase);
     this.mConfiguration = new SQLiteDatabaseConfiguration(paramSQLiteDatabaseConfiguration);
     setMaxConnectionPoolSizeLocked(paramInt);
-    AppMethodBeat.o(12362);
+    AppMethodBeat.o(3045);
   }
   
   private void cancelConnectionWaiterLocked(ConnectionWaiter paramConnectionWaiter)
   {
-    AppMethodBeat.i(12385);
+    AppMethodBeat.i(3068);
     if ((paramConnectionWaiter.mAssignedConnection != null) || (paramConnectionWaiter.mException != null))
     {
-      AppMethodBeat.o(12385);
+      AppMethodBeat.o(3068);
       return;
     }
     Object localObject1 = this.mConnectionWaiterQueue;
@@ -89,7 +89,7 @@ public final class SQLiteConnectionPool
       if ((!$assertionsDisabled) && (localObject1 == null))
       {
         paramConnectionWaiter = new AssertionError();
-        AppMethodBeat.o(12385);
+        AppMethodBeat.o(3068);
         throw paramConnectionWaiter;
       }
       ConnectionWaiter localConnectionWaiter = ((ConnectionWaiter)localObject1).mNext;
@@ -104,7 +104,7 @@ public final class SQLiteConnectionPool
       paramConnectionWaiter.mException = new OperationCanceledException();
       LockSupport.unpark(paramConnectionWaiter.mThread);
       wakeConnectionWaitersLocked();
-      AppMethodBeat.o(12385);
+      AppMethodBeat.o(3068);
       return;
       this.mConnectionWaiterQueue = paramConnectionWaiter.mNext;
     }
@@ -112,19 +112,19 @@ public final class SQLiteConnectionPool
   
   private void closeAvailableConnectionsAndLogExceptionsLocked()
   {
-    AppMethodBeat.i(12377);
+    AppMethodBeat.i(3060);
     closeAvailableNonPrimaryConnectionsAndLogExceptionsLocked();
     if (this.mAvailablePrimaryConnection != null)
     {
       closeConnectionAndLogExceptionsLocked(this.mAvailablePrimaryConnection);
       this.mAvailablePrimaryConnection = null;
     }
-    AppMethodBeat.o(12377);
+    AppMethodBeat.o(3060);
   }
   
   private void closeAvailableNonPrimaryConnectionsAndLogExceptionsLocked()
   {
-    AppMethodBeat.i(12378);
+    AppMethodBeat.i(3061);
     int j = this.mAvailableNonPrimaryConnections.size();
     int i = 0;
     while (i < j)
@@ -133,28 +133,28 @@ public final class SQLiteConnectionPool
       i += 1;
     }
     this.mAvailableNonPrimaryConnections.clear();
-    AppMethodBeat.o(12378);
+    AppMethodBeat.o(3061);
   }
   
   private void closeConnectionAndLogExceptionsLocked(SQLiteConnection paramSQLiteConnection)
   {
-    AppMethodBeat.i(12380);
+    AppMethodBeat.i(3063);
     try
     {
       paramSQLiteConnection.close();
-      AppMethodBeat.o(12380);
+      AppMethodBeat.o(3063);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
       Log.e("WCDB.SQLiteConnectionPool", "Failed to close connection, its fate is now in the hands of the merciful GC: " + paramSQLiteConnection + localRuntimeException.getMessage());
-      AppMethodBeat.o(12380);
+      AppMethodBeat.o(3063);
     }
   }
   
   private void closeExcessConnectionsAndLogExceptionsLocked()
   {
-    AppMethodBeat.i(12379);
+    AppMethodBeat.i(3062);
     int j;
     for (int i = this.mAvailableNonPrimaryConnections.size();; i = j)
     {
@@ -164,19 +164,19 @@ public final class SQLiteConnectionPool
       }
       closeConnectionAndLogExceptionsLocked((SQLiteConnection)this.mAvailableNonPrimaryConnections.remove(j));
     }
-    AppMethodBeat.o(12379);
+    AppMethodBeat.o(3062);
   }
   
   private void discardAcquiredConnectionsLocked()
   {
-    AppMethodBeat.i(12381);
-    markAcquiredConnectionsLocked(AcquiredConnectionStatus.DISCARD);
-    AppMethodBeat.o(12381);
+    AppMethodBeat.i(3064);
+    markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD);
+    AppMethodBeat.o(3064);
   }
   
   private void dispose(boolean paramBoolean)
   {
-    AppMethodBeat.i(12368);
+    AppMethodBeat.i(3051);
     if (!paramBoolean) {
       synchronized (this.mLock)
       {
@@ -188,30 +188,30 @@ public final class SQLiteConnectionPool
           Log.i("WCDB.SQLiteConnectionPool", "The connection pool for " + this.mConfiguration.label + " has been closed but there are still " + i + " connections in use.  They will be closed as they are released back to the pool.");
         }
         wakeConnectionWaitersLocked();
-        AppMethodBeat.o(12368);
+        AppMethodBeat.o(3051);
         return;
       }
     }
-    AppMethodBeat.o(12368);
+    AppMethodBeat.o(3051);
   }
   
   private void finishAcquireConnectionLocked(SQLiteConnection paramSQLiteConnection, int paramInt)
   {
-    AppMethodBeat.i(12391);
+    AppMethodBeat.i(3074);
     if ((paramInt & 0x1) != 0) {}
     for (boolean bool = true;; bool = false) {
       try
       {
         paramSQLiteConnection.setOnlyAllowReadOnlyOperations(bool);
-        this.mAcquiredConnections.put(paramSQLiteConnection, AcquiredConnectionStatus.NORMAL);
-        AppMethodBeat.o(12391);
+        this.mAcquiredConnections.put(paramSQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus.NORMAL);
+        AppMethodBeat.o(3074);
         return;
       }
       catch (RuntimeException localRuntimeException)
       {
         Log.e("WCDB.SQLiteConnectionPool", "Failed to prepare acquired connection for session, closing it: " + paramSQLiteConnection + ", connectionFlags=" + paramInt);
         closeConnectionAndLogExceptionsLocked(paramSQLiteConnection);
-        AppMethodBeat.o(12391);
+        AppMethodBeat.o(3074);
         throw localRuntimeException;
       }
     }
@@ -219,7 +219,7 @@ public final class SQLiteConnectionPool
   
   private ConnectionPoolBusyInfo gatherConnectionPoolBusyInfoLocked()
   {
-    AppMethodBeat.i(12387);
+    AppMethodBeat.i(3070);
     ConnectionPoolBusyInfo localConnectionPoolBusyInfo = new ConnectionPoolBusyInfo(null);
     localConnectionPoolBusyInfo.activeConnections = 0;
     localConnectionPoolBusyInfo.idleConnections = 0;
@@ -253,7 +253,7 @@ public final class SQLiteConnectionPool
     if (this.mAvailablePrimaryConnection != null) {
       localConnectionPoolBusyInfo.availableConnections += 1;
     }
-    AppMethodBeat.o(12387);
+    AppMethodBeat.o(3070);
     return localConnectionPoolBusyInfo;
   }
   
@@ -267,7 +267,7 @@ public final class SQLiteConnectionPool
   
   private boolean isSessionBlockingImportantConnectionWaitersLocked(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(12392);
+    AppMethodBeat.i(3075);
     Object localObject = this.mConnectionWaiterQueue;
     if (localObject != null)
     {
@@ -280,20 +280,20 @@ public final class SQLiteConnectionPool
         }
         if ((paramBoolean) || (!((ConnectionWaiter)localObject).mWantPrimaryConnection))
         {
-          AppMethodBeat.o(12392);
+          AppMethodBeat.o(3075);
           return true;
         }
         localConnectionWaiter = ((ConnectionWaiter)localObject).mNext;
         localObject = localConnectionWaiter;
       } while (localConnectionWaiter != null);
     }
-    AppMethodBeat.o(12392);
+    AppMethodBeat.o(3075);
     return false;
   }
   
   private void logConnectionPoolBusy(ConnectionPoolBusyInfo paramConnectionPoolBusyInfo, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(12386);
+    AppMethodBeat.i(3069);
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject;
     if (paramLong != 0L)
@@ -319,12 +319,12 @@ public final class SQLiteConnectionPool
       }
     }
     Log.w("WCDB.SQLiteConnectionPool", localStringBuilder.toString());
-    AppMethodBeat.o(12386);
+    AppMethodBeat.o(3069);
   }
   
-  private void markAcquiredConnectionsLocked(AcquiredConnectionStatus paramAcquiredConnectionStatus)
+  private void markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus paramAcquiredConnectionStatus)
   {
-    AppMethodBeat.i(12383);
+    AppMethodBeat.i(3066);
     if (!this.mAcquiredConnections.isEmpty())
     {
       ArrayList localArrayList = new ArrayList(this.mAcquiredConnections.size());
@@ -332,8 +332,8 @@ public final class SQLiteConnectionPool
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        AcquiredConnectionStatus localAcquiredConnectionStatus = (AcquiredConnectionStatus)localEntry.getValue();
-        if ((paramAcquiredConnectionStatus != localAcquiredConnectionStatus) && (localAcquiredConnectionStatus != AcquiredConnectionStatus.DISCARD)) {
+        SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus = (SQLiteConnectionPool.AcquiredConnectionStatus)localEntry.getValue();
+        if ((paramAcquiredConnectionStatus != localAcquiredConnectionStatus) && (localAcquiredConnectionStatus != SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD)) {
           localArrayList.add(localEntry.getKey());
         }
       }
@@ -345,12 +345,12 @@ public final class SQLiteConnectionPool
         i += 1;
       }
     }
-    AppMethodBeat.o(12383);
+    AppMethodBeat.o(3066);
   }
   
   private ConnectionWaiter obtainConnectionWaiterLocked(Thread paramThread, long paramLong, int paramInt1, boolean paramBoolean, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(12395);
+    AppMethodBeat.i(3078);
     ConnectionWaiter localConnectionWaiter = this.mConnectionWaiterPool;
     if (localConnectionWaiter != null)
     {
@@ -365,7 +365,7 @@ public final class SQLiteConnectionPool
       localConnectionWaiter.mWantPrimaryConnection = paramBoolean;
       localConnectionWaiter.mSql = paramString;
       localConnectionWaiter.mConnectionFlags = paramInt2;
-      AppMethodBeat.o(12395);
+      AppMethodBeat.o(3078);
       return localConnectionWaiter;
       localConnectionWaiter = new ConnectionWaiter(null);
     }
@@ -373,19 +373,19 @@ public final class SQLiteConnectionPool
   
   public static SQLiteConnectionPool open(SQLiteDatabase paramSQLiteDatabase, SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    AppMethodBeat.i(12364);
+    AppMethodBeat.i(3047);
     paramSQLiteDatabase = open(paramSQLiteDatabase, paramSQLiteDatabaseConfiguration, paramArrayOfByte, paramSQLiteCipherSpec, 1);
-    AppMethodBeat.o(12364);
+    AppMethodBeat.o(3047);
     return paramSQLiteDatabase;
   }
   
   public static SQLiteConnectionPool open(SQLiteDatabase paramSQLiteDatabase, SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, int paramInt)
   {
-    AppMethodBeat.i(12365);
+    AppMethodBeat.i(3048);
     if (paramSQLiteDatabaseConfiguration == null)
     {
       paramSQLiteDatabase = new IllegalArgumentException("configuration must not be null.");
-      AppMethodBeat.o(12365);
+      AppMethodBeat.o(3048);
       throw paramSQLiteDatabase;
     }
     paramSQLiteDatabaseConfiguration = new SQLiteConnectionPool(paramSQLiteDatabase, paramSQLiteDatabaseConfiguration, paramInt);
@@ -395,32 +395,32 @@ public final class SQLiteConnectionPool
     {
       paramSQLiteDatabaseConfiguration.mCipher = paramSQLiteDatabase;
       paramSQLiteDatabaseConfiguration.open();
-      AppMethodBeat.o(12365);
+      AppMethodBeat.o(3048);
       return paramSQLiteDatabaseConfiguration;
     }
   }
   
   private void open()
   {
-    AppMethodBeat.i(12366);
+    AppMethodBeat.i(3049);
     this.mAvailablePrimaryConnection = openConnectionLocked(this.mConfiguration, true);
     this.mIsOpen = true;
-    AppMethodBeat.o(12366);
+    AppMethodBeat.o(3049);
   }
   
   private SQLiteConnection openConnectionLocked(SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration, boolean paramBoolean)
   {
-    AppMethodBeat.i(12375);
+    AppMethodBeat.i(3058);
     int i = this.mNextConnectionId;
     this.mNextConnectionId = (i + 1);
     paramSQLiteDatabaseConfiguration = SQLiteConnection.open(this, paramSQLiteDatabaseConfiguration, i, paramBoolean, this.mPassword, this.mCipher);
-    AppMethodBeat.o(12375);
+    AppMethodBeat.o(3058);
     return paramSQLiteDatabaseConfiguration;
   }
   
   private void reconfigureAllConnectionsLocked()
   {
-    AppMethodBeat.i(12382);
+    AppMethodBeat.i(3065);
     if (this.mAvailablePrimaryConnection != null) {}
     try
     {
@@ -460,16 +460,16 @@ public final class SQLiteConnectionPool
           int i = k;
         }
       }
-      markAcquiredConnectionsLocked(AcquiredConnectionStatus.RECONFIGURE);
-      AppMethodBeat.o(12382);
+      markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus.RECONFIGURE);
+      AppMethodBeat.o(3065);
     }
   }
   
-  private boolean recycleConnectionLocked(SQLiteConnection paramSQLiteConnection, AcquiredConnectionStatus paramAcquiredConnectionStatus)
+  private boolean recycleConnectionLocked(SQLiteConnection paramSQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus paramAcquiredConnectionStatus)
   {
-    AppMethodBeat.i(12372);
-    AcquiredConnectionStatus localAcquiredConnectionStatus = paramAcquiredConnectionStatus;
-    if (paramAcquiredConnectionStatus == AcquiredConnectionStatus.RECONFIGURE) {}
+    AppMethodBeat.i(3055);
+    SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus = paramAcquiredConnectionStatus;
+    if (paramAcquiredConnectionStatus == SQLiteConnectionPool.AcquiredConnectionStatus.RECONFIGURE) {}
     try
     {
       paramSQLiteConnection.reconfigure(this.mConfiguration);
@@ -480,14 +480,14 @@ public final class SQLiteConnectionPool
       for (;;)
       {
         Log.e("WCDB.SQLiteConnectionPool", "Failed to reconfigure released connection, closing it: ".concat(String.valueOf(paramSQLiteConnection)), new Object[] { paramAcquiredConnectionStatus });
-        localAcquiredConnectionStatus = AcquiredConnectionStatus.DISCARD;
+        localAcquiredConnectionStatus = SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD;
       }
-      AppMethodBeat.o(12372);
+      AppMethodBeat.o(3055);
     }
-    if (localAcquiredConnectionStatus == AcquiredConnectionStatus.DISCARD)
+    if (localAcquiredConnectionStatus == SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD)
     {
       closeConnectionAndLogExceptionsLocked(paramSQLiteConnection);
-      AppMethodBeat.o(12372);
+      AppMethodBeat.o(3055);
       return false;
     }
     return true;
@@ -506,7 +506,7 @@ public final class SQLiteConnectionPool
   
   private void setMaxConnectionPoolSizeLocked(int paramInt)
   {
-    AppMethodBeat.i(12393);
+    AppMethodBeat.i(3076);
     int i = paramInt;
     if (paramInt <= 0) {
       if ((this.mConfiguration.openFlags & 0x20000000) == 0) {
@@ -518,26 +518,26 @@ public final class SQLiteConnectionPool
     {
       this.mMaxConnectionPoolSize = i;
       Log.i("WCDB.SQLiteConnectionPool", "Max connection pool size is %d.", new Object[] { Integer.valueOf(this.mMaxConnectionPoolSize) });
-      AppMethodBeat.o(12393);
+      AppMethodBeat.o(3076);
       return;
     }
   }
   
   private void throwIfClosedLocked()
   {
-    AppMethodBeat.i(12394);
+    AppMethodBeat.i(3077);
     if (!this.mIsOpen)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot perform this operation because the connection pool has been closed.");
-      AppMethodBeat.o(12394);
+      AppMethodBeat.o(3077);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(12394);
+    AppMethodBeat.o(3077);
   }
   
   private SQLiteConnection tryAcquireNonPrimaryConnectionLocked(String paramString, int paramInt)
   {
-    AppMethodBeat.i(12390);
+    AppMethodBeat.i(3073);
     int j = this.mAvailableNonPrimaryConnections.size();
     if ((j > 1) && (paramString != null))
     {
@@ -549,7 +549,7 @@ public final class SQLiteConnectionPool
         {
           this.mAvailableNonPrimaryConnections.remove(i);
           finishAcquireConnectionLocked(localSQLiteConnection, paramInt);
-          AppMethodBeat.o(12390);
+          AppMethodBeat.o(3073);
           return localSQLiteConnection;
         }
         i += 1;
@@ -559,7 +559,7 @@ public final class SQLiteConnectionPool
     {
       paramString = (SQLiteConnection)this.mAvailableNonPrimaryConnections.remove(j - 1);
       finishAcquireConnectionLocked(paramString, paramInt);
-      AppMethodBeat.o(12390);
+      AppMethodBeat.o(3073);
       return paramString;
     }
     j = this.mAcquiredConnections.size();
@@ -569,37 +569,37 @@ public final class SQLiteConnectionPool
     }
     if (i >= this.mMaxConnectionPoolSize)
     {
-      AppMethodBeat.o(12390);
+      AppMethodBeat.o(3073);
       return null;
     }
     paramString = openConnectionLocked(this.mConfiguration, false);
     finishAcquireConnectionLocked(paramString, paramInt);
-    AppMethodBeat.o(12390);
+    AppMethodBeat.o(3073);
     return paramString;
   }
   
   private SQLiteConnection tryAcquirePrimaryConnectionLocked(int paramInt)
   {
-    AppMethodBeat.i(12389);
+    AppMethodBeat.i(3072);
     Object localObject = this.mAvailablePrimaryConnection;
     if (localObject != null)
     {
       this.mAvailablePrimaryConnection = null;
       finishAcquireConnectionLocked((SQLiteConnection)localObject, paramInt);
-      AppMethodBeat.o(12389);
+      AppMethodBeat.o(3072);
       return localObject;
     }
     localObject = this.mAcquiredConnections.keySet().iterator();
     while (((Iterator)localObject).hasNext()) {
       if (((SQLiteConnection)((Iterator)localObject).next()).isPrimaryConnection())
       {
-        AppMethodBeat.o(12389);
+        AppMethodBeat.o(3072);
         return null;
       }
     }
     localObject = openConnectionLocked(this.mConfiguration, true);
     finishAcquireConnectionLocked((SQLiteConnection)localObject, paramInt);
-    AppMethodBeat.o(12389);
+    AppMethodBeat.o(3072);
     return localObject;
   }
   
@@ -607,8 +607,8 @@ public final class SQLiteConnectionPool
   private SQLiteConnection waitForConnection(String paramString, int paramInt, CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12384
-    //   3: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 3067
+    //   3: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_2
     //   7: iconst_2
     //   8: iand
@@ -616,16 +616,16 @@ public final class SQLiteConnectionPool
     //   12: iconst_1
     //   13: istore 5
     //   15: aload_0
-    //   16: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   16: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   19: astore 16
     //   21: aload 16
     //   23: monitorenter
     //   24: aload_0
-    //   25: invokespecial 241	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
+    //   25: invokespecial 240	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
     //   28: aload_3
     //   29: ifnull +7 -> 36
     //   32: aload_3
-    //   33: invokevirtual 537	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
+    //   33: invokevirtual 536	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
     //   36: aconst_null
     //   37: astore 12
     //   39: iload 5
@@ -633,7 +633,7 @@ public final class SQLiteConnectionPool
     //   44: aload_0
     //   45: aload_1
     //   46: iload_2
-    //   47: invokespecial 539	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquireNonPrimaryConnectionLocked	(Ljava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   47: invokespecial 538	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquireNonPrimaryConnectionLocked	(Ljava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnection;
     //   50: astore 12
     //   52: aload 12
     //   54: astore 13
@@ -641,35 +641,35 @@ public final class SQLiteConnectionPool
     //   58: ifnonnull +10 -> 68
     //   61: aload_0
     //   62: iload_2
-    //   63: invokespecial 541	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquirePrimaryConnectionLocked	(I)Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   63: invokespecial 540	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquirePrimaryConnectionLocked	(I)Lcom/tencent/wcdb/database/SQLiteConnection;
     //   66: astore 13
     //   68: aload 13
     //   70: ifnull +21 -> 91
     //   73: aload 16
     //   75: monitorexit
-    //   76: sipush 12384
-    //   79: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: sipush 3067
+    //   79: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aload 13
     //   84: areturn
     //   85: iconst_0
     //   86: istore 5
     //   88: goto -73 -> 15
     //   91: iload_2
-    //   92: invokestatic 341	com/tencent/wcdb/database/SQLiteConnectionPool:getPriority	(I)I
+    //   92: invokestatic 340	com/tencent/wcdb/database/SQLiteConnectionPool:getPriority	(I)I
     //   95: istore 4
-    //   97: invokestatic 546	android/os/SystemClock:uptimeMillis	()J
+    //   97: invokestatic 545	android/os/SystemClock:uptimeMillis	()J
     //   100: lstore 6
     //   102: aload_0
-    //   103: invokestatic 356	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   103: invokestatic 355	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   106: lload 6
     //   108: iload 4
     //   110: iload 5
     //   112: aload_1
     //   113: iload_2
-    //   114: invokespecial 548	com/tencent/wcdb/database/SQLiteConnectionPool:obtainConnectionWaiterLocked	(Ljava/lang/Thread;JIZLjava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   114: invokespecial 547	com/tencent/wcdb/database/SQLiteConnectionPool:obtainConnectionWaiterLocked	(Ljava/lang/Thread;JIZLjava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   117: astore 15
     //   119: aload_0
-    //   120: getfield 144	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   120: getfield 143	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   123: astore 12
     //   125: aconst_null
     //   126: astore 13
@@ -677,18 +677,18 @@ public final class SQLiteConnectionPool
     //   130: ifnull +20 -> 150
     //   133: iload 4
     //   135: aload 12
-    //   137: getfield 344	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mPriority	I
+    //   137: getfield 343	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mPriority	I
     //   140: if_icmple +178 -> 318
     //   143: aload 15
     //   145: aload 12
-    //   147: putfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   147: putfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   150: aload 13
     //   152: ifnull +184 -> 336
     //   155: aload 13
     //   157: aload 15
-    //   159: putfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   159: putfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   162: aload 15
-    //   164: getfield 501	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNonce	I
+    //   164: getfield 500	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNonce	I
     //   167: istore 4
     //   169: aload 16
     //   171: monitorexit
@@ -700,48 +700,48 @@ public final class SQLiteConnectionPool
     //   181: aload_0
     //   182: aload 15
     //   184: iload 4
-    //   186: invokespecial 551	com/tencent/wcdb/database/SQLiteConnectionPool$1:<init>	(Lcom/tencent/wcdb/database/SQLiteConnectionPool;Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;I)V
-    //   189: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
-    //   192: ldc2_w 29
+    //   186: invokespecial 550	com/tencent/wcdb/database/SQLiteConnectionPool$1:<init>	(Lcom/tencent/wcdb/database/SQLiteConnectionPool;Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;I)V
+    //   189: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   192: ldc2_w 28
     //   195: lstore 6
     //   197: aload 15
-    //   199: getfield 432	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
-    //   202: ldc2_w 29
+    //   199: getfield 431	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
+    //   202: ldc2_w 28
     //   205: ladd
     //   206: lstore 8
     //   208: aload_0
-    //   209: getfield 100	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionLeaked	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   209: getfield 99	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionLeaked	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   212: iconst_1
     //   213: iconst_0
-    //   214: invokevirtual 559	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   214: invokevirtual 558	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   217: ifeq +19 -> 236
     //   220: aload_0
-    //   221: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   221: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   224: astore 12
     //   226: aload 12
     //   228: monitorenter
     //   229: aload_0
-    //   230: invokespecial 166	com/tencent/wcdb/database/SQLiteConnectionPool:wakeConnectionWaitersLocked	()V
+    //   230: invokespecial 165	com/tencent/wcdb/database/SQLiteConnectionPool:wakeConnectionWaitersLocked	()V
     //   233: aload 12
     //   235: monitorexit
-    //   236: ldc2_w 560
+    //   236: ldc2_w 559
     //   239: lload 6
     //   241: lmul
-    //   242: invokestatic 565	java/util/concurrent/locks/LockSupport:parkNanos	(J)V
-    //   245: invokestatic 568	java/lang/Thread:interrupted	()Z
+    //   242: invokestatic 564	java/util/concurrent/locks/LockSupport:parkNanos	(J)V
+    //   245: invokestatic 567	java/lang/Thread:interrupted	()Z
     //   248: pop
     //   249: aload_0
-    //   250: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   250: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   253: astore 13
     //   255: aload 13
     //   257: monitorenter
     //   258: aload_0
-    //   259: invokespecial 241	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
+    //   259: invokespecial 240	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
     //   262: aload 15
-    //   264: getfield 138	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mAssignedConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   264: getfield 137	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mAssignedConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
     //   267: astore 12
     //   269: aload 15
-    //   271: getfield 142	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mException	Ljava/lang/RuntimeException;
+    //   271: getfield 141	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mException	Ljava/lang/RuntimeException;
     //   274: astore 14
     //   276: aload 12
     //   278: ifnonnull +8 -> 286
@@ -749,7 +749,7 @@ public final class SQLiteConnectionPool
     //   283: ifnull +125 -> 408
     //   286: aload_0
     //   287: aload 15
-    //   289: invokespecial 570	com/tencent/wcdb/database/SQLiteConnectionPool:recycleConnectionWaiterLocked	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;)V
+    //   289: invokespecial 569	com/tencent/wcdb/database/SQLiteConnectionPool:recycleConnectionWaiterLocked	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;)V
     //   292: aload 12
     //   294: ifnull +93 -> 387
     //   297: aload 13
@@ -758,13 +758,13 @@ public final class SQLiteConnectionPool
     //   301: ifnull +8 -> 309
     //   304: aload_3
     //   305: aconst_null
-    //   306: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
-    //   309: sipush 12384
-    //   312: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   306: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   309: sipush 3067
+    //   312: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: aload 12
     //   317: areturn
     //   318: aload 12
-    //   320: getfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   320: getfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   323: astore 14
     //   325: aload 12
     //   327: astore 13
@@ -773,20 +773,20 @@ public final class SQLiteConnectionPool
     //   333: goto -205 -> 128
     //   336: aload_0
     //   337: aload 15
-    //   339: putfield 144	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   339: putfield 143	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   342: goto -180 -> 162
     //   345: astore_1
     //   346: aload 16
     //   348: monitorexit
-    //   349: sipush 12384
-    //   352: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   349: sipush 3067
+    //   352: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   355: aload_1
     //   356: athrow
     //   357: astore_1
     //   358: aload 12
     //   360: monitorexit
-    //   361: sipush 12384
-    //   364: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   361: sipush 3067
+    //   364: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   367: aload_1
     //   368: athrow
     //   369: astore_1
@@ -794,23 +794,23 @@ public final class SQLiteConnectionPool
     //   371: ifnull +8 -> 379
     //   374: aload_3
     //   375: aconst_null
-    //   376: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
-    //   379: sipush 12384
-    //   382: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   376: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   379: sipush 3067
+    //   382: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   385: aload_1
     //   386: athrow
-    //   387: sipush 12384
-    //   390: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   387: sipush 3067
+    //   390: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   393: aload 14
     //   395: athrow
     //   396: astore_1
     //   397: aload 13
     //   399: monitorexit
-    //   400: sipush 12384
-    //   403: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   400: sipush 3067
+    //   403: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   406: aload_1
     //   407: athrow
-    //   408: invokestatic 546	android/os/SystemClock:uptimeMillis	()J
+    //   408: invokestatic 545	android/os/SystemClock:uptimeMillis	()J
     //   411: lstore 10
     //   413: lload 10
     //   415: lload 8
@@ -828,21 +828,21 @@ public final class SQLiteConnectionPool
     //   436: ifnull +74 -> 510
     //   439: lload 10
     //   441: aload 15
-    //   443: getfield 432	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
+    //   443: getfield 431	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
     //   446: lsub
     //   447: lstore 10
     //   449: aload_0
     //   450: aload 12
     //   452: lload 10
     //   454: iload_2
-    //   455: invokespecial 572	com/tencent/wcdb/database/SQLiteConnectionPool:logConnectionPoolBusy	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;JI)V
+    //   455: invokespecial 571	com/tencent/wcdb/database/SQLiteConnectionPool:logConnectionPoolBusy	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;JI)V
     //   458: aload_0
-    //   459: getfield 117	com/tencent/wcdb/database/SQLiteConnectionPool:mDB	Ljava/lang/ref/WeakReference;
-    //   462: invokevirtual 574	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   465: checkcast 576	com/tencent/wcdb/database/SQLiteDatabase
+    //   459: getfield 116	com/tencent/wcdb/database/SQLiteConnectionPool:mDB	Ljava/lang/ref/WeakReference;
+    //   462: invokevirtual 573	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   465: checkcast 575	com/tencent/wcdb/database/SQLiteDatabase
     //   468: astore 13
     //   470: aload_0
-    //   471: getfield 578	com/tencent/wcdb/database/SQLiteConnectionPool:mTraceCallback	Lcom/tencent/wcdb/database/SQLiteTrace;
+    //   471: getfield 577	com/tencent/wcdb/database/SQLiteConnectionPool:mTraceCallback	Lcom/tencent/wcdb/database/SQLiteTrace;
     //   474: astore 14
     //   476: aload 13
     //   478: ifnull +32 -> 510
@@ -854,17 +854,17 @@ public final class SQLiteConnectionPool
     //   491: lload 10
     //   493: iload 5
     //   495: aload 12
-    //   497: getfield 326	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeSql	Ljava/util/ArrayList;
+    //   497: getfield 325	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeSql	Ljava/util/ArrayList;
     //   500: aload 12
-    //   502: getfield 316	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeTransactions	Ljava/util/ArrayList;
-    //   505: invokeinterface 584 8 0
+    //   502: getfield 315	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeTransactions	Ljava/util/ArrayList;
+    //   505: invokeinterface 583 8 0
     //   510: goto -302 -> 208
     //   513: aload_0
-    //   514: invokespecial 586	com/tencent/wcdb/database/SQLiteConnectionPool:gatherConnectionPoolBusyInfoLocked	()Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;
+    //   514: invokespecial 585	com/tencent/wcdb/database/SQLiteConnectionPool:gatherConnectionPoolBusyInfoLocked	()Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;
     //   517: astore 12
-    //   519: ldc2_w 29
+    //   519: ldc2_w 28
     //   522: lstore 6
-    //   524: ldc2_w 29
+    //   524: ldc2_w 28
     //   527: lload 10
     //   529: ladd
     //   530: lstore 8
@@ -896,21 +896,18 @@ public final class SQLiteConnectionPool
     //   162	172	345	finally
     //   318	325	345	finally
     //   336	342	345	finally
-    //   346	349	345	finally
     //   229	236	357	finally
-    //   358	361	357	finally
     //   197	208	369	finally
     //   208	229	369	finally
     //   236	258	369	finally
-    //   361	369	369	finally
-    //   400	408	369	finally
+    //   358	369	369	finally
+    //   397	408	369	finally
     //   439	476	369	finally
     //   486	510	369	finally
     //   258	276	396	finally
     //   286	292	396	finally
     //   297	300	396	finally
     //   387	396	396	finally
-    //   397	400	396	finally
     //   408	413	396	finally
     //   431	434	396	finally
     //   513	519	396	finally
@@ -918,7 +915,7 @@ public final class SQLiteConnectionPool
   
   private void wakeConnectionWaitersLocked()
   {
-    AppMethodBeat.i(12388);
+    AppMethodBeat.i(3071);
     Object localObject1 = this.mConnectionWaiterQueue;
     int j = 0;
     int i = 0;
@@ -1003,7 +1000,7 @@ public final class SQLiteConnectionPool
         }
         if ((j != 0) && (k != 0))
         {
-          AppMethodBeat.o(12388);
+          AppMethodBeat.o(3071);
           return;
         }
         i = 0;
@@ -1021,7 +1018,7 @@ public final class SQLiteConnectionPool
       label267:
       localObject4 = localObject1;
       break label76;
-      AppMethodBeat.o(12388);
+      AppMethodBeat.o(3071);
       return;
       label281:
       Object localObject3 = null;
@@ -1030,7 +1027,7 @@ public final class SQLiteConnectionPool
   
   public final SQLiteConnection acquireConnection(String paramString, int paramInt, CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12370);
+    AppMethodBeat.i(3053);
     long l1 = SystemClock.uptimeMillis();
     paramCancellationSignal = waitForConnection(paramString, paramInt, paramCancellationSignal);
     SQLiteTrace localSQLiteTrace = this.mTraceCallback;
@@ -1050,21 +1047,21 @@ public final class SQLiteConnectionPool
     for (boolean bool = true;; bool = false)
     {
       localSQLiteTrace.onConnectionObtained(localSQLiteDatabase, paramString, l2 - l1, bool);
-      AppMethodBeat.o(12370);
+      AppMethodBeat.o(3053);
       return paramCancellationSignal;
     }
   }
   
   public final void close()
   {
-    AppMethodBeat.i(12367);
+    AppMethodBeat.i(3050);
     dispose(false);
-    AppMethodBeat.o(12367);
+    AppMethodBeat.o(3050);
   }
   
   public final void collectDbStats(ArrayList<SQLiteDebug.DbStats> paramArrayList)
   {
-    AppMethodBeat.i(12374);
+    AppMethodBeat.i(3057);
     synchronized (this.mLock)
     {
       if (this.mAvailablePrimaryConnection != null) {
@@ -1079,12 +1076,12 @@ public final class SQLiteConnectionPool
     while (localIterator.hasNext()) {
       ((SQLiteConnection)localIterator.next()).collectDbStatsUnsafe(paramArrayList);
     }
-    AppMethodBeat.o(12374);
+    AppMethodBeat.o(3057);
   }
   
   final void dump(Printer paramPrinter, boolean paramBoolean)
   {
-    AppMethodBeat.i(12401);
+    AppMethodBeat.i(3084);
     Printer localPrinter = PrefixPrinter.create(paramPrinter, "    ");
     int i;
     synchronized (this.mLock)
@@ -1140,12 +1137,12 @@ public final class SQLiteConnectionPool
       }
     }
     localPrinter.println("<none>");
-    AppMethodBeat.o(12401);
+    AppMethodBeat.o(3084);
   }
   
   final JSONObject dumpJSON(boolean paramBoolean)
   {
-    AppMethodBeat.i(141577);
+    AppMethodBeat.i(3085);
     JSONArray localJSONArray2;
     JSONObject localJSONObject;
     Object localObject4;
@@ -1164,20 +1161,20 @@ public final class SQLiteConnectionPool
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (Map.Entry)((Iterator)localObject3).next();
-      localObject1.put(((SQLiteConnection)((Map.Entry)localObject4).getKey()).dumpJSON(paramBoolean).put("status", ((AcquiredConnectionStatus)((Map.Entry)localObject4).getValue()).toString()));
+      localObject1.put(((SQLiteConnection)((Map.Entry)localObject4).getKey()).dumpJSON(paramBoolean).put("status", ((SQLiteConnectionPool.AcquiredConnectionStatus)((Map.Entry)localObject4).getValue()).toString()));
     }
     for (ConnectionWaiter localConnectionWaiter = this.mConnectionWaiterQueue; localConnectionWaiter != null; localConnectionWaiter = localConnectionWaiter.mNext)
     {
       long l = SystemClock.uptimeMillis();
       localJSONArray2.put(new JSONObject().put("duration", l - localConnectionWaiter.mStartTime).put("thread", localConnectionWaiter.mThread.toString()).put("priority", localConnectionWaiter.mPriority).put("sql", localConnectionWaiter.mSql));
     }
-    AppMethodBeat.o(141577);
+    AppMethodBeat.o(3085);
     return localJSONObject;
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(12363);
+    AppMethodBeat.i(3046);
     try
     {
       dispose(true);
@@ -1186,7 +1183,7 @@ public final class SQLiteConnectionPool
     finally
     {
       super.finalize();
-      AppMethodBeat.o(12363);
+      AppMethodBeat.o(3046);
     }
   }
   
@@ -1207,48 +1204,48 @@ public final class SQLiteConnectionPool
   
   final void notifyChanges(String paramString1, String paramString2, long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    AppMethodBeat.i(12397);
+    AppMethodBeat.i(3080);
     SQLiteDatabase localSQLiteDatabase = (SQLiteDatabase)this.mDB.get();
     SQLiteChangeListener localSQLiteChangeListener = this.mChangeListener;
     if ((localSQLiteChangeListener == null) || (localSQLiteDatabase == null))
     {
-      AppMethodBeat.o(12397);
+      AppMethodBeat.o(3080);
       return;
     }
     localSQLiteChangeListener.onChange(localSQLiteDatabase, paramString1, paramString2, paramArrayOfLong1, paramArrayOfLong2, paramArrayOfLong3);
-    AppMethodBeat.o(12397);
+    AppMethodBeat.o(3080);
   }
   
   final void notifyCheckpoint(String paramString, int paramInt)
   {
-    AppMethodBeat.i(12400);
+    AppMethodBeat.i(3083);
     SQLiteDatabase localSQLiteDatabase = (SQLiteDatabase)this.mDB.get();
     SQLiteCheckpointListener localSQLiteCheckpointListener = this.mCheckpointListener;
     if ((localSQLiteCheckpointListener == null) || (localSQLiteDatabase == null))
     {
-      AppMethodBeat.o(12400);
+      AppMethodBeat.o(3083);
       return;
     }
     localSQLiteCheckpointListener.onWALCommit(localSQLiteDatabase, paramString, paramInt);
-    AppMethodBeat.o(12400);
+    AppMethodBeat.o(3083);
   }
   
   final void onConnectionLeaked()
   {
-    AppMethodBeat.i(12376);
+    AppMethodBeat.i(3059);
     Log.w("WCDB.SQLiteConnectionPool", "A SQLiteConnection object for database '" + this.mConfiguration.label + "' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.");
     this.mConnectionLeaked.set(true);
-    AppMethodBeat.o(12376);
+    AppMethodBeat.o(3059);
   }
   
   public final void reconfigure(SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration)
   {
     int j = 1;
-    AppMethodBeat.i(12369);
+    AppMethodBeat.i(3052);
     if (paramSQLiteDatabaseConfiguration == null)
     {
       paramSQLiteDatabaseConfiguration = new IllegalArgumentException("configuration must not be null.");
-      AppMethodBeat.o(12369);
+      AppMethodBeat.o(3052);
       throw paramSQLiteDatabaseConfiguration;
     }
     int i;
@@ -1267,7 +1264,7 @@ public final class SQLiteConnectionPool
             break;
           }
           paramSQLiteDatabaseConfiguration = new IllegalStateException("Write Ahead Logging (WAL) mode cannot be enabled or disabled while there are transactions in progress.  Finish all transactions and release all active database connections first.");
-          AppMethodBeat.o(12369);
+          AppMethodBeat.o(3052);
           throw paramSQLiteDatabaseConfiguration;
         }
       }
@@ -1281,7 +1278,7 @@ public final class SQLiteConnectionPool
       if ((j != 0) && (!this.mAcquiredConnections.isEmpty()))
       {
         paramSQLiteDatabaseConfiguration = new IllegalStateException("Foreign Key Constraints cannot be enabled or disabled while there are transactions in progress.  Finish all transactions and release all active database connections first.");
-        AppMethodBeat.o(12369);
+        AppMethodBeat.o(3052);
         throw paramSQLiteDatabaseConfiguration;
       }
       if ((((this.mConfiguration.openFlags ^ paramSQLiteDatabaseConfiguration.openFlags) & 0x10000011) != 0) || (!DatabaseUtils.objectEquals(this.mConfiguration.vfsName, paramSQLiteDatabaseConfiguration.vfsName)) || (!paramSQLiteDatabaseConfiguration.extensions.containsAll(this.mConfiguration.extensions)))
@@ -1299,7 +1296,7 @@ public final class SQLiteConnectionPool
       for (;;)
       {
         wakeConnectionWaitersLocked();
-        AppMethodBeat.o(12369);
+        AppMethodBeat.o(3052);
         return;
         this.mConfiguration.updateParametersFrom(paramSQLiteDatabaseConfiguration);
         setMaxConnectionPoolSizeLocked(0);
@@ -1312,15 +1309,15 @@ public final class SQLiteConnectionPool
   
   public final void releaseConnection(SQLiteConnection paramSQLiteConnection)
   {
-    AppMethodBeat.i(12371);
-    AcquiredConnectionStatus localAcquiredConnectionStatus;
+    AppMethodBeat.i(3054);
+    SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus;
     synchronized (this.mLock)
     {
-      localAcquiredConnectionStatus = (AcquiredConnectionStatus)this.mAcquiredConnections.remove(paramSQLiteConnection);
+      localAcquiredConnectionStatus = (SQLiteConnectionPool.AcquiredConnectionStatus)this.mAcquiredConnections.remove(paramSQLiteConnection);
       if (localAcquiredConnectionStatus == null)
       {
         paramSQLiteConnection = new IllegalStateException("Cannot perform this operation because the specified connection was not acquired from this pool or has already been released.");
-        AppMethodBeat.o(12371);
+        AppMethodBeat.o(3054);
         throw paramSQLiteConnection;
       }
     }
@@ -1329,7 +1326,7 @@ public final class SQLiteConnectionPool
     }
     for (;;)
     {
-      AppMethodBeat.o(12371);
+      AppMethodBeat.o(3054);
       return;
       if (paramSQLiteConnection.isPrimaryConnection())
       {
@@ -1338,7 +1335,7 @@ public final class SQLiteConnectionPool
           if ((!$assertionsDisabled) && (this.mAvailablePrimaryConnection != null))
           {
             paramSQLiteConnection = new AssertionError();
-            AppMethodBeat.o(12371);
+            AppMethodBeat.o(3054);
             throw paramSQLiteConnection;
           }
           this.mAvailablePrimaryConnection = paramSQLiteConnection;
@@ -1361,7 +1358,7 @@ public final class SQLiteConnectionPool
   
   final void setChangeListener(SQLiteChangeListener paramSQLiteChangeListener, boolean paramBoolean)
   {
-    AppMethodBeat.i(12396);
+    AppMethodBeat.i(3079);
     boolean bool;
     if (paramSQLiteChangeListener != null) {
       bool = true;
@@ -1381,7 +1378,7 @@ public final class SQLiteConnectionPool
           reconfigureAllConnectionsLocked();
         }
         this.mChangeListener = paramSQLiteChangeListener;
-        AppMethodBeat.o(12396);
+        AppMethodBeat.o(3079);
         return;
         bool = false;
       }
@@ -1390,7 +1387,7 @@ public final class SQLiteConnectionPool
   
   final void setCheckpointListener(SQLiteCheckpointListener paramSQLiteCheckpointListener)
   {
-    AppMethodBeat.i(12399);
+    AppMethodBeat.i(3082);
     SQLiteDatabase localSQLiteDatabase = (SQLiteDatabase)this.mDB.get();
     if (this.mCheckpointListener != null) {
       this.mCheckpointListener.onDetach(localSQLiteDatabase);
@@ -1399,7 +1396,7 @@ public final class SQLiteConnectionPool
     if (this.mCheckpointListener != null) {
       this.mCheckpointListener.onAttach(localSQLiteDatabase);
     }
-    AppMethodBeat.o(12399);
+    AppMethodBeat.o(3082);
   }
   
   final void setTraceCallback(SQLiteTrace paramSQLiteTrace)
@@ -1409,61 +1406,46 @@ public final class SQLiteConnectionPool
   
   public final boolean shouldYieldConnection(SQLiteConnection paramSQLiteConnection, int paramInt)
   {
-    AppMethodBeat.i(12373);
+    AppMethodBeat.i(3056);
     synchronized (this.mLock)
     {
       if (!this.mAcquiredConnections.containsKey(paramSQLiteConnection))
       {
         paramSQLiteConnection = new IllegalStateException("Cannot perform this operation because the specified connection was not acquired from this pool or has already been released.");
-        AppMethodBeat.o(12373);
+        AppMethodBeat.o(3056);
         throw paramSQLiteConnection;
       }
     }
     if (!this.mIsOpen)
     {
-      AppMethodBeat.o(12373);
+      AppMethodBeat.o(3056);
       return false;
     }
     boolean bool = isSessionBlockingImportantConnectionWaitersLocked(paramSQLiteConnection.isPrimaryConnection(), paramInt);
-    AppMethodBeat.o(12373);
+    AppMethodBeat.o(3056);
     return bool;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(12402);
+    AppMethodBeat.i(3086);
     String str = "SQLiteConnectionPool: " + this.mConfiguration.path;
-    AppMethodBeat.o(12402);
+    AppMethodBeat.o(3086);
     return str;
   }
   
   final void traceExecute(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(12398);
+    AppMethodBeat.i(3081);
     SQLiteDatabase localSQLiteDatabase = (SQLiteDatabase)this.mDB.get();
     SQLiteTrace localSQLiteTrace = this.mTraceCallback;
     if ((localSQLiteTrace == null) || (localSQLiteDatabase == null))
     {
-      AppMethodBeat.o(12398);
+      AppMethodBeat.o(3081);
       return;
     }
     localSQLiteTrace.onSQLExecuted(localSQLiteDatabase, paramString, paramInt, paramLong);
-    AppMethodBeat.o(12398);
-  }
-  
-  static enum AcquiredConnectionStatus
-  {
-    static
-    {
-      AppMethodBeat.i(12360);
-      NORMAL = new AcquiredConnectionStatus("NORMAL", 0);
-      RECONFIGURE = new AcquiredConnectionStatus("RECONFIGURE", 1);
-      DISCARD = new AcquiredConnectionStatus("DISCARD", 2);
-      $VALUES = new AcquiredConnectionStatus[] { NORMAL, RECONFIGURE, DISCARD };
-      AppMethodBeat.o(12360);
-    }
-    
-    private AcquiredConnectionStatus() {}
+    AppMethodBeat.o(3081);
   }
   
   static class ConnectionPoolBusyInfo
@@ -1478,11 +1460,11 @@ public final class SQLiteConnectionPool
     
     private ConnectionPoolBusyInfo()
     {
-      AppMethodBeat.i(12361);
+      AppMethodBeat.i(3044);
       this.activeOperationDescriptions = new ArrayList();
       this.activeSql = new ArrayList();
       this.activeTransactions = new ArrayList();
-      AppMethodBeat.o(12361);
+      AppMethodBeat.o(3044);
     }
   }
   
@@ -1502,7 +1484,7 @@ public final class SQLiteConnectionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteConnectionPool
  * JD-Core Version:    0.7.0.1
  */

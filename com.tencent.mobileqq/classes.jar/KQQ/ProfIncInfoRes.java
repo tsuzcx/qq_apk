@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfIncInfoRes
   extends JceStruct
 {
-  public int uOnlineTime;
-  public int uRemainTime;
-  public short wLevel;
+  public int uOnlineTime = 0;
+  public int uRemainTime = 0;
+  public short wLevel = 0;
   
   public ProfIncInfoRes() {}
   
@@ -36,7 +36,7 @@ public final class ProfIncInfoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfIncInfoRes
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,8 @@
 package com.tencent.open.agent;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.net.NetworkInfo;
-import android.os.Build;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,237 +10,63 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aseh;
-import bety;
-import bfds;
-import bfgk;
-import bfgl;
-import bfqv;
-import bfrh;
-import bfrj;
-import bfrs;
-import bhta;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.auth.ContractBuilder;
+import com.tencent.open.agent.auth.ISelectPermissionContract.Presenter;
+import com.tencent.open.agent.auth.ISelectPermissionContract.View;
+import com.tencent.open.agent.util.AuthUIUtil;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.open.agent.util.SSOLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.ListView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.MobileQQ;
 
 public class OpenSelectPermissionFragment
-  extends PublicBaseFragment
-  implements View.OnClickListener
+  extends QPublicBaseFragment
+  implements View.OnClickListener, ISelectPermissionContract.View
 {
-  private long jdField_a_of_type_Long;
-  protected SharedPreferences a;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bety a;
-  private bfgl jdField_a_of_type_Bfgl;
-  private bfrj jdField_a_of_type_Bfrj;
-  private bfrs jdField_a_of_type_Bfrs = new bfgk(this);
-  private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  SystemBarCompact jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  protected SharedPreferences b;
-  private View jdField_b_of_type_AndroidViewView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private View jdField_d_of_type_AndroidViewView;
-  private long e;
+  private View a;
+  private View b;
+  private View c;
+  private ImageView d;
+  private QQProgressDialog e;
+  private ISelectPermissionContract.Presenter f;
+  private boolean g;
   
-  private List<bfds> a()
+  private boolean d()
   {
-    Object localObject = this.jdField_a_of_type_Bfrj.a(String.valueOf(this.jdField_a_of_type_Long));
-    if (localObject == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if (!NetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ))
     {
-      bfds localbfds1 = (bfds)((Iterator)localObject).next();
-      bfds localbfds2 = new bfds();
-      localbfds2.jdField_a_of_type_Int = localbfds1.jdField_a_of_type_Int;
-      if ((localbfds2.jdField_a_of_type_Int == 2) || (localbfds2.jdField_a_of_type_Int == 3))
-      {
-        localbfds2.jdField_b_of_type_JavaLangString = localbfds1.jdField_b_of_type_JavaLangString;
-        localbfds2.jdField_b_of_type_Int = localbfds1.jdField_b_of_type_Int;
-        localbfds2.jdField_a_of_type_Boolean = localbfds1.jdField_a_of_type_Boolean;
-        localbfds2.jdField_a_of_type_JavaLangString = localbfds1.jdField_a_of_type_JavaLangString;
-        if (localbfds2.jdField_a_of_type_Int == 2) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localbfds2.jdField_b_of_type_Boolean = bool;
-          localArrayList.add(localbfds2);
-          break;
-        }
-      }
+      AuthUIUtil.a(getQBaseActivity(), HardCodeUtil.a(2131892333), new OpenSelectPermissionFragment.1(this));
+      return false;
     }
-    return localArrayList;
+    return true;
   }
   
-  private void a(String paramString, boolean paramBoolean)
+  public void a()
   {
-    if (getActivity() == null)
-    {
-      QLog.e("OpenSelectPermissionFragment", 1, "showToast activity is null");
-      return;
-    }
-    bhta.a(new OpenSelectPermissionFragment.2(this, paramBoolean, paramString));
+    SSOLog.a("OpenSelectPermissionFragment", new Object[] { "showLoading" });
+    this.e = AuthUIUtil.a(getQBaseActivity(), null, 2131627754);
   }
   
-  private void a(boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramBoolean) {
-      ThreadManager.executeOnFileThread(new OpenSelectPermissionFragment.1(this));
-    }
+    this.d.setImageBitmap(paramBitmap);
   }
   
-  private void b()
+  public void a(ISelectPermissionContract.Presenter paramPresenter)
   {
-    bfqv localbfqv = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(Long.toString(this.jdField_a_of_type_Long));
-    aseh.a("KEY_LOGIN_STAGE_2_NEW_TOTAL", localbfqv);
-    aseh.a("KEY_LOGIN_STAGE_2_2_NEW_TOTAL", localbfqv);
-    aseh.a("KEY_LOGIN_STAGE_3_TOTAL");
-    c();
-    ThreadManager.executeOnNetWorkThread(new OpenSelectPermissionFragment.3(this));
+    this.f = paramPresenter;
   }
   
-  private void c()
+  public void b()
   {
-    if (this.jdField_a_of_type_Bety != null)
-    {
-      if (this.jdField_a_of_type_Bety.isShowing()) {
-        return;
-      }
-      this.jdField_a_of_type_Bety.show();
-      return;
-    }
-    this.jdField_a_of_type_Bety = new bety(getActivity(), 0, 2131561238, 17);
-    this.jdField_a_of_type_Bety.a(-1);
-    this.jdField_a_of_type_Bety.show();
-  }
-  
-  protected void a()
-  {
-    if (getActivity() == null) {
-      QLog.e("OpenSelectPermissionFragment", 1, "dismissDialogProgress activity is null");
-    }
-    while ((getActivity().isFinishing()) || (this.jdField_a_of_type_Bety == null) || (!this.jdField_a_of_type_Bety.isShowing())) {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_Bety.dismiss();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("OpenSelectPermissionFragment", 1, "dismissDialogProgress Exception", localException);
-    }
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(Long.toString(this.jdField_a_of_type_Long));
-    ForwardUtils.a(paramInt, (bfqv)localObject);
-    String str = Long.toString(this.jdField_a_of_type_Long);
-    if (localObject == null)
-    {
-      localObject = "";
-      ForwardUtils.a(paramInt, str, (String)localObject);
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("key_cancel_auth", 0);
-      ((Intent)localObject).putExtra("key_error_code", paramInt);
-      ((Intent)localObject).putExtra("key_error_msg", paramString2);
-      ((Intent)localObject).putExtra("key_error_detail", paramString3);
-      ((Intent)localObject).putExtra("key_response", paramString1);
-      QLog.d("OpenSelectPermissionFragment", 1, new Object[] { "OpenVirtual.setSdkResult, error: ", Integer.valueOf(paramInt), ", msg:", paramString2, ", detail:", paramString3 });
-      getActivity().setResult(102, (Intent)localObject);
-      getActivity().finish();
-      this.jdField_a_of_type_Bety.dismiss();
-      if (paramInt != 0)
-      {
-        paramString1 = new HashMap();
-        paramString1.put("appid", String.valueOf(this.jdField_a_of_type_Long));
-        paramString1.put("errorcode", paramInt + "");
-        paramString1.put("errormsg", paramString2);
-        paramString1.put("errordetail", paramString3);
-        paramString2 = AppNetConnInfo.getRecentNetworkInfo();
-        if (paramString2 != null)
-        {
-          if (paramString2.getType() != 1) {
-            break label287;
-          }
-          paramString1.put("network", "wifi");
-        }
-      }
-    }
-    label287:
-    while (paramString2.getType() != 0)
-    {
-      return;
-      localObject = ((bfqv)localObject).jdField_a_of_type_JavaLangString;
-      break;
-    }
-    switch (paramString2.getSubtype())
-    {
-    case 7: 
-    default: 
-      paramString1.put("network", "2G");
-      return;
-    case 1: 
-    case 2: 
-    case 4: 
-      paramString1.put("network", "2G");
-      return;
-    }
-    paramString1.put("network", "3G");
-  }
-  
-  protected void a(String paramString)
-  {
-    String str = String.valueOf(this.jdField_a_of_type_Long);
-    bfqv localbfqv = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(str);
-    SharedPreferences.Editor localEditor;
-    if (localbfqv != null)
-    {
-      localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putString(paramString, localbfqv.jdField_a_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(localbfqv.jdField_a_of_type_JavaLangString))) {}
-    }
-    else
-    {
-      return;
-    }
-    localEditor.putString(str + ":" + localbfqv.jdField_a_of_type_JavaLangString, paramString);
-    localEditor.commit();
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null))
-    {
-      SharedPreferences.Editor localEditor = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-      localEditor.putString(paramString1, paramString2);
-      localEditor.commit();
-    }
+    AuthUIUtil.a(getQBaseActivity(), this.e);
   }
   
   public boolean isWrapContent()
@@ -256,105 +76,73 @@ public class OpenSelectPermissionFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidViewView) {
-      if (getActivity() != null) {
-        getActivity().finish();
+    if (paramView == this.a)
+    {
+      if (getQBaseActivity() != null) {
+        getQBaseActivity().finish();
       }
     }
-    do
+    else if (paramView == this.c)
     {
-      return;
-      if (paramView == this.jdField_d_of_type_AndroidViewView)
+      if (d())
       {
-        b();
-        return;
+        this.f.c();
+        AuthorityUtil.e("0X800BA7E");
       }
-    } while (paramView != this.jdField_b_of_type_AndroidViewView);
-    paramView = new Intent();
-    paramView.putExtra("key_cancel_auth", 1);
-    getActivity().setResult(102, paramView);
-    getActivity().finish();
+    }
+    else if (paramView == this.b)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_cancel_auth", 1);
+      getQBaseActivity().setResult(102, localIntent);
+      getQBaseActivity().finish();
+      AuthorityUtil.e("0X800BA7F");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559543, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)getActivity().getAppRuntime());
-    this.jdField_a_of_type_Bfrj = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363024);
-    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363915);
-    this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378030);
-    this.jdField_c_of_type_AndroidViewView.setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131362703));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362705));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131364694);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_Bety = new bety(getActivity(), 0, 2131561238, 17);
-    this.jdField_a_of_type_Bety.a(-1);
-    QLog.d("OpenSelectPermissionFragment", 2, "========> init appid = " + this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131371715));
-    this.jdField_a_of_type_Bfgl = new bfgl(this);
-    paramViewGroup = getActivity().getIntent();
-    this.jdField_a_of_type_Long = Long.parseLong(paramViewGroup.getStringExtra("appId"));
-    this.jdField_a_of_type_JavaLangString = paramViewGroup.getStringExtra("pkg_name");
-    this.jdField_b_of_type_Long = paramViewGroup.getLongExtra("vid", 0L);
-    this.jdField_b_of_type_JavaLangString = paramViewGroup.getStringExtra("appName");
-    this.jdField_b_of_type_Boolean = paramViewGroup.getBooleanExtra("hasIcon", false);
-    this.e = paramViewGroup.getLongExtra("login_cost", 0L);
-    this.jdField_d_of_type_Long = paramViewGroup.getLongExtra("authListCostTime", 0L);
-    this.jdField_c_of_type_Long = paramViewGroup.getLongExtra("authStartTime", SystemClock.elapsedRealtime());
-    this.jdField_c_of_type_Boolean = paramViewGroup.getBooleanExtra("is_from_qr_login", false);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bfgl);
-    this.jdField_a_of_type_Bfgl.a(a());
-    a(this.jdField_b_of_type_Boolean);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625707, paramViewGroup, false);
+    this.a = paramLayoutInflater.findViewById(2131429218);
+    this.b = paramLayoutInflater.findViewById(2131430281);
+    paramLayoutInflater.findViewById(2131447582).setBackgroundColor(0);
+    this.d = ((ImageView)paramLayoutInflater.findViewById(2131428628));
+    this.a.setOnClickListener(this);
+    this.c = paramLayoutInflater.findViewById(2131431227);
+    this.c.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    paramViewGroup = new OpenSelectPermissionFragment.PermissionAdapter(this, null);
+    paramBundle = getQBaseActivity().getIntent();
+    ContractBuilder.a(this, getContext());
+    this.f.a(paramBundle);
+    ((ListView)paramLayoutInflater.findViewById(2131439973)).setAdapter(paramViewGroup);
+    paramViewGroup.a(this.f.a());
+    this.f.a(paramBundle.getBooleanExtra("hasIcon", false));
+    paramViewGroup = paramBundle.getStringExtra("appName");
+    SSOLog.a("OpenSelectPermissionFragment", new Object[] { "onCreateView appName=", paramViewGroup });
+    if (!TextUtils.isEmpty(paramViewGroup)) {
+      ((TextView)paramLayoutInflater.findViewById(2131428630)).setText(paramViewGroup);
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = bfrh.a(getActivity(), "uin_openid_store");
-    this.jdField_b_of_type_AndroidContentSharedPreferences = bfrh.a(getActivity(), "openid_encrytoken");
+    AuthorityUtil.a(null, "0X800B935", new String[] { "", "", paramViewGroup, this.f.b() });
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.jdField_a_of_type_Bfrs = null;
-    this.jdField_a_of_type_Bfrj = null;
   }
   
   public void onResume()
   {
+    SSOLog.a("OpenSelectPermissionFragment", new Object[] { "onResume--isSetStatusColor=", Boolean.valueOf(this.g) });
     super.onResume();
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    if (!this.g)
     {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(getActivity(), true, getResources().getColor(2131167194));
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusBarColor(getResources().getColor(2131167194));
-      this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    String str = Build.MANUFACTURER + Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.i("OpenSelectPermissionFragment", 2, "MANUFACTURER = " + Build.MANUFACTURER + ", MODEL = " + Build.MODEL);
-    }
-    if ((str != null) && ((str.equals("MeizuPRO 7-S")) || (str.equalsIgnoreCase("MeizuM711C")))) {
-      ImmersiveUtils.a(getActivity().getWindow(), true);
-    }
-    for (;;)
-    {
-      ImmersiveUtils.a(true, getActivity().getWindow());
-      return;
-      ImmersiveUtils.a(getActivity().getWindow());
+      AuthorityUtil.b(getQBaseActivity());
+      this.g = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSelectPermissionFragment
  * JD-Core Version:    0.7.0.1
  */

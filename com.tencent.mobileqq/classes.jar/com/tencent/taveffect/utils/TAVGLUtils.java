@@ -1,7 +1,5 @@
 package com.tencent.taveffect.utils;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.opengl.EGL14;
@@ -9,7 +7,6 @@ import android.opengl.GLES20;
 import android.util.Log;
 import com.tencent.taveffect.core.RGBTextureFilter;
 import com.tencent.taveffect.core.TAVTextureInfo;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -30,12 +27,25 @@ public class TAVGLUtils
       if (j == 12288) {
         break;
       }
-      Log.e("TAVGLUtils", paramString + ": EGL error: 0x" + Integer.toHexString(j));
-      str = str + paramString + ": EGL error: 0x" + Integer.toHexString(j);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(j));
+      Log.e("TAVGLUtils", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(j));
+      str = localStringBuilder.toString();
       i = 1;
     }
-    if (i != 0) {
-      new RuntimeException("EGL error encountered (see log): " + str).printStackTrace();
+    if (i != 0)
+    {
+      paramString = new StringBuilder();
+      paramString.append("EGL error encountered (see log): ");
+      paramString.append(str);
+      new RuntimeException(paramString.toString()).printStackTrace();
     }
   }
   
@@ -50,65 +60,83 @@ public class TAVGLUtils
   
   public static float lerp(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (1.0F - paramFloat3) * paramFloat1 + paramFloat2 * paramFloat3;
+    return paramFloat1 * (1.0F - paramFloat3) + paramFloat2 * paramFloat3;
   }
   
-  public static String loadShaderCode(Context paramContext, String paramString)
+  /* Error */
+  public static String loadShaderCode(android.content.Context paramContext, String paramString)
   {
-    localObject = null;
-    Context localContext = null;
-    try
-    {
-      paramContext = paramContext.getAssets().open(paramString);
-      localContext = paramContext;
-      localObject = paramContext;
-      paramString = convertStreamToString(paramContext);
-      if (paramContext != null) {}
-      try
-      {
-        paramContext.close();
-        return paramString;
-      }
-      catch (IOException paramContext)
-      {
-        paramContext.printStackTrace();
-        return paramString;
-      }
-      try
-      {
-        ((InputStream)localObject).close();
-        throw paramContext;
-      }
-      catch (IOException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      localObject = localContext;
-      paramContext.printStackTrace();
-      if (localContext != null) {}
-      try
-      {
-        localContext.close();
-        return "";
-      }
-      catch (IOException paramContext)
-      {
-        for (;;)
-        {
-          paramContext.printStackTrace();
-        }
-      }
-    }
-    finally
-    {
-      if (localObject == null) {}
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_2
+    //   4: aload_0
+    //   5: invokevirtual 93	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   8: aload_1
+    //   9: invokevirtual 99	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   12: astore_0
+    //   13: aload_0
+    //   14: astore_2
+    //   15: aload_0
+    //   16: astore_3
+    //   17: aload_0
+    //   18: invokestatic 101	com/tencent/taveffect/utils/TAVGLUtils:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   21: astore_1
+    //   22: aload_0
+    //   23: ifnull +14 -> 37
+    //   26: aload_0
+    //   27: invokevirtual 106	java/io/InputStream:close	()V
+    //   30: aload_1
+    //   31: areturn
+    //   32: astore_0
+    //   33: aload_0
+    //   34: invokevirtual 107	java/io/IOException:printStackTrace	()V
+    //   37: aload_1
+    //   38: areturn
+    //   39: astore_0
+    //   40: goto +29 -> 69
+    //   43: astore_0
+    //   44: aload_3
+    //   45: astore_2
+    //   46: aload_0
+    //   47: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   50: aload_3
+    //   51: ifnull +15 -> 66
+    //   54: aload_3
+    //   55: invokevirtual 106	java/io/InputStream:close	()V
+    //   58: goto +8 -> 66
+    //   61: astore_0
+    //   62: aload_0
+    //   63: invokevirtual 107	java/io/IOException:printStackTrace	()V
+    //   66: ldc 19
+    //   68: areturn
+    //   69: aload_2
+    //   70: ifnull +15 -> 85
+    //   73: aload_2
+    //   74: invokevirtual 106	java/io/InputStream:close	()V
+    //   77: goto +8 -> 85
+    //   80: astore_1
+    //   81: aload_1
+    //   82: invokevirtual 107	java/io/IOException:printStackTrace	()V
+    //   85: aload_0
+    //   86: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	87	0	paramContext	android.content.Context
+    //   0	87	1	paramString	String
+    //   3	71	2	localContext1	android.content.Context
+    //   1	54	3	localContext2	android.content.Context
+    // Exception table:
+    //   from	to	target	type
+    //   26	30	32	java/io/IOException
+    //   4	13	39	finally
+    //   17	22	39	finally
+    //   46	50	39	finally
+    //   4	13	43	java/lang/Exception
+    //   17	22	43	java/lang/Exception
+    //   54	58	61	java/io/IOException
+    //   73	77	80	java/io/IOException
   }
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
@@ -151,7 +179,7 @@ public class TAVGLUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.utils.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

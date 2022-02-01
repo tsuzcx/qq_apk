@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:title="@string/e6v" android:key="share_micromsg_qzone" />
-    <IconPreference android:title="@string/e6w" android:key="share_micromsg_to_sina" />
-    <IconPreference android:title="@string/e6u" android:key="share_micromsg_to_fuckbook" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/itm" />
+    <CheckBoxPreference android1:contentDescription="@string/jc0" android:defaultValue="false" android:icon="@raw/icons_outlined_colorful_moment" android:key="settings_sns_switch" android:title="@string/jc0" />
+    <CheckBoxPreference android1:contentDescription="@string/cvu" android:defaultValue="true" android:icon="@raw/icons_outlined_finder_icon" android:iconColor="@color/Orange" android:key="settings_finder_switch" android:title="@string/cvu" />
+    <CheckBoxPreference android1:contentDescription="@string/cvv" android:defaultValue="true" android:icon="@raw/icons_outlined_float_window_on" android:iconColor="@color/a_f" android:key="settings_finder_live_switch" android:title="@string/cvv" />
+    <CheckBoxPreference android1:contentDescription="@string/cw6" android:defaultValue="false" android:icon="@raw/icons_outlined_scan" android:iconColor="@color/Indigo_100" android:key="settings_scan_switch" android:title="@string/cw6" />
+    <CheckBoxPreference android1:contentDescription="@string/j5c" android:defaultValue="false" android:icon="@raw/icons_outlined_shake" android:iconColor="@color/Indigo_100" android:key="settings_shake_switch" android:title="@string/j5c" />
+    <CheckBoxPreference android1:contentDescription="@string/cvv" android:defaultValue="true" android:icon="@raw/icons_outlined_float_window_on" android:iconColor="@color/a_f" android:key="settings_finder_live_above_look_switch" android:title="@string/cvv" />
+    <CheckBoxPreference android1:contentDescription="@string/cwc" android:defaultValue="false" android:icon="@raw/icons_outlined_news" android:iconColor="@color/Yellow_100" android:key="settings_look_switch" android:title="@string/cwc" />
+    <CheckBoxPreference android1:contentDescription="@string/cwh" android:defaultValue="false" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/Red" android:key="settings_search_switch" android:title="@string/cwh" />
+    <CheckBoxPreference android1:contentDescription="@string/h66" android:defaultValue="false" android:icon="@raw/icons_outlined_nearby" android:iconColor="@color/Indigo_100" android:key="settings_nearby_switch" android:title="@string/h66" />
+    <CheckBoxPreference android1:contentDescription="@string/h6g" android:defaultValue="false" android:icon="@raw/icons_outlined_live_nearby" android:iconColor="@color/Indigo_100" android:key="settings_nearby_live_friend_switch" android:title="@string/h6g" />
+    <com.tencent.mm.plugin.setting.ui.widget.SecondCheckBoxPreference android1:contentDescription="@string/h6f" android:defaultValue="false" android:icon="@drawable/ald" android:key="settings_nearby_live_friend_person_switch" android:title="@string/h6f" />
+    <CheckBoxPreference android1:contentDescription="@string/cwi" android:defaultValue="false" android:icon="@raw/icons_outlined_shop" android:iconColor="@color/Red" android:key="settings_shopping_switch" android:title="@string/cwi" />
+    <CheckBoxPreference android1:contentDescription="@string/fbh" android:defaultValue="false" android:icon="@raw/icons_outlined_colorful_game" android:key="settings_game_switch" android:title="@string/fbh" />
+    <CheckBoxPreference android1:contentDescription="@string/nl" android:defaultValue="false" android:icon="@raw/icons_outlined_miniprogram" android:iconColor="@color/Purple" android:key="settings_miniprogram_switch" android:title="@string/nl" />
+    <CheckBoxPreference android1:contentDescription="@string/fua" android:defaultValue="false" android:icon="@raw/icons_outlined_wechatout" android:iconColor="@color/aks" android:key="settings_wechatout_switch" android:title="@string/fua" />
+    <Preference android:key="settings_switch_bottom_tip" android:layout="@layout/bf0" android:title="@string/its" />
 </PreferenceScreen>

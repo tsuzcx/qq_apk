@@ -1,259 +1,525 @@
 package com.tencent.mm.be;
 
-import android.os.HandlerThread;
-import com.tencent.map.swlocation.api.INetworkApi;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecInfo.CodecCapabilities;
+import android.media.MediaCodecInfo.CodecProfileLevel;
+import android.media.MediaCodecInfo.EncoderCapabilities;
+import android.media.MediaCodecList;
+import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.aa;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.nio.ByteBuffer;
 
 public final class c
-  implements INetworkApi, f
 {
-  private float cAH;
-  private int cAI;
-  private int cAJ;
-  private String cAK;
-  private String cAL;
-  private float cyV;
-  private a fNX;
-  private byte[] fNY;
-  private int fNZ;
-  private Object lock;
-  private int scene;
-  private ap timerHandler;
+  private int bitrate;
+  protected int bufId;
+  private MediaCodec.BufferInfo bufferInfo;
+  private ByteBuffer[] cJm;
+  private ByteBuffer[] cWS;
+  private int colorFormat;
+  private int frameCount;
+  private int frameRate;
+  private boolean hvE;
+  boolean isStart;
+  protected MediaFormat mediaFormat;
+  private int nxO;
+  private int nxP;
+  private int nxQ;
+  protected aa nzs;
+  a pci;
+  private int pcj;
+  private int pck;
+  private int pcl;
+  private boolean pcm;
+  private byte[] pcn;
+  private int pco;
   
-  public c(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4)
+  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(78556);
-    this.lock = new Object();
-    g.RM();
-    this.timerHandler = new ap(g.RO().oNc.getLooper(), new c.1(this), false);
-    this.cAH = paramFloat1;
-    this.cyV = paramFloat2;
-    this.cAI = paramInt1;
-    this.cAJ = paramInt2;
-    this.cAK = paramString1;
-    this.cAL = paramString2;
-    this.fNZ = paramInt3;
-    this.scene = paramInt4;
-    g.RK().eHt.a(752, this);
-    AppMethodBeat.o(78556);
+    AppMethodBeat.i(127067);
+    this.bufId = -1;
+    this.pck = -1;
+    this.pcl = -1;
+    this.bitrate = 0;
+    this.isStart = false;
+    this.hvE = false;
+    this.pcm = false;
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "create MediaCodecTransCodeEncoder, init targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.nxO = paramInt1;
+    this.nxP = paramInt2;
+    this.frameRate = paramInt4;
+    this.nxQ = 1;
+    this.bufferInfo = new MediaCodec.BufferInfo();
+    this.bitrate = paramInt3;
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "create MMSightRemuxMediaCodecEncoder, targetWidth: %s, targetHeight: %s, bitrate: %s", new Object[] { Integer.valueOf(this.nxO), Integer.valueOf(this.nxP), Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(127067);
   }
   
-  private void ajf()
+  private void b(byte[] paramArrayOfByte, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(78558);
-    g.RK().eHt.b(752, this);
-    AppMethodBeat.o(78558);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(78557);
-    this.timerHandler.stopTimer();
-    if (this.fNX != null) {
-      g.RK().eHt.a(this.fNX);
-    }
-    this.fNX = null;
-    this.fNY = null;
-    synchronized (this.lock)
-    {
-      this.lock.notifyAll();
-      ajf();
-      AppMethodBeat.o(78557);
-      return;
-    }
-  }
-  
-  public final byte[] httpRequest(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(78559);
-    ab.w("MicroMsg.SenseWhereHttpUtil", "why use this method? sense where sdk has something warn.");
-    AppMethodBeat.o(78559);
-    return new byte[0];
-  }
-  
-  public final byte[] httpRequest(byte[] arg1)
-  {
-    AppMethodBeat.i(78560);
+    AppMethodBeat.i(127073);
     for (;;)
     {
       try
       {
-        ??? = new String(???, "UTF-8");
-        ab.d("MicroMsg.SenseWhereHttpUtil", "sense where http request content : ".concat(String.valueOf(???)));
-        this.fNY = null;
-        this.fNX = new a(this.cAH, this.cyV, this.cAI, this.cAJ, this.cAK, this.cAL, this.fNZ, this.scene, ???);
-        g.RK().eHt.a(this.fNX, 0);
-        this.timerHandler.ag(60000L, 60000L);
+        if (!this.isStart)
+        {
+          Log.e("MicroMsg.MediaCodecTransCodeEncoder", "writeData, not start!");
+          AppMethodBeat.o(127073);
+          return;
+        }
+        if (this.nzs == null)
+        {
+          Log.e("MicroMsg.MediaCodecTransCodeEncoder", "encoder is null");
+          AppMethodBeat.o(127073);
+          return;
+        }
+        long l1 = Util.currentTicks();
+        this.cWS = this.nzs.aPD();
+        this.cJm = this.nzs.aPE();
+        int i = 0;
+        if (this.nzs != null)
+        {
+          int j = this.nzs.dequeueInputBuffer(600L);
+          this.pck = j;
+          if ((j < 0) && (i < 10))
+          {
+            Log.i("MicroMsg.MediaCodecTransCodeEncoder", "video no input available, drain first");
+            bpk();
+            i += 1;
+            continue;
+          }
+        }
+        if (this.nzs == null)
+        {
+          Log.e("MicroMsg.MediaCodecTransCodeEncoder", "encoder is null");
+          AppMethodBeat.o(127073);
+          return;
+        }
+        Log.v("MicroMsg.MediaCodecTransCodeEncoder", "inputBufferIndex: %s", new Object[] { Integer.valueOf(this.pck) });
+        long l2 = Util.currentTicks();
+        if (this.pck >= 0)
+        {
+          if ((this.isStart) && (!paramBoolean) && (paramArrayOfByte != null))
+          {
+            Log.v("MicroMsg.MediaCodecTransCodeEncoder", "presentationTime: ".concat(String.valueOf(paramLong)));
+            ByteBuffer localByteBuffer = this.cWS[this.pck];
+            localByteBuffer.clear();
+            localByteBuffer.put(paramArrayOfByte);
+            localByteBuffer.position(0);
+            this.nzs.a(this.pck, paramArrayOfByte.length, paramLong, 0);
+            bpk();
+            Log.v("MicroMsg.MediaCodecTransCodeEncoder", "encoder used %sms %sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Long.valueOf(Util.ticksToNow(l2)) });
+            AppMethodBeat.o(127073);
+            return;
+          }
+          Log.v("MicroMsg.MediaCodecTransCodeEncoder", "end of stream");
+          this.pcm = true;
+          this.nzs.a(this.pck, 0, paramLong, 4);
+          this.hvE = true;
+          continue;
+        }
+        Log.v("MicroMsg.MediaCodecTransCodeEncoder", "input buffer not available");
       }
-      catch (Exception ???)
+      catch (Exception paramArrayOfByte)
       {
-        ab.printErrStackTrace("MicroMsg.SenseWhereHttpUtil", ???, "", new Object[0]);
-        ab.e("MicroMsg.SenseWhereHttpUtil", "sense where http request error: " + ???.toString());
-        continue;
-      }
-      synchronized (this.lock)
-      {
-        this.lock.wait();
-        ab.i("MicroMsg.SenseWhereHttpUtil", "upload sense where info finish. it is response is null? %b", new Object[] { Boolean.valueOf(bo.ce(this.fNY)) });
-        ??? = this.fNY;
-        AppMethodBeat.o(78560);
-        return ???;
+        Log.e("MicroMsg.MediaCodecTransCodeEncoder", "writeData error: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MediaCodecTransCodeEncoder", paramArrayOfByte, "", new Object[0]);
+        AppMethodBeat.o(127073);
+        return;
       }
     }
   }
   
-  /* Error */
-  public final void onSceneEnd(int paramInt1, int paramInt2, String arg3, com.tencent.mm.ai.m paramm)
+  private int bOO()
   {
-    // Byte code:
-    //   0: ldc 235
-    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 75	com/tencent/mm/be/c:timerHandler	Lcom/tencent/mm/sdk/platformtools/ap;
-    //   9: invokevirtual 130	com/tencent/mm/sdk/platformtools/ap:stopTimer	()V
-    //   12: iload_1
-    //   13: ifne +140 -> 153
-    //   16: iload_2
-    //   17: ifne +136 -> 153
-    //   20: aload 4
-    //   22: instanceof 176
-    //   25: ifeq +108 -> 133
-    //   28: aload 4
-    //   30: checkcast 176	com/tencent/mm/be/a
-    //   33: getfield 238	com/tencent/mm/be/a:fNy	Ljava/lang/String;
-    //   36: ldc 209
-    //   38: invokestatic 242	com/tencent/mm/sdk/platformtools/bo:bf	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   41: astore_3
-    //   42: ldc 143
-    //   44: ldc 244
-    //   46: aload_3
-    //   47: invokestatic 168	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   50: invokevirtual 172	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   53: invokestatic 174	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   56: aload_0
-    //   57: aload_3
-    //   58: ldc 159
-    //   60: invokevirtual 248	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   63: putfield 123	com/tencent/mm/be/c:fNY	[B
-    //   66: aload_0
-    //   67: getfield 41	com/tencent/mm/be/c:lock	Ljava/lang/Object;
-    //   70: astore_3
-    //   71: aload_3
-    //   72: monitorenter
-    //   73: aload_0
-    //   74: getfield 41	com/tencent/mm/be/c:lock	Ljava/lang/Object;
-    //   77: invokevirtual 136	java/lang/Object:notifyAll	()V
-    //   80: aload_3
-    //   81: monitorexit
-    //   82: aload_0
-    //   83: aconst_null
-    //   84: putfield 114	com/tencent/mm/be/c:fNX	Lcom/tencent/mm/be/a;
-    //   87: ldc 235
-    //   89: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: return
-    //   93: astore_3
-    //   94: ldc 143
-    //   96: aload_3
-    //   97: ldc 209
-    //   99: iconst_0
-    //   100: anewarray 4	java/lang/Object
-    //   103: invokestatic 213	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   106: ldc 143
-    //   108: new 215	java/lang/StringBuilder
-    //   111: dup
-    //   112: ldc 250
-    //   114: invokespecial 220	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   117: aload_3
-    //   118: invokevirtual 224	java/lang/Exception:toString	()Ljava/lang/String;
-    //   121: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokestatic 232	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   130: goto -64 -> 66
-    //   133: aload_0
-    //   134: aconst_null
-    //   135: putfield 123	com/tencent/mm/be/c:fNY	[B
-    //   138: goto -72 -> 66
-    //   141: astore 4
-    //   143: aload_3
-    //   144: monitorexit
-    //   145: ldc 235
-    //   147: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: aload 4
-    //   152: athrow
-    //   153: ldc 143
-    //   155: ldc 252
-    //   157: iconst_3
-    //   158: anewarray 4	java/lang/Object
-    //   161: dup
-    //   162: iconst_0
-    //   163: iload_1
-    //   164: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   167: aastore
-    //   168: dup
-    //   169: iconst_1
-    //   170: iload_2
-    //   171: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   174: aastore
-    //   175: dup
-    //   176: iconst_2
-    //   177: aload_3
-    //   178: aastore
-    //   179: invokestatic 259	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   182: aload_0
-    //   183: aconst_null
-    //   184: putfield 123	com/tencent/mm/be/c:fNY	[B
-    //   187: aload_0
-    //   188: getfield 41	com/tencent/mm/be/c:lock	Ljava/lang/Object;
-    //   191: astore_3
-    //   192: aload_3
-    //   193: monitorenter
-    //   194: aload_0
-    //   195: getfield 41	com/tencent/mm/be/c:lock	Ljava/lang/Object;
-    //   198: invokevirtual 136	java/lang/Object:notifyAll	()V
-    //   201: aload_3
-    //   202: monitorexit
-    //   203: invokestatic 265	com/tencent/mm/be/b:aiV	()Lcom/tencent/mm/be/b;
-    //   206: invokevirtual 268	com/tencent/mm/be/b:aiX	()V
-    //   209: getstatic 274	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
-    //   212: ldc2_w 275
-    //   215: ldc2_w 277
-    //   218: lconst_1
-    //   219: iconst_0
-    //   220: invokevirtual 282	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-    //   223: goto -141 -> 82
-    //   226: astore 4
-    //   228: aload_3
-    //   229: monitorexit
-    //   230: ldc 235
-    //   232: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   235: aload 4
-    //   237: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	238	0	this	c
-    //   0	238	1	paramInt1	int
-    //   0	238	2	paramInt2	int
-    //   0	238	4	paramm	com.tencent.mm.ai.m
-    // Exception table:
-    //   from	to	target	type
-    //   56	66	93	java/lang/Exception
-    //   73	82	141	finally
-    //   143	145	141	finally
-    //   194	203	226	finally
-    //   228	230	226	finally
+    AppMethodBeat.i(127069);
+    long l = Util.currentTicks();
+    MediaCodecInfo localMediaCodecInfo = selectCodec("video/avc");
+    if (localMediaCodecInfo == null)
+    {
+      Log.e("MicroMsg.MediaCodecTransCodeEncoder", "Unable to find an appropriate codec for video/avc");
+      AppMethodBeat.o(127069);
+      return -1;
+    }
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "found codec: %s, used %sms", new Object[] { localMediaCodecInfo.getName(), Long.valueOf(Util.ticksToNow(l)) });
+    l = Util.currentTicks();
+    this.colorFormat = selectColorFormat(localMediaCodecInfo, "video/avc");
+    l = Util.ticksToNow(l);
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "found colorFormat: %s, used %sms", new Object[] { Integer.valueOf(this.colorFormat), Long.valueOf(l) });
+    if (this.colorFormat == 19) {}
+    for (this.pco = 2;; this.pco = 1)
+    {
+      l = Util.currentTicks();
+      this.mediaFormat = MediaFormat.createVideoFormat("video/avc", this.nxO, this.nxP);
+      Log.i("MicroMsg.MediaCodecTransCodeEncoder", "createVideoFormat used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+      if (localMediaCodecInfo != null)
+      {
+        trySetProfile(localMediaCodecInfo);
+        trySetBitRateMode(localMediaCodecInfo);
+      }
+      this.mediaFormat.setInteger("bitrate", this.bitrate);
+      this.mediaFormat.setInteger("frame-rate", this.frameRate);
+      this.mediaFormat.setInteger("color-format", this.colorFormat);
+      this.mediaFormat.setInteger("i-frame-interval", this.nxQ);
+      Log.i("MicroMsg.MediaCodecTransCodeEncoder", "mediaFormat: %s", new Object[] { this.mediaFormat });
+      this.nzs = aa.Dx(localMediaCodecInfo.getName());
+      this.nzs.a(this.mediaFormat, null, 1);
+      this.nzs.start();
+      AppMethodBeat.o(127069);
+      return 0;
+    }
+  }
+  
+  private void bpk()
+  {
+    AppMethodBeat.i(127074);
+    this.pcl = this.nzs.dequeueOutputBuffer(this.bufferInfo, 600L);
+    Log.v("MicroMsg.MediaCodecTransCodeEncoder", "outputBufferIndex-->" + this.pcl);
+    if (this.pcl == -1)
+    {
+      Log.d("MicroMsg.MediaCodecTransCodeEncoder", "no output from encoder available, break encoderEndStream %s", new Object[] { Boolean.valueOf(this.pcm) });
+      if (!this.pcm) {}
+    }
+    label253:
+    do
+    {
+      for (;;)
+      {
+        this.pcl = this.nzs.dequeueOutputBuffer(this.bufferInfo, 600L);
+        if (this.pcl <= 0) {
+          Log.v("MicroMsg.MediaCodecTransCodeEncoder", "get outputBufferIndex %d", new Object[] { Integer.valueOf(this.pcl) });
+        }
+        if ((this.pcl >= 0) || (this.pcm)) {
+          break;
+        }
+        AppMethodBeat.o(127074);
+        return;
+        if (this.pcl == -3)
+        {
+          this.cJm = this.nzs.aPE();
+          Log.d("MicroMsg.MediaCodecTransCodeEncoder", "encoder output buffers changed");
+        }
+        else if (this.pcl == -2)
+        {
+          Log.d("MicroMsg.MediaCodecTransCodeEncoder", "encoder output format changed: ".concat(String.valueOf(this.nzs.getOutputFormat())));
+        }
+        else
+        {
+          if (this.pcl >= 0) {
+            break label253;
+          }
+          Log.w("MicroMsg.MediaCodecTransCodeEncoder", "unexpected result from encoder.dequeueOutputBuffer: " + this.pcl);
+        }
+      }
+      Log.v("MicroMsg.MediaCodecTransCodeEncoder", "perform encoding");
+      Object localObject = this.cJm[this.pcl];
+      if (localObject == null)
+      {
+        localObject = new RuntimeException("encoderOutputBuffer " + this.pcl + " was null");
+        AppMethodBeat.o(127074);
+        throw ((Throwable)localObject);
+      }
+      this.frameCount += 1;
+      if ((this.bufferInfo.flags & 0x2) != 0) {
+        Log.v("MicroMsg.MediaCodecTransCodeEncoder", "ignoring BUFFER_FLAG_CODEC_CONFIG, size: %s, %s", new Object[] { Integer.valueOf(this.bufferInfo.size), Boolean.FALSE });
+      }
+      if (this.bufferInfo.size != 0)
+      {
+        ((ByteBuffer)localObject).position(this.bufferInfo.offset);
+        ((ByteBuffer)localObject).limit(this.bufferInfo.offset + this.bufferInfo.size);
+        i((ByteBuffer)localObject, this.bufferInfo);
+      }
+      this.nzs.releaseOutputBuffer(this.pcl, false);
+    } while ((this.bufferInfo.flags & 0x4) == 0);
+    if (!this.hvE)
+    {
+      Log.e("MicroMsg.MediaCodecTransCodeEncoder", "reached end of stream unexpectedly");
+      AppMethodBeat.o(127074);
+      return;
+    }
+    Log.w("MicroMsg.MediaCodecTransCodeEncoder", "do stop encoder, frameCount: %s, writeFrameCount: %s", new Object[] { Integer.valueOf(this.frameCount), Integer.valueOf(this.pcj) });
+    try
+    {
+      this.nzs.stop();
+      this.nzs.release();
+      this.nzs = null;
+      this.isStart = false;
+      AppMethodBeat.o(127074);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.MediaCodecTransCodeEncoder", "do stop encoder error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(127074);
+    }
+  }
+  
+  private void i(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    AppMethodBeat.i(127066);
+    if ((paramByteBuffer != null) && (paramBufferInfo != null) && (this.pci != null)) {
+      this.pci.a(this.bufId, paramByteBuffer, paramBufferInfo.size);
+    }
+    AppMethodBeat.o(127066);
+  }
+  
+  private static boolean isRecognizedFormat(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean isRecognizedProfile(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  private static MediaCodecInfo selectCodec(String paramString)
+  {
+    AppMethodBeat.i(127076);
+    int k = MediaCodecList.getCodecCount();
+    int i = 0;
+    while (i < k)
+    {
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+      if (localMediaCodecInfo.isEncoder())
+      {
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int j = 0;
+        while (j < arrayOfString.length)
+        {
+          if (arrayOfString[j].equalsIgnoreCase(paramString))
+          {
+            AppMethodBeat.o(127076);
+            return localMediaCodecInfo;
+          }
+          j += 1;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(127076);
+    return null;
+  }
+  
+  private static int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
+  {
+    AppMethodBeat.i(127075);
+    long l = Util.currentTicks();
+    paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
+    int j = 0;
+    int m;
+    for (int i = 0; j < paramString.colorFormats.length; i = m)
+    {
+      int k = paramString.colorFormats[j];
+      Log.i("MicroMsg.MediaCodecTransCodeEncoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(k) });
+      m = i;
+      if (isRecognizedFormat(k))
+      {
+        m = i;
+        if (k > i)
+        {
+          i = k;
+          if (k == 21) {
+            break;
+          }
+          m = k;
+        }
+      }
+      j += 1;
+    }
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(i) });
+    AppMethodBeat.o(127075);
+    return i;
+  }
+  
+  private void trySetBitRateMode(MediaCodecInfo paramMediaCodecInfo)
+  {
+    AppMethodBeat.i(127071);
+    try
+    {
+      if (!d.rb(21)) {
+        break label137;
+      }
+      paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType("video/avc");
+      if (paramMediaCodecInfo == null) {
+        break label137;
+      }
+      paramMediaCodecInfo = paramMediaCodecInfo.getEncoderCapabilities();
+      if (paramMediaCodecInfo == null) {
+        break label137;
+      }
+      if (paramMediaCodecInfo.isBitrateModeSupported(2))
+      {
+        Log.i("MicroMsg.MediaCodecTransCodeEncoder", "support cbr bitrate mode");
+        this.mediaFormat.setInteger("bitrate-mode", 2);
+        AppMethodBeat.o(127071);
+        return;
+      }
+      if (paramMediaCodecInfo.isBitrateModeSupported(0))
+      {
+        Log.i("MicroMsg.MediaCodecTransCodeEncoder", "support cq bitrate mode");
+        this.mediaFormat.setInteger("bitrate-mode", 0);
+        AppMethodBeat.o(127071);
+        return;
+      }
+    }
+    catch (Exception paramMediaCodecInfo)
+    {
+      Log.e("MicroMsg.MediaCodecTransCodeEncoder", "trySetBitRateMode error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
+      AppMethodBeat.o(127071);
+      return;
+    }
+    Log.i("MicroMsg.MediaCodecTransCodeEncoder", "both cbr and cq bitrate mode not support!");
+    label137:
+    AppMethodBeat.o(127071);
+  }
+  
+  private void trySetProfile(MediaCodecInfo paramMediaCodecInfo)
+  {
+    AppMethodBeat.i(127070);
+    if (d.rb(23)) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType("video/avc");
+        if (paramMediaCodecInfo != null)
+        {
+          paramMediaCodecInfo = paramMediaCodecInfo.profileLevels;
+          if (paramMediaCodecInfo != null)
+          {
+            MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = new MediaCodecInfo.CodecProfileLevel();
+            localCodecProfileLevel.level = 0;
+            localCodecProfileLevel.profile = 0;
+            int j = paramMediaCodecInfo.length;
+            i = 0;
+            if (i < j)
+            {
+              Object localObject = paramMediaCodecInfo[i];
+              int k = localObject.profile;
+              int m = localObject.level;
+              Log.i("MicroMsg.MediaCodecTransCodeEncoder", "profile: %s, level: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+              if ((!isRecognizedProfile(k)) || (k < localCodecProfileLevel.profile) || (m < localCodecProfileLevel.level)) {
+                break label272;
+              }
+              localCodecProfileLevel.profile = k;
+              localCodecProfileLevel.level = m;
+              break label272;
+            }
+            Log.i("MicroMsg.MediaCodecTransCodeEncoder", "best profile: %s, level: %s", new Object[] { Integer.valueOf(localCodecProfileLevel.profile), Integer.valueOf(localCodecProfileLevel.level) });
+            if ((localCodecProfileLevel.profile > 0) && (localCodecProfileLevel.level >= 256))
+            {
+              this.mediaFormat.setInteger("profile", localCodecProfileLevel.profile);
+              this.mediaFormat.setInteger("level", 256);
+            }
+          }
+        }
+        AppMethodBeat.o(127070);
+        return;
+      }
+      catch (Exception paramMediaCodecInfo)
+      {
+        Log.e("MicroMsg.MediaCodecTransCodeEncoder", "trySetProfile error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
+      }
+      AppMethodBeat.o(127070);
+      return;
+      label272:
+      i += 1;
+    }
+  }
+  
+  public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, long paramLong, int paramInt5)
+  {
+    AppMethodBeat.i(127072);
+    if ((!paramBoolean) && (paramArrayOfByte != null))
+    {
+      if ((paramInt3 == this.nxO) && (paramInt4 == this.nxP))
+      {
+        paramBoolean = false;
+        Log.d("MicroMsg.MediaCodecTransCodeEncoder", "writeData, needScale: %s, srcSize: [%s, %s] [%s, %s], targetSize: [%s, %s], pts: %s, srcColorFormat: %s, dstColorFormat: %s, data.size:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(this.nxO), Integer.valueOf(this.nxP), Long.valueOf(paramLong), Integer.valueOf(paramInt5), Integer.valueOf(this.pco), Integer.valueOf(paramArrayOfByte.length) });
+        if (this.pcn == null) {
+          this.pcn = new byte[this.nxO * this.nxP * 3 >> 1];
+        }
+        if (this.pcn.length != paramArrayOfByte.length) {
+          this.pcn = new byte[paramArrayOfByte.length];
+        }
+        if ((this.colorFormat != 19) || (paramBoolean)) {
+          break label250;
+        }
+        System.arraycopy(paramArrayOfByte, 0, this.pcn, 0, paramArrayOfByte.length);
+      }
+      for (;;)
+      {
+        this.pcj += 1;
+        b(this.pcn, false, paramLong);
+        AppMethodBeat.o(127072);
+        return;
+        paramBoolean = true;
+        break;
+        label250:
+        MP4MuxerJNI.yuv420pTo420XXAndScaleLock(paramArrayOfByte, paramInt5, this.pcn, this.pco, paramInt1, paramInt2, paramInt3, paramInt4, this.nxO, this.nxP);
+      }
+    }
+    b(this.pcn, true, paramLong);
+    AppMethodBeat.o(127072);
+  }
+  
+  public final int xf(int paramInt)
+  {
+    AppMethodBeat.i(127068);
+    try
+    {
+      this.bufId = paramInt;
+      paramInt = bOO();
+      AppMethodBeat.o(127068);
+      return paramInt;
+    }
+    catch (Exception localException1)
+    {
+      Log.e("MicroMsg.MediaCodecTransCodeEncoder", "init error: %s, try to re-init again", new Object[] { localException1.getMessage() });
+      try
+      {
+        paramInt = bOO();
+        AppMethodBeat.o(127068);
+        return paramInt;
+      }
+      catch (Exception localException2)
+      {
+        Log.e("MicroMsg.MediaCodecTransCodeEncoder", "re-init again error: %s", new Object[] { localException2.getMessage() });
+        AppMethodBeat.o(127068);
+      }
+    }
+    return -1;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, ByteBuffer paramByteBuffer, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.be.c
  * JD-Core Version:    0.7.0.1
  */

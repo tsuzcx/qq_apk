@@ -1,40 +1,24 @@
-import android.content.res.Resources;
-import android.support.v7.app.ActionBar;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-import java.util.ArrayList;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class enk
-  implements AdapterView.OnItemSelectedListener
+  implements AdapterView.OnItemClickListener
 {
   public enk(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.jdField_b_of_type_Int = paramInt;
-    if (this.a.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(this.a.jdField_b_of_type_Int)))
+    if (PhotoPreviewActivity.a(this.a))
     {
-      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
-        break label135;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + " / " + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    for (;;)
-    {
-      this.a.getSupportActionBar().setTitle(this.a.jdField_a_of_type_AndroidWidgetTextView.getText());
+      PhotoPreviewActivity.a(this.a, false);
+      this.a.a.setVisibility(4);
+      this.a.b.setVisibility(4);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break;
-      label135:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.getResources().getString(2131562660));
     }
+    PhotoPreviewActivity.a(this.a, true);
+    this.a.b.setVisibility(0);
   }
 }
 

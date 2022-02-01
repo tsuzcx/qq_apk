@@ -15,20 +15,23 @@ class MiniAppDesktop$2
   {
     if (paramInt4 != paramInt8)
     {
-      QLog.d("MiniAppDesktop", 1, "navigation bar change. rootView Height = " + MiniAppDesktop.access$100(this.this$0).getHeight() + ", mode = " + MiniAppDesktop.access$200(this.this$0));
+      paramView = new StringBuilder();
+      paramView.append("navigation bar change. rootView Height = ");
+      paramView.append(MiniAppDesktop.access$100(this.this$0).getHeight());
+      paramView.append(", mode = ");
+      paramView.append(MiniAppDesktop.access$200(this.this$0));
+      QLog.d("MiniAppDesktop", 1, paramView.toString());
       MiniAppDesktop.access$300(this.this$0).checkContentViewLayoutChanged(MiniAppDesktop.access$100(this.this$0).getHeight());
-      if (MiniAppDesktop.access$200(this.this$0) == 3) {}
+      if (MiniAppDesktop.access$200(this.this$0) != 3) {
+        return;
+      }
+      MiniAppDesktop.access$300(this.this$0).postDelayed(new MiniAppDesktop.2.1(this), 50L);
     }
-    else
-    {
-      return;
-    }
-    MiniAppDesktop.access$300(this.this$0).postDelayed(new MiniAppDesktop.2.1(this), 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.2
  * JD-Core Version:    0.7.0.1
  */

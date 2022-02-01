@@ -37,14 +37,15 @@ public final class IPCRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.head, 0);
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 1);
+    byte[] arrayOfByte = this.body;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCRequest
  * JD-Core Version:    0.7.0.1
  */

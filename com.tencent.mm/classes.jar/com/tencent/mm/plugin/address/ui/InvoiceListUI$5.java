@@ -11,15 +11,15 @@ final class InvoiceListUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(16862);
-    InvoiceListUI.a(this.gMn);
-    AppMethodBeat.o(16862);
+    AppMethodBeat.i(20905);
+    InvoiceListUI.a(this.qjk);
+    AppMethodBeat.o(20905);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceListUI.5
  * JD-Core Version:    0.7.0.1
  */

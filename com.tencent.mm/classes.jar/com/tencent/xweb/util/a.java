@@ -12,58 +12,58 @@ public final class a
   
   public static String a(String paramString, SecretKey paramSecretKey)
   {
-    AppMethodBeat.i(3997);
-    paramString = a(aye(paramString), paramSecretKey);
+    AppMethodBeat.i(156985);
+    paramString = a(bHW(paramString), paramSecretKey);
     if (paramString == null)
     {
-      AppMethodBeat.o(3997);
+      AppMethodBeat.o(156985);
       return "";
     }
     paramString = new String(paramString);
-    AppMethodBeat.o(3997);
+    AppMethodBeat.o(156985);
     return paramString;
   }
   
   private static byte[] a(byte[] paramArrayOfByte, SecretKey paramSecretKey)
   {
-    AppMethodBeat.i(3996);
+    AppMethodBeat.i(156984);
     try
     {
       paramSecretKey = new SecretKeySpec(paramSecretKey.getEncoded(), "AES");
       Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
       localCipher.init(2, paramSecretKey);
       paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-      AppMethodBeat.o(3996);
+      AppMethodBeat.o(156984);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte)
+    finally
     {
       Log.e(TAG, "decrypt exp:" + paramArrayOfByte.getMessage());
-      AppMethodBeat.o(3996);
+      AppMethodBeat.o(156984);
     }
     return null;
   }
   
-  public static SecretKey ayd(String paramString)
+  public static SecretKey bHV(String paramString)
   {
-    AppMethodBeat.i(3995);
+    AppMethodBeat.i(156983);
     try
     {
-      paramString = new SecretKeySpec(aye(paramString), "AES");
-      AppMethodBeat.o(3995);
+      paramString = new SecretKeySpec(bHW(paramString), "AES");
+      AppMethodBeat.o(156983);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
       Log.e(TAG, "makekey exp:" + paramString.getMessage());
-      AppMethodBeat.o(3995);
+      AppMethodBeat.o(156983);
     }
     return null;
   }
   
-  private static byte[] aye(String paramString)
+  public static byte[] bHW(String paramString)
   {
-    AppMethodBeat.i(3998);
+    AppMethodBeat.i(156986);
     int j = paramString.length();
     byte[] arrayOfByte = new byte[j / 2];
     int i = 0;
@@ -72,13 +72,13 @@ public final class a
       arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
       i += 2;
     }
-    AppMethodBeat.o(3998);
+    AppMethodBeat.o(156986);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.util.a
  * JD-Core Version:    0.7.0.1
  */

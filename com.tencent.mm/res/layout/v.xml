@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.view.menu.ExpandedMenuView android:id="@id/k9" android:layout_width="?fn" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/gg" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/d2z" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginTop="@dimen/cv" android:weightSum="3.0">
+        <include android:id="@id/ard" layout="@layout/aa3" />
+        <include android:id="@id/are" layout="@layout/aa3" />
+        <include android:id="@id/arf" layout="@layout/aa3" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/fow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/d4">
+        <TextView android:textSize="15.0dip" android:textColor="@color/a1c" android:id="@id/fov" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d31" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_marginStart="2.0dip" app:iconColor="@color/BW_70" />
+    </LinearLayout>
+</LinearLayout>

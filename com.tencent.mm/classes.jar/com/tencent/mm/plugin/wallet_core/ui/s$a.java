@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.view.View;
+
 public abstract interface s$a
 {
-  public abstract void bOM();
-  
-  public abstract void bON();
-  
-  public abstract void cancel();
+  public abstract void eS(View paramView);
 }
 
 

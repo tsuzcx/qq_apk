@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/bmf" android:paddingBottom="@dimen/bmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingVertical="@dimen/bmf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.image.URLImageView android:id="@id/kzc" android:layout_width="@dimen/bmd" android:layout_height="@dimen/bmd" android:layout_marginLeft="16.0dip" android:src="@drawable/com" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/kzf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:includeFontPadding="false" android:layout_toRightOf="@id/kzc" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/imc" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="18.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <Button android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/bfz" android:background="#ffff3b30" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="66.0dip" android:layout_height="fill_parent" android:text="@string/ppg" />
+</LinearLayout>

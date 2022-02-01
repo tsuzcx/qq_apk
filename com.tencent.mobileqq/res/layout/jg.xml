@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/b_1" android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <com.tencent.widget.RoundRelativeLayout android:id="@id/b_1" android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <com.tencent.image.URLImageView android:id="@id/a82" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
             <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:gravity="center_horizontal" android:id="@id/jmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="70.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="70.0dip" />
             <Button android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/af4" android:background="@drawable/common_btn_blue" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:text="下载此刻APP" />
             <TextView android:textSize="12.0dip" android:textColor="#ff12b7f5" android:id="@id/ezq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/l75" />
         </LinearLayout>
-    </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+    </com.tencent.widget.RoundRelativeLayout>
     <ImageView android:id="@id/dg4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@drawable/fcl" />
 </LinearLayout>

@@ -6,43 +6,47 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.shadow.core.common.InstalledApk;
 import com.tencent.shadow.core.common.Logger;
-import com.tencent.shadow.proguard.c;
-import com.tencent.shadow.proguard.d;
-import com.tencent.shadow.proguard.j;
-import com.tencent.shadow.proguard.o;
 import java.io.File;
 
 public class PluginProcessService
-  extends c
+  extends BasePluginProcessService
 {
-  private static d g = new d();
-  public UuidManager b;
-  public PluginLoaderImpl c;
-  public boolean d = false;
-  public String e = "";
-  private final o f = new o(this);
+  static final BasePluginProcessService.ActivityHolder sActivityHolder = new BasePluginProcessService.ActivityHolder();
+  private PluginLoaderImpl mPluginLoader;
+  private final PpsBinder mPpsControllerBinder = new PpsBinder(this);
+  private boolean mRuntimeLoaded = false;
+  private String mUuid = "";
+  private UuidManager mUuidManager;
   
-  private void b()
+  private void checkUuidManagerNotNull()
   {
-    if (this.b == null) {
-      throw new FailedException(4, "mUuidManager == null");
-    }
-  }
-  
-  private void c(String paramString)
-  {
-    if (this.e.isEmpty()) {
-      this.e = paramString;
-    }
-    while (this.e.equals(paramString)) {
+    if (this.mUuidManager != null) {
       return;
     }
-    throw new FailedException(6, "已设置过uuid==" + this.e + "试图设置uuid==" + paramString);
+    throw new FailedException(4, "mUuidManager == null");
   }
   
   public static Application.ActivityLifecycleCallbacks getActivityHolder()
   {
-    return g;
+    return sActivityHolder;
+  }
+  
+  private void setUuid(String paramString)
+  {
+    if (this.mUuid.isEmpty())
+    {
+      this.mUuid = paramString;
+      return;
+    }
+    if (this.mUuid.equals(paramString)) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("已设置过uuid==");
+    localStringBuilder.append(this.mUuid);
+    localStringBuilder.append("试图设置uuid==");
+    localStringBuilder.append(paramString);
+    throw new FailedException(6, localStringBuilder.toString());
   }
   
   public static PpsController wrapBinder(IBinder paramIBinder)
@@ -50,12 +54,12 @@ public class PluginProcessService
     return new PpsController(paramIBinder);
   }
   
-  public final void a()
+  void exit()
   {
-    if (this.a.isInfoEnabled()) {
-      this.a.info("exit ");
+    if (this.mLogger.isInfoEnabled()) {
+      this.mLogger.info("exit ");
     }
-    g.a();
+    sActivityHolder.finishAll();
     System.exit(0);
     try
     {
@@ -65,230 +69,211 @@ public class PluginProcessService
     catch (InterruptedException localInterruptedException) {}
   }
   
-  public final void a(UuidManager paramUuidManager)
+  IBinder getPluginLoader()
   {
-    if (this.a.isInfoEnabled()) {
-      this.a.info("setUuidManager uuidManager==" + paramUuidManager);
+    return this.mPluginLoader;
+  }
+  
+  PpsStatus getPpsStatus()
+  {
+    String str = this.mUuid;
+    boolean bool3 = this.mRuntimeLoaded;
+    PluginLoaderImpl localPluginLoaderImpl = this.mPluginLoader;
+    boolean bool2 = true;
+    boolean bool1;
+    if (localPluginLoaderImpl != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    this.b = paramUuidManager;
-    if (this.c != null)
+    if (this.mUuidManager == null) {
+      bool2 = false;
+    }
+    return new PpsStatus(str, bool3, bool1, bool2);
+  }
+  
+  void loadPluginLoader(String paramString)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (this.mLogger.isInfoEnabled())
     {
-      if (this.a.isInfoEnabled()) {
-        this.a.info("更新mPluginLoader的uuidManager");
-      }
-      this.c.setUuidManager(paramUuidManager);
+      localObject1 = this.mLogger;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadPluginLoader uuid:");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" mPluginLoader:");
+      ((StringBuilder)localObject2).append(this.mPluginLoader);
+      ((Logger)localObject1).info(((StringBuilder)localObject2).toString());
     }
-  }
-  
-  /* Error */
-  public final void a(String paramString)
-  {
-    // Byte code:
-    //   0: ldc 137
-    //   2: new 62	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 139
-    //   8: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: aload_1
-    //   12: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   18: invokestatic 145	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   21: pop
-    //   22: aload_0
-    //   23: invokespecial 147	com/tencent/shadow/dynamic/host/PluginProcessService:b	()V
-    //   26: aload_0
-    //   27: aload_1
-    //   28: invokespecial 149	com/tencent/shadow/dynamic/host/PluginProcessService:c	(Ljava/lang/String;)V
-    //   31: aload_0
-    //   32: getfield 36	com/tencent/shadow/dynamic/host/PluginProcessService:d	Z
-    //   35: ifeq +15 -> 50
-    //   38: new 44	com/tencent/shadow/dynamic/host/FailedException
-    //   41: dup
-    //   42: bipush 7
-    //   44: ldc 151
-    //   46: invokespecial 49	com/tencent/shadow/dynamic/host/FailedException:<init>	(ILjava/lang/String;)V
-    //   49: athrow
-    //   50: aload_0
-    //   51: getfield 91	com/tencent/shadow/dynamic/host/PluginProcessService:a	Lcom/tencent/shadow/core/common/Logger;
-    //   54: invokeinterface 96 1 0
-    //   59: ifeq +28 -> 87
-    //   62: aload_0
-    //   63: getfield 91	com/tencent/shadow/dynamic/host/PluginProcessService:a	Lcom/tencent/shadow/core/common/Logger;
-    //   66: new 62	java/lang/StringBuilder
-    //   69: dup
-    //   70: ldc 153
-    //   72: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   75: aload_1
-    //   76: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokeinterface 101 2 0
-    //   87: ldc 137
-    //   89: ldc 155
-    //   91: invokestatic 145	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   94: pop
-    //   95: aload_0
-    //   96: getfield 42	com/tencent/shadow/dynamic/host/PluginProcessService:b	Lcom/tencent/shadow/dynamic/host/UuidManager;
-    //   99: aload_1
-    //   100: invokeinterface 161 2 0
-    //   105: astore_2
-    //   106: new 163	com/tencent/shadow/core/common/InstalledApk
-    //   109: dup
-    //   110: aload_2
-    //   111: getfield 166	com/tencent/shadow/core/common/InstalledApk:apkFilePath	Ljava/lang/String;
-    //   114: aload_2
-    //   115: getfield 169	com/tencent/shadow/core/common/InstalledApk:oDexPath	Ljava/lang/String;
-    //   118: aload_2
-    //   119: getfield 172	com/tencent/shadow/core/common/InstalledApk:libraryPath	Ljava/lang/String;
-    //   122: invokespecial 175	com/tencent/shadow/core/common/InstalledApk:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   125: astore_1
-    //   126: aload_1
-    //   127: invokestatic 181	com/tencent/shadow/dynamic/host/DynamicRuntime:loadRuntime	(Lcom/tencent/shadow/core/common/InstalledApk;)Z
-    //   130: ifeq +8 -> 138
-    //   133: aload_0
-    //   134: aload_1
-    //   135: invokestatic 185	com/tencent/shadow/dynamic/host/DynamicRuntime:saveLastRuntimeInfo	(Landroid/content/Context;Lcom/tencent/shadow/core/common/InstalledApk;)V
-    //   138: aload_0
-    //   139: iconst_1
-    //   140: putfield 36	com/tencent/shadow/dynamic/host/PluginProcessService:d	Z
-    //   143: return
-    //   144: astore_1
-    //   145: ldc 137
-    //   147: ldc 187
-    //   149: invokestatic 145	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   152: pop
-    //   153: new 44	com/tencent/shadow/dynamic/host/FailedException
-    //   156: dup
-    //   157: iconst_5
-    //   158: aload_1
-    //   159: invokevirtual 190	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   162: invokespecial 49	com/tencent/shadow/dynamic/host/FailedException:<init>	(ILjava/lang/String;)V
-    //   165: athrow
-    //   166: astore_1
-    //   167: aload_0
-    //   168: getfield 91	com/tencent/shadow/dynamic/host/PluginProcessService:a	Lcom/tencent/shadow/core/common/Logger;
-    //   171: invokeinterface 193 1 0
-    //   176: ifeq +15 -> 191
-    //   179: aload_0
-    //   180: getfield 91	com/tencent/shadow/dynamic/host/PluginProcessService:a	Lcom/tencent/shadow/core/common/Logger;
-    //   183: ldc 195
-    //   185: aload_1
-    //   186: invokeinterface 199 3 0
-    //   191: new 44	com/tencent/shadow/dynamic/host/FailedException
-    //   194: dup
-    //   195: aload_1
-    //   196: invokespecial 202	com/tencent/shadow/dynamic/host/FailedException:<init>	(Ljava/lang/RuntimeException;)V
-    //   199: athrow
-    //   200: astore_2
-    //   201: ldc 137
-    //   203: ldc 204
-    //   205: invokestatic 145	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   208: pop
-    //   209: new 44	com/tencent/shadow/dynamic/host/FailedException
-    //   212: dup
-    //   213: iconst_3
-    //   214: new 62	java/lang/StringBuilder
-    //   217: dup
-    //   218: ldc 206
-    //   220: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   223: aload_1
-    //   224: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: ldc 208
-    //   229: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: aload_2
-    //   233: invokevirtual 209	com/tencent/shadow/dynamic/host/NotFoundException:getMessage	()Ljava/lang/String;
-    //   236: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   239: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   242: invokespecial 49	com/tencent/shadow/dynamic/host/FailedException:<init>	(ILjava/lang/String;)V
-    //   245: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	246	0	this	PluginProcessService
-    //   0	246	1	paramString	String
-    //   105	14	2	localInstalledApk	InstalledApk
-    //   200	33	2	localNotFoundException	NotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   87	106	144	android/os/RemoteException
-    //   50	87	166	java/lang/RuntimeException
-    //   87	106	166	java/lang/RuntimeException
-    //   106	138	166	java/lang/RuntimeException
-    //   138	143	166	java/lang/RuntimeException
-    //   145	166	166	java/lang/RuntimeException
-    //   201	246	166	java/lang/RuntimeException
-    //   87	106	200	com/tencent/shadow/dynamic/host/NotFoundException
-  }
-  
-  public final void b(String paramString)
-  {
-    if (this.a.isInfoEnabled()) {
-      this.a.info("loadPluginLoader uuid:" + paramString + " mPluginLoader:" + this.c);
-    }
-    b();
-    c(paramString);
-    if (this.c != null) {
-      throw new FailedException(8, "重复调用loadPluginLoader");
-    }
+    checkUuidManagerNotNull();
+    setUuid(paramString);
+    if (this.mPluginLoader == null) {}
     try
     {
-      InstalledApk localInstalledApk = this.b.getPluginLoader(paramString);
-      if (this.a.isInfoEnabled()) {
-        this.a.info("取出uuid==" + paramString + "的Loader apk:" + localInstalledApk.apkFilePath);
+      localObject1 = this.mUuidManager.getPluginLoader(paramString);
+      if (this.mLogger.isInfoEnabled())
+      {
+        localObject2 = this.mLogger;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("取出uuid==");
+        localStringBuilder2.append(paramString);
+        localStringBuilder2.append("的Loader apk:");
+        localStringBuilder2.append(((InstalledApk)localObject1).apkFilePath);
+        ((Logger)localObject2).info(localStringBuilder2.toString());
       }
-      File localFile = new File(localInstalledApk.apkFilePath);
-      if (!localFile.exists()) {
-        throw new FailedException(3, localFile.getAbsolutePath() + "文件不存在");
+      localObject2 = new File(((InstalledApk)localObject1).apkFilePath);
+      if (((File)localObject2).exists())
+      {
+        paramString = new LoaderImplLoader().load((InstalledApk)localObject1, paramString, getApplicationContext());
+        paramString.setUuidManager(this.mUuidManager);
+        this.mPluginLoader = paramString;
+        return;
       }
-    }
-    catch (RuntimeException paramString)
-    {
-      if (this.a.isErrorEnabled()) {
-        this.a.error("loadPluginLoader发生RuntimeException", paramString);
-      }
-      throw new FailedException(paramString);
-    }
-    catch (RemoteException paramString)
-    {
-      if (this.a.isErrorEnabled()) {
-        this.a.error("获取Loader Apk失败", paramString);
-      }
-      throw new FailedException(5, paramString.getMessage());
-    }
-    catch (FailedException paramString)
-    {
-      throw paramString;
+      paramString = new StringBuilder();
+      paramString.append(((File)localObject2).getAbsolutePath());
+      paramString.append("文件不存在");
+      throw new FailedException(3, paramString.toString());
     }
     catch (NotFoundException localNotFoundException)
     {
-      throw new FailedException(3, "uuid==" + paramString + "的PluginLoader没有找到。cause:" + localNotFoundException.getMessage());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uuid==");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("的PluginLoader没有找到。cause:");
+      ((StringBuilder)localObject2).append(localNotFoundException.getMessage());
+      throw new FailedException(3, ((StringBuilder)localObject2).toString());
+    }
+    catch (RemoteException paramString)
+    {
+      if (this.mLogger.isErrorEnabled()) {
+        this.mLogger.error("获取Loader Apk失败", paramString);
+      }
+      throw new FailedException(5, paramString.getMessage());
+      if (this.mLogger.isErrorEnabled()) {
+        this.mLogger.error("loadPluginLoader发生Exception", paramString);
+      }
+      if (paramString.getCause() != null) {
+        paramString = paramString.getCause().getMessage();
+      } else {
+        paramString = paramString.getMessage();
+      }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("加载动态实现失败 cause：");
+      localStringBuilder1.append(paramString);
+      throw new FailedException(2, localStringBuilder1.toString());
+      throw paramString;
+      if (this.mLogger.isErrorEnabled()) {
+        this.mLogger.error("loadPluginLoader发生RuntimeException", paramString);
+      }
+      throw new FailedException(paramString);
+      throw new FailedException(8, "重复调用loadPluginLoader");
     }
     catch (Exception paramString)
     {
-      if (this.a.isErrorEnabled()) {
-        this.a.error("loadPluginLoader发生Exception", paramString);
-      }
-      if (paramString.getCause() == null) {}
+      break label339;
     }
-    for (paramString = paramString.getCause().getMessage();; paramString = paramString.getMessage())
+    catch (FailedException paramString)
     {
-      throw new FailedException(2, "加载动态实现失败 cause：" + paramString);
-      paramString = new j().a(localNotFoundException, paramString, getApplicationContext());
-      paramString.setUuidManager(this.b);
-      this.c = paramString;
-      return;
+      label420:
+      label422:
+      break label420;
+    }
+    catch (RuntimeException paramString)
+    {
+      label339:
+      break label422;
+    }
+  }
+  
+  void loadRuntime(String paramString)
+  {
+    checkUuidManagerNotNull();
+    setUuid(paramString);
+    if (!this.mRuntimeLoaded) {
+      try
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        if (this.mLogger.isInfoEnabled())
+        {
+          localObject = this.mLogger;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadRuntime uuid:");
+          localStringBuilder.append(paramString);
+          ((Logger)localObject).info(localStringBuilder.toString());
+        }
+        try
+        {
+          localObject = this.mUuidManager.getRuntime(paramString);
+          paramString = new InstalledApk(((InstalledApk)localObject).apkFilePath, ((InstalledApk)localObject).oDexPath, ((InstalledApk)localObject).libraryPath);
+          if (DynamicRuntime.loadRuntime(paramString)) {
+            DynamicRuntime.saveLastRuntimeInfo(this, paramString);
+          }
+          this.mRuntimeLoaded = true;
+          return;
+        }
+        catch (NotFoundException localNotFoundException)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("uuid==");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("的Runtime没有找到。cause:");
+          localStringBuilder.append(localNotFoundException.getMessage());
+          throw new FailedException(3, localStringBuilder.toString());
+        }
+        catch (RemoteException paramString)
+        {
+          throw new FailedException(5, paramString.getMessage());
+        }
+        throw new FailedException(7, "重复调用loadRuntime");
+      }
+      catch (RuntimeException paramString)
+      {
+        if (this.mLogger.isErrorEnabled()) {
+          this.mLogger.error("loadRuntime发生RuntimeException", paramString);
+        }
+        throw new FailedException(paramString);
+      }
     }
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    if (this.a.isInfoEnabled()) {
-      this.a.info("onBind:" + this);
+    if (this.mLogger.isInfoEnabled())
+    {
+      paramIntent = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onBind:");
+      localStringBuilder.append(this);
+      paramIntent.info(localStringBuilder.toString());
     }
-    return this.f;
+    return this.mPpsControllerBinder;
+  }
+  
+  void setUuidManager(UuidManager paramUuidManager)
+  {
+    if (this.mLogger.isInfoEnabled())
+    {
+      Logger localLogger = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUuidManager uuidManager==");
+      localStringBuilder.append(paramUuidManager);
+      localLogger.info(localStringBuilder.toString());
+    }
+    this.mUuidManager = paramUuidManager;
+    if (this.mPluginLoader != null)
+    {
+      if (this.mLogger.isInfoEnabled()) {
+        this.mLogger.info("更新mPluginLoader的uuidManager");
+      }
+      this.mPluginLoader.setUuidManager(paramUuidManager);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.PluginProcessService
  * JD-Core Version:    0.7.0.1
  */

@@ -14,22 +14,22 @@ public final class get_photo_list_2_req
   static int cache_type;
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String ciphertext = "";
   public String curlloc = "";
-  public long face_uin;
-  public boolean need_pos;
+  public long face_uin = 0L;
+  public boolean need_pos = false;
   public String password = "";
   public long password_cleartext = 1L;
-  public int pn;
-  public int ps;
+  public int pn = 0;
+  public int ps = 0;
   public String req_url = "";
-  public long sharer;
-  public int sheight;
+  public long sharer = 0L;
+  public int sheight = 0;
   public int sort_type = 0;
-  public int swidth;
-  public int type;
-  public long uin;
+  public int swidth = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   static
   {
@@ -89,37 +89,43 @@ public final class get_photo_list_2_req
     paramJceOutputStream.write(this.albumid, 2);
     paramJceOutputStream.write(this.ps, 3);
     paramJceOutputStream.write(this.pn, 4);
-    if (this.password != null) {
-      paramJceOutputStream.write(this.password, 5);
+    Object localObject = this.password;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.curlloc != null) {
-      paramJceOutputStream.write(this.curlloc, 6);
+    localObject = this.curlloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.swidth, 7);
     paramJceOutputStream.write(this.sheight, 8);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 9);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
-    if (this.req_url != null) {
-      paramJceOutputStream.write(this.req_url, 10);
+    localObject = this.req_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.face_uin, 11);
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 12);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.password_cleartext, 13);
     paramJceOutputStream.write(this.type, 14);
     paramJceOutputStream.write(this.sharer, 15);
     paramJceOutputStream.write(this.need_pos, 16);
     paramJceOutputStream.write(this.sort_type, 17);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 18);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_2_req
  * JD-Core Version:    0.7.0.1
  */

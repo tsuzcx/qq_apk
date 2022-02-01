@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
-import heh;
+import heg;
 
 public class VipUtils
 {
@@ -75,24 +75,24 @@ public class VipUtils
     return 0;
   }
   
-  public static void a(Activity paramActivity, heh paramheh)
+  public static void a(Activity paramActivity, heg paramheg)
   {
-    if ((paramheh != null) && (paramActivity != null) && (!TextUtils.isEmpty(paramheh.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramheh.d)) && (!TextUtils.isEmpty(paramheh.e)) && (!TextUtils.isEmpty(paramheh.b)) && (!TextUtils.isEmpty(paramheh.c)) && (paramheh.jdField_a_of_type_Int < 1)) {}
+    if ((paramheg != null) && (paramActivity != null) && (!TextUtils.isEmpty(paramheg.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramheg.d)) && (!TextUtils.isEmpty(paramheg.e)) && (!TextUtils.isEmpty(paramheg.b)) && (!TextUtils.isEmpty(paramheg.c)) && (paramheg.jdField_a_of_type_Int < 1)) {}
   }
   
   public static void a(BaseActivity paramBaseActivity, int paramInt, String paramString)
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      heh localheh = new heh();
-      localheh.jdField_a_of_type_JavaLangString = paramBaseActivity.b.a();
-      localheh.d = paramString;
-      localheh.e = "1450000515";
-      localheh.b = "LTMCLUB";
-      localheh.c = paramBaseActivity.getString(2131562684);
-      localheh.jdField_a_of_type_Int = paramInt;
-      localheh.f = "vip";
-      a(paramBaseActivity, localheh);
+      heg localheg = new heg();
+      localheg.jdField_a_of_type_JavaLangString = paramBaseActivity.b.a();
+      localheg.d = paramString;
+      localheg.e = "1450000515";
+      localheg.b = "LTMCLUB";
+      localheg.c = paramBaseActivity.getString(2131562684);
+      localheg.jdField_a_of_type_Int = paramInt;
+      localheg.f = "vip";
+      a(paramBaseActivity, localheg);
     }
   }
   
@@ -105,15 +105,15 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      heh localheh = new heh();
-      localheh.jdField_a_of_type_JavaLangString = paramBaseActivity.b.a();
-      localheh.d = paramString;
-      localheh.e = "1450000516";
-      localheh.b = "CJCLUBT";
-      localheh.c = paramBaseActivity.getString(2131562993);
-      localheh.jdField_a_of_type_Int = paramInt;
-      localheh.f = "svip";
-      a(paramBaseActivity, localheh);
+      heg localheg = new heg();
+      localheg.jdField_a_of_type_JavaLangString = paramBaseActivity.b.a();
+      localheg.d = paramString;
+      localheg.e = "1450000516";
+      localheg.b = "CJCLUBT";
+      localheg.c = paramBaseActivity.getString(2131562993);
+      localheg.jdField_a_of_type_Int = paramInt;
+      localheg.f = "svip";
+      a(paramBaseActivity, localheg);
     }
   }
   

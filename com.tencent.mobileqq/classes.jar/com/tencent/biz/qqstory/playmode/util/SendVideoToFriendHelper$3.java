@@ -1,22 +1,21 @@
 package com.tencent.biz.qqstory.playmode.util;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import vls;
-import vmg;
 
-public class SendVideoToFriendHelper$3
+class SendVideoToFriendHelper$3
   implements Runnable
 {
-  public SendVideoToFriendHelper$3(vmg paramvmg, StoryVideoItem paramStoryVideoItem) {}
+  SendVideoToFriendHelper$3(SendVideoToFriendHelper paramSendVideoToFriendHelper, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    vls.b(this.a, this.a.mStoryType, "SendVideoToFriendHelper");
+    StoryVideoItem localStoryVideoItem = this.a;
+    PlayModeUtils.b(localStoryVideoItem, localStoryVideoItem.mStoryType, "SendVideoToFriendHelper");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,31 +17,31 @@ class CompletableOnSubscribeMerge$CompletableMergeSubscriber$1
   
   public void onCompleted()
   {
-    if (this.innerDone) {}
-    do
-    {
+    if (this.innerDone) {
       return;
-      this.innerDone = true;
-      this.this$0.set.remove(this.d);
-      this.this$0.terminate();
-    } while (this.this$0.done);
-    CompletableOnSubscribeMerge.CompletableMergeSubscriber.access$100(this.this$0, 1L);
+    }
+    this.innerDone = true;
+    this.this$0.set.remove(this.d);
+    this.this$0.terminate();
+    if (!this.this$0.done) {
+      CompletableOnSubscribeMerge.CompletableMergeSubscriber.access$100(this.this$0, 1L);
+    }
   }
   
   public void onError(Throwable paramThrowable)
   {
-    if (this.innerDone) {
-      RxJavaPlugins.getInstance().getErrorHandler().handleError(paramThrowable);
-    }
-    do
+    if (this.innerDone)
     {
+      RxJavaPlugins.getInstance().getErrorHandler().handleError(paramThrowable);
       return;
-      this.innerDone = true;
-      this.this$0.set.remove(this.d);
-      this.this$0.getOrCreateErrors().offer(paramThrowable);
-      this.this$0.terminate();
-    } while ((!this.this$0.delayErrors) || (this.this$0.done));
-    CompletableOnSubscribeMerge.CompletableMergeSubscriber.access$000(this.this$0, 1L);
+    }
+    this.innerDone = true;
+    this.this$0.set.remove(this.d);
+    this.this$0.getOrCreateErrors().offer(paramThrowable);
+    this.this$0.terminate();
+    if ((this.this$0.delayErrors) && (!this.this$0.done)) {
+      CompletableOnSubscribeMerge.CompletableMergeSubscriber.access$000(this.this$0, 1L);
+    }
   }
   
   public void onSubscribe(Subscription paramSubscription)
@@ -52,7 +52,7 @@ class CompletableOnSubscribeMerge$CompletableMergeSubscriber$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeMerge.CompletableMergeSubscriber.1
  * JD-Core Version:    0.7.0.1
  */

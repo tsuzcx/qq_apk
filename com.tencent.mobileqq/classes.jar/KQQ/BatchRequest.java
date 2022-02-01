@@ -9,9 +9,9 @@ public final class BatchRequest
 {
   static byte[] cache_buffer;
   static int cache_type;
-  public byte[] buffer;
-  public int seq;
-  public int type;
+  public byte[] buffer = null;
+  public int seq = 0;
+  public int type = 0;
   
   public BatchRequest() {}
   
@@ -38,14 +38,15 @@ public final class BatchRequest
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.seq, 1);
-    if (this.buffer != null) {
-      paramJceOutputStream.write(this.buffer, 2);
+    byte[] arrayOfByte = this.buffer;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.BatchRequest
  * JD-Core Version:    0.7.0.1
  */

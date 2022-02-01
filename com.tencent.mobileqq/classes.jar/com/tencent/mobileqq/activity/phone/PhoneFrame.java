@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.phone;
 
-import ailh;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +7,7 @@ import android.util.AttributeSet;
 public class PhoneFrame
   extends PhoneInnerFrame
 {
-  private ailh a;
+  private BaseActivityView.IPhoneContext b;
   
   public PhoneFrame(Context paramContext)
   {
@@ -25,19 +24,19 @@ public class PhoneFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected ailh a()
+  protected BaseActivityView.IPhoneContext f()
   {
-    return this.a;
+    return this.b;
   }
   
-  public void f()
+  public void g()
   {
-    a().finish();
+    getActivity().finish();
   }
   
-  public void setPhoneContext(ailh paramailh)
+  public void setPhoneContext(BaseActivityView.IPhoneContext paramIPhoneContext)
   {
-    this.a = paramailh;
+    this.b = paramIPhoneContext;
   }
 }
 

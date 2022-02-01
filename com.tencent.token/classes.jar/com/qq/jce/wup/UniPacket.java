@@ -11,8 +11,8 @@ public class UniPacket
   extends UniAttribute
 {
   public static final int UniPacketHeadSize = 4;
-  static HashMap cache__tempdata = null;
-  static HashMap newCache__tempdata = null;
+  static HashMap<String, HashMap<String, byte[]>> cache__tempdata;
+  static HashMap<String, byte[]> newCache__tempdata;
   protected RequestPacket _package = new RequestPacket();
   private int oldRespIret = 0;
   
@@ -52,8 +52,9 @@ public class UniPacket
     localJceInputStream.setServerEncoding(this.encodeName);
     if (newCache__tempdata == null)
     {
-      newCache__tempdata = new HashMap();
-      newCache__tempdata.put("", new byte[0]);
+      HashMap localHashMap = new HashMap();
+      newCache__tempdata = localHashMap;
+      localHashMap.put("", new byte[0]);
     }
     this._newData = localJceInputStream.readMap(newCache__tempdata, 0, false);
   }
@@ -89,76 +90,79 @@ public class UniPacket
   
   public void decode(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this._package.readFrom(paramArrayOfByte);
-      if (this._package.iVersion == 3)
+    if (paramArrayOfByte.length >= 4) {
+      try
       {
-        parseBufferV3();
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this._package.readFrom(paramArrayOfByte);
+        if (this._package.iVersion == 3)
+        {
+          parseBufferV3();
+          return;
+        }
+        this._newData = null;
+        parseBufferV2();
         return;
       }
-      this._newData = null;
-      parseBufferV2();
-      return;
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public void decodeVersion2(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if (paramArrayOfByte.length >= 4) {
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this._package.readFrom(paramArrayOfByte);
+        parseBufferV2();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this._package.readFrom(paramArrayOfByte);
-      parseBufferV2();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public void decodeVersion3(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if (paramArrayOfByte.length >= 4) {
+      try
+      {
+        paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+        paramArrayOfByte.setServerEncoding(this.encodeName);
+        this._package.readFrom(paramArrayOfByte);
+        parseBufferV3();
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        throw new RuntimeException(paramArrayOfByte);
+      }
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this._package.readFrom(paramArrayOfByte);
-      parseBufferV3();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    throw new IllegalArgumentException("decode package must include size head");
   }
   
   public byte[] encode()
   {
     if (this._package.iVersion == 2)
     {
-      if ((this._package.sServantName == null) || (this._package.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
+      if ((this._package.sServantName != null) && (!this._package.sServantName.equals("")))
+      {
+        if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
+          throw new IllegalArgumentException("funcName can not is null");
+        }
       }
-      if ((this._package.sFuncName == null) || (this._package.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
+      else {
+        throw new IllegalArgumentException("servantName can not is null");
       }
     }
     else
@@ -174,20 +178,18 @@ public class UniPacket
     ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
     if (this._package.iVersion == 2) {
       ((JceOutputStream)localObject).write(this._data, 0);
-    }
-    for (;;)
-    {
-      this._package.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      localObject = new JceOutputStream(0);
-      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-      this._package.writeTo((JceOutputStream)localObject);
-      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
+    } else {
       ((JceOutputStream)localObject).write(this._newData, 0);
     }
+    this._package.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    localObject = new JceOutputStream(0);
+    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+    this._package.writeTo((JceOutputStream)localObject);
+    localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    int i = localObject.length + 4;
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+    localByteBuffer.putInt(i).put((byte[])localObject).flip();
+    return localByteBuffer.array();
   }
   
   public String getFuncName()
@@ -215,12 +217,14 @@ public class UniPacket
     return this._package.sServantName;
   }
   
-  public void put(String paramString, Object paramObject)
+  public <T> void put(String paramString, T paramT)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    if (!paramString.startsWith("."))
+    {
+      super.put(paramString, paramT);
+      return;
     }
-    super.put(paramString, paramObject);
+    throw new IllegalArgumentException("put name can not startwith . , now is ".concat(String.valueOf(paramString)));
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

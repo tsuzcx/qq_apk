@@ -1,25 +1,18 @@
 import com.tencent.mobileqq.filemanager.activity.FileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-public class frp
-  extends FMObserver
+class frp
+  implements Runnable
 {
-  public frp(FileAssistantActivity paramFileAssistantActivity) {}
+  frp(fro paramfro, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (FileAssistantActivity.a(this.a)) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      FileAssistantActivity.c(this.jdField_a_of_type_Fro.a);
       return;
     }
-    this.a.runOnUiThread(new frq(this, paramBoolean));
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    if (!FileAssistantActivity.a(this.a)) {
-      FMToastUtil.a(paramString);
-    }
+    FileAssistantActivity.d(this.jdField_a_of_type_Fro.a);
   }
 }
 

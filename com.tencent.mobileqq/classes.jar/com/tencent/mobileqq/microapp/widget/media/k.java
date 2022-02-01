@@ -17,21 +17,23 @@ final class k
   public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
     QLog.d(this.a.a, 2, "video player onBackClick");
-    if ((Activity)this.a.m.get() == null) {}
-    while (!this.a.p) {
+    if ((Activity)this.a.m.get() == null) {
       return;
     }
-    this.a.g();
+    if (this.a.p) {
+      this.a.g();
+    }
   }
   
   public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
     QLog.d(this.a.a, 2, "video player onBackOnFullScreenClick");
-    if ((Activity)this.a.m.get() == null) {}
-    while (!this.a.p) {
+    if ((Activity)this.a.m.get() == null) {
       return;
     }
-    this.a.g();
+    if (this.a.p) {
+      this.a.g();
+    }
   }
   
   public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
@@ -52,7 +54,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.k
  * JD-Core Version:    0.7.0.1
  */

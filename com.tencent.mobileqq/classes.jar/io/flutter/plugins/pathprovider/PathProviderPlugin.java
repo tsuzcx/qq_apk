@@ -44,47 +44,54 @@ public class PathProviderPlugin
   {
     paramMethodCall = paramMethodCall.method;
     int i = paramMethodCall.hashCode();
-    if (i != 1200320591) {
-      if (i != 1252916648) {
-        if (i != 1711844626) {
-          label28:
-          i = -1;
-        }
-      }
-    }
-    for (;;)
+    if (i != 1200320591)
     {
-      switch (i)
+      if (i != 1252916648)
       {
-      default: 
-        paramResult.notImplemented();
-        return;
-        if (!paramMethodCall.equals("getTemporaryDirectory")) {
-          break label28;
+        if ((i == 1711844626) && (paramMethodCall.equals("getTemporaryDirectory")))
+        {
+          i = 0;
+          break label75;
         }
-        i = 0;
-        continue;
-        if (!paramMethodCall.equals("getStorageDirectory")) {
-          break label28;
-        }
+      }
+      else if (paramMethodCall.equals("getStorageDirectory"))
+      {
         i = 2;
-        continue;
-        if (!paramMethodCall.equals("getApplicationDocumentsDirectory")) {
-          break label28;
-        }
-        i = 1;
+        break label75;
       }
     }
-    paramResult.success(getPathProviderStorageDirectory());
-    return;
-    paramResult.success(getPathProviderApplicationDocumentsDirectory());
-    return;
-    paramResult.success(getPathProviderTemporaryDirectory());
+    else if (paramMethodCall.equals("getApplicationDocumentsDirectory"))
+    {
+      i = 1;
+      break label75;
+    }
+    i = -1;
+    label75:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          paramResult.notImplemented();
+          return;
+        }
+        paramMethodCall = getPathProviderStorageDirectory();
+      }
+      else
+      {
+        paramMethodCall = getPathProviderApplicationDocumentsDirectory();
+      }
+    }
+    else {
+      paramMethodCall = getPathProviderTemporaryDirectory();
+    }
+    paramResult.success(paramMethodCall);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.pathprovider.PathProviderPlugin
  * JD-Core Version:    0.7.0.1
  */

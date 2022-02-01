@@ -11,14 +11,15 @@ public class BitmapImage
   
   public BitmapImage(BitmapReference paramBitmapReference)
   {
-    if (paramBitmapReference != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.assertTrue(bool);
-      this.mBitmap = paramBitmapReference;
-      initMetaInfo();
-      return;
+    boolean bool;
+    if (paramBitmapReference != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    this.mBitmap = paramBitmapReference;
+    initMetaInfo();
   }
   
   private void initMetaInfo()
@@ -59,7 +60,7 @@ public class BitmapImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.image.BitmapImage
  * JD-Core Version:    0.7.0.1
  */

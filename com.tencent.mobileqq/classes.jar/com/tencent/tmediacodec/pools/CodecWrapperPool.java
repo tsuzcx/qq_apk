@@ -1,41 +1,78 @@
 package com.tencent.tmediacodec.pools;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.tmediacodec.TCodecManager;
 import com.tencent.tmediacodec.codec.FormatWrapper;
 import com.tencent.tmediacodec.codec.ReuseCodecWrapper;
 import com.tencent.tmediacodec.reuse.ReuseHelper.ReuseType;
+import com.tencent.tmediacodec.reuse.ReusePolicy;
+import com.tencent.tmediacodec.reuse.ReusePolicy.EraseType;
 import com.tencent.tmediacodec.util.LogUtils;
-import java.util.HashSet;
 import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.collections.CollectionsKt;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/pools/CodecWrapperPool;", "Lcom/tencent/tmediacodec/pools/Pool;", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "capacity", "", "(I)V", "actionCallback", "Lcom/tencent/tmediacodec/pools/PoolActionCallback;", "storeSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "clear", "", "isEmpty", "", "isFull", "obtain", "y", "pickSuitableCodecWrapper", "format", "put", "t", "remove", "setActionCallback", "callback", "toString", "", "Companion", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class CodecWrapperPool
   implements Pool<ReuseCodecWrapper, FormatWrapper>
 {
-  public static final CodecWrapperPool.Companion Companion = new CodecWrapperPool.Companion(null);
-  @NotNull
   public static final String TAG = "CodecWrapperPool";
   private PoolActionCallback actionCallback;
   private final int capacity;
-  private final HashSet<ReuseCodecWrapper> storeSet;
+  private final String name;
+  private final CopyOnWriteArraySet<ReuseCodecWrapper> storeSet = new CopyOnWriteArraySet();
   
-  public CodecWrapperPool(int paramInt)
+  public CodecWrapperPool(int paramInt, @NonNull String paramString)
   {
     this.capacity = paramInt;
-    this.storeSet = new HashSet();
+    this.name = paramString;
+  }
+  
+  private ReuseCodecWrapper getFirstCodecWrapper()
+  {
+    Iterator localIterator = this.storeSet.iterator();
+    if (localIterator.hasNext()) {
+      return (ReuseCodecWrapper)localIterator.next();
+    }
+    return null;
+  }
+  
+  private ReuseCodecWrapper getRemoveItem(ReuseCodecWrapper paramReuseCodecWrapper)
+  {
+    Iterator localIterator = this.storeSet.iterator();
+    if (TCodecManager.getInstance().getReusePolicy().eraseType == ReusePolicy.EraseType.SAME)
+    {
+      paramReuseCodecWrapper = replaceSameTypeCodec(paramReuseCodecWrapper, localIterator);
+      if (paramReuseCodecWrapper != null) {
+        return paramReuseCodecWrapper;
+      }
+    }
+    return getFirstCodecWrapper();
   }
   
   private final ReuseCodecWrapper pickSuitableCodecWrapper(FormatWrapper paramFormatWrapper)
   {
-    Iterator localIterator = ((Iterable)this.storeSet).iterator();
+    Iterator localIterator = this.storeSet.iterator();
     while (localIterator.hasNext())
     {
       ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)localIterator.next();
-      if (localReuseCodecWrapper.canReuse(paramFormatWrapper) != ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO) {
+      if ((!localReuseCodecWrapper.isRecycled) && (localReuseCodecWrapper.canReuse(paramFormatWrapper) != ReuseHelper.ReuseType.KEEP_CODEC_RESULT_NO)) {
+        return localReuseCodecWrapper;
+      }
+      localReuseCodecWrapper.trackCantReuse();
+      if (localReuseCodecWrapper.needToErase()) {
+        remove(localReuseCodecWrapper);
+      }
+    }
+    return null;
+  }
+  
+  private ReuseCodecWrapper replaceSameTypeCodec(ReuseCodecWrapper paramReuseCodecWrapper, Iterator paramIterator)
+  {
+    while (paramIterator.hasNext())
+    {
+      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)paramIterator.next();
+      if (TextUtils.equals(paramReuseCodecWrapper.getCodecName(), localReuseCodecWrapper.getCodecName())) {
         return localReuseCodecWrapper;
       }
     }
@@ -44,11 +81,14 @@ public final class CodecWrapperPool
   
   public void clear()
   {
-    LogUtils.INSTANCE.i("CodecWrapperPool", "CodecWrapperPool clear:" + this.storeSet);
-    Iterator localIterator = ((Iterable)this.storeSet).iterator();
-    while (localIterator.hasNext())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CodecWrapperPool clear:");
+    ((StringBuilder)localObject).append(this.storeSet);
+    LogUtils.i("CodecWrapperPool", ((StringBuilder)localObject).toString());
+    localObject = this.storeSet.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)localIterator.next();
+      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)((Iterator)localObject).next();
       PoolActionCallback localPoolActionCallback = this.actionCallback;
       if (localPoolActionCallback != null) {
         localPoolActionCallback.onErase(localReuseCodecWrapper);
@@ -68,11 +108,16 @@ public final class CodecWrapperPool
   }
   
   @Nullable
-  public ReuseCodecWrapper obtain(@NotNull FormatWrapper paramFormatWrapper)
+  public ReuseCodecWrapper obtain(@NonNull FormatWrapper paramFormatWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "y");
     paramFormatWrapper = pickSuitableCodecWrapper(paramFormatWrapper);
-    LogUtils.INSTANCE.d("CodecWrapperPool", "obtain codecWrapper:" + paramFormatWrapper);
+    if (LogUtils.isLogEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("obtain codecWrapper:");
+      localStringBuilder.append(paramFormatWrapper);
+      LogUtils.d("CodecWrapperPool", localStringBuilder.toString());
+    }
     if (paramFormatWrapper != null)
     {
       this.storeSet.remove(paramFormatWrapper);
@@ -81,42 +126,55 @@ public final class CodecWrapperPool
     return null;
   }
   
-  public void put(@NotNull ReuseCodecWrapper paramReuseCodecWrapper)
+  public void put(@NonNull ReuseCodecWrapper paramReuseCodecWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramReuseCodecWrapper, "t");
     if (isFull()) {
-      remove((ReuseCodecWrapper)CollectionsKt.first((Iterable)this.storeSet));
+      remove(getRemoveItem(paramReuseCodecWrapper));
     }
     this.storeSet.add(paramReuseCodecWrapper);
   }
   
-  public void remove(@NotNull ReuseCodecWrapper paramReuseCodecWrapper)
+  public void remove(@NonNull ReuseCodecWrapper paramReuseCodecWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramReuseCodecWrapper, "t");
+    Object localObject;
     if (this.storeSet.remove(paramReuseCodecWrapper))
     {
-      PoolActionCallback localPoolActionCallback = this.actionCallback;
-      if (localPoolActionCallback != null) {
-        localPoolActionCallback.onErase(paramReuseCodecWrapper);
+      localObject = this.actionCallback;
+      if (localObject != null) {
+        ((PoolActionCallback)localObject).onErase(paramReuseCodecWrapper);
       }
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pool:");
+      ((StringBuilder)localObject).append(this.name);
+      ((StringBuilder)localObject).append(" remove ");
+      ((StringBuilder)localObject).append(paramReuseCodecWrapper);
+      ((StringBuilder)localObject).append(" not found");
+      LogUtils.w("CodecWrapperPool", ((StringBuilder)localObject).toString());
     }
   }
   
-  public final void setActionCallback(@NotNull PoolActionCallback paramPoolActionCallback)
+  public final void setActionCallback(@NonNull PoolActionCallback paramPoolActionCallback)
   {
-    Intrinsics.checkParameterIsNotNull(paramPoolActionCallback, "callback");
     this.actionCallback = paramPoolActionCallback;
   }
   
-  @NotNull
+  @NonNull
   public String toString()
   {
-    return "size:" + this.storeSet.size() + " elements:" + this.storeSet;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("size:");
+    localStringBuilder.append(this.storeSet.size());
+    localStringBuilder.append(" elements:");
+    localStringBuilder.append(this.storeSet);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.pools.CodecWrapperPool
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,77 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
-import alzc;
 import android.content.pm.ApplicationInfo;
-import apfv;
-import apfw;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NativeMonitorConfigHelper$1$1
+class NativeMonitorConfigHelper$1$1
   implements Runnable
 {
-  public NativeMonitorConfigHelper$1$1(apfw paramapfw, String paramString1, String paramString2) {}
+  NativeMonitorConfigHelper$1$1(NativeMonitorConfigHelper.1 param1, String paramString1, String paramString2, Throwable paramThrowable) {}
   
   public void run()
   {
     File localFile = new File(this.a);
-    String str3 = apfv.a(localFile);
+    String str = NativeMonitorConfigHelper.access$000(localFile);
     long l = localFile.length();
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    String str2 = ((BaseApplicationImpl)localObject2).getQQProcessName();
-    Object localObject1 = ((BaseApplicationImpl)localObject2).getPackageName();
-    String str1;
-    if (str2.equals(localObject1))
+    Object localObject4 = BaseApplicationImpl.getApplication();
+    Object localObject2 = ((BaseApplicationImpl)localObject4).getQQProcessName();
+    Object localObject3 = ((BaseApplicationImpl)localObject4).getPackageName();
+    Object localObject1;
+    if (((String)localObject2).equals(localObject3))
     {
-      str1 = "main";
-      localObject2 = ((BaseApplicationImpl)localObject2).getApplicationInfo().nativeLibraryDir;
-      localObject1 = "/data/data/" + (String)localObject1;
-      str2 = this.a;
-      if (!this.a.startsWith((String)localObject2)) {
-        break label319;
-      }
-      str2 = this.a.substring(((String)localObject2).length());
+      localObject1 = "main";
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NativeMonitorConfig", 2, "soPath: " + str2 + ", md5: " + str3 + ", len: " + l + ", proc: " + str1 + ", backtrace:\n" + this.b);
+      localObject1 = localObject2;
+      if (((String)localObject2).startsWith((String)localObject3)) {
+        localObject1 = ((String)localObject2).substring(((String)localObject3).length());
       }
-      if (alzc.a())
-      {
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put("so", localFile.getName());
-        ((HashMap)localObject1).put("path", str2);
-        ((HashMap)localObject1).put("md5", str3);
-        ((HashMap)localObject1).put("len", String.valueOf(l));
-        ((HashMap)localObject1).put("proc", str1);
-        ((HashMap)localObject1).put("backtrace", this.b);
-        UserAction.onUserAction("nativeMonitorOnSoLoad", true, -1L, -1L, (Map)localObject1, false);
-      }
-      return;
-      str1 = str2;
-      if (!str2.startsWith((String)localObject1)) {
-        break;
-      }
-      str1 = str2.substring(((String)localObject1).length());
-      break;
-      label319:
-      if (this.a.startsWith((String)localObject1)) {
-        str2 = this.a.substring(((String)localObject1).length());
+    }
+    localObject4 = ((BaseApplicationImpl)localObject4).getApplicationInfo().nativeLibraryDir;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("/data/data/");
+    ((StringBuilder)localObject2).append((String)localObject3);
+    localObject3 = ((StringBuilder)localObject2).toString();
+    localObject2 = this.a;
+    if (((String)localObject2).startsWith((String)localObject4)) {
+      localObject2 = this.a.substring(((String)localObject4).length());
+    } else if (this.a.startsWith((String)localObject3)) {
+      localObject2 = this.a.substring(((String)localObject3).length());
+    }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("soPath: ");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(", md5: ");
+    ((StringBuilder)localObject3).append(str);
+    ((StringBuilder)localObject3).append(", len: ");
+    ((StringBuilder)localObject3).append(l);
+    ((StringBuilder)localObject3).append(", proc: ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", backtrace:\n");
+    ((StringBuilder)localObject3).append(this.b);
+    QLog.d("NativeMonitorConfig", 1, ((StringBuilder)localObject3).toString());
+    if (PrivacyPolicyHelper.d())
+    {
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put("so", localFile.getName());
+      ((HashMap)localObject3).put("path", localObject2);
+      ((HashMap)localObject3).put("md5", str);
+      ((HashMap)localObject3).put("len", String.valueOf(l));
+      ((HashMap)localObject3).put("proc", localObject1);
+      ((HashMap)localObject3).put("backtrace", this.b);
+      ((HashMap)localObject3).put("is64Bit", "false");
+      UserAction.onUserAction("nativeMonitorOnSoLoad", true, -1L, -1L, (Map)localObject3, false);
+      localObject1 = this.c;
+      if (localObject1 != null) {
+        CaughtExceptionReport.a((Throwable)localObject1);
       }
     }
   }

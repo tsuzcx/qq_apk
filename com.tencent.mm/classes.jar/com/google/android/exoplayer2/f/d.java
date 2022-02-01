@@ -4,17 +4,17 @@ import java.util.List;
 
 public abstract interface d
 {
-  public abstract int ab(long paramLong);
+  public abstract int TD();
   
-  public abstract List<a> ac(long paramLong);
+  public abstract List<a> cA(long paramLong);
   
-  public abstract long dT(int paramInt);
+  public abstract int cz(long paramLong);
   
-  public abstract int pH();
+  public abstract long in(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.d
  * JD-Core Version:    0.7.0.1
  */

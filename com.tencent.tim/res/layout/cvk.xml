@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nsc" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bqe" android:textColor="@color/atx" android:id="@id/n0w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bqd" android:text="@string/x_3" />
+    <com.tencent.qqmail.qmui.alpha.QMUIAlphaTextView android:textSize="@dimen/bqe" android:textColor="@color/atx" android:ellipsize="end" android:id="@id/nickname" android:paddingLeft="@dimen/bqd" android:paddingRight="@dimen/bqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/n3a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/grg" />
+    <com.tencent.qqmail.qmui.alpha.QMUIAlphaTextView android:id="@id/ll1" android:layout_marginLeft="4.0dip" style="@style/age" />
+</LinearLayout>

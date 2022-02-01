@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="a">2.0dip</dimen>
-    <dimen name="b">8.0dip</dimen>
-    <dimen name="c">10.0dip</dimen>
-    <item type="dimen" name="d">@dimen/b</item>
-    <item type="dimen" name="e">0.25</item>
-    <item type="dimen" name="f">0.1</item>
-    <item type="dimen" name="g">0.5</item>
-    <item type="dimen" name="h">0.5</item>
-    <item type="dimen" name="i">0.5</item>
-    <item type="dimen" name="j">0.25</item>
-    <dimen name="k">4.0dip</dimen>
-    <dimen name="l">1.0dip</dimen>
-    <dimen name="m">6.0dip</dimen>
-    <dimen name="n">104.0dip</dimen>
-    <dimen name="o">4.0dip</dimen>
-    <dimen name="p">6.0dip</dimen>
-    <dimen name="q">8.0dip</dimen>
-    <dimen name="r">4.0dip</dimen>
-    <dimen name="s">2.0dip</dimen>
-    <dimen name="t">10.0dip</dimen>
-    <dimen name="u">32.0dip</dimen>
-    <dimen name="v">22.0dip</dimen>
-    <dimen name="w">10.0dip</dimen>
-    <dimen name="x">16.0dip</dimen>
-    <dimen name="y">36.0dip</dimen>
-    <dimen name="z">10.0dip</dimen>
-    <dimen name="a0">30.0dip</dimen>
-    <dimen name="a1">16.0dip</dimen>
-    <dimen name="a2">90.0dip</dimen>
-    <dimen name="a3">108.0dip</dimen>
-    <dimen name="a4">16.0dip</dimen>
-    <dimen name="a5">1.0dip</dimen>
-    <dimen name="a6">2.0dip</dimen>
-    <dimen name="a7">3.0dip</dimen>
-    <dimen name="a8">4.0dip</dimen>
-    <dimen name="a9">5.0dip</dimen>
-    <dimen name="a_">20.0dip</dimen>
-    <dimen name="aa">32.0dip</dimen>
-    <dimen name="ab">13.0sp</dimen>
-    <dimen name="ac">12.0dip</dimen>
-    <dimen name="ad">64.0dip</dimen>
-    <dimen name="ae">64.0dip</dimen>
-    <dimen name="af">16.0dip</dimen>
-    <dimen name="ag">3.0dip</dimen>
-    <dimen name="ah">24.0dip</dimen>
-    <dimen name="ai">13.0sp</dimen>
-    <dimen name="aj">10.0dip</dimen>
-    <dimen name="ak">5.0dip</dimen>
+    <dimen name="notification_right_side_padding_top">2.0dip</dimen>
+    <dimen name="notification_content_margin_start">8.0dip</dimen>
+    <dimen name="notification_main_column_padding_top">10.0dip</dimen>
+    <item type="dimen" name="notification_media_narrow_margin">@dimen/notification_content_margin_start</item>
+    <item type="dimen" name="action_chooser_base_radius_percent">0.25</item>
+    <item type="dimen" name="action_chooser_bounce_in_percent">0.1</item>
+    <item type="dimen" name="action_chooser_icon_height_percent">0.5</item>
+    <item type="dimen" name="action_chooser_max_radius_percent">0.5</item>
+    <item type="dimen" name="action_chooser_min_drag_select_percent">0.5</item>
+    <item type="dimen" name="action_chooser_min_swipe_select_percent">0.25</item>
+    <dimen name="card_content_padding_rect_top">4.0dip</dimen>
+    <dimen name="circular_button_elevation">1.0dip</dimen>
+    <dimen name="circular_button_elevation_pressed">6.0dip</dimen>
+    <dimen name="close_button_diameter">104.0dip</dimen>
+    <dimen name="compat_button_inset_horizontal_material">4.0dip</dimen>
+    <dimen name="compat_button_inset_vertical_material">6.0dip</dimen>
+    <dimen name="compat_button_padding_horizontal_material">8.0dip</dimen>
+    <dimen name="compat_button_padding_vertical_material">4.0dip</dimen>
+    <dimen name="compat_control_corner_material">2.0dip</dimen>
+    <dimen name="diag_button_bottom_padding">10.0dip</dimen>
+    <dimen name="diag_button_bottom_padding_round">32.0dip</dimen>
+    <dimen name="diag_button_side_padding_right_round">22.0dip</dimen>
+    <dimen name="diag_content_bottom_padding">10.0dip</dimen>
+    <dimen name="diag_content_side_padding">16.0dip</dimen>
+    <dimen name="diag_content_side_padding_round">36.0dip</dimen>
+    <dimen name="diag_content_top_padding">10.0dip</dimen>
+    <dimen name="diag_content_top_padding_round">30.0dip</dimen>
+    <dimen name="diag_floating_height">16.0dip</dimen>
+    <dimen name="diag_shade_height_rect">90.0dip</dimen>
+    <dimen name="diag_shade_height_round">108.0dip</dimen>
+    <dimen name="dismiss_padding">16.0dip</dimen>
+    <dimen name="dp_test_for_watch1">1.0dip</dimen>
+    <dimen name="dp_test_for_watch2">2.0dip</dimen>
+    <dimen name="dp_test_for_watch3">3.0dip</dimen>
+    <dimen name="dp_test_for_watch4">4.0dip</dimen>
+    <dimen name="dp_test_for_watch5">5.0dip</dimen>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20.0dip</dimen>
+    <dimen name="notification_action_icon_size">32.0dip</dimen>
+    <dimen name="notification_action_text_size">13.0sp</dimen>
+    <dimen name="notification_big_circle_margin">12.0dip</dimen>
+    <dimen name="notification_large_icon_height">64.0dip</dimen>
+    <dimen name="notification_large_icon_width">64.0dip</dimen>
+    <dimen name="notification_right_icon_size">16.0dip</dimen>
+    <dimen name="notification_small_icon_background_padding">3.0dip</dimen>
+    <dimen name="notification_small_icon_size_as_large">24.0dip</dimen>
+    <dimen name="notification_subtext_size">13.0sp</dimen>
+    <dimen name="notification_top_pad">10.0dip</dimen>
+    <dimen name="notification_top_pad_large_text">5.0dip</dimen>
 </resources>

@@ -10,16 +10,16 @@ public final class RequestQueryQQMobileContactsV3
   static int cache_bindState = 0;
   static int cache_queryFlag;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public boolean Compressd;
-  public long MaxsignTimeStamp;
+  public boolean Compressd = false;
+  public long MaxsignTimeStamp = 0L;
   public String MobileUniqueNo = "";
-  public boolean OmitOffline;
+  public boolean OmitOffline = false;
   public int bindState = 0;
-  public long nextFlag;
-  public int queryFlag;
-  public long queryFrom;
-  public byte[] sessionSid;
-  public long timeStamp;
+  public long nextFlag = 0L;
+  public int queryFlag = 0;
+  public long queryFrom = 0L;
+  public byte[] sessionSid = null;
+  public long timeStamp = 0L;
   
   static
   {
@@ -65,8 +65,9 @@ public final class RequestQueryQQMobileContactsV3
     paramJceOutputStream.write(this.queryFlag, 3);
     paramJceOutputStream.write(this.Compressd, 4);
     paramJceOutputStream.write(this.MaxsignTimeStamp, 5);
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 6);
+    String str = this.MobileUniqueNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.OmitOffline, 7);
     paramJceOutputStream.write(this.queryFrom, 8);
@@ -75,7 +76,7 @@ public final class RequestQueryQQMobileContactsV3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryQQMobileContactsV3
  * JD-Core Version:    0.7.0.1
  */

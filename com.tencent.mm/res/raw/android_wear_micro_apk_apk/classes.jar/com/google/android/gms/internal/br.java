@@ -4,6 +4,7 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.api.h;
 import com.google.android.gms.common.api.j;
 import com.google.android.gms.common.api.w;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -11,52 +12,57 @@ import java.util.WeakHashMap;
 
 public final class br
 {
-  public static final Status Px = new Status(8, "The connection to Google Play services was lost");
-  private static final k<?>[] Py = new k[0];
-  private final Map<h<?>, j> NX;
-  private final bs PA = new bs()
+  public static final Status Rm = new Status(8, "The connection to Google Play services was lost");
+  private static final k<?>[] Rn = new k[0];
+  private final Map<h<?>, j> PM;
+  final Set<k<?>> Ro = Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap()));
+  private final bs Rp = new bs()
   {
     public final void c(k<?> paramAnonymousk)
     {
-      br.this.Pz.remove(paramAnonymousk);
+      br.this.Ro.remove(paramAnonymousk);
     }
   };
-  final Set<k<?>> Pz = Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap()));
   
   public br(Map<h<?>, j> paramMap)
   {
-    this.NX = paramMap;
+    this.PM = paramMap;
   }
   
   final void b(k<? extends w> paramk)
   {
-    this.Pz.add(paramk);
-    paramk.a(this.PA);
+    this.Ro.add(paramk);
+    paramk.a(this.Rp);
   }
   
-  public final void jh()
+  public final void dump(PrintWriter paramPrintWriter)
   {
-    k[] arrayOfk = (k[])this.Pz.toArray(Py);
+    paramPrintWriter.append(" mUnconsumedApiCalls.size()=").println(this.Ro.size());
+  }
+  
+  public final void jq()
+  {
+    k[] arrayOfk = (k[])this.Ro.toArray(Rn);
     int j = arrayOfk.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfk[i].b(Px);
+      arrayOfk[i].b(Rm);
       i += 1;
     }
   }
   
   public final void release()
   {
-    k[] arrayOfk = (k[])this.Pz.toArray(Py);
+    k[] arrayOfk = (k[])this.Ro.toArray(Rn);
     int j = arrayOfk.length;
     int i = 0;
     while (i < j)
     {
       k localk = arrayOfk[i];
       localk.a(null);
-      if (localk.ig()) {
-        this.Pz.remove(localk);
+      if (localk.io()) {
+        this.Ro.remove(localk);
       }
       i += 1;
     }

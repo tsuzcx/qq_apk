@@ -41,28 +41,25 @@ public final class js
       this.a.measure(i, j);
       this.h = this.a.getMeasuredHeight();
       this.a.setVisibility(8);
-      if (this.a != null)
-      {
-        this.a.setOnZoomInClickListener(new js.1(this));
-        this.a.setOnZoomOutClickListener(new js.2(this));
-      }
-      this.b.setOnClickListener(new js.3(this));
-      return;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    paramContext = this.a;
+    if (paramContext != null)
+    {
+      paramContext.setOnZoomInClickListener(new js.1(this));
+      this.a.setOnZoomOutClickListener(new js.2(this));
+    }
+    this.b.setOnClickListener(new js.3(this));
   }
   
   public final void a()
   {
-    if (this.b != null)
+    jt localjt = this.b;
+    if (localjt != null)
     {
-      jt localjt = this.b;
       localjt.setClickable(false);
       Drawable localDrawable = localjt.getBackground();
       if (localDrawable != null) {
@@ -76,65 +73,67 @@ public final class js
   
   public final boolean a(ViewGroup paramViewGroup)
   {
-    if ((paramViewGroup == null) || (this.a == null) || (this.b == null)) {
-      return false;
-    }
-    this.c = paramViewGroup;
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    switch (js.4.a[this.d.ordinal()])
+    if ((paramViewGroup != null) && (this.a != null) && (this.b != null))
     {
-    default: 
-      or.b("Unknown position:" + this.d);
-      if (paramViewGroup.indexOfChild(this.a) < 0)
+      this.c = paramViewGroup;
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+      switch (js.4.a[this.d.ordinal()])
       {
-        paramViewGroup.addView(this.a, localLayoutParams);
-        label130:
-        localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        localLayoutParams.gravity = 85;
-        localLayoutParams.bottomMargin = (this.h + 5);
+      default: 
+        StringBuilder localStringBuilder = new StringBuilder("Unknown position:");
+        localStringBuilder.append(this.d);
+        or.b(localStringBuilder.toString());
+        break;
+      case 6: 
+        localLayoutParams.gravity = 53;
+        localLayoutParams.topMargin = 5;
         localLayoutParams.rightMargin = 5;
-        if (paramViewGroup.indexOfChild(this.b) >= 0) {
-          break label301;
-        }
-        paramViewGroup.addView(this.b, localLayoutParams);
+        break;
+      case 5: 
+        localLayoutParams.gravity = 49;
+        localLayoutParams.topMargin = 5;
+        break;
+      case 4: 
+        localLayoutParams.gravity = 51;
+        localLayoutParams.topMargin = 5;
+        localLayoutParams.leftMargin = 5;
+        break;
+      case 3: 
+        localLayoutParams.gravity = 85;
+        localLayoutParams.bottomMargin = 5;
+        localLayoutParams.rightMargin = 5;
+        break;
+      case 2: 
+        localLayoutParams.gravity = 81;
+        localLayoutParams.bottomMargin = 5;
+        break;
+      case 1: 
+        localLayoutParams.gravity = 83;
+        localLayoutParams.bottomMargin = 5;
+        localLayoutParams.leftMargin = 5;
       }
-      break;
-    }
-    for (;;)
-    {
-      return true;
-      localLayoutParams.gravity = 83;
-      localLayoutParams.bottomMargin = 5;
-      localLayoutParams.leftMargin = 5;
-      break;
-      localLayoutParams.gravity = 81;
-      localLayoutParams.bottomMargin = 5;
-      break;
+      if (paramViewGroup.indexOfChild(this.a) < 0) {
+        paramViewGroup.addView(this.a, localLayoutParams);
+      } else {
+        paramViewGroup.updateViewLayout(this.a, localLayoutParams);
+      }
+      localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 85;
-      localLayoutParams.bottomMargin = 5;
+      localLayoutParams.bottomMargin = (this.h + 5);
       localLayoutParams.rightMargin = 5;
-      break;
-      localLayoutParams.gravity = 51;
-      localLayoutParams.topMargin = 5;
-      localLayoutParams.leftMargin = 5;
-      break;
-      localLayoutParams.gravity = 49;
-      localLayoutParams.topMargin = 5;
-      break;
-      localLayoutParams.gravity = 53;
-      localLayoutParams.topMargin = 5;
-      localLayoutParams.rightMargin = 5;
-      break;
-      paramViewGroup.updateViewLayout(this.a, localLayoutParams);
-      break label130;
-      label301:
-      paramViewGroup.updateViewLayout(this.b, localLayoutParams);
+      if (paramViewGroup.indexOfChild(this.b) < 0) {
+        paramViewGroup.addView(this.b, localLayoutParams);
+      } else {
+        paramViewGroup.updateViewLayout(this.b, localLayoutParams);
+      }
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.js
  * JD-Core Version:    0.7.0.1
  */

@@ -1,560 +1,463 @@
 package com.tencent.mm.ui.chatting;
 
-import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.g;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.cm;
-import com.tencent.mm.g.a.mj;
-import com.tencent.mm.g.a.mj.a;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.t;
-import com.tencent.mm.modelsimple.aa;
-import com.tencent.mm.plugin.record.b.e.a;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.rr;
+import com.tencent.mm.autogen.a.rr.a;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.platformtools.ExportFileUtil.a;
+import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.openmaterial.g.a;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
+import com.tencent.mm.plugin.handoff.model.HandOffFile;
+import com.tencent.mm.plugin.msgquote.model.MsgQuoteItem;
+import com.tencent.mm.plugin.record.model.e;
+import com.tencent.mm.plugin.record.model.g.b;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.pluginsdk.model.app.n;
+import com.tencent.mm.pluginsdk.model.l;
+import com.tencent.mm.pluginsdk.model.x;
+import com.tencent.mm.protocal.protobuf.aet;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.e;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
 import com.tencent.mm.ui.tools.ShowImageUI;
 import com.tencent.mm.ui.widget.progress.RoundProgressBtn;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import java.lang.ref.WeakReference;
 
 public class AppAttachDownloadUI
-  extends MMActivity
-  implements f, e.a, k.a
+  extends MMSecDataActivity
+  implements com.tencent.mm.am.h, g.b, MStorage.IOnStorageChange
 {
-  private String cBO;
-  private boolean cBz;
-  private String cDI;
-  private bi cEE;
-  private long cpO;
-  private String czp;
-  private int edl;
-  private String elt;
-  private String ewj;
+  private Button AkB;
+  private HandOffFile AkR;
+  private View.OnTouchListener AkU;
+  private View.OnLongClickListener AkV;
+  private MMImageView NlM;
+  private com.tencent.mm.plugin.record.model.g NzY;
+  private com.tencent.mm.plugin.appbrand.openmaterial.i WVA;
+  private AppBrandOpenMaterialCollection WVz;
+  private long Ysz;
+  private String Ytx;
+  private com.tencent.mm.plugin.appbrand.openmaterial.g Yty;
+  private RoundProgressBtn aedH;
+  private a aedI;
+  private View aedJ;
+  private TextView aedK;
+  private TextView aedL;
+  private TextView aedM;
+  private com.tencent.mm.am.i aedN;
+  private boolean aedO;
+  private k.b aedP;
+  private String aedQ;
+  private boolean aedR;
+  private boolean aedS;
+  private boolean aedT;
+  private int aedU;
+  private boolean aedV;
+  private int aedW;
+  private LinearLayout aedX;
+  private LinearLayout aedY;
+  private boolean aedZ;
+  private com.tencent.mm.ui.chatting.multitask.b aeea;
+  private LinearLayout aeeb;
+  private ImageView aeec;
+  private String aesKey;
+  private int appType;
+  private String authKey;
+  private String cdnURL;
   private String fileName;
-  private TextView gtP;
-  private int jUm;
-  private int jUn;
-  private com.tencent.mm.ui.widget.c.a jVd;
-  private n.d lNZ;
-  private View.OnTouchListener mAc;
-  private View.OnLongClickListener mAd;
-  private Button mzM;
-  private String nKQ;
-  private MMImageView pKQ;
-  private com.tencent.mm.plugin.record.b.e pYd;
+  private String filePath;
+  private String hQQ;
+  private boolean hTH;
+  private cc hTm;
+  private String hWn;
+  private String lPJ;
+  private String mediaId;
+  private long msgId;
+  private TextView pPe;
   private int scene;
-  private g zvA;
-  private boolean zvB;
-  private j.b zvC;
-  private long zvD;
-  private boolean zvE;
-  private boolean zvF;
-  private boolean zvG;
-  private int zvH;
-  private boolean zvI;
-  private LinearLayout zvJ;
-  private LinearLayout zvK;
-  private boolean zvL;
-  private RoundProgressBtn zvu;
-  private AppAttachDownloadUI.a zvv;
-  private View zvw;
-  private TextView zvx;
-  private TextView zvy;
-  private TextView zvz;
+  private com.tencent.mm.ui.widget.b.a vEV;
+  private com.tencent.mm.ui.widget.a.f vlk;
+  private String vyS;
+  private int wQW;
+  private int x_down;
+  private u.i yBn;
+  private int y_down;
   
   public AppAttachDownloadUI()
   {
-    AppMethodBeat.i(30280);
-    this.zvE = false;
-    this.zvF = false;
-    this.zvG = true;
-    this.zvH = 5000;
-    this.zvI = false;
-    this.zvL = false;
-    this.jVd = null;
-    this.lNZ = new n.d()
+    AppMethodBeat.i(34129);
+    this.wQW = 0;
+    this.aedR = false;
+    this.aedS = false;
+    this.aedT = true;
+    this.aedU = 5000;
+    this.aedV = false;
+    this.aedZ = false;
+    this.Ytx = null;
+    this.WVz = null;
+    this.Yty = null;
+    this.WVA = null;
+    this.vlk = null;
+    this.vEV = null;
+    this.yBn = new u.i()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(30273);
-        ClipboardManager localClipboardManager = (ClipboardManager)com.tencent.mm.sdk.platformtools.ah.getContext().getSystemService("clipboard");
-        if (AppAttachDownloadUI.s(AppAttachDownloadUI.this).equals("")) {}
-        for (paramAnonymousMenuItem = AppAttachDownloadUI.this.getString(2131302024);; paramAnonymousMenuItem = AppAttachDownloadUI.s(AppAttachDownloadUI.this))
+        AppMethodBeat.i(253985);
+        if (AppAttachDownloadUI.K(AppAttachDownloadUI.this).equals("")) {}
+        for (paramAnonymousMenuItem = AppAttachDownloadUI.this.getString(R.l.openapi_app_file);; paramAnonymousMenuItem = AppAttachDownloadUI.K(AppAttachDownloadUI.this))
         {
-          localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, paramAnonymousMenuItem));
-          com.tencent.mm.ui.base.h.bO(AppAttachDownloadUI.this, AppAttachDownloadUI.this.getString(2131296896));
-          AppMethodBeat.o(30273);
+          ClipboardHelper.setText(MMApplicationContext.getContext(), null, paramAnonymousMenuItem);
+          k.cZ(AppAttachDownloadUI.this, AppAttachDownloadUI.this.getString(R.l.app_copy_ok));
+          AppMethodBeat.o(253985);
           return;
         }
       }
     };
-    this.mAc = new AppAttachDownloadUI.11(this);
-    this.mAd = new AppAttachDownloadUI.12(this);
-    AppMethodBeat.o(30280);
-  }
-  
-  private void Pf(int paramInt)
-  {
-    AppMethodBeat.i(30312);
-    if (paramInt != this.zvu.getVisibility())
+    this.AkU = new AppAttachDownloadUI.5(this);
+    this.AkV = new View.OnLongClickListener()
     {
-      ab.i("MicroMsg.AppAttachDownloadUI", "setRoundProgressBar %s %s", new Object[] { Integer.valueOf(paramInt), com.tencent.mm.platformtools.ah.aoA() });
-      this.zvu.setVisibility(paramInt);
-    }
-    AppMethodBeat.o(30312);
-  }
-  
-  private String atH(String paramString)
-  {
-    AppMethodBeat.i(30290);
-    String str = paramString;
-    if (this.zvB)
-    {
-      str = paramString;
-      if (paramString != null) {
-        str = bf.pv(paramString);
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(253966);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+        Log.d("MicroMsg.AppAttachDownloadUI", "onLongClick");
+        if (AppAttachDownloadUI.L(AppAttachDownloadUI.this) == null) {
+          AppAttachDownloadUI.a(AppAttachDownloadUI.this, new com.tencent.mm.ui.widget.b.a(AppAttachDownloadUI.this.dSs()));
+        }
+        AppAttachDownloadUI.L(AppAttachDownloadUI.this).a(paramAnonymousView, AppAttachDownloadUI.this, AppAttachDownloadUI.M(AppAttachDownloadUI.this), AppAttachDownloadUI.N(AppAttachDownloadUI.this), AppAttachDownloadUI.O(AppAttachDownloadUI.this));
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(253966);
+        return true;
       }
-    }
-    AppMethodBeat.o(30290);
-    return str;
+    };
+    AppMethodBeat.o(34129);
   }
   
-  private static boolean b(com.tencent.mm.pluginsdk.model.app.b paramb)
+  private void aBA(int paramInt)
   {
-    AppMethodBeat.i(30311);
-    if (paramb == null)
+    AppMethodBeat.i(34158);
+    if (paramInt != this.aedH.getVisibility())
     {
-      AppMethodBeat.o(30311);
+      Log.i("MicroMsg.AppAttachDownloadUI", "setRoundProgressBar %s %s", new Object[] { Integer.valueOf(paramInt), ab.bTQ() });
+      this.aedH.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(34158);
+  }
+  
+  private static boolean b(com.tencent.mm.pluginsdk.model.app.c paramc)
+  {
+    AppMethodBeat.i(34157);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(34157);
       return false;
     }
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(paramb.field_fileFullPath);
-    if ((localb.exists()) && (localb.length() == paramb.field_totalLen))
+    u localu = new u(paramc.field_fileFullPath);
+    if ((localu.jKS()) && (localu.length() == paramc.field_totalLen))
     {
-      AppMethodBeat.o(30311);
+      AppMethodBeat.o(34157);
       return true;
     }
-    AppMethodBeat.o(30311);
+    AppMethodBeat.o(34157);
     return false;
   }
   
-  private void cdY()
+  private boolean dLc()
   {
-    AppMethodBeat.i(30307);
-    ab.i("MicroMsg.AppAttachDownloadUI", "[ImageGalleryUI] showImage");
-    Intent localIntent = new Intent(this, ImageGalleryUI.class);
-    localIntent.putExtra("img_gallery_msg_id", this.cEE.field_msgId);
-    localIntent.putExtra("img_gallery_talker", this.cEE.field_talker);
-    startActivity(localIntent);
-    finish();
-    overridePendingTransition(0, 0);
-    AppMethodBeat.o(30307);
-  }
-  
-  private boolean dFq()
-  {
-    AppMethodBeat.i(30283);
+    AppMethodBeat.i(34134);
     this.scene = getIntent().getIntExtra("scene", 0);
-    this.cpO = getIntent().getLongExtra("app_msg_id", -1L);
-    this.zvI = getIntent().getBooleanExtra("choose_way", false);
-    if (this.cpO == -1L)
+    this.msgId = getIntent().getLongExtra("app_msg_id", -1L);
+    this.aedV = getIntent().getBooleanExtra("choose_way", false);
+    this.aedW = getIntent().getIntExtra("msg_type", 0);
+    if (this.msgId == -1L)
     {
-      AppMethodBeat.o(30283);
+      AppMethodBeat.o(34134);
       return false;
     }
-    aw.aaz();
-    this.cEE = com.tencent.mm.model.c.YC().kB(this.cpO);
-    if ((this.cEE == null) || (this.cEE.field_msgId == 0L) || (this.cEE.field_content == null))
+    bh.bCz();
+    this.hTm = com.tencent.mm.model.c.bzD().sl(this.msgId);
+    Object localObject1;
+    if ((this.hTm == null) || (this.hTm.field_msgId == 0L) || (this.hTm.field_content == null))
     {
-      AppMethodBeat.o(30283);
-      return false;
-    }
-    this.zvB = t.lA(this.cEE.field_talker);
-    this.cDI = this.cEE.field_content;
-    if ((this.zvB) && (this.cEE.field_isSend == 0)) {
-      this.cDI = atH(this.cEE.field_content);
-    }
-    this.zvC = j.b.mY(this.cDI);
-    if (this.zvC == null)
-    {
-      ab.e("MicroMsg.AppAttachDownloadUI", "summerapp parse msgContent error, %s", new Object[] { this.cDI });
-      AppMethodBeat.o(30283);
-      return false;
-    }
-    if ((com.tencent.mm.platformtools.ah.isNullOrNil(this.zvC.cmN)) && (!com.tencent.mm.platformtools.ah.isNullOrNil(this.zvC.fgL)))
-    {
-      ab.e("MicroMsg.AppAttachDownloadUI", "summerapp msgContent format error, %s", new Object[] { this.cDI });
-      this.zvC.cmN = this.zvC.fgL.hashCode();
-    }
-    this.edl = this.zvC.type;
-    this.cBO = this.zvC.cmN;
-    this.fileName = com.tencent.mm.platformtools.ah.nullAsNil(this.zvC.title);
-    this.elt = com.tencent.mm.platformtools.ah.nullAsNil(this.zvC.fgx).toLowerCase();
-    this.zvD = this.zvC.fgw;
-    this.nKQ = com.tencent.mm.platformtools.ah.nullAsNil(this.zvC.filemd5);
-    this.czp = com.tencent.mm.platformtools.ah.nullAsNil(this.zvC.czp);
-    this.ewj = com.tencent.mm.platformtools.ah.nullAsNil(this.zvC.ewj);
-    if (com.tencent.mm.platformtools.ah.isNullOrNil(this.elt)) {
-      this.elt = com.tencent.mm.vfs.e.cP(this.fileName);
-    }
-    ab.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams msgId[%d], sender[%d], msgContent[%s], appType[%d], mediaId[%s], fileName[%s]", new Object[] { Long.valueOf(this.cpO), Integer.valueOf(this.cEE.field_isSend), this.cDI, Integer.valueOf(this.edl), this.cBO, this.fileName });
-    com.tencent.mm.pluginsdk.model.app.b localb = dFu();
-    if (localb == null)
-    {
-      ab.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo is null");
-      this.zvF = false;
-      if (!b(localb)) {
-        break label716;
+      if (!joe()) {
+        break label393;
       }
-      if (this.scene != 1) {
-        break label666;
-      }
-      if (this.zvI)
+      localObject1 = (MsgQuoteItem)getIntent().getParcelableExtra("key_quoted_msg");
+      if (localObject1 == null)
       {
-        bool = com.tencent.mm.pluginsdk.ui.tools.a.b(this, localb.field_fileFullPath, this.elt, 7);
-        AppMethodBeat.o(30283);
-        return bool;
+        AppMethodBeat.o(34134);
+        return false;
+      }
+      this.hTm = new cc();
+      this.hTm.setType(((MsgQuoteItem)localObject1).type);
+      this.hTm.gX(((MsgQuoteItem)localObject1).LgU);
+      this.hTm.BS(((MsgQuoteItem)localObject1).LgV);
+      this.hTm.AU(((MsgQuoteItem)localObject1).LgY);
+      this.hTm.setContent(((MsgQuoteItem)localObject1).content);
+      if (Util.isEqual(((MsgQuoteItem)localObject1).LgW, z.bAM())) {
+        this.hTm.pI(1);
       }
     }
-    else
+    this.aedO = au.bwE(this.hTm.field_talker);
+    this.hWn = this.hTm.field_content;
+    Object localObject2;
+    if ((this.aedO) && (this.hTm.field_isSend == 0))
     {
-      new com.tencent.mm.vfs.b(localb.field_fileFullPath);
-      if (localb.field_offset > 0L) {}
-      for (this.zvF = true;; this.zvF = false)
+      localObject2 = this.hTm.field_content;
+      localObject1 = localObject2;
+      if (this.aedO)
       {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo field_fileFullPath[%s], field_offset[%d], isDownloadStarted[%b]", new Object[] { localb.field_fileFullPath, Long.valueOf(localb.field_offset), Boolean.valueOf(this.zvF) });
-        break;
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          localObject1 = br.JK((String)localObject2);
+        }
+      }
+      this.hWn = ((String)localObject1);
+    }
+    this.aedP = k.b.Hf(this.hWn);
+    if (this.aedP == null)
+    {
+      Log.e("MicroMsg.AppAttachDownloadUI", "summerapp parse msgContent error, %s", new Object[] { this.hWn });
+      AppMethodBeat.o(34134);
+      return false;
+      label393:
+      AppMethodBeat.o(34134);
+      return false;
+    }
+    if ((ab.isNullOrNil(this.aedP.hzM)) && (!ab.isNullOrNil(this.aedP.nRq)))
+    {
+      Log.e("MicroMsg.AppAttachDownloadUI", "summerapp msgContent format error, %s", new Object[] { this.hWn });
+      this.aedP.hzM = this.aedP.nRq.hashCode();
+    }
+    this.appType = this.aedP.type;
+    this.mediaId = this.aedP.hzM;
+    this.fileName = ab.nullAsNil(this.aedP.title);
+    this.lPJ = ab.nullAsNil(this.aedP.nRe).toLowerCase();
+    this.Ysz = this.aedP.nRd;
+    this.vyS = ab.nullAsNil(this.aedP.filemd5);
+    this.hQQ = ab.nullAsNil(this.aedP.hQQ);
+    this.cdnURL = ab.nullAsNil(this.aedP.nRq);
+    this.aedQ = ab.nullAsNil(this.aedP.tpurl);
+    this.aesKey = ab.nullAsNil(this.aedP.aesKey);
+    this.authKey = ab.nullAsNil(this.aedP.nRn);
+    if (ab.isNullOrNil(this.lPJ)) {
+      this.lPJ = y.alV(this.fileName);
+    }
+    Log.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams msgId[%d], sender[%d], msgContent[%s], appType[%d], mediaId[%s], fileName[%s]", new Object[] { Long.valueOf(this.msgId), Integer.valueOf(this.hTm.field_isSend), this.hWn, Integer.valueOf(this.appType), this.mediaId, this.fileName });
+    com.tencent.mm.pluginsdk.model.app.c localc = joj();
+    if (localc == null)
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo is null");
+      this.aedS = false;
+    }
+    for (;;)
+    {
+      if (this.aedP.type == 6) {
+        ((com.tencent.mm.plugin.comm.a.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.comm.a.c.class)).ae(String.valueOf(this.hTm.field_msgId), this.hTm.field_msgSvrId);
+      }
+      hf(4, 0);
+      String str1 = ab.nullAsNil(z.bAM());
+      localObject2 = ab.nullAsNil(this.hTm.field_talker);
+      localObject1 = localObject2;
+      if (au.bwE((String)localObject2)) {
+        localObject1 = ab.nullAsNil(this.aedP.hQQ);
+      }
+      label845:
+      label856:
+      boolean bool;
+      label916:
+      int i;
+      if (this.hTm.field_isSend == 1)
+      {
+        localObject2 = str1;
+        if (this.hTm.field_isSend != 1) {
+          break label1243;
+        }
+        String str2 = ab.nullAsNil(this.filePath);
+        String str3 = this.lPJ;
+        String str4 = this.fileName;
+        String str5 = this.vyS;
+        long l = this.Ysz;
+        String str6 = Long.toString(this.hTm.field_msgSvrId);
+        if (ab.isNullOrNil(this.cdnURL)) {
+          break label1250;
+        }
+        str1 = this.cdnURL;
+        this.AkR = new HandOffFile(str2, str3, str4, str5, l, 1, str6, "", str1, this.aesKey, this.authKey, 1, "", 0, "", 0L, 1, (String)localObject2, (String)localObject1);
+        bool = b(joj());
+        localObject1 = this.AkR;
+        if (!bool) {
+          break label1259;
+        }
+        i = 1;
+        ((HandOffFile)localObject1).setFileStatus(i);
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).g(this.AkR);
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).c(this.AkR);
+        localObject1 = new aet();
+        localObject2 = getIntent().getByteArrayExtra("key_multi_task_common_info");
+        if (localObject2 == null) {}
+      }
+      try
+      {
+        ((aet)localObject1).parseFrom((byte[])localObject2);
+        if (b(localc)) {
+          if (this.scene == 3)
+          {
+            localObject1 = new Intent();
+            ((Intent)localObject1).putExtra("filePath", this.filePath);
+            ((Intent)localObject1).putExtra("fileName", this.fileName);
+            ((Intent)localObject1).putExtra("fileExt", this.lPJ);
+            setResult(-1, (Intent)localObject1);
+            finish();
+            AppMethodBeat.o(34134);
+            return true;
+            this.filePath = localc.field_fileFullPath;
+            new u(localc.field_fileFullPath);
+            if (localc.field_offset > 0L) {}
+            for (this.aedS = true;; this.aedS = false)
+            {
+              Log.i("MicroMsg.AppAttachDownloadUI", "summerapp initParams attInfo field_fileFullPath[%s], field_offset[%d], isDownloadStarted[%b]", new Object[] { localc.field_fileFullPath, Long.valueOf(localc.field_offset), Boolean.valueOf(this.aedS) });
+              break;
+            }
+            localObject2 = localObject1;
+            break label845;
+            label1243:
+            localObject1 = str1;
+            break label856;
+            label1250:
+            str1 = this.aedQ;
+            break label916;
+            label1259:
+            i = 2;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.AppAttachDownloadUI", localException, "", new Object[0]);
+        }
+        if (this.scene == 1)
+        {
+          this.wQW = 7;
+          if (this.aedV)
+          {
+            bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, localc.field_fileFullPath, this.lPJ, this.wQW);
+            AppMethodBeat.o(34134);
+            return bool;
+          }
+          bool = com.tencent.mm.pluginsdk.ui.tools.a.a(localc.field_fileFullPath, this.lPJ, this.wQW, (aet)localObject1);
+          AppMethodBeat.o(34134);
+          return bool;
+        }
+        if (this.wQW != 9) {
+          this.wQW = 1;
+        }
+        if (this.aedV)
+        {
+          bool = com.tencent.mm.pluginsdk.ui.tools.a.c(this, localc.field_fileFullPath, this.lPJ, this.wQW);
+          AppMethodBeat.o(34134);
+          return bool;
+        }
+        if (!com.tencent.mm.pluginsdk.ui.tools.a.pq(localc.field_fileFullPath, this.lPJ))
+        {
+          bool = com.tencent.mm.pluginsdk.ui.tools.a.a(localc.field_fileFullPath, this.lPJ, this.wQW, (aet)localObject1);
+          AppMethodBeat.o(34134);
+          return bool;
+        }
+        AppMethodBeat.o(34134);
       }
     }
-    boolean bool = com.tencent.mm.pluginsdk.ui.tools.a.R(localb.field_fileFullPath, this.elt, 7);
-    AppMethodBeat.o(30283);
-    return bool;
-    label666:
-    if (this.zvI)
-    {
-      bool = com.tencent.mm.pluginsdk.ui.tools.a.b(this, localb.field_fileFullPath, this.elt, 1);
-      AppMethodBeat.o(30283);
-      return bool;
-    }
-    bool = com.tencent.mm.pluginsdk.ui.tools.a.R(localb.field_fileFullPath, this.elt, 1);
-    AppMethodBeat.o(30283);
-    return bool;
-    label716:
-    AppMethodBeat.o(30283);
     return true;
   }
   
-  private void dFr()
+  private void fkW()
   {
-    AppMethodBeat.i(30289);
-    cm localcm = new cm();
-    com.tencent.mm.pluginsdk.model.e.d(localcm, this.cEE);
-    localcm.cpR.activity = this;
-    localcm.cpR.cpY = 39;
-    com.tencent.mm.sdk.b.a.ymk.l(localcm);
-    AppMethodBeat.o(30289);
-  }
-  
-  private void dFs()
-  {
-    AppMethodBeat.i(30295);
-    Pf(0);
-    this.zvv.setVisibility(8);
-    if (dFt())
-    {
-      ab.i("MicroMsg.AppAttachDownloadUI", "startToDownloadFile");
-      this.pYd = new com.tencent.mm.plugin.record.b.e(this.cpO, this.cBO, this.zvA);
-      aw.Rc().a(this.pYd, 0);
-      aa.C(this.cEE);
-    }
-    AppMethodBeat.o(30295);
-  }
-  
-  private boolean dFt()
-  {
-    int i = -1;
-    boolean bool2 = true;
-    AppMethodBeat.i(30298);
-    Object localObject1 = dFu();
-    Object localObject2;
-    boolean bool1;
-    long l1;
-    long l2;
-    long l3;
-    String str1;
-    long l4;
-    if (localObject1 == null)
-    {
-      l.s(this.cpO, this.cDI);
-      localObject2 = dFu();
-      localObject1 = localObject2;
-      bool1 = bool2;
-      if (localObject2 != null)
-      {
-        l1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).systemRowid;
-        l2 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_totalLen;
-        localObject1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_fileFullPath;
-        l3 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_type;
-        str1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_mediaId;
-        l4 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_msgInfoId;
-        bool1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_isUpload;
-        if (((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_signature != null) {
-          break label304;
-        }
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo newInfo systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), localObject1, Long.valueOf(l3), str1, Long.valueOf(l4), Boolean.valueOf(bool1), Integer.valueOf(i) });
-        if (this.zvC.fgA == 0)
-        {
-          localObject1 = localObject2;
-          bool1 = bool2;
-          if (this.zvC.fgw <= 26214400) {}
-        }
-        else
-        {
-          if (com.tencent.mm.platformtools.ah.isNullOrNil(((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_signature)) {
-            break label316;
-          }
-          bool1 = true;
-          label219:
-          localObject1 = localObject2;
-        }
-      }
-      if ((this.zvC == null) || ((this.zvC.fgA == 0) && (this.zvC.fgw <= 26214400))) {
-        break label551;
-      }
-      bool1 = false;
-    }
-    label551:
-    for (;;)
-    {
-      if (!bool1) {
-        aw.Rc().a(new com.tencent.mm.plugin.record.b.c((com.tencent.mm.pluginsdk.model.app.b)localObject1, this.ewj, this.nKQ, this.fileName, this.elt, this.czp), 0);
-      }
-      AppMethodBeat.o(30298);
-      return bool1;
-      label304:
-      i = ((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_signature.length();
-      break;
-      label316:
-      bool1 = false;
-      break label219;
-      localObject2 = new com.tencent.mm.vfs.b(((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_fileFullPath);
-      if ((((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_status == 199L) && (!((com.tencent.mm.vfs.b)localObject2).exists()))
-      {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist but file not!");
-        l.s(this.cpO, this.cDI);
-      }
-      l1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).systemRowid;
-      l2 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_totalLen;
-      str1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_fileFullPath;
-      l3 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_type;
-      String str2 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_mediaId;
-      l4 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_msgInfoId;
-      bool1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_isUpload;
-      boolean bool3 = ((com.tencent.mm.vfs.b)localObject2).exists();
-      long l5 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_status;
-      if (((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_signature == null) {}
-      for (;;)
-      {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], file.exists[%b], status[%d], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), str1, Long.valueOf(l3), str2, Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool3), Long.valueOf(l5), Integer.valueOf(i) });
-        bool1 = bool2;
-        break;
-        i = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_signature.length();
-      }
-    }
-  }
-  
-  private com.tencent.mm.pluginsdk.model.app.b dFu()
-  {
-    AppMethodBeat.i(30301);
-    com.tencent.mm.pluginsdk.model.app.b localb1 = com.tencent.mm.pluginsdk.model.app.al.aUJ().nw(this.cpO);
-    if (localb1 != null)
-    {
-      ab.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId [%d] stack[%s]", new Object[] { Long.valueOf(this.cpO), com.tencent.mm.platformtools.ah.aoA() });
-      AppMethodBeat.o(30301);
-      return localb1;
-    }
-    localb1 = l.alv(this.cBO);
-    if (localb1 == null)
-    {
-      ab.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId and mediaId is null stack[%s]", new Object[] { com.tencent.mm.platformtools.ah.aoA() });
-      AppMethodBeat.o(30301);
-      return localb1;
-    }
-    if ((localb1.field_msgInfoId == this.cpO) || (com.tencent.mm.vfs.e.cN(localb1.field_fileFullPath)))
-    {
-      AppMethodBeat.o(30301);
-      return localb1;
-    }
-    l.s(this.cpO, this.cDI);
-    com.tencent.mm.pluginsdk.model.app.b localb2 = com.tencent.mm.pluginsdk.model.app.al.aUJ().nw(this.cpO);
-    if (localb2 == null)
-    {
-      ab.w("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo create new info from local but failed stack[%s]", new Object[] { com.tencent.mm.platformtools.ah.aoA() });
-      AppMethodBeat.o(30301);
-      return localb1;
-    }
-    d.post(new AppAttachDownloadUI.3(this, localb1, localb2), "copyAttachFromLocal");
-    AppMethodBeat.o(30301);
-    return localb1;
-  }
-  
-  private void dFv()
-  {
-    AppMethodBeat.i(30304);
-    switch (this.edl)
-    {
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      this.mzM.setVisibility(0);
-      Pf(8);
-      this.zvw.setVisibility(8);
-    case 0: 
-    case 6: 
-    case 2: 
-      do
-      {
-        do
-        {
-          AppMethodBeat.o(30304);
-          return;
-        } while (!dFw());
-        if (bo.aqj(this.elt))
-        {
-          dFx();
-          AppMethodBeat.o(30304);
-          return;
-        }
-        localObject = getMimeType();
-        ab.i("MicroMsg.AppAttachDownloadUI", "onDownLoadImpl");
-        dFz();
-        Pf(8);
-        this.zvw.setVisibility(8);
-        this.zvv.setVisibility(8);
-        this.zvy.setVisibility(0);
-        if (this.fileName.equals("")) {
-          this.zvy.setText(getString(2131302024));
-        }
-        while ((localObject == null) || (((String)localObject).equals("")))
-        {
-          this.mzM.setVisibility(8);
-          this.gtP.setText(getString(2131299000));
-          AppMethodBeat.o(30304);
-          return;
-          this.zvy.setText(this.fileName);
-        }
-        this.mzM.setVisibility(0);
-        this.gtP.setText(getString(2131299001));
-        AppMethodBeat.o(30304);
-        return;
-      } while (!dFw());
-      cdY();
-      AppMethodBeat.o(30304);
-      return;
-    }
-    Object localObject = new Intent();
-    ((Intent)localObject).putExtra("App_MsgId", this.cpO);
-    setResult(-1, (Intent)localObject);
+    AppMethodBeat.i(34153);
+    Log.i("MicroMsg.AppAttachDownloadUI", "[ImageGalleryUI] showImage");
+    Object localObject = new Intent(this, ImageGalleryUI.class);
+    ((Intent)localObject).putExtra("img_gallery_msg_id", this.hTm.field_msgId);
+    ((Intent)localObject).putExtra("img_gallery_talker", this.hTm.field_talker);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    AppMethodBeat.o(30304);
-  }
-  
-  private boolean dFw()
-  {
-    AppMethodBeat.i(30305);
-    com.tencent.mm.pluginsdk.model.app.b localb = dFu();
-    if (localb == null)
-    {
-      AppMethodBeat.o(30305);
-      return true;
-    }
-    if (com.tencent.mm.vfs.e.cN(localb.field_fileFullPath))
-    {
-      Pf(8);
-      this.zvw.setVisibility(8);
-      this.zvv.setVisibility(8);
-      AppMethodBeat.o(30305);
-      return true;
-    }
-    Pf(8);
-    dFy();
-    AppMethodBeat.o(30305);
-    return false;
-  }
-  
-  private void dFx()
-  {
-    AppMethodBeat.i(30306);
-    com.tencent.mm.pluginsdk.model.app.b localb = dFu();
-    Intent localIntent = new Intent(this, ShowImageUI.class);
-    localIntent.putExtra("key_message_id", this.cEE.field_msgId);
-    localIntent.putExtra("key_image_path", localb.field_fileFullPath);
-    localIntent.putExtra("key_favorite", true);
-    startActivity(localIntent);
-    finish();
-    AppMethodBeat.o(30306);
-  }
-  
-  private void dFy()
-  {
-    AppMethodBeat.i(30313);
-    this.zvJ.setVisibility(0);
-    this.zvK.setVisibility(8);
-    dFz();
-    this.zvv.dFA();
-    AppMethodBeat.o(30313);
-  }
-  
-  private void dFz()
-  {
-    AppMethodBeat.i(30314);
-    this.gtP.setVisibility(8);
-    AppMethodBeat.o(30314);
+    overridePendingTransition(0, 0);
+    AppMethodBeat.o(34153);
   }
   
   private String getMimeType()
   {
-    AppMethodBeat.i(30300);
-    j.b localb = j.b.mY(this.cDI);
+    AppMethodBeat.i(34146);
+    k.b localb = k.b.Hf(this.hWn);
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localb.fgx != null)
+    if (localb.nRe != null)
     {
       localObject1 = localObject2;
-      if (localb.fgx.length() > 0) {
-        localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(localb.fgx);
+      if (localb.nRe.length() > 0) {
+        localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(localb.nRe);
       }
     }
     if (localObject1 != null)
@@ -564,440 +467,1037 @@ public class AppAttachDownloadUI
     }
     else
     {
-      ab.w("MicroMsg.AppAttachDownloadUI", "getMimeType fail, not a built-in mimetype, use \"*/{fileext}\" instead");
-      localObject2 = "*/" + localb.fgx;
+      Log.w("MicroMsg.AppAttachDownloadUI", "getMimeType fail, not a built-in mimetype, use \"*/{fileext}\" instead");
+      localObject2 = "*/" + localb.nRe;
     }
-    AppMethodBeat.o(30300);
+    AppMethodBeat.o(34146);
     return localObject2;
+  }
+  
+  private void hf(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(34161);
+    String str;
+    if (6 == this.appType)
+    {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1203L, paramInt2, 1L, false);
+      str = this.aedP.nRq;
+      if (this.aedP.nRh != 1) {
+        break label226;
+      }
+    }
+    label226:
+    for (paramInt2 = 7;; paramInt2 = 5)
+    {
+      str = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { str, Integer.valueOf(paramInt2), Integer.valueOf(this.aedP.nRd), Integer.valueOf(paramInt1), Long.valueOf((cn.bDv() - this.hTm.getCreateTime()) / 1000L), this.lPJ, this.hTm.field_talker, Integer.valueOf(1), "", Long.valueOf(this.hTm.field_msgSvrId), Long.valueOf(this.hTm.getCreateTime()), Long.valueOf(cn.bDu()), Integer.valueOf(1) });
+      Log.i("MicroMsg.AppAttachDownloadUI", "reportKVStat 14665 %s", new Object[] { str });
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(14665, str);
+      AppMethodBeat.o(34161);
+      return;
+    }
   }
   
   private void init()
   {
-    AppMethodBeat.i(30282);
+    AppMethodBeat.i(34131);
     setMMTitle("");
-    setActionbarColor(getResources().getColor(2131689615));
+    setActionbarColor(getResources().getColor(R.e.white));
     hideActionbarLine();
-    if (!dFq())
+    if (!dLc())
     {
       finish();
-      AppMethodBeat.o(30282);
+      AppMethodBeat.o(34131);
       return;
     }
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(com.tencent.mm.compatible.util.e.esq);
-    if (!localb.exists()) {
-      localb.mkdirs();
+    u localu = new u(com.tencent.mm.loader.i.b.bmC());
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    com.tencent.mm.pluginsdk.model.app.al.aUJ().add(this);
+    as.cWJ().add(this);
     initView();
-    AppMethodBeat.o(30282);
+    jod();
+    AppMethodBeat.o(34131);
   }
   
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+  private void jod()
   {
-    AppMethodBeat.i(30303);
-    paramString = dFu();
+    AppMethodBeat.i(253827);
+    this.aeea = new com.tencent.mm.ui.chatting.multitask.b(new com.tencent.mm.plugin.multitask.a.b((MMActivity)super.getContext()));
+    this.aeea.d(this.filePath, this.lPJ, this.wQW, true);
+    this.aeea.qa(this.lPJ, this.fileName);
+    this.AkR.saveToMultiTaskInfo(this.aeea.LCE);
+    AppMethodBeat.o(253827);
+  }
+  
+  private boolean joe()
+  {
+    return this.aedW == 1;
+  }
+  
+  private void jof()
+  {
+    AppMethodBeat.i(253846);
+    Log.d("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials");
+    if (ab.isNullOrNil(this.filePath))
+    {
+      Log.w("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, filePath is empty");
+      AppMethodBeat.o(253846);
+      return;
+    }
+    if ((this.filePath.equals(this.Ytx)) && (this.WVz != null))
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, already load");
+      AppMethodBeat.o(253846);
+      return;
+    }
+    MaterialModel localMaterialModel = MaterialModel.fh(this.filePath, this.lPJ);
+    if (localMaterialModel == null)
+    {
+      Log.w("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, materialModel is null");
+      AppMethodBeat.o(253846);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.service.j localj = (com.tencent.mm.plugin.appbrand.service.j)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.j.class);
+    if (localj == null)
+    {
+      Log.w("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, openMaterialService is null");
+      AppMethodBeat.o(253846);
+      return;
+    }
+    if (!localj.c(com.tencent.mm.plugin.appbrand.openmaterial.model.b.trZ))
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, openMaterialService is not enabled");
+      AppMethodBeat.o(253846);
+      return;
+    }
+    if (!localj.aen(localMaterialModel.mimeType))
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials, openMaterialService is not support " + localMaterialModel.mimeType);
+      AppMethodBeat.o(253846);
+      return;
+    }
+    localj.a(localMaterialModel, new b(this, localMaterialModel, localj));
+    AppMethodBeat.o(253846);
+  }
+  
+  private void jog()
+  {
+    AppMethodBeat.i(34141);
+    dn localdn = new dn();
+    l.d(localdn, this.hTm);
+    localdn.hDr.activity = this;
+    localdn.hDr.hDy = 39;
+    localdn.publish();
+    AppMethodBeat.o(34141);
+  }
+  
+  private void joh()
+  {
+    AppMethodBeat.i(34143);
+    aBA(0);
+    this.aedI.setVisibility(8);
+    if (joi())
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "startToDownloadFile");
+      if (this.NzY != null) {
+        bh.aZW().a(this.NzY);
+      }
+      this.NzY = new com.tencent.mm.plugin.record.model.g(this.msgId, this.mediaId, this.aedN);
+      bh.aZW().a(this.NzY, 0);
+      ac.am(this.hTm);
+      hf(7, 1);
+    }
+    AppMethodBeat.o(34143);
+  }
+  
+  private boolean joi()
+  {
+    int i = -1;
+    boolean bool2 = true;
+    AppMethodBeat.i(34145);
+    Object localObject1 = joj();
+    Object localObject2;
+    boolean bool1;
     long l1;
     long l2;
-    if (paramString != null)
+    long l3;
+    String str1;
+    long l4;
+    if (localObject1 == null)
     {
-      l1 = paramString.field_totalLen;
-      l2 = paramString.field_offset;
-      this.zvD = l1;
-      this.zvx.setText(getString(2131299003, new Object[] { com.tencent.mm.platformtools.ah.hk(l2), com.tencent.mm.platformtools.ah.hk(l1) }));
-      if (paramString.field_totalLen != 0L) {
-        break label346;
-      }
-    }
-    label346:
-    for (int i = 0;; i = (int)(paramString.field_offset * 100L / paramString.field_totalLen))
-    {
-      ab.v("MicroMsg.AppAttachDownloadUI", "summerapp attach progress:" + i + " offset:" + l2 + " totallen:" + l1 + " status " + paramString.field_status);
-      this.zvu.setProgress(i);
-      if ((paramString.field_status == 199L) && (i >= 100) && (!this.zvE))
+      n.ab(this.msgId, this.hWn);
+      localObject2 = joj();
+      localObject1 = localObject2;
+      bool1 = bool2;
+      if (localObject2 != null)
       {
-        this.zvE = true;
-        if (this.zvL)
-        {
-          this.zvL = false;
-          dFr();
+        l1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).systemRowid;
+        l2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_totalLen;
+        localObject1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_fileFullPath;
+        l3 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_type;
+        str1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaId;
+        l4 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_msgInfoId;
+        bool1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_isUpload;
+        if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_signature != null) {
+          break label322;
         }
-        if (paramString != null)
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo newInfo systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), localObject1, Long.valueOf(l3), str1, Long.valueOf(l4), Boolean.valueOf(bool1), Integer.valueOf(i) });
+        if (this.aedP.nRh == 0)
         {
-          Toast.makeText(this, getString(2131299017) + " : " + paramString.field_fileFullPath.replaceFirst(com.tencent.mm.compatible.util.e.eQx, com.tencent.mm.compatible.util.e.eso), this.zvH).show();
-          com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramString.field_fileFullPath, this.elt, 1);
+          localObject1 = localObject2;
+          bool1 = bool2;
+          if (this.aedP.nRd <= 26214400) {}
         }
-        com.tencent.mm.sdk.platformtools.al.p(new AppAttachDownloadUI.4(this), 200L);
-      }
-      if ((this.zvu.getVisibility() != 0) && (i < 100) && (!paramString.field_isUpload) && (paramString.field_status == 101L))
-      {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp still downloading updateProgress progress[%d]", new Object[] { Integer.valueOf(i) });
-        Pf(0);
-        this.zvv.setVisibility(8);
-      }
-      AppMethodBeat.o(30303);
-      return;
-    }
-  }
-  
-  public final void cfP()
-  {
-    AppMethodBeat.i(30309);
-    Toast.makeText(this, 2131299013, 0).show();
-    AppMethodBeat.o(30309);
-  }
-  
-  public int getLayoutId()
-  {
-    return 2130969336;
-  }
-  
-  public void initView()
-  {
-    AppMethodBeat.i(30299);
-    this.pKQ = ((MMImageView)findViewById(2131821561));
-    this.zvu = ((RoundProgressBtn)findViewById(2131823457));
-    this.zvv = new AppAttachDownloadUI.a(this, (Button)findViewById(2131823458), (TextView)findViewById(2131823459));
-    this.mzM = ((Button)findViewById(2131823460));
-    this.zvw = findViewById(2131823454);
-    this.gtP = ((TextView)findViewById(2131823456));
-    this.zvx = ((TextView)findViewById(2131823455));
-    this.zvy = ((TextView)findViewById(2131823452));
-    this.zvz = ((TextView)findViewById(2131823453));
-    this.zvJ = ((LinearLayout)findViewById(2131823451));
-    this.zvK = ((LinearLayout)findViewById(2131823461));
-    this.zvy.setOnTouchListener(this.mAc);
-    this.zvy.setOnLongClickListener(this.mAd);
-    if (this.zvy != null)
-    {
-      localObject = this.zvy.getPaint();
-      if (localObject != null) {
-        ((Paint)localObject).setFakeBoldText(true);
-      }
-    }
-    this.zvu.setOnClickListener(new AppAttachDownloadUI.8(this));
-    Object localObject = this.zvv;
-    AppAttachDownloadUI.9 local9 = new AppAttachDownloadUI.9(this);
-    ((AppAttachDownloadUI.a)localObject).uxz.setOnClickListener(local9);
-    this.mzM.setOnClickListener(new AppAttachDownloadUI.2(this));
-    int i;
-    switch (this.edl)
-    {
-    case 1: 
-    case 3: 
-    case 5: 
-    default: 
-      this.pKQ.setImageResource(2131230822);
-      setBackBtn(new AppAttachDownloadUI.1(this));
-      this.cBz = getIntent().getBooleanExtra("app_show_share", true);
-      if (this.cBz) {
-        addIconOptionMenu(0, 2131230740, new MenuItem.OnMenuItemClickListener()
+        else
         {
-          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-          {
-            AppMethodBeat.i(30268);
-            AppAttachDownloadUI.a(AppAttachDownloadUI.this, AppAttachDownloadUI.b(AppAttachDownloadUI.this));
-            AppMethodBeat.o(30268);
-            return false;
+          if (ab.isNullOrNil(((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_signature)) {
+            break label334;
           }
-        });
-      }
-      this.zvE = false;
-      localObject = dFu();
-      if ((localObject == null) || (!new com.tencent.mm.vfs.b(((com.tencent.mm.pluginsdk.model.app.b)localObject).field_fileFullPath).exists()))
-      {
-        i = 0;
-        label417:
-        if (i == 0) {
-          break label619;
+          bool1 = true;
+          label219:
+          localObject1 = localObject2;
         }
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp isCanOpenFile");
-        if (this.zvD <= 0L) {
-          break label607;
-        }
-        this.zvz.setVisibility(0);
-        this.zvz.setText(getResources().getString(2131299895, new Object[] { com.tencent.mm.platformtools.ah.hk(this.zvD) }));
       }
-      break;
+      if ((this.aedP == null) || ((this.aedP.nRh == 0) && (this.aedP.nRd <= 26214400))) {
+        break label569;
+      }
+      bool1 = false;
     }
+    label569:
     for (;;)
     {
-      this.zvE = true;
-      dFv();
-      AppMethodBeat.o(30299);
-      return;
-      this.pKQ.setImageResource(2130837708);
-      break;
-      this.pKQ.setImageResource(2131230826);
-      break;
-      this.pKQ.setImageResource(o.alm(this.elt));
-      break;
-      if (bo.aqj(this.elt))
+      if (!bool1) {
+        bh.aZW().a(new e((com.tencent.mm.pluginsdk.model.app.c)localObject1, this.aesKey, this.vyS, this.fileName, this.lPJ, this.hQQ), 0);
+      }
+      if (localObject1 != null)
       {
-        this.pKQ.setImageResource(2130837708);
+        this.filePath = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath;
+        jod();
+      }
+      AppMethodBeat.o(34145);
+      return bool1;
+      label322:
+      i = ((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_signature.length();
+      break;
+      label334:
+      bool1 = false;
+      break label219;
+      localObject2 = new u(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
+      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status == 199L) && (!((u)localObject2).jKS()))
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist but file not!");
+        n.ab(this.msgId, this.hWn);
+      }
+      l1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).systemRowid;
+      l2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_totalLen;
+      str1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath;
+      l3 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_type;
+      String str2 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_mediaId;
+      l4 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_msgInfoId;
+      bool1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_isUpload;
+      boolean bool3 = ((u)localObject2).jKS();
+      long l5 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_status;
+      if (((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_signature == null) {}
+      for (;;)
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp tryInitAttachInfo info exist systemRowid [%d], totalLen[%d], field_fileFullPath[%s], type[%d], mediaId[%s], msgid[%d], upload[%b], file.exists[%b], status[%d], signature len[%d]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), str1, Long.valueOf(l3), str2, Long.valueOf(l4), Boolean.valueOf(bool1), Boolean.valueOf(bool3), Long.valueOf(l5), Integer.valueOf(i) });
+        bool1 = bool2;
         break;
+        i = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_signature.length();
       }
-      this.pKQ.setImageResource(2131230822);
-      break;
-      if ((((com.tencent.mm.pluginsdk.model.app.b)localObject).bEL()) || ((this.cEE.field_isSend == 1) && (((com.tencent.mm.pluginsdk.model.app.b)localObject).field_isUpload)))
-      {
-        i = 1;
-        break label417;
-      }
-      i = 0;
-      break label417;
-      label607:
-      this.zvz.setVisibility(8);
     }
-    label619:
-    if (this.zvD > 0L)
+  }
+  
+  private com.tencent.mm.pluginsdk.model.app.c joj()
+  {
+    AppMethodBeat.i(34147);
+    if (this.appType == 74)
     {
-      this.zvz.setVisibility(0);
-      this.zvz.setText(getResources().getString(2131299895, new Object[] { com.tencent.mm.platformtools.ah.hk(this.zvD) }));
+      AppMethodBeat.o(34147);
+      return null;
     }
-    while (this.zvE)
+    com.tencent.mm.pluginsdk.model.app.c localc1 = as.cWJ().yi(this.msgId);
+    if (localc1 != null)
     {
-      AppMethodBeat.o(30299);
-      return;
-      this.zvz.setVisibility(8);
+      Log.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId [%d] stack[%s]", new Object[] { Long.valueOf(this.msgId), ab.bTQ() });
+      AppMethodBeat.o(34147);
+      return localc1;
     }
-    this.zvA = new AppAttachDownloadUI.7(this);
-    switch (this.edl)
+    localc1 = n.bpU(this.mediaId);
+    if (localc1 == null)
+    {
+      Log.i("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo by msgId and mediaId is null stack[%s]", new Object[] { ab.bTQ() });
+      AppMethodBeat.o(34147);
+      return localc1;
+    }
+    if ((localc1.field_msgInfoId == this.msgId) || (y.ZC(localc1.field_fileFullPath)))
+    {
+      AppMethodBeat.o(34147);
+      return localc1;
+    }
+    n.ab(this.msgId, this.hWn);
+    com.tencent.mm.pluginsdk.model.app.c localc2 = as.cWJ().yi(this.msgId);
+    if (localc2 == null)
+    {
+      Log.w("MicroMsg.AppAttachDownloadUI", "summerapp getAppAttachInfo create new info from local but failed stack[%s]", new Object[] { ab.bTQ() });
+      AppMethodBeat.o(34147);
+      return localc1;
+    }
+    ThreadPool.post(new AppAttachDownloadUI.8(this, localc1, localc2), "copyAttachFromLocal");
+    AppMethodBeat.o(34147);
+    return localc1;
+  }
+  
+  private void jok()
+  {
+    AppMethodBeat.i(34150);
+    switch (this.appType)
     {
     case 1: 
     case 3: 
     case 4: 
     case 5: 
     default: 
-      ab.i("MicroMsg.AppAttachDownloadUI", "summerapp progressCallBack[%s], isDownloadFinished[%b], isDownloadStarted[%b]", new Object[] { this.zvA, Boolean.valueOf(this.zvE), Boolean.valueOf(this.zvF) });
-      if ((this.edl == 2) || ((!this.zvE) && (!this.zvF))) {
-        dFs();
-      }
-      AppMethodBeat.o(30299);
-      return;
-    case 0: 
-    case 6: 
-      if (this.zvF)
-      {
-        this.zvv.setVisibility(0);
-        Pf(8);
-        this.zvw.setVisibility(8);
-        this.mzM.setVisibility(8);
-        dFz();
-        this.zvy.setVisibility(0);
-        if (!this.fileName.equals("")) {
-          break label968;
-        }
-        this.zvy.setText(getString(2131302024));
-        localObject = getMimeType();
-        if ((localObject != null) && (!((String)localObject).equals(""))) {
-          break label982;
-        }
-        this.gtP.setText(getString(2131299000));
-      }
-      while (bo.aqj(this.elt))
-      {
-        dFz();
-        break;
-        this.zvv.setVisibility(8);
-        break label843;
-        this.zvy.setText(this.fileName);
-        break label906;
-        this.gtP.setText(getString(2131299001));
-      }
-    case 7: 
-      label843:
-      label982:
-      if (this.zvF) {
-        this.zvv.setVisibility(0);
-      }
-      for (;;)
-      {
-        label906:
-        label968:
-        Pf(8);
-        this.zvw.setVisibility(8);
-        this.mzM.setVisibility(8);
-        this.zvy.setVisibility(8);
-        dFz();
-        this.gtP.setText(getString(2131299001));
-        break;
-        this.zvv.setVisibility(8);
-      }
-    }
-    Pf(8);
-    this.zvw.setVisibility(8);
-    if (this.zvF) {
-      this.zvv.setVisibility(0);
+      this.AkB.setVisibility(0);
+      aBA(8);
+      this.aedJ.setVisibility(8);
     }
     for (;;)
     {
-      this.mzM.setVisibility(8);
-      this.zvy.setVisibility(8);
-      dFz();
+      Object localObject;
+      if (this.AkR.getFileStatus() != 1)
+      {
+        this.AkR.setFileStatus(1);
+        localObject = joj();
+        if (localObject != null) {
+          this.AkR.setFullPath(ab.nullAsNil(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath));
+        }
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).g(this.AkR);
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).e(this.AkR);
+      }
+      jof();
+      AppMethodBeat.o(34150);
+      return;
+      if (jol()) {
+        if (Util.isImageExt(this.lPJ))
+        {
+          jom();
+        }
+        else
+        {
+          localObject = getMimeType();
+          Log.i("MicroMsg.AppAttachDownloadUI", "onDownLoadImpl");
+          joo();
+          aBA(8);
+          this.aedJ.setVisibility(8);
+          this.aedI.setVisibility(8);
+          this.aedL.setVisibility(0);
+          if (this.fileName.equals("")) {
+            this.aedL.setText(getString(R.l.openapi_app_file));
+          }
+          for (;;)
+          {
+            if ((localObject != null) && (!((String)localObject).equals(""))) {
+              break label322;
+            }
+            this.AkB.setVisibility(8);
+            this.pPe.setText(getString(R.l.gEQ));
+            break;
+            this.aedL.setText(this.fileName);
+          }
+          label322:
+          this.AkB.setVisibility(0);
+          this.pPe.setText(getString(R.l.gER));
+          continue;
+          if (jol())
+          {
+            fkW();
+            continue;
+            localObject = new Intent();
+            ((Intent)localObject).putExtra("App_MsgId", this.msgId);
+            setResult(-1, (Intent)localObject);
+            finish();
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean jol()
+  {
+    AppMethodBeat.i(34151);
+    Object localObject = joj();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(34151);
+      return true;
+    }
+    if (y.ZC(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath))
+    {
+      aBA(8);
+      this.aedJ.setVisibility(8);
+      this.aedI.setVisibility(8);
+      AppMethodBeat.o(34151);
+      return true;
+    }
+    aBA(8);
+    jon();
+    if (this.scene == 3)
+    {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("resLoadFailed", true);
+      setResult(-1, (Intent)localObject);
+      finish();
+    }
+    AppMethodBeat.o(34151);
+    return false;
+  }
+  
+  private void jom()
+  {
+    AppMethodBeat.i(34152);
+    Object localObject = joj();
+    if (localObject == null)
+    {
+      Log.e("MicroMsg.AppAttachDownloadUI", "info == null");
+      AppMethodBeat.o(34152);
+      return;
+    }
+    Intent localIntent = new Intent(this, ShowImageUI.class);
+    localIntent.putExtra("key_message_id", this.hTm.field_msgId);
+    localIntent.putExtra("key_image_path", ((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath);
+    localIntent.putExtra("key_favorite", true);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showFileImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI", "showFileImage", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    finish();
+    AppMethodBeat.o(34152);
+  }
+  
+  private void jon()
+  {
+    AppMethodBeat.i(34159);
+    this.aedX.setVisibility(0);
+    this.aedY.setVisibility(8);
+    joo();
+    this.aedI.jop();
+    AppMethodBeat.o(34159);
+  }
+  
+  private void joo()
+  {
+    AppMethodBeat.i(34160);
+    this.pPe.setVisibility(8);
+    AppMethodBeat.o(34160);
+  }
+  
+  public final MMActivity dSs()
+  {
+    AppMethodBeat.i(369647);
+    MMActivity localMMActivity = (MMActivity)super.getContext();
+    AppMethodBeat.o(369647);
+    return localMMActivity;
+  }
+  
+  public final void gGh()
+  {
+    AppMethodBeat.i(34155);
+    runOnUiThread(new AppAttachDownloadUI..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(34155);
+  }
+  
+  public int getLayoutId()
+  {
+    return R.i.giT;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(34139);
+    this.NlM = ((MMImageView)findViewById(R.h.download_type_icon));
+    this.aedH = ((RoundProgressBtn)findViewById(R.h.fVh));
+    this.aedI = new a((Button)findViewById(R.h.fGc), (TextView)findViewById(R.h.fGd));
+    this.AkB = ((Button)findViewById(R.h.fGo));
+    this.aedJ = findViewById(R.h.fGe);
+    this.pPe = ((TextView)findViewById(R.h.fGk));
+    this.aedK = ((TextView)findViewById(R.h.fGf));
+    this.aedL = ((TextView)findViewById(R.h.fGi));
+    this.aedM = ((TextView)findViewById(R.h.fGj));
+    this.aedX = ((LinearLayout)findViewById(R.h.fGl));
+    this.aedY = ((LinearLayout)findViewById(R.h.fNe));
+    this.aeeb = ((LinearLayout)findViewById(R.h.fGn));
+    this.aeec = ((ImageView)findViewById(R.h.fGm));
+    this.aeec.setImageDrawable(bb.m(this, R.k.icons_filled_mini_program, getResources().getColor(R.e.btn_green_text_color)));
+    this.aeeb.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(253982);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        Log.d("MicroMsg.AppAttachDownloadUI", "MoreOpenWaysArea#onClick");
+        if (AppAttachDownloadUI.a(AppAttachDownloadUI.this) != null) {
+          AppAttachDownloadUI.a(AppAttachDownloadUI.this).cDb();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(253982);
+      }
+    });
+    this.aedL.setOnTouchListener(this.AkU);
+    this.aedL.setOnLongClickListener(this.AkV);
+    if (this.aedL != null)
+    {
+      localObject = this.aedL.getPaint();
+      if (localObject != null) {
+        ((Paint)localObject).setFakeBoldText(true);
+      }
+    }
+    this.aedH.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(34115);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        AppAttachDownloadUI.a(AppAttachDownloadUI.this, 8);
+        AppAttachDownloadUI.D(AppAttachDownloadUI.this).setVisibility(0);
+        AppAttachDownloadUI.E(AppAttachDownloadUI.this).setVisibility(8);
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar downloadAppAttachScene[%s]", new Object[] { AppAttachDownloadUI.b(AppAttachDownloadUI.this) });
+        if (AppAttachDownloadUI.b(AppAttachDownloadUI.this) != null)
+        {
+          AppAttachDownloadUI.b(AppAttachDownloadUI.this).a(AppAttachDownloadUI.this);
+          com.tencent.mm.kernel.h.aZW().a(AppAttachDownloadUI.b(AppAttachDownloadUI.this));
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(34115);
+          return;
+          paramAnonymousView = AppAttachDownloadUI.F(AppAttachDownloadUI.this);
+          if ((paramAnonymousView != null) && (paramAnonymousView.field_status != 199L))
+          {
+            Log.i("MicroMsg.AppAttachDownloadUI", "summerapp roundProgressBar onClick but scene is null and set status[%d] paused", new Object[] { Long.valueOf(paramAnonymousView.field_status) });
+            paramAnonymousView.field_status = 102L;
+            as.cWJ().a(paramAnonymousView, new String[0]);
+          }
+        }
+      }
+    });
+    Object localObject = this.aedI;
+    View.OnClickListener local3 = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(253989);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppAttachDownloadUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        AppAttachDownloadUI.a(AppAttachDownloadUI.this, 0);
+        AppAttachDownloadUI.D(AppAttachDownloadUI.this).setVisibility(8);
+        if (AppAttachDownloadUI.G(AppAttachDownloadUI.this))
+        {
+          paramAnonymousView = AppAttachDownloadUI.F(AppAttachDownloadUI.this);
+          if (paramAnonymousView != null)
+          {
+            paramAnonymousView.field_status = 101L;
+            paramAnonymousView.field_lastModifyTime = Util.nowSecond();
+            as.cWJ().a(paramAnonymousView, new String[0]);
+          }
+          if (AppAttachDownloadUI.b(AppAttachDownloadUI.this) != null) {
+            bh.aZW().a(AppAttachDownloadUI.b(AppAttachDownloadUI.this));
+          }
+          AppAttachDownloadUI.a(AppAttachDownloadUI.this, new com.tencent.mm.plugin.record.model.g(AppAttachDownloadUI.H(AppAttachDownloadUI.this), AppAttachDownloadUI.I(AppAttachDownloadUI.this), AppAttachDownloadUI.J(AppAttachDownloadUI.this)));
+          bh.aZW().a(AppAttachDownloadUI.b(AppAttachDownloadUI.this), 0);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachDownloadUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(253989);
+      }
+    };
+    ((a)localObject).Bqo.setOnClickListener(local3);
+    this.AkB.setOnClickListener(new AppAttachDownloadUI.7(this));
+    switch (this.appType)
+    {
+    case 1: 
+    case 3: 
+    case 5: 
+    default: 
+      this.NlM.setImageResource(R.k.app_attach_file_icon_unknow);
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(34118);
+          if (AppAttachDownloadUI.b(AppAttachDownloadUI.this) != null) {
+            bh.aZW().a(AppAttachDownloadUI.b(AppAttachDownloadUI.this));
+          }
+          if ((AppAttachDownloadUI.c(AppAttachDownloadUI.this) != null) && (AppAttachDownloadUI.c(AppAttachDownloadUI.this).af(1, false)))
+          {
+            AppMethodBeat.o(34118);
+            return true;
+          }
+          AppAttachDownloadUI.this.finish();
+          AppMethodBeat.o(34118);
+          return true;
+        }
+      });
+      this.hTH = getIntent().getBooleanExtra("app_show_share", true);
+      if (this.hTH) {
+        addIconOptionMenu(0, R.k.actionbar_icon_dark_more, new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(253865);
+            AppAttachDownloadUI.a(AppAttachDownloadUI.this, AppAttachDownloadUI.d(AppAttachDownloadUI.this));
+            AppMethodBeat.o(253865);
+            return false;
+          }
+        });
+      }
+      this.aedR = false;
+      if ((!joe()) || (this.hTm.field_msgId != 0L)) {
+        break label659;
+      }
+      this.aedM.setVisibility(8);
+      this.aedL.setVisibility(0);
+      if (this.fileName.equals("")) {
+        this.aedL.setText(getString(R.l.openapi_app_file));
+      }
       break;
-      this.zvv.setVisibility(8);
+    }
+    for (;;)
+    {
+      jon();
+      if (this.scene == 3)
+      {
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("resLoadFailed", true);
+        setResult(-1, (Intent)localObject);
+        finish();
+      }
+      AppMethodBeat.o(34139);
+      return;
+      this.NlM.setImageResource(R.g.app_attach_file_icon_pic);
+      break;
+      this.NlM.setImageResource(R.k.app_attach_file_icon_video);
+      break;
+      this.NlM.setImageResource(x.bpA(this.lPJ));
+      break;
+      if (Util.isImageExt(this.lPJ))
+      {
+        this.NlM.setImageResource(R.g.app_attach_file_icon_pic);
+        break;
+      }
+      this.NlM.setImageResource(R.k.app_attach_file_icon_unknow);
+      break;
+      this.aedL.setText(this.fileName);
+    }
+    label659:
+    int i;
+    if (this.Ysz > 0L)
+    {
+      this.aedM.setVisibility(0);
+      this.aedM.setText(getResources().getString(R.l.gHR, new Object[] { ab.getSizeKB(this.Ysz) }));
+      localObject = joj();
+      if ((localObject != null) && (new u(((com.tencent.mm.pluginsdk.model.app.c)localObject).field_fileFullPath).jKS())) {
+        break label775;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        break label810;
+      }
+      Log.i("MicroMsg.AppAttachDownloadUI", "summerapp isCanOpenFile");
+      this.aedR = true;
+      jok();
+      AppMethodBeat.o(34139);
+      return;
+      this.aedM.setVisibility(8);
+      break;
+      label775:
+      if ((((com.tencent.mm.pluginsdk.model.app.c)localObject).efT()) || ((this.hTm.field_isSend == 1) && (((com.tencent.mm.pluginsdk.model.app.c)localObject).field_isUpload))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+    label810:
+    if (this.aedR)
+    {
+      AppMethodBeat.o(34139);
+      return;
+    }
+    this.aedN = new com.tencent.mm.am.i()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, p paramAnonymousp)
+      {
+        AppMethodBeat.i(253833);
+        if (paramAnonymousInt2 == 0) {}
+        for (float f = 0.0F;; f = paramAnonymousInt1 * 100.0F / paramAnonymousInt2)
+        {
+          if ((paramAnonymousInt1 < paramAnonymousInt2) && (AppAttachDownloadUI.C(AppAttachDownloadUI.this).getVisibility() != 0))
+          {
+            AppAttachDownloadUI.a(AppAttachDownloadUI.this, 0);
+            AppAttachDownloadUI.D(AppAttachDownloadUI.this).setVisibility(8);
+          }
+          AppAttachDownloadUI.C(AppAttachDownloadUI.this).setProgress((int)f);
+          AppMethodBeat.o(253833);
+          return;
+        }
+      }
+    };
+    switch (this.appType)
+    {
+    default: 
+      Log.i("MicroMsg.AppAttachDownloadUI", "summerapp progressCallBack[%s], isDownloadFinished[%b], isDownloadStarted[%b]", new Object[] { this.aedN, Boolean.valueOf(this.aedR), Boolean.valueOf(this.aedS) });
+      if ((this.appType == 2) || ((!this.aedR) && (!this.aedS))) {
+        joh();
+      }
+      AppMethodBeat.o(34139);
+      return;
+    case 0: 
+    case 6: 
+    case 74: 
+      if (this.aedS)
+      {
+        this.aedI.setVisibility(0);
+        aBA(8);
+        this.aedJ.setVisibility(8);
+        this.AkB.setVisibility(8);
+        Log.d("MicroMsg.AppAttachDownloadUI", "hide moreOpenWaysArea");
+        this.aeeb.setVisibility(4);
+        joo();
+        this.aedL.setVisibility(0);
+        if (!this.fileName.equals("")) {
+          break label1120;
+        }
+        this.aedL.setText(getString(R.l.openapi_app_file));
+        localObject = getMimeType();
+        if ((localObject != null) && (!((String)localObject).equals(""))) {
+          break label1134;
+        }
+        this.pPe.setText(getString(R.l.gEQ));
+      }
+      while (Util.isImageExt(this.lPJ))
+      {
+        joo();
+        break;
+        this.aedI.setVisibility(8);
+        break label979;
+        this.aedL.setText(this.fileName);
+        break label1058;
+        this.pPe.setText(getString(R.l.gER));
+      }
+    case 7: 
+      label979:
+      label1120:
+      label1134:
+      if (this.aedS) {
+        this.aedI.setVisibility(0);
+      }
+      for (;;)
+      {
+        label1058:
+        aBA(8);
+        this.aedJ.setVisibility(8);
+        this.AkB.setVisibility(8);
+        Log.d("MicroMsg.AppAttachDownloadUI", "hide moreOpenWaysArea");
+        this.aeeb.setVisibility(4);
+        this.aedL.setVisibility(8);
+        joo();
+        this.pPe.setText(getString(R.l.gER));
+        break;
+        this.aedI.setVisibility(8);
+      }
+    }
+    aBA(8);
+    this.aedJ.setVisibility(8);
+    if (this.aedS) {
+      this.aedI.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.AkB.setVisibility(8);
+      Log.d("MicroMsg.AppAttachDownloadUI", "hide moreOpenWaysArea");
+      this.aeeb.setVisibility(4);
+      this.aedL.setVisibility(8);
+      joo();
+      break;
+      this.aedI.setVisibility(8);
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(30302);
+    AppMethodBeat.i(34148);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, this.zvG, 2131299009, 2131299010, 1);
-    AppMethodBeat.o(30302);
+    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, this.aedT, R.l.download_no_match_msg, R.l.download_no_match_title, 1);
+    AppMethodBeat.o(34148);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(30281);
+    AppMethodBeat.i(34130);
     super.onCreate(paramBundle);
     init();
-    AppMethodBeat.o(30281);
+    AppMethodBeat.o(34130);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(30297);
+    AppMethodBeat.i(34144);
     super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
-    paramContextMenu.add(0, 0, 0, getString(2131296895));
-    AppMethodBeat.o(30297);
+    paramContextMenu.add(0, 0, 0, getString(R.l.app_copy));
+    AppMethodBeat.o(34144);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(30284);
-    com.tencent.mm.pluginsdk.model.app.al.aUJ().remove(this);
+    AppMethodBeat.i(34136);
+    if (this.NzY != null) {
+      this.NzY.oHS = null;
+    }
+    as.cWJ().remove(this);
     super.onDestroy();
-    AppMethodBeat.o(30284);
+    if (this.AkR != null) {
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).d(this.AkR);
+    }
+    AppMethodBeat.o(34136);
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(34140);
+    Log.i("MicroMsg.AppAttachDownloadUI", "onKeyDown keyCode %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt == 4) && (this.aeea != null) && (this.aeea.af(2, false)))
+    {
+      AppMethodBeat.o(34140);
+      return true;
+    }
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(34140);
+    return bool;
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(30310);
+    AppMethodBeat.i(34156);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
+    if (this.aeea != null) {
+      this.aeea.bhW();
+    }
     init();
-    AppMethodBeat.o(30310);
+    AppMethodBeat.o(34156);
+  }
+  
+  public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(34149);
+    com.tencent.mm.pluginsdk.model.app.c localc = joj();
+    int i;
+    StringBuilder localStringBuilder;
+    if (localc != null)
+    {
+      long l1 = localc.field_totalLen;
+      long l2 = localc.field_offset;
+      this.Ysz = l1;
+      this.aedK.setText(getString(R.l.gES, new Object[] { ab.getSizeKB(l2), ab.getSizeKB(l1) }));
+      if (localc.field_totalLen == 0L) {}
+      for (i = 0;; i = (int)(localc.field_offset * 100L / localc.field_totalLen))
+      {
+        Log.v("MicroMsg.AppAttachDownloadUI", "summerapp attach progress:" + i + " offset:" + l2 + " totallen:" + l1 + " status " + localc.field_status);
+        this.aedH.setProgress(i);
+        if ((localc.field_status != 199L) || (i < 100) || (this.aedR)) {
+          break label456;
+        }
+        if (this.aeea != null) {
+          this.aeea.Aq(this.Ysz);
+        }
+        this.aedR = true;
+        if (this.aedZ)
+        {
+          this.aedZ = false;
+          jog();
+        }
+        if (this.scene != 3) {
+          break;
+        }
+        paramString = new Intent();
+        paramString.putExtra("filePath", this.filePath);
+        paramString.putExtra("fileName", this.fileName);
+        paramString.putExtra("fileExt", this.lPJ);
+        setResult(-1, paramString);
+        finish();
+        AppMethodBeat.o(34149);
+        return;
+      }
+      if (localc != null)
+      {
+        localStringBuilder = new StringBuilder().append(getString(R.l.download_success)).append(" : ");
+        paramMStorageEventData = localc.field_fileFullPath;
+        paramString = paramMStorageEventData;
+        if (paramMStorageEventData != null)
+        {
+          String str = com.tencent.mm.loader.i.b.bmu();
+          paramMStorageEventData = y.n(paramMStorageEventData, true);
+          int j = paramMStorageEventData.indexOf(str);
+          paramString = paramMStorageEventData;
+          if (j >= 0)
+          {
+            paramString = paramMStorageEventData.substring(str.length() + j);
+            if (!paramString.startsWith("/")) {
+              break label532;
+            }
+          }
+        }
+      }
+    }
+    label532:
+    for (paramString = "/sdcard".concat(String.valueOf(paramString));; paramString = "/sdcard/".concat(String.valueOf(paramString)))
+    {
+      Toast.makeText(this, paramString, this.aedU).show();
+      com.tencent.mm.pluginsdk.ui.tools.a.a(this, localc.field_fileFullPath, this.lPJ, this.fileName, 1);
+      MMHandlerThread.postToMainThreadDelayed(new AppAttachDownloadUI.9(this), 200L);
+      label456:
+      if ((this.aedH.getVisibility() != 0) && (i < 100) && (!localc.field_isUpload) && (localc.field_status == 101L))
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp still downloading updateProgress progress[%d]", new Object[] { Integer.valueOf(i) });
+        aBA(0);
+        this.aedI.setVisibility(8);
+      }
+      AppMethodBeat.o(34149);
+      return;
+    }
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(30286);
-    aw.Rc().b(221, this);
-    aw.Rc().b(728, this);
+    AppMethodBeat.i(34138);
+    bh.aZW().b(221, this);
+    bh.aZW().b(728, this);
     super.onPause();
-    mj localmj = new mj();
-    localmj.cCu.cCv = false;
-    mj.a locala = localmj.cCu;
-    if (this.cEE == null) {}
-    for (String str = "";; str = this.cEE.field_talker)
+    if (this.aeea != null) {
+      this.aeea.bhW();
+    }
+    rr localrr = new rr();
+    localrr.hUK.pause = false;
+    rr.a locala = localrr.hUK;
+    if (this.hTm == null) {}
+    for (String str = "";; str = this.hTm.field_talker)
     {
       locala.talker = str;
-      com.tencent.mm.sdk.b.a.ymk.a(localmj, getMainLooper());
-      ab.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI cancel pause auto download logic");
-      AppMethodBeat.o(30286);
+      localrr.asyncPublish(getMainLooper());
+      Log.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI cancel pause auto download logic");
+      AppMethodBeat.o(34138);
       return;
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(30285);
+    AppMethodBeat.i(34137);
     super.onResume();
-    aw.Rc().a(221, this);
-    aw.Rc().a(728, this);
-    mj localmj = new mj();
-    localmj.cCu.cCv = true;
-    localmj.cCu.talker = this.cEE.field_talker;
-    com.tencent.mm.sdk.b.a.ymk.a(localmj, getMainLooper());
-    ab.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI req pause auto download logic");
-    this.mzM.setEnabled(true);
-    AppMethodBeat.o(30285);
+    bh.aZW().a(221, this);
+    bh.aZW().a(728, this);
+    rr localrr = new rr();
+    localrr.hUK.pause = true;
+    localrr.hUK.talker = this.hTm.field_talker;
+    localrr.asyncPublish(getMainLooper());
+    Log.d("MicroMsg.AppAttachDownloadUI", "AppAttachDownloadUI req pause auto download logic");
+    this.AkB.setEnabled(true);
+    if (this.aeea != null) {
+      this.aeea.coi();
+    }
+    AppMethodBeat.o(34137);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(30308);
-    ab.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd type[%d], [%d, %d, %s]", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramm.getType() != 221) && (paramm.getType() != 728))
+    AppMethodBeat.i(34154);
+    Log.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd type[%d], [%d, %d, %s]", new Object[] { Integer.valueOf(paramp.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((paramp.getType() != 221) && (paramp.getType() != 728))
     {
-      AppMethodBeat.o(30308);
+      AppMethodBeat.o(34154);
       return;
     }
-    if ((paramm.getType() == 728) && (paramInt1 == 0) && (paramInt2 == 0))
+    if ((paramp.getType() == 728) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = dFu();
+      paramString = joj();
       if (paramString == null)
       {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd getAppAttachInfo is null");
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd getAppAttachInfo is null");
         if (paramString != null)
         {
           paramString.field_status = 101L;
-          paramString.field_lastModifyTime = bo.aox();
-          com.tencent.mm.pluginsdk.model.app.al.aUJ().a(paramString, new String[0]);
+          paramString.field_lastModifyTime = Util.nowSecond();
+          as.cWJ().a(paramString, new String[0]);
         }
-        this.pYd = new com.tencent.mm.plugin.record.b.e(this.cpO, this.cBO, this.zvA);
-        aw.Rc().a(this.pYd, 0);
-        AppMethodBeat.o(30308);
+        if (this.NzY != null) {
+          bh.aZW().a(this.NzY);
+        }
+        this.NzY = new com.tencent.mm.plugin.record.model.g(this.msgId, this.mediaId, this.aedN);
+        bh.aZW().a(this.NzY, 0);
+        AppMethodBeat.o(34154);
         return;
       }
       if (paramString.field_signature == null) {}
       for (paramInt1 = -1;; paramInt1 = paramString.field_signature.length())
       {
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd CheckBigFileDownload ok signature len[%d] start NetSceneDownloadAppAttach", new Object[] { Integer.valueOf(paramInt1) });
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd CheckBigFileDownload ok signature len[%d] start NetSceneDownloadAppAttach", new Object[] { Integer.valueOf(paramInt1) });
         break;
       }
     }
-    if ((this.pYd == null) && ((paramm instanceof com.tencent.mm.plugin.record.b.e)))
+    if ((this.NzY == null) && ((paramp instanceof com.tencent.mm.plugin.record.model.g)))
     {
-      paramString = (com.tencent.mm.plugin.record.b.e)paramm;
-      com.tencent.mm.pluginsdk.model.app.b localb = dFu();
-      if ((localb != null) && (!com.tencent.mm.platformtools.ah.isNullOrNil(localb.field_mediaSvrId)) && (localb.field_mediaSvrId.equals(paramString.getMediaId())))
+      paramString = (com.tencent.mm.plugin.record.model.g)paramp;
+      com.tencent.mm.pluginsdk.model.app.c localc = joj();
+      if ((localc != null) && (!ab.isNullOrNil(localc.field_mediaSvrId)) && (localc.field_mediaSvrId.equals(paramString.getMediaId())))
       {
-        this.pYd = paramString;
-        ab.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd reset downloadAppAttachScene[%s] by mediaSvrId[%s]", new Object[] { this.pYd, localb.field_mediaSvrId });
+        this.NzY = paramString;
+        Log.i("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd reset downloadAppAttachScene[%s] by mediaSvrId[%s]", new Object[] { this.NzY, localc.field_mediaSvrId });
       }
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = com.tencent.mm.plugin.report.service.h.qsU;
-      paramm = this.zvC.fgL;
-      if (this.zvC.fgA == 1) {}
-      for (paramInt1 = 7;; paramInt1 = 5)
+      if (this.aedP.type == 6)
       {
-        paramString.e(14665, new Object[] { paramm, Integer.valueOf(paramInt1), Integer.valueOf(this.zvC.fgw), Integer.valueOf(0), Integer.valueOf(0), this.elt });
-        AppMethodBeat.o(30308);
-        return;
+        hf(0, 2);
+        paramString = joj();
+        if (paramString != null) {
+          com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1203L, 5L, paramString.field_totalLen, false);
+        }
       }
+      AppMethodBeat.o(34154);
+      return;
     }
-    if ((paramInt2 != 0) && (com.tencent.mm.sdk.a.b.dsf())) {
+    if ((paramInt2 != 0) && (CrashReportFactory.hasDebuger())) {
       Toast.makeText(this, "errCode[" + paramInt2 + "]", 0).show();
     }
     if (paramInt2 == -5103059)
     {
-      dFy();
-      Pf(8);
-      if (this.edl == 6)
+      jon();
+      aBA(8);
+      hf(1, 3);
+      if (this.scene == 3)
       {
-        paramString = com.tencent.mm.plugin.report.service.h.qsU;
-        paramm = this.zvC.fgL;
-        if (this.zvC.fgA != 1) {
-          break label580;
-        }
+        paramString = new Intent();
+        paramString.putExtra("resLoadFailed", true);
+        setResult(-1, paramString);
+        finish();
       }
-      label580:
-      for (paramInt1 = 7;; paramInt1 = 5)
-      {
-        paramString.e(14665, new Object[] { paramm, Integer.valueOf(paramInt1), Integer.valueOf(this.zvC.fgw), Integer.valueOf(1), Integer.valueOf(0), this.elt });
-        AppMethodBeat.o(30308);
-        return;
-      }
+      AppMethodBeat.o(34154);
+      return;
     }
-    Pf(8);
-    this.zvv.setVisibility(0);
-    this.zvw.setVisibility(8);
-    ab.e("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd, download fail, type = " + paramm.getType() + " errType = " + paramInt1 + ", errCode = " + paramInt2);
-    AppMethodBeat.o(30308);
+    aBA(8);
+    this.aedI.setVisibility(0);
+    this.aedJ.setVisibility(8);
+    Log.e("MicroMsg.AppAttachDownloadUI", "summerapp onSceneEnd, download fail, type = " + paramp.getType() + " errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.o(34154);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -1005,10 +1505,137 @@ public class AppAttachDownloadUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+  {
+    Button Bqo;
+    private boolean NBX;
+    private TextView dyR;
+    
+    public a(Button paramButton, TextView paramTextView)
+    {
+      AppMethodBeat.i(34126);
+      this.Bqo = paramButton;
+      this.dyR = paramTextView;
+      if (paramTextView != null)
+      {
+        int i = com.tencent.mm.k.i.aRC().getInt("MsgFileExpiredInterval", 432000);
+        long l = AppAttachDownloadUI.S(AppAttachDownloadUI.this).getCreateTime() / 1000L;
+        Math.floor((i - cn.secondsToNow(l)) * 1.0D / 86400.0D);
+        paramTextView.setText("");
+      }
+      AppMethodBeat.o(34126);
+    }
+    
+    public final void jop()
+    {
+      AppMethodBeat.i(34128);
+      Log.i("MicroMsg.AppAttachDownloadUI", "showErrorTip overtime %s", new Object[] { Long.valueOf(AppAttachDownloadUI.S(AppAttachDownloadUI.this).field_msgId) });
+      if (this.Bqo != null) {
+        this.Bqo.setVisibility(4);
+      }
+      if (this.dyR != null)
+      {
+        this.dyR.setVisibility(0);
+        this.dyR.setText(R.l.gHD);
+        this.dyR.setTextColor(AppAttachDownloadUI.this.getResources().getColor(R.e.Red_120));
+        AppAttachDownloadUI.T(AppAttachDownloadUI.this).setVisibility(8);
+        AppAttachDownloadUI.E(AppAttachDownloadUI.this).setVisibility(8);
+        if (!this.NBX)
+        {
+          this.NBX = true;
+          AppAttachDownloadUI.U(AppAttachDownloadUI.this);
+        }
+      }
+      AppMethodBeat.o(34128);
+    }
+    
+    public final void setVisibility(int paramInt)
+    {
+      AppMethodBeat.i(34127);
+      if (this.Bqo != null) {
+        this.Bqo.setVisibility(paramInt);
+      }
+      if (this.dyR != null) {
+        this.dyR.setVisibility(paramInt);
+      }
+      AppMethodBeat.o(34127);
+    }
+  }
+  
+  static final class b
+    implements com.tencent.mm.plugin.appbrand.openmaterial.j
+  {
+    private final com.tencent.mm.plugin.appbrand.service.j WVQ;
+    private final WeakReference<AppAttachDownloadUI> YtG;
+    private final MaterialModel trN;
+    
+    public b(AppAttachDownloadUI paramAppAttachDownloadUI, MaterialModel paramMaterialModel, com.tencent.mm.plugin.appbrand.service.j paramj)
+    {
+      AppMethodBeat.i(253806);
+      this.YtG = new WeakReference(paramAppAttachDownloadUI);
+      this.trN = paramMaterialModel;
+      this.WVQ = paramj;
+      AppMethodBeat.o(253806);
+    }
+    
+    public final void a(boolean paramBoolean, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection)
+    {
+      AppMethodBeat.i(253818);
+      Log.d("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot");
+      AppAttachDownloadUI localAppAttachDownloadUI = (AppAttachDownloadUI)this.YtG.get();
+      if (localAppAttachDownloadUI == null)
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot, ui is null");
+        AppMethodBeat.o(253818);
+        return;
+      }
+      if (!paramBoolean)
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot, fail");
+        AppMethodBeat.o(253818);
+        return;
+      }
+      AppAttachDownloadUI.a(localAppAttachDownloadUI, this.trN.trT);
+      AppAttachDownloadUI.a(localAppAttachDownloadUI, paramAppBrandOpenMaterialCollection);
+      if (!AppAttachDownloadUI.d(localAppAttachDownloadUI))
+      {
+        Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot, download not finish");
+        AppMethodBeat.o(253818);
+        return;
+      }
+      if (this.WVQ.cDh().a(paramAppBrandOpenMaterialCollection))
+      {
+        if (AppAttachDownloadUI.a(localAppAttachDownloadUI) != null) {
+          AppAttachDownloadUI.a(localAppAttachDownloadUI).dead();
+        }
+        AppAttachDownloadUI.a(localAppAttachDownloadUI, this.WVQ.cDh().b(com.tencent.mm.plugin.appbrand.openmaterial.model.b.trZ).a(localAppAttachDownloadUI, AppAttachDownloadUI.x(localAppAttachDownloadUI), AppAttachDownloadUI.y(localAppAttachDownloadUI), null, null));
+        Log.d("MicroMsg.AppAttachDownloadUI", "show moreOpenWaysArea");
+        AppAttachDownloadUI.z(localAppAttachDownloadUI).setVisibility(0);
+      }
+      while (AppAttachDownloadUI.x(localAppAttachDownloadUI) != null) {
+        if (this.WVQ.a(AppAttachDownloadUI.x(localAppAttachDownloadUI), paramAppBrandOpenMaterialCollection))
+        {
+          if (AppAttachDownloadUI.A(localAppAttachDownloadUI) != null) {
+            AppAttachDownloadUI.A(localAppAttachDownloadUI).dead();
+          }
+          AppAttachDownloadUI.a(localAppAttachDownloadUI, this.WVQ.a(com.tencent.mm.plugin.appbrand.openmaterial.model.b.trZ, localAppAttachDownloadUI, AppAttachDownloadUI.x(localAppAttachDownloadUI), AppAttachDownloadUI.y(localAppAttachDownloadUI), AppAttachDownloadUI.a(localAppAttachDownloadUI), null));
+          AppMethodBeat.o(253818);
+          return;
+          Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot, can not create");
+        }
+        else
+        {
+          Log.i("MicroMsg.AppAttachDownloadUI", "loadOpenMaterials#onMyOpenMaterialsGot, not need enhance");
+        }
+      }
+      AppMethodBeat.o(253818);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI
  * JD-Core Version:    0.7.0.1
  */

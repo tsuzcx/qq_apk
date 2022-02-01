@@ -21,71 +21,64 @@ public class ProxyStatistics
   
   private void updateStatistics(List<ProxyStatistics.StatisticsUnit> paramList, String paramString)
   {
-    boolean bool2 = true;
     if (paramList == null) {
+      return;
+    }
+    synchronized (this.mDominantUnitCache)
+    {
+      ProxyStatistics.StatisticsUnit localStatisticsUnit2 = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(paramString);
+      ProxyStatistics.StatisticsUnit localStatisticsUnit1 = localStatisticsUnit2;
+      if (localStatisticsUnit2 == null)
+      {
+        localStatisticsUnit1 = new ProxyStatistics.StatisticsUnit();
+        this.mDominantUnitCache.put(paramString, localStatisticsUnit1);
+      }
+      paramList = paramList.iterator();
+      boolean bool2 = false;
+      int k = 0;
+      int j = 0;
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        paramString = (ProxyStatistics.StatisticsUnit)paramList.next();
+        if (paramString != null)
+        {
+          int n = k + 1;
+          int m = j;
+          if (paramString.allowProxy) {
+            m = j + 1;
+          }
+          k = n;
+          j = m;
+          if (paramString.apnProxy)
+          {
+            i += 1;
+            k = n;
+            j = m;
+          }
+        }
+      }
+      if (k > 0)
+      {
+        float f1 = j;
+        float f2 = k;
+        if (f1 / f2 > 0.5F) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        localStatisticsUnit1.allowProxy = bool1;
+        boolean bool1 = bool2;
+        if (i / f2 > 0.5F) {
+          bool1 = true;
+        }
+        localStatisticsUnit1.apnProxy = bool1;
+      }
       return;
     }
     for (;;)
     {
-      ProxyStatistics.StatisticsUnit localStatisticsUnit;
-      int i;
-      int k;
-      int j;
-      synchronized (this.mDominantUnitCache)
-      {
-        localStatisticsUnit = (ProxyStatistics.StatisticsUnit)this.mDominantUnitCache.get(paramString);
-        if (localStatisticsUnit != null) {
-          break label223;
-        }
-        localStatisticsUnit = new ProxyStatistics.StatisticsUnit();
-        this.mDominantUnitCache.put(paramString, localStatisticsUnit);
-        paramString = localStatisticsUnit;
-        paramList = paramList.iterator();
-        i = 0;
-        k = 0;
-        j = 0;
-        if (paramList.hasNext())
-        {
-          localStatisticsUnit = (ProxyStatistics.StatisticsUnit)paramList.next();
-          if (localStatisticsUnit == null) {
-            continue;
-          }
-          int m = j + 1;
-          j = k;
-          if (localStatisticsUnit.allowProxy) {
-            j = k + 1;
-          }
-          if (!localStatisticsUnit.apnProxy) {
-            break label220;
-          }
-          i += 1;
-          k = j;
-          j = m;
-        }
-      }
-      if (j <= 0) {
-        break;
-      }
-      if (k / j > 0.5F)
-      {
-        bool1 = true;
-        paramString.allowProxy = bool1;
-        if (i / j <= 0.5F) {
-          break label214;
-        }
-      }
-      label214:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        paramString.apnProxy = bool1;
-        return;
-        bool1 = false;
-        break;
-      }
-      label220:
-      continue;
-      label223:
-      paramString = localStatisticsUnit;
+      throw paramList;
     }
   }
   
@@ -147,7 +140,7 @@ public class ProxyStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.statistics.ProxyStatistics
  * JD-Core Version:    0.7.0.1
  */

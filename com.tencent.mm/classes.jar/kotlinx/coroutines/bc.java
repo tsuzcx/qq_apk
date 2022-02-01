@@ -1,32 +1,71 @@
 package kotlinx.coroutines;
 
-import a.c.e.b;
-import a.f.a.b;
-import a.l;
-import a.y;
-import java.util.concurrent.CancellationException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.Metadata;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlinx.coroutines.internal.i;
+import kotlinx.coroutines.internal.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/CoroutineContext$Element;", "children", "Lkotlin/sequences/Sequence;", "getChildren", "()Lkotlin/sequences/Sequence;", "isActive", "", "()Z", "isCancelled", "isCompleted", "onJoin", "Lkotlinx/coroutines/selects/SelectClause0;", "getOnJoin", "()Lkotlinx/coroutines/selects/SelectClause0;", "attachChild", "Lkotlinx/coroutines/ChildHandle;", "child", "Lkotlinx/coroutines/ChildJob;", "cancel", "", "cause", "", "cancel0", "getCancellationException", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "invokeOnCompletion", "Lkotlinx/coroutines/DisposableHandle;", "onCancelling", "invokeImmediately", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "join", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plus", "other", "start", "Key", "kotlinx-coroutines-core"})
-public abstract interface bc
-  extends e.b
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DispatchedCoroutine;", "T", "Lkotlin/coroutines/CoroutineContext;", "context", "Lkotlin/coroutines/Continuation;", "uCont", "<init>", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "", "state", "", "afterCompletion", "(Ljava/lang/Object;)V", "afterResume", "getResult", "()Ljava/lang/Object;", "", "tryResume", "()Z", "trySuspend", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/ScopeCoroutine;"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bc<T>
+  extends y<T>
 {
-  public static final bc.b CIk = bc.b.CIl;
+  static
+  {
+    AppMethodBeat.i(188841);
+    ajvo = AtomicIntegerFieldUpdater.newUpdater(bc.class, "_decision");
+    AppMethodBeat.o(188841);
+  }
   
-  public abstract ap a(boolean paramBoolean1, boolean paramBoolean2, b<? super Throwable, y> paramb);
+  public bc(f paramf, d<? super T> paramd)
+  {
+    super(paramf, paramd);
+  }
   
-  public abstract m a(o paramo);
+  private final boolean kBE()
+  {
+    AppMethodBeat.i(188835);
+    do
+    {
+      switch (this._decision)
+      {
+      default: 
+        Throwable localThrowable = (Throwable)new IllegalStateException("Already resumed".toString());
+        AppMethodBeat.o(188835);
+        throw localThrowable;
+      }
+    } while (!ajvo.compareAndSet(this, 0, 2));
+    AppMethodBeat.o(188835);
+    return true;
+    AppMethodBeat.o(188835);
+    return false;
+  }
   
-  public abstract CancellationException epQ();
+  public final void iv(Object paramObject)
+  {
+    AppMethodBeat.i(188855);
+    if (kBE())
+    {
+      AppMethodBeat.o(188855);
+      return;
+    }
+    i.a(b.au(this.ajzY), ai.e(paramObject, this.ajzY));
+    AppMethodBeat.o(188855);
+  }
   
-  public abstract boolean isActive();
-  
-  public abstract boolean start();
-  
-  public abstract boolean y(Throwable paramThrowable);
+  public final void iw(Object paramObject)
+  {
+    AppMethodBeat.i(188848);
+    iv(paramObject);
+    AppMethodBeat.o(188848);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bc
  * JD-Core Version:    0.7.0.1
  */

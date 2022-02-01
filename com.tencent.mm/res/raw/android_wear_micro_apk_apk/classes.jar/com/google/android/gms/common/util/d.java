@@ -14,7 +14,7 @@ public final class d
     "com.google.android.gms".equals(paramString);
     try
     {
-      int i = ch.u(paramContext).getApplicationInfo(paramString, 0).flags;
+      int i = ch.v(paramContext).getApplicationInfo(paramString, 0).flags;
       if ((i & 0x200000) != 0) {
         bool = true;
       }

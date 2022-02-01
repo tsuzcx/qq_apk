@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcResponseDelMsgV2
   extends JceStruct
 {
-  public byte cReplyCode;
-  public long lUin;
+  public byte cReplyCode = 0;
+  public long lUin = 0L;
   public String strResult = "";
   
   public SvcResponseDelMsgV2() {}
@@ -36,7 +36,7 @@ public final class SvcResponseDelMsgV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponseDelMsgV2
  * JD-Core Version:    0.7.0.1
  */

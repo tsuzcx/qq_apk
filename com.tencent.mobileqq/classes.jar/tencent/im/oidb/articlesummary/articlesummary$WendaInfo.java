@@ -39,18 +39,19 @@ public final class articlesummary$WendaInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 66, 72, 82, 88, 98, 104, 114, 120, 130, 138, 146, 154, 162, 170, 178, 186 }, new String[] { "uint32_is_super_wenda", "bytes_question_rowkey", "bytes_question_desc", "bytes_question_pic_url", "bytes_wenda_url", "uint32_follow_count", "uint32_answer_count", "bytes_icon_url", "uint32_question_status", "bytes_answer_url", "channel_id", "channel_id_name", "channel_second_id", "channel_second_id_name", "tag_id", "tag_id_name", "author_nick", "jump_url", "images_url", "icon_name", "icon_color", "answer_detail", "super_wenda_button_title" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), localByteStringMicro6, Integer.valueOf(0), "", Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", "", "", "", null, "" }, WendaInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 66, 72, 82, 88, 98, 104, 114, 120, 130, 138, 146, 154, 162, 170, 178, 186 }, new String[] { "uint32_is_super_wenda", "bytes_question_rowkey", "bytes_question_desc", "bytes_question_pic_url", "bytes_wenda_url", "uint32_follow_count", "uint32_answer_count", "bytes_icon_url", "uint32_question_status", "bytes_answer_url", "channel_id", "channel_id_name", "channel_second_id", "channel_second_id_name", "tag_id", "tag_id_name", "author_nick", "jump_url", "images_url", "icon_name", "icon_color", "answer_detail", "super_wenda_button_title" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localByteStringMicro5, localInteger, localByteStringMicro6, localInteger, "", localInteger, "", localInteger, "", "", "", "", "", "", null, "" }, WendaInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.WendaInfo
  * JD-Core Version:    0.7.0.1
  */

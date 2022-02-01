@@ -3,30 +3,30 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arcb;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import java.util.ArrayList;
 
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new arcb();
+  public static final Parcelable.Creator<ForwardFileInfo> CREATOR = new ForwardFileInfo.1();
   public int a;
-  private long jdField_a_of_type_Long;
-  private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString;
-  private String f;
+  private int b;
+  private int c;
+  private String d;
+  private long e;
+  private long f;
+  private long g;
+  private String h;
+  private String i;
+  private int j;
+  private String k;
+  private long l;
+  private String m;
+  private String n;
+  private WeiYunFileInfo o;
+  private ArrayList<Long> p;
+  private int q;
   
   public ForwardFileInfo()
   {
@@ -35,7 +35,7 @@ public class ForwardFileInfo
     d("");
     b(-1L);
     c("");
-    b(this.jdField_b_of_type_Int);
+    b(this.b);
     e("");
   }
   
@@ -61,55 +61,32 @@ public class ForwardFileInfo
   
   private boolean a(ForwardFileInfo paramForwardFileInfo)
   {
-    return (d().equals(paramForwardFileInfo.d())) && (d() == paramForwardFileInfo.d()) && (b() == paramForwardFileInfo.b());
+    return (i().equals(paramForwardFileInfo.i())) && (j() == paramForwardFileInfo.j()) && (c() == paramForwardFileInfo.c());
   }
   
   public int a()
   {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_c_of_type_Long;
-  }
-  
-  public WeiYunFileInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<Long> a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.q;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.q = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_c_of_type_Long = paramLong;
+    this.g = paramLong;
   }
   
   public void a(WeiYunFileInfo paramWeiYunFileInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo = paramWeiYunFileInfo;
+    this.o = paramWeiYunFileInfo;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(ArrayList<Long> paramArrayList)
@@ -118,97 +95,67 @@ public class ForwardFileInfo
     if (paramArrayList == null) {
       localObject = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.p = ((ArrayList)localObject);
   }
   
   public long b()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.g;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
   
   public int c()
   {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public long c()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.b;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void c(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.f = paramLong;
   }
   
   public void c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public int d()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long d()
-  {
-    return this.jdField_d_of_type_Long;
+    this.i = paramString;
   }
   
   public String d()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.d;
   }
   
   public void d(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void d(long paramLong)
   {
-    this.jdField_d_of_type_Long = paramLong;
+    this.l = paramLong;
   }
   
   public void d(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public int describeContents()
@@ -216,14 +163,14 @@ public class ForwardFileInfo
     return 0;
   }
   
-  public String e()
+  public long e()
   {
-    return this.jdField_e_of_type_JavaLangString;
+    return this.e;
   }
   
   public void e(String paramString)
   {
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.m = paramString;
   }
   
   public boolean equals(Object paramObject)
@@ -231,55 +178,128 @@ public class ForwardFileInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof ForwardFileInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof ForwardFileInfo))) {
+      return a((ForwardFileInfo)paramObject);
     }
-    return a((ForwardFileInfo)paramObject);
+    return false;
   }
   
-  public String f()
+  public long f()
   {
     return this.f;
   }
   
   public void f(String paramString)
   {
-    this.f = paramString;
+    this.n = paramString;
+  }
+  
+  public String g()
+  {
+    return this.h;
+  }
+  
+  public String h()
+  {
+    return this.i;
   }
   
   public int hashCode()
   {
-    return (d() + d()).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i());
+    localStringBuilder.append(j());
+    return localStringBuilder.toString().hashCode();
+  }
+  
+  public String i()
+  {
+    return this.k;
+  }
+  
+  public long j()
+  {
+    return this.l;
+  }
+  
+  public String k()
+  {
+    return this.m;
+  }
+  
+  public WeiYunFileInfo l()
+  {
+    return this.o;
+  }
+  
+  public ArrayList<Long> m()
+  {
+    if (this.p == null) {
+      this.p = new ArrayList();
+    }
+    return this.p;
+  }
+  
+  public int n()
+  {
+    return this.j;
+  }
+  
+  public int o()
+  {
+    return this.c;
+  }
+  
+  public String p()
+  {
+    return this.n;
   }
   
   public String toString()
   {
-    return "type[" + this.jdField_b_of_type_Int + "], cloudTYpe[" + this.jdField_c_of_type_Int + "], sessionId[" + this.jdField_a_of_type_Long + "], uniseq[" + this.jdField_b_of_type_Long + "], uuid[" + this.jdField_b_of_type_JavaLangString + "], fileId[" + this.jdField_c_of_type_JavaLangString + "], weiYunSrcType[" + this.jdField_d_of_type_Int + "], uuidTroopFile[" + this.jdField_e_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("], cloudTYpe[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("], sessionId[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], uniseq[");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("], uuid[");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("], fileId[");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("], weiYunSrcType[");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("], uuidTroopFile[");
+    localStringBuilder.append(this.m);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(b());
-    paramParcel.writeLong(b());
-    paramParcel.writeLong(d());
-    paramParcel.writeString(a());
-    paramParcel.writeString(b());
-    paramParcel.writeString(c());
     paramParcel.writeInt(c());
+    paramParcel.writeLong(e());
+    paramParcel.writeLong(j());
     paramParcel.writeString(d());
-    paramParcel.writeLong(a());
-    paramParcel.writeInt(d());
-    paramParcel.writeLong(c());
-    paramParcel.writeString(e());
-    paramParcel.writeString(f());
+    paramParcel.writeString(g());
+    paramParcel.writeString(h());
+    paramParcel.writeInt(n());
+    paramParcel.writeString(i());
+    paramParcel.writeLong(b());
+    paramParcel.writeInt(o());
+    paramParcel.writeLong(f());
+    paramParcel.writeString(k());
+    paramParcel.writeString(p());
     paramParcel.writeInt(a());
-    paramParcel.writeParcelable(a(), paramInt);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeParcelable(l(), paramInt);
+    paramParcel.writeList(this.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.ForwardFileInfo
  * JD-Core Version:    0.7.0.1
  */

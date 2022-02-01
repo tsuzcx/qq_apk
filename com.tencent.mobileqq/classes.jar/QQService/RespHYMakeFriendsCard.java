@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespHYMakeFriendsCard
   extends JceStruct
@@ -11,22 +12,22 @@ public final class RespHYMakeFriendsCard
   static RespHead cache_stHeader;
   static MakeFriendsCard cache_stMakeFriendsCard;
   static ArrayList<FaceInfo> cache_vFaceInfo;
-  public byte bFavorited;
-  public byte bQzoneInfo;
-  public byte bShareLBS;
-  public byte bVoted;
-  public byte bWeiboInfo;
-  public byte cSqqLevel;
+  public byte bFavorited = 0;
+  public byte bQzoneInfo = 0;
+  public byte bShareLBS = 0;
+  public byte bVoted = 0;
+  public byte bWeiboInfo = 0;
+  public byte cSqqLevel = 0;
   public int iLat = 900000000;
   public int iLon = 900000000;
-  public int nSameFriendsNum;
-  public RespHead stHeader;
-  public MakeFriendsCard stMakeFriendsCard;
+  public int nSameFriendsNum = 0;
+  public RespHead stHeader = null;
+  public MakeFriendsCard stMakeFriendsCard = null;
   public String strAddress = "";
   public String strCompany = "";
   public String strCustomTelNumber = "";
   public String strSchool = "";
-  public ArrayList<FaceInfo> vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo = null;
   
   public RespHYMakeFriendsCard() {}
   
@@ -93,14 +94,17 @@ public final class RespHYMakeFriendsCard
     paramJceOutputStream.write(this.strSchool, 6);
     paramJceOutputStream.write(this.iLat, 7);
     paramJceOutputStream.write(this.iLon, 8);
-    if (this.strAddress != null) {
-      paramJceOutputStream.write(this.strAddress, 9);
+    Object localObject = this.strAddress;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strCustomTelNumber != null) {
-      paramJceOutputStream.write(this.strCustomTelNumber, 10);
+    localObject = this.strCustomTelNumber;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.vFaceInfo != null) {
-      paramJceOutputStream.write(this.vFaceInfo, 11);
+    localObject = this.vFaceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
     paramJceOutputStream.write(this.bVoted, 12);
     paramJceOutputStream.write(this.bFavorited, 13);
@@ -110,7 +114,7 @@ public final class RespHYMakeFriendsCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespHYMakeFriendsCard
  * JD-Core Version:    0.7.0.1
  */

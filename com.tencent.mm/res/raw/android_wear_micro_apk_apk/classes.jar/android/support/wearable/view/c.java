@@ -16,26 +16,26 @@ package android.support.wearable.view;
     if (paramFloat2 != 0.0F)
     {
       if (paramFloat2 > 0.0F) {
-        return Ao;
+        return Cd;
       }
-      return Am;
+      return Cb;
     }
     if (paramFloat1 != 0.0F)
     {
       if (paramFloat1 > 0.0F) {
-        return An;
+        return Cc;
       }
-      return Al;
+      return Ca;
     }
-    return Ap;
+    return Ce;
   }
   
-  final boolean eI()
+  final boolean eY()
   {
     return this.y != 0;
   }
   
-  final boolean eJ()
+  final boolean eZ()
   {
     return this.x != 0;
   }

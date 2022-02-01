@@ -26,28 +26,30 @@ class SimplePluginManager$PluginPreloadTask
   
   public void run()
   {
-    Object localObject;
     if (!this.e)
     {
-      localObject = PluginRunningPath.getPluginOptDexDir(this.b, this.c, this.d);
-      String str = PluginRunningPath.getPluginNewLibDir(this.b, this.c, this.d);
-      new DexClassLoader(this.a.getAbsolutePath(), (String)localObject, str, this.b.getClassLoader());
-      localObject = new File((String)localObject, this.a.getName() + ".preload");
-    }
-    try
-    {
-      ((File)localObject).createNewFile();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
+      Object localObject1 = PluginRunningPath.getPluginOptDexDir(this.b, this.c, this.d);
+      Object localObject2 = PluginRunningPath.getPluginNewLibDir(this.b, this.c, this.d);
+      new DexClassLoader(this.a.getAbsolutePath(), (String)localObject1, (String)localObject2, this.b.getClassLoader());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.a.getName());
+      ((StringBuilder)localObject2).append(".preload");
+      localObject1 = new File((String)localObject1, ((StringBuilder)localObject2).toString());
+      try
+      {
+        ((File)localObject1).createNewFile();
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.SimplePluginManager.PluginPreloadTask
  * JD-Core Version:    0.7.0.1
  */

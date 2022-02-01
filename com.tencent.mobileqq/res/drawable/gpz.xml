@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="200" android:drawable="@drawable/j8z" />
+    <item android:duration="200" android:drawable="@drawable/j90" />
+    <item android:duration="200" android:drawable="@drawable/j91" />
+    <item android:duration="200" android:drawable="@drawable/j92" />
+    <item android:duration="200" android:drawable="@drawable/j93" />
+    <item android:duration="200" android:drawable="@drawable/j94" />
+    <item android:duration="200" android:drawable="@drawable/j95" />
+</animation-list>

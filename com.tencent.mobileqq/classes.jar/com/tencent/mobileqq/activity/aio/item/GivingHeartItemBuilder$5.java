@@ -1,34 +1,32 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aeug;
-import afmy;
-import afxl;
+import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-public class GivingHeartItemBuilder$5
+class GivingHeartItemBuilder$5
   implements Runnable
 {
-  public GivingHeartItemBuilder$5(afmy paramafmy) {}
+  GivingHeartItemBuilder$5(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
   
   public void run()
   {
-    Object localObject = afxl.a(this.this$0.b, afmy.a(this.this$0));
+    Object localObject = PokeItemHelper.b(this.this$0.w, GivingHeartItemBuilder.b(this.this$0));
     if (((ArrayList)localObject).size() > 0)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        aeug localaeug = (aeug)((Iterator)localObject).next();
-        afmy.a(this.this$0).put(Integer.valueOf(localaeug.b), Integer.valueOf(localaeug.c));
+        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
+        GivingHeartItemBuilder.c(this.this$0).put(Integer.valueOf(localPokeData.c), Integer.valueOf(localPokeData.g));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

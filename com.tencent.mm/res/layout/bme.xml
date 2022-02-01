@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j6g" android:background="@drawable/b47" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/m2" android:layout_marginRight="@dimen/cd" android:layout_marginBottom="@dimen/m2">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bv" android:src="@raw/icons_outlined_search" app:iconColor="@color/FG_2" />
+        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/j7" android:textColor="@color/a7b" android:textColorHint="@color/xn" android:gravity="center_vertical" android:id="@id/j_l" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:minHeight="@dimen/hx" android:hint="@string/a2o" android:singleLine="true" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a8b" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/fpg" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8">
+        <ListView android:id="@id/grp" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/gti" style="@style/na" />
+        <com.tencent.mm.chatroom.ui.SelectMemberScrollBar android:id="@id/grr" android:layout_width="@dimen/q8" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textColor="@color/xo" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/cj_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gc" style="@style/m3" />
+        <LinearLayout android:id="@id/gti" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <RelativeLayout android:orientation="horizontal" android:background="@drawable/bya" android:layout_width="fill_parent" android:layout_height="@dimen/j1">
+                <Button android:textColor="@color/gj" android:gravity="center" android:id="@id/j2" android:background="@drawable/b9" android:layout_height="fill_parent" android:minWidth="@dimen/j2" android:text="@string/jv" android:layout_alignParentLeft="true" style="@style/od" />
+                <Button android:textColor="@color/gj" android:gravity="center" android:id="@id/ff9" android:background="@drawable/b9" android:layout_height="fill_parent" android:minWidth="@dimen/j2" android:text="@string/g_" android:layout_alignParentRight="true" style="@style/od" />
+                <Button android:textColor="@color/a_0" android:gravity="center" android:id="@id/c0_" android:background="@drawable/ah8" android:visibility="gone" android:minWidth="@dimen/j2" android:text="@string/g_" android:layout_alignParentRight="true" style="@style/od" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:interpolator="@android:anim/linear_interpolator" android:duration="2200" android:shareInterpolator="false" android:fillAfter="true" android:startOffset="1000" android:repeatCount="infinite" android:repeatMode="restart" android:fromXDelta="100.0%p" android:toXDelta="14.999998%p" android:fromYDelta="20.000004%p" android:toYDelta="70.00001%p" android:fillEnabled="true" />
+    <alpha android:interpolator="@android:anim/linear_interpolator" android:duration="200" android:shareInterpolator="false" android:startOffset="3000" android:repeatCount="infinite" android:repeatMode="restart" android:fromAlpha="1.0" android:toAlpha="0.0" />
+</set>

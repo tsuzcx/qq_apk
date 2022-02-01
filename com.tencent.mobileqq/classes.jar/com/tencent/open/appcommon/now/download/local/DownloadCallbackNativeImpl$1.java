@@ -1,49 +1,49 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import bfjr;
-import bfka;
-import bfkb;
-import bfkg;
+import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
-public class DownloadCallbackNativeImpl$1
+class DownloadCallbackNativeImpl$1
   implements Runnable
 {
-  public DownloadCallbackNativeImpl$1(bfka parambfka, int paramInt) {}
+  DownloadCallbackNativeImpl$1(DownloadCallbackNativeImpl paramDownloadCallbackNativeImpl, int paramInt) {}
   
   public void run()
   {
+    int i = this.a;
     Iterator localIterator;
-    if ((this.a == 4) || (this.a == 3) || (this.a == 2)) {
-      localIterator = bfka.a(this.this$0).values().iterator();
-    }
-    while (localIterator.hasNext())
+    if ((i != 4) && (i != 3) && (i != 2))
     {
-      bfkg localbfkg = (bfkg)localIterator.next();
-      DownloadInfo localDownloadInfo = bfjr.a().a(localbfkg.a);
-      if (localDownloadInfo != null) {
-        if (localDownloadInfo.a() == 2)
+      if (i == 1) {
+        localIterator = DownloadCallbackNativeImpl.a(this.this$0).values().iterator();
+      }
+    }
+    else {
+      while (localIterator.hasNext())
+      {
+        DownloadTaskInfo localDownloadTaskInfo = (DownloadTaskInfo)localIterator.next();
+        DownloadInfo localDownloadInfo = DownloadCenterImpl.a().c(localDownloadTaskInfo.a);
+        if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.h))
         {
-          if (localbfkg.b) {
-            bfkb.a().a(localbfkg.a);
-          }
-        }
-        else if ((localDownloadInfo.a() == 3) && (!localbfkg.b) && (!localbfkg.c))
-        {
-          bfkb.a().a(null, localbfkg);
+          DownloadNativeApi.a().a(null, localDownloadTaskInfo);
           continue;
-          if (this.a == 1)
+          localIterator = DownloadCallbackNativeImpl.a(this.this$0).values().iterator();
+          while (localIterator.hasNext())
           {
-            localIterator = bfka.a(this.this$0).values().iterator();
-            while (localIterator.hasNext())
-            {
-              localbfkg = (bfkg)localIterator.next();
-              localDownloadInfo = bfjr.a().a(localbfkg.a);
-              if ((localDownloadInfo != null) && (localDownloadInfo.a() == 3) && (!localbfkg.c)) {
-                bfkb.a().a(null, localbfkg);
+            localDownloadTaskInfo = (DownloadTaskInfo)localIterator.next();
+            localDownloadInfo = DownloadCenterImpl.a().c(localDownloadTaskInfo.a);
+            if (localDownloadInfo != null) {
+              if (localDownloadInfo.a() == 2)
+              {
+                if (localDownloadTaskInfo.g) {
+                  DownloadNativeApi.a().a(localDownloadTaskInfo.a);
+                }
+              }
+              else if ((localDownloadInfo.a() == 3) && (!localDownloadTaskInfo.g) && (!localDownloadTaskInfo.h)) {
+                DownloadNativeApi.a().a(null, localDownloadTaskInfo);
               }
             }
           }
@@ -54,7 +54,7 @@ public class DownloadCallbackNativeImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl.1
  * JD-Core Version:    0.7.0.1
  */

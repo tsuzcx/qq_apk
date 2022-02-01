@@ -8,59 +8,62 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.collect.model.e;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 
 public class CollectBillHeaderView
   extends LinearLayout
 {
-  private TextView kGe;
-  private TextView kPB;
-  private WalletTextView kQx;
-  private TextView kQy;
+  private TextView pJi;
+  private TextView wRf;
+  private WalletTextView xbL;
+  private TextView xbM;
   
   public CollectBillHeaderView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(41173);
+    AppMethodBeat.i(64034);
     init(paramContext);
-    AppMethodBeat.o(41173);
+    AppMethodBeat.o(64034);
   }
   
   public CollectBillHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(41174);
+    AppMethodBeat.i(64035);
     init(paramContext);
-    AppMethodBeat.o(41174);
+    AppMethodBeat.o(64035);
   }
   
   public CollectBillHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(41175);
+    AppMethodBeat.i(64036);
     init(paramContext);
-    AppMethodBeat.o(41175);
+    AppMethodBeat.o(64036);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(41176);
-    paramContext = w.hM(paramContext).inflate(2130969170, this);
-    this.kGe = ((TextView)paramContext.findViewById(2131822893));
-    this.kQy = ((TextView)paramContext.findViewById(2131822894));
-    this.kQx = ((WalletTextView)paramContext.findViewById(2131822895));
-    this.kPB = ((TextView)paramContext.findViewById(2131822896));
-    AppMethodBeat.o(41176);
+    AppMethodBeat.i(64037);
+    paramContext = af.mU(paramContext).inflate(a.g.collect_bill_header, this);
+    this.wRf = ((TextView)paramContext.findViewById(a.f.collect_bill_header_date_tv));
+    this.xbM = ((TextView)paramContext.findViewById(a.f.collect_bill_header_currency_tv));
+    this.xbL = ((WalletTextView)paramContext.findViewById(a.f.collect_bill_header_money_tv));
+    this.pJi = ((TextView)paramContext.findViewById(a.f.collect_bill_header_desc_tv));
+    AppMethodBeat.o(64037);
   }
   
-  public final void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
+  public final void b(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    AppMethodBeat.i(41177);
-    this.kGe.setText(e.a(getContext(), paramLong, paramInt3));
-    this.kQx.setText(e.tN(paramInt2));
-    this.kPB.setText(getContext().getString(2131298436, new Object[] { Integer.valueOf(paramInt1) }));
-    AppMethodBeat.o(41177);
+    AppMethodBeat.i(64038);
+    this.wRf.setText(e.a(getContext(), paramLong, paramInt3));
+    this.xbL.setText(e.Jm(paramInt2));
+    this.pJi.setText(getContext().getString(a.i.collect_bill_total_num_text, new Object[] { Integer.valueOf(paramInt1) }));
+    AppMethodBeat.o(64038);
   }
 }
 

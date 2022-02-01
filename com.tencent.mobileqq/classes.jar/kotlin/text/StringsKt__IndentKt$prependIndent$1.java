@@ -20,20 +20,27 @@ final class StringsKt__IndentKt$prependIndent$1
   public final String invoke(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "it");
+    Object localObject;
     if (StringsKt.isBlank((CharSequence)paramString))
     {
-      String str = paramString;
+      localObject = paramString;
       if (paramString.length() < this.$indent.length()) {
-        str = this.$indent;
+        return this.$indent;
       }
-      return str;
     }
-    return this.$indent + paramString;
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.$indent);
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.StringsKt__IndentKt.prependIndent.1
  * JD-Core Version:    0.7.0.1
  */

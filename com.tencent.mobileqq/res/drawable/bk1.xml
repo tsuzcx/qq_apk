@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/eb6" />
-    <item android:state_checked="false" android:drawable="@drawable/eb6" />
-    <item android:drawable="@drawable/eb6" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="7.0dip" />
+            <solid android:color="@color/al6" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="7.0dip" />
+            <solid android:color="@color/al3" />
+        </shape>
+    </item>
 </selector>

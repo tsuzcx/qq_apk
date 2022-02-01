@@ -1,59 +1,60 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import alri;
-import alrk;
-import alrl;
-import amit;
 import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.discussion.observer.DiscussionObserver;
 
 public class UpdateDiscuss
   extends AsyncStep
 {
-  private alrl a;
+  private DiscussionObserver a;
   
-  private void b()
+  private void a()
   {
-    if (this.jdField_a_of_type_Alrl == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_Alrl = new amit(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Alrl);
+      this.a = new UpdateDiscuss.MyDiscussionObserver(this, null);
+      this.mAutomator.k.addObserver(this.a);
     }
-    ((alri)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(6)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getCurrentAccountUin()).longValue());
+    ((DiscussionHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).f(Long.valueOf(this.mAutomator.k.getCurrentAccountUin()).longValue());
   }
   
-  public int a()
+  protected int doStep()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getBoolean("isDiscussionlistok", false);
-    alrk localalrk = (alrk)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(53);
+    boolean bool = this.mAutomator.d.getBoolean("isDiscussionlistok", false);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.mAutomator.k.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (bool)
     {
-      FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1);
-      localalrk.a();
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      localDiscussionManager.a();
       localFriendListHandler.notifyUI(1000, true, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(3));
+      this.mAutomator.notifyUI(3, true, Integer.valueOf(3));
       return 7;
     }
-    localalrk.a();
-    b();
+    localDiscussionManager.a();
+    a();
     return 2;
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Alrl != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Alrl);
-      this.jdField_a_of_type_Alrl = null;
+      this.mAutomator.k.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateDiscuss
  * JD-Core Version:    0.7.0.1
  */

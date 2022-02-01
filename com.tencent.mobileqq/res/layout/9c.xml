@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/oee" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/p1i">
+        <com.tencent.mobileqq.flashshow.widgets.common.FSAvatarView android:layout_gravity="center_vertical" android:id="@id/a2o" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <com.tencent.mobileqq.flashshow.widgets.common.FSAsyncTextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/akh" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/i7u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:maxLines="1" android:lines="1" />
+    </LinearLayout>
+    <com.tencent.mobileqq.flashshow.widgets.common.FSAsyncTextView android:textSize="14.0dip" android:textColor="@color/akh" android:id="@id/i7s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="20.0dip" android:includeFontPadding="false" android:layout_below="@id/oee" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/agv" android:id="@id/qof" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/i7s" />
+    <com.tencent.mobileqq.flashshow.widgets.comment.FSCommentPraiseLayout android:id="@id/p1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

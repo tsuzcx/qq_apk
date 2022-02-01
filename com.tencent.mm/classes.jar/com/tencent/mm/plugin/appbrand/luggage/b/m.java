@@ -1,73 +1,143 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e.b;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.c;
+import com.tencent.mm.ui.aw;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class m
-  implements b
+  extends com.tencent.luggage.i.a.b
 {
-  private List<b> iou;
+  public static Integer tfI;
+  private boolean tfH = false;
   
-  public m(i parami)
+  private static boolean cBg()
   {
-    AppMethodBeat.i(86994);
-    this.iou = new LinkedList();
-    this.iou.add(new o(parami));
-    this.iou.add(new j(parami));
-    AppMethodBeat.o(86994);
+    AppMethodBeat.i(319873);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, null, m.a.class);
+    if (localIPCBoolean == null) {}
+    for (boolean bool = false;; bool = localIPCBoolean.value)
+    {
+      Log.i("MicroMsg.WxaMapViewFactory", "isOverseasUserFromMainTask:%b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(319873);
+      return bool;
+    }
   }
   
-  public final boolean a(c paramc, String paramString)
+  private static int getMapType()
   {
-    AppMethodBeat.i(86995);
-    if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
+    AppMethodBeat.i(47493);
+    if (tfI != null)
     {
-      AppMethodBeat.o(86995);
-      return false;
+      i = tfI.intValue();
+      AppMethodBeat.o(47493);
+      return i;
     }
-    Iterator localIterator = this.iou.iterator();
-    while (localIterator.hasNext()) {
-      if (((b)localIterator.next()).a(paramc, paramString))
-      {
-        AppMethodBeat.o(86995);
-        return true;
-      }
+    Object localObject = a.a.mzH;
+    localObject = a.Fd("100487");
+    if ((localObject == null) || (!((c)localObject).isValid()))
+    {
+      Log.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
+      AppMethodBeat.o(47493);
+      return 1;
     }
-    AppMethodBeat.o(86995);
-    return false;
+    tfI = Integer.valueOf(Util.getInt((String)((c)localObject).iWZ().get("MapType"), 1));
+    Log.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { tfI });
+    int i = tfI.intValue();
+    AppMethodBeat.o(47493);
+    return i;
   }
   
-  public final String b(c paramc, String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.o.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(86996);
-    if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
+    int i = 0;
+    AppMethodBeat.i(47495);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(86996);
-      return paramString;
+      AppMethodBeat.o(47495);
+      return null;
     }
-    Iterator localIterator = this.iou.iterator();
-    while (localIterator.hasNext())
+    int k = com.tencent.mm.plugin.appbrand.jsapi.o.a.f.a(paramMap, "mapType", getMapType());
+    int j = com.tencent.mm.plugin.appbrand.jsapi.o.a.f.a(paramMap, "enableDarkMode", 0);
+    if (!aw.isDarkMode()) {}
+    for (;;)
     {
-      b localb = (b)localIterator.next();
-      if (localb.a(paramc, paramString))
+      paramMap.put("enableDarkMode", Integer.valueOf(i));
+      paramMap.put("isOverseasUser", Boolean.valueOf(isOverseasUser()));
+      if (k == 2)
       {
-        paramc = localb.b(paramc, paramString);
-        AppMethodBeat.o(86996);
-        return paramc;
+        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.al.d.b(paramContext, paramString, paramMap);
+        AppMethodBeat.o(47495);
+        return paramContext;
       }
+      paramContext = super.a(paramContext, paramString, paramMap);
+      AppMethodBeat.o(47495);
+      return paramContext;
+      i = j;
     }
-    AppMethodBeat.o(86996);
-    return paramString;
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.jsapi.o.a.b b(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(47494);
+    if (paramJSONObject != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject.put("mapType", getMapType());
+        bool = paramJSONObject.optBoolean("enableDarkMode", false);
+        if (aw.isDarkMode()) {
+          continue;
+        }
+        bool = false;
+      }
+      catch (JSONException localJSONException)
+      {
+        boolean bool;
+        Log.printInfoStack("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
+        continue;
+        if (!bool) {
+          continue;
+        }
+        int i = 1;
+        continue;
+      }
+      paramJSONObject.put("enableDarkMode", i);
+      paramf = super.b(paramf, paramJSONObject);
+      AppMethodBeat.o(47494);
+      return paramf;
+      i = 0;
+    }
+  }
+  
+  public final boolean isOverseasUser()
+  {
+    AppMethodBeat.i(319894);
+    if (this.tfH)
+    {
+      AppMethodBeat.o(319894);
+      return true;
+    }
+    this.tfH = cBg();
+    boolean bool = this.tfH;
+    AppMethodBeat.o(319894);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.m
  * JD-Core Version:    0.7.0.1
  */

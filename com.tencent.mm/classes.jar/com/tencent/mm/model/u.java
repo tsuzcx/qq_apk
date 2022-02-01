@@ -1,308 +1,239 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.ax.a.a;
+import com.tencent.mm.ax.e;
+import com.tencent.mm.ax.f;
+import com.tencent.mm.ax.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.chatroom.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
-import junit.framework.Assert;
+import java.util.Map;
 
 public final class u
 {
-  private static final List<u.a> flm;
-  
-  static
+  public static boolean HZ(String paramString)
   {
-    AppMethodBeat.i(59887);
-    flm = new ArrayList();
-    AppMethodBeat.o(59887);
+    AppMethodBeat.i(184632);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(184632);
+      return false;
+    }
+    paramString = Util.stringsToList(paramString.split(","));
+    if (paramString == null)
+    {
+      AppMethodBeat.o(184632);
+      return false;
+    }
+    paramString = paramString.iterator();
+    do
+    {
+      if (!paramString.hasNext()) {
+        break;
+      }
+    } while (au.bwI((String)paramString.next()));
+    for (boolean bool = false;; bool = true)
+    {
+      AppMethodBeat.o(184632);
+      return bool;
+    }
   }
   
-  public static List<String> P(String paramString, int paramInt)
+  public static boolean Ia(String paramString)
   {
-    AppMethodBeat.i(59884);
-    ArrayList localArrayList = null;
-    Object localObject = null;
-    if (!g.RG()) {
-      ab.w("MicroMsg.ConversationLogic", "get Total Unread Talker T, but has not set uin");
-    }
-    for (;;)
+    AppMethodBeat.i(101740);
+    if ((au.bwI(paramString)) || (au.bwO(paramString)))
     {
-      AppMethodBeat.o(59884);
-      return localObject;
-      localObject = ((j)g.E(j.class)).YF().eC(paramString, paramInt);
-      if (((Cursor)localObject).moveToNext())
+      AppMethodBeat.o(101740);
+      return true;
+    }
+    AppMethodBeat.o(101740);
+    return false;
+  }
+  
+  public static void a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3)
+  {
+    AppMethodBeat.i(101737);
+    b(paramString1, paramList, paramString2, paramBoolean, paramString3);
+    AppMethodBeat.o(101737);
+  }
+  
+  private static void b(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3)
+  {
+    AppMethodBeat.i(241870);
+    cc localcc = new cc();
+    localcc.BS(paramString1);
+    localcc.setType(10000);
+    localcc.setCreateTime(System.currentTimeMillis());
+    localcc.setStatus(4);
+    localcc.pI(2);
+    paramString1 = new StringBuffer();
+    if (paramList != null)
+    {
+      String str1 = z.bAM();
+      String str2 = MMApplicationContext.getContext().getString(b.a.chatroom_sys_msg_invite_split);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        localArrayList = new ArrayList();
-        do
+        String str3 = (String)paramList.next();
+        if (!str3.equals(str1))
         {
-          ab.d("MicroMsg.ConversationLogic", "jacks need notify talker display name: %s", new Object[] { ((Cursor)localObject).getString(0) });
-          localArrayList.add(((Cursor)localObject).getString(0));
-        } while (((Cursor)localObject).moveToNext());
-      }
-      ((Cursor)localObject).close();
-      localObject = localArrayList;
-      if (localArrayList != null)
-      {
-        paramString = ((j)g.E(j.class)).YF().arR(paramString);
-        localObject = localArrayList;
-        if (paramString != null)
-        {
-          paramString.moveToFirst();
-          while (!paramString.isAfterLast())
+          au localau = ((n)h.ax(n.class)).bzA().JE(str3);
+          if ((localau != null) && ((int)localau.maN != 0))
           {
-            localObject = ((j)g.E(j.class)).YA().arw(paramString.getString(0));
-            if ((localObject != null) && (((aq)localObject).dqK == 0))
-            {
-              ab.d("MicroMsg.ConversationLogic", "jacks need mute notify:  %s", new Object[] { ((ad)localObject).Oe() });
-              localArrayList.remove(((ad)localObject).Oe());
+            if (paramBoolean) {
+              paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + p(localau) + "</a>" + str2);
+            } else {
+              paramString1.append(p(localau) + str2);
             }
-            paramString.moveToNext();
           }
-          paramString.close();
-          localObject = localArrayList;
+          else if (paramBoolean) {
+            paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + str3 + "</a>" + str2);
+          } else {
+            paramString1.append(str3 + str2);
+          }
         }
       }
+      if (paramString1.length() > 0) {
+        paramString1.deleteCharAt(paramString1.lastIndexOf(str2));
+      }
     }
+    localcc.setContent(paramString2.replace("%s", paramString1));
+    ((n)h.ax(n.class)).gaZ().ba(localcc);
+    AppMethodBeat.o(241870);
   }
   
-  private static int a(String paramString, Cursor paramCursor)
+  public static List<Boolean> bR(List<String> paramList)
   {
-    AppMethodBeat.i(59879);
-    if ((paramCursor != null) && (paramCursor.getCount() > 0)) {
-      paramCursor.moveToFirst();
-    }
-    for (int i = paramCursor.getInt(0);; i = 0)
+    AppMethodBeat.i(101736);
+    if (paramList == null)
     {
-      if (paramCursor != null) {
-        paramCursor.close();
-      }
-      if (i <= 0)
+      AppMethodBeat.o(101736);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    String str;
+    boolean bool2;
+    long l2;
+    long l1;
+    while (paramList.hasNext())
+    {
+      str = (String)paramList.next();
+      if (!au.bwE(str))
       {
-        AppMethodBeat.o(59879);
-        return 0;
+        bool1 = false;
+        localArrayList.add(Boolean.valueOf(bool1));
       }
-      paramString = ((j)g.E(j.class)).YF().arR(paramString);
-      if (paramString == null)
+      else
       {
-        ab.w("MicroMsg.ConversationLogic", "cursor is null, return");
-        AppMethodBeat.o(59879);
-        return i;
-      }
-      paramString.moveToFirst();
-      if (!paramString.isAfterLast())
-      {
-        paramCursor = ((j)g.E(j.class)).YA().arw(paramString.getString(0));
-        if ((paramCursor == null) || (paramCursor.dqK != 0)) {
-          break label209;
-        }
-        i -= paramString.getInt(1);
-        ab.d("MicroMsg.ConversationLogic", "unreadcheck chatroom mute %s, unRead %d,", new Object[] { paramCursor.field_username, Integer.valueOf(i) });
-      }
-      label209:
-      for (;;)
-      {
-        paramString.moveToNext();
-        break;
-        paramString.close();
-        i = Math.max(0, i);
-        AppMethodBeat.o(59879);
-        return i;
-      }
-    }
-  }
-  
-  public static void a(u.a parama)
-  {
-    AppMethodBeat.i(59886);
-    Assert.assertNotNull(parama);
-    synchronized (flm)
-    {
-      flm.add(parama);
-      AppMethodBeat.o(59886);
-      return;
-    }
-  }
-  
-  public static int ag(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(59882);
-    if (!g.RG())
-    {
-      ab.w("MicroMsg.ConversationLogic", "get total unread, but has not set uin");
-      AppMethodBeat.o(59882);
-      return 0;
-    }
-    paramString1 = ((j)g.E(j.class)).YF().ip(paramString1, paramString2);
-    if ((paramString1 != null) && (paramString1.getCount() > 0)) {
-      paramString1.moveToFirst();
-    }
-    for (int i = paramString1.getInt(0);; i = 0)
-    {
-      if (paramString1 != null) {
-        paramString1.close();
-      }
-      AppMethodBeat.o(59882);
-      return i;
-    }
-  }
-  
-  public static int ah(String paramString1, String paramString2)
-  {
-    int j = 0;
-    AppMethodBeat.i(59885);
-    if (bo.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(59885);
-      return 0;
-    }
-    if ("notification_messages".equals(paramString1)) {}
-    for (int i = 8;; i = 2)
-    {
-      AppMethodBeat.o(59885);
-      return i;
-      if ((paramString2 == null) || (!paramString2.endsWith("@chatroom"))) {
-        break;
-      }
-    }
-    PInt localPInt = new PInt();
-    List localList = flm;
-    i = 0;
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        if (i >= flm.size()) {
-          break label166;
-        }
-        u.a locala = (u.a)flm.get(i);
-        if (locala == null) {
-          break label175;
-        }
-        bool2 = locala.a(paramString1, paramString2, localPInt);
-        bool1 = bool2;
-        if (!bool2) {
-          break label175;
-        }
-        i = localPInt.value;
-        if (!bool2)
+        bool2 = false;
+        boolean bool3 = false;
+        long l3 = 0L;
+        Object localObject = ((n)h.ax(n.class)).bzG().bxM(str);
+        l2 = l3;
+        if (localObject != null)
         {
-          i = 1;
-          break;
+          l1 = l3;
+          bool1 = bool3;
+          if (((bd)localObject).field_lastSeq != 0L)
+          {
+            cc localcc = ((n)h.ax(n.class)).gaZ().aV(str, ((bd)localObject).field_lastSeq);
+            if (localcc != null)
+            {
+              l1 = l3;
+              bool1 = bool3;
+              if (localcc.field_msgId != 0L) {}
+            }
+            else
+            {
+              l1 = ((bd)localObject).field_lastSeq;
+              bool1 = true;
+            }
+          }
+          l2 = l1;
+          bool2 = bool1;
+          if (((bd)localObject).field_firstUnDeliverSeq != 0L)
+          {
+            ((bb)localObject).gU(0L);
+            ((bb)localObject).gT(0L);
+            ((n)h.ax(n.class)).bzG().c((bb)localObject, str);
+            Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId update conv");
+            bool2 = bool1;
+            l2 = l1;
+          }
+        }
+        if (bool2) {
+          break label408;
+        }
+        localObject = ((n)h.ax(n.class)).gaZ().aMb(str);
+        if ((localObject == null) || (((fi)localObject).field_msgId == 0L)) {
+          break label408;
         }
       }
-      finally
-      {
-        AppMethodBeat.o(59885);
+    }
+    label408:
+    for (boolean bool1 = true;; bool1 = bool2)
+    {
+      l1 = l2;
+      if (l2 == 0L) {
+        l1 = ((n)h.ax(n.class)).gaZ().aMa(str);
       }
+      if (l1 != 0L) {
+        ((n)h.ax(n.class)).bAd().aR(str, l1);
+      }
+      Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId[%s], needClear[%b], lastMsgSeq[%d]", new Object[] { str, Boolean.valueOf(bool1), Long.valueOf(l1) });
       break;
-      label166:
-      boolean bool2 = bool1;
-      i = j;
-      continue;
-      label175:
-      i += 1;
+      AppMethodBeat.o(101736);
+      return localArrayList;
     }
   }
   
-  public static int e(String paramString, List<String> paramList)
+  private static String p(au paramau)
   {
-    AppMethodBeat.i(59881);
-    if (!g.RG())
+    AppMethodBeat.i(101739);
+    if (com.tencent.mm.openim.room.a.a.W(paramau))
     {
-      ab.w("MicroMsg.ConversationLogic", "get total unread with black list, but has not set uin");
-      AppMethodBeat.o(59881);
-      return 0;
-    }
-    long l = bo.yB();
-    Cursor localCursor = ((j)g.E(j.class)).YF().B(paramString, paramList);
-    int j = a(paramString, localCursor);
-    localCursor.close();
-    l = bo.av(l);
-    if (paramList == null) {}
-    for (int i = -1;; i = paramList.size())
-    {
-      ab.i("MicroMsg.ConversationLogic", "get count with black list use %d ms, blacklist size:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-      AppMethodBeat.o(59881);
-      return j;
-    }
-  }
-  
-  public static int f(String paramString, List<String> paramList)
-  {
-    AppMethodBeat.i(141741);
-    if (!g.RG())
-    {
-      ab.w("MicroMsg.ConversationLogic", "get Total Unread Talker, but has not set uin");
-      AppMethodBeat.o(141741);
-      return 0;
-    }
-    long l = bo.yB();
-    paramList = ((j)g.E(j.class)).YF().C(paramString, paramList);
-    if (paramList.getCount() > 0) {
-      paramList.moveToFirst();
-    }
-    for (int j = paramList.getInt(0);; j = 0)
-    {
-      paramList.close();
-      if (j <= 0)
+      String str = com.tencent.mm.openim.room.a.a.X(paramau);
+      if (str != null)
       {
-        AppMethodBeat.o(141741);
-        return 0;
+        paramau = paramau.aSV() + str;
+        AppMethodBeat.o(101739);
+        return paramau;
       }
-      paramString = ((j)g.E(j.class)).YF().arR(paramString);
-      if (paramString == null)
-      {
-        ab.i("MicroMsg.ConversationLogic", "[getTotalUnreadTalker] cursor is null!cost %d ms count:%s ", new Object[] { Long.valueOf(bo.av(l)), Integer.valueOf(j) });
-        AppMethodBeat.o(141741);
-        return j;
-      }
-      paramString.moveToFirst();
-      int i = 0;
-      if (!paramString.isAfterLast())
-      {
-        paramList = ((j)g.E(j.class)).YA().arw(paramString.getString(0));
-        if ((paramList == null) || (paramList.dqK != 0)) {
-          break label280;
-        }
-        j -= 1;
-        i += 1;
-      }
-      label280:
-      for (;;)
-      {
-        paramString.moveToNext();
-        break;
-        paramString.close();
-        ab.i("MicroMsg.ConversationLogic", "[getTotalUnreadTalker] cost %d ms count:%s mute:%s", new Object[] { Long.valueOf(bo.av(l)), Integer.valueOf(j), Integer.valueOf(i) });
-        i = Math.max(0, j);
-        AppMethodBeat.o(141741);
-        return i;
-      }
+      paramau = paramau.aSV();
+      AppMethodBeat.o(101739);
+      return paramau;
     }
-  }
-  
-  public static int oM(String paramString)
-  {
-    AppMethodBeat.i(59880);
-    int i = e(paramString, new LinkedList());
-    AppMethodBeat.o(59880);
-    return i;
+    paramau = paramau.aSV();
+    AppMethodBeat.o(101739);
+    return paramau;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.u
  * JD-Core Version:    0.7.0.1
  */

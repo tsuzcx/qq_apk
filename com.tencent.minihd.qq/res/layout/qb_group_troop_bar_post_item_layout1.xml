@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@drawable/qb_troop_bar_item" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="top" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_marginTop="12.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:id="@id/tv_post_title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="2" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/layout_post_icons" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="12.0sp" android:textColor="#ffa6a6a6" android:ellipsize="end" android:id="@id/tv_post_user_nick_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:maxEms="6" android:singleLine="true" />
+        <ImageView android:id="@id/img_post_user_gender" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_marginRight="4.0dip" />
+        <com.tencent.image.URLImageView android:id="@id/urlImg_post_user_level" android:layout_width="wrap_content" android:layout_height="14.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitStart" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layout_user_icon_list" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffa6a6a6" android:id="@id/tv_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ffa6a6a6" android:id="@id/tv_recommends" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <View android:background="@color/qb_troop_bar_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="10.0dip" />
+</LinearLayout>

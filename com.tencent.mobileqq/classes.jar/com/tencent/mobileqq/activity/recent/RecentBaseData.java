@@ -1,31 +1,28 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajlh;
-import ajmr;
 import android.content.Context;
-import android.text.SpannableStringBuilder;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import atue;
-import bamp;
-import baph;
-import bdeu;
-import bdgc;
-import bdgk;
-import bdil;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.common.config.AppSetting;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.imcore.message.Message;
+import com.tencent.mobileqq.activity.recent.config.RecentBaseDataConfig;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
+import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.ParcelObject;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.imcore.message.QQMessageFacadeStub;
+import com.tencent.mobileqq.imcore.proxy.basic.TalkBackProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.MsgUtilsProxy;
+import com.tencent.mobileqq.imcore.proxy.msg.QQTextProxy;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import lpp;
-import mww;
 
-@ajmr
+@ParcelAnnotation.ParcelObject
 public abstract class RecentBaseData
 {
+  public static final int C2C_PROCESSUNREADNUM = 99;
   public static final int MENU_FLAG_AV_A = 12288;
   public static final int MENU_FLAG_AV_C2C = 4096;
   public static final int MENU_FLAG_AV_DIS = 8192;
@@ -49,6 +46,7 @@ public abstract class RecentBaseData
   public static final int MENU_FLAG_TMSGSETING = 256;
   public static final int MENU_FLAG_UNSUBSCRIBE = 2097152;
   public static final int STATUS_AUDIO_TALK = 1;
+  public static final int STATUS_AVGAME = 10;
   public static final int STATUS_AV_OTHER_TER_CHATING = 5;
   public static final int STATUS_DEFAULT = 0;
   public static final int STATUS_DRAFT = 4;
@@ -57,7 +55,9 @@ public abstract class RecentBaseData
   public static final int STATUS_MUTILTALK_NOTJOUIN = 3;
   public static final int STATUS_SHARE_LOCATION = 8;
   public static final int STATUS_SING_TOGETHER = 9;
+  public static final int STATUS_STUDY_ROOM = 11;
   public static final int STATUS_WATCH_TOGETHER = 7;
+  public static final int TROOP_PROCESSUNREADNUM = 999;
   public static final int UNREAD_MSG_FALG_NUM_VIP = 4;
   public static final int UNREAD_MSG_FLAG_NONE = 0;
   public static final int UNREAD_MSG_FLAG_NUM_BLUE = 3;
@@ -72,8 +72,8 @@ public abstract class RecentBaseData
   public CharSequence mExtraInfo;
   public int mExtraInfoColor;
   public int mExtraType;
-  public boolean mIsGroupVideo;
-  public boolean mIsGroupVideoNotify;
+  public boolean mIsGroupVideo = false;
+  public boolean mIsGroupVideoNotify = false;
   public CharSequence mLastMsg;
   public int mMenuFlag = 0;
   public CharSequence mMsgExtroInfo;
@@ -83,7 +83,7 @@ public abstract class RecentBaseData
   public String mShowTime;
   public int mStatus;
   public String mTitleName;
-  public CharSequence mTitleName_cs;
+  public CharSequence mTitleNameCs;
   public int mUnreadFlag = 1;
   public int mUnreadNum;
   protected MsgSummary msgSummary;
@@ -93,330 +93,268 @@ public abstract class RecentBaseData
     this.mMenuFlag |= 0x1;
   }
   
-  private void a(QQMessageFacade.Message paramMessage, QQAppInterface paramQQAppInterface, int paramInt)
+  protected void buildMessageBody(Message paramMessage, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    if ((paramMessage != null) && (1 == paramInt))
+    long l = System.currentTimeMillis();
+    MsgUtilsProxy.a(paramContext, paramBaseQQAppInterface, paramMessage, paramInt, paramMsgSummary, false, false);
+    if (QLog.isColorLevel())
     {
-      paramQQAppInterface = bdgc.g(paramQQAppInterface, paramMessage.frienduin, paramMessage.senderuin);
-      if ((paramQQAppInterface != null) && (!TextUtils.equals(paramQQAppInterface, paramMessage.nickName)))
-      {
-        paramMessage.nickName = paramQQAppInterface;
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.recent", 2, "processTroopNickName  nickname : " + paramQQAppInterface);
-        }
-      }
+      paramMessage = new StringBuilder();
+      paramMessage.append(getClass().getName());
+      paramMessage.append(" get summary=");
+      paramMessage.append(l - System.currentTimeMillis());
+      QLog.d("Q.recent.cost", 2, paramMessage.toString());
     }
   }
   
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public final MsgSummary a()
+  public final void clearUnReadNum()
   {
-    if (this.msgSummary == null) {
-      this.msgSummary = new MsgSummary();
-    }
-    for (;;)
-    {
-      return this.msgSummary;
-      this.msgSummary.a();
-    }
+    this.mUnreadNum = 0;
   }
   
-  public abstract String a();
-  
-  public void a()
+  public void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder(1024);
-      String str2 = "null";
-      String str1 = "null";
-      if (!TextUtils.isEmpty(this.mTitleName)) {
-        str1 = "lenth=" + this.mTitleName.length();
-      }
-      if (!TextUtils.isEmpty(this.mLastMsg)) {
-        str2 = "lenth=" + this.mLastMsg.length();
-      }
-      localStringBuilder.append("[").append("type:").append(a()).append(", uin:").append(a()).append(", unreadNum:").append(this.mUnreadNum).append(", titleName:").append(str1).append(", mMenuFlag:").append(this.mMenuFlag).append(", status:").append(this.mStatus).append(", authenIcon:").append(this.mAuthenIconId).append(", showTime:").append(this.mShowTime).append(", lastmsg:").append(str2).append(", extrainfo:").append(this.mExtraInfo).append(", lastmsgtime:").append(a()).append(", lastdrafttime:").append(b()).append("]");
-      QLog.i("Q.recent", 4, localStringBuilder.toString());
-    }
-  }
-  
-  protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    a(paramMessage, paramQQAppInterface, paramInt);
-    if (paramMessage != null) {}
-    for (String str = paramMessage.nickName;; str = null)
-    {
-      bdil.a(paramContext, paramQQAppInterface, paramMessage, paramInt, paramMsgSummary, str, false, false);
+    if (paramMsgSummary == null) {
       return;
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.mStatus = 0;
-    int k = a();
-    long l;
-    int m;
-    label137:
-    label185:
-    Object localObject3;
-    label255:
-    Object localObject2;
-    if ((k == 3000) || (k == 1)) {
-      try
-      {
-        l = Long.parseLong(a());
-        m = mww.b(k);
-        if (paramQQAppInterface.a().a(m, l) > 0L) {
-          if (paramQQAppInterface.a().a(m, l))
-          {
-            this.mStatus = 2;
-            if ((k == 0) && (paramQQAppInterface.a().d(a()))) {
-              this.mStatus = 5;
-            }
-            Object localObject1;
-            if (this.mStatus == 0)
-            {
-              localObject1 = paramQQAppInterface.a();
-              if ((localObject1 == null) || (!((QQMessageFacade)localObject1).e(a(), k))) {
-                break label526;
-              }
-              this.mStatus = 4;
-            }
-            if ((this.mStatus == 0) || (this.mStatus == 8))
-            {
-              localObject1 = a();
-              this.mStatus = 0;
-              if (k != 1) {
-                break label534;
-              }
-              if (atue.b(paramQQAppInterface, (String)localObject1)) {
-                this.mStatus = 8;
-              }
-            }
-            if ((this.mStatus == 0) || (this.mStatus == 6))
-            {
-              localObject1 = a();
-              this.mStatus = 0;
-              localObject3 = (ListenTogetherManager)paramQQAppInterface.getManager(331);
-              if (((k != 3000) && (k != 1)) || (!((ListenTogetherManager)localObject3).a(1, (String)localObject1))) {
-                break label557;
-              }
-              this.mStatus = 6;
-            }
-            if ((this.mStatus != 4) && ((k == 1) || (k == 0)))
-            {
-              localObject1 = a();
-              if (k != 1) {
-                break label582;
-              }
-              i = 1;
-              label288:
-              i = ((baph)paramQQAppInterface.getManager(339)).a(i, (String)localObject1);
-              if (((this.mStatus == 0) || (this.mStatus >= i)) && (i != 0)) {
-                this.mStatus = i;
-              }
-            }
-            return;
-          }
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          l = 0L;
-          continue;
-          this.mStatus = 3;
-        }
-        localObject2 = paramQQAppInterface.a().a(l, 2);
-        if (localObject2 == null) {}
-      }
-    }
-    for (int i = ((lpp)localObject2).a + 0;; i = 0)
-    {
-      localObject2 = paramQQAppInterface.a().a(l, 10);
-      int j = i;
-      if (localObject2 != null) {
-        j = i + ((lpp)localObject2).a;
-      }
-      if (j <= 0) {
-        break;
-      }
-      if (paramQQAppInterface.a().a(m, l))
-      {
-        this.mStatus = 2;
-        break;
-      }
-      this.mStatus = 3;
-      break;
-      if ((!paramQQAppInterface.c()) || ((paramQQAppInterface.a().e() != 1) && (paramQQAppInterface.a().e() != 2))) {
-        break;
-      }
-      i = paramQQAppInterface.a().f();
-      localObject2 = paramQQAppInterface.a().c();
-      localObject3 = paramQQAppInterface.a().d();
-      if ((k != i) || ((!a().equals(localObject2)) && (!a().equals(localObject3)))) {
-        break;
-      }
-      this.mStatus = 1;
-      break;
-      label526:
-      this.mStatus = 0;
-      break label137;
-      label534:
-      if ((k != 0) || (!atue.a(paramQQAppInterface, (String)localObject2))) {
-        break label185;
-      }
-      this.mStatus = 8;
-      break label185;
-      label557:
-      if ((k != 0) || (!((ListenTogetherManager)localObject3).a(2, (String)localObject2))) {
-        break label255;
-      }
-      this.mStatus = 6;
-      break label255;
-      label582:
-      i = 2;
-      break label288;
-    }
-  }
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext);
-  
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
-  {
-    if (TextUtils.isEmpty(this.mTitleName)) {
-      this.mTitleName = a();
-    }
-    if (paramMsgSummary != null)
-    {
-      this.mLastMsg = paramMsgSummary.a(paramContext);
-      if (((this.mLastMsg instanceof SpannableStringBuilder)) && (bdgk.b())) {
-        this.mLastMsg = ((SpannableStringBuilder)this.mLastMsg).append(" ");
-      }
-      paramQQAppInterface = this.mLastMsg;
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.length() <= 168)) {}
-    }
-    try
-    {
-      this.mLastMsg = paramQQAppInterface.subSequence(0, 168);
-      if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
-      }
+    paramMsgSummary.bShowDraft = false;
+    paramMsgSummary.mDraft = null;
+    if (this.mDisplayTime > getLastDraftTime()) {
       return;
     }
-    catch (Exception paramQQAppInterface)
+    paramBaseQQAppInterface = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
+    if (paramBaseQQAppInterface != null)
     {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          paramQQAppInterface.printStackTrace();
-        }
+      if (!(paramBaseQQAppInterface.getQQMessageFacadeStub() instanceof QQMessageFacadeStub)) {
+        return;
       }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, MsgSummary paramMsgSummary)
-  {
-    if (paramMsgSummary == null) {}
-    do
-    {
-      do
+      paramBaseQQAppInterface = ((QQMessageFacadeStub)paramBaseQQAppInterface.getQQMessageFacadeStub()).getDraftSummaryInfo(getRecentUserUin(), getRecentUserType());
+      if (paramBaseQQAppInterface != null)
       {
-        do
-        {
+        if (TextUtils.isEmpty(paramBaseQQAppInterface.getSummary())) {
           return;
-          paramMsgSummary.bShowDraft = false;
-          paramMsgSummary.mDraft = null;
-        } while (this.mDisplayTime > b());
-        paramQQAppInterface = paramQQAppInterface.a();
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a(a(), a());
-    } while ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getSummary())));
-    this.mDisplayTime = paramQQAppInterface.getTime();
-    paramMsgSummary.bShowDraft = true;
-    paramMsgSummary.mDraft = new bamp(paramQQAppInterface.getSummary(), 3, 16);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public final int b()
-  {
-    return this.mUnreadNum;
-  }
-  
-  public abstract long b();
-  
-  public final String b()
-  {
-    return this.mTitleName;
-  }
-  
-  public final void b()
-  {
-    this.mUnreadNum = 0;
-  }
-  
-  public long c()
-  {
-    return 5L;
-  }
-  
-  public final void c()
-  {
-    this.mUnreadNum = 0;
-  }
-  
-  public void d()
-  {
-    StringBuilder localStringBuilder;
-    if (AppSetting.c)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.mTitleName).append(",");
-      if (this.mUnreadNum != 0) {
-        break label67;
+        }
+        this.mDisplayTime = paramBaseQQAppInterface.getTime();
+        paramMsgSummary.bShowDraft = true;
+        paramMsgSummary.mDraft = QQTextProxy.a(paramBaseQQAppInterface.getSummary(), 3, 16);
       }
     }
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        localStringBuilder.append(this.mMsgExtroInfo).append(",");
-      }
-      this.mContentDesc = localStringBuilder.toString();
-      return;
-      label67:
-      if (this.mUnreadNum == 1) {
-        localStringBuilder.append("有一条未读,");
-      } else if (this.mUnreadNum == 2) {
-        localStringBuilder.append("有两条未读,");
-      } else if (this.mUnreadNum > 0) {
-        localStringBuilder.append("有").append(this.mUnreadNum).append("条未读,");
-      }
-    }
+  }
+  
+  public void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    RecentBaseDataConfig.a().a(paramBaseQQAppInterface, this);
   }
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    for (boolean bool = true; (!bool) && ((paramObject instanceof RecentBaseData)); bool = false)
+    boolean bool;
+    if (paramObject == this) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((!bool) && ((paramObject instanceof RecentBaseData)))
     {
       paramObject = (RecentBaseData)paramObject;
-      if ((paramObject.a() != a()) || (!bdeu.a(paramObject.a(), a()))) {
-        break;
+      if ((paramObject.getRecentUserType() == getRecentUserType()) && (TextUtils.equals(paramObject.getRecentUserUin(), getRecentUserUin()))) {
+        return true;
       }
-      return true;
     }
     return bool;
   }
+  
+  protected void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  {
+    if (TextUtils.isEmpty(this.mTitleName)) {
+      this.mTitleName = getRecentUserUin();
+    }
+    if (paramMsgSummary != null)
+    {
+      this.mLastMsg = paramMsgSummary.a(paramContext);
+      paramBaseQQAppInterface = this.mLastMsg;
+      if ((paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.length() > 168)) {
+        try
+        {
+          this.mLastMsg = paramBaseQQAppInterface.subSequence(0, 168);
+        }
+        catch (Exception paramBaseQQAppInterface)
+        {
+          if (QLog.isDevelopLevel()) {
+            paramBaseQQAppInterface.printStackTrace();
+          }
+        }
+      }
+    }
+    if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
+      this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
+    }
+  }
+  
+  public long getFaceExtraFlag()
+  {
+    return 5L;
+  }
+  
+  public abstract long getLastDraftTime();
+  
+  public abstract long getLastMsgTime();
+  
+  public final MsgSummary getMsgSummaryTemp()
+  {
+    MsgSummary localMsgSummary = this.msgSummary;
+    if (localMsgSummary == null) {
+      this.msgSummary = new MsgSummary();
+    } else {
+      localMsgSummary.a();
+    }
+    return this.msgSummary;
+  }
+  
+  public abstract int getRecentUserType();
+  
+  public abstract String getRecentUserUin();
+  
+  public final String getTitleName()
+  {
+    return this.mTitleName;
+  }
+  
+  public final int getUnreadNum()
+  {
+    return this.mUnreadNum;
+  }
+  
+  public boolean isUnreadMsgNumInTabNum()
+  {
+    return true;
+  }
+  
+  public void makeContentDesc()
+  {
+    if (TalkBackProxy.a())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mTitleName);
+      localStringBuilder.append(",");
+      int i = this.mUnreadNum;
+      if (i != 0) {
+        if (i == 1)
+        {
+          localStringBuilder.append("有一条未读,");
+        }
+        else if (i == 2)
+        {
+          localStringBuilder.append("有两条未读,");
+        }
+        else if (i > 0)
+        {
+          localStringBuilder.append("有");
+          localStringBuilder.append(this.mUnreadNum);
+          localStringBuilder.append("条未读,");
+        }
+      }
+      CharSequence localCharSequence = this.mMsgExtroInfo;
+      if (localCharSequence != null)
+      {
+        localStringBuilder.append(localCharSequence);
+        localStringBuilder.append(",");
+      }
+      this.mContentDesc = localStringBuilder.toString();
+    }
+  }
+  
+  public void printDataItem()
+  {
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder(1024);
+      boolean bool = TextUtils.isEmpty(this.mTitleName);
+      Object localObject2 = "null";
+      Object localObject1;
+      if (!bool)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("lenth=");
+        ((StringBuilder)localObject1).append(this.mTitleName.length());
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = "null";
+      }
+      if (!TextUtils.isEmpty(this.mLastMsg))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("lenth=");
+        ((StringBuilder)localObject2).append(this.mLastMsg.length());
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      localStringBuilder.append("[");
+      localStringBuilder.append("type:");
+      localStringBuilder.append(getRecentUserType());
+      localStringBuilder.append(", uin:");
+      localStringBuilder.append(getRecentUserUin());
+      localStringBuilder.append(", unreadNum:");
+      localStringBuilder.append(this.mUnreadNum);
+      localStringBuilder.append(", titleName:");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(", mMenuFlag:");
+      localStringBuilder.append(this.mMenuFlag);
+      localStringBuilder.append(", status:");
+      localStringBuilder.append(this.mStatus);
+      localStringBuilder.append(", authenIcon:");
+      localStringBuilder.append(this.mAuthenIconId);
+      localStringBuilder.append(", showTime:");
+      localStringBuilder.append(this.mShowTime);
+      localStringBuilder.append(", lastmsg:");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(", extrainfo:");
+      localStringBuilder.append(this.mExtraInfo);
+      localStringBuilder.append(", lastmsgtime:");
+      localStringBuilder.append(getLastMsgTime());
+      localStringBuilder.append(", lastdrafttime:");
+      localStringBuilder.append(getLastDraftTime());
+      localStringBuilder.append("]");
+      QLog.i("Q.recent", 4, localStringBuilder.toString());
+    }
+  }
+  
+  protected void processUnReadNum(int paramInt1, int paramInt2)
+  {
+    if (this.mUnreadFlag == 3)
+    {
+      if (this.mUnreadNum <= 0) {
+        return;
+      }
+      if (ABTestController.a().a("message_reminder_layer2_1505_20210618").f())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        if (this.mUnreadNum > paramInt2)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramInt2);
+          ((StringBuilder)localObject).append("+");
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.mUnreadNum);
+          ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131916809));
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("]");
+        Object localObject = localStringBuilder.toString();
+        this.mExtraInfoColor = paramInt1;
+        this.mMsgExtroInfo = ((CharSequence)localObject);
+      }
+    }
+  }
+  
+  public abstract void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext);
 }
 
 

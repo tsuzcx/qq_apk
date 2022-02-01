@@ -47,11 +47,15 @@ public class cn
           localIterator.remove();
         }
       }
+      if (hC.size() + 1 > 100) {
+        hC.remove(0);
+      }
+      return false;
     }
-    if (hC.size() + 1 > 100) {
-      hC.remove(0);
+    for (;;)
+    {
+      throw parama;
     }
-    return false;
   }
   
   public int F()
@@ -84,7 +88,7 @@ public class cn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cn
  * JD-Core Version:    0.7.0.1
  */

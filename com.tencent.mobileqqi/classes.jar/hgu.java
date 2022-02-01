@@ -1,21 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.IphoneTreeView;
 
 public class hgu
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public hgu(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  public hgu(IphoneTreeView paramIphoneTreeView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      bool = false;
     }
+    do
+    {
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

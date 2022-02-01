@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/eaz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2" android:id="@id/jmp" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip">
+            <com.tencent.widget.XListView android:id="@id/is9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/f_t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_width="94.0dip" android:layout_height="81.0dip" android:src="@drawable/ffo" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffafafaf" android:gravity="center_horizontal" android:id="@id/f_i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:maxWidth="168.0dip" android:text="@string/r_7" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

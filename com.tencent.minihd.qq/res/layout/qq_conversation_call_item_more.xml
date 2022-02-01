@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/moreQQFriends" android:background="#00000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="#ff00a5e0" android:id="@id/moreQQFriendsText" android:background="#00000000" android:paddingTop="23.0dip" android:paddingBottom="15.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_call_list_more" android:singleLine="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

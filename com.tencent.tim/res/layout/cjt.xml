@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QMTextField style="@style/abq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/mpq" android:focusable="true" android:focusableInTouchMode="true" android:text="@string/wxj" style="@style/abp" />
+    <EditText android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mpp" android:nextFocusDown="@id/mot" android:maxLines="1" android:inputType="text" android:imeOptions="actionNext" android:contentDescription="@string/yn0" style="@style/abo" />
+    <TextView android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mpr" android:visibility="gone" android:singleLine="true" style="@style/abo" />
+</com.tencent.qqmail.activity.compose.QMTextField>

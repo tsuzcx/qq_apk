@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/a6w" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a_8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/a_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ui" />
-</LinearLayout>
+    <LinearLayout style="@style/r8">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/i6">
+            <ImageView android:id="@id/a4i" android:layout_width="wrap_content" android:layout_height="@dimen/i8" android:src="@drawable/biu" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/if" android:layout_marginRight="@dimen/i6">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/afh" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/afi" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/i6">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/a4q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TENCENT/Tingjiliu" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/a4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:text="Tingjiliu" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/k">
+            <Button android:id="@id/a4l" android:layout_width="fill_parent" android:text="@string/afg" style="@style/og" />
+            <Button android:id="@id/a4j" android:layout_width="fill_parent" android:layout_marginTop="@dimen/k" android:text="@string/af9" style="@style/ok" />
+        </LinearLayout>
+        <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</ScrollView>

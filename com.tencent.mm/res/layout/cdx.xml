@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/br7" android:background="@color/a6w" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/jp" android:paddingLeft="@dimen/iw" android:paddingTop="@dimen/iw" android:paddingRight="@dimen/iw" style="@style/d">
+        <TextView android:id="@id/f84" android:background="@color/BW_93" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:visibility="gone" android:text="@string/i5" style="@style/e" />
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/jey" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
+        <include android:id="@id/iw" android:visibility="gone" layout="@layout/cdw" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:gravity="center|left" android:id="@id/f6m" android:background="@drawable/p5" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j5" android:text="@string/i0" />
+    </LinearLayout>
+</ScrollView>

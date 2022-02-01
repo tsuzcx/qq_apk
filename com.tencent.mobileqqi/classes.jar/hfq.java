@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.permissionsDialog.PermissionDialogCallback;
-import mqq.app.permission.PermissionItem;
-import mqq.app.permission.PermissionManager;
+import com.tencent.mobileqq.permissionsDialog.PermissionsDialog;
+import mqq.app.permission.PermissionCallback;
 
 class hfq
-  implements PermissionDialogCallback
+  implements PermissionCallback
 {
-  hfq(hfp paramhfp, BaseActivity paramBaseActivity) {}
+  hfq(hfp paramhfp) {}
   
-  public void a() {}
-  
-  public void b()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.permissionManager.permissions(new PermissionItem[] { PermissionItem.init("android.permission.CAMERA", 200) }).request(new hfr(this));
+    new PermissionsDialog().a(this.a.a, paramInt, paramArrayOfString, new hfr(this));
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

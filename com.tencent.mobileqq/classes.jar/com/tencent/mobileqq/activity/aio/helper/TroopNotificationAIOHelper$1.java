@@ -1,37 +1,36 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afgm;
-import bcoz;
-import bcpa;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.troop.utils.TroopNotificationFlagMsg;
+import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopNotificationAIOHelper$1
+class TroopNotificationAIOHelper$1
   implements Runnable
 {
-  public TroopNotificationAIOHelper$1(afgm paramafgm) {}
+  TroopNotificationAIOHelper$1(TroopNotificationAIOHelper paramTroopNotificationAIOHelper) {}
   
   public void run()
   {
-    if (afgm.a(this.this$0) == null) {}
-    bcoz localbcoz;
-    do
-    {
-      do
-      {
-        return;
-      } while (afgm.a(this.this$0).a == null);
-      localbcoz = bcpa.a(afgm.a(this.this$0).a, afgm.a(this.this$0).a());
-    } while ((localbcoz == null) || (localbcoz.a != 0));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationAIOHelper", 2, "handleTroopNotificationOnResume, readTroopNotification.");
+    if (TroopNotificationAIOHelper.a(this.this$0) == null) {
+      return;
     }
-    bcpa.d(afgm.a(this.this$0).a, afgm.a(this.this$0).a());
+    if (TroopNotificationAIOHelper.a(this.this$0).d == null) {
+      return;
+    }
+    TroopNotificationFlagMsg localTroopNotificationFlagMsg = TroopNotificationHelper.d(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ae());
+    if ((localTroopNotificationFlagMsg != null) && (localTroopNotificationFlagMsg.b == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotificationAIOHelper", 2, "handleTroopNotificationOnResume, readTroopNotification.");
+      }
+      TroopNotificationHelper.e(TroopNotificationAIOHelper.a(this.this$0).d, TroopNotificationAIOHelper.a(this.this$0).ae());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1
  * JD-Core Version:    0.7.0.1
  */

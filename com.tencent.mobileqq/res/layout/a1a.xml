@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/cxi" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/cxi" android:background="@drawable/common_strip_setting_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/mbq" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:textSize="18.0dip" android:textColor="@color/skin_black_group_item" android:id="@id/mbn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="12.0dip" android:text="@string/iwi" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />

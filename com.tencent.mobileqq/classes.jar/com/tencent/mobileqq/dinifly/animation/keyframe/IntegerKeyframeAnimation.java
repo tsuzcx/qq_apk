@@ -20,17 +20,18 @@ public class IntegerKeyframeAnimation
   
   int getIntValue(Keyframe<Integer> paramKeyframe, float paramFloat)
   {
-    if ((paramKeyframe.startValue == null) || (paramKeyframe.endValue == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    if (this.valueCallback != null)
+    if ((paramKeyframe.startValue != null) && (paramKeyframe.endValue != null))
     {
-      Integer localInteger = (Integer)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), paramKeyframe.startValue, paramKeyframe.endValue, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
-      if (localInteger != null) {
-        return localInteger.intValue();
+      if (this.valueCallback != null)
+      {
+        Integer localInteger = (Integer)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), paramKeyframe.startValue, paramKeyframe.endValue, paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
+        if (localInteger != null) {
+          return localInteger.intValue();
+        }
       }
+      return MiscUtils.lerp(paramKeyframe.getStartValueInt(), paramKeyframe.getEndValueInt(), paramFloat);
     }
-    return MiscUtils.lerp(paramKeyframe.getStartValueInt(), paramKeyframe.getEndValueInt(), paramFloat);
+    throw new IllegalStateException("Missing values for keyframe.");
   }
   
   Integer getValue(Keyframe<Integer> paramKeyframe, float paramFloat)

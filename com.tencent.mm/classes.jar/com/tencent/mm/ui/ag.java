@@ -1,47 +1,90 @@
 package com.tencent.mm.ui;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.ArrayList;
-import java.util.List;
 
 public final class ag
 {
-  public static List<String> Nn()
+  public static void a(int paramInt, a parama)
   {
-    AppMethodBeat.i(29925);
-    int i = r.Zr();
-    ArrayList localArrayList = new ArrayList();
-    if ((i & 0x8000) == 0)
+    AppMethodBeat.i(249260);
+    if (aw.aAj(paramInt))
     {
-      localArrayList.add("floatbottle");
-      ab.d("MicroMsg.LauncherUI", "add bottle into show unread count blacklist.");
+      bh.a(bh.jBC(), paramInt, 0);
+      w.a(w.jjL(), paramInt, 0);
+      az.nZ(paramInt, 0);
+      aj.nX(paramInt, 0);
+      if (parama != null)
+      {
+        parama.fnW();
+        AppMethodBeat.o(249260);
+      }
     }
-    aw.aaz();
-    if (!c.Ru().getBoolean(ac.a.yDB, true))
+    else
     {
-      localArrayList.add("notifymessage");
-      ab.d("MicroMsg.UnreadCountHelper", "add service notify message into show unread count blacklist.");
+      bh.a(bh.jBC(), paramInt, 2);
+      w.a(w.jjL(), paramInt, 2);
+      az.nZ(paramInt, 2);
+      aj.nX(paramInt, 2);
+      if (parama != null) {
+        parama.fnV();
+      }
     }
-    aw.aaz();
-    if (!c.Ru().getBoolean(ac.a.yDC, true))
+    AppMethodBeat.o(249260);
+  }
+  
+  public static void aAi(int paramInt)
+  {
+    AppMethodBeat.i(249255);
+    bh.aAi(paramInt);
+    w.aAi(paramInt);
+    az.aAi(paramInt);
+    aj.aAi(paramInt);
+    AppMethodBeat.o(249255);
+  }
+  
+  public static boolean aAk(int paramInt)
+  {
+    AppMethodBeat.i(249264);
+    if ((bh.aAk(paramInt)) || (w.aAk(paramInt)) || (az.aAk(paramInt)) || (aj.aAk(paramInt)))
     {
-      localArrayList.add("appbrandcustomerservicemsg");
-      ab.d("MicroMsg.UnreadCountHelper", "add wxa custom session notify message into show unread count blacklist.");
+      AppMethodBeat.o(249264);
+      return true;
     }
-    ab.d("MicroMsg.LauncherUI", "getShowUnreadCountBlacklist unread count blacklist(size : %s).", new Object[] { Integer.valueOf(localArrayList.size()) });
-    AppMethodBeat.o(29925);
-    return localArrayList;
+    AppMethodBeat.o(249264);
+    return false;
+  }
+  
+  public static void init(Context paramContext)
+  {
+    AppMethodBeat.i(249254);
+    bh.mN(paramContext);
+    w.mN(paramContext);
+    az.init();
+    aj.mV(paramContext);
+    AppMethodBeat.o(249254);
+  }
+  
+  public static void nX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(249258);
+    bh.a(bh.jBC(), paramInt1, paramInt2);
+    w.a(w.jjL(), paramInt1, paramInt2);
+    az.nZ(paramInt1, paramInt2);
+    aj.nX(paramInt1, paramInt2);
+    AppMethodBeat.o(249258);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void fnV();
+    
+    public abstract void fnW();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.ag
  * JD-Core Version:    0.7.0.1
  */

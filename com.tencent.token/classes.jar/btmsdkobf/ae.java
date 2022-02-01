@@ -9,20 +9,21 @@ public final class ae
 {
   public int bi = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new ae();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bi = paramJceInputStream.read(this.bi, 0, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 0);
+    int i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
   }
 }

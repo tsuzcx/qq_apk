@@ -1,59 +1,265 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bg
+public final class bg
 {
-  private String a = "";
-  private int b = -1;
+  public static bg a = new bg();
+  private final Map<Class, a> b = new HashMap();
+  private final Map<Class, Boolean> c = new HashMap();
   
-  public bg() {}
-  
-  public bg(String paramString, int paramInt)
+  private a a(Class paramClass, Method[] paramArrayOfMethod)
   {
-    this.a = paramString;
-    this.b = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    Object localObject1 = paramClass.getSuperclass();
+    HashMap localHashMap = new HashMap();
+    if (localObject1 != null)
     {
-      return false;
-      paramString = paramString.split(":");
-    } while (paramString.length != 2);
-    this.a = paramString[0];
+      localObject1 = b((Class)localObject1);
+      if (localObject1 != null) {
+        localHashMap.putAll(((a)localObject1).b);
+      }
+    }
+    localObject1 = paramClass.getInterfaces();
+    int j = localObject1.length;
+    int i = 0;
+    Object localObject2;
+    Object localObject3;
+    while (i < j)
+    {
+      localObject2 = b(localObject1[i]).b.entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject2).next();
+        a(localHashMap, (b)((Map.Entry)localObject3).getKey(), (bj.a)((Map.Entry)localObject3).getValue(), paramClass);
+      }
+      i += 1;
+    }
+    if (paramArrayOfMethod == null) {
+      paramArrayOfMethod = c(paramClass);
+    }
+    int k = paramArrayOfMethod.length;
+    j = 0;
+    boolean bool = false;
+    while (j < k)
+    {
+      localObject1 = paramArrayOfMethod[j];
+      localObject3 = (bt)((Method)localObject1).getAnnotation(bt.class);
+      if (localObject3 != null)
+      {
+        localObject2 = ((Method)localObject1).getParameterTypes();
+        if (localObject2.length > 0)
+        {
+          if (localObject2[0].isAssignableFrom(bm.class)) {
+            i = 1;
+          } else {
+            throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
+          }
+        }
+        else {
+          i = 0;
+        }
+        localObject3 = ((bt)localObject3).a();
+        if (localObject2.length > 1) {
+          if (localObject2[1].isAssignableFrom(bj.a.class))
+          {
+            if (localObject3 == bj.a.ON_ANY) {
+              i = 2;
+            } else {
+              throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
+            }
+          }
+          else {
+            throw new IllegalArgumentException("invalid parameter type. second arg must be an event");
+          }
+        }
+        if (localObject2.length <= 2)
+        {
+          a(localHashMap, new b(i, (Method)localObject1), (bj.a)localObject3, paramClass);
+          bool = true;
+        }
+        else
+        {
+          throw new IllegalArgumentException("cannot have more than 2 params");
+        }
+      }
+      j += 1;
+    }
+    paramArrayOfMethod = new a(localHashMap);
+    this.b.put(paramClass, paramArrayOfMethod);
+    this.c.put(paramClass, Boolean.valueOf(bool));
+    return paramArrayOfMethod;
+  }
+  
+  private static void a(Map<b, bj.a> paramMap, b paramb, bj.a parama, Class paramClass)
+  {
+    bj.a locala = (bj.a)paramMap.get(paramb);
+    if ((locala != null) && (parama != locala))
+    {
+      paramMap = paramb.b;
+      paramb = new StringBuilder("Method ");
+      paramb.append(paramMap.getName());
+      paramb.append(" in ");
+      paramb.append(paramClass.getName());
+      paramb.append(" already declared with different @OnLifecycleEvent value: previous value ");
+      paramb.append(locala);
+      paramb.append(", new value ");
+      paramb.append(parama);
+      throw new IllegalArgumentException(paramb.toString());
+    }
+    if (locala == null) {
+      paramMap.put(paramb, parama);
+    }
+  }
+  
+  private static Method[] c(Class paramClass)
+  {
     try
     {
-      this.b = Integer.parseInt(paramString[1]);
-      return true;
+      paramClass = paramClass.getDeclaredMethods();
+      return paramClass;
     }
-    catch (NumberFormatException paramString)
+    catch (NoClassDefFoundError paramClass)
     {
-      paramString.printStackTrace();
+      throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", paramClass);
     }
+  }
+  
+  final boolean a(Class paramClass)
+  {
+    if (this.c.containsKey(paramClass)) {
+      return ((Boolean)this.c.get(paramClass)).booleanValue();
+    }
+    Method[] arrayOfMethod = c(paramClass);
+    int j = arrayOfMethod.length;
+    int i = 0;
+    while (i < j)
+    {
+      if ((bt)arrayOfMethod[i].getAnnotation(bt.class) != null)
+      {
+        a(paramClass, arrayOfMethod);
+        return true;
+      }
+      i += 1;
+    }
+    this.c.put(paramClass, Boolean.FALSE);
     return false;
   }
   
-  public int b()
+  public final a b(Class paramClass)
   {
-    return this.b;
+    a locala = (a)this.b.get(paramClass);
+    if (locala != null) {
+      return locala;
+    }
+    return a(paramClass, null);
   }
   
-  public String c()
+  public static final class a
   {
-    return this.a + ":" + this.b;
+    public final Map<bj.a, List<bg.b>> a;
+    final Map<bg.b, bj.a> b;
+    
+    a(Map<bg.b, bj.a> paramMap)
+    {
+      this.b = paramMap;
+      this.a = new HashMap();
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        bj.a locala = (bj.a)localEntry.getValue();
+        List localList = (List)this.a.get(locala);
+        paramMap = localList;
+        if (localList == null)
+        {
+          paramMap = new ArrayList();
+          this.a.put(locala, paramMap);
+        }
+        paramMap.add(localEntry.getKey());
+      }
+    }
+    
+    public static void a(List<bg.b> paramList, bm parambm, bj.a parama, Object paramObject)
+    {
+      int i;
+      bg.b localb;
+      if (paramList != null)
+      {
+        i = paramList.size() - 1;
+        if (i >= 0) {
+          localb = (bg.b)paramList.get(i);
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          switch (localb.a)
+          {
+          case 2: 
+            localb.b.invoke(paramObject, new Object[] { parambm, parama });
+            break;
+          case 1: 
+            localb.b.invoke(paramObject, new Object[] { parambm });
+            break;
+          case 0: 
+            localb.b.invoke(paramObject, new Object[0]);
+            i -= 1;
+          }
+        }
+        catch (IllegalAccessException paramList)
+        {
+          throw new RuntimeException(paramList);
+        }
+        catch (InvocationTargetException paramList)
+        {
+          throw new RuntimeException("Failed to call observer method", paramList.getCause());
+        }
+        return;
+      }
+    }
   }
   
-  public String toString()
+  static final class b
   {
-    return c();
+    final int a;
+    final Method b;
+    
+    b(int paramInt, Method paramMethod)
+    {
+      this.a = paramInt;
+      this.b = paramMethod;
+      this.b.setAccessible(true);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {
+        return true;
+      }
+      if (paramObject != null)
+      {
+        if (getClass() != paramObject.getClass()) {
+          return false;
+        }
+        paramObject = (b)paramObject;
+        return (this.a == paramObject.a) && (this.b.getName().equals(paramObject.b.getName()));
+      }
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      return this.a * 31 + this.b.getName().hashCode();
+    }
   }
 }
 

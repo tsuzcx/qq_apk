@@ -20,7 +20,11 @@ public abstract class RoutePlanningParam
   
   protected static String a(LatLng paramLatLng)
   {
-    return paramLatLng.latitude + "," + paramLatLng.longitude;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLatLng.latitude);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramLatLng.longitude);
+    return localStringBuilder.toString();
   }
   
   public fn buildParameters()
@@ -54,7 +58,7 @@ public abstract class RoutePlanningParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.RoutePlanningParam
  * JD-Core Version:    0.7.0.1
  */

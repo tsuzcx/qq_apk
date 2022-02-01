@@ -20,13 +20,15 @@ public final class MultiMsg$MultiMsgApplyUpReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_dst_uin", "uint64_msg_size", "bytes_msg_md5", "uint32_msg_type", "uint32_apply_id" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, MultiMsgApplyUpReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint64_dst_uin", "uint64_msg_size", "bytes_msg_md5", "uint32_msg_type", "uint32_apply_id" }, new Object[] { localLong, localLong, localByteStringMicro, localInteger, localInteger }, MultiMsgApplyUpReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyUpReq
  * JD-Core Version:    0.7.0.1
  */

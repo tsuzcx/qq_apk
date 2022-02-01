@@ -35,26 +35,31 @@ public final class IOSTerminal
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.idfa != null) {
-      paramJceOutputStream.write(this.idfa, 0);
+    String str = this.idfa;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.osVersion != null) {
-      paramJceOutputStream.write(this.osVersion, 1);
+    str = this.osVersion;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.ua != null) {
-      paramJceOutputStream.write(this.ua, 2);
+    str = this.ua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.mode != null) {
-      paramJceOutputStream.write(this.mode, 3);
+    str = this.mode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.uniqueId != null) {
-      paramJceOutputStream.write(this.uniqueId, 4);
+    str = this.uniqueId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEW_MOBILE_REPORT.IOSTerminal
  * JD-Core Version:    0.7.0.1
  */

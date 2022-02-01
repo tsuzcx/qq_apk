@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import apez;
-
-public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
+class MessageForNearbyMarketGrayTips$HightlightClickableSpan$1
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(apez paramapez) {}
+  MessageForNearbyMarketGrayTips$HightlightClickableSpan$1(MessageForNearbyMarketGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
   public void run()
   {

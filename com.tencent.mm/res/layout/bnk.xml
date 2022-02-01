@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/f5l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:layout_gravity="end|center|top" android:id="@id/gqv" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    <CheckBox android:textColor="@color/al2" android:gravity="center" android:layout_gravity="end|center|top" android:id="@id/gq5" android:background="@drawable/am_" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:layout_marginTop="@dimen/df" android:layout_marginEnd="@dimen/df" />
+    <View android:id="@id/gqm" android:background="@color/BW_100_Alpha_0_5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.setting.ui.qrcode;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class ShareMicroMsgChoiceUI
   extends MMPreference
 {
-  private f screen;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   public boolean autoRefresh()
   {
@@ -30,89 +32,108 @@ public class ShareMicroMsgChoiceUI
   
   public int getLayoutId()
   {
-    return 2130970726;
+    return b.g.share_mm_choice;
   }
   
   public int getResourceId()
   {
-    return 2131165298;
+    return b.k.share_micromsg_choice;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(126914);
-    setMMTitle(2131303118);
+    AppMethodBeat.i(73843);
+    setMMTitle(b.i.send_qrcode_to_microblog);
     this.screen = getPreferenceScreen();
-    setBackBtn(new ShareMicroMsgChoiceUI.1(this));
-    ((IconPreference)this.screen.atx("share_micromsg_to_sina")).drawable = a.k(this, 2130840309);
-    ((j)g.E(j.class)).YI().TL("@t.qq.com");
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(73841);
+        ShareMicroMsgChoiceUI.this.hideVKB();
+        ShareMicroMsgChoiceUI.this.finish();
+        AppMethodBeat.o(73841);
+        return true;
+      }
+    });
+    ((IconPreference)this.screen.bAi("share_micromsg_to_sina")).drawable = com.tencent.mm.cd.a.m(this, b.e.share_to_sinaweibo_icon);
+    ((n)h.ax(n.class)).bzJ().aMh("@t.qq.com");
     int i;
     IconPreference localIconPreference;
-    if (bo.g((Integer)g.RL().Ru().get(9, null)) != 0)
+    if (Util.nullAsNil((Integer)h.baE().ban().d(9, null)) != 0)
     {
       i = 1;
-      localIconPreference = (IconPreference)this.screen.atx("share_micromsg_qzone");
+      localIconPreference = (IconPreference)this.screen.bAi("share_micromsg_qzone");
       if (i != 0) {
-        break label170;
+        break label173;
       }
-      this.screen.d(localIconPreference);
+      this.screen.e(localIconPreference);
     }
     for (;;)
     {
-      localIconPreference = (IconPreference)this.screen.atx("share_micromsg_to_fuckbook");
-      if (!r.ZM()) {
-        break label183;
+      localIconPreference = (IconPreference)this.screen.bAi("share_micromsg_to_fuckbook");
+      if (!z.bBw()) {
+        break label187;
       }
-      localIconPreference.drawable = a.k(this, 2130840308);
-      AppMethodBeat.o(126914);
+      localIconPreference.drawable = com.tencent.mm.cd.a.m(this, b.e.share_to_facebook_icon);
+      AppMethodBeat.o(73843);
       return;
       i = 0;
       break;
-      label170:
-      localIconPreference.drawable = a.k(this, 2130840233);
+      label173:
+      localIconPreference.drawable = com.tencent.mm.cd.a.m(this, b.e.self_qrcode_show_to_qzone);
     }
-    label183:
-    this.screen.d(localIconPreference);
-    AppMethodBeat.o(126914);
+    label187:
+    this.screen.e(localIconPreference);
+    AppMethodBeat.o(73843);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(126913);
+    AppMethodBeat.i(73842);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(126913);
+    AppMethodBeat.o(73842);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(126915);
+    AppMethodBeat.i(73844);
     paramf = paramPreference.mKey;
     if (paramf.equals("share_micromsg_qzone")) {
-      if (bo.g((Integer)g.RL().Ru().get(9, null)) != 0)
+      if (Util.nullAsNil((Integer)h.baE().ban().d(9, null)) != 0)
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 2);
-        startActivity(paramf);
+        paramf = new com.tencent.mm.hellhoundlib.b.a().cG(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aYi(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(126915);
+      AppMethodBeat.o(73844);
       return false;
-      h.h(this, 2131303093, 2131297087);
+      k.s(this, b.i.self_qrcode_show_no_qq_tip, b.i.app_tip);
       continue;
       if (paramf.equals("share_micromsg_to_sina"))
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 3);
-        startActivity(paramf);
+        paramf = new com.tencent.mm.hellhoundlib.b.a().cG(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aYi(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramf.equals("share_micromsg_to_fuckbook"))
       {
         paramf = new Intent(this, ShowQRCodeStep1UI.class);
         paramf.putExtra("show_to", 4);
-        startActivity(paramf);
+        paramf = new com.tencent.mm.hellhoundlib.b.a().cG(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aYi(), "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/qrcode/ShareMicroMsgChoiceUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
   }
@@ -125,7 +146,7 @@ public class ShareMicroMsgChoiceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShareMicroMsgChoiceUI
  * JD-Core Version:    0.7.0.1
  */

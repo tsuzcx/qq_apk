@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
 {
-  private static volatile com.tencent.mm.z.c.d hpd;
-  private static volatile com.tencent.mm.z.c.d hpe;
+  private static volatile com.tencent.mm.ac.c.d rlV;
+  private static volatile com.tencent.mm.ac.c.d rlW;
   
-  private static com.tencent.mm.z.c.d azQ()
+  private static com.tencent.mm.ac.c.d cnL()
   {
-    AppMethodBeat.i(10866);
-    if (hpd == null) {}
+    AppMethodBeat.i(121346);
+    if (rlV == null) {}
     try
     {
-      if (hpd == null)
+      if (rlV == null)
       {
-        locald = new com.tencent.mm.z.c.d();
+        locald = new com.tencent.mm.ac.c.d();
         locald.a(new l(312));
         locald.a(new d(306));
         locald.a(new e(306));
@@ -25,27 +25,27 @@ public class p
         locald.a(new j(310));
         locald.a(new f(311));
         locald.a(new o());
-        hpd = locald;
+        rlV = locald;
       }
-      com.tencent.mm.z.c.d locald = hpd;
-      AppMethodBeat.o(10866);
+      com.tencent.mm.ac.c.d locald = rlV;
+      AppMethodBeat.o(121346);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(10866);
+      AppMethodBeat.o(121346);
     }
   }
   
-  private static com.tencent.mm.z.c.d azR()
+  private static com.tencent.mm.ac.c.d cnM()
   {
-    AppMethodBeat.i(10867);
-    if (hpe == null) {}
+    AppMethodBeat.i(121347);
+    if (rlW == null) {}
     try
     {
-      if (hpe == null)
+      if (rlW == null)
       {
-        locald = new com.tencent.mm.z.c.d();
+        locald = new com.tencent.mm.ac.c.d();
         locald.a(new l(289));
         locald.a(new d(266));
         locald.a(new e(266));
@@ -62,35 +62,35 @@ public class p
         locald.a(new h());
         locald.a(new g());
         locald.a(new a());
-        hpe = locald;
+        rlW = locald;
       }
-      com.tencent.mm.z.c.d locald = hpe;
-      AppMethodBeat.o(10867);
+      com.tencent.mm.ac.c.d locald = rlW;
+      AppMethodBeat.o(121347);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(10867);
+      AppMethodBeat.o(121347);
     }
   }
   
-  public static com.tencent.mm.z.c.d nG(int paramInt)
+  public static com.tencent.mm.ac.c.d zR(int paramInt)
   {
-    AppMethodBeat.i(10865);
+    AppMethodBeat.i(121345);
     if (paramInt == 1)
     {
-      locald = azR();
-      AppMethodBeat.o(10865);
+      locald = cnM();
+      AppMethodBeat.o(121345);
       return locald;
     }
-    com.tencent.mm.z.c.d locald = azQ();
-    AppMethodBeat.o(10865);
+    com.tencent.mm.ac.c.d locald = cnL();
+    AppMethodBeat.o(121345);
     return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.p
  * JD-Core Version:    0.7.0.1
  */

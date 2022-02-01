@@ -8,9 +8,9 @@ public final class GetAutoInfoResp
   extends JceStruct
 {
   static int cache_result;
-  public byte cGroupID;
-  public short errorCode;
-  public int result;
+  public byte cGroupID = 0;
+  public short errorCode = 0;
+  public int result = 0;
   public String strGroupName = "";
   public String strRemark = "";
   
@@ -45,7 +45,7 @@ public final class GetAutoInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetAutoInfoResp
  * JD-Core Version:    0.7.0.1
  */

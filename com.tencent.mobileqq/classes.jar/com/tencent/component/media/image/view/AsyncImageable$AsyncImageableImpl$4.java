@@ -10,8 +10,9 @@ final class AsyncImageable$AsyncImageableImpl$4
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.val$postRunnable != null) {
-      this.val$postRunnable.run();
+    paramAnimation = this.val$postRunnable;
+    if (paramAnimation != null) {
+      paramAnimation.run();
     }
   }
   
@@ -21,7 +22,7 @@ final class AsyncImageable$AsyncImageableImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl.4
  * JD-Core Version:    0.7.0.1
  */

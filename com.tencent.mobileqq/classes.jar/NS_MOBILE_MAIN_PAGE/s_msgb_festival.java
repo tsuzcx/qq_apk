@@ -11,7 +11,7 @@ public final class s_msgb_festival
 {
   static Map<String, String> cache_extendinfo = new HashMap();
   public String content = "";
-  public Map<String, String> extendinfo;
+  public Map<String, String> extendinfo = null;
   public boolean is_festival = true;
   
   static
@@ -37,18 +37,20 @@ public final class s_msgb_festival
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 0);
+    Object localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.is_festival, 1);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_msgb_festival
  * JD-Core Version:    0.7.0.1
  */

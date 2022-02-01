@@ -12,35 +12,35 @@ public final class PlaybackStateCompat$CustomAction
   implements Parcelable
 {
   public static final Parcelable.Creator<CustomAction> CREATOR = new Parcelable.Creator() {};
-  private final Bundle ew;
-  private final String iG;
-  private final CharSequence iH;
-  private final int iI;
-  private Object iJ;
+  private final Bundle gl;
+  private final String kE;
+  private final CharSequence kF;
+  private final int kG;
+  private Object kH;
   
   PlaybackStateCompat$CustomAction(Parcel paramParcel)
   {
-    this.iG = paramParcel.readString();
-    this.iH = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.iI = paramParcel.readInt();
-    this.ew = paramParcel.readBundle();
+    this.kE = paramParcel.readString();
+    this.kF = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.kG = paramParcel.readInt();
+    this.gl = paramParcel.readBundle();
   }
   
   private PlaybackStateCompat$CustomAction(String paramString, CharSequence paramCharSequence, int paramInt, Bundle paramBundle)
   {
-    this.iG = paramString;
-    this.iH = paramCharSequence;
-    this.iI = paramInt;
-    this.ew = paramBundle;
+    this.kE = paramString;
+    this.kF = paramCharSequence;
+    this.kG = paramInt;
+    this.gl = paramBundle;
   }
   
-  public static CustomAction i(Object paramObject)
+  public static CustomAction p(Object paramObject)
   {
     if ((paramObject == null) || (Build.VERSION.SDK_INT < 21)) {
       return null;
     }
     CustomAction localCustomAction = new CustomAction(((PlaybackState.CustomAction)paramObject).getAction(), ((PlaybackState.CustomAction)paramObject).getName(), ((PlaybackState.CustomAction)paramObject).getIcon(), ((PlaybackState.CustomAction)paramObject).getExtras());
-    localCustomAction.iJ = paramObject;
+    localCustomAction.kH = paramObject;
     return localCustomAction;
   }
   
@@ -51,15 +51,15 @@ public final class PlaybackStateCompat$CustomAction
   
   public final String toString()
   {
-    return "Action:mName='" + this.iH + ", mIcon=" + this.iI + ", mExtras=" + this.ew;
+    return "Action:mName='" + this.kF + ", mIcon=" + this.kG + ", mExtras=" + this.gl;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.iG);
-    TextUtils.writeToParcel(this.iH, paramParcel, paramInt);
-    paramParcel.writeInt(this.iI);
-    paramParcel.writeBundle(this.ew);
+    paramParcel.writeString(this.kE);
+    TextUtils.writeToParcel(this.kF, paramParcel, paramInt);
+    paramParcel.writeInt(this.kG);
+    paramParcel.writeBundle(this.gl);
   }
 }
 

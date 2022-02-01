@@ -1,32 +1,47 @@
 package cooperation.qlink;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import aqwl;
-import bisq;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QlinkAgentActivity
   extends BaseActivity
 {
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (10 == paramInt2) {
       setResult(10, paramIntent);
     }
     if (((paramIntent != null) && (paramIntent.getExtras() != null) && ((paramIntent.getBooleanExtra("foward_editbar", false) == true) || (paramIntent.getBooleanExtra("destroy_last_activity", false) == true))) || (paramInt2 == 4)) {
-      this.app.a().a(new QlAndQQInterface.DailogClickInfo(8));
-    }
-    for (;;)
-    {
-      super.finish();
-      return;
+      this.app.getQQProxyForQlink().a(new QlAndQQInterface.DailogClickInfo(8));
+    } else {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
+    super.finish();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -44,7 +59,7 @@ public class QlinkAgentActivity
           super.finish();
           return;
         }
-        paramBundle = this.app.a();
+        paramBundle = this.app.getFileManagerDataCenter();
         if (paramBundle == null)
         {
           super.finish();
@@ -73,14 +88,14 @@ public class QlinkAgentActivity
     super.finish();
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkAgentActivity
  * JD-Core Version:    0.7.0.1
  */

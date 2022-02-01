@@ -15,9 +15,9 @@ public final class mobile_feeds_games_req
   public int iLastGamesRes = -1;
   public int iNextGamesStatus = -1;
   public int iType = -1;
-  public Map<String, String> mapExt;
-  public Map<Integer, String> mapRsp;
-  public st_Games_OpData opData;
+  public Map<String, String> mapExt = null;
+  public Map<Integer, String> mapRsp = null;
+  public st_Games_OpData opData = null;
   
   static
   {
@@ -53,21 +53,24 @@ public final class mobile_feeds_games_req
   {
     paramJceOutputStream.write(this.iType, 0);
     paramJceOutputStream.write(this.iLastGamesRes, 1);
-    if (this.opData != null) {
-      paramJceOutputStream.write(this.opData, 2);
+    Object localObject = this.opData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.iNextGamesStatus, 3);
-    if (this.mapRsp != null) {
-      paramJceOutputStream.write(this.mapRsp, 4);
+    localObject = this.mapRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 5);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS_GAMES.mobile_feeds_games_req
  * JD-Core Version:    0.7.0.1
  */

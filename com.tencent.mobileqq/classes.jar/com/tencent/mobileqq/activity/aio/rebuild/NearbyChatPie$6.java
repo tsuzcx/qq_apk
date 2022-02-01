@@ -1,19 +1,34 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agsy;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class NearbyChatPie$6
+class NearbyChatPie$6
   implements Runnable
 {
-  public NearbyChatPie$6(agsy paramagsy) {}
+  NearbyChatPie$6(NearbyChatPie paramNearbyChatPie, String paramString) {}
   
   public void run()
   {
-    Intent localIntent = this.this$0.a.getIntent();
-    localIntent.putExtra("uintype", 0);
-    agsy.a(this.this$0, localIntent);
+    String str;
+    if (QLog.isDevelopLevel())
+    {
+      str = this.this$0.c;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("0X80052C5, ");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.i(str, 4, ((StringBuilder)localObject).toString());
+    }
+    ReportController.b(this.this$0.d, "CliOper", "", "", "0X80052C5", "0X80052C5", 0, 0, this.this$0.ah.b, "", this.a, "");
+    Object localObject = this.this$0.d;
+    if (this.this$0.ah.a == 1001) {
+      str = "0";
+    } else {
+      str = "1";
+    }
+    ReportController.b((AppRuntime)localObject, "dc00899", "grp_lbs", "", "tmp_grey", "clk_send", 0, 0, str, "", "", "");
   }
 }
 

@@ -1,18 +1,10 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SubAccountMessageActivity;
 
-class dlo
-  implements Runnable
+public class dlo
+  extends Handler
 {
-  dlo(dln paramdln, Drawable paramDrawable) {}
-  
-  public void run()
-  {
-    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_Dln.jdField_a_of_type_Dlm.a).getChildAt(this.jdField_a_of_type_Dln.jdField_a_of_type_Int).findViewById(2131230940)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
+  public dlo(SubAccountMessageActivity paramSubAccountMessageActivity) {}
 }
 
 

@@ -12,16 +12,16 @@ class TbsLinuxToolsJni
   
   public TbsLinuxToolsJni(Context paramContext)
   {
-    AppMethodBeat.i(64476);
+    AppMethodBeat.i(54093);
     a(paramContext);
-    AppMethodBeat.o(64476);
+    AppMethodBeat.o(54093);
   }
   
   private native int ChmodInner(String paramString1, String paramString2);
   
   private void a(Context paramContext)
   {
-    AppMethodBeat.i(64477);
+    AppMethodBeat.i(54094);
     label290:
     for (;;)
     {
@@ -50,7 +50,7 @@ class TbsLinuxToolsJni
             {
               localObject2 = localObject1;
               if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-                localObject2 = ao.a().p(paramContext);
+                localObject2 = q.a().q(paramContext);
               }
             }
             if (localObject2 != null)
@@ -62,7 +62,7 @@ class TbsLinuxToolsJni
           }
           ChmodInner("/checkChmodeExists", "700");
         }
-        catch (Throwable paramContext)
+        finally
         {
           Object localObject1;
           a = false;
@@ -73,23 +73,23 @@ class TbsLinuxToolsJni
       }
       finally
       {
-        AppMethodBeat.o(64477);
+        AppMethodBeat.o(54094);
       }
-      localObject1 = ao.a().q(paramContext);
+      localObject1 = q.a().r(paramContext);
     }
   }
   
   public int a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(64475);
+    AppMethodBeat.i(54092);
     if (!a)
     {
       TbsLog.e("TbsLinuxToolsJni", "jni not loaded!", true);
-      AppMethodBeat.o(64475);
+      AppMethodBeat.o(54092);
       return -1;
     }
     int i = ChmodInner(paramString1, paramString2);
-    AppMethodBeat.o(64475);
+    AppMethodBeat.o(54092);
     return i;
   }
 }

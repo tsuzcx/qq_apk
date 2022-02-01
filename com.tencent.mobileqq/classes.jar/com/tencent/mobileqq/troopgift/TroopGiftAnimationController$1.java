@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.troopgift;
 
-import bcur;
-import bcus;
-
-public class TroopGiftAnimationController$1
+class TroopGiftAnimationController$1
   implements Runnable
 {
-  public TroopGiftAnimationController$1(bcur parambcur) {}
+  TroopGiftAnimationController$1(TroopGiftAnimationController paramTroopGiftAnimationController) {}
   
   public void run()
   {
     if ((this.this$0.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new bcus(this));
+      ((TroopGiftToAllSurfaceView)this.this$0.a).a(new TroopGiftAnimationController.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1
  * JD-Core Version:    0.7.0.1
  */

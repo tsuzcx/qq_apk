@@ -1,14 +1,11 @@
 package com.google.firebase.analytics.connector;
 
 import android.os.Bundle;
-import com.google.android.gms.common.annotation.KeepForSdk;
 
 public abstract interface a
 {
-  @KeepForSdk
   public abstract void logEvent(String paramString1, String paramString2, Bundle paramBundle);
   
-  @KeepForSdk
   public abstract void setUserProperty(String paramString1, String paramString2, Object paramObject);
 }
 

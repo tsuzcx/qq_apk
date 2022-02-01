@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/f" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/icons_outlined_pay_safe" wallet:iconColor="@color/Brand_100" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/gf" android:id="@id/lu0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/l6c" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/gf" android:gravity="center" android:id="@id/ltx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/jsc" />
+    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <Button android:id="@id/lu1" android:text="@string/l33" style="@style/oh" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lty" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_marginBottom="24.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_pay_safe" wallet:iconColor="@color/FG_2" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/ltz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:text="" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="8.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_arrow" wallet:iconColor="@color/FG_2" />
+    </LinearLayout>
+</LinearLayout>

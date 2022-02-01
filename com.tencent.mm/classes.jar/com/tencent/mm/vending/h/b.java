@@ -7,45 +7,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements a
 {
-  public Handler a;
+  public Handler mHandler;
   
   public b(Handler paramHandler)
   {
-    this.a = paramHandler;
+    this.mHandler = paramHandler;
+  }
+  
+  public final void Fg()
+  {
+    AppMethodBeat.i(74914);
+    this.mHandler.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(74914);
   }
   
   public final void d(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(126115);
-    this.a.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(126115);
-  }
-  
-  public final void dU()
-  {
-    AppMethodBeat.i(126117);
-    this.a.removeCallbacksAndMessages(null);
-    AppMethodBeat.o(126117);
+    AppMethodBeat.i(74912);
+    this.mHandler.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(74912);
   }
   
   public final Looper getLooper()
   {
-    AppMethodBeat.i(126116);
-    Looper localLooper = this.a.getLooper();
-    AppMethodBeat.o(126116);
+    AppMethodBeat.i(74913);
+    Looper localLooper = this.mHandler.getLooper();
+    AppMethodBeat.o(74913);
     return localLooper;
   }
   
   public final void post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(126114);
-    this.a.post(paramRunnable);
-    AppMethodBeat.o(126114);
+    AppMethodBeat.i(74911);
+    this.mHandler.post(paramRunnable);
+    AppMethodBeat.o(74911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.h.b
  * JD-Core Version:    0.7.0.1
  */

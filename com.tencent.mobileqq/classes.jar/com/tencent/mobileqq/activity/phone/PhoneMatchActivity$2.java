@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.content.Intent;
-import azqs;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class PhoneMatchActivity$2
   implements Runnable
@@ -15,12 +15,12 @@ class PhoneMatchActivity$2
   {
     ThreadManager.excute(new PhoneMatchActivity.2.1(this), 16, null, false);
     if (this.this$0.getIntent().getBooleanExtra("key_from_Tab", false)) {
-      azqs.b(this.this$0.app, "CliOper", "", "", "0X80053DE", "0X80053DE", 0, 0, "", "", "", "");
+      ReportController.b(this.this$0.app, "CliOper", "", "", "0X80053DE", "0X80053DE", 0, 0, "", "", "", "");
     }
     if (this.this$0.getIntent().getBooleanExtra("key_from_l_w", false)) {
-      azqs.b(this.this$0.app, "dc00898", "", "", "0X800650C", "0X800650C", 2, 0, this.this$0.app.c(), "", "", "");
+      ReportController.b(this.this$0.app, "dc00898", "", "", "0X800650C", "0X800650C", 2, 0, this.this$0.app.getCurrentUin(), "", "", "");
     }
-    azqs.b(this.this$0.app, "dc00898", "", "", "0X800689C", "0X800689C", 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.app, "dc00898", "", "", "0X800689C", "0X800689C", 0, 0, "", "", "", "");
     int i = this.this$0.getIntent().getIntExtra("kSrouce", 0);
     ContactBindedActivity.a(this.this$0.app, i, 2, null);
     this.this$0.finish();

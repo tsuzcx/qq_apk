@@ -1,9 +1,15 @@
-public class hbb
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.QQSettingUtil;
+
+public final class hbb
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public int b;
+  public hbb(QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
+  {
+    QQSettingUtil.b(this.a);
+  }
 }
 
 

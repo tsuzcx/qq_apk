@@ -7,13 +7,13 @@ import com.qq.taf.jce.JceStruct;
 public final class AlbumThemeSkin
   extends JceStruct
 {
-  public int iColor;
+  public int iColor = 0;
   public int iItemId = -1;
-  public long lTabBarSelectedFontColor;
-  public long lTabBarUnselectedFontColor;
-  public long lTabbarUnderLineColor;
-  public long lVideoButonColor;
-  public long lVideoButtonBgColor;
+  public long lTabBarSelectedFontColor = 0L;
+  public long lTabBarUnselectedFontColor = 0L;
+  public long lTabbarUnderLineColor = 0L;
+  public long lVideoButonColor = 0L;
+  public long lVideoButtonBgColor = 0L;
   public String strPicZipUrl = "";
   
   public AlbumThemeSkin() {}
@@ -46,8 +46,9 @@ public final class AlbumThemeSkin
   {
     paramJceOutputStream.write(this.iItemId, 0);
     paramJceOutputStream.write(this.iColor, 1);
-    if (this.strPicZipUrl != null) {
-      paramJceOutputStream.write(this.strPicZipUrl, 2);
+    String str = this.strPicZipUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.lTabBarSelectedFontColor, 3);
     paramJceOutputStream.write(this.lTabBarUnselectedFontColor, 4);
@@ -58,7 +59,7 @@ public final class AlbumThemeSkin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.AlbumThemeSkin
  * JD-Core Version:    0.7.0.1
  */

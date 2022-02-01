@@ -7,47 +7,37 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="SignInConfigurationCreator")
-@SafeParcelable.Reserved({1})
 public final class SignInConfiguration
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<SignInConfiguration> CREATOR;
-  @SafeParcelable.Field(getter="getConsumerPkgName", id=2)
   private final String zzfe;
-  @SafeParcelable.Field(getter="getGoogleConfig", id=5)
   private GoogleSignInOptions zzff;
   
   static
   {
-    AppMethodBeat.i(50406);
+    AppMethodBeat.i(88301);
     CREATOR = new zzy();
-    AppMethodBeat.o(50406);
+    AppMethodBeat.o(88301);
   }
   
-  @SafeParcelable.Constructor
-  public SignInConfiguration(@SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=5) GoogleSignInOptions paramGoogleSignInOptions)
+  public SignInConfiguration(String paramString, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50402);
+    AppMethodBeat.i(88297);
     this.zzfe = Preconditions.checkNotEmpty(paramString);
     this.zzff = paramGoogleSignInOptions;
-    AppMethodBeat.o(50402);
+    AppMethodBeat.o(88297);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(50404);
+    AppMethodBeat.i(88299);
     if (paramObject == null)
     {
-      AppMethodBeat.o(50404);
+      AppMethodBeat.o(88299);
       return false;
     }
     try
@@ -63,38 +53,38 @@ public final class SignInConfiguration
           boolean bool;
           do
           {
-            AppMethodBeat.o(50404);
+            AppMethodBeat.o(88299);
             return true;
             bool = this.zzff.equals(paramObject.zzff);
           } while (bool);
         }
       }
-      AppMethodBeat.o(50404);
+      AppMethodBeat.o(88299);
       return false;
     }
     catch (ClassCastException paramObject)
     {
-      AppMethodBeat.o(50404);
+      AppMethodBeat.o(88299);
     }
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(50405);
+    AppMethodBeat.i(88300);
     int i = new HashAccumulator().addObject(this.zzfe).addObject(this.zzff).hash();
-    AppMethodBeat.o(50405);
+    AppMethodBeat.o(88300);
     return i;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(50403);
+    AppMethodBeat.i(88298);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, this.zzfe, false);
     SafeParcelWriter.writeParcelable(paramParcel, 5, this.zzff, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(50403);
+    AppMethodBeat.o(88298);
   }
   
   public final GoogleSignInOptions zzt()
@@ -104,7 +94,7 @@ public final class SignInConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.SignInConfiguration
  * JD-Core Version:    0.7.0.1
  */

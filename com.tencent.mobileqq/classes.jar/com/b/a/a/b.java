@@ -78,228 +78,236 @@ public final class b
   {
     i locali = new i(this.c, paramInt);
     Object localObject = null;
-    if (paramInputStream == null) {
+    if (paramInputStream != null) {
+      label155:
       try
       {
-        throw new r();
+        arrayOfByte = this.c.a(1024);
+        int i = 0;
+        for (;;)
+        {
+          localObject = arrayOfByte;
+          int j = paramInputStream.read(arrayOfByte);
+          if (j == -1) {
+            break;
+          }
+          localObject = arrayOfByte;
+          locali.write(arrayOfByte, 0, j);
+          j = i + j;
+          i = j;
+          if (paramInt != 0)
+          {
+            i = j;
+            localObject = arrayOfByte;
+            if ((paramm instanceof h))
+            {
+              localObject = arrayOfByte;
+              i = j * 100 / paramInt;
+              localObject = arrayOfByte;
+              j.a().a(paramm.c(), i);
+              i = j;
+            }
+          }
+        }
+        localObject = arrayOfByte;
+        paramm = locali.toByteArray();
+        if (paramInputStream == null) {}
       }
       finally
       {
-        if (paramInputStream == null) {}
+        byte[] arrayOfByte;
       }
     }
     try
     {
       paramInputStream.close();
-      this.c.a((byte[])localObject);
-      locali.close();
-      throw paramm;
-      byte[] arrayOfByte = this.c.a(1024);
-      int i = 0;
-      for (;;)
-      {
-        localObject = arrayOfByte;
-        int j = paramInputStream.read(arrayOfByte);
-        if (j == -1) {
-          break;
-        }
-        localObject = arrayOfByte;
-        locali.write(arrayOfByte, 0, j);
-        j = i + j;
-        i = j;
-        if (paramInt != 0)
-        {
-          localObject = arrayOfByte;
-          i = j;
-          if ((paramm instanceof h))
-          {
-            localObject = arrayOfByte;
-            i = j * 100 / paramInt;
-            localObject = arrayOfByte;
-            j.a().a(paramm.c(), i);
-            i = j;
-          }
-        }
-      }
-      localObject = arrayOfByte;
-      paramm = locali.toByteArray();
-      if (paramInputStream != null) {}
-      try
-      {
-        paramInputStream.close();
-        this.c.a(arrayOfByte);
-        locali.close();
-        return paramm;
-      }
-      catch (IOException paramInputStream)
-      {
-        for (;;)
-        {
-          u.a("Error occurred when closing InputStream", new Object[0]);
-        }
-      }
     }
     catch (IOException paramInputStream)
     {
-      for (;;)
-      {
-        u.a("Error occurred when closing InputStream", new Object[0]);
-      }
+      break label155;
+    }
+    u.a("Error occurred when closing InputStream", new Object[0]);
+    this.c.a(arrayOfByte);
+    locali.close();
+    return paramm;
+    throw new r();
+    if (paramInputStream != null) {}
+    try
+    {
+      paramInputStream.close();
+    }
+    catch (IOException paramInputStream)
+    {
+      label203:
+      break label203;
+    }
+    u.a("Error occurred when closing InputStream", new Object[0]);
+    this.c.a(localObject);
+    locali.close();
+    for (;;)
+    {
+      throw paramm;
     }
   }
   
   public final com.b.a.j a(m<?> paramm)
   {
     long l1 = SystemClock.elapsedRealtime();
-    for (;;)
+    Object localObject4 = Collections.emptyMap();
+    for (Object localObject6 = null;; localObject6 = "null")
     {
-      Map localMap = null;
-      localObject6 = Collections.emptyMap();
       try
       {
-        Object localObject1 = new HashMap();
-        Object localObject4 = paramm.e();
-        if (localObject4 != null)
-        {
-          if (((b.a)localObject4).b != null) {
-            ((Map)localObject1).put("If-None-Match", ((b.a)localObject4).b);
-          }
-          if (((b.a)localObject4).d > 0L) {
-            ((Map)localObject1).put("If-Modified-Since", d.a(((b.a)localObject4).d));
-          }
-        }
-        localObject4 = this.b.a(paramm, (Map)localObject1);
-        localObject1 = localObject6;
+        Object localObject5;
         try
         {
-          i = ((e)localObject4).a();
-          localObject1 = localObject6;
-          localMap = a(((e)localObject4).b());
-          if (i == 304)
+          Object localObject1 = new HashMap();
+          localObject3 = paramm.e();
+          if (localObject3 != null)
           {
-            localObject1 = localMap;
-            localObject6 = paramm.e();
-            if (localObject6 == null)
-            {
-              localObject1 = localMap;
-              return new com.b.a.j(304, null, localMap, true, SystemClock.elapsedRealtime() - l1);
+            if (((b.a)localObject3).b != null) {
+              ((Map)localObject1).put("If-None-Match", ((b.a)localObject3).b);
             }
-            localObject1 = localMap;
-            ((b.a)localObject6).g.putAll(localMap);
-            localObject1 = localMap;
-            return new com.b.a.j(304, ((b.a)localObject6).a, ((b.a)localObject6).g, true, SystemClock.elapsedRealtime() - l1);
+            if (((b.a)localObject3).d > 0L) {
+              ((Map)localObject1).put("If-Modified-Since", d.a(((b.a)localObject3).d));
+            }
           }
-          localObject1 = localMap;
-          localObject6 = ((e)localObject4).d();
-          if (localObject6 != null)
+          e locale = this.b.a(paramm, (Map)localObject1);
+          localObject3 = localObject4;
+          localObject1 = localObject6;
+          try
           {
-            localObject1 = localMap;
-            localObject6 = a((InputStream)localObject6, ((e)localObject4).c(), paramm);
+            i = locale.a();
+            localObject3 = localObject4;
             localObject1 = localObject6;
+            Map localMap = a(locale.b());
+            if (i == 304)
+            {
+              localObject3 = localMap;
+              localObject1 = localObject6;
+              localObject4 = paramm.e();
+              if (localObject4 == null)
+              {
+                localObject3 = localMap;
+                localObject1 = localObject6;
+                return new com.b.a.j(304, null, localMap, true, SystemClock.elapsedRealtime() - l1);
+              }
+              localObject3 = localMap;
+              localObject1 = localObject6;
+              ((b.a)localObject4).g.putAll(localMap);
+              localObject3 = localMap;
+              localObject1 = localObject6;
+              return new com.b.a.j(304, ((b.a)localObject4).a, ((b.a)localObject4).g, true, SystemClock.elapsedRealtime() - l1);
+            }
+            localObject3 = localMap;
+            localObject1 = localObject6;
+            localObject4 = locale.d();
+            if (localObject4 != null)
+            {
+              localObject3 = localMap;
+              localObject1 = localObject6;
+              localObject4 = a((InputStream)localObject4, locale.c(), paramm);
+              localObject1 = localObject4;
+            }
+            else
+            {
+              localObject3 = localMap;
+              localObject1 = localObject6;
+              localObject4 = new byte[0];
+              localObject1 = localObject4;
+            }
+            localObject4 = localObject1;
+            localObject3 = localMap;
+            localObject1 = localObject4;
+            long l2 = SystemClock.elapsedRealtime() - l1;
+            localObject3 = localMap;
+            localObject1 = localObject4;
+            if ((a) || (l2 > 3000L))
+            {
+              if (localObject4 == null) {
+                continue;
+              }
+              localObject3 = localMap;
+              localObject1 = localObject4;
+              localObject6 = Integer.valueOf(localObject4.length);
+              localObject3 = localMap;
+              localObject1 = localObject4;
+              u.b("HTTP response for request=<%s> [lifetime=%d], [size=%s], [rc=%d], [retryCount=%s]", new Object[] { paramm, Long.valueOf(l2), localObject6, Integer.valueOf(i), Integer.valueOf(paramm.o().b()) });
+            }
+            if ((i >= 200) && (i <= 299))
+            {
+              localObject3 = localMap;
+              localObject1 = localObject4;
+              return new com.b.a.j(i, (byte[])localObject4, localMap, false, SystemClock.elapsedRealtime() - l1);
+            }
+            localObject3 = localMap;
+            localObject1 = localObject4;
+            throw new IOException();
           }
-        }
-        catch (IOException localIOException3)
-        {
-          for (;;)
+          catch (IOException localIOException2)
           {
-            long l2;
-            label335:
-            Object localObject2;
-            byte[] arrayOfByte = null;
-            localObject6 = localIOException1;
-            localObject5 = localIOException3;
+            localObject6 = localObject1;
+            localObject1 = localIOException2;
+            localObject5 = locale;
+          }
+          if (localObject5 == null) {
+            break label684;
           }
         }
-        try
+        catch (IOException localIOException1)
         {
-          l2 = SystemClock.elapsedRealtime() - l1;
-          if ((!a) && (l2 <= 3000L)) {
-            break label705;
-          }
-          if (localObject1 == null) {
-            break label396;
-          }
-          localObject6 = Integer.valueOf(localObject1.length);
-          u.b("HTTP response for request=<%s> [lifetime=%d], [size=%s], [rc=%d], [retryCount=%s]", new Object[] { paramm, Long.valueOf(l2), localObject6, Integer.valueOf(i), Integer.valueOf(paramm.o().b()) });
-        }
-        catch (IOException localIOException2)
-        {
+          localObject3 = localObject5;
+          localObject5 = null;
           localObject6 = localObject5;
-          localObject5 = localIOException2;
-          Object localObject7 = localObject3;
-          localObject3 = localIOException3;
-          break label490;
-          if (i < 200) {
-            break label335;
-          }
-          if (i <= 299) {
-            break label404;
-          }
-          break label335;
         }
-        throw new IOException();
-      }
-      catch (SocketTimeoutException localSocketTimeoutException)
-      {
-        for (;;)
-        {
-          u.c("Unexpected response SocketTimeoutException", new Object[] { localSocketTimeoutException.getMessage() });
-          a("socket", paramm, new s());
-          break;
-          localObject2 = localMap;
-          localObject6 = new byte[0];
-          localObject2 = localObject6;
-          continue;
-          localObject6 = "null";
-        }
-        localObject6 = new com.b.a.j(i, (byte[])localObject2, localMap, false, SystemClock.elapsedRealtime() - l1);
-        return localObject6;
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        u.c("Unexpected response MalformedURLException", new Object[] { localMalformedURLException.getMessage() });
-        throw new RuntimeException("Bad URL " + paramm.c(), localMalformedURLException);
-      }
-      catch (IOException localIOException1)
-      {
-        label396:
-        label404:
-        arrayOfByte = null;
-        localObject3 = localObject6;
-        localObject6 = localMap;
-        label490:
+        int i = localObject5.a();
+        u.c("Unexpected response code %d for %s", new Object[] { Integer.valueOf(i), paramm.c() });
         if (localObject6 != null)
         {
-          i = ((e)localObject6).a();
-          u.c("Unexpected response code %d for %s", new Object[] { Integer.valueOf(i), paramm.c() });
-          if (arrayOfByte == null) {
-            break label651;
+          localObject2 = new com.b.a.j(i, (byte[])localObject6, (Map)localObject3, false, SystemClock.elapsedRealtime() - l1);
+          if ((i != 401) && (i != 403))
+          {
+            if ((i >= 400) && (i <= 499)) {
+              throw new com.b.a.d((com.b.a.j)localObject2);
+            }
+            if ((i >= 500) && (i <= 599)) {
+              throw new r((com.b.a.j)localObject2);
+            }
+            throw new r((com.b.a.j)localObject2);
           }
-          localObject3 = new com.b.a.j(i, arrayOfByte, (Map)localObject3, false, SystemClock.elapsedRealtime() - l1);
-          if ((i == 401) || (i == 403)) {
-            a("auth", paramm, new com.b.a.a((com.b.a.j)localObject3));
-          }
+          localObject2 = new com.b.a.a((com.b.a.j)localObject2);
+          localObject3 = "auth";
         }
         else
         {
-          throw new k(localIOException1);
+          localObject2 = new com.b.a.i();
+          localObject3 = "network";
         }
       }
-      if ((i >= 400) && (i <= 499)) {
-        throw new com.b.a.d((com.b.a.j)localObject3);
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject2;
+        u.c("Unexpected response MalformedURLException", new Object[] { localMalformedURLException.getMessage() });
+        localObject3 = new StringBuilder("Bad URL ");
+        ((StringBuilder)localObject3).append(paramm.c());
+        throw new RuntimeException(((StringBuilder)localObject3).toString(), localMalformedURLException);
       }
-      if ((i >= 500) && (i <= 599)) {
-        throw new r((com.b.a.j)localObject3);
+      catch (SocketTimeoutException localSocketTimeoutException)
+      {
+        label684:
+        u.c("Unexpected response SocketTimeoutException", new Object[] { localSocketTimeoutException.getMessage() });
+        s locals = new s();
+        Object localObject3 = "socket";
+        a((String)localObject3, paramm, locals);
       }
-      throw new r((com.b.a.j)localObject3);
-      label651:
-      a("network", paramm, new com.b.a.i());
+      throw new k((Throwable)localObject2);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

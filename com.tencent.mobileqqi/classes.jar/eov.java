@@ -1,16 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.RecentCallHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.recent.RecentOptionBar;
 
 public class eov
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public eov(RecentCallHelper paramRecentCallHelper) {}
+  public eov(RecentOptionBar paramRecentOptionBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a();
+    RecentOptionBar.a(this.a).setVisibility(8);
+    RecentOptionBar.b(this.a).setVisibility(8);
+    RecentOptionBar.b(this.a).setOnClickListener(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

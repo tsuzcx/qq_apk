@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector android:height="24.0dip" android:width="24.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@android:color/white" android:pathData="M20,11L7.8,11l5.6,-5.6L12,4l-8,8l8,8l1.4,-1.4L7.8,13L20,13L20,11z" />
-</vector>
+    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
+    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/b61" />
+    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/b61" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/af" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/af" />
+    <item android:state_focused="true" android:drawable="@drawable/b5x" />
+</selector>

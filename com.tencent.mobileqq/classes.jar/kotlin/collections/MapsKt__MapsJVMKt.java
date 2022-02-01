@@ -21,7 +21,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"INT_MAX_POWER_OF_TWO", "", "checkBuilderCapacity", "", "capacity", "mapCapacity", "expectedSize", "mapOf", "", "K", "V", "pair", "Lkotlin/Pair;", "sortedMapOf", "Ljava/util/SortedMap;", "", "pairs", "", "([Lkotlin/Pair;)Ljava/util/SortedMap;", "getOrPut", "Ljava/util/concurrent/ConcurrentMap;", "key", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "toProperties", "Ljava/util/Properties;", "", "toSingletonMap", "toSingletonMapOrSelf", "toSortedMap", "comparator", "Ljava/util/Comparator;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/MapsKt")
-public class MapsKt__MapsJVMKt
+class MapsKt__MapsJVMKt
   extends MapsKt__MapWithDefaultKt
 {
   private static final int INT_MAX_POWER_OF_TWO = 1073741824;
@@ -38,16 +38,15 @@ public class MapsKt__MapsJVMKt
     Intrinsics.checkParameterIsNotNull(paramFunction0, "defaultValue");
     Object localObject = paramConcurrentMap.get(paramK);
     if (localObject != null) {
-      paramConcurrentMap = localObject;
+      return localObject;
     }
-    do
-    {
-      return paramConcurrentMap;
-      paramFunction0 = paramFunction0.invoke();
-      paramK = paramConcurrentMap.putIfAbsent(paramK, paramFunction0);
+    paramFunction0 = paramFunction0.invoke();
+    paramK = paramConcurrentMap.putIfAbsent(paramK, paramFunction0);
+    paramConcurrentMap = paramFunction0;
+    if (paramK != null) {
       paramConcurrentMap = paramK;
-    } while (paramK != null);
-    return paramFunction0;
+    }
+    return paramConcurrentMap;
   }
   
   @PublishedApi
@@ -127,7 +126,7 @@ public class MapsKt__MapsJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.MapsKt__MapsJVMKt
  * JD-Core Version:    0.7.0.1
  */

@@ -29,17 +29,17 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import com.tencent.widget.BubblePopupWindow;
+import fpy;
 import fpz;
-import fqa;
-import fqc;
+import fqb;
+import fqh;
 import fqi;
 import fqj;
 import fqk;
 import fql;
 import fqm;
 import fqn;
-import fqo;
-import fqq;
+import fqp;
 import java.util.List;
 
 public class FMActivity
@@ -66,7 +66,7 @@ public class FMActivity
   List jdField_a_of_type_JavaUtilList = null;
   public View.OnClickListener b;
   View jdField_b_of_type_AndroidViewView;
-  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqc(this);
+  private FMObserver jdField_b_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new fqb(this);
   public View.OnClickListener c;
   View jdField_c_of_type_AndroidViewView;
   boolean jdField_c_of_type_Boolean;
@@ -85,11 +85,11 @@ public class FMActivity
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter = null;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqj(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new fqn(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fqo(this);
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = new fqq(this);
-    this.jdField_d_of_type_AndroidViewView$OnClickListener = new fqa(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new fqi(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new fqm(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new fqn(this);
+    this.jdField_c_of_type_AndroidViewView$OnClickListener = new fqp(this);
+    this.jdField_d_of_type_AndroidViewView$OnClickListener = new fpz(this);
   }
   
   private void i()
@@ -109,12 +109,12 @@ public class FMActivity
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232718));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131232717));
     this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = new ScrollerRunnable(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setSelection(0);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataRecentFileAdapter.a(Integer.valueOf(-1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fqi(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new fqh(this));
   }
   
   private void k()
@@ -225,7 +225,7 @@ public class FMActivity
     for (;;)
     {
       i();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getViewTreeObserver().addOnGlobalLayoutListener(new fpz(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.getViewTreeObserver().addOnGlobalLayoutListener(new fpy(this));
       return true;
       c(false);
     }
@@ -259,9 +259,9 @@ public class FMActivity
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(getResources().getStringArray(2131689515)[0], 3);
-    localActionSheet.a(new fqk(this, localActionSheet));
-    localActionSheet.setOnDismissListener(new fql(this));
-    localActionSheet.setOnCancelListener(new fqm(this));
+    localActionSheet.a(new fqj(this, localActionSheet));
+    localActionSheet.setOnDismissListener(new fqk(this));
+    localActionSheet.setOnCancelListener(new fql(this));
     localActionSheet.d(2131561746);
     localActionSheet.show();
   }
@@ -300,14 +300,14 @@ public class FMActivity
     {
     default: 
       return;
-    case 2131232719: 
+    case 2131232718: 
       paramView = new FileManagerReporter.fileAssistantReportData();
       paramView.jdField_a_of_type_JavaLangString = "file_choose_aio";
       paramView.jdField_a_of_type_Int = 1;
       FileManagerReporter.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), paramView);
       m();
       return;
-    case 2131232739: 
+    case 2131232738: 
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().b();
       startActivityForResult(new Intent(getApplicationContext(), FMLocalFileActivity.class), 100);
       i();

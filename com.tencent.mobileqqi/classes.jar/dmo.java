@@ -1,21 +1,40 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.activity.SubaccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
-class dmo
-  implements DialogInterface.OnClickListener
+public class dmo
+  implements View.OnClickListener
 {
-  dmo(dml paramdml) {}
+  public dmo(SubAccountSettingActivity paramSubAccountSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.a().setTitle("");
-    paramDialogInterface = new Intent(this.a.a.a(), SubaccountUgActivity.class);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.a.finish();
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a.a(), null);
+    switch (paramView.getId())
+    {
+    case 2131234576: 
+    default: 
+      return;
+    case 2131234575: 
+      localActionSheet.a(2131561668);
+      localActionSheet.a(2131562539, 3);
+      localActionSheet.d(2131561746);
+      localActionSheet.a(new dmp(this, localActionSheet));
+      localActionSheet.show();
+      return;
+    case 2131234577: 
+      localActionSheet.a(2131561628);
+      localActionSheet.a(2131561946, 3);
+      localActionSheet.d(2131561746);
+      localActionSheet.a(new dmq(this, localActionSheet));
+      localActionSheet.show();
+      return;
+    }
+    SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
   }
 }
 

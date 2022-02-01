@@ -15,14 +15,15 @@ final class MiniAppSSOCmdHelper$1
   
   public void onReceived(boolean paramBoolean, RESPONSE paramRESPONSE)
   {
-    if (this.val$cmdCallback != null) {
-      this.val$cmdCallback.onReceived(paramBoolean, paramRESPONSE);
+    MiniAppSSOCmdHelper.MiniAppCmdCallback localMiniAppCmdCallback = this.val$cmdCallback;
+    if (localMiniAppCmdCallback != null) {
+      localMiniAppCmdCallback.onReceived(paramBoolean, paramRESPONSE);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.1
  * JD-Core Version:    0.7.0.1
  */

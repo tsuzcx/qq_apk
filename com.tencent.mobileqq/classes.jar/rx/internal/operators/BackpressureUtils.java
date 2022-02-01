@@ -65,33 +65,34 @@ public final class BackpressureUtils
   
   public static <T> void postCompleteDone(AtomicLong paramAtomicLong, Queue<T> paramQueue, Subscriber<? super T> paramSubscriber)
   {
-    long l = paramAtomicLong.get();
-    if ((l & 0x0) != 0L) {}
+    long l;
     do
     {
-      return;
-      if (!paramAtomicLong.compareAndSet(l, l | 0x0)) {
-        break;
+      l = paramAtomicLong.get();
+      if ((l & 0x0) != 0L) {
+        return;
       }
-    } while (l == 0L);
-    postCompleteDrain(paramAtomicLong, paramQueue, paramSubscriber);
+    } while (!paramAtomicLong.compareAndSet(l, 0x0 | l));
+    if (l != 0L) {
+      postCompleteDrain(paramAtomicLong, paramQueue, paramSubscriber);
+    }
   }
   
   static <T> void postCompleteDrain(AtomicLong paramAtomicLong, Queue<T> paramQueue, Subscriber<? super T> paramSubscriber)
   {
     long l1 = paramAtomicLong.get();
-    long l2 = -9223372036854775808L;
-    for (;;)
+    long l2;
+    do
     {
-      if (l2 != l1) {
-        if (!paramSubscriber.isUnsubscribed()) {}
-      }
-      label86:
+      l2 = -9223372036854775808L;
+      long l3;
       do
       {
-        do
+        while (l2 != l1)
         {
-          return;
+          if (paramSubscriber.isUnsubscribed()) {
+            return;
+          }
           Object localObject = paramQueue.poll();
           if (localObject == null)
           {
@@ -100,48 +101,56 @@ public final class BackpressureUtils
           }
           paramSubscriber.onNext(localObject);
           l2 += 1L;
-          break;
-          if (l2 != l1) {
-            break label86;
-          }
-        } while (paramSubscriber.isUnsubscribed());
-        if (paramQueue.isEmpty())
+        }
+        if (l2 == l1)
         {
-          paramSubscriber.onCompleted();
-          return;
+          if (paramSubscriber.isUnsubscribed()) {
+            return;
+          }
+          if (paramQueue.isEmpty())
+          {
+            paramSubscriber.onCompleted();
+            return;
+          }
         }
-        long l3 = paramAtomicLong.get();
+        l3 = paramAtomicLong.get();
         l1 = l3;
-        if (l3 != l2) {
-          break;
-        }
-        l1 = paramAtomicLong.addAndGet(-(l2 & 0xFFFFFFFF));
-      } while (l1 == -9223372036854775808L);
-      l2 = -9223372036854775808L;
-    }
+      } while (l3 != l2);
+      l2 = paramAtomicLong.addAndGet(-(l2 & 0xFFFFFFFF));
+      l1 = l2;
+    } while (l2 != -9223372036854775808L);
   }
   
   public static <T> boolean postCompleteRequest(AtomicLong paramAtomicLong, long paramLong, Queue<T> paramQueue, Subscriber<? super T> paramSubscriber)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
-    }
-    if (paramLong == 0L) {
-      return (paramAtomicLong.get() & 0x0) == 0L;
-    }
-    long l1;
-    long l2;
-    do
+    if (paramLong >= 0L)
     {
-      l1 = paramAtomicLong.get();
-      l2 = 0x0 & l1;
-    } while (!paramAtomicLong.compareAndSet(l1, addCap(0xFFFFFFFF & l1, paramLong) | l2));
-    if (l1 == -9223372036854775808L)
-    {
-      postCompleteDrain(paramAtomicLong, paramQueue, paramSubscriber);
-      return false;
+      if (paramLong == 0L) {
+        return (paramAtomicLong.get() & 0x0) == 0L;
+      }
+      for (;;)
+      {
+        long l1 = paramAtomicLong.get();
+        long l2 = l1 & 0x0;
+        if (paramAtomicLong.compareAndSet(l1, addCap(0xFFFFFFFF & l1, paramLong) | l2))
+        {
+          if (l1 == -9223372036854775808L)
+          {
+            postCompleteDrain(paramAtomicLong, paramQueue, paramSubscriber);
+            return false;
+          }
+          return l2 == 0L;
+        }
+      }
     }
-    return l2 == 0L;
+    paramAtomicLong = new StringBuilder();
+    paramAtomicLong.append("n >= 0 required but it was ");
+    paramAtomicLong.append(paramLong);
+    paramAtomicLong = new IllegalArgumentException(paramAtomicLong.toString());
+    for (;;)
+    {
+      throw paramAtomicLong;
+    }
   }
   
   public static long produced(AtomicLong paramAtomicLong, long paramLong)
@@ -156,15 +165,23 @@ public final class BackpressureUtils
       }
       l2 = l1 - paramLong;
       if (l2 < 0L) {
-        throw new IllegalStateException("More produced than requested: " + l2);
+        break;
       }
     } while (!paramAtomicLong.compareAndSet(l1, l2));
     return l2;
+    paramAtomicLong = new StringBuilder();
+    paramAtomicLong.append("More produced than requested: ");
+    paramAtomicLong.append(l2);
+    paramAtomicLong = new IllegalStateException(paramAtomicLong.toString());
+    for (;;)
+    {
+      throw paramAtomicLong;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.BackpressureUtils
  * JD-Core Version:    0.7.0.1
  */

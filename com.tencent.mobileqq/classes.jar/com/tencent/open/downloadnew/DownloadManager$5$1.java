@@ -1,78 +1,105 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfok;
-import bfoq;
+import com.tencent.open.base.LogUtility;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
-public class DownloadManager$5$1
+class DownloadManager$5$1
   implements Runnable
 {
-  public DownloadManager$5$1(bfoq parambfoq, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
+  DownloadManager$5$1(DownloadManager.5 param5, TMAssistantDownloadClient paramTMAssistantDownloadClient, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    bflp.b("DownloadManager_", "OnDownloadStateChanged,clientKey:" + this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient + ",state:" + this.jdField_a_of_type_Int + ",url:" + this.jdField_a_of_type_JavaLangString);
-    int i = bfok.a(this.jdField_a_of_type_Int);
-    bflp.a("DownloadManager_", "onStateChanged url: +++++loacalState=" + i + " +++++downloadInfo=" + this.jdField_a_of_type_Bfoq.a.c(this.jdField_a_of_type_JavaLangString));
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bfoq.a.a(this.jdField_a_of_type_JavaLangString, i);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("OnDownloadStateChanged,clientKey:");
+    ((StringBuilder)localObject1).append(this.a);
+    ((StringBuilder)localObject1).append(",state:");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(",url:");
+    ((StringBuilder)localObject1).append(this.c);
+    LogUtility.b("DownloadManager_", ((StringBuilder)localObject1).toString());
+    int i = DownloadManager.b(this.b);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onStateChanged url: +++++loacalState=");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" +++++downloadInfo=");
+    ((StringBuilder)localObject1).append(this.f.a.i(this.c));
+    LogUtility.a("DownloadManager_", ((StringBuilder)localObject1).toString());
+    DownloadInfo localDownloadInfo = this.f.a.a(this.c, i);
     if (localDownloadInfo == null)
     {
-      bflp.d("DownloadManager_", "OnDownloadSDKTaskStateChanged info == null");
+      LogUtility.d("DownloadManager_", "OnDownloadSDKTaskStateChanged info == null");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient != null) {}
-    for (;;)
+    Object localObject2 = this.a;
+    if (localObject2 != null)
     {
+      localObject1 = null;
       try
       {
-        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.getDownloadTaskState(this.jdField_a_of_type_JavaLangString);
-        if (localTMAssistantDownloadTaskInfo == null) {
-          break label448;
-        }
-        l1 = localTMAssistantDownloadTaskInfo.mReceiveDataLen;
-        l2 = localTMAssistantDownloadTaskInfo.mTotalDataLen;
-        int j = (int)((float)l1 * 100.0F / (float)l2);
-        localDownloadInfo.f = j;
-        bflp.a("DownloadManager_", "OnDownloadSDKTaskStateChanged info progress = " + j);
-        switch (i)
-        {
-        default: 
-          return;
-        case -2: 
-          this.jdField_a_of_type_Bfoq.a.a(localDownloadInfo, l1, l2, this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_Bfoq.a.a(-2, localDownloadInfo, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
-          return;
-        }
+        localObject2 = ((TMAssistantDownloadClient)localObject2).getDownloadTaskState(this.c);
+        localObject1 = localObject2;
       }
       catch (Exception localException)
       {
-        bflp.c("DownloadManager_", "getDownloadTaskState>>>", localException);
-        Object localObject = null;
-        continue;
-        this.jdField_a_of_type_Bfoq.a.a(2, localDownloadInfo);
+        LogUtility.c("DownloadManager_", "getDownloadTaskState>>>", localException);
+      }
+      if (localObject1 != null)
+      {
+        l2 = ((TMAssistantDownloadTaskInfo)localObject1).mReceiveDataLen;
+        l1 = ((TMAssistantDownloadTaskInfo)localObject1).mTotalDataLen;
+        int j = (int)((float)l2 * 100.0F / (float)l1);
+        localDownloadInfo.t = j;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("OnDownloadSDKTaskStateChanged info progress = ");
+        ((StringBuilder)localObject1).append(j);
+        LogUtility.a("DownloadManager_", ((StringBuilder)localObject1).toString());
+        l3 = l1;
+        break label299;
+      }
+    }
+    long l1 = 0L;
+    long l3 = l1;
+    long l2 = l1;
+    label299:
+    if (i != -2)
+    {
+      if (i != 10)
+      {
+        if (i != 20)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4) {
+                return;
+              }
+              this.f.a.a(localDownloadInfo, 0L, l3 - localDownloadInfo.y, "complete");
+              this.f.a.b(localDownloadInfo);
+              return;
+            }
+            this.f.a.a(localDownloadInfo, l2, l2 - localDownloadInfo.y, "pause");
+            this.f.a.a(3, localDownloadInfo);
+            return;
+          }
+          this.f.a.a(2, localDownloadInfo);
+          return;
+        }
+        this.f.a.a(20, localDownloadInfo);
         return;
       }
-      this.jdField_a_of_type_Bfoq.a.a(localDownloadInfo, l1, l1 - localDownloadInfo.b, "pause");
-      this.jdField_a_of_type_Bfoq.a.a(3, localDownloadInfo);
+      this.f.a.a(10, localDownloadInfo);
       return;
-      this.jdField_a_of_type_Bfoq.a.a(localDownloadInfo, 0L, l2 - localDownloadInfo.b, "complete");
-      this.jdField_a_of_type_Bfoq.a.b(localDownloadInfo);
-      return;
-      this.jdField_a_of_type_Bfoq.a.a(20, localDownloadInfo);
-      return;
-      this.jdField_a_of_type_Bfoq.a.a(10, localDownloadInfo);
-      return;
-      label448:
-      long l2 = 0L;
-      long l1 = 0L;
     }
+    this.f.a.a(localDownloadInfo, l2, l3, this.d);
+    this.f.a.a(-2, localDownloadInfo, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.5.1
  * JD-Core Version:    0.7.0.1
  */

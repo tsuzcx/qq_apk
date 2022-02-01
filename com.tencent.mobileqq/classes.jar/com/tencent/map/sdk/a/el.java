@@ -31,12 +31,19 @@ public final class el
     }
     catch (NumberFormatException localNumberFormatException1)
     {
-      try
-      {
-        long l = Long.parseLong(this.a);
-        return (int)l;
-      }
-      catch (NumberFormatException localNumberFormatException2) {}
+      label10:
+      long l;
+      label21:
+      break label10;
+    }
+    try
+    {
+      l = Long.parseLong(this.a);
+      return (int)l;
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      break label21;
     }
     return new BigInteger(this.a).intValue();
   }
@@ -48,7 +55,11 @@ public final class el
       long l = Long.parseLong(this.a);
       return l;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return new BigInteger(this.a).longValue();
   }
   

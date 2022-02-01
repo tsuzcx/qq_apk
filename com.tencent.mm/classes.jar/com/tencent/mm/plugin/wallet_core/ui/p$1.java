@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class p$1
-  implements EditHintPasswdView.a
+  implements View.OnClickListener
 {
   p$1(p paramp) {}
   
-  public final void onInputValidChange(boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(47554);
-    if (paramBoolean)
-    {
-      this.utf.cVU();
-      h.qsU.e(11977, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-    }
-    AppMethodBeat.o(47554);
+    AppMethodBeat.i(70940);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    p.a(this.VPk);
+    this.VPk.dismiss();
+    a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(70940);
   }
 }
 

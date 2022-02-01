@@ -1,56 +1,40 @@
 package com.tencent.mobileqq.videoplatform;
 
+import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
-import com.tencent.superplayer.api.SuperPlayerSDKMgr.ILogListener;
+import com.tencent.thumbplayer.api.ITPModuleLoader;
 
 class VideoPlaySDKManager$3
-  implements SuperPlayerSDKMgr.ILogListener
+  implements ITPModuleLoader
 {
   VideoPlaySDKManager$3(VideoPlaySDKManager paramVideoPlaySDKManager) {}
   
-  public int d(String paramString1, String paramString2)
+  public void loadLibrary(String paramString1, String paramString2)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(paramString1, 2, paramString2);
+    if (LogUtil.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadLibrary, libName = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" , apkSoVer = ");
+      localStringBuilder.append(paramString2);
+      LogUtil.d("[VideoPlatForm]VideoPlaySDKManager", 2, localStringBuilder.toString());
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.e(paramString1, 2, paramString2);
+    if ((!LoadSoUtil.isTPCoreLoad()) && (paramString1.equals("TPCore-master")) && (!LoadSoUtil.loadTPCoreSync())) {
+      throw new Throwable("LoadSoUtil.loadTPCoreSync error.");
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.i(paramString1, 2, paramString2);
+    if ((!LoadSoUtil.isDownProxyLoad()) && (paramString1.equals("DownloadProxy")))
+    {
+      if (LoadSoUtil.loadDownProxySync()) {
+        return;
+      }
+      throw new Throwable("LoadSoUtil.loadDownProxySync error.");
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.v(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.w(paramString1, 2, paramString2);
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.VideoPlaySDKManager.3
  * JD-Core Version:    0.7.0.1
  */

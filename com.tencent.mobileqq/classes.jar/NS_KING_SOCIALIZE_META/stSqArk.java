@@ -10,7 +10,7 @@ public final class stSqArk
   static stShareBody cache_shareBody = new stShareBody();
   public String arkData = "";
   public String coverProto = "";
-  public stShareBody shareBody;
+  public stShareBody shareBody = null;
   
   public stSqArk() {}
   
@@ -30,20 +30,23 @@ public final class stSqArk
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.arkData != null) {
-      paramJceOutputStream.write(this.arkData, 0);
+    Object localObject = this.arkData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.shareBody != null) {
-      paramJceOutputStream.write(this.shareBody, 1);
+    localObject = this.shareBody;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.coverProto != null) {
-      paramJceOutputStream.write(this.coverProto, 2);
+    localObject = this.coverProto;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stSqArk
  * JD-Core Version:    0.7.0.1
  */

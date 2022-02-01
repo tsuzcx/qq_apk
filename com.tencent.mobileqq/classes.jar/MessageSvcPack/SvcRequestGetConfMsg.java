@@ -10,24 +10,14 @@ public final class SvcRequestGetConfMsg
   extends JceStruct
   implements Cloneable
 {
-  public byte cGetPttUrl;
-  public byte cGetSmartRemark;
-  public byte cVerifyType;
-  public long dwLastGetTime;
-  public long dwLastInfoSeq;
-  public long lBeginSeq;
-  public long lConfUin;
-  public long lEndSeq;
-  
-  static
-  {
-    if (!SvcRequestGetConfMsg.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public byte cGetPttUrl = 0;
+  public byte cGetSmartRemark = 0;
+  public byte cVerifyType = 0;
+  public long dwLastGetTime = 0L;
+  public long dwLastInfoSeq = 0L;
+  public long lBeginSeq = 0L;
+  public long lConfUin = 0L;
+  public long lEndSeq = 0L;
   
   public SvcRequestGetConfMsg() {}
   
@@ -45,18 +35,17 @@ public final class SvcRequestGetConfMsg
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -74,13 +63,44 @@ public final class SvcRequestGetConfMsg
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (SvcRequestGetConfMsg)paramObject;
-    } while ((!JceUtil.equals(this.lConfUin, paramObject.lConfUin)) || (!JceUtil.equals(this.lBeginSeq, paramObject.lBeginSeq)) || (!JceUtil.equals(this.lEndSeq, paramObject.lEndSeq)) || (!JceUtil.equals(this.cVerifyType, paramObject.cVerifyType)) || (!JceUtil.equals(this.cGetPttUrl, paramObject.cGetPttUrl)) || (!JceUtil.equals(this.cGetSmartRemark, paramObject.cGetSmartRemark)) || (!JceUtil.equals(this.dwLastGetTime, paramObject.dwLastGetTime)) || (!JceUtil.equals(this.dwLastInfoSeq, paramObject.dwLastInfoSeq)));
-    return true;
+    }
+    paramObject = (SvcRequestGetConfMsg)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lConfUin, paramObject.lConfUin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.lBeginSeq, paramObject.lBeginSeq))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.lEndSeq, paramObject.lEndSeq))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.cVerifyType, paramObject.cVerifyType))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.cGetPttUrl, paramObject.cGetPttUrl))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.cGetSmartRemark, paramObject.cGetSmartRemark))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.dwLastGetTime, paramObject.dwLastGetTime))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.dwLastInfoSeq, paramObject.dwLastInfoSeq)) {
+                    bool1 = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public byte getCGetPttUrl()
@@ -202,7 +222,7 @@ public final class SvcRequestGetConfMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGetConfMsg
  * JD-Core Version:    0.7.0.1
  */

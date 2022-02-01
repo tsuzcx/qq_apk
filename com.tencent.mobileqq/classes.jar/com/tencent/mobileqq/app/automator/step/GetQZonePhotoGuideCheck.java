@@ -1,28 +1,29 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import axbg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
 
 public class GetQZonePhotoGuideCheck
   extends AsyncStep
 {
-  public static boolean a;
+  public static boolean a = false;
   
-  public int a()
+  protected int doStep()
   {
-    jdField_a_of_type_Boolean = true;
-    axbg localaxbg = (axbg)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(104);
-    if (localaxbg != null) {
-      localaxbg.c();
+    a = true;
+    QzoneAlbumRedTouchManager localQzoneAlbumRedTouchManager = (QzoneAlbumRedTouchManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH);
+    if (localQzoneAlbumRedTouchManager != null) {
+      localQzoneAlbumRedTouchManager.f();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZonePhotoGuideCheck
  * JD-Core Version:    0.7.0.1
  */

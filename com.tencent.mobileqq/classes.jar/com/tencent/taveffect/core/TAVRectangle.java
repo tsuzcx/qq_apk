@@ -22,12 +22,22 @@ public class TAVRectangle
   
   public String toString()
   {
-    return "TAVRectangle{x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVRectangle{x=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.core.TAVRectangle
  * JD-Core Version:    0.7.0.1
  */

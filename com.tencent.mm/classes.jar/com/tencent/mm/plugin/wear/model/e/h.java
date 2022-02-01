@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.protocal.protobuf.cwx;
-import com.tencent.mm.protocal.protobuf.cwy;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.protocal.protobuf.gfw;
+import com.tencent.mm.protocal.protobuf.gfx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,26 +13,26 @@ import java.util.List;
 public final class h
   extends a
 {
-  public final List<Integer> cYL()
+  public final List<Integer> iob()
   {
-    AppMethodBeat.i(26401);
+    AppMethodBeat.i(30083);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11000));
     localArrayList.add(Integer.valueOf(11003));
     localArrayList.add(Integer.valueOf(11035));
-    AppMethodBeat.o(26401);
+    AppMethodBeat.o(30083);
     return localArrayList;
   }
   
-  public final boolean cYM()
+  public final boolean ioc()
   {
     return false;
   }
   
-  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] u(int paramInt, byte[] paramArrayOfByte)
   {
     int i = 0;
-    AppMethodBeat.i(26402);
+    AppMethodBeat.i(30084);
     String str2;
     if (paramInt == 11000)
     {
@@ -40,7 +40,7 @@ public final class h
       paramArrayOfByte = "";
       try
       {
-        localObject = e.cS(str2);
+        localObject = y.bEn(str2);
         paramArrayOfByte = (byte[])localObject;
       }
       catch (IOException localIOException1)
@@ -48,14 +48,14 @@ public final class h
         for (;;)
         {
           Object localObject;
-          ab.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException1, "handleData", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException1, "handleData", new Object[0]);
         }
         if (localIOException1.size() <= 0) {
           break label151;
         }
-        com.tencent.mm.plugin.report.service.h.qsU.r("WearCrash", localIOException1);
+        com.tencent.mm.plugin.report.service.h.OAn.F("WearCrash", localIOException1);
         localIOException1.clear();
-        e.deleteFile(str2);
+        y.deleteFile(str2);
       }
       paramArrayOfByte = paramArrayOfByte.split("​​");
       localObject = new ArrayList();
@@ -65,7 +65,7 @@ public final class h
         ((List)localObject).add(paramArrayOfByte[paramInt]);
         if (paramInt % 50 == 9)
         {
-          com.tencent.mm.plugin.report.service.h.qsU.r("WearCrash", (List)localObject);
+          com.tencent.mm.plugin.report.service.h.OAn.F("WearCrash", (List)localObject);
           ((List)localObject).clear();
         }
         paramInt += 1;
@@ -74,7 +74,7 @@ public final class h
     for (;;)
     {
       label151:
-      AppMethodBeat.o(26402);
+      AppMethodBeat.o(30084);
       return null;
       if (paramInt == 11003)
       {
@@ -82,7 +82,7 @@ public final class h
         paramArrayOfByte = "";
         try
         {
-          String str1 = e.cS(str2);
+          String str1 = y.bEn(str2);
           paramArrayOfByte = str1;
         }
         catch (IOException localIOException2)
@@ -90,16 +90,16 @@ public final class h
           for (;;)
           {
             int j;
-            ab.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException2, "handleData", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException2, "handleData", new Object[0]);
           }
-          e.deleteFile(str2);
+          y.deleteFile(str2);
         }
         paramArrayOfByte = paramArrayOfByte.split("​​");
         j = paramArrayOfByte.length;
         paramInt = i;
         while (paramInt < j)
         {
-          ab.i("MicroMsg.Wear.LOG", paramArrayOfByte[paramInt]);
+          Log.i("MicroMsg.Wear.LOG", paramArrayOfByte[paramInt]);
           paramInt += 1;
         }
         continue;
@@ -107,17 +107,17 @@ public final class h
       if (paramInt != 11035) {
         continue;
       }
-      cwx localcwx = new cwx();
+      gfw localgfw = new gfw();
       try
       {
-        localcwx.parseFrom(paramArrayOfByte);
+        localgfw.parseFrom(paramArrayOfByte);
         label279:
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.cYy().uGC.uGT.uHH;
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.inI().Wiz.Wjk;
         if (paramArrayOfByte == null) {
           continue;
         }
-        ab.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localcwx.nuk), paramArrayOfByte.jJF, paramArrayOfByte.yeC, Integer.valueOf(paramArrayOfByte.wpR), paramArrayOfByte.yeD, localcwx.yaU });
-        com.tencent.mm.plugin.report.service.h.qsU.e(localcwx.nuk, new Object[] { paramArrayOfByte.jJF, paramArrayOfByte.yeC, Integer.valueOf(paramArrayOfByte.wpR), paramArrayOfByte.yeD, localcwx.yaU });
+        Log.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localgfw.IMf), paramArrayOfByte.vgX, paramArrayOfByte.accI, Integer.valueOf(paramArrayOfByte.YHj), paramArrayOfByte.accJ, localgfw.YVP });
+        com.tencent.mm.plugin.report.service.h.OAn.b(localgfw.IMf, new Object[] { paramArrayOfByte.vgX, paramArrayOfByte.accI, Integer.valueOf(paramArrayOfByte.YHj), paramArrayOfByte.accJ, localgfw.YVP });
       }
       catch (IOException paramArrayOfByte)
       {
@@ -128,7 +128,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.h
  * JD-Core Version:    0.7.0.1
  */

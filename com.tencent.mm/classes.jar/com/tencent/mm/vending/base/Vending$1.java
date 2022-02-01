@@ -4,7 +4,7 @@ import com.tencent.mm.vending.b.c;
 import com.tencent.mm.vending.h.d;
 
 final class Vending$1
-  extends c<Vending.a>
+  extends c<Vending.d>
 {
   Vending$1(Vending paramVending, d paramd)
   {
@@ -13,7 +13,7 @@ final class Vending$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.base.Vending.1
  * JD-Core Version:    0.7.0.1
  */

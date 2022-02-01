@@ -23,12 +23,17 @@ public abstract class a
   
   protected void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EchoTask", 2, "notifyEchoResult: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("notifyEchoResult: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("EchoTask", 2, ((StringBuilder)localObject).toString());
     }
     b();
-    if (this.f != null) {
-      this.f.a(this, this.e, paramInt, paramString, d());
+    Object localObject = this.f;
+    if (localObject != null) {
+      ((a.a)localObject).a(this, this.e, paramInt, paramString, d());
     }
   }
   
@@ -58,7 +63,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.a
  * JD-Core Version:    0.7.0.1
  */

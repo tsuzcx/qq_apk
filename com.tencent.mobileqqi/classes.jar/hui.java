@@ -1,40 +1,43 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
 import com.tencent.qqconnect.wtlogin.Login;
-import java.util.HashMap;
 
 public class hui
-  extends Handler
+  implements View.OnClickListener
 {
   public hui(Login paramLogin) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    Bundle localBundle = paramMessage.getData();
-    this.a.g();
-    switch (paramMessage.what)
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
+      this.a.e();
+    }
+    do
     {
-    default: 
       return;
-    case 1: 
-      this.a.a(String.format(this.a.getResources().getString(2131561498), new Object[] { this.a.getResources().getString(2131562443), Integer.valueOf(3100) }));
-      paramMessage = new HashMap();
-      paramMessage.put("error", "3100");
-      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-      return;
-    }
-    paramMessage = localBundle.getString("OTHER_ERROR");
-    if (localBundle.getBoolean("pwdblank", false)) {
-      this.a.b.setText("");
-    }
-    this.a.a(String.format(this.a.getResources().getString(2131561498), new Object[] { paramMessage, Integer.valueOf(3101) }));
-    paramMessage = new HashMap();
-    paramMessage.put("error", "3101");
-    StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      if (paramView == Login.a(this.a))
+      {
+        this.a.setResult(0);
+        this.a.finish();
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+    } while (paramView != this.a.jdField_a_of_type_AndroidWidgetTextView);
+    paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+    paramView.putExtra("key_req_src", this.a.i);
+    this.a.startActivityForResult(paramView, 10000);
   }
 }
 

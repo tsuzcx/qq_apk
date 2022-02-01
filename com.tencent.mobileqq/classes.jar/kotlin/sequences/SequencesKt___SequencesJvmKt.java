@@ -21,10 +21,10 @@ class SequencesKt___SequencesJvmKt
     Intrinsics.checkParameterIsNotNull(paramSequence, "$this$filterIsInstance");
     Intrinsics.checkParameterIsNotNull(paramClass, "klass");
     paramSequence = SequencesKt.filter(paramSequence, (Function1)new SequencesKt___SequencesJvmKt.filterIsInstance.1(paramClass));
-    if (paramSequence == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.sequences.Sequence<R>");
+    if (paramSequence != null) {
+      return paramSequence;
     }
-    return paramSequence;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.sequences.Sequence<R>");
   }
   
   @NotNull
@@ -61,7 +61,7 @@ class SequencesKt___SequencesJvmKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.sequences.SequencesKt___SequencesJvmKt
  * JD-Core Version:    0.7.0.1
  */

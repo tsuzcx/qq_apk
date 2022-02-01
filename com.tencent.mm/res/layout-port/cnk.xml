@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/m5w" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/m5t" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/m32" app:layout_constraintHeight_percent="0.25" app:layout_constraintLeft_toLeftOf="hr_" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:id="@id/m32" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintHeight_percent="0.75">
+        <com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/m31" android:background="@drawable/b6y" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:id="@id/m5u" android:background="@drawable/b6w" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cr">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/m5v" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_5" />
+            </FrameLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m65" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/dc" android:src="@raw/olympics_torch_white" android:layout_centerHorizontal="true" app:iconColor="@color/BW_100_Alpha_0_9" />
+            <TextView android:textSize="@dimen/hr" android:textColor="@color/az" android:gravity="center" android:id="@id/m34" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/d0" android:layout_marginRight="@dimen/cv" android:text="@string/lti" android:layout_below="@id/m65" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center" android:id="@id/m33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/cv" android:text="@string/lth" android:layout_below="@id/m34" />
+            <Button android:textSize="@dimen/j7" android:textColor="#e6e75e58" android:id="@id/bl1" android:background="@drawable/yf" android:layout_width="@dimen/cj" android:layout_height="@dimen/d6" android:layout_marginBottom="@dimen/c2" android:text="@string/ltf" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </com.tencent.mm.ui.widget.RoundCornerRelativeLayout>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</androidx.constraintlayout.widget.ConstraintLayout>

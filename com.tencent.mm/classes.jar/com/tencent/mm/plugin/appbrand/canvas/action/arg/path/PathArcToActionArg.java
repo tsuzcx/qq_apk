@@ -11,9 +11,9 @@ public class PathArcToActionArg
   
   static
   {
-    AppMethodBeat.i(103600);
+    AppMethodBeat.i(145283);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(103600);
+    AppMethodBeat.o(145283);
   }
   
   public PathArcToActionArg() {}

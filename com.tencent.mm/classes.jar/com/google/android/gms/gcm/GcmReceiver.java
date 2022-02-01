@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.os.Build.VERSION;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Base64;
 import android.util.Log;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.iid.zzk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -28,62 +28,62 @@ public class GcmReceiver
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 21
-    //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 29
-    //   9: aload_2
-    //   10: invokevirtual 35	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   13: ifeq +34 -> 47
-    //   16: getstatic 37	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
-    //   19: ifnonnull +15 -> 34
-    //   22: new 39	com/google/android/gms/iid/zzk
-    //   25: dup
-    //   26: aload_1
-    //   27: aload_2
-    //   28: invokespecial 42	com/google/android/gms/iid/zzk:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   31: putstatic 37	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
-    //   34: getstatic 37	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
-    //   37: astore_1
-    //   38: ldc 21
-    //   40: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_1
-    //   46: areturn
-    //   47: getstatic 47	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
-    //   50: ifnonnull +15 -> 65
-    //   53: new 39	com/google/android/gms/iid/zzk
-    //   56: dup
-    //   57: aload_1
-    //   58: aload_2
-    //   59: invokespecial 42	com/google/android/gms/iid/zzk:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   62: putstatic 47	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
-    //   65: getstatic 47	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
-    //   68: astore_1
-    //   69: ldc 21
-    //   71: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   74: goto -31 -> 43
-    //   77: astore_1
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_1
-    //   81: athrow
+    //   2: sipush 3629
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 28
+    //   10: aload_2
+    //   11: invokevirtual 34	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: ifeq +35 -> 49
+    //   17: getstatic 36	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
+    //   20: ifnonnull +15 -> 35
+    //   23: new 38	com/google/android/gms/iid/zzk
+    //   26: dup
+    //   27: aload_1
+    //   28: aload_2
+    //   29: invokespecial 41	com/google/android/gms/iid/zzk:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   32: putstatic 36	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
+    //   35: getstatic 36	com/google/android/gms/gcm/GcmReceiver:zzs	Lcom/google/android/gms/iid/zzk;
+    //   38: astore_1
+    //   39: sipush 3629
+    //   42: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: areturn
+    //   49: getstatic 46	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
+    //   52: ifnonnull +15 -> 67
+    //   55: new 38	com/google/android/gms/iid/zzk
+    //   58: dup
+    //   59: aload_1
+    //   60: aload_2
+    //   61: invokespecial 41	com/google/android/gms/iid/zzk:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   64: putstatic 46	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
+    //   67: getstatic 46	com/google/android/gms/gcm/GcmReceiver:zzr	Lcom/google/android/gms/iid/zzk;
+    //   70: astore_1
+    //   71: sipush 3629
+    //   74: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: goto -32 -> 45
+    //   80: astore_1
+    //   81: aload_0
+    //   82: monitorexit
+    //   83: aload_1
+    //   84: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	82	0	this	GcmReceiver
-    //   0	82	1	paramContext	Context
-    //   0	82	2	paramString	String
+    //   0	85	0	this	GcmReceiver
+    //   0	85	1	paramContext	Context
+    //   0	85	2	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   2	34	77	finally
-    //   34	43	77	finally
-    //   47	65	77	finally
-    //   65	74	77	finally
+    //   2	35	80	finally
+    //   35	45	80	finally
+    //   49	67	80	finally
+    //   67	77	80	finally
   }
   
   private final void zzd(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(69954);
+    AppMethodBeat.i(3630);
     if (isOrderedBroadcast()) {
       setResultCode(500);
     }
@@ -95,13 +95,13 @@ public class GcmReceiver
       for (paramContext = startWakefulService(paramContext, paramIntent);; paramContext = paramContext.startService(paramIntent))
       {
         if (paramContext != null) {
-          break label298;
+          break label300;
         }
         if (!isOrderedBroadcast()) {
-          break label310;
+          break label312;
         }
         setResultCode(404);
-        AppMethodBeat.o(69954);
+        AppMethodBeat.o(3630);
         return;
         Object localObject2 = ((ResolveInfo)localObject1).serviceInfo;
         if ((!paramContext.getPackageName().equals(((ServiceInfo)localObject2).packageName)) || (((ServiceInfo)localObject2).name == null))
@@ -123,12 +123,12 @@ public class GcmReceiver
         }
         else
         {
-          label220:
+          label222:
           if (Log.isLoggable("GcmReceiver", 3))
           {
             localObject2 = String.valueOf(localObject1);
             if (((String)localObject2).length() == 0) {
-              break label276;
+              break label278;
             }
             "Restricting intent to a specific service: ".concat((String)localObject2);
           }
@@ -138,17 +138,17 @@ public class GcmReceiver
           paramIntent.setClassName(paramContext.getPackageName(), (String)localObject1);
           break;
           localObject1 = new String((String)localObject1);
-          break label220;
-          label276:
+          break label222;
+          label278:
           new String("Restricting intent to a specific service: ");
         }
       }
-      label298:
+      label300:
       if (isOrderedBroadcast()) {
         setResultCode(-1);
       }
-      label310:
-      AppMethodBeat.o(69954);
+      label312:
+      AppMethodBeat.o(3630);
       return;
     }
     catch (SecurityException paramContext)
@@ -156,14 +156,14 @@ public class GcmReceiver
       if (isOrderedBroadcast()) {
         setResultCode(401);
       }
-      AppMethodBeat.o(69954);
+      AppMethodBeat.o(3630);
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int j = 0;
-    AppMethodBeat.i(69952);
+    AppMethodBeat.i(3628);
     Log.isLoggable("GcmReceiver", 3);
     paramIntent.setComponent(null);
     paramIntent.setPackage(paramContext.getPackageName());
@@ -193,7 +193,7 @@ public class GcmReceiver
         setResultCode(-1);
       }
       zzd(paramContext, paramIntent.getAction()).zzd(paramIntent, goAsync());
-      AppMethodBeat.o(69952);
+      AppMethodBeat.o(3628);
       return;
     }
     "com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction());
@@ -201,12 +201,12 @@ public class GcmReceiver
     if ((isOrderedBroadcast()) && (getResultCode() == 0)) {
       setResultCode(-1);
     }
-    AppMethodBeat.o(69952);
+    AppMethodBeat.o(3628);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class XWalkNavigationHistory
 {
+  private static final String TAG = "XWalkNavigationHistory";
   private Object bridge;
   private ReflectMethod canGoBackMethod;
   private ReflectMethod canGoForwardMethod;
@@ -23,7 +24,7 @@ public class XWalkNavigationHistory
   
   public XWalkNavigationHistory(Object paramObject)
   {
-    AppMethodBeat.i(85718);
+    AppMethodBeat.i(154813);
     this.enumDirectionClassValueOfMethod = new ReflectMethod();
     this.sizeMethod = new ReflectMethod(null, "size", new Class[0]);
     this.hasItemAtintMethod = new ReflectMethod(null, "hasItemAt", new Class[0]);
@@ -36,222 +37,27 @@ public class XWalkNavigationHistory
     this.clearMethod = new ReflectMethod(null, "clear", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
-    AppMethodBeat.o(85718);
+    AppMethodBeat.o(154813);
   }
   
   private Object ConvertDirection(XWalkNavigationHistory.Direction paramDirection)
   {
-    AppMethodBeat.i(85717);
+    AppMethodBeat.i(154812);
     paramDirection = this.enumDirectionClassValueOfMethod.invoke(new Object[] { paramDirection.toString() });
-    AppMethodBeat.o(85717);
+    AppMethodBeat.o(154812);
     return paramDirection;
   }
   
-  public boolean canGoBack()
+  private void reflectionInit()
   {
-    AppMethodBeat.i(85723);
-    try
+    AppMethodBeat.i(154823);
+    if (XWalkCoreWrapper.getInstance() == null)
     {
-      boolean bool = ((Boolean)this.canGoBackMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(85723);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85723);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85723);
-    }
-    return false;
-  }
-  
-  public boolean canGoForward()
-  {
-    AppMethodBeat.i(85724);
-    try
-    {
-      boolean bool = ((Boolean)this.canGoForwardMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(85724);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85724);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85724);
-    }
-    return false;
-  }
-  
-  public void clear()
-  {
-    AppMethodBeat.i(85727);
-    try
-    {
-      this.clearMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85727);
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154823);
       return;
     }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85727);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85727);
-    }
-  }
-  
-  protected Object getBridge()
-  {
-    return this.bridge;
-  }
-  
-  public int getCurrentIndex()
-  {
-    AppMethodBeat.i(85726);
-    try
-    {
-      int i = ((Integer)this.getCurrentIndexMethod.invoke(new Object[0])).intValue();
-      AppMethodBeat.o(85726);
-      return i;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85726);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85726);
-    }
-    return 0;
-  }
-  
-  public XWalkNavigationItem getCurrentItem()
-  {
-    AppMethodBeat.i(85722);
-    try
-    {
-      XWalkNavigationItem localXWalkNavigationItem = (XWalkNavigationItem)this.coreWrapper.getWrapperObject(this.getCurrentItemMethod.invoke(new Object[0]));
-      AppMethodBeat.o(85722);
-      return localXWalkNavigationItem;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85722);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85722);
-    }
-    return null;
-  }
-  
-  public XWalkNavigationItem getItemAt(int paramInt)
-  {
-    AppMethodBeat.i(85721);
-    try
-    {
-      XWalkNavigationItem localXWalkNavigationItem = (XWalkNavigationItem)this.coreWrapper.getWrapperObject(this.getItemAtintMethod.invoke(new Object[] { Integer.valueOf(paramInt) }));
-      AppMethodBeat.o(85721);
-      return localXWalkNavigationItem;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85721);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85721);
-    }
-    return null;
-  }
-  
-  public boolean hasItemAt(int paramInt)
-  {
-    AppMethodBeat.i(85720);
-    try
-    {
-      boolean bool = ((Boolean)this.hasItemAtintMethod.invoke(new Object[] { Integer.valueOf(paramInt) })).booleanValue();
-      AppMethodBeat.o(85720);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85720);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85720);
-    }
-    return false;
-  }
-  
-  public void navigate(XWalkNavigationHistory.Direction paramDirection, int paramInt)
-  {
-    AppMethodBeat.i(85725);
-    try
-    {
-      this.navigateDirectionInternalintMethod.invoke(new Object[] { ConvertDirection(paramDirection), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(85725);
-      return;
-    }
-    catch (UnsupportedOperationException paramDirection)
-    {
-      if (this.coreWrapper == null)
-      {
-        paramDirection = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85725);
-        throw paramDirection;
-      }
-      XWalkCoreWrapper.handleRuntimeError(paramDirection);
-      AppMethodBeat.o(85725);
-    }
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(85728);
-    XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85728);
-      return;
-    }
     this.enumDirectionClassValueOfMethod.init(null, this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), "valueOf", new Class[] { String.class });
     this.sizeMethod.init(this.bridge, null, "sizeSuper", new Class[0]);
     this.hasItemAtintMethod.init(this.bridge, null, "hasItemAtSuper", new Class[] { Integer.TYPE });
@@ -262,16 +68,92 @@ public class XWalkNavigationHistory
     this.navigateDirectionInternalintMethod.init(this.bridge, null, "navigateSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkNavigationHistoryInternal$DirectionInternal"), Integer.TYPE });
     this.getCurrentIndexMethod.init(this.bridge, null, "getCurrentIndexSuper", new Class[0]);
     this.clearMethod.init(this.bridge, null, "clearSuper", new Class[0]);
-    AppMethodBeat.o(85728);
+    AppMethodBeat.o(154823);
   }
   
-  public int size()
+  public boolean canGoBack()
   {
-    AppMethodBeat.i(85719);
+    AppMethodBeat.i(154818);
     try
     {
-      int i = ((Integer)this.sizeMethod.invoke(new Object[0])).intValue();
-      AppMethodBeat.o(85719);
+      boolean bool = ((Boolean)this.canGoBackMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(154818);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154818);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154818);
+    }
+    return false;
+  }
+  
+  public boolean canGoForward()
+  {
+    AppMethodBeat.i(154819);
+    try
+    {
+      boolean bool = ((Boolean)this.canGoForwardMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(154819);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154819);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154819);
+    }
+    return false;
+  }
+  
+  public void clear()
+  {
+    AppMethodBeat.i(154822);
+    try
+    {
+      this.clearMethod.invoke(new Object[0]);
+      AppMethodBeat.o(154822);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154822);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154822);
+    }
+  }
+  
+  protected Object getBridge()
+  {
+    return this.bridge;
+  }
+  
+  public int getCurrentIndex()
+  {
+    AppMethodBeat.i(154821);
+    try
+    {
+      int i = ((Integer)this.getCurrentIndexMethod.invoke(new Object[0])).intValue();
+      AppMethodBeat.o(154821);
       return i;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -280,18 +162,136 @@ public class XWalkNavigationHistory
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85719);
+        AppMethodBeat.o(154821);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85719);
+      AppMethodBeat.o(154821);
+    }
+    return 0;
+  }
+  
+  public XWalkNavigationItem getCurrentItem()
+  {
+    AppMethodBeat.i(154817);
+    try
+    {
+      XWalkNavigationItem localXWalkNavigationItem = (XWalkNavigationItem)this.coreWrapper.getWrapperObject(this.getCurrentItemMethod.invoke(new Object[0]));
+      AppMethodBeat.o(154817);
+      return localXWalkNavigationItem;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154817);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154817);
+    }
+    return null;
+  }
+  
+  public XWalkNavigationItem getItemAt(int paramInt)
+  {
+    AppMethodBeat.i(154816);
+    try
+    {
+      XWalkNavigationItem localXWalkNavigationItem = (XWalkNavigationItem)this.coreWrapper.getWrapperObject(this.getItemAtintMethod.invoke(new Object[] { Integer.valueOf(paramInt) }));
+      AppMethodBeat.o(154816);
+      return localXWalkNavigationItem;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154816);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154816);
+    }
+    return null;
+  }
+  
+  public boolean hasItemAt(int paramInt)
+  {
+    AppMethodBeat.i(154815);
+    try
+    {
+      boolean bool = ((Boolean)this.hasItemAtintMethod.invoke(new Object[] { Integer.valueOf(paramInt) })).booleanValue();
+      AppMethodBeat.o(154815);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154815);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154815);
+    }
+    return false;
+  }
+  
+  public void navigate(XWalkNavigationHistory.Direction paramDirection, int paramInt)
+  {
+    AppMethodBeat.i(154820);
+    try
+    {
+      this.navigateDirectionInternalintMethod.invoke(new Object[] { ConvertDirection(paramDirection), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(154820);
+      return;
+    }
+    catch (UnsupportedOperationException paramDirection)
+    {
+      if (this.coreWrapper == null)
+      {
+        paramDirection = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154820);
+        throw paramDirection;
+      }
+      XWalkCoreWrapper.handleRuntimeError(paramDirection);
+      AppMethodBeat.o(154820);
+    }
+  }
+  
+  public int size()
+  {
+    AppMethodBeat.i(154814);
+    try
+    {
+      int i = ((Integer)this.sizeMethod.invoke(new Object[0])).intValue();
+      AppMethodBeat.o(154814);
+      return i;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(154814);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(154814);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkNavigationHistory
  * JD-Core Version:    0.7.0.1
  */

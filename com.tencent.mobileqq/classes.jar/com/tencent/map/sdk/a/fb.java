@@ -24,35 +24,34 @@ final class fb<T>
   
   public final void a(fg paramfg, T paramT)
   {
-    ee localee = this.b;
-    Type localType = this.c;
-    Object localObject = localType;
+    Object localObject1 = this.b;
+    Object localObject3 = this.c;
+    Object localObject2 = localObject3;
     if (paramT != null) {
-      if ((localType != Object.class) && (!(localType instanceof TypeVariable)))
+      if ((localObject3 != Object.class) && (!(localObject3 instanceof TypeVariable)))
       {
-        localObject = localType;
-        if (!(localType instanceof Class)) {}
+        localObject2 = localObject3;
+        if (!(localObject3 instanceof Class)) {}
       }
       else
       {
-        localObject = paramT.getClass();
+        localObject2 = paramT.getClass();
       }
     }
-    if (localObject != this.c)
+    if (localObject2 != this.c)
     {
-      localee = this.a.a(fd.a((Type)localObject));
-      localObject = localee;
-      if ((localee instanceof ey.a))
+      localObject2 = this.a.a(fd.a((Type)localObject2));
+      localObject1 = localObject2;
+      if ((localObject2 instanceof ey.a))
       {
-        localObject = localee;
-        if ((this.b instanceof ey.a)) {}
+        localObject3 = this.b;
+        localObject1 = localObject2;
+        if (!(localObject3 instanceof ey.a)) {
+          localObject1 = localObject3;
+        }
       }
     }
-    for (localObject = this.b;; localObject = localee)
-    {
-      ((ee)localObject).a(paramfg, paramT);
-      return;
-    }
+    ((ee)localObject1).a(paramfg, paramT);
   }
 }
 

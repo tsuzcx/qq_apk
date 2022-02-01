@@ -14,12 +14,12 @@ class DragAdapter$8$1
       QLog.d("DragAdapter", 2, "--setUserAppTop success--.");
       return;
     }
-    QLog.d("DragAdapter", 2, "--setUserAppTop success--.");
+    QLog.d("DragAdapter", 2, "--setUserAppTop fail--.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.8.1
  * JD-Core Version:    0.7.0.1
  */

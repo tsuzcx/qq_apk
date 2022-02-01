@@ -1,25 +1,23 @@
 package com.tencent.tmediacodec.util;
 
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/util/ILogProxy;", "", "d", "", "tag", "", "msg", "e", "tr", "", "i", "v", "w", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public abstract interface ILogProxy
 {
-  public abstract void d(@NotNull String paramString1, @NotNull String paramString2);
+  public abstract void d(@NonNull String paramString1, @NonNull String paramString2);
   
-  public abstract void e(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable);
+  public abstract void e(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable);
   
-  public abstract void i(@NotNull String paramString1, @NotNull String paramString2);
+  public abstract void i(@NonNull String paramString1, @NonNull String paramString2);
   
-  public abstract void v(@NotNull String paramString1, @NotNull String paramString2);
+  public abstract void v(@NonNull String paramString1, @NonNull String paramString2);
   
-  public abstract void w(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable);
+  public abstract void w(@NonNull String paramString1, @NonNull String paramString2, @Nullable Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.util.ILogProxy
  * JD-Core Version:    0.7.0.1
  */

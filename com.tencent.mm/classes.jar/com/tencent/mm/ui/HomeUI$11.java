@@ -1,25 +1,39 @@
 package com.tencent.mm.ui;
 
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import java.util.List;
 
 final class HomeUI$11
-  implements n.c
+  implements Runnable
 {
   HomeUI$11(HomeUI paramHomeUI) {}
   
-  public final void onCreateMMMenu(l paraml)
+  public final void run()
   {
-    AppMethodBeat.i(153769);
-    paraml.e(1, "拍摄状态");
-    paraml.e(2, "属性配置");
-    AppMethodBeat.o(153769);
+    AppMethodBeat.i(33189);
+    HomeUI.jjc();
+    h localh = h.OAn;
+    synchronized (localh.OAq)
+    {
+      Iterator localIterator = localh.OAq.iterator();
+      if (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        localh.p(((Long)localPair.first).longValue(), ((Long)localPair.second).longValue(), 1L);
+      }
+    }
+    Log.i("MicroMsg.ReportManagerKvCheck", "clear all pendding stat %d", new Object[] { Integer.valueOf(localObject.OAq.size()) });
+    localObject.OAq.clear();
+    AppMethodBeat.o(33189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.11
  * JD-Core Version:    0.7.0.1
  */

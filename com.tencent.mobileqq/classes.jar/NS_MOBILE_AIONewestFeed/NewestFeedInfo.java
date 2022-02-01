@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,20 +13,20 @@ public final class NewestFeedInfo
 {
   static Map<String, String> cache_mapEx;
   static ArrayList<Media_Data> cache_mediaData = new ArrayList();
-  public Map<String, String> mapEx;
-  public ArrayList<Media_Data> mediaData;
+  public Map<String, String> mapEx = null;
+  public ArrayList<Media_Data> mediaData = null;
   public String strContent = "";
   public String strImgUrl = "";
   public String strJmpUrl = "";
   public String strLBSInfo = "";
   public String strSummary = "";
   public String strTitle = "";
-  public long uAppid;
-  public long uCommentNum;
-  public long uHostUin;
-  public long uImgCount;
-  public long uLikeNum;
-  public long uTime;
+  public long uAppid = 0L;
+  public long uCommentNum = 0L;
+  public long uHostUin = 0L;
+  public long uImgCount = 0L;
+  public long uLikeNum = 0L;
+  public long uTime = 0L;
   
   static
   {
@@ -78,38 +79,46 @@ public final class NewestFeedInfo
     paramJceOutputStream.write(this.uAppid, 0);
     paramJceOutputStream.write(this.uHostUin, 1);
     paramJceOutputStream.write(this.uTime, 2);
-    if (this.strLBSInfo != null) {
-      paramJceOutputStream.write(this.strLBSInfo, 3);
+    Object localObject = this.strLBSInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strSummary != null) {
-      paramJceOutputStream.write(this.strSummary, 4);
+    localObject = this.strSummary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 5);
+    localObject = this.strTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.strContent != null) {
-      paramJceOutputStream.write(this.strContent, 6);
+    localObject = this.strContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strImgUrl != null) {
-      paramJceOutputStream.write(this.strImgUrl, 7);
+    localObject = this.strImgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.uImgCount, 8);
-    if (this.strJmpUrl != null) {
-      paramJceOutputStream.write(this.strJmpUrl, 9);
+    localObject = this.strJmpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.mediaData != null) {
-      paramJceOutputStream.write(this.mediaData, 10);
+    localObject = this.mediaData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
     paramJceOutputStream.write(this.uLikeNum, 11);
     paramJceOutputStream.write(this.uCommentNum, 12);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 13);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.NewestFeedInfo
  * JD-Core Version:    0.7.0.1
  */

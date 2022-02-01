@@ -11,15 +11,22 @@ public class gyt
   
   public void onClick(View paramView)
   {
-    if (this.a.c())
+    if (!this.a.b)
     {
-      this.a.b(0);
-      MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558472));
-      return;
+      this.a.b = true;
+      MediaControllerX.b(this.a).setBackgroundResource(2130838546);
+      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558476));
     }
-    this.a.b(1);
-    MediaControllerX.a(this.a, true);
-    MediaControllerX.a(this.a).setContentDescription(this.a.getResources().getString(2131558473));
+    for (;;)
+    {
+      if (this.a.c != null) {
+        this.a.c.onClick(paramView);
+      }
+      return;
+      this.a.b = false;
+      MediaControllerX.b(this.a).setBackgroundResource(2130838536);
+      MediaControllerX.b(this.a).setContentDescription(this.a.getResources().getString(2131558477));
+    }
   }
 }
 

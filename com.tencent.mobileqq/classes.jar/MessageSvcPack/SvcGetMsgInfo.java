@@ -10,20 +10,20 @@ public final class SvcGetMsgInfo
   static byte[] cache_vAppShareCookie;
   static byte[] cache_vMsg;
   static byte[] cache_vReserved;
-  public byte cFlag;
-  public long lFromUin;
+  public byte cFlag = 0;
+  public long lFromUin = 0L;
   public long lLastChangeTime = 1L;
-  public long lMsgUid;
-  public long lToUin;
-  public short shMsgSeq;
-  public short shMsgType;
+  public long lMsgUid = 0L;
+  public long lToUin = 0L;
+  public short shMsgSeq = 0;
+  public short shMsgType = 0;
   public String strMsg = "";
-  public long uAppShareID;
-  public int uMsgTime;
-  public int uRealMsgTime;
-  public byte[] vAppShareCookie;
-  public byte[] vMsg;
-  public byte[] vReserved;
+  public long uAppShareID = 0L;
+  public int uMsgTime = 0;
+  public int uRealMsgTime = 0;
+  public byte[] vAppShareCookie = null;
+  public byte[] vMsg = null;
+  public byte[] vReserved = null;
   
   public SvcGetMsgInfo() {}
   
@@ -86,25 +86,28 @@ public final class SvcGetMsgInfo
     paramJceOutputStream.write(this.shMsgSeq, 3);
     paramJceOutputStream.write(this.strMsg, 4);
     paramJceOutputStream.write(this.uRealMsgTime, 5);
-    if (this.vMsg != null) {
-      paramJceOutputStream.write(this.vMsg, 6);
+    byte[] arrayOfByte = this.vMsg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
     paramJceOutputStream.write(this.uAppShareID, 7);
     paramJceOutputStream.write(this.cFlag, 8);
-    if (this.vAppShareCookie != null) {
-      paramJceOutputStream.write(this.vAppShareCookie, 9);
+    arrayOfByte = this.vAppShareCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 9);
     }
     paramJceOutputStream.write(this.lMsgUid, 10);
     paramJceOutputStream.write(this.lToUin, 11);
     paramJceOutputStream.write(this.lLastChangeTime, 12);
-    if (this.vReserved != null) {
-      paramJceOutputStream.write(this.vReserved, 13);
+    arrayOfByte = this.vReserved;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcGetMsgInfo
  * JD-Core Version:    0.7.0.1
  */

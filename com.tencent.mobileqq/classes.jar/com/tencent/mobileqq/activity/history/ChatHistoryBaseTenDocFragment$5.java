@@ -10,7 +10,9 @@ class ChatHistoryBaseTenDocFragment$5
   
   public void run()
   {
-    ChatHistoryBaseTenDocFragment.a(this.this$0).obtainMessage(1234, ChatHistoryBaseTenDocFragment.a(this.this$0, ChatHistoryBaseTenDocFragment.a(this.this$0))).sendToTarget();
+    MqqHandler localMqqHandler = ChatHistoryBaseTenDocFragment.b(this.this$0);
+    ChatHistoryBaseTenDocFragment localChatHistoryBaseTenDocFragment = this.this$0;
+    localMqqHandler.obtainMessage(1234, ChatHistoryBaseTenDocFragment.a(localChatHistoryBaseTenDocFragment, ChatHistoryBaseTenDocFragment.g(localChatHistoryBaseTenDocFragment))).sendToTarget();
   }
 }
 

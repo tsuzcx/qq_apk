@@ -39,32 +39,41 @@ public class RelativeLayout$Params
     }
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
+    default: 
       return false;
-      setRule(3, paramString);
-      continue;
-      setRule(2, paramString);
-      continue;
-      setRule(1, paramString);
-      continue;
-      setRule(0, paramString);
-      continue;
-      setRule(4, paramString);
-      continue;
-      setRule(5, paramString);
-      continue;
-      setRule(6, paramString);
-      continue;
-      setRule(7, paramString);
-      continue;
-      setRule(8, paramString);
-      continue;
-      setRule(9, paramString);
-      continue;
+    case 35: 
       setRule(10, paramString);
+      return false;
+    case 34: 
+      setRule(9, paramString);
+      return false;
+    case 33: 
+      setRule(8, paramString);
+      return false;
+    case 32: 
+      setRule(7, paramString);
+      return false;
+    case 31: 
+      setRule(6, paramString);
+      return false;
+    case 30: 
+      setRule(5, paramString);
+      return false;
+    case 29: 
+      setRule(4, paramString);
+      return false;
+    case 28: 
+      setRule(1, paramString);
+      return false;
+    case 27: 
+      setRule(0, paramString);
+      return false;
+    case 26: 
+      setRule(2, paramString);
+      return false;
     }
+    setRule(3, paramString);
+    return false;
   }
   
   public void setRule(int paramInt, String paramString)
@@ -74,7 +83,7 @@ public class RelativeLayout$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout.Params
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
 package com.tencent.qqmini.sdk.core.manager;
 
-import bgnt;
-import bgpc;
+import com.tencent.qqmini.sdk.core.utils.FileUtils;
 
-public class MiniAppFileManager$1
+class MiniAppFileManager$1
   implements Runnable
 {
-  public MiniAppFileManager$1(bgnt parambgnt) {}
+  MiniAppFileManager$1(MiniAppFileManager paramMiniAppFileManager) {}
   
   public void run()
   {
-    bgpc.a(bgnt.a(this.this$0, 0), false);
+    FileUtils.delete(MiniAppFileManager.access$000(this.this$0, 0), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.MiniAppFileManager.1
  * JD-Core Version:    0.7.0.1
  */

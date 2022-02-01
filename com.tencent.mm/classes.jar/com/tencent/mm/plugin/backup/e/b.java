@@ -1,55 +1,59 @@
 package com.tencent.mm.plugin.backup.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.model.r;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.backup.b.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.gu;
-import com.tencent.mm.protocal.protobuf.gw;
-import com.tencent.mm.protocal.protobuf.vd;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.afx;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.ja;
+import com.tencent.mm.protocal.protobuf.jc;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class b
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  protected f callback;
-  public com.tencent.mm.ai.b rr;
+  protected h callback;
+  public c rr;
   
-  public b(LinkedList<vd> paramLinkedList, String paramString)
+  public b(LinkedList<afx> paramLinkedList, String paramString)
   {
-    AppMethodBeat.i(17315);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new gu();
-    ((b.a)localObject).fsY = new gw();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bakchatcreateqrcode";
-    ((b.a)localObject).funcId = 704;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (gu)this.rr.fsV.fta;
-    ((gu)localObject).wta = paramLinkedList.size();
-    ((gu)localObject).wtb = paramLinkedList;
-    ((gu)localObject).wtd = r.Zn();
-    ((gu)localObject).wtc = com.tencent.mm.compatible.e.q.LN();
-    ((gu)localObject).wte = paramString;
-    ((gu)localObject).jJO = 0L;
-    ((gu)localObject).Scene = 2;
-    AppMethodBeat.o(17315);
+    AppMethodBeat.i(21373);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ja();
+    ((c.a)localObject).otF = new jc();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/bakchatcreateqrcode";
+    ((c.a)localObject).funcId = 704;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ja)c.b.b(this.rr.otB);
+    ((ja)localObject).YKK = paramLinkedList.size();
+    ((ja)localObject).YKL = paramLinkedList;
+    ((ja)localObject).YKN = z.bAM();
+    ((ja)localObject).YKM = q.aPj();
+    ((ja)localObject).YKO = paramString;
+    ((ja)localObject).vhg = 0L;
+    ((ja)localObject).IJG = 2;
+    AppMethodBeat.o(21373);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(17316);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(17316);
+    AppMethodBeat.i(21374);
+    this.callback = paramh;
+    c.b.b(this.rr.otB);
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(21374);
     return i;
   }
   
@@ -58,26 +62,26 @@ public final class b
     return 704;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(17317);
-    ab.i("MicroMsg.BackupCreateQRCodeScene", "err: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(21375);
+    Log.i("MicroMsg.BackupCreateQRCodeScene", "err: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(17317);
+      AppMethodBeat.o(21375);
       return;
     }
-    paramq = (gw)this.rr.fsW.fta;
-    ab.i("MicroMsg.BackupCreateQRCodeScene", "onGYNetEnd QRCodeUrl:%s", new Object[] { paramq.wth });
-    d.an(paramq.wsu.getBuffer().pW);
+    params = (jc)c.c.b(this.rr.otC);
+    Log.i("MicroMsg.BackupCreateQRCodeScene", "onGYNetEnd QRCodeUrl:%s", new Object[] { params.YKR });
+    d.bf(params.YKf.aaxD.Op);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(17317);
+    AppMethodBeat.o(21375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.e.b
  * JD-Core Version:    0.7.0.1
  */

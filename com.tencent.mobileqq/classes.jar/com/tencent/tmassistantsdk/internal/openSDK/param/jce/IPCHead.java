@@ -42,15 +42,16 @@ public final class IPCHead
     paramJceOutputStream.write(this.cmdId, 1);
     paramJceOutputStream.write(this.hostPackageName, 2);
     paramJceOutputStream.write(this.hostVersionCode, 3);
-    if (this.traceId != null) {
-      paramJceOutputStream.write(this.traceId, 4);
+    String str = this.traceId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.sdkIpcJceVersion, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCHead
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package oicq.wlogin_sdk.request;
 
-import java.util.HashMap;
-import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
 
@@ -12,38 +10,35 @@ class WtloginHelper$HelperThread$2
   
   public void run()
   {
-    WtloginHelper.HelperThread.access$500(this.this$1);
+    WtloginHelper.HelperThread.access$600(this.this$1);
     if (this.val$cancel != 0) {
       return;
     }
-    async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
+    async_context localasync_context = u.b(this.this$1.mUserSigInfo._seqence);
     ErrMsg localErrMsg = localasync_context._last_err_msg;
-    if (WtloginHelper.access$100(this.this$1.mHelper) == null)
+    if (WtloginHelper.access$200(this.this$1.mHelper) == null)
     {
       util.LOGW("login helper listener is null", this.this$1.mUserAccount);
       return;
     }
-    if ((this.val$ret == 0) && (localasync_context.tlv528 != null))
-    {
-      util.LOGI("context from seq " + this.this$1.mUserSigInfo._seqence + " tlv528 length " + localasync_context.tlv528.get_data_len(), this.this$1.mUserAccount);
-      this.this$1.mUserSigInfo.loginResultTLVMap.put(new Integer(1320), localasync_context.tlv528);
-    }
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$800(this.this$1, localasync_context, this.val$ret);
     if (this.this$1.mDwSubAppidList == null)
     {
       if (this.this$1.mIsSmslogin)
       {
-        WtloginHelper.access$100(this.this$1.mHelper).OnGetStViaSMSVerifyLogin(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
+        WtloginHelper.access$200(this.this$1.mHelper).OnGetStViaSMSVerifyLogin(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
         return;
       }
-      WtloginHelper.access$100(this.this$1.mHelper).OnGetStWithPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserPasswd, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
+      WtloginHelper.access$200(this.this$1.mHelper).OnGetStWithPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mUserPasswd, this.this$1.mUserSigInfo, this.val$ret, localErrMsg);
       return;
     }
     if (this.this$1.mIsSmslogin)
     {
-      WtloginHelper.access$100(this.this$1.mHelper).OnGetStViaSMSVerifyLogin(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwSubAppidList, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
+      WtloginHelper.access$200(this.this$1.mHelper).OnGetStViaSMSVerifyLogin(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwSubAppidList, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
       return;
     }
-    WtloginHelper.access$100(this.this$1.mHelper).OnGetStWithPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwSubAppidList, this.this$1.mUserPasswd, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
+    WtloginHelper.access$200(this.this$1.mHelper).OnGetStWithPasswd(this.this$1.mUserAccount, this.this$1.mDwAppid, this.this$1.mDwMainSigMap, this.this$1.mDwSubDstAppid, this.this$1.mDwSubAppidList, this.this$1.mUserPasswd, this.this$1.mUserSigInfo, this.this$1.mST, this.val$ret, localErrMsg);
   }
 }
 

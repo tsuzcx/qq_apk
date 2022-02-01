@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class terminal_info$TerminalInfo
   extends MessageMicro<TerminalInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112, 120, 130, 138 }, new String[] { "qimei", "mac_addr", "phone_type", "manufacturer", "phone_name", "idfa", "idfv", "android_id", "android_cid", "wifi_mac", "imsi", "os_version", "qua", "simulation", "is_root", "appid", "browser_info" }, new Object[] { "", "", "", "", "", "", "", "", "", "", "", "", "", Boolean.valueOf(false), Boolean.valueOf(false), "", "" }, TerminalInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField android_cid = PBField.initString("");
   public final PBStringField android_id = PBField.initString("");
   public final PBStringField appid = PBField.initString("");
@@ -27,10 +27,16 @@ public final class terminal_info$TerminalInfo
   public final PBStringField qua = PBField.initString("");
   public final PBBoolField simulation = PBField.initBool(false);
   public final PBStringField wifi_mac = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112, 120, 130, 138 }, new String[] { "qimei", "mac_addr", "phone_type", "manufacturer", "phone_name", "idfa", "idfv", "android_id", "android_cid", "wifi_mac", "imsi", "os_version", "qua", "simulation", "is_root", "appid", "browser_info" }, new Object[] { "", "", "", "", "", "", "", "", "", "", "", "", "", localBoolean, localBoolean, "", "" }, TerminalInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.terminal_info.terminal_info.TerminalInfo
  * JD-Core Version:    0.7.0.1
  */

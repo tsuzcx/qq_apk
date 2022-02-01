@@ -14,7 +14,7 @@ public class ResolveAccountResponseCreator
   
   public ResolveAccountResponse createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61370);
+    AppMethodBeat.i(11862);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     boolean bool1 = false;
     boolean bool2 = false;
@@ -47,7 +47,7 @@ public class ResolveAccountResponseCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new ResolveAccountResponse(i, localIBinder, localConnectionResult, bool2, bool1);
-    AppMethodBeat.o(61370);
+    AppMethodBeat.o(11862);
     return paramParcel;
   }
   
@@ -58,7 +58,7 @@ public class ResolveAccountResponseCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ResolveAccountResponseCreator
  * JD-Core Version:    0.7.0.1
  */

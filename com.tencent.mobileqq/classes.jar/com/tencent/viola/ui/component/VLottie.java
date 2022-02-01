@@ -70,7 +70,7 @@ public class VLottie
     return null;
   }
   
-  public View initComponentHostView(@NonNull Context paramContext)
+  protected View initComponentHostView(@NonNull Context paramContext)
   {
     paramContext = new VLottieView(paramContext);
     paramContext.loop(true);
@@ -119,7 +119,7 @@ public class VLottie
   @VComponentProp(name="src")
   public void setSrc(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (getLottieView() != null))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(this.mUrl, paramString)) && (getLottieView() != null))
     {
       this.mUrl = paramString;
       getLottieView().v_setAnimation(this.mUrl, new VLottie.2(this));
@@ -136,7 +136,7 @@ public class VLottie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VLottie
  * JD-Core Version:    0.7.0.1
  */

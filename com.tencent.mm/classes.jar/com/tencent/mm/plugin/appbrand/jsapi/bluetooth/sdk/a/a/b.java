@@ -1,76 +1,93 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a;
 
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.os.Build.VERSION;
+import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.d;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.f;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.k;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c;
 
-@TargetApi(18)
 public final class b
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  public String bYu;
-  public boolean hGq;
-  public String hGr = "LE";
+  public String hEl;
+  public boolean rMM;
+  public String rMN = "LE";
+  public long rMO = 0L;
+  public String rMP = null;
+  public boolean rMQ = true;
   
   public b(String paramString)
   {
-    this.bYu = paramString;
+    this.hEl = paramString;
   }
   
-  public final void aCo()
+  public final void a(k paramk)
+  {
+    AppMethodBeat.i(144572);
+    switch (paramk.errCode)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(144572);
+      return;
+      this.rNd.jh(false);
+    }
+  }
+  
+  public final void crh()
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(94259);
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aCv();
+    AppMethodBeat.i(144571);
+    Object localObject = c.crs();
     if (localObject == null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.ConnectAction", "action:%s, bluetoothGatt is null", new Object[] { this });
-      a(j.hGV);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.ConnectAction", "action:%s, bluetoothAdapter is null", new Object[] { this });
+      onResult(k.rND);
       done();
-      AppMethodBeat.o(94259);
+      AppMethodBeat.o(144571);
       return;
     }
-    if ((this.bYu == null) || (!BluetoothAdapter.checkBluetoothAddress(this.bYu)))
+    if ((this.hEl == null) || (!BluetoothAdapter.checkBluetoothAddress(this.hEl)))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.ConnectAction", "action:%s, unspecified deviceId", new Object[] { this });
-      a(j.hHe);
+      onResult(k.rNP);
       done();
-      AppMethodBeat.o(94259);
+      AppMethodBeat.o(144571);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aCw())
+    if (!c.cru())
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.ConnectAction", "bluetooth is not enable.", new Object[0]);
-      a(j.hGQ);
+      onResult(k.rND);
       done();
-      AppMethodBeat.o(94259);
+      AppMethodBeat.o(144571);
       return;
     }
-    if (this.hGv.hGn != null)
+    if (this.rNd.rMH != null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.ConnectAction", "already connect, please close", new Object[0]);
-      a(j.hHd);
+      onResult(k.rNO);
       done();
-      AppMethodBeat.o(94259);
+      AppMethodBeat.o(144571);
       return;
     }
-    localObject = ((BluetoothAdapter)localObject).getRemoteDevice(this.bYu);
+    localObject = ((BluetoothAdapter)localObject).getRemoteDevice(this.hEl);
     if (localObject != null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "autoConnect:%b transport:%s", new Object[] { Boolean.valueOf(this.hGq), this.hGr });
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "autoConnect:%b transport:%s", new Object[] { Boolean.valueOf(this.rMM), this.rMN });
       String str;
       int i;
       if (Build.VERSION.SDK_INT >= 23)
       {
-        str = this.hGr.toUpperCase();
+        str = this.rMN.toUpperCase();
         i = -1;
         switch (str.hashCode())
         {
@@ -78,7 +95,7 @@ public final class b
           switch (i)
           {
           default: 
-            localObject = ((BluetoothDevice)localObject).connectGatt(this.hGv.context, this.hGq, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.hGv), 2);
+            localObject = ((BluetoothDevice)localObject).connectGatt(this.rNd.context, this.rMM, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.rNd), 2);
           }
           break;
         }
@@ -89,13 +106,13 @@ public final class b
           break label589;
         }
         com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "mBluetoothGatt:%s", new Object[] { localObject });
-        str = this.bYu;
+        str = this.hEl;
         if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
           bool1 = true;
         }
         com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "create a new connection deviceId=%s mainthread:%b", new Object[] { str, Boolean.valueOf(bool1) });
-        this.hGv.hGn = ((BluetoothGatt)localObject);
-        AppMethodBeat.o(94259);
+        this.rNd.rMH = ((BluetoothGatt)localObject);
+        AppMethodBeat.o(144571);
         return;
         if (!str.equals("LE")) {
           break;
@@ -112,16 +129,16 @@ public final class b
         }
         i = 2;
         break;
-        localObject = ((BluetoothDevice)localObject).connectGatt(this.hGv.context, this.hGq, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.hGv), 2);
+        localObject = ((BluetoothDevice)localObject).connectGatt(this.rNd.context, this.rMM, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.rNd), 2);
         continue;
-        localObject = ((BluetoothDevice)localObject).connectGatt(this.hGv.context, this.hGq, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.hGv), 0);
+        localObject = ((BluetoothDevice)localObject).connectGatt(this.rNd.context, this.rMM, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.rNd), 0);
         continue;
-        localObject = ((BluetoothDevice)localObject).connectGatt(this.hGv.context, this.hGq, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.hGv), 1);
+        localObject = ((BluetoothDevice)localObject).connectGatt(this.rNd.context, this.rMM, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.rNd), 1);
         continue;
-        localObject = ((BluetoothDevice)localObject).connectGatt(this.hGv.context, this.hGq, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.hGv));
+        localObject = ((BluetoothDevice)localObject).connectGatt(this.rNd.context, this.rMM, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a(this.rNd));
       }
       label589:
-      localObject = this.bYu;
+      localObject = this.hEl;
       bool1 = bool2;
       if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
         bool1 = true;
@@ -130,25 +147,11 @@ public final class b
     }
     for (;;)
     {
-      a(j.hGO);
+      onResult(k.rNB);
       done();
-      AppMethodBeat.o(94259);
+      AppMethodBeat.o(144571);
       return;
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.ConnectAction", "Device not found, deviceId=%s", new Object[] { this.bYu });
-    }
-  }
-  
-  public final void b(j paramj)
-  {
-    AppMethodBeat.i(94260);
-    switch (paramj.errCode)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(94260);
-      return;
-      this.hGv.ee(false);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.ConnectAction", "Device not found, deviceId=%s", new Object[] { this.hEl });
     }
   }
   
@@ -157,15 +160,15 @@ public final class b
     return "ConnectAction";
   }
   
-  public final void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
+  public final void onConnectionStateChange(final BluetoothGatt paramBluetoothGatt, final int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94261);
+    AppMethodBeat.i(144573);
     String str1;
     String str3;
     if (paramBluetoothGatt != null)
     {
       str1 = paramBluetoothGatt.toString();
-      str3 = f.nT(paramInt1);
+      str3 = f.Ay(paramInt1);
       if (paramInt2 != 2) {
         break label98;
       }
@@ -174,54 +177,137 @@ public final class b
     for (String str2 = "CONNECTED";; str2 = "DISCONNECTED")
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "[onConnectionStateChange]gatt:%s gattStatus:%s, newState:%s", new Object[] { str1, str3, str2 });
-      this.hGv.hGn = paramBluetoothGatt;
+      this.rNd.rMH = paramBluetoothGatt;
       if (paramInt2 != 2) {
-        break label105;
+        break label163;
       }
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "Attempting to start service discovery", new Object[0]);
-      paramBluetoothGatt.discoverServices();
-      AppMethodBeat.o(94261);
+      if (paramBluetoothGatt != null) {
+        break label106;
+      }
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.ConnectAction", "[onConnectionStateChange] gatt is null", new Object[0]);
+      AppMethodBeat.o(144573);
       return;
       str1 = "";
       break;
     }
-    label105:
-    if (paramInt2 == 0)
+    label106:
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "[onConnectionStateChange] discoverServicesDelayMills: " + this.rMO, new Object[0]);
+    this.mainHandler.postDelayed(new Runnable()
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "close", new Object[0]);
-      this.hGv.ee(false);
-      paramBluetoothGatt = new StringBuilder();
-      paramBluetoothGatt.append("fail:connection fail");
-      paramBluetoothGatt.append(" ");
-      paramBluetoothGatt.append("status:");
-      paramBluetoothGatt.append(paramInt1);
-      a(new j(10003, paramBluetoothGatt.toString()));
+      public final void run()
+      {
+        AppMethodBeat.i(183546);
+        Object localObject = b.this;
+        int i;
+        if (((b)localObject).rMP != null)
+        {
+          localObject = ((b)localObject).rMP;
+          i = -1;
+        }
+        switch (((String)localObject).hashCode())
+        {
+        default: 
+          switch (i)
+          {
+          default: 
+            localObject = null;
+          }
+          break;
+        }
+        for (;;)
+        {
+          if (localObject != null)
+          {
+            com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "Attempting to requestConnectionPriority, ".concat(String.valueOf(localObject)), new Object[0]);
+            if (!paramBluetoothGatt.requestConnectionPriority(((Integer)localObject).intValue())) {
+              com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.ConnectAction", "requestConnectionPriority fail", new Object[0]);
+            }
+          }
+          if (!b.this.rMQ) {
+            break label242;
+          }
+          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "Attempting to start service discovery", new Object[0]);
+          paramBluetoothGatt.discoverServices();
+          AppMethodBeat.o(183546);
+          return;
+          if (!((String)localObject).equals("balanced")) {
+            break;
+          }
+          i = 0;
+          break;
+          if (!((String)localObject).equals("high")) {
+            break;
+          }
+          i = 1;
+          break;
+          if (!((String)localObject).equals("lowPower")) {
+            break;
+          }
+          i = 2;
+          break;
+          localObject = Integer.valueOf(0);
+          continue;
+          localObject = Integer.valueOf(1);
+          continue;
+          localObject = Integer.valueOf(2);
+        }
+        label242:
+        if (paramInt1 == 0) {
+          b.this.onResult(k.rNz);
+        }
+        for (;;)
+        {
+          b.this.done();
+          b.this.rNd.a(paramBluetoothGatt, paramInt1);
+          AppMethodBeat.o(183546);
+          return;
+          b.this.onResult(b.Ax(paramInt1));
+        }
+      }
+    }, this.rMO);
+    AppMethodBeat.o(144573);
+    return;
+    label163:
+    if (paramInt2 == 0) {
+      this.mainHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(183547);
+          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "close", new Object[0]);
+          b.this.rNd.jh(false);
+          b.this.onResult(b.Ax(paramInt1));
+          b.this.done();
+          AppMethodBeat.o(183547);
+        }
+      });
     }
-    AppMethodBeat.o(94261);
+    AppMethodBeat.o(144573);
   }
   
   public final void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt)
   {
-    AppMethodBeat.i(94262);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "[onServicesDiscovered] status:%s", new Object[] { f.nT(paramInt) });
-    this.hGv.hGn = paramBluetoothGatt;
+    AppMethodBeat.i(144574);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.ConnectAction", "[onServicesDiscovered] status:%s", new Object[] { f.Ay(paramInt) });
+    this.rNd.rMH = paramBluetoothGatt;
     if (paramInt == 0) {
-      a(j.hGN);
+      onResult(k.rNz);
     }
     for (;;)
     {
       done();
-      AppMethodBeat.o(94262);
+      this.rNd.a(paramBluetoothGatt, paramInt);
+      AppMethodBeat.o(144574);
       return;
-      a(j.hHf);
+      onResult(k.rNQ);
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(94263);
-    String str = "ConnectAction{deviceId='" + this.bYu + '\'' + ", debug=" + this.arI + ", mainThread=" + this.hFR + ", serial=" + this.hFT + '}';
-    AppMethodBeat.o(94263);
+    AppMethodBeat.i(144575);
+    String str = "ConnectAction#" + this.rNk + "{deviceId='" + this.hEl + '\'' + ", debug=" + this.debug + ", mainThread=" + this.rMf + ", serial=" + this.rMh + '}';
+    AppMethodBeat.o(144575);
     return str;
   }
 }

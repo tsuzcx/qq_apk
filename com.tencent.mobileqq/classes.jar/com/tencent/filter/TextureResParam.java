@@ -54,82 +54,88 @@ public class TextureResParam
     GlUtil.glGenTextures(1, this.texture, 0);
     GLES20.glBindTexture(3553, this.texture[0]);
     Object localObject1;
-    Object localObject2;
-    label108:
-    Object localObject3;
     if (this.textureResName.startsWith("assets://"))
     {
       localObject1 = BitmapUtils.decodeBitmap(FileUtils.getRealPath(this.textureResName), false);
-      if (localObject1 == null) {
-        break label326;
-      }
-      if (this.ratio <= 0.0D) {
-        break label321;
-      }
-      if (this.ratio >= 1.0D) {
-        break label297;
-      }
-      localObject2 = BitmapUtils.cropCenter((Bitmap)localObject1, (int)(((Bitmap)localObject1).getHeight() * this.ratio), ((Bitmap)localObject1).getHeight(), false);
-      ((Bitmap)localObject1).recycle();
-      localObject3 = null;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      label120:
-      if (this.flipy != 1) {
-        break label369;
-      }
-      localObject1 = new Matrix();
-      ((Matrix)localObject1).setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, ((Bitmap)localObject2).getHeight(), 0.0F, 0.0F, 1.0F });
-      localObject1 = BitmapUtils.createBitmap((Bitmap)localObject2, 0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight(), (Matrix)localObject1);
-      if (localObject1 != null) {
-        break label365;
-      }
-      label208:
-      if (localObject2 == null) {
-        break label374;
-      }
-      GLUtils.texImage2D(3553, 0, (Bitmap)localObject2, 0);
-      ((Bitmap)localObject2).recycle();
     }
-    for (;;)
+    else
     {
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      return;
       localObject2 = BitmapUtils.decodeBitmap(this.textureResName, false);
       localObject1 = localObject2;
-      if (localObject2 != null) {
-        break;
+      if (localObject2 == null) {
+        localObject1 = BitmapUtils.decodeBitmap(this.textureResName, true);
       }
-      localObject1 = BitmapUtils.decodeBitmap(this.textureResName, true);
-      break;
-      label297:
-      localObject2 = BitmapUtils.cropCenter((Bitmap)localObject1, ((Bitmap)localObject1).getWidth(), (int)(((Bitmap)localObject1).getWidth() / this.ratio), false);
-      break label108;
-      label321:
-      localObject2 = localObject1;
-      break label120;
-      label326:
-      Log.e("Param", "lastBitmap is null " + this.textureResName);
-      localObject3 = null;
-      localObject2 = localObject1;
-      localObject1 = localObject3;
-      break label120;
-      label365:
-      ((Bitmap)localObject2).recycle();
-      label369:
-      localObject2 = localObject1;
-      break label208;
-      label374:
+    }
+    Object localObject2 = null;
+    if (localObject1 != null)
+    {
+      double d1 = this.ratio;
+      if (d1 > 0.0D)
+      {
+        double d2;
+        if (d1 < 1.0D)
+        {
+          d1 = ((Bitmap)localObject1).getHeight();
+          d2 = this.ratio;
+          Double.isNaN(d1);
+          localObject2 = BitmapUtils.cropCenter((Bitmap)localObject1, (int)(d1 * d2), ((Bitmap)localObject1).getHeight(), false);
+        }
+        else
+        {
+          paramInt = ((Bitmap)localObject1).getWidth();
+          d1 = ((Bitmap)localObject1).getWidth();
+          d2 = this.ratio;
+          Double.isNaN(d1);
+          localObject2 = BitmapUtils.cropCenter((Bitmap)localObject1, paramInt, (int)(d1 / d2), false);
+        }
+        ((Bitmap)localObject1).recycle();
+        localObject1 = null;
+      }
+      else
+      {
+        localObject2 = localObject1;
+      }
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastBitmap is null ");
+      localStringBuilder.append(this.textureResName);
+      Log.e("Param", localStringBuilder.toString());
+    }
+    if (this.flipy == 1)
+    {
+      localObject2 = new Matrix();
+      ((Matrix)localObject2).setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, ((Bitmap)localObject1).getHeight(), 0.0F, 0.0F, 1.0F });
+      localObject2 = BitmapUtils.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2);
+      if (localObject2 != null)
+      {
+        ((Bitmap)localObject1).recycle();
+        localObject1 = localObject2;
+      }
+    }
+    else
+    {
+      localObject1 = localObject2;
+    }
+    if (localObject1 != null)
+    {
+      GLUtils.texImage2D(3553, 0, (Bitmap)localObject1, 0);
+      ((Bitmap)localObject1).recycle();
+    }
+    else
+    {
       Log.e("Param", "bitmap is null");
     }
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10242, 33071.0F);
+    GLES20.glTexParameterf(3553, 10243, 33071.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.TextureResParam
  * JD-Core Version:    0.7.0.1
  */

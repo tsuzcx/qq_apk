@@ -11,45 +11,53 @@ public class ForceUpdateNotify
   implements Parcelable
 {
   public static Parcelable.Creator<ForceUpdateNotify> CREATOR;
-  public static Set<String> vFE;
-  public String[] vFF;
+  public static Set<String> XFD;
+  public String[] XFE;
   
   static
   {
-    AppMethodBeat.i(63466);
-    vFE = new HashSet();
-    CREATOR = new ForceUpdateNotify.2();
-    AppMethodBeat.o(63466);
+    AppMethodBeat.i(110637);
+    XFD = new HashSet();
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(110637);
   }
   
   private ForceUpdateNotify(Parcel paramParcel)
   {
-    AppMethodBeat.i(63465);
-    this.vFF = paramParcel.createStringArray();
-    AppMethodBeat.o(63465);
+    AppMethodBeat.i(110636);
+    this.XFE = paramParcel.createStringArray();
+    AppMethodBeat.o(110636);
   }
   
   private ForceUpdateNotify(String[] paramArrayOfString)
   {
-    this.vFF = paramArrayOfString;
+    this.XFE = paramArrayOfString;
   }
   
-  public static void boB()
+  public static void add(String paramString)
   {
-    AppMethodBeat.i(63463);
-    if (vFE.size() != 0)
+    AppMethodBeat.i(110633);
+    XFD.add(paramString);
+    AppMethodBeat.o(110633);
+  }
+  
+  public static void eGV()
+  {
+    AppMethodBeat.i(110634);
+    if (XFD.size() != 0)
     {
-      Set localSet = vFE;
-      c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new ForceUpdateNotify.1());
+      Set localSet = XFD;
+      c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new c.a()
+      {
+        public final void gtj()
+        {
+          AppMethodBeat.i(110631);
+          ForceUpdateNotify.XFD.clear();
+          AppMethodBeat.o(110631);
+        }
+      });
     }
-    AppMethodBeat.o(63463);
-  }
-  
-  public static void xB(String paramString)
-  {
-    AppMethodBeat.i(63462);
-    vFE.add(paramString);
-    AppMethodBeat.o(63462);
+    AppMethodBeat.o(110634);
   }
   
   public int describeContents()
@@ -59,14 +67,14 @@ public class ForceUpdateNotify
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(63464);
-    paramParcel.writeStringArray(this.vFF);
-    AppMethodBeat.o(63464);
+    AppMethodBeat.i(110635);
+    paramParcel.writeStringArray(this.XFE);
+    AppMethodBeat.o(110635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.event.ForceUpdateNotify
  * JD-Core Version:    0.7.0.1
  */

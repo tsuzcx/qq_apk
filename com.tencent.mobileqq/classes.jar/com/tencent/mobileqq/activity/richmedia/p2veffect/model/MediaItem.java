@@ -8,7 +8,7 @@ public class MediaItem
   private long end;
   private int height;
   private String path;
-  private int rotation;
+  private int rotation = 0;
   private long start;
   private int type;
   private int width;
@@ -115,7 +115,16 @@ public class MediaItem
   
   public String toString()
   {
-    return "[" + this.start + ", " + this.end + ", " + this.path + "], duration = " + (this.end - this.start);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append("], duration = ");
+    localStringBuilder.append(this.end - this.start);
+    return localStringBuilder.toString();
   }
 }
 

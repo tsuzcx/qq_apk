@@ -14,16 +14,15 @@ final class ImageDownloaderInitializer$2
   public boolean handleContentType(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
   {
     paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.startsWithIgnoreCase(paramDownloadResult, "image")) {
+    if (TextUtils.isEmpty(paramDownloadResult)) {
       return false;
     }
-    return true;
+    return StringUtil.startsWithIgnoreCase(paramDownloadResult, "image");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ImageDownloaderInitializer.2
  * JD-Core Version:    0.7.0.1
  */

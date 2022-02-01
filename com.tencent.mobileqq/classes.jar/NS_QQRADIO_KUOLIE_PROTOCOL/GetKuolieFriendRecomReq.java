@@ -8,7 +8,7 @@ public final class GetKuolieFriendRecomReq
   extends JceStruct
 {
   static CommonInfo cache_commInfo = new CommonInfo();
-  public CommonInfo commInfo;
+  public CommonInfo commInfo = null;
   public String roomId = "";
   public String userId = "";
   
@@ -30,20 +30,23 @@ public final class GetKuolieFriendRecomReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commInfo != null) {
-      paramJceOutputStream.write(this.commInfo, 0);
+    Object localObject = this.commInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.roomId != null) {
-      paramJceOutputStream.write(this.roomId, 1);
+    localObject = this.roomId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.userId != null) {
-      paramJceOutputStream.write(this.userId, 2);
+    localObject = this.userId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.GetKuolieFriendRecomReq
  * JD-Core Version:    0.7.0.1
  */

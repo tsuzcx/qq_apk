@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class UserVideoAbi
   extends JceStruct
 {
-  public byte bStatus;
-  public long uin;
+  public byte bStatus = 0;
+  public long uin = 0L;
   
   public UserVideoAbi() {}
   
@@ -32,7 +32,7 @@ public final class UserVideoAbi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.UserVideoAbi
  * JD-Core Version:    0.7.0.1
  */

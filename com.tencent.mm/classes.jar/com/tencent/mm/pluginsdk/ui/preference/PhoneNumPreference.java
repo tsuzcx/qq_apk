@@ -8,14 +8,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.profile.c;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.R.h;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.z;
 import com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.util.HashSet;
@@ -24,13 +24,13 @@ public class PhoneNumPreference
   extends Preference
   implements View.OnClickListener
 {
-  public f iLA;
+  private View KKQ;
+  public String XZt;
+  public String XZu;
+  ProfileMobilePhoneView Ynl;
   public Intent intent;
-  public ad lpe;
-  private View ozm;
-  public String vRr;
-  public String vRs;
-  ProfileMobilePhoneView wbD;
+  public f pkD;
+  public au xVS;
   
   public PhoneNumPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,90 +42,98 @@ public class PhoneNumPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static String hX(String paramString1, String paramString2)
+  public static String c(String paramString, au paramau)
   {
-    AppMethodBeat.i(154678);
-    if (paramString2 == null)
+    AppMethodBeat.i(31899);
+    if (paramau.kar == null)
     {
-      AppMethodBeat.o(154678);
+      AppMethodBeat.o(31899);
       return null;
     }
     HashSet localHashSet = new HashSet();
-    if (paramString1 != null) {
-      localHashSet.add(paramString1);
+    if (paramString != null) {
+      localHashSet.add(paramString);
     }
-    String[] arrayOfString = paramString2.split(",");
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    String[] arrayOfString = com.tencent.mm.contact.a.f(paramau);
+    if (arrayOfString != null)
     {
-      String str = arrayOfString[i].trim();
-      if ((!localHashSet.contains(str)) && (!bo.isNullOrNil(str))) {
-        localStringBuilder.append(str).append(",");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i].trim();
+        if ((!localHashSet.contains(str)) && (!Util.isNullOrNil(str))) {
+          localStringBuilder.append(str).append(com.tencent.mm.contact.a.e(paramau));
+        }
+        localHashSet.add(str);
+        i += 1;
       }
-      localHashSet.add(str);
-      i += 1;
     }
     if (localStringBuilder.length() > 1) {
       localStringBuilder.subSequence(0, localStringBuilder.length() - 1);
     }
-    ab.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString1, paramString2 });
-    paramString1 = localStringBuilder.toString();
-    AppMethodBeat.o(154678);
-    return paramString1;
+    Log.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString, paramau.kar });
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(31899);
+    return paramString;
   }
   
-  public final void dpl()
+  public final void iNH()
   {
-    AppMethodBeat.i(28112);
-    if ((this.lpe == null) || (!a.je(this.lpe.field_type)) || (ad.arf(this.lpe.field_username)) || ((bo.isNullOrNil(this.vRr)) && (bo.isNullOrNil(this.vRs))))
+    AppMethodBeat.i(31900);
+    if ((this.xVS == null) || (!com.tencent.mm.contact.d.rs(this.xVS.field_type)) || (z.Iy(this.xVS.field_username)) || (au.bwO(this.xVS.field_username)) || ((Util.isNullOrNil(this.XZt)) && (Util.isNullOrNil(this.XZu))))
     {
-      this.iLA.cl("contact_profile_phone", true);
-      AppMethodBeat.o(28112);
+      this.pkD.eh("contact_profile_phone", true);
+      AppMethodBeat.o(31900);
       return;
     }
-    this.iLA.cl("contact_profile_phone", false);
-    AppMethodBeat.o(28112);
+    this.pkD.eh("contact_profile_phone", false);
+    AppMethodBeat.o(31900);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28111);
+    AppMethodBeat.i(31898);
     super.onBindView(paramView);
-    this.wbD.ccG();
-    AppMethodBeat.o(28111);
+    this.Ynl.gCe();
+    AppMethodBeat.o(31898);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(153754);
-    h.qsU.e(16055, new Object[] { Integer.valueOf(c.al(this.intent)), Integer.valueOf(17), Integer.valueOf(1), this.lpe.field_username });
-    AppMethodBeat.o(153754);
+    AppMethodBeat.i(31901);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    com.tencent.mm.plugin.profile.d.b(this.intent, 17, 1, this.xVS.field_username);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(31901);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28110);
-    if (this.ozm == null)
+    AppMethodBeat.i(31897);
+    if (this.KKQ == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
       ProfileMobilePhoneView localProfileMobilePhoneView = new ProfileMobilePhoneView(paramViewGroup.getContext(), this);
-      this.wbD = localProfileMobilePhoneView;
+      this.Ynl = localProfileMobilePhoneView;
       localViewGroup.addView(localProfileMobilePhoneView, new AbsListView.LayoutParams(-1, -2));
-      this.wbD.hT(this.vRr, this.vRs);
-      this.ozm = paramViewGroup;
+      this.Ynl.xVS = this.xVS;
+      this.Ynl.pj(this.XZt, this.XZu);
+      this.KKQ = paramViewGroup;
     }
-    paramViewGroup = this.ozm;
-    AppMethodBeat.o(28110);
+    paramViewGroup = this.KKQ;
+    AppMethodBeat.o(31897);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.PhoneNumPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,136 +1,347 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import android.database.MergeCursor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.model.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public final class bq
+public class bq
 {
-  private e db;
-  private bd fnD;
+  private static bq olz;
+  public b oly;
   
-  public bq(e parame, bd parambd)
+  private static List<Integer> JF(String paramString)
   {
-    this.db = parame;
-    this.fnD = parambd;
+    AppMethodBeat.i(20383);
+    bh.bCz();
+    SharedPreferences localSharedPreferences = c.Fz("banner");
+    if (localSharedPreferences == null)
+    {
+      AppMethodBeat.o(20383);
+      return null;
+    }
+    int j = localSharedPreferences.getInt(paramString + "ArraySize", 0);
+    ArrayList localArrayList = new ArrayList(j);
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(Integer.valueOf(localSharedPreferences.getInt(paramString + i, 0)));
+      i += 1;
+    }
+    AppMethodBeat.o(20383);
+    return localArrayList;
   }
   
-  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  private static boolean b(bp parambp)
   {
-    AppMethodBeat.i(16344);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(" and (username in (");
-    localStringBuffer.append("select chatroomname from chatroom where ");
-    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
+    AppMethodBeat.i(20381);
+    boolean bool = JF("HistoryInfo").contains(Integer.valueOf(parambp.type));
+    AppMethodBeat.o(20381);
+    return bool;
+  }
+  
+  public static bq bCF()
+  {
+    AppMethodBeat.i(20376);
+    try
     {
-      paramArrayList2 = paramArrayList2.iterator();
-      while (paramArrayList2.hasNext())
-      {
-        String str = (String)paramArrayList2.next();
-        localStringBuffer.append("chatroomname != '" + str + "' and ");
+      if (olz == null) {
+        olz = new bq();
       }
+      bq localbq = olz;
+      AppMethodBeat.o(20376);
+      return localbq;
     }
-    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
-    paramString = paramArrayList1.iterator();
-    while (paramString.hasNext())
+    finally
     {
-      paramArrayList1 = (String)paramString.next();
-      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
+      AppMethodBeat.o(20376);
     }
-    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
+  }
+  
+  public static bp bCG()
+  {
+    AppMethodBeat.i(20378);
+    bh.bCz();
+    Object localObject = c.Fz("banner");
+    if (localObject == null)
     {
-      paramString = paramArrayList3.iterator();
-      while (paramString.hasNext())
+      AppMethodBeat.o(20378);
+      return null;
+    }
+    int i = ((SharedPreferences)localObject).getInt("CurrentType", -1);
+    int j = ((SharedPreferences)localObject).getInt("CurrentShowType", -1);
+    localObject = ((SharedPreferences)localObject).getString("CurrentData", "");
+    if (i != -1)
+    {
+      switch (i)
       {
-        paramArrayList1 = (String)paramString.next();
-        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
+      case 4: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      default: 
+      case 1: 
+      case 3: 
+      case 2: 
+        do
+        {
+          a locala;
+          do
+          {
+            localObject = new bp(i, j, (String)localObject);
+            AppMethodBeat.o(20378);
+            return localObject;
+            locala = bCH();
+          } while ((locala != a.olC) && (locala != a.olD) && (!g.bDR().bDP()));
+          if (g.bDR().bDP()) {
+            Log.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind bind contacts banner.");
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(20378);
+            return null;
+            Log.i("MicorMsg.MainFrameBannerStorage", "already Bind the Mobile");
+          }
+          Log.i("MicorMsg.MainFrameBannerStorage", "avatar already existed");
+          AppMethodBeat.o(20378);
+          return null;
+        } while ((bCH() != a.olC) && (!g.bDR().bDP()));
+        if (g.bDR().bDP()) {
+          Log.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind upload contacts banner.");
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(20378);
+          return null;
+          Log.i("MicorMsg.MainFrameBannerStorage", "already upload the contacts");
+        }
+      case 10000: 
+      case 57005: 
+        AppMethodBeat.o(20378);
+        return null;
       }
+      AppMethodBeat.o(20378);
+      return null;
     }
-    localStringBuffer.append(")))");
-    paramString = localStringBuffer.toString();
-    AppMethodBeat.o(16344);
-    return paramString;
+    AppMethodBeat.o(20378);
+    return null;
   }
   
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  public static a bCH()
   {
-    AppMethodBeat.i(16340);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(16340);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(16339);
-    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
-    AppMethodBeat.o(16339);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
-  {
-    AppMethodBeat.i(16342);
-    Object localObject = "select * ,rowid from rcontact ";
-    if (paramInt == 2) {
-      localObject = "select 2, *,rowid from rcontact ";
-    }
-    paramString2 = (String)localObject + this.fnD.f(paramString2, null, paramList1) + this.fnD.arD(paramString1) + this.fnD.aeK();
-    ab.v("Micro.SimpleSearchConversationModel", paramString2);
-    paramString2 = this.db.rawQuery(paramString2, null);
-    ArrayList localArrayList;
-    if (paramBoolean)
+    AppMethodBeat.i(20384);
+    for (;;)
     {
-      localObject = new ArrayList();
-      localArrayList = new ArrayList();
-      while (paramString2.moveToNext())
+      try
       {
-        String str = paramString2.getString(paramString2.getColumnIndex("username"));
-        if (!t.lA(str)) {
-          ((ArrayList)localObject).add(str);
-        } else {
-          localArrayList.add(str);
+        bh.bCz();
+        localObject2 = (String)c.ban().d(4097, "");
+        bh.bCz();
+        String str = (String)c.ban().d(6, "");
+        boolean bool = z.bBC();
+        Log.d("MicorMsg.MainFrameBannerStorage", "isUpload " + bool + " stat " + z.bAQ());
+        if (localObject2 != null)
+        {
+          Object localObject1 = localObject2;
+          if (((String)localObject2).length() > 0)
+          {
+            if (str == null) {
+              break label197;
+            }
+            localObject2 = str;
+            if (str.length() <= 0) {
+              break label197;
+            }
+            if ((localObject1 == null) && (localObject2 == null))
+            {
+              localObject1 = a.olA;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            if ((localObject1 != null) && (localObject2 == null))
+            {
+              localObject1 = a.olB;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            if (bool)
+            {
+              localObject1 = a.olC;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            localObject1 = a.olD;
+            AppMethodBeat.o(20384);
+            return localObject1;
+          }
         }
       }
-      if ((paramList2 != null) && (paramList2.size() != 0)) {
-        ((ArrayList)localObject).addAll(paramList2);
+      catch (Exception localException)
+      {
+        locala = a.olA;
+        AppMethodBeat.o(20384);
+        return locala;
       }
-      if (((ArrayList)localObject).size() == 0) {}
+      a locala = null;
+      continue;
+      label197:
+      Object localObject2 = null;
     }
-    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
+  }
+  
+  private static boolean clearAll()
+  {
+    AppMethodBeat.i(20380);
+    bh.bCz();
+    SharedPreferences localSharedPreferences = c.Fz("banner");
+    if ((localSharedPreferences != null) && (localSharedPreferences.edit().clear().commit()))
     {
-      AppMethodBeat.o(16342);
-      return paramString1;
+      AppMethodBeat.o(20380);
+      return true;
+    }
+    AppMethodBeat.o(20380);
+    return false;
+  }
+  
+  private static boolean e(String paramString, List<Integer> paramList)
+  {
+    AppMethodBeat.i(20382);
+    bh.bCz();
+    Object localObject = c.Fz("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20382);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt(paramString + "ArraySize", paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      ((SharedPreferences.Editor)localObject).putInt(paramString + i, ((Integer)paramList.get(i)).intValue());
+      i += 1;
+    }
+    boolean bool = ((SharedPreferences.Editor)localObject).commit();
+    AppMethodBeat.o(20382);
+    return bool;
+  }
+  
+  public final boolean a(bp parambp)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(20377);
+    if (parambp.type == 10000)
+    {
+      clearAll();
+      if (this.oly != null) {
+        this.oly.onNotify();
+      }
+      AppMethodBeat.o(20377);
+      return true;
+    }
+    if (parambp.type == 57005)
+    {
+      AppMethodBeat.o(20377);
+      return false;
+    }
+    bh.bCz();
+    Object localObject = c.Fz("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20377);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    bp localbp = bCG();
+    if (!b(parambp)) {}
+    for (;;)
+    {
+      if ((localbp != null) && (localbp.hAN == 2))
+      {
+        List localList = JF("HistoryInfo");
+        if (!localList.contains(Integer.valueOf(localbp.type))) {
+          localList.add(Integer.valueOf(localbp.type));
+        }
+        e("HistoryInfo", localList);
+      }
+      if (bool) {
+        ((SharedPreferences.Editor)localObject).putInt("CurrentType", parambp.type).putInt("CurrentShowType", parambp.hAN).putString("CurrentData", parambp.data).commit();
+      }
+      if (this.oly != null) {
+        this.oly.onNotify();
+      }
+      AppMethodBeat.o(20377);
+      return bool;
+      bool = false;
     }
   }
   
-  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
+  public final void eD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(16343);
-    paramString = "select * ,rowid from rcontact " + this.fnD.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.fnD.aeK();
-    ab.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
-    paramString = this.db.rawQuery(paramString, null);
-    AppMethodBeat.o(16343);
-    return paramString;
+    AppMethodBeat.i(20379);
+    bh.bCz();
+    Object localObject = c.Fz("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20379);
+      return;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    switch (paramInt2)
+    {
+    }
+    for (;;)
+    {
+      if (this.oly != null) {
+        this.oly.onNotify();
+      }
+      AppMethodBeat.o(20379);
+      return;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      continue;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      localObject = JF("HistoryInfo");
+      if (!((List)localObject).contains(Integer.valueOf(paramInt1))) {
+        ((List)localObject).add(Integer.valueOf(paramInt1));
+      }
+      e("HistoryInfo", (List)localObject);
+      continue;
+      if (paramInt1 == 3) {
+        ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      }
+    }
   }
   
-  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  public static enum a
   {
-    AppMethodBeat.i(16341);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(16341);
-    return paramString1;
+    static
+    {
+      AppMethodBeat.i(20375);
+      olA = new a("NO_INIT", 0);
+      olB = new a("SET_MOBILE", 1);
+      olC = new a("SUCC", 2);
+      olD = new a("SUCC_UNLOAD", 3);
+      olE = new a[] { olA, olB, olC, olD };
+      AppMethodBeat.o(20375);
+    }
+    
+    private a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void onNotify();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bq
  * JD-Core Version:    0.7.0.1
  */

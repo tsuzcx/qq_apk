@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:background="@drawable/aio_pa_item_top" android:paddingLeft="32.0dip" android:paddingTop="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="32.0dip">
+        <com.tencent.image.URLImageView android:id="@id/pa_multi_image" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginBottom="16.0dip" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/pa_mask_bg" android:background="@drawable/aio_structmsg_mask_bg" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginBottom="16.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="bottom" android:id="@id/pa_multi_title" android:paddingLeft="42.0dip" android:paddingRight="42.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="52.0dip" android:text="@null" android:maxLines="1" />
+        <ImageView android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="1.0dip" android:src="@color/divider_color" />
+    </FrameLayout>
+</FrameLayout>

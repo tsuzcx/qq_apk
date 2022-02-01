@@ -1,190 +1,77 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ug;
+import com.tencent.mm.protocal.protobuf.uk;
+import com.tencent.mm.protocal.protobuf.ul;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class x
-  extends m
+  extends w
 {
-  public String desc;
-  public double kNS;
-  public boolean nJo;
-  public String ppN;
-  public int ppX;
-  public String ppp;
-  public int qkA;
-  public x.a qkB;
-  public b qkC;
-  public x.d qkD;
-  public ResendMsgInfo qkE;
-  public String qkF;
-  public String qkG;
-  private String qkt;
-  public int qku;
-  private String qkv;
-  public String qkw;
-  public int qkx;
-  public String qky;
-  public String qkz;
-  public int status;
+  private ul Ojo;
+  private uk Ojp;
+  private h callback;
+  private final c rr;
   
-  public x(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public x(String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    AppMethodBeat.i(44785);
-    this.qkt = null;
-    this.qkt = paramString1;
-    this.ppX = paramInt1;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("transfer_id", paramString2);
-    localHashMap.put("trans_id", paramString1);
-    localHashMap.put("invalid_time", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(44785);
+    AppMethodBeat.i(288844);
+    Log.i("MicroMsg.NetScenePersonalPayCheck", "personalpay_order_id = %s ,trans_id = %s ,total_amount = %s，placeorder_ext = %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3 });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new uk();
+    ((c.a)localObject).otF = new ul();
+    ((c.a)localObject).funcId = 5047;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/personalpaypaycheck";
+    this.rr = ((c.a)localObject).bEF();
+    this.Ojp = ((uk)c.b.b(this.rr.otB));
+    localObject = new ug();
+    ((ug)localObject).Olm = paramString1;
+    ((ug)localObject).Oln = paramString2;
+    ((ug)localObject).Oll = paramLong;
+    ((ug)localObject).Olo = paramString3;
+    this.Ojp.YZT = ((ug)localObject);
+    AppMethodBeat.o(288844);
   }
   
-  private static c ap(JSONObject paramJSONObject)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(44787);
-    c localc = new c();
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    localc.type = localJSONObject.optInt("type");
-    localc.url = localJSONObject.optString("url");
-    localc.username = localJSONObject.optString("username");
-    localc.qkL = localJSONObject.optString("pagepath");
-    AppMethodBeat.o(44787);
-    return localc;
+    AppMethodBeat.i(288856);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(288856);
+    return i;
   }
   
-  public final int getFuncId()
+  public final int getType()
   {
-    return 1628;
+    return 5047;
   }
   
-  public final int getTenpayCgicmd()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    return 0;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/transferquery";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(44786);
-    ab.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      AppMethodBeat.o(44786);
-      return;
+    AppMethodBeat.i(288862);
+    Log.i("MicroMsg.NetScenePersonalPayCheck", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.Ojo = ((ul)c.c.b(((c)params).otC));
     }
-    this.qku = paramJSONObject.optInt("pay_time");
-    this.kNS = (paramJSONObject.optDouble("fee") / 100.0D);
-    this.ppp = paramJSONObject.optString("fee_type");
-    this.status = paramJSONObject.optInt("trans_status");
-    this.qkv = paramJSONObject.optString("trans_status_name");
-    this.qkx = paramJSONObject.optInt("modify_time");
-    this.nJo = paramJSONObject.optBoolean("is_payer");
-    this.ppN = paramJSONObject.optString("refund_bank_type");
-    this.qky = paramJSONObject.optString("status_desc");
-    this.qkz = paramJSONObject.optString("status_supplementary");
-    this.qkA = paramJSONObject.optInt("delay_confirm_flag");
-    this.qkF = paramJSONObject.optString("banner_content");
-    this.qkG = paramJSONObject.optString("banner_url");
-    this.desc = paramJSONObject.optString("desc");
-    Object localObject1 = paramJSONObject.optJSONObject("addr_info");
-    Object localObject2 = new x.a();
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new JSONObject();
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    ((x.a)localObject2).qkH = paramString.optString("address_name");
-    ((x.a)localObject2).gAF = paramString.optString("phone_num");
-    ((x.a)localObject2).fBq = paramString.optString("address");
-    this.qkB = ((x.a)localObject2);
-    localObject1 = paramJSONObject.optJSONObject("exposure_info");
-    localObject2 = new b();
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new JSONObject();
-    }
-    ((b)localObject2).cDz = paramString.optString("icon");
-    ((b)localObject2).name = paramString.optString("name");
-    ((b)localObject2).cyA = paramString.optString("wording");
-    ((b)localObject2).qkI = paramString.optInt("is_show_btn");
-    ((b)localObject2).qkJ = paramString.optString("btn_wording");
-    ((b)localObject2).qkK = ap(paramString.optJSONObject("jump_info"));
-    this.qkC = ((b)localObject2);
-    localObject1 = paramJSONObject.optJSONObject("text_info");
-    localObject2 = new x.d();
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new JSONObject();
-    }
-    ((x.d)localObject2).cyA = paramString.optString("wording");
-    ((x.d)localObject2).qkK = ap(paramString.optJSONObject("jump_info"));
-    this.qkD = ((x.d)localObject2);
-    paramJSONObject = paramJSONObject.optJSONObject("resend_info");
-    localObject1 = new ResendMsgInfo();
-    paramString = paramJSONObject;
-    if (paramJSONObject == null) {
-      paramString = new JSONObject();
-    }
-    ((ResendMsgInfo)localObject1).title = paramString.optString("title");
-    ((ResendMsgInfo)localObject1).vIO = paramString.optString("pic");
-    ((ResendMsgInfo)localObject1).description = paramString.optString("description");
-    ((ResendMsgInfo)localObject1).opC = paramString.optString("left_button_wording");
-    ((ResendMsgInfo)localObject1).opD = paramString.optString("right_button_wording");
-    this.qkE = ((ResendMsgInfo)localObject1);
-    AppMethodBeat.o(44786);
-  }
-  
-  public static final class b
-  {
-    public String cDz;
-    public String cyA;
-    public String name;
-    public int qkI;
-    public String qkJ;
-    public x.c qkK;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(44777);
-      String str = "ExposureInfo{icon='" + this.cDz + '\'' + ", name='" + this.name + '\'' + ", wording='" + this.cyA + '\'' + ", isShowBtn=" + this.qkI + ", btnWording='" + this.qkJ + '\'' + ", jumpInfo=" + this.qkK + '}';
-      AppMethodBeat.o(44777);
-      return str;
-    }
-  }
-  
-  public static final class c
-  {
-    public String qkL;
-    public int type;
-    public String url;
-    public String username;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(44778);
-      String str = "JumpInfo{type=" + this.type + ", url='" + this.url + '\'' + ", username='" + this.username + '\'' + ", pagepath='" + this.qkL + '\'' + '}';
-      AppMethodBeat.o(44778);
-      return str;
-    }
+    AppMethodBeat.o(288862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.x
  * JD-Core Version:    0.7.0.1
  */

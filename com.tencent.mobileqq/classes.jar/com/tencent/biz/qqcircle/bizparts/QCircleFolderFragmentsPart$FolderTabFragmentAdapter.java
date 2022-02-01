@@ -1,8 +1,8 @@
 package com.tencent.biz.qqcircle.bizparts;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
 import java.util.ArrayList;
 
@@ -16,17 +16,17 @@ public class QCircleFolderFragmentsPart$FolderTabFragmentAdapter
   
   public int getCount()
   {
-    return QCircleFolderFragmentsPart.a(this.a).size();
+    return QCircleFolderFragmentsPart.c(this.a).size();
   }
   
   public Fragment getItem(int paramInt)
   {
-    return (Fragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt);
+    return (Fragment)QCircleFolderFragmentsPart.c(this.a).get(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.a(this.a).get(paramInt)).hashCode();
+    return ((QCircleBaseTabFragment)QCircleFolderFragmentsPart.c(this.a).get(paramInt)).hashCode();
   }
   
   public int getItemPosition(Object paramObject)
@@ -36,12 +36,12 @@ public class QCircleFolderFragmentsPart$FolderTabFragmentAdapter
   
   public CharSequence getPageTitle(int paramInt)
   {
-    return (CharSequence)QCircleFolderFragmentsPart.b(this.a).get(paramInt);
+    return (CharSequence)QCircleFolderFragmentsPart.e(this.a).get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart.FolderTabFragmentAdapter
  * JD-Core Version:    0.7.0.1
  */

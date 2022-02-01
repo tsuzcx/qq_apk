@@ -1,10 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
+import com.tencent.luggage.sdk.b.a.d.d;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import org.json.JSONObject;
+
 public class f
-  extends a
+  extends c<d>
 {
-  public static final int CTRL_INDEX = 251;
-  public static final String NAME = "navigateToMiniProgram";
+  public static final int CTRL_INDEX = 166;
+  public static final String NAME = "launchMiniProgram";
+  
+  protected boolean a(d paramd, JSONObject paramJSONObject, int paramInt)
+  {
+    return true;
+  }
 }
 
 

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ProfRecentReq
   extends JceStruct
 {
-  public long uTimeStamp;
+  public long uTimeStamp = 0L;
   
   public ProfRecentReq() {}
   
@@ -28,7 +28,7 @@ public final class ProfRecentReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfRecentReq
  * JD-Core Version:    0.7.0.1
  */

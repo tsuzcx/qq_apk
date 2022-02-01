@@ -4,16 +4,16 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 final class i
-  extends h
+  extends d
 {
-  i(h paramh)
+  i(d paramd)
   {
-    super(paramh);
+    super(paramd);
   }
   
   public final Drawable newDrawable(Resources paramResources)
   {
-    return new g(this, paramResources);
+    return new h(this, paramResources);
   }
 }
 

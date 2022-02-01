@@ -32,67 +32,32 @@ public class ObjectPool<T>
   
   private void resizePool(int paramInt)
   {
-    Object[] arrayOfObject = (Object[])Array.newInstance(this.mClazz, paramInt);
-    System.arraycopy(this.mPool, 0, arrayOfObject, 0, Math.min(this.mPool.length, paramInt));
-    this.mPool = arrayOfObject;
+    Object[] arrayOfObject1 = (Object[])Array.newInstance(this.mClazz, paramInt);
+    Object[] arrayOfObject2 = this.mPool;
+    System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, Math.min(arrayOfObject2.length, paramInt));
+    this.mPool = arrayOfObject1;
     this.mSize = Math.min(this.mSize, paramInt);
   }
   
-  /* Error */
   public T allocate()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
-    //   6: ifle +47 -> 53
-    //   9: aload_0
-    //   10: aload_0
-    //   11: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
-    //   14: iconst_1
-    //   15: isub
-    //   16: putfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
-    //   19: aload_0
-    //   20: getfield 62	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
-    //   23: aload_0
-    //   24: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
-    //   27: aaload
-    //   28: astore_1
-    //   29: aload_0
-    //   30: getfield 62	com/tribe/async/objectpool/ObjectPool:mPool	[Ljava/lang/Object;
-    //   33: aload_0
-    //   34: getfield 78	com/tribe/async/objectpool/ObjectPool:mSize	I
-    //   37: aconst_null
-    //   38: aastore
-    //   39: aload_0
-    //   40: getfield 51	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
-    //   43: aload_1
-    //   44: invokeinterface 86 2 0
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: areturn
-    //   53: aload_0
-    //   54: getfield 51	com/tribe/async/objectpool/ObjectPool:mAllocator	Lcom/tribe/async/objectpool/ObjectPool$Allocator;
-    //   57: invokeinterface 89 1 0
-    //   62: astore_1
-    //   63: goto -24 -> 39
-    //   66: astore_1
-    //   67: aload_0
-    //   68: monitorexit
-    //   69: aload_1
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	this	ObjectPool
-    //   28	35	1	localObject1	Object
-    //   66	4	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	39	66	finally
-    //   39	49	66	finally
-    //   53	63	66	finally
+    try
+    {
+      Object localObject1;
+      if (this.mSize > 0)
+      {
+        this.mSize -= 1;
+        localObject1 = this.mPool[this.mSize];
+        this.mPool[this.mSize] = null;
+      }
+      else
+      {
+        localObject1 = this.mAllocator.create();
+      }
+      this.mAllocator.onAllocate(localObject1);
+      return localObject1;
+    }
+    finally {}
   }
   
   public void checkUsage()
@@ -183,7 +148,7 @@ public class ObjectPool<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.objectpool.ObjectPool
  * JD-Core Version:    0.7.0.1
  */

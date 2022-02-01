@@ -16,27 +16,24 @@ final class c$2
     if (!z.a(c.b(this.a), "local_crash_lock", 10000L)) {
       return;
     }
-    List localList = this.a.p.a();
-    if ((localList != null) && (localList.size() > 0))
+    Object localObject = this.a.p.a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      x.c("Size of crash list: %s", new Object[] { Integer.valueOf(localList.size()) });
-      int j = localList.size();
+      int j = ((List)localObject).size();
+      int i = 0;
+      x.c("Size of crash list: %s", new Object[] { Integer.valueOf(j) });
+      j = ((List)localObject).size();
       if (j > 20L)
       {
         ArrayList localArrayList = new ArrayList();
-        Collections.sort(localList);
-        int i = 0;
-        for (;;)
+        Collections.sort((List)localObject);
+        while (i < 20L)
         {
-          localObject = localArrayList;
-          if (i >= 20L) {
-            break;
-          }
-          localArrayList.add(localList.get(j - 1 - i));
+          localArrayList.add(((List)localObject).get(j - 1 - i));
           i += 1;
         }
+        localObject = localArrayList;
       }
-      Object localObject = localList;
       this.a.p.a((List)localObject, 0L, false, false, false);
     }
     z.b(c.b(this.a), "local_crash_lock");
@@ -44,7 +41,7 @@ final class c$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.crash.c.2
  * JD-Core Version:    0.7.0.1
  */

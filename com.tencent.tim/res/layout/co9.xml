@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/ajr" android:layout_width="@dimen/bm4" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/bk1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="9.0dip">
+        <ListView android:id="@id/njk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:divider="@null" android:dividerHeight="0.0dip" />
+    </RelativeLayout>
+</FrameLayout>

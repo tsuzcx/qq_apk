@@ -49,7 +49,11 @@ class AndroidPlatform
       boolean bool = ((Boolean)paramClass.getMethod("isCleartextTrafficPermitted", new Class[0]).invoke(paramObject, new Object[0])).booleanValue();
       return bool;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label29:
+      break label29;
+    }
     return super.isCleartextTrafficPermitted(paramString);
   }
   
@@ -60,7 +64,11 @@ class AndroidPlatform
       boolean bool = ((Boolean)paramClass.getMethod("isCleartextTrafficPermitted", new Class[] { String.class }).invoke(paramObject, new Object[] { paramString })).booleanValue();
       return bool;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label38:
+      break label38;
+    }
     return api23IsCleartextTrafficPermitted(paramString, paramClass, paramObject);
   }
   
@@ -69,36 +77,43 @@ class AndroidPlatform
     if (getSdkInt() == 0) {
       return null;
     }
-    try
-    {
-      localClass1 = Class.forName("com.android.org.conscrypt.SSLParametersImpl");
-    }
-    catch (ClassNotFoundException localClassNotFoundException1)
+    for (;;)
     {
       try
       {
-        Class localClass1;
-        OptionalMethod localOptionalMethod3 = new OptionalMethod(null, "setUseSessionTickets", new Class[] { Boolean.TYPE });
-        OptionalMethod localOptionalMethod4 = new OptionalMethod(null, "setHostname", new Class[] { String.class });
-        OptionalMethod localOptionalMethod1;
-        OptionalMethod localOptionalMethod2;
-        if (supportsAlpn())
-        {
-          localOptionalMethod1 = new OptionalMethod([B.class, "getAlpnSelectedProtocol", new Class[0]);
-          localOptionalMethod2 = new OptionalMethod(null, "setAlpnProtocols", new Class[] { [B.class });
-        }
-        for (;;)
-        {
-          return new AndroidPlatform(localClass1, localOptionalMethod3, localOptionalMethod4, localOptionalMethod1, localOptionalMethod2);
-          localClassNotFoundException1 = localClassNotFoundException1;
-          Class localClass2 = Class.forName("org.apache.harmony.xnet.provider.jsse.SSLParametersImpl");
-          break;
-          localOptionalMethod2 = null;
-          localOptionalMethod1 = null;
-        }
+        localObject = Class.forName("com.android.org.conscrypt.SSLParametersImpl");
+      }
+      catch (ClassNotFoundException localClassNotFoundException1)
+      {
+        Object localObject;
+        OptionalMethod localOptionalMethod3;
+        OptionalMethod localOptionalMethod4;
+        continue;
+      }
+      try
+      {
+        localObject = Class.forName("org.apache.harmony.xnet.provider.jsse.SSLParametersImpl");
+      }
+      catch (ClassNotFoundException localClassNotFoundException2)
+      {
         return null;
       }
-      catch (ClassNotFoundException localClassNotFoundException2) {}
+    }
+    localOptionalMethod3 = new OptionalMethod(null, "setUseSessionTickets", new Class[] { Boolean.TYPE });
+    localOptionalMethod4 = new OptionalMethod(null, "setHostname", new Class[] { String.class });
+    OptionalMethod localOptionalMethod1;
+    OptionalMethod localOptionalMethod2;
+    if (supportsAlpn())
+    {
+      localOptionalMethod1 = new OptionalMethod([B.class, "getAlpnSelectedProtocol", new Class[0]);
+      localOptionalMethod2 = new OptionalMethod(null, "setAlpnProtocols", new Class[] { [B.class });
+    }
+    for (;;)
+    {
+      localObject = new AndroidPlatform((Class)localObject, localOptionalMethod3, localOptionalMethod4, localOptionalMethod1, localOptionalMethod2);
+      return localObject;
+      localOptionalMethod1 = null;
+      localOptionalMethod2 = localOptionalMethod1;
     }
   }
   
@@ -109,7 +124,11 @@ class AndroidPlatform
       int i = Build.VERSION.SDK_INT;
       return i;
     }
-    catch (NoClassDefFoundError localNoClassDefFoundError) {}
+    catch (NoClassDefFoundError localNoClassDefFoundError)
+    {
+      label6:
+      break label6;
+    }
     return 0;
   }
   
@@ -123,7 +142,11 @@ class AndroidPlatform
       Class.forName("android.net.Network");
       return true;
     }
-    catch (ClassNotFoundException localClassNotFoundException) {}
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label18:
+      break label18;
+    }
     return false;
   }
   
@@ -135,7 +158,11 @@ class AndroidPlatform
       localObject = new AndroidPlatform.AndroidCertificateChainCleaner(((Class)localObject).getConstructor(new Class[] { X509TrustManager.class }).newInstance(new Object[] { paramX509TrustManager }), ((Class)localObject).getMethod("checkServerTrusted", new Class[] { [Ljava.security.cert.X509Certificate.class, String.class, String.class }));
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label65:
+      break label65;
+    }
     return super.buildCertificateChainCleaner(paramX509TrustManager);
   }
   
@@ -148,7 +175,11 @@ class AndroidPlatform
       localObject = new AndroidPlatform.AndroidTrustRootIndex(paramX509TrustManager, (Method)localObject);
       return localObject;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label36:
+      break label36;
+    }
     return super.buildTrustRootIndex(paramX509TrustManager);
   }
   
@@ -159,7 +190,8 @@ class AndroidPlatform
       this.setUseSessionTickets.invokeOptionalWithoutCheckedException(paramSSLSocket, new Object[] { Boolean.valueOf(true) });
       this.setHostname.invokeOptionalWithoutCheckedException(paramSSLSocket, new Object[] { paramString });
     }
-    if ((this.setAlpnProtocols != null) && (this.setAlpnProtocols.isSupported(paramSSLSocket)))
+    paramString = this.setAlpnProtocols;
+    if ((paramString != null) && (paramString.isSupported(paramSSLSocket)))
     {
       paramString = concatLengthPrefixed(paramList);
       this.setAlpnProtocols.invokeWithoutCheckedException(paramSSLSocket, new Object[] { paramString });
@@ -173,19 +205,6 @@ class AndroidPlatform
       paramSocket.connect(paramInetSocketAddress, paramInt);
       return;
     }
-    catch (AssertionError paramSocket)
-    {
-      if (Util.isAndroidGetsocknameError(paramSocket)) {
-        throw new IOException(paramSocket);
-      }
-      throw paramSocket;
-    }
-    catch (SecurityException paramSocket)
-    {
-      paramInetSocketAddress = new IOException("Exception in connect");
-      paramInetSocketAddress.initCause(paramSocket);
-      throw paramInetSocketAddress;
-    }
     catch (ClassCastException paramSocket)
     {
       if (Build.VERSION.SDK_INT == 26)
@@ -196,62 +215,83 @@ class AndroidPlatform
       }
       throw paramSocket;
     }
+    catch (SecurityException paramSocket)
+    {
+      paramInetSocketAddress = new IOException("Exception in connect");
+      paramInetSocketAddress.initCause(paramSocket);
+      throw paramInetSocketAddress;
+    }
+    catch (AssertionError paramSocket)
+    {
+      if (Util.isAndroidGetsocknameError(paramSocket)) {
+        throw new IOException(paramSocket);
+      }
+      throw paramSocket;
+    }
   }
   
   public SSLContext getSSLContext()
   {
-    for (int i = 1;; i = 0)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT < 16) {
-          break label32;
-        }
-        int j = Build.VERSION.SDK_INT;
-        if (j >= 22) {
-          break label32;
-        }
-      }
-      catch (NoClassDefFoundError localNoClassDefFoundError)
-      {
-        label20:
-        label32:
-        SSLContext localSSLContext2;
-        break label20;
-      }
-      if (i == 0) {
-        break;
-      }
-      try
-      {
-        SSLContext localSSLContext1 = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext1;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
-    }
+    int i = 1;
     try
     {
-      localSSLContext2 = SSLContext.getInstance("TLS");
-      return localSSLContext2;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        int j = Build.VERSION.SDK_INT;
+        if (j < 22) {}
+      }
+      else
+      {
+        i = 0;
+      }
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+    catch (NoClassDefFoundError localNoClassDefFoundError)
     {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException2);
+      label25:
+      break label25;
+    }
+    if (i != 0) {}
+    for (;;)
+    {
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLSv1.2");
+        return localSSLContext;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+      {
+        SSLContext localSSLContext;
+        continue;
+      }
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLS");
+        return localSSLContext;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
+      }
     }
   }
   
   @Nullable
   public String getSelectedProtocol(SSLSocket paramSSLSocket)
   {
-    if (this.getAlpnSelectedProtocol == null) {}
-    while (!this.getAlpnSelectedProtocol.isSupported(paramSSLSocket)) {
+    Object localObject2 = this.getAlpnSelectedProtocol;
+    Object localObject1 = null;
+    if (localObject2 == null) {
       return null;
     }
-    paramSSLSocket = (byte[])this.getAlpnSelectedProtocol.invokeWithoutCheckedException(paramSSLSocket, new Object[0]);
-    if (paramSSLSocket != null) {}
-    for (paramSSLSocket = new String(paramSSLSocket, Util.UTF_8);; paramSSLSocket = null) {
-      return paramSSLSocket;
+    if (!((OptionalMethod)localObject2).isSupported(paramSSLSocket)) {
+      return null;
     }
+    localObject2 = (byte[])this.getAlpnSelectedProtocol.invokeWithoutCheckedException(paramSSLSocket, new Object[0]);
+    paramSSLSocket = localObject1;
+    if (localObject2 != null) {
+      paramSSLSocket = new String((byte[])localObject2, Util.UTF_8);
+    }
+    return paramSSLSocket;
   }
   
   public Object getStackTraceForCloseable(String paramString)
@@ -266,75 +306,57 @@ class AndroidPlatform
     }
     try
     {
-      Class localClass = Class.forName("android.security.NetworkSecurityPolicy");
-      boolean bool = api24IsCleartextTrafficPermitted(paramString, localClass, localClass.getMethod("getInstance", new Class[0]).invoke(null, new Object[0]));
-      return bool;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      return super.isCleartextTrafficPermitted(paramString);
-    }
-    catch (IllegalAccessException paramString)
-    {
+      try
+      {
+        Class localClass = Class.forName("android.security.NetworkSecurityPolicy");
+        boolean bool = api24IsCleartextTrafficPermitted(paramString, localClass, localClass.getMethod("getInstance", new Class[0]).invoke(null, new Object[0]));
+        return bool;
+      }
+      catch (InvocationTargetException paramString) {}catch (IllegalArgumentException paramString) {}catch (IllegalAccessException paramString) {}
       throw Util.assertionError("unable to determine cleartext support", paramString);
     }
-    catch (IllegalArgumentException paramString)
+    catch (ClassNotFoundException|NoSuchMethodException localClassNotFoundException)
     {
-      break label57;
+      label66:
+      break label66;
     }
-    catch (InvocationTargetException paramString)
-    {
-      break label57;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label50:
-      label57:
-      break label50;
-    }
+    return super.isCleartextTrafficPermitted(paramString);
   }
   
   public void log(int paramInt, String paramString, @Nullable Throwable paramThrowable)
   {
-    int i;
-    String str;
-    int k;
-    label52:
-    int j;
-    if (paramInt == 5)
-    {
-      i = 5;
-      str = paramString;
-      if (paramThrowable != null) {
-        str = paramString + '\n' + Log.getStackTraceString(paramThrowable);
-      }
-      paramInt = 0;
-      k = str.length();
-      if (paramInt >= k) {
-        break label131;
-      }
-      j = str.indexOf('\n', paramInt);
-      if (j == -1) {
-        break label124;
-      }
+    int i = 5;
+    if (paramInt != 5) {
+      i = 3;
     }
-    for (;;)
+    Object localObject = paramString;
+    if (paramThrowable != null)
     {
-      int m = Math.min(j, paramInt + 4000);
-      Log.println(i, "OkHttp", str.substring(paramInt, m));
-      if (m >= j)
-      {
-        paramInt = m + 1;
-        break label52;
-        i = 3;
-        break;
-        label124:
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append('\n');
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramThrowable));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    paramInt = 0;
+    int k = ((String)localObject).length();
+    if (paramInt < k)
+    {
+      int j = ((String)localObject).indexOf('\n', paramInt);
+      if (j == -1) {
         j = k;
-        continue;
-        label131:
-        return;
       }
-      paramInt = m;
+      for (;;)
+      {
+        int m = Math.min(j, paramInt + 4000);
+        Log.println(i, "OkHttp", ((String)localObject).substring(paramInt, m));
+        if (m >= j)
+        {
+          paramInt = m + 1;
+          break;
+        }
+        paramInt = m;
+      }
     }
   }
   
@@ -348,31 +370,29 @@ class AndroidPlatform
   @Nullable
   protected X509TrustManager trustManager(SSLSocketFactory paramSSLSocketFactory)
   {
-    Object localObject = readFieldOrNull(paramSSLSocketFactory, this.sslParametersClass, "sslParameters");
-    if (localObject == null) {}
-    for (;;)
+    Object localObject2 = readFieldOrNull(paramSSLSocketFactory, this.sslParametersClass, "sslParameters");
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {}
+    try
     {
-      try
-      {
-        localObject = readFieldOrNull(paramSSLSocketFactory, Class.forName("com.google.android.gms.org.conscrypt.SSLParametersImpl", false, paramSSLSocketFactory.getClass().getClassLoader()), "sslParameters");
-        paramSSLSocketFactory = (SSLSocketFactory)localObject;
-        localObject = (X509TrustManager)readFieldOrNull(paramSSLSocketFactory, X509TrustManager.class, "x509TrustManager");
-        if (localObject != null) {
-          return localObject;
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        return super.trustManager(paramSSLSocketFactory);
-      }
-      return (X509TrustManager)readFieldOrNull(paramSSLSocketFactory, X509TrustManager.class, "trustManager");
-      paramSSLSocketFactory = localClassNotFoundException;
+      localObject1 = readFieldOrNull(paramSSLSocketFactory, Class.forName("com.google.android.gms.org.conscrypt.SSLParametersImpl", false, paramSSLSocketFactory.getClass().getClassLoader()), "sslParameters");
     }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label43:
+      break label43;
+    }
+    return super.trustManager(paramSSLSocketFactory);
+    paramSSLSocketFactory = (X509TrustManager)readFieldOrNull(localObject1, X509TrustManager.class, "x509TrustManager");
+    if (paramSSLSocketFactory != null) {
+      return paramSSLSocketFactory;
+    }
+    return (X509TrustManager)readFieldOrNull(localObject1, X509TrustManager.class, "trustManager");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.AndroidPlatform
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,4 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import java.util.TimerTask;
-
-public class fbd
-  extends TimerTask
-{
-  public fbd(DataLineHandler paramDataLineHandler) {}
-  
-  public void run()
-  {
-    this.a.a();
-  }
-}
+public class fbd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

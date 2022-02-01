@@ -19,18 +19,22 @@ public class EglSurfaceBase
   
   public void createOffscreenSurface(int paramInt1, int paramInt2)
   {
-    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if (this.mEGLSurface == EGL14.EGL_NO_SURFACE)
+    {
+      this.mEGLSurface = this.mEglCore.createOffscreenSurface(paramInt1, paramInt2);
+      return;
     }
-    this.mEGLSurface = this.mEglCore.createOffscreenSurface(paramInt1, paramInt2);
+    throw new IllegalStateException("surface already created");
   }
   
   public void createWindowSurface(Object paramObject)
   {
-    if (this.mEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if (this.mEGLSurface == EGL14.EGL_NO_SURFACE)
+    {
+      this.mEGLSurface = this.mEglCore.createWindowSurface(paramObject);
+      return;
     }
-    this.mEGLSurface = this.mEglCore.createWindowSurface(paramObject);
+    throw new IllegalStateException("surface already created");
   }
   
   public void makeCurrent()
@@ -60,7 +64,7 @@ public class EglSurfaceBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.eglwraper.EglSurfaceBase
  * JD-Core Version:    0.7.0.1
  */

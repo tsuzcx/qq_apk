@@ -28,7 +28,7 @@ import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.FakeImageView;
 import com.tencent.mobileqq.widget.FakeTextView;
 import com.tencent.qphone.base.util.QLog;
-import fdd;
+import fdc;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
@@ -44,7 +44,7 @@ public class IphoneTitleBarActivity
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   public ViewGroup b;
   public float c;
-  public View.OnClickListener f = new fdd(this);
+  public View.OnClickListener f = new fdc(this);
   public TextView k;
   public TextView l;
   public TextView m;
@@ -69,8 +69,8 @@ public class IphoneTitleBarActivity
   {
     this.m = new FakeTextView(this);
     this.p = new FakeImageView(this);
-    this.m.setId(2131231380);
-    this.p.setId(2131231461);
+    this.m.setId(2131231379);
+    this.p.setId(2131231460);
     b(this.m);
     b(this.p);
     return this.m;
@@ -113,7 +113,7 @@ public class IphoneTitleBarActivity
   {
     this.k.setVisibility(8);
     this.k = new FakeTextView(this);
-    this.k.setId(2131231457);
+    this.k.setId(2131231456);
     b(this.k);
     this.k.setVisibility(0);
     this.k.setText(paramInt);
@@ -140,7 +140,7 @@ public class IphoneTitleBarActivity
   public View a_()
   {
     this.l = new FakeTextView(this);
-    this.l.setId(2131231376);
+    this.l.setId(2131231375);
     return this.l;
   }
   
@@ -159,7 +159,7 @@ public class IphoneTitleBarActivity
     this.m.setText(paramInt);
     this.m.setEnabled(false);
     this.n = new FakeTextView(this);
-    this.n.setId(2131231464);
+    this.n.setId(2131231463);
     b(this.n);
     this.n.setText(paramInt);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -179,7 +179,7 @@ public class IphoneTitleBarActivity
     if (this.k == null)
     {
       this.b = new RelativeLayout(this);
-      this.b.setId(2131231448);
+      this.b.setId(2131231447);
       b(this.b);
       d();
       a_();
@@ -231,7 +231,7 @@ public class IphoneTitleBarActivity
   protected View d()
   {
     this.k = new FakeTextView(this);
-    this.k.setId(2131231456);
+    this.k.setId(2131231455);
     this.k.setOnClickListener(this.f);
     b(this.k);
     return this.k;
@@ -299,6 +299,13 @@ public class IphoneTitleBarActivity
     {
     default: 
       return super.findViewById(paramInt);
+    case 2131231455: 
+      if (this.k == null)
+      {
+        this.k = new FakeTextView(this);
+        this.k.setId(2131231455);
+      }
+      return this.k;
     case 2131231456: 
       if (this.k == null)
       {
@@ -306,39 +313,32 @@ public class IphoneTitleBarActivity
         this.k.setId(2131231456);
       }
       return this.k;
-    case 2131231457: 
-      if (this.k == null)
-      {
-        this.k = new FakeTextView(this);
-        this.k.setId(2131231457);
-      }
-      return this.k;
-    case 2131231376: 
+    case 2131231375: 
       if (this.l == null)
       {
         this.l = new FakeTextView(this);
-        this.l.setId(2131231376);
+        this.l.setId(2131231375);
       }
       return this.l;
-    case 2131231380: 
+    case 2131231379: 
       if (this.m == null)
       {
         this.m = new FakeTextView(this);
-        this.m.setId(2131231380);
+        this.m.setId(2131231379);
       }
       return this.m;
-    case 2131231461: 
+    case 2131231460: 
       if (this.p == null)
       {
         this.p = new FakeImageView(this);
-        this.p.setId(2131231461);
+        this.p.setId(2131231460);
       }
       return this.p;
     }
     if (this.b == null)
     {
       this.b = new RelativeLayout(this);
-      this.b.setId(2131231448);
+      this.b.setId(2131231447);
     }
     return this.b;
   }
@@ -396,13 +396,13 @@ public class IphoneTitleBarActivity
     {
     default: 
       return super.onOptionsItemSelected(paramMenuItem);
-    case 2131231456: 
+    case 2131231455: 
       this.k.performClick();
       return true;
-    case 2131231380: 
+    case 2131231379: 
       this.m.performClick();
       return true;
-    case 2131231464: 
+    case 2131231463: 
       this.n.performClick();
       return true;
     }

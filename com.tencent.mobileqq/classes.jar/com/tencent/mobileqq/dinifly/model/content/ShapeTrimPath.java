@@ -63,7 +63,15 @@ public class ShapeTrimPath
   
   public String toString()
   {
-    return "Trim Path: {start: " + this.start + ", end: " + this.end + ", offset: " + this.offset + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Trim Path: {start: ");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", end: ");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append(", offset: ");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ainn;
-import aiqe;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +14,19 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bayu;
-import bckq;
-import bcqq;
-import bcyz;
+import androidx.viewpager.widget.PagerAdapter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.ITroopAvatarUtilApi;
+import com.tencent.mobileqq.troop.api.ITroopCardApi;
+import com.tencent.mobileqq.troop.avatar.AvatarInfo;
+import com.tencent.mobileqq.troop.avatar.api.ITroopPhotoUtilsApi;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -35,95 +37,96 @@ import mqq.util.WeakReference;
 public class AvatarWallViewPagerAdapter
   extends PagerAdapter
 {
-  protected int a;
-  protected Handler a;
-  protected View a;
-  protected QQAppInterface a;
-  protected AvatarWallViewPager a;
-  protected String a;
-  protected List<ainn> a;
-  protected WeakReference<Activity> a;
-  protected boolean a;
-  protected int b;
-  protected Handler b;
-  protected View b;
-  protected String b;
-  protected boolean b;
-  protected int c = 637534208;
+  protected Handler a = new Handler(Looper.getMainLooper());
+  protected boolean b = false;
+  protected WeakReference<Activity> c;
+  protected Handler d;
+  protected AvatarWallViewPager e;
+  protected int f;
+  protected int g;
+  protected AppInterface h;
+  protected String i;
+  protected String j;
+  protected boolean k;
+  protected List<AvatarInfo> l = new ArrayList(0);
+  protected View m;
+  protected View n;
+  protected int o = 637534208;
   
-  public AvatarWallViewPagerAdapter(WeakReference<Activity> paramWeakReference, AvatarWallViewPager paramAvatarWallViewPager, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString1, boolean paramBoolean, Handler paramHandler, String paramString2)
+  public AvatarWallViewPagerAdapter(WeakReference<Activity> paramWeakReference, AvatarWallViewPager paramAvatarWallViewPager, int paramInt1, int paramInt2, AppInterface paramAppInterface, String paramString1, boolean paramBoolean, Handler paramHandler, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-    this.jdField_b_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager = paramAvatarWallViewPager;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (ThemeUtil.isInNightMode(paramQQAppInterface)) {
-      this.c = -1308622848;
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.c = paramWeakReference;
+    this.d = paramHandler;
+    this.e = paramAvatarWallViewPager;
+    this.h = paramAppInterface;
+    this.i = paramString1;
+    this.j = paramString2;
+    this.k = paramBoolean;
+    if (ThemeUtil.isInNightMode(paramAppInterface)) {
+      this.o = -1308622848;
     }
-    if (((paramWeakReference == null) || (paramWeakReference.get() == null) || (paramQQAppInterface == null)) && (QLog.isColorLevel())) {
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null) && (paramAppInterface != null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("AvatarWallViewPagerAdapter", 2, "AvatarWallAdapter Construct error, Activity or QQAppInterface is null !!!!");
     }
   }
   
-  private URLDrawable a(String paramString, ainn paramainn)
+  private URLDrawable a(String paramString, AvatarInfo paramAvatarInfo)
   {
-    paramString = aiqe.a(paramString);
+    paramString = ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getURL4TroopPhoto(paramString);
     if (paramString == null) {
       return null;
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = bayu.a;
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.a;
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
     localObject = new Rect();
-    aiqe.a((Rect)localObject, paramainn.d);
-    paramString.setTag(bcyz.a(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    paramString.setDecodeHandler(bcyz.x);
+    ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getClipRect((Rect)localObject, paramAvatarInfo.l);
+    paramString.setTag(((ITroopCardApi)QRoute.api(ITroopCardApi.class)).buildCustomClipDecoderParams(((Rect)localObject).left, ((Rect)localObject).top, ((Rect)localObject).width(), ((Rect)localObject).height(), this.f, this.g));
+    paramString.setDecodeHandler((DownloadParams.DecodeHandler)((ITroopCardApi)QRoute.api(ITroopCardApi.class)).get_CUSTOM_CLIP_DECODER());
     return paramString;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.l.size();
   }
   
-  public List<ainn> a()
+  public boolean a(List<AvatarInfo> paramList)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(List<ainn> paramList)
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("AvatarWallViewPagerAdapter", 2, "the adapter of AvatarWallViewPager is destroyed ...");
       }
-    }
-    do
-    {
       return false;
-      if (!ainn.a(paramList, this.jdField_a_of_type_JavaUtilList)) {
-        break;
+    }
+    if (AvatarInfo.a(paramList, this.l))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AvatarWallViewPagerAdapter", 2, String.format("setAvatarList equal return", new Object[0]));
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("AvatarWallViewPagerAdapter", 2, String.format("setAvatarList equal return", new Object[0]));
-    return false;
+      return false;
+    }
     if (QLog.isColorLevel()) {
       QLog.i("AvatarWallViewPagerAdapter", 2, String.format("setAvatarList %s", new Object[] { Arrays.deepToString(paramList.toArray()) }));
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_b_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.l.clear();
+    this.l.addAll(paramList);
+    this.n = null;
+    this.m = null;
     notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b();
+    this.e.c();
     return true;
+  }
+  
+  public List<AvatarInfo> b()
+  {
+    return this.l;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -133,180 +136,185 @@ public class AvatarWallViewPagerAdapter
   
   public int getCount()
   {
-    int i = a();
-    if (i <= 1) {
-      return i;
+    int i1 = a();
+    if (i1 <= 1) {
+      return i1;
     }
-    return i + 2;
+    return i1 + 2;
   }
   
   public int getItemPosition(Object paramObject)
   {
     paramObject = (View)paramObject;
-    int i = paramObject.getId();
-    if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return -2;
+    int i1 = paramObject.getId();
+    if (i1 >= 0)
+    {
+      if (i1 >= this.l.size()) {
+        return -2;
+      }
+      if (paramObject.getTag() == null) {
+        return -2;
+      }
+      paramObject = (AvatarInfo)paramObject.getTag();
+      AvatarInfo localAvatarInfo = (AvatarInfo)this.l.get(i1);
+      if ((paramObject.d.equals(localAvatarInfo.d)) && (paramObject.e == localAvatarInfo.e))
+      {
+        if (paramObject.j != localAvatarInfo.j) {
+          return -2;
+        }
+        return -1;
+      }
     }
-    if (paramObject.getTag() == null) {
-      return -2;
-    }
-    paramObject = (ainn)paramObject.getTag();
-    ainn localainn = (ainn)this.jdField_a_of_type_JavaUtilList.get(i);
-    if ((!paramObject.jdField_c_of_type_JavaLangString.equals(localainn.jdField_c_of_type_JavaLangString)) || (paramObject.jdField_b_of_type_Int != localainn.jdField_b_of_type_Int) || (paramObject.jdField_c_of_type_Boolean != localainn.jdField_c_of_type_Boolean)) {
-      return -2;
-    }
-    return -1;
+    return -2;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = null;
-    int i = a();
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (i == 0))
+    int i1 = a();
+    Object localObject2 = this.c;
+    Object localObject1 = null;
+    if ((localObject2 != null) && (((WeakReference)localObject2).get() != null) && (i1 != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarWallViewPagerAdapter", 2, "instantiateItem activity is null or data list count is 0");
+      if (i1 > 1) {
+        if (paramInt == 1)
+        {
+          if (paramViewGroup == null)
+          {
+            localObject2 = this.m;
+            if ((localObject2 != null) && (((View)localObject2).getParent() == null)) {
+              return this.m;
+            }
+          }
+          else
+          {
+            localObject1 = this.m;
+            if ((localObject1 == null) || (((View)localObject1).getParent() != null)) {
+              this.m = ((View)instantiateItem(null, paramInt));
+            }
+            paramViewGroup.addView(this.m);
+            return this.m;
+          }
+        }
+        else if (paramInt == i1) {
+          if (paramViewGroup == null)
+          {
+            localObject2 = this.n;
+            if ((localObject2 != null) && (((View)localObject2).getParent() == null)) {
+              return this.n;
+            }
+          }
+          else
+          {
+            localObject1 = this.n;
+            if ((localObject1 == null) || (((View)localObject1).getParent() != null)) {
+              this.n = ((View)instantiateItem(null, paramInt));
+            }
+            paramViewGroup.addView(this.n);
+            return this.n;
+          }
+        }
       }
-      return null;
-    }
-    if (i > 1) {
-      if (paramInt == 1)
+      if (i1 > 1)
       {
-        if (paramViewGroup == null)
+        if (paramInt == 0)
         {
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == null)) {
-            return this.jdField_a_of_type_AndroidViewView;
-          }
+          i1 -= 1;
+          break label230;
         }
-        else
+        if (paramInt != i1 + 1)
         {
-          if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
-            this.jdField_a_of_type_AndroidViewView = ((View)instantiateItem(null, paramInt));
-          }
-          paramViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-          return this.jdField_a_of_type_AndroidViewView;
+          i1 = paramInt - 1;
+          break label230;
         }
       }
-      else if (paramInt == i) {
-        if (paramViewGroup == null)
-        {
-          if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getParent() == null)) {
-            return this.jdField_b_of_type_AndroidViewView;
-          }
-        }
-        else
-        {
-          if ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_b_of_type_AndroidViewView.getParent() != null)) {
-            this.jdField_b_of_type_AndroidViewView = ((View)instantiateItem(null, paramInt));
-          }
-          paramViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
-          return this.jdField_b_of_type_AndroidViewView;
-        }
+      i1 = 0;
+      label230:
+      localObject2 = LayoutInflater.from((Context)this.c.get()).inflate(2131625908, null);
+      AvatarWallViewPagerAdapter.ViewHolder localViewHolder = new AvatarWallViewPagerAdapter.ViewHolder(this);
+      localViewHolder.a = ((URLImageView)((View)localObject2).findViewById(2131435388));
+      localViewHolder.a.setScaleType(ImageView.ScaleType.FIT_XY);
+      int i2 = i1;
+      if (a() <= i1) {
+        i2 = 0;
       }
-    }
-    if (i > 1) {
-      if (paramInt == 0) {
-        i -= 1;
-      }
-    }
-    for (;;)
-    {
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2131559726, null);
-      bcqq localbcqq = new bcqq(this);
-      localbcqq.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131367944));
-      localbcqq.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      if (a() <= i) {
-        i = 0;
-      }
-      for (;;)
+      AvatarInfo localAvatarInfo = (AvatarInfo)this.l.get(i2);
+      if (localAvatarInfo != null)
       {
-        ainn localainn = (ainn)this.jdField_a_of_type_JavaUtilList.get(i);
-        int j;
-        if (localainn != null)
+        i1 = localAvatarInfo.e;
+        Object localObject3 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
+        if ((i1 == 1) && ((localAvatarInfo.c == null) || (!new File(localAvatarInfo.c).exists()))) {
+          localObject1 = ((ITroopAvatarUtilApi)localObject3).getArtWork(((ITroopAvatarUtilApi)localObject3).getAvatarAddress(localAvatarInfo.d, this.i, 1));
+        } else if ((i1 != 2) && ((localAvatarInfo.c == null) || (!new File(localAvatarInfo.c).exists())))
         {
-          j = localainn.jdField_b_of_type_Int;
-          if ((j == 1) && ((localainn.jdField_b_of_type_JavaLangString == null) || (!new File(localainn.jdField_b_of_type_JavaLangString).exists())))
-          {
-            localObject = bckq.b(bckq.a(localainn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1));
-            label358:
-            if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-              localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131696541));
-            }
-            if (localObject != null)
-            {
-              URLDrawable localURLDrawable = a((String)localObject, localainn);
-              if (localURLDrawable != null)
-              {
-                localURLDrawable.setColorFilter(this.c, PorterDuff.Mode.SRC_ATOP);
-                localbcqq.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localURLDrawable);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("AvatarWallViewPagerAdapter", 2, String.format("viewFactory: FROM_OTHERS, path=" + (String)localObject, new Object[0]));
-              }
-            }
-            if (!localainn.jdField_c_of_type_Boolean) {
-              break label661;
-            }
-            if (localbcqq.jdField_a_of_type_AndroidViewView == null)
-            {
-              localbcqq.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131379524)).inflate();
-              localObject = (FrameLayout.LayoutParams)localbcqq.jdField_a_of_type_AndroidViewView.getLayoutParams();
-              ((FrameLayout.LayoutParams)localObject).height = -1;
-              ((FrameLayout.LayoutParams)localObject).width = -1;
-              localbcqq.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            }
-            localbcqq.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          if (i1 == 3) {
+            localObject1 = ((ITroopAvatarUtilApi)localObject3).getArtWork(((ITroopAvatarUtilApi)localObject3).getAvatarAddress(localAvatarInfo.d, this.i, 0));
           }
         }
-        else
-        {
-          label547:
-          localView.setTag(localainn);
-          localView.setId(i);
-          if (paramViewGroup == null) {
-            break label682;
-          }
-          paramViewGroup.addView(localView);
+        else {
+          localObject1 = localAvatarInfo.c;
         }
-        for (;;)
+        localObject3 = this.c;
+        if (localObject3 != null) {
+          ((View)localObject2).setContentDescription(((Activity)((WeakReference)localObject3).get()).getString(2131893829));
+        }
+        if (localObject1 != null)
         {
-          return localView;
-          if (paramInt == i + 1)
+          localObject3 = a((String)localObject1, localAvatarInfo);
+          if (localObject3 != null)
           {
-            i = 0;
-            break;
+            ((URLDrawable)localObject3).setColorFilter(this.o, PorterDuff.Mode.SRC_ATOP);
+            localViewHolder.a.setImageDrawable((Drawable)localObject3);
           }
-          i = paramInt - 1;
-          break;
-          if ((j == 2) || ((localainn.jdField_b_of_type_JavaLangString != null) && (new File(localainn.jdField_b_of_type_JavaLangString).exists())))
+          if (QLog.isColorLevel())
           {
-            localObject = localainn.jdField_b_of_type_JavaLangString;
-            break label358;
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("viewFactory: FROM_OTHERS, path=");
+            ((StringBuilder)localObject3).append((String)localObject1);
+            QLog.i("AvatarWallViewPagerAdapter", 2, String.format(((StringBuilder)localObject3).toString(), new Object[0]));
           }
-          if (j != 3) {
-            break label358;
+        }
+        if (localAvatarInfo.j)
+        {
+          if (localViewHolder.b == null)
+          {
+            localViewHolder.b = ((ViewStub)((View)localObject2).findViewById(2131449361)).inflate();
+            localObject1 = (FrameLayout.LayoutParams)localViewHolder.b.getLayoutParams();
+            ((FrameLayout.LayoutParams)localObject1).height = -1;
+            ((FrameLayout.LayoutParams)localObject1).width = -1;
+            localViewHolder.b.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           }
-          localObject = bckq.b(bckq.a(localainn.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0));
-          break label358;
-          label661:
-          if (localbcqq.jdField_a_of_type_AndroidViewView == null) {
-            break label547;
-          }
-          localbcqq.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          break label547;
-          label682:
-          i = getCount();
-          if (i > 1) {
-            if (paramInt == 1) {
-              this.jdField_a_of_type_AndroidViewView = localView;
-            } else if (paramInt == i - 2) {
-              this.jdField_b_of_type_AndroidViewView = localView;
-            }
-          }
+          localViewHolder.b.setVisibility(0);
+        }
+        else if (localViewHolder.b != null)
+        {
+          localViewHolder.b.setVisibility(8);
         }
       }
-      i = 0;
+      ((View)localObject2).setTag(localAvatarInfo);
+      ((View)localObject2).setId(i2);
+      if (paramViewGroup != null)
+      {
+        paramViewGroup.addView((View)localObject2);
+        return localObject2;
+      }
+      i1 = getCount();
+      if (i1 > 1)
+      {
+        if (paramInt == 1)
+        {
+          this.m = ((View)localObject2);
+          return localObject2;
+        }
+        if (paramInt == i1 - 2) {
+          this.n = ((View)localObject2);
+        }
+      }
+      return localObject2;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarWallViewPagerAdapter", 2, "instantiateItem activity is null or data list count is 0");
+    }
+    return null;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -316,7 +324,7 @@ public class AvatarWallViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

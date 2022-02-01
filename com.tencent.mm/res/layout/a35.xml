@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="false"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/c3l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="false">
-        <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:layout_gravity="center" android:id="@id/uz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:layout_gravity="center" android:id="@id/a9d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/app_brand_share_page_cover_default" android:scaleType="centerInside" />
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/c6i" android:background="@drawable/az8" android:paddingBottom="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/c6h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_50" />
+    <FrameLayout android:layout_width="@dimen/a5n" android:layout_height="@dimen/a5n">
+        <com.tencent.mm.emoji.view.EmojiStatusView android:gravity="center_horizontal" android:id="@id/c6o" android:layout_width="@dimen/a5n" android:layout_height="@dimen/a5n" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/c6q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </FrameLayout>
-</AbsoluteLayout>
+</LinearLayout>

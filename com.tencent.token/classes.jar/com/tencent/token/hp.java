@@ -1,6 +1,11 @@
 package com.tencent.token;
 
-class hp {}
+public abstract interface hp
+{
+  public abstract void a();
+  
+  public abstract void b();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -15,10 +15,11 @@ public final class BitmapDescriptor
   
   public final Bitmap getBitmap(Context paramContext)
   {
-    if (this.a == null) {
+    hf localhf = this.a;
+    if (localhf == null) {
       return null;
     }
-    return this.a.a(paramContext);
+    return localhf.a(paramContext);
   }
   
   public final hf getFormater()
@@ -28,7 +29,7 @@ public final class BitmapDescriptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptor
  * JD-Core Version:    0.7.0.1
  */

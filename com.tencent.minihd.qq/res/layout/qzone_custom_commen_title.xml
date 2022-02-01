@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlCommenTitle" tencent:skintype="title_bg_bar" style="@style/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <ViewStub android:id="@id/ivTitleName" android:layout="@layout/qzone_title_center" android:inflatedId="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="@dimen/qzone_top_bar_title_max_width" android:layout_centerInParent="true" android:contentDescription="qzone_custome_common_title" />
+    <ViewStub android:id="@id/ivTitleprogress" android:layout="@layout/qzone_title_progress" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="3.0dip" android:layout_toLeftOf="@id/ivTitleName" android:layout_centerInParent="true" />
+    <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+    <ViewStub android:gravity="center" android:id="@id/ivTitleBtnLeftButton" android:layout="@layout/qzone_title_left_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:minWidth="52.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:id="@id/ivTitleBtnRightText" style="@style/title_bar_right_btn" />
+    <ViewStub android:gravity="center" android:id="@id/ivTitleBtnRightContainer" android:layout="@layout/qzone_title_right_container" android:inflatedId="@id/ivTitleBtnRightContainer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/ivTitleBtnRightImageFirst" android:layout="@layout/qzone_title_publish_box" android:layout_width="44.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/ivTitleBtnRightContainer" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/ivTitleBtnTaskNum" android:layout="@layout/qzone_title_tasknum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-32.0dip" android:layout_marginTop="2.0dip" android:layout_alignLeft="@id/ivTitleBtnRightContainer" android:layout_alignParentTop="@id/ivTitleBtnRightContainer" />
+    <ViewStub android:gravity="center" android:id="@id/ivTitleBtnDetailOp" android:layout="@layout/qzone_detail_title_right_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

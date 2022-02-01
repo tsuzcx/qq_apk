@@ -37,6 +37,7 @@ import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.animation.Interpolator;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class RecyclerView
   public static final int HORIZONTAL = 0;
   private static final int INVALID_POINTER = -1;
   public static final int INVALID_TYPE = -1;
-  private static final Class<?>[] LAYOUT_MANAGER_CONSTRUCTOR_SIGNATURE;
+  private static final Class<?>[] LAYOUT_MANAGER_CONSTRUCTOR_SIGNATURE = { Context.class, AttributeSet.class, Integer.TYPE, Integer.TYPE };
   private static final int MAX_SCROLL_DURATION = 2000;
   public static final long NO_ID = -1L;
   public static final int NO_POSITION = -1;
@@ -69,7 +70,7 @@ public class RecyclerView
   private static final String TRACE_ON_LAYOUT_TAG = "RV OnLayout";
   private static final String TRACE_SCROLL_TAG = "RV Scroll";
   public static final int VERTICAL = 1;
-  private static final Interpolator sQuinticInterpolator;
+  private static final Interpolator sQuinticInterpolator = new RecyclerView.3();
   private RecyclerViewAccessibilityDelegate mAccessibilityDelegate;
   private final AccessibilityManager mAccessibilityManager;
   private RecyclerView.OnItemTouchListener mActiveOnItemTouchListener;
@@ -80,8 +81,8 @@ public class RecyclerView
   private RecyclerView.ChildDrawingOrderCallback mChildDrawingOrderCallback;
   ChildHelper mChildHelper;
   private boolean mClipToPadding;
-  private boolean mDataSetHasChangedAfterLayout = false;
-  private int mEatRequestLayout = 0;
+  private boolean mDataSetHasChangedAfterLayout;
+  private int mEatRequestLayout;
   private int mEatenAccessibilityChangeFlags;
   private boolean mFirstLayoutComplete;
   private boolean mHasFixedSize;
@@ -89,61 +90,60 @@ public class RecyclerView
   private int mInitialTouchX;
   private int mInitialTouchY;
   private boolean mIsAttached;
-  RecyclerView.ItemAnimator mItemAnimator = new DefaultItemAnimator();
-  private RecyclerView.ItemAnimator.ItemAnimatorListener mItemAnimatorListener = new RecyclerView.ItemAnimatorRestoreListener(this, null);
-  private Runnable mItemAnimatorRunner = new RecyclerView.2(this);
+  RecyclerView.ItemAnimator mItemAnimator;
+  private RecyclerView.ItemAnimator.ItemAnimatorListener mItemAnimatorListener;
+  private Runnable mItemAnimatorRunner;
   private final ArrayList<RecyclerView.ItemDecoration> mItemDecorations = new ArrayList();
-  boolean mItemsAddedOrRemoved = false;
-  boolean mItemsChanged = false;
+  boolean mItemsAddedOrRemoved;
+  boolean mItemsChanged;
   private int mLastTouchX;
   private int mLastTouchY;
   @VisibleForTesting
   RecyclerView.LayoutManager mLayout;
   private boolean mLayoutFrozen;
-  private int mLayoutOrScrollCounter = 0;
+  private int mLayoutOrScrollCounter;
   private boolean mLayoutRequestEaten;
   private EdgeEffectCompat mLeftGlow;
-  protected final int mMaxFlingVelocity;
+  private final int mMaxFlingVelocity;
   private final int mMinFlingVelocity;
-  private final int[] mMinMaxLayoutPositions = new int[2];
-  private final int[] mNestedOffsets = new int[2];
+  private final int[] mMinMaxLayoutPositions;
+  private final int[] mNestedOffsets;
   private final RecyclerView.RecyclerViewDataObserver mObserver = new RecyclerView.RecyclerViewDataObserver(this, null);
   private List<RecyclerView.OnChildAttachStateChangeListener> mOnChildAttachStateListeners;
   private final ArrayList<RecyclerView.OnItemTouchListener> mOnItemTouchListeners = new ArrayList();
   private RecyclerView.SavedState mPendingSavedState;
   private final boolean mPostUpdatesOnAnimation;
-  private boolean mPostedAnimatorRunner = false;
+  private boolean mPostedAnimatorRunner;
   final RecyclerView.Recycler mRecycler = new RecyclerView.Recycler(this);
   private RecyclerView.RecyclerListener mRecyclerListener;
   private EdgeEffectCompat mRightGlow;
-  private final int[] mScrollConsumed = new int[2];
-  private float mScrollFactor = 1.4E-45F;
+  private final int[] mScrollConsumed;
+  private float mScrollFactor;
   private RecyclerView.OnScrollListener mScrollListener;
   private List<RecyclerView.OnScrollListener> mScrollListeners;
-  private final int[] mScrollOffset = new int[2];
-  private int mScrollPointerId = -1;
-  private int mScrollState = 0;
+  private final int[] mScrollOffset;
+  private int mScrollPointerId;
+  private int mScrollState;
   private final NestedScrollingChildHelper mScrollingChildHelper;
-  final RecyclerView.State mState = new RecyclerView.State();
+  final RecyclerView.State mState;
   private final Rect mTempRect = new Rect();
   private EdgeEffectCompat mTopGlow;
   private int mTouchSlop;
   private final Runnable mUpdateChildViewsRunnable = new RecyclerView.1(this);
   private VelocityTracker mVelocityTracker;
-  protected final RecyclerView.ViewFlinger mViewFlinger = new RecyclerView.ViewFlinger(this);
-  private final ViewInfoStore.ProcessCallback mViewInfoProcessCallback = new RecyclerView.4(this);
+  private final RecyclerView.ViewFlinger mViewFlinger;
+  private final ViewInfoStore.ProcessCallback mViewInfoProcessCallback;
   final ViewInfoStore mViewInfoStore = new ViewInfoStore();
   
   static
   {
-    if ((Build.VERSION.SDK_INT == 18) || (Build.VERSION.SDK_INT == 19) || (Build.VERSION.SDK_INT == 20)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      FORCE_INVALIDATE_DISPLAY_LIST = bool;
-      LAYOUT_MANAGER_CONSTRUCTOR_SIGNATURE = new Class[] { Context.class, AttributeSet.class, Integer.TYPE, Integer.TYPE };
-      sQuinticInterpolator = new RecyclerView.3();
-      return;
+    boolean bool;
+    if ((Build.VERSION.SDK_INT != 18) && (Build.VERSION.SDK_INT != 19) && (Build.VERSION.SDK_INT != 20)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    FORCE_INVALIDATE_DISPLAY_LIST = bool;
   }
   
   public RecyclerView(Context paramContext)
@@ -159,45 +159,67 @@ public class RecyclerView
   public RecyclerView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    boolean bool2 = false;
+    this.mEatRequestLayout = 0;
+    this.mDataSetHasChangedAfterLayout = false;
+    this.mLayoutOrScrollCounter = 0;
+    this.mItemAnimator = new DefaultItemAnimator();
+    this.mScrollState = 0;
+    this.mScrollPointerId = -1;
+    this.mScrollFactor = 1.4E-45F;
+    this.mViewFlinger = new RecyclerView.ViewFlinger(this);
+    this.mState = new RecyclerView.State();
+    this.mItemsAddedOrRemoved = false;
+    this.mItemsChanged = false;
+    this.mItemAnimatorListener = new RecyclerView.ItemAnimatorRestoreListener(this, null);
+    this.mPostedAnimatorRunner = false;
+    this.mMinMaxLayoutPositions = new int[2];
+    this.mScrollOffset = new int[2];
+    this.mScrollConsumed = new int[2];
+    this.mNestedOffsets = new int[2];
+    this.mItemAnimatorRunner = new RecyclerView.2(this);
+    this.mViewInfoProcessCallback = new RecyclerView.4(this);
     setScrollContainer(true);
     setFocusableInTouchMode(true);
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.mPostUpdatesOnAnimation = bool1;
-      paramContext = ViewConfiguration.get(paramContext);
-      this.mTouchSlop = paramContext.getScaledTouchSlop();
-      this.mMinFlingVelocity = paramContext.getScaledMinimumFlingVelocity();
-      this.mMaxFlingVelocity = paramContext.getScaledMaximumFlingVelocity();
-      bool1 = bool2;
-      if (ViewCompat.getOverScrollMode(this) == 2) {
-        bool1 = true;
-      }
-      setWillNotDraw(bool1);
-      this.mItemAnimator.setListener(this.mItemAnimatorListener);
-      initAdapterManager();
-      initChildrenHelper();
-      if (ViewCompat.getImportantForAccessibility(this) == 0) {
-        ViewCompat.setImportantForAccessibility(this, 1);
-      }
-      this.mAccessibilityManager = ((AccessibilityManager)getContext().getSystemService("accessibility"));
-      setAccessibilityDelegateCompat(new RecyclerViewAccessibilityDelegate(this));
-      this.mScrollingChildHelper = new NestedScrollingChildHelper(this);
-      setNestedScrollingEnabled(true);
-      return;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    this.mPostUpdatesOnAnimation = bool1;
+    paramContext = ViewConfiguration.get(paramContext);
+    this.mTouchSlop = paramContext.getScaledTouchSlop();
+    this.mMinFlingVelocity = paramContext.getScaledMinimumFlingVelocity();
+    this.mMaxFlingVelocity = paramContext.getScaledMaximumFlingVelocity();
+    boolean bool1 = bool2;
+    if (ViewCompat.getOverScrollMode(this) == 2) {
+      bool1 = true;
+    }
+    setWillNotDraw(bool1);
+    this.mItemAnimator.setListener(this.mItemAnimatorListener);
+    initAdapterManager();
+    initChildrenHelper();
+    if (ViewCompat.getImportantForAccessibility(this) == 0) {
+      ViewCompat.setImportantForAccessibility(this, 1);
+    }
+    this.mAccessibilityManager = ((AccessibilityManager)getContext().getSystemService("accessibility"));
+    setAccessibilityDelegateCompat(new RecyclerViewAccessibilityDelegate(this));
+    this.mScrollingChildHelper = new NestedScrollingChildHelper(this);
+    setNestedScrollingEnabled(true);
   }
   
   private void addAnimatingView(RecyclerView.ViewHolder paramViewHolder)
   {
     View localView = paramViewHolder.itemView;
-    if (localView.getParent() == this) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (localView.getParent() == this) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.mRecycler.unscrapView(getChildViewHolder(localView));
+    if (paramViewHolder.isTmpDetached())
     {
-      this.mRecycler.unscrapView(getChildViewHolder(localView));
-      if (!paramViewHolder.isTmpDetached()) {
-        break;
-      }
       this.mChildHelper.attachViewToParent(localView, -1, localView.getLayoutParams(), true);
       return;
     }
@@ -250,7 +272,8 @@ public class RecyclerView
   
   private boolean canReuseUpdatedViewHolder(RecyclerView.ViewHolder paramViewHolder)
   {
-    return (this.mItemAnimator == null) || (this.mItemAnimator.canReuseUpdatedViewHolder(paramViewHolder, paramViewHolder.getUnmodifiedPayloads()));
+    RecyclerView.ItemAnimator localItemAnimator = this.mItemAnimator;
+    return (localItemAnimator == null) || (localItemAnimator.canReuseUpdatedViewHolder(paramViewHolder, paramViewHolder.getUnmodifiedPayloads()));
   }
   
   private void cancelTouch()
@@ -261,101 +284,93 @@ public class RecyclerView
   
   private void considerReleasingGlowsOnScroll(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
+    EdgeEffectCompat localEdgeEffectCompat = this.mLeftGlow;
+    if ((localEdgeEffectCompat != null) && (!localEdgeEffectCompat.isFinished()) && (paramInt1 > 0)) {
+      bool2 = this.mLeftGlow.onRelease();
+    } else {
+      bool2 = false;
+    }
+    localEdgeEffectCompat = this.mRightGlow;
     boolean bool1 = bool2;
-    if (this.mLeftGlow != null)
+    if (localEdgeEffectCompat != null)
     {
       bool1 = bool2;
-      if (!this.mLeftGlow.isFinished())
+      if (!localEdgeEffectCompat.isFinished())
       {
         bool1 = bool2;
-        if (paramInt1 > 0) {
-          bool1 = this.mLeftGlow.onRelease();
-        }
-      }
-    }
-    bool2 = bool1;
-    if (this.mRightGlow != null)
-    {
-      bool2 = bool1;
-      if (!this.mRightGlow.isFinished())
-      {
-        bool2 = bool1;
         if (paramInt1 < 0) {
-          bool2 = bool1 | this.mRightGlow.onRelease();
+          bool1 = bool2 | this.mRightGlow.onRelease();
         }
       }
     }
-    bool1 = bool2;
-    if (this.mTopGlow != null)
-    {
-      bool1 = bool2;
-      if (!this.mTopGlow.isFinished())
-      {
-        bool1 = bool2;
-        if (paramInt2 > 0) {
-          bool1 = bool2 | this.mTopGlow.onRelease();
-        }
-      }
-    }
-    bool2 = bool1;
-    if (this.mBottomGlow != null)
+    localEdgeEffectCompat = this.mTopGlow;
+    boolean bool2 = bool1;
+    if (localEdgeEffectCompat != null)
     {
       bool2 = bool1;
-      if (!this.mBottomGlow.isFinished())
+      if (!localEdgeEffectCompat.isFinished())
       {
         bool2 = bool1;
-        if (paramInt2 < 0) {
-          bool2 = bool1 | this.mBottomGlow.onRelease();
+        if (paramInt2 > 0) {
+          bool2 = bool1 | this.mTopGlow.onRelease();
         }
       }
     }
-    if (bool2) {
+    localEdgeEffectCompat = this.mBottomGlow;
+    bool1 = bool2;
+    if (localEdgeEffectCompat != null)
+    {
+      bool1 = bool2;
+      if (!localEdgeEffectCompat.isFinished())
+      {
+        bool1 = bool2;
+        if (paramInt2 < 0) {
+          bool1 = bool2 | this.mBottomGlow.onRelease();
+        }
+      }
+    }
+    if (bool1) {
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   private void consumePendingUpdateOperations()
   {
-    if (!this.mFirstLayoutComplete) {}
-    label104:
-    do
+    if (!this.mFirstLayoutComplete) {
+      return;
+    }
+    if (this.mDataSetHasChangedAfterLayout)
     {
-      do
-      {
-        return;
-        if (this.mDataSetHasChangedAfterLayout)
-        {
-          TraceCompat.beginSection("RV FullInvalidate");
+      TraceCompat.beginSection("RV FullInvalidate");
+      dispatchLayout();
+      TraceCompat.endSection();
+      return;
+    }
+    if (!this.mAdapterHelper.hasPendingUpdates()) {
+      return;
+    }
+    if ((this.mAdapterHelper.hasAnyUpdateTypes(4)) && (!this.mAdapterHelper.hasAnyUpdateTypes(11)))
+    {
+      TraceCompat.beginSection("RV PartialInvalidate");
+      eatRequestLayout();
+      this.mAdapterHelper.preProcess();
+      if (!this.mLayoutRequestEaten) {
+        if (hasUpdatedView()) {
           dispatchLayout();
-          TraceCompat.endSection();
-          return;
-        }
-      } while (!this.mAdapterHelper.hasPendingUpdates());
-      if ((this.mAdapterHelper.hasAnyUpdateTypes(4)) && (!this.mAdapterHelper.hasAnyUpdateTypes(11)))
-      {
-        TraceCompat.beginSection("RV PartialInvalidate");
-        eatRequestLayout();
-        this.mAdapterHelper.preProcess();
-        if (!this.mLayoutRequestEaten)
-        {
-          if (!hasUpdatedView()) {
-            break label104;
-          }
-          dispatchLayout();
-        }
-        for (;;)
-        {
-          resumeRequestLayout(true);
-          TraceCompat.endSection();
-          return;
+        } else {
           this.mAdapterHelper.consumePostponedUpdates();
         }
       }
-    } while (!this.mAdapterHelper.hasPendingUpdates());
-    TraceCompat.beginSection("RV FullInvalidate");
-    dispatchLayout();
-    TraceCompat.endSection();
+      resumeRequestLayout(true);
+      TraceCompat.endSection();
+      return;
+    }
+    if (this.mAdapterHelper.hasPendingUpdates())
+    {
+      TraceCompat.beginSection("RV FullInvalidate");
+      dispatchLayout();
+      TraceCompat.endSection();
+    }
   }
   
   private void createLayoutManager(Context paramContext, String paramString, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
@@ -368,59 +383,77 @@ public class RecyclerView
         String str = getFullClassName(paramContext, paramString);
         try
         {
-          if (isInEditMode()) {}
-          Class localClass;
-          for (paramString = getClass().getClassLoader();; paramString = paramContext.getClassLoader())
+          if (isInEditMode()) {
+            paramString = getClass().getClassLoader();
+          } else {
+            paramString = paramContext.getClassLoader();
+          }
+          Class localClass = paramString.loadClass(str).asSubclass(RecyclerView.LayoutManager.class);
+          Object localObject = null;
+          try
           {
-            localClass = paramString.loadClass(str).asSubclass(RecyclerView.LayoutManager.class);
-            try
-            {
-              paramString = localClass.getConstructor(LAYOUT_MANAGER_CONSTRUCTOR_SIGNATURE);
-              Object[] arrayOfObject = new Object[4];
-              arrayOfObject[0] = paramContext;
-              arrayOfObject[1] = paramAttributeSet;
-              arrayOfObject[2] = Integer.valueOf(paramInt1);
-              arrayOfObject[3] = Integer.valueOf(paramInt2);
-              paramContext = arrayOfObject;
-            }
-            catch (NoSuchMethodException paramContext)
-            {
-              try
-              {
-                paramString = localClass.getConstructor(new Class[0]);
-                paramContext = null;
-              }
-              catch (NoSuchMethodException paramString)
-              {
-                paramString.initCause(paramContext);
-                throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Error creating LayoutManager " + str, paramString);
-              }
-            }
+            paramString = localClass.getConstructor(LAYOUT_MANAGER_CONSTRUCTOR_SIGNATURE);
+            paramContext = new Object[] { paramContext, paramAttributeSet, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) };
+          }
+          catch (NoSuchMethodException paramContext) {}
+          try
+          {
+            paramString = localClass.getConstructor(new Class[0]);
+            paramContext = localObject;
             paramString.setAccessible(true);
             setLayoutManager((RecyclerView.LayoutManager)paramString.newInstance(paramContext));
             return;
           }
+          catch (NoSuchMethodException paramString)
+          {
+            paramString.initCause(paramContext);
+            paramContext = new StringBuilder();
+            paramContext.append(paramAttributeSet.getPositionDescription());
+            paramContext.append(": Error creating LayoutManager ");
+            paramContext.append(str);
+            throw new IllegalStateException(paramContext.toString(), paramString);
+          }
           return;
-        }
-        catch (ClassNotFoundException paramContext)
-        {
-          throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Unable to find LayoutManager " + str, paramContext);
-        }
-        catch (InvocationTargetException paramContext)
-        {
-          throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Could not instantiate the LayoutManager: " + str, paramContext);
-        }
-        catch (InstantiationException paramContext)
-        {
-          throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Could not instantiate the LayoutManager: " + str, paramContext);
-        }
-        catch (IllegalAccessException paramContext)
-        {
-          throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Cannot access non-public constructor " + str, paramContext);
         }
         catch (ClassCastException paramContext)
         {
-          throw new IllegalStateException(paramAttributeSet.getPositionDescription() + ": Class is not a LayoutManager " + str, paramContext);
+          paramString = new StringBuilder();
+          paramString.append(paramAttributeSet.getPositionDescription());
+          paramString.append(": Class is not a LayoutManager ");
+          paramString.append(str);
+          throw new IllegalStateException(paramString.toString(), paramContext);
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAttributeSet.getPositionDescription());
+          paramString.append(": Cannot access non-public constructor ");
+          paramString.append(str);
+          throw new IllegalStateException(paramString.toString(), paramContext);
+        }
+        catch (InstantiationException paramContext)
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAttributeSet.getPositionDescription());
+          paramString.append(": Could not instantiate the LayoutManager: ");
+          paramString.append(str);
+          throw new IllegalStateException(paramString.toString(), paramContext);
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAttributeSet.getPositionDescription());
+          paramString.append(": Could not instantiate the LayoutManager: ");
+          paramString.append(str);
+          throw new IllegalStateException(paramString.toString(), paramContext);
+        }
+        catch (ClassNotFoundException paramContext)
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAttributeSet.getPositionDescription());
+          paramString.append(": Unable to find LayoutManager ");
+          paramString.append(str);
+          throw new IllegalStateException(paramString.toString(), paramContext);
         }
       }
     }
@@ -428,68 +461,72 @@ public class RecyclerView
   
   private void defaultOnMeasure(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt1);
-    int i = View.MeasureSpec.getMode(paramInt2);
-    paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    switch (j)
+    int m = View.MeasureSpec.getMode(paramInt1);
+    int k = View.MeasureSpec.getMode(paramInt2);
+    int j = View.MeasureSpec.getSize(paramInt1);
+    int i = View.MeasureSpec.getSize(paramInt2);
+    paramInt1 = j;
+    if (m != -2147483648)
     {
-    default: 
-      paramInt1 = ViewCompat.getMinimumWidth(this);
+      paramInt1 = j;
+      if (m != 1073741824) {
+        paramInt1 = ViewCompat.getMinimumWidth(this);
+      }
     }
-    switch (i)
+    paramInt2 = i;
+    if (k != -2147483648)
     {
-    default: 
-      paramInt2 = ViewCompat.getMinimumHeight(this);
+      paramInt2 = i;
+      if (k != 1073741824) {
+        paramInt2 = ViewCompat.getMinimumHeight(this);
+      }
     }
     setMeasuredDimension(paramInt1, paramInt2);
   }
   
   private boolean didChildRangeChange(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
     int j = this.mChildHelper.getChildCount();
-    boolean bool1;
-    if (j == 0) {
+    boolean bool = true;
+    if (j == 0)
+    {
       if (paramInt1 == 0)
       {
-        bool1 = bool2;
-        if (paramInt2 == 0) {}
+        if (paramInt2 != 0) {
+          return true;
+        }
+        bool = false;
       }
-      else
-      {
-        bool1 = true;
-      }
+      return bool;
     }
-    int i;
-    do
+    int i = 0;
+    while (i < j)
     {
-      return bool1;
-      i = 0;
-      bool1 = bool2;
-    } while (i >= j);
-    RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-    if ((localViewHolder == null) || (localViewHolder.shouldIgnore())) {}
-    int k;
-    do
-    {
+      RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
+      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore()))
+      {
+        int k = localViewHolder.getLayoutPosition();
+        if ((k < paramInt1) || (k > paramInt2)) {
+          return true;
+        }
+      }
       i += 1;
-      break;
-      k = localViewHolder.getLayoutPosition();
-    } while ((k >= paramInt1) && (k <= paramInt2));
-    return true;
+    }
+    return false;
   }
   
   private void dispatchChildAttached(View paramView)
   {
-    RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(paramView);
+    Object localObject = getChildViewHolderInt(paramView);
     onChildAttachedToWindow(paramView);
-    if ((this.mAdapter != null) && (localViewHolder != null)) {
-      this.mAdapter.onViewAttachedToWindow(localViewHolder);
+    RecyclerView.Adapter localAdapter = this.mAdapter;
+    if ((localAdapter != null) && (localObject != null)) {
+      localAdapter.onViewAttachedToWindow((RecyclerView.ViewHolder)localObject);
     }
-    if (this.mOnChildAttachStateListeners != null)
+    localObject = this.mOnChildAttachStateListeners;
+    if (localObject != null)
     {
-      int i = this.mOnChildAttachStateListeners.size() - 1;
+      int i = ((List)localObject).size() - 1;
       while (i >= 0)
       {
         ((RecyclerView.OnChildAttachStateChangeListener)this.mOnChildAttachStateListeners.get(i)).onChildViewAttachedToWindow(paramView);
@@ -500,14 +537,16 @@ public class RecyclerView
   
   private void dispatchChildDetached(View paramView)
   {
-    RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(paramView);
+    Object localObject = getChildViewHolderInt(paramView);
     onChildDetachedFromWindow(paramView);
-    if ((this.mAdapter != null) && (localViewHolder != null)) {
-      this.mAdapter.onViewDetachedFromWindow(localViewHolder);
+    RecyclerView.Adapter localAdapter = this.mAdapter;
+    if ((localAdapter != null) && (localObject != null)) {
+      localAdapter.onViewDetachedFromWindow((RecyclerView.ViewHolder)localObject);
     }
-    if (this.mOnChildAttachStateListeners != null)
+    localObject = this.mOnChildAttachStateListeners;
+    if (localObject != null)
     {
-      int i = this.mOnChildAttachStateListeners.size() - 1;
+      int i = ((List)localObject).size() - 1;
       while (i >= 0)
       {
         ((RecyclerView.OnChildAttachStateChangeListener)this.mOnChildAttachStateListeners.get(i)).onChildViewDetachedFromWindow(paramView);
@@ -531,55 +570,48 @@ public class RecyclerView
   
   private void dispatchLayoutStep1()
   {
+    Object localObject = this.mState;
     boolean bool = true;
-    this.mState.assertLayoutStep(1);
+    ((RecyclerView.State)localObject).assertLayoutStep(1);
     RecyclerView.State.access$2202(this.mState, false);
     eatRequestLayout();
     this.mViewInfoStore.clear();
     onEnterLayoutOrScroll();
     processAdapterUpdatesAndSetAnimationFlags();
-    Object localObject = this.mState;
+    localObject = this.mState;
+    if ((!RecyclerView.State.access$2500((RecyclerView.State)localObject)) || (!this.mItemsChanged)) {
+      bool = false;
+    }
+    RecyclerView.State.access$2702((RecyclerView.State)localObject, bool);
+    this.mItemsChanged = false;
+    this.mItemsAddedOrRemoved = false;
+    localObject = this.mState;
+    RecyclerView.State.access$2402((RecyclerView.State)localObject, RecyclerView.State.access$2300((RecyclerView.State)localObject));
+    this.mState.mItemCount = this.mAdapter.getItemCount();
+    findMinMaxChildLayoutPositions(this.mMinMaxLayoutPositions);
     int j;
     int i;
-    if ((RecyclerView.State.access$2500(this.mState)) && (this.mItemsChanged))
+    RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo;
+    if (RecyclerView.State.access$2500(this.mState))
     {
-      RecyclerView.State.access$2702((RecyclerView.State)localObject, bool);
-      this.mItemsChanged = false;
-      this.mItemsAddedOrRemoved = false;
-      RecyclerView.State.access$2402(this.mState, RecyclerView.State.access$2300(this.mState));
-      this.mState.mItemCount = this.mAdapter.getItemCount();
-      findMinMaxChildLayoutPositions(this.mMinMaxLayoutPositions);
-      if (!RecyclerView.State.access$2500(this.mState)) {
-        break label299;
-      }
       j = this.mChildHelper.getChildCount();
       i = 0;
-      label137:
-      if (i >= j) {
-        break label299;
-      }
-      localObject = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-      if ((localObject != null) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()) && ((!((RecyclerView.ViewHolder)localObject).isInvalid()) || (this.mAdapter.hasStableIds()))) {
-        break label199;
-      }
-    }
-    label199:
-    RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo;
-    for (;;)
-    {
-      i += 1;
-      break label137;
-      bool = false;
-      break;
-      localItemHolderInfo = this.mItemAnimator.recordPreLayoutInformation(this.mState, (RecyclerView.ViewHolder)localObject, RecyclerView.ItemAnimator.buildAdapterChangeFlagsForAnimations((RecyclerView.ViewHolder)localObject), ((RecyclerView.ViewHolder)localObject).getUnmodifiedPayloads());
-      this.mViewInfoStore.addToPreLayout((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
-      if ((RecyclerView.State.access$2700(this.mState)) && (((RecyclerView.ViewHolder)localObject).isUpdated()) && (!((RecyclerView.ViewHolder)localObject).isRemoved()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()) && (!((RecyclerView.ViewHolder)localObject).isInvalid()))
+      while (i < j)
       {
-        long l = getChangedHolderKey((RecyclerView.ViewHolder)localObject);
-        this.mViewInfoStore.addToOldChangeHolders(l, (RecyclerView.ViewHolder)localObject);
+        localObject = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
+        if ((localObject != null) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()) && ((!((RecyclerView.ViewHolder)localObject).isInvalid()) || (this.mAdapter.hasStableIds())))
+        {
+          localItemHolderInfo = this.mItemAnimator.recordPreLayoutInformation(this.mState, (RecyclerView.ViewHolder)localObject, RecyclerView.ItemAnimator.buildAdapterChangeFlagsForAnimations((RecyclerView.ViewHolder)localObject), ((RecyclerView.ViewHolder)localObject).getUnmodifiedPayloads());
+          this.mViewInfoStore.addToPreLayout((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
+          if ((RecyclerView.State.access$2700(this.mState)) && (((RecyclerView.ViewHolder)localObject).isUpdated()) && (!((RecyclerView.ViewHolder)localObject).isRemoved()) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()) && (!((RecyclerView.ViewHolder)localObject).isInvalid()))
+          {
+            long l = getChangedHolderKey((RecyclerView.ViewHolder)localObject);
+            this.mViewInfoStore.addToOldChangeHolders(l, (RecyclerView.ViewHolder)localObject);
+          }
+        }
+        i += 1;
       }
     }
-    label299:
     if (RecyclerView.State.access$2300(this.mState))
     {
       saveOldPositions();
@@ -588,41 +620,35 @@ public class RecyclerView
       this.mLayout.onLayoutChildren(this.mRecycler, this.mState);
       RecyclerView.State.access$1802(this.mState, bool);
       i = 0;
-      if (i < this.mChildHelper.getChildCount())
+      while (i < this.mChildHelper.getChildCount())
       {
         localObject = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-        if ((localObject == null) || (((RecyclerView.ViewHolder)localObject).shouldIgnore())) {}
-        for (;;)
+        if ((localObject != null) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()) && (!this.mViewInfoStore.isInPreLayout((RecyclerView.ViewHolder)localObject)))
         {
-          i += 1;
-          break;
-          if (!this.mViewInfoStore.isInPreLayout((RecyclerView.ViewHolder)localObject))
-          {
-            int k = RecyclerView.ItemAnimator.buildAdapterChangeFlagsForAnimations((RecyclerView.ViewHolder)localObject);
-            bool = ((RecyclerView.ViewHolder)localObject).hasAnyOfTheFlags(8192);
-            j = k;
-            if (!bool) {
-              j = k | 0x1000;
-            }
-            localItemHolderInfo = this.mItemAnimator.recordPreLayoutInformation(this.mState, (RecyclerView.ViewHolder)localObject, j, ((RecyclerView.ViewHolder)localObject).getUnmodifiedPayloads());
-            if (bool) {
-              recordAnimationInfoIfBouncedHiddenView((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
-            } else {
-              this.mViewInfoStore.addToAppearedInPreLayoutHolders((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
-            }
+          int k = RecyclerView.ItemAnimator.buildAdapterChangeFlagsForAnimations((RecyclerView.ViewHolder)localObject);
+          bool = ((RecyclerView.ViewHolder)localObject).hasAnyOfTheFlags(8192);
+          j = k;
+          if (!bool) {
+            j = k | 0x1000;
+          }
+          localItemHolderInfo = this.mItemAnimator.recordPreLayoutInformation(this.mState, (RecyclerView.ViewHolder)localObject, j, ((RecyclerView.ViewHolder)localObject).getUnmodifiedPayloads());
+          if (bool) {
+            recordAnimationInfoIfBouncedHiddenView((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
+          } else {
+            this.mViewInfoStore.addToAppearedInPreLayoutHolders((RecyclerView.ViewHolder)localObject, localItemHolderInfo);
           }
         }
+        i += 1;
       }
       clearOldPositions();
     }
-    for (;;)
+    else
     {
-      onExitLayoutOrScroll();
-      resumeRequestLayout(false);
-      RecyclerView.State.access$2102(this.mState, 2);
-      return;
       clearOldPositions();
     }
+    onExitLayoutOrScroll();
+    resumeRequestLayout(false);
+    RecyclerView.State.access$2102(this.mState, 2);
   }
   
   private void dispatchLayoutStep2()
@@ -638,15 +664,16 @@ public class RecyclerView
     RecyclerView.State.access$1802(this.mState, false);
     this.mPendingSavedState = null;
     RecyclerView.State localState = this.mState;
-    if ((RecyclerView.State.access$2500(this.mState)) && (this.mItemAnimator != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      RecyclerView.State.access$2502(localState, bool);
-      RecyclerView.State.access$2102(this.mState, 4);
-      onExitLayoutOrScroll();
-      resumeRequestLayout(false);
-      return;
+    boolean bool;
+    if ((RecyclerView.State.access$2500(localState)) && (this.mItemAnimator != null)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    RecyclerView.State.access$2502(localState, bool);
+    RecyclerView.State.access$2102(this.mState, 4);
+    onExitLayoutOrScroll();
+    resumeRequestLayout(false);
   }
   
   private void dispatchLayoutStep3()
@@ -658,40 +685,39 @@ public class RecyclerView
     {
       int j = this.mChildHelper.getChildCount();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
-        RecyclerView.ViewHolder localViewHolder1 = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-        if ((localViewHolder1 == null) || (localViewHolder1.shouldIgnore())) {}
-        for (;;)
+        localObject = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
+        if ((localObject != null) && (!((RecyclerView.ViewHolder)localObject).shouldIgnore()))
         {
-          i += 1;
-          break;
-          long l = getChangedHolderKey(localViewHolder1);
-          RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo2 = this.mItemAnimator.recordPostLayoutInformation(this.mState, localViewHolder1);
-          RecyclerView.ViewHolder localViewHolder2 = this.mViewInfoStore.getFromOldChangeHolders(l);
-          if ((localViewHolder2 != null) && (!localViewHolder2.shouldIgnore()))
+          long l = getChangedHolderKey((RecyclerView.ViewHolder)localObject);
+          RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo2 = this.mItemAnimator.recordPostLayoutInformation(this.mState, (RecyclerView.ViewHolder)localObject);
+          RecyclerView.ViewHolder localViewHolder = this.mViewInfoStore.getFromOldChangeHolders(l);
+          if ((localViewHolder != null) && (!localViewHolder.shouldIgnore()))
           {
-            boolean bool1 = this.mViewInfoStore.isDisappearing(localViewHolder2);
-            boolean bool2 = this.mViewInfoStore.isDisappearing(localViewHolder1);
-            RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo1 = this.mViewInfoStore.popFromPreLayout(localViewHolder2);
-            this.mViewInfoStore.addToPostLayout(localViewHolder1, localItemHolderInfo2);
-            localItemHolderInfo2 = this.mViewInfoStore.popFromPostLayout(localViewHolder1);
+            boolean bool1 = this.mViewInfoStore.isDisappearing(localViewHolder);
+            boolean bool2 = this.mViewInfoStore.isDisappearing((RecyclerView.ViewHolder)localObject);
+            RecyclerView.ItemAnimator.ItemHolderInfo localItemHolderInfo1 = this.mViewInfoStore.popFromPreLayout(localViewHolder);
+            this.mViewInfoStore.addToPostLayout((RecyclerView.ViewHolder)localObject, localItemHolderInfo2);
+            localItemHolderInfo2 = this.mViewInfoStore.popFromPostLayout((RecyclerView.ViewHolder)localObject);
             if (localItemHolderInfo1 == null) {
-              handleMissingPreInfoForChangeError(l, localViewHolder1, localViewHolder2);
+              handleMissingPreInfoForChangeError(l, (RecyclerView.ViewHolder)localObject, localViewHolder);
             } else {
-              animateChange(localViewHolder2, localViewHolder1, localItemHolderInfo1, localItemHolderInfo2, bool1, bool2);
+              animateChange(localViewHolder, (RecyclerView.ViewHolder)localObject, localItemHolderInfo1, localItemHolderInfo2, bool1, bool2);
             }
           }
           else
           {
-            this.mViewInfoStore.addToPostLayout(localViewHolder1, localItemHolderInfo2);
+            this.mViewInfoStore.addToPostLayout((RecyclerView.ViewHolder)localObject, localItemHolderInfo2);
           }
         }
+        i += 1;
       }
       this.mViewInfoStore.process(this.mViewInfoProcessCallback);
     }
     this.mLayout.removeAndRecycleScrapInt(this.mRecycler);
-    RecyclerView.State.access$2802(this.mState, this.mState.mItemCount);
+    Object localObject = this.mState;
+    RecyclerView.State.access$2802((RecyclerView.State)localObject, ((RecyclerView.State)localObject).mItemCount);
     this.mDataSetHasChangedAfterLayout = false;
     RecyclerView.State.access$2502(this.mState, false);
     RecyclerView.State.access$2302(this.mState, false);
@@ -701,7 +727,8 @@ public class RecyclerView
     }
     resumeRequestLayout(false);
     this.mViewInfoStore.clear();
-    if (didChildRangeChange(this.mMinMaxLayoutPositions[0], this.mMinMaxLayoutPositions[1])) {
+    localObject = this.mMinMaxLayoutPositions;
+    if (didChildRangeChange(localObject[0], localObject[1])) {
       dispatchOnScrolled(0, 0);
     }
   }
@@ -709,37 +736,36 @@ public class RecyclerView
   private boolean dispatchOnItemTouch(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    int j;
-    if (this.mActiveOnItemTouchListener != null)
-    {
-      if (i == 0) {
+    RecyclerView.OnItemTouchListener localOnItemTouchListener = this.mActiveOnItemTouchListener;
+    if (localOnItemTouchListener != null) {
+      if (i == 0)
+      {
         this.mActiveOnItemTouchListener = null;
       }
-    }
-    else
-    {
-      if (i == 0) {
-        break label108;
-      }
-      j = this.mOnItemTouchListeners.size();
-      i = 0;
-    }
-    while (i < j)
-    {
-      RecyclerView.OnItemTouchListener localOnItemTouchListener = (RecyclerView.OnItemTouchListener)this.mOnItemTouchListeners.get(i);
-      if (localOnItemTouchListener.onInterceptTouchEvent(this, paramMotionEvent))
+      else
       {
-        this.mActiveOnItemTouchListener = localOnItemTouchListener;
-        return true;
-        this.mActiveOnItemTouchListener.onTouchEvent(this, paramMotionEvent);
+        localOnItemTouchListener.onTouchEvent(this, paramMotionEvent);
         if ((i == 3) || (i == 1)) {
           this.mActiveOnItemTouchListener = null;
         }
         return true;
       }
-      i += 1;
     }
-    label108:
+    if (i != 0)
+    {
+      int j = this.mOnItemTouchListeners.size();
+      i = 0;
+      while (i < j)
+      {
+        localOnItemTouchListener = (RecyclerView.OnItemTouchListener)this.mOnItemTouchListeners.get(i);
+        if (localOnItemTouchListener.onInterceptTouchEvent(this, paramMotionEvent))
+        {
+          this.mActiveOnItemTouchListener = localOnItemTouchListener;
+          return true;
+        }
+        i += 1;
+      }
+    }
     return false;
   }
   
@@ -766,59 +792,56 @@ public class RecyclerView
   
   private void findMinMaxChildLayoutPositions(int[] paramArrayOfInt)
   {
-    int i2 = this.mChildHelper.getChildCount();
-    if (i2 == 0)
+    int i3 = this.mChildHelper.getChildCount();
+    if (i3 == 0)
     {
       paramArrayOfInt[0] = 0;
       paramArrayOfInt[1] = 0;
       return;
     }
-    int i = 2147483647;
-    int n = -2147483648;
     int m = 0;
-    RecyclerView.ViewHolder localViewHolder;
-    int k;
-    if (m < i2)
+    int i = 2147483647;
+    int i2;
+    for (int k = -2147483648; m < i3; k = i2)
     {
-      localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(m));
-      k = i;
-      if (localViewHolder == null) {
-        break label128;
+      RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(m));
+      int i1 = i;
+      i2 = k;
+      if (localViewHolder != null) {
+        if (localViewHolder.shouldIgnore())
+        {
+          i1 = i;
+          i2 = k;
+        }
+        else
+        {
+          int n = localViewHolder.getLayoutPosition();
+          int j = i;
+          if (n < i) {
+            j = n;
+          }
+          i1 = j;
+          i2 = k;
+          if (n > k)
+          {
+            i2 = n;
+            i1 = j;
+          }
+        }
       }
-      if (!localViewHolder.shouldIgnore()) {}
-    }
-    for (;;)
-    {
       m += 1;
-      break;
-      int i1 = localViewHolder.getLayoutPosition();
-      int j = i;
-      if (i1 < i) {
-        j = i1;
-      }
-      k = j;
-      if (i1 > n)
-      {
-        n = i1;
-        i = j;
-        continue;
-        paramArrayOfInt[0] = i;
-        paramArrayOfInt[1] = n;
-      }
-      else
-      {
-        label128:
-        i = k;
-      }
+      i = i1;
     }
+    paramArrayOfInt[0] = i;
+    paramArrayOfInt[1] = k;
   }
   
   private int getAdapterPositionFor(RecyclerView.ViewHolder paramViewHolder)
   {
-    if ((paramViewHolder.hasAnyOfTheFlags(524)) || (!paramViewHolder.isBound())) {
-      return -1;
+    if ((!paramViewHolder.hasAnyOfTheFlags(524)) && (paramViewHolder.isBound())) {
+      return this.mAdapterHelper.applyPendingUpdatesToPosition(paramViewHolder.mPosition);
     }
-    return this.mAdapterHelper.applyPendingUpdatesToPosition(paramViewHolder.mPosition);
+    return -1;
   }
   
   static RecyclerView.ViewHolder getChildViewHolderInt(View paramView)
@@ -831,15 +854,21 @@ public class RecyclerView
   
   private String getFullClassName(Context paramContext, String paramString)
   {
-    if (paramString.charAt(0) == '.') {
-      paramContext = paramContext.getPackageName() + paramString;
-    }
-    do
+    if (paramString.charAt(0) == '.')
     {
-      return paramContext;
-      paramContext = paramString;
-    } while (paramString.contains("."));
-    return RecyclerView.class.getPackage().getName() + '.' + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
+    }
+    if (paramString.contains(".")) {
+      return paramString;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append(RecyclerView.class.getPackage().getName());
+    paramContext.append('.');
+    paramContext.append(paramString);
+    return paramContext.toString();
   }
   
   private float getScrollFactor()
@@ -849,54 +878,62 @@ public class RecyclerView
       TypedValue localTypedValue = new TypedValue();
       if (getContext().getTheme().resolveAttribute(16842829, localTypedValue, true)) {
         this.mScrollFactor = localTypedValue.getDimension(getContext().getResources().getDisplayMetrics());
+      } else {
+        return 0.0F;
       }
     }
-    else
-    {
-      return this.mScrollFactor;
-    }
-    return 0.0F;
+    return this.mScrollFactor;
   }
   
   private void handleMissingPreInfoForChangeError(long paramLong, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
     int j = this.mChildHelper.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-      if ((localViewHolder == null) || (localViewHolder == paramViewHolder1)) {}
-      while (getChangedHolderKey(localViewHolder) != paramLong)
+      localObject = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
+      if ((localObject != null) && (localObject != paramViewHolder1) && (getChangedHolderKey((RecyclerView.ViewHolder)localObject) == paramLong))
       {
-        i += 1;
-        break;
+        paramViewHolder2 = this.mAdapter;
+        if ((paramViewHolder2 != null) && (paramViewHolder2.hasStableIds()))
+        {
+          paramViewHolder2 = new StringBuilder();
+          paramViewHolder2.append("Two different ViewHolders have the same stable ID. Stable IDs in your adapter MUST BE unique and SHOULD NOT change.\n ViewHolder 1:");
+          paramViewHolder2.append(localObject);
+          paramViewHolder2.append(" \n View Holder 2:");
+          paramViewHolder2.append(paramViewHolder1);
+          throw new IllegalStateException(paramViewHolder2.toString());
+        }
+        paramViewHolder2 = new StringBuilder();
+        paramViewHolder2.append("Two different ViewHolders have the same change ID. This might happen due to inconsistent Adapter update events or if the LayoutManager lays out the same View multiple times.\n ViewHolder 1:");
+        paramViewHolder2.append(localObject);
+        paramViewHolder2.append(" \n View Holder 2:");
+        paramViewHolder2.append(paramViewHolder1);
+        throw new IllegalStateException(paramViewHolder2.toString());
       }
-      if ((this.mAdapter != null) && (this.mAdapter.hasStableIds())) {
-        throw new IllegalStateException("Two different ViewHolders have the same stable ID. Stable IDs in your adapter MUST BE unique and SHOULD NOT change.\n ViewHolder 1:" + localViewHolder + " \n View Holder 2:" + paramViewHolder1);
-      }
-      throw new IllegalStateException("Two different ViewHolders have the same change ID. This might happen due to inconsistent Adapter update events or if the LayoutManager lays out the same View multiple times.\n ViewHolder 1:" + localViewHolder + " \n View Holder 2:" + paramViewHolder1);
+      i += 1;
     }
-    Log.e("RecyclerView", "Problem while matching changed view holders with the newones. The pre-layout information for the change holder " + paramViewHolder2 + " cannot be found but it is necessary for " + paramViewHolder1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Problem while matching changed view holders with the newones. The pre-layout information for the change holder ");
+    ((StringBuilder)localObject).append(paramViewHolder2);
+    ((StringBuilder)localObject).append(" cannot be found but it is necessary for ");
+    ((StringBuilder)localObject).append(paramViewHolder1);
+    Log.e("RecyclerView", ((StringBuilder)localObject).toString());
   }
   
   private boolean hasUpdatedView()
   {
-    boolean bool2 = false;
     int j = this.mChildHelper.getChildCount();
     int i = 0;
-    boolean bool1 = bool2;
-    if (i < j)
+    while (i < j)
     {
       RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getChildAt(i));
-      if ((localViewHolder == null) || (localViewHolder.shouldIgnore())) {}
-      while (!localViewHolder.isUpdated())
-      {
-        i += 1;
-        break;
+      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore()) && (localViewHolder.isUpdated())) {
+        return true;
       }
-      bool1 = true;
+      i += 1;
     }
-    return bool1;
+    return false;
   }
   
   private void initChildrenHelper()
@@ -906,10 +943,11 @@ public class RecyclerView
   
   private void jumpToPositionForSmoothScroller(int paramInt)
   {
-    if (this.mLayout == null) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null) {
       return;
     }
-    this.mLayout.scrollToPosition(paramInt);
+    localLayoutManager.scrollToPosition(paramInt);
     awakenScrollBars();
   }
   
@@ -931,14 +969,13 @@ public class RecyclerView
   private void onPointerUp(MotionEvent paramMotionEvent)
   {
     int i = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (MotionEventCompat.getPointerId(paramMotionEvent, i) == this.mScrollPointerId) {
-      if (i != 0) {
-        break label75;
-      }
-    }
-    label75:
-    for (i = 1;; i = 0)
+    if (MotionEventCompat.getPointerId(paramMotionEvent, i) == this.mScrollPointerId)
     {
+      if (i == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, i);
       int j = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
       this.mLastTouchX = j;
@@ -946,7 +983,6 @@ public class RecyclerView
       i = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
       this.mLastTouchY = i;
       this.mInitialTouchY = i;
-      return;
     }
   }
   
@@ -966,99 +1002,90 @@ public class RecyclerView
   
   private void processAdapterUpdatesAndSetAnimationFlags()
   {
-    boolean bool2 = true;
     if (this.mDataSetHasChangedAfterLayout)
     {
       this.mAdapterHelper.reset();
       markKnownViewsInvalid();
       this.mLayout.onItemsChanged(this);
     }
-    int i;
-    label58:
-    RecyclerView.State localState;
-    if (predictiveItemAnimationsEnabled())
-    {
+    if (predictiveItemAnimationsEnabled()) {
       this.mAdapterHelper.preProcess();
-      if ((!this.mItemsAddedOrRemoved) && (!this.mItemsChanged)) {
-        break label179;
-      }
-      i = 1;
-      localState = this.mState;
-      if ((!this.mFirstLayoutComplete) || (this.mItemAnimator == null) || ((!this.mDataSetHasChangedAfterLayout) && (i == 0) && (!RecyclerView.LayoutManager.access$2600(this.mLayout))) || ((this.mDataSetHasChangedAfterLayout) && (!this.mAdapter.hasStableIds()))) {
-        break label184;
-      }
-      bool1 = true;
-      label118:
-      RecyclerView.State.access$2502(localState, bool1);
-      localState = this.mState;
-      if ((!RecyclerView.State.access$2500(this.mState)) || (i == 0) || (this.mDataSetHasChangedAfterLayout) || (!predictiveItemAnimationsEnabled())) {
-        break label189;
-      }
-    }
-    label179:
-    label184:
-    label189:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      RecyclerView.State.access$2302(localState, bool1);
-      return;
+    } else {
       this.mAdapterHelper.consumeUpdatesInOnePass();
-      break;
-      i = 0;
-      break label58;
-      bool1 = false;
-      break label118;
     }
+    boolean bool1 = this.mItemsAddedOrRemoved;
+    boolean bool2 = false;
+    int i;
+    if ((!bool1) && (!this.mItemsChanged)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    RecyclerView.State localState = this.mState;
+    if ((this.mFirstLayoutComplete) && (this.mItemAnimator != null) && ((this.mDataSetHasChangedAfterLayout) || (i != 0) || (RecyclerView.LayoutManager.access$2600(this.mLayout))) && ((!this.mDataSetHasChangedAfterLayout) || (this.mAdapter.hasStableIds()))) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    RecyclerView.State.access$2502(localState, bool1);
+    localState = this.mState;
+    bool1 = bool2;
+    if (RecyclerView.State.access$2500(localState))
+    {
+      bool1 = bool2;
+      if (i != 0)
+      {
+        bool1 = bool2;
+        if (!this.mDataSetHasChangedAfterLayout)
+        {
+          bool1 = bool2;
+          if (predictiveItemAnimationsEnabled()) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    RecyclerView.State.access$2302(localState, bool1);
   }
   
   private void pullGlows(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     int j = 1;
-    int k = 0;
-    int i;
     if (paramFloat2 < 0.0F)
     {
       ensureLeftGlow();
-      i = k;
-      if (this.mLeftGlow.onPull(-paramFloat2 / getWidth(), 1.0F - paramFloat3 / getHeight())) {
+      if (!this.mLeftGlow.onPull(-paramFloat2 / getWidth(), 1.0F - paramFloat3 / getHeight())) {}
+    }
+    else
+    {
+      do
+      {
         i = 1;
-      }
-      if (paramFloat4 >= 0.0F) {
-        break label158;
-      }
+        break label86;
+        if (paramFloat2 <= 0.0F) {
+          break;
+        }
+        ensureRightGlow();
+      } while (this.mRightGlow.onPull(paramFloat2 / getWidth(), paramFloat3 / getHeight()));
+    }
+    int i = 0;
+    label86:
+    if (paramFloat4 < 0.0F)
+    {
       ensureTopGlow();
-      if (!this.mTopGlow.onPull(-paramFloat4 / getHeight(), paramFloat1 / getWidth())) {
-        break label196;
+      if (this.mTopGlow.onPull(-paramFloat4 / getHeight(), paramFloat1 / getWidth())) {
+        i = j;
       }
     }
-    for (;;)
+    else if (paramFloat4 > 0.0F)
     {
-      if ((j != 0) || (paramFloat2 != 0.0F) || (paramFloat4 != 0.0F)) {
-        ViewCompat.postInvalidateOnAnimation(this);
+      ensureBottomGlow();
+      if (this.mBottomGlow.onPull(paramFloat4 / getHeight(), 1.0F - paramFloat1 / getWidth())) {
+        i = j;
       }
-      return;
-      i = k;
-      if (paramFloat2 <= 0.0F) {
-        break;
-      }
-      ensureRightGlow();
-      i = k;
-      if (!this.mRightGlow.onPull(paramFloat2 / getWidth(), paramFloat3 / getHeight())) {
-        break;
-      }
-      i = 1;
-      break;
-      label158:
-      if (paramFloat4 > 0.0F)
-      {
-        ensureBottomGlow();
-        if (this.mBottomGlow.onPull(paramFloat4 / getHeight(), 1.0F - paramFloat1 / getWidth())) {}
-      }
-      else
-      {
-        label196:
-        j = i;
-      }
+    }
+    if ((i != 0) || (paramFloat2 != 0.0F) || (paramFloat4 != 0.0F)) {
+      ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
@@ -1075,21 +1102,26 @@ public class RecyclerView
   
   private void releaseGlows()
   {
-    boolean bool2 = false;
-    if (this.mLeftGlow != null) {
-      bool2 = this.mLeftGlow.onRelease();
+    EdgeEffectCompat localEdgeEffectCompat = this.mLeftGlow;
+    if (localEdgeEffectCompat != null) {
+      bool2 = localEdgeEffectCompat.onRelease();
+    } else {
+      bool2 = false;
     }
+    localEdgeEffectCompat = this.mTopGlow;
     boolean bool1 = bool2;
-    if (this.mTopGlow != null) {
-      bool1 = bool2 | this.mTopGlow.onRelease();
+    if (localEdgeEffectCompat != null) {
+      bool1 = bool2 | localEdgeEffectCompat.onRelease();
     }
-    bool2 = bool1;
-    if (this.mRightGlow != null) {
-      bool2 = bool1 | this.mRightGlow.onRelease();
+    localEdgeEffectCompat = this.mRightGlow;
+    boolean bool2 = bool1;
+    if (localEdgeEffectCompat != null) {
+      bool2 = bool1 | localEdgeEffectCompat.onRelease();
     }
+    localEdgeEffectCompat = this.mBottomGlow;
     bool1 = bool2;
-    if (this.mBottomGlow != null) {
-      bool1 = bool2 | this.mBottomGlow.onRelease();
+    if (localEdgeEffectCompat != null) {
+      bool1 = bool2 | localEdgeEffectCompat.onRelease();
     }
     if (bool1) {
       ViewCompat.postInvalidateOnAnimation(this);
@@ -1099,8 +1131,8 @@ public class RecyclerView
   private boolean removeAnimatingView(View paramView)
   {
     eatRequestLayout();
-    boolean bool2 = this.mChildHelper.removeViewIfHidden(paramView);
-    if (bool2)
+    boolean bool = this.mChildHelper.removeViewIfHidden(paramView);
+    if (bool)
     {
       paramView = getChildViewHolderInt(paramView);
       if (paramView != null)
@@ -1109,12 +1141,8 @@ public class RecyclerView
         this.mRecycler.recycleViewHolderInternal(paramView);
       }
     }
-    if (!bool2) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      resumeRequestLayout(bool1);
-      return bool2;
-    }
+    resumeRequestLayout(bool ^ true);
+    return bool;
   }
   
   private void repositionShadowingViews()
@@ -1140,8 +1168,9 @@ public class RecyclerView
   
   private void resetTouch()
   {
-    if (this.mVelocityTracker != null) {
-      this.mVelocityTracker.clear();
+    VelocityTracker localVelocityTracker = this.mVelocityTracker;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.clear();
     }
     stopNestedScroll();
     releaseGlows();
@@ -1149,35 +1178,39 @@ public class RecyclerView
   
   private void setAdapterInternal(RecyclerView.Adapter paramAdapter, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.mAdapter != null)
+    Object localObject = this.mAdapter;
+    if (localObject != null)
     {
-      this.mAdapter.unregisterAdapterDataObserver(this.mObserver);
+      ((RecyclerView.Adapter)localObject).unregisterAdapterDataObserver(this.mObserver);
       this.mAdapter.onDetachedFromRecyclerView(this);
     }
     if ((!paramBoolean1) || (paramBoolean2))
     {
-      if (this.mItemAnimator != null) {
-        this.mItemAnimator.endAnimations();
+      localObject = this.mItemAnimator;
+      if (localObject != null) {
+        ((RecyclerView.ItemAnimator)localObject).endAnimations();
       }
-      if (this.mLayout != null)
+      localObject = this.mLayout;
+      if (localObject != null)
       {
-        this.mLayout.removeAndRecycleAllViews(this.mRecycler);
+        ((RecyclerView.LayoutManager)localObject).removeAndRecycleAllViews(this.mRecycler);
         this.mLayout.removeAndRecycleScrapInt(this.mRecycler);
       }
       this.mRecycler.clear();
     }
     this.mAdapterHelper.reset();
-    RecyclerView.Adapter localAdapter = this.mAdapter;
+    localObject = this.mAdapter;
     this.mAdapter = paramAdapter;
     if (paramAdapter != null)
     {
       paramAdapter.registerAdapterDataObserver(this.mObserver);
       paramAdapter.onAttachedToRecyclerView(this);
     }
-    if (this.mLayout != null) {
-      this.mLayout.onAdapterChanged(localAdapter, this.mAdapter);
+    paramAdapter = this.mLayout;
+    if (paramAdapter != null) {
+      paramAdapter.onAdapterChanged((RecyclerView.Adapter)localObject, this.mAdapter);
     }
-    this.mRecycler.onAdapterChanged(localAdapter, this.mAdapter, paramBoolean1);
+    this.mRecycler.onAdapterChanged((RecyclerView.Adapter)localObject, this.mAdapter, paramBoolean1);
     RecyclerView.State.access$1802(this.mState, true);
     markKnownViewsInvalid();
   }
@@ -1216,8 +1249,9 @@ public class RecyclerView
   private void stopScrollersInternal()
   {
     this.mViewFlinger.stop();
-    if (this.mLayout != null) {
-      this.mLayout.stopSmoothScroller();
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      localLayoutManager.stopSmoothScroller();
     }
   }
   
@@ -1227,36 +1261,31 @@ public class RecyclerView
     {
       ensureLeftGlow();
       this.mLeftGlow.onAbsorb(-paramInt1);
-      if (paramInt2 >= 0) {
-        break label69;
-      }
+    }
+    else if (paramInt1 > 0)
+    {
+      ensureRightGlow();
+      this.mRightGlow.onAbsorb(paramInt1);
+    }
+    if (paramInt2 < 0)
+    {
       ensureTopGlow();
       this.mTopGlow.onAbsorb(-paramInt2);
     }
-    for (;;)
+    else if (paramInt2 > 0)
     {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        ViewCompat.postInvalidateOnAnimation(this);
-      }
-      return;
-      if (paramInt1 <= 0) {
-        break;
-      }
-      ensureRightGlow();
-      this.mRightGlow.onAbsorb(paramInt1);
-      break;
-      label69:
-      if (paramInt2 > 0)
-      {
-        ensureBottomGlow();
-        this.mBottomGlow.onAbsorb(paramInt2);
-      }
+      ensureBottomGlow();
+      this.mBottomGlow.onAbsorb(paramInt2);
+    }
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
   public void addFocusables(ArrayList<View> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((this.mLayout == null) || (!this.mLayout.onAddFocusables(this, paramArrayList, paramInt1, paramInt2))) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if ((localLayoutManager == null) || (!localLayoutManager.onAddFocusables(this, paramArrayList, paramInt1, paramInt2))) {
       super.addFocusables(paramArrayList, paramInt1, paramInt2);
     }
   }
@@ -1268,22 +1297,20 @@ public class RecyclerView
   
   public void addItemDecoration(RecyclerView.ItemDecoration paramItemDecoration, int paramInt)
   {
-    if (this.mLayout != null) {
-      this.mLayout.assertNotInLayoutOrScroll("Cannot add item decoration during a scroll  or layout");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      localLayoutManager.assertNotInLayoutOrScroll("Cannot add item decoration during a scroll  or layout");
     }
     if (this.mItemDecorations.isEmpty()) {
       setWillNotDraw(false);
     }
     if (paramInt < 0) {
       this.mItemDecorations.add(paramItemDecoration);
-    }
-    for (;;)
-    {
-      markItemDecorInsetsDirty();
-      requestLayout();
-      return;
+    } else {
       this.mItemDecorations.add(paramInt, paramItemDecoration);
     }
+    markItemDecorInsetsDirty();
+    requestLayout();
   }
   
   public void addOnChildAttachStateChangeListener(RecyclerView.OnChildAttachStateChangeListener paramOnChildAttachStateChangeListener)
@@ -1351,70 +1378,96 @@ public class RecyclerView
   
   public void clearOnChildAttachStateChangeListeners()
   {
-    if (this.mOnChildAttachStateListeners != null) {
-      this.mOnChildAttachStateListeners.clear();
+    List localList = this.mOnChildAttachStateListeners;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public void clearOnScrollListeners()
   {
-    if (this.mScrollListeners != null) {
-      this.mScrollListeners.clear();
+    List localList = this.mScrollListeners;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public int computeHorizontalScrollExtent()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollHorizontally()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeHorizontalScrollExtent(this.mState);
+    if (localLayoutManager.canScrollHorizontally()) {
+      i = this.mLayout.computeHorizontalScrollExtent(this.mState);
+    }
+    return i;
   }
   
   public int computeHorizontalScrollOffset()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollHorizontally()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeHorizontalScrollOffset(this.mState);
+    if (localLayoutManager.canScrollHorizontally()) {
+      i = this.mLayout.computeHorizontalScrollOffset(this.mState);
+    }
+    return i;
   }
   
   public int computeHorizontalScrollRange()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollHorizontally()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeHorizontalScrollRange(this.mState);
+    if (localLayoutManager.canScrollHorizontally()) {
+      i = this.mLayout.computeHorizontalScrollRange(this.mState);
+    }
+    return i;
   }
   
   public int computeVerticalScrollExtent()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollVertically()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeVerticalScrollExtent(this.mState);
+    if (localLayoutManager.canScrollVertically()) {
+      i = this.mLayout.computeVerticalScrollExtent(this.mState);
+    }
+    return i;
   }
   
   public int computeVerticalScrollOffset()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollVertically()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeVerticalScrollOffset(this.mState);
+    if (localLayoutManager.canScrollVertically()) {
+      i = this.mLayout.computeVerticalScrollOffset(this.mState);
+    }
+    return i;
   }
   
   public int computeVerticalScrollRange()
   {
-    if (this.mLayout == null) {}
-    while (!this.mLayout.canScrollVertically()) {
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    int i = 0;
+    if (localLayoutManager == null) {
       return 0;
     }
-    return this.mLayout.computeVerticalScrollRange(this.mState);
+    if (localLayoutManager.canScrollVertically()) {
+      i = this.mLayout.computeVerticalScrollRange(this.mState);
+    }
+    return i;
   }
   
   void dispatchLayout()
@@ -1437,21 +1490,17 @@ public class RecyclerView
       this.mLayout.setExactMeasureSpecsFrom(this);
       dispatchLayoutStep2();
     }
-    for (;;)
+    else if ((!this.mAdapterHelper.hasUpdates()) && (this.mLayout.getWidth() == getWidth()) && (this.mLayout.getHeight() == getHeight()))
     {
-      dispatchLayoutStep3();
-      onExitLayoutOrScroll();
-      return;
-      if ((this.mAdapterHelper.hasUpdates()) || (this.mLayout.getWidth() != getWidth()) || (this.mLayout.getHeight() != getHeight()))
-      {
-        this.mLayout.setExactMeasureSpecsFrom(this);
-        dispatchLayoutStep2();
-      }
-      else
-      {
-        this.mLayout.setExactMeasureSpecsFrom(this);
-      }
+      this.mLayout.setExactMeasureSpecsFrom(this);
     }
+    else
+    {
+      this.mLayout.setExactMeasureSpecsFrom(this);
+      dispatchLayoutStep2();
+    }
+    dispatchLayoutStep3();
+    onExitLayoutOrScroll();
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -1476,16 +1525,19 @@ public class RecyclerView
   
   void dispatchOnScrollStateChanged(int paramInt)
   {
-    if (this.mLayout != null) {
-      this.mLayout.onScrollStateChanged(paramInt);
+    Object localObject = this.mLayout;
+    if (localObject != null) {
+      ((RecyclerView.LayoutManager)localObject).onScrollStateChanged(paramInt);
     }
     onScrollStateChanged(paramInt);
-    if (this.mScrollListener != null) {
-      this.mScrollListener.onScrollStateChanged(this, paramInt);
+    localObject = this.mScrollListener;
+    if (localObject != null) {
+      ((RecyclerView.OnScrollListener)localObject).onScrollStateChanged(this, paramInt);
     }
-    if (this.mScrollListeners != null)
+    localObject = this.mScrollListeners;
+    if (localObject != null)
     {
-      int i = this.mScrollListeners.size() - 1;
+      int i = ((List)localObject).size() - 1;
       while (i >= 0)
       {
         ((RecyclerView.OnScrollListener)this.mScrollListeners.get(i)).onScrollStateChanged(this, paramInt);
@@ -1500,12 +1552,14 @@ public class RecyclerView
     int j = getScrollY();
     onScrollChanged(i, j, i, j);
     onScrolled(paramInt1, paramInt2);
-    if (this.mScrollListener != null) {
-      this.mScrollListener.onScrolled(this, paramInt1, paramInt2);
+    Object localObject = this.mScrollListener;
+    if (localObject != null) {
+      ((RecyclerView.OnScrollListener)localObject).onScrolled(this, paramInt1, paramInt2);
     }
-    if (this.mScrollListeners != null)
+    localObject = this.mScrollListeners;
+    if (localObject != null)
     {
-      i = this.mScrollListeners.size() - 1;
+      i = ((List)localObject).size() - 1;
       while (i >= 0)
       {
         ((RecyclerView.OnScrollListener)this.mScrollListeners.get(i)).onScrolled(this, paramInt1, paramInt2);
@@ -1526,131 +1580,130 @@ public class RecyclerView
   
   public void draw(Canvas paramCanvas)
   {
-    int k = 1;
-    int m = 0;
     super.draw(paramCanvas);
     int j = this.mItemDecorations.size();
+    int k = 0;
     int i = 0;
     while (i < j)
     {
       ((RecyclerView.ItemDecoration)this.mItemDecorations.get(i)).onDrawOver(paramCanvas, this, this.mState);
       i += 1;
     }
-    int n;
-    if ((this.mLeftGlow != null) && (!this.mLeftGlow.isFinished()))
+    EdgeEffectCompat localEdgeEffectCompat = this.mLeftGlow;
+    int m;
+    if ((localEdgeEffectCompat != null) && (!localEdgeEffectCompat.isFinished()))
     {
-      n = paramCanvas.save();
-      if (this.mClipToPadding)
-      {
+      m = paramCanvas.save();
+      if (this.mClipToPadding) {
         i = getPaddingBottom();
-        paramCanvas.rotate(270.0F);
-        paramCanvas.translate(i + -getHeight(), 0.0F);
-        if ((this.mLeftGlow == null) || (!this.mLeftGlow.draw(paramCanvas))) {
-          break label456;
-        }
+      } else {
+        i = 0;
+      }
+      paramCanvas.rotate(270.0F);
+      paramCanvas.translate(-getHeight() + i, 0.0F);
+      localEdgeEffectCompat = this.mLeftGlow;
+      if ((localEdgeEffectCompat != null) && (localEdgeEffectCompat.draw(paramCanvas))) {
         j = 1;
-        label128:
-        paramCanvas.restoreToCount(n);
+      } else {
+        j = 0;
+      }
+      paramCanvas.restoreToCount(m);
+    }
+    else
+    {
+      j = 0;
+    }
+    localEdgeEffectCompat = this.mTopGlow;
+    i = j;
+    if (localEdgeEffectCompat != null)
+    {
+      i = j;
+      if (!localEdgeEffectCompat.isFinished())
+      {
+        m = paramCanvas.save();
+        if (this.mClipToPadding) {
+          paramCanvas.translate(getPaddingLeft(), getPaddingTop());
+        }
+        localEdgeEffectCompat = this.mTopGlow;
+        if ((localEdgeEffectCompat != null) && (localEdgeEffectCompat.draw(paramCanvas))) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        i = j | i;
+        paramCanvas.restoreToCount(m);
       }
     }
-    for (;;)
+    localEdgeEffectCompat = this.mRightGlow;
+    j = i;
+    if (localEdgeEffectCompat != null)
+    {
+      j = i;
+      if (!localEdgeEffectCompat.isFinished())
+      {
+        m = paramCanvas.save();
+        int n = getWidth();
+        if (this.mClipToPadding) {
+          j = getPaddingTop();
+        } else {
+          j = 0;
+        }
+        paramCanvas.rotate(90.0F);
+        paramCanvas.translate(-j, -n);
+        localEdgeEffectCompat = this.mRightGlow;
+        if ((localEdgeEffectCompat != null) && (localEdgeEffectCompat.draw(paramCanvas))) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        j = i | j;
+        paramCanvas.restoreToCount(m);
+      }
+    }
+    localEdgeEffectCompat = this.mBottomGlow;
+    if ((localEdgeEffectCompat != null) && (!localEdgeEffectCompat.isFinished()))
+    {
+      m = paramCanvas.save();
+      paramCanvas.rotate(180.0F);
+      if (this.mClipToPadding) {
+        paramCanvas.translate(-getWidth() + getPaddingRight(), -getHeight() + getPaddingBottom());
+      } else {
+        paramCanvas.translate(-getWidth(), -getHeight());
+      }
+      localEdgeEffectCompat = this.mBottomGlow;
+      i = k;
+      if (localEdgeEffectCompat != null)
+      {
+        i = k;
+        if (localEdgeEffectCompat.draw(paramCanvas)) {
+          i = 1;
+        }
+      }
+      i |= j;
+      paramCanvas.restoreToCount(m);
+    }
+    else
     {
       i = j;
-      if (this.mTopGlow != null)
-      {
-        i = j;
-        if (!this.mTopGlow.isFinished())
-        {
-          n = paramCanvas.save();
-          if (this.mClipToPadding) {
-            paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-          }
-          if ((this.mTopGlow == null) || (!this.mTopGlow.draw(paramCanvas))) {
-            break label461;
-          }
-          i = 1;
-          label202:
-          i = j | i;
-          paramCanvas.restoreToCount(n);
-        }
-      }
+    }
+    j = i;
+    if (i == 0)
+    {
       j = i;
-      if (this.mRightGlow != null)
+      if (this.mItemAnimator != null)
       {
         j = i;
-        if (!this.mRightGlow.isFinished())
+        if (this.mItemDecorations.size() > 0)
         {
-          n = paramCanvas.save();
-          int i1 = getWidth();
-          if (!this.mClipToPadding) {
-            break label466;
+          j = i;
+          if (this.mItemAnimator.isRunning()) {
+            j = 1;
           }
-          j = getPaddingTop();
-          label257:
-          paramCanvas.rotate(90.0F);
-          paramCanvas.translate(-j, -i1);
-          if ((this.mRightGlow == null) || (!this.mRightGlow.draw(paramCanvas))) {
-            break label471;
-          }
-          j = 1;
-          label295:
-          j = i | j;
-          paramCanvas.restoreToCount(n);
         }
       }
-      i = j;
-      if (this.mBottomGlow != null)
-      {
-        i = j;
-        if (!this.mBottomGlow.isFinished())
-        {
-          n = paramCanvas.save();
-          paramCanvas.rotate(180.0F);
-          if (!this.mClipToPadding) {
-            break label476;
-          }
-          paramCanvas.translate(-getWidth() + getPaddingRight(), -getHeight() + getPaddingBottom());
-          label372:
-          i = m;
-          if (this.mBottomGlow != null)
-          {
-            i = m;
-            if (this.mBottomGlow.draw(paramCanvas)) {
-              i = 1;
-            }
-          }
-          i = j | i;
-          paramCanvas.restoreToCount(n);
-        }
-      }
-      if ((i == 0) && (this.mItemAnimator != null) && (this.mItemDecorations.size() > 0) && (this.mItemAnimator.isRunning())) {
-        i = k;
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          ViewCompat.postInvalidateOnAnimation(this);
-        }
-        return;
-        i = 0;
-        break;
-        label456:
-        j = 0;
-        break label128;
-        label461:
-        i = 0;
-        break label202;
-        label466:
-        j = 0;
-        break label257;
-        label471:
-        j = 0;
-        break label295;
-        label476:
-        paramCanvas.translate(-getWidth(), -getHeight());
-        break label372;
-      }
-      j = 0;
+    }
+    if (j != 0) {
+      ViewCompat.postInvalidateOnAnimation(this);
     }
   }
   
@@ -1731,7 +1784,7 @@ public class RecyclerView
       View localView = this.mChildHelper.getChildAt(i);
       float f1 = ViewCompat.getTranslationX(localView);
       float f2 = ViewCompat.getTranslationY(localView);
-      if ((paramFloat1 >= localView.getLeft() + f1) && (paramFloat1 <= f1 + localView.getRight()) && (paramFloat2 >= localView.getTop() + f2) && (paramFloat2 <= localView.getBottom() + f2)) {
+      if ((paramFloat1 >= localView.getLeft() + f1) && (paramFloat1 <= localView.getRight() + f1) && (paramFloat2 >= localView.getTop() + f2) && (paramFloat2 <= localView.getBottom() + f2)) {
         return localView;
       }
       i -= 1;
@@ -1742,11 +1795,13 @@ public class RecyclerView
   @Nullable
   public View findContainingItemView(View paramView)
   {
-    for (ViewParent localViewParent = paramView.getParent(); (localViewParent != null) && (localViewParent != this) && ((localViewParent instanceof View)); localViewParent = paramView.getParent()) {
-      paramView = (View)localViewParent;
+    ViewParent localViewParent = paramView.getParent();
+    View localView = paramView;
+    for (paramView = localViewParent; (paramView != null) && (paramView != this) && ((paramView instanceof View)); paramView = localView.getParent()) {
+      localView = (View)paramView;
     }
-    if (localViewParent == this) {
-      return paramView;
+    if (paramView == this) {
+      return localView;
     }
     return null;
   }
@@ -1763,21 +1818,20 @@ public class RecyclerView
   
   public RecyclerView.ViewHolder findViewHolderForAdapterPosition(int paramInt)
   {
-    if (this.mDataSetHasChangedAfterLayout) {}
-    for (;;)
-    {
+    if (this.mDataSetHasChangedAfterLayout) {
       return null;
-      int j = this.mChildHelper.getUnfilteredChildCount();
-      int i = 0;
-      while (i < j)
-      {
-        RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(i));
-        if ((localViewHolder != null) && (!localViewHolder.isRemoved()) && (getAdapterPositionFor(localViewHolder) == paramInt)) {
-          return localViewHolder;
-        }
-        i += 1;
-      }
     }
+    int j = this.mChildHelper.getUnfilteredChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(i));
+      if ((localViewHolder != null) && (!localViewHolder.isRemoved()) && (getAdapterPositionFor(localViewHolder) == paramInt)) {
+        return localViewHolder;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public RecyclerView.ViewHolder findViewHolderForItemId(long paramLong)
@@ -1816,12 +1870,12 @@ public class RecyclerView
       if ((localViewHolder != null) && (!localViewHolder.isRemoved())) {
         if (paramBoolean)
         {
-          if (localViewHolder.mPosition != paramInt) {}
-        }
-        else {
-          while (localViewHolder.getLayoutPosition() == paramInt) {
+          if (localViewHolder.mPosition == paramInt) {
             return localViewHolder;
           }
+        }
+        else if (localViewHolder.getLayoutPosition() == paramInt) {
+          return localViewHolder;
         }
       }
       i += 1;
@@ -1831,111 +1885,123 @@ public class RecyclerView
   
   public boolean fling(int paramInt1, int paramInt2)
   {
-    if (this.mLayout == null) {
-      Log.e("RecyclerView", "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
-    }
-    boolean bool2;
-    int i;
-    do
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null)
     {
-      do
-      {
-        return false;
-      } while (this.mLayoutFrozen);
-      bool1 = this.mLayout.canScrollHorizontally();
-      bool2 = this.mLayout.canScrollVertically();
+      Log.e("RecyclerView", "Cannot fling without a LayoutManager set. Call setLayoutManager with a non-null argument.");
+      return false;
+    }
+    if (this.mLayoutFrozen) {
+      return false;
+    }
+    boolean bool1 = localLayoutManager.canScrollHorizontally();
+    boolean bool2 = this.mLayout.canScrollVertically();
+    int i;
+    if (bool1)
+    {
+      i = paramInt1;
+      if (Math.abs(paramInt1) >= this.mMinFlingVelocity) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    if (bool2)
+    {
+      paramInt1 = paramInt2;
+      if (Math.abs(paramInt2) >= this.mMinFlingVelocity) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if ((i == 0) && (paramInt1 == 0)) {
+      return false;
+    }
+    float f1 = i;
+    float f2 = paramInt1;
+    if (!dispatchNestedPreFling(f1, f2))
+    {
+      if ((!bool1) && (!bool2)) {
+        bool1 = false;
+      } else {
+        bool1 = true;
+      }
+      dispatchNestedFling(f1, f2, bool1);
       if (bool1)
       {
-        i = paramInt1;
-        if (Math.abs(paramInt1) >= this.mMinFlingVelocity) {}
+        paramInt2 = this.mMaxFlingVelocity;
+        paramInt2 = Math.max(-paramInt2, Math.min(i, paramInt2));
+        i = this.mMaxFlingVelocity;
+        paramInt1 = Math.max(-i, Math.min(paramInt1, i));
+        this.mViewFlinger.fling(paramInt2, paramInt1);
+        return true;
       }
-      else
-      {
-        i = 0;
-      }
-      if (bool2)
-      {
-        paramInt1 = paramInt2;
-        if (Math.abs(paramInt2) >= this.mMinFlingVelocity) {}
-      }
-      else
-      {
-        paramInt1 = 0;
-      }
-    } while (((i == 0) && (paramInt1 == 0)) || (dispatchNestedPreFling(i, paramInt1)));
-    if ((bool1) || (bool2)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      dispatchNestedFling(i, paramInt1, bool1);
-      if (!bool1) {
-        break;
-      }
-      paramInt2 = Math.max(-this.mMaxFlingVelocity, Math.min(i, this.mMaxFlingVelocity));
-      paramInt1 = Math.max(-this.mMaxFlingVelocity, Math.min(paramInt1, this.mMaxFlingVelocity));
-      this.mViewFlinger.fling(paramInt2, paramInt1);
-      return true;
     }
+    return false;
   }
   
   public View focusSearch(View paramView, int paramInt)
   {
-    Object localObject2 = this.mLayout.onInterceptFocusSearch(paramView, paramInt);
-    if (localObject2 != null) {}
-    Object localObject1;
-    do
+    Object localObject = this.mLayout.onInterceptFocusSearch(paramView, paramInt);
+    if (localObject != null) {
+      return localObject;
+    }
+    View localView = FocusFinder.getInstance().findNextFocus(this, paramView, paramInt);
+    localObject = localView;
+    if (localView == null)
     {
-      return localObject2;
-      localObject2 = FocusFinder.getInstance().findNextFocus(this, paramView, paramInt);
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      localObject = localView;
+      if (this.mAdapter != null)
       {
-        localObject1 = localObject2;
-        if (this.mAdapter != null)
+        localObject = localView;
+        if (this.mLayout != null)
         {
-          localObject1 = localObject2;
-          if (this.mLayout != null)
+          localObject = localView;
+          if (!isComputingLayout())
           {
-            localObject1 = localObject2;
-            if (!isComputingLayout())
+            localObject = localView;
+            if (!this.mLayoutFrozen)
             {
-              localObject1 = localObject2;
-              if (!this.mLayoutFrozen)
-              {
-                eatRequestLayout();
-                localObject1 = this.mLayout.onFocusSearchFailed(paramView, paramInt, this.mRecycler, this.mState);
-                resumeRequestLayout(false);
-              }
+              eatRequestLayout();
+              localObject = this.mLayout.onFocusSearchFailed(paramView, paramInt, this.mRecycler, this.mState);
+              resumeRequestLayout(false);
             }
           }
         }
       }
-      localObject2 = localObject1;
-    } while (localObject1 != null);
+    }
+    if (localObject != null) {
+      return localObject;
+    }
     return super.focusSearch(paramView, paramInt);
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    if (this.mLayout == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      return localLayoutManager.generateDefaultLayoutParams();
     }
-    return this.mLayout.generateDefaultLayoutParams();
+    throw new IllegalStateException("RecyclerView has no LayoutManager");
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    if (this.mLayout == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      return localLayoutManager.generateLayoutParams(getContext(), paramAttributeSet);
     }
-    return this.mLayout.generateLayoutParams(getContext(), paramAttributeSet);
+    throw new IllegalStateException("RecyclerView has no LayoutManager");
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.mLayout == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      return localLayoutManager.generateLayoutParams(paramLayoutParams);
     }
-    return this.mLayout.generateLayoutParams(paramLayoutParams);
+    throw new IllegalStateException("RecyclerView has no LayoutManager");
   }
   
   public RecyclerView.Adapter getAdapter()
@@ -1945,8 +2011,9 @@ public class RecyclerView
   
   public int getBaseline()
   {
-    if (this.mLayout != null) {
-      return this.mLayout.getBaseline();
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      return localLayoutManager.getBaseline();
     }
     return super.getBaseline();
   }
@@ -1970,21 +2037,30 @@ public class RecyclerView
   
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    if (this.mChildDrawingOrderCallback == null) {
+    RecyclerView.ChildDrawingOrderCallback localChildDrawingOrderCallback = this.mChildDrawingOrderCallback;
+    if (localChildDrawingOrderCallback == null) {
       return super.getChildDrawingOrder(paramInt1, paramInt2);
     }
-    return this.mChildDrawingOrderCallback.onGetChildDrawingOrder(paramInt1, paramInt2);
+    return localChildDrawingOrderCallback.onGetChildDrawingOrder(paramInt1, paramInt2);
   }
   
   public long getChildItemId(View paramView)
   {
-    if ((this.mAdapter == null) || (!this.mAdapter.hasStableIds())) {}
-    do
+    RecyclerView.Adapter localAdapter = this.mAdapter;
+    long l2 = -1L;
+    long l1 = l2;
+    if (localAdapter != null)
     {
-      return -1L;
+      if (!localAdapter.hasStableIds()) {
+        return -1L;
+      }
       paramView = getChildViewHolderInt(paramView);
-    } while (paramView == null);
-    return paramView.getItemId();
+      l1 = l2;
+      if (paramView != null) {
+        l1 = paramView.getItemId();
+      }
+    }
+    return l1;
   }
   
   public int getChildLayoutPosition(View paramView)
@@ -2004,9 +2080,15 @@ public class RecyclerView
   
   public RecyclerView.ViewHolder getChildViewHolder(View paramView)
   {
-    ViewParent localViewParent = paramView.getParent();
-    if ((localViewParent != null) && (localViewParent != this)) {
-      throw new IllegalArgumentException("View " + paramView + " is not a direct child of " + this);
+    Object localObject = paramView.getParent();
+    if ((localObject != null) && (localObject != this))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("View ");
+      ((StringBuilder)localObject).append(paramView);
+      ((StringBuilder)localObject).append(" is not a direct child of ");
+      ((StringBuilder)localObject).append(this);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
     return getChildViewHolderInt(paramView);
   }
@@ -2103,8 +2185,9 @@ public class RecyclerView
     if (this.mItemDecorations.size() == 0) {
       return;
     }
-    if (this.mLayout != null) {
-      this.mLayout.assertNotInLayoutOrScroll("Cannot invalidate item decorations during a scroll or layout");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      localLayoutManager.assertNotInLayoutOrScroll("Cannot invalidate item decorations during a scroll or layout");
     }
     markItemDecorInsetsDirty();
     requestLayout();
@@ -2112,12 +2195,14 @@ public class RecyclerView
   
   boolean isAccessibilityEnabled()
   {
-    return (this.mAccessibilityManager != null) && (this.mAccessibilityManager.isEnabled());
+    AccessibilityManager localAccessibilityManager = this.mAccessibilityManager;
+    return (localAccessibilityManager != null) && (localAccessibilityManager.isEnabled());
   }
   
   public boolean isAnimating()
   {
-    return (this.mItemAnimator != null) && (this.mItemAnimator.isRunning());
+    RecyclerView.ItemAnimator localItemAnimator = this.mItemAnimator;
+    return (localItemAnimator != null) && (localItemAnimator.isRunning());
   }
   
   public boolean isAttachedToWindow()
@@ -2213,39 +2298,34 @@ public class RecyclerView
     int n = this.mChildHelper.getUnfilteredChildCount();
     int i;
     int j;
+    int k;
     if (paramInt1 < paramInt2)
     {
-      i = -1;
+      i = paramInt1;
       j = paramInt2;
+      k = -1;
     }
-    RecyclerView.ViewHolder localViewHolder;
-    for (int k = paramInt1;; k = paramInt2)
+    else
     {
-      int m = 0;
-      for (;;)
-      {
-        if (m >= n) {
-          break label131;
-        }
-        localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(m));
-        if ((localViewHolder != null) && (localViewHolder.mPosition >= k) && (localViewHolder.mPosition <= j)) {
-          break;
-        }
-        m += 1;
-      }
-      i = 1;
       j = paramInt1;
+      i = paramInt2;
+      k = 1;
     }
-    if (localViewHolder.mPosition == paramInt1) {
-      localViewHolder.offsetPosition(paramInt2 - paramInt1, false);
-    }
-    for (;;)
+    int m = 0;
+    while (m < n)
     {
-      RecyclerView.State.access$1802(this.mState, true);
-      break;
-      localViewHolder.offsetPosition(i, false);
+      RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(m));
+      if ((localViewHolder != null) && (localViewHolder.mPosition >= i) && (localViewHolder.mPosition <= j))
+      {
+        if (localViewHolder.mPosition == paramInt1) {
+          localViewHolder.offsetPosition(paramInt2 - paramInt1, false);
+        } else {
+          localViewHolder.offsetPosition(k, false);
+        }
+        RecyclerView.State.access$1802(this.mState, true);
+      }
+      m += 1;
     }
-    label131:
     this.mRecycler.offsetPositionRecordsForMove(paramInt1, paramInt2);
     requestLayout();
   }
@@ -2254,28 +2334,22 @@ public class RecyclerView
   {
     int j = this.mChildHelper.getUnfilteredChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(i));
-      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore()))
-      {
-        if (localViewHolder.mPosition < paramInt1 + paramInt2) {
-          break label83;
+      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore())) {
+        if (localViewHolder.mPosition >= paramInt1 + paramInt2)
+        {
+          localViewHolder.offsetPosition(-paramInt2, paramBoolean);
+          RecyclerView.State.access$1802(this.mState, true);
         }
-        localViewHolder.offsetPosition(-paramInt2, paramBoolean);
-        RecyclerView.State.access$1802(this.mState, true);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label83:
-        if (localViewHolder.mPosition >= paramInt1)
+        else if (localViewHolder.mPosition >= paramInt1)
         {
           localViewHolder.flagRemovedAndOffsetPosition(paramInt1 - 1, -paramInt2, paramBoolean);
           RecyclerView.State.access$1802(this.mState, true);
         }
       }
+      i += 1;
     }
     this.mRecycler.offsetPositionRecordsForRemove(paramInt1, paramInt2, paramBoolean);
     requestLayout();
@@ -2287,8 +2361,9 @@ public class RecyclerView
     this.mLayoutOrScrollCounter = 0;
     this.mIsAttached = true;
     this.mFirstLayoutComplete = false;
-    if (this.mLayout != null) {
-      this.mLayout.dispatchAttachedToWindow(this);
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      localLayoutManager.dispatchAttachedToWindow(this);
     }
     this.mPostedAnimatorRunner = false;
   }
@@ -2300,14 +2375,16 @@ public class RecyclerView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.mItemAnimator != null) {
-      this.mItemAnimator.endAnimations();
+    Object localObject = this.mItemAnimator;
+    if (localObject != null) {
+      ((RecyclerView.ItemAnimator)localObject).endAnimations();
     }
     this.mFirstLayoutComplete = false;
     stopScroll();
     this.mIsAttached = false;
-    if (this.mLayout != null) {
-      this.mLayout.dispatchDetachedFromWindow(this, this.mRecycler);
+    localObject = this.mLayout;
+    if (localObject != null) {
+      ((RecyclerView.LayoutManager)localObject).dispatchDetachedFromWindow(this, this.mRecycler);
     }
     removeCallbacks(this.mItemAnimatorRunner);
     this.mViewInfoStore.onDetach();
@@ -2327,52 +2404,52 @@ public class RecyclerView
   
   public boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    if (this.mLayout == null) {}
-    label110:
-    label113:
-    for (;;)
-    {
+    if (this.mLayout == null) {
       return false;
-      if ((!this.mLayoutFrozen) && ((MotionEventCompat.getSource(paramMotionEvent) & 0x2) != 0) && (paramMotionEvent.getAction() == 8))
+    }
+    if (this.mLayoutFrozen) {
+      return false;
+    }
+    if (((MotionEventCompat.getSource(paramMotionEvent) & 0x2) != 0) && (paramMotionEvent.getAction() == 8))
+    {
+      float f1;
+      if (this.mLayout.canScrollVertically()) {
+        f1 = -MotionEventCompat.getAxisValue(paramMotionEvent, 9);
+      } else {
+        f1 = 0.0F;
+      }
+      float f2;
+      if (this.mLayout.canScrollHorizontally()) {
+        f2 = MotionEventCompat.getAxisValue(paramMotionEvent, 10);
+      } else {
+        f2 = 0.0F;
+      }
+      if ((f1 != 0.0F) || (f2 != 0.0F))
       {
-        float f1;
-        if (this.mLayout.canScrollVertically())
-        {
-          f1 = -MotionEventCompat.getAxisValue(paramMotionEvent, 9);
-          if (!this.mLayout.canScrollHorizontally()) {
-            break label110;
-          }
-        }
-        for (float f2 = MotionEventCompat.getAxisValue(paramMotionEvent, 10);; f2 = 0.0F)
-        {
-          if ((f1 == 0.0F) && (f2 == 0.0F)) {
-            break label113;
-          }
-          float f3 = getScrollFactor();
-          scrollByInternal((int)(f2 * f3), (int)(f1 * f3), paramMotionEvent);
-          return false;
-          f1 = 0.0F;
-          break;
-        }
+        float f3 = getScrollFactor();
+        scrollByInternal((int)(f2 * f3), (int)(f1 * f3), paramMotionEvent);
       }
     }
+    return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k = -1;
-    boolean bool1 = true;
-    if (this.mLayoutFrozen) {}
-    do
-    {
+    boolean bool2 = this.mLayoutFrozen;
+    boolean bool1 = false;
+    if (bool2) {
       return false;
-      if (dispatchOnItemTouchIntercept(paramMotionEvent))
-      {
-        cancelTouch();
-        return true;
-      }
-    } while (this.mLayout == null);
-    boolean bool2 = this.mLayout.canScrollHorizontally();
+    }
+    if (dispatchOnItemTouchIntercept(paramMotionEvent))
+    {
+      cancelTouch();
+      return true;
+    }
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null) {
+      return false;
+    }
+    bool2 = localLayoutManager.canScrollHorizontally();
     boolean bool3 = this.mLayout.canScrollVertically();
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
@@ -2380,16 +2457,106 @@ public class RecyclerView
     this.mVelocityTracker.addMovement(paramMotionEvent);
     int j = MotionEventCompat.getActionMasked(paramMotionEvent);
     int i = MotionEventCompat.getActionIndex(paramMotionEvent);
-    switch (j)
+    if (j != 0)
     {
-    case 4: 
-    default: 
-      if (this.mScrollState == 1) {
-        return bool1;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j != 3)
+          {
+            if (j != 5)
+            {
+              if (j == 6) {
+                onPointerUp(paramMotionEvent);
+              }
+            }
+            else
+            {
+              this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, i);
+              j = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
+              this.mLastTouchX = j;
+              this.mInitialTouchX = j;
+              i = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
+              this.mLastTouchY = i;
+              this.mInitialTouchY = i;
+            }
+          }
+          else {
+            cancelTouch();
+          }
+        }
+        else
+        {
+          j = MotionEventCompat.findPointerIndex(paramMotionEvent, this.mScrollPointerId);
+          if (j < 0)
+          {
+            paramMotionEvent = new StringBuilder();
+            paramMotionEvent.append("Error processing scroll; pointer index for id ");
+            paramMotionEvent.append(this.mScrollPointerId);
+            paramMotionEvent.append(" not found. Did any MotionEvents get skipped?");
+            Log.e("RecyclerView", paramMotionEvent.toString());
+            return false;
+          }
+          i = (int)(MotionEventCompat.getX(paramMotionEvent, j) + 0.5F);
+          j = (int)(MotionEventCompat.getY(paramMotionEvent, j) + 0.5F);
+          if (this.mScrollState != 1)
+          {
+            i -= this.mInitialTouchX;
+            int m = j - this.mInitialTouchY;
+            int k = -1;
+            int n;
+            if (bool2)
+            {
+              n = Math.abs(i);
+              j = this.mTouchSlop;
+              if (n > j)
+              {
+                n = this.mInitialTouchX;
+                if (i < 0) {
+                  i = -1;
+                } else {
+                  i = 1;
+                }
+                this.mLastTouchX = (n + j * i);
+                i = 1;
+                break label355;
+              }
+            }
+            i = 0;
+            label355:
+            j = i;
+            if (bool3)
+            {
+              int i1 = Math.abs(m);
+              n = this.mTouchSlop;
+              j = i;
+              if (i1 > n)
+              {
+                j = this.mInitialTouchY;
+                if (m < 0) {
+                  i = k;
+                } else {
+                  i = 1;
+                }
+                this.mLastTouchY = (j + n * i);
+                j = 1;
+              }
+            }
+            if (j != 0) {
+              setScrollState(1);
+            }
+          }
+        }
       }
-      break;
-    case 0: 
-      label136:
+      else
+      {
+        this.mVelocityTracker.clear();
+        stopNestedScroll();
+      }
+    }
+    else
+    {
       if (this.mIgnoreMotionEventTillDown) {
         this.mIgnoreMotionEventTillDown = false;
       }
@@ -2406,91 +2573,23 @@ public class RecyclerView
         setScrollState(1);
       }
       paramMotionEvent = this.mNestedOffsets;
-      this.mNestedOffsets[1] = 0;
+      paramMotionEvent[1] = 0;
       paramMotionEvent[0] = 0;
-      if (!bool2) {}
-      break;
-    }
-    for (i = 1;; i = 0)
-    {
+      if (bool2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       j = i;
       if (bool3) {
         j = i | 0x2;
       }
       startNestedScroll(j);
-      break;
-      this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, i);
-      j = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
-      this.mLastTouchX = j;
-      this.mInitialTouchX = j;
-      i = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
-      this.mLastTouchY = i;
-      this.mInitialTouchY = i;
-      break;
-      j = MotionEventCompat.findPointerIndex(paramMotionEvent, this.mScrollPointerId);
-      if (j < 0)
-      {
-        Log.e("RecyclerView", "Error processing scroll; pointer index for id " + this.mScrollPointerId + " not found. Did any MotionEvents get skipped?");
-        return false;
-      }
-      i = (int)(MotionEventCompat.getX(paramMotionEvent, j) + 0.5F);
-      j = (int)(MotionEventCompat.getY(paramMotionEvent, j) + 0.5F);
-      if (this.mScrollState == 1) {
-        break;
-      }
-      i -= this.mInitialTouchX;
-      int m = j - this.mInitialTouchY;
-      int n;
-      if ((bool2) && (Math.abs(i) > this.mTouchSlop))
-      {
-        j = this.mInitialTouchX;
-        n = this.mTouchSlop;
-        if (i < 0)
-        {
-          i = -1;
-          label448:
-          this.mLastTouchX = (i * n + j);
-        }
-      }
-      for (i = 1;; i = 0)
-      {
-        j = i;
-        if (bool3)
-        {
-          j = i;
-          if (Math.abs(m) > this.mTouchSlop)
-          {
-            j = this.mInitialTouchY;
-            n = this.mTouchSlop;
-            if (m >= 0) {
-              break label529;
-            }
-          }
-        }
-        label529:
-        for (i = k;; i = 1)
-        {
-          this.mLastTouchY = (j + i * n);
-          j = 1;
-          if (j == 0) {
-            break;
-          }
-          setScrollState(1);
-          break;
-          i = 1;
-          break label448;
-        }
-        onPointerUp(paramMotionEvent);
-        break;
-        this.mVelocityTracker.clear();
-        stopNestedScroll();
-        break;
-        cancelTouch();
-        break;
-        bool1 = false;
-        break label136;
-      }
     }
+    if (this.mScrollState == 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -2503,77 +2602,81 @@ public class RecyclerView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    if (this.mLayout == null) {
+    Object localObject = this.mLayout;
+    if (localObject == null)
+    {
       defaultOnMeasure(paramInt1, paramInt2);
-    }
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        if (!RecyclerView.LayoutManager.access$2000(this.mLayout)) {
-          break;
-        }
-        int k = View.MeasureSpec.getMode(paramInt1);
-        int m = View.MeasureSpec.getMode(paramInt2);
-        i = j;
-        if (k == 1073741824)
-        {
-          i = j;
-          if (m == 1073741824) {
-            i = 1;
-          }
-        }
-        this.mLayout.onMeasure(this.mRecycler, this.mState, paramInt1, paramInt2);
-      } while ((i != 0) || (this.mAdapter == null));
-      if (RecyclerView.State.access$2100(this.mState) == 1) {
-        dispatchLayoutStep1();
-      }
-      this.mLayout.setMeasureSpecs(paramInt1, paramInt2);
-      RecyclerView.State.access$2202(this.mState, true);
-      dispatchLayoutStep2();
-      this.mLayout.setMeasuredDimensionFromChildren(paramInt1, paramInt2);
-    } while (!this.mLayout.shouldMeasureTwice());
-    this.mLayout.setMeasureSpecs(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 1073741824));
-    RecyclerView.State.access$2202(this.mState, true);
-    dispatchLayoutStep2();
-    this.mLayout.setMeasuredDimensionFromChildren(paramInt1, paramInt2);
-    return;
-    if (this.mHasFixedSize)
-    {
-      this.mLayout.onMeasure(this.mRecycler, this.mState, paramInt1, paramInt2);
       return;
     }
-    if (this.mAdapterUpdateDuringMeasure)
+    boolean bool = RecyclerView.LayoutManager.access$2000((RecyclerView.LayoutManager)localObject);
+    int j = 0;
+    if (bool)
     {
-      eatRequestLayout();
-      processAdapterUpdatesAndSetAnimationFlags();
-      if (RecyclerView.State.access$2300(this.mState))
+      int k = View.MeasureSpec.getMode(paramInt1);
+      int m = View.MeasureSpec.getMode(paramInt2);
+      int i = j;
+      if (k == 1073741824)
       {
-        RecyclerView.State.access$2402(this.mState, true);
-        this.mAdapterUpdateDuringMeasure = false;
-        resumeRequestLayout(false);
+        i = j;
+        if (m == 1073741824) {
+          i = 1;
+        }
+      }
+      this.mLayout.onMeasure(this.mRecycler, this.mState, paramInt1, paramInt2);
+      if (i == 0)
+      {
+        if (this.mAdapter == null) {
+          return;
+        }
+        if (RecyclerView.State.access$2100(this.mState) == 1) {
+          dispatchLayoutStep1();
+        }
+        this.mLayout.setMeasureSpecs(paramInt1, paramInt2);
+        RecyclerView.State.access$2202(this.mState, true);
+        dispatchLayoutStep2();
+        this.mLayout.setMeasuredDimensionFromChildren(paramInt1, paramInt2);
+        if (!this.mLayout.shouldMeasureTwice()) {
+          return;
+        }
+        this.mLayout.setMeasureSpecs(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 1073741824));
+        RecyclerView.State.access$2202(this.mState, true);
+        dispatchLayoutStep2();
+        this.mLayout.setMeasuredDimensionFromChildren(paramInt1, paramInt2);
       }
     }
     else
     {
-      if (this.mAdapter == null) {
-        break label342;
+      if (this.mHasFixedSize)
+      {
+        this.mLayout.onMeasure(this.mRecycler, this.mState, paramInt1, paramInt2);
+        return;
       }
-    }
-    label342:
-    for (this.mState.mItemCount = this.mAdapter.getItemCount();; this.mState.mItemCount = 0)
-    {
+      if (this.mAdapterUpdateDuringMeasure)
+      {
+        eatRequestLayout();
+        processAdapterUpdatesAndSetAnimationFlags();
+        if (RecyclerView.State.access$2300(this.mState))
+        {
+          RecyclerView.State.access$2402(this.mState, true);
+        }
+        else
+        {
+          this.mAdapterHelper.consumeUpdatesInOnePass();
+          RecyclerView.State.access$2402(this.mState, false);
+        }
+        this.mAdapterUpdateDuringMeasure = false;
+        resumeRequestLayout(false);
+      }
+      localObject = this.mAdapter;
+      if (localObject != null) {
+        this.mState.mItemCount = ((RecyclerView.Adapter)localObject).getItemCount();
+      } else {
+        this.mState.mItemCount = 0;
+      }
       eatRequestLayout();
       this.mLayout.onMeasure(this.mRecycler, this.mState, paramInt1, paramInt2);
       resumeRequestLayout(false);
       RecyclerView.State.access$2402(this.mState, false);
-      return;
-      this.mAdapterHelper.consumeUpdatesInOnePass();
-      RecyclerView.State.access$2402(this.mState, false);
-      break;
     }
   }
   
@@ -2589,14 +2692,16 @@ public class RecyclerView
   protected Parcelable onSaveInstanceState()
   {
     RecyclerView.SavedState localSavedState = new RecyclerView.SavedState(super.onSaveInstanceState());
-    if (this.mPendingSavedState != null)
+    Object localObject = this.mPendingSavedState;
+    if (localObject != null)
     {
-      RecyclerView.SavedState.access$1900(localSavedState, this.mPendingSavedState);
+      RecyclerView.SavedState.access$1900(localSavedState, (RecyclerView.SavedState)localObject);
       return localSavedState;
     }
-    if (this.mLayout != null)
+    localObject = this.mLayout;
+    if (localObject != null)
     {
-      localSavedState.mLayoutState = this.mLayout.onSaveInstanceState();
+      localSavedState.mLayoutState = ((RecyclerView.LayoutManager)localObject).onSaveInstanceState();
       return localSavedState;
     }
     localSavedState.mLayoutState = null;
@@ -2617,242 +2722,277 @@ public class RecyclerView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool1 = this.mLayoutFrozen;
     int i2 = 0;
-    if ((this.mLayoutFrozen) || (this.mIgnoreMotionEventTillDown)) {}
-    do
+    if (!bool1)
     {
-      return false;
+      if (this.mIgnoreMotionEventTillDown) {
+        return false;
+      }
       if (dispatchOnItemTouch(paramMotionEvent))
       {
         cancelTouch();
         return true;
       }
-    } while (this.mLayout == null);
-    boolean bool1 = this.mLayout.canScrollHorizontally();
-    boolean bool2 = this.mLayout.canScrollVertically();
-    if (this.mVelocityTracker == null) {
-      this.mVelocityTracker = VelocityTracker.obtain();
-    }
-    MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    int k = MotionEventCompat.getActionMasked(paramMotionEvent);
-    int j = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (k == 0)
-    {
-      int[] arrayOfInt = this.mNestedOffsets;
-      this.mNestedOffsets[1] = 0;
-      arrayOfInt[0] = 0;
-    }
-    localMotionEvent.offsetLocation(this.mNestedOffsets[0], this.mNestedOffsets[1]);
-    int i = i2;
-    switch (k)
-    {
-    default: 
-      i = i2;
-    case 4: 
-      if (i == 0) {
-        this.mVelocityTracker.addMovement(localMotionEvent);
-      }
-      localMotionEvent.recycle();
-      return true;
-    case 0: 
-      this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-      i = (int)(paramMotionEvent.getX() + 0.5F);
-      this.mLastTouchX = i;
-      this.mInitialTouchX = i;
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      this.mLastTouchY = i;
-      this.mInitialTouchY = i;
-      if (!bool1) {
-        break;
-      }
-    }
-    label661:
-    label733:
-    label862:
-    for (i = 1;; i = 0)
-    {
-      j = i;
-      if (bool2) {
-        j = i | 0x2;
-      }
-      startNestedScroll(j);
-      i = i2;
-      break;
-      this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, j);
-      i = (int)(MotionEventCompat.getX(paramMotionEvent, j) + 0.5F);
-      this.mLastTouchX = i;
-      this.mInitialTouchX = i;
-      i = (int)(MotionEventCompat.getY(paramMotionEvent, j) + 0.5F);
-      this.mLastTouchY = i;
-      this.mInitialTouchY = i;
-      i = i2;
-      break;
-      i = MotionEventCompat.findPointerIndex(paramMotionEvent, this.mScrollPointerId);
-      if (i < 0)
-      {
-        Log.e("RecyclerView", "Error processing scroll; pointer index for id " + this.mScrollPointerId + " not found. Did any MotionEvents get skipped?");
+      Object localObject = this.mLayout;
+      if (localObject == null) {
         return false;
       }
-      int i3 = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
-      int i4 = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
-      int m = this.mLastTouchX - i3;
-      k = this.mLastTouchY - i4;
-      i = k;
-      j = m;
-      if (dispatchNestedPreScroll(m, k, this.mScrollConsumed, this.mScrollOffset))
-      {
-        j = m - this.mScrollConsumed[0];
-        i = k - this.mScrollConsumed[1];
-        localMotionEvent.offsetLocation(this.mScrollOffset[0], this.mScrollOffset[1]);
-        paramMotionEvent = this.mNestedOffsets;
-        paramMotionEvent[0] += this.mScrollOffset[0];
-        paramMotionEvent = this.mNestedOffsets;
-        paramMotionEvent[1] += this.mScrollOffset[1];
+      bool1 = ((RecyclerView.LayoutManager)localObject).canScrollHorizontally();
+      boolean bool2 = this.mLayout.canScrollVertically();
+      if (this.mVelocityTracker == null) {
+        this.mVelocityTracker = VelocityTracker.obtain();
       }
-      k = i;
-      m = j;
-      if (this.mScrollState != 1)
+      localObject = MotionEvent.obtain(paramMotionEvent);
+      int j = MotionEventCompat.getActionMasked(paramMotionEvent);
+      int i = MotionEventCompat.getActionIndex(paramMotionEvent);
+      if (j == 0)
       {
-        if ((!bool1) || (Math.abs(j) <= this.mTouchSlop)) {
-          break label939;
-        }
-        if (j <= 0) {
-          break label772;
-        }
-        j -= this.mTouchSlop;
+        arrayOfInt = this.mNestedOffsets;
+        arrayOfInt[1] = 0;
+        arrayOfInt[0] = 0;
       }
-      label611:
-      for (k = 1;; k = 0)
+      int[] arrayOfInt = this.mNestedOffsets;
+      ((MotionEvent)localObject).offsetLocation(arrayOfInt[0], arrayOfInt[1]);
+      if (j != 0)
       {
-        int n = i;
-        int i1 = k;
-        if (bool2)
+        if (j != 1)
         {
-          n = i;
-          i1 = k;
-          if (Math.abs(i) > this.mTouchSlop)
+          if (j != 2)
           {
-            if (i <= 0) {
-              break label784;
+            if (j != 3)
+            {
+              if (j != 5)
+              {
+                if (j != 6)
+                {
+                  i = i2;
+                }
+                else
+                {
+                  onPointerUp(paramMotionEvent);
+                  i = i2;
+                }
+              }
+              else
+              {
+                this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, i);
+                j = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
+                this.mLastTouchX = j;
+                this.mInitialTouchX = j;
+                i = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
+                this.mLastTouchY = i;
+                this.mInitialTouchY = i;
+                i = i2;
+              }
             }
-            n = i - this.mTouchSlop;
-            i1 = 1;
+            else
+            {
+              cancelTouch();
+              i = i2;
+            }
+          }
+          else
+          {
+            i = MotionEventCompat.findPointerIndex(paramMotionEvent, this.mScrollPointerId);
+            if (i < 0)
+            {
+              paramMotionEvent = new StringBuilder();
+              paramMotionEvent.append("Error processing scroll; pointer index for id ");
+              paramMotionEvent.append(this.mScrollPointerId);
+              paramMotionEvent.append(" not found. Did any MotionEvents get skipped?");
+              Log.e("RecyclerView", paramMotionEvent.toString());
+              return false;
+            }
+            int i3 = (int)(MotionEventCompat.getX(paramMotionEvent, i) + 0.5F);
+            int i4 = (int)(MotionEventCompat.getY(paramMotionEvent, i) + 0.5F);
+            int m = this.mLastTouchX - i3;
+            int k = this.mLastTouchY - i4;
+            j = m;
+            i = k;
+            if (dispatchNestedPreScroll(m, k, this.mScrollConsumed, this.mScrollOffset))
+            {
+              paramMotionEvent = this.mScrollConsumed;
+              j = m - paramMotionEvent[0];
+              i = k - paramMotionEvent[1];
+              paramMotionEvent = this.mScrollOffset;
+              ((MotionEvent)localObject).offsetLocation(paramMotionEvent[0], paramMotionEvent[1]);
+              paramMotionEvent = this.mNestedOffsets;
+              k = paramMotionEvent[0];
+              arrayOfInt = this.mScrollOffset;
+              paramMotionEvent[0] = (k + arrayOfInt[0]);
+              paramMotionEvent[1] += arrayOfInt[1];
+            }
+            int n = j;
+            k = i;
+            if (this.mScrollState != 1)
+            {
+              if (bool1)
+              {
+                k = Math.abs(j);
+                m = this.mTouchSlop;
+                if (k > m)
+                {
+                  if (j > 0) {
+                    j -= m;
+                  } else {
+                    j += m;
+                  }
+                  k = 1;
+                  break label552;
+                }
+              }
+              k = 0;
+              label552:
+              m = i;
+              int i1 = k;
+              if (bool2)
+              {
+                n = Math.abs(i);
+                int i5 = this.mTouchSlop;
+                m = i;
+                i1 = k;
+                if (n > i5)
+                {
+                  if (i > 0) {
+                    m = i - i5;
+                  } else {
+                    m = i + i5;
+                  }
+                  i1 = 1;
+                }
+              }
+              n = j;
+              k = m;
+              if (i1 != 0)
+              {
+                setScrollState(1);
+                k = m;
+                n = j;
+              }
+            }
+            i = i2;
+            if (this.mScrollState == 1)
+            {
+              paramMotionEvent = this.mScrollOffset;
+              this.mLastTouchX = (i3 - paramMotionEvent[0]);
+              this.mLastTouchY = (i4 - paramMotionEvent[1]);
+              if (!bool1) {
+                n = 0;
+              }
+              if (!bool2) {
+                k = 0;
+              }
+              i = i2;
+              if (scrollByInternal(n, k, (MotionEvent)localObject))
+              {
+                getParent().requestDisallowInterceptTouchEvent(true);
+                i = i2;
+              }
+            }
           }
         }
-        k = n;
-        m = j;
-        if (i1 != 0)
+        else
         {
-          setScrollState(1);
-          m = j;
-          k = n;
-        }
-        i = i2;
-        if (this.mScrollState != 1) {
-          break;
-        }
-        this.mLastTouchX = (i3 - this.mScrollOffset[0]);
-        this.mLastTouchY = (i4 - this.mScrollOffset[1]);
-        if (bool1) {
-          if (!bool2) {
-            break label802;
+          this.mVelocityTracker.addMovement((MotionEvent)localObject);
+          this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaxFlingVelocity);
+          float f1;
+          if (bool1) {
+            f1 = -VelocityTrackerCompat.getXVelocity(this.mVelocityTracker, this.mScrollPointerId);
+          } else {
+            f1 = 0.0F;
           }
-        }
-        for (;;)
-        {
-          i = i2;
-          if (!scrollByInternal(m, k, localMotionEvent)) {
-            break;
+          float f2;
+          if (bool2) {
+            f2 = -VelocityTrackerCompat.getYVelocity(this.mVelocityTracker, this.mScrollPointerId);
+          } else {
+            f2 = 0.0F;
           }
-          getParent().requestDisallowInterceptTouchEvent(true);
-          i = i2;
-          break;
-          j += this.mTouchSlop;
-          break label611;
-          n = i + this.mTouchSlop;
-          break label661;
-          m = 0;
-          break label733;
-          k = 0;
-        }
-        onPointerUp(paramMotionEvent);
-        i = i2;
-        break;
-        this.mVelocityTracker.addMovement(localMotionEvent);
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.mMaxFlingVelocity);
-        float f1;
-        if (bool1)
-        {
-          f1 = -VelocityTrackerCompat.getXVelocity(this.mVelocityTracker, this.mScrollPointerId);
-          if (!bool2) {
-            break label923;
-          }
-        }
-        for (float f2 = -VelocityTrackerCompat.getYVelocity(this.mVelocityTracker, this.mScrollPointerId);; f2 = 0.0F)
-        {
           if (((f1 == 0.0F) && (f2 == 0.0F)) || (!fling((int)f1, (int)f2))) {
             setScrollState(0);
           }
           resetTouch();
           i = 1;
-          break;
-          f1 = 0.0F;
-          break label862;
         }
-        cancelTouch();
-        i = i2;
-        break;
       }
+      else
+      {
+        this.mScrollPointerId = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+        i = (int)(paramMotionEvent.getX() + 0.5F);
+        this.mLastTouchX = i;
+        this.mInitialTouchX = i;
+        i = (int)(paramMotionEvent.getY() + 0.5F);
+        this.mLastTouchY = i;
+        this.mInitialTouchY = i;
+        if (bool1) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        j = i;
+        if (bool2) {
+          j = i | 0x2;
+        }
+        startNestedScroll(j);
+        i = i2;
+      }
+      if (i == 0) {
+        this.mVelocityTracker.addMovement((MotionEvent)localObject);
+      }
+      ((MotionEvent)localObject).recycle();
+      return true;
     }
+    return false;
   }
   
   protected void removeDetachedView(View paramView, boolean paramBoolean)
   {
     RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(paramView);
-    if (localViewHolder != null)
-    {
-      if (!localViewHolder.isTmpDetached()) {
-        break label32;
+    if (localViewHolder != null) {
+      if (localViewHolder.isTmpDetached())
+      {
+        localViewHolder.clearTmpDetachFlag();
       }
-      localViewHolder.clearTmpDetachFlag();
+      else if (!localViewHolder.shouldIgnore())
+      {
+        paramView = new StringBuilder();
+        paramView.append("Called removeDetachedView with a view which is not flagged as tmp detached.");
+        paramView.append(localViewHolder);
+        throw new IllegalArgumentException(paramView.toString());
+      }
     }
-    label32:
-    while (localViewHolder.shouldIgnore())
-    {
-      dispatchChildDetached(paramView);
-      super.removeDetachedView(paramView, paramBoolean);
-      return;
-    }
-    throw new IllegalArgumentException("Called removeDetachedView with a view which is not flagged as tmp detached." + localViewHolder);
+    dispatchChildDetached(paramView);
+    super.removeDetachedView(paramView, paramBoolean);
   }
   
   public void removeItemDecoration(RecyclerView.ItemDecoration paramItemDecoration)
   {
-    if (this.mLayout != null) {
-      this.mLayout.assertNotInLayoutOrScroll("Cannot remove item decoration during a scroll  or layout");
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager != null) {
+      localLayoutManager.assertNotInLayoutOrScroll("Cannot remove item decoration during a scroll  or layout");
     }
     this.mItemDecorations.remove(paramItemDecoration);
-    if (this.mItemDecorations.isEmpty()) {
-      if (ViewCompat.getOverScrollMode(this) != 2) {
-        break label60;
-      }
-    }
-    label60:
-    for (boolean bool = true;; bool = false)
+    if (this.mItemDecorations.isEmpty())
     {
+      boolean bool;
+      if (ViewCompat.getOverScrollMode(this) == 2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       setWillNotDraw(bool);
-      markItemDecorInsetsDirty();
-      requestLayout();
-      return;
     }
+    markItemDecorInsetsDirty();
+    requestLayout();
   }
   
   public void removeOnChildAttachStateChangeListener(RecyclerView.OnChildAttachStateChangeListener paramOnChildAttachStateChangeListener)
   {
-    if (this.mOnChildAttachStateListeners == null) {
+    List localList = this.mOnChildAttachStateListeners;
+    if (localList == null) {
       return;
     }
-    this.mOnChildAttachStateListeners.remove(paramOnChildAttachStateChangeListener);
+    localList.remove(paramOnChildAttachStateChangeListener);
   }
   
   public void removeOnItemTouchListener(RecyclerView.OnItemTouchListener paramOnItemTouchListener)
@@ -2865,18 +3005,18 @@ public class RecyclerView
   
   public void removeOnScrollListener(RecyclerView.OnScrollListener paramOnScrollListener)
   {
-    if (this.mScrollListeners != null) {
-      this.mScrollListeners.remove(paramOnScrollListener);
+    List localList = this.mScrollListeners;
+    if (localList != null) {
+      localList.remove(paramOnScrollListener);
     }
   }
   
   public void requestChildFocus(View paramView1, View paramView2)
   {
-    Object localObject;
     if ((!this.mLayout.onRequestChildFocus(this, this.mState, paramView1, paramView2)) && (paramView2 != null))
     {
       this.mTempRect.set(0, 0, paramView2.getWidth(), paramView2.getHeight());
-      localObject = paramView2.getLayoutParams();
+      Object localObject = paramView2.getLayoutParams();
       if ((localObject instanceof RecyclerView.LayoutParams))
       {
         localObject = (RecyclerView.LayoutParams)localObject;
@@ -2890,24 +3030,14 @@ public class RecyclerView
           localRect = this.mTempRect;
           localRect.top -= ((Rect)localObject).top;
           localRect = this.mTempRect;
-          int i = localRect.bottom;
-          localRect.bottom = (((Rect)localObject).bottom + i);
+          localRect.bottom += ((Rect)localObject).bottom;
         }
       }
       offsetDescendantRectToMyCoords(paramView2, this.mTempRect);
       offsetRectIntoDescendantCoords(paramView1, this.mTempRect);
-      localObject = this.mTempRect;
-      if (this.mFirstLayoutComplete) {
-        break label215;
-      }
+      requestChildRectangleOnScreen(paramView1, this.mTempRect, this.mFirstLayoutComplete ^ true);
     }
-    label215:
-    for (boolean bool = true;; bool = false)
-    {
-      requestChildRectangleOnScreen(paramView1, (Rect)localObject, bool);
-      super.requestChildFocus(paramView1, paramView2);
-      return;
-    }
+    super.requestChildFocus(paramView1, paramView2);
   }
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
@@ -2961,61 +3091,51 @@ public class RecyclerView
   {
     int j = this.mChildHelper.getUnfilteredChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(this.mChildHelper.getUnfilteredChildAt(i));
-      if (localViewHolder == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!localViewHolder.shouldIgnore()) {
-          localViewHolder.saveOldPosition();
-        }
+      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore())) {
+        localViewHolder.saveOldPosition();
       }
+      i += 1;
     }
   }
   
   public void scrollBy(int paramInt1, int paramInt2)
   {
-    if (this.mLayout == null) {}
-    boolean bool1;
-    boolean bool2;
-    do
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null)
     {
       Log.e("RecyclerView", "Cannot scroll without a LayoutManager set. Call setLayoutManager with a non-null argument.");
-      do
-      {
-        return;
-      } while (this.mLayoutFrozen);
-      bool1 = this.mLayout.canScrollHorizontally();
-      bool2 = this.mLayout.canScrollVertically();
-    } while ((!bool1) && (!bool2));
-    if (bool1) {
-      if (!bool2) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      scrollByInternal(paramInt1, paramInt2, null);
       return;
-      paramInt1 = 0;
-      break;
-      label73:
-      paramInt2 = 0;
+    }
+    if (this.mLayoutFrozen) {
+      return;
+    }
+    boolean bool1 = localLayoutManager.canScrollHorizontally();
+    boolean bool2 = this.mLayout.canScrollVertically();
+    if ((bool1) || (bool2))
+    {
+      if (!bool1) {
+        paramInt1 = 0;
+      }
+      if (!bool2) {
+        paramInt2 = 0;
+      }
+      scrollByInternal(paramInt1, paramInt2, null);
     }
   }
   
   boolean scrollByInternal(int paramInt1, int paramInt2, MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
     consumePendingUpdateOperations();
+    Object localObject = this.mAdapter;
+    boolean bool = false;
     int j;
     int i;
-    int k;
     int m;
-    if (this.mAdapter != null)
+    int k;
+    if (localObject != null)
     {
       eatRequestLayout();
       onEnterLayoutOrScroll();
@@ -3024,69 +3144,69 @@ public class RecyclerView
       {
         j = this.mLayout.scrollHorizontallyBy(paramInt1, this.mRecycler, this.mState);
         i = paramInt1 - j;
-        if (paramInt2 != 0)
-        {
-          k = this.mLayout.scrollVerticallyBy(paramInt2, this.mRecycler, this.mState);
-          m = paramInt2 - k;
-          label83:
-          TraceCompat.endSection();
-          repositionShadowingViews();
-          onExitLayoutOrScroll();
-          resumeRequestLayout(false);
-          int n = k;
-          k = i;
-          i = n;
-        }
       }
+      else
+      {
+        j = 0;
+        i = 0;
+      }
+      if (paramInt2 != 0)
+      {
+        m = this.mLayout.scrollVerticallyBy(paramInt2, this.mRecycler, this.mState);
+        k = paramInt2 - m;
+      }
+      else
+      {
+        m = 0;
+        k = 0;
+      }
+      TraceCompat.endSection();
+      repositionShadowingViews();
+      onExitLayoutOrScroll();
+      resumeRequestLayout(false);
     }
-    for (;;)
+    else
     {
-      if (!this.mItemDecorations.isEmpty()) {
-        invalidate();
-      }
-      if (dispatchNestedScroll(j, i, k, m, this.mScrollOffset))
-      {
-        this.mLastTouchX -= this.mScrollOffset[0];
-        this.mLastTouchY -= this.mScrollOffset[1];
-        if (paramMotionEvent != null) {
-          paramMotionEvent.offsetLocation(this.mScrollOffset[0], this.mScrollOffset[1]);
-        }
-        paramMotionEvent = this.mNestedOffsets;
-        paramMotionEvent[0] += this.mScrollOffset[0];
-        paramMotionEvent = this.mNestedOffsets;
-        paramMotionEvent[1] += this.mScrollOffset[1];
-      }
-      for (;;)
-      {
-        if ((j != 0) || (i != 0)) {
-          dispatchOnScrolled(j, i);
-        }
-        if (!awakenScrollBars()) {
-          invalidate();
-        }
-        if ((j != 0) || (i != 0)) {
-          bool = true;
-        }
-        return bool;
-        if (ViewCompat.getOverScrollMode(this) != 2)
-        {
-          if (paramMotionEvent != null) {
-            pullGlows(paramMotionEvent.getX(), k, paramMotionEvent.getY(), m);
-          }
-          considerReleasingGlowsOnScroll(paramInt1, paramInt2);
-        }
-      }
-      k = 0;
-      m = 0;
-      break label83;
       j = 0;
       i = 0;
-      break;
-      i = 0;
-      j = 0;
       m = 0;
       k = 0;
     }
+    if (!this.mItemDecorations.isEmpty()) {
+      invalidate();
+    }
+    if (dispatchNestedScroll(j, m, i, k, this.mScrollOffset))
+    {
+      paramInt1 = this.mLastTouchX;
+      localObject = this.mScrollOffset;
+      this.mLastTouchX = (paramInt1 - localObject[0]);
+      this.mLastTouchY -= localObject[1];
+      if (paramMotionEvent != null) {
+        paramMotionEvent.offsetLocation(localObject[0], localObject[1]);
+      }
+      paramMotionEvent = this.mNestedOffsets;
+      paramInt1 = paramMotionEvent[0];
+      localObject = this.mScrollOffset;
+      paramMotionEvent[0] = (paramInt1 + localObject[0]);
+      paramMotionEvent[1] += localObject[1];
+    }
+    else if (ViewCompat.getOverScrollMode(this) != 2)
+    {
+      if (paramMotionEvent != null) {
+        pullGlows(paramMotionEvent.getX(), i, paramMotionEvent.getY(), k);
+      }
+      considerReleasingGlowsOnScroll(paramInt1, paramInt2);
+    }
+    if ((j != 0) || (m != 0)) {
+      dispatchOnScrolled(j, m);
+    }
+    if (!awakenScrollBars()) {
+      invalidate();
+    }
+    if ((j != 0) || (m != 0)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
@@ -3100,12 +3220,13 @@ public class RecyclerView
       return;
     }
     stopScroll();
-    if (this.mLayout == null)
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null)
     {
       Log.e("RecyclerView", "Cannot scroll to position a LayoutManager set. Call setLayoutManager with a non-null argument.");
       return;
     }
-    this.mLayout.scrollToPosition(paramInt);
+    localLayoutManager.scrollToPosition(paramInt);
     awakenScrollBars();
   }
   
@@ -3125,6 +3246,7 @@ public class RecyclerView
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
+    EventCollector.getInstance().onSetRecyclerViewAdapter(this);
     setLayoutFrozen(false);
     setAdapterInternal(paramAdapter, false, true);
     requestLayout();
@@ -3136,12 +3258,13 @@ public class RecyclerView
       return;
     }
     this.mChildDrawingOrderCallback = paramChildDrawingOrderCallback;
-    if (this.mChildDrawingOrderCallback != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setChildrenDrawingOrderEnabled(bool);
-      return;
+    boolean bool;
+    if (this.mChildDrawingOrderCallback != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    setChildrenDrawingOrderEnabled(bool);
   }
   
   public void setClipToPadding(boolean paramBoolean)
@@ -3163,14 +3286,16 @@ public class RecyclerView
   
   public void setItemAnimator(RecyclerView.ItemAnimator paramItemAnimator)
   {
-    if (this.mItemAnimator != null)
+    RecyclerView.ItemAnimator localItemAnimator = this.mItemAnimator;
+    if (localItemAnimator != null)
     {
-      this.mItemAnimator.endAnimations();
+      localItemAnimator.endAnimations();
       this.mItemAnimator.setListener(null);
     }
     this.mItemAnimator = paramItemAnimator;
-    if (this.mItemAnimator != null) {
-      this.mItemAnimator.setListener(this.mItemAnimatorListener);
+    paramItemAnimator = this.mItemAnimator;
+    if (paramItemAnimator != null) {
+      paramItemAnimator.setListener(this.mItemAnimatorListener);
     }
   }
   
@@ -3191,17 +3316,14 @@ public class RecyclerView
           requestLayout();
         }
         this.mLayoutRequestEaten = false;
+        return;
       }
+      long l = SystemClock.uptimeMillis();
+      onTouchEvent(MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0));
+      this.mLayoutFrozen = true;
+      this.mIgnoreMotionEventTillDown = true;
+      stopScroll();
     }
-    else
-    {
-      return;
-    }
-    long l = SystemClock.uptimeMillis();
-    onTouchEvent(MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0));
-    this.mLayoutFrozen = true;
-    this.mIgnoreMotionEventTillDown = true;
-    stopScroll();
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
@@ -3210,24 +3332,33 @@ public class RecyclerView
       return;
     }
     stopScroll();
-    if (this.mLayout != null)
+    Object localObject = this.mLayout;
+    if (localObject != null)
     {
       if (this.mIsAttached) {
-        this.mLayout.dispatchDetachedFromWindow(this, this.mRecycler);
+        ((RecyclerView.LayoutManager)localObject).dispatchDetachedFromWindow(this, this.mRecycler);
       }
       this.mLayout.setRecyclerView(null);
     }
     this.mRecycler.clear();
     this.mChildHelper.removeAllViewsUnfiltered();
     this.mLayout = paramLayoutManager;
-    if (paramLayoutManager != null)
-    {
-      if (paramLayoutManager.mRecyclerView != null) {
-        throw new IllegalArgumentException("LayoutManager " + paramLayoutManager + " is already attached to a RecyclerView: " + paramLayoutManager.mRecyclerView);
+    if (paramLayoutManager != null) {
+      if (paramLayoutManager.mRecyclerView == null)
+      {
+        this.mLayout.setRecyclerView(this);
+        if (this.mIsAttached) {
+          this.mLayout.dispatchAttachedToWindow(this);
+        }
       }
-      this.mLayout.setRecyclerView(this);
-      if (this.mIsAttached) {
-        this.mLayout.dispatchAttachedToWindow(this);
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LayoutManager ");
+        ((StringBuilder)localObject).append(paramLayoutManager);
+        ((StringBuilder)localObject).append(" is already attached to a RecyclerView: ");
+        ((StringBuilder)localObject).append(paramLayoutManager.mRecyclerView);
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString());
       }
     }
     requestLayout();
@@ -3257,15 +3388,22 @@ public class RecyclerView
   public void setScrollingTouchSlop(int paramInt)
   {
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
-    switch (paramInt)
-    {
-    default: 
-      Log.w("RecyclerView", "setScrollingTouchSlop(): bad argument constant " + paramInt + "; using default value");
-    case 0: 
-      this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
-      return;
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setScrollingTouchSlop(): bad argument constant ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("; using default value");
+        Log.w("RecyclerView", localStringBuilder.toString());
+      }
+      else
+      {
+        this.mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
+        return;
+      }
     }
-    this.mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
+    this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
   }
   
   public void setViewCacheExtension(RecyclerView.ViewCacheExtension paramViewCacheExtension)
@@ -3275,51 +3413,43 @@ public class RecyclerView
   
   boolean shouldDeferAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
-    boolean bool = false;
-    int j = 0;
-    if (isComputingLayout()) {
-      if (paramAccessibilityEvent == null) {
-        break label46;
-      }
-    }
-    label46:
-    for (int i = AccessibilityEventCompat.getContentChangeTypes(paramAccessibilityEvent);; i = 0)
+    if (isComputingLayout())
     {
+      int i;
+      if (paramAccessibilityEvent != null) {
+        i = AccessibilityEventCompat.getContentChangeTypes(paramAccessibilityEvent);
+      } else {
+        i = 0;
+      }
+      int j = i;
       if (i == 0) {
-        i = j;
+        j = 0;
       }
-      for (;;)
-      {
-        this.mEatenAccessibilityChangeFlags = (i | this.mEatenAccessibilityChangeFlags);
-        bool = true;
-        return bool;
-      }
+      this.mEatenAccessibilityChangeFlags = (j | this.mEatenAccessibilityChangeFlags);
+      return true;
     }
+    return false;
   }
   
   public void smoothScrollBy(int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if (this.mLayout == null) {
-      Log.e("RecyclerView", "Cannot smooth scroll without a LayoutManager set. Call setLayoutManager with a non-null argument.");
-    }
-    for (;;)
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null)
     {
+      Log.e("RecyclerView", "Cannot smooth scroll without a LayoutManager set. Call setLayoutManager with a non-null argument.");
       return;
-      if (!this.mLayoutFrozen)
-      {
-        if (!this.mLayout.canScrollHorizontally()) {
-          paramInt1 = 0;
-        }
-        if (!this.mLayout.canScrollVertically()) {
-          paramInt2 = i;
-        }
-        while ((paramInt1 != 0) || (paramInt2 != 0))
-        {
-          this.mViewFlinger.smoothScrollBy(paramInt1, paramInt2);
-          return;
-        }
-      }
+    }
+    if (this.mLayoutFrozen) {
+      return;
+    }
+    if (!localLayoutManager.canScrollHorizontally()) {
+      paramInt1 = 0;
+    }
+    if (!this.mLayout.canScrollVertically()) {
+      paramInt2 = 0;
+    }
+    if ((paramInt1 != 0) || (paramInt2 != 0)) {
+      this.mViewFlinger.smoothScrollBy(paramInt1, paramInt2);
     }
   }
   
@@ -3328,12 +3458,13 @@ public class RecyclerView
     if (this.mLayoutFrozen) {
       return;
     }
-    if (this.mLayout == null)
+    RecyclerView.LayoutManager localLayoutManager = this.mLayout;
+    if (localLayoutManager == null)
     {
       Log.e("RecyclerView", "Cannot smooth scroll without a LayoutManager set. Call setLayoutManager with a non-null argument.");
       return;
     }
-    this.mLayout.smoothScrollToPosition(this, this.mState, paramInt);
+    localLayoutManager.smoothScrollToPosition(this, this.mState, paramInt);
   }
   
   public boolean startNestedScroll(int paramInt)
@@ -3364,22 +3495,17 @@ public class RecyclerView
   {
     int j = this.mChildHelper.getUnfilteredChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       View localView = this.mChildHelper.getUnfilteredChildAt(i);
       RecyclerView.ViewHolder localViewHolder = getChildViewHolderInt(localView);
-      if ((localViewHolder == null) || (localViewHolder.shouldIgnore())) {}
-      for (;;)
+      if ((localViewHolder != null) && (!localViewHolder.shouldIgnore()) && (localViewHolder.mPosition >= paramInt1) && (localViewHolder.mPosition < paramInt1 + paramInt2))
       {
-        i += 1;
-        break;
-        if ((localViewHolder.mPosition >= paramInt1) && (localViewHolder.mPosition < paramInt1 + paramInt2))
-        {
-          localViewHolder.addFlags(2);
-          localViewHolder.addChangePayload(paramObject);
-          ((RecyclerView.LayoutParams)localView.getLayoutParams()).mInsetsDirty = true;
-        }
+        localViewHolder.addFlags(2);
+        localViewHolder.addChangePayload(paramObject);
+        ((RecyclerView.LayoutParams)localView.getLayoutParams()).mInsetsDirty = true;
       }
+      i += 1;
     }
     this.mRecycler.viewRangeUpdate(paramInt1, paramInt2);
   }

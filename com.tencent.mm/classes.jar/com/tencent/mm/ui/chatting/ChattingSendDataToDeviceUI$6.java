@@ -11,14 +11,14 @@ final class ChattingSendDataToDeviceUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(30767);
+    AppMethodBeat.i(34642);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(30767);
+    AppMethodBeat.o(34642);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI.6
  * JD-Core Version:    0.7.0.1
  */

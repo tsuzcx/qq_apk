@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.hp.tinker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.plugin.boots.a.c;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.hp.net.d;
+import com.tencent.mm.protocal.protobuf.dzo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,60 +19,57 @@ import java.util.Set;
 public final class g
   extends com.tinkerboots.sdk.a.a.a
 {
-  public final void M(Map<String, String> paramMap)
+  public final void ax(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(90659);
-    super.M(paramMap);
-    com.tencent.mm.plugin.hp.b.b.xu(2);
-    String str2 = "tinker_id_" + com.tencent.mm.loader.j.a.Uj();
-    if (com.tencent.mm.loader.j.a.eQt == null) {}
-    LinkedList localLinkedList;
+    AppMethodBeat.i(117495);
+    super.ax(paramMap);
+    com.tencent.mm.plugin.hp.model.c.UA(2);
+    String str1 = com.tencent.mm.loader.i.a.bmm();
+    String str2 = com.tencent.mm.loader.i.a.bmn();
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramMap.keySet().iterator();
     Object localObject;
-    for (String str1 = "";; str1 = "tinker_id_" + com.tencent.mm.loader.j.a.eQt)
-    {
-      localLinkedList = new LinkedList();
-      localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        bjt localbjt = new bjt();
-        localbjt.key = ((String)localObject);
-        localbjt.value = ((String)paramMap.get(localObject));
-        localLinkedList.add(localbjt);
-      }
-    }
-    paramMap = new StringBuilder();
-    Iterator localIterator = localLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      localObject = (bjt)localIterator.next();
-      paramMap.append(((bjt)localObject).key).append(":").append(((bjt)localObject).value).append("\n");
+      localObject = (String)localIterator.next();
+      dzo localdzo = new dzo();
+      localdzo.key = ((String)localObject);
+      localdzo.value = ((String)paramMap.get(localObject));
+      localLinkedList.add(localdzo);
     }
-    ab.i("Tinker.TinkerPatchRequestCallback", "checkAvailableUpdate BaseID:%s PatchID:%s config:%s", new Object[] { str2, str1, paramMap.toString() });
-    paramMap = new com.tencent.mm.plugin.hp.c.b(str2, str1, localLinkedList);
-    com.tencent.mm.kernel.g.Rc().a(paramMap, 0);
-    AppMethodBeat.o(90659);
+    paramMap = new StringBuilder();
+    localIterator = localLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (dzo)localIterator.next();
+      paramMap.append(((dzo)localObject).key).append(":").append(((dzo)localObject).value).append("\n");
+    }
+    Log.i("Tinker.TinkerPatchRequestCallback", "checkAvailableUpdate BaseID:%s PatchID:%s config:%s", new Object[] { str1, str2, paramMap.toString() });
+    paramMap = new d(str1, str2, localLinkedList);
+    h.aZW().a(paramMap, 0);
+    AppMethodBeat.o(117495);
   }
   
-  public final boolean bIp()
+  public final boolean fQe()
   {
-    AppMethodBeat.i(90658);
-    boolean bool = super.bIp();
-    AppMethodBeat.o(90658);
+    AppMethodBeat.i(117494);
+    boolean bool = super.fQe();
+    AppMethodBeat.o(117494);
     return bool;
   }
   
-  public final void bIq()
+  public final void fQf()
   {
-    AppMethodBeat.i(90660);
-    super.bIq();
-    long l = com.tencent.mm.kernel.a.QW();
-    Object localObject = com.tinkerboots.sdk.a.eaJ().ji("uin", String.valueOf(l & 0xFFFFFFFF));
-    if (at.isWifi(ah.getContext())) {}
+    AppMethodBeat.i(117496);
+    super.fQf();
+    long l = b.aZP();
+    int j = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yPx, 0);
+    Object localObject = com.tinkerboots.sdk.a.kkr().rg("uin", String.valueOf(0xFFFFFFFF & l));
+    if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {}
     for (int i = 3;; i = 2)
     {
-      ((com.tinkerboots.sdk.a)localObject).ji("network", String.valueOf(i));
-      localObject = ((c)com.tencent.mm.kernel.g.E(c.class)).aWg();
+      ((com.tinkerboots.sdk.a)localObject).rg("network", String.valueOf(i)).rg("flavor-version", String.valueOf(j));
+      localObject = ((com.tencent.mm.plugin.boots.a.c)h.ax(com.tencent.mm.plugin.boots.a.c.class)).dbd();
       if (localObject == null) {
         break;
       }
@@ -77,15 +77,15 @@ public final class g
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.plugin.boots.a.a locala = (com.tencent.mm.plugin.boots.a.a)((Iterator)localObject).next();
-        com.tinkerboots.sdk.a.eaJ().ji(Integer.toHexString(locala.field_key), String.valueOf(locala.field_dau));
+        com.tinkerboots.sdk.a.kkr().rg(Integer.toHexString(locala.field_key), String.valueOf(locala.field_dau));
       }
     }
-    AppMethodBeat.o(90660);
+    AppMethodBeat.o(117496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.g
  * JD-Core Version:    0.7.0.1
  */

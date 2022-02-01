@@ -32,50 +32,57 @@ public class OppoFontHook
     if (this.c == null) {
       this.c = a();
     }
-    if (this.c != null) {}
+    Object localObject = this.c;
+    if (localObject != null) {}
     try
     {
-      this.b = ((Typeface[])this.c.get(null));
-      Object localObject = Typeface.class.getDeclaredField("sDefaults");
+      this.b = ((Typeface[])((Field)localObject).get(null));
+      localObject = Typeface.class.getDeclaredField("sDefaults");
       ((Field)localObject).setAccessible(true);
       localObject = (Typeface[])((Field)localObject).get(null);
       this.c.set(null, localObject);
-      label82:
+      label81:
       a = true;
       return a;
     }
     catch (Exception localException)
     {
-      break label82;
+      break label81;
     }
   }
   
   public boolean restore()
   {
-    if ((!a) || (this.b == null) || (this.c == null)) {}
-    for (;;)
+    Typeface[] arrayOfTypeface;
+    Field localField;
+    if (a)
     {
-      return false;
-      try
+      arrayOfTypeface = this.b;
+      if (arrayOfTypeface != null)
       {
-        this.c.set(null, this.b);
-        a = false;
-        label38:
-        if (a) {
-          continue;
+        localField = this.c;
+        if (localField == null) {
+          return false;
         }
-        return true;
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        break label38;
-      }
+    }
+    try
+    {
+      localField.set(null, arrayOfTypeface);
+      a = false;
+      label36:
+      return a ^ true;
+      return false;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      break label36;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.font.OppoFontHook
  * JD-Core Version:    0.7.0.1
  */

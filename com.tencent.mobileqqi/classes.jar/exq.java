@@ -1,29 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.dataline.activities.LiteAdvanceActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class exq
   implements View.OnClickListener
 {
-  public exq(BuddyListAdapter paramBuddyListAdapter, Friends paramFriends) {}
+  public exq(BuddyListAdapter paramBuddyListAdapter) {}
   
   public void onClick(View paramView)
   {
-    if (AppConstants.P.equals(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin))
-    {
-      BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter).startActivity(new Intent(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), LiteAdvanceActivity.class));
-      return;
+    if ((BuddyListAdapter.a(this.a) != null) && (BuddyListAdapter.a(this.a).isShowing())) {
+      BuddyListAdapter.a(this.a).dismiss();
     }
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 1);
-    paramView.f = 59;
-    ProfileActivity.a(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), paramView);
+    GroupManagerActivity.a((Activity)BuddyListAdapter.a(this.a));
+    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 

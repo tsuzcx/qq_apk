@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.dinifly;
 
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.RestrictTo;
-import android.support.v4.util.SparseArrayCompat;
-import android.util.Log;
-import android.util.LongSparseArray;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.RestrictTo;
+import androidx.collection.LongSparseArray;
+import androidx.collection.SparseArrayCompat;
 import com.tencent.mobileqq.dinifly.model.Font;
 import com.tencent.mobileqq.dinifly.model.FontCharacter;
 import com.tencent.mobileqq.dinifly.model.Marker;
 import com.tencent.mobileqq.dinifly.model.layer.CompositionLayer;
 import com.tencent.mobileqq.dinifly.model.layer.Layer;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -39,10 +39,10 @@ public class LottieComposition
   private float startFrame;
   private final HashSet<String> warnings = new HashSet();
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public void addWarning(String paramString)
   {
-    Log.w("LOTTIE", paramString);
+    Logger.warning(paramString);
     this.warnings.add(paramString);
   }
   
@@ -66,7 +66,6 @@ public class LottieComposition
     return this.endFrame - this.startFrame;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public float getEndFrame()
   {
     return this.endFrame;
@@ -95,9 +94,9 @@ public class LottieComposition
   @Nullable
   public Marker getMarker(String paramString)
   {
-    this.markers.size();
+    int j = this.markers.size();
     int i = 0;
-    while (i < this.markers.size())
+    while (i < j)
     {
       Marker localMarker = (Marker)this.markers.get(i);
       if (localMarker.matchesName(paramString)) {
@@ -113,7 +112,7 @@ public class LottieComposition
     return this.markers;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public int getMaskAndMatteCount()
   {
     return this.maskAndMatteCount;
@@ -125,13 +124,12 @@ public class LottieComposition
   }
   
   @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public List<Layer> getPrecomps(String paramString)
   {
     return (List)this.precomps.get(paramString);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
   public float getStartFrame()
   {
     return this.startFrame;
@@ -139,10 +137,11 @@ public class LottieComposition
   
   public ArrayList<String> getWarnings()
   {
-    return new ArrayList(Arrays.asList(this.warnings.toArray(new String[this.warnings.size()])));
+    HashSet localHashSet = this.warnings;
+    return new ArrayList(Arrays.asList(localHashSet.toArray(new String[localHashSet.size()])));
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public boolean hasDashPattern()
   {
     return this.hasDashPattern;
@@ -150,16 +149,16 @@ public class LottieComposition
   
   public boolean hasImages()
   {
-    return !this.images.isEmpty();
+    return this.images.isEmpty() ^ true;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public void incrementMatteOrMaskCount(int paramInt)
   {
     this.maskAndMatteCount += paramInt;
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public void init(Rect paramRect, float paramFloat1, float paramFloat2, float paramFloat3, List<Layer> paramList, LongSparseArray<Layer> paramLongSparseArray, Map<String, List<Layer>> paramMap, Map<String, LottieImageAsset> paramMap1, SparseArrayCompat<FontCharacter> paramSparseArrayCompat, Map<String, Font> paramMap2, List<Marker> paramList1)
   {
     this.bounds = paramRect;
@@ -176,13 +175,13 @@ public class LottieComposition
   }
   
   @RequiresApi(api=16)
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public Layer layerModelForId(long paramLong)
   {
     return (Layer)this.layerMap.get(paramLong);
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public void setHasDashPattern(boolean paramBoolean)
   {
     this.hasDashPattern = paramBoolean;

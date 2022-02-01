@@ -1,17 +1,28 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aghu;
-import android.app.Activity;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerBase;
+import com.tencent.qphone.base.util.QLog;
 
 class AIOEmotionFragment$12
   implements Runnable
 {
-  AIOEmotionFragment$12(AIOEmotionFragment paramAIOEmotionFragment) {}
+  AIOEmotionFragment$12(AIOEmotionFragment paramAIOEmotionFragment, String paramString1, String paramString2, int paramInt, AudioPlayerBase paramAudioPlayerBase) {}
   
   public void run()
   {
-    aghu.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
+    if (this.a.equalsIgnoreCase(this.b))
+    {
+      float f = this.c / this.d.g();
+      if (f > 0.0F)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("AudioPlayer on onProgressChanged, playPosition = ");
+        localStringBuilder.append(f);
+        QLog.i("AIOEmotionFragment", 2, localStringBuilder.toString());
+        this.this$0.A.setProgress(f);
+      }
+    }
   }
 }
 

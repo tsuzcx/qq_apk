@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
 
 public class SightLocationWidget
   extends LocationWidget
@@ -18,22 +20,22 @@ public class SightLocationWidget
   
   protected int getLayoutResource()
   {
-    return 2130969996;
+    return b.g.location_widget;
   }
   
   protected int getNormalStateImageResource()
   {
-    return 2131231990;
+    return b.i.sight_icon_location_normal;
   }
   
   protected int getSelectedStateImageResource()
   {
-    return 2131231991;
+    return b.i.sight_icon_location_selected;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightLocationWidget
  * JD-Core Version:    0.7.0.1
  */

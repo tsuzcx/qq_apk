@@ -4,16 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bjhk;
-import bjhl;
-import bjhm;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
+import java.util.Collections;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class FeedListView
   extends XListView
 {
-  private boolean a;
+  public static final String EXT_KEY_SEARCH_MODE = "search_mode";
+  protected Map<String, String> extArgMap = Collections.emptyMap();
+  private boolean isLongClickValid;
   
   public FeedListView(Context paramContext)
   {
@@ -30,53 +31,65 @@ public class FeedListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public void attach(AppRuntime paramAppRuntime, Activity paramActivity, long paramLong) {}
   
-  public void a(bjhm parambjhm) {}
+  public void doActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
-  
-  public boolean a(String paramString, bjhm parambjhm)
-  {
-    return false;
-  }
-  
-  public int b()
+  public int getFeedCnt()
   {
     return 0;
   }
   
-  public void f() {}
-  
-  public boolean f()
+  public boolean isLongClickValid()
   {
-    return this.a;
+    return this.isLongClickValid;
   }
   
-  public void g() {}
+  public void loadMore(FeedListView.LoadFeedCallback paramLoadFeedCallback) {}
   
-  public void h() {}
+  public void onDestroy() {}
   
-  public void i() {}
+  public void onPause() {}
   
-  public void l() {}
+  public void onResume() {}
   
-  public void m() {}
+  public void onStart() {}
   
-  public void q_() {}
+  public void onStop() {}
   
-  public void setExpandHead(bjhk parambjhk) {}
+  public void scrollToHeadView() {}
   
-  public void setFeedUinChangedListener(bjhl parambjhl) {}
+  public void scrollToTop() {}
+  
+  public void setExpandHead(FeedListView.ExpandHead paramExpandHead) {}
+  
+  public void setExtArgs(Map<String, String> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()))
+    {
+      this.extArgMap = paramMap;
+      return;
+    }
+    if (!this.extArgMap.isEmpty()) {
+      this.extArgMap.clear();
+    }
+  }
+  
+  public void setFeedUinChangedListener(FeedListView.FeedUinChangedListener paramFeedUinChangedListener) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.isLongClickValid = paramBoolean;
+  }
+  
+  public boolean switchTag(String paramString, FeedListView.LoadFeedCallback paramLoadFeedCallback)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.api.FeedListView
  * JD-Core Version:    0.7.0.1
  */

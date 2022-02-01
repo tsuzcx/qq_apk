@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -13,25 +12,30 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
-import bhzd;
-import bicq;
-import bicr;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class XListView
   extends ListView
 {
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private bhzd jdField_a_of_type_Bhzd;
-  private bicq jdField_a_of_type_Bicq;
-  private bicr jdField_a_of_type_Bicr;
-  private boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  private int c;
-  private int d = 0;
-  private int e;
-  private int f;
+  public static final int MODE_ALL = 1;
+  public static final int MODE_BOTTOM = 5;
+  public static final int MODE_LEFT = 2;
+  public static final int MODE_NONE = 0;
+  public static final int MODE_RIGHT = 4;
+  public static final int MODE_TOP = 3;
+  public static final int WINDOW_ORIENTATION_LANDSCAPE = 1;
+  public static final int WINDOW_ORIENTATION_POERRAIT = 2;
+  private XListView.DrawFinishedListener mDrawFinishedListener;
+  private XListView.MotionEventInterceptor mInterceptor;
+  private int mLastRadius;
+  private int mLastRoundMode;
+  private int mMaxHeight = -1;
+  private OnSizeChangeListener mOnSizeChangeListener;
+  private int mOrientation = 0;
+  private int mRadius;
+  private int mRoundMode = 0;
+  private Path mRoundPath;
+  private boolean wrapByScroll = false;
   
   public XListView(Context paramContext)
   {
@@ -47,18 +51,89 @@ public class XListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.mOverscrollDistance = 2147483647;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.tencent_widget);
-    setMaxHeight(localTypedArray.getDimensionPixelSize(0, -1));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fR);
+    setMaxHeight(localTypedArray.getDimensionPixelSize(R.styleable.fS, -1));
     localTypedArray.recycle();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.XListView);
-    boolean bool = paramContext.getBoolean(0, false);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fs);
+    boolean bool = paramContext.getBoolean(R.styleable.ft, false);
     paramContext.recycle();
     setEdgeEffectEnabled(bool);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
+    this.mRoundPath = new Path();
+    this.mRoundPath.setFillType(Path.FillType.EVEN_ODD);
   }
   
-  private int a()
+  private void checkPathChanged()
+  {
+    if ((this.mLastRadius == this.mRadius) && (this.mLastRoundMode == this.mRoundMode)) {
+      return;
+    }
+    int i = getWidth();
+    int j = getHeight();
+    this.mLastRadius = this.mRadius;
+    this.mRoundPath.reset();
+    int k = this.mRoundMode;
+    if (k != 1)
+    {
+      if (k != 2)
+      {
+        if (k != 3)
+        {
+          if (k != 4)
+          {
+            if (k != 5) {
+              return;
+            }
+            localPath = this.mRoundPath;
+            localRectF = new RectF(0.0F, 0.0F, i, j);
+            i = this.mRadius;
+            f1 = i;
+            f2 = i;
+            f3 = i;
+            f4 = i;
+            localDirection = Path.Direction.CW;
+            localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+            return;
+          }
+          localPath = this.mRoundPath;
+          localRectF = new RectF(0.0F, 0.0F, i, j);
+          i = this.mRadius;
+          f1 = i;
+          f2 = i;
+          f3 = i;
+          f4 = i;
+          localDirection = Path.Direction.CW;
+          localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+          return;
+        }
+        localPath = this.mRoundPath;
+        localRectF = new RectF(0.0F, 0.0F, i, j);
+        i = this.mRadius;
+        f1 = i;
+        f2 = i;
+        f3 = i;
+        f4 = i;
+        localDirection = Path.Direction.CW;
+        localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+        return;
+      }
+      localPath = this.mRoundPath;
+      localRectF = new RectF(0.0F, 0.0F, i, j);
+      i = this.mRadius;
+      float f1 = i;
+      float f2 = i;
+      float f3 = i;
+      float f4 = i;
+      Path.Direction localDirection = Path.Direction.CW;
+      localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
+      return;
+    }
+    Path localPath = this.mRoundPath;
+    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
+    i = this.mRadius;
+    localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
+  }
+  
+  private int getWindowOrientation()
   {
     if (getContext().getResources().getDisplayMetrics().widthPixels > getContext().getResources().getDisplayMetrics().heightPixels) {
       return 1;
@@ -66,129 +141,69 @@ public class XListView
     return 2;
   }
   
-  private void a()
+  private void notifySizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
-    if ((this.e == this.c) && (this.f == this.d)) {
-      return;
-    }
-    int i = getWidth();
-    int j = getHeight();
-    this.e = this.c;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    switch (this.d)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.c, this.c, Path.Direction.CW);
-      return;
-    case 2: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.c;
-      f2 = this.c;
-      f3 = this.c;
-      f4 = this.c;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
-      return;
-    case 3: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.c;
-      f2 = this.c;
-      f3 = this.c;
-      f4 = this.c;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
-      return;
-    case 4: 
-      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      localRectF = new RectF(0.0F, 0.0F, i, j);
-      f1 = this.c;
-      f2 = this.c;
-      f3 = this.c;
-      f4 = this.c;
-      localDirection = Path.Direction.CW;
-      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
-      return;
-    }
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
-    float f1 = this.c;
-    float f2 = this.c;
-    float f3 = this.c;
-    float f4 = this.c;
-    Path.Direction localDirection = Path.Direction.CW;
-    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
-  {
-    if (this.jdField_a_of_type_Bhzd != null) {
-      this.jdField_a_of_type_Bhzd.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
+    OnSizeChangeListener localOnSizeChangeListener = this.mOnSizeChangeListener;
+    if (localOnSizeChangeListener != null) {
+      localOnSizeChangeListener.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
     }
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bicq != null) {
-      this.jdField_a_of_type_Bicq.a();
+    paramCanvas = this.mDrawFinishedListener;
+    if (paramCanvas != null) {
+      paramCanvas.drawFinished();
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool3 = false;
-    boolean bool1;
-    if (this.jdField_a_of_type_Bicr != null)
+    if (this.mInterceptor != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if (localMotionEvent != null)
       {
-        bool1 = this.jdField_a_of_type_Bicr.a(this, localMotionEvent);
+        bool1 = this.mInterceptor.intercept(this, localMotionEvent);
         localMotionEvent.recycle();
+        break label41;
       }
     }
-    for (;;)
+    boolean bool1 = false;
+    label41:
+    boolean bool4 = true;
+    boolean bool3 = bool4;
+    if (!bool1) {}
+    try
     {
-      if (!bool1) {
-        try
-        {
-          bool2 = super.dispatchTouchEvent(paramMotionEvent);
-          if (!bool1)
-          {
-            bool1 = bool3;
-            if (!bool2) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-          return bool1;
-        }
-        catch (RuntimeException paramMotionEvent)
-        {
-          for (;;)
-          {
-            aepi.a("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
-            boolean bool2 = false;
-          }
-        }
-      }
-      return true;
-      bool1 = false;
+      bool2 = super.dispatchTouchEvent(paramMotionEvent);
     }
+    catch (RuntimeException paramMotionEvent)
+    {
+      boolean bool2;
+      label61:
+      break label61;
+    }
+    bool2 = false;
+    bool3 = bool4;
+    if (!bool1)
+    {
+      if (bool2) {
+        return true;
+      }
+      bool3 = false;
+    }
+    return bool3;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.d != 0)
+    if (this.mRoundMode != 0)
     {
       int i = paramCanvas.save();
-      a();
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      checkPathChanged();
+      paramCanvas.clipPath(this.mRoundPath);
       super.draw(paramCanvas);
       paramCanvas.restoreToCount(i);
       return;
@@ -199,69 +214,71 @@ public class XListView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i;
-    if (this.b > 0)
+    if (this.mMaxHeight > 0)
     {
       int j = View.MeasureSpec.getMode(paramInt2);
+      int k = View.MeasureSpec.getSize(paramInt2);
+      int m = this.mMaxHeight;
       i = paramInt2;
-      if (View.MeasureSpec.getSize(paramInt2) > this.b)
+      if (k > m)
       {
         i = paramInt2;
         if (j != 0) {
-          i = View.MeasureSpec.makeMeasureSpec(this.b, j);
+          i = View.MeasureSpec.makeMeasureSpec(m, j);
         }
       }
     }
-    for (;;)
+    else
     {
-      super.onMeasure(paramInt1, i);
-      return;
       i = paramInt2;
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.wrapByScroll) {
         i = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
       }
     }
+    super.onMeasure(paramInt1, i);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    int i = a();
-    if (this.jdField_a_of_type_Int != i) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramInt1, paramInt2, paramInt3, paramInt4, bool, i);
-      this.jdField_a_of_type_Int = i;
-      return;
+    int i = getWindowOrientation();
+    boolean bool;
+    if (this.mOrientation != i) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    notifySizeChanged(paramInt1, paramInt2, paramInt3, paramInt4, bool, i);
+    this.mOrientation = i;
   }
   
   public void setCornerRadiusAndMode(int paramInt1, int paramInt2)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
+    this.mRadius = paramInt1;
+    this.mRoundMode = paramInt2;
   }
   
-  public void setDrawFinishedListener(bicq parambicq)
+  public void setDrawFinishedListener(XListView.DrawFinishedListener paramDrawFinishedListener)
   {
-    this.jdField_a_of_type_Bicq = parambicq;
+    this.mDrawFinishedListener = paramDrawFinishedListener;
   }
   
   public void setMaxHeight(int paramInt)
   {
-    this.b = paramInt;
-    if (this.b < getMeasuredHeight()) {
+    this.mMaxHeight = paramInt;
+    if (this.mMaxHeight < getMeasuredHeight()) {
       requestLayout();
     }
   }
   
-  public void setMotionEventInterceptor(bicr parambicr)
+  public void setMotionEventInterceptor(XListView.MotionEventInterceptor paramMotionEventInterceptor)
   {
-    this.jdField_a_of_type_Bicr = parambicr;
+    this.mInterceptor = paramMotionEventInterceptor;
   }
   
-  public void setOnSizeChangeListener(bhzd parambhzd)
+  public void setOnSizeChangeListener(OnSizeChangeListener paramOnSizeChangeListener)
   {
-    this.jdField_a_of_type_Bhzd = parambhzd;
+    this.mOnSizeChangeListener = paramOnSizeChangeListener;
   }
   
   public void setOverScrollDistance(int paramInt)
@@ -271,12 +288,12 @@ public class XListView
   
   public void setWrapByScroll(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.wrapByScroll = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.XListView
  * JD-Core Version:    0.7.0.1
  */

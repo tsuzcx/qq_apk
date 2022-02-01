@@ -1,21 +1,32 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Looper;
-import android.os.MessageQueue;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class ShakeReportUI$4
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
   ShakeReportUI$4(ShakeReportUI paramShakeReportUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(24779);
-    Looper.myQueue().addIdleHandler(new ShakeReportUI.4.1(this));
-    AppMethodBeat.o(24779);
+    AppMethodBeat.i(273584);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/shake/ui/ShakeReportUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    localObject = new Intent(this.PEm, ShakeSayHiListUI.class);
+    ((Intent)localObject).putExtra("IntentSayHiType", 1);
+    ((Intent)localObject).putExtra("IntentNewSayHiMsg", true);
+    paramView = this.PEm;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$12", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(273584);
   }
 }
 

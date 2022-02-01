@@ -1,38 +1,53 @@
 package com.tencent.mobileqq.applets;
 
-import amrz;
 import android.text.TextUtils;
-import bkgp;
-import bkgq;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
-public final class PublicAccountEventReport$3
+final class PublicAccountEventReport$3
   implements Runnable
 {
-  public PublicAccountEventReport$3(String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
+  PublicAccountEventReport$3(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface, String paramString4) {}
   
   public void run()
   {
-    Object localObject = amrz.a(this.jdField_a_of_type_JavaLangString);
-    int j;
-    String str;
-    int k;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      j = (int)(System.currentTimeMillis() / 1000L);
-      str = this.b + "_" + j;
-      k = this.jdField_a_of_type_Int;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label117;
-      }
+    Object localObject1 = this.a;
+    String str = this.b;
+    boolean bool;
+    if ((this.c == 0) && (this.d <= 0)) {
+      bool = false;
+    } else {
+      bool = true;
     }
-    label117:
-    for (int i = 6;; i = 1)
+    Object localObject2 = this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.f.mPosition);
+    localStringBuilder.append("");
+    PublicAccountEventReport.a((String)localObject1, 101, str, bool, (String)localObject2, localStringBuilder.toString());
+    localObject1 = this.g;
+    str = this.a;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append("");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("");
+    ReportController.b((AppRuntime)localObject1, "dc00898", "", str, "0X8009EB3", "0X8009EB3", 1, 0, (String)localObject2, localStringBuilder.toString(), this.h, "");
+    if (!TextUtils.isEmpty(this.b))
     {
-      localObject = new bkgq(str, 1, k, i, "vab_push", "vab_push", (String)localObject, "vab_push", j);
-      ((bkgq)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((bkgq)localObject).f = "vab_push";
-      bkgp.a().a((bkgq)localObject);
-      return;
+      localObject1 = this.g;
+      str = this.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("");
+      ReportController.b((AppRuntime)localObject1, "dc05007", "", str, "0X8009EB3", "0X8009EB3", 1, 0, (String)localObject2, localStringBuilder.toString(), this.h, this.b);
     }
   }
 }

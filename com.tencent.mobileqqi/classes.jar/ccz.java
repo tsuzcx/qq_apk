@@ -1,31 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class ccz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ccz(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  public ccz(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
-  {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-    {
-      localObject = localMessage;
-      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-      }
-    }
-    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
-    {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

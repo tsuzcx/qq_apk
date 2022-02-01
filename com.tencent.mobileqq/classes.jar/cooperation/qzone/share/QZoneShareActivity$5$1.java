@@ -1,23 +1,22 @@
 package cooperation.qzone.share;
 
-import bjru;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class QZoneShareActivity$5$1
+class QZoneShareActivity$5$1
   implements Runnable
 {
-  public QZoneShareActivity$5$1(bjru parambjru) {}
+  QZoneShareActivity$5$1(QZoneShareActivity.5 param5) {}
   
   public void run()
   {
-    this.a.a.k();
-    QQToast.a(this.a.a, 1, 2131694434, 1).a();
-    this.a.a.finish();
+    this.this$1.this$0.hideProgressDialog();
+    QQToast.makeText(this.this$1.this$0, 1, 2131891804, 1).show();
+    this.this$1.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,16 +21,16 @@ public final class q
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903074, paramViewGroup, false);
     paramViewGroup = new r(this);
-    paramViewGroup.ahm = ((TextView)paramContext.findViewById(2131558461));
+    paramViewGroup.akO = ((TextView)paramContext.findViewById(2131558462));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
   
   public final void a(Context paramContext, b paramb)
   {
-    paramb = ((r)paramb).ahm;
-    e.mB();
-    paramb.setText(e.a(paramContext, this.ahe.afg.Vx, 21));
+    paramb = ((r)paramb).akO;
+    e.nn();
+    paramb.setText(e.a(paramContext, this.akG.aiI.Xs, 21));
   }
   
   public final boolean a(Context paramContext, a parama)

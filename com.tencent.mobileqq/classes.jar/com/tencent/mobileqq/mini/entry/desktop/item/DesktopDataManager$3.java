@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListRsp;
+import NS_MINI_INTERFACE.INTERFACE.StOperationApp;
 import NS_MINI_INTERFACE.INTERFACE.StSearchModuleInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -27,13 +28,27 @@ class DesktopDataManager$3
       {
         this.this$0.useLocalDataIfRequestFailed();
         MiniAppUtils.resetMiniDesktopRequestRefreshTime();
-        QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2, retCode = " + l + ", errMsg = " + (String)???);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("sendUserAppListRequestV2, retCode = ");
+        paramJSONObject.append(l);
+        paramJSONObject.append(", errMsg = ");
+        paramJSONObject.append((String)???);
+        QLog.e("DesktopDataManager", 1, paramJSONObject.toString());
         return;
       }
       paramJSONObject = (INTERFACE.StGetDropdownAppListRsp)paramJSONObject.opt("response");
       if (paramJSONObject != null)
       {
-        QLog.d("DesktopDataManager", 1, "sendUserAppListRequestV2, retCode = " + l + ", errMsg = " + (String)??? + ", useOld = " + paramJSONObject.useOld.get() + ", response : " + paramJSONObject.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sendUserAppListRequestV2, retCode = ");
+        localStringBuilder.append(l);
+        localStringBuilder.append(", errMsg = ");
+        localStringBuilder.append((String)???);
+        localStringBuilder.append(", useOld = ");
+        localStringBuilder.append(paramJSONObject.useOld.get());
+        localStringBuilder.append(", response : ");
+        localStringBuilder.append(paramJSONObject.toString());
+        QLog.d("DesktopDataManager", 1, localStringBuilder.toString());
         if (paramJSONObject.useOld.get() == 1)
         {
           QLog.w("DesktopDataManager", 1, "sendUserAppListRequest, reuse old data.");
@@ -42,33 +57,31 @@ class DesktopDataManager$3
         DesktopDataManager.access$300(this.this$0).clear();
         this.this$0.clearRecommendExposureList();
         DesktopDataManager.access$400(paramJSONObject.realRecommdInternal.get());
-        this.this$0.updateData(paramJSONObject.fixApps.get(), paramJSONObject.modules.get(), (INTERFACE.StSearchModuleInfo)paramJSONObject.searchInfo.get());
+        this.this$0.updateData(paramJSONObject.fixApps.get(), paramJSONObject.modules.get(), (INTERFACE.StSearchModuleInfo)paramJSONObject.searchInfo.get(), (INTERFACE.StOperationApp)paramJSONObject.operationApp.get());
         DesktopDataManager.access$502(this.this$0, (COMM.StCommonExt)paramJSONObject.extInfo.get());
         MiniAppUtils.saveGdtCookie(DesktopDataManager.access$500(this.this$0));
         DesktopDataManager.access$602(this.this$0, paramJSONObject.freshInternal.get());
         int i;
-        if (paramJSONObject.isFinished.get() == 1)
-        {
+        if (paramJSONObject.isFinished.get() == 1) {
           i = 1;
-          if (i != 0) {}
+        } else {
+          i = 0;
         }
-        for (;;)
-        {
+        if (i == 0) {
           synchronized (DesktopDataManager.access$700())
           {
             DesktopDataManager.access$802(this.this$0, 0);
             this.this$0.loadMoreMyApp((COMM.StCommonExt)paramJSONObject.extInfo.get());
-            ??? = MiniAppUtils.getAppInterface();
-            if (??? != null)
-            {
-              MiniAppUtils.handlePreloadAppDataV2(((AppInterface)???).getApp(), paramJSONObject);
-              MiniAppUtils.updateDesktopRequestTime();
-              return;
-              i = 0;
-            }
           }
+        }
+        ??? = MiniAppUtils.getAppInterface();
+        if (??? != null) {
+          MiniAppUtils.handlePreloadAppDataV2(((AppInterface)???).getApp(), paramJSONObject);
+        } else {
           QLog.e("DesktopDataManager", 1, "sendUserAppListRequest, app is null.");
         }
+        MiniAppUtils.updateDesktopRequestTime();
+        return;
       }
       QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2 failed.");
       return;
@@ -77,12 +90,17 @@ class DesktopDataManager$3
       MiniAppUtils.resetMiniDesktopRequestRefreshTime();
     }
     this.this$0.useLocalDataIfRequestFailed();
-    QLog.e("DesktopDataManager", 1, "sendUserAppListRequestV2, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("sendUserAppListRequestV2, isSuccess = ");
+    ((StringBuilder)???).append(paramBoolean);
+    ((StringBuilder)???).append(", ret = ");
+    ((StringBuilder)???).append(paramJSONObject);
+    QLog.e("DesktopDataManager", 1, ((StringBuilder)???).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -48,16 +48,12 @@ final class OperatorMapNotification$MapNotificationSubscriber<T, R>
     try
     {
       this.value = this.onCompleted.call();
-      tryEmit();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Exceptions.throwOrReport(localThrowable, this.actual);
-      }
+      Exceptions.throwOrReport(localThrowable, this.actual);
     }
+    tryEmit();
   }
   
   public void onError(Throwable paramThrowable)
@@ -66,16 +62,12 @@ final class OperatorMapNotification$MapNotificationSubscriber<T, R>
     try
     {
       this.value = this.onError.call(paramThrowable);
-      tryEmit();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Exceptions.throwOrReport(localThrowable, this.actual, paramThrowable);
-      }
+      Exceptions.throwOrReport(localThrowable, this.actual, paramThrowable);
     }
+    tryEmit();
   }
   
   public void onNext(T paramT)
@@ -94,56 +86,63 @@ final class OperatorMapNotification$MapNotificationSubscriber<T, R>
   
   void requestInner(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
-    }
-    if (paramLong == 0L) {}
-    Object localObject;
-    do
+    if (paramLong >= 0L)
     {
+      if (paramLong == 0L) {
+        return;
+      }
+      long l1;
+      long l2;
       do
       {
-        return;
-        long l1;
-        long l2;
+        long l3;
         do
         {
-          long l3;
-          do
-          {
-            l1 = this.requested.get();
-            if ((l1 & 0x0) == 0L) {
-              break;
-            }
-            l2 = 0xFFFFFFFF & l1;
-            l3 = BackpressureUtils.addCap(l2, paramLong);
-          } while (!this.requested.compareAndSet(l1, l3 | 0x0));
-          if (l2 != 0L) {
+          l1 = this.requested.get();
+          if ((l1 & 0x0) == 0L) {
             break;
           }
+          l2 = 0xFFFFFFFF & l1;
+          l3 = BackpressureUtils.addCap(l2, paramLong);
+        } while (!this.requested.compareAndSet(l1, 0x0 | l3));
+        if (l2 == 0L)
+        {
           if (!this.actual.isUnsubscribed()) {
             this.actual.onNext(this.value);
           }
-          if (this.actual.isUnsubscribed()) {
-            break;
+          if (!this.actual.isUnsubscribed()) {
+            this.actual.onCompleted();
           }
-          this.actual.onCompleted();
-          return;
-          l2 = BackpressureUtils.addCap(l1, paramLong);
-        } while (!this.requested.compareAndSet(l1, l2));
-        localObject = this.producer;
-        Producer localProducer = (Producer)((AtomicReference)localObject).get();
-        if (localProducer != null)
-        {
-          localProducer.request(paramLong);
-          return;
         }
-        BackpressureUtils.getAndAddRequest(this.missedRequested, paramLong);
-        localObject = (Producer)((AtomicReference)localObject).get();
-      } while (localObject == null);
-      paramLong = this.missedRequested.getAndSet(0L);
-    } while (paramLong == 0L);
-    ((Producer)localObject).request(paramLong);
+        return;
+        l2 = BackpressureUtils.addCap(l1, paramLong);
+      } while (!this.requested.compareAndSet(l1, l2));
+      localObject = this.producer;
+      Producer localProducer = (Producer)((AtomicReference)localObject).get();
+      if (localProducer != null)
+      {
+        localProducer.request(paramLong);
+        return;
+      }
+      BackpressureUtils.getAndAddRequest(this.missedRequested, paramLong);
+      localObject = (Producer)((AtomicReference)localObject).get();
+      if (localObject != null)
+      {
+        paramLong = this.missedRequested.getAndSet(0L);
+        if (paramLong != 0L) {
+          ((Producer)localObject).request(paramLong);
+        }
+      }
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("n >= 0 required but it was ");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void setProducer(Producer paramProducer)
@@ -161,27 +160,28 @@ final class OperatorMapNotification$MapNotificationSubscriber<T, R>
   
   void tryEmit()
   {
-    long l = this.requested.get();
-    if ((l & 0x0) != 0L) {}
+    long l;
     do
     {
-      do
-      {
+      l = this.requested.get();
+      if ((l & 0x0) != 0L) {
         return;
-        if (!this.requested.compareAndSet(l, l | 0x0)) {
-          break;
-        }
-      } while ((l == 0L) && (this.producer.get() != null));
+      }
+    } while (!this.requested.compareAndSet(l, 0x0 | l));
+    if ((l != 0L) || (this.producer.get() == null))
+    {
       if (!this.actual.isUnsubscribed()) {
         this.actual.onNext(this.value);
       }
-    } while (this.actual.isUnsubscribed());
-    this.actual.onCompleted();
+      if (!this.actual.isUnsubscribed()) {
+        this.actual.onCompleted();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorMapNotification.MapNotificationSubscriber
  * JD-Core Version:    0.7.0.1
  */

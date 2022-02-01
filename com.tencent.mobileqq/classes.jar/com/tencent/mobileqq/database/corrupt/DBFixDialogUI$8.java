@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import apgd;
-import apgm;
-
-public class DBFixDialogUI$8
+class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(apgd paramapgd, int paramInt) {}
+  DBFixDialogUI$8(DBFixDialogUI paramDBFixDialogUI, int paramInt) {}
   
   public void run()
   {
-    if (this.a == apgm.d) {
-      apgd.c(this.this$0);
+    if (this.a == DBFixLoadingDialog.d) {
+      DBFixDialogUI.e(this.this$0);
+    } else if (this.a == DBFixLoadingDialog.e) {
+      DBFixDialogUI.f(this.this$0);
+    } else if (this.a == DBFixLoadingDialog.f) {
+      DBFixDialogUI.g(this.this$0);
     }
-    while (this.a != apgm.e) {
-      return;
-    }
-    apgd.d(this.this$0);
+    DBFixReportHelper.c();
   }
 }
 

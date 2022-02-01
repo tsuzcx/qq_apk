@@ -8,7 +8,7 @@ public final class SetRichSigRes
   extends JceStruct
 {
   public byte cResult = -1;
-  public long dwTime;
+  public long dwTime = 0L;
   
   public SetRichSigRes() {}
   
@@ -32,7 +32,7 @@ public final class SetRichSigRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SetRichSigRes
  * JD-Core Version:    0.7.0.1
  */

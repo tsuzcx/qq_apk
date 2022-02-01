@@ -14,7 +14,10 @@ public class AppBrandMainService
   public IBinder onBind(Intent paramIntent)
   {
     paramIntent = paramIntent.getStringExtra("mini_process_name");
-    QLog.w("miniapp-process_AppBrandMainService", 1, "AppBrandMainService Service Binded. pName=" + paramIntent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandMainService Service Binded. pName=");
+    localStringBuilder.append(paramIntent);
+    QLog.w("miniapp-process_AppBrandMainService", 1, localStringBuilder.toString());
     return new AppBrandMainService.AppBrandMainServiceBinder(this, paramIntent);
   }
   
@@ -44,7 +47,7 @@ public class AppBrandMainService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandMainService
  * JD-Core Version:    0.7.0.1
  */

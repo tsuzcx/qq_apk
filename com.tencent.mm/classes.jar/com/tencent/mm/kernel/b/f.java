@@ -1,8 +1,8 @@
 package com.tencent.mm.kernel.b;
 
 import com.tencent.mm.kernel.c.e;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.kernel.j;
+import com.tencent.mm.kernel.i;
+import com.tencent.mm.kernel.l;
 import java.util.HashSet;
 import junit.framework.Assert;
 
@@ -10,7 +10,7 @@ public abstract class f
   implements d
 {
   private static final String TAG = "MMKernel.Plugin";
-  private boolean mConfigured = false;
+  private volatile boolean mConfigured = false;
   private boolean mDependencyMade = false;
   private boolean mInstalled = false;
   private boolean mIsPendingPlugin = false;
@@ -19,15 +19,15 @@ public abstract class f
   
   private void checkIfNeedDefaultDependency()
   {
-    Object localObject = h.RP().RH();
+    Object localObject = i.baI().baA();
     Class localClass = getClass();
-    if (!((com.tencent.mm.kernel.c)localObject).eHF.aw(localClass))
+    if (!((com.tencent.mm.kernel.d)localObject).mCx.cY(localClass))
     {
-      localObject = h.RP().RH().eHI;
+      localObject = i.baI().baA().mCA;
       if (localObject != null)
       {
         dependsOn((Class)localObject);
-        j.i("MMKernel.Plugin", "plugin[%s] not specific any depOn, we using default one [%s]", new Object[] { this, localObject });
+        l.i("MMKernel.Plugin", "plugin[%s] not specific any depOn, we using default one [%s]", new Object[] { this, localObject });
       }
     }
   }
@@ -51,7 +51,7 @@ public abstract class f
   {
     Assert.assertNotNull(paramClass);
     Assert.assertTrue(paramClass.isInstance(this));
-    h.RP().RH().d(getClass(), paramClass);
+    i.baI().baA().f(getClass(), paramClass);
   }
   
   public void configure(g paramg) {}
@@ -62,20 +62,20 @@ public abstract class f
   {
     if (!this.mMakingDependencies)
     {
-      j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
+      l.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.RP().RH().e(getClass(), paramClass);
+    i.baI().baA().g(getClass(), paramClass);
   }
   
   protected void dependsOnRoot()
   {
     if (!this.mMakingDependencies)
     {
-      j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
+      l.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.RP().RH().e(getClass(), getClass());
+    i.baI().baA().g(getClass(), getClass());
   }
   
   public int hashCode()
@@ -149,7 +149,7 @@ public abstract class f
       if (!this.mPins.contains(paramc))
       {
         this.mPins.add(paramc);
-        h.RP().RH().a(paramc.getClass(), new e(paramc));
+        i.baI().baA().a(paramc.getClass(), new e(paramc));
       }
       return;
     }
@@ -178,7 +178,7 @@ public abstract class f
       if (this.mPins.contains(paramc))
       {
         this.mPins.remove(paramc);
-        h.RP().RH().F(paramc.getClass());
+        i.baI().baA().ay(paramc.getClass());
       }
       return;
     }
@@ -191,7 +191,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.b.f
  * JD-Core Version:    0.7.0.1
  */

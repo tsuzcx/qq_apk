@@ -1,13 +1,19 @@
-import android.widget.ProgressBar;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.data.PreviewImageAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class fxs
+public final class fxs
+  implements Parcelable.Creator
 {
-  public ProgressBar a;
-  public URLImageView a;
+  public WeiYunFileInfo a(Parcel paramParcel)
+  {
+    return new WeiYunFileInfo(paramParcel);
+  }
   
-  public fxs(PreviewImageAdapter paramPreviewImageAdapter) {}
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
+  }
 }
 
 

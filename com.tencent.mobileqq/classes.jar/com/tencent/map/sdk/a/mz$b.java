@@ -21,8 +21,9 @@ final class mz$b
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
+    paramObject = this.a;
     int i = 0;
-    mz.a locala = new mz.a(this.a, (byte)0);
+    mz.a locala = new mz.a(paramObject, (byte)0);
     paramObject = (NetRequest)paramMethod.getAnnotation(NetRequest.class);
     if (paramObject != null)
     {
@@ -47,8 +48,10 @@ final class mz$b
       paramMethod = new StringBuilder();
       paramMethod.append(this.a.e());
       localObject = paramObject.path();
-      if (((String)localObject).length() != 0) {
-        paramMethod.append("/").append((String)localObject);
+      if (((String)localObject).length() != 0)
+      {
+        paramMethod.append("/");
+        paramMethod.append((String)localObject);
       }
       locala.f = paramObject.constQuery();
       locala.c = paramMethod.toString();
@@ -61,8 +64,13 @@ final class mz$b
       paramMethod = locala.c;
       paramArrayOfObject = mz.b(locala, paramArrayOfObject);
       paramObject = paramMethod;
-      if (paramArrayOfObject.length() != 0) {
-        paramObject = paramMethod + "?" + paramArrayOfObject;
+      if (paramArrayOfObject.length() != 0)
+      {
+        paramObject = new StringBuilder();
+        paramObject.append(paramMethod);
+        paramObject.append("?");
+        paramObject.append(paramArrayOfObject);
+        paramObject = paramObject.toString();
       }
       locala.c = paramObject;
       return paramObject;
@@ -72,7 +80,7 @@ final class mz$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mz.b
  * JD-Core Version:    0.7.0.1
  */

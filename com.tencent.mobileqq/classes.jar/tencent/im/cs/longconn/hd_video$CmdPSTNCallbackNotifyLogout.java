@@ -23,13 +23,14 @@ public final class hd_video$CmdPSTNCallbackNotifyLogout
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_call_id", "uint32_call_time", "uint32_call_status" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, CmdPSTNCallbackNotifyLogout.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_call_id", "uint32_call_time", "uint32_call_status" }, new Object[] { localByteStringMicro, localInteger, localInteger }, CmdPSTNCallbackNotifyLogout.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video.CmdPSTNCallbackNotifyLogout
  * JD-Core Version:    0.7.0.1
  */

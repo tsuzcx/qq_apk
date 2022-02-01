@@ -1,53 +1,63 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fd;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.autogen.b.hn;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class x
-  extends fd
+  extends hn
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public int localid;
   
   static
   {
-    AppMethodBeat.i(38032);
-    c.a locala = new c.a();
-    locala.yrK = new Field[4];
-    locala.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "canvasId";
-    locala.yrM.put("canvasId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" canvasId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "canvasId";
-    locala.columns[1] = "canvasXml";
-    locala.yrM.put("canvasXml", "TEXT");
-    localStringBuilder.append(" canvasXml TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "createTime";
-    locala.yrM.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "canvasExt";
-    locala.yrM.put("canvasExt", "TEXT");
-    localStringBuilder.append(" canvasExt TEXT");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(38032);
+    AppMethodBeat.i(97590);
+    info = hn.aJm();
+    AppMethodBeat.o(97590);
   }
   
-  public final c.a getDBInfo()
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(97589);
+    try
+    {
+      super.convertFrom(paramCursor);
+      this.localid = ((int)this.systemRowid);
+      AppMethodBeat.o(97589);
+      return;
+    }
+    catch (Exception paramCursor)
+    {
+      String str = paramCursor.getMessage();
+      Log.e("MicroMsg.SnsKvReport", "error ".concat(String.valueOf(str)));
+      if ((str != null) && (str.contains("Unable to convert"))) {
+        al.hgH().gGK();
+      }
+      try
+      {
+        AppMethodBeat.o(97589);
+        throw paramCursor;
+      }
+      catch (Exception paramCursor)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsKvReport", paramCursor, "", new Object[0]);
+        AppMethodBeat.o(97589);
+      }
+    }
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.x
  * JD-Core Version:    0.7.0.1
  */

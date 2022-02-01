@@ -12,8 +12,8 @@ public final class QbossGateWayRsp
   extends JceStruct
 {
   static Map<Integer, ArrayList<tAdvDesc>> cache_mapAdv = new HashMap();
-  public int iRet;
-  public Map<Integer, ArrayList<tAdvDesc>> mapAdv;
+  public int iRet = 0;
+  public Map<Integer, ArrayList<tAdvDesc>> mapAdv = null;
   public String strMsg = "";
   
   static
@@ -48,7 +48,7 @@ public final class QbossGateWayRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.QbossGateWayRsp
  * JD-Core Version:    0.7.0.1
  */

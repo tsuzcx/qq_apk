@@ -55,7 +55,7 @@ public class Draft_6455
   private static final String SEC_WEB_SOCKET_KEY = "Sec-WebSocket-Key";
   private static final String SEC_WEB_SOCKET_PROTOCOL = "Sec-WebSocket-Protocol";
   private static final String UPGRADE = "Upgrade";
-  private static final Logger log;
+  private static final Logger log = LoggerFactory.getLogger(Draft_6455.class);
   private final List<ByteBuffer> byteBufferList;
   private Framedata currentContinuousFrame;
   private IExtension extension = new DefaultExtension();
@@ -65,17 +65,6 @@ public class Draft_6455
   private int maxFrameSize;
   private IProtocol protocol;
   private final Random reuseableRandom = new Random();
-  
-  static
-  {
-    if (!Draft_6455.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      log = LoggerFactory.getLogger(Draft_6455.class);
-      return;
-    }
-  }
   
   public Draft_6455()
   {
@@ -99,32 +88,32 @@ public class Draft_6455
   
   public Draft_6455(List<IExtension> paramList, List<IProtocol> paramList1, int paramInt)
   {
-    if ((paramList == null) || (paramList1 == null) || (paramInt < 1)) {
-      throw new IllegalArgumentException();
-    }
-    this.knownExtensions = new ArrayList(paramList.size());
-    this.knownProtocols = new ArrayList(paramList1.size());
-    this.byteBufferList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    if ((paramList != null) && (paramList1 != null) && (paramInt >= 1))
     {
-      if (!((IExtension)localIterator.next()).getClass().equals(DefaultExtension.class)) {
-        break label195;
+      this.knownExtensions = new ArrayList(paramList.size());
+      this.knownProtocols = new ArrayList(paramList1.size());
+      int i = 0;
+      this.byteBufferList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext()) {
+        if (((IExtension)localIterator.next()).getClass().equals(DefaultExtension.class)) {
+          i = 1;
+        }
       }
-      i = 1;
-    }
-    label195:
-    for (;;)
-    {
-      break;
       this.knownExtensions.addAll(paramList);
-      if (i == 0) {
-        this.knownExtensions.add(this.knownExtensions.size(), this.extension);
+      if (i == 0)
+      {
+        paramList = this.knownExtensions;
+        paramList.add(paramList.size(), this.extension);
       }
       this.knownProtocols.addAll(paramList1);
       this.maxFrameSize = paramInt;
       return;
+    }
+    paramList = new IllegalArgumentException();
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
@@ -145,12 +134,12 @@ public class Draft_6455
   private void checkBufferLimit()
   {
     long l = getByteBufferListSize();
-    if (l > this.maxFrameSize)
-    {
-      clearBufferList();
-      log.trace("Payload limit reached. Allowed: {} Current: {}", Integer.valueOf(this.maxFrameSize), Long.valueOf(l));
-      throw new LimitExceededException(this.maxFrameSize);
+    if (l <= this.maxFrameSize) {
+      return;
     }
+    clearBufferList();
+    log.trace("Payload limit reached. Allowed: {} Current: {}", Integer.valueOf(this.maxFrameSize), Long.valueOf(l));
+    throw new LimitExceededException(this.maxFrameSize);
   }
   
   private void clearBufferList()
@@ -180,85 +169,76 @@ public class Draft_6455
   
   private ByteBuffer createByteBufferFromFramedata(Framedata paramFramedata)
   {
+    ByteBuffer localByteBuffer = paramFramedata.getPayloadData();
+    Object localObject = this.role;
+    Role localRole = Role.CLIENT;
     int k = 0;
-    ByteBuffer localByteBuffer1 = paramFramedata.getPayloadData();
     boolean bool;
-    int m;
-    label43:
-    int j;
-    label50:
-    ByteBuffer localByteBuffer2;
-    if (this.role == Role.CLIENT)
-    {
+    if (localObject == localRole) {
       bool = true;
-      m = getSizeBytes(localByteBuffer1);
-      if (m <= 1) {
-        break label140;
-      }
-      i = m + 1;
-      if (!bool) {
-        break label146;
-      }
-      j = 4;
-      localByteBuffer2 = ByteBuffer.allocate(j + (i + 1) + localByteBuffer1.remaining());
-      j = fromOpcode(paramFramedata.getOpcode());
-      if (!paramFramedata.isFin()) {
-        break label151;
-      }
-    }
-    label140:
-    label146:
-    label151:
-    for (int i = -128;; i = 0)
-    {
-      localByteBuffer2.put((byte)((byte)i | j));
-      paramFramedata = toByteArray(localByteBuffer1.remaining(), m);
-      if (($assertionsDisabled) || (paramFramedata.length == m)) {
-        break label156;
-      }
-      throw new AssertionError();
+    } else {
       bool = false;
-      break;
+    }
+    int m = getSizeBytes(localByteBuffer);
+    int i;
+    if (m > 1) {
+      i = m + 1;
+    } else {
       i = m;
-      break label43;
+    }
+    if (bool) {
+      j = 4;
+    } else {
       j = 0;
-      break label50;
     }
-    label156:
-    if (m == 1) {
-      localByteBuffer2.put((byte)(paramFramedata[0] | getMaskByte(bool)));
+    localObject = ByteBuffer.allocate(i + 1 + j + localByteBuffer.remaining());
+    int j = fromOpcode(paramFramedata.getOpcode());
+    if (paramFramedata.isFin()) {
+      i = -128;
+    } else {
+      i = 0;
     }
-    while (bool)
+    ((ByteBuffer)localObject).put((byte)((byte)i | j));
+    paramFramedata = toByteArray(localByteBuffer.remaining(), m);
+    if (m == 1)
+    {
+      ((ByteBuffer)localObject).put((byte)(paramFramedata[0] | getMaskByte(bool)));
+    }
+    else if (m == 2)
+    {
+      ((ByteBuffer)localObject).put((byte)(getMaskByte(bool) | 0x7E));
+      ((ByteBuffer)localObject).put(paramFramedata);
+    }
+    else
+    {
+      if (m != 8) {
+        break label324;
+      }
+      ((ByteBuffer)localObject).put((byte)(getMaskByte(bool) | 0x7F));
+      ((ByteBuffer)localObject).put(paramFramedata);
+    }
+    if (bool)
     {
       paramFramedata = ByteBuffer.allocate(4);
       paramFramedata.putInt(this.reuseableRandom.nextInt());
-      localByteBuffer2.put(paramFramedata.array());
+      ((ByteBuffer)localObject).put(paramFramedata.array());
       i = k;
-      while (localByteBuffer1.hasRemaining())
+      while (localByteBuffer.hasRemaining())
       {
-        localByteBuffer2.put((byte)(localByteBuffer1.get() ^ paramFramedata.get(i % 4)));
+        ((ByteBuffer)localObject).put((byte)(localByteBuffer.get() ^ paramFramedata.get(i % 4)));
         i += 1;
       }
-      if (m == 2)
-      {
-        localByteBuffer2.put((byte)(getMaskByte(bool) | 0x7E));
-        localByteBuffer2.put(paramFramedata);
-      }
-      else if (m == 8)
-      {
-        localByteBuffer2.put((byte)(getMaskByte(bool) | 0x7F));
-        localByteBuffer2.put(paramFramedata);
-      }
-      else
-      {
-        throw new IllegalStateException("Size representation not supported/specified");
-      }
     }
-    localByteBuffer2.put(localByteBuffer1);
-    localByteBuffer1.flip();
-    assert (localByteBuffer2.remaining() == 0) : localByteBuffer2.remaining();
-    localByteBuffer2.flip();
-    return localByteBuffer2;
+    ((ByteBuffer)localObject).put(localByteBuffer);
+    localByteBuffer.flip();
+    ((ByteBuffer)localObject).flip();
+    return localObject;
+    label324:
+    paramFramedata = new IllegalStateException("Size representation not supported/specified");
+    for (;;)
+    {
+      throw paramFramedata;
+    }
   }
   
   private byte fromOpcode(Opcode paramOpcode)
@@ -281,17 +261,23 @@ public class Draft_6455
     if (paramOpcode == Opcode.PONG) {
       return 10;
     }
-    throw new IllegalArgumentException("Don't know how to handle " + paramOpcode.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Don't know how to handle ");
+    localStringBuilder.append(paramOpcode.toString());
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private String generateFinalKey(String paramString)
   {
     paramString = paramString.trim();
-    paramString = paramString + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
+    paramString = ((StringBuilder)localObject).toString();
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
-      return Base64.encodeBytes(localMessageDigest.digest(paramString.getBytes()));
+      localObject = MessageDigest.getInstance("SHA1");
+      return Base64.encodeBytes(((MessageDigest)localObject).digest(paramString.getBytes()));
     }
     catch (NoSuchAlgorithmException paramString)
     {
@@ -304,8 +290,12 @@ public class Draft_6455
     synchronized (this.byteBufferList)
     {
       Iterator localIterator = this.byteBufferList.iterator();
-      for (long l = 0L; localIterator.hasNext(); l = ((ByteBuffer)localIterator.next()).limit() + l) {}
+      for (long l = 0L; localIterator.hasNext(); l += ((ByteBuffer)localIterator.next()).limit()) {}
       return l;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -321,17 +311,21 @@ public class Draft_6455
   {
     synchronized (this.byteBufferList)
     {
-      Object localObject = this.byteBufferList.iterator();
-      for (long l = 0L; ((Iterator)localObject).hasNext(); l = ((ByteBuffer)((Iterator)localObject).next()).limit() + l) {}
+      Object localObject1 = this.byteBufferList.iterator();
+      for (long l = 0L; ((Iterator)localObject1).hasNext(); l += ((ByteBuffer)((Iterator)localObject1).next()).limit()) {}
       checkBufferLimit();
-      localObject = ByteBuffer.allocate((int)l);
+      localObject1 = ByteBuffer.allocate((int)l);
       Iterator localIterator = this.byteBufferList.iterator();
-      if (localIterator.hasNext()) {
-        ((ByteBuffer)localObject).put((ByteBuffer)localIterator.next());
+      while (localIterator.hasNext()) {
+        ((ByteBuffer)localObject1).put((ByteBuffer)localIterator.next());
       }
+      ((ByteBuffer)localObject1).flip();
+      return localObject1;
     }
-    localByteBuffer.flip();
-    return localByteBuffer;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   private String getServerTime()
@@ -374,80 +368,76 @@ public class Draft_6455
   
   private void processFrameClosing(WebSocketImpl paramWebSocketImpl, Framedata paramFramedata)
   {
-    int i = 1005;
-    String str = "";
+    int i;
     if ((paramFramedata instanceof CloseFrame))
     {
       paramFramedata = (CloseFrame)paramFramedata;
       i = paramFramedata.getCloseCode();
-      str = paramFramedata.getMessage();
+      paramFramedata = paramFramedata.getMessage();
+    }
+    else
+    {
+      i = 1005;
+      paramFramedata = "";
     }
     if (paramWebSocketImpl.getReadyState() == ReadyState.CLOSING)
     {
-      paramWebSocketImpl.closeConnection(i, str, true);
+      paramWebSocketImpl.closeConnection(i, paramFramedata, true);
       return;
     }
     if (getCloseHandshakeType() == CloseHandshakeType.TWOWAY)
     {
-      paramWebSocketImpl.close(i, str, true);
+      paramWebSocketImpl.close(i, paramFramedata, true);
       return;
     }
-    paramWebSocketImpl.flushAndClose(i, str, false);
+    paramWebSocketImpl.flushAndClose(i, paramFramedata, false);
   }
   
   private void processFrameContinuousAndNonFin(WebSocketImpl paramWebSocketImpl, Framedata paramFramedata, Opcode paramOpcode)
   {
     if (paramOpcode != Opcode.CONTINUOUS) {
       processFrameIsNotFin(paramFramedata);
+    } else if (paramFramedata.isFin()) {
+      processFrameIsFin(paramWebSocketImpl, paramFramedata);
+    } else {
+      if (this.currentContinuousFrame == null) {
+        break label109;
+      }
     }
-    while ((paramOpcode == Opcode.TEXT) && (!Charsetfunctions.isValidUTF8(paramFramedata.getPayloadData())))
+    if ((paramOpcode == Opcode.TEXT) && (!Charsetfunctions.isValidUTF8(paramFramedata.getPayloadData())))
     {
       log.error("Protocol error: Payload is not UTF8");
       throw new InvalidDataException(1007);
-      if (paramFramedata.isFin())
-      {
-        processFrameIsFin(paramWebSocketImpl, paramFramedata);
-      }
-      else if (this.currentContinuousFrame == null)
-      {
-        log.error("Protocol error: Continuous frame sequence was not started.");
-        throw new InvalidDataException(1002, "Continuous frame sequence was not started.");
-      }
     }
     if ((paramOpcode == Opcode.CONTINUOUS) && (this.currentContinuousFrame != null)) {
       addToBufferList(paramFramedata.getPayloadData());
     }
+    return;
+    label109:
+    log.error("Protocol error: Continuous frame sequence was not started.");
+    throw new InvalidDataException(1002, "Continuous frame sequence was not started.");
   }
   
   private void processFrameIsFin(WebSocketImpl paramWebSocketImpl, Framedata paramFramedata)
   {
-    if (this.currentContinuousFrame == null)
+    if (this.currentContinuousFrame != null)
     {
-      log.trace("Protocol error: Previous continuous frame sequence not completed.");
-      throw new InvalidDataException(1002, "Continuous frame sequence was not started.");
-    }
-    addToBufferList(paramFramedata.getPayloadData());
-    checkBufferLimit();
-    if (this.currentContinuousFrame.getOpcode() == Opcode.TEXT)
-    {
-      ((FramedataImpl1)this.currentContinuousFrame).setPayload(getPayloadFromByteBufferList());
-      ((FramedataImpl1)this.currentContinuousFrame).isValid();
-    }
-    for (;;)
-    {
-      try
+      addToBufferList(paramFramedata.getPayloadData());
+      checkBufferLimit();
+      if (this.currentContinuousFrame.getOpcode() == Opcode.TEXT)
       {
-        paramWebSocketImpl.getWebSocketListener().onWebsocketMessage(paramWebSocketImpl, Charsetfunctions.stringUtf8(this.currentContinuousFrame.getPayloadData()));
-        this.currentContinuousFrame = null;
-        clearBufferList();
-        return;
+        ((FramedataImpl1)this.currentContinuousFrame).setPayload(getPayloadFromByteBufferList());
+        ((FramedataImpl1)this.currentContinuousFrame).isValid();
+        try
+        {
+          paramWebSocketImpl.getWebSocketListener().onWebsocketMessage(paramWebSocketImpl, Charsetfunctions.stringUtf8(this.currentContinuousFrame.getPayloadData()));
+        }
+        catch (RuntimeException paramFramedata)
+        {
+          logRuntimeException(paramWebSocketImpl, paramFramedata);
+        }
       }
-      catch (RuntimeException paramFramedata)
-      {
-        logRuntimeException(paramWebSocketImpl, paramFramedata);
-        continue;
-      }
-      if (this.currentContinuousFrame.getOpcode() == Opcode.BINARY)
+      else if (this.currentContinuousFrame.getOpcode() == Opcode.BINARY)
       {
         ((FramedataImpl1)this.currentContinuousFrame).setPayload(getPayloadFromByteBufferList());
         ((FramedataImpl1)this.currentContinuousFrame).isValid();
@@ -460,19 +450,25 @@ public class Draft_6455
           logRuntimeException(paramWebSocketImpl, paramFramedata);
         }
       }
+      this.currentContinuousFrame = null;
+      clearBufferList();
+      return;
     }
+    log.trace("Protocol error: Previous continuous frame sequence not completed.");
+    throw new InvalidDataException(1002, "Continuous frame sequence was not started.");
   }
   
   private void processFrameIsNotFin(Framedata paramFramedata)
   {
-    if (this.currentContinuousFrame != null)
+    if (this.currentContinuousFrame == null)
     {
-      log.trace("Protocol error: Previous continuous frame sequence not completed.");
-      throw new InvalidDataException(1002, "Previous continuous frame sequence not completed.");
+      this.currentContinuousFrame = paramFramedata;
+      addToBufferList(paramFramedata.getPayloadData());
+      checkBufferLimit();
+      return;
     }
-    this.currentContinuousFrame = paramFramedata;
-    addToBufferList(paramFramedata.getPayloadData());
-    checkBufferLimit();
+    log.trace("Protocol error: Previous continuous frame sequence not completed.");
+    throw new InvalidDataException(1002, "Previous continuous frame sequence not completed.");
   }
   
   private void processFrameText(WebSocketImpl paramWebSocketImpl, Framedata paramFramedata)
@@ -502,71 +498,75 @@ public class Draft_6455
   
   private Opcode toOpcode(byte paramByte)
   {
-    switch (paramByte)
+    if (paramByte != 0)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      throw new InvalidFrameException("Unknown opcode " + (short)paramByte);
-    case 0: 
-      return Opcode.CONTINUOUS;
-    case 1: 
+      if (paramByte != 1)
+      {
+        if (paramByte != 2)
+        {
+          switch (paramByte)
+          {
+          default: 
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Unknown opcode ");
+            localStringBuilder.append((short)paramByte);
+            throw new InvalidFrameException(localStringBuilder.toString());
+          case 10: 
+            return Opcode.PONG;
+          case 9: 
+            return Opcode.PING;
+          }
+          return Opcode.CLOSING;
+        }
+        return Opcode.BINARY;
+      }
       return Opcode.TEXT;
-    case 2: 
-      return Opcode.BINARY;
-    case 8: 
-      return Opcode.CLOSING;
-    case 9: 
-      return Opcode.PING;
     }
-    return Opcode.PONG;
+    return Opcode.CONTINUOUS;
   }
   
   private Framedata translateSingleFrame(ByteBuffer paramByteBuffer)
   {
-    int n = 0;
-    if (paramByteBuffer == null) {
-      throw new IllegalArgumentException();
-    }
-    int i1 = paramByteBuffer.remaining();
-    int k = 2;
-    translateSingleFrameCheckPacketSize(i1, 2);
-    int j = paramByteBuffer.get();
-    boolean bool1;
-    boolean bool2;
-    label56:
-    boolean bool3;
-    label66:
-    boolean bool4;
-    label76:
-    int i;
-    label92:
-    Object localObject2;
-    if (j >> 8 != 0)
+    if (paramByteBuffer != null)
     {
-      bool1 = true;
-      if ((j & 0x40) == 0) {
-        break label244;
+      int i1 = paramByteBuffer.remaining();
+      int k = 2;
+      translateSingleFrameCheckPacketSize(i1, 2);
+      int j = paramByteBuffer.get();
+      int n = 0;
+      boolean bool1;
+      if (j >> 8 != 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool2 = true;
-      if ((j & 0x20) == 0) {
-        break label250;
+      boolean bool2;
+      if ((j & 0x40) != 0) {
+        bool2 = true;
+      } else {
+        bool2 = false;
       }
-      bool3 = true;
-      if ((j & 0x10) == 0) {
-        break label256;
+      boolean bool3;
+      if ((j & 0x20) != 0) {
+        bool3 = true;
+      } else {
+        bool3 = false;
       }
-      bool4 = true;
-      m = paramByteBuffer.get();
-      if ((m & 0xFFFFFF80) == 0) {
-        break label262;
+      boolean bool4;
+      if ((j & 0x10) != 0) {
+        bool4 = true;
+      } else {
+        bool4 = false;
       }
-      i = 1;
+      int m = paramByteBuffer.get();
+      int i;
+      if ((m & 0xFFFFFF80) != 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       m = (byte)(m & 0x7F);
-      localObject1 = toOpcode((byte)(j & 0xF));
+      Object localObject1 = toOpcode((byte)(j & 0xF));
       if (m >= 0)
       {
         j = m;
@@ -579,130 +579,122 @@ public class Draft_6455
         k = Draft_6455.TranslatedPayloadMetaData.access$100((Draft_6455.TranslatedPayloadMetaData)localObject2);
       }
       translateSingleFrameCheckLengthLimit(j);
-      if (i == 0) {
-        break label267;
+      if (i != 0) {
+        m = 4;
+      } else {
+        m = 0;
       }
-    }
-    label256:
-    label262:
-    label267:
-    for (int m = 4;; m = 0)
-    {
-      translateSingleFrameCheckPacketSize(i1, m + k + j);
-      localObject2 = ByteBuffer.allocate(checkAlloc(j));
-      if (i == 0) {
-        break label273;
-      }
-      byte[] arrayOfByte = new byte[4];
-      paramByteBuffer.get(arrayOfByte);
-      i = n;
-      while (i < j)
+      translateSingleFrameCheckPacketSize(i1, k + m + j);
+      Object localObject2 = ByteBuffer.allocate(checkAlloc(j));
+      if (i != 0)
       {
-        ((ByteBuffer)localObject2).put((byte)(paramByteBuffer.get() ^ arrayOfByte[(i % 4)]));
-        i += 1;
+        byte[] arrayOfByte = new byte[4];
+        paramByteBuffer.get(arrayOfByte);
+        i = n;
+        while (i < j)
+        {
+          ((ByteBuffer)localObject2).put((byte)(paramByteBuffer.get() ^ arrayOfByte[(i % 4)]));
+          i += 1;
+        }
       }
-      bool1 = false;
-      break;
-      label244:
-      bool2 = false;
-      break label56;
-      label250:
-      bool3 = false;
-      break label66;
-      bool4 = false;
-      break label76;
-      i = 0;
-      break label92;
-    }
-    label273:
-    ((ByteBuffer)localObject2).put(paramByteBuffer.array(), paramByteBuffer.position(), ((ByteBuffer)localObject2).limit());
-    paramByteBuffer.position(paramByteBuffer.position() + ((ByteBuffer)localObject2).limit());
-    Object localObject1 = FramedataImpl1.get((Opcode)localObject1);
-    ((FramedataImpl1)localObject1).setFin(bool1);
-    ((FramedataImpl1)localObject1).setRSV1(bool2);
-    ((FramedataImpl1)localObject1).setRSV2(bool3);
-    ((FramedataImpl1)localObject1).setRSV3(bool4);
-    ((ByteBuffer)localObject2).flip();
-    ((FramedataImpl1)localObject1).setPayload((ByteBuffer)localObject2);
-    getExtension().isFrameValid((Framedata)localObject1);
-    getExtension().decodeFrame((Framedata)localObject1);
-    if (log.isTraceEnabled())
-    {
-      localObject2 = log;
-      i = ((FramedataImpl1)localObject1).getPayloadData().remaining();
-      if (((FramedataImpl1)localObject1).getPayloadData().remaining() <= 1000) {
-        break label443;
+      ((ByteBuffer)localObject2).put(paramByteBuffer.array(), paramByteBuffer.position(), ((ByteBuffer)localObject2).limit());
+      paramByteBuffer.position(paramByteBuffer.position() + ((ByteBuffer)localObject2).limit());
+      localObject1 = FramedataImpl1.get((Opcode)localObject1);
+      ((FramedataImpl1)localObject1).setFin(bool1);
+      ((FramedataImpl1)localObject1).setRSV1(bool2);
+      ((FramedataImpl1)localObject1).setRSV2(bool3);
+      ((FramedataImpl1)localObject1).setRSV3(bool4);
+      ((ByteBuffer)localObject2).flip();
+      ((FramedataImpl1)localObject1).setPayload((ByteBuffer)localObject2);
+      getExtension().isFrameValid((Framedata)localObject1);
+      getExtension().decodeFrame((Framedata)localObject1);
+      if (log.isTraceEnabled())
+      {
+        localObject2 = log;
+        i = ((FramedataImpl1)localObject1).getPayloadData().remaining();
+        if (((FramedataImpl1)localObject1).getPayloadData().remaining() > 1000) {
+          paramByteBuffer = "too big to display";
+        } else {
+          paramByteBuffer = new String(((FramedataImpl1)localObject1).getPayloadData().array());
+        }
+        ((Logger)localObject2).trace("afterDecoding({}): {}", Integer.valueOf(i), paramByteBuffer);
       }
-    }
-    label443:
-    for (paramByteBuffer = "too big to display";; paramByteBuffer = new String(((FramedataImpl1)localObject1).getPayloadData().array()))
-    {
-      ((Logger)localObject2).trace("afterDecoding({}): {}", Integer.valueOf(i), paramByteBuffer);
       ((FramedataImpl1)localObject1).isValid();
       return localObject1;
+    }
+    paramByteBuffer = new IllegalArgumentException();
+    for (;;)
+    {
+      throw paramByteBuffer;
     }
   }
   
   private void translateSingleFrameCheckLengthLimit(long paramLong)
   {
-    if (paramLong > 2147483647L)
+    if (paramLong <= 2147483647L)
     {
-      log.trace("Limit exedeed: Payloadsize is to big...");
-      throw new LimitExceededException("Payloadsize is to big...");
-    }
-    if (paramLong > this.maxFrameSize)
-    {
-      log.trace("Payload limit reached. Allowed: {} Current: {}", Integer.valueOf(this.maxFrameSize), Long.valueOf(paramLong));
+      int i = this.maxFrameSize;
+      if (paramLong <= i)
+      {
+        if (paramLong >= 0L) {
+          return;
+        }
+        log.trace("Limit underflow: Payloadsize is to little...");
+        throw new LimitExceededException("Payloadsize is to little...");
+      }
+      log.trace("Payload limit reached. Allowed: {} Current: {}", Integer.valueOf(i), Long.valueOf(paramLong));
       throw new LimitExceededException("Payload limit reached.", this.maxFrameSize);
     }
-    if (paramLong < 0L)
-    {
-      log.trace("Limit underflow: Payloadsize is to little...");
-      throw new LimitExceededException("Payloadsize is to little...");
-    }
+    log.trace("Limit exedeed: Payloadsize is to big...");
+    throw new LimitExceededException("Payloadsize is to big...");
   }
   
   private void translateSingleFrameCheckPacketSize(int paramInt1, int paramInt2)
   {
-    if (paramInt1 < paramInt2)
-    {
-      log.trace("Incomplete frame: maxpacketsize < realpacketsize");
-      throw new IncompleteException(paramInt2);
+    if (paramInt1 >= paramInt2) {
+      return;
     }
+    log.trace("Incomplete frame: maxpacketsize < realpacketsize");
+    throw new IncompleteException(paramInt2);
   }
   
   private Draft_6455.TranslatedPayloadMetaData translateSingleFramePayloadLength(ByteBuffer paramByteBuffer, Opcode paramOpcode, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramOpcode == Opcode.PING) || (paramOpcode == Opcode.PONG) || (paramOpcode == Opcode.CLOSING))
+    if ((paramOpcode != Opcode.PING) && (paramOpcode != Opcode.PONG) && (paramOpcode != Opcode.CLOSING))
     {
-      log.trace("Invalid frame: more than 125 octets");
-      throw new InvalidFrameException("more than 125 octets");
+      if (paramInt1 == 126)
+      {
+        paramInt3 += 2;
+        translateSingleFrameCheckPacketSize(paramInt2, paramInt3);
+        paramOpcode = new byte[3];
+        paramOpcode[1] = paramByteBuffer.get();
+        paramOpcode[2] = paramByteBuffer.get();
+        paramInt1 = new BigInteger(paramOpcode).intValue();
+        paramInt2 = paramInt3;
+      }
+      else
+      {
+        paramInt3 += 8;
+        translateSingleFrameCheckPacketSize(paramInt2, paramInt3);
+        paramOpcode = new byte[8];
+        paramInt1 = 0;
+        while (paramInt1 < 8)
+        {
+          paramOpcode[paramInt1] = paramByteBuffer.get();
+          paramInt1 += 1;
+        }
+        long l = new BigInteger(paramOpcode).longValue();
+        translateSingleFrameCheckLengthLimit(l);
+        paramInt1 = (int)l;
+        paramInt2 = paramInt3;
+      }
+      return new Draft_6455.TranslatedPayloadMetaData(this, paramInt1, paramInt2);
     }
-    if (paramInt1 == 126)
-    {
-      paramInt1 = paramInt3 + 2;
-      translateSingleFrameCheckPacketSize(paramInt2, paramInt1);
-      paramOpcode = new byte[3];
-      paramOpcode[1] = paramByteBuffer.get();
-      paramOpcode[2] = paramByteBuffer.get();
-      paramInt2 = new BigInteger(paramOpcode).intValue();
-    }
+    log.trace("Invalid frame: more than 125 octets");
+    paramByteBuffer = new InvalidFrameException("more than 125 octets");
     for (;;)
     {
-      return new Draft_6455.TranslatedPayloadMetaData(this, paramInt2, paramInt1);
-      paramInt3 += 8;
-      translateSingleFrameCheckPacketSize(paramInt2, paramInt3);
-      paramOpcode = new byte[8];
-      paramInt1 = 0;
-      while (paramInt1 < 8)
-      {
-        paramOpcode[paramInt1] = paramByteBuffer.get();
-        paramInt1 += 1;
-      }
-      long l = new BigInteger(paramOpcode).longValue();
-      translateSingleFrameCheckLengthLimit(l);
-      paramInt2 = (int)l;
-      paramInt1 = paramInt3;
+      throw paramByteBuffer;
     }
   }
   
@@ -713,38 +705,36 @@ public class Draft_6455
       log.trace("acceptHandshakeAsClient - Missing/wrong upgrade or connection in handshake.");
       return HandshakeState.NOT_MATCHED;
     }
-    if ((!paramClientHandshake.hasFieldValue("Sec-WebSocket-Key")) || (!paramServerHandshake.hasFieldValue("Sec-WebSocket-Accept")))
+    if ((paramClientHandshake.hasFieldValue("Sec-WebSocket-Key")) && (paramServerHandshake.hasFieldValue("Sec-WebSocket-Accept")))
     {
-      log.trace("acceptHandshakeAsClient - Missing Sec-WebSocket-Key or Sec-WebSocket-Accept");
-      return HandshakeState.NOT_MATCHED;
-    }
-    String str = paramServerHandshake.getFieldValue("Sec-WebSocket-Accept");
-    if (!generateFinalKey(paramClientHandshake.getFieldValue("Sec-WebSocket-Key")).equals(str))
-    {
-      log.trace("acceptHandshakeAsClient - Wrong key for Sec-WebSocket-Key.");
-      return HandshakeState.NOT_MATCHED;
-    }
-    paramClientHandshake = HandshakeState.NOT_MATCHED;
-    str = paramServerHandshake.getFieldValue("Sec-WebSocket-Extensions");
-    Iterator localIterator = this.knownExtensions.iterator();
-    while (localIterator.hasNext())
-    {
-      IExtension localIExtension = (IExtension)localIterator.next();
-      if (localIExtension.acceptProvidedExtensionAsClient(str))
+      Object localObject = paramServerHandshake.getFieldValue("Sec-WebSocket-Accept");
+      if (!generateFinalKey(paramClientHandshake.getFieldValue("Sec-WebSocket-Key")).equals(localObject))
       {
-        this.extension = localIExtension;
-        paramClientHandshake = HandshakeState.MATCHED;
-        log.trace("acceptHandshakeAsClient - Matching extension found: {}", this.extension);
+        log.trace("acceptHandshakeAsClient - Wrong key for Sec-WebSocket-Key.");
+        return HandshakeState.NOT_MATCHED;
       }
-    }
-    for (;;)
-    {
+      localObject = HandshakeState.NOT_MATCHED;
+      String str = paramServerHandshake.getFieldValue("Sec-WebSocket-Extensions");
+      Iterator localIterator = this.knownExtensions.iterator();
+      do
+      {
+        paramClientHandshake = (ClientHandshake)localObject;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramClientHandshake = (IExtension)localIterator.next();
+      } while (!paramClientHandshake.acceptProvidedExtensionAsClient(str));
+      this.extension = paramClientHandshake;
+      paramClientHandshake = HandshakeState.MATCHED;
+      log.trace("acceptHandshakeAsClient - Matching extension found: {}", this.extension);
       if ((containsRequestedProtocol(paramServerHandshake.getFieldValue("Sec-WebSocket-Protocol")) == HandshakeState.MATCHED) && (paramClientHandshake == HandshakeState.MATCHED)) {
         return HandshakeState.MATCHED;
       }
       log.trace("acceptHandshakeAsClient - No matching extension or protocol found.");
       return HandshakeState.NOT_MATCHED;
     }
+    log.trace("acceptHandshakeAsClient - Missing Sec-WebSocket-Key or Sec-WebSocket-Accept");
+    return HandshakeState.NOT_MATCHED;
   }
   
   public HandshakeState acceptHandshakeAsServer(ClientHandshake paramClientHandshake)
@@ -757,24 +747,22 @@ public class Draft_6455
     HandshakeState localHandshakeState = HandshakeState.NOT_MATCHED;
     String str = paramClientHandshake.getFieldValue("Sec-WebSocket-Extensions");
     Iterator localIterator = this.knownExtensions.iterator();
-    while (localIterator.hasNext())
+    do
     {
-      IExtension localIExtension = (IExtension)localIterator.next();
-      if (localIExtension.acceptProvidedExtensionAsServer(str))
-      {
-        this.extension = localIExtension;
-        localHandshakeState = HandshakeState.MATCHED;
-        log.trace("acceptHandshakeAsServer - Matching extension found: {}", this.extension);
+      localObject = localHandshakeState;
+      if (!localIterator.hasNext()) {
+        break;
       }
+      localObject = (IExtension)localIterator.next();
+    } while (!((IExtension)localObject).acceptProvidedExtensionAsServer(str));
+    this.extension = ((IExtension)localObject);
+    Object localObject = HandshakeState.MATCHED;
+    log.trace("acceptHandshakeAsServer - Matching extension found: {}", this.extension);
+    if ((containsRequestedProtocol(paramClientHandshake.getFieldValue("Sec-WebSocket-Protocol")) == HandshakeState.MATCHED) && (localObject == HandshakeState.MATCHED)) {
+      return HandshakeState.MATCHED;
     }
-    for (;;)
-    {
-      if ((containsRequestedProtocol(paramClientHandshake.getFieldValue("Sec-WebSocket-Protocol")) == HandshakeState.MATCHED) && (localHandshakeState == HandshakeState.MATCHED)) {
-        return HandshakeState.MATCHED;
-      }
-      log.trace("acceptHandshakeAsServer - No matching extension or protocol found.");
-      return HandshakeState.NOT_MATCHED;
-    }
+    log.trace("acceptHandshakeAsServer - No matching extension or protocol found.");
+    return HandshakeState.NOT_MATCHED;
   }
   
   public Draft copyInstance()
@@ -795,22 +783,19 @@ public class Draft_6455
   public ByteBuffer createBinaryFrame(Framedata paramFramedata)
   {
     getExtension().encodeFrame(paramFramedata);
-    Logger localLogger;
-    int i;
     if (log.isTraceEnabled())
     {
-      localLogger = log;
-      i = paramFramedata.getPayloadData().remaining();
-      if (paramFramedata.getPayloadData().remaining() <= 1000) {
-        break label76;
+      Logger localLogger = log;
+      int i = paramFramedata.getPayloadData().remaining();
+      String str;
+      if (paramFramedata.getPayloadData().remaining() > 1000) {
+        str = "too big to display";
+      } else {
+        str = new String(paramFramedata.getPayloadData().array());
       }
-    }
-    label76:
-    for (String str = "too big to display";; str = new String(paramFramedata.getPayloadData().array()))
-    {
       localLogger.trace("afterEnconding({}): {}", Integer.valueOf(i), str);
-      return createByteBufferFromFramedata(paramFramedata);
     }
+    return createByteBufferFromFramedata(paramFramedata);
   }
   
   public List<Framedata> createFrames(String paramString, boolean paramBoolean)
@@ -847,48 +832,35 @@ public class Draft_6455
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (Draft_6455)paramObject;
+      if (this.maxFrameSize != paramObject.getMaxFrameSize()) {
+        return false;
+      }
+      Object localObject = this.extension;
+      if (localObject != null)
       {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (Draft_6455)paramObject;
-        bool1 = bool3;
-      } while (this.maxFrameSize != paramObject.getMaxFrameSize());
-      if (this.extension == null) {
-        break;
+        if (!localObject.equals(paramObject.getExtension())) {
+          return false;
+        }
       }
-      bool1 = bool3;
-    } while (!this.extension.equals(paramObject.getExtension()));
-    if (this.protocol != null) {
-      bool1 = this.protocol.equals(paramObject.getProtocol());
+      else if (paramObject.getExtension() != null) {
+        return false;
+      }
+      localObject = this.protocol;
+      if (localObject != null) {
+        return localObject.equals(paramObject.getProtocol());
+      }
+      return paramObject.getProtocol() == null;
     }
-    for (;;)
-    {
-      return bool1;
-      if (paramObject.getExtension() == null) {
-        break;
-      }
-      return false;
-      bool1 = bool2;
-      if (paramObject.getProtocol() != null) {
-        bool1 = false;
-      }
-    }
+    return false;
   }
   
   public CloseHandshakeType getCloseHandshakeType()
@@ -923,15 +895,20 @@ public class Draft_6455
   
   public int hashCode()
   {
+    Object localObject = this.extension;
     int j = 0;
-    if (this.extension != null) {}
-    for (int i = this.extension.hashCode();; i = 0)
-    {
-      if (this.protocol != null) {
-        j = this.protocol.hashCode();
-      }
-      return (i * 31 + j) * 31 + (this.maxFrameSize ^ this.maxFrameSize >>> 32);
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.protocol;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    int k = this.maxFrameSize;
+    return (i * 31 + j) * 31 + (k ^ k >>> 32);
   }
   
   public ClientHandshakeBuilder postProcessHandshakeRequestAsClient(ClientHandshakeBuilder paramClientHandshakeBuilder)
@@ -983,20 +960,21 @@ public class Draft_6455
     paramServerHandshakeBuilder.put("Upgrade", "websocket");
     paramServerHandshakeBuilder.put("Connection", paramClientHandshake.getFieldValue("Connection"));
     paramClientHandshake = paramClientHandshake.getFieldValue("Sec-WebSocket-Key");
-    if (paramClientHandshake == null) {
-      throw new InvalidHandshakeException("missing Sec-WebSocket-Key");
+    if (paramClientHandshake != null)
+    {
+      paramServerHandshakeBuilder.put("Sec-WebSocket-Accept", generateFinalKey(paramClientHandshake));
+      if (getExtension().getProvidedExtensionAsServer().length() != 0) {
+        paramServerHandshakeBuilder.put("Sec-WebSocket-Extensions", getExtension().getProvidedExtensionAsServer());
+      }
+      if ((getProtocol() != null) && (getProtocol().getProvidedProtocol().length() != 0)) {
+        paramServerHandshakeBuilder.put("Sec-WebSocket-Protocol", getProtocol().getProvidedProtocol());
+      }
+      paramServerHandshakeBuilder.setHttpStatusMessage("Web Socket Protocol Handshake");
+      paramServerHandshakeBuilder.put("Server", "TooTallNate Java-WebSocket");
+      paramServerHandshakeBuilder.put("Date", getServerTime());
+      return paramServerHandshakeBuilder;
     }
-    paramServerHandshakeBuilder.put("Sec-WebSocket-Accept", generateFinalKey(paramClientHandshake));
-    if (getExtension().getProvidedExtensionAsServer().length() != 0) {
-      paramServerHandshakeBuilder.put("Sec-WebSocket-Extensions", getExtension().getProvidedExtensionAsServer());
-    }
-    if ((getProtocol() != null) && (getProtocol().getProvidedProtocol().length() != 0)) {
-      paramServerHandshakeBuilder.put("Sec-WebSocket-Protocol", getProtocol().getProvidedProtocol());
-    }
-    paramServerHandshakeBuilder.setHttpStatusMessage("Web Socket Protocol Handshake");
-    paramServerHandshakeBuilder.put("Server", "TooTallNate Java-WebSocket");
-    paramServerHandshakeBuilder.put("Date", getServerTime());
-    return paramServerHandshakeBuilder;
+    throw new InvalidHandshakeException("missing Sec-WebSocket-Key");
   }
   
   public void processFrame(WebSocketImpl paramWebSocketImpl, Framedata paramFramedata)
@@ -1018,35 +996,35 @@ public class Draft_6455
       paramWebSocketImpl.getWebSocketListener().onWebsocketPong(paramWebSocketImpl, paramFramedata);
       return;
     }
-    if ((!paramFramedata.isFin()) || (localOpcode == Opcode.CONTINUOUS))
+    if ((paramFramedata.isFin()) && (localOpcode != Opcode.CONTINUOUS))
     {
-      processFrameContinuousAndNonFin(paramWebSocketImpl, paramFramedata, localOpcode);
-      return;
-    }
-    if (this.currentContinuousFrame != null)
-    {
+      if (this.currentContinuousFrame == null)
+      {
+        if (localOpcode == Opcode.TEXT)
+        {
+          processFrameText(paramWebSocketImpl, paramFramedata);
+          return;
+        }
+        if (localOpcode == Opcode.BINARY)
+        {
+          processFrameBinary(paramWebSocketImpl, paramFramedata);
+          return;
+        }
+        log.error("non control or continious frame expected");
+        throw new InvalidDataException(1002, "non control or continious frame expected");
+      }
       log.error("Protocol error: Continuous frame sequence not completed.");
       throw new InvalidDataException(1002, "Continuous frame sequence not completed.");
     }
-    if (localOpcode == Opcode.TEXT)
-    {
-      processFrameText(paramWebSocketImpl, paramFramedata);
-      return;
-    }
-    if (localOpcode == Opcode.BINARY)
-    {
-      processFrameBinary(paramWebSocketImpl, paramFramedata);
-      return;
-    }
-    log.error("non control or continious frame expected");
-    throw new InvalidDataException(1002, "non control or continious frame expected");
+    processFrameContinuousAndNonFin(paramWebSocketImpl, paramFramedata, localOpcode);
   }
   
   public void reset()
   {
     this.incompleteframe = null;
-    if (this.extension != null) {
-      this.extension.reset();
+    IExtension localIExtension = this.extension;
+    if (localIExtension != null) {
+      localIExtension.reset();
     }
     this.extension = new DefaultExtension();
     this.protocol = null;
@@ -1056,22 +1034,39 @@ public class Draft_6455
   {
     Object localObject2 = super.toString();
     Object localObject1 = localObject2;
-    if (getExtension() != null) {
-      localObject1 = (String)localObject2 + " extension: " + getExtension().toString();
+    if (getExtension() != null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(" extension: ");
+      ((StringBuilder)localObject1).append(getExtension().toString());
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = localObject1;
-    if (getProtocol() != null) {
-      localObject2 = (String)localObject1 + " protocol: " + getProtocol().toString();
+    if (getProtocol() != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(" protocol: ");
+      ((StringBuilder)localObject2).append(getProtocol().toString());
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
-    return (String)localObject2 + " max frame size: " + this.maxFrameSize;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(" max frame size: ");
+    ((StringBuilder)localObject1).append(this.maxFrameSize);
+    return ((StringBuilder)localObject1).toString();
   }
   
   public List<Framedata> translateFrame(ByteBuffer paramByteBuffer)
   {
+    ByteBuffer localByteBuffer;
     for (;;)
     {
       LinkedList localLinkedList = new LinkedList();
-      if (this.incompleteframe != null) {}
+      if (this.incompleteframe == null) {
+        break;
+      }
       try
       {
         paramByteBuffer.mark();
@@ -1080,43 +1075,42 @@ public class Draft_6455
         if (j > i)
         {
           this.incompleteframe.put(paramByteBuffer.array(), paramByteBuffer.position(), i);
-          paramByteBuffer.position(i + paramByteBuffer.position());
+          paramByteBuffer.position(paramByteBuffer.position() + i);
           return Collections.emptyList();
         }
         this.incompleteframe.put(paramByteBuffer.array(), paramByteBuffer.position(), j);
         paramByteBuffer.position(paramByteBuffer.position() + j);
         localLinkedList.add(translateSingleFrame((ByteBuffer)this.incompleteframe.duplicate().position(0)));
         this.incompleteframe = null;
-        while (paramByteBuffer.hasRemaining())
-        {
-          paramByteBuffer.mark();
-          try
-          {
-            localLinkedList.add(translateSingleFrame(paramByteBuffer));
-          }
-          catch (IncompleteException localIncompleteException2)
-          {
-            paramByteBuffer.reset();
-            this.incompleteframe = ByteBuffer.allocate(checkAlloc(localIncompleteException2.getPreferredSize()));
-            this.incompleteframe.put(paramByteBuffer);
-          }
-        }
-        return localLinkedList;
       }
       catch (IncompleteException localIncompleteException1)
       {
-        ByteBuffer localByteBuffer = ByteBuffer.allocate(checkAlloc(localIncompleteException1.getPreferredSize()));
-        assert (localByteBuffer.limit() > this.incompleteframe.limit());
+        localByteBuffer = ByteBuffer.allocate(checkAlloc(localIncompleteException1.getPreferredSize()));
         this.incompleteframe.rewind();
         localByteBuffer.put(this.incompleteframe);
         this.incompleteframe = localByteBuffer;
       }
     }
+    while (paramByteBuffer.hasRemaining())
+    {
+      paramByteBuffer.mark();
+      try
+      {
+        localByteBuffer.add(translateSingleFrame(paramByteBuffer));
+      }
+      catch (IncompleteException localIncompleteException2)
+      {
+        paramByteBuffer.reset();
+        this.incompleteframe = ByteBuffer.allocate(checkAlloc(localIncompleteException2.getPreferredSize()));
+        this.incompleteframe.put(paramByteBuffer);
+      }
+    }
+    return localByteBuffer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.drafts.Draft_6455
  * JD-Core Version:    0.7.0.1
  */

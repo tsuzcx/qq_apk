@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract interface b$a
 {
-  public abstract int cE(Context paramContext);
+  public abstract int er(Context paramContext);
 }
 
 

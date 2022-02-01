@@ -6,12 +6,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.xv;
 
 public class FreezeUinDialog
   extends Dialog
@@ -23,32 +26,55 @@ public class FreezeUinDialog
   private Context e;
   private Handler f;
   
-  public FreezeUinDialog(Context paramContext, int paramInt1, String paramString, int paramInt2, Handler paramHandler)
+  public FreezeUinDialog(Context paramContext, String paramString, int paramInt, Handler paramHandler)
   {
-    super(paramContext, paramInt1);
-    this.a = paramInt2;
+    super(paramContext, 2131558791);
+    this.a = paramInt;
     this.b = paramString;
     this.e = paramContext;
     this.f = paramHandler;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  protected void onCreate(final Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968669);
+    setContentView(2131296355);
     paramBundle = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
+    localLayoutParams.width = ((int)(((Activity)this.e).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes(localLayoutParams);
-    this.c = ((TextView)findViewById(2131558932));
-    paramBundle = String.format(this.e.getString(2131231046), new Object[] { this.b });
+    this.c = ((TextView)findViewById(2131165553));
+    paramBundle = String.format(this.e.getString(2131493191), new Object[] { this.b });
     this.c.setText(paramBundle);
-    this.d = ((TextView)findViewById(2131558933));
-    paramBundle = String.format(this.e.getString(2131231044), new Object[] { Integer.valueOf(this.a) });
+    this.d = ((TextView)findViewById(2131165552));
+    paramBundle = String.format(this.e.getString(2131493189), new Object[] { Integer.valueOf(this.a) });
     this.d.setText(paramBundle);
-    paramBundle = (CheckBox)findViewById(2131558934);
-    ((TextView)findViewById(2131558936)).setOnClickListener(new ad(this, paramBundle));
-    ((TextView)findViewById(2131558935)).setOnClickListener(new ae(this));
+    paramBundle = (CheckBox)findViewById(2131165557);
+    ((TextView)findViewById(2131165550)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        FreezeUinDialog.this.dismiss();
+        if (FreezeUinDialog.a(FreezeUinDialog.this) != null)
+        {
+          xv.a("freeze: msg=4009");
+          paramAnonymousView = FreezeUinDialog.a(FreezeUinDialog.this).obtainMessage(4009);
+          if (paramBundle.isChecked()) {
+            paramAnonymousView.arg1 = 1;
+          } else {
+            paramAnonymousView.arg2 = 0;
+          }
+          FreezeUinDialog.a(FreezeUinDialog.this).sendMessage(paramAnonymousView);
+        }
+      }
+    });
+    ((TextView)findViewById(2131165549)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        FreezeUinDialog.this.dismiss();
+      }
+    });
   }
 }
 

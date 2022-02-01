@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import icb;
+import ica;
 import java.lang.reflect.Field;
 
 public class TranslucentActivity
@@ -40,11 +40,11 @@ public class TranslucentActivity
   private void a(Intent paramIntent)
   {
     QQProgressDialog localQQProgressDialog;
-    if (!PluginUtils.isPluginInstalled(this, "qzone_plugin.apk", "master"))
+    if (!PluginUtils.isPluginInstalled(this, "qzone_plugin.apk", "603"))
     {
       localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131427376));
       localQQProgressDialog.a(getString(2131559634));
-      localQQProgressDialog.setOnDismissListener(new icb(this));
+      localQQProgressDialog.setOnDismissListener(new ica(this));
     }
     for (;;)
     {

@@ -10,16 +10,22 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_0xe21$TaskConfig
   extends MessageMicro<TaskConfig>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "total_progress", "total_cycle", "article_max_time", "article_still_max_time", "rpt_record_article_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, TaskConfig.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field article_max_time = PBField.initUInt32(0);
   public final PBUInt32Field article_still_max_time = PBField.initUInt32(0);
   public final PBRepeatField<Integer> rpt_record_article_type = PBField.initRepeat(PBInt32Field.__repeatHelper__);
   public final PBUInt32Field total_cycle = PBField.initUInt32(0);
   public final PBUInt32Field total_progress = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "total_progress", "total_cycle", "article_max_time", "article_still_max_time", "rpt_record_article_type" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger }, TaskConfig.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.protofile.oidb_0xe21.oidb_0xe21.TaskConfig
  * JD-Core Version:    0.7.0.1
  */

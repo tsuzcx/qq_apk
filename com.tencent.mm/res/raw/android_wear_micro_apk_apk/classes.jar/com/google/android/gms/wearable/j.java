@@ -7,7 +7,7 @@ public abstract interface j
 {
   public abstract int getType();
   
-  public abstract l ku();
+  public abstract l kD();
 }
 
 

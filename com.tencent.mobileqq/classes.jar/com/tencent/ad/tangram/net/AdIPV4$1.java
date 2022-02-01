@@ -11,22 +11,23 @@ class AdIPV4$1
   
   public void run()
   {
-    AdIPV4.access$002(this.this$0, new AdIPV4.a());
-    AdIPV4.a locala = AdIPV4.access$000(this.this$0);
-    if (this.val$weakContext != null) {}
-    for (Context localContext = (Context)this.val$weakContext.get();; localContext = null)
-    {
-      locala.ip = AdIPV4.access$100(localContext);
-      if (!TextUtils.isEmpty(AdIPV4.access$000(this.this$0).ip)) {
-        AdIPV4.access$000(this.this$0).timeMillis = System.currentTimeMillis();
-      }
-      return;
+    AdIPV4.access$002(this.this$0, new AdIPV4.Address());
+    AdIPV4.Address localAddress = AdIPV4.access$000(this.this$0);
+    Object localObject = this.val$weakContext;
+    if (localObject != null) {
+      localObject = (Context)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    localAddress.ip = AdIPV4.access$100((Context)localObject);
+    if (!TextUtils.isEmpty(AdIPV4.access$000(this.this$0).ip)) {
+      AdIPV4.access$000(this.this$0).timeMillis = System.currentTimeMillis();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.net.AdIPV4.1
  * JD-Core Version:    0.7.0.1
  */

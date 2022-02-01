@@ -10,12 +10,13 @@ class KPLProfileCardActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0, this.this$0.getResources().getString(2131694832), 0).b(this.this$0.getTitleBarHeight());
+    KPLProfileCardActivity localKPLProfileCardActivity = this.this$0;
+    QQToast.makeText(localKPLProfileCardActivity, localKPLProfileCardActivity.getResources().getString(2131892158), 0).show(this.this$0.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.KPLProfileCardActivity.2
  * JD-Core Version:    0.7.0.1
  */

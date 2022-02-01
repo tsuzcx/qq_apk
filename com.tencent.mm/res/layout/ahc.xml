@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a0l" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="48.0dip" style="@style/rc"
+<LinearLayout android:orientation="vertical" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/a0l" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
-        <ImageButton android:id="@id/df8" android:background="@android:color/transparent" android:focusable="false" android:layout_width="50.0dip" android:layout_height="fill_parent" android:src="@drawable/ap_" />
-    </LinearLayout>
+    <include layout="@layout/aha" />
+    <FrameLayout android:id="@id/e_w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

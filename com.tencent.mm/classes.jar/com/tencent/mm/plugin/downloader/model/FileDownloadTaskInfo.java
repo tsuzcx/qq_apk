@@ -10,23 +10,23 @@ public class FileDownloadTaskInfo
 {
   public static Parcelable.Creator<FileDownloadTaskInfo> CREATOR;
   public String appId;
-  public String cqq;
-  public int cvQ;
+  public int hMd;
   public long id;
-  public long jyU;
-  public long kYX;
-  public boolean kYY;
-  public boolean kYZ;
-  public boolean kZa;
+  public String md5;
   public String path;
   public int status;
+  public long uWn;
   public String url;
+  public long xom;
+  public boolean xon;
+  public boolean xoo;
+  public boolean xop;
   
   static
   {
-    AppMethodBeat.i(2449);
-    CREATOR = new FileDownloadTaskInfo.1();
-    AppMethodBeat.o(2449);
+    AppMethodBeat.i(89014);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(89014);
   }
   
   public FileDownloadTaskInfo()
@@ -35,65 +35,65 @@ public class FileDownloadTaskInfo
     this.url = "";
     this.status = 0;
     this.path = "";
-    this.cqq = "";
+    this.md5 = "";
     this.appId = "";
-    this.kYX = 0L;
-    this.jyU = 0L;
-    this.kYY = false;
-    this.cvQ = 2;
-    this.kYZ = false;
-    this.kZa = false;
+    this.xom = 0L;
+    this.uWn = 0L;
+    this.xon = false;
+    this.hMd = 2;
+    this.xoo = false;
+    this.xop = false;
   }
   
   private FileDownloadTaskInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(2448);
+    AppMethodBeat.i(89013);
     this.id = -1L;
     this.url = "";
     this.status = 0;
     this.path = "";
-    this.cqq = "";
+    this.md5 = "";
     this.appId = "";
-    this.kYX = 0L;
-    this.jyU = 0L;
-    this.kYY = false;
-    this.cvQ = 2;
-    this.kYZ = false;
-    this.kZa = false;
+    this.xom = 0L;
+    this.uWn = 0L;
+    this.xon = false;
+    this.hMd = 2;
+    this.xoo = false;
+    this.xop = false;
     this.id = paramParcel.readLong();
     this.url = paramParcel.readString();
     this.status = paramParcel.readInt();
     this.path = paramParcel.readString();
-    this.cqq = paramParcel.readString();
+    this.md5 = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.kYX = paramParcel.readLong();
-    this.jyU = paramParcel.readLong();
+    this.xom = paramParcel.readLong();
+    this.uWn = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.kYY = bool1;
-      this.cvQ = paramParcel.readInt();
+      this.xon = bool1;
+      this.hMd = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
-        break label207;
+        break label205;
       }
       bool1 = true;
-      label175:
-      this.kYZ = bool1;
+      label174:
+      this.xoo = bool1;
       if (paramParcel.readByte() != 1) {
-        break label212;
+        break label210;
       }
     }
-    label207:
-    label212:
+    label205:
+    label210:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.kZa = bool1;
-      AppMethodBeat.o(2448);
+      this.xop = bool1;
+      AppMethodBeat.o(89013);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label175;
+      break label174;
     }
   }
   
@@ -105,47 +105,47 @@ public class FileDownloadTaskInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(2447);
+    AppMethodBeat.i(89012);
     paramParcel.writeLong(this.id);
     paramParcel.writeString(this.url);
     paramParcel.writeInt(this.status);
     paramParcel.writeString(this.path);
-    paramParcel.writeString(this.cqq);
+    paramParcel.writeString(this.md5);
     paramParcel.writeString(this.appId);
-    paramParcel.writeLong(this.kYX);
-    paramParcel.writeLong(this.jyU);
-    if (this.kYY)
+    paramParcel.writeLong(this.xom);
+    paramParcel.writeLong(this.uWn);
+    if (this.xon)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.cvQ);
-      if (!this.kYZ) {
-        break label137;
+      paramParcel.writeInt(this.hMd);
+      if (!this.xoo) {
+        break label135;
       }
       paramInt = 1;
-      label104:
+      label103:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.kZa) {
-        break label142;
+      if (!this.xop) {
+        break label140;
       }
     }
-    label137:
-    label142:
+    label135:
+    label140:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(2447);
+      AppMethodBeat.o(89012);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label104;
+      break label103;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

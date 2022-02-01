@@ -1,237 +1,360 @@
 package com.tencent.mm.ui.base;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils.TruncateAt;
+import android.view.ActionProvider;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.MenuItem.OnActionExpandListener;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.SubMenu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.ck.a.c;
 
 public final class t
-  extends Toast
+  implements MenuItem
 {
-  public final ap caS;
-  private final Context context;
-  public long duration;
-  private View hXE;
-  public int kxm;
-  private int level;
-  private final TextView nSA;
+  public CharSequence BdX;
+  private int EHx;
+  private MenuItem.OnMenuItemClickListener JVE;
+  public boolean NfE;
+  public int XXf;
+  private Drawable Xbc;
+  public boolean adRX;
+  public TextUtils.TruncateAt adRY;
+  private int adRZ;
+  public boolean adSa;
+  public ContextMenu.ContextMenuInfo adSb;
+  public boolean adSc;
+  public u.e adSd;
+  public u.k adSe;
+  public u.j adSf;
+  public boolean disable;
+  public boolean iaS;
+  public int iconColor;
+  private Intent intent;
+  private int kW;
+  private int ld;
+  private Context mContext;
+  public CharSequence nickName;
+  public String rDm;
+  private CharSequence title;
   
-  public t(Context paramContext)
+  public t(Context paramContext, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    AppMethodBeat.i(106879);
-    this.caS = new ap(new t.1(this), true);
-    this.context = paramContext;
-    reset();
-    this.hXE = View.inflate(paramContext, 2130971004, null);
-    setView(this.hXE);
-    setGravity(55, 0, BackwardSupportUtil.b.b(paramContext, 40.0F));
-    setDuration(0);
-    this.nSA = ((TextView)this.hXE.findViewById(2131828506));
-    switch (this.level)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(106879);
-      return;
-      this.nSA.setTextColor(-1);
-      AppMethodBeat.o(106879);
-      return;
-      this.nSA.setTextColor(this.context.getResources().getColor(2131690591));
-    }
+    AppMethodBeat.i(159237);
+    this.NfE = false;
+    this.BdX = null;
+    this.disable = false;
+    this.adSa = true;
+    this.adSc = false;
+    this.adSd = null;
+    this.adSe = null;
+    this.adSf = null;
+    this.mContext = paramContext;
+    this.ld = paramInt1;
+    this.kW = paramInt2;
+    this.iconColor = paramContext.getResources().getColor(a.c.FG_0);
+    AppMethodBeat.o(159237);
   }
   
-  public static o a(Activity paramActivity, int paramInt, String paramString)
+  public final boolean collapseActionView()
   {
-    AppMethodBeat.i(106884);
-    View localView = View.inflate(paramActivity, 2130969985, null);
-    Object localObject = (TextView)localView.findViewById(2131825424);
-    ((TextView)localObject).setText(paramString);
-    ((TextView)localObject).setOnClickListener(null);
-    paramString = (ImageView)localView.findViewById(2131825423);
-    if (paramInt == 0) {
-      paramString.setVisibility(8);
+    return false;
+  }
+  
+  public final boolean expandActionView()
+  {
+    return false;
+  }
+  
+  public final MenuItem f(Drawable paramDrawable, int paramInt)
+  {
+    AppMethodBeat.i(251372);
+    this.Xbc = paramDrawable;
+    this.iconColor = paramInt;
+    if (this.adSd != null) {
+      this.adSd.a(this);
     }
-    for (;;)
+    AppMethodBeat.o(251372);
+    return this;
+  }
+  
+  public final ActionProvider getActionProvider()
+  {
+    return null;
+  }
+  
+  public final View getActionView()
+  {
+    return null;
+  }
+  
+  public final char getAlphabeticShortcut()
+  {
+    return '\000';
+  }
+  
+  public final int getGroupId()
+  {
+    return this.kW;
+  }
+  
+  public final Drawable getIcon()
+  {
+    AppMethodBeat.i(159239);
+    if (this.Xbc == null)
     {
-      paramString = new o(localView);
-      paramString.setWidth(-1);
-      paramString.setHeight(-2);
-      localObject = new Rect();
-      paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      int i = ((Rect)localObject).top;
-      int j = di(paramActivity);
-      paramInt = i;
-      if (i == 0) {
-        paramInt = af.hU(paramActivity);
+      if ((this.adRZ != 0) && (this.mContext != null))
+      {
+        localDrawable = this.mContext.getResources().getDrawable(this.adRZ);
+        AppMethodBeat.o(159239);
+        return localDrawable;
       }
-      al.d(new t.7(paramString, paramActivity, paramInt + j));
-      al.p(new t.2(paramString), 2000L);
-      paramActivity = (ImageButton)localView.findViewById(2131825425);
-      paramActivity.setVisibility(8);
-      paramActivity.setOnClickListener(new t.3(paramString));
-      AppMethodBeat.o(106884);
-      return paramString;
-      paramString.setImageResource(paramInt);
+      AppMethodBeat.o(159239);
+      return null;
     }
+    Drawable localDrawable = this.Xbc;
+    AppMethodBeat.o(159239);
+    return localDrawable;
   }
   
-  public static o a(Activity paramActivity, String paramString, long paramLong)
+  public final Intent getIntent()
   {
-    AppMethodBeat.i(106882);
-    Object localObject = View.inflate(paramActivity, 2130971004, null);
-    ((TextView)((View)localObject).findViewById(2131828506)).setText(paramString);
-    paramString = new o((View)localObject);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ((Rect)localObject).top;
-    int j = di(paramActivity);
-    paramString.showAtLocation(paramActivity.getWindow().getDecorView(), 48, 0, i + j);
-    new t.4(paramString).sendEmptyMessageDelayed(0, paramLong);
-    AppMethodBeat.o(106882);
-    return paramString;
+    return this.intent;
   }
   
-  public static o a(Activity paramActivity, String paramString, View.OnClickListener paramOnClickListener)
+  public final int getItemId()
   {
-    AppMethodBeat.i(106885);
-    View localView = View.inflate(paramActivity, 2130970999, null);
-    ((LinearLayout)localView.findViewById(2131828499)).setBackgroundColor(paramActivity.getResources().getColor(2131690587));
-    Object localObject = (TextView)localView.findViewById(2131828501);
-    ((TextView)localObject).setText(paramString);
-    ((TextView)localObject).setOnClickListener(null);
-    ((TextView)localObject).setTextColor(paramActivity.getResources().getColor(2131689766));
-    ((ImageView)localView.findViewById(2131828500)).setImageResource(2131232095);
-    paramString = new o(localView);
-    paramString.setWidth(-1);
-    paramString.setHeight(-2);
-    localObject = new Rect();
-    Window localWindow = paramActivity.getWindow();
-    localWindow.getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = ((Rect)localObject).top;
-    int k = di(paramActivity);
-    int i = j;
-    if (j == 0) {
-      i = af.hU(paramActivity);
-    }
-    if (localWindow.getDecorView() != null) {
-      localWindow.getDecorView().post(new t.5(paramString, localWindow, i + k));
-    }
-    paramActivity = (ImageView)localView.findViewById(2131828502);
-    paramActivity.setImageResource(2130840589);
-    paramActivity.setOnClickListener(new t.6(paramString, paramOnClickListener));
-    AppMethodBeat.o(106885);
-    return paramString;
+    return this.ld;
   }
   
-  public static void bP(Context paramContext, String paramString)
+  public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    AppMethodBeat.i(142751);
-    Toast localToast = Toast.makeText(paramContext, "", 0);
-    paramContext = View.inflate(paramContext, 2130969018, null);
-    ((TextView)paramContext.findViewById(2131822417)).setText(paramString);
-    localToast.setGravity(17, 0, 0);
-    localToast.setView(paramContext);
-    localToast.show();
-    AppMethodBeat.o(142751);
+    return this.adSb;
   }
   
-  private static int di(Context paramContext)
+  public final char getNumericShortcut()
   {
-    AppMethodBeat.i(106883);
-    int i;
-    if (((paramContext instanceof AppCompatActivity)) && (((AppCompatActivity)paramContext).getSupportActionBar() != null)) {
-      i = ((AppCompatActivity)paramContext).getSupportActionBar().getHeight();
-    }
-    while (i == 0)
+    return '\000';
+  }
+  
+  public final int getOrder()
+  {
+    return 0;
+  }
+  
+  public final SubMenu getSubMenu()
+  {
+    return null;
+  }
+  
+  public final CharSequence getTitle()
+  {
+    AppMethodBeat.i(159238);
+    if (this.title == null)
     {
-      i = paramContext.getResources().getDimensionPixelSize(2131427559);
-      AppMethodBeat.o(106883);
-      return i;
-      DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-      if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels) {
-        i = paramContext.getResources().getDimensionPixelSize(2131427558);
-      } else {
-        i = paramContext.getResources().getDimensionPixelSize(2131427559);
+      if ((this.EHx != 0) && (this.mContext != null))
+      {
+        localObject = this.mContext.getString(this.EHx);
+        AppMethodBeat.o(159238);
+        return localObject;
       }
+      AppMethodBeat.o(159238);
+      return null;
     }
-    AppMethodBeat.o(106883);
-    return i;
+    Object localObject = this.title;
+    AppMethodBeat.o(159238);
+    return localObject;
   }
   
-  public static int hY(Context paramContext)
+  public final CharSequence getTitleCondensed()
   {
-    AppMethodBeat.i(156784);
-    int i = af.hU(paramContext);
-    AppMethodBeat.o(156784);
-    return i;
+    return null;
   }
   
-  public static void ii(Context paramContext)
+  public final boolean hasSubMenu()
   {
-    AppMethodBeat.i(106886);
-    if (h.getExternalStorageState().equals("mounted_ro"))
+    return false;
+  }
+  
+  public final boolean isActionViewExpanded()
+  {
+    return false;
+  }
+  
+  public final boolean isCheckable()
+  {
+    return false;
+  }
+  
+  public final boolean isChecked()
+  {
+    return false;
+  }
+  
+  public final boolean isEnabled()
+  {
+    return true;
+  }
+  
+  public final boolean isVisible()
+  {
+    return true;
+  }
+  
+  public final MenuItem oi(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(251378);
+    this.adRZ = paramInt1;
+    this.iconColor = paramInt2;
+    if (this.adSd != null) {
+      this.adSd.a(this);
+    }
+    AppMethodBeat.o(251378);
+    return this;
+  }
+  
+  public final boolean performClick()
+  {
+    AppMethodBeat.i(159240);
+    if (this.JVE != null)
     {
-      t.a.aC(paramContext, 3);
-      AppMethodBeat.o(106886);
-      return;
+      boolean bool = this.JVE.onMenuItemClick(this);
+      AppMethodBeat.o(159240);
+      return bool;
     }
-    t.a.aC(paramContext, 1);
-    AppMethodBeat.o(106886);
+    AppMethodBeat.o(159240);
+    return false;
   }
   
-  public static void ij(Context paramContext)
+  public final MenuItem r(CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(106887);
-    t.a.aC(paramContext, 2);
-    AppMethodBeat.o(106887);
+    this.title = paramCharSequence;
+    this.XXf = paramInt;
+    return this;
   }
   
-  public final void reset()
+  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
   {
-    this.level = 1;
-    this.duration = 2000L;
-    this.kxm = ((int)(this.duration / 70L) + 1);
+    return null;
   }
   
-  public final void setText(int paramInt)
+  public final MenuItem setActionView(int paramInt)
   {
-    AppMethodBeat.i(106881);
-    this.nSA.setText(paramInt);
-    AppMethodBeat.o(106881);
+    return null;
   }
   
-  public final void setText(CharSequence paramCharSequence)
+  public final MenuItem setActionView(View paramView)
   {
-    AppMethodBeat.i(106880);
-    this.nSA.setText(paramCharSequence);
-    AppMethodBeat.o(106880);
+    return null;
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar)
+  {
+    return this;
+  }
+  
+  public final MenuItem setCheckable(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setChecked(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setEnabled(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setIcon(int paramInt)
+  {
+    AppMethodBeat.i(251376);
+    this.adRZ = paramInt;
+    if (this.adSd != null) {
+      this.adSd.a(this);
+    }
+    AppMethodBeat.o(251376);
+    return this;
+  }
+  
+  public final MenuItem setIcon(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(251367);
+    this.Xbc = paramDrawable;
+    if (this.adSd != null) {
+      this.adSd.a(this);
+    }
+    AppMethodBeat.o(251367);
+    return this;
+  }
+  
+  public final MenuItem setIntent(Intent paramIntent)
+  {
+    this.intent = paramIntent;
+    return this;
+  }
+  
+  public final MenuItem setNumericShortcut(char paramChar)
+  {
+    return this;
+  }
+  
+  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
+  {
+    return null;
+  }
+  
+  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+  {
+    this.JVE = paramOnMenuItemClickListener;
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2)
+  {
+    return this;
+  }
+  
+  public final void setShowAsAction(int paramInt) {}
+  
+  public final MenuItem setShowAsActionFlags(int paramInt)
+  {
+    return null;
+  }
+  
+  public final MenuItem setTitle(int paramInt)
+  {
+    this.EHx = paramInt;
+    return this;
+  }
+  
+  public final MenuItem setTitle(CharSequence paramCharSequence)
+  {
+    this.title = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
+  {
+    return this;
+  }
+  
+  public final MenuItem setVisible(boolean paramBoolean)
+  {
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.t
  * JD-Core Version:    0.7.0.1
  */

@@ -7,30 +7,24 @@ import com.qq.taf.jce.JceStruct;
 public final class CommWidgetInfo
   extends JceStruct
 {
-  static ArrowInfo cache_stArrowInfo;
+  static ArrowInfo cache_stArrowInfo = new ArrowInfo();
   static DescInfo cache_stDescInfo = new DescInfo();
   static NumberInfo cache_stNumberInfo = new NumberInfo();
-  static WidgetMargin cache_stWidgetMargin;
-  static int cache_type = 0;
-  public boolean bShow;
-  public ArrowInfo stArrowInfo;
-  public DescInfo stDescInfo;
-  public NumberInfo stNumberInfo;
-  public WidgetMargin stWidgetMargin;
+  static WidgetMargin cache_stWidgetMargin = new WidgetMargin();
+  static int cache_type;
+  public boolean bShow = false;
+  public ArrowInfo stArrowInfo = null;
+  public DescInfo stDescInfo = null;
+  public NumberInfo stNumberInfo = null;
+  public WidgetMargin stWidgetMargin = null;
   public String strDownloadAppPackageName = "";
   public String strJumpUrl = "";
   public String strTraceInfo = "";
   public String strWidgetUrl = "";
-  public int type;
-  public long uiFrameIntervalMs;
-  public long uiLevel;
-  public long uiLoopIntervalMs;
-  
-  static
-  {
-    cache_stArrowInfo = new ArrowInfo();
-    cache_stWidgetMargin = new WidgetMargin();
-  }
+  public int type = 0;
+  public long uiFrameIntervalMs = 0L;
+  public long uiLevel = 0L;
+  public long uiLoopIntervalMs = 0L;
   
   public CommWidgetInfo() {}
   
@@ -72,38 +66,46 @@ public final class CommWidgetInfo
   {
     paramJceOutputStream.write(this.bShow, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.strWidgetUrl != null) {
-      paramJceOutputStream.write(this.strWidgetUrl, 2);
+    Object localObject = this.strWidgetUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.stArrowInfo != null) {
-      paramJceOutputStream.write(this.stArrowInfo, 3);
+    localObject = this.stArrowInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 4);
+    localObject = this.strJumpUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.uiLevel, 5);
-    if (this.stWidgetMargin != null) {
-      paramJceOutputStream.write(this.stWidgetMargin, 6);
+    localObject = this.stWidgetMargin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stDescInfo != null) {
-      paramJceOutputStream.write(this.stDescInfo, 7);
+    localObject = this.stDescInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.stNumberInfo != null) {
-      paramJceOutputStream.write(this.stNumberInfo, 8);
+    localObject = this.stNumberInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
     paramJceOutputStream.write(this.uiFrameIntervalMs, 9);
     paramJceOutputStream.write(this.uiLoopIntervalMs, 10);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 11);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strDownloadAppPackageName != null) {
-      paramJceOutputStream.write(this.strDownloadAppPackageName, 12);
+    localObject = this.strDownloadAppPackageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.CommWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

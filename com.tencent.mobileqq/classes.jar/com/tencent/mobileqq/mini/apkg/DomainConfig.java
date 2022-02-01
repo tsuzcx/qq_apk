@@ -5,6 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DomainConfig
 {
@@ -12,6 +13,7 @@ public class DomainConfig
   public static final String HTTP_PREFIX = "http://";
   public static final String WSS_PREFIX = "wss://";
   public static final String WS_PREFIX = "ws://";
+  private static ConcurrentHashMap<String, DomainConfig> domainConfigMap = new ConcurrentHashMap();
   private static final int needCheckPost = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDomainNeedCheckPort", 0);
   public String host;
   public int port;
@@ -24,136 +26,196 @@ public class DomainConfig
   
   public static DomainConfig getDomainConfig(String paramString)
   {
+    return getDomainConfig(paramString, false);
+  }
+  
+  public static DomainConfig getDomainConfig(String paramString, boolean paramBoolean)
+  {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    String str;
+    if (domainConfigMap.contains(paramString)) {
+      return (DomainConfig)domainConfigMap.get(paramString);
+    }
+    long l = System.currentTimeMillis();
+    Object localObject1;
     if (paramString.startsWith("wss://"))
     {
-      str = paramString;
-      if (paramString.length() > 6) {
-        str = "https://" + paramString.substring(6);
+      localObject1 = paramString;
+      if (paramString.length() > 6)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("https://");
+        ((StringBuilder)localObject1).append(paramString.substring(6));
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
+    else
+    {
+      localObject1 = paramString;
+      if (!paramString.startsWith("https://")) {
+        if (paramString.startsWith("http://"))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("https://");
+          ((StringBuilder)localObject1).append(paramString.substring(7));
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("https://");
+          ((StringBuilder)localObject1).append(paramString);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+    }
+    int i;
     try
     {
-      for (;;)
-      {
-        URL localURL1 = new URL(str);
-        paramString = localURL1.getHost();
-        i = localURL1.getPort();
-        str = paramString;
-        if (!TextUtils.isEmpty(paramString))
-        {
-          str = paramString;
-          if (paramString.startsWith("www.")) {
-            str = paramString.substring(4);
-          }
-        }
-        return new DomainConfig(str, i);
-        str = paramString;
-        if (!paramString.startsWith("https://")) {
-          str = "https://" + paramString;
-        }
-      }
+      URL localURL1 = new URL((String)localObject1);
+      paramString = localURL1.getHost();
+      i = localURL1.getPort();
     }
-    catch (MalformedURLException localMalformedURLException)
+    catch (MalformedURLException localMalformedURLException) {}
+    try
     {
-      try
+      paramString = new StringBuilder();
+      paramString.append("https://");
+      paramString.append((String)localObject1);
+      URL localURL2 = new URL(paramString.toString());
+      paramString = localURL2.getHost();
+      i = localURL2.getPort();
+      localObject2 = paramString;
+      if (!TextUtils.isEmpty(paramString))
       {
-        URL localURL2 = new URL("https://" + str);
-        paramString = localURL2.getHost();
-        int i = localURL2.getPort();
+        localObject2 = paramString;
+        if (paramString.startsWith("www.")) {
+          localObject2 = paramString.substring(4);
+        }
       }
-      catch (MalformedURLException paramString)
+      paramString = new DomainConfig((String)localObject2, i);
+      if (paramBoolean) {
+        domainConfigMap.put(localObject1, paramString);
+      }
+      if (QLog.isColorLevel())
       {
-        QLog.e("[mini] http.", 1, "getDomainConfig url error" + str, localMalformedURLException);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getDomainConfig url for ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" costTime:");
+        ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+        QLog.i("[mini] http.", 2, ((StringBuilder)localObject2).toString());
       }
+      return paramString;
     }
+    catch (MalformedURLException paramString)
+    {
+      Object localObject2;
+      label377:
+      break label377;
+    }
+    paramString = new StringBuilder();
+    paramString.append("getDomainConfig url error");
+    paramString.append((String)localObject1);
+    QLog.e("[mini] http.", 1, paramString.toString(), (Throwable)localObject2);
     return null;
   }
   
   public static boolean isDomainConfigMatch(DomainConfig paramDomainConfig1, DomainConfig paramDomainConfig2)
   {
-    boolean bool1 = true;
-    if ((paramDomainConfig1 == null) || (paramDomainConfig2 == null))
+    boolean bool2 = false;
+    if (paramDomainConfig1 != null)
     {
-      bool1 = false;
-      return bool1;
-    }
-    boolean bool2 = TextUtils.equals(paramDomainConfig1.host, paramDomainConfig2.host);
-    label43:
-    int i;
-    if (paramDomainConfig1.port == paramDomainConfig2.port)
-    {
-      j = 1;
-      i = j;
+      if (paramDomainConfig2 == null) {
+        return false;
+      }
+      boolean bool3 = isDomainMatchRfc2019(paramDomainConfig1.host, paramDomainConfig2);
+      if (paramDomainConfig1.port == paramDomainConfig2.port) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      int i = j;
       if (j == 0)
       {
         i = j;
         if (paramDomainConfig1.port <= 0)
         {
-          if ((paramDomainConfig2.port != 80) && (paramDomainConfig2.port != 8080) && (paramDomainConfig2.port > 0)) {
-            break label178;
+          i = paramDomainConfig2.port;
+          if ((i != 80) && (i != 8080) && (i > 0)) {
+            i = 0;
+          } else {
+            i = 1;
           }
-          i = 1;
         }
       }
-      label86:
-      j = i;
+      int j = i;
       if (i == 0)
       {
         j = i;
-        if (paramDomainConfig2.port <= 0) {
-          if ((paramDomainConfig1.port != 80) && (paramDomainConfig1.port != 8080) && (paramDomainConfig1.port > 0)) {
-            break label183;
+        if (paramDomainConfig2.port <= 0)
+        {
+          i = paramDomainConfig1.port;
+          if ((i != 80) && (i != 8080) && (i > 0)) {
+            j = 0;
+          } else {
+            j = 1;
           }
         }
       }
+      if (needCheckPost > 0)
+      {
+        paramDomainConfig1 = new StringBuilder();
+        paramDomainConfig1.append("isDomainConfigMatch needCheckPost:");
+        paramDomainConfig1.append(needCheckPost);
+        QLog.i("[mini] http.", 1, paramDomainConfig1.toString());
+        boolean bool1 = bool2;
+        if (bool3)
+        {
+          bool1 = bool2;
+          if (j != 0) {
+            bool1 = true;
+          }
+        }
+        return bool1;
+      }
+      return bool3;
     }
-    label178:
-    label183:
-    for (int j = 1;; j = 0)
-    {
-      if (needCheckPost <= 0) {
-        break label188;
-      }
-      QLog.i("[mini] http.", 1, "isDomainConfigMatch needCheckPost:" + needCheckPost);
-      if ((bool2) && (j != 0)) {
-        break;
-      }
+    return false;
+  }
+  
+  public static boolean isDomainMatchRfc2019(String paramString, DomainConfig paramDomainConfig)
+  {
+    if (paramDomainConfig == null) {
       return false;
-      j = 0;
-      break label43;
-      i = 0;
-      break label86;
     }
-    label188:
-    return bool2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isDomainMatchRfc2019 allowedDomainHost=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", requestDomain=");
+    localStringBuilder.append(paramDomainConfig);
+    QLog.d("domainValid", 1, localStringBuilder.toString());
+    return ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramDomainConfig.host)) && (paramString.startsWith(".")) && (paramString.split("\\.").length >= 1) && (paramDomainConfig.host.endsWith(paramString))) || (paramString.equals(paramDomainConfig.host));
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramObject == null);
-        bool1 = bool2;
-      } while (getClass() != paramObject.getClass());
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
       paramObject = (DomainConfig)paramObject;
-      bool1 = bool2;
-    } while (this.port != paramObject.port);
-    return this.host.equals(paramObject.host);
+      if (this.port != paramObject.port) {
+        return false;
+      }
+      return this.host.equals(paramObject.host);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -163,15 +225,30 @@ public class DomainConfig
   
   public String toString()
   {
-    if (this.port > 0) {}
-    for (String str = ", port=" + this.port;; str = "") {
-      return "DomainConfig{host='" + this.host + '\'' + str + '}';
+    Object localObject;
+    if (this.port > 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", port=");
+      ((StringBuilder)localObject).append(this.port);
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DomainConfig{host='");
+    localStringBuilder.append(this.host);
+    localStringBuilder.append('\'');
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.DomainConfig
  * JD-Core Version:    0.7.0.1
  */

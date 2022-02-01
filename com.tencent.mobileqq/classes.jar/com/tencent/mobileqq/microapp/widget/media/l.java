@@ -20,23 +20,27 @@ final class l
     {
       paramTVK_IMediaPlayer = new JSONObject();
       paramTVK_IMediaPlayer.put("data", this.a.b);
-      this.a.c.evaluteJs("WeixinJSBridge.subscribeHandler(\"onVideoWaiting\", " + paramTVK_IMediaPlayer + "," + this.a.d + ")");
-      this.a.f = true;
-      MiniAppVideoPlayer.c(this.a).start();
-      return;
+      ServiceWebview localServiceWebview = this.a.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onVideoWaiting\", ");
+      localStringBuilder.append(paramTVK_IMediaPlayer);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.a.d);
+      localStringBuilder.append(")");
+      localServiceWebview.evaluteJs(localStringBuilder.toString());
     }
     catch (JSONException paramTVK_IMediaPlayer)
     {
-      for (;;)
-      {
-        paramTVK_IMediaPlayer.printStackTrace();
-      }
+      paramTVK_IMediaPlayer.printStackTrace();
     }
+    paramTVK_IMediaPlayer = this.a;
+    paramTVK_IMediaPlayer.f = true;
+    MiniAppVideoPlayer.c(paramTVK_IMediaPlayer).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.l
  * JD-Core Version:    0.7.0.1
  */

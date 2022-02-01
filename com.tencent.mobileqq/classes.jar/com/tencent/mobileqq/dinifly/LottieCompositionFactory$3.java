@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.dinifly;
 
 import android.content.Context;
+import java.lang.ref.WeakReference;
 import java.util.concurrent.Callable;
 
 final class LottieCompositionFactory$3
   implements Callable<LottieResult<LottieComposition>>
 {
-  LottieCompositionFactory$3(Context paramContext, int paramInt) {}
+  LottieCompositionFactory$3(WeakReference paramWeakReference, Context paramContext, int paramInt, String paramString) {}
   
   public LottieResult<LottieComposition> call()
   {
-    return LottieCompositionFactory.fromRawResSync(this.val$appContext, this.val$rawRes);
+    Context localContext = (Context)this.val$contextRef.get();
+    if (localContext == null) {
+      localContext = this.val$appContext;
+    }
+    return LottieCompositionFactory.fromRawResSync(localContext, this.val$rawRes, this.val$cacheKey);
   }
 }
 

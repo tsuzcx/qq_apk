@@ -37,4 +37,5 @@
         <com.qzone.widget.AsyncImageView android:id="@id/k34" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginTop="132.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
         <TextView android:textSize="12.0dip" android:textColor="#ff888888" android:id="@id/k3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="87.0dip" android:layout_centerHorizontal="true" />
     </RelativeLayout>
+    <View android:id="@id/f_1" android:background="@color/bw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

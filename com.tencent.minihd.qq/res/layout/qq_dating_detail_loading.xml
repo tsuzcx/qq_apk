@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_dating_detail_loading" android:contentDescription="@null" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/photo_preveiw_loading" android:drawablePadding="10.0dip" />
+</LinearLayout>

@@ -12,17 +12,19 @@ class ActVideoDecoder$1$1
   {
     synchronized (ActVideoDecoder.access$200(this.this$1.this$0))
     {
-      if (ActVideoDecoder.access$300(this.this$1.this$0)) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      if (!ActVideoDecoder.access$300(this.this$1.this$0))
+      {
+        ActVideoDecoder.access$302(this.this$1.this$0, true);
+        ActVideoDecoder.access$200(this.this$1.this$0).notifyAll();
+        return;
       }
+      throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
     }
-    ActVideoDecoder.access$302(this.this$1.this$0, true);
-    ActVideoDecoder.access$200(this.this$1.this$0).notifyAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.recorder.ActVideoDecoder.1.1
  * JD-Core Version:    0.7.0.1
  */

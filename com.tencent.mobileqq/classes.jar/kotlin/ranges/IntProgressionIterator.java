@@ -17,29 +17,16 @@ public final class IntProgressionIterator
   {
     this.step = paramInt3;
     this.finalElement = paramInt2;
-    if (this.step > 0) {
-      if (paramInt1 <= paramInt2)
-      {
-        this.hasNext = bool;
-        if (!this.hasNext) {
-          break label65;
-        }
-      }
+    paramInt3 = this.step;
+    boolean bool = true;
+    if (paramInt3 > 0 ? paramInt1 > paramInt2 : paramInt1 < paramInt2) {
+      bool = false;
     }
-    for (;;)
-    {
-      this.next = paramInt1;
-      return;
-      bool = false;
-      break;
-      if (paramInt1 >= paramInt2) {
-        break;
-      }
-      bool = false;
-      break;
-      label65:
+    this.hasNext = bool;
+    if (!this.hasNext) {
       paramInt1 = this.finalElement;
     }
+    this.next = paramInt1;
   }
   
   public final int getStep()
@@ -57,19 +44,20 @@ public final class IntProgressionIterator
     int i = this.next;
     if (i == this.finalElement)
     {
-      if (!this.hasNext) {
-        throw ((Throwable)new NoSuchElementException());
+      if (this.hasNext)
+      {
+        this.hasNext = false;
+        return i;
       }
-      this.hasNext = false;
-      return i;
+      throw ((Throwable)new NoSuchElementException());
     }
-    this.next += this.step;
+    this.next = (this.step + i);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.ranges.IntProgressionIterator
  * JD-Core Version:    0.7.0.1
  */

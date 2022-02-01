@@ -1,414 +1,351 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.util.Pair;
+import android.os.Build.VERSION;
+import com.tencent.luggage.sdk.h.e;
+import com.tencent.luggage.sdk.h.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.as;
-import com.tencent.mm.plugin.appbrand.appcache.as.a;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.g.d.a;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib;", "", "()V", "TAG", "", "runningTasks", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "obtainTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "waitFor", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$IWaitForCommLibTask;", "function", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "", "Lcom/tencent/mm/plugin/appbrand/launching/NotifyInvoke;", "ITaskMap", "IWaitForCommLibTask", "Task", "TaskMapApi24", "TaskMapApiBase", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
 {
-  /* Error */
-  static com.tencent.mm.plugin.appbrand.appcache.at a(com.tencent.mm.plugin.appbrand.appcache.y paramy, int paramInt1, int paramInt2, String paramString)
-  {
-    // Byte code:
-    //   0: ldc 11
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 23	com/tencent/mm/plugin/appbrand/app/g:auM	()Lcom/tencent/mm/plugin/appbrand/appcache/ay;
-    //   8: astore 5
-    //   10: aload_0
-    //   11: ifnull +10 -> 21
-    //   14: aload_3
-    //   15: invokestatic 29	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   18: ifeq +102 -> 120
-    //   21: aconst_null
-    //   22: astore_0
-    //   23: aload_0
-    //   24: ifnull +334 -> 358
-    //   27: aload_0
-    //   28: invokeinterface 35 1 0
-    //   33: astore 6
-    //   35: aload 6
-    //   37: invokeinterface 41 1 0
-    //   42: ifeq +316 -> 358
-    //   45: aload 6
-    //   47: invokeinterface 45 1 0
-    //   52: checkcast 47	com/tencent/mm/plugin/appbrand/appcache/at
-    //   55: astore_0
-    //   56: aload_0
-    //   57: getfield 51	com/tencent/mm/plugin/appbrand/appcache/at:field_version	I
-    //   60: iload_2
-    //   61: if_icmpeq -26 -> 35
-    //   64: aload_3
-    //   65: aload_0
-    //   66: getfield 55	com/tencent/mm/plugin/appbrand/appcache/at:field_versionMd5	Ljava/lang/String;
-    //   69: invokevirtual 61	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   72: ifeq -37 -> 35
-    //   75: aload_0
-    //   76: getfield 64	com/tencent/mm/plugin/appbrand/appcache/at:field_pkgPath	Ljava/lang/String;
-    //   79: invokestatic 70	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   82: astore 7
-    //   84: aload_3
-    //   85: aload 7
-    //   87: sipush 4096
-    //   90: invokestatic 76	com/tencent/mm/a/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   93: invokevirtual 61	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   96: istore 4
-    //   98: iload 4
-    //   100: ifeq +188 -> 288
-    //   103: aload 7
-    //   105: ifnull +8 -> 113
-    //   108: aload 7
-    //   110: invokevirtual 82	java/io/InputStream:close	()V
-    //   113: ldc 11
-    //   115: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   118: aload_0
-    //   119: areturn
-    //   120: getstatic 91	java/util/Locale:US	Ljava/util/Locale;
-    //   123: ldc 93
-    //   125: iconst_5
-    //   126: anewarray 4	java/lang/Object
-    //   129: dup
-    //   130: iconst_0
-    //   131: ldc 95
-    //   133: aastore
-    //   134: dup
-    //   135: iconst_1
-    //   136: ldc 97
-    //   138: aastore
-    //   139: dup
-    //   140: iconst_2
-    //   141: ldc 99
-    //   143: aastore
-    //   144: dup
-    //   145: iconst_3
-    //   146: ldc 101
-    //   148: aastore
-    //   149: dup
-    //   150: iconst_4
-    //   151: ldc 103
-    //   153: aastore
-    //   154: invokestatic 107	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   157: astore 6
-    //   159: aload 5
-    //   161: getfield 113	com/tencent/mm/plugin/appbrand/appcache/ay:gWU	Lcom/tencent/mm/sdk/e/f;
-    //   164: aload 6
-    //   166: iconst_3
-    //   167: anewarray 57	java/lang/String
-    //   170: dup
-    //   171: iconst_0
-    //   172: aload_0
-    //   173: invokevirtual 119	com/tencent/mm/plugin/appbrand/appcache/y:toString	()Ljava/lang/String;
-    //   176: aastore
-    //   177: dup
-    //   178: iconst_1
-    //   179: iload_1
-    //   180: invokestatic 123	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   183: aastore
-    //   184: dup
-    //   185: iconst_2
-    //   186: aload_3
-    //   187: aastore
-    //   188: invokeinterface 129 3 0
-    //   193: astore 5
-    //   195: aload 5
-    //   197: ifnull +13 -> 210
-    //   200: aload 5
-    //   202: invokeinterface 134 1 0
-    //   207: ifeq +8 -> 215
-    //   210: aconst_null
-    //   211: astore_0
-    //   212: goto -189 -> 23
-    //   215: aload 5
-    //   217: invokeinterface 137 1 0
-    //   222: ifne +15 -> 237
-    //   225: aload 5
-    //   227: invokeinterface 138 1 0
-    //   232: aconst_null
-    //   233: astore_0
-    //   234: goto -211 -> 23
-    //   237: new 140	java/util/LinkedList
-    //   240: dup
-    //   241: invokespecial 143	java/util/LinkedList:<init>	()V
-    //   244: astore_0
-    //   245: new 47	com/tencent/mm/plugin/appbrand/appcache/at
-    //   248: dup
-    //   249: invokespecial 144	com/tencent/mm/plugin/appbrand/appcache/at:<init>	()V
-    //   252: astore 6
-    //   254: aload 6
-    //   256: aload 5
-    //   258: invokevirtual 148	com/tencent/mm/plugin/appbrand/appcache/at:convertFrom	(Landroid/database/Cursor;)V
-    //   261: aload_0
-    //   262: aload 6
-    //   264: invokevirtual 151	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   267: pop
-    //   268: aload 5
-    //   270: invokeinterface 154 1 0
-    //   275: ifne -30 -> 245
-    //   278: aload 5
-    //   280: invokeinterface 138 1 0
-    //   285: goto -262 -> 23
-    //   288: aload 7
-    //   290: ifnull -255 -> 35
-    //   293: aload 7
-    //   295: invokevirtual 82	java/io/InputStream:close	()V
-    //   298: goto -263 -> 35
-    //   301: astore_0
-    //   302: goto -267 -> 35
-    //   305: astore 5
-    //   307: ldc 11
-    //   309: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   312: aload 5
-    //   314: athrow
-    //   315: astore_0
-    //   316: aload 7
-    //   318: ifnull +13 -> 331
-    //   321: aload 5
-    //   323: ifnull +27 -> 350
-    //   326: aload 7
-    //   328: invokevirtual 82	java/io/InputStream:close	()V
-    //   331: ldc 11
-    //   333: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   336: aload_0
-    //   337: athrow
-    //   338: astore 7
-    //   340: aload 5
-    //   342: aload 7
-    //   344: invokevirtual 158	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   347: goto -16 -> 331
-    //   350: aload 7
-    //   352: invokevirtual 82	java/io/InputStream:close	()V
-    //   355: goto -24 -> 331
-    //   358: ldc 11
-    //   360: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   363: aconst_null
-    //   364: areturn
-    //   365: astore_0
-    //   366: aconst_null
-    //   367: astore 5
-    //   369: goto -53 -> 316
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	372	0	paramy	com.tencent.mm.plugin.appbrand.appcache.y
-    //   0	372	1	paramInt1	int
-    //   0	372	2	paramInt2	int
-    //   0	372	3	paramString	String
-    //   96	3	4	bool	boolean
-    //   8	271	5	localObject1	Object
-    //   305	36	5	localThrowable1	java.lang.Throwable
-    //   367	1	5	localObject2	Object
-    //   33	230	6	localObject3	Object
-    //   82	245	7	localInputStream	java.io.InputStream
-    //   338	13	7	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   75	84	301	java/io/IOException
-    //   108	113	301	java/io/IOException
-    //   293	298	301	java/io/IOException
-    //   326	331	301	java/io/IOException
-    //   331	338	301	java/io/IOException
-    //   340	347	301	java/io/IOException
-    //   350	355	301	java/io/IOException
-    //   84	98	305	java/lang/Throwable
-    //   307	315	315	finally
-    //   326	331	338	java/lang/Throwable
-    //   84	98	365	finally
-  }
+  public static final h sXs;
+  private static final a sXt;
   
-  public static WxaPkgWrappingInfo bl(String paramString, int paramInt)
+  static
   {
-    AppMethodBeat.i(131808);
-    int[] arrayOfInt = g.auM().yF(paramString);
-    if ((arrayOfInt != null) && (arrayOfInt.length > paramInt)) {}
-    for (;;)
+    AppMethodBeat.i(50746);
+    sXs = new h();
+    if (Build.VERSION.SDK_INT >= 24) {}
+    for (a locala = (a)new d();; locala = (a)new h.e())
     {
-      int i = paramInt + 1;
-      Pair localPair = as.F(paramString, 0, arrayOfInt[paramInt]);
-      if ((localPair.first == as.a.gWs) && (localPair.second != null))
-      {
-        paramString = (WxaPkgWrappingInfo)localPair.second;
-        AppMethodBeat.o(131808);
-        return paramString;
-      }
-      if (i >= arrayOfInt.length)
-      {
-        AppMethodBeat.o(131808);
-        return null;
-      }
-      paramInt = i;
+      sXt = locala;
+      AppMethodBeat.o(50746);
+      return;
     }
   }
   
-  /* Error */
-  static boolean cA(String paramString1, String paramString2)
+  public static final b a(w paramw, b<? super ICommLibReader, ah> paramb)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: ldc 194
-    //   4: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokestatic 29	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   11: ifne +10 -> 21
-    //   14: aload_0
-    //   15: invokestatic 197	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
-    //   18: ifne +10 -> 28
-    //   21: ldc 194
-    //   23: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: iconst_0
-    //   27: ireturn
-    //   28: new 199	com/tencent/mm/plugin/appbrand/appcache/ao
-    //   31: dup
-    //   32: aload_0
-    //   33: invokespecial 202	com/tencent/mm/plugin/appbrand/appcache/ao:<init>	(Ljava/lang/String;)V
-    //   36: astore 5
-    //   38: aload 5
-    //   40: invokevirtual 205	com/tencent/mm/plugin/appbrand/appcache/ao:avO	()Z
-    //   43: istore 4
-    //   45: iload 4
-    //   47: ifne +15 -> 62
-    //   50: aload 5
-    //   52: invokevirtual 206	com/tencent/mm/plugin/appbrand/appcache/ao:close	()V
-    //   55: ldc 194
-    //   57: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   60: iconst_0
-    //   61: ireturn
-    //   62: aload_1
-    //   63: invokestatic 29	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   66: istore 4
-    //   68: iload 4
-    //   70: ifeq +15 -> 85
-    //   73: aload 5
-    //   75: invokevirtual 206	com/tencent/mm/plugin/appbrand/appcache/ao:close	()V
-    //   78: ldc 194
-    //   80: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   83: iconst_0
-    //   84: ireturn
-    //   85: aload_1
-    //   86: invokestatic 212	com/tencent/luggage/g/h:cg	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokestatic 217	com/tencent/mm/plugin/appbrand/appcache/b:ym	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: astore_1
-    //   93: aload 5
-    //   95: aload_1
-    //   96: invokevirtual 220	com/tencent/mm/plugin/appbrand/appcache/ao:yw	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   99: astore 6
-    //   101: aload 6
-    //   103: ifnull +20 -> 123
-    //   106: aload 6
-    //   108: invokestatic 223	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   111: aload 5
-    //   113: invokevirtual 206	com/tencent/mm/plugin/appbrand/appcache/ao:close	()V
-    //   116: ldc 194
-    //   118: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   121: iload_3
-    //   122: ireturn
-    //   123: aload 5
-    //   125: ldc 225
-    //   127: invokevirtual 220	com/tencent/mm/plugin/appbrand/appcache/ao:yw	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   130: invokestatic 231	com/tencent/mm/plugin/appbrand/s/d:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   133: astore 6
-    //   135: aload 6
-    //   137: invokestatic 29	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   140: istore_3
-    //   141: iload_3
-    //   142: ifne +108 -> 250
-    //   145: aload 6
-    //   147: invokestatic 237	com/tencent/mm/aa/h:mo	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   150: ldc 239
-    //   152: invokevirtual 245	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   155: astore 6
-    //   157: iconst_0
-    //   158: istore_2
-    //   159: iload_2
-    //   160: aload 6
-    //   162: invokevirtual 251	org/json/JSONArray:length	()I
-    //   165: if_icmpge +52 -> 217
-    //   168: aload 6
-    //   170: iload_2
-    //   171: invokevirtual 254	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   174: astore 7
-    //   176: aload 7
-    //   178: invokestatic 29	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   181: ifne +29 -> 210
-    //   184: aload_1
-    //   185: aload 7
-    //   187: invokestatic 217	com/tencent/mm/plugin/appbrand/appcache/b:ym	(Ljava/lang/String;)Ljava/lang/String;
-    //   190: invokevirtual 257	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   193: istore_3
-    //   194: iload_3
-    //   195: ifeq +15 -> 210
-    //   198: aload 5
-    //   200: invokevirtual 206	com/tencent/mm/plugin/appbrand/appcache/ao:close	()V
-    //   203: ldc 194
-    //   205: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   208: iconst_1
-    //   209: ireturn
-    //   210: iload_2
-    //   211: iconst_1
-    //   212: iadd
-    //   213: istore_2
-    //   214: goto -55 -> 159
-    //   217: iconst_0
-    //   218: istore_3
-    //   219: goto -108 -> 111
-    //   222: astore 6
-    //   224: ldc_w 259
-    //   227: ldc_w 261
-    //   230: iconst_3
-    //   231: anewarray 4	java/lang/Object
-    //   234: dup
-    //   235: iconst_0
-    //   236: aload_0
-    //   237: aastore
-    //   238: dup
-    //   239: iconst_1
-    //   240: aload_1
-    //   241: aastore
-    //   242: dup
-    //   243: iconst_2
-    //   244: aload 6
-    //   246: aastore
-    //   247: invokestatic 267	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   250: iconst_0
-    //   251: istore_3
-    //   252: goto -141 -> 111
-    //   255: astore_0
-    //   256: aload 5
-    //   258: invokevirtual 206	com/tencent/mm/plugin/appbrand/appcache/ao:close	()V
-    //   261: ldc 194
-    //   263: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   266: aload_0
-    //   267: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	268	0	paramString1	String
-    //   0	268	1	paramString2	String
-    //   158	56	2	i	int
-    //   1	251	3	bool1	boolean
-    //   43	26	4	bool2	boolean
-    //   36	221	5	localao	com.tencent.mm.plugin.appbrand.appcache.ao
-    //   99	70	6	localObject	Object
-    //   222	23	6	localException	java.lang.Exception
-    //   174	12	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   145	157	222	java/lang/Exception
-    //   159	194	222	java/lang/Exception
-    //   38	45	255	finally
-    //   62	68	255	finally
-    //   85	101	255	finally
-    //   106	111	255	finally
-    //   123	141	255	finally
-    //   145	157	255	finally
-    //   159	194	255	finally
-    //   224	250	255	finally
+    AppMethodBeat.i(320809);
+    s.u(paramw, "runtime");
+    s.u(paramb, "function");
+    if (paramw.cbl() != null)
+    {
+      paramw = paramw.cbl();
+      s.s(paramw, "runtime.libReader");
+      paramb.invoke(paramw);
+      AppMethodBeat.o(320809);
+      return null;
+    }
+    sXt.a(paramw, (a)new f(paramw));
+    paramw = sXt.M(paramw);
+    paramw.X(paramb);
+    paramw = (b)paramw;
+    AppMethodBeat.o(320809);
+    return paramw;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "", "get", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "key", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "putIfAbsent", "", "function", "Lkotlin/Function0;", "remove", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static abstract interface a
+  {
+    public abstract h.c M(w paramw);
+    
+    public abstract h.c N(w paramw);
+    
+    public abstract void a(w paramw, a<h.c> parama);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$IWaitForCommLibTask;", "", "interrupt", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
+  {
+    public abstract void interrupt();
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$IWaitForCommLibTask;", "()V", "callbackContendGuard", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "callbacks", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "", "Lcom/tencent/mm/plugin/appbrand/launching/NotifyInvoke;", "interrupted", "Ljava/util/concurrent/atomic/AtomicBoolean;", "loadedLibReader", "taskStarted", "interrupt", "startTask", "waitFor", "function", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class c
+    implements h.b
+  {
+    volatile ICommLibReader sXu;
+    final AtomicBoolean sXv;
+    private final AtomicBoolean sXw;
+    final ConcurrentLinkedDeque<b<ICommLibReader, ah>> sXx;
+    final ReentrantReadWriteLock sXy;
+    
+    public c()
+    {
+      AppMethodBeat.i(50731);
+      this.sXv = new AtomicBoolean(false);
+      this.sXw = new AtomicBoolean(false);
+      this.sXx = new ConcurrentLinkedDeque();
+      this.sXy = new ReentrantReadWriteLock();
+      AppMethodBeat.o(50731);
+    }
+    
+    private final void bJj()
+    {
+      AppMethodBeat.i(50729);
+      Log.i("MicroMsg.AppBrandRuntimeLaunchConditionForCommLib", "startTask instance(" + hashCode() + ") callbacks.size=" + this.sXx.size());
+      b localb = (b)new b(this);
+      ICommLibReader localICommLibReader = WxaCommLibRuntimeReader.cgz();
+      if (localICommLibReader != null)
+      {
+        Log.i("MicroMsg.AppBrandRuntimeLaunchConditionForCommLib", "task(" + hashCode() + ") getLoadedReader != NULL");
+        localb.invoke(localICommLibReader);
+        AppMethodBeat.o(50729);
+        return;
+      }
+      d.B((a)new h.c.a(localb, this, Util.currentTicks()));
+      AppMethodBeat.o(50729);
+    }
+    
+    /* Error */
+    public final void X(b<? super ICommLibReader, ah> paramb)
+    {
+      // Byte code:
+      //   0: ldc 157
+      //   2: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_1
+      //   6: ldc 158
+      //   8: invokestatic 164	kotlin/g/b/s:u	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   11: aload_0
+      //   12: getfield 64	com/tencent/mm/plugin/appbrand/launching/h$c:sXv	Ljava/util/concurrent/atomic/AtomicBoolean;
+      //   15: invokevirtual 168	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+      //   18: ifeq +37 -> 55
+      //   21: aload_1
+      //   22: instanceof 170
+      //   25: ifeq +25 -> 50
+      //   28: aload_1
+      //   29: checkcast 170	com/tencent/mm/vending/g/d$a
+      //   32: astore_1
+      //   33: aload_1
+      //   34: ifnull +10 -> 44
+      //   37: aload_1
+      //   38: aconst_null
+      //   39: invokeinterface 174 2 0
+      //   44: ldc 157
+      //   46: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   49: return
+      //   50: aconst_null
+      //   51: astore_1
+      //   52: goto -19 -> 33
+      //   55: aload_0
+      //   56: getfield 66	com/tencent/mm/plugin/appbrand/launching/h$c:sXw	Ljava/util/concurrent/atomic/AtomicBoolean;
+      //   59: iconst_1
+      //   60: invokevirtual 178	java/util/concurrent/atomic/AtomicBoolean:getAndSet	(Z)Z
+      //   63: ifne +21 -> 84
+      //   66: aload_0
+      //   67: getfield 71	com/tencent/mm/plugin/appbrand/launching/h$c:sXx	Ljava/util/concurrent/ConcurrentLinkedDeque;
+      //   70: aload_1
+      //   71: invokevirtual 181	java/util/concurrent/ConcurrentLinkedDeque:addLast	(Ljava/lang/Object;)V
+      //   74: aload_0
+      //   75: invokespecial 183	com/tencent/mm/plugin/appbrand/launching/h$c:bJj	()V
+      //   78: ldc 157
+      //   80: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   83: return
+      //   84: aload_0
+      //   85: getfield 76	com/tencent/mm/plugin/appbrand/launching/h$c:sXy	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+      //   88: invokevirtual 187	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+      //   91: astore_2
+      //   92: aload_2
+      //   93: invokevirtual 192	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:lock	()V
+      //   96: aload_0
+      //   97: getfield 194	com/tencent/mm/plugin/appbrand/launching/h$c:sXu	Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+      //   100: ifnull +34 -> 134
+      //   103: aload_0
+      //   104: getfield 194	com/tencent/mm/plugin/appbrand/launching/h$c:sXu	Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+      //   107: astore_3
+      //   108: aload_3
+      //   109: invokestatic 197	kotlin/g/b/s:checkNotNull	(Ljava/lang/Object;)V
+      //   112: aload_1
+      //   113: aload_3
+      //   114: invokeinterface 135 2 0
+      //   119: pop
+      //   120: getstatic 203	kotlin/ah:aiuX	Lkotlin/ah;
+      //   123: astore_1
+      //   124: aload_2
+      //   125: invokevirtual 206	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
+      //   128: ldc 157
+      //   130: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   133: return
+      //   134: aload_0
+      //   135: getfield 71	com/tencent/mm/plugin/appbrand/launching/h$c:sXx	Ljava/util/concurrent/ConcurrentLinkedDeque;
+      //   138: aload_1
+      //   139: invokevirtual 181	java/util/concurrent/ConcurrentLinkedDeque:addLast	(Ljava/lang/Object;)V
+      //   142: goto -22 -> 120
+      //   145: astore_1
+      //   146: aload_2
+      //   147: invokevirtual 206	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
+      //   150: ldc 157
+      //   152: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   155: aload_1
+      //   156: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	157	0	this	c
+      //   0	157	1	paramb	b<? super ICommLibReader, ah>
+      //   91	56	2	localReadLock	java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock
+      //   107	7	3	localICommLibReader	ICommLibReader
+      // Exception table:
+      //   from	to	target	type
+      //   96	120	145	finally
+      //   120	124	145	finally
+      //   134	142	145	finally
+    }
+    
+    public final void interrupt()
+    {
+      AppMethodBeat.i(321016);
+      this.sXv.set(true);
+      label60:
+      while (!this.sXx.isEmpty())
+      {
+        Object localObject = this.sXx.poll();
+        if ((localObject instanceof d.a)) {}
+        for (localObject = (d.a)localObject;; localObject = null)
+        {
+          if (localObject == null) {
+            break label60;
+          }
+          ((d.a)localObject).onInterrupt(null);
+          break;
+        }
+      }
+      AppMethodBeat.o(321016);
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends u
+      implements b<ICommLibReader, ah>
+    {
+      b(h.c paramc)
+      {
+        super();
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$TaskMapApi24;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "()V", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "get", "key", "putIfAbsent", "", "function", "Lkotlin/Function0;", "remove", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class d
+    implements h.a
+  {
+    private final ConcurrentHashMap<w, h.c> evG;
+    
+    public d()
+    {
+      AppMethodBeat.i(50736);
+      this.evG = new ConcurrentHashMap();
+      AppMethodBeat.o(50736);
+    }
+    
+    private static final h.c a(a parama, w paramw)
+    {
+      AppMethodBeat.i(320987);
+      s.u(parama, "$function");
+      s.u(paramw, "it");
+      parama = (h.c)parama.invoke();
+      AppMethodBeat.o(320987);
+      return parama;
+    }
+    
+    public final h.c M(w paramw)
+    {
+      AppMethodBeat.i(50734);
+      s.u(paramw, "key");
+      paramw = this.evG.get(paramw);
+      s.checkNotNull(paramw);
+      s.s(paramw, "map[key]!!");
+      paramw = (h.c)paramw;
+      AppMethodBeat.o(50734);
+      return paramw;
+    }
+    
+    public final h.c N(w paramw)
+    {
+      AppMethodBeat.i(50735);
+      s.u(paramw, "key");
+      paramw = (h.c)this.evG.remove(paramw);
+      AppMethodBeat.o(50735);
+      return paramw;
+    }
+    
+    public final void a(w paramw, a<h.c> parama)
+    {
+      AppMethodBeat.i(50733);
+      s.u(paramw, "key");
+      s.u(parama, "function");
+      this.evG.computeIfAbsent(paramw, new h.d..ExternalSyntheticLambda0(parama));
+      AppMethodBeat.o(50733);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements a<h.c>
+  {
+    f(w paramw)
+    {
+      super();
+    }
+    
+    private h.c czN()
+    {
+      AppMethodBeat.i(320977);
+      h.c localc = new h.c();
+      final w localw = this.rhf;
+      Log.i("MicroMsg.AppBrandRuntimeLaunchConditionForCommLib", "obtainTask create new instance(" + localc.hashCode() + ") with appId(" + localw.mAppId + ')');
+      localc.X((b)new a(localw));
+      g localg = g.evQ;
+      g.a((AppBrandRuntime)localw, (b)new b(localc, localw));
+      AppMethodBeat.o(320977);
+      return localc;
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements b<ICommLibReader, ah>
+    {
+      a(w paramw)
+      {
+        super();
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends u
+      implements b<e, ah>
+    {
+      b(h.c paramc, w paramw)
+      {
+        super();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.h
  * JD-Core Version:    0.7.0.1
  */

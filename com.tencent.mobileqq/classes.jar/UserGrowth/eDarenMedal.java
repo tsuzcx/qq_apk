@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class eDarenMedal
   implements Serializable
 {
-  private static eDarenMedal[] __values;
+  private static eDarenMedal[] __values = new eDarenMedal[7];
   public static final int _eDarenNothing = 0;
   public static final int _eDarenOrganization = 3;
   public static final int _eDarenPartyACertification = 5;
@@ -13,32 +13,21 @@ public final class eDarenMedal
   public static final int _eDarenStar = 4;
   public static final int _eDarenTutor = 1;
   public static final int _eDarenWeseeAuthority = 6;
-  public static final eDarenMedal eDarenNothing;
+  public static final eDarenMedal eDarenNothing = new eDarenMedal(0, 0, "eDarenNothing");
   public static final eDarenMedal eDarenOrganization;
-  public static final eDarenMedal eDarenPartyACertification;
+  public static final eDarenMedal eDarenPartyACertification = new eDarenMedal(5, 5, "eDarenPartyACertification");
   public static final eDarenMedal eDarenSenior;
   public static final eDarenMedal eDarenStar;
-  public static final eDarenMedal eDarenTutor;
-  public static final eDarenMedal eDarenWeseeAuthority;
+  public static final eDarenMedal eDarenTutor = new eDarenMedal(1, 1, "eDarenTutor");
+  public static final eDarenMedal eDarenWeseeAuthority = new eDarenMedal(6, 6, "eDarenWeseeAuthority");
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!eDarenMedal.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      __values = new eDarenMedal[7];
-      eDarenNothing = new eDarenMedal(0, 0, "eDarenNothing");
-      eDarenTutor = new eDarenMedal(1, 1, "eDarenTutor");
-      eDarenSenior = new eDarenMedal(2, 2, "eDarenSenior");
-      eDarenOrganization = new eDarenMedal(3, 3, "eDarenOrganization");
-      eDarenStar = new eDarenMedal(4, 4, "eDarenStar");
-      eDarenPartyACertification = new eDarenMedal(5, 5, "eDarenPartyACertification");
-      eDarenWeseeAuthority = new eDarenMedal(6, 6, "eDarenWeseeAuthority");
-      return;
-    }
+    eDarenSenior = new eDarenMedal(2, 2, "eDarenSenior");
+    eDarenOrganization = new eDarenMedal(3, 3, "eDarenOrganization");
+    eDarenStar = new eDarenMedal(4, 4, "eDarenStar");
   }
   
   private eDarenMedal(int paramInt1, int paramInt2, String paramString)
@@ -51,15 +40,16 @@ public final class eDarenMedal
   public static eDarenMedal convert(int paramInt)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].value() == paramInt) {
+      eDarenMedal[] arrayOfeDarenMedal = __values;
+      if (i >= arrayOfeDarenMedal.length) {
+        break;
+      }
+      if (arrayOfeDarenMedal[i].value() == paramInt) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -67,15 +57,16 @@ public final class eDarenMedal
   public static eDarenMedal convert(String paramString)
   {
     int i = 0;
-    while (i < __values.length)
+    for (;;)
     {
-      if (__values[i].toString().equals(paramString)) {
+      eDarenMedal[] arrayOfeDarenMedal = __values;
+      if (i >= arrayOfeDarenMedal.length) {
+        break;
+      }
+      if (arrayOfeDarenMedal[i].toString().equals(paramString)) {
         return __values[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -92,7 +83,7 @@ public final class eDarenMedal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.eDarenMedal
  * JD-Core Version:    0.7.0.1
  */

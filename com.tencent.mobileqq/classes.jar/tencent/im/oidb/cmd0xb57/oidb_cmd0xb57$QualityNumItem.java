@@ -22,13 +22,14 @@ public final class oidb_cmd0xb57$QualityNumItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56 }, new String[] { "uint64_quality_num", "uint32_mark_state", "uint32_approve_state", "bytes_num_summary", "uint32_fans_num", "uint32_publish_num", "uint32_is_star" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, QualityNumItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56 }, new String[] { "uint64_quality_num", "uint32_mark_state", "uint32_approve_state", "bytes_num_summary", "uint32_fans_num", "uint32_publish_num", "uint32_is_star" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger }, QualityNumItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.QualityNumItem
  * JD-Core Version:    0.7.0.1
  */

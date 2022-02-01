@@ -24,12 +24,12 @@ public class FunnyFaceMessage$Turntable
       readExternal(paramObjectInput);
       return;
     }
-    catch (IOException paramObjectInput)
+    catch (ClassNotFoundException paramObjectInput)
     {
       paramObjectInput.printStackTrace();
       return;
     }
-    catch (ClassNotFoundException paramObjectInput)
+    catch (IOException paramObjectInput)
     {
       paramObjectInput.printStackTrace();
     }

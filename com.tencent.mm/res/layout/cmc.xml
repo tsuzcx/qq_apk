@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="start" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/bv">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_9_Night_Mode" android:id="@id/kpx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/lul" android:layout_weight="1.0" />
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df">
+            <FrameLayout android:gravity="center" android:layout_gravity="end|center" android:id="@id/m9t" android:background="@drawable/cbc" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/bt" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/m9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a07" />
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/m9s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" />
+</LinearLayout>

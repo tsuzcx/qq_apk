@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import aila;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
 
-public class AvatarPendantActivity$AnimationScrollListener$1
+class AvatarPendantActivity$AnimationScrollListener$1
   implements Runnable
 {
-  public AvatarPendantActivity$AnimationScrollListener$1(aila paramaila) {}
+  AvatarPendantActivity$AnimationScrollListener$1(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
   
   public void run()
   {
-    if (this.a.b.u == 0)
+    if (this.a.b.W == 0)
     {
       URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
+      this.a.b.B.B = false;
+      this.a.b.B.notifyDataSetChanged();
     }
   }
 }

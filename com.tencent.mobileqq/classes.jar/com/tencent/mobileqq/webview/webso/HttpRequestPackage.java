@@ -2,12 +2,14 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.net.Uri;
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.apache.http.HttpVersion;
 import org.json.JSONObject;
 
+@Keep
 public class HttpRequestPackage
 {
   private static final String CRLF = "\r\n";
@@ -47,7 +49,7 @@ public class HttpRequestPackage
   
   private String addExtHeader(StringBuilder paramStringBuilder, String paramString)
   {
-    localStringBuilder = paramStringBuilder;
+    StringBuilder localStringBuilder = paramStringBuilder;
     if (paramStringBuilder == null) {
       localStringBuilder = new StringBuilder();
     }
@@ -65,8 +67,10 @@ public class HttpRequestPackage
     }
     catch (Exception paramStringBuilder)
     {
-      return null;
+      label78:
+      break label78;
     }
+    return null;
   }
   
   private StringBuilder addHeaderItem(StringBuilder paramStringBuilder, String paramString1, String paramString2)
@@ -87,7 +91,14 @@ public class HttpRequestPackage
   
   private String getRequest_Line()
   {
-    return this.method + " " + this.uri + " " + HttpVersion.HTTP_1_1 + "\r\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.method);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.uri);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(HttpVersion.HTTP_1_1);
+    localStringBuilder.append("\r\n");
+    return localStringBuilder.toString();
   }
   
   private void put(String paramString1, String paramString2, String paramString3)
@@ -98,39 +109,43 @@ public class HttpRequestPackage
       str = paramString2;
       if (paramString2.length() != 0) {}
     }
-    else if ((paramString3 != null) && (paramString3.length() != 0)) {}
-    for (;;)
+    else
     {
-      return;
+      if (paramString3 == null) {
+        return;
+      }
+      if (paramString3.length() == 0) {
+        return;
+      }
       str = paramString3;
-      try
+    }
+    try
+    {
+      paramString2 = HttpRequestPackage.class.getDeclaredField(paramString1);
+      if (paramString1.equals("uri"))
       {
-        paramString2 = HttpRequestPackage.class.getDeclaredField(paramString1);
-        if (paramString1.equals("uri"))
-        {
-          setUri(str);
-          return;
-        }
-      }
-      catch (NoSuchFieldException paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-        if (paramString2 != null)
-        {
-          paramString2.set(this, str);
-          return;
-        }
-      }
-      catch (IllegalAccessException paramString1)
-      {
-        paramString1.printStackTrace();
+        setUri(str);
         return;
       }
-      catch (IllegalArgumentException paramString1)
+      if (paramString2 != null)
       {
-        paramString1.printStackTrace();
+        paramString2.set(this, str);
+        return;
       }
+    }
+    catch (IllegalArgumentException paramString1)
+    {
+      paramString1.printStackTrace();
+      return;
+    }
+    catch (IllegalAccessException paramString1)
+    {
+      paramString1.printStackTrace();
+      return;
+    }
+    catch (NoSuchFieldException paramString1)
+    {
+      paramString1.printStackTrace();
     }
   }
   
@@ -139,47 +154,48 @@ public class HttpRequestPackage
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +27 -> 28
+    //   1: ifnull +45 -> 46
     //   4: aload_2
-    //   5: ifnull +23 -> 28
+    //   5: ifnull +41 -> 46
     //   8: aload_2
-    //   9: invokevirtual 93	java/lang/String:length	()I
-    //   12: ifle +16 -> 28
+    //   9: invokevirtual 94	java/lang/String:length	()I
+    //   12: ifle +34 -> 46
     //   15: aload_1
     //   16: aload_2
-    //   17: invokevirtual 81	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokevirtual 82	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
     //   23: aload_1
     //   24: aload_3
-    //   25: invokespecial 153	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   25: invokespecial 154	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   28: return
     //   29: astore_1
     //   30: aload_0
     //   31: aload_2
     //   32: aconst_null
     //   33: aload_3
-    //   34: invokespecial 153	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   37: return
-    //   38: astore_1
+    //   34: invokespecial 154	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   37: aload_1
+    //   38: athrow
     //   39: aload_0
     //   40: aload_2
     //   41: aconst_null
     //   42: aload_3
-    //   43: invokespecial 153	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   46: aload_1
-    //   47: athrow
+    //   43: invokespecial 154	com/tencent/mobileqq/webview/webso/HttpRequestPackage:put	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   46: return
+    //   47: astore_1
+    //   48: goto -9 -> 39
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	48	0	this	HttpRequestPackage
-    //   0	48	1	paramJSONObject	JSONObject
-    //   0	48	2	paramString1	String
-    //   0	48	3	paramString2	String
+    //   0	51	0	this	HttpRequestPackage
+    //   0	51	1	paramJSONObject	JSONObject
+    //   0	51	2	paramString1	String
+    //   0	51	3	paramString2	String
     // Exception table:
     //   from	to	target	type
-    //   15	21	29	org/json/JSONException
-    //   15	21	38	finally
+    //   15	21	29	finally
+    //   15	21	47	org/json/JSONException
   }
   
   public void addHeader(String paramString)
@@ -249,7 +265,7 @@ public class HttpRequestPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HttpRequestPackage
  * JD-Core Version:    0.7.0.1
  */

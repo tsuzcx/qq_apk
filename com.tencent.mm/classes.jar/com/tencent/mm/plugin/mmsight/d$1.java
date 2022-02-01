@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.j;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 
 final class d$1
   implements Runnable
@@ -11,26 +11,26 @@ final class d$1
   
   public final void run()
   {
-    AppMethodBeat.i(76399);
+    AppMethodBeat.i(89284);
     int i = d.access$000();
-    while (i < this.oFE)
+    while (i < this.KTJ)
     {
-      b localb1 = new b(String.format("%s/tempvideo%s.mp4", new Object[] { this.oFF, Integer.valueOf(i) }));
-      if (localb1.exists()) {
-        localb1.delete();
+      u localu1 = new u(String.format("%s/tempvideo%s.mp4", new Object[] { this.KTK, Integer.valueOf(i) }));
+      if (localu1.jKS()) {
+        localu1.diJ();
       }
-      b localb2 = new b(j.p(localb1.dQJ()) + ".remux");
-      if (localb2.exists()) {
-        localb2.delete();
+      u localu2 = new u(ah.v(localu1.jKT()) + ".remux");
+      if (localu2.jKS()) {
+        localu2.diJ();
       }
-      localb1 = new b(localb1.dQK() + ".thumb");
-      if (localb1.exists()) {
-        localb1.delete();
+      localu1 = new u(localu1.jKU() + ".thumb");
+      if (localu1.jKS()) {
+        localu1.diJ();
       }
       i += 1;
     }
-    d.access$002(Math.max(this.oFE, 0));
-    AppMethodBeat.o(76399);
+    d.access$002(Math.max(this.KTJ, 0));
+    AppMethodBeat.o(89284);
   }
 }
 

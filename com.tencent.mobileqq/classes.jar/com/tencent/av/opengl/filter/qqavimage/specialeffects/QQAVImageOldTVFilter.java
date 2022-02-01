@@ -23,31 +23,26 @@ public class QQAVImageOldTVFilter
   
   public void onDraw2(int paramInt1, int paramInt2)
   {
-    if (this.mTime >= 0)
-    {
-      this.mTime -= 1;
-      setFloat(this.mTimeLocation, this.mTime);
-      if (this.mTime % 100 >= 4) {
-        break label99;
-      }
-      setFloat(this.mWaveHeightLocation, 0.87F);
-      label51:
-      if (this.mNoise >= 10) {
-        break label112;
-      }
-    }
-    label99:
-    label112:
-    for (this.mNoise += 1;; this.mNoise = 0)
-    {
-      setFloat(this.mNoiseLocation, this.mNoise);
-      super.onDraw2(paramInt1, paramInt2);
-      return;
+    int i = this.mTime;
+    if (i >= 0) {
+      this.mTime = (i - 1);
+    } else {
       this.mTime = 1000000;
-      break;
-      setFloat(this.mWaveHeightLocation, 0.004F);
-      break label51;
     }
+    setFloat(this.mTimeLocation, this.mTime);
+    if (this.mTime % 100 < 4) {
+      setFloat(this.mWaveHeightLocation, 0.87F);
+    } else {
+      setFloat(this.mWaveHeightLocation, 0.004F);
+    }
+    i = this.mNoise;
+    if (i < 10) {
+      this.mNoise = (i + 1);
+    } else {
+      this.mNoise = 0;
+    }
+    setFloat(this.mNoiseLocation, this.mNoise);
+    super.onDraw2(paramInt1, paramInt2);
   }
   
   public void onInit()
@@ -70,7 +65,7 @@ public class QQAVImageOldTVFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageOldTVFilter
  * JD-Core Version:    0.7.0.1
  */

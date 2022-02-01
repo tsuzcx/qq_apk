@@ -35,14 +35,15 @@ public final class mobile_sub_set_photo_wall_combinepic_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.extinfo != null) {
-      paramJceOutputStream.write(this.extinfo, 1);
+    Map localMap = this.extinfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_set_photo_wall_combinepic_rsp
  * JD-Core Version:    0.7.0.1
  */

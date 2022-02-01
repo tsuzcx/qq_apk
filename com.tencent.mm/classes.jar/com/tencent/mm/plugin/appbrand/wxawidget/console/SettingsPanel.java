@@ -7,100 +7,83 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.h;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.modelappbrand.l;
-import com.tencent.mm.plugin.appbrand.dynamic.widget.b;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
+import com.tencent.mm.modelappbrand.g;
+import com.tencent.mm.modelappbrand.n;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.a;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
+import com.tencent.mm.ui.widget.MMSwitchBtn.a;
+import java.util.ArrayList;
 
 public class SettingsPanel
   extends FrameLayout
 {
-  private Button jxS;
-  private Button jxT;
-  private View.OnClickListener jxU;
-  private Runnable jxV;
+  private Button uTh;
+  private Button uTi;
+  private View.OnClickListener uTj;
+  private Runnable uTk;
   
   public SettingsPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(11196);
+    AppMethodBeat.i(121683);
     init();
-    AppMethodBeat.o(11196);
+    AppMethodBeat.o(121683);
   }
   
   public SettingsPanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(11197);
+    AppMethodBeat.i(121684);
     init();
-    AppMethodBeat.o(11197);
+    AppMethodBeat.o(121684);
   }
   
-  private void init()
+  private void EP(int paramInt)
   {
-    AppMethodBeat.i(11198);
-    LayoutInflater.from(getContext()).inflate(2130970698, this, true);
-    findViewById(2131827628).setOnClickListener(new SettingsPanel.1(this));
-    MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(2131827631);
-    localMMSwitchBtn.setCheck(((e)g.E(e.class)).acl().acq());
-    localMMSwitchBtn.setSwitchListener(new SettingsPanel.2(this));
-    this.jxS = ((Button)findViewById(2131827635));
-    qY(b.aAk());
-    this.jxS.setOnClickListener(new SettingsPanel.3(this));
-    this.jxT = ((Button)findViewById(2131827633));
-    qZ(h.QB());
-    this.jxT.setOnClickListener(new SettingsPanel.4(this));
-    findViewById(2131827636).setOnClickListener(new SettingsPanel.5(this));
-    if (((e)g.E(e.class)).acl().acr())
-    {
-      findViewById(2131827630).setVisibility(0);
-      findViewById(2131827634).setVisibility(0);
-      findViewById(2131827632).setVisibility(0);
-    }
-    AppMethodBeat.o(11198);
-  }
-  
-  private void qY(int paramInt)
-  {
-    AppMethodBeat.i(11199);
-    this.jxS.setTag(Integer.valueOf(paramInt));
+    AppMethodBeat.i(121686);
+    this.uTh.setTag(Integer.valueOf(paramInt));
     switch (paramInt)
     {
     default: 
-      this.jxS.setText("MHADrawableView");
-      b.nL(0);
-      AppMethodBeat.o(11199);
+      this.uTh.setText("MHADrawableView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.zW(0);
+      AppMethodBeat.o(121686);
       return;
     case 1: 
-      this.jxS.setText("MTextureView");
-      b.nL(1);
-      AppMethodBeat.o(11199);
+      this.uTh.setText("MTextureView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.zW(1);
+      AppMethodBeat.o(121686);
       return;
     case 2: 
-      this.jxS.setText("MSurfaceView");
-      b.nL(2);
-      AppMethodBeat.o(11199);
+      this.uTh.setText("MSurfaceView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.zW(2);
+      AppMethodBeat.o(121686);
       return;
     case 3: 
-      this.jxS.setText("MCanvasView");
-      b.nL(3);
-      AppMethodBeat.o(11199);
+      this.uTh.setText("MCanvasView");
+      com.tencent.mm.plugin.appbrand.dynamic.widget.b.zW(3);
+      AppMethodBeat.o(121686);
       return;
     }
-    this.jxS.setText("MDrawableView");
-    b.nL(4);
-    AppMethodBeat.o(11199);
+    this.uTh.setText("MDrawableView");
+    com.tencent.mm.plugin.appbrand.dynamic.widget.b.zW(4);
+    AppMethodBeat.o(121686);
   }
   
-  private void qZ(int paramInt)
+  private void EQ(int paramInt)
   {
-    AppMethodBeat.i(11200);
-    this.jxT.setTag(Integer.valueOf(paramInt));
+    AppMethodBeat.i(121687);
+    this.uTi.setTag(Integer.valueOf(paramInt));
     String str;
     switch (paramInt)
     {
@@ -109,28 +92,165 @@ public class SettingsPanel
     }
     for (paramInt = 0;; paramInt = 1)
     {
-      this.jxT.setText(str);
-      h.jJ(paramInt);
-      f.a("com.tencent.mm:support", new IPCInteger(paramInt), SettingsPanel.a.class, null);
-      AppMethodBeat.o(11200);
+      this.uTi.setText(str);
+      com.tencent.mm.ad.h.sv(paramInt);
+      j.a(SupportProcessIPCService.PROCESS_NAME, new IPCInteger(paramInt), a.class, null);
+      AppMethodBeat.o(121687);
       return;
       str = "Minimal-json";
     }
   }
   
+  private void init()
+  {
+    AppMethodBeat.i(121685);
+    LayoutInflater.from(getContext()).inflate(com.tencent.mm.plugin.appbrand.wxawidget.b.b.settings_panel, this, true);
+    findViewById(b.a.restart_support_process_btn).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(121675);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        ((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEI().bEH();
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(121674);
+            Toast.makeText(SettingsPanel.this.getContext(), b.c.wxa_widget_restart_support_process_succ, 1).show();
+            if (SettingsPanel.a(SettingsPanel.this) != null) {
+              SettingsPanel.a(SettingsPanel.this).run();
+            }
+            AppMethodBeat.o(121674);
+          }
+        }, 2000L);
+        a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(121675);
+      }
+    });
+    MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(b.a.enable_release_debug_btn);
+    localMMSwitchBtn.setCheck(((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().bEO());
+    localMMSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
+    {
+      public final void onStatusChange(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(121676);
+        ((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().gV(paramAnonymousBoolean);
+        AppMethodBeat.o(121676);
+      }
+    });
+    this.uTh = ((Button)findViewById(b.a.drawable_view_mode_btn));
+    EP(com.tencent.mm.plugin.appbrand.dynamic.widget.b.coe());
+    this.uTh.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(final View paramAnonymousView)
+      {
+        AppMethodBeat.i(121678);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramAnonymousView = new ArrayList();
+        paramAnonymousView.add("MHADrawableView");
+        paramAnonymousView.add("MTextureView");
+        paramAnonymousView.add("MSurfaceView");
+        paramAnonymousView.add("MCanvasView");
+        paramAnonymousView.add("MDrawableView");
+        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(SettingsPanel.this.getContext(), paramAnonymousView);
+        paramAnonymousView.aFq(((Integer)SettingsPanel.b(SettingsPanel.this).getTag()).intValue());
+        paramAnonymousView.agkc = new com.tencent.mm.ui.widget.picker.b.b()
+        {
+          public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
+          {
+            AppMethodBeat.i(121677);
+            paramAnonymousView.hide();
+            if (paramAnonymous2Boolean) {
+              SettingsPanel.b(SettingsPanel.this).setText((CharSequence)paramAnonymous2Object1);
+            }
+            SettingsPanel.a(SettingsPanel.this, paramAnonymousView.jIz());
+            AppMethodBeat.o(121677);
+          }
+        };
+        paramAnonymousView.show();
+        a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(121678);
+      }
+    });
+    this.uTi = ((Button)findViewById(b.a.json_parser_btn));
+    EQ(com.tencent.mm.ad.h.aZp());
+    this.uTi.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(final View paramAnonymousView)
+      {
+        AppMethodBeat.i(121680);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramAnonymousView = new ArrayList();
+        paramAnonymousView.add("Normal");
+        paramAnonymousView.add("Minimal-json");
+        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(SettingsPanel.this.getContext(), paramAnonymousView);
+        paramAnonymousView.aFq(((Integer)SettingsPanel.c(SettingsPanel.this).getTag()).intValue());
+        paramAnonymousView.agkc = new com.tencent.mm.ui.widget.picker.b.b()
+        {
+          public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
+          {
+            AppMethodBeat.i(121679);
+            paramAnonymousView.hide();
+            if (paramAnonymous2Boolean) {
+              SettingsPanel.c(SettingsPanel.this).setText((CharSequence)paramAnonymous2Object1);
+            }
+            SettingsPanel.b(SettingsPanel.this, paramAnonymousView.jIz());
+            AppMethodBeat.o(121679);
+          }
+        };
+        paramAnonymousView.show();
+        a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(121680);
+      }
+    });
+    findViewById(b.a.close_debugger_btn).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(121681);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (SettingsPanel.d(SettingsPanel.this) != null) {
+          SettingsPanel.d(SettingsPanel.this).onClick(paramAnonymousView);
+        }
+        a.a(this, "com/tencent/mm/plugin/appbrand/wxawidget/console/SettingsPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(121681);
+      }
+    });
+    if (((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().bEP())
+    {
+      findViewById(b.a.enable_release_debug_item).setVisibility(0);
+      findViewById(b.a.drawable_view_mode_item).setVisibility(0);
+      findViewById(b.a.json_parser_item).setVisibility(0);
+    }
+    AppMethodBeat.o(121685);
+  }
+  
   public void setOnCloseDebuggerClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jxU = paramOnClickListener;
+    this.uTj = paramOnClickListener;
   }
   
   public void setOnResetDebuggerRunnable(Runnable paramRunnable)
   {
-    this.jxV = paramRunnable;
+    this.uTk = paramRunnable;
   }
+  
+  static class a
+    implements d<IPCInteger, IPCVoid>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.SettingsPanel
  * JD-Core Version:    0.7.0.1
  */

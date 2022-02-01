@@ -8,71 +8,114 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.os.Build.VERSION;
+import android.os.Looper;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public class b
   extends FrameLayout
   implements c.a
 {
-  protected static final boolean Apy = c.ApJ;
-  private int ApA;
-  private int ApB;
-  private boolean ApC;
-  private boolean ApD;
-  private boolean ApE;
-  private c Apz;
-  private boolean aih;
-  private int iPy;
+  protected static final boolean afCC = c.afCQ;
+  private final Runnable afCB;
+  private c afCD;
+  private int afCE;
+  private int afCF;
+  private boolean afCG;
+  private boolean afCH;
+  private boolean afCI;
+  private boolean afCJ;
+  private final int[] afCK;
+  private int afCL;
+  private boolean bYK;
   private Activity mActivity;
   private Paint mPaint;
+  private volatile int mStatusBarHeight;
   
   public b(Context paramContext)
   {
-    super(a.iA(paramContext));
-    AppMethodBeat.i(67835);
-    this.ApA = 0;
-    this.ApB = 0;
-    this.ApC = false;
-    this.aih = false;
-    this.ApD = false;
-    this.ApE = false;
-    dNr();
-    if ((getContext() instanceof a)) {
-      ((a)getContext()).ApI = new b.a.a()
+    super(a.nC(paramContext));
+    AppMethodBeat.i(133806);
+    this.afCB = new Runnable()
+    {
+      public final void run()
       {
-        public final void dNt()
+        AppMethodBeat.i(249903);
+        if (b.a(b.this))
         {
-          AppMethodBeat.i(141896);
-          b.a(b.this);
-          AppMethodBeat.o(141896);
+          if (b.b(b.this) != null)
+          {
+            b.b(b.this).b(b.this);
+            b.c(b.this);
+          }
+          b.d(b.this);
+          b.e(b.this);
+          AppMethodBeat.o(249903);
+          return;
+        }
+        b.this.cGh();
+        AppMethodBeat.o(249903);
+      }
+    };
+    this.afCE = 0;
+    this.afCF = 0;
+    this.afCG = false;
+    this.bYK = false;
+    this.afCH = false;
+    this.afCI = false;
+    this.afCJ = false;
+    this.afCK = new int[2];
+    this.afCL = 0;
+    if (Looper.getMainLooper() != Looper.myLooper())
+    {
+      paramContext = new RuntimeException("Should be called on main-thread");
+      AppMethodBeat.o(133806);
+      throw paramContext;
+    }
+    cGh();
+    if ((getContext() instanceof a)) {
+      ((a)getContext()).afCP = new b.a.a()
+      {
+        public final void jCG()
+        {
+          AppMethodBeat.i(249901);
+          if (Looper.getMainLooper() != Looper.myLooper())
+          {
+            b.this.post(b.f(b.this));
+            AppMethodBeat.o(249901);
+            return;
+          }
+          b.f(b.this).run();
+          AppMethodBeat.o(249901);
         }
       };
     }
-    AppMethodBeat.o(67835);
+    AppMethodBeat.o(133806);
   }
   
-  private void QN(int paramInt)
+  private void aEb(int paramInt)
   {
-    AppMethodBeat.i(67836);
-    ab.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.aih) });
-    this.iPy = Math.max(0, paramInt);
-    if (this.aih)
+    AppMethodBeat.i(133808);
+    getLocationInWindow(this.afCK);
+    this.afCL = this.afCK[1];
+    if (Log.getLogLevel() <= 1) {
+      Log.d("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight height[%d] mFrozen[%b] mLocationInWindow[%d.%d]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.bYK), Integer.valueOf(this.afCK[0]), Integer.valueOf(this.afCK[1]) });
+    }
+    this.mStatusBarHeight = Math.max(0, paramInt - this.afCK[1]);
+    if (this.bYK)
     {
-      this.ApD = true;
-      AppMethodBeat.o(67836);
+      this.afCI = true;
+      AppMethodBeat.o(133808);
       return;
     }
     for (;;)
     {
       try
       {
-        if (!this.ApC) {
+        if (!this.afCG) {
           continue;
         }
         paramInt = 0;
@@ -80,208 +123,237 @@ public class b
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        ab.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight setPadding e=%s", new Object[] { localIllegalStateException.getMessage() });
+        Log.w("MicroMsg.DrawStatusBarFrameLayout", "applyStatusBarHeight setPadding e=%s", new Object[] { localIllegalStateException.getMessage() });
         continue;
       }
-      dNs();
-      AppMethodBeat.o(67836);
+      if (isLayoutRequested()) {
+        jCD();
+      }
+      AppMethodBeat.o(133808);
       return;
-      paramInt = this.iPy;
+      paramInt = this.mStatusBarHeight;
     }
   }
   
-  private void dNr()
+  private void jCC()
   {
-    AppMethodBeat.i(141900);
-    if (!Apy)
+    AppMethodBeat.i(175985);
+    if (this.afCD == null)
     {
-      this.mActivity = null;
-      this.mPaint = null;
-      AppMethodBeat.o(141900);
+      AppMethodBeat.o(175985);
       return;
     }
-    setPadding(0, 0, 0, 0);
-    this.iPy = 0;
-    if (this.Apz != null) {
-      this.Apz.b(this);
-    }
-    this.mActivity = a.hr(getContext());
-    if (this.mActivity == null)
-    {
-      this.mPaint = null;
-      setWillNotDraw(true);
-      AppMethodBeat.o(141900);
-      return;
-    }
-    c localc = c.aH(this.mActivity);
-    this.Apz = localc;
-    localc.a(this);
-    this.mPaint = new Paint(0);
-    this.mPaint.setStyle(Paint.Style.FILL);
-    setWillNotDraw(false);
-    AppMethodBeat.o(141900);
+    onStatusBarHeightChange(this.afCD.afCS);
+    AppMethodBeat.o(175985);
   }
   
-  private void dNs()
+  private void jCD()
   {
-    AppMethodBeat.i(67837);
-    if (al.isMainThread())
+    AppMethodBeat.i(133809);
+    if (jCF())
     {
       invalidate();
-      AppMethodBeat.o(67837);
+      AppMethodBeat.o(133809);
       return;
     }
     postInvalidate();
-    AppMethodBeat.o(67837);
+    AppMethodBeat.o(133809);
   }
   
-  public void K(int paramInt, boolean paramBoolean)
+  private static boolean jCF()
   {
-    AppMethodBeat.i(67840);
-    a(paramInt, paramBoolean, true);
-    AppMethodBeat.o(67840);
+    AppMethodBeat.i(175988);
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      AppMethodBeat.o(175988);
+      return true;
+    }
+    AppMethodBeat.o(175988);
+    return false;
   }
   
-  public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public final void MU(boolean paramBoolean)
   {
-    AppMethodBeat.i(67841);
-    int j = this.ApA;
-    int k = this.ApB;
-    this.ApA = paramInt;
-    if ((!Apy) || (this.mActivity == null))
+    AppMethodBeat.i(133805);
+    this.afCG = paramBoolean;
+    aEb(this.mStatusBarHeight);
+    AppMethodBeat.o(133805);
+  }
+  
+  public void aj(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(133812);
+    u(paramInt, paramBoolean, true);
+    AppMethodBeat.o(133812);
+  }
+  
+  protected void cGh()
+  {
+    AppMethodBeat.i(133807);
+    if (!afCC)
     {
-      AppMethodBeat.o(67841);
+      this.mActivity = null;
+      this.mPaint = null;
+      AppMethodBeat.o(133807);
       return;
     }
-    Object localObject = this.mActivity.getWindow();
-    d.a((Window)localObject);
-    if (paramBoolean2)
-    {
-      if (!d.a((Window)localObject, paramBoolean1)) {
-        break label119;
-      }
-      this.ApA = paramInt;
+    setPadding(0, 0, 0, 0);
+    this.mStatusBarHeight = 0;
+    if (this.afCD != null) {
+      this.afCD.b(this);
     }
-    label165:
-    label198:
-    for (;;)
+    this.mActivity = AndroidContextUtil.castActivityOrNull(getContext());
+    if (this.mActivity == null)
     {
-      paramInt = 0;
-      for (localObject = this;; localObject = this)
-      {
-        ((b)localObject).ApB = paramInt;
-        label119:
-        do
-        {
-          if ((this.ApA != 0) || (this.ApB != 0)) {
-            break label165;
-          }
-          setWillNotDraw(true);
-          dNs();
-          AppMethodBeat.o(67841);
-          return;
-          if (d.dNu()) {
-            break;
-          }
-        } while (Build.VERSION.SDK_INT < 21);
-        int i = paramInt;
-        if (paramBoolean1) {
-          i = af.Kq(paramInt);
-        }
-        this.ApA = i;
-        if (!paramBoolean1) {
-          break label198;
-        }
-        paramInt = Color.argb(51, 0, 0, 0);
-      }
-      if ((j != this.ApA) || (k != this.ApB))
-      {
-        setWillNotDraw(false);
-        dNs();
-      }
-      AppMethodBeat.o(67841);
+      this.mPaint = null;
+      super.setWillNotDraw(true);
+      AppMethodBeat.o(133807);
       return;
     }
+    c localc = c.ch(this.mActivity);
+    this.afCD = localc;
+    localc.a(this);
+    this.mPaint = new Paint(0);
+    this.mPaint.setStyle(Paint.Style.FILL);
+    super.setWillNotDraw(false);
+    AppMethodBeat.o(133807);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(67842);
-    if ((this.iPy <= 0) || (!Apy) || (this.ApC) || (willNotDraw())) {}
+    AppMethodBeat.i(133814);
+    if ((this.mStatusBarHeight <= 0) || (!afCC) || (this.afCG) || (willNotDraw())) {}
     for (;;)
     {
       super.dispatchDraw(paramCanvas);
-      if ((this.iPy > 0) && (Apy) && (this.ApC) && (!willNotDraw())) {
+      if ((this.mStatusBarHeight > 0) && (afCC) && (this.afCG) && (!willNotDraw())) {
         break;
       }
-      AppMethodBeat.o(67842);
+      AppMethodBeat.o(133814);
       return;
-      this.mPaint.setColor(this.ApA);
-      paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.iPy, this.mPaint);
+      if (this.mPaint == null)
+      {
+        Log.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarBackground NULL paint");
+      }
+      else
+      {
+        this.mPaint.setColor(this.afCE);
+        paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mStatusBarHeight, this.mPaint);
+      }
     }
-    this.mPaint.setColor(this.ApB);
-    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.iPy, this.mPaint);
-    AppMethodBeat.o(67842);
+    if (this.mPaint == null)
+    {
+      Log.e("MicroMsg.DrawStatusBarFrameLayout", "drawStatusBarForeground NULL paint");
+      AppMethodBeat.o(133814);
+      return;
+    }
+    this.mPaint.setColor(this.afCF);
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), this.mStatusBarHeight, this.mPaint);
+    AppMethodBeat.o(133814);
   }
   
-  public void pB(int paramInt)
+  public void dispatchSystemUiVisibilityChanged(int paramInt)
   {
-    AppMethodBeat.i(67833);
-    QN(paramInt);
-    AppMethodBeat.o(67833);
+    AppMethodBeat.i(175986);
+    super.dispatchSystemUiVisibilityChanged(paramInt);
+    jCC();
+    AppMethodBeat.o(175986);
+  }
+  
+  public int getDrawnStatusBarHeight()
+  {
+    AppMethodBeat.i(175983);
+    int i = Math.max(0, this.mStatusBarHeight);
+    AppMethodBeat.o(175983);
+    return i;
+  }
+  
+  public final boolean jCE()
+  {
+    return this.bYK;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    AppMethodBeat.i(175987);
+    super.onAttachedToWindow();
+    jCC();
+    AppMethodBeat.o(175987);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(250007);
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((this.afCD != null) && (!this.bYK))
+    {
+      getLocationInWindow(this.afCK);
+      if (this.afCL != this.afCK[1]) {
+        this.afCD.jCH();
+      }
+      this.afCL = this.afCK[1];
+    }
+    AppMethodBeat.o(250007);
+  }
+  
+  public void onStatusBarHeightChange(int paramInt)
+  {
+    AppMethodBeat.i(133804);
+    aEb(paramInt);
+    AppMethodBeat.o(133804);
   }
   
   public void requestLayout()
   {
-    AppMethodBeat.i(67838);
-    if (this.aih)
+    AppMethodBeat.i(133810);
+    if (this.bYK)
     {
-      this.ApE = true;
-      AppMethodBeat.o(67838);
+      this.afCJ = true;
+      AppMethodBeat.o(133810);
       return;
     }
     super.requestLayout();
-    AppMethodBeat.o(67838);
+    AppMethodBeat.o(133810);
   }
   
-  public final void rq(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67834);
-    this.ApC = paramBoolean;
-    QN(this.iPy);
-    AppMethodBeat.o(67834);
-  }
-  
-  public void setLayoutFrozen(final boolean paramBoolean)
+  public final void setLayoutFrozen(final boolean paramBoolean)
   {
     int i = 1;
-    AppMethodBeat.i(67843);
-    if (!al.isMainThread())
+    AppMethodBeat.i(133815);
+    if (!jCF())
     {
       post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(141897);
+          AppMethodBeat.i(249899);
           b.this.setLayoutFrozen(paramBoolean);
-          AppMethodBeat.o(141897);
+          AppMethodBeat.o(249899);
         }
       });
-      AppMethodBeat.o(67843);
+      AppMethodBeat.o(133815);
       return;
     }
-    ab.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.aih), Boolean.valueOf(this.ApE), Boolean.valueOf(this.ApD) });
-    if (paramBoolean != this.aih) {}
+    Log.d("MicroMsg.DrawStatusBarFrameLayout", "setLayoutFrozen frozen[%b], mFrozen[%b], mDeferLayout[%b], mDeferInvalidate[%b], mReInitializeDeferred[%b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.bYK), Boolean.valueOf(this.afCJ), Boolean.valueOf(this.afCI), Boolean.valueOf(this.afCH) });
+    if (paramBoolean != this.bYK) {}
     for (;;)
     {
-      this.aih = paramBoolean;
-      if ((i != 0) && (!paramBoolean) && ((this.ApE) || (this.ApD)))
+      this.bYK = paramBoolean;
+      if ((i != 0) && (!paramBoolean))
       {
-        QN(this.iPy);
-        this.ApE = false;
-        this.ApD = false;
+        if (this.afCH)
+        {
+          cGh();
+          this.afCH = false;
+        }
+        if ((this.afCJ) || (this.afCI))
+        {
+          aEb(this.mStatusBarHeight);
+          this.afCJ = false;
+          this.afCI = false;
+        }
       }
-      AppMethodBeat.o(67843);
+      AppMethodBeat.o(133815);
       return;
       i = 0;
     }
@@ -289,74 +361,151 @@ public class b
   
   public void setStatusBarColor(int paramInt)
   {
-    AppMethodBeat.i(67839);
-    if (!Apy)
+    AppMethodBeat.i(133811);
+    if (!afCC)
     {
-      AppMethodBeat.o(67839);
+      AppMethodBeat.o(133811);
       return;
     }
     Activity localActivity = this.mActivity;
     if (localActivity == null) {}
-    for (boolean bool = false;; bool = d.b(localActivity.getWindow()))
+    for (boolean bool = false;; bool = d.h(localActivity.getWindow()))
     {
-      K(paramInt, bool);
-      AppMethodBeat.o(67839);
+      aj(paramInt, bool);
+      AppMethodBeat.o(133811);
       return;
     }
+  }
+  
+  public final void setWillNotDraw(boolean paramBoolean) {}
+  
+  public final void u(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(133813);
+    int j = this.afCE;
+    int k = this.afCF;
+    this.afCE = paramInt;
+    if ((!afCC) || (this.mActivity == null))
+    {
+      AppMethodBeat.o(133813);
+      return;
+    }
+    Object localObject = this.mActivity.getWindow();
+    d.g((Window)localObject);
+    if (paramBoolean2)
+    {
+      if (!d.c((Window)localObject, paramBoolean1)) {
+        break label122;
+      }
+      this.afCE = paramInt;
+    }
+    label168:
+    label202:
+    for (;;)
+    {
+      paramInt = 0;
+      for (localObject = this;; localObject = this)
+      {
+        ((b)localObject).afCF = paramInt;
+        label122:
+        do
+        {
+          if ((this.afCE != 0) || (this.afCF != 0)) {
+            break label168;
+          }
+          super.setWillNotDraw(true);
+          jCD();
+          AppMethodBeat.o(133813);
+          return;
+          if (d.jjJ()) {
+            break;
+          }
+        } while (Build.VERSION.SDK_INT < 21);
+        int i = paramInt;
+        if (paramBoolean1) {
+          i = d.auk(paramInt);
+        }
+        this.afCE = i;
+        if (!paramBoolean1) {
+          break label202;
+        }
+        paramInt = Color.argb(51, 0, 0, 0);
+      }
+      if ((j != this.afCE) || (k != this.afCF))
+      {
+        super.setWillNotDraw(false);
+        jCD();
+      }
+      AppMethodBeat.o(133813);
+      return;
+    }
+  }
+  
+  public final boolean willNotDraw()
+  {
+    AppMethodBeat.i(175984);
+    boolean bool = super.willNotDraw();
+    AppMethodBeat.o(175984);
+    return bool;
   }
   
   static final class a
     extends MutableContextWrapper
   {
-    private boolean ApH = true;
-    a ApI;
+    private boolean afCO = true;
+    a afCP;
     
     private a(MutableContextWrapper paramMutableContextWrapper)
     {
       super();
     }
     
-    public static Context iA(Context paramContext)
+    public static Context nC(Context paramContext)
     {
-      AppMethodBeat.i(141899);
+      AppMethodBeat.i(133803);
       if ((paramContext instanceof MutableContextWrapper))
       {
         paramContext = new a((MutableContextWrapper)paramContext);
-        AppMethodBeat.o(141899);
+        AppMethodBeat.o(133803);
         return paramContext;
       }
-      AppMethodBeat.o(141899);
+      AppMethodBeat.o(133803);
       return paramContext;
     }
     
     public final void setBaseContext(Context paramContext)
     {
-      AppMethodBeat.i(141898);
-      if (this.ApH)
+      AppMethodBeat.i(133802);
+      if (this.afCO)
       {
-        ((MutableContextWrapper)getBaseContext()).setBaseContext(paramContext);
-        if (this.ApI != null)
+        if (paramContext == getBaseContext())
         {
-          this.ApI.dNt();
-          AppMethodBeat.o(141898);
+          AppMethodBeat.o(133802);
+          return;
+        }
+        ((MutableContextWrapper)getBaseContext()).setBaseContext(paramContext);
+        if (this.afCP != null)
+        {
+          this.afCP.jCG();
+          AppMethodBeat.o(133802);
         }
       }
       else
       {
         super.setBaseContext(paramContext);
       }
-      AppMethodBeat.o(141898);
+      AppMethodBeat.o(133802);
     }
     
     static abstract interface a
     {
-      public abstract void dNt();
+      public abstract void jCG();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.b
  * JD-Core Version:    0.7.0.1
  */

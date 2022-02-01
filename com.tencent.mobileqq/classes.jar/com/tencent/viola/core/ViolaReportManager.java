@@ -27,62 +27,73 @@ public class ViolaReportManager
   
   private String getEventCode(String paramString)
   {
-    int j = 1000;
-    int i = -1;
     switch (paramString.hashCode())
     {
     default: 
-      switch (i)
-      {
-      default: 
-        i = j;
+      break;
+    case 867497067: 
+      if (paramString.equals("actKanDianViolaHttpData")) {
+        i = 2;
+      }
+      break;
+    case -1233911474: 
+      if (paramString.equals("actKanDianViolaPageDataNew")) {
+        i = 3;
+      }
+      break;
+    case -1427247037: 
+      if (paramString.equals("actKanDianViolaData")) {
+        i = 0;
+      }
+      break;
+    case -1732622586: 
+      if (paramString.equals("actKanDianViolaJsError")) {
+        i = 1;
       }
       break;
     }
-    for (;;)
+    int i = -1;
+    if (i != 0)
     {
-      return "" + i;
-      if (!paramString.equals("actKanDianViolaData")) {
-        break;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            i = 1000;
+          } else {
+            i = 1004;
+          }
+        }
+        else {
+          i = 1003;
+        }
       }
-      i = 0;
-      break;
-      if (!paramString.equals("actKanDianViolaJsError")) {
-        break;
+      else {
+        i = 1002;
       }
-      i = 1;
-      break;
-      if (!paramString.equals("actKanDianViolaHttpData")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramString.equals("actKanDianViolaPageDataNew")) {
-        break;
-      }
-      i = 3;
-      break;
-      i = 1001;
-      continue;
-      i = 1002;
-      continue;
-      i = 1003;
-      continue;
-      i = 1004;
     }
+    else {
+      i = 1001;
+    }
+    paramString = new StringBuilder();
+    paramString.append("");
+    paramString.append(i);
+    return paramString.toString();
   }
   
   public static ViolaReportManager getInstance()
   {
-    if (sManager == null) {}
-    try
-    {
-      if (sManager == null) {
-        sManager = new ViolaReportManager();
+    if (sManager == null) {
+      try
+      {
+        if (sManager == null) {
+          sManager = new ViolaReportManager();
+        }
       }
-      return sManager;
+      finally {}
     }
-    finally {}
+    return sManager;
   }
   
   private void postBaseEventToBeacon(HashMap<String, String> paramHashMap)
@@ -91,55 +102,53 @@ public class ViolaReportManager
     localHttpRequset.url = "https://otheve.beacon.qq.com/analytics/upload?tp=js";
     localHttpRequset.method = "POST";
     localHttpRequset.timeoutMs = 5000;
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("Content-Type", "application/json;charset=UTF-8");
-    localHttpRequset.paramMap = ((Map)localObject);
-    localObject = new JSONObject();
-    for (;;)
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("Content-Type", "application/json;charset=UTF-8");
+    localHttpRequset.paramMap = ((Map)localObject1);
+    localObject1 = new JSONObject();
+    try
     {
-      try
-      {
-        ((JSONObject)localObject).put("deviceId", FlexConvertUtils.getIMEI());
-        ((JSONObject)localObject).put("appkey", "JS0FEI6B3PZTEN");
-        ((JSONObject)localObject).put("versionCode", "1.0.1");
-        ((JSONObject)localObject).put("language", "zh-CN");
-        ((JSONObject)localObject).put("initTime", System.currentTimeMillis());
-        ((JSONObject)localObject).put("sdkVersion", "js_v1.1.0");
-        ((JSONObject)localObject).put("pixel", "2560*1440*2");
-        ((JSONObject)localObject).put("channelID", "");
-        JSONObject localJSONObject1 = new JSONObject();
-        localJSONObject1.put("type", 2);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("id", Math.abs(new Random().nextInt()));
-        localJSONObject2.put("start", System.currentTimeMillis());
-        localJSONObject2.put("status", 2);
-        localJSONObject2.put("duration", 0);
-        localJSONObject3 = new JSONObject();
-        if (!paramHashMap.containsKey(ViolaEnvironment.COMMON_PAGE_NAME)) {
-          continue;
-        }
-        localJSONObject3.put("name", paramHashMap.get(ViolaEnvironment.COMMON_PAGE_NAME));
-        localJSONObject3.put("start", System.currentTimeMillis());
-        localJSONObject3.put("duration", 1000);
-        localJSONObject3.put("refer", "");
-        localJSONObject2.put("pages", new JSONArray().put(localJSONObject3));
-        localJSONObject2.put("events", new JSONArray());
-        localJSONObject1.put("data", localJSONObject2);
-        ((JSONObject)localObject).put("msgs", new JSONArray().put(localJSONObject1));
+      ((JSONObject)localObject1).put("deviceId", FlexConvertUtils.getIMEI());
+      ((JSONObject)localObject1).put("appkey", "JS0FEI6B3PZTEN");
+      ((JSONObject)localObject1).put("versionCode", "1.0.1");
+      ((JSONObject)localObject1).put("language", "zh-CN");
+      ((JSONObject)localObject1).put("initTime", System.currentTimeMillis());
+      ((JSONObject)localObject1).put("sdkVersion", "js_v1.1.0");
+      ((JSONObject)localObject1).put("pixel", "2560*1440*2");
+      ((JSONObject)localObject1).put("channelID", "");
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("type", 2);
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("id", Math.abs(new Random().nextInt()));
+      localJSONObject1.put("start", System.currentTimeMillis());
+      localJSONObject1.put("status", 2);
+      localJSONObject1.put("duration", 0);
+      JSONObject localJSONObject2 = new JSONObject();
+      boolean bool = paramHashMap.containsKey(ViolaEnvironment.COMMON_PAGE_NAME);
+      if (bool) {
+        localJSONObject2.put("name", paramHashMap.get(ViolaEnvironment.COMMON_PAGE_NAME));
+      } else {
+        localJSONObject2.put("name", "https://viola.oa.com");
       }
-      catch (Exception paramHashMap)
-      {
-        JSONObject localJSONObject3;
-        ViolaLogUtils.e("ViolaReportManager", "postDataToBeacon error:" + paramHashMap.getMessage());
-        continue;
-      }
-      localHttpRequset.body = ((JSONObject)localObject).toString();
-      paramHashMap = ViolaSDKManager.getInstance().getHttpAdapter();
-      if (paramHashMap != null) {
-        paramHashMap.sendRequest(localHttpRequset, new ViolaReportManager.3(this), true);
-      }
-      return;
-      localJSONObject3.put("name", "http://viola.oa.com");
+      localJSONObject2.put("start", System.currentTimeMillis());
+      localJSONObject2.put("duration", 1000);
+      localJSONObject2.put("refer", "");
+      localJSONObject1.put("pages", new JSONArray().put(localJSONObject2));
+      localJSONObject1.put("events", new JSONArray());
+      ((JSONObject)localObject2).put("data", localJSONObject1);
+      ((JSONObject)localObject1).put("msgs", new JSONArray().put(localObject2));
+    }
+    catch (Exception paramHashMap)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("postDataToBeacon error:");
+      ((StringBuilder)localObject2).append(paramHashMap.getMessage());
+      ViolaLogUtils.e("ViolaReportManager", ((StringBuilder)localObject2).toString());
+    }
+    localHttpRequset.body = ((JSONObject)localObject1).toString();
+    paramHashMap = ViolaSDKManager.getInstance().getHttpAdapter();
+    if (paramHashMap != null) {
+      paramHashMap.sendRequest(localHttpRequset, new ViolaReportManager.3(this), true);
     }
   }
   
@@ -149,61 +158,56 @@ public class ViolaReportManager
     localHttpRequset.url = "https://otheve.beacon.qq.com/analytics/upload?tp=js";
     localHttpRequset.method = "POST";
     localHttpRequset.timeoutMs = 5000;
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("Content-Type", "application/json;charset=UTF-8");
-    localHttpRequset.paramMap = ((Map)localObject);
-    localObject = new JSONObject();
-    JSONObject localJSONObject2;
-    JSONObject localJSONObject3;
-    JSONObject localJSONObject4;
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("Content-Type", "application/json;charset=UTF-8");
+    localHttpRequset.paramMap = ((Map)localObject1);
+    localObject1 = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("deviceId", FlexConvertUtils.getIMEI());
-      ((JSONObject)localObject).put("appkey", "JS0FEI6B3PZTEN");
-      ((JSONObject)localObject).put("versionCode", "1.0.1");
-      ((JSONObject)localObject).put("language", "zh-CN");
-      ((JSONObject)localObject).put("initTime", System.currentTimeMillis());
-      ((JSONObject)localObject).put("sdkVersion", "js_v1.1.0");
-      ((JSONObject)localObject).put("pixel", "2560*1440*2");
-      ((JSONObject)localObject).put("channelID", "");
+      ((JSONObject)localObject1).put("deviceId", FlexConvertUtils.getIMEI());
+      ((JSONObject)localObject1).put("appkey", "JS0FEI6B3PZTEN");
+      ((JSONObject)localObject1).put("versionCode", "1.0.1");
+      ((JSONObject)localObject1).put("language", "zh-CN");
+      ((JSONObject)localObject1).put("initTime", System.currentTimeMillis());
+      ((JSONObject)localObject1).put("sdkVersion", "js_v1.1.0");
+      ((JSONObject)localObject1).put("pixel", "2560*1440*2");
+      ((JSONObject)localObject1).put("channelID", "");
       JSONObject localJSONObject1 = new JSONObject();
       localJSONObject1.put("type", 2);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("id", Math.abs(new Random().nextInt()));
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("id", Math.abs(new Random().nextInt()));
+      ((JSONObject)localObject2).put("start", System.currentTimeMillis());
+      ((JSONObject)localObject2).put("status", 2);
+      ((JSONObject)localObject2).put("duration", 0);
+      ((JSONObject)localObject2).put("pages", new JSONArray());
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("count", 1);
       localJSONObject2.put("start", System.currentTimeMillis());
-      localJSONObject2.put("status", 2);
-      localJSONObject2.put("duration", 0);
-      localJSONObject2.put("pages", new JSONArray());
-      localJSONObject3 = new JSONObject();
-      localJSONObject3.put("count", 1);
-      localJSONObject3.put("start", System.currentTimeMillis());
-      localJSONObject3.put("id", getEventCode(paramString));
-      localJSONObject3.put("name", paramString);
-      localJSONObject4 = new JSONObject();
+      localJSONObject2.put("id", getEventCode(paramString));
+      localJSONObject2.put("name", paramString);
+      JSONObject localJSONObject3 = new JSONObject();
       Iterator localIterator = paramHashMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localJSONObject4.put((String)localEntry.getKey(), localEntry.getValue());
-        continue;
-        localHttpRequset.body = ((JSONObject)localObject).toString();
+        localJSONObject3.put((String)localEntry.getKey(), localEntry.getValue());
       }
+      localJSONObject2.put("params", localJSONObject3);
+      ((JSONObject)localObject2).put("events", new JSONArray().put(localJSONObject2));
+      localJSONObject1.put("data", localObject2);
+      ((JSONObject)localObject1).put("msgs", new JSONArray().put(localJSONObject1));
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("ViolaReportManager", "postDataToBeacon error:" + localException.getMessage());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("postDataToBeacon error:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      ViolaLogUtils.e("ViolaReportManager", ((StringBuilder)localObject2).toString());
     }
-    for (;;)
-    {
-      localObject = ViolaSDKManager.getInstance().getHttpAdapter();
-      if (localObject != null) {
-        ((IHttpAdapter)localObject).sendRequest(localHttpRequset, new ViolaReportManager.2(this, paramString, paramHashMap), true);
-      }
-      return;
-      localJSONObject3.put("params", localJSONObject4);
-      localJSONObject2.put("events", new JSONArray().put(localJSONObject3));
-      localException.put("data", localJSONObject2);
-      ((JSONObject)localObject).put("msgs", new JSONArray().put(localException));
+    localHttpRequset.body = ((JSONObject)localObject1).toString();
+    localObject1 = ViolaSDKManager.getInstance().getHttpAdapter();
+    if (localObject1 != null) {
+      ((IHttpAdapter)localObject1).sendRequest(localHttpRequset, new ViolaReportManager.2(this, paramString, paramHashMap), true);
     }
   }
   
@@ -214,7 +218,7 @@ public class ViolaReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaReportManager
  * JD-Core Version:    0.7.0.1
  */

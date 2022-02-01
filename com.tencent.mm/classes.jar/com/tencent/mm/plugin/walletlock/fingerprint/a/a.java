@@ -1,24 +1,46 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.walletlock.gesture.a.g;
+import com.tencent.mm.plugin.walletlock.gesture.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class a
 {
-  private static long uEk = -1L;
+  private static long WfO = -1L;
   
-  private static HashSet<String> J(JSONArray paramJSONArray)
+  public static void Ia(boolean paramBoolean)
   {
-    AppMethodBeat.i(51452);
+    AppMethodBeat.i(129663);
+    Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo set fingerprint lock status isOpened: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    h.baE().ban().set(at.a.acTL, Boolean.valueOf(paramBoolean));
+    h.baE().ban().iZy();
+    AppMethodBeat.o(129663);
+  }
+  
+  public static void Ib(boolean paramBoolean)
+  {
+    AppMethodBeat.i(129665);
+    Log.i("MicroMsg.FingerprintInfoStorage", "set user face id lock: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    h.baE().ban().set(at.a.acTR, Boolean.valueOf(paramBoolean));
+    h.baE().ban().iZy();
+    AppMethodBeat.o(129665);
+  }
+  
+  private static HashSet<String> Z(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(129657);
     if (paramJSONArray == null)
     {
-      AppMethodBeat.o(51452);
+      AppMethodBeat.o(129657);
       return null;
     }
     try
@@ -30,218 +52,200 @@ public final class a
         localHashSet.add(paramJSONArray.getJSONObject(i).getString("fid"));
         i += 1;
       }
-      AppMethodBeat.o(51452);
+      AppMethodBeat.o(129657);
       return localHashSet;
     }
     catch (Exception paramJSONArray)
     {
-      ab.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramJSONArray, "", new Object[0]);
-      AppMethodBeat.o(51452);
+      Log.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramJSONArray, "", new Object[0]);
+      AppMethodBeat.o(129657);
     }
     return null;
   }
   
-  public static void ae(long paramLong1, long paramLong2)
+  public static void bD(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(51462);
-    z localz = com.tencent.mm.kernel.g.RL().Ru();
-    if (localz != null)
+    AppMethodBeat.i(129667);
+    aq localaq = h.baE().ban();
+    if (localaq != null)
     {
-      com.tencent.mm.plugin.walletlock.gesture.a.g localg = new com.tencent.mm.plugin.walletlock.gesture.a.g();
-      localg.uEM = paramLong1;
-      localg.uEN = paramLong2;
-      localz.set(ac.a.yIb, com.tencent.mm.plugin.walletlock.gesture.a.e.bB(localg.toByteArray()));
-      localz.dww();
+      i locali = new i();
+      locali.Wgt = paramLong1;
+      locali.Wgu = paramLong2;
+      localaq.set(at.a.acTP, g.cN(locali.toByteArray()));
+      localaq.iZy();
     }
-    AppMethodBeat.o(51462);
+    AppMethodBeat.o(129667);
   }
   
-  private static JSONArray afX(String paramString)
+  private static JSONArray bhv(String paramString)
   {
-    AppMethodBeat.i(51451);
+    AppMethodBeat.i(129656);
     if (paramString == null)
     {
-      AppMethodBeat.o(51451);
+      AppMethodBeat.o(129656);
       return null;
     }
     try
     {
       paramString = new JSONArray(paramString);
-      AppMethodBeat.o(51451);
+      AppMethodBeat.o(129656);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
-      AppMethodBeat.o(51451);
+      Log.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
+      AppMethodBeat.o(129656);
     }
     return null;
   }
   
-  public static boolean afY(String paramString)
+  public static boolean bhw(String paramString)
   {
-    AppMethodBeat.i(51454);
-    ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo add fid to local: %s", new Object[] { paramString });
+    AppMethodBeat.i(129659);
+    Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo add fid to local: %s", new Object[] { paramString });
     try
     {
-      Object localObject2 = afX(cXw());
-      HashSet localHashSet = J((JSONArray)localObject2);
+      Object localObject2 = bhv(imC());
+      HashSet localHashSet = Z((JSONArray)localObject2);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        ab.w("MicroMsg.FingerprintInfoStorage", "alvinluo list is null");
+        Log.w("MicroMsg.FingerprintInfoStorage", "alvinluo list is null");
         localObject1 = new JSONArray();
       }
       localObject2 = localHashSet;
       if (localHashSet == null)
       {
-        ab.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet is null");
+        Log.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet is null");
         localObject2 = new HashSet();
       }
-      ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo fidList: %s before add fid", new Object[] { ((JSONArray)localObject1).toString() });
+      Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo fidList: %s before add fid", new Object[] { ((JSONArray)localObject1).toString() });
       if (!((HashSet)localObject2).contains(paramString))
       {
-        ab.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet contains fid %s: %b", new Object[] { paramString, Boolean.FALSE });
+        Log.w("MicroMsg.FingerprintInfoStorage", "alvinluo fidSet contains fid %s: %b", new Object[] { paramString, Boolean.FALSE });
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("fid", paramString);
         ((JSONArray)localObject1).put(localObject2);
-        ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo list: %s", new Object[] { ((JSONArray)localObject1).toString() });
-        com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHY, ((JSONArray)localObject1).toString());
-        com.tencent.mm.kernel.g.RL().Ru().dww();
-        AppMethodBeat.o(51454);
+        Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo list: %s", new Object[] { ((JSONArray)localObject1).toString() });
+        h.baE().ban().set(at.a.acTM, ((JSONArray)localObject1).toString());
+        h.baE().ban().iZy();
+        AppMethodBeat.o(129659);
         return true;
       }
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
-      AppMethodBeat.o(51454);
+      Log.printErrStackTrace("MicroMsg.FingerprintInfoStorage", paramString, "", new Object[0]);
+      AppMethodBeat.o(129659);
     }
     return false;
   }
   
-  public static boolean afZ(String paramString)
+  public static boolean bhx(String paramString)
   {
-    AppMethodBeat.i(51455);
-    Object localObject = cXw();
-    ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo fid: %s, fidInfoList: %s", new Object[] { paramString, localObject });
-    localObject = J(afX((String)localObject));
+    AppMethodBeat.i(129660);
+    Object localObject = imC();
+    Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo fid: %s, fidInfoList: %s", new Object[] { paramString, localObject });
+    localObject = Z(bhv((String)localObject));
     if ((localObject != null) && (((HashSet)localObject).contains(paramString)))
     {
-      AppMethodBeat.o(51455);
+      AppMethodBeat.o(129660);
       return true;
     }
-    AppMethodBeat.o(51455);
+    AppMethodBeat.o(129660);
     return false;
   }
   
-  public static boolean cXA()
+  private static String imC()
   {
-    AppMethodBeat.i(51461);
-    Object localObject = com.tencent.mm.kernel.g.RL().Ru();
+    AppMethodBeat.i(129658);
+    String str = (String)h.baE().ban().get(at.a.acTM, null);
+    AppMethodBeat.o(129658);
+    return str;
+  }
+  
+  public static void imD()
+  {
+    AppMethodBeat.i(129661);
+    Log.i("MicroMsg.FingerprintInfoStorage", "alvinluo clear local fids, stack: %s", new Object[] { Util.getStack() });
+    h.baE().ban().set(at.a.acTM, null);
+    h.baE().ban().iZy();
+    AppMethodBeat.o(129661);
+  }
+  
+  public static boolean imE()
+  {
+    AppMethodBeat.i(129662);
+    boolean bool = ((Boolean)h.baE().ban().get(at.a.acTL, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129662);
+    return bool;
+  }
+  
+  public static boolean imF()
+  {
+    AppMethodBeat.i(129664);
+    boolean bool = ((Boolean)h.baE().ban().get(at.a.acTR, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129664);
+    return bool;
+  }
+  
+  public static boolean imG()
+  {
+    AppMethodBeat.i(129666);
+    Object localObject = h.baE().ban();
     if (localObject == null) {
-      localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g();
+      localObject = new i();
     }
-    while (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).uEM != -1L)
+    while (((i)localObject).Wgt != -1L)
     {
-      com.tencent.mm.plugin.walletlock.gesture.a.e.a((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject);
-      if (((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).uEN / 1000L < 30L)
+      g.a((i)localObject);
+      if (((i)localObject).Wgu / 1000L < 30L)
       {
-        ae(((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).uEM, ((com.tencent.mm.plugin.walletlock.gesture.a.g)localObject).uEN);
-        AppMethodBeat.o(51461);
+        bD(((i)localObject).Wgt, ((i)localObject).Wgu);
+        AppMethodBeat.o(129666);
         return true;
-        localObject = (String)((z)localObject).get(ac.a.yIb, null);
+        localObject = (String)((aq)localObject).get(at.a.acTP, null);
         if (localObject == null) {
-          localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g();
+          localObject = new i();
         } else {
-          localObject = new com.tencent.mm.plugin.walletlock.gesture.a.g().bC(com.tencent.mm.plugin.walletlock.gesture.a.e.stringToBytes((String)localObject));
+          localObject = new i().cO(g.stringToBytes((String)localObject));
         }
       }
       else
       {
-        localObject = com.tencent.mm.kernel.g.RL().Ru();
+        localObject = h.baE().ban();
         if (localObject != null)
         {
-          ((z)localObject).set(ac.a.yIb, null);
-          ((z)localObject).dww();
+          ((aq)localObject).set(at.a.acTP, null);
+          ((aq)localObject).iZy();
         }
-        AppMethodBeat.o(51461);
+        AppMethodBeat.o(129666);
         return false;
       }
     }
-    AppMethodBeat.o(51461);
+    AppMethodBeat.o(129666);
     return false;
   }
   
-  public static void cXB()
+  public static void imH()
   {
-    uEk = -1L;
+    WfO = -1L;
   }
   
-  public static long cXC()
+  public static long imI()
   {
-    return uEk;
+    return WfO;
   }
   
-  private static String cXw()
+  public static void xB(long paramLong)
   {
-    AppMethodBeat.i(51453);
-    String str = (String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHY, null);
-    AppMethodBeat.o(51453);
-    return str;
-  }
-  
-  public static void cXx()
-  {
-    AppMethodBeat.i(51456);
-    ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo clear local fids, stack: %s", new Object[] { bo.dtY() });
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHY, null);
-    com.tencent.mm.kernel.g.RL().Ru().dww();
-    AppMethodBeat.o(51456);
-  }
-  
-  public static boolean cXy()
-  {
-    AppMethodBeat.i(51457);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHX, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(51457);
-    return bool;
-  }
-  
-  public static boolean cXz()
-  {
-    AppMethodBeat.i(51459);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yId, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(51459);
-    return bool;
-  }
-  
-  public static void nX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(51458);
-    ab.i("MicroMsg.FingerprintInfoStorage", "alvinluo set fingerprint lock status isOpened: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHX, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.RL().Ru().dww();
-    AppMethodBeat.o(51458);
-  }
-  
-  public static void nY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(51460);
-    ab.i("MicroMsg.FingerprintInfoStorage", "set user face id lock: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yId, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.RL().Ru().dww();
-    AppMethodBeat.o(51460);
-  }
-  
-  public static void ni(long paramLong)
-  {
-    uEk = paramLong;
+    WfO = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.fingerprint.a.a
  * JD-Core Version:    0.7.0.1
  */

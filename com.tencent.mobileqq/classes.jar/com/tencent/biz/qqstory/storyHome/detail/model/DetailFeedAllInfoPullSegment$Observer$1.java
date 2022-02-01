@@ -1,80 +1,78 @@
 package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.JobContext;
-import wib;
-import wic;
-import wid;
-import wie;
-import wiq;
-import wxe;
 
-public class DetailFeedAllInfoPullSegment$Observer$1
+class DetailFeedAllInfoPullSegment$Observer$1
   implements Runnable
 {
-  public DetailFeedAllInfoPullSegment$Observer$1(wie paramwie, boolean paramBoolean) {}
+  DetailFeedAllInfoPullSegment$Observer$1(DetailFeedAllInfoPullSegment.Observer paramObserver, boolean paramBoolean) {}
   
   public void run()
   {
-    int i1 = 0;
-    if (wib.a(this.jdField_a_of_type_Wie.a).isJobCancelled())
+    if (DetailFeedAllInfoPullSegment.a(this.b.a).isJobCancelled())
     {
-      wxe.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Wie.getFunctionResult(0);
+      Object localObject = this.b;
+      int i1 = 0;
+      localObject = (Integer)((DetailFeedAllInfoPullSegment.Observer)localObject).getFunctionResult(0);
       if (localObject != null) {
-        wib.a(this.jdField_a_of_type_Wie.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        DetailFeedAllInfoPullSegment.b(this.b.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (wib.a(this.jdField_a_of_type_Wie.a).a()) {}
+      int j;
+      if (DetailFeedAllInfoPullSegment.b(this.b.a).b()) {
+        j = 2;
+      } else {
+        j = 1;
+      }
+      int k = 0;
+      int i = 1;
       int m;
       int n;
-      for (int j = 2;; j = 1)
+      for (;;)
       {
-        int k = 0;
-        int i = 1;
-        for (;;)
-        {
-          m = i;
-          n = i1;
-          if (k >= j) {
-            break;
-          }
-          localObject = (wid)this.jdField_a_of_type_Wie.getFunctionResult(i);
-          if (localObject != null)
-          {
-            wib.a(this.jdField_a_of_type_Wie.a).b(((wid)localObject).jdField_a_of_type_JavaUtilList, true, ((wid)localObject).jdField_a_of_type_Boolean);
-            wib.a(this.jdField_a_of_type_Wie.a).b(((wid)localObject).jdField_a_of_type_Boolean, ((wid)localObject).jdField_a_of_type_Int);
-            wib.a(this.jdField_a_of_type_Wie.a).a.mHadLike = ((wid)localObject).b;
-          }
-          k += 1;
-          i += 1;
+        m = i1;
+        n = i;
+        if (k >= j) {
+          break;
         }
-      }
-      while (n < j)
-      {
-        localObject = (wic)this.jdField_a_of_type_Wie.getFunctionResult(m);
+        localObject = (DetailFeedAllInfoPullSegment.LikeData)this.b.getFunctionResult(i);
         if (localObject != null)
         {
-          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_JavaUtilList, true, ((wic)localObject).jdField_a_of_type_Boolean);
-          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).jdField_a_of_type_Int);
-          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).b);
-          wib.a(this.jdField_a_of_type_Wie.a).a(((wic)localObject).jdField_a_of_type_Boolean, ((wic)localObject).jdField_a_of_type_JavaLangString);
+          DetailFeedAllInfoPullSegment.b(this.b.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).b, true, ((DetailFeedAllInfoPullSegment.LikeData)localObject).a);
+          DetailFeedAllInfoPullSegment.b(this.b.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).a, ((DetailFeedAllInfoPullSegment.LikeData)localObject).c);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a.mHadLike = ((DetailFeedAllInfoPullSegment.LikeData)localObject).d;
         }
-        n += 1;
-        m += 1;
+        k += 1;
+        i += 1;
       }
-      wib.a(this.jdField_a_of_type_Wie.a, wib.a(this.jdField_a_of_type_Wie.a));
+      while (m < j)
+      {
+        localObject = (DetailFeedAllInfoPullSegment.CommentData)this.b.getFunctionResult(n);
+        if (localObject != null)
+        {
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).b, true, ((DetailFeedAllInfoPullSegment.CommentData)localObject).a);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).c);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).d);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).e);
+        }
+        m += 1;
+        n += 1;
+      }
+      DetailFeedAllInfoPullSegment.a(this.b.a, DetailFeedAllInfoPullSegment.b(this.b.a));
       return;
     }
-    wib.a(this.jdField_a_of_type_Wie.a, new ErrorMessage(-1, "get feed interact data error."));
+    DetailFeedAllInfoPullSegment.a(this.b.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1
  * JD-Core Version:    0.7.0.1
  */

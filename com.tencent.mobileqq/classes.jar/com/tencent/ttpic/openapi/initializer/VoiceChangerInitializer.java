@@ -7,7 +7,7 @@ import java.util.List;
 public class VoiceChangerInitializer
   extends Feature
 {
-  private static final String TAG = VoiceChangerInitializer.class.getSimpleName();
+  private static final String TAG = "VoiceChangerInitializer";
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("voicechanger_shared"), new SharedLibraryInfo("pitu_voice") };
   
   protected boolean destroyImpl()
@@ -37,7 +37,7 @@ public class VoiceChangerInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer
  * JD-Core Version:    0.7.0.1
  */

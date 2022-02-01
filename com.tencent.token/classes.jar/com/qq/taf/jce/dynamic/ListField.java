@@ -11,27 +11,27 @@ public final class ListField
     this.data = paramArrayOfJceField;
   }
   
-  public JceField get(int paramInt)
+  public final JceField get(int paramInt)
   {
     return this.data[paramInt];
   }
   
-  public JceField[] get()
+  public final JceField[] get()
   {
     return this.data;
   }
   
-  public void set(int paramInt, JceField paramJceField)
+  public final void set(int paramInt, JceField paramJceField)
   {
     this.data[paramInt] = paramJceField;
   }
   
-  public void set(JceField[] paramArrayOfJceField)
+  public final void set(JceField[] paramArrayOfJceField)
   {
     this.data = paramArrayOfJceField;
   }
   
-  public int size()
+  public final int size()
   {
     return this.data.length;
   }

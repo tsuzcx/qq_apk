@@ -1,63 +1,108 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import android.os.Build.VERSION;
+import android.view.WindowInsets;
 
-public class fv
-  implements gd
+public final class fv
 {
-  public final String a = "ksid_data";
-  public String b = "";
-  private int c = 12;
+  private final Object a;
   
-  public gd a(Cursor paramCursor)
+  private fv(Object paramObject)
   {
-    fv localfv = new fv();
-    localfv.b = paramCursor.getString(paramCursor.getColumnIndex("ksid"));
-    return localfv;
+    this.a = paramObject;
   }
   
-  public void a(SQLiteDatabase paramSQLiteDatabase)
+  static fv a(Object paramObject)
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-  }
-  
-  public void a(String paramString)
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("ksid", paramString);
-    ga.a(this, "ksid_data", localContentValues, "key=?", new String[] { String.valueOf(this.c) });
-  }
-  
-  public boolean a()
-  {
-    fv localfv = (fv)ga.a(this, "ksid_data", new String[] { "ksid" }, null, null);
-    if (localfv == null) {
-      return false;
+    if (paramObject == null) {
+      return null;
     }
-    this.b = localfv.b;
-    return true;
+    return new fv(paramObject);
   }
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
+  static Object a(fv paramfv)
   {
-    a(paramSQLiteDatabase);
-    new ContentValues();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("key", Integer.valueOf(this.c));
-    localContentValues.put("ksid", this.b);
-    return paramSQLiteDatabase.insert("ksid_data", null, localContentValues);
+    if (paramfv == null) {
+      return null;
+    }
+    return paramfv.a;
   }
   
-  public String b()
+  public final int a()
   {
-    return "ksid_data";
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetLeft();
+    }
+    return 0;
   }
   
-  public ContentValues c()
+  public final fv a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return new fv(((WindowInsets)this.a).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+    }
     return null;
+  }
+  
+  public final int b()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetTop();
+    }
+    return 0;
+  }
+  
+  public final int c()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetRight();
+    }
+    return 0;
+  }
+  
+  public final int d()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return ((WindowInsets)this.a).getSystemWindowInsetBottom();
+    }
+    return 0;
+  }
+  
+  public final boolean e()
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return ((WindowInsets)this.a).isConsumed();
+    }
+    return false;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (fv)paramObject;
+      Object localObject = this.a;
+      if (localObject == null) {
+        return paramObject.a == null;
+      }
+      return localObject.equals(paramObject.a);
+    }
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    Object localObject = this.a;
+    if (localObject == null) {
+      return 0;
+    }
+    return localObject.hashCode();
   }
 }
 

@@ -60,8 +60,10 @@ public class EyeLightenAndPounchFilter
   
   private boolean initFaceImage()
   {
+    boolean bool1 = this.isFaceImageReady;
+    boolean bool2 = false;
     Bitmap localBitmap;
-    if ((!this.isFaceImageReady) && (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.faceImage))))
+    if ((!bool1) && (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.faceImage))))
     {
       localBitmap = VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.faceImage);
       GlUtil.loadTexture(this.texture[0], localBitmap);
@@ -83,7 +85,19 @@ public class EyeLightenAndPounchFilter
       addParam(new UniformParam.TextureParam("inputImageTexture4", this.texture[2], 33988));
       this.isToothImageReady = true;
     }
-    return (this.isFaceImageReady) && (this.isDarkenImageReady) && (this.isToothImageReady);
+    bool1 = bool2;
+    if (this.isFaceImageReady)
+    {
+      bool1 = bool2;
+      if (this.isDarkenImageReady)
+      {
+        bool1 = bool2;
+        if (this.isToothImageReady) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private void initFaceTexCoords()
@@ -94,12 +108,14 @@ public class EyeLightenAndPounchFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.isFaceImageReady = false;
     this.isDarkenImageReady = false;
     this.isToothImageReady = false;
@@ -147,18 +163,26 @@ public class EyeLightenAndPounchFilter
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AttributeParam localAttributeParam = getAttribParam("position");
-    if ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690)) {}
-    do
+    if (localAttributeParam != null)
     {
-      return false;
+      if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+        return false;
+      }
       localAttributeParam = getAttribParam("inputTextureCoordinate");
-    } while ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690));
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      if (localAttributeParam != null)
+      {
+        if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+          return false;
+        }
+        return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      }
+    }
+    return false;
   }
   
   public void setAlphaValue(float paramFloat)
   {
-    this.alphaValue = (0.45F * paramFloat);
+    this.alphaValue = (paramFloat * 0.45F);
     addParam(new UniformParam.FloatParam("alpha", this.alphaValue));
   }
   
@@ -179,7 +203,7 @@ public class EyeLightenAndPounchFilter
   
   public void setToothWhitenAlpha(float paramFloat)
   {
-    this.toothWhitenAlpha = (0.5F * paramFloat);
+    this.toothWhitenAlpha = (paramFloat * 0.5F);
     addParam(new UniformParam.FloatParam("toothWhiten", this.toothWhitenAlpha));
   }
   
@@ -198,10 +222,19 @@ public class EyeLightenAndPounchFilter
   
   public void updatePointParams(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      double d1 = AlgoUtils.getDistance((PointF)paramList.get(81), (PointF)paramList.get(73));
+      double d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      d1 = Math.max(Math.min((d1 / d2 - 10.0D) / 20.0D, 1.0D), 0.0D);
+      d2 = this.toothWhitenAlpha;
+      Double.isNaN(d2);
+      addParam(new UniformParam.FloatParam("toothWhiten", (float)(d2 * d1)));
     }
-    addParam(new UniformParam.FloatParam("toothWhiten", (float)(Math.max(Math.min((AlgoUtils.getDistance((PointF)paramList.get(81), (PointF)paramList.get(73)) / this.mFaceDetScale - 10.0D) / 20.0D, 1.0D), 0.0D) * this.toothWhitenAlpha)));
   }
   
   public void updateTextureParams()
@@ -218,7 +251,7 @@ public class EyeLightenAndPounchFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.EyeLightenAndPounchFilter
  * JD-Core Version:    0.7.0.1
  */

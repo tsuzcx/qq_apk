@@ -70,14 +70,13 @@ public class GLRecognizeRegionView
       this.mScoreStatus.setVisibility(false);
       this.mScoreStatus.clearAnimation();
     }
-    for (;;)
+    else
     {
-      setScoreStatusTypefaceBarRegion(paramInt);
-      return;
       this.mScoreStatus.setCurrentImage(paramInt);
       this.mScoreStatus.setVisibility(true);
       this.mScoreStatus.clearAnimation();
     }
+    setScoreStatusTypefaceBarRegion(paramInt);
   }
   
   private void initAnimation()
@@ -137,23 +136,28 @@ public class GLRecognizeRegionView
   
   private void setScoreStatusTypefaceBarRegion(int paramInt)
   {
-    RectF localRectF = null;
-    switch (paramInt)
+    RectF localRectF;
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      if (localRectF != null)
+      if (paramInt != 2)
       {
-        this.mScoreStatus.setImageRegion(localRectF);
-        this.mScoreStatus.setImageClipDrawRegion(localRectF);
+        if (paramInt != 3) {
+          localRectF = null;
+        } else {
+          localRectF = this.mPerfectTypefaceRegion;
+        }
       }
-      return;
+      else {
+        localRectF = this.mGreatTypefaceRegion;
+      }
+    }
+    else {
       localRectF = this.mGoodTypefaceRegion;
-      continue;
-      localRectF = this.mGreatTypefaceRegion;
-      continue;
-      localRectF = this.mPerfectTypefaceRegion;
+    }
+    if (localRectF != null)
+    {
+      this.mScoreStatus.setImageRegion(localRectF);
+      this.mScoreStatus.setImageClipDrawRegion(localRectF);
     }
   }
   
@@ -191,13 +195,13 @@ public class GLRecognizeRegionView
   
   public void draw()
   {
-    int i = 1;
     startAnimation();
     this.mLeftTop.draw();
     this.mLeftBottom.draw();
     this.mRightTop.draw();
     this.mRightBottom.draw();
-    if ((this.mCurrentMessage != null) && (this.mCurrentMessage.checkHaveStopped()))
+    Object localObject1 = this.mCurrentMessage;
+    if ((localObject1 != null) && (((GLRecognizeRegionView.MatchStatusShow)localObject1).checkHaveStopped()))
     {
       addMatchStatusShowToCache(this.mCurrentMessage);
       this.mCurrentMessage = null;
@@ -208,39 +212,45 @@ public class GLRecognizeRegionView
       if (this.mCurrentMessage == null) {
         setScoreStatusInvisible();
       }
-      this.mScoreStatusMongolian.draw();
-      this.mScoreStatusBackground.draw();
-      this.mScoreStatus.draw();
-      return;
     }
-    Object localObject = (GLRecognizeRegionView.MatchStatusShow)this.mMessageShowMgr.removeLast();
-    if (this.mCurrentMessage != null)
+    else
     {
-      if (((GLRecognizeRegionView.MatchStatusShow)localObject).status <= this.mCurrentMessage.status) {
-        break label390;
+      localObject1 = (GLRecognizeRegionView.MatchStatusShow)this.mMessageShowMgr.removeLast();
+      Object localObject2 = this.mCurrentMessage;
+      int i = 1;
+      if (localObject2 != null)
+      {
+        if (((GLRecognizeRegionView.MatchStatusShow)localObject1).status > this.mCurrentMessage.status)
+        {
+          this.mCurrentMessage.setHaveStopped();
+          addMatchStatusShowToCache(this.mCurrentMessage);
+          this.mCurrentMessage = ((GLRecognizeRegionView.MatchStatusShow)localObject1);
+        }
+        else
+        {
+          i = 0;
+        }
       }
-      this.mCurrentMessage.setHaveStopped();
-      addMatchStatusShowToCache(this.mCurrentMessage);
-      this.mCurrentMessage = ((GLRecognizeRegionView.MatchStatusShow)localObject);
-    }
-    for (;;)
-    {
+      else {
+        this.mCurrentMessage = ((GLRecognizeRegionView.MatchStatusShow)localObject1);
+      }
       this.mMessageShowMgr.clear();
       if (i != 0)
       {
         changeScoreStatus(this.mCurrentMessage.status);
-        if (this.mStatusListener != null) {
-          this.mStatusListener.onStatusChanged(this.mCurrentMessage.status);
+        localObject1 = this.mStatusListener;
+        if (localObject1 != null) {
+          ((GLRecognizeRegionView.StatusListener)localObject1).onStatusChanged(this.mCurrentMessage.status);
         }
-        localObject = this.mCurrentMessage.getMongolianAnimation();
-        this.mScoreStatusMongolian.startAnimation((Animation)localObject);
-        localObject = this.mCurrentMessage.getBackGroundAnimation();
-        if (localObject != null) {
-          this.mScoreStatusBackground.startAnimation((Animation)localObject);
+        localObject1 = this.mCurrentMessage.getMongolianAnimation();
+        this.mScoreStatusMongolian.startAnimation((Animation)localObject1);
+        localObject1 = this.mCurrentMessage.getBackGroundAnimation();
+        if (localObject1 != null) {
+          this.mScoreStatusBackground.startAnimation((Animation)localObject1);
         }
-        localObject = GLRecognizeRegionView.MatchStatusShow.access$000(this.mCurrentMessage);
-        if (localObject != null) {
-          this.mScoreStatus.startAnimation((Animation)localObject);
+        localObject1 = GLRecognizeRegionView.MatchStatusShow.access$000(this.mCurrentMessage);
+        if (localObject1 != null) {
+          this.mScoreStatus.startAnimation((Animation)localObject1);
         }
         if (this.mCurrentMessage.status == 2)
         {
@@ -253,45 +263,57 @@ public class GLRecognizeRegionView
           startVibrateAnimation(this.mVibrateAnimPerfect);
         }
         playAudioTips(this.mCurrentMessage.status);
-        break;
-        this.mCurrentMessage = ((GLRecognizeRegionView.MatchStatusShow)localObject);
-        continue;
       }
-      DanceLog.print("GLRecognizeRegionView", "newMessageItem=false  mCurrentMessage=" + this.mCurrentMessage.getMessageStatus() + " topMessage=" + ((GLRecognizeRegionView.MatchStatusShow)localObject).getMessageStatus() + this.mCurrentMessage.getAnimationLog());
-      break;
-      label390:
-      i = 0;
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("newMessageItem=false  mCurrentMessage=");
+        ((StringBuilder)localObject2).append(this.mCurrentMessage.getMessageStatus());
+        ((StringBuilder)localObject2).append(" topMessage=");
+        ((StringBuilder)localObject2).append(((GLRecognizeRegionView.MatchStatusShow)localObject1).getMessageStatus());
+        ((StringBuilder)localObject2).append(this.mCurrentMessage.getAnimationLog());
+        DanceLog.print("GLRecognizeRegionView", ((StringBuilder)localObject2).toString());
+      }
     }
+    this.mScoreStatusMongolian.draw();
+    this.mScoreStatusBackground.draw();
+    this.mScoreStatus.draw();
   }
   
   public GLRecognizeRegionView.MatchStatusShow getNewMatchStatusShow()
   {
-    if (this.mCacheMessageShow.size() > 0) {}
-    for (GLRecognizeRegionView.MatchStatusShow localMatchStatusShow = (GLRecognizeRegionView.MatchStatusShow)this.mCacheMessageShow.remove(0);; localMatchStatusShow = new GLRecognizeRegionView.MatchStatusShow())
-    {
-      localMatchStatusShow.resetStatus();
-      return localMatchStatusShow;
+    GLRecognizeRegionView.MatchStatusShow localMatchStatusShow;
+    if (this.mCacheMessageShow.size() > 0) {
+      localMatchStatusShow = (GLRecognizeRegionView.MatchStatusShow)this.mCacheMessageShow.remove(0);
+    } else {
+      localMatchStatusShow = new GLRecognizeRegionView.MatchStatusShow();
     }
+    localMatchStatusShow.resetStatus();
+    return localMatchStatusShow;
   }
   
   public void playAudioTips(int paramInt)
   {
     ResourceManager.GamingResource localGamingResource = ResourceManager.getInstance().mGamingResource;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.context.playSound(localGamingResource.missSound);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          this.context.playSound(localGamingResource.perfectSound);
+          return;
+        }
+        this.context.playSound(localGamingResource.greatSound);
+        return;
+      }
       this.context.playSound(localGamingResource.goodSound);
       return;
-    case 2: 
-      this.context.playSound(localGamingResource.greatSound);
-      return;
     }
-    this.context.playSound(localGamingResource.perfectSound);
+    this.context.playSound(localGamingResource.missSound);
   }
   
   public void setExpandRecognizeRegion(RectF paramRectF)
@@ -426,41 +448,43 @@ public class GLRecognizeRegionView
     float f3 = paramGlView.context.getRealVideoRatio();
     AnimationSet localAnimationSet = new AnimationSet(true);
     int i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
-      if (i == 0) {}
-      for (paramGlView = new TranslateAnimation(f1, f1 - 10.0F * f3, f2, f2 - 18.0F * f3);; paramGlView = new TranslateAnimation(0.0F, -10.0F * f3, 0.0F, -18.0F * f3))
-      {
-        paramGlView.setDuration(paramInt1);
-        paramGlView.setStartOffset(i * 4 * paramInt1);
-        paramGlView.setFillEnabled(true);
-        paramGlView.setFillBefore(false);
-        paramGlView.setFillAfter(true);
-        localAnimationSet.addAnimation(paramGlView);
-        paramGlView = new TranslateAnimation(0.0F, 20.0F * f3, 0.0F, 36.0F * f3);
-        paramGlView.setStartOffset(i * 4 * paramInt1 + paramInt1 * 1);
-        paramGlView.setDuration(paramInt1);
-        paramGlView.setFillEnabled(true);
-        paramGlView.setFillBefore(false);
-        paramGlView.setFillAfter(true);
-        localAnimationSet.addAnimation(paramGlView);
-        paramGlView = new TranslateAnimation(0.0F, 0.0F, 0.0F, -23.0F * f3);
-        paramGlView.setStartOffset(i * 4 * paramInt1 + paramInt1 * 2);
-        paramGlView.setDuration(paramInt1);
-        paramGlView.setFillEnabled(true);
-        paramGlView.setFillBefore(false);
-        paramGlView.setFillAfter(true);
-        localAnimationSet.addAnimation(paramGlView);
-        paramGlView = new TranslateAnimation(0.0F, -10.0F * f3, 0.0F, 5.0F * f3);
-        paramGlView.setStartOffset(i * 4 * paramInt1 + paramInt1 * 3);
-        paramGlView.setDuration(paramInt1);
-        paramGlView.setFillEnabled(true);
-        paramGlView.setFillBefore(false);
-        paramGlView.setFillAfter(true);
-        localAnimationSet.addAnimation(paramGlView);
-        i += 1;
-        break;
+      if (i == 0) {
+        paramGlView = new TranslateAnimation(f1, f1 - 10.0F * f3, f2, f2 - 18.0F * f3);
+      } else {
+        paramGlView = new TranslateAnimation(0.0F, f3 * -10.0F, 0.0F, -18.0F * f3);
       }
+      long l = paramInt1;
+      paramGlView.setDuration(l);
+      int j = i * 4 * paramInt1;
+      paramGlView.setStartOffset(j);
+      paramGlView.setFillEnabled(true);
+      paramGlView.setFillBefore(false);
+      paramGlView.setFillAfter(true);
+      localAnimationSet.addAnimation(paramGlView);
+      paramGlView = new TranslateAnimation(0.0F, 20.0F * f3, 0.0F, 36.0F * f3);
+      paramGlView.setStartOffset(paramInt1 * 1 + j);
+      paramGlView.setDuration(l);
+      paramGlView.setFillEnabled(true);
+      paramGlView.setFillBefore(false);
+      paramGlView.setFillAfter(true);
+      localAnimationSet.addAnimation(paramGlView);
+      paramGlView = new TranslateAnimation(0.0F, 0.0F, 0.0F, -23.0F * f3);
+      paramGlView.setStartOffset(paramInt1 * 2 + j);
+      paramGlView.setDuration(l);
+      paramGlView.setFillEnabled(true);
+      paramGlView.setFillBefore(false);
+      paramGlView.setFillAfter(true);
+      localAnimationSet.addAnimation(paramGlView);
+      paramGlView = new TranslateAnimation(0.0F, -10.0F * f3, 0.0F, 5.0F * f3);
+      paramGlView.setStartOffset(j + paramInt1 * 3);
+      paramGlView.setDuration(l);
+      paramGlView.setFillEnabled(true);
+      paramGlView.setFillBefore(false);
+      paramGlView.setFillAfter(true);
+      localAnimationSet.addAnimation(paramGlView);
+      i += 1;
     }
     return localAnimationSet;
   }
@@ -479,18 +503,16 @@ public class GLRecognizeRegionView
   
   public void startVibrateAnimation(List<Animation> paramList)
   {
-    if (this.mVibrateLayout.size() != paramList.size()) {}
-    for (;;)
-    {
+    if (this.mVibrateLayout.size() != paramList.size()) {
       return;
-      int i = 0;
-      while (i < this.mVibrateLayout.size())
-      {
-        GLImageView localGLImageView = (GLImageView)this.mVibrateLayout.get(i);
-        localGLImageView.clearAnimation();
-        localGLImageView.startAnimation((Animation)paramList.get(i));
-        i += 1;
-      }
+    }
+    int i = 0;
+    while (i < this.mVibrateLayout.size())
+    {
+      GLImageView localGLImageView = (GLImageView)this.mVibrateLayout.get(i);
+      localGLImageView.clearAnimation();
+      localGLImageView.startAnimation((Animation)paramList.get(i));
+      i += 1;
     }
   }
   
@@ -499,18 +521,21 @@ public class GLRecognizeRegionView
     int i = this.context.getSurfaceViewSize().width();
     GLImage localGLImage = this.mScoreStatus.getImageByIndex(1);
     int j = (i - DisplayUtils.pixelToRealPixel(localGLImage.getWidth())) / 2;
-    this.mGoodTypefaceRegion.set(j, paramInt, i - j, DisplayUtils.pixelToRealPixel(localGLImage.getHeight()) + paramInt);
+    RectF localRectF = this.mGoodTypefaceRegion;
+    float f1 = j;
+    float f2 = paramInt;
+    localRectF.set(f1, f2, i - j, DisplayUtils.pixelToRealPixel(localGLImage.getHeight()) + paramInt);
     localGLImage = this.mScoreStatus.getImageByIndex(2);
     j = (i - DisplayUtils.pixelToRealPixel(localGLImage.getWidth())) / 2;
-    this.mGreatTypefaceRegion.set(j, paramInt, i - j, DisplayUtils.pixelToRealPixel(localGLImage.getHeight()) + paramInt);
+    this.mGreatTypefaceRegion.set(j, f2, i - j, DisplayUtils.pixelToRealPixel(localGLImage.getHeight()) + paramInt);
     localGLImage = this.mScoreStatus.getImageByIndex(3);
     j = (i - DisplayUtils.pixelToRealPixel(localGLImage.getWidth())) / 2;
-    this.mPerfectTypefaceRegion.set(j, paramInt, i - j, DisplayUtils.pixelToRealPixel(localGLImage.getHeight()) + paramInt);
+    this.mPerfectTypefaceRegion.set(j, f2, i - j, paramInt + DisplayUtils.pixelToRealPixel(localGLImage.getHeight()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView
  * JD-Core Version:    0.7.0.1
  */

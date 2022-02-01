@@ -24,7 +24,8 @@ public class MaskBlendFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     addParam(new UniformParam.TextureParam("maskTexture", this.tex[0], 33988));
     addParam(new UniformParam.TextureParam("blendTexture", 0, 33986));
     addParam(new UniformParam.IntParam("blendMode", 0));
@@ -33,7 +34,8 @@ public class MaskBlendFilter
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     super.clearGLSLSelf();
   }
   
@@ -45,17 +47,17 @@ public class MaskBlendFilter
       GlUtil.loadTexture(this.tex[0], paramBitmap);
       addParam(new UniformParam.TextureParam("blendTexture", paramFrame2.getTextureId(), 33986));
     }
-    for (;;)
+    else
     {
-      addParam(new UniformParam.IntParam("blendMode", paramInt));
-      return super.render(paramFrame1);
       addParam(new UniformParam.IntParam("useMask", 0));
     }
+    addParam(new UniformParam.IntParam("blendMode", paramInt));
+    return super.render(paramFrame1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.MaskBlendFilter
  * JD-Core Version:    0.7.0.1
  */

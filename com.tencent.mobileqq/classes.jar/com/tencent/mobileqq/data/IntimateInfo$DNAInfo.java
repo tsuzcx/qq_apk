@@ -24,68 +24,50 @@ public class IntimateInfo$DNAInfo
     }
     DNAInfo localDNAInfo = new DNAInfo();
     int i;
-    String str;
-    if (paramDnaInfo.eDnaType.has())
-    {
+    if (paramDnaInfo.eDnaType.has()) {
       i = paramDnaInfo.eDnaType.get();
-      localDNAInfo.type = i;
-      if (!paramDnaInfo.bytes_icon_url.has()) {
-        break label200;
-      }
-      str = paramDnaInfo.bytes_icon_url.get().toStringUtf8();
-      label58:
-      localDNAInfo.iconUrl = str;
-      if (!paramDnaInfo.bytes_wording.has()) {
-        break label206;
-      }
-      str = paramDnaInfo.bytes_wording.get().toStringUtf8();
-      label84:
-      localDNAInfo.wording = str;
-      if (!paramDnaInfo.bytes_vice_title.has()) {
-        break label212;
-      }
-      str = paramDnaInfo.bytes_vice_title.get().toStringUtf8();
-      label110:
-      localDNAInfo.viceTitle = str;
-      if (!paramDnaInfo.bytes_link_url.has()) {
-        break label218;
-      }
-      str = paramDnaInfo.bytes_link_url.get().toStringUtf8();
-      label136:
-      localDNAInfo.linkUrl = str;
-      if (!paramDnaInfo.bytes_link_wording.has()) {
-        break label224;
-      }
-      str = paramDnaInfo.bytes_link_wording.get().toStringUtf8();
-      label162:
-      localDNAInfo.linkWording = str;
-      if (!paramDnaInfo.bytes_link_colour.has()) {
-        break label230;
-      }
-    }
-    label200:
-    label206:
-    label212:
-    label218:
-    label224:
-    label230:
-    for (paramDnaInfo = paramDnaInfo.bytes_link_colour.get().toStringUtf8();; paramDnaInfo = "")
-    {
-      localDNAInfo.linkColor = paramDnaInfo;
-      return localDNAInfo;
+    } else {
       i = 0;
-      break;
-      str = "";
-      break label58;
-      str = "";
-      break label84;
-      str = "";
-      break label110;
-      str = "";
-      break label136;
-      str = "";
-      break label162;
     }
+    localDNAInfo.type = i;
+    boolean bool = paramDnaInfo.bytes_icon_url.has();
+    String str2 = "";
+    if (bool) {
+      str1 = paramDnaInfo.bytes_icon_url.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    localDNAInfo.iconUrl = str1;
+    if (paramDnaInfo.bytes_wording.has()) {
+      str1 = paramDnaInfo.bytes_wording.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    localDNAInfo.wording = str1;
+    if (paramDnaInfo.bytes_vice_title.has()) {
+      str1 = paramDnaInfo.bytes_vice_title.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    localDNAInfo.viceTitle = str1;
+    if (paramDnaInfo.bytes_link_url.has()) {
+      str1 = paramDnaInfo.bytes_link_url.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    localDNAInfo.linkUrl = str1;
+    if (paramDnaInfo.bytes_link_wording.has()) {
+      str1 = paramDnaInfo.bytes_link_wording.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    localDNAInfo.linkWording = str1;
+    String str1 = str2;
+    if (paramDnaInfo.bytes_link_colour.has()) {
+      str1 = paramDnaInfo.bytes_link_colour.get().toStringUtf8();
+    }
+    localDNAInfo.linkColor = str1;
+    return localDNAInfo;
   }
   
   public static DNAInfo copyFromJson(JSONObject paramJSONObject)
@@ -124,7 +106,29 @@ public class IntimateInfo$DNAInfo
   
   public String toString()
   {
-    return "DNAInfo{type=" + this.type + ", iconUrl='" + this.iconUrl + '\'' + ", wording='" + this.wording + '\'' + ", viceTitle='" + this.viceTitle + '\'' + ", linkUrl='" + this.linkUrl + '\'' + ", linkWording='" + this.linkWording + '\'' + ", linkColor='" + this.linkColor + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DNAInfo{type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.wording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", viceTitle='");
+    localStringBuilder.append(this.viceTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkUrl='");
+    localStringBuilder.append(this.linkUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkWording='");
+    localStringBuilder.append(this.linkWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", linkColor='");
+    localStringBuilder.append(this.linkColor);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,49 +1,49 @@
 package com.tencent.mm.vending.b;
 
-import com.tencent.mm.vending.g.d;
+import com.tencent.mm.vending.h.d;
 import junit.framework.Assert;
 
 public final class b<_Callback>
   implements com.tencent.mm.vending.e.a
 {
-  private a ZN;
-  private d ZO;
-  private int ZP = -1;
-  private _Callback ZQ;
-  private int ZR;
+  private a adn;
+  private d ado;
+  private int adp = -1;
+  private _Callback adq;
+  private int adr;
   
   public b(_Callback param_Callback, a parama)
   {
     Assert.assertNotNull("Callback should not be null!", param_Callback);
-    this.ZR = param_Callback.hashCode();
-    this.ZQ = param_Callback;
-    this.ZN = parama;
+    this.adr = param_Callback.hashCode();
+    this.adq = param_Callback;
+    this.adn = parama;
   }
   
   public final boolean equals(Object paramObject)
   {
-    return (paramObject != null) && (paramObject.hashCode() == this.ZR);
+    return (paramObject != null) && (paramObject.hashCode() == this.adr);
   }
   
   public final _Callback get()
   {
-    return this.ZQ;
+    return this.adq;
   }
   
   public final int hashCode()
   {
-    return this.ZR;
+    return this.adr;
   }
   
-  public final d lE()
+  public final void md()
   {
-    return this.ZO;
+    Assert.assertNotNull(this.adn);
+    this.adn.b(this);
   }
   
-  public final void lw()
+  public final d mm()
   {
-    Assert.assertNotNull(this.ZN);
-    this.ZN.b(this);
+    return this.ado;
   }
 }
 

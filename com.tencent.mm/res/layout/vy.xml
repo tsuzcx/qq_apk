@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bie" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/si" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/bkd" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/lb" android:paddingBottom="@dimen/m1" android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/icon" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/lb" android:paddingRight="@dimen/m1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/di" android:layout_gravity="left" android:id="@id/bi9" android:paddingBottom="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/ln" />
-            <TextView android:layout_gravity="left" android:id="@id/bke" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/lm" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/i6" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/blm" style="@style/ht" />
+            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/j7" android:ellipsize="end" android:id="@id/blk" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/hr" />
+            </ScrollView>
         </LinearLayout>
-        <FrameLayout android:layout_gravity="center_vertical" android:paddingLeft="@dimen/m1" android:layout_width="wrap_content" android:layout_height="32.0dip">
-            <Button android:id="@id/bkf" android:layout_width="wrap_content" android:layout_height="32.0dip" android:maxWidth="100.0dip" android:text="@string/bch" style="@style/ns" />
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/bid" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="wrap_content" style="@style/ld" />
-        </FrameLayout>
+        <TextView android:id="@id/blf" android:layout_marginLeft="0.0dip" android:text="source" style="@style/hs" />
+        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/bll" style="@style/hp" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -21,8 +21,9 @@ public enum AdVideoSplice
   
   public static AdVideoSpliceAdapter getAdapter()
   {
-    if (INSTANCE.mAdapter != null) {
-      return (AdVideoSpliceAdapter)INSTANCE.mAdapter.get();
+    WeakReference localWeakReference = INSTANCE.mAdapter;
+    if (localWeakReference != null) {
+      return (AdVideoSpliceAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -56,7 +57,7 @@ public enum AdVideoSplice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.videoceiling.AdVideoSplice
  * JD-Core Version:    0.7.0.1
  */

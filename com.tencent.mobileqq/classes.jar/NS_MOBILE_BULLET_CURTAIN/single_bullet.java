@@ -50,27 +50,32 @@ public final class single_bullet
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    Object localObject = this.nickname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.background != null) {
-      paramJceOutputStream.write(this.background, 3);
+    localObject = this.background;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.jump_type, 4);
-    if (this.jump_keyword != null) {
-      paramJceOutputStream.write(this.jump_keyword, 5);
+    localObject = this.jump_keyword;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.jump_schema != null) {
-      paramJceOutputStream.write(this.jump_schema, 6);
+    localObject = this.jump_schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BULLET_CURTAIN.single_bullet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.tencent.open.appcommon.js.BaseJsCallBack;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class hkr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public hkr(BaseJsCallBack paramBaseJsCallBack) {}
+  public hkr(BaseJsCallBack paramBaseJsCallBack, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    MyAppApi.a().a(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+  }
 }
 
 

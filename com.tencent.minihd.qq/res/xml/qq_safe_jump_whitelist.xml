@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Jump-Whitelist>
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.activity.QQBrowserActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.gamecenter.activities.GameCenterActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.troop.activity.TroopBarPageActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.biz.pubaccount.PublicAccountBrowser" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.troop.activity.NearbyTroopsActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.activity.HotChatListActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.av.ui.AVActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.activity.ChatActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.biz.coupon.CouponActivity" />
+    <Item pkg="com.tencent.minihd.qq" cmp="com.tencent.minihd.qq.activity.TroopMemberListActivity" />
+</Jump-Whitelist>

@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -25,46 +25,79 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
   private void create(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
     paramMethodCall = (Map)paramMethodCall.arguments();
-    int i = ((Integer)paramMethodCall.get("id")).intValue();
-    String str = (String)paramMethodCall.get("viewType");
-    double d1 = ((Double)paramMethodCall.get("width")).doubleValue();
-    double d2 = ((Double)paramMethodCall.get("height")).doubleValue();
-    int j = ((Integer)paramMethodCall.get("direction")).intValue();
-    if (paramMethodCall.containsKey("params")) {}
-    for (paramMethodCall = ByteBuffer.wrap((byte[])paramMethodCall.get("params"));; paramMethodCall = null)
-    {
-      paramMethodCall = new PlatformViewsChannel.PlatformViewCreationRequest(i, str, d1, d2, j, paramMethodCall);
-      try
+    int i;
+    if ((paramMethodCall.containsKey("hybrid")) && (((Boolean)paramMethodCall.get("hybrid")).booleanValue())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    double d2 = 0.0D;
+    double d1;
+    if (i != 0) {
+      d1 = 0.0D;
+    } else {
+      d1 = ((Double)paramMethodCall.get("width")).doubleValue();
+    }
+    if (i == 0) {
+      for (;;)
       {
-        paramResult.success(Long.valueOf(PlatformViewsChannel.access$000(this.this$0).createPlatformView(paramMethodCall)));
-        return;
-      }
-      catch (IllegalStateException paramMethodCall)
-      {
-        paramResult.error("error", paramMethodCall.getMessage(), null);
+        d2 = ((Double)paramMethodCall.get("height")).doubleValue();
       }
     }
-  }
-  
-  private void dispose(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
-  {
-    int i = ((Integer)paramMethodCall.arguments()).intValue();
+    int j = ((Integer)paramMethodCall.get("id")).intValue();
+    String str = (String)paramMethodCall.get("viewType");
+    int k = ((Integer)paramMethodCall.get("direction")).intValue();
+    if (paramMethodCall.containsKey("params")) {
+      paramMethodCall = ByteBuffer.wrap((byte[])paramMethodCall.get("params"));
+    } else {
+      paramMethodCall = null;
+    }
+    paramMethodCall = new PlatformViewsChannel.PlatformViewCreationRequest(j, str, d1, d2, k, paramMethodCall);
+    if (i != 0) {}
     try
     {
-      PlatformViewsChannel.access$000(this.this$0).disposePlatformView(i);
+      PlatformViewsChannel.access$000(this.this$0).createAndroidViewForPlatformView(paramMethodCall);
       paramResult.success(null);
       return;
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
+    }
+    paramResult.success(Long.valueOf(PlatformViewsChannel.access$000(this.this$0).createVirtualDisplayForPlatformView(paramMethodCall)));
+    return;
+  }
+  
+  private void dispose(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
+  {
+    paramMethodCall = (Map)paramMethodCall.arguments();
+    int j = ((Integer)paramMethodCall.get("id")).intValue();
+    int i;
+    if ((paramMethodCall.containsKey("hybrid")) && (((Boolean)paramMethodCall.get("hybrid")).booleanValue())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {}
+    try
+    {
+      PlatformViewsChannel.access$000(this.this$0).disposeAndroidViewForPlatformView(j);
+      break label94;
+      PlatformViewsChannel.access$000(this.this$0).disposeVirtualDisplayForPlatformView(j);
+      label94:
+      paramResult.success(null);
+      return;
+    }
+    catch (IllegalStateException paramMethodCall)
+    {
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -79,7 +112,7 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
@@ -96,14 +129,14 @@ class PlatformViewsChannel$1
     }
     catch (IllegalStateException paramMethodCall)
     {
-      paramResult.error("error", paramMethodCall.getMessage(), null);
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
   }
   
   private void touch(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
   {
     paramMethodCall = (List)paramMethodCall.arguments();
-    paramMethodCall = new PlatformViewsChannel.PlatformViewTouch(((Integer)paramMethodCall.get(0)).intValue(), (Number)paramMethodCall.get(1), (Number)paramMethodCall.get(2), ((Integer)paramMethodCall.get(3)).intValue(), ((Integer)paramMethodCall.get(4)).intValue(), paramMethodCall.get(5), paramMethodCall.get(6), ((Integer)paramMethodCall.get(7)).intValue(), ((Integer)paramMethodCall.get(8)).intValue(), (float)((Double)paramMethodCall.get(9)).doubleValue(), (float)((Double)paramMethodCall.get(10)).doubleValue(), ((Integer)paramMethodCall.get(11)).intValue(), ((Integer)paramMethodCall.get(12)).intValue(), ((Integer)paramMethodCall.get(13)).intValue(), ((Integer)paramMethodCall.get(14)).intValue());
+    paramMethodCall = new PlatformViewsChannel.PlatformViewTouch(((Integer)paramMethodCall.get(0)).intValue(), (Number)paramMethodCall.get(1), (Number)paramMethodCall.get(2), ((Integer)paramMethodCall.get(3)).intValue(), ((Integer)paramMethodCall.get(4)).intValue(), paramMethodCall.get(5), paramMethodCall.get(6), ((Integer)paramMethodCall.get(7)).intValue(), ((Integer)paramMethodCall.get(8)).intValue(), (float)((Double)paramMethodCall.get(9)).doubleValue(), (float)((Double)paramMethodCall.get(10)).doubleValue(), ((Integer)paramMethodCall.get(11)).intValue(), ((Integer)paramMethodCall.get(12)).intValue(), ((Integer)paramMethodCall.get(13)).intValue(), ((Integer)paramMethodCall.get(14)).intValue(), ((Number)paramMethodCall.get(15)).longValue());
     try
     {
       PlatformViewsChannel.access$000(this.this$0).onTouch(paramMethodCall);
@@ -113,13 +146,9 @@ class PlatformViewsChannel$1
         return;
       }
       catch (IllegalStateException paramMethodCall) {}
+      paramResult.error("error", PlatformViewsChannel.access$100(paramMethodCall), null);
     }
-    catch (IllegalStateException paramMethodCall)
-    {
-      label226:
-      break label226;
-    }
-    paramResult.error("error", paramMethodCall.getMessage(), null);
+    catch (IllegalStateException paramMethodCall) {}
   }
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
@@ -136,61 +165,75 @@ class PlatformViewsChannel$1
     int i = -1;
     switch (((String)localObject).hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        paramResult.notImplemented();
-        return;
-        if (((String)localObject).equals("dispose"))
-        {
-          i = 1;
-          continue;
-          if (((String)localObject).equals("setDirection"))
-          {
-            i = 4;
-            continue;
-            if (((String)localObject).equals("touch"))
-            {
-              i = 3;
-              continue;
-              if (((String)localObject).equals("clearFocus"))
-              {
-                i = 5;
-                continue;
-                if (((String)localObject).equals("resize"))
-                {
-                  i = 2;
-                  continue;
-                  if (((String)localObject).equals("create")) {
-                    i = 0;
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1671767583: 
+      if (((String)localObject).equals("dispose")) {
+        i = 1;
       }
+      break;
+    case 576796989: 
+      if (((String)localObject).equals("setDirection")) {
+        i = 4;
+      }
+      break;
+    case 110550847: 
+      if (((String)localObject).equals("touch")) {
+        i = 3;
+      }
+      break;
+    case -756050293: 
+      if (((String)localObject).equals("clearFocus")) {
+        i = 5;
+      }
+      break;
+    case -934437708: 
+      if (((String)localObject).equals("resize")) {
+        i = 2;
+      }
+      break;
+    case -1352294148: 
+      if (((String)localObject).equals("create")) {
+        i = 0;
+      }
+      break;
     }
-    clearFocus(paramMethodCall, paramResult);
-    return;
-    setDirection(paramMethodCall, paramResult);
-    return;
-    touch(paramMethodCall, paramResult);
-    return;
-    resize(paramMethodCall, paramResult);
-    return;
-    dispose(paramMethodCall, paramResult);
-    return;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5)
+              {
+                paramResult.notImplemented();
+                return;
+              }
+              clearFocus(paramMethodCall, paramResult);
+              return;
+            }
+            setDirection(paramMethodCall, paramResult);
+            return;
+          }
+          touch(paramMethodCall, paramResult);
+          return;
+        }
+        resize(paramMethodCall, paramResult);
+        return;
+      }
+      dispose(paramMethodCall, paramResult);
+      return;
+    }
     create(paramMethodCall, paramResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.1
  * JD-Core Version:    0.7.0.1
  */

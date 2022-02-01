@@ -12,14 +12,15 @@ public final class lo
   
   public final void a(Marker paramMarker)
   {
-    if ((this.a != null) && (paramMarker != null)) {
-      this.a.add(paramMarker);
+    List localList = this.a;
+    if ((localList != null) && (paramMarker != null)) {
+      localList.add(paramMarker);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class AuthDevRenameActivity$5
   implements Runnable
@@ -11,26 +11,22 @@ class AuthDevRenameActivity$5
   {
     try
     {
-      if ((AuthDevRenameActivity.a(this.this$0) != null) && (AuthDevRenameActivity.a(this.this$0).isShowing()))
+      if ((AuthDevRenameActivity.access$100(this.this$0) != null) && (AuthDevRenameActivity.access$100(this.this$0).isShowing()))
       {
-        AuthDevRenameActivity.a(this.this$0).dismiss();
-        AuthDevRenameActivity.a(this.this$0).cancel();
+        AuthDevRenameActivity.access$100(this.this$0).dismiss();
+        AuthDevRenameActivity.access$100(this.this$0).cancel();
       }
-      AuthDevRenameActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    AuthDevRenameActivity.access$102(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.5
  * JD-Core Version:    0.7.0.1
  */

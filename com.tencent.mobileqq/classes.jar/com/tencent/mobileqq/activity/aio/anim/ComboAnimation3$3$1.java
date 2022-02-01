@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aeva;
-import aevd;
-
-public class ComboAnimation3$3$1
+class ComboAnimation3$3$1
   implements Runnable
 {
-  public ComboAnimation3$3$1(aevd paramaevd) {}
+  ComboAnimation3$3$1(ComboAnimation3.3 param3) {}
   
   public void run()
   {
@@ -16,7 +13,7 @@ public class ComboAnimation3$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1
  * JD-Core Version:    0.7.0.1
  */

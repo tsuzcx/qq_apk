@@ -8,11 +8,11 @@ public enum b$a
   
   static
   {
-    AppMethodBeat.i(78629);
-    fRz = new a("OP_Chatting", 0, 1);
-    fRA = new a("OP_Msg", 1, 2);
-    fRB = new a[] { fRz, fRA };
-    AppMethodBeat.o(78629);
+    AppMethodBeat.i(150979);
+    oVf = new a("OP_Chatting", 0, 1);
+    oVg = new a("OP_Msg", 1, 2);
+    oVh = new a[] { oVf, oVg };
+    AppMethodBeat.o(150979);
   }
   
   private b$a(int paramInt)
@@ -22,7 +22,7 @@ public enum b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -30,15 +30,17 @@ public class hr
     this.bssid = this.gc.aa();
     this.security = parambn.ab();
     this.level = ca.calculateSignalLevel(this.gc.ac().al().gd, 4);
-    if ((this.level < 0) || (this.level >= 4)) {
+    int i = this.level;
+    if ((i < 0) || (i >= 4)) {
       this.level = 2;
     }
-    if (hm.d(this.gc))
-    {
+    if (hm.d(this.gc)) {
       this.tI = 1;
-      if (this.tI != 1) {
-        break label270;
-      }
+    } else {
+      this.tI = 2;
+    }
+    if (this.tI == 1)
+    {
       parambn = this.gc.ad();
       this.starLevel = hm.a(parambn);
       this.tK = hm.w(this.gc);
@@ -51,19 +53,17 @@ public class hr
         this.recommendReason = ((String)parambn.second);
       }
     }
-    label270:
-    do
+    else
     {
-      return;
-      this.tI = 2;
-      break;
       if (this.gc.ac().aj() != null)
       {
         this.tJ = 1;
         return;
       }
-    } while (!hm.v(this.gc));
-    this.tJ = 2;
+      if (hm.v(this.gc)) {
+        this.tJ = 2;
+      }
+    }
   }
   
   public bn af()
@@ -73,12 +73,32 @@ public class hr
   
   public String toString()
   {
-    return "[ssid: " + this.ssid + " bssid: " + this.bssid + " level: " + this.level + " starLevel: " + this.starLevel + " latency: " + this.U + " needAuthByWiFiManager: " + this.tK + " isBestWiFi: " + this.isBestWiFi + " recommendReason: " + this.recommendReason + " poiDesc: " + this.tL + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ssid: ");
+    localStringBuilder.append(this.ssid);
+    localStringBuilder.append(" bssid: ");
+    localStringBuilder.append(this.bssid);
+    localStringBuilder.append(" level: ");
+    localStringBuilder.append(this.level);
+    localStringBuilder.append(" starLevel: ");
+    localStringBuilder.append(this.starLevel);
+    localStringBuilder.append(" latency: ");
+    localStringBuilder.append(this.U);
+    localStringBuilder.append(" needAuthByWiFiManager: ");
+    localStringBuilder.append(this.tK);
+    localStringBuilder.append(" isBestWiFi: ");
+    localStringBuilder.append(this.isBestWiFi);
+    localStringBuilder.append(" recommendReason: ");
+    localStringBuilder.append(this.recommendReason);
+    localStringBuilder.append(" poiDesc: ");
+    localStringBuilder.append(this.tL);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.hr
  * JD-Core Version:    0.7.0.1
  */

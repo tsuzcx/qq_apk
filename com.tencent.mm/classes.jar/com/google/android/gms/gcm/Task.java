@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.text.TextUtils;
+import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Task
   @Deprecated
   Task(Parcel paramParcel)
   {
-    AppMethodBeat.i(70015);
+    AppMethodBeat.i(3691);
     this.gcmTaskService = paramParcel.readString();
     this.tag = paramParcel.readString();
     if (paramParcel.readInt() == 1)
@@ -41,10 +42,10 @@ public class Task
       bool1 = true;
       this.updateCurrent = bool1;
       if (paramParcel.readInt() != 1) {
-        break label102;
+        break label104;
       }
     }
-    label102:
+    label104:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.isPersisted = bool1;
@@ -54,16 +55,16 @@ public class Task
       this.zzav = false;
       this.zzaw = zzl.zzao;
       this.extras = null;
-      AppMethodBeat.o(70015);
+      AppMethodBeat.o(3691);
       return;
       bool1 = false;
       break;
     }
   }
   
-  Task(Task.Builder paramBuilder)
+  Task(Builder paramBuilder)
   {
-    AppMethodBeat.i(70014);
+    AppMethodBeat.i(3690);
     this.gcmTaskService = paramBuilder.gcmTaskService;
     this.tag = paramBuilder.tag;
     this.updateCurrent = paramBuilder.updateCurrent;
@@ -77,18 +78,18 @@ public class Task
     for (paramBuilder = paramBuilder.zzaw;; paramBuilder = zzl.zzao)
     {
       this.zzaw = paramBuilder;
-      AppMethodBeat.o(70014);
+      AppMethodBeat.o(3690);
       return;
     }
   }
   
   private static void zzd(Uri paramUri)
   {
-    AppMethodBeat.i(70019);
+    AppMethodBeat.i(3695);
     if (paramUri == null)
     {
       paramUri = new IllegalArgumentException("Null URI");
-      AppMethodBeat.o(70019);
+      AppMethodBeat.o(3695);
       throw paramUri;
     }
     String str1 = paramUri.getScheme();
@@ -96,7 +97,7 @@ public class Task
     if ((TextUtils.isEmpty(str2)) || ("null".equals(str2)))
     {
       paramUri = new IllegalArgumentException("URI hostname is required");
-      AppMethodBeat.o(70019);
+      AppMethodBeat.o(3695);
       throw paramUri;
     }
     try
@@ -105,11 +106,11 @@ public class Task
       if ("tcp".equals(str1))
       {
         if ((i > 0) && (i <= 65535)) {
-          break label265;
+          break label272;
         }
         i = paramUri.getPort();
         paramUri = new IllegalArgumentException(38 + "Invalid required URI port: " + i);
-        AppMethodBeat.o(70019);
+        AppMethodBeat.o(3695);
         throw paramUri;
       }
     }
@@ -121,7 +122,7 @@ public class Task
       for (paramUri = "Invalid port number: ".concat(paramUri);; paramUri = new String("Invalid port number: "))
       {
         paramUri = new IllegalArgumentException(paramUri);
-        AppMethodBeat.o(70019);
+        AppMethodBeat.o(3695);
         throw paramUri;
       }
       if ("ping".equals(str1))
@@ -129,7 +130,7 @@ public class Task
         if (i != -1)
         {
           paramUri = new IllegalArgumentException("Ping does not support port numbers");
-          AppMethodBeat.o(70019);
+          AppMethodBeat.o(3695);
           throw paramUri;
         }
       }
@@ -140,18 +141,18 @@ public class Task
         for (paramUri = "Unsupported required URI scheme: ".concat(paramUri);; paramUri = new String("Unsupported required URI scheme: "))
         {
           paramUri = new IllegalArgumentException(paramUri);
-          AppMethodBeat.o(70019);
+          AppMethodBeat.o(3695);
           throw paramUri;
         }
       }
-      label265:
-      AppMethodBeat.o(70019);
+      label272:
+      AppMethodBeat.o(3695);
     }
   }
   
   public static void zzg(Bundle paramBundle)
   {
-    AppMethodBeat.i(70018);
+    AppMethodBeat.i(3694);
     if (paramBundle != null)
     {
       Object localObject1 = Parcel.obtain();
@@ -161,7 +162,7 @@ public class Task
       if (i > 10240)
       {
         paramBundle = new IllegalArgumentException(55 + "Extras exceeding maximum size(10240 bytes): " + i);
-        AppMethodBeat.o(70018);
+        AppMethodBeat.o(3694);
         throw paramBundle;
       }
       localObject1 = paramBundle.keySet().iterator();
@@ -172,23 +173,23 @@ public class Task
         for (i = 1;; i = 0)
         {
           if (i != 0) {
-            break label165;
+            break label167;
           }
           if (!(localObject2 instanceof Bundle)) {
-            break label167;
+            break label169;
           }
           zzg((Bundle)localObject2);
           break;
         }
-        label165:
-        continue;
         label167:
+        continue;
+        label169:
         paramBundle = new IllegalArgumentException("Only the following extra parameter types are supported: Integer, Long, Double, String, Boolean, and nested Bundles with the same restrictions.");
-        AppMethodBeat.o(70018);
+        AppMethodBeat.o(3694);
         throw paramBundle;
       }
     }
-    AppMethodBeat.o(70018);
+    AppMethodBeat.o(3694);
   }
   
   public int describeContents()
@@ -233,7 +234,7 @@ public class Task
   
   public void toBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(70016);
+    AppMethodBeat.i(3692);
     paramBundle.putString("tag", this.tag);
     paramBundle.putBoolean("update_current", this.updateCurrent);
     paramBundle.putBoolean("persisted", this.isPersisted);
@@ -252,13 +253,13 @@ public class Task
     paramBundle.putBoolean("requiresIdle", false);
     paramBundle.putBundle("retryStrategy", this.zzaw.zzf(new Bundle()));
     paramBundle.putBundle("extras", this.extras);
-    AppMethodBeat.o(70016);
+    AppMethodBeat.o(3692);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(70017);
+    AppMethodBeat.i(3693);
     paramParcel.writeString(this.gcmTaskService);
     paramParcel.writeString(this.tag);
     if (this.updateCurrent)
@@ -273,11 +274,84 @@ public class Task
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(70017);
+      AppMethodBeat.o(3693);
       return;
       paramInt = 0;
       break;
     }
+  }
+  
+  public static abstract class Builder
+  {
+    protected Bundle extras;
+    protected String gcmTaskService;
+    protected boolean isPersisted;
+    protected int requiredNetworkState;
+    protected boolean requiresCharging;
+    protected String tag;
+    protected boolean updateCurrent;
+    protected Set<Uri> zzau = Collections.emptySet();
+    protected zzl zzaw = zzl.zzao;
+    
+    public abstract Task build();
+    
+    protected void checkConditions()
+    {
+      if (this.gcmTaskService != null) {}
+      int i;
+      for (boolean bool = true;; bool = false)
+      {
+        Preconditions.checkArgument(bool, "Must provide an endpoint for this task by calling setService(ComponentName).");
+        GcmNetworkManager.zzd(this.tag);
+        localObject = this.zzaw;
+        if (localObject == null) {
+          break label195;
+        }
+        i = ((zzl)localObject).zzh();
+        if ((i == 1) || (i == 0)) {
+          break;
+        }
+        throw new IllegalArgumentException(45 + "Must provide a valid RetryPolicy: " + i);
+      }
+      int j = ((zzl)localObject).zzi();
+      int k = ((zzl)localObject).zzj();
+      if ((i == 0) && (j < 0)) {
+        throw new IllegalArgumentException(52 + "InitialBackoffSeconds can't be negative: " + j);
+      }
+      if ((i == 1) && (j < 10)) {
+        throw new IllegalArgumentException("RETRY_POLICY_LINEAR must have an initial backoff at least 10 seconds.");
+      }
+      if (k < j)
+      {
+        i = ((zzl)localObject).zzj();
+        throw new IllegalArgumentException(77 + "MaximumBackoffSeconds must be greater than InitialBackoffSeconds: " + i);
+      }
+      label195:
+      if (this.isPersisted) {
+        Task.zzg(this.extras);
+      }
+      if ((!this.zzau.isEmpty()) && (this.requiredNetworkState == 2)) {
+        throw new IllegalArgumentException("Required URIs may not be used with NETWORK_STATE_ANY");
+      }
+      Object localObject = this.zzau.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        Task.zze((Uri)((Iterator)localObject).next());
+      }
+    }
+    
+    public abstract Builder setExtras(Bundle paramBundle);
+    
+    public abstract Builder setPersisted(boolean paramBoolean);
+    
+    public abstract Builder setRequiredNetwork(int paramInt);
+    
+    public abstract Builder setRequiresCharging(boolean paramBoolean);
+    
+    public abstract Builder setService(Class<? extends GcmTaskService> paramClass);
+    
+    public abstract Builder setTag(String paramString);
+    
+    public abstract Builder setUpdateCurrent(boolean paramBoolean);
   }
 }
 

@@ -17,12 +17,13 @@ public final class Regex$fromInt$$inlined$apply$lambda$1
   public final boolean invoke(T paramT)
   {
     int i = this.$value$inlined;
-    return (((FlagEnum)paramT).getMask() & i) == ((FlagEnum)paramT).getValue();
+    paramT = (FlagEnum)paramT;
+    return (i & paramT.getMask()) == paramT.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.Regex.fromInt..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

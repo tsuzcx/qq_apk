@@ -18,10 +18,12 @@ public class SSLParametersWebSocketServerFactory
   public SSLParametersWebSocketServerFactory(SSLContext paramSSLContext, ExecutorService paramExecutorService, SSLParameters paramSSLParameters)
   {
     super(paramSSLContext, paramExecutorService);
-    if (paramSSLParameters == null) {
-      throw new IllegalArgumentException();
+    if (paramSSLParameters != null)
+    {
+      this.sslParameters = paramSSLParameters;
+      return;
     }
-    this.sslParameters = paramSSLParameters;
+    throw new IllegalArgumentException();
   }
   
   public SSLParametersWebSocketServerFactory(SSLContext paramSSLContext, SSLParameters paramSSLParameters)
@@ -39,7 +41,7 @@ public class SSLParametersWebSocketServerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.server.SSLParametersWebSocketServerFactory
  * JD-Core Version:    0.7.0.1
  */

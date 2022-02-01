@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#80000000" android:gravity="center" android:id="@android:id/title" android:paddingLeft="20.0dip" android:paddingTop="64.0dip" android:paddingRight="20.0dip" android:paddingBottom="24.0dip" android:clickable="true" style="@style/l1" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dor" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g1b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv">
+        <ImageView android:id="@id/dmm" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
+        <TextView android:textSize="@dimen/cd" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="2.0dip" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="6.0dip" android:layout_height="@dimen/cd" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </LinearLayout>
 </LinearLayout>

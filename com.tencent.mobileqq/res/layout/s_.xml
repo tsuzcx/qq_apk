@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:orientation="vertical" android:layout_width="36.0dip" android:layout_height="36.0dip">
         <ImageView android:id="@id/ews" android:background="@drawable/mini_msg_float_view_top_white" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="10.0sp" android:textColor="@color/aiy" android:gravity="center" android:id="@id/ewt" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="12.0dip" android:text="" android:singleLine="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/ewt" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="12.0dip" android:text="" android:singleLine="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </RelativeLayout>

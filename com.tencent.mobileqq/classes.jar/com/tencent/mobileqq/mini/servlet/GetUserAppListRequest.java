@@ -24,16 +24,20 @@ public class GetUserAppListRequest
   
   public static INTERFACE.StGetUserAppListRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetUserAppListRsp localStGetUserAppListRsp = new INTERFACE.StGetUserAppListRsp();
+    Object localObject = new INTERFACE.StGetUserAppListRsp();
     try
     {
-      localStGetUserAppListRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserAppListRsp;
+      ((INTERFACE.StGetUserAppListRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -46,7 +50,7 @@ public class GetUserAppListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserAppListRequest
  * JD-Core Version:    0.7.0.1
  */

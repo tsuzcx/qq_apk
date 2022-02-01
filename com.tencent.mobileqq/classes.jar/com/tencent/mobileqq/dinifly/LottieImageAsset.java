@@ -3,11 +3,11 @@ package com.tencent.mobileqq.dinifly;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.annotation.RestrictTo;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ public class LottieImageAsset
   public long size;
   private final int width;
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
   public LottieImageAsset(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     this.width = paramInt1;
@@ -41,12 +41,18 @@ public class LottieImageAsset
   {
     if (paramMQLruCache == null)
     {
-      Log.e("LottieImageAsset", "image cache is null" + paramString1);
+      paramMQLruCache = new StringBuilder();
+      paramMQLruCache.append("image cache is null");
+      paramMQLruCache.append(paramString1);
+      Log.e("LottieImageAsset", paramMQLruCache.toString());
       return;
     }
     if (paramMQLruCache.get(paramString1) != null)
     {
-      Log.d("LottieImageAsset", "cache has this bitmap: " + paramString1);
+      paramMQLruCache = new StringBuilder();
+      paramMQLruCache.append("cache has this bitmap: ");
+      paramMQLruCache.append(paramString1);
+      Log.d("LottieImageAsset", paramMQLruCache.toString());
       return;
     }
     paramMQLruCache.put(paramString1, decodeStream(paramString2));
@@ -54,9 +60,10 @@ public class LottieImageAsset
   
   public static Bitmap decodeStream(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     Object localObject3 = null;
     Object localObject1 = null;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return null;
     }
     Object localObject4 = new BitmapFactory.Options();
@@ -65,51 +72,57 @@ public class LottieImageAsset
     localObject2 = localObject3;
     try
     {
-      localFileInputStream = new FileInputStream(paramString);
+      FileInputStream localFileInputStream = new FileInputStream(paramString);
       localObject2 = localObject3;
+      try
+      {
+        localObject4 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject4);
+        localObject1 = localObject4;
+      }
+      catch (Exception localException)
+      {
+        localObject2 = localObject3;
+        localStringBuilder2 = new StringBuilder();
+        localObject2 = localObject3;
+        localStringBuilder2.append("lottie, IllegalArgumentException= ");
+        localObject2 = localObject3;
+        localStringBuilder2.append(localException.getMessage());
+        localObject2 = localObject3;
+        Log.e("LottieImageAsset", localStringBuilder2.toString());
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localObject2 = localObject3;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localObject2 = localObject3;
+        localStringBuilder2.append("lottie, oom ");
+        localObject2 = localObject3;
+        localStringBuilder2.append(localOutOfMemoryError.getMessage());
+        localObject2 = localObject3;
+        Log.e("LottieImageAsset", localStringBuilder2.toString());
+      }
+      localObject2 = localObject1;
+      try
+      {
+        localFileInputStream.close();
+        return localObject1;
+      }
+      catch (IOException localIOException)
+      {
+        localObject2 = localObject1;
+        localIOException.printStackTrace();
+        return localObject1;
+      }
+      StringBuilder localStringBuilder1;
+      return localObject2;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      FileInputStream localFileInputStream;
-      label72:
-      Log.e("LottieImageAsset", "lottie, file not found -> " + paramString);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("lottie, file not found -> ");
+      localStringBuilder1.append(paramString);
+      Log.e("LottieImageAsset", localStringBuilder1.toString());
       localFileNotFoundException.printStackTrace();
-      return localObject2;
-    }
-    try
-    {
-      localObject4 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject4);
-      localObject1 = localObject4;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localObject2 = localIOException;
-      Log.e("LottieImageAsset", "lottie, oom " + localOutOfMemoryError.getMessage());
-      break label72;
-    }
-    catch (Exception localException)
-    {
-      localObject2 = localIOException;
-      Log.e("LottieImageAsset", "lottie, IllegalArgumentException= " + localException.getMessage());
-      if (0 == 0) {
-        break label72;
-      }
-      localObject2 = localIOException;
-      new StringBuilder().append("lottie, bitmap width=");
-      localObject2 = localIOException;
-      throw new NullPointerException();
-    }
-    localObject2 = localObject1;
-    try
-    {
-      localFileInputStream.close();
-      return localObject1;
-    }
-    catch (IOException localIOException)
-    {
-      localObject2 = localObject1;
-      localIOException.printStackTrace();
-      return localObject1;
     }
   }
   
@@ -149,9 +162,14 @@ public class LottieImageAsset
     return this.width;
   }
   
+  public boolean hasBitmap()
+  {
+    return (this.bitmap != null) || ((this.fileName.startsWith("data:")) && (this.fileName.indexOf("base64,") > 0));
+  }
+  
   public boolean hasCache()
   {
-    return !TextUtils.isEmpty(this.id);
+    return TextUtils.isEmpty(this.id) ^ true;
   }
   
   public void setBitmap(@Nullable Bitmap paramBitmap)

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.tavkit.ciimage.CIImage;
+import com.tencent.tavkit.composition.video.BaseVideoEffect;
 import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
@@ -16,15 +17,33 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 class VideoEffectProxy$FilterProxy
   implements TAVVideoEffect.Filter, IReportable
 {
-  @NonNull
   private final HashMap<String, TAVVideoEffect.Filter> filterMap = new HashMap();
   private boolean onEffectRemove;
-  @NonNull
   private final FilterChainReportSession reportSession = new FilterChainReportSession();
+  
+  @NotNull
+  private CIImage apply(CIImage paramCIImage, RenderInfo paramRenderInfo, TAVVideoEffect paramTAVVideoEffect)
+  {
+    TAVVideoEffect.Filter localFilter = getCacheFilter(paramTAVVideoEffect, paramRenderInfo);
+    if (localFilter == null) {
+      return paramCIImage;
+    }
+    String str = null;
+    long l = System.nanoTime();
+    if ((localFilter instanceof IReportable)) {
+      str = ((IReportable)localFilter).getReportKey();
+    }
+    paramCIImage = localFilter.apply(paramTAVVideoEffect, paramCIImage, paramRenderInfo);
+    if (!TextUtils.isEmpty(str)) {
+      this.reportSession.tick(str, System.nanoTime() - l);
+    }
+    return paramCIImage;
+  }
   
   private void checkRuntimeRelease(List<TAVVideoEffect> paramList)
   {
@@ -51,57 +70,48 @@ class VideoEffectProxy$FilterProxy
     }
   }
   
-  @Nullable
-  private TAVVideoEffect.Filter getCacheFilter(TAVVideoEffect paramTAVVideoEffect)
+  private TAVVideoEffect.Filter createFilter(TAVVideoEffect paramTAVVideoEffect, RenderInfo paramRenderInfo)
   {
-    if ((paramTAVVideoEffect == null) || (TextUtils.isEmpty(paramTAVVideoEffect.effectId()))) {
-      return null;
+    if ((paramTAVVideoEffect instanceof BaseVideoEffect)) {
+      return ((BaseVideoEffect)paramTAVVideoEffect).createFilter(paramRenderInfo);
     }
-    String str = paramTAVVideoEffect.effectId();
-    if (this.filterMap.containsKey(str)) {
-      return (TAVVideoEffect.Filter)this.filterMap.get(str);
-    }
-    paramTAVVideoEffect = paramTAVVideoEffect.createFilter();
-    this.filterMap.put(str, paramTAVVideoEffect);
-    return paramTAVVideoEffect;
+    return paramTAVVideoEffect.createFilter();
   }
   
+  @Nullable
+  private TAVVideoEffect.Filter getCacheFilter(TAVVideoEffect paramTAVVideoEffect, RenderInfo paramRenderInfo)
+  {
+    if ((paramTAVVideoEffect != null) && (!TextUtils.isEmpty(paramTAVVideoEffect.effectId())))
+    {
+      String str = paramTAVVideoEffect.effectId();
+      TAVVideoEffect.Filter localFilter2 = (TAVVideoEffect.Filter)this.filterMap.get(str);
+      TAVVideoEffect.Filter localFilter1 = localFilter2;
+      if (localFilter2 == null)
+      {
+        localFilter1 = createFilter(paramTAVVideoEffect, paramRenderInfo);
+        this.filterMap.put(str, localFilter1);
+      }
+      return localFilter1;
+    }
+    return null;
+  }
+  
+  @NonNull
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    if (!(paramTAVVideoEffect instanceof VideoEffectProxy))
-    {
-      paramTAVVideoEffect = paramCIImage;
-      return paramTAVVideoEffect;
+    if (!(paramTAVVideoEffect instanceof VideoEffectProxy)) {
+      return paramCIImage;
     }
-    Object localObject = ((VideoEffectProxy)paramTAVVideoEffect).getEffects();
-    if ((((VideoEffectProxy)paramTAVVideoEffect).isAutoCheckEffectRemove()) || (this.onEffectRemove)) {
-      checkRuntimeRelease((List)localObject);
+    paramTAVVideoEffect = (VideoEffectProxy)paramTAVVideoEffect;
+    List localList = paramTAVVideoEffect.getEffects();
+    if ((paramTAVVideoEffect.isAutoCheckEffectRemove()) || (this.onEffectRemove)) {
+      checkRuntimeRelease(localList);
     }
-    Iterator localIterator = ((List)localObject).iterator();
-    for (;;)
-    {
-      paramTAVVideoEffect = paramCIImage;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (TAVVideoEffect)localIterator.next();
-      TAVVideoEffect.Filter localFilter = getCacheFilter((TAVVideoEffect)localObject);
-      if (localFilter != null)
-      {
-        paramTAVVideoEffect = null;
-        long l = System.nanoTime();
-        if ((localFilter instanceof IReportable)) {
-          paramTAVVideoEffect = ((IReportable)localFilter).getReportKey();
-        }
-        localObject = localFilter.apply((TAVVideoEffect)localObject, paramCIImage, paramRenderInfo);
-        paramCIImage = (CIImage)localObject;
-        if (!TextUtils.isEmpty(paramTAVVideoEffect))
-        {
-          this.reportSession.tick(paramTAVVideoEffect, System.nanoTime() - l);
-          paramCIImage = (CIImage)localObject;
-        }
-      }
+    paramTAVVideoEffect = localList.iterator();
+    while (paramTAVVideoEffect.hasNext()) {
+      paramCIImage = apply(paramCIImage, paramRenderInfo, (TAVVideoEffect)paramTAVVideoEffect.next());
     }
+    return paramCIImage;
   }
   
   public String getReportKey()
@@ -123,14 +133,19 @@ class VideoEffectProxy$FilterProxy
         ((TAVVideoEffect.Filter)localIterator.next()).release();
       }
       this.filterMap.clear();
+      this.reportSession.commit();
+      return;
     }
     finally {}
-    this.reportSession.commit();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoEffectProxy.FilterProxy
  * JD-Core Version:    0.7.0.1
  */

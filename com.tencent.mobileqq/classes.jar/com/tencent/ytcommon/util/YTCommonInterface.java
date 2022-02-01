@@ -32,22 +32,39 @@ public class YTCommonInterface
   
   public static int initAuth(Context paramContext, String paramString, int paramInt)
   {
-    return Auth.init(paramContext, paramString, paramInt);
+    if ((paramContext != null) && (paramString != null)) {
+      return Auth.init(paramContext, paramString, paramInt);
+    }
+    return -1;
   }
   
   public static int initAuth(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    return Auth.init(paramContext, paramString1, paramString2, 0, paramString3);
+    if ((paramContext != null) && (paramString1 != null) && (paramString2 != null) && (paramString3 != null)) {
+      return Auth.init(paramContext, paramString1, paramString2, 0, paramString3);
+    }
+    return -1;
+  }
+  
+  public static int initAuthForQQ(Context paramContext)
+  {
+    if (paramContext == null) {
+      return -1;
+    }
+    return Auth.initAuthForQQ(paramContext);
   }
   
   public static void setLicensePath(String paramString)
   {
+    if (paramString == null) {
+      return;
+    }
     Auth.setLicensePath(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.ytcommon.util.YTCommonInterface
  * JD-Core Version:    0.7.0.1
  */

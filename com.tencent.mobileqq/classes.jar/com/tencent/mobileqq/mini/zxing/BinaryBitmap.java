@@ -10,10 +10,12 @@ public final class BinaryBitmap
   
   public BinaryBitmap(Binarizer paramBinarizer)
   {
-    if (paramBinarizer == null) {
-      throw new IllegalArgumentException("Binarizer must be non-null.");
+    if (paramBinarizer != null)
+    {
+      this.binarizer = paramBinarizer;
+      return;
     }
-    this.binarizer = paramBinarizer;
+    throw new IllegalArgumentException("Binarizer must be non-null.");
   }
   
   public BinaryBitmap crop(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -74,13 +76,17 @@ public final class BinaryBitmap
       String str = getBlackMatrix().toString();
       return str;
     }
-    catch (NotFoundException localNotFoundException) {}
+    catch (NotFoundException localNotFoundException)
+    {
+      label10:
+      break label10;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.BinaryBitmap
  * JD-Core Version:    0.7.0.1
  */

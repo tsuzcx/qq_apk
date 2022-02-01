@@ -2,11 +2,11 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.ag;
-import com.tencent.mobileqq.msf.core.ah;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
-import com.tencent.mobileqq.msf.service.t;
+import com.tencent.mobileqq.msf.service.u;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
 import com.tencent.msf.service.protocol.security.RespondCustomSig;
 import com.tencent.msf.service.protocol.security.c;
@@ -79,14 +79,14 @@ public class j
   private static boolean a(ToServiceMsg paramToServiceMsg, k paramk, a parama)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: new 73	com/tencent/qphone/base/util/Cryptor
-    //   6: dup
-    //   7: invokespecial 74	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   10: astore 5
+    //   0: new 73	com/tencent/qphone/base/util/Cryptor
+    //   3: dup
+    //   4: invokespecial 74	com/tencent/qphone/base/util/Cryptor:<init>	()V
+    //   7: astore 5
+    //   9: iconst_0
+    //   10: istore 4
     //   12: aload_2
-    //   13: ifnull +236 -> 249
+    //   13: ifnull +253 -> 266
     //   16: aload_2
     //   17: aload_1
     //   18: getfield 79	com/tencent/msf/service/protocol/security/k:h	[B
@@ -150,108 +150,103 @@ public class j
     //   136: invokevirtual 114	java/io/DataInputStream:readInt	()I
     //   139: iconst_4
     //   140: isub
-    //   141: istore_3
-    //   142: iload_3
-    //   143: newarray byte
-    //   145: astore 8
-    //   147: aload 6
-    //   149: aload 8
-    //   151: invokevirtual 118	java/io/DataInputStream:read	([B)I
-    //   154: pop
-    //   155: aload_2
-    //   156: aload 8
-    //   158: invokevirtual 120	com/tencent/mobileqq/msf/core/auth/a:h	([B)V
-    //   161: iconst_4
-    //   162: newarray byte
-    //   164: astore 8
-    //   166: aload 6
-    //   168: aload 8
-    //   170: invokevirtual 118	java/io/DataInputStream:read	([B)I
-    //   173: pop
-    //   174: aload_1
-    //   175: getfield 122	com/tencent/msf/service/protocol/security/k:f	I
-    //   178: bipush 10
-    //   180: if_icmpeq +28 -> 208
-    //   183: aload 7
-    //   185: arraylength
-    //   186: istore_3
-    //   187: aload_1
-    //   188: getfield 124	com/tencent/msf/service/protocol/security/k:j	I
-    //   191: ifeq +61 -> 252
-    //   194: aload_1
-    //   195: getfield 124	com/tencent/msf/service/protocol/security/k:j	I
-    //   198: istore_3
-    //   199: aload 6
-    //   201: iload_3
-    //   202: newarray byte
-    //   204: invokevirtual 118	java/io/DataInputStream:read	([B)I
-    //   207: pop
-    //   208: bipush 16
-    //   210: newarray byte
-    //   212: astore_1
-    //   213: aload_1
-    //   214: iconst_0
-    //   215: aload 8
-    //   217: aload 8
-    //   219: arraylength
-    //   220: invokestatic 97	com/tencent/mobileqq/msf/core/auth/j:a	([BI[BI)V
-    //   223: aload_2
-    //   224: aload_1
-    //   225: invokevirtual 126	com/tencent/mobileqq/msf/core/auth/a:j	([B)V
-    //   228: aload_2
-    //   229: aload_0
-    //   230: invokestatic 131	com/tencent/mobileqq/msf/service/t:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
-    //   233: invokevirtual 134	com/tencent/mobileqq/msf/core/auth/a:c	(Ljava/lang/String;)V
-    //   236: aload 5
-    //   238: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
-    //   241: aload 6
-    //   243: invokevirtual 138	java/io/DataInputStream:close	()V
-    //   246: iconst_1
-    //   247: istore 4
-    //   249: iload 4
-    //   251: ireturn
-    //   252: bipush 24
-    //   254: istore_3
-    //   255: goto -56 -> 199
-    //   258: astore_0
-    //   259: aload 5
-    //   261: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
-    //   264: aload 6
-    //   266: invokevirtual 138	java/io/DataInputStream:close	()V
-    //   269: aload_0
-    //   270: athrow
-    //   271: astore_0
-    //   272: aload 5
-    //   274: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
-    //   277: aload 6
-    //   279: invokevirtual 138	java/io/DataInputStream:close	()V
-    //   282: goto -36 -> 246
-    //   285: astore_0
-    //   286: goto -40 -> 246
-    //   289: astore_1
-    //   290: goto -21 -> 269
+    //   141: newarray byte
+    //   143: astore 8
+    //   145: aload 6
+    //   147: aload 8
+    //   149: invokevirtual 118	java/io/DataInputStream:read	([B)I
+    //   152: pop
+    //   153: aload_2
+    //   154: aload 8
+    //   156: invokevirtual 120	com/tencent/mobileqq/msf/core/auth/a:h	([B)V
+    //   159: iconst_4
+    //   160: newarray byte
+    //   162: astore 8
+    //   164: aload 6
+    //   166: aload 8
+    //   168: invokevirtual 118	java/io/DataInputStream:read	([B)I
+    //   171: pop
+    //   172: aload_1
+    //   173: getfield 122	com/tencent/msf/service/protocol/security/k:f	I
+    //   176: bipush 10
+    //   178: if_icmpeq +31 -> 209
+    //   181: aload 7
+    //   183: arraylength
+    //   184: istore_3
+    //   185: aload_1
+    //   186: getfield 124	com/tencent/msf/service/protocol/security/k:j	I
+    //   189: ifeq +92 -> 281
+    //   192: aload_1
+    //   193: getfield 124	com/tencent/msf/service/protocol/security/k:j	I
+    //   196: istore_3
+    //   197: goto +3 -> 200
+    //   200: aload 6
+    //   202: iload_3
+    //   203: newarray byte
+    //   205: invokevirtual 118	java/io/DataInputStream:read	([B)I
+    //   208: pop
+    //   209: bipush 16
+    //   211: newarray byte
+    //   213: astore_1
+    //   214: aload_1
+    //   215: iconst_0
+    //   216: aload 8
+    //   218: aload 8
+    //   220: arraylength
+    //   221: invokestatic 97	com/tencent/mobileqq/msf/core/auth/j:a	([BI[BI)V
+    //   224: aload_2
+    //   225: aload_1
+    //   226: invokevirtual 126	com/tencent/mobileqq/msf/core/auth/a:j	([B)V
+    //   229: aload_2
+    //   230: aload_0
+    //   231: invokestatic 131	com/tencent/mobileqq/msf/service/u:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
+    //   234: invokevirtual 134	com/tencent/mobileqq/msf/core/auth/a:c	(Ljava/lang/String;)V
+    //   237: aload 5
+    //   239: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
+    //   242: aload 6
+    //   244: invokevirtual 138	java/io/DataInputStream:close	()V
+    //   247: goto +16 -> 263
+    //   250: astore_0
+    //   251: aload 5
+    //   253: invokevirtual 137	java/io/ByteArrayInputStream:close	()V
+    //   256: aload 6
+    //   258: invokevirtual 138	java/io/DataInputStream:close	()V
+    //   261: aload_0
+    //   262: athrow
+    //   263: iconst_1
+    //   264: istore 4
+    //   266: iload 4
+    //   268: ireturn
+    //   269: astore_0
+    //   270: goto -33 -> 237
+    //   273: astore_0
+    //   274: goto -11 -> 263
+    //   277: astore_1
+    //   278: goto -17 -> 261
+    //   281: bipush 24
+    //   283: istore_3
+    //   284: goto -84 -> 200
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	293	0	paramToServiceMsg	ToServiceMsg
-    //   0	293	1	paramk	k
-    //   0	293	2	parama	a
-    //   141	114	3	i1	int
-    //   1	249	4	bool	boolean
-    //   10	263	5	localObject1	Object
-    //   36	242	6	localObject2	Object
-    //   55	129	7	arrayOfByte1	byte[]
-    //   65	153	8	arrayOfByte2	byte[]
+    //   0	287	0	paramToServiceMsg	ToServiceMsg
+    //   0	287	1	paramk	k
+    //   0	287	2	parama	a
+    //   184	100	3	i1	int
+    //   10	257	4	bool	boolean
+    //   7	245	5	localObject1	Object
+    //   36	221	6	localObject2	Object
+    //   55	127	7	arrayOfByte1	byte[]
+    //   65	154	8	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   134	199	258	finally
-    //   199	208	258	finally
-    //   208	236	258	finally
-    //   134	199	271	java/io/IOException
-    //   199	208	271	java/io/IOException
-    //   208	236	271	java/io/IOException
-    //   236	246	285	java/lang/Exception
-    //   272	282	285	java/lang/Exception
-    //   259	269	289	java/lang/Exception
+    //   134	197	250	finally
+    //   200	209	250	finally
+    //   209	237	250	finally
+    //   134	197	269	java/io/IOException
+    //   200	209	269	java/io/IOException
+    //   209	237	269	java/io/IOException
+    //   237	247	273	java/lang/Exception
+    //   251	261	277	java/lang/Exception
   }
   
   private byte[] a(String paramString, byte[] paramArrayOfByte)
@@ -277,202 +272,247 @@ public class j
     //   0: new 160	java/io/ByteArrayOutputStream
     //   3: dup
     //   4: invokespecial 161	java/io/ByteArrayOutputStream:<init>	()V
-    //   7: astore 5
+    //   7: astore 7
     //   9: new 163	java/io/DataOutputStream
     //   12: dup
-    //   13: aload 5
+    //   13: aload 7
     //   15: invokespecial 166	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore 6
-    //   20: aload 6
-    //   22: iconst_1
-    //   23: invokevirtual 170	java/io/DataOutputStream:writeShort	(I)V
-    //   26: aload 6
-    //   28: new 172	java/util/Random
-    //   31: dup
-    //   32: invokespecial 173	java/util/Random:<init>	()V
-    //   35: invokevirtual 176	java/util/Random:nextInt	()I
-    //   38: iconst_1
-    //   39: iushr
-    //   40: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
-    //   43: aload 6
-    //   45: iconst_1
-    //   46: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
-    //   49: aload 6
-    //   51: iload 4
-    //   53: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
-    //   56: aload 6
-    //   58: iconst_1
-    //   59: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
-    //   62: aload 6
-    //   64: aload_2
-    //   65: invokestatic 183	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   68: invokevirtual 187	java/io/DataOutputStream:writeLong	(J)V
-    //   71: aload 6
-    //   73: invokestatic 190	java/lang/System:currentTimeMillis	()J
-    //   76: ldc2_w 191
-    //   79: ldiv
-    //   80: l2i
-    //   81: aload_0
-    //   82: getfield 56	com/tencent/mobileqq/msf/core/auth/j:n	Lcom/tencent/mobileqq/msf/core/auth/b;
-    //   85: invokevirtual 196	com/tencent/mobileqq/msf/core/auth/b:e	()I
-    //   88: iadd
-    //   89: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
-    //   92: aload 6
-    //   94: iconst_0
-    //   95: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   18: astore 8
+    //   20: aconst_null
+    //   21: astore 6
+    //   23: aload 6
+    //   25: astore 5
+    //   27: aload 8
+    //   29: iconst_1
+    //   30: invokevirtual 170	java/io/DataOutputStream:writeShort	(I)V
+    //   33: aload 6
+    //   35: astore 5
+    //   37: aload 8
+    //   39: new 172	java/util/Random
+    //   42: dup
+    //   43: invokespecial 173	java/util/Random:<init>	()V
+    //   46: invokevirtual 176	java/util/Random:nextInt	()I
+    //   49: iconst_1
+    //   50: iushr
+    //   51: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   54: aload 6
+    //   56: astore 5
+    //   58: aload 8
+    //   60: iconst_1
+    //   61: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   64: aload 6
+    //   66: astore 5
+    //   68: aload 8
+    //   70: iload 4
+    //   72: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   75: aload 6
+    //   77: astore 5
+    //   79: aload 8
+    //   81: iconst_1
+    //   82: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   85: aload 6
+    //   87: astore 5
+    //   89: aload 8
+    //   91: aload_2
+    //   92: invokestatic 183	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   95: invokevirtual 187	java/io/DataOutputStream:writeLong	(J)V
     //   98: aload 6
-    //   100: iconst_0
-    //   101: invokevirtual 199	java/io/DataOutputStream:writeByte	(I)V
-    //   104: aload 6
-    //   106: aload_3
-    //   107: invokevirtual 202	java/io/DataOutputStream:write	([B)V
-    //   110: aload 6
-    //   112: bipush 16
-    //   114: newarray byte
-    //   116: invokevirtual 202	java/io/DataOutputStream:write	([B)V
-    //   119: aload 6
-    //   121: iconst_0
-    //   122: invokevirtual 170	java/io/DataOutputStream:writeShort	(I)V
-    //   125: aload 6
-    //   127: invokevirtual 205	java/io/DataOutputStream:flush	()V
-    //   130: aload 5
-    //   132: invokevirtual 208	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   135: astore_2
-    //   136: new 73	com/tencent/qphone/base/util/Cryptor
-    //   139: dup
-    //   140: invokespecial 74	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   143: aload_2
-    //   144: aload_1
-    //   145: invokevirtual 211	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
-    //   148: astore_1
-    //   149: aload_1
-    //   150: astore_2
-    //   151: aload 5
-    //   153: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
-    //   156: aload_1
-    //   157: astore_2
-    //   158: aload 6
-    //   160: invokevirtual 213	java/io/DataOutputStream:close	()V
-    //   163: aload_1
-    //   164: areturn
-    //   165: astore_2
-    //   166: aconst_null
-    //   167: astore_1
-    //   168: invokestatic 219	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   171: ifeq +29 -> 200
-    //   174: ldc 47
-    //   176: iconst_2
-    //   177: new 221	java/lang/StringBuilder
-    //   180: dup
-    //   181: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   184: ldc 224
-    //   186: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload_2
-    //   190: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   193: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   196: aload_2
-    //   197: invokestatic 238	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   200: aload_1
-    //   201: astore_2
-    //   202: aload 5
-    //   204: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
-    //   207: aload_1
-    //   208: astore_2
-    //   209: aload 6
-    //   211: invokevirtual 213	java/io/DataOutputStream:close	()V
-    //   214: aload_1
-    //   215: areturn
-    //   216: astore_1
-    //   217: aload_2
-    //   218: areturn
-    //   219: astore_1
-    //   220: aload 5
-    //   222: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
-    //   225: aload 6
-    //   227: invokevirtual 213	java/io/DataOutputStream:close	()V
-    //   230: aload_1
-    //   231: athrow
-    //   232: astore_2
-    //   233: goto -3 -> 230
-    //   236: astore_3
-    //   237: aload_2
-    //   238: astore_1
-    //   239: aload_3
-    //   240: astore_2
-    //   241: goto -73 -> 168
+    //   100: astore 5
+    //   102: aload 8
+    //   104: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   107: ldc2_w 191
+    //   110: ldiv
+    //   111: l2i
+    //   112: aload_0
+    //   113: getfield 56	com/tencent/mobileqq/msf/core/auth/j:n	Lcom/tencent/mobileqq/msf/core/auth/b;
+    //   116: invokevirtual 196	com/tencent/mobileqq/msf/core/auth/b:e	()I
+    //   119: iadd
+    //   120: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   123: aload 6
+    //   125: astore 5
+    //   127: aload 8
+    //   129: iconst_0
+    //   130: invokevirtual 179	java/io/DataOutputStream:writeInt	(I)V
+    //   133: aload 6
+    //   135: astore 5
+    //   137: aload 8
+    //   139: iconst_0
+    //   140: invokevirtual 199	java/io/DataOutputStream:writeByte	(I)V
+    //   143: aload 6
+    //   145: astore 5
+    //   147: aload 8
+    //   149: aload_3
+    //   150: invokevirtual 202	java/io/DataOutputStream:write	([B)V
+    //   153: aload 6
+    //   155: astore 5
+    //   157: aload 8
+    //   159: bipush 16
+    //   161: newarray byte
+    //   163: invokevirtual 202	java/io/DataOutputStream:write	([B)V
+    //   166: aload 6
+    //   168: astore 5
+    //   170: aload 8
+    //   172: iconst_0
+    //   173: invokevirtual 170	java/io/DataOutputStream:writeShort	(I)V
+    //   176: aload 6
+    //   178: astore 5
+    //   180: aload 8
+    //   182: invokevirtual 205	java/io/DataOutputStream:flush	()V
+    //   185: aload 6
+    //   187: astore 5
+    //   189: aload 7
+    //   191: invokevirtual 208	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   194: astore_2
+    //   195: aload_2
+    //   196: astore 5
+    //   198: new 73	com/tencent/qphone/base/util/Cryptor
+    //   201: dup
+    //   202: invokespecial 74	com/tencent/qphone/base/util/Cryptor:<init>	()V
+    //   205: aload_2
+    //   206: aload_1
+    //   207: invokevirtual 211	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
+    //   210: astore_1
+    //   211: aload 7
+    //   213: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
+    //   216: aload 8
+    //   218: invokevirtual 213	java/io/DataOutputStream:close	()V
+    //   221: aload_1
+    //   222: areturn
+    //   223: astore_1
+    //   224: goto +55 -> 279
+    //   227: astore_1
+    //   228: invokestatic 219	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   231: ifeq +35 -> 266
+    //   234: new 221	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 222	java/lang/StringBuilder:<init>	()V
+    //   241: astore_2
+    //   242: aload_2
+    //   243: ldc 224
+    //   245: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload_2
+    //   250: aload_1
+    //   251: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   254: pop
+    //   255: ldc 47
+    //   257: iconst_2
+    //   258: aload_2
+    //   259: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   262: aload_1
+    //   263: invokestatic 238	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   266: aload 7
+    //   268: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
+    //   271: aload 8
+    //   273: invokevirtual 213	java/io/DataOutputStream:close	()V
+    //   276: aload 5
+    //   278: areturn
+    //   279: aload 7
+    //   281: invokevirtual 212	java/io/ByteArrayOutputStream:close	()V
+    //   284: aload 8
+    //   286: invokevirtual 213	java/io/DataOutputStream:close	()V
+    //   289: aload_1
+    //   290: athrow
+    //   291: astore_2
+    //   292: aload_1
+    //   293: areturn
+    //   294: astore_1
+    //   295: goto -19 -> 276
+    //   298: astore_2
+    //   299: goto -10 -> 289
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	244	0	this	j
-    //   0	244	1	paramArrayOfByte1	byte[]
-    //   0	244	2	paramString	String
-    //   0	244	3	paramArrayOfByte2	byte[]
-    //   0	244	4	paramInt	int
-    //   7	214	5	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   18	208	6	localDataOutputStream	java.io.DataOutputStream
+    //   0	302	0	this	j
+    //   0	302	1	paramArrayOfByte1	byte[]
+    //   0	302	2	paramString	String
+    //   0	302	3	paramArrayOfByte2	byte[]
+    //   0	302	4	paramInt	int
+    //   25	252	5	localObject1	Object
+    //   21	165	6	localObject2	Object
+    //   7	273	7	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   18	267	8	localDataOutputStream	java.io.DataOutputStream
     // Exception table:
     //   from	to	target	type
-    //   20	136	165	java/lang/Exception
-    //   151	156	216	java/lang/Exception
-    //   158	163	216	java/lang/Exception
-    //   202	207	216	java/lang/Exception
-    //   209	214	216	java/lang/Exception
-    //   20	136	219	finally
-    //   136	149	219	finally
-    //   168	200	219	finally
-    //   220	230	232	java/lang/Exception
-    //   136	149	236	java/lang/Exception
+    //   27	33	223	finally
+    //   37	54	223	finally
+    //   58	64	223	finally
+    //   68	75	223	finally
+    //   79	85	223	finally
+    //   89	98	223	finally
+    //   102	123	223	finally
+    //   127	133	223	finally
+    //   137	143	223	finally
+    //   147	153	223	finally
+    //   157	166	223	finally
+    //   170	176	223	finally
+    //   180	185	223	finally
+    //   189	195	223	finally
+    //   198	211	223	finally
+    //   228	266	223	finally
+    //   27	33	227	java/lang/Exception
+    //   37	54	227	java/lang/Exception
+    //   58	64	227	java/lang/Exception
+    //   68	75	227	java/lang/Exception
+    //   79	85	227	java/lang/Exception
+    //   89	98	227	java/lang/Exception
+    //   102	123	227	java/lang/Exception
+    //   127	133	227	java/lang/Exception
+    //   137	143	227	java/lang/Exception
+    //   147	153	227	java/lang/Exception
+    //   157	166	227	java/lang/Exception
+    //   170	176	227	java/lang/Exception
+    //   180	185	227	java/lang/Exception
+    //   189	195	227	java/lang/Exception
+    //   198	211	227	java/lang/Exception
+    //   211	221	291	java/lang/Exception
+    //   266	276	294	java/lang/Exception
+    //   279	289	298	java/lang/Exception
   }
   
   public void a(UniPacket paramUniPacket, a parama)
   {
-    if ((paramUniPacket == null) || (parama == null)) {
-      return;
-    }
-    Object localObject = (RespondCustomSig)paramUniPacket.getByClass("RespondCustomSig", new RespondCustomSig());
-    if (localObject != null)
+    if (paramUniPacket != null)
     {
-      int i1 = 0;
-      if (i1 < ((RespondCustomSig)localObject).SigList.size())
+      if (parama == null) {
+        return;
+      }
+      Object localObject = (RespondCustomSig)paramUniPacket.getByClass("RespondCustomSig", new RespondCustomSig());
+      if (localObject != null)
       {
-        CustomSigContent localCustomSigContent = (CustomSigContent)((RespondCustomSig)localObject).SigList.get(i1);
-        if (localCustomSigContent.ulSigType == 1L) {
-          parama.l(localCustomSigContent.SigContent);
-        }
-        for (;;)
+        int i1 = 0;
+        while (i1 < ((RespondCustomSig)localObject).SigList.size())
         {
+          CustomSigContent localCustomSigContent = (CustomSigContent)((RespondCustomSig)localObject).SigList.get(i1);
+          if (localCustomSigContent.ulSigType == 1L) {
+            parama.l(localCustomSigContent.SigContent);
+          } else if (localCustomSigContent.ulSigType != 3L) {
+            long l1 = localCustomSigContent.ulSigType;
+          }
           i1 += 1;
-          break;
-          if ((localCustomSigContent.ulSigType == 3L) || (localCustomSigContent.ulSigType != 8L)) {}
         }
       }
-    }
-    localObject = (q)paramUniPacket.getByClass("UserMainAccount", new q());
-    if (localObject != null)
-    {
-      if (((q)localObject).a != 2L) {
-        break label213;
+      localObject = (q)paramUniPacket.getByClass("UserMainAccount", new q());
+      if (localObject != null) {
+        if (((q)localObject).a == 2L) {
+          parama.m(((q)localObject).c);
+        } else {
+          parama.m(parama.d().getBytes());
+        }
       }
-      parama.m(((q)localObject).c);
-    }
-    for (;;)
-    {
       paramUniPacket = (r)paramUniPacket.getByClass("UserSimpleInfo", new r());
-      if (paramUniPacket == null) {
-        break;
+      if (paramUniPacket != null)
+      {
+        parama.a(paramUniPacket.a);
+        parama.b(paramUniPacket.b);
+        parama.c(paramUniPacket.c);
+        parama.n(paramUniPacket.d);
       }
-      parama.a(paramUniPacket.a);
-      parama.b(paramUniPacket.b);
-      parama.c(paramUniPacket.c);
-      parama.n(paramUniPacket.d);
-      return;
-      label213:
-      parama.m(parama.d().getBytes());
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, UniPacket paramUniPacket, k paramk)
   {
-    ah.a(paramFromServiceMsg);
+    ag.a(paramFromServiceMsg);
     VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
     localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
     localVerifyCodeInfo.wupSeq = paramUniPacket.getRequestId();
@@ -484,112 +524,145 @@ public class j
       localVerifyCodeInfo.verifyimage = paramUniPacket.a;
       localVerifyCodeInfo.verifyNote = paramUniPacket.b;
     }
-    for (;;)
+    else if (paramk.b == 12)
     {
-      VerifyCodeInfo.putVerifyCodeInfo(paramFromServiceMsg, localVerifyCodeInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.AuthCoder", 2, "rece loginVerifyCode seq:" + paramFromServiceMsg.getRequestSsoSeq() + " uin:" + paramFromServiceMsg.getUin() + " cmd:" + paramFromServiceMsg.getServiceCmd() + " svrseqNo:" + localVerifyCodeInfo.svrSeqNo + " vipsid:" + localVerifyCodeInfo.vpicSid + " wupSeq:" + localVerifyCodeInfo.wupSeq);
+      paramUniPacket = (i)paramUniPacket.getByClass("RespondAuth", new i());
+      localVerifyCodeInfo.vpicSid = paramUniPacket.c;
+      localVerifyCodeInfo.svrSeqNo = paramk.e;
+      localVerifyCodeInfo.verifyimage = paramUniPacket.a;
+      localVerifyCodeInfo.verifyNote = paramUniPacket.b;
+    }
+    else if (paramk.b == 1)
+    {
+      paramUniPacket = (n)paramUniPacket.getByClass("RespondVerifyPic", new n());
+      localVerifyCodeInfo.vpicSid = paramUniPacket.b;
+      localVerifyCodeInfo.svrSeqNo = paramk.e;
+      localVerifyCodeInfo.verifyimage = paramUniPacket.a;
+      localVerifyCodeInfo.verifyNote = "";
+    }
+    else if (paramk.b == 2)
+    {
+      paramUniPacket = (m)paramUniPacket.getByClass("RespondRefreshVPic", new m());
+      localVerifyCodeInfo.vpicSid = paramUniPacket.c;
+      localVerifyCodeInfo.svrSeqNo = paramk.e;
+      localVerifyCodeInfo.verifyimage = paramUniPacket.a;
+      localVerifyCodeInfo.verifyNote = paramUniPacket.b;
+    }
+    else if (paramk.b == 13)
+    {
+      paramUniPacket = (p)paramUniPacket.getByClass("ResponseNameExchangeUin", new p());
+      localVerifyCodeInfo.vpicSid = paramUniPacket.c;
+      localVerifyCodeInfo.svrSeqNo = paramk.e;
+      localVerifyCodeInfo.verifyimage = paramUniPacket.a;
+      localVerifyCodeInfo.verifyNote = paramUniPacket.b;
+    }
+    else if (paramk.b == 14)
+    {
+      paramUniPacket = (o)paramUniPacket.getByClass("ResponseAuthWlogin", new o());
+      byte[] arrayOfByte = paramUniPacket.d;
+      if (arrayOfByte != null) {
+        int i1 = arrayOfByte.length;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.AuthCoder", 2, "add " + paramToServiceMsg + " to mutilActionQueue.");
-      }
-      return;
-      if (paramk.b == 12)
-      {
-        paramUniPacket = (i)paramUniPacket.getByClass("RespondAuth", new i());
-        localVerifyCodeInfo.vpicSid = paramUniPacket.c;
-        localVerifyCodeInfo.svrSeqNo = paramk.e;
-        localVerifyCodeInfo.verifyimage = paramUniPacket.a;
-        localVerifyCodeInfo.verifyNote = paramUniPacket.b;
-      }
-      else if (paramk.b == 1)
-      {
-        paramUniPacket = (n)paramUniPacket.getByClass("RespondVerifyPic", new n());
-        localVerifyCodeInfo.vpicSid = paramUniPacket.b;
-        localVerifyCodeInfo.svrSeqNo = paramk.e;
-        localVerifyCodeInfo.verifyimage = paramUniPacket.a;
-        localVerifyCodeInfo.verifyNote = "";
-      }
-      else if (paramk.b == 2)
-      {
-        paramUniPacket = (m)paramUniPacket.getByClass("RespondRefreshVPic", new m());
-        localVerifyCodeInfo.vpicSid = paramUniPacket.c;
-        localVerifyCodeInfo.svrSeqNo = paramk.e;
-        localVerifyCodeInfo.verifyimage = paramUniPacket.a;
-        localVerifyCodeInfo.verifyNote = paramUniPacket.b;
-      }
-      else if (paramk.b == 13)
-      {
-        paramUniPacket = (p)paramUniPacket.getByClass("ResponseNameExchangeUin", new p());
-        localVerifyCodeInfo.vpicSid = paramUniPacket.c;
-        localVerifyCodeInfo.svrSeqNo = paramk.e;
-        localVerifyCodeInfo.verifyimage = paramUniPacket.a;
-        localVerifyCodeInfo.verifyNote = paramUniPacket.b;
-      }
-      else if (paramk.b == 14)
-      {
-        paramUniPacket = (o)paramUniPacket.getByClass("ResponseAuthWlogin", new o());
-        byte[] arrayOfByte = paramUniPacket.d;
-        if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {}
-        localVerifyCodeInfo.vpicSid = paramUniPacket.c;
-        localVerifyCodeInfo.svrSeqNo = paramk.e;
-        localVerifyCodeInfo.verifyimage = paramUniPacket.a;
-        localVerifyCodeInfo.verifyNote = paramUniPacket.b;
-      }
+      localVerifyCodeInfo.vpicSid = paramUniPacket.c;
+      localVerifyCodeInfo.svrSeqNo = paramk.e;
+      localVerifyCodeInfo.verifyimage = paramUniPacket.a;
+      localVerifyCodeInfo.verifyNote = paramUniPacket.b;
+    }
+    VerifyCodeInfo.putVerifyCodeInfo(paramFromServiceMsg, localVerifyCodeInfo);
+    if (QLog.isColorLevel())
+    {
+      paramUniPacket = new StringBuilder();
+      paramUniPacket.append("rece loginVerifyCode seq:");
+      paramUniPacket.append(paramFromServiceMsg.getRequestSsoSeq());
+      paramUniPacket.append(" uin:");
+      paramUniPacket.append(paramFromServiceMsg.getUin());
+      paramUniPacket.append(" cmd:");
+      paramUniPacket.append(paramFromServiceMsg.getServiceCmd());
+      paramUniPacket.append(" svrseqNo:");
+      paramUniPacket.append(localVerifyCodeInfo.svrSeqNo);
+      paramUniPacket.append(" vipsid:");
+      paramUniPacket.append(localVerifyCodeInfo.vpicSid);
+      paramUniPacket.append(" wupSeq:");
+      paramUniPacket.append(localVerifyCodeInfo.wupSeq);
+      QLog.d("MSF.C.AuthCoder", 2, paramUniPacket.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("add ");
+      paramFromServiceMsg.append(paramToServiceMsg);
+      paramFromServiceMsg.append(" to mutilActionQueue.");
+      QLog.d("MSF.C.AuthCoder", 2, paramFromServiceMsg.toString());
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, k paramk)
   {
-    if (paramk == null) {}
-    a locala;
-    do
-    {
+    if (paramk == null) {
       return;
-      locala = (a)this.n.b.remove(paramk.d);
-      if (locala != null) {
-        break;
+    }
+    a locala = (a)this.n.b.remove(paramk.d);
+    if (locala == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("can not find account ");
+        paramToServiceMsg.append(paramFromServiceMsg.getUin());
+        paramToServiceMsg.append(" info.");
+        QLog.d("MSF.C.AuthCoder", 2, paramToServiceMsg.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.C.AuthCoder", 2, "can not find account " + paramFromServiceMsg.getUin() + " info.");
-    return;
-    QLog.d("MSF.C.AuthCoder", 1, MD5.toMD5(paramFromServiceMsg.getUin()) + " login succ.");
-    locala.c(t.b(paramToServiceMsg));
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(MD5.toMD5(paramFromServiceMsg.getUin()));
+    ((StringBuilder)localObject).append(" login succ.");
+    QLog.d("MSF.C.AuthCoder", 1, ((StringBuilder)localObject).toString());
+    locala.c(u.b(paramToServiceMsg));
     this.n.a(locala);
     if (a(paramToServiceMsg, paramk, locala))
     {
       long l1 = System.currentTimeMillis();
       locala.a(true);
       locala.a(l1);
-      QLog.d("MSF.C.AuthCoder", 1, Thread.currentThread().getName() + " decodeLoginSuccResp setKey " + MsfSdkUtils.getShortUin(locala.d()));
+      paramk = new StringBuilder();
+      paramk.append(Thread.currentThread().getName());
+      paramk.append(" decodeLoginSuccResp setKey ");
+      paramk.append(MsfSdkUtils.getShortUin(locala.d()));
+      QLog.d("MSF.C.AuthCoder", 1, paramk.toString());
       paramk = locala.d();
-      byte[] arrayOfByte1 = locala.f();
-      byte[] arrayOfByte2 = locala.g();
-      byte[] arrayOfByte3 = locala.h();
-      byte[] arrayOfByte4 = locala.i();
-      byte[] arrayOfByte5 = locala.j();
-      byte[] arrayOfByte6 = locala.k();
-      CodecWarpper.nativeSetAccountKey(paramk, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, arrayOfByte6, new byte[0], null);
+      localObject = locala.f();
+      byte[] arrayOfByte1 = locala.g();
+      byte[] arrayOfByte2 = locala.h();
+      byte[] arrayOfByte3 = locala.i();
+      byte[] arrayOfByte4 = locala.j();
+      byte[] arrayOfByte5 = locala.k();
+      CodecWarpper.nativeSetAccountKey(paramk, new byte[0], (byte[])localObject, arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, new byte[0], null);
       this.n.m(locala.d());
-      ag.a(locala.d(), false);
-    }
-    for (;;)
-    {
+      ad.a(locala.d(), false);
       try
       {
         this.n.a.getWtLoginCenter().a(locala, true);
-        this.n.a.sender.a(paramFromServiceMsg.getAppId(), paramFromServiceMsg.getUin());
-        paramFromServiceMsg.addAttribute("resp_simpleAccount", locala.o().toStoreString());
-        this.n.a.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
-        return;
       }
       catch (Throwable paramk)
       {
-        QLog.d("MSF.C.AuthCoder", 1, MD5.toMD5(paramFromServiceMsg.getUin()) + " set key to wt error " + paramk, paramk);
-        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(MD5.toMD5(paramFromServiceMsg.getUin()));
+        ((StringBuilder)localObject).append(" set key to wt error ");
+        ((StringBuilder)localObject).append(paramk);
+        QLog.d("MSF.C.AuthCoder", 1, ((StringBuilder)localObject).toString(), paramk);
       }
-      QLog.d("MSF.C.AuthCoder", 1, MD5.toMD5(paramFromServiceMsg.getUin()) + "decode login failed.");
     }
+    else
+    {
+      paramk = new StringBuilder();
+      paramk.append(MD5.toMD5(paramFromServiceMsg.getUin()));
+      paramk.append("decode login failed.");
+      QLog.d("MSF.C.AuthCoder", 1, paramk.toString());
+    }
+    this.n.a.sender.a(paramFromServiceMsg.getAppId(), paramFromServiceMsg.getUin());
+    paramFromServiceMsg.addAttribute("resp_simpleAccount", locala.o().toStoreString());
+    this.n.a.addRespToQuque(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public byte[] a(int paramInt1, String paramString, int paramInt2, HashMap paramHashMap)
@@ -616,14 +689,13 @@ public class j
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setServantName("test");
     localUniPacket.setFuncName("cmdstr");
-    String str2 = this.n.i(paramString);
+    String str = this.n.i(paramString);
     int i1 = paramVerifyCodeInfo.wupSeq;
     int i2 = paramVerifyCodeInfo.svrSeqNo;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = paramString;
+    if (str != null) {
+      paramString = str;
     }
-    localUniPacket.put("RequestHeader", new d(1, 2, i1, i2, str1, paramInt, String.valueOf(paramInt), "123", 0));
+    localUniPacket.put("RequestHeader", new d(1, 2, i1, i2, paramString, paramInt, String.valueOf(paramInt), "123", 0));
     localUniPacket.put("RequestRefreshVPic", new g(1, 1));
     localUniPacket.setRequestId(paramVerifyCodeInfo.wupSeq);
     return localUniPacket.encode();
@@ -634,14 +706,13 @@ public class j
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setServantName("test");
     localUniPacket.setFuncName("cmdstr");
-    String str2 = this.n.i(paramString1);
+    String str = this.n.i(paramString1);
     int i1 = paramVerifyCodeInfo.wupSeq;
     int i2 = paramVerifyCodeInfo.svrSeqNo;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = paramString1;
+    if (str != null) {
+      paramString1 = str;
     }
-    localUniPacket.put("RequestHeader", new d(1, 1, i1, i2, str1, paramInt, String.valueOf(paramInt), "123", 0));
+    localUniPacket.put("RequestHeader", new d(1, 1, i1, i2, paramString1, paramInt, String.valueOf(paramInt), "123", 0));
     localUniPacket.put("RequestVerifyPic", new h(paramVerifyCodeInfo.vpicSid, paramString2));
     localUniPacket.setRequestId(paramVerifyCodeInfo.wupSeq);
     return localUniPacket.encode();
@@ -672,7 +743,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.j
  * JD-Core Version:    0.7.0.1
  */

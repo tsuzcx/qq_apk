@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/qzone_list_item_bg_selector" android:paddingBottom="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/recentalbum_year_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/rencentalbum_year" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/left_line" android:background="#ffd3d8d9" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/rencentalbum_year" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/right_line" android:background="#ffd3d8d9" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" android:layout_toRightOf="@id/rencentalbum_year" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="left" android:layout_gravity="left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:contentDescription="upload_time_container">
+        <com.qzone.feed.ui.component.RecentUploadDate android:textSize="18.0sp" android:textColor="@color/skin_black_item" android:id="@id/upload_time" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="12.669983sp" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/album_lbs" android:layout_width="fill_parent" android:layout_height="0.0dip" android:maxLines="2" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/content_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/images_total" android:layout_width="176.0dip" android:layout_height="176.0dip" android:layout_marginLeft="32.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:layout_weight="1.0" android:contentDescription="album_info_container">
+            <TextView android:textSize="20.0sp" android:textColor="@color/skin_black_item" android:ellipsize="end" android:id="@id/album_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" />
+            <LinearLayout android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="16.0dip" android:layout_weight="1.0">
+                <com.qzone.proxy.feedcomponent.adapter.text.CellTextView android:textSize="18.0sp" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/description" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="3" />
+            </LinearLayout>
+            <TextView android:textSize="18.0sp" android:textColor="#ff999999" android:id="@id/upload_nums" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="2.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/sp_line" android:background="#ffd3d8d9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

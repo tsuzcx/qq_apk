@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar">
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <TextView android:id="@id/ivTitleName" android:text="@string/cond_search_rs_act_title" style="@style/title_bar_title" />
+    </RelativeLayout>
+    <include android:id="@id/search_bar" android:visibility="gone" layout="@layout/qq_search_searchbox_in_dialog" />
+    <LinearLayout android:orientation="vertical" android:id="@id/container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

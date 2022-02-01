@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/n9"
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center_vertical" android:id="@id/fq4" android:background="@drawable/l8" android:paddingLeft="@dimen/la" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <com.tencent.mm.live.core.view.TRTCVideoLayoutManager android:id="@id/ioe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.live.core.debug.LiveDebugView android:id="@id/ftp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" />
+</RelativeLayout>

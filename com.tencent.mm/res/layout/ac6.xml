@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/gq2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:cornerRadius="@dimen/df">
+        <ImageView android:id="@id/kkg" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+        <FrameLayout android:layout_gravity="bottom" android:background="@drawable/wv" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="164.0dip">
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/yf" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="bottom" android:id="@id/d89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:maxLines="2" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df">
+                <ImageView android:id="@id/a27" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+                <TextView android:textSize="@dimen/m3" android:textColor="@color/yf" android:ellipsize="end" android:id="@id/hga" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:paddingStart="@dimen/bv" />
+            </LinearLayout>
+        </FrameLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

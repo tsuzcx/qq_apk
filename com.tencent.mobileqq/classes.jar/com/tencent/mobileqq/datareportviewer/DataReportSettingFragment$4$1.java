@@ -1,22 +1,19 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import alud;
-import apgv;
-import apgw;
-import aphn;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 
-public class DataReportSettingFragment$4$1
+class DataReportSettingFragment$4$1
   implements Runnable
 {
-  public DataReportSettingFragment$4$1(apgv paramapgv, ArrayList paramArrayList) {}
+  DataReportSettingFragment$4$1(DataReportSettingFragment.4 param4, ArrayList paramArrayList) {}
   
   public void run()
   {
-    aphn.a().a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Apgv.a.a.notifyDataSetChanged();
-    QQToast.a(this.jdField_a_of_type_Apgv.a.getActivity(), alud.a(2131703162), 0).a();
+    DataReportViewerFloatViewHelper.a().a(this.a);
+    this.b.b.e.notifyDataSetChanged();
+    QQToast.makeText(this.b.b.getBaseActivity(), HardCodeUtil.a(2131900918), 0).show();
   }
 }
 

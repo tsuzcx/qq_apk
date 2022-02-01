@@ -1,13 +1,32 @@
 import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import java.util.List;
 
 public class flt
-  implements Runnable
+  implements IphonePickerView.PickerViewAdapter
 {
   public flt(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void run()
+  public int a()
   {
-    LocationSelectActivity.a(this.a);
+    return this.a.h;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.a[paramInt] != null) {
+      return ((List)this.a.a[paramInt]).size();
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    if (this.a.a[paramInt1] != null) {
+      return ((BaseAddress)((List)this.a.a[paramInt1]).get(paramInt2)).a;
+    }
+    return "";
   }
 }
 

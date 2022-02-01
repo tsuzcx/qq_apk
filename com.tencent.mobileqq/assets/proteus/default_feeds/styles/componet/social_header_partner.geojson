@@ -1,170 +1,284 @@
 {
-    "view_type": "UIView",
-    "view_id": "id_social_partner_header_wrapper",
-    "margin_bottom": "-7.5",
-    "event_type": "cmd_url_click_partner_header_report",
-    "layout_type": "layout_relative",
-    "visible_depend_on_children": "YES",
-    "height": {
-        "type": "absolutely",
-        "value": "64"
+    "view_type":"UIView",
+    "view_id":"id_social_partner_header_wrapper",
+    "event_type":"cmd_url_click_partner_header_report",
+    "layout_type":"layout_relative",
+    "margin_bottom": "-14",
+    "height":{
+        "type":"wrap_content"
     },
-    "width": {
-        "type": "relative",
-        "value": "375"
+    "width":{
+        "type":"relative",
+        "value":"375"
     },
-    "attributes": {
-        "setAttatchInfo:": "$partner_jump_url"
+    "attributes":{
+        "setAttatchInfo:":"$partner_jump_url"
     },
-    "data_attributes": {
-        "setLocalInfo:": {
-            "click_area": "6"
+    "data_attributes":{
+        "setLocalInfo:":{
+            "click_area":"6"
         }
     },
-    "subviews": [{
-        "view_type": "ReadInJoyAvatarView",
-        "view_id": "id_partner_info_avator",
-        "align_parent_left": "YES",
-        "align_parent_center_vertical": "YES",
-        "event_type": "cmd_url_click_partner_header_report",
-        "margin_left": "9",
-        "height": {
-            "type": "absolutely",
-            "value": "43"
-        },
-        "width": {
-            "type": "absolutely",
-            "value": "43"
-        },
-        "attributes": {
-            "loadAvatarByUin:": "$info_avator_uin",
-            "setArticleModel:": "-1",
-            "setAttatchInfo:": "$partner_head_jump_url"
-        },
-        "data_attributes": {
-            "setLocalInfo:": {
-                "click_area": "10"
-            },
-            "setRemoteInfo:": {
-                "jump_src": "$jump_src_img",
-                "jump_page": "$jump_page_img"
-            }
-        }
-    },
-    {
-        "view_type": "UIView",
-        "layout_type": "layout_relative",
-        "view_id": "id_partner_header_container",
-        "align_parent_center_vertical": "YES",
-        "right_of_view": "id_partner_info_avator",
-        "event_type": "cmd_url_click_partner_header_report",
-        "height": {
-            "type": "wrap_content"
-        },
-        "width": {
-            "type": "wrap_content"
-        },
-        "attributes": {
-                    "setAttatchInfo:": "$partner_head_jump_url"
-                },
-        "data_attributes": {
-             "setLocalInfo:": {
-              "click_area": "10"
-              },
-              "setRemoteInfo:": {
-               "jump_src": "$jump_src_img",
-               "jump_page": "$jump_page_img"
-             }
-                },
-        "subviews": [{
-            "view_type": "UILabel",
-            "view_id": "id_nickname",
-            "margin_left": "4",
-            "height": {
-                "type": "wrap_content"
-            },
-            "width": {
-                "type": "wrap_content"
-            },
-            "attributes": {
-                "setText:": "$partner_nickname_text",
-                "setTextColorString:": "#D9000000",
-                "setBoldFontSizeString:": "16",
-                "setNumberOfLinesString:": "1"
-            }
-        },
+    "subviews":[
         {
-            "view_type": "UILabel",
-            "view_id": "id_partner_info",
-            "right_of_view": "id_partner_info_avator",
-            "below_of_view": "id_nickname",
-            "margin_top": "2",
-            "margin_left": "4",
-            "height": {
-                "type": "wrap_content"
+            "view_type":"container",
+            "view_id":"id_feeds_social_header_container",
+            "layout_type":"layout_relative",
+            "height":{
+                "type":"absolutely",
+                "value":"39"
             },
-            "width": {
-                "type": "wrap_content"
+            "width":{
+                "type":"relative",
+                "value":"375"
             },
-            "attributes": {
-                "setText:": "$partner_info_text",
-                "setTextColorString:": "#8C000000",
-                "setFontSizeString:": "12",
-                "setNumberOfLinesString:": "1"
-            }
-        }
-        
-        ]
-    },
-    {
-        "view_type": "UIButton",
-        "view_id": "id_social_header_follow_button",
-        "align_parent_center_vertical": "YES",
-        "margin_top": "20.5",
-        "margin_right": "12",
-        "align_parent_right": "YES",
-        "height": {
-            "type": "absolutely",
-            "value": "23"
-        },
-        "width": {
-            "type": "absolutely",
-            "value": "50"
-        },
-        "event_type": "cmd_social_header_follow_click",
-        "attributes": {
-            "setSelectedString:": "-1",
-            "setTitle:": "-1",
-            "setImages:colors:direction:forStates:": [
-                [
-                    "",
-                    ""
-                ],
-                [
-                    "#FFFFFF",
-                    "#8C000000"
-                ],
-                [
-                    "0",
-                    "0"
-                ],
-                [
-                    "0",
-                    "4"
-                ]
-            ],
-            "setFontSizeString:": "11",
-            "setBackgroundImages:forStates:": [
-                [
-                    "Base_Blue",
-                    "Base_Grey"
-                ],
-                [
-                    "0",
-                    "4"
-                ]
+            "visible_depend_on_children": "YES",
+            "margin_top":"11",
+            "margin_bottom":"5",
+            "subviews": [
+                {
+                    "view_type":"ReadInJoyAvatarView",
+                    "view_id":"id_partner_info_avator",
+                    "align_parent_left":"YES",
+                    "align_parent_center_vertical":"YES",
+                    "event_type":"cmd_url_click_partner_header_report",
+                    "margin_left":"9",
+                    "height":{
+                        "type":"absolutely",
+                        "value":"39"
+                    },
+                    "width":{
+                        "type":"absolutely",
+                        "value":"39"
+                    },
+                    "attributes":{
+                        "loadAvatarByUin:":"$info_avator_uin",
+                        "setArticleModel:":"-1",
+                        "setAttatchInfo:":"$partner_head_jump_url",
+                        "setDTElementID:withParams:": [
+                            "puin_button",
+                            {
+                                "rowkey": "$dt_rowkey",
+                                "content_type": "$dt_content_type",
+                                "dt_pgid": "14",
+                                "channel_id": "$dt_channel_id",
+                                "backend_info": "$dt_backend_info",
+                                "area": "list",
+                                "actionid": "click_puin",
+                                "click_type": "single"
+                            }
+                        ]
+                    },
+                    "data_attributes":{
+                        "setLocalInfo:":{
+                            "click_area":"10"
+                        },
+                        "setRemoteInfo:":{
+                            "jump_src":"$jump_src_img",
+                            "jump_page":"$jump_page_img"
+                        }
+                    }
+                },
+                {
+                    "view_type":"UIView",
+                    "view_id":"id_feeds_follow_button_container",
+                    "default_visible":"YES",
+                    "align_parent_center_vertical":"YES",
+                    "margin_right":"12",
+                    "align_parent_right":"YES",
+                    "height":{
+                        "type":"absolutely",
+                        "value":"23"
+                    },
+                    "width":{
+                        "type":"absolutely",
+                        "value":"50"
+                    },
+                    "subviews":[
+                        {
+                            "view_type":"UIButton",
+                            "view_id":"id_feeds_social_header_follow_button",
+                            "height":{
+                                "type":"match_parent"
+                            },
+                            "width":{
+                                "type":"match_parent"
+                            },
+                            "event_type":"cmd_social_header_follow_click",
+                            "attributes":{
+                                "setSelectedString:":"$selected_status",
+                                "setImages:colors:direction:forStates:":[
+                                    [
+                                        "",
+                                        ""
+                                    ],
+                                    [
+                                        "#FFFFFF",
+                                        "#8C000000"
+                                    ],
+                                    [
+                                        "0",
+                                        "0"
+                                    ],
+                                    [
+                                        "0",
+                                        "4"
+                                    ]
+                                ],
+                                "setFontSizeString:":"11",
+                                "setBackgroundImages:forStates:":[
+                                    [
+                                        "unfollow_bg",
+                                        "follow_bg"
+                                    ],
+                                    [
+                                        "0",
+                                        "4"
+                                    ]
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "view_type":"UIView",
+                    "layout_type":"layout_relative",
+                    "view_id":"id_partner_header_container",
+                    "align_parent_center_vertical":"YES",
+                    "visible_depend_on_children": "YES",
+                    "right_of_view":"id_partner_info_avator",
+                    "left_of_view":"id_feeds_follow_button_container",
+                    "event_type":"cmd_url_click_partner_header_report",
+                    "height":{
+                        "type":"wrap_content"
+                    },
+                    "width":{
+                        "type":"match_parent"
+                    },
+                    "attributes":{
+                        "setAttatchInfo:":"$partner_head_jump_url"
+                    },
+                    "data_attributes":{
+                        "setLocalInfo:":{
+                            "click_area":"10"
+                        },
+                        "setRemoteInfo:":{
+                            "jump_src":"$jump_src_img",
+                            "jump_page":"$jump_page_img"
+                        }
+                    },
+                    "subviews":[
+                        {
+                            "view_type":"UILabel",
+                            "view_id":"id_nickname",
+                            "margin_left":"4",
+                            "height":{
+                                "type":"wrap_content"
+                            },
+                            "width":{
+                                "type":"wrap_content"
+                            },
+                            "attributes":{
+                                "setText:":"$partner_nickname_text",
+                                "setTextColorString:":"#242424",
+                                "setBoldFontSizeString:":"16",
+                                "setNumberOfLinesString:":"1",
+                                "setDTElementID:withParams:": [
+                                    "puin_button",
+                                    {
+                                        "rowkey": "$dt_rowkey",
+                                        "content_type": "$dt_content_type",
+                                        "dt_pgid": "14",
+                                        "channel_id": "$dt_channel_id",
+                                        "backend_info": "$dt_backend_info",
+                                        "area": "list",
+                                        "actionid": "click_puin",
+                                        "click_type": "single"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "view_id":"id_partner_info",
+                            "view_type":"UIView",
+                            "visible_depend_on_children":"YES",
+                            "layout_type":"layout_linear",
+                            "direction":"horizontal",
+                            "margin_top":"2",
+                            "margin_left":"4",
+                            "below_of_view": "id_nickname",
+                            "height":{
+                                "type":"absolutely",
+                                "value":"16"
+                            },
+                            "width":{
+                                "type":"match_parent"
+                            },
+                            "subviews":[
+                                {
+                                    "view_id":"id_user_desc_follow",
+                                    "view_type":"UILabel",
+                                    "padding_left":"4",
+                                    "padding_right":"4",
+                                    "margin_right":"6",
+                                    "height":{
+                                        "type":"match_parent"
+                                    },
+                                    "width":{
+                                        "type":"wrap_content"
+                                    },
+                                    "attributes":{
+                                        "setText:":"$user_desc_follow_text",
+                                        "setTextColorString:":"#00CAFC",
+                                        "setBackgroundColorString:":"#EEF9FD",
+                                        "setFontSizeString:":"11",
+                                        "setNumberOfLinesString:":"1",
+                                        "setTextAlignmentString:":"1",
+                                        "setCornerRadiusString:":"4.0"
+                                    }
+                                },
+                                {
+                                    "$includeComponet": "componet/RIJ_top_mark.geojson"
+                                },
+                                {
+                                    "view_type":"UILabel",
+                                    "view_id":"id_biu_time",
+                                    "align_parent_center_vertical":"YES",
+                                    "height":{
+                                        "type":"wrap_content"
+                                    },
+                                    "width":{
+                                        "type":"wrap_content"
+                                    },
+                                    "attributes":{
+                                        "setText:":"$biu_time_text",
+                                        "setTextColorString:":"#8C000000",
+                                        "setFontSizeString:":"11",
+                                        "setNumberOfLinesString:":"1"
+                                    }
+                                },
+                                {
+                                    "view_id":"id_user_desc_detail",
+                                    "view_type":"UILabel",
+                                    "align_parent_center_vertical":"YES",
+                                    "height":{
+                                        "type":"wrap_content"
+                                    },
+                                    "width":{
+                                        "type":"wrap_content"
+                                    },
+                                    "attributes":{
+                                        "setText:":"$partner_recommend_reason",
+                                        "setTextColorString:":"#8C000000",
+                                        "setFontSizeString:":"11",
+                                        "setNumberOfLinesString:":"1"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
             ]
         }
-    }
     ]
 }

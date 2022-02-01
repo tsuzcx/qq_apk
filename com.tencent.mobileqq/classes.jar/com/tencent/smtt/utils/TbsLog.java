@@ -20,43 +20,37 @@ public class TbsLog
   public static final int TBSLOG_CODE_SDK_THIRD_MODE = 995;
   public static final int TBSLOG_CODE_SDK_UNAVAIL_X5CORE = 992;
   public static final String X5LOGTAG = "x5logtag";
-  private static TbsLogClient mTbsLogClient;
+  private static boolean a = false;
+  private static boolean b = true;
+  private static TbsLogClient c;
   public static int sLogMaxCount = 10;
-  public static List<String> sTbsLogList;
-  private static boolean should_show_toast = false;
-  private static boolean write_log_just_in_time = true;
-  
-  static
-  {
-    mTbsLogClient = null;
-    sTbsLogList = new LinkedList();
-  }
+  public static List<String> sTbsLogList = new LinkedList();
   
   /* Error */
   public static void addLog(int paramInt, String paramString, Object... paramVarArgs)
   {
     // Byte code:
-    //   0: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   0: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
     //   3: astore 6
     //   5: aload 6
     //   7: monitorenter
-    //   8: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
-    //   11: invokeinterface 65 1 0
-    //   16: getstatic 53	com/tencent/smtt/utils/TbsLog:sLogMaxCount	I
+    //   8: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   11: invokeinterface 61 1 0
+    //   16: getstatic 49	com/tencent/smtt/utils/TbsLog:sLogMaxCount	I
     //   19: if_icmple +48 -> 67
-    //   22: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
-    //   25: invokeinterface 65 1 0
-    //   30: getstatic 53	com/tencent/smtt/utils/TbsLog:sLogMaxCount	I
+    //   22: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   25: invokeinterface 61 1 0
+    //   30: getstatic 49	com/tencent/smtt/utils/TbsLog:sLogMaxCount	I
     //   33: isub
     //   34: istore_3
     //   35: iload_3
     //   36: ifle +31 -> 67
-    //   39: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
-    //   42: invokeinterface 65 1 0
+    //   39: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   42: invokeinterface 61 1 0
     //   47: ifle +20 -> 67
-    //   50: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   50: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
     //   53: iconst_0
-    //   54: invokeinterface 69 2 0
+    //   54: invokeinterface 65 2 0
     //   59: pop
     //   60: iload_3
     //   61: iconst_1
@@ -71,188 +65,252 @@ public class TbsLog
     //   75: ifnull +10 -> 85
     //   78: aload_1
     //   79: aload_2
-    //   80: invokestatic 75	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   80: invokestatic 71	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   83: astore 4
     //   85: aload 4
     //   87: astore_1
     //   88: aload 4
     //   90: ifnonnull +6 -> 96
-    //   93: ldc 77
+    //   93: ldc 73
     //   95: astore_1
-    //   96: ldc 79
+    //   96: ldc 75
     //   98: iconst_5
     //   99: anewarray 4	java/lang/Object
     //   102: dup
     //   103: iconst_0
-    //   104: invokestatic 85	java/lang/System:currentTimeMillis	()J
-    //   107: invokestatic 91	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   104: invokestatic 81	java/lang/System:currentTimeMillis	()J
+    //   107: invokestatic 87	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   110: aastore
     //   111: dup
     //   112: iconst_1
     //   113: iconst_1
-    //   114: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   114: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   117: aastore
     //   118: dup
     //   119: iconst_2
     //   120: bipush 48
-    //   122: invokestatic 101	java/lang/Character:valueOf	(C)Ljava/lang/Character;
+    //   122: invokestatic 97	java/lang/Character:valueOf	(C)Ljava/lang/Character;
     //   125: aastore
     //   126: dup
     //   127: iconst_3
     //   128: iload_0
-    //   129: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   129: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   132: aastore
     //   133: dup
     //   134: iconst_4
     //   135: aload_1
     //   136: aastore
-    //   137: invokestatic 75	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   137: invokestatic 71	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   140: astore_1
-    //   141: getstatic 51	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
+    //   141: getstatic 47	com/tencent/smtt/utils/TbsLog:sTbsLogList	Ljava/util/List;
     //   144: aload_1
-    //   145: invokeinterface 105 2 0
+    //   145: invokeinterface 101 2 0
     //   150: pop
-    //   151: aload 6
-    //   153: monitorexit
-    //   154: return
-    //   155: astore_1
-    //   156: aload_1
-    //   157: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   160: goto -9 -> 151
-    //   163: astore_1
-    //   164: aload 6
-    //   166: monitorexit
-    //   167: aload_1
-    //   168: athrow
-    //   169: astore_1
-    //   170: aload 5
-    //   172: astore 4
-    //   174: goto -89 -> 85
+    //   151: goto +12 -> 163
+    //   154: astore_1
+    //   155: goto +12 -> 167
+    //   158: astore_1
+    //   159: aload_1
+    //   160: invokevirtual 104	java/lang/Exception:printStackTrace	()V
+    //   163: aload 6
+    //   165: monitorexit
+    //   166: return
+    //   167: aload 6
+    //   169: monitorexit
+    //   170: goto +5 -> 175
+    //   173: aload_1
+    //   174: athrow
+    //   175: goto -2 -> 173
+    //   178: astore_1
+    //   179: aload 5
+    //   181: astore 4
+    //   183: goto -98 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	177	0	paramInt	int
-    //   0	177	1	paramString	String
-    //   0	177	2	paramVarArgs	Object[]
+    //   0	186	0	paramInt	int
+    //   0	186	1	paramString	String
+    //   0	186	2	paramVarArgs	Object[]
     //   34	30	3	i	int
-    //   72	101	4	localObject1	Object
-    //   68	103	5	localObject2	Object
-    //   3	162	6	localList	List
+    //   72	110	4	localObject1	Object
+    //   68	112	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   8	35	155	java/lang/Exception
-    //   39	60	155	java/lang/Exception
-    //   96	151	155	java/lang/Exception
-    //   8	35	163	finally
-    //   39	60	163	finally
-    //   78	85	163	finally
-    //   96	151	163	finally
-    //   151	154	163	finally
-    //   156	160	163	finally
-    //   164	167	163	finally
-    //   78	85	169	java/lang/Exception
+    //   8	35	154	finally
+    //   39	60	154	finally
+    //   78	85	154	finally
+    //   96	151	154	finally
+    //   159	163	154	finally
+    //   163	166	154	finally
+    //   167	170	154	finally
+    //   8	35	158	java/lang/Exception
+    //   39	60	158	java/lang/Exception
+    //   96	151	158	java/lang/Exception
+    //   78	85	178	java/lang/Exception
   }
   
   public static void app_extra(String paramString, Context paramContext)
   {
-    int i = 0;
-    try
+    for (;;)
     {
-      paramContext = paramContext.getApplicationContext();
-      String[] arrayOfString = new String[6];
-      arrayOfString[0] = "com.tencent.tbs";
-      arrayOfString[1] = "com.tencent.mtt";
-      arrayOfString[2] = "com.tencent.mm";
-      arrayOfString[3] = "com.tencent.mobileqq";
-      arrayOfString[4] = "com.tencent.mtt.sdk.test";
-      arrayOfString[5] = "com.qzone";
-      for (;;)
+      int i;
+      try
       {
-        if (i < arrayOfString.length)
+        localObject = paramContext.getApplicationContext();
+        paramContext = new String[6];
+        i = 0;
+        paramContext[0] = "com.tencent.tbs";
+        paramContext[1] = "com.tencent.mtt";
+        paramContext[2] = "com.tencent.mm";
+        paramContext[3] = "com.tencent.mobileqq";
+        paramContext[4] = "com.tencent.mtt.sdk.test";
+        paramContext[5] = "com.qzone";
+        int j = paramContext.length;
+        if (i < j)
         {
-          if (paramContext.getPackageName().contains(arrayOfString[i])) {
-            i(paramString, "app_extra pid:" + Process.myPid() + "; APP_TAG:" + new String[] { "DEMO", "QB", "WX", "QQ", "TEST", "QZ" }[i] + "!");
+          if (!((Context)localObject).getPackageName().contains(paramContext[i])) {
+            break label246;
           }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("app_extra pid:");
+          ((StringBuilder)localObject).append(Process.myPid());
+          ((StringBuilder)localObject).append("; APP_TAG:");
+          ((StringBuilder)localObject).append(new String[] { "DEMO", "QB", "WX", "QQ", "TEST", "QZ" }[i]);
+          ((StringBuilder)localObject).append("!");
+          i(paramString, ((StringBuilder)localObject).toString());
         }
-        else
+        if (i == paramContext.length)
         {
-          if (i == arrayOfString.length) {
-            i(paramString, "app_extra pid:" + Process.myPid() + "; APP_TAG:OTHER!");
-          }
+          paramContext = new StringBuilder();
+          paramContext.append("app_extra pid:");
+          paramContext.append(Process.myPid());
+          paramContext.append("; APP_TAG:OTHER!");
+          i(paramString, paramContext.toString());
           return;
         }
-        i += 1;
+      }
+      catch (Throwable paramContext)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("app_extra exception:");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramContext));
+        w(paramString, ((StringBuilder)localObject).toString());
       }
       return;
-    }
-    catch (Throwable paramContext)
-    {
-      w(paramString, "app_extra exception:" + Log.getStackTraceString(paramContext));
+      label246:
+      i += 1;
     }
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    TbsLogClient localTbsLogClient = c;
+    if (localTbsLogClient == null) {
       return;
     }
-    mTbsLogClient.d(paramString1, "TBS:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.d(paramString1, localStringBuilder.toString());
   }
   
   public static void d(String paramString1, String paramString2, boolean paramBoolean)
   {
     d(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    TbsLogClient localTbsLogClient = c;
+    if ((localTbsLogClient != null) && (a) && (paramBoolean))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      localTbsLogClient.showLog(localStringBuilder.toString());
     }
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    TbsLogClient localTbsLogClient = c;
+    if (localTbsLogClient == null) {
       return;
     }
-    mTbsLogClient.e(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(E)-" + paramString1 + "-TBS:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.e(paramString1, localStringBuilder.toString());
+    localTbsLogClient = c;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(E)-");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.writeLog(localStringBuilder.toString());
   }
   
   public static void e(String paramString1, String paramString2, boolean paramBoolean)
   {
     e(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    TbsLogClient localTbsLogClient = c;
+    if ((localTbsLogClient != null) && (a) && (paramBoolean))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      localTbsLogClient.showLog(localStringBuilder.toString());
     }
   }
   
   public static String getTbsLogFilePath()
   {
-    if (TbsLogClient.mLogFile != null) {
-      return TbsLogClient.mLogFile.getAbsolutePath();
+    if (TbsLogClient.c != null) {
+      return TbsLogClient.c.getAbsolutePath();
     }
     return null;
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    TbsLogClient localTbsLogClient = c;
+    if (localTbsLogClient == null) {
       return;
     }
-    mTbsLogClient.i(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(I)-" + paramString1 + "-TBS:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.i(paramString1, localStringBuilder.toString());
+    localTbsLogClient = c;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(I)-");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.writeLog(localStringBuilder.toString());
   }
   
   public static void i(String paramString1, String paramString2, boolean paramBoolean)
   {
     i(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    TbsLogClient localTbsLogClient = c;
+    if ((localTbsLogClient != null) && (a) && (paramBoolean))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      localTbsLogClient.showLog(localStringBuilder.toString());
     }
+  }
+  
+  public static void i(Throwable paramThrowable)
+  {
+    i("handle_throwable", Log.getStackTraceString(paramThrowable));
   }
   
   public static void initIfNeed(Context paramContext)
   {
     try
     {
-      if (mTbsLogClient == null) {
+      if (c == null) {
         setTbsLogClient(new TbsLogClient(paramContext));
       }
       return;
@@ -266,10 +324,14 @@ public class TbsLog
   
   public static void setLogView(TextView paramTextView)
   {
-    if ((paramTextView == null) || (mTbsLogClient == null)) {
-      return;
+    if (paramTextView != null)
+    {
+      TbsLogClient localTbsLogClient = c;
+      if (localTbsLogClient == null) {
+        return;
+      }
+      localTbsLogClient.setLogView(paramTextView);
     }
-    mTbsLogClient.setLogView(paramTextView);
   }
   
   public static boolean setTbsLogClient(TbsLogClient paramTbsLogClient)
@@ -277,52 +339,77 @@ public class TbsLog
     if (paramTbsLogClient == null) {
       return false;
     }
-    mTbsLogClient = paramTbsLogClient;
-    paramTbsLogClient = mTbsLogClient;
-    TbsLogClient.setWriteLogJIT(write_log_just_in_time);
+    c = paramTbsLogClient;
+    paramTbsLogClient = c;
+    TbsLogClient.setWriteLogJIT(b);
     return true;
   }
   
   public static void setWriteLogJIT(boolean paramBoolean)
   {
-    write_log_just_in_time = paramBoolean;
-    if (mTbsLogClient == null) {
+    b = paramBoolean;
+    if (c == null) {
       return;
     }
-    TbsLogClient localTbsLogClient = mTbsLogClient;
     TbsLogClient.setWriteLogJIT(paramBoolean);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    TbsLogClient localTbsLogClient = c;
+    if (localTbsLogClient == null) {
       return;
     }
-    mTbsLogClient.v(paramString1, "TBS:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.v(paramString1, localStringBuilder.toString());
   }
   
   public static void v(String paramString1, String paramString2, boolean paramBoolean)
   {
     v(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    TbsLogClient localTbsLogClient = c;
+    if ((localTbsLogClient != null) && (a) && (paramBoolean))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      localTbsLogClient.showLog(localStringBuilder.toString());
     }
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if (mTbsLogClient == null) {
+    TbsLogClient localTbsLogClient = c;
+    if (localTbsLogClient == null) {
       return;
     }
-    mTbsLogClient.w(paramString1, "TBS:" + paramString2);
-    mTbsLogClient.writeLog("(W)-" + paramString1 + "-TBS:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.w(paramString1, localStringBuilder.toString());
+    localTbsLogClient = c;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(W)-");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-TBS:");
+    localStringBuilder.append(paramString2);
+    localTbsLogClient.writeLog(localStringBuilder.toString());
   }
   
   public static void w(String paramString1, String paramString2, boolean paramBoolean)
   {
     w(paramString1, paramString2);
-    if ((mTbsLogClient != null) && (should_show_toast) && (paramBoolean)) {
-      mTbsLogClient.showLog(paramString1 + ": " + paramString2);
+    TbsLogClient localTbsLogClient = c;
+    if ((localTbsLogClient != null) && (a) && (paramBoolean))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      localTbsLogClient.showLog(localStringBuilder.toString());
     }
   }
   
@@ -330,8 +417,8 @@ public class TbsLog
   {
     try
     {
-      if (mTbsLogClient != null) {
-        mTbsLogClient.writeLogToDisk();
+      if (c != null) {
+        c.writeLogToDisk();
       }
       return;
     }
@@ -344,7 +431,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

@@ -29,14 +29,14 @@ final class p
   public final void handleMessage(Message paramMessage)
   {
     PendingIntent localPendingIntent = null;
-    if (this.JK.JH.get() != paramMessage.arg1)
+    if (this.Lz.Lw.get() != paramMessage.arg1)
     {
       if (b(paramMessage)) {
         a(paramMessage);
       }
       return;
     }
-    if (((paramMessage.what == 1) || (paramMessage.what == 5)) && (!this.JK.isConnecting()))
+    if (((paramMessage.what == 1) || (paramMessage.what == 5)) && (!this.Lz.isConnecting()))
     {
       a(paramMessage);
       return;
@@ -47,28 +47,28 @@ final class p
         localPendingIntent = (PendingIntent)paramMessage.obj;
       }
       paramMessage = new ConnectionResult(paramMessage.arg2, localPendingIntent);
-      this.JK.Jy.c(paramMessage);
-      this.JK.a(paramMessage);
+      this.Lz.Ln.c(paramMessage);
+      this.Lz.a(paramMessage);
       return;
     }
     if (paramMessage.what == 4)
     {
-      l.a(this.JK, 4);
-      if (l.b(this.JK) != null) {
-        l.b(this.JK).bd(paramMessage.arg2);
+      l.a(this.Lz, 4);
+      if (l.b(this.Lz) != null) {
+        l.b(this.Lz).bx(paramMessage.arg2);
       }
-      this.JK.bd(paramMessage.arg2);
-      l.a(this.JK, 4, 1, null);
+      this.Lz.bx(paramMessage.arg2);
+      l.a(this.Lz, 4, 1, null);
       return;
     }
-    if ((paramMessage.what == 2) && (!this.JK.isConnected()))
+    if ((paramMessage.what == 2) && (!this.Lz.isConnected()))
     {
       a(paramMessage);
       return;
     }
     if (b(paramMessage))
     {
-      ((q)paramMessage.obj).hk();
+      ((q)paramMessage.obj).hu();
       return;
     }
     int i = paramMessage.what;

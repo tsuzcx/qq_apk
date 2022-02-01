@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:enabled="false" android:id="@id/adl" android:background="@drawable/skin_list_item_normal_theme_version2" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <TextView android:enabled="false" android:id="@id/adm" android:background="@drawable/skin_list_item_normal_theme_version2" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <TextView android:enabled="false" android:id="@id/adn" android:background="@drawable/skin_divide_line" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+</LinearLayout>

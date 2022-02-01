@@ -1,21 +1,22 @@
 package com.tencent.token;
 
-final class ay
-  implements Runnable
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class ay
+  extends JceStruct
 {
-  private ay(ax paramax) {}
+  public String a = "";
   
-  public final void run()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    try
-    {
-      this.a.b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a = paramJceInputStream.readString(0, true);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
   }
 }
 

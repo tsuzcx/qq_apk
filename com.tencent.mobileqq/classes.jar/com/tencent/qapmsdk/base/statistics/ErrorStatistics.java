@@ -33,35 +33,32 @@ public final class ErrorStatistics
   {
     Object localObject1 = new StatisticsTable(BaseInfo.userMeta.appId);
     Object localObject2 = BaseInfo.dbHelper;
+    Object localObject3 = null;
     if (localObject2 != null)
     {
       localObject2 = ((DBHelper)localObject2).getDbHandler();
       if (localObject2 != null)
       {
         localObject1 = ((DBHandler)localObject2).search((BaseTable)localObject1, (Function0)ErrorStatistics.getLostData.params.1.INSTANCE);
-        localObject2 = localObject1;
-        if (!(localObject1 instanceof JSONObject)) {
-          localObject2 = null;
-        }
-        localObject1 = (JSONObject)localObject2;
-        if (localObject1 == null) {
-          break label87;
-        }
-        if (!((JSONObject)localObject1).has("parts")) {
-          break label82;
-        }
+        break label53;
       }
     }
-    for (;;)
-    {
-      return localObject1;
-      localObject1 = null;
-      break;
-      label82:
-      localObject1 = null;
+    localObject1 = null;
+    label53:
+    localObject2 = localObject1;
+    if (!(localObject1 instanceof JSONObject)) {
+      localObject2 = null;
     }
-    label87:
-    return null;
+    localObject2 = (JSONObject)localObject2;
+    localObject1 = localObject3;
+    if (localObject2 != null)
+    {
+      localObject1 = localObject3;
+      if (((JSONObject)localObject2).has("parts")) {
+        localObject1 = localObject2;
+      }
+    }
+    return localObject1;
   }
   
   public final void addLost(int paramInt, @NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3)
@@ -69,7 +66,16 @@ public final class ErrorStatistics
     Intrinsics.checkParameterIsNotNull(paramString1, "returnCode");
     Intrinsics.checkParameterIsNotNull(paramString2, "errorCode");
     Intrinsics.checkParameterIsNotNull(paramString3, "category");
-    Logger.INSTANCE.w(new String[] { "QAPM_base_ErrorStatistics", paramString3 + " report may be error, plugin : " + paramInt + ", returnCode : " + paramString1 + ", errorCode : " + paramString2 });
+    Logger localLogger = Logger.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" report may be error, plugin : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", returnCode : ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", errorCode : ");
+    localStringBuilder.append(paramString2);
+    localLogger.w(new String[] { "QAPM_base_ErrorStatistics", localStringBuilder.toString() });
     paramString1 = new StatisticsTable(BaseInfo.userMeta.appId, paramInt, paramString1, paramString2, paramString3, TimeUtil.Companion.getFormatDateByZone());
     paramString2 = BaseInfo.dbHelper;
     if (paramString2 != null)
@@ -95,7 +101,7 @@ public final class ErrorStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.statistics.ErrorStatistics
  * JD-Core Version:    0.7.0.1
  */

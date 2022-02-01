@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ozh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <NumberPicker android:id="@id/ezb" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <NumberPicker android:id="@id/bdu" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <NumberPicker android:id="@id/l6i" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <CalendarView android:id="@id/ms2" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="245.0dip" android:layout_height="280.0dip" android:layout_marginLeft="44.0dip" android:layout_weight="1.0" />
+</LinearLayout>

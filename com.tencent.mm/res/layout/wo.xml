@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/bli" android:background="@drawable/n7" android:layout_width="@dimen/m4" android:layout_height="@dimen/nv" android:layout_marginLeft="@dimen/nu" />
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/a6i" android:gravity="center" android:id="@id/blj" android:background="@drawable/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_below="@id/bli" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <View android:id="@id/blk" android:background="@drawable/n7" android:layout_width="@dimen/m4" android:layout_height="@dimen/nv" android:layout_marginLeft="@dimen/nu" android:layout_below="@id/blj" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/blj" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/acc" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ViewStub android:id="@id/bn1" android:layout="@layout/wq" style="@style/fj" />
+        <ViewStub android:id="@id/bn4" android:layout="@layout/wu" style="@style/fj" />
+        <ViewStub android:id="@id/bn2" android:layout="@layout/ws" style="@style/fj" />
+        <ViewStub android:id="@id/bn0" android:layout="@layout/wp" style="@style/fj" />
+        <ViewStub android:id="@id/bn3" android:layout="@layout/wt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2" />
+        <ViewStub android:id="@id/ac8" android:layout="@layout/wm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/acd" android:background="@color/a19" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/bo" android:layout_marginStart="@dimen/i6" android:layout_marginEnd="84.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+    <ImageView android:id="@id/ace" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

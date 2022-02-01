@@ -20,7 +20,6 @@ public class TAVVideoCompositionInstruction
   @NonNull
   private List<TAVVideoCompositionLayerInstruction> overlayLayers;
   private TAVVideoEffect sourceVideoEffect;
-  @NonNull
   private final CMTimeRange timeRange;
   private TAVVideoMixEffect videoMixEffect;
   
@@ -114,18 +113,16 @@ public class TAVVideoCompositionInstruction
   
   public void setOverlayLayers(List<TAVVideoCompositionLayerInstruction> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      this.overlayLayers = paramList;
-      this.requiredSourceTrackIDs.clear();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        VideoCompositionLayerInstruction localVideoCompositionLayerInstruction = (VideoCompositionLayerInstruction)paramList.next();
-        this.requiredSourceTrackIDs.add(Integer.valueOf(localVideoCompositionLayerInstruction.getTrackID()));
-      }
+    }
+    this.overlayLayers = paramList;
+    this.requiredSourceTrackIDs.clear();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      VideoCompositionLayerInstruction localVideoCompositionLayerInstruction = (VideoCompositionLayerInstruction)paramList.next();
+      this.requiredSourceTrackIDs.add(Integer.valueOf(localVideoCompositionLayerInstruction.getTrackID()));
     }
   }
   
@@ -141,12 +138,20 @@ public class TAVVideoCompositionInstruction
   
   public String toString()
   {
-    return "TAVVideoCompositionInstruction{timeRange=" + this.timeRange.toSimpleString() + ", backgroundColor=" + this.backgroundColor + ", overlayLayers=" + this.overlayLayers + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVVideoCompositionInstruction{timeRange=");
+    localStringBuilder.append(this.timeRange.toSimpleString());
+    localStringBuilder.append(", backgroundColor=");
+    localStringBuilder.append(this.backgroundColor);
+    localStringBuilder.append(", overlayLayers=");
+    localStringBuilder.append(this.overlayLayers);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.TAVVideoCompositionInstruction
  * JD-Core Version:    0.7.0.1
  */

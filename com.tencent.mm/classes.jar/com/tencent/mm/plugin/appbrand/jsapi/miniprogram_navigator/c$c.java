@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
 public abstract interface c$c
 {
-  public abstract void i(boolean paramBoolean, String paramString);
+  public abstract void onNavigateResult(boolean paramBoolean, String paramString);
 }
 
 

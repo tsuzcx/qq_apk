@@ -26,7 +26,8 @@ public class RGBATexSaveProcess
   private void initData(int paramInt1, int paramInt2)
   {
     paramInt1 = paramInt1 * paramInt2 * 4;
-    if ((this.mData == null) || (this.mData.length != paramInt1)) {
+    byte[] arrayOfByte = this.mData;
+    if ((arrayOfByte == null) || (arrayOfByte.length != paramInt1)) {
       this.mData = new byte[paramInt1];
     }
   }
@@ -39,7 +40,7 @@ public class RGBATexSaveProcess
   
   public void clear()
   {
-    this.mFilter.ClearGLSL();
+    this.mFilter.clearGLSL();
     this.mRenderFrame.clear();
     this.mData = null;
   }
@@ -52,34 +53,35 @@ public class RGBATexSaveProcess
   public byte[] retrieveData(int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt2 * paramInt3 * 4;
-    if ((i <= 0) || (i > 35389440)) {
-      return new byte[0];
-    }
-    init();
-    initData(paramInt2, paramInt3);
-    if (isInBlackList())
+    if ((i > 0) && (i <= 35389440))
     {
-      Frame localFrame = new Frame();
-      this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
-      BenchUtil.benchStart("saveTextureToRgbaBuffer");
-      GlUtil.saveTextureToRgbaBuffer(localFrame.getTextureId(), paramInt2, paramInt3, this.mData, localFrame.getFBO());
-      BenchUtil.benchEnd("saveTextureToRgbaBuffer");
-      localFrame.clear();
-    }
-    for (;;)
-    {
+      init();
+      initData(paramInt2, paramInt3);
+      if (isInBlackList())
+      {
+        Frame localFrame = new Frame();
+        this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
+        BenchUtil.benchStart("saveTextureToRgbaBuffer");
+        GlUtil.saveTextureToRgbaBuffer(localFrame.getTextureId(), paramInt2, paramInt3, this.mData, localFrame.getFBO());
+        BenchUtil.benchEnd("saveTextureToRgbaBuffer");
+        localFrame.clear();
+      }
+      else
+      {
+        this.mRenderFrame.bindFrame(-1, paramInt2, paramInt3, 0.0D);
+        this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mRenderFrame);
+        BenchUtil.benchStart("saveTextureToRgbaBuffer");
+        GlUtil.saveTextureToRgbaBuffer(this.mRenderFrame.getTextureId(), paramInt2, paramInt3, this.mData, this.mRenderFrame.getFBO());
+        BenchUtil.benchEnd("saveTextureToRgbaBuffer");
+      }
       return this.mData;
-      this.mRenderFrame.bindFrame(-1, paramInt2, paramInt3, 0.0D);
-      this.mFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, this.mRenderFrame);
-      BenchUtil.benchStart("saveTextureToRgbaBuffer");
-      GlUtil.saveTextureToRgbaBuffer(this.mRenderFrame.getTextureId(), paramInt2, paramInt3, this.mData, this.mRenderFrame.getFBO());
-      BenchUtil.benchEnd("saveTextureToRgbaBuffer");
     }
+    return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.RGBATexSaveProcess
  * JD-Core Version:    0.7.0.1
  */

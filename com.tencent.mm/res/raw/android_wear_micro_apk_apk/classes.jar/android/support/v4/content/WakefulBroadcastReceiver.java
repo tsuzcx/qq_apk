@@ -8,8 +8,8 @@ import android.util.SparseArray;
 public abstract class WakefulBroadcastReceiver
   extends BroadcastReceiver
 {
-  private static final SparseArray<PowerManager.WakeLock> fW = new SparseArray();
-  private static int fX = 1;
+  private static final SparseArray<PowerManager.WakeLock> hT = new SparseArray();
+  private static int hU = 1;
 }
 
 

@@ -5,14 +5,16 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.pluginsdk.ui.span.p;
 
 public class BankRemitDetailItemView
   extends LinearLayout
 {
-  private TextView iJG;
-  private TextView kPB;
-  private boolean qhq;
+  private boolean OdQ;
+  private TextView pJi;
+  private TextView sUt;
   
   public BankRemitDetailItemView(Context paramContext)
   {
@@ -22,71 +24,71 @@ public class BankRemitDetailItemView
   public BankRemitDetailItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(44589);
-    this.qhq = false;
+    AppMethodBeat.i(67502);
+    this.OdQ = false;
     init();
-    AppMethodBeat.o(44589);
+    AppMethodBeat.o(67502);
   }
   
   public BankRemitDetailItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(44590);
-    this.qhq = false;
+    AppMethodBeat.i(67503);
+    this.OdQ = false;
     init();
-    AppMethodBeat.o(44590);
+    AppMethodBeat.o(67503);
   }
   
   public BankRemitDetailItemView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(44588);
-    this.qhq = false;
-    this.qhq = paramBoolean;
+    AppMethodBeat.i(67501);
+    this.OdQ = false;
+    this.OdQ = paramBoolean;
     init();
-    AppMethodBeat.o(44588);
+    AppMethodBeat.o(67501);
   }
   
   private void init()
   {
-    AppMethodBeat.i(44591);
-    if (this.qhq) {
-      inflate(getContext(), 2130968820, this);
+    AppMethodBeat.i(67504);
+    if (this.OdQ) {
+      inflate(getContext(), a.g.bank_remit_detail_item_money_layout, this);
     }
     for (;;)
     {
-      this.iJG = ((TextView)findViewById(2131821678));
-      this.kPB = ((TextView)findViewById(2131821679));
-      AppMethodBeat.o(44591);
+      this.sUt = ((TextView)findViewById(a.f.brdi_title_tv));
+      this.pJi = ((TextView)findViewById(a.f.brdi_desc_tv));
+      AppMethodBeat.o(67504);
       return;
-      inflate(getContext(), 2130968819, this);
+      inflate(getContext(), a.g.bank_remit_detail_item_comm_layout, this);
     }
   }
   
   public final void a(String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
-    AppMethodBeat.i(44592);
-    this.iJG.setText(paramString);
+    AppMethodBeat.i(67505);
+    this.sUt.setText(paramString);
     if (paramBoolean)
     {
-      this.kPB.setText(j.b(getContext(), paramCharSequence, this.kPB.getTextSize()));
-      AppMethodBeat.o(44592);
+      this.pJi.setText(p.b(getContext(), paramCharSequence, this.pJi.getTextSize()));
+      AppMethodBeat.o(67505);
       return;
     }
-    this.kPB.setText(paramCharSequence);
-    AppMethodBeat.o(44592);
+    this.pJi.setText(paramCharSequence);
+    AppMethodBeat.o(67505);
   }
   
   public final void b(int paramInt, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(44593);
+    AppMethodBeat.i(67506);
     a(getContext().getString(paramInt), paramCharSequence, false);
-    AppMethodBeat.o(44593);
+    AppMethodBeat.o(67506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitDetailItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.card.ui.view;
 
 import android.view.ViewGroup;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.ui.MMActivity;
 
@@ -16,24 +17,24 @@ public final class t
   
   public final void b(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean bfr()
+  public final boolean doF()
   {
     return false;
   }
   
-  public final boolean bfs()
+  public final boolean doG()
   {
     return false;
   }
   
   public final int getLayoutId()
   {
-    return 2130968921;
+    return a.e.wmr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.t
  * JD-Core Version:    0.7.0.1
  */

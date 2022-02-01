@@ -40,13 +40,14 @@ public final class PBRepeatField<T>
   protected int computeSizeDirectly(int paramInt, List<T> paramList)
   {
     paramList = paramList.iterator();
-    Object localObject;
-    for (int i = 0;; i = this.helper.computeSizeDirectly(paramInt, localObject) + i)
+    int i = 0;
+    for (;;)
     {
       if (!paramList.hasNext()) {
         return i;
       }
-      localObject = (Object)paramList.next();
+      Object localObject = (Object)paramList.next();
+      i += this.helper.computeSizeDirectly(paramInt, localObject);
     }
   }
   
@@ -78,7 +79,7 @@ public final class PBRepeatField<T>
   
   public boolean has()
   {
-    return !isEmpty();
+    return isEmpty() ^ true;
   }
   
   public boolean isEmpty()
@@ -136,7 +137,7 @@ public final class PBRepeatField<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBRepeatField
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +13,12 @@ public final class ListAllCategoryRspItem
 {
   static Map<String, CategoryPhoto> cache_categoryid_photos;
   static ArrayList<SummaryInfo> cache_categoryid_summaryinfos = new ArrayList();
-  public Map<String, CategoryPhoto> categoryid_photos;
-  public ArrayList<SummaryInfo> categoryid_summaryinfos;
-  public boolean has_more;
+  public Map<String, CategoryPhoto> categoryid_photos = null;
+  public ArrayList<SummaryInfo> categoryid_summaryinfos = null;
+  public boolean has_more = false;
   public String page_str = "";
-  public int ret;
-  public long total;
+  public int ret = 0;
+  public long total = 0L;
   
   static
   {
@@ -52,15 +53,18 @@ public final class ListAllCategoryRspItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.categoryid_summaryinfos != null) {
-      paramJceOutputStream.write(this.categoryid_summaryinfos, 0);
+    Object localObject = this.categoryid_summaryinfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.categoryid_photos != null) {
-      paramJceOutputStream.write(this.categoryid_photos, 1);
+    localObject = this.categoryid_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.has_more, 2);
-    if (this.page_str != null) {
-      paramJceOutputStream.write(this.page_str, 3);
+    localObject = this.page_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.total, 4);
     paramJceOutputStream.write(this.ret, 5);
@@ -68,7 +72,7 @@ public final class ListAllCategoryRspItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.ListAllCategoryRspItem
  * JD-Core Version:    0.7.0.1
  */

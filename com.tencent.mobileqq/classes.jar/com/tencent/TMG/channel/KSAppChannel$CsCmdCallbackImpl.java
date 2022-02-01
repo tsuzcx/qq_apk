@@ -14,10 +14,16 @@ public class KSAppChannel$CsCmdCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    Log.e("shixu", "code :" + paramInt + " info: " + paramString);
-    if (this.mCallback != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("code :");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" info: ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.e("shixu", ((StringBuilder)localObject).toString());
+    localObject = this.mCallback;
+    if (localObject != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      ((AVAppChannel.CsCmdCallback)localObject).onError(paramInt, paramString);
       this.mCallback = null;
     }
   }
@@ -25,16 +31,17 @@ public class KSAppChannel$CsCmdCallbackImpl
   public void onSuccess(byte[] paramArrayOfByte)
   {
     Log.e("shixu", "success");
-    if (this.mCallback != null)
+    AVAppChannel.CsCmdCallback localCsCmdCallback = this.mCallback;
+    if (localCsCmdCallback != null)
     {
-      this.mCallback.onSuccess(paramArrayOfByte);
+      localCsCmdCallback.onSuccess(paramArrayOfByte);
       this.mCallback = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.channel.KSAppChannel.CsCmdCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
 import com.tencent.mobileqq.troop.widget.VideoViewX;
-import com.tencent.mobileqq.troop.widget.VideoViewX.OnSeekListener;
 
 public class gzu
-  implements MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnBufferingUpdateListener
 {
   public gzu(VideoViewX paramVideoViewX) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
+    VideoViewX.e(this.a, paramInt);
     if (VideoViewX.a(this.a) != null) {
-      VideoViewX.a(this.a).i();
+      VideoViewX.a(this.a).onBufferingUpdate(VideoViewX.a(this.a), paramInt);
     }
   }
 }

@@ -16,8 +16,8 @@ public final class w
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
-    AppMethodBeat.i(103256);
-    paramd = paramd.heC;
+    AppMethodBeat.i(144939);
+    paramd = paramd.qTj;
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -29,7 +29,7 @@ public final class w
     }
     for (;;)
     {
-      AppMethodBeat.o(103256);
+      AppMethodBeat.o(144939);
       return true;
       if (!paramString.equals("source-over")) {
         break;
@@ -190,45 +190,45 @@ public final class w
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103257);
+    AppMethodBeat.i(144940);
     paramCanvas = (SetGlobalCompositeOperationActionArg)paramDrawActionArg;
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(103257);
+      AppMethodBeat.o(144940);
       return false;
     }
     boolean bool = b(paramd, paramCanvas.type);
-    AppMethodBeat.o(103257);
+    AppMethodBeat.o(144940);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103255);
+    AppMethodBeat.i(144938);
     if (paramJSONArray.length() <= 0)
     {
-      AppMethodBeat.o(103255);
+      AppMethodBeat.o(144938);
       return false;
     }
     try
     {
       paramCanvas = paramJSONArray.getString(0);
       boolean bool = b(paramd, paramCanvas);
-      AppMethodBeat.o(103255);
+      AppMethodBeat.o(144938);
       return bool;
     }
     catch (JSONException paramd)
     {
-      AppMethodBeat.o(103255);
+      AppMethodBeat.o(144938);
     }
     return false;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg cjY()
   {
-    AppMethodBeat.i(103254);
+    AppMethodBeat.i(144937);
     SetGlobalCompositeOperationActionArg localSetGlobalCompositeOperationActionArg = new SetGlobalCompositeOperationActionArg();
-    AppMethodBeat.o(103254);
+    AppMethodBeat.o(144937);
     return localSetGlobalCompositeOperationActionArg;
   }
   

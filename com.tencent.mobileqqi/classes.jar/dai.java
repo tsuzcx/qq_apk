@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import com.tencent.mobileqq.activity.PublicAccountActivity;
+import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class dai
-  extends CardObserver
+  extends SearchResultDialog
 {
-  public dai(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
+  public dai(PublicAccountActivity paramPublicAccountActivity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.h();
-    if (paramBoolean)
-    {
-      this.a.a(2131562776, 2);
-      return;
-    }
-    this.a.a(2131562773, 1);
+    super(paramContext, paramQQAppInterface, paramInt);
+  }
+  
+  @SuppressLint({"UseSparseArrays"})
+  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return a(paramContext, paramQQAppInterface, 0L, 0);
   }
 }
 

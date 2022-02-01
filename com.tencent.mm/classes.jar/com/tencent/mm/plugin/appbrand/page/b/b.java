@@ -1,21 +1,15 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-import android.content.Context;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.w;
+import kotlin.Metadata;
 
-public abstract interface b
-{
-  public abstract ap ar(Context paramContext);
-  
-  public abstract boolean b(String paramString1, String paramString2, int paramInt);
-  
-  public abstract Map<String, m> vF();
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackSilentInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageNavigateBackSilentInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onIntercepted", "", "runtime", "scene", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
+  extends d<w>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.b
  * JD-Core Version:    0.7.0.1
  */

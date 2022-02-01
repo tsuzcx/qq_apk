@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class Oidb_0x686$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 56 }, new String[] { "msg_notify_event", "msg_charm_event", "uint32_config_seq", "msg_rank_config", "uint32_gold_flag", "msg_feed_config", "uint32_config_time" }, new Object[] { null, null, Integer.valueOf(0), null, Integer.valueOf(0), null, Integer.valueOf(0) }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public Oidb_0x686.CharmEvent msg_charm_event = new Oidb_0x686.CharmEvent();
   public Oidb_0x686.NearbyFeedConfig msg_feed_config = new Oidb_0x686.NearbyFeedConfig();
   public Oidb_0x686.NearbyCharmNotify msg_notify_event = new Oidb_0x686.NearbyCharmNotify();
@@ -16,10 +16,16 @@ public final class Oidb_0x686$RspBody
   public final PBUInt32Field uint32_config_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_config_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_gold_flag = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 56 }, new String[] { "msg_notify_event", "msg_charm_event", "uint32_config_seq", "msg_rank_config", "uint32_gold_flag", "msg_feed_config", "uint32_config_time" }, new Object[] { null, null, localInteger, null, localInteger, null, localInteger }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x686.Oidb_0x686.RspBody
  * JD-Core Version:    0.7.0.1
  */

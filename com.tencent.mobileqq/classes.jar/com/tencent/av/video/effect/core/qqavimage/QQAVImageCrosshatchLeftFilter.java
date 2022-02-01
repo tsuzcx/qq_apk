@@ -39,21 +39,17 @@ public class QQAVImageCrosshatchLeftFilter
   public void setCrossHatchSpacing(float paramFloat)
   {
     float f;
-    if (getOutputWidth() != 0)
-    {
+    if (getOutputWidth() != 0) {
       f = 1.0F / getOutputWidth();
-      if (paramFloat >= f) {
-        break label45;
-      }
-    }
-    label45:
-    for (this.mCrossHatchSpacing = f;; this.mCrossHatchSpacing = paramFloat)
-    {
-      setFloat(this.mCrossHatchSpacingLocation, this.mCrossHatchSpacing);
-      return;
+    } else {
       f = 0.0004882813F;
-      break;
     }
+    if (paramFloat < f) {
+      this.mCrossHatchSpacing = f;
+    } else {
+      this.mCrossHatchSpacing = paramFloat;
+    }
+    setFloat(this.mCrossHatchSpacingLocation, this.mCrossHatchSpacing);
   }
   
   public void setLineWidth(float paramFloat)
@@ -64,7 +60,7 @@ public class QQAVImageCrosshatchLeftFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageCrosshatchLeftFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/cover" android:layout_width="63.0dip" android:layout_height="63.0dip" android:layout_marginLeft="77.0dip" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_toRightOf="@id/cover" android:layout_alignTop="@id/cover">
+        <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/pkgName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="12" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center" android:id="@id/tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxEms="12" android:singleLine="true" />
+            <Button android:textSize="13.0sp" android:textColor="@color/qvip_emoji_aio_recommend_button_text" android:gravity="center" android:id="@id/updateBtn" android:background="@drawable/qvip_emoji_recommend_detail_button" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginTop="10.0dip" android:text="更新" android:contentDescription="更新" />
+            <com.tencent.mobileqq.widget.ProgressButton android:textSize="13.0sp" android:textColor="@color/qvip_emoji_aio_recommend_button_text" android:gravity="center" android:id="@id/update_btn" android:background="@drawable/qvip_emoji_recommend_detail_button" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginTop="10.0dip" android:text="更新" android:contentDescription="更新" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -3,33 +3,33 @@ package com.tencent.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhwq;
 
-public class ExpandableListConnector$GroupMetadata
+class ExpandableListConnector$GroupMetadata
   implements Parcelable, Comparable<GroupMetadata>
 {
-  public static final Parcelable.Creator<GroupMetadata> CREATOR = new bhwq();
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  int b;
-  int c;
+  public static final Parcelable.Creator<GroupMetadata> CREATOR = new ExpandableListConnector.GroupMetadata.1();
+  static final int REFRESH = -1;
+  int flPos;
+  long gId;
+  int gPos;
+  int lastChildFlPos;
   
-  public static GroupMetadata a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  static GroupMetadata obtain(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     GroupMetadata localGroupMetadata = new GroupMetadata();
-    localGroupMetadata.jdField_a_of_type_Int = paramInt1;
-    localGroupMetadata.b = paramInt2;
-    localGroupMetadata.c = paramInt3;
-    localGroupMetadata.jdField_a_of_type_Long = paramLong;
+    localGroupMetadata.flPos = paramInt1;
+    localGroupMetadata.lastChildFlPos = paramInt2;
+    localGroupMetadata.gPos = paramInt3;
+    localGroupMetadata.gId = paramLong;
     return localGroupMetadata;
   }
   
-  public int a(GroupMetadata paramGroupMetadata)
+  public int compareTo(GroupMetadata paramGroupMetadata)
   {
-    if (paramGroupMetadata == null) {
-      throw new IllegalArgumentException();
+    if (paramGroupMetadata != null) {
+      return this.gPos - paramGroupMetadata.gPos;
     }
-    return this.c - paramGroupMetadata.c;
+    throw new IllegalArgumentException();
   }
   
   public int describeContents()
@@ -39,15 +39,15 @@ public class ExpandableListConnector$GroupMetadata
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
-    paramParcel.writeInt(this.c);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeInt(this.flPos);
+    paramParcel.writeInt(this.lastChildFlPos);
+    paramParcel.writeInt(this.gPos);
+    paramParcel.writeLong(this.gId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ExpandableListConnector.GroupMetadata
  * JD-Core Version:    0.7.0.1
  */

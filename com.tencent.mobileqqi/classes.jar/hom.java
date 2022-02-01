@@ -1,31 +1,24 @@
+import com.tencent.open.appcommon.CallBackEvent;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import java.io.File;
+import com.tencent.open.downloadnew.WebViewDownloadListener;
+import com.tencent.smtt.sdk.WebView;
 
 public class hom
   implements Runnable
 {
-  public hom(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  public hom(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
   
   public void run()
   {
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
     try
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        long l = localFile.length();
-        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        return;
-      }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       return;
     }
     catch (Exception localException)
     {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
+      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
     }
   }
 }

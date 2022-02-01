@@ -5,9 +5,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import betv;
-import betw;
-import betx;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
@@ -21,54 +18,64 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 public class QQMapView
   extends MapView
 {
-  public static boolean b;
-  public betx a;
-  GeoPoint jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
-  private TencentMap.OnCameraChangeListener jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener;
-  public boolean a;
+  QQMapView.QQMapViewObserver a;
+  GeoPoint b;
+  protected boolean c = false;
+  boolean d = false;
+  private TencentMap.OnCameraChangeListener e;
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new betw(this);
-    getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
+    this.e = new QQMapView.2(this);
+    getMap().setOnCameraChangeListener(this.e);
   }
   
   public QQMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = new betv(this);
-    getMap().setOnCameraChangeListener(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener);
+    this.e = new QQMapView.1(this);
+    getMap().setOnCameraChangeListener(this.e);
   }
   
   private void a(CameraPosition paramCameraPosition)
   {
-    paramCameraPosition = new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D));
-    if (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint != null)
+    if (this.d)
     {
-      int i = Math.abs(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() - paramCameraPosition.getLatitudeE6());
-      int j = Math.abs(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
-      QLog.d("QQMapView", 2, "dealMapScroll() latScroll =" + i + " lngScroll =" + j);
+      QLog.d("QQMapView", 1, "dismiss map scroll");
+      this.d = false;
+      return;
+    }
+    paramCameraPosition = new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D));
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      int i = Math.abs(((GeoPoint)localObject).getLatitudeE6() - paramCameraPosition.getLatitudeE6());
+      int j = Math.abs(this.b.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dealMapScroll() latScroll =");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" lngScroll =");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("QQMapView", 2, ((StringBuilder)localObject).toString());
       if ((i == 0) || (j == 0)) {
         return;
       }
     }
-    if (!b) {
-      this.jdField_a_of_type_Betx.onMapScrollEnd(paramCameraPosition);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramCameraPosition;
-      return;
-      b = false;
-    }
+    this.a.onMapScrollEnd(paramCameraPosition);
+    this.c = false;
+    this.b = paramCameraPosition;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Betx = null;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap$OnCameraChangeListener = null;
+    this.a = null;
+    this.e = null;
+  }
+  
+  public void b()
+  {
+    this.d = true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -82,14 +89,14 @@ public class QQMapView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setObserver(betx parambetx)
+  public void setObserver(QQMapView.QQMapViewObserver paramQQMapViewObserver)
   {
-    this.jdField_a_of_type_Betx = parambetx;
+    this.a = paramQQMapViewObserver;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView
  * JD-Core Version:    0.7.0.1
  */

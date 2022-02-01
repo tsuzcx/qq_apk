@@ -2,22 +2,23 @@ package com.tencent.superplayer.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.tmediacodec.hook.THookTextureView;
 
 public class SPlayerTextureView
-  extends TextureView
+  extends THookTextureView
   implements ISPlayerViewBase
 {
-  private static final String TAG = SPlayerTextureView.class.getSimpleName();
+  private static final String TAG = "SPlayerTextureView";
   private int mDegree = 0;
   private float mScale = 1.0F;
+  private String mTag;
   private TextureView.SurfaceTextureListener mTextureListener = new SPlayerTextureView.1(this);
   private int mType = 0;
   private int mVideoHeight;
   private int mVideoWidth;
-  private ISPlayerViewBase.viewCreateCallBack mViewCallBack;
+  private ISPlayerViewBase.ViewCreateCallBack mViewCallBack;
   private int radioHeigth = 0;
   private int radioWidth = 0;
   
@@ -44,109 +45,142 @@ public class SPlayerTextureView
     setScaleX(1.0001F);
     setScaleY(1.0001F);
     setSurfaceTextureListener(this.mTextureListener);
+    this.mTag = TAG;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i;
-    int j;
-    float f;
     if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0))
     {
-      i = getDefaultSize(getWidth(), paramInt1);
-      j = getDefaultSize(getHeight(), paramInt2);
+      int i = getDefaultSize(getWidth(), paramInt1);
+      int j = getDefaultSize(getHeight(), paramInt2);
+      float f2 = 1.0F;
       ((FrameLayout.LayoutParams)getLayoutParams()).topMargin = 0;
       ((FrameLayout.LayoutParams)getLayoutParams()).bottomMargin = 0;
-      if (this.mType == 2) {
-        if (this.mVideoWidth * j > this.mVideoHeight * i)
-        {
-          paramInt2 = this.mVideoWidth * j / this.mVideoHeight;
-          f = 1.0F;
-          paramInt1 = j;
-        }
-      }
-    }
-    for (;;)
-    {
-      setMeasuredDimension((int)(paramInt2 * this.mScale * f), (int)(f * (paramInt1 * this.mScale)));
-      return;
-      if (this.mVideoWidth * j < this.mVideoHeight * i)
+      paramInt1 = this.mType;
+      int k;
+      int m;
+      float f1;
+      if (paramInt1 == 2)
       {
-        paramInt1 = this.mVideoHeight * i / this.mVideoWidth;
-        f = 1.0F;
-        paramInt2 = i;
-        continue;
-        if (this.mType == 1)
+        k = this.mVideoWidth;
+        m = this.mVideoHeight;
+        if (k * j > i * m)
         {
-          f = 1.0F;
-          paramInt1 = j;
-          paramInt2 = i;
-          continue;
-        }
-        if (this.mType == 3)
-        {
-          if (this.mVideoWidth * j > this.mVideoHeight * i)
-          {
-            paramInt1 = this.mVideoHeight * i / this.mVideoWidth;
-            f = 1.0F;
-            paramInt2 = i;
-            continue;
-          }
-          if (this.mVideoWidth * j < this.mVideoHeight * i)
-          {
-            paramInt2 = this.mVideoWidth * j / this.mVideoHeight;
-            f = j / (this.mVideoWidth / this.mVideoHeight * j);
-            paramInt1 = j;
-          }
+          paramInt1 = k * j / m;
+          f1 = f2;
+          paramInt2 = j;
         }
         else
         {
-          paramInt2 = this.mVideoWidth;
-          paramInt1 = paramInt2;
-          if (this.radioWidth != 0)
+          f1 = f2;
+          paramInt1 = i;
+          paramInt2 = j;
+          if (k * j < i * m)
           {
-            paramInt1 = paramInt2;
-            if (this.radioHeigth != 0) {
-              paramInt1 = (int)(this.mVideoWidth * this.radioWidth / this.radioHeigth);
-            }
-          }
-          if (paramInt1 * j > this.mVideoHeight * i)
-          {
-            paramInt1 = this.mVideoHeight * i / paramInt1;
-            paramInt2 = i;
-          }
-          for (;;)
-          {
-            if (((this.mDegree == 90) || (this.mDegree == 270)) && (paramInt1 > 0) && (paramInt2 > 0))
-            {
-              if (i / paramInt1 < j / paramInt2)
-              {
-                f = i / paramInt1;
-                break;
-                if (paramInt1 * j >= this.mVideoHeight * i) {
-                  break label452;
-                }
-                paramInt2 = paramInt1 * j / this.mVideoHeight;
-                paramInt1 = j;
-                continue;
-              }
-              f = j / paramInt2;
-              break;
-              super.onMeasure(paramInt1, paramInt2);
-              return;
-            }
-            f = 1.0F;
-            break;
-            label452:
-            paramInt1 = j;
-            paramInt2 = i;
+            paramInt2 = m * i / k;
+            f1 = f2;
+            paramInt1 = i;
           }
         }
       }
-      f = 1.0F;
-      paramInt1 = j;
-      paramInt2 = i;
+      else if (paramInt1 == 1)
+      {
+        f1 = f2;
+        paramInt1 = i;
+        paramInt2 = j;
+      }
+      else if (paramInt1 == 3)
+      {
+        k = this.mVideoWidth;
+        m = this.mVideoHeight;
+        if (k * j > i * m)
+        {
+          paramInt2 = m * i / k;
+          f1 = f2;
+          paramInt1 = i;
+        }
+        else
+        {
+          f1 = f2;
+          paramInt1 = i;
+          paramInt2 = j;
+          if (k * j < i * m)
+          {
+            paramInt1 = j * k / m;
+            f1 = j;
+            f1 /= k / m * f1;
+            paramInt2 = j;
+          }
+        }
+      }
+      else
+      {
+        paramInt2 = this.mVideoWidth;
+        k = this.radioWidth;
+        paramInt1 = paramInt2;
+        if (k != 0)
+        {
+          m = this.radioHeigth;
+          paramInt1 = paramInt2;
+          if (m != 0) {
+            paramInt1 = (int)(paramInt2 * k / m);
+          }
+        }
+        paramInt2 = paramInt1 * j;
+        k = this.mVideoHeight;
+        if (paramInt2 > i * k)
+        {
+          paramInt1 = k * i / paramInt1;
+          paramInt2 = i;
+        }
+        else
+        {
+          if (paramInt2 < i * k) {
+            paramInt2 /= k;
+          } else {
+            paramInt2 = i;
+          }
+          paramInt1 = j;
+        }
+        k = this.mDegree;
+        if (k != 90)
+        {
+          f1 = f2;
+          if (k != 270) {}
+        }
+        else
+        {
+          f1 = f2;
+          if (paramInt1 > 0)
+          {
+            f1 = f2;
+            if (paramInt2 > 0)
+            {
+              if (i / paramInt1 < j / paramInt2)
+              {
+                f1 = i;
+                f2 = paramInt1;
+              }
+              else
+              {
+                f1 = j;
+                f2 = paramInt2;
+              }
+              f1 /= f2;
+            }
+          }
+        }
+        i = paramInt2;
+        paramInt2 = paramInt1;
+        paramInt1 = i;
+      }
+      f2 = paramInt1;
+      float f3 = this.mScale;
+      setMeasuredDimension((int)(f2 * f3 * f1), (int)(paramInt2 * f3 * f1));
+      return;
     }
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public boolean setDegree(int paramInt)
@@ -165,15 +199,24 @@ public class SPlayerTextureView
     }
   }
   
+  public void setVideoViewTagId(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TAG);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString);
+    this.mTag = localStringBuilder.toString();
+  }
+  
   public void setVideoWidthAndHeight(int paramInt1, int paramInt2)
   {
     this.mVideoWidth = paramInt1;
     this.mVideoHeight = paramInt2;
   }
   
-  public void setViewCallBack(ISPlayerViewBase.viewCreateCallBack paramviewCreateCallBack)
+  public void setViewCallBack(ISPlayerViewBase.ViewCreateCallBack paramViewCreateCallBack)
   {
-    this.mViewCallBack = paramviewCreateCallBack;
+    this.mViewCallBack = paramViewCreateCallBack;
   }
   
   public void setXYaxis(int paramInt)
@@ -184,7 +227,7 @@ public class SPlayerTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerTextureView
  * JD-Core Version:    0.7.0.1
  */

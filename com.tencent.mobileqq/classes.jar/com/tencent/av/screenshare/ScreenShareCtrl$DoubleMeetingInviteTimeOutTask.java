@@ -1,45 +1,44 @@
 package com.tencent.av.screenshare;
 
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
-import lid;
+import com.tencent.av.utils.AudioHelper;
 import mqq.util.WeakReference;
 import org.jetbrains.annotations.NotNull;
 
 class ScreenShareCtrl$DoubleMeetingInviteTimeOutTask
   implements Runnable
 {
-  public final lid a;
-  private final WeakReference<VideoController> a;
+  public final SessionInfo a;
+  private final WeakReference<VideoController> b;
   
-  public ScreenShareCtrl$DoubleMeetingInviteTimeOutTask(VideoController paramVideoController, @NotNull lid paramlid)
+  public ScreenShareCtrl$DoubleMeetingInviteTimeOutTask(VideoController paramVideoController, @NotNull SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramVideoController);
-    this.jdField_a_of_type_Lid = paramlid;
+    this.b = new WeakReference(paramVideoController);
+    this.a = paramSessionInfo;
   }
   
   public void run()
   {
-    long l = AudioHelper.b();
-    VideoController localVideoController = (VideoController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localVideoController != null) && (this.jdField_a_of_type_Lid.jdField_g_of_type_Int == 9))
+    long l = AudioHelper.c();
+    VideoController localVideoController = (VideoController)this.b.get();
+    if ((localVideoController != null) && (this.a.i == 9))
     {
-      if (localVideoController.a.a() <= 0) {
-        break label82;
+      if (localVideoController.e.f() > 0)
+      {
+        localVideoController.e.a(new Object[] { Integer.valueOf(404), Long.valueOf(l), Long.valueOf(this.a.aN) });
+        return;
       }
-      localVideoController.a.a(new Object[] { Integer.valueOf(404), Long.valueOf(l), Long.valueOf(this.jdField_a_of_type_Lid.jdField_g_of_type_Long) });
+      if (localVideoController.e.isBackgroundStop) {
+        localVideoController.a(l, this.a.aN, true, 0);
+      }
     }
-    label82:
-    while (!localVideoController.a.isBackground_Stop) {
-      return;
-    }
-    localVideoController.a(l, this.jdField_a_of_type_Lid.jdField_g_of_type_Long, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareCtrl.DoubleMeetingInviteTimeOutTask
  * JD-Core Version:    0.7.0.1
  */

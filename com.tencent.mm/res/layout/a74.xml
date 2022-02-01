@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/cch" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
-    <ImageView android:layout_gravity="center" android:id="@id/cci" android:background="#ff333333" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <View android:background="#59000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/uz" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.media.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/ccj" android:layout_width="36.0dip" android:layout_height="36.0dip" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/a6q" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/c_x" />
-    </LinearLayout>
-    <ImageView android:id="@id/cck" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
-</FrameLayout>
+    <RelativeLayout android:gravity="center_horizontal" android:id="@id/brt" android:background="@color/qd" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:gravity="center" android:id="@id/j6w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j1" />
+        <RelativeLayout android:id="@id/ewt" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true">
+            <RelativeLayout android:id="@id/ewu" android:layout_width="fill_parent" android:layout_height="48.0dip">
+                <View android:background="@color/c4" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/aks" android:gravity="center" android:id="@id/j9o" android:paddingLeft="5.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cmm" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/ewp" android:background="@drawable/b4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip">
+                <View android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" />
+                <ImageButton android:layout_gravity="center" android:id="@id/ewo" android:background="@null" android:padding="@dimen/k" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sw" android:scaleType="fitXY" android:contentDescription="@string/fqq" />
+                <View android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+                <ImageButton android:layout_gravity="center" android:id="@id/ewn" android:background="@null" android:padding="@dimen/k" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sv" android:scaleType="fitXY" android:contentDescription="@string/fqp" />
+                <View android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+            </LinearLayout>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ewv" android:background="@color/qd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ewt" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/bz" android:gravity="center|left" android:id="@id/o5" android:background="@color/xd" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/m9" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

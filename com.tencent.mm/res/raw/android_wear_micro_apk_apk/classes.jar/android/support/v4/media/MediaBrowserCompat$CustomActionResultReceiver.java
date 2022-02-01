@@ -7,18 +7,18 @@ import android.util.Log;
 class MediaBrowserCompat$CustomActionResultReceiver
   extends ResultReceiver
 {
-  private final Bundle ew;
-  private final e gt;
+  private final Bundle gl;
+  private final e iq;
   
   protected final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (this.gt == null) {
+    if (this.iq == null) {
       return;
     }
     switch (paramInt)
     {
     }
-    Log.w("MediaBrowserCompat", "Unknown result code: " + paramInt + " (extras=" + this.ew + ", resultData=" + paramBundle + ")");
+    Log.w("MediaBrowserCompat", "Unknown result code: " + paramInt + " (extras=" + this.gl + ", resultData=" + paramBundle + ")");
   }
 }
 

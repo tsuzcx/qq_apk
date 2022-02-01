@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import adtk;
-import apdy;
+import com.tencent.mobileqq.activity.QZoneFeedsObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Map;
 
-public class FeedsManager$2$1
+class FeedsManager$2$1
   implements Runnable
 {
-  public FeedsManager$2$1(apdy paramapdy) {}
+  FeedsManager$2$1(FeedsManager.2 param2) {}
   
   public void run()
   {
     if (!this.a.a.feedInfoCache.isEmpty()) {
-      FeedsManager.access$200(this.a.a).notifyObservers(adtk.class, 10000, true, null);
+      FeedsManager.access$200(this.a.a).notifyObservers(QZoneFeedsObserver.class, 10000, true, null);
     }
   }
 }

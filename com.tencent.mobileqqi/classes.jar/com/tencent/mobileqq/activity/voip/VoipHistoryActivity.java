@@ -34,11 +34,11 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView.AdapterContextMenuInfo;
+import ewn;
 import ewo;
 import ewp;
 import ewq;
 import ewr;
-import ews;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -59,7 +59,7 @@ public class VoipHistoryActivity
   private VoipHistoryInterface jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface;
   private PhoneContactManager jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = null;
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  private ews jdField_a_of_type_Ews;
+  private ewr jdField_a_of_type_Ewr;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = null;
   private View jdField_b_of_type_AndroidViewView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -103,12 +103,12 @@ public class VoipHistoryActivity
       ((QCallFacade)localObject).addObserver(this);
     }
     setTitle(getString(2131559900));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131234694);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131234693));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131234693);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131234692));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setContentBackground(2130837729);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setEmptyView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Ews = new ews(this, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Ews);
+    this.jdField_a_of_type_Ewr = new ewr(this, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Ewr);
     registerForContextMenu(this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnCreateContextMenuListener(this);
     localObject = getSharedPreferences("VOIP_share", 0);
@@ -117,12 +117,12 @@ public class VoipHistoryActivity
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putInt("voip_firstuse", 1);
       ((SharedPreferences.Editor)localObject).commit();
-      this.c = findViewById(2131234697);
+      this.c = findViewById(2131234696);
       this.c.setVisibility(0);
+      ((TextView)findViewById(2131232042)).setVisibility(8);
       ((TextView)findViewById(2131232043)).setVisibility(8);
-      ((TextView)findViewById(2131232044)).setVisibility(8);
-      ((TextView)findViewById(2131232045)).setText(2131559867);
-      localObject = (Button)findViewById(2131232042);
+      ((TextView)findViewById(2131232044)).setText(2131559867);
+      localObject = (Button)findViewById(2131232041);
       ((Button)localObject).setText(2131559868);
       ((Button)localObject).setOnClickListener(this);
     }
@@ -139,7 +139,7 @@ public class VoipHistoryActivity
   public void b(View paramView)
   {
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "CallTab_external", "Call History_else", 0, 1, 0, "", "1", "", "");
-    paramView = (ewr)((ViewGroup)paramView.getParent()).getTag();
+    paramView = (ewq)((ViewGroup)paramView.getParent()).getTag();
     Intent localIntent = new Intent();
     if (paramView.a.type == jdField_b_of_type_Int)
     {
@@ -162,7 +162,7 @@ public class VoipHistoryActivity
   
   public void c(View paramView)
   {
-    paramView = (ewr)((ViewGroup)paramView.getParent()).getTag();
+    paramView = (ewq)((ViewGroup)paramView.getParent()).getTag();
     Intent localIntent = new Intent();
     int i;
     Object localObject;
@@ -255,11 +255,11 @@ public class VoipHistoryActivity
   protected void onAccountChanged()
   {
     super.onAccountChanged();
-    if ((this.jdField_a_of_type_Ews != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface != null))
+    if ((this.jdField_a_of_type_Ewr != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface != null))
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface.a(this);
-      this.jdField_a_of_type_Ews.notifyDataSetChanged();
+      this.jdField_a_of_type_Ewr.notifyDataSetChanged();
     }
   }
   
@@ -302,15 +302,15 @@ public class VoipHistoryActivity
       QLog.d("VoipHistoryActivity", 2, "DataBase OK.");
       e();
       QLog.d("VoipHistoryActivity", 2, "InitailViews OK.");
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234696));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131234695));
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       if (this.jdField_b_of_type_AndroidViewView == null)
       {
-        this.jdField_b_of_type_AndroidViewView = findViewById(2131234688);
+        this.jdField_b_of_type_AndroidViewView = findViewById(2131234687);
         this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       }
     } while (this.jdField_a_of_type_AndroidWidgetImageView != null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234691));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234690));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
   }
   
@@ -326,12 +326,12 @@ public class VoipHistoryActivity
       if (paramView.contactLookupId != null)
       {
         paramContextMenu.setHeaderTitle(paramView.strContactName);
-        paramContextMenu.getItem(0).setOnMenuItemClickListener(new ewo(this));
+        paramContextMenu.getItem(0).setOnMenuItemClickListener(new ewn(this));
       }
     }
     for (;;)
     {
-      paramContextMenu.getItem(1).setOnMenuItemClickListener(new ewq(this));
+      paramContextMenu.getItem(1).setOnMenuItemClickListener(new ewp(this));
       return;
       if (!TextUtils.isEmpty(paramView.nickName))
       {
@@ -345,26 +345,26 @@ public class VoipHistoryActivity
         break;
       }
       paramContextMenu.setHeaderTitle(((QCallRecent)paramView.obj).displayName);
-      paramContextMenu.getItem(0).setOnMenuItemClickListener(new ewp(this));
+      paramContextMenu.getItem(0).setOnMenuItemClickListener(new ewo(this));
     }
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    MenuItem localMenuItem = paramMenu.add(0, 2131234692, 0, "");
+    MenuItem localMenuItem = paramMenu.add(0, 2131234691, 0, "");
     localMenuItem.setIcon(2130840482);
     localMenuItem.setTitle(getString(2131559881));
     MenuItemCompat.setShowAsAction(localMenuItem, 1);
-    localMenuItem = paramMenu.add(0, 2131234691, 0, "");
+    localMenuItem = paramMenu.add(0, 2131234690, 0, "");
     localMenuItem.setTitle(getString(2131559874));
     MenuItemCompat.setShowAsAction(localMenuItem, 0);
-    localMenuItem = paramMenu.add(0, 2131234691, 1, "");
+    localMenuItem = paramMenu.add(0, 2131234690, 1, "");
     localMenuItem.setTitle(getString(2131559875));
     MenuItemCompat.setShowAsAction(localMenuItem, 0);
-    localMenuItem = paramMenu.add(0, 2131234691, 2, "");
+    localMenuItem = paramMenu.add(0, 2131234690, 2, "");
     localMenuItem.setTitle(getString(2131559876));
     MenuItemCompat.setShowAsAction(localMenuItem, 0);
-    localMenuItem = paramMenu.add(0, 2131234691, 3, "");
+    localMenuItem = paramMenu.add(0, 2131234690, 3, "");
     localMenuItem.setTitle(getString(2131559877));
     MenuItemCompat.setShowAsAction(localMenuItem, 0);
     return super.onCreateOptionsMenu(paramMenu);
@@ -428,7 +428,7 @@ public class VoipHistoryActivity
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipHistoryInterface.a(this);
-      this.jdField_a_of_type_Ews.notifyDataSetChanged();
+      this.jdField_a_of_type_Ewr.notifyDataSetChanged();
     }
   }
 }

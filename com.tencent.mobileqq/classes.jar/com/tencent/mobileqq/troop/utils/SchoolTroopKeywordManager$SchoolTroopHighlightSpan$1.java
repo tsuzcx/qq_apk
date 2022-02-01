@@ -1,50 +1,53 @@
 package com.tencent.mobileqq.troop.utils;
 
-import azqs;
-import bclm;
-import bcln;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan$1
+class SchoolTroopKeywordManager$SchoolTroopHighlightSpan$1
   implements Runnable
 {
-  public SchoolTroopKeywordManager$SchoolTroopHighlightSpan$1(bcln parambcln, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2) {}
+  SchoolTroopKeywordManager$SchoolTroopHighlightSpan$1(SchoolTroopKeywordManager.SchoolTroopHighlightSpan paramSchoolTroopHighlightSpan, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject;
-    if (!bcln.a(this.this$0).jdField_a_of_type_Boolean)
+    if (!SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).h)
     {
-      localObject = bcln.a(this.this$0).getCurrentAccountUin();
-      localObject = ((TroopManager)bcln.a(this.this$0).getManager(52)).b(bcln.a(this.this$0).jdField_a_of_type_JavaLangString, (String)localObject);
-      if (localObject != null)
-      {
-        if (((TroopMemberInfo)localObject).level != 332) {
-          break label186;
+      localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.b(this.this$0).getCurrentAccountUin();
+      localObject = ((TroopManager)SchoolTroopKeywordManager.SchoolTroopHighlightSpan.b(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER)).g(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).b, (String)localObject);
+      if (localObject != null) {
+        if (((TroopMemberInfo)localObject).level == 332)
+        {
+          localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0);
+          ((SchoolTroopKeywordManager.KeywordResult)localObject).c |= 0x4;
         }
-        localObject = bcln.a(this.this$0);
-        ((bclm)localObject).jdField_a_of_type_Int |= 0x4;
+        else if (((TroopMemberInfo)localObject).level == 333)
+        {
+          localObject = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0);
+          ((SchoolTroopKeywordManager.KeywordResult)localObject).c |= 0x8;
+        }
       }
+      SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).h = true;
     }
-    for (;;)
-    {
-      bcln.a(this.this$0).jdField_a_of_type_Boolean = true;
-      azqs.b(null, "dc00899", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, bcln.a(this.this$0).jdField_a_of_type_JavaLangString, bcln.a(this.this$0).a(), bcln.a(this.this$0).jdField_b_of_type_Int + "", bcln.a(this.this$0).jdField_b_of_type_JavaLangString);
-      return;
-      label186:
-      if (((TroopMemberInfo)localObject).level == 333)
-      {
-        localObject = bcln.a(this.this$0);
-        ((bclm)localObject).jdField_a_of_type_Int |= 0x8;
-      }
-    }
+    Object localObject = this.a;
+    String str1 = this.b;
+    String str2 = this.c;
+    String str3 = this.d;
+    int i = this.e;
+    int j = this.f;
+    String str4 = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).b;
+    String str5 = SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).d);
+    localStringBuilder.append("");
+    ReportController.b(null, "dc00899", (String)localObject, str1, str2, str3, i, j, str4, str5, localStringBuilder.toString(), SchoolTroopKeywordManager.SchoolTroopHighlightSpan.a(this.this$0).e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1
  * JD-Core Version:    0.7.0.1
  */

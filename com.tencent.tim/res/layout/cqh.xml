@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <FrameLayout android:id="@id/j_a" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center_horizontal" android:id="@id/nxt" android:layout_width="fill_parent" android:layout_height="44.0dip" app:tabCompatContentEnd="12.0dip" app:tabCompatContentStart="12.0dip" app:tabCompatMinWidth="88.0dip" app:tabCompatPaddingEnd="12.0dip" app:tabCompatPaddingStart="12.0dip" />
+        <ImageView android:gravity="center_vertical" android:id="@id/az_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:src="@drawable/do6" android:drawablePadding="5.0dip" />
+    </FrameLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/nxu" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

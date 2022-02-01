@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bid" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="19.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="@color/oc" android:gravity="center_vertical" android:id="@id/o_c" android:background="@drawable/hgt" android:paddingLeft="13.0dip" android:paddingTop="5.0dip" android:paddingRight="15.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wca" android:drawableLeft="@drawable/hit" android:drawablePadding="5.0dip" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <CheckBox android:textSize="12.0sp" android:textColor="@color/ml" android:gravity="center_vertical" android:id="@id/mjt" android:paddingLeft="0.0dip" android:paddingTop="3.0dip" android:paddingRight="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:button="@drawable/biw" android:text="@string/wbt" />
+        <CheckBox android:textSize="12.0sp" android:textColor="@color/ml" android:gravity="center_vertical" android:id="@id/mjy" android:paddingLeft="0.0dip" android:paddingTop="3.0dip" android:paddingRight="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:checked="true" android:button="@drawable/biw" android:text="@string/wc6" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/nvg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-3.0dip" />
+    <View android:id="@id/obb" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <FrameLayout android:layout_gravity="center" android:id="@id/mww" android:layout_width="150.0dip" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginTop="7.0dip" android:layout_marginBottom="9.0dip" android:src="@drawable/hal" />
+    </FrameLayout>
+</LinearLayout>

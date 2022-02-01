@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.b.m;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.c.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,10 +14,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FriendSnsPreference
   extends IconPreference
 {
+  private String adzM = null;
+  private Bitmap adzN = null;
+  private long adzO;
   private Context context;
-  private String yXd = null;
-  private Bitmap yXe = null;
-  private long yXf;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,48 +30,48 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  public final void atm(String paramString)
+  public final void bzH(String paramString)
   {
-    AppMethodBeat.i(29303);
-    this.yXe = null;
-    this.yUb = -1;
-    this.yXd = paramString;
-    this.yXf = 0L;
-    if (this.oyN != null) {
-      a.b.c(this.oyN, paramString);
+    AppMethodBeat.i(33138);
+    this.adzN = null;
+    this.adva = -1;
+    this.adzM = paramString;
+    this.adzO = 0L;
+    if (this.KKj != null) {
+      a.b.g(this.KKj, paramString);
     }
-    AppMethodBeat.o(29303);
+    AppMethodBeat.o(33138);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(29305);
+    AppMethodBeat.i(33140);
     super.onBindView(paramView);
-    if ((this.yXd != null) && (g.RG())) {
-      a.b.c(this.oyN, this.yXd);
+    if ((this.adzM != null) && (h.baz())) {
+      a.b.g(this.KKj, this.adzM);
     }
-    if ((this.yXf != 0L) && (this.oyN != null)) {
-      ((m)g.E(m.class)).a(this.yXf, this.oyN, this.mContext.hashCode());
+    if ((this.adzO != 0L) && (this.KKj != null)) {
+      ((p)h.ax(p.class)).a(this.adzO, this.KKj, this.mContext.hashCode());
     }
-    AppMethodBeat.o(29305);
+    AppMethodBeat.o(33140);
   }
   
-  public final void ou(long paramLong)
+  public final void zD(long paramLong)
   {
-    AppMethodBeat.i(29304);
-    this.yXd = null;
-    this.yXe = null;
-    this.yUb = -1;
-    this.yXf = paramLong;
-    if ((this.yXf != 0L) && (this.oyN != null)) {
-      ((m)g.E(m.class)).a(this.yXf, this.oyN, this.mContext.hashCode());
+    AppMethodBeat.i(33139);
+    this.adzM = null;
+    this.adzN = null;
+    this.adva = -1;
+    this.adzO = paramLong;
+    if ((this.adzO != 0L) && (this.KKj != null)) {
+      ((p)h.ax(p.class)).a(this.adzO, this.KKj, this.mContext.hashCode());
     }
-    AppMethodBeat.o(29304);
+    AppMethodBeat.o(33139);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FriendSnsPreference
  * JD-Core Version:    0.7.0.1
  */

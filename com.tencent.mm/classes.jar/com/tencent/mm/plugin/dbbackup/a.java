@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.dbbackup;
 
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements n
 {
-  public final void a(m paramm) {}
+  public final void a(l paraml) {}
   
-  public final void a(n paramn) {}
+  public final void a(m paramm) {}
 }
 
 

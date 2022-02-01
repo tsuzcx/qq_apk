@@ -33,65 +33,76 @@ public final class ArrayDeque<E>
   
   public ArrayDeque(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (Object[] arrayOfObject = ArrayDequeKt.access$getEmptyElementData$p();; arrayOfObject = new Object[paramInt])
+    if (paramInt == 0)
     {
-      this.elementData = arrayOfObject;
-      return;
-      if (paramInt <= 0) {
-        break;
-      }
+      localObject = ArrayDequeKt.access$getEmptyElementData$p();
     }
-    throw ((Throwable)new IllegalArgumentException("Illegal Capacity: " + paramInt));
+    else
+    {
+      if (paramInt <= 0) {
+        break label30;
+      }
+      localObject = new Object[paramInt];
+    }
+    this.elementData = ((Object[])localObject);
+    return;
+    label30:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Illegal Capacity: ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString()));
   }
   
   public ArrayDeque(@NotNull Collection<? extends E> paramCollection)
   {
+    int i = 0;
     paramCollection = paramCollection.toArray(new Object[0]);
-    if (paramCollection == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
+    if (paramCollection != null)
+    {
+      this.elementData = paramCollection;
+      paramCollection = this.elementData;
+      this.size = paramCollection.length;
+      if (paramCollection.length == 0) {
+        i = 1;
+      }
+      if (i != 0) {
+        this.elementData = ArrayDequeKt.access$getEmptyElementData$p();
+      }
+      return;
     }
-    this.elementData = paramCollection;
-    this.size = this.elementData.length;
-    if (this.elementData.length == 0) {
-      i = 1;
-    }
-    if (i != 0) {
-      this.elementData = ArrayDequeKt.access$getEmptyElementData$p();
-    }
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
   }
   
   private final void copyCollectionElements(int paramInt, Collection<? extends E> paramCollection)
   {
     Iterator localIterator = paramCollection.iterator();
     int i = this.elementData.length;
-    if ((paramInt >= i) || (!localIterator.hasNext()))
+    while ((paramInt < i) && (localIterator.hasNext()))
     {
-      paramInt = 0;
-      i = this.head;
-    }
-    for (;;)
-    {
-      if ((paramInt >= i) || (!localIterator.hasNext()))
-      {
-        this.size = (size() + paramCollection.size());
-        return;
-        this.elementData[paramInt] = localIterator.next();
-        paramInt += 1;
-        break;
-      }
       this.elementData[paramInt] = localIterator.next();
       paramInt += 1;
     }
+    paramInt = 0;
+    i = this.head;
+    while ((paramInt < i) && (localIterator.hasNext()))
+    {
+      this.elementData[paramInt] = localIterator.next();
+      paramInt += 1;
+    }
+    this.size = (size() + paramCollection.size());
   }
   
   private final void copyElements(int paramInt)
   {
-    Object[] arrayOfObject = new Object[paramInt];
-    ArraysKt.copyInto(this.elementData, arrayOfObject, 0, this.head, this.elementData.length);
-    ArraysKt.copyInto(this.elementData, arrayOfObject, this.elementData.length - this.head, 0, this.head);
+    Object[] arrayOfObject1 = new Object[paramInt];
+    Object[] arrayOfObject2 = this.elementData;
+    ArraysKt.copyInto(arrayOfObject2, arrayOfObject1, 0, this.head, arrayOfObject2.length);
+    arrayOfObject2 = this.elementData;
+    paramInt = arrayOfObject2.length;
+    int i = this.head;
+    ArraysKt.copyInto(arrayOfObject2, arrayOfObject1, paramInt - i, 0, i);
     this.head = 0;
-    this.elementData = arrayOfObject;
+    this.elementData = arrayOfObject1;
   }
   
   private final int decremented(int paramInt)
@@ -104,107 +115,109 @@ public final class ArrayDeque<E>
   
   private final void ensureCapacity(int paramInt)
   {
-    if (paramInt < 0) {
-      throw ((Throwable)new IllegalStateException("Deque is too big."));
-    }
-    if (paramInt <= this.elementData.length) {
-      return;
-    }
-    if (this.elementData == ArrayDequeKt.access$getEmptyElementData$p())
+    if (paramInt >= 0)
     {
-      this.elementData = new Object[RangesKt.coerceAtLeast(paramInt, 10)];
+      Object[] arrayOfObject = this.elementData;
+      if (paramInt <= arrayOfObject.length) {
+        return;
+      }
+      if (arrayOfObject == ArrayDequeKt.access$getEmptyElementData$p())
+      {
+        this.elementData = new Object[RangesKt.coerceAtLeast(paramInt, 10)];
+        return;
+      }
+      copyElements(newCapacity$kotlin_stdlib(this.elementData.length, paramInt));
       return;
     }
-    copyElements(newCapacity$kotlin_stdlib(this.elementData.length, paramInt));
+    throw ((Throwable)new IllegalStateException("Deque is too big."));
   }
   
   private final boolean filterInPlace(Function1<? super E, Boolean> paramFunction1)
   {
+    boolean bool3 = isEmpty();
     int k = 0;
-    if (!isEmpty()) {
-      if (access$getElementData$p(this).length != 0) {
-        break label30;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (!bool3)
+    {
+      if (access$getElementData$p(this).length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-    }
-    boolean bool2;
-    label30:
-    for (int i = 1; i != 0; i = 0)
-    {
-      bool2 = false;
-      return bool2;
-    }
-    int m = access$positiveMod(this, size() + access$getHead$p(this));
-    i = access$getHead$p(this);
-    int j;
-    boolean bool1;
-    Object localObject;
-    if (access$getHead$p(this) < m)
-    {
-      j = access$getHead$p(this);
-      bool1 = false;
-      if (j < m)
+      if (i != 0) {
+        return false;
+      }
+      int i = size();
+      int m = access$positiveMod(this, access$getHead$p(this) + i);
+      i = access$getHead$p(this);
+      int j;
+      Object localObject;
+      if (access$getHead$p(this) < m)
       {
-        localObject = access$getElementData$p(this)[j];
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+        j = access$getHead$p(this);
+        while (j < m)
         {
-          access$getElementData$p(this)[i] = localObject;
-          i += 1;
-        }
-        for (;;)
-        {
+          localObject = access$getElementData$p(this)[j];
+          if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
+          }
+          else
+          {
+            bool1 = true;
+          }
           j += 1;
-          break;
-          bool1 = true;
+        }
+        ArraysKt.fill(access$getElementData$p(this), null, i, m);
+      }
+      else
+      {
+        j = access$getHead$p(this);
+        int n = access$getElementData$p(this).length;
+        bool1 = false;
+        while (j < n)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
+        }
+        i = access$positiveMod(this, i);
+        j = k;
+        while (j < m)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i = access$incremented(this, i);
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
         }
       }
-      ArraysKt.fill(access$getElementData$p(this), null, i, m);
-    }
-    for (;;)
-    {
       bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
-      return bool1;
-      j = access$getHead$p(this);
-      int n = access$getElementData$p(this).length;
-      bool1 = false;
-      if (j < n)
+      if (bool1)
       {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
-        {
-          access$getElementData$p(this)[i] = localObject;
-          i += 1;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          bool1 = true;
-        }
-      }
-      i = access$positiveMod(this, i);
-      j = k;
-      if (j < m)
-      {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue())
-        {
-          access$getElementData$p(this)[i] = localObject;
-          i = access$incremented(this, i);
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          bool1 = true;
-        }
+        access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
+        bool2 = bool1;
       }
     }
+    return bool2;
   }
   
   private final int incremented(int paramInt)
@@ -238,9 +251,10 @@ public final class ArrayDeque<E>
   
   private final int positiveMod(int paramInt)
   {
+    Object[] arrayOfObject = this.elementData;
     int i = paramInt;
-    if (paramInt >= this.elementData.length) {
-      i = paramInt - this.elementData.length;
+    if (paramInt >= arrayOfObject.length) {
+      i = paramInt - arrayOfObject.length;
     }
     return i;
   }
@@ -260,38 +274,49 @@ public final class ArrayDeque<E>
     }
     ensureCapacity(size() + 1);
     int i = access$positiveMod(this, access$getHead$p(this) + paramInt);
+    Object[] arrayOfObject;
     if (paramInt < size() + 1 >> 1)
     {
       paramInt = decremented(i);
       i = decremented(this.head);
-      if (paramInt >= this.head)
+      int j = this.head;
+      if (paramInt >= j)
       {
-        this.elementData[i] = this.elementData[this.head];
-        ArraysKt.copyInto(this.elementData, this.elementData, this.head, this.head + 1, paramInt + 1);
+        arrayOfObject = this.elementData;
+        arrayOfObject[i] = arrayOfObject[j];
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, j, j + 1, paramInt + 1);
       }
-      for (;;)
+      else
       {
-        this.elementData[paramInt] = paramE;
-        this.head = i;
-        this.size = (size() + 1);
-        return;
-        ArraysKt.copyInto(this.elementData, this.elementData, this.head - 1, this.head, this.elementData.length);
-        this.elementData[(this.elementData.length - 1)] = this.elementData[0];
-        ArraysKt.copyInto(this.elementData, this.elementData, 0, 1, paramInt + 1);
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, j - 1, j, arrayOfObject.length);
+        arrayOfObject = this.elementData;
+        arrayOfObject[(arrayOfObject.length - 1)] = arrayOfObject[0];
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, 1, paramInt + 1);
       }
+      this.elementData[paramInt] = paramE;
+      this.head = i;
     }
-    paramInt = access$positiveMod(this, size() + access$getHead$p(this));
-    if (i < paramInt) {
-      ArraysKt.copyInto(this.elementData, this.elementData, i + 1, i, paramInt);
-    }
-    for (;;)
+    else
     {
+      paramInt = size();
+      paramInt = access$positiveMod(this, access$getHead$p(this) + paramInt);
+      if (i < paramInt)
+      {
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, i + 1, i, paramInt);
+      }
+      else
+      {
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 1, 0, paramInt);
+        arrayOfObject = this.elementData;
+        arrayOfObject[0] = arrayOfObject[(arrayOfObject.length - 1)];
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, i + 1, i, arrayOfObject.length - 1);
+      }
       this.elementData[i] = paramE;
-      break;
-      ArraysKt.copyInto(this.elementData, this.elementData, 1, 0, paramInt);
-      this.elementData[0] = this.elementData[(this.elementData.length - 1)];
-      ArraysKt.copyInto(this.elementData, this.elementData, i + 1, i, this.elementData.length - 1);
     }
+    this.size = (size() + 1);
   }
   
   public boolean add(E paramE)
@@ -311,79 +336,99 @@ public final class ArrayDeque<E>
       return addAll(paramCollection);
     }
     ensureCapacity(size() + paramCollection.size());
-    int k = access$positiveMod(this, size() + access$getHead$p(this));
-    int i = access$positiveMod(this, access$getHead$p(this) + paramInt);
+    int i = size();
+    int k = access$positiveMod(this, access$getHead$p(this) + i);
+    i = access$positiveMod(this, access$getHead$p(this) + paramInt);
     int j = paramCollection.size();
+    Object[] arrayOfObject;
     if (paramInt < size() + 1 >> 1)
     {
-      paramInt = this.head - j;
-      if (i >= this.head) {
-        if (paramInt >= 0) {
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt, this.head, i);
-        }
-      }
-      for (;;)
+      k = this.head;
+      paramInt = k - j;
+      if (i >= k)
       {
-        this.head = paramInt;
-        copyCollectionElements(negativeMod(i - j), paramCollection);
-        return true;
-        paramInt += this.elementData.length;
-        k = this.head;
-        int m = this.elementData.length - paramInt;
-        if (m >= i - k)
+        if (paramInt >= 0)
         {
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt, this.head, i);
+          arrayOfObject = this.elementData;
+          ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, k, i);
         }
         else
         {
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt, this.head, this.head + m);
-          ArraysKt.copyInto(this.elementData, this.elementData, 0, m + this.head, i);
-          continue;
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt, this.head, this.elementData.length);
-          if (j >= i)
+          arrayOfObject = this.elementData;
+          paramInt += arrayOfObject.length;
+          int m = arrayOfObject.length - paramInt;
+          if (m >= i - k)
           {
-            ArraysKt.copyInto(this.elementData, this.elementData, this.elementData.length - j, 0, i);
+            ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, k, i);
           }
           else
           {
-            ArraysKt.copyInto(this.elementData, this.elementData, this.elementData.length - j, 0, j);
-            ArraysKt.copyInto(this.elementData, this.elementData, 0, j, i);
+            ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, k, k + m);
+            arrayOfObject = this.elementData;
+            ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, this.head + m, i);
           }
         }
       }
-    }
-    paramInt = i + j;
-    if (i < k) {
-      if (k + j <= this.elementData.length) {
-        ArraysKt.copyInto(this.elementData, this.elementData, paramInt, i, k);
-      }
-    }
-    for (;;)
-    {
-      copyCollectionElements(i, paramCollection);
-      break;
-      if (paramInt >= this.elementData.length)
-      {
-        ArraysKt.copyInto(this.elementData, this.elementData, paramInt - this.elementData.length, i, k);
-      }
       else
       {
-        j = j + k - this.elementData.length;
-        ArraysKt.copyInto(this.elementData, this.elementData, 0, k - j, k);
-        ArraysKt.copyInto(this.elementData, this.elementData, paramInt, i, k - j);
-        continue;
-        ArraysKt.copyInto(this.elementData, this.elementData, j, 0, k);
-        if (paramInt >= this.elementData.length)
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, k, arrayOfObject.length);
+        if (j >= i)
         {
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt - this.elementData.length, i, this.elementData.length);
+          arrayOfObject = this.elementData;
+          ArraysKt.copyInto(arrayOfObject, arrayOfObject, arrayOfObject.length - j, 0, i);
         }
         else
         {
-          ArraysKt.copyInto(this.elementData, this.elementData, 0, this.elementData.length - j, this.elementData.length);
-          ArraysKt.copyInto(this.elementData, this.elementData, paramInt, i, this.elementData.length - j);
+          arrayOfObject = this.elementData;
+          ArraysKt.copyInto(arrayOfObject, arrayOfObject, arrayOfObject.length - j, 0, j);
+          arrayOfObject = this.elementData;
+          ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, j, i);
         }
       }
+      this.head = paramInt;
+      copyCollectionElements(negativeMod(i - j), paramCollection);
+      return true;
     }
+    paramInt = i + j;
+    if (i < k)
+    {
+      j += k;
+      arrayOfObject = this.elementData;
+      if (j <= arrayOfObject.length)
+      {
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, i, k);
+      }
+      else if (paramInt >= arrayOfObject.length)
+      {
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt - arrayOfObject.length, i, k);
+      }
+      else
+      {
+        j = k - (j - arrayOfObject.length);
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, j, k);
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, i, j);
+      }
+    }
+    else
+    {
+      arrayOfObject = this.elementData;
+      ArraysKt.copyInto(arrayOfObject, arrayOfObject, j, 0, k);
+      arrayOfObject = this.elementData;
+      if (paramInt >= arrayOfObject.length)
+      {
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt - arrayOfObject.length, i, arrayOfObject.length);
+      }
+      else
+      {
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, arrayOfObject.length - j, arrayOfObject.length);
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt, i, arrayOfObject.length - j);
+      }
+    }
+    copyCollectionElements(i, paramCollection);
+    return true;
   }
   
   public boolean addAll(@NotNull Collection<? extends E> paramCollection)
@@ -393,7 +438,8 @@ public final class ArrayDeque<E>
       return false;
     }
     ensureCapacity(size() + paramCollection.size());
-    copyCollectionElements(access$positiveMod(this, size() + access$getHead$p(this)), paramCollection);
+    int i = size();
+    copyCollectionElements(access$positiveMod(this, access$getHead$p(this) + i), paramCollection);
     return true;
   }
   
@@ -408,33 +454,29 @@ public final class ArrayDeque<E>
   public final void addLast(E paramE)
   {
     ensureCapacity(size() + 1);
-    this.elementData[access$positiveMod(this, size() + access$getHead$p(this))] = paramE;
+    Object[] arrayOfObject = this.elementData;
+    int i = size();
+    arrayOfObject[access$positiveMod(this, access$getHead$p(this) + i)] = paramE;
     this.size = (size() + 1);
   }
   
   public void clear()
   {
-    int j = access$positiveMod(this, size() + access$getHead$p(this));
-    if (this.head < j) {
-      ArraysKt.fill(this.elementData, null, this.head, j);
-    }
-    label94:
-    for (;;)
+    int i = size();
+    i = access$positiveMod(this, access$getHead$p(this) + i);
+    int j = this.head;
+    if (j < i)
     {
-      this.head = 0;
-      this.size = 0;
-      return;
-      if (!isEmpty()) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label94;
-        }
-        ArraysKt.fill(this.elementData, null, this.head, this.elementData.length);
-        ArraysKt.fill(this.elementData, null, 0, j);
-        break;
-      }
+      ArraysKt.fill(this.elementData, null, j, i);
     }
+    else if ((isEmpty() ^ true))
+    {
+      Object[] arrayOfObject = this.elementData;
+      ArraysKt.fill(arrayOfObject, null, this.head, arrayOfObject.length);
+      ArraysKt.fill(this.elementData, null, 0, i);
+    }
+    this.head = 0;
+    this.size = 0;
   }
   
   public boolean contains(Object paramObject)
@@ -444,11 +486,12 @@ public final class ArrayDeque<E>
   
   public final E first()
   {
-    if (isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
+    if (!isEmpty())
+    {
+      int i = this.head;
+      return access$getElementData$p(this)[i];
     }
-    int i = this.head;
-    return access$getElementData$p(this)[i];
+    throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
   }
   
   @Nullable
@@ -475,61 +518,77 @@ public final class ArrayDeque<E>
   
   public int indexOf(Object paramObject)
   {
-    int j = access$positiveMod(this, size() + access$getHead$p(this));
-    int i;
-    if (this.head < j)
-    {
-      i = this.head;
+    int i = size();
+    int j = access$positiveMod(this, access$getHead$p(this) + i);
+    i = this.head;
+    if (i < j) {
       while (i < j)
       {
-        if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-          return i - this.head;
+        if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+        {
+          j = this.head;
+          return i - j;
         }
         i += 1;
       }
     }
-    if (this.head >= j)
+    if (i >= j)
     {
-      i = this.head;
       int k = this.elementData.length;
-      while (i < k)
+      for (;;)
       {
-        if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-          return i - this.head;
+        if (i >= k) {
+          break label106;
+        }
+        if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+        {
+          j = this.head;
+          break;
         }
         i += 1;
       }
+      label106:
       i = 0;
-      while (i < j)
+      for (;;)
       {
-        if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-          return i + this.elementData.length - this.head;
+        if (i >= j) {
+          break label149;
+        }
+        if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+        {
+          i += this.elementData.length;
+          j = this.head;
+          break;
         }
         i += 1;
       }
     }
+    label149:
     return -1;
   }
   
   public final void internalStructure$kotlin_stdlib(@NotNull Function2<? super Integer, ? super Object[], Unit> paramFunction2)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction2, "structure");
-    int i = access$positiveMod(this, size() + access$getHead$p(this));
+    int i = size();
+    i = access$positiveMod(this, access$getHead$p(this) + i);
     if (isEmpty())
     {
       paramFunction2.invoke(Integer.valueOf(this.head), new Object[0]);
       return;
     }
-    Object[] arrayOfObject = new Object[size()];
-    if (this.head < i)
+    Object[] arrayOfObject1 = new Object[size()];
+    int j = this.head;
+    if (j < i)
     {
-      ArraysKt.copyInto$default(this.elementData, arrayOfObject, 0, this.head, i, 2, null);
-      paramFunction2.invoke(Integer.valueOf(this.head), arrayOfObject);
+      ArraysKt.copyInto$default(this.elementData, arrayOfObject1, 0, j, i, 2, null);
+      paramFunction2.invoke(Integer.valueOf(this.head), arrayOfObject1);
       return;
     }
-    ArraysKt.copyInto$default(this.elementData, arrayOfObject, 0, this.head, 0, 10, null);
-    ArraysKt.copyInto(this.elementData, arrayOfObject, this.elementData.length - this.head, 0, i);
-    paramFunction2.invoke(Integer.valueOf(this.head - this.elementData.length), arrayOfObject);
+    ArraysKt.copyInto$default(this.elementData, arrayOfObject1, 0, j, 0, 10, null);
+    Object[] arrayOfObject2 = this.elementData;
+    ArraysKt.copyInto(arrayOfObject2, arrayOfObject1, arrayOfObject2.length - this.head, 0, i);
+    paramFunction2.invoke(Integer.valueOf(this.head - this.elementData.length), arrayOfObject1);
   }
   
   public boolean isEmpty()
@@ -539,26 +598,30 @@ public final class ArrayDeque<E>
   
   public final E last()
   {
-    if (isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
+    if (!isEmpty())
+    {
+      int i = CollectionsKt.getLastIndex(this);
+      i = access$positiveMod(this, access$getHead$p(this) + i);
+      return access$getElementData$p(this)[i];
     }
-    int i = access$positiveMod(this, CollectionsKt.getLastIndex(this) + access$getHead$p(this));
-    return access$getElementData$p(this)[i];
+    throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
   }
   
   public int lastIndexOf(Object paramObject)
   {
-    int i = access$positiveMod(this, size() + access$getHead$p(this));
-    int j;
-    if (this.head < i)
+    int i = size();
+    i = access$positiveMod(this, access$getHead$p(this) + i);
+    int j = this.head;
+    if (j < i)
     {
       i -= 1;
-      j = this.head;
       if (i >= j) {
         for (;;)
         {
-          if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-            return i - this.head;
+          if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+          {
+            j = this.head;
+            return i - j;
           }
           if (i == j) {
             break;
@@ -567,31 +630,41 @@ public final class ArrayDeque<E>
         }
       }
     }
-    else if (this.head > i)
+    else if (j > i)
     {
       i -= 1;
-      while (i >= 0)
+      for (;;)
       {
-        if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-          return i + this.elementData.length - this.head;
+        if (i < 0) {
+          break label118;
+        }
+        if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+        {
+          i += this.elementData.length;
+          j = this.head;
+          break;
         }
         i -= 1;
       }
+      label118:
       i = ArraysKt.getLastIndex(this.elementData);
       j = this.head;
       if (i >= j) {
         for (;;)
         {
-          if (Intrinsics.areEqual(paramObject, this.elementData[i])) {
-            return i - this.head;
+          if (Intrinsics.areEqual(paramObject, this.elementData[i]))
+          {
+            j = this.head;
+            break;
           }
           if (i == j) {
-            break;
+            break label169;
           }
           i -= 1;
         }
       }
     }
+    label169:
     return -1;
   }
   
@@ -601,27 +674,27 @@ public final class ArrayDeque<E>
     if (isEmpty()) {
       return null;
     }
-    int i = access$positiveMod(this, CollectionsKt.getLastIndex(this) + access$getHead$p(this));
+    int i = CollectionsKt.getLastIndex(this);
+    i = access$positiveMod(this, access$getHead$p(this) + i);
     return access$getElementData$p(this)[i];
   }
   
   public final int newCapacity$kotlin_stdlib(int paramInt1, int paramInt2)
   {
-    int i = 2147483639;
-    int j = (paramInt1 >> 1) + paramInt1;
-    paramInt1 = j;
-    if (j - paramInt2 < 0) {
+    int i = paramInt1 + (paramInt1 >> 1);
+    paramInt1 = i;
+    if (i - paramInt2 < 0) {
       paramInt1 = paramInt2;
     }
+    i = paramInt1;
     if (paramInt1 - 2147483639 > 0)
     {
-      paramInt1 = i;
       if (paramInt2 > 2147483639) {
-        paramInt1 = 2147483647;
+        return 2147483647;
       }
-      return paramInt1;
+      i = 2147483639;
     }
-    return paramInt1;
+    return i;
   }
   
   public boolean remove(Object paramObject)
@@ -637,120 +710,90 @@ public final class ArrayDeque<E>
   public boolean removeAll(@NotNull Collection<? extends Object> paramCollection)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
-    if (!isEmpty()) {
-      if (access$getElementData$p(this).length != 0) {
-        break label33;
+    boolean bool3 = isEmpty();
+    int k = 0;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (!bool3)
+    {
+      if (access$getElementData$p(this).length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-    }
-    boolean bool2;
-    label33:
-    for (int i = 1; i != 0; i = 0)
-    {
-      bool2 = false;
-      return bool2;
-    }
-    int m = access$positiveMod(this, size() + access$getHead$p(this));
-    i = access$getHead$p(this);
-    int j;
-    boolean bool1;
-    Object localObject;
-    int k;
-    label103:
-    Object[] arrayOfObject;
-    if (access$getHead$p(this) < m)
-    {
-      j = access$getHead$p(this);
-      bool1 = false;
-      if (j < m)
+      if (i != 0) {
+        return false;
+      }
+      int i = size();
+      int m = access$positiveMod(this, access$getHead$p(this) + i);
+      i = access$getHead$p(this);
+      int j;
+      Object localObject;
+      if (access$getHead$p(this) < m)
       {
-        localObject = access$getElementData$p(this)[j];
-        if (!paramCollection.contains(localObject))
+        j = access$getHead$p(this);
+        while (j < m)
         {
-          k = 1;
-          if (k == 0) {
-            break label141;
+          localObject = access$getElementData$p(this)[j];
+          if ((paramCollection.contains(localObject) ^ true))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
           }
-          arrayOfObject = access$getElementData$p(this);
-          k = i + 1;
-          arrayOfObject[i] = localObject;
-          i = k;
-        }
-        for (;;)
-        {
+          else
+          {
+            bool1 = true;
+          }
           j += 1;
-          break;
-          k = 0;
-          break label103;
-          label141:
-          bool1 = true;
+        }
+        ArraysKt.fill(access$getElementData$p(this), null, i, m);
+      }
+      else
+      {
+        j = access$getHead$p(this);
+        int n = access$getElementData$p(this).length;
+        bool1 = false;
+        while (j < n)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if ((paramCollection.contains(localObject) ^ true))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
+        }
+        i = access$positiveMod(this, i);
+        j = k;
+        while (j < m)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if ((paramCollection.contains(localObject) ^ true))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i = access$incremented(this, i);
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
         }
       }
-      ArraysKt.fill(access$getElementData$p(this), null, i, m);
-    }
-    for (;;)
-    {
       bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
-      return bool1;
-      j = access$getHead$p(this);
-      int n = access$getElementData$p(this).length;
-      bool1 = false;
-      if (j < n)
+      if (bool1)
       {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (!paramCollection.contains(localObject))
-        {
-          k = 1;
-          label234:
-          if (k == 0) {
-            break label272;
-          }
-          arrayOfObject = access$getElementData$p(this);
-          k = i + 1;
-          arrayOfObject[i] = localObject;
-          i = k;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          k = 0;
-          break label234;
-          label272:
-          bool1 = true;
-        }
-      }
-      i = access$positiveMod(this, i);
-      j = 0;
-      if (j < m)
-      {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (!paramCollection.contains(localObject))
-        {
-          k = 1;
-          label321:
-          if (k == 0) {
-            break label353;
-          }
-          access$getElementData$p(this)[i] = localObject;
-          i = access$incremented(this, i);
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          k = 0;
-          break label321;
-          label353:
-          bool1 = true;
-        }
+        access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
+        bool2 = bool1;
       }
     }
+    return bool2;
   }
   
   public E removeAt(int paramInt)
@@ -764,47 +807,66 @@ public final class ArrayDeque<E>
     }
     int i = access$positiveMod(this, access$getHead$p(this) + paramInt);
     Object localObject = access$getElementData$p(this)[i];
+    Object[] arrayOfObject;
     if (paramInt < size() >> 1)
     {
-      if (i >= this.head) {
-        ArraysKt.copyInto(this.elementData, this.elementData, this.head + 1, this.head, i);
-      }
-      for (;;)
+      paramInt = this.head;
+      if (i >= paramInt)
       {
-        this.elementData[this.head] = null;
-        this.head = incremented(this.head);
-        this.size = (size() - 1);
-        return localObject;
-        ArraysKt.copyInto(this.elementData, this.elementData, 1, 0, i);
-        this.elementData[0] = this.elementData[(this.elementData.length - 1)];
-        ArraysKt.copyInto(this.elementData, this.elementData, this.head + 1, this.head, this.elementData.length - 1);
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt + 1, paramInt, i);
       }
+      else
+      {
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 1, 0, i);
+        arrayOfObject = this.elementData;
+        arrayOfObject[0] = arrayOfObject[(arrayOfObject.length - 1)];
+        paramInt = this.head;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, paramInt + 1, paramInt, arrayOfObject.length - 1);
+      }
+      arrayOfObject = this.elementData;
+      paramInt = this.head;
+      arrayOfObject[paramInt] = null;
+      this.head = incremented(paramInt);
     }
-    paramInt = access$positiveMod(this, CollectionsKt.getLastIndex(this) + access$getHead$p(this));
-    if (i <= paramInt) {
-      ArraysKt.copyInto(this.elementData, this.elementData, i, i + 1, paramInt + 1);
-    }
-    for (;;)
+    else
     {
+      paramInt = CollectionsKt.getLastIndex(this);
+      paramInt = access$positiveMod(this, access$getHead$p(this) + paramInt);
+      if (i <= paramInt)
+      {
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, i, i + 1, paramInt + 1);
+      }
+      else
+      {
+        arrayOfObject = this.elementData;
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, i, i + 1, arrayOfObject.length);
+        arrayOfObject = this.elementData;
+        arrayOfObject[(arrayOfObject.length - 1)] = arrayOfObject[0];
+        ArraysKt.copyInto(arrayOfObject, arrayOfObject, 0, 1, paramInt + 1);
+      }
       this.elementData[paramInt] = null;
-      break;
-      ArraysKt.copyInto(this.elementData, this.elementData, i, i + 1, this.elementData.length);
-      this.elementData[(this.elementData.length - 1)] = this.elementData[0];
-      ArraysKt.copyInto(this.elementData, this.elementData, 0, 1, paramInt + 1);
     }
+    this.size = (size() - 1);
+    return localObject;
   }
   
   public final E removeFirst()
   {
-    if (isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
+    if (!isEmpty())
+    {
+      int i = this.head;
+      Object localObject = access$getElementData$p(this)[i];
+      Object[] arrayOfObject = this.elementData;
+      i = this.head;
+      arrayOfObject[i] = null;
+      this.head = incremented(i);
+      this.size = (size() - 1);
+      return localObject;
     }
-    int i = this.head;
-    Object localObject = access$getElementData$p(this)[i];
-    this.elementData[this.head] = null;
-    this.head = incremented(this.head);
-    this.size = (size() - 1);
-    return localObject;
+    throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
   }
   
   @Nullable
@@ -818,14 +880,16 @@ public final class ArrayDeque<E>
   
   public final E removeLast()
   {
-    if (isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
+    if (!isEmpty())
+    {
+      int i = CollectionsKt.getLastIndex(this);
+      i = access$positiveMod(this, access$getHead$p(this) + i);
+      Object localObject = access$getElementData$p(this)[i];
+      this.elementData[i] = null;
+      this.size = (size() - 1);
+      return localObject;
     }
-    int i = access$positiveMod(this, CollectionsKt.getLastIndex(this) + access$getHead$p(this));
-    Object localObject = access$getElementData$p(this)[i];
-    this.elementData[i] = null;
-    this.size = (size() - 1);
-    return localObject;
+    throw ((Throwable)new NoSuchElementException("ArrayDeque is empty."));
   }
   
   @Nullable
@@ -839,97 +903,91 @@ public final class ArrayDeque<E>
   
   public boolean retainAll(@NotNull Collection<? extends Object> paramCollection)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
-    if (!isEmpty()) {
-      if (access$getElementData$p(this).length != 0) {
-        break label36;
+    boolean bool3 = isEmpty();
+    int k = 0;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (!bool3)
+    {
+      if (access$getElementData$p(this).length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-    }
-    boolean bool2;
-    label36:
-    for (int i = 1; i != 0; i = 0)
-    {
-      bool2 = false;
-      return bool2;
-    }
-    int n = access$positiveMod(this, size() + access$getHead$p(this));
-    i = access$getHead$p(this);
-    int j;
-    boolean bool1;
-    Object localObject;
-    Object[] arrayOfObject;
-    if (access$getHead$p(this) < n)
-    {
-      j = access$getHead$p(this);
-      bool1 = false;
-      if (j < n)
+      if (i != 0) {
+        return false;
+      }
+      int i = size();
+      int m = access$positiveMod(this, access$getHead$p(this) + i);
+      i = access$getHead$p(this);
+      int j;
+      Object localObject;
+      if (access$getHead$p(this) < m)
       {
-        localObject = access$getElementData$p(this)[j];
-        if (paramCollection.contains(localObject))
+        j = access$getHead$p(this);
+        while (j < m)
         {
-          arrayOfObject = access$getElementData$p(this);
-          k = i + 1;
-          arrayOfObject[i] = localObject;
-          i = k;
-        }
-        for (;;)
-        {
+          localObject = access$getElementData$p(this)[j];
+          if (paramCollection.contains(localObject))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
+          }
+          else
+          {
+            bool1 = true;
+          }
           j += 1;
-          break;
-          bool1 = true;
+        }
+        ArraysKt.fill(access$getElementData$p(this), null, i, m);
+      }
+      else
+      {
+        j = access$getHead$p(this);
+        int n = access$getElementData$p(this).length;
+        bool1 = false;
+        while (j < n)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if (paramCollection.contains(localObject))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i += 1;
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
+        }
+        i = access$positiveMod(this, i);
+        j = k;
+        while (j < m)
+        {
+          localObject = access$getElementData$p(this)[j];
+          access$getElementData$p(this)[j] = null;
+          if (paramCollection.contains(localObject))
+          {
+            access$getElementData$p(this)[i] = localObject;
+            i = access$incremented(this, i);
+          }
+          else
+          {
+            bool1 = true;
+          }
+          j += 1;
         }
       }
-      ArraysKt.fill(access$getElementData$p(this), null, i, n);
-    }
-    for (;;)
-    {
       bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
-      return bool1;
-      j = access$getHead$p(this);
-      int i1 = access$getElementData$p(this).length;
-      bool1 = false;
-      if (j < i1)
+      if (bool1)
       {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (paramCollection.contains(localObject))
-        {
-          arrayOfObject = access$getElementData$p(this);
-          int m = i + 1;
-          arrayOfObject[i] = localObject;
-          i = m;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          bool1 = true;
-        }
-      }
-      i = access$positiveMod(this, i);
-      j = k;
-      if (j < n)
-      {
-        localObject = access$getElementData$p(this)[j];
-        access$getElementData$p(this)[j] = null;
-        if (paramCollection.contains(localObject))
-        {
-          access$getElementData$p(this)[i] = localObject;
-          i = access$incremented(this, i);
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          bool1 = true;
-        }
+        access$setSize$p(this, access$negativeMod(this, i - access$getHead$p(this)));
+        bool2 = bool1;
       }
     }
+    return bool2;
   }
   
   public E set(int paramInt, E paramE)
@@ -943,7 +1001,7 @@ public final class ArrayDeque<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.ArrayDeque
  * JD-Core Version:    0.7.0.1
  */

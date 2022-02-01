@@ -3,25 +3,22 @@ package com.tmsdk.base.utils;
 import android.content.Context;
 import android.os.storage.StorageManager;
 import btmsdkobf.dz;
+import com.tencent.token.arl;
 import com.tmsdk.base.TMSDKBaseContext;
 import java.io.File;
 import java.io.FileFilter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import tmsdk.QQPIM.CommList;
 
 public class FileOP
 {
-  public static FileOP.CheckResult check(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  public static CheckResult check(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
   {
     if (paramInt4 < 2000) {
       paramInt4 = 0;
     }
-    for (;;)
-    {
-      return dz.check(paramInt1, paramString, paramInt3, paramInt2, paramArrayOfByte, paramInt4);
-    }
+    return dz.check(paramInt1, paramString, paramInt3, paramInt2, paramArrayOfByte, paramInt4);
   }
   
   public static boolean copyFile(File paramFile1, File paramFile2)
@@ -44,10 +41,10 @@ public class FileOP
     return dz.getAssetWupFile(paramString, paramBoolean);
   }
   
-  public static List getStoragePathList()
+  public static List<String> getStoragePathList()
   {
     StorageManager localStorageManager = (StorageManager)TMSDKBaseContext.getApplicationContext().getSystemService("storage");
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       Object[] arrayOfObject = (Object[])localStorageManager.getClass().getMethod("getVolumeList", new Class[0]).invoke(localStorageManager, new Object[0]);
@@ -71,54 +68,61 @@ public class FileOP
       return localArrayList;
     }
     catch (Throwable localThrowable) {}
+    return localArrayList;
   }
   
-  public static CommList loadWupObjectFromFile(String paramString1, String paramString2)
+  public static arl loadWupObjectFromFile(String paramString1, String paramString2)
   {
     return dz.loadWupObjectFromFile(paramString1, paramString2);
   }
   
-  public static boolean traverseFolder(String paramString, FileFilter paramFileFilter, FileOP.IFoundListener paramIFoundListener)
+  public static boolean traverseFolder(String paramString, FileFilter paramFileFilter, IFoundListener paramIFoundListener)
   {
-    boolean bool2 = true;
     paramString = new File(paramString);
     if ((paramString.exists()) && (paramIFoundListener != null))
     {
       paramString = paramString.listFiles(paramFileFilter);
-      boolean bool1;
-      if ((paramString == null) || (paramString.length == 0)) {
-        bool1 = false;
-      }
-      int i;
-      File localFile;
-      do
+      if (paramString != null)
       {
-        return bool1;
+        if (paramString.length == 0) {
+          return false;
+        }
         int j = paramString.length;
-        i = 0;
-        if (i >= j) {
-          break label106;
+        int i = 0;
+        while (i < j)
+        {
+          File localFile = paramString[i];
+          if (localFile.isDirectory())
+          {
+            if (traverseFolder(localFile.getAbsolutePath(), paramFileFilter, paramIFoundListener)) {
+              return true;
+            }
+          }
+          else if (paramIFoundListener.onFound(localFile)) {
+            return true;
+          }
+          i += 1;
         }
-        localFile = paramString[i];
-        if (!localFile.isDirectory()) {
-          break;
-        }
-        bool1 = bool2;
-      } while (traverseFolder(localFile.getAbsolutePath(), paramFileFilter, paramIFoundListener));
-      while (!paramIFoundListener.onFound(localFile))
-      {
-        i += 1;
-        break;
       }
-      return true;
     }
-    label106:
     return false;
   }
   
-  public static int update(FileOP.CheckResult paramCheckResult)
+  public static int update(CheckResult paramCheckResult)
   {
     return dz.update(paramCheckResult);
+  }
+  
+  public static class CheckResult
+  {
+    public String mFileName = "";
+    public int mStatusCode = 0;
+    public String mUrl = "";
+  }
+  
+  public static abstract interface IFoundListener
+  {
+    public abstract boolean onFound(File paramFile);
   }
 }
 

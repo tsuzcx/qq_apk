@@ -1,60 +1,54 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.bmr;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelsns/SnsFinderShareLive;", "Lcom/tencent/mm/modelsns/SnsTimeLineObjectPiece;", "()V", "shareLive", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareLive", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareLive", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "makeContent", "", "parseContent", "", "tagPrefix", "values", "", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
+  implements k
 {
-  StringBuffer fQO;
-  StringBuffer fQP;
-  private int index;
+  public bmr oUb;
   
   public d()
   {
-    AppMethodBeat.i(78618);
-    this.fQO = new StringBuffer();
-    this.fQP = new StringBuffer();
-    this.index = 0;
-    AppMethodBeat.o(78618);
+    AppMethodBeat.i(233230);
+    this.oUb = new bmr();
+    AppMethodBeat.o(233230);
   }
   
-  public final String Fg()
+  public final void a(bmr parambmr)
   {
-    AppMethodBeat.i(78622);
-    this.index = 0;
-    this.fQO.append("--end--\n\n");
-    String str = this.fQO.toString();
-    AppMethodBeat.o(78622);
+    AppMethodBeat.i(233234);
+    s.u(parambmr, "<set-?>");
+    this.oUb = parambmr;
+    AppMethodBeat.o(233234);
+  }
+  
+  public final String bMC()
+  {
+    AppMethodBeat.i(233237);
+    String str = q.c(this.oUb);
+    s.s(str, "makeContent(shareLive)");
+    AppMethodBeat.o(233237);
     return str;
   }
   
-  public final void j(String paramString, Object paramObject)
+  public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(78619);
-    this.fQO.append(this.index + " " + paramString + "->" + paramObject + "\n");
-    this.fQP.append(paramObject);
-    this.index += 1;
-    AppMethodBeat.o(78619);
-  }
-  
-  public final void k(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(78620);
-    this.fQO.append(paramString + "->" + paramObject + "\n");
-    this.fQP.append(paramObject);
-    AppMethodBeat.o(78620);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(78621);
-    String str = this.fQP.toString();
-    AppMethodBeat.o(78621);
-    return str;
+    AppMethodBeat.i(233244);
+    paramString = q.z(paramString, paramMap);
+    s.s(paramString, "parseFinderLive(tagPrefix, values)");
+    this.oUb = paramString;
+    AppMethodBeat.o(233244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.d
  * JD-Core Version:    0.7.0.1
  */

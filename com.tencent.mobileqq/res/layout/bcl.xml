@@ -7,10 +7,7 @@
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
                 <include android:id="@id/h3i" layout="@layout/bdm" />
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-                <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <include android:id="@id/h40" layout="@layout/bde" />
-                    <ImageView android:id="@id/h5a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-15.0dip" android:layout_marginBottom="20.0dip" android:maxHeight="13.0dip" android:layout_toRightOf="@id/h40" android:layout_alignBottom="@id/h40" android:contentDescription="@null" />
-                </RelativeLayout>
+                <include android:id="@id/h40" layout="@layout/bde" />
                 <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/h3s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />
@@ -20,7 +17,7 @@
                 <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginBottom="6.0dip" android:text="@string/rgv" android:layout_alignBottom="@id/dfr" />
                 <LinearLayout android:orientation="horizontal" android:id="@id/lak" android:background="@drawable/hhf" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="7.5dip" android:layout_below="@id/dfr" android:layout_alignParentRight="true">
                     <TextView android:textSize="8.0dip" android:textColor="#ffaeb1bc" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="@string/rgu" />
-                    <View android:layout_gravity="center_vertical" android:background="@drawable/eb3" android:layout_width="5.0dip" android:layout_height="2.5dip" />
+                    <View android:layout_gravity="center_vertical" android:background="@drawable/i45" android:layout_width="5.0dip" android:layout_height="2.5dip" />
                 </LinearLayout>
             </RelativeLayout>
             <RelativeLayout android:gravity="center_horizontal" android:id="@id/h3p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="27.0dip" android:layout_marginTop="30.0dip">

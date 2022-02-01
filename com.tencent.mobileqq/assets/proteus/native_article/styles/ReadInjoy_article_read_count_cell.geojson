@@ -1,0 +1,36 @@
+{
+    "ReadInjoy_article_read_count_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UILabel",
+                "view_id": "id_reading_amount_text",
+                "margin_left":"15",
+                "margin_right":"15",
+                "margin_top":"16",
+                "height":{
+                    "type": "wrap_content"
+                },
+                "width":{
+                    "type":"relative",
+                    "value":"345"
+                },
+                "attributes":{
+                    "setText:": "$read_count",
+                    "setNumberOfLinesString:":"0",
+                    "setTextColorString:":"#737373",
+                    "setFontSizeString:ratio:":["12","$attribute_text_size_ratio"]
+                }
+            }
+        ]
+    }
+}

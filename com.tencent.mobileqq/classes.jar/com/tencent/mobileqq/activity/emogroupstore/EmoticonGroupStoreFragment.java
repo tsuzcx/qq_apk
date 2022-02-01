@@ -1,21 +1,5 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import aepi;
-import aghx;
-import agjb;
-import agkf;
-import ahwc;
-import ahwd;
-import ahwe;
-import ahwf;
-import ahwg;
-import ahwh;
-import ahwi;
-import ahwk;
-import ahwn;
-import ahwo;
-import alud;
-import amcd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -24,8 +8,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
@@ -45,35 +27,45 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import apob;
-import apod;
-import apon;
-import apoo;
-import azkz;
-import bdep;
-import bdgc;
-import bduj;
-import com.tencent.common.app.AppInterface;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emosm.api.IEmoticonFromGroupDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
+import com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager;
+import com.tencent.mobileqq.emoticon.EmoticonOperateReport;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.vas.VasExtensionManager;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
@@ -86,64 +78,61 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class EmoticonGroupStoreFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  private ahwi jdField_a_of_type_Ahwi;
-  private ahwo jdField_a_of_type_Ahwo;
-  amcd jdField_a_of_type_Amcd = new ahwc(this);
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahwd(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private apod jdField_a_of_type_Apod;
-  TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("    ");
-  public List<EmoticonFromGroupEntity> a;
-  private Map<String, List<EmoticonFromGroupEntity>> jdField_a_of_type_JavaUtilMap;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private AlphaAnimation jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-  private TranslateAnimation jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private List<EmoticonFromGroupEntity> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private Map<String, ahwk> jdField_b_of_type_JavaUtilMap;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private Button jdField_c_of_type_AndroidWidgetButton;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private List<EmoticonFromGroupEntity> jdField_c_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private View jdField_d_of_type_AndroidViewView;
-  private Button jdField_d_of_type_AndroidWidgetButton;
-  private List<ahwk> jdField_d_of_type_JavaUtilList;
-  private View jdField_e_of_type_AndroidViewView;
-  private Button jdField_e_of_type_AndroidWidgetButton;
-  private List<String> jdField_e_of_type_JavaUtilList = new ArrayList();
-  private View jdField_f_of_type_AndroidViewView;
-  private Button jdField_f_of_type_AndroidWidgetButton;
-  private List<String> jdField_f_of_type_JavaUtilList = new ArrayList();
-  private View jdField_g_of_type_AndroidViewView;
-  private Button jdField_g_of_type_AndroidWidgetButton;
-  private View h;
-  private View i;
-  
-  public EmoticonGroupStoreFragment()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  private AlphaAnimation A;
+  private View B;
+  private View C;
+  private TranslateAnimation D;
+  private TranslateAnimation E;
+  private volatile boolean F = false;
+  private volatile boolean G = false;
+  private Map<String, List<EmoticonFromGroupEntity>> H;
+  private List<FilterAdapter.FilterItemContent> I;
+  private ListView J;
+  private FilterAdapter K;
+  private TextView L;
+  private Button M;
+  private Button N;
+  private List<String> O = new ArrayList();
+  private View P;
+  private List<String> Q = new ArrayList();
+  private Map<String, FilterAdapter.FilterItemContent> R;
+  private Button S;
+  private IEmoticonFromGroupManager T;
+  private View.OnClickListener U = new EmoticonGroupStoreFragment.10(this);
+  public List<EmoticonFromGroupEntity> a = new ArrayList();
+  SVIPObserver b = new EmoticonGroupStoreFragment.1(this);
+  TopGestureLayout c;
+  private BaseActivity d;
+  private QQAppInterface e;
+  private TextView f;
+  private RecyclerView g;
+  private PicSelectAdapter h;
+  private StringBuilder i = new StringBuilder("    ");
+  private SpannableString j;
+  private Button k;
+  private RelativeLayout l;
+  private Button m;
+  private List<EmoticonFromGroupEntity> n = new CopyOnWriteArrayList();
+  private List<EmoticonFromGroupEntity> o = new CopyOnWriteArrayList();
+  private View p;
+  private View q;
+  private View r;
+  private ViewPager s;
+  private View t;
+  private View u;
+  private Button v;
+  private Button w;
+  private TextView x;
+  private View y;
+  private AlphaAnimation z;
   
   private void a(List<EmoticonFromGroupEntity> paramList)
   {
@@ -154,21 +143,21 @@ public class EmoticonGroupStoreFragment
       if (localEmoticonFromGroupEntity != null) {
         if (localEmoticonFromGroupEntity.msg == null)
         {
-          MessageForPic localMessageForPic = this.jdField_a_of_type_Apod.a(localEmoticonFromGroupEntity);
+          MessageForPic localMessageForPic = (MessageForPic)this.T.f(localEmoticonFromGroupEntity);
           if (localMessageForPic != null)
           {
             localEmoticonFromGroupEntity.msg = localMessageForPic;
-            this.jdField_b_of_type_JavaUtilList.add(localEmoticonFromGroupEntity);
+            this.n.add(localEmoticonFromGroupEntity);
           }
           else
           {
-            this.jdField_a_of_type_Apod.b(localEmoticonFromGroupEntity);
-            this.jdField_a_of_type_Apod.a(localEmoticonFromGroupEntity);
+            this.T.b(localEmoticonFromGroupEntity);
+            this.T.a(localEmoticonFromGroupEntity);
           }
         }
         else
         {
-          this.jdField_b_of_type_JavaUtilList.add(localEmoticonFromGroupEntity);
+          this.n.add(localEmoticonFromGroupEntity);
         }
       }
     }
@@ -176,21 +165,21 @@ public class EmoticonGroupStoreFragment
   
   private void b(List<EmoticonFromGroupEntity> paramList)
   {
-    Object localObject1 = (apon)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    Object localObject1 = (IFavroamingDBManagerService)this.e.getRuntimeService(IFavroamingDBManagerService.class);
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonFromGroup_Fragment", 2, "call getEmoticonDataList from EmoticonGroupStoreFragment.filterFavEmo");
     }
-    Object localObject2 = ((apon)localObject1).a();
+    Object localObject2 = ((IFavroamingDBManagerService)localObject1).getEmoticonDataList();
     localObject1 = new ArrayList();
     if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
     {
-      int j = 0;
-      while (j < ((List)localObject2).size())
+      int i1 = 0;
+      while (i1 < ((List)localObject2).size())
       {
-        if ((TextUtils.isEmpty(((CustomEmotionData)((List)localObject2).get(j)).RomaingType)) || (!"needDel".equals(((CustomEmotionData)((List)localObject2).get(j)).RomaingType))) {
-          ((List)localObject1).add(((List)localObject2).get(j));
+        if ((TextUtils.isEmpty(((CustomEmotionData)((List)localObject2).get(i1)).RomaingType)) || (!"needDel".equals(((CustomEmotionData)((List)localObject2).get(i1)).RomaingType))) {
+          ((List)localObject1).add(((List)localObject2).get(i1));
         }
-        j += 1;
+        i1 += 1;
       }
     }
     localObject2 = new ArrayList();
@@ -198,163 +187,160 @@ public class EmoticonGroupStoreFragment
     while (paramList.hasNext())
     {
       EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)paramList.next();
-      if (this.jdField_a_of_type_Apod.a((List)localObject1, localEmoticonFromGroupEntity.bigURL))
+      if (this.T.a((List)localObject1, localEmoticonFromGroupEntity.bigURL))
       {
         localEmoticonFromGroupEntity.status = 0;
         ((List)localObject2).add(localEmoticonFromGroupEntity);
       }
     }
-    this.jdField_c_of_type_JavaUtilList.addAll((Collection)localObject2);
+    this.o.addAll((Collection)localObject2);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131379147));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131371986));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363575));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131367334));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363602));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561714, this.titleRoot, false);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365661);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365662);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131365663));
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363573);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363574);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363604));
-    this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363603));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
-    Object localObject = new LinearLayoutManager(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, false);
+    this.f = ((TextView)this.mContentView.findViewById(2131448939));
+    this.g = ((RecyclerView)this.mContentView.findViewById(2131440282));
+    this.k = ((Button)this.mContentView.findViewById(2131429879));
+    this.l = ((RelativeLayout)this.mContentView.findViewById(2131434418));
+    this.m = ((Button)this.mContentView.findViewById(2131429904));
+    this.k.setOnClickListener(this);
+    this.m.setOnClickListener(this);
+    this.p = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131628324, this.titleRoot, false);
+    this.q = this.p.findViewById(2131432417);
+    this.r = this.p.findViewById(2131432418);
+    this.s = ((ViewPager)this.p.findViewById(2131432419));
+    this.t = this.p.findViewById(2131429877);
+    this.u = this.p.findViewById(2131429878);
+    this.v = ((Button)this.p.findViewById(2131429906));
+    this.w = ((Button)this.p.findViewById(2131429905));
+    this.q.setOnClickListener(this);
+    this.r.setOnClickListener(this);
+    this.t.setOnClickListener(this);
+    this.u.setOnClickListener(this);
+    this.v.setOnClickListener(this);
+    this.w.setOnClickListener(this);
+    Object localObject = new LinearLayoutManager(this.d, 1, false);
     ((LinearLayoutManager)localObject).setRecycleChildrenOnDetach(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131379137));
-    this.jdField_f_of_type_AndroidViewView = new View(this.titleRoot.getContext());
+    this.g.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.x = ((TextView)this.mContentView.findViewById(2131448929));
+    this.y = new View(this.titleRoot.getContext());
     localObject = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_f_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor(getString(2131165320)));
+    this.y.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.y.setBackgroundColor(Color.parseColor(getString(2131165580)));
     try
     {
-      this.jdField_g_of_type_AndroidViewView = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131561709, this.titleRoot, false);
-      this.h = this.jdField_g_of_type_AndroidViewView.findViewById(2131366360);
-      this.h.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_g_of_type_AndroidViewView.findViewById(2131369892));
-      this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ahwe(this));
-      this.jdField_a_of_type_Ahwi = new ahwi(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ahwi);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131379145));
-      this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363586));
-      this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_g_of_type_AndroidViewView.findViewById(2131363585));
-      this.jdField_e_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_f_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.i = this.mContentView.findViewById(2131367335);
-      ((URLImageView)this.i.findViewById(2131368118)).setImageDrawable(URLDrawable.getDrawable("http://imgcache.gtimg.cn/ACT/svip_act/act_img/public/201802/m1517913373_empty_img_1.png"));
-      this.jdField_g_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.jdField_g_of_type_AndroidWidgetButton.setId(2131377300);
-      localObject = new RelativeLayout.LayoutParams(azkz.a(21.0F), azkz.a(20.0F));
-      ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = 8;
-      this.jdField_g_of_type_AndroidWidgetButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.vg.addView(this.jdField_g_of_type_AndroidWidgetButton);
-      return;
+      this.B = LayoutInflater.from(this.titleRoot.getContext()).inflate(2131628319, this.titleRoot, false);
+      this.C = this.B.findViewById(2131433171);
+      this.C.setOnClickListener(this);
+      this.J = ((ListView)this.B.findViewById(2131437780));
+      this.J.setOnItemClickListener(new EmoticonGroupStoreFragment.2(this));
+      this.K = new FilterAdapter(this.d);
+      this.J.setAdapter(this.K);
+      this.L = ((TextView)this.B.findViewById(2131448936));
+      this.M = ((Button)this.B.findViewById(2131429890));
+      this.N = ((Button)this.B.findViewById(2131429889));
+      this.M.setOnClickListener(this);
+      this.N.setOnClickListener(this);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        QLog.e("EmoticonFromGroup_Fragment", 2, "oom error occur!");
-      }
+      label552:
+      break label552;
     }
+    QLog.e("EmoticonFromGroup_Fragment", 2, "oom error occur!");
+    this.P = this.mContentView.findViewById(2131434419);
+    ((URLImageView)this.P.findViewById(2131435565)).setImageDrawable(URLDrawable.getDrawable("https://imgcache.gtimg.cn/ACT/svip_act/act_img/public/201802/m1517913373_empty_img_1.png"));
+    this.S = new Button(this.d);
+    this.S.setId(2131446656);
+    localObject = new RelativeLayout.LayoutParams(ScreenUtil.dip2px(21.0F), ScreenUtil.dip2px(20.0F));
+    ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = 8;
+    this.S.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.vg.addView(this.S);
   }
   
   private void c(List<EmoticonFromGroupEntity> paramList)
   {
-    int j = 3;
-    int k;
+    int i2;
     if (paramList == null) {
-      k = 0;
+      i2 = 0;
+    } else {
+      i2 = paramList.size();
     }
-    while ((getActivity() != null) && (k != 0))
+    if ((getBaseActivity() != null) && (i2 != 0))
     {
       ArrayList localArrayList = new ArrayList();
-      String str = String.format(getString(2131693297), new Object[] { Integer.valueOf(k) });
-      if (k < 3) {
-        j = paramList.size();
+      String str = String.format(getString(2131890176), new Object[] { Integer.valueOf(i2) });
+      int i1 = 3;
+      if (i2 < 3) {
+        i1 = paramList.size();
       }
-      k = 0;
-      for (;;)
+      i2 = 0;
+      while (i2 < i1)
       {
-        if (k < j)
+        URLDrawable localURLDrawable = (URLDrawable)this.T.a((EmoticonFromGroupEntity)paramList.get(i2), 65537, ScreenUtil.dip2px(11.0F), null);
+        int i3 = i2 + 1;
+        i2 = i3;
+        if (localURLDrawable != null)
         {
-          URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_Apod.a((EmoticonFromGroupEntity)paramList.get(k), 65537, azkz.a(11.0F), null);
-          int m = k + 1;
-          k = m;
-          if (localURLDrawable != null)
+          localArrayList.add(localURLDrawable);
+          this.i.append(" ");
+          i2 = i3;
+          if (1 != localURLDrawable.getStatus())
           {
-            localArrayList.add(localURLDrawable);
-            this.jdField_a_of_type_JavaLangStringBuilder.append(" ");
-            k = m;
-            if (1 != localURLDrawable.getStatus())
-            {
-              localURLDrawable.startDownload();
-              localURLDrawable.setURLDrawableListener(new ahwh(this));
-              k = m;
-              continue;
-              k = paramList.size();
-              break;
-            }
+            localURLDrawable.startDownload();
+            localURLDrawable.setURLDrawableListener(new EmoticonGroupStoreFragment.9(this));
+            i2 = i3;
           }
         }
       }
-      this.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(this.jdField_a_of_type_JavaLangStringBuilder + str);
-      paramList = new ahwn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramList.a(localArrayList, azkz.a(11.0F));
-      paramList.setBounds(0, 0, azkz.a(33.0F), azkz.a(22.0F));
-      this.jdField_a_of_type_AndroidTextSpannableString.setSpan(new ImageSpan(paramList, 0), 0, this.jdField_a_of_type_JavaLangStringBuilder.length() - 4, 17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF777777"));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidTextSpannableString);
+      paramList = new StringBuilder();
+      paramList.append(this.i);
+      paramList.append(str);
+      this.j = new SpannableString(paramList.toString());
+      paramList = new OverlapDrawable(this.e);
+      paramList.a(localArrayList, ScreenUtil.dip2px(11.0F));
+      paramList.setBounds(0, 0, ScreenUtil.dip2px(33.0F), ScreenUtil.dip2px(22.0F));
+      this.j.setSpan(new ImageSpan(paramList, 0), 0, this.i.length() - 4, 17);
+      this.f.setTextSize(14.0F);
+      this.f.setTextColor(Color.parseColor("#FF777777"));
+      this.f.setText(this.j);
     }
   }
   
   private void d()
   {
     this.leftView.setVisibility(0);
-    this.leftView.setText(2131693298);
-    this.leftView.setTextColor(getResources().getColor(2131165307));
-    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130840097));
-    this.centerView.setTextColor(getResources().getColor(2131165307));
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840065);
-    this.jdField_g_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation.setDuration(500L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new ahwf(this));
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation.setDuration(500L);
+    this.leftView.setText(2131890177);
+    this.leftView.setTextColor(getResources().getColor(2131165564));
+    this.leftView.setBackgroundDrawable(getResources().getDrawable(2130841082));
+    this.centerView.setTextColor(getResources().getColor(2131165564));
+    this.S.setBackgroundResource(2130840621);
+    this.S.setOnClickListener(this);
+    this.z = new AlphaAnimation(0.0F, 1.0F);
+    this.z.setFillAfter(true);
+    this.z.setDuration(500L);
+    this.A = new AlphaAnimation(1.0F, 0.0F);
+    this.A.setFillAfter(true);
+    this.A.setDuration(500L);
+    this.D = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
+    this.D.setFillAfter(true);
+    this.D.setDuration(500L);
+    this.E = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+    this.E.setAnimationListener(new EmoticonGroupStoreFragment.3(this));
+    this.E.setFillAfter(true);
+    this.E.setDuration(500L);
     e();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.i.setVisibility(8);
+    this.l.setVisibility(8);
+    this.P.setVisibility(8);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_Ahwo = new ahwo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this, this.jdField_a_of_type_Apod.a(), this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidSupportV4ViewViewPager, this.jdField_b_of_type_AndroidWidgetButton);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ahwo);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new ahwg(this));
+    this.h = new PicSelectAdapter(this.e, this, this.T.a(), this.p, this.s, this.m);
+    this.g.setAdapter(this.h);
+    this.g.setOnScrollListener(new EmoticonGroupStoreFragment.4(this));
   }
   
   private void f()
@@ -382,8 +368,7 @@ public class EmoticonGroupStoreFragment
     ConcurrentHashMap localConcurrentHashMap1 = new ConcurrentHashMap();
     CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
     ConcurrentHashMap localConcurrentHashMap2 = new ConcurrentHashMap();
-    Object localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
-    Object localObject2;
+    Object localObject1 = this.n.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (EmoticonFromGroupEntity)((Iterator)localObject1).next();
@@ -399,85 +384,83 @@ public class EmoticonGroupStoreFragment
       }
     }
     Object localObject3 = localConcurrentHashMap1.entrySet().iterator();
-    Map.Entry localEntry;
-    ahwk localahwk;
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity;
-    if (((Iterator)localObject3).hasNext())
+    while (((Iterator)localObject3).hasNext())
     {
-      localEntry = (Map.Entry)((Iterator)localObject3).next();
-      localahwk = new ahwk();
-      localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)((List)localEntry.getValue()).get(0);
-      if (1 == localEmoticonFromGroupEntity.fromType)
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+      FilterAdapter.FilterItemContent localFilterItemContent = new FilterAdapter.FilterItemContent();
+      EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)((List)localEntry.getValue()).get(0);
+      int i1 = localEmoticonFromGroupEntity.fromType;
+      localObject2 = null;
+      if (1 == i1)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(4, localEmoticonFromGroupEntity.troopUin, (byte)2, false, (byte)1, 0);
-        localObject1 = bdgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEmoticonFromGroupEntity.troopUin, true);
+        localObject2 = this.e.getFaceBitmap(4, localEmoticonFromGroupEntity.troopUin, (byte)2, false, (byte)1, 0);
+        localObject1 = ContactUtils.a(this.e, localEmoticonFromGroupEntity.troopUin, true);
       }
-    }
-    for (;;)
-    {
-      localahwk.jdField_a_of_type_JavaLangString = localEmoticonFromGroupEntity.troopUin;
-      localahwk.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-      localahwk.jdField_a_of_type_Boolean = false;
-      localahwk.b = ((String)localObject1);
-      localahwk.jdField_a_of_type_Int = ((List)localEntry.getValue()).size();
-      localCopyOnWriteArrayList.add(localahwk);
-      localConcurrentHashMap2.put(localahwk.jdField_a_of_type_JavaLangString, localahwk);
-      break;
-      if (3000 == localEmoticonFromGroupEntity.fromType)
+      else if (3000 == localEmoticonFromGroupEntity.fromType)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(101, localEmoticonFromGroupEntity.troopUin, (byte)3, false, (byte)1, 0);
-        localObject1 = bdgc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localEmoticonFromGroupEntity.troopUin);
-        continue;
-        this.jdField_a_of_type_JavaUtilMap = localConcurrentHashMap1;
-        this.jdField_d_of_type_JavaUtilList = localCopyOnWriteArrayList;
-        this.jdField_b_of_type_JavaUtilMap = localConcurrentHashMap2;
-        if (Looper.myLooper() != Looper.getMainLooper())
-        {
-          ThreadManager.getUIHandler().post(new EmoticonGroupStoreFragment.11(this));
-          return;
-        }
-        this.jdField_a_of_type_Ahwi.a(this.jdField_d_of_type_JavaUtilList);
-        this.jdField_a_of_type_Ahwi.notifyDataSetChanged();
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131704449) + this.jdField_b_of_type_JavaUtilList.size() + alud.a(2131704461));
+        localObject2 = this.e.getFaceBitmap(101, localEmoticonFromGroupEntity.troopUin, (byte)3, false, (byte)1, 0);
+        localObject1 = ContactUtils.a(this.e, this.d, localEmoticonFromGroupEntity.troopUin);
       }
       else
       {
         localObject1 = null;
-        localObject2 = null;
       }
+      localFilterItemContent.a = localEmoticonFromGroupEntity.troopUin;
+      localFilterItemContent.b = ((Bitmap)localObject2);
+      localFilterItemContent.e = false;
+      localFilterItemContent.c = ((String)localObject1);
+      localFilterItemContent.d = ((List)localEntry.getValue()).size();
+      localCopyOnWriteArrayList.add(localFilterItemContent);
+      localConcurrentHashMap2.put(localFilterItemContent.a, localFilterItemContent);
     }
+    this.H = localConcurrentHashMap1;
+    this.I = localCopyOnWriteArrayList;
+    this.R = localConcurrentHashMap2;
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      ThreadManager.getUIHandler().post(new EmoticonGroupStoreFragment.11(this));
+      return;
+    }
+    this.K.a(this.I);
+    this.K.notifyDataSetChanged();
+    localObject1 = this.L;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131902093));
+    ((StringBuilder)localObject2).append(this.n.size());
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131902105));
+    ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
   }
   
   private void k()
   {
-    if ((this.jdField_g_of_type_AndroidViewView != null) && (this.titleRoot == this.jdField_g_of_type_AndroidViewView.getParent()) && (this.titleRoot == this.jdField_g_of_type_AndroidViewView.getParent()))
+    if ((this.B != null) && (this.titleRoot == this.B.getParent()) && (this.titleRoot == this.B.getParent()))
     {
-      this.jdField_f_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_g_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
+      this.y.startAnimation(this.A);
+      this.B.startAnimation(this.E);
     }
   }
   
   private void l()
   {
-    Iterator localIterator = this.jdField_d_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.I.iterator();
     while (localIterator.hasNext()) {
-      ((ahwk)localIterator.next()).jdField_a_of_type_Boolean = false;
+      ((FilterAdapter.FilterItemContent)localIterator.next()).e = false;
     }
-    if (!this.jdField_e_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_e_of_type_JavaUtilList.clear();
+    if (!this.O.isEmpty()) {
+      this.O.clear();
     }
   }
   
   private void m()
   {
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840065);
-    this.jdField_g_of_type_AndroidWidgetButton.setEnabled(true);
+    this.S.setBackgroundResource(2130840621);
+    this.S.setEnabled(true);
   }
   
   private void n()
   {
-    this.jdField_g_of_type_AndroidWidgetButton.setBackgroundResource(2130840066);
-    this.jdField_g_of_type_AndroidWidgetButton.setEnabled(false);
+    this.S.setBackgroundResource(2130840622);
+    this.S.setEnabled(false);
   }
   
   void a()
@@ -487,131 +470,121 @@ public class EmoticonGroupStoreFragment
       getTitleBarView().setBackgroundResource(0);
       getTitleBarView().setBackgroundColor(-1);
     }
-    SystemBarCompact localSystemBarCompact;
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof PublicFragmentActivity)))
+    Object localObject = this.d;
+    if ((localObject != null) && ((localObject instanceof PublicFragmentActivity)))
     {
-      localSystemBarCompact = ((PublicFragmentActivity)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).mSystemBarComp;
-      if ((localSystemBarCompact != null) && (needImmersive()) && (needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
+      localObject = ((PublicFragmentActivity)localObject).mSystemBarComp;
+      if ((localObject != null) && (needImmersive()) && (needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
-        if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppRuntime())) {
-          break label122;
+        if (ThemeUtil.isInNightMode(this.d.getAppRuntime()))
+        {
+          if ((!SystemUtil.d()) && (!SystemUtil.g()))
+          {
+            ((SystemBarCompact)localObject).setStatusBarColor(-7829368);
+            return;
+          }
+          ((SystemBarCompact)localObject).setStatusBarColor(-7829368);
+          ((SystemBarCompact)localObject).setStatusBarDarkMode(true);
+          return;
         }
-        if ((bdep.b()) || (bdep.d())) {
-          break label109;
+        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
+        {
+          this.d.getWindow().getDecorView().setSystemUiVisibility(9216);
+          ((SystemBarCompact)localObject).setStatusBarColor(-1);
+          return;
         }
-        localSystemBarCompact.setStatusBarColor(-7829368);
+        if (!SystemUtil.g())
+        {
+          ((SystemBarCompact)localObject).setStatusBarColor(-2368549);
+          return;
+        }
+        ((SystemBarCompact)localObject).setStatusBarColor(-1);
+        ((SystemBarCompact)localObject).setStatusBarDarkMode(true);
       }
     }
-    return;
-    label109:
-    localSystemBarCompact.setStatusBarColor(-7829368);
-    localSystemBarCompact.setStatusBarDarkMode(true);
-    return;
-    label122:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bdep.b()) && (!bdep.d()))
-    {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
-      localSystemBarCompact.setStatusBarColor(-1);
-      return;
-    }
-    if (!bdep.d())
-    {
-      localSystemBarCompact.setStatusBarColor(-2368549);
-      return;
-    }
-    localSystemBarCompact.setStatusBarColor(-1);
-    localSystemBarCompact.setStatusBarDarkMode(true);
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject;
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
+    if (this.c == null)
     {
-      ViewGroup localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
+      ViewGroup localViewGroup = (ViewGroup)getBaseActivity().getWindow().getDecorView();
       localObject = null;
-      j = 0;
-      if (j >= localViewGroup.getChildCount()) {
-        break label113;
+      int i1 = 0;
+      while (i1 < localViewGroup.getChildCount())
+      {
+        View localView = localViewGroup.getChildAt(i1);
+        localObject = localView;
+        if ((localView instanceof DragFrameLayout)) {
+          localObject = ((DragFrameLayout)localView).getChildAt(0);
+        }
+        if ((localObject instanceof TopGestureLayout)) {
+          break;
+        }
+        i1 += 1;
       }
-      View localView = localViewGroup.getChildAt(j);
-      localObject = localView;
-      if ((localView instanceof DragFrameLayout)) {
-        localObject = ((DragFrameLayout)localView).getChildAt(0);
-      }
-      if (!(localObject instanceof TopGestureLayout)) {
-        break label106;
+      if ((localObject != null) && ((localObject instanceof TopGestureLayout))) {
+        this.c = ((TopGestureLayout)localObject);
       }
     }
-    label106:
-    label113:
-    for (;;)
-    {
-      if ((localObject != null) && ((localObject instanceof TopGestureLayout))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(paramBoolean);
-      }
-      return;
-      j += 1;
-      break;
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((TopGestureLayout)localObject).setInterceptTouchFlag(paramBoolean);
     }
   }
   
   protected void b()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity != null) {
+      localBaseActivity.finish();
     }
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561712;
+    return 2131628322;
   }
   
-  public void init(Bundle paramBundle)
+  protected void init(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonFromGroup_Fragment", 2, "emoticonFromGroupFragment init start.");
     }
     super.init(paramBundle);
-    super.setTitle(alud.a(2131704450));
-    paramBundle = getActivity();
+    super.setTitle(HardCodeUtil.a(2131902094));
+    paramBundle = getBaseActivity();
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramBundle;
-      paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppInterface();
-      if (!(paramBundle instanceof QQAppInterface)) {
-        break label203;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
+      this.d = paramBundle;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Apod = ((bduj)paramBundle.getManager(235)).jdField_a_of_type_Apod;
-      paramBundle = (apoo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103);
-      if (paramBundle != null) {
-        paramBundle.b();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amcd);
-      c();
-      d();
-      f();
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "PageView", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonFromGroup_Fragment", 2, "emoticonFromGroupFragment init end.");
-      }
-      return;
       QLog.e("EmoticonFromGroup_Fragment", 1, "activity is null");
       b();
-      break;
-      label203:
+    }
+    paramBundle = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((paramBundle instanceof QQAppInterface))
+    {
+      this.e = ((QQAppInterface)paramBundle);
+    }
+    else
+    {
       QLog.e("EmoticonFromGroup_Fragment", 1, "app is null");
       b();
+    }
+    this.T = ((VasExtensionManager)paramBundle.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d;
+    paramBundle = (IFavroamingManagerService)paramBundle.getRuntimeService(IFavroamingManagerService.class, "");
+    if (paramBundle != null) {
+      paramBundle.syncRoaming();
+    }
+    this.e.addObserver(this.b);
+    c();
+    d();
+    f();
+    VasWebviewUtil.a("", "QLbq", "PageView", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonFromGroup_Fragment", 2, "emoticonFromGroupFragment init end.");
     }
   }
   
@@ -619,7 +592,7 @@ public class EmoticonGroupStoreFragment
   {
     if ((paramInt2 == -1) && (paramInt1 == 0))
     {
-      Intent localIntent = aepi.a(new Intent(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, SplashActivity.class), null);
+      Intent localIntent = AIOUtils.a(new Intent(this.d, SplashActivity.class), null);
       paramIntent = new Bundle(paramIntent.getExtras());
       paramIntent.putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
       paramIntent.putBoolean("PhotoConst.IS_FORWARD", true);
@@ -635,40 +608,42 @@ public class EmoticonGroupStoreFragment
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(str);
       paramInt1 = paramIntent.getInt("PhotoConst.SEND_SIZE_SPEC", 0);
-      PhotoUtils.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localIntent, localArrayList, paramInt1, true);
+      PhotoUtils.sendPhoto(this.d, localIntent, localArrayList, paramInt1, true);
     }
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Ahwo != null) && (this.jdField_a_of_type_Ahwo.jdField_a_of_type_Boolean))
+    Object localObject = this.h;
+    if ((localObject != null) && (((PicSelectAdapter)localObject).a))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
+      localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((EmoticonFromGroupEntity)((Iterator)localObject).next()).status = -1;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_Ahwo.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Ahwo.a(false);
-      this.jdField_a_of_type_Ahwo.notifyDataSetChanged();
+      this.a.clear();
+      this.l.setVisibility(8);
+      this.k.setVisibility(0);
+      localObject = this.h;
+      ((PicSelectAdapter)localObject).a = false;
+      ((PicSelectAdapter)localObject).a(false);
+      this.h.notifyDataSetChanged();
       m();
       a(true);
       resetLeftButton();
       return true;
     }
-    if (this.titleRoot == this.jdField_a_of_type_AndroidViewView.getParent())
+    if (this.titleRoot == this.p.getParent())
     {
-      this.titleRoot.removeView(this.jdField_a_of_type_AndroidViewView);
+      this.titleRoot.removeView(this.p);
       a(true);
       return true;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.F)
     {
       l();
       k();
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilterReturn", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      VasWebviewUtil.a("", "QLbq", "ClickFilterReturn", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return true;
     }
     b();
@@ -677,182 +652,190 @@ public class EmoticonGroupStoreFragment
   
   public void onClick(View paramView)
   {
-    Object localObject;
+    Object localObject1;
+    Object localObject2;
     switch (paramView.getId())
     {
-    case 2131365662: 
     default: 
-    case 2131363575: 
-    case 2131363602: 
-    case 2131365661: 
-    case 2131363573: 
-    case 2131363574: 
-    case 2131363604: 
-    case 2131363603: 
-    case 2131377300: 
-      do
+      break;
+    case 2131446656: 
+      if (this.B == null)
       {
-        do
-        {
-          return;
-          if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-            this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          }
-          n();
-          a(false);
-          setLeftButton(alud.a(2131704482), this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          this.leftViewNotBack.setTextColor(getResources().getColor(2131165307));
-          this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-          this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBFBFBF"));
-          this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844011));
-          this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          this.jdField_a_of_type_Ahwo.a(true);
-          this.jdField_a_of_type_Ahwo.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_Ahwo.notifyDataSetChanged();
-          VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickMutiSel", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-          return;
-          this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          this.jdField_a_of_type_Ahwo.a(false);
-          this.jdField_a_of_type_Ahwo.jdField_a_of_type_Boolean = false;
-          this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-          this.jdField_a_of_type_Apod.d(new ArrayList(this.jdField_a_of_type_JavaUtilList));
-          paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramView.hasNext()) {
-            ((EmoticonFromGroupEntity)paramView.next()).status = 0;
-          }
-          paramView = (apob)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(259);
-          paramView.b -= this.jdField_a_of_type_JavaUtilList.size();
-          this.jdField_a_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_Ahwo.notifyDataSetChanged();
-          m();
-          a(true);
-          resetLeftButton();
-          VasWebviewUtil.reportCommercialDrainage("", "QLbq", "AddMutibq", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-          return;
-        } while (this.titleRoot != this.jdField_a_of_type_AndroidViewView.getParent());
-        AbstractGifImage.pauseAll();
-        this.titleRoot.removeView(this.jdField_a_of_type_AndroidViewView);
-        a(true);
-        return;
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager.arrowScroll(17);
-        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "SwitchPreview", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-        return;
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager.arrowScroll(66);
-        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "SwitchPreview", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-        return;
-        paramView = ((ImgPreviewAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
-        if ((paramView != null) && (paramView.msg != null)) {
-          aghx.b(new agkf(agjb.a(paramView.msg)), this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0);
+        if (QLog.isColorLevel()) {
+          QLog.i("EmoticonFromGroup_Fragment", 2, "click right img useless, filterView is null.");
         }
-        for (;;)
-        {
-          VasWebviewUtil.reportCommercialDrainage("", "QLbq", "SendFriend", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-          return;
-          QLog.e("EmoticonFromGroup_Fragment.msgnull", 1, "preview send msg is null.");
-        }
-        paramView = ((ImgPreviewAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
-        if (this.jdField_a_of_type_Apod.a(paramView))
-        {
-          this.jdField_c_of_type_JavaUtilList.add(paramView);
-          this.jdField_d_of_type_AndroidWidgetButton.setText(alud.a(2131704441));
-          this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-          this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844011));
-          this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_a_of_type_Ahwo.notifyDataSetChanged();
-        }
-        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "Addbq", "0", 1, 0, 0, "", "", "1", "", "", "", "", 0, 0, 0, 0);
-        return;
-        if (this.jdField_g_of_type_AndroidViewView != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("EmoticonFromGroup_Fragment", 2, "click right img useless, filterView is null.");
-      return;
-      a(false);
-      this.jdField_a_of_type_Boolean = true;
-      if (this.titleRoot != this.jdField_f_of_type_AndroidViewView.getParent()) {
-        this.titleRoot.addView(this.jdField_f_of_type_AndroidViewView);
       }
-      if (this.titleRoot != this.jdField_g_of_type_AndroidViewView.getParent()) {
-        this.titleRoot.addView(this.jdField_g_of_type_AndroidViewView);
-      }
-      this.jdField_f_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_g_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramView = this.jdField_f_of_type_JavaUtilList.iterator();
-      while (paramView.hasNext())
+      else
       {
-        localObject = (String)paramView.next();
-        this.jdField_e_of_type_JavaUtilList.add(localObject);
-        ((ahwk)this.jdField_b_of_type_JavaUtilMap.get(localObject)).jdField_a_of_type_Boolean = true;
+        a(false);
+        this.F = true;
+        if (this.titleRoot != this.y.getParent()) {
+          this.titleRoot.addView(this.y);
+        }
+        if (this.titleRoot != this.B.getParent()) {
+          this.titleRoot.addView(this.B);
+        }
+        this.y.startAnimation(this.z);
+        this.B.startAnimation(this.D);
+        localObject1 = this.Q.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          this.O.add(localObject2);
+          ((FilterAdapter.FilterItemContent)this.R.get(localObject2)).e = true;
+        }
+        if (!this.G)
+        {
+          this.G = true;
+          j();
+        }
+        VasWebviewUtil.a("", "QLbq", "ClickFilter", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       }
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        j();
-      }
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilter", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-    case 2131366360: 
+      break;
+    case 2131433171: 
       l();
       k();
-      VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilterReturn", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-    case 2131363585: 
-      if (!this.jdField_f_of_type_JavaUtilList.isEmpty()) {
-        this.jdField_f_of_type_JavaUtilList.clear();
-      }
-      int j = this.jdField_e_of_type_JavaUtilList.size();
-      if (j == 0)
+      VasWebviewUtil.a("", "QLbq", "ClickFilterReturn", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131432417: 
+      if (this.titleRoot == this.p.getParent())
       {
-        paramView = new ArrayList(this.jdField_b_of_type_JavaUtilList);
-        localObject = this.jdField_a_of_type_Apod.a(paramView);
-        if (localObject != null)
-        {
-          c(paramView);
-          this.jdField_a_of_type_Ahwo.a((Map)localObject, paramView);
-        }
+        AbstractGifImage.pauseAll();
+        this.titleRoot.removeView(this.p);
+        a(true);
       }
-      for (;;)
+      break;
+    case 2131429906: 
+      localObject1 = ((ImgPreviewAdapter)this.s.getAdapter()).a(this.s.getCurrentItem());
+      if ((localObject1 != null) && (((EmoticonFromGroupEntity)localObject1).msg != null)) {
+        AIOGalleryScene.b(new AIORichMediaInfo(AIOGalleryUtils.a(((EmoticonFromGroupEntity)localObject1).msg)), this.d, 0);
+      } else {
+        QLog.e("EmoticonFromGroup_Fragment.msgnull", 1, "preview send msg is null.");
+      }
+      VasWebviewUtil.a("", "QLbq", "SendFriend", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429905: 
+      localObject1 = ((ImgPreviewAdapter)this.s.getAdapter()).a(this.s.getCurrentItem());
+      if (this.T.d((EmoticonFromGroupEntity)localObject1))
       {
-        l();
-        k();
-        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilterConfirm", "0", 1, 0, 0, "", "", "" + j, "", "", "", "", 0, 0, 0, 0);
-        return;
-        paramView = new ArrayList();
-        localObject = this.jdField_e_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject).hasNext())
+        this.o.add(localObject1);
+        this.w.setText(HardCodeUtil.a(2131902085));
+        this.w.setTextColor(Color.parseColor("#FFBBBBBB"));
+        this.w.setBackgroundDrawable(getResources().getDrawable(2130845843));
+        this.w.setEnabled(false);
+        this.h.notifyDataSetChanged();
+      }
+      if (localObject1 != null) {
+        EmoticonOperateReport.reportFavAddEmotionEvent(this.e, 4, ((EmoticonFromGroupEntity)localObject1).md5, null);
+      }
+      VasWebviewUtil.a("", "QLbq", "Addbq", "0", 1, 0, 0, "", "", "1", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429904: 
+      this.k.setVisibility(0);
+      this.l.setVisibility(8);
+      this.h.a(false);
+      this.h.a = false;
+      this.o.addAll(this.a);
+      this.T.e(new ArrayList(this.a));
+      localObject1 = this.a.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((EmoticonFromGroupEntity)((Iterator)localObject1).next()).status = 0;
+      }
+      localObject1 = (IEmoticonFromGroupDBManagerService)this.e.getRuntimeService(IEmoticonFromGroupDBManagerService.class);
+      ((IEmoticonFromGroupDBManagerService)localObject1).setCountOfSpare(((IEmoticonFromGroupDBManagerService)localObject1).getCountOfSpare() - this.a.size());
+      this.a.clear();
+      this.h.notifyDataSetChanged();
+      m();
+      a(true);
+      resetLeftButton();
+      VasWebviewUtil.a("", "QLbq", "AddMutibq", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429890: 
+      l();
+      this.K.notifyDataSetChanged();
+      VasWebviewUtil.a("", "QLbq", "ClickFilterReset", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429889: 
+      if (!this.Q.isEmpty()) {
+        this.Q.clear();
+      }
+      int i1 = this.O.size();
+      if (i1 == 0)
+      {
+        localObject1 = new ArrayList(this.n);
+        localObject2 = this.T.b((List)localObject1);
+        if (localObject2 != null)
         {
-          String str = (String)((Iterator)localObject).next();
-          this.jdField_f_of_type_JavaUtilList.add(str);
-          paramView.addAll((Collection)this.jdField_a_of_type_JavaUtilMap.get(str));
-        }
-        Collections.sort(paramView);
-        localObject = this.jdField_a_of_type_Apod.a(paramView);
-        if (localObject != null)
-        {
-          c(paramView);
-          this.jdField_a_of_type_Ahwo.a((Map)localObject, paramView);
+          c((List)localObject1);
+          this.h.a((Map)localObject2, (List)localObject1);
         }
       }
+      else
+      {
+        localObject1 = new ArrayList();
+        localObject2 = this.O.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          String str = (String)((Iterator)localObject2).next();
+          this.Q.add(str);
+          ((List)localObject1).addAll((Collection)this.H.get(str));
+        }
+        Collections.sort((List)localObject1);
+        localObject2 = this.T.b((List)localObject1);
+        if (localObject2 != null)
+        {
+          c((List)localObject1);
+          this.h.a((Map)localObject2, (List)localObject1);
+        }
+      }
+      l();
+      k();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(i1);
+      VasWebviewUtil.a("", "QLbq", "ClickFilterConfirm", "0", 1, 0, 0, "", "", ((StringBuilder)localObject1).toString(), "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429879: 
+      if (this.x.getVisibility() == 0) {
+        this.x.setVisibility(8);
+      }
+      n();
+      a(false);
+      setLeftButton(HardCodeUtil.a(2131898212), this.U);
+      this.leftViewNotBack.setTextColor(getResources().getColor(2131165564));
+      this.k.setVisibility(8);
+      this.m.setTextColor(Color.parseColor("#FFBFBFBF"));
+      this.m.setBackgroundDrawable(getResources().getDrawable(2130845843));
+      this.m.setEnabled(false);
+      this.l.setVisibility(0);
+      this.h.a(true);
+      localObject1 = this.h;
+      ((PicSelectAdapter)localObject1).a = true;
+      ((PicSelectAdapter)localObject1).notifyDataSetChanged();
+      VasWebviewUtil.a("", "QLbq", "ClickMutiSel", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429878: 
+      this.s.arrowScroll(66);
+      VasWebviewUtil.a("", "QLbq", "SwitchPreview", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      break;
+    case 2131429877: 
+      this.s.arrowScroll(17);
+      VasWebviewUtil.a("", "QLbq", "SwitchPreview", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
     }
-    l();
-    this.jdField_a_of_type_Ahwi.notifyDataSetChanged();
-    VasWebviewUtil.reportCommercialDrainage("", "QLbq", "ClickFilterReset", "0", 1, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Apod.b(this.jdField_c_of_type_JavaUtilList);
-    this.jdField_a_of_type_Apod.c(this.jdField_c_of_type_JavaUtilList);
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+    this.a.clear();
+    this.T.c(this.o);
+    this.T.d(this.o);
+    MqqHandler localMqqHandler = this.e.getHandler(ChatActivity.class);
     if (localMqqHandler != null) {
       localMqqHandler.obtainMessage(10).sendToTarget();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amcd);
+    this.e.removeObserver(this.b);
   }
   
   public void onPause()
@@ -866,29 +849,33 @@ public class EmoticonGroupStoreFragment
     super.onResume();
     a();
     AbstractGifImage.resumeAll();
-    if (this.jdField_a_of_type_Ahwo != null) {
-      this.jdField_a_of_type_Ahwo.notifyDataSetChanged();
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((PicSelectAdapter)localObject).notifyDataSetChanged();
     }
-    if ((this.jdField_d_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidSupportV4ViewViewPager != null))
+    if (this.w != null)
     {
-      EmoticonFromGroupEntity localEmoticonFromGroupEntity = ((ImgPreviewAdapter)this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter()).a(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
-      if (localEmoticonFromGroupEntity != null)
+      localObject = this.s;
+      if (localObject != null)
       {
-        if (localEmoticonFromGroupEntity.status != 0) {
-          break label123;
+        localObject = ((ImgPreviewAdapter)((ViewPager)localObject).getAdapter()).a(this.s.getCurrentItem());
+        if (localObject != null)
+        {
+          if (((EmoticonFromGroupEntity)localObject).status == 0)
+          {
+            this.w.setText(HardCodeUtil.a(2131902126));
+            this.w.setTextColor(Color.parseColor("#FFBBBBBB"));
+            this.w.setBackgroundDrawable(getResources().getDrawable(2130845843));
+            this.w.setEnabled(false);
+            return;
+          }
+          this.w.setText(HardCodeUtil.a(2131902089));
+          this.w.setTextColor(Color.parseColor("#FFFFFFFF"));
+          this.w.setBackgroundDrawable(getResources().getDrawable(2130845842));
+          this.w.setEnabled(true);
         }
-        this.jdField_d_of_type_AndroidWidgetButton.setText(alud.a(2131704484));
-        this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-        this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844011));
-        this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
       }
     }
-    return;
-    label123:
-    this.jdField_d_of_type_AndroidWidgetButton.setText(alud.a(2131704445));
-    this.jdField_d_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-    this.jdField_d_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130844010));
-    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
   }
 }
 

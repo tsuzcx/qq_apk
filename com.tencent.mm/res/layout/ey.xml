@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/fd" android:paddingStart="@dimen/gc"
+<RelativeLayout android:background="@drawable/d2" android:paddingTop="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/i6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a08" android:layout_width="@dimen/nd" android:layout_height="@dimen/nd" android:src="@drawable/b5" android:scaleType="fitCenter" android:layout_centerVertical="true" />
-    <RelativeLayout android:background="@drawable/abk" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/g2" android:layout_toEndOf="@id/a08">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left" android:id="@id/a09" android:layout_width="wrap_content" android:layout_height="@dimen/lz" android:text="@string/evd" android:layout_centerVertical="true" android:paddingEnd="@dimen/l2" />
-        <com.tencent.mm.plugin.sns.ui.PreviewContactView android:id="@id/a0_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/lz" android:layout_toStartOf="@id/a0a" />
-        <ImageView android:id="@id/a0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:tint="@color/v" android:layout_centerVertical="true" android:layout_marginStart="@dimen/gc" android:layout_marginEnd="@dimen/g2" android:layout_alignParentEnd="true" />
-    </RelativeLayout>
+    <ImageView android:id="@id/f1c" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    <TextView android:ellipsize="end" android:id="@id/i2t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" android:layout_toRightOf="@id/f1c" android:layout_alignTop="@id/f1c" android:layout_marginEnd="@dimen/i6" style="@style/uw" />
+    <TextView android:ellipsize="end" android:id="@id/j7v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="@dimen/i6" android:maxLines="2" android:layout_toRightOf="@id/f1c" android:layout_below="@id/i2t" android:lineSpacingMultiplier="1.2" android:layout_marginEnd="@dimen/i6" style="@style/uv" />
+    <View android:id="@id/c7o" android:layout_alignParentBottom="true" android:layout_alignStart="@id/i2t" style="@style/a1e" />
 </RelativeLayout>

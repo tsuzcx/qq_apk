@@ -10,63 +10,69 @@ import android.widget.TextView;
 public class PoiMapActivity$TabView
   extends RelativeLayout
 {
-  public int a;
-  public View a;
   public TextView a;
-  public String a;
   public View b;
+  public View c;
+  public int d;
+  public String e;
   
   public PoiMapActivity$TabView(PoiMapActivity paramPoiMapActivity, Context paramContext, String paramString, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramPoiMapActivity.jdField_a_of_type_Int);
+    this.d = paramInt;
+    this.e = paramString;
+    this.a = new TextView(paramContext);
+    this.a.setTextSize(16.0F);
+    this.a.setText(paramString);
+    this.a.setTextColor(paramPoiMapActivity.e);
     paramString = new RelativeLayout.LayoutParams(-2, -2);
     paramString.addRule(13, -1);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, paramString);
-    this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramPoiMapActivity.g);
-    paramString = new RelativeLayout.LayoutParams(-2, (int)(3.0F * paramPoiMapActivity.jdField_a_of_type_Float));
+    addView(this.a, paramString);
+    this.b = new View(paramContext);
+    this.b.setBackgroundColor(paramPoiMapActivity.k);
+    paramString = new RelativeLayout.LayoutParams(-2, (int)(paramPoiMapActivity.l * 3.0F));
     paramString.addRule(12, -1);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131297363);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131298232);
     paramString.rightMargin = paramInt;
     paramString.leftMargin = paramInt;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    addView(this.jdField_a_of_type_AndroidViewView, paramString);
-    this.b = new View(paramContext);
-    this.b.setBackgroundDrawable(null);
-    this.b.setBackgroundResource(paramPoiMapActivity.f);
-    paramContext = new RelativeLayout.LayoutParams((int)(2.0F * paramPoiMapActivity.jdField_a_of_type_Float), (int)(20.0F * paramPoiMapActivity.jdField_a_of_type_Float));
+    this.b.setVisibility(4);
+    addView(this.b, paramString);
+    this.c = new View(paramContext);
+    this.c.setBackgroundDrawable(null);
+    this.c.setBackgroundResource(paramPoiMapActivity.j);
+    paramContext = new RelativeLayout.LayoutParams((int)(paramPoiMapActivity.l * 2.0F), (int)(paramPoiMapActivity.l * 20.0F));
     paramContext.addRule(15, -1);
     paramContext.addRule(11, -1);
-    addView(this.b, paramContext);
-    setOnClickListener(paramPoiMapActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+    addView(this.c, paramContext);
+    setOnClickListener(paramPoiMapActivity.aj);
   }
   
   public void a()
   {
-    this.b.setVisibility(4);
+    this.c.setVisibility(4);
   }
   
   public void setSelect(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.b);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.f.getString(2131892670));
+      setContentDescription(localStringBuilder.toString());
+      this.a.setTextColor(this.f.f);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    setContentDescription(this.e);
+    this.a.setTextColor(this.f.e);
+    this.b.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.TabView
  * JD-Core Version:    0.7.0.1
  */

@@ -32,16 +32,18 @@ public final class oidb_0x6c2$GiftBagInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 56, 64, 72, 80, 88, 96, 104, 114, 122, 80002 }, new String[] { "bytes_gift_bagid", "int32_count", "int32_amount", "uint64_start_time", "uint64_end_time", "msg_paly", "int32_end", "int32_remain_count", "int32_remain_amount", "int32_winner", "uint64_gift_owner", "uint64_group_id", "uint64_done_time", "bytes_gift_name", "bytes_gift_unit", "bytes_ext" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, GiftBagInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 56, 64, 72, 80, 88, 96, 104, 114, 122, 80002 }, new String[] { "bytes_gift_bagid", "int32_count", "int32_amount", "uint64_start_time", "uint64_end_time", "msg_paly", "int32_end", "int32_remain_count", "int32_remain_amount", "int32_winner", "uint64_gift_owner", "uint64_group_id", "uint64_done_time", "bytes_gift_name", "bytes_gift_unit", "bytes_ext" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localLong, localLong, null, localInteger, localInteger, localInteger, localInteger, localLong, localLong, localLong, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, GiftBagInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo
  * JD-Core Version:    0.7.0.1
  */

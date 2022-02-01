@@ -46,33 +46,42 @@ public class Allocation
   Allocation(int paramInt1, RenderScript paramRenderScript, Type paramType, int paramInt2)
   {
     super(paramInt1, paramRenderScript);
-    if ((paramInt2 & 0xFFFFFF1C) != 0) {
-      throw new RSIllegalArgumentException("Unknown usage specified.");
-    }
-    if ((paramInt2 & 0x20) != 0)
+    if ((paramInt2 & 0xFFFFFF1C) == 0)
     {
-      this.mWriteAllowed = false;
-      if ((paramInt2 & 0xFFFFFFDC) != 0) {
-        throw new RSIllegalArgumentException("Invalid usage combination.");
+      if ((paramInt2 & 0x20) != 0)
+      {
+        this.mWriteAllowed = false;
+        if ((paramInt2 & 0xFFFFFFDC) != 0) {
+          throw new RSIllegalArgumentException("Invalid usage combination.");
+        }
       }
-    }
-    this.mType = paramType;
-    this.mUsage = paramInt2;
-    this.mSize = (this.mType.getCount() * this.mType.getElement().getBytesSize());
-    if (paramType != null) {
-      updateCacheInfo(paramType);
-    }
-    if (RenderScript.sUseGCHooks == true) {}
-    try
-    {
-      RenderScript.registerNativeAllocation.invoke(RenderScript.sRuntime, new Object[] { Integer.valueOf(this.mSize) });
+      this.mType = paramType;
+      this.mUsage = paramInt2;
+      this.mSize = (this.mType.getCount() * this.mType.getElement().getBytesSize());
+      if (paramType != null) {
+        updateCacheInfo(paramType);
+      }
+      if (RenderScript.sUseGCHooks == true) {
+        try
+        {
+          RenderScript.registerNativeAllocation.invoke(RenderScript.sRuntime, new Object[] { Integer.valueOf(this.mSize) });
+          return;
+        }
+        catch (Exception paramRenderScript)
+        {
+          paramType = new StringBuilder();
+          paramType.append("Couldn't invoke registerNativeAllocation:");
+          paramType.append(paramRenderScript);
+          Log.e("RenderScript_jni", paramType.toString());
+          paramType = new StringBuilder();
+          paramType.append("Couldn't invoke registerNativeAllocation:");
+          paramType.append(paramRenderScript);
+          throw new RSRuntimeException(paramType.toString());
+        }
+      }
       return;
     }
-    catch (Exception paramRenderScript)
-    {
-      Log.e("RenderScript_jni", "Couldn't invoke registerNativeAllocation:" + paramRenderScript);
-      throw new RSRuntimeException("Couldn't invoke registerNativeAllocation:" + paramRenderScript);
-    }
+    throw new RSIllegalArgumentException("Unknown usage specified.");
   }
   
   public static Allocation createCubemapFromBitmap(RenderScript paramRenderScript, Bitmap paramBitmap)
@@ -82,38 +91,47 @@ public class Allocation
   
   public static Allocation createCubemapFromBitmap(RenderScript paramRenderScript, Bitmap paramBitmap, Allocation.MipmapControl paramMipmapControl, int paramInt)
   {
-    boolean bool = true;
     paramRenderScript.validate();
     int j = paramBitmap.getHeight();
     int i = paramBitmap.getWidth();
-    if (i % 6 != 0) {
-      throw new RSIllegalArgumentException("Cubemap height must be multiple of 6");
-    }
-    if (i / 6 != j) {
+    if (i % 6 == 0)
+    {
+      if (i / 6 == j)
+      {
+        boolean bool = false;
+        if ((j - 1 & j) == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          Element localElement = elementFromBitmap(paramRenderScript, paramBitmap);
+          Object localObject = new Type.Builder(paramRenderScript, localElement);
+          ((Type.Builder)localObject).setX(j);
+          ((Type.Builder)localObject).setY(j);
+          ((Type.Builder)localObject).setFaces(true);
+          if (paramMipmapControl == Allocation.MipmapControl.MIPMAP_FULL) {
+            bool = true;
+          }
+          ((Type.Builder)localObject).setMipmaps(bool);
+          localObject = ((Type.Builder)localObject).create();
+          i = paramRenderScript.nAllocationCubeCreateFromBitmap(((Type)localObject).getID(paramRenderScript), paramMipmapControl.mID, paramBitmap, paramInt);
+          if (i != 0) {
+            return new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
+          }
+          paramRenderScript = new StringBuilder();
+          paramRenderScript.append("Load failed for bitmap ");
+          paramRenderScript.append(paramBitmap);
+          paramRenderScript.append(" element ");
+          paramRenderScript.append(localElement);
+          throw new RSRuntimeException(paramRenderScript.toString());
+        }
+        throw new RSIllegalArgumentException("Only power of 2 cube faces supported");
+      }
       throw new RSIllegalArgumentException("Only square cube map faces supported");
     }
-    if ((j - 1 & j) == 0) {}
-    for (i = 1; i == 0; i = 0) {
-      throw new RSIllegalArgumentException("Only power of 2 cube faces supported");
-    }
-    Element localElement = elementFromBitmap(paramRenderScript, paramBitmap);
-    Object localObject = new Type.Builder(paramRenderScript, localElement);
-    ((Type.Builder)localObject).setX(j);
-    ((Type.Builder)localObject).setY(j);
-    ((Type.Builder)localObject).setFaces(true);
-    if (paramMipmapControl == Allocation.MipmapControl.MIPMAP_FULL) {}
-    for (;;)
-    {
-      ((Type.Builder)localObject).setMipmaps(bool);
-      localObject = ((Type.Builder)localObject).create();
-      i = paramRenderScript.nAllocationCubeCreateFromBitmap(((Type)localObject).getID(paramRenderScript), paramMipmapControl.mID, paramBitmap, paramInt);
-      if (i != 0) {
-        break;
-      }
-      throw new RSRuntimeException("Load failed for bitmap " + paramBitmap + " element " + localElement);
-      bool = false;
-    }
-    return new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
+    throw new RSIllegalArgumentException("Cubemap height must be multiple of 6");
   }
   
   public static Allocation createCubemapFromCubeFaces(RenderScript paramRenderScript, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6)
@@ -139,29 +157,31 @@ public class Allocation
     paramRenderScript.validate();
     if (paramBitmap.getConfig() == null)
     {
-      if ((paramInt & 0x80) != 0) {
-        throw new RSIllegalArgumentException("USAGE_SHARED cannot be used with a Bitmap that has a null config.");
+      if ((paramInt & 0x80) == 0)
+      {
+        localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        new Canvas((Bitmap)localObject).drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+        return createFromBitmap(paramRenderScript, (Bitmap)localObject, paramMipmapControl, paramInt);
       }
-      localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      new Canvas((Bitmap)localObject).drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-      return createFromBitmap(paramRenderScript, (Bitmap)localObject, paramMipmapControl, paramInt);
+      throw new RSIllegalArgumentException("USAGE_SHARED cannot be used with a Bitmap that has a null config.");
     }
     Object localObject = typeFromBitmap(paramRenderScript, paramBitmap, paramMipmapControl);
     if ((paramMipmapControl == Allocation.MipmapControl.MIPMAP_NONE) && (((Type)localObject).getElement().isCompatible(Element.RGBA_8888(paramRenderScript))) && (paramInt == 131))
     {
       i = paramRenderScript.nAllocationCreateBitmapBackedAllocation(((Type)localObject).getID(paramRenderScript), paramMipmapControl.mID, paramBitmap, paramInt);
-      if (i == 0) {
-        throw new RSRuntimeException("Load failed.");
+      if (i != 0)
+      {
+        paramRenderScript = new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
+        paramRenderScript.setBitmap(paramBitmap);
+        return paramRenderScript;
       }
-      paramRenderScript = new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
-      paramRenderScript.setBitmap(paramBitmap);
-      return paramRenderScript;
-    }
-    int i = paramRenderScript.nAllocationCreateFromBitmap(((Type)localObject).getID(paramRenderScript), paramMipmapControl.mID, paramBitmap, paramInt);
-    if (i == 0) {
       throw new RSRuntimeException("Load failed.");
     }
-    return new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
+    int i = paramRenderScript.nAllocationCreateFromBitmap(((Type)localObject).getID(paramRenderScript), paramMipmapControl.mID, paramBitmap, paramInt);
+    if (i != 0) {
+      return new Allocation(i, paramRenderScript, (Type)localObject, paramInt);
+    }
+    throw new RSRuntimeException("Load failed.");
   }
   
   public static Allocation createFromBitmapResource(RenderScript paramRenderScript, Resources paramResources, int paramInt)
@@ -172,13 +192,14 @@ public class Allocation
   public static Allocation createFromBitmapResource(RenderScript paramRenderScript, Resources paramResources, int paramInt1, Allocation.MipmapControl paramMipmapControl, int paramInt2)
   {
     paramRenderScript.validate();
-    if ((paramInt2 & 0xE0) != 0) {
-      throw new RSIllegalArgumentException("Unsupported usage specified.");
+    if ((paramInt2 & 0xE0) == 0)
+    {
+      paramResources = BitmapFactory.decodeResource(paramResources, paramInt1);
+      paramRenderScript = createFromBitmap(paramRenderScript, paramResources, paramMipmapControl, paramInt2);
+      paramResources.recycle();
+      return paramRenderScript;
     }
-    paramResources = BitmapFactory.decodeResource(paramResources, paramInt1);
-    paramRenderScript = createFromBitmap(paramRenderScript, paramResources, paramMipmapControl, paramInt2);
-    paramResources.recycle();
-    return paramRenderScript;
+    throw new RSIllegalArgumentException("Unsupported usage specified.");
   }
   
   public static Allocation createFromString(RenderScript paramRenderScript, String paramString, int paramInt)
@@ -193,8 +214,10 @@ public class Allocation
     }
     catch (Exception paramRenderScript)
     {
-      throw new RSRuntimeException("Could not convert string to utf-8.");
+      label31:
+      break label31;
     }
+    throw new RSRuntimeException("Could not convert string to utf-8.");
   }
   
   public static Allocation createSized(RenderScript paramRenderScript, Element paramElement, int paramInt)
@@ -214,10 +237,10 @@ public class Allocation
     paramElement.setX(paramInt1);
     paramElement = paramElement.create();
     paramInt1 = paramRenderScript.nAllocationCreateTyped(paramElement.getID(paramRenderScript), Allocation.MipmapControl.MIPMAP_NONE.mID, paramInt2, 0);
-    if (paramInt1 == 0) {
-      throw new RSRuntimeException("Allocation creation failed.");
+    if (paramInt1 != 0) {
+      return new Allocation(paramInt1, paramRenderScript, paramElement, paramInt2);
     }
-    return new Allocation(paramInt1, paramRenderScript, paramElement, paramInt2);
+    throw new RSRuntimeException("Allocation creation failed.");
   }
   
   public static Allocation createTyped(RenderScript paramRenderScript, Type paramType)
@@ -236,31 +259,44 @@ public class Allocation
       return AllocationThunker.createTyped((RenderScriptThunker)paramRenderScript, paramType, paramMipmapControl, paramInt);
     }
     paramRenderScript.validate();
-    if (paramType.getID(paramRenderScript) == 0) {
-      throw new RSInvalidStateException("Bad Type");
-    }
-    int i = paramRenderScript.nAllocationCreateTyped(paramType.getID(paramRenderScript), paramMipmapControl.mID, paramInt, 0);
-    if (i == 0) {
+    if (paramType.getID(paramRenderScript) != 0)
+    {
+      int i = paramRenderScript.nAllocationCreateTyped(paramType.getID(paramRenderScript), paramMipmapControl.mID, paramInt, 0);
+      if (i != 0) {
+        return new Allocation(i, paramRenderScript, paramType, paramInt);
+      }
       throw new RSRuntimeException("Allocation creation failed.");
     }
-    return new Allocation(i, paramRenderScript, paramType, paramInt);
+    throw new RSInvalidStateException("Bad Type");
   }
   
   private void data1DChecks(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.mRS.validate();
-    if (paramInt1 < 0) {
-      throw new RSIllegalArgumentException("Offset must be >= 0.");
-    }
-    if (paramInt2 < 1) {
+    if (paramInt1 >= 0)
+    {
+      if (paramInt2 >= 1)
+      {
+        if (paramInt1 + paramInt2 <= this.mCurrentCount)
+        {
+          if (paramInt3 >= paramInt4) {
+            return;
+          }
+          throw new RSIllegalArgumentException("Array too small for allocation type.");
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Overflow, Available count ");
+        localStringBuilder.append(this.mCurrentCount);
+        localStringBuilder.append(", got ");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(" at offset ");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append(".");
+        throw new RSIllegalArgumentException(localStringBuilder.toString());
+      }
       throw new RSIllegalArgumentException("Count must be >= 1.");
     }
-    if (paramInt1 + paramInt2 > this.mCurrentCount) {
-      throw new RSIllegalArgumentException("Overflow, Available count " + this.mCurrentCount + ", got " + paramInt2 + " at offset " + paramInt1 + ".");
-    }
-    if (paramInt3 < paramInt4) {
-      throw new RSIllegalArgumentException("Array too small for allocation type.");
-    }
+    throw new RSIllegalArgumentException("Offset must be >= 0.");
   }
   
   static Element elementFromBitmap(RenderScript paramRenderScript, Bitmap paramBitmap)
@@ -278,13 +314,17 @@ public class Allocation
     if (paramBitmap == Bitmap.Config.RGB_565) {
       return Element.RGB_565(paramRenderScript);
     }
-    throw new RSInvalidStateException("Bad bitmap type: " + paramBitmap);
+    paramRenderScript = new StringBuilder();
+    paramRenderScript.append("Bad bitmap type: ");
+    paramRenderScript.append(paramBitmap);
+    throw new RSInvalidStateException(paramRenderScript.toString());
   }
   
   private int getIDSafe()
   {
-    if (this.mAdaptedAllocation != null) {
-      return this.mAdaptedAllocation.getID(this.mRS);
+    Allocation localAllocation = this.mAdaptedAllocation;
+    if (localAllocation != null) {
+      return localAllocation.getID(this.mRS);
     }
     return getID(this.mRS);
   }
@@ -299,12 +339,14 @@ public class Allocation
     paramRenderScript = new Type.Builder(paramRenderScript, elementFromBitmap(paramRenderScript, paramBitmap));
     paramRenderScript.setX(paramBitmap.getWidth());
     paramRenderScript.setY(paramBitmap.getHeight());
-    if (paramMipmapControl == Allocation.MipmapControl.MIPMAP_FULL) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramRenderScript.setMipmaps(bool);
-      return paramRenderScript.create();
+    boolean bool;
+    if (paramMipmapControl == Allocation.MipmapControl.MIPMAP_FULL) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramRenderScript.setMipmaps(bool);
+    return paramRenderScript.create();
   }
   
   private void updateCacheInfo(Type paramType)
@@ -313,79 +355,134 @@ public class Allocation
     this.mCurrentDimY = paramType.getY();
     this.mCurrentDimZ = paramType.getZ();
     this.mCurrentCount = this.mCurrentDimX;
-    if (this.mCurrentDimY > 1) {
-      this.mCurrentCount *= this.mCurrentDimY;
+    int i = this.mCurrentDimY;
+    if (i > 1) {
+      this.mCurrentCount *= i;
     }
-    if (this.mCurrentDimZ > 1) {
-      this.mCurrentCount *= this.mCurrentDimZ;
+    i = this.mCurrentDimZ;
+    if (i > 1) {
+      this.mCurrentCount *= i;
     }
   }
   
   private void validate2DRange(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mAdaptedAllocation != null) {}
-    do
-    {
+    if (this.mAdaptedAllocation != null) {
       return;
-      if ((paramInt1 < 0) || (paramInt2 < 0)) {
-        throw new RSIllegalArgumentException("Offset cannot be negative.");
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0))
+    {
+      if ((paramInt4 >= 0) && (paramInt3 >= 0))
+      {
+        if ((paramInt1 + paramInt3 <= this.mCurrentDimX) && (paramInt2 + paramInt4 <= this.mCurrentDimY)) {
+          return;
+        }
+        throw new RSIllegalArgumentException("Updated region larger than allocation.");
       }
-      if ((paramInt4 < 0) || (paramInt3 < 0)) {
-        throw new RSIllegalArgumentException("Height or width cannot be negative.");
-      }
-    } while ((paramInt1 + paramInt3 <= this.mCurrentDimX) && (paramInt2 + paramInt4 <= this.mCurrentDimY));
-    throw new RSIllegalArgumentException("Updated region larger than allocation.");
+      throw new RSIllegalArgumentException("Height or width cannot be negative.");
+    }
+    throw new RSIllegalArgumentException("Offset cannot be negative.");
   }
   
   private void validate3DRange(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (this.mAdaptedAllocation != null) {}
-    do
-    {
+    if (this.mAdaptedAllocation != null) {
       return;
-      if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0)) {
-        throw new RSIllegalArgumentException("Offset cannot be negative.");
+    }
+    if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt3 >= 0))
+    {
+      if ((paramInt5 >= 0) && (paramInt4 >= 0) && (paramInt6 >= 0))
+      {
+        if ((paramInt1 + paramInt4 <= this.mCurrentDimX) && (paramInt2 + paramInt5 <= this.mCurrentDimY) && (paramInt3 + paramInt6 <= this.mCurrentDimZ)) {
+          return;
+        }
+        throw new RSIllegalArgumentException("Updated region larger than allocation.");
       }
-      if ((paramInt5 < 0) || (paramInt4 < 0) || (paramInt6 < 0)) {
-        throw new RSIllegalArgumentException("Height or width cannot be negative.");
-      }
-    } while ((paramInt1 + paramInt4 <= this.mCurrentDimX) && (paramInt2 + paramInt5 <= this.mCurrentDimY) && (paramInt3 + paramInt6 <= this.mCurrentDimZ));
-    throw new RSIllegalArgumentException("Updated region larger than allocation.");
+      throw new RSIllegalArgumentException("Height or width cannot be negative.");
+    }
+    throw new RSIllegalArgumentException("Offset cannot be negative.");
   }
   
   private void validateBitmapFormat(Bitmap paramBitmap)
   {
     paramBitmap = paramBitmap.getConfig();
-    if (paramBitmap == null) {
-      throw new RSIllegalArgumentException("Bitmap has an unsupported format for this operation");
-    }
-    switch (Allocation.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.ordinal()])
+    if (paramBitmap != null)
     {
-    }
-    do
-    {
-      do
+      int i = Allocation.1.$SwitchMap$android$graphics$Bitmap$Config[paramBitmap.ordinal()];
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          do
+          if (i != 3)
           {
+            if (i != 4) {
+              return;
+            }
+            if ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGBA) && (this.mType.getElement().getBytesSize() == 2)) {
+              return;
+            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Allocation kind is ");
+            localStringBuilder.append(this.mType.getElement().mKind);
+            localStringBuilder.append(", type ");
+            localStringBuilder.append(this.mType.getElement().mType);
+            localStringBuilder.append(" of ");
+            localStringBuilder.append(this.mType.getElement().getBytesSize());
+            localStringBuilder.append(" bytes, passed bitmap was ");
+            localStringBuilder.append(paramBitmap);
+            throw new RSIllegalArgumentException(localStringBuilder.toString());
+          }
+          if ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGB) && (this.mType.getElement().getBytesSize() == 2)) {
             return;
-          } while (this.mType.getElement().mKind == Element.DataKind.PIXEL_A);
-          throw new RSIllegalArgumentException("Allocation kind is " + this.mType.getElement().mKind + ", type " + this.mType.getElement().mType + " of " + this.mType.getElement().getBytesSize() + " bytes, passed bitmap was " + paramBitmap);
-        } while ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGBA) && (this.mType.getElement().getBytesSize() == 4));
-        throw new RSIllegalArgumentException("Allocation kind is " + this.mType.getElement().mKind + ", type " + this.mType.getElement().mType + " of " + this.mType.getElement().getBytesSize() + " bytes, passed bitmap was " + paramBitmap);
-      } while ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGB) && (this.mType.getElement().getBytesSize() == 2));
-      throw new RSIllegalArgumentException("Allocation kind is " + this.mType.getElement().mKind + ", type " + this.mType.getElement().mType + " of " + this.mType.getElement().getBytesSize() + " bytes, passed bitmap was " + paramBitmap);
-    } while ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGBA) && (this.mType.getElement().getBytesSize() == 2));
-    throw new RSIllegalArgumentException("Allocation kind is " + this.mType.getElement().mKind + ", type " + this.mType.getElement().mType + " of " + this.mType.getElement().getBytesSize() + " bytes, passed bitmap was " + paramBitmap);
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Allocation kind is ");
+          localStringBuilder.append(this.mType.getElement().mKind);
+          localStringBuilder.append(", type ");
+          localStringBuilder.append(this.mType.getElement().mType);
+          localStringBuilder.append(" of ");
+          localStringBuilder.append(this.mType.getElement().getBytesSize());
+          localStringBuilder.append(" bytes, passed bitmap was ");
+          localStringBuilder.append(paramBitmap);
+          throw new RSIllegalArgumentException(localStringBuilder.toString());
+        }
+        if ((this.mType.getElement().mKind == Element.DataKind.PIXEL_RGBA) && (this.mType.getElement().getBytesSize() == 4)) {
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Allocation kind is ");
+        localStringBuilder.append(this.mType.getElement().mKind);
+        localStringBuilder.append(", type ");
+        localStringBuilder.append(this.mType.getElement().mType);
+        localStringBuilder.append(" of ");
+        localStringBuilder.append(this.mType.getElement().getBytesSize());
+        localStringBuilder.append(" bytes, passed bitmap was ");
+        localStringBuilder.append(paramBitmap);
+        throw new RSIllegalArgumentException(localStringBuilder.toString());
+      }
+      if (this.mType.getElement().mKind == Element.DataKind.PIXEL_A) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Allocation kind is ");
+      localStringBuilder.append(this.mType.getElement().mKind);
+      localStringBuilder.append(", type ");
+      localStringBuilder.append(this.mType.getElement().mType);
+      localStringBuilder.append(" of ");
+      localStringBuilder.append(this.mType.getElement().getBytesSize());
+      localStringBuilder.append(" bytes, passed bitmap was ");
+      localStringBuilder.append(paramBitmap);
+      throw new RSIllegalArgumentException(localStringBuilder.toString());
+    }
+    throw new RSIllegalArgumentException("Bitmap has an unsupported format for this operation");
   }
   
   private void validateBitmapSize(Bitmap paramBitmap)
   {
-    if ((this.mCurrentDimX != paramBitmap.getWidth()) || (this.mCurrentDimY != paramBitmap.getHeight())) {
-      throw new RSIllegalArgumentException("Cannot update allocation from bitmap, sizes mismatch");
+    if ((this.mCurrentDimX == paramBitmap.getWidth()) && (this.mCurrentDimY == paramBitmap.getHeight())) {
+      return;
     }
+    throw new RSIllegalArgumentException("Cannot update allocation from bitmap, sizes mismatch");
   }
   
   private void validateIsFloat32()
@@ -393,39 +490,66 @@ public class Allocation
     if (this.mType.mElement.mType == Element.DataType.FLOAT_32) {
       return;
     }
-    throw new RSIllegalArgumentException("32 bit float source does not match allocation type " + this.mType.mElement.mType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("32 bit float source does not match allocation type ");
+    localStringBuilder.append(this.mType.mElement.mType);
+    throw new RSIllegalArgumentException(localStringBuilder.toString());
   }
   
   private void validateIsInt16()
   {
-    if ((this.mType.mElement.mType == Element.DataType.SIGNED_16) || (this.mType.mElement.mType == Element.DataType.UNSIGNED_16)) {
-      return;
+    if (this.mType.mElement.mType != Element.DataType.SIGNED_16)
+    {
+      if (this.mType.mElement.mType == Element.DataType.UNSIGNED_16) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("16 bit integer source does not match allocation type ");
+      localStringBuilder.append(this.mType.mElement.mType);
+      throw new RSIllegalArgumentException(localStringBuilder.toString());
     }
-    throw new RSIllegalArgumentException("16 bit integer source does not match allocation type " + this.mType.mElement.mType);
   }
   
   private void validateIsInt32()
   {
-    if ((this.mType.mElement.mType == Element.DataType.SIGNED_32) || (this.mType.mElement.mType == Element.DataType.UNSIGNED_32)) {
-      return;
+    if (this.mType.mElement.mType != Element.DataType.SIGNED_32)
+    {
+      if (this.mType.mElement.mType == Element.DataType.UNSIGNED_32) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("32 bit integer source does not match allocation type ");
+      localStringBuilder.append(this.mType.mElement.mType);
+      throw new RSIllegalArgumentException(localStringBuilder.toString());
     }
-    throw new RSIllegalArgumentException("32 bit integer source does not match allocation type " + this.mType.mElement.mType);
   }
   
   private void validateIsInt8()
   {
-    if ((this.mType.mElement.mType == Element.DataType.SIGNED_8) || (this.mType.mElement.mType == Element.DataType.UNSIGNED_8)) {
-      return;
+    if (this.mType.mElement.mType != Element.DataType.SIGNED_8)
+    {
+      if (this.mType.mElement.mType == Element.DataType.UNSIGNED_8) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("8 bit integer source does not match allocation type ");
+      localStringBuilder.append(this.mType.mElement.mType);
+      throw new RSIllegalArgumentException(localStringBuilder.toString());
     }
-    throw new RSIllegalArgumentException("8 bit integer source does not match allocation type " + this.mType.mElement.mType);
   }
   
   private void validateIsObject()
   {
-    if ((this.mType.mElement.mType == Element.DataType.RS_ELEMENT) || (this.mType.mElement.mType == Element.DataType.RS_TYPE) || (this.mType.mElement.mType == Element.DataType.RS_ALLOCATION) || (this.mType.mElement.mType == Element.DataType.RS_SAMPLER) || (this.mType.mElement.mType == Element.DataType.RS_SCRIPT)) {
-      return;
+    if ((this.mType.mElement.mType != Element.DataType.RS_ELEMENT) && (this.mType.mElement.mType != Element.DataType.RS_TYPE) && (this.mType.mElement.mType != Element.DataType.RS_ALLOCATION) && (this.mType.mElement.mType != Element.DataType.RS_SAMPLER))
+    {
+      if (this.mType.mElement.mType == Element.DataType.RS_SCRIPT) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Object source does not match allocation type ");
+      localStringBuilder.append(this.mType.mElement.mType);
+      throw new RSIllegalArgumentException(localStringBuilder.toString());
     }
-    throw new RSIllegalArgumentException("Object source does not match allocation type " + this.mType.mElement.mType);
   }
   
   public void copy1DRangeFrom(int paramInt1, int paramInt2, Allocation paramAllocation, int paramInt3)
@@ -636,23 +760,27 @@ public class Allocation
   public void copyFrom(Allocation paramAllocation)
   {
     this.mRS.validate();
-    if (!this.mType.equals(paramAllocation.getType())) {
-      throw new RSIllegalArgumentException("Types of allocations must match.");
+    if (this.mType.equals(paramAllocation.getType()))
+    {
+      copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramAllocation, 0, 0);
+      return;
     }
-    copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramAllocation, 0, 0);
+    throw new RSIllegalArgumentException("Types of allocations must match.");
   }
   
   public void copyFrom(byte[] paramArrayOfByte)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfByte);
+      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfByte);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfByte);
+      copy2DRangeFrom(0, 0, this.mCurrentDimX, i, paramArrayOfByte);
       return;
     }
     copy1DRangeFrom(0, this.mCurrentCount, paramArrayOfByte);
@@ -661,14 +789,16 @@ public class Allocation
   public void copyFrom(float[] paramArrayOfFloat)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfFloat);
+      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfFloat);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfFloat);
+      copy2DRangeFrom(0, 0, this.mCurrentDimX, i, paramArrayOfFloat);
       return;
     }
     copy1DRangeFrom(0, this.mCurrentCount, paramArrayOfFloat);
@@ -677,14 +807,16 @@ public class Allocation
   public void copyFrom(int[] paramArrayOfInt)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfInt);
+      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfInt);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfInt);
+      copy2DRangeFrom(0, 0, this.mCurrentDimX, i, paramArrayOfInt);
       return;
     }
     copy1DRangeFrom(0, this.mCurrentCount, paramArrayOfInt);
@@ -694,30 +826,43 @@ public class Allocation
   {
     this.mRS.validate();
     validateIsObject();
-    if (paramArrayOfBaseObj.length != this.mCurrentCount) {
-      throw new RSIllegalArgumentException("Array size mismatch, allocation sizeX = " + this.mCurrentCount + ", array length = " + paramArrayOfBaseObj.length);
-    }
-    int[] arrayOfInt = new int[paramArrayOfBaseObj.length];
-    int i = 0;
-    while (i < paramArrayOfBaseObj.length)
+    if (paramArrayOfBaseObj.length == this.mCurrentCount)
     {
-      arrayOfInt[i] = paramArrayOfBaseObj[i].getID(this.mRS);
-      i += 1;
+      localObject = new int[paramArrayOfBaseObj.length];
+      int i = 0;
+      while (i < paramArrayOfBaseObj.length)
+      {
+        localObject[i] = paramArrayOfBaseObj[i].getID(this.mRS);
+        i += 1;
+      }
+      copy1DRangeFromUnchecked(0, this.mCurrentCount, (int[])localObject);
+      return;
     }
-    copy1DRangeFromUnchecked(0, this.mCurrentCount, arrayOfInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Array size mismatch, allocation sizeX = ");
+    ((StringBuilder)localObject).append(this.mCurrentCount);
+    ((StringBuilder)localObject).append(", array length = ");
+    ((StringBuilder)localObject).append(paramArrayOfBaseObj.length);
+    paramArrayOfBaseObj = new RSIllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramArrayOfBaseObj;
+    }
   }
   
   public void copyFrom(short[] paramArrayOfShort)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfShort);
+      copy3DRangeFrom(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfShort);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFrom(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfShort);
+      copy2DRangeFrom(0, 0, this.mCurrentDimX, i, paramArrayOfShort);
       return;
     }
     copy1DRangeFrom(0, this.mCurrentCount, paramArrayOfShort);
@@ -726,14 +871,16 @@ public class Allocation
   public void copyFromUnchecked(byte[] paramArrayOfByte)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfByte);
+      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfByte);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfByte);
+      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i, paramArrayOfByte);
       return;
     }
     copy1DRangeFromUnchecked(0, this.mCurrentCount, paramArrayOfByte);
@@ -742,14 +889,16 @@ public class Allocation
   public void copyFromUnchecked(float[] paramArrayOfFloat)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfFloat);
+      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfFloat);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfFloat);
+      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i, paramArrayOfFloat);
       return;
     }
     copy1DRangeFromUnchecked(0, this.mCurrentCount, paramArrayOfFloat);
@@ -758,14 +907,16 @@ public class Allocation
   public void copyFromUnchecked(int[] paramArrayOfInt)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfInt);
+      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfInt);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfInt);
+      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i, paramArrayOfInt);
       return;
     }
     copy1DRangeFromUnchecked(0, this.mCurrentCount, paramArrayOfInt);
@@ -774,14 +925,16 @@ public class Allocation
   public void copyFromUnchecked(short[] paramArrayOfShort)
   {
     this.mRS.validate();
-    if (this.mCurrentDimZ > 0)
+    int i = this.mCurrentDimZ;
+    if (i > 0)
     {
-      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, this.mCurrentDimZ, paramArrayOfShort);
+      copy3DRangeFromUnchecked(0, 0, 0, this.mCurrentDimX, this.mCurrentDimY, i, paramArrayOfShort);
       return;
     }
-    if (this.mCurrentDimY > 0)
+    i = this.mCurrentDimY;
+    if (i > 0)
     {
-      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, this.mCurrentDimY, paramArrayOfShort);
+      copy2DRangeFromUnchecked(0, 0, this.mCurrentDimX, i, paramArrayOfShort);
       return;
     }
     copy1DRangeFromUnchecked(0, this.mCurrentCount, paramArrayOfShort);
@@ -858,20 +1011,24 @@ public class Allocation
   
   public void ioReceive()
   {
-    if ((this.mUsage & 0x20) == 0) {
-      throw new RSIllegalArgumentException("Can only receive if IO_INPUT usage specified.");
+    if ((this.mUsage & 0x20) != 0)
+    {
+      this.mRS.validate();
+      this.mRS.nAllocationIoReceive(getID(this.mRS));
+      return;
     }
-    this.mRS.validate();
-    this.mRS.nAllocationIoReceive(getID(this.mRS));
+    throw new RSIllegalArgumentException("Can only receive if IO_INPUT usage specified.");
   }
   
   public void ioSend()
   {
-    if ((this.mUsage & 0x40) == 0) {
-      throw new RSIllegalArgumentException("Can only send buffer if IO_OUTPUT usage specified.");
+    if ((this.mUsage & 0x40) != 0)
+    {
+      this.mRS.validate();
+      this.mRS.nAllocationIoSend(getID(this.mRS));
+      return;
     }
-    this.mRS.validate();
-    this.mRS.nAllocationIoSend(getID(this.mRS));
+    throw new RSIllegalArgumentException("Can only send buffer if IO_OUTPUT usage specified.");
   }
   
   public void ioSendOutput()
@@ -882,18 +1039,32 @@ public class Allocation
   public void setFromFieldPacker(int paramInt1, int paramInt2, FieldPacker paramFieldPacker)
   {
     this.mRS.validate();
-    if (paramInt2 >= this.mType.mElement.mElements.length) {
-      throw new RSIllegalArgumentException("Component_number " + paramInt2 + " out of range.");
-    }
-    if (paramInt1 < 0) {
+    if (paramInt2 < this.mType.mElement.mElements.length)
+    {
+      if (paramInt1 >= 0)
+      {
+        paramFieldPacker = paramFieldPacker.getData();
+        int i = this.mType.mElement.mElements[paramInt2].getBytesSize() * this.mType.mElement.mArraySizes[paramInt2];
+        if (paramFieldPacker.length == i)
+        {
+          this.mRS.nAllocationElementData1D(getIDSafe(), paramInt1, this.mSelectedLOD, paramInt2, paramFieldPacker, paramFieldPacker.length);
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Field packer sizelength ");
+        localStringBuilder.append(paramFieldPacker.length);
+        localStringBuilder.append(" does not match component size ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(".");
+        throw new RSIllegalArgumentException(localStringBuilder.toString());
+      }
       throw new RSIllegalArgumentException("Offset must be >= 0.");
     }
-    paramFieldPacker = paramFieldPacker.getData();
-    int i = this.mType.mElement.mElements[paramInt2].getBytesSize() * this.mType.mElement.mArraySizes[paramInt2];
-    if (paramFieldPacker.length != i) {
-      throw new RSIllegalArgumentException("Field packer sizelength " + paramFieldPacker.length + " does not match component size " + i + ".");
-    }
-    this.mRS.nAllocationElementData1D(getIDSafe(), paramInt1, this.mSelectedLOD, paramInt2, paramFieldPacker, paramFieldPacker.length);
+    paramFieldPacker = new StringBuilder();
+    paramFieldPacker.append("Component_number ");
+    paramFieldPacker.append(paramInt2);
+    paramFieldPacker.append(" out of range.");
+    throw new RSIllegalArgumentException(paramFieldPacker.toString());
   }
   
   public void setFromFieldPacker(int paramInt, FieldPacker paramFieldPacker)
@@ -902,17 +1073,23 @@ public class Allocation
     int i = this.mType.mElement.getBytesSize();
     paramFieldPacker = paramFieldPacker.getData();
     int j = paramFieldPacker.length / i;
-    if (i * j != paramFieldPacker.length) {
-      throw new RSIllegalArgumentException("Field packer length " + paramFieldPacker.length + " not divisible by element size " + i + ".");
+    if (i * j == paramFieldPacker.length)
+    {
+      copy1DRangeFromUnchecked(paramInt, j, paramFieldPacker);
+      return;
     }
-    copy1DRangeFromUnchecked(paramInt, j, paramFieldPacker);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Field packer length ");
+    localStringBuilder.append(paramFieldPacker.length);
+    localStringBuilder.append(" not divisible by element size ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(".");
+    throw new RSIllegalArgumentException(localStringBuilder.toString());
   }
   
   public void syncAll(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 1) && (paramInt != 2)) {
       throw new RSIllegalArgumentException("Source must be exactly one usage type.");
     }
     this.mRS.validate();
@@ -921,7 +1098,7 @@ public class Allocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Allocation
  * JD-Core Version:    0.7.0.1
  */

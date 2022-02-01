@@ -25,8 +25,8 @@ public final class c
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903066, paramViewGroup, false);
     paramViewGroup = new d(this);
-    paramViewGroup.afL = ((TextView)paramContext.findViewById(2131558443));
-    paramViewGroup.ahg = ((MMGIFImageView)paramContext.findViewById(2131558474));
+    paramViewGroup.ajn = ((TextView)paramContext.findViewById(2131558444));
+    paramViewGroup.akI = ((MMGIFImageView)paramContext.findViewById(2131558475));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -34,32 +34,32 @@ public final class c
   public final void a(Context paramContext, b paramb)
   {
     paramb = (d)paramb;
-    if (nx())
+    if (ok())
     {
-      paramb.afL.setVisibility(0);
-      TextView localTextView = paramb.afL;
-      e.mB();
-      localTextView.setText(e.a(paramContext, this.ahe.afg.VT, 24));
+      paramb.ajn.setVisibility(0);
+      TextView localTextView = paramb.ajn;
+      e.nn();
+      localTextView.setText(e.a(paramContext, this.akG.aiI.XO, 24));
     }
     for (;;)
     {
       paramContext = new com.tencent.mm.wear.app.c.a();
-      paramContext.acM = 2130837533;
-      paramContext.acL = paramb.ahg;
+      paramContext.agn = 2130837533;
+      paramContext.agm = paramb.akI;
       paramContext.type = 1;
-      paramContext.acG = this.ahe.afg.VO;
-      paramContext.width = (MMActivity.nc() / 2);
-      paramContext.height = (MMActivity.nb() / 2);
+      paramContext.agh = this.akG.aiI.XJ;
+      paramContext.width = (MMActivity.nP() / 2);
+      paramContext.height = (MMActivity.nO() / 2);
       try
       {
         paramb = new com.tencent.mm.e.a.d();
-        paramb.h(this.ahe.afg.VX.toByteArray());
-        paramContext.acQ = paramb.Vq;
-        paramContext.acJ = paramb.Vr;
+        paramb.h(this.akG.aiI.XS.toByteArray());
+        paramContext.agr = paramb.Xl;
+        paramContext.agk = paramb.Xm;
         label150:
-        h.me().a(paramContext);
+        h.mR().a(paramContext);
         return;
-        paramb.afL.setVisibility(8);
+        paramb.ajn.setVisibility(8);
       }
       catch (IOException paramb)
       {

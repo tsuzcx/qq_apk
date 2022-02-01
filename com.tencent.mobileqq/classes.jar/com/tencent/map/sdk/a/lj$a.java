@@ -101,10 +101,11 @@ final class lj$a
   
   public final int a()
   {
-    if (this.a == null) {
+    BubbleOptions localBubbleOptions = this.a;
+    if (localBubbleOptions == null) {
       return 0;
     }
-    return this.a.getDisplayLevel();
+    return localBubbleOptions.getDisplayLevel();
   }
   
   public final ir a(fu paramfu, int paramInt)
@@ -119,80 +120,106 @@ final class lj$a
       return null;
     }
     localObject1 = paramfu.a(lj.a((LatLng)localObject1));
-    int j;
-    int i;
-    float f2;
-    float f1;
-    label106:
-    double d1;
-    double d2;
     if (localMarker != null)
     {
       j = localMarker.getWidth(lj.a(this.d));
       i = localMarker.getHeight(lj.a(this.d));
-      if (localMarker == null) {
-        break label325;
-      }
+    }
+    else
+    {
+      j = this.a.getMarkerWidth();
+      i = this.a.getMarkerHeight();
+    }
+    float f2;
+    float f1;
+    if (localMarker != null)
+    {
       f2 = localMarker.getAnchorU();
       f1 = localMarker.getAnchorV();
-      if ((f2 >= 0.0F) && (f2 <= 1.0F))
-      {
-        d1 = f2;
-        d2 = j;
-        ((DoublePoint)localObject1).x -= (d1 - 0.5D) * d2;
-      }
-      if ((f1 >= 0.0F) && (f1 <= 1.0F))
-      {
-        d1 = f1;
-        d2 = i;
-        ((DoublePoint)localObject1).y -= (d1 - 0.5D) * d2;
-      }
-      localObject2 = this.e[(paramInt - 1)];
-      j = ((Bitmap)localObject2).getWidth() / 2;
-      i = ((Bitmap)localObject2).getHeight() / 2 + i / 2;
-      if (paramInt != lj.b.a) {
-        break label346;
-      }
-      d2 = ((DoublePoint)localObject1).x - j;
-      d1 = ((DoublePoint)localObject1).y - i;
+    }
+    else
+    {
+      f2 = this.a.getMarkerAnchorU();
+      f1 = this.a.getMarkerAnchorV();
+    }
+    double d1;
+    double d2;
+    if ((f2 >= 0.0F) && (f2 <= 1.0F))
+    {
+      d1 = f2;
+      Double.isNaN(d1);
+      d2 = j;
+      Double.isNaN(d2);
+      ((DoublePoint)localObject1).x -= (d1 - 0.5D) * d2;
+    }
+    if ((f1 >= 0.0F) && (f1 <= 1.0F))
+    {
+      d1 = f1;
+      Double.isNaN(d1);
+      d2 = i;
+      Double.isNaN(d2);
+      ((DoublePoint)localObject1).y -= (d1 - 0.5D) * d2;
+    }
+    localObject2 = this.e[(paramInt - 1)];
+    int j = ((Bitmap)localObject2).getWidth() / 2;
+    int i = ((Bitmap)localObject2).getHeight() / 2 + i / 2;
+    double d3;
+    if (paramInt == lj.b.a)
+    {
+      d1 = ((DoublePoint)localObject1).x;
+      d2 = j;
+      Double.isNaN(d2);
+      d1 -= d2;
+      d2 = ((DoublePoint)localObject1).y;
+      d3 = i;
+      Double.isNaN(d3);
     }
     for (;;)
     {
-      localObject1 = new DoublePoint(d2, d1);
-      this.c.a(paramfu.a((DoublePoint)localObject1));
-      this.c.a(a(paramInt), new Bitmap[] { localObject2 });
-      return this.c;
-      j = this.a.getMarkerWidth();
-      i = this.a.getMarkerHeight();
-      break;
-      label325:
-      f2 = this.a.getMarkerAnchorU();
-      f1 = this.a.getMarkerAnchorV();
-      break label106;
-      label346:
-      if (paramInt == lj.b.b)
-      {
-        d2 = ((DoublePoint)localObject1).x + j;
-        d1 = ((DoublePoint)localObject1).y - i;
+      d2 -= d3;
+      break label491;
+      if (paramInt != lj.b.b) {
+        break;
       }
-      else if (paramInt == lj.b.c)
-      {
-        d2 = ((DoublePoint)localObject1).x + j;
-        d1 = ((DoublePoint)localObject1).y;
-        d1 = i + d1;
-      }
-      else
-      {
-        d2 = ((DoublePoint)localObject1).x - j;
-        d1 = ((DoublePoint)localObject1).y;
-        d1 = i + d1;
-      }
+      d1 = ((DoublePoint)localObject1).x;
+      d2 = j;
+      Double.isNaN(d2);
+      d1 += d2;
+      d2 = ((DoublePoint)localObject1).y;
+      d3 = i;
+      Double.isNaN(d3);
     }
+    if (paramInt == lj.b.c)
+    {
+      d1 = ((DoublePoint)localObject1).x;
+      d2 = j;
+      Double.isNaN(d2);
+      d1 += d2;
+      d2 = ((DoublePoint)localObject1).y;
+      d3 = i;
+      Double.isNaN(d3);
+    }
+    else
+    {
+      d1 = ((DoublePoint)localObject1).x;
+      d2 = j;
+      Double.isNaN(d2);
+      d1 -= d2;
+      d2 = ((DoublePoint)localObject1).y;
+      d3 = i;
+      Double.isNaN(d3);
+    }
+    d2 += d3;
+    label491:
+    localObject1 = new DoublePoint(d1, d2);
+    this.c.a(paramfu.a((DoublePoint)localObject1));
+    this.c.a(a(paramInt), new Bitmap[] { localObject2 });
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lj.a
  * JD-Core Version:    0.7.0.1
  */

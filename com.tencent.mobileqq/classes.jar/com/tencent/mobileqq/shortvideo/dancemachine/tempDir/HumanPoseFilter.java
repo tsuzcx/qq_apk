@@ -86,6 +86,7 @@ public class HumanPoseFilter
       }
     }
     int i = 0;
+    float f1;
     while (i < j)
     {
       paramArrayOfFloat = (Vec3f)this.facePoints.get(i);
@@ -95,7 +96,12 @@ public class HumanPoseFilter
         paramRenderBuffer = new Vec3f();
         this.facePoints.set(i, paramRenderBuffer);
       }
-      paramRenderBuffer.set(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
+      int k = i * 3;
+      f1 = arrayOfFloat[k];
+      int m = k + 1;
+      float f2 = arrayOfFloat[m];
+      int n = k + 2;
+      paramRenderBuffer.set(f1, f2, arrayOfFloat[n]);
       paramArrayOfFloat = (Vec3f)this.cachePoints.get(i);
       paramRenderBuffer = paramArrayOfFloat;
       if (paramArrayOfFloat == null)
@@ -103,10 +109,13 @@ public class HumanPoseFilter
         paramRenderBuffer = new Vec3f();
         this.cachePoints.set(i, paramRenderBuffer);
       }
-      paramRenderBuffer.set(arrayOfFloat[(i * 3)], arrayOfFloat[(i * 3 + 1)], arrayOfFloat[(i * 3 + 2)]);
+      paramRenderBuffer.set(arrayOfFloat[k], arrayOfFloat[m], arrayOfFloat[n]);
       i += 1;
     }
-    if (((((Vec3f)this.facePoints.get(0)).z > 0.0F) || (((Vec3f)this.facePoints.get(14)).z <= 0.0F) || (((Vec3f)this.facePoints.get(15)).z > 0.0F)) || (ENABLE_DEBUG_MODE)) {
+    if ((((Vec3f)this.facePoints.get(0)).z <= 0.0F) && (((Vec3f)this.facePoints.get(14)).z > 0.0F)) {
+      f1 = ((Vec3f)this.facePoints.get(15)).z;
+    }
+    if (ENABLE_DEBUG_MODE) {
       this.debugMode.updateParams(this.cachePoints);
     }
   }
@@ -119,7 +128,7 @@ public class HumanPoseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.tempDir.HumanPoseFilter
  * JD-Core Version:    0.7.0.1
  */

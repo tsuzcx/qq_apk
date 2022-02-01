@@ -38,12 +38,10 @@ public class RegionImageUtil
         i = ImageManagerEnv.g().getRotationDegree(paramString);
         DecodeImageTask.putImagePath2Rotation(paramString, i);
       }
-    }
-    for (;;)
-    {
-      return i % 360;
+    } else {
       i = localThrowable.intValue();
     }
+    return i % 360;
   }
   
   public static boolean isNeedPieceLoad(int paramInt1, int paramInt2)
@@ -56,38 +54,34 @@ public class RegionImageUtil
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    Object localObject;
-    if (mImageTypeMap.containsKey(paramString)) {
-      localObject = (String)mImageTypeMap.get(paramString);
-    }
-    for (;;)
+    if (mImageTypeMap.containsKey(paramString))
     {
-      ImageManagerLog.i("RegionImageUtil", "isValidRegionImageFormat for mimeType: " + (String)localObject);
-      if ((!"image/jpeg".equalsIgnoreCase((String)localObject)) && (!"image/png".equalsIgnoreCase((String)localObject)) && (!"image/jpg".equalsIgnoreCase((String)localObject))) {
-        break;
-      }
-      return true;
+      paramString = (String)mImageTypeMap.get(paramString);
+    }
+    else
+    {
       localObject = BitmapUtils.getOptions();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-      String str = ((BitmapFactory.Options)localObject).outMimeType;
-      localObject = str;
-      if (paramString != null)
-      {
-        localObject = str;
-        if (str != null)
-        {
-          mImageTypeMap.put(paramString, str);
-          localObject = str;
-        }
+      localObject = ((BitmapFactory.Options)localObject).outMimeType;
+      if ((paramString != null) && (localObject != null)) {
+        mImageTypeMap.put(paramString, localObject);
       }
+      paramString = (String)localObject;
     }
-    return false;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isValidRegionImageFormat for mimeType: ");
+    ((StringBuilder)localObject).append(paramString);
+    ImageManagerLog.i("RegionImageUtil", ((StringBuilder)localObject).toString());
+    if ((!"image/jpeg".equalsIgnoreCase(paramString)) && (!"image/png".equalsIgnoreCase(paramString))) {
+      return "image/jpg".equalsIgnoreCase(paramString);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.region.RegionImageUtil
  * JD-Core Version:    0.7.0.1
  */

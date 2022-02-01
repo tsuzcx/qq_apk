@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.a.b;
-import a.f.b.k;
-import a.l;
-import a.y;
-import android.view.View;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 public final class StoryCommentView$e
-  extends k
-  implements b<View, y>
+  extends u
+  implements a<ah>
 {
   public StoryCommentView$e(StoryCommentView paramStoryCommentView)
   {
-    super(1);
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryCommentView.e
  * JD-Core Version:    0.7.0.1
  */

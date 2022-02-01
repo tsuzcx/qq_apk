@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.MD5;
-import few;
+import fev;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
@@ -64,7 +64,7 @@ public class ProcessExitReceiver
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return true;
     }
-    String str = MobileQQ.getMobileQQ().getProcessName();
+    String str = MobileQQ.getMobileQQ().getProcessNames();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
       if (str.equals((String)paramArrayList.next())) {
@@ -90,7 +90,7 @@ public class ProcessExitReceiver
       } while (paramContext == null);
       paramIntent = paramContext.getStringArrayList("procNameList");
     } while ((!a(paramContext.getString("verify"), paramIntent)) || (!a(paramIntent)));
-    new few(this).start();
+    new fev(this).start();
     return;
     this.a.getApplication().otherProcessExit(true);
   }

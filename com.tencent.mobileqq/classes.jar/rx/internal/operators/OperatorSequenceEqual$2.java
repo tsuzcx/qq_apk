@@ -10,33 +10,29 @@ final class OperatorSequenceEqual$2
   public Boolean call(Object paramObject1, Object paramObject2)
   {
     int i;
-    if (paramObject1 == OperatorSequenceEqual.LOCAL_ONCOMPLETED)
-    {
+    if (paramObject1 == OperatorSequenceEqual.LOCAL_ONCOMPLETED) {
       i = 1;
-      if (paramObject2 != OperatorSequenceEqual.LOCAL_ONCOMPLETED) {
-        break label38;
-      }
-    }
-    label38:
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label44;
-      }
-      return Boolean.valueOf(true);
+    } else {
       i = 0;
-      break;
     }
-    label44:
-    if ((i != 0) || (j != 0)) {
-      return Boolean.valueOf(false);
+    int j;
+    if (paramObject2 == OperatorSequenceEqual.LOCAL_ONCOMPLETED) {
+      j = 1;
+    } else {
+      j = 0;
     }
-    return (Boolean)this.val$equality.call(paramObject1, paramObject2);
+    if ((i != 0) && (j != 0)) {
+      return Boolean.valueOf(true);
+    }
+    if ((i == 0) && (j == 0)) {
+      return (Boolean)this.val$equality.call(paramObject1, paramObject2);
+    }
+    return Boolean.valueOf(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorSequenceEqual.2
  * JD-Core Version:    0.7.0.1
  */

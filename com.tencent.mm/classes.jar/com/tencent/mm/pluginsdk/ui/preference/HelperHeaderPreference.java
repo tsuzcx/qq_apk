@@ -7,94 +7,104 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.comm.c.e;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.u;
 
 public class HelperHeaderPreference
   extends Preference
 {
-  private HelperHeaderPreference.a waT;
+  private a YmA;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(79801);
-    this.waT = new HelperHeaderPreference.a();
-    AppMethodBeat.o(79801);
+    AppMethodBeat.i(152254);
+    this.YmA = new a();
+    AppMethodBeat.o(152254);
   }
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(79802);
-    this.waT = new HelperHeaderPreference.a();
-    AppMethodBeat.o(79802);
+    AppMethodBeat.i(152255);
+    this.YmA = new a();
+    AppMethodBeat.o(152255);
   }
   
-  public final void aB(String paramString1, String paramString2, String paramString3)
+  public final void bz(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(79804);
-    this.waT.cDt = paramString1;
-    this.waT.elx = paramString2;
-    this.waT.hint = paramString3;
-    super.callChangeListener(null);
-    AppMethodBeat.o(79804);
+    AppMethodBeat.i(152257);
+    this.YmA.hVQ = paramString1;
+    this.YmA.displayName = paramString2;
+    this.YmA.hint = paramString3;
+    super.gH(null);
+    AppMethodBeat.o(152257);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(79803);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131821210);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131824328);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131823254);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131826741);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131826740);
-    View localView = paramView.findViewById(2131823104);
-    localTextView4.setText(2131299864);
+    AppMethodBeat.i(152256);
+    ImageView localImageView = (ImageView)paramView.findViewById(c.e.avatar_iv);
+    TextView localTextView1 = (TextView)paramView.findViewById(c.e.status_tv);
+    TextView localTextView2 = (TextView)paramView.findViewById(c.e.nickname_tv);
+    TextView localTextView3 = (TextView)paramView.findViewById(c.e.hint_tv);
+    TextView localTextView4 = (TextView)paramView.findViewById(c.e.feature_tv);
+    View localView = paramView.findViewById(c.e.profile_root);
+    localTextView4.setText(c.h.feature_introduce);
     if (localImageView != null) {
-      a.b.c(localImageView, this.waT.cDt);
+      a.b.g(localImageView, this.YmA.hVQ);
     }
     if (localTextView1 != null) {
-      switch (this.waT.status)
+      switch (this.YmA.status)
       {
       }
     }
     for (;;)
     {
       if (localTextView2 != null) {
-        localTextView2.setText(this.waT.elx);
+        localTextView2.setText(this.YmA.displayName);
       }
       if (localTextView3 != null) {
-        localTextView3.setText(this.waT.hint);
+        localTextView3.setText(this.YmA.hint);
       }
       super.onBindView(paramView);
       localView.getViewTreeObserver().addOnPreDrawListener(new HelperHeaderPreference.1(this, localView));
-      AppMethodBeat.o(79803);
+      AppMethodBeat.o(152256);
       return;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(s.iD(this.mContext));
-      localTextView1.setText(2131303378);
+      localTextView1.setTextColor(u.nF(this.mContext));
+      localTextView1.setText(c.h.settings_plugins_installed);
       continue;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(s.iE(this.mContext));
-      localTextView1.setText(2131303386);
+      localTextView1.setTextColor(u.nG(this.mContext));
+      localTextView1.setText(c.h.settings_plugins_uninstalled);
       continue;
       localTextView1.setVisibility(8);
     }
   }
   
-  public final void sb(int paramInt)
+  public final void updateStatus(int paramInt)
   {
-    AppMethodBeat.i(79805);
-    this.waT.status = paramInt;
-    super.callChangeListener(null);
-    AppMethodBeat.o(79805);
+    AppMethodBeat.i(152258);
+    this.YmA.status = paramInt;
+    super.gH(null);
+    AppMethodBeat.o(152258);
+  }
+  
+  public static final class a
+  {
+    public String displayName;
+    public String hVQ;
+    public String hint;
+    public int status;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

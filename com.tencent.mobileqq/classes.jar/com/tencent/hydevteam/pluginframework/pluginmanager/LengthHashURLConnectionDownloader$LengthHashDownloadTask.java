@@ -16,21 +16,24 @@ class LengthHashURLConnectionDownloader$LengthHashDownloadTask
   public final File a()
   {
     long l = this.a.length();
-    HttpURLConnection localHttpURLConnection = b();
-    int i = localHttpURLConnection.getContentLength();
-    if ((l != 0L) && (l == i)) {
-      Log.d("LengthCheckDownloader", "下载的文件没有变化，不进行下载 fileLenght:" + l);
-    }
-    for (;;)
+    Object localObject = b();
+    int i = ((HttpURLConnection)localObject).getContentLength();
+    if ((l != 0L) && (l == i))
     {
-      return this.a;
-      a(localHttpURLConnection);
+      localObject = new StringBuilder("下载的文件没有变化，不进行下载 fileLenght:");
+      ((StringBuilder)localObject).append(l);
+      Log.d("LengthCheckDownloader", ((StringBuilder)localObject).toString());
     }
+    else
+    {
+      a((HttpURLConnection)localObject);
+    }
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.LengthHashURLConnectionDownloader.LengthHashDownloadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/ix5" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="bottom" android:id="@id/a8a" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:background="@drawable/caz" android:paddingLeft="@dimen/cr" android:paddingTop="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/be4" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_0_Alpha_0_9" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m6c" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/d5" android:src="@raw/icons_filled_location" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/lzf" android:layout_below="@id/m6c" android:layout_centerHorizontal="true" android:layout_marginEnd="0.0dip" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/gb" android:gravity="center" android:id="@id/lyf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/bv" android:layout_below="@id/ko8" android:layout_centerHorizontal="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/alv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:layout_below="@id/lyf" android:layout_centerHorizontal="true">
+                <Button android:id="@id/apy" android:minWidth="120.0dip" android:text="@string/lzc" style="@style/op" />
+                <Button android:id="@id/hls" android:layout_marginLeft="@dimen/cp" android:minWidth="120.0dip" android:text="@string/lzd" style="@style/oh" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/cd" android:textColor="@color/Link" android:id="@id/m2h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginBottom="@dimen/d0" android:text="@string/lza" android:layout_below="@id/alv" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

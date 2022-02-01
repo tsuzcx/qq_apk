@@ -24,12 +24,15 @@ public abstract interface LottieProperty
   public static final Float REPEATER_OFFSET;
   public static final Integer STROKE_COLOR = Integer.valueOf(2);
   public static final Float STROKE_WIDTH;
+  public static final Float TEXT_SIZE;
   public static final Float TEXT_TRACKING;
   public static final Float TIME_REMAP;
   public static final PointF TRANSFORM_ANCHOR_POINT;
   public static final Float TRANSFORM_END_OPACITY;
   public static final Integer TRANSFORM_OPACITY = Integer.valueOf(3);
   public static final PointF TRANSFORM_POSITION;
+  public static final Float TRANSFORM_POSITION_X;
+  public static final Float TRANSFORM_POSITION_Y;
   public static final Float TRANSFORM_ROTATION;
   public static final ScaleXY TRANSFORM_SCALE;
   public static final Float TRANSFORM_SKEW;
@@ -41,14 +44,17 @@ public abstract interface LottieProperty
     OPACITY = Integer.valueOf(4);
     TRANSFORM_ANCHOR_POINT = new PointF();
     TRANSFORM_POSITION = new PointF();
+    TRANSFORM_POSITION_X = Float.valueOf(15.0F);
+    TRANSFORM_POSITION_Y = Float.valueOf(16.0F);
     ELLIPSE_SIZE = new PointF();
     RECTANGLE_SIZE = new PointF();
-    CORNER_RADIUS = Float.valueOf(0.0F);
+    Float localFloat = Float.valueOf(0.0F);
+    CORNER_RADIUS = localFloat;
     POSITION = new PointF();
     TRANSFORM_SCALE = new ScaleXY();
     TRANSFORM_ROTATION = Float.valueOf(1.0F);
-    TRANSFORM_SKEW = Float.valueOf(0.0F);
-    TRANSFORM_SKEW_ANGLE = Float.valueOf(0.0F);
+    TRANSFORM_SKEW = localFloat;
+    TRANSFORM_SKEW_ANGLE = localFloat;
     STROKE_WIDTH = Float.valueOf(2.0F);
     TEXT_TRACKING = Float.valueOf(3.0F);
     REPEATER_COPIES = Float.valueOf(4.0F);
@@ -60,8 +66,9 @@ public abstract interface LottieProperty
     POLYSTAR_INNER_ROUNDEDNESS = Float.valueOf(10.0F);
     POLYSTAR_OUTER_ROUNDEDNESS = Float.valueOf(11.0F);
     TRANSFORM_START_OPACITY = Float.valueOf(12.0F);
-    TRANSFORM_END_OPACITY = Float.valueOf(12.0F);
+    TRANSFORM_END_OPACITY = Float.valueOf(12.1F);
     TIME_REMAP = Float.valueOf(13.0F);
+    TEXT_SIZE = Float.valueOf(14.0F);
   }
 }
 

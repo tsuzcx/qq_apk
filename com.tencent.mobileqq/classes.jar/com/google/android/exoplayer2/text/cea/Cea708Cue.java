@@ -19,10 +19,12 @@ final class Cea708Cue
   
   public int compareTo(@NonNull Cea708Cue paramCea708Cue)
   {
-    if (paramCea708Cue.priority < this.priority) {
+    int i = paramCea708Cue.priority;
+    int j = this.priority;
+    if (i < j) {
       return -1;
     }
-    if (paramCea708Cue.priority > this.priority) {
+    if (i > j) {
       return 1;
     }
     return 0;
@@ -30,7 +32,7 @@ final class Cea708Cue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.Cea708Cue
  * JD-Core Version:    0.7.0.1
  */

@@ -22,13 +22,14 @@ public final class oidb_0x8a0$ReqBody
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "opt_uint64_group_code", "rpt_msg_kick_list", "rpt_kick_list", "uint32_kick_flag", "bytes_kick_msg" }, new Object[] { Long.valueOf(0L), null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "opt_uint64_group_code", "rpt_msg_kick_list", "rpt_kick_list", "uint32_kick_flag", "bytes_kick_msg" }, new Object[] { localLong, null, localLong, Integer.valueOf(0), localByteStringMicro }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a0.oidb_0x8a0.ReqBody
  * JD-Core Version:    0.7.0.1
  */

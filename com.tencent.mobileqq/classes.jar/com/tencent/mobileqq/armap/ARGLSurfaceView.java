@@ -10,8 +10,8 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.OrientationEventListener;
-import anta;
-import antb;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager.OnSensorChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -19,7 +19,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class ARGLSurfaceView
   extends GLSurfaceView
-  implements GLSurfaceView.Renderer, antb
+  implements GLSurfaceView.Renderer, ARSensorManager.OnSensorChangeListener
 {
   public static final int ACCELER_TYPE = 1;
   public static long FPS_LIMIT = 33L;
@@ -30,14 +30,14 @@ public class ARGLSurfaceView
   private ARGLSurfaceView.TraceCallback mCallback;
   private Activity mCurActivity;
   protected long mEngineHandler;
-  private long mFrameCount;
-  private long mFrameLastFPS;
-  public long mFrameRate;
-  private volatile boolean mIsContextDestroyed;
+  private long mFrameCount = 0L;
+  private long mFrameLastFPS = 0L;
+  public long mFrameRate = 0L;
+  private volatile boolean mIsContextDestroyed = false;
   volatile boolean mIsDestroyed = false;
   private boolean mIsSupportPreserveEGLContextOnPause = true;
-  private antb mSensorListener;
-  public anta mSensorManager;
+  private ARSensorManager.OnSensorChangeListener mSensorListener;
+  public ARSensorManager mSensorManager;
   private ARGLSurfaceView.SurfaceStateListener mSurfaceStateListener;
   private OrientationEventListener orientationListener;
   
@@ -98,12 +98,16 @@ public class ARGLSurfaceView
     this.orientationListener = new ARGLSurfaceView.3(this, paramActivity, paramActivity);
   }
   
-  public void initSensor(antb paramantb, int paramInt)
+  public void initSensor(ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener, int paramInt)
   {
-    if ((this.mSensorManager == null) && (this.mCurActivity != null))
+    if (this.mSensorManager == null)
     {
-      this.mSensorManager = new anta(this.mCurActivity, paramInt);
-      this.mSensorListener = paramantb;
+      Activity localActivity = this.mCurActivity;
+      if (localActivity != null)
+      {
+        this.mSensorManager = new ARSensorManager(localActivity, paramInt);
+        this.mSensorListener = paramOnSensorChangeListener;
+      }
     }
   }
   
@@ -149,13 +153,15 @@ public class ARGLSurfaceView
   
   public void onDestroy()
   {
-    if (this.mSurfaceStateListener != null) {
-      this.mSurfaceStateListener.onDestroy();
+    Object localObject = this.mSurfaceStateListener;
+    if (localObject != null) {
+      ((ARGLSurfaceView.SurfaceStateListener)localObject).onDestroy();
     }
     this.mIsDestroyed = true;
     super.queueEvent(new ARGLSurfaceView.6(this));
-    if (this.mCallback != null) {
-      this.mCallback.endTrace();
+    localObject = this.mCallback;
+    if (localObject != null) {
+      ((ARGLSurfaceView.TraceCallback)localObject).endTrace();
     }
   }
   
@@ -167,11 +173,12 @@ public class ARGLSurfaceView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    long l = SystemClock.elapsedRealtime();
-    if (this.mEngineHandler != 0L) {
-      native_onDrawFrame(this.mEngineHandler);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.mEngineHandler;
+    if (l2 != 0L) {
+      native_onDrawFrame(l2);
     }
-    updateFPSRate(l);
+    updateFPSRate(l1);
   }
   
   public void onPause()
@@ -179,8 +186,9 @@ public class ARGLSurfaceView
     super.onPause();
     this.orientationListener.disable();
     queueEvent(new ARGLSurfaceView.4(this));
-    if (this.mSurfaceStateListener != null) {
-      this.mSurfaceStateListener.onPause();
+    ARGLSurfaceView.SurfaceStateListener localSurfaceStateListener = this.mSurfaceStateListener;
+    if (localSurfaceStateListener != null) {
+      localSurfaceStateListener.onPause();
     }
   }
   
@@ -189,63 +197,72 @@ public class ARGLSurfaceView
     super.onResume();
     this.orientationListener.enable();
     queueEvent(new ARGLSurfaceView.5(this));
-    if (this.mSurfaceStateListener != null) {
-      this.mSurfaceStateListener.onResume();
+    ARGLSurfaceView.SurfaceStateListener localSurfaceStateListener = this.mSurfaceStateListener;
+    if (localSurfaceStateListener != null) {
+      localSurfaceStateListener.onResume();
     }
   }
   
   public void onRotationUpdateOriginal(float[] paramArrayOfFloat)
   {
-    if ((this.mEngineHandler != 0L) && (this.mSensorListener != null)) {
-      this.mSensorListener.onRotationUpdateOriginal(paramArrayOfFloat);
+    if (this.mEngineHandler != 0L)
+    {
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.onRotationUpdateOriginal(paramArrayOfFloat);
+      }
     }
   }
   
   public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    if ((this.mEngineHandler != 0L) && (this.mSensorListener != null)) {
-      this.mSensorListener.onRotationUpdateQuaternion(paramArrayOfFloat);
+    if (this.mEngineHandler != 0L)
+    {
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.onRotationUpdateQuaternion(paramArrayOfFloat);
+      }
     }
   }
   
   public void onSensorSupport(int paramInt, boolean paramBoolean)
   {
     queueEvent(new ARGLSurfaceView.19(this, paramInt, paramBoolean));
-    if (this.mSensorListener != null) {
-      this.mSensorListener.onSensorSupport(paramInt, paramBoolean);
+    ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+    if (localOnSensorChangeListener != null) {
+      localOnSensorChangeListener.onSensorSupport(paramInt, paramBoolean);
     }
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if (this.mEngineHandler != 0L) {
-      native_onSurfaceChanged(this.mEngineHandler, paramInt1, paramInt2);
+    long l = this.mEngineHandler;
+    if (l != 0L) {
+      native_onSurfaceChanged(l, paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.mEngineHandler != 0L)
+    long l = this.mEngineHandler;
+    if (l != 0L)
     {
-      native_onSurfaceCreated(this.mEngineHandler, getMeasuredWidth(), getMeasuredHeight());
-      if (this.mSurfaceStateListener != null) {
-        this.mSurfaceStateListener.onSurfaceCreated(paramGL10, paramEGLConfig);
+      native_onSurfaceCreated(l, getMeasuredWidth(), getMeasuredHeight());
+      ARGLSurfaceView.SurfaceStateListener localSurfaceStateListener = this.mSurfaceStateListener;
+      if (localSurfaceStateListener != null) {
+        localSurfaceStateListener.onSurfaceCreated(paramGL10, paramEGLConfig);
       }
     }
     if (QLog.isDevelopLevel()) {
       nativeSetLogLevel(4);
+    } else if (QLog.isColorLevel()) {
+      nativeSetLogLevel(2);
+    } else {
+      nativeSetLogLevel(1);
     }
-    for (;;)
-    {
-      if (this.mCallback != null) {
-        this.mCallback.startTrace();
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        nativeSetLogLevel(2);
-      } else {
-        nativeSetLogLevel(1);
-      }
+    paramGL10 = this.mCallback;
+    if (paramGL10 != null) {
+      paramGL10.startTrace();
     }
   }
   
@@ -264,27 +281,46 @@ public class ARGLSurfaceView
       i += 1;
     }
     long l = System.currentTimeMillis();
-    switch (paramMotionEvent.getAction() & 0xFF)
+    i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 5)
+            {
+              if (i == 6)
+              {
+                i = paramMotionEvent.getAction() >> 8;
+                queueEvent(new ARGLSurfaceView.10(this, paramMotionEvent.getPointerId(i), paramMotionEvent.getX(i), paramMotionEvent.getY(i), l));
+              }
+            }
+            else
+            {
+              i = paramMotionEvent.getAction() >> 8;
+              queueEvent(new ARGLSurfaceView.7(this, paramMotionEvent.getPointerId(i), paramMotionEvent.getX(i), paramMotionEvent.getY(i), l));
+            }
+          }
+          else {
+            queueEvent(new ARGLSurfaceView.12(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
+          }
+        }
+        else {
+          queueEvent(new ARGLSurfaceView.9(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
+        }
+      }
+      else {
+        queueEvent(new ARGLSurfaceView.11(this, paramMotionEvent.getPointerId(0), arrayOfFloat1[0], arrayOfFloat2[0], l));
+      }
     }
-    for (;;)
-    {
-      super.onTouchEvent(paramMotionEvent);
-      return true;
-      i = paramMotionEvent.getAction() >> 8;
-      queueEvent(new ARGLSurfaceView.7(this, paramMotionEvent.getPointerId(i), paramMotionEvent.getX(i), paramMotionEvent.getY(i), l));
-      continue;
+    else {
       queueEvent(new ARGLSurfaceView.8(this, paramMotionEvent.getPointerId(0), arrayOfFloat1[0], arrayOfFloat2[0], l));
-      continue;
-      queueEvent(new ARGLSurfaceView.9(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
-      continue;
-      i = paramMotionEvent.getAction() >> 8;
-      queueEvent(new ARGLSurfaceView.10(this, paramMotionEvent.getPointerId(i), paramMotionEvent.getX(i), paramMotionEvent.getY(i), l));
-      continue;
-      queueEvent(new ARGLSurfaceView.11(this, paramMotionEvent.getPointerId(0), arrayOfFloat1[0], arrayOfFloat2[0], l));
-      continue;
-      queueEvent(new ARGLSurfaceView.12(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
     }
+    super.onTouchEvent(paramMotionEvent);
+    return true;
   }
   
   public void queueEvent(Runnable paramRunnable)
@@ -296,15 +332,17 @@ public class ARGLSurfaceView
   
   public void resumeSensor()
   {
-    if (this.mSensorManager != null) {
-      this.mSensorManager.a(this);
+    ARSensorManager localARSensorManager = this.mSensorManager;
+    if (localARSensorManager != null) {
+      localARSensorManager.a(this);
     }
   }
   
   public void resumeSensor(int paramInt)
   {
-    if (this.mSensorManager != null) {
-      this.mSensorManager.a(this, paramInt);
+    ARSensorManager localARSensorManager = this.mSensorManager;
+    if (localARSensorManager != null) {
+      localARSensorManager.a(this, paramInt);
     }
   }
   
@@ -315,8 +353,9 @@ public class ARGLSurfaceView
   
   public boolean sensorAvailable()
   {
-    if (this.mSensorManager != null) {
-      return this.mSensorManager.a();
+    ARSensorManager localARSensorManager = this.mSensorManager;
+    if (localARSensorManager != null) {
+      return localARSensorManager.a();
     }
     return false;
   }
@@ -356,16 +395,18 @@ public class ARGLSurfaceView
   
   public void stopSensor()
   {
-    if (this.mSensorManager != null) {
-      this.mSensorManager.a();
+    ARSensorManager localARSensorManager = this.mSensorManager;
+    if (localARSensorManager != null) {
+      localARSensorManager.b();
     }
   }
   
   public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
     queueEvent(new ARGLSurfaceView.13(this, paramFloat1, paramFloat2, paramFloat3, paramLong));
-    if (this.mSensorListener != null) {
-      this.mSensorListener.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+    if (localOnSensorChangeListener != null) {
+      localOnSensorChangeListener.updateAccelerometer(paramFloat1, paramFloat2, paramFloat3, paramLong);
     }
   }
   
@@ -374,8 +415,9 @@ public class ARGLSurfaceView
     if (this.mEngineHandler != 0L)
     {
       queueEvent(new ARGLSurfaceView.16(this, paramFloat));
-      if (this.mSensorListener != null) {
-        this.mSensorListener.updateAzimuth(paramFloat);
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.updateAzimuth(paramFloat);
       }
     }
   }
@@ -391,28 +433,35 @@ public class ARGLSurfaceView
       this.mFrameRate = this.mFrameCount;
       this.mFrameCount = 0L;
       this.mFrameLastFPS = SystemClock.elapsedRealtime();
-      if (this.mCallback != null) {
-        this.mCallback.trace(this.mFrameRate);
+      ARGLSurfaceView.TraceCallback localTraceCallback = this.mCallback;
+      if (localTraceCallback != null) {
+        localTraceCallback.trace(this.mFrameRate);
       }
     }
     paramLong = SystemClock.elapsedRealtime() - paramLong;
-    if ((FPS_LIMIT_SWITCH) && (paramLong < FPS_LIMIT)) {}
-    try
+    if (FPS_LIMIT_SWITCH)
     {
-      Thread.sleep(FPS_LIMIT - paramLong);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      long l = FPS_LIMIT;
+      if (paramLong < l) {
+        try
+        {
+          Thread.sleep(l - paramLong);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+      }
     }
   }
   
   public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
     queueEvent(new ARGLSurfaceView.14(this, paramFloat1, paramFloat2, paramFloat3, paramLong));
-    if (this.mSensorListener != null) {
-      this.mSensorListener.updateGyroscope(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+    if (localOnSensorChangeListener != null) {
+      localOnSensorChangeListener.updateGyroscope(paramFloat1, paramFloat2, paramFloat3, paramLong);
     }
   }
   
@@ -421,8 +470,9 @@ public class ARGLSurfaceView
     if (this.mEngineHandler != 0L)
     {
       queueEvent(new ARGLSurfaceView.17(this, paramFloat));
-      if (this.mSensorListener != null) {
-        this.mSensorListener.updatePitch(paramFloat);
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.updatePitch(paramFloat);
       }
     }
   }
@@ -432,16 +482,21 @@ public class ARGLSurfaceView
     if (this.mEngineHandler != 0L)
     {
       queueEvent(new ARGLSurfaceView.18(this, paramFloat));
-      if (this.mSensorListener != null) {
-        this.mSensorListener.updateRoll(paramFloat);
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.updateRoll(paramFloat);
       }
     }
   }
   
   public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((this.mEngineHandler != 0L) && (this.mSensorListener != null)) {
-      this.mSensorListener.updateRotation(paramFloat1, paramFloat2, paramFloat3);
+    if (this.mEngineHandler != 0L)
+    {
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.updateRotation(paramFloat1, paramFloat2, paramFloat3);
+      }
     }
   }
   
@@ -450,15 +505,16 @@ public class ARGLSurfaceView
     if (this.mEngineHandler != 0L)
     {
       queueEvent(new ARGLSurfaceView.15(this, paramFloat1, paramFloat2, paramFloat3));
-      if (this.mSensorListener != null) {
-        this.mSensorListener.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+      ARSensorManager.OnSensorChangeListener localOnSensorChangeListener = this.mSensorListener;
+      if (localOnSensorChangeListener != null) {
+        localOnSensorChangeListener.updateSensor(paramFloat1, paramFloat2, paramFloat3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ public final class ReqGetNeighbors
   static byte[] cache_strA2;
   public int eNewListType = NewListType.NewListType_Nomal.value();
   public int iListSize = -1;
-  public int iSimpleSort;
-  public byte[] nearbyGroupReq;
-  public ReqUserInfo stCheckInInfo;
-  public ReqHeader stHeader;
-  public UserData stUserData;
-  public byte[] strA2;
+  public int iSimpleSort = 0;
+  public byte[] nearbyGroupReq = null;
+  public ReqUserInfo stCheckInInfo = null;
+  public ReqHeader stHeader = null;
+  public UserData stUserData = null;
+  public byte[] strA2 = null;
   
   public ReqGetNeighbors() {}
   
@@ -71,26 +71,30 @@ public final class ReqGetNeighbors
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stHeader, 0);
-    if (this.stCheckInInfo != null) {
-      paramJceOutputStream.write(this.stCheckInInfo, 1);
+    Object localObject = this.stCheckInInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 2);
+    localObject = this.stUserData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.iListSize, 3);
     paramJceOutputStream.write(this.eNewListType, 4);
-    if (this.strA2 != null) {
-      paramJceOutputStream.write(this.strA2, 5);
+    localObject = this.strA2;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.iSimpleSort, 6);
-    if (this.nearbyGroupReq != null) {
-      paramJceOutputStream.write(this.nearbyGroupReq, 7);
+    localObject = this.nearbyGroupReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqGetNeighbors
  * JD-Core Version:    0.7.0.1
  */

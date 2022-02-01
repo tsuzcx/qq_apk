@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020aec" android:id="@id/APKTOOL_DUPLICATE_id_0x7f081039" />
+    <item android:icon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020aec" android:id="@id/APKTOOL_DUPLICATE_id_0x7f081038" />
 </menu>

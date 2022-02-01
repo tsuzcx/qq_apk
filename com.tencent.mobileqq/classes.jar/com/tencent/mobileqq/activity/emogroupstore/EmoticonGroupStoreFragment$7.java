@@ -7,7 +7,8 @@ class EmoticonGroupStoreFragment$7
   
   public void run()
   {
-    EmoticonGroupStoreFragment.c(this.this$0, EmoticonGroupStoreFragment.c(this.this$0));
+    EmoticonGroupStoreFragment localEmoticonGroupStoreFragment = this.this$0;
+    EmoticonGroupStoreFragment.c(localEmoticonGroupStoreFragment, EmoticonGroupStoreFragment.k(localEmoticonGroupStoreFragment));
   }
 }
 

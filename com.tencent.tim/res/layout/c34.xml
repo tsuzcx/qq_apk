@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ngs" android:fillViewport="true" style="@style/ad8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/iig" android:fillViewport="true" style="@style/ad8">
+        <LinearLayout style="@style/ad9">
+            <FrameLayout style="@style/aif">
+                <ImageView android:id="@id/of_" android:contentDescription="@string/pb" style="@style/aid" />
+                <ImageView style="@style/aie" />
+            </FrameLayout>
+            <TextView android:id="@id/of8" style="@style/aib" />
+            <TextView android:id="@id/of9" android:layout_marginTop="12.0dip" style="@style/ad0" />
+            <LinearLayout android:id="@id/ig1" style="@style/ahb">
+                <LinearLayout android:id="@id/nvm" android:visibility="visible" style="@style/aha">
+                    <com.tencent.qqmail.utilities.ui.QMLoading android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" custom:loading_size="20.0dip" />
+                    <TextView android:id="@id/nvn" android:text="@string/y57" style="@style/ah_" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/nvo" android:visibility="gone" style="@style/aha">
+                    <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/gwz" />
+                    <TextView android:id="@id/nvq" android:text="@string/whf" style="@style/ah_" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/nvj" android:visibility="gone" style="@style/aha">
+                    <ImageView android:id="@id/n2k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/gwy" />
+                    <TextView android:id="@id/nvl" android:text="@string/whc" style="@style/ah_" />
+                </LinearLayout>
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="20.0dip">
+                    <Button android:id="@id/nvk" android:visibility="gone" android:text="@string/y8i" style="@style/aic" />
+                    <Button android:id="@id/nvp" android:visibility="gone" android:text="@string/wrt" style="@style/aic" />
+                </FrameLayout>
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="50.0dip" android:layout_weight="1.0" />
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="40.0dip">
+                <TextView android:layout_gravity="top" android:id="@id/nvr" android:text="@string/whg" style="@style/ah9" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/np3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

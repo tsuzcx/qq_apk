@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bhxh;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Gallery.OnScollListener;
 
 public class DragGallery
   extends ProGallery
@@ -17,28 +17,37 @@ public class DragGallery
     super(paramContext, paramAttributeSet);
   }
   
-  public MotionEvent a()
+  protected void disPatchToParent()
   {
-    return this.jdField_a_of_type_AndroidViewMotionEvent;
+    float f;
+    if (Math.abs(this.scrollX) == 0) {
+      f = 999.0F;
+    } else {
+      f = Math.abs(this.scrollY) / Math.abs(this.scrollX);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scrollY : ");
+      localStringBuilder.append(Math.abs(this.scrollY));
+      localStringBuilder.append(" scrollX : ");
+      localStringBuilder.append(Math.abs(this.scrollX));
+      localStringBuilder.append(" ratio : ");
+      localStringBuilder.append(f);
+      QLog.d("DragGallery", 2, localStringBuilder.toString());
+    }
+    if (((this.mScrollState == 1) || (this.mScrollState == -1)) && (f >= 6.0F) && (this.scrollX < 10))
+    {
+      getParent().requestDisallowInterceptTouchEvent(false);
+      if (this.mOnScollListener != null) {
+        this.mOnScollListener.onScrollEnd(this.mSelectedPosition);
+      }
+    }
   }
   
-  public void a()
+  public MotionEvent getSingleTapConfirmedEvent()
   {
-    if (Math.abs(this.h) == 0) {}
-    for (float f = 999.0F;; f = Math.abs(this.i) / Math.abs(this.h))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DragGallery", 2, "scrollY : " + Math.abs(this.i) + " scrollX : " + Math.abs(this.h) + " ratio : " + f);
-      }
-      if (((this.j == 1) || (this.j == -1)) && (f >= 6.0F) && (this.h < 10))
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        if (this.jdField_a_of_type_Bhxh != null) {
-          this.jdField_a_of_type_Bhxh.b(this.mSelectedPosition);
-        }
-      }
-      return;
-    }
+    return this.a;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -49,7 +58,7 @@ public class DragGallery
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewMotionEvent = paramMotionEvent;
+    this.a = paramMotionEvent;
     return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }

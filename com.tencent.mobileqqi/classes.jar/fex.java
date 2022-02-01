@@ -1,9 +1,11 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.List;
 
 public class fex
 {
   public int a;
-  public PublicAccountInfo a;
+  public long a;
+  public List a;
+  public boolean a;
 }
 
 

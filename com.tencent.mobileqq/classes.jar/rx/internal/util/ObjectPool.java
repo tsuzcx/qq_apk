@@ -37,15 +37,16 @@ public abstract class ObjectPool<T>
   
   private void initialize(int paramInt)
   {
-    if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (this.pool = new MpmcArrayQueue(Math.max(this.maxSize, 1024));; this.pool = new ConcurrentLinkedQueue())
+    if (UnsafeAccess.isUnsafeAvailable()) {
+      this.pool = new MpmcArrayQueue(Math.max(this.maxSize, 1024));
+    } else {
+      this.pool = new ConcurrentLinkedQueue();
+    }
+    int i = 0;
+    while (i < paramInt)
     {
-      int i = 0;
-      while (i < paramInt)
-      {
-        this.pool.add(createObject());
-        i += 1;
-      }
+      this.pool.add(createObject());
+      i += 1;
     }
   }
   
@@ -82,7 +83,9 @@ public abstract class ObjectPool<T>
     Scheduler.Worker localWorker = Schedulers.computation().createWorker();
     if (this.schedulerWorker.compareAndSet(null, localWorker))
     {
-      localWorker.schedulePeriodically(new ObjectPool.1(this), this.validationInterval, this.validationInterval, TimeUnit.SECONDS);
+      ObjectPool.1 local1 = new ObjectPool.1(this);
+      long l = this.validationInterval;
+      localWorker.schedulePeriodically(local1, l, l, TimeUnit.SECONDS);
       return;
     }
     localWorker.unsubscribe();
@@ -90,7 +93,7 @@ public abstract class ObjectPool<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.ObjectPool
  * JD-Core Version:    0.7.0.1
  */

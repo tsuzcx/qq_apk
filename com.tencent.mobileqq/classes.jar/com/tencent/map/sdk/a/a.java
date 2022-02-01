@@ -11,214 +11,229 @@ import java.util.Map;
 
 public final class a
 {
-  private static ClassLoader a = null;
+  private static ClassLoader a;
   private static boolean b = true;
   
   public static Object a(String paramString, boolean paramBoolean, ClassLoader paramClassLoader)
   {
-    Object localObject = new ArrayList();
+    Object localObject1 = new ArrayList();
     int i = paramString.indexOf("<");
-    int j = 0;
-    for (;;)
+    int m = 0;
+    int j;
+    while (m < i)
     {
-      if (j < i)
-      {
-        a((ArrayList)localObject, paramString.substring(j, i));
-        j = i + 1;
-        int m = paramString.indexOf("<", j);
-        int k = paramString.indexOf(",", j);
-        i = m;
-        if (m == -1) {
-          i = k;
-        }
-        if ((k != -1) && (k < i)) {
-          i = k;
-        }
+      a((ArrayList)localObject1, paramString.substring(m, i));
+      int n = i + 1;
+      i = paramString.indexOf("<", n);
+      int k = paramString.indexOf(",", n);
+      j = i;
+      if (i == -1) {
+        j = k;
       }
-      else
+      m = n;
+      i = j;
+      if (k != -1)
       {
-        a((ArrayList)localObject, paramString.substring(j, paramString.length()));
-        Iterator localIterator = ((ArrayList)localObject).iterator();
-        localObject = null;
-        String str = null;
-        paramString = null;
-        while (localIterator.hasNext())
+        m = n;
+        i = j;
+        if (k < j)
         {
-          localObject = b((String)localIterator.next(), paramBoolean, paramClassLoader);
-          if ((localObject instanceof String))
-          {
-            if ("Array".equals((String)localObject))
-            {
-              if (paramString != null) {
-                break label365;
-              }
-              localObject = Array.newInstance(Byte.class, 0);
-            }
-            else
-            {
-              if ("?".equals((String)localObject)) {
-                break label365;
-              }
-              if (paramString == null)
-              {
-                paramString = (String)localObject;
-              }
-              else
-              {
-                str = paramString;
-                paramString = (String)localObject;
-              }
-            }
-          }
-          else if ((localObject instanceof List))
-          {
-            if ((paramString != null) && ((paramString instanceof Byte)))
-            {
-              localObject = Array.newInstance(Byte.class, 1);
-              Array.set(localObject, 0, paramString);
-            }
-            else
-            {
-              if (paramString != null) {
-                ((List)localObject).add(paramString);
-              }
-              paramString = null;
-            }
-          }
-          else
-          {
-            if ((localObject instanceof Map))
-            {
-              if (paramString != null)
-              {
-                i = 1;
-                label295:
-                if (str == null) {
-                  break label337;
-                }
-              }
-              label337:
-              for (j = 1;; j = 0)
-              {
-                if ((j & i) != 0) {
-                  ((Map)localObject).put(paramString, str);
-                }
-                str = null;
-                paramString = null;
-                break;
-                i = 0;
-                break label295;
-              }
-            }
-            if (paramString == null)
-            {
-              paramString = (String)localObject;
-            }
-            else
-            {
-              str = paramString;
-              paramString = (String)localObject;
-            }
-          }
-        }
-        label365:
-        for (;;)
-        {
-          break;
-          return localObject;
+          i = k;
+          m = n;
         }
       }
     }
+    a((ArrayList)localObject1, paramString.substring(m, paramString.length()));
+    Iterator localIterator = ((ArrayList)localObject1).iterator();
+    localObject1 = null;
+    paramString = null;
+    String str1 = null;
+    for (;;)
+    {
+      label140:
+      if (!localIterator.hasNext()) {
+        break label382;
+      }
+      Object localObject2 = b((String)localIterator.next(), paramBoolean, paramClassLoader);
+      if ((localObject2 instanceof String))
+      {
+        String str2 = (String)localObject2;
+        if ("Array".equals(str2))
+        {
+          localObject1 = localObject2;
+          if (paramString != null) {
+            continue;
+          }
+          localObject1 = Array.newInstance(Byte.class, 0);
+          continue;
+        }
+        localObject1 = localObject2;
+        if ("?".equals(str2)) {
+          continue;
+        }
+        if (paramString == null) {}
+      }
+      else
+      {
+        do
+        {
+          str1 = paramString;
+          break label372;
+          boolean bool = localObject2 instanceof List;
+          j = 1;
+          if (bool)
+          {
+            if ((paramString != null) && ((paramString instanceof Byte)))
+            {
+              localObject1 = Array.newInstance(Byte.class, 1);
+              Array.set(localObject1, 0, paramString);
+              break label140;
+            }
+            if (paramString != null) {
+              ((List)localObject2).add(paramString);
+            }
+            paramString = null;
+            localObject1 = localObject2;
+            break label140;
+          }
+          if ((localObject2 instanceof Map))
+          {
+            if (paramString != null) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (str1 == null) {
+              j = 0;
+            }
+            if ((i & j) != 0) {
+              ((Map)localObject2).put(paramString, str1);
+            }
+            localObject1 = localObject2;
+            break;
+          }
+        } while (paramString != null);
+      }
+      label372:
+      paramString = localObject2;
+      localObject1 = localObject2;
+    }
+    label382:
+    return localObject1;
   }
   
   public static String a(ArrayList<String> paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    String str1;
-    if (i < paramArrayList.size())
+    int j;
+    Object localObject;
+    for (;;)
     {
-      String str2 = (String)paramArrayList.get(i);
-      if ((str2.equals("java.lang.Integer")) || (str2.equals("int"))) {
-        str1 = "int32";
-      }
-      for (;;)
-      {
-        paramArrayList.set(i, str1);
-        i += 1;
+      j = paramArrayList.size();
+      localObject = "map";
+      if (i >= j) {
         break;
-        if ((str2.equals("java.lang.Boolean")) || (str2.equals("boolean")))
+      }
+      String str = (String)paramArrayList.get(i);
+      if ((!str.equals("java.lang.Integer")) && (!str.equals("int")))
+      {
+        if ((!str.equals("java.lang.Boolean")) && (!str.equals("boolean")))
         {
-          str1 = "bool";
-        }
-        else if ((str2.equals("java.lang.Byte")) || (str2.equals("byte")))
-        {
-          str1 = "char";
-        }
-        else if ((str2.equals("java.lang.Double")) || (str2.equals("double")))
-        {
-          str1 = "double";
-        }
-        else if ((str2.equals("java.lang.Float")) || (str2.equals("float")))
-        {
-          str1 = "float";
-        }
-        else if ((str2.equals("java.lang.Long")) || (str2.equals("long")))
-        {
-          str1 = "int64";
-        }
-        else if ((str2.equals("java.lang.Short")) || (str2.equals("short")))
-        {
-          str1 = "short";
-        }
-        else
-        {
-          if (str2.equals("java.lang.Character")) {
-            throw new IllegalArgumentException("can not support java.lang.Character");
-          }
-          if (str2.equals("java.lang.String"))
+          if ((!str.equals("java.lang.Byte")) && (!str.equals("byte")))
           {
-            str1 = "string";
-          }
-          else if (str2.equals("java.util.List"))
-          {
-            str1 = "list";
-          }
-          else
-          {
-            str1 = str2;
-            if (str2.equals("java.util.Map")) {
-              str1 = "map";
+            if ((!str.equals("java.lang.Double")) && (!str.equals("double")))
+            {
+              if ((!str.equals("java.lang.Float")) && (!str.equals("float")))
+              {
+                if ((!str.equals("java.lang.Long")) && (!str.equals("long")))
+                {
+                  if ((!str.equals("java.lang.Short")) && (!str.equals("short")))
+                  {
+                    if (!str.equals("java.lang.Character"))
+                    {
+                      if (str.equals("java.lang.String")) {
+                        localObject = "string";
+                      } else if (str.equals("java.util.List")) {
+                        localObject = "list";
+                      } else if (!str.equals("java.util.Map")) {
+                        localObject = str;
+                      }
+                    }
+                    else {
+                      throw new IllegalArgumentException("can not support java.lang.Character");
+                    }
+                  }
+                  else {
+                    localObject = "short";
+                  }
+                }
+                else {
+                  localObject = "int64";
+                }
+              }
+              else {
+                localObject = "float";
+              }
+            }
+            else {
+              localObject = "double";
             }
           }
+          else {
+            localObject = "char";
+          }
+        }
+        else {
+          localObject = "bool";
         }
       }
+      else {
+        localObject = "int32";
+      }
+      paramArrayList.set(i, localObject);
+      i += 1;
     }
     Collections.reverse(paramArrayList);
     i = 0;
-    if (i < paramArrayList.size())
+    while (i < paramArrayList.size())
     {
-      str1 = (String)paramArrayList.get(i);
-      if (str1.equals("list"))
+      localObject = (String)paramArrayList.get(i);
+      if (((String)localObject).equals("list"))
       {
-        paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1));
-        paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
+        j = i - 1;
+        localObject = new StringBuilder("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
       }
-      for (;;)
+      else if (((String)localObject).equals("map"))
       {
-        i += 1;
-        break;
-        if (str1.equals("map"))
-        {
-          paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1) + ",");
-          paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
-        }
-        else if (str1.equals("Array"))
-        {
-          paramArrayList.set(i - 1, "<" + (String)paramArrayList.get(i - 1));
-          paramArrayList.set(0, (String)paramArrayList.get(0) + ">");
-        }
+        j = i - 1;
+        localObject = new StringBuilder("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        ((StringBuilder)localObject).append(",");
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
       }
+      else if (((String)localObject).equals("Array"))
+      {
+        j = i - 1;
+        localObject = new StringBuilder("<");
+        ((StringBuilder)localObject).append((String)paramArrayList.get(j));
+        paramArrayList.set(j, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append((String)paramArrayList.get(0));
+        ((StringBuilder)localObject).append(">");
+        paramArrayList.set(0, ((StringBuilder)localObject).toString());
+      }
+      i += 1;
     }
     Collections.reverse(paramArrayList);
     paramArrayList = paramArrayList.iterator();
@@ -242,85 +257,77 @@ public final class a
       i = j;
     } while (j != 0);
     String str = paramString.substring(0, j);
-    if (str.equals("int32")) {
+    if (str.equals("int32"))
+    {
       paramString = "java.lang.Integer";
     }
-    for (;;)
+    else if (str.equals("bool"))
     {
-      paramArrayList.add(0, paramString);
-      return;
-      if (str.equals("bool"))
-      {
-        paramString = "java.lang.Boolean";
-      }
-      else if (str.equals("char"))
-      {
-        paramString = "java.lang.Byte";
-      }
-      else if (str.equals("double"))
-      {
-        paramString = "java.lang.Double";
-      }
-      else if (str.equals("float"))
-      {
-        paramString = "java.lang.Float";
-      }
-      else if (str.equals("int64"))
-      {
-        paramString = "java.lang.Long";
-      }
-      else if (str.equals("short"))
-      {
-        paramString = "java.lang.Short";
-      }
-      else if (str.equals("string"))
-      {
-        paramString = "java.lang.String";
-      }
-      else if (str.equals("list"))
-      {
-        paramString = "java.util.List";
-      }
-      else
-      {
-        paramString = str;
-        if (str.equals("map")) {
-          paramString = "java.util.Map";
-        }
+      paramString = "java.lang.Boolean";
+    }
+    else if (str.equals("char"))
+    {
+      paramString = "java.lang.Byte";
+    }
+    else if (str.equals("double"))
+    {
+      paramString = "java.lang.Double";
+    }
+    else if (str.equals("float"))
+    {
+      paramString = "java.lang.Float";
+    }
+    else if (str.equals("int64"))
+    {
+      paramString = "java.lang.Long";
+    }
+    else if (str.equals("short"))
+    {
+      paramString = "java.lang.Short";
+    }
+    else if (str.equals("string"))
+    {
+      paramString = "java.lang.String";
+    }
+    else if (str.equals("list"))
+    {
+      paramString = "java.util.List";
+    }
+    else
+    {
+      paramString = str;
+      if (str.equals("map")) {
+        paramString = "java.util.Map";
       }
     }
+    paramArrayList.add(0, paramString);
   }
   
   private static Object b(String paramString, boolean paramBoolean, ClassLoader paramClassLoader)
   {
-    Object localObject;
     if (paramString.equals("java.lang.Integer")) {
-      localObject = Integer.valueOf(0);
+      return Integer.valueOf(0);
     }
-    do
+    if (paramString.equals("java.lang.Boolean")) {
+      return Boolean.FALSE;
+    }
+    if (paramString.equals("java.lang.Byte")) {
+      return Byte.valueOf((byte)0);
+    }
+    if (paramString.equals("java.lang.Double")) {
+      return Double.valueOf(0.0D);
+    }
+    if (paramString.equals("java.lang.Float")) {
+      return Float.valueOf(0.0F);
+    }
+    if (paramString.equals("java.lang.Long")) {
+      return Long.valueOf(0L);
+    }
+    if (paramString.equals("java.lang.Short")) {
+      return Short.valueOf((short)0);
+    }
+    if (!paramString.equals("java.lang.Character"))
     {
-      return localObject;
-      if (paramString.equals("java.lang.Boolean")) {
-        return Boolean.FALSE;
-      }
-      if (paramString.equals("java.lang.Byte")) {
-        return Byte.valueOf((byte)0);
-      }
-      if (paramString.equals("java.lang.Double")) {
-        return Double.valueOf(0.0D);
-      }
-      if (paramString.equals("java.lang.Float")) {
-        return Float.valueOf(0.0F);
-      }
-      if (paramString.equals("java.lang.Long")) {
-        return Long.valueOf(0L);
-      }
-      if (paramString.equals("java.lang.Short")) {
-        return Short.valueOf((short)0);
-      }
-      if (paramString.equals("java.lang.Character")) {
-        throw new IllegalArgumentException("can not support java.lang.Character");
-      }
       if (paramString.equals("java.lang.String")) {
         return "";
       }
@@ -333,27 +340,30 @@ public final class a
       if (paramString.equals("Array")) {
         return "Array";
       }
-      localObject = paramString;
-    } while (paramString.equals("?"));
-    if (paramClassLoader != null) {}
-    for (;;)
-    {
+      if (paramString.equals("?")) {
+        return paramString;
+      }
+      if (paramClassLoader != null) {}
       try
       {
         paramString = Class.forName(paramString, paramBoolean, paramClassLoader);
-        return paramString.getConstructor(new Class[0]).newInstance(new Object[0]);
+        break label214;
+        if (a != null) {
+          paramString = Class.forName(paramString, b, a);
+        } else {
+          paramString = Class.forName(paramString);
+        }
+        label214:
+        paramString = paramString.getConstructor(new Class[0]).newInstance(new Object[0]);
+        return paramString;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
         throw new b(paramString);
       }
-      if (a != null) {
-        paramString = Class.forName(paramString, b, a);
-      } else {
-        paramString = Class.forName(paramString);
-      }
     }
+    throw new IllegalArgumentException("can not support java.lang.Character");
   }
 }
 

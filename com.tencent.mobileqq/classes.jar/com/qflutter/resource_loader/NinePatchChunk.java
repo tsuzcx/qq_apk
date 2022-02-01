@@ -21,27 +21,31 @@ public class NinePatchChunk
   public static NinePatchChunk deserialize(byte[] paramArrayOfByte)
   {
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.nativeOrder());
-    if (paramArrayOfByte.get() == 0) {}
-    NinePatchChunk localNinePatchChunk;
-    do
-    {
+    if (paramArrayOfByte.get() == 0) {
       return null;
-      localNinePatchChunk = new NinePatchChunk();
-      localNinePatchChunk.mDivX = new int[paramArrayOfByte.get()];
-      localNinePatchChunk.mDivY = new int[paramArrayOfByte.get()];
-      localNinePatchChunk.mColor = new int[paramArrayOfByte.get()];
-    } while ((!checkDivCount(localNinePatchChunk.mDivX.length)) || (!checkDivCount(localNinePatchChunk.mDivY.length)));
-    paramArrayOfByte.getInt();
-    paramArrayOfByte.getInt();
-    localNinePatchChunk.mPaddings.left = paramArrayOfByte.getInt();
-    localNinePatchChunk.mPaddings.right = paramArrayOfByte.getInt();
-    localNinePatchChunk.mPaddings.top = paramArrayOfByte.getInt();
-    localNinePatchChunk.mPaddings.bottom = paramArrayOfByte.getInt();
-    paramArrayOfByte.getInt();
-    readIntArray(localNinePatchChunk.mDivX, paramArrayOfByte);
-    readIntArray(localNinePatchChunk.mDivY, paramArrayOfByte);
-    readIntArray(localNinePatchChunk.mColor, paramArrayOfByte);
-    return localNinePatchChunk;
+    }
+    NinePatchChunk localNinePatchChunk = new NinePatchChunk();
+    localNinePatchChunk.mDivX = new int[paramArrayOfByte.get()];
+    localNinePatchChunk.mDivY = new int[paramArrayOfByte.get()];
+    localNinePatchChunk.mColor = new int[paramArrayOfByte.get()];
+    if (checkDivCount(localNinePatchChunk.mDivX.length))
+    {
+      if (!checkDivCount(localNinePatchChunk.mDivY.length)) {
+        return null;
+      }
+      paramArrayOfByte.getInt();
+      paramArrayOfByte.getInt();
+      localNinePatchChunk.mPaddings.left = paramArrayOfByte.getInt();
+      localNinePatchChunk.mPaddings.right = paramArrayOfByte.getInt();
+      localNinePatchChunk.mPaddings.top = paramArrayOfByte.getInt();
+      localNinePatchChunk.mPaddings.bottom = paramArrayOfByte.getInt();
+      paramArrayOfByte.getInt();
+      readIntArray(localNinePatchChunk.mDivX, paramArrayOfByte);
+      readIntArray(localNinePatchChunk.mDivY, paramArrayOfByte);
+      readIntArray(localNinePatchChunk.mColor, paramArrayOfByte);
+      return localNinePatchChunk;
+    }
+    return null;
   }
   
   private static void readIntArray(int[] paramArrayOfInt, ByteBuffer paramByteBuffer)
@@ -57,7 +61,7 @@ public class NinePatchChunk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.resource_loader.NinePatchChunk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,31 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bgm;
-import com.tencent.mm.protocal.protobuf.bgn;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineEngineLogReporter;", "", "()V", "report", "", "performance", "Lcom/tencent/mm/plugin/scanner/decoder/ReIdAiScanImageDecodeQueue$Performance;", "Lcom/tencent/mm/plugin/scanner/decoder/ReIdAiScanImageDecodeQueue;", "modelVersion", "", "combineFlowCount", "combineFlowSkipWorkingCount", "combineFlowSkipCount", "combineFlowHandleCount", "engineHandleCount", "engineHandleFailedCount", "engineHandleSucCount", "engineHandleSucFirstFrame", "svrHandleCount", "svrHandleFailCount", "svrHandleSucCount", "svrHandleSucFirstFrame", "tentativeCount", "maxScore2ConfirmedCount", "tentative2ConfirmedCount", "tentative2DeletedCount", "confirmed2MissCount", "miss2DeletedCount", "Miss2ConfirmedCount", "doudiCount", "detectAvg", "detectMax", "combineFlowSkipSensorCount", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends m
-  implements k
 {
-  private com.tencent.mm.ai.f callback;
-  private int cnU;
-  private int eBd = 1;
-  private byte[] qum;
-  private String qun = "en";
-  private String quo = "zh_CN";
-  public b rr;
+  public static final f ORq;
   
-  public f(byte[] paramArrayOfByte, String paramString1, String paramString2, int paramInt)
+  static
   {
-    this.qum = paramArrayOfByte;
-    this.eBd = 1;
-    this.qun = paramString1;
-    this.quo = paramString2;
-    this.cnU = paramInt;
+    AppMethodBeat.i(314407);
+    ORq = new f();
+    AppMethodBeat.o(314407);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14)
   {
-    AppMethodBeat.i(80840);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new bgm();
-    paramf.fsY = new bgn();
-    paramf.uri = "/cgi-bin/micromsg-bin/ocrtranslation";
-    paramf.funcId = 392;
-    paramf.reqCmdId = 199;
-    paramf.respCmdId = 1000000199;
-    this.rr = paramf.ado();
-    paramf = (bgm)this.rr.fsV.fta;
-    paramf.wzP = ((int)bo.aoy() & 0x7FFFFFFF);
-    paramf.wzQ = new SKBuiltinBuffer_t().setBuffer(this.qum);
-    paramf.wzT = this.eBd;
-    paramf.xvM = this.qun;
-    paramf.xvN = this.quo;
-    paramf.wzU = this.cnU;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(80840);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 392;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(80842);
-    ab.d("MicroMsg.scanner.NetSceneOCRTranslate", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(80842);
-  }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(80841);
-    paramq = (bgm)((b)paramq).fsV.fta;
-    if ((paramq.wzP <= 0) || (bo.isNullOrNil(paramq.xvN)) || (bo.isNullOrNil(paramq.xvM)) || (paramq.wzT < 0) || (paramq.wzQ == null) || (paramq.wzQ.getILen() <= 0))
-    {
-      ab.e("MicroMsg.scanner.NetSceneOCRTranslate", "ERR: Security Check Failed");
-      paramq = m.b.ftv;
-      AppMethodBeat.o(80841);
-      return paramq;
-    }
-    paramq = m.b.ftu;
-    AppMethodBeat.o(80841);
-    return paramq;
+    AppMethodBeat.i(314400);
+    h.OAn.b(24190, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8), Integer.valueOf(paramInt9), Integer.valueOf(paramInt10), Integer.valueOf(paramInt11), Integer.valueOf(paramInt12), Integer.valueOf(paramInt13), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt14) });
+    AppMethodBeat.o(314400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.f
  * JD-Core Version:    0.7.0.1
  */

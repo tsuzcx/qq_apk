@@ -29,13 +29,31 @@ public class EIPCClient
   
   public EIPCResult callServer(String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "callServerLock module=" + paramString1 + ", action=" + paramString2 + ", params=" + paramBundle + "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callServerLock module=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", action=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", params=");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("");
+      QLog.d("EIPCConst", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = EIPCResult.UNKNOW_RESULT;
     connect(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "callServerLock nolockmodule=" + paramString1 + ", action=" + paramString2 + ", params=" + paramBundle + "");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callServerLock nolockmodule=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", action=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", params=");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("");
+      QLog.d("EIPCConst", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBundle != null) {
       paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
@@ -52,12 +70,12 @@ public class EIPCClient
       paramString1 = ((EIPCConnection)localObject).callModule(paramString1, paramString2, paramBundle, -99999);
       return paramString1;
     }
-    catch (RemoteException paramString1)
+    catch (Throwable paramString1)
     {
       paramString1.printStackTrace();
       return EIPCResult.createExceptionResult(paramString1);
     }
-    catch (Throwable paramString1)
+    catch (RemoteException paramString1)
     {
       paramString1.printStackTrace();
     }
@@ -78,8 +96,9 @@ public class EIPCClient
     }
     catch (Exception paramEIPCResult)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("EIPCConst", 2, "callbackResult error", paramEIPCResult);
+      if (QLog.isColorLevel()) {
+        QLog.w("EIPCConst", 2, "callbackResult error", paramEIPCResult);
+      }
     }
   }
   
@@ -90,15 +109,15 @@ public class EIPCClient
       connectProvider();
     }
     localEIPCConnection = this.mServerConnection;
-    if ((localEIPCConnection == null) || (!localEIPCConnection.channel.asBinder().isBinderAlive()) || (!localEIPCConnection.channel.asBinder().pingBinder())) {
+    if ((localEIPCConnection != null) && (localEIPCConnection.channel.asBinder().isBinderAlive()) && (localEIPCConnection.channel.asBinder().pingBinder()))
+    {
       if (paramEIPClientConnectListener != null) {
-        paramEIPClientConnectListener.connectFailed();
+        paramEIPClientConnectListener.connectSuccess(this.mServerConnection);
       }
     }
-    while (paramEIPClientConnectListener == null) {
-      return;
+    else if (paramEIPClientConnectListener != null) {
+      paramEIPClientConnectListener.connectFailed();
     }
-    paramEIPClientConnectListener.connectSuccess(this.mServerConnection);
   }
   
   public void connectProvider()
@@ -117,8 +136,13 @@ public class EIPCClient
       while (((Iterator)localObject2).hasNext()) {
         if (TextUtils.equals((CharSequence)localObject1, (String)((Iterator)localObject2).next()))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("EIPCConst", 2, MobileQQ.processName + " guard " + (String)localObject1);
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(MobileQQ.processName);
+            ((StringBuilder)localObject2).append(" guard ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.d("EIPCConst", 2, ((StringBuilder)localObject2).toString());
           }
           localObject1 = new EIPCClient.ClientDeathRecipient();
           ((EIPCClient.ClientDeathRecipient)localObject1).eipcClient = this;
@@ -146,21 +170,22 @@ public class EIPCClient
   public void sendMessageToRemote(int paramInt, Bundle paramBundle)
   {
     EIPCConnection localEIPCConnection = this.mServerConnection;
-    if (localEIPCConnection != null) {}
-    try
-    {
-      localEIPCConnection.callModule("__event_module", null, paramBundle, paramInt);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    if (localEIPCConnection != null) {
+      try
+      {
+        localEIPCConnection.callModule("__event_module", null, paramBundle, paramInt);
+        return;
+      }
+      catch (RemoteException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     eipc.EIPCClient
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="uinType,senderUin,recieverUin,msgType,entrance,entrance2,onlineStatus,terminal,isFirst")
 public class MessageReportData
-  extends awge
+  extends Entity
 {
   private static final String IMAME_MSG_FORMAT = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d|";
   private static final String MSG_FORMAT = "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|";
@@ -41,205 +41,153 @@ public class MessageReportData
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    label35:
-    label50:
-    label308:
-    label313:
-    for (;;)
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof MessageReportData)) {
-        break;
-      }
-      int i;
-      label62:
-      label197:
-      if (this.uinType != null)
-      {
-        i = 1;
-        if (((MessageReportData)paramObject).uinType == null) {
-          break label308;
-        }
-        j = 1;
-        label77:
-        label212:
-        if ((j ^ i) == 0)
-        {
-          if (this.senderUin == null) {
-            break label313;
-          }
-          i = 1;
-          if (((MessageReportData)paramObject).senderUin == null) {
-            break label318;
-          }
-          j = 1;
-          label89:
-          label224:
-          if ((j ^ i) == 0)
-          {
-            if (this.recieverUin == null) {
-              break label323;
-            }
-            i = 1;
-            if (((MessageReportData)paramObject).recieverUin == null) {
-              break label328;
-            }
-            j = 1;
-            label104:
-            label239:
-            if ((j ^ i) == 0)
-            {
-              if (this.msgType == null) {
-                break label333;
-              }
-              i = 1;
-              if (((MessageReportData)paramObject).msgType == null) {
-                break label338;
-              }
-              j = 1;
-              label116:
-              if ((j ^ i) == 0)
-              {
-                if (this.entrance == null) {
-                  break label343;
-                }
-                i = 1;
-                if (((MessageReportData)paramObject).entrance == null) {
-                  break label348;
-                }
-                j = 1;
-                if ((j ^ i) == 0)
-                {
-                  if (this.entrance2 == null) {
-                    break label353;
-                  }
-                  i = 1;
-                  if (((MessageReportData)paramObject).entrance2 == null) {
-                    break label358;
-                  }
-                  j = 1;
-                  if ((j ^ i) == 0)
-                  {
-                    if (this.msgSize == null) {
-                      break label363;
-                    }
-                    i = 1;
-                    if (((MessageReportData)paramObject).msgSize == null) {
-                      break label368;
-                    }
-                    j = 1;
-                    if ((j ^ i) == 0)
-                    {
-                      if (this.onlineStatus == null) {
-                        break label373;
-                      }
-                      i = 1;
-                      if (((MessageReportData)paramObject).onlineStatus == null) {
-                        break label378;
-                      }
-                      j = 1;
-                      if ((j ^ i) == 0)
-                      {
-                        if (this.terminal == null) {
-                          break label383;
-                        }
-                        i = 1;
-                        if (((MessageReportData)paramObject).terminal == null) {
-                          break label388;
-                        }
-                        j = 1;
-                        label251:
-                        if ((j ^ i) == 0)
-                        {
-                          if (this.isFirst == null) {
-                            break label393;
-                          }
-                          i = 1;
-                          if (((MessageReportData)paramObject).isFirst == null) {
-                            break label398;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      label185:
-      for (int j = 1;; j = 0)
-      {
-        if (((j ^ i) == 0) && (getWholeMsgReport().equals(((MessageReportData)paramObject).getWholeMsgReport()))) {
-          break label401;
-        }
-        return false;
-        i = 0;
-        break;
-        j = 0;
-        break label35;
-        i = 0;
-        break label50;
-        label318:
-        j = 0;
-        break label62;
-        label323:
-        i = 0;
-        break label77;
-        label328:
-        j = 0;
-        break label89;
-        label333:
-        i = 0;
-        break label104;
-        label338:
-        j = 0;
-        break label116;
-        label343:
-        i = 0;
-        break label131;
-        label348:
-        j = 0;
-        break label143;
-        label353:
-        i = 0;
-        break label158;
-        label358:
-        j = 0;
-        break label170;
-        label363:
-        i = 0;
-        break label185;
-        label368:
-        j = 0;
-        break label197;
-        label373:
-        i = 0;
-        break label212;
-        label378:
-        j = 0;
-        break label224;
-        label383:
-        i = 0;
-        break label239;
-        j = 0;
-        break label251;
-        i = 0;
-        break label266;
-      }
     }
-    label131:
-    label143:
-    label158:
-    label170:
+    if ((paramObject instanceof MessageReportData))
+    {
+      int i;
+      if (this.uinType != null) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramObject = (MessageReportData)paramObject;
+      int j;
+      if (paramObject.uinType != null) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((i ^ j) == 0)
+      {
+        if (this.senderUin != null) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (paramObject.senderUin != null) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        if ((i ^ j) == 0)
+        {
+          if (this.recieverUin != null) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (paramObject.recieverUin != null) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          if ((i ^ j) == 0)
+          {
+            if (this.msgType != null) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (paramObject.msgType != null) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            if ((i ^ j) == 0)
+            {
+              if (this.entrance != null) {
+                i = 1;
+              } else {
+                i = 0;
+              }
+              if (paramObject.entrance != null) {
+                j = 1;
+              } else {
+                j = 0;
+              }
+              if ((i ^ j) == 0)
+              {
+                if (this.entrance2 != null) {
+                  i = 1;
+                } else {
+                  i = 0;
+                }
+                if (paramObject.entrance2 != null) {
+                  j = 1;
+                } else {
+                  j = 0;
+                }
+                if ((i ^ j) == 0)
+                {
+                  if (this.msgSize != null) {
+                    i = 1;
+                  } else {
+                    i = 0;
+                  }
+                  if (paramObject.msgSize != null) {
+                    j = 1;
+                  } else {
+                    j = 0;
+                  }
+                  if ((i ^ j) == 0)
+                  {
+                    if (this.onlineStatus != null) {
+                      i = 1;
+                    } else {
+                      i = 0;
+                    }
+                    if (paramObject.onlineStatus != null) {
+                      j = 1;
+                    } else {
+                      j = 0;
+                    }
+                    if ((i ^ j) == 0)
+                    {
+                      if (this.terminal != null) {
+                        i = 1;
+                      } else {
+                        i = 0;
+                      }
+                      if (paramObject.terminal != null) {
+                        j = 1;
+                      } else {
+                        j = 0;
+                      }
+                      if ((i ^ j) == 0)
+                      {
+                        if (this.isFirst != null) {
+                          i = 1;
+                        } else {
+                          i = 0;
+                        }
+                        if (paramObject.isFirst != null) {
+                          j = 1;
+                        } else {
+                          j = 0;
+                        }
+                        if (((i ^ j) == 0) && (getWholeMsgReport().equals(paramObject.getWholeMsgReport()))) {
+                          return true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return false;
+    }
     return super.equals(paramObject);
   }
   
   public String getMsgReport()
   {
-    if ((this.entrance2 != null) && (this.entrance2.equals(""))) {
+    String str = this.entrance2;
+    if ((str != null) && (str.equals(""))) {
       return String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d|", new Object[] { this.uinType, this.senderUin, this.recieverUin, this.msgType, this.entrance, this.entrance2, this.msgSize, this.onlineStatus, this.terminal, this.isFirst, Integer.valueOf(this.msgCount) });
     }
     return String.format("%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%d|", new Object[] { this.uinType, this.senderUin, this.recieverUin, this.msgType, this.entrance, this.entrance2, this.msgSize, this.onlineStatus, this.terminal, this.isFirst, Integer.valueOf(this.msgCount) });

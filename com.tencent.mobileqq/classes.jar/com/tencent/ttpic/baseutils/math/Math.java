@@ -10,9 +10,8 @@ public final class Math
   
   public static int power(int paramInt1, int paramInt2)
   {
-    long l2 = paramInt2;
+    long l2 = paramInt2 & 0xFFFFFFFF;
     long l1 = paramInt1;
-    l2 = 0xFFFFFFFF & l2;
     for (paramInt1 = 1; l2 != 0L; paramInt1 = paramInt2)
     {
       paramInt2 = paramInt1;
@@ -27,7 +26,7 @@ public final class Math
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.math.Math
  * JD-Core Version:    0.7.0.1
  */

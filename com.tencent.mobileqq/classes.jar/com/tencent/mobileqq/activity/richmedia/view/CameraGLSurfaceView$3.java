@@ -5,9 +5,9 @@ class CameraGLSurfaceView$3
 {
   public void run()
   {
-    CameraGLSurfaceView.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    CameraGLSurfaceView.a(this.this$0, this.a);
     CameraGLSurfaceView.a(this.this$0, true);
-    CameraGLSurfaceView.a(this.this$0, this.jdField_a_of_type_Int);
+    CameraGLSurfaceView.a(this.this$0, this.b);
   }
 }
 

@@ -3,65 +3,57 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class chq
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public long xRw;
-  public int xSv;
+  public long id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56532);
+    AppMethodBeat.i(259017);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.am(1, this.xRw);
-      paramVarArgs.aO(2, this.xSv);
-      AppMethodBeat.o(56532);
+      ((i.a.a.c.a)paramVarArgs[0]).bv(1, this.id);
+      AppMethodBeat.o(259017);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.p(1, this.xRw);
-      int i = e.a.a.b.b.a.bl(2, this.xSv);
-      AppMethodBeat.o(56532);
-      return paramInt + 0 + i;
+      paramInt = i.a.a.b.b.a.q(1, this.id);
+      AppMethodBeat.o(259017);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(56532);
+      AppMethodBeat.o(259017);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       chq localchq = (chq)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(56532);
+        AppMethodBeat.o(259017);
         return -1;
-      case 1: 
-        localchq.xRw = locala.CLY.sm();
-        AppMethodBeat.o(56532);
-        return 0;
       }
-      localchq.xSv = locala.CLY.sl();
-      AppMethodBeat.o(56532);
+      localchq.id = locala.ajGk.aaw();
+      AppMethodBeat.o(259017);
       return 0;
     }
-    AppMethodBeat.o(56532);
+    AppMethodBeat.o(259017);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.chq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,48 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
-import android.os.AsyncTask;
-import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.diffdev.OAuthListener;
-import com.tencent.mm.opensdk.utils.Log;
-import java.io.File;
 
-public final class d
-  extends AsyncTask<Void, Void, d.a>
+public enum d
 {
-  private static final String h;
-  private static String i;
-  private String appId;
-  private String j;
-  private String k;
-  private OAuthListener l;
-  private f m;
-  private String scope;
-  private String signature;
+  private int a;
   
   static
   {
-    AppMethodBeat.i(128036);
-    h = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MicroMsg/oauth_qrcode.png";
-    i = null;
-    i = "https://open.weixin.qq.com/connect/sdk/qrconnect?appid=%s&noncestr=%s&timestamp=%s&scope=%s&signature=%s";
-    AppMethodBeat.o(128036);
+    AppMethodBeat.i(242938);
+    b = new d("UUID_EXPIRED", 0, 402);
+    c = new d("UUID_CANCELED", 1, 403);
+    d = new d("UUID_SCANED", 2, 404);
+    e = new d("UUID_CONFIRM", 3, 405);
+    f = new d("UUID_KEEP_CONNECT", 4, 408);
+    d locald = new d("UUID_ERROR", 5, 500);
+    g = locald;
+    h = new d[] { b, c, d, e, f, locald };
+    AppMethodBeat.o(242938);
   }
   
-  public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, OAuthListener paramOAuthListener)
+  private d(int paramInt)
   {
-    this.appId = paramString1;
-    this.scope = paramString2;
-    this.j = paramString3;
-    this.k = paramString4;
-    this.signature = paramString5;
-    this.l = paramOAuthListener;
+    AppMethodBeat.i(242933);
+    this.a = paramInt;
+    AppMethodBeat.o(242933);
   }
   
-  public final boolean a()
+  public final int a()
   {
-    AppMethodBeat.i(128033);
-    Log.i("MicroMsg.SDK.GetQRCodeTask", "cancelTask");
-    if (this.m == null)
-    {
-      bool = cancel(true);
-      AppMethodBeat.o(128033);
-      return bool;
-    }
-    boolean bool = this.m.cancel(true);
-    AppMethodBeat.o(128033);
-    return bool;
+    return this.a;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(242944);
+    String str = "UUIDStatusCode:" + this.a;
+    AppMethodBeat.o(242944);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.d
  * JD-Core Version:    0.7.0.1
  */

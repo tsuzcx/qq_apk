@@ -11,19 +11,20 @@ final class TypeAdapters$30
   public <T> TypeAdapter<T> create(Gson paramGson, TypeToken<T> paramTypeToken)
   {
     paramTypeToken = paramTypeToken.getRawType();
-    if ((!Enum.class.isAssignableFrom(paramTypeToken)) || (paramTypeToken == Enum.class)) {
-      return null;
+    if ((Enum.class.isAssignableFrom(paramTypeToken)) && (paramTypeToken != Enum.class))
+    {
+      paramGson = paramTypeToken;
+      if (!paramTypeToken.isEnum()) {
+        paramGson = paramTypeToken.getSuperclass();
+      }
+      return new TypeAdapters.EnumTypeAdapter(paramGson);
     }
-    paramGson = paramTypeToken;
-    if (!paramTypeToken.isEnum()) {
-      paramGson = paramTypeToken.getSuperclass();
-    }
-    return new TypeAdapters.EnumTypeAdapter(paramGson);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.30
  * JD-Core Version:    0.7.0.1
  */

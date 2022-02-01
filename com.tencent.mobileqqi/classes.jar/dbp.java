@@ -1,263 +1,121 @@
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.pubaccount.CustomWebViewClient;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.voip.VoipGoogleWalletPayActivity;
-import com.tencent.mobileqq.activity.voip.VoipTencentPayActivity;
-import com.tencent.mobileqq.international.LocaleUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webviewplugin.WebViewPluginEngine;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class dbp
-  extends CustomWebViewClient
+  extends Thread
 {
-  public dbp(QQBrowserActivity paramQQBrowserActivity, WebViewPluginEngine paramWebViewPluginEngine)
+  public dbp(QQBrowserActivity paramQQBrowserActivity, String paramString)
   {
-    super(paramWebViewPluginEngine);
+    super(paramString);
   }
   
-  private void a(WebView paramWebView)
+  /* Error */
+  public void run()
   {
-    if (QQBrowserActivity.c(this.a))
-    {
-      b(paramWebView);
-      return;
-    }
-    boolean bool = paramWebView.canGoBack();
-    this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(bool);
-    this.a.c.setEnabled(paramWebView.canGoForward());
-  }
-  
-  private void b(WebView paramWebView)
-  {
-    this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-    this.a.c.setEnabled(false);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    if (paramWebView == this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      if (!QQBrowserActivity.b(this.a)) {
-        this.a.e.setEnabled(true);
-      }
-      a(paramWebView);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QQBrowser", 2, "onPageFinished() url = " + paramString);
-    }
-    this.a.b(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    String str;
-    if (QQBrowserActivity.a(this.a))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramBitmap = null;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramBitmap = Uri.parse(paramString);
-      }
-      if ((!paramString.startsWith("http://mp.imqq.com/user/charge")) || (!TextUtils.isEmpty(paramBitmap.getQueryParameter("wallet")))) {
-        break label228;
-      }
-      str = paramString + "&wallet=google";
-      paramWebView.loadUrl(str);
-    }
-    for (;;)
-    {
-      if ((paramBitmap != null) && (("gamecenter.qq.com".equals(paramBitmap.getHost())) || ((paramBitmap.isHierarchical()) && ("simple".equals(paramBitmap.getQueryParameter("style"))))))
-      {
-        this.a.a(false);
-        QQBrowserActivity.c(this.a).setVisibility(8);
-        this.a.k = true;
-      }
-      b(paramWebView);
-      this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("QQBrowser", 2, "onPageStarted() url = " + str);
-      }
-      this.a.a(paramWebView, str);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      break;
-      label228:
-      str = paramString;
-      if (paramBitmap != null)
-      {
-        str = paramString;
-        if (paramString.startsWith("http://mp.imqq.com/user"))
-        {
-          str = paramString;
-          if (TextUtils.isEmpty(paramBitmap.getQueryParameter("lan")))
-          {
-            paramWebView.loadUrl(paramString);
-            str = paramString;
-          }
-        }
-      }
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(paramWebView, paramInt, paramString1, paramString2);
-    a(paramWebView);
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-    if (QLog.isColorLevel()) {
-      QLog.e("QQBrowser", 2, "errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + paramString2);
-    }
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    Object localObject2 = paramString;
-    Object localObject1;
-    if (paramString != null) {
-      if (!paramString.startsWith("http://"))
-      {
-        localObject2 = paramString;
-        if (!paramString.startsWith("https://")) {}
-      }
-      else
-      {
-        localObject1 = "en";
-      }
-    }
-    String str;
-    switch (LocaleUtil.a(BaseApplicationImpl.getContext()))
-    {
-    default: 
-      if (paramString.matches("^[^#]*\\?.*(#.*)?"))
-      {
-        str = "&";
-        label97:
-        Object localObject3 = Pattern.compile("(#.*)?$").matcher(paramString);
-        localObject2 = paramString;
-        if (((Matcher)localObject3).find())
-        {
-          localObject3 = ((Matcher)localObject3).group(1);
-          localObject2 = localObject3;
-          if (localObject3 == null) {
-            localObject2 = "";
-          }
-          localObject2 = paramString.replaceAll("(#.*)?$", str + "lan=" + (String)localObject1 + (String)localObject2);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQBrowser", 2, "shouldOverrideUrlLoading " + (String)localObject2);
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.a.I.startsWith("http://mp.imqq.com/"))
-        {
-          if (((String)localObject2).startsWith("qqipay://googlewallet"))
-          {
-            paramWebView = Uri.parse((String)localObject2);
-            paramString = new Intent(this.a, VoipGoogleWalletPayActivity.class);
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("productid", paramWebView.getQueryParameter("productid"));
-            ((Bundle)localObject1).putString("price", paramWebView.getQueryParameter("price"));
-            paramString.putExtra("VoipGooglePayActivityParam", (Bundle)localObject1);
-            this.a.startActivity(paramString);
-            return true;
-            localObject1 = "en";
-            break;
-            localObject1 = "ja";
-            break;
-            localObject1 = "ko";
-            break;
-            localObject1 = "de";
-            break;
-            localObject1 = "fr";
-            break;
-            localObject1 = "es";
-            break;
-            localObject1 = "tw";
-            break;
-            localObject1 = "cn";
-            break;
-            str = "?";
-            break label97;
-          }
-          if (((String)localObject2).startsWith("qqipay://tencentpay"))
-          {
-            paramWebView = Uri.parse((String)localObject2);
-            paramString = new Intent(this.a, VoipTencentPayActivity.class);
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("payItem", paramWebView.getQueryParameter("payItem"));
-            ((Bundle)localObject1).putString("goodsmeta", paramWebView.getQueryParameter("goodsmeta"));
-            ((Bundle)localObject1).putString("goodsurl", paramWebView.getQueryParameter("goodsurl"));
-            paramString.putExtra("VoipTencentPayActivityParam", (Bundle)localObject1);
-            this.a.startActivity(paramString);
-            return true;
-          }
-        }
-      }
-      catch (RuntimeException paramWebView)
-      {
-        paramString = paramWebView.toString();
-        localObject1 = paramWebView.getStackTrace();
-        paramWebView = paramString;
-        if (localObject1.length > 0) {
-          paramWebView = paramString + " at " + localObject1[0].toString();
-        }
-        Toast.makeText(BaseApplicationImpl.getContext(), paramWebView, 1).show();
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
-        return false;
-      }
-      if ((!super.shouldOverrideUrlLoading(paramWebView, (String)localObject2)) && (!this.a.a(paramWebView, (String)localObject2)))
-      {
-        b(paramWebView);
-        if ((((String)localObject2).startsWith("file://")) || (((String)localObject2).startsWith("data:")) || (((String)localObject2).startsWith("http://")) || (((String)localObject2).startsWith("https://")))
-        {
-          QQBrowserActivity.a(this.a);
-          if ((!((String)localObject2).startsWith("http://")) && (!((String)localObject2).startsWith("https://"))) {
-            break label759;
-          }
-          this.a.I = ((String)localObject2);
-          break label759;
-        }
-        paramString = Uri.parse((String)localObject2);
-        localObject1 = paramString.getScheme();
-        if ((System.currentTimeMillis() - this.a.d < 1000L) || (this.a.jdField_a_of_type_ComTencentBizAuthorizeConfig.a(paramWebView.getUrl(), (String)localObject1).booleanValue()))
-        {
-          paramWebView = new Intent("android.intent.action.VIEW", paramString);
-          paramWebView.addFlags(268435456);
-          try
-          {
-            QQBrowserActivity.a(this.a, paramWebView);
-            return true;
-          }
-          catch (ActivityNotFoundException paramWebView) {}
-        }
-      }
-    }
-    label759:
-    return false;
+    // Byte code:
+    //   0: invokestatic 29	com/tencent/mobileqq/activity/QQBrowserActivity:a	()[B
+    //   3: ifnonnull +14 -> 17
+    //   6: ldc 31
+    //   8: ldc 33
+    //   10: invokevirtual 39	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   13: invokestatic 42	com/tencent/mobileqq/activity/QQBrowserActivity:a	([B)[B
+    //   16: pop
+    //   17: invokestatic 29	com/tencent/mobileqq/activity/QQBrowserActivity:a	()[B
+    //   20: ifnonnull +4 -> 24
+    //   23: return
+    //   24: new 44	java/net/URL
+    //   27: dup
+    //   28: ldc 46
+    //   30: invokespecial 47	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   33: invokevirtual 51	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   36: checkcast 53	java/net/HttpURLConnection
+    //   39: astore 4
+    //   41: aload 4
+    //   43: ldc 55
+    //   45: invokevirtual 58	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   48: aload 4
+    //   50: iconst_1
+    //   51: invokevirtual 62	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   54: aload 4
+    //   56: iconst_1
+    //   57: invokevirtual 65	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   60: aload 4
+    //   62: iconst_0
+    //   63: invokevirtual 68	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   66: aload 4
+    //   68: sipush 20000
+    //   71: invokevirtual 72	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   74: getstatic 78	android/os/Build$VERSION:SDK_INT	I
+    //   77: bipush 13
+    //   79: if_icmple +12 -> 91
+    //   82: aload 4
+    //   84: ldc 80
+    //   86: ldc 82
+    //   88: invokevirtual 86	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: aconst_null
+    //   92: astore_2
+    //   93: ldc 88
+    //   95: ldc 33
+    //   97: invokevirtual 39	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   100: astore_3
+    //   101: aload_3
+    //   102: astore_2
+    //   103: aload_2
+    //   104: ifnull -81 -> 23
+    //   107: invokestatic 29	com/tencent/mobileqq/activity/QQBrowserActivity:a	()[B
+    //   110: aload_2
+    //   111: iconst_1
+    //   112: invokestatic 94	com/tencent/smtt/sdk/stat/DesUtils:DesEncrypt	([B[BI)[B
+    //   115: astore_2
+    //   116: aload 4
+    //   118: ldc 96
+    //   120: ldc 98
+    //   122: invokevirtual 86	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: aload 4
+    //   127: ldc 100
+    //   129: aload_2
+    //   130: arraylength
+    //   131: invokestatic 104	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   134: invokevirtual 86	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: aload 4
+    //   139: invokevirtual 108	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   142: astore_3
+    //   143: aload_3
+    //   144: aload_2
+    //   145: invokevirtual 114	java/io/OutputStream:write	([B)V
+    //   148: aload_3
+    //   149: invokevirtual 117	java/io/OutputStream:flush	()V
+    //   152: aload 4
+    //   154: invokevirtual 121	java/net/HttpURLConnection:getResponseCode	()I
+    //   157: istore_1
+    //   158: iload_1
+    //   159: sipush 200
+    //   162: if_icmpne -139 -> 23
+    //   165: return
+    //   166: astore_2
+    //   167: return
+    //   168: astore_3
+    //   169: goto -66 -> 103
+    //   172: astore_2
+    //   173: return
+    //   174: astore_2
+    //   175: goto -158 -> 17
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	178	0	this	dbp
+    //   157	6	1	i	int
+    //   92	53	2	localObject1	java.lang.Object
+    //   166	1	2	localThrowable	java.lang.Throwable
+    //   172	1	2	localIOException	java.io.IOException
+    //   174	1	2	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
+    //   100	49	3	localObject2	java.lang.Object
+    //   168	1	3	localException	java.lang.Exception
+    //   39	114	4	localHttpURLConnection	java.net.HttpURLConnection
+    // Exception table:
+    //   from	to	target	type
+    //   137	158	166	java/lang/Throwable
+    //   93	101	168	java/lang/Exception
+    //   24	48	172	java/io/IOException
+    //   6	17	174	java/io/UnsupportedEncodingException
   }
 }
 

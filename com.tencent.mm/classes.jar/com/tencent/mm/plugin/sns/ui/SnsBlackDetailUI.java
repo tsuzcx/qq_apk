@@ -1,56 +1,67 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.ad;
+import com.tencent.mm.pluginsdk.platformtools.a;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsBlackDetailUI
   extends SnsTagDetailUI
-  implements f, n.b
+  implements com.tencent.mm.am.h, MStorageEx.IOnStorageChange
 {
-  private static List<String> cuQ()
+  private static List<String> hol()
   {
-    AppMethodBeat.i(38744);
+    AppMethodBeat.i(98493);
     new LinkedList();
-    List localList = t.aac();
-    AppMethodBeat.o(38744);
+    List localList = a.iIX();
+    AppMethodBeat.o(98493);
     return localList;
   }
   
-  protected final void bMd()
+  protected final void Dk(String paramString)
   {
-    AppMethodBeat.i(38743);
-    if (((this.rWA + " " + bo.d(this.lbK, ",")).equals(this.cqq)) && (this.rfr != 0L))
+    AppMethodBeat.i(98495);
+    super.Dk(paramString);
+    AppMethodBeat.o(98495);
+  }
+  
+  protected final void fVt()
+  {
+    AppMethodBeat.i(98492);
+    if (((this.Rya + " " + Util.listToString(this.xtu, ",")).equals(this.md5)) && (this.Qtd != 0L))
     {
       finish();
-      AppMethodBeat.o(38743);
+      AppMethodBeat.o(98492);
       return;
     }
-    if (ag.cpl().v(this.rfr, this.rWA))
+    if (al.hgI().ah(this.Qtd, this.Rya))
     {
-      h.b(this, getString(2131303977, new Object[] { this.rWA }), getString(2131297087), true);
-      AppMethodBeat.o(38743);
+      k.c(this, getString(b.j.sns_tag_exist, new Object[] { this.Rya }), getString(b.j.app_tip), true);
+      AppMethodBeat.o(98492);
       return;
     }
-    Object localObject2 = cuR();
+    Object localObject2 = hom();
     LinkedList localLinkedList = new LinkedList();
     Object localObject1 = new LinkedList();
     Iterator localIterator = ((List)localObject2).iterator();
@@ -58,11 +69,11 @@ public class SnsBlackDetailUI
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.lbK.contains(str)) {
+      if (!this.xtu.contains(str)) {
         localLinkedList.add(str);
       }
     }
-    localIterator = this.lbK.iterator();
+    localIterator = this.xtu.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
@@ -72,122 +83,114 @@ public class SnsBlackDetailUI
     }
     localObject2 = localLinkedList.iterator();
     while (((Iterator)localObject2).hasNext()) {
-      t.w((String)((Iterator)localObject2).next(), false);
+      ab.J((String)((Iterator)localObject2).next(), false);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      t.w((String)((Iterator)localObject1).next(), true);
+      ab.J((String)((Iterator)localObject1).next(), true);
     }
-    com.tencent.mm.plugin.sns.c.a.gmP.BO();
     finish();
-    AppMethodBeat.o(38743);
+    AppMethodBeat.o(98492);
   }
   
-  public final void cuN()
+  public final void hoi()
   {
-    AppMethodBeat.i(38739);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
-    g.RM();
-    ((j)g.E(j.class)).YA().a(this);
-    AppMethodBeat.o(38739);
+    AppMethodBeat.i(98488);
+    Log.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
+    com.tencent.mm.kernel.h.baF();
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().add(this);
+    AppMethodBeat.o(98488);
   }
   
-  protected final void cuO()
+  protected final void hoj()
   {
-    AppMethodBeat.i(38740);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
-    g.RM();
-    if (g.RJ().QU())
+    AppMethodBeat.i(98489);
+    Log.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      g.RM();
-      ((j)g.E(j.class)).YA().b(this);
+      com.tencent.mm.kernel.h.baF();
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().remove(this);
     }
-    AppMethodBeat.o(38740);
+    AppMethodBeat.o(98489);
   }
   
-  protected final void cuP() {}
+  protected final void hok() {}
   
-  protected final List<String> cuR()
+  protected final List<String> hom()
   {
-    AppMethodBeat.i(38745);
+    AppMethodBeat.i(98494);
     Object localObject = new LinkedList();
-    if (this.rfr == 4L)
+    if (this.Qtd == 4L)
     {
-      localObject = cuQ();
-      AppMethodBeat.o(38745);
+      localObject = hol();
+      AppMethodBeat.o(98494);
       return localObject;
     }
-    AppMethodBeat.o(38745);
+    AppMethodBeat.o(98494);
     return localObject;
   }
   
-  protected final void dm(List<String> paramList)
+  protected final void kM(List<String> paramList)
   {
-    AppMethodBeat.i(38747);
-    bd localbd = ag.coT();
-    String str1 = r.Zn();
+    AppMethodBeat.i(98496);
+    bx localbx = al.hgp();
+    String str1 = z.bAM();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str2 = (String)paramList.next();
-      if ((!this.lbK.contains(str2)) && (com.tencent.mm.n.a.je(localbd.arw(str2).field_type)) && (!str1.equals(str2))) {
-        this.lbK.add(str2);
+      if ((!this.xtu.contains(str2)) && (d.rs(localbx.JE(str2).field_type)) && (!str1.equals(str2))) {
+        this.xtu.add(str2);
       }
     }
-    if (this.eeU != null) {
-      this.eeU.cg(this.lbK);
+    if (this.lzX != null) {
+      this.lzX.iM(this.xtu);
     }
-    updateTitle();
-    AppMethodBeat.o(38747);
-  }
-  
-  protected final void lc(String paramString)
-  {
-    AppMethodBeat.i(38746);
-    super.lc(paramString);
-    AppMethodBeat.o(38746);
+    aMl();
+    AppMethodBeat.o(98496);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(38741);
+    AppMethodBeat.i(98490);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
-    AppMethodBeat.o(38741);
+    Log.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
+    AppMethodBeat.o(98490);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(38742);
+    AppMethodBeat.i(98491);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    g.RM();
-    g.RK().eHt.b(290, this);
-    g.RM();
-    g.RK().eHt.b(291, this);
-    g.RM();
-    g.RK().eHt.b(292, this);
-    g.RM();
-    g.RK().eHt.b(293, this);
-    g.RM();
-    if (g.RJ().QU())
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(290, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(291, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(292, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(293, this);
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      g.RM();
-      ((j)g.E(j.class)).YA().b(this);
+      com.tencent.mm.kernel.h.baF();
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().remove(this);
     }
     super.onDestroy();
-    AppMethodBeat.o(38742);
+    AppMethodBeat.o(98491);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(38748);
-    ab.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(98497);
+    Log.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    AppMethodBeat.o(38748);
+    AppMethodBeat.o(98497);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

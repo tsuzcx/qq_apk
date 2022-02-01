@@ -49,11 +49,12 @@ public class ViolaRenderContainer
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mViolaInstance != null)
+    Object localObject = this.mViolaInstance;
+    if (localObject != null)
     {
-      ViolaInstance localViolaInstance = (ViolaInstance)this.mViolaInstance.get();
-      if (localViolaInstance != null) {
-        localViolaInstance.setSize(paramInt1, paramInt2);
+      localObject = (ViolaInstance)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((ViolaInstance)localObject).setSize(paramInt1, paramInt2);
       }
     }
   }
@@ -65,7 +66,7 @@ public class ViolaRenderContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaRenderContainer
  * JD-Core Version:    0.7.0.1
  */

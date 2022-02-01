@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.backup.i.m;
 import com.tencent.mm.plugin.backup.i.n;
 import com.tencent.mm.plugin.backup.i.o;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
   extends b
 {
-  private n jGf;
-  public o jGg;
+  private n vdB;
+  public o vdC;
   
   public k(String paramString)
   {
-    AppMethodBeat.i(17679);
-    this.jGf = new n();
-    this.jGg = new o();
-    ab.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
-    this.jGf.ID = paramString;
-    AppMethodBeat.o(17679);
+    AppMethodBeat.i(21738);
+    this.vdB = new n();
+    this.vdC = new o();
+    Log.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
+    this.vdB.vgy = paramString;
+    AppMethodBeat.o(21738);
+  }
+  
+  public final void Fo(int paramInt)
+  {
+    AppMethodBeat.i(21739);
+    Log.i("MicroMsg.BackupStartScene", "onSceneEnd.");
+    if (this.vdC.vhk != 0)
+    {
+      u(4, this.vdC.vhk, "BackupStartScene onSceneEnd failed");
+      AppMethodBeat.o(21739);
+      return;
+    }
+    u(0, this.vdC.vhk, "BackupStartScene onSceneEnd success");
+    AppMethodBeat.o(21739);
   }
   
   public final void a(long paramLong, m paramm, int paramInt)
   {
-    this.jGf.jJK = 0L;
-    this.jGf.jJL = paramLong;
-    this.jGf.jJM = 0L;
-    this.jGf.jJN = paramm;
-    this.jGf.jJO = 0L;
-    this.jGf.jJP = paramInt;
+    this.vdB.vhc = 0L;
+    this.vdB.vhd = paramLong;
+    this.vdB.vhe = 0L;
+    this.vdB.vhf = paramm;
+    this.vdB.vhg = 0L;
+    this.vdB.vhh = paramInt;
   }
   
-  public final a aUm()
+  public final a cWn()
   {
-    return this.jGf;
+    return this.vdB;
   }
   
   public final int getType()
   {
     return 3;
   }
-  
-  public final void rt(int paramInt)
-  {
-    AppMethodBeat.i(17680);
-    ab.i("MicroMsg.BackupStartScene", "onSceneEnd.");
-    if (this.jGg.jJS != 0)
-    {
-      n(4, this.jGg.jJS, "BackupStartScene onSceneEnd failed");
-      AppMethodBeat.o(17680);
-      return;
-    }
-    n(0, this.jGg.jJS, "BackupStartScene onSceneEnd success");
-    AppMethodBeat.o(17680);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.k
  * JD-Core Version:    0.7.0.1
  */

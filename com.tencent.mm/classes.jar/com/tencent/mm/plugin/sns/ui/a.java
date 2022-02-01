@@ -1,16 +1,13 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import com.tencent.mm.plugin.sns.ui.previewimageview.DynamicGridView;
-
 public abstract class a
-  implements y
+  implements ag
 {
-  public abstract View a(View paramView1, View paramView2, DynamicGridView paramDynamicGridView, View paramView3);
+  public abstract int hlr();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a
  * JD-Core Version:    0.7.0.1
  */

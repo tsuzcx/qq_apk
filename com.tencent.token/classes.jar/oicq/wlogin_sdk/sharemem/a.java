@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class a
-  implements Parcelable.Creator
+  implements Parcelable.Creator<WloginLoginInfo>
 {
-  public WloginLoginInfo a(Parcel paramParcel)
+  public final WloginLoginInfo a(Parcel paramParcel)
   {
     return new WloginLoginInfo(paramParcel, null);
   }
   
-  public WloginLoginInfo[] a(int paramInt)
+  public final WloginLoginInfo[] a(int paramInt)
   {
     return new WloginLoginInfo[paramInt];
   }

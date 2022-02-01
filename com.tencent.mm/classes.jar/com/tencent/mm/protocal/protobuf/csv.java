@@ -1,97 +1,107 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class csv
-  extends com.tencent.mm.bv.a
+  extends erp
 {
-  public LinkedList<crm> yal;
-  public int ybR;
-  public int ybS;
-  
-  public csv()
-  {
-    AppMethodBeat.i(5255);
-    this.yal = new LinkedList();
-    AppMethodBeat.o(5255);
-  }
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(5256);
+    AppMethodBeat.i(258259);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.ybR);
-      paramVarArgs.aO(2, this.ybS);
-      paramVarArgs.e(3, 8, this.yal);
-      AppMethodBeat.o(5256);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.username == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: username");
+        AppMethodBeat.o(258259);
+        throw paramVarArgs;
+      }
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.username != null) {
+        paramVarArgs.g(2, this.username);
+      }
+      AppMethodBeat.o(258259);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.ybR);
-      i = e.a.a.b.b.a.bl(2, this.ybS);
-      int j = e.a.a.a.c(3, 8, this.yal);
-      AppMethodBeat.o(5256);
-      return paramInt + 0 + i + j;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label392;
+      }
     }
-    if (paramInt == 2)
+    label392:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.yal.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.username);
+      }
+      AppMethodBeat.o(258259);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-      }
-      AppMethodBeat.o(5256);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      csv localcsv = (csv)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(5256);
-        return -1;
-      case 1: 
-        localcsv.ybR = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(5256);
-        return 0;
-      case 2: 
-        localcsv.ybS = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(5256);
+        if (this.username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: username");
+          AppMethodBeat.o(258259);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(258259);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new crm();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((crm)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localcsv.yal.add(localObject1);
-        paramInt += 1;
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        csv localcsv = (csv)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(258259);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcsv.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258259);
+          return 0;
+        }
+        localcsv.username = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(258259);
+        return 0;
       }
-      AppMethodBeat.o(5256);
-      return 0;
+      AppMethodBeat.o(258259);
+      return -1;
     }
-    AppMethodBeat.o(5256);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.csv
  * JD-Core Version:    0.7.0.1
  */

@@ -21,18 +21,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper;
+import hcd;
 import hce;
 import hcf;
 import hcg;
 import hch;
-import hci;
 
 public class QQCustomDialog
   extends Dialog
 {
   public static final int WHICH_NEGATIVE = 0;
   public static final int WHICH_POSITIVE = 1;
-  private BaseAdapter adapter = new hce(this);
+  private BaseAdapter adapter = new hcd(this);
   LinearLayout bodyLayout;
   LinearLayout btnLayout;
   TextView countText;
@@ -116,25 +116,25 @@ public class QQCustomDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.title = ((TextView)findViewById(2131231469));
+    this.title = ((TextView)findViewById(2131231468));
     this.text = ((TextView)findViewById(2131231029));
-    this.countText = ((TextView)findViewById(2131231483));
-    this.dummyFirstPreviewImage = ((TextView)findViewById(2131231479));
-    this.previewImage = ((TextView)findViewById(2131231480));
-    this.framePreviewImage = ((ImageView)findViewById(2131231482));
-    this.framePreview = findViewById(2131231481);
-    this.lBtn = ((TextView)findViewById(2131231472));
-    this.rBtn = ((TextView)findViewById(2131231473));
+    this.countText = ((TextView)findViewById(2131231482));
+    this.dummyFirstPreviewImage = ((TextView)findViewById(2131231478));
+    this.previewImage = ((TextView)findViewById(2131231479));
+    this.framePreviewImage = ((ImageView)findViewById(2131231481));
+    this.framePreview = findViewById(2131231480);
+    this.lBtn = ((TextView)findViewById(2131231471));
+    this.rBtn = ((TextView)findViewById(2131231472));
     this.lBtn.setVisibility(8);
     this.rBtn.setVisibility(8);
-    this.bodyLayout = ((LinearLayout)findViewById(2131231361));
-    this.list = ((ListView)findViewById(2131231476));
-    this.btnLayout = ((LinearLayout)findViewById(2131231471));
+    this.bodyLayout = ((LinearLayout)findViewById(2131231360));
+    this.list = ((ListView)findViewById(2131231475));
+    this.btnLayout = ((LinearLayout)findViewById(2131231470));
   }
   
   public QQCustomDialog setDividerGone()
   {
-    this.dialogDivider = findViewById(2131231478);
+    this.dialogDivider = findViewById(2131231477);
     if (this.dialogDivider != null) {
       this.dialogDivider.setVisibility(8);
     }
@@ -272,7 +272,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new hch(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new hcg(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -287,7 +287,7 @@ public class QQCustomDialog
     this.lBtn.setText(paramString);
     this.lBtn.setContentDescription(paramString);
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new hcf(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new hce(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -307,7 +307,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new hci(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new hch(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -322,7 +322,7 @@ public class QQCustomDialog
     this.rBtn.setText(paramString);
     this.rBtn.setContentDescription(paramString);
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new hcg(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new hcf(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }

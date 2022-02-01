@@ -17,17 +17,21 @@ public abstract class RxJavaErrorHandler
       String str = render(paramObject);
       return str;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      Thread.currentThread().interrupt();
-      return paramObject.getClass().getName() + ".errorRendering";
-    }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Exceptions.throwIfFatal(localThrowable);
-      }
+      Exceptions.throwIfFatal(localThrowable);
+      break label22;
+      Thread.currentThread().interrupt();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramObject.getClass().getName());
+      localStringBuilder.append(".errorRendering");
+      return localStringBuilder.toString();
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      label16:
+      label22:
+      break label16;
     }
   }
   
@@ -39,7 +43,7 @@ public abstract class RxJavaErrorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.plugins.RxJavaErrorHandler
  * JD-Core Version:    0.7.0.1
  */

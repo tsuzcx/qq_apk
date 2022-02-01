@@ -5,12 +5,17 @@ import android.view.View;
 class w
   extends v
 {
-  public final void c(View paramView, int paramInt)
+  public final void f(View paramView, int paramInt)
   {
     paramView.setImportantForAccessibility(paramInt);
   }
   
-  public final boolean v(View paramView)
+  public final boolean x(View paramView)
+  {
+    return paramView.isLaidOut();
+  }
+  
+  public final boolean z(View paramView)
   {
     return paramView.isAttachedToWindow();
   }

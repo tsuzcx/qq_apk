@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="@dimen/bpv" android:right="@dimen/bpv" android:bottom="@dimen/bpv">
+        <shape>
+            <solid android:color="@color/au3" />
+            <stroke android:width="@dimen/bpu" android:color="@color/au1" />
+        </shape>
+    </item>
+    <item android:top="@dimen/bpu">
+        <shape>
+            <solid android:color="@color/atz" />
+        </shape>
+    </item>
+</layer-list>

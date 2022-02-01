@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/bqb" android:background="@color/o6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/bqc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <RelativeLayout android:id="@id/bog" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/boh" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b59" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/boi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/bnv" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/bol" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bom" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b61" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/bon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/b60" />
-            <TextView android:textSize="24.0dip" android:textColor="@color/a6q" android:id="@id/boo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/bnw" android:layout_below="@id/bom" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/bop" android:background="@color/o6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/boq" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/b5y" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/bor" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/b65" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="21.0dip" android:textColor="@color/a6q" android:id="@id/bos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/bnt" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <Button android:textSize="18.0dip" android:textColor="@color/a6q" android:id="@id/bqd" android:background="@drawable/nu" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginBottom="150.0dip" android:text="@string/rc" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/nh" android:textColor="#ff6587cf" android:id="@id/bqe" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" android:text="@string/bme" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <Button android:id="@id/bqf" android:visibility="visible" style="@style/id" />
+<RelativeLayout android:orientation="vertical" android:background="@color/g_" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/buy" android:padding="@dimen/df" android:layout_width="@dimen/d5" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/d5" android:src="@raw/actionbar_icon_light_back" app:iconColor="@color/az" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/but" android:layout_width="fill_parent" android:layout_height="@dimen/d5" android:layout_marginTop="@dimen/d1" android:layout_marginBottom="@dimen/d6" android:layout_alignParentBottom="true">
+        <Button android:textStyle="bold" android:id="@id/buz" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/au4" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:paddingEnd="12.0dip" android:layout_marginStart="20.0dip" android:layout_marginEnd="@dimen/a3d" style="@style/oi" />
     </RelativeLayout>
-</merge>
+    <androidx.constraintlayout.widget.ConstraintLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_above="@id/but" android:layout_below="@id/buy">
+        <FrameLayout android:layout_gravity="center" android:id="@id/e4q" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintDimensionRatio="9:16" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <ImageView android:id="@id/bv3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-3.0dip" android:layout_marginBottom="-3.0dip" android:src="@drawable/bsy" android:layout_marginStart="-3.0dip" android:layout_marginEnd="-3.0dip" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

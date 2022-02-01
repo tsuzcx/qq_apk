@@ -1,43 +1,45 @@
 package com.tencent.mobileqq.profile;
 
-import alpk;
-import alpq;
-import alto;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import awqr;
-import awra;
-import awru;
-import awrv;
-import awrw;
-import awrx;
-import awry;
-import awrz;
-import azqs;
-import bddf;
-import bdgm;
-import bdjz;
-import bdun;
-import bead;
-import beae;
-import beag;
-import bety;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardTemplateUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.IVipStatusManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
 import java.util.ArrayList;
 import org.json.JSONException;
@@ -46,99 +48,51 @@ import org.json.JSONObject;
 public class VipProfileCardBaseActivity
   extends IphoneTitleBarActivity
 {
-  protected float a;
-  public int a;
-  public long a;
-  public alpk a;
-  protected alpq a;
-  public Context a;
-  public DialogInterface.OnClickListener a;
+  public Runnable A = new VipProfileCardBaseActivity.3(this);
+  public DialogInterface.OnClickListener B = new VipProfileCardBaseActivity.4(this);
+  public DialogInterface.OnClickListener C = new VipProfileCardBaseActivity.5(this);
+  public DialogInterface.OnClickListener D = new VipProfileCardBaseActivity.6(this);
+  public DialogInterface.OnClickListener E = new VipProfileCardBaseActivity.7(this);
+  protected QQProgressDialog a;
+  protected Context b = null;
+  protected int c = -1;
+  protected int d = -1;
+  protected boolean e = false;
+  protected boolean f = false;
+  protected int g = 0;
+  protected String h = "";
+  protected int i = 0;
+  protected int j = 1;
+  protected QQCustomDialog k = null;
+  protected QQCustomDialog l = null;
+  public CardHandler m = null;
+  public long n = 0L;
+  public int o = 2;
+  public int p = -1;
+  public String q = null;
+  public int r = -1;
+  public int s = 30000;
+  protected int t;
+  protected int u;
+  protected float v;
+  protected int w;
+  protected ArrayList<ProfileCardTemplate> x = null;
   @SuppressLint({"HandlerLeak"})
-  public Handler a;
-  protected bdjz a;
-  protected bety a;
-  public Runnable a;
-  protected String a;
-  protected ArrayList<awra> a;
-  protected boolean a;
-  protected int b;
-  public DialogInterface.OnClickListener b;
-  protected bdjz b;
-  public String b;
-  protected boolean b;
-  protected int c;
-  public DialogInterface.OnClickListener c;
-  public int d;
-  public DialogInterface.OnClickListener d = new awrz(this);
-  protected int e = 1;
-  public int f = 2;
-  public int g;
-  public int h = -1;
-  public int i = 30000;
-  protected int j;
-  protected int k;
-  protected int l;
+  public Handler y = new VipProfileCardBaseActivity.1(this);
+  protected CardObserver z = new VipProfileCardBaseActivity.2(this);
   
-  public VipProfileCardBaseActivity()
+  protected int a(String paramString, DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new awru(this);
-    this.jdField_a_of_type_Alpq = new awrv(this);
-    this.jdField_a_of_type_JavaLangRunnable = new VipProfileCardBaseActivity.3(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new awrw(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new awrx(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new awry(this);
-  }
-  
-  protected int a(String paramString, bead parambead)
-  {
-    if (bddf.a(this.jdField_a_of_type_AndroidContentContext, paramString)) {
+    if (ProfileCardUtil.b(paramString)) {
       return 19;
     }
-    paramString = new beae(paramString, new File(bddf.a(this.jdField_a_of_type_AndroidContentContext, paramString)));
-    if (parambead != null) {
-      paramString.a(parambead);
+    paramString = new DownloadTask(paramString, new File(ProfileCardUtil.c(paramString)));
+    if (paramDownloadListener != null) {
+      paramString.a(paramDownloadListener);
     }
-    paramString.f = "profileCardDownload";
-    paramString.e = "VIP_profilecard";
-    return beag.a(paramString, this.app);
-  }
-  
-  public ArrayList<awra> a()
-  {
-    int m;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = bddf.a(this.app, false, false);
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-      {
-        m = 0;
-        if (m >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label131;
-        }
-        localawra = (awra)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-        if ((localawra == null) || (localawra.o != awra.jdField_g_of_type_Long)) {
-          break label124;
-        }
-      }
-    }
-    label131:
-    for (awra localawra = bddf.a(localawra);; localawra = null)
-    {
-      if (localawra != null)
-      {
-        localawra.o = awra.n;
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, localawra);
-      }
-      bddf.a(this.app);
-      return this.jdField_a_of_type_JavaUtilArrayList;
-      label124:
-      m += 1;
-      break;
-    }
+    paramString.L = "profileCardDownload";
+    paramString.K = "VIP_profilecard";
+    return DownloaderFactory.a(paramString, this.app);
   }
   
   protected void a() {}
@@ -151,51 +105,50 @@ public class VipProfileCardBaseActivity
   protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     b();
-    this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
-    this.jdField_a_of_type_Bety.setCancelable(false);
-    this.jdField_a_of_type_Bety.c(2131695639);
+    Context localContext = this.b;
+    this.a = new QQProgressDialog(localContext, ((BaseActivity)localContext).getTitleBarHeight());
+    this.a.setCancelable(false);
+    this.a.c(2131892860);
     try
     {
-      this.jdField_a_of_type_Bety.show();
-      label53:
-      this.app.a(new VipProfileCardBaseActivity.8(this, paramLong1, paramLong2, paramString, paramInt));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.i);
+      this.a.show();
+      label55:
+      this.app.execute(new VipProfileCardBaseActivity.8(this, paramLong1, paramLong2, paramString, paramInt));
+      this.y.postDelayed(this.A, this.s);
       return;
     }
     catch (Exception localException)
     {
-      break label53;
+      break label55;
     }
   }
   
-  public void a(awqr paramawqr)
+  public void a(ProfileCardBackground paramProfileCardBackground)
   {
-    if (paramawqr == null) {}
-    long l1;
-    do
-    {
+    if (paramProfileCardBackground == null) {
       return;
-      l1 = NetConnInfoCenter.getServerTime();
-    } while ((paramawqr.d != 1) || (l1 >= paramawqr.f) || (l1 <= paramawqr.e));
-    paramawqr.jdField_c_of_type_Int = 1;
+    }
+    long l1 = NetConnInfoCenter.getServerTime();
+    if ((paramProfileCardBackground.g == 1) && (l1 < paramProfileCardBackground.i) && (l1 > paramProfileCardBackground.h)) {
+      paramProfileCardBackground.f = 1;
+    }
   }
   
-  public void a(awra paramawra)
+  public void a(ProfileCardTemplate paramProfileCardTemplate)
   {
-    if (paramawra == null) {}
-    long l1;
-    do
-    {
+    if (paramProfileCardTemplate == null) {
       return;
-      l1 = NetConnInfoCenter.getServerTime();
-    } while ((paramawra.e != 1) || (l1 >= paramawra.jdField_g_of_type_Int) || (l1 <= paramawra.f));
-    paramawra.c = "1";
+    }
+    long l1 = NetConnInfoCenter.getServerTime();
+    if ((paramProfileCardTemplate.limitefreeType == 1) && (l1 < paramProfileCardTemplate.limitefreeEtime) && (l1 > paramProfileCardTemplate.limitefreeBtime)) {
+      paramProfileCardTemplate.auth = "1";
+    }
   }
   
   public boolean a(long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    alto localalto = (alto)this.app.getManager(51);
-    Card localCard = localalto.b(this.app.getCurrentAccountUin());
+    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localFriendsManager.f(this.app.getCurrentAccountUin());
     if ((localCard != null) && (paramLong >= 0L))
     {
       localCard.lCurrentStyleId = paramLong;
@@ -203,7 +156,7 @@ public class VipProfileCardBaseActivity
       localCard.strCurrentBgUrl = paramString;
       localCard.backgroundColor = paramInt2;
       localCard.templateRet = paramInt3;
-      if (!localalto.a(localCard))
+      if (!localFriendsManager.a(localCard))
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, "save card in db failed ");
@@ -215,387 +168,434 @@ public class VipProfileCardBaseActivity
     return false;
   }
   
-  public boolean a(Message paramMessage)
+  protected boolean a(Message paramMessage)
   {
     return false;
   }
   
-  protected boolean a(awra paramawra, awqr paramawqr, boolean paramBoolean)
+  protected boolean a(ProfileCardTemplate paramProfileCardTemplate, ProfileCardBackground paramProfileCardBackground, boolean paramBoolean)
   {
-    if ((paramawra != null) && (paramawqr != null))
+    if ((paramProfileCardTemplate != null) && (paramProfileCardBackground != null))
     {
-      if (paramawra.o == 0L) {
+      if (paramProfileCardTemplate.styleId == 0L) {
         return true;
       }
-      int i1 = Integer.valueOf(paramawra.c).intValue();
-      int m = paramawqr.jdField_c_of_type_Int;
-      boolean bool = bddf.a(paramawqr);
-      if (bool) {
-        m = paramawra.l;
+      int i3 = Integer.valueOf(paramProfileCardTemplate.auth).intValue();
+      int i1 = paramProfileCardBackground.f;
+      boolean bool1 = ProfileCardUtil.a(paramProfileCardBackground);
+      if (bool1) {
+        i1 = paramProfileCardTemplate.customBackgroundAuth;
       }
-      if (i1 >= m)
+      int i2;
+      if (i3 >= i1)
       {
-        this.jdField_c_of_type_Int = 1;
-        if (i1 == m) {
-          this.jdField_c_of_type_Int = 2;
+        this.g = 1;
+        if (i3 == i1) {
+          this.g = 2;
         }
+        i2 = i3;
       }
-      for (int n = i1;; n = m)
+      else
       {
-        this.jdField_b_of_type_Int = n;
-        if ((n != 0) && (n != 1)) {
-          break;
+        this.g = 0;
+        i2 = i1;
+      }
+      this.d = i2;
+      if (i2 != 0)
+      {
+        if (i2 == 1) {
+          return true;
         }
-        return true;
-        this.jdField_c_of_type_Int = 0;
-      }
-      if (n == 2)
-      {
-        if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+        boolean bool2;
+        if (i2 == 2)
         {
-          this.jdField_a_of_type_Int = 1;
-          if (bool) {
-            this.jdField_a_of_type_JavaLangString = "mvip.gongneng.android.mingpian_zidingyi";
-          }
-          for (;;)
+          bool2 = this.e;
+          if (!bool2)
           {
+            boolean bool3 = this.f;
+            if (!bool3)
+            {
+              this.c = 1;
+              if (bool1) {
+                this.h = "mvip.gongneng.android.mingpian_zidingyi";
+              } else if (this.j == 1) {
+                this.h = ProfileCardUtil.a(bool2, bool3, i3, i1, this.c);
+              } else {
+                this.h = ProfileCardUtil.a(3);
+              }
+              if (QLog.isDevelopLevel()) {
+                QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, String.format("getAid mIsQQVipOpen : %b, mIsSuperVipOpen : %b, styleAuth : %d, bgAuth : %d, mNeedVipType : %d, mAid : %s", new Object[] { Boolean.valueOf(this.e), Boolean.valueOf(this.f), Integer.valueOf(i3), Integer.valueOf(i1), Integer.valueOf(this.c), this.h }));
+              }
+              if (paramBoolean) {
+                this.y.sendEmptyMessage(9);
+              }
+              return false;
+            }
+          }
+        }
+        else if (i2 == 4)
+        {
+          bool2 = this.f;
+          if (!bool2)
+          {
+            this.c = 2;
+            if (bool1) {
+              this.h = "mvip.gongneng.android.mingpian_zidingyi";
+            } else if (this.j == 1) {
+              this.h = ProfileCardUtil.a(this.e, bool2, i3, i1, this.c);
+            } else {
+              this.h = ProfileCardUtil.a(6);
+            }
             if (QLog.isDevelopLevel()) {
-              QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, String.format("getAid mIsQQVipOpen : %b, mIsSuperVipOpen : %b, styleAuth : %d, bgAuth : %d, mNeedVipType : %d, mAid : %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+              QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, String.format("getAid mIsQQVipOpen : %b, mIsSuperVipOpen : %b, styleAuth : %d, bgAuth : %d, mNeedVipType : %d, mAid : %s", new Object[] { Boolean.valueOf(this.e), Boolean.valueOf(this.f), Integer.valueOf(i3), Integer.valueOf(i1), Integer.valueOf(this.c), this.h }));
             }
             if (paramBoolean) {
-              this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+              this.y.sendEmptyMessage(9);
             }
             return false;
-            if (this.e == 1) {
-              this.jdField_a_of_type_JavaLangString = bddf.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
-            } else {
-              this.jdField_a_of_type_JavaLangString = bddf.a(3);
-            }
           }
         }
-      }
-      else if (n == 4)
-      {
-        if (!this.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Int = 2;
-          if (bool) {
-            this.jdField_a_of_type_JavaLangString = "mvip.gongneng.android.mingpian_zidingyi";
-          }
-          for (;;)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProfileCard.VipProfileCardBaseActivity", 4, String.format("getAid mIsQQVipOpen : %b, mIsSuperVipOpen : %b, styleAuth : %d, bgAuth : %d, mNeedVipType : %d, mAid : %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(i1), Integer.valueOf(m), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
-            }
-            if (paramBoolean) {
-              this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-            }
-            return false;
-            if (this.e == 1) {
-              this.jdField_a_of_type_JavaLangString = bddf.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, i1, m, this.jdField_a_of_type_Int);
-            } else {
-              this.jdField_a_of_type_JavaLangString = bddf.a(6);
-            }
-          }
-        }
-      }
-      else if (n == 5) {
-        return true;
+        else if (i2 != 5) {}
       }
     }
     return true;
   }
   
-  public long[] a()
-  {
-    ArrayList localArrayList = a();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
-      {
-        localObject1 = new long[localArrayList.size()];
-        int m = 0;
-        while (m < localArrayList.size())
-        {
-          localObject1[m] = ((awra)localArrayList.get(m)).o;
-          m += 1;
-        }
-      }
-    }
-    return localObject1;
-  }
-  
   /* Error */
-  public void b()
+  protected void b()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   4: ifnull +25 -> 29
-    //   7: aload_0
-    //   8: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   11: invokevirtual 350	bety:isShowing	()Z
-    //   14: ifeq +15 -> 29
-    //   17: aload_0
-    //   18: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   21: invokevirtual 353	bety:dismiss	()V
-    //   24: aload_0
-    //   25: aconst_null
-    //   26: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   29: return
-    //   30: astore_1
-    //   31: aload_0
-    //   32: aconst_null
-    //   33: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   36: return
-    //   37: astore_1
-    //   38: aload_0
-    //   39: aconst_null
-    //   40: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:jdField_a_of_type_Bety	Lbety;
-    //   43: aload_1
-    //   44: athrow
+    //   1: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:a	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +33 -> 39
+    //   9: aload_1
+    //   10: invokevirtual 362	com/tencent/mobileqq/widget/QQProgressDialog:isShowing	()Z
+    //   13: ifeq +26 -> 39
+    //   16: aload_0
+    //   17: getfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:a	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   20: invokevirtual 365	com/tencent/mobileqq/widget/QQProgressDialog:dismiss	()V
+    //   23: goto +11 -> 34
+    //   26: astore_1
+    //   27: aload_0
+    //   28: aconst_null
+    //   29: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:a	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   32: aload_1
+    //   33: athrow
+    //   34: aload_0
+    //   35: aconst_null
+    //   36: putfield 197	com/tencent/mobileqq/profile/VipProfileCardBaseActivity:a	Lcom/tencent/mobileqq/widget/QQProgressDialog;
+    //   39: return
+    //   40: astore_1
+    //   41: goto -7 -> 34
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	45	0	this	VipProfileCardBaseActivity
-    //   30	1	1	localException	Exception
-    //   37	7	1	localObject	Object
+    //   0	44	0	this	VipProfileCardBaseActivity
+    //   4	6	1	localQQProgressDialog	QQProgressDialog
+    //   26	7	1	localObject	Object
+    //   40	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   17	24	30	java/lang/Exception
-    //   17	24	37	finally
+    //   16	23	26	finally
+    //   16	23	40	java/lang/Exception
   }
   
   protected void c()
   {
-    this.jdField_b_of_type_Boolean = VipUtils.b(this.app);
-    this.jdField_a_of_type_Boolean = VipUtils.c(this.app);
+    this.f = VasUtil.b(this.app).getVipStatus().isSVip();
+    this.e = VasUtil.b(this.app).getVipStatus().isVip();
   }
   
-  public void d()
+  protected void d()
   {
     e();
     String str2;
+    int i1;
     String str1;
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.c == 2)
     {
-      str2 = getString(2131695583);
-      if (this.jdField_c_of_type_Int == 2) {
-        str1 = getString(2131695587);
+      str2 = getString(2131892798);
+      i1 = this.g;
+      if (i1 == 2) {
+        str1 = getString(2131892801);
+      } else if (i1 == 1) {
+        str1 = getString(2131892803);
+      } else {
+        str1 = getString(2131892799);
       }
+    }
+    else
+    {
+      str2 = getString(2131892805);
+      i1 = this.g;
+      if (i1 != 2) {
+        break label97;
+      }
+      str1 = getString(2131892802);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 0, str2, str1, 2131695581, 2131695582, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      this.jdField_a_of_type_Bdjz.show();
-      return;
-      if (this.jdField_c_of_type_Int == 1)
-      {
-        str1 = getString(2131695589);
-      }
-      else
-      {
-        str1 = getString(2131695585);
-        continue;
-        str2 = getString(2131695591);
-        if (this.jdField_c_of_type_Int == 2) {
-          str1 = getString(2131695588);
-        } else if (this.jdField_c_of_type_Int == 1) {
-          str1 = getString(2131695590);
-        } else {
-          str1 = getString(2131695586);
-        }
+      break;
+      label97:
+      if (i1 == 1) {
+        str1 = getString(2131892804);
+      } else {
+        str1 = getString(2131892800);
       }
     }
+    this.k = DialogUtil.a(this.b, 0, str2, str1, 2131892796, 2131892797, this.C, this.B);
+    this.k.show();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   @TargetApi(9)
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = getResources().getDisplayMetrics();
-    this.k = paramBundle.widthPixels;
-    this.j = paramBundle.heightPixels;
-    this.l = paramBundle.densityDpi;
-    this.jdField_a_of_type_Float = paramBundle.density;
+    this.u = paramBundle.widthPixels;
+    this.t = paramBundle.heightPixels;
+    this.w = paramBundle.densityDpi;
+    this.v = paramBundle.density;
     c();
-    this.jdField_a_of_type_Alpk = ((alpk)this.app.a(2));
+    this.m = ((CardHandler)this.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER));
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_Alpq);
+    removeObserver(this.z);
     e();
     b();
-    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.x = null;
   }
   
-  public void e()
+  protected void e()
   {
-    if (this.jdField_a_of_type_Bdjz != null)
+    QQCustomDialog localQQCustomDialog = this.k;
+    if (localQQCustomDialog != null)
     {
-      this.jdField_a_of_type_Bdjz.dismiss();
-      this.jdField_a_of_type_Bdjz = null;
+      localQQCustomDialog.dismiss();
+      this.k = null;
     }
   }
   
-  public void f()
+  protected void f()
   {
-    if (this.jdField_b_of_type_Bdjz != null)
+    QQCustomDialog localQQCustomDialog = this.l;
+    if (localQQCustomDialog != null)
     {
-      this.jdField_b_of_type_Bdjz.dismiss();
-      this.jdField_b_of_type_Bdjz = null;
+      localQQCustomDialog.dismiss();
+      this.l = null;
     }
   }
   
   public void g()
   {
-    Object localObject2 = null;
-    Intent localIntent = getIntent();
-    Object localObject1 = localObject2;
-    if (localIntent != null)
-    {
-      localObject1 = localObject2;
-      if (localIntent.hasExtra("ExternAid")) {
-        localObject1 = localIntent.getStringExtra("ExternAid");
-      }
+    Object localObject1 = getIntent();
+    if ((localObject1 != null) && (((Intent)localObject1).hasExtra("ExternAid"))) {
+      localObject1 = ((Intent)localObject1).getStringExtra("ExternAid");
+    } else {
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.h;
     }
-    for (;;)
+    if (this.c == 2)
     {
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        bdun.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000516", "CJCLUBT", getString(2131720522), "svip");
-        azqs.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044E0", "0X80044E0", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
-        return;
-      }
-      bdun.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000515", "LTMCLUB", getString(2131695593), "vip");
-      azqs.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044DF", "0X80044DF", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
+      VasH5PayUtil.a((BaseActivity)this.b, (String)localObject2, 3, "1450000516", "CJCLUBT", getString(2131916948), "svip");
+      ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044E0", "0X80044E0", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
       return;
     }
+    VasH5PayUtil.a((BaseActivity)this.b, (String)localObject2, 3, "1450000515", "LTMCLUB", getString(2131892806), "vip");
+    ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044DF", "0X80044DF", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
   }
   
   public void h()
   {
-    Card localCard = ((alto)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
-    if (localCard != null)
-    {
+    Card localCard = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.app.getCurrentAccountUin());
+    if (localCard != null) {
       if (localCard.templateRet != 0)
       {
-        this.jdField_a_of_type_Long = 0L;
-        this.jdField_g_of_type_Int = -1;
-        this.h = 1;
-        this.jdField_b_of_type_JavaLangString = null;
+        this.n = 0L;
+        this.p = -1;
+        this.r = 1;
+        this.q = null;
       }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, String.format("readInfofromDB , mCurrentStyleId : %s , mCurrentBackgroundId : %s , mCurrentBackgroundColor : %s , mCurrentBackgroundUrl : %s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_g_of_type_Int), Integer.valueOf(this.h), this.jdField_b_of_type_JavaLangString }));
-      }
-      return;
-    }
-    Intent localIntent = getIntent();
-    if (localIntent == null)
-    {
-      if (localCard.cardType == 2) {}
-      for (l1 = awra.n;; l1 = (int)localCard.lCurrentStyleId)
+      else
       {
-        this.jdField_a_of_type_Long = l1;
-        this.jdField_g_of_type_Int = ((int)localCard.lCurrentBgId);
-        this.jdField_b_of_type_JavaLangString = localCard.backgroundUrl;
-        this.h = ((int)localCard.backgroundColor);
-        label169:
-        if (this.jdField_a_of_type_Long != -1L) {
-          break label286;
+        Intent localIntent = getIntent();
+        long l1;
+        if (localIntent == null)
+        {
+          if (localCard.cardType == 2) {
+            l1 = ProfileCardTemplate.PROFILE_CARD_STYLE_DIY;
+          } else {
+            l1 = (int)localCard.lCurrentStyleId;
+          }
+          this.n = l1;
+          this.p = ((int)localCard.lCurrentBgId);
+          this.q = localCard.backgroundUrl;
+          this.r = ((int)localCard.backgroundColor);
         }
-        this.jdField_a_of_type_Long = 0L;
-        break;
+        else
+        {
+          if (!localIntent.hasExtra("CurrentTemplateId"))
+          {
+            if (localCard.cardType == 2) {
+              l1 = ProfileCardTemplate.PROFILE_CARD_STYLE_DIY;
+            } else {
+              l1 = (int)localCard.lCurrentStyleId;
+            }
+            this.n = l1;
+          }
+          if (!localIntent.hasExtra("CurrentBackgroundId")) {
+            this.p = ((int)localCard.lCurrentBgId);
+          }
+          if (!localIntent.hasExtra("CurrentBackgroundUrl")) {
+            this.q = localCard.backgroundUrl;
+          }
+          if (!localIntent.hasExtra("CurrentBackgroundColor")) {
+            this.r = ((int)localCard.backgroundColor);
+          }
+        }
+        if (this.n == -1L) {
+          this.n = 0L;
+        }
       }
     }
-    if (!localIntent.hasExtra("CurrentTemplateId")) {
-      if (localCard.cardType != 2) {
-        break label288;
-      }
-    }
-    label286:
-    label288:
-    for (long l1 = awra.n;; l1 = (int)localCard.lCurrentStyleId)
-    {
-      this.jdField_a_of_type_Long = l1;
-      if (!localIntent.hasExtra("CurrentBackgroundId")) {
-        this.jdField_g_of_type_Int = ((int)localCard.lCurrentBgId);
-      }
-      if (!localIntent.hasExtra("CurrentBackgroundUrl")) {
-        this.jdField_b_of_type_JavaLangString = localCard.backgroundUrl;
-      }
-      if (localIntent.hasExtra("CurrentBackgroundColor")) {
-        break label169;
-      }
-      this.h = ((int)localCard.backgroundColor);
-      break label169;
-      break;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, String.format("readInfofromDB , mCurrentStyleId : %s , mCurrentBackgroundId : %s , mCurrentBackgroundColor : %s , mCurrentBackgroundUrl : %s", new Object[] { Long.valueOf(this.n), Integer.valueOf(this.p), Integer.valueOf(this.r), this.q }));
     }
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public long[] i()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, resultCode : " + paramInt1 + ", resultCode : " + paramInt2 + ", data : " + paramIntent);
+    ArrayList localArrayList = j();
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      long[] arrayOfLong2 = new long[localArrayList.size()];
+      int i1 = 0;
+      for (;;)
+      {
+        arrayOfLong1 = arrayOfLong2;
+        if (i1 >= localArrayList.size()) {
+          break;
+        }
+        arrayOfLong2[i1] = ((ProfileCardTemplate)localArrayList.get(i1)).styleId;
+        i1 += 1;
+      }
+    }
+    long[] arrayOfLong1 = null;
+    return arrayOfLong1;
+  }
+  
+  public ArrayList<ProfileCardTemplate> j()
+  {
+    Object localObject1 = this.x;
+    if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
+    {
+      this.x = ProfileCardTemplateUtil.a(false, false);
+      localObject1 = this.x;
+      if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+      {
+        Object localObject2 = null;
+        int i1 = 0;
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (i1 >= this.x.size()) {
+            break;
+          }
+          localObject1 = (ProfileCardTemplate)this.x.get(i1);
+          if ((localObject1 != null) && (((ProfileCardTemplate)localObject1).styleId == ProfileCardTemplate.PROFILE_CARD_STYLE_SIMPLE))
+          {
+            localObject1 = ProfileCardTemplateUtil.a((ProfileCardTemplate)localObject1);
+            break;
+          }
+          i1 += 1;
+        }
+        if (localObject1 != null)
+        {
+          ((ProfileCardTemplate)localObject1).styleId = ProfileCardTemplate.PROFILE_CARD_STYLE_DIY;
+          this.x.add(0, localObject1);
+        }
+      }
+      ProfileCardTemplateUtil.a(this.app);
+    }
+    return this.x;
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onActivityResult, resultCode : ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(", resultCode : ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      ((StringBuilder)localObject1).append(", data : ");
+      ((StringBuilder)localObject1).append(paramIntent);
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, ((StringBuilder)localObject1).toString());
     }
     if ((paramInt1 == 4) && (paramInt2 == -1) && (paramIntent != null))
     {
-      String str = null;
+      localObject1 = null;
       if (paramIntent.hasExtra("result"))
       {
-        Object localObject = paramIntent.getStringExtra("result");
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, resultStr : " + (String)localObject);
+        Object localObject2 = paramIntent.getStringExtra("result");
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onActivityResult, resultStr : ");
+          localStringBuilder.append((String)localObject2);
+          QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, localStringBuilder.toString());
         }
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
           try
           {
-            localObject = new JSONObject((String)localObject);
-            if (localObject == null) {
-              return;
+            localObject2 = new JSONObject((String)localObject2).get("payState");
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("onActivityResult, stateObj : ");
+              localStringBuilder.append(localObject2);
+              QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, localStringBuilder.toString());
             }
-            localObject = ((JSONObject)localObject).get("payState");
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, stateObj : " + localObject);
-            }
-            if ((localObject == null) || (!"0".equals(String.valueOf(localObject)))) {
+            if ((localObject2 == null) || (!"0".equals(String.valueOf(localObject2)))) {
               return;
             }
             if (paramIntent.hasExtra("callbackSn")) {
-              str = paramIntent.getStringExtra("callbackSn");
+              localObject1 = paramIntent.getStringExtra("callbackSn");
             }
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, callbackSn : " + str);
-            }
-            if ("svip".equals(str)) {
-              this.jdField_b_of_type_Boolean = true;
-            }
-            for (;;)
+            if (QLog.isColorLevel())
             {
-              a();
-              return;
-              this.jdField_a_of_type_Boolean = true;
+              paramIntent = new StringBuilder();
+              paramIntent.append("onActivityResult, callbackSn : ");
+              paramIntent.append((String)localObject1);
+              QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, paramIntent.toString());
             }
-            QLog.e("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, Exception : " + paramIntent.getMessage());
-          }
-          catch (JSONException paramIntent)
-          {
-            paramIntent.printStackTrace();
-            if (!QLog.isColorLevel()) {
-              return;
+            if ("svip".equals(localObject1)) {
+              this.f = true;
+            } else {
+              this.e = true;
             }
-            QLog.e("ProfileCard.VipProfileCardBaseActivity", 2, "onActivityResult, JSONException : " + paramIntent.getMessage());
+            a();
             return;
           }
           catch (Exception paramIntent)
@@ -604,7 +604,23 @@ public class VipProfileCardBaseActivity
             if (!QLog.isColorLevel()) {
               return;
             }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("onActivityResult, Exception : ");
+            ((StringBuilder)localObject1).append(paramIntent.getMessage());
+            QLog.e("ProfileCard.VipProfileCardBaseActivity", 2, ((StringBuilder)localObject1).toString());
+            return;
           }
+          catch (JSONException paramIntent)
+          {
+            paramIntent.printStackTrace();
+            if (!QLog.isColorLevel()) {
+              return;
+            }
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onActivityResult, JSONException : ");
+          ((StringBuilder)localObject1).append(paramIntent.getMessage());
+          QLog.e("ProfileCard.VipProfileCardBaseActivity", 2, ((StringBuilder)localObject1).toString());
         }
       }
       else if (QLog.isColorLevel())
@@ -613,10 +629,17 @@ public class VipProfileCardBaseActivity
       }
     }
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -2,90 +2,90 @@ package com.tencent.mm.ui;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
-  implements m
+  implements p
 {
-  private Bundle rMc;
-  private boolean yTf;
-  private boolean yTg;
-  private boolean yTh;
-  private boolean yTi;
-  protected boolean yTj = false;
-  protected boolean yTk = false;
-  protected boolean yTl;
+  private boolean adtA;
+  protected boolean adtB = false;
+  protected boolean adtC = false;
+  protected boolean adtD;
+  private boolean adtx;
+  private boolean adty;
+  private boolean adtz;
+  private Bundle savedInstanceState;
   
-  private void dAK()
+  private void jhz()
   {
-    if (this.yTg)
+    if (this.adty)
     {
-      dAy();
-      this.yTg = false;
+      jhn();
+      this.adty = false;
     }
-    while (!this.yTf) {
+    while (!this.adtx) {
       return;
     }
-    dAD();
-    dAy();
-    ab.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.yTf = false;
+    jhs();
+    jhn();
+    Log.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
+    this.adtx = false;
   }
   
-  protected abstract void dAA();
-  
-  protected abstract void dAB();
-  
-  protected abstract void dAC();
-  
-  protected abstract void dAD();
-  
-  public final void dAH()
+  public final void jhA()
   {
-    dAF();
-    this.yTh = true;
-  }
-  
-  public final void dAJ()
-  {
-    this.yTk = true;
-  }
-  
-  public final void dAL()
-  {
-    if (!this.yTj) {
+    if (!this.adtB) {
       return;
     }
-    dAK();
+    jhz();
     long l = System.currentTimeMillis();
-    if (this.yTh)
+    if (this.adtz)
     {
-      dAG();
-      this.yTh = false;
+      jhv();
+      this.adtz = false;
     }
-    dEP();
-    dAz();
-    ab.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.yTi = true;
-    this.yTj = false;
+    jnz();
+    jho();
+    Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.adtA = true;
+    this.adtB = false;
   }
   
-  protected abstract void dAy();
+  protected abstract void jhn();
   
-  protected abstract void dAz();
+  protected abstract void jho();
+  
+  protected abstract void jhp();
+  
+  protected abstract void jhq();
+  
+  protected abstract void jhr();
+  
+  protected abstract void jhs();
+  
+  public final void jhw()
+  {
+    jhu();
+    this.adtz = true;
+  }
+  
+  public final void jhy()
+  {
+    this.adtC = true;
+  }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.rMc = paramBundle;
-    this.yTg = true;
+    this.savedInstanceState = paramBundle;
+    this.adty = true;
   }
   
   public void onDestroy()
   {
-    dAD();
+    jhs();
     super.onDestroy();
   }
   
@@ -100,57 +100,57 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.yTl = true;
-    if (this.yTl)
+    this.adtD = true;
+    if (this.adtD)
     {
-      if (!this.yTi) {
-        this.yTl = false;
+      if (!this.adtA) {
+        this.adtD = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    dAB();
-    ab.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.yTi = false;
-    this.yTl = false;
+    jhq();
+    Log.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
+    this.adtA = false;
+    this.adtD = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    dAI();
+    jhx();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.yYW)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {}
     do
     {
       return;
-      this.yTj = true;
-    } while (!this.yTk);
-    dAL();
-    this.yTk = false;
+      this.adtB = true;
+    } while (!this.adtC);
+    jhA();
+    this.adtC = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.yYW)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {
       return;
     }
-    dAA();
+    jhp();
   }
   
   public void onStop()
   {
     super.onStop();
-    dAC();
+    jhr();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AbstractTabChildPreference
  * JD-Core Version:    0.7.0.1
  */

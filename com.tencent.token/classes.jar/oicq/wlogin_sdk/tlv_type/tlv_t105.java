@@ -17,8 +17,9 @@ public class tlv_t105
   
   public byte[] get_pic()
   {
-    byte[] arrayOfByte = new byte[this._piclen];
-    if (this._piclen <= 0) {
+    int i = this._piclen;
+    byte[] arrayOfByte = new byte[i];
+    if (i <= 0) {
       return arrayOfByte;
     }
     System.arraycopy(this._buf, this._pic_pos, arrayOfByte, 0, this._piclen);
@@ -27,8 +28,9 @@ public class tlv_t105
   
   public byte[] get_sign()
   {
-    byte[] arrayOfByte = new byte[this._enlen];
-    if (this._enlen <= 0) {
+    int i = this._enlen;
+    byte[] arrayOfByte = new byte[i];
+    if (i <= 0) {
       return arrayOfByte;
     }
     System.arraycopy(this._buf, this._en_pos, arrayOfByte, 0, this._enlen);
@@ -38,19 +40,19 @@ public class tlv_t105
   public Boolean verify()
   {
     if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._enlen = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < this._enlen + 2 + 2) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._piclen = util.buf_to_int16(this._buf, this._head_len + 2 + this._enlen);
     if (this._body_len < this._enlen + 2 + 2 + this._piclen) {
-      return Boolean.valueOf(false);
+      return Boolean.FALSE;
     }
     this._en_pos = (this._head_len + 2);
     this._pic_pos = (this._enlen + 2 + 2 + this._head_len);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

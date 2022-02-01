@@ -51,23 +51,18 @@ final class ReplaySubject$UnboundedReplayState<T>
   
   public T latest()
   {
-    Object localObject2 = null;
     int i = get();
-    Object localObject1 = localObject2;
     if (i > 0)
     {
-      localObject1 = this.list.get(i - 1);
-      if ((!this.nl.isCompleted(localObject1)) && (!this.nl.isError(localObject1))) {
-        break label73;
+      Object localObject = this.list.get(i - 1);
+      if ((!this.nl.isCompleted(localObject)) && (!this.nl.isError(localObject))) {
+        return this.nl.getValue(localObject);
       }
-      localObject1 = localObject2;
       if (i > 1) {
-        localObject1 = this.nl.getValue(this.list.get(i - 2));
+        return this.nl.getValue(this.list.get(i - 2));
       }
     }
-    return localObject1;
-    label73:
-    return this.nl.getValue(localObject1);
+    return null;
   }
   
   public void next(T paramT)
@@ -87,15 +82,18 @@ final class ReplaySubject$UnboundedReplayState<T>
       if (paramSubjectObserver.emitting) {
         return false;
       }
-      Integer localInteger = (Integer)paramSubjectObserver.index();
-      if (localInteger != null)
+      Object localObject1 = (Integer)paramSubjectObserver.index();
+      if (localObject1 != null)
       {
-        paramSubjectObserver.index(Integer.valueOf(replayObserverFromIndex(localInteger, paramSubjectObserver).intValue()));
+        paramSubjectObserver.index(Integer.valueOf(replayObserverFromIndex((Integer)localObject1, paramSubjectObserver).intValue()));
         return true;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("failed to find lastEmittedLink for: ");
+      ((StringBuilder)localObject1).append(paramSubjectObserver);
+      throw new IllegalStateException(((StringBuilder)localObject1).toString());
     }
     finally {}
-    throw new IllegalStateException("failed to find lastEmittedLink for: " + paramSubjectObserver);
   }
   
   public Integer replayObserverFromIndex(Integer paramInteger, SubjectSubscriptionManager.SubjectObserver<? super T> paramSubjectObserver)
@@ -116,19 +114,14 @@ final class ReplaySubject$UnboundedReplayState<T>
   
   public int size()
   {
-    int j = get();
-    int i = j;
-    if (j > 0)
+    int i = get();
+    if (i > 0)
     {
-      Object localObject = this.list.get(j - 1);
-      if (!this.nl.isCompleted(localObject))
-      {
-        i = j;
-        if (!this.nl.isError(localObject)) {}
-      }
-      else
-      {
-        i = j - 1;
+      Object localObject = this.list;
+      int j = i - 1;
+      localObject = ((ArrayList)localObject).get(j);
+      if ((this.nl.isCompleted(localObject)) || (this.nl.isError(localObject))) {
+        return j;
       }
     }
     return i;
@@ -141,40 +134,45 @@ final class ReplaySubject$UnboundedReplayState<T>
   
   public T[] toArray(T[] paramArrayOfT)
   {
-    int i = 0;
-    int j = size();
-    if (j > 0)
+    int k = size();
+    int j = 0;
+    Object localObject2;
+    if (k > 0)
     {
-      if (j <= paramArrayOfT.length) {
-        break label81;
-      }
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
-    }
-    label81:
-    for (;;)
-    {
-      if (i < j)
+      int i = j;
+      Object localObject1 = paramArrayOfT;
+      if (k > paramArrayOfT.length)
       {
-        paramArrayOfT[i] = this.list.get(i);
+        localObject1 = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), k);
+        i = j;
+      }
+      while (i < k)
+      {
+        localObject1[i] = this.list.get(i);
         i += 1;
       }
-      else
+      localObject2 = localObject1;
+      if (localObject1.length > k)
       {
-        if (paramArrayOfT.length > j) {
-          paramArrayOfT[j] = null;
-        }
-        return paramArrayOfT;
-        if (paramArrayOfT.length > 0) {
-          paramArrayOfT[0] = null;
-        }
-        return paramArrayOfT;
+        localObject1[k] = null;
+        return localObject1;
       }
     }
+    else
+    {
+      localObject2 = paramArrayOfT;
+      if (paramArrayOfT.length > 0)
+      {
+        paramArrayOfT[0] = null;
+        localObject2 = paramArrayOfT;
+      }
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subjects.ReplaySubject.UnboundedReplayState
  * JD-Core Version:    0.7.0.1
  */

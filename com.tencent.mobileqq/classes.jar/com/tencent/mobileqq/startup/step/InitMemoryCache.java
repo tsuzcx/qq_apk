@@ -1,98 +1,101 @@
 package com.tencent.mobileqq.startup.step;
 
 import android.support.v4.util.LruCache;
-import azof;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.IMemoryManager;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.memory.MemoryManager;
+import com.tencent.qqperf.opt.clearmemory.MemoryClearManager;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-import zie;
 
 public class InitMemoryCache
   extends Step
 {
-  private static volatile boolean a;
+  private static volatile boolean a = false;
   
   protected boolean doStep()
   {
-    if (a) {}
-    for (;;)
-    {
+    if (a) {
       return true;
-      a = true;
-      zie localzie = zie.a();
-      QQHashMap.setManager(localzie);
-      QQConcurrentHashMap.setManager(localzie);
-      QQLruCache.setManager(localzie);
-      LruCache.setManager(localzie);
-      QLog.e("qiqili", 1, "InitMemoryCache BaseApplicationImpl.sProcessId =" + BaseApplicationImpl.sProcessId + "BaseApplicationImpl.processName=" + BaseApplicationImpl.processName);
-      BaseApplicationImpl.sImageHashMap = new ConcurrentHashMap();
-      long l;
-      if (BaseApplicationImpl.sProcessId == 1)
+    }
+    a = true;
+    Object localObject = MemoryClearManager.b();
+    QQHashMap.setManager((IMemoryManager)localObject);
+    QQConcurrentHashMap.setManager((IMemoryManager)localObject);
+    QQLruCache.setManager((IMemoryManager)localObject);
+    LruCache.setManager((IMemoryManager)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("InitMemoryCache BaseApplicationImpl.sProcessId =");
+    ((StringBuilder)localObject).append(BaseApplicationImpl.sProcessId);
+    ((StringBuilder)localObject).append("BaseApplicationImpl.processName=");
+    ((StringBuilder)localObject).append(BaseApplicationImpl.processName);
+    QLog.e("qiqili", 1, ((StringBuilder)localObject).toString());
+    com.tencent.mobileqq.app.GlobalImageCache.b = new ConcurrentHashMap();
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      i = (int)(MemoryManager.d() * 3L / 16L);
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = i;
+      return true;
+    }
+    if (BaseApplicationImpl.sProcessId == 5)
+    {
+      i = (int)(MemoryManager.d() * 3L / 16L);
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = i;
+      return true;
+    }
+    boolean bool = BaseApplicationImpl.processName.endsWith(":peak");
+    int i = 4194304;
+    int j;
+    if ((!bool) && (!BaseApplicationImpl.processName.endsWith(":dataline")) && (!BaseApplicationImpl.processName.endsWith(":secmsg")) && (!BaseApplicationImpl.processName.endsWith(":dingdong")) && (!BaseApplicationImpl.processName.endsWith(":miniapp")) && (!BaseApplicationImpl.processName.endsWith(":mini")) && (!BaseApplicationImpl.processName.endsWith(":mini1")) && (!BaseApplicationImpl.processName.endsWith(":mini2")) && (!BaseApplicationImpl.processName.endsWith(":mini3")) && (!BaseApplicationImpl.processName.endsWith(":mini4")) && (!BaseApplicationImpl.processName.endsWith(":mini5")) && (!BaseApplicationImpl.processName.endsWith(":mini6")) && (!BaseApplicationImpl.processName.endsWith(":mini7")) && (!BaseApplicationImpl.processName.endsWith(":troophomework")) && (!BaseApplicationImpl.processName.endsWith(":live")) && (!BaseApplicationImpl.processName.endsWith(":openSdk")) && (!BaseApplicationImpl.processName.endsWith(":picture")))
+    {
+      if ((BaseApplicationImpl.sProcessId != 7) && (BaseApplicationImpl.sProcessId != 2))
       {
-        l = MemoryManager.a() * 3L / 16L;
-        BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
-        BaseApplicationImpl.sImageCacheSize = (int)l;
+        if (BaseApplicationImpl.processName.endsWith(":video"))
+        {
+          j = (int)(MemoryManager.d() / 16L);
+          if (j > 4194304) {
+            i = j;
+          }
+          com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+          com.tencent.mobileqq.app.GlobalImageCache.c = j;
+          return true;
+        }
       }
-      while ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
+      else
       {
-        ThreadManager.getSubThreadHandler().post(new InitMemoryCache.2(this));
-        zie.a().d();
+        i = (int)(MemoryManager.d() * 3L / 16L);
+        com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+        com.tencent.mobileqq.app.GlobalImageCache.c = i;
         return true;
-        if (BaseApplicationImpl.sProcessId == 5)
-        {
-          l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
-          BaseApplicationImpl.sImageCacheSize = (int)l;
-        }
-        else
-        {
-          int j;
-          int i;
-          if ((BaseApplicationImpl.processName.endsWith(":peak")) || (BaseApplicationImpl.processName.endsWith(":dataline")) || (BaseApplicationImpl.processName.endsWith(":secmsg")) || (BaseApplicationImpl.processName.endsWith(":dingdong")) || (BaseApplicationImpl.processName.endsWith(":miniapp")) || (BaseApplicationImpl.processName.endsWith(":troophomework")) || (BaseApplicationImpl.processName.endsWith(":live")))
-          {
-            j = (int)(MemoryManager.a() * 3L / 16L);
-            i = 4194304;
-            if (j > 4194304) {
-              i = j;
-            }
-            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf(i));
-            BaseApplicationImpl.sImageCacheSize = j;
-            if (QLog.isColorLevel()) {
-              QLog.d("MemoryCache", 2, "memory size:" + j);
-            }
-            ThreadManager.getSubThreadHandler().post(new InitMemoryCache.1(this));
-            zie.a().d();
-          }
-          else if ((BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 2))
-          {
-            l = MemoryManager.a() * 3L / 16L;
-            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf((int)l));
-            BaseApplicationImpl.sImageCacheSize = (int)l;
-          }
-          else if (BaseApplicationImpl.processName.endsWith(":video"))
-          {
-            j = (int)(MemoryManager.a() / 16L);
-            i = 4194304;
-            if (j > 4194304) {
-              i = j;
-            }
-            BaseApplicationImpl.sImageCache = new azof(Integer.valueOf(i));
-            BaseApplicationImpl.sImageCacheSize = j;
-          }
-        }
       }
     }
+    else
+    {
+      j = (int)(MemoryManager.d() * 3L / 16L);
+      if (j > 4194304) {
+        i = j;
+      }
+      com.tencent.mobileqq.app.GlobalImageCache.a = new InitMemoryCache.InnerMQLruCache(Integer.valueOf(i));
+      com.tencent.mobileqq.app.GlobalImageCache.c = j;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("memory size:");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("MemoryCache", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitMemoryCache
  * JD-Core Version:    0.7.0.1
  */

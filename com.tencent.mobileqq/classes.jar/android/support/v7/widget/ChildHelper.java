@@ -22,32 +22,23 @@ class ChildHelper
   
   private int getOffset(int paramInt)
   {
-    if (paramInt < 0)
-    {
-      paramInt = -1;
-      return paramInt;
+    if (paramInt < 0) {
+      return -1;
     }
     int j = this.mCallback.getChildCount();
     int i = paramInt;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label72;
-      }
       int k = paramInt - (i - this.mBucket.countOnesBefore(i));
-      if (k == 0) {
-        for (;;)
-        {
-          paramInt = i;
-          if (!this.mBucket.get(i)) {
-            break;
-          }
+      if (k == 0)
+      {
+        while (this.mBucket.get(i)) {
           i += 1;
         }
+        return i;
       }
       i += k;
     }
-    label72:
     return -1;
   }
   
@@ -69,16 +60,16 @@ class ChildHelper
   
   void addView(View paramView, int paramInt, boolean paramBoolean)
   {
-    if (paramInt < 0) {}
-    for (paramInt = this.mCallback.getChildCount();; paramInt = getOffset(paramInt))
-    {
-      this.mBucket.insert(paramInt, paramBoolean);
-      if (paramBoolean) {
-        hideViewInternal(paramView);
-      }
-      this.mCallback.addView(paramView, paramInt);
-      return;
+    if (paramInt < 0) {
+      paramInt = this.mCallback.getChildCount();
+    } else {
+      paramInt = getOffset(paramInt);
     }
+    this.mBucket.insert(paramInt, paramBoolean);
+    if (paramBoolean) {
+      hideViewInternal(paramView);
+    }
+    this.mCallback.addView(paramView, paramInt);
   }
   
   void addView(View paramView, boolean paramBoolean)
@@ -88,16 +79,16 @@ class ChildHelper
   
   void attachViewToParent(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
-    if (paramInt < 0) {}
-    for (paramInt = this.mCallback.getChildCount();; paramInt = getOffset(paramInt))
-    {
-      this.mBucket.insert(paramInt, paramBoolean);
-      if (paramBoolean) {
-        hideViewInternal(paramView);
-      }
-      this.mCallback.attachViewToParent(paramView, paramInt, paramLayoutParams);
-      return;
+    if (paramInt < 0) {
+      paramInt = this.mCallback.getChildCount();
+    } else {
+      paramInt = getOffset(paramInt);
     }
+    this.mBucket.insert(paramInt, paramBoolean);
+    if (paramBoolean) {
+      hideViewInternal(paramView);
+    }
+    this.mCallback.attachViewToParent(paramView, paramInt, paramLayoutParams);
   }
   
   void detachViewFromParent(int paramInt)
@@ -147,18 +138,25 @@ class ChildHelper
   void hide(View paramView)
   {
     int i = this.mCallback.indexOfChild(paramView);
-    if (i < 0) {
-      throw new IllegalArgumentException("view is not a child, cannot hide " + paramView);
+    if (i >= 0)
+    {
+      this.mBucket.set(i);
+      hideViewInternal(paramView);
+      return;
     }
-    this.mBucket.set(i);
-    hideViewInternal(paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("view is not a child, cannot hide ");
+    localStringBuilder.append(paramView);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   int indexOfChild(View paramView)
   {
     int i = this.mCallback.indexOfChild(paramView);
-    if (i == -1) {}
-    while (this.mBucket.get(i)) {
+    if (i == -1) {
+      return -1;
+    }
+    if (this.mBucket.get(i)) {
       return -1;
     }
     return i - this.mBucket.countOnesBefore(i);
@@ -212,13 +210,13 @@ class ChildHelper
     int i = this.mCallback.indexOfChild(paramView);
     if (i == -1)
     {
-      if (unhideViewInternal(paramView)) {}
+      unhideViewInternal(paramView);
       return true;
     }
     if (this.mBucket.get(i))
     {
       this.mBucket.remove(i);
-      if (!unhideViewInternal(paramView)) {}
+      unhideViewInternal(paramView);
       this.mCallback.removeViewAt(i);
       return true;
     }
@@ -227,20 +225,33 @@ class ChildHelper
   
   public String toString()
   {
-    return this.mBucket.toString() + ", hidden list:" + this.mHiddenViews.size();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mBucket.toString());
+    localStringBuilder.append(", hidden list:");
+    localStringBuilder.append(this.mHiddenViews.size());
+    return localStringBuilder.toString();
   }
   
   void unhide(View paramView)
   {
     int i = this.mCallback.indexOfChild(paramView);
-    if (i < 0) {
-      throw new IllegalArgumentException("view is not a child, cannot hide " + paramView);
+    if (i >= 0)
+    {
+      if (this.mBucket.get(i))
+      {
+        this.mBucket.clear(i);
+        unhideViewInternal(paramView);
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("trying to unhide a view that was not hidden");
+      localStringBuilder.append(paramView);
+      throw new RuntimeException(localStringBuilder.toString());
     }
-    if (!this.mBucket.get(i)) {
-      throw new RuntimeException("trying to unhide a view that was not hidden" + paramView);
-    }
-    this.mBucket.clear(i);
-    unhideViewInternal(paramView);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("view is not a child, cannot hide ");
+    localStringBuilder.append(paramView);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 

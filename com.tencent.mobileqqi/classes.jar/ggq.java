@@ -1,17 +1,30 @@
-import java.io.File;
+import com.tencent.mobileqq.richstatus.ActionInfo;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
-class ggq
+public class ggq
+  implements IActionListener
 {
-  private String a;
+  public ggq(EditActivity paramEditActivity) {}
   
-  public ggq(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a = paramString;
-  }
-  
-  public File a(int paramInt, String paramString)
-  {
-    return null;
+    if ((paramInt1 == 102) && (EditActivity.a(this.a).b != 0) && (" ".equals(EditActivity.a(this.a).c)))
+    {
+      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).b);
+      if (localActionInfo != null)
+      {
+        EditActivity.a(this.a).c = localActionInfo.d;
+        EditActivity.a(this.a, false);
+      }
+    }
+    if (EditActivity.a(this.a) != null)
+    {
+      EditActivity.a(this.a, true);
+      EditActivity.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 

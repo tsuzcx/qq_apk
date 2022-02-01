@@ -1,6 +1,5 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import alud;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -9,29 +8,29 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import bieo;
-import uqn;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.widget.pull2refresh.ILoadMoreLayout;
 
 public class LoadMoreLayout
   extends FrameLayout
-  implements bieo
+  implements ILoadMoreLayout
 {
-  protected int a;
   protected Context a;
-  protected LinearLayout a;
-  protected ProgressBar a;
-  protected TextView a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
+  protected LinearLayout b;
+  protected ProgressBar c;
+  protected TextView d;
+  protected int e = -1;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
   
   public LoadMoreLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
@@ -39,8 +38,7 @@ public class LoadMoreLayout
   public LoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
@@ -48,19 +46,64 @@ public class LoadMoreLayout
   public LoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = alud.a(2131706641);
-    this.c = alud.a(2131706643);
-    this.d = alud.a(2131706640);
-    this.b = uqn.a(2131700077);
-    this.e = alud.a(2131706642);
+    this.f = HardCodeUtil.a(2131904193);
+    this.h = HardCodeUtil.a(2131904195);
+    this.i = HardCodeUtil.a(2131904192);
+    this.g = StoryApi.b(2131897968);
+    this.j = HardCodeUtil.a(2131904194);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    if (!a(this.e, paramInt)) {
+      return false;
+    }
+    this.e = paramInt;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5) {
+                return true;
+              }
+              this.c.setVisibility(8);
+              this.d.setText(this.j);
+              this.b.setVisibility(0);
+              return true;
+            }
+            this.b.setVisibility(8);
+            return true;
+          }
+          this.c.setVisibility(8);
+          this.d.setText(this.f);
+          this.b.setVisibility(0);
+          return true;
+        }
+        this.c.setVisibility(0);
+        this.d.setText(this.h);
+        this.b.setVisibility(0);
+        return true;
+      }
+      this.c.setVisibility(0);
+      this.d.setText(this.g);
+      this.b.setVisibility(0);
+      return true;
+    }
+    this.b.setVisibility(8);
+    return true;
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -68,109 +111,75 @@ public class LoadMoreLayout
     if (paramInt1 < 0) {
       return true;
     }
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    do
-    {
-      do
+      if (paramInt1 != 1)
       {
-        do
+        if (paramInt1 != 2)
         {
-          do
+          if (paramInt1 != 3)
           {
-            do
+            if (paramInt1 != 4)
             {
-              return false;
-              if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
-                break;
+              if ((paramInt1 == 5) && ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 3))) {
+                return true;
               }
-            } while (paramInt2 != 5);
-            return true;
-            if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
-              break;
             }
-          } while (paramInt2 != 5);
-          return true;
-          if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 4)) {
-            break;
+            else if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 3)) {
+              return true;
+            }
           }
-        } while (paramInt2 != 5);
-        return true;
-        if ((paramInt2 == 0) || (paramInt2 == 1)) {
-          break;
+          else if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 4) || (paramInt2 == 5)) {
+            return true;
+          }
         }
-      } while (paramInt2 != 3);
-      return true;
-      if ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 2)) {
-        break;
+        else if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4) || (paramInt2 == 5)) {
+          return true;
+        }
       }
-    } while (paramInt2 != 3);
+      else
+      {
+        if ((paramInt2 == 0) || (paramInt2 == 3) || (paramInt2 == 4)) {
+          break label145;
+        }
+        if (paramInt2 == 5) {
+          return true;
+        }
+      }
+      return false;
+    }
+    label145:
     return true;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561655, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372341));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377606));
+    this.b = ((LinearLayout)LayoutInflater.from(this.a).inflate(2131628219, null));
+    this.c = ((ProgressBar)this.b.findViewById(2131440737));
+    this.d = ((TextView)this.b.findViewById(2131447062));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
-    c(0);
+    super.addView(this.b, localLayoutParams);
+    a(0);
   }
   
-  private boolean c(int paramInt)
+  public boolean checkState(int paramInt)
   {
-    if (!a(this.jdField_a_of_type_Int, paramInt)) {
-      return false;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.e);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    }
+    return a(this.e, paramInt);
   }
   
-  public int a()
+  public int getState()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
-  public boolean a(int paramInt)
+  public boolean setState(int paramInt)
   {
-    return c(paramInt);
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return a(this.jdField_a_of_type_Int, paramInt);
+    return a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

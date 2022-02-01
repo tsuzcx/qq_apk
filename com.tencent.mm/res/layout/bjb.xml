@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/c6i" android:background="@drawable/akb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/eva" android:paddingLeft="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bec" android:background="@drawable/ajw" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@drawable/bop" android:layout_centerVertical="true" android:rotation="90.0" app:iconColor="@color/az" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/kpr" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_toRightOf="@id/bec" android:layout_centerVertical="true" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicator="@color/BW_100_Alpha_0_9" app:tabIndicatorColor="@color/BW_100_Alpha_0_9" app:tabIndicatorFullWidth="true" app:tabIndicatorHeight="2.0dip" app:tabMode="e_s" app:tabPadding="0.0dip" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/BW_100_Alpha_0_9" app:tabTextAppearance="@style/r7" app:tabTextColor="@color/BW_100_Alpha_0_5" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j51" android:padding="@dimen/cp" android:visibility="invisible" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:src="@raw/icons_outlined_search" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/az" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/lv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/eva" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/d7o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/eva">
+        <RelativeLayout android:id="@id/e35" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@id/d7i" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="@dimen/d0">
+                <LinearLayout android:gravity="center" android:id="@id/h_2" android:background="@drawable/a8t" android:layout_width="wrap_content" android:layout_height="@dimen/cr" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:id="@id/h9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h21" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:id="@id/h_4" android:background="@drawable/a8t" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/df">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/h9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h24" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:id="@id/h9y" android:background="@drawable/a8t" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/df">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/h9s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h22" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:id="@id/h_3" android:background="@drawable/a8t" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/df">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/h9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h23" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/d7i">
+                <com.tencent.mm.plugin.mv.ui.view.MusicMvTabMachineFragment android:id="@id/hr2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.plugin.mv.ui.view.MusicMvTabMyLikeFragment android:id="@id/hr4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.plugin.mv.ui.view.MusicMvTabMyPostFragment android:id="@id/hr5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.plugin.mv.ui.view.MusicMvTabMyFavFragment android:id="@id/hr3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </FrameLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/j6x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:background="@color/a8" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+                <com.tencent.mm.plugin.mv.ui.view.FTSSearchNoActionBarView android:layout_gravity="center" android:id="@id/j7e" android:layout_width="fill_parent" android:layout_height="@dimen/d1" />
+            </FrameLayout>
+            <RelativeLayout android:background="@color/a8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mm.plugin.mv.ui.view.MusicMvTabSearchFragment android:id="@id/hr6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/hgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/iht" style="@style/zo" />
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+                    <ProgressBar android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ak1" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

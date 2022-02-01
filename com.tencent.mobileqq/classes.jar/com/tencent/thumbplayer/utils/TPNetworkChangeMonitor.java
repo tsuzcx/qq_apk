@@ -8,6 +8,9 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.text.TextUtils;
 import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
@@ -30,17 +33,12 @@ public class TPNetworkChangeMonitor
   private static final String TAG = "TPNetworkChangeMonitor";
   private static final String UNKNOWN_STR = "unknown";
   private static int lastNetStatus = mNetStatus;
-  private static String mDetailNetworkType;
+  private static String mDetailNetworkType = "unknown";
   private static String mLastDetailNetType;
-  private static int mNetStatus = 0;
+  private static int mNetStatus;
   private static int mobileNetSubType;
   private ArrayList<TPNetworkChangeMonitor.OnNetStatusChangeListener> mListeners = null;
-  
-  static
-  {
-    mDetailNetworkType = "unknown";
-    mobileNetSubType = 0;
-  }
+  private HandlerThread mNetworkChangeInformThread;
   
   private TPNetworkChangeMonitor()
   {
@@ -51,7 +49,30 @@ public class TPNetworkChangeMonitor
   
   private void dumpNetworkInfo()
   {
-    TPLogUtil.d("TPNetworkChangeMonitor", "-->updateNetStatus(), mNetStatus=" + mNetStatus + "[wifi: " + 2 + ", mobile: " + 3 + "], lastNetStatus=" + lastNetStatus + ", mDetailNetworkType=" + mDetailNetworkType + ", mobileNetSubType=" + mobileNetSubType + "[2G:" + 2 + " 3G:" + 3 + " 4G:" + 4 + "], currentDetailNetType=" + mDetailNetworkType + ", lastDetailNetType=" + mLastDetailNetType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->updateNetStatus(), mNetStatus=");
+    localStringBuilder.append(mNetStatus);
+    localStringBuilder.append("[wifi: ");
+    localStringBuilder.append(2);
+    localStringBuilder.append(", mobile: ");
+    localStringBuilder.append(3);
+    localStringBuilder.append("], lastNetStatus=");
+    localStringBuilder.append(lastNetStatus);
+    localStringBuilder.append(", mDetailNetworkType=");
+    localStringBuilder.append(mDetailNetworkType);
+    localStringBuilder.append(", mobileNetSubType=");
+    localStringBuilder.append(mobileNetSubType);
+    localStringBuilder.append("[2G:");
+    localStringBuilder.append(2);
+    localStringBuilder.append(" 3G:");
+    localStringBuilder.append(3);
+    localStringBuilder.append(" 4G:");
+    localStringBuilder.append(4);
+    localStringBuilder.append("], currentDetailNetType=");
+    localStringBuilder.append(mDetailNetworkType);
+    localStringBuilder.append(", lastDetailNetType=");
+    localStringBuilder.append(mLastDetailNetType);
+    TPLogUtil.d("TPNetworkChangeMonitor", localStringBuilder.toString());
   }
   
   public static int getDetailNetSubType()
@@ -66,70 +87,82 @@ public class TPNetworkChangeMonitor
   
   private String getDetailNetworkType(NetworkInfo paramNetworkInfo)
   {
-    Object localObject = null;
-    if (paramNetworkInfo != null) {}
-    for (String str = paramNetworkInfo.getTypeName();; str = null)
+    Object localObject2 = null;
+    String str;
+    if (paramNetworkInfo != null) {
+      str = paramNetworkInfo.getTypeName();
+    } else {
+      str = null;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getDetailNetworkType, typeName: ");
+    ((StringBuilder)localObject1).append(str);
+    TPLogUtil.d("TPNetworkChangeMonitor", ((StringBuilder)localObject1).toString());
+    localObject1 = "wifi";
+    if (str != null)
     {
-      TPLogUtil.d("TPNetworkChangeMonitor", "getDetailNetworkType, typeName: " + str);
-      if (str == null) {
-        break label247;
-      }
       if (str.toLowerCase(Locale.getDefault()).equals("wifi")) {
-        break label244;
+        return localObject1;
       }
       str = paramNetworkInfo.getExtraInfo();
-      paramNetworkInfo = localObject;
+      paramNetworkInfo = localObject2;
       if (str != null) {
         paramNetworkInfo = str.toLowerCase(Locale.getDefault());
       }
-      if (paramNetworkInfo == null) {
-        break label247;
+      str = "ctnet";
+      if (paramNetworkInfo != null)
+      {
+        if (paramNetworkInfo.startsWith("cmwap")) {
+          return "cmwap";
+        }
+        if ((!paramNetworkInfo.startsWith("cmnet")) && (!paramNetworkInfo.startsWith("epc.tmobile.com")))
+        {
+          if (paramNetworkInfo.startsWith("uniwap")) {
+            return "uniwap";
+          }
+          if (paramNetworkInfo.startsWith("uninet")) {
+            return "uninet";
+          }
+          if (paramNetworkInfo.startsWith("wap")) {
+            return "wap";
+          }
+          if (paramNetworkInfo.startsWith("net")) {
+            return "net";
+          }
+          if (paramNetworkInfo.startsWith("ctwap")) {
+            return "ctwap";
+          }
+          if (paramNetworkInfo.startsWith("ctnet")) {
+            paramNetworkInfo = str;
+          }
+          for (;;)
+          {
+            return paramNetworkInfo;
+            if (paramNetworkInfo.startsWith("3gwap")) {
+              return "3gwap";
+            }
+            if (paramNetworkInfo.startsWith("3gnet")) {
+              return "3gnet";
+            }
+            if (!paramNetworkInfo.startsWith("#777")) {
+              break;
+            }
+            localObject1 = Proxy.getDefaultHost();
+            paramNetworkInfo = str;
+            if (localObject1 != null)
+            {
+              paramNetworkInfo = str;
+              if (((String)localObject1).length() > 0) {
+                paramNetworkInfo = "ctwap";
+              }
+            }
+          }
+        }
+        return "cmnet";
       }
-      if (!paramNetworkInfo.startsWith("cmwap")) {
-        break;
-      }
-      return "cmwap";
     }
-    if ((paramNetworkInfo.startsWith("cmnet")) || (paramNetworkInfo.startsWith("epc.tmobile.com"))) {
-      return "cmnet";
-    }
-    if (paramNetworkInfo.startsWith("uniwap")) {
-      return "uniwap";
-    }
-    if (paramNetworkInfo.startsWith("uninet")) {
-      return "uninet";
-    }
-    if (paramNetworkInfo.startsWith("wap")) {
-      return "wap";
-    }
-    if (paramNetworkInfo.startsWith("net")) {
-      return "net";
-    }
-    if (paramNetworkInfo.startsWith("ctwap")) {
-      return "ctwap";
-    }
-    if (paramNetworkInfo.startsWith("ctnet")) {
-      return "ctnet";
-    }
-    if (paramNetworkInfo.startsWith("3gwap")) {
-      return "3gwap";
-    }
-    if (paramNetworkInfo.startsWith("3gnet")) {
-      return "3gnet";
-    }
-    if (paramNetworkInfo.startsWith("#777"))
-    {
-      paramNetworkInfo = Proxy.getDefaultHost();
-      if ((paramNetworkInfo != null) && (paramNetworkInfo.length() > 0)) {
-        return "ctwap";
-      }
-      return "ctnet";
-    }
-    return "unknown";
-    label244:
-    return "wifi";
-    label247:
-    return "unknown";
+    localObject1 = "unknown";
+    return localObject1;
   }
   
   public static TPNetworkChangeMonitor getInstance()
@@ -140,35 +173,24 @@ public class TPNetworkChangeMonitor
   @RequiresApi(api=3)
   private static int getMobileNetworkSubType(NetworkInfo paramNetworkInfo)
   {
-    int j = 0;
-    int i = j;
-    if (paramNetworkInfo != null) {
-      i = j;
-    }
+    int i = 3;
+    if (paramNetworkInfo != null) {}
     switch (paramNetworkInfo.getSubtype())
     {
     default: 
-      i = 3;
-    case 0: 
-      return i;
+      return 3;
+    case 13: 
+      return 4;
     case 1: 
     case 2: 
     case 4: 
     case 7: 
     case 11: 
       return 2;
-    case 3: 
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 14: 
-    case 15: 
-      return 3;
+    case 0: 
+      i = 0;
     }
-    return 4;
+    return i;
   }
   
   public static int getNetworkStatus()
@@ -178,32 +200,31 @@ public class TPNetworkChangeMonitor
   
   public static String getSimpleNetTypeDesc()
   {
-    String str2 = "unknown";
-    String str1 = str2;
     if (!TextUtils.isEmpty(mDetailNetworkType))
     {
-      if (!TextUtils.equals(mDetailNetworkType, "wifi")) {
-        break label30;
+      if (TextUtils.equals(mDetailNetworkType, "wifi")) {
+        return "wifi";
       }
-      str1 = "wifi";
-    }
-    label30:
-    do
-    {
-      do
+      if (!"unknown".equals(mDetailNetworkType))
       {
-        return str1;
-        str1 = str2;
-      } while ("unknown".equals(mDetailNetworkType));
-      if (mobileNetSubType == 2) {
-        return "2G";
+        int i = mobileNetSubType;
+        if (i == 2) {
+          return "2G";
+        }
+        if (i == 3) {
+          return "3G";
+        }
+        if (i == 4) {
+          return "4G";
+        }
       }
-      if (mobileNetSubType == 3) {
-        return "3G";
-      }
-      str1 = str2;
-    } while (mobileNetSubType != 4);
-    return "4G";
+    }
+    return "unknown";
+  }
+  
+  private static boolean isMainThread()
+  {
+    return Looper.getMainLooper() == Looper.myLooper();
   }
   
   public static boolean isMobileNetwork()
@@ -243,49 +264,64 @@ public class TPNetworkChangeMonitor
   
   private void notifyIfNetChanged()
   {
-    boolean bool = false;
-    for (;;)
+    try
     {
-      try
-      {
-        if ((mNetStatus != lastNetStatus) || (!TextUtils.equals(mDetailNetworkType, mLastDetailNetType))) {
-          break label180;
-        }
-        TPLogUtil.i("TPNetworkChangeMonitor", "notifyIfNetChanged, isNetChanged: " + bool + ",  mListeners:  " + this.mListeners);
-        TPLogUtil.i("TPNetworkChangeMonitor", "onNetworkStatusChanged oldNetStatus: " + lastNetStatus + ", netStatus: " + mNetStatus + ", mobileNetSubType" + mobileNetSubType);
-        if (!bool) {
-          break label177;
-        }
-        Iterator localIterator = this.mListeners.iterator();
-        if (localIterator.hasNext())
-        {
-          ((TPNetworkChangeMonitor.OnNetStatusChangeListener)localIterator.next()).onStatusChanged(lastNetStatus, mNetStatus, 0, mobileNetSubType);
-          continue;
-        }
-        lastNetStatus = mNetStatus;
+      if (mNetStatus != lastNetStatus) {
+        break label213;
       }
-      finally {}
+      if (TextUtils.equals(mDetailNetworkType, mLastDetailNetType)) {
+        break label208;
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        label208:
+        boolean bool = false;
+        continue;
+        label213:
+        bool = true;
+      }
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("notifyIfNetChanged, isNetChanged: ");
+    ((StringBuilder)localObject1).append(bool);
+    ((StringBuilder)localObject1).append(",  mListeners:  ");
+    ((StringBuilder)localObject1).append(this.mListeners);
+    TPLogUtil.i("TPNetworkChangeMonitor", ((StringBuilder)localObject1).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onNetworkStatusChanged oldNetStatus: ");
+    ((StringBuilder)localObject1).append(lastNetStatus);
+    ((StringBuilder)localObject1).append(", netStatus: ");
+    ((StringBuilder)localObject1).append(mNetStatus);
+    ((StringBuilder)localObject1).append(", mobileNetSubType");
+    ((StringBuilder)localObject1).append(mobileNetSubType);
+    TPLogUtil.i("TPNetworkChangeMonitor", ((StringBuilder)localObject1).toString());
+    if (bool)
+    {
+      localObject1 = this.mListeners.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((TPNetworkChangeMonitor.OnNetStatusChangeListener)((Iterator)localObject1).next()).onStatusChanged(lastNetStatus, mNetStatus, 0, mobileNetSubType);
+      }
+      lastNetStatus = mNetStatus;
       mLastDetailNetType = mDetailNetworkType;
-      label177:
-      return;
-      label180:
-      bool = true;
     }
   }
   
-  private void registerReceiver(Context paramContext)
+  private void registerReceiver(Context paramContext, Handler paramHandler)
   {
     if (paramContext != null) {}
     try
     {
-      paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-      return;
+      paramContext.registerReceiver(this, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"), null, paramHandler);
     }
-    finally
-    {
-      paramContext = finally;
-      throw paramContext;
-    }
+    finally {}
   }
   
   private void unregisterReceiver(Context paramContext)
@@ -293,17 +329,25 @@ public class TPNetworkChangeMonitor
     if (paramContext != null) {}
     try
     {
-      paramContext.unregisterReceiver(this);
-      return;
+      try
+      {
+        paramContext.unregisterReceiver(this);
+      }
+      finally
+      {
+        break label29;
+      }
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        TPLogUtil.e("TPNetworkChangeMonitor", "unregister receiver may throw illegal state exception ...");
-      }
+      label18:
+      break label18;
     }
-    finally {}
+    TPLogUtil.e("TPNetworkChangeMonitor", "unregister receiver may throw illegal state exception ...");
+    break label33;
+    label29:
+    throw paramContext;
+    label33:
   }
   
   @SuppressLint({"MissingPermission"})
@@ -311,77 +355,81 @@ public class TPNetworkChangeMonitor
   private void updateNetStatus(Context paramContext)
   {
     if (paramContext != null) {}
-    try
+    for (;;)
     {
-      paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (paramContext != null)
+      try
       {
-        NetworkInfo localNetworkInfo1 = paramContext.getNetworkInfo(0);
-        NetworkInfo localNetworkInfo2 = paramContext.getNetworkInfo(1);
-        paramContext = paramContext.getActiveNetworkInfo();
-        if (paramContext == null)
+        paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+        if (paramContext != null)
         {
-          if (isNetworkActive(localNetworkInfo1))
+          NetworkInfo localNetworkInfo1 = paramContext.getNetworkInfo(0);
+          NetworkInfo localNetworkInfo2 = paramContext.getNetworkInfo(1);
+          paramContext = paramContext.getActiveNetworkInfo();
+          if (paramContext == null)
           {
-            mNetStatus = 3;
-            paramContext = localNetworkInfo1;
-          }
-          for (;;)
-          {
-            switch (mNetStatus)
+            if (isNetworkActive(localNetworkInfo1))
             {
-            case 1: 
-              label55:
-              label84:
-              mDetailNetworkType = getDetailNetworkType(paramContext);
-              if (lastNetStatus == 0)
-              {
-                lastNetStatus = mNetStatus;
-                mLastDetailNetType = mDetailNetworkType;
-              }
-              dumpNetworkInfo();
-              notifyIfNetChanged();
-              return;
-              if (isNetworkActive(localNetworkInfo2))
-              {
-                mNetStatus = 2;
-                paramContext = localNetworkInfo2;
-              }
-              else
-              {
-                mNetStatus = 1;
-              }
-              break;
+              mNetStatus = 3;
+              paramContext = localNetworkInfo1;
+            }
+            else if (isNetworkActive(localNetworkInfo2))
+            {
+              mNetStatus = 2;
+              paramContext = localNetworkInfo2;
+            }
+            else
+            {
+              mNetStatus = 1;
             }
           }
-        }
-        if (isNetworkActive(paramContext)) {
-          if (!isNetworkActive(localNetworkInfo1)) {
-            break label210;
+          else if (isNetworkActive(paramContext))
+          {
+            if (!isNetworkActive(localNetworkInfo1)) {
+              break label204;
+            }
+            i = 3;
+            mNetStatus = i;
           }
+          else
+          {
+            mNetStatus = 1;
+          }
+          i = mNetStatus;
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i == 3) {
+                mobileNetSubType = getMobileNetworkSubType(paramContext);
+              }
+            }
+            else {
+              mobileNetSubType = 1;
+            }
+          }
+          else {
+            mobileNetSubType = 0;
+          }
+          mDetailNetworkType = getDetailNetworkType(paramContext);
+          if (lastNetStatus == 0)
+          {
+            lastNetStatus = mNetStatus;
+            mLastDetailNetType = mDetailNetworkType;
+          }
+          dumpNetworkInfo();
+          notifyIfNetChanged();
         }
-      }
-      label210:
-      for (int i = 3;; i = 2)
-      {
-        mNetStatus = i;
-        break label55;
-        mNetStatus = 1;
-        break label55;
-        mobileNetSubType = 0;
-        break label84;
-        mobileNetSubType = 1;
-        break label84;
-        mobileNetSubType = getMobileNetworkSubType(paramContext);
-        break label84;
-        break label84;
         return;
-        paramContext = null;
-        break;
       }
-      return;
+      catch (Exception paramContext)
+      {
+        return;
+      }
+      paramContext = null;
+      continue;
+      label204:
+      int i = 2;
     }
-    catch (Exception paramContext) {}
   }
   
   public void addOnNetStatusChangeListener(TPNetworkChangeMonitor.OnNetStatusChangeListener paramOnNetStatusChangeListener)
@@ -391,7 +439,12 @@ public class TPNetworkChangeMonitor
       if ((this.mListeners != null) && (!this.mListeners.contains(paramOnNetStatusChangeListener)))
       {
         this.mListeners.add(paramOnNetStatusChangeListener);
-        TPLogUtil.d("TPNetworkChangeMonitor", "add onNetStatus change listener: " + paramOnNetStatusChangeListener + ", mListeners: " + this.mListeners.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("add onNetStatus change listener: ");
+        localStringBuilder.append(paramOnNetStatusChangeListener);
+        localStringBuilder.append(", mListeners: ");
+        localStringBuilder.append(this.mListeners.size());
+        TPLogUtil.d("TPNetworkChangeMonitor", localStringBuilder.toString());
       }
       return;
     }
@@ -404,9 +457,19 @@ public class TPNetworkChangeMonitor
   
   public void init(Context paramContext)
   {
-    TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
-    registerReceiver(paramContext);
-    updateNetStatus(paramContext);
+    try
+    {
+      TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
+      if (this.mNetworkChangeInformThread == null)
+      {
+        this.mNetworkChangeInformThread = new HandlerThread("TP_NetInform");
+        this.mNetworkChangeInformThread.start();
+      }
+      registerReceiver(paramContext, new Handler(this.mNetworkChangeInformThread.getLooper()));
+      updateNetStatus(paramContext);
+      return;
+    }
+    finally {}
   }
   
   public boolean isCurrentUnicomWap()
@@ -427,14 +490,37 @@ public class TPNetworkChangeMonitor
   @RequiresApi(api=3)
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    TPLogUtil.d("TPNetworkChangeMonitor", "onReceive broadcast action and update net status ...");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceive broadcast action and update net status,onReceive broadcast in ");
+    if (isMainThread()) {
+      paramIntent = "main";
+    } else {
+      paramIntent = "work";
+    }
+    localStringBuilder.append(paramIntent);
+    localStringBuilder.append(" thread.");
+    TPLogUtil.d("TPNetworkChangeMonitor", localStringBuilder.toString());
     updateNetStatus(paramContext);
   }
   
   public void release(Context paramContext)
   {
-    TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
-    unregisterReceiver(paramContext);
+    try
+    {
+      TPCommonUtils.requireNotNull(paramContext, "context can not be null!");
+      unregisterReceiver(paramContext);
+      if (this.mNetworkChangeInformThread != null)
+      {
+        this.mNetworkChangeInformThread.quit();
+        this.mNetworkChangeInformThread = null;
+      }
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
   }
   
   public void removeOnNetStatusChangeListener(TPNetworkChangeMonitor.OnNetStatusChangeListener paramOnNetStatusChangeListener)
@@ -444,7 +530,12 @@ public class TPNetworkChangeMonitor
       if (this.mListeners != null)
       {
         this.mListeners.remove(paramOnNetStatusChangeListener);
-        TPLogUtil.d("TPNetworkChangeMonitor", "remove netStatusChangeListener, listener: " + paramOnNetStatusChangeListener + ", mListeners: " + this.mListeners.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("remove netStatusChangeListener, listener: ");
+        localStringBuilder.append(paramOnNetStatusChangeListener);
+        localStringBuilder.append(", mListeners: ");
+        localStringBuilder.append(this.mListeners.size());
+        TPLogUtil.d("TPNetworkChangeMonitor", localStringBuilder.toString());
       }
       return;
     }
@@ -457,7 +548,7 @@ public class TPNetworkChangeMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPNetworkChangeMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,14 @@ public final class QSecPushSeriveMsg$QSecPushSeriveBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82 }, new String[] { "ver", "platform", "qsecJavaVer", "qsecNativeVer", "pluginId", "pluginCmd", "pluginVer", "canCache", "extraInfo", "packageName" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, "" }, QSecPushSeriveBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74, 82 }, new String[] { "ver", "platform", "qsecJavaVer", "qsecNativeVer", "pluginId", "pluginCmd", "pluginVer", "canCache", "extraInfo", "packageName" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro, "" }, QSecPushSeriveBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.QSecPushSeriveMsg.QSecPushSeriveBody
  * JD-Core Version:    0.7.0.1
  */

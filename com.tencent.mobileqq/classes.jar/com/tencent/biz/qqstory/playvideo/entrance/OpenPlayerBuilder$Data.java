@@ -55,36 +55,35 @@ public class OpenPlayerBuilder$Data
     //   28: aload_1
     //   29: aload_3
     //   30: invokevirtual 103	java/io/ObjectOutputStream:write	([B)V
-    //   33: aload_2
-    //   34: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   37: return
-    //   38: astore_1
-    //   39: aload_2
-    //   40: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: astore_1
-    //   45: aload_2
-    //   46: invokevirtual 80	android/os/Parcel:recycle	()V
-    //   49: aload_1
-    //   50: athrow
-    //   51: astore_1
-    //   52: return
+    //   33: goto +10 -> 43
+    //   36: astore_1
+    //   37: aload_2
+    //   38: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   41: aload_1
+    //   42: athrow
+    //   43: aload_2
+    //   44: invokevirtual 80	android/os/Parcel:recycle	()V
+    //   47: return
+    //   48: astore_1
+    //   49: return
+    //   50: astore_1
+    //   51: goto -8 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	53	0	this	Data
-    //   0	53	1	paramObjectOutputStream	java.io.ObjectOutputStream
-    //   7	39	2	localParcel	Parcel
+    //   0	54	0	this	Data
+    //   0	54	1	paramObjectOutputStream	java.io.ObjectOutputStream
+    //   7	37	2	localParcel	Parcel
     //   21	9	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   22	33	38	java/io/IOException
-    //   22	33	44	finally
-    //   0	4	51	java/io/IOException
+    //   22	33	36	finally
+    //   0	4	48	java/io/IOException
+    //   22	33	50	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data
  * JD-Core Version:    0.7.0.1
  */

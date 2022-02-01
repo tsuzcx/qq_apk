@@ -1,13 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import kotlin.Metadata;
 
-final class a$a
-  extends p
-{
-  public static final int CTRL_INDEX = 505;
-  public static final String NAME = "onWebviewFinishLoad";
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class a$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

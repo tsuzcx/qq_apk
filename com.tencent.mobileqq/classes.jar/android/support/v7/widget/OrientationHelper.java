@@ -22,14 +22,14 @@ public abstract class OrientationHelper
   
   public static OrientationHelper createOrientationHelper(RecyclerView.LayoutManager paramLayoutManager, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
+      if (paramInt == 1) {
+        return createVerticalHelper(paramLayoutManager);
+      }
       throw new IllegalArgumentException("invalid orientation");
-    case 0: 
-      return createHorizontalHelper(paramLayoutManager);
     }
-    return createVerticalHelper(paramLayoutManager);
+    return createHorizontalHelper(paramLayoutManager);
   }
   
   public static OrientationHelper createVerticalHelper(RecyclerView.LayoutManager paramLayoutManager)

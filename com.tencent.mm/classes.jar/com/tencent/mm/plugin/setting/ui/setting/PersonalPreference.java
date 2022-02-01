@@ -9,108 +9,111 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PersonalPreference
   extends Preference
 {
-  private String cDs;
-  private String dCJ;
-  private TextView ejj;
-  Bitmap frG;
-  ImageView mDc;
-  private TextView qFY;
-  int qFZ;
-  String qGa;
-  private View.OnClickListener qGb;
+  ImageView Aop;
+  int Ppk;
+  private View.OnClickListener Ppl;
+  String avatar;
+  private String hVP;
+  private String kDc;
+  private TextView lDe;
+  Bitmap orY;
+  private TextView userTV;
   private String username;
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.ejj = null;
-    this.qFY = null;
-    this.mDc = null;
-    this.frG = null;
-    this.qFZ = -1;
-    this.qGa = null;
+    this.lDe = null;
+    this.userTV = null;
+    this.Aop = null;
+    this.orY = null;
+    this.Ppk = -1;
+    this.avatar = null;
   }
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(126972);
-    this.ejj = null;
-    this.qFY = null;
-    this.mDc = null;
-    this.frG = null;
-    this.qFZ = -1;
-    this.qGa = null;
-    setLayoutResource(2130970179);
-    setWidgetLayoutResource(2130970254);
-    AppMethodBeat.o(126972);
+    AppMethodBeat.i(73903);
+    this.lDe = null;
+    this.userTV = null;
+    this.Aop = null;
+    this.orY = null;
+    this.Ppk = -1;
+    this.avatar = null;
+    setLayoutResource(b.g.mm_preference);
+    aBp(b.g.mm_preference_submenu);
+    AppMethodBeat.o(73903);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(126974);
-    if (this.mDc == null) {
-      this.mDc = ((ImageView)paramView.findViewById(2131822243));
+    AppMethodBeat.i(73905);
+    if (this.Aop == null) {
+      this.Aop = ((ImageView)paramView.findViewById(b.f.image_iv));
     }
-    if (this.frG != null)
+    if (this.orY != null)
     {
-      this.mDc.setImageBitmap(this.frG);
-      this.mDc.setOnClickListener(this.qGb);
-      if ((this.ejj != null) && (this.cDs != null)) {
-        this.ejj.setText(j.b(this.mContext, this.cDs, this.ejj.getTextSize()));
+      this.Aop.setImageBitmap(this.orY);
+      this.Aop.setOnClickListener(this.Ppl);
+      if ((this.lDe != null) && (this.hVP != null)) {
+        this.lDe.setText(p.b(this.mContext, this.hVP, this.lDe.getTextSize()));
       }
-      if (this.qFY != null) {
-        if (!bo.isNullOrNil(this.dCJ)) {
-          break label230;
+      if (this.userTV != null) {
+        if (!Util.isNullOrNil(this.kDc)) {
+          break label232;
         }
       }
     }
-    label230:
-    for (String str = this.username;; str = this.dCJ)
+    label232:
+    for (String str = this.username;; str = this.kDc)
     {
-      if ((bo.isNullOrNil(this.dCJ)) && (ad.ari(this.username))) {
-        this.qFY.setVisibility(8);
+      if ((Util.isNullOrNil(this.kDc)) && (au.bxb(this.username))) {
+        this.userTV.setVisibility(8);
       }
-      this.qFY.setText(this.mContext.getString(2131296950) + str);
+      this.userTV.setText(this.mContext.getString(b.i.app_field_username) + str);
       super.onBindView(paramView);
-      AppMethodBeat.o(126974);
+      AppMethodBeat.o(73905);
       return;
-      if (this.qFZ > 0)
+      if (this.Ppk > 0)
       {
-        this.mDc.setImageResource(this.qFZ);
+        this.Aop.setImageResource(this.Ppk);
         break;
       }
-      if (this.qGa == null) {
+      if (this.avatar == null) {
         break;
       }
-      a.b.c(this.mDc, this.qGa);
+      a.b.g(this.Aop, this.avatar);
       break;
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(126973);
+    AppMethodBeat.i(73904);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(b.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970211, localViewGroup);
-    AppMethodBeat.o(126973);
+    View.inflate(this.mContext, b.g.mm_preference_content_personal, localViewGroup);
+    AppMethodBeat.o(73904);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PersonalPreference
  * JD-Core Version:    0.7.0.1
  */

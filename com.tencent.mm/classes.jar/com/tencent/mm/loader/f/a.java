@@ -1,9 +1,13 @@
 package com.tencent.mm.loader.f;
 
-public abstract interface a {}
+import java.util.concurrent.Executor;
+
+public abstract interface a
+  extends Executor
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.f.a
  * JD-Core Version:    0.7.0.1
  */

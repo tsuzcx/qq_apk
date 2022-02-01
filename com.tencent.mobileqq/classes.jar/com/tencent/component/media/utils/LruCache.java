@@ -19,20 +19,27 @@ public class LruCache<K, V>
   
   public LruCache(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxSize <= 0");
+    if (paramInt > 0)
+    {
+      this.maxSize = paramInt;
+      this.map = new LinkedHashMap(0, 0.75F, true);
+      return;
     }
-    this.maxSize = paramInt;
-    this.map = new LinkedHashMap(0, 0.75F, true);
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
   private int safeSizeOf(K paramK, V paramV)
   {
     int i = sizeOf(paramK, paramV);
-    if (i < 0) {
-      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
+    if (i >= 0) {
+      return i;
     }
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Negative size: ");
+    localStringBuilder.append(paramK);
+    localStringBuilder.append("=");
+    localStringBuilder.append(paramV);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   protected V create(K paramK)
@@ -77,45 +84,42 @@ public class LruCache<K, V>
   
   public final V get(K paramK)
   {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
-    }
-    Object localObject1;
-    try
-    {
-      localObject1 = this.map.get(paramK);
-      if (localObject1 != null)
+    if (paramK != null) {
+      try
       {
-        this.hitCount += 1;
-        return localObject1;
-      }
-      this.missCount += 1;
-      localObject1 = create(paramK);
-      if (localObject1 == null) {
-        return null;
-      }
-    }
-    finally {}
-    try
-    {
-      this.createCount += 1;
-      Object localObject2 = this.map.put(paramK, localObject1);
-      if (localObject2 != null) {
-        this.map.put(paramK, localObject2);
-      }
-      for (;;)
-      {
-        if (localObject2 == null) {
-          break;
+        Object localObject1 = this.map.get(paramK);
+        if (localObject1 != null)
+        {
+          this.hitCount += 1;
+          return localObject1;
         }
-        entryRemoved(false, paramK, localObject1, localObject2);
-        return localObject2;
-        this.size += safeSizeOf(paramK, localObject1);
+        this.missCount += 1;
+        localObject1 = create(paramK);
+        if (localObject1 == null) {
+          return null;
+        }
+        try
+        {
+          this.createCount += 1;
+          Object localObject2 = this.map.put(paramK, localObject1);
+          if (localObject2 != null) {
+            this.map.put(paramK, localObject2);
+          } else {
+            this.size += safeSizeOf(paramK, localObject1);
+          }
+          if (localObject2 != null)
+          {
+            entryRemoved(false, paramK, localObject1, localObject2);
+            return localObject2;
+          }
+          trimToSize(this.maxSize);
+          return localObject1;
+        }
+        finally {}
+        throw new NullPointerException("key == null");
       }
-      trimToSize(this.maxSize);
+      finally {}
     }
-    finally {}
-    return localObject1;
   }
   
   public final int hitCount()
@@ -162,24 +166,24 @@ public class LruCache<K, V>
   
   public final V put(K paramK, V paramV)
   {
-    if ((paramK == null) || (paramV == null)) {
-      throw new NullPointerException("key == null || value == null");
-    }
-    try
-    {
-      this.putCount += 1;
-      this.size += safeSizeOf(paramK, paramV);
-      Object localObject = this.map.put(paramK, paramV);
-      if (localObject != null) {
-        this.size -= safeSizeOf(paramK, localObject);
+    if ((paramK != null) && (paramV != null)) {
+      try
+      {
+        this.putCount += 1;
+        this.size += safeSizeOf(paramK, paramV);
+        Object localObject = this.map.put(paramK, paramV);
+        if (localObject != null) {
+          this.size -= safeSizeOf(paramK, localObject);
+        }
+        if (localObject != null) {
+          entryRemoved(false, paramK, localObject, paramV);
+        }
+        trimToSize(this.maxSize);
+        return localObject;
       }
-      if (localObject != null) {
-        entryRemoved(false, paramK, localObject, paramV);
-      }
-      trimToSize(this.maxSize);
-      return localObject;
+      finally {}
     }
-    finally {}
+    throw new NullPointerException("key == null || value == null");
   }
   
   public final int putCount()
@@ -198,35 +202,35 @@ public class LruCache<K, V>
   
   public final V remove(K paramK)
   {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
-    }
-    try
-    {
-      Object localObject = this.map.remove(paramK);
-      if (localObject != null) {
-        this.size -= safeSizeOf(paramK, localObject);
+    if (paramK != null) {
+      try
+      {
+        Object localObject = this.map.remove(paramK);
+        if (localObject != null) {
+          this.size -= safeSizeOf(paramK, localObject);
+        }
+        if (localObject != null) {
+          entryRemoved(false, paramK, localObject, null);
+        }
+        return localObject;
       }
-      if (localObject != null) {
-        entryRemoved(false, paramK, localObject, null);
-      }
-      return localObject;
+      finally {}
     }
-    finally {}
+    throw new NullPointerException("key == null");
   }
   
   public void resize(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxSize <= 0");
+    if (paramInt > 0) {
+      try
+      {
+        this.maxSize = paramInt;
+        trimToSize(paramInt);
+        return;
+      }
+      finally {}
     }
-    try
-    {
-      this.maxSize = paramInt;
-      trimToSize(paramInt);
-      return;
-    }
-    finally {}
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
   public final int size()
@@ -264,17 +268,21 @@ public class LruCache<K, V>
   
   public final String toString()
   {
-    int i = 0;
-    try
+    for (;;)
     {
-      int j = this.hitCount + this.missCount;
-      if (j != 0) {
-        i = this.hitCount * 100 / j;
+      try
+      {
+        i = this.hitCount + this.missCount;
+        if (i != 0)
+        {
+          i = this.hitCount * 100 / i;
+          String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
+          return str;
+        }
       }
-      String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
-      return str;
+      finally {}
+      int i = 0;
     }
-    finally {}
   }
   
   public void trimToSize(int paramInt)
@@ -283,30 +291,37 @@ public class LruCache<K, V>
     {
       try
       {
-        if ((this.size < 0) || ((this.map.isEmpty()) && (this.size != 0)))
+        if ((this.size >= 0) && ((!this.map.isEmpty()) || (this.size == 0)))
+        {
+          if ((this.size > paramInt) && (!this.map.isEmpty()))
+          {
+            Object localObject3 = (Map.Entry)this.map.entrySet().iterator().next();
+            Object localObject1 = ((Map.Entry)localObject3).getKey();
+            localObject3 = ((Map.Entry)localObject3).getValue();
+            this.map.remove(localObject1);
+            this.size -= safeSizeOf(localObject1, localObject3);
+            this.evictionCount += 1;
+            entryRemoved(true, localObject1, localObject3, null);
+          }
+        }
+        else
         {
           this.map.clear();
           this.size = 0;
           return;
         }
-        if ((this.size <= paramInt) || (this.map.isEmpty())) {
-          return;
-        }
       }
       finally {}
-      Object localObject3 = (Map.Entry)this.map.entrySet().iterator().next();
-      Object localObject2 = ((Map.Entry)localObject3).getKey();
-      localObject3 = ((Map.Entry)localObject3).getValue();
-      this.map.remove(localObject2);
-      this.size -= safeSizeOf(localObject2, localObject3);
-      this.evictionCount += 1;
-      entryRemoved(true, localObject2, localObject3, null);
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.utils.LruCache
  * JD-Core Version:    0.7.0.1
  */

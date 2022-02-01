@@ -18,13 +18,14 @@ public final class oidb_cmd0x991$StockRsp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int64_user_stock", "int64_give_stock", "int64_midas_balance", "bytes_midas_json" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, StockRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int64_user_stock", "int64_give_stock", "int64_midas_balance", "bytes_midas_json" }, new Object[] { localLong, localLong, localLong, localByteStringMicro }, StockRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x991.oidb_cmd0x991.StockRsp
  * JD-Core Version:    0.7.0.1
  */

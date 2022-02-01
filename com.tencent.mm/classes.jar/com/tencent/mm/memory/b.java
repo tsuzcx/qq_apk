@@ -9,13 +9,13 @@ public final class b
   public b(int paramInt)
   {
     super(Integer.valueOf(paramInt));
-    AppMethodBeat.i(115354);
-    AppMethodBeat.o(115354);
+    AppMethodBeat.i(156400);
+    AppMethodBeat.o(156400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.b
  * JD-Core Version:    0.7.0.1
  */

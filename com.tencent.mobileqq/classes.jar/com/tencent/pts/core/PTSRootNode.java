@@ -27,15 +27,12 @@ public class PTSRootNode
   {
     if (paramInt == 0)
     {
-      localView = this.mDelegate.onCreateNativeView();
-      if (paramViewGroup == null) {
+      View localView = this.mDelegate.onCreateNativeView();
+      if (paramViewGroup == null)
+      {
         PTSLog.i(this.TAG, "[init], rootView is null.");
+        return;
       }
-    }
-    while (paramInt != 1)
-    {
-      View localView;
-      return;
       if (localView == null)
       {
         PTSLog.i(this.TAG, "[init], nativeRootView is null.");
@@ -44,24 +41,28 @@ public class PTSRootNode
       paramViewGroup.addView(localView, new ViewGroup.LayoutParams(-1, -1));
       return;
     }
-    this.mDelegate.setRootView(paramViewGroup);
+    if (paramInt == 1) {
+      this.mDelegate.setRootView(paramViewGroup);
+    }
   }
   
   private void initDelegate(PTSAppInstance paramPTSAppInstance, int paramInt)
   {
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       this.mDelegate = new PTSRootNodeRecyclerViewDelegate(paramPTSAppInstance);
-    }
-    while (paramInt != 1) {
       return;
     }
-    this.mDelegate = new PTSRootNodeItemViewDelegate(paramPTSAppInstance);
+    if (paramInt == 1) {
+      this.mDelegate = new PTSRootNodeItemViewDelegate(paramPTSAppInstance);
+    }
   }
   
   void addOnRecyclerViewScrollListener(RecyclerView.OnScrollListener paramOnScrollListener)
   {
-    if ((this.mDelegate instanceof PTSRootNodeRecyclerViewDelegate)) {
-      ((PTSRootNodeRecyclerViewDelegate)this.mDelegate).addOnScrollListener(paramOnScrollListener);
+    IPTSRootNodeDelegate localIPTSRootNodeDelegate = this.mDelegate;
+    if ((localIPTSRootNodeDelegate instanceof PTSRootNodeRecyclerViewDelegate)) {
+      ((PTSRootNodeRecyclerViewDelegate)localIPTSRootNodeDelegate).addOnScrollListener(paramOnScrollListener);
     }
   }
   
@@ -72,10 +73,16 @@ public class PTSRootNode
   
   public PTSNodeInfo getRootNodeInfo()
   {
-    if ((this.mDelegate instanceof PTSRootNodeItemViewDelegate)) {
-      return ((PTSRootNodeItemViewDelegate)this.mDelegate).getRootNodeInfo();
+    IPTSRootNodeDelegate localIPTSRootNodeDelegate = this.mDelegate;
+    if ((localIPTSRootNodeDelegate instanceof PTSRootNodeItemViewDelegate)) {
+      return ((PTSRootNodeItemViewDelegate)localIPTSRootNodeDelegate).getRootNodeInfo();
     }
     return null;
+  }
+  
+  public View getRootView()
+  {
+    return this.mDelegate.getRootView();
   }
   
   boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
@@ -110,7 +117,7 @@ public class PTSRootNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNode
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,7 @@
 package com.tencent.biz.qqcircle.widgets;
 
-import android.content.Context;
-import android.os.Vibrator;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.events.QCirclePushAnimationEvent;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import mqq.util.WeakReference;
-import tra;
-import yiw;
+import java.lang.ref.WeakReference;
 
 class QCircleRecommendImageView$LongPressTimerTask$1
   implements Runnable
@@ -21,27 +12,19 @@ class QCircleRecommendImageView$LongPressTimerTask$1
   {
     try
     {
-      QCircleRecommendImageView localQCircleRecommendImageView = (QCircleRecommendImageView)QCircleRecommendImageView.LongPressTimerTask.a(this.this$0).get();
-      if (localQCircleRecommendImageView != null)
-      {
-        if ((QCircleRecommendImageView.a(localQCircleRecommendImageView) != null) && (tra.a((FeedCloudMeta.StUser)QCircleRecommendImageView.a(localQCircleRecommendImageView).poster.get())))
-        {
-          QCircleRecommendImageView.h(localQCircleRecommendImageView);
-          return;
-        }
-        if (QCircleRecommendImageView.b(localQCircleRecommendImageView) < QCircleRecommendImageView.a())
-        {
-          QCircleRecommendImageView.c(localQCircleRecommendImageView);
-          QCircleRecommendImageView.d(localQCircleRecommendImageView);
-          QCircleRecommendImageView.b(localQCircleRecommendImageView, true);
-          FeedCloudMeta.StFeed localStFeed = localQCircleRecommendImageView.a();
-          if ((localStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-            yiw.a().a(new QCirclePushAnimationEvent(localStFeed.id.get(), QCircleRecommendImageView.e(localQCircleRecommendImageView), 3, QCircleRecommendImageView.f(localQCircleRecommendImageView)));
-          }
-          ((Vibrator)localQCircleRecommendImageView.getContext().getSystemService("vibrator")).vibrate(50L);
-          return;
-        }
+      QCircleRecommendImageView.LongPressTimerTask.a(this.this$0);
+      QCircleRecommendImageView localQCircleRecommendImageView = (QCircleRecommendImageView)QCircleRecommendImageView.LongPressTimerTask.b(this.this$0).get();
+      if (localQCircleRecommendImageView == null) {
+        return;
       }
+      QCircleRecommendImageView.LongPressTimerTask.a(this.this$0, localQCircleRecommendImageView);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("QCircleRecommend_", 1, localOutOfMemoryError.getMessage());
+      localOutOfMemoryError.printStackTrace();
+      return;
     }
     catch (Exception localException)
     {
@@ -52,7 +35,7 @@ class QCircleRecommendImageView$LongPressTimerTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.LongPressTimerTask.1
  * JD-Core Version:    0.7.0.1
  */

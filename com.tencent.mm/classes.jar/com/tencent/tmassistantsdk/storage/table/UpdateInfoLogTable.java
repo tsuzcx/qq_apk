@@ -14,12 +14,12 @@ public class UpdateInfoLogTable
   {
     try
     {
-      AppMethodBeat.i(76211);
+      AppMethodBeat.i(102457);
       if (mInstance == null) {
         mInstance = new UpdateInfoLogTable();
       }
       UpdateInfoLogTable localUpdateInfoLogTable = mInstance;
-      AppMethodBeat.o(76211);
+      AppMethodBeat.o(102457);
       return localUpdateInfoLogTable;
     }
     finally {}
@@ -27,14 +27,14 @@ public class UpdateInfoLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    AppMethodBeat.i(76212);
+    AppMethodBeat.i(102458);
     if (paramInt > 1)
     {
       String str = getCreateTableSQL();
-      AppMethodBeat.o(76212);
+      AppMethodBeat.o(102458);
       return new String[] { str };
     }
-    AppMethodBeat.o(76212);
+    AppMethodBeat.o(102458);
     return null;
   }
   
@@ -55,7 +55,7 @@ public class UpdateInfoLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.UpdateInfoLogTable
  * JD-Core Version:    0.7.0.1
  */

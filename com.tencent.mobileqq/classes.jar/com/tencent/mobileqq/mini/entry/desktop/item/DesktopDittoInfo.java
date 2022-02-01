@@ -11,13 +11,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DesktopDittoInfo
   extends DesktopItemInfo
 {
   public List<MiniAppInfo> appInfoList = new ArrayList();
   public Map<String, MiniAppInfo> appInfoMap = new HashMap();
-  public int currentIndex;
+  public AtomicInteger currentIndex = new AtomicInteger(0);
   public String dittoDls;
   public MiniAppInfo jumpMoreInfo;
   public int subType;
@@ -38,7 +39,7 @@ public class DesktopDittoInfo
   
   public void incrementIndex()
   {
-    this.currentIndex += 1;
+    this.currentIndex.incrementAndGet();
   }
   
   public void mergePbData(INTERFACE.StModuleInfo paramStModuleInfo)
@@ -62,17 +63,20 @@ public class DesktopDittoInfo
         }
       }
     }
-    this.currentIndex = 0;
   }
   
   public String toString()
   {
-    return this.title + "_" + this.mModuleType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.title);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mModuleType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo
  * JD-Core Version:    0.7.0.1
  */

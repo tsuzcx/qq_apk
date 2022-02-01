@@ -1,93 +1,139 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class ee
-  extends bvk
+  extends com.tencent.mm.bx.a
 {
+  public String IIu;
+  public String UserName;
+  public String YGl;
+  public String YGm;
+  public String pSg;
+  public String pSh;
+  public String pSo;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(14685);
+    AppMethodBeat.i(91348);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(14685);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.pSo != null) {
+        paramVarArgs.g(1, this.pSo);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.iQ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.pSg != null) {
+        paramVarArgs.g(2, this.pSg);
       }
-      AppMethodBeat.o(14685);
+      if (this.pSh != null) {
+        paramVarArgs.g(3, this.pSh);
+      }
+      if (this.IIu != null) {
+        paramVarArgs.g(4, this.IIu);
+      }
+      if (this.UserName != null) {
+        paramVarArgs.g(5, this.UserName);
+      }
+      if (this.YGl != null) {
+        paramVarArgs.g(6, this.YGl);
+      }
+      if (this.YGm != null) {
+        paramVarArgs.g(7, this.YGm);
+      }
+      AppMethodBeat.o(91348);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label369;
+      if (this.pSo == null) {
+        break label574;
       }
     }
-    label369:
-    for (paramInt = e.a.a.a.iP(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label574:
+    for (int i = i.a.a.b.b.a.h(1, this.pSo) + 0;; i = 0)
     {
-      AppMethodBeat.o(14685);
-      return paramInt;
+      paramInt = i;
+      if (this.pSg != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.pSg);
+      }
+      i = paramInt;
+      if (this.pSh != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.pSh);
+      }
+      paramInt = i;
+      if (this.IIu != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.IIu);
+      }
+      i = paramInt;
+      if (this.UserName != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.UserName);
+      }
+      paramInt = i;
+      if (this.YGl != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.YGl);
+      }
+      i = paramInt;
+      if (this.YGm != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.YGm);
+      }
+      AppMethodBeat.o(91348);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(14685);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(14685);
+        AppMethodBeat.o(91348);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ee localee = (ee)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(14685);
+          AppMethodBeat.o(91348);
           return -1;
+        case 1: 
+          localee.pSo = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
+        case 2: 
+          localee.pSg = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
+        case 3: 
+          localee.pSh = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
+        case 4: 
+          localee.IIu = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
+        case 5: 
+          localee.UserName = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
+        case 6: 
+          localee.YGl = locala.ajGk.readString();
+          AppMethodBeat.o(91348);
+          return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new BaseResponse();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localee.BaseResponse = ((BaseResponse)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(14685);
+        localee.YGm = locala.ajGk.readString();
+        AppMethodBeat.o(91348);
         return 0;
       }
-      AppMethodBeat.o(14685);
+      AppMethodBeat.o(91348);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ee
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.biz.qrcode;
 
-import alof;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,8 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.view.WindowManager;
-import bdep;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.ArrayList;
@@ -22,98 +22,44 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xyd;
 
 public class CodeMaskManager
 {
-  private static final String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getCacheDir().getAbsolutePath() + "/qbiz/qrcode/";
-  protected int a;
-  protected Activity a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected Handler a;
-  protected Thread a;
+  private static final String i;
   protected List<Bundle> a;
-  protected boolean a;
-  protected int b;
   protected List<Bundle> b;
+  protected Activity c;
+  protected Thread d;
+  protected int e = -1;
+  protected int f;
+  protected Handler g;
+  protected boolean h = false;
+  private Bundle j;
   
   static
   {
-    if (bdep.a())
+    if (SystemUtil.a())
     {
-      jdField_a_of_type_JavaLangString = alof.aX + "qbiz/qrcode/";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppConstants.SDCARD_PATH);
+      localStringBuilder.append("qbiz/qrcode/");
+      i = localStringBuilder.toString();
       return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getCacheDir().getAbsolutePath());
+    localStringBuilder.append("/qbiz/qrcode/");
+    i = localStringBuilder.toString();
   }
   
   public CodeMaskManager(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_b_of_type_JavaUtilList = new Vector();
+    this.c = paramActivity;
+    this.b = new Vector();
     a(paramInt);
-    this.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-    b(a());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-  }
-  
-  private int a()
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qrcode", 0).getString("tpl_json", null);
-      if (localObject == null) {
-        return 0;
-      }
-      localObject = new JSONObject((String)localObject);
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("tpls");
-      if (localJSONArray.length() > 0)
-      {
-        a(localJSONArray);
-        int i = ((JSONObject)localObject).getInt("t");
-        return i;
-      }
-    }
-    catch (JSONException localJSONException) {}
-    return 0;
-  }
-  
-  private int a(int paramInt)
-  {
-    int i = 0;
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("qrcode mask build-in list should have at least 1 item");
-    }
-    if (paramInt == 1) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      return this.jdField_b_of_type_Int;
-      if (this.jdField_a_of_type_Int == -1)
-      {
-        int j = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qrcode", 0).getInt("lastIndex", 0);
-        if (j >= 0)
-        {
-          i = j;
-          if (j < paramInt) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        paramInt = i;
-      }
-      else
-      {
-        i = (int)(Math.random() * (paramInt - 1));
-        paramInt = i;
-        if (i >= this.jdField_a_of_type_Int) {
-          paramInt = i + 1;
-        }
-      }
-    }
+    this.a = this.b;
+    b(b());
+    this.g = new Handler();
   }
   
   /* Error */
@@ -121,259 +67,274 @@ public class CodeMaskManager
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_1
-    //   4: ifnull +12 -> 16
-    //   7: aload_1
-    //   8: ldc 162
-    //   10: invokevirtual 168	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   13: ifeq +7 -> 20
-    //   16: aconst_null
-    //   17: astore_2
-    //   18: aload_2
-    //   19: areturn
+    //   1: astore_2
+    //   2: aload_1
+    //   3: ifnull +324 -> 327
+    //   6: aload_1
+    //   7: ldc 110
+    //   9: invokevirtual 116	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   12: ifeq +5 -> 17
+    //   15: aconst_null
+    //   16: areturn
+    //   17: aload_1
+    //   18: astore 6
     //   20: aload_1
-    //   21: astore 6
-    //   23: aload_1
-    //   24: ldc 170
-    //   26: invokevirtual 174	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   29: ifne +24 -> 53
-    //   32: new 24	java/lang/StringBuilder
-    //   35: dup
-    //   36: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   39: ldc 176
-    //   41: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: aload_1
-    //   45: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: astore 6
-    //   53: aload 6
-    //   55: invokestatic 182	baqn:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   58: astore 7
-    //   60: new 184	java/io/FileInputStream
-    //   63: dup
-    //   64: new 24	java/lang/StringBuilder
-    //   67: dup
-    //   68: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   71: getstatic 44	com/tencent/biz/qrcode/CodeMaskManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   74: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: aload 7
-    //   79: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokespecial 185	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   88: astore_2
-    //   89: new 187	java/io/BufferedInputStream
-    //   92: dup
-    //   93: aload_2
-    //   94: sipush 8192
-    //   97: invokespecial 190	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   100: astore_1
-    //   101: aload_1
-    //   102: astore 4
-    //   104: aload_2
-    //   105: astore_3
-    //   106: aload_1
-    //   107: invokestatic 196	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   110: astore 5
-    //   112: aload 5
-    //   114: astore_3
-    //   115: aload_1
-    //   116: ifnull +7 -> 123
-    //   119: aload_1
-    //   120: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   123: aload_3
-    //   124: astore_1
-    //   125: aload_2
-    //   126: ifnull +9 -> 135
-    //   129: aload_2
-    //   130: invokevirtual 200	java/io/FileInputStream:close	()V
-    //   133: aload_3
-    //   134: astore_1
-    //   135: aload_1
-    //   136: astore_2
-    //   137: aload_1
-    //   138: ifnonnull -120 -> 18
-    //   141: aload_0
-    //   142: getfield 70	com/tencent/biz/qrcode/CodeMaskManager:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   145: ldc 202
-    //   147: aload 6
-    //   149: invokestatic 207	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   152: ldc 209
-    //   154: aconst_null
-    //   155: aconst_null
-    //   156: invokestatic 214	ndd:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
-    //   159: astore_2
-    //   160: aload_2
-    //   161: ifnull +11 -> 172
-    //   164: aload_2
-    //   165: iconst_0
-    //   166: aload_2
-    //   167: arraylength
-    //   168: invokestatic 218	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
-    //   171: astore_1
-    //   172: aload_1
-    //   173: ifnonnull +99 -> 272
-    //   176: new 160	java/io/IOException
-    //   179: dup
-    //   180: ldc 219
-    //   182: invokestatic 224	alud:a	(I)Ljava/lang/String;
-    //   185: invokespecial 225	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   188: athrow
-    //   189: astore 5
-    //   191: aconst_null
-    //   192: astore_1
-    //   193: aconst_null
-    //   194: astore_2
-    //   195: aload_1
-    //   196: astore 4
-    //   198: aload_2
-    //   199: astore_3
-    //   200: invokestatic 230	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   203: ifeq +19 -> 222
-    //   206: aload_1
-    //   207: astore 4
-    //   209: aload_2
-    //   210: astore_3
-    //   211: ldc 232
-    //   213: iconst_2
-    //   214: aload 5
-    //   216: invokevirtual 235	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   219: invokestatic 239	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   222: aload_1
-    //   223: ifnull +7 -> 230
-    //   226: aload_1
-    //   227: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   230: aload_2
-    //   231: ifnull +95 -> 326
-    //   234: aload_2
-    //   235: invokevirtual 200	java/io/FileInputStream:close	()V
-    //   238: aconst_null
-    //   239: astore_1
-    //   240: goto -105 -> 135
-    //   243: astore_1
-    //   244: aconst_null
-    //   245: astore_1
-    //   246: goto -111 -> 135
-    //   249: astore_1
-    //   250: aconst_null
-    //   251: astore_2
-    //   252: aload 4
-    //   254: ifnull +8 -> 262
-    //   257: aload 4
-    //   259: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   262: aload_2
-    //   263: ifnull +7 -> 270
-    //   266: aload_2
-    //   267: invokevirtual 200	java/io/FileInputStream:close	()V
-    //   270: aload_1
-    //   271: athrow
-    //   272: aload_0
-    //   273: aload 7
-    //   275: aload_2
-    //   276: invokespecial 242	com/tencent/biz/qrcode/CodeMaskManager:a	(Ljava/lang/String;[B)Z
-    //   279: pop
-    //   280: aload_1
-    //   281: areturn
-    //   282: astore_1
-    //   283: goto -160 -> 123
-    //   286: astore_1
-    //   287: aload_3
-    //   288: astore_1
-    //   289: goto -154 -> 135
-    //   292: astore_1
-    //   293: goto -63 -> 230
-    //   296: astore_3
-    //   297: goto -35 -> 262
-    //   300: astore_2
-    //   301: goto -31 -> 270
-    //   304: astore_1
-    //   305: goto -53 -> 252
-    //   308: astore_1
-    //   309: aload_3
-    //   310: astore_2
-    //   311: goto -59 -> 252
-    //   314: astore 5
-    //   316: aconst_null
-    //   317: astore_1
-    //   318: goto -123 -> 195
-    //   321: astore 5
-    //   323: goto -128 -> 195
-    //   326: aconst_null
-    //   327: astore_1
-    //   328: goto -193 -> 135
+    //   21: ldc 118
+    //   23: invokevirtual 122	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   26: ifne +42 -> 68
+    //   29: aload_1
+    //   30: astore 6
+    //   32: aload_1
+    //   33: ldc 124
+    //   35: invokevirtual 122	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   38: ifne +30 -> 68
+    //   41: new 32	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   48: astore_3
+    //   49: aload_3
+    //   50: ldc 126
+    //   52: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload_3
+    //   57: aload_1
+    //   58: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: aload_3
+    //   63: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: astore 6
+    //   68: aload 6
+    //   70: invokestatic 132	com/tencent/mobileqq/transfile/AbsDownloader:getFileName	(Ljava/lang/String;)Ljava/lang/String;
+    //   73: astore 7
+    //   75: new 32	java/lang/StringBuilder
+    //   78: dup
+    //   79: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   82: astore_1
+    //   83: aload_1
+    //   84: getstatic 52	com/tencent/biz/qrcode/CodeMaskManager:i	Ljava/lang/String;
+    //   87: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_1
+    //   92: aload 7
+    //   94: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: new 134	java/io/FileInputStream
+    //   101: dup
+    //   102: aload_1
+    //   103: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokespecial 137	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   109: astore_1
+    //   110: new 139	java/io/BufferedInputStream
+    //   113: dup
+    //   114: aload_1
+    //   115: sipush 8192
+    //   118: invokespecial 142	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   121: astore 5
+    //   123: aload_1
+    //   124: astore_2
+    //   125: aload 5
+    //   127: astore 4
+    //   129: aload 5
+    //   131: invokestatic 148	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   134: astore_3
+    //   135: aload 5
+    //   137: invokevirtual 151	java/io/BufferedInputStream:close	()V
+    //   140: aload_1
+    //   141: invokevirtual 152	java/io/FileInputStream:close	()V
+    //   144: aload_3
+    //   145: astore_1
+    //   146: goto +90 -> 236
+    //   149: astore_2
+    //   150: aload_1
+    //   151: astore_3
+    //   152: aload 5
+    //   154: astore_1
+    //   155: aload_2
+    //   156: astore 5
+    //   158: goto +30 -> 188
+    //   161: astore_3
+    //   162: goto +144 -> 306
+    //   165: astore 5
+    //   167: aconst_null
+    //   168: astore_2
+    //   169: aload_1
+    //   170: astore_3
+    //   171: aload_2
+    //   172: astore_1
+    //   173: goto +15 -> 188
+    //   176: astore_3
+    //   177: aconst_null
+    //   178: astore_1
+    //   179: goto +127 -> 306
+    //   182: astore 5
+    //   184: aconst_null
+    //   185: astore_3
+    //   186: aload_3
+    //   187: astore_1
+    //   188: aload_3
+    //   189: astore_2
+    //   190: aload_1
+    //   191: astore 4
+    //   193: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: ifeq +19 -> 215
+    //   199: aload_3
+    //   200: astore_2
+    //   201: aload_1
+    //   202: astore 4
+    //   204: ldc 159
+    //   206: iconst_2
+    //   207: aload 5
+    //   209: invokevirtual 162	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   212: invokestatic 165	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: aload_1
+    //   216: ifnull +10 -> 226
+    //   219: aload_1
+    //   220: invokevirtual 151	java/io/BufferedInputStream:close	()V
+    //   223: goto +3 -> 226
+    //   226: aload_3
+    //   227: ifnull +7 -> 234
+    //   230: aload_3
+    //   231: invokevirtual 152	java/io/FileInputStream:close	()V
+    //   234: aconst_null
+    //   235: astore_1
+    //   236: aload_1
+    //   237: ifnull +5 -> 242
+    //   240: aload_1
+    //   241: areturn
+    //   242: aload_0
+    //   243: getfield 80	com/tencent/biz/qrcode/CodeMaskManager:c	Landroid/app/Activity;
+    //   246: ldc 167
+    //   248: aload 6
+    //   250: invokestatic 173	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:insertMtype	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   253: ldc 175
+    //   255: aconst_null
+    //   256: aconst_null
+    //   257: invokestatic 181	com/tencent/biz/common/util/HttpUtil:openUrlForByte	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
+    //   260: astore_2
+    //   261: aload_2
+    //   262: ifnull +11 -> 273
+    //   265: aload_2
+    //   266: iconst_0
+    //   267: aload_2
+    //   268: arraylength
+    //   269: invokestatic 185	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   272: astore_1
+    //   273: aload_1
+    //   274: ifnull +13 -> 287
+    //   277: aload_0
+    //   278: aload 7
+    //   280: aload_2
+    //   281: invokespecial 188	com/tencent/biz/qrcode/CodeMaskManager:a	(Ljava/lang/String;[B)Z
+    //   284: pop
+    //   285: aload_1
+    //   286: areturn
+    //   287: new 108	java/io/IOException
+    //   290: dup
+    //   291: ldc 189
+    //   293: invokestatic 194	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   296: invokespecial 195	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   299: athrow
+    //   300: astore_3
+    //   301: aload_2
+    //   302: astore_1
+    //   303: aload 4
+    //   305: astore_2
+    //   306: aload_2
+    //   307: ifnull +10 -> 317
+    //   310: aload_2
+    //   311: invokevirtual 151	java/io/BufferedInputStream:close	()V
+    //   314: goto +3 -> 317
+    //   317: aload_1
+    //   318: ifnull +7 -> 325
+    //   321: aload_1
+    //   322: invokevirtual 152	java/io/FileInputStream:close	()V
+    //   325: aload_3
+    //   326: athrow
+    //   327: aconst_null
+    //   328: areturn
+    //   329: astore_2
+    //   330: goto -190 -> 140
+    //   333: astore_1
+    //   334: aload_3
+    //   335: astore_1
+    //   336: goto -100 -> 236
+    //   339: astore_1
+    //   340: goto -114 -> 226
+    //   343: astore_1
+    //   344: goto -110 -> 234
+    //   347: astore_2
+    //   348: goto -31 -> 317
+    //   351: astore_1
+    //   352: goto -27 -> 325
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	331	0	this	CodeMaskManager
-    //   0	331	1	paramString	String
-    //   17	259	2	localObject1	Object
-    //   300	1	2	localIOException1	java.io.IOException
-    //   310	1	2	localObject2	Object
-    //   105	183	3	localObject3	Object
-    //   296	14	3	localIOException2	java.io.IOException
-    //   1	257	4	str1	String
-    //   110	3	5	localBitmap	Bitmap
-    //   189	26	5	localException1	Exception
-    //   314	1	5	localException2	Exception
-    //   321	1	5	localException3	Exception
-    //   21	127	6	str2	String
-    //   58	216	7	str3	String
+    //   0	355	0	this	CodeMaskManager
+    //   0	355	1	paramString	String
+    //   1	124	2	str1	String
+    //   149	7	2	localException1	Exception
+    //   168	143	2	localObject1	Object
+    //   329	1	2	localIOException1	java.io.IOException
+    //   347	1	2	localIOException2	java.io.IOException
+    //   48	104	3	localObject2	Object
+    //   161	1	3	localObject3	Object
+    //   170	1	3	str2	String
+    //   176	1	3	localObject4	Object
+    //   185	46	3	localObject5	Object
+    //   300	35	3	localObject6	Object
+    //   127	177	4	localObject7	Object
+    //   121	36	5	localObject8	Object
+    //   165	1	5	localException2	Exception
+    //   182	26	5	localException3	Exception
+    //   18	231	6	str3	String
+    //   73	206	7	str4	String
     // Exception table:
     //   from	to	target	type
-    //   60	89	189	java/lang/Exception
-    //   234	238	243	java/io/IOException
-    //   60	89	249	finally
-    //   119	123	282	java/io/IOException
-    //   129	133	286	java/io/IOException
-    //   226	230	292	java/io/IOException
-    //   257	262	296	java/io/IOException
-    //   266	270	300	java/io/IOException
-    //   89	101	304	finally
-    //   106	112	308	finally
-    //   200	206	308	finally
-    //   211	222	308	finally
-    //   89	101	314	java/lang/Exception
-    //   106	112	321	java/lang/Exception
-  }
-  
-  private Bundle a()
-  {
-    int i = a(this.jdField_b_of_type_JavaUtilList.size());
-    return a((Bundle)this.jdField_b_of_type_JavaUtilList.get(i));
+    //   129	135	149	java/lang/Exception
+    //   110	123	161	finally
+    //   110	123	165	java/lang/Exception
+    //   75	110	176	finally
+    //   75	110	182	java/lang/Exception
+    //   129	135	300	finally
+    //   193	199	300	finally
+    //   204	215	300	finally
+    //   135	140	329	java/io/IOException
+    //   140	144	333	java/io/IOException
+    //   219	223	339	java/io/IOException
+    //   230	234	343	java/io/IOException
+    //   310	314	347	java/io/IOException
+    //   321	325	351	java/io/IOException
   }
   
   private Bundle a(Bundle paramBundle)
   {
-    int i;
     if (paramBundle.containsKey("bkgRes"))
     {
-      i = paramBundle.getInt("bkgRes");
+      k = paramBundle.getInt("bkgRes");
       paramBundle.remove("bkg");
-      if (i == 0) {}
+      if (k == 0) {}
     }
     try
     {
-      paramBundle.putParcelable("bkg", BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i));
-      label47:
-      if (paramBundle.containsKey("qrbkgRes"))
-      {
-        i = paramBundle.getInt("qrbkgRes");
-        paramBundle.remove("qrbkg");
-        if (i == 0) {}
-      }
+      paramBundle.putParcelable("bkg", BitmapFactory.decodeResource(this.c.getResources(), k));
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
       try
       {
-        paramBundle.putParcelable("qrbkg", BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i));
-        label94:
+        paramBundle.putParcelable("qrbkg", BitmapFactory.decodeResource(this.c.getResources(), k));
         return (Bundle)paramBundle.clone();
+        localOutOfMemoryError1 = localOutOfMemoryError1;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+      catch (OutOfMemoryError localOutOfMemoryError2)
       {
-        break label94;
+        break label89;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError2)
+    if (paramBundle.containsKey("qrbkgRes"))
     {
-      break label47;
+      k = paramBundle.getInt("qrbkgRes");
+      paramBundle.remove("qrbkg");
+      if (k == 0) {}
     }
   }
   
@@ -382,7 +343,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130842847);
+      localBundle.putInt("qrbkgRes", 2130844342);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -392,10 +353,8 @@ public class CodeMaskManager
       localBundle.putInt("head", 0);
       localBundle.putInt("type", 1);
     }
-    for (;;)
+    else
     {
-      this.jdField_b_of_type_JavaUtilList.add(localBundle);
-      return;
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -405,100 +364,228 @@ public class CodeMaskManager
       localBundle.putInt("head", 1);
       localBundle.putInt("type", 1);
     }
+    this.b.add(localBundle);
   }
   
   private void a(JSONArray paramJSONArray)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
+    String str3 = "qrbkg";
+    String str2 = "tipsClr";
+    String str1 = "nameClr";
+    Object localObject1 = "bkg";
+    localObject3 = "qrsz";
+    if (this.h) {
       return;
-      this.jdField_a_of_type_JavaUtilList = new Vector(this.jdField_b_of_type_JavaUtilList);
-      int i = 0;
-      while (i < paramJSONArray.length())
+    }
+    this.a = new Vector(this.b);
+    int k = 0;
+    while (k < paramJSONArray.length())
+    {
+      for (;;)
       {
+        label263:
+        label527:
+        label793:
         try
         {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          Bundle localBundle = new Bundle();
-          if (localJSONObject.has("bkg")) {
-            localBundle.putString("bkgUrl", localJSONObject.getString("bkg"));
+          localJSONObject = paramJSONArray.getJSONObject(k);
+          localBundle = new Bundle();
+          if (localJSONObject.has((String)localObject1)) {
+            localBundle.putString("bkgUrl", localJSONObject.getString((String)localObject1));
           }
-          localBundle.putInt("nameClr", (int)Long.parseLong(localJSONObject.getString("nameClr"), 16));
-          localBundle.putInt("tipsClr", (int)Long.parseLong(localJSONObject.getString("tipsClr"), 16));
-          if (localJSONObject.has("qrbkg")) {
-            localBundle.putString("qrbkgUrl", localJSONObject.getString("qrbkg"));
-          }
-          Object localObject;
-          int k;
-          int m;
+          localObject4 = localJSONObject.getString(str1);
+        }
+        catch (JSONException localJSONException3)
+        {
+          JSONObject localJSONObject;
+          Bundle localBundle;
+          Object localObject4;
+          JSONArray localJSONArray1;
           int n;
           int i1;
-          if (localJSONObject.has("qrloc"))
-          {
-            localObject = localJSONObject.getJSONArray("qrloc");
-            j = ((JSONArray)localObject).getInt(0);
-            k = ((JSONArray)localObject).getInt(1);
-            m = ((JSONArray)localObject).getInt(0);
-            n = ((JSONArray)localObject).getInt(2);
-            i1 = ((JSONArray)localObject).getInt(1);
-            localBundle.putParcelable("qrloc", new Rect(j, k, m + n, ((JSONArray)localObject).getInt(3) + i1));
-          }
-          if (localJSONObject.has("qrsz")) {
-            localBundle.putInt("qrsz", localJSONObject.getInt("qrsz"));
-          }
-          if (localJSONObject.has("clip"))
-          {
-            localObject = new ArrayList();
-            JSONArray localJSONArray1 = localJSONObject.getJSONArray("clip");
-            j = 0;
-            while (j < localJSONArray1.length())
-            {
-              JSONArray localJSONArray2 = localJSONArray1.getJSONArray(j);
-              k = localJSONArray2.getInt(0);
-              m = localJSONArray2.getInt(1);
-              n = localJSONArray2.getInt(0);
-              i1 = localJSONArray2.getInt(2);
-              int i2 = localJSONArray2.getInt(1);
-              ((ArrayList)localObject).add(new Rect(k, m, n + i1, localJSONArray2.getInt(3) + i2));
-              j += 1;
-            }
-            localBundle.putParcelableArrayList("clip", (ArrayList)localObject);
-          }
-          localBundle.putInt("B", (int)Long.parseLong(localJSONObject.getString("B"), 16));
-          if (localJSONObject.has("W")) {
-            localBundle.putInt("W", (int)Long.parseLong(localJSONObject.getString("W"), 16));
-          }
-          for (;;)
-          {
-            try
-            {
-              localBundle.putInt("head", localJSONObject.getInt("head"));
-              localBundle.putInt("v", localJSONObject.getInt("v"));
-              localBundle.putInt("type", 2);
-              this.jdField_a_of_type_JavaUtilList.add(localBundle);
-            }
-            catch (Exception localException)
-            {
-              if (!localJSONObject.getBoolean("head")) {
-                break;
-              }
-            }
-            localBundle.putInt("W", 16777215);
-          }
-          for (int j = 1;; j = 0)
-          {
-            localBundle.putInt("head", j);
-            break;
-          }
+          int i2;
+          ArrayList localArrayList;
+          JSONArray localJSONArray2;
+          int i3;
+          label677:
+          label766:
+          continue;
         }
-        catch (JSONException localJSONException)
+        for (;;)
         {
-          label560:
-          break label560;
+          try
+          {
+            localBundle.putInt(str1, (int)Long.parseLong((String)localObject4, 16));
+            localBundle.putInt(str2, (int)Long.parseLong(localJSONObject.getString(str2), 16));
+            if (localJSONObject.has(str3)) {
+              localBundle.putString("qrbkgUrl", localJSONObject.getString(str3));
+            }
+            if (!localJSONObject.has("qrloc")) {
+              continue;
+            }
+            localJSONArray1 = localJSONObject.getJSONArray("qrloc");
+          }
+          catch (JSONException localJSONException4)
+          {
+            label653:
+            break label766;
+            Object localObject2;
+            break label263;
+            Exception localException2 = localException1;
+            localObject5 = localObject3;
+            break label527;
+            m = 0;
+            break label677;
+          }
+          try
+          {
+            m = localJSONArray1.getInt(0);
+          }
+          catch (JSONException localJSONException5)
+          {
+            break label766;
+          }
         }
-        i += 1;
+        try
+        {
+          n = localJSONArray1.getInt(1);
+          i1 = localJSONArray1.getInt(0);
+          i2 = localJSONArray1.getInt(2);
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+        }
+        catch (JSONException localJSONException6)
+        {
+          continue;
+        }
+        try
+        {
+          localBundle.putParcelable("qrloc", new Rect(m, n, i1 + i2, localJSONArray1.getInt(1) + localJSONArray1.getInt(3)));
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+          if (localJSONObject.has((String)localObject3))
+          {
+            localObject5 = localObject1;
+            localObject4 = localObject3;
+            localBundle.putInt((String)localObject3, localJSONObject.getInt((String)localObject3));
+          }
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+          if (!localJSONObject.has("clip")) {
+            break label864;
+          }
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+          localArrayList = new ArrayList();
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+          localJSONArray1 = localJSONObject.getJSONArray("clip");
+          m = 0;
+          localObject5 = localObject1;
+          localObject4 = localObject3;
+          if (m < localJSONArray1.length())
+          {
+            localObject5 = localObject1;
+            localObject4 = localObject3;
+            localJSONArray2 = localJSONArray1.getJSONArray(m);
+            localObject5 = localObject1;
+            localObject4 = localObject3;
+            n = localJSONArray2.getInt(0);
+            localObject4 = localObject1;
+          }
+        }
+        catch (JSONException localJSONException1)
+        {
+          localObject2 = localObject5;
+          localObject3 = localJSONException6;
+          continue;
+        }
+        try
+        {
+          i1 = localJSONArray2.getInt(1);
+          i2 = localJSONArray2.getInt(0);
+          i3 = localJSONArray2.getInt(2);
+          localObject5 = localObject3;
+          localObject3 = localObject4;
+          localObject1 = localObject5;
+        }
+        catch (JSONException localJSONException2)
+        {
+          continue;
+        }
+        try
+        {
+          localArrayList.add(new Rect(n, i1, i2 + i3, localJSONArray2.getInt(1) + localJSONArray2.getInt(3)));
+          m += 1;
+          localObject1 = localObject4;
+          localObject3 = localObject5;
+        }
+        catch (JSONException localJSONException7) {}
       }
+      localObject4 = localObject1;
+      localObject5 = localObject3;
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      localBundle.putParcelableArrayList("clip", localArrayList);
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      localBundle.putInt("B", (int)Long.parseLong(localJSONObject.getString("B"), 16));
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      if (localJSONObject.has("W"))
+      {
+        localObject3 = localObject4;
+        localObject1 = localObject5;
+        localBundle.putInt("W", (int)Long.parseLong(localJSONObject.getString("W"), 16));
+      }
+      else
+      {
+        localObject3 = localObject4;
+        localObject1 = localObject5;
+        localBundle.putInt("W", 16777215);
+      }
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      try
+      {
+        localBundle.putInt("head", localJSONObject.getInt("head"));
+      }
+      catch (Exception localException1)
+      {
+        break label653;
+      }
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      if (!localJSONObject.getBoolean("head")) {
+        break label875;
+      }
+      m = 1;
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      localBundle.putInt("head", m);
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      localBundle.putInt("v", localJSONObject.getInt("v"));
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      localBundle.putInt("type", 2);
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      this.a.add(localBundle);
+      localObject3 = localObject4;
+      localObject1 = localObject5;
+      break label793;
+      localObject4 = localObject1;
+      localObject1 = localObject3;
+      localObject3 = localObject4;
+      break label793;
+      localObject4 = localObject1;
+      localObject1 = localObject3;
+      localObject3 = localObject4;
+      k += 1;
+      localObject4 = localObject1;
+      localObject1 = localObject3;
+      localObject3 = localObject4;
     }
   }
   
@@ -506,154 +593,204 @@ public class CodeMaskManager
   private boolean a(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 6
-    //   5: aconst_null
-    //   6: astore 5
-    //   8: aload_2
-    //   9: ifnull +90 -> 99
-    //   12: new 58	java/io/File
-    //   15: dup
-    //   16: getstatic 44	com/tencent/biz/qrcode/CodeMaskManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   19: invokespecial 381	java/io/File:<init>	(Ljava/lang/String;)V
-    //   22: invokevirtual 384	java/io/File:mkdirs	()Z
-    //   25: pop
-    //   26: new 58	java/io/File
-    //   29: dup
-    //   30: new 24	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   37: getstatic 44	com/tencent/biz/qrcode/CodeMaskManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   40: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: aload_2
+    //   1: ifnull +122 -> 123
+    //   4: aconst_null
+    //   5: astore 4
+    //   7: aconst_null
+    //   8: astore_3
+    //   9: new 66	java/io/File
+    //   12: dup
+    //   13: getstatic 52	com/tencent/biz/qrcode/CodeMaskManager:i	Ljava/lang/String;
+    //   16: invokespecial 342	java/io/File:<init>	(Ljava/lang/String;)V
+    //   19: invokevirtual 345	java/io/File:mkdirs	()Z
+    //   22: pop
+    //   23: new 32	java/lang/StringBuilder
+    //   26: dup
+    //   27: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   30: astore 5
+    //   32: aload 5
+    //   34: getstatic 52	com/tencent/biz/qrcode/CodeMaskManager:i	Ljava/lang/String;
+    //   37: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload 5
     //   43: aload_1
-    //   44: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 381	java/io/File:<init>	(Ljava/lang/String;)V
-    //   53: astore_1
-    //   54: aload_1
-    //   55: invokevirtual 387	java/io/File:exists	()Z
-    //   58: ifne +8 -> 66
+    //   44: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: new 66	java/io/File
+    //   51: dup
+    //   52: aload 5
+    //   54: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokespecial 342	java/io/File:<init>	(Ljava/lang/String;)V
+    //   60: astore_1
     //   61: aload_1
-    //   62: invokevirtual 390	java/io/File:createNewFile	()Z
-    //   65: pop
-    //   66: new 392	java/io/FileOutputStream
-    //   69: dup
-    //   70: aload_1
-    //   71: invokespecial 395	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   74: astore_1
-    //   75: aload_1
-    //   76: aload_2
-    //   77: invokevirtual 399	java/io/FileOutputStream:write	([B)V
-    //   80: iconst_1
-    //   81: istore 4
-    //   83: iload 4
-    //   85: istore_3
-    //   86: aload_1
-    //   87: ifnull +10 -> 97
-    //   90: aload_1
-    //   91: invokevirtual 400	java/io/FileOutputStream:close	()V
-    //   94: iload 4
-    //   96: istore_3
-    //   97: iload_3
-    //   98: ireturn
-    //   99: iconst_0
-    //   100: ifeq -3 -> 97
-    //   103: new 402	java/lang/NullPointerException
-    //   106: dup
-    //   107: invokespecial 403	java/lang/NullPointerException:<init>	()V
-    //   110: athrow
-    //   111: astore_1
-    //   112: iconst_0
-    //   113: ireturn
-    //   114: astore_1
-    //   115: aload 5
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnull -22 -> 97
-    //   122: aload_1
-    //   123: invokevirtual 400	java/io/FileOutputStream:close	()V
-    //   126: iconst_0
-    //   127: ireturn
+    //   62: invokevirtual 348	java/io/File:exists	()Z
+    //   65: ifne +8 -> 73
+    //   68: aload_1
+    //   69: invokevirtual 351	java/io/File:createNewFile	()Z
+    //   72: pop
+    //   73: new 353	java/io/FileOutputStream
+    //   76: dup
+    //   77: aload_1
+    //   78: invokespecial 356	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   81: astore_1
+    //   82: aload_1
+    //   83: aload_2
+    //   84: invokevirtual 360	java/io/FileOutputStream:write	([B)V
+    //   87: aload_1
+    //   88: invokevirtual 361	java/io/FileOutputStream:close	()V
+    //   91: iconst_1
+    //   92: ireturn
+    //   93: astore_2
+    //   94: aload_1
+    //   95: astore_3
+    //   96: aload_2
+    //   97: astore_1
+    //   98: goto +7 -> 105
+    //   101: goto +14 -> 115
+    //   104: astore_1
+    //   105: aload_3
+    //   106: ifnull +7 -> 113
+    //   109: aload_3
+    //   110: invokevirtual 361	java/io/FileOutputStream:close	()V
+    //   113: aload_1
+    //   114: athrow
+    //   115: aload_1
+    //   116: ifnull +7 -> 123
+    //   119: aload_1
+    //   120: invokevirtual 361	java/io/FileOutputStream:close	()V
+    //   123: iconst_0
+    //   124: ireturn
+    //   125: astore_1
+    //   126: aload 4
     //   128: astore_1
-    //   129: iconst_0
-    //   130: ireturn
-    //   131: astore_1
-    //   132: aload 6
-    //   134: astore_2
-    //   135: aload_2
-    //   136: ifnull +7 -> 143
-    //   139: aload_2
-    //   140: invokevirtual 400	java/io/FileOutputStream:close	()V
-    //   143: aload_1
-    //   144: athrow
-    //   145: astore_1
-    //   146: iconst_1
-    //   147: ireturn
-    //   148: astore_2
-    //   149: goto -6 -> 143
-    //   152: astore 5
-    //   154: aload_1
-    //   155: astore_2
-    //   156: aload 5
-    //   158: astore_1
-    //   159: goto -24 -> 135
-    //   162: astore_2
-    //   163: goto -45 -> 118
+    //   129: goto -14 -> 115
+    //   132: astore_2
+    //   133: goto -32 -> 101
+    //   136: astore_1
+    //   137: iconst_1
+    //   138: ireturn
+    //   139: astore_2
+    //   140: goto -27 -> 113
+    //   143: astore_1
+    //   144: iconst_0
+    //   145: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	166	0	this	CodeMaskManager
-    //   0	166	1	paramString	String
-    //   0	166	2	paramArrayOfByte	byte[]
-    //   1	97	3	bool1	boolean
-    //   81	14	4	bool2	boolean
-    //   6	110	5	localObject1	Object
-    //   152	5	5	localObject2	Object
-    //   3	130	6	localObject3	Object
+    //   0	146	0	this	CodeMaskManager
+    //   0	146	1	paramString	String
+    //   0	146	2	paramArrayOfByte	byte[]
+    //   8	102	3	str	String
+    //   5	122	4	localObject	Object
+    //   30	23	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   103	111	111	java/io/IOException
-    //   12	66	114	java/io/IOException
-    //   66	75	114	java/io/IOException
-    //   122	126	128	java/io/IOException
-    //   12	66	131	finally
-    //   66	75	131	finally
-    //   90	94	145	java/io/IOException
-    //   139	143	148	java/io/IOException
-    //   75	80	152	finally
-    //   75	80	162	java/io/IOException
+    //   82	87	93	finally
+    //   9	73	104	finally
+    //   73	82	104	finally
+    //   9	73	125	java/io/IOException
+    //   73	82	125	java/io/IOException
+    //   82	87	132	java/io/IOException
+    //   87	91	136	java/io/IOException
+    //   109	113	139	java/io/IOException
+    //   119	123	143	java/io/IOException
   }
   
-  private void b()
+  private int b()
   {
-    this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qrcode", 0).edit();
-    localEditor.putInt("lastIndex", this.jdField_a_of_type_Int);
-    localEditor.commit();
+    int k = 0;
+    try
+    {
+      Object localObject = this.c.getSharedPreferences("qrcode", 0).getString("tpl_json", null);
+      if (localObject == null) {
+        return 0;
+      }
+      localObject = new JSONObject((String)localObject);
+      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("tpls");
+      if (localJSONArray.length() > 0)
+      {
+        a(localJSONArray);
+        k = ((JSONObject)localObject).getInt("t");
+      }
+      return k;
+    }
+    catch (JSONException localJSONException) {}
+    return 0;
   }
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangThread != null) {}
-    SharedPreferences localSharedPreferences;
-    long l;
-    do
-    {
+    if (this.d != null) {
       return;
-      localSharedPreferences = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qrcode", 0);
-      l = localSharedPreferences.getLong("updateTemplate2", 0L);
-    } while (System.currentTimeMillis() - l < 86400000L);
-    Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
-    int i = localDisplay.getHeight();
-    this.jdField_a_of_type_JavaLangThread = new CodeMaskManager.1(this, "qr_code_mask_update_extenal_thread", localSharedPreferences, localDisplay.getWidth(), i, paramInt);
-    this.jdField_a_of_type_JavaLangThread.start();
+    }
+    SharedPreferences localSharedPreferences = this.c.getSharedPreferences("qrcode", 0);
+    long l = localSharedPreferences.getLong("updateTemplate2", 0L);
+    if (System.currentTimeMillis() - l < 86400000L) {
+      return;
+    }
+    Display localDisplay = ((WindowManager)this.c.getSystemService("window")).getDefaultDisplay();
+    int k = localDisplay.getHeight();
+    this.d = new CodeMaskManager.1(this, "qr_code_mask_update_extenal_thread", localSharedPreferences, localDisplay.getWidth(), k, paramInt);
+    this.d.start();
+  }
+  
+  private int c(int paramInt)
+  {
+    if (paramInt >= 1)
+    {
+      int m = 0;
+      int k;
+      if (paramInt == 1)
+      {
+        k = m;
+      }
+      else if (this.e == -1)
+      {
+        int n = this.c.getSharedPreferences("qrcode", 0).getInt("lastIndex", 0);
+        k = m;
+        if (n >= 0) {
+          if (n >= paramInt) {
+            k = m;
+          } else {
+            k = n;
+          }
+        }
+      }
+      else
+      {
+        double d1 = Math.random();
+        double d2 = paramInt - 1;
+        Double.isNaN(d2);
+        paramInt = (int)(d1 * d2);
+        k = paramInt;
+        if (paramInt >= this.e) {
+          k = paramInt + 1;
+        }
+      }
+      this.f = k;
+      return this.f;
+    }
+    throw new IllegalArgumentException("qrcode mask build-in list should have at least 1 item");
+  }
+  
+  private Bundle c()
+  {
+    int k = c(this.b.size());
+    return a((Bundle)this.b.get(k));
+  }
+  
+  private void d()
+  {
+    this.e = this.f;
+    SharedPreferences.Editor localEditor = this.c.getSharedPreferences("qrcode", 0).edit();
+    localEditor.putInt("lastIndex", this.e);
+    localEditor.commit();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.h = true;
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Bundle)localIterator.next();
@@ -666,66 +803,74 @@ public class CodeMaskManager
         ((Bitmap)localObject).recycle();
       }
     }
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
+    this.a.clear();
   }
   
-  public void a(xyd paramxyd, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(CodeMaskManager.Callback paramCallback, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
+      return;
+    }
+    int k = 0;
+    if (paramBoolean3)
+    {
+      new Bundle();
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("bkgRes", 0);
+      ((Bundle)localObject).putInt("nameClr", -16777216);
+      ((Bundle)localObject).putInt("tipsClr", -8947849);
+      ((Bundle)localObject).putInt("W", 16777215);
+      ((Bundle)localObject).putInt("B", -16777216);
+      ((Bundle)localObject).putInt("head", 0);
+      ((Bundle)localObject).putInt("type", 1);
+      paramCallback.a(a((Bundle)localObject));
       return;
     }
     if ((paramBoolean1) && (paramBoolean2) && ((paramInt == 2) || (paramInt == 1)))
     {
-      if (this.jdField_a_of_type_AndroidOsBundle == null)
+      if (this.j == null)
       {
-        this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        this.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("W", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putInt("B", -9947128);
-        if (paramInt != 2) {
-          break label150;
+        this.j = new Bundle();
+        this.j.putInt("bkgRes", 0);
+        this.j.putInt("nameClr", -16777216);
+        this.j.putInt("tipsClr", -8947849);
+        this.j.putInt("W", 0);
+        this.j.putInt("B", -9947128);
+        if (paramInt == 2) {
+          this.j.putInt("head", 3);
+        } else if (paramInt == 1) {
+          this.j.putInt("head", 4);
         }
-        this.jdField_a_of_type_AndroidOsBundle.putInt("head", 3);
+        this.j.putInt("type", 1);
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidOsBundle.putInt("type", 1);
-        paramxyd.a(a(this.jdField_a_of_type_AndroidOsBundle));
-        return;
-        label150:
-        if (paramInt == 1) {
-          this.jdField_a_of_type_AndroidOsBundle.putInt("head", 4);
-        }
-      }
-    }
-    int i = a(this.jdField_a_of_type_JavaUtilList.size());
-    if (i >= 0)
-    {
-      paramInt = i;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {}
-    }
-    else
-    {
-      paramInt = 0;
-    }
-    Object localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (((Bundle)localObject).getInt("type") == 1)
-    {
-      paramxyd.a(a((Bundle)localObject));
-      b();
+      paramCallback.a(a(this.j));
       return;
     }
-    localObject = new CodeMaskManager.PrepareBundleTask(this, paramxyd, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramxyd), 10000L);
+    int m = c(this.a.size());
+    paramInt = k;
+    if (m >= 0) {
+      if (m >= this.a.size()) {
+        paramInt = k;
+      } else {
+        paramInt = m;
+      }
+    }
+    Object localObject = (Bundle)this.a.get(paramInt);
+    if (((Bundle)localObject).getInt("type") == 1)
+    {
+      paramCallback.a(a((Bundle)localObject));
+      d();
+      return;
+    }
+    localObject = new CodeMaskManager.PrepareBundleTask(this, paramCallback, (Bundle)localObject);
+    this.g.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramCallback), 10000L);
     ((CodeMaskManager.PrepareBundleTask)localObject).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager
  * JD-Core Version:    0.7.0.1
  */

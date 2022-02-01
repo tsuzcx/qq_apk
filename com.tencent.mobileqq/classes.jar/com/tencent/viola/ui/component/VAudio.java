@@ -44,30 +44,32 @@ public class VAudio
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1361636432)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if ((i == 1154693937) && (paramString.equals("playTimeChange")))
       {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("change"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("playTimeChange")) {
-            i = 1;
-          }
-        }
-        break;
+        i = 1;
+        break label50;
       }
     }
-    this.mAppendEvents.add(paramString);
-    return;
+    else if (paramString.equals("change"))
+    {
+      i = 0;
+      break label50;
+    }
+    i = -1;
+    label50:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        super.addEvent(paramString);
+        return;
+      }
+      this.mAppendEvents.add(paramString);
+      return;
+    }
     this.mAppendEvents.add(paramString);
   }
   
@@ -78,10 +80,10 @@ public class VAudio
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("code", paramInt);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("code", paramInt);
       if (!TextUtils.isEmpty(paramString)) {
-        localJSONObject.put("data", paramString);
+        ((JSONObject)localObject).put("data", paramString);
       }
       paramString = new JSONArray();
       if (getDomObject() != null)
@@ -92,12 +94,15 @@ public class VAudio
         }
       }
       paramString.put("change");
-      fireEvent("change", paramString, localJSONObject);
+      fireEvent("change", paramString, localObject);
       return;
     }
     catch (Exception paramString)
     {
-      ViolaLogUtils.e("VComponent", "audioChangeFireEvent error :" + paramString.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("audioChangeFireEvent error :");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      ViolaLogUtils.e("VComponent", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -108,18 +113,14 @@ public class VAudio
     try
     {
       localJSONObject.put("value", this.mAudioPlayerManager.getCurrentDuration());
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
   }
   
   @JSMethod(uiThread=false)
@@ -129,18 +130,14 @@ public class VAudio
     try
     {
       localJSONObject.put("value", this.mAudioPlayerManager.getTotalDuration());
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(paramString);
-      ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    ViolaBridgeManager.getInstance().callbackJavascript(this.mInstance.getInstanceId(), "", "callback", localJSONArray, localJSONObject, true);
   }
   
   public VAudioView initComponentHostView(@NonNull Context paramContext)
@@ -172,21 +169,24 @@ public class VAudio
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("currentPlayTime", paramInt1);
       localJSONObject.put("totalTime", paramInt2);
-      JSONArray localJSONArray = new JSONArray();
+      localObject = new JSONArray();
       if (getDomObject() != null)
       {
         String str = getDomObject().getRef();
         if (str != null) {
-          localJSONArray.put(str);
+          ((JSONArray)localObject).put(str);
         }
       }
-      localJSONArray.put("playTimeChange");
-      fireEvent("playTimeChange", localJSONArray, localJSONObject);
+      ((JSONArray)localObject).put("playTimeChange");
+      fireEvent("playTimeChange", localObject, localJSONObject);
       return;
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VComponent", "playTimeChangeFireEvent error :" + localException.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("playTimeChangeFireEvent error :");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      ViolaLogUtils.e("VComponent", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -220,7 +220,7 @@ public class VAudio
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VAudio
  * JD-Core Version:    0.7.0.1
  */

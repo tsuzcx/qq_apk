@@ -5,25 +5,17 @@ import java.io.Serializable;
 public final class MsgFilter
   implements Serializable
 {
-  public static final MsgFilter LIMIT_10_AND_IN_3_DAYS;
+  public static final MsgFilter LIMIT_10_AND_IN_3_DAYS = new MsgFilter(1, 1, "LIMIT_10_AND_IN_3_DAYS");
   public static final MsgFilter NO_FILTER;
   public static final int _LIMIT_10_AND_IN_3_DAYS = 1;
   public static final int _NO_FILTER = 0;
-  private static MsgFilter[] a;
+  private static MsgFilter[] a = new MsgFilter[2];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!MsgFilter.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new MsgFilter[2];
-      NO_FILTER = new MsgFilter(0, 0, "NO_FILTER");
-      LIMIT_10_AND_IN_3_DAYS = new MsgFilter(1, 1, "LIMIT_10_AND_IN_3_DAYS");
-      return;
-    }
+    NO_FILTER = new MsgFilter(0, 0, "NO_FILTER");
   }
   
   private MsgFilter(int paramInt1, int paramInt2, String paramString)
@@ -36,15 +28,16 @@ public final class MsgFilter
   public static MsgFilter convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      MsgFilter[] arrayOfMsgFilter = a;
+      if (i >= arrayOfMsgFilter.length) {
+        break;
+      }
+      if (arrayOfMsgFilter[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -52,15 +45,16 @@ public final class MsgFilter
   public static MsgFilter convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      MsgFilter[] arrayOfMsgFilter = a;
+      if (i >= arrayOfMsgFilter.length) {
+        break;
+      }
+      if (arrayOfMsgFilter[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -77,7 +71,7 @@ public final class MsgFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.MsgFilter
  * JD-Core Version:    0.7.0.1
  */

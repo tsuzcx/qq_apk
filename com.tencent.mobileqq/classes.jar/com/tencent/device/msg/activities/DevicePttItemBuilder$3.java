@@ -1,32 +1,41 @@
 package com.tencent.device.msg.activities;
 
+import com.tencent.device.file.DeviceAVFileMsgObserver;
+import com.tencent.device.msg.data.DeviceMsgHandle;
 import com.tencent.device.msg.data.MessageForDevPtt;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.util.QLog;
-import zux;
-import zxm;
-import zxz;
 
-public class DevicePttItemBuilder$3
+class DevicePttItemBuilder$3
   implements Runnable
 {
-  public DevicePttItemBuilder$3(zxm paramzxm, MessageForPtt paramMessageForPtt) {}
+  DevicePttItemBuilder$3(DevicePttItemBuilder paramDevicePttItemBuilder, MessageForPtt paramMessageForPtt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTrans", 2, "downloadPtt istroop" + this.a.istroop + " itemType " + this.a.itemType + " uniseq:" + this.a.uniseq);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadPtt istroop");
+      ((StringBuilder)localObject).append(this.a.istroop);
+      ((StringBuilder)localObject).append(" itemType ");
+      ((StringBuilder)localObject).append(this.a.itemType);
+      ((StringBuilder)localObject).append(" uniseq:");
+      ((StringBuilder)localObject).append(this.a.uniseq);
+      QLog.d("FileTrans", 2, ((StringBuilder)localObject).toString());
     }
-    zux localzux = ((zxz)this.this$0.a.a(49)).a();
-    if ((this.a instanceof MessageForDevPtt)) {
-      localzux.a((MessageForDevPtt)this.a);
+    Object localObject = ((DeviceMsgHandle)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a();
+    MessageForPtt localMessageForPtt = this.a;
+    if ((localMessageForPtt instanceof MessageForDevPtt)) {
+      ((DeviceAVFileMsgObserver)localObject).a((MessageForDevPtt)localMessageForPtt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevicePttItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

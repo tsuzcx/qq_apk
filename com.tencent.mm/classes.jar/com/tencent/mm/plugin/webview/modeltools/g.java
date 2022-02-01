@@ -1,464 +1,553 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.c;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.cn.d;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.g.a.cr;
-import com.tencent.mm.g.a.k;
-import com.tencent.mm.g.a.wd;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.webview.fts.g.a;
-import com.tencent.mm.plugin.webview.fts.h;
-import com.tencent.mm.plugin.webview.fts.h.a;
-import com.tencent.mm.plugin.webview.fts.h.b;
-import com.tencent.mm.plugin.webview.luggage.t;
-import com.tencent.mm.plugin.webview.luggage.t.1;
-import com.tencent.mm.plugin.webview.model.ak;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.app.q.a;
+import com.tencent.mm.autogen.a.adz;
+import com.tencent.mm.autogen.a.cd;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.message.k.c;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.model.y;
+import com.tencent.mm.modelavatar.k;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.network.p;
+import com.tencent.mm.network.p.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.webview.fts.i.a;
+import com.tencent.mm.plugin.webview.fts.j;
+import com.tencent.mm.plugin.webview.fts.j.b;
+import com.tencent.mm.plugin.webview.fts.j.c;
 import com.tencent.mm.plugin.webview.model.am;
-import com.tencent.mm.plugin.webview.model.ao;
-import com.tencent.mm.plugin.webview.model.au;
-import com.tencent.mm.plugin.webview.ui.tools.bag.l;
-import com.tencent.mm.plugin.webview.ui.tools.bag.l.b;
-import com.tencent.mm.pluginsdk.g.a.a.b.c;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.webview.model.an;
+import com.tencent.mm.plugin.webview.model.aq;
+import com.tencent.mm.plugin.webview.model.at;
+import com.tencent.mm.plugin.webview.model.ax;
+import com.tencent.mm.plugin.webview.model.d;
+import com.tencent.mm.pluginsdk.model.ad.a;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
-import org.xwalk.core.XWalkEnvironment;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class g
-  implements at
+  implements be
 {
-  private static final HashMap<Integer, h.d> baseDBFactories;
-  private com.tencent.mm.sdk.b.c<bg> fAZ;
-  public boolean isAppActive;
-  private bz.a jKW;
-  com.tencent.mm.sdk.b.c kMK;
-  private com.tencent.mm.network.n mKL;
-  private com.tencent.mm.plugin.webview.model.al uXF;
-  private am uXG;
-  private ak uXH;
-  private m uXI;
-  private com.tencent.mm.plugin.webview.model.e uXJ;
-  private ao uXK;
-  private com.tencent.mm.plugin.webview.b.e uXL;
-  private h uXM;
-  private com.tencent.mm.plugin.webview.fts.a uXN;
-  private com.tencent.mm.plugin.webview.fts.b uXO;
-  private com.tencent.mm.plugin.webview.c.a uXP;
-  private com.tencent.mm.plugin.webview.luggage.a uXQ;
-  private com.tencent.mm.plugin.game.api.g uXR;
-  private com.tencent.mm.sdk.b.c uXS;
-  private com.tencent.mm.sdk.b.c uXT;
-  com.tencent.mm.sdk.b.c uXU;
-  com.tencent.mm.sdk.b.c uXV;
-  final com.tencent.mm.sdk.b.c<wd> uXW;
-  com.tencent.mm.sdk.b.c uXX;
-  final com.tencent.mm.sdk.b.c<k> uXY;
-  com.tencent.mm.sdk.b.c uXZ;
-  com.tencent.mm.sdk.b.c uYa;
-  com.tencent.mm.sdk.b.c uYb;
-  private com.tencent.mm.sdk.b.c uYc;
+  private static final HashMap<Integer, h.b> baseDBFactories;
+  private p ItW;
+  private an WND;
+  private com.tencent.mm.plugin.webview.model.ao WNE;
+  private am WNF;
+  private n WNG;
+  private com.tencent.mm.plugin.webview.model.g WNH;
+  private aq WNI;
+  private com.tencent.mm.plugin.webview.b.e WNJ;
+  private j WNK;
+  private com.tencent.mm.plugin.webview.fts.b WNL;
+  private com.tencent.mm.plugin.webview.fts.c WNM;
+  private com.tencent.mm.plugin.webview.emojistore.a WNN;
+  private com.tencent.mm.plugin.webview.luggage.a WNO;
+  private com.tencent.mm.plugin.game.api.i WNP;
+  public boolean WNQ;
+  private IListener WNR;
+  IListener WNS;
+  IListener WNT;
+  final IListener<adz> WNU;
+  IListener WNV;
+  final IListener<com.tencent.mm.autogen.a.n> WNW;
+  IListener WNX;
+  IListener WNY;
+  IListener WNZ;
+  private IListener WOa;
+  private q.a appForegroundListener;
+  private IListener<cd> oDs;
+  private cl.a vip;
   
   static
   {
-    AppMethodBeat.i(7006);
+    AppMethodBeat.i(79187);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("WebViewHostsFilterTable".hashCode()), new g.18());
-    baseDBFactories.put(Integer.valueOf("WEBVIEW_JSLOG_BLOCK_LIST_TABLE".hashCode()), new g.19());
-    baseDBFactories.put(Integer.valueOf("WEBVIEW_LOCAL_DATA".hashCode()), new g.20());
-    baseDBFactories.put(Integer.valueOf("WEBVIEW_DATA".hashCode()), new g.21());
-    baseDBFactories.put(Integer.valueOf("WEBVIEW_HISTORY_DATA".hashCode()), new g.22());
-    AppMethodBeat.o(7006);
+    localHashMap.put(Integer.valueOf("WebViewHostsFilterTable".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return n.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("WEBVIEW_JSLOG_BLOCK_LIST_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.webview.model.g.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("WEBVIEW_LOCAL_DATA".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return aq.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("WEBVIEW_DATA".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.webview.b.c.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("WEBVIEW_HISTORY_DATA".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.webview.b.e.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(79187);
   }
   
   public g()
   {
-    AppMethodBeat.i(6991);
-    this.uXR = new g.1(this);
-    this.isAppActive = true;
-    this.uXS = new g.12(this);
-    this.uXT = new g.17(this);
-    this.jKW = new g.3(this);
-    this.uXU = new g.4(this);
-    this.uXV = new g.5(this);
-    this.uXW = new g.6(this);
-    this.uXX = new g.7(this);
-    this.kMK = new g.8(this);
-    this.uXY = new g.9(this);
-    this.uXZ = new com.tencent.mm.sdk.b.c()
+    AppMethodBeat.i(79172);
+    this.WNP = new com.tencent.mm.plugin.game.api.i()
     {
-      private static boolean a(cr paramAnonymouscr)
+      public final void fn(String paramAnonymousString, int paramAnonymousInt)
       {
-        AppMethodBeat.i(153149);
-        String str1;
-        if ((paramAnonymouscr instanceof cr))
-        {
-          paramAnonymouscr = ah.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4).edit();
-          XWalkEnvironment.setIpType(com.tencent.mm.m.g.Nq().getInt("WebKernelMode", -1));
-          str1 = com.tencent.mm.m.g.Nq().getValue("WebviewDownloadTbs");
-          String str2 = com.tencent.mm.m.g.Nq().getValue("WebviewEnableTbs");
-          ab.i("MicroMsg.SubCoreTools", "updateWebViewDynamicConfig, tbsDownload = %s, tbsEnable = %s, tbsSupportedVerSec = %s", new Object[] { str1, str2, com.tencent.mm.m.g.Nq().getValue("WebviewSupportedTbsVersionSection") });
-          if (str1 != null) {
-            paramAnonymouscr.putString("tbs_download", str1);
-          }
-          paramAnonymouscr.apply();
-          if (("1".equals(str1)) && ("1".equals(str2))) {
-            com.tencent.mm.pluginsdk.ui.tools.m.kS(1);
-          }
-          if (str1 == null) {}
-        }
+        AppMethodBeat.i(79150);
+        JSONObject localJSONObject = new JSONObject();
         try
         {
-          if ("0".equals(str1))
-          {
-            ab.i("MicroMsg.SubCoreTools", "tbs download disable, reset tbssdk in sandbox");
-            paramAnonymouscr = new Intent();
-            paramAnonymouscr.setComponent(new ComponentName(ah.getPackageName(), "com.tencent.mm.booter.MMReceivers$SandBoxProcessReceiver"));
-            ah.getContext().sendBroadcast(paramAnonymouscr);
-          }
-          AppMethodBeat.o(153149);
-          return false;
+          localJSONObject.put("postId", paramAnonymousString);
+          localJSONObject.put("result", paramAnonymousInt);
+          paramAnonymousString = new Bundle();
+          paramAnonymousString.putString("name", "onPublishHaowanEnd");
+          paramAnonymousString.putString("data", localJSONObject.toString());
+          ToolsProcessIPCService.a(paramAnonymousString, com.tencent.mm.plugin.webview.luggage.a.a.class, null);
+          AppMethodBeat.o(79150);
+          return;
         }
-        catch (Exception paramAnonymouscr)
+        catch (JSONException paramAnonymousString)
         {
-          for (;;)
-          {
-            ab.w("MicroMsg.SubCoreTools", "sendbroadcast ,ex = %s", new Object[] { paramAnonymouscr.getMessage() });
-          }
+          AppMethodBeat.o(79150);
+        }
+      }
+      
+      public final void h(String paramAnonymousString, float paramAnonymousFloat)
+      {
+        AppMethodBeat.i(79151);
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("postId", paramAnonymousString);
+          localJSONObject.put("percent", paramAnonymousFloat);
+          paramAnonymousString = new Bundle();
+          paramAnonymousString.putString("name", "onPublishHaowanProgress");
+          paramAnonymousString.putString("data", localJSONObject.toString());
+          ToolsProcessIPCService.a(paramAnonymousString, com.tencent.mm.plugin.webview.luggage.a.a.class, null);
+          AppMethodBeat.o(79151);
+          return;
+        }
+        catch (JSONException paramAnonymousString)
+        {
+          AppMethodBeat.o(79151);
         }
       }
     };
-    this.uYa = new g.11(this);
-    this.uYb = new g.13(this);
-    this.fAZ = new g.14(this);
-    this.uYc = new g.15(this);
-    this.mKL = new g.16(this);
-    AppMethodBeat.o(6991);
-  }
-  
-  public static com.tencent.mm.plugin.webview.fts.a dcA()
-  {
-    AppMethodBeat.i(6994);
-    if (dcy().uXN == null) {
-      dcy().uXN = new com.tencent.mm.plugin.webview.fts.a();
-    }
-    com.tencent.mm.plugin.webview.fts.a locala = dcy().uXN;
-    AppMethodBeat.o(6994);
-    return locala;
-  }
-  
-  public static com.tencent.mm.plugin.webview.fts.b dcB()
-  {
-    AppMethodBeat.i(6995);
-    if (dcy().uXO == null) {
-      dcy().uXO = new com.tencent.mm.plugin.webview.fts.b();
-    }
-    com.tencent.mm.plugin.webview.fts.b localb = dcy().uXO;
-    AppMethodBeat.o(6995);
-    return localb;
-  }
-  
-  public static h dcC()
-  {
-    AppMethodBeat.i(6996);
-    if (dcy().uXM == null) {
-      dcy().uXM = new h();
-    }
-    h localh = dcy().uXM;
-    AppMethodBeat.o(6996);
-    return localh;
-  }
-  
-  public static com.tencent.mm.plugin.webview.model.al dcD()
-  {
-    AppMethodBeat.i(6997);
-    if (dcy().uXF == null) {
-      dcy().uXF = new com.tencent.mm.plugin.webview.model.al();
-    }
-    com.tencent.mm.plugin.webview.model.al localal = dcy().uXF;
-    AppMethodBeat.o(6997);
-    return localal;
-  }
-  
-  public static am dcE()
-  {
-    AppMethodBeat.i(6998);
-    if (dcy().uXG == null) {
-      dcy().uXG = am.dbZ();
-    }
-    am localam = dcy().uXG;
-    AppMethodBeat.o(6998);
-    return localam;
-  }
-  
-  public static m dcF()
-  {
-    AppMethodBeat.i(6999);
-    if (dcy().uXI == null)
+    this.WNQ = true;
+    this.WNR = new SubCoreTools.2(this, com.tencent.mm.app.f.hfK);
+    this.vip = new cl.a()
     {
-      localObject = dcy();
-      com.tencent.mm.kernel.g.RM();
-      ((g)localObject).uXI = new m(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    Object localObject = dcy().uXI;
-    AppMethodBeat.o(6999);
-    return localObject;
-  }
-  
-  public static com.tencent.mm.plugin.webview.model.e dcG()
-  {
-    AppMethodBeat.i(7000);
-    if (dcy().uXJ == null)
+      public final void a(final g.a paramAnonymousa)
+      {
+        AppMethodBeat.i(295823);
+        paramAnonymousa = w.a(paramAnonymousa.mpN.YFG);
+        final n localn = g.iwa();
+        com.tencent.threadpool.h.ahAA.bp(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(295778);
+            Log.d("MicroMsg.SubCoreTools", "webview hijack sysMsgListener");
+            Map localMap = XmlParser.parseXml(paramAnonymousa, "sysmsg", null);
+            long l = Util.getLong((String)localMap.get(".sysmsg.hijackconfig.expiretime"), 9223372036854775807L);
+            String str1 = ".sysmsg.hijackconfig.domainlist.domain";
+            int i = 0;
+            if (i > 0) {
+              str1 = ".sysmsg.hijackconfig.domainlist.domain" + i;
+            }
+            for (;;)
+            {
+              i += 1;
+              String str2 = (String)localMap.get(str1);
+              if (!Util.isNullOrNil(str2))
+              {
+                i locali = new i();
+                locali.field_expireTime = l;
+                locali.field_host = str2;
+                localn.insert(locali);
+                break;
+              }
+              AppMethodBeat.o(295778);
+              return;
+            }
+          }
+        });
+        AppMethodBeat.o(295823);
+      }
+      
+      public final void a(g.c paramAnonymousc) {}
+    };
+    this.WNS = new SubCoreTools.10(this, com.tencent.mm.app.f.hfK);
+    this.WNT = new SubCoreTools.11(this, com.tencent.mm.app.f.hfK);
+    this.WNU = new SubCoreTools.12(this, com.tencent.mm.app.f.hfK);
+    this.WNV = new SubCoreTools.13(this, com.tencent.mm.app.f.hfK);
+    this.appForegroundListener = new q.a()
     {
-      localObject = dcy();
-      com.tencent.mm.kernel.g.RM();
-      ((g)localObject).uXJ = new com.tencent.mm.plugin.webview.model.e(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    Object localObject = dcy().uXJ;
-    AppMethodBeat.o(7000);
-    return localObject;
-  }
-  
-  public static ao dcH()
-  {
-    AppMethodBeat.i(7001);
-    if (dcy().uXK == null)
+      public final void onAppBackground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(295852);
+        g.a(g.this, false);
+        AppMethodBeat.o(295852);
+      }
+      
+      public final void onAppForeground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(295849);
+        g.a(g.this, true);
+        AppMethodBeat.o(295849);
+      }
+    };
+    this.WNW = new SubCoreTools.15(this, com.tencent.mm.app.f.hfK);
+    this.WNX = new SubCoreTools.16(this, com.tencent.mm.app.f.hfK);
+    this.WNY = new SubCoreTools.17(this, com.tencent.mm.app.f.hfK);
+    this.WNZ = new SubCoreTools.18(this, com.tencent.mm.app.f.hfK);
+    this.oDs = new SubCoreTools.19(this, com.tencent.mm.app.f.hfK);
+    this.WOa = new SubCoreTools.20(this, com.tencent.mm.app.f.hfK);
+    this.ItW = new p.a()
     {
-      localObject = dcy();
-      com.tencent.mm.kernel.g.RM();
-      ((g)localObject).uXK = new ao(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    Object localObject = dcy().uXK;
-    AppMethodBeat.o(7001);
-    return localObject;
+      private final byte[] lrK;
+      
+      public final void onNetworkChange(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(295845);
+        synchronized (this.lrK)
+        {
+          String str = aa.fTX();
+          if (str.equalsIgnoreCase("WIFI"))
+          {
+            ax.ivy().setNetWorkState(1);
+            g.bkO(str);
+            AppMethodBeat.o(295845);
+            return;
+          }
+          ax.ivy().setNetWorkState(2);
+        }
+      }
+    };
+    AppMethodBeat.o(79172);
   }
   
-  public static com.tencent.mm.plugin.webview.b.e dcI()
+  public static g ivT()
   {
-    AppMethodBeat.i(7002);
-    if (dcy().uXL == null)
-    {
-      localObject = dcy();
-      com.tencent.mm.kernel.g.RM();
-      ((g)localObject).uXL = new com.tencent.mm.plugin.webview.b.e(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    Object localObject = dcy().uXL;
-    AppMethodBeat.o(7002);
-    return localObject;
-  }
-  
-  public static g dcy()
-  {
-    AppMethodBeat.i(6992);
-    g localg = (g)q.S(g.class);
-    AppMethodBeat.o(6992);
+    AppMethodBeat.i(79173);
+    g localg = (g)y.aL(g.class);
+    AppMethodBeat.o(79173);
     return localg;
   }
   
-  public static com.tencent.mm.plugin.webview.c.a dcz()
+  public static com.tencent.mm.plugin.webview.emojistore.a ivU()
   {
-    AppMethodBeat.i(6993);
-    if (dcy().uXP == null) {
-      dcy().uXP = new com.tencent.mm.plugin.webview.c.a();
+    AppMethodBeat.i(79174);
+    if (ivT().WNN == null) {
+      ivT().WNN = new com.tencent.mm.plugin.webview.emojistore.a();
     }
-    com.tencent.mm.plugin.webview.c.a locala = dcy().uXP;
-    AppMethodBeat.o(6993);
+    com.tencent.mm.plugin.webview.emojistore.a locala = ivT().WNN;
+    AppMethodBeat.o(79174);
     return locala;
+  }
+  
+  public static com.tencent.mm.plugin.webview.fts.b ivV()
+  {
+    AppMethodBeat.i(79175);
+    if (ivT().WNL == null) {
+      ivT().WNL = new com.tencent.mm.plugin.webview.fts.b();
+    }
+    com.tencent.mm.plugin.webview.fts.b localb = ivT().WNL;
+    AppMethodBeat.o(79175);
+    return localb;
+  }
+  
+  public static com.tencent.mm.plugin.webview.fts.c ivW()
+  {
+    AppMethodBeat.i(79176);
+    if (ivT().WNM == null) {
+      ivT().WNM = new com.tencent.mm.plugin.webview.fts.c();
+    }
+    com.tencent.mm.plugin.webview.fts.c localc = ivT().WNM;
+    AppMethodBeat.o(79176);
+    return localc;
+  }
+  
+  public static j ivX()
+  {
+    AppMethodBeat.i(79177);
+    if (ivT().WNK == null) {
+      ivT().WNK = new j();
+    }
+    j localj = ivT().WNK;
+    AppMethodBeat.o(79177);
+    return localj;
+  }
+  
+  public static an ivY()
+  {
+    AppMethodBeat.i(79178);
+    if (ivT().WND == null) {
+      ivT().WND = new an();
+    }
+    an localan = ivT().WND;
+    AppMethodBeat.o(79178);
+    return localan;
+  }
+  
+  public static com.tencent.mm.plugin.webview.model.ao ivZ()
+  {
+    AppMethodBeat.i(79179);
+    if (ivT().WNE == null) {
+      ivT().WNE = com.tencent.mm.plugin.webview.model.ao.ivu();
+    }
+    com.tencent.mm.plugin.webview.model.ao localao = ivT().WNE;
+    AppMethodBeat.o(79179);
+    return localao;
+  }
+  
+  public static n iwa()
+  {
+    AppMethodBeat.i(79180);
+    if (ivT().WNG == null)
+    {
+      localObject = ivT();
+      com.tencent.mm.kernel.h.baF();
+      ((g)localObject).WNG = new n(com.tencent.mm.kernel.h.baE().mCN);
+    }
+    Object localObject = ivT().WNG;
+    AppMethodBeat.o(79180);
+    return localObject;
+  }
+  
+  public static com.tencent.mm.plugin.webview.model.g iwb()
+  {
+    AppMethodBeat.i(79181);
+    if (ivT().WNH == null)
+    {
+      localObject = ivT();
+      com.tencent.mm.kernel.h.baF();
+      ((g)localObject).WNH = new com.tencent.mm.plugin.webview.model.g(com.tencent.mm.kernel.h.baE().mCN);
+    }
+    Object localObject = ivT().WNH;
+    AppMethodBeat.o(79181);
+    return localObject;
+  }
+  
+  public static aq iwc()
+  {
+    AppMethodBeat.i(79182);
+    if (ivT().WNI == null)
+    {
+      localObject = ivT();
+      com.tencent.mm.kernel.h.baF();
+      ((g)localObject).WNI = new aq(com.tencent.mm.kernel.h.baE().mCN);
+    }
+    Object localObject = ivT().WNI;
+    AppMethodBeat.o(79182);
+    return localObject;
+  }
+  
+  public static com.tencent.mm.plugin.webview.b.e iwd()
+  {
+    AppMethodBeat.i(79183);
+    if (ivT().WNJ == null)
+    {
+      localObject = ivT();
+      com.tencent.mm.kernel.h.baF();
+      ((g)localObject).WNJ = new com.tencent.mm.plugin.webview.b.e(com.tencent.mm.kernel.h.baE().mCN);
+    }
+    Object localObject = ivT().WNJ;
+    AppMethodBeat.o(79183);
+    return localObject;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return baseDBFactories;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(7004);
-    ab.i("MicroMsg.SubCoreTools", "onAccountPostReset hc:%d", new Object[] { Integer.valueOf(hashCode()) });
-    this.uXS.alive();
-    com.tencent.mm.sdk.b.a.ymk.c(this.uXX);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uXZ);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uYa);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uYb);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uXU);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uXV);
-    com.tencent.mm.sdk.b.a.ymk.c(this.uYc);
-    com.tencent.mm.sdk.b.a.ymk.c(this.fAZ);
-    com.tencent.mm.sdk.b.a.ymk.c(this.kMK);
-    if (AppForegroundDelegate.bXk.bLR) {
-      com.tencent.mm.sdk.platformtools.al.d(new g.23(this));
-    }
-    this.uXY.alive();
-    this.uXT.alive();
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("hijackconfig", this.jKW, true);
-    com.tencent.mm.kernel.g.RK().a(this.mKL);
-    com.tencent.mm.plugin.w.c.qSb.a(new au());
-    this.uXW.alive();
-    j.c.a(new g.2(this));
-    d.iO(ah.getContext());
-    com.tencent.mm.kernel.g.RJ();
-    XWalkEnvironment.setGrayValueByUserId(com.tencent.mm.kernel.a.getUin());
-    if (com.tencent.mm.m.g.Nq() != null) {
-      XWalkEnvironment.setIpType(com.tencent.mm.m.g.Nq().getInt("WebKernelMode", -1));
-    }
-    com.tencent.mm.plugin.webview.fts.g.daB();
-    com.tencent.mm.plugin.webview.fts.g.start();
-    ab.d("MicroMsg.CityServiceHelper", "addCheckResUpdateListener");
-    if (ab.getLogLevel() <= 0)
+    AppMethodBeat.i(79185);
+    Log.i("MicroMsg.SubCoreTools", "onAccountPostReset hc:%d", new Object[] { Integer.valueOf(hashCode()) });
+    this.WNV.alive();
+    this.WNX.alive();
+    this.WNY.alive();
+    this.WNZ.alive();
+    this.WNS.alive();
+    this.WNT.alive();
+    this.WOa.alive();
+    this.oDs.alive();
+    this.appForegroundListener.alive();
+    this.WNW.alive();
+    this.WNR.alive();
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("hijackconfig", this.vip, true);
+    com.tencent.mm.kernel.h.baD().a(this.ItW);
+    com.tencent.mm.plugin.an.c.PET.a(new d());
+    com.tencent.mm.plugin.an.c.PET.a(new at());
+    this.WNU.alive();
+    k.c.a(new com.tencent.mm.cp.c() {});
+    com.tencent.mm.xwebutil.c.nU(MMApplicationContext.getContext());
+    com.tencent.mm.kernel.h.baC();
+    boolean bool = com.tencent.xweb.ao.setGrayValueByUserId(com.tencent.mm.kernel.b.getUin());
+    if (com.tencent.mm.k.i.aRC() != null) {}
+    for (paramBoolean = com.tencent.xweb.ao.aJA(com.tencent.mm.k.i.aRC().getInt("WebKernelMode", -1));; paramBoolean = false)
     {
-      b.c.dmg();
-      com.tencent.mm.pluginsdk.g.a.a.b.LE(54);
+      Log.i("MicroMsg.SubCoreTools", "onAccountPostReset, hasChangedGrayValue:%s, hasChangedIPType:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+      if ((bool) || (paramBoolean))
+      {
+        MMApplicationContext.getContext();
+        ad.a.avN(5);
+      }
+      com.tencent.mm.plugin.webview.fts.i.ite();
+      com.tencent.mm.plugin.webview.fts.i.start();
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.webview.i.a.class, new com.tencent.mm.plugin.webview.ui.tools.bag.e());
+      com.tencent.mm.plugin.webview.ui.tools.floatball.b.cou();
+      com.tencent.mm.plugin.webview.ui.tools.multitask.a.evw();
+      com.tencent.mm.plugin.webview.luggage.s.iuI();
+      this.WNO = new com.tencent.mm.plugin.webview.luggage.a();
+      ivY().a(this.WNO);
+      com.tencent.mm.plugin.game.api.a.a(this.WNP);
+      com.tencent.mm.plugin.webview.fts.a locala = com.tencent.mm.plugin.webview.fts.a.WAv;
+      com.tencent.mm.kernel.h.aZW().a(1532, (com.tencent.mm.am.h)locala);
+      ivX();
+      AppMethodBeat.o(79185);
+      return;
     }
-    Object localObject = new b.1();
-    com.tencent.mm.sdk.b.a.ymk.b((com.tencent.mm.sdk.b.c)localObject);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.webview.e.a.class, new com.tencent.mm.plugin.webview.ui.tools.bag.m());
-    this.uXQ = new com.tencent.mm.plugin.webview.luggage.a();
-    dcD().a(this.uXQ);
-    t.uTa = new t.1();
-    localObject = l.vix;
-    l.b localb = t.uTa;
-    if (localb != null) {
-      ((l)localObject).viC.add(localb);
-    }
-    if (com.tencent.mm.plugin.webview.luggage.a.b.uUp == null) {
-      com.tencent.mm.plugin.webview.luggage.a.b.uUp = new com.tencent.mm.plugin.webview.luggage.a.b.1();
-    }
-    com.tencent.mm.plugin.downloader.b.a.a(com.tencent.mm.plugin.webview.luggage.a.b.uUp);
-    com.tencent.mm.plugin.game.api.a.a(this.uXR);
-    AppMethodBeat.o(7004);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(7003);
-    ab.i("MicroMsg.SubCoreTools", "onAccountRelease hc:%d", new Object[] { Integer.valueOf(hashCode()) });
-    this.uXS.dead();
-    com.tencent.mm.sdk.b.a.ymk.d(this.uXX);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uXZ);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uYa);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uYb);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uXU);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uXV);
-    com.tencent.mm.sdk.b.a.ymk.d(this.uYc);
-    com.tencent.mm.sdk.b.a.ymk.d(this.fAZ);
-    com.tencent.mm.sdk.b.a.ymk.d(this.kMK);
-    this.uXY.dead();
-    this.uXT.dead();
-    com.tencent.mm.kernel.g.RK().b(this.mKL);
-    if (this.uXH != null)
+    AppMethodBeat.i(79184);
+    Log.i("MicroMsg.SubCoreTools", "onAccountRelease hc:%d", new Object[] { Integer.valueOf(hashCode()) });
+    this.WNV.dead();
+    this.WNX.dead();
+    this.WNY.dead();
+    this.WNZ.dead();
+    this.WNS.dead();
+    this.WNT.dead();
+    this.WOa.dead();
+    this.oDs.dead();
+    this.appForegroundListener.dead();
+    this.WNW.dead();
+    this.WNR.dead();
+    com.tencent.mm.kernel.h.baD().b(this.ItW);
+    if (this.WNF != null)
     {
-      localObject1 = this.uXH;
-      if (((ak)localObject1).rru != null)
-      {
-        com.tencent.mm.plugin.downloader.model.f.bjl();
-        com.tencent.mm.plugin.downloader.model.c.b(((ak)localObject1).rru);
-      }
-      if ((((ak)localObject1).uWe != null) && (((ak)localObject1).uWe.size() > 0))
-      {
-        localObject1 = ((ak)localObject1).uWe.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (Long)((Iterator)localObject1).next();
-          ab.i("MicroMsg.WebViewAutoDownloader", "remove download task : %d", new Object[] { localObject2 });
-          com.tencent.mm.plugin.downloader.model.f.bjl().iz(((Long)localObject2).longValue());
-        }
-      }
+      AppMethodBeat.o(79184);
+      throw null;
     }
-    if (this.uXO != null)
+    if (this.WNM != null)
     {
-      localObject1 = this.uXO;
-      com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.webview.fts.b)localObject1).hCe);
-      if (((com.tencent.mm.plugin.webview.fts.b)localObject1).uOB != null)
+      localObject1 = this.WNM;
+      com.tencent.mm.kernel.h.aZW().b(2975, (com.tencent.mm.am.h)localObject1);
+      ((com.tencent.mm.plugin.webview.fts.c)localObject1).rDF.dead();
+      if (((com.tencent.mm.plugin.webview.fts.c)localObject1).HAc != null)
       {
-        com.tencent.mm.kernel.g.Rc().b(1048, (com.tencent.mm.ai.f)localObject1);
-        com.tencent.mm.kernel.g.Rc().a(((com.tencent.mm.plugin.webview.fts.b)localObject1).uOB);
-        ((com.tencent.mm.plugin.webview.fts.b)localObject1).uOB = null;
+        com.tencent.mm.kernel.h.aZW().b(1048, (com.tencent.mm.am.h)localObject1);
+        com.tencent.mm.kernel.h.aZW().a(((com.tencent.mm.plugin.webview.fts.c)localObject1).HAc);
+        ((com.tencent.mm.plugin.webview.fts.c)localObject1).HAc = null;
       }
-      this.uXO = null;
+      this.WNM = null;
     }
-    if (this.uXM != null)
+    if (this.WNK != null)
     {
-      localObject1 = this.uXM;
-      ((h)localObject1).uPn.dead();
-      ((h)localObject1).uPz.dead();
-      localObject2 = ((h)localObject1).uPB;
-      if (((h.a)localObject2).uPs != null) {
-        com.tencent.mm.kernel.g.Rc().a(((h.a)localObject2).uPs);
+      localObject1 = this.WNK;
+      ((j)localObject1).WBC.dead();
+      ((j)localObject1).WBO.dead();
+      localObject2 = ((j)localObject1).WBR;
+      if (((j.b)localObject2).WBH != null) {
+        com.tencent.mm.kernel.h.aZW().a(((j.b)localObject2).WBH);
       }
-      if (((h.a)localObject2).uPG != null) {
-        ((h.a)localObject2).uPG.jFQ = true;
+      if (((j.b)localObject2).WBX != null) {
+        ((j.b)localObject2).WBX.cBt = true;
       }
-      localObject2 = ((h)localObject1).uPC;
-      if (((h.b)localObject2).uPI != null) {
-        com.tencent.mm.kernel.g.Rc().b(((h.b)localObject2).uPI.getType(), ((h.b)localObject2).uPD);
+      localObject2 = ((j)localObject1).WBS;
+      if (((j.c)localObject2).WBZ != null) {
+        com.tencent.mm.kernel.h.aZW().b(((j.c)localObject2).WBZ.getType(), ((j.c)localObject2).WBT);
       }
-      if (((h)localObject1).mSV != null)
+      if (((j)localObject1).HtE != null)
       {
-        ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(((h)localObject1).mSV);
-        ((h)localObject1).mSV = null;
+        ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(((j)localObject1).HtE);
+        ((j)localObject1).HtE = null;
       }
-      this.uXM = null;
+      ((j)localObject1).WBQ.WBg.clear();
+      ((j)localObject1).WBt.removeCallbacksAndMessages(null);
+      ((j)localObject1).WBt.quit();
+      this.WNK = null;
     }
-    if (this.uXN != null)
+    if (this.WNL != null)
     {
-      localObject1 = this.uXN;
-      ((com.tencent.mm.plugin.webview.fts.a)localObject1).rbF.dead();
-      ((com.tencent.mm.plugin.webview.fts.a)localObject1).uOv.dead();
-      o.adg().remove((k.a)localObject1);
-      this.uXN = null;
+      localObject1 = this.WNL;
+      ((com.tencent.mm.plugin.webview.fts.b)localObject1).QoU.dead();
+      ((com.tencent.mm.plugin.webview.fts.b)localObject1).WAB.dead();
+      q.bFE().remove((MStorage.IOnStorageChange)localObject1);
+      this.WNL = null;
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("hijackconfig", this.jKW, true);
-    if (this.uXJ != null) {
-      this.uXJ.dbI();
+    Object localObject1 = com.tencent.mm.plugin.webview.fts.a.WAv;
+    com.tencent.mm.kernel.h.aZW().b(1532, (com.tencent.mm.am.h)localObject1);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("hijackconfig", this.vip, true);
+    if (this.WNH != null) {
+      this.WNH.iuZ();
     }
-    this.uXW.dead();
-    Object localObject1 = com.tencent.mm.plugin.webview.fts.g.daB();
-    Object localObject2 = ((com.tencent.mm.plugin.webview.fts.g)localObject1).uPg;
-    if (((g.a)localObject2).uPs != null) {
-      com.tencent.mm.kernel.g.Rc().a(((g.a)localObject2).uPs);
+    this.WNU.dead();
+    localObject1 = com.tencent.mm.plugin.webview.fts.i.ite();
+    Object localObject2 = ((com.tencent.mm.plugin.webview.fts.i)localObject1).WBv;
+    if (((i.a)localObject2).WBH != null) {
+      com.tencent.mm.kernel.h.aZW().a(((i.a)localObject2).WBH);
     }
-    if (((g.a)localObject2).uPt != null) {
-      ((g.a)localObject2).uPt.jFQ = true;
+    if (((i.a)localObject2).WBI != null) {
+      ((i.a)localObject2).WBI.cBt = true;
     }
-    ((com.tencent.mm.plugin.webview.fts.g)localObject1).uPn.dead();
-    com.tencent.mm.kernel.g.F(com.tencent.mm.plugin.webview.e.a.class);
-    dcD().b(this.uXQ);
-    localObject1 = l.vix;
-    localObject2 = t.uTa;
-    if (localObject2 != null) {
-      ((l)localObject1).viC.remove(localObject2);
-    }
-    com.tencent.mm.plugin.downloader.b.a.b(com.tencent.mm.plugin.webview.luggage.a.b.uUp);
-    com.tencent.mm.plugin.webview.luggage.a.b.uUp = null;
-    com.tencent.mm.plugin.game.api.a.b(this.uXR);
-    AppMethodBeat.o(7003);
+    ((com.tencent.mm.plugin.webview.fts.i)localObject1).WBC.dead();
+    com.tencent.mm.kernel.h.ay(com.tencent.mm.plugin.webview.i.a.class);
+    com.tencent.mm.plugin.webview.ui.tools.floatball.b.cov();
+    com.tencent.mm.plugin.webview.ui.tools.multitask.a.evx();
+    com.tencent.mm.plugin.webview.luggage.s.iuJ();
+    ivY().b(this.WNO);
+    com.tencent.mm.plugin.game.api.a.b(this.WNP);
+    AppMethodBeat.o(79184);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.g
  * JD-Core Version:    0.7.0.1
  */

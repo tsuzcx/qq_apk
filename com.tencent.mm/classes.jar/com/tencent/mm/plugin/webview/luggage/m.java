@@ -1,167 +1,84 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+import android.net.Uri;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.luggage.d.h;
-import com.tencent.luggage.d.n;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.bag.g.a;
-import com.tencent.mm.plugin.webview.ui.tools.bag.g.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.b;
-import com.tencent.mm.ui.base.b.a;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class m
-  implements com.tencent.mm.plugin.webview.ui.tools.bag.g
+  extends l
 {
-  private Intent intent;
-  private e uSb;
+  private View WGS;
+  private View WGT;
+  private TextView WGU;
   
-  public m(e parame)
+  public m(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(6206);
-    this.intent = new Intent();
-    this.uSb = parame;
-    this.intent.putExtras(this.uSb.bzu);
-    AppMethodBeat.o(6206);
+    super(paramContext);
+    AppMethodBeat.i(78371);
+    this.WGS = paramView;
+    this.WGT = LayoutInflater.from(paramContext).inflate(c.g.webview_logo_layout, this, false);
+    this.WGT.setVisibility(0);
+    this.WGT.setBackgroundResource(c.c.webview_logo_bg_color);
+    h(this.WGT, paramView);
+    this.WGU = ((TextView)this.WGT.findViewById(c.f.x5_logo_url));
+    AppMethodBeat.o(78371);
   }
   
-  private boolean dbt()
+  public final void iuC()
   {
-    AppMethodBeat.i(6214);
-    ab.i("MicroMsg.LuggageWebBagAdapter", "useActivityEnv: " + this.uSb.byJ.um().size());
-    if (this.uSb.byJ.um().size() <= 1)
-    {
-      AppMethodBeat.o(6214);
-      return true;
-    }
-    AppMethodBeat.o(6214);
-    return false;
+    AppMethodBeat.i(295953);
+    setPullDownEnabled(false);
+    this.WGT.setVisibility(8);
+    this.WGS.setBackgroundColor(0);
+    setBackgroundColor(0);
+    AppMethodBeat.o(295953);
   }
   
-  public final void a(g.a parama)
+  public final void setBgColor(int paramInt)
   {
-    AppMethodBeat.i(6211);
-    if (parama == null)
-    {
-      AppMethodBeat.o(6211);
-      return;
-    }
-    if ((this.uSb.Qz == null) || (!(this.uSb.Qz instanceof me.imid.swipebacklayout.lib.SwipeBackLayout)))
-    {
-      AppMethodBeat.o(6211);
-      return;
-    }
-    if (!dbt()) {
-      ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.uSb.Qz).a(new m.1(this, parama));
-    }
-    if ((dbt()) && (((MMActivity)getActivity()).getSwipeBackLayout() != null)) {
-      ((MMActivity)getActivity()).getSwipeBackLayout().setSwipeBackListener(new m.2(this, parama));
-    }
-    AppMethodBeat.o(6211);
+    AppMethodBeat.i(78374);
+    ((ViewGroup)this.WGT.getParent()).setBackgroundColor(paramInt);
+    AppMethodBeat.o(78374);
   }
   
-  public final void a(final g.b paramb)
+  public final void setCurrentUrl(String paramString)
   {
-    AppMethodBeat.i(6213);
-    if (dbt())
+    AppMethodBeat.i(78372);
+    if (!Util.isNullOrNil(paramString))
     {
-      b.a(getActivity(), new b.a()
+      paramString = Uri.parse(paramString).getHost();
+      if (!Util.isNullOrNil(paramString))
       {
-        public final void iX(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(6205);
-          paramb.iX(paramAnonymousBoolean);
-          AppMethodBeat.o(6205);
-        }
-      });
-      AppMethodBeat.o(6213);
-      return;
-    }
-    paramb.iX(true);
-    AppMethodBeat.o(6213);
-  }
-  
-  public final ViewGroup bTL()
-  {
-    AppMethodBeat.i(6209);
-    if (dbt())
-    {
-      localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
-      AppMethodBeat.o(6209);
-      return localViewGroup;
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.uSb.Qz.getParent();
-    AppMethodBeat.o(6209);
-    return localViewGroup;
-  }
-  
-  public final boolean dbs()
-  {
-    return this.uSb.Qz != null;
-  }
-  
-  public final Activity getActivity()
-  {
-    return (Activity)this.uSb.mContext;
-  }
-  
-  public final View getContentView()
-  {
-    AppMethodBeat.i(6210);
-    if (dbt())
-    {
-      if (((MMActivity)getActivity()).getSwipeBackLayout() != null)
-      {
-        localView = ((MMActivity)getActivity()).getSwipeBackLayout().getTargetContentView();
-        AppMethodBeat.o(6210);
-        return localView;
+        paramString = getContext().getString(c.i.webview_logo_url, new Object[] { paramString });
+        this.WGU.setVisibility(0);
+        this.WGU.setText(paramString);
+        AppMethodBeat.o(78372);
+        return;
       }
-      AppMethodBeat.o(6210);
-      return null;
     }
-    View localView = ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.uSb.Qz).getTargetView();
-    AppMethodBeat.o(6210);
-    return localView;
+    this.WGU.setVisibility(8);
+    AppMethodBeat.o(78372);
   }
   
-  public final Intent getIntent()
+  public final void setX5LogoViewVisibility(int paramInt)
   {
-    AppMethodBeat.i(6207);
-    if (!bo.isNullOrNil(this.uSb.getTitle())) {
-      this.intent.putExtra("title", this.uSb.getTitle());
-    }
-    Intent localIntent = this.intent;
-    AppMethodBeat.o(6207);
-    return localIntent;
-  }
-  
-  public final String getUrl()
-  {
-    AppMethodBeat.i(6208);
-    String str = this.uSb.getUrl();
-    AppMethodBeat.o(6208);
-    return str;
-  }
-  
-  public final void mU(boolean paramBoolean)
-  {
-    AppMethodBeat.i(6212);
-    if (!this.uSb.byJ.un().aY(false)) {
-      ((Activity)this.uSb.mContext).finish();
-    }
-    AppMethodBeat.o(6212);
+    AppMethodBeat.i(78373);
+    this.WGT.setVisibility(paramInt);
+    AppMethodBeat.o(78373);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.m
  * JD-Core Version:    0.7.0.1
  */

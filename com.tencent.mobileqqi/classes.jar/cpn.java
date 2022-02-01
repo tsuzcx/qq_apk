@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class cpn
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
   public cpn(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GroupManagerActivity.a, 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
-    }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
-    {
-      this.a.a(true);
-      return;
-    }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

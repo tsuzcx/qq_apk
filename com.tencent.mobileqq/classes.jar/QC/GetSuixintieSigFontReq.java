@@ -8,9 +8,9 @@ public final class GetSuixintieSigFontReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public int appid;
-  public int itemid;
-  public LoginInfo stLogin;
+  public int appid = 0;
+  public int itemid = 0;
+  public LoginInfo stLogin = null;
   public String strAttachInfo = "";
   public String strSeesionID = "";
   
@@ -39,17 +39,19 @@ public final class GetSuixintieSigFontReq
     paramJceOutputStream.write(this.stLogin, 0);
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.itemid, 2);
-    if (this.strSeesionID != null) {
-      paramJceOutputStream.write(this.strSeesionID, 3);
+    String str = this.strSeesionID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 4);
+    str = this.strAttachInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GetSuixintieSigFontReq
  * JD-Core Version:    0.7.0.1
  */

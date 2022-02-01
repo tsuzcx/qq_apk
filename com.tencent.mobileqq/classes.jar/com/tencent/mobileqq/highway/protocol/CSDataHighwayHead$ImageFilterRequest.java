@@ -22,14 +22,15 @@ public final class CSDataHighwayHead$ImageFilterRequest
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 58 }, new String[] { "session_id", "client_ip", "uin", "style", "width", "height", "image_data" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, ImageFilterRequest.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 58 }, new String[] { "session_id", "client_ip", "uin", "style", "width", "height", "image_data" }, new Object[] { localByteStringMicro1, localInteger, Long.valueOf(0L), null, localInteger, localInteger, localByteStringMicro2 }, ImageFilterRequest.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterRequest
  * JD-Core Version:    0.7.0.1
  */

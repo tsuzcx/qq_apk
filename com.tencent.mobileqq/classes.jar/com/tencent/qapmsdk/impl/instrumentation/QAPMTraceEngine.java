@@ -2,20 +2,20 @@ package com.tencent.qapmsdk.impl.instrumentation;
 
 import android.os.Looper;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.harvest.HarvestAdapter;
-import com.tencent.qapmsdk.impl.harvest.MetricCategory;
+import com.tencent.qapmsdk.impl.b.a;
+import com.tencent.qapmsdk.impl.b.c;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class QAPMTraceEngine
-  extends HarvestAdapter
+  extends a
 {
   private static final String TAG = "QAPM_Impl_QAPMTraceEngine";
-  private static List<MetricEventListener> metricEventListeners = new CopyOnWriteArrayList();
+  private static List<b> metricEventListeners = new CopyOnWriteArrayList();
   
-  public static void enterMethod(QAPMTraceUnit paramQAPMTraceUnit, String paramString, ArrayList<String> paramArrayList)
+  public static void enterMethod(g paramg, String paramString, ArrayList<String> paramArrayList)
   {
     try
     {
@@ -24,16 +24,16 @@ public class QAPMTraceEngine
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        notifyObserverEnterMethod(new QAPMTraceUnit(paramString, getSegmentType(paramArrayList).getValue()));
+        notifyObserverEnterMethod(new g(paramString, getSegmentType(paramArrayList).a()));
         return;
       }
-    }
-    catch (Throwable paramQAPMTraceUnit)
-    {
-      Logger.INSTANCE.exception("QAPM_Impl_QAPMTraceEngine", "error happend in enterMethod:", paramQAPMTraceUnit);
+      notifyObserverAsyncEnterMethod(new g(paramString, getSegmentType(paramArrayList).a()));
       return;
     }
-    notifyObserverAsyncEnterMethod(new QAPMTraceUnit(paramString, getSegmentType(paramArrayList).getValue()));
+    catch (Throwable paramg)
+    {
+      Logger.INSTANCE.exception("QAPM_Impl_QAPMTraceEngine", "error happend in enterMethod:", paramg);
+    }
   }
   
   public static void enterMethod(String paramString, ArrayList<String> paramArrayList)
@@ -76,48 +76,56 @@ public class QAPMTraceEngine
     }
   }
   
-  public static List<MetricEventListener> getMetricEventListeners()
+  public static List<b> getMetricEventListeners()
   {
     return metricEventListeners;
   }
   
-  public static TraceType.CATEGORY getSegmentType(List<String> paramList)
+  public static l.a getSegmentType(List<String> paramList)
   {
-    if ((paramList != null) && (paramList.size() == 3))
+    l.a locala = l.a.a;
+    Object localObject = locala;
+    if (paramList != null)
     {
-      paramList = (String)paramList.get(2);
-      if (paramList.equalsIgnoreCase(MetricCategory.IMAGE.getCategoryName())) {
-        return TraceType.CATEGORY.IMAGE;
-      }
-      if (paramList.equalsIgnoreCase(MetricCategory.JSON.getCategoryName())) {
-        return TraceType.CATEGORY.JSON;
-      }
-      if (paramList.equalsIgnoreCase(MetricCategory.NETWORK.getCategoryName())) {
-        return TraceType.CATEGORY.NETWORK;
-      }
-      if (paramList.equalsIgnoreCase("DATABASE")) {
-        return TraceType.CATEGORY.DATABASE;
-      }
-      if (paramList.equalsIgnoreCase(MetricCategory.CUSTOMEVENT.getCategoryName())) {
-        return TraceType.CATEGORY.CUSTOMEVENT;
+      localObject = locala;
+      if (paramList.size() == 3)
+      {
+        String str = (String)paramList.get(2);
+        paramList = locala;
+        if (str.equalsIgnoreCase(c.e.a())) {
+          paramList = l.a.e;
+        }
+        if (str.equalsIgnoreCase(c.f.a())) {
+          paramList = l.a.c;
+        }
+        if (str.equalsIgnoreCase(c.g.a())) {
+          paramList = l.a.b;
+        }
+        if (str.equalsIgnoreCase("DATABASE")) {
+          paramList = l.a.d;
+        }
+        localObject = paramList;
+        if (str.equalsIgnoreCase(c.i.a())) {
+          localObject = l.a.f;
+        }
       }
     }
-    return TraceType.CATEGORY.OTHER;
+    return localObject;
   }
   
-  public static void notifyObserverAsyncEnterMethod(QAPMTraceUnit paramQAPMTraceUnit)
+  public static void notifyObserverAsyncEnterMethod(g paramg)
   {
     Iterator localIterator = metricEventListeners.iterator();
     while (localIterator.hasNext()) {
-      ((MetricEventListener)localIterator.next()).asyncEnterMethod(paramQAPMTraceUnit);
+      ((b)localIterator.next()).b(paramg);
     }
   }
   
-  public static void notifyObserverEnterMethod(QAPMTraceUnit paramQAPMTraceUnit)
+  public static void notifyObserverEnterMethod(g paramg)
   {
     Iterator localIterator = metricEventListeners.iterator();
     while (localIterator.hasNext()) {
-      ((MetricEventListener)localIterator.next()).enterMethod(paramQAPMTraceUnit);
+      ((b)localIterator.next()).a(paramg);
     }
   }
   
@@ -125,7 +133,7 @@ public class QAPMTraceEngine
   {
     Iterator localIterator = metricEventListeners.iterator();
     while (localIterator.hasNext()) {
-      ((MetricEventListener)localIterator.next()).exitMethod();
+      ((b)localIterator.next()).c();
     }
   }
   
@@ -133,25 +141,27 @@ public class QAPMTraceEngine
   {
     Iterator localIterator = metricEventListeners.iterator();
     while (localIterator.hasNext()) {
-      ((MetricEventListener)localIterator.next()).exitMethodCustom(paramString);
+      ((b)localIterator.next()).a(paramString);
     }
   }
   
-  public static void registerListener(MetricEventListener paramMetricEventListener)
+  public static void registerListener(b paramb)
   {
-    if (paramMetricEventListener == null) {}
-    while (metricEventListeners.contains(paramMetricEventListener)) {
+    if (paramb == null) {
       return;
     }
-    metricEventListeners.add(paramMetricEventListener);
+    if (metricEventListeners.contains(paramb)) {
+      return;
+    }
+    metricEventListeners.add(paramb);
   }
   
-  public static void removeListener(MetricEventListener paramMetricEventListener)
+  public static void removeListener(b paramb)
   {
-    if (paramMetricEventListener == null) {
+    if (paramb == null) {
       return;
     }
-    metricEventListeners.remove(paramMetricEventListener);
+    metricEventListeners.remove(paramb);
   }
   
   private static boolean shouldInvokeMethod(String paramString)
@@ -164,11 +174,14 @@ public class QAPMTraceEngine
     QAPMAppInstrumentation.activityCreateBeginIns(paramString);
   }
   
-  public static void startTracingInFragment(String paramString) {}
+  public static void startTracingInFragment(String paramString)
+  {
+    QAPMFragmentSession.fragmentOnCreateBegin(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMTraceEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahcr;
-import ajlh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import azqs;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendBlessRecentItemData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public SendBlessRecentItemData(RecentUser paramRecentUser)
   {
@@ -23,88 +24,93 @@ public class SendBlessRecentItemData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    ahcr localahcr = (ahcr)paramQQAppInterface.getManager(138);
-    BlessTask localBlessTask = localahcr.a();
-    int i;
-    if (!localahcr.h())
+    BlessManager localBlessManager = (BlessManager)paramQQAppInterface.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER);
+    Object localObject = localBlessManager.s();
+    if (!localBlessManager.x())
     {
-      this.mTitleName = paramContext.getResources().getString(2131690582);
-      if (localBlessTask != null) {
-        this.mTitleName = localBlessTask.starWord;
+      this.mTitleName = paramContext.getResources().getString(2131887598);
+      if (localObject != null) {
+        this.mTitleName = ((BlessTask)localObject).starWord;
       }
-      this.mLastMsg = localahcr.b();
+      this.mLastMsg = localBlessManager.r();
       this.mMsgExtroInfo = "";
       if (QLog.isColorLevel()) {
         QLog.d("SendBlessRecentItemData", 2, "not isVideoNeedToPlay");
       }
-      azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
-      if (localahcr.a() < 0) {
-        break label490;
-      }
-      if (localahcr.a() != 0) {
-        break label485;
-      }
-      i = 2;
-      label131:
-      this.mUnreadFlag = i;
     }
-    label332:
-    label485:
-    label490:
-    for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
+    else if (localObject != null)
     {
-      this.mDisplayTime = this.mUser.lastmsgtime;
-      if (this.mDisplayTime > 0L) {
-        this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
-      }
-      localahcr.f();
-      if (AppSetting.c)
-      {
-        paramQQAppInterface = new StringBuilder(24);
-        paramQQAppInterface.append(this.mTitleName);
-        if (this.mUnreadNum == 1) {
-          paramQQAppInterface.append("有一条未读");
-        }
-        if (this.mMsgExtroInfo != null) {
-          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
-        }
-        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
-        this.mContentDesc = paramQQAppInterface.toString();
-      }
-      return;
-      if (localBlessTask == null) {
-        break;
-      }
-      this.mTitleName = localBlessTask.starWord;
-      this.mLastMsg = localBlessTask.starBless;
-      this.mMsgExtroInfo = localBlessTask.ex2;
+      this.mTitleName = ((BlessTask)localObject).starWord;
+      this.mLastMsg = ((BlessTask)localObject).starBless;
+      this.mMsgExtroInfo = ((BlessTask)localObject).ex2;
       boolean bool;
-      if (localBlessTask.ex3 == 1)
-      {
+      if (((BlessTask)localObject).ex3 == 1) {
         bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("SendBlessRecentItemData", 2, "useHint: " + bool);
-        }
-        if ((!bool) || (TextUtils.isEmpty(localahcr.b()))) {
-          break label428;
-        }
-        this.mLastMsg = localahcr.b();
+      } else {
+        bool = false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("useHint: ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("SendBlessRecentItemData", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((bool) && (!TextUtils.isEmpty(localBlessManager.r())))
+      {
+        this.mLastMsg = localBlessManager.r();
         this.mMsgExtroInfo = "";
       }
-      for (;;)
+      else if (!TextUtils.isEmpty(this.mMsgExtroInfo))
       {
-        azqs.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
-        break;
-        bool = false;
-        break label332;
-        if (!TextUtils.isEmpty(this.mMsgExtroInfo))
-        {
-          this.mMsgExtroInfo = ("[" + this.mMsgExtroInfo + "] ");
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167008);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(this.mMsgExtroInfo);
+        ((StringBuilder)localObject).append("] ");
+        this.mMsgExtroInfo = ((StringBuilder)localObject).toString();
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
-      i = 1;
-      break label131;
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
+    }
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
+    if (localBlessManager.h() >= 0)
+    {
+      int i;
+      if (localBlessManager.h() == 0) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      this.mUnreadFlag = i;
+      this.mUnreadNum = 1;
+    }
+    else
+    {
+      this.mUnreadNum = 0;
+    }
+    this.mDisplayTime = this.mUser.lastmsgtime;
+    if (this.mDisplayTime > 0L) {
+      this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
+    }
+    localBlessManager.y();
+    if (AppSetting.e)
+    {
+      paramQQAppInterface = new StringBuilder(24);
+      paramQQAppInterface.append(this.mTitleName);
+      if (this.mUnreadNum == 1) {
+        paramQQAppInterface.append("有一条未读");
+      }
+      if (this.mMsgExtroInfo != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(this.mMsgExtroInfo);
+        paramContext.append(",");
+        paramQQAppInterface.append(paramContext.toString());
+      }
+      paramQQAppInterface.append(this.mLastMsg);
+      paramQQAppInterface.append(' ');
+      paramQQAppInterface.append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
     }
   }
 }

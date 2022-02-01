@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 public class gtd
-  implements View.OnClickListener
+  implements Runnable
 {
   public gtd(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TextUtils.a(this.a.a);
+    this.a.a(true);
   }
 }
 

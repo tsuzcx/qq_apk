@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.brandservice.ui.timeline.BizTimelineSettingLoadingPreference android:key="biz_msg_rec_loading_pref" android:layout="@layout/bdi" android:persistent="false" />
+    <CheckBoxPreference android:key="biz_msg_rec_pref" android:layout="@layout/bdi" android:persistent="false" android:summary="@string/anj" android:title="@string/ani" />
+</PreferenceScreen>

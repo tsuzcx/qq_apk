@@ -1,109 +1,139 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.aa;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.avk;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.bfu;
-import com.tencent.mm.protocal.protobuf.mg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dtt;
+import com.tencent.mm.protocal.protobuf.eow;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public abstract class p
-  extends n
-  implements k
+public final class p
+  extends q
+  implements f
 {
-  static String mhi = null;
-  protected f callback = null;
+  private final s ouH;
+  private boolean zSb;
+  private String zSg;
   
-  public static void Nn(String paramString)
+  public p(long paramLong, String paramString1, String paramString2)
   {
-    mhi = paramString;
+    AppMethodBeat.i(103613);
+    this.zSb = false;
+    this.zSg = "";
+    this.ouH = new g();
+    k.a locala = (k.a)this.ouH.getReqObj();
+    locala.zRI.aaoV = bIQ();
+    locala.zRI.aaoY = paramLong;
+    locala.zRI.absZ = paramString1;
+    locala.zRI.abta = paramString2;
+    AppMethodBeat.o(103613);
   }
   
-  protected static String agx()
+  final void atG(String paramString)
   {
-    return mhi;
+    AppMethodBeat.i(103616);
+    ((k.a)this.ouH.getReqObj()).zRI.aaoV = paramString;
+    AppMethodBeat.o(103616);
   }
   
-  abstract void Nm(String paramString);
-  
-  public final void a(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void c(int paramInt1, int paramInt2, String paramString, s params)
   {
-    ab.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramInt1 == 4) && (paramInt2 == -102))
+    boolean bool2 = true;
+    AppMethodBeat.i(103615);
+    Log.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
+    params = (k.b)params.getRespObj();
+    boolean bool1;
+    int i;
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      if (params.zRJ.abtc == 0)
+      {
+        bool1 = true;
+        this.zSb = bool1;
+        this.zSg = params.zRJ.abtb;
+        i = params.zRJ.abtc;
+        boolean bool3 = this.zSb;
+        paramInt2 = params.zRJ.abtc;
+        if (Util.isNullOrNil(this.zSg)) {
+          break label189;
+        }
+        bool1 = bool2;
+        label129:
+        Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
+      }
+    }
+    for (;;)
     {
-      paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ab.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      g.RO().ac(new p.1(this, paramInt1));
+      this.callback.onSceneEnd(paramInt1, i, paramString, this);
+      AppMethodBeat.o(103615);
       return;
+      bool1 = false;
+      break;
+      label189:
+      bool1 = false;
+      break label129;
+      i = paramInt2;
+      if (params != null)
+      {
+        i = paramInt2;
+        if (params.zRJ != null)
+        {
+          i = paramInt2;
+          if (params.zRJ.abtc != 0)
+          {
+            Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
+            i = params.zRJ.abtc;
+          }
+        }
+      }
     }
-    c(paramInt1, paramInt2, paramString, paramq);
   }
   
-  public final void adq()
+  public final boolean dOD()
   {
-    if (this.callback != null) {
-      this.callback.onSceneEnd(3, -1, "", this);
-    }
+    return true;
   }
   
-  public final f adr()
+  public final String dOE()
   {
-    return this.callback;
+    return this.zSg;
   }
   
-  public final mg b(q paramq)
+  final int g(com.tencent.mm.network.g paramg)
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.wvY;
-    }
-    return null;
+    AppMethodBeat.i(103614);
+    this.ouH.getReqObj();
+    int i = dispatch(paramg, this.ouH, this);
+    AppMethodBeat.o(103614);
+    return i;
   }
   
-  public final bft c(q paramq)
+  protected final dtt g(s params)
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.wvZ;
-    }
-    return null;
+    AppMethodBeat.i(103617);
+    params = ((k.b)params.getRespObj()).zRJ.aapa;
+    AppMethodBeat.o(103617);
+    return params;
   }
   
-  abstract void c(int paramInt1, int paramInt2, String paramString, q paramq);
-  
-  public final avk d(q paramq)
+  public final int getType()
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.wvX;
-    }
-    return null;
+    return 930;
   }
   
-  public int doScene(e parame, f paramf)
+  public final int securityLimitCount()
   {
-    this.callback = paramf;
-    if (!bo.isNullOrNil(mhi))
-    {
-      ab.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { mhi });
-      Nm(mhi);
-      return f(parame);
-    }
-    return getType();
+    return 3;
   }
   
-  abstract int f(e parame);
+  public final p.b securityVerificationChecked(s params)
+  {
+    return p.b.ouh;
+  }
   
-  protected abstract bfu f(q paramq);
+  public final void setSecurityCheckError(p.a parama) {}
 }
 
 

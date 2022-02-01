@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/ChattingItemTo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="right" android:background="@drawable/message_lucky_to_bg" android:layout_marginLeft="30.0dip" style="@style/MessageHistoryLuckyLayout">
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/content_tv" android:text="恭喜发财，大吉大利" android:layout_marginStart="10.0dip" style="@style/MessageHistoryLuckyText" />
+        <ImageView android:layout_marginStart="4.0dip" android:layout_marginEnd="5.0dip" style="@style/MessageHistoryLuckyImage" />
+    </LinearLayout>
+</LinearLayout>

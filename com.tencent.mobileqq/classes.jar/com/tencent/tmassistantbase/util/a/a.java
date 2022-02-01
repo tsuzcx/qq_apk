@@ -51,8 +51,9 @@ public abstract class a
   
   public c a(String paramString)
   {
-    if (this.c != null) {
-      return (c)this.c.get(paramString);
+    HashMap localHashMap = this.c;
+    if (localHashMap != null) {
+      return (c)localHashMap.get(paramString);
     }
     return null;
   }
@@ -76,15 +77,18 @@ public abstract class a
     if (this.c == null) {
       this.c = new HashMap();
     }
-    if ((paramc == null) || (TextUtils.isEmpty(paramc.a()))) {
-      return;
+    if (paramc != null)
+    {
+      if (TextUtils.isEmpty(paramc.a())) {
+        return;
+      }
+      this.c.put(paramc.a(), paramc);
     }
-    this.c.put(paramc.a(), paramc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.a
  * JD-Core Version:    0.7.0.1
  */

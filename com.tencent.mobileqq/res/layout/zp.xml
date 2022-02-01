@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/a20" android:layout_width="40.0dip" android:layout_height="64.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/bri" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
     <RelativeLayout android:id="@id/a1z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/a20" android:layout_centerVertical="true">
-        <TextView android:textColor="@color/bp" android:ellipsize="end" android:id="@id/a22" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/a21" android:layout_alignParentLeft="true" style="@style/fd" />
-        <TextView android:textColor="@color/bp" android:ellipsize="end" android:id="@id/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/a21" android:layout_below="@id/a22" android:layout_alignParentLeft="true" style="@style/fc" />
+        <TextView android:textColor="@color/black" android:ellipsize="end" android:id="@id/a22" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/a21" android:layout_alignParentLeft="true" style="@style/fd" />
+        <TextView android:textColor="@color/black" android:ellipsize="end" android:id="@id/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/a21" android:layout_below="@id/a22" android:layout_alignParentLeft="true" style="@style/fc" />
         <ImageView android:id="@id/a21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/h9o" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
     </RelativeLayout>
 </RelativeLayout>

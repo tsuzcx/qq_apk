@@ -20,37 +20,41 @@ public class LoadPagItemManager
     this.mStickerParser = ExtraStickerParserAgent.getInstance().creatPagParser();
     if (this.mStickerParser != null)
     {
-      if ((paramStickerItem.extarTypeHeight > 0) && (paramStickerItem.extraTypeWidth > 0)) {
-        break label115;
+      if ((paramStickerItem.extarTypeHeight > 0) && (paramStickerItem.extraTypeWidth > 0))
+      {
+        this.mWidth = paramStickerItem.extraTypeWidth;
+        this.mHeight = paramStickerItem.extarTypeHeight;
       }
-      this.mWidth = paramStickerItem.width;
-    }
-    for (this.mHeight = paramStickerItem.height;; this.mHeight = paramStickerItem.extarTypeHeight)
-    {
+      else
+      {
+        this.mWidth = paramStickerItem.width;
+        this.mHeight = paramStickerItem.height;
+      }
       this.mStickerParser.setSize(this.mWidth, this.mHeight);
-      this.mPagName = (paramStickerItem.id + ".pag");
-      return;
-      label115:
-      this.mWidth = paramStickerItem.extraTypeWidth;
     }
+    paramString = new StringBuilder();
+    paramString.append(paramStickerItem.id);
+    paramString.append(".pag");
+    this.mPagName = paramString.toString();
   }
   
   public void prepareImages()
   {
-    if (!this.mIsPrepared) {}
-    do
-    {
+    if (!this.mIsPrepared) {
       return;
-      if (this.mStickerParser == null) {
-        this.mStickerParser = ExtraStickerParserAgent.getInstance().creatPagParser();
-      }
-    } while (this.mStickerParser == null);
+    }
+    if (this.mStickerParser == null) {
+      this.mStickerParser = ExtraStickerParserAgent.getInstance().creatPagParser();
+    }
+    if (this.mStickerParser == null) {
+      return;
+    }
     this.mIsPrepared = this.mStickerParser.prepare(this.mDataPath, this.mPagName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.LoadPagItemManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,124 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class az
-  extends bi<com.tencent.mm.plugin.webview.luggage.e>
+  extends bv<s>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
-  
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
+  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(6375);
-    ab.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
-    String str = parama.byF.bxK.optString("title");
-    if (!bo.isNullOrNil(parama.byF.bxK.optString("color")))
+    AppMethodBeat.i(78607);
+    if (Util.isNullOrNil(paramLinkedList))
     {
-      int i = g.by(parama.byF.bxK.optString("color"), ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext.getResources().getColor(2131689642));
-      ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).cr(str, i);
-    }
-    for (;;)
-    {
-      parama.a("", null);
-      AppMethodBeat.o(6375);
+      AppMethodBeat.o(78607);
       return;
-      ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).cr(str, 0);
+    }
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
+    {
+      String str = (String)paramLinkedList.next();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("download_id", -1);
+        localJSONObject.put("state", "default");
+        paramJSONObject.put(str, localJSONObject);
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+      }
+    }
+    AppMethodBeat.o(78607);
+  }
+  
+  public final void a(final Context paramContext, String paramString, final bv.a parama)
+  {
+    AppMethodBeat.i(78606);
+    Log.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    try
+    {
+      paramContext = new JSONObject(paramString);
+      a.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78605);
+          Object localObject = paramContext.optJSONArray("appIdArray");
+          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+          {
+            az.a((JSONArray)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          long l = paramContext.optLong("download_id", -1L);
+          localObject = paramContext.optString("appid");
+          FileDownloadTaskInfo localFileDownloadTaskInfo;
+          if (l > 0L)
+          {
+            localFileDownloadTaskInfo = f.duv().kS(l);
+            localObject = localFileDownloadTaskInfo;
+            if (localFileDownloadTaskInfo == null) {
+              localObject = new FileDownloadTaskInfo();
+            }
+            az.a((FileDownloadTaskInfo)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          if (!Util.isNullOrNil((String)localObject))
+          {
+            localFileDownloadTaskInfo = f.duv().amO((String)localObject);
+            localObject = localFileDownloadTaskInfo;
+            if (localFileDownloadTaskInfo == null) {
+              localObject = new FileDownloadTaskInfo();
+            }
+            az.a((FileDownloadTaskInfo)localObject, parama);
+            AppMethodBeat.o(78605);
+            return;
+          }
+          parama.j("fail", null);
+          AppMethodBeat.o(78605);
+        }
+      });
+      AppMethodBeat.o(78606);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      Log.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
+      parama.j("fail", null);
+      AppMethodBeat.o(78606);
     }
   }
   
-  public final int bjL()
+  public final void b(b<s>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "setPageTitle";
+    return "queryDownloadTask";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.az
  * JD-Core Version:    0.7.0.1
  */

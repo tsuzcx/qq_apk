@@ -1,237 +1,188 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.k;
-import java.io.File;
+import com.tencent.mm.am.aa;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.openapi.a;
+import com.tencent.mm.protocal.protobuf.fk;
+import com.tencent.mm.protocal.protobuf.fl;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class q
+  implements y
 {
-  private static void a(Context paramContext, Intent paramIntent, a parama, boolean paramBoolean)
+  private List<String> XRX;
+  public CopyOnWriteArrayList<String> XSF;
+  private volatile boolean XSG;
+  
+  public q()
   {
-    AppMethodBeat.i(79352);
-    ab.i("MicroMsg.ApplicationUtil", "installApp");
-    if ((paramBoolean) && (Build.BRAND.equals("vivo")))
-    {
-      paramIntent.putExtra("installDir", true);
-      ab.i("MicroMsg.ApplicationUtil", "is vivo, try to prevent the interception");
-    }
-    try
-    {
-      if ((Build.VERSION.SDK_INT >= 26) && (!paramContext.getPackageManager().canRequestPackageInstalls()))
-      {
-        ab.i("MicroMsg.ApplicationUtil", "request install apk permission");
-        b.a(new Intent("android.settings.MANAGE_UNKNOWN_APP_SOURCES", Uri.parse("package:" + paramContext.getPackageName())), ah.getContext().getString(2131302083), ah.getContext().getString(2131300743), new q.1(paramContext, paramIntent, parama));
-        AppMethodBeat.o(79352);
-        return;
-      }
-      ab.i("MicroMsg.ApplicationUtil", "install directly");
-      paramContext.startActivity(paramIntent);
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.ApplicationUtil", paramContext, "install app failed! %s", new Object[] { paramIntent });
-        if (parama != null) {
-          parama.eb(false);
-        }
-      }
-    }
-    if (parama != null) {
-      parama.eb(true);
-    }
-    AppMethodBeat.o(79352);
+    AppMethodBeat.i(151754);
+    this.XSG = false;
+    this.XSF = new CopyOnWriteArrayList();
+    this.XRX = new ArrayList();
+    a.gxq().a(1, this);
+    AppMethodBeat.o(151754);
   }
   
-  public static void a(Context paramContext, Uri paramUri, a parama)
+  private void aXF()
   {
-    AppMethodBeat.i(79354);
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    k.a(paramContext, localIntent, paramUri, "application/vnd.android.package-archive");
-    localIntent.addFlags(268435456);
-    a(paramContext, localIntent, parama, false);
-    AppMethodBeat.o(79354);
-  }
-  
-  public static void a(Context paramContext, File paramFile, a parama, boolean paramBoolean)
-  {
-    AppMethodBeat.i(79353);
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    k.a(paramContext, localIntent, paramFile, "application/vnd.android.package-archive");
-    localIntent.addFlags(268435456);
-    a(paramContext, localIntent, parama, paramBoolean);
-    AppMethodBeat.o(79353);
-  }
-  
-  public static int alA(String paramString)
-  {
-    AppMethodBeat.i(79359);
-    if (bo.isNullOrNil(paramString))
+    int i = 20;
+    AppMethodBeat.i(151758);
+    if (this.XSG)
     {
-      AppMethodBeat.o(79359);
-      return 0;
+      Log.d("MicroMsg.AppSettingService", "tryDoScene fail, doing Scene");
+      AppMethodBeat.o(151758);
+      return;
     }
-    Object localObject = ah.getContext().getPackageManager();
-    try
+    if (this.XSF.size() <= 0)
     {
-      localObject = ((PackageManager)localObject).getPackageArchiveInfo(paramString, 0);
-      if (localObject == null)
-      {
-        paramString = new RuntimeException("info is null; ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(79359);
-        throw paramString;
-      }
+      Log.d("MicroMsg.AppSettingService", "tryDoScene fail, appIdList is empty");
+      AppMethodBeat.o(151758);
+      return;
     }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.ApplicationUtil", "get package version code from archive file path, failed : %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(79359);
-      return 0;
-    }
-    ab.i("MicroMsg.ApplicationUtil", "get package version code from archive filepath  :%s, package version code is : %d", new Object[] { paramString, Integer.valueOf(((PackageInfo)localObject).versionCode) });
-    int i = ((PackageInfo)localObject).versionCode;
-    AppMethodBeat.o(79359);
-    return i;
-  }
-  
-  public static String aly(String paramString)
-  {
-    AppMethodBeat.i(79351);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramString.toLowerCase());
-    localStringBuffer.append("mMHc ItnStR");
-    paramString = g.w(localStringBuffer.toString().getBytes());
-    AppMethodBeat.o(79351);
-    return paramString;
-  }
-  
-  public static String alz(String paramString)
-  {
-    AppMethodBeat.i(79358);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79358);
-      return null;
-    }
-    Object localObject = ah.getContext().getPackageManager();
-    try
-    {
-      localObject = ((PackageManager)localObject).getPackageArchiveInfo(paramString, 0);
-      if (localObject == null)
-      {
-        paramString = new RuntimeException("info is null; ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(79358);
-        throw paramString;
-      }
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.ApplicationUtil", "get package name from archive file path, failed : %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(79358);
-      return null;
-    }
-    ab.i("MicroMsg.ApplicationUtil", "get package name from archive filepath  :%s, package name is : %s", new Object[] { paramString, ((PackageInfo)localObject).packageName });
-    paramString = ((PackageInfo)localObject).packageName;
-    AppMethodBeat.o(79358);
-    return paramString;
-  }
-  
-  public static boolean bw(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(79355);
-    Uri localUri = Uri.parse(paramString);
-    Intent localIntent = new Intent("android.intent.action.VIEW", localUri);
-    localIntent.addFlags(268435456);
-    if (getPackageInfo(paramContext, "com.android.vending") != null)
-    {
-      ab.v("MicroMsg.ApplicationUtil", "installAppWithGP, gp is installed, url = %s", new Object[] { paramString });
-      localIntent.setPackage("com.android.vending");
-    }
+    Log.d("MicroMsg.AppSettingService", "tryDoScene, appid list size = " + this.XSF.size());
+    int j = this.XSF.size();
+    if (j > 20) {}
     for (;;)
     {
-      try
-      {
-        paramContext.startActivity(localIntent);
-        AppMethodBeat.o(79355);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        ab.e("MicroMsg.ApplicationUtil", "installAppWithGP first, ex = %s", new Object[] { paramString.getMessage() });
-        try
-        {
-          paramString = new Intent("android.intent.action.VIEW", localUri);
-          paramString.addFlags(268435456);
-          paramContext.startActivity(paramString);
-          AppMethodBeat.o(79355);
-          return true;
-        }
-        catch (Exception paramContext)
-        {
-          ab.e("MicroMsg.ApplicationUtil", "installAppWithGP second, ex = %s", new Object[] { paramContext.getMessage() });
-          AppMethodBeat.o(79355);
-        }
-      }
-      ab.v("MicroMsg.ApplicationUtil", "installAppWithGP, gp is not installed, url = %s", new Object[] { paramString });
+      this.XSG = true;
+      this.XRX.addAll(this.XSF.subList(0, i));
+      af localaf = new af(1, new ah(this.XRX));
+      com.tencent.mm.kernel.h.baD().mCm.a(localaf, 0);
+      AppMethodBeat.o(151758);
+      return;
+      i = j;
     }
-    return false;
   }
   
-  private static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  public static String bpV(String paramString)
   {
-    Object localObject = null;
-    AppMethodBeat.i(79357);
+    AppMethodBeat.i(151757);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ab.e("MicroMsg.ApplicationUtil", "getPackageInfo, packageName is null");
-      AppMethodBeat.o(79357);
+      Log.e("MicroMsg.AppSettingService", "getOpenIdSync, appId is null");
+      AppMethodBeat.o(151757);
       return null;
     }
-    try
+    Object localObject1 = h.dV(paramString, false);
+    if (localObject1 == null)
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      AppMethodBeat.o(79357);
-      return paramContext;
+      AppMethodBeat.o(151757);
+      return null;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    if ((((g)localObject1).field_openId != null) && (((g)localObject1).field_openId.length() != 0))
     {
-      for (;;)
-      {
-        ab.w("MicroMsg.ApplicationUtil", "app not installed, packageName = ".concat(String.valueOf(paramString)));
-        paramContext = localObject;
-      }
+      paramString = ((g)localObject1).field_openId;
+      AppMethodBeat.o(151757);
+      return paramString;
     }
+    localObject1 = new LinkedList();
+    ((List)localObject1).add(paramString);
+    localObject1 = new ah((List)localObject1);
+    Object localObject2 = new c.a();
+    ((c.a)localObject2).otE = new fk();
+    ((c.a)localObject2).otF = new fl();
+    ((c.a)localObject2).uri = "/cgi-bin/micromsg-bin/appcenter";
+    ((c.a)localObject2).funcId = 452;
+    ((c.a)localObject2).otG = 0;
+    ((c.a)localObject2).respCmdId = 0;
+    localObject2 = ((c.a)localObject2).bEF();
+    Object localObject3 = (fk)c.b.b(((com.tencent.mm.am.c)localObject2).otB);
+    byte[] arrayOfByte = ((ah)localObject1).iIa();
+    if (arrayOfByte != null) {
+      ((fk)localObject3).YGU = new gol().df(arrayOfByte);
+    }
+    ((fk)localObject3).vhJ = 1;
+    localObject3 = aa.a((com.tencent.mm.am.c)localObject2, 20000L);
+    Log.i("MicroMsg.AppSettingService", "call getOpenIdSync cgi result, errType = %d, errCode = %d", new Object[] { Integer.valueOf(((b.a)localObject3).errType), Integer.valueOf(((b.a)localObject3).errCode) });
+    if ((((b.a)localObject3).errType != 0) || (((b.a)localObject3).errCode != 0))
+    {
+      AppMethodBeat.o(151757);
+      return null;
+    }
+    ((ah)localObject1).cV(w.a(((fl)((b.a)localObject3).ott).YGV));
+    ((ah)localObject1).onGYNetEnd(0, ((b.a)localObject3).errType, ((b.a)localObject3).errCode, ((b.a)localObject3).errMsg, (com.tencent.mm.network.s)localObject2, new byte[0]);
+    paramString = h.s(paramString, false, false);
+    if (paramString != null)
+    {
+      paramString = paramString.field_openId;
+      AppMethodBeat.o(151757);
+      return paramString;
+    }
+    AppMethodBeat.o(151757);
+    return null;
   }
   
-  public static boolean u(Context paramContext, String paramString)
+  public final void a(int paramInt1, int paramInt2, String paramString, ae paramae)
   {
-    AppMethodBeat.i(79356);
-    if (getPackageInfo(paramContext, paramString) != null)
+    AppMethodBeat.i(151759);
+    if (paramae.getType() != 1)
     {
-      AppMethodBeat.o(79356);
-      return true;
+      AppMethodBeat.o(151759);
+      return;
     }
-    AppMethodBeat.o(79356);
-    return false;
+    this.XSG = false;
+    paramString = ((ah)paramae).XSQ;
+    Log.d("MicroMsg.AppSettingService", "onSceneEnd, list size = " + paramString.size());
+    this.XSF.removeAll(this.XRX);
+    this.XRX.clear();
+    aXF();
+    AppMethodBeat.o(151759);
+  }
+  
+  public final void add(String paramString)
+  {
+    AppMethodBeat.i(151755);
+    Log.d("MicroMsg.AppSettingService", "appId = ".concat(String.valueOf(paramString)));
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.AppSettingService", "add appId is null");
+      AppMethodBeat.o(151755);
+      return;
+    }
+    if (!this.XSF.contains(paramString)) {
+      this.XSF.add(paramString);
+    }
+    com.tencent.threadpool.h.ahAA.bk(new q..ExternalSyntheticLambda1(this));
+    AppMethodBeat.o(151755);
+  }
+  
+  public final void addAll(List<String> paramList)
+  {
+    AppMethodBeat.i(151756);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      Log.e("MicroMsg.AppSettingService", "addAll list is null");
+      AppMethodBeat.o(151756);
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      if ((!Util.isNullOrNil(str)) && (!this.XSF.contains(str))) {
+        this.XSF.add(str);
+      }
+    }
+    com.tencent.threadpool.h.ahAA.bk(new q..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(151756);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.q
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,18 @@ package com.google.android.gms.internal;
 public abstract class dq<M extends dq<M>>
   extends dw
 {
-  protected ds Rr;
+  protected ds Tg;
   
   public void a(do paramdo)
   {
-    if (this.Rr == null) {}
+    if (this.Tg == null) {}
     for (;;)
     {
       return;
       int i = 0;
-      while (i < this.Rr.size())
+      while (i < this.Tg.size())
       {
-        this.Rr.bB(i).a(paramdo);
+        this.Tg.bV(i).a(paramdo);
         i += 1;
       }
     }
@@ -23,14 +23,14 @@ public abstract class dq<M extends dq<M>>
   protected final boolean a(dn paramdn, int paramInt)
   {
     int i = paramdn.getPosition();
-    if (!paramdn.bq(paramInt)) {
+    if (!paramdn.bK(paramInt)) {
       return false;
     }
-    int j = dz.bE(paramInt);
-    dy localdy = new dy(paramInt, paramdn.Z(i, paramdn.getPosition() - i));
+    int j = dz.bZ(paramInt);
+    dy localdy = new dy(paramInt, paramdn.ab(i, paramdn.getPosition() - i));
     paramdn = null;
-    if (this.Rr == null) {
-      this.Rr = new ds();
+    if (this.Tg == null) {
+      this.Tg = new ds();
     }
     for (;;)
     {
@@ -38,26 +38,26 @@ public abstract class dq<M extends dq<M>>
       if (paramdn == null)
       {
         localObject = new dt();
-        this.Rr.a(j, (dt)localObject);
+        this.Tg.a(j, (dt)localObject);
       }
       ((dt)localObject).a(localdy);
       return true;
-      paramdn = this.Rr.bA(j);
+      paramdn = this.Tg.bU(j);
     }
   }
   
-  protected int jN()
+  protected int jW()
   {
-    if (this.Rr != null)
+    if (this.Tg != null)
     {
       int j = 0;
       for (int i = 0;; i = k + i)
       {
         k = i;
-        if (j >= this.Rr.size()) {
+        if (j >= this.Tg.size()) {
           break;
         }
-        k = this.Rr.bB(j).jN();
+        k = this.Tg.bV(j).jW();
         j += 1;
       }
     }

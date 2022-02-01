@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qr_layout" android:paddingLeft="@dimen/layout_common_xlistview_paddingLR" android:paddingRight="@dimen/layout_common_xlistview_paddingLR" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/img_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/phone_book_icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/textSizeS2" android:textColor="@color/skin_black" android:id="@id/txt_change_phonenum_hint" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/img_icon" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/btn_change" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/modify" android:layout_below="@id/txt_change_phonenum_hint" style="@style/ButtonBlue" />
+    <Button android:id="@id/btn_no_change" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/no_modify" android:layout_below="@id/btn_change" style="@style/ButtonWhite" />
+</RelativeLayout>

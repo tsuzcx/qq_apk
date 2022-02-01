@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a4i" parent="@style/aj6" />
+    <style name="a4j" parent="@style/aj7" />
+    <style name="aj6" parent="@android:style/Theme.Material.NoActionBar" />
+    <style name="aj7" parent="@android:style/Theme.Material.Light.NoActionBar" />
+</resources>

@@ -13,22 +13,34 @@ public class WXVideoObject
   
   public boolean checkArgs()
   {
-    if (((this.videoUrl == null) || (this.videoUrl.length() == 0)) && ((this.videoLowBandUrl == null) || (this.videoLowBandUrl.length() == 0)))
+    String str = this.videoUrl;
+    if ((str == null) || (str.length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXVideoObject", "both arguments are null");
-      return false;
+      str = this.videoLowBandUrl;
+      if ((str == null) || (str.length() == 0)) {}
     }
-    if ((this.videoUrl != null) && (this.videoUrl.length() > 10240))
+    else
     {
-      Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoUrl is too long");
-      return false;
+      str = this.videoUrl;
+      if ((str != null) && (str.length() > 10240)) {
+        str = "checkArgs fail, videoUrl is too long";
+      }
     }
-    if ((this.videoLowBandUrl != null) && (this.videoLowBandUrl.length() > 10240))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoLowBandUrl is too long");
+      Log.e("MicroMsg.SDK.WXVideoObject", str);
       return false;
+      str = this.videoLowBandUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        str = "checkArgs fail, videoLowBandUrl is too long";
+      }
+      else
+      {
+        return true;
+        str = "both arguments are null";
+      }
     }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -50,7 +62,7 @@ public class WXVideoObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXVideoObject
  * JD-Core Version:    0.7.0.1
  */

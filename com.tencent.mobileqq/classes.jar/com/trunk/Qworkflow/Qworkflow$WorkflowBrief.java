@@ -23,12 +23,13 @@ public final class Qworkflow$WorkflowBrief
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56 }, new String[] { "bytes_workflow_id", "uint64_author_uin", "uint64_last_modify_time", "uint64_create_time", "msg_extend_state", "uint32_data_version", "uint64_recv_time" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0), Long.valueOf(0L) }, WorkflowBrief.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56 }, new String[] { "bytes_workflow_id", "uint64_author_uin", "uint64_last_modify_time", "uint64_create_time", "msg_extend_state", "uint32_data_version", "uint64_recv_time" }, new Object[] { localByteStringMicro, localLong, localLong, localLong, null, Integer.valueOf(0), localLong }, WorkflowBrief.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.WorkflowBrief
  * JD-Core Version:    0.7.0.1
  */

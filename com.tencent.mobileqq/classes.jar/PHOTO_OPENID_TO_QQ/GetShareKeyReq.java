@@ -31,14 +31,15 @@ public final class GetShareKeyReq
   {
     paramJceOutputStream.write(this.openid, 0);
     paramJceOutputStream.write(this.albumid, 1);
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 2);
+    String str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PHOTO_OPENID_TO_QQ.GetShareKeyReq
  * JD-Core Version:    0.7.0.1
  */

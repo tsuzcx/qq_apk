@@ -28,7 +28,6 @@ public class TappedElement
   
   public static TappedElement fromBytes(byte[] paramArrayOfByte)
   {
-    int i = 20;
     TappedElement localTappedElement = new TappedElement();
     byte[] arrayOfByte1 = new byte[4];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, 4);
@@ -41,47 +40,45 @@ public class TappedElement
     localTappedElement.itemType = pa.a(arrayOfByte1);
     System.arraycopy(paramArrayOfByte, 16, arrayOfByte1, 0, 4);
     localTappedElement.nameLen = pa.a(arrayOfByte1);
-    byte[] arrayOfByte2;
-    if (localTappedElement.type != 7)
+    int j = localTappedElement.type;
+    int i = 20;
+    if (j != 7)
     {
-      arrayOfByte2 = new byte[64];
+      byte[] arrayOfByte2 = new byte[64];
       System.arraycopy(paramArrayOfByte, 20, arrayOfByte2, 0, 64);
       i = 84;
-      if (localTappedElement.type == 8) {
-        break label325;
+      if (localTappedElement.type != 8) {
+        localTappedElement.name = pa.b(arrayOfByte2);
+      } else {
+        localTappedElement.name = pa.a(arrayOfByte2, "UTF-8");
       }
     }
-    label325:
-    for (localTappedElement.name = pa.b(arrayOfByte2);; localTappedElement.name = pa.a(arrayOfByte2, "UTF-8"))
+    System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 4);
+    j = pa.a(arrayOfByte1);
+    i += 4;
+    System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 4);
+    int k = pa.a(arrayOfByte1);
+    localTappedElement.itemId = ((j << 32) + k);
+    i += 4;
+    if (localTappedElement.itemType == 1)
     {
-      System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 4);
-      int j = pa.a(arrayOfByte1);
-      i += 4;
-      System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 4);
-      int k = pa.a(arrayOfByte1);
-      long l = j;
-      localTappedElement.itemId = (k + (l << 32));
-      i += 4;
-      if (localTappedElement.itemType == 1)
-      {
-        arrayOfByte1 = new byte[''];
-        System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 128);
-        i += 128;
-        localTappedElement.buildingId = pa.a(arrayOfByte1, "UTF-8");
-        arrayOfByte1 = new byte[68];
-        System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 68);
-        localTappedElement.buildingName = pa.b(arrayOfByte1);
-        arrayOfByte1 = new byte[32];
-        System.arraycopy(paramArrayOfByte, i + 68, arrayOfByte1, 0, 32);
-        localTappedElement.floorName = pa.a(arrayOfByte1, "UTF-8");
-      }
-      return localTappedElement;
+      arrayOfByte1 = new byte[''];
+      System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 128);
+      i += 128;
+      localTappedElement.buildingId = pa.a(arrayOfByte1, "UTF-8");
+      arrayOfByte1 = new byte[68];
+      System.arraycopy(paramArrayOfByte, i, arrayOfByte1, 0, 68);
+      localTappedElement.buildingName = pa.b(arrayOfByte1);
+      arrayOfByte1 = new byte[32];
+      System.arraycopy(paramArrayOfByte, i + 68, arrayOfByte1, 0, 32);
+      localTappedElement.floorName = pa.a(arrayOfByte1, "UTF-8");
     }
+    return localTappedElement;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.models.TappedElement
  * JD-Core Version:    0.7.0.1
  */

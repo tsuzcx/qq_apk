@@ -33,18 +33,20 @@ public final class AvatarItemView
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFileInfo != null) {
-      paramJceOutputStream.write(this.stFileInfo, 0);
+    Object localObject = this.stFileInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.strStaticUrl != null) {
-      paramJceOutputStream.write(this.strStaticUrl, 1);
+    localObject = this.strStaticUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iPlayInterval, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.AvatarItemView
  * JD-Core Version:    0.7.0.1
  */

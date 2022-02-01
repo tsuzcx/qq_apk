@@ -19,13 +19,14 @@ public final class oidb_0x5e3$QQLoginSig
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_uin", "uint32_type", "bytes_sig", "uint32_appid" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, QQLoginSig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint64_uin", "uint32_type", "bytes_sig", "uint32_appid" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro, localInteger }, QQLoginSig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e3.oidb_0x5e3.QQLoginSig
  * JD-Core Version:    0.7.0.1
  */

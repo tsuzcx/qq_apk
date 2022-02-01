@@ -1,47 +1,40 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import axxz;
-import axyi;
-import axyq;
-import axzf;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserManager;
+import com.tencent.mobileqq.richmediabrowser.utils.DataUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class AIOGalleryActivity$2$3
+class AIOGalleryActivity$2$3
   implements Runnable
 {
-  public AIOGalleryActivity$2$3(axxz paramaxxz, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  AIOGalleryActivity$2$3(AIOGalleryActivity.2 param2, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null) && (AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a) != null))
-    {
-      axyi localaxyi = AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a;
+    if ((this.a != null) && (AIOGalleryActivity.a(this.c.a) != null)) {
       try
       {
-        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = axzf.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData);
-        if (arrayOfAIOBrowserBaseData == null)
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().d("IAIOImageProviderCallBack", 4, "galleryBaseDatas is null");
-          return;
-        }
-        if (localaxyi.a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int))
-        {
-          AIOGalleryActivity.a(this.jdField_a_of_type_Axxz.a).a(arrayOfAIOBrowserBaseData, this.jdField_a_of_type_Int);
-          return;
-        }
+        AIOBrowserBaseData[] arrayOfAIOBrowserBaseData = DataUtils.a(this.a);
+        AIOGalleryActivity.a(this.c.a).notifyImageListChanged(arrayOfAIOBrowserBaseData, this.b);
+        return;
       }
       catch (Exception localException)
       {
-        BrowserLogHelper.getInstance().getGalleryLog().d("IAIOImageProviderCallBack", 4, "notifyImageListChanged exception = " + localException.getMessage());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("notifyImageListChanged exception = ");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("IAIOImageProviderCallBack", 2, localStringBuilder.toString());
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3
  * JD-Core Version:    0.7.0.1
  */

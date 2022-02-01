@@ -29,99 +29,150 @@ abstract class TraeAudioManager$BluetoohHeadsetCheckInterface
     {
     default: 
       str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
+      break;
+    case 13: 
       str = "STATE_TURNING_OFF";
+      break;
+    case 12: 
+      str = "STATE_ON";
+      break;
+    case 11: 
+      str = "STATE_TURNING_ON";
+      break;
+    case 10: 
+      str = "STATE_OFF";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   String getBTAdapterConnectionState(int paramInt)
   {
     String str;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      str = "unknow";
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            str = "unknow";
+          } else {
+            str = "STATE_DISCONNECTING";
+          }
+        }
+        else {
+          str = "STATE_CONNECTED";
+        }
+      }
+      else {
+        str = "STATE_CONNECTING";
+      }
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
+    else {
       str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   String getBTHeadsetAudioState(int paramInt)
   {
-    String str;
-    switch (paramInt)
+    Object localObject;
+    if (paramInt != 10)
     {
-    case 11: 
-    default: 
-      str = "unknow:" + paramInt;
+      if (paramInt != 12)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("unknow:");
+        ((StringBuilder)localObject).append(paramInt);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = "STATE_AUDIO_CONNECTED";
+      }
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_AUDIO_CONNECTED";
-      continue;
-      str = "STATE_AUDIO_DISCONNECTED";
+    else {
+      localObject = "STATE_AUDIO_DISCONNECTED";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   String getBTHeadsetConnectionState(int paramInt)
   {
     String str;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      str = "unknow";
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            str = "unknow";
+          } else {
+            str = "STATE_DISCONNECTING";
+          }
+        }
+        else {
+          str = "STATE_CONNECTED";
+        }
+      }
+      else {
+        str = "STATE_CONNECTING";
+      }
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
+    else {
       str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   String getSCOAudioStateExtraString(int paramInt)
   {
     String str;
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      str = "unknow";
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2) {
+            str = "unknow";
+          } else {
+            str = "SCO_AUDIO_STATE_CONNECTING";
+          }
+        }
+        else {
+          str = "SCO_AUDIO_STATE_CONNECTED";
+        }
+      }
+      else {
+        str = "SCO_AUDIO_STATE_DISCONNECTED";
+      }
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
+    else {
       str = "SCO_AUDIO_STATE_ERROR";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public abstract boolean init(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager);
@@ -134,40 +185,51 @@ abstract class TraeAudioManager$BluetoohHeadsetCheckInterface
   {
     if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
     {
-      i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + getBTActionStateChangedExtraString(i));
+      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
+      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("BT ACTION_STATE_CHANGED|   EXTRA_STATE ");
+        paramContext.append(getBTActionStateChangedExtraString(i));
+        QLog.w("TRAE", 0, paramContext.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + getBTActionStateChangedExtraString(j));
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE ");
+        paramContext.append(getBTActionStateChangedExtraString(j));
+        QLog.w("TRAE", 0, paramContext.toString());
       }
-      if (i == 10) {
+      if (i == 10)
+      {
         if (QLog.isColorLevel()) {
           QLog.w("TRAE", 0, "    BT off");
         }
+        paramDeviceConfigManager.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+        return;
+      }
+      if ((i == 12) && (QLog.isColorLevel())) {
+        QLog.w("TRAE", 0, "BT OFF-->ON,Visiable it...");
       }
     }
-    while ((("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) || (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)))
+    else
     {
-      int i;
-      int j;
-      paramDeviceConfigManager.setVisible("DEVICE_BLUETOOTHHEADSET", false);
-      do
-      {
+      if (("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) {
         return;
-      } while ((i != 12) || (!QLog.isColorLevel()));
-      QLog.w("TRAE", 0, "BT OFF-->ON,Visiable it...");
-      return;
+      }
+      if (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) {
+        return;
+      }
+      _onReceive(paramContext, paramIntent);
     }
-    _onReceive(paramContext, paramIntent);
   }
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioManager.BluetoohHeadsetCheckInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 public class efq
-  implements View.OnClickListener
+  extends Handler
 {
-  public efq(NotificationAdapter paramNotificationAdapter) {}
+  public efq(NotificationView paramNotificationView) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (NotificationView.a(this.a) == null);
+      this.a.k();
+      NotificationView.a(this.a).a = GroupSystemMsgController.a().a(this.a.a);
+      NotificationView.a(this.a).notifyDataSetChanged();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).c();
-    }
-    NotificationAdapter.a(this.a, localViewHolder.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
-    this.a.notifyDataSetChanged();
+    this.a.l();
   }
 }
 

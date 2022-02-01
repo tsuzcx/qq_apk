@@ -1,0 +1,108 @@
+package com.tencent.liteav.trtc.impl;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.TimeUnit;
+
+public class TRTCAudioServerConfig
+{
+  private static final String AUDIO_SERVER_CONFIG = "trtc_audio_server_config";
+  public static final int DEFAULT_16K_PACKAGE_STRATEGY = 0;
+  public static final int DEFAULT_DEVICE_AUTO_RESTART_MIN_INTERVAL = 5000;
+  public static final boolean DEFAULT_ENABLE_AUTO_RESTART_DEVICE = false;
+  public static final int DEFAULT_ENABLE_DEVICE_ABNORMAL_DETECTION = 1;
+  public static final boolean DEFAULT_ENABLE_OPENSL = false;
+  public static final int DEFAULT_IS_ENABLE_INBAND_FEC = 0;
+  private static final boolean DEFAULT_IS_LOW_LATENCY_SAMPLERATE_SUPPORTED = false;
+  private static final long DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME;
+  public static final int DEFAULT_MAX_SELECTED_PLAY_STREAMS = 0;
+  private static final String KEY_16K_PACKAGE_STRATEGY = "16k_package_strategy";
+  private static final String KEY_DEVICE_AUTO_RESTART_MIN_INTERVAL = "device_auto_restart_interval";
+  private static final String KEY_ENABLE_AUTO_RESTART_DEVICE = "enable_auto_restart_device";
+  private static final String KEY_ENABLE_DEVICE_ABNORMAL_DETECTION = "enable_device_abnormal_detection";
+  private static final String KEY_ENABLE_INBAND_FEC = "enable_inband_fec";
+  private static final String KEY_ENABLE_OPENSL = "enable_opensl";
+  private static final String KEY_IS_LOW_LATENCY_SAMPLERATE_SUPPORTED = "is_low_latency_samplerate_supported";
+  private static final String KEY_LOW_LATENCY_SAMPLERATE_BLOCK_TIME = "low_latency_samplerate_block_time";
+  private static final String KEY_MAX_SELECTED_PLAY_STREAMS = "max_selected_play_streams";
+  public int audio16KPackageStrategy = 0;
+  public int deviceAutoRestartMinInterval = 5000;
+  public boolean enableAutoRestartDevice = false;
+  public int enableDeviceAbnormalDetection = 1;
+  public int enableInbandFEC = 0;
+  public boolean enableOpenSL = false;
+  public boolean isLowLatencySampleRateSupported = false;
+  public long lowLatencySampleRateBlockTime = DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME;
+  public int maxSelectedPlayStreams = 0;
+  
+  static
+  {
+    AppMethodBeat.i(230878);
+    DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME = TimeUnit.DAYS.toMillis(7L);
+    AppMethodBeat.o(230878);
+  }
+  
+  public static TRTCAudioServerConfig loadFromSharedPreferences(Context paramContext)
+  {
+    AppMethodBeat.i(230873);
+    try
+    {
+      TRTCAudioServerConfig localTRTCAudioServerConfig = new TRTCAudioServerConfig();
+      paramContext = paramContext.getSharedPreferences("trtc_audio_server_config", 0);
+      localTRTCAudioServerConfig.enableOpenSL = paramContext.getBoolean("enable_opensl", false);
+      localTRTCAudioServerConfig.enableAutoRestartDevice = paramContext.getBoolean("enable_auto_restart_device", false);
+      localTRTCAudioServerConfig.deviceAutoRestartMinInterval = paramContext.getInt("device_auto_restart_interval", 5000);
+      localTRTCAudioServerConfig.audio16KPackageStrategy = paramContext.getInt("16k_package_strategy", 0);
+      localTRTCAudioServerConfig.maxSelectedPlayStreams = paramContext.getInt("max_selected_play_streams", 0);
+      localTRTCAudioServerConfig.isLowLatencySampleRateSupported = paramContext.getBoolean("is_low_latency_samplerate_supported", false);
+      localTRTCAudioServerConfig.lowLatencySampleRateBlockTime = paramContext.getLong("low_latency_samplerate_block_time", DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME);
+      localTRTCAudioServerConfig.enableInbandFEC = paramContext.getInt("enable_inband_fec", 0);
+      localTRTCAudioServerConfig.enableDeviceAbnormalDetection = paramContext.getInt("enable_device_abnormal_detection", 1);
+      return localTRTCAudioServerConfig;
+    }
+    finally
+    {
+      AppMethodBeat.o(230873);
+    }
+  }
+  
+  public static void saveToSharedPreferences(Context paramContext, TRTCAudioServerConfig paramTRTCAudioServerConfig)
+  {
+    AppMethodBeat.i(230867);
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("trtc_audio_server_config", 0).edit();
+      paramContext.putBoolean("enable_opensl", paramTRTCAudioServerConfig.enableOpenSL);
+      paramContext.putBoolean("enable_auto_restart_device", paramTRTCAudioServerConfig.enableAutoRestartDevice);
+      paramContext.putInt("device_auto_restart_interval", paramTRTCAudioServerConfig.deviceAutoRestartMinInterval);
+      paramContext.putInt("16k_package_strategy", paramTRTCAudioServerConfig.audio16KPackageStrategy);
+      paramContext.putInt("max_selected_play_streams", paramTRTCAudioServerConfig.maxSelectedPlayStreams);
+      paramContext.putBoolean("is_low_latency_samplerate_supported", paramTRTCAudioServerConfig.isLowLatencySampleRateSupported);
+      paramContext.putLong("low_latency_samplerate_block_time", paramTRTCAudioServerConfig.lowLatencySampleRateBlockTime);
+      paramContext.putInt("enable_inband_fec", paramTRTCAudioServerConfig.enableInbandFEC);
+      paramContext.putInt("enable_device_abnormal_detection", paramTRTCAudioServerConfig.enableDeviceAbnormalDetection);
+      paramContext.apply();
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(230867);
+    }
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(230883);
+    String str = "enableOpenSL: " + this.enableOpenSL + ", enableAutoRestartDevice: " + this.enableAutoRestartDevice + ", deviceAutoRestartMinInterval: " + this.deviceAutoRestartMinInterval + ", audio16KPackageStrategy: " + this.audio16KPackageStrategy + ", isLowLatencySampleRateSupported: " + this.isLowLatencySampleRateSupported + ", lowLatencySampleRateBlockTime: " + this.lowLatencySampleRateBlockTime + ", enableDeviceAbnormalDetection: " + this.enableDeviceAbnormalDetection;
+    AppMethodBeat.o(230883);
+    return str;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCAudioServerConfig
+ * JD-Core Version:    0.7.0.1
+ */

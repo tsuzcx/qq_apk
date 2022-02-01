@@ -1,1100 +1,1483 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.location.GpsSatellite;
-import android.location.GpsStatus;
-import android.location.GpsStatus.Listener;
-import android.location.GpsStatus.NmeaListener;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.net.wifi.ScanResult;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import androidx.annotation.Nullable;
+import com.tencent.map.geolocation.TencentDistanceListener;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManagerOptions;
+import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.map.geolocation.TencentPedestrianData;
+import com.tencent.mobileqq.qmethodmonitor.monitor.LocationMonitor;
+import com.tencent.tencentmap.lbssdk.service.e;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
-final class ek
-  implements GpsStatus.Listener, GpsStatus.NmeaListener, LocationListener
+public final class ek
 {
-  long a = 0L;
-  final ea b;
-  int c = 1024;
-  volatile boolean d;
-  volatile long e = 0L;
-  boolean f;
-  HandlerThread g;
-  Runnable h;
-  Handler i;
-  ek j;
-  private volatile boolean k = false;
-  private volatile boolean l = false;
-  private volatile Location m;
-  private Location n;
-  private boolean o = false;
-  private boolean p = false;
-  private GpsStatus q;
-  private int r = 0;
-  private int s = 0;
-  private int t = 0;
-  private ArrayList<Float> u = new ArrayList();
-  private volatile boolean v = true;
-  private ee w;
-  private final double[] x = new double[2];
+  private static SparseArray<String> n;
+  private eq A;
+  private et B;
+  private ex C;
+  private eu D;
+  private ev E;
+  private final ea F;
+  private String G = "stop";
+  private boolean H = false;
+  private final Object I = new Object();
+  private final TencentLocationRequest J = TencentLocationRequest.create();
+  private double K;
+  private double L;
+  private fi M;
+  private final boolean N;
+  private boolean O;
+  private long P;
+  private long Q;
+  private long R;
+  private String S;
+  private boolean T;
+  public int a = 1;
+  public final eh b;
+  public final el c;
+  public TencentLocationListener d;
+  public boolean e = false;
+  public double f = 0.0D;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
+  public TencentLocation j;
+  public TencentDistanceListener k;
+  public fi l;
+  public int m = 404;
+  private ek.a o;
+  private final ef p;
+  private final en q;
+  private final boolean r;
+  private final ej s;
+  private final er t;
+  private final em u;
+  private final ep v;
+  private co w;
+  private volatile boolean x = false;
+  private HandlerThread y;
+  private int z = 0;
+  
+  static
+  {
+    Object localObject = new SparseArray();
+    n = (SparseArray)localObject;
+    ((SparseArray)localObject).put(0, "OK");
+    n.put(1, "ERROR_NETWORK");
+    n.put(2, "BAD_JSON");
+    n.put(4, "DEFLECT_FAILED");
+    n.put(5, "VERIFYKEY_ERROR_NETWORK");
+    localObject = new HashMap();
+    ((HashMap)localObject).put("https", "true");
+    ((HashMap)localObject).put("up_apps", "true");
+    ((HashMap)localObject).put("start_daemon", "false");
+    ((HashMap)localObject).put("up_daemon_delay", "600000");
+    ((HashMap)localObject).put("gps_kalman", "false");
+    ((HashMap)localObject).put("min_wifi_scan_interval", "8000");
+    ((HashMap)localObject).put("f_coll_item", "2");
+    ((HashMap)localObject).put("f_coll_up_net", "w");
+    cz.a((HashMap)localObject);
+  }
   
   public ek(ea paramea)
   {
-    this.b = paramea;
-    this.n = new Location("gps");
-    this.w = ee.a();
-    this.h = new ek.1(this);
-    this.j = this;
+    this.F = paramea;
+    this.u = new em(this.F);
+    this.v = new ep(this.F);
+    this.A = new eq();
+    this.b = eh.a(paramea.a);
+    this.c = el.b();
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.r = bool;
+    boolean bool = this.r;
+    Object localObject = null;
+    paramea = null;
+    if (bool)
+    {
+      this.p = null;
+      this.t = h();
+      if (this.F.b()) {
+        paramea = new en(this.F);
+      }
+      this.q = paramea;
+      this.s = g();
+      this.N = false;
+    }
+    else
+    {
+      this.q = null;
+      this.t = h();
+      if (!this.F.b()) {
+        paramea = localObject;
+      } else {
+        paramea = new ef(this.F);
+      }
+      this.p = paramea;
+      this.s = g();
+      this.N = false;
+    }
+    this.F.a(this);
+    try
+    {
+      cz.a(this.F.a, "txsdk", this.F.b.d());
+      return;
+    }
+    catch (Throwable paramea) {}
   }
   
-  private static double a(String paramString)
+  private static String a(String paramString)
   {
-    double d1 = Double.parseDouble(paramString);
-    double d2 = (int)Math.floor(d1 / 100.0D);
-    return (d1 - 100.0D * d2) / 60.0D + d2;
+    if (paramString.contains(",")) {}
+    try
+    {
+      paramString = paramString.split(",");
+      i1 = 1;
+      if ((paramString == null) || (paramString.length <= 1) || (paramString[0] == null) || (paramString[1] == null) || (e.w(paramString[0], paramString[1]) <= 0)) {
+        break label83;
+      }
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      break label77;
+      int i1 = 0;
+      if (i1 == 0) {
+        break label93;
+      }
+      return paramString[0];
+    }
+    i1 = e.v(paramString);
+    if (i1 >= 0)
+    {
+      paramString = Integer.toString(i1);
+      return paramString;
+    }
+    return "";
+    label77:
+    return null;
+    label83:
+    label93:
+    return "";
   }
   
-  @SuppressLint({"NewApi"})
-  private int a(Location paramLocation)
+  private void a(int paramInt)
+  {
+    ek.a locala = this.o;
+    if (locala != null) {
+      locala.sendEmptyMessage(paramInt);
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    String str1 = null;
+    String str2 = "gps";
+    switch (paramInt1)
+    {
+    default: 
+      str2 = null;
+      break;
+    case 12004: 
+      if (paramInt2 != 3) {
+        if (paramInt2 != 4) {
+          str1 = "unknown";
+        }
+      }
+      for (;;)
+      {
+        str2 = "gps";
+        break;
+        str1 = "gps unavailable";
+        continue;
+        str1 = "gps available";
+      }
+    case 12003: 
+      if (paramInt2 == 1) {
+        str1 = "cell enabled";
+      }
+      for (;;)
+      {
+        break;
+        if (paramInt2 == 0) {
+          str1 = "cell disabled";
+        } else {
+          str1 = "unknown";
+        }
+      }
+      if (fj.a) {
+        a(3999);
+      }
+      break;
+    }
+    for (str2 = "cell";; str2 = "wifi")
+    {
+      str1 = "location permission denied";
+      paramInt2 = 2;
+      break label269;
+      str2 = "cell";
+      break label269;
+      if (paramInt2 != 0)
+      {
+        if (paramInt2 != 1)
+        {
+          if (paramInt2 != 5)
+          {
+            str1 = "unknown";
+            break label269;
+          }
+          a(3999);
+          str1 = "location permission denied";
+          break label269;
+        }
+        str1 = "gps enabled";
+        break label269;
+      }
+      str1 = "gps disabled";
+      break label269;
+      if (paramInt2 != 0) {
+        if (paramInt2 != 1) {
+          if (paramInt2 != 5) {
+            str1 = "unknown";
+          }
+        }
+      }
+      for (;;)
+      {
+        break;
+        a(3999);
+        str1 = "location service switch is off";
+        continue;
+        str1 = "wifi enabled";
+        continue;
+        str1 = "wifi disabled";
+      }
+      if ((paramInt2 == 5) || (!fq.a)) {
+        break;
+      }
+    }
+    str2 = "wifi";
+    label269:
+    synchronized (this.I)
+    {
+      if (this.d != null) {
+        this.d.onStatusUpdate(str2, paramInt2, str1);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject1;
+    }
+  }
+  
+  private void a(int paramInt, long paramLong)
+  {
+    ek.a locala = this.o;
+    if (locala != null)
+    {
+      locala.removeMessages(paramInt);
+      this.o.sendEmptyMessageDelayed(paramInt, paramLong);
+    }
+  }
+  
+  private void a(int paramInt, fi paramfi)
+  {
+    if (paramfi == null) {
+      return;
+    }
+    int i1;
+    if ((paramInt == 0) && (paramfi.getLatitude() != 0.0D) && (paramfi.getLongitude() != 0.0D))
+    {
+      if ((this.a == 1) && (fk.a(paramfi.getLatitude(), paramfi.getLongitude()))) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      fi.a(paramfi, i1);
+    }
+    if (m())
+    {
+      if ((this.m != 0) && (paramInt == 0)) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      this.m = paramInt;
+      this.l = paramfi;
+      if ((paramfi.getAccuracy() < 500.0F) && (paramfi.getAccuracy() > 0.0F))
+      {
+        this.A.a(paramfi);
+        if (this.e) {
+          this.j = paramfi;
+        }
+      }
+      this.K = paramfi.getLatitude();
+      this.L = paramfi.getLongitude();
+      if (this.d != null) {
+        i2 = 1;
+      } else {
+        i2 = 0;
+      }
+      if ((i2 != 0) && (this.J.getInterval() > 0L) && (!this.J.getExtras().getBoolean("daemon")))
+      {
+        a(11999, this.J.getInterval());
+        if (this.J.getCheckInterval() != -1L) {
+          a(3998, this.J.getCheckInterval());
+        }
+      }
+      if (i1 != 0) {
+        a(11998);
+      }
+    }
+    else if ((paramInt == 0) && (paramfi.getLatitude() != 0.0D) && (paramfi.getLongitude() != 0.0D) && (Math.abs(paramfi.getLatitude() - this.K) >= 1.0E-007D) && (Math.abs(paramfi.getLongitude() - this.L) >= 1.0E-007D))
+    {
+      if (!this.A.a(paramfi, this.F))
+      {
+        new StringBuilder("discard ").append(paramfi);
+        return;
+      }
+      this.K = paramfi.getLatitude();
+      this.L = paramfi.getLongitude();
+      if ((paramfi.getAccuracy() < 500.0F) && (paramfi.getAccuracy() > 0.0F))
+      {
+        this.A.a(paramfi);
+        this.A.a(paramfi);
+        if (this.e)
+        {
+          localObject = this.j;
+          if (localObject != null)
+          {
+            double d1 = fp.a(((TencentLocation)localObject).getLatitude(), this.j.getLongitude(), paramfi.getLatitude(), paramfi.getLongitude());
+            if (((paramfi.getProvider().equalsIgnoreCase("network")) && (d1 > 10.0D)) || ((paramfi.getProvider().equalsIgnoreCase("gps")) && (d1 > 3.0D)))
+            {
+              this.f += d1;
+              if (paramfi.getProvider().equalsIgnoreCase("network")) {
+                this.h += 1;
+              } else {
+                this.g += 1;
+              }
+              this.i += 1;
+              this.j = paramfi;
+            }
+          }
+          else
+          {
+            this.j = paramfi;
+          }
+        }
+      }
+    }
+    int i3 = 1;
+    if ((this.m != 0) && (paramInt == 0)) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    int i2 = i1;
+    if (this.m == 0)
+    {
+      localObject = this.l;
+      i2 = i1;
+      if (localObject != null)
+      {
+        i2 = i1;
+        if (((fi)localObject).getProvider().equals("network"))
+        {
+          i2 = i1;
+          if (paramInt == 0)
+          {
+            i2 = i1;
+            if (paramfi != null)
+            {
+              i2 = i1;
+              if (paramfi.getProvider().equals("gps")) {
+                i2 = 1;
+              }
+            }
+          }
+        }
+      }
+    }
+    this.m = paramInt;
+    this.l = paramfi;
+    Object localObject = new StringBuilder("updateLast");
+    ((StringBuilder)localObject).append(paramfi.getLatitude());
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramfi.getLongitude());
+    if (this.J.getInterval() == 0L)
+    {
+      if (this.d != null) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
+      }
+      if (paramInt != 0) {
+        a(11998);
+      }
+    }
+    if (i2 != 0)
+    {
+      if (this.d != null) {
+        paramInt = i3;
+      } else {
+        paramInt = 0;
+      }
+      if (paramInt != 0) {
+        a(11998);
+      }
+    }
+  }
+  
+  @Nullable
+  private ej g()
+  {
+    if (!this.F.d()) {
+      return null;
+    }
+    return new ej(this.F);
+  }
+  
+  @Nullable
+  private er h()
+  {
+    if (!this.F.c()) {
+      return null;
+    }
+    return new er(this.F);
+  }
+  
+  private dt i()
   {
     try
     {
-      if (!this.b.h.isProviderEnabled("gps")) {
-        return 1;
-      }
-      if (Build.VERSION.SDK_INT >= 18)
-      {
-        boolean bool = paramLocation.isFromMockProvider();
-        if (bool) {
-          break label115;
-        }
-      }
+      Object localObject = this.F.b;
+      localObject = new dt(((du)localObject).j, ((du)localObject).d(), ((du)localObject).f());
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
-      label34:
-      break label34;
+      label30:
+      break label30;
     }
-    if (b(paramLocation))
+    return new dt("unknown", "unknown", "unknown");
+  }
+  
+  private void j()
+  {
+    if (this.z == 0)
     {
-      if ((!this.v) && (this.b.b.o > 0) && (System.currentTimeMillis() - this.e > 120000L)) {
-        return 2;
+      if (!da.a().d("start_daemon")) {
+        return;
       }
-      if ((this.n != null) && (paramLocation.distanceTo(this.n) > 100.0F) && (!this.v)) {
-        return 3;
-      }
-      return 0;
-    }
-    label115:
-    return 1;
-  }
-  
-  private static void a(Location paramLocation, double paramDouble1, double paramDouble2, int paramInt1, int paramInt2)
-  {
-    Bundle localBundle2 = paramLocation.getExtras();
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
-    }
-    localBundle1.putDouble("lat", paramDouble1);
-    localBundle1.putDouble("lng", paramDouble2);
-    localBundle1.putInt("rssi", paramInt1);
-    localBundle1.putInt("fakeCode", paramInt2);
-    paramLocation.setExtras(localBundle1);
-  }
-  
-  private static boolean a(double paramDouble)
-  {
-    return Math.abs(Double.valueOf(paramDouble).longValue() - paramDouble) < 4.9E-324D;
-  }
-  
-  @SuppressLint({"NewApi"})
-  private boolean b(Location paramLocation)
-  {
-    if (Build.VERSION.SDK_INT >= 17) {}
-    while ((this.b.b.o > 0) && (paramLocation.getSpeed() == 0.0F) && (paramLocation.getBearing() == 0.0F)) {
-      try
-      {
-        long l1 = paramLocation.getElapsedRealtimeNanos();
-        if (l1 == 0L) {
-          return false;
-        }
-      }
-      catch (Throwable localThrowable) {}
-    }
-    return true;
-  }
-  
-  /* Error */
-  private void c(Location paramLocation)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +46 -> 49
-    //   6: ldc 88
-    //   8: aload_1
-    //   9: invokevirtual 234	android/location/Location:getProvider	()Ljava/lang/String;
-    //   12: invokevirtual 240	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   15: ifeq +34 -> 49
-    //   18: aload_1
-    //   19: invokevirtual 243	android/location/Location:getAccuracy	()F
-    //   22: ldc 244
-    //   24: fcmpl
-    //   25: ifgt +16 -> 41
-    //   28: aload_1
-    //   29: invokevirtual 243	android/location/Location:getAccuracy	()F
-    //   32: fstore 6
-    //   34: fload 6
-    //   36: fconst_0
-    //   37: fcmpg
-    //   38: ifge +14 -> 52
-    //   41: iconst_0
-    //   42: istore 7
-    //   44: iload 7
-    //   46: ifne +181 -> 227
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: aload_1
-    //   53: invokevirtual 248	android/location/Location:getLatitude	()D
-    //   56: bipush 6
-    //   58: invokestatic 253	c/t/m/g/fp:a	(DI)D
-    //   61: dstore_2
-    //   62: aload_1
-    //   63: invokevirtual 256	android/location/Location:getLongitude	()D
-    //   66: bipush 6
-    //   68: invokestatic 253	c/t/m/g/fp:a	(DI)D
-    //   71: dstore 4
-    //   73: new 258	java/lang/StringBuilder
-    //   76: dup
-    //   77: ldc_w 260
-    //   80: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   83: dload_2
-    //   84: invokevirtual 265	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   87: ldc_w 267
-    //   90: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: dload 4
-    //   95: invokevirtual 265	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   98: pop
-    //   99: dload_2
-    //   100: invokestatic 272	c/t/m/g/ek:a	(D)Z
-    //   103: ifeq +336 -> 439
-    //   106: dload 4
-    //   108: invokestatic 272	c/t/m/g/ek:a	(D)Z
-    //   111: ifeq +328 -> 439
-    //   114: iconst_0
-    //   115: istore 7
-    //   117: goto -73 -> 44
-    //   120: dload_2
-    //   121: invokestatic 216	java/lang/Math:abs	(D)D
-    //   124: ldc2_w 273
-    //   127: dcmpg
-    //   128: iflt +346 -> 474
-    //   131: dload 4
-    //   133: invokestatic 216	java/lang/Math:abs	(D)D
-    //   136: ldc2_w 273
-    //   139: dcmpg
-    //   140: ifge +6 -> 146
-    //   143: goto +331 -> 474
-    //   146: dload_2
-    //   147: dconst_1
-    //   148: dsub
-    //   149: invokestatic 216	java/lang/Math:abs	(D)D
-    //   152: ldc2_w 273
-    //   155: dcmpg
-    //   156: iflt +324 -> 480
-    //   159: dload 4
-    //   161: dconst_1
-    //   162: dsub
-    //   163: invokestatic 216	java/lang/Math:abs	(D)D
-    //   166: ldc2_w 273
-    //   169: dcmpg
-    //   170: ifge +316 -> 486
-    //   173: goto +307 -> 480
-    //   176: aload_1
-    //   177: invokevirtual 277	android/location/Location:getTime	()J
-    //   180: invokestatic 168	java/lang/System:currentTimeMillis	()J
-    //   183: lsub
-    //   184: invokestatic 280	java/lang/Math:abs	(J)J
-    //   187: ldc2_w 281
-    //   190: lcmp
-    //   191: ifle +335 -> 526
-    //   194: new 258	java/lang/StringBuilder
-    //   197: dup
-    //   198: ldc_w 284
-    //   201: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   204: aload_1
-    //   205: invokevirtual 277	android/location/Location:getTime	()J
-    //   208: invokevirtual 287	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   211: ldc_w 289
-    //   214: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: invokestatic 168	java/lang/System:currentTimeMillis	()J
-    //   220: invokevirtual 287	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   223: pop
-    //   224: goto +302 -> 526
-    //   227: aload_0
-    //   228: invokespecial 291	c/t/m/g/ek:d	()V
-    //   231: aload_0
-    //   232: aload_0
-    //   233: getfield 61	c/t/m/g/ek:c	I
-    //   236: iconst_2
-    //   237: ior
-    //   238: putfield 61	c/t/m/g/ek:c	I
-    //   241: aload_0
-    //   242: invokestatic 168	java/lang/System:currentTimeMillis	()J
-    //   245: putfield 55	c/t/m/g/ek:a	J
-    //   248: aload_0
-    //   249: aload_1
-    //   250: invokespecial 293	c/t/m/g/ek:a	(Landroid/location/Location;)I
-    //   253: istore 9
-    //   255: iconst_0
-    //   256: istore 7
-    //   258: aload_0
-    //   259: getfield 69	c/t/m/g/ek:s	I
-    //   262: iconst_3
-    //   263: if_icmpne +115 -> 378
-    //   266: iconst_1
-    //   267: istore 7
-    //   269: aload_0
-    //   270: getfield 295	c/t/m/g/ek:f	Z
-    //   273: ifeq +259 -> 532
-    //   276: aload_1
-    //   277: invokevirtual 248	android/location/Location:getLatitude	()D
-    //   280: aload_1
-    //   281: invokevirtual 256	android/location/Location:getLongitude	()D
-    //   284: invokestatic 300	c/t/m/g/fk:a	(DD)Z
-    //   287: ifeq +245 -> 532
-    //   290: iconst_1
-    //   291: istore 8
-    //   293: iload 8
-    //   295: ifeq +121 -> 416
-    //   298: aload_1
-    //   299: aload_0
-    //   300: getfield 82	c/t/m/g/ek:x	[D
-    //   303: invokestatic 303	c/t/m/g/fp:a	(Landroid/location/Location;[D)Z
-    //   306: pop
-    //   307: aload_1
-    //   308: aload_0
-    //   309: getfield 82	c/t/m/g/ek:x	[D
-    //   312: iconst_0
-    //   313: daload
-    //   314: aload_0
-    //   315: getfield 82	c/t/m/g/ek:x	[D
-    //   318: iconst_1
-    //   319: daload
-    //   320: iload 7
-    //   322: iload 9
-    //   324: invokestatic 305	c/t/m/g/ek:a	(Landroid/location/Location;DDII)V
-    //   327: new 307	c/t/m/g/ev
-    //   330: dup
-    //   331: aload_1
-    //   332: aload_0
-    //   333: getfield 55	c/t/m/g/ek:a	J
-    //   336: aload_0
-    //   337: getfield 67	c/t/m/g/ek:r	I
-    //   340: aload_0
-    //   341: getfield 69	c/t/m/g/ek:s	I
-    //   344: aload_0
-    //   345: getfield 61	c/t/m/g/ek:c	I
-    //   348: invokespecial 310	c/t/m/g/ev:<init>	(Landroid/location/Location;JIII)V
-    //   351: astore_1
-    //   352: aload_0
-    //   353: getfield 84	c/t/m/g/ek:b	Lc/t/m/g/ea;
-    //   356: aload_1
-    //   357: invokevirtual 313	c/t/m/g/ea:b	(Ljava/lang/Object;)V
-    //   360: aload_0
-    //   361: iconst_0
-    //   362: putfield 59	c/t/m/g/ek:l	Z
-    //   365: aload_0
-    //   366: aconst_null
-    //   367: putfield 315	c/t/m/g/ek:m	Landroid/location/Location;
-    //   370: goto -321 -> 49
-    //   373: astore_1
-    //   374: aload_0
-    //   375: monitorexit
-    //   376: aload_1
-    //   377: athrow
-    //   378: aload_0
-    //   379: getfield 69	c/t/m/g/ek:s	I
-    //   382: iconst_4
-    //   383: if_icmplt +18 -> 401
-    //   386: aload_0
-    //   387: getfield 69	c/t/m/g/ek:s	I
-    //   390: bipush 6
-    //   392: if_icmpgt +9 -> 401
-    //   395: iconst_2
-    //   396: istore 7
-    //   398: goto -129 -> 269
-    //   401: aload_0
-    //   402: getfield 69	c/t/m/g/ek:s	I
-    //   405: bipush 7
-    //   407: if_icmplt -138 -> 269
-    //   410: iconst_3
-    //   411: istore 7
-    //   413: goto -144 -> 269
-    //   416: aload_1
-    //   417: aload_1
-    //   418: invokevirtual 248	android/location/Location:getLatitude	()D
-    //   421: aload_1
-    //   422: invokevirtual 256	android/location/Location:getLongitude	()D
-    //   425: iload 7
-    //   427: iload 9
-    //   429: invokestatic 305	c/t/m/g/ek:a	(Landroid/location/Location;DDII)V
-    //   432: goto -105 -> 327
-    //   435: astore_1
-    //   436: goto -76 -> 360
-    //   439: ldc2_w 316
-    //   442: dload_2
-    //   443: dmul
-    //   444: ldc2_w 318
-    //   447: drem
-    //   448: dconst_0
-    //   449: dcmpl
-    //   450: ifne -330 -> 120
-    //   453: ldc2_w 316
-    //   456: dload 4
-    //   458: dmul
-    //   459: ldc2_w 318
-    //   462: drem
-    //   463: dconst_0
-    //   464: dcmpl
-    //   465: ifne -345 -> 120
-    //   468: iconst_0
-    //   469: istore 7
-    //   471: goto -427 -> 44
-    //   474: iconst_0
-    //   475: istore 7
-    //   477: goto -433 -> 44
-    //   480: iconst_0
-    //   481: istore 7
-    //   483: goto -439 -> 44
-    //   486: dload_2
-    //   487: ldc2_w 320
-    //   490: dcmpg
-    //   491: iflt +29 -> 520
-    //   494: dload_2
-    //   495: ldc2_w 322
-    //   498: dcmpl
-    //   499: ifgt +21 -> 520
-    //   502: dload 4
-    //   504: ldc2_w 324
-    //   507: dcmpg
-    //   508: iflt +12 -> 520
-    //   511: dload 4
-    //   513: ldc2_w 326
-    //   516: dcmpl
-    //   517: ifle -341 -> 176
-    //   520: iconst_0
-    //   521: istore 7
-    //   523: goto -479 -> 44
-    //   526: iconst_1
-    //   527: istore 7
-    //   529: goto -485 -> 44
-    //   532: iconst_0
-    //   533: istore 8
-    //   535: goto -242 -> 293
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	538	0	this	ek
-    //   0	538	1	paramLocation	Location
-    //   61	434	2	d1	double
-    //   71	441	4	d2	double
-    //   32	3	6	f1	float
-    //   42	486	7	i1	int
-    //   291	243	8	i2	int
-    //   253	175	9	i3	int
-    // Exception table:
-    //   from	to	target	type
-    //   6	34	373	finally
-    //   52	114	373	finally
-    //   120	143	373	finally
-    //   146	173	373	finally
-    //   176	224	373	finally
-    //   227	255	373	finally
-    //   258	266	373	finally
-    //   269	290	373	finally
-    //   298	327	373	finally
-    //   327	360	373	finally
-    //   360	370	373	finally
-    //   378	395	373	finally
-    //   401	410	373	finally
-    //   416	432	373	finally
-    //   6	34	435	java/lang/Throwable
-    //   52	114	435	java/lang/Throwable
-    //   120	143	435	java/lang/Throwable
-    //   146	173	435	java/lang/Throwable
-    //   176	224	435	java/lang/Throwable
-    //   227	255	435	java/lang/Throwable
-    //   258	266	435	java/lang/Throwable
-    //   269	290	435	java/lang/Throwable
-    //   298	327	435	java/lang/Throwable
-    //   327	360	435	java/lang/Throwable
-    //   378	395	435	java/lang/Throwable
-    //   401	410	435	java/lang/Throwable
-    //   416	432	435	java/lang/Throwable
-  }
-  
-  private void d()
-  {
-    this.t = 0;
-    this.s = 0;
-    this.r = 0;
-    Object localObject = this.q;
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      this.u.clear();
-      this.t = ((GpsStatus)localObject).getMaxSatellites();
-      localObject = ((GpsStatus)localObject).getSatellites().iterator();
-      if (localObject != null) {
-        while ((((Iterator)localObject).hasNext()) && (this.r <= this.t))
-        {
-          GpsSatellite localGpsSatellite = (GpsSatellite)((Iterator)localObject).next();
-          this.r += 1;
-          this.u.add(Float.valueOf(localGpsSatellite.getSnr()));
-          if (localGpsSatellite.usedInFix()) {
-            this.s += 1;
-          }
-        }
+      this.P = da.a().c("up_daemon_delay");
+      if (this.P < 120000L) {
+        this.P = 120000L;
       }
     }
-  }
-  
-  public final void a()
-  {
-    if (!this.d) {
-      return;
-    }
-    this.d = false;
-    this.a = 0L;
-    this.c = 1024;
-    this.o = false;
-    this.p = false;
-    this.t = 0;
-    this.s = 0;
-    this.r = 0;
-    this.u.clear();
-    this.f = false;
-    Arrays.fill(this.x, 0.0D);
-    LocationManager localLocationManager = this.b.h;
     try
     {
-      localLocationManager.removeGpsStatusListener(this);
+      if (fq.c(this.F).equalsIgnoreCase("{}"))
+      {
+        TencentLocationRequest localTencentLocationRequest = TencentLocationRequest.create().setInterval(this.P).setRequestLevel(0);
+        localTencentLocationRequest.getExtras().putBoolean("daemon", true);
+        ek.2 local2 = new ek.2(this);
+        this.y = new HandlerThread("daemonthread");
+        this.y.start();
+        a(localTencentLocationRequest, local2, this.y.getLooper());
+        this.z = 1;
+        this.Q = System.currentTimeMillis();
+      }
+      return;
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable) {}
+  }
+  
+  private void k()
+  {
+    fj.a = false;
+    this.u.a();
+    this.v.a();
+    this.A.a();
+    Object localObject = this.t;
+    int i2 = 1;
+    int i1;
+    if (localObject != null) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0) {
+      this.t.a();
+    }
+    if (this.r)
+    {
+      if (this.q != null) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if (i1 != 0) {
+        this.q.a();
+      }
+    }
+    else
+    {
+      if (this.p != null) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if (i1 != 0) {
+        this.p.a();
+      }
+    }
+    if (this.s != null) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0) {
+      this.s.a();
+    }
+    if ((this.J.isAllowDirection()) && (!this.b.a)) {
+      this.b.a();
+    }
+    if (!this.J.getExtras().getBoolean("daemon"))
+    {
+      if (this.c != null) {
+        i1 = i2;
+      } else {
+        i1 = 0;
+      }
+      if (i1 != 0) {
+        this.c.c();
+      }
+    }
+    if (this.x)
+    {
+      cz.a().c();
+      this.x = false;
+    }
+    localObject = this.w;
+    if (localObject != null) {
+      ((co)localObject).a();
+    }
+  }
+  
+  private void l()
+  {
+    this.l = null;
+    this.m = 404;
+    this.C = null;
+    this.B = null;
+    this.D = null;
+    this.H = false;
+    this.T = false;
+    ev.a = 0;
+    this.F.a("cell").a();
+  }
+  
+  private boolean m()
+  {
+    return this.m == 404;
+  }
+  
+  private boolean n()
+  {
+    ej localej = this.s;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localej != null)
+    {
+      bool1 = bool2;
+      if (localej.b())
+      {
+        localej = this.s;
+        int i1;
+        if (((localej.c & 0x2) == 2) && (System.currentTimeMillis() - localej.a < ei.a().b())) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        bool1 = bool2;
+        if (i1 != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public final int a(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper arg3)
+  {
+    if (this.z == 1)
+    {
+      d();
+      ??? = this.y;
+      if (??? != null)
+      {
+        ((HandlerThread)???).quit();
+        this.y = null;
+      }
+      this.z = 0;
+    }
+    if (TencentLocationManagerOptions.isLoadLibraryEnabled()) {}
+    try
+    {
+      System.loadLibrary("c++_shared");
+    }
+    catch (Error ???)
     {
       try
       {
-        for (;;)
+        System.loadLibrary("tencentloc");
+        break label62;
+        return 3;
+        label62:
+        ??? = this.F;
+        ??? = ((ea)???).b;
+        if (("0123456789ABCDEF".equals(((du)???).a())) && ("0123456789ABCDEF".equals(((du)???).b()))) {
+          ((ea)???).a();
+        }
+        ??? = co.e(((du)???).g);
+        this.S = a((String)???);
+        if (TextUtils.isEmpty(this.S))
         {
-          new StringBuilder("system gps provider remove update,thread name:").append(Thread.currentThread().getName());
-          localLocationManager.removeUpdates(this);
+          paramTencentLocationRequest = new StringBuilder("requestLocationUpdates: illegal key [");
+          paramTencentLocationRequest.append((String)???);
+          paramTencentLocationRequest.append("]");
+          return 2;
+        }
+        l();
+        synchronized (this.I)
+        {
+          this.d = paramTencentLocationListener;
+          TencentLocationRequest.copy(this.J, paramTencentLocationRequest);
+          ((du)???).f = paramTencentLocationRequest.getQQ();
+          if (TextUtils.isEmpty(co.e(((du)???).d))) {
+            ((du)???).d = paramTencentLocationRequest.getPhoneNumber();
+          }
+          if (paramTencentLocationRequest.getInterval() == 0L) {
+            l1 = 8000L;
+          } else {
+            l1 = paramTencentLocationRequest.getInterval();
+          }
+          ((du)???).k = Math.max(da.a().c("min_wifi_scan_interval"), l1);
+          if (Looper.myLooper() == null) {
+            Looper.prepare();
+          }
+          if (this.o == null) {
+            i1 = 1;
+          } else {
+            i1 = 0;
+          }
+          if (i1 != 0)
+          {
+            this.o = new ek.a(this, ???);
+          }
+          else
+          {
+            this.o.removeCallbacksAndMessages(null);
+            if (this.o.getLooper() != ???) {
+              this.o = new ek.a(this, ???);
+            }
+          }
+          k();
+          l1 = System.currentTimeMillis();
+          new StringBuilder("registercost:").append(System.currentTimeMillis() - l1);
+          bool1 = this.J.getExtras().getBoolean("use_network", true);
+          bool2 = this.J.getExtras().getBoolean("daemon");
+          paramTencentLocationRequest = this.o;
+          paramTencentLocationListener = this.u;
+          if (!paramTencentLocationListener.b) {
+            paramTencentLocationListener.b = true;
+          }
+        }
+      }
+      catch (Error ???)
+      {
+        try
+        {
+          ??? = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+          paramTencentLocationListener.a.a.registerReceiver(paramTencentLocationListener, ???, null, paramTencentLocationRequest);
+          paramTencentLocationListener = this.v;
+          if (!paramTencentLocationListener.g)
+          {
+            paramTencentLocationListener.g = true;
+            paramTencentLocationListener.b.d.execute(new ep.1(paramTencentLocationListener, paramTencentLocationRequest));
+            paramTencentLocationListener.f = SystemClock.elapsedRealtime();
+          }
+          new StringBuilder("sendercost:").append(System.currentTimeMillis() - l1);
+          if (bool2) {
+            this.v.a(this.F.a(true));
+          }
+          new StringBuilder("postlistcost:").append(System.currentTimeMillis() - l1);
+          if (this.r)
+          {
+            if (!bool1) {
+              break label880;
+            }
+            if (this.q != null) {
+              i1 = 1;
+            } else {
+              i1 = 0;
+            }
+            if (i1 == 0) {
+              break label880;
+            }
+            paramTencentLocationListener = this.q;
+            if (paramTencentLocationListener.a) {
+              break label880;
+            }
+            paramTencentLocationListener.i = paramTencentLocationRequest;
+            paramTencentLocationListener.f = new HandlerThread("new_cell_provider");
+            if ((paramTencentLocationListener.f == null) || (paramTencentLocationListener.i == null)) {
+              break label880;
+            }
+          }
+        }
+        catch (Exception ???)
+        {
           try
           {
-            label108:
-            localLocationManager.removeNmeaListener(this);
+            paramTencentLocationListener.f.start();
+            paramTencentLocationListener.g = new en.a(paramTencentLocationListener, paramTencentLocationListener.f.getLooper(), (byte)0);
+            break label689;
+            paramTencentLocationListener.g = new en.a(paramTencentLocationListener, paramTencentLocationListener.i.getLooper(), (byte)0);
+            label689:
+            paramTencentLocationListener.a = true;
+            if (!bool2) {
+              co.a(paramTencentLocationListener.g, 0, 0L);
+            }
+            paramTencentLocationListener.g.postDelayed(new en.1(paramTencentLocationListener), 1000L);
+            break label880;
+            if (bool1)
+            {
+              if (this.p != null) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              if (i1 != 0)
+              {
+                paramTencentLocationListener = this.p;
+                if (!paramTencentLocationListener.a)
+                {
+                  paramTencentLocationListener.a = true;
+                  paramTencentLocationListener.d = new HandlerThread("CellProvider");
+                  paramTencentLocationListener.d.start();
+                  paramTencentLocationListener.e = new ef.a(paramTencentLocationListener, paramTencentLocationListener.d.getLooper(), (byte)0);
+                  paramTencentLocationListener.e.sendEmptyMessageDelayed(0, 3000L);
+                  ??? = fj.a(paramTencentLocationListener.b);
+                  if (paramTencentLocationListener.a(???))
+                  {
+                    ??? = et.a(paramTencentLocationListener.b, ???, null);
+                    if (??? != null)
+                    {
+                      paramTencentLocationListener.c = ???;
+                      paramTencentLocationListener.b.b(???);
+                    }
+                  }
+                  paramTencentLocationListener.a(273);
+                }
+              }
+            }
+            label880:
+            new StringBuilder("cellcost:").append(System.currentTimeMillis() - l1);
+            if (bool1)
+            {
+              if (this.t != null) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              if (i1 != 0)
+              {
+                paramTencentLocationListener = this.t;
+                if (!paramTencentLocationListener.a)
+                {
+                  paramTencentLocationListener.a = true;
+                  paramTencentLocationListener.d = false;
+                  paramTencentLocationListener.c = bool2;
+                  er.e = paramTencentLocationRequest;
+                  ??? = new IntentFilter();
+                  ???.addAction("android.net.wifi.WIFI_STATE_CHANGED");
+                  ???.addAction("android.net.wifi.SCAN_RESULTS");
+                }
+              }
+            }
           }
-          catch (Throwable localThrowable1)
+          catch (Throwable ???)
           {
             try
             {
-              for (;;)
+              boolean bool1;
+              paramTencentLocationListener.b.a.registerReceiver(paramTencentLocationListener, ???, null, paramTencentLocationRequest);
+              if (!paramTencentLocationListener.c) {
+                paramTencentLocationListener.a(0L);
+              }
+              new StringBuilder("wificost:").append(System.currentTimeMillis() - l1);
+              if (!bool2) {
+                this.O = true;
+              }
+              if (this.s != null) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              if ((i1 != 0) && (this.J.isAllowGPS()))
               {
-                this.i.removeCallbacksAndMessages(null);
-                this.g.quit();
-                label129:
-                this.k = false;
-                this.l = false;
-                return;
-                localThrowable3 = localThrowable3;
-                break;
-                localThrowable1 = localThrowable1;
+                paramTencentLocationListener = this.s;
+                if (this.a == 1) {
+                  bool1 = true;
+                } else {
+                  bool1 = false;
+                }
+                paramTencentLocationListener.f = bool1;
+                paramTencentLocationListener = this.s;
+                this.J.getInterval();
+                if (!paramTencentLocationListener.d)
+                {
+                  paramTencentLocationListener.d = true;
+                  paramTencentLocationListener.g = new HandlerThread("gps_provider");
+                  ??? = paramTencentLocationListener.b.h;
+                  paramTencentLocationListener.g.start();
+                  paramTencentLocationListener.i = new Handler(paramTencentLocationListener.g.getLooper());
+                  if (bool2) {}
+                }
               }
             }
-            catch (Throwable localThrowable2)
+            catch (Exception ???)
             {
-              break label129;
+              try
+              {
+                for (;;)
+                {
+                  long l1;
+                  boolean bool2;
+                  LocationMonitor.requestLocationUpdates(paramTencentLocationListener.b.h, "gps", 1000L, 0.0F, paramTencentLocationListener.j, paramTencentLocationListener.g.getLooper());
+                  label1201:
+                  paramTencentLocationListener.i.post(paramTencentLocationListener.h);
+                  paramTencentLocationListener.e = System.currentTimeMillis();
+                  break label1249;
+                  LocationMonitor.requestLocationUpdates(???, "passive", 5000L, 0.0F, paramTencentLocationListener, paramTencentLocationListener.g.getLooper());
+                  break label1249;
+                  label1245:
+                  fj.a = true;
+                  label1249:
+                  if (paramTencentLocationListener.b())
+                  {
+                    paramTencentLocationListener.c = 4;
+                    paramTencentLocationListener.c();
+                  }
+                  new StringBuilder("gpscost:").append(System.currentTimeMillis() - l1);
+                  if ((this.J.isAllowDirection()) && (!this.b.a)) {
+                    this.b.a(paramTencentLocationRequest, null);
+                  }
+                  if ((!bool2) && (this.J.isAllowPedometer()))
+                  {
+                    paramTencentLocationListener = this.c;
+                    el.f = this.F.a;
+                    el.i = dy.a("LocationSDK");
+                    paramTencentLocationListener.g = new HandlerThread("Sensor");
+                    paramTencentLocationListener.g.start();
+                    paramTencentLocationListener.a.i = paramTencentLocationListener;
+                    if (Build.VERSION.SDK_INT != 23) {
+                      paramTencentLocationListener.b = ((SensorManager)el.f.getSystemService("sensor"));
+                    }
+                    if (paramTencentLocationListener.b != null)
+                    {
+                      paramTencentLocationListener.c = paramTencentLocationListener.b.getDefaultSensor(1);
+                      paramTencentLocationListener.d = paramTencentLocationListener.b.getDefaultSensor(10);
+                      if (Build.VERSION.SDK_INT >= 19) {
+                        paramTencentLocationListener.e = paramTencentLocationListener.b.getDefaultSensor(19);
+                      }
+                    }
+                    paramTencentLocationListener.d();
+                  }
+                  int i1 = da.a().b("f_coll_item");
+                  if (((i1 == 1) || (i1 == 2)) && (this.w == null)) {
+                    this.w = new co(this.F.a);
+                  }
+                  if ((this.w != null) && (paramTencentLocationRequest != null))
+                  {
+                    paramTencentLocationListener = new StringBuilder("fc,set:");
+                    paramTencentLocationListener.append(i1);
+                    paramTencentLocationListener.append(",daemon:");
+                    paramTencentLocationListener.append(bool2);
+                    paramTencentLocationListener.append(",version:1.5.4_200103");
+                    if ((i1 == 2) || ((i1 == 1) && (!bool2)))
+                    {
+                      ??? = this.w;
+                      paramTencentLocationListener = i();
+                      synchronized (???.a)
+                      {
+                        cu.i = paramTencentLocationListener;
+                        if (co.e())
+                        {
+                          ??? = new StringBuilder("appInfo:1.5.4,");
+                          ((StringBuilder)???).append(dt.a(paramTencentLocationListener.b));
+                          ((StringBuilder)???).append("_");
+                          ((StringBuilder)???).append(dt.a(paramTencentLocationListener.a));
+                          ((StringBuilder)???).append(",");
+                          ((StringBuilder)???).append(dt.a(Build.MANUFACTURER));
+                          ((StringBuilder)???).append(",");
+                          ((StringBuilder)???).append(dt.a(Build.MODEL));
+                          co.a(((StringBuilder)???).toString());
+                        }
+                        this.w.a("D_UP_NET", da.a().e("f_coll_up_net"));
+                        this.w.a("D_WRITE_MAC", "false");
+                        ??? = this.w;
+                        paramTencentLocationListener = paramTencentLocationRequest.getLooper();
+                        synchronized (???.a)
+                        {
+                          co.a("startup");
+                          ???.d();
+                          if (???.b != null)
+                          {
+                            paramTencentLocationRequest = paramTencentLocationListener;
+                            if (paramTencentLocationListener == null)
+                            {
+                              ???.c = ds.a("th_loc_extra");
+                              paramTencentLocationRequest = ???.c.getLooper();
+                            }
+                            ???.b.b(paramTencentLocationRequest);
+                          }
+                        }
+                      }
+                    }
+                  }
+                  this.G = "start";
+                  cz.a(this.S);
+                  return 0;
+                  paramTencentLocationRequest = finally;
+                  throw paramTencentLocationRequest;
+                  localError = localError;
+                  continue;
+                  paramTencentLocationRequest = paramTencentLocationRequest;
+                  continue;
+                  paramTencentLocationListener = paramTencentLocationListener;
+                  continue;
+                  ??? = ???;
+                }
+                ??? = ???;
+              }
+              catch (Throwable ???)
+              {
+                break label1201;
+              }
+              catch (Exception ???)
+              {
+                break label1245;
+              }
             }
           }
         }
       }
-      catch (Throwable localThrowable4)
-      {
-        break label108;
-      }
     }
   }
   
-  public final boolean b()
+  public final void a(fi paramfi)
   {
-    LocationManager localLocationManager = this.b.h;
+    if (paramfi != null) {}
     try
     {
-      boolean bool = localLocationManager.isProviderEnabled("gps");
-      return bool;
+      if (this.J.isAllowDirection()) {
+        paramfi.getExtra().putDouble("direction", this.b.b());
+      }
+      paramfi.getExtra().putString("motion", this.c.e());
+      paramfi.getExtra().putAll(this.J.getExtras());
+      return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable paramfi) {}
+  }
+  
+  @TargetApi(19)
+  public final boolean a()
+  {
+    if ((Build.VERSION.SDK_INT < 19) && (Build.VERSION.SDK_INT == 23)) {
+      return false;
+    }
+    try
+    {
+      Sensor localSensor = ((SensorManager)this.F.a.getSystemService("sensor")).getDefaultSensor(19);
+      return localSensor != null;
+    }
+    catch (Exception localException) {}
     return false;
   }
   
-  final void c()
+  public final int b()
   {
+    try
+    {
+      Object localObject1 = this.F.c;
+      Object localObject2 = ((SharedPreferences)localObject1).getString("stepStr", "");
+      float f1 = 0.0F;
+      long l1 = 0L;
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+      if (!bool)
+      {
+        localObject2 = ((String)localObject2).split(",");
+        f1 = Float.valueOf(localObject2[0]).floatValue();
+        l1 = Long.valueOf(localObject2[1]).longValue();
+      }
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(f1);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(l1);
+      ((StringBuilder)localObject2).append(",0");
+      ((SharedPreferences.Editor)localObject1).putString("stepStr", ((StringBuilder)localObject2).toString()).apply();
+      return 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      label144:
+      break label144;
+    }
+    return -1;
+  }
+  
+  public final TencentPedestrianData c()
+  {
+    Object localObject1 = this.F.c;
+    if (localObject1 == null) {
+      return null;
+    }
+    try
+    {
+      localObject2 = ((SharedPreferences)localObject1).getString("stepStr", "");
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+      f2 = 0.0F;
+      if (bool) {
+        break label191;
+      }
+      localObject2 = ((String)localObject2).split(",");
+      f2 = Float.valueOf(localObject2[0]).floatValue();
+      l1 = Long.valueOf(localObject2[1]).longValue();
+      f1 = Float.valueOf(localObject2[2]).floatValue();
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        float f2;
+        continue;
+        long l1 = 0L;
+        float f1 = 0.0F;
+      }
+    }
+    localObject1 = ((SharedPreferences)localObject1).edit();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(f2);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(l1);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(f1);
+    ((SharedPreferences.Editor)localObject1).putString("stepStr", ((StringBuilder)localObject2).toString()).apply();
+    localObject1 = new ek.1(this, f1, l1);
+    return localObject1;
+    return null;
+  }
+  
+  public final void d()
+  {
+    k();
     int i1;
-    if (this.c == 4) {
+    if (this.o != null) {
       i1 = 1;
+    } else {
+      i1 = 0;
     }
-    for (;;)
+    if (i1 != 0) {
+      this.o.a();
+    }
+    synchronized (this.I)
     {
-      if (fj.a) {
-        i1 = 5;
-      }
-      Message localMessage = new Message();
-      localMessage.what = 12999;
-      localMessage.arg1 = 12002;
-      localMessage.arg2 = i1;
-      this.b.b(localMessage);
+      this.d = null;
+      l();
+      this.G = "stop";
+      j();
       return;
-      if (this.c == 0) {
-        i1 = 0;
-      } else {
-        i1 = -1;
-      }
     }
   }
   
-  /* Error */
-  public final void onGpsStatusChanged(int paramInt)
+  public final void onCellInfoEvent(et paramet)
   {
-    // Byte code:
-    //   0: iload_1
-    //   1: tableswitch	default:+31 -> 32, 1:+32->33, 2:+43->44, 3:+49->50, 4:+60->61
-    //   33: aload_0
-    //   34: aload_0
-    //   35: getfield 61	c/t/m/g/ek:c	I
-    //   38: iconst_1
-    //   39: ior
-    //   40: putfield 61	c/t/m/g/ek:c	I
-    //   43: return
-    //   44: aload_0
-    //   45: iconst_0
-    //   46: putfield 61	c/t/m/g/ek:c	I
-    //   49: return
-    //   50: aload_0
-    //   51: aload_0
-    //   52: getfield 61	c/t/m/g/ek:c	I
-    //   55: iconst_2
-    //   56: ior
-    //   57: putfield 61	c/t/m/g/ek:c	I
-    //   60: return
-    //   61: aload_0
-    //   62: getfield 84	c/t/m/g/ek:b	Lc/t/m/g/ea;
-    //   65: getfield 137	c/t/m/g/ea:h	Landroid/location/LocationManager;
-    //   68: astore 4
-    //   70: aload_0
-    //   71: getfield 331	c/t/m/g/ek:q	Landroid/location/GpsStatus;
-    //   74: ifnonnull +184 -> 258
-    //   77: aload_0
-    //   78: aload 4
-    //   80: aconst_null
-    //   81: invokevirtual 444	android/location/LocationManager:getGpsStatus	(Landroid/location/GpsStatus;)Landroid/location/GpsStatus;
-    //   84: putfield 331	c/t/m/g/ek:q	Landroid/location/GpsStatus;
-    //   87: aload_0
-    //   88: invokespecial 291	c/t/m/g/ek:d	()V
-    //   91: aload_0
-    //   92: getfield 67	c/t/m/g/ek:r	I
-    //   95: istore_1
-    //   96: aload_0
-    //   97: getfield 69	c/t/m/g/ek:s	I
-    //   100: istore_3
-    //   101: iload_1
-    //   102: ifle +8 -> 110
-    //   105: aload_0
-    //   106: iconst_1
-    //   107: putfield 65	c/t/m/g/ek:p	Z
-    //   110: iload_3
-    //   111: ifle +8 -> 119
-    //   114: aload_0
-    //   115: iconst_1
-    //   116: putfield 63	c/t/m/g/ek:o	Z
-    //   119: aload_0
-    //   120: getfield 331	c/t/m/g/ek:q	Landroid/location/GpsStatus;
-    //   123: ifnull +636 -> 759
-    //   126: aload_0
-    //   127: getfield 76	c/t/m/g/ek:u	Ljava/util/ArrayList;
-    //   130: ifnull +629 -> 759
-    //   133: aload_0
-    //   134: getfield 76	c/t/m/g/ek:u	Ljava/util/ArrayList;
-    //   137: invokevirtual 447	java/util/ArrayList:size	()I
-    //   140: ifle +619 -> 759
-    //   143: aload_0
-    //   144: getfield 100	c/t/m/g/ek:w	Lc/t/m/g/ee;
-    //   147: astore 4
-    //   149: aload_0
-    //   150: getfield 76	c/t/m/g/ek:u	Ljava/util/ArrayList;
-    //   153: astore 7
-    //   155: aload_0
-    //   156: getfield 67	c/t/m/g/ek:r	I
-    //   159: istore_1
-    //   160: new 258	java/lang/StringBuilder
-    //   163: dup
-    //   164: invokespecial 448	java/lang/StringBuilder:<init>	()V
-    //   167: astore 5
-    //   169: aload 5
-    //   171: new 258	java/lang/StringBuilder
-    //   174: dup
-    //   175: invokespecial 448	java/lang/StringBuilder:<init>	()V
-    //   178: iload_1
-    //   179: invokevirtual 451	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   182: ldc_w 453
-    //   185: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: pop
-    //   195: aload 7
-    //   197: invokeinterface 459 1 0
-    //   202: iconst_5
-    //   203: if_icmplt +523 -> 726
-    //   206: aload 7
-    //   208: invokeinterface 459 1 0
-    //   213: newarray float
-    //   215: astore 6
-    //   217: iconst_0
-    //   218: istore_1
-    //   219: iload_1
-    //   220: aload 6
-    //   222: arraylength
-    //   223: if_icmpge +62 -> 285
-    //   226: aload 7
-    //   228: iload_1
-    //   229: invokeinterface 463 2 0
-    //   234: checkcast 366	java/lang/Float
-    //   237: astore 8
-    //   239: aload 8
-    //   241: ifnonnull +35 -> 276
-    //   244: fconst_0
-    //   245: fstore_2
-    //   246: aload 6
-    //   248: iload_1
-    //   249: fload_2
-    //   250: fastore
-    //   251: iload_1
-    //   252: iconst_1
-    //   253: iadd
-    //   254: istore_1
-    //   255: goto -36 -> 219
-    //   258: aload 4
-    //   260: aload_0
-    //   261: getfield 331	c/t/m/g/ek:q	Landroid/location/GpsStatus;
-    //   264: invokevirtual 444	android/location/LocationManager:getGpsStatus	(Landroid/location/GpsStatus;)Landroid/location/GpsStatus;
-    //   267: pop
-    //   268: goto -181 -> 87
-    //   271: astore 4
-    //   273: goto -186 -> 87
-    //   276: aload 8
-    //   278: invokevirtual 466	java/lang/Float:floatValue	()F
-    //   281: fstore_2
-    //   282: goto -36 -> 246
-    //   285: aload 6
-    //   287: invokestatic 470	java/util/Arrays:sort	([F)V
-    //   290: iconst_5
-    //   291: newarray float
-    //   293: astore 7
-    //   295: fconst_0
-    //   296: fstore_2
-    //   297: iconst_0
-    //   298: istore_1
-    //   299: iload_1
-    //   300: iconst_5
-    //   301: if_icmpge +31 -> 332
-    //   304: aload 7
-    //   306: iload_1
-    //   307: aload 6
-    //   309: aload 6
-    //   311: arraylength
-    //   312: iconst_1
-    //   313: isub
-    //   314: iload_1
-    //   315: isub
-    //   316: faload
-    //   317: fastore
-    //   318: fload_2
-    //   319: aload 7
-    //   321: iload_1
-    //   322: faload
-    //   323: fadd
-    //   324: fstore_2
-    //   325: iload_1
-    //   326: iconst_1
-    //   327: iadd
-    //   328: istore_1
-    //   329: goto -30 -> 299
-    //   332: fload_2
-    //   333: ldc_w 471
-    //   336: fdiv
-    //   337: fstore_2
-    //   338: aload 5
-    //   340: ldc_w 473
-    //   343: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   346: pop
-    //   347: aload 5
-    //   349: ldc_w 475
-    //   352: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: pop
-    //   356: aload 7
-    //   358: iconst_0
-    //   359: faload
-    //   360: ldc_w 476
-    //   363: fcmpl
-    //   364: ifle +445 -> 809
-    //   367: aload 4
-    //   369: iconst_1
-    //   370: putfield 477	c/t/m/g/ee:d	Z
-    //   373: aload 5
-    //   375: ldc_w 479
-    //   378: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: pop
-    //   382: fload_2
-    //   383: ldc_w 480
-    //   386: fcmpg
-    //   387: ifge +18 -> 405
-    //   390: aload 5
-    //   392: ldc_w 482
-    //   395: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: pop
-    //   399: aload 4
-    //   401: iconst_0
-    //   402: putfield 477	c/t/m/g/ee:d	Z
-    //   405: aload 5
-    //   407: ldc_w 484
-    //   410: fload_2
-    //   411: invokestatic 487	java/lang/String:valueOf	(F)Ljava/lang/String;
-    //   414: invokevirtual 491	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   417: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: pop
-    //   421: aload 5
-    //   423: new 258	java/lang/StringBuilder
-    //   426: dup
-    //   427: ldc_w 493
-    //   430: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   433: fload_2
-    //   434: aload 4
-    //   436: getfield 496	c/t/m/g/ee:a	F
-    //   439: fsub
-    //   440: invokevirtual 499	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   443: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   446: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: pop
-    //   450: aload 5
-    //   452: new 258	java/lang/StringBuilder
-    //   455: dup
-    //   456: ldc_w 501
-    //   459: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   462: aload 4
-    //   464: getfield 503	c/t/m/g/ee:b	F
-    //   467: invokevirtual 499	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   470: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   473: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   476: pop
-    //   477: aload 5
-    //   479: new 258	java/lang/StringBuilder
-    //   482: dup
-    //   483: ldc_w 505
-    //   486: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   489: aload 4
-    //   491: getfield 507	c/t/m/g/ee:c	F
-    //   494: invokevirtual 499	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   497: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   500: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   503: pop
-    //   504: aload 5
-    //   506: aload 4
-    //   508: getfield 477	c/t/m/g/ee:d	Z
-    //   511: invokevirtual 510	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   514: pop
-    //   515: aload 5
-    //   517: ldc_w 473
-    //   520: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   523: pop
-    //   524: aload 4
-    //   526: getfield 503	c/t/m/g/ee:b	F
-    //   529: fload_2
-    //   530: fcmpg
-    //   531: ifge +9 -> 540
-    //   534: aload 4
-    //   536: fload_2
-    //   537: putfield 503	c/t/m/g/ee:b	F
-    //   540: aload 4
-    //   542: getfield 507	c/t/m/g/ee:c	F
-    //   545: fload_2
-    //   546: fcmpl
-    //   547: ifle +9 -> 556
-    //   550: aload 4
-    //   552: fload_2
-    //   553: putfield 507	c/t/m/g/ee:c	F
-    //   556: aload 4
-    //   558: fload_2
-    //   559: putfield 496	c/t/m/g/ee:a	F
-    //   562: aload 5
-    //   564: ldc_w 512
-    //   567: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   570: pop
-    //   571: fload_2
-    //   572: aload 4
-    //   574: getfield 496	c/t/m/g/ee:a	F
-    //   577: fsub
-    //   578: ldc_w 513
-    //   581: fcmpl
-    //   582: ifle +12 -> 594
-    //   585: aload 5
-    //   587: ldc_w 515
-    //   590: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   593: pop
-    //   594: aload 4
-    //   596: getfield 496	c/t/m/g/ee:a	F
-    //   599: fload_2
-    //   600: fsub
-    //   601: fconst_2
-    //   602: fcmpl
-    //   603: ifle +18 -> 621
-    //   606: aload 5
-    //   608: ldc_w 517
-    //   611: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   614: pop
-    //   615: aload 4
-    //   617: iconst_0
-    //   618: putfield 519	c/t/m/g/ee:e	Z
-    //   621: fload_2
-    //   622: aload 4
-    //   624: getfield 503	c/t/m/g/ee:b	F
-    //   627: aload 4
-    //   629: getfield 507	c/t/m/g/ee:c	F
-    //   632: fadd
-    //   633: fconst_2
-    //   634: fdiv
-    //   635: fcmpl
-    //   636: ifle +199 -> 835
-    //   639: aload 4
-    //   641: iconst_1
-    //   642: putfield 519	c/t/m/g/ee:e	Z
-    //   645: aload 4
-    //   647: getfield 477	c/t/m/g/ee:d	Z
-    //   650: aload 4
-    //   652: getfield 519	c/t/m/g/ee:e	Z
-    //   655: if_icmpeq +44 -> 699
-    //   658: aload 5
-    //   660: new 258	java/lang/StringBuilder
-    //   663: dup
-    //   664: ldc_w 521
-    //   667: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   670: aload 4
-    //   672: getfield 477	c/t/m/g/ee:d	Z
-    //   675: invokevirtual 510	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   678: ldc_w 523
-    //   681: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   684: aload 4
-    //   686: getfield 519	c/t/m/g/ee:e	Z
-    //   689: invokevirtual 510	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   692: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   695: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   698: pop
-    //   699: aload 5
-    //   701: new 258	java/lang/StringBuilder
-    //   704: dup
-    //   705: ldc_w 525
-    //   708: invokespecial 261	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   711: aload 4
-    //   713: getfield 519	c/t/m/g/ee:e	Z
-    //   716: invokevirtual 510	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   719: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   722: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   725: pop
-    //   726: aload 4
-    //   728: aload 5
-    //   730: invokevirtual 456	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   733: putfield 528	c/t/m/g/ee:f	Ljava/lang/String;
-    //   736: aload_0
-    //   737: aload 4
-    //   739: getfield 519	c/t/m/g/ee:e	Z
-    //   742: putfield 78	c/t/m/g/ek:v	Z
-    //   745: aload_0
-    //   746: getfield 78	c/t/m/g/ek:v	Z
-    //   749: ifeq +10 -> 759
-    //   752: aload_0
-    //   753: invokestatic 168	java/lang/System:currentTimeMillis	()J
-    //   756: putfield 80	c/t/m/g/ek:e	J
-    //   759: aload_0
-    //   760: getfield 78	c/t/m/g/ek:v	Z
-    //   763: ifeq +89 -> 852
-    //   766: iconst_3
-    //   767: istore_1
-    //   768: new 426	android/os/Message
-    //   771: dup
-    //   772: invokespecial 427	android/os/Message:<init>	()V
-    //   775: astore 4
-    //   777: aload 4
-    //   779: sipush 12999
-    //   782: putfield 430	android/os/Message:what	I
-    //   785: aload 4
-    //   787: sipush 12004
-    //   790: putfield 433	android/os/Message:arg1	I
-    //   793: aload 4
-    //   795: iload_1
-    //   796: putfield 436	android/os/Message:arg2	I
-    //   799: aload_0
-    //   800: getfield 84	c/t/m/g/ek:b	Lc/t/m/g/ea;
-    //   803: aload 4
-    //   805: invokevirtual 313	c/t/m/g/ea:b	(Ljava/lang/Object;)V
-    //   808: return
-    //   809: fload_2
-    //   810: ldc_w 529
-    //   813: fcmpl
-    //   814: ifle -432 -> 382
-    //   817: aload 4
-    //   819: iconst_1
-    //   820: putfield 477	c/t/m/g/ee:d	Z
-    //   823: aload 5
-    //   825: ldc_w 479
-    //   828: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   831: pop
-    //   832: goto -450 -> 382
-    //   835: fload_2
-    //   836: ldc_w 480
-    //   839: fcmpg
-    //   840: ifge -195 -> 645
-    //   843: aload 4
-    //   845: iconst_0
-    //   846: putfield 519	c/t/m/g/ee:e	Z
-    //   849: goto -204 -> 645
-    //   852: iconst_4
-    //   853: istore_1
-    //   854: goto -86 -> 768
-    //   857: astore 4
-    //   859: goto -100 -> 759
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	862	0	this	ek
-    //   0	862	1	paramInt	int
-    //   245	591	2	f1	float
-    //   100	11	3	i1	int
-    //   68	191	4	localObject1	Object
-    //   271	467	4	localException	java.lang.Exception
-    //   775	69	4	localMessage	Message
-    //   857	1	4	localThrowable	Throwable
-    //   167	657	5	localStringBuilder	StringBuilder
-    //   215	95	6	arrayOfFloat	float[]
-    //   153	204	7	localObject2	Object
-    //   237	40	8	localFloat	Float
-    // Exception table:
-    //   from	to	target	type
-    //   70	87	271	java/lang/Exception
-    //   258	268	271	java/lang/Exception
-    //   143	217	857	java/lang/Throwable
-    //   219	239	857	java/lang/Throwable
-    //   276	282	857	java/lang/Throwable
-    //   285	295	857	java/lang/Throwable
-    //   304	318	857	java/lang/Throwable
-    //   332	356	857	java/lang/Throwable
-    //   367	382	857	java/lang/Throwable
-    //   390	405	857	java/lang/Throwable
-    //   405	540	857	java/lang/Throwable
-    //   540	556	857	java/lang/Throwable
-    //   556	594	857	java/lang/Throwable
-    //   594	621	857	java/lang/Throwable
-    //   621	645	857	java/lang/Throwable
-    //   645	699	857	java/lang/Throwable
-    //   699	726	857	java/lang/Throwable
-    //   726	759	857	java/lang/Throwable
-    //   817	832	857	java/lang/Throwable
-    //   843	849	857	java/lang/Throwable
-  }
-  
-  public final void onLocationChanged(Location paramLocation)
-  {
-    this.l = true;
-    this.m = paramLocation;
-    new StringBuilder().append(paramLocation.toString()).append(",speed:").append(paramLocation.getSpeed()).append(",bearing:").append(paramLocation.getBearing()).append(Thread.currentThread().getName());
-    c(this.m);
-  }
-  
-  public final void onNmeaReceived(long paramLong, String paramString)
-  {
-    if ((paramString == null) || (paramString.length() <= 5)) {}
-    for (;;)
+    new StringBuilder("cellCallback:").append(System.currentTimeMillis());
+    int i4 = paramet.e;
+    int i5 = paramet.f;
+    Object localObject = this.B;
+    int i2;
+    int i1;
+    if (localObject != null)
     {
-      return;
-      int i1 = paramString.indexOf(",");
-      Object localObject;
-      if (i1 <= 0)
+      i2 = ((et)localObject).f;
+      i1 = ((et)localObject).e;
+    }
+    else
+    {
+      i1 = 0;
+      i2 = 0;
+    }
+    this.B = paramet;
+    localObject = this.t;
+    int i3;
+    if (localObject != null) {
+      i3 = ((er)localObject).b() ^ true;
+    } else {
+      i3 = 1;
+    }
+    if (i3 != 0) {
+      this.C = null;
+    }
+    if (i3 == 0)
+    {
+      localObject = this.C;
+      if ((localObject == null) || (((ex)localObject).a(System.currentTimeMillis(), 30000L)))
       {
-        localObject = null;
-        if ((localObject == null) || (((String)localObject).length() <= 5) || (((String)localObject).charAt(3) != 'R') || (!((String)localObject).contains("RMC"))) {
-          continue;
+        localObject = this.o;
+        if (localObject == null) {
+          break label177;
         }
-        localObject = paramString.split(",");
-        if (!"A".equals(localObject[2])) {
-          continue;
-        }
+        localObject = ((ek.a)localObject).obtainMessage(3999, "wifi_not_received");
+        this.o.sendMessageDelayed((Message)localObject, 2000L);
+        break label177;
       }
-      try
+    }
+    a(3999);
+    label177:
+    if (i3 == 0) {
+      localObject = "scan wifi";
+    } else {
+      localObject = "prepare json. wifi is not scannable?";
+    }
+    String.format("onCellChanged: %d(%d)-->%d(%d) (%d)%s", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i3), localObject });
+    if (this.w != null)
+    {
+      localObject = new cp(paramet.b, paramet.c, paramet.d, paramet.e, paramet.f, paramet.a.ordinal());
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      paramet = paramet.b().iterator();
+      while (paramet.hasNext())
       {
-        this.n.setLatitude(a(localObject[3]));
-        this.n.setLongitude(a(localObject[5]));
-        boolean bool = this.k;
-        this.k = true;
-        if (bool) {
-          continue;
-        }
-        c(this.m);
-        return;
-        localObject = paramString.substring(0, i1).trim();
+        et localet = (et)paramet.next();
+        localArrayList.add(new cp(localet.b, localet.c, localet.d, localet.e, localet.f, localet.a.ordinal()));
       }
-      catch (Throwable localThrowable)
+      this.w.a((cp)localObject, localArrayList);
+    }
+  }
+  
+  public final void onGpsInfoEvent(eu arg1)
+  {
+    Location localLocation;
+    Object localObject3;
+    if (???.a != eg.a)
+    {
+      this.D = ???;
+      if (!this.J.getExtras().getBoolean("daemon"))
       {
-        for (;;)
+        int i6 = ei.a().a(???);
+        int i5 = this.a;
+        int i2 = this.J.getRequestLevel();
+        localObject1 = this.M;
+        localLocation = new Location(???.a);
+        localObject3 = localLocation.getExtras();
+        double d1;
+        double d2;
+        int i1;
+        if (localObject3 != null)
         {
-          new StringBuilder("<").append(paramString).append(">");
+          d1 = ((Bundle)localObject3).getDouble("lat");
+          d2 = ((Bundle)localObject3).getDouble("lng");
+          i1 = ((Bundle)localObject3).getInt("fakeCode");
         }
+        else
+        {
+          i1 = 0;
+          d1 = 0.0D;
+          d2 = 0.0D;
+        }
+        int i3 = 1;
+        if (i1 != 0)
+        {
+          this.T = true;
+          i1 = (int)(Math.pow(2.0D, i1 + 3) + 4.0D);
+        }
+        else
+        {
+          i1 = 0;
+        }
+        int i4 = i2;
+        i2 = i1;
+        if (i6 == -1)
+        {
+          this.T = true;
+          i2 = i1 + 2;
+        }
+        if (i5 == 0) {
+          i1 = i3;
+        } else {
+          i1 = 0;
+        }
+        if (i1 != 0)
+        {
+          localObject3 = new fi.a();
+          ((fi.a)localObject3).b = ((fi)localObject1);
+          ((fi.a)localObject3).d = "gps";
+          if (this.T) {
+            localObject1 = "fake";
+          } else {
+            localObject1 = "gps";
+          }
+          ((fi.a)localObject3).e = ((String)localObject1);
+          ((fi.a)localObject3).c = i4;
+          localObject1 = ((fi.a)localObject3).a(new Location(???.a)).a();
+          localLocation.setLatitude(d1);
+          localLocation.setLongitude(d2);
+          ((fi)localObject1).a(localLocation);
+          ((fi)localObject1).a(i2);
+          a(0, (fi)localObject1);
+        }
+        else
+        {
+          if (m()) {
+            a(3999);
+          }
+          localObject3 = new fi.a();
+          ((fi.a)localObject3).b = ((fi)localObject1);
+          ((fi.a)localObject3).d = "gps";
+          if (this.T) {
+            localObject1 = "fake";
+          } else {
+            localObject1 = "gps";
+          }
+          ((fi.a)localObject3).e = ((String)localObject1);
+          ((fi.a)localObject3).c = i4;
+          localObject1 = ((fi.a)localObject3).a(new Location(???.a)).a();
+          localLocation.setLatitude(d1);
+          localLocation.setLongitude(d2);
+          ((fi)localObject1).a(localLocation);
+          ((fi)localObject1).a(i2);
+          a(0, (fi)localObject1);
+          a(12004, 3);
+        }
+      }
+    }
+    Object localObject1 = this.w;
+    if (localObject1 != null)
+    {
+      localLocation = ???.a;
+      synchronized (((co)localObject1).a)
+      {
+        if (!((co)localObject1).c()) {
+          return;
+        }
+        co.a("setGpsLocation");
+        if (((co)localObject1).b != null)
+        {
+          localObject3 = ((co)localObject1).b;
+          if (((cq)localObject3).l != null) {
+            ((cq)localObject3).l.a(localLocation);
+          }
+        }
+        if ((localLocation != null) && ("gps".equals(localLocation.getProvider())) && (localLocation.getAltitude() != 0.0D))
+        {
+          boolean bool = cu.h;
+          if ((Build.VERSION.SDK_INT >= 18) && (localLocation.isFromMockProvider())) {
+            return;
+          }
+          ((co)localObject1).d = co.a(((co)localObject1).d, localLocation);
+          if ((((co)localObject1).e == null) || ((((co)localObject1).d != null) && (((co)localObject1).d.distanceTo(((co)localObject1).e) >= 50.0F) && (System.currentTimeMillis() - ((co)localObject1).k >= 5000L))) {
+            ((co)localObject1).b();
+          }
+        }
+        return;
       }
     }
   }
   
-  public final void onProviderDisabled(String paramString)
+  public final void onNetworkEvent(Integer paramInteger)
   {
-    if ("gps".equals(paramString))
+    int i1 = fn.a(this.F.a);
+    if (i1 != -1)
     {
-      this.s = 0;
-      this.r = 0;
-      this.c = 0;
-      this.o = false;
-      this.a = 0L;
-      c();
+      if (i1 == 0)
+      {
+        str = "mobile";
+        break label43;
+      }
+      if (i1 == 1)
+      {
+        str = "wifi";
+        break label43;
+      }
+    }
+    String str = "none";
+    label43:
+    i1 = paramInteger.intValue();
+    if (i1 != -1)
+    {
+      if (i1 != 0)
+      {
+        if (i1 != 1) {
+          return;
+        }
+        paramInteger = new StringBuilder("onNetworkEvent: ");
+        paramInteger.append(str);
+        paramInteger.append(" connected");
+        a(7999, 1000L);
+        return;
+      }
+      paramInteger = new StringBuilder("onNetworkEvent: ");
+      paramInteger.append(str);
+      paramInteger.append(" disconnected");
     }
   }
   
-  public final void onProviderEnabled(String paramString)
+  public final void onStatusEvent(Message paramMessage)
   {
-    if ("gps".equals(paramString))
-    {
-      this.c = 4;
-      c();
-    }
+    int i1 = paramMessage.what;
+    a(paramMessage.arg1, paramMessage.arg2);
   }
   
-  public final void onStatusChanged(String paramString, int paramInt, Bundle paramBundle) {}
+  public final void onWifiInfoEvent(ex paramex)
+  {
+    new StringBuilder("wifiCallback:").append(System.currentTimeMillis());
+    ??? = this.o;
+    if (??? != null) {
+      ((ek.a)???).removeMessages(3999, "wifi_not_received");
+    }
+    if (paramex == ex.a)
+    {
+      a(555, 1500L);
+    }
+    else
+    {
+      if ((this.C == null) || (!this.H) || (Collections.unmodifiableList(paramex.b).size() < 3) || (!this.C.a(paramex))) {
+        a(3999);
+      }
+      this.C = paramex;
+    }
+    co localco = this.w;
+    List localList;
+    if (localco != null) {
+      localList = Collections.unmodifiableList(paramex.b);
+    }
+    for (;;)
+    {
+      synchronized (localco.a)
+      {
+        if (!localco.c()) {
+          return;
+        }
+        try
+        {
+          long l1 = System.currentTimeMillis();
+          boolean bool1 = cy.a(localco.g, localList);
+          co.a("setWifiResults, same pre:".concat(String.valueOf(bool1)));
+          long l2;
+          if (bool1)
+          {
+            l2 = localco.j;
+            if (l1 - l2 > 30000L) {
+              return;
+            }
+          }
+          if (localco.b != null)
+          {
+            paramex = localco.b;
+            if (paramex.k != null)
+            {
+              paramex = paramex.k;
+              if ((paramex.f()) && (!co.a(localList)))
+              {
+                Message localMessage = paramex.e().obtainMessage(102);
+                localMessage.obj = localList;
+                paramex.b(localMessage);
+              }
+            }
+          }
+          if ((localco.b != null) && (localco.d != null) && (!co.a(localList)))
+          {
+            boolean bool2;
+            if (localList.size() == 1)
+            {
+              bool2 = "123456789abc".equals(((ScanResult)localList.get(0)).BSSID.toLowerCase());
+              if (!bool2) {}
+            }
+            else if (localList.size() > 1)
+            {
+              bool2 = cy.a(localList);
+              if (bool2) {
+                return;
+              }
+            }
+            if (cu.f)
+            {
+              l2 = localco.j;
+              if (l1 - l2 < 5000L) {
+                return;
+              }
+            }
+            if (!bool1)
+            {
+              localco.j = l1;
+              localco.g = localList;
+            }
+            if (l1 - localco.i >= localco.h) {
+              break label485;
+            }
+            paramex = localco.f;
+            localco.b.a(localco.d, localList, paramex);
+          }
+        }
+        catch (Throwable paramex)
+        {
+          co.a("setWifiResults error.", paramex);
+        }
+        return;
+      }
+      return;
+      label485:
+      paramex = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ek
  * JD-Core Version:    0.7.0.1
  */

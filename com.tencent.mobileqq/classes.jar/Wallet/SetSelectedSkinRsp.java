@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class SetSelectedSkinRsp
   extends JceStruct
 {
-  public int ret;
+  public int ret = 0;
   
   public SetSelectedSkinRsp() {}
   
@@ -28,7 +28,7 @@ public final class SetSelectedSkinRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.SetSelectedSkinRsp
  * JD-Core Version:    0.7.0.1
  */

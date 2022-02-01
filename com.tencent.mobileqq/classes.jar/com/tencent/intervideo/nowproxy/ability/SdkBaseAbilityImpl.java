@@ -48,30 +48,34 @@ public class SdkBaseAbilityImpl
   
   public void doCgiReq(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    if (this.mCustomCgi != null) {
-      this.mCustomCgi.doCgiReq(paramBundle, paramCommonCallback);
+    CustomCgi localCustomCgi = this.mCustomCgi;
+    if (localCustomCgi != null) {
+      localCustomCgi.doCgiReq(paramBundle, paramCommonCallback);
     }
   }
   
   public void download(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
   {
-    if (this.mCustomizedDownloader != null) {
-      this.mCustomizedDownloader.onDownload(paramBoolean, paramString1, paramString2, paramBundle, paramDownloadCallback);
+    CustomizedDownloader localCustomizedDownloader = this.mCustomizedDownloader;
+    if (localCustomizedDownloader != null) {
+      localCustomizedDownloader.onDownload(paramBoolean, paramString1, paramString2, paramBundle, paramDownloadCallback);
     }
   }
   
   public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (this.mCustomizedTiket != null) {
-      return this.mCustomizedTiket.getA1(paramString1, paramString2, paramString3, paramString4);
+    CustomizedTicket localCustomizedTicket = this.mCustomizedTiket;
+    if (localCustomizedTicket != null) {
+      return localCustomizedTicket.getA1(paramString1, paramString2, paramString3, paramString4);
     }
     return null;
   }
   
   public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    if (this.mCustomizedTiket != null) {
-      return this.mCustomizedTiket.getAccessToken(paramString1, paramString2);
+    CustomizedTicket localCustomizedTicket = this.mCustomizedTiket;
+    if (localCustomizedTicket != null) {
+      return localCustomizedTicket.getAccessToken(paramString1, paramString2);
     }
     return null;
   }
@@ -83,13 +87,17 @@ public class SdkBaseAbilityImpl
   
   public Bundle getTickets()
   {
-    return LoginData.getLoginBundle(Global.sLoginData);
+    if (Global.sLoginData != null) {
+      return LoginData.getLoginBundle(Global.sLoginData);
+    }
+    return null;
   }
   
   public void hasPluginLoaded()
   {
-    if (this.customizedLoader != null) {
-      this.customizedLoader.onPluginLoaded();
+    CustomizedLoader localCustomizedLoader = this.customizedLoader;
+    if (localCustomizedLoader != null) {
+      localCustomizedLoader.onPluginLoaded();
     }
   }
   
@@ -102,37 +110,41 @@ public class SdkBaseAbilityImpl
   
   public void onFlushLog()
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onFlushLogs();
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onFlushLogs();
     }
   }
   
   public void onUploadLog()
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onUploadLogs();
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onUploadLogs();
     }
   }
   
   public void openWebView(Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
     paramWebCallHandler = paramBundle.getString("url");
-    if (this.mCustomizedWebView != null)
+    CustomizedWebView localCustomizedWebView = this.mCustomizedWebView;
+    if (localCustomizedWebView != null)
     {
-      if (this.mWebcallHandler != null) {
-        this.mWebcallHandler.getCookieInfo(new SdkBaseAbilityImpl.1(this, paramBundle, paramWebCallHandler));
+      WebCallHandler localWebCallHandler = this.mWebcallHandler;
+      if (localWebCallHandler != null)
+      {
+        localWebCallHandler.getCookieInfo(new SdkBaseAbilityImpl.1(this, paramBundle, paramWebCallHandler));
+        return;
       }
+      localCustomizedWebView.onJumpWeb(paramWebCallHandler, paramBundle, localWebCallHandler);
     }
-    else {
-      return;
-    }
-    this.mCustomizedWebView.onJumpWeb(paramWebCallHandler, paramBundle, this.mWebcallHandler);
   }
   
   public void printLog(int paramInt, String paramString1, String paramString2)
   {
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onLog(2, paramString1, paramString2);
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onLog(2, paramString1, paramString2);
     }
   }
   
@@ -140,22 +152,25 @@ public class SdkBaseAbilityImpl
   {
     String str = paramBundle.getString("tag", "nowplugin_dynamic");
     paramBundle = paramBundle.getString("msg", "");
-    if (this.mCustomizedLog != null) {
-      this.mCustomizedLog.onLog(2, str, paramBundle);
+    CustomizedLog localCustomizedLog = this.mCustomizedLog;
+    if (localCustomizedLog != null) {
+      localCustomizedLog.onLog(2, str, paramBundle);
     }
   }
   
   public void reportData(Bundle paramBundle)
   {
-    if (this.mCustomizedReport != null) {
-      this.mCustomizedReport.onReport(paramBundle);
+    CustomizedReport localCustomizedReport = this.mCustomizedReport;
+    if (localCustomizedReport != null) {
+      localCustomizedReport.onReport(paramBundle);
     }
   }
   
   public void reportNowEntry(NowEntryData paramNowEntryData)
   {
-    if (this.mCustomizedReport != null) {
-      this.mCustomizedReport.onNowEntry(null, paramNowEntryData);
+    CustomizedReport localCustomizedReport = this.mCustomizedReport;
+    if (localCustomizedReport != null) {
+      localCustomizedReport.onNowEntry(null, paramNowEntryData);
     }
   }
   
@@ -175,8 +190,9 @@ public class SdkBaseAbilityImpl
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    if (this.mCustomChannle != null) {
-      this.mCustomChannle.onSendTask(paramBundle, paramCommonCallback);
+    CustomizedChannel localCustomizedChannel = this.mCustomChannle;
+    if (localCustomizedChannel != null) {
+      localCustomizedChannel.onSendTask(paramBundle, paramCommonCallback);
     }
   }
   
@@ -248,15 +264,17 @@ public class SdkBaseAbilityImpl
   
   public void showLoadingUI(Context paramContext, Bundle paramBundle, View paramView)
   {
-    if (this.mCustomizedLoading != null) {
-      this.mCustomizedLoading.onShowLoading(paramContext, paramBundle, paramView);
+    CustomizedLoading localCustomizedLoading = this.mCustomizedLoading;
+    if (localCustomizedLoading != null) {
+      localCustomizedLoading.onShowLoading(paramContext, paramBundle, paramView);
     }
   }
   
   public void showToast(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    if (this.mCustomizedToast != null) {
-      this.mCustomizedToast.onShowToast(paramContext, paramCharSequence, paramInt);
+    CustomizedToast localCustomizedToast = this.mCustomizedToast;
+    if (localCustomizedToast != null) {
+      localCustomizedToast.onShowToast(paramContext, paramCharSequence, paramInt);
     }
   }
   
@@ -269,7 +287,7 @@ public class SdkBaseAbilityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.ability.SdkBaseAbilityImpl
  * JD-Core Version:    0.7.0.1
  */

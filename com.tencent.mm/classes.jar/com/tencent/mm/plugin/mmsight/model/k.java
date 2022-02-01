@@ -4,374 +4,195 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.n;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public final class k
 {
-  public static void VF()
+  public static void aD(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(76532);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecCapture");
-    h.qsU.idkeyStat(440L, 2L, 1L, false);
-    AppMethodBeat.o(76532);
-  }
-  
-  public static void VN()
-  {
-    AppMethodBeat.i(76535);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecYUVInitError");
-    h.qsU.idkeyStat(440L, 16L, 1L, false);
-    AppMethodBeat.o(76535);
-  }
-  
-  public static void VO()
-  {
-    AppMethodBeat.i(76536);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecWriteYUVError");
-    h.qsU.idkeyStat(440L, 21L, 1L, false);
-    AppMethodBeat.o(76536);
-  }
-  
-  public static void a(String paramString, bby parambby, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(140127);
-    for (;;)
-    {
-      int m;
-      int n;
-      int i;
-      int k;
-      int j;
-      try
-      {
-        if (!bo.isNullOrNil(paramString))
-        {
-          boolean bool = e.cN(paramString);
-          if (bool) {}
-        }
-        else
-        {
-          AppMethodBeat.o(140127);
-          return;
-        }
-        h.qsU.idkeyStat(440L, 87L, 1L, false);
-        Object localObject = new JSONObject(SightVideoJNI.getSimpleMp4Info(paramString));
-        m = (int)((JSONObject)localObject).getDouble("videoFPS");
-        n = ((JSONObject)localObject).optInt("videoBitrate");
-        ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markAfterCaptureFinish, videoFPS: %s, videoBitrate: %s, recorderType: %s, resolutionLimit: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        localObject = a.bQG();
-        ((a)localObject).oGD = j.oHG.eqK;
-        ((a)localObject).videoBitrate = j.oHG.videoBitrate;
-        if (!j.oHG.fdl) {
-          break label516;
-        }
-        i = 1;
-        ((a)localObject).eqL = i;
-        if (!j.oHG.oHS) {
-          break label522;
-        }
-        i = 1;
-        ((a)localObject).oGE = i;
-        ((a)localObject).eZQ = j.oHG.eZQ;
-        ((a)localObject).oGF = m;
-        ((a)localObject).fileSize = e.avI(paramString);
-        com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.d.Zo(paramString);
-        if (locala != null)
-        {
-          ((a)localObject).oGI = locala.width;
-          ((a)localObject).oGJ = locala.height;
-          ((a)localObject).oGK = locala.videoBitrate;
-          ((a)localObject).oGG = locala.eVA;
-        }
-        if (paramInt1 != 1) {
-          break label528;
-        }
-        h.qsU.idkeyStat(440L, 89L, 1L, false);
-        h.qsU.idkeyStat(440L, 49L, m, false);
-        i = 93;
-        k = 73;
-        j = 69;
-      }
-      catch (Exception paramString)
-      {
-        ab.e("MicroMsg.MMSightRecorderIDKeyStat", "markAfterCaptureFinish error: %s", new Object[] { paramString.getMessage() });
-        AppMethodBeat.o(140127);
-        return;
-      }
-      h.qsU.idkeyStat(440L, paramInt2, m, false);
-      h.qsU.idkeyStat(440L, i, 1L, false);
-      h.qsU.idkeyStat(440L, 47L, m, false);
-      ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markAfterCaptureFinish, filePath: %s base %d", new Object[] { paramString, Integer.valueOf(j) });
-      if ((m >= 0) && (m <= 10))
-      {
-        h.qsU.idkeyStat(440L, j, 1L, false);
-        label403:
-        if (n <= 0) {
-          break label851;
-        }
-        if (paramInt1 != 2) {
-          break label735;
-        }
-        h.qsU.idkeyStat(440L, 175L, n, false);
-        h.qsU.idkeyStat(440L, 176L, 1L, false);
-        if (parambby == null) {
-          break label851;
-        }
-        if (parambby.xrc != 1) {
-          break label691;
-        }
-        h.qsU.idkeyStat(440L, 184L, n, false);
-        h.qsU.idkeyStat(440L, 185L, 1L, false);
-        AppMethodBeat.o(140127);
-        return;
-        label516:
-        i = 0;
-        continue;
-        label522:
-        i = 0;
-        continue;
-        label528:
-        h.qsU.idkeyStat(440L, 88L, 1L, false);
-        h.qsU.idkeyStat(440L, 48L, m, false);
-        i = 90;
-        k = 54;
-        j = 50;
-        break label863;
-      }
-      for (;;)
-      {
-        if (!j.oHG.bRg())
-        {
-          if (paramInt2 == 1080)
-          {
-            break label892;
-            if ((m > 10) && (m <= 15))
-            {
-              h.qsU.idkeyStat(440L, j + 1, 1L, false);
-              break label403;
-            }
-            if ((m > 15) && (m <= 20))
-            {
-              h.qsU.idkeyStat(440L, j + 2, 1L, false);
-              break label403;
-            }
-            if ((m <= 20) || (m > 30)) {
-              break label403;
-            }
-            h.qsU.idkeyStat(440L, j + 3, 1L, false);
-            break label403;
-            label691:
-            if (parambby.xrc == 2)
-            {
-              h.qsU.idkeyStat(440L, 194L, n, false);
-              h.qsU.idkeyStat(440L, 195L, 1L, false);
-              AppMethodBeat.o(140127);
-              return;
-              label735:
-              h.qsU.idkeyStat(440L, 179L, n, false);
-              h.qsU.idkeyStat(440L, 180L, 1L, false);
-              if (parambby != null)
-              {
-                if (parambby.xrc == 1)
-                {
-                  h.qsU.idkeyStat(440L, 189L, n, false);
-                  h.qsU.idkeyStat(440L, 190L, 1L, false);
-                  AppMethodBeat.o(140127);
-                  return;
-                }
-                if (parambby.xrc == 2)
-                {
-                  h.qsU.idkeyStat(440L, 199L, n, false);
-                  h.qsU.idkeyStat(440L, 200L, 1L, false);
-                }
-              }
-            }
-            label851:
-            AppMethodBeat.o(140127);
-            return;
-          }
-          paramInt2 = k;
-          break;
-          label863:
-          if (paramInt2 == 720)
-          {
-            i += 1;
-            paramInt2 = k + 6;
-            j += 6;
-            break;
-          }
-        }
-      }
-      label892:
-      i += 2;
-      paramInt2 = k + 12;
-      j += 12;
-    }
-  }
-  
-  public static void ao(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(140126);
+    AppMethodBeat.i(89438);
     int i;
     try
     {
-      if (j.oHG == null) {
+      if (j.KVJ == null) {
         break label207;
       }
-      i = new JSONObject(SightVideoJNI.getSimpleMp4Info(paramString)).optInt("videoBitrate");
+      i = new JSONObject(SightVideoJNI.getSimpleMp4InfoVFS(paramString)).optInt("videoBitrate");
       if (paramInt2 == 1)
       {
         if (paramInt1 == 1)
         {
-          h.qsU.idkeyStat(440L, 189L, i, false);
-          h.qsU.idkeyStat(440L, 190L, 1L, false);
-          AppMethodBeat.o(140126);
+          h.OAn.idkeyStat(440L, 189L, i, false);
+          h.OAn.idkeyStat(440L, 190L, 1L, false);
+          AppMethodBeat.o(89438);
           return;
         }
-        h.qsU.idkeyStat(440L, 184L, i, false);
-        h.qsU.idkeyStat(440L, 185L, 1L, false);
-        AppMethodBeat.o(140126);
+        h.OAn.idkeyStat(440L, 184L, i, false);
+        h.OAn.idkeyStat(440L, 185L, 1L, false);
+        AppMethodBeat.o(89438);
         return;
       }
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.MMSightRecorderIDKeyStat", "markAfterCaptureFinish error: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(140126);
+      Log.e("MicroMsg.MMSightRecorderIDKeyStat", "markAfterCaptureFinish error: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(89438);
       return;
     }
     if (paramInt2 == 2)
     {
       if (paramInt1 == 1)
       {
-        h.qsU.idkeyStat(440L, 194L, i, false);
-        h.qsU.idkeyStat(440L, 195L, 1L, false);
-        AppMethodBeat.o(140126);
+        h.OAn.idkeyStat(440L, 194L, i, false);
+        h.OAn.idkeyStat(440L, 195L, 1L, false);
+        AppMethodBeat.o(89438);
         return;
       }
-      h.qsU.idkeyStat(440L, 199L, i, false);
-      h.qsU.idkeyStat(440L, 200L, 1L, false);
+      h.OAn.idkeyStat(440L, 199L, i, false);
+      h.OAn.idkeyStat(440L, 200L, 1L, false);
     }
     label207:
-    AppMethodBeat.o(140126);
+    AppMethodBeat.o(89438);
   }
   
-  public static void bQX()
+  public static void bqN()
   {
-    AppMethodBeat.i(76531);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markCapture");
-    h.qsU.idkeyStat(440L, 0L, 1L, false);
+    AppMethodBeat.i(89432);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecCapture");
+    h.OAn.idkeyStat(440L, 2L, 1L, false);
+    AppMethodBeat.o(89432);
+  }
+  
+  public static void bqV()
+  {
+    AppMethodBeat.i(89435);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecYUVInitError");
+    h.OAn.idkeyStat(440L, 16L, 1L, false);
+    AppMethodBeat.o(89435);
+  }
+  
+  public static void bqW()
+  {
+    AppMethodBeat.i(89436);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecWriteYUVError");
+    h.OAn.idkeyStat(440L, 21L, 1L, false);
+    AppMethodBeat.o(89436);
+  }
+  
+  public static void gcj()
+  {
+    AppMethodBeat.i(89431);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markCapture");
+    h.OAn.idkeyStat(440L, 0L, 1L, false);
     int i = 36;
     int j;
-    if (j.oHG != null)
+    if (j.KVJ != null)
     {
-      if (j.oHG.eqK == 1) {
+      if (j.KVJ.lWy == 1) {
         i = 39;
       }
-      if (j.oHG.eZQ != 720) {
+      if (j.KVJ.nFY != 720) {
         break label81;
       }
       j = i + 1;
     }
     for (;;)
     {
-      h.qsU.idkeyStat(440L, j, 1L, false);
-      AppMethodBeat.o(76531);
+      h.OAn.idkeyStat(440L, j, 1L, false);
+      AppMethodBeat.o(89431);
       return;
       label81:
       j = i;
-      if (j.oHG.bRg()) {
+      if (j.KVJ.gcs()) {
         j = i + 2;
       }
     }
   }
   
-  public static void bQY()
+  public static void gck()
   {
-    AppMethodBeat.i(76533);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markFFMpegInitError");
-    h.qsU.idkeyStat(440L, 7L, 1L, false);
-    AppMethodBeat.o(76533);
+    AppMethodBeat.i(89433);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markFFMpegInitError");
+    h.OAn.idkeyStat(440L, 7L, 1L, false);
+    AppMethodBeat.o(89433);
   }
   
-  public static void bQZ()
+  public static void gcl()
   {
-    AppMethodBeat.i(76534);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecInitError");
-    h.qsU.idkeyStat(440L, 8L, 1L, false);
-    AppMethodBeat.o(76534);
+    AppMethodBeat.i(89434);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecInitError");
+    h.OAn.idkeyStat(440L, 8L, 1L, false);
+    AppMethodBeat.o(89434);
   }
   
-  public static void bRa()
+  public static void gcm()
   {
-    AppMethodBeat.i(76537);
-    ab.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecMuxError");
-    h.qsU.idkeyStat(440L, 31L, 1L, false);
-    AppMethodBeat.o(76537);
+    AppMethodBeat.i(89437);
+    Log.i("MicroMsg.MMSightRecorderIDKeyStat", "markMediaCodecMuxError");
+    h.OAn.idkeyStat(440L, 31L, 1L, false);
+    AppMethodBeat.o(89437);
   }
   
-  public static void bRb()
+  public static void gcn()
   {
-    AppMethodBeat.i(76539);
-    h.qsU.idkeyStat(440L, 140L, 0L, false);
-    AppMethodBeat.o(76539);
+    AppMethodBeat.i(89440);
+    h.OAn.idkeyStat(440L, 140L, 0L, false);
+    AppMethodBeat.o(89440);
   }
   
-  public static void e(boolean paramBoolean, long paramLong)
+  public static void m(boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(76538);
-    ab.v("MicroMsg.MMSightRecorderIDKeyStat", "markCaptureProcessCost isPictureMode %s cost_time %s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
-    a.bQG().oGL = paramLong;
-    a locala = a.bQG();
-    com.tencent.mm.modelsns.d locald1 = new com.tencent.mm.modelsns.d();
-    com.tencent.mm.modelsns.d locald2 = new com.tencent.mm.modelsns.d();
-    locald1.j("model", locala.model + ",");
-    locald1.j("apiLevel", locala.oGm + ",");
-    locald1.j("memoryClass", locala.fYn + ",");
-    locald1.j("totalMemory", locala.oGn + ",");
-    locald1.j("maxCpu", locala.oGo + ",");
-    locald1.j("screenW", locala.oGp + ",");
-    locald1.j("screenH", locala.oGq + ",");
-    locald2.j("model", locala.model + ",");
-    locald2.j("apiLevel", locala.oGm + ",");
-    locald2.j("memoryClass", locala.fYn + ",");
-    locald2.j("totalMemory", locala.oGn + ",");
-    locald2.j("maxCpu", locala.oGo + ",");
-    locald2.j("screenW", locala.oGp + ",");
-    locald2.j("screenH", locala.oGq + ",");
-    locald1.j("cropx", locala.oGv + ",");
-    locald1.j("cropy", locala.oGw + ",");
-    locald1.j("previewx", locala.oGx + ",");
-    locald1.j("previewy", locala.oGy + ",");
-    locald1.j("encoderx", locala.oGz + ",");
-    locald1.j("encodery", locala.oGA + ",");
-    locald1.j("rotate", locala.rotate + ",");
-    locald1.j("deviceoutfps", locala.oGB + ",");
-    locald1.j("recordfps", locala.oGC + ",");
-    locald1.j("recordertype", locala.oGD + ",");
-    locald1.j("videoBitrate", locala.videoBitrate + ",");
-    locald1.j("needRotateEachFrame", locala.eqL + ",");
-    locald1.j("isNeedRealtimeScale", locala.oGE + ",");
-    locald1.j("resolutionLimit", locala.eZQ + ",");
-    locald1.j("outfps", locala.oGF + ",");
-    locald1.j("recordTime", locala.oGG + ",");
-    locald1.j("avgcpu", locala.oGH + ",");
-    locald1.j("outx", locala.oGI + ",");
-    locald1.j("outy", locala.oGJ + ",");
-    locald1.j("outbitrate", locala.oGK + ",");
-    locald1.j("fileSize", locala.fileSize + ",");
-    locald1.j("wait2playtime", locala.oGL + ",");
-    locald1.j("useback", locala.oGM + ",");
+    AppMethodBeat.i(89439);
+    Log.v("MicroMsg.MMSightRecorderIDKeyStat", "markCaptureProcessCost isPictureMode %s cost_time %s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
+    b.gbT().KUO = paramLong;
+    b localb = b.gbT();
+    n localn1 = new n();
+    n localn2 = new n();
+    localn1.r("model", localb.model + ",");
+    localn1.r("apiLevel", localb.KUq + ",");
+    localn1.r("memoryClass", localb.pch + ",");
+    localn1.r("totalMemory", localb.nJN + ",");
+    localn1.r("maxCpu", localb.KUr + ",");
+    localn1.r("screenW", localb.KUs + ",");
+    localn1.r("screenH", localb.KUt + ",");
+    localn2.r("model", localb.model + ",");
+    localn2.r("apiLevel", localb.KUq + ",");
+    localn2.r("memoryClass", localb.pch + ",");
+    localn2.r("totalMemory", localb.nJN + ",");
+    localn2.r("maxCpu", localb.KUr + ",");
+    localn2.r("screenW", localb.KUs + ",");
+    localn2.r("screenH", localb.KUt + ",");
+    localn1.r("cropx", localb.KUy + ",");
+    localn1.r("cropy", localb.KUz + ",");
+    localn1.r("previewx", localb.KUA + ",");
+    localn1.r("previewy", localb.KUB + ",");
+    localn1.r("encoderx", localb.KUC + ",");
+    localn1.r("encodery", localb.KUD + ",");
+    localn1.r("rotate", localb.hYK + ",");
+    localn1.r("deviceoutfps", localb.KUE + ",");
+    localn1.r("recordfps", localb.KUF + ",");
+    localn1.r("recordertype", localb.KUG + ",");
+    localn1.r("videoBitrate", localb.videoBitrate + ",");
+    localn1.r("needRotateEachFrame", localb.lWz + ",");
+    localn1.r("isNeedRealtimeScale", localb.KUH + ",");
+    localn1.r("resolutionLimit", localb.nFY + ",");
+    localn1.r("outfps", localb.KUI + ",");
+    localn1.r("recordTime", localb.KUJ + ",");
+    localn1.r("avgcpu", localb.KUK + ",");
+    localn1.r("outx", localb.KUL + ",");
+    localn1.r("outy", localb.KUM + ",");
+    localn1.r("outbitrate", localb.KUN + ",");
+    localn1.r("fileSize", localb.fileSize + ",");
+    localn1.r("wait2playtime", localb.KUO + ",");
+    localn1.r("useback", localb.KUP + ",");
     int k = 0;
     int j = 0;
-    Intent localIntent = ah.getContext().registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+    Intent localIntent = MMApplicationContext.getContext().registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
     int i;
     if (localIntent != null)
     {
@@ -385,62 +206,62 @@ public final class k
     }
     for (;;)
     {
-      ab.i("MicroMsg.CaptureStatistics", "battery %s %s %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
-      locald1.j("mIsCharging", i + ",");
-      locald1.j("level", k + ",");
-      locald1.j("scale", j + ",");
-      locald1.j("createTime", System.currentTimeMillis() + ",");
-      locald2.j("prewViewlist1", locala.oGr + ",");
-      locald2.j("pictureSize1", locala.oGs + ",");
-      locald2.j("prewViewlist2", locala.oGt + ",");
-      locald2.j("pictureSize2", locala.oGu + ",");
-      ab.i("MicroMsg.CaptureStatistics", "report " + locald1.Fg());
-      ab.v("MicroMsg.CaptureStatistics", "report " + locald2.Fg());
-      h.qsU.kvStat(13947, locald1.toString());
-      h.qsU.kvStat(13949, locald2.toString());
+      Log.i("MicroMsg.CaptureStatistics", "battery %s %s %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
+      localn1.r("mIsCharging", i + ",");
+      localn1.r("level", k + ",");
+      localn1.r("scale", j + ",");
+      localn1.r("createTime", System.currentTimeMillis() + ",");
+      localn2.r("prewViewlist1", localb.KUu + ",");
+      localn2.r("pictureSize1", localb.KUv + ",");
+      localn2.r("prewViewlist2", localb.KUw + ",");
+      localn2.r("pictureSize2", localb.KUx + ",");
+      Log.i("MicroMsg.CaptureStatistics", "report " + localn1.aIF());
+      Log.v("MicroMsg.CaptureStatistics", "report " + localn2.aIF());
+      h.OAn.kvStat(13947, localn1.toString());
+      h.OAn.kvStat(13949, localn2.toString());
       if (!paramBoolean) {
-        break label1807;
+        break label1738;
       }
-      h.qsU.idkeyStat(440L, 119L, 1L, false);
-      h.qsU.idkeyStat(440L, 120L, paramLong, false);
-      if (j.oHG.eZQ != 720) {
-        break label1756;
+      h.OAn.idkeyStat(440L, 119L, 1L, false);
+      h.OAn.idkeyStat(440L, 120L, paramLong, false);
+      if (j.KVJ.nFY != 720) {
+        break label1689;
       }
-      h.qsU.idkeyStat(440L, 122L, paramLong, false);
-      AppMethodBeat.o(76538);
+      h.OAn.idkeyStat(440L, 122L, paramLong, false);
+      AppMethodBeat.o(89439);
       return;
       i = 0;
       break;
       i = 0;
     }
-    label1756:
-    if (j.oHG.bRg())
+    label1689:
+    if (j.KVJ.gcs())
     {
-      h.qsU.idkeyStat(440L, 123L, paramLong, false);
-      AppMethodBeat.o(76538);
+      h.OAn.idkeyStat(440L, 123L, paramLong, false);
+      AppMethodBeat.o(89439);
       return;
     }
-    h.qsU.idkeyStat(440L, 121L, paramLong, false);
-    AppMethodBeat.o(76538);
+    h.OAn.idkeyStat(440L, 121L, paramLong, false);
+    AppMethodBeat.o(89439);
     return;
-    label1807:
-    h.qsU.idkeyStat(440L, 124L, 1L, false);
-    h.qsU.idkeyStat(440L, 125L, paramLong, false);
-    if (j.oHG.eqK == 1)
+    label1738:
+    h.OAn.idkeyStat(440L, 124L, 1L, false);
+    h.OAn.idkeyStat(440L, 125L, paramLong, false);
+    if (j.KVJ.lWy == 1)
     {
-      h.qsU.idkeyStat(440L, 127L, paramLong, false);
-      h.qsU.idkeyStat(440L, 131L, paramLong, false);
-      AppMethodBeat.o(76538);
+      h.OAn.idkeyStat(440L, 127L, paramLong, false);
+      h.OAn.idkeyStat(440L, 131L, paramLong, false);
+      AppMethodBeat.o(89439);
       return;
     }
-    h.qsU.idkeyStat(440L, 126L, paramLong, false);
-    h.qsU.idkeyStat(440L, 130L, paramLong, false);
-    AppMethodBeat.o(76538);
+    h.OAn.idkeyStat(440L, 126L, paramLong, false);
+    h.OAn.idkeyStat(440L, 130L, paramLong, false);
+    AppMethodBeat.o(89439);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.k
  * JD-Core Version:    0.7.0.1
  */

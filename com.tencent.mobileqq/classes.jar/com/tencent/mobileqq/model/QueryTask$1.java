@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aufy;
+import com.tencent.mobileqq.vas.theme.api.QueryCallback;
 
 class QueryTask$1
   implements Runnable
@@ -9,12 +9,12 @@ class QueryTask$1
   
   public void run()
   {
-    this.this$0.a.postQuery(this.a);
+    this.this$0.b.postQuery(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.QueryTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,77 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.anv;
-import com.tencent.mm.protocal.protobuf.anw;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet_core.model.mall.b;
+import com.tencent.mm.protocal.protobuf.cdx;
+import com.tencent.mm.protocal.protobuf.cdy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class g
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private b goo;
-  private anv oxP;
-  public anw oxQ;
+  public int KJh;
+  private cdx KJi;
+  private cdy KJj;
+  private h callback;
+  private final c rr;
   
-  public g()
+  public g(int paramInt)
   {
-    AppMethodBeat.i(43102);
-    b.a locala = new b.a();
-    locala.fsX = new anv();
-    locala.fsY = new anw();
-    locala.funcId = 1754;
-    locala.uri = "/cgi-bin/mmpay-bin/tenpay/getpaymenu";
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.goo = locala.ado();
-    this.oxP = ((anv)this.goo.fsV.fta);
-    AppMethodBeat.o(43102);
+    AppMethodBeat.i(262371);
+    c.a locala = new c.a();
+    locala.otE = new cdx();
+    locala.otF = new cdy();
+    locala.funcId = 4362;
+    locala.uri = "/cgi-bin/micromsg-bin/getallfunction";
+    this.rr = locala.bEF();
+    this.KJi = ((cdx)c.b.b(this.rr.otB));
+    this.KJh = paramInt;
+    Log.i("MicroMsg.NetSceneGetPayFunctionListNew", "walletRegion: %s", new Object[] { Integer.valueOf(this.KJh) });
+    this.KJi.YMC = this.KJh;
+    AppMethodBeat.o(262371);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(43103);
-    ab.d("MicroMsg.NetSceneGetPayMenu", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(43103);
+    AppMethodBeat.i(262377);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(262377);
     return i;
   }
   
   public final int getType()
   {
-    return 1754;
+    return 4362;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(43104);
-    ab.i("MicroMsg.NetSceneGetPayMenu", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(262379);
+    Log.i("MicroMsg.NetSceneGetPayFunctionListNew", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.oxQ = ((anw)this.goo.fsW.fta);
-      paramq = this.oxQ.title;
-      paramArrayOfByte = this.oxQ.xea;
-      if (this.oxQ.xea == null) {
-        break label142;
+      this.KJj = ((cdy)c.c.b(((c)params).otC));
+      if (this.KJj != null) {
+        b.a(this.KJj);
       }
     }
-    label142:
-    for (paramInt1 = this.oxQ.xea.size();; paramInt1 = 0)
-    {
-      ab.i("MicroMsg.NetSceneGetPayMenu", "onGYNetEnd, title: %s, sectors: %s, sectors.size: %s", new Object[] { paramq, paramArrayOfByte, Integer.valueOf(paramInt1) });
+    if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(43104);
-      return;
     }
+    AppMethodBeat.o(262379);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 final class a$1
-  implements ap.a
+  implements MTimerHandler.CallBack
 {
   public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(105582);
-    a.oO(1);
-    AppMethodBeat.o(105582);
+    AppMethodBeat.i(146135);
+    a.Ck(1);
+    AppMethodBeat.o(146135);
     return false;
   }
 }

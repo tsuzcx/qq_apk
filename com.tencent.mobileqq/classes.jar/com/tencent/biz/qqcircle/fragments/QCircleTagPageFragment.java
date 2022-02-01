@@ -3,80 +3,99 @@ package com.tencent.biz.qqcircle.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Window;
-import com.tencent.biz.qqcircle.QCircleInitBean;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.biz.qqcircle.QCirclePluginGlobalInfo;
+import com.tencent.biz.qqcircle.adapter.QCircleInsFeedAdapter;
+import com.tencent.biz.qqcircle.adapter.QCircleTagPageHeaderBlock;
+import com.tencent.biz.qqcircle.beans.QCircleInitBean;
+import com.tencent.biz.qqcircle.bizparts.QCircleCertifiedPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleCommentPanelPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleLightInteractListPart;
+import com.tencent.biz.qqcircle.bizparts.QCirclePublishFeedPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleRichMediaDownLoadPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleSharePartV2;
+import com.tencent.biz.qqcircle.bizparts.QCircleTagPageBodyPart;
+import com.tencent.biz.qqcircle.bizparts.QCircleTagPageTitleBarPart;
+import com.tencent.biz.richframework.part.Part;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import cooperation.qqcircle.report.QCircleLpReportDc05504.DataBuilder;
+import cooperation.qqcircle.report.QCircleReportHelper;
 import java.util.ArrayList;
 import java.util.List;
-import tqg;
-import trq;
-import trs;
-import tsc;
-import tsw;
-import ttg;
-import ttl;
-import ttr;
-import tty;
-import tvv;
-import tzv;
-import tzy;
 
 public class QCircleTagPageFragment
   extends QCircleBaseFragment
 {
-  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
-  private List<tvv> jdField_a_of_type_JavaUtilList;
+  private List<Part> c;
+  private QCircleInitBean d;
   
-  private void b()
+  private void u()
   {
+    if (getActivity() == null) {
+      return;
+    }
     Intent localIntent = getActivity().getIntent();
     if ((localIntent != null) && (localIntent.hasExtra("key_bundle_common_init_bean"))) {
-      this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
+      this.d = ((QCircleInitBean)localIntent.getSerializableExtra("key_bundle_common_init_bean"));
     }
   }
   
   public int a()
   {
-    return 2131560594;
+    return 31;
   }
   
-  public String a()
+  public String b()
   {
     return "QCircleTagPageFragment";
   }
   
-  public List<tvv> a()
+  protected int c()
   {
-    b();
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new tty(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean));
-      Object localObject = new ArrayList();
-      ((List)localObject).add(new trs(null));
-      ((List)localObject).add(new trq(new Bundle()));
-      localObject = new ttr((List)localObject, 3, 1);
-      ((ttr)localObject).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean);
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new ttl();
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      localObject = new ttg(tqg.a());
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      if ((this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean != null) && (this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo() != null)) {
-        ((ttg)localObject).a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo());
-      }
-      ((ttg)localObject).a(5);
-      localObject = new tsc();
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      ((tsc)localObject).a(true);
-      this.jdField_a_of_type_JavaUtilList.add(new tsw());
-    }
-    return this.jdField_a_of_type_JavaUtilList;
+    return 2131626970;
   }
   
-  public void a()
+  protected List<Part> d()
   {
-    tzy.a().a(31);
+    u();
+    if (this.c == null)
+    {
+      this.c = new ArrayList();
+      this.c.add(new QCircleTagPageTitleBarPart(this.d));
+      Object localObject1 = new ArrayList();
+      Object localObject2 = new QCircleTagPageHeaderBlock(null);
+      ((QCircleTagPageHeaderBlock)localObject2).a(n());
+      ((List)localObject1).add(localObject2);
+      localObject2 = new QCircleInsFeedAdapter(new Bundle());
+      ((QCircleInsFeedAdapter)localObject2).setReportBean(n());
+      ((List)localObject1).add(localObject2);
+      localObject1 = new QCircleTagPageBodyPart((List)localObject1, 3, 1);
+      ((QCircleTagPageBodyPart)localObject1).a(this.d);
+      this.c.add(localObject1);
+      localObject1 = new QCircleSharePartV2();
+      ((QCircleSharePartV2)localObject1).a(n());
+      this.c.add(localObject1);
+      localObject1 = new QCirclePublishFeedPart(QCirclePluginGlobalInfo.c());
+      ((QCirclePublishFeedPart)localObject1).a(n());
+      localObject2 = this.d;
+      if ((localObject2 != null) && (((QCircleInitBean)localObject2).getTagInfo() != null)) {
+        ((QCirclePublishFeedPart)localObject1).a(this.d.getTagInfo());
+      }
+      ((QCirclePublishFeedPart)localObject1).a(5);
+      this.c.add(localObject1);
+      localObject1 = new QCircleCertifiedPart();
+      this.c.add(localObject1);
+      ((QCircleCertifiedPart)localObject1).a(true);
+      localObject1 = new QCircleLightInteractListPart();
+      ((QCircleLightInteractListPart)localObject1).a(n());
+      this.c.add(localObject1);
+      localObject1 = new QCircleCommentPanelPart();
+      ((QCircleCommentPanelPart)localObject1).a(n());
+      this.c.add(localObject1);
+      this.c.add(new QCircleRichMediaDownLoadPart());
+    }
+    return this.c;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -88,15 +107,29 @@ public class QCircleTagPageFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    tzv.a("", 6, 1L);
-    if (tzy.a().b(31)) {
-      tzy.a().a(getActivity().getIntent());
-    }
+    QCircleLpReportDc05504.report(new QCircleLpReportDc05504.DataBuilder().setActionType(6).setSubActionType(1));
+  }
+  
+  public void onDetach()
+  {
+    super.onDetach();
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    QCircleReportHelper.getInstance().recordPageEndShow(a(), g());
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    QCircleReportHelper.getInstance().recordPageStartShow(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.QCircleTagPageFragment
  * JD-Core Version:    0.7.0.1
  */

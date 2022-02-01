@@ -1,56 +1,40 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import com.tencent.mobileqq.activity.ForwardOperations;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
-import cooperation.qqfav.QfavReport;
+import java.lang.ref.WeakReference;
+import mqq.observer.SSOAccountObserver;
 
 public class cmd
-  implements DialogInterface.OnClickListener
+  extends SSOAccountObserver
 {
-  public cmd(ForwardOperations paramForwardOperations, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
+  WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public cmd(ForwardOperations paramForwardOperations)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramForwardOperations);
+  }
+  
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    paramString = (ForwardOperations)this.a.get();
+    if ((paramString != null) && (!paramString.c) && (ForwardOperations.a(paramString) != null)) {
+      ForwardOperations.a(paramString).sendEmptyMessage(0);
+    }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4096) {}
+    for (paramString = new String(paramArrayOfByte);; paramString = null)
     {
-    default: 
-      return;
-    case -2: 
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.d) {
-        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_Long);
-      }
-      for (;;)
+      paramArrayOfByte = (ForwardOperations)this.a.get();
+      if (paramArrayOfByte != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.setResult(1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity.finish();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("sdk_share", 2, "back call");
-        return;
-        ForwardOperations.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, false, "shareToQQ", this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_Long);
+        paramArrayOfByte.v = paramString;
+        paramArrayOfByte.c = true;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("sdk_share", 2, "send call");
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.b();
       return;
     }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      QfavHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), new Intent().putExtra("is_share_flag", true), -1);
-      QfavReport.c(this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(0, "", "");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

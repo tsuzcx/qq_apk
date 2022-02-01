@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SdtLogic
 {
   private static final String TAG = "mars.SdtLogic";
-  private static SdtLogic.ICallBack callBack;
+  private static ICallBack callBack;
   
   static
   {
@@ -31,16 +31,18 @@ public class SdtLogic
   
   private static void reportSignalDetectResults(String paramString) {}
   
-  public static void setCallBack(SdtLogic.ICallBack paramICallBack)
+  public static void setCallBack(ICallBack paramICallBack)
   {
     callBack = paramICallBack;
   }
   
   public static native void setHttpNetcheckCGI(String paramString);
+  
+  public static abstract interface ICallBack {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.sdt.SdtLogic
  * JD-Core Version:    0.7.0.1
  */

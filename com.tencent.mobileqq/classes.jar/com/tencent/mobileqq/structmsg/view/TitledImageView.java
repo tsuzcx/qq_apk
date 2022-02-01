@@ -14,60 +14,63 @@ import android.text.TextUtils.TruncateAt;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
-import bamp;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class TitledImageView
   extends AnyScaleTypeImageView
 {
-  private int jdField_a_of_type_Int = -16777216;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Layout jdField_a_of_type_AndroidTextLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private TransformationMethod jdField_a_of_type_AndroidTextMethodTransformationMethod;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private int b = -1;
-  private int c = 10;
-  private int d = 10;
+  private CharSequence a = null;
+  private TextPaint b = new TextPaint();
+  private int c = -16777216;
+  private int d = -1;
+  private int e = 10;
+  private int f = 10;
+  private Path g = null;
+  private Layout h = null;
+  private TransformationMethod i;
   
   public TitledImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextMethodTransformationMethod = SingleLineTransformationMethod.getInstance();
+    this.b.setAntiAlias(true);
+    this.i = SingleLineTransformationMethod.getInstance();
   }
   
   public TitledImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextMethodTransformationMethod = SingleLineTransformationMethod.getInstance();
+    this.b.setAntiAlias(true);
+    this.i = SingleLineTransformationMethod.getInstance();
   }
   
   public TitledImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextMethodTransformationMethod = SingleLineTransformationMethod.getInstance();
+    this.b.setAntiAlias(true);
+    this.i = SingleLineTransformationMethod.getInstance();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
+    if (!TextUtils.isEmpty(this.a))
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      float f = getMeasuredHeight() - this.jdField_a_of_type_AndroidTextTextPaint.getTextSize() - this.c * 2;
+      this.b.setColor(this.c);
+      this.b.setStyle(Paint.Style.FILL_AND_STROKE);
+      float f1 = getMeasuredHeight() - this.b.getTextSize() - this.e * 2;
       paramCanvas.save();
-      paramCanvas.clipRect(0.0F, f, getMeasuredWidth(), getMeasuredHeight());
-      if (this.jdField_a_of_type_AndroidGraphicsPath != null) {
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.clipRect(0.0F, f1, getMeasuredWidth(), getMeasuredHeight());
+      Object localObject = this.g;
+      if (localObject != null) {
+        paramCanvas.drawPath((Path)localObject, this.b);
       }
-      paramCanvas.translate(0.0F + this.c, f + this.c);
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.b);
-      if (this.jdField_a_of_type_AndroidTextLayout != null) {
-        this.jdField_a_of_type_AndroidTextLayout.draw(paramCanvas);
+      int j = this.e;
+      paramCanvas.translate(0.0F + j, f1 + j);
+      this.b.setColor(this.d);
+      localObject = this.h;
+      if (localObject != null) {
+        ((Layout)localObject).draw(paramCanvas);
       }
       paramCanvas.restore();
     }
@@ -78,72 +81,78 @@ public class TitledImageView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMeasuredHeight();
     paramInt2 = getMeasuredWidth();
-    if ((paramInt1 < 1) || (paramInt2 < 1)) {}
-    float f2;
-    do
+    if (paramInt1 >= 1)
     {
-      do
-      {
+      if (paramInt2 < 1) {
         return;
-      } while (!paramBoolean);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      float f1 = paramInt1 - this.c * 2 - this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-      f2 = paramInt2;
-      float f3 = paramInt1;
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f3 - this.d);
-      localObject = new RectF(f2 - this.d * 2, f3 - this.d * 2, f2, f3);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 0.0F, 90.0F, false);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.d + 0.0F, f3);
-      localObject = new RectF(0.0F, f3 - this.d * 2, this.d * 2 + 0.0F, f3);
-      this.jdField_a_of_type_AndroidGraphicsPath.arcTo((RectF)localObject, 90.0F, 90.0F, true);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, f1);
-      this.jdField_a_of_type_AndroidGraphicsPath.close();
-    } while (this.jdField_a_of_type_JavaLangCharSequence == null);
-    Object localObject = this.jdField_a_of_type_AndroidTextMethodTransformationMethod.getTransformation(this.jdField_a_of_type_JavaLangCharSequence, this);
-    paramInt1 = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_AndroidTextLayout = new DynamicLayout(this.jdField_a_of_type_JavaLangCharSequence, (CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.5F, false, TextUtils.TruncateAt.END, (int)(f2 - this.c * 2));
+      }
+      if (paramBoolean)
+      {
+        this.g = new Path();
+        float f1 = paramInt1 - this.e * 2 - this.b.getTextSize();
+        float f2 = paramInt2;
+        float f3 = paramInt1;
+        this.g.moveTo(0.0F, f1);
+        this.g.lineTo(f2, f1);
+        this.g.lineTo(f2, f3 - this.f);
+        paramInt1 = this.f;
+        Object localObject = new RectF(f2 - paramInt1 * 2, f3 - paramInt1 * 2, f2, f3);
+        this.g.arcTo((RectF)localObject, 0.0F, 90.0F, false);
+        this.g.lineTo(this.f + 0.0F, f3);
+        paramInt1 = this.f;
+        localObject = new RectF(0.0F, f3 - paramInt1 * 2, paramInt1 * 2 + 0.0F, f3);
+        this.g.arcTo((RectF)localObject, 90.0F, 90.0F, true);
+        this.g.lineTo(0.0F, f1);
+        this.g.close();
+        localObject = this.a;
+        if (localObject != null)
+        {
+          localObject = this.i.getTransformation((CharSequence)localObject, this);
+          paramInt1 = (int)Layout.getDesiredWidth(this.a, this.b);
+          this.h = new DynamicLayout(this.a, (CharSequence)localObject, this.b, paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.5F, false, TextUtils.TruncateAt.END, (int)(f2 - this.e * 2));
+        }
+      }
+    }
   }
   
   public void setTextBackground(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setTextColor(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
   public void setTextPadding(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void setTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    this.b.setTextSize(paramFloat);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof bamp))
+    if ((this.a instanceof QQText))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+      this.a = paramCharSequence;
       return;
     }
-    this.jdField_a_of_type_JavaLangCharSequence = new bamp(paramCharSequence, 1, 16);
+    this.a = new QQText(paramCharSequence, 1, 16);
   }
   
   public void settextBgRadius(int paramInt)
   {
-    this.d = paramInt;
+    this.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.TitledImageView
  * JD-Core Version:    0.7.0.1
  */

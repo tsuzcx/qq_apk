@@ -8,15 +8,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class userdata$FaceScore
   extends MessageMicro<FaceScore>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_facescore", "uint32_scored_people", "uint32_datenum", "uint32_high_score" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FaceScore.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field uint32_datenum = PBField.initUInt32(0);
   public final PBUInt32Field uint32_facescore = PBField.initUInt32(0);
   public final PBUInt32Field uint32_high_score = PBField.initUInt32(0);
   public final PBUInt32Field uint32_scored_people = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_facescore", "uint32_scored_people", "uint32_datenum", "uint32_high_score" }, new Object[] { localInteger, localInteger, localInteger, localInteger }, FaceScore.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.userdata.userdata.FaceScore
  * JD-Core Version:    0.7.0.1
  */

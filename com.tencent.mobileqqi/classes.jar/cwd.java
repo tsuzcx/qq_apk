@@ -1,14 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
 
 class cwd
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  cwd(cwc paramcwc) {}
+  cwd(cwb paramcwb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.a.finish();
   }
 }
 

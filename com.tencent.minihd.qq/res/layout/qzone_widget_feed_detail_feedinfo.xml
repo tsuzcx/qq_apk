@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/feedInfoPhotoInfoContainer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qzone_feed_detail_avatar_width">
+        <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/color_content_auxiliary" android:id="@id/feedInfoPhotoCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="5.0dip" android:text="共上传多张照片到" android:singleLine="true" android:maxLength="30" />
+        <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_text_link_clickable" android:id="@id/feedInfoAlbumName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="12.0dip" android:text="鄂尔多斯之旅(108)" android:singleLine="true" android:drawableLeft="@drawable/qzone_icon_album" android:drawablePadding="3.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/feedOperationArea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qzone_feed_detail_avatar_width">
+        <TextView android:textSize="@dimen/feed_item_comment_text_size" android:id="@id/remark" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="5.0dip" android:text="" android:singleLine="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_text_link_clickable" android:id="@id/delete_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="删除" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/feed_source_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/icon" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitXY" />
+        <TextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/color_content_auxiliary" android:id="@id/feedInfoFeedSource" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:text="" />
+    </LinearLayout>
+</LinearLayout>

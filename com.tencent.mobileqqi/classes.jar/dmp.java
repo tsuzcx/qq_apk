@@ -1,40 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.SubAccountDataControll;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class dmp
-  implements View.OnClickListener
+class dmp
+  implements ActionSheet.OnButtonClickListener
 {
-  public dmp(SubAccountSettingActivity paramSubAccountSettingActivity) {}
+  dmp(dmo paramdmo, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a.a(), null);
-    switch (paramView.getId())
+    switch (paramInt)
     {
-    case 2131234577: 
     default: 
       return;
-    case 2131234576: 
-      localActionSheet.a(2131561668);
-      localActionSheet.a(2131562539, 3);
-      localActionSheet.d(2131561746);
-      localActionSheet.a(new dmq(this, localActionSheet));
-      localActionSheet.show();
-      return;
-    case 2131234578: 
-      localActionSheet.a(2131561628);
-      localActionSheet.a(2131561946, 3);
-      localActionSheet.d(2131561746);
-      localActionSheet.a(new dmr(this, localActionSheet));
-      localActionSheet.show();
-      return;
     }
-    SubAccountAssistantForward.a(this.a.b, this.a.a(), this.a.b.getAccount());
+    paramView = "";
+    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a) != null) {
+      paramView = SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a).subuin;
+    }
+    ReportController.b(this.jdField_a_of_type_Dmo.a.b, "CliOper", "", paramView, "Bind_account", "Clean_msg_tipslist", 0, 0, "", "", "", "");
+    if (SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a) != null)
+    {
+      SubAccountDataControll.a().a(this.jdField_a_of_type_Dmo.a.b, SubAccountSettingActivity.a(this.jdField_a_of_type_Dmo.a).subuin);
+      this.jdField_a_of_type_Dmo.a.b(this.jdField_a_of_type_Dmo.a.getString(2131561834));
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

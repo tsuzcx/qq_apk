@@ -10,14 +10,20 @@ class VRecyclerView$1
   
   public void onRefreshMove(int paramInt)
   {
-    ViolaLogUtils.d("VRecyclerView", "onRefreshMove offset:" + paramInt);
-    VRecyclerView.access$102(this.this$0, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRefreshMove offset:");
+    localStringBuilder.append(paramInt);
+    ViolaLogUtils.d("VRecyclerView", localStringBuilder.toString());
+    if (VRecyclerView.access$100(this.this$0) != null) {
+      VRecyclerView.access$100(this.this$0).onVerticalScroll(this.this$0, paramInt);
+    }
+    VRecyclerView.access$202(this.this$0, paramInt);
     this.this$0.performOnScroll(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.VRecyclerView.1
  * JD-Core Version:    0.7.0.1
  */

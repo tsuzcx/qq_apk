@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="" android:key="refund_way_detail" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:summary="" android:title="" android:key="refund_way_detail_lq" android:layout="@layout/afi" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:summary="" android:title="" android:key="refund_way_detail_origin" android:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory />
+    <Preference android:key="shake_item_change_bgimg" android:layout="@layout/bdi" android:title="@string/b31" />
+    <CheckBoxPreference android:key="shake_item_sound" android:layout="@layout/bdi" android:persistent="false" android:title="@string/j4r" />
+    <PreferenceSmallCategory />
+    <Preference android:key="say_hi_list_shake_title" android:layout="@layout/bdi" android:title="@string/ib1" />
+    <Preference android:key="shake_item_histoty_list" android:layout="@layout/bdi" android:title="@string/j4i" />
+    <PreferenceSmallCategory />
+    <Preference android:key="shake_msg_list" android:layout="@layout/bdi" android:title="@string/j6b" />
 </PreferenceScreen>

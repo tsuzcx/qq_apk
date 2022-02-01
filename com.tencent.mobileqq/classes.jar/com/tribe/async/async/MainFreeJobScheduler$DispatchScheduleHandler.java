@@ -14,9 +14,7 @@ class MainFreeJobScheduler$DispatchScheduleHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 2) {
       return;
     }
     this.this$0.doSchedule();
@@ -24,7 +22,7 @@ class MainFreeJobScheduler$DispatchScheduleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.MainFreeJobScheduler.DispatchScheduleHandler
  * JD-Core Version:    0.7.0.1
  */

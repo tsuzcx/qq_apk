@@ -1,22 +1,21 @@
 package cooperation.qlink;
 
-import bitn;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class QlinkServiceProxy$2
+class QlinkServiceProxy$2
   extends Thread
 {
-  public QlinkServiceProxy$2(bitn parambitn) {}
+  QlinkServiceProxy$2(QlinkServiceProxy paramQlinkServiceProxy) {}
   
   public void run()
   {
-    while (!bitn.a(this.this$0).isEmpty())
+    while (!QlinkServiceProxy.d(this.this$0).isEmpty())
     {
-      SendMsg localSendMsg = (SendMsg)bitn.a(this.this$0).poll();
+      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.d(this.this$0).poll();
       if (localSendMsg != null) {
         try
         {
-          bitn.a(this.this$0, localSendMsg);
+          QlinkServiceProxy.a(this.this$0, localSendMsg);
         }
         catch (Exception localException)
         {
@@ -28,7 +27,7 @@ public class QlinkServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.TranslateActionArg;
-import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class ak
@@ -13,36 +13,36 @@ public final class ak
 {
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103308);
+    AppMethodBeat.i(144991);
     paramd = (TranslateActionArg)paramDrawActionArg;
     if (paramd == null)
     {
-      AppMethodBeat.o(103308);
+      AppMethodBeat.o(144991);
       return false;
     }
     paramCanvas.translate(paramd.x, paramd.y);
-    AppMethodBeat.o(103308);
+    AppMethodBeat.o(144991);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103307);
+    AppMethodBeat.i(144990);
     if (paramJSONArray.length() < 2)
     {
-      AppMethodBeat.o(103307);
+      AppMethodBeat.o(144990);
       return false;
     }
-    paramCanvas.translate(g.d(paramJSONArray, 0), g.d(paramJSONArray, 1));
-    AppMethodBeat.o(103307);
+    paramCanvas.translate(i.f(paramJSONArray, 0), i.f(paramJSONArray, 1));
+    AppMethodBeat.o(144990);
     return true;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg cjY()
   {
-    AppMethodBeat.i(103306);
+    AppMethodBeat.i(144989);
     TranslateActionArg localTranslateActionArg = new TranslateActionArg();
-    AppMethodBeat.o(103306);
+    AppMethodBeat.o(144989);
     return localTranslateActionArg;
   }
   
@@ -53,7 +53,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ak
  * JD-Core Version:    0.7.0.1
  */

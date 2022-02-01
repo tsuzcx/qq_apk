@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/relativeItem" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/shader" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/delConBtn" android:background="@drawable/red_del_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/delete_btn" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+    <RelativeLayout android:id="@id/icon_layout" style="@style/ContactListItem">
+        <com.tencent.widget.FixSizeImageView android:id="@id/icon" style="@style/HeaderIcon" />
+        <LinearLayout android:id="@id/text1Area" android:layout_toRightOf="@id/icon" style="@style/nick_name_layout">
+            <TextView android:id="@id/text1" style="@style/nick_name_main" />
+            <TextView android:textColor="@color/skin_red_item" android:id="@id/subText" style="@style/nick_name_sub" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="30.0dip" android:layout_below="@id/text1Area" android:layout_alignLeft="@id/text1Area">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/call_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/icon_lightalk" android:focusable="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:src="@drawable/qq_conversation_call_item_icon_lightalk" android:scaleType="fitXY" android:contentDescription="@null" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:layout_gravity="center_vertical" android:id="@id/text2_prefix" android:paddingBottom="0.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="center|left" android:id="@android:id/text2" android:paddingRight="6.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="24.0dip" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/call_entry_btn" android:padding="12.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qav_call_entry_audio_nor" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/network_status_icon" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:src="@null" android:layout_toLeftOf="@id/call_entry_btn" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/ng"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/zx" android:background="?s" android:padding="@dimen/n_" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/ir"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <ImageView style="@style/i7" />
+    <com.tencent.mm.plugin.appbrand.phonenumber.widget.MMFormVerifyCodeInputView android:id="@id/tc" android:focusableInTouchMode="false" android:layout_height="60.0dip" form:form_btn_title="@string/a7y" form:form_hint="@string/a7x" form:form_layout="@layout/bne" form:form_title="@string/a7z" style="@style/mg" />
+    <com.tencent.mm.ui.base.MMFormInputView android:id="@id/te" android:focusableInTouchMode="false" form:form_hint="@string/a85" form:form_layout="@layout/bnd" form:form_title="@string/a87" style="@style/mg" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/a7b" android:gravity="center" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/a7l" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/td" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView style="@style/i7" />
+    <Button android:enabled="false" android:layout_gravity="center" android:id="@id/tb" android:layout_marginTop="40.0dip" android:text="@string/a7u" style="@style/oh" />
+</LinearLayout>

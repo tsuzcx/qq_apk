@@ -5,44 +5,44 @@ import java.util.LinkedList;
 
 final class b$c
 {
-  private LinkedList<String> elu;
+  private LinkedList<String> lPK;
   private int maxSize;
   
   public b$c(b paramb)
   {
-    AppMethodBeat.i(106224);
-    this.elu = null;
+    AppMethodBeat.i(141584);
+    this.lPK = null;
     this.maxSize = 40;
-    this.elu = new LinkedList();
-    AppMethodBeat.o(106224);
+    this.lPK = new LinkedList();
+    AppMethodBeat.o(141584);
+  }
+  
+  final void add(String paramString)
+  {
+    AppMethodBeat.i(141585);
+    if (this.lPK.contains(paramString))
+    {
+      AppMethodBeat.o(141585);
+      return;
+    }
+    this.lPK.add(paramString);
+    if (this.lPK.size() >= this.maxSize) {
+      this.lPK.removeFirst();
+    }
+    AppMethodBeat.o(141585);
   }
   
   final boolean contains(String paramString)
   {
-    AppMethodBeat.i(106226);
-    boolean bool = this.elu.contains(paramString);
-    AppMethodBeat.o(106226);
+    AppMethodBeat.i(141586);
+    boolean bool = this.lPK.contains(paramString);
+    AppMethodBeat.o(141586);
     return bool;
-  }
-  
-  final void xB(String paramString)
-  {
-    AppMethodBeat.i(106225);
-    if (this.elu.contains(paramString))
-    {
-      AppMethodBeat.o(106225);
-      return;
-    }
-    this.elu.add(paramString);
-    if (this.elu.size() >= this.maxSize) {
-      this.elu.removeFirst();
-    }
-    AppMethodBeat.o(106225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.applet.b.c
  * JD-Core Version:    0.7.0.1
  */

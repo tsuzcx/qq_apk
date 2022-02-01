@@ -13,22 +13,26 @@ class l
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
-    {
+    if (paramIntent == null) {
       return;
-      paramContext = paramIntent.getAction();
-      QLog.d("PCActivePush", 1, "onReceive action: " + paramContext);
-    } while (!"com.tencent.mobileqq.broadcast.pcactiveQQ".equals(paramContext));
-    paramContext = paramIntent.getStringExtra("uin");
-    int i = paramIntent.getIntExtra("retryIndex", 1);
-    g.a(this.a).compareAndSet(false, true);
-    g.a(this.a, paramContext, i);
+    }
+    paramContext = paramIntent.getAction();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceive action: ");
+    localStringBuilder.append(paramContext);
+    QLog.d("PCActivePush", 1, localStringBuilder.toString());
+    if ("com.tencent.mobileqq.broadcast.pcactiveQQ".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      int i = paramIntent.getIntExtra("retryIndex", 1);
+      g.a(this.a).compareAndSet(false, true);
+      g.a(this.a, paramContext, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.l
  * JD-Core Version:    0.7.0.1
  */

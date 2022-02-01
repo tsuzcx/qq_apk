@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:background="@drawable/w6" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/ng"
+<RelativeLayout android:id="@id/gli" android:padding="@dimen/gm" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/ek0" android:background="?s" android:padding="@dimen/n_" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/ek1" android:background="?s" android:padding="@dimen/n_" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-</FrameLayout>
+    <ImageView android:id="@id/el1" android:layout_width="@dimen/h3" android:layout_height="@dimen/h3" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/ekg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/w3" android:ellipsize="end" android:id="@id/emz" android:paddingLeft="@dimen/gv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/el1" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/w1" android:ellipsize="end" android:id="@id/eiv" android:paddingLeft="@dimen/gv" android:paddingRight="@dimen/gv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/ekg" android:layout_toRightOf="@id/emz" android:layout_centerVertical="true" />
+</RelativeLayout>

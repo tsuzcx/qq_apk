@@ -18,25 +18,20 @@ class FilterEngineFactory$1
     }
     if ((FilterEngineFactory.access$100(this.this$0) != null) && (FilterEngineFactory.access$100(this.this$0).isAlive()))
     {
-      if (!ApiHelper.hasJellyBeanMR2()) {
-        break label91;
+      if (ApiHelper.hasJellyBeanMR2()) {
+        FilterEngineFactory.access$100(this.this$0).quitSafely();
+      } else {
+        FilterEngineFactory.access$100(this.this$0).quit();
       }
-      FilterEngineFactory.access$100(this.this$0).quitSafely();
-    }
-    for (;;)
-    {
       FilterEngineFactory.access$102(this.this$0, null);
       LogUtils.d("FilterEngine", "mGlThread = null");
-      FilterEngineFactory.access$202(null);
-      return;
-      label91:
-      FilterEngineFactory.access$100(this.this$0).quit();
     }
+    FilterEngineFactory.access$202(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.view.FilterEngineFactory.1
  * JD-Core Version:    0.7.0.1
  */

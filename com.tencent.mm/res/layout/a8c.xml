@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/rd" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip"
+<LinearLayout style="@style/mj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ckb" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="16.0dip" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/dw" android:textColor="@drawable/ra" android:id="@id/ckc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="@dimen/ff" android:textColor="@drawable/ri" android:id="@id/ckd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+    <ImageView android:id="@id/efg" android:padding="3.0dip" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/gw9" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m4" />
         </LinearLayout>
-        <ImageView android:id="@id/cke" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bmq" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/m4" android:id="@id/gw_" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cx1" style="@style/m4" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/gw" android:id="@id/gwc" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cx9" style="@style/m4" />
+        </LinearLayout>
     </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ckf" android:layout_width="26.0dip" android:layout_height="14.0dip" />
-            <TextView android:textSize="@dimen/ff" android:textColor="@color/rs" android:id="@id/ckg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="" android:includeFontPadding="false" />
-        </LinearLayout>
-    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <Button android:id="@id/gw3" android:layout_width="70.0dip" android:text="@string/f29" style="@style/or" />
+        <Button android:id="@id/gw5" android:layout_width="70.0dip" android:text="@string/f2a" style="@style/or" />
+        <TextView android:id="@id/gw2" android:background="@drawable/bft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" />
+    </LinearLayout>
 </LinearLayout>

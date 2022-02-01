@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.token.global.h;
+import com.tencent.token.aan;
+import com.tencent.token.xv;
 
 public class CustomerEditText
   extends EditText
@@ -21,11 +22,6 @@ public class CustomerEditText
   private int d = 0;
   private int e = 0;
   private String f = "";
-  
-  public CustomerEditText(Context paramContext)
-  {
-    this(paramContext, null);
-  }
   
   public CustomerEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,20 +35,15 @@ public class CustomerEditText
     this.b = null;
     this.c = 0L;
     this.f = "";
-    a();
-  }
-  
-  private void a()
-  {
     setOnFocusChangeListener(this);
     setFocusable(true);
     setFocusableInTouchMode(true);
     ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this, 0);
   }
   
-  public void a(boolean paramBoolean)
+  public final void a(boolean paramBoolean)
   {
-    this.b = a.a().b();
+    this.b = aan.a().j;
     this.c = 0L;
     if (this.b != null)
     {
@@ -61,38 +52,47 @@ public class CustomerEditText
       this.e = ((int)this.b.getRawY());
     }
     this.f = "";
-    if (this.a != null) {}
-    try
-    {
-      this.f = ((Activity)this.a).getLocalClassName();
-      if (paramBoolean)
+    Context localContext = this.a;
+    if (localContext != null) {
+      try
       {
-        if (getText() != null)
-        {
-          h.c("focus start:" + getText().toString());
-          a.a().a(a.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-          a.a().d();
-        }
-        h.c("pagename:" + this.f);
-        h.c("ctrlName:" + getClass().getName());
-        h.c("getRawX:" + this.d);
-        h.c("getRawY:" + this.e);
-        return;
+        this.f = ((Activity)localContext).getLocalClassName();
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
-        continue;
-        if (getText() != null)
-        {
-          h.c("focus end" + getText().toString());
-          a.a().a(a.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
-        }
       }
     }
+    if (paramBoolean)
+    {
+      if (getText() != null)
+      {
+        localStringBuilder = new StringBuilder("focus start:");
+        localStringBuilder.append(getText().toString());
+        xv.c(localStringBuilder.toString());
+        aan.a().a(aan.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+        aan.a().b();
+      }
+    }
+    else if (getText() != null)
+    {
+      localStringBuilder = new StringBuilder("focus end");
+      localStringBuilder.append(getText().toString());
+      xv.c(localStringBuilder.toString());
+      aan.a().a(aan.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
+    }
+    StringBuilder localStringBuilder = new StringBuilder("pagename:");
+    localStringBuilder.append(this.f);
+    xv.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("ctrlName:");
+    localStringBuilder.append(getClass().getName());
+    xv.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("getRawX:");
+    localStringBuilder.append(this.d);
+    xv.c(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder("getRawY:");
+    localStringBuilder.append(this.e);
+    xv.c(localStringBuilder.toString());
   }
   
   public void onFocusChange(View paramView, boolean paramBoolean)

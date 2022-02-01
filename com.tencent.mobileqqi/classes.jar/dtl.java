@@ -10,7 +10,7 @@ public class dtl
   
   public void onClick(View paramView)
   {
-    this.a.a.cancel();
+    this.a.a.dismiss();
   }
 }
 

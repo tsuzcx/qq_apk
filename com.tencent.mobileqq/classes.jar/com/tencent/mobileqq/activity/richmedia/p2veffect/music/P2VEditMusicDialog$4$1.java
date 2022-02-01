@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.richmedia.p2veffect.music;
 
-import ajth;
+import com.tencent.biz.qqstory.model.AddressDataProvider;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProviderManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
 import com.tencent.qphone.base.util.QLog;
-import uus;
-import uuv;
-import uvb;
-import uwa;
-import wxe;
-import xki;
 
-public class P2VEditMusicDialog$4$1
+class P2VEditMusicDialog$4$1
   implements Runnable
 {
-  public P2VEditMusicDialog$4$1(ajth paramajth, uuv paramuuv) {}
+  P2VEditMusicDialog$4$1(P2VEditMusicDialog.4 param4, AddressDataProvider.AddressInfo paramAddressInfo) {}
   
   public void run()
   {
-    wxe.b(P2VEditMusicDialog.a(), "address update, refresh ui.");
-    if (((uus)((uvb)uwa.a(20)).a(1)).a(this.jdField_a_of_type_Uuv))
+    SLog.b(P2VEditMusicDialog.h(), "address update, refresh ui.");
+    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.a))
     {
-      QLog.d(P2VEditMusicDialog.a(), 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Ajth.a.a.a();
+      QLog.d(P2VEditMusicDialog.h(), 2, "isInternationalUser --------------------2");
+      this.b.a.b.a();
     }
   }
 }

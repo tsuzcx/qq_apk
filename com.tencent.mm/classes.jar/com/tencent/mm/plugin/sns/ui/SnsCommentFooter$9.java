@@ -1,56 +1,39 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.widget.Tiger2022Helper;
 
 final class SnsCommentFooter$9
-  implements ChatFooterPanel.a
+  implements TextWatcher
 {
   SnsCommentFooter$9(SnsCommentFooter paramSnsCommentFooter) {}
   
-  public final void aRo()
+  public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(38887);
-    if (SnsCommentFooter.b(this.rQk) != null)
+    AppMethodBeat.i(369940);
+    if (SnsCommentFooter.g(this.RqJ) != null)
     {
-      if (SnsCommentFooter.b(this.rQk).getInputConnection() == null)
+      if (Tiger2022Helper.b(SnsCommentFooter.g(this.RqJ).getTimeLine(), paramEditable.toString()))
       {
-        AppMethodBeat.o(38887);
+        Tiger2022Helper.bE(paramEditable);
+        AppMethodBeat.o(369940);
         return;
       }
-      SnsCommentFooter.b(this.rQk).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-      SnsCommentFooter.b(this.rQk).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+      Tiger2022Helper.g(paramEditable);
     }
-    AppMethodBeat.o(38887);
+    AppMethodBeat.o(369940);
   }
   
-  public final void append(String paramString)
-  {
-    AppMethodBeat.i(38888);
-    try
-    {
-      SnsCommentFooter.b(this.rQk).avk(paramString);
-      AppMethodBeat.o(38888);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.SnsCommentFooter", paramString, "", new Object[0]);
-      AppMethodBeat.o(38888);
-    }
-  }
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final void bag() {}
-  
-  public final void fT(boolean paramBoolean) {}
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentFooter.9
  * JD-Core Version:    0.7.0.1
  */

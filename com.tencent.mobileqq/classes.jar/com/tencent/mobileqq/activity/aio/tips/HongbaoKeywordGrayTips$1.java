@@ -1,40 +1,38 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import agzx;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class HongbaoKeywordGrayTips$1
+class HongbaoKeywordGrayTips$1
   implements Runnable
 {
-  public HongbaoKeywordGrayTips$1(agzx paramagzx) {}
+  HongbaoKeywordGrayTips$1(HongbaoKeywordGrayTips paramHongbaoKeywordGrayTips) {}
   
   public void run()
   {
-    Object localObject = agzx.a(this.this$0).a().a(agzx.a(this.this$0).jdField_a_of_type_JavaLangString, agzx.a(this.this$0).jdField_a_of_type_Int);
+    Object localObject = HongbaoKeywordGrayTips.b(this.this$0).getMessageFacade().o(HongbaoKeywordGrayTips.a(this.this$0).b, HongbaoKeywordGrayTips.a(this.this$0).a);
     int i = ((List)localObject).size();
     if (i > 0)
     {
       localObject = (ChatMessage)((List)localObject).get(i - 1);
-      if (agzx.a(this.this$0).jdField_a_of_type_Int != 0) {
-        break label130;
+      if (HongbaoKeywordGrayTips.a(this.this$0).a == 0) {
+        HongbaoKeywordGrayTips.a(this.this$0, ((ChatMessage)localObject).time);
+      } else if ((HongbaoKeywordGrayTips.a(this.this$0).a == 3000) || (HongbaoKeywordGrayTips.a(this.this$0).a == 1)) {
+        HongbaoKeywordGrayTips.a(this.this$0, ((ChatMessage)localObject).shmsgseq);
       }
-      agzx.a(this.this$0, ((ChatMessage)localObject).time);
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + agzx.a(this.this$0));
-      }
-      return;
-      label130:
-      if ((agzx.a(this.this$0).jdField_a_of_type_Int == 3000) || (agzx.a(this.this$0).jdField_a_of_type_Int == 1)) {
-        agzx.a(this.this$0, ((ChatMessage)localObject).shmsgseq);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("size : ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", mLastMsgIdOrTime:");
+      ((StringBuilder)localObject).append(HongbaoKeywordGrayTips.c(this.this$0));
+      QLog.d("HongbaoKeywordGrayTips", 2, ((StringBuilder)localObject).toString());
     }
   }
 }

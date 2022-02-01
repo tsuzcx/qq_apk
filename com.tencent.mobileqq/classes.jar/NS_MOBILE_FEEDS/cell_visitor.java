@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_visitor
   extends JceStruct
@@ -48,19 +49,21 @@ public final class cell_visitor
   {
     paramJceOutputStream.write(this.view_count, 0);
     paramJceOutputStream.write(this.visitor_count, 1);
-    if (this.visitors != null) {
-      paramJceOutputStream.write(this.visitors, 2);
+    Object localObject = this.visitors;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.mod, 3);
     paramJceOutputStream.write(this.view_count_byfriends, 4);
-    if (this.myfriend_info != null) {
-      paramJceOutputStream.write(this.myfriend_info, 5);
+    localObject = this.myfriend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_visitor
  * JD-Core Version:    0.7.0.1
  */

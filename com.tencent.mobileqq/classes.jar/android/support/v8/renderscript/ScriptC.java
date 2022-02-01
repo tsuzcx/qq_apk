@@ -26,60 +26,71 @@ public class ScriptC
       return;
     }
     paramInt = internalCreate(paramRenderScript, paramResources, paramInt);
-    if (paramInt == 0) {
-      throw new RSRuntimeException("Loading of ScriptC script failed.");
+    if (paramInt != 0)
+    {
+      setID(paramInt);
+      return;
     }
-    setID(paramInt);
+    throw new RSRuntimeException("Loading of ScriptC script failed.");
   }
   
   private static int internalCreate(RenderScript paramRenderScript, Resources paramResources, int paramInt)
   {
-    try
+    for (;;)
     {
-      InputStream localInputStream = paramResources.openRawResource(paramInt);
-      for (;;)
+      try
       {
+        InputStream localInputStream = paramResources.openRawResource(paramInt);
         try
         {
-          localObject = new byte[1024];
+          localObject1 = new byte[1024];
           i = 0;
-          j = localObject.length - i;
-          if (j != 0) {
-            break label144;
+          int k = localObject1.length - i;
+          localObject2 = localObject1;
+          j = k;
+          if (k == 0)
+          {
+            localObject2 = new byte[localObject1.length * 2];
+            System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
+            j = localObject2.length - i;
           }
-          byte[] arrayOfByte = new byte[localObject.length * 2];
-          System.arraycopy(localObject, 0, arrayOfByte, 0, localObject.length);
-          j = arrayOfByte.length - i;
-          localObject = arrayOfByte;
-          j = localInputStream.read((byte[])localObject, i, j);
+          j = localInputStream.read((byte[])localObject2, i, j);
           if (j > 0) {}
         }
         finally
         {
-          Object localObject;
+          Object localObject1;
           int i;
+          Object localObject2;
           int j;
           localInputStream.close();
         }
-        try
-        {
-          localInputStream.close();
-          paramInt = paramRenderScript.nScriptCCreate(paramResources.getResourceEntryName(paramInt), paramRenderScript.getApplicationContext().getCacheDir().toString(), (byte[])localObject, i);
-          return paramInt;
-        }
-        catch (IOException paramRenderScript)
-        {
-          throw new Resources.NotFoundException();
-        }
-        i = j + i;
       }
+      finally
+      {
+        continue;
+        throw paramRenderScript;
+        continue;
+      }
+      try
+      {
+        localInputStream.close();
+        paramInt = paramRenderScript.nScriptCCreate(paramResources.getResourceEntryName(paramInt), paramRenderScript.getApplicationContext().getCacheDir().toString(), (byte[])localObject2, i);
+        return paramInt;
+      }
+      catch (IOException paramRenderScript)
+      {
+        continue;
+      }
+      i += j;
+      localObject1 = localObject2;
     }
-    finally {}
+    throw new Resources.NotFoundException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptC
  * JD-Core Version:    0.7.0.1
  */

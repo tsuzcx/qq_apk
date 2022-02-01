@@ -1,13 +1,11 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.na;
+import com.tencent.mm.autogen.a.sl;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -18,41 +16,41 @@ public class KindaWrapProfessionActivity
   
   public void onPause()
   {
-    AppMethodBeat.i(144836);
+    AppMethodBeat.i(18987);
     super.onPause();
     if (isFinishing())
     {
-      na localna = new na();
-      localna.cDg.cDh = "flag_activity_close_WalletSelectProfessionUI";
-      a.ymk.l(localna);
+      sl localsl = new sl();
+      localsl.hVD.hVE = "flag_activity_close_WalletSelectProfessionUI";
+      localsl.publish();
     }
-    AppMethodBeat.o(144836);
+    AppMethodBeat.o(18987);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(144837);
+    AppMethodBeat.i(18988);
     if (paramPreference.mKey.startsWith("index_"))
     {
       paramf = paramPreference.mKey.split("_");
       if (paramf.length != 2) {
-        break label123;
+        break label122;
       }
-      int i = bo.getInt(paramf[1], 0);
+      int i = Util.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
-      paramPreference = new na();
-      paramPreference.cDg.cDh = paramf.ues;
-      paramPreference.cDg.cDi = paramf.uet;
-      a.ymk.l(paramPreference);
-      ab.i("", "KindaWrapProfessionActivity.onPreferenceTreeClick，发送事件，当前线程：" + Thread.currentThread().getId());
+      paramPreference = new sl();
+      paramPreference.hVD.hVE = paramf.VBJ;
+      paramPreference.hVD.hVF = paramf.VBK;
+      paramPreference.publish();
+      Log.i("", "KindaWrapProfessionActivity.onPreferenceTreeClick，发送事件，当前线程：" + Thread.currentThread().getId());
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(144837);
+      AppMethodBeat.o(18988);
       return true;
-      label123:
-      ab.w("", "KindaWrapProfessionActivity error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      label122:
+      Log.w("", "KindaWrapProfessionActivity error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
     }
   }
   
@@ -64,7 +62,7 @@ public class KindaWrapProfessionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaWrapProfessionActivity
  * JD-Core Version:    0.7.0.1
  */

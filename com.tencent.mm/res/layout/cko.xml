@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ihx" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:layout_alignParentBottom="true">
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/bex" android:background="@null" android:padding="@dimen/df" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/icons_filled_recordback" android:contentDescription="@string/htr" android:rotation="270.0" app:iconColor="@color/BW_100" />
+        </FrameLayout>
+        <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:id="@id/ihg" android:layout_width="@dimen/ajv" android:layout_height="@dimen/ajv" android:contentDescription="@string/j0" />
+        <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:id="@id/ar7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/gt8" android:layout_above="@id/ihx" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center" android:id="@id/ar8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0" android:layout_marginBottom="30.0dip" android:layout_above="@id/ihx" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hu6" android:includeFontPadding="false" />
+        <ImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/df" android:src="@drawable/bxj" />
+    </LinearLayout>
+</merge>

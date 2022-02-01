@@ -46,26 +46,27 @@ public class AccessibilityRecordCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (paramObject == null) {
-          return false;
-        }
-        if (getClass() != paramObject.getClass()) {
-          return false;
-        }
-        paramObject = (AccessibilityRecordCompat)paramObject;
-        if (this.mRecord != null) {
-          break;
-        }
-      } while (paramObject.mRecord == null);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
       return false;
-    } while (this.mRecord.equals(paramObject.mRecord));
-    return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (AccessibilityRecordCompat)paramObject;
+    Object localObject = this.mRecord;
+    if (localObject == null)
+    {
+      if (paramObject.mRecord != null) {
+        return false;
+      }
+    }
+    else if (!localObject.equals(paramObject.mRecord)) {
+      return false;
+    }
+    return true;
   }
   
   public int getAddedCount()
@@ -160,10 +161,11 @@ public class AccessibilityRecordCompat
   
   public int hashCode()
   {
-    if (this.mRecord == null) {
+    Object localObject = this.mRecord;
+    if (localObject == null) {
       return 0;
     }
-    return this.mRecord.hashCode();
+    return localObject.hashCode();
   }
   
   public boolean isChecked()

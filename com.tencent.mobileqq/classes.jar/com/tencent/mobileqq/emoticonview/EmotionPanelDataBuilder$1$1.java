@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apwu;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
 import java.util.List;
 
 class EmotionPanelDataBuilder$1$1
@@ -10,7 +10,7 @@ class EmotionPanelDataBuilder$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelDataBuilder$1.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.this$1.val$callback.callbackInMainThread(this.val$dataList);
   }
 }
 

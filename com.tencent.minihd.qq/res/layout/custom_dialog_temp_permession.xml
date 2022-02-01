@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="root"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dialogRoot" android:background="@drawable/card_shadow" android:layout_width="@dimen/dialogBase_width" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/qq_dialog_title_textsize" android:textColor="@color/color_hei" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" android:singleLine="true" />
+        <ListView android:id="@id/list" android:visibility="gone" android:scrollbars="none" android:layout_width="@dimen/dialogBase_listWidth" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialogBase_body_marginLeft" android:layout_marginRight="@dimen/dialogBase_body_marginRight" android:layout_below="@id/dialogTitle" />
+        <ImageView android:id="@id/dummy2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_below="@id/list" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bodyLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_24dp" android:layout_marginTop="@dimen/common_24dp" android:layout_marginRight="@dimen/common_24dp" android:layout_below="@id/dialogTitle">
+            <TextView android:textSize="@dimen/qq_dialog_content_textsize" android:textColor="@color/color_hei" android:layout_gravity="center_horizontal" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.0" />
+            <TextView android:textSize="@dimen/qq_dialog_content_textsize" android:textColor="@color/color_hei" android:id="@id/dialogText_plain_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" />
+            <TextView android:layout_gravity="center_horizontal" android:id="@id/dummyfirstpreviewImage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_gravity="center_horizontal" android:id="@id/previewImage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/frame_preview" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip">
+                <ImageView android:layout_gravity="center_horizontal" android:id="@id/frame_preview_image" android:layout_width="80.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/qq_dialog_content_textsize" android:textColor="@color/color_hei" android:ellipsize="end" android:gravity="center" android:id="@id/dialogCountText" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <View android:id="@id/dialogDivider" android:background="@color/dialog_gray" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_divider_width" android:layout_below="@id/bodyLayout" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialogDivider">
+            <TextView android:textSize="@dimen/textSize17sp" android:textColor="@drawable/common_btn_blue_selector" android:gravity="center" android:id="@id/dialogLeftBtn" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="取消" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/textSize17sp" android:textColor="@drawable/common_btn_blue_selector" android:gravity="center" android:id="@id/dialogRightBtn" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="确认" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

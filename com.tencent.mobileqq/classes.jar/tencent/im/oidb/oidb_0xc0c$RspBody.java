@@ -22,13 +22,14 @@ public final class oidb_0xc0c$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 64 }, new String[] { "uint32_is_task_completed", "uint32_task_point", "bytes_guide_wording", "uint32_need_show_progress", "uint32_original_progress", "uint32_now_progress", "uint32_total_progress", "uint32_need_exec_task" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 56, 64 }, new String[] { "uint32_is_task_completed", "uint32_task_point", "bytes_guide_wording", "uint32_need_show_progress", "uint32_original_progress", "uint32_now_progress", "uint32_total_progress", "uint32_need_exec_task" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xc0c.RspBody
  * JD-Core Version:    0.7.0.1
  */

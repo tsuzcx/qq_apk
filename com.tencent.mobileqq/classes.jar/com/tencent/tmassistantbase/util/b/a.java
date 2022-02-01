@@ -19,52 +19,71 @@ class a
   
   public static String c(String paramString)
   {
-    int i = 2;
-    for (;;)
+    try
+    {
+      arrayOfStackTraceElement = new Throwable().fillInStackTrace().getStackTrace();
+      localObject2 = "<unknown>";
+      i = 2;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        StackTraceElement[] arrayOfStackTraceElement;
+        Object localObject2;
+        int i;
+        Object localObject1;
+        label84:
+        continue;
+        i += 1;
+      }
+    }
+    localObject1 = localObject2;
+    if (i < arrayOfStackTraceElement.length)
+    {
+      if (!arrayOfStackTraceElement[i].getClass().equals(a.class))
+      {
+        localObject2 = arrayOfStackTraceElement[i].getClassName();
+        localObject1 = localObject2;
+      }
+    }
+    else
     {
       try
       {
-        arrayOfStackTraceElement = new Throwable().fillInStackTrace().getStackTrace();
-        str2 = "<unknown>";
-        str1 = str2;
-        if (i < arrayOfStackTraceElement.length)
-        {
-          if (arrayOfStackTraceElement[i].getClass().equals(a.class)) {
-            continue;
-          }
-          str2 = arrayOfStackTraceElement[i].getClassName();
-          str1 = str2;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        StackTraceElement[] arrayOfStackTraceElement;
-        String str2;
-        String str1;
-        System.gc();
-        return "";
-      }
-      try
-      {
-        str2 = str2.substring(str2.lastIndexOf('.') + 1);
-        str1 = str2;
-        str2 = str2.substring(str2.lastIndexOf('$') + 1);
-        str1 = str2;
+        localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf('.') + 1);
+        localObject1 = localObject2;
+        localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf('$') + 1);
+        localObject1 = localObject2;
       }
       catch (NoSuchMethodError localNoSuchMethodError)
       {
-        continue;
+        break label84;
       }
-      str1 = str1 + "." + arrayOfStackTraceElement[i].getMethodName() + "(" + arrayOfStackTraceElement[i].getLineNumber() + ")";
-      paramString = String.format("[%s:%d] %s: %s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), str1, paramString });
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(".");
+      ((StringBuilder)localObject2).append(arrayOfStackTraceElement[i].getMethodName());
+      ((StringBuilder)localObject2).append("(");
+      ((StringBuilder)localObject2).append(arrayOfStackTraceElement[i].getLineNumber());
+      ((StringBuilder)localObject2).append(")");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      paramString = String.format("[%s:%d] %s: %s", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()), localObject1, paramString });
       return paramString;
-      i += 1;
+      System.gc();
+      return "";
     }
   }
   
-  private String e()
+  private String d()
   {
-    return c("|" + this.c + "|" + this.e + "^");
+    StringBuilder localStringBuilder = this.a;
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("^");
+    return c(localStringBuilder.toString());
   }
   
   public a a(String paramString)
@@ -75,13 +94,15 @@ class a
       this.a.append(paramString);
       return this;
     }
-    this.a.append("$").append(paramString);
+    StringBuilder localStringBuilder = this.a;
+    localStringBuilder.append("$");
+    localStringBuilder.append(paramString);
     return this;
   }
   
   public void a(Throwable paramThrowable)
   {
-    Log.e("LogBuilder", e(), paramThrowable);
+    Log.e("LogBuilder", d(), paramThrowable);
   }
   
   public a b(String paramString)
@@ -92,44 +113,47 @@ class a
       this.c.append(paramString);
       return this;
     }
-    this.c.append("$").append(paramString);
+    StringBuilder localStringBuilder = this.c;
+    localStringBuilder.append("$");
+    localStringBuilder.append(paramString);
     return this;
   }
   
   public void b()
   {
-    Log.i("LogBuilder", e());
+    Log.i("LogBuilder", d());
   }
   
-  public void c()
+  public a c()
   {
-    Log.e("LogBuilder", e());
-  }
-  
-  public a d()
-  {
-    int i = 6;
     Object localObject = new Throwable().fillInStackTrace().getStackTrace();
-    if (6 < localObject.length) {}
-    for (;;)
-    {
-      localObject = Arrays.asList((Object[])localObject).subList(2, i);
-      this.e.append('[');
-      i = 0;
-      while (i < ((List)localObject).size())
-      {
-        this.e.append(((StackTraceElement)((List)localObject).get(i)).getFileName()).append('-').append(((StackTraceElement)((List)localObject).get(i)).getLineNumber()).append(':').append(((StackTraceElement)((List)localObject).get(i)).getMethodName()).append(',');
-        i += 1;
-      }
+    int j = localObject.length;
+    int i = 6;
+    if (6 >= j) {
       i = localObject.length;
     }
-    this.e.deleteCharAt(this.e.length() - 1).append(']');
+    localObject = Arrays.asList((Object[])localObject).subList(2, i);
+    this.e.append('[');
+    i = 0;
+    while (i < ((List)localObject).size())
+    {
+      StringBuilder localStringBuilder = this.e;
+      localStringBuilder.append(((StackTraceElement)((List)localObject).get(i)).getFileName());
+      localStringBuilder.append('-');
+      localStringBuilder.append(((StackTraceElement)((List)localObject).get(i)).getLineNumber());
+      localStringBuilder.append(':');
+      localStringBuilder.append(((StackTraceElement)((List)localObject).get(i)).getMethodName());
+      localStringBuilder.append(',');
+      i += 1;
+    }
+    localObject = this.e;
+    ((StringBuilder)localObject).deleteCharAt(((StringBuilder)localObject).length() - 1).append(']');
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.b.a
  * JD-Core Version:    0.7.0.1
  */

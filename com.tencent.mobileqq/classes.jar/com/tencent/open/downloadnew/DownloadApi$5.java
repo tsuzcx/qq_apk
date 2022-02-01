@@ -1,62 +1,63 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfod;
-import bfok;
-import bfor;
+import com.tencent.open.base.LogUtility;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DownloadApi$5
+final class DownloadApi$5
   implements Runnable
 {
-  public DownloadApi$5(List paramList, bfor parambfor) {}
+  DownloadApi$5(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
   
   public void run()
   {
-    bflp.a(bfod.a, "getQueryDownloadAction enter");
-    bfok.a().a();
+    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
+    DownloadManager.b().a();
     for (;;)
     {
       int i;
       try
       {
         ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
+        int j = this.a.size();
         i = 0;
         if (i < j)
         {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bfok.a().a(localDownloadInfo))
-          {
-            bflp.a(bfod.a, "refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
+          localObject = (DownloadInfo)this.a.get(i);
+          if (!DownloadManager.b().g((DownloadInfo)localObject)) {
+            break label169;
           }
+          String str = DownloadApi.a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refreshDownloadInfo true ");
+          localStringBuilder.append(localObject);
+          LogUtility.a(str, localStringBuilder.toString());
+          localArrayList.add(localObject);
+          break label169;
         }
-        else
+        if (this.b != null)
         {
-          if (this.jdField_a_of_type_Bfor != null) {
-            this.jdField_a_of_type_Bfor.a(localArrayList);
-          }
+          this.b.a(localArrayList);
           return;
         }
       }
       catch (Exception localException)
       {
-        bflp.c(bfod.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_Bfor == null) {
-          continue;
+        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
+        Object localObject = this.b;
+        if (localObject != null) {
+          ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
         }
-        this.jdField_a_of_type_Bfor.a(-1, localException.getMessage());
-        return;
       }
+      return;
+      label169:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.5
  * JD-Core Version:    0.7.0.1
  */

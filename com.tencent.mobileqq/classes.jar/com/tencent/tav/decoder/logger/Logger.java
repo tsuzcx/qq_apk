@@ -1,125 +1,101 @@
 package com.tencent.tav.decoder.logger;
 
-import android.util.Log;
-
 public class Logger
 {
-  private static boolean DEBUG = false;
-  public static boolean LOG_VERBOSE = false;
-  public static final int MAX_LOG_LENGTH = 4096;
-  private static ILog logger;
+  public static final int NO_LOG = 2147483647;
+  private static int level = 3;
+  private static ILog logProxy = new Logger.DefaultLogProxy(null);
+  
+  static
+  {
+    com.tencent.tav.coremedia.Logger.setProxy(new Logger.1());
+  }
   
   public static void d(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.d(paramString1, paramString2);
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 3) {
+        return;
+      }
+      localILog.d(paramString1, paramString2);
     }
-    while (!DEBUG) {
-      return;
-    }
-    Log.d(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.e(paramString1, paramString2);
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 6) {
+        return;
+      }
+      localILog.e(paramString1, paramString2);
     }
-    while (!DEBUG) {
-      return;
-    }
-    Log.e(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (logger != null) {
-      logger.e(paramString1, paramString2, paramThrowable);
-    }
-    while (!DEBUG) {
-      return;
-    }
-    Log.e(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void e(String paramString, Throwable paramThrowable)
-  {
-    if (logger != null) {
-      logger.e(paramString, paramThrowable);
-    }
-    while (!DEBUG) {
-      return;
-    }
-    Log.e(paramString, paramThrowable.getMessage() + "", paramThrowable);
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    if (logger != null) {
-      logger.i(paramString1, paramString2, paramVarArgs);
-    }
-    while (!DEBUG) {
-      return;
-    }
-    Log.i(paramString1, String.format(paramString2, paramVarArgs));
-  }
-  
-  public static void longlogd(String paramString1, String paramString2)
-  {
-    int j = 0;
-    int m = paramString2.length();
-    int i = 4096;
-    int k = 0;
-    while (j < 100) {
-      if (m > i)
-      {
-        d(paramString1 + j, paramString2.substring(k, i));
-        j += 1;
-        k = i;
-        i += 4096;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 6) {
+        return;
       }
-      else
-      {
-        d(paramString1, paramString2.substring(k, m));
-      }
+      localILog.e(paramString1, paramString2, paramThrowable);
     }
   }
   
-  public static void setLogAble(boolean paramBoolean)
+  public static void i(String paramString1, String paramString2)
   {
-    DEBUG = paramBoolean;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 4) {
+        return;
+      }
+      localILog.i(paramString1, paramString2);
+    }
   }
   
-  public static void setLogger(ILog paramILog)
+  public static void setLevel(int paramInt)
   {
-    logger = paramILog;
+    level = paramInt;
+  }
+  
+  public static void setLogProxy(ILog paramILog)
+  {
+    logProxy = paramILog;
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.v(paramString1, paramString2);
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 2) {
+        return;
+      }
+      localILog.v(paramString1, paramString2);
     }
-    while (!DEBUG) {
-      return;
-    }
-    Log.v(paramString1, paramString2);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.w(paramString1, paramString2);
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 5) {
+        return;
+      }
+      localILog.w(paramString1, paramString2);
     }
-    while (!DEBUG) {
-      return;
-    }
-    Log.w(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

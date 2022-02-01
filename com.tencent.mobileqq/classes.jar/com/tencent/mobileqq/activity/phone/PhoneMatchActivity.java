@@ -1,45 +1,58 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aimn;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aoor;
-import aoos;
-import aoot;
-import aozx;
-import azqs;
-import bdin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.newfriend.api.INewFriendApi;
+import com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfBean;
+import com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfBean.UIElement;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.phonecontact.util.PhoneContactUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PhoneMatchActivity
   extends DialogBaseActivity
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Button jdField_a_of_type_AndroidWidgetButton;
+  private Button a;
+  private int b;
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 99999)
+    if (paramInt1 == 9999)
     {
       if (QLog.isColorLevel()) {
         QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING");
       }
-      if (((PhoneContactManagerImp)this.app.getManager(11)).a(true))
+      if (((IPhoneContactService)this.app.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true))
       {
         ContactBindedActivity.a(this.app, -1, 2, null);
         setResult(-1);
@@ -48,59 +61,53 @@ public class PhoneMatchActivity
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559173);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364713));
-    paramBundle = findViewById(2131369147);
-    Object localObject;
+    super.setContentView(2131624973);
+    PhoneContactUtils.a(this.app, getResources(), (ImageView)findViewById(2131431257));
+    paramBundle = findViewById(2131436854);
+    if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
+      paramBundle.setBackgroundResource(2130839577);
+    } else if (paramBundle != null) {
+      paramBundle.setBackgroundResource(2130838958);
+    }
+    this.centerView.setText(HardCodeUtil.a(2131905827));
+    this.b = getIntent().getIntExtra("kSrouce", -1);
+    Object localObject = ((INewFriendApi)QRoute.api(INewFriendApi.class)).loadNewFriendContactGuideConfig();
     String str;
-    if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId)))
+    if (PermissionChecker.a().d())
     {
-      paramBundle.setBackgroundResource(2130839217);
-      this.centerView.setText(alud.a(2131708407));
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-      localObject = aoot.a();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.i()) {
-        break label251;
-      }
-      str = ((aoor)localObject).b.a;
-      paramBundle = ((aoor)localObject).b.b;
-      localObject = ((aoor)localObject).b.c;
-      label124:
-      ((TextView)findViewById(2131364715)).setText(str);
-      ((TextView)findViewById(2131364714)).setText(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364712));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
-      if (this.jdField_a_of_type_Int != 14) {
-        break label278;
-      }
-      setLeftViewName(2131690382);
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).d.a;
+      str = ((NewFriendContactGuideConfBean)localObject).d.b;
+      localObject = ((NewFriendContactGuideConfBean)localObject).d.c;
     }
-    for (;;)
+    else
     {
-      azqs.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
-      ThreadManager.excute(new PhoneMatchActivity.1(this), 16, null, true);
-      return true;
-      if (paramBundle == null) {
-        break;
-      }
-      paramBundle.setBackgroundResource(2130838592);
-      break;
-      label251:
-      str = ((aoor)localObject).a.a;
-      paramBundle = ((aoor)localObject).a.b;
-      localObject = ((aoor)localObject).a.c;
-      break label124;
-      label278:
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).c.a;
+      str = ((NewFriendContactGuideConfBean)localObject).c.b;
+      localObject = ((NewFriendContactGuideConfBean)localObject).c.c;
+    }
+    ((TextView)findViewById(2131431259)).setText(paramBundle);
+    ((TextView)findViewById(2131431258)).setText(str);
+    this.a = ((Button)findViewById(2131431256));
+    this.a.setOnClickListener(this);
+    this.a.setText((CharSequence)localObject);
+    if (this.b == 14)
+    {
+      setLeftViewName(2131887440);
+    }
+    else
+    {
       setLeftButton("", null);
-      setRightButton(2131690885, this);
+      setRightButton(2131887812, this);
     }
+    ReportController.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
+    ThreadManager.excute(new PhoneMatchActivity.1(this), 16, null, true);
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
   }
@@ -108,31 +115,44 @@ public class PhoneMatchActivity
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Int == 14) {
+    if (this.b == 14) {
       return;
     }
-    overridePendingTransition(0, 2130771978);
+    overridePendingTransition(0, 2130771995);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.a)
     {
-      if (!bdin.d(this))
+      if (!NetworkUtil.isNetSupport(this))
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694831, 0).b(getTitleBarHeight());
-        return;
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131892157, 0).show(getTitleBarHeight());
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("IphoneTitleBarActivity", 2, "clickMatch state: " + this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d());
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clickMatch state: ");
+          localStringBuilder.append(this.mPhoneContactService.getSelfBindState());
+          QLog.i("IphoneTitleBarActivity", 2, localStringBuilder.toString());
+        }
+        ReportController.b(this.app, "dc00898", "", "", "0X80095ED", "0X80095ED", 0, 0, "", "", "", "");
+        PermissionChecker.a(this, new PhoneMatchActivity.2(this), new DenyRunnable(this, new DenyRunnable.JumpSettingAction(this.app)));
       }
-      azqs.b(this.app, "dc00898", "", "", "0X80095ED", "0X80095ED", 0, 0, "", "", "", "");
-      paramView = new PhoneMatchActivity.2(this);
-      DenyRunnable localDenyRunnable = new DenyRunnable(this, new aimn(this.app));
-      aozx.a(this, this.app, paramView, localDenyRunnable);
-      return;
     }
-    finish();
+    else {
+      finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 

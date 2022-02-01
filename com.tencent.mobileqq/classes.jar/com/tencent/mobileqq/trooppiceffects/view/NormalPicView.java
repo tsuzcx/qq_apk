@@ -5,11 +5,10 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bcxg;
 
 public class NormalPicView
   extends ImageView
-  implements bcxg
+  implements IPicView
 {
   public NormalPicView(Context paramContext)
   {
@@ -17,14 +16,14 @@ public class NormalPicView
     setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
   
-  public View a()
-  {
-    return this;
-  }
-  
   public void a() {}
   
   public void b() {}
+  
+  public View getView()
+  {
+    return this;
+  }
   
   public void setBitmap(Bitmap paramBitmap)
   {
@@ -33,7 +32,7 @@ public class NormalPicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.NormalPicView
  * JD-Core Version:    0.7.0.1
  */

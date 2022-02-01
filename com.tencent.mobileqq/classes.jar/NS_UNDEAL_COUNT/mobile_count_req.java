@@ -16,37 +16,39 @@ public final class mobile_count_req
   static Map<String, String> cache_mapSqDyncFeedsInfo;
   static Map<Integer, Long> cache_mapTimeStamp;
   static Map<Integer, count_info> cache_stMapCountInfo;
-  public Map<Integer, String> extendinfo;
-  public int iRelationType;
-  public int iVisitQZoneType;
-  public long lastSqDynamicFeedsTime;
+  public Map<Integer, String> extendinfo = null;
+  public int iRelationType = 0;
+  public int iVisitQZoneType = 0;
+  public long lastSqDynamicFeedsTime = 0L;
   public String lastUndealCountTime = "";
-  public Map<Long, s_comm_data> mapBuf;
-  public Map<Long, Long> mapDyncShowTime;
-  public Map<Long, Long> mapLastGetTime;
-  public Map<String, String> mapSqDyncFeedsInfo;
-  public Map<Integer, Long> mapTimeStamp;
+  public Map<Long, s_comm_data> mapBuf = null;
+  public Map<Long, Long> mapDyncShowTime = null;
+  public Map<Long, Long> mapLastGetTime = null;
+  public Map<String, String> mapSqDyncFeedsInfo = null;
+  public Map<Integer, Long> mapTimeStamp = null;
   public String sTransParam = "";
-  public Map<Integer, count_info> stMapCountInfo;
-  public long uMask;
+  public Map<Integer, count_info> stMapCountInfo = null;
+  public long uMask = 0L;
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     Object localObject = new s_comm_data();
-    cache_mapBuf.put(Long.valueOf(0L), localObject);
+    cache_mapBuf.put(localLong, localObject);
     cache_mapTimeStamp = new HashMap();
-    cache_mapTimeStamp.put(Integer.valueOf(0), Long.valueOf(0L));
+    localObject = Integer.valueOf(0);
+    cache_mapTimeStamp.put(localObject, localLong);
     cache_mapLastGetTime = new HashMap();
-    cache_mapLastGetTime.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_mapLastGetTime.put(localLong, localLong);
     cache_stMapCountInfo = new HashMap();
-    localObject = new count_info();
-    cache_stMapCountInfo.put(Integer.valueOf(0), localObject);
+    count_info localcount_info = new count_info();
+    cache_stMapCountInfo.put(localObject, localcount_info);
     cache_extendinfo = new HashMap();
-    cache_extendinfo.put(Integer.valueOf(0), "");
+    cache_extendinfo.put(localObject, "");
     cache_mapSqDyncFeedsInfo = new HashMap();
     cache_mapSqDyncFeedsInfo.put("", "");
     cache_mapDyncShowTime = new HashMap();
-    cache_mapDyncShowTime.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_mapDyncShowTime.put(localLong, localLong);
   }
   
   public mobile_count_req() {}
@@ -90,39 +92,48 @@ public final class mobile_count_req
     paramJceOutputStream.write(this.uMask, 0);
     paramJceOutputStream.write(this.iRelationType, 1);
     paramJceOutputStream.write(this.iVisitQZoneType, 2);
-    if (this.mapBuf != null) {
-      paramJceOutputStream.write(this.mapBuf, 3);
+    Object localObject = this.mapBuf;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
-    if (this.mapTimeStamp != null) {
-      paramJceOutputStream.write(this.mapTimeStamp, 4);
+    localObject = this.mapTimeStamp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.mapLastGetTime != null) {
-      paramJceOutputStream.write(this.mapLastGetTime, 5);
+    localObject = this.mapLastGetTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.sTransParam != null) {
-      paramJceOutputStream.write(this.sTransParam, 6);
+    localObject = this.sTransParam;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.stMapCountInfo != null) {
-      paramJceOutputStream.write(this.stMapCountInfo, 7);
+    localObject = this.stMapCountInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 8);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
-    if (this.lastUndealCountTime != null) {
-      paramJceOutputStream.write(this.lastUndealCountTime, 9);
+    localObject = this.lastUndealCountTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.lastSqDynamicFeedsTime, 10);
-    if (this.mapSqDyncFeedsInfo != null) {
-      paramJceOutputStream.write(this.mapSqDyncFeedsInfo, 11);
+    localObject = this.mapSqDyncFeedsInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
-    if (this.mapDyncShowTime != null) {
-      paramJceOutputStream.write(this.mapDyncShowTime, 12);
+    localObject = this.mapDyncShowTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.mobile_count_req
  * JD-Core Version:    0.7.0.1
  */

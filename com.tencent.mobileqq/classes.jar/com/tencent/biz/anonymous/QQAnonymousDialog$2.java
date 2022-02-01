@@ -1,11 +1,9 @@
 package com.tencent.biz.anonymous;
 
-import nba;
-
-public class QQAnonymousDialog$2
+class QQAnonymousDialog$2
   implements Runnable
 {
-  public QQAnonymousDialog$2(nba paramnba) {}
+  QQAnonymousDialog$2(QQAnonymousDialog paramQQAnonymousDialog) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class QQAnonymousDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.anonymous.QQAnonymousDialog.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_bg_music_setting
   extends JceStruct
 {
-  public byte loop_playback_flag;
-  public byte wifi_autu_play_flag;
+  public byte loop_playback_flag = 0;
+  public byte wifi_autu_play_flag = 0;
   
   public mobile_bg_music_setting() {}
   
@@ -32,7 +32,7 @@ public final class mobile_bg_music_setting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MUSIC.mobile_bg_music_setting
  * JD-Core Version:    0.7.0.1
  */

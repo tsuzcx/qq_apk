@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AEFilterChain
 {
-  private static final String TAG = AEFilterChain.class.getSimpleName();
+  private static final String TAG = "AEFilterChain";
   private static final String fragShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
   private static final String vertexShader = "precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}\n";
   private VideoFilterBase copyFilter = new VideoFilterBase("precision highp float;\nattribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nvarying vec2 textureCoordinate;\n\nvoid main() {\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate;\n}\n", "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
@@ -39,16 +39,14 @@ public class AEFilterChain
   
   public void add(List<? extends AEChainI> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        AEChainI localAEChainI = (AEChainI)paramList.next();
-        this.filterList.add(localAEChainI);
-      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      AEChainI localAEChainI = (AEChainI)paramList.next();
+      this.filterList.add(localAEChainI);
     }
   }
   
@@ -59,7 +57,8 @@ public class AEFilterChain
   
   public boolean containFilter(AEChainI paramAEChainI)
   {
-    return (this.filterList != null) && (this.filterList.contains(paramAEChainI));
+    List localList = this.filterList;
+    return (localList != null) && (localList.contains(paramAEChainI));
   }
   
   public void destroy()
@@ -107,62 +106,88 @@ public class AEFilterChain
     {
       copy((Frame)localObject1, paramInt2);
       ((Frame)localObject1).clear();
-    }
-    do
-    {
       return;
-      Iterator localIterator = this.filterList.iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = this.filterList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (AEChainI)localIterator.next();
+      if ((localObject2 != null) && (((AEChainI)localObject2).isApplied()))
       {
-        Object localObject2 = (AEChainI)localIterator.next();
-        if ((localObject2 != null) && (((AEChainI)localObject2).isApplied()))
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(localObject2.getClass().getSimpleName());
+        ((StringBuilder)localObject3).append("@");
+        ((StringBuilder)localObject3).append(localObject2.hashCode());
+        localObject3 = ((StringBuilder)localObject3).toString();
+        AEProfiler.getInstance().start((String)localObject3, true);
+        Frame localFrame2 = ((AEChainI)localObject2).render((Frame)localObject1);
+        long l = AEProfiler.getInstance().end((String)localObject3, true);
+        AEProfiler.getInstance().add(2, (String)localObject3, l);
+        if (localFrame2 != localObject1)
         {
-          String str = localObject2.getClass().getSimpleName() + "@" + localObject2.hashCode();
-          AEProfiler.getInstance().start(str, true);
-          localObject2 = ((AEChainI)localObject2).render((Frame)localObject1);
-          long l = AEProfiler.getInstance().end(str, true);
-          AEProfiler.getInstance().add(2, str, l);
-          if ((localObject2 != localObject1) && (!((Frame)localObject1).unlock())) {
+          localObject2 = ((Frame)localObject1).nextFrame;
+          localObject3 = localObject1;
+          while (localObject2 != null)
+          {
+            if (localFrame2 == localObject2)
+            {
+              ((Frame)localObject3).nextFrame = localFrame2.nextFrame;
+              localFrame2.nextFrame = null;
+            }
+            Frame localFrame1 = ((Frame)localObject2).nextFrame;
+            localObject3 = localObject2;
+            localObject2 = localFrame1;
+          }
+          if (!((Frame)localObject1).unlock()) {
             ((Frame)localObject1).clear();
           }
-          localObject1 = localObject2;
         }
+        localObject1 = localFrame2;
       }
-      copy((Frame)localObject1, paramInt2);
-    } while (((Frame)localObject1).unlock());
-    ((Frame)localObject1).clear();
+    }
+    copy((Frame)localObject1, paramInt2);
+    if (!((Frame)localObject1).unlock()) {
+      ((Frame)localObject1).clear();
+    }
   }
   
   public void process(int paramInt1, int paramInt2, int paramInt3, int paramInt4, AEChainI... paramVarArgs)
   {
-    Log.i(TAG, "[process] + BEGIN, width = " + paramInt3 + ", height = " + paramInt4);
-    Object localObject1 = new Frame();
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[process] + BEGIN, width = ");
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(", height = ");
+    ((StringBuilder)localObject2).append(paramInt4);
+    Log.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = new Frame();
     ((Frame)localObject1).setSizedTexture(paramInt1, paramInt3, paramInt4);
     paramInt3 = paramVarArgs.length;
     paramInt1 = 0;
-    if (paramInt1 < paramInt3)
+    while (paramInt1 < paramInt3)
     {
       AEChainI localAEChainI = paramVarArgs[paramInt1];
-      Object localObject2 = localObject1;
-      if (localAEChainI != null)
-      {
-        if (localAEChainI.isApplied()) {
-          break label103;
+      localObject2 = localObject1;
+      if (localAEChainI != null) {
+        if (!localAEChainI.isApplied())
+        {
+          localObject2 = localObject1;
         }
-        localObject2 = localObject1;
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        localObject1 = localObject2;
-        break;
-        label103:
-        localObject2 = localAEChainI.render((Frame)localObject1);
-        Log.d(TAG, "[process] filter = " + localAEChainI);
-        if ((localObject2 != localObject1) && (!((Frame)localObject1).unlock())) {
-          ((Frame)localObject1).clear();
+        else
+        {
+          localObject2 = localAEChainI.render((Frame)localObject1);
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[process] filter = ");
+          localStringBuilder.append(localAEChainI);
+          Log.d(str, localStringBuilder.toString());
+          if ((localObject2 != localObject1) && (!((Frame)localObject1).unlock())) {
+            ((Frame)localObject1).clear();
+          }
         }
       }
+      paramInt1 += 1;
+      localObject1 = localObject2;
     }
     copy((Frame)localObject1, paramInt2);
     if (!((Frame)localObject1).unlock()) {
@@ -193,12 +218,16 @@ public class AEFilterChain
   
   public String toString()
   {
-    return "AEFilterChain{filterList=" + this.filterList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AEFilterChain{filterList=");
+    localStringBuilder.append(this.filterList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.AEFilterChain
  * JD-Core Version:    0.7.0.1
  */

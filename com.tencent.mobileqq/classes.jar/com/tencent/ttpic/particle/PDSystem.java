@@ -22,7 +22,7 @@ public class PDSystem
   
   private static native void nLoadAllTextures(long paramLong);
   
-  private static native void nRender(long paramLong1, long paramLong2, boolean paramBoolean);
+  private static native boolean nRender(long paramLong1, long paramLong2, boolean paramBoolean);
   
   private static native void nReset(long paramLong);
   
@@ -37,6 +37,8 @@ public class PDSystem
   private static native void nSetRotateZ(long paramLong, float paramFloat);
   
   private static native void nSetSourcePosition(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  private static native void nSetTextureImage(long paramLong, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
   private static native boolean nTotalFinished(long paramLong);
   
@@ -53,14 +55,18 @@ public class PDSystem
     nLoadAllTextures(this.mNativeObject);
   }
   
-  public void render(long paramLong, boolean paramBoolean)
+  public boolean render(long paramLong, boolean paramBoolean)
   {
     if (this.lastTime <= 0L) {
       this.lastTime = paramLong;
     }
-    long l = this.lastTime;
-    nRender(this.mNativeObject, paramLong - l, paramBoolean);
+    long l2 = paramLong - this.lastTime;
+    long l1 = l2;
+    if (l2 > 1000L) {
+      l1 = 33L;
+    }
     this.lastTime = paramLong;
+    return nRender(this.mNativeObject, l1, paramBoolean);
   }
   
   public void reset()
@@ -99,6 +105,11 @@ public class PDSystem
     nSetSourcePosition(this.mNativeObject, paramVector3.x, paramVector3.y, paramVector3.z);
   }
   
+  public void setTextureImage(byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2)
+  {
+    nSetTextureImage(this.mNativeObject, paramString, paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
   public boolean totalFinished()
   {
     return nTotalFinished(this.mNativeObject);
@@ -111,7 +122,7 @@ public class PDSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.particle.PDSystem
  * JD-Core Version:    0.7.0.1
  */

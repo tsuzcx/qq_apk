@@ -14,15 +14,21 @@ public final class troopactivity$GroupInfoCardResp
   public static final int BEING_ACT_NUM_FIELD_NUMBER = 2;
   public static final int GROUP_ACT_URL_FIELD_NUMBER = 4;
   public static final int HISTORY_ACT_NUM_FIELD_NUMBER = 3;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "activitys", "being_act_num", "history_act_num", "group_act_url" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), "" }, GroupInfoCardResp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<troopactivity.Activity> activitys = PBField.initRepeatMessage(troopactivity.Activity.class);
   public final PBUInt32Field being_act_num = PBField.initUInt32(0);
   public final PBStringField group_act_url = PBField.initString("");
   public final PBUInt32Field history_act_num = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34 }, new String[] { "activitys", "being_act_num", "history_act_num", "group_act_url" }, new Object[] { null, localInteger, localInteger, "" }, GroupInfoCardResp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.troop.activity.troopactivity.GroupInfoCardResp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,9 @@ package com.tencent.liteav.beauty.b;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.beauty.c.e;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.beauty.d.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,18 +14,18 @@ import java.nio.ShortBuffer;
 import java.util.List;
 
 public class x
-  extends g
+  extends j
 {
   private static final float[] A = { 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F };
   protected static final short[] v = { 1, 2, 0, 2, 0, 3 };
   private static final float[] z = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   private String B;
-  protected x.a[] r;
-  protected List<c.e> s;
+  protected a[] r;
+  protected List<d.f> s;
   protected boolean t;
   protected int u;
   protected ShortBuffer w;
-  private x.a x;
+  private a x;
   private int y;
   
   public x()
@@ -35,7 +36,7 @@ public class x
   public x(String paramString1, String paramString2)
   {
     super(paramString1, paramString2);
-    AppMethodBeat.i(146352);
+    AppMethodBeat.i(14969);
     this.r = null;
     this.x = null;
     this.s = null;
@@ -50,12 +51,12 @@ public class x
     this.w.put(v);
     this.w.position(0);
     this.o = true;
-    AppMethodBeat.o(146352);
+    AppMethodBeat.o(14969);
   }
   
-  private void q()
+  private void r()
   {
-    AppMethodBeat.i(146357);
+    AppMethodBeat.i(229809);
     if (this.r != null)
     {
       int i = 0;
@@ -74,13 +75,13 @@ public class x
       }
     }
     this.r = null;
-    AppMethodBeat.o(146357);
+    AppMethodBeat.o(229809);
   }
   
   protected void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt3)
   {
     int i = 1;
-    AppMethodBeat.i(146355);
+    AppMethodBeat.i(14972);
     Object localObject = ByteBuffer.allocateDirect(z.length * 4);
     ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
     this.r[paramInt3].a = ((ByteBuffer)localObject).asFloatBuffer();
@@ -107,26 +108,26 @@ public class x
     this.r[paramInt3].b = ((ByteBuffer)localObject).asFloatBuffer();
     this.r[paramInt3].b.put(A);
     this.r[paramInt3].b.position(0);
-    AppMethodBeat.o(146355);
+    AppMethodBeat.o(14972);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(146356);
+    AppMethodBeat.i(14973);
     if (this.r == null) {
-      this.r = new x.a[1];
+      this.r = new a[1];
     }
     if (this.r[0] == null) {
-      this.r[0] = new x.a(this);
+      this.r[0] = new a();
     }
     a(paramBitmap, paramFloat1, paramFloat2, paramFloat3, 0);
     this.x = this.r[0];
-    AppMethodBeat.o(146356);
+    AppMethodBeat.o(14973);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
-    AppMethodBeat.i(146354);
+    AppMethodBeat.i(14971);
     if (paramBitmap == null)
     {
       if ((this.r != null) && (this.r[paramInt] != null))
@@ -139,12 +140,12 @@ public class x
         this.r[paramInt].c = null;
         this.r[paramInt] = null;
       }
-      AppMethodBeat.o(146354);
+      AppMethodBeat.o(14971);
       return;
     }
     if ((this.r[paramInt] == null) || (paramInt >= this.r.length))
     {
-      AppMethodBeat.o(146354);
+      AppMethodBeat.o(14971);
       return;
     }
     a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramFloat1, paramFloat2, paramFloat3, paramInt);
@@ -161,10 +162,19 @@ public class x
     if ((this.r[paramInt].c == null) || (!this.r[paramInt].c.equals(paramBitmap)))
     {
       GLES20.glBindTexture(3553, this.r[paramInt].d[0]);
+      if (paramBitmap.isRecycled()) {
+        break label342;
+      }
       GLUtils.texImage2D(3553, 0, paramBitmap, 0);
     }
-    this.r[paramInt].c = paramBitmap;
-    AppMethodBeat.o(146354);
+    for (;;)
+    {
+      this.r[paramInt].c = paramBitmap;
+      AppMethodBeat.o(14971);
+      return;
+      label342:
+      TXCLog.e(this.B, "SetWaterMark when bitmap is recycled");
+    }
   }
   
   public void c(boolean paramBoolean)
@@ -174,16 +184,16 @@ public class x
   
   public void d()
   {
-    AppMethodBeat.i(146353);
+    AppMethodBeat.i(14970);
     super.d();
     this.t = false;
-    q();
-    AppMethodBeat.o(146353);
+    r();
+    AppMethodBeat.o(14970);
   }
   
   public void j()
   {
-    AppMethodBeat.i(146358);
+    AppMethodBeat.i(14975);
     super.j();
     if (this.t)
     {
@@ -209,7 +219,17 @@ public class x
       }
       GLES20.glDisable(3042);
     }
-    AppMethodBeat.o(146358);
+    AppMethodBeat.o(14975);
+  }
+  
+  public class a
+  {
+    public FloatBuffer a = null;
+    public FloatBuffer b = null;
+    public Bitmap c;
+    public int[] d = null;
+    
+    public a() {}
   }
 }
 

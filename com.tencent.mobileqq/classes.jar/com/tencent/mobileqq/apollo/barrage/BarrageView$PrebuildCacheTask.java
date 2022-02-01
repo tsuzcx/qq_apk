@@ -1,54 +1,60 @@
 package com.tencent.mobileqq.apollo.barrage;
 
-import aksc;
 import android.os.Message;
-import bhtd;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 class BarrageView$PrebuildCacheTask
   implements Runnable
 {
-  private WeakReference<BarrageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<aksc> jdField_a_of_type_JavaUtilList;
+  private WeakReference<BarrageView> a;
+  private List<Barrage> b;
   
-  BarrageView$PrebuildCacheTask(List<aksc> paramList, BarrageView paramBarrageView)
+  BarrageView$PrebuildCacheTask(List<Barrage> paramList, BarrageView paramBarrageView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBarrageView);
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = new WeakReference(paramBarrageView);
+    this.b = paramList;
   }
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    Object localObject = this.a;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (BarrageView)((WeakReference)localObject).get();
+    if (localObject != null)
     {
-      BarrageView localBarrageView;
-      do
-      {
+      if (BarrageView.a((BarrageView)localObject) == null) {
         return;
-        localBarrageView = (BarrageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while ((localBarrageView == null) || (BarrageView.a(localBarrageView) == null));
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      }
+      List localList = this.b;
       if ((localList != null) && (!localList.isEmpty()))
       {
         int i = localList.size() - 1;
         while (i >= 0)
         {
-          ((aksc)localList.get(i)).a();
+          ((Barrage)localList.get(i)).b();
           i -= 1;
         }
-        BarrageView.a(localBarrageView).obtainMessage(256, 1, 0, localList).sendToTarget();
+        BarrageView.a((BarrageView)localObject).obtainMessage(256, 1, 0, localList).sendToTarget();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BarrageView", 2, "BarrageView PreBuild use->" + (System.currentTimeMillis() - l));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("BarrageView PreBuild use->");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        QLog.d("[cmshow]BarrageView", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.BarrageView.PrebuildCacheTask
  * JD-Core Version:    0.7.0.1
  */

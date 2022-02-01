@@ -3,7 +3,7 @@ package com.tencent.mm.modelvoice;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.e.b;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class k$a$1
   implements Runnable
@@ -12,14 +12,14 @@ final class k$a$1
   
   public final void run()
   {
-    AppMethodBeat.i(55795);
-    Toast.makeText(ah.getContext(), "Save to: " + k.n(this.gae.gad).mFilePath, 1).show();
-    AppMethodBeat.o(55795);
+    AppMethodBeat.i(130048);
+    Toast.makeText(MMApplicationContext.getContext(), "Save to: " + k.s(this.pei.peh).mFilePath, 1).show();
+    AppMethodBeat.o(130048);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.modelvoice.k.a.1
  * JD-Core Version:    0.7.0.1
  */

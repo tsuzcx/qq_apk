@@ -5,71 +5,75 @@ import java.lang.reflect.Method;
 
 public class ReflectBuilder<T>
 {
-  private int jdField_a_of_type_Int = 12288;
-  private Class<?> jdField_a_of_type_JavaLangClass;
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Class<?>[] jdField_a_of_type_ArrayOfJavaLangClass;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  private int a = 12288;
+  private Class<?>[] b;
+  private Object[] c;
+  private Class<?> d;
+  private String e;
+  private boolean f;
+  private Object g;
   
-  public ReflectBuilder<T> a(int paramInt)
+  ReflectBuilder<T> a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
     return this;
   }
   
-  public ReflectBuilder<T> a(Class<?> paramClass, Object paramObject)
+  ReflectBuilder<T> a(Class<?> paramClass, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.d = paramClass;
+    this.g = paramObject;
     return this;
   }
   
-  public ReflectBuilder<T> a(String paramString)
+  ReflectBuilder<T> a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
     return this;
   }
   
-  public ReflectBuilder<T> a(boolean paramBoolean)
+  ReflectBuilder<T> a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
-  public ReflectBuilder<T> a(Class<?>... paramVarArgs)
+  ReflectBuilder<T> a(Class<?>... paramVarArgs)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangClass = new Class[paramVarArgs.length];
-    System.arraycopy(paramVarArgs, 0, this.jdField_a_of_type_ArrayOfJavaLangClass, 0, paramVarArgs.length);
+    this.b = new Class[paramVarArgs.length];
+    System.arraycopy(paramVarArgs, 0, this.b, 0, paramVarArgs.length);
     return this;
   }
   
-  public ReflectBuilder<T> a(Object... paramVarArgs)
+  ReflectBuilder<T> a(Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[paramVarArgs.length];
-    System.arraycopy(paramVarArgs, 0, this.jdField_a_of_type_ArrayOfJavaLangObject, 0, paramVarArgs.length);
+    this.c = new Object[paramVarArgs.length];
+    System.arraycopy(paramVarArgs, 0, this.c, 0, paramVarArgs.length);
     return this;
   }
   
-  public void a()
+  void a()
   {
-    if ((this.jdField_a_of_type_Int != 8192) || (this.jdField_a_of_type_JavaLangClass == null) || (this.jdField_a_of_type_JavaLangObject == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.a == 8192) && (this.d != null) && (this.g != null) && (!TextUtils.isEmpty(this.e)))
+    {
+      Object localObject = this.b;
+      if (localObject.length == this.c.length)
+      {
+        localObject = this.d.getDeclaredMethod(this.e, (Class[])localObject);
+        if (this.f) {
+          ((Method)localObject).setAccessible(true);
+        }
+        ((Method)localObject).invoke(this.g, this.c);
+        return;
+      }
       throw new ReflectBuilder.WrongParamException();
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangClass.length != this.jdField_a_of_type_ArrayOfJavaLangObject.length) {
-      throw new ReflectBuilder.WrongParamException();
-    }
-    Method localMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangClass);
-    if (this.jdField_a_of_type_Boolean) {
-      localMethod.setAccessible(true);
-    }
-    localMethod.invoke(this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    throw new ReflectBuilder.WrongParamException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.ReflectBuilder
  * JD-Core Version:    0.7.0.1
  */

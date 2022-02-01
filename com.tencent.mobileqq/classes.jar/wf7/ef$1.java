@@ -55,20 +55,22 @@ class ef$1
         this.lX.a(this.lY, 1, -21000400, null);
         return;
       }
+      paramArrayList = (aa)paramArrayList;
+      ef.a(this.ma, paramArrayList.aX, this.lZ, true);
+      this.lX.a(this.lY, 1, 0, paramArrayList.aX);
+      return;
     }
     catch (Exception paramArrayList)
     {
-      this.lX.a(this.lY, 1, -21000400, null);
-      return;
+      label304:
+      break label304;
     }
-    paramArrayList = (aa)paramArrayList;
-    ef.a(this.ma, paramArrayList.aX, this.lZ, true);
-    this.lX.a(this.lY, 1, 0, paramArrayList.aX);
+    this.lX.a(this.lY, 1, -21000400, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ef.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
-import bazg;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import java.net.URL;
 
 public class VideoDecoder
-  implements bazg
+  implements BitmapDecoder
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

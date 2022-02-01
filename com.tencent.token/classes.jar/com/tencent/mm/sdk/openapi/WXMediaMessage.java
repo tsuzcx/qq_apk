@@ -2,14 +2,15 @@ package com.tencent.mm.sdk.openapi;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.os.Bundle;
+import com.tencent.token.qk;
 import java.io.ByteArrayOutputStream;
 
 public final class WXMediaMessage
 {
   public static final String ACTION_WXAPPMESSAGE = "com.tencent.mm.sdk.openapi.Intent.ACTION_WXAPPMESSAGE";
   public String description;
-  public WXMediaMessage.IMediaObject mediaObject;
+  public a mediaObject;
   public int sdkVer;
   public byte[] thumbData;
   public String title;
@@ -19,47 +20,65 @@ public final class WXMediaMessage
     this(null);
   }
   
-  public WXMediaMessage(WXMediaMessage.IMediaObject paramIMediaObject)
+  public WXMediaMessage(a parama)
   {
-    this.mediaObject = paramIMediaObject;
+    this.mediaObject = parama;
   }
   
-  final boolean checkArgs()
+  public final boolean checkArgs()
   {
-    if ((getType() == 8) && ((this.thumbData == null) || (this.thumbData.length == 0)))
+    Object localObject;
+    if (getType() == 8)
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData should not be null when send emoji");
-      return false;
+      localObject = this.thumbData;
+      if ((localObject == null) || (localObject.length == 0)) {
+        localObject = "checkArgs fail, thumbData should not be null when send emoji";
+      }
     }
-    if ((this.thumbData != null) && (this.thumbData.length > 32768))
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, thumbData is invalid");
+      qk.a("MicroMsg.SDK.WXMediaMessage", (String)localObject);
       return false;
+      localObject = this.thumbData;
+      if ((localObject != null) && (localObject.length > 32768))
+      {
+        localObject = "checkArgs fail, thumbData is invalid";
+      }
+      else
+      {
+        localObject = this.title;
+        if ((localObject != null) && (((String)localObject).length() > 512))
+        {
+          localObject = "checkArgs fail, title is invalid";
+        }
+        else
+        {
+          localObject = this.description;
+          if ((localObject != null) && (((String)localObject).length() > 1024))
+          {
+            localObject = "checkArgs fail, description is invalid";
+          }
+          else
+          {
+            localObject = this.mediaObject;
+            if (localObject != null) {
+              break;
+            }
+            localObject = "checkArgs fail, mediaObject is null";
+          }
+        }
+      }
     }
-    if ((this.title != null) && (this.title.length() > 512))
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, title is invalid");
-      return false;
-    }
-    if ((this.description != null) && (this.description.length() > 1024))
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, description is invalid");
-      return false;
-    }
-    if (this.mediaObject == null)
-    {
-      Log.e("MicroMsg.SDK.WXMediaMessage", "checkArgs fail, mediaObject is null");
-      return false;
-    }
-    return this.mediaObject.checkArgs();
+    return ((a)localObject).checkArgs();
   }
   
   public final int getType()
   {
-    if (this.mediaObject == null) {
+    a locala = this.mediaObject;
+    if (locala == null) {
       return 0;
     }
-    return this.mediaObject.type();
+    return locala.type();
   }
   
   public final void setThumbImage(Bitmap paramBitmap)
@@ -75,8 +94,17 @@ public final class WXMediaMessage
     catch (Exception paramBitmap)
     {
       paramBitmap.printStackTrace();
-      Log.e("MicroMsg.SDK.WXMediaMessage", "put thumb failed");
+      qk.a("MicroMsg.SDK.WXMediaMessage", "put thumb failed");
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean checkArgs();
+    
+    public abstract void serialize(Bundle paramBundle);
+    
+    public abstract int type();
   }
 }
 

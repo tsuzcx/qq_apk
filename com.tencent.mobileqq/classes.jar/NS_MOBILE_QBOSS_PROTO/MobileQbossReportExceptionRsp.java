@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class MobileQbossReportExceptionRsp
   extends JceStruct
 {
-  public int iRet;
+  public int iRet = 0;
   
   public MobileQbossReportExceptionRsp() {}
   
@@ -28,7 +28,7 @@ public final class MobileQbossReportExceptionRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class META_PROTOCOL$StVersionInfo
   extends MessageMicro<StVersionInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50, 58, 66, 72, 80, 90, 96, 104 }, new String[] { "versionId", "type", "creater", "appid", "version", "versionDesc", "resourceName", "resourceUrl", "createTime", "updateTime", "restoreIp", "releaseRate", "hasSubPkg" }, new Object[] { "", Integer.valueOf(0), "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, StVersionInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appid = PBField.initString("");
   public final PBUInt32Field createTime = PBField.initUInt32(0);
   public final PBStringField creater = PBField.initString("");
@@ -24,10 +24,16 @@ public final class META_PROTOCOL$StVersionInfo
   public final PBStringField version = PBField.initString("");
   public final PBStringField versionDesc = PBField.initString("");
   public final PBStringField versionId = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 50, 58, 66, 72, 80, 90, 96, 104 }, new String[] { "versionId", "type", "creater", "appid", "version", "versionDesc", "resourceName", "resourceUrl", "createTime", "updateTime", "restoreIp", "releaseRate", "hasSubPkg" }, new Object[] { "", localInteger, "", "", "", "", "", "", localInteger, localInteger, "", localInteger, localInteger }, StVersionInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_META.META_PROTOCOL.StVersionInfo
  * JD-Core Version:    0.7.0.1
  */

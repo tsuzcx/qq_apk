@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ajvr;
-import ajvs;
-import ajvt;
 import android.content.Context;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
@@ -16,47 +13,50 @@ public class FixedSizeVideoView
   extends VideoView
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = -1;
-  public ajvt a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private int b;
-  private int c;
+  FixedSizeVideoView.OnTrimVDPlayCompelteListener a;
+  private int b = -1;
+  private Handler c = new Handler(Looper.getMainLooper(), this);
+  private int d;
+  private int e;
   
   public FixedSizeVideoView(Context paramContext)
   {
     super(paramContext);
-    super.setOnCompletionListener(new ajvr(this));
+    super.setOnCompletionListener(new FixedSizeVideoView.1(this));
   }
   
   public FixedSizeVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setOnCompletionListener(new ajvs(this));
+    super.setOnCompletionListener(new FixedSizeVideoView.2(this));
   }
   
-  public int a()
+  public int getPlayDuration()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
+  }
+  
+  public int getStartMillisec()
+  {
+    return this.e;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_Ajvt != null) {
-        this.jdField_a_of_type_Ajvt.a(this, this.c, this.jdField_a_of_type_Int);
+      paramMessage = this.a;
+      if (paramMessage != null) {
+        paramMessage.a(this, this.e, this.b);
       }
     }
+    return true;
   }
   
   public void pause()
   {
     super.pause();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.c.removeMessages(0);
   }
   
   public void setOnCompletionListener(MediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -64,10 +64,10 @@ public class FixedSizeVideoView
     throw new RuntimeException("Stub!");
   }
   
-  public void setOnFixVDPlayCompelteListener(ajvt paramajvt)
+  public void setOnFixVDPlayCompelteListener(FixedSizeVideoView.OnTrimVDPlayCompelteListener paramOnTrimVDPlayCompelteListener)
   {
-    if (paramajvt != null) {
-      this.jdField_a_of_type_Ajvt = paramajvt;
+    if (paramOnTrimVDPlayCompelteListener != null) {
+      this.a = paramOnTrimVDPlayCompelteListener;
     }
   }
   
@@ -85,12 +85,12 @@ public class FixedSizeVideoView
         return;
       }
       int j = paramInt2 + paramInt1;
-      this.b = j;
+      this.d = j;
       if (j > i) {
-        this.b = i;
+        this.d = i;
       }
-      this.c = paramInt1;
-      this.jdField_a_of_type_Int = paramInt2;
+      this.e = paramInt1;
+      this.b = paramInt2;
       seekTo(paramInt1);
       return;
     }
@@ -100,12 +100,12 @@ public class FixedSizeVideoView
   public void start()
   {
     int i = getCurrentPosition();
-    i = this.b - i;
+    i = this.d - i;
     if (i >= 0)
     {
       super.start();
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, i);
+      this.c.removeMessages(0);
+      this.c.sendEmptyMessageDelayed(0, i);
     }
   }
 }

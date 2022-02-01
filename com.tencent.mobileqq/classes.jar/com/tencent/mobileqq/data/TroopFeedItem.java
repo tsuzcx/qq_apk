@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import bdnn;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.utils.StringUtil;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class TroopFeedItem
-  extends awge
+  extends Entity
 {
   public static final int ABLUM_FEED_TYPE = 18;
   public static final String APPID_STORY_PGC_CONTENT = "1105527223";
@@ -31,7 +31,7 @@ public class TroopFeedItem
   public int orginType;
   public String picPath = "";
   public String publishUin = "";
-  public boolean read;
+  public boolean read = false;
   public long shareExpire;
   public String shareFromUin;
   public String tag = "";
@@ -46,11 +46,15 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((bdnn.a(this.tag)) || (bdnn.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (bdnn.a(this.content))) {
-      return false;
+    if (!StringUtil.isEmpty(this.tag))
+    {
+      if (StringUtil.isEmpty(this.title)) {
+        return false;
+      }
+      int i = this.type;
+      return ((i != 0) && (i != 131)) || (!StringUtil.isEmpty(this.content));
     }
-    return true;
+    return false;
   }
 }
 

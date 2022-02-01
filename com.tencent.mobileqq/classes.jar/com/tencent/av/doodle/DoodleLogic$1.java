@@ -1,20 +1,18 @@
 package com.tencent.av.doodle;
 
-import loc;
-
-public class DoodleLogic$1
+class DoodleLogic$1
   implements Runnable
 {
-  public DoodleLogic$1(loc paramloc) {}
+  DoodleLogic$1(DoodleLogic paramDoodleLogic) {}
   
   public void run()
   {
-    this.this$0.b();
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleLogic.1
  * JD-Core Version:    0.7.0.1
  */

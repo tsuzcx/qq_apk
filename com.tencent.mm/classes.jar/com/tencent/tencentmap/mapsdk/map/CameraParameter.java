@@ -11,6 +11,7 @@ public class CameraParameter
   public static final int NEWLATLNG = 7;
   public static final int NEWLATLNG_BOUNDS = 9;
   public static final int NEWLATLNG_BOUNDS_DIMENSION = 10;
+  public static final int NEWLATLNG_BOUNDS_RECT = 12;
   public static final int NEWLATLNG_BOUNDS_WITH_MAP_CENTER = 11;
   public static final int NEWLATLNG_ZOOM = 8;
   public static final int SCROLLBY = 2;
@@ -22,6 +23,10 @@ public class CameraParameter
   public int cameraUpdate_type = -1;
   public CameraPosition newCameraPosition = null;
   public LatLng newLatLng = null;
+  public int newLatLngBoundsRects_padBom = 0;
+  public int newLatLngBoundsRects_padLeft = 0;
+  public int newLatLngBoundsRects_padRight = 0;
+  public int newLatLngBoundsRects_padTop = 0;
   public LatLngBounds newLatLngBounds_bounds = null;
   public LatLngBounds newLatLngBounds_dimension_bounds = null;
   public int newLatLngBounds_dimension_height = 0;
@@ -39,7 +44,7 @@ public class CameraParameter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.CameraParameter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,85 +3,143 @@ package com.tencent.mm.ui.chatting.f;
 import android.os.Bundle;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.l.e;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.i.b;
+import com.tencent.mm.ui.chatting.k.g;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  implements c<bi>
+  implements c<cc>
 {
-  private SparseArray<bi> zOo;
+  private SparseArray<cc> aeHI;
+  private com.tencent.mm.ui.chatting.d.a hlc;
   
-  public a(SparseArray<bi> paramSparseArray)
+  public a(com.tencent.mm.ui.chatting.d.a parama, SparseArray<cc> paramSparseArray)
   {
-    this.zOo = paramSparseArray;
+    this.hlc = parama;
+    this.aeHI = paramSparseArray;
   }
   
-  public final void a(d.a parama, e<bi> parame, d.d<bi> paramd, d.b paramb)
+  public final void a(final d.a parama, final g<cc> paramg, final d.d<cc> paramd, final d.b paramb)
   {
-    AppMethodBeat.i(32477);
-    Object localObject = com.tencent.mm.ui.chatting.j.a.zPI;
-    switch (com.tencent.mm.ui.chatting.j.a.1.zPK[paramd.zOE.ordinal()])
+    AppMethodBeat.i(36418);
+    Object localObject = b.aeJi;
+    switch (com.tencent.mm.ui.chatting.i.b.1.aeJk[paramd.aeHY.ordinal()])
     {
     }
-    while (parame == null)
+    while (paramg == null)
     {
-      ab.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
+      Log.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
       paramb.next();
-      AppMethodBeat.o(32477);
+      AppMethodBeat.o(36418);
       return;
-      localObject = ((com.tencent.mm.ui.chatting.j.a)localObject).zPJ;
+      localObject = ((b)localObject).aeJj;
       localObject[0] += 1;
       continue;
-      localObject = ((com.tencent.mm.ui.chatting.j.a)localObject).zPJ;
+      localObject = ((b)localObject).aeJj;
       localObject[1] += 1;
       continue;
-      localObject = ((com.tencent.mm.ui.chatting.j.a)localObject).zPJ;
+      localObject = ((b)localObject).aeJj;
       localObject[2] += 1;
       continue;
-      if ((paramd.zOD != null) && (paramd.zOD.getInt("SCENE") == 1))
+      if ((paramd.aeHX != null) && (paramd.aeHX.getInt("SCENE") == 1))
       {
-        localObject = ((com.tencent.mm.ui.chatting.j.a)localObject).zPJ;
+        localObject = ((b)localObject).aeJj;
         localObject[3] += 1;
       }
       else
       {
-        localObject = ((com.tencent.mm.ui.chatting.j.a)localObject).zPJ;
+        localObject = ((b)localObject).aeJj;
         localObject[4] += 1;
       }
     }
-    parame.a(new a.1(this, parame, paramd, parama, paramb));
-    AppMethodBeat.o(32477);
+    paramg.a(new d.b()
+    {
+      public final void next()
+      {
+        AppMethodBeat.i(36417);
+        paramg.nI(paramd.aeHZ);
+        paramg.close();
+        paramd.lNX = paramg.dWF();
+        paramd.aeIa = paramd.aeHZ.size();
+        Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.aeIa + " totalCount:" + paramd.lNX);
+        paramb.next();
+        AppMethodBeat.o(36417);
+      }
+    });
+    AppMethodBeat.o(36418);
   }
   
-  public final SparseArray<bi> fl(List<bi> paramList)
+  public final SparseArray<cc> nD(List<cc> paramList)
   {
-    AppMethodBeat.i(32478);
+    AppMethodBeat.i(36419);
     Object localObject = paramList;
     if (paramList == null)
     {
       localObject = new LinkedList();
-      ab.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[fillData] list is null!");
+      Log.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[fillData] list is null!");
     }
-    this.zOo.clear();
-    paramList = ((List)localObject).iterator();
-    int i = 0;
-    while (paramList.hasNext())
+    try
     {
-      this.zOo.put(i, paramList.next());
-      i += 1;
+      if ((((List)localObject).size() > 0) && (this.hlc != null))
+      {
+        paramList = this.hlc.getTalkerUserName();
+        localcc = (cc)((List)localObject).get(0);
+        if ((localcc != null) && (!Util.isNullOrNil(paramList)) && (!Util.isNullOrNil(localcc.field_talker)) && (!Util.isEqual(localcc.field_talker, paramList)))
+        {
+          Log.i("MicroMsg.ChattingLoader.ChattingDataCallback", "talker not equal, chattingContextTalker:%s, msgInfoTalker:%s", new Object[] { localcc.field_talker, paramList });
+          h.OAn.b(18264, new Object[] { localcc.field_talker, paramList });
+          h.OAn.p(1151L, 0L, 1L);
+          paramList = this.aeHI;
+          AppMethodBeat.o(36419);
+          return paramList;
+        }
+      }
     }
-    paramList = this.zOo;
-    AppMethodBeat.o(32478);
+    finally
+    {
+      cc localcc;
+      Log.printErrStackTrace("MicroMsg.ChattingLoader.ChattingDataCallback", paramList, "fillData Exception", new Object[0]);
+      h.OAn.p(1151L, 1L, 1L);
+      this.aeHI.clear();
+      paramList = ((List)localObject).iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        localObject = this.aeHI;
+        localcc = (cc)paramList.next();
+        ((SparseArray)localObject).put(i, localcc);
+        int j = i + 1;
+        i = j;
+        if (localcc != null)
+        {
+          i = j;
+          if (localcc.iYl())
+          {
+            i = j;
+            if (localcc.field_content != null)
+            {
+              localcc.setContent(localcc.field_content.replaceAll("‮", ""));
+              i = j;
+            }
+          }
+        }
+      }
+      paramList = this.aeHI;
+      AppMethodBeat.o(36419);
+    }
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f.a
  * JD-Core Version:    0.7.0.1
  */

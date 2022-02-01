@@ -40,7 +40,7 @@ public class UppUploadTask
     return TaskTypeConfig.UppUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.uploadFilePath);
@@ -48,43 +48,44 @@ public class UppUploadTask
     super.onDestroy();
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadUppInfoRsp)JceEncoder.decode(UploadUppInfoRsp.class, paramArrayOfByte);
-      localObject2 = localObject1;
+      UploadUppInfoRsp localUploadUppInfoRsp = (UploadUppInfoRsp)JceEncoder.decode(UploadUppInfoRsp.class, paramArrayOfByte);
       localObject1 = null;
+      localObject2 = localUploadUppInfoRsp;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localObject1 = Log.getStackTraceString(localException);
-        UploadLog.w("UppUploadTask", "get rsp ", localException);
-      }
-      Object localObject1 = new UppUploadResult();
-      ((UppUploadResult)localObject1).flowId = this.flowId;
-      ((UppUploadResult)localObject1).sUrl = ((UploadUppInfoRsp)localObject2).sUrl;
-      onUploadSucceed(localObject1);
-      super.processFileUploadFinishRsp(paramArrayOfByte);
-      onDestroy();
+      localObject1 = Log.getStackTraceString(localException);
+      UploadLog.w("UppUploadTask", "get rsp ", localException);
     }
     if (localObject2 == null)
     {
       localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "unpack uploadUppInfoRsp=null. " + paramArrayOfByte;
+      if (localObject1 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unpack uploadUppInfoRsp=null. ");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        localObject2 = ((StringBuilder)localObject1).toString();
       }
       onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), (String)localObject2);
       return;
     }
+    Object localObject1 = new UppUploadResult();
+    ((UppUploadResult)localObject1).flowId = this.flowId;
+    ((UppUploadResult)localObject1).sUrl = ((UploadUppInfoRsp)localObject2).sUrl;
+    onUploadSucceed(localObject1);
+    super.processFileUploadFinishRsp(paramArrayOfByte);
+    onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.UppUploadTask
  * JD-Core Version:    0.7.0.1
  */

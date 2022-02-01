@@ -2,41 +2,22 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.view.View;
+import com.tencent.mm.plugin.appbrand.jsapi.v.c;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Constructor;
 
 public abstract class b
 {
-  public a jrY;
+  private a uMW;
   
-  protected abstract View aEv();
-  
-  public final <T extends com.tencent.mm.plugin.appbrand.jsapi.n.b> T ah(Class<T> paramClass)
-  {
-    a locala = ft(true);
-    this.jrY = locala;
-    if (locala == null) {
-      return null;
-    }
-    try
-    {
-      locala.setPickerImpl((com.tencent.mm.plugin.appbrand.jsapi.n.b)paramClass.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { locala.getContext() }));
-      return locala.getPicker();
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.AppBrandBottomPickerInvokeHandler", "newInstance class[%s], exp[%s]", new Object[] { paramClass.getSimpleName(), localException });
-    }
-    return null;
-  }
-  
-  public final a ft(boolean paramBoolean)
+  private a lJ(boolean paramBoolean)
   {
     a locala2 = null;
-    if (this.jrY != null) {
-      locala1 = this.jrY;
+    if (this.uMW != null) {
+      locala1 = this.uMW;
     }
+    View localView;
     n localn;
     do
     {
@@ -47,24 +28,63 @@ public abstract class b
           do
           {
             return locala1;
+            localView = cuk();
             locala1 = locala2;
-          } while (aEv() == null);
-          localn = n.cJ(aEv());
+          } while (localView == null);
+          localn = n.ed(localView);
           locala1 = locala2;
         } while (localn == null);
-        locala2 = a.cY(localn);
+        locala2 = a.es(localn);
         locala1 = locala2;
       } while (locala2 != null);
       locala1 = locala2;
     } while (!paramBoolean);
-    a locala1 = new a(aEv().getContext());
+    a locala1 = eL(localView.getContext());
     localn.n(locala1, true);
     return locala1;
+  }
+  
+  public final <T extends c> T bb(Class<T> paramClass)
+  {
+    Log.d("MicroMsg.AppBrandBottomPickerInvokeHandler", paramClass.getSimpleName());
+    a locala = lJ(true);
+    this.uMW = locala;
+    if (locala == null) {
+      return null;
+    }
+    try
+    {
+      locala.setPickerImpl((c)paramClass.getDeclaredConstructor(new Class[] { Context.class }).newInstance(new Object[] { locala.getContext() }));
+      return locala.getPicker();
+    }
+    catch (Exception paramClass) {}
+    return null;
+  }
+  
+  public final <T extends c> T bc(Class<T> paramClass)
+  {
+    a locala = lJ(false);
+    if ((locala != null) && (paramClass.isInstance(locala.getPicker()))) {
+      return locala.getPicker();
+    }
+    return null;
+  }
+  
+  public final a cSl()
+  {
+    return this.uMW;
+  }
+  
+  protected abstract View cuk();
+  
+  protected a eL(Context paramContext)
+  {
+    return new a(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.b
  * JD-Core Version:    0.7.0.1
  */

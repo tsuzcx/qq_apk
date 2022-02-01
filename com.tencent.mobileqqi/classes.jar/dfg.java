@@ -1,25 +1,18 @@
 import android.app.Dialog;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class dfg
   implements Runnable
 {
-  public dfg(RegisterBaseActivity paramRegisterBaseActivity) {}
+  public dfg(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624405);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130903073);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131231029)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
   }
 }
 

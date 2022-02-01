@@ -17,13 +17,14 @@ public final class LGSessionKey$MsgAuthRsp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "create_ts", "expired_ts", "sign" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, MsgAuthRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "create_ts", "expired_ts", "sign" }, new Object[] { localLong, localLong, localByteStringMicro }, MsgAuthRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.apollo.LGSessionKey.MsgAuthRsp
  * JD-Core Version:    0.7.0.1
  */

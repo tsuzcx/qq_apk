@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
 
 public abstract class b
-  extends m
+  extends p
 {
-  protected String DK;
+  protected int WnM;
+  protected String brD;
   protected int mScene;
-  protected int uIB;
-  
-  public abstract String act();
-  
-  public final int cZa()
-  {
-    return this.uIB;
-  }
   
   public final String getQuery()
   {
-    return this.DK;
+    return this.brD;
   }
+  
+  public final int ipD()
+  {
+    return this.WnM;
+  }
+  
+  public abstract String ipG();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.b
  * JD-Core Version:    0.7.0.1
  */

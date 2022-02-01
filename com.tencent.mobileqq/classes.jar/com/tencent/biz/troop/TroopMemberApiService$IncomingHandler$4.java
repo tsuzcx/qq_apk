@@ -1,37 +1,36 @@
 package com.tencent.biz.troop;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import yrr;
+import com.tencent.mobileqq.troop.api.IBizTroopMemberInfoService;
+import mqq.app.AppRuntime;
 
-public class TroopMemberApiService$IncomingHandler$4
+class TroopMemberApiService$IncomingHandler$4
   implements Runnable
 {
-  public TroopMemberApiService$IncomingHandler$4(yrr paramyrr, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
+  TroopMemberApiService$IncomingHandler$4(TroopMemberApiService.IncomingHandler paramIncomingHandler, AppRuntime paramAppRuntime, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b);
+    MessageRecord localMessageRecord = ((IBizTroopMemberInfoService)this.a.getRuntimeService(IBizTroopMemberInfoService.class, "")).getRobotLastSpeakMessage(this.b, this.c);
     if (localMessageRecord != null)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", localMessageRecord.time);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", localMessageRecord.msg);
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+      this.d.putLong("lastMsgTime", localMessageRecord.time);
+      this.d.putString("lastMsgContent", localMessageRecord.msg);
+      this.d.putInt("seq", this.e);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Yrr.a.a(72, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+      this.d.putLong("lastMsgTime", 0L);
+      this.d.putString("lastMsgContent", "");
+      this.d.putInt("seq", this.e);
     }
+    this.f.a.a(72, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.4
  * JD-Core Version:    0.7.0.1
  */

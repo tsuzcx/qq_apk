@@ -25,13 +25,15 @@ public final class MqqLbsPack$ReqGetLBSPID
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(900000000);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "msg_poi_info", "uin_grp_dis_info", "uint32_qa", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), null, null, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro }, ReqGetLBSPID.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "msg_poi_info", "uin_grp_dis_info", "uint32_qa", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { localInteger2, localInteger2, null, null, localInteger1, null, null, localInteger1, localByteStringMicro }, ReqGetLBSPID.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.ReqGetLBSPID
  * JD-Core Version:    0.7.0.1
  */

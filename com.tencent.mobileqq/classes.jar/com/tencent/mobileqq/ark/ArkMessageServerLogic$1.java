@@ -1,50 +1,37 @@
 package com.tencent.mobileqq.ark;
 
-import anoo;
-import anoy;
-import anoz;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.api.IArkService;
+import mqq.app.AppRuntime;
 
-public final class ArkMessageServerLogic$1
+final class ArkMessageServerLogic$1
   implements Runnable
 {
-  public ArkMessageServerLogic$1(anoz paramanoz) {}
+  ArkMessageServerLogic$1(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler) {}
   
   public void run()
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject == null) {
-      ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, qq app is null");
-    }
-    for (;;)
+    Object localObject = ((IArkService)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IArkService.class, "all")).getSSO();
+    if (localObject == null)
     {
-      if (this.a != null) {
-        this.a.b(null);
-      }
-      do
-      {
+      ArkAppCenter.a("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
+    }
+    else
+    {
+      if (((IArkAppSSO)localObject).a("ArkAppPanel.List", 10000, 0, new ArkMessageServerLogic.1.1(this))) {
         return;
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
-        if (localObject == null)
-        {
-          ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark center is null");
-          break;
-        }
-        localObject = ((ArkAppCenter)localObject).a();
-        if (localObject == null)
-        {
-          ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
-          break;
-        }
-      } while (((anoo)localObject).a("ArkAppPanel.List", 10000, 0, new anoy(this)));
-      ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
+      }
+      ArkAppCenter.a("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
+    }
+    localObject = this.a;
+    if (localObject != null) {
+      ((ArkMessageServerLogic.IRequestArkAppListHandler)localObject).b(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkMessageServerLogic.1
  * JD-Core Version:    0.7.0.1
  */

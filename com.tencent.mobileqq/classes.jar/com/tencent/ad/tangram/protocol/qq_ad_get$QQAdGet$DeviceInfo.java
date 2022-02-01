@@ -5,11 +5,14 @@ public final class qq_ad_get$QQAdGet$DeviceInfo
   public String aid_ticket;
   public String android_id;
   public int app_version_id = 0;
+  public String brand;
+  public String cached_idfa;
   public int carrier_code = 0;
   public String client_ip;
   public String client_ipv4;
   public int conn = 0;
   public String device_brand_and_model;
+  public String device_ext;
   public int device_orientation = 0;
   public String idfa;
   public String imei;
@@ -37,7 +40,7 @@ public final class qq_ad_get$QQAdGet$DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.RelativeLayoutForListViewItem android:gravity="center_vertical" android:id="@id/tag_item" android:background="@color/qzone_white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <com.qzone.widget.AvatarImageView android:id="@id/ugc_edit_tag_avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" qzone:avatarSize="34.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff2d2d2d" android:gravity="center|left" android:id="@id/ugc_edit_tag_nickname" android:duplicateParentState="true" android:layout_width="218.0dip" android:layout_height="54.0dip" android:singleLine="true" android:layout_toRightOf="@id/ugc_edit_tag_avatar" android:layout_centerVertical="true" />
+    <TextView android:textSize="15.0sp" android:textColor="#ff295998" android:id="@id/ugc_edit_tag_del" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="移除" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:background="#ffe0e0e0" android:layout_width="1.0dip" android:layout_height="30.0dip" android:layout_toLeftOf="@id/ugc_edit_tag_del" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/divider_line" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="56.0dip" />
+</com.qzone.widget.RelativeLayoutForListViewItem>

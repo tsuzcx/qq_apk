@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bsz" android:background="@color/bp" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/gqk" android:layout="@layout/auv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/gql" android:background="@color/a2n" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:gravity="center|left" android:id="@id/cfe" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:text="@string/qu1" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:id="@id/cem" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_centerVertical="true">
+            <Button android:id="@id/cen" android:background="@drawable/ghw" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" android:contentDescription="@string/qtz" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/ceo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/qu2" android:layout_toRightOf="@id/cen" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <include android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_toLeftOf="@id/cem" android:layout_alignParentBottom="true" layout="@layout/bke" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="90.0sp" android:layout_marginBottom="0.0dip" android:layout_above="@id/ce1" layout="@layout/bka" />
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/ce1" android:background="@color/a2n" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.biz.qqstory.view.PressDarkImageButton android:id="@id/cdq" android:visibility="invisible" android:layout_marginLeft="-10.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/ff2" android:scaleType="fitCenter" android:layout_alignParentBottom="true" android:contentDescription="@string/qty" style="@style/dn" />
+        <com.tencent.biz.qqstory.view.PressDarkImageButton android:id="@id/cdn" android:visibility="invisible" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/f76" android:scaleType="fitCenter" android:layout_toRightOf="@id/cdq" android:layout_alignParentBottom="true" android:contentDescription="@string/qtx" style="@style/dn" />
+        <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/cfk" android:background="@drawable/common_btn_blue" android:visibility="gone" android:layout_width="65.0dip" android:layout_height="33.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="14.0dip" android:text="@string/qu0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:id="@id/ju3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="110.0dip" android:layout_alignParentBottom="true">
+        <include layout="@layout/bkf" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,29 +1,39 @@
 package com.tencent.mm.plugin.fts.a.a;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.sql.Column;
+import com.tencent.mm.sdk.storage.sql.SingleTable;
 
 public final class b
 {
-  public long mRT;
-  public int mRU;
-  public String mRV;
-  public int type;
+  public static final Column Hsp;
+  public static final Column Hsq;
+  public static final Column Hsr;
+  public static final Column ROWID;
+  public static final Column SUBTYPE;
+  public static final SingleTable TABLE;
+  public static final Column TYPE;
+  public static final Column jIz;
+  public static final Column kkd;
   
-  public final b f(Cursor paramCursor)
+  static
   {
-    AppMethodBeat.i(114235);
-    this.mRT = paramCursor.getLong(0);
-    this.type = paramCursor.getInt(1);
-    this.mRU = paramCursor.getInt(2);
-    this.mRV = paramCursor.getString(3);
-    AppMethodBeat.o(114235);
-    return this;
+    AppMethodBeat.i(265530);
+    TABLE = new SingleTable("FTS5MetaContact");
+    ROWID = new Column("rowid", "long", TABLE.getName(), "");
+    Hsp = new Column("docid", "int", TABLE.getName(), "");
+    TYPE = new Column("type", "int", TABLE.getName(), "");
+    SUBTYPE = new Column("subtype", "int", TABLE.getName(), "");
+    Hsq = new Column("entity_id", "long", TABLE.getName(), "");
+    Hsr = new Column("aux_index", "string", TABLE.getName(), "");
+    kkd = new Column("timestamp", "long", TABLE.getName(), "");
+    jIz = new Column("status", "int", TABLE.getName(), "");
+    AppMethodBeat.o(265530);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.b
  * JD-Core Version:    0.7.0.1
  */

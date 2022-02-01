@@ -1,113 +1,65 @@
 package com.tencent.mm.ba;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ajg;
+import com.tencent.mm.protocal.protobuf.ajh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
+  extends p
+  implements m
 {
-  int bsY;
-  public int fMk;
-  private String fsf;
-  private String fsg;
-  private int fsh;
-  private int fsi;
-  private String path;
-  public String username;
+  private h callback;
+  private final c rr;
   
-  public a()
+  public a(String paramString)
   {
-    AppMethodBeat.i(78430);
-    this.bsY = -1;
-    this.username = "";
-    this.fMk = 0;
-    this.path = "";
-    this.fsf = "";
-    this.fsg = "";
-    this.fsh = 0;
-    this.fsi = 0;
-    AppMethodBeat.o(78430);
+    AppMethodBeat.i(90685);
+    c.a locala = new c.a();
+    locala.otE = new ajg();
+    locala.otF = new ajh();
+    locala.uri = "/cgi-bin/micromsg-bin/deletecardimg";
+    locala.funcId = 576;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((ajg)c.b.b(this.rr.otB)).ZqZ = paramString;
+    AppMethodBeat.o(90685);
   }
   
-  public final void convertFrom(Cursor paramCursor)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(78431);
-    this.username = paramCursor.getString(0);
-    this.fMk = paramCursor.getInt(1);
-    this.path = paramCursor.getString(2);
-    this.fsf = paramCursor.getString(3);
-    this.fsg = paramCursor.getString(4);
-    this.fsh = paramCursor.getInt(5);
-    this.fsi = paramCursor.getInt(6);
-    AppMethodBeat.o(78431);
+    AppMethodBeat.i(90686);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(90686);
+    return i;
   }
   
-  public final ContentValues convertTo()
+  public final int getType()
   {
-    AppMethodBeat.i(78432);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
-      localContentValues.put("username", getUsername());
-    }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("bgflag", Integer.valueOf(this.fMk));
-    }
-    if ((this.bsY & 0x4) != 0)
-    {
-      if (this.path == null)
-      {
-        str = "";
-        localContentValues.put("path", str);
-      }
-    }
-    else
-    {
-      if ((this.bsY & 0x8) != 0)
-      {
-        if (this.fsf != null) {
-          break label195;
-        }
-        str = "";
-        label100:
-        localContentValues.put("reserved1", str);
-      }
-      if ((this.bsY & 0x10) != 0) {
-        if (this.fsg != null) {
-          break label203;
-        }
-      }
-    }
-    label195:
-    label203:
-    for (String str = "";; str = this.fsg)
-    {
-      localContentValues.put("reserved2", str);
-      if ((this.bsY & 0x20) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.fsh));
-      }
-      if ((this.bsY & 0x40) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.fsi));
-      }
-      AppMethodBeat.o(78432);
-      return localContentValues;
-      str = this.path;
-      break;
-      str = this.fsf;
-      break label100;
-    }
+    return 576;
   }
   
-  public final String getUsername()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    if (this.username == null) {
-      return "";
-    }
-    return this.username;
+    AppMethodBeat.i(90687);
+    Log.d("MicroMsg.NetSceneDeleteCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(90687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ba.a
  * JD-Core Version:    0.7.0.1
  */

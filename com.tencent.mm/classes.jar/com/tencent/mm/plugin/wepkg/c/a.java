@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wepkg.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -11,53 +11,73 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<String, a.b> vGU;
+  private Map<String, b> XGQ;
   
   private a()
   {
-    AppMethodBeat.i(63607);
-    this.vGU = new ConcurrentHashMap();
-    AppMethodBeat.o(63607);
+    AppMethodBeat.i(110765);
+    this.XGQ = new ConcurrentHashMap();
+    AppMethodBeat.o(110765);
   }
   
-  public final void k(Set<String> paramSet)
+  public final void I(Set<String> paramSet)
   {
-    AppMethodBeat.i(63608);
+    AppMethodBeat.i(110766);
     if (paramSet.isEmpty())
     {
-      h.qsU.idkeyStat(859L, 20L, 1L, false);
-      AppMethodBeat.o(63608);
+      h.OAn.idkeyStat(859L, 20L, 1L, false);
+      AppMethodBeat.o(110766);
       return;
     }
-    h.qsU.idkeyStat(859L, 21L, 1L, false);
-    a.b localb = new a.b(this);
-    localb.vGW = paramSet.size();
-    localb.fVT = 0L;
+    h.OAn.idkeyStat(859L, 21L, 1L, false);
+    b localb = new b();
+    localb.XGS = paramSet.size();
+    localb.oZd = 0L;
     paramSet = paramSet.iterator();
     while (paramSet.hasNext())
     {
       String str = (String)paramSet.next();
-      this.vGU.put(str, localb);
+      this.XGQ.put(str, localb);
     }
-    AppMethodBeat.o(63608);
+    AppMethodBeat.o(110766);
   }
   
-  public final void p(String paramString1, String paramString2, long paramLong)
+  public final void u(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(63609);
-    paramString1 = ag.cE(paramString1 + paramString2);
-    paramString1 = (a.b)this.vGU.remove(paramString1);
+    AppMethodBeat.i(110767);
+    paramString1 = MD5Util.getMD5String(paramString1 + paramString2);
+    paramString1 = (b)this.XGQ.remove(paramString1);
     if (paramString1 != null)
     {
-      paramString1.vGW -= 1;
-      paramString1.fVT += paramLong;
-      if (paramString1.vGW == 0)
+      paramString1.XGS -= 1;
+      paramString1.oZd += paramLong;
+      if (paramString1.XGS == 0)
       {
-        ab.i("MicroMsg.Wepkg.BatchUpdateReporter", "batch update size: %s", new Object[] { Long.valueOf(paramString1.fVT) });
-        com.tencent.mm.game.report.api.a.ezM.g(1, "", String.valueOf(paramString1.fVT));
+        Log.i("MicroMsg.Wepkg.BatchUpdateReporter", "batch update size: %s", new Object[] { Long.valueOf(paramString1.oZd) });
+        com.tencent.mm.game.report.api.a.mtH.a(1, "", String.valueOf(paramString1.oZd), 0L);
       }
     }
-    AppMethodBeat.o(63609);
+    AppMethodBeat.o(110767);
+  }
+  
+  public static final class a
+  {
+    private static a XGR;
+    
+    static
+    {
+      AppMethodBeat.i(110764);
+      XGR = new a((byte)0);
+      AppMethodBeat.o(110764);
+    }
+  }
+  
+  public final class b
+  {
+    int XGS;
+    long oZd;
+    
+    public b() {}
   }
 }
 

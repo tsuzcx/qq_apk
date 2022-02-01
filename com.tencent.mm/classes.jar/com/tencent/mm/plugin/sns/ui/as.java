@@ -1,62 +1,113 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Context;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.widget.AbsoluteLayout;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.aq;
-import com.tencent.mm.plugin.sns.model.aq.b;
-import com.tencent.mm.pluginsdk.ui.c.a;
+import com.tencent.mm.plugin.sns.b.a;
+import com.tencent.mm.plugin.sns.i.b;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.ui.listener.c;
 
 public final class as
-  implements a
 {
-  public String ctV;
-  public String czw;
-  public boolean rUm = false;
-  public boolean rUn = false;
-  public int scene;
-  public String userName;
+  boolean Flq;
+  c QBf;
+  FrameLayout QBg;
+  AbsoluteLayout QBh;
+  protected Animation QBi;
+  protected Animation QBj;
+  boolean QBk;
+  private b QZY;
+  Context mContext;
+  int vpn;
   
-  public as(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public as(Context paramContext, c paramc, FrameLayout paramFrameLayout)
   {
-    this.czw = paramString1;
-    this.rUm = paramBoolean1;
-    this.rUn = paramBoolean2;
-    this.scene = paramInt;
-    this.ctV = paramString2;
+    AppMethodBeat.i(98144);
+    this.QBh = null;
+    this.QBk = false;
+    this.Flq = false;
+    this.vpn = -1;
+    this.mContext = paramContext;
+    this.QBf = paramc;
+    this.QBg = paramFrameLayout;
+    this.QBi = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.QBi = AnimationUtils.loadAnimation(paramContext, b.a.dropdown_down);
+    this.QBj = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
+    this.QBj = AnimationUtils.loadAnimation(paramContext, b.a.dropdown_up);
+    AppMethodBeat.o(98144);
   }
   
-  public final boolean cvI()
+  public final boolean hib()
   {
-    int i = 2;
-    AppMethodBeat.i(39186);
-    if (this.scene == 1) {}
-    for (;;)
-    {
-      aq.b localb = aq.aaD(this.czw);
-      if ((localb != null) && (localb.fon) && (!localb.frX) && ((i & localb.dqG) != 0))
-      {
-        AppMethodBeat.o(39186);
-        return true;
-        if (this.scene == 2) {
-          i = 4;
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(39186);
-        return false;
-      }
-      i = -1;
+    AppMethodBeat.i(98147);
+    if ((this.QZY != null) && (al.hgt().hie())) {
+      this.QZY.hib();
     }
+    if (this.QBh != null)
+    {
+      this.QBg.removeView(this.QBh);
+      this.QBh = null;
+      AppMethodBeat.o(98147);
+      return true;
+    }
+    this.QBk = false;
+    AppMethodBeat.o(98147);
+    return false;
   }
   
-  public final String getUserName()
+  final void jH(final View paramView)
   {
-    return this.userName;
+    AppMethodBeat.i(98146);
+    this.QBk = true;
+    paramView.startAnimation(this.QBj);
+    this.QBj.setAnimationListener(new Animation.AnimationListener()
+    {
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(98143);
+        if (paramView != null)
+        {
+          paramView.clearAnimation();
+          paramView.setVisibility(8);
+          as.this.hib();
+        }
+        as.this.QBk = false;
+        AppMethodBeat.o(98143);
+      }
+      
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation)
+      {
+        as.this.QBk = true;
+      }
+    });
+    AppMethodBeat.o(98146);
+  }
+  
+  final class a
+  {
+    View MdP = null;
+    String QBA;
+    
+    public a(String paramString, View paramView)
+    {
+      this.QBA = paramString;
+      this.MdP = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.as
  * JD-Core Version:    0.7.0.1
  */

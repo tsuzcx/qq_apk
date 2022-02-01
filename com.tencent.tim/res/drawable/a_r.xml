@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="1000" android:drawable="@drawable/ejb" />
+    <item android:duration="30" android:drawable="@drawable/ejc" />
+    <item android:duration="30" android:drawable="@drawable/ejd" />
+    <item android:duration="30" android:drawable="@drawable/eje" />
+    <item android:duration="30" android:drawable="@drawable/ejf" />
+    <item android:duration="30" android:drawable="@drawable/ejg" />
+    <item android:duration="30" android:drawable="@drawable/ejh" />
+    <item android:duration="30" android:drawable="@drawable/eji" />
+    <item android:duration="30" android:drawable="@drawable/ejj" />
+    <item android:duration="30" android:drawable="@drawable/ejk" />
+    <item android:duration="30" android:drawable="@drawable/ejl" />
+    <item android:duration="30" android:drawable="@drawable/ejm" />
+    <item android:duration="30" android:drawable="@drawable/ejn" />
+    <item android:duration="30" android:drawable="@drawable/ejo" />
+    <item android:duration="30" android:drawable="@drawable/ejp" />
+    <item android:duration="30" android:drawable="@drawable/ejq" />
+    <item android:duration="30" android:drawable="@drawable/ejr" />
+    <item android:duration="30" android:drawable="@drawable/ejs" />
+    <item android:duration="30" android:drawable="@drawable/ejt" />
+    <item android:duration="30" android:drawable="@drawable/eju" />
+    <item android:duration="30" android:drawable="@drawable/ejv" />
+    <item android:duration="30" android:drawable="@drawable/ejw" />
+    <item android:duration="30" android:drawable="@drawable/ejx" />
+    <item android:duration="30" android:drawable="@drawable/ejy" />
+    <item android:duration="30" android:drawable="@drawable/ejz" />
+    <item android:duration="30" android:drawable="@drawable/ek0" />
+    <item android:duration="30" android:drawable="@drawable/ek1" />
+    <item android:duration="30" android:drawable="@drawable/ek2" />
+    <item android:duration="30" android:drawable="@drawable/ek3" />
+</animation-list>

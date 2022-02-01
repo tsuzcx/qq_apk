@@ -1,29 +1,37 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.u.i;
 
 final class SnsMsgUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements u.i
 {
   SnsMsgUI$4(SnsMsgUI paramSnsMsgUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(39068);
-    paramMenuItem = new Intent();
-    paramMenuItem.putExtra("sns_cmd_list", SnsMsgUI.m(this.rSU));
-    this.rSU.setResult(-1, paramMenuItem);
-    this.rSU.finish();
-    AppMethodBeat.o(39068);
-    return true;
+    AppMethodBeat.i(308550);
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(308550);
+      return;
+      SnsMsgUI.a(this.RtY, this.RtY.QYE);
+      AppMethodBeat.o(308550);
+      return;
+      SnsMsgUI.m(this.RtY);
+      AppMethodBeat.o(308550);
+      return;
+      SnsMsgUI.a(this.RtY, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.4
  * JD-Core Version:    0.7.0.1
  */

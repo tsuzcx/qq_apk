@@ -15,10 +15,10 @@ public abstract class aa
   {
     new aa()
     {
-      public final void hu()
+      public final void hE()
       {
         if (aa.this != null) {
-          paramActivity.startActivityForResult(aa.this, this.P);
+          paramActivity.startActivityForResult(aa.this, this.bz);
         }
       }
     };
@@ -28,22 +28,22 @@ public abstract class aa
   {
     new aa()
     {
-      public final void hu()
+      public final void hE()
       {
         if (aa.this != null) {
-          paramaz.startActivityForResult(aa.this, this.P);
+          paramaz.startActivityForResult(aa.this, this.bz);
         }
       }
     };
   }
   
-  protected abstract void hu();
+  protected abstract void hE();
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     try
     {
-      hu();
+      hE();
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)

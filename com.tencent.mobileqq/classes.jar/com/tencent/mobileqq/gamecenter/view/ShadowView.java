@@ -10,8 +10,8 @@ import android.view.View;
 public class ShadowView
   extends View
 {
-  private int jdField_a_of_type_Int = -1;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Paint a = new Paint(1);
+  private int b = -1;
   
   public ShadowView(Context paramContext)
   {
@@ -32,28 +32,28 @@ public class ShadowView
   {
     super.onAttachedToWindow();
     setLayerType(1, null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    this.a.setColor(this.b);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    paramCanvas.drawRect(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom(), this.a);
   }
   
   public void setOriginColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void setShadowProperties(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
+    this.a.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.ShadowView
  * JD-Core Version:    0.7.0.1
  */

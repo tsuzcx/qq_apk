@@ -1,124 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="a" format="dimension" />
-    <attr name="b" format="dimension" />
-    <attr name="c">
-        <flag name="g" value="0x0000000f" />
-        <flag name="h" value="0x00000008" />
-        <flag name="i" value="0x00000001" />
-        <flag name="j" value="0x00000004" />
-        <flag name="k" value="0x00000002" />
+    <attr name="coordinatorLayoutStyle" format="reference" />
+    <attr name="minTextSize" format="dimension" />
+    <attr name="maxTextSize" format="dimension" />
+    <attr name="layout_box">
+        <flag name="all" value="0x0000000f" />
+        <flag name="bottom" value="0x00000008" />
+        <flag name="left" value="0x00000001" />
+        <flag name="right" value="0x00000004" />
+        <flag name="top" value="0x00000002" />
     </attr>
-    <attr name="d" format="color" />
-    <attr name="e" format="dimension" />
-    <attr name="f" format="dimension" />
-    <attr name="g" format="dimension" />
-    <attr name="h" format="color" />
-    <attr name="i" format="dimension" />
-    <attr name="j" format="dimension" />
-    <attr name="k" format="dimension" />
-    <attr name="l" format="dimension" />
-    <attr name="m" format="color" />
-    <attr name="n" format="fraction" />
-    <attr name="o" format="fraction" />
-    <attr name="p">
-        <enum name="l" value="1" />
-        <enum name="m" value="0" />
-        <enum name="n" value="2" />
+    <attr name="circle_color" format="color" />
+    <attr name="circle_radius" format="dimension" />
+    <attr name="circle_radius_pressed" format="dimension" />
+    <attr name="circle_border_width" format="dimension" />
+    <attr name="circle_border_color" format="color" />
+    <attr name="circle_padding" format="dimension" />
+    <attr name="shadow_width" format="dimension" />
+    <attr name="image_circle_percentage" format="dimension" />
+    <attr name="image_horizontal_offcenter_percentage" format="dimension" />
+    <attr name="image_tint" format="color" />
+    <attr name="circle_radius_percent" format="fraction" />
+    <attr name="circle_radius_pressed_percent" format="fraction" />
+    <attr name="square_dimen">
+        <enum name="height" value="1" />
+        <enum name="none" value="0" />
+        <enum name="width" value="2" />
     </attr>
-    <attr name="q">
-        <enum name="o" value="1" />
-        <enum name="p" value="0" />
+    <attr name="imageScaleMode">
+        <enum name="center" value="1" />
+        <enum name="fit" value="0" />
     </attr>
-    <attr name="r" format="reference|color" />
-    <attr name="s" format="dimension" />
-    <attr name="t" format="integer" />
-    <attr name="u" format="dimension" />
-    <attr name="v" format="dimension" />
-    <attr name="w" format="dimension" />
-    <attr name="x" format="color" />
-    <attr name="y" format="color" />
-    <attr name="z" format="boolean" />
-    <attr name="a0" format="integer" />
-    <attr name="a1" format="integer" />
-    <attr name="a2" format="integer" />
-    <attr name="a3" format="color" />
-    <attr name="a4" format="dimension" />
-    <attr name="a5" format="dimension" />
-    <attr name="a6" format="dimension" />
-    <attr name="a7" format="string" />
-    <attr name="a8" format="string" />
-    <attr name="a9" format="string" />
-    <attr name="a_" format="reference" />
-    <attr name="aa">
-        <enum name="q" value="1" />
-        <enum name="r" value="0" />
+    <attr name="buttonRippleColor" format="reference|color" />
+    <attr name="pressedButtonTranslationZ" format="dimension" />
+    <attr name="keylines" format="reference" />
+    <attr name="statusBarBackground" format="reference|color" />
+    <attr name="layout_behavior" format="string" />
+    <attr name="layout_anchor" format="reference" />
+    <attr name="layout_keyline" format="integer" />
+    <attr name="layout_anchorGravity">
+        <flag name="bottom" value="0x00000050" />
+        <flag name="left" value="0x00000003" />
+        <flag name="right" value="0x00000005" />
+        <flag name="top" value="0x00000030" />
+        <flag name="center" value="0x00000011" />
+        <flag name="center_horizontal" value="0x00000001" />
+        <flag name="center_vertical" value="0x00000010" />
+        <flag name="clip_horizontal" value="0x00000008" />
+        <flag name="clip_vertical" value="0x00000080" />
+        <flag name="end" value="0x00800005" />
+        <flag name="fill" value="0x00000077" />
+        <flag name="fill_horizontal" value="0x00000007" />
+        <flag name="fill_vertical" value="0x00000070" />
+        <flag name="start" value="0x00800003" />
     </attr>
-    <attr name="ab" format="integer">
-        <enum name="s" value="-1" />
+    <attr name="layout_insetEdge">
+        <enum name="bottom" value="80" />
+        <enum name="left" value="3" />
+        <enum name="right" value="5" />
+        <enum name="top" value="48" />
+        <enum name="none" value="0" />
+        <enum name="end" value="8388613" />
+        <enum name="start" value="8388611" />
     </attr>
-    <attr name="ac">
-        <enum name="t" value="1" />
-        <enum name="u" value="0" />
+    <attr name="layout_dodgeInsetEdges">
+        <flag name="all" value="0x00000077" />
+        <flag name="bottom" value="0x00000050" />
+        <flag name="left" value="0x00000003" />
+        <flag name="right" value="0x00000005" />
+        <flag name="top" value="0x00000030" />
+        <flag name="none" value="0x00000000" />
+        <flag name="end" value="0x00800005" />
+        <flag name="start" value="0x00800003" />
     </attr>
-    <attr name="ad" format="reference" />
-    <attr name="ae" format="integer" />
-    <attr name="af">
-        <enum name="m" value="0" />
-        <enum name="v" value="2" />
-        <enum name="w" value="1" />
+    <attr name="update_interval" format="integer" />
+    <attr name="dotSpacing" format="dimension" />
+    <attr name="dotRadius" format="dimension" />
+    <attr name="dotRadiusSelected" format="dimension" />
+    <attr name="dotColor" format="color" />
+    <attr name="dotColorSelected" format="color" />
+    <attr name="dotFadeWhenIdle" format="boolean" />
+    <attr name="dotFadeOutDelay" format="integer" />
+    <attr name="dotFadeOutDuration" format="integer" />
+    <attr name="dotFadeInDuration" format="integer" />
+    <attr name="dotShadowColor" format="color" />
+    <attr name="dotShadowRadius" format="dimension" />
+    <attr name="dotShadowDx" format="dimension" />
+    <attr name="dotShadowDy" format="dimension" />
+    <attr name="fontProviderAuthority" format="string" />
+    <attr name="fontProviderPackage" format="string" />
+    <attr name="fontProviderQuery" format="string" />
+    <attr name="fontProviderCerts" format="reference" />
+    <attr name="fontProviderFetchStrategy">
+        <enum name="async" value="1" />
+        <enum name="blocking" value="0" />
     </attr>
-    <attr name="ag" format="float" />
-    <attr name="ah" format="boolean" />
-    <attr name="ai" format="reference|color" />
-    <attr name="aj" format="string" />
-    <attr name="ak" format="integer" />
-    <attr name="al" format="boolean" />
-    <attr name="am" format="boolean" />
-    <attr name="an" format="reference">
-        <enum name="x" value="2" />
-        <enum name="y" value="0" />
-        <enum name="z" value="1" />
+    <attr name="fontProviderFetchTimeout" format="integer">
+        <enum name="forever" value="-1" />
     </attr>
-    <attr name="ao" format="reference">
-        <enum name="a0" value="2" />
-        <enum name="a1" value="0" />
-        <enum name="a2" value="1" />
+    <attr name="fontStyle">
+        <enum name="italic" value="1" />
+        <enum name="normal" value="0" />
     </attr>
-    <attr name="ap" format="reference|string" />
-    <attr name="aq" format="reference" />
-    <attr name="ar" format="reference" />
-    <attr name="as">
-        <flag name="h" value="0x00000050" />
-        <flag name="i" value="0x00000003" />
-        <flag name="j" value="0x00000005" />
-        <flag name="k" value="0x00000030" />
-        <flag name="o" value="0x00000011" />
-        <flag name="a3" value="0x00000001" />
-        <flag name="a4" value="0x00000010" />
-        <flag name="a5" value="0x00000008" />
-        <flag name="a6" value="0x00000080" />
-        <flag name="a7" value="0x00800005" />
-        <flag name="a8" value="0x00000077" />
-        <flag name="a9" value="0x00000007" />
-        <flag name="a_" value="0x00000070" />
-        <flag name="aa" value="0x00800003" />
+    <attr name="font" format="reference" />
+    <attr name="fontWeight" format="integer" />
+    <attr name="imageAspectRatioAdjust">
+        <enum name="none" value="0" />
+        <enum name="adjust_height" value="2" />
+        <enum name="adjust_width" value="1" />
     </attr>
-    <attr name="at" format="dimension" />
-    <attr name="au" format="dimension" />
-    <attr name="av" format="dimension" />
-    <attr name="aw" format="dimension" />
-    <attr name="ax" format="dimension" />
-    <attr name="ay" format="dimension" />
-    <attr name="az" format="dimension" />
-    <attr name="b0">
-        <flag name="h" value="0x00000050" />
-        <flag name="i" value="0x00000003" />
-        <flag name="j" value="0x00000005" />
-        <flag name="k" value="0x00000030" />
-        <flag name="o" value="0x00000011" />
-        <flag name="a3" value="0x00000001" />
-        <flag name="a4" value="0x00000010" />
+    <attr name="imageAspectRatio" format="float" />
+    <attr name="circleCrop" format="boolean" />
+    <attr name="color_sequence" format="reference|color" />
+    <attr name="layoutManager" format="string" />
+    <attr name="spanCount" format="integer" />
+    <attr name="reverseLayout" format="boolean" />
+    <attr name="stackFromEnd" format="boolean" />
+    <attr name="buttonSize" format="reference">
+        <enum name="icon_only" value="2" />
+        <enum name="standard" value="0" />
+        <enum name="wide" value="1" />
     </attr>
-    <attr name="b1" format="dimension" />
+    <attr name="colorScheme" format="reference">
+        <enum name="auto" value="2" />
+        <enum name="dark" value="0" />
+        <enum name="light" value="1" />
+    </attr>
+    <attr name="scopeUris" format="reference|string" />
+    <attr name="rectLayout" format="reference" />
+    <attr name="roundLayout" format="reference" />
+    <attr name="layout_gravityRound">
+        <flag name="bottom" value="0x00000050" />
+        <flag name="left" value="0x00000003" />
+        <flag name="right" value="0x00000005" />
+        <flag name="top" value="0x00000030" />
+        <flag name="center" value="0x00000011" />
+        <flag name="center_horizontal" value="0x00000001" />
+        <flag name="center_vertical" value="0x00000010" />
+        <flag name="clip_horizontal" value="0x00000008" />
+        <flag name="clip_vertical" value="0x00000080" />
+        <flag name="end" value="0x00800005" />
+        <flag name="fill" value="0x00000077" />
+        <flag name="fill_horizontal" value="0x00000007" />
+        <flag name="fill_vertical" value="0x00000070" />
+        <flag name="start" value="0x00800003" />
+    </attr>
+    <attr name="layout_widthRound" format="dimension" />
+    <attr name="layout_heightRound" format="dimension" />
+    <attr name="layout_marginRound" format="dimension" />
+    <attr name="layout_marginLeftRound" format="dimension" />
+    <attr name="layout_marginTopRound" format="dimension" />
+    <attr name="layout_marginRightRound" format="dimension" />
+    <attr name="layout_marginBottomRound" format="dimension" />
+    <attr name="circular_layout_gravity">
+        <flag name="bottom" value="0x00000050" />
+        <flag name="left" value="0x00000003" />
+        <flag name="right" value="0x00000005" />
+        <flag name="top" value="0x00000030" />
+        <flag name="center" value="0x00000011" />
+        <flag name="center_horizontal" value="0x00000001" />
+        <flag name="center_vertical" value="0x00000010" />
+    </attr>
+    <attr name="circular_text_size" format="dimension" />
 </resources>

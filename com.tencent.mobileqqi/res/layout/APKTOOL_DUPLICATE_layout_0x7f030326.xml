@@ -2,6 +2,6 @@
 <com.qzone.preview.FaceRelativeLayout android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01a9" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01aa" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
-    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806bb" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806bc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806ba" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806bb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </com.qzone.preview.FaceRelativeLayout>

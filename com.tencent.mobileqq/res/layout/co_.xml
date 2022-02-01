@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textAppearance="?ajj" android:gravity="center" android:layout_width="@dimen/bie" android:layout_height="@dimen/bif"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

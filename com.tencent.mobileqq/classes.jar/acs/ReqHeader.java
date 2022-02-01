@@ -7,12 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqHeader
   extends JceStruct
 {
-  public int guid;
-  public int mask;
-  public long qq;
+  public int guid = 0;
+  public int mask = 0;
+  public long qq = 0L;
   public String qua = "";
   public String sid = "";
-  public int version;
+  public int version = 0;
   
   public ReqHeader() {}
   
@@ -42,15 +42,16 @@ public final class ReqHeader
     paramJceOutputStream.write(this.qua, 1);
     paramJceOutputStream.write(this.qq, 2);
     paramJceOutputStream.write(this.guid, 3);
-    if (this.sid != null) {
-      paramJceOutputStream.write(this.sid, 4);
+    String str = this.sid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.mask, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acs.ReqHeader
  * JD-Core Version:    0.7.0.1
  */

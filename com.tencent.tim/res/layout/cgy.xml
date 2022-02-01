@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/bcg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:padding="@dimen/bcg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/lvq" android:layout_width="@dimen/bci" android:layout_height="@dimen/bci" android:layout_marginRight="@dimen/bcf" android:scaleType="centerCrop" android:contentDescription="@string/x4z" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/aii" android:gravity="center|left" android:id="@id/lve" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bci" android:layout_toRightOf="@id/lvq" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/e_w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/lvp" android:text="@string/wi3" style="@style/a_n" />
+                <TextView android:id="@id/lvo" android:layout_toRightOf="@id/lvp" style="@style/a_l" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/lvj" android:text="@string/wi1" style="@style/a_n" />
+                <TextView android:id="@id/lvi" android:layout_toRightOf="@id/lvj" style="@style/a_l" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/lvl" android:text="@string/wi2" style="@style/a_n" />
+                <TextView android:id="@id/lvk" android:layout_toRightOf="@id/lvl" style="@style/a_l" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/e_i" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/adl">
+                <TextView android:id="@id/lvg" android:text="@string/wi0" style="@style/a_n" />
+                <TextView android:id="@id/lvf" android:layout_toRightOf="@id/lvg" style="@style/a_l" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/e_w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bcg" style="@style/adl">
+                <TextView android:textSize="16.0sp" android:textColor="@color/aw3" android:gravity="center" android:id="@id/lvd" android:background="@drawable/e_w" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/whz" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</merge>

@@ -1,18 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/c8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t3" android:layout_marginTop="@dimen/t2" android:layout_marginRight="@dimen/t3"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include layout="@layout/db" />
-    <View android:background="@color/g0" android:layout_width="fill_parent" android:layout_height="@dimen/ta" android:layout_marginTop="2.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="@dimen/t1" android:layout_marginEnd="@dimen/t1" />
-    <LinearLayout android:id="@id/v_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/t1" android:layout_marginEnd="@dimen/t1">
-        <android.support.constraint.ConstraintLayout android:orientation="horizontal" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/vd" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
-            <android.support.constraint.ConstraintLayout android:clickable="false" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintEnd_toStartOf="@id/vd" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn">
-                <TextView android:textSize="@dimen/dq" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/vi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toTopOf="dn" />
-                <TextView android:textSize="@dimen/ko" android:textColor="#fffa7834" android:id="@id/vj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintStart_toStartOf="dn" app:layout_constraintTop_toBottomOf="@id/vi" />
-                <TextView android:textSize="@dimen/ko" android:textColor="#4d000000" android:id="@id/vk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/t2" app:layout_constraintBottom_toBottomOf="@id/vj" app:layout_constraintStart_toEndOf="@id/vj" app:layout_constraintTop_toTopOf="@id/vj" />
-            </android.support.constraint.ConstraintLayout>
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/vb" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="fitCenter" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintEnd_toEndOf="dn" app:layout_constraintTop_toTopOf="dn" />
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
-    <include layout="@layout/d_" />
-</LinearLayout>
+<com.tencent.mm.plugin.appbrand.widget.AppBrandActionBarCustomImageView android:id="@id/by3" android:layout_width="@dimen/qy" android:layout_height="@dimen/qy"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

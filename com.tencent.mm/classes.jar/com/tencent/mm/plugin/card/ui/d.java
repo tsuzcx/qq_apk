@@ -7,46 +7,46 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c ksS;
+  private c wzo;
   
   public d(c paramc)
   {
-    this.ksS = paramc;
-  }
-  
-  public final void aaK()
-  {
-    AppMethodBeat.i(88253);
-    if (this.ksS != null) {
-      this.ksS.a(null, null);
-    }
-    AppMethodBeat.o(88253);
+    this.wzo = paramc;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(88251);
-    if (this.ksS != null) {
-      am.bcd().add(this.ksS);
+    AppMethodBeat.i(113185);
+    if (this.wzo != null) {
+      am.dkJ().add(this.wzo);
     }
-    AppMethodBeat.o(88251);
+    AppMethodBeat.o(113185);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(88252);
-    if (this.ksS != null)
+    AppMethodBeat.i(113186);
+    if (this.wzo != null)
     {
-      am.bcd().remove(this.ksS);
-      this.ksS.release();
-      this.ksS = null;
+      am.dkJ().remove(this.wzo);
+      this.wzo.release();
+      this.wzo = null;
     }
-    AppMethodBeat.o(88252);
+    AppMethodBeat.o(113186);
+  }
+  
+  public final void onNotify()
+  {
+    AppMethodBeat.i(113187);
+    if (this.wzo != null) {
+      this.wzo.onNotifyChange(null, null);
+    }
+    AppMethodBeat.o(113187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ public final class qqstory_struct$DateVideoCollectionID
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "collection_id", "collection_type", "feed_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, DateVideoCollectionID.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "collection_id", "collection_type", "feed_id" }, new Object[] { localInteger, localInteger, localByteStringMicro }, DateVideoCollectionID.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID
  * JD-Core Version:    0.7.0.1
  */

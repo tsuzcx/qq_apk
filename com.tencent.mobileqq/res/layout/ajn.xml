@@ -19,6 +19,6 @@
                 <TextView android:textSize="15.0dip" android:textColor="@color/skin_blue_item" android:layout_gravity="bottom|center|right" android:id="@id/bzk" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </com.tencent.mobileqq.troop.widget.ExpandableTextView>
         </LinearLayout>
-        <com.tencent.mobileqq.troop.widget.TroopMoreDetailView android:id="@id/k0h" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.mobileqq.troop.troopcard.ui.TroopMoreDetailView android:id="@id/k0h" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
 </com.tencent.mobileqq.widget.BounceScrollView>

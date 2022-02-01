@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.qphone.base.util.QLog;
 
 public class AudioPanelViewPager
   extends ViewPager
 {
-  private AudioPanel a;
   public boolean a;
+  private AudioPanel b;
   
   public AudioPanelViewPager(Context paramContext)
   {
@@ -25,49 +25,53 @@ public class AudioPanelViewPager
   
   public void a(AudioPanel paramAudioPanel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel = paramAudioPanel;
+    this.b = paramAudioPanel;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.b() == 1) {}
-    try
-    {
-      bool1 = super.onInterceptTouchEvent(paramMotionEvent);
-      return bool1;
-    }
-    catch (IllegalArgumentException paramMotionEvent)
-    {
-      do
+    if (this.b.getStatus() == 1) {
+      try
       {
-        bool1 = bool2;
-      } while (!QLog.isDevelopLevel());
-      QLog.d("AudioPanelViewPager", 4, "onInterceptTouchEvent: " + paramMotionEvent);
-      return false;
-    }
-    catch (ArrayIndexOutOfBoundsException paramMotionEvent)
-    {
-      do
+        boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+        return bool;
+      }
+      catch (ArrayIndexOutOfBoundsException paramMotionEvent)
       {
-        bool1 = bool2;
-      } while (!QLog.isDevelopLevel());
-      QLog.d("AudioPanelViewPager", 4, "onInterceptTouchEvent: " + paramMotionEvent);
+        if (QLog.isDevelopLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onInterceptTouchEvent: ");
+          localStringBuilder.append(paramMotionEvent);
+          QLog.d("AudioPanelViewPager", 4, localStringBuilder.toString());
+          return false;
+        }
+      }
+      catch (IllegalArgumentException paramMotionEvent)
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isDevelopLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onInterceptTouchEvent: ");
+          localStringBuilder.append(paramMotionEvent);
+          QLog.d("AudioPanelViewPager", 4, localStringBuilder.toString());
+        }
+      }
     }
     return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -87,12 +91,12 @@ public class AudioPanelViewPager
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     super.setAdapter(paramPagerAdapter);
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelViewPager
  * JD-Core Version:    0.7.0.1
  */

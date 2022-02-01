@@ -11,7 +11,7 @@ public final class s
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 2, paramzzav.statusCode);
-    c.a(paramParcel, 3, paramzzav.Tn, paramInt);
+    c.a(paramParcel, 3, paramzzav.Vc, paramInt);
     c.v(paramParcel, i);
   }
 }

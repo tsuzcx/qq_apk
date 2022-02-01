@@ -3,6 +3,7 @@ package rx.internal.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collection<Lrx.Subscription;>;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,36 +34,27 @@ public final class SubscriptionList
     if (paramCollection == null) {
       return;
     }
-    Subscription localSubscription = null;
+    Object localObject = null;
     Iterator localIterator = paramCollection.iterator();
-    paramCollection = localSubscription;
-    for (;;)
+    paramCollection = (Collection<Subscription>)localObject;
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label68;
-      }
-      localSubscription = (Subscription)localIterator.next();
+      localObject = (Subscription)localIterator.next();
       try
       {
-        localSubscription.unsubscribe();
+        ((Subscription)localObject).unsubscribe();
       }
       catch (Throwable localThrowable)
       {
-        if (paramCollection != null) {
-          break label73;
+        localObject = paramCollection;
+        if (paramCollection == null) {
+          localObject = new ArrayList();
         }
+        ((List)localObject).add(localThrowable);
+        paramCollection = (Collection<Subscription>)localObject;
       }
     }
-    paramCollection = new ArrayList();
-    label68:
-    label73:
-    for (;;)
-    {
-      paramCollection.add(localThrowable);
-      break;
-      Exceptions.throwIfAny(paramCollection);
-      return;
-    }
+    Exceptions.throwIfAny(paramCollection);
   }
   
   public void add(Subscription paramSubscription)
@@ -93,23 +85,25 @@ public final class SubscriptionList
   
   public void clear()
   {
-    if (!this.unsubscribed) {}
-    try
-    {
-      LinkedList localLinkedList = this.subscriptions;
-      this.subscriptions = null;
-      unsubscribeFromAll(localLinkedList);
-      return;
+    if (!this.unsubscribed) {
+      try
+      {
+        LinkedList localLinkedList = this.subscriptions;
+        this.subscriptions = null;
+        unsubscribeFromAll(localLinkedList);
+        return;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public boolean hasSubscriptions()
   {
+    boolean bool1 = this.unsubscribed;
     boolean bool2 = false;
-    if (!this.unsubscribed)
+    if (!bool1)
     {
-      boolean bool1 = bool2;
+      bool1 = bool2;
       try
       {
         if (!this.unsubscribed)
@@ -141,15 +135,14 @@ public final class SubscriptionList
       try
       {
         LinkedList localLinkedList = this.subscriptions;
-        if ((this.unsubscribed) || (localLinkedList == null)) {
-          return;
-        }
-        boolean bool = localLinkedList.remove(paramSubscription);
-        if (bool)
+        if ((!this.unsubscribed) && (localLinkedList != null))
         {
-          paramSubscription.unsubscribe();
-          return;
+          boolean bool = localLinkedList.remove(paramSubscription);
+          if (bool) {
+            paramSubscription.unsubscribe();
+          }
         }
+        else {}
       }
       finally {}
     }
@@ -175,7 +168,7 @@ public final class SubscriptionList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.SubscriptionList
  * JD-Core Version:    0.7.0.1
  */

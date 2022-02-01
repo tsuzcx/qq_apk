@@ -9,7 +9,7 @@ public final class GetBulkImageClassifyRsp
   extends JceStruct
 {
   static ArrayList<SmartFilterRspItem> cache_MiltiRsps = new ArrayList();
-  public ArrayList<SmartFilterRspItem> MiltiRsps;
+  public ArrayList<SmartFilterRspItem> MiltiRsps = null;
   
   static
   {
@@ -31,14 +31,15 @@ public final class GetBulkImageClassifyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.MiltiRsps != null) {
-      paramJceOutputStream.write(this.MiltiRsps, 0);
+    ArrayList localArrayList = this.MiltiRsps;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyRsp
  * JD-Core Version:    0.7.0.1
  */

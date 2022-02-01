@@ -5,27 +5,27 @@ import org.xwalk.core.Log;
 
 public final class j$b
 {
-  public int BKc;
-  public int BKd;
-  public int BKe;
-  public int BKf;
-  public String BKg;
-  public String BKh;
-  public String xNn;
-  public String xNo;
-  public String xNp;
+  public String abCq;
+  public String abCr;
+  public String abCs;
+  public int aipg;
+  public int aiph;
+  public int aipi;
+  public int aipj;
+  public String aipk;
+  public String aipl;
   
   public static b c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
     k = 1;
-    AppMethodBeat.i(85295);
+    AppMethodBeat.i(154354);
     b localb = new b();
-    localb.xNn = paramString1;
-    localb.BKh = paramString2;
-    localb.BKc = paramInt1;
-    localb.BKe = paramInt2;
-    localb.xNo = paramString3;
-    localb.xNp = paramString4;
+    localb.abCq = paramString1;
+    localb.aipl = paramString2;
+    localb.aipg = paramInt1;
+    localb.aipi = paramInt2;
+    localb.abCr = paramString3;
+    localb.abCs = paramString4;
     if (paramInt1 > 0) {
       for (;;)
       {
@@ -35,10 +35,10 @@ public final class j$b
           j = 0;
           i = paramInt1;
         }
-        catch (Exception paramString1)
+        finally
         {
           int j;
-          Log.e("XWWebView", "SelectInfo getSelectInfo error:" + paramString1.getMessage());
+          Log.e("XWWebView", "SelectInfo getSelectInfo error:".concat(String.valueOf(paramString1)));
           continue;
           paramInt1 = i;
           continue;
@@ -82,14 +82,14 @@ public final class j$b
     i = paramInt1 * -1;
     paramString2 = paramString1 + paramString4;
     j = 1;
-    break label397;
+    break label387;
     m = paramInt2 * -1;
     str = new StringBuffer(paramString1).reverse().toString() + new StringBuffer(paramString3).reverse().toString();
-    break label411;
+    break label401;
     while (paramInt1 <= str.length())
     {
       if (m <= str.substring(0, paramInt1).getBytes().length) {
-        break label426;
+        break label416;
       }
       i = paramInt1;
       paramInt1 += 1;
@@ -99,26 +99,25 @@ public final class j$b
       Log.e("XWWebView", "getSelectInfo error prefixIndex:" + i + ",suffixIndex:" + paramInt2);
       paramInt2 = 0;
       paramInt1 = 0;
-      localb.BKd = paramInt1;
-      localb.BKf = paramInt2;
-      localb.BKg = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
-      AppMethodBeat.o(85295);
+      localb.aiph = paramInt1;
+      localb.aipj = paramInt2;
+      localb.aipk = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
+      AppMethodBeat.o(154354);
       return localb;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(85296);
+    AppMethodBeat.i(154355);
     try
     {
-      String str = "SelectInfo PickedWord:" + this.xNn + ",PrefixText:" + this.xNo + ",SuffixText:" + this.xNp + ",PrefixOffset:" + this.BKc + ",prefixIndex:" + this.BKd + ",SuffixOffset:" + this.BKe + ",SuffixIndex:" + this.BKf + ",ResultPickedWord:" + this.BKh + ",OffsetedPickedWord:" + this.BKg;
-      AppMethodBeat.o(85296);
+      String str = "SelectInfo PickedWord:" + this.abCq + ",PrefixText:" + this.abCr + ",SuffixText:" + this.abCs + ",PrefixOffset:" + this.aipg + ",prefixIndex:" + this.aiph + ",SuffixOffset:" + this.aipi + ",SuffixIndex:" + this.aipj + ",ResultPickedWord:" + this.aipl + ",OffsetedPickedWord:" + this.aipk;
       return str;
     }
-    catch (Exception localException)
+    finally
     {
-      AppMethodBeat.o(85296);
+      AppMethodBeat.o(154355);
     }
     return "SelectInfo toString error";
   }

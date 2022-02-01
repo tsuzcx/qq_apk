@@ -2,17 +2,16 @@ package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.page.ah;
 
-@Deprecated
 public final class n
-  extends a<z>
+  extends a<ah>
 {
-  n()
+  public n()
   {
-    super(r.iqT.ordinal());
-    AppMethodBeat.i(132246);
-    AppMethodBeat.o(132246);
+    super(x.tkL.ordinal());
+    AppMethodBeat.i(323835);
+    AppMethodBeat.o(323835);
   }
 }
 

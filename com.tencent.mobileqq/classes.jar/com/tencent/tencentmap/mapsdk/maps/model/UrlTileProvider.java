@@ -20,32 +20,38 @@ public abstract class UrlTileProvider
   
   public final Tile getTile(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject2 = null;
-    Object localObject1 = getTileUrl(paramInt1, paramInt2, paramInt3);
-    Tile localTile = NO_TILE;
-    if (localObject1 == null) {
-      or.b("TileOverlay", "Tile的请求URL为NULL，返回空瓦块");
-    }
-    NetResponse localNetResponse;
-    do
+    Object localObject = getTileUrl(paramInt1, paramInt2, paramInt3);
+    Tile localTile2 = NO_TILE;
+    if (localObject == null)
     {
-      while ((localObject1 == null) || (localObject1.length == 0))
+      or.b("TileOverlay", "Tile的请求URL为NULL，返回空瓦块");
+      return localTile2;
+    }
+    NetResponse localNetResponse = requestTileData(((URL)localObject).toString());
+    Tile localTile1 = null;
+    localObject = localTile1;
+    if (localNetResponse != null) {
+      if (localNetResponse.available())
       {
-        return localTile;
-        localNetResponse = requestTileData(((URL)localObject1).toString());
-        localObject1 = localObject2;
-        if (localNetResponse != null)
-        {
-          if (!localNetResponse.available()) {
-            break;
-          }
-          localObject1 = localNetResponse.data;
+        localObject = localNetResponse.data;
+      }
+      else
+      {
+        localObject = localTile1;
+        if ((localNetResponse.exception instanceof qk)) {
+          return new Tile(this.a, this.b, null);
         }
       }
-      return new Tile(this.a, this.b, (byte[])localObject1);
-      localObject1 = localObject2;
-    } while (!(localNetResponse.exception instanceof qk));
-    return new Tile(this.a, this.b, null);
+    }
+    localTile1 = localTile2;
+    if (localObject != null)
+    {
+      localTile1 = localTile2;
+      if (localObject.length != 0) {
+        localTile1 = new Tile(this.a, this.b, (byte[])localObject);
+      }
+    }
+    return localTile1;
   }
   
   public abstract URL getTileUrl(int paramInt1, int paramInt2, int paramInt3);
@@ -66,7 +72,7 @@ public abstract class UrlTileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.UrlTileProvider
  * JD-Core Version:    0.7.0.1
  */

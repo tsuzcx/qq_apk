@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
-        <include layout="@layout/a7d" />
-    </LinearLayout>
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="66.0dip" android:src="@drawable/aj4" />
-    <Button android:textSize="20.0dip" android:id="@id/dln" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:text="@string/em_" style="@style/nq" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/dk7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/dyq" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/ahy" app:refreshLayout="@layout/ahz">
+            <com.tencent.mm.plugin.finder.live.view.FinderLiveRecyclerView android:id="@id/dk8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </FrameLayout>
+</FrameLayout>

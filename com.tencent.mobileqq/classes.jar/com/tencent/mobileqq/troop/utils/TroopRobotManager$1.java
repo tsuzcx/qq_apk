@@ -1,41 +1,48 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bcpg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.relationx.icebreaking.IceBreakingUtil;
+import com.tencent.mobileqq.tofumsg.TofuHelper;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
 
-public class TroopRobotManager$1
-  implements Runnable
+class TroopRobotManager$1
+  extends FriendListObserver
 {
-  public TroopRobotManager$1(bcpg parambcpg) {}
+  TroopRobotManager$1(TroopRobotManager paramTroopRobotManager) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    oidb_0x496.Robot localRobot = new oidb_0x496.Robot();
-    byte[] arrayOfByte = this.this$0.a();
-    if (arrayOfByte != null) {}
-    try
-    {
-      localRobot.mergeFrom(arrayOfByte);
-      this.this$0.a(localRobot);
-      bcpg.a(this.this$0);
+    Object localObject = (ITroopRobotService)this.a.g.getRuntimeService(ITroopRobotService.class, "all");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramObject);
+    paramObject = localStringBuilder.toString();
+    if (!((ITroopRobotService)localObject).isRobotUin(paramObject)) {
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    if (paramBoolean)
     {
-      for (;;)
+      TroopRobotManager.a(this.a, paramObject);
+      if ((this.a.g instanceof QQAppInterface))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, "file data error");
-        }
+        localObject = (QQAppInterface)this.a.g;
+        ((FriendsManager)this.a.g.getManager(QQManagerFactory.FRIENDS_MANAGER)).s(paramObject);
+        IceBreakingUtil.a((QQAppInterface)localObject, paramObject);
+        TofuHelper.a((QQAppInterface)localObject, paramObject);
+        ((QQAppInterface)localObject).getProxyManager().g().a(paramObject, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.1
  * JD-Core Version:    0.7.0.1
  */

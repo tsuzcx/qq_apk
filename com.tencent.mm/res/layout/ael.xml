@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m2" android:textColor="@color/w_" android:textColorHint="@color/s5" android:id="@id/lh" android:background="@drawable/b9e" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
-    <TextView android:textSize="@dimen/nf" android:textColor="@color/s4" android:id="@id/bq1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" />
-</LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/h66" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/df" android:singleLine="true" android:layout_toLeftOf="@id/cu_" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_0" android:ellipsize="end" android:gravity="center" android:id="@id/cu_" android:background="@drawable/a0i" android:layout_width="@dimen/db" android:layout_height="@dimen/d0" android:text="@string/dg4" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</FrameLayout>

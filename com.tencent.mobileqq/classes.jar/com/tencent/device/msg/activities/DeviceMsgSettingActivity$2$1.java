@@ -1,11 +1,9 @@
 package com.tencent.device.msg.activities;
 
-import zxj;
-
-public class DeviceMsgSettingActivity$2$1
+class DeviceMsgSettingActivity$2$1
   implements Runnable
 {
-  public DeviceMsgSettingActivity$2$1(zxj paramzxj) {}
+  DeviceMsgSettingActivity$2$1(DeviceMsgSettingActivity.2 param2) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class DeviceMsgSettingActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceMsgSettingActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

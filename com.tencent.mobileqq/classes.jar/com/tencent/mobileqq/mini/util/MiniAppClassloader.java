@@ -19,24 +19,35 @@ public class MiniAppClassloader
   {
     try
     {
-      Class localClass = super.findClass(paramString);
-      return localClass;
+      localObject = super.findClass(paramString);
+      return localObject;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Log.w("MiniAppClassloader", "ClassNotFoundException, load class from old loader: " + paramString);
-      return this.originClassLoader.loadClass(paramString);
+      Object localObject;
+      break label48;
     }
     catch (InternalError localInternalError)
     {
-      Log.w("MiniAppClassloader", "InternalError, load class from old loader: " + paramString);
+      label8:
+      label48:
+      break label8;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("InternalError, load class from old loader: ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.w("MiniAppClassloader", ((StringBuilder)localObject).toString());
+    return this.originClassLoader.loadClass(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ClassNotFoundException, load class from old loader: ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.w("MiniAppClassloader", ((StringBuilder)localObject).toString());
     return this.originClassLoader.loadClass(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.MiniAppClassloader
  * JD-Core Version:    0.7.0.1
  */

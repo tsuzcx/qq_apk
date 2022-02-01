@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/np6" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" style="@style/ag0">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/np5" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="14.0dip">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/gue" android:adjustViewBounds="true" />
+            <ProgressBar android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" style="@style/ae2" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/gp6" android:adjustViewBounds="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/np4" style="@style/afx" />
+        <RelativeLayout android:id="@id/np7" android:padding="0.0dip" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="0.0dip" android:layout_marginBottom="10.0dip" />
+        <TextView android:id="@id/np8" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/afz" />
+        <ViewStub android:id="@id/np_" android:layout="@layout/ctm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

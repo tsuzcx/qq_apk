@@ -9,39 +9,41 @@ class WordMatchManager$5
   
   public void run()
   {
-    if (this.a == 2) {
-      this.this$0.a(this.this$0.a, 1);
-    }
-    do
+    int i = this.a;
+    if (i == 2)
     {
+      WordMatchManager localWordMatchManager = this.this$0;
+      localWordMatchManager.a(localWordMatchManager.c, 1);
       return;
-      if (this.a == 1)
+    }
+    if (i == 1)
+    {
+      if (this.this$0.m)
       {
-        if (this.this$0.e)
-        {
-          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 3), 8, null, true);
-          return;
-        }
-        this.this$0.a(true);
+        ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 3), 8, null, true);
         return;
       }
-      if (this.a == 3)
+      this.this$0.a(true);
+      return;
+    }
+    if (i == 3)
+    {
+      if (this.this$0.m)
       {
-        if (this.this$0.e)
-        {
-          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 4), 8, null, true);
-          return;
-        }
-        this.this$0.a(true);
+        ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.this$0, 4), 8, null, true);
         return;
       }
-    } while (this.a != 4);
-    this.this$0.a(true);
+      this.this$0.a(true);
+      return;
+    }
+    if (i == 4) {
+      this.this$0.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.5
  * JD-Core Version:    0.7.0.1
  */

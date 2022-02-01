@@ -15,20 +15,20 @@ class NewGifDrawable$WaitRunnable
   
   public void run()
   {
-    long l = 0L;
     NewGifDrawable.access$000(this.this$0);
     NewGifDrawable localNewGifDrawable = this.this$0;
-    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.this$0.mExecutor;
+    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = localNewGifDrawable.mExecutor;
     RenderTask localRenderTask = NewGifDrawable.access$200(this.this$0);
-    if (this.lastFrameRemainder > 0L) {
-      l = this.lastFrameRemainder;
+    long l = this.lastFrameRemainder;
+    if (l <= 0L) {
+      l = 0L;
     }
     localNewGifDrawable.mSchedule = localScheduledThreadPoolExecutor.schedule(localRenderTask, l, TimeUnit.MILLISECONDS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.gif.NewGifDrawable.WaitRunnable
  * JD-Core Version:    0.7.0.1
  */

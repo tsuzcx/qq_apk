@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.JSONException;
@@ -60,22 +60,38 @@ public class PublicAccountShowPictureReport
     if (!this.isReport) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.pic_index_arr != null)
+    Object localObject2 = new StringBuilder();
+    Object localObject1 = this.pic_index_arr;
+    if (localObject1 != null)
     {
-      Iterator localIterator = this.pic_index_arr.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((Integer)localIterator.next()).append(",");
+      localObject1 = ((HashSet)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        ((StringBuilder)localObject2).append((Integer)((Iterator)localObject1).next());
+        ((StringBuilder)localObject2).append(",");
       }
     }
-    azqs.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
+    localObject1 = this.puin;
+    int i = this.slide_number;
+    int j = Integer.parseInt(this.imgCount);
+    String str = this.articleId;
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(this.leave_mode);
+    ((StringBuilder)localObject3).append("");
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.time_on_show_end - this.time_on_show_start);
+    localStringBuilder.append("");
+    ReportController.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", (String)localObject1, "0X80066AB", "0X80066AB", i - 1, j, 0, str, (String)localObject2, (String)localObject3, localStringBuilder.toString());
   }
   
   public void reset()
   {
     this.isReport = false;
-    if (this.pic_index_arr != null) {
-      this.pic_index_arr.clear();
+    HashSet localHashSet = this.pic_index_arr;
+    if (localHashSet != null) {
+      localHashSet.clear();
     }
     this.leave_mode = 2;
     this.slide_number = 0;

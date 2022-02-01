@@ -8,12 +8,12 @@ final class a$1
 {
   public final boolean accept(File paramFile, String paramString)
   {
-    return paramString.endsWith(".crashlog");
+    return (paramString.endsWith(".crashlog")) || (paramString.endsWith(".preventcrashlog"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.a.1
  * JD-Core Version:    0.7.0.1
  */

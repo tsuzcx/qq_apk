@@ -1,54 +1,160 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.SubAccountMessageActivity;
-import com.tencent.mobileqq.adapter.SubAccountMessageAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
 
 public class dly
-  extends FriendListObserver
+  extends MessageObserver
 {
   public dly(SubAccountMessageActivity paramSubAccountMessageActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if ((paramBoolean) && (SubAccountMessageActivity.a(this.a) != null) && (SubAccountMessageActivity.a(this.a).subuin != null) && (paramString != null) && (SubAccountMessageActivity.a(this.a).subuin.equals(paramString)))
+    if (QLog.isColorLevel())
     {
-      paramString = ContactUtils.b(this.a.b, paramString, false);
-      if ((!TextUtils.isEmpty(paramString)) && ((TextUtils.isEmpty(SubAccountMessageActivity.a(this.a).subname)) || (!paramString.equals(SubAccountMessageActivity.a(this.a).subname))))
-      {
-        SubAccountMessageActivity.a(this.a).subname = paramString;
-        if (SubAccountMessageActivity.a(this.a) != null) {
-          SubAccountMessageActivity.a(this.a).setText(paramString);
-        }
+      QLog.i(SubAccountMessageActivity.a(this.a), 2, "onPushSubAccountMsgNotify.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.i(SubAccountMessageActivity.a(this.a), 2, "onGetSubAccountMsgNotify.data.errorType=" + paramSubAccountBackProtocData.p + "  errorMsg=" + paramSubAccountBackProtocData.a + " mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + "  subAccount=" + paramSubAccountBackProtocData.c + " isNeedStartGetMsg=" + paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
       }
+    }
+    paramString = this.a.getString(2131562520);
+    if (paramSubAccountBackProtocData == null) {
+      return;
+    }
+    if (paramSubAccountBackProtocData.p == 0) {}
+    for (int i = 2131563288;; i = 2131563291)
+    {
+      paramSubAccountBackProtocData = this.a.getString(i);
+      this.a.a(paramString, paramSubAccountBackProtocData, this.a.getString(2131562543), new dlz(this));
+      return;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    do
+    boolean bool2 = true;
+    boolean bool1;
+    if (QLog.isColorLevel())
+    {
+      String str = SubAccountMessageActivity.a(this.a);
+      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSucc=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (!paramBoolean)
+      {
+        bool1 = true;
+        QLog.d(str, 2, bool1 + " nextAction=" + paramString2);
+      }
+    }
+    else
+    {
+      paramString1 = this.a;
+      if (paramBoolean) {
+        break label137;
+      }
+      paramBoolean = bool2;
+      label92:
+      SubAccountMessageActivity.a(paramString1, paramBoolean);
+      if (!"sub.account.unbind".equals(paramString2)) {
+        break label142;
+      }
+      SubAccountAssistantManager.a().a(this.a.b, SubAccountMessageActivity.a(this.a).subuin);
+    }
+    label137:
+    label142:
+    while (!"sub.account.switchAccount".equals(paramString2))
     {
       return;
-      if (SubAccountMessageActivity.a(this.a) != null)
+      bool1 = false;
+      break;
+      paramBoolean = false;
+      break label92;
+    }
+    SubAccountMessageActivity.b(this.a);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    int i = 2;
+    if (QLog.isColorLevel())
+    {
+      QLog.i(SubAccountMessageActivity.a(this.a), 2, "onGetSubAccountMsgNotify.isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.i(SubAccountMessageActivity.a(this.a), 2, "onGetSubAccountMsgNotify.data.errorType=" + paramSubAccountBackProtocData.p + "  errorMsg=" + paramSubAccountBackProtocData.a + " mainAccount=" + paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString + "  subAccount=" + paramSubAccountBackProtocData.c + " isNeedStartGetMsg=" + paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
+      }
+    }
+    Object localObject = SubAccountMessageActivity.a(this.a);
+    if (paramBoolean) {
+      i = 0;
+    }
+    ((PullRefreshHeader)localObject).a(i);
+    SubAccountMessageActivity.a(this.a, 800L);
+    if (paramBoolean)
+    {
+      SubAccountMessageActivity.c(this.a);
+      SubAccountMessageActivity.d(this.a);
+    }
+    for (;;)
+    {
+      SubAccountMessageActivity.b(this.a, false);
+      return;
+      if ((!paramBoolean) && (paramSubAccountBackProtocData != null))
       {
-        int i = 0;
-        while (i < SubAccountMessageActivity.a(this.a).getChildCount())
+        localObject = this.a.getString(2131562517);
+        switch (paramSubAccountBackProtocData.p)
         {
-          View localView = SubAccountMessageActivity.a(this.a).getChildAt(i);
-          SubAccountMessageActivity.a(this.a).a(paramString, localView);
-          i += 1;
+        case 1001: 
+        case 1006: 
+        case 1007: 
+        case 1003: 
+        case 1005: 
+        case 1009: 
+        default: 
+          break;
+        case 1002: 
+          paramString = this.a.getString(2131563038);
+          SubAccountMessageActivity.a(this.a, (String)localObject, paramString);
+          break;
+        case 1004: 
+          String str = paramSubAccountBackProtocData.a;
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            switch (paramSubAccountBackProtocData.q)
+            {
+            default: 
+              localObject = this.a.getString(2131561673);
+            }
+          }
+          for (;;)
+          {
+            SubAccountMessageActivity.a(this.a, 0, (String)localObject, paramString);
+            break;
+            localObject = this.a.getString(2131561673);
+            continue;
+            localObject = this.a.getString(2131561672);
+            continue;
+            localObject = this.a.getString(2131562586);
+          }
+        case 1008: 
+          paramString = this.a.getString(2131563039);
+          SubAccountMessageActivity.a(this.a, (String)localObject, paramString);
+          break;
+        case 1010: 
+          if (SubAccountMessageActivity.b(this.a))
+          {
+            localObject = this.a.getString(2131561673);
+            paramString = null;
+            if (paramSubAccountBackProtocData != null) {
+              paramString = paramSubAccountBackProtocData.c;
+            }
+            SubAccountMessageActivity.a(this.a, 1, (String)localObject, paramString);
+          }
+          break;
         }
       }
-    } while ((SubAccountMessageActivity.a(this.a) == null) || (SubAccountMessageActivity.a(this.a).subuin == null) || (!SubAccountMessageActivity.a(this.a).subuin.equals(paramString)));
-    paramString = this.a.b.b(paramString);
-    SubAccountMessageActivity.a(this.a).setImageDrawable(paramString);
+    }
   }
 }
 

@@ -8,9 +8,9 @@ public final class RespHeader
   extends JceStruct
 {
   static int cache_eReplyCode;
-  public int eReplyCode;
-  public long lMID;
-  public short shVersion;
+  public int eReplyCode = 0;
+  public long lMID = 0L;
+  public short shVersion = 0;
   public String strResult = "";
   
   public RespHeader() {}
@@ -36,14 +36,15 @@ public final class RespHeader
     paramJceOutputStream.write(this.shVersion, 0);
     paramJceOutputStream.write(this.lMID, 1);
     paramJceOutputStream.write(this.eReplyCode, 2);
-    if (this.strResult != null) {
-      paramJceOutputStream.write(this.strResult, 3);
+    String str = this.strResult;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborComm.RespHeader
  * JD-Core Version:    0.7.0.1
  */

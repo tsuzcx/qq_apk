@@ -14,54 +14,59 @@ class VasWebviewJsPluginV2$SubscriberMethod$1
   
   public void run()
   {
-    try
-    {
-      Class[] arrayOfClass = this.this$0.method.getParameterTypes();
-      if (TextUtils.isEmpty(this.this$0.args))
-      {
-        if ((arrayOfClass.length == 1) && (VasWebviewJsPluginV2.JsData.class.isAssignableFrom(arrayOfClass[0])))
-        {
-          this.this$0.method.invoke(this.val$weakReferenceInstance.get(), new Object[] { this.val$jsData });
-          return;
-        }
-        this.this$0.method.invoke(this.val$weakReferenceInstance.get(), new Object[0]);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("VasWebviewJsPluginV2", 1, localException, new Object[0]);
-      return;
-    }
-    String[] arrayOfString = this.this$0.args.split("\\|");
-    Object[] arrayOfObject = new Object[arrayOfString.length];
-    int i = 0;
     for (;;)
     {
-      int j = arrayOfObject.length;
-      if (i < j) {
-        try
+      Object[] arrayOfObject;
+      int i;
+      try
+      {
+        Object localObject1 = this.this$0.method.getParameterTypes();
+        if (TextUtils.isEmpty(this.this$0.args))
         {
-          Object localObject1 = this.val$json.get(arrayOfString[i]);
-          arrayOfObject[i] = localObject1;
-          i += 1;
+          if ((localObject1.length == 1) && (VasWebviewJsPluginV2.JsData.class.isAssignableFrom(localObject1[0])))
+          {
+            this.this$0.method.invoke(this.val$weakReferenceInstance.get(), new Object[] { this.val$jsData });
+            return;
+          }
+          this.this$0.method.invoke(this.val$weakReferenceInstance.get(), new Object[0]);
+          return;
         }
-        catch (JSONException localJSONException)
+        String[] arrayOfString = this.this$0.args.split("\\|");
+        arrayOfObject = new Object[arrayOfString.length];
+        i = 0;
+        int j = arrayOfObject.length;
+        if (i < j)
         {
-          for (;;)
+          localObject1 = null;
+          try
+          {
+            Object localObject2 = this.val$json.get(arrayOfString[i]);
+            localObject1 = localObject2;
+          }
+          catch (JSONException localJSONException)
           {
             localJSONException.printStackTrace();
-            Object localObject2 = null;
           }
         }
+        else
+        {
+          this.this$0.method.invoke(this.val$weakReferenceInstance.get(), arrayOfObject);
+          return;
+        }
       }
+      catch (Exception localException)
+      {
+        QLog.e("VasWebviewJsPluginV2", 1, localException, new Object[0]);
+        return;
+      }
+      arrayOfObject[i] = localException;
+      i += 1;
     }
-    this.this$0.method.invoke(this.val$weakReferenceInstance.get(), arrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPluginV2.SubscriberMethod.1
  * JD-Core Version:    0.7.0.1
  */

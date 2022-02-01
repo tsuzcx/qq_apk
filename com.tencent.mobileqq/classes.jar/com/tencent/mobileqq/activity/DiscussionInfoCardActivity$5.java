@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import alri;
-import alrj;
-import alrk;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionHandler.ReqDiscussInfo;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,27 +14,34 @@ class DiscussionInfoCardActivity$5
   
   public void run()
   {
-    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.this$0).a(DiscussionInfoCardActivity.a(this.this$0));
+    ArrayList localArrayList = DiscussionInfoCardActivity.d(this.this$0).a(DiscussionInfoCardActivity.c(this.this$0));
     this.this$0.a(localArrayList);
-    if (this.a) {}
-    try
-    {
-      alrj localalrj = new alrj();
-      localalrj.a = String.valueOf(DiscussionInfoCardActivity.a(this.this$0));
-      localalrj.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.this$0).a(localalrj);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("DiscussionInfoCardActivity", 2, "initDiscussionView getDiscussInfo error disUin=" + DiscussionInfoCardActivity.a(this.this$0), localException);
+    if (this.a) {
+      try
+      {
+        localObject = new DiscussionHandler.ReqDiscussInfo();
+        ((DiscussionHandler.ReqDiscussInfo)localObject).a = String.valueOf(DiscussionInfoCardActivity.c(this.this$0));
+        ((DiscussionHandler.ReqDiscussInfo)localObject).c = localArrayList.size();
+        DiscussionInfoCardActivity.e(this.this$0).a((DiscussionHandler.ReqDiscussInfo)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("initDiscussionView getDiscussInfo error disUin=");
+          ((StringBuilder)localObject).append(DiscussionInfoCardActivity.c(this.this$0));
+          QLog.d("DiscussionInfoCardActivity", 2, ((StringBuilder)localObject).toString(), localException);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.5
  * JD-Core Version:    0.7.0.1
  */

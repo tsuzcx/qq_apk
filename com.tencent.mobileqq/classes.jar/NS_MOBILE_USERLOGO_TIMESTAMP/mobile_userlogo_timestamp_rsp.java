@@ -38,19 +38,20 @@ public final class mobile_userlogo_timestamp_rsp
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    Object localObject;
-    if (cache_result == null)
+    Object localObject = cache_result;
+    Long localLong = Long.valueOf(0L);
+    if (localObject == null)
     {
       cache_result = new HashMap();
       localObject = new s_user_logo();
-      cache_result.put(Long.valueOf(0L), localObject);
+      cache_result.put(localLong, localObject);
     }
     this.result = ((Map)paramJceInputStream.read(cache_result, 0, false));
     if (cache_skin_data == null)
     {
       cache_skin_data = new HashMap();
       localObject = new s_skin_info();
-      cache_skin_data.put(Long.valueOf(0L), localObject);
+      cache_skin_data.put(localLong, localObject);
     }
     this.skin_data = ((Map)paramJceInputStream.read(cache_skin_data, 1, false));
     this.timestamp = paramJceInputStream.read(this.timestamp, 2, false);
@@ -58,7 +59,7 @@ public final class mobile_userlogo_timestamp_rsp
     {
       cache_facade_data = new HashMap();
       localObject = new s_facade_info();
-      cache_facade_data.put(Long.valueOf(0L), localObject);
+      cache_facade_data.put(localLong, localObject);
     }
     this.facade_data = ((Map)paramJceInputStream.read(cache_facade_data, 3, false));
     this.canRenew = paramJceInputStream.read(this.canRenew, 4, false);
@@ -72,19 +73,23 @@ public final class mobile_userlogo_timestamp_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.result != null) {
-      paramJceOutputStream.write(this.result, 0);
+    Object localObject = this.result;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.skin_data != null) {
-      paramJceOutputStream.write(this.skin_data, 1);
+    localObject = this.skin_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.timestamp, 2);
-    if (this.facade_data != null) {
-      paramJceOutputStream.write(this.facade_data, 3);
+    localObject = this.facade_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.canRenew, 4);
-    if (this.rc_data != null) {
-      paramJceOutputStream.write(this.rc_data, 5);
+    localObject = this.rc_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.iOSPayType, 6);
     paramJceOutputStream.write(this.open_vip_dialog_type, 7);
@@ -92,7 +97,7 @@ public final class mobile_userlogo_timestamp_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.mobile_userlogo_timestamp_rsp
  * JD-Core Version:    0.7.0.1
  */

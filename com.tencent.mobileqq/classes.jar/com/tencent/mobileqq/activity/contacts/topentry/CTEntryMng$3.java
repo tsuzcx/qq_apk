@@ -1,68 +1,68 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahuf;
-import ahum;
-import bdga;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ConfigUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.json.JSONArray;
 
-public class CTEntryMng$3
+class CTEntryMng$3
   implements Runnable
 {
-  public CTEntryMng$3(ahuf paramahuf) {}
+  CTEntryMng$3(CTEntryMng paramCTEntryMng) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList(ahuf.a(this.this$0));
+    ArrayList localArrayList = new ArrayList(CTEntryMng.b(this.this$0));
+    String str2 = "";
+    Object localObject1 = str2;
     for (;;)
     {
-      JSONArray localJSONArray;
       int i;
-      String str;
+      String str1;
       try
       {
         if (localArrayList.size() > 0)
         {
-          localJSONArray = new JSONArray();
+          localObject1 = new JSONArray();
           i = 0;
-          if (i >= localArrayList.size()) {
-            break label211;
-          }
-          Object localObject = (ahum)localArrayList.get(i);
-          if ((((ahum)localObject).a > 4) && (!ahuf.b(this.this$0).contains(Integer.valueOf(((ahum)localObject).a))))
+          if (i < localArrayList.size())
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("CTEntryMng", 2, "saveUserSetting not save id: " + ((ahum)localObject).a);
+            Object localObject2 = (CTEntryMng.EntryUserSetting)localArrayList.get(i);
+            if ((((CTEntryMng.EntryUserSetting)localObject2).a > 4) && (!CTEntryMng.c(this.this$0).contains(Integer.valueOf(((CTEntryMng.EntryUserSetting)localObject2).a))))
+            {
+              if (!QLog.isColorLevel()) {
+                break label237;
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("saveUserSetting not save id: ");
+              localStringBuilder.append(((CTEntryMng.EntryUserSetting)localObject2).a);
+              QLog.i("CTEntryMng", 2, localStringBuilder.toString());
+              break label237;
             }
-          }
-          else
-          {
-            localObject = ((ahum)localObject).a();
-            if (localObject != null) {
-              localJSONArray.put(localObject);
+            localObject2 = ((CTEntryMng.EntryUserSetting)localObject2).a();
+            if (localObject2 == null) {
+              break label237;
             }
+            ((JSONArray)localObject1).put(localObject2);
+            break label237;
           }
+          localObject1 = ((JSONArray)localObject1).toString();
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        str = "";
+        str1 = str2;
       }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str }));
-        }
-        bdga.a(ahuf.a(this.this$0).getApp(), ahuf.a(this.this$0).c(), "ct_entry_user_setting", str);
-        return;
-        label211:
-        str = localJSONArray.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "saveUserSetting value: %s", new Object[] { str1 }));
       }
+      ConfigUtil.a(CTEntryMng.a(this.this$0).getApp(), CTEntryMng.a(this.this$0).getCurrentUin(), "ct_entry_user_setting", str1);
+      return;
+      label237:
       i += 1;
     }
   }

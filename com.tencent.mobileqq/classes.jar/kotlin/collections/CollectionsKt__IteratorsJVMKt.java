@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"iterator", "", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__IteratorsJVMKt
+class CollectionsKt__IteratorsJVMKt
   extends CollectionsKt__IterablesKt
 {
   @NotNull
@@ -19,7 +19,7 @@ public class CollectionsKt__IteratorsJVMKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__IteratorsJVMKt
  * JD-Core Version:    0.7.0.1
  */

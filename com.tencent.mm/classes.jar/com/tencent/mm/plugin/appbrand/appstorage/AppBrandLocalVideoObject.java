@@ -11,14 +11,14 @@ public class AppBrandLocalVideoObject
   public static final Parcelable.Creator<AppBrandLocalVideoObject> CREATOR;
   public int duration;
   public int height;
-  public int size;
+  public long size;
   public int width;
   
   static
   {
-    AppMethodBeat.i(105364);
-    CREATOR = new AppBrandLocalVideoObject.1();
-    AppMethodBeat.o(105364);
+    AppMethodBeat.i(134326);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134326);
   }
   
   public AppBrandLocalVideoObject() {}
@@ -26,12 +26,12 @@ public class AppBrandLocalVideoObject
   private AppBrandLocalVideoObject(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(105362);
+    AppMethodBeat.i(134324);
     this.duration = paramParcel.readInt();
-    this.size = paramParcel.readInt();
+    this.size = paramParcel.readLong();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
-    AppMethodBeat.o(105362);
+    AppMethodBeat.o(134324);
   }
   
   public int describeContents()
@@ -41,26 +41,26 @@ public class AppBrandLocalVideoObject
   
   public String toString()
   {
-    AppMethodBeat.i(105363);
+    AppMethodBeat.i(134325);
     String str = "AppBrandLocalVideoObject{duration=" + this.duration + ", size=" + this.size + ", width=" + this.width + ", height=" + this.height + '}';
-    AppMethodBeat.o(105363);
+    AppMethodBeat.o(134325);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(105361);
+    AppMethodBeat.i(134323);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.size);
+    paramParcel.writeLong(this.size);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
-    AppMethodBeat.o(105361);
+    AppMethodBeat.o(134323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalVideoObject
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,17 @@ class ReportLogUtil$1$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("ReportLogUtil", 1, "report upload log success: " + paramBoolean + "  url:" + this.val$url);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("report upload log success: ");
+    paramJSONObject.append(paramBoolean);
+    paramJSONObject.append("  url:");
+    paramJSONObject.append(this.val$url);
+    QLog.d("ReportLogUtil", 1, paramJSONObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.ReportLogUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

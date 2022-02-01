@@ -12,18 +12,18 @@ final class WebViewInputFooter$5
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(10082);
-    if (WebViewInputFooter.d(this.vtA).getText() == null)
+    AppMethodBeat.i(82315);
+    if (WebViewInputFooter.d(this.XrU).getText() == null)
     {
-      AppMethodBeat.o(10082);
+      AppMethodBeat.o(82315);
       return;
     }
-    WebViewInputFooter.d(this.vtA).requestFocus();
+    WebViewInputFooter.d(this.XrU).requestFocus();
     if ((paramEditable.length() > 0) && (paramEditable.toString().trim().length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      WebViewInputFooter.a(this.vtA, bool);
-      AppMethodBeat.o(10082);
+      WebViewInputFooter.a(this.XrU, bool);
+      AppMethodBeat.o(82315);
       return;
     }
   }
@@ -34,7 +34,7 @@ final class WebViewInputFooter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.multiaio.widget;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -15,16 +15,16 @@ import java.util.List;
 public class MultiAIOPagerAdapter
   extends FragmentStatePagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
-  private List<RecentBaseData> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<RecentBaseData> a;
+  private Fragment b;
+  private boolean c;
   
   public MultiAIOPagerAdapter(FragmentManager paramFragmentManager)
   {
     super(paramFragmentManager);
   }
   
-  private ArrayList<Fragment> a()
+  private ArrayList<Fragment> b()
   {
     try
     {
@@ -42,74 +42,69 @@ public class MultiAIOPagerAdapter
   
   public List<RecentBaseData> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    ArrayList localArrayList = a();
-    if (localArrayList == null) {
-      QLog.e("MultiAIOPagerAdapter", 1, "updateMsgRead: mFragments == null");
-    }
-    for (;;)
+    ArrayList localArrayList = b();
+    if (localArrayList == null)
     {
+      QLog.e("MultiAIOPagerAdapter", 1, "updateMsgRead: mFragments == null");
       return;
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Fragment localFragment = (Fragment)localArrayList.get(i);
-        if ((localFragment != null) && ((localFragment instanceof MultiAIOItemFragment))) {
-          ((MultiAIOItemFragment)localFragment).a(paramInt);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      Fragment localFragment = (Fragment)localArrayList.get(i);
+      if ((localFragment != null) && ((localFragment instanceof MultiAIOItemFragment))) {
+        ((MultiAIOItemFragment)localFragment).a(paramInt);
       }
+      i += 1;
     }
   }
   
   public void a(List<RecentBaseData> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public void b(int paramInt)
   {
-    ArrayList localArrayList = a();
-    if (localArrayList == null) {
-      QLog.e("MultiAIOPagerAdapter", 1, "scrollToNewMsg: mFragments == null");
-    }
-    for (;;)
+    ArrayList localArrayList = b();
+    if (localArrayList == null)
     {
+      QLog.e("MultiAIOPagerAdapter", 1, "scrollToNewMsg: mFragments == null");
       return;
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Fragment localFragment = (Fragment)localArrayList.get(i);
-        if ((localFragment != null) && ((localFragment instanceof MultiAIOItemFragment))) {
-          ((MultiAIOItemFragment)localFragment).b(paramInt);
-        }
-        i += 1;
+    }
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      Fragment localFragment = (Fragment)localArrayList.get(i);
+      if ((localFragment != null) && ((localFragment instanceof MultiAIOItemFragment))) {
+        ((MultiAIOItemFragment)localFragment).b(paramInt);
       }
+      i += 1;
     }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOPagerAdapter", 2, "destroyItem() called with: container = [" + paramViewGroup + "], position = [" + paramInt + "], object = [" + paramObject + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("destroyItem() called with: container = [");
+      localStringBuilder.append(paramViewGroup);
+      localStringBuilder.append("], position = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], object = [");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append("]");
+      QLog.d("MultiAIOPagerAdapter", 2, localStringBuilder.toString());
     }
     super.destroyItem(paramViewGroup, paramInt, paramObject);
   }
@@ -117,12 +112,12 @@ public class MultiAIOPagerAdapter
   public void finishUpdate(ViewGroup paramViewGroup)
   {
     super.finishUpdate(paramViewGroup);
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Fragment getItem(int paramInt)
@@ -141,8 +136,15 @@ public class MultiAIOPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOPagerAdapter", 2, "instantiateItem() called with: container = [" + paramViewGroup + "], position = [" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("instantiateItem() called with: container = [");
+      localStringBuilder.append(paramViewGroup);
+      localStringBuilder.append("], position = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.d("MultiAIOPagerAdapter", 2, localStringBuilder.toString());
     }
     return super.instantiateItem(paramViewGroup, paramInt);
   }
@@ -150,7 +152,7 @@ public class MultiAIOPagerAdapter
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     super.setPrimaryItem(paramViewGroup, paramInt, paramObject);
-    this.jdField_a_of_type_AndroidSupportV4AppFragment = ((Fragment)paramObject);
+    this.b = ((Fragment)paramObject);
   }
   
   public void startUpdate(ViewGroup paramViewGroup)
@@ -160,7 +162,7 @@ public class MultiAIOPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

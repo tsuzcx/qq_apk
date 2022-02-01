@@ -8,7 +8,7 @@ public final class BGMusicForQzone
   extends JceStruct
 {
   public String showAudioUrl = "";
-  public int showDuration;
+  public int showDuration = 0;
   public String showID = "";
   public String showName = "";
   public String showPicurl = "";
@@ -35,24 +35,28 @@ public final class BGMusicForQzone
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.showID != null) {
-      paramJceOutputStream.write(this.showID, 0);
+    String str = this.showID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.showName != null) {
-      paramJceOutputStream.write(this.showName, 1);
+    str = this.showName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.showAudioUrl != null) {
-      paramJceOutputStream.write(this.showAudioUrl, 2);
+    str = this.showAudioUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.showPicurl != null) {
-      paramJceOutputStream.write(this.showPicurl, 3);
+    str = this.showPicurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.showDuration, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEXTRADIO_QZONEBGMUSIC.BGMusicForQzone
  * JD-Core Version:    0.7.0.1
  */

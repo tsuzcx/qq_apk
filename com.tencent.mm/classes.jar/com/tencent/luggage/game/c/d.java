@@ -1,51 +1,71 @@
 package com.tencent.luggage.game.c;
 
-import com.tencent.luggage.game.g.a;
-import com.tencent.luggage.game.g.a.a;
-import com.tencent.magicbrush.a.b;
-import com.tencent.magicbrush.a.c.c;
+import android.content.Context;
+import android.os.Looper;
+import android.view.MotionEvent;
+import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class d
+public final class d
+  extends AppCompatTextView
 {
-  private static final a.a bAf;
+  StringBuilder dgR;
+  public final List<f> ell;
+  public e.c elm;
+  public MTimerHandler eln;
   
-  static
+  public d(Context paramContext)
   {
-    AppMethodBeat.i(140361);
-    bAf = new a.a();
-    AppMethodBeat.o(140361);
+    super(paramContext);
+    AppMethodBeat.i(130513);
+    this.ell = new ArrayList(4);
+    this.dgR = new StringBuilder(100);
+    this.elm = null;
+    this.eln = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(130512);
+        d.a(d.this).clear();
+        if (d.b(d.this) != null) {
+          d.b(d.this).ba(d.a(d.this));
+        }
+        d locald = d.this;
+        Object localObject = d.a(d.this);
+        locald.dgR.setLength(0);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          f localf = (f)((Iterator)localObject).next();
+          locald.dgR.append(localf.key).append(": ").append(localf.elF).append("\n");
+        }
+        locald.setText(locald.dgR);
+        AppMethodBeat.o(130512);
+        return true;
+      }
+    }, true);
+    setTextSize(12.0F);
+    setTextColor(-65536);
+    setFocusable(false);
+    setClickable(false);
+    setOnClickListener(null);
+    this.eln.startTimer(1000L);
+    AppMethodBeat.o(130513);
   }
   
-  public final void uD()
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(140358);
-    a.a(bAf, new d.1(this));
-    AppMethodBeat.o(140358);
-  }
-  
-  protected void uE()
-  {
-    AppMethodBeat.i(140359);
-    long l = bo.yB();
-    b.loadLibraries();
-    ab.i("MicroMsg.MBLogDelegateRegistry", "dl: load magicbrush [%d]ms", new Object[] { Long.valueOf(bo.av(l)) });
-    AppMethodBeat.o(140359);
-  }
-  
-  protected final void uF()
-  {
-    AppMethodBeat.i(140360);
-    uE();
-    c.c.a(new d.2(this));
-    AppMethodBeat.o(140360);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.c.d
  * JD-Core Version:    0.7.0.1
  */

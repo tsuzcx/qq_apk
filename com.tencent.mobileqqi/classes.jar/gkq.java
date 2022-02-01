@@ -1,106 +1,145 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.open.appcommon.AppClient;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.io.OutputStream;
+import java.io.Writer;
+import org.xmlpull.v1.XmlSerializer;
 
 public class gkq
-  extends StructMsgClickHandler
+  implements XmlSerializer
 {
-  public gkq(AbsShareMsg paramAbsShareMsg, View paramView)
+  XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
+  
+  public gkq(AbsStructMsg paramAbsStructMsg, XmlSerializer paramXmlSerializer)
   {
-    super(paramView);
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = paramXmlSerializer;
   }
   
-  public gkq(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
+  public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    super(paramQQAppInterface, paramView);
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(paramString1, paramString2, paramString3);
   }
   
-  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
+  public void cdsect(String paramString)
   {
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    paramString2 = new Bundle();
-    paramString2.putString("packageName", paramString1);
-    paramString2.putString("appId", paramLong + "");
-    AppClient.b(paramActivity, paramString2);
-    return true;
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.cdsect(paramString);
   }
   
-  public boolean a(String paramString)
+  public void comment(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
-      return false;
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("key_isReadModeEnabled", true);
-    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
-    localIntent.putExtra("url", paramString);
-    PublicAccountUtil.a(localIntent, paramString);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    return true;
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.comment(paramString);
   }
   
-  public boolean a(String paramString1, String paramString2, String paramString3)
+  public void docdecl(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.docdecl(paramString);
+  }
+  
+  public void endDocument()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+  }
+  
+  public XmlSerializer endTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(paramString1, paramString2);
+  }
+  
+  public void entityRef(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.entityRef(paramString);
+  }
+  
+  public void flush()
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.flush();
+  }
+  
+  public int getDepth()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getDepth();
+  }
+  
+  public boolean getFeature(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getFeature(paramString);
+  }
+  
+  public String getName()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getName();
+  }
+  
+  public String getNamespace()
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getNamespace();
+  }
+  
+  public String getPrefix(String paramString, boolean paramBoolean)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getPrefix(paramString, paramBoolean);
+  }
+  
+  public Object getProperty(String paramString)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.getProperty(paramString);
+  }
+  
+  public void ignorableWhitespace(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.ignorableWhitespace(paramString);
+  }
+  
+  public void processingInstruction(String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.processingInstruction(paramString);
+  }
+  
+  public void setFeature(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setFeature(paramString, paramBoolean);
+  }
+  
+  public void setOutput(OutputStream paramOutputStream, String paramString)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramOutputStream, paramString);
+  }
+  
+  public void setOutput(Writer paramWriter)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(paramWriter);
+  }
+  
+  public void setPrefix(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setPrefix(paramString1, paramString2);
+  }
+  
+  public void setProperty(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setProperty(paramString, paramObject);
+  }
+  
+  public void startDocument(String paramString, Boolean paramBoolean)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument(paramString, paramBoolean);
+  }
+  
+  public XmlSerializer startTag(String paramString1, String paramString2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(paramString1, paramString2);
+  }
+  
+  public XmlSerializer text(String paramString)
+  {
+    if (paramString != null) {
+      return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(MessageUtils.a(paramString, false));
     }
-    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
-    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
-    try
-    {
-      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
-      {
-        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
-        if (!TextUtils.isEmpty(paramString1[1])) {
-          paramString2.setData(Uri.parse(paramString1[1]));
-        }
-        try
-        {
-          ((StartAppCheckHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
-          return true;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
-            }
-            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
-          }
-        }
-      }
-      return false;
-    }
-    catch (PackageManager.NameNotFoundException paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, paramString1.getMessage());
-      }
-    }
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramString);
+  }
+  
+  public XmlSerializer text(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text(paramArrayOfChar, paramInt1, paramInt2);
   }
 }
 

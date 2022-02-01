@@ -3,11 +3,11 @@ package com.tencent.kinda.framework.app;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ct;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.autogen.b.es;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public class KindaConfigCacheItem
-  extends ct
+  extends es
 {
   private static final String TAG = "MicroMsg.KindaConfigCacheItem";
   public static final int TYPE_BOOLEAN = 4;
@@ -17,38 +17,38 @@ public class KindaConfigCacheItem
   public static final int TYPE_INT = 1;
   public static final int TYPE_LONG = 2;
   public static final int TYPE_STRING = 3;
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(144320);
-    info = ct.initAutoDBInfo(ct.class);
-    AppMethodBeat.o(144320);
+    AppMethodBeat.i(18392);
+    info = es.initAutoDBInfo(es.class);
+    AppMethodBeat.o(18392);
   }
   
   public void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(144319);
+    AppMethodBeat.i(18391);
     super.convertFrom(paramCursor);
-    AppMethodBeat.o(144319);
+    AppMethodBeat.o(18391);
   }
   
   public ContentValues convertTo()
   {
-    AppMethodBeat.i(144318);
+    AppMethodBeat.i(18390);
     ContentValues localContentValues = super.convertTo();
-    AppMethodBeat.o(144318);
+    AppMethodBeat.o(18390);
     return localContentValues;
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaConfigCacheItem
  * JD-Core Version:    0.7.0.1
  */

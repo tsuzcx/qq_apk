@@ -9,7 +9,7 @@ public final class GuestGetLikeRsp
 {
   static CommRsp cache_errInfo = new CommRsp();
   public boolean canLike = true;
-  public CommRsp errInfo;
+  public CommRsp errInfo = null;
   public boolean hasLiked = true;
   
   public GuestGetLikeRsp() {}
@@ -30,8 +30,9 @@ public final class GuestGetLikeRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.errInfo != null) {
-      paramJceOutputStream.write(this.errInfo, 0);
+    CommRsp localCommRsp = this.errInfo;
+    if (localCommRsp != null) {
+      paramJceOutputStream.write(localCommRsp, 0);
     }
     paramJceOutputStream.write(this.canLike, 1);
     paramJceOutputStream.write(this.hasLiked, 2);
@@ -39,7 +40,7 @@ public final class GuestGetLikeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GuestGetLikeRsp
  * JD-Core Version:    0.7.0.1
  */

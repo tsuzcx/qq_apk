@@ -1,77 +1,84 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.age;
-import com.tencent.mm.protocal.protobuf.agf;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.ae.a.a;
+import com.tencent.mm.protocal.protobuf.cpp;
+import com.tencent.mm.protocal.protobuf.cpq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends m
-  implements com.tencent.mm.network.k
+  extends p
+  implements m
 {
-  private f callback;
-  private b goo;
-  private age ubA;
-  public agf ubB;
-  public long ubC;
+  public String VxC;
+  public String VxD;
+  public boolean VxE;
+  private h callback;
+  private com.tencent.mm.am.c rr;
   
-  public k(String paramString, long paramLong)
+  public k()
   {
-    AppMethodBeat.i(46509);
-    b.a locala = new b.a();
-    locala.fsX = new age();
-    locala.fsY = new agf();
-    locala.uri = "/cgi-bin/mmpay-bin/mktgetaward";
-    locala.funcId = 2948;
-    locala.reqCmdId = 0;
+    AppMethodBeat.i(69908);
+    this.VxC = "";
+    this.VxD = "";
+    this.VxE = false;
+    c.a locala = new c.a();
+    locala.otE = new cpp();
+    locala.otF = new cpq();
+    locala.uri = "/cgi-bin/mmpay-bin/getpayuserduty";
+    locala.funcId = 2541;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.goo = locala.ado();
-    this.ubA = ((age)this.goo.fsV.fta);
-    this.ubA.wZg = paramString;
-    this.ubC = paramLong;
-    ab.i("MicroMsg.NetSceneMktGetAward", "NetSceneMktGetAward, get_award_params: %s, activityId: %s", new Object[] { paramString, Long.valueOf(paramLong) });
-    AppMethodBeat.o(46509);
+    this.rr = locala.bEF();
+    c.b.b(this.rr.otB);
+    AppMethodBeat.o(69908);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(46510);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(46510);
+    AppMethodBeat.i(69909);
+    this.callback = paramh;
+    com.tencent.mm.plugin.ae.a.c.gxP().An(false);
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(69909);
     return i;
   }
   
   public final int getType()
   {
-    return 2948;
+    return 2541;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(46511);
-    ab.i("MicroMsg.NetSceneMktGetAward", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.ubB = ((agf)((b)paramq).fsW.fta);
-    if ((paramInt2 == 0) || (paramInt3 == 0)) {
-      ab.i("MicroMsg.NetSceneMktGetAward", "ret_code: %s, ret_msg: %s, result_code: %s, alert_wording: %s, btn_wording: %s", new Object[] { Integer.valueOf(this.ubB.koj), this.ubB.kok, Integer.valueOf(this.ubB.wZh), this.ubB.wZi, this.ubB.wZj });
-    }
-    if (this.callback != null) {
+    AppMethodBeat.i(69910);
+    Log.d("MircoMsg.NetSceneGetPayUserDuty", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(69910);
+      return;
     }
-    AppMethodBeat.o(46511);
+    params = (cpq)c.c.b(((com.tencent.mm.am.c)params).otC);
+    this.VxC = params.VxC;
+    this.VxD = params.aawk;
+    this.VxE = params.VxE;
+    Log.i("MircoMsg.NetSceneGetPayUserDuty", "duty_info %s ,duty_info_darkmode %s need_agree_duty %s", new Object[] { this.VxC, this.VxD, Boolean.valueOf(this.VxE) });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(69910);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.k
  * JD-Core Version:    0.7.0.1
  */

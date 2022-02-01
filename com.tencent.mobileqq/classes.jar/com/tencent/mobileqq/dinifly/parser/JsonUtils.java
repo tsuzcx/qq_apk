@@ -2,20 +2,23 @@ package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.Color;
 import android.graphics.PointF;
-import android.support.annotation.ColorInt;
-import android.util.JsonReader;
-import android.util.JsonToken;
+import androidx.annotation.ColorInt;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import java.util.ArrayList;
 import java.util.List;
 
 class JsonUtils
 {
+  private static final JsonReader.Options POINT_NAMES = JsonReader.Options.of(new String[] { "x", "y" });
+  
   private static PointF jsonArrayToPoint(JsonReader paramJsonReader, float paramFloat)
   {
     paramJsonReader.beginArray();
     float f1 = (float)paramJsonReader.nextDouble();
     float f2 = (float)paramJsonReader.nextDouble();
-    while (paramJsonReader.peek() != JsonToken.END_ARRAY) {
+    while (paramJsonReader.peek() != JsonReader.Token.END_ARRAY) {
       paramJsonReader.skipValue();
     }
     paramJsonReader.endArray();
@@ -34,41 +37,30 @@ class JsonUtils
   
   private static PointF jsonObjectToPoint(JsonReader paramJsonReader, float paramFloat)
   {
-    float f2 = 0.0F;
     paramJsonReader.beginObject();
+    float f2 = 0.0F;
     float f1 = 0.0F;
-    label8:
     while (paramJsonReader.hasNext())
     {
-      String str = paramJsonReader.nextName();
-      int i = -1;
-      switch (str.hashCode())
+      int i = paramJsonReader.selectName(POINT_NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
+          paramJsonReader.skipName();
           paramJsonReader.skipValue();
-          break label8;
-          if (str.equals("x"))
-          {
-            i = 0;
-            continue;
-            if (str.equals("y")) {
-              i = 1;
-            }
-          }
-          break;
+        }
+        else
+        {
+          f1 = valueFromObject(paramJsonReader);
         }
       }
-      f1 = valueFromObject(paramJsonReader);
-      continue;
-      f2 = valueFromObject(paramJsonReader);
+      else {
+        f2 = valueFromObject(paramJsonReader);
+      }
     }
     paramJsonReader.endObject();
-    return new PointF(f1 * paramFloat, f2 * paramFloat);
+    return new PointF(f2 * paramFloat, f1 * paramFloat);
   }
   
   @ColorInt
@@ -87,23 +79,29 @@ class JsonUtils
   
   static PointF jsonToPoint(JsonReader paramJsonReader, float paramFloat)
   {
-    switch (JsonUtils.1.$SwitchMap$android$util$JsonToken[paramJsonReader.peek().ordinal()])
+    int i = JsonUtils.1.$SwitchMap$com$tencent$mobileqq$dinifly$parser$moshi$JsonReader$Token[paramJsonReader.peek().ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown point starts with " + paramJsonReader.peek());
-    case 1: 
-      return jsonNumbersToPoint(paramJsonReader, paramFloat);
-    case 2: 
+      if (i != 2)
+      {
+        if (i == 3) {
+          return jsonObjectToPoint(paramJsonReader, paramFloat);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unknown point starts with ");
+        localStringBuilder.append(paramJsonReader.peek());
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
       return jsonArrayToPoint(paramJsonReader, paramFloat);
     }
-    return jsonObjectToPoint(paramJsonReader, paramFloat);
+    return jsonNumbersToPoint(paramJsonReader, paramFloat);
   }
   
   static List<PointF> jsonToPoints(JsonReader paramJsonReader, float paramFloat)
   {
     ArrayList localArrayList = new ArrayList();
     paramJsonReader.beginArray();
-    while (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
+    while (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY)
     {
       paramJsonReader.beginArray();
       localArrayList.add(jsonToPoint(paramJsonReader, paramFloat));
@@ -115,21 +113,26 @@ class JsonUtils
   
   static float valueFromObject(JsonReader paramJsonReader)
   {
-    JsonToken localJsonToken = paramJsonReader.peek();
-    switch (JsonUtils.1.$SwitchMap$android$util$JsonToken[localJsonToken.ordinal()])
+    JsonReader.Token localToken = paramJsonReader.peek();
+    int i = JsonUtils.1.$SwitchMap$com$tencent$mobileqq$dinifly$parser$moshi$JsonReader$Token[localToken.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown value for token of type " + localJsonToken);
-    case 1: 
-      return (float)paramJsonReader.nextDouble();
+      if (i == 2)
+      {
+        paramJsonReader.beginArray();
+        float f = (float)paramJsonReader.nextDouble();
+        while (paramJsonReader.hasNext()) {
+          paramJsonReader.skipValue();
+        }
+        paramJsonReader.endArray();
+        return f;
+      }
+      paramJsonReader = new StringBuilder();
+      paramJsonReader.append("Unknown value for token of type ");
+      paramJsonReader.append(localToken);
+      throw new IllegalArgumentException(paramJsonReader.toString());
     }
-    paramJsonReader.beginArray();
-    float f = (float)paramJsonReader.nextDouble();
-    while (paramJsonReader.hasNext()) {
-      paramJsonReader.skipValue();
-    }
-    paramJsonReader.endArray();
-    return f;
+    return (float)paramJsonReader.nextDouble();
   }
 }
 

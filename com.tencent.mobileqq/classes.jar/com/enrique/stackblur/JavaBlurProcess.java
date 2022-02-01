@@ -13,246 +13,256 @@ class JavaBlurProcess
   
   private static void blurIteration(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    int i1 = paramInt1 - 1;
-    int i2 = paramInt2 - 1;
-    int i3 = paramInt3 * 2 + 1;
-    int i4 = stackblur_mul[paramInt3];
-    int i5 = stackblur_shr[paramInt3];
-    int[] arrayOfInt = new int[i3];
-    long l4;
-    long l3;
-    long l1;
-    long l7;
-    long l8;
-    long l9;
-    long l2;
+    int i = paramInt2;
+    int i2 = paramInt1 - 1;
+    int i4 = i - 1;
+    int i1 = paramInt3 * 2 + 1;
+    int i5 = stackblur_mul[paramInt3];
+    int i6 = stackblur_shr[paramInt3];
+    int[] arrayOfInt = new int[i1];
     long l6;
     long l5;
+    long l4;
+    long l1;
+    long l2;
+    long l3;
+    int j;
+    long l10;
+    long l11;
+    long l12;
+    long l9;
+    long l8;
+    long l7;
+    int k;
+    int n;
+    int i3;
+    int m;
     if (paramInt6 == 1)
     {
-      paramInt6 = paramInt5 * paramInt2 / paramInt4;
-      i2 = (paramInt5 + 1) * paramInt2 / paramInt4;
-      paramInt4 = paramInt6;
-      if (paramInt4 >= i2) {
-        break label1724;
-      }
-      l4 = 0L;
-      paramInt5 = paramInt1 * paramInt4;
-      l3 = 0L;
-      l1 = 0L;
-      l7 = 0L;
-      l8 = 0L;
-      l9 = 0L;
-      paramInt2 = 0;
-      l2 = 0L;
-      while (paramInt2 <= paramInt3)
+      paramInt2 = paramInt5 * i / paramInt4;
+      paramInt5 = (paramInt5 + 1) * i / paramInt4;
+      paramInt4 = paramInt2;
+      while (paramInt4 < paramInt5)
       {
-        arrayOfInt[paramInt2] = paramArrayOfInt[paramInt5];
-        l9 += (paramArrayOfInt[paramInt5] >>> 16 & 0xFF) * (paramInt2 + 1);
-        l8 += (paramArrayOfInt[paramInt5] >>> 8 & 0xFF) * (paramInt2 + 1);
-        l7 += (paramArrayOfInt[paramInt5] & 0xFF) * (paramInt2 + 1);
-        l1 += (paramArrayOfInt[paramInt5] >>> 16 & 0xFF);
-        l3 += (paramArrayOfInt[paramInt5] >>> 8 & 0xFF);
-        l2 += (paramArrayOfInt[paramInt5] & 0xFF);
-        paramInt2 += 1;
-      }
-      l6 = 0L;
-      paramInt2 = 1;
-      l5 = 0L;
-      while (paramInt2 <= paramInt3)
-      {
-        paramInt6 = paramInt5;
-        if (paramInt2 <= i1) {
-          paramInt6 = paramInt5 + 1;
-        }
-        arrayOfInt[(paramInt2 + paramInt3)] = paramArrayOfInt[paramInt6];
-        l9 += (paramArrayOfInt[paramInt6] >>> 16 & 0xFF) * (paramInt3 + 1 - paramInt2);
-        l8 += (paramArrayOfInt[paramInt6] >>> 8 & 0xFF) * (paramInt3 + 1 - paramInt2);
-        l7 += (paramArrayOfInt[paramInt6] & 0xFF) * (paramInt3 + 1 - paramInt2);
-        l6 += (paramArrayOfInt[paramInt6] >>> 16 & 0xFF);
-        l5 += (paramArrayOfInt[paramInt6] >>> 8 & 0xFF);
-        l4 += (paramArrayOfInt[paramInt6] & 0xFF);
-        paramInt2 += 1;
-        paramInt5 = paramInt6;
-      }
-      if (paramInt3 <= i1) {
-        break label1731;
-      }
-    }
-    label1724:
-    label1725:
-    label1731:
-    for (paramInt2 = i1;; paramInt2 = paramInt3)
-    {
-      paramInt6 = paramInt3;
-      paramInt5 = 0;
-      int m = paramInt2 + paramInt4 * paramInt1;
-      int i = paramInt2;
-      int j = paramInt4 * paramInt1;
-      long l10 = l6;
-      long l11 = l5;
-      long l12 = l4;
-      paramInt2 = paramInt6;
-      l6 = l9;
-      l5 = l8;
-      l4 = l7;
-      l9 = l10;
-      l8 = l11;
-      l7 = l12;
-      paramInt6 = j;
-      int n;
-      int k;
-      while (paramInt5 < paramInt1)
-      {
-        paramArrayOfInt[paramInt6] = ((int)(paramArrayOfInt[paramInt6] & 0xFF000000 | (i4 * l6 >>> i5 & 0xFF) << 16 | (i4 * l5 >>> i5 & 0xFF) << 8 | i4 * l4 >>> i5 & 0xFF));
-        j = paramInt2 + i3 - paramInt3;
-        n = j;
-        if (j >= i3) {
-          n = j - i3;
-        }
-        l12 = arrayOfInt[n] >>> 16 & 0xFF;
-        l11 = arrayOfInt[n] >>> 8 & 0xFF;
-        l10 = arrayOfInt[n] & 0xFF;
-        k = m;
-        j = i;
-        if (i < i1)
+        paramInt6 = paramInt1 * paramInt4;
+        paramInt2 = 0;
+        l6 = 0L;
+        l5 = 0L;
+        l4 = 0L;
+        l1 = 0L;
+        l2 = 0L;
+        for (l3 = 0L; paramInt2 <= paramInt3; l3 += (paramArrayOfInt[paramInt6] & 0xFF))
         {
-          k = m + 1;
-          j = i + 1;
+          arrayOfInt[paramInt2] = paramArrayOfInt[paramInt6];
+          i = paramArrayOfInt[paramInt6];
+          paramInt2 += 1;
+          l6 += (i >>> 16 & 0xFF) * paramInt2;
+          l5 += (paramArrayOfInt[paramInt6] >>> 8 & 0xFF) * paramInt2;
+          l4 += (paramArrayOfInt[paramInt6] & 0xFF) * paramInt2;
+          l1 += (paramArrayOfInt[paramInt6] >>> 16 & 0xFF);
+          l2 += (paramArrayOfInt[paramInt6] >>> 8 & 0xFF);
         }
-        arrayOfInt[n] = paramArrayOfInt[k];
-        l9 += (paramArrayOfInt[k] >>> 16 & 0xFF);
-        l8 += (paramArrayOfInt[k] >>> 8 & 0xFF);
-        l7 += (paramArrayOfInt[k] & 0xFF);
-        l6 = l6 - l1 + l9;
-        l5 = l5 - l3 + l8;
-        l4 = l4 - l2 + l7;
-        i = paramInt2 + 1;
-        paramInt2 = i;
-        if (i >= i3) {
-          paramInt2 = 0;
-        }
-        l1 = l1 - l12 + (arrayOfInt[paramInt2] >>> 16 & 0xFF);
-        l3 = l3 - l11 + (arrayOfInt[paramInt2] >>> 8 & 0xFF);
-        l2 = l2 - l10 + (arrayOfInt[paramInt2] & 0xFF);
-        l9 -= (arrayOfInt[paramInt2] >>> 16 & 0xFF);
-        l8 -= (arrayOfInt[paramInt2] >>> 8 & 0xFF);
-        l7 -= (arrayOfInt[paramInt2] & 0xFF);
-        paramInt5 += 1;
-        paramInt6 += 1;
-        m = k;
-        i = j;
-      }
-      paramInt4 += 1;
-      break;
-      if (paramInt6 == 2)
-      {
-        paramInt6 = paramInt5 * paramInt1 / paramInt4;
-        int i6 = (paramInt5 + 1) * paramInt1 / paramInt4;
-        paramInt4 = paramInt6;
-        if (paramInt4 < i6)
+        j = paramInt6;
+        paramInt2 = 1;
+        l10 = 0L;
+        l11 = 0L;
+        l12 = 0L;
+        l9 = l6;
+        l8 = l5;
+        l7 = l4;
+        l6 = l12;
+        l5 = l11;
+        l4 = l10;
+        while (paramInt2 <= paramInt3)
         {
-          l10 = 0L;
-          paramInt5 = 0;
-          l1 = 0L;
-          l2 = 0L;
-          l3 = 0L;
-          l4 = 0L;
-          l5 = 0L;
-          l6 = 0L;
-          while (paramInt5 <= paramInt3)
-          {
-            arrayOfInt[paramInt5] = paramArrayOfInt[paramInt4];
-            l6 += (paramArrayOfInt[paramInt4] >>> 16 & 0xFF) * (paramInt5 + 1);
-            l5 += (paramArrayOfInt[paramInt4] >>> 8 & 0xFF) * (paramInt5 + 1);
-            l4 += (paramArrayOfInt[paramInt4] & 0xFF) * (paramInt5 + 1);
-            l3 += (paramArrayOfInt[paramInt4] >>> 16 & 0xFF);
-            l2 += (paramArrayOfInt[paramInt4] >>> 8 & 0xFF);
-            l1 += (paramArrayOfInt[paramInt4] & 0xFF);
-            paramInt5 += 1;
+          i = j;
+          if (paramInt2 <= i2) {
+            i = j + 1;
           }
-          l11 = 0L;
-          l12 = 0L;
-          paramInt5 = 1;
-          paramInt6 = paramInt4;
-          l9 = l6;
-          l8 = l5;
-          l7 = l4;
-          l6 = l12;
-          l5 = l11;
-          l4 = l10;
-          while (paramInt5 <= paramInt3)
-          {
-            i = paramInt6;
-            if (paramInt5 <= i2) {
-              i = paramInt6 + paramInt1;
-            }
-            arrayOfInt[(paramInt5 + paramInt3)] = paramArrayOfInt[i];
-            l9 += (paramArrayOfInt[i] >>> 16 & 0xFF) * (paramInt3 + 1 - paramInt5);
-            l8 += (paramArrayOfInt[i] >>> 8 & 0xFF) * (paramInt3 + 1 - paramInt5);
-            l7 += (paramArrayOfInt[i] & 0xFF) * (paramInt3 + 1 - paramInt5);
-            l6 += (paramArrayOfInt[i] >>> 16 & 0xFF);
-            l5 += (paramArrayOfInt[i] >>> 8 & 0xFF);
-            l4 += (paramArrayOfInt[i] & 0xFF);
-            paramInt5 += 1;
-            paramInt6 = i;
-          }
-          if (paramInt3 <= i2) {
-            break label1725;
-          }
+          arrayOfInt[(paramInt2 + paramInt3)] = paramArrayOfInt[i];
+          j = paramArrayOfInt[i];
+          k = paramInt3 + 1 - paramInt2;
+          l9 += (j >>> 16 & 0xFF) * k;
+          l8 += (paramArrayOfInt[i] >>> 8 & 0xFF) * k;
+          l7 += (paramArrayOfInt[i] & 0xFF) * k;
+          l6 += (paramArrayOfInt[i] >>> 16 & 0xFF);
+          l5 += (paramArrayOfInt[i] >>> 8 & 0xFF);
+          l4 += (paramArrayOfInt[i] & 0xFF);
+          paramInt2 += 1;
+          j = i;
         }
-      }
-      for (paramInt5 = i2;; paramInt5 = paramInt3)
-      {
-        n = paramInt5 * paramInt1 + paramInt4;
-        j = paramInt3;
-        paramInt6 = 0;
-        k = paramInt5;
-        i = paramInt4;
-        paramInt5 = j;
-        for (j = k; paramInt6 < paramInt2; j = k)
+        if (paramInt3 > i2) {
+          paramInt2 = i2;
+        } else {
+          paramInt2 = paramInt3;
+        }
+        i = paramInt2;
+        j = paramInt2 + paramInt6;
+        paramInt2 = paramInt3;
+        k = 0;
+        n = paramInt6;
+        paramInt6 = k;
+        while (paramInt6 < paramInt1)
         {
-          paramArrayOfInt[i] = ((int)(paramArrayOfInt[i] & 0xFF000000 | (i4 * l9 >>> i5 & 0xFF) << 16 | (i4 * l8 >>> i5 & 0xFF) << 8 | i4 * l7 >>> i5 & 0xFF));
-          k = paramInt5 + i3 - paramInt3;
-          i1 = k;
-          if (k >= i3) {
-            i1 = k - i3;
+          l10 = paramArrayOfInt[n] & 0xFF000000;
+          l11 = i5;
+          paramArrayOfInt[n] = ((int)(l10 | (l9 * l11 >>> i6 & 0xFF) << 16 | (l8 * l11 >>> i6 & 0xFF) << 8 | l11 * l7 >>> i6 & 0xFF));
+          i3 = n + 1;
+          k = paramInt2 + i1 - paramInt3;
+          n = k;
+          if (k >= i1) {
+            n = k - i1;
           }
-          l12 = arrayOfInt[i1] >>> 16 & 0xFF;
-          l11 = arrayOfInt[i1] >>> 8 & 0xFF;
-          l10 = arrayOfInt[i1] & 0xFF;
-          m = n;
+          l12 = arrayOfInt[n] >>> 16 & 0xFF;
+          l11 = arrayOfInt[n] >>> 8 & 0xFF;
+          l10 = arrayOfInt[n] & 0xFF;
+          m = i;
           k = j;
-          if (j < i2)
+          if (i < i2)
           {
-            m = n + paramInt1;
             k = j + 1;
+            m = i + 1;
           }
-          arrayOfInt[i1] = paramArrayOfInt[m];
-          l6 += (paramArrayOfInt[m] >>> 16 & 0xFF);
-          l5 += (paramArrayOfInt[m] >>> 8 & 0xFF);
-          l4 += (paramArrayOfInt[m] & 0xFF);
-          l9 = l9 - l3 + l6;
+          arrayOfInt[n] = paramArrayOfInt[k];
+          l6 += (paramArrayOfInt[k] >>> 16 & 0xFF);
+          l5 += (paramArrayOfInt[k] >>> 8 & 0xFF);
+          l4 += (paramArrayOfInt[k] & 0xFF);
+          l9 = l9 - l1 + l6;
           l8 = l8 - l2 + l5;
-          l7 = l7 - l1 + l4;
-          j = paramInt5 + 1;
-          paramInt5 = j;
-          if (j >= i3) {
-            paramInt5 = 0;
+          l7 = l7 - l3 + l4;
+          i = paramInt2 + 1;
+          paramInt2 = i;
+          if (i >= i1) {
+            paramInt2 = 0;
           }
-          l3 = l3 - l12 + (arrayOfInt[paramInt5] >>> 16 & 0xFF);
-          l2 = l2 - l11 + (arrayOfInt[paramInt5] >>> 8 & 0xFF);
-          l1 = l1 - l10 + (arrayOfInt[paramInt5] & 0xFF);
-          l6 -= (arrayOfInt[paramInt5] >>> 16 & 0xFF);
-          l5 -= (arrayOfInt[paramInt5] >>> 8 & 0xFF);
-          l4 -= (arrayOfInt[paramInt5] & 0xFF);
+          l1 = l1 - l12 + (arrayOfInt[paramInt2] >>> 16 & 0xFF);
+          l2 = l2 - l11 + (arrayOfInt[paramInt2] >>> 8 & 0xFF);
+          l3 = l3 - l10 + (arrayOfInt[paramInt2] & 0xFF);
+          l6 -= (arrayOfInt[paramInt2] >>> 16 & 0xFF);
+          l5 -= (arrayOfInt[paramInt2] >>> 8 & 0xFF);
+          l4 -= (arrayOfInt[paramInt2] & 0xFF);
           paramInt6 += 1;
-          i += paramInt1;
-          n = m;
+          n = i3;
+          i = m;
+          j = k;
         }
         paramInt4 += 1;
-        break;
-        return;
+      }
+    }
+    if (paramInt6 == 2)
+    {
+      i = paramInt5 * paramInt1 / paramInt4;
+      paramInt5 = (paramInt5 + 1) * paramInt1 / paramInt4;
+      paramInt6 = i1;
+      for (paramInt4 = i; paramInt4 < paramInt5; paramInt4 = i + 1)
+      {
+        i = 0;
+        l6 = 0L;
+        l5 = 0L;
+        l4 = 0L;
+        l1 = 0L;
+        l2 = 0L;
+        for (l3 = 0L; i <= paramInt3; l3 += (paramArrayOfInt[paramInt4] & 0xFF))
+        {
+          arrayOfInt[i] = paramArrayOfInt[paramInt4];
+          j = paramArrayOfInt[paramInt4];
+          i += 1;
+          l6 += (j >>> 16 & 0xFF) * i;
+          l5 += (paramArrayOfInt[paramInt4] >>> 8 & 0xFF) * i;
+          l4 += (paramArrayOfInt[paramInt4] & 0xFF) * i;
+          l1 += (paramArrayOfInt[paramInt4] >>> 16 & 0xFF);
+          l2 += (paramArrayOfInt[paramInt4] >>> 8 & 0xFF);
+        }
+        k = paramInt4;
+        i = 1;
+        l8 = 0L;
+        l9 = 0L;
+        l10 = 0L;
+        l7 = l6;
+        l6 = l5;
+        l5 = l4;
+        l4 = l10;
+        while (i <= paramInt3)
+        {
+          j = k;
+          if (i <= i4) {
+            j = k + paramInt1;
+          }
+          arrayOfInt[(i + paramInt3)] = paramArrayOfInt[j];
+          k = paramArrayOfInt[j];
+          m = paramInt3 + 1 - i;
+          l7 += (k >>> 16 & 0xFF) * m;
+          l6 += (paramArrayOfInt[j] >>> 8 & 0xFF) * m;
+          l5 += (paramArrayOfInt[j] & 0xFF) * m;
+          l4 += (paramArrayOfInt[j] >>> 16 & 0xFF);
+          l9 += (paramArrayOfInt[j] >>> 8 & 0xFF);
+          l8 += (paramArrayOfInt[j] & 0xFF);
+          i += 1;
+          k = j;
+        }
+        i = paramInt6;
+        if (paramInt3 > i4) {
+          paramInt6 = i4;
+        } else {
+          paramInt6 = paramInt3;
+        }
+        k = paramInt3;
+        m = paramInt6;
+        l10 = l9;
+        j = 0;
+        l11 = l8;
+        n = paramInt6 * paramInt1 + paramInt4;
+        i3 = paramInt4;
+        paramInt6 = i;
+        l9 = l4;
+        l8 = l10;
+        l4 = l11;
+        i = paramInt4;
+        while (j < paramInt2)
+        {
+          l10 = paramArrayOfInt[i3] & 0xFF000000;
+          l11 = i5;
+          paramArrayOfInt[i3] = ((int)(l10 | (l7 * l11 >>> i6 & 0xFF) << 16 | (l6 * l11 >>> i6 & 0xFF) << 8 | l11 * l5 >>> i6 & 0xFF));
+          i3 += paramInt1;
+          i1 = k + paramInt6 - paramInt3;
+          paramInt4 = i1;
+          if (i1 >= paramInt6) {
+            paramInt4 = i1 - paramInt6;
+          }
+          l12 = arrayOfInt[paramInt4] >>> 16 & 0xFF;
+          l11 = arrayOfInt[paramInt4] >>> 8 & 0xFF;
+          l10 = arrayOfInt[paramInt4] & 0xFF;
+          i2 = m;
+          i1 = n;
+          if (m < i4)
+          {
+            i1 = n + paramInt1;
+            i2 = m + 1;
+          }
+          arrayOfInt[paramInt4] = paramArrayOfInt[i1];
+          l9 += (paramArrayOfInt[i1] >>> 16 & 0xFF);
+          l8 += (paramArrayOfInt[i1] >>> 8 & 0xFF);
+          l4 += (paramArrayOfInt[i1] & 0xFF);
+          l7 = l7 - l1 + l9;
+          l6 = l6 - l2 + l8;
+          l5 = l5 - l3 + l4;
+          k += 1;
+          paramInt4 = k;
+          if (k >= paramInt6) {
+            paramInt4 = 0;
+          }
+          k = arrayOfInt[paramInt4];
+          l1 = l1 - l12 + (k >>> 16 & 0xFF);
+          l2 = l2 - l11 + (arrayOfInt[paramInt4] >>> 8 & 0xFF);
+          l3 = l3 - l10 + (arrayOfInt[paramInt4] & 0xFF);
+          l9 -= (arrayOfInt[paramInt4] >>> 16 & 0xFF);
+          l8 -= (arrayOfInt[paramInt4] >>> 8 & 0xFF);
+          l4 -= (arrayOfInt[paramInt4] & 0xFF);
+          j += 1;
+          k = paramInt4;
+          m = i2;
+          n = i1;
+        }
       }
     }
   }
@@ -269,26 +279,19 @@ class JavaBlurProcess
     int i = 0;
     while (i < m)
     {
-      paramBitmap.add(new JavaBlurProcess.BlurTask(arrayOfInt, j, k, (int)paramFloat, m, i, 1));
-      localArrayList.add(new JavaBlurProcess.BlurTask(arrayOfInt, j, k, (int)paramFloat, m, i, 2));
+      int n = (int)paramFloat;
+      paramBitmap.add(new JavaBlurProcess.BlurTask(arrayOfInt, j, k, n, m, i, 1));
+      localArrayList.add(new JavaBlurProcess.BlurTask(arrayOfInt, j, k, n, m, i, 2));
       i += 1;
     }
     try
     {
       StackBlurManager.EXECUTOR.invokeAll(paramBitmap);
-      return null;
+      StackBlurManager.EXECUTOR.invokeAll(localArrayList);
+      return Bitmap.createBitmap(arrayOfInt, j, k, Bitmap.Config.ARGB_8888);
     }
-    catch (InterruptedException paramBitmap)
-    {
-      try
-      {
-        StackBlurManager.EXECUTOR.invokeAll(localArrayList);
-        return Bitmap.createBitmap(arrayOfInt, j, k, Bitmap.Config.ARGB_8888);
-      }
-      catch (InterruptedException paramBitmap) {}
-      paramBitmap = paramBitmap;
-      return null;
-    }
+    catch (InterruptedException paramBitmap) {}
+    return null;
   }
   
   public String toString()
@@ -298,7 +301,7 @@ class JavaBlurProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.JavaBlurProcess
  * JD-Core Version:    0.7.0.1
  */

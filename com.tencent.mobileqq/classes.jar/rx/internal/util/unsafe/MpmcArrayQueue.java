@@ -31,43 +31,45 @@ public class MpmcArrayQueue<E>
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException("Null is not a valid element");
-    }
-    long l3 = this.mask + 1L;
-    long[] arrayOfLong = this.sequenceBuffer;
-    long l1;
-    for (long l2 = 9223372036854775807L;; l2 = l1)
+    if (paramE != null)
     {
-      long l4 = lvProducerIndex();
-      long l5 = calcSequenceOffset(l4);
-      long l6 = lvSequence(arrayOfLong, l5) - l4;
-      if (l6 == 0L)
+      long l3 = this.mask;
+      long[] arrayOfLong = this.sequenceBuffer;
+      long l1 = 9223372036854775807L;
+      long l2;
+      long l4;
+      do
       {
-        l1 = l2;
-        if (casProducerIndex(l4, 1L + l4))
+        do
         {
-          spElement(calcElementOffset(l4), paramE);
-          soSequence(arrayOfLong, l5, 1L + l4);
-          return true;
-        }
-      }
-      else
-      {
-        l1 = l2;
-        if (l6 < 0L)
-        {
-          l1 = l2;
-          if (l4 - l3 <= l2)
+          long l5;
+          do
           {
-            l2 = lvConsumerIndex();
-            l1 = l2;
-            if (l4 - l3 <= l2) {
-              return false;
-            }
-          }
-        }
-      }
+            do
+            {
+              l2 = lvProducerIndex();
+              l4 = calcSequenceOffset(l2);
+              l5 = lvSequence(arrayOfLong, l4) - l2;
+              if (l5 != 0L) {
+                break;
+              }
+              l5 = l2 + 1L;
+            } while (!casProducerIndex(l2, l5));
+            spElement(calcElementOffset(l2), paramE);
+            soSequence(arrayOfLong, l4, l5);
+            return true;
+          } while (l5 >= 0L);
+          l4 = l2 - (l3 + 1L);
+        } while (l4 > l1);
+        l2 = lvConsumerIndex();
+        l1 = l2;
+      } while (l4 > l2);
+      return false;
+    }
+    paramE = new NullPointerException("Null is not a valid element");
+    for (;;)
+    {
+      throw paramE;
     }
   }
   
@@ -86,41 +88,36 @@ public class MpmcArrayQueue<E>
   public E poll()
   {
     long[] arrayOfLong = this.sequenceBuffer;
-    long l1;
-    for (long l2 = -1L;; l2 = l1)
+    long l1 = -1L;
+    long l3;
+    long l2;
+    do
     {
-      long l3 = lvConsumerIndex();
-      long l4 = calcSequenceOffset(l3);
-      long l5 = lvSequence(arrayOfLong, l4) - (1L + l3);
-      if (l5 == 0L)
+      long l5;
+      do
       {
-        l1 = l2;
-        if (casConsumerIndex(l3, 1L + l3))
+        long l4;
+        do
         {
-          l1 = calcElementOffset(l3);
-          Object localObject = lpElement(l1);
-          spElement(l1, null);
-          soSequence(arrayOfLong, l4, this.mask + l3 + 1L);
-          return localObject;
-        }
-      }
-      else
-      {
-        l1 = l2;
-        if (l5 < 0L)
-        {
-          l1 = l2;
-          if (l3 >= l2)
-          {
-            l2 = lvProducerIndex();
-            l1 = l2;
-            if (l3 == l2) {
-              return null;
-            }
+          l3 = lvConsumerIndex();
+          l2 = calcSequenceOffset(l3);
+          l5 = lvSequence(arrayOfLong, l2);
+          l4 = l3 + 1L;
+          l5 -= l4;
+          if (l5 != 0L) {
+            break;
           }
-        }
-      }
-    }
+        } while (!casConsumerIndex(l3, l4));
+        l1 = calcElementOffset(l3);
+        Object localObject = lpElement(l1);
+        spElement(l1, null);
+        soSequence(arrayOfLong, l2, l3 + this.mask + 1L);
+        return localObject;
+      } while ((l5 >= 0L) || (l3 < l1));
+      l2 = lvProducerIndex();
+      l1 = l2;
+    } while (l3 != l2);
+    return null;
   }
   
   public int size()
@@ -138,7 +135,7 @@ public class MpmcArrayQueue<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.util.unsafe.MpmcArrayQueue
  * JD-Core Version:    0.7.0.1
  */

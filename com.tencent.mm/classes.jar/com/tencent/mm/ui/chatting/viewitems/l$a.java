@@ -1,43 +1,58 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.d;
+import com.tencent.mm.message.f;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
-final class l$a
-  extends c.a
+public class l$a
+  extends f
 {
-  protected TextView mCZ;
-  protected ImageView mZY;
-  protected View mzQ;
-  protected ImageView nef;
-  protected TextView zRY;
-  protected TextView zTZ;
-  protected ImageView zUa;
+  public int aePC;
+  public String appId;
+  public String appName;
+  public String iconUrl;
+  public int state;
   
-  public final a fc(View paramView)
+  private static String f(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(32951);
-    super.eV(paramView);
-    this.mZY = ((ImageView)paramView.findViewById(2131822600));
-    this.mCZ = ((TextView)paramView.findViewById(2131822607));
-    this.zTZ = ((TextView)paramView.findViewById(2131822731));
-    this.mzQ = paramView.findViewById(2131822730);
-    this.zRY = ((TextView)paramView.findViewById(2131822518));
-    this.qFY = ((TextView)paramView.findViewById(2131821122));
-    this.zUa = ((ImageView)paramView.findViewById(2131822622));
-    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
-    this.jbK = paramView.findViewById(2131820586);
-    this.nef = ((ImageView)paramView.findViewById(2131822646));
-    AppMethodBeat.o(32951);
-    return this;
+    AppMethodBeat.i(36915);
+    paramMap = Util.nullAsNil((String)paramMap.get(".msg.appmsg.downloaderapp.".concat(String.valueOf(paramString))));
+    AppMethodBeat.o(36915);
+    return paramMap;
+  }
+  
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
+  
+  public final void a(Map<String, String> paramMap, k.b paramb)
+  {
+    AppMethodBeat.i(36914);
+    if (paramb.type == 671088689)
+    {
+      Log.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
+      this.state = Util.getInt(f(paramMap, "state"), 0);
+      this.appId = f(paramMap, "appid");
+      this.appName = f(paramMap, "appname");
+      this.aePC = Util.getInt(f(paramMap, "appsize"), 0);
+      this.iconUrl = f(paramMap, "iconurl");
+    }
+    AppMethodBeat.o(36914);
+  }
+  
+  public final f biW()
+  {
+    AppMethodBeat.i(36913);
+    a locala = new a();
+    AppMethodBeat.o(36913);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.l.a
  * JD-Core Version:    0.7.0.1
  */

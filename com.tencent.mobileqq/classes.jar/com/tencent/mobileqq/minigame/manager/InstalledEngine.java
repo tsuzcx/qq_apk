@@ -40,7 +40,12 @@ public class InstalledEngine
       FileUtils.delete(this.engineDir, false);
       EngineInstaller.getSp().edit().remove(this.engineDir).apply();
     }
-    QLog.i("InstalledEngine", 1, "[MiniEng] delete engine " + this + ", pName=" + BaseApplicationImpl.getApplication().getQQProcessName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] delete engine ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(", pName=");
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getQQProcessName());
+    QLog.i("InstalledEngine", 1, localStringBuilder.toString());
   }
   
   public int describeContents()
@@ -55,38 +60,39 @@ public class InstalledEngine
   
   public String toString()
   {
-    return "InstalledEngine{engineDir=" + this.engineDir + ", engineName=" + this.engineName + ", engineVersion=" + this.engineVersion + ", engineType=" + this.engineType + ", isVerify=" + this.isVerify + ", isPersist=" + this.isPersist + ", loadStatus=" + this.loadStatus + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InstalledEngine{engineDir=");
+    localStringBuilder.append(this.engineDir);
+    localStringBuilder.append(", engineName=");
+    localStringBuilder.append(this.engineName);
+    localStringBuilder.append(", engineVersion=");
+    localStringBuilder.append(this.engineVersion);
+    localStringBuilder.append(", engineType=");
+    localStringBuilder.append(this.engineType);
+    localStringBuilder.append(", isVerify=");
+    localStringBuilder.append(this.isVerify);
+    localStringBuilder.append(", isPersist=");
+    localStringBuilder.append(this.isPersist);
+    localStringBuilder.append(", loadStatus=");
+    localStringBuilder.append(this.loadStatus);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
     paramParcel.writeString(this.engineName);
     paramParcel.writeString(this.engineDir);
     paramParcel.writeParcelable(this.engineVersion, 0);
     paramParcel.writeInt(this.engineType);
-    if (this.isVerify)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.isPersist) {
-        break label79;
-      }
-    }
-    label79:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.loadStatus);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.isVerify);
+    paramParcel.writeByte((byte)this.isPersist);
+    paramParcel.writeInt(this.loadStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.InstalledEngine
  * JD-Core Version:    0.7.0.1
  */

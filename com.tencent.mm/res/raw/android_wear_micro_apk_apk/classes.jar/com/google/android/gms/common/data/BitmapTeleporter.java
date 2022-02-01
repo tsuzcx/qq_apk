@@ -20,20 +20,20 @@ public class BitmapTeleporter
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<BitmapTeleporter> CREATOR = new e();
-  final int GT;
-  final int Hc;
-  ParcelFileDescriptor Ib;
-  private Bitmap Ic;
-  private boolean Id;
-  private File Ie;
+  final int II;
+  final int IR;
+  ParcelFileDescriptor JQ;
+  private Bitmap JR;
+  private boolean JS;
+  private File JT;
   
   BitmapTeleporter(int paramInt1, ParcelFileDescriptor paramParcelFileDescriptor, int paramInt2)
   {
-    this.Hc = paramInt1;
-    this.Ib = paramParcelFileDescriptor;
-    this.GT = paramInt2;
-    this.Ic = null;
-    this.Id = false;
+    this.IR = paramInt1;
+    this.JQ = paramParcelFileDescriptor;
+    this.II = paramInt2;
+    this.JR = null;
+    this.JS = false;
   }
   
   private static void a(Closeable paramCloseable)
@@ -50,11 +50,11 @@ public class BitmapTeleporter
   }
   
   /* Error */
-  private java.io.FileOutputStream gK()
+  private java.io.FileOutputStream gU()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:Ie	Ljava/io/File;
+    //   1: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:JT	Ljava/io/File;
     //   4: ifnonnull +13 -> 17
     //   7: new 69	java/lang/IllegalStateException
     //   10: dup
@@ -64,7 +64,7 @@ public class BitmapTeleporter
     //   17: ldc 76
     //   19: ldc 78
     //   21: aload_0
-    //   22: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:Ie	Ljava/io/File;
+    //   22: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:JT	Ljava/io/File;
     //   25: invokestatic 84	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
     //   28: astore_1
     //   29: new 86	java/io/FileOutputStream
@@ -76,7 +76,7 @@ public class BitmapTeleporter
     //   39: aload_1
     //   40: ldc 90
     //   42: invokestatic 96	android/os/ParcelFileDescriptor:open	(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;
-    //   45: putfield 36	com/google/android/gms/common/data/BitmapTeleporter:Ib	Landroid/os/ParcelFileDescriptor;
+    //   45: putfield 36	com/google/android/gms/common/data/BitmapTeleporter:JQ	Landroid/os/ParcelFileDescriptor;
     //   48: aload_1
     //   49: invokevirtual 100	java/io/File:delete	()Z
     //   52: pop
@@ -113,13 +113,13 @@ public class BitmapTeleporter
     Bitmap localBitmap;
     Object localObject;
     byte[] arrayOfByte;
-    if (this.Ib == null)
+    if (this.JQ == null)
     {
-      localBitmap = this.Ic;
+      localBitmap = this.JR;
       localObject = ByteBuffer.allocate(localBitmap.getRowBytes() * localBitmap.getHeight());
       localBitmap.copyPixelsToBuffer((Buffer)localObject);
       arrayOfByte = ((ByteBuffer)localObject).array();
-      localObject = new DataOutputStream(gK());
+      localObject = new DataOutputStream(gU());
     }
     try
     {
@@ -130,7 +130,7 @@ public class BitmapTeleporter
       ((DataOutputStream)localObject).write(arrayOfByte);
       a((Closeable)localObject);
       e.a(this, paramParcel, paramInt | 0x1);
-      this.Ib = null;
+      this.JQ = null;
       return;
     }
     catch (IOException paramParcel)

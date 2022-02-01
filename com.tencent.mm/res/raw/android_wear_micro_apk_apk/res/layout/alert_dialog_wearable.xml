@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.ObservableScrollView android:id="@id/parentPanel" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/animatedWrapperContainer" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/alertTitle" android:paddingLeft="@dimen/diag_content_side_padding" android:paddingTop="@dimen/diag_content_top_padding" android:paddingRight="@dimen/diag_content_side_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/Widget.WearDiag.TextView.Title" />
+        <TextView android:id="@android:id/message" android:paddingLeft="@dimen/diag_content_side_padding" android:paddingRight="@dimen/diag_content_side_padding" android:paddingBottom="@dimen/diag_content_bottom_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/Widget.WearDiag.TextView.Message" />
+        <LinearLayout android:orientation="vertical" android:id="@id/buttonPanel" android:background="@color/dialog_shade_background" android:paddingLeft="@dimen/diag_content_side_padding" android:paddingRight="@dimen/diag_content_side_padding" android:paddingBottom="@dimen/diag_button_bottom_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@android:id/button1" style="@style/Widget.WearDiag.Button" />
+            <Button android:id="@android:id/button3" style="@style/Widget.WearDiag.Button" />
+            <Button android:id="@android:id/button2" style="@style/Widget.WearDiag.Button" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.wearable.view.ObservableScrollView>

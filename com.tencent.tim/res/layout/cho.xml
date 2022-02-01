@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView android:id="@id/ec1" android:background="@color/ah9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:divider="@null" android:dividerHeight="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

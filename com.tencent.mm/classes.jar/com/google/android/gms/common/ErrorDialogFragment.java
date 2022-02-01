@@ -17,15 +17,15 @@ public class ErrorDialogFragment
   
   public static ErrorDialogFragment newInstance(Dialog paramDialog)
   {
-    AppMethodBeat.i(60412);
+    AppMethodBeat.i(10904);
     paramDialog = newInstance(paramDialog, null);
-    AppMethodBeat.o(60412);
+    AppMethodBeat.o(10904);
     return paramDialog;
   }
   
   public static ErrorDialogFragment newInstance(Dialog paramDialog, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60413);
+    AppMethodBeat.i(10905);
     ErrorDialogFragment localErrorDialogFragment = new ErrorDialogFragment();
     paramDialog = (Dialog)Preconditions.checkNotNull(paramDialog, "Cannot display null dialog");
     paramDialog.setOnCancelListener(null);
@@ -34,40 +34,40 @@ public class ErrorDialogFragment
     if (paramOnCancelListener != null) {
       localErrorDialogFragment.zzap = paramOnCancelListener;
     }
-    AppMethodBeat.o(60413);
+    AppMethodBeat.o(10905);
     return localErrorDialogFragment;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(60411);
+    AppMethodBeat.i(10903);
     if (this.zzap != null) {
       this.zzap.onCancel(paramDialogInterface);
     }
-    AppMethodBeat.o(60411);
+    AppMethodBeat.o(10903);
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    AppMethodBeat.i(60410);
+    AppMethodBeat.i(10902);
     if (this.mDialog == null) {
       setShowsDialog(false);
     }
     paramBundle = this.mDialog;
-    AppMethodBeat.o(60410);
+    AppMethodBeat.o(10902);
     return paramBundle;
   }
   
   public void show(FragmentManager paramFragmentManager, String paramString)
   {
-    AppMethodBeat.i(60414);
+    AppMethodBeat.i(10906);
     super.show(paramFragmentManager, paramString);
-    AppMethodBeat.o(60414);
+    AppMethodBeat.o(10906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.ErrorDialogFragment
  * JD-Core Version:    0.7.0.1
  */

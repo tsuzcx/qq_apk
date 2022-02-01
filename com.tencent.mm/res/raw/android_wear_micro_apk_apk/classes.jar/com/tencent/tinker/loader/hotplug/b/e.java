@@ -2,37 +2,37 @@ package com.tencent.tinker.loader.hotplug.b;
 
 public abstract class e<T_TARGET>
 {
-  private T_TARGET alE = null;
-  private volatile boolean alF = false;
+  private T_TARGET ape = null;
+  private volatile boolean apf = false;
   
-  protected abstract void S(T_TARGET paramT_TARGET);
+  protected abstract void ab(T_TARGET paramT_TARGET);
   
-  protected T_TARGET T(T_TARGET paramT_TARGET)
+  protected T_TARGET ac(T_TARGET paramT_TARGET)
   {
     return paramT_TARGET;
   }
   
   /* Error */
-  public final void og()
+  public final void oT()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/tinker/loader/hotplug/b/e:alF	Z
+    //   3: getfield 18	com/tencent/tinker/loader/hotplug/b/e:apf	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +21 -> 29
     //   11: aload_0
     //   12: aload_0
-    //   13: getfield 16	com/tencent/tinker/loader/hotplug/b/e:alE	Ljava/lang/Object;
-    //   16: invokevirtual 30	com/tencent/tinker/loader/hotplug/b/e:S	(Ljava/lang/Object;)V
+    //   13: getfield 16	com/tencent/tinker/loader/hotplug/b/e:ape	Ljava/lang/Object;
+    //   16: invokevirtual 30	com/tencent/tinker/loader/hotplug/b/e:ab	(Ljava/lang/Object;)V
     //   19: aload_0
     //   20: aconst_null
-    //   21: putfield 16	com/tencent/tinker/loader/hotplug/b/e:alE	Ljava/lang/Object;
+    //   21: putfield 16	com/tencent/tinker/loader/hotplug/b/e:ape	Ljava/lang/Object;
     //   24: aload_0
     //   25: iconst_0
-    //   26: putfield 18	com/tencent/tinker/loader/hotplug/b/e:alF	Z
+    //   26: putfield 18	com/tencent/tinker/loader/hotplug/b/e:apf	Z
     //   29: aload_0
     //   30: monitorexit
     //   31: return
@@ -61,33 +61,33 @@ public abstract class e<T_TARGET>
     //   33	42	42	finally
   }
   
-  protected abstract T_TARGET oj();
+  protected abstract T_TARGET oW();
   
   /* Error */
-  public final void ok()
+  public final void oX()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 40	com/tencent/tinker/loader/hotplug/b/e:oj	()Ljava/lang/Object;
+    //   3: invokevirtual 40	com/tencent/tinker/loader/hotplug/b/e:oW	()Ljava/lang/Object;
     //   6: astore_1
     //   7: aload_0
     //   8: aload_1
-    //   9: putfield 16	com/tencent/tinker/loader/hotplug/b/e:alE	Ljava/lang/Object;
+    //   9: putfield 16	com/tencent/tinker/loader/hotplug/b/e:ape	Ljava/lang/Object;
     //   12: aload_0
     //   13: aload_1
-    //   14: invokevirtual 42	com/tencent/tinker/loader/hotplug/b/e:T	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: invokevirtual 42	com/tencent/tinker/loader/hotplug/b/e:ac	(Ljava/lang/Object;)Ljava/lang/Object;
     //   17: astore_2
     //   18: aload_2
     //   19: aload_1
     //   20: if_acmpeq +16 -> 36
     //   23: aload_0
     //   24: aload_2
-    //   25: invokevirtual 30	com/tencent/tinker/loader/hotplug/b/e:S	(Ljava/lang/Object;)V
+    //   25: invokevirtual 30	com/tencent/tinker/loader/hotplug/b/e:ab	(Ljava/lang/Object;)V
     //   28: aload_0
     //   29: iconst_1
-    //   30: putfield 18	com/tencent/tinker/loader/hotplug/b/e:alF	Z
+    //   30: putfield 18	com/tencent/tinker/loader/hotplug/b/e:apf	Z
     //   33: aload_0
     //   34: monitorexit
     //   35: return
@@ -107,7 +107,7 @@ public abstract class e<T_TARGET>
     //   66: astore_1
     //   67: aload_0
     //   68: aconst_null
-    //   69: putfield 16	com/tencent/tinker/loader/hotplug/b/e:alE	Ljava/lang/Object;
+    //   69: putfield 16	com/tencent/tinker/loader/hotplug/b/e:ape	Ljava/lang/Object;
     //   72: new 32	com/tencent/tinker/loader/hotplug/b/d
     //   75: dup
     //   76: aload_1

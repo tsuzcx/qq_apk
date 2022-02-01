@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/k00" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/df" android:layout_alignParentStart="true" />
+    <com.tencent.mm.plugin.exdevice.ui.ColorfulCircleProgress android:id="@id/eqc" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:layout_marginTop="@dimen/bw" android:layout_marginBottom="@dimen/df" android:layout_marginStart="@dimen/cp" android:layout_alignParentEnd="true" app:animate="true" />
+</RelativeLayout>

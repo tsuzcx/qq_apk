@@ -9,7 +9,7 @@ public final class ResponeQueryNewUserRecommendedListNotBind
   extends JceStruct
 {
   static ArrayList<RecommendedContactInfo> cache_RecommendedContacts = new ArrayList();
-  public ArrayList<RecommendedContactInfo> RecommendedContacts;
+  public ArrayList<RecommendedContactInfo> RecommendedContacts = null;
   public long lastUsedFlag = 1L;
   
   static
@@ -40,7 +40,7 @@ public final class ResponeQueryNewUserRecommendedListNotBind
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeQueryNewUserRecommendedListNotBind
  * JD-Core Version:    0.7.0.1
  */

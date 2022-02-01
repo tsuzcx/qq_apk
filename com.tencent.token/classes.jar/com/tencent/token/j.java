@@ -1,31 +1,51 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
 public final class j
+  extends JceStruct
 {
-  public long a = 0L;
-  public long b = 0L;
+  static ArrayList<k> d = new ArrayList();
+  static ArrayList<k> e;
+  public int a = 0;
+  public ArrayList<k> b = null;
+  public ArrayList<k> c = null;
   
-  public j(long paramLong1, long paramLong2)
+  static
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    k localk = new k();
+    d.add(localk);
+    e = new ArrayList();
+    localk = new k();
+    e.add(localk);
   }
   
-  public final boolean equals(Object paramObject)
+  public final JceStruct newInit()
   {
-    if ((paramObject instanceof j))
-    {
-      paramObject = (j)paramObject;
-      if ((this.a == paramObject.a) && (this.b == paramObject.b)) {
-        return true;
-      }
+    return new j();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = ((ArrayList)paramJceInputStream.read(d, 1, false));
+    this.c = ((ArrayList)paramJceInputStream.read(e, 2, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    return false;
-  }
-  
-  public final String toString()
-  {
-    return "[" + this.a + "," + this.b + "]";
+    localArrayList = this.c;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
+    }
   }
 }
 

@@ -1,45 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.open.applist.H5ConfirmDialog.Dialogcallback;
 import com.tencent.open.applist.WebAppActivity;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
 
 public class hll
-  implements View.OnClickListener
+  implements H5ConfirmDialog.Dialogcallback
 {
   public hll(WebAppActivity paramWebAppActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      if (paramView == this.a.jdField_a_of_type_AndroidWidgetImageView)
-      {
-        if (!this.a.jdField_a_of_type_ComTencentSmttSdkWebView.canGoBack()) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goBack();
-        return;
-      }
-      if (paramView == this.a.b)
-      {
-        this.a.jdField_a_of_type_ComTencentSmttSdkWebView.goForward();
-        return;
-      }
+    LogUtility.c("WebAppActivity", " createIcon = " + paramBoolean);
+    if (paramBoolean) {
+      this.a.a(this.a.h, this.a.h, true);
     }
-    catch (Exception paramView)
-    {
-      LogUtility.c("WebAppActivity", "onClick", paramView);
-      return;
-    }
-    if (paramView == this.a.c)
-    {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.reload();
-      return;
-    }
-    if (paramView == this.a.d) {
-      this.a.finish();
-    }
+    this.a.finish();
   }
 }
 

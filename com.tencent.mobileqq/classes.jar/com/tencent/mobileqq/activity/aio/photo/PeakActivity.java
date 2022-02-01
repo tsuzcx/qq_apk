@@ -1,50 +1,87 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
-import azmk;
-import blqh;
+import android.view.MotionEvent;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class PeakActivity
   extends BaseActivity2
 {
-  @Deprecated
-  protected AppInterface appInterface;
-  protected boolean mNeedPauseRichMedia = true;
+  protected boolean o = true;
   
-  protected void adjustStatusBar()
+  private static AppInterface b()
   {
-    azmk.a(this.mSystemBarComp, getWindow());
+    try
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {
+        return (QQAppInterface)localObject;
+      }
+      localObject = BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+      if ((localObject instanceof PeakAppInterface))
+      {
+        localObject = (PeakAppInterface)localObject;
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("BaseActivity2", 1, "getAppRuntime fail, ", localException);
+    }
+    return null;
   }
   
-  public String getModuleId()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected String getModuleId()
   {
     return "peak";
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setVolumeControlStream(3);
     if (!isLatecyWaitRuntime()) {
-      blqh.a();
+      b();
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    if (this.mNeedPauseRichMedia)
+    if (this.o)
     {
       NativeVideoImage.pauseAll();
       AbstractGifImage.pauseAll();
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     NativeVideoImage.resumeAll();
@@ -53,7 +90,7 @@ public class PeakActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,55 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahhd;
-import altm;
-import ayuh;
-import ayun;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
 import java.util.concurrent.CountDownLatch;
 
-public class NetSearchEngine$NetSearchRunnalbe
+class NetSearchEngine$NetSearchRunnalbe
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  public altm a;
-  private ayuh jdField_a_of_type_Ayuh;
-  private String jdField_a_of_type_JavaLangString;
   public CountDownLatch a;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
+  FriendListObserver b = new NetSearchEngine.NetSearchRunnalbe.1(this);
+  private int[] c;
+  private ISearchListener d;
+  private String e;
+  private int f;
+  private boolean g;
   
-  public NetSearchEngine$NetSearchRunnalbe(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, ayuh paramayuh)
+  public NetSearchEngine$NetSearchRunnalbe(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, ISearchListener paramISearchListener)
   {
-    this.jdField_a_of_type_Altm = new ayun(this);
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_Ayuh = paramayuh;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
+    this.c = paramArrayOfInt;
+    this.d = paramISearchListener;
+    this.e = paramString;
+    this.f = paramInt;
+    this.a = new CountDownLatch(1);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ayuh = null;
-    NetSearchEngine.a(this.this$0).removeObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_Altm = null;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.g = true;
+    this.d = null;
+    NetSearchEngine.a(this.this$0).removeObserver(this.b);
+    this.b = null;
+    this.a.countDown();
   }
   
   public void run()
   {
-    NetSearchEngine.a(this.this$0).addObserver(this.jdField_a_of_type_Altm);
-    this.this$0.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_Int);
-    if (NetSearchEngine.a(this.this$0) == 12)
+    NetSearchEngine.a(this.this$0).addObserver(this.b);
+    this.this$0.c.a(this.f);
+    if (NetSearchEngine.b(this.this$0) == 12)
     {
-      this.this$0.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 1);
+      this.this$0.c.a(this.e, this.c, NetSearchEngine.b, NetSearchEngine.a, false, 1);
       return;
     }
-    this.this$0.jdField_a_of_type_Ahhd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 0);
+    this.this$0.c.a(this.e, this.c, NetSearchEngine.b, NetSearchEngine.a, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe
  * JD-Core Version:    0.7.0.1
  */

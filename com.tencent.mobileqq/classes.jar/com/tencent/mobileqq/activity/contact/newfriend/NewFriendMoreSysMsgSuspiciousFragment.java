@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahlz;
-import ahma;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import azqs;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewFriendMoreSysMsgSuspiciousFragment
   extends PublicBaseFragment
 {
-  private ahma jdField_a_of_type_Ahma;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
+  private SwipListView a;
+  private NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter b;
   
   private void a(View paramView)
   {
-    View localView = paramView.findViewById(2131371179);
-    ((TextView)localView.findViewById(2131377950)).setText(2131699925);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131377344));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_Ahma = new ahma(getActivity(), getActivity().app, this.jdField_a_of_type_ComTencentWidgetSwipListView, localView);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_Ahma);
-    paramView.findViewById(2131368624).setOnClickListener(new ahlz(this));
-    ((TextView)paramView.findViewById(2131368670)).setText(2131699924);
-    azqs.b(getActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
+    View localView = paramView.findViewById(2131439340);
+    ((TextView)localView.findViewById(2131447476)).setText(2131897418);
+    this.a = ((SwipListView)paramView.findViewById(2131446714));
+    this.a.setDragEnable(true);
+    this.b = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter(getBaseActivity(), getBaseActivity().app, this.a, localView);
+    this.a.setAdapter(this.b);
+    paramView.findViewById(2131436180).setOnClickListener(new NewFriendMoreSysMsgSuspiciousFragment.1(this));
+    ((TextView)paramView.findViewById(2131436227)).setText(2131897415);
+    ReportController.b(getBaseActivity().app, "dc00898", "", "", "0X800A32B", "0X800A32B", 0, 0, "", "", "", "");
   }
   
   public void onCreate(Bundle paramBundle)
@@ -43,13 +42,14 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131561115, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131627600, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
     a(paramViewGroup);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
   
@@ -58,8 +58,9 @@ public class NewFriendMoreSysMsgSuspiciousFragment
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Ahma != null) {
-      this.jdField_a_of_type_Ahma.c();
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
+    if (localSysMsgSuspiciousAdapter != null) {
+      localSysMsgSuspiciousAdapter.c();
     }
     super.onDestroy();
   }
@@ -67,18 +68,20 @@ public class NewFriendMoreSysMsgSuspiciousFragment
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Ahma != null) {
-      this.jdField_a_of_type_Ahma.b();
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
+    if (localSysMsgSuspiciousAdapter != null) {
+      localSysMsgSuspiciousAdapter.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Ahma != null)
+    NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter localSysMsgSuspiciousAdapter = this.b;
+    if (localSysMsgSuspiciousAdapter != null)
     {
-      this.jdField_a_of_type_Ahma.a();
-      this.jdField_a_of_type_Ahma.d();
+      localSysMsgSuspiciousAdapter.a();
+      this.b.d();
     }
   }
 }

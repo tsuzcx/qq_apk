@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.qq.effect.engine.Layout;
@@ -63,22 +64,33 @@ public class QEffectView
       QEffectData localQEffectData = (QEffectData)paramList.next();
       if ((localQEffectData.support == 0) || (localQEffectData.support == 109))
       {
-        IQEffect localIQEffect = QEffectEngine.getInstance().getEffectView(this.mContext, localQEffectData.type);
-        if (!(localIQEffect instanceof View))
+        Object localObject1 = QEffectEngine.getInstance().getEffectView(this.mContext, localQEffectData.type);
+        Object localObject2;
+        if (!(localObject1 instanceof View))
         {
-          Log.e(this.TAG, " effect is null, module mame is png, src:" + localQEffectData.src);
+          localObject1 = this.TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(" effect is null, module mame is png, src:");
+          ((StringBuilder)localObject2).append(localQEffectData.src);
+          Log.e((String)localObject1, ((StringBuilder)localObject2).toString());
         }
         else
         {
-          FrameLayout.LayoutParams localLayoutParams = Layout.getLayoutParams(getContext(), localQEffectData, getWidth(), getHeight());
-          ((View)localIQEffect).setId(localQEffectData.effectId);
-          addView((View)localIQEffect, localLayoutParams);
-          if (this.mIQEffectViewMap.get(localQEffectData.effectId) != null) {
-            Log.e(this.TAG, " ID duplicate, please check ID:" + localQEffectData.effectId);
+          localObject2 = Layout.getLayoutParams(getContext(), localQEffectData, getWidth(), getHeight());
+          Object localObject3 = (View)localObject1;
+          ((View)localObject3).setId(localQEffectData.effectId);
+          addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
+          if (this.mIQEffectViewMap.get(localQEffectData.effectId) != null)
+          {
+            localObject2 = this.TAG;
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(" ID duplicate, please check ID:");
+            ((StringBuilder)localObject3).append(localQEffectData.effectId);
+            Log.e((String)localObject2, ((StringBuilder)localObject3).toString());
           }
-          this.mIQEffectViewMap.put(localQEffectData.effectId, new WeakReference(localIQEffect));
-          QEffectEngine.getInstance().load(this.mContext, this, localIQEffect, localQEffectData);
-          QEffectEngine.getInstance().onAttachedToWindow(localIQEffect);
+          this.mIQEffectViewMap.put(localQEffectData.effectId, new WeakReference(localObject1));
+          QEffectEngine.getInstance().load(this.mContext, this, (IQEffect)localObject1, localQEffectData);
+          QEffectEngine.getInstance().onAttachedToWindow((IQEffect)localObject1);
         }
       }
     }
@@ -147,17 +159,18 @@ public class QEffectView
   public void pause()
   {
     QEffectEngine.getInstance().getGravitySensor().pause();
-    if (this.mIQEffect != null) {
-      this.mIQEffect.pause();
+    Object localObject = this.mIQEffect;
+    if (localObject != null) {
+      ((IQEffect)localObject).pause();
     }
     if (this.mIQEffectViewMap != null)
     {
       int i = 0;
       while (i < this.mIQEffectViewMap.size())
       {
-        WeakReference localWeakReference = (WeakReference)this.mIQEffectViewMap.valueAt(i);
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((IQEffect)localWeakReference.get()).pause();
+        localObject = (WeakReference)this.mIQEffectViewMap.valueAt(i);
+        if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
+          ((IQEffect)((WeakReference)localObject).get()).pause();
         }
         i += 1;
       }
@@ -167,17 +180,18 @@ public class QEffectView
   public void resume()
   {
     QEffectEngine.getInstance().getGravitySensor().resume();
-    if (this.mIQEffect != null) {
-      this.mIQEffect.resume();
+    Object localObject = this.mIQEffect;
+    if (localObject != null) {
+      ((IQEffect)localObject).resume();
     }
     if (this.mIQEffectViewMap != null)
     {
       int i = 0;
       while (i < this.mIQEffectViewMap.size())
       {
-        WeakReference localWeakReference = (WeakReference)this.mIQEffectViewMap.valueAt(i);
-        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((IQEffect)localWeakReference.get()).resume();
+        localObject = (WeakReference)this.mIQEffectViewMap.valueAt(i);
+        if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
+          ((IQEffect)((WeakReference)localObject).get()).resume();
         }
         i += 1;
       }
@@ -224,31 +238,33 @@ public class QEffectView
       Log.e(this.TAG, " setSrc engine is null");
       return;
     }
-    if (this.mIQEffect != null)
+    Object localObject = this.mIQEffect;
+    if (localObject != null)
     {
-      removeView((View)this.mIQEffect);
+      removeView((View)localObject);
       this.mIQEffect = null;
     }
     this.mIQEffect = QEffectEngine.getInstance().getEffectView(this.mContext, paramInt1);
     if (!(this.mIQEffect instanceof View))
     {
-      Log.e(this.TAG, " effect is null, module mame is png, src:" + paramObject);
+      localObject = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" effect is null, module mame is png, src:");
+      localStringBuilder.append(paramObject);
+      Log.e((String)localObject, localStringBuilder.toString());
       return;
     }
-    QEffectData localQEffectData = new QEffectData();
-    localQEffectData.type = paramInt1;
-    localQEffectData.resType = paramInt2;
-    localQEffectData.h = -1.0F;
-    localQEffectData.w = -1.0F;
+    localObject = new QEffectData();
+    ((QEffectData)localObject).type = paramInt1;
+    ((QEffectData)localObject).resType = paramInt2;
+    ((QEffectData)localObject).h = -1.0F;
+    ((QEffectData)localObject).w = -1.0F;
     if ((paramInt2 == 3) && ((paramObject instanceof Integer))) {
-      localQEffectData.resId = ((Integer)paramObject).intValue();
+      ((QEffectData)localObject).resId = ((Integer)paramObject).intValue();
+    } else {
+      ((QEffectData)localObject).src = ((String)paramObject);
     }
-    for (;;)
-    {
-      setSrc(localQEffectData);
-      return;
-      localQEffectData.src = ((String)paramObject);
-    }
+    setSrc((QEffectData)localObject);
   }
   
   public void setSrc(String paramString)
@@ -260,26 +276,34 @@ public class QEffectView
   {
     if (paramString1.equals(this.mSrc))
     {
-      Log.e(this.TAG, " src重复设置，这次不会生效:" + paramString1);
+      paramString2 = this.TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" src重复设置，这次不会生效:");
+      ((StringBuilder)localObject).append(paramString1);
+      Log.e(paramString2, ((StringBuilder)localObject).toString());
       return;
     }
-    String str = paramString2;
+    Object localObject = paramString2;
     if (paramString2 == null) {
-      str = QEffectUtils.getFileType(paramString1);
+      localObject = QEffectUtils.getFileType(paramString1);
     }
-    if (str == null)
+    if (localObject == null)
     {
-      Log.e(this.TAG, " setSrc fileType is null src:" + paramString1);
+      paramString2 = this.TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" setSrc fileType is null src:");
+      ((StringBuilder)localObject).append(paramString1);
+      Log.e(paramString2, ((StringBuilder)localObject).toString());
       return;
     }
     int i = QEffectUtils.getFileLoadType(paramString1);
-    setSrc(paramString1, QEffectEngine.getInstance().getFileType(str), i);
+    setSrc(paramString1, QEffectEngine.getInstance().getFileType((String)localObject), i);
     this.mSrc = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qq.effect.QEffectView
  * JD-Core Version:    0.7.0.1
  */

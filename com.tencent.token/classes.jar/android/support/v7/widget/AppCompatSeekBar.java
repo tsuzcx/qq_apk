@@ -2,57 +2,90 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.RequiresApi;
-import android.support.v7.appcompat.R.attr;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
+import com.tencent.token.hg.a;
+import com.tencent.token.jc;
 
 public class AppCompatSeekBar
   extends SeekBar
 {
-  private final AppCompatSeekBarHelper mAppCompatSeekBarHelper = new AppCompatSeekBarHelper(this);
-  
-  public AppCompatSeekBar(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  private final jc a = new jc(this);
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.seekBarStyle);
+    this(paramContext, paramAttributeSet, hg.a.seekBarStyle);
   }
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.mAppCompatSeekBarHelper.loadFromAttributes(paramAttributeSet, paramInt);
+    this.a.a(paramAttributeSet, paramInt);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    this.mAppCompatSeekBarHelper.drawableStateChanged();
+    jc localjc = this.a;
+    Drawable localDrawable = localjc.c;
+    if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(localjc.b.getDrawableState()))) {
+      localjc.b.invalidateDrawable(localDrawable);
+    }
   }
   
-  @RequiresApi(11)
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    this.mAppCompatSeekBarHelper.jumpDrawablesToCurrentState();
+    jc localjc = this.a;
+    if (localjc.c != null) {
+      localjc.c.jumpToCurrentState();
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    try
+    for (;;)
     {
-      super.onDraw(paramCanvas);
-      this.mAppCompatSeekBarHelper.drawTickMarks(paramCanvas);
-      return;
-    }
-    finally
-    {
-      paramCanvas = finally;
-      throw paramCanvas;
+      try
+      {
+        super.onDraw(paramCanvas);
+        jc localjc = this.a;
+        if (localjc.c != null)
+        {
+          int k = localjc.b.getMax();
+          int j = 1;
+          if (k > 1)
+          {
+            i = localjc.c.getIntrinsicWidth();
+            int m = localjc.c.getIntrinsicHeight();
+            if (i < 0) {
+              break label203;
+            }
+            i /= 2;
+            if (m >= 0) {
+              j = m / 2;
+            }
+            localjc.c.setBounds(-i, -j, i, j);
+            float f = (localjc.b.getWidth() - localjc.b.getPaddingLeft() - localjc.b.getPaddingRight()) / k;
+            j = paramCanvas.save();
+            paramCanvas.translate(localjc.b.getPaddingLeft(), localjc.b.getHeight() / 2);
+            i = 0;
+            if (i <= k)
+            {
+              localjc.c.draw(paramCanvas);
+              paramCanvas.translate(f, 0.0F);
+              i += 1;
+              continue;
+            }
+            paramCanvas.restoreToCount(j);
+          }
+        }
+        return;
+      }
+      finally {}
+      label203:
+      int i = 1;
     }
   }
 }

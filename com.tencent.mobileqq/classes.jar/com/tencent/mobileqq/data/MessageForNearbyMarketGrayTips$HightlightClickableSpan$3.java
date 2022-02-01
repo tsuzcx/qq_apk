@@ -1,19 +1,23 @@
 package com.tencent.mobileqq.data;
 
-import apez;
 import com.tencent.qphone.base.util.QLog;
 
-public class MessageForNearbyMarketGrayTips$HightlightClickableSpan$3
+class MessageForNearbyMarketGrayTips$HightlightClickableSpan$3
   implements Runnable
 {
-  public MessageForNearbyMarketGrayTips$HightlightClickableSpan$3(apez paramapez) {}
+  MessageForNearbyMarketGrayTips$HightlightClickableSpan$3(MessageForNearbyMarketGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
   public void run()
   {
-    String str = this.this$0.a(apez.a(this.this$0), true);
-    this.this$0.c(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=" + str);
+    Object localObject = this.this$0;
+    localObject = ((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject).a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject), true);
+    this.this$0.c((String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, localStringBuilder.toString());
     }
   }
 }

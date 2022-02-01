@@ -10,51 +10,45 @@ class Reporter$1
   
   public void run()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      File localFile;
-      StringBuffer localStringBuffer;
-      try
+      File[] arrayOfFile = Reporter.access$000(this.this$0).listFiles();
+      int j = arrayOfFile.length;
+      int i = 0;
+      while (i < j)
       {
-        File[] arrayOfFile = Reporter.access$000(this.this$0).listFiles();
-        int j = arrayOfFile.length;
-        FileInputStream localFileInputStream;
-        if (i < j)
+        File localFile = arrayOfFile[i];
+        if ((localFile.exists()) && (localFile.isFile()))
         {
-          localFile = arrayOfFile[i];
-          if ((!localFile.exists()) || (!localFile.isFile())) {
-            break label143;
-          }
-          localFileInputStream = new FileInputStream(localFile);
+          FileInputStream localFileInputStream = new FileInputStream(localFile);
           byte[] arrayOfByte = new byte[1024];
-          localStringBuffer = new StringBuffer();
-          int k = localFileInputStream.read(arrayOfByte);
-          if (k == -1) {
-            break label120;
+          StringBuffer localStringBuffer = new StringBuffer();
+          for (;;)
+          {
+            int k = localFileInputStream.read(arrayOfByte);
+            if (k == -1) {
+              break;
+            }
+            localStringBuffer.append(new String(arrayOfByte, 0, k));
           }
-          localStringBuffer.append(new String(arrayOfByte, 0, k));
-          continue;
+          localFileInputStream.close();
+          localFile.delete();
+          Reporter.access$100(this.this$0, localStringBuffer.toString());
         }
-        localFileInputStream.close();
+        i += 1;
       }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        Reporter.access$200(this.this$0);
-        return;
-      }
-      label120:
-      localFile.delete();
-      Reporter.access$100(this.this$0, localStringBuffer.toString());
-      label143:
-      i += 1;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      Reporter.access$200(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.Reporter.1
  * JD-Core Version:    0.7.0.1
  */

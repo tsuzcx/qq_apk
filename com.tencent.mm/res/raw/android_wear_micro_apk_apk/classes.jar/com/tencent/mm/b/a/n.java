@@ -2,7 +2,7 @@ package com.tencent.mm.b.a;
 
 public final class n
 {
-  public int Vi = 0;
+  public int WY = 0;
 }
 
 

@@ -1,143 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 import java.util.LinkedList;
 
 public final class bdd
-  extends bvk
+  extends erp
 {
-  public int CreateTime;
-  public int Ret;
-  public int jKs;
-  public int pIE;
-  public long pIG;
-  public bwc woQ;
-  public int wsb;
-  public int xtf;
+  public atz YIY;
+  public String YIZ;
+  public long mMJ;
+  public long object_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(60045);
+    AppMethodBeat.i(259134);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.woQ == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: ToUserName");
-        AppMethodBeat.o(60045);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(1, this.Ret);
-      if (this.woQ != null)
+      if (this.YIY != null)
       {
-        paramVarArgs.iQ(2, this.woQ.computeSize());
-        this.woQ.writeFields(paramVarArgs);
+        paramVarArgs.qD(2, this.YIY.computeSize());
+        this.YIY.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(3, this.pIE);
-      paramVarArgs.aO(4, this.xtf);
-      paramVarArgs.aO(5, this.CreateTime);
-      paramVarArgs.aO(6, this.wsb);
-      paramVarArgs.aO(7, this.jKs);
-      paramVarArgs.am(8, this.pIG);
-      AppMethodBeat.o(60045);
+      if (this.YIZ != null) {
+        paramVarArgs.g(3, this.YIZ);
+      }
+      paramVarArgs.bv(4, this.object_id);
+      paramVarArgs.bv(5, this.mMJ);
+      AppMethodBeat.o(259134);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label566;
+      }
+    }
+    label566:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      i = e.a.a.b.b.a.bl(1, this.Ret) + 0;
       paramInt = i;
-      if (this.woQ != null) {
-        paramInt = i + e.a.a.a.iP(2, this.woQ.computeSize());
+      if (this.YIY != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YIY.computeSize());
       }
-      i = e.a.a.b.b.a.bl(3, this.pIE);
-      int j = e.a.a.b.b.a.bl(4, this.xtf);
-      int k = e.a.a.b.b.a.bl(5, this.CreateTime);
-      int m = e.a.a.b.b.a.bl(6, this.wsb);
-      int n = e.a.a.b.b.a.bl(7, this.jKs);
-      int i1 = e.a.a.b.b.a.p(8, this.pIG);
-      AppMethodBeat.o(60045);
-      return paramInt + i + j + k + m + n + i1;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      i = paramInt;
+      if (this.YIZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YIZ);
+      }
+      paramInt = i.a.a.b.b.a.q(4, this.object_id);
+      int j = i.a.a.b.b.a.q(5, this.mMJ);
+      AppMethodBeat.o(259134);
+      return i + paramInt + j;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-      }
-      if (this.woQ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ToUserName");
-        AppMethodBeat.o(60045);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(60045);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      bdd localbdd = (bdd)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(60045);
-        return -1;
-      case 1: 
-        localbdd.Ret = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
+        AppMethodBeat.o(259134);
         return 0;
-      case 2: 
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        bdd localbdd = (bdd)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bwc();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((bwc)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localbdd.woQ = ((bwc)localObject1);
-          paramInt += 1;
+        default: 
+          AppMethodBeat.o(259134);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbdd.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259134);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new atz();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((atz)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbdd.YIY = ((atz)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259134);
+          return 0;
+        case 3: 
+          localbdd.YIZ = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(259134);
+          return 0;
+        case 4: 
+          localbdd.object_id = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259134);
+          return 0;
         }
-        AppMethodBeat.o(60045);
-        return 0;
-      case 3: 
-        localbdd.pIE = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
-        return 0;
-      case 4: 
-        localbdd.xtf = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
-        return 0;
-      case 5: 
-        localbdd.CreateTime = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
-        return 0;
-      case 6: 
-        localbdd.wsb = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
-        return 0;
-      case 7: 
-        localbdd.jKs = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(60045);
+        localbdd.mMJ = ((i.a.a.a.a)localObject1).ajGk.aaw();
+        AppMethodBeat.o(259134);
         return 0;
       }
-      localbdd.pIG = ((e.a.a.a.a)localObject1).CLY.sm();
-      AppMethodBeat.o(60045);
-      return 0;
+      AppMethodBeat.o(259134);
+      return -1;
     }
-    AppMethodBeat.o(60045);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bdd
  * JD-Core Version:    0.7.0.1
  */

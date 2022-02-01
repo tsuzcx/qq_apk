@@ -21,17 +21,17 @@ public class CommonClient
   
   protected ICommonService createServiceInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(61394);
+    AppMethodBeat.i(11886);
     paramIBinder = ICommonService.Stub.asInterface(paramIBinder);
-    AppMethodBeat.o(61394);
+    AppMethodBeat.o(11886);
     return paramIBinder;
   }
   
   public int getMinApkVersion()
   {
-    AppMethodBeat.i(61395);
+    AppMethodBeat.i(11887);
     int i = super.getMinApkVersion();
-    AppMethodBeat.o(61395);
+    AppMethodBeat.o(11887);
     return i;
   }
   
@@ -47,7 +47,7 @@ public class CommonClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.service.CommonClient
  * JD-Core Version:    0.7.0.1
  */

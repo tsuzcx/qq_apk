@@ -24,37 +24,42 @@ public class ProxyWebChromeClientExtension
   
   public void acquireWakeLock()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.acquireWakeLock();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.acquireWakeLock();
     }
   }
   
   public void addFlashView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.addFlashView(paramView, paramLayoutParams);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.addFlashView(paramView, paramLayoutParams);
     }
   }
   
   public void exitFullScreenFlash()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.exitFullScreenFlash();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.exitFullScreenFlash();
     }
   }
   
   public Context getApplicationContex()
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.getApplicationContex();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      return localIX5WebChromeClientExtension.getApplicationContex();
     }
     return null;
   }
   
   public View getVideoLoadingProgressView()
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.getVideoLoadingProgressView();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      return localIX5WebChromeClientExtension.getVideoLoadingProgressView();
     }
     return null;
   }
@@ -71,51 +76,58 @@ public class ProxyWebChromeClientExtension
   
   public void h5videoExitFullScreen(String paramString)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.h5videoExitFullScreen(paramString);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.h5videoExitFullScreen(paramString);
     }
   }
   
   public void h5videoRequestFullScreen(String paramString)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.h5videoRequestFullScreen(paramString);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.h5videoRequestFullScreen(paramString);
     }
   }
   
   public void jsExitFullScreen()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.jsExitFullScreen();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.jsExitFullScreen();
     }
   }
   
   public void jsRequestFullScreen()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.jsRequestFullScreen();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.jsRequestFullScreen();
     }
   }
   
   public boolean onAddFavorite(IX5WebViewExtension paramIX5WebViewExtension, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onAddFavorite(paramIX5WebViewExtension, paramString1, paramString2, paramJsResult);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      return localIX5WebChromeClientExtension.onAddFavorite(paramIX5WebViewExtension, paramString1, paramString2, paramJsResult);
     }
     return false;
   }
   
   public void onAllMetaDataFinished(IX5WebViewExtension paramIX5WebViewExtension, HashMap<String, String> paramHashMap)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onAllMetaDataFinished(paramIX5WebViewExtension, paramHashMap);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onAllMetaDataFinished(paramIX5WebViewExtension, paramHashMap);
     }
   }
   
   public void onBackforwardFinished(int paramInt)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onBackforwardFinished(paramInt);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onBackforwardFinished(paramInt);
     }
   }
   
@@ -123,30 +135,34 @@ public class ProxyWebChromeClientExtension
   
   public void onHitTestResultFinished(IX5WebViewExtension paramIX5WebViewExtension, IX5WebViewBase.HitTestResult paramHitTestResult)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onHitTestResultFinished(paramIX5WebViewExtension, paramHitTestResult);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onHitTestResultFinished(paramIX5WebViewExtension, paramHitTestResult);
     }
   }
   
   public void onHitTestResultForPluginFinished(IX5WebViewExtension paramIX5WebViewExtension, IX5WebViewBase.HitTestResult paramHitTestResult, Bundle paramBundle)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onHitTestResultForPluginFinished(paramIX5WebViewExtension, paramHitTestResult, paramBundle);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onHitTestResultForPluginFinished(paramIX5WebViewExtension, paramHitTestResult, paramBundle);
     }
   }
   
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onMiscCallBack(paramString, paramBundle);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      return localIX5WebChromeClientExtension.onMiscCallBack(paramString, paramBundle);
     }
     return null;
   }
   
   public boolean onPageNotResponding(Runnable paramRunnable)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onPageNotResponding(paramRunnable);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      return localIX5WebChromeClientExtension.onPageNotResponding(paramRunnable);
     }
     return false;
   }
@@ -158,8 +174,9 @@ public class ProxyWebChromeClientExtension
   
   public void onPrepareX5ReadPageDataFinished(IX5WebViewExtension paramIX5WebViewExtension, HashMap<String, String> paramHashMap)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onPrepareX5ReadPageDataFinished(paramIX5WebViewExtension, paramHashMap);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onPrepareX5ReadPageDataFinished(paramIX5WebViewExtension, paramHashMap);
     }
   }
   
@@ -167,33 +184,38 @@ public class ProxyWebChromeClientExtension
   
   public void onPromptNotScalable(IX5WebViewExtension paramIX5WebViewExtension)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onPromptNotScalable(paramIX5WebViewExtension);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onPromptNotScalable(paramIX5WebViewExtension);
     }
   }
   
   public void onPromptScaleSaved(IX5WebViewExtension paramIX5WebViewExtension)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onPromptScaleSaved(paramIX5WebViewExtension);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onPromptScaleSaved(paramIX5WebViewExtension);
     }
   }
   
   public boolean onSavePassword(ValueCallback<String> paramValueCallback, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    if ((this.mWebChromeClient != null) && (sCompatibleNewOnSavePassword)) {
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if ((localIX5WebChromeClientExtension != null) && (sCompatibleNewOnSavePassword)) {
       try
       {
-        paramBoolean = this.mWebChromeClient.onSavePassword(paramValueCallback, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean);
+        paramBoolean = localIX5WebChromeClientExtension.onSavePassword(paramValueCallback, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean);
         return paramBoolean;
       }
       catch (NoSuchMethodError paramValueCallback)
       {
-        if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("onSavePassword"))) {
-          throw paramValueCallback;
+        if ((paramValueCallback.getMessage() != null) && (paramValueCallback.getMessage().contains("onSavePassword")))
+        {
+          Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.onSavePassword");
+          sCompatibleNewOnSavePassword = false;
+          return false;
         }
-        Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.onSavePassword");
-        sCompatibleNewOnSavePassword = false;
+        throw paramValueCallback;
       }
     }
     return false;
@@ -201,10 +223,11 @@ public class ProxyWebChromeClientExtension
   
   public boolean onSavePassword(String paramString1, String paramString2, String paramString3, boolean paramBoolean, Message paramMessage)
   {
-    if (this.mWebChromeClient != null) {
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
       try
       {
-        paramBoolean = this.mWebChromeClient.onSavePassword(paramString1, paramString2, paramString3, paramBoolean, paramMessage);
+        paramBoolean = localIX5WebChromeClientExtension.onSavePassword(paramString1, paramString2, paramString3, paramBoolean, paramMessage);
         return paramBoolean;
       }
       catch (NoSuchMethodError paramString1)
@@ -217,40 +240,47 @@ public class ProxyWebChromeClientExtension
   
   public void onX5ReadModeAvailableChecked(HashMap<String, String> paramHashMap)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onX5ReadModeAvailableChecked(paramHashMap);
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.onX5ReadModeAvailableChecked(paramHashMap);
     }
   }
   
   public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2)
   {
-    if ((this.mWebChromeClient != null) && (sCompatibleOpenFileChooser)) {}
-    try
-    {
-      this.mWebChromeClient.openFileChooser(paramValueCallback, paramString1, paramString2);
-      return;
-    }
-    catch (NoSuchMethodError paramValueCallback)
-    {
-      if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("openFileChooser"))) {
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if ((localIX5WebChromeClientExtension != null) && (sCompatibleOpenFileChooser)) {
+      try
+      {
+        localIX5WebChromeClientExtension.openFileChooser(paramValueCallback, paramString1, paramString2);
+        return;
+      }
+      catch (NoSuchMethodError paramValueCallback)
+      {
+        if ((paramValueCallback.getMessage() != null) && (paramValueCallback.getMessage().contains("openFileChooser")))
+        {
+          Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.openFileChooser");
+          sCompatibleOpenFileChooser = false;
+          return;
+        }
         throw paramValueCallback;
       }
-      Log.d("incompatible-oldcore", "IX5WebChromeClientExtension.openFileChooser");
-      sCompatibleOpenFileChooser = false;
     }
   }
   
   public void releaseWakeLock()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.releaseWakeLock();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.releaseWakeLock();
     }
   }
   
   public void requestFullScreenFlash()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.requestFullScreenFlash();
+    IX5WebChromeClientExtension localIX5WebChromeClientExtension = this.mWebChromeClient;
+    if (localIX5WebChromeClientExtension != null) {
+      localIX5WebChromeClientExtension.requestFullScreenFlash();
     }
   }
   
@@ -261,7 +291,7 @@ public class ProxyWebChromeClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebChromeClientExtension
  * JD-Core Version:    0.7.0.1
  */

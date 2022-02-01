@@ -1,11 +1,11 @@
 package com.tencent.open.downloadnew.common;
 
 import android.text.TextUtils;
-import bflp;
-import bfoh;
-import bfok;
-import bfox;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
 class PackageInstallReceiver$1
   implements Runnable
@@ -14,19 +14,23 @@ class PackageInstallReceiver$1
   
   public void run()
   {
-    bflp.c(this.this$0.a, "ACTION_PACKAGE_REMOVED >> " + this.a);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(bfoh.q)))
+    Object localObject = this.this$0.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ACTION_PACKAGE_REMOVED >> ");
+    localStringBuilder.append(this.a);
+    LogUtility.c((String)localObject, localStringBuilder.toString());
+    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.r)))
     {
-      bfok.a().a(true);
-      bfox.a().f();
+      DownloadManager.b().a(true);
+      MyAppApi.l().o();
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    bfok.a().a(9, localDownloadInfo);
+    localObject = new DownloadInfo("", this.b);
+    DownloadManager.b().a(9, (DownloadInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.1
  * JD-Core Version:    0.7.0.1
  */

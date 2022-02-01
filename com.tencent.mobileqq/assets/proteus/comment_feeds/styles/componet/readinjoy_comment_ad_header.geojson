@@ -1,0 +1,195 @@
+{
+  "view_type": "container",
+  "layout_type": "layout_linear",
+  "default_visible": "YES",
+  "direction": "vertical",
+  "view_id": "id_comment_cell_header",
+  "margin_top": "12",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "subviews": [
+    {
+      "view_type": "container",
+      "layout_type": "layout_relative",
+      "default_visible": "YES",
+      "view_id": "id_comment_cell_header",
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "wrap_content"
+      },
+      "subviews": [
+        {
+          "view_type": "UIView",
+          "layout_type": "layout_relative",
+          "default_visible": "YES",
+          "view_id": "id_comment_header_component",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "subviews": [
+            {
+              "view_type": "UIImageView",
+              "view_id": "id_comment_head_borders",
+              "height": {
+                "type": "absolutely",
+                "value": "43"
+              },
+              "width": {
+                "type": "absolutely",
+                "value": "43"
+              },
+              "attributes": {
+                "loadImageWithPath:": "$rij_comment_avatar_borders"
+              }
+            },
+            {
+              "view_type": "PTSAvatarView",
+              "view_id": "id_comment_avator",
+              "default_visible": "YES",
+              "align_parent_left": "YES",
+              "event_type": "cmd_avatar_click",
+              "margin_left": "3",
+              "margin_top": "3",
+              "height": {
+                "type": "absolutely",
+                "value": "37"
+              },
+              "width": {
+                "type": "absolutely",
+                "value": "37"
+              },
+              "attributes": {
+                "defaultImage:": "$default_comment_avatar",
+                "loadImageWithPath:": "$avator_url"
+              }
+            }
+          ]
+        },
+        {
+          "view_type": "UIView",
+          "layout_type": "layout_linear",
+          "visible_depend_on_children": "YES",
+          "view_id": "id_comment_describe_and_comment_container",
+          "direction": "vertical",
+          "align_parent_center_vertical": "YES",
+          "margin_left": "52",
+          "height": {
+            "type": "wrap_content"
+          },
+          "width": {
+            "type": "wrap_content"
+          },
+          "subviews": [
+            {
+              "view_type": "UIView",
+              "layout_type": "layout_linear",
+              "visible_depend_on_children": "YES",
+              "view_id": "id_comment_header_nickname_container",
+              "direction": "horizontal",
+              "height": {
+                "type": "wrap_content"
+              },
+              "width": {
+                "type": "wrap_content"
+              },
+              "subviews": [
+                {
+                  "view_type": "UIButton",
+                  "view_id": "id_comment_nickname",
+                  "event_type": "ad_name_click_in_comment",
+                  "height": {
+                    "type": "relative",
+                    "value": "18"
+                  },
+                  "width": {
+                    "type": "wrap_content"
+                  },
+                  "attributes": {
+                    "setTitle:": "$nickname",
+                    "setTitleColors:forStates:": [
+                      [
+                        "#376099",
+                        "#50376099"
+                      ],
+                      [
+                        "0",
+                        "1"
+                      ]
+                    ],
+                    "setFontSizeString:": "14"
+                  }
+                },
+{
+                  "view_type": "UIView",
+                  "view_id": "id_comment_ad_tag_center_dot",
+                  "margin_left": "6",
+                  "default_visible": "YES",
+                  "align_parent_center_vertical": "YES",
+                  "height": {
+                    "type": "relative",
+                    "value": "2"
+                  },
+                  "width": {
+                    "type": "relative",
+                    "value": "2"
+                  },
+                  "attributes": {
+                    "setBackgroundColorString:": "#376099",
+                    "setCornerRadiusString:": "1"
+                  }
+                },
+                {
+                  "view_type": "UILabel",
+                  "view_id": "id_ad_tag",
+                  "event_type": "cmd_ad_tag_click",
+                  "margin_left": "6",
+                  "height": {
+                    "type": "relative",
+                    "value": "18"
+                  },
+                  "width": {
+                    "type": "wrap_content"
+                  },
+                  "attributes": {
+                    "setTextColorString:": "#A6A6A6",
+                    "setText:": "$ad_tag_text",
+                    "setFontSizeString:": "14",
+                    "setNumberOfLinesString:": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "view_type": "UILabel",
+      "view_id": "id_first_comment_view",
+      "event_type": "cmd_comment_content_click",
+      "margin_left": "52",
+      "attributes": {
+        "setText:": "$comment",
+        "setFontSizeString:": "16",
+        "setTextColorString:": "#262626"
+      },
+      "height": {
+        "type": "wrap_content"
+      },
+      "width": {
+        "type": "relative",
+        "value": "294"
+      }
+    }
+  ]
+}

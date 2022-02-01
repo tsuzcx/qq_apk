@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlSystemMsg" android:background="@drawable/common_list_item_background" android:paddingBottom="6.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/name" android:paddingBottom="10.5dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="11.5dip" android:text="name" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" style="@style/gag_nickname_Font" />
+    <TextView android:id="@id/config" android:paddingBottom="10.5dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.5dip" android:layout_marginRight="15.0dip" android:text="config" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/arrow" style="@style/gsg_shutUpTime_Font" />
+    <ImageView android:id="@id/arrow" android:background="@drawable/common_arrow_right_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

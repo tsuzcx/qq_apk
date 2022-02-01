@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.story.api;
 
 import android.content.Context;
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.cid;
+import com.tencent.mm.protocal.protobuf.fjk;
 import java.util.List;
 
 public abstract interface e
   extends d
 {
-  public abstract void addStoryStatusNotifyListener(l paraml);
+  public abstract void addStoryStatusNotifyListener(m paramm);
   
   public abstract boolean canPostStory();
   
@@ -24,17 +24,19 @@ public abstract interface e
   
   public abstract String getAccStoryTmpPath();
   
-  public abstract k.c getContactFetcher();
+  public abstract l.c getContactFetcher();
   
   public abstract b getFavourUserChecker();
   
   public abstract f getStoryBasicConfig();
   
-  public abstract k getStoryStateFetcher(String paramString);
+  public abstract j getStoryNewFeatureConfig();
   
-  public abstract m getStoryUIFactory();
+  public abstract l getStoryStateFetcher(String paramString);
   
-  public abstract cid getStoryUserInfo();
+  public abstract n getStoryUIFactory();
+  
+  public abstract fjk getStoryUserInfo();
   
   public abstract boolean hasNewStory(String paramString);
   
@@ -54,11 +56,13 @@ public abstract interface e
   
   public abstract boolean showStoryEntranceDialog(Context paramContext, String paramString, int paramInt);
   
-  public abstract void updateStoryUserInfo(String paramString, cid paramcid);
+  public abstract void startStoryCaptureForResult(Context paramContext, int paramInt1, long paramLong, int paramInt2);
+  
+  public abstract void updateStoryUserInfo(String paramString, fjk paramfjk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.e
  * JD-Core Version:    0.7.0.1
  */

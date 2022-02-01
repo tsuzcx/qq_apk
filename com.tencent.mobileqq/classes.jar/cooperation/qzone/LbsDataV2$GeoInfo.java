@@ -4,15 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjda;
 
 public class LbsDataV2$GeoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GeoInfo> CREATOR = new bjda();
+  public static final Parcelable.Creator<GeoInfo> CREATOR = new LbsDataV2.GeoInfo.1();
   public String address;
   public LbsDataV2.GpsInfo gpsInfo;
-  public int iDistrictCode;
+  public int iDistrictCode = 0;
   public int iRange = -1;
   public String strCity = "";
   public String strCountry = "";
@@ -53,8 +52,9 @@ public class LbsDataV2$GeoInfo
     localGeoInfo.strVillage = this.strVillage;
     localGeoInfo.strRoad = this.strRoad;
     localGeoInfo.strDefaultName = this.strDefaultName;
-    if (this.gpsInfo != null) {
-      localGeoInfo.gpsInfo = this.gpsInfo.clone();
+    LbsDataV2.GpsInfo localGpsInfo = this.gpsInfo;
+    if (localGpsInfo != null) {
+      localGeoInfo.gpsInfo = localGpsInfo.clone();
     }
     return localGeoInfo;
   }
@@ -87,7 +87,7 @@ public class LbsDataV2$GeoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GeoInfo
  * JD-Core Version:    0.7.0.1
  */

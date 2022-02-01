@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.backup.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.backup.b.b.d;
+import com.tencent.mm.plugin.backup.c.d;
 
 final class c$2
   implements Runnable
 {
-  c$2(c paramc, int paramInt) {}
+  c$2(c paramc, d paramd) {}
   
   public final void run()
   {
-    AppMethodBeat.i(17247);
-    if (c.o(this.jBL) != null) {
-      c.o(this.jBL).rf(this.jBM);
-    }
-    AppMethodBeat.o(17247);
+    AppMethodBeat.i(300753);
+    this.uZg.A(false, 0);
+    AppMethodBeat.o(300753);
   }
 }
 

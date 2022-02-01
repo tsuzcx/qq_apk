@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class ItemBase
   extends JceStruct
 {
-  public int bid;
-  public int ext1;
-  public int isSetUp;
-  public int itemId;
-  public int sourceId;
+  public int bid = 0;
+  public int ext1 = 0;
+  public int isSetUp = 0;
+  public int itemId = 0;
+  public int sourceId = 0;
   
   public ItemBase() {}
   
@@ -44,7 +44,7 @@ public final class ItemBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ItemBase
  * JD-Core Version:    0.7.0.1
  */

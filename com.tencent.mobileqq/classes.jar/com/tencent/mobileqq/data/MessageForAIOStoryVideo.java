@@ -16,7 +16,7 @@ public class MessageForAIOStoryVideo
   public static final String MSG_STORY_FEED_KEY_DESC = "desc";
   public static final String TAG = "MessageForAIOStoryVideo";
   public String cover = "";
-  public long createtime;
+  public long createtime = 0L;
   public META.StStoryFeed mStStoryFeed = new META.StStoryFeed();
   public String text = "";
   
@@ -30,24 +30,33 @@ public class MessageForAIOStoryVideo
   {
     try
     {
-      if (!TextUtils.isEmpty(this.msg))
-      {
-        byte[] arrayOfByte = Base64.decode(this.msg, 0);
-        if (this.mStStoryFeed != null)
-        {
-          this.mStStoryFeed.mergeFrom(arrayOfByte);
-          if (this.mStStoryFeed.coverImage != null) {
-            this.cover = this.mStStoryFeed.coverImage.url.get();
-          }
-          this.createtime = this.mStStoryFeed.createTime.get();
-        }
+      if (TextUtils.isEmpty(this.msg)) {
+        break label117;
       }
+      localObject = Base64.decode(this.msg, 0);
+      if (this.mStStoryFeed == null) {
+        break label117;
+      }
+      this.mStStoryFeed.mergeFrom((byte[])localObject);
+      if (this.mStStoryFeed.coverImage != null) {
+        this.cover = this.mStStoryFeed.coverImage.url.get();
+      }
+      this.createtime = this.mStStoryFeed.createTime.get();
       return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isDevelopLevel()) {}
-      QLog.i("MessageForAIOStoryVideo", 4, "doParseForMessageForAIOStoryVideo:" + this.msg);
+      Object localObject;
+      label77:
+      label117:
+      break label77;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doParseForMessageForAIOStoryVideo:");
+      ((StringBuilder)localObject).append(this.msg);
+      QLog.i("MessageForAIOStoryVideo", 4, ((StringBuilder)localObject).toString());
     }
   }
 }

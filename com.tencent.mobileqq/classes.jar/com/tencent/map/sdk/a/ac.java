@@ -7,38 +7,23 @@ import android.os.Process;
 
 public final class ac
 {
-  public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static volatile boolean e;
-  public static boolean f;
+  public static String a = "null";
+  public static String b = "";
+  public static String c = "";
+  public static String d = "";
+  public static volatile boolean e = false;
+  public static boolean f = true;
   public static boolean g = false;
-  private static Context h = null;
+  private static Context h;
   private static int i = 0;
   private static boolean j = false;
   private static String k = "";
-  private static String l;
-  private static String m;
-  private static boolean n;
-  private static String o;
+  private static String l = "3.5.1.52";
+  private static String m = "";
+  private static boolean n = false;
+  private static String o = "";
   private static Handler p;
-  private static boolean q;
-  
-  static
-  {
-    a = "null";
-    b = "";
-    c = "";
-    d = "";
-    l = "3.5.1.52";
-    m = "";
-    n = false;
-    o = "";
-    e = false;
-    f = true;
-    q = false;
-  }
+  private static boolean q = false;
   
   public static Context a()
   {
@@ -71,7 +56,11 @@ public final class ac
     new Handler(h.getMainLooper());
     m = paramString;
     n = k.equals(m);
-    paramq = new HandlerThread("halley_" + i + "_" + "TempTask", 10);
+    paramq = new StringBuilder("halley_");
+    paramq.append(i);
+    paramq.append("_");
+    paramq.append("TempTask");
+    paramq = new HandlerThread(paramq.toString(), 10);
     paramq.start();
     paramq = new Handler(paramq.getLooper());
     p = paramq;

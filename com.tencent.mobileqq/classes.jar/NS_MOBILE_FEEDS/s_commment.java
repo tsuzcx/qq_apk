@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,31 +19,31 @@ public final class s_commment
   static ArrayList<s_picdata> cache_picdata;
   static ArrayList<s_reply> cache_replys;
   static s_user cache_user = new s_user();
-  public s_audio audio;
-  public Map<String, byte[]> binaryExtInfo;
+  public s_audio audio = null;
+  public Map<String, byte[]> binaryExtInfo = null;
   public String commentLikekey = "";
   public String commentid = "";
-  public ArrayList<s_picdata> commentpic;
+  public ArrayList<s_picdata> commentpic = null;
   public String content = "";
-  public int date;
-  public int displayflag;
-  public Map<String, String> extendInfo;
-  public int floor;
-  public int iDisplayReplyNum;
-  public boolean isDeleted;
-  public int isEssence;
-  public int isPrivate;
-  public int isStickTop;
-  public int isliked;
-  public int likeNum;
-  public ArrayList<s_likeman> likemans;
-  public ArrayList<s_picdata> picdata;
-  public int pokeLikeCount;
+  public int date = 0;
+  public int displayflag = 0;
+  public Map<String, String> extendInfo = null;
+  public int floor = 0;
+  public int iDisplayReplyNum = 0;
+  public boolean isDeleted = false;
+  public int isEssence = 0;
+  public int isPrivate = 0;
+  public int isStickTop = 0;
+  public int isliked = 0;
+  public int likeNum = 0;
+  public ArrayList<s_likeman> likemans = null;
+  public ArrayList<s_picdata> picdata = null;
+  public int pokeLikeCount = 0;
   public String pokeLikeEmotion = "";
   public String refer = "";
-  public int replynum;
-  public ArrayList<s_reply> replys;
-  public s_user user;
+  public int replynum = 0;
+  public ArrayList<s_reply> replys = null;
+  public s_user user = null;
   
   static
   {
@@ -129,62 +130,75 @@ public final class s_commment
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commentid != null) {
-      paramJceOutputStream.write(this.commentid, 0);
+    Object localObject = this.commentid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 1);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.date, 3);
-    if (this.refer != null) {
-      paramJceOutputStream.write(this.refer, 4);
+    localObject = this.refer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.replys != null) {
-      paramJceOutputStream.write(this.replys, 5);
+    localObject = this.replys;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.replynum, 6);
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 7);
+    localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.audio != null) {
-      paramJceOutputStream.write(this.audio, 8);
+    localObject = this.audio;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.commentpic != null) {
-      paramJceOutputStream.write(this.commentpic, 9);
+    localObject = this.commentpic;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
     paramJceOutputStream.write(this.floor, 10);
     paramJceOutputStream.write(this.isPrivate, 11);
     paramJceOutputStream.write(this.isEssence, 12);
     paramJceOutputStream.write(this.isDeleted, 13);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 14);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
     paramJceOutputStream.write(this.likeNum, 15);
-    if (this.commentLikekey != null) {
-      paramJceOutputStream.write(this.commentLikekey, 16);
+    localObject = this.commentLikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.isliked, 17);
     paramJceOutputStream.write(this.isStickTop, 18);
     paramJceOutputStream.write(this.displayflag, 19);
     paramJceOutputStream.write(this.iDisplayReplyNum, 20);
-    if (this.likemans != null) {
-      paramJceOutputStream.write(this.likemans, 21);
+    localObject = this.likemans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 21);
     }
-    if (this.binaryExtInfo != null) {
-      paramJceOutputStream.write(this.binaryExtInfo, 22);
+    localObject = this.binaryExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 22);
     }
-    if (this.pokeLikeEmotion != null) {
-      paramJceOutputStream.write(this.pokeLikeEmotion, 23);
+    localObject = this.pokeLikeEmotion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
     paramJceOutputStream.write(this.pokeLikeCount, 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_commment
  * JD-Core Version:    0.7.0.1
  */

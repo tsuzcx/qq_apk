@@ -1,46 +1,33 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import bdne;
-import bflk;
-import bflp;
-import bfoc;
-import bfox;
-import bfpi;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
 import mqq.os.MqqHandler;
 
-public class MyAppApi$17
-  implements Runnable
+class MyAppApi$17
+  implements TicketUtils.TicketCallback
 {
-  public MyAppApi$17(bfox parambfox, Activity paramActivity, String paramString) {}
+  MyAppApi$17(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void a()
   {
-    bflp.c("MyAppApi", "---isAutoInstall:" + bfoc.c() + " url:" + bfoc.a() + " interval:" + bfoc.a());
-    if ((bflk.b(this.jdField_a_of_type_AndroidAppActivity)) && (bflk.c(this.jdField_a_of_type_AndroidAppActivity)))
-    {
-      boolean bool1 = bfoc.b();
-      boolean bool2 = bfoc.j();
-      String str = bdne.k(this.jdField_a_of_type_AndroidAppActivity, "wifiAutoPreDown");
-      if ((!this.this$0.b()) && (bool1) && (bool2) && ("true".equals(str)))
-      {
-        ThreadManager.getUIHandler().post(new MyAppApi.17.1(this));
-        bflp.c("MyAppApi", "---startDownloadYYB---");
-        this.this$0.a = new bfpi(this.this$0);
-        this.this$0.a.jdField_a_of_type_Boolean = true;
-        this.this$0.a.b = false;
-        this.this$0.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-        this.this$0.a.jdField_a_of_type_AndroidOsBundle = null;
-        this.this$0.a.jdField_a_of_type_Int = -1;
-        this.this$0.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
-      }
-    }
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.17.2(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.17.1(this, paramArrayOfByte, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.17
  * JD-Core Version:    0.7.0.1
  */

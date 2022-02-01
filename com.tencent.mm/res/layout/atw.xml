@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:focusable="false" android:focusableInTouchMode="false" android:visibility="visible" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="15.0sp" android:textColor="#ff757575" android:id="@id/ehe" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/eip" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/j6c" style="@style/j4">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/na" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ep" style="@style/a85" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/kn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ek" android:text="{tip}" style="@style/ma" />
+    </LinearLayout>
+</RelativeLayout>

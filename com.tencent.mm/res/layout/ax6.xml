@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/m7" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/ept" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0">
-        <ImageView android:id="@id/epu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:contentDescription="@null" android:layout_marginStart="@dimen/a_8" android:layout_marginEnd="@dimen/a_9" android:layout_alignParentStart="true" />
-        <ImageView android:id="@id/epv" android:layout_width="@dimen/a_c" android:layout_height="@dimen/a__" android:layout_centerVertical="true" android:contentDescription="@null" android:layout_marginStart="@dimen/a_a" android:layout_marginEnd="@dimen/a_b" android:layout_alignParentEnd="true" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:id="@id/epw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" android:layout_alignParentTop="true" android:layout_toStartOf="@id/epv" android:layout_toEndOf="@id/epu" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a0n" android:ellipsize="end" android:id="@id/epx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/epw" android:layout_toStartOf="@id/epv" android:layout_toEndOf="@id/epu" />
-        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_alignParentStart="true">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a0s" android:id="@id/epy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqf" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/a16" android:ellipsize="end" android:id="@id/epz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:layout_below="@id/epy" android:paddingEnd="60.0dip" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <ImageView android:id="@id/el0" android:background="@color/va" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
 </LinearLayout>

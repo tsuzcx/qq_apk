@@ -20,18 +20,18 @@ public class RecoveryMessageHandler
     default: 
       return;
     case 1: 
-      Recovery.dUh();
+      Recovery.markApplicationOnCreateNormal();
       return;
     case 2: 
-      Recovery.Sd(1);
+      Recovery.normal(1);
       return;
     }
-    Recovery.Sd(1);
+    Recovery.normal(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.recovery.handler.RecoveryMessageHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class il
-  extends buy
+  extends com.tencent.mm.bx.a
 {
-  public int jJu;
-  public LinkedList<Integer> wuv;
-  
-  public il()
-  {
-    AppMethodBeat.i(51369);
-    this.wuv = new LinkedList();
-    AppMethodBeat.o(51369);
-  }
+  public im YKg;
+  public ij YKh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51370);
+    AppMethodBeat.i(133148);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YKg == null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: RsaReqData");
+        AppMethodBeat.o(133148);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.jJu);
-      paramVarArgs.f(3, 2, this.wuv);
-      AppMethodBeat.o(51370);
+      if (this.YKh == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AesReqData");
+        AppMethodBeat.o(133148);
+        throw paramVarArgs;
+      }
+      if (this.YKg != null)
+      {
+        paramVarArgs.qD(1, this.YKg.computeSize());
+        this.YKg.writeFields(paramVarArgs);
+      }
+      if (this.YKh != null)
+      {
+        paramVarArgs.qD(2, this.YKh.computeSize());
+        this.YKh.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(133148);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label429;
+      if (this.YKg == null) {
+        break label514;
       }
     }
-    label429:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label514:
+    for (paramInt = i.a.a.a.qC(1, this.YKg.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.jJu);
-      int j = e.a.a.a.d(3, 2, this.wuv);
-      AppMethodBeat.o(51370);
-      return paramInt + i + j;
+      int i = paramInt;
+      if (this.YKh != null) {
+        i = paramInt + i.a.a.a.qC(2, this.YKh.computeSize());
+      }
+      AppMethodBeat.o(133148);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.wuv.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(51370);
+        if (this.YKg == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: RsaReqData");
+          AppMethodBeat.o(133148);
+          throw paramVarArgs;
+        }
+        if (this.YKh == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AesReqData");
+          AppMethodBeat.o(133148);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(133148);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         il localil = (il)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(51370);
+          AppMethodBeat.o(133148);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localil.BaseRequest = ((hq)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new im();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((im)localObject2).parseFrom((byte[])localObject1);
+            }
+            localil.YKg = ((im)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(51370);
-          return 0;
-        case 2: 
-          localil.jJu = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(51370);
+          AppMethodBeat.o(133148);
           return 0;
         }
-        localil.wuv = new e.a.a.a.a(((e.a.a.a.a)localObject1).CLY.eqS().pW, unknownTagHandler).CLY.eqR();
-        AppMethodBeat.o(51370);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new ij();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((ij)localObject2).parseFrom((byte[])localObject1);
+          }
+          localil.YKh = ((ij)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(133148);
         return 0;
       }
-      AppMethodBeat.o(51370);
+      AppMethodBeat.o(133148);
       return -1;
     }
   }

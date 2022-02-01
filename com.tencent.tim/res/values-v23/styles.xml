@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="af" parent="@style/a4o">
+        <item name="android:scrollbarSize">10.0dip</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/i4p</item>
+        <item name="android:scrollbarThumbVertical">@drawable/i4p</item>
+        <item name="android:scrollbarTrackHorizontal">@null</item>
+        <item name="android:scrollbarTrackVertical">@null</item>
+        <item name="android:scrollbarFadeDuration">250</item>
+        <item name="android:scrollbarDefaultDelayBeforeFade">300</item>
+        <item name="android:alertDialogTheme">@style/aj3</item>
+        <item name="android:colorPrimary">@color/awn</item>
+        <item name="android:colorPrimaryDark">@color/avg</item>
+    </style>
+    <style name="a0w" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Menu" />
+    <style name="a16" parent="@android:style/TextAppearance.Material.Widget.Button.Inverse" />
+    <style name="a1f" parent="@style/aj4" />
+    <style name="a1m" parent="@style/aj5" />
+    <style name="a2e" parent="@android:style/Widget.Material.ActionButton.Overflow" />
+    <style name="a2k" parent="@android:style/Widget.Material.Button.Borderless.Colored" />
+    <style name="a2m" parent="@android:style/Widget.Material.Button.Colored" />
+    <style name="a2w" parent="@android:style/Widget.Material.EditText">
+        <item name="android:breakStrategy">simple</item>
+        <item name="android:hyphenationFrequency">none</item>
+    </style>
+    <style name="a3g" parent="@android:style/Widget.Material.RatingBar.Indicator" />
+    <style name="a3h" parent="@android:style/Widget.Material.RatingBar.Small" />
+    <style name="a3n" parent="@android:style/Widget.Material.Spinner.Underlined" />
+    <style name="a3o" parent="@android:style/Widget.Material.TextView">
+        <item name="android:breakStrategy">high_quality</item>
+        <item name="android:hyphenationFrequency">none</item>
+    </style>
+    <style name="c1" parent="@style/at">
+        <item name="by">?android:colorBackgroundFloating</item>
+    </style>
+    <style name="vb" parent="@android:style/Widget">
+        <item name="android:button">@drawable/azp</item>
+    </style>
+    <style name="vc" parent="@android:style/Widget">
+        <item name="android:button">@drawable/g87</item>
+    </style>
+    <style name="aj3" parent="@android:style/ThemeOverlay.Material.Dialog.Alert">
+        <item name="android:listChoiceIndicatorSingle">@drawable/egw</item>
+        <item name="android:textColorAlertDialogListItem">@color/auw</item>
+    </style>
+    <style name="aj4" parent="@style/aj1">
+        <item name="zs">?android:actionBarItemBackground</item>
+        <item name="a05">?android:actionMenuTextAppearance</item>
+        <item name="a06">?android:actionMenuTextColor</item>
+        <item name="a0j">?android:actionOverflowButtonStyle</item>
+        <item name="a3m">@drawable/f8v</item>
+        <item name="a97">?android:ratingBarStyleIndicator</item>
+        <item name="a98">?android:ratingBarStyleSmall</item>
+    </style>
+    <style name="aj5" parent="@style/aj2">
+        <item name="zs">?android:actionBarItemBackground</item>
+        <item name="a05">?android:actionMenuTextAppearance</item>
+        <item name="a06">?android:actionMenuTextColor</item>
+        <item name="a0j">?android:actionOverflowButtonStyle</item>
+        <item name="a3m">@drawable/f8v</item>
+        <item name="a97">?android:ratingBarStyleIndicator</item>
+        <item name="a98">?android:ratingBarStyleSmall</item>
+    </style>
+</resources>

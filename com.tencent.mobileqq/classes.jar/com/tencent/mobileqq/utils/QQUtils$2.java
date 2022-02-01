@@ -1,34 +1,38 @@
 package com.tencent.mobileqq.utils;
 
-import azqs;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class QQUtils$2
+final class QQUtils$2
   implements Runnable
 {
-  public QQUtils$2(boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  QQUtils$2(boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
   public void run()
   {
-    String str1 = null;
-    if (this.jdField_a_of_type_Boolean) {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131720516);
-    }
-    for (String str2 = "0";; str2 = "1")
+    String str1;
+    String str2;
+    if (this.a)
     {
-      if (str1 != null) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str1, 0).b(this.jdField_a_of_type_Int);
-      }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.jdField_a_of_type_JavaLangString, str2, "", "");
-      return;
+      str1 = this.b.getApp().getString(2131916945);
+      str2 = "0";
     }
+    else
+    {
+      str1 = null;
+      str2 = "1";
+    }
+    if (str1 != null) {
+      QQToast.makeText(this.b.getApp(), 2, str1, 0).show(this.c);
+    }
+    ReportController.b(this.b, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.d, str2, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQUtils.2
  * JD-Core Version:    0.7.0.1
  */

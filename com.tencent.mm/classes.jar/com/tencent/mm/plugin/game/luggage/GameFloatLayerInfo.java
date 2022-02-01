@@ -9,35 +9,35 @@ public class GameFloatLayerInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GameFloatLayerInfo> CREATOR;
-  public boolean njd;
+  public boolean ItB;
   public int orientation;
   public String url;
   
   static
   {
-    AppMethodBeat.i(135797);
-    CREATOR = new GameFloatLayerInfo.1();
-    AppMethodBeat.o(135797);
+    AppMethodBeat.i(82975);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(82975);
   }
   
   public GameFloatLayerInfo()
   {
-    this.njd = false;
+    this.ItB = false;
     this.orientation = -1;
   }
   
   private GameFloatLayerInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(135796);
-    this.njd = false;
+    AppMethodBeat.i(82974);
+    this.ItB = false;
     this.orientation = -1;
     this.url = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.njd = bool;
+      this.ItB = bool;
       this.orientation = paramParcel.readInt();
-      AppMethodBeat.o(135796);
+      AppMethodBeat.o(82974);
       return;
       bool = false;
     }
@@ -50,21 +50,21 @@ public class GameFloatLayerInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(135795);
+    AppMethodBeat.i(82973);
     paramParcel.writeString(this.url);
-    if (this.njd) {}
+    if (this.ItB) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.orientation);
-      AppMethodBeat.o(135795);
+      AppMethodBeat.o(82973);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.GameFloatLayerInfo
  * JD-Core Version:    0.7.0.1
  */

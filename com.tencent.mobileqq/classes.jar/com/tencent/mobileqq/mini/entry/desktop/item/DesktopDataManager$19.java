@@ -1,67 +1,62 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import awge;
-import awgf;
-import awgg;
+import android.util.Log;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 
 class DesktopDataManager$19
   implements Runnable
 {
-  DesktopDataManager$19(DesktopDataManager paramDesktopDataManager, DesktopItemInfo paramDesktopItemInfo) {}
+  DesktopDataManager$19(DesktopDataManager paramDesktopDataManager, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
-    }
-    awgf localawgf;
-    do
+    if (localObject == null)
     {
+      QLog.e("DesktopDataManager", 1, "deleteEntity, app is null.");
       return;
-      localawgf = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localawgf == null);
-    for (;;)
-    {
+    }
+    DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(this.val$entity);
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    if (localObject != null) {
       try
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localObject = null;
-        if (!(this.val$data instanceof DesktopAppInfo)) {
-          break label148;
-        }
-        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
-        if (localObject != null)
+        localDeskTopAppEntity.setStatus(1001);
+        boolean bool = ((EntityManager)localObject).remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId });
+        if (bool)
         {
-          ((DeskTopAppEntity)localObject).setStatus(1000);
-          DesktopDataManager.access$3200(this.this$0, localawgf, (awge)localObject);
-          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("deleteEntity, delete ");
+          ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+          ((StringBuilder)localObject).append(" success from db");
+          QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject).toString());
+          return;
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteEntity, delete ");
+        ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+        ((StringBuilder)localObject).append(" fail from db");
+        QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject).toString());
         return;
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
-      return;
-      label148:
-      if ((this.val$data instanceof DesktopSearchInfo)) {
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
+      catch (Throwable localThrowable)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteEntity, Exception: ");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(localThrowable));
+        QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.19
  * JD-Core Version:    0.7.0.1
  */

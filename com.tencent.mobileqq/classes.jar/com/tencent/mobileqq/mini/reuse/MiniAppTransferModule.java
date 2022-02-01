@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import alpk;
-import alpq;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import aool;
-import aoom;
-import bhcn;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.config.business.MiniAppConfBean;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
@@ -19,16 +22,21 @@ import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp;
 import com.tencent.mobileqq.mini.utils.ReportLogUtil;
+import com.tencent.mobileqq.minigame.publicaccount.utils.PublicAccountUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.MiniSdkUtil;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import eipc.EIPCResult;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import ndd;
 import org.json.JSONObject;
 
 public class MiniAppTransferModule
@@ -42,7 +50,13 @@ public class MiniAppTransferModule
   public static final String ACTION_LAUNCH_REPORT_APP_RESUME = "launch_report_app_resume";
   public static final String ACTION_LAUNCH_REPORT_JS_ERROR = "launch_report_js_error";
   public static final String ACTION_LAUNCH_REPORT_SDK_4239 = "launch_report_sdk_4239";
+  public static final String ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_QQ = "mini_record_wx_share_miniapp_for_qq";
+  public static final String ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_SDK = "mini_record_wx_share_miniapp_for_sdk";
+  public static final String ACTION_PA_FOLLOW = "public_account_follow";
+  public static final String ACTION_PA_IS_FOLLOW = "public_account_is_follow";
+  public static final String ACTION_PRELOAD_LOADING_AD = "preload_loading_ad";
   public static final String ACTION_QUERY_MINI_APP_DATA = "query_mini_app_data";
+  public static final String ACTION_QUERY_USER_TROOP_INFO = "query_user_troop_info";
   public static final String ACTION_RECORD_DURATION = "record_duration";
   public static final String ACTION_RECORD_DURATION_SDK_4239 = "record_duration_sdk_4239";
   public static final String ACTION_SYNC_MINI_APP_DATA = "sync_mini_app_data";
@@ -53,7 +67,7 @@ public class MiniAppTransferModule
   public static final int RESULT_CODE_SUCCESS = 0;
   private static final String TAG = "MiniAppTransferModule";
   private static MiniAppTransferModule sInstance;
-  private alpq cardObserver = new MiniAppTransferModule.3(this);
+  private CardObserver cardObserver = new MiniAppTransferModule.3(this);
   private AtomicBoolean mSendingRequest = new AtomicBoolean(false);
   private int noDisturbModeCallbackId = -1;
   
@@ -64,307 +78,381 @@ public class MiniAppTransferModule
   
   public static MiniAppTransferModule getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MiniAppTransferModule("MiniAppTransferModule");
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MiniAppTransferModule("MiniAppTransferModule");
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
+  }
+  
+  private EIPCResult innerOnCall(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  {
+    int i = paramString.hashCode();
+    if (i != -813183335)
+    {
+      if ((i == 795053182) && (paramString.equals("public_account_is_follow")))
+      {
+        i = 0;
+        break label56;
+      }
+    }
+    else if (paramString.equals("public_account_follow"))
+    {
+      i = 1;
+      break label56;
+    }
+    i = -1;
+    label56:
+    if (i != 0)
+    {
+      if (i == 1) {
+        PublicAccountUtil.followPA(paramQQAppInterface, paramBundle, this, paramInt);
+      }
+    }
+    else {
+      PublicAccountUtil.isPAFollow(paramQQAppInterface, paramBundle, this, paramInt);
+    }
+    return null;
   }
   
   private void updateNoDisturbMode(boolean paramBoolean, int paramInt)
   {
     boolean bool = FriendsStatusUtil.a(BaseApplicationImpl.getContext());
-    Object localObject;
     if (bool == paramBoolean)
     {
-      QLog.d("MiniAppTransferModule", 1, "noDisturbMode : " + bool + "; return.");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("noDisturbMode : ");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("; return.");
+      QLog.d("MiniAppTransferModule", 1, ((StringBuilder)localObject).toString());
       localObject = new Bundle();
       ((Bundle)localObject).putString("errMsg", "same mode");
       callbackResult(paramInt, EIPCResult.createResult(-102, (Bundle)localObject));
-    }
-    do
-    {
-      return;
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (localObject == null);
-    int j = ndd.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    if (i == 0)
-    {
-      QLog.d("MiniAppTransferModule", 1, "NetType cannot connect, return.");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("errMsg", "Network cannot connect");
-      callbackResult(paramInt, EIPCResult.createResult(-102, (Bundle)localObject));
       return;
     }
-    if (this.mSendingRequest.compareAndSet(true, true))
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null)
     {
-      QLog.d("MiniAppTransferModule", 1, "Request too frequently, return.");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("errMsg", "Request too frequently");
-      callbackResult(paramInt, EIPCResult.createResult(-102, (Bundle)localObject));
-      return;
+      int j = HttpUtil.getNetWorkType();
+      int i = j;
+      if (j == -1) {
+        i = 2;
+      }
+      if (i == 0)
+      {
+        QLog.d("MiniAppTransferModule", 1, "NetType cannot connect, return.");
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("errMsg", "Network cannot connect");
+        callbackResult(paramInt, EIPCResult.createResult(-102, (Bundle)localObject));
+        return;
+      }
+      if (this.mSendingRequest.compareAndSet(true, true))
+      {
+        QLog.d("MiniAppTransferModule", 1, "Request too frequently, return.");
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("errMsg", "Request too frequently");
+        callbackResult(paramInt, EIPCResult.createResult(-102, (Bundle)localObject));
+        return;
+      }
+      this.mSendingRequest.set(true);
+      ((QQAppInterface)localObject).addObserver(this.cardObserver, true);
+      this.noDisturbModeCallbackId = paramInt;
+      if (paramBoolean)
+      {
+        long l = NetConnInfoCenter.getServerTime();
+        ((CardHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l + 3600L), "", "not_disturb_from_miniapp");
+        return;
+      }
+      ((CardHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, "", "not_disturb_from_miniapp");
     }
-    this.mSendingRequest.set(true);
-    ((QQAppInterface)localObject).addObserver(this.cardObserver, true);
-    this.noDisturbModeCallbackId = paramInt;
-    if (paramBoolean)
-    {
-      long l = NetConnInfoCenter.getServerTime();
-      ((alpk)((QQAppInterface)localObject).a(2)).b((int)(l + 3600L), "", "not_disturb_from_miniapp");
-      return;
-    }
-    ((alpk)((QQAppInterface)localObject).a(2)).b(0, "", "not_disturb_from_miniapp");
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    QLog.d("MiniAppTransferModule", 2, "action = " + paramString + ", params = " + paramBundle.toString());
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("action = ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(", params = ");
+    ((StringBuilder)localObject1).append(paramBundle.toString());
+    QLog.d("MiniAppTransferModule", 2, ((StringBuilder)localObject1).toString());
+    localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject1 instanceof QQAppInterface))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppTransferModule", 2, "onRemoteInvoke cannot get QQAppInterface");
       }
-    }
-    for (;;)
-    {
       return null;
-      if ("update_entry_list".equals(paramString))
+    }
+    Object localObject2;
+    if ("update_entry_list".equals(paramString)) {
+      localObject2 = paramBundle.getString("data");
+    }
+    try
+    {
+      localObject2 = new JSONObject((String)localObject2);
+      localObject3 = ((JSONObject)localObject2).optString("command");
+      if (MiniAppConfProcessor.e()) {
+        ((DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateEntryList((JSONObject)localObject2);
+      } else if ("updateAppList".equals(localObject3)) {
+        ((MiniAppUserAppInfoListManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER)).sendUserAppListRequest(Long.parseLong(((QQAppInterface)localObject1).getCurrentAccountUin()), 20L);
+      }
+    }
+    catch (Exception localException3)
+    {
+      Object localObject3;
+      label193:
+      int i;
+      int j;
+      Object localObject4;
+      break label193;
+    }
+    QLog.e("MiniAppTransferModule", 2, "onRemoteInvoke cannot get QQAppInterface");
+    break label1596;
+    if ("sync_mini_app_data".equals(paramString))
+    {
+      localObject3 = paramBundle.getString("appid");
+      i = paramBundle.getInt("topType");
+      j = paramBundle.getInt("verType");
+      if (MiniAppConfProcessor.e())
       {
-        paramString = paramBundle.getString("data");
-        try
-        {
-          paramString = new JSONObject(paramString);
-          paramBundle = paramString.optString("command");
-          if (aoom.g())
-          {
-            ((DesktopDataManager)((AppRuntime)localObject).getManager(336)).updateEntryList(paramString);
-            return null;
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("MiniAppTransferModule", 2, "onRemoteInvoke cannot get QQAppInterface");
-          return null;
-        }
-        if ("updateAppList".equals(paramBundle))
-        {
-          ((MiniAppUserAppInfoListManager)((AppRuntime)localObject).getManager(309)).sendUserAppListRequest(Long.parseLong(((QQAppInterface)localObject).getCurrentAccountUin()), 20L);
-          return null;
-        }
+        ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject1, (String)localObject3, i, paramInt, j));
       }
       else
       {
-        int i;
-        if ("sync_mini_app_data".equals(paramString))
+        localObject2 = (MiniAppUserAppInfoListManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
+        if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject3)))
         {
-          paramString = paramBundle.getString("appid");
-          i = paramBundle.getInt("topType");
-          int j = paramBundle.getInt("verType");
-          if (aoom.g())
+          if ((i == 1) && (((MiniAppUserAppInfoListManager)localObject2).getTopMiniAppNumber() >= 10))
           {
-            ThreadManager.getUIHandler().post(new MiniAppTransferModule.1(this, (AppRuntime)localObject, paramString, i, paramInt, j));
+            callbackResult(paramInt, EIPCResult.createResult(-100, null));
             return null;
           }
-          paramBundle = (MiniAppUserAppInfoListManager)((AppRuntime)localObject).getManager(309);
-          if ((paramBundle != null) && (!TextUtils.isEmpty(paramString)))
+          localObject3 = ((MiniAppUserAppInfoListManager)localObject2).findMiniApp((String)localObject3, j);
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("miniappInfo : ");
+          ((StringBuilder)localObject4).append(localObject3);
+          QLog.d("MiniAppTransferModule", 2, ((StringBuilder)localObject4).toString());
+          if (localObject3 != null)
           {
-            if ((i == 1) && (paramBundle.getTopMiniAppNumber() >= 10))
-            {
-              callbackResult(paramInt, EIPCResult.createResult(-100, null));
-              return null;
+            ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject3).topType = i;
+            if (((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject3).topType == 1) {
+              ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject3).updateTimeStamp();
             }
-            paramString = paramBundle.findMiniApp(paramString, j);
-            QLog.d("MiniAppTransferModule", 2, "miniappInfo : " + paramString);
-            if (paramString != null)
-            {
-              paramString.topType = i;
-              if (paramString.topType == 1) {
-                paramString.updateTimeStamp();
-              }
-              paramBundle.updateMiniAppTopStatus(paramString);
-              callbackResult(paramInt, EIPCResult.createResult(0, null));
-              return null;
-            }
-          }
-        }
-        else if ("query_mini_app_data".equals(paramString))
-        {
-          paramString = paramBundle.getString("appid");
-          i = paramBundle.getInt("verType");
-          if (aoom.g())
-          {
-            paramBundle = (DesktopDataManager)((AppRuntime)localObject).getManager(336);
-            if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
-              for (;;)
-              {
-                try
-                {
-                  paramBundle = paramBundle.findTopMiniApp(paramString, i);
-                  QLog.d("MiniAppTransferModule", 2, "miniappInfo : " + paramBundle);
-                  paramString = new Bundle();
-                  if (paramBundle != null)
-                  {
-                    paramString.putParcelable("miniappinfo", paramBundle);
-                    paramString.putInt("topType", 1);
-                    paramBundle = aoom.a().a();
-                    if (paramBundle != null) {
-                      paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
-                    }
-                    callbackResult(paramInt, EIPCResult.createResult(0, paramString));
-                    return null;
-                  }
-                }
-                catch (Throwable paramString)
-                {
-                  callbackResult(paramInt, EIPCResult.createResult(-102, null));
-                  return null;
-                }
-                paramString.putInt("topType", 0);
-              }
-            }
-          }
-          else
-          {
-            paramBundle = (MiniAppUserAppInfoListManager)((AppRuntime)localObject).getManager(309);
-            if ((paramBundle != null) && (!TextUtils.isEmpty(paramString))) {
-              for (;;)
-              {
-                try
-                {
-                  paramBundle = paramBundle.findTopMiniApp(paramString);
-                  QLog.d("MiniAppTransferModule", 2, "miniappInfo : " + paramBundle);
-                  paramString = new Bundle();
-                  if (paramBundle != null)
-                  {
-                    paramString.putParcelable("miniappinfo", paramBundle);
-                    paramString.putInt("topType", 1);
-                    paramBundle = aoom.a().a();
-                    if (paramBundle != null) {
-                      paramString.putIntegerArrayList("backHomeSceneList", paramBundle);
-                    }
-                    callbackResult(paramInt, EIPCResult.createResult(0, paramString));
-                    return null;
-                  }
-                }
-                catch (Throwable paramString)
-                {
-                  callbackResult(paramInt, EIPCResult.createResult(-102, null));
-                  return null;
-                }
-                paramString.putInt("topType", 0);
-              }
-            }
-          }
-        }
-        else
-        {
-          if ("upload_user_log".equals(paramString))
-          {
-            paramString = paramBundle.getString("appid");
-            QLog.d("MiniAppTransferModule", 2, " ACTION_UPLOAD_USER_LOG : " + paramString);
-            ReportLogUtil.compressAndUploadLog(paramString);
-            return null;
-          }
-          if ("launch_report".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
-            paramString = (MiniAppConfig)paramBundle.getParcelable("app_config");
-            localObject = paramBundle.getString("sub_action");
-            MiniAppReportManager.reportToDc04239(paramString, paramBundle.getString("path"), "page_view", (String)localObject, paramBundle.getString("reserves"), paramBundle.getString("app_type"), paramBundle.getBoolean("x5_enable"));
-            return null;
-          }
-          String str1;
-          if ("launch_report2".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniAppReportManager2.class.getClassLoader());
-            paramString = (MiniAppConfig)paramBundle.getParcelable("app_config");
-            localObject = paramBundle.getString("sub_action");
-            str1 = paramBundle.getString("path");
-            MiniAppReportManager2.reportPageView((String)localObject, paramBundle.getString("reserves"), str1, paramString);
-            return null;
-          }
-          if ("launch_report_js_error".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
-            MiniAppReportManager.setJsError((MiniAppConfig)paramBundle.getParcelable("app_config"));
-            return null;
-          }
-          if ("launch_report_app_pause".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
-            MiniAppReportManager.setAppPauseTime((MiniAppConfig)paramBundle.getParcelable("app_config"));
-            return null;
-          }
-          if ("launch_report_app_resume".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
-            MiniAppReportManager.clearAppPauseTime((MiniAppConfig)paramBundle.getParcelable("app_config"));
-            return null;
-          }
-          if ("flush_report_data".equals(paramString))
-          {
-            MiniProgramReporter.getInstance().getReportHandler().post(new MiniAppTransferModule.2(this));
-            return null;
-          }
-          if ("record_duration".equals(paramString))
-          {
-            paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
-            MiniAppReportManager.recordDuration((MiniAppConfig)paramBundle.getParcelable("app_config"), paramBundle.getLong("add_duration_ms"));
-            return null;
-          }
-          if ("launch_report_sdk_4239".equals(paramString)) {
-            try
-            {
-              paramBundle.setClassLoader(bhcn.class.getClassLoader());
-              com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
-              paramString = paramBundle.getString("sub_action");
-              localObject = paramBundle.getString("path");
-              str1 = paramBundle.getString("reserves");
-              String str2 = paramBundle.getString("app_type");
-              boolean bool = paramBundle.getBoolean("x5_enable");
-              paramBundle = MiniSdkUtil.convertSDK2QQConfig(localMiniAppInfo);
-              if (paramBundle == null) {
-                continue;
-              }
-              MiniAppReportManager.reportToDc04239(paramBundle, (String)localObject, "page_view", paramString, str1, str2, bool);
-              return null;
-            }
-            catch (Exception paramString)
-            {
-              return null;
-            }
-          } else if ("record_duration_sdk_4239".equals(paramString)) {
-            try
-            {
-              paramBundle.setClassLoader(bhcn.class.getClassLoader());
-              paramString = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
-              long l = paramBundle.getLong("add_duration_ms");
-              paramString = MiniSdkUtil.convertSDK2QQConfig(paramString);
-              if (paramString != null)
-              {
-                MiniAppReportManager.recordDuration(paramString, l);
-                return null;
-              }
-            }
-            catch (Exception paramString) {}
+            ((MiniAppUserAppInfoListManager)localObject2).updateMiniAppTopStatus((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject3);
+            callbackResult(paramInt, EIPCResult.createResult(0, null));
           }
         }
       }
     }
-    return null;
+    else if ("query_mini_app_data".equals(paramString))
+    {
+      localObject2 = paramBundle.getString("appid");
+      i = paramBundle.getInt("verType");
+      if (MiniAppConfProcessor.e())
+      {
+        localObject3 = (DesktopDataManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+        if ((localObject3 == null) || (TextUtils.isEmpty((CharSequence)localObject2))) {
+          break label1596;
+        }
+      }
+    }
+    label780:
+    label1596:
+    try
+    {
+      localObject2 = ((DesktopDataManager)localObject3).findTopMiniApp((String)localObject2, i);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("miniappInfo : ");
+      ((StringBuilder)localObject3).append(localObject2);
+      QLog.d("MiniAppTransferModule", 2, ((StringBuilder)localObject3).toString());
+      localObject3 = new Bundle();
+      if (localObject2 != null)
+      {
+        ((Bundle)localObject3).putParcelable("miniappinfo", (Parcelable)localObject2);
+        ((Bundle)localObject3).putInt("topType", 1);
+      }
+      else
+      {
+        ((Bundle)localObject3).putInt("topType", 0);
+      }
+      localObject2 = MiniAppConfProcessor.a().p();
+      if (localObject2 != null) {
+        ((Bundle)localObject3).putIntegerArrayList("backHomeSceneList", (ArrayList)localObject2);
+      }
+      callbackResult(paramInt, EIPCResult.createResult(0, (Bundle)localObject3));
+    }
+    catch (Throwable localThrowable1)
+    {
+      label612:
+      label1397:
+      break label612;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-102, null));
+    break label1596;
+    localObject3 = (MiniAppUserAppInfoListManager)((AppRuntime)localObject1).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
+    if ((localObject3 != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {}
+    try
+    {
+      localObject2 = ((MiniAppUserAppInfoListManager)localObject3).findTopMiniApp((String)localObject2);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("miniappInfo : ");
+      ((StringBuilder)localObject3).append(localObject2);
+      QLog.d("MiniAppTransferModule", 2, ((StringBuilder)localObject3).toString());
+      localObject3 = new Bundle();
+      if (localObject2 != null)
+      {
+        ((Bundle)localObject3).putParcelable("miniappinfo", (Parcelable)localObject2);
+        ((Bundle)localObject3).putInt("topType", 1);
+      }
+      else
+      {
+        ((Bundle)localObject3).putInt("topType", 0);
+      }
+      localObject2 = MiniAppConfProcessor.a().p();
+      if (localObject2 != null) {
+        ((Bundle)localObject3).putIntegerArrayList("backHomeSceneList", (ArrayList)localObject2);
+      }
+      callbackResult(paramInt, EIPCResult.createResult(0, (Bundle)localObject3));
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label780;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-102, null));
+    break label1596;
+    if ("upload_user_log".equals(paramString))
+    {
+      localObject2 = paramBundle.getString("appid");
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(" ACTION_UPLOAD_USER_LOG : ");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      QLog.d("MiniAppTransferModule", 2, ((StringBuilder)localObject3).toString());
+      ReportLogUtil.compressAndUploadLog((String)localObject2);
+    }
+    else if ("launch_report".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      localObject2 = (MiniAppConfig)paramBundle.getParcelable("app_config");
+      localObject3 = paramBundle.getString("sub_action");
+      MiniAppReportManager.reportToDc04239((MiniAppConfig)localObject2, paramBundle.getString("path"), "page_view", (String)localObject3, paramBundle.getString("reserves"), paramBundle.getString("app_type"), paramBundle.getBoolean("x5_enable"));
+    }
+    else if ("launch_report2".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniAppReportManager2.class.getClassLoader());
+      localObject2 = (MiniAppConfig)paramBundle.getParcelable("app_config");
+      localObject3 = paramBundle.getString("sub_action");
+      localObject4 = paramBundle.getString("path");
+      MiniAppReportManager2.reportPageView((String)localObject3, paramBundle.getString("reserves"), (String)localObject4, (MiniAppConfig)localObject2);
+    }
+    else if ("launch_report_js_error".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      MiniAppReportManager.setJsError((MiniAppConfig)paramBundle.getParcelable("app_config"));
+    }
+    else if ("launch_report_app_pause".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      MiniAppReportManager.setAppPauseTime((MiniAppConfig)paramBundle.getParcelable("app_config"));
+    }
+    else if ("launch_report_app_resume".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      MiniAppReportManager.clearAppPauseTime((MiniAppConfig)paramBundle.getParcelable("app_config"));
+    }
+    else if ("flush_report_data".equals(paramString))
+    {
+      MiniProgramReporter.getInstance().getReportHandler().post(new MiniAppTransferModule.2(this));
+    }
+    else if ("record_duration".equals(paramString))
+    {
+      paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+      MiniAppReportManager.recordDuration((MiniAppConfig)paramBundle.getParcelable("app_config"), paramBundle.getLong("add_duration_ms"));
+    }
+    else if (!"launch_report_sdk_4239".equals(paramString)) {}
+    try
+    {
+      paramBundle.setClassLoader(SDKMiniProgramLpReportDC04239.class.getClassLoader());
+      Object localObject5 = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
+      localObject2 = paramBundle.getString("sub_action");
+      localObject3 = paramBundle.getString("path");
+      localObject4 = paramBundle.getString("reserves");
+      String str = paramBundle.getString("app_type");
+      boolean bool = paramBundle.getBoolean("x5_enable");
+      localObject5 = MiniSdkUtil.b((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject5);
+      if (localObject5 == null) {
+        break label1596;
+      }
+      MiniAppReportManager.reportToDc04239((MiniAppConfig)localObject5, (String)localObject3, "page_view", (String)localObject2, (String)localObject4, str, bool);
+    }
+    catch (Exception localException4)
+    {
+      long l;
+      break label1596;
+    }
+    if ("record_duration_sdk_4239".equals(paramString))
+    {
+      paramBundle.setClassLoader(SDKMiniProgramLpReportDC04239.class.getClassLoader());
+      localObject2 = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("app_config");
+      l = paramBundle.getLong("add_duration_ms");
+      localObject2 = MiniSdkUtil.b((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject2);
+      if (localObject2 != null) {
+        MiniAppReportManager.recordDuration((MiniAppConfig)localObject2, l);
+      }
+    }
+    else if (!"query_user_troop_info".equals(paramString)) {}
+    try
+    {
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putBoolean("hasCreateOrManageTroop", TroopUtils.a());
+      callbackResult(paramInt, EIPCResult.createResult(0, (Bundle)localObject2));
+    }
+    catch (Exception localException5)
+    {
+      break label1397;
+    }
+    callbackResult(paramInt, EIPCResult.createResult(-102, null));
+    break label1596;
+    if ("mini_record_wx_share_miniapp_for_sdk".equals(paramString)) {
+      try
+      {
+        paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+        localObject2 = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("MiniAppInfoForSDK");
+        WXShareHelperFromQQMiniApp.getInstance().recordMiniAppInfoFromSDK((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject2);
+      }
+      catch (Exception localException1)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_SDK get an exception:");
+        ((StringBuilder)localObject3).append(localException1.toString());
+        QLog.e("MiniAppTransferModule", 1, ((StringBuilder)localObject3).toString());
+      }
+    } else if ("mini_record_wx_share_miniapp_for_qq".equals(paramString)) {
+      try
+      {
+        paramBundle.setClassLoader(MiniProgramLpReportDC04239.class.getClassLoader());
+        com.tencent.mobileqq.mini.apkg.MiniAppInfo localMiniAppInfo = (com.tencent.mobileqq.mini.apkg.MiniAppInfo)paramBundle.getParcelable("MiniAppInfoForQQ");
+        localObject3 = (LaunchParam)paramBundle.getParcelable("MiniAppLaunchParamForQQ");
+        WXShareHelperFromQQMiniApp.getInstance().recordMiniAppInfoFromQQ(localMiniAppInfo, (LaunchParam)localObject3);
+      }
+      catch (Exception localException2)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("ACTION_MINI_RECORD_WX_SHARE_MINIAPP_FOR_QQ get an exception:");
+        ((StringBuilder)localObject3).append(localException2.toString());
+        QLog.e("MiniAppTransferModule", 1, ((StringBuilder)localObject3).toString());
+      }
+    }
+    return innerOnCall((QQAppInterface)localObject1, paramString, paramBundle, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule
  * JD-Core Version:    0.7.0.1
  */

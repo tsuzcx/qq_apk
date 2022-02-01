@@ -1,47 +1,46 @@
 package com.tencent.chirp;
 
 import android.content.Context;
-import zhq;
 
 public class PCMRecorder
 {
-  private int jdField_a_of_type_Int = 44100;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private volatile PCMRecorder.RecordThread jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread;
-  private zhq jdField_a_of_type_Zhq;
-  private int b;
+  private int a = 44100;
+  private int b = 0;
+  private volatile PCMRecorder.RecordThread c;
+  private Context d;
+  private PCMRecorder.OnQQRecorderListener e;
   
-  public PCMRecorder(Context paramContext, int paramInt, zhq paramzhq)
+  public PCMRecorder(Context paramContext, int paramInt, PCMRecorder.OnQQRecorderListener paramOnQQRecorderListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramContext;
+    this.a = paramInt;
     this.b = (paramInt / 50 * 2 * 2);
-    this.jdField_a_of_type_Zhq = paramzhq;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread != null)
-    {
-      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread.a = false;
-      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread = null;
-    }
+    this.e = paramOnQQRecorderListener;
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread = new PCMRecorder.RecordThread(this);
-      this.jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread.start();
+      this.c = new PCMRecorder.RecordThread(this);
+      this.c.start();
       return true;
     }
     return false;
   }
+  
+  public void b()
+  {
+    if (this.c != null)
+    {
+      this.c.a = false;
+      this.c = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.chirp.PCMRecorder
  * JD-Core Version:    0.7.0.1
  */

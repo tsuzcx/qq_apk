@@ -57,18 +57,24 @@ public class DecodePlayer
   {
     this.mCurrentState.set(2);
     SdkContext.getInstance().getLogger().d("DecodePlayer", "onDecodeCancel");
-    if (this.mHWDecodeListener != null) {
-      this.mHWDecodeListener.onDecodeCancel();
+    HWDecodeListener localHWDecodeListener = this.mHWDecodeListener;
+    if (localHWDecodeListener != null) {
+      localHWDecodeListener.onDecodeCancel();
     }
   }
   
   public void onDecodeError(int paramInt, Throwable paramThrowable)
   {
-    SdkContext.getInstance().getLogger().e("DecodePlayer", "onDecodeError errorCode = " + paramInt, paramThrowable);
+    Logger localLogger = SdkContext.getInstance().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDecodeError errorCode = ");
+    localStringBuilder.append(paramInt);
+    localLogger.e("DecodePlayer", localStringBuilder.toString(), paramThrowable);
     stopMusic();
-    if (BuildConfig.DEBUG) {
-      throw new RuntimeException(paramThrowable);
+    if (!BuildConfig.DEBUG) {
+      return;
     }
+    throw new RuntimeException(paramThrowable);
   }
   
   public void onDecodeFinish()
@@ -76,34 +82,38 @@ public class DecodePlayer
     this.mCurrentState.set(5);
     SdkContext.getInstance().getLogger().d("DecodePlayer", "onDecodeFinish");
     stopMusic();
-    if (this.mHWDecodeListener != null) {
-      this.mHWDecodeListener.onDecodeFinish();
+    HWDecodeListener localHWDecodeListener = this.mHWDecodeListener;
+    if (localHWDecodeListener != null) {
+      localHWDecodeListener.onDecodeFinish();
     }
   }
   
   public void onDecodeFrame(long paramLong1, long paramLong2)
   {
-    if (this.mHWDecodeListener != null) {
-      this.mHWDecodeListener.onDecodeFrame(paramLong1, paramLong2);
+    HWDecodeListener localHWDecodeListener = this.mHWDecodeListener;
+    if (localHWDecodeListener != null) {
+      localHWDecodeListener.onDecodeFrame(paramLong1, paramLong2);
     }
   }
   
   public void onDecodeRepeat()
   {
     SdkContext.getInstance().getLogger().d("DecodePlayer", "onDecodeRepeat");
-    if (this.mHWDecodeListener != null) {
-      this.mHWDecodeListener.onDecodeRepeat();
+    HWDecodeListener localHWDecodeListener = this.mHWDecodeListener;
+    if (localHWDecodeListener != null) {
+      localHWDecodeListener.onDecodeRepeat();
     }
   }
   
   public void onDecodeSeekTo(long paramLong)
   {
-    this.mAudioOffsetMs = ((int)paramLong);
+    int i = (int)paramLong;
+    this.mAudioOffsetMs = i;
     this.mCurrentDecodeTimestampNs = System.nanoTime();
     if ((FileUtil.fileExistsAndNotEmpty(this.mAudioDecodeConfig.audioFilePath)) && (this.mSimpleAudioPlayer != null) && (!VideoPrefsUtil.getMaterialMute()))
     {
       this.mSimpleAudioPlayer.setAudioStream(3);
-      this.mSimpleAudioPlayer.seekPlay(this.mAudioDecodeConfig.audioFilePath, (int)paramLong);
+      this.mSimpleAudioPlayer.seekPlay(this.mAudioDecodeConfig.audioFilePath, i);
     }
   }
   
@@ -111,14 +121,16 @@ public class DecodePlayer
   {
     this.mCurrentState.set(3);
     SdkContext.getInstance().getLogger().d("DecodePlayer", "onDecodeStart");
-    if (this.mHWDecodeListener != null) {
-      this.mHWDecodeListener.onDecodeStart();
+    HWDecodeListener localHWDecodeListener = this.mHWDecodeListener;
+    if (localHWDecodeListener != null) {
+      localHWDecodeListener.onDecodeStart();
     }
   }
   
   public void resumeMusic()
   {
-    if ((this.mSimpleAudioPlayer != null) && (!this.mSimpleAudioPlayer.isPlaying()) && (this.mCurrentState.get() == 3) && (FileUtil.fileExistsAndNotEmpty(this.mAudioDecodeConfig.audioFilePath)))
+    SimpleAudioPlayer localSimpleAudioPlayer = this.mSimpleAudioPlayer;
+    if ((localSimpleAudioPlayer != null) && (!localSimpleAudioPlayer.isPlaying()) && (this.mCurrentState.get() == 3) && (FileUtil.fileExistsAndNotEmpty(this.mAudioDecodeConfig.audioFilePath)))
     {
       this.mSimpleAudioPlayer.setAudioStream(3);
       this.mSimpleAudioPlayer.seekPlay(this.mAudioDecodeConfig.audioFilePath, (int)((System.nanoTime() - this.mCurrentDecodeTimestampNs) / 1000000L) + this.mAudioOffsetMs);
@@ -137,8 +149,15 @@ public class DecodePlayer
       this.mSimpleAudioPlayer = new SimpleAudioPlayer();
     }
     this.mAudioDecodeConfig.audioFilePath = paramString2;
-    if (SdkContext.getInstance().getLogger().isEnable()) {
-      SdkContext.getInstance().getLogger().d("DecodePlayer", "setFilePath: videoFilePath = " + this.mVideoDecodeConfig.inputFilePath + " ; audioFilePath = " + paramString2);
+    if (SdkContext.getInstance().getLogger().isEnable())
+    {
+      paramString1 = SdkContext.getInstance().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFilePath: videoFilePath = ");
+      localStringBuilder.append(this.mVideoDecodeConfig.inputFilePath);
+      localStringBuilder.append(" ; audioFilePath = ");
+      localStringBuilder.append(paramString2);
+      paramString1.d("DecodePlayer", localStringBuilder.toString());
     }
     this.videoDuration = VideoUtil.getDurationOfVideo(this.mVideoDecodeConfig.inputFilePath);
     this.mAudioDecodeConfig.videoDurationMs = this.videoDuration;
@@ -174,23 +193,26 @@ public class DecodePlayer
   
   public void startPlay(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    if (TextUtils.isEmpty(this.mVideoDecodeConfig.inputFilePath)) {
-      throw new RuntimeException("startPlay failed. videoFilePath is empty.");
-    }
-    this.mCurrentState.set(1);
-    this.hwVideoDecoder.startDecode(this.mVideoDecodeConfig, paramInt, paramOnFrameAvailableListener, this);
-    if ((FileUtil.fileExistsAndNotEmpty(this.mAudioDecodeConfig.audioFilePath)) && (this.mSimpleAudioPlayer != null) && (!VideoPrefsUtil.getMaterialMute()))
+    if (!TextUtils.isEmpty(this.mVideoDecodeConfig.inputFilePath))
     {
-      this.mSimpleAudioPlayer.setAudioStream(3);
-      this.mSimpleAudioPlayer.play(this.mAudioDecodeConfig.audioFilePath);
+      this.mCurrentState.set(1);
+      this.hwVideoDecoder.startDecode(this.mVideoDecodeConfig, paramInt, paramOnFrameAvailableListener, this);
+      if ((FileUtil.fileExistsAndNotEmpty(this.mAudioDecodeConfig.audioFilePath)) && (this.mSimpleAudioPlayer != null) && (!VideoPrefsUtil.getMaterialMute()))
+      {
+        this.mSimpleAudioPlayer.setAudioStream(3);
+        this.mSimpleAudioPlayer.play(this.mAudioDecodeConfig.audioFilePath);
+      }
+      this.mAudioOffsetMs = 0;
+      this.mCurrentDecodeTimestampNs = System.nanoTime();
+      return;
     }
-    this.mAudioOffsetMs = 0;
-    this.mCurrentDecodeTimestampNs = System.nanoTime();
+    throw new RuntimeException("startPlay failed. videoFilePath is empty.");
   }
   
   public void stopMusic()
   {
-    if ((this.mSimpleAudioPlayer != null) && (this.mSimpleAudioPlayer.isPlaying())) {
+    SimpleAudioPlayer localSimpleAudioPlayer = this.mSimpleAudioPlayer;
+    if ((localSimpleAudioPlayer != null) && (localSimpleAudioPlayer.isPlaying())) {
       this.mSimpleAudioPlayer.stop();
     }
   }
@@ -199,14 +221,15 @@ public class DecodePlayer
   {
     this.mCurrentState.set(6);
     this.hwVideoDecoder.stopDecode();
-    if ((this.mSimpleAudioPlayer != null) && (this.mSimpleAudioPlayer.isPlaying())) {
+    SimpleAudioPlayer localSimpleAudioPlayer = this.mSimpleAudioPlayer;
+    if ((localSimpleAudioPlayer != null) && (localSimpleAudioPlayer.isPlaying())) {
       this.mSimpleAudioPlayer.stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer
  * JD-Core Version:    0.7.0.1
  */

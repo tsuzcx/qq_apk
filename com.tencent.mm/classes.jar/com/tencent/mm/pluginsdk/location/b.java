@@ -1,35 +1,41 @@
 package com.tencent.mm.pluginsdk.location;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class b
+public abstract interface b
 {
-  public int cyX;
-  public float fBB;
-  public float fBC;
-  public long itemId;
-  public int scene;
+  public abstract void Px(int paramInt);
   
-  public b(long paramLong, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
-  {
-    this.fBB = paramFloat1;
-    this.fBC = paramFloat2;
-    this.cyX = paramInt1;
-    this.scene = paramInt2;
-    this.itemId = paramLong;
-  }
+  public abstract void dUm();
   
-  public final String toString()
+  public abstract void dUn();
+  
+  public abstract void hT(String paramString1, String paramString2);
+  
+  public abstract void setDefaultLoadingPBarColor(int paramInt);
+  
+  public abstract void setDefaultLoadingTipColor(int paramInt);
+  
+  public abstract void setDefaultStateIconColor(int paramInt);
+  
+  public abstract void setDefaultStateTextColor(int paramInt);
+  
+  public abstract void setIconColor(int paramInt);
+  
+  public abstract void setLocationName(String paramString);
+  
+  public abstract void setOnClickLocationListener(a parama);
+  
+  public abstract void setSuggestView(String paramString);
+  
+  public abstract void setTextColor(int paramInt);
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(79210);
-    String str = String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.fBB * 1000000.0F)), Integer.valueOf((int)(this.fBC * 1000000.0F)), Integer.valueOf(this.cyX) });
-    AppMethodBeat.o(79210);
-    return str;
+    public abstract void onClickLocationView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.b
  * JD-Core Version:    0.7.0.1
  */

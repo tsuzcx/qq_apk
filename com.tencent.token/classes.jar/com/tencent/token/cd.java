@@ -1,6 +1,10 @@
 package com.tencent.token;
 
-public final class cd {}
+import android.graphics.drawable.Animatable;
+
+public abstract interface cd
+  extends Animatable
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

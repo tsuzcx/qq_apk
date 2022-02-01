@@ -1,111 +1,145 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.support.v4.view.t;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import androidx.core.g.z;
+import com.tencent.luggage.wxa.b.a.e;
+import com.tencent.luggage.wxa.b.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class v
   extends LinearLayout
-  implements ac
+  implements ag
 {
-  private static final int VIEW_ID = 2131820560;
-  private boolean jmP;
-  private v.a jmQ;
-  private AppBrandNumberKeyboardView jmR;
+  private static final int ehD = a.e.app_brand_keyboard_number;
   EditText mEditText;
+  View uHf;
+  private boolean uHg;
+  private a uHh;
+  AppBrandNumberKeyboardView uHi;
+  View uHj;
+  com.tencent.mm.plugin.appbrand.o.a uHk;
+  boolean uHl;
   
   private v(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(123744);
-    this.jmP = false;
-    super.setId(VIEW_ID);
+    AppMethodBeat.i(136479);
+    this.uHg = false;
+    this.uHk = null;
+    this.uHl = false;
+    Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "init");
+    super.setId(ehD);
     setOrientation(1);
     setBackgroundColor(-1);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 30));
-    Object localObject = new RelativeLayout(getContext());
-    ((RelativeLayout)localObject).setOnClickListener(new v.1(this));
-    ((RelativeLayout)localObject).setBackgroundResource(2130840569);
-    ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageResource(2130840568);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    ((RelativeLayout)localObject).addView(localImageView, localLayoutParams);
-    addView((View)localObject, paramContext);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 240));
-    localObject = new AppBrandNumberKeyboardView(getContext());
-    this.jmR = ((AppBrandNumberKeyboardView)localObject);
-    addView((View)localObject, paramContext);
-    AppMethodBeat.o(123744);
+    if (this.uHl)
+    {
+      this.uHj = this.uHk;
+      if (this.uHj != null)
+      {
+        paramContext = (ViewGroup)this.uHj.getParent();
+        if (paramContext != null)
+        {
+          Log.i("MicroMsg.AppBrandNumberKeyboardPanel", "toolbar is already exsited in a layout,the class of the parent is %s  the id is : %d", new Object[] { paramContext.getClass().toString(), Integer.valueOf(paramContext.getId()) });
+          paramContext.removeView(this.uHj);
+        }
+      }
+      addView(this.uHj);
+    }
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 30));
+    this.uHf = LayoutInflater.from(getContext()).inflate(a.f.appbrand_keyboard_push_down_layout, null);
+    this.uHf.setOnClickListener(new v.1(this));
+    addView(this.uHf, paramContext);
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 240));
+    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = new AppBrandNumberKeyboardView(getContext());
+    this.uHi = localAppBrandNumberKeyboardView;
+    addView(localAppBrandNumberKeyboardView, paramContext);
+    AppMethodBeat.o(136479);
   }
   
-  public static v cO(View paramView)
+  public static v a(View paramView, com.tencent.mm.plugin.appbrand.o.a parama)
   {
-    AppMethodBeat.i(123742);
-    paramView = (v)paramView.getRootView().findViewById(VIEW_ID);
-    AppMethodBeat.o(123742);
-    return paramView;
-  }
-  
-  public static v cP(View paramView)
-  {
-    AppMethodBeat.i(123743);
-    Object localObject2 = cO(paramView);
+    AppMethodBeat.i(324518);
+    Object localObject2 = eh(paramView);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = n.cJ(paramView);
+      localObject2 = n.ed(paramView);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(123743);
+        AppMethodBeat.o(324518);
         return null;
       }
       localObject1 = new v(paramView.getContext());
       ((n)localObject2).n((View)localObject1, false);
     }
-    AppMethodBeat.o(123743);
+    if (((v)localObject1).uHk != parama)
+    {
+      Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "mComponentView != componentView so we set mComponentView = componentView;");
+      ((v)localObject1).uHk = parama;
+    }
+    AppMethodBeat.o(324518);
     return localObject1;
+  }
+  
+  public static v eh(View paramView)
+  {
+    AppMethodBeat.i(136477);
+    paramView = (v)paramView.getRootView().findViewById(ehD);
+    AppMethodBeat.o(136477);
+    return paramView;
+  }
+  
+  public static void ei(View paramView)
+  {
+    AppMethodBeat.i(324530);
+    if (paramView != null)
+    {
+      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+      if (localViewGroup != null) {
+        localViewGroup.removeView(paramView);
+      }
+    }
+    AppMethodBeat.o(324530);
   }
   
   private void onDone()
   {
-    AppMethodBeat.i(123746);
-    if ((!this.jmP) && (this.jmQ != null))
+    AppMethodBeat.i(136481);
+    if ((!this.uHg) && (this.uHh != null))
     {
-      this.jmP = true;
-      this.jmQ.onDone();
-      this.jmP = false;
+      this.uHg = true;
+      this.uHh.onDone();
+      this.uHg = false;
     }
-    AppMethodBeat.o(123746);
+    AppMethodBeat.o(136481);
   }
   
-  public final boolean aRd()
+  public final boolean cRp()
   {
-    AppMethodBeat.i(123745);
-    boolean bool = t.as(this);
-    AppMethodBeat.o(123745);
+    AppMethodBeat.i(136480);
+    boolean bool = z.au(this);
+    AppMethodBeat.o(136480);
     return bool;
   }
   
-  final void aRe()
+  final void cRq()
   {
-    AppMethodBeat.i(123751);
+    AppMethodBeat.i(136486);
     if (this.mEditText != null)
     {
       this.mEditText.clearFocus();
       this.mEditText = null;
-      this.jmQ = null;
-      this.jmP = false;
+      this.uHh = null;
+      this.uHg = false;
     }
-    AppMethodBeat.o(123751);
+    AppMethodBeat.o(136486);
   }
   
   public final EditText getAttachedEditText()
@@ -115,88 +149,95 @@ public final class v
   
   public final int getPanelHeight()
   {
-    AppMethodBeat.i(123748);
-    int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 270);
-    AppMethodBeat.o(123748);
+    AppMethodBeat.i(136483);
+    int i = com.tencent.mm.cd.a.fromDPToPix(getContext(), 270);
+    AppMethodBeat.o(136483);
     return i;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(123753);
+    AppMethodBeat.i(136488);
     super.onDetachedFromWindow();
     removeAllViews();
-    AppMethodBeat.o(123753);
+    AppMethodBeat.o(136488);
   }
   
-  protected final void onMeasure(int paramInt1, int paramInt2)
+  public final void setComponentView(boolean paramBoolean)
   {
-    AppMethodBeat.i(123752);
-    if (isShown()) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(getPanelHeight(), 1073741824);
-    }
-    super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(123752);
+    this.uHl = paramBoolean;
   }
   
   public final void setId(int paramInt) {}
   
   public final <_Input extends EditText,  extends com.tencent.mm.plugin.appbrand.widget.input.numberpad.a> void setInputEditText(_Input param_Input)
   {
-    AppMethodBeat.i(123749);
+    AppMethodBeat.i(136484);
     this.mEditText = param_Input;
-    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.jmR;
+    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.uHi;
     param_Input = (com.tencent.mm.plugin.appbrand.widget.input.numberpad.a)param_Input;
-    if (localAppBrandNumberKeyboardView.jmW != param_Input)
+    if (localAppBrandNumberKeyboardView.uHq != param_Input)
     {
       if (param_Input == null)
       {
-        localAppBrandNumberKeyboardView.jmV = null;
-        AppMethodBeat.o(123749);
+        localAppBrandNumberKeyboardView.uHp = null;
+        AppMethodBeat.o(136484);
         return;
+      }
+      if ((param_Input instanceof View))
+      {
+        ah localah = ah.a.fy(((View)param_Input).getContext());
+        if (localah != null) {
+          localah.hideVKB();
+        }
+      }
+      if ((param_Input instanceof EditText))
+      {
+        an.a.setNoSystemInputOnEditText((EditText)param_Input);
+        an.a.c((EditText)param_Input);
       }
       if ((param_Input instanceof View)) {
         ((View)param_Input).requestFocus();
       }
-      if ((param_Input instanceof EditText))
-      {
-        aj.a.setNoSystemInputOnEditText((EditText)param_Input);
-        aj.a.c((EditText)param_Input);
-      }
-      localAppBrandNumberKeyboardView.jmV = param_Input.aRc();
+      localAppBrandNumberKeyboardView.uHp = param_Input.cRo();
     }
-    AppMethodBeat.o(123749);
+    AppMethodBeat.o(136484);
   }
   
-  public final void setOnDoneListener(v.a parama)
+  public final void setOnDoneListener(a parama)
   {
-    this.jmQ = parama;
+    this.uHh = parama;
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(123747);
+    AppMethodBeat.i(136482);
     if ((getVisibility() == paramInt) && ((getVisibility() == 0) || (getVisibility() == 8)))
     {
-      AppMethodBeat.o(123747);
+      AppMethodBeat.o(136482);
       return;
     }
     if (paramInt != 0)
     {
       super.setVisibility(8);
       onDone();
-      AppMethodBeat.o(123747);
+      AppMethodBeat.o(136482);
       return;
     }
     super.setVisibility(paramInt);
-    AppMethodBeat.o(123747);
+    AppMethodBeat.o(136482);
   }
   
   public final void setXMode(int paramInt)
   {
-    AppMethodBeat.i(123750);
-    this.jmR.setXMode(paramInt);
-    AppMethodBeat.o(123750);
+    AppMethodBeat.i(136485);
+    this.uHi.setXMode(paramInt);
+    AppMethodBeat.o(136485);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onDone();
   }
 }
 

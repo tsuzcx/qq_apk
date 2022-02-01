@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/qas" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/black" android:gravity="center" android:id="@id/jjc" android:background="@drawable/gnq" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="快试试最新模板效果吧" android:layout_alignParentTop="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/zb" android:background="@drawable/j6d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_below="@id/jjc" android:layout_alignLeft="@id/jjc" />
+    </RelativeLayout>
+</FrameLayout>

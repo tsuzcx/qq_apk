@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.image_picker.imagepicker.view.SquareFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:foregroundGravity="center"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/nys" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@string/zog" />
+    <View android:id="@id/qy6" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/bsd" android:textColor="@color/b7r" android:layout_gravity="bottom" android:id="@id/n8j" android:background="@color/b7k" android:paddingLeft="@dimen/bsm" android:paddingTop="@dimen/bsn" android:paddingRight="@dimen/bsm" android:paddingBottom="@dimen/bsn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zol" />
+</com.tencent.image_picker.imagepicker.view.SquareFrameLayout>

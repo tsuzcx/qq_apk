@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/bp" android:gravity="bottom" android:id="@id/fba" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:text="QQ运动" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="30.0dip">
+        <LinearLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/osk" android:alpha="0.6" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/fb_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0km" android:alpha="0.6" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/osh" android:alpha="0.6" />
+            <Chronometer android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:format="%s" android:alpha="0.6" />
+        </LinearLayout>
+        <ImageView android:id="@id/fb5" android:layout_width="60.0dip" android:layout_height="15.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/d3n" />
+    </LinearLayout>
+</LinearLayout>

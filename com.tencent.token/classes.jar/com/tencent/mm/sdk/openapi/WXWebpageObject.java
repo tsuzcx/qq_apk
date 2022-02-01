@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.token.qk;
 
 public class WXWebpageObject
-  implements WXMediaMessage.IMediaObject
+  implements WXMediaMessage.a
 {
   public String webpageUrl;
   
@@ -17,12 +17,12 @@ public class WXWebpageObject
   
   public boolean checkArgs()
   {
-    if ((this.webpageUrl == null) || (this.webpageUrl.length() == 0) || (this.webpageUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
-      return false;
+    String str = this.webpageUrl;
+    if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240)) {
+      return true;
     }
-    return true;
+    qk.a("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

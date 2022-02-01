@@ -27,10 +27,10 @@ public class f
   public static final int s = 514;
   public static final int t = 515;
   public static final int u = 516;
-  private static e v = null;
+  private static e v;
   private static boolean w = false;
   private static Context y;
-  private static a z = null;
+  private static a z;
   private MsfCore x;
   
   public f(MsfCore paramMsfCore, Context paramContext)
@@ -46,7 +46,10 @@ public class f
     }
     catch (Exception paramMsfCore)
     {
-      QLog.d("SocketAdaptorFactory", 1, "failed to init socketadaptorfacotry " + paramMsfCore.toString());
+      paramContext = new StringBuilder();
+      paramContext.append("failed to init socketadaptorfacotry ");
+      paramContext.append(paramMsfCore.toString());
+      QLog.d("SocketAdaptorFactory", 1, paramContext.toString());
       b = 0;
       w = false;
     }
@@ -54,30 +57,31 @@ public class f
   
   private e a(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
+      b = f();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("create adaptor get mode ");
+      ((StringBuilder)localObject).append(b);
+      QLog.d("SocketAdaptorFactory", 1, ((StringBuilder)localObject).toString());
+      if (b != 2)
       {
-        b = f();
-        QLog.d("SocketAdaptorFactory", 1, "create adaptor get mode " + b);
-        switch (b)
-        {
-        case 2: 
-          w = true;
-          return new d(paramContext);
-        }
-      }
-      catch (Exception localException)
-      {
-        c localc;
-        w = false;
-        QLog.d("SocketAdaptorFactory", 1, "Failed to create SocketAdaptor " + localException.toString());
+        w = true;
         return new d(paramContext);
       }
       w = true;
-      localc = new c(paramContext);
-      return localc;
+      localObject = new c(paramContext);
+      return localObject;
     }
+    catch (Exception localException)
+    {
+      w = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to create SocketAdaptor ");
+      localStringBuilder.append(localException.toString());
+      QLog.d("SocketAdaptorFactory", 1, localStringBuilder.toString());
+    }
+    return new d(paramContext);
   }
   
   public static boolean a()
@@ -124,7 +128,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.f
  * JD-Core Version:    0.7.0.1
  */

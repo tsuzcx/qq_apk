@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class LabelViewItem
   extends TextView
@@ -30,7 +32,7 @@ public class LabelViewItem
   
   private void a(Context paramContext)
   {
-    setBackgroundResource(2130845156);
+    setBackgroundResource(((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyTopicLabelBkg());
     setTextSize(2, 11.0F);
     setTextColor(Color.parseColor("#ffaf4efb"));
     int i = a(8.0F);
@@ -41,12 +43,12 @@ public class LabelViewItem
   
   public int a(float paramFloat)
   {
-    return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem
  * JD-Core Version:    0.7.0.1
  */

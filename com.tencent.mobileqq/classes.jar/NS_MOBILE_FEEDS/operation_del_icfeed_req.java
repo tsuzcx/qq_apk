@@ -41,8 +41,9 @@ public final class operation_del_icfeed_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.typeId, 2);
-    if (this.skey != null) {
-      paramJceOutputStream.write(this.skey, 3);
+    String str = this.skey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.time, 4);
     paramJceOutputStream.write(this.uflag, 5);
@@ -50,7 +51,7 @@ public final class operation_del_icfeed_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.operation_del_icfeed_req
  * JD-Core Version:    0.7.0.1
  */

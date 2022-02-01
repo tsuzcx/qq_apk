@@ -25,17 +25,19 @@ public final class oidb_cmd0x83e$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72, 82 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment_id", "bytes_rowkey", "uint32_ugc_status", "bytes_default_comments", "bytes_sub_comment_id", "uint32_is_like", "bytes_result_desc" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5 }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 66, 72, 82 }, new String[] { "uint64_uin", "uint32_operation", "uint64_feeds_id", "bytes_comment_id", "bytes_rowkey", "uint32_ugc_status", "bytes_default_comments", "bytes_sub_comment_id", "uint32_is_like", "bytes_result_desc" }, new Object[] { localLong, localInteger, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localByteStringMicro4, localInteger, localByteStringMicro5 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x83e.oidb_cmd0x83e.RspBody
  * JD-Core Version:    0.7.0.1
  */

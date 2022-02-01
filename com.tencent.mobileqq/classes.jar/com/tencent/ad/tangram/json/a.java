@@ -33,22 +33,19 @@ class a
   public static Set<Field> getFields(Class paramClass)
   {
     Object localObject = new HashSet();
-    for (;;)
+    while ((paramClass != null) && (paramClass != Object.class) && (paramClass.getName().indexOf("android") != 0) && (paramClass.getName().indexOf("java") != 0))
     {
-      if ((paramClass == null) || (paramClass == Object.class) || (paramClass.getName().indexOf("android") == 0) || (paramClass.getName().indexOf("java") == 0))
-      {
-        paramClass = new HashSet();
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Field localField = (Field)((Iterator)localObject).next();
-          if (!Modifier.isFinal(localField.getModifiers())) {
-            paramClass.add(localField);
-          }
-        }
-      }
       ((Set)localObject).addAll(Arrays.asList(paramClass.getDeclaredFields()));
       paramClass = paramClass.getSuperclass();
+    }
+    paramClass = new HashSet();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Field localField = (Field)((Iterator)localObject).next();
+      if (!Modifier.isFinal(localField.getModifiers())) {
+        paramClass.add(localField);
+      }
     }
     return paramClass;
   }
@@ -94,14 +91,14 @@ class a
   {
     Class localClass = (Class)PRIMITIVE_CLASSES.get(paramClass);
     if (localClass != null) {
-      return localClass;
+      paramClass = localClass;
     }
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.json.a
  * JD-Core Version:    0.7.0.1
  */

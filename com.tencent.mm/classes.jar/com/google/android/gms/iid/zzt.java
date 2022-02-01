@@ -20,35 +20,31 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzt
   implements ServiceConnection
 {
-  @GuardedBy("this")
   int state;
   final Messenger zzcc;
   zzy zzcd;
-  @GuardedBy("this")
   final Queue<zzz<?>> zzce;
-  @GuardedBy("this")
   final SparseArray<zzz<?>> zzcf;
   
   private zzt(zzr paramzzr)
   {
-    AppMethodBeat.i(57603);
+    AppMethodBeat.i(2557);
     this.state = 0;
     this.zzcc = new Messenger(new Handler(Looper.getMainLooper(), new zzu(this)));
     this.zzce = new ArrayDeque();
     this.zzcf = new SparseArray();
-    AppMethodBeat.o(57603);
+    AppMethodBeat.o(2557);
   }
   
   private final void zzr()
   {
-    AppMethodBeat.i(57607);
+    AppMethodBeat.i(2561);
     zzr.zze(this.zzcg).execute(new zzw(this));
-    AppMethodBeat.o(57607);
+    AppMethodBeat.o(2561);
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
@@ -57,13 +53,13 @@ final class zzt
     {
       try
       {
-        AppMethodBeat.i(57606);
+        AppMethodBeat.i(2560);
         Log.isLoggable("MessengerIpcClient", 2);
         if (paramIBinder != null) {
           continue;
         }
         zzd(0, "Null service connection");
-        AppMethodBeat.o(57606);
+        AppMethodBeat.o(2560);
       }
       finally
       {
@@ -72,12 +68,12 @@ final class zzt
           this.zzcd = new zzy(paramIBinder);
           this.state = 2;
           zzr();
-          AppMethodBeat.o(57606);
+          AppMethodBeat.o(2560);
         }
         catch (RemoteException paramComponentName)
         {
           zzd(0, paramComponentName.getMessage());
-          AppMethodBeat.o(57606);
+          AppMethodBeat.o(2560);
         }
         paramComponentName = finally;
       }
@@ -89,10 +85,10 @@ final class zzt
   {
     try
     {
-      AppMethodBeat.i(57608);
+      AppMethodBeat.i(2562);
       Log.isLoggable("MessengerIpcClient", 2);
       zzd(2, "Service disconnected");
-      AppMethodBeat.o(57608);
+      AppMethodBeat.o(2562);
       return;
     }
     finally
@@ -108,7 +104,7 @@ final class zzt
     {
       try
       {
-        AppMethodBeat.i(57609);
+        AppMethodBeat.i(2563);
         if (Log.isLoggable("MessengerIpcClient", 3))
         {
           localObject = String.valueOf(paramString);
@@ -123,7 +119,7 @@ final class zzt
           case 0: 
             paramInt = this.state;
             paramString = new IllegalStateException(26 + "Unknown state: " + paramInt);
-            AppMethodBeat.o(57609);
+            AppMethodBeat.o(2563);
             throw paramString;
           }
         }
@@ -132,7 +128,7 @@ final class zzt
       new String("Disconnected: ");
       continue;
       paramString = new IllegalStateException();
-      AppMethodBeat.o(57609);
+      AppMethodBeat.o(2563);
       throw paramString;
       Log.isLoggable("MessengerIpcClient", 2);
       this.state = 4;
@@ -150,21 +146,21 @@ final class zzt
         paramInt += 1;
       }
       this.zzcf.clear();
-      AppMethodBeat.o(57609);
+      AppMethodBeat.o(2563);
       for (;;)
       {
         return;
         this.state = 4;
-        AppMethodBeat.o(57609);
+        AppMethodBeat.o(2563);
         continue;
-        AppMethodBeat.o(57609);
+        AppMethodBeat.o(2563);
       }
     }
   }
   
   final boolean zzd(Message paramMessage)
   {
-    AppMethodBeat.i(57605);
+    AppMethodBeat.i(2559);
     int i = paramMessage.arg1;
     if (Log.isLoggable("MessengerIpcClient", 3)) {
       new StringBuilder(41).append("Received response to request: ").append(i);
@@ -186,13 +182,13 @@ final class zzt
         if (paramMessage.getBoolean("unsupported", false))
         {
           localzzz.zzd(new zzaa(4, "Not supported by GmsCore"));
-          AppMethodBeat.o(57605);
+          AppMethodBeat.o(2559);
           return true;
         }
       }
       finally
       {
-        AppMethodBeat.o(57605);
+        AppMethodBeat.o(2559);
       }
       localzzz.zzh(paramMessage);
     }
@@ -206,13 +202,13 @@ final class zzt
     {
       try
       {
-        AppMethodBeat.i(57604);
+        AppMethodBeat.i(2558);
         switch (this.state)
         {
         case 0: 
           int i = this.state;
           paramzzz = new IllegalStateException(26 + "Unknown state: " + i);
-          AppMethodBeat.o(57604);
+          AppMethodBeat.o(2558);
           throw paramzzz;
         }
       }
@@ -229,7 +225,7 @@ final class zzt
       if (!ConnectionTracker.getInstance().bindService(zzr.zzd(this.zzcg), paramzzz, this, 1))
       {
         zzd(0, "Unable to bind to service");
-        AppMethodBeat.o(57604);
+        AppMethodBeat.o(2558);
         bool1 = bool2;
       }
       for (;;)
@@ -238,15 +234,15 @@ final class zzt
         zzr.zze(this.zzcg).schedule(new zzv(this), 30L, TimeUnit.SECONDS);
         break;
         this.zzce.add(paramzzz);
-        AppMethodBeat.o(57604);
+        AppMethodBeat.o(2558);
         bool1 = bool2;
         continue;
         this.zzce.add(paramzzz);
         zzr();
-        AppMethodBeat.o(57604);
+        AppMethodBeat.o(2558);
         bool1 = bool2;
         continue;
-        AppMethodBeat.o(57604);
+        AppMethodBeat.o(2558);
         bool1 = false;
       }
     }
@@ -256,7 +252,7 @@ final class zzt
   {
     try
     {
-      AppMethodBeat.i(57612);
+      AppMethodBeat.i(2566);
       zzz localzzz = (zzz)this.zzcf.get(paramInt);
       if (localzzz != null)
       {
@@ -265,7 +261,7 @@ final class zzt
         localzzz.zzd(new zzaa(3, "Timed out waiting for response"));
         zzs();
       }
-      AppMethodBeat.o(57612);
+      AppMethodBeat.o(2566);
       return;
     }
     finally {}
@@ -275,14 +271,14 @@ final class zzt
   {
     try
     {
-      AppMethodBeat.i(57610);
+      AppMethodBeat.i(2564);
       if ((this.state == 2) && (this.zzce.isEmpty()) && (this.zzcf.size() == 0))
       {
         Log.isLoggable("MessengerIpcClient", 2);
         this.state = 3;
         ConnectionTracker.getInstance().unbindService(zzr.zzd(this.zzcg), this);
       }
-      AppMethodBeat.o(57610);
+      AppMethodBeat.o(2564);
       return;
     }
     finally {}
@@ -292,11 +288,11 @@ final class zzt
   {
     try
     {
-      AppMethodBeat.i(57611);
+      AppMethodBeat.i(2565);
       if (this.state == 1) {
         zzd(1, "Timed out while binding");
       }
-      AppMethodBeat.o(57611);
+      AppMethodBeat.o(2565);
       return;
     }
     finally {}
@@ -304,7 +300,7 @@ final class zzt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzt
  * JD-Core Version:    0.7.0.1
  */

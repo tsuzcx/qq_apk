@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import awhp;
-import baky;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
@@ -9,23 +8,23 @@ import java.util.List;
 
 public class GPadInfo
   extends PadInfo
-  implements baky
+  implements ICloudFile
 {
   public String creatorCard;
   public long creatorUid;
   public long groupCode;
   public String lastModifyCard;
   public long lastModifyUid;
-  @awhp
+  @notColumn
   public boolean mClickable = true;
-  @awhp
+  @notColumn
   public boolean mSelectable;
-  @awhp
+  @notColumn
   public List<TimDocSSOMsg.UinRightInfo> mUins;
   public String ownerCard;
   public long ownerUin;
   public long owneruid;
-  @awhp
+  @notColumn
   public List<String> searchKeyWordList = new ArrayList();
   
   public void copyFrom(PadInfo paramPadInfo)
@@ -56,13 +55,62 @@ public class GPadInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(" == padInfo == \n");
-    localStringBuilder.append("domainId: ").append(this.domainId).append(",padId: ").append(this.padId).append(",lastUnPinnedTime: ").append(this.lastUnPinnedTime).append(",itemDeleteFlag: ").append(this.itemDeleteFlag).append(",itemLateDeleteTime: ").append(this.itemLateDeleteTime).append(",thumbUrl: ").append(this.thumbUrl).append(",pad_url: ").append(this.pad_url).append(",type: ").append(this.type).append(",title: ").append(this.title).append(",createTime: ").append(this.createTime).append(",creatorUin: ").append(this.creatorUin).append(",creatorNick: ").append(this.creatorNick).append(",lastEditorUin: ").append(this.lastEditorUin).append(",lastEditorNick: ").append(this.lastEditorNick).append(",lastEditTime: ").append(this.lastEditTime).append(",pinedFlag: ").append(this.pinedFlag).append(",policy: ").append(this.policy).append(",group code: ").append(this.groupCode).append(",creator card: ").append(this.creatorCard).append(",owner uin: ").append(this.ownerUin).append(", owner card ").append(this.ownerCard).append(", lastModifyCard: ").append(this.lastModifyCard).append(", creator uid: ").append(this.creatorUid).append(" , last modify uid: ").append(this.lastModifyUid).append(", owner uid").append(this.owneruid);
+    localStringBuilder.append("domainId: ");
+    localStringBuilder.append(this.domainId);
+    localStringBuilder.append(",padId: ");
+    localStringBuilder.append(this.padId);
+    localStringBuilder.append(",lastUnPinnedTime: ");
+    localStringBuilder.append(this.lastUnPinnedTime);
+    localStringBuilder.append(",itemDeleteFlag: ");
+    localStringBuilder.append(this.itemDeleteFlag);
+    localStringBuilder.append(",itemLateDeleteTime: ");
+    localStringBuilder.append(this.itemLateDeleteTime);
+    localStringBuilder.append(",thumbUrl: ");
+    localStringBuilder.append(this.thumbUrl);
+    localStringBuilder.append(",pad_url: ");
+    localStringBuilder.append(this.pad_url);
+    localStringBuilder.append(",type: ");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(",title: ");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(",createTime: ");
+    localStringBuilder.append(this.createTime);
+    localStringBuilder.append(",creatorUin: ");
+    localStringBuilder.append(this.creatorUin);
+    localStringBuilder.append(",creatorNick: ");
+    localStringBuilder.append(this.creatorNick);
+    localStringBuilder.append(",lastEditorUin: ");
+    localStringBuilder.append(this.lastEditorUin);
+    localStringBuilder.append(",lastEditorNick: ");
+    localStringBuilder.append(this.lastEditorNick);
+    localStringBuilder.append(",lastEditTime: ");
+    localStringBuilder.append(this.lastEditTime);
+    localStringBuilder.append(",pinedFlag: ");
+    localStringBuilder.append(this.pinedFlag);
+    localStringBuilder.append(",policy: ");
+    localStringBuilder.append(this.policy);
+    localStringBuilder.append(",group code: ");
+    localStringBuilder.append(this.groupCode);
+    localStringBuilder.append(",creator card: ");
+    localStringBuilder.append(this.creatorCard);
+    localStringBuilder.append(",owner uin: ");
+    localStringBuilder.append(this.ownerUin);
+    localStringBuilder.append(", owner card ");
+    localStringBuilder.append(this.ownerCard);
+    localStringBuilder.append(", lastModifyCard: ");
+    localStringBuilder.append(this.lastModifyCard);
+    localStringBuilder.append(", creator uid: ");
+    localStringBuilder.append(this.creatorUid);
+    localStringBuilder.append(" , last modify uid: ");
+    localStringBuilder.append(this.lastModifyUid);
+    localStringBuilder.append(", owner uid");
+    localStringBuilder.append(this.owneruid);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GPadInfo
  * JD-Core Version:    0.7.0.1
  */

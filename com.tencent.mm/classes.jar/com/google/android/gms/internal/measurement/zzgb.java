@@ -18,22 +18,22 @@ public final class zzgb
   
   public zzgb(zzge paramzzge)
   {
-    AppMethodBeat.i(68981);
+    AppMethodBeat.i(1504);
     Preconditions.checkNotNull(paramzzge);
     this.zzala = paramzzge;
-    AppMethodBeat.o(68981);
+    AppMethodBeat.o(1504);
   }
   
   public static boolean zza(Context paramContext)
   {
-    AppMethodBeat.i(68982);
+    AppMethodBeat.i(1505);
     Preconditions.checkNotNull(paramContext);
     try
     {
       PackageManager localPackageManager = paramContext.getPackageManager();
       if (localPackageManager == null)
       {
-        AppMethodBeat.o(68982);
+        AppMethodBeat.o(1505);
         return false;
       }
       paramContext = localPackageManager.getReceiverInfo(new ComponentName(paramContext, "com.google.android.gms.measurement.AppMeasurementReceiver"), 0);
@@ -42,27 +42,27 @@ public final class zzgb
         boolean bool = paramContext.enabled;
         if (bool)
         {
-          AppMethodBeat.o(68982);
+          AppMethodBeat.o(1505);
           return true;
         }
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(68982);
+      AppMethodBeat.o(1505);
     }
     return false;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(68983);
+    AppMethodBeat.i(1506);
     zzgl localzzgl = zzgl.zzg(paramContext);
     zzfg localzzfg = localzzgl.zzge();
     if (paramIntent == null)
     {
       localzzfg.zzip().log("Receiver called with null intent");
-      AppMethodBeat.o(68983);
+      AppMethodBeat.o(1506);
       return;
     }
     String str1 = paramIntent.getAction();
@@ -73,7 +73,7 @@ public final class zzgb
       paramIntent.setAction("com.google.android.gms.measurement.UPLOAD");
       localzzfg.zzit().log("Starting wakeful intent.");
       this.zzala.doStartService(paramContext, paramIntent);
-      AppMethodBeat.o(68983);
+      AppMethodBeat.o(1506);
       return;
     }
     if ("com.android.vending.INSTALL_REFERRER".equals(str1)) {
@@ -88,7 +88,7 @@ public final class zzgb
           if (localPendingResult != null) {
             localPendingResult.finish();
           }
-          AppMethodBeat.o(68983);
+          AppMethodBeat.o(1506);
           return;
         }
       }
@@ -106,10 +106,10 @@ public final class zzgb
         {
           localObject = String.valueOf(str2);
           if (((String)localObject).length() == 0) {
-            break label311;
+            break label316;
           }
         }
-        label311:
+        label316:
         for (localObject = "?".concat((String)localObject);; localObject = new String("?"))
         {
           localObject = Uri.parse((String)localObject);
@@ -119,10 +119,10 @@ public final class zzgb
           }
           localzzfg.zzit().log("No campaign defined in install referrer broadcast");
           if (localPendingResult == null) {
-            break label379;
+            break label384;
           }
           localPendingResult.finish();
-          AppMethodBeat.o(68983);
+          AppMethodBeat.o(1506);
           return;
         }
         long l = 1000L * paramIntent.getLongExtra("referrer_timestamp_seconds", 0L);
@@ -132,13 +132,13 @@ public final class zzgb
         localzzgl.zzgd().zzc(new zzgd(this, localzzgl, l, (Bundle)localObject, paramContext, localzzfg, localPendingResult));
       }
     }
-    label379:
-    AppMethodBeat.o(68983);
+    label384:
+    AppMethodBeat.o(1506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="76.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/kw_" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <FrameLayout android:id="@id/nbi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip" android:layout_centerVertical="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:layout_gravity="center" android:id="@id/du3" android:layout_width="48.0dip" android:layout_height="48.0dip" app:authIconEnable="false" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePlusFollowView android:layout_gravity="center_horizontal" android:id="@id/o6m" android:layout_width="27.0dip" android:layout_height="16.0dip" android:layout_marginTop="34.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/nbi" android:layout_centerVertical="true">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/k9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="#b3ffffff" android:id="@id/qle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_below="@id/k9t" android:layout_alignLeft="@id/k9t" />
+        <TextView android:textSize="12.0dip" android:textColor="#b3ffffff" android:id="@id/qnb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/qle" android:layout_alignTop="@id/qle" />
+    </RelativeLayout>
+    <ImageView android:id="@id/o90" android:layout_width="3.0dip" android:layout_height="44.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/isj" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:id="@id/o7z" android:layout_width="44.0dip" android:layout_height="44.0dip" android:scaleType="fitXY" android:layout_toLeftOf="@id/o90" android:layout_centerVertical="true" app:round_radius="2.0dip" />
+    <View android:background="#40000000" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

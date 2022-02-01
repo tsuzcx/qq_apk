@@ -23,14 +23,15 @@ public abstract class TextBase
   protected int mEllipsize = TextUtils.TruncateAt.END.ordinal();
   protected Boolean mEnableClickSpan;
   protected Boolean mEnableMarquee;
+  protected float mFontSizeRatio = 1.0F;
   protected float mLineSpaceExtra = 0.0F;
   protected float mLineSpaceMultipiler = 1.0F;
   protected int mLines = -1;
   protected int mMaxLines = -1;
   protected int mMaxWidth;
-  public CharSequence mText = "";
+  protected CharSequence mText = "";
   protected int mTextColor = -16777216;
-  public int mTextSize = Utils.dp2px(20.0D);
+  protected int mTextSize = Utils.dp2px(20.0D);
   protected int mTextStyle = 0;
   protected Typeface mTypeface;
   protected String mTypefacePath;
@@ -41,10 +42,62 @@ public abstract class TextBase
     this.mGravity = 32;
   }
   
+  private void parseFonSize(int paramInt, String paramString)
+  {
+    Object localObject = Utils.toDouble(paramString);
+    if (localObject != null)
+    {
+      this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(": ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtil.QLog.d("TextBase", 2, ((StringBuilder)localObject).toString());
+  }
+  
+  private void parseTextSizeRatio(int paramInt, String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString1)) {
+        parseFonSize(paramInt, paramString1);
+      }
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        this.mFontSizeRatio = Float.parseFloat(paramString2);
+        return;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("parseTextSizeRatio error!msg=");
+      paramString2.append(paramString1);
+      LogUtil.QLog.d("TextBase", 1, paramString2.toString());
+    }
+  }
+  
+  private void resetAligment()
+  {
+    this.mGravity &= 0xFFFFFFFE;
+    this.mGravity &= 0xFFFFFFFB;
+    this.mGravity &= 0xFFFFFFFD;
+  }
+  
+  private void resetGravity()
+  {
+    this.mGravity &= 0xFFFFFFFB;
+    this.mGravity &= 0xFFFFFFDF;
+  }
+  
   public String getText()
   {
-    if (this.mText != null) {
-      return this.mText.toString();
+    CharSequence localCharSequence = this.mText;
+    if (localCharSequence != null) {
+      return localCharSequence.toString();
     }
     return "";
   }
@@ -54,182 +107,232 @@ public abstract class TextBase
     return this.mTextColor;
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.mTextSize = ((int)(this.mTextSize * this.mFontSizeRatio));
+  }
+  
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
     if (!super.setAttribute(paramInt, paramObject))
     {
-      String str;
-      switch (paramInt)
+      Object localObject;
+      if (paramInt != 18)
       {
-      default: 
-        return false;
-      case 18: 
-        if ((paramObject instanceof JSONArray))
-        {
-          str = JsonUtils.getStringValue((JSONArray)paramObject, 1);
-          if (str == null) {
-            break;
-          }
-        }
-      case 64: 
-        for (;;)
-        {
-          try
+        if (paramInt != 64) {
+          switch (paramInt)
           {
-            this.mLineSpaceExtra = Float.valueOf(str).floatValue();
-            this.mLineSpaceExtra = Utils.dp2px(this.mLineSpaceExtra);
-            this.mText = JsonUtils.getStringValue(paramObject, 0);
-            if (this.mText != null) {
+          default: 
+            return false;
+          case 71: 
+            if (!(paramObject instanceof JSONArray)) {
               break;
             }
-            LogUtil.QLog.d("TextBase", 2, "setAttribute: invalid value for STR_ID_TEXT, type: " + paramObject.getClass().getSimpleName() + "  value : " + paramObject);
-            return false;
+            parseTextSizeRatio(paramInt, JsonUtils.getStringValue(paramObject, 0), JsonUtils.getStringValue(paramObject, 1));
+            this.mTextStyle = 1;
+            return true;
+          case 70: 
+            if (!(paramObject instanceof JSONArray)) {
+              break;
+            }
+            parseTextSizeRatio(paramInt, JsonUtils.getStringValue(paramObject, 0), JsonUtils.getStringValue(paramObject, 1));
+            return true;
+          case 69: 
+            if (!(paramObject instanceof JSONArray)) {
+              break;
+            }
+            paramObject = (JSONArray)paramObject;
+            if (paramObject.length() < 2) {
+              break;
+            }
+            try
+            {
+              localObject = paramObject.optString(1, "relative");
+              double d = Double.valueOf(paramObject.getString(0)).doubleValue();
+              if ("absolutely".equals(localObject))
+              {
+                this.mMaxWidth = Utils.dp2px(d);
+                return true;
+              }
+              this.mMaxWidth = Utils.rp2px(d);
+              return true;
+            }
+            catch (Exception paramObject)
+            {
+              LogUtil.QLog.d("TextBase", 1, "", paramObject);
+              return true;
+            }
+          }
+        }
+        if (!(paramObject instanceof JSONArray)) {
+          break label432;
+        }
+        paramObject = (JSONArray)paramObject;
+        if (paramObject.length() < 3) {
+          break label432;
+        }
+        try
+        {
+          localObject = Utils.toDouble(paramObject.getString(2));
+          if (localObject != null) {
+            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+          }
+          this.mTypefacePath = paramObject.getString(0);
+          this.mTypeface = Typeface.createFromAsset(this.mContext.getContext().getAssets(), this.mTypefacePath);
+          return true;
+        }
+        catch (Exception paramObject)
+        {
+          LogUtil.QLog.d("TextBase", 1, "", paramObject);
+          return true;
+        }
+      }
+      if ((paramObject instanceof JSONArray))
+      {
+        localObject = JsonUtils.getStringValue((JSONArray)paramObject, 1);
+        if (localObject != null) {
+          try
+          {
+            this.mLineSpaceExtra = Float.valueOf((String)localObject).floatValue();
+            this.mLineSpaceExtra = Utils.dp2px(this.mLineSpaceExtra);
           }
           catch (Exception localException)
           {
             LogUtil.QLog.e("TextBase", 1, "setAttribute: invalid value for STR_ID_TEXT, type: ", localException);
-            continue;
-          }
-          if ((paramObject instanceof CharSequence))
-          {
-            this.mText = ((CharSequence)paramObject);
-            continue;
-            if ((paramObject instanceof JSONArray))
-            {
-              paramObject = (JSONArray)paramObject;
-              if (paramObject.length() < 3) {
-                break;
-              }
-            }
           }
         }
+        this.mText = JsonUtils.getStringValue(paramObject, 0);
+      }
+      else if ((paramObject instanceof CharSequence))
+      {
+        this.mText = ((CharSequence)paramObject);
+      }
+      if (this.mText == null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setAttribute: invalid value for STR_ID_TEXT, type: ");
+        localStringBuilder.append(paramObject.getClass().getSimpleName());
+        localStringBuilder.append("  value : ");
+        localStringBuilder.append(paramObject);
+        LogUtil.QLog.d("TextBase", 2, localStringBuilder.toString());
+        return false;
       }
     }
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localObject = Utils.toDouble(paramObject.getString(2));
-        if (localObject != null) {
-          this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
-        }
-        this.mTypefacePath = paramObject.getString(0);
-        this.mTypeface = Typeface.createFromAsset(this.mContext.getContext().getAssets(), this.mTypefacePath);
-      }
-      catch (Exception paramObject)
-      {
-        LogUtil.QLog.d("TextBase", 1, "", paramObject);
-        continue;
-      }
-      return true;
-      if ((paramObject instanceof JSONArray))
-      {
-        paramObject = (JSONArray)paramObject;
-        if (paramObject.length() >= 2)
-        {
-          double d;
-          try
-          {
-            localObject = paramObject.optString(1, "relative");
-            d = Double.valueOf(paramObject.getString(0)).doubleValue();
-            if (!"absolutely".equals(localObject)) {
-              break label351;
-            }
-            this.mMaxWidth = Utils.dp2px(d);
-          }
-          catch (Exception paramObject)
-          {
-            LogUtil.QLog.d("TextBase", 1, "", paramObject);
-          }
-          continue;
-          label351:
-          this.mMaxWidth = Utils.rp2px(d);
-        }
-      }
-    }
+    label432:
+    return true;
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  protected boolean setAttribute(int paramInt, String paramString)
   {
-    boolean bool2 = super.setAttribute(paramInt, paramString);
-    boolean bool1 = bool2;
-    if (!bool2) {
-      switch (paramInt)
+    boolean bool = super.setAttribute(paramInt, paramString);
+    if (!bool) {
+      if (paramInt != 41)
       {
-      default: 
-        bool1 = false;
+        if (paramInt != 46)
+        {
+          if (paramInt != 50)
+          {
+            if (paramInt != 67)
+            {
+              if (paramInt != 68)
+              {
+                Object localObject;
+                switch (paramInt)
+                {
+                default: 
+                  return false;
+                case 22: 
+                  localObject = Utils.toInteger(paramString);
+                  if (localObject != null)
+                  {
+                    this.mMaxLines = ((Integer)localObject).intValue();
+                    return bool;
+                  }
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+                  ((StringBuilder)localObject).append(paramInt);
+                  ((StringBuilder)localObject).append(": ");
+                  ((StringBuilder)localObject).append(paramString);
+                  LogUtil.QLog.d("TextBase", 2, ((StringBuilder)localObject).toString());
+                  return bool;
+                case 21: 
+                  localObject = Utils.toDouble(paramString);
+                  if (localObject != null)
+                  {
+                    this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
+                    this.mTextStyle = 1;
+                    return bool;
+                  }
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("setAttribute: fail to parse - ");
+                  ((StringBuilder)localObject).append(paramInt);
+                  ((StringBuilder)localObject).append(": ");
+                  ((StringBuilder)localObject).append(paramString);
+                  LogUtil.QLog.d("TextBase", 2, ((StringBuilder)localObject).toString());
+                  return bool;
+                case 20: 
+                  this.mTextColor = Utils.parseColor(paramString);
+                  return bool;
+                case 19: 
+                  parseFonSize(paramInt, paramString);
+                  return bool;
+                }
+                this.mText = paramString;
+                return bool;
+              }
+              if (!TextUtils.isEmpty(paramString))
+              {
+                this.mEnableClickSpan = Boolean.valueOf(TextUtils.equals("1", paramString));
+                return bool;
+              }
+            }
+            else if (!TextUtils.isEmpty(paramString))
+            {
+              this.mEnableMarquee = Boolean.valueOf(TextUtils.equals("1", paramString));
+              return bool;
+            }
+          }
+          else
+          {
+            resetAligment();
+            if ("0".equals(paramString))
+            {
+              this.mGravity |= 0x1;
+              return bool;
+            }
+            if ("1".equals(paramString))
+            {
+              this.mGravity |= 0x4;
+              return bool;
+            }
+            if ("2".equals(paramString))
+            {
+              this.mGravity |= 0x2;
+              return bool;
+            }
+          }
+        }
+        else
+        {
+          this.drawableLeftPath = paramString;
+          setDrawableLeft(this.drawableLeftPath);
+          return bool;
+        }
+      }
+      else
+      {
+        resetGravity();
+        if ("CenterVerticle".equals(paramString))
+        {
+          this.mGravity |= 0x20;
+          return bool;
+        }
+        this.mGravity |= 0x4;
+        this.mGravity |= 0x20;
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          this.mText = paramString;
-          return bool2;
-          Object localObject = Utils.toDouble(paramString);
-          if (localObject != null)
-          {
-            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
-            return bool2;
-          }
-          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-          return bool2;
-          this.mTextColor = Utils.parseColor(paramString);
-          return bool2;
-          localObject = Utils.toDouble(paramString);
-          if (localObject != null)
-          {
-            this.mTextSize = Utils.dp2px(((Double)localObject).doubleValue());
-            this.mTextStyle = 1;
-            return bool2;
-          }
-          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-          return bool2;
-          localObject = Utils.toInteger(paramString);
-          if (localObject != null)
-          {
-            this.mMaxLines = ((Integer)localObject).intValue();
-            return bool2;
-          }
-          LogUtil.QLog.d("TextBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
-          return bool2;
-          if ("CenterVerticle".equals(paramString))
-          {
-            this.mGravity |= 0x20;
-            return bool2;
-          }
-          this.mGravity |= 0x4;
-          this.mGravity |= 0x20;
-          return bool2;
-          if ("0".equals(paramString))
-          {
-            this.mGravity |= 0x1;
-            return bool2;
-          }
-          if ("1".equals(paramString))
-          {
-            this.mGravity |= 0x4;
-            return bool2;
-          }
-          bool1 = bool2;
-        } while (!"2".equals(paramString));
-        this.mGravity |= 0x2;
-        return bool2;
-        this.drawableLeftPath = paramString;
-        setDrawableLeft(this.drawableLeftPath);
-        return bool2;
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(paramString));
-      this.mEnableMarquee = Boolean.valueOf(TextUtils.equals("1", paramString));
-      return bool2;
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(paramString));
-    this.mEnableClickSpan = Boolean.valueOf(TextUtils.equals("1", paramString));
-    return bool2;
+    return bool;
   }
   
   protected void setDrawableLeft(String paramString) {}
@@ -255,7 +358,7 @@ public abstract class TextBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase
  * JD-Core Version:    0.7.0.1
  */

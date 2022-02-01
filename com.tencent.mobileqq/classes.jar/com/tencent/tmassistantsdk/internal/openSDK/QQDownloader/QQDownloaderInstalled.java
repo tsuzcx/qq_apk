@@ -9,8 +9,8 @@ import com.tencent.tmassistantbase.util.ab;
 public class QQDownloaderInstalled
   extends BroadcastReceiver
 {
-  protected static final String a = QQDownloaderInstalled.class.getSimpleName();
-  protected static QQDownloaderInstalled b = null;
+  protected static final String a = "QQDownloaderInstalled";
+  protected static QQDownloaderInstalled b;
   protected boolean c = false;
   protected d d = null;
   
@@ -29,31 +29,46 @@ public class QQDownloaderInstalled
   
   public void a(Context paramContext)
   {
-    ab.c(a, "context = " + paramContext);
-    IntentFilter localIntentFilter;
+    Object localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("context = ");
+    localStringBuilder.append(paramContext);
+    ab.c((String)localObject, localStringBuilder.toString());
     if (!this.c)
     {
-      ab.c("QQDownloaderInstalled", "registeReceiver   context" + paramContext + "  receiver:" + this);
-      localIntentFilter = new IntentFilter("com.tencent.assistant.ipc.firststart.action");
-    }
-    try
-    {
-      paramContext = paramContext.registerReceiver(this, localIntentFilter);
-      ab.c("QQDownloaderInstalled", "" + paramContext);
-      this.c = true;
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      ab.c("QQDownloaderInstalled", "registeReceiver exception!!!");
-      this.c = false;
-      paramContext.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("registeReceiver   context");
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append("  receiver:");
+      ((StringBuilder)localObject).append(this);
+      ab.c("QQDownloaderInstalled", ((StringBuilder)localObject).toString());
+      localObject = new IntentFilter("com.tencent.assistant.ipc.firststart.action");
+      try
+      {
+        paramContext = paramContext.registerReceiver(this, (IntentFilter)localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(paramContext);
+        ab.c("QQDownloaderInstalled", ((StringBuilder)localObject).toString());
+        this.c = true;
+        return;
+      }
+      catch (Throwable paramContext)
+      {
+        ab.c("QQDownloaderInstalled", "registeReceiver exception!!!");
+        this.c = false;
+        paramContext.printStackTrace();
+      }
     }
   }
   
   public void a(d paramd)
   {
-    ab.c(a, "listener = " + paramd);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("listener = ");
+    localStringBuilder.append(paramd);
+    ab.c(str, localStringBuilder.toString());
     this.d = paramd;
   }
   
@@ -65,25 +80,38 @@ public class QQDownloaderInstalled
   
   public void b(Context paramContext)
   {
-    if ((paramContext == null) || (b == null)) {
-      ab.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
-    }
-    while (!this.c) {
+    if ((paramContext != null) && (b != null))
+    {
+      if (this.c)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("realy unRegisteReceiver  context:");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append("  receiver:");
+        ((StringBuilder)localObject).append(this);
+        ab.c("QQDownloaderInstalled", ((StringBuilder)localObject).toString());
+        try
+        {
+          paramContext.unregisterReceiver(this);
+          this.c = false;
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          ab.c("QQDownloaderInstalled", "unRegisteReceiver exception!!!");
+          this.c = false;
+          paramContext.printStackTrace();
+        }
+      }
       return;
     }
-    ab.c("QQDownloaderInstalled", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
-    try
-    {
-      paramContext.unregisterReceiver(this);
-      this.c = false;
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      ab.c("QQDownloaderInstalled", "unRegisteReceiver exception!!!");
-      this.c = false;
-      paramContext.printStackTrace();
-    }
+    Object localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisteReceiver fail! context = ");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(",mInstance = ");
+    localStringBuilder.append(b);
+    ab.c((String)localObject, localStringBuilder.toString());
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -94,7 +122,7 @@ public class QQDownloaderInstalled
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.QQDownloader.QQDownloaderInstalled
  * JD-Core Version:    0.7.0.1
  */

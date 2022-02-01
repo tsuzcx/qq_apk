@@ -1,261 +1,324 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import android.content.Context;
-import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.ValueCallback;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.luggage.wxa.a.d;
+import com.tencent.luggage.wxa.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.h;
-import com.tencent.mm.plugin.appbrand.i.j;
-import java.net.URL;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public class ak
-  implements ap
+public final class ak
+  extends aj
 {
-  ap iuy;
+  private bd tti;
+  private a tym;
+  private b tyn;
+  private boolean tyo;
+  private LinearLayout typ;
+  private TextView tyq;
+  private View tyr;
+  private ImageView tys;
+  private ImageView tyt;
+  private ImageView tyu;
+  private final Runnable tyv;
+  private long tyw;
   
-  public ak(ap paramap)
+  public ak(Context paramContext, bd parambd)
   {
-    this.iuy = paramap;
+    super(paramContext);
+    AppMethodBeat.i(135223);
+    this.tyo = false;
+    this.tyv = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(135222);
+        ak.a(ak.this).setTranslationY(-ak.a(ak.this).getHeight());
+        AppMethodBeat.o(135222);
+      }
+    };
+    this.tyw = 0L;
+    this.tti = parambd;
+    this.typ = ((LinearLayout)LayoutInflater.from(getContext()).inflate(a.e.app_brand_pulldown_webview_background, this, false));
+    h(this.typ, parambd.getWrapperView());
+    this.tyq = ((TextView)findViewById(a.d.app_brand_pulldown_background_text));
+    this.tyr = findViewById(a.d.app_brand_pulldown_background_loading);
+    this.tys = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading0));
+    this.tyt = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading1));
+    this.tyu = ((ImageView)findViewById(a.d.app_brand_pulldown_background_loading2));
+    AppMethodBeat.o(135223);
   }
   
-  public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
+  private void cFu()
   {
-    AppMethodBeat.i(141816);
-    this.iuy.a(paramURL, paramString, paramValueCallback);
-    AppMethodBeat.o(141816);
+    AppMethodBeat.i(135234);
+    this.tyq.setTextColor(-16777216);
+    this.tyq.setAlpha(0.2F);
+    AppMethodBeat.o(135234);
   }
   
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback)
+  private void cFv()
   {
-    AppMethodBeat.i(141817);
-    this.iuy.a(paramURL, paramString1, paramString2, paramString3, paramValueCallback);
-    AppMethodBeat.o(141817);
+    AppMethodBeat.i(135238);
+    if (this.tys == null)
+    {
+      Log.w("MicroMsg.AppBrandPullDownWebView", "setupDarkLoading but mLoading0 is null, try protect");
+      AppMethodBeat.o(135238);
+      return;
+    }
+    this.tys.setImageDrawable(g(-16777216, new float[] { 0.1F, 0.4F, 0.2F, 0.1F }));
+    this.tyt.setImageDrawable(g(-16777216, new float[] { 0.1F, 0.1F, 0.4F, 0.2F }));
+    this.tyu.setImageDrawable(g(-16777216, new float[] { 0.1F, 0.2F, 0.1F, 0.4F }));
+    AppMethodBeat.o(135238);
   }
   
-  public final boolean a(Canvas paramCanvas)
+  private static AnimationDrawable g(int paramInt, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(141832);
-    boolean bool = this.iuy.a(paramCanvas);
-    AppMethodBeat.o(141832);
+    AppMethodBeat.i(135239);
+    AnimationDrawable localAnimationDrawable = new AnimationDrawable();
+    Log.i("MicroMsg.AppBrandPullDownWebView", "AnimationDrawable hash:" + localAnimationDrawable.hashCode());
+    localAnimationDrawable.setOneShot(false);
+    localAnimationDrawable.addFrame(r(paramInt, paramArrayOfFloat[0]), 0);
+    localAnimationDrawable.addFrame(r(paramInt, paramArrayOfFloat[1]), 300);
+    localAnimationDrawable.addFrame(r(paramInt, paramArrayOfFloat[2]), 300);
+    localAnimationDrawable.addFrame(r(paramInt, paramArrayOfFloat[3]), 300);
+    AppMethodBeat.o(135239);
+    return localAnimationDrawable;
+  }
+  
+  private static Drawable r(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(135240);
+    ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
+    localShapeDrawable.setIntrinsicHeight(32);
+    localShapeDrawable.setIntrinsicWidth(32);
+    localShapeDrawable.getPaint().setColor(paramInt);
+    localShapeDrawable.getPaint().setAlpha((int)(255.0F * paramFloat));
+    AppMethodBeat.o(135240);
+    return localShapeDrawable;
+  }
+  
+  protected final void CG(int paramInt)
+  {
+    AppMethodBeat.i(135226);
+    if (this.tyn != null) {
+      this.tyn.mn(paramInt);
+    }
+    if (!this.tyo)
+    {
+      AppMethodBeat.o(135226);
+      return;
+    }
+    removeCallbacks(this.tyv);
+    int i = paramInt;
+    if (paramInt > this.typ.getHeight()) {
+      i = this.typ.getHeight();
+    }
+    LinearLayout localLinearLayout = this.typ;
+    localLinearLayout.setTranslationY(i - localLinearLayout.getHeight());
+    AppMethodBeat.o(135226);
+  }
+  
+  protected final boolean apP()
+  {
+    AppMethodBeat.i(135228);
+    boolean bool = this.tti.apP();
+    AppMethodBeat.o(135228);
     return bool;
   }
   
-  public void addJavascriptInterface(Object paramObject, String paramString)
+  protected final void cFr()
   {
-    AppMethodBeat.i(141814);
-    this.iuy.addJavascriptInterface(paramObject, paramString);
-    AppMethodBeat.o(141814);
-  }
-  
-  public void ap(Context paramContext)
-  {
-    AppMethodBeat.i(141803);
-    this.iuy.ap(paramContext);
-    AppMethodBeat.o(141803);
-  }
-  
-  public void destroy()
-  {
-    AppMethodBeat.i(141819);
-    this.iuy.destroy();
-    AppMethodBeat.o(141819);
-  }
-  
-  public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(141815);
-    this.iuy.evaluateJavascript(paramString, paramValueCallback);
-    AppMethodBeat.o(141815);
-  }
-  
-  public int getContentHeight()
-  {
-    AppMethodBeat.i(141811);
-    int i = this.iuy.getContentHeight();
-    AppMethodBeat.o(141811);
-    return i;
-  }
-  
-  public View getContentView()
-  {
-    AppMethodBeat.i(141805);
-    View localView = this.iuy.getContentView();
-    AppMethodBeat.o(141805);
-    return localView;
-  }
-  
-  public d getFullscreenImpl()
-  {
-    AppMethodBeat.i(141829);
-    d locald = this.iuy.getFullscreenImpl();
-    AppMethodBeat.o(141829);
-    return locald;
-  }
-  
-  public int getHeight()
-  {
-    AppMethodBeat.i(141810);
-    int i = this.iuy.getHeight();
-    AppMethodBeat.o(141810);
-    return i;
-  }
-  
-  public String getUserAgentString()
-  {
-    AppMethodBeat.i(141808);
-    String str = this.iuy.getUserAgentString();
-    AppMethodBeat.o(141808);
-    return str;
-  }
-  
-  public int getWebScrollX()
-  {
-    AppMethodBeat.i(141812);
-    int i = this.iuy.getWebScrollX();
-    AppMethodBeat.o(141812);
-    return i;
-  }
-  
-  public int getWebScrollY()
-  {
-    AppMethodBeat.i(141813);
-    int i = this.iuy.getWebScrollY();
-    AppMethodBeat.o(141813);
-    return i;
-  }
-  
-  public int getWidth()
-  {
-    AppMethodBeat.i(141809);
-    int i = this.iuy.getWidth();
-    AppMethodBeat.o(141809);
-    return i;
-  }
-  
-  public View getWrapperView()
-  {
-    AppMethodBeat.i(141804);
-    View localView = this.iuy.getWrapperView();
-    AppMethodBeat.o(141804);
-    return localView;
-  }
-  
-  public final void h(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(141806);
-    this.iuy.h(paramRunnable);
-    AppMethodBeat.o(141806);
-  }
-  
-  public void onBackground()
-  {
-    AppMethodBeat.i(141822);
-    this.iuy.onBackground();
-    AppMethodBeat.o(141822);
-  }
-  
-  public void onForeground()
-  {
-    AppMethodBeat.i(141821);
-    this.iuy.onForeground();
-    AppMethodBeat.o(141821);
-  }
-  
-  public final void q(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(141827);
-    this.iuy.q(paramInt, paramLong);
-    AppMethodBeat.o(141827);
-  }
-  
-  public void setFullscreenImpl(d paramd)
-  {
-    AppMethodBeat.i(141828);
-    this.iuy.setFullscreenImpl(paramd);
-    AppMethodBeat.o(141828);
-  }
-  
-  public void setJsExceptionHandler(h paramh)
-  {
-    AppMethodBeat.i(141818);
-    this.iuy.setJsExceptionHandler(paramh);
-    AppMethodBeat.o(141818);
-  }
-  
-  public void setOnScrollChangedListener(aj paramaj)
-  {
-    AppMethodBeat.i(141823);
-    this.iuy.setOnScrollChangedListener(paramaj);
-    AppMethodBeat.o(141823);
-  }
-  
-  public void setOnTrimListener(ah paramah)
-  {
-    AppMethodBeat.i(141825);
-    this.iuy.setOnTrimListener(paramah);
-    AppMethodBeat.o(141825);
-  }
-  
-  public void setVerticalScrollBarEnabled(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141831);
-    this.iuy.setVerticalScrollBarEnabled(paramBoolean);
-    AppMethodBeat.o(141831);
-  }
-  
-  public void setWebViewLayoutListener(ag paramag)
-  {
-    AppMethodBeat.i(141824);
-    this.iuy.setWebViewLayoutListener(paramag);
-    AppMethodBeat.o(141824);
-  }
-  
-  public final void t(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(141807);
-    this.iuy.t(paramString1, paramString2);
-    AppMethodBeat.o(141807);
-  }
-  
-  public final <T extends j> T v(Class<T> paramClass)
-  {
-    AppMethodBeat.i(141820);
-    if (paramClass.isInstance(this))
-    {
-      paramClass = (j)paramClass.cast(this);
-      AppMethodBeat.o(141820);
-      return paramClass;
+    AppMethodBeat.i(135224);
+    if (this.tys == null) {
+      Log.e("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation, mLoading0 is null");
     }
-    if (paramClass.isInstance(this.iuy))
+    for (;;)
     {
-      paramClass = (j)paramClass.cast(this.iuy);
-      AppMethodBeat.o(141820);
-      return paramClass;
+      if (this.tym != null) {
+        this.tym.cDL();
+      }
+      this.tyw = System.currentTimeMillis();
+      AppMethodBeat.o(135224);
+      return;
+      if (this.tys.getDrawable() == null)
+      {
+        Log.w("MicroMsg.AppBrandPullDownWebView", "startLoadingAnimation but drawable is null, try protect");
+        cFv();
+        cFu();
+      }
+      ((AnimationDrawable)this.tys.getDrawable()).start();
+      ((AnimationDrawable)this.tyt.getDrawable()).start();
+      ((AnimationDrawable)this.tyu.getDrawable()).start();
     }
-    paramClass = this.iuy.v(paramClass);
-    AppMethodBeat.o(141820);
-    return paramClass;
   }
   
-  public final void vp()
+  protected final void cFs()
   {
-    AppMethodBeat.i(141826);
-    this.iuy.vp();
-    AppMethodBeat.o(141826);
+    AppMethodBeat.i(135225);
+    if ((this.tys == null) || (this.tys.getDrawable() == null))
+    {
+      Log.w("MicroMsg.AppBrandPullDownWebView", "stopLoadingAnimation but drawable is null, try protect");
+      AppMethodBeat.o(135225);
+      return;
+    }
+    ((AnimationDrawable)this.tys.getDrawable()).stop();
+    ((AnimationDrawable)this.tys.getDrawable()).selectDrawable(0);
+    ((AnimationDrawable)this.tyt.getDrawable()).stop();
+    ((AnimationDrawable)this.tyt.getDrawable()).selectDrawable(0);
+    ((AnimationDrawable)this.tyu.getDrawable()).stop();
+    ((AnimationDrawable)this.tyu.getDrawable()).selectDrawable(0);
+    AppMethodBeat.o(135225);
   }
   
-  public final boolean vq()
+  public final void cFt()
   {
-    AppMethodBeat.i(141830);
-    boolean bool = this.iuy.vq();
-    AppMethodBeat.o(141830);
-    return bool;
+    AppMethodBeat.i(135227);
+    long l = System.currentTimeMillis() - this.tyw;
+    if (l < 1000L)
+    {
+      postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(185196);
+          ak.this.cFq();
+          AppMethodBeat.o(185196);
+        }
+      }, 1000L - l);
+      AppMethodBeat.o(135227);
+      return;
+    }
+    cFq();
+    AppMethodBeat.o(135227);
+  }
+  
+  public final void cX(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(135231);
+    setBackgroundTextStyle(paramString);
+    setPullDownBackgroundColor(paramInt);
+    AppMethodBeat.o(135231);
+  }
+  
+  protected final int getStayHeight()
+  {
+    AppMethodBeat.i(135229);
+    int i = this.typ.getHeight();
+    AppMethodBeat.o(135229);
+    return i;
+  }
+  
+  public final void kr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(135236);
+    this.tyo = paramBoolean;
+    setNeedStay(paramBoolean);
+    View localView = this.tyr;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      AppMethodBeat.o(135236);
+      return;
+    }
+  }
+  
+  protected final void onAttachedToWindow()
+  {
+    AppMethodBeat.i(185197);
+    super.onAttachedToWindow();
+    post(this.tyv);
+    AppMethodBeat.o(185197);
+  }
+  
+  public final void setBackgroundTextStyle(String paramString)
+  {
+    AppMethodBeat.i(135232);
+    if ("light".equals(paramString))
+    {
+      if (this.tys == null) {
+        Log.w("MicroMsg.AppBrandPullDownWebView", "setupLightLoading but mLoading0 is null, try protect");
+      }
+      for (;;)
+      {
+        this.tyq.setTextColor(-1);
+        this.tyq.setAlpha(0.4F);
+        AppMethodBeat.o(135232);
+        return;
+        this.tys.setImageDrawable(g(-1, new float[] { 0.2F, 0.6F, 0.4F, 0.2F }));
+        this.tyt.setImageDrawable(g(-1, new float[] { 0.2F, 0.2F, 0.6F, 0.4F }));
+        this.tyu.setImageDrawable(g(-1, new float[] { 0.2F, 0.4F, 0.2F, 0.6F }));
+      }
+    }
+    if (("dark".equals(paramString)) || (!"ignore".equals(paramString)))
+    {
+      cFv();
+      cFu();
+    }
+    AppMethodBeat.o(135232);
+  }
+  
+  public final void setHeadViewHeight(int paramInt)
+  {
+    AppMethodBeat.i(135230);
+    if (paramInt <= this.typ.getHeight())
+    {
+      AppMethodBeat.o(135230);
+      return;
+    }
+    this.typ.getLayoutParams().height = paramInt;
+    this.typ.requestLayout();
+    AppMethodBeat.o(135230);
+  }
+  
+  public final void setOnPullDownListener(a parama)
+  {
+    this.tym = parama;
+  }
+  
+  public final void setOnPullDownOffsetListener(b paramb)
+  {
+    this.tyn = paramb;
+  }
+  
+  public final void setPullDownText(String paramString)
+  {
+    AppMethodBeat.i(135235);
+    if (Util.isNullOrNil(paramString))
+    {
+      this.tyq.setVisibility(8);
+      AppMethodBeat.o(135235);
+      return;
+    }
+    this.tyq.setVisibility(0);
+    this.tyq.setText(paramString);
+    AppMethodBeat.o(135235);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cDL();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void mn(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ak
  * JD-Core Version:    0.7.0.1
  */

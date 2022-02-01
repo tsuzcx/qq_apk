@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/oes" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.kandian.base.imagecrop.UCropView android:id="@id/nhq" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="320.0dip" ucropview:ucrop_frame_color="@color/al3" ucropview:ucrop_frame_stroke_size="1.0dip" ucropview:ucrop_show_frame="true" ucropview:ucrop_show_grid="false" xmlns:ucropview="http://schemas.android.com/apk/res-auto" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff737373" android:id="@id/bwi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="未在相册找到图片内容" android:layout_centerInParent="true" />
+        <android.support.v7.widget.RecyclerView android:id="@id/nhr" android:background="@color/black" android:padding="8.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <com.tencent.mobileqq.kandian.base.view.widget.AlbumPermissionView android:id="@id/7h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

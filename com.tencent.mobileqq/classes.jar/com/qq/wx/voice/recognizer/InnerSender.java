@@ -26,29 +26,23 @@ public class InnerSender
   private static byte[] a(TRSilk paramTRSilk, a parama)
   {
     if (!InfoRecognizer.k) {
-      parama = parama.a;
+      return parama.a;
     }
-    for (;;)
+    Object localObject = null;
+    try
     {
-      return parama;
-      try
-      {
-        paramTRSilk = paramTRSilk.silkEncode(parama.a, 0, parama.a.length);
-        parama = paramTRSilk;
-        if (paramTRSilk != null) {
-          continue;
-        }
-        return new byte[0];
-      }
-      catch (TRSilkException paramTRSilk)
-      {
-        for (;;)
-        {
-          paramTRSilk.printStackTrace();
-          paramTRSilk = null;
-        }
-      }
+      paramTRSilk = paramTRSilk.silkEncode(parama.a, 0, parama.a.length);
     }
+    catch (TRSilkException paramTRSilk)
+    {
+      paramTRSilk.printStackTrace();
+      paramTRSilk = localObject;
+    }
+    parama = paramTRSilk;
+    if (paramTRSilk == null) {
+      parama = new byte[0];
+    }
+    return parama;
   }
   
   private void c()
@@ -67,8 +61,9 @@ public class InnerSender
   
   protected final void a()
   {
-    if (this.i != null) {
-      this.i.b();
+    InnerHttp localInnerHttp = this.i;
+    if (localInnerHttp != null) {
+      localInnerHttp.b();
     }
     this.a = false;
   }
@@ -108,126 +103,134 @@ public class InnerSender
     TRSilk localTRSilk = new TRSilk();
     localTRSilk.silkInit();
     this.c = Math.max(this.c, this.b / InfoRecorder.b);
-    LogTool.d("mMergeNum = " + this.c);
+    Object localObject1 = new StringBuilder("mMergeNum = ");
+    ((StringBuilder)localObject1).append(this.c);
+    LogTool.d(((StringBuilder)localObject1).toString());
     long l = -1L;
-    if (!this.a) {}
-    label68:
-    Object localObject1;
     for (;;)
     {
+      int i2;
+      int i3;
+      int m;
+      Object localObject3;
+      if (this.a)
+      {
+        boolean bool = this.i.d();
+        i2 = 1;
+        i3 = 0;
+        if ((!bool) && (!this.h.isEmpty()))
+        {
+          localObject1 = (InnerSender.a)this.h.removeFirst();
+          if (((InnerSender.a)localObject1).c == InnerAudioState.cancel)
+          {
+            localObject1 = new VoiceRecognizerResult(true);
+            ((VoiceRecognizerResult)localObject1).isAllEnd = true;
+            InfoRecognizer.b.a((VoiceRecognizerResult)localObject1);
+            this.a = false;
+          }
+          else
+          {
+            if (((InnerSender.a)localObject1).c == InnerAudioState.begin)
+            {
+              this.i.a();
+              this.i.a(((InnerSender.a)localObject1).d);
+            }
+            if (((InnerSender.a)localObject1).c == InnerAudioState.end)
+            {
+              this.i.b(((InnerSender.a)localObject1).d);
+              m = 1;
+            }
+            else
+            {
+              m = 0;
+            }
+            if (((InnerSender.a)localObject1).c == InnerAudioState.stop)
+            {
+              this.i.b(((InnerSender.a)localObject1).d);
+              this.i.c();
+              m = 1;
+            }
+            this.i.a(((InnerSender.a)localObject1).a, ((InnerSender.a)localObject1).b, m);
+            l = System.currentTimeMillis();
+            if (InfoRecognizer.n) {
+              this.i.e();
+            } else {
+              new Thread(this.i).start();
+            }
+            if (((InnerSender.a)localObject1).c != InnerAudioState.middle)
+            {
+              localObject3 = new StringBuilder("offset = ");
+              ((StringBuilder)localObject3).append(((InnerSender.a)localObject1).d);
+              ((StringBuilder)localObject3).append(" state = ");
+              ((StringBuilder)localObject3).append(((InnerSender.a)localObject1).c);
+              LogTool.d(((StringBuilder)localObject3).toString());
+            }
+            if (((InnerSender.a)localObject1).c == InnerAudioState.stop) {
+              this.a = false;
+            }
+          }
+        }
+        else
+        {
+          if ((!this.i.d()) || (l == -1L) || (System.currentTimeMillis() - l <= this.j)) {
+            break label444;
+          }
+          InfoRecognizer.b.b(-201);
+          this.a = false;
+        }
+      }
       localTRSilk.silkRelease();
       return;
-      if ((this.i.d()) || (this.h.isEmpty())) {
-        break label356;
-      }
-      localObject1 = (InnerSender.a)this.h.removeFirst();
-      if (((InnerSender.a)localObject1).c != InnerAudioState.cancel) {
-        break;
-      }
-      localObject1 = new VoiceRecognizerResult(true);
-      ((VoiceRecognizerResult)localObject1).isAllEnd = true;
-      InfoRecognizer.b.a((VoiceRecognizerResult)localObject1);
-      this.a = false;
-    }
-    if (((InnerSender.a)localObject1).c == InnerAudioState.begin)
-    {
-      this.i.a();
-      this.i.a(((InnerSender.a)localObject1).d);
-    }
-    if (((InnerSender.a)localObject1).c == InnerAudioState.end) {
-      this.i.b(((InnerSender.a)localObject1).d);
-    }
-    label432:
-    label453:
-    label474:
-    label605:
-    label610:
-    for (int m = 1;; m = 0)
-    {
-      if (((InnerSender.a)localObject1).c == InnerAudioState.stop)
-      {
-        this.i.b(((InnerSender.a)localObject1).d);
-        this.i.c();
-        m = 1;
-      }
-      this.i.a(((InnerSender.a)localObject1).a, ((InnerSender.a)localObject1).b, m);
-      l = System.currentTimeMillis();
-      if (InfoRecognizer.n) {
-        this.i.e();
-      }
-      for (;;)
-      {
-        if (((InnerSender.a)localObject1).c != InnerAudioState.middle) {
-          LogTool.d("offset = " + ((InnerSender.a)localObject1).d + " state = " + ((InnerSender.a)localObject1).c);
-        }
-        if (((InnerSender.a)localObject1).c != InnerAudioState.stop) {
-          break;
-        }
-        this.a = false;
-        break label68;
-        new Thread(this.i).start();
-      }
-      label356:
-      if ((this.i.d()) && (l != -1L) && (System.currentTimeMillis() - l > this.j))
-      {
-        InfoRecognizer.b.b(-201);
-        this.a = false;
-        break label68;
-      }
+      label444:
       int n;
       int i1;
-      int i2;
-      if (!this.g.isEmpty()) {
-        if (this.g.size() >= this.c)
-        {
-          m = 1;
-          if (((InnerSender.a)this.g.getFirst()).c != InnerAudioState.cancel) {
-            break label600;
-          }
-          n = 1;
-          if (((InnerSender.a)this.g.getLast()).c != InnerAudioState.end) {
-            break label605;
-          }
-          i1 = 1;
-          if (((InnerSender.a)this.g.getLast()).c != InnerAudioState.stop) {
-            break label610;
-          }
-          i2 = 1;
-        }
-      }
-      label496:
-      for (m = i2 | m | 0x0 | n | i1;; m = 0)
+      if (!this.g.isEmpty())
       {
-        if (m != 0)
-        {
-          if (((InnerSender.a)this.g.getFirst()).c == InnerAudioState.cancel)
-          {
-            localObject1 = (InnerSender.a)this.g.removeFirst();
-            this.h.add(localObject1);
-            if (this.f == null) {
-              break label805;
-            }
-            this.g.add(this.f);
-            this.d += this.f.b;
-            this.f = null;
-            break;
-            m = 0;
-            break label432;
-            n = 0;
-            break label453;
-            i1 = 0;
-            break label474;
-            i2 = 0;
-            break label496;
-          }
-          localObject1 = InnerAudioState.middle;
-          if (((InnerSender.a)this.g.getFirst()).c != InnerAudioState.begin) {
-            break label1312;
-          }
-          localObject1 = InnerAudioState.begin;
+        if (this.g.size() >= this.c) {
+          m = 1;
+        } else {
+          m = 0;
         }
-        for (m = ((InnerSender.a)this.g.getFirst()).d;; m = 0)
+        if (((InnerSender.a)this.g.getFirst()).c == InnerAudioState.cancel) {
+          n = 1;
+        } else {
+          n = 0;
+        }
+        if (((InnerSender.a)this.g.getLast()).c == InnerAudioState.end) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        if (((InnerSender.a)this.g.getLast()).c != InnerAudioState.stop) {
+          i2 = 0;
+        }
+        m = m | 0x0 | n | i1 | i2;
+      }
+      else
+      {
+        m = 0;
+      }
+      InnerSender.a locala;
+      Object localObject2;
+      if (m != 0)
+      {
+        if (((InnerSender.a)this.g.getFirst()).c == InnerAudioState.cancel)
         {
+          localObject1 = (InnerSender.a)this.g.removeFirst();
+          this.h.add(localObject1);
+        }
+        else
+        {
+          localObject1 = InnerAudioState.middle;
+          if (((InnerSender.a)this.g.getFirst()).c == InnerAudioState.begin)
+          {
+            localObject1 = InnerAudioState.begin;
+            m = ((InnerSender.a)this.g.getFirst()).d;
+          }
+          else
+          {
+            m = 0;
+          }
           if (((InnerSender.a)this.g.getLast()).c == InnerAudioState.end)
           {
             localObject1 = InnerAudioState.end;
@@ -238,115 +241,121 @@ public class InnerSender
             localObject1 = InnerAudioState.stop;
             m = ((InnerSender.a)this.g.getLast()).d;
           }
-          for (;;)
+          try
           {
+            localObject3 = new ByteArrayOutputStream();
+            n = i3;
             for (;;)
             {
-              Object localObject3;
-              try
+              if (this.g.isEmpty())
               {
-                localObject3 = new ByteArrayOutputStream();
-                n = 0;
-                if (!this.g.isEmpty()) {
-                  break label807;
-                }
                 ((ByteArrayOutputStream)localObject3).flush();
                 localObject1 = new InnerSender.a(((ByteArrayOutputStream)localObject3).toByteArray(), n, (InnerAudioState)localObject1, m);
                 this.h.add(localObject1);
                 ((ByteArrayOutputStream)localObject3).close();
+                break;
               }
-              catch (IOException localIOException1)
-              {
-                localIOException1.printStackTrace();
-              }
-              break label552;
-              break;
-              InnerSender.a locala = (InnerSender.a)this.g.removeFirst();
+              locala = (InnerSender.a)this.g.removeFirst();
               ((ByteArrayOutputStream)localObject3).write(locala.a);
               i1 = locala.b;
-              n = i1 + n;
-              continue;
-              Object localObject2 = this.k.b();
-              if (localObject2 != null)
-              {
-                if (((a)localObject2).b == InnerAudioState.cancel)
-                {
-                  localObject2 = new InnerSender.a(null, 0, ((a)localObject2).b, ((a)localObject2).c);
-                  this.g.add(localObject2);
-                  break;
-                }
-                if (((a)localObject2).b == InnerAudioState.begin)
-                {
-                  localTRSilk.silkRelease();
-                  localTRSilk.silkInit();
-                  this.d = 0;
-                  this.f = null;
-                }
-                localObject3 = a(localTRSilk, (a)localObject2);
-                if ((((a)localObject2).b == InnerAudioState.middle) && (this.d >= this.e))
-                {
-                  locala = new InnerSender.a((byte[])localObject3, ((a)localObject2).a.length, InnerAudioState.end, ((a)localObject2).c);
-                  this.g.add(locala);
-                  localTRSilk.silkRelease();
-                  localTRSilk.silkInit();
-                  this.d = 0;
-                  this.f = new InnerSender.a(a(localTRSilk, (a)localObject2), ((a)localObject2).a.length, InnerAudioState.begin, ((a)localObject2).c);
-                  LogTool.d("sentence is force cutted and rebegin");
-                }
-                for (;;)
-                {
-                  try
-                  {
-                    if ((InfoRecognizer.g) || (InfoRecognizer.h))
-                    {
-                      InfoRecognizer.l.write(((a)localObject2).a);
-                      if (((a)localObject2).b == InnerAudioState.begin) {
-                        InfoRecognizer.l.reset();
-                      }
-                      if ((((a)localObject2).b == InnerAudioState.end) || (((a)localObject2).b == InnerAudioState.stop))
-                      {
-                        InfoRecognizer.l.flush();
-                        if (InfoRecognizer.h) {
-                          Common.saveFile(InfoRecognizer.l.toByteArray(), "pcm");
-                        }
-                      }
-                    }
-                    if ((!InfoRecognizer.g) && (!InfoRecognizer.i)) {
-                      break;
-                    }
-                    InfoRecognizer.m.write((byte[])localObject3);
-                    if (((a)localObject2).b == InnerAudioState.begin) {
-                      InfoRecognizer.m.reset();
-                    }
-                    if ((((a)localObject2).b != InnerAudioState.end) && (((a)localObject2).b != InnerAudioState.stop)) {
-                      break;
-                    }
-                    InfoRecognizer.m.flush();
-                    if (!InfoRecognizer.i) {
-                      break;
-                    }
-                    Common.saveFile(InfoRecognizer.m.toByteArray(), "Silk");
-                  }
-                  catch (IOException localIOException2)
-                  {
-                    localIOException2.printStackTrace();
-                  }
-                  break;
-                  locala = new InnerSender.a((byte[])localObject3, localIOException2.a.length, localIOException2.b, localIOException2.c);
-                  this.g.add(locala);
-                  this.d += localIOException2.a.length;
-                }
-              }
-              try
-              {
-                c();
-              }
-              catch (InterruptedException localInterruptedException)
-              {
-                localInterruptedException.printStackTrace();
-              }
+              n += i1;
             }
-            break;
+            localObject2 = this.f;
+          }
+          catch (IOException localIOException1)
+          {
+            localIOException1.printStackTrace();
+          }
+        }
+        if (localObject2 != null)
+        {
+          this.g.add(localObject2);
+          this.d += this.f.b;
+          this.f = null;
+        }
+      }
+      else
+      {
+        localObject2 = this.k.b();
+        if (localObject2 != null)
+        {
+          if (((a)localObject2).b == InnerAudioState.cancel)
+          {
+            localObject2 = new InnerSender.a(null, 0, ((a)localObject2).b, ((a)localObject2).c);
+            this.g.add(localObject2);
+          }
+          else
+          {
+            if (((a)localObject2).b == InnerAudioState.begin)
+            {
+              localTRSilk.silkRelease();
+              localTRSilk.silkInit();
+              this.d = 0;
+              this.f = null;
+            }
+            localObject3 = a(localTRSilk, (a)localObject2);
+            if ((((a)localObject2).b == InnerAudioState.middle) && (this.d >= this.e))
+            {
+              locala = new InnerSender.a((byte[])localObject3, ((a)localObject2).a.length, InnerAudioState.end, ((a)localObject2).c);
+              this.g.add(locala);
+              localTRSilk.silkRelease();
+              localTRSilk.silkInit();
+              this.d = 0;
+              this.f = new InnerSender.a(a(localTRSilk, (a)localObject2), ((a)localObject2).a.length, InnerAudioState.begin, ((a)localObject2).c);
+              LogTool.d("sentence is force cutted and rebegin");
+            }
+            else
+            {
+              locala = new InnerSender.a((byte[])localObject3, ((a)localObject2).a.length, ((a)localObject2).b, ((a)localObject2).c);
+              this.g.add(locala);
+              this.d += ((a)localObject2).a.length;
+            }
+            try
+            {
+              if ((InfoRecognizer.g) || (InfoRecognizer.h))
+              {
+                InfoRecognizer.l.write(((a)localObject2).a);
+                if (((a)localObject2).b == InnerAudioState.begin) {
+                  InfoRecognizer.l.reset();
+                }
+                if ((((a)localObject2).b == InnerAudioState.end) || (((a)localObject2).b == InnerAudioState.stop))
+                {
+                  InfoRecognizer.l.flush();
+                  if (InfoRecognizer.h) {
+                    Common.saveFile(InfoRecognizer.l.toByteArray(), "pcm");
+                  }
+                }
+              }
+              if ((!InfoRecognizer.g) && (!InfoRecognizer.i)) {
+                continue;
+              }
+              InfoRecognizer.m.write((byte[])localObject3);
+              if (((a)localObject2).b == InnerAudioState.begin) {
+                InfoRecognizer.m.reset();
+              }
+              if ((((a)localObject2).b != InnerAudioState.end) && (((a)localObject2).b != InnerAudioState.stop)) {
+                continue;
+              }
+              InfoRecognizer.m.flush();
+              if (!InfoRecognizer.i) {
+                continue;
+              }
+              Common.saveFile(InfoRecognizer.m.toByteArray(), "Silk");
+            }
+            catch (IOException localIOException2)
+            {
+              localIOException2.printStackTrace();
+            }
+          }
+        }
+        else {
+          try
+          {
+            c();
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
           }
         }
       }
@@ -355,7 +364,7 @@ public class InnerSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.InnerSender
  * JD-Core Version:    0.7.0.1
  */

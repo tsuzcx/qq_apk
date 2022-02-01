@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.order;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.order.a.b;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
     return null;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(43722);
-    com.tencent.mm.plugin.order.a.b localb = new com.tencent.mm.plugin.order.a.b();
-    AppMethodBeat.o(43722);
+    AppMethodBeat.i(66630);
+    b localb = new b();
+    AppMethodBeat.o(66630);
     return localb;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

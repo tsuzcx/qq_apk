@@ -10,20 +10,13 @@ public final class UploadTouchuanReq
   extends JceStruct
   implements Cloneable
 {
-  static byte[] cache_vReqData;
+  static byte[] cache_vReqData = (byte[])new byte[1];
   public int iUploadType = 0;
   public byte[] vReqData = null;
   
   static
   {
-    if (!UploadTouchuanReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_vReqData = (byte[])new byte[1];
-      ((byte[])cache_vReqData)[0] = 0;
-      return;
-    }
+    ((byte[])cache_vReqData)[0] = 0;
   }
   
   public UploadTouchuanReq() {}
@@ -41,18 +34,17 @@ public final class UploadTouchuanReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -71,13 +63,20 @@ public final class UploadTouchuanReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UploadTouchuanReq)paramObject;
-    } while ((!JceUtil.equals(this.iUploadType, paramObject.iUploadType)) || (!JceUtil.equals(this.vReqData, paramObject.vReqData)));
-    return true;
+    }
+    paramObject = (UploadTouchuanReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iUploadType, paramObject.iUploadType))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.vReqData, paramObject.vReqData)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -132,7 +131,7 @@ public final class UploadTouchuanReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.UploadTouchuanReq
  * JD-Core Version:    0.7.0.1
  */

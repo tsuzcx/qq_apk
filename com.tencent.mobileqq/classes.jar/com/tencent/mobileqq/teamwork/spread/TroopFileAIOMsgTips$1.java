@@ -1,71 +1,86 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aoyo;
-import aoyr;
-import ayzl;
-import bajf;
-import bajq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigBean;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigProcessor;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TroopFileAIOMsgTips$1
+class TroopFileAIOMsgTips$1
   implements Runnable
 {
-  public TroopFileAIOMsgTips$1(bajq parambajq, bajf parambajf) {}
+  TroopFileAIOMsgTips$1(TroopFileAIOMsgTips paramTroopFileAIOMsgTips, BaseTimAIOTipsProcessor.ListResult paramListResult) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "sub Thread getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
-    }
-    long l1 = ayzl.a();
-    ArrayList localArrayList = new ArrayList();
-    int i = aoyr.a().a();
-    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2017 }, i);
-    if ((localList == null) || (localList.size() == 0))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileAIOMsgTips", 1, "current AIO has not File,peerType[" + this.this$0.jdField_a_of_type_Int + "]");
-      }
-      this.a.a(localArrayList);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("sub Thread getWordsList by TroopFile[");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("TroopFileAIOMsgTips", 1, ((StringBuilder)localObject1).toString());
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "current AIO msg count[" + localList.size() + "]");
-    }
-    long l2 = aoyr.a().c() * 3600;
-    i = 0;
-    if (i < localList.size())
+    long l1 = MessageCache.c();
+    Object localObject1 = new ArrayList();
+    int i = TencentDocTipsConfigProcessor.a().b();
+    Object localObject2 = this.this$0.a.getMessageFacade().a(this.this$0.b, 1, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2017 }, i);
+    if ((localObject2 != null) && (((List)localObject2).size() != 0))
     {
-      Object localObject = (MessageRecord)localList.get(i);
-      if (!(localObject instanceof MessageForTroopFile)) {}
-      for (;;)
+      Object localObject3;
+      if (QLog.isColorLevel())
       {
-        i += 1;
-        break;
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq != ((MessageRecord)localObject).uniseq) && (new bajq(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject, this.this$0.jdField_a_of_type_Bajk).a()))
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("current AIO msg count[");
+        ((StringBuilder)localObject3).append(((List)localObject2).size());
+        ((StringBuilder)localObject3).append("]");
+        QLog.i("TroopFileAIOMsgTips", 1, ((StringBuilder)localObject3).toString());
+      }
+      long l2 = TencentDocTipsConfigProcessor.a().d() * 3600;
+      i = 0;
+      while (i < ((List)localObject2).size())
+      {
+        localObject3 = (MessageRecord)((List)localObject2).get(i);
+        if (((localObject3 instanceof MessageForTroopFile)) && (this.this$0.d.uniseq != ((MessageRecord)localObject3).uniseq) && (new TroopFileAIOMsgTips(this.this$0.a, (ChatMessage)localObject3, this.this$0.e).b()))
         {
-          localObject = (MessageForTroopFile)localObject;
-          if (l1 - ((MessageForTroopFile)localObject).time <= l2) {
-            localArrayList.add(((MessageForTroopFile)localObject).fileName);
+          localObject3 = (MessageForTroopFile)localObject3;
+          if (l1 - ((MessageForTroopFile)localObject3).time <= l2) {
+            ((List)localObject1).add(((MessageForTroopFile)localObject3).fileName);
           }
         }
+        i += 1;
       }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("find file msg count[");
+        ((StringBuilder)localObject2).append(((List)localObject1).size());
+        ((StringBuilder)localObject2).append("]");
+        QLog.i("TroopFileAIOMsgTips", 1, ((StringBuilder)localObject2).toString());
+      }
+      this.a.a((List)localObject1);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "find file msg count[" + localArrayList.size() + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("current AIO has not File,peerType[");
+      ((StringBuilder)localObject2).append(this.this$0.c);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("TroopFileAIOMsgTips", 1, ((StringBuilder)localObject2).toString());
     }
-    this.a.a(localArrayList);
+    this.a.a((List)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1
  * JD-Core Version:    0.7.0.1
  */

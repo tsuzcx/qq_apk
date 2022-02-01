@@ -29,7 +29,7 @@ public class SkinnableNinePatchDrawable
   public SkinnableNinePatchDrawable(Resources paramResources, Bitmap paramBitmap, byte[] paramArrayOfByte, Rect paramRect, String paramString)
   {
     this(new SkinnableNinePatchDrawable.a(new NinePatch(paramBitmap, paramArrayOfByte, paramString), paramBitmap, paramRect), paramResources);
-    this.b.q = this.f;
+    this.b.f = this.f;
   }
   
   @Deprecated
@@ -46,11 +46,11 @@ public class SkinnableNinePatchDrawable
   private void a()
   {
     b();
-    if (this.b.k != null)
+    if (this.b.mImageSizeWhenOOM != null)
     {
-      localObject = this.b.k;
-      this.g = a.a(localObject[0], localObject[2], this.f);
-      this.g = a.a(localObject[1], localObject[2], this.f);
+      localObject = this.b.mImageSizeWhenOOM;
+      this.g = BaseConstantState.scaleFromDensity(localObject[0], localObject[2], this.f);
+      this.g = BaseConstantState.scaleFromDensity(localObject[1], localObject[2], this.f);
       this.d.set(0, 0, 0, 0);
       return;
     }
@@ -62,134 +62,126 @@ public class SkinnableNinePatchDrawable
       this.h = this.c.getHeight();
       return;
     }
-    this.g = a.a(this.c.getWidth(), i, j);
-    this.h = a.a(this.c.getHeight(), i, j);
+    this.g = BaseConstantState.scaleFromDensity(this.c.getWidth(), i, j);
+    this.h = BaseConstantState.scaleFromDensity(this.c.getHeight(), i, j);
     Rect localRect1 = this.d;
-    Rect localRect2 = this.b.m;
+    Rect localRect2 = this.b.b;
     Object localObject = localRect1;
     if (localRect1 == localRect2)
     {
       localObject = new Rect(localRect2);
       this.d = ((Rect)localObject);
     }
-    ((Rect)localObject).left = a.a(localRect2.left, i, j);
-    ((Rect)localObject).top = a.a(localRect2.top, i, j);
-    ((Rect)localObject).right = a.a(localRect2.right, i, j);
-    ((Rect)localObject).bottom = a.a(localRect2.bottom, i, j);
+    ((Rect)localObject).left = BaseConstantState.scaleFromDensity(localRect2.left, i, j);
+    ((Rect)localObject).top = BaseConstantState.scaleFromDensity(localRect2.top, i, j);
+    ((Rect)localObject).right = BaseConstantState.scaleFromDensity(localRect2.right, i, j);
+    ((Rect)localObject).bottom = BaseConstantState.scaleFromDensity(localRect2.bottom, i, j);
   }
   
   private void a(SkinnableNinePatchDrawable.a parama, Resources paramResources)
   {
     this.b = parama;
-    this.c = parama.l;
-    this.d = parama.m;
-    if (paramResources != null) {}
-    for (int i = paramResources.getDisplayMetrics().densityDpi;; i = parama.q)
-    {
-      this.f = i;
-      if (true != parama.o) {
-        setDither(parama.o);
-      }
-      if (this.c != null) {
-        a();
-      }
-      return;
+    this.c = parama.a;
+    this.d = parama.b;
+    int i;
+    if (paramResources != null) {
+      i = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      i = parama.f;
+    }
+    this.f = i;
+    if (true != parama.d) {
+      setDither(parama.d);
+    }
+    if (this.c != null) {
+      a();
     }
   }
   
   private void b()
   {
-    if (this.c != this.b.l)
+    if (this.c != this.b.a)
     {
-      this.c = this.b.l;
-      this.d = this.b.m;
-      if (this.b.k != null)
+      this.c = this.b.a;
+      this.d = this.b.b;
+      if (this.b.mImageSizeWhenOOM != null)
       {
-        localObject = this.b.k;
-        this.g = a.a(localObject[0], localObject[2], this.f);
-        this.g = a.a(localObject[1], localObject[2], this.f);
+        localObject = this.b.mImageSizeWhenOOM;
+        this.g = BaseConstantState.scaleFromDensity(localObject[0], localObject[2], this.f);
+        this.g = BaseConstantState.scaleFromDensity(localObject[1], localObject[2], this.f);
         this.d.set(0, 0, 0, 0);
+        return;
       }
+      int i = this.c.getDensity();
+      int j = this.f;
+      if (i == j)
+      {
+        this.g = this.c.getWidth();
+        this.h = this.c.getHeight();
+        return;
+      }
+      this.g = BaseConstantState.scaleFromDensity(this.c.getWidth(), i, j);
+      this.h = BaseConstantState.scaleFromDensity(this.c.getHeight(), i, j);
+      Rect localRect1 = this.d;
+      Rect localRect2 = this.b.b;
+      Object localObject = localRect1;
+      if (localRect1 == localRect2)
+      {
+        localObject = new Rect(localRect2);
+        this.d = ((Rect)localObject);
+      }
+      ((Rect)localObject).left = BaseConstantState.scaleFromDensity(localRect2.left, i, j);
+      ((Rect)localObject).top = BaseConstantState.scaleFromDensity(localRect2.top, i, j);
+      ((Rect)localObject).right = BaseConstantState.scaleFromDensity(localRect2.right, i, j);
+      ((Rect)localObject).bottom = BaseConstantState.scaleFromDensity(localRect2.bottom, i, j);
     }
-    else
-    {
-      return;
-    }
-    int i = this.c.getDensity();
-    int j = this.f;
-    if (i == j)
-    {
-      this.g = this.c.getWidth();
-      this.h = this.c.getHeight();
-      return;
-    }
-    this.g = a.a(this.c.getWidth(), i, j);
-    this.h = a.a(this.c.getHeight(), i, j);
-    Rect localRect1 = this.d;
-    Rect localRect2 = this.b.m;
-    Object localObject = localRect1;
-    if (localRect1 == localRect2)
-    {
-      localObject = new Rect(localRect2);
-      this.d = ((Rect)localObject);
-    }
-    ((Rect)localObject).left = a.a(localRect2.left, i, j);
-    ((Rect)localObject).top = a.a(localRect2.top, i, j);
-    ((Rect)localObject).right = a.a(localRect2.right, i, j);
-    ((Rect)localObject).bottom = a.a(localRect2.bottom, i, j);
   }
   
   boolean a(Rect paramRect)
   {
-    if (this.b.n == null) {
+    if (this.b.c == null) {
       return false;
     }
-    paramRect.set(this.b.n);
+    paramRect.set(this.b.c);
     return true;
   }
   
   public void draw(Canvas paramCanvas)
   {
     b();
-    if (this.b.k != null) {}
-    for (;;)
-    {
+    if (this.b.mImageSizeWhenOOM != null) {
       return;
-      Rect localRect = getBounds();
-      try
-      {
-        this.c.draw(paramCanvas, localRect, this.b.s);
-        if (!this.b.j) {
-          continue;
-        }
-        paramCanvas.drawRect(localRect, a.b);
-        paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, a.a);
-        paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, a.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    }
+    Rect localRect = getBounds();
+    try
+    {
+      this.c.draw(paramCanvas, localRect, this.b.h);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if (this.b.hasProblem)
+    {
+      paramCanvas.drawRect(localRect, BaseConstantState.sColorPaint);
+      paramCanvas.drawLine(localRect.left, localRect.top, localRect.right, localRect.bottom, BaseConstantState.sPaint);
+      paramCanvas.drawLine(localRect.right, localRect.top, localRect.left, localRect.bottom, BaseConstantState.sPaint);
     }
   }
   
   public Bitmap getBitmap()
   {
-    return this.b.r;
+    return this.b.g;
   }
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.b.p;
+    return super.getChangingConfigurations() | this.b.e;
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    this.b.p = super.getChangingConfigurations();
+    this.b.e = super.getChangingConfigurations();
     return this.b;
   }
   
@@ -220,10 +212,11 @@ public class SkinnableNinePatchDrawable
   public int getOpacity()
   {
     b();
-    if ((this.c == null) || (this.c.hasAlpha()) || (this.b.s.getAlpha() < 255)) {
-      return -3;
+    NinePatch localNinePatch = this.c;
+    if ((localNinePatch != null) && (!localNinePatch.hasAlpha()) && (this.b.h.getAlpha() >= 255)) {
+      return -1;
     }
-    return -1;
+    return -3;
   }
   
   public boolean getPadding(Rect paramRect)
@@ -235,16 +228,17 @@ public class SkinnableNinePatchDrawable
   
   public Paint getPaint()
   {
-    return this.b.s;
+    return this.b.h;
   }
   
   public Region getTransparentRegion()
   {
     b();
-    if (this.c == null) {
+    NinePatch localNinePatch = this.c;
+    if (localNinePatch == null) {
       return null;
     }
-    return this.c.getTransparentRegion(getBounds());
+    return localNinePatch.getTransparentRegion(getBounds());
   }
   
   public Drawable mutate()
@@ -296,7 +290,7 @@ public class SkinnableNinePatchDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.SkinnableNinePatchDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public final class SQLiteDirectCursorDriver
   
   public final Cursor query(SQLiteDatabase.CursorFactory paramCursorFactory, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(12570);
+    AppMethodBeat.i(3256);
     Object localObject = paramCursorFactory;
     if (paramCursorFactory == null) {
       localObject = DEFAULT_FACTORY;
@@ -42,7 +42,7 @@ public final class SQLiteDirectCursorDriver
       paramCursorFactory = paramArrayOfObject;
       localObject = ((SQLiteDatabase.CursorFactory)localObject).newCursor(this.mDatabase, this, this.mEditTable, paramArrayOfObject);
       this.mQuery = paramArrayOfObject;
-      AppMethodBeat.o(12570);
+      AppMethodBeat.o(3256);
       return localObject;
     }
     catch (RuntimeException paramArrayOfObject)
@@ -50,29 +50,29 @@ public final class SQLiteDirectCursorDriver
       if (paramCursorFactory != null) {
         paramCursorFactory.close();
       }
-      AppMethodBeat.o(12570);
+      AppMethodBeat.o(3256);
       throw paramArrayOfObject;
     }
   }
   
   public final void setBindArguments(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12571);
+    AppMethodBeat.i(3257);
     this.mQuery.bindAllArgsAsStrings(paramArrayOfString);
-    AppMethodBeat.o(12571);
+    AppMethodBeat.o(3257);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(12572);
+    AppMethodBeat.i(3258);
     String str = "SQLiteDirectCursorDriver: " + this.mSql;
-    AppMethodBeat.o(12572);
+    AppMethodBeat.o(3258);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteDirectCursorDriver
  * JD-Core Version:    0.7.0.1
  */

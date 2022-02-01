@@ -8,225 +8,253 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.a.c;
 import com.tencent.mm.model.a.e;
-import com.tencent.mm.model.a.f;
 import com.tencent.mm.model.a.g;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.ui.SnsNotInterestUI;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
+  private static boolean PKd;
+  private static String PKe;
+  private static View.OnClickListener PKf;
+  private static int PKg;
+  private static int PKh;
+  private static long PKi;
+  private static View PKj;
+  private static b PKk;
+  private static NotInterestMenu.c PKl;
+  private static IListener PKm;
+  private static IListener PKn;
   private static Context context;
-  private static View.OnClickListener qXA;
-  private static int qXB;
-  private static int qXC;
-  private static long qXD;
-  private static View qXE;
-  private static b qXF;
-  private static NotInterestMenu.c qXG;
-  private static com.tencent.mm.sdk.b.c qXH;
-  private static com.tencent.mm.sdk.b.c qXI;
-  private static boolean qXy;
-  private static String qXz;
   
   static
   {
-    AppMethodBeat.i(35662);
-    qXy = false;
-    qXz = "0";
-    qXA = null;
-    qXB = -1;
-    qXC = -1;
-    qXD = 0L;
-    qXE = null;
-    qXF = null;
-    qXG = null;
+    AppMethodBeat.i(94936);
+    PKd = false;
+    PKe = "0";
+    PKf = null;
+    PKg = -1;
+    PKh = -1;
+    PKi = 0L;
+    PKj = null;
+    PKk = null;
+    PKl = null;
     context = null;
-    qXH = new a.1();
-    qXI = new a.2();
-    AppMethodBeat.o(35662);
+    PKm = new NotInteresetABTestManager.1(com.tencent.mm.app.f.hfK);
+    PKn = new NotInteresetABTestManager.2(com.tencent.mm.app.f.hfK);
+    AppMethodBeat.o(94936);
   }
   
-  public static void a(Context paramContext, n paramn)
+  public static void a(Context paramContext, SnsInfo paramSnsInfo)
   {
     int i = 2;
-    AppMethodBeat.i(35653);
+    AppMethodBeat.i(94927);
     Intent localIntent;
-    if ((qXy) && (paramn != null) && (paramContext != null))
+    if ((PKd) && (paramSnsInfo != null) && (paramContext != null))
     {
-      qXD = paramn.field_snsId;
-      a(paramn);
+      PKi = paramSnsInfo.field_snsId;
+      b(paramSnsInfo);
       localIntent = new Intent(paramContext, SnsNotInterestUI.class);
-      localIntent.putExtra("sns_info_svr_id", qXD);
-      if ((!qXy) || (bo.isNullOrNil(qXz))) {
-        break label155;
+      localIntent.putExtra("sns_info_svr_id", PKi);
+      if ((!PKd) || (Util.isNullOrNil(PKe))) {
+        break label210;
       }
-      if ((!qXz.equals("1")) && (!qXz.equals("2"))) {
-        break label111;
+      if ((!PKe.equals("1")) && (!PKe.equals("2"))) {
+        break label166;
       }
       i = 1;
     }
-    label155:
     for (;;)
     {
       localIntent.putExtra("sns_info_not_interest_scene", i);
-      paramContext.startActivity(localIntent);
-      AppMethodBeat.o(35653);
+      paramSnsInfo = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramSnsInfo.aYi(), "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramSnsInfo.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager", "dealNotInterest", "(Landroid/content/Context;Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(94927);
       return;
-      label111:
-      if (qXz.equals("3"))
+      label166:
+      if (PKe.equals("3"))
       {
-        if (i.i(paramn)) {
+        if (t.w(paramSnsInfo)) {
           i = 4;
-        } else if (paramn.field_type == 1) {
+        } else if (paramSnsInfo.field_type == 1) {
           i = 3;
-        } else if (paramn.field_type == 2) {}
+        } else if (paramSnsInfo.field_type == 2) {}
       }
       else {
+        label210:
         i = 0;
       }
     }
   }
   
-  public static void a(ContextMenu paramContextMenu, n paramn)
+  public static void a(ContextMenu paramContextMenu, SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35654);
-    if ((qXy) && (qXz.equals("3")) && (paramn != null) && (!paramn.Ex(32)) && (!paramn.field_userName.equals(ag.coK())) && (paramn.field_type != 15)) {
-      paramContextMenu.add(0, 13, 0, 2131303836);
+    AppMethodBeat.i(94928);
+    if ((PKd) && (PKe.equals("3")) && (paramSnsInfo != null) && (!paramSnsInfo.isAd()) && (!paramSnsInfo.getUserName().equals(al.hgg())) && (paramSnsInfo.field_type != 15)) {
+      paramContextMenu.add(0, 13, 0, b.j.sns_hate_op_un_like);
     }
-    AppMethodBeat.o(35654);
+    AppMethodBeat.o(94928);
   }
   
   public static void a(View paramView, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(35655);
-    if ((qXy) && (!bo.isNullOrNil(qXz)) && (!qXz.equals("0")))
+    AppMethodBeat.i(94929);
+    if ((PKd) && (!Util.isNullOrNil(PKe)) && (!PKe.equals("0")))
     {
-      paramBaseViewHolder.shF = ((ImageView)paramView.findViewById(2131828143));
-      paramBaseViewHolder.shF.setVisibility(8);
-      paramBaseViewHolder.shG = false;
-      if (!qXz.equals("3")) {
-        paramBaseViewHolder.shF.setOnClickListener(qXA);
+      paramBaseViewHolder.RLu = ((ImageView)paramView.findViewById(b.f.sns_hate_item_arrow));
+      paramBaseViewHolder.RLu.setVisibility(8);
+      paramBaseViewHolder.RLv = false;
+      if (!PKe.equals("3")) {
+        paramBaseViewHolder.RLu.setOnClickListener(PKf);
       }
     }
-    AppMethodBeat.o(35655);
+    AppMethodBeat.o(94929);
   }
   
-  private static void a(n paramn)
+  private static void b(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35652);
-    boolean bool = qXz.equals("3");
-    if (paramn.field_type == 1)
+    AppMethodBeat.i(94926);
+    boolean bool = PKe.equals("3");
+    if (paramSnsInfo.field_type == 1)
     {
       if (bool)
       {
-        qXC = 5;
-        AppMethodBeat.o(35652);
+        PKh = 5;
+        AppMethodBeat.o(94926);
         return;
       }
-      qXC = 0;
-      AppMethodBeat.o(35652);
+      PKh = 0;
+      AppMethodBeat.o(94926);
       return;
     }
-    if (paramn.field_type == 2)
+    if (paramSnsInfo.field_type == 2)
     {
       if (bool)
       {
-        qXC = 4;
-        AppMethodBeat.o(35652);
+        PKh = 4;
+        AppMethodBeat.o(94926);
         return;
       }
-      qXC = 1;
-      AppMethodBeat.o(35652);
+      PKh = 1;
+      AppMethodBeat.o(94926);
       return;
     }
-    if (paramn.field_type == 15)
+    if (paramSnsInfo.field_type == 15)
     {
       if (!bool)
       {
-        qXC = 2;
-        AppMethodBeat.o(35652);
+        PKh = 2;
+        AppMethodBeat.o(94926);
       }
     }
-    else if (i.i(paramn))
+    else if (t.w(paramSnsInfo))
     {
       if (bool)
       {
-        qXC = 6;
-        AppMethodBeat.o(35652);
+        PKh = 6;
+        AppMethodBeat.o(94926);
         return;
       }
-      qXC = 3;
+      PKh = 3;
     }
-    AppMethodBeat.o(35652);
+    AppMethodBeat.o(94926);
   }
   
-  public static void b(n paramn)
+  public static void c(SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(35656);
-    if (qXy)
+    AppMethodBeat.i(94930);
+    if (PKd)
     {
-      qXD = paramn.field_snsId;
-      a(paramn);
+      PKi = paramSnsInfo.field_snsId;
+      b(paramSnsInfo);
     }
-    AppMethodBeat.o(35656);
+    AppMethodBeat.o(94930);
   }
   
   public static void clean()
   {
-    AppMethodBeat.i(35657);
-    qXC = -1;
-    qXB = -1;
-    qXD = 0L;
-    qXA = null;
-    qXG = null;
-    qXE = null;
+    AppMethodBeat.i(94931);
+    PKh = -1;
+    PKg = -1;
+    PKi = 0L;
+    PKf = null;
+    PKl = null;
+    PKj = null;
     context = null;
-    qXy = false;
-    qXz = "0";
-    f.pQ("7");
-    com.tencent.mm.sdk.b.a.ymk.d(qXH);
-    com.tencent.mm.sdk.b.a.ymk.d(qXI);
-    AppMethodBeat.o(35657);
-  }
-  
-  public static void cnw()
-  {
-    AppMethodBeat.i(35651);
-    if (qXF != null) {
-      qXF.cnA();
-    }
-    AppMethodBeat.o(35651);
+    PKd = false;
+    PKe = "0";
+    com.tencent.mm.model.a.f.Kr("7");
+    PKm.dead();
+    PKn.dead();
+    AppMethodBeat.o(94931);
   }
   
   public static void d(Context paramContext, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(35650);
-    if (g.abw().pL("7") != null)
+    AppMethodBeat.i(94924);
+    if (g.bDR().Km("7") != null)
     {
-      qXy = true;
-      qXz = g.abw().pL("7").value;
-      ab.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { qXz });
-      qXE = paramViewGroup;
-      qXF = new b(paramViewGroup);
+      PKd = true;
+      PKe = g.bDR().Km("7").value;
+      Log.d("MicroMsg.NotInteresetABTestManager", "start not interest abtest, testStyle:%s", new Object[] { PKe });
+      PKj = paramViewGroup;
+      PKk = new b(paramViewGroup);
       context = paramContext;
-      com.tencent.mm.sdk.b.a.ymk.c(qXH);
-      com.tencent.mm.sdk.b.a.ymk.c(qXI);
-      qXA = new a.3();
-      qXG = new a.4();
-      qXF.qXL = qXG;
+      PKm.alive();
+      PKn.alive();
+      PKf = new a.1();
+      PKl = new NotInterestMenu.c()
+      {
+        public final void d(SnsInfo paramAnonymousSnsInfo)
+        {
+          AppMethodBeat.i(94921);
+          a.a(a.gZs(), paramAnonymousSnsInfo);
+          AppMethodBeat.o(94921);
+        }
+        
+        public final void e(SnsInfo paramAnonymousSnsInfo)
+        {
+          AppMethodBeat.i(94922);
+          a.b(a.gZs(), paramAnonymousSnsInfo);
+          AppMethodBeat.o(94922);
+        }
+        
+        public final void f(SnsInfo paramAnonymousSnsInfo)
+        {
+          AppMethodBeat.i(94923);
+          a.c(a.gZs(), paramAnonymousSnsInfo);
+          AppMethodBeat.o(94923);
+        }
+      };
+      PKk.PKq = PKl;
     }
-    AppMethodBeat.o(35650);
+    AppMethodBeat.o(94924);
+  }
+  
+  public static void gZr()
+  {
+    AppMethodBeat.i(94925);
+    if (PKk != null) {
+      PKk.gZv();
+    }
+    AppMethodBeat.o(94925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.a
  * JD-Core Version:    0.7.0.1
  */

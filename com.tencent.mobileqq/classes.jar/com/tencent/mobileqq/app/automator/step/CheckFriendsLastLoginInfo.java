@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import altm;
-import amhm;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -10,34 +10,34 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
 {
-  private altm a;
+  private FriendListObserver a;
   
-  public int a()
+  protected int doStep()
   {
-    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1)).e())
+    if (((FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getLastLoginInfo())
     {
-      if (this.jdField_a_of_type_Altm == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_Altm = new amhm(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Altm);
+        this.a = new CheckFriendsLastLoginInfo.MyFriendListObserver(this, null);
+        this.mAutomator.k.addObserver(this.a);
       }
       return 2;
     }
     return 7;
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Altm != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Altm);
-      this.jdField_a_of_type_Altm = null;
+      this.mAutomator.k.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo
  * JD-Core Version:    0.7.0.1
  */

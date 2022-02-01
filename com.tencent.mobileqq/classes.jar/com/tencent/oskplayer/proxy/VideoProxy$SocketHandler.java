@@ -23,18 +23,14 @@ final class VideoProxy$SocketHandler
     try
     {
       this.signal.await();
-      this.videoRequest = new VideoRequest();
-      this.videoRequest.setTask(this.task);
-      VideoProxy.access$200(this.this$0, this.socket, this.videoRequest);
-      return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    this.videoRequest = new VideoRequest();
+    this.videoRequest.setTask(this.task);
+    VideoProxy.access$200(this.this$0, this.socket, this.videoRequest);
   }
   
   public void setTask(Future<?> paramFuture)
@@ -44,7 +40,7 @@ final class VideoProxy$SocketHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.VideoProxy.SocketHandler
  * JD-Core Version:    0.7.0.1
  */

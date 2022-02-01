@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/r9" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_mini_shop_helper_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/ayz" android:key="contact_info_linkedin_account" android:layout="@layout/afi" />
+    <Preference android:key="contact_info_mini_shop_helper_go_to" android:layout="@layout/bdi" android:title="@string/bo8" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_linkedin_install" android:widgetLayout="@layout/ahh" android:layout="@layout/a95" />
-    <Preference android:title="@string/edg" android:key="contact_info_linkedin_uninstall" android:layout="@layout/aap" />
+    <Preference android:key="contact_info_mini_shop_helper_my" android:layout="@layout/bdi" android:title="@string/bo_" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/boc" />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_not_disturb" android:layout="@layout/bdi" android:persistent="false" android:title="@string/boa" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_mini_shop_helper_help" android:layout="@layout/bdi" android:title="@string/bo9" />
+    <Preference android:key="contact_info_mini_shop_helper_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_mini_shop_helper_install" android:title_color="@color/wv" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_mini_shop_helper_uninstall" android:layout="@layout/b93" android:title_color="@color/a9z" />
     <PreferenceCategory />
 </PreferenceScreen>

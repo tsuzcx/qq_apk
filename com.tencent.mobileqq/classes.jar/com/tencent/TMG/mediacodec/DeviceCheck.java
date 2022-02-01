@@ -27,23 +27,12 @@ public class DeviceCheck
   
   static boolean checkDecoderSupportColorFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 19) || (paramInt == 21) || (paramInt == 2130706944) || (paramInt == 2141391876);
   }
   
   static boolean checkEncoderSupportColorFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 20: 
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 19) || (paramInt == 21);
   }
   
   public static boolean forceSyncAPI()
@@ -57,16 +46,10 @@ public class DeviceCheck
   {
     List localList = AndroidCodec.getDecoderInfos(AndroidCodec.AVC_CODEC_MIME);
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      MediaCodecInfo.CodecCapabilities localCodecCapabilities;
-      if (i < localList.size())
-      {
-        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
-        if (localCodecCapabilities != null) {}
-      }
-      else
-      {
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
+      if (localCodecCapabilities == null) {
         return false;
       }
       int j = 0;
@@ -79,6 +62,7 @@ public class DeviceCheck
       }
       i += 1;
     }
+    return false;
   }
   
   public static boolean isAVCDecWhitelistDevices()
@@ -92,16 +76,10 @@ public class DeviceCheck
   {
     List localList = AndroidCodec.getEndoderInfos(AndroidCodec.AVC_CODEC_MIME);
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      MediaCodecInfo.CodecCapabilities localCodecCapabilities;
-      if (i < localList.size())
-      {
-        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
-        if (localCodecCapabilities != null) {}
-      }
-      else
-      {
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
+      if (localCodecCapabilities == null) {
         return false;
       }
       int j = 0;
@@ -114,6 +92,7 @@ public class DeviceCheck
       }
       i += 1;
     }
+    return false;
   }
   
   public static boolean isAVCEncWhitelistDevices()
@@ -123,29 +102,33 @@ public class DeviceCheck
   
   public static boolean isSupportAsyncAPI()
   {
-    if (forceSyncAPI()) {}
-    CodecConfigParser localCodecConfigParser;
-    do
-    {
-      String str;
-      do
-      {
-        do
-        {
-          return false;
-        } while (Build.VERSION.SDK_INT < 21);
-        localCodecConfigParser = new CodecConfigParser();
-        str = localCodecConfigParser.getConfig();
-      } while (TextUtils.isEmpty(str));
-      localCodecConfigParser.setConfig(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceCheck", 0, "isSupportAsyncAPI sharpConfigPayload:\n" + str);
-      }
-    } while ((!localCodecConfigParser.getAVCEncoderAbility()) || (!localCodecConfigParser.isEnableAsyncApi(2)) || (!localCodecConfigParser.getAVCDecoderAbility()) || (!localCodecConfigParser.isEnableAsyncApi(1)));
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceCheck", 0, "SUPPORT Async API");
+    if (forceSyncAPI()) {
+      return false;
     }
-    return true;
+    if (Build.VERSION.SDK_INT < 21) {
+      return false;
+    }
+    CodecConfigParser localCodecConfigParser = new CodecConfigParser();
+    String str = localCodecConfigParser.getConfig();
+    if (!TextUtils.isEmpty(str))
+    {
+      localCodecConfigParser.setConfig(str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isSupportAsyncAPI sharpConfigPayload:\n");
+        localStringBuilder.append(str);
+        QLog.d("DeviceCheck", 0, localStringBuilder.toString());
+      }
+      if ((localCodecConfigParser.getAVCEncoderAbility()) && (localCodecConfigParser.isEnableAsyncApi(2)) && (localCodecConfigParser.getAVCDecoderAbility()) && (localCodecConfigParser.isEnableAsyncApi(1)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DeviceCheck", 0, "SUPPORT Async API");
+        }
+        return true;
+      }
+    }
+    return false;
   }
   
   public void run() {}
@@ -157,7 +140,7 @@ public class DeviceCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.mediacodec.DeviceCheck
  * JD-Core Version:    0.7.0.1
  */

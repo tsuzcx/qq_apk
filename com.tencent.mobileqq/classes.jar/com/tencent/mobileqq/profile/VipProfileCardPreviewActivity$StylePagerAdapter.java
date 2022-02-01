@@ -5,15 +5,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import awrb;
-import awsg;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -22,60 +20,66 @@ import java.util.List;
 public class VipProfileCardPreviewActivity$StylePagerAdapter
   extends PagerAdapter
 {
-  public Context a;
   public LayoutInflater a;
+  public Context b;
   
   public VipProfileCardPreviewActivity$StylePagerAdapter(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.b = paramContext;
+    this.a = LayoutInflater.from(this.b);
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "destroyItem, pos = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("destroyItem, pos = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, ((StringBuilder)localObject).toString());
     }
     paramObject = (View)paramObject;
-    awsg localawsg = (awsg)paramObject.getTag();
+    Object localObject = (VipProfileCardPreviewActivity.StylePagerAdapter.ViewHolder)paramObject.getTag();
     paramViewGroup.removeView(paramObject);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.size();
+    return this.c.ah.size();
   }
   
   @TargetApi(16)
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "instantiateItem, pos = " + paramInt);
-    }
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561839, paramViewGroup, false);
-    awsg localawsg = new awsg(this);
-    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView = ((ProfileCardScrollImageView)localView.findViewById(2131367024));
-    localawsg.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)localView.findViewById(2131367652));
-    localView.setTag(localawsg);
-    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    Object localObject = (RelativeLayout.LayoutParams)localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.z;
-    ((RelativeLayout.LayoutParams)localObject).height = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.y;
-    localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (Build.VERSION.SDK_INT >= 16) {
-      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackground(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846956);
-      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setImageDrawable((Drawable)localObject);
-      localView.setId(paramInt);
-      localObject = (awrb)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.addView(localView);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(localawsg, (awrb)localObject, paramInt);
-      return localView;
-      localawsg.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardScrollImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("instantiateItem, pos = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, ((StringBuilder)localObject1).toString());
     }
+    Object localObject1 = this.a.inflate(2131628458, paramViewGroup, false);
+    VipProfileCardPreviewActivity.StylePagerAdapter.ViewHolder localViewHolder = new VipProfileCardPreviewActivity.StylePagerAdapter.ViewHolder(this);
+    localViewHolder.a = ((ProfileCardScrollImageView)((View)localObject1).findViewById(2131433938));
+    localViewHolder.b = ((HiBoomTextView)((View)localObject1).findViewById(2131435034));
+    ((View)localObject1).setTag(localViewHolder);
+    localViewHolder.a.setScaleType(ImageView.ScaleType.FIT_XY);
+    Object localObject2 = (RelativeLayout.LayoutParams)localViewHolder.a.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject2).width = this.c.ak;
+    ((RelativeLayout.LayoutParams)localObject2).height = this.c.aj;
+    localViewHolder.a.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    if (Build.VERSION.SDK_INT >= 16) {
+      localViewHolder.a.setBackground(this.c.H);
+    } else {
+      localViewHolder.a.setBackgroundDrawable(this.c.H);
+    }
+    localObject2 = this.b.getResources().getDrawable(2130849310);
+    localViewHolder.a.setImageDrawable((Drawable)localObject2);
+    ((View)localObject1).setId(paramInt);
+    localObject2 = (ProfileCardTemplateInfo)this.c.ah.get(paramInt);
+    paramViewGroup.addView((View)localObject1);
+    this.c.a(localViewHolder, (ProfileCardTemplateInfo)localObject2, paramInt);
+    return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -85,7 +89,7 @@ public class VipProfileCardPreviewActivity$StylePagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

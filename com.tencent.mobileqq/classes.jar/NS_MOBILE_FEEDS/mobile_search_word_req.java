@@ -8,8 +8,8 @@ public final class mobile_search_word_req
   extends JceStruct
 {
   public String keyword = "";
-  public int type;
-  public long uHostUin;
+  public int type = 0;
+  public long uHostUin = 0L;
   
   public mobile_search_word_req() {}
   
@@ -31,14 +31,15 @@ public final class mobile_search_word_req
   {
     paramJceOutputStream.write(this.uHostUin, 0);
     paramJceOutputStream.write(this.type, 1);
-    if (this.keyword != null) {
-      paramJceOutputStream.write(this.keyword, 2);
+    String str = this.keyword;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_search_word_req
  * JD-Core Version:    0.7.0.1
  */

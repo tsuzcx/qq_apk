@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -16,12 +15,14 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SimpleTextView;
 import java.io.UnsupportedEncodingException;
@@ -29,147 +30,154 @@ import java.net.URLEncoder;
 import mqq.os.MqqHandler;
 
 public class HotChatDemoChatPie
-  extends agrn
+  extends HotChatPie
 {
-  protected LinearLayout c;
-  protected String i;
-  protected ImageView p;
-  protected int q;
-  protected int r;
-  protected int s;
+  protected String br;
+  protected int bs;
+  protected int bt;
+  protected int bu;
+  protected LinearLayout bv;
+  protected ImageView bw;
   
   private String a(String paramString1, String paramString2)
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1))
     {
-      paramString2 = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(paramString2);
+      paramString2 = ((HotChatManager)this.d.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramString2);
       str = paramString1;
       if (paramString2 != null) {
         str = paramString2.name;
       }
     }
-    if (!TextUtils.isEmpty(str)) {}
-    for (;;)
+    if (!TextUtils.isEmpty(str))
     {
       try
       {
         paramString1 = URLEncoder.encode(str, "UTF-8");
-        paramString1 = String.format("http://play.mobile.qq.com/play/mqqplay/hotchat/jump.html?_bid=2152&hotnamecode=%s", new Object[] { paramString1 });
-        if (QLog.isDevelopLevel()) {
-          QLog.i("HotChatDemoChatPie", 4, "makeUrl: " + paramString1);
-        }
-        return paramString1;
+        str = paramString1;
       }
       catch (UnsupportedEncodingException paramString1)
       {
         paramString1.printStackTrace();
-        paramString1 = str;
-        continue;
       }
+      paramString1 = String.format("https://play.mobile.qq.com/play/mqqplay/hotchat/jump.html?_bid=2152&hotnamecode=%s", new Object[] { str });
+    }
+    else
+    {
       paramString1 = null;
     }
+    if (QLog.isDevelopLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("makeUrl: ");
+      paramString2.append(paramString1);
+      QLog.i("HotChatDemoChatPie", 4, paramString2.toString());
+    }
+    return paramString1;
   }
   
   private void b(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.c != null) {
-          break;
-        }
-        this.p = new ImageView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        this.p.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.q, this.q);
-        int j = this.r;
-        localLayoutParams.rightMargin = j;
-        localLayoutParams.leftMargin = j;
-        localLayoutParams.bottomMargin = j;
-        localLayoutParams.topMargin = j;
-        this.p.setLayoutParams(localLayoutParams);
-        this.p.setImageDrawable(paramDrawable);
-        paramDrawable = new SimpleTextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        paramDrawable.setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getText(2131699424));
-        localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-        localLayoutParams.bottomMargin = this.r;
-        localLayoutParams.gravity = 1;
-        paramDrawable.setLayoutParams(localLayoutParams);
-        paramDrawable.setTextColor(Color.rgb(119, 119, 119));
-        paramDrawable.setTextSize(1, 14.0F);
-        paramDrawable.setGravity(1);
-        this.c = new LinearLayout(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-        this.c.setOrientation(1);
-        this.c.addView(this.p);
-        this.c.addView(paramDrawable);
-        paramDrawable = new RelativeLayout.LayoutParams(-2, -2);
-        paramDrawable.addRule(11);
-        paramDrawable.addRule(15);
-        paramDrawable.rightMargin = this.s;
-        this.c.setLayoutParams(paramDrawable);
-        this.c.setBackgroundResource(2130845055);
-      } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c);
+    if (paramDrawable == null) {
       return;
-    } while (this.p == null);
-    this.p.setImageDrawable(paramDrawable);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "HotChatDemoChatPie";
-  }
-  
-  public void ai()
-  {
-    super.ai();
-    if (this.c == null)
+    }
+    Object localObject;
+    if (this.bv == null)
     {
-      if (TextUtils.isEmpty(this.i)) {
-        this.i = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+      this.bw = new ImageView(this.f);
+      this.bw.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      int i = this.bs;
+      localObject = new LinearLayout.LayoutParams(i, i);
+      i = this.bt;
+      ((LinearLayout.LayoutParams)localObject).rightMargin = i;
+      ((LinearLayout.LayoutParams)localObject).leftMargin = i;
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = i;
+      ((LinearLayout.LayoutParams)localObject).topMargin = i;
+      this.bw.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.bw.setImageDrawable(paramDrawable);
+      paramDrawable = new SimpleTextView(this.f);
+      paramDrawable.setText(this.f.getText(2131896954));
+      localObject = new LinearLayout.LayoutParams(-2, -2);
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = this.bt;
+      ((LinearLayout.LayoutParams)localObject).gravity = 1;
+      paramDrawable.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramDrawable.setTextColor(Color.rgb(119, 119, 119));
+      paramDrawable.setTextSize(1, 14.0F);
+      paramDrawable.setGravity(1);
+      this.bv = new LinearLayout(this.f);
+      this.bv.setOrientation(1);
+      this.bv.addView(this.bw);
+      this.bv.addView(paramDrawable);
+      paramDrawable = new RelativeLayout.LayoutParams(-2, -2);
+      paramDrawable.addRule(11);
+      paramDrawable.addRule(15);
+      paramDrawable.rightMargin = this.bu;
+      this.bv.setLayoutParams(paramDrawable);
+      this.bv.setBackgroundResource(2130847086);
+      if (this.o != null) {
+        this.o.addView(this.bv);
       }
-      ThreadManager.getFileThreadHandler().post(new HotChatDemoChatPie.LoadQRCodeImg(this.i, this.jdField_a_of_type_MqqOsMqqHandler, this.q));
+    }
+    else
+    {
+      localObject = this.bw;
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(paramDrawable);
+      }
     }
   }
   
-  public void d(Intent paramIntent)
+  protected void D()
   {
-    this.v = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b.length() == 0))
+    if (this.u != null) {
+      this.u.setVisibility(8);
+    }
+  }
+  
+  protected void ap()
+  {
+    super.ap();
+    if (this.bv == null)
     {
-      paramIntent = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (TextUtils.isEmpty(this.br)) {
+        this.br = a(this.ah.e, this.ah.c);
+      }
+      ThreadManager.getFileThreadHandler().post(new HotChatDemoChatPie.LoadQRCodeImg(this.br, this.m, this.bs));
+    }
+  }
+  
+  protected void e(Intent paramIntent)
+  {
+    if ((this.ah.c == null) || (this.ah.c.length() == 0))
+    {
+      paramIntent = ((TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.ah.b);
       if (paramIntent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b = paramIntent.troopcode;
+        this.ah.c = paramIntent.troopcode;
       }
     }
-    this.i = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+    this.br = a(this.ah.e, this.ah.c);
   }
   
-  public void e(Intent paramIntent)
+  protected void f(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.s != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699423);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131699423));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(8);
+      this.s.setText(2131896953);
+      this.s.setContentDescription(this.f.getString(2131896953));
+      this.s.setBackgroundDrawable(null);
     }
   }
   
   public void f(boolean paramBoolean)
   {
     super.f(paramBoolean);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    this.f.finish();
+  }
+  
+  protected void h()
+  {
+    this.c = "HotChatDemoChatPie";
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -188,10 +196,11 @@ public class HotChatDemoChatPie
     return super.handleMessage(paramMessage);
   }
   
-  public void z()
+  protected void l()
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    super.l();
+    if (this.X != null) {
+      this.X.setVisibility(8);
     }
   }
 }

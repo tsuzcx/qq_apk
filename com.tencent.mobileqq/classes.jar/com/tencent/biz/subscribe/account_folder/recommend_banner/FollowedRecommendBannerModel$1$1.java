@@ -1,25 +1,22 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import java.util.List;
-import yby;
-import ybz;
-import yca;
 
-public class FollowedRecommendBannerModel$1$1
+class FollowedRecommendBannerModel$1$1
   implements Runnable
 {
-  public FollowedRecommendBannerModel$1$1(ybz paramybz, List paramList, boolean paramBoolean) {}
+  FollowedRecommendBannerModel$1$1(FollowedRecommendBannerModel.1 param1, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (yby.a(this.jdField_a_of_type_Ybz.a) != null) {
-      yby.a(this.jdField_a_of_type_Ybz.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    if (FollowedRecommendBannerModel.a(this.c.a) != null) {
+      FollowedRecommendBannerModel.a(this.c.a).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerModel.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/jou" android:layout_width="wrap_content" android:paddingStart="3.0dip" android:paddingEnd="3.0dip" style="@style/hz" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/jov" android:text="@string/j9t" style="@style/hy" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/jow" style="@style/hz" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/joz" android:text="@string/j9u" style="@style/hy" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/jox" style="@style/hz" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/jp0" android:text="@string/j9u" style="@style/hy" />
+    <com.tencent.mm.plugin.sns.ad.widget.appcompat.AdAppCompatTextView android:id="@id/joy" android:layout_marginEnd="0.0dip" style="@style/hz" />
+</merge>

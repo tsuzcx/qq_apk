@@ -9,7 +9,7 @@ public final class ReqBatchProcess
   extends JceStruct
 {
   static ArrayList<BatchRequest> cache_batch_request_list;
-  public ArrayList<BatchRequest> batch_request_list;
+  public ArrayList<BatchRequest> batch_request_list = null;
   
   public ReqBatchProcess() {}
   
@@ -31,14 +31,15 @@ public final class ReqBatchProcess
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.batch_request_list != null) {
-      paramJceOutputStream.write(this.batch_request_list, 0);
+    ArrayList localArrayList = this.batch_request_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ReqBatchProcess
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.mini.entry;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bekq;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 final class MiniAppUtils$4
   extends Handler
 {
-  MiniAppUtils$4(Looper paramLooper, String paramString1, String paramString2)
+  MiniAppUtils$4(Looper paramLooper, Context paramContext, String paramString1, String paramString2)
   {
     super(paramLooper);
   }
@@ -19,20 +18,24 @@ final class MiniAppUtils$4
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bekq))
+    if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
-      bekq localbekq = (bekq)paramMessage.obj;
-      if (localbekq.c == 0)
+      WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
+      if (localWebSoCgiState.i == 0)
       {
-        QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        ThreadManager.getFileThreadHandler().post(new MiniAppUtils.4.1(this, localbekq));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleMessage() called with: msg = [");
+        localStringBuilder.append(paramMessage);
+        localStringBuilder.append("]");
+        QLog.d("MiniAppUtils", 2, localStringBuilder.toString());
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localWebSoCgiState.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.4
  * JD-Core Version:    0.7.0.1
  */

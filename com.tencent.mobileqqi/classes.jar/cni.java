@@ -1,21 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class cni
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
   public cni(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((this.a.a.a.a.equals(this.a.b.a())) && (FriendProfileCardActivity.a(this.a) != null)) {
-      FriendProfileCardActivity.a(this.a).sendEmptyMessage(2);
+    this.a.finish();
+    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.b != null) && (!"0".equals(this.a.b.a()))) {
+      this.a.b.a(this.a);
     }
   }
 }

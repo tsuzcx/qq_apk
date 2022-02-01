@@ -111,15 +111,14 @@ public final class Polyline
   
   public final List<gg> getMapElements()
   {
-    if (this.c == null) {}
-    kq localkq;
-    String str;
-    do
-    {
+    kq localkq = this.c;
+    if (localkq == null) {
       return null;
-      localkq = this.c;
-      str = this.b;
-    } while (localkq.a == null);
+    }
+    String str = this.b;
+    if (localkq.a == null) {
+      return null;
+    }
     return localkq.a.e(str);
   }
   
@@ -145,10 +144,11 @@ public final class Polyline
   
   public final PolylineOptions.Text getText()
   {
-    if (this.a == null) {
+    PolylineOptions localPolylineOptions = this.a;
+    if (localPolylineOptions == null) {
       return null;
     }
-    return this.a.getText();
+    return localPolylineOptions.getText();
   }
   
   public final Rect getVisibleRect()
@@ -183,8 +183,9 @@ public final class Polyline
   
   public final boolean isClickable()
   {
-    if (this.a != null) {
-      return this.a.isClickable();
+    PolylineOptions localPolylineOptions = this.a;
+    if (localPolylineOptions != null) {
+      return localPolylineOptions.isClickable();
     }
     return false;
   }
@@ -202,16 +203,14 @@ public final class Polyline
   
   public final void remove()
   {
-    if (this.c == null) {}
-    kq localkq;
-    String str;
-    do
-    {
+    kq localkq = this.c;
+    if (localkq == null) {
       return;
-      localkq = this.c;
-      str = this.b;
-    } while (localkq.a == null);
-    localkq.a.a(str);
+    }
+    String str = this.b;
+    if (localkq.a != null) {
+      localkq.a.a(str);
+    }
   }
   
   public final void setAboveMaskLayer(boolean paramBoolean)
@@ -282,15 +281,18 @@ public final class Polyline
   
   public final void setLevel(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return;
+      }
+      kq localkq = this.c;
+      String str = this.b;
+      if (localkq.a != null) {
+        localkq.a.b(str, paramInt);
+      }
+      this.a.level(paramInt);
     }
-    kq localkq = this.c;
-    String str = this.b;
-    if (localkq.a != null) {
-      localkq.a.b(str, paramInt);
-    }
-    this.a.level(paramInt);
   }
   
   public final void setPoints(List<LatLng> paramList)
@@ -305,37 +307,35 @@ public final class Polyline
   
   public final void setPolylineOptions(PolylineOptions paramPolylineOptions)
   {
-    if (paramPolylineOptions == null) {}
-    Object localObject1;
-    Object localObject2;
-    do
-    {
+    if (paramPolylineOptions == null) {
       return;
-      this.a.arrow(paramPolylineOptions.isArrow());
-      this.a.zIndex(paramPolylineOptions.getZIndex());
-      this.a.width(paramPolylineOptions.getWidth());
-      this.a.color(paramPolylineOptions.getColor());
-      this.a.b = paramPolylineOptions.b;
-      this.a.alpha(paramPolylineOptions.getAlpha());
-      this.a.animation(paramPolylineOptions.getAnimation());
-      this.a.visible(paramPolylineOptions.isVisible());
-      localObject1 = this.a;
-      Object localObject3 = paramPolylineOptions.getPoints();
-      localObject2 = new ArrayList();
-      if (localObject3 != null)
-      {
-        localObject3 = ((Iterable)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext()) {
-          ((List)localObject2).add((LatLng)((Iterator)localObject3).next());
-        }
+    }
+    this.a.arrow(paramPolylineOptions.isArrow());
+    this.a.zIndex(paramPolylineOptions.getZIndex());
+    this.a.width(paramPolylineOptions.getWidth());
+    this.a.color(paramPolylineOptions.getColor());
+    this.a.b = paramPolylineOptions.b;
+    this.a.alpha(paramPolylineOptions.getAlpha());
+    this.a.animation(paramPolylineOptions.getAnimation());
+    this.a.visible(paramPolylineOptions.isVisible());
+    Object localObject1 = this.a;
+    Object localObject3 = paramPolylineOptions.getPoints();
+    Object localObject2 = new ArrayList();
+    if (localObject3 != null)
+    {
+      localObject3 = ((Iterable)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext()) {
+        ((List)localObject2).add((LatLng)((Iterator)localObject3).next());
       }
-      ((PolylineOptions)localObject1).a.clear();
-      ((PolylineOptions)localObject1).addAll((Iterable)localObject2);
-      this.a.pattern(paramPolylineOptions.getPattern());
-      localObject1 = this.c;
-      localObject2 = this.b;
-    } while (((kq)localObject1).a == null);
-    ((kq)localObject1).a.a((String)localObject2, paramPolylineOptions);
+    }
+    ((PolylineOptions)localObject1).a.clear();
+    ((PolylineOptions)localObject1).addAll((Iterable)localObject2);
+    this.a.pattern(paramPolylineOptions.getPattern());
+    localObject1 = this.c;
+    localObject2 = this.b;
+    if (((kq)localObject1).a != null) {
+      ((kq)localObject1).a.a((String)localObject2, paramPolylineOptions);
+    }
   }
   
   public final void setTag(Object paramObject)
@@ -345,15 +345,18 @@ public final class Polyline
   
   public final void setText(PolylineOptions.Text paramText)
   {
-    if ((this.c == null) || (this.a == null)) {
-      return;
-    }
     kq localkq = this.c;
-    String str = this.b;
-    if (localkq.a != null) {
-      localkq.a.a(str, paramText);
+    if (localkq != null)
+    {
+      if (this.a == null) {
+        return;
+      }
+      String str = this.b;
+      if (localkq.a != null) {
+        localkq.a.a(str, paramText);
+      }
+      this.a.text(paramText);
     }
-    this.a.text(paramText);
   }
   
   public final void setVisible(boolean paramBoolean)
@@ -368,26 +371,20 @@ public final class Polyline
   
   public final void setWidth(float paramFloat)
   {
-    float f = 128.0F;
+    float f = paramFloat;
     if (paramFloat < 0.0F) {
-      paramFloat = 1.0F;
+      f = 1.0F;
     }
-    for (;;)
-    {
-      if (paramFloat > 128.0F) {
-        paramFloat = f;
-      }
-      for (;;)
-      {
-        kq localkq = this.c;
-        String str = this.b;
-        if (localkq.a != null) {
-          localkq.a.a(str, paramFloat);
-        }
-        this.a.width(paramFloat);
-        return;
-      }
+    paramFloat = f;
+    if (f > 128.0F) {
+      paramFloat = 128.0F;
     }
+    kq localkq = this.c;
+    String str = this.b;
+    if (localkq.a != null) {
+      localkq.a.a(str, paramFloat);
+    }
+    this.a.width(paramFloat);
   }
   
   public final void setZIndex(int paramInt)
@@ -403,24 +400,22 @@ public final class Polyline
   
   public final void startAnimation(Animation paramAnimation)
   {
-    if (((paramAnimation instanceof AlphaAnimation)) || ((paramAnimation instanceof EmergeAnimation)))
-    {
-      if (this.c != null)
-      {
-        kq localkq = this.c;
-        String str = this.b;
-        if (localkq.a != null) {
-          localkq.a.a(str, paramAnimation.glAnimation);
-        }
-      }
-      return;
+    if ((!(paramAnimation instanceof AlphaAnimation)) && (!(paramAnimation instanceof EmergeAnimation))) {
+      throw new IllegalArgumentException("Unsupported animation, only AlphaAnimation and EmergeAnimation allowed.");
     }
-    throw new IllegalArgumentException("Unsupported animation, only AlphaAnimation and EmergeAnimation allowed.");
+    kq localkq = this.c;
+    if (localkq != null)
+    {
+      String str = this.b;
+      if (localkq.a != null) {
+        localkq.a.a(str, paramAnimation.glAnimation);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Polyline
  * JD-Core Version:    0.7.0.1
  */

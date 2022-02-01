@@ -51,33 +51,39 @@ public class BdhUtils
   {
     paramIOException = paramIOException.getMessage();
     String str = Environment.getExternalStorageState();
-    if (paramIOException.contains("EACCES")) {}
-    do
-    {
+    if (paramIOException.contains("EACCES")) {
       return 9039;
-      if (paramIOException.contains("ENOSPC")) {
-        return 9040;
-      }
-    } while ((paramIOException.contains("Read-only")) || (!"mounted".equals(str)));
+    }
+    if (paramIOException.contains("ENOSPC")) {
+      return 9040;
+    }
+    if (paramIOException.contains("Read-only")) {
+      return 9039;
+    }
+    if (!"mounted".equals(str)) {
+      return 9039;
+    }
     return 9303;
   }
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = digits[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2 + 0)] = digits[(j & 0xF)];
-      i += 1;
+      char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        int k = i * 2;
+        char[] arrayOfChar2 = digits;
+        arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
+        arrayOfChar1[(k + 0)] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar1);
     }
-    return new String(arrayOfChar);
+    return "";
   }
   
   public static void copyData(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
@@ -94,7 +100,11 @@ public class BdhUtils
       paramArrayOfByte = localMessageDigest.digest();
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label18:
+      break label18;
+    }
     return null;
   }
   
@@ -102,176 +112,242 @@ public class BdhUtils
   public static String getApnType(Context paramContext)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 168	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   4: getstatic 56	com/tencent/mobileqq/highway/utils/BdhUtils:PREFERRED_APN_URI	Landroid/net/Uri;
-    //   7: aconst_null
-    //   8: aconst_null
-    //   9: aconst_null
-    //   10: aconst_null
-    //   11: invokevirtual 174	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   14: astore_1
-    //   15: aload_1
-    //   16: ifnonnull +16 -> 32
-    //   19: aload_1
-    //   20: ifnull +9 -> 29
-    //   23: aload_1
-    //   24: invokeinterface 179 1 0
-    //   29: ldc 181
-    //   31: areturn
-    //   32: aload_1
-    //   33: invokeinterface 185 1 0
-    //   38: pop
-    //   39: aload_1
-    //   40: aload_1
-    //   41: ldc 187
-    //   43: invokeinterface 191 2 0
-    //   48: invokeinterface 195 2 0
-    //   53: invokevirtual 198	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   56: astore_0
-    //   57: aload_0
-    //   58: getstatic 60	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTNET	Ljava/lang/String;
-    //   61: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   64: ifeq +23 -> 87
-    //   67: getstatic 60	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTNET	Ljava/lang/String;
-    //   70: astore_0
-    //   71: aload_0
-    //   72: astore_2
-    //   73: aload_1
-    //   74: ifnull +11 -> 85
-    //   77: aload_1
-    //   78: invokeinterface 179 1 0
-    //   83: aload_0
-    //   84: astore_2
-    //   85: aload_2
-    //   86: areturn
-    //   87: aload_0
-    //   88: getstatic 64	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTWAP	Ljava/lang/String;
-    //   91: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   94: ifeq +10 -> 104
-    //   97: getstatic 64	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTWAP	Ljava/lang/String;
+    //   0: ldc 164
+    //   2: astore_1
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: aload_0
+    //   9: invokevirtual 170	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   12: getstatic 56	com/tencent/mobileqq/highway/utils/BdhUtils:PREFERRED_APN_URI	Landroid/net/Uri;
+    //   15: aconst_null
+    //   16: aconst_null
+    //   17: aconst_null
+    //   18: aconst_null
+    //   19: invokevirtual 176	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   22: astore_3
+    //   23: aload_3
+    //   24: ifnonnull +16 -> 40
+    //   27: aload_3
+    //   28: ifnull +9 -> 37
+    //   31: aload_3
+    //   32: invokeinterface 181 1 0
+    //   37: ldc 164
+    //   39: areturn
+    //   40: aload_3
+    //   41: astore 4
+    //   43: aload_3
+    //   44: astore_2
+    //   45: aload_3
+    //   46: invokeinterface 185 1 0
+    //   51: pop
+    //   52: aload_3
+    //   53: astore 4
+    //   55: aload_3
+    //   56: astore_2
+    //   57: aload_3
+    //   58: aload_3
+    //   59: ldc 187
+    //   61: invokeinterface 191 2 0
+    //   66: invokeinterface 195 2 0
+    //   71: invokevirtual 198	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   74: astore 5
+    //   76: aload_3
+    //   77: astore 4
+    //   79: aload_3
+    //   80: astore_2
+    //   81: aload 5
+    //   83: getstatic 60	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTNET	Ljava/lang/String;
+    //   86: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   89: ifeq +15 -> 104
+    //   92: aload_3
+    //   93: astore 4
+    //   95: aload_3
+    //   96: astore_2
+    //   97: getstatic 60	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTNET	Ljava/lang/String;
     //   100: astore_0
-    //   101: goto -30 -> 71
-    //   104: aload_0
-    //   105: getstatic 68	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMNET	Ljava/lang/String;
-    //   108: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   111: ifeq +10 -> 121
-    //   114: getstatic 68	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMNET	Ljava/lang/String;
-    //   117: astore_0
-    //   118: goto -47 -> 71
-    //   121: aload_0
-    //   122: getstatic 72	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMWAP	Ljava/lang/String;
-    //   125: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   128: ifeq +10 -> 138
-    //   131: getstatic 72	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMWAP	Ljava/lang/String;
-    //   134: astore_0
-    //   135: goto -64 -> 71
-    //   138: aload_0
-    //   139: getstatic 76	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNINET	Ljava/lang/String;
+    //   101: goto +196 -> 297
+    //   104: aload_3
+    //   105: astore 4
+    //   107: aload_3
+    //   108: astore_2
+    //   109: aload 5
+    //   111: getstatic 64	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTWAP	Ljava/lang/String;
+    //   114: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   117: ifeq +15 -> 132
+    //   120: aload_3
+    //   121: astore 4
+    //   123: aload_3
+    //   124: astore_2
+    //   125: getstatic 64	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CTWAP	Ljava/lang/String;
+    //   128: astore_0
+    //   129: goto +168 -> 297
+    //   132: aload_3
+    //   133: astore 4
+    //   135: aload_3
+    //   136: astore_2
+    //   137: aload 5
+    //   139: getstatic 68	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMNET	Ljava/lang/String;
     //   142: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   145: ifeq +10 -> 155
-    //   148: getstatic 76	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNINET	Ljava/lang/String;
-    //   151: astore_0
-    //   152: goto -81 -> 71
-    //   155: aload_0
-    //   156: getstatic 80	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNIWAP	Ljava/lang/String;
-    //   159: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   162: ifeq +60 -> 222
-    //   165: getstatic 80	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNIWAP	Ljava/lang/String;
-    //   168: astore_0
-    //   169: goto -98 -> 71
-    //   172: astore_0
-    //   173: aconst_null
-    //   174: astore_0
-    //   175: aload_0
-    //   176: ifnull +40 -> 216
-    //   179: aload_0
-    //   180: invokeinterface 179 1 0
-    //   185: ldc 181
-    //   187: astore_2
-    //   188: goto -103 -> 85
-    //   191: astore_0
-    //   192: aconst_null
-    //   193: astore_1
-    //   194: aload_1
-    //   195: ifnull +9 -> 204
-    //   198: aload_1
-    //   199: invokeinterface 179 1 0
-    //   204: aload_0
-    //   205: athrow
-    //   206: astore_0
-    //   207: goto -13 -> 194
-    //   210: astore_0
-    //   211: aload_1
+    //   145: ifeq +15 -> 160
+    //   148: aload_3
+    //   149: astore 4
+    //   151: aload_3
+    //   152: astore_2
+    //   153: getstatic 68	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMNET	Ljava/lang/String;
+    //   156: astore_0
+    //   157: goto +140 -> 297
+    //   160: aload_3
+    //   161: astore 4
+    //   163: aload_3
+    //   164: astore_2
+    //   165: aload 5
+    //   167: getstatic 72	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMWAP	Ljava/lang/String;
+    //   170: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   173: ifeq +15 -> 188
+    //   176: aload_3
+    //   177: astore 4
+    //   179: aload_3
+    //   180: astore_2
+    //   181: getstatic 72	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_CMWAP	Ljava/lang/String;
+    //   184: astore_0
+    //   185: goto +112 -> 297
+    //   188: aload_3
+    //   189: astore 4
+    //   191: aload_3
+    //   192: astore_2
+    //   193: aload 5
+    //   195: getstatic 76	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNINET	Ljava/lang/String;
+    //   198: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   201: ifeq +15 -> 216
+    //   204: aload_3
+    //   205: astore 4
+    //   207: aload_3
+    //   208: astore_2
+    //   209: getstatic 76	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNINET	Ljava/lang/String;
     //   212: astore_0
-    //   213: goto -38 -> 175
-    //   216: ldc 181
-    //   218: astore_2
-    //   219: goto -134 -> 85
-    //   222: ldc 181
-    //   224: astore_0
-    //   225: goto -154 -> 71
+    //   213: goto +84 -> 297
+    //   216: aload_1
+    //   217: astore_0
+    //   218: aload_3
+    //   219: astore 4
+    //   221: aload_3
+    //   222: astore_2
+    //   223: aload 5
+    //   225: getstatic 80	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNIWAP	Ljava/lang/String;
+    //   228: invokevirtual 202	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   231: ifeq +15 -> 246
+    //   234: aload_3
+    //   235: astore 4
+    //   237: aload_3
+    //   238: astore_2
+    //   239: getstatic 80	com/tencent/mobileqq/highway/utils/BdhUtils:APN_TYPE_UNIWAP	Ljava/lang/String;
+    //   242: astore_0
+    //   243: goto +54 -> 297
+    //   246: aload_0
+    //   247: astore 4
+    //   249: aload_3
+    //   250: ifnull +40 -> 290
+    //   253: aload_3
+    //   254: astore_2
+    //   255: aload_2
+    //   256: invokeinterface 181 1 0
+    //   261: aload_0
+    //   262: areturn
+    //   263: astore_0
+    //   264: aload 4
+    //   266: ifnull +10 -> 276
+    //   269: aload 4
+    //   271: invokeinterface 181 1 0
+    //   276: aload_0
+    //   277: athrow
+    //   278: aload_1
+    //   279: astore 4
+    //   281: aload_2
+    //   282: ifnull +8 -> 290
+    //   285: aload_1
+    //   286: astore_0
+    //   287: goto -32 -> 255
+    //   290: aload 4
+    //   292: areturn
+    //   293: astore_0
+    //   294: goto -16 -> 278
+    //   297: goto -51 -> 246
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	228	0	paramContext	Context
-    //   14	198	1	localCursor	android.database.Cursor
-    //   72	147	2	localObject	Object
+    //   0	300	0	paramContext	Context
+    //   2	284	1	str1	String
+    //   4	278	2	localObject1	Object
+    //   22	232	3	localCursor	android.database.Cursor
+    //   6	285	4	localObject2	Object
+    //   74	150	5	str2	String
     // Exception table:
     //   from	to	target	type
-    //   0	15	172	java/lang/Exception
-    //   0	15	191	finally
-    //   32	71	206	finally
-    //   87	101	206	finally
-    //   104	118	206	finally
-    //   121	135	206	finally
-    //   138	152	206	finally
-    //   155	169	206	finally
-    //   32	71	210	java/lang/Exception
-    //   87	101	210	java/lang/Exception
-    //   104	118	210	java/lang/Exception
-    //   121	135	210	java/lang/Exception
-    //   138	152	210	java/lang/Exception
-    //   155	169	210	java/lang/Exception
+    //   8	23	263	finally
+    //   45	52	263	finally
+    //   57	76	263	finally
+    //   81	92	263	finally
+    //   97	101	263	finally
+    //   109	120	263	finally
+    //   125	129	263	finally
+    //   137	148	263	finally
+    //   153	157	263	finally
+    //   165	176	263	finally
+    //   181	185	263	finally
+    //   193	204	263	finally
+    //   209	213	263	finally
+    //   223	234	263	finally
+    //   239	243	263	finally
+    //   8	23	293	java/lang/Exception
+    //   45	52	293	java/lang/Exception
+    //   57	76	293	java/lang/Exception
+    //   81	92	293	java/lang/Exception
+    //   97	101	293	java/lang/Exception
+    //   109	120	293	java/lang/Exception
+    //   125	129	293	java/lang/Exception
+    //   137	148	293	java/lang/Exception
+    //   153	157	293	java/lang/Exception
+    //   165	176	293	java/lang/Exception
+    //   181	185	293	java/lang/Exception
+    //   193	204	293	java/lang/Exception
+    //   209	213	293	java/lang/Exception
+    //   223	234	293	java/lang/Exception
+    //   239	243	293	java/lang/Exception
   }
   
   public static String getApnType(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
+    if (paramString == null) {
+      return "nomatch";
+    }
+    try
+    {
+      if (paramString.startsWith(APN_TYPE_CTNET)) {
+        paramString = APN_TYPE_CTNET;
+      } else if (paramString.startsWith(APN_TYPE_CTWAP)) {
+        paramString = APN_TYPE_CTWAP;
+      } else if (paramString.startsWith(APN_TYPE_CMNET)) {
+        paramString = APN_TYPE_CMNET;
+      } else if (paramString.startsWith(APN_TYPE_CMWAP)) {
+        paramString = APN_TYPE_CMWAP;
+      } else if (paramString.startsWith(APN_TYPE_UNINET)) {
+        paramString = APN_TYPE_UNINET;
+      } else if (paramString.startsWith(APN_TYPE_UNIWAP)) {
+        paramString = APN_TYPE_UNIWAP;
+      } else if (paramString.startsWith(APN_TYPE_3GNET)) {
+        paramString = APN_TYPE_3GNET;
+      } else if (paramString.startsWith(APN_TYPE_3GWAP)) {
+        paramString = APN_TYPE_3GWAP;
+      } else {
+        return "nomatch";
+      }
+    }
+    catch (Exception paramString)
     {
       return "nomatch";
-      try
-      {
-        if (paramString.startsWith(APN_TYPE_CTNET)) {
-          return APN_TYPE_CTNET;
-        }
-        if (paramString.startsWith(APN_TYPE_CTWAP)) {
-          return APN_TYPE_CTWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_CMNET)) {
-          return APN_TYPE_CMNET;
-        }
-        if (paramString.startsWith(APN_TYPE_CMWAP)) {
-          return APN_TYPE_CMWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_UNINET)) {
-          return APN_TYPE_UNINET;
-        }
-        if (paramString.startsWith(APN_TYPE_UNIWAP)) {
-          return APN_TYPE_UNIWAP;
-        }
-        if (paramString.startsWith(APN_TYPE_3GNET)) {
-          return APN_TYPE_3GNET;
-        }
-        if (paramString.startsWith(APN_TYPE_3GWAP))
-        {
-          paramString = APN_TYPE_3GWAP;
-          return paramString;
-        }
-      }
-      catch (Exception paramString) {}
     }
-    return "nomatch";
+    return paramString;
   }
   
   public static HttpURLConnection getConnectionWithDefaultProxy(String paramString1, String paramString2, int paramInt)
@@ -282,44 +358,66 @@ public class BdhUtils
   
   public static HttpURLConnection getConnectionWithXOnlineHost(String paramString1, String paramString2, int paramInt)
   {
-    int i = "http://".length();
-    int j = paramString1.indexOf('/', i);
+    int i = paramString1.indexOf('/', 7);
+    String str;
     Object localObject;
-    if (j < 0)
+    if (i < 0)
     {
-      paramString1 = paramString1.substring(i);
-      localObject = "";
-      if (paramInt == 80) {
-        break label122;
-      }
+      paramString1 = paramString1.substring(7);
+      str = "";
     }
-    label122:
-    for (paramString2 = new URL("http://" + paramString2 + ":" + paramInt + (String)localObject);; paramString2 = new URL("http://" + paramString2 + (String)localObject))
+    else
     {
-      paramString2 = (HttpURLConnection)paramString2.openConnection();
-      paramString2.setRequestProperty("X-Online-Host", paramString1);
-      return paramString2;
-      localObject = paramString1.substring(i, j);
-      String str = paramString1.substring(j);
+      localObject = paramString1.substring(7, i);
+      str = paramString1.substring(i);
       paramString1 = (String)localObject;
-      localObject = str;
-      break;
     }
+    if (paramInt != 80)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("http://");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(str);
+      paramString2 = new URL(((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("http://");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(str);
+      paramString2 = new URL(((StringBuilder)localObject).toString());
+    }
+    paramString2 = (HttpURLConnection)paramString2.openConnection();
+    paramString2.setRequestProperty("X-Online-Host", paramString1);
+    return paramString2;
   }
   
   public static ArrayList<String> getCurNetKey(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    switch (HwNetworkUtil.getSystemNetwork(paramContext))
+    int i = HwNetworkUtil.getSystemNetwork(paramContext);
+    if (i != 1)
     {
-    default: 
-      return localArrayList;
-    case 1: 
-      localArrayList.add("BSSID_" + HwNetworkUtil.getCurrentWifiBSSID(paramContext));
-      localArrayList.add("SSID_" + HwNetworkUtil.getCurrentWifiSSID(paramContext));
+      if ((i != 2) && (i != 3) && (i != 4)) {
+        return localArrayList;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("APN_");
+      localStringBuilder.append(HwNetworkUtil.getCurrentApn(paramContext));
+      localArrayList.add(localStringBuilder.toString());
       return localArrayList;
     }
-    localArrayList.add("APN_" + HwNetworkUtil.getCurrentApn(paramContext));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BSSID_");
+    localStringBuilder.append(HwNetworkUtil.getCurrentWifiBSSID(paramContext));
+    localArrayList.add(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SSID_");
+    localStringBuilder.append(HwNetworkUtil.getCurrentWifiSSID(paramContext));
+    localArrayList.add(localStringBuilder.toString());
     return localArrayList;
   }
   
@@ -343,7 +441,7 @@ public class BdhUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.BdhUtils
  * JD-Core Version:    0.7.0.1
  */

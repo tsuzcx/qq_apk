@@ -17,6 +17,7 @@ public class Const$ErrorCode
   public static final int LOCAL_RET_CODE_ILL_EXP = 5;
   public static final int LOCAL_RET_CODE_IO_EXP = 2;
   public static final int LOCAL_RET_CODE_LENGTH_MISMATCH = -3;
+  public static final int LOCAL_RET_CODE_LENGTH_MISMATCH_NEW = 50008;
   public static final int LOCAL_RET_CODE_NETWORK_FAIL = -99997;
   public static final int LOCAL_RET_CODE_NETWORK_UNREACHABLE = 50004;
   public static final int LOCAL_RET_CODE_NOSPACE_LEFT_ON_DEVICE = 50003;
@@ -37,7 +38,7 @@ public class Const$ErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.base.Const.ErrorCode
  * JD-Core Version:    0.7.0.1
  */

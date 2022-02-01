@@ -10,17 +10,27 @@ public class AdImageViewAdapter$Params
 {
   public WeakReference<AdImageViewAdapter.Callback> callback;
   public WeakReference<Context> context;
-  public String guassianUrl;
+  public String gaussianUrl;
+  public boolean isHitImageExp;
+  public boolean isOnlyLoadGaussianUrl;
   public String url;
   
   public boolean isValid()
   {
-    return (this.context != null) && (this.context.get() != null) && (!TextUtils.isEmpty(this.url)) && (this.callback != null) && (this.callback.get() != null);
+    WeakReference localWeakReference = this.context;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (!TextUtils.isEmpty(this.url)))
+    {
+      localWeakReference = this.callback;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.image.AdImageViewAdapter.Params
  * JD-Core Version:    0.7.0.1
  */

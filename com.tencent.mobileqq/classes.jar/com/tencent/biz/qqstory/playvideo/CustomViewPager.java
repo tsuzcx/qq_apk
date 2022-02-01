@@ -3,32 +3,32 @@ package com.tencent.biz.qqstory.playvideo;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.SystemClock;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.ViewParent;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.BetterGestureDetector;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import wxe;
-import xqs;
 
 public class CustomViewPager
   extends ViewPager
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public float a;
   public GestureDetector.SimpleOnGestureListener a;
-  public xqs a;
-  public boolean a;
-  public float b;
+  public BetterGestureDetector b = new BetterGestureDetector(paramContext, this);
   public float c;
   public float d;
+  public float e;
+  public float f;
+  public boolean g = true;
   
   public CustomViewPager(Context paramContext)
   {
@@ -38,53 +38,40 @@ public class CustomViewPager
   public CustomViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Xqs = new xqs(paramContext, this);
-    this.jdField_a_of_type_Xqs.a(this);
+    this.b.a(this);
   }
   
-  public int getChildDrawingOrder(int paramInt1, int paramInt2)
+  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    try
-    {
-      Object localObject = ViewPager.class.getDeclaredField("mDrawingOrderedChildren");
-      ((Field)localObject).setAccessible(true);
-      localObject = (ArrayList)((Field)localObject).get(this);
-      if ((localObject == null) || (((ArrayList)localObject).size() != getChildCount()))
+    if (Build.VERSION.SDK_INT >= 24) {
+      try
       {
-        wxe.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
-        localObject = ViewPager.class.getDeclaredMethod("sortChildDrawingOrder", new Class[0]);
-        ((Method)localObject).setAccessible(true);
-        ((Method)localObject).invoke(this, new Object[0]);
+        Object localObject = ViewPager.class.getDeclaredField("mDrawingOrderedChildren");
+        ((Field)localObject).setAccessible(true);
+        localObject = (ArrayList)((Field)localObject).get(this);
+        if ((localObject == null) || (((ArrayList)localObject).size() != getChildCount()))
+        {
+          SLog.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
+          localObject = ViewPager.class.getDeclaredMethod("sortChildDrawingOrder", new Class[0]);
+          ((Method)localObject).setAccessible(true);
+          ((Method)localObject).invoke(this, new Object[0]);
+        }
       }
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      catch (NoSuchFieldException localNoSuchFieldException)
       {
-        wxe.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
       }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
+      catch (InvocationTargetException localInvocationTargetException)
       {
-        wxe.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
       }
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      for (;;)
+      catch (IllegalAccessException localIllegalAccessException)
       {
-        wxe.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
       }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      catch (NoSuchMethodException localNoSuchMethodException)
       {
-        wxe.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
       }
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -92,39 +79,43 @@ public class CustomViewPager
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onDoubleTap(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onDoubleTap(paramMotionEvent);
     }
     return false;
   }
   
   public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onDoubleTapEvent(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onDoubleTapEvent(paramMotionEvent);
     }
     return false;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onDown(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onDown(paramMotionEvent);
     }
     return false;
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return false;
     }
     try
@@ -136,85 +127,93 @@ public class CustomViewPager
     return false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     long l = SystemClock.uptimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    wxe.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    SLog.a("Q.qqstory.player.ViewPager", "onLayout, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onLongPress(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      localSimpleOnGestureListener.onLongPress(paramMotionEvent);
     }
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     return false;
   }
   
   public void onShowPress(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onShowPress(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      localSimpleOnGestureListener.onShowPress(paramMotionEvent);
     }
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onSingleTapConfirmed(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onSingleTapConfirmed(paramMotionEvent);
     }
     return false;
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener != null) {
-      return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener.onSingleTapUp(paramMotionEvent);
+    GestureDetector.SimpleOnGestureListener localSimpleOnGestureListener = this.a;
+    if (localSimpleOnGestureListener != null) {
+      return localSimpleOnGestureListener.onSingleTapUp(paramMotionEvent);
     }
     return false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.jdField_a_of_type_Xqs.a(paramMotionEvent);
-    if (!this.jdField_a_of_type_Boolean) {
+    boolean bool = this.b.a(paramMotionEvent);
+    if (!this.g) {
       return bool;
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      try
+      if (i == 2)
       {
-        bool = super.onTouchEvent(paramMotionEvent);
-        return bool;
-      }
-      catch (IllegalArgumentException paramMotionEvent) {}
-      this.b = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
-      this.c = paramMotionEvent.getX();
-      this.d = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      this.jdField_a_of_type_Float += Math.abs(f1 - this.c);
-      this.b += Math.abs(f2 - this.d);
-      this.c = f1;
-      this.d = f2;
-      if (this.jdField_a_of_type_Float <= this.b)
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        return false;
+        float f1 = paramMotionEvent.getX();
+        float f2 = paramMotionEvent.getY();
+        this.c += Math.abs(f1 - this.e);
+        this.d += Math.abs(f2 - this.f);
+        this.e = f1;
+        this.f = f2;
+        if (this.c <= this.d)
+        {
+          getParent().requestDisallowInterceptTouchEvent(false);
+          return false;
+        }
       }
     }
+    else
+    {
+      this.d = 0.0F;
+      this.c = 0.0F;
+      this.e = paramMotionEvent.getX();
+      this.f = paramMotionEvent.getY();
+    }
+    try
+    {
+      bool = super.onTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (IllegalArgumentException paramMotionEvent) {}
     return false;
   }
   
@@ -227,17 +226,17 @@ public class CustomViewPager
   {
     long l = SystemClock.uptimeMillis();
     super.setAdapter(paramPagerAdapter);
-    wxe.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
+    SLog.a("Q.qqstory.player.ViewPager", "setAdapter, cost=%d", Long.valueOf(SystemClock.uptimeMillis() - l));
   }
   
   public void setGestureListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = paramSimpleOnGestureListener;
+    this.a = paramSimpleOnGestureListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

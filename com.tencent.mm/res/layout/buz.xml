@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:focusable="false" android:layout_width="fill_parent" android:layout_height="28.0dip" />
+    <View android:id="@id/ciq" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+</FrameLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/n_d" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="351.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/n_f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <LinearLayout android:paddingRight="10.0dip" android:paddingBottom="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <TextView android:textSize="11.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/4l" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:lines="1" />
+    </LinearLayout>
+    <com.tencent.image.URLImageView android:id="@id/e3" android:layout_width="45.0dip" android:layout_height="20.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqg" android:background="@drawable/bg2" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/aqp" android:background="@drawable/bx9" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqa" android:background="@drawable/bg1" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.image.URLImageView android:id="@id/aqk" android:background="@drawable/bx8" android:visibility="visible" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

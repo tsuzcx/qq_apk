@@ -1,109 +1,146 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.util.Log;
-import android.view.View;
+import android.content.Intent;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.sdk.g.d;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.m;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONObject;
 
 public final class ac
-  extends h
+  extends r
 {
-  private static final int ryc;
-  private CountDownLatch countDownLatch;
-  private Bitmap maskBitmap;
-  private RadarChart ryd;
-  private Bitmap rye;
-  
-  static
+  public ac(Context paramContext, m paramm, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(37358);
-    ryc = Color.parseColor("#26eae9e2");
-    AppMethodBeat.o(37358);
+    super(paramContext, paramm, paramViewGroup);
+    AppMethodBeat.i(96660);
+    this.QPl.mx("canvasId", paramm.QJD);
+    this.QPl.mx("canvasExt", paramm.QJE);
+    AppMethodBeat.o(96660);
   }
   
-  public ac(Context paramContext, ad paramad, ViewGroup paramViewGroup)
+  private boolean hjw()
   {
-    super(paramContext, paramad, paramViewGroup);
-    AppMethodBeat.i(37351);
-    this.countDownLatch = new CountDownLatch(2);
-    AppMethodBeat.o(37351);
-  }
-  
-  private static void a(Spannable paramSpannable, int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(37356);
-    int i = 0;
-    while (i < 2)
+    AppMethodBeat.i(96662);
+    if (((m)this.QOV).QJG == 1)
     {
-      paramSpannable.setSpan(paramVarArgs[i], paramInt1, paramInt2, 18);
-      i += 1;
+      AppMethodBeat.o(96662);
+      return true;
     }
-    AppMethodBeat.o(37356);
+    AppMethodBeat.o(96662);
+    return false;
   }
   
-  public final void cqK()
+  private boolean hjx()
   {
-    AppMethodBeat.i(37352);
-    this.ryd = ((RadarChart)this.contentView.findViewById(2131824191));
-    AppMethodBeat.o(37352);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37354);
-    d.h(new ac.1(this), "AdlandingRadarComp").start();
-    ad localad = (ad)crb();
-    if (localad != null)
+    AppMethodBeat.i(96663);
+    if (((m)this.QOV).QJH == 1)
     {
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localad.rtn, localad.rsJ, new ac.2(this));
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localad.rtt, localad.rsJ, new ac.3(this));
-      cqQ();
-      AppMethodBeat.o(37354);
-      return;
+      AppMethodBeat.o(96663);
+      return true;
     }
-    Log.wtf("AdlandingRadarChartComp", "null info");
-    AppMethodBeat.o(37354);
+    AppMethodBeat.o(96663);
+    return false;
   }
   
-  protected final void cqQ()
+  protected final void hiZ()
   {
-    AppMethodBeat.i(37353);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    AppMethodBeat.i(96661);
+    Object localObject2 = (m)this.QOV;
+    if (this.QPp) {}
+    for (int i = 20;; i = 14)
+    {
+      Context localContext = this.context;
+      Object localObject1 = ((m)localObject2).QJD;
+      String str1 = ((m)localObject2).QJE;
+      int j = ((m)localObject2).QJF;
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("sns_landig_pages_from_source", i);
+      ((Intent)localObject2).putExtra("sns_landig_pages_origin_from_source", hjn().QLu);
+      ((Intent)localObject2).putExtra("sns_landing_pages_xml", "");
+      String str3;
+      String str2;
+      JSONObject localJSONObject;
+      if (hjx())
+      {
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvasid", (String)localObject1);
+        ((Intent)localObject2).putExtra("sns_landing_pages_canvas_ext", str1);
+        if (hjw())
+        {
+          localObject1 = new int[2];
+          this.QPn.getLocationOnScreen((int[])localObject1);
+          ((Intent)localObject2).putExtra("img_gallery_top", localObject1[1]);
+          ((Intent)localObject2).putExtra("img_gallery_left", localObject1[0]);
+          ((Intent)localObject2).putExtra("img_gallery_width", this.QPn.getWidth());
+          ((Intent)localObject2).putExtra("img_gallery_height", this.QPn.getHeight());
+        }
+        ((Intent)localObject2).putExtra("sns_landing_pages_need_enter_and_exit_animation", hjw());
+        ((Intent)localObject2).putExtra("sns_landing_pages_extra", "");
+        ((Intent)localObject2).putExtra("sns_landing_pages_no_store", j);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ux_info", hjn().uxInfo);
+        ((Intent)localObject2).putExtra("sns_landing_is_native_sight_ad", hjn().QLv);
+        if (((localContext instanceof Activity)) && (hjx()) && (hjn().bizId == 2))
+        {
+          str3 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
+          if (!Util.isNullOrNil(str3))
+          {
+            str2 = String.valueOf(System.currentTimeMillis() / 1000L);
+            localJSONObject = new JSONObject();
+          }
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localJSONObject.put("sessionId", str2);
+          localJSONObject.put("cid", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r)this.QOV).QKG);
+          if (Util.isNullOrNil(str1)) {
+            continue;
+          }
+          localObject1 = str1;
+          localJSONObject.put("adBuffer", localObject1);
+          localJSONObject.put("preSessionId", str3);
+        }
+        catch (Exception localException)
+        {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("sns_landing_pages_search_extra", localJSONObject.toString());
+        ((Intent)localObject2).putExtra("sns_landing_pages_sessionId", str2);
+        ((Intent)localObject2).putExtra("sns_landing_pages_ad_buffer", str1);
+        if ((localContext instanceof Activity))
+        {
+          localObject1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_rawSnsId");
+          str1 = ((Activity)localContext).getIntent().getStringExtra("sns_landing_pages_share_sns_id");
+          ((Intent)localObject2).putExtra("sns_landing_pages_rawSnsId", (String)localObject1);
+          ((Intent)localObject2).putExtra("sns_landing_pages_share_sns_id", str1);
+        }
+        if ((this.QPq) && ((localContext instanceof Activity))) {
+          ((Intent)localObject2).putExtra("sns_landing_page_from_bonus", 1);
+        }
+        c.b(localContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject2);
+        hjt();
+        hja();
+        AppMethodBeat.o(96661);
+        return;
+        ((Intent)localObject2).putExtra("sns_landing_pages_pageid", Util.safeParseLong((String)localObject1));
+        break;
+        localObject1 = "";
+      }
     }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(37353);
-  }
-  
-  public final void cqz()
-  {
-    AppMethodBeat.i(37355);
-    super.cqz();
-    this.countDownLatch.countDown();
-    this.countDownLatch.countDown();
-    AppMethodBeat.o(37355);
-  }
-  
-  protected final int getLayout()
-  {
-    return 2130970775;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ac
  * JD-Core Version:    0.7.0.1
  */

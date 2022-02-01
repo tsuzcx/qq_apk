@@ -1,17 +1,729 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="6">
+        <item name="android:colorAccent">#ffffff00</item>
+    </style>
     <style name="ac" parent="@style/ab">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
+    <style name="zt" parent="@android:style/TextAppearance.Material" />
+    <style name="zu" parent="@android:style/TextAppearance.Material.Body1" />
+    <style name="zv" parent="@android:style/TextAppearance.Material.Body2" />
+    <style name="zw" parent="@android:style/TextAppearance.Material.Button" />
+    <style name="zx" parent="@android:style/TextAppearance.Material.Caption" />
+    <style name="zy" parent="@android:style/TextAppearance.Material.Display1" />
+    <style name="zz" parent="@android:style/TextAppearance.Material.Display2" />
+    <style name="00" parent="@android:style/TextAppearance.Material.Display3" />
+    <style name="01" parent="@android:style/TextAppearance.Material.Display4" />
+    <style name="02" parent="@android:style/TextAppearance.Material.Headline" />
+    <style name="03" parent="@android:style/TextAppearance.Material.Inverse" />
+    <style name="04" parent="@android:style/TextAppearance.Material.Large" />
+    <style name="05" parent="@android:style/TextAppearance.Material.Large.Inverse" />
+    <style name="06" parent="@android:style/TextAppearance.Material.Medium" />
+    <style name="07" parent="@android:style/TextAppearance.Material.Medium.Inverse" />
+    <style name="08" parent="@android:style/TextAppearance.Material.Menu" />
+    <style name="0_" parent="@android:style/TextAppearance.Material.SearchResult.Subtitle" />
+    <style name="0a" parent="@android:style/TextAppearance.Material.SearchResult.Title" />
+    <style name="0b" parent="@android:style/TextAppearance.Material.Small" />
+    <style name="0c" parent="@android:style/TextAppearance.Material.Small.Inverse" />
+    <style name="0d" parent="@android:style/TextAppearance.Material.Subhead" />
+    <style name="0f" parent="@android:style/TextAppearance.Material.Title" />
+    <style name="0j" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Subtitle" />
+    <style name="0k" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Subtitle.Inverse" />
+    <style name="0l" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title" />
+    <style name="0m" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title.Inverse" />
+    <style name="0n" parent="@android:style/TextAppearance.Material.Widget.ActionMode.Subtitle" />
+    <style name="0o" parent="@android:style/TextAppearance.Material.Widget.ActionMode.Title" />
+    <style name="0p" parent="@android:style/TextAppearance.Material.Widget.Button" />
+    <style name="0u" parent="@style/9u">
+        <item name="android:textSize">@dimen/61</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="0v" parent="@android:style/TextAppearance.Material.Widget.PopupMenu.Large" />
+    <style name="0w" parent="@android:style/TextAppearance.Material.Widget.PopupMenu.Small" />
+    <style name="0x" parent="@android:style/TextAppearance.Material.Button" />
+    <style name="0y" parent="@android:style/TextAppearance.Material.Widget.TextView.SpinnerItem" />
+    <style name="0z" parent="@style/9u">
+        <item name="android:textSize">@dimen/bh9</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?75</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.08928572</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="10" parent="@style/9x">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.08928572</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="11" parent="@style/a0j">
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.0125</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="12" parent="@style/a0h">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.007142857</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="14" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Subtitle" />
+    <style name="15" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title" />
+    <style name="16" parent="@style/adl" />
+    <style name="18" parent="@style/adm" />
+    <style name="1c" parent="@style/adn" />
+    <style name="1e" parent="@style/ado" />
+    <style name="1j" parent="@style/adp" />
+    <style name="1m" parent="@style/adq" />
+    <style name="1s" parent="@style/adr" />
+    <style name="1w" parent="@style/ads" />
+    <style name="26" parent="@style/adt" />
+    <style name="29" parent="@style/2k">
+        <item name="android:windowBackground">@drawable/eem</item>
+    </style>
+    <style name="2b" parent="@style/2c">
+        <item name="android:colorBackground">@color/9a</item>
+        <item name="android:buttonBarButtonStyle">?4d</item>
+        <item name="android:timePickerDialogTheme">@style/a51</item>
+        <item name="android:datePickerDialogTheme">@style/a51</item>
+        <item name="02">@style/a4y</item>
+        <item name="03">@dimen/blr</item>
+        <item name="05">@style/a8o</item>
+        <item name="09">@style/a4p</item>
+        <item name="0t">@style/a_q</item>
+        <item name="1s">@style/a52</item>
+        <item name="20">@style/a8r</item>
+        <item name="3p">@style/a99</item>
+        <item name="3r">@style/a90</item>
+        <item name="3s">@style/a4x</item>
+        <item name="4d">@style/a99</item>
+        <item name="57">@style/a9s</item>
+        <item name="6x">?7d</item>
+        <item name="73">@color/9b</item>
+        <item name="7_">@color/9h</item>
+        <item name="7a">@color/9i</item>
+        <item name="a3g">@style/a9x</item>
+        <item name="a9q">@style/a_p</item>
+        <item name="a_o">@style/a55</item>
+        <item name="a_w">@style/a5a</item>
+        <item name="aa6">@style/a_1</item>
+        <item name="aa7">@style/a5_</item>
+        <item name="aad">@style/a5g</item>
+        <item name="ace">@style/a_m</item>
+        <item name="ae1">@style/a_n</item>
+        <item name="af5">@style/a9t</item>
+        <item name="ahi">@style/a9d</item>
+        <item name="ahj">@style/a_u</item>
+        <item name="ahk">@style/a_w</item>
+        <item name="s_">@style/a9u</item>
+        <item name="aj8">@style/a_x</item>
+        <item name="ajs">?ak2</item>
+        <item name="ak1">?ak2</item>
+        <item name="ak9">@style/aa4</item>
+        <item name="alw">@style/aaj</item>
+        <item name="ao6">com.google.android.material.theme.MaterialComponentsViewInflater</item>
+    </style>
+    <style name="2f" parent="@style/2g">
+        <item name="android:colorBackground">@color/9n</item>
+        <item name="android:buttonBarButtonStyle">?4d</item>
+        <item name="android:timePickerDialogTheme">@style/a51</item>
+        <item name="android:datePickerDialogTheme">@style/a51</item>
+        <item name="02">@style/a53</item>
+        <item name="03">@dimen/blr</item>
+        <item name="05">@style/a9y</item>
+        <item name="0t">@style/a_q</item>
+        <item name="1s">@style/a52</item>
+        <item name="20">@style/a8p</item>
+        <item name="3p">@style/a99</item>
+        <item name="3r">@style/a90</item>
+        <item name="3s">@style/a54</item>
+        <item name="4d">@style/a99</item>
+        <item name="57">@style/a9s</item>
+        <item name="6x">?7d</item>
+        <item name="73">@color/9o</item>
+        <item name="7_">@color/9u</item>
+        <item name="7a">@color/9v</item>
+        <item name="a3g">@style/a9x</item>
+        <item name="a9q">@style/a_p</item>
+        <item name="a_o">@style/a55</item>
+        <item name="a_w">@style/a5a</item>
+        <item name="aa6">@style/a_1</item>
+        <item name="aa7">@style/a5_</item>
+        <item name="aad">@style/a5g</item>
+        <item name="ace">@style/a_m</item>
+        <item name="ae1">@style/a_n</item>
+        <item name="af5">@style/a9t</item>
+        <item name="ahi">@style/a9d</item>
+        <item name="ahj">@style/a_u</item>
+        <item name="ahk">@style/a_w</item>
+        <item name="s_">@style/a9u</item>
+        <item name="aj8">@style/a_x</item>
+        <item name="ajs">?ak2</item>
+        <item name="ak1">?ak2</item>
+        <item name="ak9">@style/aa4</item>
+        <item name="alw">@style/aaj</item>
+        <item name="ao6">com.google.android.material.theme.MaterialComponentsViewInflater</item>
+    </style>
+    <style name="2y" parent="@android:style/Widget.Material.ActionBar.TabText" />
+    <style name="2z" parent="@android:style/Widget.Material.ActionBar.TabView" />
+    <style name="30" parent="@android:style/Widget.Material.ActionButton" />
+    <style name="31" parent="@android:style/Widget.Material.ActionButton.CloseMode">
+        <item name="android:minWidth">56.0dip</item>
+    </style>
+    <style name="32" parent="@android:style/Widget.Material.ActionButton.Overflow">
+        <item name="android:src">@null</item>
+        <item name="ahs">@drawable/rs</item>
+    </style>
+    <style name="35" parent="@android:style/Widget.Material.AutoCompleteTextView">
+        <item name="android:background">?a1l</item>
+    </style>
+    <style name="36" parent="@android:style/Widget.Material.Button" />
+    <style name="37" parent="@android:style/Widget.Material.Button.Borderless" />
+    <style name="38" parent="@android:style/Widget.Material.Button.Borderless.Colored">
+        <item name="android:textColor">@color/2q</item>
+    </style>
+    <style name="3a" parent="@android:style/Widget.Material.Button.Small" />
+    <style name="3b" parent="@android:style/Widget.Material.ButtonBar" />
+    <style name="3d" parent="@android:style/Widget.Material.CompoundButton.CheckBox" />
+    <style name="3e" parent="@android:style/Widget.Material.CompoundButton.RadioButton" />
+    <style name="3i" parent="@android:style/Widget.Material.DropDownItem.Spinner" />
+    <style name="3j" parent="@android:style/Widget.Material.EditText">
+        <item name="android:background">?a1l</item>
+    </style>
+    <style name="3k" parent="@android:style/Widget.Material.ImageButton" />
+    <style name="3o" parent="@android:style/Widget.Material.Light.ActionBar.TabText" />
+    <style name="3p" parent="@android:style/Widget.Material.Light.ActionBar.TabText" />
+    <style name="3q" parent="@android:style/Widget.Material.Light.ActionBar.TabView" />
+    <style name="3r" parent="@android:style/Widget.Material.Light.PopupMenu" />
+    <style name="3s" parent="@style/3r">
+        <item name="android:dropDownHorizontalOffset">-4.0dip</item>
+        <item name="android:overlapAnchor">true</item>
+    </style>
+    <style name="3u" parent="@android:style/Widget.Material.ListPopupWindow" />
+    <style name="3v" parent="@android:style/Widget.Material.ListView" />
+    <style name="3w" parent="@android:style/Widget.Material.ListView.DropDown" />
+    <style name="3x" parent="@style/3v" />
+    <style name="3y" parent="@android:style/Widget.Material.PopupMenu" />
+    <style name="3z" parent="@style/3y">
+        <item name="android:dropDownHorizontalOffset">-4.0dip</item>
+        <item name="android:overlapAnchor">true</item>
+    </style>
+    <style name="41" parent="@android:style/Widget.Material.ProgressBar" />
+    <style name="42" parent="@android:style/Widget.Material.ProgressBar.Horizontal" />
+    <style name="43" parent="@android:style/Widget.Material.RatingBar" />
+    <style name="48" parent="@android:style/Widget.Material.SeekBar" />
+    <style name="4_" parent="@android:style/Widget.Material.Spinner" />
+    <style name="4b" parent="@android:style/Widget.Material.TextView" />
+    <style name="4c" parent="@android:style/Widget.Material.TextView.SpinnerItem" />
+    <style name="4e" parent="@android:style/Widget.Material.Toolbar.Button.Navigation" />
+    <style name="4g" parent="@style/a6j">
+        <item name="android:textAppearance">?ak2</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">16.0dip</item>
+        <item name="android:paddingTop">17.0dip</item>
+        <item name="android:paddingRight">16.0dip</item>
+        <item name="android:paddingBottom">17.0dip</item>
+        <item name="android:dropDownVerticalOffset">@dimen/bjj</item>
+        <item name="android:paddingStart">16.0dip</item>
+        <item name="android:paddingEnd">16.0dip</item>
+        <item name="android:popupElevation">@dimen/bji</item>
+        <item name="a26">true</item>
+        <item name="a27">true</item>
+    </style>
+    <style name="4h" parent="@android:style/Widget.Material.CheckedTextView" />
+    <style name="4i" parent="@android:style/Widget">
+        <item name="android:textAppearance">?ajj</item>
+        <item name="android:textColor">@color/au7</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:text">@null</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:checkable">false</item>
+        <item name="android:stateListAnimator">@animator/l</item>
+        <item name="5b">@drawable/e76</item>
+        <item name="5g">true</item>
+        <item name="5i">@color/au4</item>
+        <item name="5k">6.0dip</item>
+        <item name="5m">@null</item>
+        <item name="5o">24.0dip</item>
+        <item name="5q">true</item>
+        <item name="5r">32.0dip</item>
+        <item name="5s">48.0dip</item>
+        <item name="5x">4.0dip</item>
+        <item name="5y">?79</item>
+        <item name="5z">0.0dip</item>
+        <item name="61">@color/au6</item>
+        <item name="6j">@drawable/e77</item>
+        <item name="6l">2.0dip</item>
+        <item name="6m">18.0dip</item>
+        <item name="6n">2.0dip</item>
+        <item name="6o">@color/au5</item>
+        <item name="6p">true</item>
+        <item name="a26">true</item>
+        <item name="a27">true</item>
+        <item name="a28">true</item>
+        <item name="a5j">0.0dip</item>
+        <item name="a5n">0.0dip</item>
+        <item name="afp">@color/aum</item>
+        <item name="agr">?agv</item>
+        <item name="agu">@style/93</item>
+        <item name="ak7">6.0dip</item>
+        <item name="akc">8.0dip</item>
+    </style>
+    <style name="4l" parent="@style/a7p">
+        <item name="android:overlapAnchor">true</item>
+    </style>
+    <style name="4m" parent="@style/a7l">
+        <item name="android:popupBackground">?ae0</item>
+        <item name="android:dropDownVerticalOffset">1.0dip</item>
+        <item name="android:popupElevation">8.0dip</item>
+    </style>
+    <style name="6h" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:background">@null</item>
+        <item name="android:maxHeight">@dimen/bq9</item>
+        <item name="android:progressDrawable">@drawable/eek</item>
+        <item name="android:minHeight">@dimen/bq9</item>
+        <item name="android:thumb">@drawable/gt4</item>
+        <item name="android:splitTrack">false</item>
+    </style>
+    <style name="76" parent="@android:style/Widget.DeviceDefault.DatePicker">
+        <item name="android:headerBackground">?7_</item>
+        <item name="android:headerMonthTextAppearance">@style/ady</item>
+        <item name="android:headerDayOfMonthTextAppearance">@style/adz</item>
+        <item name="android:headerYearTextAppearance">@style/ady</item>
+        <item name="android:calendarTextColor">?79</item>
+        <item name="android:datePickerMode">calendar</item>
+        <item name="2t">@dimen/bh4</item>
+        <item name="2w">@dimen/bh4</item>
+        <item name="agr">?agt</item>
+    </style>
+    <style name="77" parent="@android:style/Widget.DeviceDefault.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="2t">@dimen/bh4</item>
+        <item name="2w">@dimen/bh4</item>
+        <item name="agr">?agt</item>
+    </style>
+    <style name="7m" parent="@style/adu" />
+    <style name="7n" parent="@style/adv" />
+    <style name="7s">
+        <item name="android:colorControlNormal">?72</item>
+        <item name="android:colorControlActivated">?70</item>
+        <item name="android:colorButtonNormal">?6z</item>
+        <item name="android:colorControlHighlight">?71</item>
+        <item name="android:colorPrimary">?7_</item>
+        <item name="android:colorPrimaryDark">?7a</item>
+        <item name="android:colorAccent">?6x</item>
+    </style>
+    <style name="7t" parent="@style/7s" />
+    <style name="7u" parent="@style/7s" />
     <style name="fy" parent="@style/fx">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
+    <style name="a15" parent="@android:style/TextAppearance.Material.Notification" />
+    <style name="a16" parent="@android:style/TextAppearance.Material.Notification.Info" />
+    <style name="a18" parent="@android:style/TextAppearance.Material.Notification.Time" />
+    <style name="a19" parent="@android:style/TextAppearance.Material.Notification.Title" />
+    <style name="a1k" parent="@style/0z">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="a1l" parent="@style/9w">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.03125</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1m" parent="@style/9v">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.017857144</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1n" parent="@style/10">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="a1o" parent="@style/9y">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.033333335</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1q" parent="@style/a02">
+        <item name="android:textSize">96.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:letterSpacing">-0.015625</item>
+        <item name="gf">sans-serif-light</item>
+    </style>
+    <style name="a1r" parent="@style/a01">
+        <item name="android:textSize">60.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:letterSpacing">-0.008333334</item>
+        <item name="gf">sans-serif-light</item>
+    </style>
+    <style name="a1s" parent="@style/a00">
+        <item name="android:textSize">48.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1t" parent="@style/9z">
+        <item name="android:textSize">34.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.007352941</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1u" parent="@style/a03">
+        <item name="android:textSize">24.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1v" parent="@style/11">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="a1w" parent="@style/9u">
+        <item name="android:textSize">10.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.16666667</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1x" parent="@style/a0h">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:letterSpacing">0.009375</item>
+        <item name="gf">sans-serif</item>
+    </style>
+    <style name="a1y" parent="@style/12">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="gf">sans-serif-medium</item>
+    </style>
+    <style name="a4x" parent="@style/a51">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/z7</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="3t">@style/a94</item>
+        <item name="a_t">@style/a95</item>
+    </style>
+    <style name="a54" parent="@style/a51">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/z7</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="3t">@style/a94</item>
+        <item name="a_t">@style/a95</item>
+    </style>
+    <style name="a57" parent="@style/a55">
+        <item name="android:buttonBarPositiveButtonStyle">@style/a9_</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/a9_</item>
+    </style>
+    <style name="a58" parent="@style/a57">
+        <item name="android:datePickerStyle">@style/76</item>
+    </style>
+    <style name="a59" parent="@style/a57">
+        <item name="android:datePickerStyle">@style/77</item>
+    </style>
+    <style name="a5k">
+        <item name="android:colorAccent">#ffff0000</item>
+    </style>
+    <style name="a89">
+        <item name="android:background">@drawable/eff</item>
+    </style>
+    <style name="a8_">
+        <item name="android:textAppearance">?android:textAppearanceButton</item>
+        <item name="android:textSize">@dimen/bm0</item>
+        <item name="android:textColor">@color/4g</item>
+    </style>
+    <style name="a8a" parent="@android:style/Widget">
+        <item name="android:background">?7_</item>
+        <item name="android:stateListAnimator">@animator/z</item>
+        <item name="android:touchscreenBlocksFocus">true</item>
+    </style>
+    <style name="a8c" parent="@android:style/Widget">
+        <item name="android:background">?android:colorBackground</item>
+        <item name="android:elevation">@dimen/bbq</item>
+        <item name="30">?android:colorBackground</item>
+        <item name="3f">true</item>
+        <item name="3h">lvb</item>
+        <item name="3j">false</item>
+        <item name="a26">false</item>
+        <item name="agr">@null</item>
+        <item name="agu">@null</item>
+    </style>
+    <style name="a93" parent="@style/a8c">
+        <item name="android:background">@null</item>
+        <item name="android:elevation">@dimen/bbp</item>
+        <item name="30">?7f</item>
+        <item name="a26">true</item>
+        <item name="agr">?ags</item>
+        <item name="agu">@style/92</item>
+    </style>
+    <style name="a94" parent="@style/a93">
+        <item name="android:elevation">@dimen/bbq</item>
+    </style>
+    <style name="a95" parent="@style/a6k">
+        <item name="android:textAppearance">?ajk</item>
+        <item name="android:textColor">@color/aty</item>
+        <item name="android:background">@empty</item>
+        <item name="android:paddingLeft">@dimen/bhu</item>
+        <item name="android:paddingTop">@dimen/bhw</item>
+        <item name="android:paddingRight">@dimen/bhv</item>
+        <item name="android:paddingBottom">@dimen/bht</item>
+        <item name="android:insetLeft">0.0dip</item>
+        <item name="android:insetRight">0.0dip</item>
+        <item name="android:insetTop">@dimen/bhr</item>
+        <item name="android:insetBottom">@dimen/bhr</item>
+        <item name="android:stateListAnimator">@animator/i</item>
+        <item name="30">@color/ats</item>
+        <item name="dw">@null</item>
+        <item name="a1o">@dimen/bhm</item>
+        <item name="a26">true</item>
+        <item name="a27">true</item>
+        <item name="a5l">@dimen/bhq</item>
+        <item name="a5o">@color/aty</item>
+        <item name="afp">@color/att</item>
+        <item name="agr">?agv</item>
+    </style>
+    <style name="a9e" parent="@style/a95">
+        <item name="android:stateListAnimator">@animator/j</item>
+        <item name="a1o">0.0dip</item>
+    </style>
+    <style name="a9g" parent="@style/c1">
+        <item name="android:stateListAnimator">@animator/k</item>
+        <item name="by">?7f</item>
+        <item name="bz">@null</item>
+        <item name="c0">@dimen/bjd</item>
+        <item name="4v">@color/au2</item>
+        <item name="5b">@drawable/e74</item>
+        <item name="5d">@dimen/bj_</item>
+        <item name="5e">@dimen/bja</item>
+        <item name="5f">?7_</item>
+        <item name="a26">true</item>
+        <item name="afp">@color/au3</item>
+        <item name="agr">?agt</item>
+    </style>
+    <style name="a9v" parent="@style/a95">
+        <item name="android:textColor">@color/auc</item>
+        <item name="android:paddingLeft">@dimen/bjw</item>
+        <item name="android:paddingTop">@dimen/bjy</item>
+        <item name="android:paddingRight">@dimen/bjq</item>
+        <item name="android:paddingBottom">@dimen/bjl</item>
+        <item name="android:minWidth">@dimen/bjv</item>
+        <item name="android:minHeight">@dimen/bju</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:insetTop">0.0dip</item>
+        <item name="android:insetBottom">0.0dip</item>
+        <item name="android:paddingStart">@dimen/bjw</item>
+        <item name="android:paddingEnd">@dimen/bjq</item>
+        <item name="android:stateListAnimator">@animator/q</item>
+        <item name="30">@color/aub</item>
+        <item name="6t">@dimen/bbw</item>
+        <item name="a1o">@dimen/bjp</item>
+        <item name="a5l">@dimen/bjt</item>
+        <item name="a5m">@dimen/bjs</item>
+        <item name="a5o">@color/auc</item>
+        <item name="afp">@color/aud</item>
+        <item name="agu">@style/94</item>
+    </style>
+    <style name="a_n" parent="@style/4k">
+        <item name="android:popupBackground">?ae0</item>
+        <item name="android:popupElevation">8.0dip</item>
+    </style>
+    <style name="a_q" parent="@style/4n">
+        <item name="android:popupBackground">?ae0</item>
+        <item name="android:popupElevation">8.0dip</item>
+    </style>
+    <style name="a_t" parent="@style/4o">
+        <item name="android:background">?88</item>
+    </style>
+    <style name="aak" parent="@style/aaj">
+        <item name="android:theme">@style/a5i</item>
+        <item name="android:background">?7_</item>
+        <item name="android:elevation">@dimen/bbc</item>
+        <item name="aih">@color/asw</item>
+        <item name="uk">?76</item>
+    </style>
+    <style name="abk" parent="@style/abj">
+        <item name="android:textSize">19.0dip</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bk1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">51.349976dip</item>
+        <item name="android:shadowDy">2.0</item>
+        <item name="android:elevation">2.0dip</item>
+    </style>
+    <style name="abl" parent="@style/abk">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">@color/aqz</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bk0</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">36.0dip</item>
+        <item name="android:elevation">0.0dip</item>
+        <item name="rb">0.0dip</item>
+    </style>
     <style name="u1" parent="@style/u0">
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="adh" parent="@android:style/TextAppearance.Material.Widget.PopupMenu.Large" />
+    <style name="adi" parent="@android:style/TextAppearance.Material.Widget.PopupMenu.Small" />
+    <style name="adj" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:buttonBarButtonStyle">@style/a9a</item>
+    </style>
+    <style name="adk" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:buttonBarButtonStyle">@style/a9a</item>
+    </style>
+    <style name="adl" parent="@style/2n">
+        <item name="android:colorControlNormal">?72</item>
+        <item name="android:colorControlActivated">?70</item>
+        <item name="android:colorButtonNormal">?6z</item>
+        <item name="android:colorControlHighlight">?71</item>
+        <item name="android:colorPrimary">?7_</item>
+        <item name="android:colorPrimaryDark">?7a</item>
+        <item name="android:colorAccent">?6x</item>
+        <item name="00">?android:actionBarDivider</item>
+        <item name="01">@drawable/hxw</item>
+        <item name="03">?android:actionBarSize</item>
+        <item name="0a">?android:actionButtonStyle</item>
+        <item name="0f">?android:actionModeBackground</item>
+        <item name="0h">?android:actionModeCloseDrawable</item>
+        <item name="3p">?android:borderlessButtonStyle</item>
+        <item name="4o">?android:buttonStyle</item>
+        <item name="4p">?android:buttonStyleSmall</item>
+        <item name="57">?android:checkboxStyle</item>
+        <item name="5h">?android:checkedTextViewStyle</item>
+        <item name="a0a">?android:dividerHorizontal</item>
+        <item name="a0c">?android:dividerVertical</item>
+        <item name="a1l">@drawable/os</item>
+        <item name="a1m">?android:editTextColor</item>
+        <item name="a5d">?android:homeAsUpIndicator</item>
+        <item name="a9j">?android:listChoiceBackgroundIndicator</item>
+        <item name="a9t">?android:listPreferredItemHeightSmall</item>
+        <item name="af5">?android:radioButtonStyle</item>
+        <item name="af_">?android:ratingBarStyle</item>
+        <item name="agg">?android:selectableItemBackground</item>
+        <item name="agh">?android:selectableItemBackgroundBorderless</item>
+        <item name="r9">?android:spinnerStyle</item>
+        <item name="ajs">?android:textAppearanceLargePopupMenu</item>
+        <item name="ak1">?android:textAppearanceSmallPopupMenu</item>
+    </style>
+    <style name="adm" parent="@style/2o">
+        <item name="android:windowElevation">@dimen/5d</item>
+    </style>
+    <style name="adn" parent="@style/2p">
+        <item name="android:colorControlNormal">?72</item>
+        <item name="android:colorControlActivated">?70</item>
+        <item name="android:colorButtonNormal">?6z</item>
+        <item name="android:colorControlHighlight">?71</item>
+        <item name="android:colorPrimary">?7_</item>
+        <item name="android:colorPrimaryDark">?7a</item>
+        <item name="android:colorAccent">?6x</item>
+        <item name="00">?android:actionBarDivider</item>
+        <item name="01">@drawable/hxw</item>
+        <item name="03">?android:actionBarSize</item>
+        <item name="0a">?android:actionButtonStyle</item>
+        <item name="0f">?android:actionModeBackground</item>
+        <item name="0h">?android:actionModeCloseDrawable</item>
+        <item name="3p">?android:borderlessButtonStyle</item>
+        <item name="4o">?android:buttonStyle</item>
+        <item name="4p">?android:buttonStyleSmall</item>
+        <item name="57">?android:checkboxStyle</item>
+        <item name="5h">?android:checkedTextViewStyle</item>
+        <item name="a0a">?android:dividerHorizontal</item>
+        <item name="a0c">?android:dividerVertical</item>
+        <item name="a1l">@drawable/os</item>
+        <item name="a1m">?android:editTextColor</item>
+        <item name="a5d">?android:homeAsUpIndicator</item>
+        <item name="a9j">?android:listChoiceBackgroundIndicator</item>
+        <item name="a9t">?android:listPreferredItemHeightSmall</item>
+        <item name="af5">?android:radioButtonStyle</item>
+        <item name="af_">?android:ratingBarStyle</item>
+        <item name="agg">?android:selectableItemBackground</item>
+        <item name="agh">?android:selectableItemBackgroundBorderless</item>
+        <item name="r9">?android:spinnerStyle</item>
+        <item name="ajs">?android:textAppearanceLargePopupMenu</item>
+        <item name="ak1">?android:textAppearanceSmallPopupMenu</item>
+    </style>
+    <style name="ado" parent="@style/2q">
+        <item name="android:windowElevation">@dimen/5d</item>
+    </style>
+    <style name="adp" parent="@style/2b">
+        <item name="android:alertDialogTheme">@style/adw</item>
+    </style>
+    <style name="adq" parent="@style/2d">
+        <item name="android:alertDialogTheme">@style/adw</item>
+    </style>
+    <style name="adr" parent="@style/2f">
+        <item name="android:alertDialogTheme">@style/adx</item>
+    </style>
+    <style name="ads" parent="@style/2i">
+        <item name="android:alertDialogTheme">@style/adx</item>
+    </style>
+    <style name="adt" parent="@style/2r">
+        <item name="android:windowElevation">@dimen/5d</item>
     </style>
     <style name="xh" parent="@style/d6">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+    <style name="adu" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:textColorHintInverse">@color/2v</item>
+        <item name="android:textColorHint">@color/2u</item>
+        <item name="android:textColorLink">?android:colorAccent</item>
+        <item name="android:buttonBarStyle">?4h</item>
+        <item name="android:buttonBarButtonStyle">?4d</item>
+        <item name="android:textColorLinkInverse">?android:colorAccent</item>
+    </style>
+    <style name="adv" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:textColorHintInverse">@color/2u</item>
+        <item name="android:textColorHint">@color/2v</item>
+        <item name="android:textColorLink">?android:colorAccent</item>
+        <item name="android:buttonBarStyle">?4h</item>
+        <item name="android:buttonBarButtonStyle">?4d</item>
+        <item name="android:textColorLinkInverse">?android:colorAccent</item>
+    </style>
+    <style name="adw" parent="@style/adj" />
+    <style name="adx" parent="@style/adk" />
+    <style name="ady" parent="@style/a1v">
+        <item name="android:textColor">?76</item>
+    </style>
+    <style name="adz" parent="@style/a1q">
+        <item name="android:textColor">?76</item>
     </style>
 </resources>

@@ -8,54 +8,54 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Xfermode;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatEditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PhotoEditText
   extends AppCompatEditText
 {
-  private Xfermode AQF;
+  private Xfermode agHx;
   private int mBgColor;
   private Paint mPaint;
   
   public PhotoEditText(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(116388);
+    AppMethodBeat.i(9365);
     this.mPaint = new Paint(1);
     init();
-    AppMethodBeat.o(116388);
+    AppMethodBeat.o(9365);
   }
   
   public PhotoEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(116389);
+    AppMethodBeat.i(9366);
     this.mPaint = new Paint(1);
     init();
-    AppMethodBeat.o(116389);
+    AppMethodBeat.o(9366);
   }
   
   private void init()
   {
-    AppMethodBeat.i(116390);
+    AppMethodBeat.i(9367);
     new TextView(getContext()).setTextSize(getTextSize());
-    this.AQF = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    AppMethodBeat.o(116390);
+    this.agHx = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    AppMethodBeat.o(9367);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 0;
-    AppMethodBeat.i(116392);
+    AppMethodBeat.i(9369);
     if (this.mBgColor == 0)
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(116392);
+      AppMethodBeat.o(9369);
       return;
     }
     paramCanvas.saveLayerAlpha(null, (int)(getAlpha() * 255.0F), 31);
@@ -71,7 +71,7 @@ public class PhotoEditText
       localRect.left = ((int)(localRect.left - 18.0F));
       localRect.right = ((int)(localRect.right + 18.0F));
       if (getLineCount() != 1) {
-        break label288;
+        break label291;
       }
       if (!TextUtils.isEmpty(getText()))
       {
@@ -83,7 +83,7 @@ public class PhotoEditText
     {
       paramCanvas.restore();
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(116392);
+      AppMethodBeat.o(9369);
       return;
       float f2;
       for (f1 = 0.0F; i < getLineCount(); f1 = f2)
@@ -98,20 +98,20 @@ public class PhotoEditText
       localRect.right = ((int)(localRect.left + f1));
       localRect.bottom = (localRect.top + getLayout().getLineBottom(getLineCount() - 1));
       break;
-      label288:
+      label291:
       this.mPaint.setXfermode(null);
       this.mPaint.setColor(this.mBgColor);
       paramCanvas.drawRoundRect(new RectF(localRect), 12.0F, 12.0F, this.mPaint);
       if (getLayout().getLineWidth(getLineCount() - 1) < getLayout().getLineWidth(getLineCount() - 2))
       {
-        this.mPaint.setXfermode(this.AQF);
+        this.mPaint.setXfermode(this.agHx);
         RectF localRectF = new RectF();
         localRectF.left = (localRect.left + 36.0F + getLayout().getLineWidth(getLineCount() - 1));
         localRectF.top = (localRect.bottom - getLineHeight());
         localRectF.right = (localRect.right + 18.0F);
         localRectF.bottom = (localRect.bottom + 18.0F);
         paramCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, this.mPaint);
-        this.mPaint.setXfermode(this.AQF);
+        this.mPaint.setXfermode(this.agHx);
         paramCanvas.drawRect(new Rect((int)(localRectF.left - getTextSize() / 2.0F), (int)(localRectF.bottom - getTextSize() / 2.0F), (int)localRectF.left, (int)localRectF.bottom), this.mPaint);
         paramCanvas.drawRect(new Rect((int)(localRect.right - getTextSize() / 2.0F), (int)(localRect.top + getLayout().getLineBottom(getLineCount() - 2) - getTextSize() / 2.0F), localRect.right, localRect.top + getLayout().getLineBottom(getLineCount() - 2) + 3), this.mPaint);
         this.mPaint.setXfermode(null);
@@ -128,15 +128,15 @@ public class PhotoEditText
   
   public void setTextBackground(int paramInt)
   {
-    AppMethodBeat.i(116391);
+    AppMethodBeat.i(9368);
     this.mBgColor = paramInt;
     invalidate();
-    AppMethodBeat.o(116391);
+    AppMethodBeat.o(9368);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.PhotoEditText
  * JD-Core Version:    0.7.0.1
  */

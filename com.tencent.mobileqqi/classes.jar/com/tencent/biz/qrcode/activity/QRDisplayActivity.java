@@ -470,12 +470,12 @@ public class QRDisplayActivity
     if (this.jdField_e_of_type_Int == 1)
     {
       this.g = getString(2131560511);
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131232577);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232579));
-      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131232576);
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232585);
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131232580);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131232581);
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131232576);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131232578));
+      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131232575);
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131232584);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131232579);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131232580);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131563122));
       if (QLog.isDevelopLevel()) {
@@ -686,12 +686,12 @@ public class QRDisplayActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131232580) {
+    if (paramView.getId() == 2131232579) {
       if (!this.jdField_a_of_type_Boolean) {
         a();
       }
     }
-    while (paramView.getId() != 2131232584) {
+    while (paramView.getId() != 2131232583) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {

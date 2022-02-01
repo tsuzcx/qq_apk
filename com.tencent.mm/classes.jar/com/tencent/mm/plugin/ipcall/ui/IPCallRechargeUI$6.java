@@ -11,15 +11,15 @@ final class IPCallRechargeUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(22256);
-    IPCallRechargeUI.h(this.nUW);
-    AppMethodBeat.o(22256);
+    AppMethodBeat.i(25876);
+    IPCallRechargeUI.h(this.JOI);
+    AppMethodBeat.o(25876);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallRechargeUI.6
  * JD-Core Version:    0.7.0.1
  */

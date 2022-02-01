@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b1z" android:visibility="gone" android:layout_width="@dimen/a7h" android:layout_height="@dimen/a7h" />
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/fl" android:textColor="@color/ln" android:ellipsize="end" android:id="@id/b20" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
-        <TextView android:textSize="@dimen/fl" android:textColor="@color/ln" android:ellipsize="end" android:id="@id/b21" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="1" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:background="@color/ahb" android:paddingLeft="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d6"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/kqd" android:background="@drawable/ma" android:paddingLeft="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_centerVertical="true">
+        <ImageView android:gravity="center_vertical" android:id="@id/kqh" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@drawable/n8" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:id="@id/kqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/cd" android:maxWidth="@dimen/c4" android:minWidth="@dimen/d0" android:text="[今天吃什么？]" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/kqh" android:layout_centerVertical="true" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/kqf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginLeft="-12.0dip" android:layout_marginRight="@dimen/cd" android:layout_toRightOf="@id/kqq" android:layout_centerVertical="true">
+            <ImageView android:id="@id/kqg" android:background="@color/FG_4" android:layout_width="@dimen/vs" android:layout_height="14.0dip" android:layout_marginLeft="@dimen/bv" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/hq" android:textStyle="bold" android:textColor="@color/Brand" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/z9" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/kqg" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/kql" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12.0dip" android:layout_marginRight="@dimen/cd" android:layout_toRightOf="@id/kqq" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center_vertical" android:id="@id/kqm" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/bv" android:src="@raw/icons_outlined_me" android:scaleType="centerCrop" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/kqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[12]" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/kqm" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

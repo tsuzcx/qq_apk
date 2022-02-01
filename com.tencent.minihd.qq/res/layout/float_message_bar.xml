@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.flaotaio.SlipFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center|right|top" android:id="@id/float_msg_bar_container" android:layout_width="341.0dip" android:layout_height="62.0dip">
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="35.0dip" android:layout_marginBottom="1.0dip">
+            <FrameLayout android:id="@id/item_container" android:background="@drawable/float_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="42.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textSize="12.0sp" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/float_bar_nick" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="青草不说话" android:singleLine="true" />
+                    <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:ellipsize="end" android:id="@id/float_bar_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="要不你再看看之后的进度" android:singleLine="true" />
+                </LinearLayout>
+            </FrameLayout>
+        </FrameLayout>
+        <FrameLayout android:layout_gravity="right" android:id="@id/float_bar_face_container" android:background="@drawable/float_face_bg" android:layout_width="@dimen/float_bar_face_container_width" android:layout_height="fill_parent" android:layout_marginRight="9.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/float_bar_face" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/h001" android:scaleType="centerCrop" />
+        </FrameLayout>
+    </FrameLayout>
+</com.tencent.mobileqq.activity.flaotaio.SlipFrameLayout>

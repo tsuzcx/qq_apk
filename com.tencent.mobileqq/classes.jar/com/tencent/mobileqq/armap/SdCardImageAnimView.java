@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import ansm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,116 +12,130 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements ansm
+  implements FrameBmpCache.EndListener
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  ansm jdField_a_of_type_Ansm = null;
-  private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
-  public boolean a;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SdCardImageAnimView.2(this);
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  public boolean a = false;
+  FrameBmpCache.EndListener b = null;
+  private FrameBmpCache c;
+  private boolean d = false;
+  private Runnable e = new SdCardImageAnimView.1(this);
+  private boolean f = false;
+  private Bitmap g;
+  private boolean h = false;
+  private Runnable i = new SdCardImageAnimView.2(this);
   
   public SdCardImageAnimView(Context paramContext)
   {
     super(paramContext);
-    b();
+    c();
   }
   
   public SdCardImageAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b();
+    c();
   }
   
   public SdCardImageAnimView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache = new FrameBmpCache(getResources());
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(this);
-    new HandlerThread("sub_thread").start();
+    c();
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache != null) && (this.c))
-    {
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("SdCardImageAnimView", 2, "bgUpdate cb=" + localBitmap + ", cbm=" + this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != localBitmap)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-        setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      int i = 32;
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a > 0) {
-        i = 1000 / this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      postDelayed(this.jdField_a_of_type_JavaLangRunnable, i);
-    }
+    this.c = new FrameBmpCache(getResources());
+    this.c.a(this);
+    new HandlerThread("sub_thread").start();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a();
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.b();
-    this.c = true;
+    Object localObject = this.c;
+    if ((localObject != null) && (this.f))
+    {
+      localObject = ((FrameBmpCache)localObject).c();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("bgUpdate cb=");
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", cbm=");
+        localStringBuilder.append(this.g);
+        QLog.i("SdCardImageAnimView", 2, localStringBuilder.toString());
+      }
+      if (this.g != localObject)
+      {
+        this.g = ((Bitmap)localObject);
+        setImageBitmap(this.g);
+      }
+      int j = 32;
+      if (this.c.b > 0) {
+        j = 1000 / this.c.b;
+      }
+      this.a = true;
+      postDelayed(this.e, j);
+    }
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.c();
+    this.c.b();
+    this.c.d();
+    this.f = true;
+  }
+  
+  private void f()
+  {
+    FrameBmpCache localFrameBmpCache = this.c;
+    if (localFrameBmpCache != null) {
+      localFrameBmpCache.e();
     }
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.f = false;
+    this.a = false;
+    this.g = null;
   }
   
   public void a()
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.d)
     {
       QLog.i("SdCardImageAnimView", 1, "startAnim has no data, return ");
       return;
     }
-    if (this.c)
+    if (this.f)
     {
       QLog.i("SdCardImageAnimView", 1, "startAnim isAnimStarted, return");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    d();
-    post(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getSubThreadHandler().post(this.i);
+    removeCallbacks(this.e);
+    e();
+    post(this.e);
   }
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_Ansm != null) {
-      this.jdField_a_of_type_Ansm.a(this);
+    paramSdCardImageAnimView = this.b;
+    if (paramSdCardImageAnimView != null) {
+      paramSdCardImageAnimView.a(this);
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.d) {
       return false;
     }
-    ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    e();
+    ThreadManager.getSubThreadHandler().removeCallbacks(this.i);
+    removeCallbacks(this.e);
+    f();
     return true;
+  }
+  
+  public FrameBmpCache getFrameBmpCache()
+  {
+    return this.c;
   }
   
   public void setAnimationData(ArrayList<String> paramArrayList)
@@ -137,46 +150,47 @@ public class SdCardImageAnimView
   
   public void setAnimationData(ArrayList<String> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
-    for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramBoolean1);
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.b(paramBoolean2);
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramArrayList);
-      return;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.d = true;
+    } else {
+      this.d = false;
     }
+    this.c.a(paramBoolean1);
+    this.c.b(paramBoolean2);
+    this.c.a(paramArrayList);
   }
   
   public void setDefaultImg()
   {
-    ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
+    ThreadManager.getSubThreadHandler().post(this.i);
   }
   
-  public void setEndListener(ansm paramansm)
+  public void setEndListener(FrameBmpCache.EndListener paramEndListener)
   {
-    this.jdField_a_of_type_Ansm = paramansm;
+    this.b = paramEndListener;
   }
   
   public void setFPS(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramInt);
+    this.c.a(paramInt);
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (paramInt != 0) {
-      this.d = a();
-    }
-    while (!this.d) {
+    if (paramInt != 0)
+    {
+      this.h = b();
       return;
     }
-    a();
+    if (this.h) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView
  * JD-Core Version:    0.7.0.1
  */

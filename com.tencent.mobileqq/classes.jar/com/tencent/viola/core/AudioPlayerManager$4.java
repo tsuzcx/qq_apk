@@ -16,13 +16,20 @@ class AudioPlayerManager$4
     if (paramMediaPlayer != null) {
       paramMediaPlayer.playError(paramInt1, paramInt2);
     }
-    ViolaLogUtils.e("AudioPlayerManager", "playError,data:" + AudioPlayerManager.access$500(this.this$0) + ",what:" + paramInt1 + ",extra:" + paramInt2);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("playError,data:");
+    paramMediaPlayer.append(AudioPlayerManager.access$500(this.this$0));
+    paramMediaPlayer.append(",what:");
+    paramMediaPlayer.append(paramInt1);
+    paramMediaPlayer.append(",extra:");
+    paramMediaPlayer.append(paramInt2);
+    ViolaLogUtils.e("AudioPlayerManager", paramMediaPlayer.toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.AudioPlayerManager.4
  * JD-Core Version:    0.7.0.1
  */

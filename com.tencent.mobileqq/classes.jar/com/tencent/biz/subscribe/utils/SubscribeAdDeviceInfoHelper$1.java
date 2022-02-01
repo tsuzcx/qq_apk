@@ -1,34 +1,33 @@
 package com.tencent.biz.subscribe.utils;
 
-import aatd;
-import aate;
-import aatf;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.qphone.base.util.BaseApplication;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import ylz;
 
-public class SubscribeAdDeviceInfoHelper$1
+class SubscribeAdDeviceInfoHelper$1
   implements Runnable
 {
-  public SubscribeAdDeviceInfoHelper$1(ylz paramylz) {}
+  SubscribeAdDeviceInfoHelper$1(SubscribeAdDeviceInfoHelper paramSubscribeAdDeviceInfoHelper) {}
   
   public void run()
   {
-    Object localObject = new aate();
-    ((aate)localObject).a = "1b0ad2";
-    localObject = aatd.a(BaseApplication.getContext(), (aate)localObject);
-    ylz localylz = this.this$0;
-    if (localObject != null) {}
-    for (localObject = ((aatf)localObject).a;; localObject = null)
-    {
-      ylz.a(localylz, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
-      return;
+    Object localObject = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject).a = "1b0ad2";
+    localObject = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+    SubscribeAdDeviceInfoHelper localSubscribeAdDeviceInfoHelper = this.this$0;
+    if (localObject != null) {
+      localObject = ((GdtDeviceInfoHelper.Result)localObject).a;
+    } else {
+      localObject = null;
     }
+    SubscribeAdDeviceInfoHelper.a(localSubscribeAdDeviceInfoHelper, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

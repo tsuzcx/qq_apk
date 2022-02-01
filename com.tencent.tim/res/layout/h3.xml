@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/c6p" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.apollo.view.FrameGifView android:id="@id/ajb" android:background="@drawable/fa" android:visibility="gone" android:layout_width="49.0dip" android:layout_height="35.0dip" android:src="@drawable/c7d" android:scaleType="centerInside" android:layout_alignParentLeft="true" />
+    <View android:id="@id/e_s" android:background="#4cffffff" android:visibility="gone" android:layout_width="2.0px" android:layout_height="18.0dip" android:layout_toRightOf="@id/ajb" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/aig" android:background="@drawable/fa" android:layout_width="49.0dip" android:layout_height="35.0dip" android:src="@drawable/c78" android:scaleType="centerInside" android:layout_toRightOf="@id/e_s" />
+    <ImageView android:id="@id/f0c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/aig" android:layout_alignRight="@id/aig" />
+    <View android:id="@id/e_t" android:background="#4cffffff" android:layout_width="2.0px" android:layout_height="18.0dip" android:layout_toRightOf="@id/aig" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/aga" android:background="@drawable/f1" android:layout_width="49.0dip" android:layout_height="35.0dip" android:src="@drawable/c6s" android:scaleType="centerInside" android:layout_toRightOf="@id/e_t" />
+</RelativeLayout>

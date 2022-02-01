@@ -17,13 +17,14 @@ public final class NowNearbyVideoCommentProto$AddCommentResp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "result", "comment_id", "wording" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, AddCommentResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "result", "comment_id", "wording" }, new Object[] { localLong, localLong, localByteStringMicro }, AddCommentResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentResp
  * JD-Core Version:    0.7.0.1
  */

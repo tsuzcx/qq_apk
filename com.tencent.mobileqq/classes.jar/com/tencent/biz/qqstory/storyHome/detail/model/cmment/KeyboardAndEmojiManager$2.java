@@ -1,20 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 
-import wjq;
-
-public class KeyboardAndEmojiManager$2
+class KeyboardAndEmojiManager$2
   implements Runnable
 {
-  public KeyboardAndEmojiManager$2(wjq paramwjq) {}
+  KeyboardAndEmojiManager$2(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
   
   public void run()
   {
-    this.this$0.b();
+    this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager.2
  * JD-Core Version:    0.7.0.1
  */

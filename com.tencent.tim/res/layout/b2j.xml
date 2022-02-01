@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii_" android:background="@drawable/bg_texture" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bcm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ProgressBar android:id="@id/igu" android:layout_width="225.0dip" android:layout_height="6.0dip" android:layout_marginTop="26.0dip" android:progressDrawable="@drawable/b2k" style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/bcn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al3" android:text="@string/xj" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffb0b3bf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" android:text="@string/xk" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/f1b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:id="@id/aw7" layout="@layout/b23" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

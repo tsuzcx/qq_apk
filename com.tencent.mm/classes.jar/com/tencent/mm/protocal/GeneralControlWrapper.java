@@ -4,54 +4,49 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.protocal.protobuf.afc;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ccm;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class GeneralControlWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<GeneralControlWrapper> CREATOR;
-  public static final GeneralControlWrapper whX;
-  public static final GeneralControlWrapper whY;
-  private static Boolean wia;
-  public int whZ;
+  public static final GeneralControlWrapper YxA;
+  public static final GeneralControlWrapper YxB;
+  public int YxC;
   
   static
   {
-    AppMethodBeat.i(79976);
-    whX = new GeneralControlWrapper(10);
-    whY = new GeneralControlWrapper(1);
-    wia = null;
-    CREATOR = new GeneralControlWrapper.1();
-    AppMethodBeat.o(79976);
+    AppMethodBeat.i(152449);
+    YxA = new GeneralControlWrapper(10);
+    YxB = new GeneralControlWrapper(1);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(152449);
   }
   
   public GeneralControlWrapper(int paramInt)
   {
-    AppMethodBeat.i(79966);
-    this.whZ = paramInt;
-    ab.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
-    AppMethodBeat.o(79966);
+    AppMethodBeat.i(152439);
+    this.YxC = paramInt;
+    Log.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
+    AppMethodBeat.o(152439);
   }
   
   private GeneralControlWrapper(Parcel paramParcel)
   {
-    AppMethodBeat.i(79975);
-    this.whZ = paramParcel.readInt();
-    AppMethodBeat.o(79975);
+    AppMethodBeat.i(152448);
+    this.YxC = paramParcel.readInt();
+    AppMethodBeat.o(152448);
   }
   
-  public GeneralControlWrapper(afc paramafc)
+  public GeneralControlWrapper(ccm paramccm)
   {
-    AppMethodBeat.i(79965);
-    if (paramafc == null) {}
-    for (this.whZ = 0;; this.whZ = paramafc.wXX)
+    AppMethodBeat.i(152438);
+    if (paramccm == null) {}
+    for (this.YxC = 0;; this.YxC = paramccm.aalV)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
-      AppMethodBeat.o(79965);
+      Log.d("MicroMsg.GeneralControlWrapper", "edw <init>, ".concat(String.valueOf(this)));
+      AppMethodBeat.o(152438);
       return;
     }
   }
@@ -61,119 +56,100 @@ public class GeneralControlWrapper
     return 0;
   }
   
-  public final boolean dqu()
+  public final boolean iPN()
   {
-    AppMethodBeat.i(79967);
-    boolean bool1;
-    if ((this.whZ & 0x40000) != 0)
-    {
-      bool1 = true;
-      if (wia == null) {
-        if (1 != ((a)g.E(a.class)).a(a.a.lUt, 0)) {
-          break label102;
-        }
-      }
-    }
-    label102:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      wia = Boolean.valueOf(bool2);
-      ab.d("MicroMsg.GeneralControlWrapper", "canCallJsApiBeforeLoad, ret = %b, canCallJsApiBeforeLoaded = %b", new Object[] { Boolean.valueOf(bool1), wia });
-      if ((!bool1) && (!wia.booleanValue())) {
-        break label107;
-      }
-      AppMethodBeat.o(79967);
-      return true;
-      bool1 = false;
-      break;
-    }
-    label107:
-    AppMethodBeat.o(79967);
-    return false;
-  }
-  
-  public final boolean dqv()
-  {
-    AppMethodBeat.i(79968);
-    if ((this.whZ & 0x2) > 0) {}
+    AppMethodBeat.i(257298);
+    if ((this.YxC & 0x80000) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "allowInnerOpenUrl, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(79968);
+      Log.d("MicroMsg.GeneralControlWrapper", "needClearData, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(257298);
       return bool;
     }
   }
   
-  public final boolean dqw()
+  public final boolean iPO()
   {
-    AppMethodBeat.i(79969);
-    if ((this.whZ & 0x40) > 0) {}
+    AppMethodBeat.i(152441);
+    if ((this.YxC & 0x2) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "allowScanQRCode, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(79969);
+      Log.d("MicroMsg.GeneralControlWrapper", "allowInnerOpenUrl, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(152441);
       return bool;
     }
   }
   
-  public final boolean dqx()
+  public final boolean iPP()
   {
-    AppMethodBeat.i(79970);
-    if ((this.whZ & 0x800) > 0) {}
+    AppMethodBeat.i(152442);
+    if ((this.YxC & 0x40) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(79970);
+      Log.d("MicroMsg.GeneralControlWrapper", "allowScanQRCode, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(152442);
       return bool;
     }
   }
   
-  public final boolean dqy()
+  public final boolean iPQ()
   {
-    AppMethodBeat.i(79971);
-    if ((this.whZ & 0x4000) > 0) {}
+    AppMethodBeat.i(152443);
+    if ((this.YxC & 0x800) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(79971);
+      Log.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(152443);
       return bool;
     }
   }
   
-  public final boolean dqz()
+  public final boolean iPR()
   {
-    AppMethodBeat.i(79972);
-    if ((this.whZ & 0x8000) > 0) {}
+    AppMethodBeat.i(152444);
+    if ((this.YxC & 0x4000) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.GeneralControlWrapper", "allowFavImage, ret = ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(79972);
+      Log.d("MicroMsg.GeneralControlWrapper", "allowReportPageEvent, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(152444);
+      return bool;
+    }
+  }
+  
+  public final boolean iPS()
+  {
+    AppMethodBeat.i(152445);
+    if ((this.YxC & 0x8000) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.d("MicroMsg.GeneralControlWrapper", "allowFavImage, ret = ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(152445);
       return bool;
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(79973);
+    AppMethodBeat.i(152446);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[bitset=0x");
-    ((StringBuilder)localObject).append(Integer.toHexString(this.whZ));
+    ((StringBuilder)localObject).append(Integer.toHexString(this.YxC));
     ((StringBuilder)localObject).append("]");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(79973);
+    AppMethodBeat.o(152446);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(79974);
-    paramParcel.writeInt(this.whZ);
-    AppMethodBeat.o(79974);
+    AppMethodBeat.i(152447);
+    paramParcel.writeInt(this.YxC);
+    AppMethodBeat.o(152447);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.GeneralControlWrapper
  * JD-Core Version:    0.7.0.1
  */

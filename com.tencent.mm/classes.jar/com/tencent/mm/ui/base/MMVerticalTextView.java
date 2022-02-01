@@ -4,80 +4,108 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
+import com.tencent.mm.ah.a.m;
 
 public class MMVerticalTextView
   extends View
 {
+  Rect adUu;
+  private int adUv;
   private int direction;
-  private TextPaint hB;
   private String mText;
-  Rect znf;
+  private TextPaint xe;
   
   public MMVerticalTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106889);
-    this.znf = new Rect();
-    this.hB = new TextPaint();
-    this.hB.setAntiAlias(true);
-    this.hB.setTextSize(15.0F);
-    this.hB.setColor(-16777216);
-    this.hB.setTextAlign(Paint.Align.CENTER);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.verticaltextview);
-    int i = paramAttributeSet.getResourceId(0, 0);
+    AppMethodBeat.i(142251);
+    this.adUu = new Rect();
+    this.adUv = 0;
+    this.xe = new TextPaint();
+    this.xe.setAntiAlias(true);
+    this.xe.setTextSize(15.0F);
+    this.xe.setColor(-16777216);
+    this.xe.setTextAlign(Paint.Align.CENTER);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.verticaltextview);
+    int i = paramAttributeSet.getResourceId(a.m.verticaltextview_text, 0);
     if (i != 0) {
       this.mText = paramContext.getString(i);
     }
-    i = paramAttributeSet.getDimensionPixelOffset(2, 15);
+    i = paramAttributeSet.getDimensionPixelOffset(a.m.verticaltextview_textSize, 15);
     if (i > 0) {
-      this.hB.setTextSize(i);
+      this.xe.setTextSize(i);
     }
-    this.hB.setColor(paramAttributeSet.getColor(1, -16777216));
-    this.direction = paramAttributeSet.getInt(3, 0);
-    boolean bool = paramAttributeSet.getBoolean(4, false);
-    this.hB.setFakeBoldText(bool);
+    this.xe.setColor(paramAttributeSet.getColor(a.m.verticaltextview_textColor, -16777216));
+    this.direction = paramAttributeSet.getInt(a.m.verticaltextview_direction, 0);
+    boolean bool = paramAttributeSet.getBoolean(a.m.verticaltextview_textBold, false);
+    this.xe.setFakeBoldText(bool);
     paramAttributeSet.recycle();
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106889);
+    AppMethodBeat.o(142251);
+  }
+  
+  public float getTextSize()
+  {
+    AppMethodBeat.i(251303);
+    float f = this.xe.getTextSize();
+    AppMethodBeat.o(251303);
+    return f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(106894);
+    AppMethodBeat.i(142256);
     super.onDraw(paramCanvas);
-    int i = getHeight();
+    int i = 0;
+    int j = getHeight();
     Path localPath = new Path();
-    int j;
     if (this.direction == 0)
     {
-      j = (getWidth() >> 1) - (this.znf.height() >> 1);
-      localPath.moveTo(j, 0.0F);
-      localPath.lineTo(j, i);
+      i = (getWidth() - this.adUu.height()) / 2;
+      localPath.moveTo(0.0F, 0.0F);
+      localPath.lineTo(0.0F, j);
     }
     for (;;)
     {
-      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.hB);
-      AppMethodBeat.o(106894);
+      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, -i, this.xe);
+      AppMethodBeat.o(142256);
       return;
-      j = (getWidth() >> 1) + (this.znf.height() >> 1);
-      localPath.moveTo(j, i);
-      localPath.lineTo(j, 0.0F);
+      int k = (getWidth() >> 1) + (this.adUu.height() >> 1);
+      localPath.moveTo(k, j);
+      localPath.lineTo(k, 0.0F);
     }
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    AppMethodBeat.i(251315);
+    super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
+    if (this.adUv == 0)
+    {
+      paramAccessibilityNodeInfo.setClassName("android.widget.TextView");
+      AppMethodBeat.o(251315);
+      return;
+    }
+    if (this.adUv == 1) {
+      paramAccessibilityNodeInfo.setClassName("android.widget.Button");
+    }
+    AppMethodBeat.o(251315);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106893);
-    this.hB.getTextBounds(this.mText, 0, this.mText.length(), this.znf);
+    AppMethodBeat.i(142255);
+    this.xe.getTextBounds(this.mText, 0, this.mText.length(), this.adUu);
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (j == 1073741824) {}
@@ -90,55 +118,76 @@ public class MMVerticalTextView
       for (;;)
       {
         setMeasuredDimension(paramInt1, paramInt2);
-        AppMethodBeat.o(106893);
+        AppMethodBeat.o(142255);
         return;
-        i = this.znf.height();
+        i = (int)(this.xe.getFontMetrics().bottom - this.xe.getFontMetrics().top);
         if (j != -2147483648) {
-          break label138;
+          break label153;
         }
         paramInt1 = Math.min(i, paramInt1);
         break;
-        i = (int)Math.ceil(this.hB.measureText(this.mText));
+        i = (int)Math.ceil(this.xe.measureText(this.mText));
         if (j == -2147483648) {
           paramInt2 = Math.min(i, paramInt2);
         } else {
           paramInt2 = i;
         }
       }
-      label138:
+      label153:
       paramInt1 = i;
     }
   }
   
+  public void setAccessibilityViewType(int paramInt)
+  {
+    this.adUv = paramInt;
+  }
+  
+  public void setMediumBold(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251305);
+    this.xe.setFakeBoldText(paramBoolean);
+    AppMethodBeat.o(251305);
+  }
+  
   public void setText(String paramString)
   {
-    AppMethodBeat.i(106890);
+    AppMethodBeat.i(142252);
     this.mText = paramString;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106890);
+    AppMethodBeat.o(142252);
   }
   
   public void setTextColor(int paramInt)
   {
-    AppMethodBeat.i(106892);
-    this.hB.setColor(paramInt);
+    AppMethodBeat.i(142254);
+    this.xe.setColor(paramInt);
     invalidate();
-    AppMethodBeat.o(106892);
+    AppMethodBeat.o(142254);
+  }
+  
+  public void setTextSize(float paramFloat)
+  {
+    AppMethodBeat.i(251299);
+    this.xe.setTextSize(paramFloat);
+    requestLayout();
+    invalidate();
+    AppMethodBeat.o(251299);
   }
   
   public void setTextSize(int paramInt)
   {
-    AppMethodBeat.i(106891);
-    this.hB.setTextSize(paramInt);
+    AppMethodBeat.i(142253);
+    this.xe.setTextSize(paramInt);
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106891);
+    AppMethodBeat.o(142253);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVerticalTextView
  * JD-Core Version:    0.7.0.1
  */

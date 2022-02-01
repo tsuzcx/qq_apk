@@ -17,20 +17,20 @@ class Theories$TheoryAnchor$1$1
       this.this$1.this$0.handleDataPointSuccess();
       return;
     }
-    catch (AssumptionViolatedException localAssumptionViolatedException)
-    {
-      this.this$1.this$0.handleAssumptionViolation(localAssumptionViolatedException);
-      return;
-    }
     catch (Throwable localThrowable)
     {
       this.this$1.this$0.reportParameterizedError(localThrowable, this.this$1.val$complete.getArgumentStrings(Theories.TheoryAnchor.access$000(this.this$1.this$0)));
+      return;
+    }
+    catch (AssumptionViolatedException localAssumptionViolatedException)
+    {
+      this.this$1.this$0.handleAssumptionViolation(localAssumptionViolatedException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.Theories.TheoryAnchor.1.1
  * JD-Core Version:    0.7.0.1
  */

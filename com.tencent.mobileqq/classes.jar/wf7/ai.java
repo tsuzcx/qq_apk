@@ -12,16 +12,6 @@ public final class ai
   public int cG = 0;
   public int cH = 0;
   
-  static
-  {
-    if (!ai.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      cF = bool;
-      return;
-    }
-  }
-  
   public ai()
   {
     d(this.cG);
@@ -30,18 +20,20 @@ public final class ai
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (cF) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (cF) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void d(int paramInt)
@@ -56,13 +48,20 @@ public final class ai
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ai)paramObject;
-    } while ((!JceUtil.equals(this.cG, paramObject.cG)) || (!JceUtil.equals(this.cH, paramObject.cH)));
-    return true;
+    }
+    paramObject = (ai)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.cG, paramObject.cG))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.cH, paramObject.cH)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -92,7 +91,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ai
  * JD-Core Version:    0.7.0.1
  */

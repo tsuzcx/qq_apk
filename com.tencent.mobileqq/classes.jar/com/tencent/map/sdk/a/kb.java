@@ -26,8 +26,14 @@ public final class kb
   public final double a(double paramDouble)
   {
     float f = this.a.b.f;
-    double d = this.a.b.a();
-    return 40076000.0D / (Math.pow(2.0D, (float)(f + Math.log(d) / Math.log(2.0D))) * 256.0D * fz.v) * Math.cos(3.141592653589793D * paramDouble / 180.0D);
+    double d2 = this.a.b.a();
+    double d1 = f;
+    d2 = Math.log(d2) / Math.log(2.0D);
+    Double.isNaN(d1);
+    d1 = Math.pow(2.0D, (float)(d1 + d2));
+    d2 = fz.v;
+    Double.isNaN(d2);
+    return 40076000.0D / (d1 * 256.0D * d2) * Math.cos(paramDouble * 3.141592653589793D / 180.0D);
   }
   
   public final double a(Point paramPoint1, Point paramPoint2)
@@ -35,15 +41,30 @@ public final class kb
     GeoPoint localGeoPoint1 = a(new DoublePoint(paramPoint1.x, paramPoint1.y));
     GeoPoint localGeoPoint2 = a(new DoublePoint(paramPoint2.x, paramPoint2.y));
     float[] arrayOfFloat = new float[1];
-    Location.distanceBetween(localGeoPoint1.getLatitudeE6() / 1000000.0D, localGeoPoint1.getLongitudeE6() / 1000000.0D, localGeoPoint2.getLatitudeE6() / 1000000.0D, localGeoPoint2.getLongitudeE6() / 1000000.0D, arrayOfFloat);
+    double d1 = localGeoPoint1.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = localGeoPoint1.getLongitudeE6();
+    Double.isNaN(d2);
+    d2 /= 1000000.0D;
+    double d3 = localGeoPoint2.getLatitudeE6();
+    Double.isNaN(d3);
+    d3 /= 1000000.0D;
+    double d4 = localGeoPoint2.getLongitudeE6();
+    Double.isNaN(d4);
+    Location.distanceBetween(d1, d2, d3, d4 / 1000000.0D, arrayOfFloat);
     int i = (int)Math.sqrt(Math.pow(paramPoint1.x - paramPoint2.x, 2.0D) + Math.pow(paramPoint1.y - paramPoint2.y, 2.0D));
     return arrayOfFloat[0] / i;
   }
   
   public final DoublePoint a(GeoPoint paramGeoPoint)
   {
-    double d1 = paramGeoPoint.getLatitudeE6() / 1000000.0D;
-    double d2 = paramGeoPoint.getLongitudeE6() / 1000000.0D;
+    double d1 = paramGeoPoint.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = paramGeoPoint.getLongitudeE6();
+    Double.isNaN(d2);
+    d2 /= 1000000.0D;
     paramGeoPoint = this.c.a(d1, d2);
     return new DoublePoint(paramGeoPoint.x, paramGeoPoint.y);
   }
@@ -55,159 +76,106 @@ public final class kb
     return this.c.a(f1, f2);
   }
   
-  /* Error */
   public final void a(float paramFloat)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 34	com/tencent/map/sdk/a/kb:a	Lcom/tencent/map/sdk/a/kc;
-    //   4: astore 6
-    //   6: aload 6
-    //   8: getfield 144	com/tencent/map/sdk/a/kc:p	Lcom/tencent/map/sdk/a/pf;
-    //   11: ifnull +45 -> 56
-    //   14: aload 6
-    //   16: getfield 144	com/tencent/map/sdk/a/kc:p	Lcom/tencent/map/sdk/a/pf;
-    //   19: astore 5
-    //   21: fload_1
-    //   22: f2d
-    //   23: dstore_2
-    //   24: aload 5
-    //   26: invokevirtual 146	com/tencent/map/sdk/a/pf:y	()V
-    //   29: lconst_0
-    //   30: aload 5
-    //   32: getfield 149	com/tencent/map/sdk/a/pf:b	J
-    //   35: lcmp
-    //   36: ifeq +15 -> 51
-    //   39: aload 5
-    //   41: getfield 151	com/tencent/map/sdk/a/pf:f	Lcom/tencent/map/sdk/a/lw;
-    //   44: astore 7
-    //   46: aload 7
-    //   48: ifnonnull +23 -> 71
-    //   51: aload 5
-    //   53: invokevirtual 154	com/tencent/map/sdk/a/pf:z	()V
-    //   56: aload 6
-    //   58: getfield 47	com/tencent/map/sdk/a/kc:b	Lcom/tencent/map/sdk/a/kc$a;
-    //   61: fload_1
-    //   62: putfield 157	com/tencent/map/sdk/a/kc$a:e	F
-    //   65: getstatic 161	com/tencent/map/sdk/a/kc$c:c	I
-    //   68: istore 4
-    //   70: return
-    //   71: aload 5
-    //   73: getfield 164	com/tencent/map/sdk/a/pf:a	Lcom/tencent/map/sdk/engine/jni/JNI;
-    //   76: aload 5
-    //   78: getfield 149	com/tencent/map/sdk/a/pf:b	J
-    //   81: dload_2
-    //   82: iconst_0
-    //   83: invokevirtual 170	com/tencent/map/sdk/engine/jni/JNI:nativeSetScale	(JDZ)V
-    //   86: aload 5
-    //   88: invokevirtual 154	com/tencent/map/sdk/a/pf:z	()V
-    //   91: goto -35 -> 56
-    //   94: astore 6
-    //   96: aload 5
-    //   98: invokevirtual 154	com/tencent/map/sdk/a/pf:z	()V
-    //   101: aload 6
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	kb
-    //   0	104	1	paramFloat	float
-    //   23	59	2	d	double
-    //   68	1	4	i	int
-    //   19	78	5	localpf	pf
-    //   4	53	6	localkc	kc
-    //   94	8	6	localObject	Object
-    //   44	3	7	locallw	lw
-    // Exception table:
-    //   from	to	target	type
-    //   24	46	94	finally
-    //   71	86	94	finally
+    kc localkc = this.a;
+    if (localkc.p != null)
+    {
+      pf localpf = localkc.p;
+      double d = paramFloat;
+      try
+      {
+        localpf.y();
+        if ((0L != localpf.b) && (localpf.f != null)) {
+          localpf.a.nativeSetScale(localpf.b, d, false);
+        }
+      }
+      finally
+      {
+        localpf.z();
+      }
+    }
+    localObject.b.e = paramFloat;
+    int i = kc.c.c;
   }
   
   public final void a(List<? extends gg> paramList, List<GeoPoint> paramList1, Rect paramRect, kb.a parama)
   {
-    if ((paramList.isEmpty()) && ((paramList1 == null) || (paramList1.isEmpty()))) {}
-    Object localObject;
-    int k;
-    do
-    {
+    if ((paramList.isEmpty()) && ((paramList1 == null) || (paramList1.isEmpty()))) {
       return;
-      localObject = new Rect(this.b.i);
-      ((Rect)localObject).left += paramRect.left;
-      ((Rect)localObject).right -= paramRect.right;
-      ((Rect)localObject).top += paramRect.top;
-      ((Rect)localObject).bottom -= paramRect.bottom;
-      int i = ((Rect)localObject).width();
-      int j = ((Rect)localObject).height();
-      localObject = this.b.c.a;
-      k = ((kf)localObject).b;
-      this.b.a(new kb.1(this, paramList, paramList1, i, j, paramRect, k, (kf)localObject, parama));
-    } while (k == 60);
-    ((kf)localObject).b = 60;
+    }
+    Object localObject = new Rect(this.b.i);
+    ((Rect)localObject).left += paramRect.left;
+    ((Rect)localObject).right -= paramRect.right;
+    ((Rect)localObject).top += paramRect.top;
+    ((Rect)localObject).bottom -= paramRect.bottom;
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
+    localObject = this.b.c.a;
+    int k = ((kf)localObject).b;
+    this.b.a(new kb.1(this, paramList, paramList1, i, j, paramRect, k, (kf)localObject, parama));
+    if (k != 60) {
+      ((kf)localObject).b = 60;
+    }
   }
   
   public final void b(GeoPoint paramGeoPoint)
   {
-    int i = 0;
     Object localObject = this.a;
-    int n = paramGeoPoint.getLatitudeE6();
+    int m = paramGeoPoint.getLatitudeE6();
     int k = paramGeoPoint.getLongitudeE6();
-    int m = 1 << 20 - ((kc)localObject).b.f;
-    int j;
-    if (131072 > m)
+    int i = 1 << 20 - ((kc)localObject).b.f;
+    if (131072 > i)
     {
-      j = (((kc)localObject).n.width() * 131072 - ((kc)localObject).n.width() * m) / 2;
-      i = (((kc)localObject).n.height() * 131072 - m * ((kc)localObject).n.height()) / 2;
+      j = (((kc)localObject).n.width() * 131072 - ((kc)localObject).n.width() * i) / 2;
+      i = (((kc)localObject).n.height() * 131072 - ((kc)localObject).n.height() * i) / 2;
     }
-    for (;;)
+    else
     {
-      int i1 = ((kc)localObject).c.left - j;
-      m = j + ((kc)localObject).c.right;
-      j = ((kc)localObject).c.top - i;
-      int i2 = i + ((kc)localObject).c.bottom;
-      if (n < j) {}
-      for (i = j;; i = n)
-      {
-        j = i;
-        if (i > i2) {
-          j = i2;
-        }
-        if (k < i1) {}
-        for (i = i1;; i = k)
-        {
-          k = i;
-          if (i > m) {
-            k = m;
-          }
-          paramGeoPoint = new GeoPoint(j, k);
-          localObject = ((kc)localObject).p;
-          try
-          {
-            ((pf)localObject).y();
-            if (0L != ((pf)localObject).b)
-            {
-              lw locallw = ((pf)localObject).f;
-              if (locallw != null) {}
-            }
-            else
-            {
-              return;
-            }
-            ((pf)localObject).a.nativeSetCenter(((pf)localObject).b, paramGeoPoint, false);
-            return;
-          }
-          finally
-          {
-            ((pf)localObject).z();
-          }
-        }
-      }
+      i = 0;
       j = 0;
+    }
+    int i1 = ((kc)localObject).c.left - j;
+    int n = ((kc)localObject).c.right + j;
+    int j = ((kc)localObject).c.top - i;
+    int i2 = ((kc)localObject).c.bottom + i;
+    i = m;
+    if (m < j) {
+      i = j;
+    }
+    j = i;
+    if (i > i2) {
+      j = i2;
+    }
+    i = k;
+    if (k < i1) {
+      i = i1;
+    }
+    k = i;
+    if (i > n) {
+      k = n;
+    }
+    paramGeoPoint = new GeoPoint(j, k);
+    localObject = ((kc)localObject).p;
+    try
+    {
+      ((pf)localObject).y();
+      if ((0L != ((pf)localObject).b) && (((pf)localObject).f != null))
+      {
+        ((pf)localObject).a.nativeSetCenter(((pf)localObject).b, paramGeoPoint, false);
+        return;
+      }
+      return;
+    }
+    finally
+    {
+      ((pf)localObject).z();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.kb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,28 @@
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.util.QLog;
-import wifiphoto.WifiPhotoDataCenter;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 public class faw
-  extends Thread
+  extends MessageObserver
 {
   public faw(DataLineHandler paramDataLineHandler) {}
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2)
   {
-    DataLineHandler.a.a(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("wifiphoto", 2, "openWifiPhoto begin sendWifiPhotoBasicInfo");
+    if (paramInt1 == 1) {
+      if (this.a.b())
+      {
+        this.a.a(true);
+        DataLineHandler.a(this.a, MessageCache.a());
+        this.a.a.a().f();
+      }
     }
-    DataLineHandler.b(this.a);
-    DataLineHandler.c(this.a);
+    while (paramInt1 != 0) {
+      return;
+    }
+    this.a.b(false);
   }
 }
 

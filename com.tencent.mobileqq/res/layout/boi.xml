@@ -14,6 +14,6 @@
             <TextView android:textSize="@dimen/mp" android:textColor="#ff292422" android:id="@id/ci5" android:background="@drawable/g6z" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/chr" android:layout_centerVertical="true" />
         </RelativeLayout>
     </RelativeLayout>
-    <ImageView android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" android:layout_alignParentRight="true" android:contentDescription="@string/a34" />
     <ImageView android:id="@id/lie" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.5dip" android:layout_marginTop="3.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
 </RelativeLayout>

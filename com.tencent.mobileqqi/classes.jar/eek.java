@@ -1,20 +1,13 @@
 import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.qphone.base.util.QLog;
 
 public class eek
   implements Runnable
 {
-  public eek(NewFriendActivity paramNewFriendActivity, Object paramObject) {}
+  public eek(NewFriendActivity paramNewFriendActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "init red dot from NewFriendManager push");
-    }
-    if (NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity) != this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity.a(((NewFriendMessage)this.jdField_a_of_type_JavaLangObject).b())) {
-      NewFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendNewFriendActivity);
-    }
+    NewFriendActivity.b(this.a);
   }
 }
 

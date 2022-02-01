@@ -8,71 +8,76 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class VolumeChangeView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean = true;
   public int[] a;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  private boolean b = true;
+  private int c = 0;
+  private int d = 0;
+  private int e = 0;
+  private int f = 0;
+  private int g = 0;
+  private Paint h;
+  private int i = 0;
+  private int j = 0;
+  private int k = 0;
+  private int l = 0;
   
   public VolumeChangeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.change_voice_volume);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.fu);
     a(paramContext);
     paramContext.recycle();
   }
   
   private void a(TypedArray paramTypedArray)
   {
+    int m = R.styleable.fw;
     boolean bool = false;
-    if (paramTypedArray.getInt(2, 0) == 0) {
+    if (paramTypedArray.getInt(m, 0) == 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(3, 5);
-    this.b = ((int)paramTypedArray.getDimension(5, 8.0F));
-    this.c = ((int)paramTypedArray.getDimension(4, 48.0F));
-    this.d = getResources().getColor(2131166895);
-    this.h = getResources().getColor(2131166894);
-    this.i = getResources().getDimensionPixelOffset(2131299014);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    this.b = bool;
+    this.c = paramTypedArray.getInt(R.styleable.fx, 5);
+    this.d = ((int)paramTypedArray.getDimension(R.styleable.fz, 8.0F));
+    this.e = ((int)paramTypedArray.getDimension(R.styleable.fy, 48.0F));
+    this.f = getResources().getColor(2131167985);
+    this.k = getResources().getColor(2131167984);
+    this.l = getResources().getDimensionPixelOffset(2131300032);
+    this.a = new int[this.c];
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ArrayOfInt != null)
+    if (this.a != null)
     {
-      int j = 0;
-      while (j < this.jdField_a_of_type_ArrayOfInt.length)
+      int m = 0;
+      for (;;)
       {
-        this.jdField_a_of_type_ArrayOfInt[j] = 0;
-        j += 1;
+        int[] arrayOfInt = this.a;
+        if (m >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[m] = 0;
+        m += 1;
       }
-      this.e = 0;
+      this.g = 0;
     }
     invalidate();
   }
   
   public void a(int paramInt)
   {
-    this.g = paramInt;
-    if (this.g < 1) {
-      this.g = 1;
+    this.j = paramInt;
+    if (this.j < 1) {
+      this.j = 1;
     }
-    if (this.g > 10) {
-      this.g = 10;
+    if (this.j > 10) {
+      this.j = 10;
     }
     invalidate();
   }
@@ -80,92 +85,91 @@ public class VolumeChangeView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j = 0;
-    if (j < this.jdField_a_of_type_Int)
+    int m = 0;
+    while (m < this.c)
     {
-      if (this.jdField_a_of_type_Boolean)
+      boolean bool = this.b;
+      float f1 = 0.0F;
+      if (bool)
       {
-        if (j < this.g)
-        {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-          label41:
-          if (j != 0) {
-            break label108;
-          }
+        if (m < this.j) {
+          this.h.setColor(this.k);
+        } else {
+          this.h.setColor(this.f);
         }
-        label108:
-        for (f1 = 0.0F;; f1 = (this.i + this.b) * j)
-        {
-          paramCanvas.drawRect(f1, this.f - this.c / 2, f1 + this.b, this.f + this.c / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-          j += 1;
-          break;
-          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-          break label41;
+        if (m == 0) {
+          break label156;
         }
+        n = (this.l + this.d) * m;
       }
-      if (j < this.g)
+      else
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-        label143:
-        if (j != this.jdField_a_of_type_Int - 1) {
-          break label172;
+        if (m < this.j) {
+          this.h.setColor(this.k);
+        } else {
+          this.h.setColor(this.f);
         }
+        n = this.c;
+        if (m == n - 1) {
+          break label156;
+        }
+        n = (n - 1 - m) * (this.l + this.d);
       }
-      label172:
-      for (float f1 = 0.0F;; f1 = (this.jdField_a_of_type_Int - 1 - j) * (this.i + this.b))
-      {
-        break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-        break label143;
-      }
+      f1 = n;
+      label156:
+      int n = this.i;
+      int i1 = this.e;
+      paramCanvas.drawRect(f1, n - i1 / 2, f1 + this.d, n + i1 / 2, this.h);
+      m += 1;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_Int;
-    paramInt2 = this.b;
-    int j = this.i;
-    int k = this.c;
-    setMeasuredDimension(paramInt1 * (paramInt2 + j) + getPaddingLeft() + getPaddingRight(), k + getPaddingTop() + getPaddingBottom());
+    paramInt1 = this.c;
+    paramInt2 = this.d;
+    int m = this.l;
+    int n = this.e;
+    setMeasuredDimension(paramInt1 * (paramInt2 + m) + getPaddingLeft() + getPaddingRight(), n + getPaddingTop() + getPaddingBottom());
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.f = (paramInt2 / 2);
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    this.i = (paramInt2 / 2);
+    if (this.h == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+      this.h = new Paint();
+      this.h.setStyle(Paint.Style.FILL);
+      this.h.setColor(this.f);
     }
     invalidate();
   }
   
   public void setColor(int paramInt)
   {
-    this.h = paramInt;
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+    this.k = paramInt;
+    Paint localPaint = this.h;
+    if (localPaint != null) {
+      localPaint.setColor(this.k);
     }
   }
   
   public void setCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    this.c = paramInt;
+    this.a = new int[this.c];
     requestLayout();
   }
   
   public void setSquareWidth(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.VolumeChangeView
  * JD-Core Version:    0.7.0.1
  */

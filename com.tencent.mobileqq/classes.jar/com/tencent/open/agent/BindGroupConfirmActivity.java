@@ -1,53 +1,54 @@
 package com.tencent.open.agent;
 
-import alud;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import asdb;
-import azqs;
-import bckx;
-import bcky;
-import bcpx;
-import bdjz;
-import bety;
-import bfbm;
-import bfdc;
-import bfdd;
-import bfde;
-import bfdf;
-import bfhv;
-import bfhx;
-import bfiw;
-import bflp;
-import bfmk;
-import bfml;
-import bfmt;
+import com.tencent.biz.widgets.ShareAioResultDialog;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import com.tencent.open.appcommon.OpensdkServlet;
+import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
 import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import com.tencent.open.base.http.HttpCgiAsyncTask;
+import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import com.tencent.open.business.base.Constants;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoRequest;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -60,49 +61,42 @@ import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zhe;
 
 public class BindGroupConfirmActivity
   extends BaseActivity
-  implements DialogInterface.OnClickListener, View.OnClickListener, bfhx, bfml
+  implements DialogInterface.OnClickListener, View.OnClickListener, ImageLoader.ImageLoadListener, HttpCgiAsyncTask.Callback
 {
-  public Resources a;
-  protected Bundle a;
-  public final Handler a;
-  protected Button a;
-  protected ImageView a;
+  String A;
+  protected final Handler B = new BindGroupConfirmActivity.2(this);
+  protected Runnable C = new BindGroupConfirmActivity.5(this);
+  HttpWebCgiAsyncTask.Callback D = new BindGroupConfirmActivity.7(this);
+  private final HttpCgiAsyncTask.Callback E = new BindGroupConfirmActivity.1(this);
   protected TextView a;
-  bckx jdField_a_of_type_Bckx = new bfdf(this);
-  public bdjz a;
-  public bety a;
-  private final bfml jdField_a_of_type_Bfml = new bfdc(this);
-  public Runnable a;
-  protected String a;
-  public zhe a;
-  public ImageView b;
   protected TextView b;
-  protected String b;
   protected TextView c;
-  public String c;
   protected TextView d;
-  protected String d;
   protected TextView e;
-  public String e;
-  protected TextView f;
-  protected String f;
-  protected TextView g;
-  String g;
-  String h;
-  String i;
-  String j;
-  String k;
-  String l;
-  
-  public BindGroupConfirmActivity()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new bfdd(this);
-    this.jdField_a_of_type_JavaLangRunnable = new BindGroupConfirmActivity.5(this);
-  }
+  protected ImageView f;
+  protected ImageView g;
+  protected TextView h;
+  protected TextView i;
+  protected Button j;
+  protected Bundle k;
+  protected String l;
+  protected String m;
+  protected String n;
+  protected String o;
+  protected Resources p;
+  protected String q;
+  protected String r;
+  protected QQProgressDialog s;
+  protected ShareAioResultDialog t;
+  protected QQCustomDialog u;
+  String v;
+  String w;
+  String x;
+  String y;
+  String z;
   
   private void a(String paramString)
   {
@@ -111,98 +105,102 @@ public class BindGroupConfirmActivity
   
   private void b()
   {
-    Object localObject = findViewById(2131376053);
+    Object localObject = findViewById(2131445159);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      ImmersiveUtils.a((View)localObject, true);
+      ImmersiveUtils.setFitsSystemWindows((View)localObject, true);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368624));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368626));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368655));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368670));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364693));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131377326));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378402));
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    this.a = ((TextView)super.findViewById(2131436180));
+    this.b = ((TextView)super.findViewById(2131436182));
+    this.c = ((TextView)super.findViewById(2131436211));
+    this.d = ((TextView)super.findViewById(2131436227));
+    this.j = ((Button)super.findViewById(2131431226));
+    this.j.setOnClickListener(this);
+    this.e = ((TextView)super.findViewById(2131446686));
+    this.f = ((ImageView)super.findViewById(2131447981));
+    if (!TextUtils.isEmpty(this.m))
     {
-      localObject = bfhv.a().a(this.jdField_b_of_type_JavaLangString);
+      localObject = ImageLoader.a().a(this.m);
       if (localObject != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+        this.f.setImageBitmap((Bitmap)localObject);
+      } else {
+        ImageLoader.a().a(this.m, this);
       }
     }
-    else
-    {
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378468));
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label270;
-      }
-      this.jdField_g_of_type_AndroidWidgetTextView.setText("QQ群");
+    this.i = ((TextView)super.findViewById(2131448053));
+    if (TextUtils.isEmpty(this.l)) {
+      this.i.setText("QQ群");
+    } else {
+      this.i.setText(this.l);
     }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362695));
-      ThreadManager.executeOnSubThread(new BindGroupConfirmActivity.3(this));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362707));
-      this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_f_of_type_JavaLangString);
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        a(Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue());
-      }
-      return;
-      bfhv.a().a(this.jdField_b_of_type_JavaLangString, this);
-      break;
-      label270:
-      this.jdField_g_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.g = ((ImageView)super.findViewById(2131428619));
+    ThreadManager.executeOnSubThread(new BindGroupConfirmActivity.3(this));
+    this.h = ((TextView)super.findViewById(2131428632));
+    this.h.setText(this.r);
+    if (!TextUtils.isEmpty(this.n)) {
+      a(Long.valueOf(this.n).longValue());
     }
   }
   
   public void a()
   {
     Bundle localBundle = new Bundle();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("https://bindgroup.gamecenter.qq.com/cgi-bin/gc_bind_group_v2_async_fcgi");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("https://bindgroup.gamecenter.qq.com/cgi-bin/gc_bind_group_v2_async_fcgi");
     Object localObject1 = this.app.getCurrentAccountUin();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("o");
     if (((String)localObject1).length() < 10)
     {
-      int m = 0;
-      while (m < 10 - ((String)localObject1).length())
+      int i1 = 0;
+      while (i1 < 10 - ((String)localObject1).length())
       {
         ((StringBuilder)localObject2).append("0");
-        m += 1;
+        i1 += 1;
       }
       ((StringBuilder)localObject2).append((String)localObject1);
     }
-    for (;;)
+    else
     {
-      TicketManager localTicketManager = (TicketManager)this.app.getManager(2);
-      localBundle.putString("Cookie", "uin=" + localObject2 + "; skey=" + localTicketManager.getSkey((String)localObject1));
-      localBundle.putString("Host", "info.gamecenter.qq.com");
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("appid", this.jdField_c_of_type_JavaLangString);
-      ((Bundle)localObject1).putString("guild_id", this.h);
-      ((Bundle)localObject1).putString("zone_id", this.i);
-      ((Bundle)localObject1).putString("guild_name", this.l);
-      ((Bundle)localObject1).putString("gc", this.k);
-      ((Bundle)localObject1).putString("platid", "2");
-      ((Bundle)localObject1).putString("roleid", this.j);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("module", "gc_bind_group_svr");
-      ((Bundle)localObject2).putString("method", "bind_existing_group");
-      localObject1 = bcpx.a((Bundle)localObject1, (Bundle)localObject2);
-      localBundle.putString("param", (String)localObject1);
-      localBundle.putString("signature", bcpx.a((String)localObject1 + "ea779693bfa42c986ad85cda9bdfce45").toUpperCase());
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("BUNDLE", localBundle);
-      ((HashMap)localObject1).put("CONTEXT", getApplicationContext());
-      if (QLog.isColorLevel()) {
-        QLog.i("BindGroupConfirmActivity", 2, "bindGroup params = " + localBundle);
-      }
-      new bcky(localStringBuilder.toString(), "GET", this.jdField_a_of_type_Bckx, 0, null).a((HashMap)localObject1);
-      return;
       ((StringBuilder)localObject2).append("0");
       ((StringBuilder)localObject2).append((String)localObject1);
     }
+    TicketManager localTicketManager = (TicketManager)this.app.getManager(2);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("uin=");
+    localStringBuilder2.append(localObject2);
+    localStringBuilder2.append("; skey=");
+    localStringBuilder2.append(localTicketManager.getSkey((String)localObject1));
+    localBundle.putString("Cookie", localStringBuilder2.toString());
+    localBundle.putString("Host", "info.gamecenter.qq.com");
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("appid", this.n);
+    ((Bundle)localObject1).putString("guild_id", this.w);
+    ((Bundle)localObject1).putString("zone_id", this.x);
+    ((Bundle)localObject1).putString("guild_name", this.A);
+    ((Bundle)localObject1).putString("gc", this.z);
+    ((Bundle)localObject1).putString("platid", "2");
+    ((Bundle)localObject1).putString("roleid", this.y);
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("module", "gc_bind_group_svr");
+    ((Bundle)localObject2).putString("method", "bind_existing_group");
+    localObject1 = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).constructParams((Bundle)localObject1, (Bundle)localObject2);
+    localBundle.putString("param", (String)localObject1);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("ea779693bfa42c986ad85cda9bdfce45");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localBundle.putString("signature", ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).encrypt((String)localObject1).toUpperCase());
+    localObject1 = new HashMap();
+    ((HashMap)localObject1).put("BUNDLE", localBundle);
+    ((HashMap)localObject1).put("CONTEXT", getApplicationContext());
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("bindGroup params = ");
+      ((StringBuilder)localObject2).append(localBundle);
+      QLog.i("BindGroupConfirmActivity", 2, ((StringBuilder)localObject2).toString());
+    }
+    new HttpWebCgiAsyncTask2(localStringBuilder1.toString(), "GET", this.D, 0, null).a((HashMap)localObject1);
   }
   
   protected void a(long paramLong)
@@ -210,27 +208,27 @@ public class BindGroupConfirmActivity
     GetAppInfoProto.GetAppinfoRequest localGetAppinfoRequest = new GetAppInfoProto.GetAppinfoRequest();
     localGetAppinfoRequest.client_id.set(paramLong);
     localGetAppinfoRequest.sdkp.set("android");
-    if (Build.VERSION.RELEASE == null) {}
-    for (Object localObject = "";; localObject = Build.VERSION.RELEASE)
-    {
-      localGetAppinfoRequest.os.set((String)localObject);
-      localGetAppinfoRequest.qqv.set(bfbm.a().d());
-      localGetAppinfoRequest.setHasFlag(true);
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        localGetAppinfoRequest.appUniqueIdentifier.set(this.jdField_d_of_type_JavaLangString);
-      }
-      localGetAppinfoRequest.referer.set(6);
-      localObject = new NewIntent(this, bfiw.class);
-      ((NewIntent)localObject).setWithouLogin(true);
-      ((NewIntent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
-      ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
-      ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
-      ((NewIntent)localObject).setObserver(new bfde(this));
-      super.getAppRuntime().startServlet((NewIntent)localObject);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-      return;
+    if (Build.VERSION.RELEASE == null) {
+      localObject = "";
+    } else {
+      localObject = Build.VERSION.RELEASE;
     }
+    localGetAppinfoRequest.os.set((String)localObject);
+    localGetAppinfoRequest.qqv.set(CommonDataAdapter.a().j());
+    localGetAppinfoRequest.setHasFlag(true);
+    if (!TextUtils.isEmpty(this.o)) {
+      localGetAppinfoRequest.appUniqueIdentifier.set(this.o);
+    }
+    localGetAppinfoRequest.referer.set(6);
+    Object localObject = new NewIntent(this, OpensdkServlet.class);
+    ((NewIntent)localObject).setWithouLogin(true);
+    ((NewIntent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
+    ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
+    ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
+    ((NewIntent)localObject).setObserver(new BindGroupConfirmActivity.6(this));
+    super.getAppRuntime().startServlet((NewIntent)localObject);
+    this.B.removeCallbacks(this.C);
+    this.B.postDelayed(this.C, 30000L);
   }
   
   public void a(Exception paramException)
@@ -240,226 +238,272 @@ public class BindGroupConfirmActivity
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    bflp.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new BindGroupConfirmActivity.4(this, paramBitmap));
+    paramString2 = new StringBuilder();
+    paramString2.append("-->onImageLoaded() url = ");
+    paramString2.append(paramString1);
+    LogUtility.c("BindGroupConfirmActivity", paramString2.toString());
+    this.B.post(new BindGroupConfirmActivity.4(this, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    StringBuffer localStringBuffer;
-    try
+    for (;;)
     {
-      if (paramJSONObject.getInt("ret") != 0) {
-        break label226;
-      }
-      paramJSONObject = paramJSONObject.getJSONArray("list");
-      int n = paramJSONObject.length();
-      localStringBuffer = new StringBuffer();
-      int m = 0;
-      for (;;)
+      int i1;
+      try
       {
-        if (m >= n) {
-          break label208;
-        }
-        try
+        int i2 = paramJSONObject.getInt("ret");
+        i1 = 0;
+        if (i2 == 0)
         {
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-          if (!localJSONObject.getString("id").equals("0")) {
-            localStringBuffer.append(localJSONObject.getString("id") + "、");
-          }
-          localStringBuffer.append(localJSONObject.getString("desc") + "\n");
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
+          paramJSONObject = paramJSONObject.getJSONArray("list");
+          i2 = paramJSONObject.length();
+          localObject = new StringBuffer();
+          if (i1 < i2)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!" + localJSONException.getMessage());
+            try
+            {
+              JSONObject localJSONObject = paramJSONObject.getJSONObject(i1);
+              if (!localJSONObject.getString("id").equals("0"))
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(localJSONObject.getString("id"));
+                localStringBuilder.append("、");
+                ((StringBuffer)localObject).append(localStringBuilder.toString());
+              }
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(localJSONObject.getString("desc"));
+              localStringBuilder.append("\n");
+              ((StringBuffer)localObject).append(localStringBuilder.toString());
             }
+            catch (JSONException localJSONException)
+            {
+              if (!QLog.isColorLevel()) {
+                break label319;
+              }
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("The JSONObject has error!");
+            localStringBuilder.append(localJSONException.getMessage());
+            QLog.d("BindGroupConfirmActivity", 2, localStringBuilder.toString());
+            break label319;
+          }
+          if (((StringBuffer)localObject).length() != 0) {
+            this.e.setText((CharSequence)localObject);
           }
         }
-        m += 1;
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
+          }
+          if (this.e != null) {
+            this.e.setText(this.p.getString(2131887568));
+          }
+          QQToast.makeText(this, paramJSONObject.getString("msg"), 0).create(getTitleBarHeight()).show();
+          return;
+        }
       }
-      while (localStringBuffer.length() == 0) {}
-    }
-    catch (Exception paramJSONObject)
-    {
-      if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690538));
+      catch (Exception paramJSONObject)
+      {
+        Object localObject = this.e;
+        if (localObject != null) {
+          ((TextView)localObject).setText(this.p.getString(2131887568));
+        }
+        a(paramJSONObject);
       }
-      a(paramJSONObject);
       return;
+      label319:
+      i1 += 1;
     }
-    label208:
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(localStringBuffer);
-    return;
-    label226:
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
-    }
-    if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690538));
-    }
-    QQToast.a(this, paramJSONObject.getString("msg"), 0).a(getTitleBarHeight()).show();
   }
   
   public void b(Exception paramException)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "HttpAsyncTaskCallback exception." + paramException.getMessage());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("HttpAsyncTaskCallback exception.");
+      localStringBuilder.append(paramException.getMessage());
+      QLog.d("BindGroupConfirmActivity", 2, localStringBuilder.toString());
     }
     if ((paramException instanceof ConnectTimeoutException)) {
-      paramException = bfmt.jdField_e_of_type_JavaLangString;
+      paramException = Constants.e;
+    } else if ((paramException instanceof SocketTimeoutException)) {
+      paramException = Constants.f;
+    } else if ((paramException instanceof MalformedURLException)) {
+      paramException = "访问url有误!";
+    } else if ((paramException instanceof HttpBaseUtil.HttpStatusException)) {
+      paramException = "Http返回码异常!";
+    } else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException)) {
+      paramException = Constants.g;
+    } else if ((paramException instanceof JSONException)) {
+      paramException = Constants.b;
+    } else if ((paramException instanceof IOException)) {
+      paramException = Constants.a;
+    } else {
+      paramException = Constants.d;
     }
-    for (;;)
-    {
-      QQToast.a(this, paramException, 0).a(getTitleBarHeight()).show();
-      return;
-      if ((paramException instanceof SocketTimeoutException)) {
-        paramException = bfmt.jdField_f_of_type_JavaLangString;
-      } else if ((paramException instanceof MalformedURLException)) {
-        paramException = "访问url有误!";
-      } else if ((paramException instanceof HttpBaseUtil.HttpStatusException)) {
-        paramException = "Http返回码异常!";
-      } else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException)) {
-        paramException = bfmt.jdField_g_of_type_JavaLangString;
-      } else if ((paramException instanceof JSONException)) {
-        paramException = bfmt.jdField_b_of_type_JavaLangString;
-      } else if ((paramException instanceof IOException)) {
-        paramException = bfmt.jdField_a_of_type_JavaLangString;
-      } else {
-        paramException = bfmt.jdField_d_of_type_JavaLangString;
-      }
-    }
+    QQToast.makeText(this, paramException, 0).create(getTitleBarHeight()).show();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130771988, 2130771989);
+    overridePendingTransition(2130772005, 2130772006);
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Zhe == paramDialogInterface) {
-      if (paramInt != 0) {}
-    }
-    while (this.jdField_a_of_type_Bdjz != paramDialogInterface)
+    if (this.t == paramDialogInterface)
     {
-      do
+      if (paramInt == 0)
       {
         try
         {
-          asdb.a(this, true, "action_game_bind_group", Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue(), 0, "");
-          super.setResult(-1);
-          super.finish();
-          return;
+          ForwardSdkShareOption.a(this, true, "action_game_bind_group", Long.valueOf(this.n).longValue(), 0, "");
         }
         catch (Exception paramDialogInterface)
         {
-          for (;;)
-          {
-            QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showAlertDlg error = ");
+          localStringBuilder.append(paramDialogInterface);
+          QLog.e("BindGroupConfirmActivity", 1, localStringBuilder.toString());
         }
-      } while (paramInt != 1);
-      paramDialogInterface = new Intent(this, SplashActivity.class);
-      paramDialogInterface.addFlags(67108864);
-      paramDialogInterface.addFlags(268435456);
-      super.startActivity(paramDialogInterface);
-      super.finish();
-      return;
+        super.setResult(-1);
+        super.finish();
+        return;
+      }
+      if (paramInt == 1)
+      {
+        paramDialogInterface = new Intent(this, SplashActivity.class);
+        paramDialogInterface.addFlags(67108864);
+        paramDialogInterface.addFlags(268435456);
+        super.startActivity(paramDialogInterface);
+        super.finish();
+      }
     }
-    paramDialogInterface.dismiss();
+    else if (this.u == paramDialogInterface)
+    {
+      paramDialogInterface.dismiss();
+    }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == null) {
-      return;
-    }
-    switch (paramView.getId())
+    if (paramView != null)
     {
-    default: 
-      return;
-    case 2131364693: 
-      if ("true".equals(this.jdField_g_of_type_JavaLangString))
+      int i1 = paramView.getId();
+      if (i1 != 2131431226)
+      {
+        if (i1 == 2131436180) {
+          finish();
+        }
+      }
+      else if ("true".equals(this.v))
       {
         a();
-        return;
       }
-      new bfmk("http://fusionbase.qq.com/cgi-bin/appstage/mb_bind_qqgroup", "POST", this.jdField_a_of_type_Bfml).a(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Bety.show();
-      return;
+      else
+      {
+        new HttpCgiAsyncTask("https://fusionbase.qq.com/cgi-bin/appstage/mb_bind_qqgroup", "POST", this.E, true).a(this.k);
+        this.s.show();
+      }
     }
-    finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.requestWindowFeature(1);
     super.onCreate(paramBundle);
-    super.setTheme(2131755151);
-    super.setContentView(2131559810);
-    this.jdField_a_of_type_AndroidContentResResources = super.getResources();
-    this.jdField_a_of_type_Bety = new bety(this, getTitleBarHeight());
-    this.jdField_a_of_type_Bety.a(alud.a(2131701502));
-    this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
+    super.setTheme(2131952010);
+    super.setContentView(2131625991);
+    this.p = super.getResources();
+    this.s = new QQProgressDialog(this, getTitleBarHeight());
+    this.s.a(HardCodeUtil.a(2131899348));
+    this.k = super.getIntent().getBundleExtra("key_params");
+    paramBundle = this.k;
+    if (paramBundle == null)
     {
-      bflp.e("BindGroupConfirmActivity", "initParams() mParams is null!");
+      LogUtility.e("BindGroupConfirmActivity", "initParams() mParams is null!");
       return;
     }
-    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("union_name");
-    this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("group_name");
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("group_avatar_url");
-    this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("pkg_name");
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("appid");
-    this.jdField_g_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("is_from_game");
-    if ("true".equals(this.jdField_g_of_type_JavaLangString))
+    this.r = paramBundle.getString("union_name");
+    this.q = this.k.getString("app_name");
+    this.l = this.k.getString("group_name");
+    this.m = this.k.getString("group_avatar_url");
+    this.o = this.k.getString("pkg_name");
+    this.n = this.k.getString("appid");
+    this.v = this.k.getString("is_from_game");
+    if ("true".equals(this.v))
     {
-      this.h = this.jdField_a_of_type_AndroidOsBundle.getString("unionid");
-      this.i = this.jdField_a_of_type_AndroidOsBundle.getString("zoneid");
-      this.j = this.jdField_a_of_type_AndroidOsBundle.getString("role_id");
-      this.k = this.jdField_a_of_type_AndroidOsBundle.getString("group_code");
-      this.l = this.jdField_f_of_type_JavaLangString;
-      if (QLog.isColorLevel()) {
-        QLog.d("BindGroupConfirmActivity", 2, "bindGroup appid =  guild id = " + this.h + "zone_id = " + this.i + " role id = " + this.j + "  group code= " + this.k + " guild name = " + this.l);
+      this.w = this.k.getString("unionid");
+      this.x = this.k.getString("zoneid");
+      this.y = this.k.getString("role_id");
+      this.z = this.k.getString("group_code");
+      this.A = this.r;
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("bindGroup appid =  guild id = ");
+        paramBundle.append(this.w);
+        paramBundle.append("zone_id = ");
+        paramBundle.append(this.x);
+        paramBundle.append(" role id = ");
+        paramBundle.append(this.y);
+        paramBundle.append("  group code= ");
+        paramBundle.append(this.z);
+        paramBundle.append(" guild name = ");
+        paramBundle.append(this.A);
+        QLog.d("BindGroupConfirmActivity", 2, paramBundle.toString());
       }
-      azqs.b(this.app, "CliOper", "", "", "0x80084B0", "0x80084B0", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0x80084B0", "0x80084B0", 0, 0, "", "", "", "");
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      new bfmk("http://fusionbase.qq.com/cgi-bin/appstage/mb_get_qqgroup_description", "POST", this).a(this.jdField_a_of_type_AndroidOsBundle);
-      b();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BindGroupConfirmActivity", 2, " bindGroup is from game = false");
-      }
+      QLog.d("BindGroupConfirmActivity", 2, " bindGroup is from game = false");
     }
+    new HttpCgiAsyncTask("https://fusionbase.qq.com/cgi-bin/appstage/mb_get_qqgroup_description", "POST", this, true).a(this.k);
+    b();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    BindGroupActivity.b = true;
+    BindGroupActivity.t = true;
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690953));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131690534));
+    this.a.setVisibility(0);
+    this.a.setText(this.p.getString(2131887880));
+    this.a.setOnClickListener(this);
+    this.b.setVisibility(4);
+    this.c.setVisibility(4);
+    this.d.setText(this.p.getString(2131887564));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity
  * JD-Core Version:    0.7.0.1
  */

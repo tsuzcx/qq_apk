@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iew" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/enc" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/q1u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/oi6" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" />
+        <TextView android:textSize="9.0pt" android:textColor="@color/al3" android:id="@id/mt6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="摇动手机" />
+        <TextView android:textSize="7.0pt" android:textColor="@color/al3" android:id="@id/mt8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="为中国健儿加油喝彩" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/onv" android:background="@drawable/evy" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/q1v" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="-5.0dip" android:layout_marginBottom="-2.0dip" />
+        <TextView android:textSize="7.0pt" android:textColor="@color/al3" android:layout_gravity="bottom" android:id="@id/onw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-13.0dip" android:layout_marginBottom="5.0dip" android:text="摇动手机" />
+    </LinearLayout>
+</RelativeLayout>

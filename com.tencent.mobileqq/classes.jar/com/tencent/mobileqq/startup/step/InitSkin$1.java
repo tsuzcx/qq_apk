@@ -1,33 +1,22 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.vas.theme.SimpleTintManager;
+import com.tencent.theme.UpdateCallback;
 
-class InitSkin$1
-  implements Runnable
+final class InitSkin$1
+  implements UpdateCallback
 {
-  InitSkin$1(InitSkin paramInitSkin) {}
-  
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InitSkin", 2, "start asynInitSkin");
-    }
-    InitSkin.initSkin(BaseApplicationImpl.sApplication);
-    InitSkin.c = true;
-    synchronized (InitSkin.a)
-    {
-      InitSkin.a.notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.i("InitSkin", 2, "end asynInitSkin");
-      }
-      return;
-    }
+    SimpleTintManager.instance().setThemeId(QQTheme.getCurrentThemeId());
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitSkin.1
  * JD-Core Version:    0.7.0.1
  */

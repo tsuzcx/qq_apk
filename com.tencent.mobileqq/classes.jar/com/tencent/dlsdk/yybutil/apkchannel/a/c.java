@@ -23,7 +23,8 @@ public final class c
   
   public byte[] a()
   {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
+    int i = this.a;
+    return new byte[] { (byte)(i & 0xFF), (byte)((i & 0xFF00) >> 8) };
   }
   
   public int b()
@@ -33,11 +34,16 @@ public final class c
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof c))) {}
-    while (this.a != ((c)paramObject).b()) {
-      return false;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof c)) {
+        return false;
+      }
+      if (this.a == ((c)paramObject).b()) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public int hashCode()
@@ -47,7 +53,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.a.c
  * JD-Core Version:    0.7.0.1
  */

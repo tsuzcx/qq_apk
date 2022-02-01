@@ -67,38 +67,44 @@ final class ReplaySubject$BoundedState<T>
   public boolean isEmpty()
   {
     Object localObject = head().next;
-    if (localObject == null) {}
-    do
-    {
+    boolean bool = true;
+    if (localObject == null) {
       return true;
-      localObject = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject).value);
-    } while ((this.nl.isError(localObject)) || (this.nl.isCompleted(localObject)));
-    return false;
+    }
+    localObject = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject).value);
+    if (!this.nl.isError(localObject))
+    {
+      if (this.nl.isCompleted(localObject)) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public T latest()
   {
     Object localObject1 = head().next;
-    if (localObject1 == null) {}
-    Object localObject2;
-    do
-    {
+    if (localObject1 == null) {
       return null;
-      localObject2 = null;
-      while (localObject1 != tail())
-      {
-        ReplaySubject.NodeList.Node localNode = ((ReplaySubject.NodeList.Node)localObject1).next;
-        localObject2 = localObject1;
-        localObject1 = localNode;
-      }
-      localObject1 = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject1).value);
-      if ((!this.nl.isError(localObject1)) && (!this.nl.isCompleted(localObject1))) {
-        break;
-      }
-    } while (localObject2 == null);
-    localObject1 = this.leaveTransform.call(localObject2.value);
-    return this.nl.getValue(localObject1);
-    return this.nl.getValue(localObject1);
+    }
+    Object localObject2 = null;
+    while (localObject1 != tail())
+    {
+      ReplaySubject.NodeList.Node localNode = ((ReplaySubject.NodeList.Node)localObject1).next;
+      localObject2 = localObject1;
+      localObject1 = localNode;
+    }
+    localObject1 = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject1).value);
+    if ((!this.nl.isError(localObject1)) && (!this.nl.isCompleted(localObject1))) {
+      return this.nl.getValue(localObject1);
+    }
+    if (localObject2 != null)
+    {
+      localObject1 = this.leaveTransform.call(localObject2.value);
+      return this.nl.getValue(localObject1);
+    }
+    return null;
   }
   
   public void next(T paramT)
@@ -147,23 +153,20 @@ final class ReplaySubject$BoundedState<T>
   
   public int size()
   {
-    Object localObject1 = head();
-    Object localObject2 = ((ReplaySubject.NodeList.Node)localObject1).next;
+    Object localObject2 = head();
+    Object localObject1 = ((ReplaySubject.NodeList.Node)localObject2).next;
     int i = 0;
-    Object localObject3 = localObject1;
-    localObject1 = localObject2;
     while (localObject1 != null)
     {
-      localObject3 = ((ReplaySubject.NodeList.Node)localObject1).next;
       i += 1;
+      ReplaySubject.NodeList.Node localNode = ((ReplaySubject.NodeList.Node)localObject1).next;
       localObject2 = localObject1;
-      localObject1 = localObject3;
-      localObject3 = localObject2;
+      localObject1 = localNode;
     }
     int j = i;
-    if (((ReplaySubject.NodeList.Node)localObject3).value != null)
+    if (((ReplaySubject.NodeList.Node)localObject2).value != null)
     {
-      localObject1 = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject3).value);
+      localObject1 = this.leaveTransform.call(((ReplaySubject.NodeList.Node)localObject2).value);
       j = i;
       if (localObject1 != null) {
         if (!this.nl.isError(localObject1))
@@ -193,25 +196,20 @@ final class ReplaySubject$BoundedState<T>
   public T[] toArray(T[] paramArrayOfT)
   {
     ArrayList localArrayList = new ArrayList();
-    for (ReplaySubject.NodeList.Node localNode = head().next;; localNode = localNode.next)
+    for (ReplaySubject.NodeList.Node localNode = head().next; localNode != null; localNode = localNode.next)
     {
-      Object localObject;
-      if (localNode != null)
-      {
-        localObject = this.leaveTransform.call(localNode.value);
-        if ((localNode.next != null) || ((!this.nl.isError(localObject)) && (!this.nl.isCompleted(localObject)))) {}
-      }
-      else
-      {
-        return localArrayList.toArray(paramArrayOfT);
+      Object localObject = this.leaveTransform.call(localNode.value);
+      if ((localNode.next == null) && ((this.nl.isError(localObject)) || (this.nl.isCompleted(localObject)))) {
+        break;
       }
       localArrayList.add(localObject);
     }
+    return localArrayList.toArray(paramArrayOfT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subjects.ReplaySubject.BoundedState
  * JD-Core Version:    0.7.0.1
  */

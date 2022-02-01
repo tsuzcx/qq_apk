@@ -1,107 +1,108 @@
 package com.tencent.mobileqq.msf.core;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Arrays;
-import java.util.Calendar;
+import android.os.Handler;
+import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Collection;
+import java.util.Iterator;
 
-final class k
-  extends Thread
+public class k
 {
-  public void run()
+  private static k.b a;
+  private static k.c b;
+  private static boolean c = true;
+  private static boolean d = true;
+  private static k.d e;
+  
+  public static void a() {}
+  
+  public static void b()
   {
-    Object localObject1 = new File(QLog.getLogPath());
-    Object localObject2;
-    int j;
-    if (((File)localObject1).exists())
+    if ((c) || (d))
     {
-      localObject1 = ((File)localObject1).listFiles();
-      if ((localObject1 == null) || (localObject1.length == 0)) {
-        return;
+      if (b == null) {
+        b = new k.c();
       }
-      Arrays.sort((Object[])localObject1, new l(this));
-      localObject2 = Calendar.getInstance();
-      j = 3;
-      try
+      Handler localHandler = q.b();
+      localHandler.removeCallbacks(b);
+      localHandler.postDelayed(b, 5000L);
+    }
+  }
+  
+  private static void b(StringBuilder paramStringBuilder, Collection paramCollection, int paramInt)
+  {
+    if ((paramCollection != null) && (paramCollection.size() > 0) && (paramStringBuilder != null))
+    {
+      String str;
+      if (paramInt == 1) {
+        str = "  ";
+      } else if (paramInt == 2) {
+        str = "    ";
+      } else if (paramInt == 3) {
+        str = "      ";
+      } else {
+        str = "";
+      }
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
       {
-        str = a.h();
-        i = j;
-        if (str != null)
+        Object localObject = paramCollection.next();
+        if ((localObject instanceof ToServiceMsg))
         {
-          i = j;
-          if (str.length() > 0) {
-            i = Integer.parseInt(str);
+          localObject = (ToServiceMsg)localObject;
+          if (localObject != null)
+          {
+            paramStringBuilder.append(str);
+            paramStringBuilder.append(((ToServiceMsg)localObject).getShortStringForLog());
+            paramStringBuilder.append("\n");
           }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        else if ((localObject instanceof FromServiceMsg))
         {
-          String str;
-          long l;
-          localException.printStackTrace();
-          int i = j;
-          continue;
-          if ((!TextUtils.isEmpty(localException.getName())) && (localException.getName().endsWith(".log")) && ((localException.lastModified() < System.currentTimeMillis() - 3600000L) || (localException.getName().contains((CharSequence)localObject2)))) {
-            if (h.a(localException))
+          localObject = (FromServiceMsg)localObject;
+          if (localObject != null)
+          {
+            paramStringBuilder.append(str);
+            paramStringBuilder.append(((FromServiceMsg)localObject).getShortStringForLog());
+            paramStringBuilder.append("\n");
+          }
+        }
+        else if ((localObject instanceof MsfMessagePair))
+        {
+          localObject = (MsfMessagePair)localObject;
+          if (localObject != null)
+          {
+            if (((MsfMessagePair)localObject).toServiceMsg != null)
             {
-              localException.delete();
-              QLog.d(h.b, 1, "compress log " + localException.getName());
+              paramStringBuilder.append(str);
+              paramStringBuilder.append(((MsfMessagePair)localObject).toServiceMsg.getShortStringForLog());
+              paramStringBuilder.append("\n");
             }
-            else
+            if (((MsfMessagePair)localObject).fromServiceMsg != null)
             {
-              QLog.d(h.b, 1, "compress log fail " + localException.getName());
+              paramStringBuilder.append(str);
+              paramStringBuilder.append(((MsfMessagePair)localObject).fromServiceMsg.getShortStringForLog());
+              paramStringBuilder.append("\n");
             }
           }
         }
-      }
-      if (i >= 1)
-      {
-        j = i;
-        if (i <= 14) {}
-      }
-      else
-      {
-        j = 3;
-      }
-      ((Calendar)localObject2).add(6, j - j * 2);
-      l = ((Calendar)localObject2).getTimeInMillis();
-      localObject2 = h.i();
-      j = localObject1.length;
-      i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label362;
-        }
-        str = localObject1[i];
-        if ((l <= str.lastModified()) && (str.lastModified() <= System.currentTimeMillis() + 3600000L)) {
-          break;
-        }
-        str.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d(h.b, 2, "del expires log " + str.getName());
-        }
-        i += 1;
       }
     }
-    label362:
-    localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).set(6, ((Calendar)localObject1).get(6) - 7);
-    ((Calendar)localObject1).set(11, 0);
-    ((Calendar)localObject1).set(12, 0);
-    ((Calendar)localObject1).set(13, 0);
-    ((Calendar)localObject1).set(14, 0);
-    e.b(((Calendar)localObject1).getTimeInMillis());
+  }
+  
+  public static void c()
+  {
+    if (e == null) {
+      e = new k.d(null);
+    }
+    q.b().removeCallbacks(e);
+    q.b().postDelayed(e, 60000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k
  * JD-Core Version:    0.7.0.1
  */

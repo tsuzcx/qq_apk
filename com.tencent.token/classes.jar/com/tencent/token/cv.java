@@ -1,62 +1,18 @@
 package com.tencent.token;
 
-import com.tencent.token.global.c;
+import android.support.v4.app.Fragment;
 
-public class cv
+public abstract class cv
 {
-  private static cv a;
+  public abstract cv a(int paramInt, Fragment paramFragment, String paramString);
   
-  public static cv a()
-  {
-    if (a == null) {
-      a = new cv();
-    }
-    return a;
-  }
+  public abstract cv a(Fragment paramFragment);
   
-  public void a(String paramString)
-  {
-    switch ()
-    {
-    default: 
-      do.e = paramString;
-    }
-    for (;;)
-    {
-      do.c = paramString;
-      return;
-      do.d = paramString;
-      continue;
-      do.e = paramString;
-      continue;
-      do.f = paramString;
-      continue;
-      do.g = paramString;
-    }
-  }
+  public abstract cv a(Fragment paramFragment, String paramString);
   
-  public void a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    a(paramString);
-    do.a().i = paramLong1;
-    do.a().h = paramLong2;
-    do.a().a = paramArrayOfByte;
-  }
+  public abstract int b();
   
-  public String b()
-  {
-    if (do.a().p())
-    {
-      do.a();
-      return do.c;
-    }
-    return null;
-  }
-  
-  public void c()
-  {
-    do.a().m();
-  }
+  public abstract cv b(Fragment paramFragment);
 }
 
 

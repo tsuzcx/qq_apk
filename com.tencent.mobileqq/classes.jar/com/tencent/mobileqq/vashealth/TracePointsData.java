@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
 
 public class TracePointsData
-  extends awge
+  extends Entity
 {
   public static final String TABLE_NAME = "TracePointsData";
   public int accuracy;
@@ -15,7 +15,7 @@ public class TracePointsData
   public float speed;
   public long startTime;
   public int steps;
-  @awhs
+  @unique
   public long time;
   
   public JSONObject toJson()
@@ -32,20 +32,35 @@ public class TracePointsData
       localJSONObject.put("steps", this.steps);
       return localJSONObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label100:
+      break label100;
+    }
     return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("lat: ").append(Float.toString(this.latitude)).append(",lon: ").append(Float.toString(this.longitude)).append(",time: ").append(this.time).append(",speed: ").append(this.speed).append(",accuracy: ").append(this.accuracy).append(",steps: ").append(this.steps);
+    localStringBuilder.append("lat: ");
+    localStringBuilder.append(Float.toString(this.latitude));
+    localStringBuilder.append(",lon: ");
+    localStringBuilder.append(Float.toString(this.longitude));
+    localStringBuilder.append(",time: ");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(",speed: ");
+    localStringBuilder.append(this.speed);
+    localStringBuilder.append(",accuracy: ");
+    localStringBuilder.append(this.accuracy);
+    localStringBuilder.append(",steps: ");
+    localStringBuilder.append(this.steps);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePointsData
  * JD-Core Version:    0.7.0.1
  */

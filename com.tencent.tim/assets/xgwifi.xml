@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Traffic Flow</comment>
+
+<!-- XG流量分类明细,key=命令字 value=一级分类key-->
+<!-- 基础聊天-->
+<entry key="AccostSvc1">XGChatFlow</entry>
+<entry key="ConfigService1">XGChatFlow</entry>
+<entry key="MessageSvc1">XGChatFlow</entry>
+<entry key="PbMessageSvc1">XGChatFlow</entry>
+<entry key="OnlinePush1">XGChatFlow</entry>
+<entry key="RegPrxySvc1">XGChatFlow</entry>
+<entry key="TransService1">XGChatFlow</entry>
+<entry key="SecCheckSigSvc1">XGChatFlow</entry>
+<entry key="DevLockSecSvc1">XGChatFlow</entry>
+<entry key="SecSafeChkSvc1">XGChatFlow</entry>
+
+<!-- 图片-->
+<entry key="LongConn1">XGPictureFlow</entry>
+<entry key="picCu1">XGPictureFlow</entry>
+<entry key="picCd1">XGPictureFlow</entry>
+<entry key="picGu1">XGPictureFlow</entry>
+<entry key="picGd1">XGPictureFlow</entry>
+<entry key="picDu1">XGPictureFlow</entry>
+<entry key="picDd1">XGPictureFlow</entry>
+<entry key="ImgStore1">XGPictureFlow</entry>
+<entry key="MultiMsg1">XGPictureFlow</entry>
+<entry key="multimsgCu1">XGPictureFlow</entry>
+<entry key="multimsgCd1">XGPictureFlow</entry>
+<entry key="multimsgDd1">XGPictureFlow</entry>
+<entry key="multimsgDu1">XGPictureFlow</entry>
+<entry key="multimsgGu1">XGPictureFlow</entry>
+<entry key="multimsgGd1">XGPictureFlow</entry>
+
+<!-- 语音-->
+<entry key="OfflineFilleHandleSvr1">XGVoiceFlow</entry>
+<entry key="PttCenterSvr1">XGVoiceFlow</entry>
+<entry key="StreamSvr1">XGVoiceFlow</entry>
+<entry key="pttCu1">XGVoiceFlow</entry>
+<entry key="pttCd1">XGVoiceFlow</entry>
+<entry key="pttGu1">XGVoiceFlow</entry>
+<entry key="pttGd1">XGVoiceFlow</entry>
+<entry key="pttGu_new1">XGVoiceFlow</entry>
+<entry key="pttGd_new1">XGVoiceFlow</entry>
+<entry key="pttDu1">XGVoiceFlow</entry>
+<entry key="pttDd1">XGVoiceFlow</entry>
+<entry key="pttTrans1">XGVoiceFlow</entry>
+
+<!-- MSF信令-->
+<entry key="CliLogSvc1">XGMSFFlow</entry>
+<entry key="ConfigPushSvc1">XGMSFFlow</entry>
+<entry key="Heartbeat1">XGMSFFlow</entry>
+<entry key="login1">XGMSFFlow</entry>
+<entry key="GrayUinPro1">XGMSFFlow</entry>
+<entry key="QualityTest1">XGMSFFlow</entry>
+<entry key="HttpConn1">XGMSFFlow</entry>
+<entry key="wtlogin1">XGMSFFlow</entry>
+<entry key="StatSvc1">XGMSFFlow</entry>
+<entry key="KsidTrans1">XGMSFFlow</entry>
+<entry key="PwdProtect1">XGMSFFlow</entry>
+<entry key="SSO1">XGMSFFlow</entry>
+<entry key="getssolist1">XGMSFFlow</entry>
+<entry key="ConfigurationService1">XGMSFFlow</entry>
+<entry key="RedTouchSvc1">XGMSFFlow</entry>
+<entry key="PhSigLcId1">XGMSFFlow</entry>
+<entry key="account1">XGMSFFlow</entry>
+<entry key="connCheck1">XGMSFFlow</entry>
+<entry key="netdetect1">XGMSFFlow</entry>
+<entry key="StatSvc.BindUin1">XGMSFFlow</entry>
+
+<!-- 好友列表-->
+<entry key="AvatarInfoSvr1">XGFriendListFlow</entry>
+<entry key="friendlist1">XGFriendListFlow</entry>
+<entry key="IncreaseURLSvr1">XGFriendListFlow</entry>
+<entry key="OidbSvc1">XGFriendListFlow</entry>
+<entry key="ProfileService1">XGFriendListFlow</entry>
+<entry key="StatSvc1">XGFriendListFlow</entry>
+<entry key="SummaryCard1">XGFriendListFlow</entry>
+<entry key="BumpSvc1">XGFriendListFlow</entry>
+<entry key="AvatarUpdate1">XGFriendListFlow</entry>
+<entry key="PersonalStateSvc1">XGFriendListFlow</entry>
+<entry key="QQHeadIcon1">XGFriendListFlow</entry>
+
+<!-- 讨论组-->
+<entry key="QQServiceDiscussSvc1">XGDiscussFlow</entry>
+<entry key="QRCodeSvc1">XGDiscussFlow</entry>
+<entry key="NearFieldDiscussSvr1">XGDiscussFlow</entry>
+
+<!-- 应用部 -->
+<entry key="GroupSvc1">XGAppDepartFlow</entry>
+<entry key="GroupActivity1">XGAppDepartFlow</entry>
+<entry key="GroupFileAppSvr1">XGAppDepartFlow</entry>
+<entry key="OpenGroupSvc1">XGAppDepartFlow</entry>
+<entry key="group_member_card1">XGAppDepartFlow</entry>
+<entry key="CommunityForum1">XGAppDepartFlow</entry>
+<entry key="mobile_qq_report1">XGAppDepartFlow</entry>
+<entry key="MobileqqApp1">XGAppDepartFlow</entry>
+<entry key="GrpMemberLBS1">XGAppDepartFlow</entry>
+<entry key="secmsg1">XGAppDepartFlow</entry>
+<entry key="qb_offline1">XGAppDepartFlow</entry>
+<entry key="qb_share1">XGAppDepartFlow</entry>
+<entry key="qb_qrcode1">XGAppDepartFlow</entry>
+<entry key="qb_troop_bar1">XGAppDepartFlow</entry>
+<entry key="qb_other1">XGAppDepartFlow</entry>
+<entry key="anony_msg1">XGAppDepartFlow</entry>
+<entry key="codemask1">XGAppDepartFlow</entry>
+<entry key="hrtxformqq1">XGAppDepartFlow</entry>
+<entry key="NearbyGroup1">XGAppDepartFlow</entry>
+<entry key="HornSvc11">XGAppDepartFlow</entry>
+<entry key="EncounterSvc1">XGAppDepartFlow</entry>
+<entry key="HornSvc21">XGAppDepartFlow</entry>
+<entry key="HornSvc31">XGAppDepartFlow</entry>
+<entry key="NeighborSvc1">XGAppDepartFlow</entry>
+<entry key="MCardSvc1">XGAppDepartFlow</entry>
+<entry key="VisitorSvc1">XGAppDepartFlow</entry>
+<entry key="SummaryCard1">XGAppDepartFlow</entry>
+<entry key="NearbyPubAcct1">XGAppDepartFlow</entry>
+<entry key="LBS1">XGAppDepartFlow</entry>
+<entry key="LbsShareSvr1">XGAppDepartFlow</entry>
+<entry key="PubAccountSvc1">XGAppDepartFlow</entry>
+
+<!-- Qzone -->
+<entry key="qzone1">XGQzoneFlow</entry>
+<entry key="SQQzoneSvc1">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0261">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcDb21">XGQzoneFlow</entry>
+<entry key="SsoSnsSession1">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcPublish1">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0011">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0021">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcDev1">XGQzoneFlow</entry>
+<entry key="qzFsPicd1">XGQzoneFlow</entry>
+<entry key="qzBigPicd1">XGQzoneFlow</entry>
+<entry key="qzEmod1">XGQzoneFlow</entry>
+<entry key="qzCvPicd1">XGQzoneFlow</entry>
+<entry key="qzSignPicd1">XGQzoneFlow</entry>
+<entry key="saPicbd1">XGQzoneFlow</entry>
+<entry key="qzPicd1">XGQzoneFlow</entry>
+<entry key="qzPicu1">XGQzoneFlow</entry>
+<entry key="SQQzoneSvcTouch0011">XGQzoneFlow</entry>
+
+<!-- 视频 -->
+<entry key="VideoCCSvc1">XGVideoFlow</entry>
+<entry key="VideoSvc1">XGVideoFlow</entry>
+<entry key="MultiVideo1">XGVideoFlow</entry>
+<entry key="SharpSvr1">XGVideoFlow</entry>
+
+<!-- 文件 -->
+<entry key="NearFieldTranFileSvr1">XGFileFlow</entry>
+<entry key="GTalkFileAppSvr1">XGFileFlow</entry>
+<entry key="WeiyunV2Svc1">XGFileFlow</entry>
+<entry key="OfflineFilleHandleSvr1">XGFileFlow</entry>
+<entry key="VideoShareSrv1">XGFileFlow</entry>
+
+<!-- 增值 -->
+<entry key="CarrierEntry1">XGBusinessFlow</entry> <!-- 营业厅 -->
+<entry key="WalletRecommend1">XGBusinessFlow</entry> <!-- QQ钱包 -->
+<entry key="BQMallSvc1">XGBusinessFlow</entry>
+<entry key="ClubContentUpdate1">XGBusinessFlow</entry>
+<entry key="CardPayControl1">XGBusinessFlow</entry>
+<entry key="EqqAccountSvc1">XGBusinessFlow</entry>	<!-- EQQ -->
+<entry key="mq_crm1">XGBusinessFlow</entry>	<!-- EQQ -->
+<entry key="CouponSvr1">XGBusinessFlow</entry>
+<entry key="AuthSvr1">XGBusinessFlow</entry>
+<entry key="SpecialRemind1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_theme1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_font1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_bubble1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_bubble_json1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_other1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_avatar1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_xingying1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_emosm1">XGBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_profilecard1">XGBusinessFlow</entry>
+<entry key="lingyin1">XGBusinessFlow</entry>
+<entry key="EsurfingPay1">XGBusinessFlow</entry>
+<entry key="ClubInfoSvc1">XGBusinessFlow</entry>
+<entry key="QQWifiSvc1">XGBusinessFlow</entry>
+
+<!-- 游戏中心 -->
+<entry key="ConnAuthSvr1">XGGameCenterFlow</entry>
+<entry key="gameicon1">XGGameCenterFlow</entry>
+
+<!-- 其它-->
+<!-- 
+<entry key="MobileTipsSvc1">XGOtherFlow</entry>
+<entry key="QQMobileGdtSvr1">XGOtherFlow</entry>
+<entry key="Dynamic1">XGOtherFlow</entry>
+<entry key="QPSingle1">XGOtherFlow</entry>
+<entry key="ConfigCheck1">XGOtherFlow</entry>
+<entry key="qqprotect1">XGOtherFlow</entry>
+<entry key="SecuritySvc1">XGOtherFlow</entry>
+-->
+
+
+<!-- WiFi同XG-->
+<!-- 基础聊天-->
+<entry key="AccostSvc2">WiFiChatFlow</entry>
+<entry key="ConfigService2">WiFiChatFlow</entry>
+<entry key="MessageSvc2">WiFiChatFlow</entry>
+<entry key="PbMessageSvc2">WiFiChatFlow</entry>
+<entry key="OnlinePush2">WiFiChatFlow</entry>
+<entry key="RegPrxySvc2">WiFiChatFlow</entry>
+<entry key="TransService2">WiFiChatFlow</entry>
+<entry key="SecCheckSigSvc2">WiFiChatFlow</entry>
+<entry key="DevLockSecSvc2">WiFiChatFlow</entry>
+<entry key="SecSafeChkSvc2">WiFiChatFlow</entry>
+
+<!-- 图片-->
+<entry key="LongConn2">WiFiPictureFlow</entry>
+<entry key="picCu2">WiFiPictureFlow</entry>
+<entry key="picCd2">WiFiPictureFlow</entry>
+<entry key="picGu2">WiFiPictureFlow</entry>
+<entry key="picGd2">WiFiPictureFlow</entry>
+<entry key="picDu2">WiFiPictureFlow</entry>
+<entry key="picDd2">WiFiPictureFlow</entry>
+<entry key="ImgStore2">WiFiPictureFlow</entry>
+<entry key="MultiMsg2">WiFiPictureFlow</entry>
+<entry key="multimsgCu2">WiFiPictureFlow</entry>
+<entry key="multimsgCd2">WiFiPictureFlow</entry>
+<entry key="multimsgDd2">WiFiPictureFlow</entry>
+<entry key="multimsgDu2">WiFiPictureFlow</entry>
+<entry key="multimsgGu2">WiFiPictureFlow</entry>
+<entry key="multimsgGd2">WiFiPictureFlow</entry>
+
+<!-- 语音-->
+<entry key="OfflineFilleHandleSvr2">WiFiVoiceFlow</entry>
+<entry key="PttCenterSvr2">WiFiVoiceFlow</entry>
+<entry key="StreamSvr2">WiFiVoiceFlow</entry>
+<entry key="pttCu2">WiFiVoiceFlow</entry>
+<entry key="pttCd2">WiFiVoiceFlow</entry>
+<entry key="pttGu2">WiFiVoiceFlow</entry>
+<entry key="pttGd2">WiFiVoiceFlow</entry>
+<entry key="pttGu_new2">WiFiVoiceFlow</entry>
+<entry key="pttGd_new2">WiFiVoiceFlow</entry>
+<entry key="pttDu2">WiFiVoiceFlow</entry>
+<entry key="pttDd2">WiFiVoiceFlow</entry>
+<entry key="pttTrans2">WiFiVoiceFlow</entry>
+
+<!-- MSF信令-->
+<entry key="CliLogSvc2">WiFiMSFFlow</entry>
+<entry key="ConfigPushSvc2">WiFiMSFFlow</entry>
+<entry key="Heartbeat2">WiFiMSFFlow</entry>
+<entry key="login2">WiFiMSFFlow</entry>
+<entry key="GrayUinPro2">WiFiMSFFlow</entry>
+<entry key="QualityTest2">WiFiMSFFlow</entry>
+<entry key="HttpConn2">WiFiMSFFlow</entry>
+<entry key="wtlogin2">WiFiMSFFlow</entry>
+<entry key="StatSvc2">WiFiMSFFlow</entry>
+<entry key="KsidTrans2">WiFiMSFFlow</entry>
+<entry key="PwdProtect2">WiFiMSFFlow</entry>
+<entry key="SSO2">WiFiMSFFlow</entry>
+<entry key="getssolist2">WiFiMSFFlow</entry>
+<entry key="ConfigurationService2">WiFiMSFFlow</entry>
+<entry key="RedTouchSvc2">WiFiMSFFlow</entry>
+<entry key="PhSigLcId2">WiFiMSFFlow</entry>
+<entry key="account2">WiFiMSFFlow</entry>
+<entry key="connCheck2">WiFiMSFFlow</entry>
+<entry key="netdetect2">WiFiMSFFlow</entry>
+<entry key="StatSvc.BindUin2">WiFiMSFFlow</entry>
+
+<!-- 好友列表-->
+<entry key="AvatarInfoSvr2">WiFiFriendListFlow</entry>
+<entry key="friendlist2">WiFiFriendListFlow</entry>
+<entry key="IncreaseURLSvr2">WiFiFriendListFlow</entry>
+<entry key="OidbSvc2">WiFiFriendListFlow</entry>
+<entry key="ProfileService2">WiFiFriendListFlow</entry>
+<entry key="StatSvc2">WiFiFriendListFlow</entry>
+<entry key="SummaryCard2">WiFiFriendListFlow</entry>
+<entry key="BumpSvc2">WiFiFriendListFlow</entry>
+<entry key="PersonalStateSvc2">XGFriendListFlow</entry>
+<entry key="AvatarUpdate2">WiFiFriendListFlow</entry>
+<entry key="QQHeadIcon2">WiFiFriendListFlow</entry>
+
+<!-- 讨论组-->
+<entry key="QQServiceDiscussSvc2">WiFiDiscussFlow</entry>
+<entry key="QRCodeSvc2">WiFiDiscussFlow</entry>
+<entry key="NearFieldDiscussSvr2">WiFiDiscussFlow</entry>
+
+<!-- 应用部 -->
+<entry key="GroupSvc2">WiFiAppDepartFlow</entry>
+<entry key="GroupActivity2">WiFiAppDepartFlow</entry>
+<entry key="GroupFileAppSvr2">WiFiAppDepartFlow</entry>
+<entry key="OpenGroupSvc2">WiFiAppDepartFlow</entry>
+<entry key="group_member_card2">WiFiAppDepartFlow</entry>
+<entry key="CommunityForum2">WiFiAppDepartFlow</entry>
+<entry key="mobile_qq_report2">WiFiAppDepartFlow</entry>
+<entry key="MobileqqApp2">WiFiAppDepartFlow</entry>
+<entry key="GrpMemberLBS2">WiFiAppDepartFlow</entry>
+<entry key="secmsg2">WiFiAppDepartFlow</entry>
+<entry key="qb_offline2">WiFiAppDepartFlow</entry>
+<entry key="qb_share2">WiFiAppDepartFlow</entry>
+<entry key="qb_qrcode2">WiFiAppDepartFlow</entry>
+<entry key="qb_troop_bar2">WiFiAppDepartFlow</entry>
+<entry key="qb_other2">WiFiAppDepartFlow</entry>
+<entry key="anony_msg2">WiFiAppDepartFlow</entry>
+<entry key="codemask2">WiFiAppDepartFlow</entry>
+<entry key="hrtxformqq2">WiFiAppDepartFlow</entry>
+<entry key="NearbyGroup2">WiFiAppDepartFlow</entry>
+<entry key="HornSvc12">WiFiAppDepartFlow</entry>
+<entry key="EncounterSvc2">WiFiAppDepartFlow</entry>
+<entry key="HornSvc22">WiFiAppDepartFlow</entry>
+<entry key="HornSvc32">WiFiAppDepartFlow</entry>
+<entry key="NeighborSvc2">WiFiAppDepartFlow</entry>
+<entry key="MCardSvc2">WiFiAppDepartFlow</entry>
+<entry key="VisitorSvc2">WiFiAppDepartFlow</entry>
+<entry key="SummaryCard2">WiFiAppDepartFlow</entry>
+<entry key="NearbyPubAcct2">WiFiAppDepartFlow</entry>
+<entry key="LBS2">WiFiAppDepartFlow</entry>
+<entry key="LbsShareSvr2">WiFiAppDepartFlow</entry>
+<entry key="PubAccountSvc2">WiFiAppDepartFlow</entry>
+
+<!-- Qzone -->
+<entry key="qzone2">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvc2">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0262">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcDb22">WiFiQzoneFlow</entry>
+<entry key="SsoSnsSession2">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcPublish2">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0012">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcDev0022">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcDev2">WiFiQzoneFlow</entry>
+<entry key="qzFsPicd2">WiFiQzoneFlow</entry>
+<entry key="qzBigPicd2">WiFiQzoneFlow</entry>
+<entry key="qzEmod2">WiFiQzoneFlow</entry>
+<entry key="qzCvPicd2">WiFiQzoneFlow</entry>
+<entry key="qzSignPicd2">WiFiQzoneFlow</entry>
+<entry key="saPicbd2">WiFiQzoneFlow</entry>
+<entry key="qzPicd2">WiFiQzoneFlow</entry>
+<entry key="qzPicu2">WiFiQzoneFlow</entry>
+<entry key="SQQzoneSvcTouch0012">WiFiQzoneFlow</entry>
+
+<!-- 视频 -->
+<entry key="VideoCCSvc2">WiFiVideoFlow</entry>
+<entry key="VideoSvc2">WiFiVideoFlow</entry>
+<entry key="MultiVideo2">WiFiVideoFlow</entry>
+<entry key="SharpSvr2">WiFiVideoFlow</entry>
+
+<!-- 文件 -->
+<entry key="NearFieldTranFileSvr2">WiFiFileFlow</entry>
+<entry key="GTalkFileAppSvr2">WiFiFileFlow</entry>
+<entry key="WeiyunV2Svc2">WiFiFileFlow</entry>
+<entry key="OfflineFilleHandleSvr2">WiFiFileFlow</entry>
+<entry key="VideoShareSrv2">WiFiFileFlow</entry>
+
+<!-- 增值 -->
+<entry key="CarrierEntry2">WiFiBusinessFlow</entry> <!-- 营业厅 -->
+<entry key="WalletRecommend2">WiFiBusinessFlow</entry> <!-- QQ钱包 -->
+<entry key="BQMallSvc2">WiFiBusinessFlow</entry>
+<entry key="ClubContentUpdate2">WiFiBusinessFlow</entry>
+<entry key="CardPayControl2">WiFiBusinessFlow</entry>
+<entry key="EqqAccountSvc2">WiFiBusinessFlow</entry>	<!-- EQQ -->
+<entry key="mq_crm2">WiFiBusinessFlow</entry>	<!-- EQQ -->
+<entry key="CouponSvr2">WiFiBusinessFlow</entry>
+<entry key="AuthSvr2">WiFiBusinessFlow</entry>
+<entry key="SpecialRemind2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_theme2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_font2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_bubble2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_bubble_json2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_other2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_avatar2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_xingying2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_emosm2">WiFiBusinessFlow</entry>	<!-- VIP -->
+<entry key="VIP_profilecard2">WiFiBusinessFlow</entry>
+<entry key="lingyin2">WiFiBusinessFlow</entry>
+<entry key="EsurfingPay2">WiFiBusinessFlow</entry>
+<entry key="ClubInfoSvc2">WiFiBusinessFlow</entry>
+<entry key="QQWifiSvc2">WiFiBusinessFlow</entry>
+
+<!-- 游戏中心 -->
+<entry key="ConnAuthSvr2">WiFiGameCenterFlow</entry>
+<entry key="gameicon2">WiFiGameCenterFlow</entry>
+
+<!-- 其它-->
+<!--  
+<entry key="MobileTipsSvc2">WiFiOtherFlow</entry>
+<entry key="QQMobileGdtSvr2">WiFiOtherFlow</entry>
+<entry key="Dynamic2">WiFiOtherFlow</entry>
+<entry key="QPSingle2">WiFiOtherFlow</entry>
+<entry key="ConfigCheck2">WiFiOtherFlow</entry>
+<entry key="qqprotect2">WiFiOtherFlow</entry>
+<entry key="SecuritySvc2">WiFiOtherFlow</entry>
+-->
+
+</properties>

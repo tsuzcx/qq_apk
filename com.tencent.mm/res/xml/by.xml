@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:title="@string/egx" android:key="settings_voice_play_mode" android:defaultValue="false" />
-    <CheckBoxPreference android:title="@string/e_u" android:key="settings_enter_button_send" android:defaultValue="false" />
-    <Preference android:title="@string/e_b" android:key="settings_chatting_bg" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_q" android:key="settings_emoji_manager" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title="@string/e_8" />
-    <Preference android:title="@string/a2c" android:key="settings_bak_chat" android:layout="@layout/afi" />
-    <Preference android:title="@string/edz" android:key="settings_reset" android:layout="@layout/afi" />
-    <Preference android:title="@string/b60" android:key="settings_recovery" android:layout="@layout/afi" />
+    <CheckBoxPreference android:key="settings_need_verify" android:layout="@layout/bdi" android:title="@string/iv9" />
+    <CheckBoxPreference android:key="settings_recommend_mobilefriends_to_me" android:summary="@string/ixl" android:title="@string/bq0" />
+    <CheckBoxPreference android:key="settings_find_google_contact" android:summary="@string/ixk" android:title="@string/isf" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_add_me_way" android:layout="@layout/bdi" android:title="@string/iq6" />
+    <PreferenceTitleCategory android:key="settings_add_friends_timeline_tip" android:title="@string/iwe" />
+    <Preference android:key="setting_privacy_chatting_item" android:title="@string/inr" />
+    <Preference android:key="setting_privacy_sns_item" android:title="@string/ins" />
+    <Preference android:key="setting_privacy_video_item" android:title="@string/int" />
+    <Preference android:key="setting_privacy_watch_item" android:title="@string/inu" />
+    <Preference android:key="setting_privacy_wx_sport_item" android:title="@string/inv" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_about_blacklist" android:layout="@layout/bdi" android:title="@string/ixg" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

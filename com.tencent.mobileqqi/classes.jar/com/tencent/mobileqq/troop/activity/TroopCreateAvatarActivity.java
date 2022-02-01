@@ -26,11 +26,11 @@ import com.tencent.mobileqq.troop.widget.AvatarWallView;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
+import gth;
 import gti;
 import gtj;
 import gtk;
 import gtl;
-import gtm;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -51,11 +51,11 @@ public class TroopCreateAvatarActivity
   public Intent a;
   public Handler a;
   protected TextView a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gtm(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new gtl(this);
   public AvatarWallAdapter a;
   public AvatarWallView a;
   public ArrayList a;
-  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new gtl(this);
+  AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new gtk(this);
   public boolean a;
   protected TextView b;
   public String b;
@@ -71,7 +71,7 @@ public class TroopCreateAvatarActivity
     this.jdField_c_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new gti(this);
+    this.jdField_a_of_type_AndroidOsHandler = new gth(this);
   }
   
   protected void a(int paramInt, Intent paramIntent)
@@ -121,7 +121,7 @@ public class TroopCreateAvatarActivity
     {
       setContentView(2130903413);
       setTitle(2131560419);
-      c(i, new gtj(this));
+      c(i, new gti(this));
       localObject = (TroopCreateLogic)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(30);
       if (localObject == null) {
         break label157;
@@ -155,8 +155,8 @@ public class TroopCreateAvatarActivity
       this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131230976));
       localObject = getString(2131560421);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232533));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new gtk(this));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232532));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new gtj(this));
       this.k.setText(getString(2131561692));
       return;
       this.m.setEnabled(true);

@@ -1,22 +1,25 @@
-import android.text.format.Time;
 import com.tencent.mobileqq.testassister.ShareAppLogHelper;
 import java.io.File;
-import java.io.FilenameFilter;
 
 public class gmg
-  implements FilenameFilter
+  extends Thread
 {
-  public gmg(ShareAppLogHelper paramShareAppLogHelper) {}
+  public gmg(ShareAppLogHelper paramShareAppLogHelper, String paramString) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    if (!paramString.endsWith(".log")) {}
-    do
+    try
     {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

@@ -1,65 +1,124 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.o;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.ad;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
+@Deprecated
 public final class m
-  extends o
+  extends MAutoStorage<l>
 {
-  public static final String[] gUa;
-  public static final c.a gUb;
+  public static final String[] nVW;
+  private final ISQLiteDatabase qFJ;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(129571);
-    gUa = new String[] { "username", "versionType" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).yrK = new Field[3];
-    ((c.a)localObject1).columns = new String[4];
-    Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).yrM.put("username", "TEXT");
-    ((StringBuilder)localObject2).append(" username TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "versionType";
-    ((c.a)localObject1).yrM.put("versionType", "INTEGER");
-    ((StringBuilder)localObject2).append(" versionType INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).yrM.put("updateTime", "LONG");
-    ((StringBuilder)localObject2).append(" updateTime LONG");
-    ((c.a)localObject1).columns[3] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    gUb = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = gUa;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = gUb;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(129571);
+    AppMethodBeat.i(44511);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(l.DB_INFO, "AppBrandLocalUsageRecord") };
+    AppMethodBeat.o(44511);
   }
   
-  public final c.a getDBInfo()
+  public m(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return null;
+    super(paramISQLiteDatabase, l.DB_INFO, "AppBrandLocalUsageRecord", l.INDEX_CREATE);
+    this.qFJ = paramISQLiteDatabase;
+  }
+  
+  private boolean a(l paraml, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(44509);
+    if (paramBoolean)
+    {
+      paramBoolean = super.delete(paraml, paramBoolean, paramVarArgs);
+      AppMethodBeat.o(44509);
+      return paramBoolean;
+    }
+    if (!get(paraml, paramVarArgs))
+    {
+      AppMethodBeat.o(44509);
+      return false;
+    }
+    super.delete(paraml, paramBoolean, paramVarArgs);
+    if (!get(paraml, paramVarArgs))
+    {
+      AppMethodBeat.o(44509);
+      return true;
+    }
+    AppMethodBeat.o(44509);
+    return false;
+  }
+  
+  public final boolean a(String paramString, int paramInt, m.a parama)
+  {
+    AppMethodBeat.i(44507);
+    Log.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44507);
+      return false;
+    }
+    parama = new l();
+    parama.field_username = paramString;
+    parama.field_versionType = paramInt;
+    if (super.get(parama, l.qDJ))
+    {
+      parama.field_updateTime = Util.nowSecond();
+      bool = super.update(parama.systemRowid, parama, false);
+      if (bool) {
+        doNotify("single", 3, null);
+      }
+      AppMethodBeat.o(44507);
+      return bool;
+    }
+    parama.field_updateTime = Util.nowSecond();
+    super.insertNotify(parama, false);
+    boolean bool = super.get(parama, l.qDJ);
+    if (bool)
+    {
+      paramInt = AppBrandGlobalSystemConfig.ckD().qWU;
+      paramString = "delete from AppBrandLocalUsageRecord where rowid not in ( select rowid from AppBrandLocalUsageRecord order by updateTime desc  limit " + paramInt + " offset 0)";
+      this.qFJ.execSQL("AppBrandLocalUsageRecord", paramString);
+      doNotify("single", 2, null);
+    }
+    AppMethodBeat.o(44507);
+    return bool;
+  }
+  
+  final boolean b(String paramString, int paramInt, m.a parama)
+  {
+    AppMethodBeat.i(44508);
+    Log.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44508);
+      return false;
+    }
+    l locall = new l();
+    locall.field_username = paramString;
+    locall.field_versionType = paramInt;
+    boolean bool = a(locall, false, l.qDJ);
+    if (bool) {
+      doNotify("single", 5, null);
+    }
+    if ((bool) && (m.a.qOQ == parama)) {
+      n.cfk().ca(paramString, paramInt);
+    }
+    if ((bool) && (m.a.qOQ == parama)) {
+      i.cJV().F(ad.XJ(paramString), paramInt);
+    }
+    AppMethodBeat.o(44508);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qqconnect.wtlogin.Login;
+import java.util.HashMap;
 
 public class huh
-  implements TextWatcher
+  extends Handler
 {
   public huh(Login paramLogin) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt3 < 2)
+    Bundle localBundle = paramMessage.getData();
+    this.a.g();
+    switch (paramMessage.what)
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    else
-    {
+    default: 
+      return;
+    case 1: 
+      this.a.a(String.format(this.a.getResources().getString(2131561498), new Object[] { this.a.getResources().getString(2131562443), Integer.valueOf(3100) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3100");
+      StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
       return;
     }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    paramMessage = localBundle.getString("OTHER_ERROR");
+    if (localBundle.getBoolean("pwdblank", false)) {
+      this.a.b.setText("");
+    }
+    this.a.a(String.format(this.a.getResources().getString(2131561498), new Object[] { paramMessage, Integer.valueOf(3101) }));
+    paramMessage = new HashMap();
+    paramMessage.put("error", "3101");
+    StatisticCollector.a(this.a).a("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
   }
 }
 

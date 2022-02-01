@@ -1,15 +1,16 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class dph
-  extends FacePreloadBaseAdapter.ViewHolder
+public class dph
+  implements View.OnClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public dph(TroopInfoActivity paramTroopInfoActivity) {}
   
-  private dph(dpg paramdpg) {}
+  public void onClick(View paramView)
+  {
+    this.a.h();
+  }
 }
 
 

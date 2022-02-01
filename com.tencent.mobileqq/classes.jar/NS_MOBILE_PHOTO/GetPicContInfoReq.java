@@ -9,8 +9,8 @@ public final class GetPicContInfoReq
   extends JceStruct
 {
   static ArrayList<String> cache_pic_url = new ArrayList();
-  public ArrayList<String> pic_url;
-  public long uin;
+  public ArrayList<String> pic_url = null;
+  public long uin = 0L;
   
   static
   {
@@ -33,15 +33,16 @@ public final class GetPicContInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pic_url != null) {
-      paramJceOutputStream.write(this.pic_url, 0);
+    ArrayList localArrayList = this.pic_url;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetPicContInfoReq
  * JD-Core Version:    0.7.0.1
  */

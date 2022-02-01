@@ -3,11 +3,16 @@ import com.tencent.mobileqq.filemanager.activity.FMActivity;
 class fqg
   implements Runnable
 {
-  fqg(fqc paramfqc) {}
+  fqg(fqb paramfqb, boolean paramBoolean) {}
   
   public void run()
   {
-    FMActivity.a(this.a.a);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      FMActivity.b(this.jdField_a_of_type_Fqb.a);
+      return;
+    }
+    FMActivity.c(this.jdField_a_of_type_Fqb.a);
   }
 }
 

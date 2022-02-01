@@ -25,7 +25,7 @@ public class ViewSearchTool
   
   private List<View> filter(View paramView, Matcher paramMatcher)
   {
-    AppMethodBeat.i(118649);
+    AppMethodBeat.i(160023);
     Object localObject = new ArrayList();
     ((List)localObject).add(0, Collections.singletonList(paramView));
     int i = 0;
@@ -67,13 +67,13 @@ public class ViewSearchTool
         }
       }
     }
-    AppMethodBeat.o(118649);
+    AppMethodBeat.o(160023);
     return paramView;
   }
   
   private List<View> findRoots()
   {
-    AppMethodBeat.i(118647);
+    AppMethodBeat.i(160021);
     Object localObject2;
     label27:
     Field localField;
@@ -81,7 +81,7 @@ public class ViewSearchTool
     {
       localObject1 = "android.view.WindowManagerGlobal";
       if (Build.VERSION.SDK_INT <= 16) {
-        break label127;
+        break label124;
       }
       localObject2 = "getInstance";
       localObject1 = Class.forName((String)localObject1);
@@ -90,36 +90,36 @@ public class ViewSearchTool
       localField.setAccessible(true);
       ((Class)localObject1).getDeclaredField("mParams").setAccessible(true);
       if (Build.VERSION.SDK_INT >= 19) {
-        break label133;
+        break label130;
       }
     }
-    label133:
+    label130:
     for (Object localObject1 = Arrays.asList((View[])localField.get(localObject2));; localObject1 = (List)localField.get(localObject2))
     {
       if (((List)localObject1).size() != 0) {
-        break label145;
+        break label142;
       }
       localObject1 = new RuntimeException("something wrong");
-      AppMethodBeat.o(118647);
+      AppMethodBeat.o(160021);
       throw ((Throwable)localObject1);
       localObject1 = "android.view.WindowManagerImpl";
       break;
-      label127:
+      label124:
       localObject2 = "getDefault";
       break label27;
     }
-    label145:
-    AppMethodBeat.o(118647);
+    label142:
+    AppMethodBeat.o(160021);
     return localObject1;
   }
   
   @Deprecated
   public static String findText(View paramView)
   {
-    AppMethodBeat.i(118650);
+    AppMethodBeat.i(160024);
     if (paramView == null)
     {
-      AppMethodBeat.o(118650);
+      AppMethodBeat.o(160024);
       return null;
     }
     Object localObject = paramView.getContentDescription();
@@ -163,27 +163,27 @@ public class ViewSearchTool
       if (localObject != null)
       {
         paramView = ((CharSequence)localObject).toString();
-        AppMethodBeat.o(118650);
+        AppMethodBeat.o(160024);
         return paramView;
       }
     }
     else
     {
       paramView = ((CharSequence)localObject).toString();
-      AppMethodBeat.o(118650);
+      AppMethodBeat.o(160024);
       return paramView;
     }
-    AppMethodBeat.o(118650);
+    AppMethodBeat.o(160024);
     return null;
   }
   
   @Deprecated
   public static String findViewDepth(View paramView1, View paramView2, String paramString)
   {
-    AppMethodBeat.i(118651);
+    AppMethodBeat.i(160025);
     if ((paramView1 == null) || (paramView2 == null))
     {
-      AppMethodBeat.o(118651);
+      AppMethodBeat.o(160025);
       return null;
     }
     String str = paramString;
@@ -196,7 +196,7 @@ public class ViewSearchTool
       if (str.startsWith("_")) {
         paramView1 = str.substring(1);
       }
-      AppMethodBeat.o(118651);
+      AppMethodBeat.o(160025);
       return paramView1;
     }
     if ((paramView1 instanceof ViewGroup))
@@ -213,30 +213,30 @@ public class ViewSearchTool
           if (paramString.startsWith("_")) {
             paramView1 = paramString.substring(1);
           }
-          AppMethodBeat.o(118651);
+          AppMethodBeat.o(160025);
           return paramView1;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(118651);
+    AppMethodBeat.o(160025);
     return null;
   }
   
   public List<View> findView(Matcher paramMatcher)
   {
-    AppMethodBeat.i(118648);
+    AppMethodBeat.i(160022);
     Iterator localIterator = findRoots().iterator();
     while (localIterator.hasNext())
     {
       List localList = filter((View)localIterator.next(), paramMatcher);
       if ((localList != null) && (localList.size() > 0))
       {
-        AppMethodBeat.o(118648);
+        AppMethodBeat.o(160022);
         return localList;
       }
     }
-    AppMethodBeat.o(118648);
+    AppMethodBeat.o(160022);
     return null;
   }
   
@@ -247,7 +247,7 @@ public class ViewSearchTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.accessibility.ViewSearchTool
  * JD-Core Version:    0.7.0.1
  */

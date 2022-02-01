@@ -1,39 +1,38 @@
 package com.tencent.mobileqq.managers;
 
 import android.text.TextUtils;
-import atzq;
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
+class CUOpenCardGuideMng$CUOpenCardClickableSpan$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$CUOpenCardClickableSpan$1(atzq paramatzq) {}
+  CUOpenCardGuideMng$CUOpenCardClickableSpan$1(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
   public void run()
   {
     String str;
-    if (this.this$0.a == 1) {
+    if (this.this$0.d == 1) {
       str = "0X8008124";
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(str)) {
-        azqs.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      }
-      return;
-      if (this.this$0.a == 2) {
+      break;
+      if (this.this$0.d == 2) {
         str = "0X8008126";
-      } else if ((this.this$0.a == 3) || (this.this$0.a == 4)) {
-        str = "0X800813E";
-      } else {
+      } else if ((this.this$0.d != 3) && (this.this$0.d != 4)) {
         str = null;
+      } else {
+        str = "0X800813E";
       }
+    }
+    if (!TextUtils.isEmpty(str)) {
+      ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan.1
  * JD-Core Version:    0.7.0.1
  */

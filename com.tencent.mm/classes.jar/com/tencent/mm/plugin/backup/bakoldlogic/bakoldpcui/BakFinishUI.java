@@ -1,108 +1,141 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakFinishUI
   extends MMWizardActivity
   implements e.e
 {
-  private ak handler;
-  private int jIs;
-  private TextView jIu;
+  private MMHandler handler;
+  private TextView mlA;
+  private int vfN;
   
   public BakFinishUI()
   {
-    AppMethodBeat.i(17924);
-    this.handler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(17924);
+    AppMethodBeat.i(21980);
+    this.handler = new MMHandler(Looper.getMainLooper());
+    AppMethodBeat.o(21980);
   }
   
-  public final void aVk()
+  public final void cXk()
   {
-    AppMethodBeat.i(17929);
-    this.handler.post(new BakFinishUI.2(this));
-    AppMethodBeat.o(17929);
+    AppMethodBeat.i(21985);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21978);
+        a.cWU().cWV().vfh = -1;
+        BakFinishUI.b(BakFinishUI.this);
+        AppMethodBeat.o(21978);
+      }
+    });
+    AppMethodBeat.o(21985);
   }
   
   public int getLayoutId()
   {
-    return 2130968813;
+    return R.i.geE;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(17926);
-    setMMTitle(2131297432);
-    this.jIu = ((TextView)findViewById(2131821661));
-    if (6 == this.jIs) {
-      this.jIu.setText(getString(2131297428));
+    AppMethodBeat.i(21982);
+    setMMTitle(R.l.gvw);
+    this.mlA = ((TextView)findViewById(R.h.fth));
+    if (6 == this.vfN) {
+      this.mlA.setText(getString(R.l.gvv));
     }
     for (;;)
     {
-      setBackBtn(new BakFinishUI.1(this));
-      AppMethodBeat.o(17926);
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(21977);
+          a.cWU().cWV().vfh = -1;
+          BakFinishUI.a(BakFinishUI.this);
+          AppMethodBeat.o(21977);
+          return true;
+        }
+      });
+      AppMethodBeat.o(21982);
       return;
-      if (1 == this.jIs) {
-        this.jIu.setText(getString(2131297419));
+      if (1 == this.vfN) {
+        this.mlA.setText(getString(R.l.gvo));
       }
     }
   }
   
+  public final void oc(int paramInt)
+  {
+    AppMethodBeat.i(21986);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21979);
+        Log.d("MicroMsg.BakFinishUI", "BakFinishUI onCloseSocket");
+        Intent localIntent = new Intent(BakFinishUI.this, BakConnErrorUI.class);
+        MMWizardActivity.aQ(BakFinishUI.this, localIntent);
+        AppMethodBeat.o(21979);
+      }
+    });
+    AppMethodBeat.o(21986);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(17925);
+    AppMethodBeat.i(21981);
     super.onCreate(paramBundle);
-    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false))
+    if (getIntent().getExtras().getBoolean("MMWizardActivity.WIZARD_ROOT_KILLSELF", false))
     {
-      AppMethodBeat.o(17925);
+      AppMethodBeat.o(21981);
       return;
     }
-    this.jIs = getIntent().getIntExtra("cmd", -1);
-    ab.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
+    this.vfN = getIntent().getIntExtra("cmd", -1);
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.vfN) });
     initView();
-    a.aUU().aUV().jHC = this;
-    AppMethodBeat.o(17925);
+    a.cWU().cWV().veZ = this;
+    AppMethodBeat.o(21981);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(17927);
+    AppMethodBeat.i(21983);
     super.onDestroy();
-    a.aUU().aUV().jHC = null;
-    ab.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
-    AppMethodBeat.o(17927);
-  }
-  
-  public final void onError(int paramInt)
-  {
-    AppMethodBeat.i(17930);
-    this.handler.post(new BakFinishUI.3(this));
-    AppMethodBeat.o(17930);
+    a.cWU().cWV().veZ = null;
+    Log.i("MicroMsg.BakFinishUI", "BakFinishUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.vfN) });
+    AppMethodBeat.o(21983);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(17928);
+    AppMethodBeat.i(21984);
     if (paramInt == 4)
     {
-      a.aUU().aUV().jHK = -1;
-      Oi(1);
-      AppMethodBeat.o(17928);
+      a.cWU().cWV().vfh = -1;
+      aAp(1);
+      AppMethodBeat.o(21984);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(17928);
+    AppMethodBeat.o(21984);
     return bool;
   }
   
@@ -114,7 +147,7 @@ public class BakFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakFinishUI
  * JD-Core Version:    0.7.0.1
  */

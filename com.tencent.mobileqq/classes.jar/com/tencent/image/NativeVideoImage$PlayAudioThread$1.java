@@ -1,6 +1,7 @@
 package com.tencent.image;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 class NativeVideoImage$PlayAudioThread$1
   implements Runnable
@@ -13,15 +14,15 @@ class NativeVideoImage$PlayAudioThread$1
     {
       this.this$1.this$0.mPlayOnceListener.onFinish();
       this.this$1.this$0.mPlayOnceListener = null;
-      if (QLog.isColorLevel()) {
-        QLog.e(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame, mPlayOnceListener.onFinish()");
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.e(NativeVideoImage.TAG_AUDIO, 2, "seekToNextAudioFrame, mPlayOnceListener.onFinish()");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage.PlayAudioThread.1
  * JD-Core Version:    0.7.0.1
  */

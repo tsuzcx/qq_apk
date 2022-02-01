@@ -3,15 +3,14 @@ package com.tencent.shadow.dynamic.host;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.shadow.proguard.n;
 
 public class NotFoundException
   extends Exception
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new n();
+  public static final Parcelable.Creator<NotFoundException> CREATOR = new NotFoundException.1();
   
-  public NotFoundException(Parcel paramParcel)
+  protected NotFoundException(Parcel paramParcel)
   {
     super(paramParcel.readString());
   }
@@ -33,7 +32,7 @@ public class NotFoundException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.NotFoundException
  * JD-Core Version:    0.7.0.1
  */

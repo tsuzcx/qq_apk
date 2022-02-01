@@ -27,8 +27,7 @@ public class PreviewPerformanceInfo
   {
     long l = System.currentTimeMillis();
     Long localLong = Long.valueOf(System.nanoTime());
-    l = Long.valueOf(l * 1000L).longValue();
-    return Long.valueOf((localLong.longValue() - localLong.longValue() / 1000000L * 1000000L) / 1000L + l);
+    return Long.valueOf(Long.valueOf(l * 1000L).longValue() + (localLong.longValue() - localLong.longValue() / 1000000L * 1000000L) / 1000L);
   }
   
   private void initHandler()
@@ -52,46 +51,51 @@ public class PreviewPerformanceInfo
   
   public void destroy()
   {
-    if (this.mHandler != null) {
-      this.mHandler.post(new PreviewPerformanceInfo.5(this));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new PreviewPerformanceInfo.5(this));
     }
   }
   
   public void report()
   {
     initHandler();
-    if (this.mHandler != null) {
-      this.mHandler.post(new PreviewPerformanceInfo.4(this));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new PreviewPerformanceInfo.4(this));
     }
   }
   
   public void setResolution(int paramInt1, int paramInt2)
   {
     initHandler();
-    if (this.mHandler != null) {
-      this.mHandler.post(new PreviewPerformanceInfo.1(this, paramInt1, paramInt2));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new PreviewPerformanceInfo.1(this, paramInt1, paramInt2));
     }
   }
   
   public void setStickerID(String paramString)
   {
     initHandler();
-    if (this.mHandler != null) {
-      this.mHandler.post(new PreviewPerformanceInfo.2(this, paramString));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new PreviewPerformanceInfo.2(this, paramString));
     }
   }
   
   public void updateInfo(long paramLong)
   {
     initHandler();
-    if (this.mHandler != null) {
-      this.mHandler.post(new PreviewPerformanceInfo.3(this, paramLong));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new PreviewPerformanceInfo.3(this, paramLong));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.PreviewPerformanceInfo
  * JD-Core Version:    0.7.0.1
  */

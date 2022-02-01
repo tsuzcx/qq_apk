@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/ajj" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/ajj" />
-    <item android:state_enabled="false" android:drawable="@drawable/aji" />
-    <item android:state_focused="false" android:drawable="@drawable/aji" />
-</selector>
+    <corners android:radius="2.0dip" />
+    <solid android:color="@color/BW_93" />
+    <stroke android:width="2.0px" android:color="@color/BW_93" />
+</shape>

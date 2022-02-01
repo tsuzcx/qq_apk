@@ -1,0 +1,367 @@
+{
+    "ReadInjoy_ad_banner_inner_kol_soft_ad_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "direction": "horizontal",
+                "view_id": "id_ad_banner_inner_small_root",
+                "event_type": "cmd_native_inner_ad_nothing_click",
+                "margin_left": "16",
+                "margin_right": "16",
+                "margin_top": "16",
+                "height": {
+                    "type": "relative",
+                    "value": "86"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "343"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "$container_background_color",
+                    "setCornerRadiusArray:type:": [
+                        [
+                            "3",
+                            "3",
+                            "3",
+                            "3"
+                        ],
+                        "relative"
+                    ]
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_inner_small_img",
+                        "height": {
+                            "type": "relative",
+                            "value": "70"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "70"
+                        },
+                        "margin_left": "8",
+                        "margin_top": "8",
+                        "margin_bottom": "8",
+                        "align_parent_left": "YES",
+                        "event_type": "cmd_native_inner_ad_cover_click",
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$image_url",
+                                "0"
+                            ],
+                            "setCornerRadiusString:": "4"
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "layout_type": "layout_relative",
+                        "margin_top": "8",
+                        "margin_left": "8",
+                        "margin_right": "8",
+                        "margin_bottom": "8",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "249"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_inner_ad_title_container",
+                                "direction": "vertical",
+                                "event_type": "cmd_native_inner_ad_title_click",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "visible_depend_on_children":"YES",
+                                "subviews": [
+                                    {
+                                        "view_type": "PTSRichTextView",
+                                        "view_id": "id_richtext_title",
+                                        "event_type": "cmd_native_inner_ad_title_click",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type":"relative",
+                                            "value":"259"
+                                        },
+                                        "attributes": {
+                                            "setBackgroundColorString:" :"$container_background_color",
+                                            "setRichData:": [
+                                                {
+                                                    "name": "div",
+                                                    "attrs": {
+                                                        "style": "font-size:14px;line-height: 18px; color: #000000;-webkit-line-clamp:${rich_text_line};width:259px"
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "name": "img",
+                                                            "attrs": {
+                                                                "style": "width:52px; height:15px",
+                                                                "src": "rij_ad_tag_author"
+                                                            }
+                                                        },
+                                                        {
+                                                          "type": "text",
+                                                          "text": "  "
+                                                        },
+                                                        {
+                                                            "type": "text",
+                                                            "text": "$richtext_title"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_inner_title",
+                                        "event_type": "cmd_native_inner_ad_title_click",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "attributes": {
+                                            "setTextColorString:": "#000000",
+                                            "setFontSizeString:": "14",
+                                            "setText:lineSpace:": [
+                                                "$text_title",
+                                                "0"
+                                            ],
+                                            "setNumberOfLinesString:": "1"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "container",
+                                "direction": "horizontal",
+                                "below_of_view": "id_inner_ad_title_container",
+                                "margin_top": "6",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "15"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_ad_author_tag_img",
+                                        "align_parent_center_vertical": "YES",
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "52"
+                                        },
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "$author_recommend_tag_img"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_ad_jd_tag_img",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "6",
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "30"
+                                        },
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "$jd_tag_img"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIImageView",
+                                        "view_id": "id_ad_pdd_tag_img",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "6",
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "41"
+                                        },
+                                        "height": {
+                                            "type": "match_parent"
+                                        },
+                                        "attributes": {
+                                            "loadImageWithPath:": "$pdd_tag_img"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "view_type": "container",
+                                "layout_type": "layout_relative",
+                                "align_parent_bottom":"YES",
+                                "margin_top": "8",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "23"
+                                },
+                                "width": {
+                                    "type": "match_parent"
+                                },
+                                "subviews": [
+                                    {
+                                        "view_type": "UIView",
+                                        "view_id" : "id_inner_ad_price_and_sale_num_container",
+                                        "visible_depend_on_children" : "YES",
+                                        "direction": "horizontal",
+                                        "align_parent_bottom":"YES",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "subviews": [
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_inner_ad_price",
+                                                "height": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "align_parent_center_vertical" : "YES",
+                                                "event_type": "cmd_native_inner_ad_price_click",
+                                                "attributes": {
+                                                    "setTextColorString:": "#F44837",
+                                                    "setText:": "$text_price",
+                                                    "setFontSizeString:": "14",
+                                                    "setTextAlignmentString:": "1"
+                                                }
+                                            },
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_inner_ad_sale_num",
+                                                "margin_left": "4",
+                                                "height": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "align_parent_center_vertical" : "YES",
+                                                "event_type": "cmd_native_inner_default_label_click",
+                                                "attributes": {
+                                                    "setTextColorString:": "#8F8F8F",
+                                                    "setText:": "$saleText",
+                                                    "setFontSizeString:": "11",
+                                                    "setTextAlignmentString:": "1"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "view_type": "container",
+                                        "layout_type": "layout_relative",
+                                        "right_of_view": "id_inner_ad_price_and_sale_num_container",
+                                        "margin_left": "4",
+                                        "align_parent_bottom": "YES",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "subviews": [
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_inner_ad_sale_price",
+                                                "default_visible" : "YES",
+                                                "align_parent_center_vertical": "YES",
+                                                "align_parent_left": "YES",
+                                                "event_type": "cmd_native_inner_ad_sale_price_click",
+                                                "height": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "attributes": {
+                                                    "setTextColorString:": "#8F8F8F",
+                                                    "setText:": "$text_sale_price",
+                                                    "setFontSizeString:": "11",
+                                                    "setTextAlignmentString:": "1",
+                                                    "setNumberOfLinesString:": "1"
+                                                }
+                                            },
+                                            {
+                                                "view_type": "UIView",
+                                                "view_id": "id_inner_ad_sale_price_line",
+                                                "visible_depend_on_brother": "id_inner_ad_sale_price",
+                                                "align_parent_center_vertical": "YES",
+                                                "height": {
+                                                    "type": "absolutely",
+                                                    "value": "1"
+                                                },
+                                                "width": {
+                                                    "type": "match_parent"
+                                                },
+                                                "attributes": {
+                                                    "setBackgroundColorString:": "#8F8F8F"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_inner_ad_button",
+                                        "event_type": "cmd_native_inner_ad_button_click",
+                                        "align_parent_bottom": "YES",
+                                        "align_parent_right": "YES",
+                                        "height": {
+                                            "type": "relative",
+                                            "value": "23"
+                                        },
+                                        "width": {
+                                            "type": "relative",
+                                            "value": "46"
+                                        },
+                                        "attributes": {
+                                            "setText:": "$text_button",
+                                            "setTextColorString:": "#ffffff",
+                                            "setFontSizeString:": "11",
+                                            "setNumberOfLinesString:": "1",
+                                            "setTextAlignmentString:": "1",
+                                            "setCornerRadiusString:": "11.5",
+                                            "setBackgroundColorString:": "#136CE9"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

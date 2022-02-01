@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>画板</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="8 6.94318182 1.80681818 0.75 0.75 1.80681818 6.94318182 8 0.75 14.1931818 1.80681818 15.25 8 9.05681818 14.1931818 15.25 15.25 14.1931818 9.05681818 8 15.25 1.80681818 14.1931818 0.75"></polygon>
+    </defs>
+    <g id="画板" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3.Icons/Outlined/close">
+            <g id="Icons/Tint-Color/Black" transform="translate(4.000000, 4.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="图标颜色" fill-opacity="0.9" fill="#000000" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

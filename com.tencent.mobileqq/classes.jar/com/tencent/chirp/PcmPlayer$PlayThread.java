@@ -11,257 +11,256 @@ class PcmPlayer$PlayThread
   public void run()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: iconst_2
-    //   3: istore_2
-    //   4: new 26	java/io/File
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   12: invokestatic 31	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Ljava/lang/String;
-    //   15: invokespecial 34	java/io/File:<init>	(Ljava/lang/String;)V
-    //   18: astore 5
-    //   20: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   23: ifeq +32 -> 55
-    //   26: ldc 42
-    //   28: iconst_2
-    //   29: new 44	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   36: ldc 47
-    //   38: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: aload 5
-    //   43: invokevirtual 55	java/io/File:length	()J
-    //   46: invokevirtual 58	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   55: aload 5
-    //   57: invokevirtual 69	java/io/File:exists	()Z
-    //   60: ifne +36 -> 96
-    //   63: aload_0
-    //   64: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   67: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   70: ifnull +16 -> 86
-    //   73: aload_0
-    //   74: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   77: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   80: iconst_1
-    //   81: invokeinterface 78 2 0
-    //   86: aload_0
-    //   87: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   90: aconst_null
-    //   91: invokestatic 81	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
-    //   94: pop
-    //   95: return
-    //   96: aload_0
-    //   97: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   100: invokestatic 84	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)I
-    //   103: newarray byte
-    //   105: astore 4
-    //   107: new 86	java/io/FileInputStream
-    //   110: dup
-    //   111: aload 5
-    //   113: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   116: astore 5
-    //   118: new 91	java/io/BufferedInputStream
-    //   121: dup
-    //   122: aload 5
-    //   124: invokespecial 94	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   127: astore 6
-    //   129: aload_0
-    //   130: getfield 17	com/tencent/chirp/PcmPlayer$PlayThread:a	Z
-    //   133: ifeq +19 -> 152
-    //   136: aload 6
-    //   138: aload 4
-    //   140: iconst_0
-    //   141: aload 4
-    //   143: arraylength
-    //   144: invokevirtual 98	java/io/BufferedInputStream:read	([BII)I
-    //   147: istore_3
-    //   148: iload_3
-    //   149: ifgt +75 -> 224
-    //   152: aload_0
-    //   153: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   156: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   159: invokevirtual 106	android/media/AudioTrack:stop	()V
-    //   162: aload_0
-    //   163: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   166: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   169: invokevirtual 109	android/media/AudioTrack:release	()V
-    //   172: aload 5
-    //   174: ifnull +8 -> 182
-    //   177: aload 5
-    //   179: invokevirtual 112	java/io/FileInputStream:close	()V
-    //   182: aload_0
-    //   183: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   186: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   189: ifnull +16 -> 205
-    //   192: aload_0
-    //   193: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   196: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   199: iconst_0
-    //   200: invokeinterface 78 2 0
-    //   205: aload_0
-    //   206: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   209: aconst_null
-    //   210: invokestatic 81	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
-    //   213: pop
-    //   214: aload_0
-    //   215: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   218: aconst_null
-    //   219: invokestatic 115	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Landroid/media/AudioTrack;)Landroid/media/AudioTrack;
-    //   222: pop
-    //   223: return
-    //   224: aload_0
-    //   225: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   228: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   231: aload 4
+    //   0: new 26	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   8: invokestatic 31	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Ljava/lang/String;
+    //   11: invokespecial 34	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: astore 5
+    //   16: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   19: istore 4
+    //   21: iconst_2
+    //   22: istore_2
+    //   23: iload 4
+    //   25: ifeq +42 -> 67
+    //   28: new 42	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   35: astore 6
+    //   37: aload 6
+    //   39: ldc 45
+    //   41: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: aload 6
+    //   47: aload 5
+    //   49: invokevirtual 53	java/io/File:length	()J
+    //   52: invokevirtual 56	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: ldc 58
+    //   58: iconst_2
+    //   59: aload 6
+    //   61: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   67: aload 5
+    //   69: invokevirtual 69	java/io/File:exists	()Z
+    //   72: istore 4
+    //   74: iconst_1
+    //   75: istore_1
+    //   76: iload 4
+    //   78: ifne +36 -> 114
+    //   81: aload_0
+    //   82: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   85: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   88: ifnull +16 -> 104
+    //   91: aload_0
+    //   92: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   95: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   98: iconst_1
+    //   99: invokeinterface 79 2 0
+    //   104: aload_0
+    //   105: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   108: aconst_null
+    //   109: invokestatic 82	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
+    //   112: pop
+    //   113: return
+    //   114: aload_0
+    //   115: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   118: invokestatic 85	com/tencent/chirp/PcmPlayer:c	(Lcom/tencent/chirp/PcmPlayer;)I
+    //   121: newarray byte
+    //   123: astore 6
+    //   125: new 87	java/io/FileInputStream
+    //   128: dup
+    //   129: aload 5
+    //   131: invokespecial 90	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   134: astore 5
+    //   136: new 92	java/io/BufferedInputStream
+    //   139: dup
+    //   140: aload 5
+    //   142: invokespecial 95	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   145: astore 7
+    //   147: aload_0
+    //   148: getfield 17	com/tencent/chirp/PcmPlayer$PlayThread:a	Z
+    //   151: ifeq +40 -> 191
+    //   154: aload 7
+    //   156: aload 6
+    //   158: iconst_0
+    //   159: aload 6
+    //   161: arraylength
+    //   162: invokevirtual 99	java/io/BufferedInputStream:read	([BII)I
+    //   165: istore_3
+    //   166: iload_3
+    //   167: ifgt +6 -> 173
+    //   170: goto +21 -> 191
+    //   173: aload_0
+    //   174: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   177: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   180: aload 6
+    //   182: iconst_0
+    //   183: iload_3
+    //   184: invokevirtual 107	android/media/AudioTrack:write	([BII)I
+    //   187: pop
+    //   188: goto -41 -> 147
+    //   191: aload_0
+    //   192: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   195: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   198: invokevirtual 110	android/media/AudioTrack:stop	()V
+    //   201: aload_0
+    //   202: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   205: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   208: invokevirtual 113	android/media/AudioTrack:release	()V
+    //   211: aload 5
+    //   213: invokevirtual 116	java/io/FileInputStream:close	()V
+    //   216: aload_0
+    //   217: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   220: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   223: ifnull +113 -> 336
+    //   226: aload_0
+    //   227: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   230: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
     //   233: iconst_0
-    //   234: iload_3
-    //   235: invokevirtual 118	android/media/AudioTrack:write	([BII)I
-    //   238: pop
-    //   239: goto -110 -> 129
-    //   242: astore 4
-    //   244: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   247: ifeq +13 -> 260
-    //   250: ldc 42
-    //   252: iconst_2
-    //   253: ldc 120
-    //   255: aload 4
-    //   257: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   260: aload_0
-    //   261: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   264: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   267: invokevirtual 106	android/media/AudioTrack:stop	()V
-    //   270: aload_0
-    //   271: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   274: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   277: invokevirtual 109	android/media/AudioTrack:release	()V
-    //   280: aload 5
-    //   282: ifnull +8 -> 290
-    //   285: aload 5
-    //   287: invokevirtual 112	java/io/FileInputStream:close	()V
-    //   290: aload_0
-    //   291: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   294: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   297: ifnull +16 -> 313
-    //   300: aload_0
-    //   301: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   304: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   307: iconst_2
-    //   308: invokeinterface 78 2 0
+    //   234: invokeinterface 79 2 0
+    //   239: goto +97 -> 336
+    //   242: astore 6
+    //   244: goto +13 -> 257
+    //   247: astore 6
+    //   249: goto +18 -> 267
+    //   252: astore 6
+    //   254: aconst_null
+    //   255: astore 5
+    //   257: iconst_0
+    //   258: istore_1
+    //   259: goto +98 -> 357
+    //   262: astore 6
+    //   264: aconst_null
+    //   265: astore 5
+    //   267: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   270: ifeq +13 -> 283
+    //   273: ldc 58
+    //   275: iconst_2
+    //   276: ldc 118
+    //   278: aload 6
+    //   280: invokestatic 121	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   283: aload_0
+    //   284: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   287: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   290: invokevirtual 110	android/media/AudioTrack:stop	()V
+    //   293: aload_0
+    //   294: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   297: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   300: invokevirtual 113	android/media/AudioTrack:release	()V
+    //   303: aload 5
+    //   305: ifnull +8 -> 313
+    //   308: aload 5
+    //   310: invokevirtual 116	java/io/FileInputStream:close	()V
     //   313: aload_0
     //   314: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   317: aconst_null
-    //   318: invokestatic 81	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
-    //   321: pop
-    //   322: aload_0
-    //   323: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   326: aconst_null
-    //   327: invokestatic 115	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Landroid/media/AudioTrack;)Landroid/media/AudioTrack;
-    //   330: pop
-    //   331: return
-    //   332: astore 4
-    //   334: aconst_null
-    //   335: astore 5
-    //   337: iconst_0
-    //   338: istore_1
-    //   339: aload_0
-    //   340: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   343: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   346: invokevirtual 106	android/media/AudioTrack:stop	()V
-    //   349: aload_0
-    //   350: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   353: invokestatic 101	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
-    //   356: invokevirtual 109	android/media/AudioTrack:release	()V
-    //   359: aload 5
-    //   361: ifnull +8 -> 369
-    //   364: aload 5
-    //   366: invokevirtual 112	java/io/FileInputStream:close	()V
-    //   369: aload_0
-    //   370: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   373: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   376: ifnull +26 -> 402
-    //   379: aload_0
-    //   380: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   383: invokestatic 72	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;)Lzhs;
-    //   386: astore 5
-    //   388: iload_1
-    //   389: ifeq +34 -> 423
-    //   392: iload_2
-    //   393: istore_1
-    //   394: aload 5
-    //   396: iload_1
-    //   397: invokeinterface 78 2 0
-    //   402: aload_0
-    //   403: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   406: aconst_null
-    //   407: invokestatic 81	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
-    //   410: pop
-    //   411: aload_0
-    //   412: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
-    //   415: aconst_null
-    //   416: invokestatic 115	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Landroid/media/AudioTrack;)Landroid/media/AudioTrack;
-    //   419: pop
-    //   420: aload 4
-    //   422: athrow
-    //   423: iconst_0
-    //   424: istore_1
-    //   425: goto -31 -> 394
-    //   428: astore 4
-    //   430: goto -248 -> 182
-    //   433: astore 4
-    //   435: goto -145 -> 290
-    //   438: astore 5
-    //   440: goto -71 -> 369
-    //   443: astore 4
-    //   445: iconst_0
-    //   446: istore_1
-    //   447: goto -108 -> 339
-    //   450: astore 4
-    //   452: goto -113 -> 339
-    //   455: astore 4
-    //   457: aconst_null
-    //   458: astore 5
-    //   460: goto -216 -> 244
+    //   317: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   320: ifnull +16 -> 336
+    //   323: aload_0
+    //   324: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   327: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   330: iconst_2
+    //   331: invokeinterface 79 2 0
+    //   336: aload_0
+    //   337: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   340: aconst_null
+    //   341: invokestatic 82	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
+    //   344: pop
+    //   345: aload_0
+    //   346: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   349: aconst_null
+    //   350: invokestatic 124	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Landroid/media/AudioTrack;)Landroid/media/AudioTrack;
+    //   353: pop
+    //   354: return
+    //   355: astore 6
+    //   357: aload_0
+    //   358: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   361: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   364: invokevirtual 110	android/media/AudioTrack:stop	()V
+    //   367: aload_0
+    //   368: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   371: invokestatic 102	com/tencent/chirp/PcmPlayer:d	(Lcom/tencent/chirp/PcmPlayer;)Landroid/media/AudioTrack;
+    //   374: invokevirtual 113	android/media/AudioTrack:release	()V
+    //   377: aload 5
+    //   379: ifnull +8 -> 387
+    //   382: aload 5
+    //   384: invokevirtual 116	java/io/FileInputStream:close	()V
+    //   387: aload_0
+    //   388: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   391: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   394: ifnull +31 -> 425
+    //   397: aload_0
+    //   398: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   401: invokestatic 73	com/tencent/chirp/PcmPlayer:b	(Lcom/tencent/chirp/PcmPlayer;)Lcom/tencent/chirp/PcmPlayer$QQPlayerListener;
+    //   404: astore 5
+    //   406: iload_1
+    //   407: ifeq +8 -> 415
+    //   410: iload_2
+    //   411: istore_1
+    //   412: goto +5 -> 417
+    //   415: iconst_0
+    //   416: istore_1
+    //   417: aload 5
+    //   419: iload_1
+    //   420: invokeinterface 79 2 0
+    //   425: aload_0
+    //   426: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   429: aconst_null
+    //   430: invokestatic 82	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Lcom/tencent/chirp/PcmPlayer$PlayThread;)Lcom/tencent/chirp/PcmPlayer$PlayThread;
+    //   433: pop
+    //   434: aload_0
+    //   435: getfield 12	com/tencent/chirp/PcmPlayer$PlayThread:this$0	Lcom/tencent/chirp/PcmPlayer;
+    //   438: aconst_null
+    //   439: invokestatic 124	com/tencent/chirp/PcmPlayer:a	(Lcom/tencent/chirp/PcmPlayer;Landroid/media/AudioTrack;)Landroid/media/AudioTrack;
+    //   442: pop
+    //   443: goto +6 -> 449
+    //   446: aload 6
+    //   448: athrow
+    //   449: goto -3 -> 446
+    //   452: astore 5
+    //   454: goto -238 -> 216
+    //   457: astore 5
+    //   459: goto -146 -> 313
+    //   462: astore 5
+    //   464: goto -77 -> 387
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	463	0	this	PlayThread
-    //   1	446	1	i	int
-    //   3	390	2	j	int
-    //   147	88	3	k	int
-    //   105	127	4	arrayOfByte	byte[]
-    //   242	14	4	localException1	java.lang.Exception
-    //   332	89	4	localObject1	java.lang.Object
-    //   428	1	4	localException2	java.lang.Exception
-    //   433	1	4	localException3	java.lang.Exception
-    //   443	1	4	localObject2	java.lang.Object
-    //   450	1	4	localObject3	java.lang.Object
-    //   455	1	4	localException4	java.lang.Exception
-    //   18	377	5	localObject4	java.lang.Object
-    //   438	1	5	localException5	java.lang.Exception
-    //   458	1	5	localObject5	java.lang.Object
-    //   127	10	6	localBufferedInputStream	java.io.BufferedInputStream
+    //   0	467	0	this	PlayThread
+    //   75	345	1	i	int
+    //   22	389	2	j	int
+    //   165	19	3	k	int
+    //   19	58	4	bool	boolean
+    //   14	404	5	localObject1	java.lang.Object
+    //   452	1	5	localException1	java.lang.Exception
+    //   457	1	5	localException2	java.lang.Exception
+    //   462	1	5	localException3	java.lang.Exception
+    //   35	146	6	localObject2	java.lang.Object
+    //   242	1	6	localObject3	java.lang.Object
+    //   247	1	6	localException4	java.lang.Exception
+    //   252	1	6	localObject4	java.lang.Object
+    //   262	17	6	localException5	java.lang.Exception
+    //   355	92	6	localObject5	java.lang.Object
+    //   145	10	7	localBufferedInputStream	java.io.BufferedInputStream
     // Exception table:
     //   from	to	target	type
-    //   118	129	242	java/lang/Exception
-    //   129	148	242	java/lang/Exception
-    //   224	239	242	java/lang/Exception
-    //   107	118	332	finally
-    //   177	182	428	java/lang/Exception
-    //   285	290	433	java/lang/Exception
-    //   364	369	438	java/lang/Exception
-    //   118	129	443	finally
-    //   129	148	443	finally
-    //   224	239	443	finally
-    //   244	260	450	finally
-    //   107	118	455	java/lang/Exception
+    //   136	147	242	finally
+    //   147	166	242	finally
+    //   173	188	242	finally
+    //   136	147	247	java/lang/Exception
+    //   147	166	247	java/lang/Exception
+    //   173	188	247	java/lang/Exception
+    //   125	136	252	finally
+    //   125	136	262	java/lang/Exception
+    //   267	283	355	finally
+    //   211	216	452	java/lang/Exception
+    //   308	313	457	java/lang/Exception
+    //   382	387	462	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.chirp.PcmPlayer.PlayThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.google.android.gms.common.server.response;
 
 import android.content.ContentValues;
-import com.google.android.gms.common.util.VisibleForTesting;
 
 public abstract class FastContentValuesJsonResponse
   extends FastJsonResponse
@@ -13,7 +12,6 @@ public abstract class FastContentValuesJsonResponse
     this.zzwj = new ContentValues();
   }
   
-  @VisibleForTesting
   public FastContentValuesJsonResponse(ContentValues paramContentValues)
   {
     this.zzwj = paramContentValues;

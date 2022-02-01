@@ -1,34 +1,22 @@
 import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
 import java.util.List;
 
-public class crr
-  extends GameCenterObserver
+class crr
+  implements Runnable
 {
-  public crr(Leba paramLeba) {}
+  crr(crq paramcrq, List paramList) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
+    if (Leba.a(this.jdField_a_of_type_Crq.a) != null)
     {
-      return;
-      if (Leba.c(this.a))
-      {
-        ArrayList localArrayList = new ArrayList();
-        List localList = LebaShowListManager.a().b();
-        LebaShowListManager.a().a(localArrayList, localList);
-        this.a.b(new crs(this, localArrayList));
+      Leba.a(this.jdField_a_of_type_Crq.a).clear();
+      Leba.a(this.jdField_a_of_type_Crq.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Crq.a.a != null) {
+        this.jdField_a_of_type_Crq.a.a.notifyDataSetChanged();
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.d(this.a));
-        return;
-        LebaShowListManager.c |= 0x2;
-      }
+      Leba.a(this.jdField_a_of_type_Crq.a);
     }
   }
 }

@@ -35,28 +35,26 @@ public final class fr
   
   private <T extends BaseObject> void a(String paramString, ParamObject paramParamObject, Class<T> paramClass, HttpResponseListener<T> paramHttpResponseListener)
   {
-    if ((paramParamObject == null) || (!paramParamObject.checkParams())) {
-      or.b("wrong parameter");
-    }
-    String str;
-    do
+    if ((paramParamObject != null) && (paramParamObject.checkParams()))
     {
-      return;
-      str = pz.a(this.a, "TencentMapSDK");
-      if (!TextUtils.isEmpty(str)) {
-        break;
+      String str = pz.a(this.a, "TencentMapSDK");
+      if (TextUtils.isEmpty(str))
+      {
+        if (paramHttpResponseListener != null) {
+          paramHttpResponseListener.onFailure(-1, "请申请并填写开发者密钥", null);
+        }
+        return;
       }
-    } while (paramHttpResponseListener == null);
-    paramHttpResponseListener.onFailure(-1, "请申请并填写开发者密钥", null);
-    return;
-    paramParamObject = paramParamObject.buildParameters();
-    if (paramParamObject != null)
-    {
-      paramParamObject.b("key", str);
-      paramParamObject.b("output", "json");
-    }
-    for (;;)
-    {
+      paramParamObject = paramParamObject.buildParameters();
+      if (paramParamObject != null)
+      {
+        paramParamObject.b("key", str);
+        paramParamObject.b("output", "json");
+      }
+      else
+      {
+        paramParamObject = new fn();
+      }
       paramParamObject.b("__suid", pz.f(this.a));
       paramParamObject.b("__pf", "android");
       paramParamObject.b("__chan", "search");
@@ -65,8 +63,8 @@ public final class fr
       paramParamObject.b("__ver", "1.1.7");
       fj.a(this.a, paramString, paramParamObject, paramClass, paramHttpResponseListener);
       return;
-      paramParamObject = new fn();
     }
+    or.b("wrong parameter");
   }
   
   public final void address2geo(Address2GeoParam paramAddress2GeoParam, HttpResponseListener paramHttpResponseListener)

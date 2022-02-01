@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.adapter.AllBuddyListAdapter;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.search.ISearchable;
+import java.util.Comparator;
 
-public class exj
-  implements View.OnClickListener
+public final class exj
+  implements Comparator
 {
-  public exj(AllBuddyListAdapter paramAllBuddyListAdapter, Friends paramFriends) {}
-  
-  public void onClick(View paramView)
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
   {
-    paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 1);
-    paramView.f = 59;
-    ProfileActivity.a(AllBuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterAllBuddyListAdapter), paramView);
+    long l1 = paramISearchable1.a();
+    long l2 = paramISearchable2.a();
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 > l2) {
+      return -1;
+    }
+    return 0;
   }
 }
 

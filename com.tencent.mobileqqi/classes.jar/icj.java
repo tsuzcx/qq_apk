@@ -1,23 +1,33 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import cooperation.qzone.model.FaceData;
 
 public final class icj
   implements Parcelable.Creator
 {
-  public CoverCacheData.PackageInfo a(Parcel paramParcel)
+  public FaceData a(Parcel paramParcel)
   {
-    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
-    localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    return localPackageInfo;
+    FaceData localFaceData = new FaceData();
+    localFaceData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.jdField_a_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_b_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_c_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_d_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_e_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_a_of_type_Int = paramParcel.readInt();
+    localFaceData.jdField_f_of_type_Long = paramParcel.readLong();
+    localFaceData.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.g = paramParcel.readLong();
+    localFaceData.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.h = paramParcel.readLong();
+    localFaceData.jdField_f_of_type_JavaLangString = paramParcel.readString();
+    localFaceData.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    return localFaceData;
   }
   
-  public CoverCacheData.PackageInfo[] a(int paramInt)
+  public FaceData[] a(int paramInt)
   {
     return null;
   }

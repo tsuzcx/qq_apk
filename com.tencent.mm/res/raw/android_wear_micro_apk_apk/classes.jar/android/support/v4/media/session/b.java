@@ -110,14 +110,14 @@ public abstract class b
       return true;
     case 9: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-      l(paramParcel1.readInt());
+      v(paramParcel1.readInt());
       return true;
     case 10: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
       if (paramParcel1.readInt() != 0) {}
       for (bool = true;; bool = false)
       {
-        e(bool);
+        h(bool);
         return true;
       }
     case 11: 
@@ -125,11 +125,15 @@ public abstract class b
       if (paramParcel1.readInt() != 0) {
         bool = true;
       }
-      f(bool);
+      i(bool);
+      return true;
+    case 12: 
+      paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
+      w(paramParcel1.readInt());
       return true;
     }
     paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-    m(paramParcel1.readInt());
+    bf();
     return true;
   }
 }

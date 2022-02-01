@@ -1,12 +1,11 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import uyl;
-import vdl;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
 
-public class MsgTabNodeListLoader$14
+class MsgTabNodeListLoader$14
   implements Runnable
 {
-  public MsgTabNodeListLoader$14(uyl paramuyl, vdl paramvdl) {}
+  MsgTabNodeListLoader$14(MsgTabNodeListLoader paramMsgTabNodeListLoader, GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class MsgTabNodeListLoader$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.14
  * JD-Core Version:    0.7.0.1
  */

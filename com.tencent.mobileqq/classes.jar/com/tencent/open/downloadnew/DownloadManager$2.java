@@ -1,31 +1,30 @@
 package com.tencent.open.downloadnew;
 
-import bfbm;
-import bflp;
-import bfms;
-import bfok;
-import bfpz;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.open.downloadnew.common.DownloadDBHelper;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DownloadManager$2
+class DownloadManager$2
   implements Runnable
 {
-  public DownloadManager$2(bfok parambfok) {}
+  DownloadManager$2(DownloadManager paramDownloadManager) {}
   
   public void run()
   {
-    this.this$0.a = ((ConcurrentHashMap)bfpz.a().a());
+    this.this$0.g = ((ConcurrentHashMap)DownloadDBHelper.a().b());
     try
     {
-      DownloadInfo localDownloadInfo = this.this$0.b("com.tencent.mobileqq");
-      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 0))
+      DownloadInfo localDownloadInfo = this.this$0.f("com.tencent.mobileqq");
+      if ((localDownloadInfo != null) && (localDownloadInfo.o == 0))
       {
         String str = "";
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1;
-        if (localDownloadInfo.a == 0)
+        if (localDownloadInfo.j == 0)
         {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.this$0.a(localDownloadInfo.d);
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.this$0.h(localDownloadInfo.d);
           localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -33,31 +32,34 @@ public class DownloadManager$2
             localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
           }
         }
-        while (localTMAssistantDownloadTaskInfo1 == null)
+        else
         {
-          this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bfpz.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          return;
-          localTMAssistantDownloadTaskInfo1 = this.this$0.a(localDownloadInfo.i);
-          str = localDownloadInfo.l;
+          localTMAssistantDownloadTaskInfo1 = this.this$0.h(localDownloadInfo.k);
+          str = localDownloadInfo.q;
         }
-        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (bfms.c(str) <= bfbm.a().a()))
+        if (localTMAssistantDownloadTaskInfo1 == null)
         {
-          this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          bfpz.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+          this.this$0.g.remove(localDownloadInfo.c);
+          DownloadDBHelper.a().b(localDownloadInfo.c);
+          return;
+        }
+        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.f(str) <= CommonDataAdapter.a().h()))
+        {
+          this.this$0.g.remove(localDownloadInfo.c);
+          DownloadDBHelper.a().b(localDownloadInfo.c);
           return;
         }
       }
     }
     catch (Exception localException)
     {
-      bflp.c("DownloadManager_", "speical clear>>>", localException);
+      LogUtility.c("DownloadManager_", "speical clear>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

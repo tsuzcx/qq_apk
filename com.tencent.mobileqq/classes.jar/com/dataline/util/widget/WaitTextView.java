@@ -5,16 +5,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import fd;
 
 public class WaitTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private fd jdField_a_of_type_Fd;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new WaitTextView.1(this);
-  private String jdField_a_of_type_JavaLangString;
+  private Handler a;
+  private String b;
+  private int c = 0;
+  private WaitTextView.RefreshListener d;
+  private Runnable e = new WaitTextView.1(this);
   
   public WaitTextView(Context paramContext)
   {
@@ -33,58 +32,78 @@ public class WaitTextView
   
   private void c()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.c;
+    if (i != 0)
     {
-    default: 
-      setText(this.jdField_a_of_type_JavaLangString + "...");
-      this.jdField_a_of_type_Int = 0;
-      return;
-    case 0: 
-      setText(this.jdField_a_of_type_JavaLangString + "   ");
-      this.jdField_a_of_type_Int += 1;
-      return;
-    case 1: 
-      setText(this.jdField_a_of_type_JavaLangString + ".  ");
-      this.jdField_a_of_type_Int += 1;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.b);
+          localStringBuilder.append("...");
+          setText(localStringBuilder.toString());
+          this.c = 0;
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(".. ");
+        setText(localStringBuilder.toString());
+        this.c += 1;
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(".  ");
+      setText(localStringBuilder.toString());
+      this.c += 1;
       return;
     }
-    setText(this.jdField_a_of_type_JavaLangString + ".. ");
-    this.jdField_a_of_type_Int += 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("   ");
+    setText(localStringBuilder.toString());
+    this.c += 1;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+      this.a = new Handler(Looper.getMainLooper());
+      this.a.postDelayed(this.e, 500L);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.a;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      localHandler.removeCallbacks(this.e);
+      this.a = null;
     }
   }
   
-  public void setRefreshListener(fd paramfd)
+  public void setRefreshListener(WaitTextView.RefreshListener paramRefreshListener)
   {
-    this.jdField_a_of_type_Fd = paramfd;
+    this.d = paramRefreshListener;
   }
   
   public void setWaitText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = 0;
-    setText(this.jdField_a_of_type_JavaLangString + "   ");
+    this.b = paramString;
+    this.c = 0;
+    paramString = new StringBuilder();
+    paramString.append(this.b);
+    paramString.append("   ");
+    setText(paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.widget.WaitTextView
  * JD-Core Version:    0.7.0.1
  */

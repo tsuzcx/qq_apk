@@ -14,10 +14,18 @@ public class TPTrackInfo
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof TPTrackInfo))) {
-      return false;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof TPTrackInfo)) {
+        return false;
+      }
+      String str = this.name;
+      paramObject = (TPTrackInfo)paramObject;
+      if ((str.equals(paramObject.name)) && (this.trackType == paramObject.trackType)) {
+        return true;
+      }
     }
-    return (this.name.equals(((TPTrackInfo)paramObject).name)) && (this.trackType == ((TPTrackInfo)paramObject).trackType);
+    return false;
   }
   
   public String getName()
@@ -32,7 +40,7 @@ public class TPTrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPTrackInfo
  * JD-Core Version:    0.7.0.1
  */

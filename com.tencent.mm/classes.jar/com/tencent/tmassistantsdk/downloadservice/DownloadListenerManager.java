@@ -11,19 +11,19 @@ public class DownloadListenerManager
   
   protected DownloadListenerManager()
   {
-    AppMethodBeat.i(75729);
+    AppMethodBeat.i(101975);
     this.mListeners = new ArrayList();
-    AppMethodBeat.o(75729);
+    AppMethodBeat.o(101975);
   }
   
   public static DownloadListenerManager getInstance()
   {
-    AppMethodBeat.i(75728);
+    AppMethodBeat.i(101974);
     if (mDownloadListenerManager == null) {
       mDownloadListenerManager = new DownloadListenerManager();
     }
     DownloadListenerManager localDownloadListenerManager = mDownloadListenerManager;
-    AppMethodBeat.o(75728);
+    AppMethodBeat.o(101974);
     return localDownloadListenerManager;
   }
   
@@ -31,11 +31,11 @@ public class DownloadListenerManager
   {
     try
     {
-      AppMethodBeat.i(75730);
+      AppMethodBeat.i(101976);
       if (!this.mListeners.contains(paramIDownloadManagerListener)) {
         this.mListeners.add(paramIDownloadManagerListener);
       }
-      AppMethodBeat.o(75730);
+      AppMethodBeat.o(101976);
       return;
     }
     finally {}
@@ -45,12 +45,12 @@ public class DownloadListenerManager
   {
     try
     {
-      AppMethodBeat.i(75733);
+      AppMethodBeat.i(101979);
       Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext()) {
         ((IDownloadManagerListener)localIterator.next()).OnDownloadProgressChanged(paramString, paramLong1, paramLong2);
       }
-      AppMethodBeat.o(75733);
+      AppMethodBeat.o(101979);
     }
     finally {}
   }
@@ -59,12 +59,12 @@ public class DownloadListenerManager
   {
     try
     {
-      AppMethodBeat.i(75732);
+      AppMethodBeat.i(101978);
       Iterator localIterator = this.mListeners.iterator();
       while (localIterator.hasNext()) {
         ((IDownloadManagerListener)localIterator.next()).OnDownloadStateChanged(paramString1, paramInt1, paramInt2, paramString2, paramBoolean1, paramBoolean2);
       }
-      AppMethodBeat.o(75732);
+      AppMethodBeat.o(101978);
     }
     finally {}
   }
@@ -73,9 +73,9 @@ public class DownloadListenerManager
   {
     try
     {
-      AppMethodBeat.i(75731);
+      AppMethodBeat.i(101977);
       this.mListeners.remove(paramIDownloadManagerListener);
-      AppMethodBeat.o(75731);
+      AppMethodBeat.o(101977);
       return;
     }
     finally
@@ -87,7 +87,7 @@ public class DownloadListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadListenerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ final class m
   
   protected final void finalize()
   {
-    k.d(k.a(this.MG));
+    k.d(k.a(this.Ov));
     super.finalize();
   }
 }

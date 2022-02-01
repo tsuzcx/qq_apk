@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/put" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:id="@id/n5q" android:paddingTop="9.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_horizontal" android:id="@id/o6k" android:paddingLeft="5.5dip" android:paddingRight="5.5dip" android:layout_width="fill_parent" android:layout_height="27.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/ayp" android:textColor="@color/black" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ql5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxWidth="160.0dip" android:maxLines="1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/n5q">
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:layout_gravity="center_horizontal" android:id="@id/pux" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="10.0dip" android:scaleType="centerCrop" />
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:layout_gravity="center_horizontal" android:id="@id/puw" android:paddingLeft="24.5dip" android:paddingRight="24.5dip" android:layout_width="fill_parent" android:layout_height="13.0dip" android:scaleType="centerCrop" />
+        <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:layout_gravity="center_horizontal" android:id="@id/puu" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

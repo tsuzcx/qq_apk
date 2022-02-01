@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.base;
 
-import alud;
 import android.annotation.TargetApi;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 @TargetApi(14)
 public class ErrorMessage
@@ -31,12 +31,14 @@ public class ErrorMessage
   
   public ErrorMessage(ErrorMessage paramErrorMessage)
   {
-    if (paramErrorMessage == null) {
-      throw new IllegalArgumentException("errorMessage should not be null");
+    if (paramErrorMessage != null)
+    {
+      this.errorCode = paramErrorMessage.errorCode;
+      this.errorMsg = paramErrorMessage.errorMsg;
+      this.extraMsg = paramErrorMessage.extraMsg;
+      return;
     }
-    this.errorCode = paramErrorMessage.errorCode;
-    this.errorMsg = paramErrorMessage.errorMsg;
-    this.extraMsg = paramErrorMessage.extraMsg;
+    throw new IllegalArgumentException("errorMessage should not be null");
   }
   
   public String getErrorMessage()
@@ -54,7 +56,7 @@ public class ErrorMessage
     }
     else
     {
-      str = alud.a(2131704602);
+      str = HardCodeUtil.a(2131902240);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }
@@ -77,12 +79,22 @@ public class ErrorMessage
   
   public String toString()
   {
-    return "ErrorMessage{errorCode=" + this.errorCode + ", errorMsg='" + this.errorMsg + '\'' + ", extraMsg='" + this.extraMsg + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ErrorMessage{errorCode=");
+    localStringBuilder.append(this.errorCode);
+    localStringBuilder.append(", errorMsg='");
+    localStringBuilder.append(this.errorMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraMsg='");
+    localStringBuilder.append(this.extraMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.ErrorMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class dsr
   
   public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.e();
   }
 }
 

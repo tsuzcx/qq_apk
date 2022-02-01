@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,18 +14,18 @@ public final class cell_lucky_money
   static Map<String, String> cache_extendinfo;
   static ArrayList<s_user> cache_getLuckyMoneyMen = new ArrayList();
   public String actionUrl = "";
-  public Map<String, String> extendinfo;
-  public ArrayList<s_user> getLuckyMoneyMen;
-  public int isGeted;
-  public int isGrabEnd;
-  public int luckyMoneyAllocType;
+  public Map<String, String> extendinfo = null;
+  public ArrayList<s_user> getLuckyMoneyMen = null;
+  public int isGeted = 0;
+  public int isGrabEnd = 0;
+  public int luckyMoneyAllocType = 0;
   public String luckyMoneyId = "";
   public String luckyMoneyPayId = "";
-  public int luckyMoneyType;
-  public int num;
-  public int paswdShowComment;
-  public long uiHbCreateTime;
-  public long uiHbHostUin;
+  public int luckyMoneyType = 0;
+  public int num = 0;
+  public int paswdShowComment = 0;
+  public long uiHbCreateTime = 0L;
+  public long uiHbHostUin = 0L;
   
   static
   {
@@ -74,20 +75,25 @@ public final class cell_lucky_money
   {
     paramJceOutputStream.write(this.num, 0);
     paramJceOutputStream.write(this.isGeted, 1);
-    if (this.getLuckyMoneyMen != null) {
-      paramJceOutputStream.write(this.getLuckyMoneyMen, 2);
+    Object localObject = this.getLuckyMoneyMen;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 3);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 4);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
-    if (this.luckyMoneyId != null) {
-      paramJceOutputStream.write(this.luckyMoneyId, 5);
+    localObject = this.luckyMoneyId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.luckyMoneyPayId != null) {
-      paramJceOutputStream.write(this.luckyMoneyPayId, 6);
+    localObject = this.luckyMoneyPayId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.isGrabEnd, 7);
     paramJceOutputStream.write(this.luckyMoneyType, 8);
@@ -99,7 +105,7 @@ public final class cell_lucky_money
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lucky_money
  * JD-Core Version:    0.7.0.1
  */

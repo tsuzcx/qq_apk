@@ -11,12 +11,27 @@ public class br
   
   public String Z()
   {
-    return this.gz.gH + "_" + this.gz.gI + "_" + this.gz.gJ + ".dat";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.gz.gH);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.gz.gI);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.gz.gJ);
+    localStringBuilder.append(".dat");
+    return localStringBuilder.toString();
   }
   
   public String aa()
   {
-    return bc.n().getFilesDir().getAbsolutePath() + File.separator + this.gz.gH + "_" + this.gz.gI + "_" + this.gz.gJ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(bc.n().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.gz.gH);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.gz.gI);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.gz.gJ);
+    return localStringBuilder.toString();
   }
   
   public String ab()
@@ -26,12 +41,35 @@ public class br
   
   public String toString()
   {
-    String str2 = "op:[" + this.gA + "]status:[" + this.gB + "]";
-    String str1 = str2;
-    if (this.gz != null) {
-      str1 = str2 + "id:[" + this.gz.gH + "]ver:[" + this.gz.gI + "]ver_nest:[" + this.gz.gJ + "]runtype:[" + this.gz.gK + "]size:[" + this.gz.gM + "]md5:[" + this.gz.gN + "]url:[" + this.gz.gO + "]";
+    Object localObject = new StringBuilder("op:[");
+    ((StringBuilder)localObject).append(this.gA);
+    ((StringBuilder)localObject).append("]status:[");
+    ((StringBuilder)localObject).append(this.gB);
+    ((StringBuilder)localObject).append("]");
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
+    if (this.gz != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("id:[");
+      ((StringBuilder)localObject).append(this.gz.gH);
+      ((StringBuilder)localObject).append("]ver:[");
+      ((StringBuilder)localObject).append(this.gz.gI);
+      ((StringBuilder)localObject).append("]ver_nest:[");
+      ((StringBuilder)localObject).append(this.gz.gJ);
+      ((StringBuilder)localObject).append("]runtype:[");
+      ((StringBuilder)localObject).append(this.gz.gK);
+      ((StringBuilder)localObject).append("]size:[");
+      ((StringBuilder)localObject).append(this.gz.gM);
+      ((StringBuilder)localObject).append("]md5:[");
+      ((StringBuilder)localObject).append(this.gz.gN);
+      ((StringBuilder)localObject).append("]url:[");
+      ((StringBuilder)localObject).append(this.gz.gO);
+      ((StringBuilder)localObject).append("]");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
 }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/ix5" android:background="@color/c" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/be4" android:background="@drawable/cb0" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_down_arrow" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lzi" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/gb" android:gravity="center" android:id="@id/c21" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/ko8" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/m44" android:background="@drawable/cb0" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/d6" android:layout_marginRight="@dimen/cp" android:layout_below="@id/c21">
+            <TextView android:textSize="@dimen/t" android:textColor="@color/gb" android:layout_gravity="center_horizontal" android:id="@id/kba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lz6" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/kb6" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_alignParentEnd="true" app:off_color="@color/BW_0_Alpha_0_0_3" app:on_color="#ff089f71" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

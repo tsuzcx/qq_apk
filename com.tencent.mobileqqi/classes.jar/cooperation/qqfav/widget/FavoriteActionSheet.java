@@ -6,8 +6,8 @@ import android.view.View.OnClickListener;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import cooperation.qqfav.QfavReport;
+import ibi;
 import ibj;
-import ibk;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
@@ -61,8 +61,8 @@ public class FavoriteActionSheet
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(8));
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d(2131561746);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ibj(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ibk(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ibi(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ibj(this));
   }
   
   private void a()

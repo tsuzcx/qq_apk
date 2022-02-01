@@ -1,6 +1,5 @@
 package com.tencent.mm.app.plugin.graphics;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
@@ -20,7 +19,7 @@ public class GraphicsTestUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.plugin.graphics.GraphicsTestUI
  * JD-Core Version:    0.7.0.1
  */

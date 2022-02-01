@@ -7,12 +7,12 @@ class VideoViewVideoHolder$11
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.t();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.11
  * JD-Core Version:    0.7.0.1
  */

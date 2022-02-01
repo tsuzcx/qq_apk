@@ -31,13 +31,14 @@ public final class appoint_define$StrangerInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 64, 72, 82, 88, 96, 104, 112, 120 }, new String[] { "uint64_tinyid", "bytes_nickname", "uint32_age", "uint32_gender", "uint32_dating", "uint32_list_idx", "str_constellation", "uint32_profession", "uint32_marriage", "str_vipinfo", "uint32_recommend", "uint32_godflag", "uint32_charm", "uint32_charm_level", "uint64_uin" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, StrangerInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 64, 72, 82, 88, 96, 104, 112, 120 }, new String[] { "uint64_tinyid", "bytes_nickname", "uint32_age", "uint32_gender", "uint32_dating", "uint32_list_idx", "str_constellation", "uint32_profession", "uint32_marriage", "str_vipinfo", "uint32_recommend", "uint32_godflag", "uint32_charm", "uint32_charm_level", "uint64_uin" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, localInteger, localInteger, "", localInteger, localInteger, "", localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L) }, StrangerInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appoint.define.appoint_define.StrangerInfo
  * JD-Core Version:    0.7.0.1
  */

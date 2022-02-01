@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/common_list_overscoll_top_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/rl_tab_bar" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.TabBarView android:id="@id/rg_list_mode" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/inner_frame" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mobileqq.widget.GridListView android:id="@id/visitors_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+        <com.tencent.mobileqq.widget.GridListView android:id="@id/favorite_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    </FrameLayout>
+</LinearLayout>

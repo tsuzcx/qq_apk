@@ -1,29 +1,17 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import com.tencent.mobileqq.widget.DropdownView;
 
-public class hgm
-  implements View.OnClickListener
+class hgm
+  implements Runnable
 {
-  public hgm(DropdownView paramDropdownView) {}
+  hgm(hgl paramhgl, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_Hgp.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Hgp.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Hgp.getAdapter() != null) && (this.a.jdField_a_of_type_Hgp.getAdapter().getCount() > 0))
-    {
-      if ((((ImageView)paramView).getDrawable() == this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (!this.a.jdField_a_of_type_Boolean)) {
-        DropdownView.a(this.a).postDelayed(new hgn(this, paramView), 250L);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Hgp.dismissDropDown();
+    this.jdField_a_of_type_Hgl.a.jdField_a_of_type_Hgo.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Hgl.a.b);
+    this.jdField_a_of_type_Hgl.a.jdField_a_of_type_Boolean = true;
   }
 }
 

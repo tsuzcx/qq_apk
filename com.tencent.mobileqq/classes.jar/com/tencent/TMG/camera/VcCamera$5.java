@@ -12,14 +12,16 @@ class VcCamera$5
   {
     this.this$0.closeInternal();
     this.this$0.mCameraThread.quit();
-    this.this$0.mCameraThread = null;
-    VcCamera.access$702(this.this$0, null);
-    AVUILoopProxy.postTaskToMainLooper(new VcCamera.CloseCompleteRunnable(this.this$0, this.this$0));
+    VcCamera localVcCamera = this.this$0;
+    localVcCamera.mCameraThread = null;
+    VcCamera.access$702(localVcCamera, null);
+    localVcCamera = this.this$0;
+    AVUILoopProxy.postTaskToMainLooper(new VcCamera.CloseCompleteRunnable(localVcCamera, localVcCamera));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.camera.VcCamera.5
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,13 @@ package com.tencent.aladdin.config.network;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.aladdin.config.utils.DeviceInfoUtils;
+import com.tencent.aladdin.config.utils.SpUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -16,6 +20,7 @@ import java.util.List;
 
 public abstract class AladdinRequestHandler
 {
+  private static final String KEY_CACHE = "key_cache";
   public static final String KEY_CONFIG_COUNT = "key_config_count";
   public static final String KEY_FAILED_COUNT = "key_failed_count";
   public static final String KEY_REQUEST_TIMESTAMP = "key_request_timestamp";
@@ -39,84 +44,103 @@ public abstract class AladdinRequestHandler
   
   private static void handleAckRsp(oidb_cmd0xbf8.RspBodyType2 paramRspBodyType2)
   {
-    if (com.tencent.aladdin.config.utils.Log.isDebugVersion()) {
-      android.util.Log.d("AladdinRequestHandler", "handleAckRsp: " + com.tencent.aladdin.config.utils.Log.pbToString(paramRspBodyType2));
+    if (com.tencent.aladdin.config.utils.Log.isDebugVersion())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAckRsp: ");
+      localStringBuilder.append(com.tencent.aladdin.config.utils.Log.pbToString(paramRspBodyType2));
+      android.util.Log.d("AladdinRequestHandler", localStringBuilder.toString());
     }
     paramRspBodyType2 = paramRspBodyType2.msg.get();
-    com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "handleAckRsp: msg=" + paramRspBodyType2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleAckRsp: msg=");
+    localStringBuilder.append(paramRspBodyType2);
+    com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", localStringBuilder.toString());
   }
   
   private ArrayList<AladdinRequestHandler.ConfigResult> handleRspBody(oidb_cmd0xbf8.RspBodyType1 paramRspBodyType1)
   {
-    if (com.tencent.aladdin.config.utils.Log.isDebugVersion()) {
-      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "handleRspBody: " + com.tencent.aladdin.config.utils.Log.pbToString(paramRspBodyType1));
-    }
-    Object localObject = paramRspBodyType1.rpt_config_list.get();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    int i;
-    if (((Iterator)localObject).hasNext())
+    if (com.tencent.aladdin.config.utils.Log.isDebugVersion())
     {
-      oidb_cmd0xbf8.Config localConfig = (oidb_cmd0xbf8.Config)((Iterator)localObject).next();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleRspBody: ");
+      ((StringBuilder)localObject1).append(com.tencent.aladdin.config.utils.Log.pbToString(paramRspBodyType1));
+      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = paramRspBodyType1.rpt_config_list.get();
+    Object localObject1 = new ArrayList();
+    localObject2 = ((List)localObject2).iterator();
+    for (;;)
+    {
+      boolean bool = ((Iterator)localObject2).hasNext();
+      int i = 1;
+      if (!bool) {
+        break;
+      }
+      oidb_cmd0xbf8.Config localConfig = (oidb_cmd0xbf8.Config)((Iterator)localObject2).next();
       int j = localConfig.id.get();
       int k = localConfig.version.get();
       String str = localConfig.content.get();
-      for (i = localConfig.wipe_flag.get();; i = 1)
+      int m = localConfig.wipe_flag.get();
+      try
       {
-        try
-        {
-          boolean bool = handleSingleConfigRsp(j, k, str, i);
-          if (!bool) {
-            continue;
-          }
-          i = 0;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleRspBody: ", localException);
-            i = 1;
-          }
-        }
-        localArrayList.add(new AladdinRequestHandler.ConfigResult(j, k, i));
-        break;
+        bool = handleSingleConfigRsp(j, k, str, m);
+        i = true ^ bool;
       }
+      catch (Exception localException)
+      {
+        com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleRspBody: ", localException);
+      }
+      ((ArrayList)localObject1).add(new AladdinRequestHandler.ConfigResult(j, k, i));
     }
     if (!Aladdin.getVersionManager().flush()) {
       com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleRspBody: failed to flush version info");
     }
-    ackConfigResults(paramRspBodyType1.cookie.get(), localArrayList);
-    return localArrayList;
+    ackConfigResults(paramRspBodyType1.cookie.get(), (ArrayList)localObject1);
+    if ((paramRspBodyType1.cache.has()) && (paramRspBodyType1.cache.get() != null))
+    {
+      paramRspBodyType1 = paramRspBodyType1.cache.get().toStringUtf8();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[handleRspBody], cache = ");
+      ((StringBuilder)localObject2).append(paramRspBodyType1);
+      com.tencent.aladdin.config.utils.Log.i("AladdinRequestHandler", ((StringBuilder)localObject2).toString());
+      SpUtils.updateSpValue("key_cache", paramRspBodyType1, true);
+    }
+    return localObject1;
   }
   
   private boolean handleSingleConfigRsp(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "[handleSingleConfigRsp] id = " + paramInt1 + ", version = " + paramInt2 + ", content = " + paramString + ", wipeFlag = " + paramInt3);
-    AladdinConfigVersionManager localAladdinConfigVersionManager = Aladdin.getVersionManager();
-    int i = localAladdinConfigVersionManager.getConfigVersionById(paramInt1);
-    boolean bool = true;
-    if (paramInt2 > i) {
-      try
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[handleSingleConfigRsp] id = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", version = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(", content = ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", wipeFlag = ");
+    ((StringBuilder)localObject).append(paramInt3);
+    com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", ((StringBuilder)localObject).toString());
+    localObject = Aladdin.getVersionManager();
+    ((AladdinConfigVersionManager)localObject).getConfigVersionById(paramInt1);
+    try
+    {
+      SimpleConfigHandler localSimpleConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
+      if (paramInt3 != 0)
       {
-        AladdinConfigHandler localAladdinConfigHandler = Aladdin.getConfigHandlerById(paramInt1);
-        if (paramInt3 != 0)
-        {
-          localAladdinConfigHandler.onWipeConfig(paramInt3);
-          localAladdinConfigVersionManager.setConfigVersionById(paramInt1, 0);
-          return true;
-        }
-        bool = localAladdinConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString);
-        localAladdinConfigVersionManager.setConfigVersionById(paramInt1, paramInt2);
-        return bool;
+        localSimpleConfigHandler.onWipeConfig(paramInt3);
+        ((AladdinConfigVersionManager)localObject).setConfigVersionById(paramInt1, 0);
+        return true;
       }
-      catch (Exception paramString)
-      {
-        com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleSingleConfigRsp: ", paramString);
-        bool = false;
-      }
+      boolean bool = localSimpleConfigHandler.onReceiveConfig(paramInt1, paramInt2, paramString);
+      ((AladdinConfigVersionManager)localObject).setConfigVersionById(paramInt1, paramInt2);
+      return bool;
     }
-    return bool;
+    catch (Exception paramString)
+    {
+      com.tencent.aladdin.config.utils.Log.e("AladdinRequestHandler", "handleSingleConfigRsp: ", paramString);
+    }
+    return false;
   }
   
   private static oidb_cmd0xbf8.ReqBody makeAckBody(String paramString, List<AladdinRequestHandler.ConfigResult> paramList)
@@ -138,8 +162,12 @@ public abstract class AladdinRequestHandler
     }
     localReqBody.req_type.set(1);
     localReqBody.body_type_2.set(localReqBodyType2);
-    if (com.tencent.aladdin.config.utils.Log.isDebugVersion()) {
-      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "makeAckBody: " + com.tencent.aladdin.config.utils.Log.pbToString(localReqBody));
+    if (com.tencent.aladdin.config.utils.Log.isDebugVersion())
+    {
+      paramString = new StringBuilder();
+      paramString.append("makeAckBody: ");
+      paramString.append(com.tencent.aladdin.config.utils.Log.pbToString(localReqBody));
+      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", paramString.toString());
     }
     return localReqBody;
   }
@@ -182,7 +210,7 @@ public abstract class AladdinRequestHandler
     localReqBodyType1.app_version.set(Aladdin.getAppVersion());
     localReqBodyType1.device_info.set(makeDeviceInfo());
     localReqBodyType1.app_id.set(Aladdin.getAppFlavorId());
-    AladdinConfigVersionManager localAladdinConfigVersionManager = Aladdin.getVersionManager();
+    Object localObject = Aladdin.getVersionManager();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -190,14 +218,26 @@ public abstract class AladdinRequestHandler
       int k = paramArrayOfInt[i];
       oidb_cmd0xbf8.ConfigSeq localConfigSeq = new oidb_cmd0xbf8.ConfigSeq();
       localConfigSeq.id.set(k);
-      localConfigSeq.version.set(localAladdinConfigVersionManager.getConfigVersionById(k));
+      localConfigSeq.version.set(((AladdinConfigVersionManager)localObject).getConfigVersionById(k));
       localReqBodyType1.rpt_config_list.add(localConfigSeq);
       i += 1;
     }
+    paramArrayOfInt = (String)SpUtils.getSpValue("key_cache", "", true);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[makeReqBody] cache = ");
+    ((StringBuilder)localObject).append(paramArrayOfInt);
+    com.tencent.aladdin.config.utils.Log.i("AladdinRequestHandler", ((StringBuilder)localObject).toString());
+    if (!TextUtils.isEmpty(paramArrayOfInt)) {
+      localReqBodyType1.cache.set(ByteStringMicro.copyFromUtf8(paramArrayOfInt));
+    }
     localReqBody.req_type.set(0);
     localReqBody.body_type_1.set(localReqBodyType1);
-    if (com.tencent.aladdin.config.utils.Log.isDebugVersion()) {
-      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", "makeReqBody: " + com.tencent.aladdin.config.utils.Log.pbToString(localReqBody));
+    if (com.tencent.aladdin.config.utils.Log.isDebugVersion())
+    {
+      paramArrayOfInt = new StringBuilder();
+      paramArrayOfInt.append("makeReqBody: ");
+      paramArrayOfInt.append(com.tencent.aladdin.config.utils.Log.pbToString(localReqBody));
+      com.tencent.aladdin.config.utils.Log.d("AladdinRequestHandler", paramArrayOfInt.toString());
     }
     return localReqBody;
   }
@@ -214,7 +254,7 @@ public abstract class AladdinRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aladdin.config.network.AladdinRequestHandler
  * JD-Core Version:    0.7.0.1
  */

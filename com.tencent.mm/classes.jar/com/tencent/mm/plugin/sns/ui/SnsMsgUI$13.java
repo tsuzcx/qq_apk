@@ -1,25 +1,42 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.MMSlideDelView.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.MMSlideDelView.f;
 
 final class SnsMsgUI$13
-  implements MMSlideDelView.g
+  implements MMSlideDelView.f
 {
   SnsMsgUI$13(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void r(View paramView, int paramInt1, int paramInt2)
+  public final void es(Object paramObject)
   {
-    AppMethodBeat.i(39079);
-    SnsMsgUI.c(this.rSU).performItemClick(paramView, paramInt1, paramInt2);
-    AppMethodBeat.o(39079);
+    AppMethodBeat.i(308507);
+    if (paramObject == null)
+    {
+      Log.e("MicroMsg.SnsMsgUI", "onItemDel object null");
+      AppMethodBeat.o(308507);
+      return;
+    }
+    try
+    {
+      int i = Util.safeParseInt(paramObject.toString());
+      SnsMsgUI.a(this.RtY, i);
+      AppMethodBeat.o(308507);
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      Log.e("MicroMsg.SnsMsgUI", "onItemDel object not int");
+      Log.printErrStackTrace("MicroMsg.SnsMsgUI", paramObject, "", new Object[0]);
+      AppMethodBeat.o(308507);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.13
  * JD-Core Version:    0.7.0.1
  */

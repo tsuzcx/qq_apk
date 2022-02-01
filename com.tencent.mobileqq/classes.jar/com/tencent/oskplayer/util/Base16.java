@@ -7,17 +7,15 @@ public class Base16
   
   public static void decode(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    int j = paramString.length() / 2;
-    int i = 0;
-    while (i < j * 2)
+    int k = paramString.length() / 2;
+    int j = 0;
+    int i = paramInt;
+    for (paramInt = j; paramInt < k * 2; paramInt = j + 1)
     {
       byte[] arrayOfByte = DEC_TAB;
-      int k = i + 1;
-      int m = arrayOfByte[paramString.charAt(i)];
-      arrayOfByte = DEC_TAB;
-      i = k + 1;
-      paramArrayOfByte[paramInt] = ((byte)(m << 4 | arrayOfByte[paramString.charAt(k)]));
-      paramInt += 1;
+      j = paramInt + 1;
+      paramArrayOfByte[i] = ((byte)(arrayOfByte[paramString.charAt(paramInt)] << 4 | DEC_TAB[paramString.charAt(j)]));
+      i += 1;
     }
   }
   
@@ -37,7 +35,7 @@ public class Base16
   {
     StringBuilder localStringBuilder = new StringBuilder(paramInt2 * 2);
     int i = paramInt1;
-    while (i < paramInt1 + paramInt2)
+    while (i < paramInt2 + paramInt1)
     {
       localStringBuilder.append(ENC_TAB[((paramArrayOfByte[i] & 0xF0) >> 4)]);
       localStringBuilder.append(ENC_TAB[(paramArrayOfByte[i] & 0xF)]);
@@ -48,7 +46,7 @@ public class Base16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.util.Base16
  * JD-Core Version:    0.7.0.1
  */

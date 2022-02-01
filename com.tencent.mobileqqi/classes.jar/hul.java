@@ -1,28 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qqconnect.wtlogin.LoginHelper;
-import com.tencent.qqconnect.wtlogin.LoginHelper.Callback;
-import mqq.observer.SSOAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class hul
-  extends SSOAccountObserver
+  implements DialogInterface.OnClickListener
 {
-  public hul(LoginHelper paramLoginHelper) {}
+  public hul(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
-    this.a.a = null;
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (paramInt == 4096) {}
-    for (paramArrayOfByte = new String(paramArrayOfByte);; paramArrayOfByte = null)
-    {
-      this.a.a.a(paramString, paramArrayOfByte);
-      this.a.a = null;
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a0" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <ListView android:id="@id/bv6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/w6" android:scrollingCache="false" android:divider="@color/oz" android:dividerHeight="@dimen/hv" />
-        <ViewStub android:id="@id/bv7" android:layout="@layout/w5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/bs_" android:layout="@layout/w6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <include layout="@layout/z2" />
+    <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/cam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:text="@string/c2s" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/cal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="48.0dip" android:text="" />
 </LinearLayout>

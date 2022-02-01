@@ -7,14 +7,14 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcRequestPullGroupMsg
   extends JceStruct
 {
-  public byte cGetGroupNick;
-  public byte cGetPttUrl;
-  public byte cGroupMsgRoam;
-  public byte cMsgStoreType;
-  public byte cVerifyType;
-  public long lBeginSeq;
-  public long lEndSeq;
-  public long lGroupCode;
+  public byte cGetGroupNick = 0;
+  public byte cGetPttUrl = 0;
+  public byte cGroupMsgRoam = 0;
+  public byte cMsgStoreType = 0;
+  public byte cVerifyType = 0;
+  public long lBeginSeq = 0L;
+  public long lEndSeq = 0L;
+  public long lGroupCode = 0L;
   
   public SvcRequestPullGroupMsg() {}
   
@@ -56,7 +56,7 @@ public final class SvcRequestPullGroupMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestPullGroupMsg
  * JD-Core Version:    0.7.0.1
  */

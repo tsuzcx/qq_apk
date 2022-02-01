@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.collect.reward.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.emoji.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class QrRewardMainUI$1
   implements TextWatcher
 {
-  int kPM = 0;
+  int xba = 0;
   
   QrRewardMainUI$1(QrRewardMainUI paramQrRewardMainUI) {}
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(41083);
-    ab.d("MicroMsg.QrRewardMainUI", "s: %s, %s", new Object[] { paramEditable.toString(), Integer.valueOf(paramEditable.length()) });
+    AppMethodBeat.i(63942);
+    Log.d("MicroMsg.QrRewardMainUI", "s: %s, %s", new Object[] { paramEditable.toString(), Integer.valueOf(paramEditable.length()) });
     String str = paramEditable.toString();
-    if (bo.isNullOrNil(str)) {
-      this.kPM = 0;
+    if (Util.isNullOrNil(str)) {
+      this.xba = 0;
     }
     for (;;)
     {
-      paramEditable.delete(this.kPM, paramEditable.length());
-      AppMethodBeat.o(41083);
+      paramEditable.delete(this.xba, paramEditable.length());
+      AppMethodBeat.o(63942);
       return;
-      if (this.kPM == 0) {
-        if ((((a)g.E(a.class)).E(str)) || (((a)g.E(a.class)).F(str))) {
-          this.kPM = paramEditable.length();
+      if (this.xba == 0) {
+        if ((((a)h.ax(a.class)).aa(str)) || (((a)h.ax(a.class)).ab(str))) {
+          this.xba = paramEditable.length();
         } else {
-          this.kPM = 1;
+          this.xba = 1;
         }
       }
     }
@@ -44,7 +44,7 @@ final class QrRewardMainUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.ui.QrRewardMainUI.1
  * JD-Core Version:    0.7.0.1
  */

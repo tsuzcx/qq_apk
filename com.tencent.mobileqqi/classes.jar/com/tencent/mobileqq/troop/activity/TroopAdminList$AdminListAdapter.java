@@ -43,9 +43,9 @@ public class TroopAdminList$AdminListAdapter
     {
       paramViewGroup = new TroopAdminList.ViewHolder();
       paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903450, null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131232622));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131232621));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231000));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131231507));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131231506));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
     }

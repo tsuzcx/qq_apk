@@ -15,10 +15,20 @@ public class SecurityReporterResult
   public static final int REPORTER_TYPE_ALL = 1;
   public static final int REPORTER_TYPE_USER_DESC = 2;
   private static final long serialVersionUID = -7875994227423532556L;
-  public ArrayList chart;
+  public ArrayList<ChartAreas> chart;
   public String noDataTip;
   public int type;
   public String userDesc;
+  
+  public class ChartAreas
+    implements Serializable
+  {
+    private static final long serialVersionUID = -2239427414631374725L;
+    public String subTtitle;
+    public String table;
+    public String title;
+    public int type;
+  }
 }
 
 

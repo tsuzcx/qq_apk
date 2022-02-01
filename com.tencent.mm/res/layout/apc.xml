@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/qm"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ijc" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/qn" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ap8" /> //暂时注掉
-<include layout="@layout/apd" />
-        <TextView android:textColor="@color/s4" android:gravity="center|left" android:id="@id/e2l" android:text="@string/bt0" android:drawableLeft="@raw/chatfrom_voice_playing_new" android:drawablePadding="20.0dip" style="@style/qu" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/qq" />
-    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ijb" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginRight="@dimen/bv" />
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/ys" android:ellipsize="end" android:id="@id/ijd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="redpacket link" android:lines="1" />
 </LinearLayout>

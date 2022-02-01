@@ -1,28 +1,25 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
+import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.dispatch.Dispatcher;
-import umc;
-import uom;
-import uot;
-import uow;
-import uqf;
-import wxe;
 
-public class StoryVideoUploadManager$4
+class StoryVideoUploadManager$4
   implements Runnable
 {
-  public StoryVideoUploadManager$4(uom paramuom, uqf paramuqf, uow paramuow) {}
+  StoryVideoUploadManager$4(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
   
   public void run()
   {
-    wxe.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Uqf });
-    umc.a().dispatch(this.jdField_a_of_type_Uow);
-    umc.a().dispatch(new uot());
+    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.a });
+    StoryDispatcher.a().dispatch(this.b);
+    StoryDispatcher.a().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -63,12 +63,12 @@ public class UploadDataSource$FileDataSource
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   6: ifnull +86 -> 92
+    //   6: ifnull +32 -> 38
     //   9: aload_0
     //   10: getfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
     //   13: lload_1
     //   14: lcmp
-    //   15: ifne +77 -> 92
+    //   15: ifne +23 -> 38
     //   18: aload_0
     //   19: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
     //   22: astore 6
@@ -79,155 +79,165 @@ public class UploadDataSource$FileDataSource
     //   30: i2l
     //   31: ladd
     //   32: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   35: aload 6
-    //   37: aload 4
-    //   39: iload 5
-    //   41: iload_3
-    //   42: invokevirtual 82	java/io/InputStream:read	([BII)I
-    //   45: istore_3
-    //   46: iload_3
-    //   47: i2l
-    //   48: lstore_1
-    //   49: aload_0
-    //   50: getfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   53: aload_0
-    //   54: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
-    //   57: invokevirtual 60	java/io/File:length	()J
-    //   60: lcmp
-    //   61: iflt +27 -> 88
-    //   64: aload_0
-    //   65: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   68: ifnull +20 -> 88
-    //   71: aload_0
-    //   72: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   75: invokevirtual 87	java/io/FileInputStream:close	()V
-    //   78: aload_0
-    //   79: aconst_null
-    //   80: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   83: aload_0
-    //   84: lconst_0
-    //   85: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   35: goto +61 -> 96
+    //   38: aload_0
+    //   39: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   42: ifnull +20 -> 62
+    //   45: aload_0
+    //   46: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   49: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   52: goto +10 -> 62
+    //   55: astore 6
+    //   57: aload 6
+    //   59: invokevirtual 84	java/lang/Throwable:printStackTrace	()V
+    //   62: new 78	java/io/FileInputStream
+    //   65: dup
+    //   66: aload_0
+    //   67: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
+    //   70: invokespecial 87	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   73: astore 6
+    //   75: aload_0
+    //   76: aload 6
+    //   78: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   81: aload 6
+    //   83: lload_1
+    //   84: invokevirtual 93	java/io/InputStream:skip	(J)J
+    //   87: pop2
     //   88: aload_0
-    //   89: monitorexit
-    //   90: lload_1
-    //   91: lreturn
-    //   92: aload_0
-    //   93: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   96: ifnull +10 -> 106
-    //   99: aload_0
-    //   100: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   103: invokevirtual 87	java/io/FileInputStream:close	()V
-    //   106: new 84	java/io/FileInputStream
-    //   109: dup
+    //   89: lload_1
+    //   90: iload_3
+    //   91: i2l
+    //   92: ladd
+    //   93: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   96: aload 6
+    //   98: aload 4
+    //   100: iload 5
+    //   102: iload_3
+    //   103: invokevirtual 97	java/io/InputStream:read	([BII)I
+    //   106: istore_3
+    //   107: iload_3
+    //   108: i2l
+    //   109: lstore_1
     //   110: aload_0
-    //   111: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
-    //   114: invokespecial 90	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   117: astore 6
-    //   119: aload_0
-    //   120: aload 6
-    //   122: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   125: aload 6
-    //   127: lload_1
-    //   128: invokevirtual 94	java/io/InputStream:skip	(J)J
-    //   131: pop2
+    //   111: getfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   114: aload_0
+    //   115: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
+    //   118: invokevirtual 60	java/io/File:length	()J
+    //   121: lcmp
+    //   122: iflt +27 -> 149
+    //   125: aload_0
+    //   126: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   129: ifnull +20 -> 149
     //   132: aload_0
-    //   133: iload_3
-    //   134: i2l
-    //   135: lload_1
-    //   136: ladd
-    //   137: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   140: goto -105 -> 35
-    //   143: astore 4
-    //   145: aload_0
-    //   146: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   149: ifnull +20 -> 169
-    //   152: aload_0
-    //   153: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   156: invokevirtual 87	java/io/FileInputStream:close	()V
-    //   159: aload_0
-    //   160: aconst_null
-    //   161: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   164: aload_0
-    //   165: lconst_0
-    //   166: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   169: aload 4
-    //   171: athrow
-    //   172: astore 4
+    //   133: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   136: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   139: aload_0
+    //   140: aconst_null
+    //   141: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   144: aload_0
+    //   145: lconst_0
+    //   146: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   149: aload_0
+    //   150: monitorexit
+    //   151: lload_1
+    //   152: lreturn
+    //   153: astore 4
+    //   155: goto +32 -> 187
+    //   158: astore 4
+    //   160: aload_0
+    //   161: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   164: ifnull +20 -> 184
+    //   167: aload_0
+    //   168: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   171: invokevirtual 81	java/io/FileInputStream:close	()V
     //   174: aload_0
-    //   175: getfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   178: aload_0
-    //   179: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
-    //   182: invokevirtual 60	java/io/File:length	()J
-    //   185: lcmp
-    //   186: iflt +27 -> 213
-    //   189: aload_0
-    //   190: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   193: ifnull +20 -> 213
-    //   196: aload_0
-    //   197: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   200: invokevirtual 87	java/io/FileInputStream:close	()V
-    //   203: aload_0
-    //   204: aconst_null
-    //   205: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
-    //   208: aload_0
-    //   209: lconst_0
-    //   210: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
-    //   213: aload 4
-    //   215: athrow
-    //   216: astore 4
-    //   218: aload_0
-    //   219: monitorexit
-    //   220: aload 4
-    //   222: athrow
-    //   223: astore 6
-    //   225: aload 6
-    //   227: invokevirtual 97	java/lang/Throwable:printStackTrace	()V
-    //   230: goto -124 -> 106
-    //   233: astore 6
-    //   235: goto -22 -> 213
-    //   238: astore 6
-    //   240: goto -71 -> 169
-    //   243: astore 4
-    //   245: goto -157 -> 88
+    //   175: aconst_null
+    //   176: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   179: aload_0
+    //   180: lconst_0
+    //   181: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   184: aload 4
+    //   186: athrow
+    //   187: aload_0
+    //   188: getfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   191: aload_0
+    //   192: getfield 42	com/tencent/upload/task/data/UploadDataSource$FileDataSource:mFile	Ljava/io/File;
+    //   195: invokevirtual 60	java/io/File:length	()J
+    //   198: lcmp
+    //   199: iflt +35 -> 234
+    //   202: aload_0
+    //   203: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   206: ifnull +28 -> 234
+    //   209: aload_0
+    //   210: getfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   213: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   216: aload_0
+    //   217: aconst_null
+    //   218: putfield 74	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sIns	Ljava/io/FileInputStream;
+    //   221: aload_0
+    //   222: lconst_0
+    //   223: putfield 76	com/tencent/upload/task/data/UploadDataSource$FileDataSource:sfileOffset	J
+    //   226: goto +8 -> 234
+    //   229: astore 4
+    //   231: goto +6 -> 237
+    //   234: aload 4
+    //   236: athrow
+    //   237: aload_0
+    //   238: monitorexit
+    //   239: aload 4
+    //   241: athrow
+    //   242: astore 4
+    //   244: goto -95 -> 149
+    //   247: astore 6
+    //   249: goto -65 -> 184
+    //   252: astore 6
+    //   254: goto -20 -> 234
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	248	0	this	FileDataSource
-    //   0	248	1	paramLong	long
-    //   0	248	3	paramInt1	int
-    //   0	248	4	paramArrayOfByte	byte[]
-    //   0	248	5	paramInt2	int
-    //   22	104	6	localFileInputStream	FileInputStream
-    //   223	3	6	localThrowable	java.lang.Throwable
-    //   233	1	6	localException1	java.lang.Exception
-    //   238	1	6	localException2	java.lang.Exception
+    //   0	257	0	this	FileDataSource
+    //   0	257	1	paramLong	long
+    //   0	257	3	paramInt1	int
+    //   0	257	4	paramArrayOfByte	byte[]
+    //   0	257	5	paramInt2	int
+    //   22	1	6	localFileInputStream1	FileInputStream
+    //   55	3	6	localThrowable	java.lang.Throwable
+    //   73	24	6	localFileInputStream2	FileInputStream
+    //   247	1	6	localException1	java.lang.Exception
+    //   252	1	6	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   2	35	143	java/io/IOException
-    //   35	46	143	java/io/IOException
-    //   92	106	143	java/io/IOException
-    //   106	140	143	java/io/IOException
-    //   225	230	143	java/io/IOException
-    //   2	35	172	finally
-    //   35	46	172	finally
-    //   92	106	172	finally
-    //   106	140	172	finally
-    //   145	169	172	finally
-    //   169	172	172	finally
-    //   225	230	172	finally
-    //   49	88	216	finally
-    //   88	90	216	finally
-    //   174	213	216	finally
-    //   213	216	216	finally
-    //   218	220	216	finally
-    //   92	106	223	java/lang/Throwable
-    //   174	213	233	java/lang/Exception
-    //   145	169	238	java/lang/Exception
-    //   49	88	243	java/lang/Exception
+    //   38	52	55	java/lang/Throwable
+    //   2	35	153	finally
+    //   38	52	153	finally
+    //   57	62	153	finally
+    //   62	96	153	finally
+    //   96	107	153	finally
+    //   160	184	153	finally
+    //   184	187	153	finally
+    //   2	35	158	java/io/IOException
+    //   38	52	158	java/io/IOException
+    //   57	62	158	java/io/IOException
+    //   62	96	158	java/io/IOException
+    //   96	107	158	java/io/IOException
+    //   110	149	229	finally
+    //   149	151	229	finally
+    //   187	226	229	finally
+    //   234	237	229	finally
+    //   237	239	229	finally
+    //   110	149	242	java/lang/Exception
+    //   160	184	247	java/lang/Exception
+    //   187	226	252	java/lang/Exception
   }
   
   public String toString()
   {
-    return "[File:" + this.mFilePath + ",Size:" + getDataLength() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[File:");
+    localStringBuilder.append(this.mFilePath);
+    localStringBuilder.append(",Size:");
+    localStringBuilder.append(getDataLength());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -237,7 +247,7 @@ public class UploadDataSource$FileDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.task.data.UploadDataSource.FileDataSource
  * JD-Core Version:    0.7.0.1
  */

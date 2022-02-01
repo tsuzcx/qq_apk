@@ -1,14 +1,12 @@
 package com.github.henryye.nativeiv.comm;
 
-import android.support.annotation.Keep;
 import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
 
-@Keep
 class CommNativeBitmapStruct
   extends NativeBitmapStruct
 {
-  @Keep
   private int nConfig = -1;
+  private boolean premultiplyAlpha;
   
   public CommNativeBitmapStruct convertToCommonStruct()
   {
@@ -57,7 +55,7 @@ class CommNativeBitmapStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.CommNativeBitmapStruct
  * JD-Core Version:    0.7.0.1
  */

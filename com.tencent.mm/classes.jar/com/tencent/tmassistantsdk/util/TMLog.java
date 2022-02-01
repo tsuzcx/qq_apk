@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.util;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,73 +16,73 @@ public class TMLog
   
   static
   {
-    AppMethodBeat.i(76299);
+    AppMethodBeat.i(102542);
     mHardDebugFlag = true;
     mUseTimeStringList = new HashMap();
     mUseTimeLongList = new HashMap();
     mDebugFlagForSDK = true;
     mDebugFlagForSDKTag = "";
-    AppMethodBeat.o(76299);
+    AppMethodBeat.o(102542);
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76292);
+    AppMethodBeat.i(102535);
     if (isForDebug())
     {
       String str = paramString2;
       if (paramString2 == null) {
         str = "............";
       }
-      ab.d(paramString1, str);
+      Log.d(paramString1, str);
     }
-    AppMethodBeat.o(76292);
+    AppMethodBeat.o(102535);
   }
   
   public static void debugE(String paramString)
   {
-    AppMethodBeat.i(76289);
+    AppMethodBeat.i(102532);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ab.e(mDebugFlagForSDKTag, paramString);
+      Log.e(mDebugFlagForSDKTag, paramString);
     }
-    AppMethodBeat.o(76289);
+    AppMethodBeat.o(102532);
   }
   
   public static void debugV(String paramString)
   {
-    AppMethodBeat.i(76288);
+    AppMethodBeat.i(102531);
     if ((mDebugFlagForSDK) && (!TextUtils.isEmpty(mDebugFlagForSDKTag))) {
-      ab.v(mDebugFlagForSDKTag, paramString);
+      Log.v(mDebugFlagForSDKTag, paramString);
     }
-    AppMethodBeat.o(76288);
+    AppMethodBeat.o(102531);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76294);
+    AppMethodBeat.i(102537);
     if (isForDebug())
     {
       String str = paramString2;
       if (paramString2 == null) {
         str = "............";
       }
-      ab.e(paramString1, str);
+      Log.e(paramString1, str);
     }
-    AppMethodBeat.o(76294);
+    AppMethodBeat.o(102537);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76291);
+    AppMethodBeat.i(102534);
     if (isForDebug())
     {
       String str = paramString2;
       if (paramString2 == null) {
         str = "............";
       }
-      ab.i(paramString1, str);
+      Log.i(paramString1, str);
     }
-    AppMethodBeat.o(76291);
+    AppMethodBeat.o(102534);
   }
   
   public static boolean isForDebug()
@@ -98,25 +98,25 @@ public class TMLog
   
   public static void time(String paramString)
   {
-    AppMethodBeat.i(76295);
+    AppMethodBeat.i(102538);
     time("UseTime", paramString, false);
-    AppMethodBeat.o(76295);
+    AppMethodBeat.o(102538);
   }
   
   public static void time(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76297);
+    AppMethodBeat.i(102540);
     time(paramString1, paramString2, false);
-    AppMethodBeat.o(76297);
+    AppMethodBeat.o(102540);
   }
   
   public static void time(String paramString1, String paramString2, boolean paramBoolean)
   {
     int i = 0;
-    AppMethodBeat.i(76298);
+    AppMethodBeat.i(102541);
     if (!isForDebug())
     {
-      AppMethodBeat.o(76298);
+      AppMethodBeat.o(102541);
       return;
     }
     ArrayList localArrayList = (ArrayList)mUseTimeStringList.get(paramString1);
@@ -153,11 +153,11 @@ public class TMLog
             localStringBuffer.append(" ");
             i += 1;
           }
-          ab.v(paramString1, localStringBuffer.toString());
+          Log.v(paramString1, localStringBuffer.toString());
           localArrayList.clear();
           paramString2.clear();
         }
-        AppMethodBeat.o(76298);
+        AppMethodBeat.o(102541);
         return;
       }
     }
@@ -165,42 +165,42 @@ public class TMLog
   
   public static void time(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(76296);
+    AppMethodBeat.i(102539);
     time("UseTime", paramString, paramBoolean);
-    AppMethodBeat.o(76296);
+    AppMethodBeat.o(102539);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76290);
+    AppMethodBeat.i(102533);
     if (isForDebug())
     {
       String str = paramString2;
       if (paramString2 == null) {
         str = "............";
       }
-      ab.v(paramString1, str);
+      Log.v(paramString1, str);
     }
-    AppMethodBeat.o(76290);
+    AppMethodBeat.o(102533);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76293);
+    AppMethodBeat.i(102536);
     if (isForDebug())
     {
       String str = paramString2;
       if (paramString2 == null) {
         str = "............";
       }
-      ab.w(paramString1, str);
+      Log.w(paramString1, str);
     }
-    AppMethodBeat.o(76293);
+    AppMethodBeat.o(102536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.TMLog
  * JD-Core Version:    0.7.0.1
  */

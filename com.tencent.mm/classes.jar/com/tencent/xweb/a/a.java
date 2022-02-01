@@ -1,45 +1,97 @@
 package com.tencent.xweb.a;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.r;
-import java.util.Map;
+import java.io.File;
 
 public final class a
+  implements d
 {
-  r BEN;
+  File mFile;
   
-  public a(r paramr)
+  public a(File paramFile)
   {
-    this.BEN = paramr;
+    this.mFile = paramFile;
   }
   
-  public final Bundle getBundle()
+  public final String coT()
   {
-    AppMethodBeat.i(84556);
-    Object localObject;
-    if ((this.BEN != null) && (this.BEN.getRequestHeaders() != null) && (!this.BEN.isForMainFrame()) && (this.BEN.getRequestHeaders().containsKey("Accept")))
+    AppMethodBeat.i(212560);
+    String str = this.mFile.getAbsolutePath();
+    AppMethodBeat.o(212560);
+    return str;
+  }
+  
+  public final boolean diJ()
+  {
+    AppMethodBeat.i(183503);
+    boolean bool = this.mFile.delete();
+    AppMethodBeat.o(183503);
+    return bool;
+  }
+  
+  public final String getName()
+  {
+    AppMethodBeat.i(212554);
+    String str = this.mFile.getName();
+    AppMethodBeat.o(212554);
+    return str;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(183499);
+    String str = this.mFile.getPath();
+    AppMethodBeat.o(183499);
+    return str;
+  }
+  
+  public final boolean isDirectory()
+  {
+    AppMethodBeat.i(183500);
+    boolean bool = this.mFile.isDirectory();
+    AppMethodBeat.o(183500);
+    return bool;
+  }
+  
+  public final boolean jKS()
+  {
+    AppMethodBeat.i(183502);
+    boolean bool = this.mFile.exists();
+    AppMethodBeat.o(183502);
+    return bool;
+  }
+  
+  public final String[] jKW()
+  {
+    AppMethodBeat.i(183504);
+    String[] arrayOfString = this.mFile.list();
+    AppMethodBeat.o(183504);
+    return arrayOfString;
+  }
+  
+  public final d[] kgQ()
+  {
+    int i = 0;
+    AppMethodBeat.i(183501);
+    File[] arrayOfFile = this.mFile.listFiles();
+    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
     {
-      localObject = (String)this.BEN.getRequestHeaders().get("Accept");
-      if ((localObject == null) || (!((String)localObject).startsWith("text/html"))) {}
+      AppMethodBeat.o(183501);
+      return new d[0];
     }
-    for (int i = 1;; i = 0)
+    d[] arrayOfd = new d[arrayOfFile.length];
+    while (i < arrayOfFile.length)
     {
-      if (i != 0)
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("resourceType", 1);
-        AppMethodBeat.o(84556);
-        return localObject;
-      }
-      AppMethodBeat.o(84556);
-      return null;
+      arrayOfd[i] = new a(arrayOfFile[i]);
+      i += 1;
     }
+    AppMethodBeat.o(183501);
+    return arrayOfd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.a.a
  * JD-Core Version:    0.7.0.1
  */

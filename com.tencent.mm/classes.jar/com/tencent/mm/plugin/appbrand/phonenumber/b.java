@@ -1,46 +1,71 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f;
-import a.f.a.a;
-import a.f.a.r;
-import a.f.b.t;
-import a.f.b.v;
-import a.g;
-import a.j.k;
-import a.l;
-import a.y;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.tg;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.acc;
+import com.tencent.mm.protocal.protobuf.acd;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiCheckVerifyCode;", "", "appId", "", "mobile", "code", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getRr", "()Lcom/tencent/mm/modelbase/CommReqResp;", "rr$delegate", "Lkotlin/Lazy;", "run", "", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "errType", "errCode", "errMsg", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "resp", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiCheckVerifyCode;", "", "appId", "", "mobile", "code", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getCode", "getMobile", "run", "", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "Lkotlin/ParameterName;", "name", "resp", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private final f iCD;
-  
-  static
-  {
-    AppMethodBeat.i(143917);
-    eOJ = new k[] { (k)v.a(new t(v.aG(b.class), "rr", "getRr()Lcom/tencent/mm/modelbase/CommReqResp;")) };
-    AppMethodBeat.o(143917);
-  }
+  private final String appId;
+  private final String code;
+  private final String hRk;
   
   public b(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(134777);
-    this.iCD = g.j((a)new b.a(paramString1, paramString2, paramString3));
-    AppMethodBeat.o(134777);
+    AppMethodBeat.i(148020);
+    this.appId = paramString1;
+    this.hRk = paramString2;
+    this.code = paramString3;
+    AppMethodBeat.o(148020);
   }
   
-  public final void a(r<? super Integer, ? super Integer, ? super String, ? super tg, y> paramr)
+  private static final ah a(kotlin.g.a.b paramb, acd paramacd)
   {
-    AppMethodBeat.i(143918);
-    com.tencent.mm.ipcinvoker.wx_extension.b.a((com.tencent.mm.ai.b)this.iCD.getValue(), (com.tencent.mm.ipcinvoker.wx_extension.b.a)new b.b(paramr));
-    AppMethodBeat.o(143918);
+    AppMethodBeat.i(318959);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(318959);
+      return null;
+    }
+    paramb.invoke(paramacd);
+    paramb = ah.aiuX;
+    AppMethodBeat.o(318959);
+    return paramb;
+  }
+  
+  private static final void f(kotlin.g.a.b paramb, Object paramObject)
+  {
+    AppMethodBeat.i(318965);
+    if ((paramObject instanceof Exception)) {
+      Log.e("Luggage.FULL.CgiPhoneNumber", s.X("CgiCheckVerifyCode ", ((Exception)paramObject).getMessage()));
+    }
+    if (paramb != null) {
+      paramb.invoke(null);
+    }
+    AppMethodBeat.o(318965);
+  }
+  
+  public final void Z(kotlin.g.a.b<? super acd, ah> paramb)
+  {
+    AppMethodBeat.i(148019);
+    acc localacc = new acc();
+    localacc.appid = this.appId;
+    localacc.hRk = this.hRk;
+    localacc.VJo = this.code;
+    ((com.tencent.mm.plugin.appbrand.networking.c)e.T(com.tencent.mm.plugin.appbrand.networking.c.class)).a("/cgi-bin/mmbiz-bin/wxaapp/customphone/checkverifycode", (a)localacc, acd.class).c(new b..ExternalSyntheticLambda0(paramb)).a(new b..ExternalSyntheticLambda1(paramb));
+    AppMethodBeat.o(148019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.b
  * JD-Core Version:    0.7.0.1
  */

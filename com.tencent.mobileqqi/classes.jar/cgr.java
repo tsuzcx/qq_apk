@@ -5,13 +5,13 @@ import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 class cgr
   implements DialogInterface.OnClickListener
 {
-  cgr(cgq paramcgq) {}
+  cgr(cgp paramcgp) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130968599);
+    DevlockQuickLoginActivity.d(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130968599);
   }
 }
 

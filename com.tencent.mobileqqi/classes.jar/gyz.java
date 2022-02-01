@@ -7,7 +7,7 @@ public class gyz
   
   public void run()
   {
-    MessageSubtitleView.a(this.a);
+    MessageSubtitleView.b(this.a);
   }
 }
 

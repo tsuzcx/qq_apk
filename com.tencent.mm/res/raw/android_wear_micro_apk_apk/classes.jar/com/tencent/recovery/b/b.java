@@ -2,56 +2,56 @@ package com.tencent.recovery.b;
 
 public final class b
 {
-  private String ajB;
-  private String ajC;
-  private boolean ajD;
-  private long ajE;
-  private long ajF;
-  private String ajr;
-  private String ajs;
-  private String ajt;
+  private String amT;
+  private String amU;
+  private String amV;
+  private String and;
+  private String ane;
+  private boolean anf;
+  private long ang;
+  private long anh;
   
-  public final void W(String paramString)
+  public final void aa(String paramString)
   {
-    this.ajt = paramString;
+    this.amV = paramString;
   }
   
-  public final void X(String paramString)
+  public final void ab(String paramString)
   {
-    this.ajr = paramString;
+    this.amT = paramString;
   }
   
-  public final void Y(String paramString)
+  public final void ac(String paramString)
   {
-    this.ajs = paramString;
+    this.amU = paramString;
   }
   
-  public final void nR()
+  public final void oF()
   {
-    this.ajE = 600000L;
+    this.ang = 600000L;
   }
   
-  public final void nS()
+  public final void oG()
   {
-    this.ajF = 600000L;
+    this.anh = 600000L;
   }
   
-  public final void nT()
+  public final void oH()
   {
-    this.ajD = false;
+    this.anf = false;
   }
   
-  public final a nU()
+  public final a oI()
   {
     a locala = new a((byte)0);
-    a.a(locala, this.ajB);
-    a.b(locala, this.ajC);
-    a.c(locala, this.ajs);
-    a.d(locala, this.ajt);
-    a.e(locala, this.ajr);
-    a.a(locala, this.ajD);
-    a.a(locala, this.ajE);
-    a.b(locala, this.ajF);
+    a.a(locala, this.and);
+    a.b(locala, this.ane);
+    a.c(locala, this.amU);
+    a.d(locala, this.amV);
+    a.e(locala, this.amT);
+    a.a(locala, this.anf);
+    a.a(locala, this.ang);
+    a.b(locala, this.anh);
     return locala;
   }
 }

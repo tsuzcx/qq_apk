@@ -27,13 +27,17 @@ final class LoadStickerItemManager$1
       int i = str1.compareTo(str2);
       return i;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      label46:
+      break label46;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadStickerItemManager.1
  * JD-Core Version:    0.7.0.1
  */

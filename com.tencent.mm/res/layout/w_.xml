@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ev_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/a53" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/dj" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mo" />
-    <FrameLayout android:id="@id/a54" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
-        <LinearLayout android:orientation="horizontal" android:id="@id/aa2" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/aa3" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_marginLeft="@dimen/lr" />
-                </FrameLayout>
-                <TextView android:textSize="@dimen/m2" android:textColor="@color/a8a" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/aa5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:text="@string/sg" android:maxLines="2" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView android:layout_gravity="center|right" android:id="@id/aa6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/app_new" />
-    </FrameLayout>
+    <LinearLayout android:gravity="center" android:id="@id/euh" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/d_" />
 </LinearLayout>

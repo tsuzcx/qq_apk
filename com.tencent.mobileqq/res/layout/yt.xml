@@ -6,7 +6,7 @@
         <ImageView android:id="@id/la5" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/hrf" android:scaleType="fitCenter" android:contentDescription="@string/iw5" />
     </LinearLayout>
     <TextView android:id="@id/a7l" android:background="#1affffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_below="@id/la0" />
-    <HorizontalScrollView android:id="@id/lye" android:background="@color/ajr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="85.0dip" android:fillViewport="true" android:layout_below="@id/a7l" android:layout_centerHorizontal="true">
+    <com.tencent.mobileqq.profile.view.HScrollView android:id="@id/lye" android:background="@color/ajr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="85.0dip" android:fillViewport="true" android:layout_below="@id/a7l" android:layout_centerHorizontal="true">
         <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ff9" android:layout_width="wrap_content" android:layout_height="85.0dip" android:layout_alignParentRight="true" />
-    </HorizontalScrollView>
+    </com.tencent.mobileqq.profile.view.HScrollView>
 </merge>

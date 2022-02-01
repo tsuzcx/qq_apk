@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ali" android:background="@color/zm" style="@style/fr" />
+    <ImageView android:id="@id/aem" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/aen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/v6" />
 </LinearLayout>

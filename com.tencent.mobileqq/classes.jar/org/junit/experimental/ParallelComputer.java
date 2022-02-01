@@ -35,7 +35,7 @@ public class ParallelComputer
     return paramRunner;
   }
   
-  public Runner getRunner(RunnerBuilder paramRunnerBuilder, Class<?> paramClass)
+  protected Runner getRunner(RunnerBuilder paramRunnerBuilder, Class<?> paramClass)
   {
     paramClass = super.getRunner(paramRunnerBuilder, paramClass);
     paramRunnerBuilder = paramClass;
@@ -57,7 +57,7 @@ public class ParallelComputer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.ParallelComputer
  * JD-Core Version:    0.7.0.1
  */

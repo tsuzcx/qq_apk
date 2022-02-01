@@ -17,10 +17,11 @@ public class EncodeVideo
   
   private void doNotify(Message paramMessage)
   {
-    if (this.mHandler != null) {}
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {}
     try
     {
-      this.mHandler.sendMessage(paramMessage);
+      localHandler.sendMessage(paramMessage);
       return;
     }
     catch (Exception paramMessage) {}
@@ -54,7 +55,7 @@ public class EncodeVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.maxvideo.mediadevice.EncodeVideo
  * JD-Core Version:    0.7.0.1
  */

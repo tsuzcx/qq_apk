@@ -20,33 +20,42 @@ final class FileSystemManager$MaintenanceBroadcastReceiver
   
   private void triggerIdle()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VFS.FileSystemManager", 2, "Idle status changed: charging = " + this.mIsCharging + ", interactive = " + this.mIsInteractive);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Idle status changed: charging = ");
+      localStringBuilder.append(this.mIsCharging);
+      localStringBuilder.append(", interactive = ");
+      localStringBuilder.append(this.mIsInteractive);
+      QLog.i("VFS.FileSystemManager", 2, localStringBuilder.toString());
     }
-    long l;
     if ((this.mIsCharging) && (!this.mIsInteractive) && (this.mCancellationSignal == null))
     {
-      l = FileSystemManager.access$000(this.this$0);
-      if (l >= 0L) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.mCancellationSignal = new CancellationSignalCompat();
-          FileSystemManager.access$100(this.this$0).sendMessageDelayed(Message.obtain(FileSystemManager.access$100(this.this$0), 2, this.mCancellationSignal), l);
-        } while (!QLog.isColorLevel());
-        QLog.i("VFS.FileSystemManager", 2, "System idle, trigger maintenance timer for " + l / 1000L + " seconds.");
+      long l = FileSystemManager.access$000(this.this$0);
+      if (l < 0L) {
         return;
-      } while (((this.mIsCharging) && (!this.mIsInteractive)) || (this.mCancellationSignal == null));
+      }
+      this.mCancellationSignal = new CancellationSignalCompat();
+      FileSystemManager.access$100(this.this$0).sendMessageDelayed(Message.obtain(FileSystemManager.access$100(this.this$0), 2, this.mCancellationSignal), l);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("System idle, trigger maintenance timer for ");
+        localStringBuilder.append(l / 1000L);
+        localStringBuilder.append(" seconds.");
+        QLog.i("VFS.FileSystemManager", 2, localStringBuilder.toString());
+      }
+    }
+    else if (((!this.mIsCharging) || (this.mIsInteractive)) && (this.mCancellationSignal != null))
+    {
       FileSystemManager.access$100(this.this$0).removeMessages(2);
       this.mCancellationSignal.cancel();
       this.mCancellationSignal = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("VFS.FileSystemManager", 2, "Exit idle state, maintenance cancelled.");
+      if (QLog.isColorLevel()) {
+        QLog.i("VFS.FileSystemManager", 2, "Exit idle state, maintenance cancelled.");
+      }
+    }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -59,43 +68,50 @@ final class FileSystemManager$MaintenanceBroadcastReceiver
     switch (paramContext.hashCode())
     {
     default: 
-      switch (i)
-      {
+      break;
+    case 1019184907: 
+      if (paramContext.equals("android.intent.action.ACTION_POWER_CONNECTED")) {
+        i = 2;
+      }
+      break;
+    case -1454123155: 
+      if (paramContext.equals("android.intent.action.SCREEN_ON")) {
+        i = 0;
+      }
+      break;
+    case -1886648615: 
+      if (paramContext.equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+        i = 3;
+      }
+      break;
+    case -2128145023: 
+      if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+        i = 1;
       }
       break;
     }
-    for (;;)
+    if (i != 0)
     {
-      triggerIdle();
-      return;
-      if (!paramContext.equals("android.intent.action.SCREEN_ON")) {
-        break;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i == 3) {
+            this.mIsCharging = false;
+          }
+        }
+        else {
+          this.mIsCharging = true;
+        }
       }
-      i = 0;
-      break;
-      if (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
-        break;
+      else {
+        this.mIsInteractive = false;
       }
-      i = 1;
-      break;
-      if (!paramContext.equals("android.intent.action.ACTION_POWER_CONNECTED")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramContext.equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
-        break;
-      }
-      i = 3;
-      break;
-      this.mIsInteractive = true;
-      continue;
-      this.mIsInteractive = false;
-      continue;
-      this.mIsCharging = true;
-      continue;
-      this.mIsCharging = false;
     }
+    else {
+      this.mIsInteractive = true;
+    }
+    triggerIdle();
   }
   
   void refreshIdleStatus(Context paramContext)
@@ -105,21 +121,19 @@ final class FileSystemManager$MaintenanceBroadcastReceiver
     if (paramContext != null)
     {
       int i = paramContext.getIntExtra("status", -1);
+      boolean bool;
       if ((i != 2) && (i != 5)) {
-        break label61;
+        bool = false;
+      } else {
+        bool = true;
       }
-    }
-    label61:
-    for (boolean bool = true;; bool = false)
-    {
       this.mIsCharging = bool;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.FileSystemManager.MaintenanceBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -2,43 +2,42 @@ package cooperation.qzone;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import bjdz;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
-public final class QZoneHelper$6
+final class QZoneHelper$6
   implements Runnable
 {
-  public QZoneHelper$6(bjdz parambjdz) {}
+  QZoneHelper$6(QZoneHelper.StartActivity paramStartActivity) {}
   
   public void run()
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0))
+    Object localObject = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      this.a.a(true, false);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+          }
+          this.val$startActivity.onStart(true, true);
+          return;
+        }
+      }
+      this.val$startActivity.onStart(true, false);
       return;
     }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
-        }
-        this.a.a(true, true);
-        return;
-      }
-    }
-    this.a.a(true, false);
+    this.val$startActivity.onStart(true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.6
  * JD-Core Version:    0.7.0.1
  */

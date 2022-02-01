@@ -1,74 +1,51 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.Map;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class gxv
-  extends BizTroopObserver
+public final class gxv
+  implements Runnable
 {
-  static
+  public void run()
   {
-    if (!TroopFileManager.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public gxv(TroopFileManager paramTroopFileManager) {}
-  
-  protected void a(Object arg1)
-  {
-    boolean bool = true;
-    if ((??? == null) || (!(??? instanceof TroopFileStatusInfo))) {}
-    TroopFileStatusInfo localTroopFileStatusInfo1;
+    File[] arrayOfFile;
     do
     {
-      return;
-      localTroopFileStatusInfo1 = (TroopFileStatusInfo)???;
-    } while (localTroopFileStatusInfo1.jdField_a_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_Long);
-    if (localTroopFileStatusInfo1.b == 12)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.b(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
-      return;
-    }
-    TroopFileInfo localTroopFileInfo;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager)
-    {
-      localTroopFileInfo = (TroopFileInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.jdField_b_of_type_JavaUtilMap.get(localTroopFileStatusInfo1.jdField_a_of_type_JavaUtilUUID);
-      if ((!jdField_a_of_type_Boolean) && (localTroopFileInfo == null)) {
-        throw new AssertionError();
-      }
-    }
-    if (localTroopFileInfo == null) {
-      return;
-    }
-    int i = localTroopFileInfo.g;
-    if (localTroopFileInfo.jdField_a_of_type_Boolean) {
-      if (localTroopFileStatusInfo2.b != 11) {
-        break label271;
-      }
-    }
-    for (;;)
-    {
-      for (localTroopFileInfo.jdField_a_of_type_Boolean = bool;; localTroopFileInfo.jdField_a_of_type_Boolean = true) {
-        do
-        {
-          if ((localTroopFileInfo.b == null) && (localTroopFileStatusInfo2.d != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c.put(localTroopFileStatusInfo2.d, localTroopFileInfo);
-          }
-          localTroopFileInfo.a(localTroopFileStatusInfo2, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a);
-          if ((localTroopFileStatusInfo2.b == 6) && (i != 6)) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.a(localTroopFileStatusInfo2.d);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager.c(localTroopFileInfo);
+      try
+      {
+        Thread.sleep(3000L);
+        File localFile = new File(AppConstants.av);
+        if (!localFile.isDirectory()) {
           return;
-        } while ((localTroopFileStatusInfo2.b != 11) || (localTroopFileInfo.g == 11));
+        }
       }
-      label271:
-      bool = false;
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        return;
+      }
+      arrayOfFile = localInterruptedException.listFiles(new gxw(this));
+    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
+    Object localObject = new ArrayList(arrayOfFile.length);
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
+      i += 1;
+    }
+    Collections.sort((List)localObject);
+    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
+    j = arrayOfFile.length;
+    i = 0;
+    while (i < j)
+    {
+      localObject = arrayOfFile[i];
+      if (((File)localObject).lastModified() < l) {
+        ((File)localObject).deleteOnExit();
+      }
+      i += 1;
     }
   }
 }

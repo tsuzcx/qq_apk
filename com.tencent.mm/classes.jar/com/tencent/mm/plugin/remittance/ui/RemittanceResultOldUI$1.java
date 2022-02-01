@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.remittance.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class RemittanceResultOldUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class RemittanceResultOldUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45145);
-    RemittanceResultOldUI.a(this.qrw);
-    AppMethodBeat.o(45145);
+    AppMethodBeat.i(68304);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/remittance/ui/RemittanceResultOldUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    RemittanceResultOldUI.a(this.Ota);
+    a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceResultOldUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(68304);
   }
 }
 

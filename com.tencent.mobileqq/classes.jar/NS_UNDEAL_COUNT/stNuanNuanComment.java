@@ -13,10 +13,10 @@ public final class stNuanNuanComment
   static ArrayList<String> cache_vcFirstComments = new ArrayList();
   static ArrayList<String> cache_vcOtherComments;
   public int iPageCount = 5;
-  public int iStatus;
-  public ArrayList<OfficialComment> vcComments;
-  public ArrayList<String> vcFirstComments;
-  public ArrayList<String> vcOtherComments;
+  public int iStatus = 0;
+  public ArrayList<OfficialComment> vcComments = null;
+  public ArrayList<String> vcFirstComments = null;
+  public ArrayList<String> vcOtherComments = null;
   
   static
   {
@@ -52,20 +52,23 @@ public final class stNuanNuanComment
   {
     paramJceOutputStream.write(this.iStatus, 0);
     paramJceOutputStream.write(this.iPageCount, 1);
-    if (this.vcFirstComments != null) {
-      paramJceOutputStream.write(this.vcFirstComments, 2);
+    ArrayList localArrayList = this.vcFirstComments;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.vcOtherComments != null) {
-      paramJceOutputStream.write(this.vcOtherComments, 3);
+    localArrayList = this.vcOtherComments;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.vcComments != null) {
-      paramJceOutputStream.write(this.vcComments, 4);
+    localArrayList = this.vcComments;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.stNuanNuanComment
  * JD-Core Version:    0.7.0.1
  */

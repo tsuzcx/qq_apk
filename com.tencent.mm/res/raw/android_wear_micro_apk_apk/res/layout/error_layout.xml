@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/grey" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/ic_full_sad" android:scaleType="center" android:layout_weight="0.6" />
+    <TextView android:textAppearance="@style/TextAppearance.Wearable.Medium" android:textColor="@color/primary_text_dark" android:gravity="center|top" android:layout_gravity="center" android:id="@id/message" android:layout_width="140.0dip" android:layout_height="0.0dip" android:maxWidth="140.0dip" android:layout_weight="0.4" android:fontFamily="sans-serif-condensed-light" />
+</LinearLayout>

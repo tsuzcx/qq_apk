@@ -10,10 +10,10 @@ public final class RecommEncounterInfo
 {
   static ArrayList<RespEncounterInfo> cache_vEncounterInfos = new ArrayList();
   public String icon_url = "";
-  public int postion;
-  public int show_num;
+  public int postion = 0;
+  public int show_num = 0;
   public String title = "";
-  public ArrayList<RespEncounterInfo> vEncounterInfos;
+  public ArrayList<RespEncounterInfo> vEncounterInfos = null;
   
   static
   {
@@ -47,14 +47,15 @@ public final class RecommEncounterInfo
     paramJceOutputStream.write(this.title, 1);
     paramJceOutputStream.write(this.postion, 2);
     paramJceOutputStream.write(this.show_num, 3);
-    if (this.vEncounterInfos != null) {
-      paramJceOutputStream.write(this.vEncounterInfos, 4);
+    ArrayList localArrayList = this.vEncounterInfos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RecommEncounterInfo
  * JD-Core Version:    0.7.0.1
  */

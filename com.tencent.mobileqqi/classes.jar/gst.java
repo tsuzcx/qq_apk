@@ -3,11 +3,11 @@ import com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity;
 class gst
   implements Runnable
 {
-  gst(gss paramgss) {}
+  gst(gsr paramgsr) {}
   
   public void run()
   {
-    this.a.a.a(0);
+    this.a.a.a(1);
   }
 }
 

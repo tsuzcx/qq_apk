@@ -27,13 +27,17 @@ public class ConchPushInfo
     long l1 = paramParcel.readLong();
     long l2 = paramParcel.readLong();
     int i = paramParcel.readInt();
-    byte[] arrayOfByte = null;
     if (i > 0)
     {
-      arrayOfByte = new byte[i];
+      byte[] arrayOfByte = new byte[i];
       paramParcel.readByteArray(arrayOfByte);
+      paramParcel = arrayOfByte;
     }
-    return new ConchPushInfo(l1, l2, a(arrayOfByte));
+    else
+    {
+      paramParcel = null;
+    }
+    return new ConchPushInfo(l1, l2, a(paramParcel));
   }
   
   public static ConchPushInfo a(String paramString)
@@ -52,10 +56,10 @@ public class ConchPushInfo
   
   private static c a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
+      return (c)df.a(paramArrayOfByte, new c(), false);
     }
-    return (c)df.a(paramArrayOfByte, new c(), false);
+    return null;
   }
   
   public static String a(ConchPushInfo paramConchPushInfo)
@@ -97,7 +101,7 @@ public class ConchPushInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.ConchPushInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -21,25 +21,25 @@ class DurationUnitKt__DurationUnitKt
     {
     default: 
       throw new NoWhenBranchMatchedException();
-    case 1: 
-      return "ns";
-    case 2: 
-      return "us";
-    case 3: 
-      return "ms";
-    case 4: 
-      return "s";
-    case 5: 
-      return "m";
+    case 7: 
+      return "d";
     case 6: 
       return "h";
+    case 5: 
+      return "m";
+    case 4: 
+      return "s";
+    case 3: 
+      return "ms";
+    case 2: 
+      return "us";
     }
-    return "d";
+    return "ns";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.time.DurationUnitKt__DurationUnitKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,36 @@
 package com.tencent.mm.aw;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.du;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.LinkedList;
 
-public final class g
-  extends f
+public class g
 {
-  public static e a(j.b paramb, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static f a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
-    AppMethodBeat.i(108011);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(108011);
-      return null;
-    }
-    e locale = new e();
-    locale.fKh = 0;
-    locale.fKj = paramString1;
-    locale.fKk = 0.0F;
-    locale.fKn = "";
-    locale.fKo = paramString2;
-    locale.fKt = paramString4;
-    locale.fKi = 1;
-    locale.fKs = null;
-    locale.fKl = paramb.title;
-    locale.fKm = paramb.description;
-    locale.fKr = paramb.url;
-    if (!bo.isNullOrNil(paramb.fgV)) {}
-    for (paramString1 = paramb.fgV;; paramString1 = paramb.fgv)
-    {
-      locale.fKq = paramString1;
-      locale.fKp = paramb.fgU;
-      locale.fKw = paramb.appId;
-      locale.fKu = paramString3;
-      AppMethodBeat.o(108011);
-      return locale;
-    }
-  }
-  
-  public static e a(String paramString, TimeLineObject paramTimeLineObject, int paramInt)
-  {
-    String str = null;
-    AppMethodBeat.i(108010);
-    if ((paramTimeLineObject == null) || (paramTimeLineObject.xTS == null) || (paramTimeLineObject.xTS.wOa == null) || (paramTimeLineObject.xTS.wOa.size() <= 0))
-    {
-      AppMethodBeat.o(108010);
-      return null;
-    }
-    bcs localbcs = (bcs)paramTimeLineObject.xTS.wOa.get(0);
-    if (localbcs == null)
-    {
-      AppMethodBeat.o(108010);
-      return null;
-    }
-    e locale = new e();
-    locale.fKh = paramInt;
-    locale.fKj = paramTimeLineObject.Id;
-    locale.fKk = 0.0F;
-    locale.fKn = "";
-    locale.fKo = localbcs.xrS;
-    locale.fKt = null;
-    locale.fKi = 1;
-    locale.fKs = null;
-    locale.fKl = localbcs.Title;
-    locale.fKm = localbcs.Desc;
-    if (paramTimeLineObject.xTS != null) {
-      str = paramTimeLineObject.xTS.Url;
-    }
-    locale.fKr = str;
-    locale.fKq = localbcs.xrW;
-    locale.fKp = localbcs.Url;
-    locale.fKx = localbcs.xrT;
-    locale.fKz = localbcs.Id;
-    locale.fKu = paramString;
-    locale.fKw = paramTimeLineObject.xTR.Id;
-    locale.fKD = paramTimeLineObject.jJA;
-    AppMethodBeat.o(108010);
-    return locale;
+    AppMethodBeat.i(137009);
+    f localf = new f();
+    localf.oOt = paramInt;
+    localf.oOA = paramString1;
+    localf.oOx = paramString2;
+    localf.oOy = paramString3;
+    localf.oOD = paramString4;
+    localf.oOC = paramString5;
+    localf.oOB = paramString6;
+    localf.oOG = paramString8;
+    localf.oOI = paramString11;
+    localf.oOF = paramString9;
+    localf.oOv = paramString7;
+    localf.oOw = 0.0F;
+    localf.oOz = paramString10;
+    localf.oOu = 1;
+    localf.oOE = null;
+    localf.oOL = paramString7;
+    AppMethodBeat.o(137009);
+    return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aw.g
  * JD-Core Version:    0.7.0.1
  */

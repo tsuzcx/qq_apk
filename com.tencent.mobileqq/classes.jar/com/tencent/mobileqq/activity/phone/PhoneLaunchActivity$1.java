@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.activity.phone;
 
-import aine;
 import android.widget.Button;
-import bdin;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class PhoneLaunchActivity$1
+class PhoneLaunchActivity$1
   implements Runnable
 {
   PhoneLaunchActivity$1(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
   public void run()
   {
-    if (!bdin.d(this.this$0))
+    if (!NetworkUtil.isNetSupport(this.this$0))
     {
-      this.this$0.b(2131694831);
+      this.this$0.showToast(2131892157);
       PhoneLaunchActivity.a(this.this$0).setEnabled(true);
       return;
     }
     if (this.this$0.a == null)
     {
-      this.this$0.a = new aine(this);
+      this.this$0.a = new PhoneLaunchActivity.1.1(this);
       this.this$0.app.registObserver(this.this$0.a);
     }
-    this.this$0.app.a(new PhoneLaunchActivity.1.2(this));
-    this.this$0.a(2131719785, 1000L, true);
+    this.this$0.app.execute(new PhoneLaunchActivity.1.2(this));
+    this.this$0.showProgressDialog(2131916272, 1000L, true);
   }
 }
 

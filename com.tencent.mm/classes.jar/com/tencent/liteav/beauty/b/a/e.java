@@ -1,9 +1,8 @@
 package com.tencent.liteav.beauty.b.a;
 
 import android.opengl.GLES20;
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.liteav.beauty.b.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -26,16 +25,16 @@ public class e
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(66962);
+    AppMethodBeat.i(14994);
     this.z = paramFloat;
     TXCLog.i(this.A, "setBeautyLevel ".concat(String.valueOf(paramFloat)));
     a(this.t, paramFloat);
-    AppMethodBeat.o(66962);
+    AppMethodBeat.o(14994);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66964);
+    AppMethodBeat.i(14996);
     super.a(paramInt1, paramInt2);
     if (paramInt1 > paramInt2) {
       if (paramInt2 < 540) {
@@ -47,7 +46,7 @@ public class e
       TXCLog.i(this.A, "m_textureRation " + this.y);
       a(this.r, this.y / paramInt1);
       a(this.s, this.y / paramInt2);
-      AppMethodBeat.o(66964);
+      AppMethodBeat.o(14996);
       return;
       this.y = 4.0F;
       continue;
@@ -61,23 +60,21 @@ public class e
   
   public boolean a()
   {
-    AppMethodBeat.i(66960);
-    if ((Build.BRAND.equals("samsung")) && (Build.MODEL.equals("GT-I9500")) && (Build.VERSION.RELEASE.equals("4.3")))
+    AppMethodBeat.i(14992);
+    if ((TXCBuild.Brand().equals("samsung")) && (TXCBuild.Model().equals("GT-I9500")) && (TXCBuild.Version().equals("4.3")))
     {
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(15);
       if ((this.a == 0) || (!b())) {
-        break label101;
+        break label95;
       }
     }
-    label101:
+    label95:
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(66960);
+      AppMethodBeat.o(14992);
       return bool;
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(5);
       break;
     }
@@ -85,25 +82,25 @@ public class e
   
   public boolean b()
   {
-    AppMethodBeat.i(66961);
+    AppMethodBeat.i(14993);
     super.b();
-    q();
-    AppMethodBeat.o(66961);
+    r();
+    AppMethodBeat.o(14993);
     return true;
   }
   
-  public void q()
+  public void r()
   {
-    AppMethodBeat.i(66963);
-    this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    this.t = GLES20.glGetUniformLocation(p(), "smoothDegree");
-    AppMethodBeat.o(66963);
+    AppMethodBeat.i(229770);
+    this.r = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    this.t = GLES20.glGetUniformLocation(q(), "smoothDegree");
+    AppMethodBeat.o(229770);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.e
  * JD-Core Version:    0.7.0.1
  */

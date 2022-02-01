@@ -7,15 +7,15 @@ import com.qq.taf.jce.JceStruct;
 public final class custom_list_switch_set_req
   extends JceStruct
 {
-  public int iAvatar;
-  public int iCover;
-  public int iCustomNavi;
-  public int iCustomVip;
-  public int iFacade;
-  public int iFeedSkin;
-  public int iFloat;
-  public int iSetItemBits;
-  public int iVisitorSkin;
+  public int iAvatar = 0;
+  public int iCover = 0;
+  public int iCustomNavi = 0;
+  public int iCustomVip = 0;
+  public int iFacade = 0;
+  public int iFeedSkin = 0;
+  public int iFloat = 0;
+  public int iSetItemBits = 0;
+  public int iVisitorSkin = 0;
   public String strTraceInfo = "";
   
   public custom_list_switch_set_req() {}
@@ -56,8 +56,9 @@ public final class custom_list_switch_set_req
     paramJceOutputStream.write(this.iAvatar, 3);
     paramJceOutputStream.write(this.iFloat, 4);
     paramJceOutputStream.write(this.iCover, 5);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 6);
+    String str = this.strTraceInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.iVisitorSkin, 7);
     paramJceOutputStream.write(this.iCustomVip, 8);
@@ -66,7 +67,7 @@ public final class custom_list_switch_set_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.custom_list_switch_set_req
  * JD-Core Version:    0.7.0.1
  */

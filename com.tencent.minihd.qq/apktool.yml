@@ -1,0 +1,116 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: QQ-HD-5.9.3-376-3944.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- png
+- jpg
+- res/drawable-hdpi/f000.gif
+- res/drawable-hdpi/f001.gif
+- res/drawable-hdpi/f002.gif
+- res/drawable-hdpi/f003.gif
+- res/drawable-hdpi/f004.gif
+- res/drawable-hdpi/f005.gif
+- res/drawable-hdpi/f006.gif
+- res/drawable-hdpi/f009.gif
+- res/drawable-hdpi/f010.gif
+- res/drawable-hdpi/f011.gif
+- res/drawable-hdpi/f012.gif
+- res/drawable-hdpi/f013.gif
+- res/drawable-hdpi/f014.gif
+- res/drawable-hdpi/f015.gif
+- res/drawable-hdpi/f017.gif
+- res/drawable-hdpi/f018.gif
+- res/drawable-hdpi/f019.gif
+- res/drawable-hdpi/f020.gif
+- res/drawable-hdpi/f021.gif
+- res/drawable-hdpi/f022.gif
+- res/drawable-hdpi/f023.gif
+- res/drawable-hdpi/f024.gif
+- res/drawable-hdpi/f025.gif
+- res/drawable-hdpi/f026.gif
+- res/drawable-hdpi/f027.gif
+- res/drawable-hdpi/f029.gif
+- res/drawable-hdpi/f030.gif
+- res/drawable-hdpi/f031.gif
+- res/drawable-hdpi/f033.gif
+- res/drawable-hdpi/f034.gif
+- res/drawable-hdpi/f035.gif
+- res/drawable-hdpi/f036.gif
+- res/drawable-hdpi/f037.gif
+- res/drawable-hdpi/f038.gif
+- res/drawable-hdpi/f040.gif
+- res/drawable-hdpi/f041.gif
+- res/drawable-hdpi/f042.gif
+- res/drawable-hdpi/f043.gif
+- res/drawable-hdpi/f044.gif
+- res/drawable-hdpi/f045.gif
+- res/drawable-hdpi/f046.gif
+- res/drawable-hdpi/f048.gif
+- res/drawable-hdpi/f049.gif
+- res/drawable-hdpi/f050.gif
+- res/drawable-hdpi/f051.gif
+- res/drawable-hdpi/f052.gif
+- res/drawable-hdpi/f053.gif
+- res/drawable-hdpi/f054.gif
+- res/drawable-hdpi/f055.gif
+- res/drawable-hdpi/f056.gif
+- res/drawable-hdpi/f059.gif
+- res/drawable-hdpi/f061.gif
+- res/drawable-hdpi/f062.gif
+- res/drawable-hdpi/f063.gif
+- res/drawable-hdpi/f065.gif
+- res/drawable-hdpi/f066.gif
+- res/drawable-hdpi/f070.gif
+- res/drawable-hdpi/f072.gif
+- res/drawable-hdpi/f073.gif
+- res/drawable-hdpi/f074.gif
+- res/drawable-hdpi/f077.gif
+- res/drawable-hdpi/f079.gif
+- res/drawable-hdpi/f081.gif
+- res/drawable-hdpi/f082.gif
+- res/drawable-hdpi/f083.gif
+- res/drawable-hdpi/f084.gif
+- res/drawable-hdpi/f085.gif
+- res/drawable-hdpi/f086.gif
+- res/drawable-hdpi/f087.gif
+- res/drawable-hdpi/f088.gif
+- res/drawable-hdpi/f089.gif
+- res/drawable-hdpi/f090.gif
+- res/drawable-hdpi/f091.gif
+- res/drawable-hdpi/f092.gif
+- res/drawable-hdpi/f093.gif
+- res/drawable-hdpi/f094.gif
+- res/drawable-hdpi/f095.gif
+- res/drawable-hdpi/f096.gif
+- res/drawable-hdpi/f097.gif
+- res/drawable-hdpi/f098.gif
+- res/drawable-hdpi/f099.gif
+- res/drawable-hdpi/f100.gif
+- res/drawable-hdpi/f101.gif
+- res/drawable-hdpi/f102.gif
+- res/drawable-hdpi/f103.gif
+- res/drawable-hdpi/f104.gif
+- res/drawable-hdpi/f105.gif
+- res/drawable-hdpi/f106.gif
+- mp3
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '15'
+  targetSdkVersion: '26'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  BeaconVersion.txt: '8'
+  com/qq/jce/wup/wup.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '376'
+  versionName: 5.9.3

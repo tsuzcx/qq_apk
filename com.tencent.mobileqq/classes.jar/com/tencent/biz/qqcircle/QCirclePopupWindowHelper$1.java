@@ -3,24 +3,27 @@ package com.tencent.biz.qqcircle;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import tpz;
-import tqt;
 
-public class QCirclePopupWindowHelper$1
+class QCirclePopupWindowHelper$1
   implements Runnable
 {
-  public QCirclePopupWindowHelper$1(tqt paramtqt, Context paramContext, View paramView) {}
+  QCirclePopupWindowHelper$1(QCirclePopupWindowHelper paramQCirclePopupWindowHelper, Context paramContext, View paramView) {}
   
   public void run()
   {
-    if ((tpz.a().c()) && (this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698309)))) {
-      tpz.a().g();
+    if (QCirclePluginConfig.a().n())
+    {
+      QCirclePopupWindowHelper localQCirclePopupWindowHelper = this.this$0;
+      Context localContext = this.a;
+      if (localQCirclePopupWindowHelper.a(localContext, this.b, localContext.getResources().getString(2131895722))) {
+        QCirclePluginConfig.a().s();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.QCirclePopupWindowHelper.1
  * JD-Core Version:    0.7.0.1
  */

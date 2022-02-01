@@ -4,14 +4,15 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class session_report
   extends JceStruct
 {
   static ArrayList<feed_report_info> cache_vecFeedReportInfo = new ArrayList();
   public String strSession = "";
-  public int uReqId;
-  public ArrayList<feed_report_info> vecFeedReportInfo;
+  public int uReqId = 0;
+  public ArrayList<feed_report_info> vecFeedReportInfo = null;
   
   static
   {
@@ -38,17 +39,19 @@ public final class session_report
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uReqId, 0);
-    if (this.vecFeedReportInfo != null) {
-      paramJceOutputStream.write(this.vecFeedReportInfo, 1);
+    Object localObject = this.vecFeedReportInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.strSession != null) {
-      paramJceOutputStream.write(this.strSession, 2);
+    localObject = this.strSession;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.session_report
  * JD-Core Version:    0.7.0.1
  */

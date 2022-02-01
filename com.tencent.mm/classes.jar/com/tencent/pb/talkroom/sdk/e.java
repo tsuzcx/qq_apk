@@ -2,37 +2,39 @@ package com.tencent.pb.talkroom.sdk;
 
 public abstract interface e
 {
-  public abstract int Lo();
+  public abstract boolean O(int paramInt, String paramString1, String paramString2);
   
   public abstract int a(int paramInt1, int paramInt2, b paramb);
   
   public abstract int a(int paramInt1, int paramInt2, c paramc);
   
-  public abstract boolean bSJ();
+  public abstract int aOK();
   
-  public abstract int bSK();
+  public abstract boolean e(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract boolean bSL();
+  public abstract int gfA();
   
-  public abstract boolean bSM();
+  public abstract int gfB();
   
-  public abstract int bSN();
+  public abstract int gfC();
   
-  public abstract int bSO();
+  public abstract boolean gfu();
   
-  public abstract int bSP();
+  public abstract int gfv();
   
-  public abstract int bSQ();
+  public abstract int gfw();
   
-  public abstract boolean d(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  public abstract boolean gfx();
   
-  public abstract boolean jB(boolean paramBoolean);
+  public abstract boolean gfy();
   
-  public abstract boolean y(int paramInt, String paramString1, String paramString2);
+  public abstract int gfz();
+  
+  public abstract boolean yT(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.e
  * JD-Core Version:    0.7.0.1
  */

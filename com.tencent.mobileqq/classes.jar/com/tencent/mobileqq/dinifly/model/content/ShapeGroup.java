@@ -43,7 +43,13 @@ public class ShapeGroup
   
   public String toString()
   {
-    return "ShapeGroup{name='" + this.name + "' Shapes: " + Arrays.toString(this.items.toArray()) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapeGroup{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("' Shapes: ");
+    localStringBuilder.append(Arrays.toString(this.items.toArray()));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ahuf;
-import ahun;
 import android.os.Message;
-import bhtd;
+import com.tencent.util.WeakReferenceHandler;
 import java.util.List;
 
-public class MayKnowPersonEntryController$1
+class MayKnowPersonEntryController$1
   implements Runnable
 {
-  public MayKnowPersonEntryController$1(ahun paramahun) {}
+  MayKnowPersonEntryController$1(MayKnowPersonEntryController paramMayKnowPersonEntryController) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Bhtd.removeMessages(2);
-    if (this.this$0.jdField_a_of_type_Ahuf != null)
+    this.this$0.m.removeMessages(2);
+    if (this.this$0.j != null)
     {
-      List localList = this.this$0.jdField_a_of_type_Ahuf.b();
-      this.this$0.jdField_a_of_type_Bhtd.removeMessages(1);
-      Message.obtain(this.this$0.jdField_a_of_type_Bhtd, 1, 0, 0, localList).sendToTarget();
+      List localList = this.this$0.j.f();
+      this.this$0.m.removeMessages(1);
+      Message.obtain(this.this$0.m, 1, 0, 0, localList).sendToTarget();
     }
   }
 }

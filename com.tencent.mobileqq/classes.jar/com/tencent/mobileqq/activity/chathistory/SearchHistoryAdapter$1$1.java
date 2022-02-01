@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import ahea;
-
 class SearchHistoryAdapter$1$1
   implements Runnable
 {
@@ -9,8 +7,8 @@ class SearchHistoryAdapter$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySearchHistoryAdapter$1.this$0.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistorySearchHistoryAdapter$1.this$0.notifyDataSetChanged();
+    this.b.this$0.c = this.a;
+    this.b.this$0.notifyDataSetChanged();
   }
 }
 

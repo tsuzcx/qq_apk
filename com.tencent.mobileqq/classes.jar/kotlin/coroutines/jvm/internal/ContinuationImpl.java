@@ -19,7 +19,10 @@ public abstract class ContinuationImpl
   private final CoroutineContext _context;
   private transient Continuation<Object> intercepted;
   
-  public ContinuationImpl(@Nullable Continuation<Object> paramContinuation) {}
+  public ContinuationImpl(@Nullable Continuation<Object> paramContinuation)
+  {
+    this(paramContinuation, localCoroutineContext);
+  }
   
   public ContinuationImpl(@Nullable Continuation<Object> paramContinuation, @Nullable CoroutineContext paramCoroutineContext)
   {
@@ -48,14 +51,14 @@ public abstract class ContinuationImpl
     if (localObject != null)
     {
       localObject = ((ContinuationInterceptor)localObject).interceptContinuation((Continuation)this);
-      if (localObject == null) {}
+      if (localObject != null) {}
     }
-    for (;;)
+    else
     {
-      this.intercepted = ((Continuation)localObject);
-      return localObject;
       localObject = (Continuation)this;
     }
+    this.intercepted = ((Continuation)localObject);
+    return localObject;
   }
   
   protected void releaseIntercepted()
@@ -74,7 +77,7 @@ public abstract class ContinuationImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.ContinuationImpl
  * JD-Core Version:    0.7.0.1
  */

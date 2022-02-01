@@ -1,77 +1,84 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.Context;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.account.friend.a.ao;
-import com.tencent.mm.plugin.account.friend.a.ap;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.plugin.account.friend.model.ap;
+import com.tencent.mm.plugin.account.friend.model.aq;
+import com.tencent.mm.plugin.account.sdk.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.x;
 
 public abstract class d
-  extends p<ao>
-  implements com.tencent.mm.ah.d.a
+  extends x<ap>
+  implements AvatarStorage.a
 {
-  public d(Context paramContext, ao paramao)
+  public d(Context paramContext, ap paramap)
   {
-    super(paramContext, paramao);
+    super(paramContext, paramap);
   }
   
-  public static void xp(String paramString)
+  public static void Tj(String paramString)
   {
-    if (bo.isNullOrNil(paramString)) {
-      ab.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
+    if (Util.isNullOrNil(paramString)) {
+      Log.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
     }
     Object localObject;
     do
     {
       return;
-      localObject = ((ap)((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).xn(paramString);
+      localObject = ((aq)((a)h.az(a.class)).getQQListStg()).Tf(paramString);
       if (localObject != null)
       {
-        ((ao)localObject).gyF = 2;
-        ((ap)((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(((ao)localObject).gyE, (ao)localObject);
+        ((ap)localObject).pTV = 2;
+        ((aq)((a)h.az(a.class)).getQQListStg()).a(((ap)localObject).pTU, (ap)localObject);
       }
-      localObject = ((j)g.E(j.class)).YA().arw(paramString);
+      localObject = ((n)h.ax(n.class)).bzA().JE(paramString);
       if (localObject == null)
       {
-        ab.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
+        Log.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
         return;
       }
-      if (bo.isNullOrNil(((aq)localObject).field_username)) {
-        ((ad)localObject).setUsername(paramString);
+      if (Util.isNullOrNil(((az)localObject).field_username)) {
+        ((au)localObject).setUsername(paramString);
       }
-      if ((int)((com.tencent.mm.n.a)localObject).euF != 0) {
+      if ((int)((com.tencent.mm.contact.d)localObject).maN != 0) {
         break;
       }
-      ((j)g.E(j.class)).YA().Z((ad)localObject);
-    } while (bo.isNullOrNil(((aq)localObject).field_username));
-    for (paramString = ((j)g.E(j.class)).YA().arw(((aq)localObject).field_username);; paramString = (String)localObject)
+      ((n)h.ax(n.class)).bzA().aC((au)localObject);
+    } while (Util.isNullOrNil(((az)localObject).field_username));
+    for (paramString = ((n)h.ax(n.class)).bzA().JE(((az)localObject).field_username);; paramString = (String)localObject)
     {
-      if ((int)paramString.euF <= 0)
+      if ((int)paramString.maN <= 0)
       {
-        ab.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
+        Log.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
         return;
       }
-      t.q(paramString);
-      bv.abc().c(26, new Object[0]);
+      ab.I(paramString);
+      ch.bDg().f(26, new Object[0]);
       return;
     }
   }
   
-  public void a(d.a parama) {}
+  public void SM(String paramString) {}
   
-  public void wQ(String paramString) {}
+  public void a(a parama) {}
+  
+  public static abstract interface a
+  {
+    public abstract void yo(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.d
  * JD-Core Version:    0.7.0.1
  */

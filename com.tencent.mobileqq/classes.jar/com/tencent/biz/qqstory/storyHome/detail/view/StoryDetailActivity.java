@@ -1,37 +1,39 @@
 package com.tencent.biz.qqstory.storyHome.detail.view;
 
-import abvb;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class StoryDetailActivity
   extends QQStoryBaseActivity
 {
-  private int jdField_a_of_type_Int;
-  private StoryDetailFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  private String a;
+  private int b;
+  private boolean c;
   private int d;
+  private String e;
+  private int f;
+  private int g;
+  private StoryDetailFragment h;
   
   private void a()
   {
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("feed_id");
-    this.jdField_a_of_type_Int = localIntent.getIntExtra("source", 210);
-    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("should_up_keyboard", false);
-    this.jdField_b_of_type_Int = localIntent.getIntExtra("focus_comment_id", -1);
-    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("focus_video_id");
-    this.d = localIntent.getIntExtra("play_source", 0);
-    this.c = localIntent.getIntExtra("commentLike_category", 0);
+    this.a = localIntent.getStringExtra("feed_id");
+    this.b = localIntent.getIntExtra("source", 210);
+    this.c = localIntent.getBooleanExtra("should_up_keyboard", false);
+    this.d = localIntent.getIntExtra("focus_comment_id", -1);
+    this.e = localIntent.getStringExtra("focus_video_id");
+    this.g = localIntent.getIntExtra("play_source", 0);
+    this.f = localIntent.getIntExtra("commentLike_category", 0);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2)
@@ -59,10 +61,15 @@ public class StoryDetailActivity
     localIntent.putExtra("focus_video_id", paramString2);
     localIntent.putExtra("play_source", paramInt3);
     localIntent.putExtra("commentLike_category", paramInt4);
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("start detail activity failed because argument feedId is null. source is " + paramInt1);
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramActivity.startActivity(localIntent);
+      return;
     }
-    paramActivity.startActivity(localIntent);
+    paramActivity = new StringBuilder();
+    paramActivity.append("start detail activity failed because argument feedId is null. source is ");
+    paramActivity.append(paramInt1);
+    throw new IllegalArgumentException(paramActivity.toString());
   }
   
   public static void a(Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2)
@@ -70,40 +77,55 @@ public class StoryDetailActivity
     a(paramActivity, paramString1, paramInt1, paramBoolean, -1, paramString2, paramInt2, 0);
   }
   
-  private void d()
+  private void b()
   {
-    setContentView(2131561417);
-    this.leftView.setText(2131690623);
+    setContentView(2131628015);
+    this.leftView.setText(2131887625);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131364736, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    this.h = StoryDetailFragment.a(this.a, this.b, this.c, this.d, this.e, this.g, this.f);
+    localFragmentTransaction.replace(2131431280, this.h);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.h.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    d();
+    b();
     return true;
   }
   
-  public void doOnSaveInstanceState(Bundle paramBundle) {}
+  protected void doOnSaveInstanceState(Bundle paramBundle) {}
   
   public void finish()
   {
     super.finish();
-    abvb.a(this);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity
  * JD-Core Version:    0.7.0.1
  */

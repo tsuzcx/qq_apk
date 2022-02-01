@@ -25,13 +25,19 @@ public class TraeAudioManager$DeviceConfigManager$DeviceConfig
   
   public boolean init(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    while (TraeAudioManager.checkDevName(paramString) != true) {
-      return false;
+    if (paramString != null)
+    {
+      if (paramString.length() <= 0) {
+        return false;
+      }
+      if (TraeAudioManager.checkDevName(paramString) != true) {
+        return false;
+      }
+      this.deviceName = paramString;
+      this.priority = paramInt;
+      return true;
     }
-    this.deviceName = paramString;
-    this.priority = paramInt;
-    return true;
+    return false;
   }
   
   public void setVisible(boolean paramBoolean)
@@ -41,7 +47,7 @@ public class TraeAudioManager$DeviceConfigManager$DeviceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioManager.DeviceConfigManager.DeviceConfig
  * JD-Core Version:    0.7.0.1
  */

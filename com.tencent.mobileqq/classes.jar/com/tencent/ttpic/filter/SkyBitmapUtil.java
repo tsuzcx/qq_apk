@@ -56,26 +56,29 @@ public class SkyBitmapUtil
   
   public void decode(int paramInt, List<String> paramList)
   {
-    HashMap localHashMap = (HashMap)this.map.get(Integer.valueOf(paramInt));
-    if (localHashMap == null)
+    Object localObject2 = (HashMap)this.map.get(Integer.valueOf(paramInt));
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localHashMap = new HashMap(6);
-      this.map.put(Integer.valueOf(paramInt), localHashMap);
+      localObject1 = new HashMap(6);
+      this.map.put(Integer.valueOf(paramInt), localObject1);
       this.countQueue.add(Integer.valueOf(paramInt));
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      localObject2 = (String)paramList.next();
+      if (!((HashMap)localObject1).containsKey(localObject2))
       {
-        String str1 = (String)paramList.next();
-        if (!localHashMap.containsKey(str1))
-        {
-          String str2 = this.dir + paramInt + "_" + str1 + ".png";
-          this.mExecutor.execute(new SkyBitmapUtil.1(this, str2, str1, localHashMap));
-        }
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.dir);
+        ((StringBuilder)localObject3).append(paramInt);
+        ((StringBuilder)localObject3).append("_");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(".png");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        this.mExecutor.execute(new SkyBitmapUtil.1(this, (String)localObject3, (String)localObject2, (HashMap)localObject1));
       }
-      return;
     }
   }
   
@@ -89,7 +92,7 @@ public class SkyBitmapUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.SkyBitmapUtil
  * JD-Core Version:    0.7.0.1
  */

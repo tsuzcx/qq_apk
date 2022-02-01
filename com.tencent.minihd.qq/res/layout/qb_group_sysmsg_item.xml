@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qb_group_rlSystemMsg" android:layout_width="fill_parent" android:layout_height="77.0dip" android:layout_centerVertical="true">
+        <com.tencent.widget.FixSizeImageView android:id="@id/qb_group_ImageViewHeader" android:clickable="false" android:duplicateParentState="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/system_msg_face_bg_selector" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/qb_group_ImageViewHeader" android:layout_centerInParent="true">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/qb_group_result_btn">
+                <LinearLayout android:orientation="horizontal" android:id="@id/qb_group_horizontal_panel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
+                    <ImageView android:id="@id/qb_group_troop_authenticate_icon" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="3.0dip" android:contentDescription="@null" />
+                    <TextView android:ellipsize="end" android:id="@id/qb_group_first_line" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" style="@style/sys_msg_nickname_Font" />
+                </LinearLayout>
+                <TextView android:textSize="15.0sp" android:ellipsize="middle" android:id="@id/qb_group_second_line" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/qb_group_horizontal_panel" style="@style/B3_Font_white" />
+                <TextView android:ellipsize="end" android:id="@id/qb_group_third_line" android:visibility="gone" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/qb_group_second_line" style="@style/sys_msg_type_Font" />
+            </RelativeLayout>
+            <Button android:id="@id/qb_group_result_btn" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="消息反馈" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/SmallButtonWhite" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/troop_notification_common_used_shader" android:visibility="gone" android:clickable="true" android:layout_width="100.0dip" android:layout_height="fill_parent" android:layout_alignBottom="@id/qb_group_rlSystemMsg" android:layout_alignParentRight="true">
+        <Button android:textSize="14.0sp" android:textColor="@color/qb_troop_file_del_btn_color" android:id="@id/troop_notification_common_used_btn" android:background="@drawable/qb_group_file_del_btn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/delete_btn" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</RelativeLayout>

@@ -1,33 +1,12 @@
 package com.tencent.mm.plugin.story.model.f;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
-final class a$a
-  extends k
-  implements a<y>
-{
-  public static final a szd;
-  
-  static
-  {
-    AppMethodBeat.i(109348);
-    szd = new a();
-    AppMethodBeat.o(109348);
-  }
-  
-  a$a()
-  {
-    super(0);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/upload/PostTask$Companion;", "", "()V", "TAG", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class a$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.f.a.a
  * JD-Core Version:    0.7.0.1
  */

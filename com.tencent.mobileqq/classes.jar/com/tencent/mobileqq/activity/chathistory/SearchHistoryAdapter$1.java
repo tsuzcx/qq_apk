@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import ahea;
 import android.os.Handler;
-import bdhf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public class SearchHistoryAdapter$1
+class SearchHistoryAdapter$1
   implements Runnable
 {
   public void run()
   {
-    String[] arrayOfString = bdhf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (QLog.isColorLevel()) {
-      QLog.i("chatHistory.searchHistory", 2, "loadHistory, histories = " + arrayOfString);
+    String[] arrayOfString = HistoryChatMsgSearchKeyUtil.a(this.this$0.b.getCurrentAccountUin());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadHistory, histories = ");
+      localStringBuilder.append(arrayOfString);
+      QLog.i("chatHistory.searchHistory", 2, localStringBuilder.toString());
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(new SearchHistoryAdapter.1.1(this, arrayOfString));
+    this.this$0.a.post(new SearchHistoryAdapter.1.1(this, arrayOfString));
   }
 }
 

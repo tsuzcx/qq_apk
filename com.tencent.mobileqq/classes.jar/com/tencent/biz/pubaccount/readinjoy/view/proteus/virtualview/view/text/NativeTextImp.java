@@ -5,17 +5,26 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.text.style.MetricAffectingSpan;
 import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.RichTextUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.TruncateAttr;
 
 public class NativeTextImp
   extends TextView
   implements IView
 {
+  private static final String TAG = "NativeTextImp";
+  private boolean hyperLinkClick = false;
   protected int mBackgroundColor = 0;
   protected Paint mBackgroundPaint;
   protected int mBorderBottomLeftRadius = 0;
@@ -27,11 +36,47 @@ public class NativeTextImp
   protected int mBorderWidth = 0;
   protected Boolean mEnableMarquee;
   protected int mFlags = 1;
+  private TruncateAttr truncateAttr;
   
   public NativeTextImp(Context paramContext)
   {
     super(paramContext);
     getPaint().setAntiAlias(true);
+  }
+  
+  private void handleException(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    if ((paramCharSequence instanceof Spanned))
+    {
+      Object localObject1 = (Spanned)paramCharSequence;
+      paramCharSequence = new SpannableStringBuilder((CharSequence)localObject1);
+      int j = ((Spanned)localObject1).length();
+      int i = 0;
+      localObject1 = (MetricAffectingSpan[])((Spanned)localObject1).getSpans(0, j, MetricAffectingSpan.class);
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        j = localObject1.length;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          int k = paramCharSequence.getSpanStart(localObject2);
+          if (isNotSpace(paramCharSequence, k - 1)) {
+            paramCharSequence.insert(k, " ");
+          }
+          k = paramCharSequence.getSpanEnd(localObject2);
+          if (isNotSpace(paramCharSequence, k)) {
+            paramCharSequence.insert(k, " ");
+          }
+          i += 1;
+        }
+      }
+      super.setText(paramCharSequence, paramBufferType);
+    }
+  }
+  
+  private boolean isNotSpace(CharSequence paramCharSequence, int paramInt)
+  {
+    return (paramInt < 0) || (paramInt >= paramCharSequence.length()) || (paramCharSequence.charAt(paramInt) != ' ');
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -51,10 +96,16 @@ public class NativeTextImp
   
   public boolean isFocused()
   {
-    if (this.mEnableMarquee != null) {
-      return this.mEnableMarquee.booleanValue();
+    Boolean localBoolean = this.mEnableMarquee;
+    if (localBoolean != null) {
+      return localBoolean.booleanValue();
     }
     return super.isFocused();
+  }
+  
+  public boolean isHyperLinkClick()
+  {
+    return this.hyperLinkClick;
   }
   
   public void measureComponent(int paramInt1, int paramInt2)
@@ -101,19 +152,32 @@ public class NativeTextImp
   
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
-    if (this.mEnableMarquee != null)
+    Boolean localBoolean = this.mEnableMarquee;
+    if (localBoolean != null)
     {
-      super.onFocusChanged(this.mEnableMarquee.booleanValue(), paramInt, paramRect);
+      super.onFocusChanged(localBoolean.booleanValue(), paramInt, paramRect);
       return;
     }
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
   }
   
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    TruncateAttr localTruncateAttr = this.truncateAttr;
+    if (localTruncateAttr != null)
+    {
+      RichTextUtils.addEllipsis2Text(this, localTruncateAttr);
+      RichTextUtils.adjustImageSpan(this, this.truncateAttr);
+    }
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    if (this.mEnableMarquee != null)
+    Boolean localBoolean = this.mEnableMarquee;
+    if (localBoolean != null)
     {
-      super.onWindowFocusChanged(this.mEnableMarquee.booleanValue());
+      super.onWindowFocusChanged(localBoolean.booleanValue());
       return;
     }
     super.onWindowFocusChanged(paramBoolean);
@@ -167,6 +231,11 @@ public class NativeTextImp
     }
   }
   
+  public void setHyperLinkClick(boolean paramBoolean)
+  {
+    this.hyperLinkClick = paramBoolean;
+  }
+  
   public void setPaintFlags(int paramInt)
   {
     if (this.mFlags == paramInt) {
@@ -174,10 +243,32 @@ public class NativeTextImp
     }
     super.setPaintFlags(paramInt);
   }
+  
+  public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
+  {
+    try
+    {
+      super.setText(paramCharSequence, paramBufferType);
+      return;
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      handleException(paramCharSequence, paramBufferType);
+      paramCharSequence = new StringBuilder();
+      paramCharSequence.append("handleException error! msg=");
+      paramCharSequence.append(localIndexOutOfBoundsException);
+      LogUtil.QLog.e("NativeTextImp", 1, paramCharSequence.toString());
+    }
+  }
+  
+  public void setTruncateAttr(TruncateAttr paramTruncateAttr)
+  {
+    this.truncateAttr = paramTruncateAttr;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp
  * JD-Core Version:    0.7.0.1
  */

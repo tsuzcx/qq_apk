@@ -1,61 +1,78 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.aw;
-import com.tencent.mm.protocal.protobuf.bqp;
-import com.tencent.mm.protocal.protobuf.bqq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fingerprint.c.a;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.bi;
+import com.tencent.mm.protocal.protobuf.ekx;
+import com.tencent.mm.protocal.protobuf.eky;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class c
-  extends a<bqq>
+  extends z<eky>
 {
-  public c(long paramLong)
+  public c(long paramLong, eky parameky)
   {
-    AppMethodBeat.i(43094);
-    bqp localbqp = new bqp();
-    localbqp.xEF = ((int)paramLong);
-    localbqp.xEG = b.ank("all_type");
-    Object localObject = m.cTC();
+    AppMethodBeat.i(65989);
+    ekx localekx = new ekx();
+    localekx.abpI = ((int)paramLong);
+    localekx.abpJ = b.bsj("all_type");
+    Object localObject = k.iis();
     if (localObject != null)
     {
-      if (!bo.isNullOrNil(((aw)localObject).province)) {
-        localbqp.xEH = b.ank(((aw)localObject).province);
+      if (!Util.isNullOrNil(((bi)localObject).province)) {
+        localekx.abpK = b.bsj(((bi)localObject).province);
       }
-      if (!bo.isNullOrNil(((aw)localObject).city)) {
-        localbqp.xEI = b.ank(((aw)localObject).city);
+      if (!Util.isNullOrNil(((bi)localObject).city)) {
+        localekx.abpL = b.bsj(((bi)localObject).city);
       }
     }
-    localObject = (l)g.E(l.class);
-    localbqp.wLD = 0;
-    if (localObject != null) {}
-    for (localbqp.wLE = 1;; localbqp.wLE = 0)
+    localObject = (a)h.ax(a.class);
+    if ((localObject != null) && (((a)localObject).isRoot()))
     {
-      localbqp.xEJ = 1;
-      localbqp.timestamp = System.currentTimeMillis();
-      localObject = new b.a();
-      ((b.a)localObject).fsX = localbqp;
-      ((b.a)localObject).fsY = new bqq();
-      ((b.a)localObject).funcId = 2672;
-      ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
-      ((b.a)localObject).reqCmdId = 0;
-      ((b.a)localObject).respCmdId = 0;
-      this.rr = ((b.a)localObject).ado();
-      ab.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localbqp.wLD), Integer.valueOf(localbqp.wLE) });
-      AppMethodBeat.o(43094);
+      localekx.ZkA = 1;
+      if (localObject == null) {
+        break label311;
+      }
+    }
+    label311:
+    for (localekx.ZkB = 1;; localekx.ZkB = 0)
+    {
+      localekx.abpM = 1;
+      localekx.timestamp = System.currentTimeMillis();
+      if (parameky.BaseResponse == null)
+      {
+        parameky.BaseResponse = new kd();
+        parameky.BaseResponse.akjO = new etl().btH("");
+        parameky.BaseResponse.Idd = 0;
+      }
+      localekx.abpN = parameky;
+      parameky = new c.a();
+      parameky.otE = localekx;
+      parameky.otF = new eky();
+      parameky.funcId = 2672;
+      parameky.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
+      parameky.otG = 0;
+      parameky.respCmdId = 0;
+      c(parameky.bEF());
+      Log.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localekx.ZkA), Integer.valueOf(localekx.ZkB) });
+      AppMethodBeat.o(65989);
       return;
+      localekx.ZkA = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.c
  * JD-Core Version:    0.7.0.1
  */

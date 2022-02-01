@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.soter.b;
 
+import com.tencent.soter.a.b.b;
+import com.tencent.soter.a.b.c;
+
 public final class h
 {
-  a snO;
-  int snP = -3201;
+  a RZy;
+  int RZz = -3201;
   
   public h(a parama)
   {
-    this.snO = parama;
+    this.RZy = parama;
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bbd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" />
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/ca4" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_gravity="right" android:id="@id/ca5" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</android.support.design.widget.CoordinatorLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/h6e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dcz" />
+    <include android:id="@id/dcz" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_alignParentBottom="true" layout="@layout/aec" />
+    <ProgressBar android:id="@id/h6d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a74" />
+</RelativeLayout>

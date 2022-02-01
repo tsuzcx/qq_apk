@@ -13,22 +13,27 @@ public final class PBStringField
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof String)) {}
-    for (this.value = ((String)paramObject);; this.value = "")
-    {
-      setHasFlag(false);
-      return;
+    if ((paramObject instanceof String)) {
+      paramObject = (String)paramObject;
+    } else {
+      paramObject = "";
     }
+    this.value = paramObject;
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
   {
     if (has())
     {
-      if (this.value == null) {
-        throw new RuntimeException(this + " encounter string null, null for PBStringField is forbidden!");
+      Object localObject = this.value;
+      if (localObject != null) {
+        return CodedOutputStreamMicro.computeStringSize(paramInt, (String)localObject);
       }
-      return CodedOutputStreamMicro.computeStringSize(paramInt, this.value);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" encounter string null, null for PBStringField is forbidden!");
+      throw new RuntimeException(((StringBuilder)localObject).toString());
     }
     return 0;
   }
@@ -85,7 +90,7 @@ public final class PBStringField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBStringField
  * JD-Core Version:    0.7.0.1
  */

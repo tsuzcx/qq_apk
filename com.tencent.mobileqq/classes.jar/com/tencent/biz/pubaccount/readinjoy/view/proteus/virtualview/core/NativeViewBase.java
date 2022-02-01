@@ -18,18 +18,20 @@ public class NativeViewBase
   
   public int getComMeasuredHeight()
   {
-    if ((this.__mNative instanceof IView)) {
-      return ((IView)this.__mNative).getComMeasuredHeight();
+    View localView = this.__mNative;
+    if ((localView instanceof IView)) {
+      return ((IView)localView).getComMeasuredHeight();
     }
-    return this.__mNative.getMeasuredHeight();
+    return localView.getMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    if ((this.__mNative instanceof IView)) {
-      return ((IView)this.__mNative).getComMeasuredWidth();
+    View localView = this.__mNative;
+    if ((localView instanceof IView)) {
+      return ((IView)localView).getComMeasuredWidth();
     }
-    return this.__mNative.getMeasuredWidth();
+    return localView.getMeasuredWidth();
   }
   
   public View getNativeView()
@@ -39,15 +41,18 @@ public class NativeViewBase
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.__mNative instanceof IView)) {
-      ((IView)this.__mNative).onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    View localView = this.__mNative;
+    if ((localView instanceof IView)) {
+      ((IView)localView).onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.mAutoDimDirection <= 0) || ((this.__mNative instanceof IView))) {
-      ((IView)this.__mNative).onComMeasure(paramInt1, paramInt2);
+    int i = this.mAutoDimDirection;
+    View localView = this.__mNative;
+    if ((localView instanceof IView)) {
+      ((IView)localView).onComMeasure(paramInt1, paramInt2);
     }
   }
   
@@ -84,7 +89,7 @@ public class NativeViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.NativeViewBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.ttpic.util.youtu.animojisdk;
 
+import android.content.Context;
 import android.graphics.PointF;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.ttpic.baseutils.io.FileUtils;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class AnimojiSDK
 {
-  private static final String TAG = AnimojiSDK.class.getSimpleName();
+  private static final String TAG = "AnimojiSDK";
   private long nativeHandle = 0L;
   
   public static native boolean Face3dInit(String paramString);
@@ -91,24 +92,25 @@ public class AnimojiSDK
     int j;
     while (i < 17)
     {
-      j = localObject[(i * 2)];
-      int k = localObject[(i * 2 + 1)];
+      int k = i * 2;
+      j = localObject[k];
+      k = localObject[(k + 1)];
       paramList1.add(Float.valueOf((paramArrayOfFloat[j][0] + paramArrayOfFloat[k][0]) * 0.5F));
       paramList2.add(Float.valueOf((paramArrayOfFloat[j][1] + paramArrayOfFloat[k][1]) * 0.5F));
       i += 1;
     }
     localObject = new int[5];
-    Object tmp293_291 = localObject;
-    tmp293_291[0] = 19;
-    Object tmp298_293 = tmp293_291;
-    tmp298_293[1] = 26;
-    Object tmp303_298 = tmp298_293;
-    tmp303_298[2] = 25;
-    Object tmp308_303 = tmp303_298;
-    tmp308_303[3] = 24;
-    Object tmp313_308 = tmp308_303;
-    tmp313_308[4] = 23;
-    tmp313_308;
+    Object tmp295_293 = localObject;
+    tmp295_293[0] = 19;
+    Object tmp300_295 = tmp295_293;
+    tmp300_295[1] = 26;
+    Object tmp305_300 = tmp300_295;
+    tmp305_300[2] = 25;
+    Object tmp310_305 = tmp305_300;
+    tmp310_305[3] = 24;
+    Object tmp315_310 = tmp310_305;
+    tmp315_310[4] = 23;
+    tmp315_310;
     i = 0;
     while (i < 5)
     {
@@ -117,17 +119,17 @@ public class AnimojiSDK
       i += 1;
     }
     localObject = new int[5];
-    Object tmp382_380 = localObject;
-    tmp382_380[0] = 31;
-    Object tmp387_382 = tmp382_380;
-    tmp387_382[1] = 32;
-    Object tmp392_387 = tmp387_382;
-    tmp392_387[2] = 33;
-    Object tmp397_392 = tmp392_387;
-    tmp397_392[3] = 34;
-    Object tmp402_397 = tmp397_392;
-    tmp402_397[4] = 27;
-    tmp402_397;
+    Object tmp384_382 = localObject;
+    tmp384_382[0] = 31;
+    Object tmp389_384 = tmp384_382;
+    tmp389_384[1] = 32;
+    Object tmp394_389 = tmp389_384;
+    tmp394_389[2] = 33;
+    Object tmp399_394 = tmp394_389;
+    tmp399_394[3] = 34;
+    Object tmp404_399 = tmp399_394;
+    tmp404_399[4] = 27;
+    tmp404_399;
     i = 0;
     while (i < 5)
     {
@@ -144,8 +146,11 @@ public class AnimojiSDK
     i = 0;
     while (i < 4)
     {
-      paramList1.add(Float.valueOf(((PointF)localObject).x + (f1 - f2) / 3.0F * i));
-      paramList2.add(Float.valueOf(((PointF)localObject).y + (f3 - f4) / 3.0F * i));
+      float f5 = ((PointF)localObject).x;
+      float f6 = (f1 - f2) / 3.0F;
+      float f7 = i;
+      paramList1.add(Float.valueOf(f5 + f6 * f7));
+      paramList2.add(Float.valueOf(((PointF)localObject).y + (f3 - f4) / 3.0F * f7));
       i += 1;
     }
     i = 57;
@@ -179,18 +184,19 @@ public class AnimojiSDK
       paramList2.add(Float.valueOf(paramArrayOfFloat[j][1]));
       i += 1;
     }
+    i = 82;
     paramList1.add(Float.valueOf(((paramArrayOfFloat[82][0] + paramArrayOfFloat[74][0]) * 0.5F + paramArrayOfFloat[65][0]) * 0.5F));
     paramList2.add(Float.valueOf(((paramArrayOfFloat[82][1] + paramArrayOfFloat[74][1]) * 0.5F + paramArrayOfFloat[65][1]) * 0.5F));
-    i = 82;
     while (i >= 80)
     {
       paramList1.add(Float.valueOf(paramArrayOfFloat[i][0]));
       paramList2.add(Float.valueOf(paramArrayOfFloat[i][1]));
       i -= 1;
     }
-    paramList1.add(Float.valueOf(((paramArrayOfFloat[80][0] + paramArrayOfFloat[72][0]) * 0.5F + paramArrayOfFloat[66][0]) * 0.5F));
-    paramList2.add(Float.valueOf(((paramArrayOfFloat[80][1] + paramArrayOfFloat[72][1]) * 0.5F + paramArrayOfFloat[66][1]) * 0.5F));
+    f1 = paramArrayOfFloat[80][0];
     i = 72;
+    paramList1.add(Float.valueOf(((f1 + paramArrayOfFloat[72][0]) * 0.5F + paramArrayOfFloat[66][0]) * 0.5F));
+    paramList2.add(Float.valueOf(((paramArrayOfFloat[80][1] + paramArrayOfFloat[72][1]) * 0.5F + paramArrayOfFloat[66][1]) * 0.5F));
     while (i <= 74)
     {
       paramList1.add(Float.valueOf(paramArrayOfFloat[i][0]));
@@ -201,8 +207,8 @@ public class AnimojiSDK
   
   public static void copyCatMaterial()
   {
-    int j = 0;
     String[] arrayOfString = new String[14];
+    int j = 0;
     arrayOfString[0] = "animoji.scene";
     arrayOfString[1] = "biaozhun3.gpb";
     arrayOfString[2] = "biaozhun3.material";
@@ -226,8 +232,15 @@ public class AnimojiSDK
     }
     while (i < arrayOfString.length)
     {
-      localObject = "/sdcard/MaterialDebug/" + arrayOfString[i];
-      if (!FileUtils.copyAssets(AEModule.getContext(), "material_52_new_29exp/" + arrayOfString[i], (String)localObject)) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("/sdcard/MaterialDebug/");
+      ((StringBuilder)localObject).append(arrayOfString[i]);
+      localObject = ((StringBuilder)localObject).toString();
+      Context localContext = AEModule.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("material_52_new_29exp/");
+      localStringBuilder.append(arrayOfString[i]);
+      if (!FileUtils.copyAssets(localContext, localStringBuilder.toString(), (String)localObject)) {
         LogUtils.e(TAG, "copyMaterial failed!");
       }
       i += 1;
@@ -281,7 +294,7 @@ public class AnimojiSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.animojisdk.AnimojiSDK
  * JD-Core Version:    0.7.0.1
  */

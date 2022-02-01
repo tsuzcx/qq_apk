@@ -35,30 +35,37 @@ public class TVideoMgr
     if (!TextUtils.isEmpty(mStaGuid)) {
       return mStaGuid;
     }
-    Object localObject = TVKVcSystemInfo.getDeviceID(mAppContext) + TVKVcSystemInfo.getDeviceMacAddr(mAppContext);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    try
-    {
-      localObject = ((String)localObject).getBytes("UTF-8");
-      byte[] arrayOfByte = MessageDigest.getInstance("MD5").digest((byte[])localObject);
-      StringBuilder localStringBuilder = new StringBuilder();
-      int i = 0;
-      while (i < arrayOfByte.length)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(TVKVcSystemInfo.getDeviceID(mAppContext));
+    ((StringBuilder)localObject).append(TVKVcSystemInfo.getDeviceMacAddr(mAppContext));
+    localObject = ((StringBuilder)localObject).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
       {
-        String str = Integer.toHexString(arrayOfByte[i] & 0xFF);
-        localObject = str;
-        if (str.length() == 1) {
-          localObject = '0' + str;
+        localObject = ((String)localObject).getBytes("UTF-8");
+        byte[] arrayOfByte = MessageDigest.getInstance("MD5").digest((byte[])localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        int i = 0;
+        while (i < arrayOfByte.length)
+        {
+          String str = Integer.toHexString(arrayOfByte[i] & 0xFF);
+          localObject = str;
+          if (str.length() == 1)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append('0');
+            ((StringBuilder)localObject).append(str);
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          localStringBuilder.append(((String)localObject).toUpperCase());
+          i += 1;
         }
-        localStringBuilder.append(((String)localObject).toUpperCase());
-        i += 1;
+        mStaGuid = localStringBuilder.toString();
       }
-      mStaGuid = localStringBuilder.toString();
-    }
-    catch (Throwable localThrowable)
-    {
-      label149:
-      break label149;
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
     if (TextUtils.isEmpty(mStaGuid)) {
       mStaGuid = "wtfguidisemptyhehehe";
@@ -78,7 +85,8 @@ public class TVideoMgr
   
   public static String getVinfoSdtfrom(int paramInt)
   {
-    if ((mPlatformMap != null) && (mPlatformMap.indexOfKey(paramInt) > 0)) {
+    SparseArray localSparseArray = mPlatformMap;
+    if ((localSparseArray != null) && (localSparseArray.indexOfKey(paramInt) > 0)) {
       return ((TVKPlatformInfo)mPlatformMap.get(paramInt)).getSdtFrom();
     }
     return null;
@@ -94,17 +102,19 @@ public class TVideoMgr
   
   public static boolean registerTVideoPlatformInfo(TVKPlatformInfo paramTVKPlatformInfo)
   {
-    if (paramTVKPlatformInfo == null) {}
-    do
-    {
+    if (paramTVKPlatformInfo == null) {
       return false;
-      if (mPlatformMap == null) {
-        mPlatformMap = new SparseArray();
-      }
-    } while (mPlatformMap.indexOfKey(paramTVKPlatformInfo.getPlatform()) >= 0);
-    mPlatformMap.put(paramTVKPlatformInfo.getPlatform(), paramTVKPlatformInfo);
-    CKeyFacade.instance().addVsAppKey(mAppContext, paramTVKPlatformInfo.getAppKey());
-    return true;
+    }
+    if (mPlatformMap == null) {
+      mPlatformMap = new SparseArray();
+    }
+    if (mPlatformMap.indexOfKey(paramTVKPlatformInfo.getPlatform()) < 0)
+    {
+      mPlatformMap.put(paramTVKPlatformInfo.getPlatform(), paramTVKPlatformInfo);
+      CKeyFacade.instance().addVsAppKey(mAppContext, paramTVKPlatformInfo.getAppKey());
+      return true;
+    }
+    return false;
   }
   
   public static void setOnLogListener(TVideoMgr.OnTVideoLogListener paramOnTVideoLogListener)
@@ -112,35 +122,35 @@ public class TVideoMgr
     TVKLogUtil.setOnTVideoLogListener(paramOnTVideoLogListener);
   }
   
-  public void setUpc(String paramString)
+  public static void setUpc(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
       mFreeNetFlowRequestMap = null;
       mOriginalUpc = "";
-    }
-    do
-    {
       return;
-      mOriginalUpc = paramString;
-      paramString = paramString.split("&");
-    } while (paramString.length <= 0);
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if ((arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1]))) {
-        localHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
     }
-    mFreeNetFlowRequestMap = localHashMap;
+    mOriginalUpc = paramString;
+    paramString = paramString.split("&");
+    if (paramString.length > 0)
+    {
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      while (i < paramString.length)
+      {
+        String[] arrayOfString = paramString[i].split("=");
+        if ((arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1]))) {
+          localHashMap.put(arrayOfString[0], arrayOfString[1]);
+        }
+        i += 1;
+      }
+      mFreeNetFlowRequestMap = localHashMap;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.TVideoMgr
  * JD-Core Version:    0.7.0.1
  */

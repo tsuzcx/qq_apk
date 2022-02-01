@@ -1,14 +1,25 @@
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class gcs
   implements Runnable
 {
-  public gcs(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
+  public gcs(QQPlayerService paramQQPlayerService) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
+    if (QQPlayerService.g() == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.g()) + ",needRetryPlay:" + bool);
+      }
+      if ((bool) && (QQPlayerService.b() != null)) {
+        QQPlayerService.a(this.a, QQPlayerService.b().a);
+      }
+      return;
+    }
   }
 }
 

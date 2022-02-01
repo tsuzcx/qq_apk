@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import acef;
 import android.content.Intent;
-import bdjt;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.api.IArkThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 
-public class ArkFullScreenAppActivity$8$1
+class ArkFullScreenAppActivity$8$1
   implements Runnable
 {
-  public ArkFullScreenAppActivity$8$1(acef paramacef) {}
+  ArkFullScreenAppActivity$8$1(ArkFullScreenAppActivity.8 param8) {}
   
   public void run()
   {
-    Intent localIntent = this.a.a.a(ArkFullScreenAppActivity.a(this.a.a).a);
-    ArkAppCenter.a().postToMainThread(new ArkFullScreenAppActivity.8.1.1(this, localIntent));
+    Intent localIntent = this.a.b.a(ArkFullScreenAppActivity.b(this.a.b).g);
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkFullScreenAppActivity.8.1.1(this, localIntent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

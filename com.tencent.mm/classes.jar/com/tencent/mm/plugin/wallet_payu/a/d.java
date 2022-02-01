@@ -1,42 +1,33 @@
 package com.tencent.mm.plugin.wallet_payu.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.f;
-import com.tencent.mm.wallet_core.a;
+import com.tencent.mm.plugin.wallet_payu.pwd.a.g;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class d
-  implements at
+  implements be
 {
-  public String uCJ = null;
-  private int uCK = -1;
+  private String Wdv = null;
+  private int Wdw = -1;
   
   static
   {
-    AppMethodBeat.i(48414);
-    a.h("PayUOpenProcess", com.tencent.mm.plugin.wallet_payu.create.a.c.class);
-    a.h("PayUBindProcess", com.tencent.mm.plugin.wallet_payu.bind.model.c.class);
-    a.h("PayUForgotPwdProcess", f.class);
-    a.h("PayUModifyPasswordProcess", com.tencent.mm.plugin.wallet_payu.pwd.a.g.class);
-    a.h("PayURemittanceProcess", com.tencent.mm.plugin.wallet_payu.remittance.a.g.class);
-    a.h("PayUShowOrderProcess", com.tencent.mm.plugin.wallet_payu.order.a.d.class);
-    AppMethodBeat.o(48414);
-  }
-  
-  public static d cXq()
-  {
-    AppMethodBeat.i(48413);
-    d locald = (d)q.S(d.class);
-    AppMethodBeat.o(48413);
-    return locald;
+    AppMethodBeat.i(72055);
+    com.tencent.mm.wallet_core.a.n("PayUOpenProcess", com.tencent.mm.plugin.wallet_payu.create.a.c.class);
+    com.tencent.mm.wallet_core.a.n("PayUBindProcess", com.tencent.mm.plugin.wallet_payu.bind.model.c.class);
+    com.tencent.mm.wallet_core.a.n("PayUForgotPwdProcess", f.class);
+    com.tencent.mm.wallet_core.a.n("PayUModifyPasswordProcess", g.class);
+    com.tencent.mm.wallet_core.a.n("PayURemittanceProcess", com.tencent.mm.plugin.wallet_payu.remittance.a.a.class);
+    com.tencent.mm.wallet_core.a.n("PayUShowOrderProcess", com.tencent.mm.plugin.wallet_payu.order.a.d.class);
+    AppMethodBeat.o(72055);
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
@@ -49,7 +40,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.a.d
  * JD-Core Version:    0.7.0.1
  */

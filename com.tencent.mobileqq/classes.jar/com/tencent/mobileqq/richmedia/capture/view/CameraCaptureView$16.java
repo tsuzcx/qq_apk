@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.graphics.Bitmap;
-import axqt;
-import axqw;
-import bdhb;
-import bdhj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
 import java.io.File;
 import java.io.IOException;
 
@@ -16,30 +14,32 @@ class CameraCaptureView$16
   
   public void run()
   {
-    String str = this.this$0.a.b + "/" + System.currentTimeMillis() + ".jpg";
-    bdhb.c(str);
-    File localFile = new File(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.this$0.N.h);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(".jpg");
+    localObject = ((StringBuilder)localObject).toString();
+    FileUtils.createFileIfNotExits((String)localObject);
+    File localFile = new File((String)localObject);
     try
     {
-      bdhj.a(this.a, localFile);
-      bdhj.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
-      this.this$0.a(new axqw(0, 0, str, null, this.this$0.u));
-      this.a.recycle();
-      return;
+      ImageUtil.b(this.a, localFile);
+      ImageUtil.b(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+      this.this$0.a(new CameraCaptureView.PhotoCaptureResult(0, 0, (String)localObject, null, this.this$0.P));
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-        this.this$0.a(new axqw(0, -1, str, null, this.this$0.u));
-      }
+      localIOException.printStackTrace();
+      CameraCaptureView localCameraCaptureView = this.this$0;
+      localCameraCaptureView.a(new CameraCaptureView.PhotoCaptureResult(0, -1, (String)localObject, null, localCameraCaptureView.P));
     }
+    this.a.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.16
  * JD-Core Version:    0.7.0.1
  */

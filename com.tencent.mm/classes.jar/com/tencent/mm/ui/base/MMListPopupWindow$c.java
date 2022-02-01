@@ -10,23 +10,23 @@ final class MMListPopupWindow$c
   
   public final void onChanged()
   {
-    AppMethodBeat.i(112514);
-    if (this.zkQ.gMK.isShowing()) {
-      this.zkQ.show();
+    AppMethodBeat.i(159192);
+    if (this.adRR.qjH.isShowing()) {
+      this.adRR.show();
     }
-    AppMethodBeat.o(112514);
+    AppMethodBeat.o(159192);
   }
   
   public final void onInvalidated()
   {
-    AppMethodBeat.i(112515);
-    this.zkQ.dismiss();
-    AppMethodBeat.o(112515);
+    AppMethodBeat.i(159193);
+    this.adRR.dismiss();
+    AppMethodBeat.o(159193);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMListPopupWindow.c
  * JD-Core Version:    0.7.0.1
  */

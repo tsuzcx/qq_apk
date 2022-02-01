@@ -1,193 +1,154 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Environment;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.d;
-import com.tencent.token.utils.c;
-import com.tencent.token.utils.e;
-import com.tencent.token.utils.t;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.os.Build.VERSION;
+import android.view.MenuItem;
 
-public class fe
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public final class fe
 {
-  public static e a;
-  private static fe c = null;
-  protected c b;
-  private volatile boolean d = d.a;
-  private volatile boolean e = d.b;
-  private volatile boolean f = d.d;
-  private volatile boolean g = d.e;
+  static final c a = new b();
   
   static
   {
-    int i = t.a("debug.file.blockcount", 24);
-    long l = t.a("debug.file.keepperiod", 604800000L);
-    a = new e(b(), i, 262144, 8192, "Sec.File.Tracer", 10000L, 10, ".sec.log", l);
-  }
-  
-  public fe()
-  {
-    t.a(this);
-    this.b = new c(a);
-  }
-  
-  public static fe a()
-  {
-    if (c == null) {}
-    try
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      if (c == null) {
-        c = new fe();
-      }
-      return c;
-    }
-    finally {}
-  }
-  
-  public static void a(int paramInt)
-  {
-    int i;
-    if (paramInt <= 63)
-    {
-      i = paramInt;
-      if (paramInt >= 0) {}
-    }
-    else
-    {
-      i = d.h;
-    }
-    t.b("debug.file.tracelevel", i).commit();
-  }
-  
-  public static void a(File paramFile)
-  {
-    if ((paramFile == null) || (!paramFile.exists())) {}
-    for (;;)
-    {
+      a = new a();
       return;
-      if (paramFile.isFile())
-      {
-        paramFile.delete();
-        return;
-      }
-      paramFile = paramFile.listFiles();
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        a(paramFile[i]);
-        i += 1;
-      }
     }
   }
   
-  public static BufferedReader b(int paramInt)
+  public static MenuItem a(MenuItem paramMenuItem, fa paramfa)
   {
-    Object localObject = a.a(System.currentTimeMillis());
-    if ((localObject == null) || (!((File)localObject).isDirectory())) {
-      return null;
+    if ((paramMenuItem instanceof ef)) {
+      return ((ef)paramMenuItem).a(paramfa);
     }
-    localObject = a.b((File)localObject);
-    localObject = a.a((File[])localObject);
-    if ((paramInt >= 0) && (paramInt < localObject.length))
+    return paramMenuItem;
+  }
+  
+  public static void a(MenuItem paramMenuItem, char paramChar, int paramInt)
+  {
+    if ((paramMenuItem instanceof ef))
     {
-      localObject = localObject[(localObject.length - paramInt - 1)];
-      try
-      {
-        localObject = new BufferedReader(new FileReader((File)localObject));
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        return null;
-      }
+      ((ef)paramMenuItem).setNumericShortcut(paramChar, paramInt);
+      return;
     }
-    return null;
+    a.b(paramMenuItem, paramChar, paramInt);
   }
   
-  public static File b()
+  public static void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
   {
-    String str = d.g;
-    if (c()) {
-      return new File(Environment.getExternalStorageDirectory(), str);
-    }
-    return new File(RqdApplication.l().getFilesDir(), str);
-  }
-  
-  public static boolean c()
-  {
-    String str = Environment.getExternalStorageState();
-    return ("mounted".equals(str)) || ("mounted_ro".equals(str));
-  }
-  
-  public static void h()
-  {
-    Object localObject = a.a(System.currentTimeMillis());
-    localObject = a.b((File)localObject);
-    if (localObject != null)
+    if ((paramMenuItem instanceof ef))
     {
-      int i = 0;
-      while (i < localObject.length)
-      {
-        a(localObject[i]);
-        i += 1;
-      }
+      ((ef)paramMenuItem).setIconTintList(paramColorStateList);
+      return;
     }
+    a.a(paramMenuItem, paramColorStateList);
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  public static void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
   {
-    if ((d()) && (e()) && (this.b != null)) {
-      this.b.b(paramInt, Thread.currentThread(), cx.c().s(), paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  public final boolean d()
-  {
-    return this.d;
-  }
-  
-  public final boolean e()
-  {
-    return this.e;
-  }
-  
-  public final boolean f()
-  {
-    return this.f;
-  }
-  
-  public final boolean g()
-  {
-    return this.g;
-  }
-  
-  public boolean i()
-  {
-    return t.a("debug.file.uploadfiledate", -1) >= 0;
-  }
-  
-  public int j()
-  {
-    return t.a("debug.file.uploadfiledate", -1);
-  }
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
+    if ((paramMenuItem instanceof ef))
     {
-      int i = t.a("debug.file.tracelevel", d.h);
-      a(16, "SecTracer", "File Trace Level Changed = " + i, null);
-      this.b.a(i);
+      ((ef)paramMenuItem).setIconTintMode(paramMode);
+      return;
     }
+    a.a(paramMenuItem, paramMode);
+  }
+  
+  public static void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
+  {
+    if ((paramMenuItem instanceof ef))
+    {
+      ((ef)paramMenuItem).a(paramCharSequence);
+      return;
+    }
+    a.a(paramMenuItem, paramCharSequence);
+  }
+  
+  public static void b(MenuItem paramMenuItem, char paramChar, int paramInt)
+  {
+    if ((paramMenuItem instanceof ef))
+    {
+      ((ef)paramMenuItem).setAlphabeticShortcut(paramChar, paramInt);
+      return;
+    }
+    a.a(paramMenuItem, paramChar, paramInt);
+  }
+  
+  public static void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
+  {
+    if ((paramMenuItem instanceof ef))
+    {
+      ((ef)paramMenuItem).b(paramCharSequence);
+      return;
+    }
+    a.b(paramMenuItem, paramCharSequence);
+  }
+  
+  static final class a
+    extends fe.b
+  {
+    public final void a(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
+    }
+    
+    public final void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
+    {
+      paramMenuItem.setIconTintList(paramColorStateList);
+    }
+    
+    public final void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
+    {
+      paramMenuItem.setIconTintMode(paramMode);
+    }
+    
+    public final void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setContentDescription(paramCharSequence);
+    }
+    
+    public final void b(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setNumericShortcut(paramChar, paramInt);
+    }
+    
+    public final void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setTooltipText(paramCharSequence);
+    }
+  }
+  
+  static class b
+    implements fe.c
+  {
+    public void a(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void a(MenuItem paramMenuItem, ColorStateList paramColorStateList) {}
+    
+    public void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode) {}
+    
+    public void a(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+    
+    public void b(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void b(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+  }
+  
+  static abstract interface c
+  {
+    public abstract void a(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void a(MenuItem paramMenuItem, ColorStateList paramColorStateList);
+    
+    public abstract void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode);
+    
+    public abstract void a(MenuItem paramMenuItem, CharSequence paramCharSequence);
+    
+    public abstract void b(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void b(MenuItem paramMenuItem, CharSequence paramCharSequence);
   }
 }
 

@@ -12,7 +12,7 @@ public abstract interface TXRecordCommon$ITXVideoRecordListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener
  * JD-Core Version:    0.7.0.1
  */

@@ -11,47 +11,37 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import atwl;
-import atwn;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.ThreadManager;
-import zba;
-import zbb;
-import zbe;
-import zbg;
-import zbi;
-import zbj;
-import zbk;
-import zbl;
-import zbm;
-import zbn;
-import zbo;
+import com.tencent.mobileqq.lyric.data.Lyric;
+import com.tencent.mobileqq.lyric.data.Sentence;
 
 public class SingleLyricView
   extends RelativeLayout
-  implements zba
+  implements ILyricView
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile atwl jdField_a_of_type_Atwl;
-  private atwn jdField_a_of_type_Atwn;
-  private final String jdField_a_of_type_JavaLangString = "SingleLyricView";
-  private final zbb jdField_a_of_type_Zbb;
-  private final zbg jdField_a_of_type_Zbg;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private final String a = "SingleLyricView";
+  private final LyricControllerWrapper b;
+  private final OnLyricListener c;
+  private TextView d;
+  private ImageView e;
+  private volatile Lyric f;
+  private int g;
+  private Sentence h;
+  private AnimatorSet i;
+  private long j = 0L;
+  private String k;
+  private long l = 0L;
+  private boolean m = false;
+  private String n;
+  private int o;
+  private Handler p;
   
   public SingleLyricView(Context paramContext)
   {
@@ -66,33 +56,36 @@ public class SingleLyricView
   public SingleLyricView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131562813, this, true);
+    LayoutInflater.from(paramContext).inflate(2131629636, this, true);
     a(paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376798));
-    if (this.jdField_b_of_type_Int == 1)
+    this.e = ((ImageView)findViewById(2131446040));
+    if (this.o == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376799));
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.d = ((TextView)findViewById(2131446041));
+      paramContext = this.d;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramContext = this.e;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Zbb = new zbb();
-      this.jdField_a_of_type_Zbg = new zbi(this);
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377200));
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.d = ((TextView)findViewById(2131446542));
+      paramContext = this.d;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramContext = this.e;
+      if (paramContext != null) {
+        paramContext.setVisibility(8);
       }
     }
+    this.b = new LyricControllerWrapper();
+    this.c = new SingleLyricView.1(this);
+    this.p = new Handler(ThreadManager.getSubThreadLooper());
   }
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
@@ -100,7 +93,7 @@ public class SingleLyricView
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.SingleLyricView, paramInt, 0);
     try
     {
-      this.jdField_b_of_type_Int = paramAttributeSet.getInteger(0, 1);
+      this.o = paramAttributeSet.getInteger(0, 1);
       return;
     }
     finally
@@ -111,142 +104,142 @@ public class SingleLyricView
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+    Object localObject = this.i;
+    if (localObject != null) {
+      ((AnimatorSet)localObject).end();
     }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.setInterpolator(new AccelerateInterpolator());
-    localValueAnimator.addUpdateListener(new zbj(this));
-    localValueAnimator.addListener(new zbk(this, paramString));
+    this.i = new AnimatorSet();
+    localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
+    ((ValueAnimator)localObject).setDuration(500L);
+    ((ValueAnimator)localObject).setInterpolator(new AccelerateInterpolator());
+    ((ValueAnimator)localObject).addUpdateListener(new SingleLyricView.2(this));
+    ((ValueAnimator)localObject).addListener(new SingleLyricView.3(this, paramString));
     paramString = ValueAnimator.ofFloat(new float[] { 0.3F, 1.0F });
     paramString.setDuration(500L);
-    paramString.addUpdateListener(new zbl(this));
-    paramString.addListener(new zbm(this));
+    paramString.addUpdateListener(new SingleLyricView.4(this));
+    paramString.addListener(new SingleLyricView.5(this));
     paramString.setInterpolator(new DecelerateInterpolator());
-    paramString.addListener(new zbn(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localValueAnimator, paramString });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    paramString.addListener(new SingleLyricView.6(this));
+    this.i.playSequentially(new Animator[] { localObject, paramString });
+    this.i.start();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Atwl = null;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    this.p.removeCallbacks(null);
+    this.g = -1;
+    this.f = null;
+    Object localObject = this.d;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      ((TextView)localObject).setText("");
+      this.d.setAlpha(1.0F);
     }
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    localObject = this.i;
+    if (localObject != null) {
+      ((AnimatorSet)localObject).cancel();
     }
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Long = 0L;
+    this.k = null;
+    this.j = 0L;
   }
   
   public void a(long paramLong)
   {
-    int j = 1;
-    if (this.jdField_a_of_type_Atwl == null) {}
-    label100:
-    label106:
-    do
-    {
+    if (this.f == null) {
       return;
-      atwn localatwn = zbe.a().a(this.jdField_a_of_type_Atwl, this.jdField_a_of_type_Long + paramLong);
-      int i;
-      if (this.jdField_a_of_type_Atwn != localatwn)
+    }
+    Object localObject = LyricParserHelper.a().a(this.f, this.j + paramLong);
+    Sentence localSentence = this.h;
+    int i2 = 1;
+    int i1;
+    if (localSentence != localObject) {
+      i1 = 1;
+    } else {
+      i1 = 0;
+    }
+    if ((!this.m) || (paramLong >= this.l)) {
+      i2 = 0;
+    }
+    if ((localObject != null) && (i1 != 0) && (i2 == 0))
+    {
+      this.h = ((Sentence)localObject);
+      a(((Sentence)localObject).a);
+      this.n = ((Sentence)localObject).a;
+      return;
+    }
+    if ((i2 != 0) && (!TextUtils.isEmpty(this.k)) && (!this.k.equals(this.n)))
+    {
+      localObject = this.d;
+      if (localObject != null)
       {
-        i = 1;
-        if ((!this.jdField_a_of_type_Boolean) || (paramLong >= this.jdField_b_of_type_Long)) {
-          break label100;
-        }
+        ((TextView)localObject).setText(this.k);
+        this.n = this.k;
+        this.h = null;
       }
-      for (;;)
-      {
-        if ((localatwn == null) || (i == 0) || (j != 0)) {
-          break label106;
-        }
-        this.jdField_a_of_type_Atwn = localatwn;
-        a(localatwn.jdField_a_of_type_JavaLangString);
-        this.c = localatwn.jdField_a_of_type_JavaLangString;
-        return;
-        i = 0;
-        break;
-        j = 0;
-      }
-    } while ((j == 0) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaLangString.equals(this.c)) || (this.jdField_a_of_type_AndroidWidgetTextView == null));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.c = this.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Atwn = null;
+    }
+  }
+  
+  public View getView()
+  {
+    return this.d;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Zbb.a(this);
-    zbo.a().a(this.jdField_a_of_type_Zbg);
+    this.b.a(this);
+    VideoPlayStatusDispatcher.a().a(this.c);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    zbo.a().b(this.jdField_a_of_type_Zbg);
-    this.jdField_a_of_type_Zbb.a();
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    VideoPlayStatusDispatcher.a().b(this.c);
+    this.b.a();
+    AnimatorSet localAnimatorSet = this.i;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.cancel();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
+    this.p.removeCallbacks(null);
   }
   
   public void setData(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Atwl = null;
-    this.jdField_a_of_type_AndroidOsHandler.post(new SingleLyricView.7(this, paramString1, paramString2));
-    this.jdField_a_of_type_Long = 0L;
+    this.f = null;
+    this.p.post(new SingleLyricView.7(this, paramString1, paramString2));
+    this.j = 0L;
   }
   
   public void setPos(long paramLong)
   {
-    if (paramLong >= 0L) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      return;
+    if (paramLong < 0L) {
       paramLong = 0L;
     }
+    this.j = paramLong;
   }
   
   public void setSongName(String paramString, long paramLong)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      this.k = paramString;
+      TextView localTextView = this.d;
+      if (localTextView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        localTextView.setAlpha(1.0F);
+        this.d.setText(paramString);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.m = true;
       if (paramLong < 0L) {
-        break label52;
+        paramLong = 3000L;
       }
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      return;
-      label52:
-      paramLong = 3000L;
+      this.l = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.SingleLyricView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetRobotUinRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
 
@@ -38,38 +38,38 @@ public class MiniAppGetRobotUinServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_common_ext");
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_common_ext");
     int i = paramIntent.getIntExtra("key_index", -1);
-    Object localObject = null;
-    if (arrayOfByte != null) {
+    if (arrayOfByte1 != null)
+    {
       localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new GetRobotUinRequest((COMM.StCommonExt)localObject, paramIntent.getStringExtra("key_app_id")).encode(paramIntent, i, getTraceId());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
+      try
+      {
+        ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte1);
       }
-      paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetRobotUin");
-      paramPacket.putSendData(bdpd.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      super.onSend(paramIntent, paramPacket);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         QLog.e("MiniAppGetRobotUinServlet", 1, "onSend. StCommonExt mergeFrom exception!", localThrowable);
       }
     }
+    else
+    {
+      localObject = null;
+    }
+    byte[] arrayOfByte2 = new GetRobotUinRequest((COMM.StCommonExt)localObject, paramIntent.getStringExtra("key_app_id")).encode(paramIntent, i, getTraceId());
+    Object localObject = arrayOfByte2;
+    if (arrayOfByte2 == null) {
+      localObject = new byte[4];
+    }
+    paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetRobotUin");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetRobotUinServlet
  * JD-Core Version:    0.7.0.1
  */

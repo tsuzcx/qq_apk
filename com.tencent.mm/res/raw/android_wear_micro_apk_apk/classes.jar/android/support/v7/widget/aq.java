@@ -2,10 +2,10 @@ package android.support.v7.widget;
 
 final class aq
 {
-  int jp;
-  int sx;
-  boolean sz;
-  boolean vM;
+  int lm;
+  int un;
+  boolean up;
+  boolean xB;
 }
 
 

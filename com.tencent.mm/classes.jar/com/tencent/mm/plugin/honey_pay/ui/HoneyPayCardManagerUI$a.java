@@ -1,80 +1,58 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.protocal.protobuf.bkt;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.ae;
-import com.tencent.mm.wallet_core.ui.WalletTextView;
-import java.util.List;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.g.a.b;
 
-final class HoneyPayCardManagerUI$a
-  extends BaseAdapter
+public class HoneyPayCardManagerUI$a
+  extends MMBaseAccessibilityConfig
 {
-  private HoneyPayCardManagerUI$a(HoneyPayCardManagerUI paramHoneyPayCardManagerUI) {}
-  
-  private bkt xs(int paramInt)
+  public HoneyPayCardManagerUI$a(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(41807);
-    bkt localbkt = (bkt)HoneyPayCardManagerUI.j(this.nIw).get(paramInt);
-    AppMethodBeat.o(41807);
-    return localbkt;
+    super(paramAppCompatActivity);
   }
   
-  public final int getCount()
+  public final void fPC()
   {
-    AppMethodBeat.i(41806);
-    int i = HoneyPayCardManagerUI.j(this.nIw).size();
-    AppMethodBeat.o(41806);
-    return i;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(41809);
-    View localView = paramView;
-    if (paramView == null)
+    AppMethodBeat.i(267343);
+    h.ahAA.o(new Runnable()
     {
-      localView = LayoutInflater.from(this.nIw.getContext()).inflate(2130969867, paramViewGroup, false);
-      paramView = new HoneyPayCardManagerUI.b(this.nIw, (byte)0);
-      paramView.kGe = ((TextView)localView.findViewById(2131825026));
-      paramView.nIC = ((WalletTextView)localView.findViewById(2131825027));
-      paramView.nIC.setPrefix(ae.dSz());
-      localView.setTag(paramView);
-    }
-    paramView = xs(paramInt);
-    paramViewGroup = (HoneyPayCardManagerUI.b)localView.getTag();
-    paramViewGroup.kGe.setText(paramView.qFq);
-    paramViewGroup.nIC.setText(c.kn(paramView.xzu));
-    AppMethodBeat.o(41809);
-    return localView;
+      public final void run()
+      {
+        AppMethodBeat.i(267314);
+        ViewGroup localViewGroup = (ViewGroup)HoneyPayCardManagerUI.a.this.findViewById(a.f.hpcs_top_layout);
+        if (localViewGroup != null) {
+          localViewGroup.sendAccessibilityEvent(8);
+        }
+        AppMethodBeat.o(267314);
+      }
+    }, 300L);
+    AppMethodBeat.o(267343);
   }
   
-  public final boolean isEnabled(int paramInt)
+  public void initConfig()
   {
-    AppMethodBeat.i(41808);
-    if (!bo.isNullOrNil(xs(paramInt).url))
-    {
-      AppMethodBeat.o(41808);
-      return true;
-    }
-    AppMethodBeat.o(41808);
-    return false;
+    AppMethodBeat.i(267341);
+    root(a.f.hpcs_header_layout).view(a.f.hpcs_payway_layout).desc(HoneyPayCardManagerUI.a..ExternalSyntheticLambda0.INSTANCE).type(ViewType.Button);
+    root(a.g.honey_pay_card_setting_item_layout).view(a.f.hpci_item_layout).desc(new b() {}).type(ViewType.Button);
+    root(a.g.honey_pay_card_setting_footer_more_layout).view(a.f.hpcm_more_footer_layout).desc(a.i.honey_pay_card_manager_no_record_text).type(ViewType.Button);
+    AppMethodBeat.o(267341);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayCardManagerUI.a
  * JD-Core Version:    0.7.0.1
  */

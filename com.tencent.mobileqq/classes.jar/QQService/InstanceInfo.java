@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class InstanceInfo
   extends JceStruct
 {
-  public byte cTablet;
-  public int iAppId;
-  public long iClientType;
-  public long iPlatform;
-  public long iProductType;
+  public byte cTablet = 0;
+  public int iAppId = 0;
+  public long iClientType = 0L;
+  public long iPlatform = 0L;
+  public long iProductType = 0L;
   
   public InstanceInfo() {}
   
@@ -44,7 +44,7 @@ public final class InstanceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.InstanceInfo
  * JD-Core Version:    0.7.0.1
  */

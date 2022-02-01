@@ -21,14 +21,19 @@ public class SegmentDataPipe
   public static final int BUFFER_READY = 2;
   public static final String FACE_DETECT_TIME = "sdk_face_detect_time";
   public static final String SEGMENT_TIME = "sdk_background_detect_time";
-  public static final String TAG = SegmentDataPipe.class.getSimpleName();
+  public static final String TAG = "SegmentDataPipe";
   private static float[] sMtxIdentity = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
   public List<float[]> allFaceAngles;
   public List<List<PointF>> allFacePoints;
   public List<List<PointF>> allIrisPoints;
   public List<Float[]> allPointsVis;
+  public int[] autoBrightnessCurve;
+  public int[] autoContrastCurve;
   public int[] curve;
   public Map<String, Long> detectTimes = new HashMap();
+  public List<Set<Integer>> expressions = new ArrayList();
+  public List<float[]> face3DRotationArray = new ArrayList();
+  public List<float[]> face3DVerticesArray = new ArrayList();
   public Map<Integer, FaceActionCounter> faceActionCounter;
   public double faceAverageL = 60.0D;
   public List<FaceInfo> faceInfos;
@@ -55,10 +60,13 @@ public class SegmentDataPipe
   
   public void getTransformMatrix(float[] paramArrayOfFloat)
   {
-    if (paramArrayOfFloat.length != 16) {
-      throw new IllegalArgumentException();
+    if (paramArrayOfFloat.length == 16)
+    {
+      float[] arrayOfFloat = sMtxIdentity;
+      System.arraycopy(arrayOfFloat, 0, paramArrayOfFloat, 0, arrayOfFloat.length);
+      return;
     }
-    System.arraycopy(sMtxIdentity, 0, paramArrayOfFloat, 0, sMtxIdentity.length);
+    throw new IllegalArgumentException();
   }
   
   public boolean isBusy()
@@ -94,7 +102,7 @@ public class SegmentDataPipe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.gles.SegmentDataPipe
  * JD-Core Version:    0.7.0.1
  */

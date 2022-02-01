@@ -1,18 +1,24 @@
 package com.tencent.mm.plugin.emoji.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pm;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.kernel.b.a;
+import com.tencent.mm.pluginsdk.b.e;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 
-public final class d
-  extends c<pm>
+public abstract interface d
+  extends a
 {
-  public d()
-  {
-    AppMethodBeat.i(52818);
-    this.__eventId = pm.class.getName().hashCode();
-    AppMethodBeat.o(52818);
-  }
+  public abstract bh getEmojiDescMgr();
+  
+  public abstract com.tencent.mm.pluginsdk.b.d getEmojiMgr();
+  
+  public abstract bl getEmojiStorageMgr();
+  
+  public abstract e getProvider();
+  
+  public abstract void removeEmojiMgr();
+  
+  public abstract void setEmojiMgr();
 }
 
 

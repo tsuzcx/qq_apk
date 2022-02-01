@@ -3,62 +3,63 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.bf;
 
 public final class b
 {
-  public static int vhn;
-  public static final int vho;
-  public static final int vhp;
-  public static final int vhq;
-  public static final int vhr;
-  public static final int vhs;
-  public static final int vht;
-  public static final float vhu;
-  public static final int vhv;
-  public static final int vhw;
-  public static final float vhx;
+  public static final int WZS;
+  public static final int WZT;
+  public static final int WZU;
+  public static final int WZV;
+  public static final int WZW;
+  public static final float WZX;
+  public static final int WZY;
+  public static final int WZZ;
+  public static final float Xaa;
+  public static final int vmb;
+  public static int vmn;
   
   static
   {
-    AppMethodBeat.i(8149);
-    vhn = fx(ah.getContext());
-    vho = am.getStatusBarHeight(ah.getContext());
-    vhp = ah.getContext().getResources().getDimensionPixelSize(2131427559);
-    vhq = ah.getContext().getResources().getDimensionPixelSize(2131428837);
-    vhr = ah.getContext().getResources().getDimensionPixelSize(2131428836);
-    vhs = ah.getContext().getResources().getDimensionPixelSize(2131428834);
-    int i = ah.getContext().getResources().getDimensionPixelSize(2131428833);
-    vht = i;
-    vhu = i / vhs;
-    vhv = ah.getContext().getResources().getDimensionPixelSize(2131428830);
-    i = ah.getContext().getResources().getDimensionPixelSize(2131428829);
-    vhw = i;
-    vhx = i / vhv;
-    AppMethodBeat.o(8149);
+    AppMethodBeat.i(80415);
+    vmn = bk(MMApplicationContext.getContext());
+    vmb = bf.getStatusBarHeight(MMApplicationContext.getContext());
+    WZS = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.DefaultActionbarHeightPort);
+    WZT = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_size);
+    WZU = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_margin);
+    WZV = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_indicator_size);
+    int i = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_indicator_container_size);
+    WZW = i;
+    WZX = i / WZV;
+    WZY = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_canceller_size);
+    i = MMApplicationContext.getContext().getResources().getDimensionPixelSize(c.d.webview_bag_canceller_container_size);
+    WZZ = i;
+    Xaa = i / WZY;
+    AppMethodBeat.o(80415);
   }
   
-  private static int fx(Context paramContext)
+  private static int bk(Context paramContext)
   {
-    AppMethodBeat.i(8147);
-    int i = am.fx(paramContext);
-    ab.i("MicroMsg.BagIndicatorController", "getNavigationBarHeight height:%d", new Object[] { Integer.valueOf(i) });
-    AppMethodBeat.o(8147);
+    AppMethodBeat.i(80413);
+    int i = bf.bk(paramContext);
+    Log.i("MicroMsg.BagIndicatorController", "getNavigationBarHeight height:%d", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.o(80413);
     return i;
   }
   
-  public static void fy(Context paramContext)
+  public static void fE(Context paramContext)
   {
-    AppMethodBeat.i(8148);
-    vhn = fx(paramContext);
-    AppMethodBeat.o(8148);
+    AppMethodBeat.i(80414);
+    vmn = bk(paramContext);
+    AppMethodBeat.o(80414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.b
  * JD-Core Version:    0.7.0.1
  */

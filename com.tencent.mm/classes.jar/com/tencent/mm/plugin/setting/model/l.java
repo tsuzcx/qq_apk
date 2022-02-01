@@ -1,205 +1,103 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.protocal.protobuf.cuq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class l
+  extends p
+  implements m
 {
-  public final al eIo;
-  Object mLock;
-  public Runnable mRunnable;
-  public boolean qEM;
-  public boolean qEN;
-  public boolean qEO;
-  final CountDownLatch qEP;
-  HashSet<String> qEQ;
-  HashSet<String> qER;
-  HashSet<String> qES;
-  HashSet<String> qET;
-  public l.a qEU;
-  public UnfamiliarContactDetailUI.h qEV;
-  public long qEW;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public l(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, UnfamiliarContactDetailUI.h paramh)
+  public l()
   {
-    AppMethodBeat.i(126877);
-    this.mLock = new Object();
-    this.qEQ = new HashSet();
-    this.qER = new HashSet();
-    this.qES = new HashSet();
-    this.qET = new HashSet();
-    this.qEM = paramBoolean1;
-    this.qEN = paramBoolean2;
-    this.qEO = paramBoolean3;
-    int i;
-    int j;
-    if (this.qEN)
-    {
-      i = 1;
-      if (!this.qEM) {
-        break label212;
-      }
-      j = 1;
-      label99:
-      if (!this.qEO) {
-        break label218;
-      }
-    }
-    label212:
-    label218:
-    for (int k = 1;; k = 0)
-    {
-      i = k + (j + i);
-      ab.i("MicroMsg.UnfamiliarContactEngine", "[UnfamiliarContactEngine] count:%s [%s:%s:%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.qEN), Boolean.valueOf(this.qEM), Boolean.valueOf(this.qEO) });
-      this.qEP = new CountDownLatch(i);
-      this.eIo = new al("UnfamiliarContactEngine");
-      this.qEV = paramh;
-      AppMethodBeat.o(126877);
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label99;
-    }
+    AppMethodBeat.i(73773);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cup();
+    ((c.a)localObject).otF = new cuq();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
+    ((c.a)localObject).funcId = 1191;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cup)c.b.b(this.rr.otB);
+    ((cup)localObject).source = 2;
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add("invoice_info.title");
+    localLinkedList.add("invoice_info.tax_number");
+    localLinkedList.add("invoice_info.bank_number");
+    localLinkedList.add("invoice_info.bank_name");
+    localLinkedList.add("invoice_info.type");
+    localLinkedList.add("invoice_info.email");
+    localLinkedList.add("invoice_info.company_address");
+    localLinkedList.add("invoice_info.company_address_detail");
+    localLinkedList.add("invoice_info.company_address_postcode");
+    localLinkedList.add("invoice_info.phone");
+    ((cup)localObject).aaAe = localLinkedList;
+    ((cup)localObject).aaAd = false;
+    AppMethodBeat.o(73773);
   }
   
-  final void g(final LinkedList<String> paramLinkedList, int paramInt)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(126878);
-    final long l = System.currentTimeMillis();
-    if (paramInt + 10 < paramLinkedList.size()) {}
-    for (final int i = paramInt + 10;; i = paramLinkedList.size())
+    AppMethodBeat.i(73775);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(73775);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1191;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(73774);
+    Log.d("MicroMsg.NetSceneGetUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      final List localList = paramLinkedList.subList(paramInt, i);
-      i locali = new i();
-      locali.hdl = 8;
-      locali.query = bo.d(localList, ",");
-      locali.mSU = new com.tencent.mm.plugin.fts.a.l()
-      {
-        final int limit;
-        
-        public final void b(j arg1)
-        {
-          AppMethodBeat.i(126871);
-          ??? = ???.mSW;
-          HashMap localHashMap;
-          if ((??? != null) && (???.size() > 0))
-          {
-            ??? = (com.tencent.mm.plugin.fts.a.a.l)???.get(0);
-            if ((???.userData != null) && ((???.userData instanceof HashMap))) {
-              localHashMap = (HashMap)???.userData;
-            }
-          }
-          label299:
-          label432:
-          for (;;)
-          {
-            Object localObject3;
-            String str;
-            synchronized (l.this.mLock)
-            {
-              localObject3 = localList.iterator();
-              if (!((Iterator)localObject3).hasNext()) {
-                break label210;
-              }
-              str = (String)((Iterator)localObject3).next();
-              if (!localHashMap.containsKey(str)) {
-                l.this.qES.add(str);
-              }
-            }
-            Iterator localIterator = ((List)localObject1.get(str)).iterator();
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-            } while (((com.tencent.mm.plugin.fts.a.a.l)localIterator.next()).mSZ >= 100L);
-            for (int i = 1;; i = 0)
-            {
-              if (i != 0) {
-                break label432;
-              }
-              l.this.qES.add(str);
-              break;
-              label210:
-              if (this.limit >= paramLinkedList.size())
-              {
-                ab.i("MicroMsg.UnfamiliarContactEngine", "[getSameChatInfoTask] finish all load! userNames.size:%s cost:%sms", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(System.currentTimeMillis() - l) });
-                l.this.qEP.countDown();
-                AppMethodBeat.o(126871);
-                return;
-                localObject3 = "[getSameChatInfoTask] is null?%s is instanceof List";
-                Object localObject2 = new Object[2];
-                boolean bool;
-                if (???.userData == null)
-                {
-                  bool = true;
-                  localObject2[0] = Boolean.valueOf(bool);
-                  bool = ???.userData instanceof HashMap;
-                  i = 1;
-                  ??? = (j)localObject2;
-                }
-                for (;;)
-                {
-                  ???[i] = Boolean.valueOf(bool);
-                  ab.e("MicroMsg.UnfamiliarContactEngine", (String)localObject3, (Object[])localObject2);
-                  break;
-                  bool = false;
-                  break label299;
-                  str = "[getSameChatInfoTask] list is null? %s ";
-                  ??? = new Object[1];
-                  if (localList == null)
-                  {
-                    bool = true;
-                    i = 0;
-                    localObject2 = ???;
-                    localObject3 = ???;
-                    ??? = (j)localObject2;
-                    localObject2 = localObject3;
-                    localObject3 = str;
-                  }
-                  else
-                  {
-                    bool = false;
-                    i = 0;
-                    localObject2 = ???;
-                    localObject3 = ???;
-                    ??? = (j)localObject2;
-                    localObject2 = localObject3;
-                    localObject3 = str;
-                  }
-                }
-              }
-              l.this.g(paramLinkedList, this.limit);
-              AppMethodBeat.o(126871);
-              return;
-            }
-          }
-        }
-      };
-      locali.handler = this.eIo.caB();
-      ((n)g.G(n.class)).search(2, locali);
-      AppMethodBeat.o(126878);
+      Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we parse the json and resetList..");
+      params = (cuq)c.c.b(((c)params).otC);
+      if (params.aaAf == null) {}
+    }
+    try
+    {
+      boolean bool = new JSONObject(params.aaAf).getBoolean("has_invoice_info");
+      Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "has_invoice_info is ..".concat(String.valueOf(bool)));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acQL, Boolean.valueOf(bool));
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(73774);
       return;
+    }
+    catch (JSONException params)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.NetSceneGetUserAutoFillInfo", "error parse this json");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.l
  * JD-Core Version:    0.7.0.1
  */

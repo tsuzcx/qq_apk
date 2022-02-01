@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/i02" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.SwipListView android:id="@id/bps" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bpr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doi" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="还没有草稿_(:3」∠)" />
+    </LinearLayout>
+</FrameLayout>

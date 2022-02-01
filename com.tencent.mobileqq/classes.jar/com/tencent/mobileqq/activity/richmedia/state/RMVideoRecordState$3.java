@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtp;
-import ajty;
-import wxe;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-public class RMVideoRecordState$3
+class RMVideoRecordState$3
   implements Runnable
 {
-  public RMVideoRecordState$3(ajtp paramajtp) {}
+  RMVideoRecordState$3(RMVideoRecordState paramRMVideoRecordState) {}
   
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.b())
+    if (!localRMVideoStateMgr.c())
     {
-      wxe.c("RMRecordState", "run record finish, but state is not right");
+      SLog.c("RMRecordState", "run record finish, but state is not right");
       return;
     }
     this.this$0.b();
-    localRMVideoStateMgr.a.z();
+    localRMVideoStateMgr.v.g();
   }
 }
 

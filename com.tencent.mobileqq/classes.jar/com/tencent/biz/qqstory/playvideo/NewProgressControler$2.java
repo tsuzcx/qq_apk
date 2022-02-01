@@ -1,39 +1,38 @@
 package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView;
 import java.lang.ref.WeakReference;
-import vne;
-import vwa;
 
-public class NewProgressControler$2
+class NewProgressControler$2
   implements Runnable
 {
-  public NewProgressControler$2(vne paramvne) {}
+  NewProgressControler$2(NewProgressControler paramNewProgressControler) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {}
-    vwa localvwa;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localvwa = (vwa)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localvwa == null);
-    if (localvwa.b() > 0L)
-    {
-      vne.a(this.this$0, localvwa.a(), localvwa.b());
-      vne.a(this.this$0);
+    if (this.this$0.e) {
       return;
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    if (this.this$0.d != null)
+    {
+      IVideoView localIVideoView = (IVideoView)this.this$0.d.get();
+      if (localIVideoView == null) {
+        return;
+      }
+      if (localIVideoView.h() > 0L)
+      {
+        NewProgressControler.a(this.this$0, localIVideoView.e(), localIVideoView.h());
+        NewProgressControler.a(this.this$0);
+        return;
+      }
+      this.this$0.g.postDelayed(this, 50L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.2
  * JD-Core Version:    0.7.0.1
  */

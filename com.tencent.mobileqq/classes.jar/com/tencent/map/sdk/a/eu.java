@@ -22,7 +22,8 @@ public final class eu
   
   private Object p()
   {
-    return this.a.remove(this.a.size() - 1);
+    List localList = this.a;
+    return localList.remove(localList.size() - 1);
   }
   
   public final void a()
@@ -34,9 +35,14 @@ public final class eu
   
   public final void a(ff paramff)
   {
-    if (f() != paramff) {
-      throw new IllegalStateException("Expected " + paramff + " but was " + f());
+    if (f() == paramff) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder("Expected ");
+    localStringBuilder.append(paramff);
+    localStringBuilder.append(" but was ");
+    localStringBuilder.append(f());
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public final void b()
@@ -74,7 +80,6 @@ public final class eu
   
   public final ff f()
   {
-    Object localObject;
     boolean bool;
     for (;;)
     {
@@ -83,9 +88,10 @@ public final class eu
       }
       localObject = g();
       if (!(localObject instanceof Iterator)) {
-        break label105;
+        break label104;
       }
-      bool = this.a.get(this.a.size() - 2) instanceof dw;
+      List localList = this.a;
+      bool = localList.get(localList.size() - 2) instanceof dw;
       localObject = (Iterator)localObject;
       if (!((Iterator)localObject).hasNext()) {
         break;
@@ -99,7 +105,7 @@ public final class eu
       return ff.d;
     }
     return ff.b;
-    label105:
+    label104:
     if ((localObject instanceof dw)) {
       return ff.c;
     }
@@ -126,12 +132,17 @@ public final class eu
     if (localObject == d) {
       throw new IllegalStateException("JsonReader is closed");
     }
-    throw new AssertionError();
+    Object localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public final Object g()
   {
-    return this.a.get(this.a.size() - 1);
+    List localList = this.a;
+    return localList.get(localList.size() - 1);
   }
   
   public final String h()
@@ -145,8 +156,13 @@ public final class eu
   public final String i()
   {
     ff localff = f();
-    if ((localff != ff.f) && (localff != ff.g)) {
-      throw new IllegalStateException("Expected " + ff.f + " but was " + localff);
+    if ((localff != ff.f) && (localff != ff.g))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Expected ");
+      localStringBuilder.append(ff.f);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localff);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     return ((dy)p()).c();
   }
@@ -166,8 +182,13 @@ public final class eu
   public final double l()
   {
     ff localff = f();
-    if ((localff != ff.g) && (localff != ff.f)) {
-      throw new IllegalStateException("Expected " + ff.g + " but was " + localff);
+    if ((localff != ff.g) && (localff != ff.f))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Expected ");
+      localStringBuilder.append(ff.g);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localff);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     double d1 = ((dy)g()).d();
     if ((!this.b) && ((Double.isNaN(d1)) || (Double.isInfinite(d1)))) {
@@ -180,8 +201,13 @@ public final class eu
   public final long m()
   {
     ff localff = f();
-    if ((localff != ff.g) && (localff != ff.f)) {
-      throw new IllegalStateException("Expected " + ff.g + " but was " + localff);
+    if ((localff != ff.g) && (localff != ff.f))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Expected ");
+      localStringBuilder.append(ff.g);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localff);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     long l = ((dy)g()).f();
     p();
@@ -191,8 +217,13 @@ public final class eu
   public final int n()
   {
     ff localff = f();
-    if ((localff != ff.g) && (localff != ff.f)) {
-      throw new IllegalStateException("Expected " + ff.g + " but was " + localff);
+    if ((localff != ff.g) && (localff != ff.f))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Expected ");
+      localStringBuilder.append(ff.g);
+      localStringBuilder.append(" but was ");
+      localStringBuilder.append(localff);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     int i = ((dy)g()).g();
     p();

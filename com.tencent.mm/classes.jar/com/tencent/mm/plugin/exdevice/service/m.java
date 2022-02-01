@@ -18,19 +18,19 @@ public abstract interface m
   
   public abstract boolean b(j paramj);
   
-  public abstract long[] bqn();
-  
   public abstract boolean c(int paramInt, j paramj);
   
-  public abstract boolean jr(long paramLong);
+  public abstract long[] dGg();
   
-  public abstract boolean ju(long paramLong);
+  public abstract boolean lI(long paramLong);
+  
+  public abstract boolean lL(long paramLong);
   
   public abstract void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.m
  * JD-Core Version:    0.7.0.1
  */

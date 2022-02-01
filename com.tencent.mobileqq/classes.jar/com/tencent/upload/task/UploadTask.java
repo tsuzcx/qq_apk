@@ -150,268 +150,409 @@ public abstract class UploadTask
   
   private boolean multiThreadSendFilePkg()
   {
+    Object localObject1 = getTaskState();
+    Object localObject2 = TaskState.PAUSE;
     int j = 0;
-    if ((getTaskState() == TaskState.PAUSE) || (getTaskState() == TaskState.CANCEL)) {
-      return false;
-    }
-    this.mAtomFile = new AtomFile(this.mFilePath);
-    this.mAtomFile.setSliceSize(this.mSliceSize).setSessionId(this.mSessionId).setOffset(this.mFileSendOffset).setStartTime(System.currentTimeMillis());
-    UploadLog.d("UploadTask", "taskId:" + this.mTaskId + ", filePkg, begin to wait available session ----> ");
-    int k = getConnectionNum();
-    IUploadSession[] arrayOfIUploadSession = new IUploadSession[k];
-    int i = 0;
-    if (i < k)
+    if (localObject1 != localObject2)
     {
-      if ((i == 0) && (this.mSession != null)) {
-        arrayOfIUploadSession[i] = this.mSession;
+      if (getTaskState() == TaskState.CANCEL) {
+        return false;
       }
-      for (;;)
+      this.mAtomFile = new AtomFile(this.mFilePath);
+      this.mAtomFile.setSliceSize(this.mSliceSize).setSessionId(this.mSessionId).setOffset(this.mFileSendOffset).setStartTime(System.currentTimeMillis());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("taskId:");
+      ((StringBuilder)localObject1).append(this.mTaskId);
+      ((StringBuilder)localObject1).append(", filePkg, begin to wait available session ----> ");
+      UploadLog.d("UploadTask", ((StringBuilder)localObject1).toString());
+      int k = getConnectionNum();
+      localObject1 = new IUploadSession[k];
+      int i = 0;
+      while (i < k)
       {
+        if (i == 0)
+        {
+          localObject2 = this.mSession;
+          if (localObject2 != null)
+          {
+            localObject1[i] = localObject2;
+            break label177;
+          }
+        }
+        localObject1[i] = pollSessionWithRetry(2);
+        label177:
         i += 1;
-        break;
-        arrayOfIUploadSession[i] = pollSessionWithRetry(2);
       }
-    }
-    if (this.mFinish)
-    {
-      UploadLog.w("UploadTask", "taskId:" + this.mTaskId + ", filePkg, after poll task has been finished !");
-      return false;
-    }
-    this.mMultiSession = arrayOfIUploadSession;
-    this.mSavedSession = this.mMultiSession[0];
-    if ((arrayOfIUploadSession == null) || (arrayOfIUploadSession.length <= 0) || (!sessionsValidCheck(arrayOfIUploadSession)))
-    {
-      UploadLog.e("UploadTask", "taskId:" + this.mTaskId + ", filePkg, multi session == null! no session to upload");
+      if (this.mFinish)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("taskId:");
+        ((StringBuilder)localObject1).append(this.mTaskId);
+        ((StringBuilder)localObject1).append(", filePkg, after poll task has been finished !");
+        UploadLog.w("UploadTask", ((StringBuilder)localObject1).toString());
+        return false;
+      }
+      this.mMultiSession = ((IUploadSession[])localObject1);
+      this.mSavedSession = this.mMultiSession[0];
+      if ((localObject1.length > 0) && (sessionsValidCheck((IUploadSession[])localObject1)))
+      {
+        long l = System.currentTimeMillis();
+        this.mStartTime = l;
+        this.mDataPkgStartTime = l;
+        localObject2 = new StringBuffer();
+        ((StringBuffer)localObject2).append("taskId:");
+        ((StringBuffer)localObject2).append(this.mTaskId);
+        ((StringBuffer)localObject2).append(", sendFilePkg, mDataLength:");
+        ((StringBuffer)localObject2).append(this.mDataLength);
+        ((StringBuffer)localObject2).append(", use sessions size:");
+        ((StringBuffer)localObject2).append(localObject1.length);
+        ((StringBuffer)localObject2).append(", sessions detail:");
+        k = localObject1.length;
+        i = 0;
+        while (i < k)
+        {
+          Object localObject3 = localObject1[i];
+          if (localObject3 != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(localObject3.getUploadRoute().toString());
+            localStringBuilder.append(" ");
+            ((StringBuffer)localObject2).append(localStringBuilder.toString());
+          }
+          i += 1;
+        }
+        UploadLog.d("[iplist] UploadTask", ((StringBuffer)localObject2).toString());
+        UploadFlowTracker.trackFlow(this, "数据包开始发送");
+        this.mMultiThreads.clear();
+        k = localObject1.length;
+        i = j;
+        while (i < k)
+        {
+          localObject2 = localObject1[i];
+          if (localObject2 != null)
+          {
+            localObject2 = new UploadTask.UploadThread(this, this.mAtomFile, (IUploadSession)localObject2);
+            this.mMultiThreads.add(localObject2);
+            ((UploadTask.UploadThread)localObject2).tFuture = UploadThreadManager.getInstance().getDataThreadPool().submit((Runnable)localObject2);
+          }
+          i += 1;
+        }
+        return true;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("taskId:");
+      ((StringBuilder)localObject1).append(this.mTaskId);
+      ((StringBuilder)localObject1).append(", filePkg, multi session == null! no session to upload");
+      UploadLog.e("UploadTask", ((StringBuilder)localObject1).toString());
       UploadFlowTracker.trackFlow(this, "无可用session");
       onError(Const.UploadRetCode.NO_SESSION.getCode(), Const.UploadRetCode.NO_SESSION.getDesc());
-      return false;
     }
-    long l = System.currentTimeMillis();
-    this.mStartTime = l;
-    this.mDataPkgStartTime = l;
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("taskId:").append(this.mTaskId).append(", sendFilePkg, mDataLength:").append(this.mDataLength).append(", use sessions size:").append(arrayOfIUploadSession.length).append(", sessions detail:");
-    k = arrayOfIUploadSession.length;
-    i = 0;
-    while (i < k)
-    {
-      IUploadSession localIUploadSession = arrayOfIUploadSession[i];
-      if (localIUploadSession != null) {
-        ((StringBuffer)localObject).append(localIUploadSession.getUploadRoute().toString() + " ");
-      }
-      i += 1;
-    }
-    UploadLog.d("[iplist] UploadTask", ((StringBuffer)localObject).toString());
-    UploadFlowTracker.trackFlow(this, "数据包开始发送");
-    this.mMultiThreads.clear();
-    k = arrayOfIUploadSession.length;
-    i = j;
-    while (i < k)
-    {
-      localObject = arrayOfIUploadSession[i];
-      if (localObject != null)
-      {
-        localObject = new UploadTask.UploadThread(this, this.mAtomFile, (IUploadSession)localObject);
-        this.mMultiThreads.add(localObject);
-        ((UploadTask.UploadThread)localObject).tFuture = UploadThreadManager.getInstance().getDataThreadPool().submit((Runnable)localObject);
-      }
-      i += 1;
-    }
-    return true;
+    return false;
   }
   
   private void onFileUploadResponse(FileUploadRsp paramFileUploadRsp, UploadResponse paramUploadResponse)
   {
-    int i = 0;
-    if ((paramFileUploadRsp == null) || (paramUploadResponse == null)) {
-      if ("onFileUploadResponse " + paramFileUploadRsp == null)
-      {
-        paramFileUploadRsp = "rsp == null";
-        UploadLog.e("UploadTask", paramFileUploadRsp);
-        onError(Const.UploadRetCode.RESPONSE_IS_NULL.getCode(), Const.UploadRetCode.RESPONSE_IS_NULL.getDesc());
-      }
-    }
-    do
+    if ((paramFileUploadRsp != null) && (paramUploadResponse != null))
     {
-      do
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recv FileUploadResponse taskId=");
+      localStringBuilder.append(getTaskId());
+      localStringBuilder.append(" reqId=");
+      localStringBuilder.append(paramUploadResponse.getRequestSequence());
+      localStringBuilder.append(" cmd=");
+      localStringBuilder.append(paramUploadResponse.getCmd());
+      localStringBuilder.append(" ret=");
+      localStringBuilder.append(paramFileUploadRsp.result.ret);
+      localStringBuilder.append(" flag=");
+      localStringBuilder.append(paramFileUploadRsp.result.flag);
+      localStringBuilder.append(" msg=");
+      localStringBuilder.append(paramFileUploadRsp.result.msg);
+      localStringBuilder.append(" sid=");
+      localStringBuilder.append(paramUploadResponse.getSid());
+      localStringBuilder.append(" retry=");
+      localStringBuilder.append(this.mRetryCount);
+      localStringBuilder.append(" offset=");
+      localStringBuilder.append(paramFileUploadRsp.offset);
+      localStringBuilder.append(" totalSize=");
+      localStringBuilder.append(this.mDataLength);
+      localStringBuilder.append(" sendOffset=");
+      localStringBuilder.append(this.mFileSendOffset);
+      localStringBuilder.append(" session=");
+      localStringBuilder.append(paramFileUploadRsp.session);
+      localStringBuilder.append(" mFlagError=");
+      localStringBuilder.append(this.mFlagError);
+      UploadLog.d("[transfer] UploadTask", localStringBuilder.toString());
+      if (paramUploadResponse.getRequestSequence() >= this.mCurrControlReqId)
       {
-        return;
-        paramFileUploadRsp = "response == null";
-        break;
-        UploadLog.d("[transfer] UploadTask", "recv FileUploadResponse taskId=" + getTaskId() + " reqId=" + paramUploadResponse.getRequestSequence() + " cmd=" + paramUploadResponse.getCmd() + " ret=" + paramFileUploadRsp.result.ret + " flag=" + paramFileUploadRsp.result.flag + " msg=" + paramFileUploadRsp.result.msg + " sid=" + paramUploadResponse.getSid() + " retry=" + this.mRetryCount + " offset=" + paramFileUploadRsp.offset + " totalSize=" + this.mDataLength + " sendOffset=" + this.mFileSendOffset + " session=" + paramFileUploadRsp.session + " mFlagError=" + this.mFlagError);
-      } while ((paramUploadResponse.getRequestSequence() < this.mCurrControlReqId) || (this.mFlagError));
-      clearCompleteTimer();
-      if (paramFileUploadRsp.result.ret != 0)
-      {
-        this.mFlagError = true;
-        if (this.mRetryCount < getMaxRetryTimes())
+        if (this.mFlagError) {
+          return;
+        }
+        clearCompleteTimer();
+        int j = paramFileUploadRsp.result.ret;
+        int i = 0;
+        if (j != 0)
         {
-          switch (paramFileUploadRsp.result.flag)
+          this.mFlagError = true;
+          if (this.mRetryCount < getMaxRetryTimes())
           {
-          default: 
-            onError(paramFileUploadRsp.result.ret, paramFileUploadRsp.result.msg);
-            return;
-          case 11: 
-          case 12: 
+            switch (paramFileUploadRsp.result.flag)
+            {
+            default: 
+              onError(paramFileUploadRsp.result.ret, paramFileUploadRsp.result.msg);
+              return;
+            case 14: 
+              this.mRetryCount += 1;
+              resetWaitState();
+              quitMultiThreadUpload();
+              resetSessionPool(true);
+              this.mSessionId = "";
+              return;
+            case 13: 
+              this.mRetryCount += 1;
+              this.mSessionId = "";
+              quitMultiThreadUpload();
+              postExecute(0, true);
+              return;
+            }
             this.mRetryCount += 1;
-            quitMultiThreadUpload();
-            postExecute(0, true);
-            return;
-          case 13: 
-            this.mRetryCount += 1;
-            this.mSessionId = "";
             quitMultiThreadUpload();
             postExecute(0, true);
             return;
           }
-          this.mRetryCount += 1;
-          resetWaitState();
-          quitMultiThreadUpload();
-          resetSessionPool(true);
-          this.mSessionId = "";
+          onError(paramFileUploadRsp.result.ret, paramFileUploadRsp.result.msg);
           return;
         }
-        onError(paramFileUploadRsp.result.ret, paramFileUploadRsp.result.msg);
-        return;
+        if ((paramFileUploadRsp.result.flag == 1) || (paramFileUploadRsp.result.flag == 2)) {
+          i = 1;
+        }
+        if (i != 0)
+        {
+          this.mFinish = true;
+          long l1 = System.currentTimeMillis();
+          this.mEndTime = l1;
+          this.mDataPkgEndTime = l1;
+          l1 = this.mDataLength;
+          onUploadProgress(l1, l1);
+          processFileUploadFinishRsp(paramFileUploadRsp.biz_rsp);
+          l1 = this.mEndTime;
+          long l2 = this.mStartTime;
+          paramFileUploadRsp = new StringBuilder();
+          paramFileUploadRsp.append((float)this.mDataLength * 1.0F * 1000.0F / (float)((l1 - l2) * 1024L));
+          paramFileUploadRsp.append("KB/s");
+          paramFileUploadRsp = paramFileUploadRsp.toString();
+          paramUploadResponse = new StringBuilder();
+          paramUploadResponse.append("[speed] taskId:");
+          paramUploadResponse.append(getTaskId());
+          paramUploadResponse.append(", control pkg cost: ");
+          paramUploadResponse.append(this.mControlPkgEndTime - this.mControlPkgStartTime);
+          UploadLog.d("UploadTask", paramUploadResponse.toString());
+          paramUploadResponse = new StringBuilder();
+          paramUploadResponse.append("[speed] taskId:");
+          paramUploadResponse.append(getTaskId());
+          paramUploadResponse.append(", data pkg cost: ");
+          paramUploadResponse.append(this.mDataPkgEndTime - this.mDataPkgStartTime);
+          UploadLog.d("UploadTask", paramUploadResponse.toString());
+          paramUploadResponse = new StringBuilder();
+          paramUploadResponse.append("[speed] taskId:");
+          paramUploadResponse.append(getTaskId());
+          paramUploadResponse.append(", finish -- speed: ");
+          paramUploadResponse.append(paramFileUploadRsp);
+          paramUploadResponse.append(" length: ");
+          paramUploadResponse.append(this.mDataLength / 1024L);
+          paramUploadResponse.append("K");
+          UploadLog.d("UploadTask", paramUploadResponse.toString());
+          this.mFileRecvOffset = this.mDataLength;
+          return;
+        }
+        startCompleteTimer();
+        if (this.mFileRecvOffset < paramFileUploadRsp.offset)
+        {
+          this.mFileRecvOffset = paramFileUploadRsp.offset;
+          onUploadProgress(this.mDataLength, this.mFileRecvOffset);
+          paramUploadResponse = new StringBuilder();
+          paramUploadResponse.append("taskId:");
+          paramUploadResponse.append(getTaskId());
+          paramUploadResponse.append(", UploadProgress: [");
+          paramUploadResponse.append(paramFileUploadRsp.offset);
+          paramUploadResponse.append(",");
+          paramUploadResponse.append(this.mDataLength);
+          paramUploadResponse.append("]");
+          UploadLog.d("UploadTask", paramUploadResponse.toString());
+        }
       }
-      if ((paramFileUploadRsp.result.flag == 1) || (paramFileUploadRsp.result.flag == 2)) {
-        i = 1;
-      }
-      if (i != 0)
-      {
-        this.mFinish = true;
-        long l1 = System.currentTimeMillis();
-        this.mEndTime = l1;
-        this.mDataPkgEndTime = l1;
-        onUploadProgress(this.mDataLength, this.mDataLength);
-        processFileUploadFinishRsp(paramFileUploadRsp.biz_rsp);
-        l1 = this.mEndTime;
-        long l2 = this.mStartTime;
-        paramFileUploadRsp = (float)this.mDataLength * 1.0F * 1000.0F / (float)((l1 - l2) * 1024L) + "KB/s";
-        UploadLog.d("UploadTask", "[speed] taskId:" + getTaskId() + ", control pkg cost: " + (this.mControlPkgEndTime - this.mControlPkgStartTime));
-        UploadLog.d("UploadTask", "[speed] taskId:" + getTaskId() + ", data pkg cost: " + (this.mDataPkgEndTime - this.mDataPkgStartTime));
-        UploadLog.d("UploadTask", "[speed] taskId:" + getTaskId() + ", finish -- speed: " + paramFileUploadRsp + " length: " + this.mDataLength / 1024L + "K");
-        this.mFileRecvOffset = this.mDataLength;
-        return;
-      }
-      startCompleteTimer();
-    } while (this.mFileRecvOffset >= paramFileUploadRsp.offset);
-    this.mFileRecvOffset = paramFileUploadRsp.offset;
-    onUploadProgress(this.mDataLength, this.mFileRecvOffset);
-    UploadLog.d("UploadTask", "taskId:" + getTaskId() + ", UploadProgress: [" + paramFileUploadRsp.offset + "," + this.mDataLength + "]");
+      return;
+    }
+    paramUploadResponse = new StringBuilder();
+    paramUploadResponse.append("onFileUploadResponse ");
+    paramUploadResponse.append(paramFileUploadRsp);
+    if (paramUploadResponse.toString() == null) {
+      paramFileUploadRsp = "rsp == null";
+    } else {
+      paramFileUploadRsp = "response == null";
+    }
+    UploadLog.e("UploadTask", paramFileUploadRsp);
+    onError(Const.UploadRetCode.RESPONSE_IS_NULL.getCode(), Const.UploadRetCode.RESPONSE_IS_NULL.getDesc());
   }
   
   private void onTaskInfoChanged()
   {
-    if (this.mTaskStateListener != null) {
-      this.mTaskStateListener.onTaskInfoChanged(this);
+    TaskStateListener localTaskStateListener = this.mTaskStateListener;
+    if (localTaskStateListener != null) {
+      localTaskStateListener.onTaskInfoChanged(this);
     }
   }
   
   private IUploadSession pollSessionWithRetry(int paramInt)
   {
-    if (this.mSessionPool == null) {
+    Object localObject = this.mSessionPool;
+    if (localObject == null) {
       return null;
     }
-    IUploadSession localIUploadSession2 = this.mSessionPool.poll();
-    IUploadSession localIUploadSession1 = localIUploadSession2;
-    if (localIUploadSession2 == null)
+    IUploadSession localIUploadSession = ((SessionPool)localObject).poll();
+    localObject = localIUploadSession;
+    if (localIUploadSession == null)
     {
-      localIUploadSession1 = localIUploadSession2;
+      localObject = localIUploadSession;
       if (paramInt > 0)
       {
-        UploadLog.e("UploadTask", "pollSessionWithRetry session == null ! retry poll session. retryTime:" + paramInt);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("pollSessionWithRetry session == null ! retry poll session. retryTime:");
+        ((StringBuilder)localObject).append(paramInt);
+        UploadLog.e("UploadTask", ((StringBuilder)localObject).toString());
         do
         {
-          localIUploadSession2 = this.mSessionPool.poll();
+          localIUploadSession = this.mSessionPool.poll();
           paramInt -= 1;
-          localIUploadSession1 = localIUploadSession2;
-          if (localIUploadSession2 != null) {
+          localObject = localIUploadSession;
+          if (localIUploadSession != null) {
             break;
           }
-          localIUploadSession1 = localIUploadSession2;
+          localObject = localIUploadSession;
           if (paramInt <= 0) {
             break;
           }
         } while (!this.mFinish);
-        localIUploadSession1 = localIUploadSession2;
+        localObject = localIUploadSession;
       }
     }
-    UploadFlowTracker.trackRoute(this, localIUploadSession1);
-    return localIUploadSession1;
+    UploadFlowTracker.trackRoute(this, (IUploadSession)localObject);
+    return localObject;
   }
   
   private void resetSessionPool(String paramString, int paramInt)
   {
-    UploadLog.d("UploadTask", "resetSessionPool taskId=" + getTaskId() + " delete mSessionId:" + this.mSessionId);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resetSessionPool taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" delete mSessionId:");
+    localStringBuilder.append(this.mSessionId);
+    UploadLog.d("UploadTask", localStringBuilder.toString());
     CacheUtil.deleteSessionId(this, this.mSessionId);
     this.mSessionPool.reset(new UploadRoute(paramString, paramInt, IUploadRouteStrategy.RouteCategoryType.REDIRECT));
   }
   
   private void resetSessionPool(boolean paramBoolean)
   {
-    UploadLog.d("UploadTask", "resetSessionPool taskId=" + getTaskId() + " delete:" + paramBoolean + " mSessionId:" + this.mSessionId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resetSessionPool taskId=");
+    ((StringBuilder)localObject).append(getTaskId());
+    ((StringBuilder)localObject).append(" delete:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" mSessionId:");
+    ((StringBuilder)localObject).append(this.mSessionId);
+    UploadLog.d("UploadTask", ((StringBuilder)localObject).toString());
     if (paramBoolean) {
       CacheUtil.deleteSessionId(this, this.mSessionId);
     }
-    if (this.mSessionPool != null) {
-      this.mSessionPool.reset();
+    localObject = this.mSessionPool;
+    if (localObject != null) {
+      ((SessionPool)localObject).reset();
     }
   }
   
   private boolean sendControlPkg()
   {
-    if ((getTaskState() == TaskState.PAUSE) || (getTaskState() == TaskState.CANCEL) || (getTaskState() == TaskState.SUCCEED)) {
-      return false;
-    }
-    if (!this.mDataSource.exists())
+    if ((getTaskState() != TaskState.PAUSE) && (getTaskState() != TaskState.CANCEL))
     {
-      UploadFlowTracker.trackFlow(this, "上传文件不存在");
-      onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
-      return false;
+      if (getTaskState() == TaskState.SUCCEED) {
+        return false;
+      }
+      if (!this.mDataSource.exists())
+      {
+        UploadFlowTracker.trackFlow(this, "上传文件不存在");
+        onError(Const.UploadRetCode.FILE_NOT_EXIST.getCode(), Const.UploadRetCode.FILE_NOT_EXIST.getDesc());
+        return false;
+      }
+      if (this.mDataSource.getDataLength() <= 0L)
+      {
+        UploadFlowTracker.trackFlow(this, "上传文件长度异常");
+        onError(Const.UploadRetCode.FILE_LENGTH_INVALID.getCode(), Const.UploadRetCode.FILE_LENGTH_INVALID.getDesc());
+        return false;
+      }
+      setState(TaskState.CONNECTING);
+      Object localObject1 = pollSessionWithRetry(2);
+      if (this.mFinish)
+      {
+        UploadLog.w("UploadTask", "after poll task has been finished !");
+        return false;
+      }
+      if (localObject1 == null)
+      {
+        UploadFlowTracker.trackFlow(this, "获取session失败");
+        onError(Const.UploadRetCode.NO_SESSION.getCode(), Const.UploadRetCode.NO_SESSION.getDesc());
+        return false;
+      }
+      this.mSession = ((IUploadSession)localObject1);
+      this.mSavedSession = ((IUploadSession)localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[sendControlPkg] taskId=");
+      ((StringBuilder)localObject2).append(getTaskId());
+      ((StringBuilder)localObject2).append(", getIdleSession=");
+      ((StringBuilder)localObject2).append(localObject1.hashCode());
+      ((StringBuilder)localObject2).append(", sessionId=");
+      ((StringBuilder)localObject2).append(this.mSessionId);
+      UploadLog.d("UploadTask", ((StringBuilder)localObject2).toString());
+      localObject2 = getControlRequest();
+      this.mCurrControlReqId = ((UploadRequest)localObject2).getRequestId();
+      this.mFlagError = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendControlPkg taskId=");
+      localStringBuilder.append(getTaskId());
+      localStringBuilder.append(" reqId=");
+      localStringBuilder.append(this.mCurrControlReqId);
+      localStringBuilder.append(" retry=");
+      localStringBuilder.append(this.mRetryCount);
+      localStringBuilder.append(" route=");
+      localStringBuilder.append(((IUploadSession)localObject1).getUploadRoute());
+      localStringBuilder.append(" mDataLength=");
+      localStringBuilder.append(this.mDataLength);
+      UploadLog.d("UploadTask", localStringBuilder.toString());
+      long l = System.currentTimeMillis();
+      this.mControlPkgStartTime = l;
+      this.mStartTime = l;
+      UploadFlowTracker.trackFlow(this, "开始发送控制包");
+      boolean bool = ((IUploadSession)localObject1).send((IActionRequest)localObject2, this);
+      if (bool) {
+        setTaskStatus(TaskState.SENDING);
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("taskId=");
+      ((StringBuilder)localObject1).append(getTaskId());
+      ((StringBuilder)localObject1).append(", sendControlPkg result=");
+      ((StringBuilder)localObject1).append(bool);
+      UploadLog.d("UploadTask", ((StringBuilder)localObject1).toString());
+      return true;
     }
-    if (this.mDataSource.getDataLength() <= 0L)
-    {
-      UploadFlowTracker.trackFlow(this, "上传文件长度异常");
-      onError(Const.UploadRetCode.FILE_LENGTH_INVALID.getCode(), Const.UploadRetCode.FILE_LENGTH_INVALID.getDesc());
-      return false;
-    }
-    setState(TaskState.CONNECTING);
-    IUploadSession localIUploadSession = pollSessionWithRetry(2);
-    if (this.mFinish)
-    {
-      UploadLog.w("UploadTask", "after poll task has been finished !");
-      return false;
-    }
-    if (localIUploadSession == null)
-    {
-      UploadFlowTracker.trackFlow(this, "获取session失败");
-      onError(Const.UploadRetCode.NO_SESSION.getCode(), Const.UploadRetCode.NO_SESSION.getDesc());
-      return false;
-    }
-    this.mSession = localIUploadSession;
-    this.mSavedSession = localIUploadSession;
-    UploadLog.d("UploadTask", "[sendControlPkg] taskId=" + getTaskId() + ", getIdleSession=" + localIUploadSession.hashCode() + ", sessionId=" + this.mSessionId);
-    UploadRequest localUploadRequest = getControlRequest();
-    this.mCurrControlReqId = localUploadRequest.getRequestId();
-    this.mFlagError = false;
-    UploadLog.d("UploadTask", "sendControlPkg taskId=" + getTaskId() + " reqId=" + this.mCurrControlReqId + " retry=" + this.mRetryCount + " route=" + localIUploadSession.getUploadRoute() + " mDataLength=" + this.mDataLength);
-    long l = System.currentTimeMillis();
-    this.mControlPkgStartTime = l;
-    this.mStartTime = l;
-    setTaskStatus(TaskState.SENDING);
-    UploadFlowTracker.trackFlow(this, "开始发送控制包");
-    boolean bool = localIUploadSession.send(localUploadRequest, this);
-    UploadLog.d("UploadTask", "taskId=" + getTaskId() + ", sendControlPkg result=" + bool);
-    return true;
+    return false;
   }
   
   private boolean sessionsValidCheck(IUploadSession[] paramArrayOfIUploadSession)
   {
-    if ((paramArrayOfIUploadSession == null) || (paramArrayOfIUploadSession.length == 0)) {}
-    for (;;)
+    if (paramArrayOfIUploadSession != null)
     {
-      return false;
+      if (paramArrayOfIUploadSession.length == 0) {
+        return false;
+      }
       int i = 0;
       while (i < paramArrayOfIUploadSession.length)
       {
@@ -421,6 +562,7 @@ public abstract class UploadTask
         i += 1;
       }
     }
+    return false;
   }
   
   private void startCompleteTimer()
@@ -433,16 +575,24 @@ public abstract class UploadTask
   
   protected void abortSession(IUploadSession paramIUploadSession)
   {
-    UploadLog.i("UploadTask", "abort session:" + paramIUploadSession.hashCode());
-    if ((this.mSession != null) && (this.mSession.equals(paramIUploadSession))) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("abort session:");
+    ((StringBuilder)localObject).append(paramIUploadSession.hashCode());
+    UploadLog.i("UploadTask", ((StringBuilder)localObject).toString());
+    localObject = this.mSession;
+    if ((localObject != null) && (localObject.equals(paramIUploadSession))) {
       this.mSession = null;
     }
     if (this.mMultiSession != null)
     {
       int i = 0;
-      while (i < this.mMultiSession.length)
+      for (;;)
       {
-        if ((this.mMultiSession[i] != null) && (this.mMultiSession[i].equals(paramIUploadSession))) {
+        localObject = this.mMultiSession;
+        if (i >= localObject.length) {
+          break;
+        }
+        if ((localObject[i] != null) && (localObject[i].equals(paramIUploadSession))) {
           this.mMultiSession[i] = null;
         }
         i += 1;
@@ -462,7 +612,10 @@ public abstract class UploadTask
   
   public boolean cancel()
   {
-    UploadLog.w("[transfer]UploadTask", "task canceled by user, taskId:" + getTaskId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("task canceled by user, taskId:");
+    localStringBuilder.append(getTaskId());
+    UploadLog.w("[transfer]UploadTask", localStringBuilder.toString());
     if (getTaskState() == TaskState.SUCCEED) {
       return false;
     }
@@ -477,16 +630,32 @@ public abstract class UploadTask
   
   protected final void cancelForError(int paramInt, String paramString)
   {
-    UploadLog.w("[transfer] UploadTask", "cancelForError taskId:" + getTaskId() + " errorCode=" + paramInt + " retryCount:" + this.mRetryCount + " mNetworkRetryCount:" + this.mNetworkRetryCount + " errorMsg=" + paramString + " mFinish=" + this.mFinish);
-    if ((paramInt == 0) || (this.mFinish)) {
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancelForError taskId:");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" errorCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" retryCount:");
+    localStringBuilder.append(this.mRetryCount);
+    localStringBuilder.append(" mNetworkRetryCount:");
+    localStringBuilder.append(this.mNetworkRetryCount);
+    localStringBuilder.append(" errorMsg=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" mFinish=");
+    localStringBuilder.append(this.mFinish);
+    UploadLog.w("[transfer] UploadTask", localStringBuilder.toString());
+    if (paramInt != 0)
+    {
+      if (this.mFinish) {
+        return;
+      }
+      super.cancel();
+      this.mFinish = true;
+      this.mSliceSize = 0;
+      onUploadError(paramInt, paramString);
+      setTaskStatus(TaskState.FAILED);
+      onTaskFinished(paramInt, paramString);
     }
-    super.cancel();
-    this.mFinish = true;
-    this.mSliceSize = 0;
-    onUploadError(paramInt, paramString);
-    setTaskStatus(TaskState.FAILED);
-    onTaskFinished(paramInt, paramString);
   }
   
   protected abstract int getBucketSize();
@@ -548,256 +717,378 @@ public abstract class UploadTask
     if (this.mDataLength <= 0L) {
       this.mDataLength = this.mDataSource.getDataLength();
     }
-    if ((this.mFileSendOffset >= this.mDataLength) || (this.mDataLength <= 0L) || (getTaskState() == TaskState.SUCCEED)) {
-      return 100.0F;
+    long l1 = this.mFileSendOffset;
+    long l2 = this.mDataLength;
+    if ((l1 < l2) && (l2 > 0L))
+    {
+      if (getTaskState() == TaskState.SUCCEED) {
+        return 100.0F;
+      }
+      return (float)this.mFileSendOffset * 100.0F / (float)this.mDataLength;
     }
-    return 100.0F * (float)this.mFileSendOffset / (float)this.mDataLength;
+    return 100.0F;
   }
   
   public boolean isDataSourceValid()
   {
-    if (this.mDataSource != null) {
-      return this.mDataSource.isValid();
+    UploadDataSource localUploadDataSource = this.mDataSource;
+    if (localUploadDataSource != null) {
+      return localUploadDataSource.isValid();
     }
     return false;
   }
   
   public void onError(int paramInt, String paramString)
   {
-    UploadLog.e("UploadTask", "taskId:" + getTaskId() + " onError errCode:" + paramInt + " desc:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("taskId:");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" onError errCode:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" desc:");
+    localStringBuilder.append(paramString);
+    UploadLog.e("UploadTask", localStringBuilder.toString());
     cancelForError(paramInt, paramString);
   }
   
   protected void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
   {
-    long l = 0L;
     if (paramJceStruct == null)
     {
-      UploadLog.d("UploadTask", "onFileControlResponse rsp == null " + hashCode());
+      paramJceStruct = new StringBuilder();
+      paramJceStruct.append("onFileControlResponse rsp == null ");
+      paramJceStruct.append(hashCode());
+      UploadLog.d("UploadTask", paramJceStruct.toString());
       onError(Const.UploadRetCode.RESPONSE_IS_NULL.getCode(), Const.UploadRetCode.RESPONSE_IS_NULL.getDesc());
-    }
-    do
-    {
       return;
-      if ((paramJceStruct instanceof FileBatchControlRsp))
+    }
+    if ((paramJceStruct instanceof FileBatchControlRsp))
+    {
+      onFileControlResponse((FileControlRsp)((FileBatchControlRsp)paramJceStruct).control_rsp.get("1"), paramUploadResponse);
+      return;
+    }
+    paramJceStruct = (FileControlRsp)paramJceStruct;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recv FileControlResponse taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(paramUploadResponse.getRequestSequence());
+    localStringBuilder.append(" cmd=");
+    localStringBuilder.append(paramUploadResponse.getCmd());
+    localStringBuilder.append(" ret=");
+    localStringBuilder.append(paramJceStruct.result.ret);
+    localStringBuilder.append(" flag=");
+    localStringBuilder.append(paramJceStruct.result.flag);
+    localStringBuilder.append(" msg=");
+    localStringBuilder.append(paramJceStruct.result.msg);
+    localStringBuilder.append(" retry=");
+    localStringBuilder.append(this.mRetryCount);
+    localStringBuilder.append(" offset=");
+    localStringBuilder.append(paramJceStruct.offset);
+    localStringBuilder.append(" slice_size=");
+    localStringBuilder.append(paramJceStruct.slice_size);
+    localStringBuilder.append(" session=");
+    localStringBuilder.append(paramJceStruct.session);
+    UploadLog.d("[transfer] UploadTask", localStringBuilder.toString());
+    this.mControlPkgEndTime = System.currentTimeMillis();
+    if (paramJceStruct.result.ret != 0)
+    {
+      if (this.mRetryCount < getMaxRetryTimes())
       {
-        onFileControlResponse((FileControlRsp)((FileBatchControlRsp)paramJceStruct).control_rsp.get("1"), paramUploadResponse);
-        return;
-      }
-      paramJceStruct = (FileControlRsp)paramJceStruct;
-      UploadLog.d("[transfer] UploadTask", "recv FileControlResponse taskId=" + getTaskId() + " reqId=" + paramUploadResponse.getRequestSequence() + " cmd=" + paramUploadResponse.getCmd() + " ret=" + paramJceStruct.result.ret + " flag=" + paramJceStruct.result.flag + " msg=" + paramJceStruct.result.msg + " retry=" + this.mRetryCount + " offset=" + paramJceStruct.offset + " slice_size=" + paramJceStruct.slice_size + " session=" + paramJceStruct.session);
-      this.mControlPkgEndTime = System.currentTimeMillis();
-      if (paramJceStruct.result.ret != 0)
-      {
-        if (this.mRetryCount < getMaxRetryTimes())
+        switch (paramJceStruct.result.flag)
         {
-          switch (paramJceStruct.result.flag)
-          {
-          default: 
-            onError(paramJceStruct.result.ret, paramJceStruct.result.msg);
-            return;
-          case 11: 
-          case 12: 
-            this.mRetryCount += 1;
-            postExecute(0, true);
-            return;
-          case 13: 
-            this.mRetryCount += 1;
-            this.mSessionId = "";
-            postExecute(0, true);
-            return;
-          }
+        default: 
+          onError(paramJceStruct.result.ret, paramJceStruct.result.msg);
+          return;
+        case 14: 
           this.mRetryCount += 1;
           resetWaitState();
           resetSessionPool(true);
           this.mSessionId = "";
           return;
+        case 13: 
+          this.mRetryCount += 1;
+          this.mSessionId = "";
+          postExecute(0, true);
+          return;
         }
-        onError(paramJceStruct.result.ret, paramJceStruct.result.msg);
+        this.mRetryCount += 1;
+        postExecute(0, true);
         return;
       }
-      if (paramJceStruct.result.flag == 0) {
-        break;
+      onError(paramJceStruct.result.ret, paramJceStruct.result.msg);
+      return;
+    }
+    if (paramJceStruct.result.flag != 0)
+    {
+      if ((paramJceStruct.result.flag == 1) || (paramJceStruct.result.flag == 2))
+      {
+        paramUploadResponse = new StringBuilder();
+        paramUploadResponse.append("taskId=");
+        paramUploadResponse.append(getTaskId());
+        paramUploadResponse.append("rsp.result.flag=");
+        paramUploadResponse.append(paramJceStruct.result.flag);
+        paramUploadResponse.append(" upload success !");
+        UploadLog.d("UploadTask", paramUploadResponse.toString());
+        l1 = System.currentTimeMillis();
+        this.mEndTime = l1;
+        this.mDataPkgEndTime = l1;
+        l1 = this.mDataLength;
+        onUploadProgress(l1, l1);
+        this.mIsFastUpload = true;
+        processFileUploadFinishRsp(paramJceStruct.biz_rsp);
       }
-    } while ((paramJceStruct.result.flag != 1) && (paramJceStruct.result.flag != 2));
-    UploadLog.d("UploadTask", "taskId=" + getTaskId() + "rsp.result.flag=" + paramJceStruct.result.flag + " upload success !");
-    l = System.currentTimeMillis();
-    this.mEndTime = l;
-    this.mDataPkgEndTime = l;
-    onUploadProgress(this.mDataLength, this.mDataLength);
-    this.mIsFastUpload = true;
-    processFileUploadFinishRsp(paramJceStruct.biz_rsp);
-    return;
+      return;
+    }
     if (!TextUtils.isEmpty(paramJceStruct.redirect_ip))
     {
       this.mSessionId = "";
       paramJceStruct = paramJceStruct.redirect_ip;
-      if (this.mUploadRoute != null) {}
-      for (int i = this.mUploadRoute.getPort();; i = 443)
-      {
-        resetSessionPool(paramJceStruct, i);
-        return;
+      paramUploadResponse = this.mUploadRoute;
+      int i;
+      if (paramUploadResponse != null) {
+        i = paramUploadResponse.getPort();
+      } else {
+        i = 443;
       }
+      resetSessionPool(paramJceStruct, i);
+      return;
     }
-    UploadLog.d("UploadTask", "slicesize=" + paramJceStruct.slice_size);
+    paramUploadResponse = new StringBuilder();
+    paramUploadResponse.append("slicesize=");
+    paramUploadResponse.append(paramJceStruct.slice_size);
+    UploadLog.d("UploadTask", paramUploadResponse.toString());
     this.mSliceSize = ((int)paramJceStruct.slice_size);
     this.mSessionId = paramJceStruct.session;
-    UploadLog.d("UploadTask", "cacheSessionId :" + this.mSessionId);
+    paramUploadResponse = new StringBuilder();
+    paramUploadResponse.append("cacheSessionId :");
+    paramUploadResponse.append(this.mSessionId);
+    UploadLog.d("UploadTask", paramUploadResponse.toString());
     CacheUtil.cacheSessionId(this, this.mSessionId);
-    if (paramJceStruct.offset < 0L) {}
-    for (;;)
-    {
-      this.mFileSendOffset = l;
-      this.mFileRecvOffset = l;
-      this.mDataPkgStartTime = System.currentTimeMillis();
-      postExecute(1, false);
-      return;
-      l = paramJceStruct.offset;
+    long l2 = paramJceStruct.offset;
+    long l1 = 0L;
+    if (l2 >= 0L) {
+      l1 = paramJceStruct.offset;
     }
+    this.mFileSendOffset = l1;
+    this.mFileRecvOffset = l1;
+    this.mDataPkgStartTime = System.currentTimeMillis();
+    postExecute(1, false);
   }
   
   public void onRequestError(IActionRequest paramIActionRequest, Const.UploadRetCode paramUploadRetCode, IUploadSession paramIUploadSession)
   {
     boolean bool = paramIActionRequest.getTag() instanceof UploadTask.UploadThread;
-    if (bool) {}
-    for (String str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;; str = "")
-    {
-      UploadLog.d("UploadTask", str + "onRequestError taskId=" + getTaskId() + " reqId=" + paramIActionRequest.getRequestId() + " CMD=" + paramIActionRequest.getCmdId() + " mNetworkRetryCount=" + this.mNetworkRetryCount + " session=" + paramIUploadSession.hashCode() + " code: " + paramUploadRetCode + " mCurrControlReqId=" + this.mCurrControlReqId + " mFlagError:" + this.mFlagError + " mFinish:" + this.mFinish);
-      abortSession(paramIUploadSession);
-      if ((paramIActionRequest.getRequestId() >= this.mCurrControlReqId) && (!this.mFlagError) && (!this.mFinish)) {
-        break;
-      }
-      UploadLog.d("UploadTask", "onRequestError return");
-      return;
-    }
-    this.mFlagError = true;
+    String str;
     if (bool) {
-      quitMultiThreadUpload();
+      str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;
+    } else {
+      str = "";
     }
-    if ((paramUploadRetCode == Const.UploadRetCode.OOM) || (paramUploadRetCode == Const.UploadRetCode.SESSION_REQUEST_ENCODE_ERROR) || (paramUploadRetCode == Const.UploadRetCode.SESSION_CONN_SEND_FAILED))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("onRequestError taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(paramIActionRequest.getRequestId());
+    localStringBuilder.append(" CMD=");
+    localStringBuilder.append(paramIActionRequest.getCmdId());
+    localStringBuilder.append(" mNetworkRetryCount=");
+    localStringBuilder.append(this.mNetworkRetryCount);
+    localStringBuilder.append(" session=");
+    localStringBuilder.append(paramIUploadSession.hashCode());
+    localStringBuilder.append(" code: ");
+    localStringBuilder.append(paramUploadRetCode);
+    localStringBuilder.append(" mCurrControlReqId=");
+    localStringBuilder.append(this.mCurrControlReqId);
+    localStringBuilder.append(" mFlagError:");
+    localStringBuilder.append(this.mFlagError);
+    localStringBuilder.append(" mFinish:");
+    localStringBuilder.append(this.mFinish);
+    UploadLog.d("UploadTask", localStringBuilder.toString());
+    abortSession(paramIUploadSession);
+    if ((paramIActionRequest.getRequestId() >= this.mCurrControlReqId) && (!this.mFlagError) && (!this.mFinish))
     {
+      this.mFlagError = true;
+      if (bool) {
+        quitMultiThreadUpload();
+      }
+      if ((paramUploadRetCode != Const.UploadRetCode.OOM) && (paramUploadRetCode != Const.UploadRetCode.SESSION_REQUEST_ENCODE_ERROR) && (paramUploadRetCode != Const.UploadRetCode.SESSION_CONN_SEND_FAILED))
+      {
+        if (paramUploadRetCode == Const.UploadRetCode.NETWORK_NOT_AVAILABLE)
+        {
+          cancelForError(Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode(), Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getDesc());
+          return;
+        }
+        if (this.mNetworkRetryCount < getMaxNetworkRetryTimes())
+        {
+          this.mNetworkRetryCount += 1;
+          postExecute(0, true);
+          return;
+        }
+        cancelForError(paramUploadRetCode.getCode(), paramUploadRetCode.getDesc());
+        return;
+      }
       cancelForError(paramUploadRetCode.getCode(), paramUploadRetCode.getDesc());
       return;
     }
-    if (paramUploadRetCode == Const.UploadRetCode.NETWORK_NOT_AVAILABLE)
-    {
-      cancelForError(Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode(), Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getDesc());
-      return;
-    }
-    if (this.mNetworkRetryCount < getMaxNetworkRetryTimes())
-    {
-      this.mNetworkRetryCount += 1;
-      postExecute(0, true);
-      return;
-    }
-    cancelForError(paramUploadRetCode.getCode(), paramUploadRetCode.getDesc());
+    UploadLog.d("UploadTask", "onRequestError return");
   }
   
   public void onRequestSended(IActionRequest paramIActionRequest)
   {
-    if (getTaskState() == TaskState.CANCEL) {}
-    do
+    if (getTaskState() == TaskState.CANCEL) {
+      return;
+    }
+    boolean bool = paramIActionRequest.getTag() instanceof UploadTask.UploadThread;
+    Object localObject;
+    if (bool) {
+      localObject = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;
+    } else {
+      localObject = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" onRequestSended taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(", reqId=");
+    localStringBuilder.append(paramIActionRequest.getRequestId());
+    UploadLog.d("[transfer] UploadTask", localStringBuilder.toString());
+    if (bool)
     {
-      do
-      {
-        do
-        {
-          return;
-          boolean bool = paramIActionRequest.getTag() instanceof UploadTask.UploadThread;
-          if (bool) {}
-          for (String str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;; str = "")
-          {
-            UploadLog.d("[transfer] UploadTask", str + " onRequestSended taskId=" + getTaskId() + ", reqId=" + paramIActionRequest.getRequestId());
-            if (!bool) {
-              break;
-            }
-            ((UploadTask.UploadThread)paramIActionRequest.getTag()).notifySendend();
-            return;
-          }
-        } while (paramIActionRequest.getRequestId() < this.mCurrControlReqId);
-        switch (UploadTask.2.$SwitchMap$com$tencent$upload$task$TaskState[getTaskState().ordinal()])
-        {
-        default: 
-          return;
-        }
-        if ((paramIActionRequest instanceof FileUploadRequest))
-        {
-          UploadLog.d("[transfer] UploadTask", "send over reqId=" + paramIActionRequest.getRequestId() + " offset=" + this.mLastSendOffset + " slice=" + this.mLastSliceSize + " total=" + this.mDataLength);
-          this.mDataPkgEndTime = System.currentTimeMillis();
-          postExecute(1, false);
-          return;
-        }
-      } while (!(paramIActionRequest instanceof FileControlRequest));
+      ((UploadTask.UploadThread)paramIActionRequest.getTag()).notifySendend();
+      return;
+    }
+    if (paramIActionRequest.getRequestId() < this.mCurrControlReqId) {
+      return;
+    }
+    if (UploadTask.2.$SwitchMap$com$tencent$upload$task$TaskState[getTaskState().ordinal()] != 1) {
+      return;
+    }
+    if ((paramIActionRequest instanceof FileUploadRequest))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("send over reqId=");
+      ((StringBuilder)localObject).append(paramIActionRequest.getRequestId());
+      ((StringBuilder)localObject).append(" offset=");
+      ((StringBuilder)localObject).append(this.mLastSendOffset);
+      ((StringBuilder)localObject).append(" slice=");
+      ((StringBuilder)localObject).append(this.mLastSliceSize);
+      ((StringBuilder)localObject).append(" total=");
+      ((StringBuilder)localObject).append(this.mDataLength);
+      UploadLog.d("[transfer] UploadTask", ((StringBuilder)localObject).toString());
+      this.mDataPkgEndTime = System.currentTimeMillis();
+      postExecute(1, false);
+      return;
+    }
+    if ((paramIActionRequest instanceof FileControlRequest))
+    {
       paramIActionRequest = (FileControlRequest)paramIActionRequest;
-    } while (paramIActionRequest.getFileDataLength() <= 0L);
-    onUploadProgress(this.mDataLength, paramIActionRequest.getFileDataLength());
-    this.mFileSendOffset = paramIActionRequest.getFileDataLength();
+      if (paramIActionRequest.getFileDataLength() > 0L)
+      {
+        onUploadProgress(this.mDataLength, paramIActionRequest.getFileDataLength());
+        this.mFileSendOffset = paramIActionRequest.getFileDataLength();
+      }
+    }
   }
   
   public void onRequestTimeout(IActionRequest paramIActionRequest, IUploadSession paramIUploadSession)
   {
     boolean bool = paramIActionRequest.getTag() instanceof UploadTask.UploadThread;
-    if (bool) {}
-    for (String str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;; str = "")
-    {
-      UploadLog.d("UploadTask", str + "onRequestTimeout taskId=" + getTaskId() + " reqId=" + paramIActionRequest.getRequestId() + " CMD=" + paramIActionRequest.getCmdId() + " mNetworkRetryCount=" + this.mNetworkRetryCount + " session=" + paramIUploadSession.hashCode() + " mCurrControlReqId=" + this.mCurrControlReqId + " mFlagError:" + this.mFlagError);
-      UploadFlowTracker.trackFlow(this, "回包超时");
-      abortSession(paramIUploadSession);
-      if ((paramIActionRequest.getRequestId() >= this.mCurrControlReqId) && (!this.mFlagError) && (!this.mFinish)) {
-        break;
-      }
-      return;
-    }
-    this.mFlagError = true;
+    String str;
     if (bool) {
-      quitMultiThreadUpload();
+      str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;
+    } else {
+      str = "";
     }
-    if (this.mNetworkRetryCount < getMaxNetworkRetryTimes())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("onRequestTimeout taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(paramIActionRequest.getRequestId());
+    localStringBuilder.append(" CMD=");
+    localStringBuilder.append(paramIActionRequest.getCmdId());
+    localStringBuilder.append(" mNetworkRetryCount=");
+    localStringBuilder.append(this.mNetworkRetryCount);
+    localStringBuilder.append(" session=");
+    localStringBuilder.append(paramIUploadSession.hashCode());
+    localStringBuilder.append(" mCurrControlReqId=");
+    localStringBuilder.append(this.mCurrControlReqId);
+    localStringBuilder.append(" mFlagError:");
+    localStringBuilder.append(this.mFlagError);
+    UploadLog.d("UploadTask", localStringBuilder.toString());
+    UploadFlowTracker.trackFlow(this, "回包超时");
+    abortSession(paramIUploadSession);
+    if ((paramIActionRequest.getRequestId() >= this.mCurrControlReqId) && (!this.mFlagError))
     {
-      this.mNetworkRetryCount += 1;
-      UploadFlowTracker.trackFlow(this, "重试发控制包，重试次数" + this.mNetworkRetryCount);
-      quitMultiThreadUpload();
-      postExecute(0, true);
-      return;
+      if (this.mFinish) {
+        return;
+      }
+      this.mFlagError = true;
+      if (bool) {
+        quitMultiThreadUpload();
+      }
+      if (this.mNetworkRetryCount < getMaxNetworkRetryTimes())
+      {
+        this.mNetworkRetryCount += 1;
+        paramIActionRequest = new StringBuilder();
+        paramIActionRequest.append("重试发控制包，重试次数");
+        paramIActionRequest.append(this.mNetworkRetryCount);
+        UploadFlowTracker.trackFlow(this, paramIActionRequest.toString());
+        quitMultiThreadUpload();
+        postExecute(0, true);
+        return;
+      }
+      cancelForError(Const.UploadRetCode.REQUEST_TIMEOUT.getCode(), Const.UploadRetCode.REQUEST_TIMEOUT.getDesc());
     }
-    cancelForError(Const.UploadRetCode.REQUEST_TIMEOUT.getCode(), Const.UploadRetCode.REQUEST_TIMEOUT.getDesc());
   }
   
   public void onResponse(IActionRequest paramIActionRequest, UploadResponse paramUploadResponse)
   {
     String str;
-    if ((paramIActionRequest.getTag() instanceof UploadTask.UploadThread))
-    {
+    if ((paramIActionRequest.getTag() instanceof UploadTask.UploadThread)) {
       str = ((UploadTask.UploadThread)paramIActionRequest.getTag()).tTAG;
-      UploadLog.d("[transfer] UploadTask", str + "recv --- taskId=" + this.mTaskId + ", reqId=" + paramIActionRequest.getRequestId());
-      if ((getTaskState() != TaskState.SUCCEED) && (getTaskState() != TaskState.FAILED) && (getTaskState() != TaskState.CANCEL)) {
-        break label110;
-      }
-    }
-    label110:
-    while (paramUploadResponse.getRequestSequence() < this.mCurrControlReqId)
-    {
-      return;
+    } else {
       str = "";
-      break;
     }
-    switch (paramUploadResponse.getCmd())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("recv --- taskId=");
+    localStringBuilder.append(this.mTaskId);
+    localStringBuilder.append(", reqId=");
+    localStringBuilder.append(paramIActionRequest.getRequestId());
+    UploadLog.d("[transfer] UploadTask", localStringBuilder.toString());
+    if ((getTaskState() != TaskState.SUCCEED) && (getTaskState() != TaskState.FAILED))
     {
-    default: 
-      return;
-    case 1: 
-      if (this.mAppid.equalsIgnoreCase("mobilelog")) {}
-      for (paramIActionRequest = JceEncoder.decode(FileControlRsp.class, paramUploadResponse.getReponseData());; paramIActionRequest = JceEncoder.decode(FileBatchControlRsp.class, paramUploadResponse.getReponseData()))
-      {
-        onFileControlResponse(paramIActionRequest, paramUploadResponse);
+      if (getTaskState() == TaskState.CANCEL) {
         return;
       }
-    case 2: 
-      onFileUploadResponse((FileUploadRsp)JceEncoder.decode(FileUploadRsp.class, paramUploadResponse.getReponseData()), paramUploadResponse);
-      return;
+      if (paramUploadResponse.getRequestSequence() < this.mCurrControlReqId) {
+        return;
+      }
+      int i = paramUploadResponse.getCmd();
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          releaseSession();
+          processFileBatchCommitRsp((FileBatchCommitRsp)JceEncoder.decode(FileBatchCommitRsp.class, paramUploadResponse.getReponseData()));
+          return;
+        }
+        onFileUploadResponse((FileUploadRsp)JceEncoder.decode(FileUploadRsp.class, paramUploadResponse.getReponseData()), paramUploadResponse);
+        return;
+      }
+      if (this.mAppid.equalsIgnoreCase("mobilelog")) {
+        paramIActionRequest = JceEncoder.decode(FileControlRsp.class, paramUploadResponse.getReponseData());
+      } else {
+        paramIActionRequest = JceEncoder.decode(FileBatchControlRsp.class, paramUploadResponse.getReponseData());
+      }
+      onFileControlResponse(paramIActionRequest, paramUploadResponse);
     }
-    releaseSession();
-    processFileBatchCommitRsp((FileBatchCommitRsp)JceEncoder.decode(FileBatchCommitRsp.class, paramUploadResponse.getReponseData()));
   }
   
   public boolean onRun()
@@ -806,69 +1097,78 @@ public abstract class UploadTask
     this.mStep = 0;
     if (this.mSecondUpload) {
       this.mStep = 2;
+    } else if ((!TextUtils.isEmpty(this.mSessionId)) && (this.mSliceSize != 0) && (!this.mNeedReset)) {
+      this.mStep = 1;
+    } else if (this.mNeedReset) {
+      this.mNeedReset = false;
     }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onRun --- step: ");
+    ((StringBuilder)localObject).append(this.mStep);
+    ((StringBuilder)localObject).append(" taskId:");
+    ((StringBuilder)localObject).append(getTaskId());
+    UploadLog.d("UploadTask", ((StringBuilder)localObject).toString());
+    int i = this.mStep;
+    if (i != 0)
     {
-      UploadLog.d("UploadTask", "onRun --- step: " + this.mStep + " taskId:" + getTaskId());
-      switch (this.mStep)
+      if (i != 1)
       {
-      default: 
-        return true;
-        if ((!TextUtils.isEmpty(this.mSessionId)) && (this.mSliceSize != 0) && (!this.mNeedReset)) {
-          this.mStep = 1;
-        } else if (this.mNeedReset) {
-          this.mNeedReset = false;
+        if (i != 2) {
+          return true;
         }
-        break;
+        localObject = new UploadResponse();
+        onFileControlResponse(this.mSecondUploadRsp, (UploadResponse)localObject);
+        return true;
       }
+      UploadFlowTracker.trackFlow(this, "准备发送数据包");
+      return multiThreadSendFilePkg();
     }
     UploadFlowTracker.trackFlow(this, "准备发送控制包");
     return sendControlPkg();
-    UploadFlowTracker.trackFlow(this, "准备发送数据包");
-    return multiThreadSendFilePkg();
-    UploadResponse localUploadResponse = new UploadResponse();
-    onFileControlResponse(this.mSecondUploadRsp, localUploadResponse);
-    return true;
   }
   
   protected void onTaskFinished(int paramInt, String paramString)
   {
     releaseSession();
-    if (this.mSavedSession != null)
+    Object localObject = this.mSavedSession;
+    if (localObject != null)
     {
-      this.mUploadRoute = this.mSavedSession.getUploadRoute();
+      this.mUploadRoute = ((IUploadSession)localObject).getUploadRoute();
       this.mConnectedIp = this.mSavedSession.getConnectedIp();
-      if (this.mUploadRoute != null) {
-        this.mConnectedPort = this.mUploadRoute.getPort();
+      localObject = this.mUploadRoute;
+      if (localObject != null) {
+        this.mConnectedPort = ((UploadRoute)localObject).getPort();
       }
     }
     int i;
     if (paramInt == Const.UploadRetCode.SUCCEED.getCode())
     {
+      localObject = this.mSessionPool;
       i = paramInt;
-      if (this.mSessionPool != null)
+      if (localObject != null)
       {
+        UploadRoute localUploadRoute = this.mUploadRoute;
         i = paramInt;
-        if (this.mUploadRoute != null)
+        if (localUploadRoute != null)
         {
-          this.mSessionPool.saveRoute(this.mUploadRoute);
+          ((SessionPool)localObject).saveRoute(localUploadRoute);
           i = paramInt;
         }
       }
     }
-    for (;;)
+    else
     {
-      if ((getTaskState() != TaskState.CANCEL) && (getTaskState() != TaskState.PAUSE)) {
-        report(i, paramString);
-      }
-      if (this.mTaskStateListener != null) {
-        this.mTaskStateListener.onTaskFinished(this, i, paramString);
-      }
-      return;
       i = paramInt;
       if (paramInt == Const.UploadRetCode.FAST_SUCCEED.getCode()) {
         i = Const.UploadRetCode.SUCCEED.getCode();
       }
+    }
+    if ((getTaskState() != TaskState.CANCEL) && (getTaskState() != TaskState.PAUSE)) {
+      report(i, paramString);
+    }
+    localObject = this.mTaskStateListener;
+    if (localObject != null) {
+      ((TaskStateListener)localObject).onTaskFinished(this, i, paramString);
     }
   }
   
@@ -884,39 +1184,55 @@ public abstract class UploadTask
   {
     UploadLog.d("UploadTask", "onWaitCompleteTimeOut");
     UploadFlowTracker.trackFlow(this, "回包完整确认超时");
-    if ((this.mFlagError) || (this.mFinish)) {
-      return;
-    }
-    this.mFlagError = true;
-    if (this.mRetryCount < getMaxRetryTimes())
+    if (!this.mFlagError)
     {
-      UploadFlowTracker.trackFlow(this, "重试发发完整文件");
-      UploadLog.d("UploadTask", "retry to send all file data");
-      this.mRetryCount += 1;
-      resetWaitState();
-      quitMultiThreadUpload();
-      resetSessionPool(true);
-      this.mSessionId = "";
-      return;
+      if (this.mFinish) {
+        return;
+      }
+      this.mFlagError = true;
+      if (this.mRetryCount < getMaxRetryTimes())
+      {
+        UploadFlowTracker.trackFlow(this, "重试发发完整文件");
+        UploadLog.d("UploadTask", "retry to send all file data");
+        this.mRetryCount += 1;
+        resetWaitState();
+        quitMultiThreadUpload();
+        resetSessionPool(true);
+        this.mSessionId = "";
+        return;
+      }
+      cancelForError(Const.UploadRetCode.DATA_COMPLETE_TIMEOUT.getCode(), Const.UploadRetCode.DATA_COMPLETE_TIMEOUT.getDesc());
     }
-    cancelForError(Const.UploadRetCode.DATA_COMPLETE_TIMEOUT.getCode(), Const.UploadRetCode.DATA_COMPLETE_TIMEOUT.getDesc());
   }
   
   public boolean pause()
   {
-    if ((getTaskState() == TaskState.SUCCEED) || (getTaskState() == TaskState.FAILED) || (getTaskState() == TaskState.PAUSE) || (getTaskState() == TaskState.CANCEL)) {}
-    while ((getTaskState() == TaskState.SENDING) && (this.mFileSendOffset >= this.mDataLength)) {
-      return false;
+    if ((getTaskState() != TaskState.SUCCEED) && (getTaskState() != TaskState.FAILED) && (getTaskState() != TaskState.PAUSE))
+    {
+      if (getTaskState() == TaskState.CANCEL) {
+        return false;
+      }
+      if ((getTaskState() == TaskState.SENDING) && (this.mFileSendOffset >= this.mDataLength)) {
+        return false;
+      }
+      super.pause();
+      setTaskStatus(TaskState.PAUSE);
+      onTaskFinished(Const.UploadRetCode.PAUSED.getCode(), Const.UploadRetCode.PAUSED.getDesc());
+      return true;
     }
-    super.pause();
-    setTaskStatus(TaskState.PAUSE);
-    onTaskFinished(Const.UploadRetCode.PAUSED.getCode(), Const.UploadRetCode.PAUSED.getDesc());
-    return true;
+    return false;
   }
   
   protected void postExecute(int paramInt, boolean paramBoolean)
   {
-    UploadLog.i("UploadTask", "postExecute taskId:" + getTaskId() + ", postExecute newStep:" + paramInt + " needReset:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("postExecute taskId:");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(", postExecute newStep:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" needReset:");
+    localStringBuilder.append(paramBoolean);
+    UploadLog.i("UploadTask", localStringBuilder.toString());
     try
     {
       if (this.mStep != paramInt) {
@@ -959,156 +1275,164 @@ public abstract class UploadTask
           localUploadThread.tFuture.cancel(true);
         }
       }
+      this.mMultiThreads.clear();
+      return;
     }
-    this.mMultiThreads.clear();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   protected void releaseSession()
   {
-    if (this.mSessionPool == null) {}
-    do
-    {
+    Object localObject = this.mSessionPool;
+    if (localObject == null) {
       return;
-      if (this.mSession != null)
-      {
-        this.mSessionPool.offer(this.mSession);
-        this.mSession = null;
-      }
-    } while (this.mMultiSession == null);
-    IUploadSession[] arrayOfIUploadSession = this.mMultiSession;
-    int j = arrayOfIUploadSession.length;
-    int i = 0;
-    while (i < j)
-    {
-      IUploadSession localIUploadSession = arrayOfIUploadSession[i];
-      if (localIUploadSession != null) {
-        this.mSessionPool.offer(localIUploadSession);
-      }
-      i += 1;
     }
-    this.mMultiSession = null;
+    IUploadSession localIUploadSession = this.mSession;
+    if (localIUploadSession != null)
+    {
+      ((SessionPool)localObject).offer(localIUploadSession);
+      this.mSession = null;
+    }
+    localObject = this.mMultiSession;
+    if (localObject != null)
+    {
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        localIUploadSession = localObject[i];
+        if (localIUploadSession != null) {
+          this.mSessionPool.offer(localIUploadSession);
+        }
+        i += 1;
+      }
+      this.mMultiSession = null;
+    }
   }
   
   protected void report(int paramInt, String paramString)
   {
-    if (this.mReported) {}
-    long l1;
-    label466:
-    label487:
-    long l2;
-    label601:
-    label612:
-    do
-    {
+    if (this.mReported) {
       return;
-      if ((paramInt == Const.UploadRetCode.NO_SESSION.getCode()) || (paramInt == Const.UploadRetCode.ALL_IP_FAILED.getCode()))
-      {
-        this.mReported = true;
-        return;
-      }
+    }
+    if ((paramInt != Const.UploadRetCode.NO_SESSION.getCode()) && (paramInt != Const.UploadRetCode.ALL_IP_FAILED.getCode()))
+    {
       int i = paramInt;
       if (paramInt == Const.UploadRetCode.FILE_LENGTH_INVALID.getCode()) {
         i = Const.UploadRetCode.FILE_NOT_EXIST.getCode();
       }
-      this.mReportObj.retCode = i;
-      this.mReportObj.errMsg = paramString;
-      Object localObject;
+      Object localObject = this.mReportObj;
+      ((Report)localObject).retCode = i;
+      ((Report)localObject).errMsg = paramString;
       if (i != Const.UploadRetCode.SUCCEED.getCode())
       {
-        localObject = new StringBuilder(50);
-        ((StringBuilder)localObject).append(paramString);
-        StringBuilder localStringBuilder = ((StringBuilder)localObject).append(" || ").append(" clientIp=");
-        if (this.mClientIp == null)
-        {
+        StringBuilder localStringBuilder = new StringBuilder(50);
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" || ");
+        localStringBuilder.append(" clientIp=");
+        localObject = this.mClientIp;
+        paramString = (String)localObject;
+        if (localObject == null) {
           paramString = "";
-          localStringBuilder.append(paramString).append(" mState=").append(getTaskState().getDesc()).append(" mProgressTotalLen=").append(this.mFileSendOffset).append(" mProgressRecvDataLen=").append(this.mFileRecvOffset).append(" || ");
-          if ((i == Const.UploadRetCode.FILE_NOT_EXIST.getCode()) || (i == Const.UploadRetCode.IO_ERROR_RETCODE.getCode()) || (i == 30700) || (i == 31500))
-          {
-            boolean bool = Environment.getExternalStorageState().equals("mounted");
-            l1 = FileUtils.getSdCardAvailableSize();
-            paramString = UploadGlobalConfig.getConfig().getDeviceInfo();
-            ((StringBuilder)localObject).append(" || ").append(" sdExist=").append(bool).append(" sdCardAvailableSize=").append(l1).append(" M deviceInfo=").append(paramString);
-          }
-          ((StringBuilder)localObject).append(" || ").append("controlPackTimeCost=").append(this.mControlPkgEndTime - this.mControlPkgStartTime);
-          this.mReportObj.errMsg = ((StringBuilder)localObject).toString();
         }
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" mState=");
+        localStringBuilder.append(getTaskState().getDesc());
+        localStringBuilder.append(" mProgressTotalLen=");
+        localStringBuilder.append(this.mFileSendOffset);
+        localStringBuilder.append(" mProgressRecvDataLen=");
+        localStringBuilder.append(this.mFileRecvOffset);
+        localStringBuilder.append(" || ");
+        if ((i == Const.UploadRetCode.FILE_NOT_EXIST.getCode()) || (i == Const.UploadRetCode.IO_ERROR_RETCODE.getCode()) || (i == 30700) || (i == 31500))
+        {
+          boolean bool = Environment.getExternalStorageState().equals("mounted");
+          l1 = FileUtils.getSdCardAvailableSize();
+          paramString = UploadGlobalConfig.getConfig().getDeviceInfo();
+          localStringBuilder.append(" || ");
+          localStringBuilder.append(" sdExist=");
+          localStringBuilder.append(bool);
+          localStringBuilder.append(" sdCardAvailableSize=");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(" M deviceInfo=");
+          localStringBuilder.append(paramString);
+        }
+        localStringBuilder.append(" || ");
+        localStringBuilder.append("controlPackTimeCost=");
+        localStringBuilder.append(this.mControlPkgEndTime - this.mControlPkgStartTime);
+        this.mReportObj.errMsg = localStringBuilder.toString();
       }
-      else
+      paramString = this.mReportObj;
+      paramString.flowId = this.flowId;
+      paramString.filePath = this.mFilePath;
+      long l1 = this.mStartTime;
+      if (l1 > this.mEndTime) {
+        this.mEndTime = l1;
+      }
+      l1 = this.mStartTime;
+      if (l1 != 0L)
       {
-        this.mReportObj.flowId = this.flowId;
-        this.mReportObj.filePath = this.mFilePath;
-        if (this.mStartTime > this.mEndTime) {
-          this.mEndTime = this.mStartTime;
-        }
-        if (this.mStartTime != 0L)
-        {
-          this.mReportObj.startTime = this.mStartTime;
-          this.mReportObj.endTime = this.mEndTime;
-        }
-        if (this.mControlPkgStartTime != 0L)
-        {
-          this.mReportObj.ctrlStart = this.mControlPkgStartTime;
-          this.mReportObj.ctrlEnd = this.mControlPkgEndTime;
-        }
-        if (this.mDataPkgStartTime != 0L)
-        {
-          this.mReportObj.dataStart = this.mDataPkgStartTime;
-          this.mReportObj.dataEnd = this.mDataPkgEndTime;
-        }
-        localObject = this.mReportObj;
-        if (this.mUploadRoute != null) {
-          break label601;
-        }
-        paramString = "N/A";
-        ((Report)localObject).serverIp = paramString;
-        if (this.mUploadRoute != null) {
-          break label612;
-        }
-        this.mReportObj.isIPV6 = false;
         paramString = this.mReportObj;
-        if (this.mUploadRoute != null) {
-          break label700;
-        }
-        paramInt = 0;
+        paramString.startTime = l1;
+        paramString.endTime = this.mEndTime;
       }
-      for (;;)
+      l1 = this.mControlPkgStartTime;
+      if (l1 != 0L)
       {
-        paramString.ipsrctype = paramInt;
-        this.mReportObj.networkType = UploadConfiguration.getCurrentNetworkCategory();
-        this.mReportObj.retry = this.mRetryCount;
-        this.mReportObj.content_type = "slice_upload";
-        this.mReportObj.concurrent = BaseUploadService.getFileSocketNumber();
-        this.mReportObj.num = BaseUploadService.getBatchControlNumber();
-        l1 = this.mReportObj.endTime;
-        l2 = this.mReportObj.startTime;
-        if (this.mReportObj.fileSize >= 0L) {
-          break label729;
-        }
+        paramString = this.mReportObj;
+        paramString.ctrlStart = l1;
+        paramString.ctrlEnd = this.mControlPkgEndTime;
+      }
+      l1 = this.mDataPkgStartTime;
+      if (l1 != 0L)
+      {
+        paramString = this.mReportObj;
+        paramString.dataStart = l1;
+        paramString.dataEnd = this.mDataPkgEndTime;
+      }
+      localObject = this.mReportObj;
+      paramString = this.mUploadRoute;
+      if (paramString == null) {
+        paramString = "N/A";
+      } else {
+        paramString = paramString.getIp();
+      }
+      ((Report)localObject).serverIp = paramString;
+      paramString = this.mUploadRoute;
+      paramInt = 0;
+      if (paramString == null) {
+        this.mReportObj.isIPV6 = false;
+      } else if (StringUtils.isIpv6String(paramString.getIp())) {
+        this.mReportObj.isIPV6 = true;
+      } else if ((this.mSessionPool.getmRouteStrategy() != null) && (this.mSessionPool.getmRouteStrategy().getServerRouteTable() != null) && (this.mUploadRoute.getIp().equals(this.mSessionPool.getmRouteStrategy().getServerRouteTable().getV6HostString()))) {
+        this.mReportObj.isIPV6 = true;
+      }
+      paramString = this.mReportObj;
+      localObject = this.mUploadRoute;
+      if ((localObject != null) && (((UploadRoute)localObject).getRouteCategory() != null)) {
+        paramInt = this.mUploadRoute.getRouteCategory().getType();
+      }
+      paramString.ipsrctype = paramInt;
+      this.mReportObj.networkType = UploadConfiguration.getCurrentNetworkCategory();
+      paramString = this.mReportObj;
+      paramString.retry = this.mRetryCount;
+      paramString.content_type = "slice_upload";
+      paramString.concurrent = BaseUploadService.getFileSocketNumber();
+      this.mReportObj.num = BaseUploadService.getBatchControlNumber();
+      l1 = this.mReportObj.endTime;
+      long l2 = this.mReportObj.startTime;
+      if (this.mReportObj.fileSize < 0L)
+      {
         this.mReported = true;
         return;
-        paramString = this.mClientIp;
-        break;
-        paramString = this.mUploadRoute.getIp();
-        break label466;
-        if (StringUtils.isIpv6String(this.mUploadRoute.getIp()))
-        {
-          this.mReportObj.isIPV6 = true;
-          break label487;
-        }
-        if ((this.mSessionPool.getmRouteStrategy() == null) || (this.mSessionPool.getmRouteStrategy().getServerRouteTable() == null) || (!this.mUploadRoute.getIp().equals(this.mSessionPool.getmRouteStrategy().getServerRouteTable().getV6HostString()))) {
-          break label487;
-        }
-        this.mReportObj.isIPV6 = true;
-        break label487;
-        if (this.mUploadRoute.getRouteCategory() == null) {
-          paramInt = 0;
-        } else {
-          paramInt = this.mUploadRoute.getRouteCategory().getType();
-        }
       }
-    } while ((this.mReportObj.fileSize >= l1 - l2) || (this.mReportObj.networkType == 3));
-    label700:
-    label729:
+      if ((this.mReportObj.fileSize < l1 - l2) && (this.mReportObj.networkType != 3)) {
+        this.mReported = true;
+      }
+      return;
+    }
     this.mReported = true;
   }
   
@@ -1161,7 +1485,7 @@ public abstract class UploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.task.UploadTask
  * JD-Core Version:    0.7.0.1
  */

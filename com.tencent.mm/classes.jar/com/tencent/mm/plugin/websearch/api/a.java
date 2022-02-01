@@ -1,59 +1,64 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.protocal.protobuf.cpj;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.fvd;
 import java.util.LinkedList;
 
 public abstract class a
-  extends m
+  extends p
 {
-  protected int Fb;
-  protected String cCX;
+  protected String HQI;
+  protected int Sc;
+  protected int WnM;
+  protected Bundle WnN;
+  protected String hVo;
   protected int mScene;
-  protected int uIB;
-  protected String uIC;
-  protected Bundle uID;
   
-  public final void IX(int paramInt)
+  public final void asT(int paramInt)
   {
-    this.uIB = paramInt;
+    this.WnM = paramInt;
   }
   
-  public void aB(LinkedList<cpj> paramLinkedList) {}
-  
-  public abstract String act();
-  
-  public abstract int acu();
-  
-  public final String bBW()
+  public final void biq(String paramString)
   {
-    return this.uIC;
+    this.hVo = paramString;
   }
   
-  public final int cZa()
+  public void cg(LinkedList<fvd> paramLinkedList) {}
+  
+  public final String getKeyword()
   {
-    return this.uIB;
+    return this.HQI;
   }
   
-  public final boolean cZb()
+  public final int ipD()
   {
-    return this.Fb == 0;
+    return this.WnM;
   }
   
-  public final Bundle cZc()
+  public final boolean ipE()
   {
-    return this.uID;
+    return this.Sc == 0;
   }
   
-  public final String cZd()
+  public final Bundle ipF()
   {
-    return this.cCX;
+    return this.WnN;
+  }
+  
+  public abstract String ipG();
+  
+  public abstract int ipH();
+  
+  public final String ipI()
+  {
+    return this.hVo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a
  * JD-Core Version:    0.7.0.1
  */

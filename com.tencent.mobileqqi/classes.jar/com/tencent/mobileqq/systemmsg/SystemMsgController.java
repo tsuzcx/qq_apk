@@ -19,12 +19,12 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import gly;
 import glz;
 import gma;
 import gmb;
 import gmc;
 import gmd;
-import gme;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,7 +42,7 @@ public class SystemMsgController
   private static final int g = -1001;
   private static final int h = 5000;
   private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new gmc(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new gmb(this, Looper.getMainLooper());
   private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
   private MessageForSystemMsg jdField_a_of_type_ComTencentMobileqqSystemmsgMessageForSystemMsg = null;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -250,12 +250,12 @@ public class SystemMsgController
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_d_of_type_Int = paramInt;
-    paramQQAppInterface.a(new glz(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new gly(this, paramQQAppInterface, paramInt));
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    paramQQAppInterface.a(new gme(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new gmd(this, paramQQAppInterface, paramBoolean));
   }
   
   public void a(MessageForSystemMsg paramMessageForSystemMsg)
@@ -299,7 +299,7 @@ public class SystemMsgController
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
     this.jdField_c_of_type_JavaLangString = paramQQAppInterface.a();
-    paramQQAppInterface.a(new gmd(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new gmc(this, paramQQAppInterface, paramBoolean));
   }
   
   public boolean a()
@@ -435,7 +435,7 @@ public class SystemMsgController
   public void b(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.f = paramInt;
-    paramQQAppInterface.a(new gma(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new glz(this, paramQQAppInterface, paramInt));
   }
   
   public boolean b(MessageHandler paramMessageHandler)
@@ -506,7 +506,7 @@ public class SystemMsgController
   public void c(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.e = paramInt;
-    paramQQAppInterface.a(new gmb(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new gma(this, paramQQAppInterface, paramInt));
   }
   
   public void d()

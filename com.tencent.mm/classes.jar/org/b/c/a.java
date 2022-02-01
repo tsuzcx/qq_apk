@@ -4,11 +4,11 @@ import org.b.d.i;
 
 public abstract interface a
 {
-  public abstract i azT(String paramString);
+  public abstract i bLx(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.c.a
  * JD-Core Version:    0.7.0.1
  */

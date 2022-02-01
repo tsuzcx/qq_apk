@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.ggm;
 import java.io.IOException;
 
 public final class k
   extends c
 {
-  private String bjm;
   private int code;
+  private String msg;
   
   public k(int paramInt, String paramString)
   {
     this.code = paramInt;
-    this.bjm = paramString;
+    this.msg = paramString;
   }
   
   public final String getName()
@@ -25,40 +25,40 @@ public final class k
   
   protected final void send()
   {
-    AppMethodBeat.i(26451);
-    cxn localcxn = new cxn();
+    AppMethodBeat.i(30133);
+    ggm localggm = new ggm();
     switch (this.code)
     {
     }
     for (;;)
     {
-      localcxn.xKK = this.bjm;
+      localggm.acbp = this.msg;
       try
       {
-        a.cYy();
-        r.a(20016, localcxn.toByteArray(), true);
-        AppMethodBeat.o(26451);
+        a.inM();
+        r.a(20016, localggm.toByteArray(), true);
+        AppMethodBeat.o(30133);
         return;
       }
       catch (IOException localIOException)
       {
-        AppMethodBeat.o(26451);
+        AppMethodBeat.o(30133);
       }
-      localcxn.xRf = 0;
+      localggm.abIu = 0;
       continue;
-      localcxn.xRf = 196610;
+      localggm.abIu = 196610;
       continue;
-      localcxn.xRf = 196613;
+      localggm.abIu = 196613;
       continue;
-      localcxn.xRf = 196614;
+      localggm.abIu = 196614;
       continue;
-      localcxn.xRf = 196615;
+      localggm.abIu = 196615;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.k
  * JD-Core Version:    0.7.0.1
  */

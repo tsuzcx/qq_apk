@@ -21,13 +21,14 @@ public final class FeedCloudWrite$StDoCommentReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 50 }, new String[] { "extInfo", "commentType", "comment", "feed", "from", "busiReqData" }, new Object[] { null, Integer.valueOf(0), null, null, Integer.valueOf(0), localByteStringMicro }, StDoCommentReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 40, 50 }, new String[] { "extInfo", "commentType", "comment", "feed", "from", "busiReqData" }, new Object[] { null, localInteger, null, null, localInteger, localByteStringMicro }, StDoCommentReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudWrite.StDoCommentReq
  * JD-Core Version:    0.7.0.1
  */

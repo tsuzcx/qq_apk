@@ -35,22 +35,24 @@ public final class h
   {
     if (a(paramInt))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt = localc.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new g("type mismatch.");
-      case 12: 
-        paramDouble = 0.0D;
+        switch (paramInt)
+        {
+        default: 
+          throw new g("type mismatch.");
+        case 5: 
+          return this.a.getDouble();
+        }
+        return this.a.getFloat();
       }
+      return 0.0D;
     }
-    while (!paramBoolean)
-    {
-      c localc;
+    if (!paramBoolean) {
       return paramDouble;
-      return this.a.getFloat();
-      return this.a.getDouble();
     }
     throw new g("require field not exist.");
   }
@@ -59,21 +61,20 @@ public final class h
   {
     if (a(paramInt))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt = localc.a;
+      if (paramInt != 4)
       {
-      default: 
+        if (paramInt == 12) {
+          return 0.0F;
+        }
         throw new g("type mismatch.");
-      case 12: 
-        paramFloat = 0.0F;
       }
-    }
-    while (!paramBoolean)
-    {
-      c localc;
-      return paramFloat;
       return this.a.getFloat();
+    }
+    if (!paramBoolean) {
+      return paramFloat;
     }
     throw new g("require field not exist.");
   }
@@ -91,44 +92,39 @@ public final class h
     return 1;
   }
   
-  private Map a(Map paramMap1, Map paramMap2, int paramInt, boolean paramBoolean)
+  private <K, V> Map<K, V> a(Map<K, V> paramMap1, Map<K, V> paramMap2, int paramInt, boolean paramBoolean)
   {
-    if ((paramMap2 == null) || (paramMap2.isEmpty())) {
-      paramMap2 = new HashMap();
-    }
-    do
+    if ((paramMap2 != null) && (!paramMap2.isEmpty()))
     {
-      return paramMap2;
-      paramMap2 = (Map.Entry)paramMap2.entrySet().iterator().next();
-      Object localObject1 = paramMap2.getKey();
-      Object localObject2 = paramMap2.getValue();
+      Object localObject = (Map.Entry)paramMap2.entrySet().iterator().next();
+      paramMap2 = ((Map.Entry)localObject).getKey();
+      localObject = ((Map.Entry)localObject).getValue();
       if (a(paramInt))
       {
-        paramMap2 = new c();
-        a(paramMap2, this.a);
-        switch (paramMap2.a)
+        c localc = new c();
+        a(localc, this.a);
+        if (localc.a == 8)
         {
-        default: 
-          throw new g("type mismatch.");
-        }
-        int i = a(0, 0, true);
-        if (i < 0) {
-          throw new g("size invalid: " + i);
-        }
-        paramInt = 0;
-        for (;;)
-        {
-          paramMap2 = paramMap1;
-          if (paramInt >= i) {
-            break;
+          int i = a(0, 0, true);
+          if (i >= 0)
+          {
+            paramInt = 0;
+            while (paramInt < i)
+            {
+              paramMap1.put(a(paramMap2, 0, true), a(localObject, 1, true));
+              paramInt += 1;
+            }
           }
-          paramMap1.put(a(localObject1, 0, true), a(localObject2, 1, true));
-          paramInt += 1;
+          throw new g("size invalid: ".concat(String.valueOf(i)));
         }
+        throw new g("type mismatch.");
       }
-      paramMap2 = paramMap1;
-    } while (!paramBoolean);
-    throw new g("require field not exist.");
+      if (!paramBoolean) {
+        return paramMap1;
+      }
+      throw new g("require field not exist.");
+    }
+    return new HashMap();
   }
   
   private void a()
@@ -145,30 +141,57 @@ public final class h
   {
     byte b2 = 0;
     byte b1 = 0;
-    c localc;
     switch (paramByte)
     {
     default: 
       throw new g("invalid type.");
-    case 0: 
-      this.a.position(this.a.position() + 1);
+    case 13: 
+      localObject = new c();
+      a((c)localObject, this.a);
+      if (((c)localObject).a == 0)
+      {
+        paramByte = a(0, 0, true);
+        localObject = this.a;
+        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder("skipField with invalid type, type value: ");
+      localStringBuilder.append(paramByte);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(((c)localObject).a);
+      throw new g(localStringBuilder.toString());
     case 11: 
     case 12: 
       return;
-    case 1: 
-      this.a.position(2 + this.a.position());
+    case 10: 
+      a();
       return;
-    case 2: 
-      this.a.position(this.a.position() + 4);
+    case 9: 
+      b2 = a(0, 0, true);
+      paramByte = b1;
+      while (paramByte < b2)
+      {
+        localObject = new c();
+        a((c)localObject, this.a);
+        a(((c)localObject).a);
+        paramByte += 1;
+      }
       return;
-    case 3: 
-      this.a.position(this.a.position() + 8);
+    case 8: 
+      b1 = a(0, 0, true);
+      paramByte = b2;
+      while (paramByte < b1 << 1)
+      {
+        localObject = new c();
+        a((c)localObject, this.a);
+        a(((c)localObject).a);
+        paramByte += 1;
+      }
       return;
-    case 4: 
-      this.a.position(this.a.position() + 4);
-      return;
-    case 5: 
-      this.a.position(this.a.position() + 8);
+    case 7: 
+      paramByte = this.a.getInt();
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
       return;
     case 6: 
       b1 = this.a.get();
@@ -176,43 +199,32 @@ public final class h
       if (b1 < 0) {
         paramByte = b1 + 256;
       }
-      this.a.position(paramByte + this.a.position());
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + paramByte);
       return;
-    case 7: 
-      paramByte = this.a.getInt();
-      this.a.position(paramByte + this.a.position());
+    case 5: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 8);
       return;
-    case 8: 
-      b2 = a(0, 0, true);
-      paramByte = b1;
-      while (paramByte < b2 << 1)
-      {
-        localc = new c();
-        a(localc, this.a);
-        a(localc.a);
-        paramByte += 1;
-      }
-    case 9: 
-      b1 = a(0, 0, true);
-      paramByte = b2;
-      while (paramByte < b1)
-      {
-        localc = new c();
-        a(localc, this.a);
-        a(localc.a);
-        paramByte += 1;
-      }
-    case 13: 
-      localc = new c();
-      a(localc, this.a);
-      if (localc.a != 0) {
-        throw new g("skipField with invalid type, type value: " + paramByte + ", " + localc.a);
-      }
-      paramByte = a(0, 0, true);
-      this.a.position(paramByte + this.a.position());
+    case 4: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 4);
+      return;
+    case 3: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 8);
+      return;
+    case 2: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 4);
+      return;
+    case 1: 
+      localObject = this.a;
+      ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 2);
       return;
     }
-    a();
+    Object localObject = this.a;
+    ((ByteBuffer)localObject).position(((ByteBuffer)localObject).position() + 1);
   }
   
   private boolean a(int paramInt)
@@ -222,100 +234,94 @@ public final class h
       c localc = new c();
       for (;;)
       {
-        int i = a(localc, this.a.duplicate());
-        if ((paramInt <= localc.b) || (localc.a == 11))
-        {
-          if (paramInt != localc.b) {
-            break;
-          }
-          return true;
+        i = a(localc, this.a.duplicate());
+        if ((paramInt <= localc.b) || (localc.a == 11)) {
+          break;
         }
-        this.a.position(i + this.a.position());
+        this.a.position(this.a.position() + i);
         a(localc.a);
       }
-      return false;
+      int i = localc.b;
+      return paramInt == i;
     }
-    catch (g localg)
-    {
-      return false;
-    }
-    catch (BufferUnderflowException localBufferUnderflowException) {}
+    catch (g|BufferUnderflowException localg) {}
+    return false;
   }
   
-  private Object[] a(Object[] paramArrayOfObject, int paramInt, boolean paramBoolean)
+  private <T> T[] a(T[] paramArrayOfT, int paramInt, boolean paramBoolean)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      throw new g("unable to get type of key and value.");
+    if ((paramArrayOfT != null) && (paramArrayOfT.length != 0)) {
+      return b(paramArrayOfT[0], paramInt, paramBoolean);
     }
-    return b(paramArrayOfObject[0], paramInt, paramBoolean);
+    throw new g("unable to get type of key and value.");
   }
   
-  private Object[] b(Object paramObject, int paramInt, boolean paramBoolean)
+  private <T> T[] b(T paramT, int paramInt, boolean paramBoolean)
   {
     if (a(paramInt))
     {
-      localObject = new c();
+      Object localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramObject.getClass(), i);
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfObject;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          localObject = (Object[])Array.newInstance(paramT.getClass(), i);
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject[paramInt] = a(paramT, 0, true);
+            paramInt += 1;
+          }
+          return localObject;
         }
-        arrayOfObject[paramInt] = a(paramObject, 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean) {
+      return null;
     }
-    Object localObject = null;
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   private boolean[] d(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      localObject = new boolean[i];
-      paramInt = 0;
-      if (paramInt < i)
-      {
-        if (a((byte)0, 0, true) != 0) {}
-        for (paramBoolean = true;; paramBoolean = false)
+        int i = a(0, 0, true);
+        if (i >= 0)
         {
-          localObject[paramInt] = paramBoolean;
-          paramInt += 1;
-          break;
+          boolean[] arrayOfBoolean = new boolean[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfBoolean;
+            if (paramInt >= i) {
+              break;
+            }
+            if (a((byte)0, 0, true) != 0) {
+              paramBoolean = true;
+            } else {
+              paramBoolean = false;
+            }
+            arrayOfBoolean[paramInt] = paramBoolean;
+            paramInt += 1;
+          }
         }
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    while (!paramBoolean)
+    if (!paramBoolean)
     {
-      int i;
+      localObject = null;
       return localObject;
     }
     throw new g("require field not exist.");
@@ -323,193 +329,202 @@ public final class h
   
   private short[] e(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      short[] arrayOfShort = new short[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfShort;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          short[] arrayOfShort = new short[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfShort;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfShort[paramInt] = a(arrayOfShort[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfShort[paramInt] = a(arrayOfShort[0], 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   private int[] f(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      int[] arrayOfInt = new int[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfInt;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          int[] arrayOfInt = new int[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfInt;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfInt[paramInt] = a(arrayOfInt[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfInt[paramInt] = a(arrayOfInt[0], 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   private long[] g(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      long[] arrayOfLong = new long[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfLong;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          long[] arrayOfLong = new long[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfLong;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfLong[paramInt] = a(arrayOfLong[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfLong[paramInt] = a(arrayOfLong[0], 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   private float[] h(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      float[] arrayOfFloat = new float[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfFloat;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          float[] arrayOfFloat = new float[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfFloat;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfFloat[paramInt] = a(arrayOfFloat[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfFloat[paramInt] = a(arrayOfFloat[0], 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   private double[] i(int paramInt, boolean paramBoolean)
   {
-    Object localObject = null;
+    Object localObject;
     if (a(paramInt))
     {
       localObject = new c();
       a((c)localObject, this.a);
-      switch (((c)localObject).a)
+      if (((c)localObject).a == 9)
       {
-      default: 
-        throw new g("type mismatch.");
-      }
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      double[] arrayOfDouble = new double[i];
-      paramInt = 0;
-      for (;;)
-      {
-        localObject = arrayOfDouble;
-        if (paramInt >= i) {
-          break;
+        int i = a(0, 0, true);
+        if (i >= 0)
+        {
+          double[] arrayOfDouble = new double[i];
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = arrayOfDouble;
+            if (paramInt >= i) {
+              break;
+            }
+            arrayOfDouble[paramInt] = a(arrayOfDouble[0], 0, true);
+            paramInt += 1;
+          }
         }
-        arrayOfDouble[paramInt] = a(arrayOfDouble[0], 0, true);
-        paramInt += 1;
+        throw new g("size invalid: ".concat(String.valueOf(i)));
       }
+      throw new g("type mismatch.");
     }
-    if (paramBoolean) {
-      throw new g("require field not exist.");
+    if (!paramBoolean)
+    {
+      localObject = null;
+      return localObject;
     }
-    return localObject;
+    throw new g("require field not exist.");
   }
   
   public final byte a(byte paramByte, int paramInt, boolean paramBoolean)
   {
     if (a(paramInt))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt = localc.a;
+      if (paramInt != 0)
       {
-      default: 
+        if (paramInt == 12) {
+          return 0;
+        }
         throw new g("type mismatch.");
-      case 12: 
-        paramByte = 0;
       }
-    }
-    while (!paramBoolean)
-    {
-      c localc;
-      return paramByte;
       return this.a.get();
+    }
+    if (!paramBoolean) {
+      return paramByte;
     }
     throw new g("require field not exist.");
   }
@@ -518,23 +533,26 @@ public final class h
   {
     if (a(paramInt2))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt1 = localc.a;
+      if (paramInt1 != 12)
       {
-      default: 
-        throw new g("type mismatch.");
-      case 12: 
-        paramInt1 = 0;
+        switch (paramInt1)
+        {
+        default: 
+          throw new g("type mismatch.");
+        case 2: 
+          return this.a.getInt();
+        case 1: 
+          return this.a.getShort();
+        }
+        return this.a.get();
       }
+      return 0;
     }
-    while (!paramBoolean)
-    {
-      c localc;
+    if (!paramBoolean) {
       return paramInt1;
-      return this.a.get();
-      return this.a.getShort();
-      return this.a.getInt();
     }
     throw new g("require field not exist.");
   }
@@ -549,145 +567,150 @@ public final class h
   {
     if (a(paramInt))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt = localc.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new g("type mismatch.");
-      case 12: 
-        paramLong = 0L;
+        switch (paramInt)
+        {
+        default: 
+          throw new g("type mismatch.");
+        case 3: 
+          return this.a.getLong();
+        case 2: 
+          return this.a.getInt();
+        case 1: 
+          return this.a.getShort();
+        }
+        return this.a.get();
       }
+      return 0L;
     }
-    while (!paramBoolean)
-    {
-      c localc;
+    if (!paramBoolean) {
       return paramLong;
-      return this.a.get();
-      return this.a.getShort();
-      return this.a.getInt();
-      return this.a.getLong();
     }
     throw new g("require field not exist.");
   }
   
   public final j a(j paramj, int paramInt, boolean paramBoolean)
   {
-    c localc = null;
-    if (a(paramInt))
-    {
+    if (a(paramInt)) {
       try
       {
         paramj = (j)paramj.getClass().newInstance();
-        localc = new c();
+        c localc = new c();
         a(localc, this.a);
-        if (localc.a != 10) {
-          throw new g("type mismatch.");
+        if (localc.a == 10)
+        {
+          paramj.a(this);
+          a();
+          return paramj;
         }
+        throw new g("type mismatch.");
       }
       catch (Exception paramj)
       {
         throw new g(paramj.getMessage());
       }
-      paramj.a(this);
-      a();
     }
-    do
-    {
-      return paramj;
-      paramj = localc;
-    } while (!paramBoolean);
+    if (!paramBoolean) {
+      return null;
+    }
     throw new g("require field not exist.");
   }
   
-  public final Object a(Object paramObject, int paramInt, boolean paramBoolean)
+  public final <T> Object a(T paramT, int paramInt, boolean paramBoolean)
   {
+    boolean bool2 = paramT instanceof Byte;
     int i = 0;
-    boolean bool = false;
-    if ((paramObject instanceof Byte)) {
+    boolean bool1 = false;
+    if (bool2) {
       return Byte.valueOf(a((byte)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Boolean))
+    if ((paramT instanceof Boolean))
     {
       if (a((byte)0, paramInt, paramBoolean) != 0) {
-        bool = true;
+        bool1 = true;
       }
-      return Boolean.valueOf(bool);
+      return Boolean.valueOf(bool1);
     }
-    if ((paramObject instanceof Short)) {
+    if ((paramT instanceof Short)) {
       return Short.valueOf(a((short)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Integer)) {
+    if ((paramT instanceof Integer)) {
       return Integer.valueOf(a(0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Long)) {
+    if ((paramT instanceof Long)) {
       return Long.valueOf(a(0L, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Float)) {
+    if ((paramT instanceof Float)) {
       return Float.valueOf(a(0.0F, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Double)) {
+    if ((paramT instanceof Double)) {
       return Double.valueOf(a(0.0D, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof String)) {
+    if ((paramT instanceof String)) {
       return String.valueOf(b(paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Map))
+    if ((paramT instanceof Map))
     {
-      paramObject = (Map)paramObject;
-      return (HashMap)a(new HashMap(), paramObject, paramInt, paramBoolean);
+      paramT = (Map)paramT;
+      return (HashMap)a(new HashMap(), paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof List))
+    if ((paramT instanceof List))
     {
-      paramObject = (List)paramObject;
-      if ((paramObject == null) || (paramObject.isEmpty())) {
-        return new ArrayList();
-      }
-      paramObject = b(paramObject.get(0), paramInt, paramBoolean);
-      if (paramObject == null) {
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      paramInt = i;
-      while (paramInt < paramObject.length)
+      paramT = (List)paramT;
+      if ((paramT != null) && (!paramT.isEmpty()))
       {
-        localArrayList.add(paramObject[paramInt]);
-        paramInt += 1;
+        paramT = b(paramT.get(0), paramInt, paramBoolean);
+        if (paramT == null) {
+          return null;
+        }
+        ArrayList localArrayList = new ArrayList();
+        paramInt = i;
+        while (paramInt < paramT.length)
+        {
+          localArrayList.add(paramT[paramInt]);
+          paramInt += 1;
+        }
+        return localArrayList;
       }
-      return localArrayList;
+      return new ArrayList();
     }
-    if ((paramObject instanceof j)) {
-      return a((j)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof j)) {
+      return a((j)paramT, paramInt, paramBoolean);
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      if (((paramObject instanceof byte[])) || ((paramObject instanceof Byte[]))) {
-        return c(paramInt, paramBoolean);
+      if ((!(paramT instanceof byte[])) && (!(paramT instanceof Byte[])))
+      {
+        if ((paramT instanceof boolean[])) {
+          return d(paramInt, paramBoolean);
+        }
+        if ((paramT instanceof short[])) {
+          return e(paramInt, paramBoolean);
+        }
+        if ((paramT instanceof int[])) {
+          return f(paramInt, paramBoolean);
+        }
+        if ((paramT instanceof long[])) {
+          return g(paramInt, paramBoolean);
+        }
+        if ((paramT instanceof float[])) {
+          return h(paramInt, paramBoolean);
+        }
+        if ((paramT instanceof double[])) {
+          return i(paramInt, paramBoolean);
+        }
+        return a((Object[])paramT, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof boolean[])) {
-        return d(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof short[])) {
-        return e(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof int[])) {
-        return f(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof long[])) {
-        return g(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof float[])) {
-        return h(paramInt, paramBoolean);
-      }
-      if ((paramObject instanceof double[])) {
-        return i(paramInt, paramBoolean);
-      }
-      return a((Object[])paramObject, paramInt, paramBoolean);
+      return c(paramInt, paramBoolean);
     }
     throw new g("read object error: unsupport type.");
   }
   
-  public final HashMap a(Map paramMap, int paramInt, boolean paramBoolean)
+  public final <K, V> HashMap<K, V> a(Map<K, V> paramMap, int paramInt, boolean paramBoolean)
   {
     return (HashMap)a(new HashMap(), paramMap, paramInt, paramBoolean);
   }
@@ -696,139 +719,158 @@ public final class h
   {
     if (a(paramInt))
     {
-      localc = new c();
+      c localc = new c();
       a(localc, this.a);
-      switch (localc.a)
+      paramInt = localc.a;
+      if (paramInt != 12)
       {
-      default: 
-        throw new g("type mismatch.");
-      case 12: 
-        paramShort = 0;
+        switch (paramInt)
+        {
+        default: 
+          throw new g("type mismatch.");
+        case 1: 
+          return this.a.getShort();
+        }
+        return (short)this.a.get();
       }
+      return 0;
     }
-    while (!paramBoolean)
-    {
-      c localc;
+    if (!paramBoolean) {
       return paramShort;
-      return (short)this.a.get();
-      return this.a.getShort();
     }
     throw new g("require field not exist.");
   }
   
   public final void a(byte[] paramArrayOfByte)
   {
-    if (this.a != null) {
-      this.a.clear();
+    ByteBuffer localByteBuffer = this.a;
+    if (localByteBuffer != null) {
+      localByteBuffer.clear();
     }
     this.a = ByteBuffer.wrap(paramArrayOfByte);
   }
   
   public final boolean a(int paramInt, boolean paramBoolean)
   {
-    boolean bool = false;
-    if (a((byte)0, paramInt, paramBoolean) != 0) {
-      bool = true;
-    }
-    return bool;
+    return a((byte)0, paramInt, paramBoolean) != 0;
   }
   
   public final String b(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new c();
-      a((c)localObject1, this.a);
-      switch (((c)localObject1).a)
+      localObject = new c();
+      a((c)localObject, this.a);
+      switch (((c)localObject).a)
       {
       default: 
         throw new g("type mismatch.");
-      case 6: 
-        i = this.a.get();
-        paramInt = i;
-        if (i < 0) {
-          paramInt = i + 256;
+      case 7: 
+        paramInt = this.a.getInt();
+        if ((paramInt <= 104857600) && (paramInt >= 0))
+        {
+          localObject = new byte[paramInt];
+          this.a.get((byte[])localObject);
         }
-        localObject2 = new byte[paramInt];
-        this.a.get((byte[])localObject2);
+        break;
       }
     }
-    while (!paramBoolean)
+    try
     {
-      Object localObject2;
-      try
-      {
-        int i;
-        localObject1 = new String((byte[])localObject2, this.b);
-        return localObject1;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-      {
-        return new String((byte[])localObject2);
-      }
-      paramInt = this.a.getInt();
-      if ((paramInt > 104857600) || (paramInt < 0)) {
-        throw new g("String too long: " + paramInt);
-      }
-      byte[] arrayOfByte = new byte[paramInt];
-      this.a.get(arrayOfByte);
-      try
-      {
-        localObject2 = new String(arrayOfByte, this.b);
-        return localObject2;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-      {
-        return new String(arrayOfByte);
-      }
+      str = new String((byte[])localObject, this.b);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      String str;
+      label118:
+      int i;
+      break label118;
+    }
+    return new String((byte[])localObject);
+    throw new g("String too long: ".concat(String.valueOf(paramInt)));
+    i = this.a.get();
+    paramInt = i;
+    if (i < 0) {
+      paramInt = i + 256;
+    }
+    Object localObject = new byte[paramInt];
+    this.a.get((byte[])localObject);
+    try
+    {
+      str = new String((byte[])localObject, this.b);
+      return str;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      label199:
+      break label199;
+    }
+    return new String((byte[])localObject);
+    if (!paramBoolean) {
+      return null;
     }
     throw new g("require field not exist.");
   }
   
   public final byte[] c(int paramInt, boolean paramBoolean)
   {
-    Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new c();
-      a((c)localObject1, this.a);
-      switch (((c)localObject1).a)
+      Object localObject = new c();
+      a((c)localObject, this.a);
+      int i = ((c)localObject).a;
+      if (i != 9)
       {
-      default: 
+        if (i == 13)
+        {
+          c localc = new c();
+          a(localc, this.a);
+          if (localc.a == 0)
+          {
+            i = a(0, 0, true);
+            if (i >= 0)
+            {
+              localObject = new byte[i];
+              this.a.get((byte[])localObject);
+              return localObject;
+            }
+            localStringBuilder = new StringBuilder("invalid size, tag: ");
+            localStringBuilder.append(paramInt);
+            localStringBuilder.append(", type: ");
+            localStringBuilder.append(((c)localObject).a);
+            localStringBuilder.append(", ");
+            localStringBuilder.append(localc.a);
+            localStringBuilder.append(", size: ");
+            localStringBuilder.append(i);
+            throw new g(localStringBuilder.toString());
+          }
+          StringBuilder localStringBuilder = new StringBuilder("type mismatch, tag: ");
+          localStringBuilder.append(paramInt);
+          localStringBuilder.append(", type: ");
+          localStringBuilder.append(((c)localObject).a);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(localc.a);
+          throw new g(localStringBuilder.toString());
+        }
         throw new g("type mismatch.");
-      case 13: 
-        localObject2 = new c();
-        a((c)localObject2, this.a);
-        if (((c)localObject2).a != 0) {
-          throw new g("type mismatch, tag: " + paramInt + ", type: " + ((c)localObject1).a + ", " + ((c)localObject2).a);
-        }
-        i = a(0, 0, true);
-        if (i < 0) {
-          throw new g("invalid size, tag: " + paramInt + ", type: " + ((c)localObject1).a + ", " + ((c)localObject2).a + ", size: " + i);
-        }
-        localObject1 = new byte[i];
-        this.a.get((byte[])localObject1);
       }
-    }
-    while (!paramBoolean)
-    {
-      return localObject1;
-      int i = a(0, 0, true);
-      if (i < 0) {
-        throw new g("size invalid: " + i);
-      }
-      Object localObject2 = new byte[i];
-      paramInt = 0;
-      for (;;)
+      i = a(0, 0, true);
+      if (i >= 0)
       {
-        localObject1 = localObject2;
-        if (paramInt >= i) {
-          break;
+        localObject = new byte[i];
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject[paramInt] = a(localObject[0], 0, true);
+          paramInt += 1;
         }
-        localObject2[paramInt] = a(localObject2[0], 0, true);
-        paramInt += 1;
+        return localObject;
       }
+      throw new g("size invalid: ".concat(String.valueOf(i)));
+    }
+    if (!paramBoolean) {
+      return null;
     }
     throw new g("require field not exist.");
   }

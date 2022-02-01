@@ -1,34 +1,31 @@
 package com.tencent.mm.vending.h;
 
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 
 public final class b
+  implements a
 {
-  private static b aao = new b();
-  private HandlerThread aal = new HandlerThread("Vending-LogicThread");
-  private Handler aam;
+  private Handler adA;
   
-  private b()
+  public b(Handler paramHandler)
   {
-    this.aal.start();
-    this.aam = new Handler(this.aal.getLooper());
+    this.adA = paramHandler;
   }
   
-  public static b lJ()
+  public final void b(Runnable paramRunnable, long paramLong)
   {
-    return aao;
+    this.adA.postDelayed(paramRunnable, paramLong);
   }
   
   public final Looper getLooper()
   {
-    return this.aal.getLooper();
+    return this.adA.getLooper();
   }
   
-  public final boolean isRunning()
+  public final void n(Runnable paramRunnable)
   {
-    return this.aal.isAlive();
+    this.adA.post(paramRunnable);
   }
 }
 

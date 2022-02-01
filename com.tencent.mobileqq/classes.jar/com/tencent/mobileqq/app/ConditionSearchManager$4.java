@@ -1,22 +1,29 @@
 package com.tencent.mobileqq.app;
 
-import alpy;
 import com.tencent.qphone.base.util.QLog;
 
-public class ConditionSearchManager$4
+class ConditionSearchManager$4
   implements Runnable
 {
-  public ConditionSearchManager$4(alpy paramalpy) {}
+  ConditionSearchManager$4(ConditionSearchManager paramConditionSearchManager) {}
   
   public void run()
   {
-    int i = -1;
-    int j = this.this$0.a();
+    int j = this.this$0.d();
+    int i;
     if (j != 0) {
       i = this.this$0.a(j);
+    } else {
+      i = -1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pendCardParseRequest | check reuslt = ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" | update result = ");
+      localStringBuilder.append(i);
+      QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
     }
     if (j == 0) {
       ThreadManagerV2.excute(new ConditionSearchManager.4.1(this), 128, null, true);
@@ -25,7 +32,7 @@ public class ConditionSearchManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4
  * JD-Core Version:    0.7.0.1
  */

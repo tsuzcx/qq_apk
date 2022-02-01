@@ -48,47 +48,53 @@ public class CommandManager
   
   private void invokeMethod(Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((paramMethod == null) || (paramArrayOfObject == null)) {
-      return;
-    }
-    try
+    if (paramMethod != null)
     {
-      WeiyunClient.class.getMethod(paramMethod.getName(), paramMethod.getParameterTypes()).invoke(WeiyunClient.getInstance(), paramArrayOfObject);
-      return;
-    }
-    catch (Throwable paramMethod)
-    {
-      WyLog.e("CommandManager", paramMethod);
+      if (paramArrayOfObject == null) {
+        return;
+      }
+      try
+      {
+        WeiyunClient.class.getMethod(paramMethod.getName(), paramMethod.getParameterTypes()).invoke(WeiyunClient.getInstance(), paramArrayOfObject);
+        return;
+      }
+      catch (Throwable paramMethod)
+      {
+        WyLog.e("CommandManager", paramMethod);
+      }
     }
   }
   
   private void sendMessage(Method paramMethod, Object[] paramArrayOfObject)
   {
-    if ((paramMethod == null) || (paramArrayOfObject == null)) {
-      return;
+    if (paramMethod != null)
+    {
+      if (paramArrayOfObject == null) {
+        return;
+      }
+      Message localMessage = Message.obtain();
+      localMessage.what = 1;
+      localMessage.obj = new Object[] { paramMethod, paramArrayOfObject };
+      this.mHandler.sendMessage(localMessage);
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    localMessage.obj = new Object[] { paramMethod, paramArrayOfObject };
-    this.mHandler.sendMessage(localMessage);
   }
   
   public void checkShareFile(List<DirItem> paramList, List<FileItem> paramList1, List<String> paramList2, CheckShareFileCallback paramCheckShareFileCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("checkShareFile", new Class[] { List.class, List.class, List.class, CheckShareFileCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("checkShareFile", new Class[] { List.class, List.class, List.class, CheckShareFileCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label40:
-      break label40;
+      Method localMethod;
+      label36:
+      break label36;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramList, paramList1, paramList2, paramCheckShareFileCallback });
+      sendMessage(localMethod, new Object[] { paramList, paramList1, paramList2, paramCheckShareFileCallback });
       return;
     }
     WyLog.e("CommandManager", "method checkShareFile is null.");
@@ -96,20 +102,20 @@ public class CommandManager
   
   public void deleteDirFile(List<DirItem> paramList, List<FileItem> paramList1, DeleteDirFileCallback paramDeleteDirFileCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("deleteDirFile", new Class[] { List.class, List.class, DeleteDirFileCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("deleteDirFile", new Class[] { List.class, List.class, DeleteDirFileCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label35:
-      break label35;
+      Method localMethod;
+      label31:
+      break label31;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramList, paramList1, paramDeleteDirFileCallback });
+      sendMessage(localMethod, new Object[] { paramList, paramList1, paramDeleteDirFileCallback });
       return;
     }
     WyLog.e("CommandManager", "method deleteDirFile is null.");
@@ -117,20 +123,20 @@ public class CommandManager
   
   public void fetchFileList(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, FetchFileListCallback paramFetchFileListCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("fetchFileList", new Class[] { Integer.TYPE, Boolean.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, FetchFileListCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("fetchFileList", new Class[] { Integer.TYPE, Boolean.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, FetchFileListCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label56:
-      break label56;
+      Method localMethod;
+      label52:
+      break label52;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramFetchFileListCallback });
+      sendMessage(localMethod, new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramFetchFileListCallback });
       return;
     }
     WyLog.e("CommandManager", "method fetchFileList is null.");
@@ -138,20 +144,20 @@ public class CommandManager
   
   public void fetchFileListRecursively(int paramInt1, int paramInt2, int paramInt3, int paramInt4, FetchFileListCallback paramFetchFileListCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("fetchFileListRecursively", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, FetchFileListCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("fetchFileListRecursively", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, FetchFileListCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label49:
-      break label49;
+      Method localMethod;
+      label45:
+      break label45;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramFetchFileListCallback });
+      sendMessage(localMethod, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramFetchFileListCallback });
       return;
     }
     WyLog.e("CommandManager", "method fetchFileListRecursively is null.");
@@ -159,20 +165,20 @@ public class CommandManager
   
   public void fetchPOI(List<PoiItem> paramList, FetchPOICallback paramFetchPOICallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("fetchPOI", new Class[] { List.class, FetchPOICallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("fetchPOI", new Class[] { List.class, FetchPOICallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label28:
-      break label28;
+      Method localMethod;
+      label25:
+      break label25;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramList, paramFetchPOICallback });
+      sendMessage(localMethod, new Object[] { paramList, paramFetchPOICallback });
       return;
     }
     WyLog.e("CommandManager", "method fetchPOI is null.");
@@ -180,20 +186,20 @@ public class CommandManager
   
   public void fetchPicVideoInfo(FetchPicVideoInfoCallback paramFetchPicVideoInfoCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("fetchPicVideoInfo", new Class[] { FetchPicVideoInfoCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("fetchPicVideoInfo", new Class[] { FetchPicVideoInfoCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label21:
-      break label21;
+      Method localMethod;
+      label20:
+      break label20;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramFetchPicVideoInfoCallback });
+      sendMessage(localMethod, new Object[] { paramFetchPicVideoInfoCallback });
       return;
     }
     WyLog.e("CommandManager", "method fetchPicVideoInfo is null.");
@@ -201,20 +207,20 @@ public class CommandManager
   
   public void fetchUserInfo(FetchUserInfoCallback paramFetchUserInfoCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("fetchUserInfo", new Class[] { FetchUserInfoCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("fetchUserInfo", new Class[] { FetchUserInfoCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label21:
-      break label21;
+      Method localMethod;
+      label20:
+      break label20;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramFetchUserInfoCallback });
+      sendMessage(localMethod, new Object[] { paramFetchUserInfoCallback });
       return;
     }
     WyLog.e("CommandManager", "method fetchUserInfo is null.");
@@ -245,37 +251,33 @@ public class CommandManager
     boolean bool;
     if (WeiyunClient.isLoaded()) {
       bool = true;
+    } else if (TextUtils.isEmpty(paramString)) {
+      bool = false;
+    } else {
+      bool = WeiyunClient.loadLibrary(paramString);
     }
-    for (;;)
-    {
-      if (bool) {
-        WeiyunClient.getInstance().init(this.mSdkContext);
-      }
-      return bool;
-      if (TextUtils.isEmpty(paramString)) {
-        bool = false;
-      } else {
-        bool = WeiyunClient.loadLibrary(paramString);
-      }
+    if (bool) {
+      WeiyunClient.getInstance().init(this.mSdkContext);
     }
+    return bool;
   }
   
   public void modifyFile(FileItem paramFileItem1, FileItem paramFileItem2, ModifyFileCallback paramModifyFileCallback)
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("modifyFile", new Class[] { FileItem.class, FileItem.class, ModifyFileCallback.class });
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("modifyFile", new Class[] { FileItem.class, FileItem.class, ModifyFileCallback.class });
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label35:
-      break label35;
+      Method localMethod;
+      label31:
+      break label31;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[] { paramFileItem1, paramFileItem2, paramModifyFileCallback });
+      sendMessage(localMethod, new Object[] { paramFileItem1, paramFileItem2, paramModifyFileCallback });
       return;
     }
     WyLog.e("CommandManager", "method modifyFile is null.");
@@ -283,20 +285,20 @@ public class CommandManager
   
   public void resetWeiyunSdk()
   {
-    Object localObject = null;
     try
     {
-      Method localMethod = CommandManager.class.getMethod("reset", new Class[0]);
-      localObject = localMethod;
+      localMethod = CommandManager.class.getMethod("reset", new Class[0]);
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label16:
-      break label16;
+      Method localMethod;
+      label15:
+      break label15;
     }
-    if (localObject != null)
+    localMethod = null;
+    if (localMethod != null)
     {
-      sendMessage(localObject, new Object[0]);
+      sendMessage(localMethod, new Object[0]);
       return;
     }
     WyLog.e("CommandManager", "method resetWeiyunSdk is null.");
@@ -304,7 +306,7 @@ public class CommandManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.cmd.CommandManager
  * JD-Core Version:    0.7.0.1
  */

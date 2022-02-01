@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import java.util.List;
 
 final class g$1
@@ -12,18 +14,22 @@ final class g$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(88545);
+    AppMethodBeat.i(113472);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/card/ui/CardListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = this.kwv;
-    if (((Boolean)paramView.kwt.get(i)).booleanValue()) {
-      paramView.kwt.set(i, Boolean.FALSE);
+    paramView = this.wCS;
+    if (((Boolean)paramView.wCQ.get(i)).booleanValue()) {
+      paramView.wCQ.set(i, Boolean.FALSE);
     }
     for (;;)
     {
       paramView.notifyDataSetChanged();
-      AppMethodBeat.o(88545);
+      a.a(this, "com/tencent/mm/plugin/card/ui/CardListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(113472);
       return;
-      paramView.kwt.set(i, Boolean.TRUE);
+      paramView.wCQ.set(i, Boolean.TRUE);
     }
   }
 }

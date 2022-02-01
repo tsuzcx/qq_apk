@@ -19,19 +19,19 @@ public class DatingConfig
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  public String aioApllyTips;
-  public String aioFirstTips;
-  public String aioTravelApplyTip;
-  public String aioTravelProfileSendMsgTip;
-  public String aioTravelSendMsgTip;
-  public List<DatingConfigItem> cancelReasons;
-  public int defaultSubject;
-  public List<byte[]> hotLocales;
-  public HashMap<Integer, List<DatingConfigItem>> othersConfigs;
-  public List<DatingSubjectItem> subjects;
-  public int timeGap;
-  public DatingConfigItem timeRequestConfig;
-  public int timeStamp;
+  public String aioApllyTips = null;
+  public String aioFirstTips = null;
+  public String aioTravelApplyTip = null;
+  public String aioTravelProfileSendMsgTip = null;
+  public String aioTravelSendMsgTip = null;
+  public List<DatingConfigItem> cancelReasons = null;
+  public int defaultSubject = 0;
+  public List<byte[]> hotLocales = null;
+  public HashMap<Integer, List<DatingConfigItem>> othersConfigs = null;
+  public List<DatingSubjectItem> subjects = null;
+  public int timeGap = 0;
+  public DatingConfigItem timeRequestConfig = null;
+  public int timeStamp = 0;
   
   public static DatingConfig createDatingConfig(cmd0x7cb.RspBody paramRspBody)
   {

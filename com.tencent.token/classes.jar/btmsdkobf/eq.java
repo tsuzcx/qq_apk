@@ -3,17 +3,19 @@ package btmsdkobf;
 public class eq
   extends Thread
 {
-  private eq.a oN;
+  private a oN;
   private Runnable oR;
   
   public void run()
   {
-    if (this.oN != null) {
-      this.oN.beforeExecute(this, this.oR);
+    a locala = this.oN;
+    if (locala != null) {
+      locala.beforeExecute(this, this.oR);
     }
     super.run();
-    if (this.oN != null) {
-      this.oN.b(this, this.oR);
+    locala = this.oN;
+    if (locala != null) {
+      locala.b(this, this.oR);
     }
   }
   
@@ -28,6 +30,15 @@ public class eq
       return;
     }
     finally {}
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void b(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void beforeExecute(Thread paramThread, Runnable paramRunnable);
   }
 }
 

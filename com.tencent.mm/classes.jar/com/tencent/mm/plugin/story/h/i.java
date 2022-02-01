@@ -1,108 +1,109 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.db;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.autogen.b.ff;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends com.tencent.mm.sdk.e.j<h>
-  implements k.a
+  extends MAutoStorage<h>
+  implements MStorage.IOnStorageChange
 {
   private static final String[] SQL_CREATE;
-  private static final String TAG = "MicroMsg.StoryHistoryInfoStorage";
-  public static final String sGE = "MMStoryHistoryItem";
-  private static final String sGG = "select * from MMStoryHistoryItem ";
-  public static final i.a sGJ;
-  public final e db;
+  private static final String Stb;
+  public static final i.a Std;
+  private static final String TAG;
+  public static final String ptT;
+  public final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(109912);
-    sGJ = new i.a((byte)0);
+    AppMethodBeat.i(119529);
+    Std = new i.a((byte)0);
     TAG = "MicroMsg.StoryHistoryInfoStorage";
-    sGE = "MMStoryHistoryItem";
-    h.a locala = h.sGI;
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(h.cEM(), sGE) };
-    sGG = "select * from " + sGE + ' ';
-    AppMethodBeat.o(109912);
+    ptT = "MMStoryHistoryItem";
+    h.a locala = h.Stc;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.access$getInfo$cp(), ptT) };
+    Stb = "select * from " + ptT + ' ';
+    AppMethodBeat.o(119529);
   }
   
-  public i(e parame)
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, h.cEM(), sGE, db.INDEX_CREATE);
-    AppMethodBeat.i(109911);
-    this.db = parame;
-    AppMethodBeat.o(109911);
-  }
-  
-  private boolean adD(String paramString)
-  {
-    AppMethodBeat.i(109908);
-    a.f.b.j.q(paramString, "date");
-    paramString = sGG + " WHERE " + sGE + ".date = '" + paramString + '\'';
-    paramString = this.db.rawQuery(paramString, null);
-    a.f.b.j.p(paramString, "cu");
-    int i = paramString.getCount();
-    paramString.close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(109908);
-      return true;
-    }
-    AppMethodBeat.o(109908);
-    return false;
+    super(paramISQLiteDatabase, h.access$getInfo$cp(), ptT, ff.INDEX_CREATE);
+    AppMethodBeat.i(119528);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(119528);
   }
   
   private boolean b(h paramh)
   {
-    AppMethodBeat.i(109910);
-    a.f.b.j.q(paramh, "info");
-    boolean bool = super.replace((c)paramh);
-    AppMethodBeat.o(109910);
+    AppMethodBeat.i(119527);
+    s.u(paramh, "info");
+    boolean bool = super.replace((IAutoDBItem)paramh);
+    AppMethodBeat.o(119527);
     return bool;
   }
   
-  public final void a(String paramString, m paramm) {}
+  private boolean bcn(String paramString)
+  {
+    AppMethodBeat.i(119525);
+    s.u(paramString, "date");
+    paramString = Stb + " WHERE " + ptT + ".date = '" + paramString + '\'';
+    paramString = this.db.rawQuery(paramString, null);
+    int i = paramString.getCount();
+    paramString.close();
+    if (i > 0)
+    {
+      AppMethodBeat.o(119525);
+      return true;
+    }
+    AppMethodBeat.o(119525);
+    return false;
+  }
   
   public final boolean a(h paramh)
   {
-    AppMethodBeat.i(109907);
-    a.f.b.j.q(paramh, "storyHistoryInfo");
-    if (adD(paramh.cEX()))
+    AppMethodBeat.i(119524);
+    s.u(paramh, "storyHistoryInfo");
+    if (bcn(paramh.hzq()))
     {
-      bool = update((c)paramh, new String[] { "date" });
-      AppMethodBeat.o(109907);
+      bool = update((IAutoDBItem)paramh, new String[] { "date" });
+      AppMethodBeat.o(119524);
       return bool;
     }
     boolean bool = b(paramh);
-    AppMethodBeat.o(109907);
+    AppMethodBeat.o(119524);
     return bool;
   }
   
-  public final h adE(String paramString)
+  public final h bco(String paramString)
   {
-    AppMethodBeat.i(109909);
-    a.f.b.j.q(paramString, "date");
-    paramString = sGG + " WHERE " + sGE + ".date = '" + paramString + '\'';
+    AppMethodBeat.i(119526);
+    s.u(paramString, "date");
+    paramString = Stb + " WHERE " + ptT + ".date = '" + paramString + '\'';
     paramString = this.db.rawQuery(paramString, null);
     if (paramString.moveToFirst())
     {
       h localh = new h();
       localh.convertFrom(paramString);
       paramString.close();
-      AppMethodBeat.o(109909);
+      AppMethodBeat.o(119526);
       return localh;
     }
     paramString.close();
-    AppMethodBeat.o(109909);
+    AppMethodBeat.o(119526);
     return null;
   }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData) {}
 }
 
 

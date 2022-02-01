@@ -1,19 +1,21 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.s;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.r;
 
 public abstract class h
 {
-  public h.a aYl;
+  public a dhZ;
   
-  public abstract void Q(Object paramObject);
+  public abstract i a(s[] paramArrayOfs, r paramr);
   
-  public abstract i a(s[] paramArrayOfs, p paramp);
+  public abstract void bi(Object paramObject);
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.h
  * JD-Core Version:    0.7.0.1
  */

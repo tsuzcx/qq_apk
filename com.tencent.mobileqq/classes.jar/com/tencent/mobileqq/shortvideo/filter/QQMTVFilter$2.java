@@ -9,13 +9,16 @@ class QQMTVFilter$2
   
   public void run()
   {
-    SLog.d("QQMTVFilter", "reset:" + QQMTVFilter.access$100(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reset:");
+    localStringBuilder.append(QQMTVFilter.access$100(this.this$0));
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
     QQMTVFilter.access$102(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQMTVFilter.2
  * JD-Core Version:    0.7.0.1
  */

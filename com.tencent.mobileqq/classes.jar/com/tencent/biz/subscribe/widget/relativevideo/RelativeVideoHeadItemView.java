@@ -3,46 +3,41 @@ package com.tencent.biz.subscribe.widget.relativevideo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StPoiInfoV2;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVisitor;
-import alud;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bdnn;
-import bdns;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import xsm;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.TimeFormatterUtils;
 
 public class RelativeVideoHeadItemView
   extends RelativeFeedBaseHeaderView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AsyncRichTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
-  private TextView b;
   private TextView c;
   private TextView d;
+  private TextView e;
+  private AsyncRichTextView f;
+  private TextView g;
+  private View h;
   
   public RelativeVideoHeadItemView(Context paramContext)
   {
     super(paramContext);
   }
   
-  public int a()
-  {
-    return 2131558734;
-  }
-  
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378791));
-    this.b = ((TextView)findViewById(2131378788));
-    this.c = ((TextView)findViewById(2131378792));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)findViewById(2131378782));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369695);
-    this.d = ((TextView)findViewById(2131378925));
+    this.c = ((TextView)findViewById(2131448455));
+    this.d = ((TextView)findViewById(2131448452));
+    this.e = ((TextView)findViewById(2131448456));
+    this.f = ((AsyncRichTextView)findViewById(2131448444));
+    this.h = findViewById(2131437518);
+    this.g = ((TextView)findViewById(2131448651));
   }
   
   public void a(Object paramObject)
@@ -51,49 +46,54 @@ public class RelativeVideoHeadItemView
       return;
     }
     paramObject = (CertifiedAccountMeta.StFeed)paramObject;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.title.get());
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramObject.title.get().trim().length() > 0)
-    {
+    this.c.setText(paramObject.title.get());
+    Object localObject = this.c;
+    if (paramObject.title.get().trim().length() > 0) {
       i = 0;
-      ((TextView)localObject).setVisibility(i);
-      this.b.setText(bdns.c(getContext(), paramObject.createTime.get() * 1000L));
-      i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
-      if (i <= 0) {
-        break label241;
-      }
-      this.c.setVisibility(0);
-      this.c.setText(xsm.a(i) + alud.a(2131720513));
-      label139:
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView;
-      if (paramObject.content.get().trim().length() <= 0) {
-        break label253;
-      }
-    }
-    label241:
-    label253:
-    for (int i = 0;; i = 8)
-    {
-      ((AsyncRichTextView)localObject).setVisibility(i);
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText(paramObject.content.get());
-      if (bdnn.a(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get())) {
-        break label259;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.d.setText(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get());
-      return;
+    } else {
       i = 8;
-      break;
-      this.c.setVisibility(8);
-      break label139;
     }
-    label259:
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((TextView)localObject).setVisibility(i);
+    this.d.setText(TimeFormatterUtils.d(getContext(), paramObject.createTime.get() * 1000L));
+    int i = ((CertifiedAccountMeta.StVisitor)paramObject.visitorInfo.get()).view_count.get();
+    if (i > 0)
+    {
+      this.e.setVisibility(0);
+      localObject = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(UIUtils.a(i));
+      localStringBuilder.append(HardCodeUtil.a(2131916943));
+      ((TextView)localObject).setText(localStringBuilder.toString());
+    }
+    else
+    {
+      this.e.setVisibility(8);
+    }
+    localObject = this.f;
+    if (paramObject.content.get().trim().length() > 0) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((AsyncRichTextView)localObject).setVisibility(i);
+    this.f.setText(paramObject.content.get());
+    if (!StringUtil.isEmpty(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get()))
+    {
+      this.h.setVisibility(0);
+      this.g.setText(((CertifiedAccountMeta.StPoiInfoV2)paramObject.poiInfo.get()).defaultName.get());
+      return;
+    }
+    this.h.setVisibility(8);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131624389;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeVideoHeadItemView
  * JD-Core Version:    0.7.0.1
  */

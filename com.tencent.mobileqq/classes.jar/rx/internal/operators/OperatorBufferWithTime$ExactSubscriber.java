@@ -118,26 +118,27 @@ final class OperatorBufferWithTime$ExactSubscriber
   
   public void onNext(T paramT)
   {
-    Object localObject = null;
-    try
+    for (;;)
     {
-      if (this.done) {
-        return;
-      }
-      this.chunk.add(paramT);
-      paramT = localObject;
-      if (this.chunk.size() == this.this$0.count)
+      try
       {
-        paramT = this.chunk;
-        this.chunk = new ArrayList();
+        if (this.done) {
+          return;
+        }
+        this.chunk.add(paramT);
+        if (this.chunk.size() == this.this$0.count)
+        {
+          paramT = this.chunk;
+          this.chunk = new ArrayList();
+          if (paramT != null) {
+            this.child.onNext(paramT);
+          }
+          return;
+        }
       }
-      if (paramT != null)
-      {
-        this.child.onNext(paramT);
-        return;
-      }
+      finally {}
+      paramT = null;
     }
-    finally {}
   }
   
   void scheduleExact()
@@ -147,7 +148,7 @@ final class OperatorBufferWithTime$ExactSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithTime.ExactSubscriber
  * JD-Core Version:    0.7.0.1
  */

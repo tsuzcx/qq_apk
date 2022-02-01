@@ -88,87 +88,84 @@ public final class DefaultDataSource
     if (this.rtmpDataSource == null) {}
     try
     {
-      this.rtmpDataSource = ((DataSource)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getConstructor(new Class[0]).newInstance(new Object[0]));
-      if (this.rtmpDataSource == null) {
-        this.rtmpDataSource = this.baseDataSource;
+      try
+      {
+        this.rtmpDataSource = ((DataSource)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getConstructor(new Class[0]).newInstance(new Object[0]));
       }
-      return this.rtmpDataSource;
+      catch (Exception localException)
+      {
+        throw new RuntimeException("Error instantiating RTMP extension", localException);
+      }
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        Log.w("DefaultDataSource", "Attempting to play RTMP stream without depending on the RTMP extension");
-      }
+      label48:
+      break label48;
     }
-    catch (Exception localException)
-    {
-      throw new RuntimeException("Error instantiating RTMP extension", localException);
+    Log.w("DefaultDataSource", "Attempting to play RTMP stream without depending on the RTMP extension");
+    if (this.rtmpDataSource == null) {
+      this.rtmpDataSource = this.baseDataSource;
     }
+    return this.rtmpDataSource;
   }
   
   public void close()
   {
-    if (this.dataSource != null) {}
-    try
-    {
-      this.dataSource.close();
-      return;
-    }
-    finally
-    {
-      this.dataSource = null;
+    DataSource localDataSource = this.dataSource;
+    if (localDataSource != null) {
+      try
+      {
+        localDataSource.close();
+        return;
+      }
+      finally
+      {
+        this.dataSource = null;
+      }
     }
   }
   
   public Uri getUri()
   {
-    if (this.dataSource == null) {
+    DataSource localDataSource = this.dataSource;
+    if (localDataSource == null) {
       return null;
     }
-    return this.dataSource.getUri();
+    return localDataSource.getUri();
   }
   
   public long open(DataSpec paramDataSpec)
   {
     boolean bool;
-    String str;
-    if (this.dataSource == null)
-    {
+    if (this.dataSource == null) {
       bool = true;
-      Assertions.checkState(bool);
-      str = paramDataSpec.uri.getScheme();
-      if (!Util.isLocalFileUri(paramDataSpec.uri)) {
-        break label81;
-      }
-      if (!paramDataSpec.uri.getPath().startsWith("/android_asset/")) {
-        break label70;
-      }
-      this.dataSource = getAssetDataSource();
-    }
-    for (;;)
-    {
-      return this.dataSource.open(paramDataSpec);
+    } else {
       bool = false;
-      break;
-      label70:
-      this.dataSource = getFileDataSource();
-      continue;
-      label81:
-      if ("asset".equals(str)) {
+    }
+    Assertions.checkState(bool);
+    String str = paramDataSpec.uri.getScheme();
+    if (Util.isLocalFileUri(paramDataSpec.uri))
+    {
+      if (paramDataSpec.uri.getPath().startsWith("/android_asset/")) {
         this.dataSource = getAssetDataSource();
-      } else if ("content".equals(str)) {
-        this.dataSource = getContentDataSource();
-      } else if ("rtmp".equals(str)) {
-        this.dataSource = getRtmpDataSource();
-      } else if ("data".equals(str)) {
-        this.dataSource = getDataSchemeDataSource();
-      } else if ("rawresource".equals(str)) {
-        this.dataSource = getRawResourceDataSource();
       } else {
-        this.dataSource = this.baseDataSource;
+        this.dataSource = getFileDataSource();
       }
     }
+    else if ("asset".equals(str)) {
+      this.dataSource = getAssetDataSource();
+    } else if ("content".equals(str)) {
+      this.dataSource = getContentDataSource();
+    } else if ("rtmp".equals(str)) {
+      this.dataSource = getRtmpDataSource();
+    } else if ("data".equals(str)) {
+      this.dataSource = getDataSchemeDataSource();
+    } else if ("rawresource".equals(str)) {
+      this.dataSource = getRawResourceDataSource();
+    } else {
+      this.dataSource = this.baseDataSource;
+    }
+    return this.dataSource.open(paramDataSpec);
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -178,7 +175,7 @@ public final class DefaultDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.DefaultDataSource
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ class IPluginProxyComponent
     }
     catch (Exception localException)
     {
-      str = MobileQQ.getMobileQQ().getProcessName();
+      str = MobileQQ.getMobileQQ().getProcessNames();
       if (!TextUtils.isEmpty(str))
       {
         localObject2 = new Intent("com.tencent.process.exit");

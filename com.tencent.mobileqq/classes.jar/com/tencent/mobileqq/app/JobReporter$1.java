@@ -20,29 +20,29 @@ final class JobReporter$1
     {
       paramMessage = new WeakReference((Thread)paramMessage.obj);
       JobReporter.access$000().add(paramMessage);
+      return;
     }
-    do
+    if (paramMessage.what == 2)
     {
-      long l1;
-      do
+      if (ThreadManagerV2.sThreadWrapContext != null)
       {
-        do
-        {
-          return;
-          if (paramMessage.what != 2) {
-            break;
-          }
-        } while (ThreadManagerV2.sThreadWrapContext == null);
         JobReporter.access$100();
         long l2 = System.currentTimeMillis();
-        if (ThreadSetting.isPublicVersion) {}
-        for (l1 = 86400000L; (l2 - JobReporter.access$200() > l1) && (JobReporter.access$300() > 0L) && (JobReporter.access$400()); l1 = 20000L)
+        if (ThreadSetting.isPublicVersion) {
+          l1 = 86400000L;
+        } else {
+          l1 = 20000L;
+        }
+        if ((l2 - JobReporter.access$200() > l1) && (JobReporter.access$300() > 0L) && (JobReporter.access$400()))
         {
           if (JobReporter.access$300() < 500L)
           {
             paramMessage = (String)paramMessage.obj;
             ThreadManagerV2.sThreadWrapContext.reportDengTaException(paramMessage, "thread_monitor_peak_count", true, JobReporter.access$300(), 1L, null, "", false);
-            ThreadLog.printQLog("JobReporter", "reportThreadPeakCount Yes " + JobReporter.access$300());
+            paramMessage = new StringBuilder();
+            paramMessage.append("reportThreadPeakCount Yes ");
+            paramMessage.append(JobReporter.access$300());
+            ThreadLog.printQLog("JobReporter", paramMessage.toString());
             JobReporter.access$202(l2);
             ThreadManagerV2.sThreadWrapContext.setMainProccessThreadMonitorTime(l2);
           }
@@ -50,25 +50,36 @@ final class JobReporter$1
           ThreadManagerV2.sThreadWrapContext.setMainProccessThreadPeakCounts(JobReporter.access$300());
           return;
         }
-        l1 = JobReporter.access$500();
-        ThreadLog.printQLog("JobReporter", "saveThreadPeakCount count" + l1 + " sThreadPeakCount " + JobReporter.access$300());
-      } while (l1 <= JobReporter.access$300());
-      JobReporter.access$302(l1);
-      ThreadManagerV2.sThreadWrapContext.setMainProccessThreadPeakCounts(JobReporter.access$300());
-      return;
-      if (paramMessage.what != 3) {
-        break;
+        long l1 = JobReporter.access$500();
+        paramMessage = new StringBuilder();
+        paramMessage.append("saveThreadPeakCount count");
+        paramMessage.append(l1);
+        paramMessage.append(" sThreadPeakCount ");
+        paramMessage.append(JobReporter.access$300());
+        ThreadLog.printQLog("JobReporter", paramMessage.toString());
+        if (l1 > JobReporter.access$300())
+        {
+          JobReporter.access$302(l1);
+          ThreadManagerV2.sThreadWrapContext.setMainProccessThreadPeakCounts(JobReporter.access$300());
+        }
       }
-    } while ((ThreadSetting.isPublicVersion) || (JobReporter.mThreadCheck == null) || (paramMessage.obj == null));
-    paramMessage = (JobReporter.CheckParams)paramMessage.obj;
-    JobReporter.mThreadCheck.isLegalName(paramMessage);
-    return;
-    super.handleMessage(paramMessage);
+    }
+    else if (paramMessage.what == 3)
+    {
+      if ((!ThreadSetting.isPublicVersion) && (JobReporter.mThreadCheck != null) && (paramMessage.obj != null))
+      {
+        paramMessage = (JobReporter.CheckParams)paramMessage.obj;
+        JobReporter.mThreadCheck.isLegalName(paramMessage);
+      }
+    }
+    else {
+      super.handleMessage(paramMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.JobReporter.1
  * JD-Core Version:    0.7.0.1
  */

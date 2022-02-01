@@ -7,8 +7,13 @@ class VideoLayerUI$9
   
   public void run()
   {
-    if ((VideoLayerUI.a(this.this$0)) && (this.a == VideoLayerUI.a(this.this$0)) && (this.b == VideoLayerUI.b(this.this$0))) {}
-    for (int i = 1; i == 0; i = 0)
+    int i;
+    if ((VideoLayerUI.b(this.this$0)) && (this.a == VideoLayerUI.c(this.this$0)) && (this.b == VideoLayerUI.d(this.this$0))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
       this.this$0.a("sliderWindowBigToSmallAnimation", this.a, this.b);
       return;
@@ -18,7 +23,7 @@ class VideoLayerUI$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.9
  * JD-Core Version:    0.7.0.1
  */

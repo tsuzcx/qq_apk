@@ -1,27 +1,25 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import android.widget.RelativeLayout;
-import avnl;
-import avon;
 
-public class NearbyProfileEditPanel$OnPicDragListener$1
+class NearbyProfileEditPanel$OnPicDragListener$1
   implements Runnable
 {
-  public NearbyProfileEditPanel$OnPicDragListener$1(avon paramavon) {}
+  NearbyProfileEditPanel$OnPicDragListener$1(NearbyProfileEditPanel.OnPicDragListener paramOnPicDragListener) {}
   
   public void run()
   {
-    if (avnl.a(this.a.a) != null)
+    if (NearbyProfileEditPanel.h(this.a.a) != null)
     {
-      avnl.a(this.a.a).setVisibility(0);
-      avnl.a(this.a.a);
-      avnl.a(this.a.a, null);
+      NearbyProfileEditPanel.h(this.a.a).setVisibility(0);
+      this.a.a.m();
+      NearbyProfileEditPanel.a(this.a.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.OnPicDragListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/wifi_state_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/wifi_setting" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/wifi_red_point" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="20.0dip" android:layout_toLeftOf="@id/wifi_setting" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/wifi_red_point" android:layout_toRightOf="@id/wifi_state_icon" android:layout_centerVertical="true">
+        <TextView android:textSize="17.0sp" android:id="@id/wifi_state_text" android:focusable="true" android:focusableInTouchMode="true" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scrollHorizontally="true" android:singleLine="true" style="@style/NotificationTitle" />
+        <TextView android:textSize="13.0sp" android:id="@id/wifi_operation_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/NotificationText" />
+    </LinearLayout>
+</RelativeLayout>

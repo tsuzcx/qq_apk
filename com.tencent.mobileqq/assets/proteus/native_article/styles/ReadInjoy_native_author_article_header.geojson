@@ -1,0 +1,166 @@
+{
+    "ReadInjoy_native_author_article_header": {
+        "view_type": "container",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews" : [
+            {
+                "view_type": "UIView",
+                "view_id": "id_native_author_article_header_container",
+                "margin_top" : "30",
+                "default_visible" : "YES",
+                "layout_type":"layout_relative",
+                "event_type": "cmd_avatar_click",
+                "height": {
+                    "type": "relative",
+                    "value": "105"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#EEF2F6"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_native_author_article_header_background",
+                        "default_visible" : "YES",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "196"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20210127/71c768def06545baae064de16f801939.png","1"]
+                        }
+                    },
+                    {
+                        "view_type": "container",
+                        "direction":"vertical",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "subviews": [
+                            {
+                                "view_id": "id_native_author_article_header_title",
+                                "view_type": "UILabel",
+                                "default_visible":"YES",
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "height": {
+                                    "type": "relative",
+                                    "value": "25"
+                                },
+                                "margin_top": "19",
+                                "margin_left": "16",
+                                "attributes": {
+                                    "setText:": "作者热文",
+                                    "setBoldFontSizeString:": "18",
+                                    "setTextColorString:": "#323232",
+                                    "setTextAlignmentString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "container",
+                                "direction" : "horizontal",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "36"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "240"
+                                },
+                                "margin_left":"16",
+                                "margin_top" : "12",
+                                "subviews": [
+                                    {
+                                        "view_type": "ReadInJoyAvatarView",
+                                        "view_id": "id_author_avator",
+                                        "align_parent_center_vertical": "YES",
+                                        "event_type": "cmd_avatar_click",
+                                        "height": {
+                                            "type": "absolutely",
+                                            "value": "36"
+                                        },
+                                        "width": {
+                                            "type": "absolutely",
+                                            "value": "36"
+                                        },
+                                        "attributes": {
+                                            "loadAvatarByUin:": "$info_avator_uin"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "container",
+                                        "right_of_view": "id_author_avator",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left": "4",
+                                        "direction":"vertical",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "match_parent"
+                                        },
+                                        "subviews": [
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_author_nickname",
+                                                "height": {
+                                                    "type": "relative",
+                                                    "value": "20"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "attributes": {
+                                                    "setText:": "$nickname_text",
+                                                    "setTextColorString:": "#323232",
+                                                    "setBoldFontSizeString:": "16",
+                                                    "setNumberOfLinesString:": "1"
+                                                }
+                                            },
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_user_desc_label",
+                                                "height": {
+                                                    "type": "relative",
+                                                    "value": "17"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "attributes": {
+                                                    "setTextAlignmentString:": "1",
+                                                    "setText:": "$user_desc_text",
+                                                    "setTextColorString:": "#666666",
+                                                    "setFontSizeString:": "11",
+                                                    "setNumberOfLinesString:": "1"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

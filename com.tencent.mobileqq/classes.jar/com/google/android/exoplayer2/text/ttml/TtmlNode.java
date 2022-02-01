@@ -72,17 +72,18 @@ final class TtmlNode
     this.text = paramString2;
     this.style = paramTtmlStyle;
     this.styleIds = paramArrayOfString;
-    if (paramString2 != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isTextNode = bool;
-      this.startTimeUs = paramLong1;
-      this.endTimeUs = paramLong2;
-      this.regionId = ((String)Assertions.checkNotNull(paramString3));
-      this.nodeStartsByRegion = new HashMap();
-      this.nodeEndsByRegion = new HashMap();
-      return;
+    boolean bool;
+    if (paramString2 != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isTextNode = bool;
+    this.startTimeUs = paramLong1;
+    this.endTimeUs = paramLong2;
+    this.regionId = ((String)Assertions.checkNotNull(paramString3));
+    this.nodeStartsByRegion = new HashMap();
+    this.nodeEndsByRegion = new HashMap();
   }
   
   private void applyStyleToOutput(Map<String, TtmlStyle> paramMap, SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2)
@@ -109,87 +110,100 @@ final class TtmlNode
   private SpannableStringBuilder cleanUpText(SpannableStringBuilder paramSpannableStringBuilder)
   {
     int i = paramSpannableStringBuilder.length();
+    int m = 0;
     int j = 0;
-    int k;
-    if (j < i)
+    int n;
+    while (j < i)
     {
-      if (paramSpannableStringBuilder.charAt(j) != ' ') {
-        break label306;
+      k = i;
+      if (paramSpannableStringBuilder.charAt(j) == ' ')
+      {
+        n = j + 1;
+        k = n;
+        while ((k < paramSpannableStringBuilder.length()) && (paramSpannableStringBuilder.charAt(k) == ' ')) {
+          k += 1;
+        }
+        n = k - n;
+        k = i;
+        if (n > 0)
+        {
+          paramSpannableStringBuilder.delete(j, j + n);
+          k = i - n;
+        }
       }
-      k = j + 1;
-      while ((k < paramSpannableStringBuilder.length()) && (paramSpannableStringBuilder.charAt(k) == ' ')) {
-        k += 1;
-      }
-      k -= j + 1;
-      if (k <= 0) {
-        break label306;
-      }
-      paramSpannableStringBuilder.delete(j, j + k);
-      i -= k;
+      j += 1;
+      i = k;
     }
-    label306:
+    j = i;
+    if (i > 0)
+    {
+      j = i;
+      if (paramSpannableStringBuilder.charAt(0) == ' ')
+      {
+        paramSpannableStringBuilder.delete(0, 1);
+        j = i - 1;
+      }
+    }
+    int k = 0;
+    i = j;
+    j = k;
     for (;;)
     {
-      j += 1;
-      break;
-      j = i;
-      if (i > 0)
+      n = i - 1;
+      if (j >= n) {
+        break;
+      }
+      k = i;
+      if (paramSpannableStringBuilder.charAt(j) == '\n')
       {
-        j = i;
-        if (paramSpannableStringBuilder.charAt(0) == ' ')
+        n = j + 1;
+        k = i;
+        if (paramSpannableStringBuilder.charAt(n) == ' ')
         {
-          paramSpannableStringBuilder.delete(0, 1);
-          j = i - 1;
+          paramSpannableStringBuilder.delete(n, j + 2);
+          k = i - 1;
         }
+      }
+      j += 1;
+      i = k;
+    }
+    k = m;
+    j = i;
+    if (i > 0)
+    {
+      k = m;
+      j = i;
+      if (paramSpannableStringBuilder.charAt(n) == ' ')
+      {
+        paramSpannableStringBuilder.delete(n, i);
+        j = i - 1;
+        k = m;
+      }
+    }
+    for (;;)
+    {
+      i = j - 1;
+      if (k >= i) {
+        break;
       }
       i = j;
-      j = 0;
-      while (j < i - 1)
+      if (paramSpannableStringBuilder.charAt(k) == ' ')
       {
-        k = i;
-        if (paramSpannableStringBuilder.charAt(j) == '\n')
+        m = k + 1;
+        i = j;
+        if (paramSpannableStringBuilder.charAt(m) == '\n')
         {
-          k = i;
-          if (paramSpannableStringBuilder.charAt(j + 1) == ' ')
-          {
-            paramSpannableStringBuilder.delete(j + 1, j + 2);
-            k = i - 1;
-          }
+          paramSpannableStringBuilder.delete(k, m);
+          i = j - 1;
         }
-        j += 1;
-        i = k;
       }
+      k += 1;
       j = i;
-      if (i > 0)
-      {
-        j = i;
-        if (paramSpannableStringBuilder.charAt(i - 1) == ' ')
-        {
-          paramSpannableStringBuilder.delete(i - 1, i);
-          j = i - 1;
-        }
-      }
-      i = 0;
-      while (i < j - 1)
-      {
-        k = j;
-        if (paramSpannableStringBuilder.charAt(i) == ' ')
-        {
-          k = j;
-          if (paramSpannableStringBuilder.charAt(i + 1) == '\n')
-          {
-            paramSpannableStringBuilder.delete(i, i + 1);
-            k = j - 1;
-          }
-        }
-        i += 1;
-        j = k;
-      }
-      if ((j > 0) && (paramSpannableStringBuilder.charAt(j - 1) == '\n')) {
-        paramSpannableStringBuilder.delete(j - 1, j);
-      }
-      return paramSpannableStringBuilder;
     }
+    if ((j > 0) && (paramSpannableStringBuilder.charAt(i) == '\n')) {
+      paramSpannableStringBuilder.delete(i, j);
+    }
+    return paramSpannableStringBuilder;
   }
   
   private void getEventTimes(TreeSet<Long> paramTreeSet, boolean paramBoolean)
@@ -197,33 +211,30 @@ final class TtmlNode
     boolean bool2 = "p".equals(this.tag);
     if ((paramBoolean) || (bool2))
     {
-      if (this.startTimeUs != -9223372036854775807L) {
-        paramTreeSet.add(Long.valueOf(this.startTimeUs));
+      long l = this.startTimeUs;
+      if (l != -9223372036854775807L) {
+        paramTreeSet.add(Long.valueOf(l));
       }
-      if (this.endTimeUs != -9223372036854775807L) {
-        paramTreeSet.add(Long.valueOf(this.endTimeUs));
+      l = this.endTimeUs;
+      if (l != -9223372036854775807L) {
+        paramTreeSet.add(Long.valueOf(l));
       }
     }
     if (this.children == null) {
       return;
     }
     int i = 0;
-    label76:
-    TtmlNode localTtmlNode;
-    if (i < this.children.size())
+    while (i < this.children.size())
     {
-      localTtmlNode = (TtmlNode)this.children.get(i);
+      TtmlNode localTtmlNode = (TtmlNode)this.children.get(i);
+      boolean bool1;
       if ((!paramBoolean) && (!bool2)) {
-        break label131;
+        bool1 = false;
+      } else {
+        bool1 = true;
       }
-    }
-    label131:
-    for (boolean bool1 = true;; bool1 = false)
-    {
       localTtmlNode.getEventTimes(paramTreeSet, bool1);
       i += 1;
-      break label76;
-      break;
     }
   }
   
@@ -238,21 +249,23 @@ final class TtmlNode
   private void traverseForStyle(Map<String, TtmlStyle> paramMap, Map<String, SpannableStringBuilder> paramMap1)
   {
     Iterator localIterator = this.nodeEndsByRegion.entrySet().iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       String str = (String)localEntry.getKey();
-      if (this.nodeStartsByRegion.containsKey(str)) {}
-      for (int i = ((Integer)this.nodeStartsByRegion.get(str)).intValue();; i = 0)
-      {
-        applyStyleToOutput(paramMap, (SpannableStringBuilder)paramMap1.get(str), i, ((Integer)localEntry.getValue()).intValue());
+      boolean bool = this.nodeStartsByRegion.containsKey(str);
+      int j = 0;
+      if (bool) {
+        i = ((Integer)this.nodeStartsByRegion.get(str)).intValue();
+      } else {
         i = 0;
-        while (i < getChildCount())
-        {
-          getChild(i).traverseForStyle(paramMap, paramMap1);
-          i += 1;
-        }
-        break;
+      }
+      applyStyleToOutput(paramMap, (SpannableStringBuilder)paramMap1.get(str), i, ((Integer)localEntry.getValue()).intValue());
+      int i = j;
+      while (i < getChildCount())
+      {
+        getChild(i).traverseForStyle(paramMap, paramMap1);
+        i += 1;
       }
     }
   }
@@ -261,52 +274,53 @@ final class TtmlNode
   {
     this.nodeStartsByRegion.clear();
     this.nodeEndsByRegion.clear();
-    Object localObject2 = this.regionId;
-    Object localObject1 = localObject2;
-    if ("".equals(localObject2)) {
-      localObject1 = paramString;
+    Object localObject = this.regionId;
+    if (!"".equals(localObject)) {
+      paramString = (String)localObject;
     }
-    if ((this.isTextNode) && (paramBoolean)) {
-      getRegionOutput((String)localObject1, paramMap).append(this.text);
-    }
-    for (;;)
+    if ((this.isTextNode) && (paramBoolean))
     {
+      getRegionOutput(paramString, paramMap).append(this.text);
       return;
-      if (("br".equals(this.tag)) && (paramBoolean))
+    }
+    if (("br".equals(this.tag)) && (paramBoolean))
+    {
+      getRegionOutput(paramString, paramMap).append('\n');
+      return;
+    }
+    if ("metadata".equals(this.tag)) {
+      return;
+    }
+    if (isActive(paramLong))
+    {
+      boolean bool2 = "p".equals(this.tag);
+      localObject = paramMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        getRegionOutput((String)localObject1, paramMap).append('\n');
-        return;
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        this.nodeStartsByRegion.put(localEntry.getKey(), Integer.valueOf(((SpannableStringBuilder)localEntry.getValue()).length()));
       }
-      if ((!"metadata".equals(this.tag)) && (isActive(paramLong)))
+      int i = 0;
+      while (i < getChildCount())
       {
-        boolean bool2 = "p".equals(this.tag);
-        paramString = paramMap.entrySet().iterator();
-        while (paramString.hasNext())
-        {
-          localObject2 = (Map.Entry)paramString.next();
-          this.nodeStartsByRegion.put(((Map.Entry)localObject2).getKey(), Integer.valueOf(((SpannableStringBuilder)((Map.Entry)localObject2).getValue()).length()));
+        localObject = getChild(i);
+        boolean bool1;
+        if ((!paramBoolean) && (!bool2)) {
+          bool1 = false;
+        } else {
+          bool1 = true;
         }
-        int i = 0;
-        if (i < getChildCount())
-        {
-          paramString = getChild(i);
-          if ((paramBoolean) || (bool2)) {}
-          for (boolean bool1 = true;; bool1 = false)
-          {
-            paramString.traverseForText(paramLong, bool1, (String)localObject1, paramMap);
-            i += 1;
-            break;
-          }
-        }
-        if (bool2) {
-          TtmlRenderUtil.endParagraph(getRegionOutput((String)localObject1, paramMap));
-        }
-        paramString = paramMap.entrySet().iterator();
-        while (paramString.hasNext())
-        {
-          paramMap = (Map.Entry)paramString.next();
-          this.nodeEndsByRegion.put(paramMap.getKey(), Integer.valueOf(((SpannableStringBuilder)paramMap.getValue()).length()));
-        }
+        ((TtmlNode)localObject).traverseForText(paramLong, bool1, paramString, paramMap);
+        i += 1;
+      }
+      if (bool2) {
+        TtmlRenderUtil.endParagraph(getRegionOutput(paramString, paramMap));
+      }
+      paramString = paramMap.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        paramMap = (Map.Entry)paramString.next();
+        this.nodeEndsByRegion.put(paramMap.getKey(), Integer.valueOf(((SpannableStringBuilder)paramMap.getValue()).length()));
       }
     }
   }
@@ -321,18 +335,20 @@ final class TtmlNode
   
   public TtmlNode getChild(int paramInt)
   {
-    if (this.children == null) {
-      throw new IndexOutOfBoundsException();
+    List localList = this.children;
+    if (localList != null) {
+      return (TtmlNode)localList.get(paramInt);
     }
-    return (TtmlNode)this.children.get(paramInt);
+    throw new IndexOutOfBoundsException();
   }
   
   public int getChildCount()
   {
-    if (this.children == null) {
+    List localList = this.children;
+    if (localList == null) {
       return 0;
     }
-    return this.children.size();
+    return localList.size();
   }
   
   public List<Cue> getCues(long paramLong, Map<String, TtmlStyle> paramMap, Map<String, TtmlRegion> paramMap1)
@@ -354,10 +370,10 @@ final class TtmlNode
   public long[] getEventTimesUs()
   {
     Object localObject = new TreeSet();
+    int i = 0;
     getEventTimes((TreeSet)localObject, false);
     long[] arrayOfLong = new long[((TreeSet)localObject).size()];
     localObject = ((TreeSet)localObject).iterator();
-    int i = 0;
     while (((Iterator)localObject).hasNext())
     {
       arrayOfLong[i] = ((Long)((Iterator)localObject).next()).longValue();
@@ -378,7 +394,7 @@ final class TtmlNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.ttml.TtmlNode
  * JD-Core Version:    0.7.0.1
  */

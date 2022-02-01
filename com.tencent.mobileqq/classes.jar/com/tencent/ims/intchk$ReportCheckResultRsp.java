@@ -20,13 +20,14 @@ public final class intchk$ReportCheckResultRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_need_strike", "uint32_intchk_id", "bytes_strike_config" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, ReportCheckResultRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_need_strike", "uint32_intchk_id", "bytes_strike_config" }, new Object[] { localInteger, localInteger, localByteStringMicro }, ReportCheckResultRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.intchk.ReportCheckResultRsp
  * JD-Core Version:    0.7.0.1
  */

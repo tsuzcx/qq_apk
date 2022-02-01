@@ -206,12 +206,18 @@ abstract class Atom
   
   public static String getAtomTypeString(int paramInt)
   {
-    return "" + (char)(paramInt >> 24 & 0xFF) + (char)(paramInt >> 16 & 0xFF) + (char)(paramInt >> 8 & 0xFF) + (char)(paramInt & 0xFF);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append((char)(paramInt >> 24 & 0xFF));
+    localStringBuilder.append((char)(paramInt >> 16 & 0xFF));
+    localStringBuilder.append((char)(paramInt >> 8 & 0xFF));
+    localStringBuilder.append((char)(paramInt & 0xFF));
+    return localStringBuilder.toString();
   }
   
   public static int parseFullAtomFlags(int paramInt)
   {
-    return 0xFFFFFF & paramInt;
+    return paramInt & 0xFFFFFF;
   }
   
   public static int parseFullAtomVersion(int paramInt)
@@ -226,7 +232,7 @@ abstract class Atom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.Atom
  * JD-Core Version:    0.7.0.1
  */

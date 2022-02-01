@@ -12,11 +12,15 @@ final class ArkVsync$SystemVsync
   
   public void doFrame(long paramLong)
   {
-    if ((this.mVsync == null) || (this.mChoreographer == null)) {
-      return;
+    ArkVsync localArkVsync = this.mVsync;
+    if (localArkVsync != null)
+    {
+      if (this.mChoreographer == null) {
+        return;
+      }
+      localArkVsync.frameCallback();
+      this.mChoreographer.postFrameCallback(this);
     }
-    this.mVsync.frameCallback();
-    this.mChoreographer.postFrameCallback(this);
   }
   
   public void start(ArkVsync paramArkVsync)
@@ -37,7 +41,7 @@ final class ArkVsync$SystemVsync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkVsync.SystemVsync
  * JD-Core Version:    0.7.0.1
  */

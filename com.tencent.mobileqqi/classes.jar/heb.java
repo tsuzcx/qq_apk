@@ -1,12 +1,13 @@
+import com.tencent.mobileqq.utils.RoamSettingController;
+
 public class heb
+  implements Runnable
 {
-  public int a;
-  public String a;
+  public heb(RoamSettingController paramRoamSettingController) {}
   
-  public heb()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    RoamSettingController.a(this.a);
   }
 }
 

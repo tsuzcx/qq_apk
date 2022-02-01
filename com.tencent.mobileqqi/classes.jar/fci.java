@@ -1,20 +1,22 @@
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendsManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Friends;
 
 public class fci
-  implements Runnable
+  extends Thread
 {
-  public fci(FriendListHandler paramFriendListHandler) {}
+  public fci(FriendListHandler paramFriendListHandler, String paramString1, String paramString2)
+  {
+    super(paramString1);
+  }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StatusPush", 2, "handlePushBatchFStatus notifyUI uin:" + this.a.a.a() + " at " + System.currentTimeMillis());
-    }
-    this.a.a(1, true, Boolean.valueOf(true));
-    this.a.a(7, true, Boolean.valueOf(true));
-    FriendListHandler.a(this.a, 0);
+    FriendsManagerImp localFriendsManagerImp = (FriendsManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.getManager(8);
+    Friends localFriends = localFriendsManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a.a());
+    localFriends.signature = this.jdField_a_of_type_JavaLangString;
+    localFriendsManagerImp.a(localFriends);
   }
 }
 

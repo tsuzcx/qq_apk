@@ -4,37 +4,43 @@ import android.os.Handler;
 import android.view.TextureView;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
-import ymv;
-import ymw;
 
-public class VideoFrameCheckHelper$1
+class VideoFrameCheckHelper$1
   implements Runnable
 {
-  public VideoFrameCheckHelper$1(ymv paramymv, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  VideoFrameCheckHelper$1(VideoFrameCheckHelper paramVideoFrameCheckHelper, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
   public void run()
   {
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame");
-    if (System.currentTimeMillis() - ymv.a(this.this$0) >= 4000L) {}
-    for (boolean bool = true; (this.a.get() == null) || (this.b.get() == null); bool = false)
+    boolean bool;
+    if (System.currentTimeMillis() - VideoFrameCheckHelper.a(this.this$0) >= 4000L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((this.a.get() != null) && (this.b.get() != null))
     {
-      QLog.d("VideoFrameCheckHelper", 1, "reference recycled");
+      if ((VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get())) && (!bool))
+      {
+        VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get(), (VideoFrameCheckHelper.DarkFrameCheckListener)this.a.get());
+        QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
+        return;
+      }
+      VideoFrameCheckHelper.b(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
+      VideoFrameCheckHelper.c(this.this$0).removeCallbacksAndMessages(null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCheckCurrentFrame stop isReachMaxTime:");
+      localStringBuilder.append(bool);
+      QLog.d("VideoFrameCheckHelper", 1, localStringBuilder.toString());
       return;
     }
-    if ((ymv.a(this.this$0, (TextureView)this.b.get())) && (!bool))
-    {
-      ymv.a(this.this$0, (TextureView)this.b.get(), (ymw)this.a.get());
-      QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
-      return;
-    }
-    ymv.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
-    ymv.b(this.this$0).removeCallbacksAndMessages(null);
-    QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame stop isReachMaxTime:" + bool);
+    QLog.d("VideoFrameCheckHelper", 1, "reference recycled");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1
  * JD-Core Version:    0.7.0.1
  */

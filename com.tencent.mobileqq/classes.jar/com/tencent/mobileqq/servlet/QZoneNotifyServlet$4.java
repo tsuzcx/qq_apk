@@ -1,36 +1,40 @@
 package com.tencent.mobileqq.servlet;
 
-import ampk;
 import android.os.Build.VERSION;
-import azby;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 
-public final class QZoneNotifyServlet$4
+final class QZoneNotifyServlet$4
   implements Runnable
 {
   public void run()
   {
-    if ((Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext() == null) || (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0)) {
-      try
-      {
-        azby.a(System.currentTimeMillis());
-        ampk.a(azby.a());
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
-        return;
-      }
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext() != null) && (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    {
+      QZLog.w("QZLog", "定位有版本或权限限制");
+      return;
     }
-    QZLog.w("QZLog", "定位有版本或权限限制");
+    try
+    {
+      QZoneNotifyServlet.a(System.currentTimeMillis());
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(QZoneNotifyServlet.d());
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("locate exception ");
+      localStringBuilder.append(localException);
+      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.4
  * JD-Core Version:    0.7.0.1
  */

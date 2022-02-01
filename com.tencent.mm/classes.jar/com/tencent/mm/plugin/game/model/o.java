@@ -1,169 +1,335 @@
 package com.tencent.mm.plugin.game.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.autogen.b.dr;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class o
-  implements View.OnClickListener
+  extends dr
 {
-  private Context mContext;
-  public int nok;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public boolean ICD;
+  public String IDA;
+  public String IDB;
+  public String IDC;
+  public int IDD;
+  public int IDE;
+  public long IDF;
+  public long IDG;
+  public int IDH;
+  public b IDI;
+  public String IDJ;
+  public String IDK;
+  public String IDL;
+  public String IDM;
+  public String IDN;
+  public String IDO;
+  public String IDP;
+  public String IDQ;
+  public String IDR;
+  public String IDS;
+  public String IDT;
+  public String IDU;
+  public j IDV;
+  public i IDW;
+  public k IDX;
+  public m IDY;
+  public e IDZ;
+  public long IDg;
+  private boolean IDh;
+  public String IDi;
+  public String IDj;
+  public String IDk;
+  public String IDl;
+  public String IDm;
+  public int IDn;
+  public String IDo;
+  public String IDp;
+  public LinkedList<l> IDq;
+  public boolean IDr;
+  public g IDs;
+  public boolean IDt;
+  public f IDu;
+  public HashMap<String, h> IDv;
+  public String IDw;
+  public int IDx;
+  public int IDy;
+  public int IDz;
+  public q IEa;
+  public p IEb;
+  public o IEc;
+  public d IEd;
+  public n IEe;
+  public c IEf;
+  public int IEg;
+  public int IEh;
+  public String IEi;
+  public String IEj;
+  public int IEk;
+  public String IEl;
+  public boolean IEm;
+  public String mAppName;
+  public String mNoticeId;
+  public String xQX;
   
-  public o(Context paramContext)
+  static
   {
-    this.mContext = paramContext;
+    AppMethodBeat.i(41454);
+    info = dr.aJm();
+    AppMethodBeat.o(41454);
   }
   
-  public o(Context paramContext, int paramInt)
+  public o()
   {
-    this.mContext = paramContext;
-    this.nok = paramInt;
+    AppMethodBeat.i(41452);
+    this.IDg = 0L;
+    this.IDh = false;
+    this.xQX = "";
+    this.IDi = "";
+    this.IDj = "";
+    this.mAppName = "";
+    this.IDk = "";
+    this.IDl = "";
+    this.IDm = "";
+    this.IDn = 0;
+    this.IDo = "";
+    this.IDp = "";
+    this.IDq = new LinkedList();
+    this.IDs = new g();
+    this.IDu = new f();
+    this.IDv = new HashMap();
+    this.IDw = "";
+    this.IDx = 0;
+    this.IDy = 0;
+    this.IDz = 0;
+    this.IDA = "";
+    this.IDB = "";
+    this.IDC = "";
+    this.IDD = 0;
+    this.IDE = 0;
+    this.IDF = 0L;
+    this.IDG = 0L;
+    this.IDH = 0;
+    this.IDI = new b();
+    this.IDJ = "";
+    this.IDK = "";
+    this.IDL = "";
+    this.IDM = "";
+    this.IDN = "";
+    this.IDO = "";
+    this.IDP = "";
+    this.IDW = new i();
+    this.IDX = new k();
+    this.IDY = new m();
+    this.IDZ = new e();
+    this.IEa = new q();
+    this.IEb = new p();
+    this.IEc = new o();
+    this.IEd = new d();
+    this.IEe = new n();
+    this.IEf = new c();
+    this.ICD = false;
+    this.IEk = 0;
+    this.IEl = "";
+    this.IEm = false;
+    AppMethodBeat.o(41452);
   }
   
-  private static int a(Context paramContext, n paramn, int paramInt)
+  public final void fGp()
   {
-    AppMethodBeat.i(111297);
-    if (paramn != null)
+    AppMethodBeat.i(41453);
+    if (this.IDh)
     {
-      paramn.field_isRead = true;
-      ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.game.api.e.class)).bES().update(paramn, new String[0]);
+      AppMethodBeat.o(41453);
+      return;
     }
-    paramn = new Intent();
-    paramn.setClassName(paramContext, "com.tencent.mm.plugin.game.ui.GameMessageUI");
-    paramn.putExtra("game_report_from_scene", paramInt);
-    paramContext.startActivity(paramn);
-    AppMethodBeat.o(111297);
-    return 6;
-  }
-  
-  public static int a(Context paramContext, n paramn, n.e parame, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(111293);
-    int i = 0;
-    switch (parame.mJumpType)
+    if (this.field_msgType == 100)
     {
-    default: 
-      ab.i("MicroMsg.GameMessageClickListener", "unknown msg jump type = " + parame.mJumpType);
-      paramInt = i;
+      u.fGG();
+      u.a(this);
     }
     for (;;)
     {
-      AppMethodBeat.o(111293);
-      return paramInt;
-      paramInt = i(paramContext, paramString, paramInt);
-      continue;
-      paramInt = au(paramContext, paramString);
-      continue;
-      paramInt = j(paramContext, paramString, paramInt);
-      continue;
-      paramInt = a(paramContext, paramn, paramInt);
-      continue;
-      paramInt = av(paramContext, parame.lMw);
-    }
-  }
-  
-  private static int au(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(111294);
-    if (com.tencent.mm.pluginsdk.model.app.g.u(paramContext, paramString))
-    {
-      e.aj(paramContext, paramString);
-      AppMethodBeat.o(111294);
-      return 3;
-    }
-    AppMethodBeat.o(111294);
-    return 0;
-  }
-  
-  private static int av(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(111298);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(111298);
-      return 0;
-    }
-    int i = com.tencent.mm.plugin.game.f.c.ax(paramContext, paramString);
-    AppMethodBeat.o(111298);
-    return i;
-  }
-  
-  private static int i(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(111295);
-    if (com.tencent.mm.pluginsdk.model.app.g.u(paramContext, paramString))
-    {
-      e.aj(paramContext, paramString);
-      AppMethodBeat.o(111295);
-      return 3;
-    }
-    paramInt = j(paramContext, paramString, paramInt);
-    AppMethodBeat.o(111295);
-    return paramInt;
-  }
-  
-  private static int j(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(111296);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(111296);
-      return 0;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putCharSequence("game_app_id", paramString);
-    localBundle.putInt("game_report_from_scene", paramInt);
-    paramInt = com.tencent.mm.plugin.game.f.c.b(paramContext, paramString, null, localBundle);
-    AppMethodBeat.o(111296);
-    return paramInt;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(111292);
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof o.a)))
-    {
-      ab.e("MicroMsg.GameMessageClickListener", "v.getTag is null");
-      AppMethodBeat.o(111292);
+      q.b(this);
+      this.IDh = true;
+      AppMethodBeat.o(41453);
       return;
+      q.a(this);
     }
-    paramView = (o.a)paramView.getTag();
-    if (paramView.nol == null)
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public static final class a
+  {
+    public String IEn;
+    public String IEo;
+  }
+  
+  public static final class b
+  {
+    public List<String> IEp;
+    public boolean ItB;
+    public boolean egT;
+    public int orientation;
+    public String url;
+    
+    public b()
     {
-      ab.e("MicroMsg.GameMessageClickListener", "message is null");
-      AppMethodBeat.o(111292);
-      return;
+      AppMethodBeat.i(41450);
+      this.IEp = new ArrayList();
+      AppMethodBeat.o(41450);
     }
-    if (paramView.nof == null)
+  }
+  
+  public static final class c
+  {
+    public String IEq;
+  }
+  
+  public static final class d
+  {
+    public boolean IEr;
+    public o.a IEs;
+    public boolean hWa;
+    
+    public d()
     {
-      ab.e("MicroMsg.GameMessageClickListener", "jumpId is null");
-      AppMethodBeat.o(111292);
-      return;
+      AppMethodBeat.i(275394);
+      this.IEr = false;
+      this.hWa = false;
+      this.IEs = new o.a();
+      AppMethodBeat.o(275394);
     }
-    n.e locale = (n.e)paramView.nol.nne.get(paramView.nof);
-    if (locale == null)
+  }
+  
+  public static final class e
+  {
+    public List<String> IEp;
+    public String IEt;
+    
+    public e()
     {
-      ab.e("MicroMsg.GameMessageClickListener", "jumpInfo is null");
-      AppMethodBeat.o(111292);
-      return;
+      AppMethodBeat.i(41451);
+      this.IEp = new ArrayList();
+      AppMethodBeat.o(41451);
     }
-    int i = a(this.mContext, paramView.nol, locale, paramView.nol.field_appId, paramView.cFj);
-    if (i != 0) {
-      com.tencent.mm.game.report.c.a(this.mContext, 13, paramView.cFj, paramView.position, i, 0, paramView.nol.field_appId, this.nok, paramView.nol.nnL, paramView.nol.field_gameMsgId, paramView.nol.nnM, null);
-    }
-    AppMethodBeat.o(111292);
+  }
+  
+  public static final class f
+  {
+    public String IEu;
+    public String IEv;
+    public String mDesc;
+  }
+  
+  public static final class g
+  {
+    public String IEu;
+    public int IEw;
+    public boolean IEx;
+    public int IEy;
+    public boolean IEz;
+    public int mIconHeight;
+    public int mIconWidth;
+    public String mText;
+  }
+  
+  public static final class h
+  {
+    public int mJumpType;
+    public String mJumpUrl;
+  }
+  
+  public static final class i
+  {
+    public String IEu;
+    public String IEv;
+    public String mContent;
+  }
+  
+  public static final class j
+  {
+    public String IEA;
+    public String IEB;
+    public String IEC;
+    public String IEv;
+  }
+  
+  public static final class k
+  {
+    public String IEv;
+    public boolean mClickable;
+    public String mName;
+  }
+  
+  public static final class l
+  {
+    public String DUN;
+    public String IED;
+    public String IEE;
+    public String IEF;
+    public String nickName;
+    public String userName;
+  }
+  
+  public static final class m
+  {
+    public String IEG;
+    public long IEH = 0L;
+    public int wxJ = 0;
+  }
+  
+  public static final class n
+  {
+    public String IEI;
+    public String IEJ;
+    public long IEK;
+  }
+  
+  public static final class o
+  {
+    public int IEL;
+    public String IEM;
+    public String IEN;
+    public String IEO;
+    public String IEP;
+    public String IEQ;
+    public String IER;
+    public String IES;
+    public int IET;
+    public String IEU;
+    public String IEV;
+    public String IEW;
+    public String IEX;
+    public String IEY;
+    public String jump_id;
+    public int show_type;
+  }
+  
+  public static final class p
+  {
+    public int IEZ = 0;
+    public int IFa;
+    public Boolean ias = null;
+    public String ooc;
+  }
+  
+  public static final class q
+  {
+    public int IFb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.o
  * JD-Core Version:    0.7.0.1
  */

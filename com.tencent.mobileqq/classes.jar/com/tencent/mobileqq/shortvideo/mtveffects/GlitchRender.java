@@ -34,30 +34,59 @@ public class GlitchRender
   
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    if (this.mGlitchFiler != null)
+    if (paramInt1 != 0)
     {
-      this.mGlitchFiler.onOutputSizeChanged(paramInt1, paramInt2);
-      label25:
-      if (this.mScaleFilter == null) {
-        break label273;
+      if (paramInt2 == 0) {
+        return;
       }
-      this.mScaleFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      label41:
-      if (this.mMaterialFilter == null) {
-        break label303;
-      }
-      this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      if ((this.mRenderFBO == null) || (this.mRenderFBO.getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
+      Object localObject = this.mGlitchFiler;
+      if (localObject != null)
       {
-        if (this.mRenderFBO != null)
+        ((GlitchFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        localObject = this.mRcSrc;
+        if (localObject != null)
         {
-          if (this.mRenderFBO.getTexId() >= 0) {
+          this.mGlitchFiler = new GlitchFilter((RectF)localObject);
+          this.mGlitchFiler.init();
+          this.mGlitchFiler.onOutputSizeChanged(paramInt1, paramInt2);
+        }
+        else
+        {
+          this.mGlitchFiler = null;
+        }
+      }
+      localObject = this.mScaleFilter;
+      if (localObject != null)
+      {
+        ((ScaleFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mScaleFilter = new ScaleFilter();
+        this.mScaleFilter.init();
+        this.mScaleFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mMaterialFilter;
+      if (localObject != null)
+      {
+        ((MaterialFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mMaterialFilter = new MaterialFilter();
+        this.mMaterialFilter.init();
+        this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mRenderFBO;
+      if ((localObject == null) || (((RenderBuffer)localObject).getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
+      {
+        localObject = this.mRenderFBO;
+        if (localObject != null)
+        {
+          if (((RenderBuffer)localObject).getTexId() >= 0) {
             GlUtil.deleteTexture(this.mRenderFBO.getTexId());
           }
           this.mRenderFBO.destroy();
@@ -65,55 +94,41 @@ public class GlitchRender
         }
         this.mRenderFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
       }
-      if ((this.mRenderFBO2 != null) && (this.mRenderFBO2.getWidth() == paramInt1) && (this.mRenderFBO2.getHeight() == paramInt2)) {
-        break;
-      }
-      if (this.mRenderFBO2 != null)
+      localObject = this.mRenderFBO2;
+      if ((localObject == null) || (((RenderBuffer)localObject).getWidth() != paramInt1) || (this.mRenderFBO2.getHeight() != paramInt2))
       {
-        if (this.mRenderFBO2.getTexId() >= 0) {
-          GlUtil.deleteTexture(this.mRenderFBO2.getTexId());
+        localObject = this.mRenderFBO2;
+        if (localObject != null)
+        {
+          if (((RenderBuffer)localObject).getTexId() >= 0) {
+            GlUtil.deleteTexture(this.mRenderFBO2.getTexId());
+          }
+          this.mRenderFBO2.destroy();
+          this.mRenderFBO2 = null;
         }
-        this.mRenderFBO2.destroy();
-        this.mRenderFBO2 = null;
+        this.mRenderFBO2 = new RenderBuffer(paramInt1, paramInt2, 33984);
       }
-      this.mRenderFBO2 = new RenderBuffer(paramInt1, paramInt2, 33984);
-      return;
-      if (this.mRcSrc != null)
-      {
-        this.mGlitchFiler = new GlitchFilter(this.mRcSrc);
-        this.mGlitchFiler.init();
-        this.mGlitchFiler.onOutputSizeChanged(paramInt1, paramInt2);
-        break label25;
-      }
-      this.mGlitchFiler = null;
-      break label25;
-      label273:
-      this.mScaleFilter = new ScaleFilter();
-      this.mScaleFilter.init();
-      this.mScaleFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      break label41;
-      label303:
-      this.mMaterialFilter = new MaterialFilter();
-      this.mMaterialFilter.init();
-      this.mMaterialFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceDestroy()
   {
-    if (this.mGlitchFiler != null)
+    Object localObject = this.mGlitchFiler;
+    if (localObject != null)
     {
-      this.mGlitchFiler.destroy();
+      ((GlitchFilter)localObject).destroy();
       this.mGlitchFiler = null;
     }
-    if (this.mScaleFilter != null)
+    localObject = this.mScaleFilter;
+    if (localObject != null)
     {
-      this.mScaleFilter.destroy();
+      ((ScaleFilter)localObject).destroy();
       this.mScaleFilter = null;
     }
-    if (this.mMaterialFilter != null)
+    localObject = this.mMaterialFilter;
+    if (localObject != null)
     {
-      this.mMaterialFilter.destroy();
+      ((MaterialFilter)localObject).destroy();
       this.mMaterialFilter = null;
     }
     LayerRenderBase.releaseRenderBuffer(this.mRenderFBO);
@@ -122,103 +137,103 @@ public class GlitchRender
   
   public int process(RenderBuffer paramRenderBuffer, int paramInt1, int paramInt2, RectF paramRectF, boolean paramBoolean, int paramInt3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if ((paramInt2 < 0) || (paramRenderBuffer == null) || (this.mRcSrc == null) || (paramRectF == null)) {
-      return -1;
-    }
-    long l1 = System.currentTimeMillis();
-    if ((paramInt1 >= 0) && (this.mGlitchFiler != null))
+    if ((paramInt2 >= 0) && (paramRenderBuffer != null) && (this.mRcSrc != null))
     {
-      LayerRenderBase.clearColorBuffer(this.mRenderFBO, 0);
-      this.mRenderFBO.bind();
-      this.mGlitchFiler.updateData(this.mDisColorH, this.mMaxDisH, paramRectF.left - this.mRcSrc.left, this.mDisColorV, this.mMaxDisV, paramRectF.top - this.mRcSrc.top);
-      this.mGlitchFiler.process(paramInt1, paramInt2, paramBoolean, paramInt3, true);
-      this.mRenderFBO.unbind();
-      paramInt1 = this.mRenderFBO.getTexId();
-    }
-    label249:
-    int i;
-    for (paramInt2 = 1;; paramInt2 = i)
-    {
+      if (paramRectF == null) {
+        return -1;
+      }
+      long l1 = System.currentTimeMillis();
+      int j = 0;
+      if ((paramInt1 >= 0) && (this.mGlitchFiler != null))
+      {
+        LayerRenderBase.clearColorBuffer(this.mRenderFBO, 0);
+        this.mRenderFBO.bind();
+        this.mGlitchFiler.updateData(this.mDisColorH, this.mMaxDisH, paramRectF.left - this.mRcSrc.left, this.mDisColorV, this.mMaxDisV, paramRectF.top - this.mRcSrc.top);
+        this.mGlitchFiler.process(paramInt1, paramInt2, paramBoolean, paramInt3, true);
+        this.mRenderFBO.unbind();
+        paramInt1 = this.mRenderFBO.getTexId();
+        paramInt2 = 1;
+      }
+      else
+      {
+        paramInt1 = paramInt2;
+        paramInt2 = 0;
+      }
       long l2 = System.currentTimeMillis();
-      Log.d("GlitchRender", "glitch time:" + (l2 - l1));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("glitch time:");
+      ((StringBuilder)localObject).append(l2 - l1);
+      Log.d("GlitchRender", ((StringBuilder)localObject).toString());
       l1 = System.currentTimeMillis();
-      float f1;
-      float f2;
-      int j;
+      int i;
       if (((paramRectF.width() != this.mRcSrc.width()) || (paramRectF.height() != this.mRcSrc.height())) && (this.mScaleFilter != null))
       {
         LayerRenderBase.clearColorBuffer(this.mRenderFBO2, 0);
         this.mRenderFBO2.bind();
+        float f1;
+        if (paramInt2 != 0) {
+          f1 = paramRectF.left;
+        } else {
+          f1 = this.mRcSrc.left;
+        }
+        float f2;
+        if (paramInt2 != 0) {
+          f2 = paramRectF.top;
+        } else {
+          f2 = this.mRcSrc.top;
+        }
+        this.mScaleFilter.process(paramInt1, f1, f2, paramRectF.width() / this.mRcSrc.width(), paramArrayOfFloat1, paramArrayOfFloat2);
+        this.mRenderFBO2.unbind();
+        paramInt1 = this.mRenderFBO2.getTexId();
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+      }
+      l2 = System.currentTimeMillis();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sclae time:");
+      ((StringBuilder)localObject).append(l2 - l1);
+      Log.d("GlitchRender", ((StringBuilder)localObject).toString());
+      l1 = System.currentTimeMillis();
+      if (this.mMaterialFilter != null)
+      {
         if (paramInt2 != 0)
         {
-          f1 = paramRectF.left;
-          if (paramInt2 == 0) {
-            break label456;
-          }
-          f2 = paramRectF.top;
-          this.mScaleFilter.process(paramInt1, f1, f2, paramRectF.width() / this.mRcSrc.width(), paramArrayOfFloat1, paramArrayOfFloat2);
-          this.mRenderFBO2.unbind();
-          i = this.mRenderFBO2.getTexId();
-          j = 1;
+          localObject = new RectF(0.0F, 1.0F, 1.0F, 0.0F);
+          paramInt2 = 1;
         }
-      }
-      for (;;)
-      {
-        l2 = System.currentTimeMillis();
-        Log.d("GlitchRender", "sclae time:" + (l2 - l1));
-        l1 = System.currentTimeMillis();
-        if (this.mMaterialFilter != null)
+        else
         {
-          RectF localRectF;
-          label363:
-          MaterialFilter localMaterialFilter;
-          if (paramInt2 != 0)
-          {
-            localRectF = new RectF(0.0F, 1.0F, 1.0F, 0.0F);
-            paramInt1 = 1;
-            paramRenderBuffer.bind();
-            localMaterialFilter = this.mMaterialFilter;
-            if (paramInt1 == 0) {
-              break label538;
-            }
-            paramRectF = localRectF;
+          if (i != 0) {
+            localObject = new RectF(this.mRcSrc.left, this.mRcSrc.top, this.mRcSrc.left + paramRectF.width(), this.mRcSrc.top + paramRectF.height());
+          } else {
+            localObject = this.mRcSrc;
           }
-          label538:
-          for (;;)
-          {
-            localMaterialFilter.process(i, localRectF, paramRectF, paramBoolean, paramInt3, paramArrayOfFloat1, paramArrayOfFloat2);
-            paramRenderBuffer.unbind();
-            l2 = System.currentTimeMillis();
-            Log.d("GlitchRender", "final time:" + (l2 - l1));
-            return paramRenderBuffer.getTexId();
-            f1 = this.mRcSrc.left;
-            break;
-            label456:
-            f2 = this.mRcSrc.top;
-            break label249;
-            if (j != 0)
-            {
-              localRectF = new RectF(this.mRcSrc.left, this.mRcSrc.top, this.mRcSrc.left + paramRectF.width(), this.mRcSrc.top + paramRectF.height());
-              paramInt1 = 0;
-              break label363;
-            }
-            localRectF = this.mRcSrc;
-            paramInt1 = 0;
-            break label363;
-          }
+          paramInt2 = j;
         }
-        return -1;
-        j = 0;
-        i = paramInt1;
+        paramRenderBuffer.bind();
+        MaterialFilter localMaterialFilter = this.mMaterialFilter;
+        if (paramInt2 != 0) {
+          paramRectF = (RectF)localObject;
+        }
+        localMaterialFilter.process(paramInt1, (RectF)localObject, paramRectF, paramBoolean, paramInt3, paramArrayOfFloat1, paramArrayOfFloat2);
+        paramRenderBuffer.unbind();
+        l2 = System.currentTimeMillis();
+        paramRectF = new StringBuilder();
+        paramRectF.append("final time:");
+        paramRectF.append(l2 - l1);
+        Log.d("GlitchRender", paramRectF.toString());
+        return paramRenderBuffer.getTexId();
       }
-      i = 0;
-      paramInt1 = paramInt2;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.GlitchRender
  * JD-Core Version:    0.7.0.1
  */

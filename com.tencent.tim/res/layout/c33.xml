@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/myq" android:background="@color/axi" android:paddingBottom="0.0dip" style="@style/ad8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewFlipper android:layout_gravity="top" android:id="@id/oe5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:layout_marginBottom="@dimen/bjk">
+        <com.tencent.qqmail.view.NoDialWebView android:id="@id/webview" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ScrollView android:id="@id/iig" android:fillViewport="true" style="@style/ad8">
+            <LinearLayout android:id="@id/myp" style="@style/ad9">
+                <ImageView android:id="@id/mym" android:contentDescription="@string/pb" style="@style/acx" />
+                <TextView android:id="@id/myk" style="@style/acz" />
+                <TextView android:id="@id/myl" style="@style/ad0" />
+                <LinearLayout style="@style/ad3">
+                    <LinearLayout android:id="@id/muv" android:visibility="gone" style="@style/ad7">
+                        <TextView android:id="@id/byh" android:text="error" style="@style/ad4" />
+                    </LinearLayout>
+                    <RelativeLayout android:id="@id/g1f" android:visibility="gone" style="@style/ad1">
+                        <ToggleButton android:id="@id/nk0" android:layout_marginRight="0.0dip" android:checked="true" android:textOn="" android:textOff="" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/aar" />
+                        <com.tencent.qqmail.animation.SmoothProgressBar android:id="@id/myn" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="10.0dip" android:progressDrawable="@drawable/f23" android:layout_toLeftOf="@id/nk0" android:layout_centerVertical="true" style="?android:progressBarStyleHorizontal" />
+                        <TextView android:id="@id/myo" android:layout_below="@id/myn" style="@style/ad2" />
+                    </RelativeLayout>
+                    <LinearLayout android:id="@id/mtm" android:visibility="gone" style="@style/ad7">
+                        <TextView android:id="@id/mtn" android:text="@string/xnt" style="@style/ad5" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/mti" android:visibility="gone" style="@style/acw">
+                        <Button android:id="@id/mtj" android:text="@string/wgh" style="@style/aa5" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/nhv" android:visibility="gone" style="@style/acw">
+                        <Button android:id="@id/nhw" android:text="@string/wgu" style="@style/aa5" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/nav" android:visibility="gone" style="@style/acw">
+                        <Button android:id="@id/em8" android:text="@string/wgx" style="@style/aa5" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/jmp" android:visibility="gone" style="@style/ad7">
+                        <LinearLayout android:id="@id/mjn" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TextView android:text="@string/wgy" style="@style/ad4" />
+                        </LinearLayout>
+                        <LinearLayout android:id="@id/nhr" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TextView android:text="@string/wgz" style="@style/ad4" />
+                            <Button android:id="@id/nhq" android:text="@string/wgs" style="@style/acy" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/oee" android:visibility="gone" style="@style/acw">
+                        <Button android:id="@id/oef" android:text="@string/wg9" style="@style/aa6" />
+                        <TextView android:text="@string/x2m" style="@style/ad4" />
+                    </LinearLayout>
+                    <LinearLayout android:id="@id/mtl" android:visibility="gone" style="@style/ad7">
+                        <TextView android:text="@string/x1y" style="@style/ad4" />
+                        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <Button android:visibility="gone" android:text="@string/x1x" style="@style/acy" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <com.tencent.qqmail.utilities.ui.FtnFileInformationView android:id="@id/mw9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </ViewFlipper>
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

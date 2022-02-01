@@ -18,67 +18,63 @@ public class QZoneWeishiFeedsClassLoader
   
   protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
-    int j = 0;
-    int i = paramString.lastIndexOf('.');
-    if (i != -1) {}
-    Object localObject2;
-    for (Object localObject1 = paramString.substring(0, i);; localObject1 = "")
+    int j = paramString.lastIndexOf('.');
+    int i = 0;
+    if (j != -1) {
+      localObject1 = paramString.substring(0, j);
+    } else {
+      localObject1 = "";
+    }
+    Object localObject2 = this.mInterceptPackageNames;
+    int k = localObject2.length;
+    j = 0;
+    while (i < k)
     {
-      localObject2 = this.mInterceptPackageNames;
-      int k = localObject2.length;
-      i = 0;
-      while (i < k)
+      if (((String)localObject1).startsWith(localObject2[i]))
       {
-        if (((String)localObject1).startsWith(localObject2[i]))
-        {
-          QLog.d("rays", 1, "intercept class=" + paramString);
-          j = 1;
-        }
-        i += 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("intercept class=");
+        localStringBuilder.append(paramString);
+        QLog.d("rays", 1, localStringBuilder.toString());
+        j = 1;
       }
+      i += 1;
     }
     if (j == 0) {
-      localObject1 = super.loadClass(paramString, paramBoolean);
+      return super.loadClass(paramString, paramBoolean);
     }
-    Throwable localThrowable;
-    label142:
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject2 = findLoadedClass(paramString);
-        localObject1 = localObject2;
-      } while (localObject2 != null);
-      localThrowable = null;
-      try
-      {
-        localObject1 = findClass(paramString);
-        localObject2 = localObject1;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        break label142;
-      }
-      localObject1 = localObject2;
-    } while (localObject2 != null);
+    Object localObject1 = findLoadedClass(paramString);
+    localObject2 = localObject1;
+    if (localObject1 == null) {}
     try
     {
-      paramString = this.mGrandParent.loadClass(paramString);
-      return paramString;
+      localObject2 = findClass(paramString);
+      localObject1 = localObject2;
     }
-    catch (ClassNotFoundException paramString)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramString.addSuppressed(localThrowable);
-      }
-      throw paramString;
+      label148:
+      break label148;
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      try
+      {
+        paramString = this.mGrandParent.loadClass(paramString);
+        return paramString;
+      }
+      catch (ClassNotFoundException paramString)
+      {
+        i = Build.VERSION.SDK_INT;
+        throw paramString;
+      }
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.QZoneWeishiFeedsClassLoader
  * JD-Core Version:    0.7.0.1
  */

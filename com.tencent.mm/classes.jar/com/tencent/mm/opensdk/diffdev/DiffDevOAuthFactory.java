@@ -9,37 +9,36 @@ public class DiffDevOAuthFactory
   public static final int MAX_SUPPORTED_VERSION = 1;
   private static final String TAG = "MicroMsg.SDK.DiffDevOAuthFactory";
   public static final int VERSION_1 = 1;
-  private static IDiffDevOAuth v1Instance = null;
+  private static IDiffDevOAuth v1Instance;
   
   public static IDiffDevOAuth getDiffDevOAuth()
   {
-    AppMethodBeat.i(128058);
+    AppMethodBeat.i(3743);
     IDiffDevOAuth localIDiffDevOAuth = getDiffDevOAuth(1);
-    AppMethodBeat.o(128058);
+    AppMethodBeat.o(3743);
     return localIDiffDevOAuth;
   }
   
   public static IDiffDevOAuth getDiffDevOAuth(int paramInt)
   {
-    AppMethodBeat.i(128059);
+    AppMethodBeat.i(3744);
     Log.v("MicroMsg.SDK.DiffDevOAuthFactory", "getDiffDevOAuth, version = ".concat(String.valueOf(paramInt)));
     if (paramInt > 1)
     {
       Log.e("MicroMsg.SDK.DiffDevOAuthFactory", "getDiffDevOAuth fail, unsupported version = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(128059);
+      AppMethodBeat.o(3744);
       return null;
     }
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      AppMethodBeat.o(128059);
+      AppMethodBeat.o(3744);
       return null;
     }
     if (v1Instance == null) {
       v1Instance = new a();
     }
     IDiffDevOAuth localIDiffDevOAuth = v1Instance;
-    AppMethodBeat.o(128059);
+    AppMethodBeat.o(3744);
     return localIDiffDevOAuth;
   }
 }

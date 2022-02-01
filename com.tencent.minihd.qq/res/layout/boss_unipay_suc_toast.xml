@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@null" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#90000000" style="@style/boss_unipay_wrapper" />
+    <LinearLayout style="@style/boss_unipay_linear.succtipsframe">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout style="@style/boss_unipay_alert_title">
+                <View style="@style/boss_unipay_ic_right" />
+                <TextView android:textColor="@color/boss_unipay_c_suc" android:id="@id/boss_unipay_id_title" android:text="支付成功" style="@style/boss_unipay_tx.big" />
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/boss_unipay_line" />
+        <LinearLayout android:layout_marginBottom="20.0dip" style="@style/boss_unipay_linear.padding_lr">
+            <LinearLayout style="@style/boss_unipay_linear.content">
+                <LinearLayout style="@style/boss_unipay_bar.details">
+                    <TextView android:gravity="left" android:id="@id/boss_unipay_id_goodsNameTitle" android:text="商品名称" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_goodsNum" android:text="60" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_goodsUnit" android:text="书币" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_sendText" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_sendTextNum" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_sendUnit" style="@style/boss_unipay_tx.thin.middle" />
+                </LinearLayout>
+                <LinearLayout style="@style/boss_unipay_bar.details">
+                    <TextView android:gravity="left" android:id="@id/boss_unipay_id_goodsMoneyTitle" android:visibility="gone" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin.middle" />
+                    <TextView android:id="@id/boss_unipay_id_goodsMoney" android:visibility="gone" style="@style/boss_unipay_tx.thin.middle" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

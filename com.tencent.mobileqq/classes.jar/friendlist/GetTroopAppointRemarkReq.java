@@ -9,12 +9,12 @@ public final class GetTroopAppointRemarkReq
   extends JceStruct
 {
   static ArrayList<Long> cache_vecUinList = new ArrayList();
-  public long GroupCode;
-  public long GroupUin;
-  public byte cRichCardNameVer;
-  public byte cRichInfo;
-  public long uin;
-  public ArrayList<Long> vecUinList;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public byte cRichCardNameVer = 0;
+  public byte cRichInfo = 0;
+  public long uin = 0L;
+  public ArrayList<Long> vecUinList = null;
   
   static
   {
@@ -55,7 +55,7 @@ public final class GetTroopAppointRemarkReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopAppointRemarkReq
  * JD-Core Version:    0.7.0.1
  */

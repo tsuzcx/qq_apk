@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_business_collection_go_to" android:layout="@layout/bdi" android:title="@string/btm" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_wxpay_business_collection_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/btq" />
+    <CheckBoxPreference android:key="contact_info_wxpay_business_collection_not_disturb" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bto" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_business_collection_help" android:layout="@layout/bdi" android:title="@string/btn" />
+    <Preference android:key="contact_info_wxpay_business_collection_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_wxpay_business_collection_install" android:title_color="@color/wv" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_wxpay_business_collection_uninstall" android:layout="@layout/b93" android:title_color="@color/a9z" />
+    <PreferenceCategory />
+</PreferenceScreen>

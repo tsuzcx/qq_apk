@@ -75,7 +75,6 @@
             },
             "attributes": {
               "setBackgroundColorString:": "#4d000000",
-              "setFrameString:": "-1",
               "setText:": "$text",
               "setTextColorString:": "#FFFFFF",
               "setFontSizeString:": "11",
@@ -188,15 +187,15 @@
                 }
               },
               {
-                "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                "view_type": "ReadInJoyAdDownloadView",
                 "view_id": "id_view_AdDownloadView",
                 "height": {
                   "type": "relative",
-                  "value": "40"
+                  "value": "25"
                 },
                 "width": {
                   "type": "relative",
-                  "value": "82"
+                  "value": "62"
                 },
                 "margin_right": "4",
                 "align_parent_center_vertical": "YES",

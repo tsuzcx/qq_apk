@@ -1,6 +1,6 @@
 package com.tencent.ttpic.openapi.model;
 
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.List;
 
 public class FaceImageLayer
@@ -17,7 +17,7 @@ public class FaceImageLayer
   public String faceMaskImagePath;
   public List<Integer> faceTriangle;
   public int faceTriangleID;
-  public FaceOffUtil.FEATURE_TYPE featureType = FaceOffUtil.FEATURE_TYPE.CRAZY_FACE;
+  public FaceOffUtil.FeatureType featureType = FaceOffUtil.FeatureType.CRAZY_FACE;
   public double height;
   public List<Double> imageFaceColor;
   public List<Double> imageFaceColor2;
@@ -30,15 +30,20 @@ public class FaceImageLayer
   
   public int getVersion()
   {
-    if ((this.imageFaceColor2 != null) && (this.imageFaceColor2.size() >= 12) && (this.faceColorRange != null) && (this.faceColorRange.size() >= 2)) {
-      return 2;
+    List localList = this.imageFaceColor2;
+    if ((localList != null) && (localList.size() >= 12))
+    {
+      localList = this.faceColorRange;
+      if ((localList != null) && (localList.size() >= 2)) {
+        return 2;
+      }
     }
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.FaceImageLayer
  * JD-Core Version:    0.7.0.1
  */

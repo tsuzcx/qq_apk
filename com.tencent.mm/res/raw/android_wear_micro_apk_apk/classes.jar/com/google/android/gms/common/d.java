@@ -7,11 +7,11 @@ public final class d
   extends n
 {
   @Deprecated
-  public static final int Hi = n.Hi;
+  public static final int IX = n.IX;
   
-  public static Resources e(Context paramContext)
+  public static Resources f(Context paramContext)
   {
-    return n.e(paramContext);
+    return n.f(paramContext);
   }
 }
 

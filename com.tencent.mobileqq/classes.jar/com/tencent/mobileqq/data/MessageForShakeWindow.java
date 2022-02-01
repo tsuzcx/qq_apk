@@ -40,23 +40,26 @@ public class MessageForShakeWindow
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mShakeWindowMsg != null) {}
-    try
-    {
-      this.msgData = this.mShakeWindowMsg.getBytes();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.shakemsg", 2, "convert ShakeWindowMsg to byte array failed", localException);
+    ShakeWindowMsg localShakeWindowMsg = this.mShakeWindowMsg;
+    if (localShakeWindowMsg != null) {
+      try
+      {
+        this.msgData = localShakeWindowMsg.getBytes();
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.shakemsg", 2, "convert ShakeWindowMsg to byte array failed", localException);
+        }
+      }
     }
   }
 }

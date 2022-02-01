@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import asfa;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private asfa a;
+  private OnDrawCompleteListener a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -30,33 +30,43 @@ public class PerfRelativeLayout
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.a != null) {
-      this.a.a();
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.d();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PerfRelativeLayout", 4, "dispatchDraw, " + this.a);
+    if (QLog.isDevelopLevel())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("dispatchDraw, ");
+      paramCanvas.append(this.a);
+      QLog.i("PerfRelativeLayout", 4, paramCanvas.toString());
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.a != null) {
-      this.a.a();
+    paramCanvas = this.a;
+    if (paramCanvas != null) {
+      paramCanvas.d();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PerfRelativeLayout", 4, "draw, " + this.a);
+    if (QLog.isDevelopLevel())
+    {
+      paramCanvas = new StringBuilder();
+      paramCanvas.append("draw, ");
+      paramCanvas.append(this.a);
+      QLog.i("PerfRelativeLayout", 4, paramCanvas.toString());
     }
   }
   
-  public void setOnDrawCompleteListener(asfa paramasfa)
+  public void setOnDrawCompleteListener(OnDrawCompleteListener paramOnDrawCompleteListener)
   {
-    this.a = paramasfa;
+    this.a = paramOnDrawCompleteListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PerfRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

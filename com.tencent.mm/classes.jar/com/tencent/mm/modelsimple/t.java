@@ -1,68 +1,70 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bqc;
-import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.djx;
+import com.tencent.mm.protocal.protobuf.djy;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public int fPH;
-  public int fPI;
-  private b rr;
+  private h callback;
+  public final c rr;
   
-  public t(int paramInt)
+  public t()
   {
-    AppMethodBeat.i(123457);
-    this.fPH = 1;
-    b.a locala = new b.a();
-    locala.fsX = new bqc();
-    locala.fsY = new bqd();
-    locala.uri = "/cgi-bin/micromsg-bin/queryhaspasswd";
-    locala.funcId = 255;
-    locala.reqCmdId = 132;
-    locala.respCmdId = 1000000132;
-    this.rr = locala.ado();
-    ((bqc)this.rr.fsV.fta).Scene = paramInt;
-    this.fPI = paramInt;
-    AppMethodBeat.o(123457);
+    AppMethodBeat.i(150937);
+    c.a locala = new c.a();
+    locala.otE = new djx();
+    locala.otF = new djy();
+    locala.uri = "/cgi-bin/micromsg-bin/logout";
+    locala.funcId = 282;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((djx)c.b.b(this.rr.otB)).IJG = 0;
+    AppMethodBeat.o(150937);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(123458);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(123458);
+    AppMethodBeat.i(150938);
+    Log.d("MicroMsg.NetSceneLogout", "doScene");
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(150938);
     return i;
   }
   
   public final int getType()
   {
-    return 255;
+    return 282;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(123459);
-    updateDispatchId(paramInt1);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(123459);
+    AppMethodBeat.i(150939);
+    if ((paramInt2 != 0) || (paramInt3 != 0)) {
+      Log.d("MicroMsg.NetSceneLogout", "logout Error. ");
+    }
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(150939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.t
  * JD-Core Version:    0.7.0.1
  */

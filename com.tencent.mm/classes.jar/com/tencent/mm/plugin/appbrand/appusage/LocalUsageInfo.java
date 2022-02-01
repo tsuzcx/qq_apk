@@ -4,63 +4,82 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
 
 public class LocalUsageInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocalUsageInfo> CREATOR;
   public final String appId;
-  public final long bDL;
-  public final int bDc;
-  public final String bDi;
-  public final String hcN;
-  public final boolean hcO;
-  public final long hcP;
-  public final int hcr;
+  public final int appVersion;
+  public final String epy;
+  public final long eqh;
+  public final int euz;
   public final String nickname;
+  public final String qQb;
+  public final boolean qQc;
+  public final long qQd;
+  public final boolean qQe;
+  public final String qQf;
   public final String username;
   
   static
   {
-    AppMethodBeat.i(114912);
-    CREATOR = new LocalUsageInfo.1();
-    AppMethodBeat.o(114912);
+    AppMethodBeat.i(153201);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(153201);
   }
   
   private LocalUsageInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(114911);
+    AppMethodBeat.i(153200);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.hcr = paramParcel.readInt();
-    this.bDc = paramParcel.readInt();
+    this.euz = paramParcel.readInt();
+    this.appVersion = paramParcel.readInt();
     this.nickname = paramParcel.readString();
-    this.bDi = paramParcel.readString();
-    this.hcN = paramParcel.readString();
-    if (paramParcel.readByte() > 0) {}
-    for (boolean bool = true;; bool = false)
+    this.epy = paramParcel.readString();
+    this.qQb = paramParcel.readString();
+    if (paramParcel.readByte() > 0)
     {
-      this.hcO = bool;
-      this.bDL = paramParcel.readLong();
-      this.hcP = paramParcel.readLong();
-      AppMethodBeat.o(114911);
+      bool1 = true;
+      this.qQc = bool1;
+      this.eqh = paramParcel.readLong();
+      this.qQd = paramParcel.readLong();
+      if (paramParcel.readByte() <= 0) {
+        break label130;
+      }
+    }
+    label130:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.qQe = bool1;
+      this.qQf = paramParcel.readString();
+      AppMethodBeat.o(153200);
       return;
+      bool1 = false;
+      break;
     }
   }
   
-  public LocalUsageInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, long paramLong1, long paramLong2)
+  public LocalUsageInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong)
+  {
+    this(paramString1, paramString2, paramInt1, paramInt2, paramString3, paramString4, paramString5, false, paramLong, 0L, false, "");
+  }
+  
+  public LocalUsageInfo(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2, String paramString6)
   {
     this.username = paramString1;
     this.appId = paramString2;
-    this.hcr = paramInt1;
-    this.bDc = paramInt2;
+    this.euz = paramInt1;
+    this.appVersion = paramInt2;
     this.nickname = paramString3;
-    this.bDi = paramString4;
-    this.hcN = paramString5;
-    this.hcO = paramBoolean;
-    this.bDL = paramLong1;
-    this.hcP = paramLong2;
+    this.epy = paramString4;
+    this.qQb = paramString5;
+    this.qQc = paramBoolean1;
+    this.eqh = paramLong1;
+    this.qQd = paramLong2;
+    this.qQe = paramBoolean2;
+    this.qQf = paramString6;
   }
   
   public int describeContents()
@@ -68,46 +87,36 @@ public class LocalUsageInfo
     return 0;
   }
   
-  public final boolean e(LocalUsageInfo paramLocalUsageInfo)
-  {
-    AppMethodBeat.i(114909);
-    if (paramLocalUsageInfo == null)
-    {
-      AppMethodBeat.o(114909);
-      return false;
-    }
-    if (bo.isNullOrNil(paramLocalUsageInfo.username))
-    {
-      AppMethodBeat.o(114909);
-      return false;
-    }
-    if ((paramLocalUsageInfo.username.equals(this.username)) && (paramLocalUsageInfo.hcr == this.hcr))
-    {
-      AppMethodBeat.o(114909);
-      return true;
-    }
-    AppMethodBeat.o(114909);
-    return false;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114910);
+    int i = 1;
+    AppMethodBeat.i(153199);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hcr);
-    paramParcel.writeInt(this.bDc);
+    paramParcel.writeInt(this.euz);
+    paramParcel.writeInt(this.appVersion);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.bDi);
-    paramParcel.writeString(this.hcN);
-    if (this.hcO) {}
-    for (paramInt = 1;; paramInt = 0)
+    paramParcel.writeString(this.epy);
+    paramParcel.writeString(this.qQb);
+    if (this.qQc)
+    {
+      paramInt = 1;
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeLong(this.eqh);
+      paramParcel.writeLong(this.qQd);
+      if (!this.qQe) {
+        break label128;
+      }
+    }
+    label128:
+    for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.bDL);
-      paramParcel.writeLong(this.hcP);
-      AppMethodBeat.o(114910);
+      paramParcel.writeString(this.qQf);
+      AppMethodBeat.o(153199);
       return;
+      paramInt = 0;
+      break;
     }
   }
 }

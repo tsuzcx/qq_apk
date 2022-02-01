@@ -19,7 +19,7 @@ public final class EglCore
   private static final int EGL_RECORDABLE_ANDROID = 12610;
   public static final int FLAG_RECORDABLE = 1;
   public static final int FLAG_TRY_GLES3 = 2;
-  private static final String TAG = EglCore.class.getSimpleName();
+  private static final String TAG = "EglCore";
   private EGLConfig mEGLConfig = null;
   private EGLContext mEGLContext = EGL14.EGL_NO_CONTEXT;
   private EGLDisplay mEGLDisplay = EGL14.EGL_NO_DISPLAY;
@@ -33,95 +33,119 @@ public final class EglCore
   
   public EglCore(EGLContext paramEGLContext, int paramInt)
   {
-    if (this.mEGLDisplay != EGL14.EGL_NO_DISPLAY) {
-      throw new RuntimeException("EGL already set up");
-    }
-    EGLContext localEGLContext1 = paramEGLContext;
-    if (paramEGLContext == null) {
-      localEGLContext1 = EGL14.EGL_NO_CONTEXT;
-    }
-    this.mEGLDisplay = EGL14.eglGetDisplay(0);
-    if (this.mEGLDisplay == EGL14.EGL_NO_DISPLAY) {
+    if (this.mEGLDisplay == EGL14.EGL_NO_DISPLAY)
+    {
+      Object localObject1 = paramEGLContext;
+      if (paramEGLContext == null) {
+        localObject1 = EGL14.EGL_NO_CONTEXT;
+      }
+      this.mEGLDisplay = EGL14.eglGetDisplay(0);
+      if (this.mEGLDisplay != EGL14.EGL_NO_DISPLAY)
+      {
+        paramEGLContext = new int[2];
+        if (EGL14.eglInitialize(this.mEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
+        {
+          if ((paramInt & 0x2) != 0)
+          {
+            paramEGLContext = getConfig(paramInt, 3);
+            if (paramEGLContext != null)
+            {
+              localObject2 = EGL14.eglCreateContext(this.mEGLDisplay, paramEGLContext, (EGLContext)localObject1, new int[] { 12440, 3, 12344 }, 0);
+              if (EGL14.eglGetError() == 12288)
+              {
+                this.mEGLConfig = paramEGLContext;
+                this.mEGLContext = ((EGLContext)localObject2);
+                this.mGlVersion = 3;
+              }
+            }
+          }
+          if (this.mEGLContext == EGL14.EGL_NO_CONTEXT)
+          {
+            paramEGLContext = getConfig(paramInt, 2);
+            if (paramEGLContext != null)
+            {
+              localObject1 = EGL14.eglCreateContext(this.mEGLDisplay, paramEGLContext, (EGLContext)localObject1, new int[] { 12440, 2, 12344 }, 0);
+              checkEglError("eglCreateContext");
+              this.mEGLConfig = paramEGLContext;
+              this.mEGLContext = ((EGLContext)localObject1);
+              this.mGlVersion = 2;
+            }
+            else
+            {
+              throw new RuntimeException("Unable to find a suitable EGLConfig");
+            }
+          }
+          paramEGLContext = new int[1];
+          EGL14.eglQueryContext(this.mEGLDisplay, this.mEGLContext, 12440, paramEGLContext, 0);
+          localObject1 = TAG;
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("EGLContext created, client version ");
+          ((StringBuilder)localObject2).append(paramEGLContext[0]);
+          LogUtils.d((String)localObject1, ((StringBuilder)localObject2).toString());
+          return;
+        }
+        this.mEGLDisplay = null;
+        throw new RuntimeException("unable to initialize EGL14");
+      }
       throw new RuntimeException("unable to get EGL14 display");
     }
-    paramEGLContext = new int[2];
-    if (!EGL14.eglInitialize(this.mEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
-    {
-      this.mEGLDisplay = null;
-      throw new RuntimeException("unable to initialize EGL14");
-    }
-    if ((paramInt & 0x2) != 0)
-    {
-      paramEGLContext = getConfig(paramInt, 3);
-      if (paramEGLContext != null)
-      {
-        EGLContext localEGLContext2 = EGL14.eglCreateContext(this.mEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 3, 12344 }, 0);
-        if (EGL14.eglGetError() == 12288)
-        {
-          this.mEGLConfig = paramEGLContext;
-          this.mEGLContext = localEGLContext2;
-          this.mGlVersion = 3;
-        }
-      }
-    }
-    if (this.mEGLContext == EGL14.EGL_NO_CONTEXT)
-    {
-      paramEGLContext = getConfig(paramInt, 2);
-      if (paramEGLContext == null) {
-        throw new RuntimeException("Unable to find a suitable EGLConfig");
-      }
-      localEGLContext1 = EGL14.eglCreateContext(this.mEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 2, 12344 }, 0);
-      checkEglError("eglCreateContext");
-      this.mEGLConfig = paramEGLContext;
-      this.mEGLContext = localEGLContext1;
-      this.mGlVersion = 2;
-    }
-    paramEGLContext = new int[1];
-    EGL14.eglQueryContext(this.mEGLDisplay, this.mEGLContext, 12440, paramEGLContext, 0);
-    LogUtils.d(TAG, "EGLContext created, client version " + paramEGLContext[0]);
+    throw new RuntimeException("EGL already set up");
   }
   
   private void checkEglError(String paramString)
   {
     int i = EGL14.eglGetError();
-    if (i != 12288) {
-      LogUtils.e(TAG, paramString + ": EGL error: 0x" + Integer.toHexString(i));
+    if (i != 12288)
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": EGL error: 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      LogUtils.e(str, localStringBuilder.toString());
     }
   }
   
   private EGLConfig getConfig(int paramInt1, int paramInt2)
   {
-    if (paramInt2 >= 3) {}
-    for (int i = 68;; i = 4)
-    {
-      int[] arrayOfInt1 = new int[13];
-      arrayOfInt1[0] = 12324;
-      arrayOfInt1[1] = 8;
-      arrayOfInt1[2] = 12323;
-      arrayOfInt1[3] = 8;
-      arrayOfInt1[4] = 12322;
-      arrayOfInt1[5] = 8;
-      arrayOfInt1[6] = 12321;
-      arrayOfInt1[7] = 8;
-      arrayOfInt1[8] = 12352;
-      arrayOfInt1[9] = i;
-      arrayOfInt1[10] = 12344;
-      arrayOfInt1[11] = 0;
-      arrayOfInt1[12] = 12344;
-      if ((paramInt1 & 0x1) != 0)
-      {
-        arrayOfInt1[(arrayOfInt1.length - 3)] = 12610;
-        arrayOfInt1[(arrayOfInt1.length - 2)] = 1;
-      }
-      EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-      int[] arrayOfInt2 = new int[1];
-      if (!EGL14.eglChooseConfig(this.mEGLDisplay, arrayOfInt1, 0, arrayOfEGLConfig, 0, arrayOfEGLConfig.length, arrayOfInt2, 0))
-      {
-        LogUtils.w(TAG, "unable to find RGB8888 / " + paramInt2 + " EGLConfig");
-        return null;
-      }
-      return arrayOfEGLConfig[0];
+    int i;
+    if (paramInt2 >= 3) {
+      i = 68;
+    } else {
+      i = 4;
     }
+    Object localObject1 = new int[13];
+    localObject1[0] = 12324;
+    localObject1[1] = 8;
+    localObject1[2] = 12323;
+    localObject1[3] = 8;
+    localObject1[4] = 12322;
+    localObject1[5] = 8;
+    localObject1[6] = 12321;
+    localObject1[7] = 8;
+    localObject1[8] = 12352;
+    localObject1[9] = i;
+    localObject1[10] = 12344;
+    localObject1[11] = 0;
+    localObject1[12] = 12344;
+    if ((paramInt1 & 0x1) != 0)
+    {
+      localObject1[(localObject1.length - 3)] = 12610;
+      localObject1[(localObject1.length - 2)] = 1;
+    }
+    Object localObject2 = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    if (!EGL14.eglChooseConfig(this.mEGLDisplay, (int[])localObject1, 0, (EGLConfig[])localObject2, 0, localObject2.length, arrayOfInt, 0))
+    {
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("unable to find RGB8888 / ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(" EGLConfig");
+      LogUtils.w((String)localObject1, ((StringBuilder)localObject2).toString());
+      return null;
+    }
+    return localObject2[0];
   }
   
   public static void logCurrent(String paramString)
@@ -129,30 +153,44 @@ public final class EglCore
     EGLDisplay localEGLDisplay = EGL14.eglGetCurrentDisplay();
     EGLContext localEGLContext = EGL14.eglGetCurrentContext();
     EGLSurface localEGLSurface = EGL14.eglGetCurrentSurface(12377);
-    LogUtils.i(TAG, "Current EGL (" + paramString + "): display=" + localEGLDisplay + ", context=" + localEGLContext + ", surface=" + localEGLSurface);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Current EGL (");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("): display=");
+    localStringBuilder.append(localEGLDisplay);
+    localStringBuilder.append(", context=");
+    localStringBuilder.append(localEGLContext);
+    localStringBuilder.append(", surface=");
+    localStringBuilder.append(localEGLSurface);
+    LogUtils.i(str, localStringBuilder.toString());
   }
   
   public EGLSurface createOffscreenSurface(int paramInt1, int paramInt2)
   {
     EGLSurface localEGLSurface = EGL14.eglCreatePbufferSurface(this.mEGLDisplay, this.mEGLConfig, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 }, 0);
     checkEglError("eglCreatePbufferSurface");
-    if (localEGLSurface == null) {
-      throw new RuntimeException("surface was null");
+    if (localEGLSurface != null) {
+      return localEGLSurface;
     }
-    return localEGLSurface;
+    throw new RuntimeException("surface was null");
   }
   
   public EGLSurface createWindowSurface(Object paramObject)
   {
-    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture))) {
-      throw new RuntimeException("invalid surface: " + paramObject);
+    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("invalid surface: ");
+      localStringBuilder.append(paramObject);
+      throw new RuntimeException(localStringBuilder.toString());
     }
     paramObject = EGL14.eglCreateWindowSurface(this.mEGLDisplay, this.mEGLConfig, paramObject, new int[] { 12344 }, 0);
     checkEglError("eglCreateWindowSurface");
-    if (paramObject == null) {
-      throw new RuntimeException("surface was null");
+    if (paramObject != null) {
+      return paramObject;
     }
-    return paramObject;
+    throw new RuntimeException("surface was null");
   }
   
   protected void finalize()
@@ -161,7 +199,10 @@ public final class EglCore
     {
       if (this.mEGLDisplay != EGL14.EGL_NO_DISPLAY)
       {
-        ReportUtil.report("WARNING: EglCore was not explicitly released -- state may be leaked, stackTrace: " + Log.getStackTraceString(this.throwableForStackTrace));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WARNING: EglCore was not explicitly released -- state may be leaked, stackTrace: ");
+        localStringBuilder.append(Log.getStackTraceString(this.throwableForStackTrace));
+        ReportUtil.report(localStringBuilder.toString());
         release();
       }
       return;
@@ -202,16 +243,18 @@ public final class EglCore
     if (this.mEGLDisplay == EGL14.EGL_NO_DISPLAY) {
       LogUtils.d(TAG, "NOTE: makeCurrent w/o display");
     }
-    if (!EGL14.eglMakeCurrent(this.mEGLDisplay, paramEGLSurface1, paramEGLSurface2, this.mEGLContext)) {
-      throw new RuntimeException("eglMakeCurrent(draw,read) failed");
+    if (EGL14.eglMakeCurrent(this.mEGLDisplay, paramEGLSurface1, paramEGLSurface2, this.mEGLContext)) {
+      return;
     }
+    throw new RuntimeException("eglMakeCurrent(draw,read) failed");
   }
   
   public void makeNothingCurrent()
   {
-    if (!EGL14.eglMakeCurrent(this.mEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT)) {
-      throw new RuntimeException("eglMakeCurrent failed");
+    if (EGL14.eglMakeCurrent(this.mEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT)) {
+      return;
     }
+    throw new RuntimeException("eglMakeCurrent failed");
   }
   
   public String queryString(int paramInt)
@@ -261,7 +304,7 @@ public final class EglCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.gles.EglCore
  * JD-Core Version:    0.7.0.1
  */

@@ -1,108 +1,75 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpv;
-import com.tencent.mm.protocal.protobuf.cpw;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.aqw;
+import com.tencent.mm.protocal.protobuf.aqx;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class s
-  extends m
-  implements k, e
+  extends p
+  implements m
 {
-  private f callback;
-  private boolean mhc;
-  private b rr;
+  private h callback;
+  public String mFileName;
+  private c rr;
   
-  public s(long paramLong, String paramString1, String paramString2)
+  public s(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(101);
-    this.mhc = false;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cpv();
-    ((b.a)localObject).fsY = new cpw();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyface";
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cpv)this.rr.fsV.fta;
-    ((cpv)localObject).wZC = paramLong;
-    ((cpv)localObject).xGH = paramString1;
-    ((cpv)localObject).xGI = paramString2;
-    AppMethodBeat.o(101);
+    AppMethodBeat.i(103623);
+    this.mFileName = "";
+    c.a locala = new c.a();
+    locala.otE = new aqw();
+    locala.otF = new aqx();
+    locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid";
+    locala.funcId = getType();
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    this.mFileName = paramString1;
+    paramString1 = (aqw)c.b.b(this.rr.otB);
+    paramString1.appid = paramString2;
+    paramString1.Zyc = paramLong;
+    paramString1.Zyd = paramString4;
+    paramString1.Zyj = paramString3;
+    AppMethodBeat.o(103623);
   }
   
-  public final boolean btY()
+  public final int doScene(g paramg, h paramh)
   {
-    return true;
-  }
-  
-  public final String btZ()
-  {
-    return null;
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
-  {
-    AppMethodBeat.i(102);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(102);
+    AppMethodBeat.i(103624);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(103624);
     return i;
   }
   
   public final int getType()
   {
-    return 797;
+    return 1197;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(103);
-    paramq = (cpw)((b)paramq).fsW.fta;
-    boolean bool;
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (paramq.xGK == 0)
-      {
-        bool = true;
-        this.mhc = bool;
-        paramInt1 = paramq.xGK;
-        ab.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.mhc) });
-      }
+    AppMethodBeat.i(103625);
+    Log.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    c.c.b(((c)params).otC);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    for (;;)
-    {
-      if (this.callback != null) {
-        this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
-      }
-      AppMethodBeat.o(103);
-      return;
-      bool = false;
-      break;
-      paramInt1 = paramInt3;
-      if (paramq != null)
-      {
-        paramInt1 = paramInt3;
-        if (paramq.xGK != 0)
-        {
-          ab.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
-          paramInt1 = paramq.xGK;
-        }
-      }
-    }
+    AppMethodBeat.o(103625);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.s
  * JD-Core Version:    0.7.0.1
  */

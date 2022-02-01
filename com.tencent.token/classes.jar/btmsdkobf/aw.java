@@ -9,17 +9,17 @@ public final class aw
 {
   public String guid = "";
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new aw();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.guid = paramJceInputStream.readString(0, true);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.guid, 0);
   }

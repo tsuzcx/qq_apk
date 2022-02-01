@@ -33,148 +33,142 @@ public class NetworkUtils
   public static String getAPN(Context paramContext)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: invokestatic 77	com/tencent/component/network/utils/NetworkUtils:getActiveNetworkInfo	(Landroid/content/Context;)Landroid/net/NetworkInfo;
-    //   6: astore 4
-    //   8: aload 4
-    //   10: ifnonnull +5 -> 15
+    //   0: aload_0
+    //   1: invokestatic 77	com/tencent/component/network/utils/NetworkUtils:getActiveNetworkInfo	(Landroid/content/Context;)Landroid/net/NetworkInfo;
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: aconst_null
+    //   9: astore 4
+    //   11: aconst_null
+    //   12: astore_2
     //   13: aconst_null
-    //   14: areturn
-    //   15: aload 4
-    //   17: invokevirtual 83	android/net/NetworkInfo:getType	()I
-    //   20: iconst_1
-    //   21: if_icmpne +19 -> 40
-    //   24: ldc 8
-    //   26: astore_0
-    //   27: aload_0
-    //   28: astore_1
-    //   29: aload_0
-    //   30: ifnull +8 -> 38
-    //   33: aload_0
-    //   34: invokevirtual 89	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   37: astore_1
-    //   38: aload_1
-    //   39: areturn
-    //   40: aload 4
+    //   14: astore_1
+    //   15: aconst_null
+    //   16: astore 5
+    //   18: aload 6
+    //   20: ifnonnull +5 -> 25
+    //   23: aconst_null
+    //   24: areturn
+    //   25: aload 6
+    //   27: invokevirtual 83	android/net/NetworkInfo:getType	()I
+    //   30: iconst_1
+    //   31: if_icmpne +9 -> 40
+    //   34: ldc 8
+    //   36: astore_1
+    //   37: goto +161 -> 198
+    //   40: aload 6
     //   42: invokevirtual 83	android/net/NetworkInfo:getType	()I
-    //   45: ifne +165 -> 210
-    //   48: invokestatic 94	com/tencent/component/network/utils/PlatformUtil:version	()I
+    //   45: ifne +153 -> 198
+    //   48: invokestatic 88	com/tencent/component/network/utils/PlatformUtil:version	()I
     //   51: bipush 17
-    //   53: if_icmpge +152 -> 205
-    //   56: aload_0
-    //   57: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   60: getstatic 28	com/tencent/component/network/utils/NetworkUtils:PREFERRED_APN_URI	Landroid/net/Uri;
-    //   63: aconst_null
-    //   64: aconst_null
+    //   53: if_icmpge +130 -> 183
+    //   56: aload_3
+    //   57: astore_1
+    //   58: aload_0
+    //   59: invokevirtual 94	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   62: getstatic 28	com/tencent/component/network/utils/NetworkUtils:PREFERRED_APN_URI	Landroid/net/Uri;
     //   65: aconst_null
     //   66: aconst_null
-    //   67: invokevirtual 106	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   70: astore_0
-    //   71: aload_0
-    //   72: astore_2
-    //   73: aconst_null
-    //   74: astore_0
-    //   75: aload_2
-    //   76: ifnull +32 -> 108
-    //   79: aload_2
-    //   80: invokeinterface 112 1 0
-    //   85: ifeq +23 -> 108
-    //   88: aload_2
-    //   89: aload_2
-    //   90: ldc 114
-    //   92: invokeinterface 118 2 0
-    //   97: invokeinterface 122 2 0
-    //   102: astore_1
-    //   103: aload_1
-    //   104: astore_0
-    //   105: goto -30 -> 75
-    //   108: aload_0
-    //   109: astore_1
-    //   110: aload_2
-    //   111: ifnull +11 -> 122
-    //   114: aload_2
-    //   115: invokeinterface 125 1 0
-    //   120: aload_0
-    //   121: astore_1
-    //   122: aload_1
-    //   123: astore_0
-    //   124: aload_1
-    //   125: invokestatic 131	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   128: ifeq -101 -> 27
-    //   131: aload 4
-    //   133: invokevirtual 134	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   136: astore_0
-    //   137: goto -110 -> 27
-    //   140: astore_1
-    //   141: aconst_null
-    //   142: astore_3
-    //   143: aload_2
-    //   144: astore_0
-    //   145: aload_3
-    //   146: astore_2
-    //   147: aload_1
-    //   148: invokevirtual 137	java/lang/Throwable:printStackTrace	()V
-    //   151: aload_2
-    //   152: astore_1
-    //   153: aload_0
-    //   154: ifnull -32 -> 122
-    //   157: aload_0
-    //   158: invokeinterface 125 1 0
-    //   163: aload_2
-    //   164: astore_1
-    //   165: goto -43 -> 122
-    //   168: astore_0
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: aload_2
+    //   67: aconst_null
+    //   68: aconst_null
+    //   69: invokevirtual 100	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   72: astore_3
+    //   73: aload 5
+    //   75: astore_0
+    //   76: aload_3
+    //   77: ifnull +48 -> 125
+    //   80: aload_3
+    //   81: invokeinterface 106 1 0
+    //   86: ifeq +39 -> 125
+    //   89: aload_3
+    //   90: aload_3
+    //   91: ldc 108
+    //   93: invokeinterface 112 2 0
+    //   98: invokeinterface 116 2 0
+    //   103: astore_1
+    //   104: aload_1
+    //   105: astore_0
+    //   106: goto -30 -> 76
+    //   109: astore_0
+    //   110: aload_3
+    //   111: astore_1
+    //   112: goto +59 -> 171
+    //   115: astore_1
+    //   116: aload_0
+    //   117: astore_2
+    //   118: aload_3
+    //   119: astore_0
+    //   120: aload_1
+    //   121: astore_3
+    //   122: goto +30 -> 152
+    //   125: aload_0
+    //   126: astore_2
+    //   127: aload_3
+    //   128: ifnull +55 -> 183
+    //   131: aload_3
+    //   132: invokeinterface 119 1 0
+    //   137: aload_0
+    //   138: astore_2
+    //   139: goto +44 -> 183
+    //   142: astore_0
+    //   143: goto +28 -> 171
+    //   146: astore_3
+    //   147: aconst_null
+    //   148: astore_2
+    //   149: aload 4
+    //   151: astore_0
+    //   152: aload_0
+    //   153: astore_1
+    //   154: aload_3
+    //   155: invokevirtual 122	java/lang/Throwable:printStackTrace	()V
+    //   158: aload_0
+    //   159: ifnull +9 -> 168
+    //   162: aload_0
+    //   163: invokeinterface 119 1 0
+    //   168: goto +15 -> 183
+    //   171: aload_1
     //   172: ifnull +9 -> 181
-    //   175: aload_2
-    //   176: invokeinterface 125 1 0
+    //   175: aload_1
+    //   176: invokeinterface 119 1 0
     //   181: aload_0
     //   182: athrow
-    //   183: astore_0
-    //   184: goto -13 -> 171
-    //   187: astore_1
-    //   188: aload_0
-    //   189: astore_2
-    //   190: aload_1
-    //   191: astore_0
-    //   192: goto -21 -> 171
-    //   195: astore_1
-    //   196: aload_2
-    //   197: astore_3
-    //   198: aload_0
-    //   199: astore_2
-    //   200: aload_3
-    //   201: astore_0
-    //   202: goto -55 -> 147
-    //   205: aconst_null
-    //   206: astore_1
-    //   207: goto -85 -> 122
-    //   210: aconst_null
-    //   211: astore_0
-    //   212: goto -185 -> 27
+    //   183: aload_2
+    //   184: astore_1
+    //   185: aload_2
+    //   186: invokestatic 128	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   189: ifeq +9 -> 198
+    //   192: aload 6
+    //   194: invokevirtual 132	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   197: astore_1
+    //   198: aload_1
+    //   199: astore_0
+    //   200: aload_1
+    //   201: ifnull +8 -> 209
+    //   204: aload_1
+    //   205: invokevirtual 137	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   208: astore_0
+    //   209: aload_0
+    //   210: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	215	0	paramContext	Context
-    //   28	97	1	localObject1	Object
-    //   140	8	1	localThrowable1	Throwable
-    //   152	13	1	localObject2	Object
-    //   187	4	1	localObject3	Object
-    //   195	1	1	localThrowable2	Throwable
-    //   206	1	1	localObject4	Object
-    //   1	199	2	localObject5	Object
-    //   142	59	3	localObject6	Object
-    //   6	126	4	localNetworkInfo	NetworkInfo
+    //   0	211	0	paramContext	Context
+    //   14	98	1	localObject1	Object
+    //   115	6	1	localThrowable1	Throwable
+    //   153	52	1	localObject2	Object
+    //   12	174	2	localContext	Context
+    //   7	125	3	localObject3	Object
+    //   146	9	3	localThrowable2	Throwable
+    //   9	141	4	localObject4	Object
+    //   16	58	5	localObject5	Object
+    //   4	189	6	localNetworkInfo	NetworkInfo
     // Exception table:
     //   from	to	target	type
-    //   56	71	140	java/lang/Throwable
-    //   56	71	168	finally
-    //   79	103	183	finally
-    //   147	151	187	finally
-    //   79	103	195	java/lang/Throwable
+    //   80	104	109	finally
+    //   80	104	115	java/lang/Throwable
+    //   58	73	142	finally
+    //   154	158	142	finally
+    //   58	73	146	java/lang/Throwable
   }
   
   public static NetworkInfo getActiveNetworkInfo(Context paramContext)
@@ -213,17 +207,17 @@ public class NetworkUtils
   
   public static Proxy getProxy(Context paramContext)
   {
-    if (!isMobileConnected(paramContext)) {}
-    String str;
-    int i;
-    do
-    {
+    if (!isMobileConnected(paramContext)) {
       return null;
-      str = getProxyHost(paramContext);
-      i = getProxyPort(paramContext);
-    } while ((isEmpty(str)) || (i < 0));
-    paramContext = new InetSocketAddress(str, i);
-    return new Proxy(Proxy.Type.HTTP, paramContext);
+    }
+    String str = getProxyHost(paramContext);
+    int i = getProxyPort(paramContext);
+    if ((!isEmpty(str)) && (i >= 0))
+    {
+      paramContext = new InetSocketAddress(str, i);
+      return new Proxy(Proxy.Type.HTTP, paramContext);
+    }
+    return null;
   }
   
   public static Proxy getProxy(Context paramContext, boolean paramBoolean)
@@ -256,38 +250,41 @@ public class NetworkUtils
   private static int getProxyPort(Context paramContext)
   {
     paramContext = System.getProperty("http.proxyPort");
-    if (!isEmpty(paramContext)) {}
-    for (;;)
-    {
+    int i;
+    if (!isEmpty(paramContext)) {
       try
       {
         i = Integer.parseInt(paramContext);
-        int j;
-        if (i >= 0)
-        {
-          j = i;
-          if (i <= 65535) {}
-        }
-        else
-        {
-          j = -1;
-        }
-        return j;
       }
       catch (NumberFormatException paramContext)
       {
         paramContext.printStackTrace();
       }
-      int i = -1;
+    } else {
+      i = -1;
     }
+    int j;
+    if (i >= 0)
+    {
+      j = i;
+      if (i <= 65535) {}
+    }
+    else
+    {
+      j = -1;
+    }
+    return j;
   }
   
   private static String int32ToIPStr(int paramInt)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramInt & 0xFF).append(".");
-    localStringBuffer.append(paramInt >> 8 & 0xFF).append(".");
-    localStringBuffer.append(paramInt >> 16 & 0xFF).append(".");
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 8 & 0xFF);
+    localStringBuffer.append(".");
+    localStringBuffer.append(paramInt >> 16 & 0xFF);
+    localStringBuffer.append(".");
     localStringBuffer.append(paramInt >> 24 & 0xFF);
     return localStringBuffer.toString();
   }
@@ -299,13 +296,24 @@ public class NetworkUtils
   
   public static boolean isMobileConnected(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramContext == null) {
       return false;
-      paramContext = getActiveNetworkInfo(paramContext);
-    } while ((paramContext == null) || ((paramContext.getType() != 0) && (paramContext.getType() + 50 != 0)));
-    return true;
+    }
+    paramContext = getActiveNetworkInfo(paramContext);
+    boolean bool1 = bool2;
+    if (paramContext != null) {
+      if (paramContext.getType() != 0)
+      {
+        bool1 = bool2;
+        if (paramContext.getType() + 50 != 0) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
@@ -316,35 +324,40 @@ public class NetworkUtils
   
   public static boolean isNetworkUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
-        return true;
+    }
+    if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
+      if (URLUtil.isFileUrl(paramString)) {
+        return false;
       }
-    } while (URLUtil.isFileUrl(paramString));
-    return URLUtil.isNetworkUrl(paramString);
+      return URLUtil.isNetworkUrl(paramString);
+    }
+    return true;
   }
   
   public static boolean isWifiConnected(Context paramContext)
   {
-    boolean bool = true;
+    boolean bool2 = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = getActiveNetworkInfo(paramContext);
-    if ((paramContext != null) && (paramContext.getType() == 1)) {}
-    for (;;)
+    boolean bool1 = bool2;
+    if (paramContext != null)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (paramContext.getType() == 1) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.utils.NetworkUtils
  * JD-Core Version:    0.7.0.1
  */

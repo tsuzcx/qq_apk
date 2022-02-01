@@ -1,278 +1,218 @@
 package com.tencent.magicbrush.handler.glfont;
 
-import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
-import android.graphics.Typeface;
-import com.tencent.magicbrush.a.c.c;
-import com.tencent.magicbrush.a.d.a;
+import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.FloatBuffer;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class h
-  implements IMBFontHandler
+final class h
 {
-  public b bJO;
-  private f bJX;
-  private d bJY;
-  public e bKf;
-  private i bKg;
-  private boolean bKh = false;
+  private Rect aQJ;
+  Paint.FontMetrics eJA;
+  private List<k> eJo;
+  private g eJs;
+  private e eJt;
+  private Canvas eJu;
+  j eJv;
+  Paint eJw;
+  c eJx;
+  private char[] eJy;
+  private Rect eJz;
   
-  private void clear()
+  h(e parame, g paramg)
   {
-    AppMethodBeat.i(115945);
-    c.c.i("MicroMsg.MBFontManagerImpl", "FontManager clear", new Object[0]);
-    if (this.bJY != null) {
-      this.bJY.clear();
-    }
-    if (this.bJX != null) {
-      this.bJX.clear();
-    }
-    this.bKh = true;
-    AppMethodBeat.o(115945);
+    AppMethodBeat.i(140032);
+    this.eJy = new char[1];
+    this.aQJ = new Rect();
+    this.eJz = new Rect();
+    this.eJo = new ArrayList();
+    this.eJA = new Paint.FontMetrics();
+    this.eJt = parame;
+    this.eJu = new Canvas(this.eJt.eJc);
+    this.eJs = paramg;
+    this.eJw = new Paint(1);
+    this.eJw.setTextAlign(Paint.Align.LEFT);
+    this.eJw.setColor(-1);
+    AppMethodBeat.o(140032);
   }
   
-  public final boolean checkAndFlushClearSignal()
+  private void a(char paramChar, Rect paramRect, k paramk, Paint paramPaint)
   {
-    boolean bool = this.bKh;
-    this.bKh = false;
+    AppMethodBeat.i(140037);
+    if ((paramPaint == null) || (paramk == null) || (paramRect == null))
+    {
+      AppMethodBeat.o(140037);
+      return;
+    }
+    this.eJy[0] = paramChar;
+    this.eJu.save();
+    this.eJu.clipRect(paramRect);
+    this.eJu.drawText(this.eJy, 0, 1, paramRect.left - paramk.eJQ, paramRect.top + paramk.height - this.eJA.bottom - 1.0F, paramPaint);
+    this.eJu.restore();
+    AppMethodBeat.o(140037);
+  }
+  
+  private void a(k paramk, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(140035);
+    if (paramk == null)
+    {
+      AppMethodBeat.o(140035);
+      return;
+    }
+    paramk.eJP = paramInt1;
+    paramk.eJQ = 0.0F;
+    paramk.ac(paramInt1, paramInt2);
+    if (avP())
+    {
+      float f = (float)Math.ceil(paramInt1 * 0.5F);
+      paramk.eJQ -= f / 2.0F;
+      paramk.width = (f + paramk.width);
+    }
+    if (avN())
+    {
+      paramk.eJQ -= this.eJv.strokeWidth / 2.0F;
+      paramk.width += this.eJv.strokeWidth;
+    }
+    if (avO())
+    {
+      paramk.eJQ -= 1.0F;
+      paramk.width += 2.0F;
+    }
+    AppMethodBeat.o(140035);
+  }
+  
+  private void a(k paramk, Rect paramRect)
+  {
+    AppMethodBeat.i(140036);
+    paramk.n(paramRect.left / this.eJt.width(), paramRect.top / this.eJt.height(), paramRect.right / this.eJt.width(), paramRect.bottom / this.eJt.height());
+    AppMethodBeat.o(140036);
+  }
+  
+  private boolean avN()
+  {
+    if (this.eJv == null) {
+      return false;
+    }
+    return this.eJv.eJG;
+  }
+  
+  private boolean avO()
+  {
+    AppMethodBeat.i(175886);
+    if (this.eJv == null)
+    {
+      AppMethodBeat.o(175886);
+      return false;
+    }
+    boolean bool = this.eJv.eJH.avO();
+    AppMethodBeat.o(175886);
     return bool;
   }
   
-  public final int[] checkAndFlushDirtySignal()
+  private boolean avP()
   {
-    AppMethodBeat.i(115944);
-    if (this.bJY != null)
+    AppMethodBeat.i(140038);
+    if (this.eJv == null)
     {
-      Object localObject = this.bJY;
-      if (!((d)localObject).bJL.isEmpty()) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        AppMethodBeat.o(115944);
-        return null;
-      }
-      ((d)localObject).bJM[0] = ((d)localObject).bJL.left;
-      ((d)localObject).bJM[1] = ((d)localObject).bJL.top;
-      ((d)localObject).bJM[2] = ((d)localObject).bJL.right;
-      ((d)localObject).bJM[3] = ((d)localObject).bJL.bottom;
-      ((d)localObject).bJL.setEmpty();
-      localObject = ((d)localObject).bJM;
-      AppMethodBeat.o(115944);
-      return localObject;
+      AppMethodBeat.o(140038);
+      return false;
     }
-    AppMethodBeat.o(115944);
-    return null;
+    boolean bool = this.eJv.eJH.avP();
+    AppMethodBeat.o(140038);
+    return bool;
   }
   
-  public final FloatBuffer drawText(String paramString)
+  static float bd(List<k> paramList)
   {
-    AppMethodBeat.i(115943);
-    this.bJX.a(this.bKg);
-    FloatBuffer localFloatBuffer2 = this.bJX.cr(paramString);
-    FloatBuffer localFloatBuffer1 = localFloatBuffer2;
-    if (localFloatBuffer2 == null)
+    AppMethodBeat.i(140040);
+    if ((paramList == null) || (paramList.size() == 0))
     {
-      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.bKg });
-      clear();
-      localFloatBuffer1 = this.bJX.cr(paramString);
-    }
-    if (localFloatBuffer1 == null)
-    {
-      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.bKg });
-      AppMethodBeat.o(115943);
-      return null;
-    }
-    AppMethodBeat.o(115943);
-    return localFloatBuffer1;
-  }
-  
-  public final void enableStroke(boolean paramBoolean)
-  {
-    this.bKg.bKj = paramBoolean;
-  }
-  
-  public final Bitmap getBitmapAtlas()
-  {
-    if (this.bJY != null) {
-      return this.bJY.bJJ;
-    }
-    return null;
-  }
-  
-  public final float getTextLineHeight(String paramString)
-  {
-    AppMethodBeat.i(115948);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(115948);
+      AppMethodBeat.o(140040);
       return 0.0F;
     }
-    if ((this.bKf == null) || (this.bJX == null))
+    paramList = paramList.iterator();
+    float f = 0.0F;
+    while (paramList.hasNext())
     {
-      AppMethodBeat.o(115948);
-      return 0.0F;
+      k localk = (k)paramList.next();
+      if (localk != null) {
+        f = localk.eJP + f;
+      }
     }
-    this.bJX.a(this.bKg);
-    paramString = this.bJX.bJP;
-    if (paramString.bKe == null)
-    {
-      AppMethodBeat.o(115948);
-      return 0.0F;
-    }
-    float f1 = paramString.bKe.descent;
-    float f2 = paramString.bKe.ascent;
-    AppMethodBeat.o(115948);
-    return f1 - f2 + 1.0F;
+    AppMethodBeat.o(140040);
+    return f;
   }
   
-  public final void init(int paramInt1, int paramInt2)
+  private float r(char paramChar)
   {
-    AppMethodBeat.i(115940);
-    c.c.i("MicroMsg.MBFontManagerImpl", "init() called with: m_atlasWidth = [" + paramInt1 + "], m_atlasHeight = [" + paramInt2 + "]", new Object[0]);
-    this.bJY = new d(paramInt1, paramInt2);
-    this.bKf = new e(this.bJO);
-    this.bJX = new f(this.bJY);
-    this.bKg = new i(i.a.bKl);
-    AppMethodBeat.o(115940);
+    AppMethodBeat.i(140034);
+    this.eJy[0] = paramChar;
+    this.eJw.getTextBounds(this.eJy, 0, 1, this.aQJ);
+    float f = this.eJw.measureText(this.eJy, 0, 1);
+    f = Math.max(this.aQJ.width(), f);
+    AppMethodBeat.o(140034);
+    return f + 1.0F;
   }
   
-  public final String loadFont(String paramString)
+  final k a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(115941);
-    e locale = this.bKf;
-    if ((paramString == null) || (paramString.length() == 0))
+    AppMethodBeat.i(140039);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      AppMethodBeat.o(115941);
+      paramDrawable = new IllegalArgumentException("width or height unexpected");
+      AppMethodBeat.o(140039);
+      throw paramDrawable;
+    }
+    k localk = this.eJs.eJm.avM();
+    localk.eJP = paramInt1;
+    localk.eJQ = 0.0F;
+    this.eJt.b(paramInt1, paramInt2, this.aQJ);
+    Rect localRect = this.aQJ;
+    if ((localRect.left < 0) || (localRect.right < 0) || (localRect.width() <= 0) || (localRect.height() <= 0))
+    {
+      AppMethodBeat.o(140039);
       return null;
     }
-    if (locale.bJO == null)
+    localk.ac(paramInt1, paramInt2);
+    localk.n(localRect.left / this.eJt.width(), localRect.top / this.eJt.height(), localRect.right / this.eJt.width(), localRect.bottom / this.eJt.height());
+    localk.eJV = true;
+    this.eJu.save();
+    this.eJu.clipRect(localRect);
+    paramDrawable.setBounds(localRect);
+    paramDrawable.draw(this.eJu);
+    this.eJu.restore();
+    AppMethodBeat.o(140039);
+    return localk;
+  }
+  
+  final k q(char paramChar)
+  {
+    AppMethodBeat.i(140033);
+    k localk = this.eJs.eJm.avM();
+    localk.eJV = false;
+    int i = (int)Math.ceil(this.eJA.bottom - this.eJA.ascent);
+    a(localk, (int)Math.ceil(r(paramChar)), i);
+    if (!this.eJt.b((int)Math.ceil(localk.width), (int)Math.ceil(localk.height), this.aQJ))
     {
-      c.c.i("MicroMsg.MBFont", "[MBFontHandler] FaceProvider is null", new Object[0]);
-      AppMethodBeat.o(115941);
+      AppMethodBeat.o(140033);
       return null;
     }
-    paramString = locale.bJO.bK(paramString);
-    Typeface localTypeface = locale.bJO.bJ(paramString);
-    if (localTypeface == null)
-    {
-      AppMethodBeat.o(115941);
-      return null;
-    }
-    String str = e.cq(paramString);
-    paramString = str;
-    if (com.tencent.magicbrush.d.e.isNullOrNil(str))
-    {
-      if (a.ys() != null) {
-        a.ys().fI(0);
-      }
-      paramString = "font" + localTypeface.hashCode();
-    }
-    c.c.i("MicroMsg.MBFont", "familyName:".concat(String.valueOf(paramString)), new Object[0]);
-    locale.bJN.put(paramString, localTypeface);
-    AppMethodBeat.o(115941);
-    return paramString;
-  }
-  
-  public final float measureText(String paramString)
-  {
-    AppMethodBeat.i(115946);
-    this.bJX.a(this.bKg);
-    float f2 = this.bJX.ct(paramString);
-    float f1 = f2;
-    if (f2 == -1.0F)
-    {
-      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.bKg });
-      clear();
-      f1 = this.bJX.ct(paramString);
-    }
-    if (f1 == -1.0F)
-    {
-      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.bKg });
-      AppMethodBeat.o(115946);
-      return 0.0F;
-    }
-    AppMethodBeat.o(115946);
-    return f1;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(115947);
-    Object localObject;
-    if (this.bJY != null)
-    {
-      localObject = this.bJY;
-      if (((d)localObject).bJJ != null) {
-        ((d)localObject).bJJ.recycle();
-      }
-      this.bJY = null;
-    }
-    if (this.bKf != null)
-    {
-      localObject = this.bKf;
-      if (((e)localObject).bJN != null)
-      {
-        ((e)localObject).bJN.clear();
-        ((e)localObject).bJN = null;
-      }
-      this.bKf = null;
-    }
-    if (this.bJX != null)
-    {
-      localObject = this.bJX;
-      if (((f)localObject).bJP != null) {
-        ((f)localObject).bJP = null;
-      }
-      this.bJX = null;
-    }
-    AppMethodBeat.o(115947);
-  }
-  
-  public final void setStrokeWidth(float paramFloat)
-  {
-    this.bKg.strokeWidth = paramFloat;
-  }
-  
-  public final void useFont(String paramString, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(115942);
-    i.a locala2 = i.a.i(paramBoolean1, paramBoolean2);
-    i locali = this.bKg;
-    Object localObject = this.bKf;
-    if (locala2 == null) {}
-    for (i.a locala1 = i.a.bKl;; locala1 = locala2)
-    {
-      if ((paramString == null) || (paramString.length() == 0)) {
-        paramString = Typeface.create(null, locala1.bKp);
-      }
-      for (;;)
-      {
-        locali.bKi = paramString;
-        this.bKg.fontSize = paramFloat;
-        this.bKg.bKk = locala2;
-        AppMethodBeat.o(115942);
-        return;
-        localObject = (Typeface)((e)localObject).bJN.get(paramString);
-        if (localObject != null)
-        {
-          paramString = (String)localObject;
-          if (((Typeface)localObject).getStyle() != locala1.bKp) {
-            paramString = Typeface.create((Typeface)localObject, locala1.bKp);
-          }
-        }
-        else
-        {
-          paramString = Typeface.create(paramString, locala1.bKp);
-        }
-      }
-    }
+    a(localk, this.aQJ);
+    a(paramChar, this.aQJ, localk, this.eJw);
+    AppMethodBeat.o(140033);
+    return localk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory android:key="settings_notification_top" />
-    <PreferenceTitleCategory android:title="@string/ecm" android:key="settings_notification_title" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/ece" android:key="settings_new_msg_notification" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eci" android:key="settings_new_voip_msg_notification" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android1:defaultValue="true" android:persistent="false" android:summary="@string/e__" android:title="@string/ecf" android:key="settings_show_detail" android:dependency="settings_new_msg_notification" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/ef8" android:key="settings_sound" android:dependency="settings_new_msg_notification" android:defaultValue="true" />
-    <Preference android:persistent="false" android:title="@string/eco" android:key="settings_notification_ringtone" android:dependency="settings_sound" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eef" android:key="settings_shake" android:dependency="settings_new_msg_notification" android:defaultValue="true" android:layout="@layout/ahl" />
-    <PreferenceTitleCategory android:title="@string/ecr" android:key="settings_notification_sound_shake" />
-    <SummaryBelowPreference android:summary="@string/ecp" android:title="@string/ecq" android:key="settings_notification_sound_and_shake" />
-    <SummaryBelowPreference android:summary="@string/eh8" android:title="@string/eh9" android:key="settings_voip_sound_and_shake" />
-    <SummaryBelowPreference android:summary="@string/ef_" android:title="@string/efa" android:key="settings_special_scene_notification_sound_and_shake" />
-    <PreferenceSmallCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_chatting_bg_select_bg" android:layout="@layout/bdi" android:title="@string/ira" />
+    <Preference android:key="settings_chatting_bg_select_from_album" android:layout="@layout/bdi" android:title="@string/irb" />
+    <Preference android:key="settings_chatting_bg_take_photo" android:layout="@layout/bdi" android:title="@string/irc" />
+    <Preference android:key="settings_chatting_bg_apply_to_all" android:layout="@layout/bdi" android:title="@string/ir_" />
 </PreferenceScreen>

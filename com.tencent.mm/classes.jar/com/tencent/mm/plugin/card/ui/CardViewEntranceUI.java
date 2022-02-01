@@ -1,91 +1,97 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.card.d.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.c.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
 import java.util.LinkedList;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class CardViewEntranceUI
   extends MMActivity
 {
   public int getLayoutId()
   {
-    return 2130968910;
+    return a.e.wmi;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(88664);
+    AppMethodBeat.i(113591);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      ab.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI onCreate() intent == null");
+      Log.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI onCreate() intent == null");
       setResult(0, paramBundle);
       finish();
-      AppMethodBeat.o(88664);
+      AppMethodBeat.o(113591);
       return;
     }
     int i = paramBundle.getIntExtra("key_from_scene", 50);
-    ab.i("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI doRediect() handle data");
-    String str1 = paramBundle.getStringExtra("card_list");
-    String str2 = paramBundle.getStringExtra("key_app_id");
-    ab.d("MicroMsg.CardViewEntranceUI", "appid: %s", new Object[] { str2 });
-    if (TextUtils.isEmpty(str1))
+    Log.i("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI doRediect() handle data");
+    Object localObject = paramBundle.getStringExtra("card_list");
+    String str = paramBundle.getStringExtra("key_app_id");
+    Log.d("MicroMsg.CardViewEntranceUI", "appid: %s", new Object[] { str });
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      ab.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI oncreate card_list is empty");
+      Log.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI oncreate card_list is empty");
       setResult(0, paramBundle);
       finish();
-      AppMethodBeat.o(88664);
+      AppMethodBeat.o(113591);
       return;
     }
-    LinkedList localLinkedList = k.r(str1, i, str2);
+    LinkedList localLinkedList = k.J((String)localObject, i, str);
     if ((localLinkedList == null) || (localLinkedList.size() == 0))
     {
-      ab.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI oncreate tempList size is empty");
+      Log.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI oncreate tempList size is empty");
       setResult(0, paramBundle);
       finish();
-      AppMethodBeat.o(88664);
+      AppMethodBeat.o(113591);
       return;
     }
     Intent localIntent = new Intent();
     if (localLinkedList.size() == 1)
     {
-      localIntent.putExtra("card_list", str1);
+      localIntent.putExtra("card_list", (String)localObject);
+      localIntent.putExtra("key_app_id", str);
       localIntent.putExtra("key_from_scene", 50);
       localIntent.putExtra("key_previous_scene", i);
-      if (!bo.isNullOrNil(paramBundle.getStringExtra("key_template_id"))) {
+      if (!Util.isNullOrNil(paramBundle.getStringExtra("key_template_id"))) {
         localIntent.putExtra("key_template_id", paramBundle.getStringExtra("key_template_id"));
       }
       localIntent.putExtra("key_from_appbrand_type", paramBundle.getIntExtra("key_from_appbrand_type", 0));
       localIntent.setClass(this, CardDetailUI.class);
-      startActivity(localIntent);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
-      ab.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI onCreate() parameter is ok");
+      Log.e("MicroMsg.CardViewEntranceUI", "CardViewEntranceUI onCreate() parameter is ok");
       setResult(-1, paramBundle);
       finish();
-      AppMethodBeat.o(88664);
+      AppMethodBeat.o(113591);
       return;
       localIntent.putExtra("view_type", 0);
-      localIntent.putExtra("card_list", str1);
+      localIntent.putExtra("card_list", (String)localObject);
       localIntent.putExtra("key_previous_scene", i);
-      if (!bo.isNullOrNil(paramBundle.getStringExtra("key_template_id"))) {
+      if (!Util.isNullOrNil(paramBundle.getStringExtra("key_template_id"))) {
         localIntent.putExtra("key_template_id", paramBundle.getStringExtra("key_template_id"));
       }
-      localIntent.putExtra("key_app_id", str2);
+      localIntent.putExtra("key_app_id", str);
       localIntent.putExtra("key_from_appbrand_type", paramBundle.getIntExtra("key_from_appbrand_type", 0));
       localIntent.setClass(this, CardViewUI.class);
-      startActivity(localIntent);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/card/ui/CardViewEntranceUI", "doRediect", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
@@ -97,7 +103,7 @@ public class CardViewEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardViewEntranceUI
  * JD-Core Version:    0.7.0.1
  */

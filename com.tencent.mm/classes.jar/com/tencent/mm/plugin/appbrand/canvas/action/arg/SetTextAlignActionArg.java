@@ -11,13 +11,13 @@ public class SetTextAlignActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTextAlignActionArg> CREATOR;
-  public String hfl;
+  public String qTN;
   
   static
   {
-    AppMethodBeat.i(103563);
-    CREATOR = new SetTextAlignActionArg.1();
-    AppMethodBeat.o(103563);
+    AppMethodBeat.i(145246);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145246);
   }
   
   public SetTextAlignActionArg() {}
@@ -34,63 +34,63 @@ public class SetTextAlignActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103561);
+    AppMethodBeat.i(145244);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103561);
+      AppMethodBeat.o(145244);
       return true;
     }
     if (!(paramObject instanceof SetTextAlignActionArg))
     {
-      AppMethodBeat.o(103561);
+      AppMethodBeat.o(145244);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103561);
+      AppMethodBeat.o(145244);
       return false;
     }
     paramObject = (SetTextAlignActionArg)paramObject;
-    boolean bool = Objects.equals(this.hfl, paramObject.hfl);
-    AppMethodBeat.o(103561);
+    boolean bool = Objects.equals(this.qTN, paramObject.qTN);
+    AppMethodBeat.o(145244);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(103558);
-    super.h(paramParcel);
-    this.hfl = paramParcel.readString();
-    AppMethodBeat.o(103558);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103562);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfl });
-    AppMethodBeat.o(103562);
+    AppMethodBeat.i(145245);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.qTN });
+    AppMethodBeat.o(145245);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void k(Parcel paramParcel)
   {
-    AppMethodBeat.i(103559);
-    super.p(paramJSONObject);
-    this.hfl = paramJSONObject.optJSONArray("data").optString(0);
-    AppMethodBeat.o(103559);
+    AppMethodBeat.i(145241);
+    super.k(paramParcel);
+    this.qTN = paramParcel.readString();
+    AppMethodBeat.o(145241);
+  }
+  
+  public final void parse(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(145242);
+    super.parse(paramJSONObject);
+    this.qTN = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.o(145242);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103560);
+    AppMethodBeat.i(145243);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.hfl);
-    AppMethodBeat.o(103560);
+    paramParcel.writeString(this.qTN);
+    AppMethodBeat.o(145243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextAlignActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,27 @@ class ThreadOffFunction$ThreadOffErrJob
 {
   private ThreadOffFunction$ThreadOffErrJob(ThreadOffFunction paramThreadOffFunction, String paramString)
   {
-    super(paramString + ".error");
+    super(paramThreadOffFunction.toString());
   }
   
   protected Error doInBackground(@NonNull JobContext paramJobContext, @Nullable Error... paramVarArgs)
   {
     AssertUtils.checkNotNull(paramVarArgs);
-    if (paramVarArgs.length > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.assertTrue(bool);
-      paramJobContext = paramVarArgs[0];
-      ThreadOffFunction.access$400(this.this$0, paramJobContext);
-      return paramJobContext;
+    boolean bool;
+    if (paramVarArgs.length > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    paramJobContext = paramVarArgs[0];
+    ThreadOffFunction.access$400(this.this$0, paramJobContext);
+    return paramJobContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.ThreadOffFunction.ThreadOffErrJob
  * JD-Core Version:    0.7.0.1
  */

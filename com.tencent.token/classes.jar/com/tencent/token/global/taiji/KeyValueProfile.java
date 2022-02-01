@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class KeyValueProfile
   extends JceStruct
 {
-  static byte[] cache_byt = (byte[])new byte[1];
+  static byte[] cache_byt;
   public boolean bl = false;
   public byte[] byt = null;
   public int i = 0;
@@ -20,15 +20,17 @@ public final class KeyValueProfile
   
   static
   {
-    ((byte[])cache_byt)[0] = 0;
+    byte[] arrayOfByte = (byte[])new byte[1];
+    cache_byt = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new KeyValueProfile();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.valueType = paramJceInputStream.read(this.valueType, 0, false);
     this.keyid = paramJceInputStream.read(this.keyid, 1, false);
@@ -41,32 +43,40 @@ public final class KeyValueProfile
     this.updateTime = paramJceInputStream.read(this.updateTime, 8, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.valueType != 0) {
-      paramJceOutputStream.write(this.valueType, 0);
+    int j = this.valueType;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 0);
     }
-    if (this.keyid != 0) {
-      paramJceOutputStream.write(this.keyid, 1);
+    j = this.keyid;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 1);
     }
-    if (this.i != 0) {
-      paramJceOutputStream.write(this.i, 2);
+    j = this.i;
+    if (j != 0) {
+      paramJceOutputStream.write(j, 2);
     }
-    if (this.lng != 0L) {
-      paramJceOutputStream.write(this.lng, 3);
+    long l = this.lng;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 3);
     }
-    if (this.str != null) {
-      paramJceOutputStream.write(this.str, 4);
+    Object localObject = this.str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.byt != null) {
-      paramJceOutputStream.write(this.byt, 5);
+    localObject = this.byt;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.bl, 6);
-    if (this.sht != 0) {
-      paramJceOutputStream.write(this.sht, 7);
+    short s = this.sht;
+    if (s != 0) {
+      paramJceOutputStream.write(s, 7);
     }
-    if (this.updateTime != 0L) {
-      paramJceOutputStream.write(this.updateTime, 8);
+    l = this.updateTime;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 8);
     }
   }
 }

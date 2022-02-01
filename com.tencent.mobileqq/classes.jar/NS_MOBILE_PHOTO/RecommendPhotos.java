@@ -5,13 +5,14 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RecommendPhotos
   extends JceStruct
 {
   static ArrayList<s_picdata> cache_recommend_photos = new ArrayList();
   public String recommend_id = "";
-  public ArrayList<s_picdata> recommend_photos;
+  public ArrayList<s_picdata> recommend_photos = null;
   
   static
   {
@@ -35,17 +36,19 @@ public final class RecommendPhotos
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.recommend_photos != null) {
-      paramJceOutputStream.write(this.recommend_photos, 0);
+    Object localObject = this.recommend_photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.recommend_id != null) {
-      paramJceOutputStream.write(this.recommend_id, 1);
+    localObject = this.recommend_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.RecommendPhotos
  * JD-Core Version:    0.7.0.1
  */

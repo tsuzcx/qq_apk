@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="300" android:drawable="@drawable/qav_float_bar_volume1" />
+    <item android:duration="300" android:drawable="@drawable/qav_float_bar_volume2" />
+    <item android:duration="300" android:drawable="@drawable/qav_float_bar_volume3" />
+</animation-list>

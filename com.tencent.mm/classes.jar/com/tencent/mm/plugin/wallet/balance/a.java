@@ -5,66 +5,66 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
-import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.wallet_core.e;
+import com.tencent.mm.wallet_core.model.aa;
 
 public class a
   extends b
 {
-  public static int tLU = 1;
-  public static int tLV = 2;
+  public static int UZd = 1;
+  public static int UZe = 2;
   
-  public final c a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(45196);
-    x.RT(14);
+    AppMethodBeat.i(68368);
+    aa.aGq(14);
     paramActivity = super.a(paramActivity, paramBundle);
-    AppMethodBeat.o(45196);
+    AppMethodBeat.o(68368);
     return paramActivity;
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(45198);
-    x.dSs();
+    AppMethodBeat.i(68370);
+    aa.jOQ();
     if ((paramBundle != null) && (paramBundle.getBoolean("intent_bind_end", false)))
     {
       Intent localIntent = new Intent();
       localIntent.putExtras(paramBundle);
-      if (paramBundle.getInt("from_bind_ui", tLV) == tLU)
+      if (paramBundle.getInt("from_bind_ui", UZe) == UZd)
       {
-        localIntent.putExtra("from_bind_ui", tLU);
+        localIntent.putExtra("from_bind_ui", UZd);
         a(paramActivity, "wallet", ".balance.ui.WalletBalanceManagerUI", -1, localIntent, true);
-        AppMethodBeat.o(45198);
+        AppMethodBeat.o(68370);
         return;
       }
-      localIntent.putExtra("from_bind_ui", tLV);
+      localIntent.putExtra("from_bind_ui", UZe);
       a(paramActivity, "wallet", ".balance.ui.WalletBalanceFetchUI", -1, localIntent, true);
-      AppMethodBeat.o(45198);
+      AppMethodBeat.o(68370);
       return;
     }
     paramActivity.finish();
-    AppMethodBeat.o(45198);
+    AppMethodBeat.o(68370);
   }
   
-  public final String bzC()
+  public final String fud()
   {
     return "BalanceFetchCardProcess";
   }
   
-  public final void e(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(45197);
-    x.dSs();
+    AppMethodBeat.i(68369);
+    aa.jOQ();
     if (paramActivity != null) {
       paramActivity.finish();
     }
-    AppMethodBeat.o(45197);
+    AppMethodBeat.o(68369);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.a
  * JD-Core Version:    0.7.0.1
  */

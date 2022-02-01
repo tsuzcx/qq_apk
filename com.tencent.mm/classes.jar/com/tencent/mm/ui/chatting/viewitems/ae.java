@@ -1,273 +1,409 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.util.Pair;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.modelstat.a.a;
-import com.tencent.mm.modelstat.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.lo;
+import com.tencent.mm.autogen.mmdata.rpt.mc;
+import com.tencent.mm.autogen.mmdata.rpt.mt;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.patmsg.PluginPatMsg;
+import com.tencent.mm.plugin.patmsg.a.b.a;
+import com.tencent.mm.plugin.patmsg.a.f.a;
+import com.tencent.mm.plugin.textstatus.a.a.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.span.t;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.span.BoldForegroundColorSpan;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.d;
-import com.tencent.mm.ui.chatting.c.b.z;
-import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
-import com.tencent.mm.ui.chatting.s.e;
-import java.util.Map;
+import com.tencent.mm.ui.chatting.component.al;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import com.tencent.mm.ui.widget.a.f.b;
+import com.tencent.mm.util.g;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class ae
+  extends c
 {
-  public static final class c
-    extends s.e
+  private ae.a aeRw;
+  
+  private void a(com.tencent.mm.ui.chatting.d.a parama, ebe paramebe, MMNeat7extView paramMMNeat7extView)
   {
-    private c zWl;
-    
-    public c(com.tencent.mm.ui.chatting.d.a parama, c paramc)
+    AppMethodBeat.i(255174);
+    Object localObject1 = z.bAM();
+    boolean bool1 = ((PluginPatMsg)h.az(PluginPatMsg.class)).isNickClickable();
+    Log.d("MicroMsg.ChattingItemAppMsgPat", "show template:%s, createTime:%d, readStatus:%d", new Object[] { paramebe.nVS, Long.valueOf(paramebe.createTime), Integer.valueOf(paramebe.abgJ) });
+    Object localObject4 = ((PluginPatMsg)h.az(PluginPatMsg.class)).parseDisplayTemplate(paramebe, parama.getTalkerUserName());
+    Object localObject2 = new SpannableString(((com.tencent.mm.plugin.patmsg.a.f)localObject4).result);
+    boolean bool2 = paramebe.abgI.equals(localObject1);
+    try
     {
-      super();
-      this.zWl = paramc;
-    }
-    
-    private void a(long paramLong1, long paramLong2, String paramString1, String paramString2, int[] paramArrayOfInt, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(33243);
-      ab.i("MicroMsg.DesignerClickListener", "[ImageGalleryUI] doGetMsgImg");
-      Intent localIntent = new Intent(this.zzP.zJz.getContext(), ImageGalleryUI.class);
-      localIntent.putExtra("img_gallery_msg_id", paramLong1);
-      localIntent.putExtra("show_search_chat_content_result", ((z)this.zzP.ay(z.class)).dJb());
-      localIntent.putExtra("img_gallery_msg_svr_id", paramLong2);
-      localIntent.putExtra("key_is_biz_chat", ((d)this.zzP.ay(d.class)).dHv());
-      localIntent.putExtra("key_biz_chat_id", ((d)this.zzP.ay(d.class)).dHI());
-      localIntent.putExtra("img_gallery_talker", paramString1);
-      localIntent.putExtra("img_gallery_chatroom_name", paramString2);
-      localIntent.putExtra("img_gallery_left", paramArrayOfInt[0]);
-      localIntent.putExtra("img_gallery_top", paramArrayOfInt[1]);
-      localIntent.putExtra("img_gallery_width", paramInt1);
-      localIntent.putExtra("img_gallery_height", paramInt2);
-      localIntent.putExtra("img_gallery_enter_from_chatting_ui", ((z)this.zzP.ay(z.class)).dIW());
-      localIntent.putExtra("img_gallery_enter_from_appbrand_service_chatting_ui", ad.na(paramString1));
-      paramString2 = this.zzP.getTalkerUserName();
-      paramArrayOfInt = new Bundle();
-      if (this.zzP.dJG()) {
-        paramInt1 = 2;
+      localObject1 = com.tencent.mm.modelpackage.u.bLI().OM(parama.getTalkerUserName());
+      bh.bCz();
+      i = ((Integer)com.tencent.mm.model.c.ban().d(12311, Integer.valueOf(-2))).intValue();
+      j = parama.aezO.getMMResources().getColor(R.e.FG_1);
+      if (localObject1 == null) {
+        break label874;
       }
+      if (((com.tencent.mm.modelpackage.a)localObject1).oQj != -2) {}
+    }
+    catch (Exception localException1)
+    {
       for (;;)
       {
-        paramArrayOfInt.putInt("stat_scene", paramInt1);
-        paramArrayOfInt.putString("stat_msg_id", "msg_" + Long.toString(paramLong2));
-        paramArrayOfInt.putString("stat_chat_talker_username", paramString2);
-        paramArrayOfInt.putString("stat_send_msg_user", paramString1);
-        localIntent.putExtra("_stat_obj", paramArrayOfInt);
-        localIntent.putExtra("img_gallery_session_id", d(paramLong2, paramString1, paramString2));
-        this.zzP.startActivity(localIntent);
-        this.zzP.zJz.overridePendingTransition(0, 0);
-        AppMethodBeat.o(33243);
-        return;
-        if (com.tencent.mm.model.t.nU(paramString2)) {
-          paramInt1 = 7;
-        } else {
-          paramInt1 = 1;
-        }
+        int i;
+        int j;
+        Object localObject3;
+        parama = (com.tencent.mm.ui.chatting.d.a)localObject3;
+        continue;
+        if ((localException1 != null) || (i == -2)) {}
       }
     }
-    
-    public static void a(com.tencent.mm.ui.chatting.d.a parama, bi parambi, long paramLong1, long paramLong2, String paramString1, String paramString2, int[] paramArrayOfInt, int paramInt1, int paramInt2, boolean paramBoolean)
-    {
-      AppMethodBeat.i(33244);
-      ab.i("MicroMsg.DesignerClickListener", "[ImageGalleryUI] showImgGallery");
-      Intent localIntent = new Intent(parama.zJz.getContext(), ImageGalleryUI.class);
-      localIntent.putExtra("img_gallery_msg_id", paramLong1);
-      localIntent.putExtra("img_gallery_msg_svr_id", paramLong2);
-      localIntent.putExtra("show_search_chat_content_result", ((z)parama.ay(z.class)).dJb());
-      localIntent.putExtra("key_is_biz_chat", ((d)parama.ay(d.class)).dHv());
-      localIntent.putExtra("key_biz_chat_id", ((d)parama.ay(d.class)).dHI());
-      localIntent.putExtra("img_gallery_talker", paramString1);
-      localIntent.putExtra("img_gallery_chatroom_name", paramString2);
-      localIntent.putExtra("img_gallery_left", paramArrayOfInt[0]);
-      localIntent.putExtra("img_gallery_top", paramArrayOfInt[1]);
-      localIntent.putExtra("img_gallery_width", paramInt1);
-      localIntent.putExtra("img_gallery_height", paramInt2);
-      localIntent.putExtra("img_gallery_enter_from_chatting_ui", ((z)parama.ay(z.class)).dIW());
-      localIntent.putExtra("img_gallery_enter_PhotoEditUI", paramBoolean);
-      localIntent.putExtra("img_gallery_enter_from_appbrand_service_chatting_ui", ad.na(paramString1));
-      paramString2 = parama.getTalkerUserName();
-      if (parambi.field_isSend == 1) {
-        paramString1 = parama.dJD();
-      }
-      parambi = new Bundle();
-      if (parama.dJF()) {
-        paramInt1 = 2;
-      }
-      for (;;)
-      {
-        parambi.putInt("stat_scene", paramInt1);
-        parambi.putString("stat_msg_id", "msg_" + Long.toString(paramLong2));
-        parambi.putString("stat_chat_talker_username", paramString2);
-        parambi.putString("stat_send_msg_user", paramString1);
-        localIntent.putExtra("_stat_obj", parambi);
-        localIntent.putExtra("img_gallery_session_id", d(paramLong2, paramString1, paramString2));
-        parama.zJz.startActivity(localIntent);
-        parama.zJz.overridePendingTransition(0, 0);
-        AppMethodBeat.o(33244);
-        return;
-        if (com.tencent.mm.model.t.nU(paramString2)) {
-          paramInt1 = 7;
-        } else {
-          paramInt1 = 1;
-        }
-      }
+    paramMMNeat7extView.setTextColor(parama.aezO.getContext().getResources().getColor(R.e.FG_0));
+    paramMMNeat7extView.setBackground(parama.aezO.getContext().getResources().getDrawable(R.g.fno));
+    j = parama.aezO.getMMResources().getColor(R.e.FG_0);
+    i = 1;
+    if (bool2) {
+      ((SpannableString)localObject2).setSpan(new BoldForegroundColorSpan(j), 0, ((SpannableString)localObject2).length(), 17);
     }
-    
-    private static String d(long paramLong, String paramString1, String paramString2)
+    localObject1 = p.d(parama.aezO.getContext(), (CharSequence)localObject2, paramMMNeat7extView.getTextSize());
+    if (bool1) {}
+    for (;;)
     {
-      AppMethodBeat.i(33245);
-      String str = v.oQ(String.valueOf(paramLong));
-      v.b localb = v.aae().z(str, true);
-      localb.i("preUsername", paramString1);
-      localb.i("preChatName", paramString2);
-      AppMethodBeat.o(33245);
-      return str;
-    }
-    
-    public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, bi parambi)
-    {
-      AppMethodBeat.i(33242);
-      az localaz = (az)paramView.getTag();
-      b.fRu.F(localaz.cEE);
-      bi localbi = localaz.cEE;
-      com.tencent.mm.modelstat.a.a(localbi, a.a.fRr);
-      int[] arrayOfInt = new int[2];
-      int i = 0;
-      int j = 0;
-      if (paramView != null)
+      try
       {
-        paramView.getLocationInWindow(arrayOfInt);
-        i = paramView.getWidth();
-        j = paramView.getHeight();
-      }
-      if (localbi.field_isSend == 1)
-      {
-        paramView = o.ahC().gT(localbi.field_msgId);
-        if (paramView.fDL != 0L) {}
-      }
-      else
-      {
-        paramView = o.ahC().gS(localbi.field_msgSvrId);
-      }
-      for (;;)
-      {
-        Object localObject1 = br.F(localbi.field_content, "msg");
-        if (localObject1 != null) {
-          bo.getLong((String)((Map)localObject1).get(".msg.img.$hdlength"), 0L);
-        }
-        aw.aaz();
-        Object localObject2;
-        if (!com.tencent.mm.model.c.isSDCardAvailable())
+        if ((((com.tencent.mm.plugin.patmsg.a.f)localObject4).MHq.size() == ((com.tencent.mm.plugin.patmsg.a.f)localObject4).oxE.size()) && (!((com.tencent.mm.plugin.patmsg.a.f)localObject4).oxE.isEmpty()))
         {
-          com.tencent.mm.ui.base.t.ii(this.zzP.zJz.getContext());
-          localObject1 = j.b.mX(parambi.field_content);
-          if ((localObject1 != null) && (!bo.isNullOrNil(((j.b)localObject1).appId)) && (this.zWl != null))
+          j = 0;
+          if (j < ((com.tencent.mm.plugin.patmsg.a.f)localObject4).oxE.size())
           {
-            localObject2 = com.tencent.mm.pluginsdk.model.app.g.ca(((j.b)localObject1).appId, false);
-            if (localObject2 != null) {
-              if (!(this.zWl instanceof ae.a)) {
-                break label769;
-              }
-            }
-          }
-        }
-        label769:
-        for (paramView = c.d(parama, parambi);; paramView = r.Zn())
-        {
-          c.a(parama, (j.b)localObject1, paramView, (com.tencent.mm.pluginsdk.model.app.f)localObject2, parambi.field_msgSvrId, parama.getTalkerUserName());
-          AppMethodBeat.o(33242);
-          return;
-          if (localbi.field_isSend == 1)
-          {
-            localObject1 = com.tencent.mm.at.f.c(paramView);
-            if (com.tencent.mm.vfs.e.cN(o.ahC().q((String)localObject1, "", "")))
-            {
-              a(this.zzP, localbi, paramView.fDU, paramView.cFn, localaz.userName, localaz.chatroomName, arrayOfInt, i, j, false);
-              break;
-            }
-            localObject1 = paramView.fDM;
-            if (com.tencent.mm.vfs.e.cN(o.ahC().q((String)localObject1, "", "")))
-            {
-              a(this.zzP, localbi, paramView.fDU, paramView.cFn, localaz.userName, localaz.chatroomName, arrayOfInt, i, j, false);
-              break;
-            }
-            a(localbi.field_msgId, localbi.field_msgSvrId, localaz.userName, localaz.chatroomName, arrayOfInt, i, j);
+            localObject2 = (Pair)((com.tencent.mm.plugin.patmsg.a.f)localObject4).MHq.get(j);
+            Log.d("MicroMsg.ChattingItemAppMsgPat", "click span start %d, end %d", new Object[] { ((Pair)localObject2).first, ((Pair)localObject2).second });
+            localObject5 = new ae.6(this, parama);
+            ((t)localObject5).setTag(((com.tencent.mm.plugin.patmsg.a.f)localObject4).oxE.get(j));
+            ((SpannableString)localObject1).setSpan(localObject5, ((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue(), 17);
+            j += 1;
+            continue;
+            paramMMNeat7extView.setTextColor(parama.aezO.getContext().getResources().getColor(R.e.FG_2));
+            paramMMNeat7extView.setBackground(parama.aezO.getContext().getResources().getDrawable(R.g.fnn));
+            i = 0;
             break;
           }
-          if (paramView.ahg())
+        }
+        localObject2 = localObject1;
+        if (((com.tencent.mm.plugin.patmsg.a.f)localObject4).MHr.size() <= 0) {
+          break label653;
+        }
+        localObject4 = ((com.tencent.mm.plugin.patmsg.a.f)localObject4).MHr.iterator();
+        localObject2 = localObject1;
+        if (!((Iterator)localObject4).hasNext()) {
+          break label653;
+        }
+        Object localObject5 = (f.a)((Iterator)localObject4).next();
+        com.tencent.mm.plugin.textstatus.a.f localf = (com.tencent.mm.plugin.textstatus.a.f)h.az(com.tencent.mm.plugin.textstatus.a.f.class);
+        String str = ((f.a)localObject5).username;
+        if (i == 0) {
+          break label843;
+        }
+        localObject2 = a.b.ThK;
+        ((SpannableString)localObject1).setSpan(localf.getTextStatusSpanSync(null, str, (a.b)localObject2, parama.aezO.getContext().getResources().getDimensionPixelSize(R.f.SmallBtnTextSize)), ((f.a)localObject5).start, ((f.a)localObject5).end, 17);
+        continue;
+        Log.printErrStackTrace("MicroMsg.ChattingItemAppMsgPat", (Throwable)localObject1, "", new Object[0]);
+      }
+      catch (Exception localException2)
+      {
+        parama = (com.tencent.mm.ui.chatting.d.a)localObject1;
+        localObject1 = localException2;
+      }
+      localObject3 = parama;
+      label653:
+      if (!bool2) {
+        break label851;
+      }
+      h.baE().ban().b(at.a.adgr, "");
+      if (paramebe.abgK != 1) {
+        break label851;
+      }
+      parama = bb.m(paramMMNeat7extView.getContext(), R.k.icons_filled_pencil, com.tencent.mm.cd.a.w(paramMMNeat7extView.getContext(), R.e.link_color));
+      parama.setBounds(0, 0, parama.getIntrinsicWidth() * 2 / 3, parama.getIntrinsicHeight() * 2 / 3);
+      parama = new com.tencent.mm.ui.widget.a(parama, 1);
+      paramebe = new SpannableStringBuilder((CharSequence)localObject3);
+      localObject1 = new SpannableString(paramMMNeat7extView.getContext().getString(R.l.pat_change_suffix_tip_icon));
+      ((SpannableString)localObject1).setSpan(parama, 2, 3, 17);
+      paramebe.append((CharSequence)localObject1);
+      parama = String.format(paramMMNeat7extView.getContext().getString(R.l.pat_change_suffix_tip_wording), new Object[] { "<_wc_custom_link_ href='weixin://jump/setpat_bottom_sheet/'>", "</_wc_custom_link_>" });
+      paramebe.append(p.b(paramMMNeat7extView.getContext(), parama, (int)paramMMNeat7extView.getTextSize()));
+      paramMMNeat7extView.a(paramebe, TextView.BufferType.SPANNABLE);
+      AppMethodBeat.o(255174);
+      return;
+      label843:
+      localObject3 = a.b.ThL;
+    }
+    label851:
+    paramMMNeat7extView.a((CharSequence)localObject3, TextView.BufferType.SPANNABLE);
+    AppMethodBeat.o(255174);
+  }
+  
+  private void a(final com.tencent.mm.ui.chatting.d.a parama, cc paramcc, ebd paramebd, int paramInt)
+  {
+    AppMethodBeat.i(255165);
+    Log.i("MicroMsg.ChattingItemAppMsgPat", "fll msg view contains record %d , show %d", new Object[] { Integer.valueOf(paramebd.Ksg.size()), Integer.valueOf(paramInt) });
+    this.aeRw.ITf.removeAllViews();
+    Activity localActivity = parama.aezO.getContext();
+    int i = 0;
+    while (i < paramInt)
+    {
+      MMNeat7extView localMMNeat7extView = new MMNeat7extView(localActivity);
+      localMMNeat7extView.setTextSize(0, localActivity.getResources().getDimensionPixelSize(R.f.HintTextSize) * com.tencent.mm.cd.a.getScaleSize(localActivity));
+      localMMNeat7extView.setPadding(localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding), localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding), localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding), localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding));
+      localMMNeat7extView.setTextGravity(1);
+      localMMNeat7extView.setClickable(true);
+      a(parama, (ebe)paramebd.Ksg.get(i), localMMNeat7extView);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.width = -2;
+      localLayoutParams.height = -2;
+      if (parama.juG())
+      {
+        localLayoutParams.topMargin = localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding);
+        localLayoutParams.bottomMargin = localActivity.getResources().getDimensionPixelSize(R.f.LittlePadding);
+      }
+      localLayoutParams.gravity = 1;
+      this.aeRw.ITf.addView(localMMNeat7extView, localLayoutParams);
+      localMMNeat7extView.setTag(new bz(paramcc, parama.juG(), 0, "", '\000'));
+      localMMNeat7extView.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(254927);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgPat$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+          if (((PluginPatMsg)h.az(PluginPatMsg.class)).isRevokePatMsgEnable())
           {
-            localObject2 = paramView.fDM;
-            localObject1 = localObject2;
-            if (paramView.ahh())
+            localObject = (bz)paramAnonymousView.getTag();
+            if ((localObject != null) && (((bz)localObject).hTm != null))
             {
-              com.tencent.mm.at.e locale = com.tencent.mm.at.f.a(paramView);
-              localObject1 = localObject2;
-              if (locale != null)
+              int i = ((ViewGroup)paramAnonymousView.getParent()).indexOfChild(paramAnonymousView);
+              Log.i("MicroMsg.ChattingItemAppMsgPat", "long click msg %d, index %d", new Object[] { Long.valueOf(((bz)localObject).hTm.field_msgId), Integer.valueOf(i) });
+              paramAnonymousView = g.bDK(((bz)localObject).hTm.field_content);
+              if (i < paramAnonymousView.Ksg.size())
               {
-                localObject1 = localObject2;
-                if (locale.fDL > 0L)
+                paramAnonymousView = (ebe)paramAnonymousView.Ksg.get(i);
+                if (z.bAM().equals(paramAnonymousView.hQQ))
                 {
-                  localObject1 = localObject2;
-                  if (locale.ahg())
+                  if (cn.bDv() - paramAnonymousView.createTime <= 120000L) {
+                    ae.a(ae.this, parama, Pair.create(Long.valueOf(((bz)localObject).hTm.field_msgId), Long.valueOf(paramAnonymousView.createTime)));
+                  }
+                  for (;;)
                   {
-                    localObject1 = localObject2;
-                    if (com.tencent.mm.vfs.e.cN(o.ahC().q(locale.fDM, "", ""))) {
-                      localObject1 = locale.fDM;
-                    }
+                    com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgPat$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+                    AppMethodBeat.o(254927);
+                    return true;
+                    Log.w("MicroMsg.ChattingItemAppMsgPat", "expire revoke time %d", new Object[] { Long.valueOf(paramAnonymousView.createTime) });
                   }
                 }
               }
             }
-            if (com.tencent.mm.vfs.e.cN(o.ahC().q((String)localObject1, "", "")))
-            {
-              a(this.zzP, localbi, paramView.fDU, paramView.cFn, localaz.userName, localaz.chatroomName, arrayOfInt, i, j, false);
-              break;
-            }
-            ab.i("MicroMsg.DesignerClickListener", "retry downloadImg, %d", new Object[] { Long.valueOf(paramView.fDL) });
-            paramView.sW("SERVERID://" + localbi.field_msgSvrId);
-            paramView.bsY = 16;
-            paramView.lq(0);
-            paramView.bsY = 8;
-            paramView.setStatus(0);
-            paramView.bsY = 256;
-            o.ahC().a(Long.valueOf(paramView.fDL), paramView);
           }
-          for (;;)
-          {
-            a(localbi.field_msgId, localbi.field_msgSvrId, localaz.userName, localaz.chatroomName, arrayOfInt, i, j);
-            break;
-            if (paramView.status == -1)
-            {
-              ab.i("MicroMsg.DesignerClickListener", "retry downloadImg, %d", new Object[] { Long.valueOf(paramView.fDL) });
-              paramView.setStatus(0);
-              paramView.bsY = 256;
-              o.ahC().a(Long.valueOf(paramView.fDL), paramView);
-            }
-          }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgPat$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+          AppMethodBeat.o(254927);
+          return false;
         }
+      });
+      i += 1;
+    }
+    AppMethodBeat.o(255165);
+  }
+  
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  {
+    AppMethodBeat.i(255190);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localObject = new ap(paramLayoutInflater, R.i.gfh);
+      ((View)localObject).setTag(new ae.a().lG((View)localObject));
+    }
+    AppMethodBeat.o(255190);
+    return localObject;
+  }
+  
+  public final void a(c.a parama, int paramInt, final com.tencent.mm.ui.chatting.d.a parama1, cc paramcc, final String paramString)
+  {
+    AppMethodBeat.i(255195);
+    Log.i("MicroMsg.ChattingItemAppMsgPat", "fill item %d, msgId %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramcc.field_msgId) });
+    this.aeRw = ((ae.a)parama);
+    String str = paramcc.field_content;
+    parama = ((com.tencent.mm.plugin.patmsg.a.b)h.ax(com.tencent.mm.plugin.patmsg.a.b.class)).aRl(str);
+    int i = parama.Ksg.size();
+    int k = ((com.tencent.mm.plugin.patmsg.a.b)h.ax(com.tencent.mm.plugin.patmsg.a.b.class)).ta(paramcc.field_msgId);
+    ((com.tencent.mm.ui.chatting.component.api.u)parama1.cm(com.tencent.mm.ui.chatting.component.api.u.class)).a(paramcc, i, k);
+    Log.i("MicroMsg.ChattingItemAppMsgPat", "content:%s, talker:%s, recordNum:%d", new Object[] { Util.secPrint(str), parama.ltm, Integer.valueOf(i) });
+    if (i > 0)
+    {
+      paramString = ((n)h.ax(n.class)).gaZ().aLG(paramString);
+      if ((i < 5) || (paramString.field_msgId == paramcc.field_msgId)) {
+        break label392;
       }
     }
+    for (;;)
+    {
+      paramString = (al)parama1.cm(al.class);
+      boolean bool;
+      label272:
+      int j;
+      if ((paramString != null) && (paramString.zL(paramcc.field_msgId)))
+      {
+        bool = true;
+        Log.i("MicroMsg.ChattingItemAppMsgPat", "need fold %s, hasExpanded %s", new Object[] { Boolean.valueOf(k), Boolean.valueOf(bool) });
+        if (bool) {
+          break label362;
+        }
+        paramInt = 1;
+        j = paramInt & k;
+        if (j == 0) {
+          break label367;
+        }
+      }
+      label362:
+      label367:
+      for (paramInt = 3;; paramInt = i)
+      {
+        a(parama1, paramcc, parama, paramInt);
+        this.aeRw.aeRz.setTag(Long.valueOf(paramcc.field_msgId));
+        if (j == 0) {
+          break label373;
+        }
+        this.aeRw.aeRz.setVisibility(0);
+        this.aeRw.aeRz.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(254917);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgPat$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+            if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof Long)))
+            {
+              localObject = ((n)h.ax(n.class)).gaZ().sl(((Long)paramAnonymousView.getTag()).longValue());
+              if (paramString != null) {
+                paramString.zM(((fi)localObject).field_msgId);
+              }
+              paramAnonymousView.setVisibility(8);
+              paramAnonymousView = ((com.tencent.mm.plugin.patmsg.a.b)h.ax(com.tencent.mm.plugin.patmsg.a.b.class)).aRl(((fi)localObject).field_content);
+              ae.a(ae.this, parama1, (cc)localObject, paramAnonymousView, paramAnonymousView.Ksg.size());
+              localObject = new lo();
+              ((lo)localObject).jae = ((lo)localObject).F("ChatUsername", parama1.getTalkerUserName(), true);
+              ((lo)localObject).imU = ((lo)localObject).F("Username", parama1.aemd, true);
+              ((lo)localObject).jaf = paramAnonymousView.Ksg.size();
+              if (!au.bwG(parama1.getTalkerUserName())) {
+                break label240;
+              }
+            }
+            label240:
+            for (((lo)localObject).imW = 2;; ((lo)localObject).imW = 1)
+            {
+              ((lo)localObject).bMH();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppMsgPat$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(254917);
+              return;
+            }
+          }
+        });
+        AppMethodBeat.o(255195);
+        return;
+        bool = false;
+        break;
+        paramInt = 0;
+        break label272;
+      }
+      label373:
+      this.aeRw.aeRz.setVisibility(8);
+      AppMethodBeat.o(255195);
+      return;
+      label392:
+      k = 0;
+    }
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.d.a parama, cc paramcc)
+  {
+    return false;
+  }
+  
+  public final boolean a(s params, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo, cc paramcc)
+  {
+    return false;
+  }
+  
+  public final boolean c(View paramView, com.tencent.mm.ui.chatting.d.a parama, cc paramcc)
+  {
+    return false;
+  }
+  
+  public final boolean cM(int paramInt, boolean paramBoolean)
+  {
+    return (paramInt == 889192497) || (paramInt == 922746929);
+  }
+  
+  public final boolean fXn()
+  {
+    return false;
+  }
+  
+  final boolean jxi()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ae
  * JD-Core Version:    0.7.0.1
  */

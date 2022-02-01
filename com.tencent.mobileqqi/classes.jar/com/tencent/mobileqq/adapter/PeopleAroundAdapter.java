@@ -285,13 +285,13 @@ public class PeopleAroundAdapter
         paramViewGroup = new PeopleAroundAdapter.ViewHolder();
         paramView.setTag(paramViewGroup);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(16908294));
-        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231880);
+        paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131231879);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231090));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231982));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231983));
-        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231984));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231985));
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231884));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231981));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231982));
+        paramViewGroup.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131231983));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231984));
+        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231883));
       }
       for (;;)
       {
@@ -314,9 +314,9 @@ public class PeopleAroundAdapter
       }
       paramViewGroup = new PeopleAroundAdapter.ViewHolder();
       paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231869));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131231868));
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131231066));
-      paramViewGroup.e = ((ImageView)paramView.findViewById(2131231868));
+      paramViewGroup.e = ((ImageView)paramView.findViewById(2131231867));
       ((LinearLayout)paramView).setOrientation(0);
       localObject = paramViewGroup.jdField_d_of_type_AndroidWidgetTextView;
       if (!this.b) {

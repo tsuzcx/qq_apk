@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 public class SquareRelativeLayout
   extends RelativeLayout
 {
-  private boolean a;
+  private boolean a = false;
   
   public SquareRelativeLayout(Context paramContext)
   {
@@ -51,7 +51,7 @@ public class SquareRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.SquareRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

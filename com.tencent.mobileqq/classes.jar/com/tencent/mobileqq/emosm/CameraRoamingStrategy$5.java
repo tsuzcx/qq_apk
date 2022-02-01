@@ -1,21 +1,23 @@
 package com.tencent.mobileqq.emosm;
 
-import apmb;
-import apno;
-import bdin;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class CameraRoamingStrategy$5
+class CameraRoamingStrategy$5
   implements Runnable
 {
-  public CameraRoamingStrategy$5(apmb paramapmb) {}
+  CameraRoamingStrategy$5(CameraRoamingStrategy paramCameraRoamingStrategy) {}
   
   public void run()
   {
-    if ((this.this$0.a == null) || (!bdin.d(this.this$0.a.getApp()))) {
-      return;
+    if (this.this$0.a != null)
+    {
+      if (!NetworkUtil.isNetSupport(this.this$0.a.getApp())) {
+        return;
+      }
+      ((ICameraEmoRoamingManagerService)this.this$0.a.getRuntimeService(ICameraEmoRoamingManagerService.class)).syncRoaming();
     }
-    ((apno)this.this$0.a.getManager(334)).b();
   }
 }
 

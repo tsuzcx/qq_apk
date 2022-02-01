@@ -12,20 +12,13 @@ public final class mobile_group_count_req
   extends JceStruct
   implements Cloneable
 {
-  static Map<String, String> cache_extendinfo;
-  public Map<String, String> extendinfo;
-  public long uGroupid;
+  static Map<String, String> cache_extendinfo = new HashMap();
+  public Map<String, String> extendinfo = null;
+  public long uGroupid = 0L;
   
   static
   {
-    if (!mobile_group_count_req.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_extendinfo = new HashMap();
-      cache_extendinfo.put("", "");
-      return;
-    }
+    cache_extendinfo.put("", "");
   }
   
   public mobile_group_count_req() {}
@@ -43,18 +36,17 @@ public final class mobile_group_count_req
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -73,13 +65,20 @@ public final class mobile_group_count_req
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (mobile_group_count_req)paramObject;
-    } while ((!JceUtil.equals(this.uGroupid, paramObject.uGroupid)) || (!JceUtil.equals(this.extendinfo, paramObject.extendinfo)));
-    return true;
+    }
+    paramObject = (mobile_group_count_req)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.uGroupid, paramObject.uGroupid))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.extendinfo, paramObject.extendinfo)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -129,14 +128,15 @@ public final class mobile_group_count_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uGroupid, 0);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 1);
+    Map localMap = this.extendinfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_GROUP_COUNT.mobile_group_count_req
  * JD-Core Version:    0.7.0.1
  */

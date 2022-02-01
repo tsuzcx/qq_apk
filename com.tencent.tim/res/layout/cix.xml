@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/n_o" android:background="@drawable/skin_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:id="@id/loading" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:id="@id/n_p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="正在加载中..." android:layout_below="@id/loading" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/o2m" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/o2t" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/o2h" android:background="@drawable/i47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/o2u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/ww7" android:layout_below="@id/o2h" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:id="@id/o2v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/ww8" android:layout_below="@id/o2u" android:layout_centerHorizontal="true" />
+            <com.tencent.mobileqq.widget.FormCommonSwitchItem android:id="@id/o2s" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:layout_below="@id/o2v" android:layout_centerHorizontal="true" formItem:bgType="abp" formItem:switchChecked="false" formItem:switchText="备份聊天文件" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/o2j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:id="@id/o2i" android:background="@drawable/bsc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/o2k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="备份中..." android:layout_below="@id/o2i" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:id="@id/o2l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="你可在设置里调整备份的文件" android:layout_below="@id/o2k" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/o2d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/o2c" android:background="@drawable/i46" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="145.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/o2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="备份失败" android:layout_below="@id/o2c" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:gravity="center" android:id="@id/o2g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="内容拉取异常，请重试" android:layout_below="@id/o2f" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/o2e" android:background="@drawable/bkm" android:layout_width="150.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:text="刷新" android:layout_below="@id/o2g" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/o2o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/o2n" android:background="@drawable/i46" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="145.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/o2p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="备份失败" android:layout_below="@id/o2n" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:gravity="center" android:id="@id/o2q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/ww_" android:layout_below="@id/o2p" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/o2r" android:background="@drawable/bkm" android:layout_width="150.0dip" android:layout_height="36.0dip" android:layout_marginTop="24.0dip" android:text="立即升级" android:layout_below="@id/o2q" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

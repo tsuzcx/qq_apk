@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import gkk;
+import gkj;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -199,7 +199,7 @@ public class ReportController
   
   public static void a(PluginRuntime paramPluginRuntime)
   {
-    paramPluginRuntime.setClickEventReportor(new gkk());
+    paramPluginRuntime.setClickEventReportor(new gkj());
   }
   
   private void a(String paramString1, String paramString2, int paramInt)

@@ -1,61 +1,149 @@
 package com.tencent.token;
 
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
+import java.util.Calendar;
 
-public final class he
+final class he
 {
-  private static final ThreadLocal a = new hf();
-  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
-  private static final DateFormat[] c = new DateFormat[b.length];
+  private static he a;
+  private final Context b;
+  private final LocationManager c;
+  private final a d = new a();
   
-  public static String a(Date paramDate)
+  private he(Context paramContext, LocationManager paramLocationManager)
   {
-    return ((DateFormat)a.get()).format(paramDate);
+    this.b = paramContext;
+    this.c = paramLocationManager;
   }
   
-  public static Date a(String paramString)
+  private Location a(String paramString)
   {
-    int i = 0;
-    Object localObject;
-    if (paramString.length() == 0) {
-      localObject = null;
-    }
-    ParsePosition localParsePosition;
-    do
+    try
     {
-      return localObject;
-      localParsePosition = new ParsePosition(0);
-      localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
-    } while (localParsePosition.getIndex() == paramString.length());
-    for (;;)
-    {
-      synchronized (b)
+      if (this.c.isProviderEnabled(paramString))
       {
-        int j = b.length;
-        if (i >= j) {
-          break;
-        }
-        DateFormat localDateFormat = c[i];
-        localObject = localDateFormat;
-        if (localDateFormat == null)
-        {
-          localObject = new SimpleDateFormat(b[i], Locale.US);
-          ((DateFormat)localObject).setTimeZone(gn.g);
-          c[i] = localObject;
-        }
-        localParsePosition.setIndex(0);
-        localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
-        if (localParsePosition.getIndex() != 0) {
-          return localObject;
-        }
+        paramString = this.c.getLastKnownLocation(paramString);
+        return paramString;
       }
-      i += 1;
+    }
+    catch (Exception paramString)
+    {
+      label22:
+      break label22;
     }
     return null;
+  }
+  
+  static he a(Context paramContext)
+  {
+    if (a == null)
+    {
+      paramContext = paramContext.getApplicationContext();
+      a = new he(paramContext, (LocationManager)paramContext.getSystemService("location"));
+    }
+    return a;
+  }
+  
+  private void a(Location paramLocation)
+  {
+    a locala = this.d;
+    long l1 = System.currentTimeMillis();
+    hd localhd = hd.a();
+    localhd.a(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l2 = localhd.a;
+    localhd.a(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    boolean bool;
+    if (localhd.c == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    long l3 = localhd.b;
+    long l4 = localhd.a;
+    localhd.a(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l5 = localhd.b;
+    if ((l3 != -1L) && (l4 != -1L))
+    {
+      if (l1 > l4) {
+        l1 = 0L + l5;
+      } else if (l1 > l3) {
+        l1 = 0L + l4;
+      } else {
+        l1 = 0L + l3;
+      }
+      l1 += 60000L;
+    }
+    else
+    {
+      l1 = 43200000L + l1;
+    }
+    locala.a = bool;
+    locala.b = l2;
+    locala.c = l3;
+    locala.d = l4;
+    locala.e = l5;
+    locala.f = l1;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  private Location b()
+  {
+    int i = dm.a(this.b, "android.permission.ACCESS_COARSE_LOCATION");
+    Location localLocation2 = null;
+    Location localLocation1;
+    if (i == 0) {
+      localLocation1 = a("network");
+    } else {
+      localLocation1 = null;
+    }
+    if (dm.a(this.b, "android.permission.ACCESS_FINE_LOCATION") == 0) {
+      localLocation2 = a("gps");
+    }
+    if ((localLocation2 != null) && (localLocation1 != null))
+    {
+      if (localLocation2.getTime() > localLocation1.getTime()) {
+        return localLocation2;
+      }
+      return localLocation1;
+    }
+    if (localLocation2 != null) {
+      return localLocation2;
+    }
+    return localLocation1;
+  }
+  
+  private boolean c()
+  {
+    return this.d.f > System.currentTimeMillis();
+  }
+  
+  final boolean a()
+  {
+    a locala = this.d;
+    if (c()) {
+      return locala.a;
+    }
+    Location localLocation = b();
+    if (localLocation != null)
+    {
+      a(localLocation);
+      return locala.a;
+    }
+    int i = Calendar.getInstance().get(11);
+    return (i < 6) || (i >= 22);
+  }
+  
+  static final class a
+  {
+    boolean a;
+    long b;
+    long c;
+    long d;
+    long e;
+    long f;
   }
 }
 

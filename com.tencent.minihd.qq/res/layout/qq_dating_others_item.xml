@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/others_draw" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <TextView android:ellipsize="end" android:id="@id/others_item_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/DatingFont_1" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <ImageView android:id="@id/others_draw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/troop_class_choice" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.location.net;
 
 import android.os.Handler;
-import atqj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class RoomQueryHandler$1
+class RoomQueryHandler$1
   implements Runnable
 {
-  public RoomQueryHandler$1(atqj paramatqj, int paramInt, String paramString) {}
+  RoomQueryHandler$1(RoomQueryHandler paramRoomQueryHandler, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (atqj.a(this.this$0).get())
+    if (RoomQueryHandler.a(this.this$0).get())
     {
-      QLog.d("RoomQueryHandler", 1, new Object[] { "run: invoked. stop old loop query ", " uinType: ", Integer.valueOf(this.jdField_a_of_type_Int), " sessionUin: ", this.jdField_a_of_type_JavaLangString });
+      QLog.d("RoomQueryHandler", 1, new Object[] { "run: invoked. stop old loop query ", " uinType: ", Integer.valueOf(this.a), " sessionUin: ", this.b });
       return;
     }
-    atqj.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    atqj.a(this.this$0).postDelayed(this, atqj.a());
+    RoomQueryHandler.a(this.this$0, this.a, this.b);
+    RoomQueryHandler.b(this.this$0).postDelayed(this, 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.RoomQueryHandler.1
  * JD-Core Version:    0.7.0.1
  */

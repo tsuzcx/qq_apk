@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wm;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 final class PluginAppBrand$1
-  extends c<wm>
+  implements b
 {
-  PluginAppBrand$1(PluginAppBrand paramPluginAppBrand)
+  public final void d(Runnable paramRunnable, String paramString)
   {
-    AppMethodBeat.i(129213);
-    this.__eventId = wm.class.getName().hashCode();
-    AppMethodBeat.o(129213);
+    AppMethodBeat.i(317727);
+    h.ahAA.g(paramRunnable, paramString);
+    AppMethodBeat.o(317727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.PluginAppBrand.1
  * JD-Core Version:    0.7.0.1
  */

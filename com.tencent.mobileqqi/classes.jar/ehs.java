@@ -1,40 +1,29 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.statistics.MainAcitivityReportHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.TimerTask;
 
 public class ehs
-  implements Comparator
+  extends TimerTask
 {
-  private ehs(LebaShowListManager paramLebaShowListManager) {}
+  public ehs(MainAssistObserver paramMainAssistObserver) {}
   
-  private boolean a(LebaViewItem paramLebaViewItem)
+  public void run()
   {
-    return (paramLebaViewItem != null) && (paramLebaViewItem.a != null);
-  }
-  
-  public int a(LebaViewItem paramLebaViewItem1, LebaViewItem paramLebaViewItem2)
-  {
-    if ((a(paramLebaViewItem1)) && (a(paramLebaViewItem2))) {
-      if (paramLebaViewItem1.a.sPriority <= paramLebaViewItem2.a.sPriority) {}
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b == null)) {
+      return;
     }
-    while (a(paramLebaViewItem1))
-    {
-      return -1;
-      if (paramLebaViewItem1.a.sPriority < paramLebaViewItem2.a.sPriority) {
-        return 1;
-      }
-      return 0;
-    }
-    if (a(paramLebaViewItem2)) {
-      return 1;
-    }
-    return 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqStatisticsMainAcitivityReportHelper.b(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.b);
+    StatisticCollector.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity);
+    BaseApplicationImpl.a.post(MainAssistObserver.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
  * Qualified Name:     ehs
  * JD-Core Version:    0.7.0.1
  */

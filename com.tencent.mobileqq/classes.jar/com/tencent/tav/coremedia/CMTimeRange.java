@@ -14,6 +14,8 @@ public class CMTimeRange
   
   public CMTimeRange(@NonNull CMTime paramCMTime1, @NonNull CMTime paramCMTime2)
   {
+    Utils.checkNotNull(paramCMTime1);
+    Utils.checkNotNull(paramCMTime2);
     this.start = paramCMTime1;
     this.duration = paramCMTime2;
     this.end = paramCMTime1.add(paramCMTime2);
@@ -36,32 +38,29 @@ public class CMTimeRange
   
   public static CMTimeRange getIntersection(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    if ((paramCMTimeRange1 == null) || (paramCMTimeRange2 == null))
+    if ((paramCMTimeRange1 != null) && (paramCMTimeRange2 != null))
     {
-      localCMTimeRange = CMTimeRangeInvalid;
-      return localCMTimeRange;
-    }
-    paramCMTimeRange1 = paramCMTimeRange1.clone();
-    CMTimeRange localCMTimeRange = paramCMTimeRange2.clone();
-    if (paramCMTimeRange1.getStartUs() > localCMTimeRange.getStartUs()) {
-      paramCMTimeRange2 = localCMTimeRange;
-    }
-    for (;;)
-    {
-      if ((paramCMTimeRange2.getEndUs() > paramCMTimeRange1.getStartUs()) && (paramCMTimeRange2.getEndUs() < paramCMTimeRange1.getEndUs())) {
-        return new CMTimeRange(paramCMTimeRange1.getStart(), paramCMTimeRange2.getEnd().sub(paramCMTimeRange1.getStart()));
+      paramCMTimeRange1 = paramCMTimeRange1.clone();
+      paramCMTimeRange2 = paramCMTimeRange2.clone();
+      CMTimeRange localCMTimeRange2 = paramCMTimeRange1;
+      CMTimeRange localCMTimeRange1 = paramCMTimeRange2;
+      if (paramCMTimeRange1.getStartUs() > paramCMTimeRange2.getStartUs())
+      {
+        localCMTimeRange1 = paramCMTimeRange1;
+        localCMTimeRange2 = paramCMTimeRange2;
       }
-      localCMTimeRange = paramCMTimeRange1;
-      if (paramCMTimeRange2.getEndUs() >= paramCMTimeRange1.getEndUs()) {
-        break;
+      if ((localCMTimeRange2.getEndUs() > localCMTimeRange1.getStartUs()) && (localCMTimeRange2.getEndUs() < localCMTimeRange1.getEndUs())) {
+        return new CMTimeRange(localCMTimeRange1.getStart(), localCMTimeRange2.getEnd().sub(localCMTimeRange1.getStart()));
       }
-      if (paramCMTimeRange2.getEndUs() < paramCMTimeRange1.getStartUs()) {
+      if (localCMTimeRange2.getEndUs() >= localCMTimeRange1.getEndUs()) {
+        return localCMTimeRange1;
+      }
+      if (localCMTimeRange2.getEndUs() < localCMTimeRange1.getStartUs()) {
         return CMTimeRangeInvalid;
       }
       return CMTimeRangeInvalid;
-      paramCMTimeRange2 = paramCMTimeRange1;
-      paramCMTimeRange1 = localCMTimeRange;
     }
+    return CMTimeRangeInvalid;
   }
   
   public static CMTimeRange[] getUnions(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
@@ -79,32 +78,28 @@ public class CMTimeRange
     }
     paramCMTimeRange1 = paramCMTimeRange1.clone();
     paramCMTimeRange2 = paramCMTimeRange2.clone();
-    CMTimeRange localCMTimeRange;
+    CMTimeRange localCMTimeRange2 = paramCMTimeRange1;
+    CMTimeRange localCMTimeRange1 = paramCMTimeRange2;
     if (paramCMTimeRange1.getStartUs() > paramCMTimeRange2.getStartUs())
     {
-      localCMTimeRange = paramCMTimeRange2;
-      paramCMTimeRange2 = paramCMTimeRange1;
+      localCMTimeRange1 = paramCMTimeRange1;
+      localCMTimeRange2 = paramCMTimeRange2;
     }
-    for (;;)
+    arrayOfCMTimeRange[0] = localCMTimeRange2;
+    if ((localCMTimeRange2.getEndUs() >= localCMTimeRange1.getStartUs()) && (localCMTimeRange2.getEndUs() < localCMTimeRange1.getEndUs()))
     {
-      arrayOfCMTimeRange[0] = localCMTimeRange;
-      if ((localCMTimeRange.getEndUs() >= paramCMTimeRange2.getStartUs()) && (localCMTimeRange.getEndUs() < paramCMTimeRange2.getEndUs()))
-      {
-        arrayOfCMTimeRange[1] = new CMTimeRange(localCMTimeRange.getEnd(), paramCMTimeRange2.getEnd().sub(localCMTimeRange.getEnd()));
-        return arrayOfCMTimeRange;
-      }
-      if (localCMTimeRange.getEndUs() >= paramCMTimeRange2.getEndUs())
-      {
-        arrayOfCMTimeRange[1] = null;
-        return arrayOfCMTimeRange;
-      }
-      if (localCMTimeRange.getEndUs() >= paramCMTimeRange2.getStartUs()) {
-        break;
-      }
-      arrayOfCMTimeRange[1] = paramCMTimeRange2;
+      arrayOfCMTimeRange[1] = new CMTimeRange(localCMTimeRange2.getEnd(), localCMTimeRange1.getEnd().sub(localCMTimeRange2.getEnd()));
       return arrayOfCMTimeRange;
-      localCMTimeRange = paramCMTimeRange1;
     }
+    if (localCMTimeRange2.getEndUs() >= localCMTimeRange1.getEndUs())
+    {
+      arrayOfCMTimeRange[1] = null;
+      return arrayOfCMTimeRange;
+    }
+    if (localCMTimeRange2.getEndUs() < localCMTimeRange1.getStartUs()) {
+      arrayOfCMTimeRange[1] = localCMTimeRange1;
+    }
+    return arrayOfCMTimeRange;
   }
   
   public CMTimeRange clone()
@@ -114,23 +109,34 @@ public class CMTimeRange
   
   public boolean containsTime(@NonNull CMTime paramCMTime)
   {
+    Utils.checkNotNull(paramCMTime);
     return (getStartUs() <= paramCMTime.getTimeUs()) && (getEndUs() > paramCMTime.getTimeUs());
   }
   
   public boolean containsTimeRange(@NonNull CMTimeRange paramCMTimeRange)
   {
+    Utils.checkNotNull(paramCMTimeRange);
     return (getStartUs() <= paramCMTimeRange.getStartUs()) && (getEndUs() >= paramCMTimeRange.getEndUs());
   }
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof CMTimeRange)) {
+    boolean bool1 = paramObject instanceof CMTimeRange;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    if ((this.start.equals(((CMTimeRange)paramObject).start)) && (this.duration.equals(((CMTimeRange)paramObject).duration))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    CMTime localCMTime = this.start;
+    paramObject = (CMTimeRange)paramObject;
+    bool1 = bool2;
+    if (localCMTime.equals(paramObject.start))
+    {
+      bool1 = bool2;
+      if (this.duration.equals(paramObject.duration)) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   @NonNull
@@ -172,14 +178,16 @@ public class CMTimeRange
   
   public void setDuration(@NonNull CMTime paramCMTime)
   {
+    Utils.checkNotNull(paramCMTime);
     this.duration = paramCMTime;
-    this.end = this.start.add(this.duration);
+    this.end = this.start.add(paramCMTime);
   }
   
   public void setStart(@NonNull CMTime paramCMTime)
   {
+    Utils.checkNotNull(paramCMTime);
     this.start = paramCMTime;
-    this.end = this.start.add(this.duration);
+    this.end = paramCMTime.add(this.duration);
   }
   
   public CMTimeRange[] split(float paramFloat)
@@ -194,17 +202,31 @@ public class CMTimeRange
   
   public String toSimpleString()
   {
-    return "CMTimeRange{startUs=" + this.start.getTimeUs() + ", durationUs=" + this.duration.getTimeUs() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CMTimeRange{startUs=");
+    localStringBuilder.append(this.start.getTimeUs());
+    localStringBuilder.append(", durationUs=");
+    localStringBuilder.append(this.duration.getTimeUs());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "CMTimeRange{start=" + this.start + ", duration=" + this.duration + ", end=" + this.end + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CMTimeRange{start=");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", end=");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMTimeRange
  * JD-Core Version:    0.7.0.1
  */

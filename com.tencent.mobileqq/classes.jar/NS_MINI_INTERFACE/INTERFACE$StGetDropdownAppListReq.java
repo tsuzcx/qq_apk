@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StGetDropdownAppListReq
   extends MessageMicro<StGetDropdownAppListReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66 }, new String[] { "extInfo", "oldRecommendList", "feiqi", "types", "hasCache", "deviceInfo", "subTypes", "itemIds" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), "" }, StGetDropdownAppListReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public INTERFACE.DeviceInfo deviceInfo = new INTERFACE.DeviceInfo();
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBInt32Field feiqi = PBField.initInt32(0);
@@ -21,10 +21,16 @@ public final class INTERFACE$StGetDropdownAppListReq
   public final PBRepeatMessageField<INTERFACE.StRecommendApp> oldRecommendList = PBField.initRepeatMessage(INTERFACE.StRecommendApp.class);
   public final PBRepeatField<Integer> subTypes = PBField.initRepeat(PBInt32Field.__repeatHelper__);
   public final PBRepeatField<Integer> types = PBField.initRepeat(PBInt32Field.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66 }, new String[] { "extInfo", "oldRecommendList", "feiqi", "types", "hasCache", "deviceInfo", "subTypes", "itemIds" }, new Object[] { null, null, localInteger, localInteger, localInteger, null, localInteger, "" }, StGetDropdownAppListReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListReq
  * JD-Core Version:    0.7.0.1
  */

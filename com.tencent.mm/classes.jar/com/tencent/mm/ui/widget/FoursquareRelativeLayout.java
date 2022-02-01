@@ -20,14 +20,14 @@ public class FoursquareRelativeLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107848);
+    AppMethodBeat.i(143320);
     super.onMeasure(paramInt1, paramInt1);
-    AppMethodBeat.o(107848);
+    AppMethodBeat.o(143320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.FoursquareRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ public final class BdActionsInfo
   extends JceStruct
 {
   public int accountAbi = 0;
-  public long bindUin;
-  public long bindingDate;
-  public long isRecommend;
+  public long bindUin = 0L;
+  public long bindingDate = 0L;
+  public long isRecommend = 0L;
   public String mobileCode = "";
   public String nationCode = "";
-  public long originBinder;
+  public long originBinder = 0L;
   
   public BdActionsInfo() {}
   
@@ -52,7 +52,7 @@ public final class BdActionsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.BdActionsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="30.0dip" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/bdp" layout="@layout/kz" />
+    <LinearLayout android:id="@id/els" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bdp" android:layout_alignParentRight="true">
+        <ImageView android:layout_gravity="bottom" android:id="@id/by4" android:visibility="invisible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:src="@drawable/dl" />
+        <ProgressBar android:layout_gravity="bottom" android:id="@id/io5" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginBottom="15.0dip" android:indeterminateDrawable="@drawable/jt" />
+        <RelativeLayout android:id="@id/f1j" android:background="@drawable/ef" android:paddingLeft="9.0dip" android:paddingTop="9.0dip" android:paddingRight="17.0dip" android:paddingBottom="9.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
+        <com.tencent.widget.ThemeImageView android:id="@id/icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="9.0dip" android:src="@drawable/qfile_dataline_user_aio" android:scaleType="fitXY" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j1y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_below="@id/els" android:layout_alignParentRight="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="13.0sp" android:textColor="#ff808080" android:gravity="center_vertical" android:id="@id/keo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

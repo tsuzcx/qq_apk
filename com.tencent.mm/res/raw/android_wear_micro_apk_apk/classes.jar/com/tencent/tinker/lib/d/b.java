@@ -8,15 +8,15 @@ import java.io.File;
 
 public final class b
 {
-  private File ajU;
-  private com.tencent.tinker.lib.a.b ajV;
-  private com.tencent.tinker.lib.c.c ajW;
-  private d ajX;
-  private File ajY;
-  private File ajZ;
-  private final boolean ake;
-  private final boolean akf;
-  private Boolean akg;
+  private final boolean anD;
+  private final boolean anE;
+  private Boolean anF;
+  private File ant;
+  private com.tencent.tinker.lib.a.b anu;
+  private com.tencent.tinker.lib.c.c anv;
+  private d anw;
+  private File anx;
+  private File any;
   private final Context context;
   private int status = -1;
   
@@ -26,37 +26,37 @@ public final class b
       throw new TinkerRuntimeException("Context must not be null.");
     }
     this.context = paramContext;
-    this.ake = com.tencent.tinker.lib.e.c.Q(paramContext);
-    this.akf = com.tencent.tinker.lib.e.c.G(paramContext);
-    this.ajU = f.M(paramContext);
-    if (this.ajU == null)
+    this.anD = com.tencent.tinker.lib.e.c.S(paramContext);
+    this.anE = com.tencent.tinker.lib.e.c.H(paramContext);
+    this.ant = f.N(paramContext);
+    if (this.ant == null)
     {
       com.tencent.tinker.lib.e.a.a("Tinker.Tinker", "patchDirectory is null!", new Object[0]);
       return;
     }
-    this.ajY = f.ac(this.ajU.getAbsolutePath());
-    this.ajZ = f.ad(this.ajU.getAbsolutePath());
-    com.tencent.tinker.lib.e.a.b("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.ajU });
+    this.anx = f.ag(this.ant.getAbsolutePath());
+    this.any = f.ah(this.ant.getAbsolutePath());
+    com.tencent.tinker.lib.e.a.b("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.ant });
   }
   
-  public final a oc()
+  public final a oP()
   {
     if (this.status == -1) {
       this.status = 7;
     }
-    if (this.ajW == null) {
-      this.ajW = new com.tencent.tinker.lib.c.a(this.context);
+    if (this.anv == null) {
+      this.anv = new com.tencent.tinker.lib.c.a(this.context);
     }
-    if (this.ajX == null) {
-      this.ajX = new com.tencent.tinker.lib.c.b(this.context);
+    if (this.anw == null) {
+      this.anw = new com.tencent.tinker.lib.c.b(this.context);
     }
-    if (this.ajV == null) {
-      this.ajV = new com.tencent.tinker.lib.a.a(this.context);
+    if (this.anu == null) {
+      this.anu = new com.tencent.tinker.lib.a.a(this.context);
     }
-    if (this.akg == null) {
-      this.akg = Boolean.valueOf(false);
+    if (this.anF == null) {
+      this.anF = Boolean.FALSE;
     }
-    return new a(this.context, this.status, this.ajW, this.ajX, this.ajV, this.ajU, this.ajY, this.ajZ, this.ake, this.akf, this.akg.booleanValue(), (byte)0);
+    return new a(this.context, this.status, this.anv, this.anw, this.anu, this.ant, this.anx, this.any, this.anD, this.anE, this.anF.booleanValue(), (byte)0);
   }
 }
 

@@ -18,10 +18,11 @@ public class VConsoleManager
   
   public VConsoleLogManager getLogManager(int paramInt)
   {
-    if ((this.vConsoleLogManagerMap == null) || (this.vConsoleLogManagerMap.size() == 0)) {
-      return null;
+    HashMap localHashMap = this.vConsoleLogManagerMap;
+    if ((localHashMap != null) && (localHashMap.size() != 0)) {
+      return (VConsoleLogManager)this.vConsoleLogManagerMap.get(Integer.valueOf(paramInt));
     }
-    return (VConsoleLogManager)this.vConsoleLogManagerMap.get(Integer.valueOf(paramInt));
+    return null;
   }
   
   public void registerLogManager(int paramInt, VConsoleLogManager paramVConsoleLogManager)
@@ -34,15 +35,16 @@ public class VConsoleManager
   
   public void unRegisterLogManager(int paramInt)
   {
-    if (this.vConsoleLogManagerMap == null) {
+    HashMap localHashMap = this.vConsoleLogManagerMap;
+    if (localHashMap == null) {
       return;
     }
-    this.vConsoleLogManagerMap.remove(Integer.valueOf(paramInt));
+    localHashMap.remove(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.VConsoleManager
  * JD-Core Version:    0.7.0.1
  */

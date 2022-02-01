@@ -12,35 +12,29 @@ public class Protocol
   
   public Protocol(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
+    if (paramString != null)
+    {
+      this.providedProtocol = paramString;
+      return;
     }
-    this.providedProtocol = paramString;
+    throw new IllegalArgumentException();
   }
   
   public boolean acceptProvidedProtocol(String paramString)
   {
-    boolean bool2 = false;
     paramString = patternSpace.matcher(paramString).replaceAll("");
     paramString = patternComma.split(paramString);
     int j = paramString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        Object localObject = paramString[i];
-        if (this.providedProtocol.equals(localObject)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      Object localObject = paramString[i];
+      if (this.providedProtocol.equals(localObject)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public IProtocol copyInstance()
@@ -53,11 +47,12 @@ public class Protocol
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (Protocol)paramObject;
+      return this.providedProtocol.equals(paramObject.providedProtocol);
     }
-    paramObject = (Protocol)paramObject;
-    return this.providedProtocol.equals(paramObject.providedProtocol);
+    return false;
   }
   
   public String getProvidedProtocol()
@@ -77,7 +72,7 @@ public class Protocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.java_websocket.protocols.Protocol
  * JD-Core Version:    0.7.0.1
  */

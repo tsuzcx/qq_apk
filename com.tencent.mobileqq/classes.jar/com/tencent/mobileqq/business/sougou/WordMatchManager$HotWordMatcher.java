@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
 import android.os.Looper;
-import anyn;
-import anyo;
-import anyp;
-import anyr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.UnsupportedEncodingException;
@@ -15,195 +11,198 @@ import java.util.Queue;
 import java.util.Set;
 
 class WordMatchManager$HotWordMatcher
-  implements anyr
+  implements WordMatchManager.WordMatcher
 {
-  protected int a;
-  protected anyp a;
-  protected Queue<anyp> a;
-  protected boolean a;
+  protected int a = 0;
+  protected boolean b = false;
+  protected Queue<WordMatchManager.MatchTask> c = new LinkedList();
+  protected WordMatchManager.MatchTask d = new WordMatchManager.MatchTask();
   
   WordMatchManager$HotWordMatcher(WordMatchManager paramWordMatchManager)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_Anyp = new anyp();
     onMatchResult(null);
   }
   
   protected native boolean Match(byte[] paramArrayOfByte1, int paramInt, int[] paramArrayOfInt, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5);
   
-  public int a(int paramInt1, String paramString, int paramInt2, anyo paramanyo)
+  public int a(int paramInt1, String paramString, int paramInt2, WordMatchManager.MatchCallback paramMatchCallback)
   {
     if (Looper.myLooper() != Looper.getMainLooper()) {
       return -4;
     }
-    if (isRequestExist(paramInt1, paramanyo)) {
+    if (isRequestExist(paramInt1, paramMatchCallback)) {
       return -2;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      localanyp = new anyp();
-      i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localanyp.jdField_a_of_type_Int = i;
-      localanyp.c = paramInt2;
-      localanyp.b = paramInt1;
-      localanyp.jdField_a_of_type_JavaLangString = paramString;
-      localanyp.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanyo);
-      this.jdField_a_of_type_JavaUtilQueue.add(localanyp);
-      return localanyp.jdField_a_of_type_Int;
+      localMatchTask = new WordMatchManager.MatchTask();
+      i = this.a + 1;
+      this.a = i;
+      localMatchTask.a = i;
+      localMatchTask.c = paramInt2;
+      localMatchTask.b = paramInt1;
+      localMatchTask.d = paramString;
+      localMatchTask.e = new WeakReference(paramMatchCallback);
+      this.c.add(localMatchTask);
+      return localMatchTask.a;
     }
-    if (this.jdField_a_of_type_Anyp == null) {
-      this.jdField_a_of_type_Anyp = new anyp();
+    if (this.d == null) {
+      this.d = new WordMatchManager.MatchTask();
     }
-    anyp localanyp = this.jdField_a_of_type_Anyp;
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    localanyp.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_Anyp.c = paramInt2;
-    this.jdField_a_of_type_Anyp.b = paramInt1;
-    this.jdField_a_of_type_Anyp.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Anyp.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanyo);
-    return executeMatchTask(this.jdField_a_of_type_Anyp);
+    WordMatchManager.MatchTask localMatchTask = this.d;
+    int i = this.a + 1;
+    this.a = i;
+    localMatchTask.a = i;
+    localMatchTask.c = paramInt2;
+    localMatchTask.b = paramInt1;
+    localMatchTask.d = paramString;
+    localMatchTask.e = new WeakReference(paramMatchCallback);
+    return executeMatchTask(this.d);
   }
   
   public void a(int paramInt)
   {
-    Object localObject = null;
-    if (paramInt <= 0) {}
-    label92:
-    label93:
-    for (;;)
-    {
+    if (paramInt <= 0) {
       return;
-      if ((this.jdField_a_of_type_Anyp != null) && (paramInt == this.jdField_a_of_type_Anyp.jdField_a_of_type_Int))
-      {
-        this.jdField_a_of_type_Anyp = null;
-        return;
+    }
+    WordMatchManager.MatchTask localMatchTask2 = this.d;
+    WordMatchManager.MatchTask localMatchTask1 = null;
+    if ((localMatchTask2 != null) && (paramInt == localMatchTask2.a))
+    {
+      this.d = null;
+      return;
+    }
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      localMatchTask2 = (WordMatchManager.MatchTask)localIterator.next();
+      if (localMatchTask2.a == paramInt) {
+        localMatchTask1 = localMatchTask2;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
-      if (localIterator.hasNext())
-      {
-        anyp localanyp = (anyp)localIterator.next();
-        if (localanyp.jdField_a_of_type_Int != paramInt) {
-          break label92;
-        }
-        localObject = localanyp;
-      }
-      for (;;)
-      {
-        break;
-        if (localObject == null) {
-          break label93;
-        }
-        this.jdField_a_of_type_JavaUtilQueue.remove(localObject);
-        return;
-      }
+    }
+    if (localMatchTask1 != null) {
+      this.c.remove(localMatchTask1);
     }
   }
   
   protected void dispatchNextTask()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+    this.b = false;
+    if (!this.c.isEmpty())
     {
-      this.jdField_a_of_type_Anyp = ((anyp)this.jdField_a_of_type_JavaUtilQueue.remove());
-      executeMatchTask(this.jdField_a_of_type_Anyp);
+      this.d = ((WordMatchManager.MatchTask)this.c.remove());
+      executeMatchTask(this.d);
       return;
     }
-    this.jdField_a_of_type_Anyp = null;
+    this.d = null;
   }
   
-  protected int executeMatchTask(anyp paramanyp)
+  protected int executeMatchTask(WordMatchManager.MatchTask paramMatchTask)
   {
-    Object localObject5 = null;
-    if (!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.c) {}
-    while ((!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Anyn.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Anyn.b)) {
+    if (!this.e.e) {
       return -3;
     }
-    this.jdField_a_of_type_Boolean = true;
-    int j = paramanyp.c;
+    if ((!this.e.i.a) && (!this.e.i.b)) {
+      return -3;
+    }
+    this.b = true;
+    int j = paramMatchTask.c;
+    arrayOfInt2 = null;
     try
     {
-      arrayOfByte4 = paramanyp.jdField_a_of_type_JavaLangString.getBytes("GB2312");
+      localObject1 = paramMatchTask.d.getBytes("GB2312");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException1)
     {
-      for (;;)
-      {
-        byte[] arrayOfByte1;
-        Object localObject6;
-        label119:
-        Object localObject7;
-        int i;
-        Object localObject1 = null;
-        arrayOfByte2 = null;
-        arrayOfByte3 = null;
-        byte[] arrayOfByte4 = null;
-      }
+      Object localObject1;
+      byte[] arrayOfByte;
+      Object localObject4;
+      Object localObject2;
+      Object localObject3;
+      label121:
+      Object localObject5;
+      label131:
+      int i;
+      break label152;
     }
     try
     {
-      arrayOfByte3 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(2).getBytes();
+      arrayOfByte = this.e.a(2).getBytes();
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException2)
     {
-      Object localObject2 = null;
-      arrayOfByte2 = null;
-      arrayOfByte3 = null;
-      break label119;
+      break label145;
     }
     try
     {
-      arrayOfByte2 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(1).getBytes();
+      localObject4 = this.e.a(1).getBytes();
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException3)
     {
-      Object localObject3 = null;
-      arrayOfByte2 = null;
-      break label119;
+      break label131;
     }
     try
     {
-      arrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(3).getBytes();
+      localObject2 = this.e.a(3).getBytes();
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException4)
     {
-      Object localObject4 = null;
-      break label119;
+      break label121;
     }
     try
     {
-      localObject6 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(4).getBytes();
-      localObject5 = localObject6;
+      localObject3 = this.e.a(4).getBytes();
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException5)
     {
-      break label119;
+      int[] arrayOfInt1 = arrayOfInt2;
+      break label177;
     }
-    localObject7 = this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_Anyn.jdField_a_of_type_JavaUtilSet;
-    localObject6 = new int[((Set)localObject7).size()];
-    localObject7 = ((Set)localObject7).iterator();
+    localObject2 = null;
+    localObject3 = arrayOfInt2;
+    break label177;
+    localObject2 = null;
+    localObject3 = localObject1;
+    localObject1 = localObject2;
+    break label161;
+    label145:
+    localObject3 = localObject1;
+    break label155;
+    label152:
+    localObject3 = null;
+    label155:
+    arrayOfByte = null;
+    localObject1 = null;
+    label161:
+    localObject2 = localObject1;
+    localObject4 = localObject1;
+    localObject1 = localObject3;
+    localObject3 = arrayOfInt2;
+    label177:
+    localObject5 = this.e.i.d;
+    arrayOfInt2 = new int[((Set)localObject5).size()];
     i = 0;
-    while (((Iterator)localObject7).hasNext())
+    localObject5 = ((Set)localObject5).iterator();
+    while (((Iterator)localObject5).hasNext())
     {
-      localObject6[i] = ((Integer)((Iterator)localObject7).next()).intValue();
+      arrayOfInt2[i] = ((Integer)((Iterator)localObject5).next()).intValue();
       i += 1;
     }
-    ThreadManager.executeOnSubThread(new WordMatchManager.HotWordMatcher.2(this, arrayOfByte4, j, (int[])localObject6, arrayOfByte3, arrayOfByte2, arrayOfByte1, localObject5));
-    return paramanyp.jdField_a_of_type_Int;
+    ThreadManager.executeOnSubThread(new WordMatchManager.HotWordMatcher.2(this, (byte[])localObject1, j, arrayOfInt2, arrayOfByte, (byte[])localObject4, (byte[])localObject2, (byte[])localObject3));
+    return paramMatchTask.a;
   }
   
-  protected boolean isRequestExist(int paramInt, anyo paramanyo)
+  protected boolean isRequestExist(int paramInt, WordMatchManager.MatchCallback paramMatchCallback)
   {
-    if ((this.jdField_a_of_type_Anyp != null) && (this.jdField_a_of_type_Anyp.b == paramInt) && (this.jdField_a_of_type_Anyp.jdField_a_of_type_JavaLangRefWeakReference == paramanyo)) {
+    Object localObject = this.d;
+    if ((localObject != null) && (((WordMatchManager.MatchTask)localObject).b == paramInt) && (this.d.e == paramMatchCallback)) {
       return true;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
-    while (localIterator.hasNext())
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      anyp localanyp = (anyp)localIterator.next();
-      if ((localanyp.b == paramInt) && (localanyp.jdField_a_of_type_JavaLangRefWeakReference == paramanyo)) {
+      WordMatchManager.MatchTask localMatchTask = (WordMatchManager.MatchTask)((Iterator)localObject).next();
+      if ((localMatchTask.b == paramInt) && (localMatchTask.e == paramMatchCallback)) {
         return true;
       }
     }
@@ -212,15 +211,15 @@ class WordMatchManager$HotWordMatcher
   
   protected void onMatchResult(WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.e.c == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.HotWordMatcher.1(this, paramArrayOfHotWordItem));
+    this.e.c.runOnUiThread(new WordMatchManager.HotWordMatcher.1(this, paramArrayOfHotWordItem));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordMatcher
  * JD-Core Version:    0.7.0.1
  */

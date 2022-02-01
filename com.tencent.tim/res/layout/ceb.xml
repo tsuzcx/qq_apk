@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii_" android:background="@drawable/bg_texture" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/f1b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/m2k" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al1" formItem:bgType="jsv" formItem:switchChecked="true" formItem:switchText="@string/ixm" />
+        <TextView android:textColor="@color/skin_gray2" android:id="@id/jjt" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:text="@string/ixn" android:contentDescription="@string/ixn" />
+        <Button android:gravity="center" android:id="@id/m2j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jl" android:text="@string/iy8" style="@style/l6" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

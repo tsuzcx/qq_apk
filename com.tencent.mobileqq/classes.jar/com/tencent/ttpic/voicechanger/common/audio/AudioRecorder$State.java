@@ -33,6 +33,10 @@ public class AudioRecorder$State
       return bool;
     }
     finally {}
+    for (;;)
+    {
+      throw paramVarArgs;
+    }
   }
   
   public int state()
@@ -51,14 +55,24 @@ public class AudioRecorder$State
   
   public String toString()
   {
-    return "State[" + this.state + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("State[");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void transfer(int paramInt)
   {
     try
     {
-      LogUtils.i(AudioRecorder.access$000(), "switch state: " + this.state + " -> " + paramInt);
+      String str = AudioRecorder.access$000();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switch state: ");
+      localStringBuilder.append(this.state);
+      localStringBuilder.append(" -> ");
+      localStringBuilder.append(paramInt);
+      LogUtils.i(str, localStringBuilder.toString());
       this.state = paramInt;
       AudioRecorder.access$100(this.this$0).notifyAll();
       return;
@@ -72,7 +86,7 @@ public class AudioRecorder$State
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorder.State
  * JD-Core Version:    0.7.0.1
  */

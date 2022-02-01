@@ -74,6 +74,8 @@ public abstract interface IX5WebSettings
   
   public abstract String getPluginsPath();
   
+  public abstract boolean getSafeBrowsingEnabled();
+  
   public abstract String getSansSerifFontFamily();
   
   public abstract boolean getSaveFormData();
@@ -180,6 +182,8 @@ public abstract interface IX5WebSettings
   
   public abstract void setRenderPriority(IX5WebSettings.RenderPriority paramRenderPriority);
   
+  public abstract void setSafeBrowsingEnabled(boolean paramBoolean);
+  
   public abstract void setSansSerifFontFamily(String paramString);
   
   public abstract void setSaveFormData(boolean paramBoolean);
@@ -214,7 +218,7 @@ public abstract interface IX5WebSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebSettings
  * JD-Core Version:    0.7.0.1
  */

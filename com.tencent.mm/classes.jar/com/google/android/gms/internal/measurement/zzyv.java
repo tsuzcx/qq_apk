@@ -9,29 +9,28 @@ final class zzyv
   
   static
   {
-    AppMethodBeat.i(3547);
+    AppMethodBeat.i(40337);
     zzbqv = zzfh("libcore.io.Memory");
     if (zzfh("org.robolectric.Robolectric") != null) {}
     for (boolean bool = true;; bool = false)
     {
       zzbqw = bool;
-      AppMethodBeat.o(3547);
+      AppMethodBeat.o(40337);
       return;
     }
   }
   
   private static <T> Class<T> zzfh(String paramString)
   {
-    AppMethodBeat.i(3546);
+    AppMethodBeat.i(40336);
     try
     {
       paramString = Class.forName(paramString);
-      AppMethodBeat.o(3546);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(3546);
+      AppMethodBeat.o(40336);
     }
     return null;
   }
@@ -48,7 +47,7 @@ final class zzyv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzyv
  * JD-Core Version:    0.7.0.1
  */

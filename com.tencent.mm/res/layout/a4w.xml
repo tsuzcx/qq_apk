@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="@dimen/jb" android:textColor="@color/qj" android:id="@id/c3v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_marginRight="@dimen/jr" android:src="@drawable/aht" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <View android:background="@color/pv" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView>
-</FrameLayout>
+    <RelativeLayout android:background="@drawable/p5" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/dw" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/f1j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:src="@raw/mm_submenu_normal" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/xi" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/koa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ik" android:text="@string/cbw" android:layout_toLeftOf="@id/f1j" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

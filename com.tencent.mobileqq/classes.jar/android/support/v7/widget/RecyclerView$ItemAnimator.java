@@ -22,32 +22,28 @@ public abstract class RecyclerView$ItemAnimator
   static int buildAdapterChangeFlagsForAnimations(RecyclerView.ViewHolder paramViewHolder)
   {
     int j = RecyclerView.ViewHolder.access$6600(paramViewHolder) & 0xE;
-    int i;
     if (paramViewHolder.isInvalid()) {
-      i = 4;
+      return 4;
     }
-    int k;
-    int m;
-    do
+    int i = j;
+    if ((j & 0x4) == 0)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-            i = j;
-          } while ((j & 0x4) != 0);
-          k = paramViewHolder.getOldPosition();
-          m = paramViewHolder.getAdapterPosition();
-          i = j;
-        } while (k == -1);
-        i = j;
-      } while (m == -1);
+      int k = paramViewHolder.getOldPosition();
+      int m = paramViewHolder.getAdapterPosition();
       i = j;
-    } while (k == m);
-    return j | 0x800;
+      if (k != -1)
+      {
+        i = j;
+        if (m != -1)
+        {
+          i = j;
+          if (k != m) {
+            i = j | 0x800;
+          }
+        }
+      }
+    }
+    return i;
   }
   
   public abstract boolean animateAppearance(@NonNull RecyclerView.ViewHolder paramViewHolder, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2);
@@ -71,8 +67,9 @@ public abstract class RecyclerView$ItemAnimator
   public final void dispatchAnimationFinished(RecyclerView.ViewHolder paramViewHolder)
   {
     onAnimationFinished(paramViewHolder);
-    if (this.mListener != null) {
-      this.mListener.onAnimationFinished(paramViewHolder);
+    RecyclerView.ItemAnimator.ItemAnimatorListener localItemAnimatorListener = this.mListener;
+    if (localItemAnimatorListener != null) {
+      localItemAnimatorListener.onAnimationFinished(paramViewHolder);
     }
   }
   
@@ -124,14 +121,13 @@ public abstract class RecyclerView$ItemAnimator
     boolean bool = isRunning();
     if (paramItemAnimatorFinishedListener != null)
     {
-      if (!bool) {
+      if (!bool)
+      {
         paramItemAnimatorFinishedListener.onAnimationsFinished();
+        return bool;
       }
+      this.mFinishedListeners.add(paramItemAnimatorFinishedListener);
     }
-    else {
-      return bool;
-    }
-    this.mFinishedListeners.add(paramItemAnimatorFinishedListener);
     return bool;
   }
   

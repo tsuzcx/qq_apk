@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iwl" android:background="@drawable/a_i" android:layout_width="fill_parent" android:layout_height="@dimen/ki"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/km" android:textColor="@color/ak" android:id="@id/kbo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerInParent="true" />
+</RelativeLayout>

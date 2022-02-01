@@ -13,6 +13,9 @@ public final class VaProfileGate$VaProfileGateRsp
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field iRetCode = PBField.initInt32(0);
+  public final PBInt32Field lhLogoLv = PBField.initInt32(0);
+  public VaProfileGate.QidInfoItem qid_info = new VaProfileGate.QidInfoItem();
+  public VaProfileGate.QQValueInfoItem qq_value = new VaProfileGate.QQValueInfoItem();
   public final PBRepeatMessageField<VaProfileGate.OidbFlagInfo> rpt_oidb_flag = PBField.initRepeatMessage(VaProfileGate.OidbFlagInfo.class);
   public final PBRepeatMessageField<VaProfileGate.CommTaskInfo> rpt_task_item = PBField.initRepeatMessage(VaProfileGate.CommTaskInfo.class);
   public final PBBytesField sRetMsg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,13 +25,14 @@ public final class VaProfileGate$VaProfileGateRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null }, VaProfileGateRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 74, 82 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care", "lhLogoLv", "qid_info", "qq_value" }, new Object[] { localInteger, localByteStringMicro, null, null, null, null, null, localInteger, null, null }, VaProfileGateRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.profilecard.VaProfileGate.VaProfileGateRsp
  * JD-Core Version:    0.7.0.1
  */

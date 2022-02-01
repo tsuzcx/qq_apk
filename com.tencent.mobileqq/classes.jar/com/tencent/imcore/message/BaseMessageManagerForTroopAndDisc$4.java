@@ -1,80 +1,44 @@
 package com.tencent.imcore.message;
 
-import absl;
-import abti;
-import abts;
-import android.os.Handler;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
-public class BaseMessageManagerForTroopAndDisc$4
+class BaseMessageManagerForTroopAndDisc$4
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$4(absl paramabsl, abts paramabts, String paramString, int paramInt, long paramLong1, long paramLong2, boolean paramBoolean) {}
+  BaseMessageManagerForTroopAndDisc$4(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Abts);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "refreshTroopUnreadMessage begin");
-    }
-    int k = 0;
-    int j = 0;
-    k += 1;
-    Object localObject = this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    ChatMessage localChatMessage;
-    if (localObject != null)
+    if (QLog.isColorLevel())
     {
-      localObject = ((List)localObject).iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localChatMessage = (ChatMessage)((Iterator)localObject).next();
-      } while (abti.a(localChatMessage));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doPaiYiPaiRevokeRequest ");
+      localStringBuilder.append(this.a.getLogColorContent());
+      localStringBuilder.append(" holdFlag: ");
+      localStringBuilder.append(this.b);
+      QLog.d("Q.msg.BaseMessageManager", 2, localStringBuilder.toString());
     }
-    for (int i = (int)localChatMessage.shmsgseq;; i = 0)
+    if (!this.b)
     {
-      if (i <= this.jdField_a_of_type_Long + 1L) {}
-      for (boolean bool = true; (j == i) || (i <= this.jdField_a_of_type_Long); bool = false)
-      {
-        if ((bool) && (this.jdField_a_of_type_Boolean)) {
-          absl.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
-        }
-        this.jdField_a_of_type_Abts.g = bool;
-        this.this$0.a.a(this.jdField_a_of_type_Abts);
-        this.this$0.a.a.post(new BaseMessageManagerForTroopAndDisc.4.1(this));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager", 2, "refreshTroopUnreadMessage end");
-        }
-        return;
-      }
-      if ((k % 500 == 0) && (QLog.isColorLevel())) {
-        QLog.w("Q.msg.BaseMessageManager", 2, "dead loop warning, firstSeq: " + this.b + " seq: " + i + ", unread: " + this.jdField_a_of_type_Long);
-      }
-      int m = (int)(i - this.jdField_a_of_type_Long);
-      j = m;
-      if (this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, m).size() != m)
-      {
-        j = m;
-        if (m > 15) {
-          j = 15;
-        }
-      }
-      this.jdField_a_of_type_Abts.e = j;
-      this.jdField_a_of_type_Abts.jdField_a_of_type_Int = 0;
-      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, j, this.jdField_a_of_type_Abts);
-      j = i;
-      break;
+      BaseMessageManager.e.b(this.this$0.a, this.a, 15000L);
+      return;
     }
+    this.this$0.l(this.a);
+    this.this$0.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.c;
+    if (this.this$0.m(this.a)) {
+      BaseMessageManager.e.b(this.this$0.a, this.a, 15000L - (l1 - l2));
+    } else {
+      BaseMessageManager.e.a(this.this$0.a, this.a.frienduin, this.a.istroop, BaseMessageProcessor.b, BaseMessageProcessor.k);
+    }
+    this.this$0.l(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.4
  * JD-Core Version:    0.7.0.1
  */

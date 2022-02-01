@@ -1,24 +1,28 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.cg.h.d;
-import java.util.HashMap;
-
-@Deprecated
 public abstract interface at
 {
-  public abstract void clearPluginData(int paramInt);
+  public abstract void DY(String paramString);
   
-  public abstract HashMap<Integer, h.d> getBaseDBFactories();
+  public abstract void DZ(String paramString);
   
-  public abstract void onAccountPostReset(boolean paramBoolean);
+  public abstract as Ea(String paramString);
   
-  public abstract void onAccountRelease();
+  public abstract as Eb(String paramString);
   
-  public abstract void onSdcardMount(boolean paramBoolean);
+  public abstract void Ec(String paramString);
+  
+  public abstract void Ed(String paramString);
+  
+  public abstract void Ee(String paramString);
+  
+  public abstract void Ef(String paramString);
+  
+  public abstract void aw(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.at
  * JD-Core Version:    0.7.0.1
  */

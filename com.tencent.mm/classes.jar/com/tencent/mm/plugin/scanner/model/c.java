@@ -1,72 +1,38 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.kz;
-import com.tencent.mm.protocal.protobuf.la;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineActionReporter;", "", "()V", "report", "", "enterScene", "", "actionType", "actionResult", "", "tabEnterTs", "", "tabSession", "scanSession", "detectSession", "itemSource", "itemType", "cardType", "cardTitle", "preloadType", "enterSession", "errorCode", "ActionType", "CardType", "ErrorCode", "ItemSource", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends m
-  implements k
 {
-  private f callback;
-  public b rr;
+  public static final c ORj;
   
-  public c(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
+  static
   {
-    AppMethodBeat.i(80831);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new kz();
-    ((b.a)localObject).fsY = new la();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
-    ((b.a)localObject).funcId = 1068;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (kz)this.rr.fsV.fta;
-    ((kz)localObject).ProductID = paramString1;
-    ((kz)localObject).Scene = paramInt;
-    ((kz)localObject).wyN = paramString2;
-    ((kz)localObject).wyM = paramLinkedList;
-    ((kz)localObject).wyP = paramDouble2;
-    ((kz)localObject).wyO = paramDouble1;
-    AppMethodBeat.o(80831);
+    AppMethodBeat.i(314389);
+    ORj = new c();
+    AppMethodBeat.o(314389);
   }
   
-  public final int doScene(e parame, f paramf)
+  public static void a(int paramInt1, int paramInt2, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, int paramInt3, int paramInt4, int paramInt5, String paramString5, String paramString6, int paramInt6)
   {
-    AppMethodBeat.i(80833);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(80833);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 1068;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(80832);
-    ab.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(80832);
+    AppMethodBeat.i(314383);
+    s.u(paramString1, "actionResult");
+    s.u(paramString2, "tabSession");
+    s.u(paramString3, "scanSession");
+    s.u(paramString4, "detectSession");
+    s.u(paramString5, "cardTitle");
+    s.u(paramString6, "enterSession");
+    h.OAn.b(24121, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Long.valueOf(paramLong), paramString2, paramString3, paramString4, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString5, Integer.valueOf(0), paramString6, Integer.valueOf(paramInt6) });
+    AppMethodBeat.o(314383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.c
  * JD-Core Version:    0.7.0.1
  */

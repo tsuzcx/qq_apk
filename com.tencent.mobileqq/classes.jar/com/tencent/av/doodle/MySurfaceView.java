@@ -14,8 +14,8 @@ public abstract class MySurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  public long a;
   private MySurfaceView.MySurfaceViewThread a;
+  public long b = 0L;
   
   public MySurfaceView(Context paramContext)
   {
@@ -49,83 +49,11 @@ public abstract class MySurfaceView
   
   protected abstract void a(boolean paramBoolean);
   
-  public boolean a()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread != null) {
-      bool = MySurfaceView.MySurfaceViewThread.a(this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread);
-    }
-    return bool;
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    int i = 1;
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread != null) && (MySurfaceView.MySurfaceViewThread.a(this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread)))
-    {
-      bool = true;
-      if (bool != paramBoolean)
-      {
-        Throwable localThrowable = new Throwable("打印调用栈");
-        StringBuilder localStringBuilder = new StringBuilder().append("setRunning, running[").append(paramBoolean).append("], mThread[");
-        if (this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread == null) {
-          break label177;
-        }
-        bool = true;
-        label69:
-        localStringBuilder = localStringBuilder.append(bool).append("], mThread.mRunning[");
-        if ((this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread == null) || (!MySurfaceView.MySurfaceViewThread.a(this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread))) {
-          break label182;
-        }
-        bool = true;
-        label101:
-        QLog.w("MySurfaceView", 1, bool + "]", localThrowable);
-      }
-      if (!paramBoolean) {
-        break label187;
-      }
-      if ((this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread == null) || (!MySurfaceView.MySurfaceViewThread.a(this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread)))
-      {
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread = new MySurfaceView.MySurfaceViewThread(this);
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.a(true);
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.start();
-      }
-    }
-    label177:
-    label182:
-    label187:
-    while ((this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread == null) || (!MySurfaceView.MySurfaceViewThread.a(this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread)))
-    {
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label69;
-      bool = false;
-      break label101;
-    }
-    this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.a(false);
-    if (this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread != Thread.currentThread()) {}
-    for (;;)
-    {
-      if (i != 0) {}
-      try
-      {
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.join();
-        i = 0;
-      }
-      catch (InterruptedException localInterruptedException) {}
-      this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread = null;
-      return;
-    }
-  }
-  
   protected void finalize()
   {
     try
     {
-      b(false);
+      setRunning(false);
       return;
     }
     finally
@@ -134,40 +62,132 @@ public abstract class MySurfaceView
     }
   }
   
+  public boolean getRunning()
+  {
+    MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.a;
+    if (localMySurfaceViewThread != null) {
+      return MySurfaceView.MySurfaceViewThread.a(localMySurfaceViewThread);
+    }
+    return false;
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MySurfaceView", 2, "WL_DEBUG onWindowFocusChanged hasWindowFocus = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WL_DEBUG onWindowFocusChanged hasWindowFocus = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MySurfaceView", 2, localStringBuilder.toString());
     }
     if (!paramBoolean) {
-      b(false);
+      setRunning(false);
+    }
+  }
+  
+  protected void setRunning(boolean paramBoolean)
+  {
+    Object localObject = this.a;
+    int i = 1;
+    boolean bool;
+    if ((localObject != null) && (MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (bool != paramBoolean)
+    {
+      localObject = new Throwable("打印调用栈");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setRunning, running[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], mThread[");
+      if (this.a != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], mThread.mRunning[");
+      MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.a;
+      if ((localMySurfaceViewThread != null) && (MySurfaceView.MySurfaceViewThread.a(localMySurfaceViewThread))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localStringBuilder.append("]");
+      QLog.w("MySurfaceView", 1, localStringBuilder.toString(), (Throwable)localObject);
+    }
+    if (paramBoolean)
+    {
+      localObject = this.a;
+      if ((localObject == null) || (!MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject)))
+      {
+        this.a = new MySurfaceView.MySurfaceViewThread(this);
+        this.a.a(true);
+        this.a.start();
+      }
+    }
+    else
+    {
+      localObject = this.a;
+      if ((localObject != null) && (MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject)))
+      {
+        this.a.a(false);
+        if (this.a != Thread.currentThread()) {
+          while (i != 0) {
+            try
+            {
+              this.a.join();
+              i = 0;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              label263:
+              break label263;
+            }
+          }
+        }
+        this.a = null;
+      }
     }
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
     paramSurfaceHolder = getContext();
     boolean bool = hasWindowFocus();
-    if (QLog.isColorLevel()) {
-      QLog.d("MySurfaceView", 2, "WL_DEBUG surfaceCreated context = " + paramSurfaceHolder.getClass().getName() + ", hasWindowFocus = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WL_DEBUG surfaceCreated context = ");
+      localStringBuilder.append(paramSurfaceHolder.getClass().getName());
+      localStringBuilder.append(", hasWindowFocus = ");
+      localStringBuilder.append(bool);
+      QLog.d("MySurfaceView", 2, localStringBuilder.toString());
     }
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     paramSurfaceHolder = getContext();
-    if (QLog.isColorLevel()) {
-      QLog.d("MySurfaceView", 2, "WL_DEBUG surfaceDestroyed context = " + paramSurfaceHolder.getClass().getName());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WL_DEBUG surfaceDestroyed context = ");
+      localStringBuilder.append(paramSurfaceHolder.getClass().getName());
+      QLog.d("MySurfaceView", 2, localStringBuilder.toString());
     }
     if (!(paramSurfaceHolder instanceof Activity)) {
-      b(false);
+      setRunning(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.MySurfaceView
  * JD-Core Version:    0.7.0.1
  */

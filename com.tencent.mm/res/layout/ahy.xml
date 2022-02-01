@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/j7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m1" />
-    <ListView android:id="@id/j8" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j7" style="@style/mn" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/j9" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j7" />
-    <ImageView android:id="@id/j_" android:background="@drawable/b4r" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j9" />
-    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/ja" android:visibility="gone" android:layout_width="@dimen/dj" android:layout_height="fill_parent" android:layout_below="@id/j9" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/jb" android:background="#f7ffffff" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/dl" android:paddingRight="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j9">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/as2" />
-            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/jc" android:paddingTop="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/dl" />
-        </LinearLayout>
-    </com.tencent.mm.ui.contact.LabelContainerView>
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/jd" android:background="#f7ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j9">
-        <TextView android:id="@id/je" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/e5j" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w6" android:gravity="center_vertical" android:id="@id/jf" android:background="#f2ebebeb" android:padding="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/m1" android:layout_below="@id/j9" />
-</RelativeLayout>
+<FrameLayout android:id="@id/dqm" android:layout_width="fill_parent" android:layout_height="@dimen/dc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@color/rp" android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/g3q" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cv" />
+        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/g2x" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <View android:background="@color/BW_100_Alpha_0_2" android:layout_width="@dimen/cv" android:layout_height="1.0px" android:layout_marginRight="@dimen/df" android:layout_toLeftOf="@id/ayq" android:layout_centerVertical="true" />
+            <View android:background="@color/BW_100_Alpha_0_2" android:layout_width="@dimen/cv" android:layout_height="1.0px" android:layout_marginLeft="@dimen/df" android:layout_toRightOf="@id/ayq" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center" android:id="@id/ayq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dsd" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</FrameLayout>

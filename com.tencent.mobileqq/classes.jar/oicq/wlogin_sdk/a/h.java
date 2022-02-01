@@ -13,6 +13,7 @@ import java.util.Set;
 import oicq.wlogin_sdk.pb.sec_trans.SecTransInfo;
 import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tlv_type.RegTLV;
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
 import oicq.wlogin_sdk.tools.util;
 
 public class h
@@ -23,229 +24,399 @@ public class h
     this.b = 10;
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong3, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, Map<Integer, RegTLV> paramMap)
+  public h.a a(Map<String, Object> paramMap)
   {
-    String str = Build.VERSION.RELEASE;
-    byte[] arrayOfByte1 = paramArrayOfByte7;
+    h.a locala = new h.a(null);
+    StringBuilder localStringBuilder = new StringBuilder("reg_request_submit_mobile analysisExtraMap");
+    if (paramMap == null)
+    {
+      localStringBuilder.append(" extraMap == null");
+      return locala;
+    }
+    locala.a = ((byte[])paramMap.get("country_english_name"));
+    localStringBuilder.append("，stCountryCodeTwo = ");
+    if (locala.a == null) {
+      localStringBuilder.append("null");
+    } else {
+      localStringBuilder.append(new String(locala.a));
+    }
+    locala.b = ((byte[])paramMap.get("captcha_verify_info"));
+    localStringBuilder.append("，stCaptchaVerifyInfo = ");
+    if (locala.b == null) {
+      localStringBuilder.append("null");
+    } else {
+      localStringBuilder.append(locala.b.length);
+    }
+    util.LOGI(localStringBuilder.toString(), "");
+    return locala;
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, long paramLong3, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, Map<Integer, RegTLV> paramMap, Map<String, Object> paramMap1)
+  {
+    Object localObject1 = Build.VERSION.RELEASE;
+    byte[] arrayOfByte1;
     if (paramArrayOfByte7 == null) {
       arrayOfByte1 = new byte[0];
+    } else {
+      arrayOfByte1 = paramArrayOfByte7;
     }
-    byte[] arrayOfByte2 = paramArrayOfByte10;
+    byte[] arrayOfByte2;
     if (paramArrayOfByte10 == null) {
       arrayOfByte2 = new byte[0];
-    }
-    int[] arrayOfInt = new int[10];
-    int[] tmp41_39 = arrayOfInt;
-    tmp41_39[0] = 1;
-    int[] tmp45_41 = tmp41_39;
-    tmp45_41[1] = 2;
-    int[] tmp49_45 = tmp45_41;
-    tmp49_45[2] = 3;
-    int[] tmp53_49 = tmp49_45;
-    tmp53_49[3] = 4;
-    int[] tmp57_53 = tmp53_49;
-    tmp57_53[4] = 13;
-    int[] tmp62_57 = tmp57_53;
-    tmp62_57[5] = 6;
-    int[] tmp67_62 = tmp62_57;
-    tmp67_62[6] = 7;
-    int[] tmp73_67 = tmp67_62;
-    tmp73_67[7] = 18;
-    int[] tmp79_73 = tmp73_67;
-    tmp79_73[8] = 37;
-    int[] tmp85_79 = tmp79_73;
-    tmp85_79[9] = 50;
-    tmp85_79;
-    paramArrayOfByte10 = new ArrayList();
-    int i1 = arrayOfInt.length;
-    int j = 0;
-    int i = 0;
-    int k = 0;
-    label216:
-    label221:
-    int m;
-    if (k < i1) {
-      switch (arrayOfInt[k])
-      {
-      default: 
-        paramArrayOfByte7 = new byte[0];
-        if (paramArrayOfByte7.length <= 4) {
-          break;
-        }
-        m = paramArrayOfByte7.length;
-        paramArrayOfByte10.add(paramArrayOfByte7);
-        i = m + i;
-        j += 1;
-      }
     } else {
-      for (;;)
-      {
-        k += 1;
+      arrayOfByte2 = paramArrayOfByte10;
+    }
+    h.a locala = a(paramMap1);
+    StringBuilder localStringBuilder = new StringBuilder("reg_request_submit_mobile");
+    paramMap1 = new int[14];
+    Map<String, Object> tmp66_64 = paramMap1;
+    tmp66_64[0] = 1;
+    Map<String, Object> tmp70_66 = tmp66_64;
+    tmp70_66[1] = 2;
+    Map<String, Object> tmp74_70 = tmp70_66;
+    tmp74_70[2] = 3;
+    Map<String, Object> tmp78_74 = tmp74_70;
+    tmp78_74[3] = 4;
+    Map<String, Object> tmp82_78 = tmp78_74;
+    tmp82_78[4] = 13;
+    Map<String, Object> tmp87_82 = tmp82_78;
+    tmp87_82[5] = 6;
+    Map<String, Object> tmp92_87 = tmp87_82;
+    tmp92_87[6] = 7;
+    Map<String, Object> tmp98_92 = tmp92_87;
+    tmp98_92[7] = 18;
+    Map<String, Object> tmp104_98 = tmp98_92;
+    tmp104_98[8] = 37;
+    Map<String, Object> tmp110_104 = tmp104_98;
+    tmp110_104[9] = 50;
+    Map<String, Object> tmp116_110 = tmp110_104;
+    tmp116_110[10] = 52;
+    Map<String, Object> tmp122_116 = tmp116_110;
+    tmp122_116[11] = 53;
+    Map<String, Object> tmp128_122 = tmp122_116;
+    tmp128_122[12] = 544;
+    Map<String, Object> tmp135_128 = tmp128_122;
+    tmp135_128[13] = 29;
+    tmp135_128;
+    ArrayList localArrayList = new ArrayList();
+    int j = paramMap1.length;
+    int k = 0;
+    int i = 0;
+    paramArrayOfByte10 = (byte[])localObject1;
+    for (;;)
+    {
+      paramArrayOfByte7 = paramArrayOfByte3;
+      if (k >= j) {
         break;
+      }
+      int m = paramMap1[k];
+      if (m != 1)
+      {
+        if (m != 2)
+        {
+          if (m != 3)
+          {
+            if (m != 4)
+            {
+              if (m != 6)
+              {
+                if (m != 7)
+                {
+                  if (m != 13)
+                  {
+                    if (m != 18)
+                    {
+                      if (m != 29)
+                      {
+                        if (m != 37)
+                        {
+                          Object localObject2;
+                          if (m != 50)
+                          {
+                            if (m != 544)
+                            {
+                              if (m != 52)
+                              {
+                                if (m == 53)
+                                {
+                                  if (tmp66_64.b != null)
+                                  {
+                                    paramArrayOfByte7 = new RegTLV(53);
+                                    paramArrayOfByte7.setData(tmp66_64.b, tmp66_64.b.length);
+                                    paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                                    localObject1 = new StringBuilder();
+                                    ((StringBuilder)localObject1).append("tlv53 len:");
+                                    ((StringBuilder)localObject1).append(tmp66_64.b.length);
+                                    ((StringBuilder)localObject1).append("，");
+                                    ((StringBuilder)localObject1).append(paramArrayOfByte7.length);
+                                    util.LOGI(((StringBuilder)localObject1).toString(), "");
+                                    break label1419;
+                                  }
+                                  util.LOGI("tlv53 byteCaptchaVerifyInfo is null", "");
+                                }
+                              }
+                              else
+                              {
+                                paramArrayOfByte7 = new RegTLV(52);
+                                localObject1 = new byte[4];
+                                util.int32_to_buf((byte[])localObject1, 0, 18);
+                                paramArrayOfByte7.setData((byte[])localObject1, localObject1.length);
+                                paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                                localObject2 = new StringBuilder();
+                                ((StringBuilder)localObject2).append("tlv52 len:");
+                                ((StringBuilder)localObject2).append(localObject1.length);
+                                util.LOGI(((StringBuilder)localObject2).toString(), "");
+                                break label1362;
+                              }
+                            }
+                            else
+                            {
+                              localObject1 = new byte[paramArrayOfByte1.length + paramArrayOfByte7.length + arrayOfByte2.length + 6];
+                              util.int16_to_buf((byte[])localObject1, 0, paramArrayOfByte1.length);
+                              System.arraycopy(paramArrayOfByte1, 0, localObject1, 0, paramArrayOfByte1.length);
+                              m = paramArrayOfByte1.length + 2;
+                              util.int16_to_buf((byte[])localObject1, m, paramArrayOfByte7.length);
+                              m += 2;
+                              System.arraycopy(paramArrayOfByte7, 0, localObject1, m, paramArrayOfByte7.length);
+                              m += paramArrayOfByte7.length;
+                              util.int16_to_buf((byte[])localObject1, m, arrayOfByte2.length);
+                              System.arraycopy(arrayOfByte2, 0, localObject1, m + 2, arrayOfByte2.length);
+                              paramArrayOfByte7 = new tlv_t544().get_tlv_544("", "812_a", (byte[])localObject1);
+                              break label1362;
+                            }
+                          }
+                          else
+                          {
+                            localObject1 = new StringBuilder(23);
+                            localObject2 = new sec_trans.SecTransInfo();
+                            ((sec_trans.SecTransInfo)localObject2).str_phone_brand.set(Build.BRAND);
+                            ((StringBuilder)localObject1).append("brand:");
+                            ((StringBuilder)localObject1).append(Build.BRAND);
+                            ((sec_trans.SecTransInfo)localObject2).str_model_type.set(Build.MODEL);
+                            ((StringBuilder)localObject1).append(" model:");
+                            ((StringBuilder)localObject1).append(Build.MODEL);
+                            PBStringField localPBStringField = ((sec_trans.SecTransInfo)localObject2).str_wifi_mac;
+                            if (t.aB == null) {
+                              paramArrayOfByte7 = "";
+                            } else {
+                              paramArrayOfByte7 = t.aB;
+                            }
+                            localPBStringField.set(paramArrayOfByte7);
+                            ((StringBuilder)localObject1).append(" regMacAddress:");
+                            ((StringBuilder)localObject1).append(t.aB);
+                            localPBStringField = ((sec_trans.SecTransInfo)localObject2).str_gps_location;
+                            if (t.aE == null) {
+                              paramArrayOfByte7 = "";
+                            } else {
+                              paramArrayOfByte7 = t.aE;
+                            }
+                            localPBStringField.set(paramArrayOfByte7);
+                            ((StringBuilder)localObject1).append(" regLocation:");
+                            ((StringBuilder)localObject1).append(t.aE);
+                            localPBStringField = ((sec_trans.SecTransInfo)localObject2).str_os_language;
+                            if (t.aC == null) {
+                              paramArrayOfByte7 = "";
+                            } else {
+                              paramArrayOfByte7 = t.aC;
+                            }
+                            localPBStringField.set(paramArrayOfByte7);
+                            ((StringBuilder)localObject1).append(" regOSLanguage:");
+                            ((StringBuilder)localObject1).append(t.aC);
+                            ((sec_trans.SecTransInfo)localObject2).uint32_qq_language.set(t.aD);
+                            ((StringBuilder)localObject1).append(" regQQLanguage:");
+                            ((StringBuilder)localObject1).append(t.aD);
+                            util.LOGI(((StringBuilder)localObject1).toString(), "");
+                            paramArrayOfByte7 = ((sec_trans.SecTransInfo)localObject2).toByteArray();
+                            localObject1 = new RegTLV(50);
+                            ((RegTLV)localObject1).setData(paramArrayOfByte7, paramArrayOfByte7.length);
+                            localObject2 = new StringBuilder();
+                            ((StringBuilder)localObject2).append("tlv50 len:");
+                            ((StringBuilder)localObject2).append(paramArrayOfByte7.length);
+                            util.LOGI(((StringBuilder)localObject2).toString(), "");
+                            paramArrayOfByte7 = ((RegTLV)localObject1).getBuf();
+                            break label1362;
+                          }
+                        }
+                        else
+                        {
+                          paramArrayOfByte7 = new RegTLV(37);
+                          paramArrayOfByte7.setShort(t.aA);
+                          paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                          break label1362;
+                        }
+                      }
+                      else
+                      {
+                        if (tmp66_64.a != null)
+                        {
+                          paramArrayOfByte7 = new RegTLV(29);
+                          paramArrayOfByte7.setData(tmp66_64.a, tmp66_64.a.length);
+                          paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                          localObject1 = new StringBuilder();
+                          ((StringBuilder)localObject1).append("tlv29 len:");
+                          ((StringBuilder)localObject1).append(tmp66_64.a.length);
+                          util.LOGI(((StringBuilder)localObject1).toString(), "");
+                          break label1362;
+                        }
+                        util.LOGI("tlv29 byteCountryCode is null", "");
+                      }
+                      paramArrayOfByte7 = new byte[0];
+                      break label1419;
+                    }
+                    else
+                    {
+                      localObject1 = new RegTLV(18);
+                      ((RegTLV)localObject1).setData(paramArrayOfByte7, paramArrayOfByte7.length);
+                      paramArrayOfByte7 = ((RegTLV)localObject1).getBuf();
+                    }
+                  }
+                  else
+                  {
+                    paramArrayOfByte7 = new RegTLV(13);
+                    paramArrayOfByte7.setInt((int)paramLong2);
+                    paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                  }
+                }
+                else
+                {
+                  paramArrayOfByte7 = new RegTLV(7);
+                  int n = t.ak | 0x0;
+                  m = n;
+                  if (true == t.aj) {
+                    m = n | 0x2;
+                  }
+                  m = m | 0x8 | 0x10;
+                  paramArrayOfByte7.setInt(m);
+                  localObject1 = new StringBuilder();
+                  ((StringBuilder)localObject1).append("reg_request_submit_mobile tlv7 ");
+                  ((StringBuilder)localObject1).append(m);
+                  util.LOGI(((StringBuilder)localObject1).toString(), "");
+                  paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+                }
+              }
+              else
+              {
+                paramArrayOfByte7 = new RegTLV(6);
+                localObject1 = new byte[arrayOfByte2.length + 3];
+                if (arrayOfByte2.length == 0) {
+                  m = 1;
+                } else {
+                  m = 2;
+                }
+                util.int8_to_buf((byte[])localObject1, 0, m);
+                util.int16_to_buf((byte[])localObject1, 1, arrayOfByte2.length);
+                System.arraycopy(arrayOfByte2, 0, localObject1, 3, arrayOfByte2.length);
+                m = arrayOfByte2.length;
+                paramArrayOfByte7.setData((byte[])localObject1, localObject1.length);
+                paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+              }
+            }
+            else
+            {
+              paramArrayOfByte7 = new RegTLV(4);
+              paramArrayOfByte7.setData(paramArrayOfByte9, paramArrayOfByte9.length);
+              paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+            }
+          }
+          else
+          {
+            paramArrayOfByte7 = new RegTLV(3);
+            paramArrayOfByte7.setData(paramArrayOfByte8, paramArrayOfByte8.length);
+            paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+          }
+        }
+        else
+        {
+          label1362:
+          paramArrayOfByte7 = new RegTLV(2);
+          paramArrayOfByte7.setLong(paramLong3);
+          paramArrayOfByte7 = paramArrayOfByte7.getBuf();
+        }
+      }
+      else
+      {
         paramArrayOfByte7 = new RegTLV(1);
         paramArrayOfByte7.setData(arrayOfByte1, arrayOfByte1.length);
         paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(2);
-        paramArrayOfByte7.setLong(paramLong3);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(3);
-        paramArrayOfByte7.setData(paramArrayOfByte8, paramArrayOfByte8.length);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(4);
-        paramArrayOfByte7.setData(paramArrayOfByte9, paramArrayOfByte9.length);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(13);
-        paramArrayOfByte7.setInt((int)paramLong2);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(6);
-        Object localObject = new byte[arrayOfByte2.length + 3];
-        if (arrayOfByte2.length == 0) {}
-        for (m = 1;; m = 2)
-        {
-          util.int8_to_buf((byte[])localObject, 0, m);
-          util.int16_to_buf((byte[])localObject, 1, arrayOfByte2.length);
-          System.arraycopy(arrayOfByte2, 0, localObject, 3, arrayOfByte2.length);
-          m = arrayOfByte2.length;
-          paramArrayOfByte7.setData((byte[])localObject, localObject.length);
-          paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-          break;
-        }
-        paramArrayOfByte7 = new RegTLV(7);
-        int n = 0x0 | t.aj;
-        m = n;
-        if (true == t.ai) {
-          m = n | 0x2;
-        }
-        paramArrayOfByte7.setInt(m | 0x8 | 0x10);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(18);
-        paramArrayOfByte7.setData(paramArrayOfByte3, paramArrayOfByte3.length);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        paramArrayOfByte7 = new RegTLV(37);
-        paramArrayOfByte7.setShort(t.az);
-        paramArrayOfByte7 = paramArrayOfByte7.getBuf();
-        break label221;
-        localObject = new StringBuilder(23);
-        sec_trans.SecTransInfo localSecTransInfo = new sec_trans.SecTransInfo();
-        localSecTransInfo.str_phone_brand.set(Build.BRAND);
-        ((StringBuilder)localObject).append("brand:").append(Build.BRAND);
-        localSecTransInfo.str_model_type.set(Build.MODEL);
-        ((StringBuilder)localObject).append(" model:").append(Build.MODEL);
-        PBStringField localPBStringField = localSecTransInfo.str_wifi_mac;
-        if (t.aA == null)
-        {
-          paramArrayOfByte7 = "";
-          label701:
-          localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regMacAddress:").append(t.aA);
-          localPBStringField = localSecTransInfo.str_gps_location;
-          if (t.aD != null) {
-            break label910;
-          }
-          paramArrayOfByte7 = "";
-          label739:
-          localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regLocation:").append(t.aD);
-          localPBStringField = localSecTransInfo.str_os_language;
-          if (t.aB != null) {
-            break label918;
-          }
-        }
-        label910:
-        label918:
-        for (paramArrayOfByte7 = "";; paramArrayOfByte7 = t.aB)
-        {
-          localPBStringField.set(paramArrayOfByte7);
-          ((StringBuilder)localObject).append(" regOSLanguage:").append(t.aB);
-          localSecTransInfo.uint32_qq_language.set(t.aC);
-          ((StringBuilder)localObject).append(" regQQLanguage:").append(t.aC);
-          util.LOGI(((StringBuilder)localObject).toString(), "");
-          if (localSecTransInfo == null) {
-            break label926;
-          }
-          paramArrayOfByte7 = localSecTransInfo.toByteArray();
-          localObject = new RegTLV(50);
-          ((RegTLV)localObject).setData(paramArrayOfByte7, paramArrayOfByte7.length);
-          util.LOGI("tlv50 len:" + paramArrayOfByte7.length, "");
-          paramArrayOfByte7 = ((RegTLV)localObject).getBuf();
-          break;
-          paramArrayOfByte7 = t.aA;
-          break label701;
-          paramArrayOfByte7 = t.aD;
-          break label739;
-        }
-        label926:
-        util.LOGI("tlv50 sectrans is null", "");
-        break label216;
-        paramArrayOfByte7 = paramMap.keySet().iterator();
-        while (paramArrayOfByte7.hasNext())
-        {
-          paramArrayOfByte8 = ((RegTLV)paramMap.get((Integer)paramArrayOfByte7.next())).getBuf();
-          paramArrayOfByte10.add(paramArrayOfByte8);
-          i += paramArrayOfByte8.length;
-        }
-        k = paramArrayOfByte10.size();
-        paramArrayOfByte7 = new byte[i + 2];
-        util.int16_to_buf(paramArrayOfByte7, 0, (byte)k);
-        j = 2;
-        i = 0;
-        while (i < k)
-        {
-          paramArrayOfByte8 = (byte[])paramArrayOfByte10.get(i);
-          System.arraycopy(paramArrayOfByte8, 0, paramArrayOfByte7, j, paramArrayOfByte8.length);
-          j += paramArrayOfByte8.length;
-          i += 1;
-        }
-        paramArrayOfByte8 = new ByteArrayOutputStream();
-        paramArrayOfByte9 = new DataOutputStream(paramArrayOfByte8);
-        try
-        {
-          paramArrayOfByte9.writeByte(paramArrayOfByte1.length);
-          paramArrayOfByte9.write(paramArrayOfByte1);
-          paramArrayOfByte9.writeByte(this.c);
-          paramArrayOfByte9.writeByte(str.length());
-          paramArrayOfByte9.write(str.getBytes());
-          paramArrayOfByte9.writeByte(paramArrayOfByte2.length);
-          paramArrayOfByte9.write(paramArrayOfByte2);
-          paramArrayOfByte9.writeByte(paramArrayOfByte3.length);
-          paramArrayOfByte9.write(paramArrayOfByte3);
-          paramArrayOfByte9.writeByte(paramInt1);
-          paramArrayOfByte9.writeByte(paramInt2);
-          paramArrayOfByte9.writeByte(paramInt3);
-          paramArrayOfByte9.writeInt((int)paramLong1);
-          if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length == 4)) {
-            paramArrayOfByte9.write(paramArrayOfByte4);
-          }
-          for (;;)
-          {
-            paramArrayOfByte9.writeByte(paramArrayOfByte5.length);
-            paramArrayOfByte9.write(paramArrayOfByte5);
-            paramArrayOfByte9.writeByte(paramArrayOfByte6.length);
-            paramArrayOfByte9.write(paramArrayOfByte6);
-            paramArrayOfByte9.write(paramArrayOfByte7);
-            return a(paramArrayOfByte8.toByteArray());
-            paramArrayOfByte9.writeInt(0);
-          }
-        }
-        catch (Exception paramArrayOfByte1)
-        {
-          util.LOGI("get account failed " + paramArrayOfByte1.getMessage(), "");
-          return null;
-        }
       }
+      label1419:
+      m = i;
+      if (paramArrayOfByte7.length > 4)
+      {
+        m = i + paramArrayOfByte7.length;
+        localArrayList.add(paramArrayOfByte7);
+      }
+      k += 1;
+      i = m;
     }
+    paramArrayOfByte7 = paramMap.keySet().iterator();
+    while (paramArrayOfByte7.hasNext())
+    {
+      paramArrayOfByte8 = (Integer)paramArrayOfByte7.next();
+      paramArrayOfByte9 = ((RegTLV)paramMap.get(paramArrayOfByte8)).getBuf();
+      localArrayList.add(paramArrayOfByte9);
+      i += paramArrayOfByte9.length;
+      localStringBuilder.append(",key=");
+      localStringBuilder.append(paramArrayOfByte8);
+      localStringBuilder.append(",value=");
+      localStringBuilder.append(paramArrayOfByte9.length);
+    }
+    util.LOGI(localStringBuilder.toString(), "");
+    k = localArrayList.size();
+    paramArrayOfByte7 = new byte[i + 2];
+    util.int16_to_buf(paramArrayOfByte7, 0, (byte)k);
+    i = 0;
+    j = 2;
+    while (i < k)
+    {
+      paramArrayOfByte8 = (byte[])localArrayList.get(i);
+      System.arraycopy(paramArrayOfByte8, 0, paramArrayOfByte7, j, paramArrayOfByte8.length);
+      j += paramArrayOfByte8.length;
+      i += 1;
+    }
+    paramArrayOfByte8 = new ByteArrayOutputStream();
+    paramArrayOfByte9 = new DataOutputStream(paramArrayOfByte8);
+    try
+    {
+      paramArrayOfByte9.writeByte(paramArrayOfByte1.length);
+      paramArrayOfByte9.write(paramArrayOfByte1);
+      paramArrayOfByte9.writeByte(this.c);
+      paramArrayOfByte9.writeByte(paramArrayOfByte10.length());
+      paramArrayOfByte9.write(paramArrayOfByte10.getBytes());
+      paramArrayOfByte9.writeByte(paramArrayOfByte2.length);
+      paramArrayOfByte9.write(paramArrayOfByte2);
+      paramArrayOfByte9.writeByte(paramArrayOfByte3.length);
+      paramArrayOfByte9.write(paramArrayOfByte3);
+      paramArrayOfByte9.writeByte(paramInt1);
+      paramArrayOfByte9.writeByte(paramInt2);
+      paramArrayOfByte9.writeByte(paramInt3);
+      paramArrayOfByte9.writeInt((int)paramLong1);
+      if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length == 4)) {
+        paramArrayOfByte9.write(paramArrayOfByte4);
+      } else {
+        paramArrayOfByte9.writeInt(0);
+      }
+      paramArrayOfByte9.writeByte(paramArrayOfByte5.length);
+      paramArrayOfByte9.write(paramArrayOfByte5);
+      paramArrayOfByte9.writeByte(paramArrayOfByte6.length);
+      paramArrayOfByte9.write(paramArrayOfByte6);
+      paramArrayOfByte9.write(paramArrayOfByte7);
+      paramArrayOfByte1 = a(paramArrayOfByte8.toByteArray());
+      return paramArrayOfByte1;
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      paramArrayOfByte2 = new StringBuilder();
+      paramArrayOfByte2.append("get account failed ");
+      paramArrayOfByte2.append(paramArrayOfByte1.getMessage());
+      util.LOGI(paramArrayOfByte2.toString(), "");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.a.h
  * JD-Core Version:    0.7.0.1
  */

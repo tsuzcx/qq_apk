@@ -1,51 +1,84 @@
 package com.tencent.mm.emoji.decode;
 
-import a.f.b.j;
-import a.l;
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.gif.MMGIFException;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.io.InputStream;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isValid", "", "decoder", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "decodeThumb", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "byteArray", "", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "md5", "isValid", "", "decoder", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMGIFJNIFactory$Companion
 {
-  public final b getDecoder(EmojiInfo paramEmojiInfo)
+  public final Bitmap decodeThumb(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(63145);
-    j.q(paramEmojiInfo, "emojiInfo");
+    AppMethodBeat.i(177050);
+    s.u(paramEmojiInfo, "emojiInfo");
+    paramEmojiInfo = getDecoder(paramEmojiInfo);
+    if (isValid(paramEmojiInfo))
+    {
+      paramEmojiInfo.aUe();
+      Bitmap localBitmap = paramEmojiInfo.getFrame();
+      paramEmojiInfo.destroy();
+      AppMethodBeat.o(177050);
+      return localBitmap;
+    }
+    AppMethodBeat.o(177050);
+    return null;
+  }
+  
+  public final Bitmap decodeThumb(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(242236);
+    paramArrayOfByte = getDecoder(paramArrayOfByte);
+    if (isValid(paramArrayOfByte))
+    {
+      paramArrayOfByte.aUe();
+      Bitmap localBitmap = paramArrayOfByte.getFrame();
+      paramArrayOfByte.destroy();
+      AppMethodBeat.o(242236);
+      return localBitmap;
+    }
+    AppMethodBeat.o(242236);
+    return null;
+  }
+  
+  public final d getDecoder(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(105374);
+    s.u(paramEmojiInfo, "emojiInfo");
     for (;;)
     {
       try
       {
-        if ((paramEmojiInfo.getGroup() != EmojiGroupInfo.yPe) && (paramEmojiInfo.getGroup() != EmojiInfo.yPl) && (paramEmojiInfo.getGroup() != EmojiInfo.yPk)) {
+        if ((paramEmojiInfo.field_catalog != EmojiGroupInfo.aklE) && (paramEmojiInfo.field_catalog != EmojiInfo.aklL) && (paramEmojiInfo.field_catalog != EmojiInfo.aklK)) {
           continue;
         }
-        localObject = (b)new c(paramEmojiInfo.y(ah.getContext(), 300));
+        localObject = (d)new e(paramEmojiInfo.F(MMApplicationContext.getContext(), 300));
         paramEmojiInfo = (EmojiInfo)localObject;
       }
       catch (MMGIFException localMMGIFException)
       {
         Object localObject;
-        ab.w(MMGIFJNIFactory.access$getTAG$cp(), "decode error: " + localMMGIFException.getErrorCode());
+        Log.w(MMGIFJNIFactory.access$getTAG$cp(), s.X("decode error: ", Integer.valueOf(localMMGIFException.getErrorCode())));
         if (localMMGIFException.getErrorCode() != 103) {
           continue;
         }
-        com.tencent.mm.kernel.b.a locala = g.G(PluginEmoji.class);
-        j.p(locala, "MMKernel.plugin(PluginEmoji::class.java)");
-        paramEmojiInfo = ((PluginEmoji)locala).getProvider().l(paramEmojiInfo);
+        paramEmojiInfo = ((PluginEmoji)h.az(PluginEmoji.class)).getProvider().a(paramEmojiInfo);
         if (paramEmojiInfo == null) {
           continue;
         }
-        paramEmojiInfo = (b)new c(paramEmojiInfo);
+        paramEmojiInfo = (d)new e(paramEmojiInfo);
         continue;
-        AppMethodBeat.o(63145);
+        AppMethodBeat.o(105374);
         return paramEmojiInfo;
         paramEmojiInfo = null;
         continue;
@@ -53,41 +86,105 @@ public final class MMGIFJNIFactory$Companion
       if (paramEmojiInfo != null) {
         continue;
       }
-      paramEmojiInfo = (b)new a();
-      AppMethodBeat.o(63145);
+      paramEmojiInfo = (d)new b();
+      AppMethodBeat.o(105374);
       return paramEmojiInfo;
-      if (paramEmojiInfo.dzq())
+      if (paramEmojiInfo.kMe())
       {
-        localObject = EmojiInfo.bI(ah.getContext(), paramEmojiInfo.getName());
-        j.p(localObject, "EmojiInfo.getEmojiFile(M…ontext(), emojiInfo.name)");
-        localObject = (b)new d((InputStream)localObject);
+        localObject = EmojiInfo.cS(MMApplicationContext.getContext(), paramEmojiInfo.getName());
+        s.s(localObject, "getEmojiFile(MMApplicati…ontext(), emojiInfo.name)");
+        localObject = (d)new f((InputStream)localObject);
         paramEmojiInfo = (EmojiInfo)localObject;
       }
       else
       {
-        localObject = g.G(PluginEmoji.class);
-        j.p(localObject, "MMKernel.plugin(PluginEmoji::class.java)");
-        localObject = ((PluginEmoji)localObject).getProvider().l(paramEmojiInfo);
+        localObject = ((PluginEmoji)h.az(PluginEmoji.class)).getProvider().a(paramEmojiInfo);
         if (localObject == null) {
           continue;
         }
-        if (r.bX((byte[])localObject))
+        if (ImgUtil.isWXGF((byte[])localObject))
         {
-          localObject = (b)new e((byte[])localObject);
+          localObject = (d)new g((byte[])localObject);
           paramEmojiInfo = (EmojiInfo)localObject;
         }
         else
         {
-          localObject = (b)new d((byte[])localObject);
+          localObject = (d)new f((byte[])localObject);
           paramEmojiInfo = (EmojiInfo)localObject;
         }
       }
     }
   }
   
-  public final boolean isValid(b paramb)
+  public final d getDecoder(String paramString)
   {
-    return (paramb != null) && (!(paramb instanceof a));
+    AppMethodBeat.i(242225);
+    s.u(paramString, "md5");
+    paramString = bl.jba().adju.bza(paramString);
+    if (paramString == null)
+    {
+      paramString = (d)new b();
+      AppMethodBeat.o(242225);
+      return paramString;
+    }
+    paramString = getDecoder(paramString);
+    AppMethodBeat.o(242225);
+    return paramString;
+  }
+  
+  public final d getDecoder(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(242230);
+    if (paramArrayOfByte != null) {}
+    for (;;)
+    {
+      try
+      {
+        if (!ImgUtil.isWXGF(paramArrayOfByte)) {
+          continue;
+        }
+        locald = (d)new g(paramArrayOfByte);
+        paramArrayOfByte = locald;
+      }
+      catch (MMGIFException localMMGIFException)
+      {
+        d locald;
+        Log.printErrStackTrace(MMGIFJNIFactory.access$getTAG$cp(), (Throwable)localMMGIFException, "decode bytes error", new Object[0]);
+        if ((localMMGIFException.getErrorCode() != 103) || (paramArrayOfByte == null)) {
+          break label145;
+        }
+        paramArrayOfByte = (d)new e(paramArrayOfByte);
+        continue;
+        AppMethodBeat.o(242230);
+        return paramArrayOfByte;
+      }
+      if (paramArrayOfByte == null)
+      {
+        paramArrayOfByte = (d)new b();
+        AppMethodBeat.o(242230);
+        return paramArrayOfByte;
+        if (ImgUtil.isGif(paramArrayOfByte))
+        {
+          locald = (d)new f(paramArrayOfByte);
+          paramArrayOfByte = locald;
+        }
+        else
+        {
+          locald = (d)new e(paramArrayOfByte);
+          paramArrayOfByte = locald;
+        }
+      }
+      else
+      {
+        label145:
+        paramArrayOfByte = null;
+      }
+    }
+  }
+  
+  public final boolean isValid(d paramd)
+  {
+    return (paramd != null) && (!(paramd instanceof b));
   }
 }
 

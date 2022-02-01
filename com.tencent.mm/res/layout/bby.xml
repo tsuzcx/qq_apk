@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/l4j" android:background="@color/al2" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:gravity="center" android:id="@id/fe1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gq8" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/z8" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/gg" android:gravity="center" android:id="@id/fe0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="700ms" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/z8" />
+    <SeekBar android:id="@id/kk_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:max="100" android:progress="100" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/fe1" style="@style/ob" />
+</androidx.constraintlayout.widget.ConstraintLayout>

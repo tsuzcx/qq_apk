@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="270px"
+    version="1.1"
+    viewBox="0 0 270 270"
+    width="270px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>Dialog_icon_success</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Symbols"
+        stroke="none"
+        stroke-width="1">
+        <g id="Dialog_icon_success">
+            <g id="Fill-3-+-Fill-36">
+                <rect
+                    fill="#D8D8D8"
+                    fill-opacity="0"
+                    height="270"
+                    id="Rectangle"
+                    width="270"
+                    x="0"
+                    y="0"></rect>
+                <path
+                    d="M63.314348,140.347621 C62.9332567,139.95532 62.8931688,139.273437 63.2242123,138.825401 L69.8347119,129.878722 C70.1660226,129.430324 70.7908324,129.338396 71.2291763,129.672565 L108.105339,157.784887 C108.544169,158.119427 109.244862,158.104791 109.66647,157.755435 L198.377806,84.2469242 C198.801164,83.8961185 199.46021,83.9219944 199.85125,84.3061189 L206.24776,90.58951 C206.638162,90.973008 206.637515,91.5943302 206.235518,91.9878391 L109.616165,186.567223 C109.219002,186.956001 108.589316,186.954394 108.207011,186.560843 L63.314348,140.347621 Z"
+                    fill="#1AAD19"
+                    id="Fill-36"></path>
+            </g>
+        </g>
+    </g>
+</svg>

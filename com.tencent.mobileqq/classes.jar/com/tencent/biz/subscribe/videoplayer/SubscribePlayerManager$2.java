@@ -1,55 +1,50 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import afkf;
+import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.AutoVideoItemBuilder.AutoVideoMsgViewHolder;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import ndk;
-import ymq;
 
-public class SubscribePlayerManager$2
+class SubscribePlayerManager$2
   implements Runnable
 {
-  public SubscribePlayerManager$2(ymq paramymq) {}
+  SubscribePlayerManager$2(SubscribePlayerManager paramSubscribePlayerManager) {}
   
   public void run()
   {
-    if (ndk.a(BaseApplicationImpl.context) != 1) {
+    if (NetworkUtil.b(BaseApplicationImpl.context) != 1)
+    {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
-    }
-    while ((ymq.a(this.this$0)) || (ymq.a(this.this$0).size() <= 0)) {
       return;
     }
-    ymq.a(this.this$0, true);
-    Object localObject = ymq.a(this.this$0).keySet().iterator();
-    int i = 0;
-    label73:
-    if (((Iterator)localObject).hasNext())
-    {
-      Integer localInteger = (Integer)((Iterator)localObject).next();
-      if (localInteger.intValue() <= i) {
-        break label145;
-      }
-      i = localInteger.intValue();
-    }
-    label145:
-    for (;;)
-    {
-      break label73;
-      localObject = (afkf)ymq.a(this.this$0).get(Integer.valueOf(i));
-      if (localObject == null) {
-        break;
-      }
-      ymq.a(this.this$0, (afkf)localObject, ((afkf)localObject).b);
+    if (SubscribePlayerManager.c(this.this$0)) {
       return;
+    }
+    if (SubscribePlayerManager.d(this.this$0).size() > 0)
+    {
+      SubscribePlayerManager.a(this.this$0, true);
+      int i = 0;
+      Object localObject = SubscribePlayerManager.d(this.this$0).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Integer localInteger = (Integer)((Iterator)localObject).next();
+        if (localInteger.intValue() > i) {
+          i = localInteger.intValue();
+        }
+      }
+      localObject = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)SubscribePlayerManager.d(this.this$0).get(Integer.valueOf(i));
+      if (localObject != null) {
+        SubscribePlayerManager.a(this.this$0, (AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject, ((AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject).l);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager.2
  * JD-Core Version:    0.7.0.1
  */

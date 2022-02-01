@@ -2,12 +2,12 @@ package com.tencent.recovery.model;
 
 public final class a
 {
-  public boolean ajx;
-  public boolean ajy;
+  public boolean amZ;
+  public boolean ana;
   
   public final String toString()
   {
-    return "RecoveryHandleResult{result=" + this.ajx + ", retry=" + this.ajy + '}';
+    return "RecoveryHandleResult{result=" + this.amZ + ", retry=" + this.ana + '}';
   }
 }
 

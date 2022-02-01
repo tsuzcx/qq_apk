@@ -6,48 +6,52 @@ class SuperPlayerState
   implements ISuperPlayerState
 {
   private static final String FILENAME = "SuperPlayerState.java";
-  private String TAG;
   private volatile int mCurState = 0;
   private volatile int mPreState = 0;
   private volatile ISuperPlayerState.OnPlayStateChangeListener mStateListener;
-  private Object mStateLock = new Object();
+  private final Object mStateLock = new Object();
+  private String mTAG;
   
-  public SuperPlayerState(String paramString)
+  SuperPlayerState(String paramString)
   {
-    this.TAG = (paramString + "_" + "SuperPlayerState.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerState.java");
+    this.mTAG = localStringBuilder.toString();
   }
   
-  public static String getStateStr(int paramInt)
+  static String getStateStr(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return " UNKNOW ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " CGIING ";
-    case 2: 
-      return " CGIED ";
-    case 3: 
-      return " PREPARING ";
-    case 4: 
-      return " PREPARED ";
-    case 5: 
-      return " STARTED ";
-    case 6: 
-      return " PAUSED ";
-    case 7: 
-      return " COMPLETE ";
-    case 8: 
-      return " STOPPED ";
+    case 10: 
+      return " RELEASED ";
     case 9: 
       return " ERROR ";
+    case 8: 
+      return " STOPPED ";
+    case 7: 
+      return " COMPLETE ";
+    case 6: 
+      return " PAUSED ";
+    case 5: 
+      return " STARTED ";
+    case 4: 
+      return " PREPARED ";
+    case 3: 
+      return " PREPARING ";
+    case 2: 
+      return " CGIED ";
+    case 1: 
+      return " CGIING ";
     }
-    return " RELEASED ";
+    return " IDLE ";
   }
   
-  public void changeStateAndNotify(int paramInt)
+  void changeStateAndNotify(int paramInt)
   {
     synchronized (this.mStateLock)
     {
@@ -59,21 +63,27 @@ class SuperPlayerState
         if (this.mStateListener != null) {
           this.mStateListener.onStateChange(copy());
         }
-        LogUtil.i(this.TAG, "changeStateAndNotify(), " + getStateStr(i) + " ==> " + getStateStr(paramInt));
+        String str = this.mTAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("changeStateAndNotify(), ");
+        localStringBuilder.append(getStateStr(i));
+        localStringBuilder.append(" ==> ");
+        localStringBuilder.append(getStateStr(paramInt));
+        LogUtil.i(str, localStringBuilder.toString());
       }
       return;
     }
   }
   
-  public SuperPlayerState copy()
+  SuperPlayerState copy()
   {
-    SuperPlayerState localSuperPlayerState = new SuperPlayerState(this.TAG);
+    SuperPlayerState localSuperPlayerState = new SuperPlayerState(this.mTAG);
     localSuperPlayerState.mCurState = this.mCurState;
     localSuperPlayerState.mPreState = this.mPreState;
     return localSuperPlayerState;
   }
   
-  public final int getCurState()
+  int getCurState()
   {
     synchronized (this.mStateLock)
     {
@@ -82,7 +92,7 @@ class SuperPlayerState
     }
   }
   
-  public final int getPreState()
+  int getPreState()
   {
     synchronized (this.mStateLock)
     {
@@ -91,23 +101,31 @@ class SuperPlayerState
     }
   }
   
-  public void setOnPlayStateListener(ISuperPlayerState.OnPlayStateChangeListener paramOnPlayStateChangeListener)
-  {
-    this.mStateListener = paramOnPlayStateChangeListener;
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FCCPlayerState[ mPreState:").append(getStateStr(this.mPreState)).append("/n");
-    localStringBuilder.append("mCurState:").append(getStateStr(this.mCurState)).append("/n");
+    localStringBuilder.append("SuperPlayerState[ mPreState:");
+    localStringBuilder.append(getStateStr(this.mPreState));
+    localStringBuilder.append("/n");
+    localStringBuilder.append("mCurState:");
+    localStringBuilder.append(getStateStr(this.mCurState));
+    localStringBuilder.append("/n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
+  }
+  
+  void updatePlayerTag(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerState.java");
+    this.mTAG = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerState
  * JD-Core Version:    0.7.0.1
  */

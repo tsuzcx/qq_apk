@@ -7,9 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class InputPanelLinearLayout
   extends LinearLayout
-  implements b.a
+  implements c.a
 {
-  private b ACb;
+  private c afSh;
+  private c.a afSi;
   
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,29 +20,41 @@ public class InputPanelLinearLayout
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107859);
-    this.ACb = new b(this, this);
-    AppMethodBeat.o(107859);
+    AppMethodBeat.i(143334);
+    this.afSh = new c(this, this);
+    AppMethodBeat.o(143334);
   }
   
-  public b getInputPanelHelper()
+  public c getInputPanelHelper()
   {
-    return this.ACb;
+    return this.afSh;
+  }
+  
+  public void onInputPanelChange(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(182572);
+    if (this.afSi != null) {
+      this.afSi.onInputPanelChange(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(182572);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107860);
-    this.ACb.QX(paramInt2);
+    AppMethodBeat.i(143335);
+    this.afSh.aEm(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(107860);
+    AppMethodBeat.o(143335);
   }
   
-  public void p(boolean paramBoolean, int paramInt) {}
+  public void setExternalListener(c.a parama)
+  {
+    this.afSi = parama;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InputPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

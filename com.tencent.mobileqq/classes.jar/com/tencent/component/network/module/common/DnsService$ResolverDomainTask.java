@@ -1,13 +1,6 @@
 package com.tencent.component.network.module.common;
 
-import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 
 class DnsService$ResolverDomainTask
   implements ThreadPool.Job<Object>
@@ -24,1179 +17,1388 @@ class DnsService$ResolverDomainTask
   
   private String tryHttpDNS(int paramInt)
   {
-    if (paramInt == 0) {
-      try
-      {
-        Object localObject1 = new URL("http://182.254.116.117/d?dn=" + this.mDomain + "&ttl=1");
-        localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
-        ((HttpURLConnection)localObject1).setUseCaches(false);
-        ((HttpURLConnection)localObject1).setDoInput(true);
-        ((HttpURLConnection)localObject1).setConnectTimeout(10000);
-        ((HttpURLConnection)localObject1).setReadTimeout(10000);
-        ((HttpURLConnection)localObject1).connect();
-        if ((((HttpURLConnection)localObject1).getContentLength() == 0) || (((HttpURLConnection)localObject1).getResponseCode() != 200)) {
-          throw new Exception("HttpDNS get fail in " + paramInt);
-        }
-      }
-      catch (Exception localException)
-      {
-        QDLog.e("DnsService", "httpDNS error", localException);
-        localException.printStackTrace();
-      }
-    }
-    Object localObject2;
-    do
-    {
-      return null;
-      localObject2 = new URL("http://182.254.116.116/d?dn=" + this.mDomain + "&ttl=1");
-      break;
-      localObject3 = new StringBuilder();
-      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(((HttpURLConnection)localObject2).getInputStream()));
-      while (localBufferedReader != null)
-      {
-        String str = localBufferedReader.readLine();
-        if (str == null) {
-          break;
-        }
-        ((StringBuilder)localObject3).append(str);
-      }
-      ((HttpURLConnection)localObject2).disconnect();
-      localObject2 = ((StringBuilder)localObject3).toString();
-      if (((String)localObject2).length() == 0)
-      {
-        QDLog.i("DnsService", "httpDNS failed in " + paramInt);
-        return null;
-      }
-      localObject2 = ((String)localObject2).split(",");
-      localObject3 = localObject2[0];
-      if (localObject2.length > 1) {
-        Integer.valueOf(localObject2[1]).intValue();
-      }
-      localObject2 = ((String)localObject3).split(";");
-    } while (localObject2.length <= 0);
-    DnsService.access$000(this.this$0).remove(this.mDomain);
-    Object localObject3 = new ArrayList();
-    paramInt = 0;
-    for (;;)
-    {
-      if (paramInt < localObject2.length)
-      {
-        if (DnsService.access$100(this.this$0, localObject2[paramInt])) {
-          ((ArrayList)localObject3).add(localObject2[paramInt]);
-        }
-      }
-      else
-      {
-        DnsService.access$000(this.this$0).put(this.mDomain, localObject3);
-        if (((ArrayList)localObject3).size() <= 0) {
-          break;
-        }
-        localObject2 = (String)((ArrayList)localObject3).get(0);
-        return localObject2;
-      }
-      paramInt += 1;
-    }
+    return null;
   }
   
   /* Error */
-  public Object run(com.tencent.component.network.utils.thread.ThreadPool.JobContext arg1)
+  public Object run(com.tencent.component.network.utils.thread.ThreadPool.JobContext paramJobContext)
   {
     // Byte code:
-    //   0: invokestatic 197	com/tencent/component/network/module/common/DnsService:access$200	()[B
+    //   0: invokestatic 46	com/tencent/component/network/module/common/DnsService:access$000	()[B
     //   3: astore_1
     //   4: aload_1
     //   5: monitorenter
     //   6: aload_0
     //   7: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   10: invokestatic 201	com/tencent/component/network/module/common/DnsService:access$300	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
+    //   10: invokestatic 50	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
     //   13: aload_0
-    //   14: invokeinterface 204 2 0
+    //   14: invokeinterface 56 2 0
     //   19: pop
     //   20: aload_1
     //   21: monitorexit
-    //   22: aconst_null
-    //   23: astore_1
-    //   24: aconst_null
-    //   25: astore 6
-    //   27: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   30: astore 7
-    //   32: aload 7
-    //   34: astore 8
-    //   36: ldc 211
-    //   38: aload 7
-    //   40: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   43: ifeq +8 -> 51
-    //   46: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   49: astore 8
-    //   51: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   54: lstore 4
-    //   56: aload_0
-    //   57: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   60: invokestatic 227	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   63: ifeq +162 -> 225
-    //   66: aload 6
-    //   68: astore_1
-    //   69: aload_0
-    //   70: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   73: invokestatic 231	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/HashSet;
-    //   76: aload_0
-    //   77: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   80: invokevirtual 236	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   83: ifne +24 -> 107
-    //   86: aload_0
-    //   87: iconst_0
-    //   88: invokespecial 238	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:tryHttpDNS	(I)Ljava/lang/String;
-    //   91: astore 6
-    //   93: aload 6
+    //   22: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: astore 8
+    //   29: ldc 64
+    //   31: aload_1
+    //   32: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   35: ifeq +8 -> 43
+    //   38: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   41: astore 8
+    //   43: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   46: lstore 4
+    //   48: aload_0
+    //   49: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   52: invokestatic 82	com/tencent/component/network/module/common/DnsService:access$200	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   55: ifeq +170 -> 225
+    //   58: aload_0
+    //   59: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   62: invokestatic 86	com/tencent/component/network/module/common/DnsService:access$300	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/HashSet;
+    //   65: aload_0
+    //   66: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   69: invokevirtual 91	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   72: ifne +27 -> 99
+    //   75: aload_0
+    //   76: iconst_0
+    //   77: invokespecial 93	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:tryHttpDNS	(I)Ljava/lang/String;
+    //   80: astore 6
+    //   82: aload 6
+    //   84: astore_1
+    //   85: aload 6
+    //   87: ifnonnull +14 -> 101
+    //   90: aload_0
+    //   91: iconst_1
+    //   92: invokespecial 93	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:tryHttpDNS	(I)Ljava/lang/String;
     //   95: astore_1
-    //   96: aload 6
-    //   98: ifnonnull +9 -> 107
-    //   101: aload_0
-    //   102: iconst_1
-    //   103: invokespecial 238	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:tryHttpDNS	(I)Ljava/lang/String;
-    //   106: astore_1
-    //   107: aload_1
-    //   108: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   111: ifne +99 -> 210
-    //   114: ldc 90
-    //   116: new 36	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   123: ldc 246
-    //   125: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: aload_1
-    //   129: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   138: aload_0
-    //   139: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   142: ifne +46 -> 188
-    //   145: aload_0
-    //   146: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   96: goto +5 -> 101
+    //   99: aconst_null
+    //   100: astore_1
+    //   101: aload_1
+    //   102: invokestatic 99	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   105: ifne +102 -> 207
+    //   108: new 101	java/lang/StringBuilder
+    //   111: dup
+    //   112: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   115: astore 6
+    //   117: aload 6
+    //   119: ldc 104
+    //   121: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: aload 6
+    //   127: aload_1
+    //   128: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: ldc 110
+    //   134: aload 6
+    //   136: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: aload_0
+    //   143: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   146: ifne +18 -> 164
     //   149: aload_0
-    //   150: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   153: aload_1
-    //   154: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   157: invokestatic 197	com/tencent/component/network/module/common/DnsService:access$200	()[B
-    //   160: astore_1
-    //   161: aload_1
-    //   162: monitorenter
-    //   163: aload_0
-    //   164: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   167: invokestatic 201	com/tencent/component/network/module/common/DnsService:access$300	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
-    //   170: aload_0
-    //   171: invokeinterface 251 2 0
-    //   176: pop
-    //   177: aload_1
-    //   178: monitorexit
-    //   179: aconst_null
-    //   180: areturn
-    //   181: astore 6
-    //   183: aload_1
-    //   184: monitorexit
-    //   185: aload 6
-    //   187: athrow
-    //   188: aload_0
-    //   189: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   192: aload_0
-    //   193: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   196: aconst_null
-    //   197: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   200: goto -43 -> 157
-    //   203: astore 6
-    //   205: aload_1
-    //   206: monitorexit
-    //   207: aload 6
-    //   209: athrow
-    //   210: aload_0
-    //   211: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   214: invokestatic 231	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/HashSet;
-    //   217: aload_0
-    //   218: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   221: invokevirtual 252	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   224: pop
-    //   225: aload_1
-    //   226: astore 6
-    //   228: aload_0
-    //   229: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   232: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   235: ifne +27 -> 262
-    //   238: aload_0
-    //   239: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   242: invokestatic 258	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
-    //   245: astore 7
-    //   247: aload_1
-    //   248: astore 6
-    //   250: aload 7
-    //   252: ifnull +10 -> 262
-    //   255: aload 7
-    //   257: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   260: astore 6
-    //   262: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   265: ifeq +29 -> 294
-    //   268: ldc 90
-    //   270: new 36	java/lang/StringBuilder
+    //   150: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   153: aload_0
+    //   154: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   157: aload_1
+    //   158: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   161: goto +15 -> 176
+    //   164: aload_0
+    //   165: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   168: aload_0
+    //   169: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   172: aconst_null
+    //   173: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   176: invokestatic 46	com/tencent/component/network/module/common/DnsService:access$000	()[B
+    //   179: astore_1
+    //   180: aload_1
+    //   181: monitorenter
+    //   182: aload_0
+    //   183: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   186: invokestatic 50	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
+    //   189: aload_0
+    //   190: invokeinterface 125 2 0
+    //   195: pop
+    //   196: aload_1
+    //   197: monitorexit
+    //   198: aconst_null
+    //   199: areturn
+    //   200: astore 6
+    //   202: aload_1
+    //   203: monitorexit
+    //   204: aload 6
+    //   206: athrow
+    //   207: aload_0
+    //   208: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   211: invokestatic 86	com/tencent/component/network/module/common/DnsService:access$300	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/HashSet;
+    //   214: aload_0
+    //   215: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   218: invokevirtual 126	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   221: pop
+    //   222: goto +5 -> 227
+    //   225: aconst_null
+    //   226: astore_1
+    //   227: aload_1
+    //   228: astore 6
+    //   230: aload_0
+    //   231: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   234: invokestatic 99	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   237: ifne +27 -> 264
+    //   240: aload_0
+    //   241: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   244: invokestatic 132	java/net/InetAddress:getByName	(Ljava/lang/String;)Ljava/net/InetAddress;
+    //   247: astore 7
+    //   249: aload_1
+    //   250: astore 6
+    //   252: aload 7
+    //   254: ifnull +10 -> 264
+    //   257: aload 7
+    //   259: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   262: astore 6
+    //   264: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   267: ifeq +34 -> 301
+    //   270: new 101	java/lang/StringBuilder
     //   273: dup
-    //   274: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   277: ldc_w 267
-    //   280: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: aload 6
-    //   285: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   291: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   294: aload 6
-    //   296: astore_1
-    //   297: aload_0
-    //   298: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   274: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   277: astore_1
+    //   278: aload_1
+    //   279: ldc 141
+    //   281: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload_1
+    //   286: aload 6
+    //   288: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: pop
+    //   292: ldc 110
+    //   294: aload_1
+    //   295: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   298: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   301: aload 6
-    //   303: invokestatic 170	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
-    //   306: ifne +154 -> 460
-    //   309: aload 6
-    //   311: astore_1
-    //   312: aload_0
-    //   313: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   316: invokestatic 270	com/tencent/component/network/module/common/DnsService:access$700	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   319: ifeq +141 -> 460
-    //   322: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   325: lload 4
-    //   327: lsub
-    //   328: lstore_2
-    //   329: aload 6
-    //   331: astore 7
-    //   333: aload_0
-    //   334: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   337: astore_1
-    //   338: ldc2_w 271
-    //   341: lload_2
-    //   342: lsub
-    //   343: ldc2_w 273
-    //   346: lcmp
-    //   347: iflt +289 -> 636
-    //   350: ldc2_w 271
-    //   353: lload_2
-    //   354: lsub
-    //   355: lstore_2
-    //   356: aload 6
-    //   358: astore 7
-    //   360: aload_1
-    //   361: lload_2
-    //   362: invokestatic 280	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
-    //   365: astore 9
-    //   367: aload 6
-    //   369: astore_1
-    //   370: aload 9
-    //   372: ifnull +88 -> 460
-    //   375: aload 6
-    //   377: astore_1
-    //   378: aload 6
-    //   380: astore 7
-    //   382: aload 9
-    //   384: arraylength
-    //   385: ifle +75 -> 460
-    //   388: aload 6
-    //   390: astore 7
-    //   392: aload 9
-    //   394: iconst_0
-    //   395: aaload
-    //   396: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   399: astore 6
-    //   401: aload 6
-    //   403: astore_1
-    //   404: aload 6
-    //   406: astore 7
-    //   408: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   411: ifeq +49 -> 460
-    //   414: aload 6
-    //   416: astore 7
-    //   418: ldc 90
-    //   420: new 36	java/lang/StringBuilder
-    //   423: dup
-    //   424: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   427: ldc_w 282
-    //   430: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   433: aload_0
-    //   434: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   437: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: ldc_w 284
-    //   443: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: aload 6
-    //   448: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   451: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   454: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   457: aload 6
-    //   459: astore_1
-    //   460: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   463: astore 7
-    //   465: aload 7
-    //   467: astore 6
-    //   469: ldc 211
-    //   471: aload 7
-    //   473: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   476: ifeq +8 -> 484
-    //   479: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   482: astore 6
-    //   484: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   487: ifeq +106 -> 593
-    //   490: ldc 90
-    //   492: new 36	java/lang/StringBuilder
-    //   495: dup
-    //   496: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   499: ldc_w 286
-    //   502: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   505: aload_0
-    //   506: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   509: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   512: ldc_w 288
-    //   515: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   518: aload_1
-    //   519: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   522: ldc_w 290
-    //   525: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   528: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   531: lload 4
-    //   533: lsub
-    //   534: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   537: ldc_w 295
-    //   540: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   543: aload 8
-    //   545: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   548: ldc_w 297
-    //   551: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   554: aload 6
-    //   556: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   559: ldc_w 299
-    //   562: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   565: invokestatic 305	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   568: invokevirtual 308	java/lang/Thread:getId	()J
-    //   571: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   574: ldc_w 310
-    //   577: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   580: aload_0
-    //   581: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   584: invokevirtual 313	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   587: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   593: aload_0
-    //   594: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   597: ifne +62 -> 659
-    //   600: aload_0
-    //   601: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   604: aload_0
-    //   605: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   608: aload_1
-    //   609: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   612: invokestatic 197	com/tencent/component/network/module/common/DnsService:access$200	()[B
-    //   615: astore_1
-    //   616: aload_1
-    //   617: monitorenter
-    //   618: aload_0
-    //   619: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   622: invokestatic 201	com/tencent/component/network/module/common/DnsService:access$300	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
-    //   625: aload_0
-    //   626: invokeinterface 251 2 0
-    //   631: pop
-    //   632: aload_1
-    //   633: monitorexit
-    //   634: aconst_null
-    //   635: areturn
-    //   636: ldc2_w 273
-    //   639: lstore_2
-    //   640: goto -284 -> 356
-    //   643: astore_1
-    //   644: ldc 90
-    //   646: ldc_w 315
-    //   649: aload_1
-    //   650: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   303: astore_1
+    //   304: aload_0
+    //   305: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   308: aload 6
+    //   310: invokestatic 145	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
+    //   313: ifne +196 -> 509
+    //   316: aload 6
+    //   318: astore_1
+    //   319: aload_0
+    //   320: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   323: invokestatic 148	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   326: ifeq +183 -> 509
+    //   329: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   332: lstore_2
+    //   333: aload 6
+    //   335: astore 7
+    //   337: aload_0
+    //   338: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   341: astore_1
+    //   342: ldc2_w 149
+    //   345: lload_2
+    //   346: lload 4
+    //   348: lsub
+    //   349: lsub
+    //   350: lstore_2
+    //   351: lload_2
+    //   352: ldc2_w 151
+    //   355: lcmp
+    //   356: iflt +2173 -> 2529
+    //   359: goto +3 -> 362
+    //   362: aload 6
+    //   364: astore 7
+    //   366: aload_1
+    //   367: lload_2
+    //   368: invokestatic 158	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
+    //   371: astore 9
+    //   373: aload 6
+    //   375: astore_1
+    //   376: aload 9
+    //   378: ifnull +131 -> 509
+    //   381: aload 6
+    //   383: astore 7
+    //   385: aload 6
+    //   387: astore_1
+    //   388: aload 9
+    //   390: arraylength
+    //   391: ifle +118 -> 509
+    //   394: aload 6
+    //   396: astore 7
+    //   398: aload 9
+    //   400: iconst_0
+    //   401: aaload
+    //   402: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   405: astore 6
+    //   407: aload 6
+    //   409: astore 7
+    //   411: aload 6
+    //   413: astore_1
+    //   414: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   417: ifeq +92 -> 509
+    //   420: aload 6
+    //   422: astore 7
+    //   424: new 101	java/lang/StringBuilder
+    //   427: dup
+    //   428: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   431: astore_1
+    //   432: aload 6
+    //   434: astore 7
+    //   436: aload_1
+    //   437: ldc 160
+    //   439: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   442: pop
+    //   443: aload 6
+    //   445: astore 7
+    //   447: aload_1
+    //   448: aload_0
+    //   449: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   452: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   455: pop
+    //   456: aload 6
+    //   458: astore 7
+    //   460: aload_1
+    //   461: ldc 162
+    //   463: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   466: pop
+    //   467: aload 6
+    //   469: astore 7
+    //   471: aload_1
+    //   472: aload 6
+    //   474: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   477: pop
+    //   478: aload 6
+    //   480: astore 7
+    //   482: ldc 110
+    //   484: aload_1
+    //   485: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   488: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   491: aload 6
+    //   493: astore_1
+    //   494: goto +15 -> 509
+    //   497: astore_1
+    //   498: ldc 110
+    //   500: ldc 164
+    //   502: aload_1
+    //   503: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   506: aload 7
+    //   508: astore_1
+    //   509: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   512: astore 7
+    //   514: aload 7
+    //   516: astore 6
+    //   518: ldc 64
+    //   520: aload 7
+    //   522: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   525: ifeq +8 -> 533
+    //   528: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   531: astore 6
+    //   533: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   536: ifeq +145 -> 681
+    //   539: new 101	java/lang/StringBuilder
+    //   542: dup
+    //   543: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   546: astore 7
+    //   548: aload 7
+    //   550: ldc 170
+    //   552: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   555: pop
+    //   556: aload 7
+    //   558: aload_0
+    //   559: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   562: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   565: pop
+    //   566: aload 7
+    //   568: ldc 172
+    //   570: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   573: pop
+    //   574: aload 7
+    //   576: aload_1
+    //   577: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   580: pop
+    //   581: aload 7
+    //   583: ldc 174
+    //   585: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   588: pop
+    //   589: aload 7
+    //   591: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   594: lload 4
+    //   596: lsub
+    //   597: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   600: pop
+    //   601: aload 7
+    //   603: ldc 179
+    //   605: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   608: pop
+    //   609: aload 7
+    //   611: aload 8
+    //   613: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   616: pop
+    //   617: aload 7
+    //   619: ldc 181
+    //   621: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   624: pop
+    //   625: aload 7
+    //   627: aload 6
+    //   629: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   632: pop
+    //   633: aload 7
+    //   635: ldc 183
+    //   637: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   640: pop
+    //   641: aload 7
+    //   643: invokestatic 189	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   646: invokevirtual 192	java/lang/Thread:getId	()J
+    //   649: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   652: pop
     //   653: aload 7
-    //   655: astore_1
-    //   656: goto -196 -> 460
-    //   659: aload_0
-    //   660: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   655: ldc 194
+    //   657: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   660: pop
+    //   661: aload 7
     //   663: aload_0
-    //   664: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   667: aconst_null
-    //   668: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   671: goto -59 -> 612
-    //   674: astore 6
-    //   676: ldc 90
-    //   678: ldc_w 317
-    //   681: aload 6
-    //   683: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   686: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   689: ifeq +28 -> 717
-    //   692: ldc 90
-    //   694: new 36	java/lang/StringBuilder
-    //   697: dup
-    //   698: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   701: ldc_w 267
-    //   704: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   707: aload_1
-    //   708: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   711: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   714: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   717: aload_1
-    //   718: astore 6
-    //   720: aload_0
-    //   721: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   724: aload_1
-    //   725: invokestatic 170	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
-    //   728: ifne +148 -> 876
-    //   731: aload_1
-    //   732: astore 6
-    //   734: aload_0
-    //   735: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   738: invokestatic 270	com/tencent/component/network/module/common/DnsService:access$700	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   741: ifeq +135 -> 876
-    //   744: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   747: lload 4
-    //   749: lsub
-    //   750: lstore_2
-    //   751: aload_1
-    //   752: astore 7
-    //   754: aload_0
-    //   755: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   758: astore 6
-    //   760: ldc2_w 271
-    //   763: lload_2
-    //   764: lsub
-    //   765: ldc2_w 273
-    //   768: lcmp
-    //   769: iflt +261 -> 1030
-    //   772: ldc2_w 271
-    //   775: lload_2
-    //   776: lsub
-    //   777: lstore_2
-    //   778: aload_1
-    //   779: astore 7
-    //   781: aload 6
-    //   783: lload_2
-    //   784: invokestatic 280	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
-    //   787: astore 9
-    //   789: aload_1
-    //   790: astore 6
-    //   792: aload 9
-    //   794: ifnull +82 -> 876
-    //   797: aload_1
-    //   798: astore 6
-    //   800: aload_1
-    //   801: astore 7
-    //   803: aload 9
-    //   805: arraylength
-    //   806: ifle +70 -> 876
-    //   809: aload_1
-    //   810: astore 7
-    //   812: aload 9
-    //   814: iconst_0
-    //   815: aaload
-    //   816: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   819: astore_1
-    //   820: aload_1
-    //   821: astore 6
-    //   823: aload_1
-    //   824: astore 7
-    //   826: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   829: ifeq +47 -> 876
-    //   832: aload_1
-    //   833: astore 7
-    //   835: ldc 90
-    //   837: new 36	java/lang/StringBuilder
-    //   840: dup
-    //   841: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   844: ldc_w 282
-    //   847: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   850: aload_0
-    //   851: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   854: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   857: ldc_w 284
-    //   860: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   863: aload_1
-    //   864: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   867: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   870: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   873: aload_1
-    //   874: astore 6
-    //   876: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   879: astore 7
-    //   881: aload 7
-    //   883: astore_1
-    //   884: ldc 211
-    //   886: aload 7
-    //   888: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   891: ifeq +7 -> 898
-    //   894: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   897: astore_1
-    //   898: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   901: ifeq +106 -> 1007
-    //   904: ldc 90
-    //   906: new 36	java/lang/StringBuilder
-    //   909: dup
-    //   910: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   913: ldc_w 286
-    //   916: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   919: aload_0
-    //   920: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   923: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   926: ldc_w 288
-    //   929: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   932: aload 6
-    //   934: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   937: ldc_w 290
-    //   940: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   943: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   946: lload 4
-    //   948: lsub
-    //   949: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   952: ldc_w 295
-    //   955: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   958: aload 8
-    //   960: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   963: ldc_w 297
-    //   966: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   664: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   667: invokevirtual 197	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   670: pop
+    //   671: ldc 110
+    //   673: aload 7
+    //   675: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   678: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   681: aload_0
+    //   682: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   685: ifne +18 -> 703
+    //   688: aload_0
+    //   689: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   692: aload_0
+    //   693: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   696: aload_1
+    //   697: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   700: goto +1334 -> 2034
+    //   703: aload_0
+    //   704: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   707: aload_0
+    //   708: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   711: aconst_null
+    //   712: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   715: goto +1319 -> 2034
+    //   718: astore 9
+    //   720: goto +1345 -> 2065
+    //   723: astore 6
+    //   725: ldc 110
+    //   727: ldc 199
+    //   729: aload 6
+    //   731: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   734: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   737: ifeq +37 -> 774
+    //   740: new 101	java/lang/StringBuilder
+    //   743: dup
+    //   744: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   747: astore 6
+    //   749: aload 6
+    //   751: ldc 141
+    //   753: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   756: pop
+    //   757: aload 6
+    //   759: aload_1
+    //   760: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   763: pop
+    //   764: ldc 110
+    //   766: aload 6
+    //   768: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   771: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   774: aload_1
+    //   775: astore 6
+    //   777: aload_0
+    //   778: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   781: aload_1
+    //   782: invokestatic 145	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
+    //   785: ifne +192 -> 977
+    //   788: aload_1
+    //   789: astore 6
+    //   791: aload_0
+    //   792: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   795: invokestatic 148	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   798: ifeq +179 -> 977
+    //   801: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   804: lstore_2
+    //   805: aload_1
+    //   806: astore 7
+    //   808: aload_0
+    //   809: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   812: astore 6
+    //   814: ldc2_w 149
+    //   817: lload_2
+    //   818: lload 4
+    //   820: lsub
+    //   821: lsub
+    //   822: lstore_2
+    //   823: lload_2
+    //   824: ldc2_w 151
+    //   827: lcmp
+    //   828: iflt +1708 -> 2536
+    //   831: goto +3 -> 834
+    //   834: aload_1
+    //   835: astore 7
+    //   837: aload 6
+    //   839: lload_2
+    //   840: invokestatic 158	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
+    //   843: astore 9
+    //   845: aload_1
+    //   846: astore 6
+    //   848: aload 9
+    //   850: ifnull +127 -> 977
+    //   853: aload_1
+    //   854: astore 7
+    //   856: aload_1
+    //   857: astore 6
+    //   859: aload 9
+    //   861: arraylength
+    //   862: ifle +115 -> 977
+    //   865: aload_1
+    //   866: astore 7
+    //   868: aload 9
+    //   870: iconst_0
+    //   871: aaload
+    //   872: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   875: astore_1
+    //   876: aload_1
+    //   877: astore 7
+    //   879: aload_1
+    //   880: astore 6
+    //   882: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   885: ifeq +92 -> 977
+    //   888: aload_1
+    //   889: astore 7
+    //   891: new 101	java/lang/StringBuilder
+    //   894: dup
+    //   895: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   898: astore 6
+    //   900: aload_1
+    //   901: astore 7
+    //   903: aload 6
+    //   905: ldc 160
+    //   907: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   910: pop
+    //   911: aload_1
+    //   912: astore 7
+    //   914: aload 6
+    //   916: aload_0
+    //   917: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   920: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   923: pop
+    //   924: aload_1
+    //   925: astore 7
+    //   927: aload 6
+    //   929: ldc 162
+    //   931: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   934: pop
+    //   935: aload_1
+    //   936: astore 7
+    //   938: aload 6
+    //   940: aload_1
+    //   941: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   944: pop
+    //   945: aload_1
+    //   946: astore 7
+    //   948: ldc 110
+    //   950: aload 6
+    //   952: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   955: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   958: aload_1
+    //   959: astore 6
+    //   961: goto +16 -> 977
+    //   964: astore_1
+    //   965: ldc 110
+    //   967: ldc 164
     //   969: aload_1
-    //   970: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   973: ldc_w 299
-    //   976: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   979: invokestatic 305	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   982: invokevirtual 308	java/lang/Thread:getId	()J
-    //   985: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   988: ldc_w 310
-    //   991: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   994: aload_0
-    //   995: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   998: invokevirtual 313	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1001: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1004: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1007: aload_0
-    //   1008: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   1011: ifne +43 -> 1054
-    //   1014: aload_0
-    //   1015: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1018: aload_0
-    //   1019: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1022: aload 6
-    //   1024: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1027: goto -415 -> 612
-    //   1030: ldc2_w 273
-    //   1033: lstore_2
-    //   1034: goto -256 -> 778
-    //   1037: astore_1
-    //   1038: ldc 90
-    //   1040: ldc_w 315
-    //   1043: aload_1
-    //   1044: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1047: aload 7
-    //   1049: astore 6
-    //   1051: goto -175 -> 876
-    //   1054: aload_0
-    //   1055: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1058: aload_0
-    //   1059: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1062: aconst_null
-    //   1063: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1066: goto -454 -> 612
-    //   1069: astore 6
-    //   1071: ldc 90
-    //   1073: ldc_w 317
-    //   1076: aload 6
-    //   1078: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1081: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1084: ifeq +28 -> 1112
-    //   1087: ldc 90
-    //   1089: new 36	java/lang/StringBuilder
-    //   1092: dup
-    //   1093: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1096: ldc_w 267
-    //   1099: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1102: aload_1
-    //   1103: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1106: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1109: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1112: aload_1
-    //   1113: astore 6
-    //   1115: aload_0
-    //   1116: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1119: aload_1
-    //   1120: invokestatic 170	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
-    //   1123: ifne +148 -> 1271
-    //   1126: aload_1
-    //   1127: astore 6
+    //   970: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   973: aload 7
+    //   975: astore 6
+    //   977: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   980: astore 7
+    //   982: aload 7
+    //   984: astore_1
+    //   985: ldc 64
+    //   987: aload 7
+    //   989: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   992: ifeq +7 -> 999
+    //   995: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   998: astore_1
+    //   999: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1002: ifeq +145 -> 1147
+    //   1005: new 101	java/lang/StringBuilder
+    //   1008: dup
+    //   1009: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1012: astore 7
+    //   1014: aload 7
+    //   1016: ldc 170
+    //   1018: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1021: pop
+    //   1022: aload 7
+    //   1024: aload_0
+    //   1025: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1028: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1031: pop
+    //   1032: aload 7
+    //   1034: ldc 172
+    //   1036: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1039: pop
+    //   1040: aload 7
+    //   1042: aload 6
+    //   1044: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1047: pop
+    //   1048: aload 7
+    //   1050: ldc 174
+    //   1052: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1055: pop
+    //   1056: aload 7
+    //   1058: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   1061: lload 4
+    //   1063: lsub
+    //   1064: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1067: pop
+    //   1068: aload 7
+    //   1070: ldc 179
+    //   1072: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1075: pop
+    //   1076: aload 7
+    //   1078: aload 8
+    //   1080: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1083: pop
+    //   1084: aload 7
+    //   1086: ldc 181
+    //   1088: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1091: pop
+    //   1092: aload 7
+    //   1094: aload_1
+    //   1095: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1098: pop
+    //   1099: aload 7
+    //   1101: ldc 183
+    //   1103: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1106: pop
+    //   1107: aload 7
+    //   1109: invokestatic 189	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1112: invokevirtual 192	java/lang/Thread:getId	()J
+    //   1115: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1118: pop
+    //   1119: aload 7
+    //   1121: ldc 194
+    //   1123: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1126: pop
+    //   1127: aload 7
     //   1129: aload_0
-    //   1130: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1133: invokestatic 270	com/tencent/component/network/module/common/DnsService:access$700	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   1136: ifeq +135 -> 1271
-    //   1139: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   1142: lload 4
-    //   1144: lsub
-    //   1145: lstore_2
-    //   1146: aload_1
-    //   1147: astore 7
-    //   1149: aload_0
-    //   1150: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1153: astore 6
-    //   1155: ldc2_w 271
-    //   1158: lload_2
-    //   1159: lsub
-    //   1160: ldc2_w 273
-    //   1163: lcmp
-    //   1164: iflt +261 -> 1425
-    //   1167: ldc2_w 271
-    //   1170: lload_2
-    //   1171: lsub
-    //   1172: lstore_2
-    //   1173: aload_1
-    //   1174: astore 7
-    //   1176: aload 6
-    //   1178: lload_2
-    //   1179: invokestatic 280	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
-    //   1182: astore 9
-    //   1184: aload_1
-    //   1185: astore 6
-    //   1187: aload 9
-    //   1189: ifnull +82 -> 1271
-    //   1192: aload_1
-    //   1193: astore 6
-    //   1195: aload_1
-    //   1196: astore 7
-    //   1198: aload 9
-    //   1200: arraylength
-    //   1201: ifle +70 -> 1271
-    //   1204: aload_1
-    //   1205: astore 7
-    //   1207: aload 9
-    //   1209: iconst_0
-    //   1210: aaload
-    //   1211: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   1214: astore_1
-    //   1215: aload_1
-    //   1216: astore 6
+    //   1130: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   1133: invokevirtual 197	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1136: pop
+    //   1137: ldc 110
+    //   1139: aload 7
+    //   1141: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1144: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1147: aload_0
+    //   1148: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   1151: ifne -448 -> 703
+    //   1154: aload 6
+    //   1156: astore_1
+    //   1157: goto -469 -> 688
+    //   1160: astore 6
+    //   1162: ldc 110
+    //   1164: ldc 201
+    //   1166: aload 6
+    //   1168: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1171: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1174: ifeq +37 -> 1211
+    //   1177: new 101	java/lang/StringBuilder
+    //   1180: dup
+    //   1181: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1184: astore 6
+    //   1186: aload 6
+    //   1188: ldc 141
+    //   1190: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1193: pop
+    //   1194: aload 6
+    //   1196: aload_1
+    //   1197: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1200: pop
+    //   1201: ldc 110
+    //   1203: aload 6
+    //   1205: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1208: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1211: aload_1
+    //   1212: astore 6
+    //   1214: aload_0
+    //   1215: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
     //   1218: aload_1
-    //   1219: astore 7
-    //   1221: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1224: ifeq +47 -> 1271
-    //   1227: aload_1
-    //   1228: astore 7
-    //   1230: ldc 90
-    //   1232: new 36	java/lang/StringBuilder
-    //   1235: dup
-    //   1236: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1239: ldc_w 282
-    //   1242: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1219: invokestatic 145	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
+    //   1222: ifne +192 -> 1414
+    //   1225: aload_1
+    //   1226: astore 6
+    //   1228: aload_0
+    //   1229: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   1232: invokestatic 148	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   1235: ifeq +179 -> 1414
+    //   1238: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   1241: lstore_2
+    //   1242: aload_1
+    //   1243: astore 7
     //   1245: aload_0
     //   1246: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1249: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1252: ldc_w 284
-    //   1255: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1258: aload_1
-    //   1259: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1262: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1265: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1268: aload_1
-    //   1269: astore 6
-    //   1271: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   1274: astore 7
-    //   1276: aload 7
-    //   1278: astore_1
-    //   1279: ldc 211
-    //   1281: aload 7
-    //   1283: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1286: ifeq +7 -> 1293
-    //   1289: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   1292: astore_1
-    //   1293: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1296: ifeq +106 -> 1402
-    //   1299: ldc 90
-    //   1301: new 36	java/lang/StringBuilder
-    //   1304: dup
-    //   1305: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1308: ldc_w 286
-    //   1311: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1314: aload_0
-    //   1315: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1318: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1321: ldc_w 288
-    //   1324: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1327: aload 6
-    //   1329: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1332: ldc_w 290
-    //   1335: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1338: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   1341: lload 4
-    //   1343: lsub
-    //   1344: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1347: ldc_w 295
-    //   1350: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1353: aload 8
-    //   1355: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1358: ldc_w 297
-    //   1361: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1364: aload_1
-    //   1365: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1368: ldc_w 299
-    //   1371: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1374: invokestatic 305	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1377: invokevirtual 308	java/lang/Thread:getId	()J
-    //   1380: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1383: ldc_w 310
-    //   1386: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1389: aload_0
-    //   1390: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   1393: invokevirtual 313	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1396: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1399: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1402: aload_0
-    //   1403: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   1406: ifne +43 -> 1449
-    //   1409: aload_0
-    //   1410: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1413: aload_0
-    //   1414: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1417: aload 6
-    //   1419: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1422: goto -810 -> 612
-    //   1425: ldc2_w 273
-    //   1428: lstore_2
-    //   1429: goto -256 -> 1173
-    //   1432: astore_1
-    //   1433: ldc 90
-    //   1435: ldc_w 315
-    //   1438: aload_1
-    //   1439: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1442: aload 7
-    //   1444: astore 6
-    //   1446: goto -175 -> 1271
-    //   1449: aload_0
-    //   1450: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1453: aload_0
-    //   1454: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1457: aconst_null
-    //   1458: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1461: goto -849 -> 612
-    //   1464: astore 6
-    //   1466: ldc 90
-    //   1468: ldc_w 319
-    //   1471: aload 6
-    //   1473: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1476: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1479: ifeq +28 -> 1507
-    //   1482: ldc 90
-    //   1484: new 36	java/lang/StringBuilder
-    //   1487: dup
-    //   1488: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1491: ldc_w 267
-    //   1494: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1497: aload_1
-    //   1498: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1501: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1504: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1507: aload_1
-    //   1508: astore 6
-    //   1510: aload_0
-    //   1511: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1514: aload_1
-    //   1515: invokestatic 170	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
-    //   1518: ifne +148 -> 1666
-    //   1521: aload_1
-    //   1522: astore 6
-    //   1524: aload_0
-    //   1525: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1528: invokestatic 270	com/tencent/component/network/module/common/DnsService:access$700	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   1531: ifeq +135 -> 1666
-    //   1534: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   1537: lload 4
-    //   1539: lsub
-    //   1540: lstore_2
-    //   1541: aload_1
-    //   1542: astore 7
-    //   1544: aload_0
-    //   1545: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1548: astore 6
-    //   1550: ldc2_w 271
-    //   1553: lload_2
-    //   1554: lsub
-    //   1555: ldc2_w 273
-    //   1558: lcmp
-    //   1559: iflt +261 -> 1820
-    //   1562: ldc2_w 271
-    //   1565: lload_2
-    //   1566: lsub
-    //   1567: lstore_2
-    //   1568: aload_1
-    //   1569: astore 7
-    //   1571: aload 6
-    //   1573: lload_2
-    //   1574: invokestatic 280	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
-    //   1577: astore 9
-    //   1579: aload_1
-    //   1580: astore 6
-    //   1582: aload 9
-    //   1584: ifnull +82 -> 1666
-    //   1587: aload_1
-    //   1588: astore 6
-    //   1590: aload_1
-    //   1591: astore 7
-    //   1593: aload 9
-    //   1595: arraylength
-    //   1596: ifle +70 -> 1666
-    //   1599: aload_1
-    //   1600: astore 7
-    //   1602: aload 9
-    //   1604: iconst_0
-    //   1605: aaload
-    //   1606: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   1609: astore_1
-    //   1610: aload_1
-    //   1611: astore 6
-    //   1613: aload_1
-    //   1614: astore 7
-    //   1616: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1619: ifeq +47 -> 1666
-    //   1622: aload_1
-    //   1623: astore 7
-    //   1625: ldc 90
-    //   1627: new 36	java/lang/StringBuilder
-    //   1630: dup
-    //   1631: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1634: ldc_w 282
-    //   1637: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1640: aload_0
-    //   1641: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1644: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1647: ldc_w 284
-    //   1650: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1653: aload_1
-    //   1654: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1657: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1660: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1663: aload_1
-    //   1664: astore 6
-    //   1666: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   1669: astore 7
-    //   1671: aload 7
-    //   1673: astore_1
-    //   1674: ldc 211
-    //   1676: aload 7
-    //   1678: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1681: ifeq +7 -> 1688
-    //   1684: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   1687: astore_1
-    //   1688: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1691: ifeq +106 -> 1797
-    //   1694: ldc 90
-    //   1696: new 36	java/lang/StringBuilder
-    //   1699: dup
-    //   1700: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1703: ldc_w 286
-    //   1706: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1709: aload_0
-    //   1710: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1713: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1716: ldc_w 288
-    //   1719: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1722: aload 6
-    //   1724: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1727: ldc_w 290
-    //   1730: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1733: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   1736: lload 4
-    //   1738: lsub
-    //   1739: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1742: ldc_w 295
-    //   1745: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1748: aload 8
-    //   1750: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1753: ldc_w 297
-    //   1756: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1759: aload_1
-    //   1760: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1763: ldc_w 299
-    //   1766: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1769: invokestatic 305	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   1772: invokevirtual 308	java/lang/Thread:getId	()J
-    //   1775: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1778: ldc_w 310
-    //   1781: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1784: aload_0
-    //   1785: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   1788: invokevirtual 313	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1791: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1794: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1797: aload_0
-    //   1798: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   1801: ifne +43 -> 1844
-    //   1804: aload_0
-    //   1805: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1808: aload_0
-    //   1809: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1249: astore 6
+    //   1251: ldc2_w 149
+    //   1254: lload_2
+    //   1255: lload 4
+    //   1257: lsub
+    //   1258: lsub
+    //   1259: lstore_2
+    //   1260: lload_2
+    //   1261: ldc2_w 151
+    //   1264: lcmp
+    //   1265: iflt +1278 -> 2543
+    //   1268: goto +3 -> 1271
+    //   1271: aload_1
+    //   1272: astore 7
+    //   1274: aload 6
+    //   1276: lload_2
+    //   1277: invokestatic 158	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
+    //   1280: astore 9
+    //   1282: aload_1
+    //   1283: astore 6
+    //   1285: aload 9
+    //   1287: ifnull +127 -> 1414
+    //   1290: aload_1
+    //   1291: astore 7
+    //   1293: aload_1
+    //   1294: astore 6
+    //   1296: aload 9
+    //   1298: arraylength
+    //   1299: ifle +115 -> 1414
+    //   1302: aload_1
+    //   1303: astore 7
+    //   1305: aload 9
+    //   1307: iconst_0
+    //   1308: aaload
+    //   1309: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   1312: astore_1
+    //   1313: aload_1
+    //   1314: astore 7
+    //   1316: aload_1
+    //   1317: astore 6
+    //   1319: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1322: ifeq +92 -> 1414
+    //   1325: aload_1
+    //   1326: astore 7
+    //   1328: new 101	java/lang/StringBuilder
+    //   1331: dup
+    //   1332: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1335: astore 6
+    //   1337: aload_1
+    //   1338: astore 7
+    //   1340: aload 6
+    //   1342: ldc 160
+    //   1344: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1347: pop
+    //   1348: aload_1
+    //   1349: astore 7
+    //   1351: aload 6
+    //   1353: aload_0
+    //   1354: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1357: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1360: pop
+    //   1361: aload_1
+    //   1362: astore 7
+    //   1364: aload 6
+    //   1366: ldc 162
+    //   1368: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1371: pop
+    //   1372: aload_1
+    //   1373: astore 7
+    //   1375: aload 6
+    //   1377: aload_1
+    //   1378: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1381: pop
+    //   1382: aload_1
+    //   1383: astore 7
+    //   1385: ldc 110
+    //   1387: aload 6
+    //   1389: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1392: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1395: aload_1
+    //   1396: astore 6
+    //   1398: goto +16 -> 1414
+    //   1401: astore_1
+    //   1402: ldc 110
+    //   1404: ldc 164
+    //   1406: aload_1
+    //   1407: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1410: aload 7
+    //   1412: astore 6
+    //   1414: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   1417: astore 7
+    //   1419: aload 7
+    //   1421: astore_1
+    //   1422: ldc 64
+    //   1424: aload 7
+    //   1426: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1429: ifeq +7 -> 1436
+    //   1432: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   1435: astore_1
+    //   1436: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1439: ifeq +145 -> 1584
+    //   1442: new 101	java/lang/StringBuilder
+    //   1445: dup
+    //   1446: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1449: astore 7
+    //   1451: aload 7
+    //   1453: ldc 170
+    //   1455: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1458: pop
+    //   1459: aload 7
+    //   1461: aload_0
+    //   1462: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1465: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1468: pop
+    //   1469: aload 7
+    //   1471: ldc 172
+    //   1473: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1476: pop
+    //   1477: aload 7
+    //   1479: aload 6
+    //   1481: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1484: pop
+    //   1485: aload 7
+    //   1487: ldc 174
+    //   1489: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1492: pop
+    //   1493: aload 7
+    //   1495: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   1498: lload 4
+    //   1500: lsub
+    //   1501: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1504: pop
+    //   1505: aload 7
+    //   1507: ldc 179
+    //   1509: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1512: pop
+    //   1513: aload 7
+    //   1515: aload 8
+    //   1517: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1520: pop
+    //   1521: aload 7
+    //   1523: ldc 181
+    //   1525: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1528: pop
+    //   1529: aload 7
+    //   1531: aload_1
+    //   1532: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1535: pop
+    //   1536: aload 7
+    //   1538: ldc 183
+    //   1540: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1543: pop
+    //   1544: aload 7
+    //   1546: invokestatic 189	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1549: invokevirtual 192	java/lang/Thread:getId	()J
+    //   1552: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1555: pop
+    //   1556: aload 7
+    //   1558: ldc 194
+    //   1560: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1563: pop
+    //   1564: aload 7
+    //   1566: aload_0
+    //   1567: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   1570: invokevirtual 197	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1573: pop
+    //   1574: ldc 110
+    //   1576: aload 7
+    //   1578: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1581: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1584: aload_0
+    //   1585: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   1588: ifne -885 -> 703
+    //   1591: aload 6
+    //   1593: astore_1
+    //   1594: goto -906 -> 688
+    //   1597: astore 6
+    //   1599: ldc 110
+    //   1601: ldc 201
+    //   1603: aload 6
+    //   1605: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1608: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1611: ifeq +37 -> 1648
+    //   1614: new 101	java/lang/StringBuilder
+    //   1617: dup
+    //   1618: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1621: astore 6
+    //   1623: aload 6
+    //   1625: ldc 141
+    //   1627: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1630: pop
+    //   1631: aload 6
+    //   1633: aload_1
+    //   1634: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1637: pop
+    //   1638: ldc 110
+    //   1640: aload 6
+    //   1642: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1645: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1648: aload_1
+    //   1649: astore 6
+    //   1651: aload_0
+    //   1652: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   1655: aload_1
+    //   1656: invokestatic 145	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
+    //   1659: ifne +192 -> 1851
+    //   1662: aload_1
+    //   1663: astore 6
+    //   1665: aload_0
+    //   1666: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   1669: invokestatic 148	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   1672: ifeq +179 -> 1851
+    //   1675: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   1678: lstore_2
+    //   1679: aload_1
+    //   1680: astore 7
+    //   1682: aload_0
+    //   1683: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1686: astore 6
+    //   1688: ldc2_w 149
+    //   1691: lload_2
+    //   1692: lload 4
+    //   1694: lsub
+    //   1695: lsub
+    //   1696: lstore_2
+    //   1697: lload_2
+    //   1698: ldc2_w 151
+    //   1701: lcmp
+    //   1702: iflt +848 -> 2550
+    //   1705: goto +3 -> 1708
+    //   1708: aload_1
+    //   1709: astore 7
+    //   1711: aload 6
+    //   1713: lload_2
+    //   1714: invokestatic 158	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
+    //   1717: astore 9
+    //   1719: aload_1
+    //   1720: astore 6
+    //   1722: aload 9
+    //   1724: ifnull +127 -> 1851
+    //   1727: aload_1
+    //   1728: astore 7
+    //   1730: aload_1
+    //   1731: astore 6
+    //   1733: aload 9
+    //   1735: arraylength
+    //   1736: ifle +115 -> 1851
+    //   1739: aload_1
+    //   1740: astore 7
+    //   1742: aload 9
+    //   1744: iconst_0
+    //   1745: aaload
+    //   1746: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   1749: astore_1
+    //   1750: aload_1
+    //   1751: astore 7
+    //   1753: aload_1
+    //   1754: astore 6
+    //   1756: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1759: ifeq +92 -> 1851
+    //   1762: aload_1
+    //   1763: astore 7
+    //   1765: new 101	java/lang/StringBuilder
+    //   1768: dup
+    //   1769: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1772: astore 6
+    //   1774: aload_1
+    //   1775: astore 7
+    //   1777: aload 6
+    //   1779: ldc 160
+    //   1781: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1784: pop
+    //   1785: aload_1
+    //   1786: astore 7
+    //   1788: aload 6
+    //   1790: aload_0
+    //   1791: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1794: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1797: pop
+    //   1798: aload_1
+    //   1799: astore 7
+    //   1801: aload 6
+    //   1803: ldc 162
+    //   1805: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1808: pop
+    //   1809: aload_1
+    //   1810: astore 7
     //   1812: aload 6
-    //   1814: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1817: goto -1205 -> 612
-    //   1820: ldc2_w 273
-    //   1823: lstore_2
-    //   1824: goto -256 -> 1568
-    //   1827: astore_1
-    //   1828: ldc 90
-    //   1830: ldc_w 315
-    //   1833: aload_1
-    //   1834: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1837: aload 7
-    //   1839: astore 6
-    //   1841: goto -175 -> 1666
-    //   1844: aload_0
-    //   1845: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1848: aload_0
-    //   1849: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1852: aconst_null
-    //   1853: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   1856: goto -1244 -> 612
-    //   1859: astore 9
-    //   1861: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   1864: ifeq +28 -> 1892
-    //   1867: ldc 90
-    //   1869: new 36	java/lang/StringBuilder
-    //   1872: dup
-    //   1873: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   1876: ldc_w 267
-    //   1879: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1882: aload_1
-    //   1883: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1886: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1889: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1892: aload_1
-    //   1893: astore 6
-    //   1895: aload_0
-    //   1896: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1899: aload_1
-    //   1900: invokestatic 170	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
-    //   1903: ifne +148 -> 2051
-    //   1906: aload_1
-    //   1907: astore 6
-    //   1909: aload_0
-    //   1910: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   1913: invokestatic 270	com/tencent/component/network/module/common/DnsService:access$700	(Lcom/tencent/component/network/module/common/DnsService;)Z
-    //   1916: ifeq +135 -> 2051
-    //   1919: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   1922: lload 4
-    //   1924: lsub
-    //   1925: lstore_2
-    //   1926: aload_1
-    //   1927: astore 7
-    //   1929: aload_0
-    //   1930: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   1933: astore 6
-    //   1935: ldc2_w 271
-    //   1938: lload_2
-    //   1939: lsub
-    //   1940: ldc2_w 273
-    //   1943: lcmp
-    //   1944: iflt +261 -> 2205
-    //   1947: ldc2_w 271
-    //   1950: lload_2
-    //   1951: lsub
-    //   1952: lstore_2
-    //   1953: aload_1
-    //   1954: astore 7
-    //   1956: aload 6
-    //   1958: lload_2
-    //   1959: invokestatic 280	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
-    //   1962: astore 10
-    //   1964: aload_1
-    //   1965: astore 6
-    //   1967: aload 10
-    //   1969: ifnull +82 -> 2051
-    //   1972: aload_1
-    //   1973: astore 6
-    //   1975: aload_1
-    //   1976: astore 7
-    //   1978: aload 10
-    //   1980: arraylength
-    //   1981: ifle +70 -> 2051
-    //   1984: aload_1
-    //   1985: astore 7
-    //   1987: aload 10
-    //   1989: iconst_0
-    //   1990: aaload
-    //   1991: invokevirtual 261	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   1994: astore_1
-    //   1995: aload_1
-    //   1996: astore 6
-    //   1998: aload_1
-    //   1999: astore 7
-    //   2001: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   2004: ifeq +47 -> 2051
-    //   2007: aload_1
-    //   2008: astore 7
-    //   2010: ldc 90
-    //   2012: new 36	java/lang/StringBuilder
-    //   2015: dup
-    //   2016: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   2019: ldc_w 282
-    //   2022: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2025: aload_0
-    //   2026: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   2029: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2032: ldc_w 284
-    //   2035: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1814: aload_1
+    //   1815: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1818: pop
+    //   1819: aload_1
+    //   1820: astore 7
+    //   1822: ldc 110
+    //   1824: aload 6
+    //   1826: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1829: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1832: aload_1
+    //   1833: astore 6
+    //   1835: goto +16 -> 1851
+    //   1838: astore_1
+    //   1839: ldc 110
+    //   1841: ldc 164
+    //   1843: aload_1
+    //   1844: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1847: aload 7
+    //   1849: astore 6
+    //   1851: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   1854: astore 7
+    //   1856: aload 7
+    //   1858: astore_1
+    //   1859: ldc 64
+    //   1861: aload 7
+    //   1863: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1866: ifeq +7 -> 1873
+    //   1869: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   1872: astore_1
+    //   1873: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   1876: ifeq +145 -> 2021
+    //   1879: new 101	java/lang/StringBuilder
+    //   1882: dup
+    //   1883: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   1886: astore 7
+    //   1888: aload 7
+    //   1890: ldc 170
+    //   1892: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1895: pop
+    //   1896: aload 7
+    //   1898: aload_0
+    //   1899: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   1902: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1905: pop
+    //   1906: aload 7
+    //   1908: ldc 172
+    //   1910: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1913: pop
+    //   1914: aload 7
+    //   1916: aload 6
+    //   1918: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1921: pop
+    //   1922: aload 7
+    //   1924: ldc 174
+    //   1926: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1929: pop
+    //   1930: aload 7
+    //   1932: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   1935: lload 4
+    //   1937: lsub
+    //   1938: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1941: pop
+    //   1942: aload 7
+    //   1944: ldc 179
+    //   1946: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1949: pop
+    //   1950: aload 7
+    //   1952: aload 8
+    //   1954: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1957: pop
+    //   1958: aload 7
+    //   1960: ldc 181
+    //   1962: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1965: pop
+    //   1966: aload 7
+    //   1968: aload_1
+    //   1969: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1972: pop
+    //   1973: aload 7
+    //   1975: ldc 183
+    //   1977: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1980: pop
+    //   1981: aload 7
+    //   1983: invokestatic 189	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   1986: invokevirtual 192	java/lang/Thread:getId	()J
+    //   1989: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1992: pop
+    //   1993: aload 7
+    //   1995: ldc 194
+    //   1997: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2000: pop
+    //   2001: aload 7
+    //   2003: aload_0
+    //   2004: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   2007: invokevirtual 197	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2010: pop
+    //   2011: ldc 110
+    //   2013: aload 7
+    //   2015: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2018: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2021: aload_0
+    //   2022: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   2025: ifne -1322 -> 703
+    //   2028: aload 6
+    //   2030: astore_1
+    //   2031: goto -1343 -> 688
+    //   2034: invokestatic 46	com/tencent/component/network/module/common/DnsService:access$000	()[B
+    //   2037: astore_1
     //   2038: aload_1
-    //   2039: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2042: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2045: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2048: aload_1
-    //   2049: astore 6
-    //   2051: invokestatic 209	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
-    //   2054: astore 7
-    //   2056: aload 7
-    //   2058: astore_1
-    //   2059: ldc 211
-    //   2061: aload 7
-    //   2063: invokevirtual 214	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2066: ifeq +7 -> 2073
-    //   2069: invokestatic 217	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
-    //   2072: astore_1
-    //   2073: invokestatic 265	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
-    //   2076: ifeq +106 -> 2182
-    //   2079: ldc 90
-    //   2081: new 36	java/lang/StringBuilder
-    //   2084: dup
-    //   2085: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   2088: ldc_w 286
-    //   2091: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2094: aload_0
-    //   2095: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   2098: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2101: ldc_w 288
-    //   2104: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2107: aload 6
-    //   2109: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2112: ldc_w 290
-    //   2115: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2118: invokestatic 223	java/lang/System:currentTimeMillis	()J
-    //   2121: lload 4
-    //   2123: lsub
-    //   2124: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2127: ldc_w 295
-    //   2130: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2133: aload 8
-    //   2135: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2138: ldc_w 297
-    //   2141: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2144: aload_1
-    //   2145: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2148: ldc_w 299
-    //   2151: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2154: invokestatic 305	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   2157: invokevirtual 308	java/lang/Thread:getId	()J
-    //   2160: invokevirtual 293	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2163: ldc_w 310
-    //   2166: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2169: aload_0
-    //   2170: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   2173: invokevirtual 313	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2176: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2179: invokestatic 134	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2182: aload_0
-    //   2183: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
-    //   2186: ifne +43 -> 2229
-    //   2189: aload_0
-    //   2190: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   2193: aload_0
-    //   2194: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   2197: aload 6
-    //   2199: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   2202: aload 9
-    //   2204: athrow
-    //   2205: ldc2_w 273
-    //   2208: lstore_2
-    //   2209: goto -256 -> 1953
-    //   2212: astore_1
-    //   2213: ldc 90
-    //   2215: ldc_w 315
-    //   2218: aload_1
-    //   2219: invokestatic 98	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   2222: aload 7
-    //   2224: astore 6
-    //   2226: goto -175 -> 2051
-    //   2229: aload_0
-    //   2230: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
-    //   2233: aload_0
-    //   2234: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
-    //   2237: aconst_null
-    //   2238: invokestatic 249	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
-    //   2241: goto -39 -> 2202
-    //   2244: astore 6
-    //   2246: aload_1
-    //   2247: monitorexit
-    //   2248: aload 6
-    //   2250: athrow
+    //   2039: monitorenter
+    //   2040: aload_0
+    //   2041: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   2044: invokestatic 50	com/tencent/component/network/module/common/DnsService:access$100	(Lcom/tencent/component/network/module/common/DnsService;)Ljava/util/List;
+    //   2047: aload_0
+    //   2048: invokeinterface 125 2 0
+    //   2053: pop
+    //   2054: aload_1
+    //   2055: monitorexit
+    //   2056: aconst_null
+    //   2057: areturn
+    //   2058: astore 6
+    //   2060: aload_1
+    //   2061: monitorexit
+    //   2062: aload 6
+    //   2064: athrow
+    //   2065: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   2068: ifeq +37 -> 2105
+    //   2071: new 101	java/lang/StringBuilder
+    //   2074: dup
+    //   2075: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   2078: astore 6
+    //   2080: aload 6
+    //   2082: ldc 141
+    //   2084: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2087: pop
+    //   2088: aload 6
+    //   2090: aload_1
+    //   2091: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2094: pop
+    //   2095: ldc 110
+    //   2097: aload 6
+    //   2099: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2102: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2105: aload_1
+    //   2106: astore 6
+    //   2108: aload_0
+    //   2109: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   2112: aload_1
+    //   2113: invokestatic 145	com/tencent/component/network/module/common/DnsService:access$500	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;)Z
+    //   2116: ifne +192 -> 2308
+    //   2119: aload_1
+    //   2120: astore 6
+    //   2122: aload_0
+    //   2123: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   2126: invokestatic 148	com/tencent/component/network/module/common/DnsService:access$600	(Lcom/tencent/component/network/module/common/DnsService;)Z
+    //   2129: ifeq +179 -> 2308
+    //   2132: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   2135: lstore_2
+    //   2136: aload_1
+    //   2137: astore 7
+    //   2139: aload_0
+    //   2140: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   2143: astore 6
+    //   2145: ldc2_w 149
+    //   2148: lload_2
+    //   2149: lload 4
+    //   2151: lsub
+    //   2152: lsub
+    //   2153: lstore_2
+    //   2154: lload_2
+    //   2155: ldc2_w 151
+    //   2158: lcmp
+    //   2159: iflt +398 -> 2557
+    //   2162: goto +3 -> 2165
+    //   2165: aload_1
+    //   2166: astore 7
+    //   2168: aload 6
+    //   2170: lload_2
+    //   2171: invokestatic 158	com/tencent/component/network/module/common/dns/DnsMain:getBetterHostByName	(Ljava/lang/String;J)[Ljava/net/InetAddress;
+    //   2174: astore 10
+    //   2176: aload_1
+    //   2177: astore 6
+    //   2179: aload 10
+    //   2181: ifnull +127 -> 2308
+    //   2184: aload_1
+    //   2185: astore 7
+    //   2187: aload_1
+    //   2188: astore 6
+    //   2190: aload 10
+    //   2192: arraylength
+    //   2193: ifle +115 -> 2308
+    //   2196: aload_1
+    //   2197: astore 7
+    //   2199: aload 10
+    //   2201: iconst_0
+    //   2202: aaload
+    //   2203: invokevirtual 135	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   2206: astore_1
+    //   2207: aload_1
+    //   2208: astore 7
+    //   2210: aload_1
+    //   2211: astore 6
+    //   2213: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   2216: ifeq +92 -> 2308
+    //   2219: aload_1
+    //   2220: astore 7
+    //   2222: new 101	java/lang/StringBuilder
+    //   2225: dup
+    //   2226: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   2229: astore 6
+    //   2231: aload_1
+    //   2232: astore 7
+    //   2234: aload 6
+    //   2236: ldc 160
+    //   2238: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2241: pop
+    //   2242: aload_1
+    //   2243: astore 7
+    //   2245: aload 6
+    //   2247: aload_0
+    //   2248: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   2251: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2254: pop
+    //   2255: aload_1
+    //   2256: astore 7
+    //   2258: aload 6
+    //   2260: ldc 162
+    //   2262: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2265: pop
+    //   2266: aload_1
+    //   2267: astore 7
+    //   2269: aload 6
+    //   2271: aload_1
+    //   2272: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2275: pop
+    //   2276: aload_1
+    //   2277: astore 7
+    //   2279: ldc 110
+    //   2281: aload 6
+    //   2283: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2286: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2289: aload_1
+    //   2290: astore 6
+    //   2292: goto +16 -> 2308
+    //   2295: astore_1
+    //   2296: ldc 110
+    //   2298: ldc 164
+    //   2300: aload_1
+    //   2301: invokestatic 168	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   2304: aload 7
+    //   2306: astore 6
+    //   2308: invokestatic 62	com/tencent/component/network/NetworkManager:getApnValue	()Ljava/lang/String;
+    //   2311: astore 7
+    //   2313: aload 7
+    //   2315: astore_1
+    //   2316: ldc 64
+    //   2318: aload 7
+    //   2320: invokevirtual 69	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2323: ifeq +7 -> 2330
+    //   2326: invokestatic 72	com/tencent/component/network/NetworkManager:getBSSID	()Ljava/lang/String;
+    //   2329: astore_1
+    //   2330: invokestatic 139	com/tencent/component/network/module/base/QDLog:isInfoEnable	()Z
+    //   2333: ifeq +145 -> 2478
+    //   2336: new 101	java/lang/StringBuilder
+    //   2339: dup
+    //   2340: invokespecial 102	java/lang/StringBuilder:<init>	()V
+    //   2343: astore 7
+    //   2345: aload 7
+    //   2347: ldc 170
+    //   2349: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2352: pop
+    //   2353: aload 7
+    //   2355: aload_0
+    //   2356: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   2359: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2362: pop
+    //   2363: aload 7
+    //   2365: ldc 172
+    //   2367: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2370: pop
+    //   2371: aload 7
+    //   2373: aload 6
+    //   2375: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2378: pop
+    //   2379: aload 7
+    //   2381: ldc 174
+    //   2383: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2386: pop
+    //   2387: aload 7
+    //   2389: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   2392: lload 4
+    //   2394: lsub
+    //   2395: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2398: pop
+    //   2399: aload 7
+    //   2401: ldc 179
+    //   2403: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2406: pop
+    //   2407: aload 7
+    //   2409: aload 8
+    //   2411: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2414: pop
+    //   2415: aload 7
+    //   2417: ldc 181
+    //   2419: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2422: pop
+    //   2423: aload 7
+    //   2425: aload_1
+    //   2426: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2429: pop
+    //   2430: aload 7
+    //   2432: ldc 183
+    //   2434: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2437: pop
+    //   2438: aload 7
+    //   2440: invokestatic 189	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   2443: invokevirtual 192	java/lang/Thread:getId	()J
+    //   2446: invokevirtual 177	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2449: pop
+    //   2450: aload 7
+    //   2452: ldc 194
+    //   2454: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2457: pop
+    //   2458: aload 7
+    //   2460: aload_0
+    //   2461: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   2464: invokevirtual 197	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2467: pop
+    //   2468: ldc 110
+    //   2470: aload 7
+    //   2472: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2475: invokestatic 119	com/tencent/component/network/module/base/QDLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2478: aload_0
+    //   2479: getfield 23	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mIsExpired	Z
+    //   2482: ifne +19 -> 2501
+    //   2485: aload_0
+    //   2486: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   2489: aload_0
+    //   2490: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   2493: aload 6
+    //   2495: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   2498: goto +15 -> 2513
+    //   2501: aload_0
+    //   2502: getfield 18	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:this$0	Lcom/tencent/component/network/module/common/DnsService;
+    //   2505: aload_0
+    //   2506: getfield 25	com/tencent/component/network/module/common/DnsService$ResolverDomainTask:mDomain	Ljava/lang/String;
+    //   2509: aconst_null
+    //   2510: invokestatic 122	com/tencent/component/network/module/common/DnsService:access$400	(Lcom/tencent/component/network/module/common/DnsService;Ljava/lang/String;Ljava/lang/String;)V
+    //   2513: aload 9
+    //   2515: athrow
+    //   2516: astore 6
+    //   2518: aload_1
+    //   2519: monitorexit
+    //   2520: goto +6 -> 2526
+    //   2523: aload 6
+    //   2525: athrow
+    //   2526: goto -3 -> 2523
+    //   2529: ldc2_w 151
+    //   2532: lstore_2
+    //   2533: goto -2171 -> 362
+    //   2536: ldc2_w 151
+    //   2539: lstore_2
+    //   2540: goto -1706 -> 834
+    //   2543: ldc2_w 151
+    //   2546: lstore_2
+    //   2547: goto -1276 -> 1271
+    //   2550: ldc2_w 151
+    //   2553: lstore_2
+    //   2554: goto -846 -> 1708
+    //   2557: ldc2_w 151
+    //   2560: lstore_2
+    //   2561: goto -396 -> 2165
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2251	0	this	ResolverDomainTask
-    //   328	1881	2	l1	long
-    //   54	2068	4	l2	long
-    //   25	72	6	str	String
-    //   181	5	6	localObject1	Object
-    //   203	5	6	localObject2	Object
-    //   226	329	6	localObject3	Object
-    //   674	8	6	localUnknownHostException	java.net.UnknownHostException
-    //   718	332	6	localObject4	Object
-    //   1069	8	6	localException	Exception
-    //   1113	332	6	localObject5	Object
-    //   1464	8	6	localError	java.lang.Error
-    //   1508	717	6	localObject6	Object
-    //   2244	5	6	localObject7	Object
-    //   30	2193	7	localObject8	Object
-    //   34	2100	8	localObject9	Object
-    //   365	1238	9	arrayOfInetAddress1	java.net.InetAddress[]
-    //   1859	344	9	localObject10	Object
-    //   1962	26	10	arrayOfInetAddress2	java.net.InetAddress[]
+    //   0	2564	0	this	ResolverDomainTask
+    //   0	2564	1	paramJobContext	com.tencent.component.network.utils.thread.ThreadPool.JobContext
+    //   332	2229	2	l1	long
+    //   46	2347	4	l2	long
+    //   80	55	6	localObject1	Object
+    //   200	5	6	localObject2	Object
+    //   228	400	6	localObject3	Object
+    //   723	7	6	localError	java.lang.Error
+    //   747	408	6	localObject4	Object
+    //   1160	7	6	localException	java.lang.Exception
+    //   1184	408	6	localObject5	Object
+    //   1597	7	6	localUnknownHostException	java.net.UnknownHostException
+    //   1621	408	6	localObject6	Object
+    //   2058	5	6	localObject7	Object
+    //   2078	416	6	localObject8	Object
+    //   2516	8	6	localObject9	Object
+    //   247	2224	7	localObject10	Object
+    //   27	2383	8	localObject11	Object
+    //   371	28	9	arrayOfInetAddress1	java.net.InetAddress[]
+    //   718	1	9	localObject12	Object
+    //   843	1671	9	arrayOfInetAddress2	java.net.InetAddress[]
+    //   2174	26	10	arrayOfInetAddress3	java.net.InetAddress[]
     // Exception table:
     //   from	to	target	type
-    //   6	22	181	finally
-    //   183	185	181	finally
-    //   163	179	203	finally
-    //   205	207	203	finally
-    //   333	338	643	java/lang/Throwable
-    //   360	367	643	java/lang/Throwable
-    //   382	388	643	java/lang/Throwable
-    //   392	401	643	java/lang/Throwable
-    //   408	414	643	java/lang/Throwable
-    //   418	457	643	java/lang/Throwable
-    //   228	247	674	java/net/UnknownHostException
-    //   255	262	674	java/net/UnknownHostException
-    //   754	760	1037	java/lang/Throwable
-    //   781	789	1037	java/lang/Throwable
-    //   803	809	1037	java/lang/Throwable
-    //   812	820	1037	java/lang/Throwable
-    //   826	832	1037	java/lang/Throwable
-    //   835	873	1037	java/lang/Throwable
-    //   228	247	1069	java/lang/Exception
-    //   255	262	1069	java/lang/Exception
-    //   1149	1155	1432	java/lang/Throwable
-    //   1176	1184	1432	java/lang/Throwable
-    //   1198	1204	1432	java/lang/Throwable
-    //   1207	1215	1432	java/lang/Throwable
-    //   1221	1227	1432	java/lang/Throwable
-    //   1230	1268	1432	java/lang/Throwable
-    //   228	247	1464	java/lang/Error
-    //   255	262	1464	java/lang/Error
-    //   1544	1550	1827	java/lang/Throwable
-    //   1571	1579	1827	java/lang/Throwable
-    //   1593	1599	1827	java/lang/Throwable
-    //   1602	1610	1827	java/lang/Throwable
-    //   1616	1622	1827	java/lang/Throwable
-    //   1625	1663	1827	java/lang/Throwable
-    //   228	247	1859	finally
-    //   255	262	1859	finally
-    //   676	686	1859	finally
-    //   1071	1081	1859	finally
-    //   1466	1476	1859	finally
-    //   1929	1935	2212	java/lang/Throwable
-    //   1956	1964	2212	java/lang/Throwable
-    //   1978	1984	2212	java/lang/Throwable
-    //   1987	1995	2212	java/lang/Throwable
-    //   2001	2007	2212	java/lang/Throwable
-    //   2010	2048	2212	java/lang/Throwable
-    //   618	634	2244	finally
-    //   2246	2248	2244	finally
+    //   182	198	200	finally
+    //   202	204	200	finally
+    //   337	342	497	java/lang/Throwable
+    //   366	373	497	java/lang/Throwable
+    //   388	394	497	java/lang/Throwable
+    //   398	407	497	java/lang/Throwable
+    //   414	420	497	java/lang/Throwable
+    //   424	432	497	java/lang/Throwable
+    //   436	443	497	java/lang/Throwable
+    //   447	456	497	java/lang/Throwable
+    //   460	467	497	java/lang/Throwable
+    //   471	478	497	java/lang/Throwable
+    //   482	491	497	java/lang/Throwable
+    //   230	249	718	finally
+    //   257	264	718	finally
+    //   725	734	718	finally
+    //   1162	1171	718	finally
+    //   1599	1608	718	finally
+    //   230	249	723	java/lang/Error
+    //   257	264	723	java/lang/Error
+    //   808	814	964	java/lang/Throwable
+    //   837	845	964	java/lang/Throwable
+    //   859	865	964	java/lang/Throwable
+    //   868	876	964	java/lang/Throwable
+    //   882	888	964	java/lang/Throwable
+    //   891	900	964	java/lang/Throwable
+    //   903	911	964	java/lang/Throwable
+    //   914	924	964	java/lang/Throwable
+    //   927	935	964	java/lang/Throwable
+    //   938	945	964	java/lang/Throwable
+    //   948	958	964	java/lang/Throwable
+    //   230	249	1160	java/lang/Exception
+    //   257	264	1160	java/lang/Exception
+    //   1245	1251	1401	java/lang/Throwable
+    //   1274	1282	1401	java/lang/Throwable
+    //   1296	1302	1401	java/lang/Throwable
+    //   1305	1313	1401	java/lang/Throwable
+    //   1319	1325	1401	java/lang/Throwable
+    //   1328	1337	1401	java/lang/Throwable
+    //   1340	1348	1401	java/lang/Throwable
+    //   1351	1361	1401	java/lang/Throwable
+    //   1364	1372	1401	java/lang/Throwable
+    //   1375	1382	1401	java/lang/Throwable
+    //   1385	1395	1401	java/lang/Throwable
+    //   230	249	1597	java/net/UnknownHostException
+    //   257	264	1597	java/net/UnknownHostException
+    //   1682	1688	1838	java/lang/Throwable
+    //   1711	1719	1838	java/lang/Throwable
+    //   1733	1739	1838	java/lang/Throwable
+    //   1742	1750	1838	java/lang/Throwable
+    //   1756	1762	1838	java/lang/Throwable
+    //   1765	1774	1838	java/lang/Throwable
+    //   1777	1785	1838	java/lang/Throwable
+    //   1788	1798	1838	java/lang/Throwable
+    //   1801	1809	1838	java/lang/Throwable
+    //   1812	1819	1838	java/lang/Throwable
+    //   1822	1832	1838	java/lang/Throwable
+    //   2040	2056	2058	finally
+    //   2060	2062	2058	finally
+    //   2139	2145	2295	java/lang/Throwable
+    //   2168	2176	2295	java/lang/Throwable
+    //   2190	2196	2295	java/lang/Throwable
+    //   2199	2207	2295	java/lang/Throwable
+    //   2213	2219	2295	java/lang/Throwable
+    //   2222	2231	2295	java/lang/Throwable
+    //   2234	2242	2295	java/lang/Throwable
+    //   2245	2255	2295	java/lang/Throwable
+    //   2258	2266	2295	java/lang/Throwable
+    //   2269	2276	2295	java/lang/Throwable
+    //   2279	2289	2295	java/lang/Throwable
+    //   6	22	2516	finally
+    //   2518	2520	2516	finally
   }
   
   public void setIsExpired(boolean paramBoolean)
@@ -1206,7 +1408,7 @@ class DnsService$ResolverDomainTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.common.DnsService.ResolverDomainTask
  * JD-Core Version:    0.7.0.1
  */

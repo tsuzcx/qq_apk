@@ -7,27 +7,29 @@ public class QueryCaptchaResult
   implements Serializable
 {
   private static final long serialVersionUID = -3090433295861489742L;
-  public String mAppid = "1600000810";
+  public String mAppid;
   public long mLastGetUrlTime;
-  public boolean mNeedCaptcha = false;
+  public boolean mNeedCaptcha;
   public long mRealUin;
   public int mSceneId;
   public int mUrlValidTimeSecs;
   
   public QueryCaptchaResult(JSONObject paramJSONObject)
   {
-    if (paramJSONObject.getInt("need_captcha") == 1) {}
-    for (;;)
+    boolean bool = false;
+    this.mNeedCaptcha = false;
+    this.mAppid = "1600000810";
+    if (paramJSONObject.getInt("need_captcha") == 1) {
+      bool = true;
+    }
+    this.mNeedCaptcha = bool;
+    if (this.mNeedCaptcha)
     {
-      this.mNeedCaptcha = bool;
-      if (this.mNeedCaptcha)
-      {
-        this.mUrlValidTimeSecs = paramJSONObject.getInt("url_valid_time");
-        this.mLastGetUrlTime = (System.currentTimeMillis() / 1000L);
-        this.mAppid = ("" + paramJSONObject.getInt("appid"));
-      }
-      return;
-      bool = false;
+      this.mUrlValidTimeSecs = paramJSONObject.getInt("url_valid_time");
+      this.mLastGetUrlTime = (System.currentTimeMillis() / 1000L);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramJSONObject.getInt("appid"));
+      this.mAppid = localStringBuilder.toString();
     }
   }
 }

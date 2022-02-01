@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBannerView android:id="@id/c_p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.flash.FaceFlashPreviewLayout android:id="@id/ea4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.FaceFlashProcessLayout android:id="@id/ea5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ea1" android:padding="@dimen/df" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@raw/icons_filled_close" android:contentDescription="@string/we" app:iconColor="@color/BW_0" />
+</RelativeLayout>

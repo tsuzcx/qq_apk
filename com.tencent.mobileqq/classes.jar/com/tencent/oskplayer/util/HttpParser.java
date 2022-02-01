@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
@@ -44,7 +43,10 @@ public class HttpParser
     this.params = new LinkedHashMap();
     this.ver = new int[2];
     this.rawHeaders = new ArrayList();
-    this.mLogTag = (paramString + "HttpParser");
+    paramInputStream = new StringBuilder();
+    paramInputStream.append(paramString);
+    paramInputStream.append("HttpParser");
+    this.mLogTag = paramInputStream.toString();
     try
     {
       parseRequest();
@@ -52,7 +54,11 @@ public class HttpParser
     }
     catch (IOException paramInputStream)
     {
-      PlayerUtils.log(6, this.mLogTag, "error parsing request " + PlayerUtils.getPrintableStackTrace(paramInputStream));
+      paramString = this.mLogTag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error parsing request ");
+      localStringBuilder.append(PlayerUtils.getPrintableStackTrace(paramInputStream));
+      PlayerUtils.log(6, paramString, localStringBuilder.toString());
     }
   }
   
@@ -60,14 +66,22 @@ public class HttpParser
   {
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss", Locale.ENGLISH);
     localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-    return "Date: " + localSimpleDateFormat.format(new Date()) + " GMT";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Date: ");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(" GMT");
+    return localStringBuilder.toString();
   }
   
   public static String getExpiresHeader(int paramInt)
   {
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss", Locale.ENGLISH);
     localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-    return "Expires: " + localSimpleDateFormat.format(new Date(System.currentTimeMillis() + 3600000 * paramInt)) + " GMT";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expires: ");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date(System.currentTimeMillis() + paramInt * 3600000)));
+    localStringBuilder.append(" GMT");
+    return localStringBuilder.toString();
   }
   
   public static String getHeaders(Map<String, List<String>> paramMap)
@@ -77,166 +91,204 @@ public class HttpParser
   
   public static long[] getRangeOffset(String paramString)
   {
+    Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = RANGE_HEADER_PATTERN.matcher(paramString);
+      localObject = RANGE_HEADER_PATTERN.matcher(paramString);
       if (((Matcher)localObject).find())
       {
         paramString = ((Matcher)localObject).group(1);
         localObject = ((Matcher)localObject).group(2);
-        try
-        {
-          l1 = Long.parseLong(paramString);
-        }
-        catch (NumberFormatException paramString)
-        {
-          for (;;)
-          {
-            try
-            {
-              long l2 = Long.parseLong((String)localObject);
-              return new long[] { l1, l2 };
-            }
-            catch (NumberFormatException paramString)
-            {
-              long l1;
-              return new long[] { l1, -2L };
-            }
-            paramString = paramString;
-            l1 = 0L;
-          }
-        }
       }
     }
+    try
+    {
+      l1 = Long.parseLong(paramString);
+    }
+    catch (NumberFormatException paramString)
+    {
+      long l1;
+      label47:
+      break label47;
+    }
+    l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong((String)localObject);
+      return new long[] { l1, l2 };
+    }
+    catch (NumberFormatException paramString)
+    {
+      label67:
+      break label67;
+    }
+    return new long[] { l1, -2L };
     return new long[] { -1L, -1L };
   }
   
   public static String map2String(Map<String, String> paramMap)
   {
-    Object localObject = "";
     Iterator localIterator = paramMap.entrySet().iterator();
-    for (paramMap = (Map<String, String>)localObject; localIterator.hasNext(); paramMap = paramMap + "\r\n")
+    Object localObject;
+    for (paramMap = ""; localIterator.hasNext(); paramMap = ((StringBuilder)localObject).toString())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localObject = paramMap;
       if (localEntry.getKey() != null)
       {
-        paramMap = paramMap + (String)localEntry.getKey();
-        localObject = paramMap + ": ";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramMap);
+        ((StringBuilder)localObject).append((String)localEntry.getKey());
+        paramMap = ((StringBuilder)localObject).toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramMap);
+        ((StringBuilder)localObject).append(": ");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      paramMap = (String)localObject + (String)localEntry.getValue();
+      paramMap = new StringBuilder();
+      paramMap.append((String)localObject);
+      paramMap.append((String)localEntry.getValue());
+      paramMap = paramMap.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramMap);
+      ((StringBuilder)localObject).append("\r\n");
     }
     return paramMap;
   }
   
   public static String newResponseHeader(long paramLong1, long paramLong2, long paramLong3, String paramString, boolean paramBoolean)
   {
+    long l = paramLong2;
     int i;
-    int j;
-    label22:
-    int k;
-    label32:
-    long l;
-    label51:
-    Object localObject2;
-    Object localObject1;
-    if (paramLong1 != -1L)
-    {
+    if (paramLong1 != -1L) {
       i = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        break label475;
-      }
+    } else {
+      i = 0;
+    }
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j;
+    if (paramLong3 >= 0L) {
       j = 1;
-      if (paramLong3 < 0L) {
-        break label481;
-      }
-      k = 1;
-      if (i == 0) {
-        break label554;
-      }
-      if (paramLong2 != -2L) {
-        break label487;
-      }
-      l = paramLong3 - paramLong1;
-      localObject2 = new StringBuilder().append("");
-      if (i == 0) {
-        break label561;
-      }
-      localObject1 = "HTTP/1.1 206 PARTIAL CONTENT\r\n";
-      label74:
-      localObject1 = (String)localObject1;
-      localObject1 = (String)localObject1 + "Connection: close\r\n";
-      if ((k == 0) || (i == 0)) {
-        break label663;
-      }
-      if (paramLong2 != -2L) {
-        break label569;
-      }
-      localObject1 = (String)localObject1 + String.format("Content-Range: bytes %d-%d/%d\r\n", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong3 - 1L), Long.valueOf(paramLong3) });
+    } else {
+      j = 0;
     }
-    label649:
-    label656:
-    label663:
-    for (;;)
+    if (i != 0)
     {
-      label180:
-      if (paramBoolean)
+      if (l == -2L)
       {
-        localObject1 = (String)localObject1 + String.format("Cache-Control: max-age=%d\r\n", new Object[] { Integer.valueOf(10800) });
-        label224:
-        localObject2 = (String)localObject1 + getDateHeader() + "\r\n";
-        localObject1 = localObject2;
-        if (paramBoolean) {
-          localObject1 = (String)localObject2 + getExpiresHeader(3) + "\r\n";
-        }
-        localObject2 = new StringBuilder().append((String)localObject1);
-        if (k == 0) {
-          break label649;
-        }
-        localObject1 = String.format("Content-Length: %d\r\n", new Object[] { Long.valueOf(l) });
-        label329:
-        localObject1 = (String)localObject1;
-        localObject1 = (String)localObject1 + "Accept-Ranges: bytes\r\n";
-        localObject1 = new StringBuilder().append((String)localObject1);
-        if (j == 0) {
-          break label656;
-        }
+        paramLong2 = paramLong3 - paramLong1;
       }
-      for (paramString = String.format("Content-Type: %s\r\n", new Object[] { paramString });; paramString = "")
+      else
       {
-        paramString = paramString;
-        paramString = paramString + String.format("X-Server: %s\r\n", new Object[] { "videoproxy 1.4.1" });
-        return paramString + "\r\n";
-        i = 0;
-        break;
-        label475:
-        j = 0;
-        break label22;
-        label481:
-        k = 0;
-        break label32;
-        label487:
-        if (paramLong2 > paramLong3 - 1L) {
-          PlayerUtils.log(5, "HttpParser", "fix rangeEnd. max=" + (paramLong3 - 1L) + " current=" + paramLong2);
+        paramLong2 = paramLong3 - 1L;
+        if (l > paramLong2)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("fix rangeEnd. max=");
+          ((StringBuilder)localObject1).append(paramLong2);
+          ((StringBuilder)localObject1).append(" current=");
+          ((StringBuilder)localObject1).append(l);
+          PlayerUtils.log(5, "HttpParser", ((StringBuilder)localObject1).toString());
         }
-        paramLong2 = Math.min(paramLong2, paramLong3 - 1L);
-        l = paramLong2 - paramLong1 + 1L;
-        break label51;
-        label554:
-        l = paramLong3;
-        break label51;
-        label561:
-        localObject1 = "HTTP/1.1 200 OK\r\n";
-        break label74;
-        label569:
-        localObject1 = (String)localObject1 + String.format("Content-Range: bytes %d-%d/%d\r\n", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-        break label180;
-        localObject1 = (String)localObject1 + "Cache-Control: no-cache\r\n";
-        break label224;
-        localObject1 = "";
-        break label329;
+        l = Math.min(l, paramLong2);
+        paramLong2 = l - paramLong1 + 1L;
       }
     }
+    else {
+      paramLong2 = paramLong3;
+    }
+    Object localObject2 = new StringBuilder();
+    String str = "";
+    ((StringBuilder)localObject2).append("");
+    if (i != 0) {
+      localObject1 = "HTTP/1.1 206 PARTIAL CONTENT\r\n";
+    } else {
+      localObject1 = "HTTP/1.1 200 OK\r\n";
+    }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    Object localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("Connection: close\r\n");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject1 = localObject2;
+    if (j != 0)
+    {
+      localObject1 = localObject2;
+      if (i != 0) {
+        if (l == -2L)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append(String.format("Content-Range: bytes %d-%d/%d\r\n", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong3 - 1L), Long.valueOf(paramLong3) }));
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append(String.format("Content-Range: bytes %d-%d/%d\r\n", new Object[] { Long.valueOf(paramLong1), Long.valueOf(l), Long.valueOf(paramLong3) }));
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+    }
+    if (paramBoolean)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(String.format("Cache-Control: max-age=%d\r\n", new Object[] { Integer.valueOf(10800) }));
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("Cache-Control: no-cache\r\n");
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(getDateHeader());
+    ((StringBuilder)localObject2).append("\r\n");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject1 = localObject2;
+    if (paramBoolean)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(getExpiresHeader(3));
+      ((StringBuilder)localObject1).append("\r\n");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    if (j != 0) {
+      localObject1 = String.format("Content-Length: %d\r\n", new Object[] { Long.valueOf(paramLong2) });
+    } else {
+      localObject1 = "";
+    }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("Accept-Ranges: bytes\r\n");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject1 = str;
+    if ((bool ^ true)) {
+      localObject1 = String.format("Content-Type: %s\r\n", new Object[] { paramString });
+    }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    paramString = ((StringBuilder)localObject2).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(String.format("X-Server: %s\r\n", new Object[] { "videoproxy 1.4.1" }));
+    paramString = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("\r\n");
+    return ((StringBuilder)localObject1).toString();
   }
   
   public static Map<String, String> parseHeaders(String paramString)
@@ -245,25 +297,19 @@ public class HttpParser
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     int j = paramString.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = paramString[i];
-      int k;
       if (!localObject.equals(""))
       {
-        k = localObject.indexOf(':');
-        if (k >= 0) {
-          break label71;
+        int k = localObject.indexOf(':');
+        if (k < 0) {
+          localLinkedHashMap.put("null", localObject);
+        } else {
+          localLinkedHashMap.put(localObject.substring(0, k).toLowerCase().trim(), localObject.substring(k + 1).trim());
         }
-        localLinkedHashMap.put("null", localObject);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label71:
-        localLinkedHashMap.put(localObject.substring(0, k).toLowerCase().trim(), localObject.substring(k + 1).trim());
-      }
+      i += 1;
     }
     return localLinkedHashMap;
   }
@@ -272,27 +318,20 @@ public class HttpParser
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramMap = paramMap.entrySet().iterator();
-    if (paramMap.hasNext())
+    while (paramMap.hasNext())
     {
       Object localObject = (Map.Entry)paramMap.next();
       String str = (String)((Map.Entry)localObject).getKey();
       localObject = (List)((Map.Entry)localObject).getValue();
       int i = 0;
-      label65:
-      if (i < ((List)localObject).size())
+      while (i < ((List)localObject).size())
       {
-        if (str == null) {
-          break label107;
+        if (str != null) {
+          localLinkedHashMap.put(str.toLowerCase().trim(), ((List)localObject).get(i));
+        } else {
+          localLinkedHashMap.put(str, ((List)localObject).get(i));
         }
-        localLinkedHashMap.put(str.toLowerCase().trim(), ((List)localObject).get(i));
-      }
-      for (;;)
-      {
         i += 1;
-        break label65;
-        break;
-        label107:
-        localLinkedHashMap.put(str, ((List)localObject).get(i));
       }
     }
     return localLinkedHashMap;
@@ -302,86 +341,97 @@ public class HttpParser
   {
     StringBuilder localStringBuilder = new StringBuilder();
     String str = this.reader.readLine();
-    localStringBuilder.append(str).append("|");
-    for (;;)
+    localStringBuilder.append(str);
+    localStringBuilder.append("|");
+    while (!str.equals(""))
     {
-      int i;
-      if (!str.equals(""))
+      int i = str.indexOf(':');
+      if (i < 0)
       {
-        i = str.indexOf(':');
-        if (i < 0) {
-          this.headers = null;
-        }
-      }
-      else
-      {
-        PlayerUtils.log(4, this.mLogTag, localStringBuilder.toString());
-        return;
+        this.headers = null;
+        break;
       }
       this.headers.put(str.substring(0, i).toLowerCase().trim(), str.substring(i + 1).trim());
       this.rawHeaders.add(str);
       str = this.reader.readLine();
-      localStringBuilder.append(str).append("|");
+      localStringBuilder.append(str);
+      localStringBuilder.append("|");
     }
+    PlayerUtils.log(4, this.mLogTag, localStringBuilder.toString());
   }
   
   public static Map<String, String> parseParams(String paramString)
   {
-    int i = 0;
     if ((!TextUtils.isEmpty(paramString)) && (sParseParamsCacheMap.containsKey(paramString))) {
-      localObject = (Map)sParseParamsCacheMap.get(paramString);
+      return (Map)sParseParamsCacheMap.get(paramString);
     }
-    LinkedHashMap localLinkedHashMap;
-    int j;
-    do
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    int i;
+    String[] arrayOfString1;
+    if (paramString != null)
     {
-      do
+      i = paramString.indexOf('?');
+      if (i > 0)
       {
-        return localObject;
-        localLinkedHashMap = new LinkedHashMap();
-        localObject = localLinkedHashMap;
-      } while (paramString == null);
-      j = paramString.indexOf('?');
-      localObject = localLinkedHashMap;
-    } while (j <= 0);
-    Object localObject = paramString.substring(j + 1).split("&");
+        arrayOfString1 = paramString.substring(i + 1).split("&");
+        i = 0;
+      }
+    }
     for (;;)
     {
       try
       {
-        if (i < localObject.length)
+        if (i < arrayOfString1.length)
         {
-          String[] arrayOfString = localObject[i].split("=");
-          if (arrayOfString.length == 2) {
-            localLinkedHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
-          } else if ((arrayOfString.length == 1) && (localObject[i].indexOf('=') == localObject[i].length() - 1)) {
-            localLinkedHashMap.put(URLDecoder.decode(arrayOfString[0], "UTF-8"), "");
+          String[] arrayOfString2 = arrayOfString1[i].split("=");
+          if (arrayOfString2.length == 2)
+          {
+            localLinkedHashMap.put(URLDecoder.decode(arrayOfString2[0], "UTF-8"), URLDecoder.decode(arrayOfString2[1], "UTF-8"));
+            break label189;
           }
+          if ((arrayOfString2.length != 1) || (arrayOfString1[i].indexOf('=') != arrayOfString1[i].length() - 1)) {
+            break label189;
+          }
+          localLinkedHashMap.put(URLDecoder.decode(arrayOfString2[0], "UTF-8"), "");
+          break label189;
         }
+        sParseParamsCacheMap.put(paramString, localLinkedHashMap);
+        return localLinkedHashMap;
       }
       catch (IOException paramString)
       {
         PlayerUtils.log(5, "HttpParser", PlayerUtils.getPrintableStackTrace(paramString));
-        return localLinkedHashMap;
       }
-      sParseParamsCacheMap.put(paramString, localLinkedHashMap);
       return localLinkedHashMap;
+      label189:
       i += 1;
     }
   }
   
   public static String replaceParam(String paramString1, String paramString2, String paramString3)
   {
-    String str2 = paramString2 + "=";
-    String str1 = paramString1;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString2);
+    ((StringBuilder)localObject1).append("=");
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = paramString1;
     if (paramString1 != null)
     {
-      str1 = paramString1;
-      if (paramString1.contains(str2)) {
-        str1 = paramString1.replaceAll(paramString2 + "=[^&]+", paramString2 + "=" + paramString3);
+      localObject1 = paramString1;
+      if (paramString1.contains((CharSequence)localObject2))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append("=[^&]+");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString2);
+        ((StringBuilder)localObject2).append("=");
+        ((StringBuilder)localObject2).append(paramString3);
+        localObject1 = paramString1.replaceAll((String)localObject1, ((StringBuilder)localObject2).toString());
       }
     }
-    return str1;
+    return localObject1;
   }
   
   public Map<String, String> getHeaders()
@@ -413,102 +463,96 @@ public class HttpParser
   
   public String getVersion()
   {
-    return this.ver[0] + "." + this.ver[1];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.ver[0]);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.ver[1]);
+    return localStringBuilder.toString();
   }
   
   public void parseRequest()
   {
-    String[] arrayOfString2 = null;
-    String str = this.reader.readLine();
-    PlayerUtils.log(4, this.mLogTag, "initial=" + str);
-    if ((str == null) || (str.length() == 0))
+    Object localObject2 = this.reader.readLine();
+    Object localObject1 = this.mLogTag;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("initial=");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    PlayerUtils.log(4, (String)localObject1, ((StringBuilder)localObject3).toString());
+    if ((localObject2 != null) && (((String)localObject2).length() != 0))
     {
-      PlayerUtils.log(6, this.mLogTag, "initial is not valid");
-      return;
-    }
-    if (Character.isWhitespace(str.charAt(0)))
-    {
-      PlayerUtils.log(6, this.mLogTag, "character first char is whitespace");
-      return;
-    }
-    String[] arrayOfString3 = str.split("\\s");
-    if (arrayOfString3.length != 3)
-    {
-      PlayerUtils.log(6, this.mLogTag, "cmd.length is not 3");
-      return;
-    }
-    this.requestMethod = arrayOfString3[0];
-    Object localObject;
-    if ((arrayOfString3[2].indexOf("HTTP/") == 0) && (arrayOfString3[2].indexOf('.') > 5))
-    {
-      localObject = arrayOfString3[2];
-      this.rawHeaders.add(str);
-      if (localObject != null) {
-        localObject = ((String)localObject).substring(5).split("\\.");
-      }
-    }
-    for (;;)
-    {
-      try
+      if (Character.isWhitespace(((String)localObject2).charAt(0)))
       {
-        this.ver[0] = Integer.parseInt(localObject[0]);
-        this.ver[1] = Integer.parseInt(localObject[1]);
-        if ((!arrayOfString3[0].equals("GET")) && (!arrayOfString3[0].equals("HEAD"))) {
-          break label459;
-        }
-        i = arrayOfString3[1].indexOf('?');
-        if (i >= 0) {
-          break label327;
-        }
-        parseHeaders();
+        PlayerUtils.log(6, this.mLogTag, "character first char is whitespace");
         return;
       }
-      catch (NumberFormatException localNumberFormatException)
+      localObject3 = ((String)localObject2).split("\\s");
+      if (localObject3.length != 3)
       {
-        PlayerUtils.log(6, this.mLogTag, "error parsing request NumberFormatException" + PlayerUtils.getPrintableStackTrace(localNumberFormatException));
+        PlayerUtils.log(6, this.mLogTag, "cmd.length is not 3");
         return;
       }
-      localObject = arrayOfString2;
-      if (arrayOfString3[0].indexOf("HTTP/") != 0) {
-        break;
+      this.requestMethod = localObject3[0];
+      if ((localObject3[2].indexOf("HTTP/") == 0) && (localObject3[2].indexOf('.') > 5)) {
+        localObject1 = localObject3[2];
+      } else if ((localObject3[0].indexOf("HTTP/") == 0) && (localObject3[0].indexOf('.') > 5)) {
+        localObject1 = localObject3[0];
+      } else {
+        localObject1 = null;
       }
-      localObject = arrayOfString2;
-      if (arrayOfString3[0].indexOf('.') <= 5) {
-        break;
-      }
-      localObject = arrayOfString3[0];
-      break;
-      label327:
-      String[] arrayOfString1 = arrayOfString3[1].substring(i + 1).split("&");
-      this.params = new LinkedHashMap();
-      int i = 0;
-      label357:
-      if (i < arrayOfString1.length)
+      this.rawHeaders.add(localObject2);
+      if (localObject1 != null)
       {
-        arrayOfString2 = arrayOfString1[i].split("=");
-        if (arrayOfString2.length != 2) {
-          break label412;
+        localObject1 = ((String)localObject1).substring(5).split("\\.");
+        try
+        {
+          this.ver[0] = Integer.parseInt(localObject1[0]);
+          this.ver[1] = Integer.parseInt(localObject1[1]);
         }
-        this.params.put(URLDecoder.decode(arrayOfString2[0], "UTF-8"), URLDecoder.decode(arrayOfString2[1], "UTF-8"));
-      }
-      for (;;)
-      {
-        i += 1;
-        break label357;
-        break;
-        label412:
-        if ((arrayOfString2.length == 1) && (arrayOfString1[i].indexOf('=') == arrayOfString1[i].length() - 1)) {
-          this.params.put(URLDecoder.decode(arrayOfString2[0], "UTF-8"), "");
+        catch (NumberFormatException localNumberFormatException)
+        {
+          localObject2 = this.mLogTag;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("error parsing request NumberFormatException");
+          ((StringBuilder)localObject3).append(PlayerUtils.getPrintableStackTrace(localNumberFormatException));
+          PlayerUtils.log(6, (String)localObject2, ((StringBuilder)localObject3).toString());
+          return;
         }
       }
-      label459:
-      if ((arrayOfString3[0].equals("POST")) || (arrayOfString3[0].equals("OPTIONS")) || (arrayOfString3[0].equals("PUT")) || (arrayOfString3[0].equals("DELETE")) || (arrayOfString3[0].equals("TRACE")) || (!arrayOfString3[0].equals("CONNECT"))) {}
+      if ((!localObject3[0].equals("GET")) && (!localObject3[0].equals("HEAD")))
+      {
+        if ((!localObject3[0].equals("POST")) && (!localObject3[0].equals("OPTIONS")) && (!localObject3[0].equals("PUT")) && (!localObject3[0].equals("DELETE")) && (!localObject3[0].equals("TRACE"))) {
+          localObject3[0].equals("CONNECT");
+        }
+      }
+      else
+      {
+        int i = localObject3[1].indexOf('?');
+        if (i >= 0)
+        {
+          String[] arrayOfString = localObject3[1].substring(i + 1).split("&");
+          this.params = new LinkedHashMap();
+          i = 0;
+          while (i < arrayOfString.length)
+          {
+            localObject2 = arrayOfString[i].split("=");
+            if (localObject2.length == 2) {
+              this.params.put(URLDecoder.decode(localObject2[0], "UTF-8"), URLDecoder.decode(localObject2[1], "UTF-8"));
+            } else if ((localObject2.length == 1) && (arrayOfString[i].indexOf('=') == arrayOfString[i].length() - 1)) {
+              this.params.put(URLDecoder.decode(localObject2[0], "UTF-8"), "");
+            }
+            i += 1;
+          }
+        }
+      }
+      parseHeaders();
+      return;
     }
+    PlayerUtils.log(6, this.mLogTag, "initial is not valid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.util.HttpParser
  * JD-Core Version:    0.7.0.1
  */

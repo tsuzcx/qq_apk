@@ -5,7 +5,7 @@ import android.os.FileObserver;
 public class MediaScannerFileObserver
   extends FileObserver
 {
-  private final String TAG = "MediaScannerFileObserver";
+  private static final String TAG = "QQAlbum";
   private String mFolderPath = null;
   private MediaScanner mMediaScanner = null;
   
@@ -18,17 +18,15 @@ public class MediaScannerFileObserver
   
   public void onEvent(int paramInt, String paramString)
   {
-    if (this.mMediaScanner == null) {}
-    do
-    {
+    if (this.mMediaScanner == null) {
       return;
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while ((paramString == null) || (!paramString.endsWith(".mp4")));
-    this.mMediaScanner.handleFileObserverEvent(paramInt, this.mFolderPath, paramString);
+    }
+    if ((paramInt != 8) && (paramInt != 128)) {
+      return;
+    }
+    if ((paramString != null) && (paramString.endsWith(".mp4"))) {
+      this.mMediaScanner.handleFileObserverEvent(paramInt, this.mFolderPath, paramString);
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agnh;
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ArkDebugChatPie$1$2
@@ -11,7 +10,7 @@ class ArkDebugChatPie$1$2
   
   public void run()
   {
-    QQToast.a(this.a.this$0.a, alud.a(2131701041), 0).a();
+    QQToast.makeText(this.a.this$0.e, HardCodeUtil.a(2131898905), 0).show();
   }
 }
 

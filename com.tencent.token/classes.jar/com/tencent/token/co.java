@@ -1,46 +1,28 @@
 package com.tencent.token;
 
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.UserTask;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Bundle;
 
-class co
-  extends UserTask
+public abstract class co
+  extends cn
 {
-  co(cn paramcn) {}
+  protected boolean mStartedActivityFromFragment;
   
-  public f a(String... paramVarArgs)
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    return cn.a(this.a, this.a.c);
+    if ((!this.mStartedActivityFromFragment) && (paramInt != -1)) {
+      checkForValidRequestCode(paramInt);
+    }
+    super.startActivityForResult(paramIntent, paramInt, paramBundle);
   }
   
-  public void a()
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
   {
-    cn.a(this.a, false);
-  }
-  
-  public void a(f paramf)
-  {
-    if (paramf.b()) {
-      cn.b(cn.d());
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
     }
-    for (;;)
-    {
-      cn.a(this.a, false);
-      return;
-      h.c("post click flow msg failed:" + paramf.a + "-" + paramf.b);
-      if (cn.e() < cn.f()) {}
-      try
-      {
-        cn.b(cn.f());
-      }
-      catch (Exception paramf)
-      {
-        continue;
-        cn.b(cn.d());
-      }
-      catch (Error paramf) {}
-    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
   }
 }
 

@@ -8,7 +8,7 @@ public final class sweet_rsp_comm
   extends JceStruct
 {
   public String errmsg = "";
-  public int retcode;
+  public int retcode = 0;
   
   public sweet_rsp_comm() {}
   
@@ -27,14 +27,15 @@ public final class sweet_rsp_comm
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retcode, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    String str = this.errmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_BASE.sweet_rsp_comm
  * JD-Core Version:    0.7.0.1
  */

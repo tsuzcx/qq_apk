@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textSize="@dimen/3r" android:id="@id/title" android:layout_width="@dimen/1e" style="@style/61" />
+    <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/3r" android:id="@id/btq" style="@style/60" />
+</merge>

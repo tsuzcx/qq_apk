@@ -1,74 +1,118 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.l;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.CircularImageView;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class s
-  extends k
+  extends n
 {
-  public s(Context paramContext, l paraml, ViewGroup paramViewGroup)
+  CircularImageView QPw;
+  
+  public s(Context paramContext, u paramu, ViewGroup paramViewGroup)
   {
-    super(paramContext, paraml, paramViewGroup);
+    super(paramContext, paramu, paramViewGroup);
   }
   
-  protected final void e(Button paramButton)
+  public final void Gs()
   {
-    AppMethodBeat.i(37237);
-    l locall = cri();
-    if (g.u(this.context, locall.rsf))
+    this.QPw = ((CircularImageView)this.contentView);
+  }
+  
+  protected final void had()
+  {
+    AppMethodBeat.i(96504);
+    if ((this.contentView == null) || (this.QPw == null))
     {
-      paramButton.setOnClickListener(new s.1(this, locall));
-      AppMethodBeat.o(37237);
+      AppMethodBeat.o(96504);
       return;
     }
-    super.e(paramButton);
-    AppMethodBeat.o(37237);
+    u localu = (u)this.QOV;
+    if (localu == null)
+    {
+      AppMethodBeat.o(96504);
+      return;
+    }
+    k.b("adId", localu.QKj, new g.a()
+    {
+      public final void aWn(String paramAnonymousString)
+      {
+        AppMethodBeat.i(96501);
+        s locals;
+        try
+        {
+          paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString);
+          locals = s.this;
+          if (paramAnonymousString == null)
+          {
+            Log.e("AdLandingPageCircleImgComp", "when set image the bmp is null!");
+            AppMethodBeat.o(96501);
+            return;
+          }
+          if (locals.QPw == null)
+          {
+            Log.e("AdLandingPageCircleImgComp", "when set image the img is null!");
+            AppMethodBeat.o(96501);
+            return;
+          }
+        }
+        catch (Exception paramAnonymousString)
+        {
+          Log.e("AdLandingPageCircleImgComp", "%s" + Util.stackTraceToString(paramAnonymousString));
+          AppMethodBeat.o(96501);
+          return;
+        }
+        if (paramAnonymousString.getWidth() == 0)
+        {
+          Log.e("AdLandingPageCircleImgComp", "when set image the bmp.getWidth is 0!");
+          AppMethodBeat.o(96501);
+          return;
+        }
+        locals.QPw.setImageBitmap(paramAnonymousString);
+        AppMethodBeat.o(96501);
+      }
+      
+      public final void gZM() {}
+      
+      public final void gZN() {}
+    });
+    AppMethodBeat.o(96504);
   }
   
-  public final boolean v(Context paramContext, String paramString1, String paramString2)
+  protected final void hal()
   {
-    AppMethodBeat.i(37238);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
-    {
-      AppMethodBeat.o(37238);
-      return false;
+    AppMethodBeat.i(96502);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.QOV.paddingLeft, (int)this.QOV.paddingTop, (int)this.QOV.paddingRight, (int)this.QOV.paddingBottom);
     }
-    try
-    {
-      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
-      if (localIntent != null)
-      {
-        paramString1 = paramContext;
-        if (!(paramContext instanceof Activity)) {
-          paramString1 = this.context;
-        }
-        a.post(new s.2(this, paramString1, localIntent, paramString2));
-        AppMethodBeat.o(37238);
-        return true;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      ab.e("AdLandingPageOpenAppBtnComp", bo.l(paramContext));
-      AppMethodBeat.o(37238);
-    }
-    return false;
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(96502);
+  }
+  
+  protected final View ham()
+  {
+    AppMethodBeat.i(96503);
+    CircularImageView localCircularImageView = new CircularImageView(this.context);
+    AppMethodBeat.o(96503);
+    return localCircularImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.s
  * JD-Core Version:    0.7.0.1
  */

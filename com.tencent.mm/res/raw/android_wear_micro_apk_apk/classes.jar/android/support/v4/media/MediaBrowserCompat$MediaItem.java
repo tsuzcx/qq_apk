@@ -14,13 +14,13 @@ public class MediaBrowserCompat$MediaItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaItem> CREATOR = new Parcelable.Creator() {};
-  private final int df;
-  private final MediaDescriptionCompat gJ;
+  private final int eT;
+  private final MediaDescriptionCompat iH;
   
   MediaBrowserCompat$MediaItem(Parcel paramParcel)
   {
-    this.df = paramParcel.readInt();
-    this.gJ = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.eT = paramParcel.readInt();
+    this.iH = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
   }
   
   private MediaBrowserCompat$MediaItem(MediaDescriptionCompat paramMediaDescriptionCompat, int paramInt)
@@ -31,8 +31,8 @@ public class MediaBrowserCompat$MediaItem
     if (TextUtils.isEmpty(paramMediaDescriptionCompat.getMediaId())) {
       throw new IllegalArgumentException("description must have a non-empty media id");
     }
-    this.df = paramInt;
-    this.gJ = paramMediaDescriptionCompat;
+    this.eT = paramInt;
+    this.iH = paramMediaDescriptionCompat;
   }
   
   public static List<MediaItem> c(List<?> paramList)
@@ -47,7 +47,7 @@ public class MediaBrowserCompat$MediaItem
       paramList = localIterator.next();
       if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
       int i;
-      for (paramList = null;; paramList = new MediaItem(MediaDescriptionCompat.c(((MediaBrowser.MediaItem)paramList).getDescription()), i))
+      for (paramList = null;; paramList = new MediaItem(MediaDescriptionCompat.i(((MediaBrowser.MediaItem)paramList).getDescription()), i))
       {
         localArrayList.add(paramList);
         break;
@@ -65,16 +65,16 @@ public class MediaBrowserCompat$MediaItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MediaItem{");
-    localStringBuilder.append("mFlags=").append(this.df);
-    localStringBuilder.append(", mDescription=").append(this.gJ);
+    localStringBuilder.append("mFlags=").append(this.eT);
+    localStringBuilder.append(", mDescription=").append(this.iH);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.df);
-    this.gJ.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeInt(this.eT);
+    this.iH.writeToParcel(paramParcel, paramInt);
   }
 }
 

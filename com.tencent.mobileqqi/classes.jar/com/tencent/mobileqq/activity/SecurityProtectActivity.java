@@ -17,8 +17,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.HttpDownloadUtil.DownloadInfoListener;
 import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import dhl;
 import dhm;
-import dhn;
 
 public class SecurityProtectActivity
   extends IphoneTitleBarActivity
@@ -57,7 +57,7 @@ public class SecurityProtectActivity
     {
       this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
     }
-    new Handler(Looper.getMainLooper()).post(new dhn(this));
+    new Handler(Looper.getMainLooper()).post(new dhm(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -65,12 +65,12 @@ public class SecurityProtectActivity
     super.doOnCreate(paramBundle);
     setContentView(2130903951);
     setTitle(2131562385);
-    ((TextView)findViewById(2131231456)).setVisibility(8);
+    ((TextView)findViewById(2131231455)).setVisibility(8);
     c(2131561746, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234417));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232950));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232960));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232951));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131234416));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232949));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131232959));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232950));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setFocusable(true);
@@ -139,15 +139,15 @@ public class SecurityProtectActivity
     {
     default: 
       return;
-    case 2131232951: 
+    case 2131232950: 
       if (!this.jdField_a_of_type_Boolean)
       {
-        ThreadManager.a(new dhm(this));
+        ThreadManager.a(new dhl(this));
         this.c = true;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(2131562257);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        ((LinearLayout)findViewById(2131234418)).setVisibility(0);
+        ((LinearLayout)findViewById(2131234417)).setVisibility(0);
         ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_", "click on bluebtn download qqpimsecure", 0, 0, "", "", "", "");
         return;
       }

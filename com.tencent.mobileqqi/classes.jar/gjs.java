@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantActivity;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantItemData;
+import com.tencent.mobileqq.sharealbum.QZoneShareAlbumAssistantManager;
+import java.util.Comparator;
 
 public class gjs
-  implements View.OnClickListener
+  implements Comparator
 {
-  public gjs(QZoneShareAlbumAssistantActivity paramQZoneShareAlbumAssistantActivity) {}
+  public gjs(QZoneShareAlbumAssistantManager paramQZoneShareAlbumAssistantManager) {}
   
-  public void onClick(View paramView)
+  public int a(QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData1, QZoneShareAlbumAssistantItemData paramQZoneShareAlbumAssistantItemData2)
   {
-    QZoneShareAlbumAssistantActivity.b(this.a);
-    this.a.a(7);
+    long l1 = paramQZoneShareAlbumAssistantItemData1.lastmsgtime;
+    long l2 = paramQZoneShareAlbumAssistantItemData2.lastmsgtime;
+    if (l1 < l2) {
+      return 1;
+    }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

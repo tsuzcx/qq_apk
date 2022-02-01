@@ -9,14 +9,14 @@ final class SendDataToDeviceProgressBar$1
   
   public final void run()
   {
-    AppMethodBeat.i(30998);
-    this.zCl.invalidate();
-    AppMethodBeat.o(30998);
+    AppMethodBeat.i(34883);
+    this.aelD.invalidate();
+    AppMethodBeat.o(34883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.SendDataToDeviceProgressBar.1
  * JD-Core Version:    0.7.0.1
  */

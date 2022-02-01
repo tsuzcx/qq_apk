@@ -11,83 +11,85 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.w.a.e;
+import com.tencent.mm.plugin.w.a.f;
+import com.tencent.mm.ui.af;
 
 public class VideoSeekBarEditorView
   extends LinearLayout
 {
-  private Button mlV;
-  public RecyclerThumbSeekBar oQL;
-  private Button oQM;
-  private LinearLayout oQN;
+  public RecyclerThumbSeekBar Leu;
+  private Button Lev;
+  private LinearLayout ybr;
+  private Button zVS;
   
   public VideoSeekBarEditorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55302);
+    AppMethodBeat.i(94754);
     init(paramContext);
-    AppMethodBeat.o(55302);
+    AppMethodBeat.o(94754);
   }
   
   public VideoSeekBarEditorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(55303);
+    AppMethodBeat.i(94755);
     init(paramContext);
-    AppMethodBeat.o(55303);
+    AppMethodBeat.o(94755);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(55304);
-    this.oQN = ((LinearLayout)w.hM(paramContext).inflate(2130971075, this, true));
-    this.oQL = ((RecyclerThumbSeekBar)findViewById(2131828735));
-    this.mlV = ((Button)findViewById(2131826738));
-    this.oQM = ((Button)findViewById(2131826739));
-    AppMethodBeat.o(55304);
+    AppMethodBeat.i(94756);
+    this.ybr = ((LinearLayout)af.mU(paramContext).inflate(a.f.video_seek_bar_editor_view, this, true));
+    this.Leu = ((RecyclerThumbSeekBar)findViewById(a.e.video_thumb_seek_bar));
+    this.zVS = ((Button)findViewById(a.e.edit_text_cancel));
+    this.Lev = ((Button)findViewById(a.e.edit_text_ok));
+    AppMethodBeat.o(94756);
   }
   
-  public final void bSm()
+  public final void gdz()
   {
-    AppMethodBeat.i(55308);
-    this.oQL.release();
-    ViewParent localViewParent = this.oQL.getParent();
+    AppMethodBeat.i(94760);
+    this.Leu.release();
+    ViewParent localViewParent = this.Leu.getParent();
     if ((localViewParent instanceof LinearLayout))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.oQL.getLayoutParams();
-      ((LinearLayout)localViewParent).removeView(this.oQL);
-      this.oQL = new RecyclerThumbSeekBar(getContext());
-      ((LinearLayout)localViewParent).addView(this.oQL, 0, localLayoutParams);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Leu.getLayoutParams();
+      ((LinearLayout)localViewParent).removeView(this.Leu);
+      this.Leu = new RecyclerThumbSeekBar(getContext());
+      ((LinearLayout)localViewParent).addView(this.Leu, 0, localLayoutParams);
     }
-    AppMethodBeat.o(55308);
+    AppMethodBeat.o(94760);
   }
   
   public void setCancelButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(55307);
-    this.mlV.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(55307);
+    AppMethodBeat.i(94759);
+    this.zVS.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(94759);
   }
   
   public void setFinishButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(55306);
-    this.oQM.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(55306);
+    AppMethodBeat.i(94758);
+    this.Lev.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(94758);
   }
   
   public void setTextColor(String paramString)
   {
-    AppMethodBeat.i(55305);
+    AppMethodBeat.i(94757);
     if (paramString != null) {
-      this.oQM.setTextColor(Color.parseColor(paramString));
+      this.Lev.setTextColor(Color.parseColor(paramString));
     }
-    AppMethodBeat.o(55305);
+    AppMethodBeat.o(94757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.VideoSeekBarEditorView
  * JD-Core Version:    0.7.0.1
  */

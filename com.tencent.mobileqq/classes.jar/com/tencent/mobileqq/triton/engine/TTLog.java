@@ -1,79 +1,84 @@
 package com.tencent.mobileqq.triton.engine;
 
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.sdk.ITLog;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.Charsets;
+import org.jetbrains.annotations.Nullable;
 
-@TTNativeModule(name="TTLog")
-public class TTLog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/engine/TTLog;", "", "()V", "VCONSOLE_LOG_DEBUG", "", "printNativeLog", "", "level", "tagBytes", "", "infoBytes", "Triton_release"}, k=1, mv={1, 1, 16})
+public final class TTLog
 {
-  private static ITLog sDefLog = new TTLog.1();
-  private static ITLog sLogProxy;
+  public static final TTLog INSTANCE = new TTLog();
+  private static final int VCONSOLE_LOG_DEBUG = 100;
   
-  public static int d(String paramString1, String paramString2)
+  @JvmStatic
+  @TritonKeep
+  public static final void printNativeLog(int paramInt, @Nullable byte[] paramArrayOfByte1, @Nullable byte[] paramArrayOfByte2)
   {
-    return getLog().d(paramString1, paramString2);
-  }
-  
-  public static int d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static int e(String paramString1, String paramString2)
-  {
-    return getLog().e(paramString1, paramString2);
-  }
-  
-  public static int e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().e(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static ITLog getLog()
-  {
-    if (sLogProxy != null) {
-      return sLogProxy;
+    if (paramArrayOfByte1 == null) {
+      Intrinsics.throwNpe();
     }
-    return sDefLog;
-  }
-  
-  public static int i(String paramString1, String paramString2)
-  {
-    return getLog().i(paramString1, paramString2);
-  }
-  
-  public static int i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().i(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void init(ITLog paramITLog)
-  {
-    sLogProxy = paramITLog;
-  }
-  
-  @TTNativeCall
-  public static void printNativeLog(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    paramArrayOfByte1 = new String(paramArrayOfByte1);
-    paramArrayOfByte2 = new String(paramArrayOfByte2);
-    getLog().printNativeLog(paramInt, paramArrayOfByte1, paramArrayOfByte2);
-  }
-  
-  public static int w(String paramString1, String paramString2)
-  {
-    return getLog().w(paramString1, paramString2);
-  }
-  
-  public static int w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    return getLog().w(paramString1, paramString2, paramThrowable);
+    paramArrayOfByte1 = new String(paramArrayOfByte1, Charsets.UTF_8);
+    if (paramArrayOfByte2 == null) {
+      Intrinsics.throwNpe();
+    }
+    paramArrayOfByte2 = new String(paramArrayOfByte2, Charsets.UTF_8);
+    if (paramInt >= 100)
+    {
+      paramInt = paramInt - 100 + 2;
+      if (paramInt != 3)
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 5)
+          {
+            if (paramInt != 6)
+            {
+              Logger.cv$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+              return;
+            }
+            Logger.ce$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+            return;
+          }
+          Logger.cw$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+          return;
+        }
+        Logger.ci$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+        return;
+      }
+      Logger.cd$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+      return;
+    }
+    paramInt += 2;
+    if (paramInt != 3)
+    {
+      if (paramInt != 4)
+      {
+        if (paramInt != 5)
+        {
+          if (paramInt != 6)
+          {
+            Logger.v$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+            return;
+          }
+          Logger.e$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+          return;
+        }
+        Logger.w$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+        return;
+      }
+      Logger.i$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
+      return;
+    }
+    Logger.d$default(paramArrayOfByte1, paramArrayOfByte2, null, 4, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTLog
  * JD-Core Version:    0.7.0.1
  */

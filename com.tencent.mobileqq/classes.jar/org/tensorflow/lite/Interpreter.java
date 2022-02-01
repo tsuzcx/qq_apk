@@ -49,9 +49,10 @@ public final class Interpreter
   
   public void close()
   {
-    if (this.wrapper != null)
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null)
     {
-      this.wrapper.close();
+      localNativeInterpreterWrapper.close();
       this.wrapper = null;
     }
   }
@@ -71,34 +72,40 @@ public final class Interpreter
   
   public int getInputIndex(String paramString)
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null) {
+      return localNativeInterpreterWrapper.getInputIndex(paramString);
     }
-    return this.wrapper.getInputIndex(paramString);
+    throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
   }
   
   public Long getLastNativeInferenceDurationNanoseconds()
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("Internal error: The interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null) {
+      return localNativeInterpreterWrapper.getLastNativeInferenceDurationNanoseconds();
     }
-    return this.wrapper.getLastNativeInferenceDurationNanoseconds();
+    throw new IllegalStateException("Internal error: The interpreter has already been closed.");
   }
   
   public int getOutputIndex(String paramString)
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null) {
+      return localNativeInterpreterWrapper.getOutputIndex(paramString);
     }
-    return this.wrapper.getOutputIndex(paramString);
+    throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
   }
   
   public void resizeInput(int paramInt, int[] paramArrayOfInt)
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null)
+    {
+      localNativeInterpreterWrapper.resizeInput(paramInt, paramArrayOfInt);
+      return;
     }
-    this.wrapper.resizeInput(paramInt, paramArrayOfInt);
+    throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
   }
   
   public void run(Object paramObject1, Object paramObject2)
@@ -110,25 +117,32 @@ public final class Interpreter
   
   public void runForMultipleInputsOutputs(Object[] paramArrayOfObject, Map<Integer, Object> paramMap)
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null)
+    {
+      localNativeInterpreterWrapper.run(paramArrayOfObject, paramMap);
+      return;
     }
-    this.wrapper.run(paramArrayOfObject, paramMap);
+    throw new IllegalStateException("Internal error: The Interpreter has already been closed.");
   }
   
   public void setNumThreads(int paramInt)
   {
-    if (this.wrapper == null) {
-      throw new IllegalStateException("The interpreter has already been closed.");
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null)
+    {
+      localNativeInterpreterWrapper.setNumThreads(paramInt);
+      return;
     }
-    this.wrapper.setNumThreads(paramInt);
+    throw new IllegalStateException("The interpreter has already been closed.");
   }
   
   public void setUseNNAPI(boolean paramBoolean)
   {
-    if (this.wrapper != null)
+    NativeInterpreterWrapper localNativeInterpreterWrapper = this.wrapper;
+    if (localNativeInterpreterWrapper != null)
     {
-      this.wrapper.setUseNNAPI(paramBoolean);
+      localNativeInterpreterWrapper.setUseNNAPI(paramBoolean);
       return;
     }
     throw new IllegalStateException("Internal error: NativeInterpreterWrapper has already been closed.");
@@ -136,7 +150,7 @@ public final class Interpreter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.tensorflow.lite.Interpreter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,97 @@
-import android.os.IBinder;
-import cooperation.qlink.IQlinkService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QLAndQQStructDef.ReportNbFileFileSendInfo;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlinkReport;
+import cooperation.qlink.QlinkServiceManager;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TimerTask;
 
 public class ial
-  implements IQlinkService
+  extends TimerTask
 {
-  private IBinder a;
+  public ial(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public ial(IBinder paramIBinder)
+  public void run()
   {
-    this.a = paramIBinder;
-  }
-  
-  public String a()
-  {
-    return "cooperation.qlink.IQlinkService";
-  }
-  
-  /* Error */
-  public void a(cooperation.qlink.SendMsg paramSendMsg)
-  {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 19
-    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +41 -> 56
-    //   18: aload_2
-    //   19: iconst_1
-    //   20: invokevirtual 34	android/os/Parcel:writeInt	(I)V
-    //   23: aload_1
-    //   24: aload_2
-    //   25: iconst_0
-    //   26: invokevirtual 40	cooperation/qlink/SendMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   29: aload_0
-    //   30: getfield 15	ial:a	Landroid/os/IBinder;
-    //   33: iconst_1
-    //   34: aload_2
-    //   35: aload_3
-    //   36: iconst_0
-    //   37: invokeinterface 46 5 0
-    //   42: pop
-    //   43: aload_3
-    //   44: invokevirtual 49	android/os/Parcel:readException	()V
-    //   47: aload_3
-    //   48: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   51: aload_2
-    //   52: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   55: return
-    //   56: aload_2
-    //   57: iconst_0
-    //   58: invokevirtual 34	android/os/Parcel:writeInt	(I)V
-    //   61: goto -32 -> 29
-    //   64: astore_1
-    //   65: aload_3
-    //   66: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   69: aload_2
-    //   70: invokevirtual 52	android/os/Parcel:recycle	()V
-    //   73: aload_1
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	ial
-    //   0	75	1	paramSendMsg	cooperation.qlink.SendMsg
-    //   3	67	2	localParcel1	android.os.Parcel
-    //   7	59	3	localParcel2	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	64	finally
-    //   18	29	64	finally
-    //   29	47	64	finally
-    //   56	61	64	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.i("QQProxyForQlink", 2, "[QLINK]-QQ Trans2InvaildTimer run...");
+    }
+    Object localObject1 = QQProxyForQlink.a(this.a);
+    long l1 = MessageCache.a() * 1000L;
+    int i;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+    {
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        long l2 = ((Long)((Map.Entry)localObject2).getKey()).longValue();
+        if (l1 - ((Long)((Map.Entry)localObject2).getValue()).longValue() > 480000L)
+        {
+          FileManagerEntity localFileManagerEntity = QQProxyForQlink.a(this.a).a().a(l2);
+          if ((localFileManagerEntity != null) && (localFileManagerEntity.status == 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("QQProxyForQlink", 2, "[QLINK]-QQ [" + l2 + "]Trans2InvaildTimer run...  is failed timeout.Failed2Invaild");
+            }
+            localFileManagerEntity.status = 16;
+            QQProxyForQlink.a(this.a).a().c(localFileManagerEntity);
+            QQProxyForQlink.a(this.a).a().a(true, 0, null);
+            QQProxyForQlink.a(this.a, l2);
+          }
+        }
+        if (l1 - ((Long)((Map.Entry)localObject2).getValue()).longValue() > 480000L)
+        {
+          localObject2 = QQProxyForQlink.a(this.a).a().a(l2);
+          if ((localObject2 != null) && (18 == ((FileManagerEntity)localObject2).status) && (((FileManagerEntity)localObject2).bSend))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("QQProxyForQlink", 2, "[QLINK]-QQ [" + l2 + "]Trans2InvaildTimer run...   msg of sending wait be recviced too long. 2 invaild!!!!");
+            }
+            ((FileManagerEntity)localObject2).status = 16;
+            ((FileManagerEntity)localObject2).errCode = -207;
+            QQProxyForQlink.a(this.a).a().c((FileManagerEntity)localObject2);
+            QQProxyForQlink.a(this.a).a().a(true, 0, null);
+            QQProxyForQlink.a(this.a, l2);
+            QQProxyForQlink.a(this.a).a().a(l2);
+            if (((FileManagerEntity)localObject2).qlmsgSrc != 0) {}
+            for (i = ((FileManagerEntity)localObject2).qlmsgSrc;; i = QQProxyForQlink.a(this.a, ((FileManagerEntity)localObject2).nSessionId))
+            {
+              i = QlinkReport.a(i);
+              QQProxyForQlink.b(this.a, ((FileManagerEntity)localObject2).nSessionId);
+              QQProxyForQlink.a(this.a, false, new QLAndQQStructDef.ReportNbFileFileSendInfo(false, ((FileManagerEntity)localObject2).errCode, i, ((FileManagerEntity)localObject2).fileSize, ((FileManagerEntity)localObject2).fileName, 0L, 0L, 0L, null, 0, String.valueOf(((FileManagerEntity)localObject2).nSessionId), null, null, null));
+              break;
+            }
+          }
+        }
+      }
+      if (QQProxyForQlink.a(this.a) != 0) {
+        break label544;
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("QQProxyForQlink", 2, "[QLINK]-QQ Trans2InvaildTimer run... stop it");
+        }
+        QQProxyForQlink.a(this.a);
+      }
+      return;
+      i = 1;
+      continue;
+      label544:
+      i = 0;
+    }
   }
 }
 

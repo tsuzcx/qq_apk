@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:layout_gravity="center_horizontal" android:id="@id/cig" android:layout_width="180.0dip" android:layout_height="35.0dip" android:layout_marginTop="160.0dip" android:layout_marginBottom="30.0dip" android:text="@string/cet" style="@style/pb" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/tr" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/d1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:id="@id/czb" android:paddingRight="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d8o" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:clickable="false" android:layout_width="10.0dip" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
 </LinearLayout>

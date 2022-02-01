@@ -8,10 +8,10 @@ public final class SvcReqKikOut
   extends JceStruct
 {
   static byte[] cache_sKey;
-  public long appid;
-  public byte cKeyType;
-  public long lUin;
-  public byte[] sKey;
+  public long appid = 0L;
+  public byte cKeyType = 0;
+  public long lUin = 0L;
+  public byte[] sKey = null;
   
   public SvcReqKikOut() {}
   
@@ -46,7 +46,7 @@ public final class SvcReqKikOut
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.SvcReqKikOut
  * JD-Core Version:    0.7.0.1
  */

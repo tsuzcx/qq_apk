@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.activity.pendant;
 
 import android.os.Bundle;
-import bdfp;
-import bead;
-import beae;
-import beag;
-import beaj;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -14,12 +15,12 @@ import java.lang.ref.WeakReference;
 class AvatarPendantActivity$IconRunnable
   implements Runnable
 {
-  WeakReference<bead> a;
+  WeakReference<DownloadListener> a;
   WeakReference<QQAppInterface> b;
   
-  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, bead parambead, QQAppInterface paramQQAppInterface)
+  AvatarPendantActivity$IconRunnable(AvatarPendantActivity paramAvatarPendantActivity, DownloadListener paramDownloadListener, QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(parambead);
+    this.a = new WeakReference(paramDownloadListener);
     this.b = new WeakReference(paramQQAppInterface);
   }
   
@@ -30,14 +31,17 @@ class AvatarPendantActivity$IconRunnable
     }
     if ((this.b.get() != null) && (this.a.get() != null))
     {
-      beaj localbeaj = ((beag)((QQAppInterface)this.b.get()).getManager(47)).a(1);
-      if (localbeaj.a(bdfp.a) == null)
+      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+      if (localDownloaderInterface.getTask(AvatarPendantUtil.c) == null)
       {
-        Object localObject = new File(bdfp.b + "/icon.zip");
-        localObject = new beae(bdfp.a, (File)localObject);
-        ((beae)localObject).p = false;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(AvatarPendantUtil.d);
+        ((StringBuilder)localObject).append("/icon.zip");
+        localObject = new File(((StringBuilder)localObject).toString());
+        localObject = new DownloadTask(AvatarPendantUtil.c, (File)localObject);
+        ((DownloadTask)localObject).N = false;
         Bundle localBundle = new Bundle();
-        localbeaj.a((beae)localObject, (bead)this.a.get(), localBundle);
+        localDownloaderInterface.startDownload((DownloadTask)localObject, (DownloadListener)this.a.get(), localBundle);
       }
     }
   }

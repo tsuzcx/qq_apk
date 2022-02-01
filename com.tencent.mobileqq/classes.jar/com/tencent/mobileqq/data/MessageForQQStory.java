@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.graphics.Color;
 import android.text.TextUtils;
-import bhsz;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.URLUtil;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -54,16 +54,33 @@ public class MessageForQQStory
   
   public static String buildCompatibleText(String paramString1, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString2 + alud.a(2131707011) + paramString3 + alud.a(2131707007) + "QQ" + alud.a(2131706979);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString2);
+      paramString1.append(HardCodeUtil.a(2131904503));
+      paramString1.append(paramString3);
+      paramString1.append(HardCodeUtil.a(2131904499));
+      paramString1.append("QQ");
+      paramString1.append(HardCodeUtil.a(2131904471));
+      return paramString1.toString();
     }
-    return paramString1 + "-" + paramString2 + alud.a(2131706990) + paramString3 + alud.a(2131707005) + "QQ" + alud.a(2131706974);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(HardCodeUtil.a(2131904482));
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(HardCodeUtil.a(2131904497));
+    localStringBuilder.append("QQ");
+    localStringBuilder.append(HardCodeUtil.a(2131904466));
+    return localStringBuilder.toString();
   }
   
   public void doParse()
   {
     super.doParse();
-    localStructMsgForGeneralShare = (StructMsgForGeneralShare)this.structingMsg;
+    StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)this.structingMsg;
     this.brief = localStructMsgForGeneralShare.mMsgBrief;
     this.srcName = localStructMsgForGeneralShare.mSourceName;
     this.srcAction = localStructMsgForGeneralShare.mSourceAction;
@@ -76,7 +93,7 @@ public class MessageForQQStory
       this.briefBgColor = localJSONObject.optInt("briefBgColor");
       this.mHeadTip = localJSONObject.optString("headtip");
       this.mVid = localJSONObject.optString("vid");
-      this.mAttrMap = bhsz.a(this.msgAction);
+      this.mAttrMap = URLUtil.a(this.msgAction);
       if (TextUtils.isEmpty(this.mVid))
       {
         this.mVid = ((String)this.mAttrMap.get("videoId"));
@@ -96,11 +113,14 @@ public class MessageForQQStory
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.share", 2, "doParse exp:" + localStructMsgForGeneralShare.mQQStoryExtra + ", " + localException.toString());
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doParse exp:");
+        localStringBuilder.append(localStructMsgForGeneralShare.mQQStoryExtra);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(localException.toString());
+        QLog.w("Q.qqstory.share", 2, localStringBuilder.toString());
       }
     }
     this.msg = getSummaryMsg();
@@ -108,7 +128,12 @@ public class MessageForQQStory
   
   public String getSummaryMsg()
   {
-    return "[" + this.srcName + "]" + this.brief;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.srcName);
+    localStringBuilder.append("]");
+    localStringBuilder.append(this.brief);
+    return localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -118,37 +143,53 @@ public class MessageForQQStory
   
   public String toString()
   {
-    Object localObject2 = "";
+    String str2;
     try
     {
-      localObject1 = String.format("#%x", new Object[] { Integer.valueOf(this.briefBgColor) });
-      localObject2 = new StringBuilder("MessageForQQStory{");
-      ((StringBuilder)localObject2).append("coverImgUrl='").append(this.coverImgUrl).append('\'');
-      ((StringBuilder)localObject2).append(", logoImgUrl='").append(this.logoImgUrl).append('\'');
-      ((StringBuilder)localObject2).append(", brief='").append(this.brief).append('\'');
-      ((StringBuilder)localObject2).append(", briefBgColor=").append((String)localObject1);
-      ((StringBuilder)localObject2).append(", srcName='").append(this.srcName).append('\'');
-      ((StringBuilder)localObject2).append(", srcAction='").append(this.srcAction).append('\'');
-      ((StringBuilder)localObject2).append(", msgAction='").append(this.msgAction).append('\'');
-      ((StringBuilder)localObject2).append(", authorName='").append(this.authorName).append('\'');
-      ((StringBuilder)localObject2).append(", type='").append(this.type).append('\'');
-      ((StringBuilder)localObject2).append(", storyTitle='").append(this.storyTitle).append('\'');
-      ((StringBuilder)localObject2).append(", storyBrief='").append(this.storyBrief).append('\'');
-      ((StringBuilder)localObject2).append('}');
-      return ((StringBuilder)localObject2).toString();
+      String str1 = String.format("#%x", new Object[] { Integer.valueOf(this.briefBgColor) });
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("Q.qqstory.share", 2, "toString exp:", localException);
-          localObject1 = localObject2;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.qqstory.share", 2, "toString exp:", localException);
       }
+      str2 = "";
     }
+    StringBuilder localStringBuilder = new StringBuilder("MessageForQQStory{");
+    localStringBuilder.append("coverImgUrl='");
+    localStringBuilder.append(this.coverImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoImgUrl='");
+    localStringBuilder.append(this.logoImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", brief='");
+    localStringBuilder.append(this.brief);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", briefBgColor=");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(", srcName='");
+    localStringBuilder.append(this.srcName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", srcAction='");
+    localStringBuilder.append(this.srcAction);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", msgAction='");
+    localStringBuilder.append(this.msgAction);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", authorName='");
+    localStringBuilder.append(this.authorName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyTitle='");
+    localStringBuilder.append(this.storyTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyBrief='");
+    localStringBuilder.append(this.storyBrief);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

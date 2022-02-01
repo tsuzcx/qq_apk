@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/mzd" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/mzc" android:background="@drawable/gy8" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" android:contentDescription="@string/pb" />
+        <RelativeLayout android:id="@id/mze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/mvy" android:background="@drawable/gy7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" android:contentDescription="@string/pb" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/mw0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mvy">
+            <TextView android:textSize="14.0sp" android:textColor="#ff4e4e4e" android:id="@id/mvz" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="@string/x8g" android:shadowColor="#ff000000" android:shadowDy="1.0" android:shadowRadius="1.0" />
+            <Button android:textSize="14.0sp" android:textColor="#ff71a3d3" android:id="@id/n33" android:background="@null" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:minWidth="0.0dip" android:minHeight="40.0dip" android:text="@string/x8f" />
+        </LinearLayout>
+        <TextView android:textSize="16.0sp" android:textColor="#ff4e4e4e" android:gravity="center_horizontal" android:id="@id/nk1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/mzc" />
+    </RelativeLayout>
+    <com.tencent.qqmail.view.imageview.QMGestureImageView android:gravity="center" android:id="@id/dce" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@string/xaz" />
+    <ImageButton android:id="@id/nj2" android:background="@null" android:padding="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c_u" android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/bb9" android:paddingLeft="@dimen/a5d" android:paddingRight="@dimen/a5d" android:layout_width="fill_parent" android:layout_height="@dimen/a5f"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/d2x" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cux" android:singleLine="true" />
-    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/dq" android:textColor="@color/h6" android:textColorHint="@color/h7" android:gravity="center|right" android:id="@id/d1_" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:gravity="center_vertical" android:id="@id/d2y" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cuy" android:singleLine="true" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/gq2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/kkg" android:layout_width="148.0dip" android:layout_height="172.0dip" android:src="@color/BW_93" android:scaleType="centerCrop" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/gqz" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cd" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dab" android:background="@drawable/a5a" android:paddingLeft="@dimen/bv" android:paddingTop="@dimen/a6u" android:paddingRight="@dimen/bv" android:paddingBottom="@dimen/a6u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" android:layout_marginBottom="@dimen/cd" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fo1" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icon_filled_awesome" app:iconColor="@color/az" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/az" android:id="@id/fnw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a6u" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

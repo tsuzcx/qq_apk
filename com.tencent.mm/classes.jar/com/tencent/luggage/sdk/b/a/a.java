@@ -1,71 +1,56 @@
 package com.tencent.luggage.sdk.b.a;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class a<ComponentImpType extends a.b, ComponentLogicImp extends a.a, Component extends c>
+public class a<ComponentImpType extends b, ComponentLogicImp extends a.a, Component extends f>
 {
-  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> bDM;
+  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> eqA;
   
   public a()
   {
-    AppMethodBeat.i(140679);
-    this.bDM = new ConcurrentHashMap(2);
-    AppMethodBeat.o(140679);
+    AppMethodBeat.i(146714);
+    this.eqA = new ConcurrentHashMap(2);
+    AppMethodBeat.o(146714);
   }
   
   public final ComponentLogicImp a(ComponentImpType paramComponentImpType, Component paramComponent)
   {
-    AppMethodBeat.i(140681);
-    Class localClass = (Class)this.bDM.get(paramComponentImpType.getClass().getName());
-    if (localClass != null) {}
-    try
-    {
-      paramComponentImpType = org.apache.commons.b.c.a.a(localClass, new Class[] { paramComponent.getClass() });
-      if (paramComponentImpType == null)
+    AppMethodBeat.i(146716);
+    Class localClass = (Class)this.eqA.get(paramComponentImpType.getClass().getName());
+    if (localClass != null) {
+      try
       {
-        d.e("Luggage.AppBrandLogicFactory", "hy: constructor is null, return");
-        AppMethodBeat.o(140681);
+        paramComponentImpType = (a.a)org.a.a.cQ(localClass).av(new Object[] { paramComponent }).object;
+        AppMethodBeat.o(146716);
+        return paramComponentImpType;
+      }
+      catch (Exception paramComponentImpType)
+      {
+        Log.printErrStackTrace("Luggage.AppBrandLogicFactory", paramComponentImpType, "hy: construct failed!", new Object[0]);
+        AppMethodBeat.o(146716);
         return null;
       }
-      paramComponentImpType = (a.a)paramComponentImpType.newInstance(new Object[] { paramComponent });
-      AppMethodBeat.o(140681);
-      return paramComponentImpType;
     }
-    catch (InstantiationException paramComponentImpType)
-    {
-      d.printErrStackTrace("Luggage.AppBrandLogicFactory", paramComponentImpType, "hy: construct failed!", new Object[0]);
-      AppMethodBeat.o(140681);
-      return null;
-      d.w("Luggage.AppBrandLogicFactory", "hy: implement corresponding to type %s not found!", new Object[] { paramComponentImpType });
-      AppMethodBeat.o(140681);
-      return null;
-    }
-    catch (IllegalAccessException paramComponentImpType)
-    {
-      break label85;
-    }
-    catch (InvocationTargetException paramComponentImpType)
-    {
-      label85:
-      break label85;
-    }
+    Log.w("Luggage.AppBrandLogicFactory", "hy: implement corresponding to type %s not found!", new Object[] { paramComponentImpType });
+    AppMethodBeat.o(146716);
+    return null;
   }
   
   public final void a(ComponentImpType paramComponentImpType, Class<? extends ComponentLogicImp> paramClass)
   {
-    AppMethodBeat.i(140680);
-    this.bDM.put(paramComponentImpType.getClass().getName(), paramClass);
-    AppMethodBeat.o(140680);
+    AppMethodBeat.i(146715);
+    this.eqA.put(paramComponentImpType.getClass().getName(), paramClass);
+    AppMethodBeat.o(146715);
   }
+  
+  public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a
  * JD-Core Version:    0.7.0.1
  */

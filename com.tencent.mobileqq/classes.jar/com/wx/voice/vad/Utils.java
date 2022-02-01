@@ -6,41 +6,29 @@ public class Utils
 {
   public static int finPosinArraylist(ArrayList<Byte> paramArrayList1, ArrayList<Byte> paramArrayList2)
   {
-    int k = 0;
-    int i = -1;
-    int j = i;
-    if (k <= paramArrayList1.size() - paramArrayList2.size())
+    int i = 0;
+    int k;
+    for (int j = -1; i <= paramArrayList1.size() - paramArrayList2.size(); j = k)
     {
-      j = i;
-      if (paramArrayList1.get(k) == paramArrayList2.get(0))
+      k = j;
+      if (paramArrayList1.get(i) == paramArrayList2.get(0))
       {
-        j = 0;
-        label39:
-        if (j >= paramArrayList2.size()) {
-          break label103;
+        k = 0;
+        while ((k < paramArrayList2.size()) && (paramArrayList1.get(i + k) == paramArrayList2.get(k)))
+        {
+          if (k == paramArrayList2.size() - 1) {
+            j = i;
+          }
+          k += 1;
         }
-        if (paramArrayList1.get(k + j) == paramArrayList2.get(j)) {
-          break label72;
-        }
+        k = j;
       }
-    }
-    label72:
-    label103:
-    for (j = i;; j = i)
-    {
-      if (j != -1)
-      {
-        return j;
-        if (j == paramArrayList2.size() - 1) {
-          i = k;
-        }
-        j += 1;
-        break label39;
+      if (k != -1) {
+        return k;
       }
-      k += 1;
-      i = j;
-      break;
+      i += 1;
     }
+    return j;
   }
   
   public static byte[] toByteArray(short[] paramArrayOfShort)
@@ -50,8 +38,9 @@ public class Utils
     int i = 0;
     while (i < j)
     {
-      arrayOfByte[(i * 2 + 1)] = ((byte)(paramArrayOfShort[i] >> 8));
-      arrayOfByte[(i * 2)] = ((byte)(paramArrayOfShort[i] & 0xFF));
+      int k = i * 2;
+      arrayOfByte[(k + 1)] = ((byte)(paramArrayOfShort[i] >> 8));
+      arrayOfByte[k] = ((byte)(paramArrayOfShort[i] & 0xFF));
       i += 1;
     }
     return arrayOfByte;
@@ -64,7 +53,9 @@ public class Utils
     int i = 0;
     while (i < j)
     {
-      arrayOfShort[i] = ((short)(paramArrayOfByte[(i * 2 + 1)] << 8 | paramArrayOfByte[(i * 2)] & 0xFF));
+      int k = i * 2;
+      int m = paramArrayOfByte[(k + 1)];
+      arrayOfShort[i] = ((short)(paramArrayOfByte[k] & 0xFF | m << 8));
       i += 1;
     }
     return arrayOfShort;
@@ -72,7 +63,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.wx.voice.vad.Utils
  * JD-Core Version:    0.7.0.1
  */

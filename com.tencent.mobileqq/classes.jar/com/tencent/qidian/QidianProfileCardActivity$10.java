@@ -1,28 +1,24 @@
 package com.tencent.qidian;
 
-import bfzf;
 import com.tencent.image.URLImageView;
+import com.tencent.qidian.data.GroupItem;
 import java.util.concurrent.ConcurrentHashMap;
 
 class QidianProfileCardActivity$10
   implements Runnable
 {
-  QidianProfileCardActivity$10(QidianProfileCardActivity paramQidianProfileCardActivity, QidianProfileCardActivity.QidianCompoundProfileItem paramQidianCompoundProfileItem, URLImageView paramURLImageView) {}
+  QidianProfileCardActivity$10(QidianProfileCardActivity paramQidianProfileCardActivity, GroupItem paramGroupItem, URLImageView paramURLImageView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.d;; str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString)
-    {
-      this.this$0.a.put(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_JavaLangString, new bfzf(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, str));
-      this.this$0.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity$QidianCompoundProfileItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
-      return;
-    }
+    String str = String.valueOf(this.a.a);
+    this.this$0.h.put(str, new QidianProfileCardActivity.PaGroupStruct(this.b, 3, str));
+    this.this$0.a(3, this.b, str, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.10
  * JD-Core Version:    0.7.0.1
  */

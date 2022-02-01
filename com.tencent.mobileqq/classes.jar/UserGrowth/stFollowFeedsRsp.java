@@ -4,20 +4,23 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class stFollowFeedsRsp
   extends JceStruct
 {
+  static stFollowFeedsGlobalConfig cache_config = new stFollowFeedsGlobalConfig();
   static ArrayList<stFeed> cache_feeds = new ArrayList();
   static Map<String, String> cache_map_ext;
   public String attatch_info = "";
-  public int cache_size;
-  public ArrayList<stFeed> feeds;
+  public int cache_size = 0;
+  public stFollowFeedsGlobalConfig config = null;
+  public ArrayList<stFeed> feeds = null;
   public String feeds_source = "";
   public boolean is_finished = true;
-  public Map<String, String> map_ext;
+  public Map<String, String> map_ext = null;
   public String trace_id = "";
   
   static
@@ -30,7 +33,7 @@ public final class stFollowFeedsRsp
   
   public stFollowFeedsRsp() {}
   
-  public stFollowFeedsRsp(ArrayList<stFeed> paramArrayList, String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, Map<String, String> paramMap)
+  public stFollowFeedsRsp(ArrayList<stFeed> paramArrayList, String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, Map<String, String> paramMap, stFollowFeedsGlobalConfig paramstFollowFeedsGlobalConfig)
   {
     this.feeds = paramArrayList;
     this.attatch_info = paramString1;
@@ -39,6 +42,7 @@ public final class stFollowFeedsRsp
     this.feeds_source = paramString2;
     this.trace_id = paramString3;
     this.map_ext = paramMap;
+    this.config = paramstFollowFeedsGlobalConfig;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -50,32 +54,42 @@ public final class stFollowFeedsRsp
     this.feeds_source = paramJceInputStream.readString(4, false);
     this.trace_id = paramJceInputStream.readString(5, false);
     this.map_ext = ((Map)paramJceInputStream.read(cache_map_ext, 6, false));
+    this.config = ((stFollowFeedsGlobalConfig)paramJceInputStream.read(cache_config, 7, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feeds != null) {
-      paramJceOutputStream.write(this.feeds, 0);
+    Object localObject = this.feeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.attatch_info != null) {
-      paramJceOutputStream.write(this.attatch_info, 1);
+    localObject = this.attatch_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.is_finished, 2);
     paramJceOutputStream.write(this.cache_size, 3);
-    if (this.feeds_source != null) {
-      paramJceOutputStream.write(this.feeds_source, 4);
+    localObject = this.feeds_source;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 5);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 6);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
+    }
+    localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFollowFeedsRsp
  * JD-Core Version:    0.7.0.1
  */

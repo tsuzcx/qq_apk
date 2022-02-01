@@ -4,18 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class s_yytag
   extends JceStruct
 {
   static ArrayList<Integer> cache_beginEndSeconds = new ArrayList();
-  public int actiontype;
+  public int actiontype = 0;
   public String actionurl = "";
-  public ArrayList<Integer> beginEndSeconds;
+  public ArrayList<Integer> beginEndSeconds = null;
   public String content = "";
-  public int displaytype;
+  public int displaytype = 0;
   public String logo = "";
-  public int scene;
+  public int scene = 0;
   
   static
   {
@@ -48,26 +49,30 @@ public final class s_yytag
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.logo != null) {
-      paramJceOutputStream.write(this.logo, 0);
+    Object localObject = this.logo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 1);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 3);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.scene, 4);
     paramJceOutputStream.write(this.displaytype, 5);
-    if (this.beginEndSeconds != null) {
-      paramJceOutputStream.write(this.beginEndSeconds, 6);
+    localObject = this.beginEndSeconds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_yytag
  * JD-Core Version:    0.7.0.1
  */

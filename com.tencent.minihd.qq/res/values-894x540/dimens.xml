@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qzone_home_guest_cover_height">360.0dip</dimen>
+    <dimen name="qzone_home_guest_feeds_header_height">402.0dip</dimen>
+    <dimen name="qzone_home_guest_detail_marginTop">24.0dip</dimen>
+    <dimen name="qzone_home_guest_question_height">50.0dip</dimen>
+    <dimen name="qzone_home_guest_sendResult_marginTop">12.0dip</dimen>
+</resources>

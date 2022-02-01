@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/adviewlayout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/adImageView" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/pushbannermask" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/avatar_bg_selector" />
+</FrameLayout>

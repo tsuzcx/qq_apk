@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel android:id="@id/emoview" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.emoticonview.EmotionPanelListView android:id="@id/n8x" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageButton android:id="@id/bfq" android:background="@drawable/gvg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/zef" android:layout_marginEnd="5.0dip" android:layout_alignParentEnd="true" />
+</com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel>

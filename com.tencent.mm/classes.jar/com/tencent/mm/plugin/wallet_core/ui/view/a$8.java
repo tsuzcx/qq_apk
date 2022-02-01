@@ -12,14 +12,14 @@ final class a$8
   
   public final void run()
   {
-    AppMethodBeat.i(47861);
-    ((InputMethodManager)this.val$context.getSystemService("input_method")).showSoftInput(this.uwc, 2);
-    AppMethodBeat.o(47861);
+    AppMethodBeat.i(71461);
+    ((InputMethodManager)this.val$context.getSystemService("input_method")).showSoftInput(this.VVz, 2);
+    AppMethodBeat.o(71461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.a.8
  * JD-Core Version:    0.7.0.1
  */

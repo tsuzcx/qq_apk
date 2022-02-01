@@ -1,75 +1,64 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aru;
-import com.tencent.mm.protocal.protobuf.arv;
-import com.tencent.mm.protocal.protobuf.bqi;
-import com.tencent.mm.protocal.protobuf.cri;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cvl;
+import com.tencent.mm.protocal.protobuf.cvm;
+import com.tencent.mm.protocal.protobuf.ekq;
+import com.tencent.mm.protocal.protobuf.fzj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import junit.framework.Assert;
 
 public final class b
-  extends m
-  implements k
+  extends p
+  implements m
 {
+  private h MpS;
+  private String SIY;
+  public fzj SJf;
   private final String TAG;
-  private com.tencent.mm.ai.b fsQ;
-  private f peg;
-  private String sZY;
-  public cri tah;
-  public int tal;
+  public int cqG;
+  private c otw;
   
   public b(String paramString)
   {
-    AppMethodBeat.i(25580);
+    AppMethodBeat.i(29270);
     this.TAG = "MicroMsg.NetSceneGetVoiceTransRes";
-    this.tal = -1;
-    if (!bo.isNullOrNil(paramString)) {}
+    this.cqG = -1;
+    if (!Util.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.sZY = paramString;
-      paramString = new b.a();
-      paramString.fsX = new aru();
-      paramString.fsY = new arv();
+      this.SIY = paramString;
+      paramString = new c.a();
+      paramString.otE = new cvl();
+      paramString.otF = new cvm();
       paramString.uri = "/cgi-bin/micromsg-bin/getvoicetransres";
       paramString.funcId = 548;
-      paramString.reqCmdId = 0;
+      paramString.otG = 0;
       paramString.respCmdId = 0;
-      this.fsQ = paramString.ado();
-      AppMethodBeat.o(25580);
+      this.otw = paramString.bEF();
+      AppMethodBeat.o(29270);
       return;
     }
   }
   
-  public final boolean cHd()
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(25583);
-    if ((this.tah != null) && (!bo.isNullOrNil(this.tah.xZS)))
-    {
-      AppMethodBeat.o(25583);
-      return true;
-    }
-    AppMethodBeat.o(25583);
-    return false;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(25581);
-    this.peg = paramf;
-    ((aru)this.fsQ.fsV.fta).wAs = this.sZY;
-    int i = dispatch(parame, this.fsQ, this);
-    AppMethodBeat.o(25581);
+    AppMethodBeat.i(29271);
+    this.MpS = paramh;
+    ((cvl)c.b.b(this.otw.otB)).YWC = this.SIY;
+    int i = dispatch(paramg, this.otw, this);
+    AppMethodBeat.o(29271);
     return i;
   }
   
@@ -78,34 +67,46 @@ public final class b
     return 548;
   }
   
-  public final boolean isComplete()
+  public final boolean hBv()
   {
-    return (this.tah != null) && (this.tah.fKi == 1);
+    AppMethodBeat.i(29273);
+    if ((this.SJf != null) && (!Util.isNullOrNil(this.SJf.abWK)))
+    {
+      AppMethodBeat.o(29273);
+      return true;
+    }
+    AppMethodBeat.o(29273);
+    return false;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final boolean isComplete()
   {
-    AppMethodBeat.i(25582);
+    return (this.SJf != null) && (this.SJf.oOu == 1);
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(29272);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (arv)this.fsQ.fsW.fta;
-      if (paramq.wLK != null) {
-        this.tal = paramq.wLK.xEz;
+      params = (cvm)c.c.b(this.otw.otC);
+      if (params.ZkH != null) {
+        this.cqG = params.ZkH.abpC;
       }
-      this.tah = paramq.wLI;
+      this.SJf = params.ZkF;
     }
     for (;;)
     {
-      this.peg.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(25582);
+      this.MpS.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(29272);
       return;
-      ab.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      Log.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.b
  * JD-Core Version:    0.7.0.1
  */

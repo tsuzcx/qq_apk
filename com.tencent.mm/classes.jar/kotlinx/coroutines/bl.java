@@ -1,40 +1,45 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
-public final class bl
-  implements ap, m
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class bl
+  implements bw
 {
-  public static final bl CIC;
+  final boolean isActive;
   
-  static
+  public bl(boolean paramBoolean)
   {
-    AppMethodBeat.i(118506);
-    CIC = new bl();
-    AppMethodBeat.o(118506);
+    this.isActive = paramBoolean;
   }
   
-  public final void dispose() {}
+  public final boolean isActive()
+  {
+    return this.isActive;
+  }
+  
+  public final cn kCj()
+  {
+    return null;
+  }
   
   public final String toString()
   {
-    return "NonDisposableHandle";
-  }
-  
-  public final boolean x(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118505);
-    j.q(paramThrowable, "cause");
-    AppMethodBeat.o(118505);
-    return false;
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
+    {
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bl
  * JD-Core Version:    0.7.0.1
  */

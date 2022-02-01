@@ -1,18 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtn;
-import ajty;
-
-public class RMVideoInitState$3
+class RMVideoInitState$3
   implements Runnable
 {
-  public RMVideoInitState$3(ajtn paramajtn) {}
+  RMVideoInitState$3(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
+    if (localRMVideoStateMgr.v != null) {
+      localRMVideoStateMgr.v.e();
     }
   }
 }

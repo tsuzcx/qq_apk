@@ -27,17 +27,20 @@ public class NetworkProvider
         {
         default: 
           paramContext = paramContext.getSubtypeName();
-          Log.d(TAG, "network type = " + paramContext);
-          if ((paramContext.equalsIgnoreCase("TD-SCDMA")) || (paramContext.equalsIgnoreCase("WCDMA")) || (paramContext.equalsIgnoreCase("CDMA2000"))) {
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("network type = ");
+          localStringBuilder.append(paramContext);
+          Log.d(str, localStringBuilder.toString());
+          if ((paramContext.equalsIgnoreCase("TD-SCDMA")) || (paramContext.equalsIgnoreCase("WCDMA"))) {
+            break label230;
+          }
+          if (paramContext.equalsIgnoreCase("CDMA2000")) {
             return 3;
           }
           break;
-        case 1: 
-        case 2: 
-        case 4: 
-        case 7: 
-        case 11: 
-          return 2;
+        case 13: 
+          return 4;
         case 3: 
         case 5: 
         case 6: 
@@ -48,11 +51,21 @@ public class NetworkProvider
         case 14: 
         case 15: 
           return 3;
-        case 13: 
-          return 4;
+        case 1: 
+        case 2: 
+        case 4: 
+        case 7: 
+        case 11: 
+          return 2;
         }
-        Log.d(TAG, "unknown network type = " + paramContext);
+        String str = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("unknown network type = ");
+        localStringBuilder.append(paramContext);
+        Log.d(str, localStringBuilder.toString());
         return 0;
+        label230:
+        return 3;
       }
     }
     return 0;
@@ -60,7 +73,7 @@ public class NetworkProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.ptt.NetworkProvider
  * JD-Core Version:    0.7.0.1
  */

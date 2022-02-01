@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -32,102 +32,119 @@ class PlatformChannel$1
       switch (((String)localObject).hashCode())
       {
       case 2119655719: 
-        paramResult.notImplemented();
-        return;
+        if (((String)localObject).equals("SystemChrome.setPreferredOrientations")) {
+          i = 2;
+        }
+        break;
+      case 1674312266: 
+        if (((String)localObject).equals("SystemChrome.setEnabledSystemUIOverlays")) {
+          i = 4;
+        }
+        break;
+      case 1514180520: 
+        if (((String)localObject).equals("Clipboard.getData")) {
+          i = 8;
+        }
+        break;
+      case 1390477857: 
+        if (((String)localObject).equals("SystemChrome.setSystemUIOverlayStyle")) {
+          i = 6;
+        }
+        break;
+      case 875995648: 
+        if (((String)localObject).equals("Clipboard.hasStrings")) {
+          i = 10;
+        }
+        break;
+      case 241845679: 
+        if (((String)localObject).equals("SystemChrome.restoreSystemUIOverlays")) {
+          i = 5;
+        }
+        break;
+      case -215273374: 
+        if (((String)localObject).equals("SystemSound.play")) {
+          i = 0;
+        }
+        break;
+      case -247230243: 
+        if (((String)localObject).equals("HapticFeedback.vibrate")) {
+          i = 1;
+        }
+        break;
+      case -548468504: 
+        if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription")) {
+          i = 3;
+        }
+        break;
+      case -720677196: 
+        if (((String)localObject).equals("Clipboard.setData")) {
+          i = 9;
+        }
+        break;
+      case -766342101: 
+        boolean bool = ((String)localObject).equals("SystemNavigator.pop");
+        if (bool) {
+          i = 7;
+        }
+        switch (i)
+        {
+        default: 
+          paramResult.notImplemented();
+          return;
+        case 10: 
+          bool = PlatformChannel.access$000(this.this$0).clipboardHasStrings();
+          paramMethodCall = new JSONObject();
+          paramMethodCall.put("value", bool);
+          paramResult.success(paramMethodCall);
+          return;
+        case 9: 
+          paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
+          PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
+          paramResult.success(null);
+          return;
+        case 8: 
+          label473:
+          localObject = (String)paramMethodCall;
+          if (localObject == null) {
+            break label928;
+          }
+        }
+        break;
       }
     }
     catch (JSONException paramMethodCall)
     {
+      label501:
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("JSON error: ");
       ((StringBuilder)localObject).append(paramMethodCall.getMessage());
       paramResult.error("error", ((StringBuilder)localObject).toString(), null);
       return;
     }
-    if (((String)localObject).equals("SystemChrome.setPreferredOrientations"))
+    try
     {
-      i = 2;
-      break label840;
-      if (((String)localObject).equals("SystemChrome.setEnabledSystemUIOverlays"))
-      {
-        i = 4;
-        break label840;
-        if (((String)localObject).equals("Clipboard.getData"))
-        {
-          i = 8;
-          break label840;
-          if (((String)localObject).equals("SystemChrome.setSystemUIOverlayStyle"))
-          {
-            i = 6;
-            break label840;
-            if (((String)localObject).equals("SystemChrome.restoreSystemUIOverlays"))
-            {
-              i = 5;
-              break label840;
-              if (((String)localObject).equals("SystemSound.play"))
-              {
-                i = 0;
-                break label840;
-                if (((String)localObject).equals("HapticFeedback.vibrate"))
-                {
-                  i = 1;
-                  break label840;
-                  if (((String)localObject).equals("SystemChrome.setApplicationSwitcherDescription"))
-                  {
-                    i = 3;
-                    break label840;
-                    if (((String)localObject).equals("Clipboard.setData"))
-                    {
-                      i = 9;
-                      break label840;
-                      if (((String)localObject).equals("SystemNavigator.pop"))
-                      {
-                        i = 7;
-                        break label840;
-                        paramMethodCall = ((JSONObject)paramMethodCall).getString("text");
-                        PlatformChannel.access$000(this.this$0).setClipboardData(paramMethodCall);
-                        paramResult.success(null);
-                        return;
-                        localObject = (String)paramMethodCall;
-                        if (localObject == null) {
-                          break label899;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      paramMethodCall = PlatformChannel.ClipboardContentFormat.fromValue((String)localObject);
     }
+    catch (NoSuchFieldException paramMethodCall)
+    {
+      break label501;
+    }
+    paramMethodCall = new StringBuilder();
+    paramMethodCall.append("No such clipboard content format: ");
+    paramMethodCall.append((String)localObject);
+    paramResult.error("error", paramMethodCall.toString(), null);
     for (;;)
     {
-      try
-      {
-        paramMethodCall = PlatformChannel.ClipboardContentFormat.fromValue((String)localObject);
-        paramMethodCall = PlatformChannel.access$000(this.this$0).getClipboardData(paramMethodCall);
-        if (paramMethodCall != null)
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("text", paramMethodCall);
-          paramResult.success(localObject);
-          return;
-        }
+      paramMethodCall = PlatformChannel.access$000(this.this$0).getClipboardData(paramMethodCall);
+      if (paramMethodCall == null) {
+        break label473;
       }
-      catch (NoSuchFieldException paramMethodCall)
-      {
-        paramMethodCall = new StringBuilder();
-        paramMethodCall.append("No such clipboard content format: ");
-        paramMethodCall.append((String)localObject);
-        paramResult.error("error", paramMethodCall.toString(), null);
-      }
-      paramResult.success(null);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("text", paramMethodCall);
+      paramResult.success(localObject);
       return;
       PlatformChannel.access$000(this.this$0).popSystemNavigator();
-      paramResult.success(null);
-      return;
+      break label473;
       try
       {
         paramMethodCall = PlatformChannel.access$400(this.this$0, (JSONObject)paramMethodCall);
@@ -135,13 +152,14 @@ class PlatformChannel$1
         paramResult.success(null);
         return;
       }
-      catch (JSONException paramMethodCall)
+      catch (NoSuchFieldException paramMethodCall) {}catch (JSONException paramMethodCall) {}
+      paramMethodCall = paramMethodCall.getMessage();
+      for (;;)
       {
-        paramResult.error("error", paramMethodCall.getMessage(), null);
+        paramResult.error("error", paramMethodCall, null);
         return;
         PlatformChannel.access$000(this.this$0).restoreSystemUiOverlays();
-        paramResult.success(null);
-        return;
+        break;
         try
         {
           paramMethodCall = PlatformChannel.access$300(this.this$0, (JSONArray)paramMethodCall);
@@ -149,88 +167,64 @@ class PlatformChannel$1
           paramResult.success(null);
           return;
         }
+        catch (NoSuchFieldException paramMethodCall) {}catch (JSONException paramMethodCall) {}
+        paramMethodCall = paramMethodCall.getMessage();
+        continue;
+        try
+        {
+          paramMethodCall = PlatformChannel.access$200(this.this$0, (JSONObject)paramMethodCall);
+          PlatformChannel.access$000(this.this$0).setApplicationSwitcherDescription(paramMethodCall);
+          paramResult.success(null);
+          return;
+        }
         catch (JSONException paramMethodCall)
         {
-          paramResult.error("error", paramMethodCall.getMessage(), null);
+          paramMethodCall = paramMethodCall.getMessage();
+        }
+        continue;
+        try
+        {
+          i = PlatformChannel.access$100(this.this$0, (JSONArray)paramMethodCall);
+          PlatformChannel.access$000(this.this$0).setPreferredOrientations(i);
+          paramResult.success(null);
           return;
-          try
-          {
-            paramMethodCall = PlatformChannel.access$200(this.this$0, (JSONObject)paramMethodCall);
-            PlatformChannel.access$000(this.this$0).setApplicationSwitcherDescription(paramMethodCall);
-            paramResult.success(null);
-            return;
-          }
-          catch (JSONException paramMethodCall)
-          {
-            paramResult.error("error", paramMethodCall.getMessage(), null);
-            return;
-          }
-          try
-          {
-            i = PlatformChannel.access$100(this.this$0, (JSONArray)paramMethodCall);
-            PlatformChannel.access$000(this.this$0).setPreferredOrientations(i);
-            paramResult.success(null);
-            return;
-          }
-          catch (JSONException paramMethodCall)
-          {
-            paramResult.error("error", paramMethodCall.getMessage(), null);
-            return;
-            try
-            {
-              paramMethodCall = PlatformChannel.HapticFeedbackType.fromValue((String)paramMethodCall);
-              PlatformChannel.access$000(this.this$0).vibrateHapticFeedback(paramMethodCall);
-              paramResult.success(null);
-              return;
-            }
-            catch (NoSuchFieldException paramMethodCall)
-            {
-              paramResult.error("error", paramMethodCall.getMessage(), null);
-              return;
-            }
-            try
-            {
-              paramMethodCall = PlatformChannel.SoundType.fromValue((String)paramMethodCall);
-              PlatformChannel.access$000(this.this$0).playSystemSound(paramMethodCall);
-              paramResult.success(null);
-              return;
-            }
-            catch (NoSuchFieldException paramMethodCall)
-            {
-              paramResult.error("error", paramMethodCall.getMessage(), null);
-              return;
-            }
-          }
-          catch (NoSuchFieldException paramMethodCall)
-          {
-            break label726;
-          }
+        }
+        catch (NoSuchFieldException paramMethodCall) {}catch (JSONException paramMethodCall) {}
+        paramMethodCall = paramMethodCall.getMessage();
+        continue;
+        try
+        {
+          paramMethodCall = PlatformChannel.HapticFeedbackType.fromValue((String)paramMethodCall);
+          PlatformChannel.access$000(this.this$0).vibrateHapticFeedback(paramMethodCall);
+          paramResult.success(null);
+          return;
         }
         catch (NoSuchFieldException paramMethodCall)
         {
-          label726:
-          break label630;
+          paramMethodCall = paramMethodCall.getMessage();
+        }
+        continue;
+        try
+        {
+          paramMethodCall = PlatformChannel.SoundType.fromValue((String)paramMethodCall);
+          PlatformChannel.access$000(this.this$0).playSystemSound(paramMethodCall);
+          paramResult.success(null);
+          return;
+        }
+        catch (NoSuchFieldException paramMethodCall)
+        {
+          paramMethodCall = paramMethodCall.getMessage();
         }
       }
-      catch (NoSuchFieldException paramMethodCall)
-      {
-        label562:
-        label630:
-        break label562;
-      }
-      label840:
-      switch (i)
-      {
-      }
       break;
-      label899:
+      label928:
       paramMethodCall = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel.1
  * JD-Core Version:    0.7.0.1
  */

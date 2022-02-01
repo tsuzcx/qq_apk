@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class q$3
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  q$3(q paramq) {}
+  q$3(Dialog paramDialog) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(47589);
-    if (!this.utp.mKBLayout.isShown()) {
-      this.utp.mKBLayout.setVisibility(0);
+    AppMethodBeat.i(70957);
+    Log.i("MicroMsg.WalletIdCardTip", "SnsLuckyMoneyNewYearTipsUI onCancel");
+    if ((this.Qqb != null) && (this.Qqb.isShowing())) {
+      this.Qqb.dismiss();
     }
-    AppMethodBeat.o(47589);
+    AppMethodBeat.o(70957);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.q.3
  * JD-Core Version:    0.7.0.1
  */

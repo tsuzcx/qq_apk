@@ -2,6 +2,7 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class crm
   implements View.OnClickListener
@@ -10,6 +11,7 @@ public class crm
   
   public void onClick(View paramView)
   {
+    this.a.b.d(true);
     if ((LbsBaseActivity.c(this.a) != null) && (LbsBaseActivity.c(this.a).isShowing())) {
       LbsBaseActivity.c(this.a).dismiss();
     }

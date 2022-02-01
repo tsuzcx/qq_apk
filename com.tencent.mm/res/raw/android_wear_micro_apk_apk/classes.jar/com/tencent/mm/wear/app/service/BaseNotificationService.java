@@ -6,19 +6,19 @@ import com.tencent.mm.wear.a.c.d;
 public abstract class BaseNotificationService
   extends BaseWearService
 {
-  private int aaO;
-  private int ada;
-  private String adf;
+  private int aep;
+  private int agB;
+  private String agG;
   
   protected abstract void a(Intent paramIntent, int paramInt1, String paramString, int paramInt2);
   
-  protected final void c(Intent paramIntent)
+  protected final void e(Intent paramIntent)
   {
-    this.adf = paramIntent.getStringExtra("key_talker");
-    this.ada = paramIntent.getIntExtra("key_notification_id", 0);
-    this.aaO = paramIntent.getIntExtra("key_fun_id", 0);
-    d.c("MicroMsg.BaseGACService", "send request: talker=%s | notificationId=%d | funId=%d", new Object[] { this.adf, Integer.valueOf(this.ada), Integer.valueOf(this.aaO) });
-    a(paramIntent, this.ada, this.adf, this.aaO);
+    this.agG = paramIntent.getStringExtra("key_talker");
+    this.agB = paramIntent.getIntExtra("key_notification_id", 0);
+    this.aep = paramIntent.getIntExtra("key_fun_id", 0);
+    d.c("MicroMsg.BaseGACService", "send request: talker=%s | notificationId=%d | funId=%d", new Object[] { this.agG, Integer.valueOf(this.agB), Integer.valueOf(this.aep) });
+    a(paramIntent, this.agB, this.agG, this.aep);
   }
 }
 

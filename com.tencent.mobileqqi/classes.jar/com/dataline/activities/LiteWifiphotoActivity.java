@@ -115,9 +115,9 @@ public class LiteWifiphotoActivity
     setContentView(2130903526);
     d();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("isFromStatusbar", false);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232793));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232792));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231294));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231293));
     paramBundle = (DataLineHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
     if (DataLineHandler.a.a.b()) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(2131558531);

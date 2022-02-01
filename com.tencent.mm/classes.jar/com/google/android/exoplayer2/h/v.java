@@ -7,65 +7,65 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class v
   implements g
 {
-  private final g aQR;
-  private final f aZE;
+  private final g daO;
+  private final f diZ;
   
   public v(g paramg, f paramf)
   {
-    AppMethodBeat.i(152015);
-    this.aQR = ((g)a.checkNotNull(paramg));
-    this.aZE = ((f)a.checkNotNull(paramf));
-    AppMethodBeat.o(152015);
+    AppMethodBeat.i(93102);
+    this.daO = ((g)a.checkNotNull(paramg));
+    this.diZ = ((f)a.checkNotNull(paramf));
+    AppMethodBeat.o(93102);
   }
   
   public final long a(j paramj)
   {
-    AppMethodBeat.i(152016);
-    long l = this.aQR.a(paramj);
+    AppMethodBeat.i(93103);
+    long l = this.daO.a(paramj);
     j localj = paramj;
-    if (paramj.aPF == -1L)
+    if (paramj.length == -1L)
     {
       localj = paramj;
       if (l != -1L) {
-        localj = new j(paramj.uri, paramj.aYy, paramj.position, l, paramj.key, paramj.flags);
+        localj = new j(paramj.uri, paramj.absoluteStreamPosition, paramj.position, l, paramj.key, paramj.flags);
       }
     }
-    this.aZE.b(localj);
-    AppMethodBeat.o(152016);
+    this.diZ.b(localj);
+    AppMethodBeat.o(93103);
     return l;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(152019);
+    AppMethodBeat.i(93106);
     try
     {
-      this.aQR.close();
+      this.daO.close();
       return;
     }
     finally
     {
-      this.aZE.close();
-      AppMethodBeat.o(152019);
+      this.diZ.close();
+      AppMethodBeat.o(93106);
     }
   }
   
   public final Uri getUri()
   {
-    AppMethodBeat.i(152018);
-    Uri localUri = this.aQR.getUri();
-    AppMethodBeat.o(152018);
+    AppMethodBeat.i(93105);
+    Uri localUri = this.daO.getUri();
+    AppMethodBeat.o(93105);
     return localUri;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(152017);
-    paramInt2 = this.aQR.read(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(93104);
+    paramInt2 = this.daO.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      this.aZE.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.diZ.write(paramArrayOfByte, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(152017);
+    AppMethodBeat.o(93104);
     return paramInt2;
   }
 }

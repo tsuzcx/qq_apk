@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.scanner.ui.VcardContactUserHeaderPreference android:key="v_contact_info_header" android:layout="@layout/cbs" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_photo_uri" android:layout="@layout/bdi" android:title="@string/k9b" />
+    <PreferenceCategory android:key="v_category_photo_uri" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_email" android:layout="@layout/bdi" android:title="@string/k94" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_org" android:layout="@layout/bdi" android:title="@string/k9a" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_agent" android:layout="@layout/bdi" android:title="@string/k91" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="c_contact_info_wx_id" android:layout="@layout/bdi" android:title="@string/k9g" />
+    <PreferenceCategory android:key="v_category_main" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_home_page" android:layout="@layout/bdi" android:title="@string/k96" />
+    <PreferenceCategory android:key="v_category_home_page" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_birthday" android:layout="@layout/bdi" android:title="@string/k92" />
+    <PreferenceCategory android:key="v_category_birthday" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="v_contact_info_remark" android:layout="@layout/bdi" android:title="@string/k9c" />
+    <PreferenceCategory android:key="v_category_remark" />
+    <com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference android:key="v_contact_info_logo" android:layout="@layout/bdi" android:title="@string/k98" />
+    <PreferenceCategory android:key="v_category_logo" />
+    <Preference android:key="add_vcard_contact" android:layout="@layout/cq" android:title="@string/k8x" />
+    <PreferenceCategory />
+</PreferenceScreen>

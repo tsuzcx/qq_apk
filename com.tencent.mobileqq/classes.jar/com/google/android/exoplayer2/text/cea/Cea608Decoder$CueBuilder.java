@@ -46,7 +46,6 @@ class Cea608Decoder$CueBuilder
   
   public Cue build()
   {
-    int k = 2;
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int i = 0;
     while (i < this.rolledUpCaptions.size())
@@ -61,55 +60,63 @@ class Cea608Decoder$CueBuilder
     }
     i = this.indent + this.tabOffset;
     int j = 32 - i - localSpannableStringBuilder.length();
-    int m = i - j;
+    int k = i - j;
     float f;
-    if ((this.captionMode == 2) && ((Math.abs(m) < 3) || (j < 0)))
+    if ((this.captionMode == 2) && ((Math.abs(k) < 3) || (j < 0)))
     {
       f = 0.5F;
       i = 1;
-      if ((this.captionMode != 1) && (this.row <= 7)) {
-        break label232;
-      }
-      j = this.row - 15 - 2;
     }
-    for (;;)
+    else if ((this.captionMode == 2) && (k > 0))
     {
-      return new Cue(localSpannableStringBuilder, Layout.Alignment.ALIGN_NORMAL, j, 1, k, f, i, 1.4E-45F);
-      if ((this.captionMode == 2) && (m > 0))
-      {
-        f = (32 - j) / 32.0F * 0.8F + 0.1F;
-        i = 2;
-        break;
-      }
+      f = (32 - j) / 32.0F * 0.8F + 0.1F;
+      i = 2;
+    }
+    else
+    {
       f = i / 32.0F * 0.8F + 0.1F;
       i = 0;
-      break;
-      label232:
-      j = this.row;
-      k = 0;
     }
+    if (this.captionMode != 1)
+    {
+      j = this.row;
+      if (j <= 7)
+      {
+        k = 0;
+        break label221;
+      }
+    }
+    j = this.row - 15 - 2;
+    k = 2;
+    label221:
+    return new Cue(localSpannableStringBuilder, Layout.Alignment.ALIGN_NORMAL, j, 1, k, f, i, 1.4E-45F);
   }
   
   public SpannableString buildSpannableString()
   {
     int k = this.captionStringBuilder.length();
-    int i = 0;
-    while (i < this.preambleStyles.size())
+    int m = 0;
+    int j = 0;
+    int i;
+    for (;;)
     {
-      this.captionStringBuilder.setSpan(this.preambleStyles.get(i), 0, k, 33);
-      i += 1;
-    }
-    i = 0;
-    if (i < this.midrowStyles.size())
-    {
-      Cea608Decoder.CueBuilder.CueStyle localCueStyle = (Cea608Decoder.CueBuilder.CueStyle)this.midrowStyles.get(i);
-      if (i < this.midrowStyles.size() - localCueStyle.nextStyleIncrement) {}
-      for (int j = ((Cea608Decoder.CueBuilder.CueStyle)this.midrowStyles.get(localCueStyle.nextStyleIncrement + i)).start;; j = k)
-      {
-        this.captionStringBuilder.setSpan(localCueStyle.style, localCueStyle.start, j, 33);
-        i += 1;
+      i = m;
+      if (j >= this.preambleStyles.size()) {
         break;
       }
+      this.captionStringBuilder.setSpan(this.preambleStyles.get(j), 0, k, 33);
+      j += 1;
+    }
+    while (i < this.midrowStyles.size())
+    {
+      Cea608Decoder.CueBuilder.CueStyle localCueStyle = (Cea608Decoder.CueBuilder.CueStyle)this.midrowStyles.get(i);
+      if (i < this.midrowStyles.size() - localCueStyle.nextStyleIncrement) {
+        j = ((Cea608Decoder.CueBuilder.CueStyle)this.midrowStyles.get(localCueStyle.nextStyleIncrement + i)).start;
+      } else {
+        j = k;
+      }
+      this.captionStringBuilder.setSpan(localCueStyle.style, localCueStyle.start, j, 33);
+      i += 1;
     }
     if (this.underlineStartPosition != -1) {
       this.captionStringBuilder.setSpan(new UnderlineSpan(), this.underlineStartPosition, k, 33);
@@ -185,14 +192,16 @@ class Cea608Decoder$CueBuilder
   
   public void setUnderline(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.underlineStartPosition = this.captionStringBuilder.length();
-    }
-    while (this.underlineStartPosition == -1) {
       return;
     }
-    this.captionStringBuilder.setSpan(new UnderlineSpan(), this.underlineStartPosition, this.captionStringBuilder.length(), 33);
-    this.underlineStartPosition = -1;
+    if (this.underlineStartPosition != -1)
+    {
+      this.captionStringBuilder.setSpan(new UnderlineSpan(), this.underlineStartPosition, this.captionStringBuilder.length(), 33);
+      this.underlineStartPosition = -1;
+    }
   }
   
   public String toString()
@@ -202,7 +211,7 @@ class Cea608Decoder$CueBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.Cea608Decoder.CueBuilder
  * JD-Core Version:    0.7.0.1
  */

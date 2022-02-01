@@ -42,28 +42,37 @@ public class TemplateBean
     if ((this.viewBean != null) && (paramJSONObject != null))
     {
       this.data = paramJSONObject;
-      Iterator localIterator = null;
-      Object localObject = localIterator;
-      if (this.globalVariable != null)
+      JSONObject localJSONObject = null;
+      Object localObject2 = this.globalVariable;
+      Object localObject1 = localJSONObject;
+      if (localObject2 != null)
       {
-        localObject = localIterator;
-        if (this.globalVariable.size() > 0)
+        localObject1 = localJSONObject;
+        if (((Map)localObject2).size() > 0)
         {
-          localObject = new JSONObject();
-          localIterator = this.globalVariable.keySet().iterator();
-          while (localIterator.hasNext())
+          localJSONObject = new JSONObject();
+          localObject2 = this.globalVariable.keySet().iterator();
+          for (;;)
           {
-            String str = (String)localIterator.next();
-            if (!paramJSONObject.has(str)) {
-              ((JSONObject)localObject).put(str, this.globalVariable.get(str));
+            localObject1 = localJSONObject;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            localObject1 = (String)((Iterator)localObject2).next();
+            if (!paramJSONObject.has((String)localObject1)) {
+              localJSONObject.put((String)localObject1, this.globalVariable.get(localObject1));
             }
           }
         }
       }
-      this.viewBean.bindData(paramJSONObject, (JSONObject)localObject, this.viewDataBinding);
+      this.viewBean.bindData(paramJSONObject, (JSONObject)localObject1, this.viewDataBinding);
       return;
     }
-    throw new JSONException("dataJson is null");
+    paramJSONObject = new JSONException("dataJson is null");
+    for (;;)
+    {
+      throw paramJSONObject;
+    }
   }
   
   public TemplateBean clone()
@@ -76,40 +85,40 @@ public class TemplateBean
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            if (this == paramObject) {
-              return true;
-            }
-          } while (!(paramObject instanceof TemplateBean));
-          paramObject = (TemplateBean)paramObject;
-        } while (this.id != paramObject.id);
-        if (this.styleSource != null) {
-          break;
-        }
-      } while (paramObject.getStyleSource() != null);
-      if (this.styleName != null) {
-        break label82;
-      }
-    } while (paramObject.getStyleName() != null);
-    label82:
-    while (this.styleName.equals(paramObject.getStyleName()))
-    {
-      return true;
-      if (this.styleSource.equals(paramObject.getStyleSource())) {
-        break;
-      }
+    if (paramObject == null) {
       return false;
     }
-    return false;
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof TemplateBean)) {
+      return false;
+    }
+    paramObject = (TemplateBean)paramObject;
+    if (this.id != paramObject.id) {
+      return false;
+    }
+    String str = this.styleSource;
+    if (str == null)
+    {
+      if (paramObject.getStyleSource() != null) {
+        return false;
+      }
+    }
+    else if (!str.equals(paramObject.getStyleSource())) {
+      return false;
+    }
+    str = this.styleName;
+    if (str == null)
+    {
+      if (paramObject.getStyleName() != null) {
+        return false;
+      }
+    }
+    else if (!str.equals(paramObject.getStyleName())) {
+      return false;
+    }
+    return true;
   }
   
   public ViewBean findViewById(String paramString)
@@ -171,27 +180,30 @@ public class TemplateBean
       return;
     }
     Iterator localIterator1 = paramJSONObject.keys();
-    while (localIterator1.hasNext()) {
-      try
-      {
-        Object localObject1 = (String)localIterator1.next();
-        Object localObject2 = paramJSONObject.get((String)localObject1);
-        localObject1 = findViewById((String)localObject1);
-        if ((localObject1 == null) || (!(localObject2 instanceof JSONObject))) {
-          continue;
-        }
-        localObject1 = ((ViewBean)localObject1).valueBean;
-        localObject2 = (JSONObject)localObject2;
-        Iterator localIterator2 = ((JSONObject)localObject2).keys();
-        while (localIterator2.hasNext())
+    for (;;)
+    {
+      if (localIterator1.hasNext()) {
+        try
         {
-          String str = (String)localIterator2.next();
-          ((ValueBean)localObject1).putTrueDynamicValue(str, ((JSONObject)localObject2).getString(str));
+          Object localObject1 = (String)localIterator1.next();
+          Object localObject2 = paramJSONObject.get((String)localObject1);
+          localObject1 = findViewById((String)localObject1);
+          if ((localObject1 != null) && ((localObject2 instanceof JSONObject)))
+          {
+            localObject1 = ((ViewBean)localObject1).valueBean;
+            localObject2 = (JSONObject)localObject2;
+            Iterator localIterator2 = ((JSONObject)localObject2).keys();
+            while (localIterator2.hasNext())
+            {
+              String str = (String)localIterator2.next();
+              ((ValueBean)localObject1).putTrueDynamicValue(str, ((JSONObject)localObject2).getString(str));
+            }
+          }
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        LogUtil.QLog.d(TemplateBean.class.getSimpleName(), 2, "", localJSONException);
+        catch (JSONException localJSONException)
+        {
+          LogUtil.QLog.d(TemplateBean.class.getSimpleName(), 2, "", localJSONException);
+        }
       }
     }
   }
@@ -204,8 +216,8 @@ public class TemplateBean
       {
         this.viewDataBinding.clear();
         bindData(this.data);
+        return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -230,12 +242,19 @@ public class TemplateBean
   
   public String toString()
   {
-    return " id : " + this.id + "  style: " + this.styleName + "  styleSource: " + this.styleSource;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" id : ");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append("  style: ");
+    localStringBuilder.append(this.styleName);
+    localStringBuilder.append("  styleSource: ");
+    localStringBuilder.append(this.styleSource);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean
  * JD-Core Version:    0.7.0.1
  */

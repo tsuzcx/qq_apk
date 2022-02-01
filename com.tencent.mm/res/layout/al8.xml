@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/dpp" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/e1z" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/bdp" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:layout_constraintBottom_toTopOf="@id/brg" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/brg" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="@dimen/a7g" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_bias="1.0">
+        <TextView android:textSize="17.0dip" android:textColor="@color/az" android:gravity="center" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/d4" android:layout_marginRight="@dimen/d0" android:text="@string/e_k" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/c21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/d0" android:text="@string/e_i" android:layout_below="@id/ko8" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/eb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/db" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/eq7" android:background="@drawable/yd" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/e_j" />
+            <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/eql" android:background="@drawable/yb" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" android:text="@string/ea1" android:layout_toRightOf="@id/eq7" />
+        </RelativeLayout>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</androidx.constraintlayout.widget.ConstraintLayout>

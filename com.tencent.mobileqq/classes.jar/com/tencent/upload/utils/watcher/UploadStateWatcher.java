@@ -6,20 +6,21 @@ public class UploadStateWatcher
   
   public UploadStateWatcher getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new UploadStateWatcher();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new UploadStateWatcher();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.utils.watcher.UploadStateWatcher
  * JD-Core Version:    0.7.0.1
  */

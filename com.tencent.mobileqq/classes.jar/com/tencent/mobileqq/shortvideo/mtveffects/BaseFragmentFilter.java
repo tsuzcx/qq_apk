@@ -32,7 +32,7 @@ public class BaseFragmentFilter
     return GlUtil.createFloatBuffer(new float[] { paramRectF.left, paramRectF.bottom, paramRectF.right, paramRectF.bottom, paramRectF.right, paramRectF.top, paramRectF.left, paramRectF.top });
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     this.mDefaultTextureMatirx = new float[16];
     Matrix.setIdentityM(this.mDefaultTextureMatirx, 0);
@@ -68,23 +68,25 @@ public class BaseFragmentFilter
     GLES20.glEnableVertexAttribArray(this.mAttrPosition);
     GLES20.glVertexAttribPointer(this.mAttrTextureCoord, 2, 5126, false, 8, TEXTURE_BUF);
     GLES20.glEnableVertexAttribArray(this.mAttrTextureCoord);
-    if (this.mAttrMVPMatrix >= 0) {
-      GLES20.glUniformMatrix4fv(this.mAttrMVPMatrix, 1, false, paramArrayOfFloat1, 0);
+    i = this.mAttrMVPMatrix;
+    if (i >= 0) {
+      GLES20.glUniformMatrix4fv(i, 1, false, paramArrayOfFloat1, 0);
     }
-    if (this.mAttrTextureMatrix >= 0) {
-      GLES20.glUniformMatrix4fv(this.mAttrTextureMatrix, 1, false, arrayOfFloat, 0);
+    i = this.mAttrTextureMatrix;
+    if (i >= 0) {
+      GLES20.glUniformMatrix4fv(i, 1, false, arrayOfFloat, 0);
     }
     return true;
   }
   
   public void processEnd(boolean paramBoolean, int... paramVarArgs)
   {
-    int i = 0;
     if (paramBoolean)
     {
       GLES20.glEnable(3042);
       GLES20.glBlendFunc(770, 771);
     }
+    int i = 0;
     GLES20.glDrawArrays(5, 0, 4);
     GLES20.glDisableVertexAttribArray(this.mAttrPosition);
     GLES20.glDisableVertexAttribArray(this.mAttrTextureCoord);
@@ -108,7 +110,7 @@ public class BaseFragmentFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.BaseFragmentFilter
  * JD-Core Version:    0.7.0.1
  */

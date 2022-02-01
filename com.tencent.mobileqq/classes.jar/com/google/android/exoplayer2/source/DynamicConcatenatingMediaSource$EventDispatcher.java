@@ -11,12 +11,12 @@ final class DynamicConcatenatingMediaSource$EventDispatcher
   public DynamicConcatenatingMediaSource$EventDispatcher(Runnable paramRunnable)
   {
     this.runnable = paramRunnable;
-    if (Looper.myLooper() != null) {}
-    for (paramRunnable = Looper.myLooper();; paramRunnable = Looper.getMainLooper())
-    {
-      this.eventHandler = new Handler(paramRunnable);
-      return;
+    if (Looper.myLooper() != null) {
+      paramRunnable = Looper.myLooper();
+    } else {
+      paramRunnable = Looper.getMainLooper();
     }
+    this.eventHandler = new Handler(paramRunnable);
   }
   
   public void dispatchEvent()
@@ -26,7 +26,7 @@ final class DynamicConcatenatingMediaSource$EventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.DynamicConcatenatingMediaSource.EventDispatcher
  * JD-Core Version:    0.7.0.1
  */

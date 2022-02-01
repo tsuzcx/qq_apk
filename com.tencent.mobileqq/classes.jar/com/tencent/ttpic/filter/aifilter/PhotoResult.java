@@ -30,22 +30,27 @@ public final class PhotoResult
     if (this == paramObject) {
       return true;
     }
-    Class localClass = getClass();
-    if (paramObject != null) {}
-    for (Object localObject = paramObject.getClass(); (Intrinsics.areEqual(localClass, localObject) ^ true); localObject = null) {
+    Class localClass2 = getClass();
+    Class localClass1;
+    if (paramObject != null) {
+      localClass1 = paramObject.getClass();
+    } else {
+      localClass1 = null;
+    }
+    if ((Intrinsics.areEqual(localClass2, localClass1) ^ true)) {
       return false;
     }
     if (paramObject == null) {
       return false;
     }
-    localObject = (PhotoResult)paramObject;
-    if ((Intrinsics.areEqual(this.retcode, ((PhotoResult)paramObject).retcode) ^ true)) {
+    paramObject = (PhotoResult)paramObject;
+    if ((Intrinsics.areEqual(this.retcode, paramObject.retcode) ^ true)) {
       return false;
     }
-    if ((Intrinsics.areEqual(this.pituLabel, ((PhotoResult)paramObject).pituLabel) ^ true)) {
+    if ((true ^ Intrinsics.areEqual(this.pituLabel, paramObject.pituLabel))) {
       return false;
     }
-    return Arrays.equals(this.displayLabels, ((PhotoResult)paramObject).displayLabels);
+    return Arrays.equals(this.displayLabels, paramObject.displayLabels);
   }
   
   @NotNull
@@ -73,7 +78,7 @@ public final class PhotoResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.PhotoResult
  * JD-Core Version:    0.7.0.1
  */

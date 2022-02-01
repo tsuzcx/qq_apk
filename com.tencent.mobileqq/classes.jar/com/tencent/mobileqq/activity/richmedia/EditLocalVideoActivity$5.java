@@ -7,7 +7,7 @@ class EditLocalVideoActivity$5
   
   public void run()
   {
-    EditLocalVideoActivity.f(this.this$0);
+    EditLocalVideoActivity.i(this.this$0);
   }
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:paddingLeft="@dimen/dp_32" android:paddingTop="@dimen/dp_16" android:paddingRight="@dimen/dp_32" android:paddingBottom="@dimen/dp_16" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/guide_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/select_member_discussion_icon" android:scaleType="center" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:id="@id/guide_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:text="dddddddd" android:singleLine="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/guide_keywords" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="dddddddd" android:singleLine="true" />
+</LinearLayout>

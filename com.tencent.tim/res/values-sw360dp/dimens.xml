@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="apy">9.0dip</dimen>
+    <dimen name="ar7">7.0dip</dimen>
+    <dimen name="arr">28.0dip</dimen>
+    <dimen name="ars">28.0dip</dimen>
+    <dimen name="art">39.0dip</dimen>
+</resources>

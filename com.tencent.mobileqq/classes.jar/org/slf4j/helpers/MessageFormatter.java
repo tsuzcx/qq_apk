@@ -22,7 +22,6 @@ public final class MessageFormatter
   
   public static final FormattingTuple arrayFormat(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
   {
-    int j = 0;
     if (paramString == null) {
       return new FormattingTuple(null, paramArrayOfObject, paramThrowable);
     }
@@ -31,40 +30,41 @@ public final class MessageFormatter
     }
     StringBuilder localStringBuilder = new StringBuilder(paramString.length() + 50);
     int i = 0;
-    if (j < paramArrayOfObject.length)
+    int j = 0;
+    while (i < paramArrayOfObject.length)
     {
-      int k = paramString.indexOf("{}", i);
+      int k = paramString.indexOf("{}", j);
       if (k == -1)
       {
-        if (i == 0) {
+        if (j == 0) {
           return new FormattingTuple(paramString, paramArrayOfObject, paramThrowable);
         }
-        localStringBuilder.append(paramString, i, paramString.length());
+        localStringBuilder.append(paramString, j, paramString.length());
         return new FormattingTuple(localStringBuilder.toString(), paramArrayOfObject, paramThrowable);
       }
-      if (isEscapedDelimeter(paramString, k)) {
+      if (isEscapedDelimeter(paramString, k))
+      {
         if (!isDoubleEscaped(paramString, k))
         {
-          j -= 1;
-          localStringBuilder.append(paramString, i, k - 1);
+          i -= 1;
+          localStringBuilder.append(paramString, j, k - 1);
           localStringBuilder.append('{');
-          i = k + 1;
+          j = k + 1;
+          break label230;
         }
+        localStringBuilder.append(paramString, j, k - 1);
+        deeplyAppendParameter(localStringBuilder, paramArrayOfObject[i], new HashMap());
       }
-      for (;;)
+      else
       {
-        j += 1;
-        break;
-        localStringBuilder.append(paramString, i, k - 1);
-        deeplyAppendParameter(localStringBuilder, paramArrayOfObject[j], new HashMap());
-        i = k + 2;
-        continue;
-        localStringBuilder.append(paramString, i, k);
-        deeplyAppendParameter(localStringBuilder, paramArrayOfObject[j], new HashMap());
-        i = k + 2;
+        localStringBuilder.append(paramString, j, k);
+        deeplyAppendParameter(localStringBuilder, paramArrayOfObject[i], new HashMap());
       }
+      j = k + 2;
+      label230:
+      i += 1;
     }
-    localStringBuilder.append(paramString, i, paramString.length());
+    localStringBuilder.append(paramString, j, paramString.length());
     return new FormattingTuple(localStringBuilder.toString(), paramArrayOfObject, paramThrowable);
   }
   
@@ -215,12 +215,15 @@ public final class MessageFormatter
   
   static final Throwable getThrowableCandidate(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return null;
-    }
-    paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
-    if ((paramArrayOfObject instanceof Throwable)) {
-      return (Throwable)paramArrayOfObject;
+    if (paramArrayOfObject != null)
+    {
+      if (paramArrayOfObject.length == 0) {
+        return null;
+      }
+      paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
+      if ((paramArrayOfObject instanceof Throwable)) {
+        return (Throwable)paramArrayOfObject;
+      }
     }
     return null;
   }
@@ -248,11 +251,10 @@ public final class MessageFormatter
   
   static final boolean isEscapedDelimeter(String paramString, int paramInt)
   {
-    if (paramInt == 0) {}
-    while (paramString.charAt(paramInt - 1) != '\\') {
+    if (paramInt == 0) {
       return false;
     }
-    return true;
+    return paramString.charAt(paramInt - 1) == '\\';
   }
   
   private static void longArrayAppend(StringBuilder paramStringBuilder, long[] paramArrayOfLong)
@@ -289,12 +291,11 @@ public final class MessageFormatter
       }
       paramMap.remove(paramArrayOfObject);
     }
-    for (;;)
+    else
     {
-      paramStringBuilder.append(']');
-      return;
       paramStringBuilder.append("...");
     }
+    paramStringBuilder.append(']');
   }
   
   private static void safeObjectAppend(StringBuilder paramStringBuilder, Object paramObject)
@@ -306,7 +307,11 @@ public final class MessageFormatter
     }
     catch (Throwable localThrowable)
     {
-      Util.report("SLF4J: Failed toString() invocation on an object of type [" + paramObject.getClass().getName() + "]", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SLF4J: Failed toString() invocation on an object of type [");
+      localStringBuilder.append(paramObject.getClass().getName());
+      localStringBuilder.append("]");
+      Util.report(localStringBuilder.toString(), localThrowable);
       paramStringBuilder.append("[FAILED toString()]");
     }
   }
@@ -329,18 +334,19 @@ public final class MessageFormatter
   
   private static Object[] trimmedCopy(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      throw new IllegalStateException("non-sensical empty or null argument array");
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length != 0))
+    {
+      int i = paramArrayOfObject.length - 1;
+      Object[] arrayOfObject = new Object[i];
+      System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, i);
+      return arrayOfObject;
     }
-    int i = paramArrayOfObject.length - 1;
-    Object[] arrayOfObject = new Object[i];
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, i);
-    return arrayOfObject;
+    throw new IllegalStateException("non-sensical empty or null argument array");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.MessageFormatter
  * JD-Core Version:    0.7.0.1
  */

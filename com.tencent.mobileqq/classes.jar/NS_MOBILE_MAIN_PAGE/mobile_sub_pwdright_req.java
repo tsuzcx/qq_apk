@@ -31,14 +31,15 @@ public final class mobile_sub_pwdright_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.pwdright != null) {
-      paramJceOutputStream.write(this.pwdright, 1);
+    s_pwdright locals_pwdright = this.pwdright;
+    if (locals_pwdright != null) {
+      paramJceOutputStream.write(locals_pwdright, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_pwdright_req
  * JD-Core Version:    0.7.0.1
  */

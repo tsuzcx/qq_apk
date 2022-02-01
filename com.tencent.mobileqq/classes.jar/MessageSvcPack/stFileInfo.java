@@ -12,16 +12,16 @@ public final class stFileInfo
   static byte[] cache_strMd5;
   static byte[] cache_strName;
   static byte[] cache_strOriginFileMd5;
-  public long lLen;
-  public long lSessionId;
-  public byte[] strIndex;
-  public byte[] strKey;
-  public byte[] strMd5;
-  public byte[] strName;
-  public byte[] strOriginFileMd5;
-  public long uOriginFileType;
-  public long uSvrIp;
-  public long uSvrPort;
+  public long lLen = 0L;
+  public long lSessionId = 0L;
+  public byte[] strIndex = null;
+  public byte[] strKey = null;
+  public byte[] strMd5 = null;
+  public byte[] strName = null;
+  public byte[] strOriginFileMd5 = null;
+  public long uOriginFileType = 0L;
+  public long uSvrIp = 0L;
+  public long uSvrPort = 0L;
   
   public stFileInfo() {}
   
@@ -86,8 +86,9 @@ public final class stFileInfo
     paramJceOutputStream.write(this.strKey, 3);
     paramJceOutputStream.write(this.uSvrIp, 4);
     paramJceOutputStream.write(this.uSvrPort, 5);
-    if (this.strOriginFileMd5 != null) {
-      paramJceOutputStream.write(this.strOriginFileMd5, 6);
+    byte[] arrayOfByte = this.strOriginFileMd5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 6);
     }
     paramJceOutputStream.write(this.lLen, 7);
     paramJceOutputStream.write(this.lSessionId, 8);
@@ -96,7 +97,7 @@ public final class stFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.stFileInfo
  * JD-Core Version:    0.7.0.1
  */

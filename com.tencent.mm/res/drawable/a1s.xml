@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="true" android:drawable="@raw/sight_list_checkbox_selected" />
-    <item android:state_checked="true" android:drawable="@raw/sight_list_checkbox_selected" />
-    <item android:drawable="@raw/sight_list_checkbox_unselected" />
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/bv" android:bottomRightRadius="@dimen/bv" />
+            <gradient android:startColor="@color/sx" android:endColor="@color/UN_BW_0_Alpha_0_3" android:angle="270.0" />
+        </shape>
+    </item>
 </selector>

@@ -4,86 +4,86 @@ import android.view.View;
 
 public abstract class ai
 {
-  private ab sT;
-  private int uC = -1;
-  private boolean uD;
-  private boolean uE;
-  private View uF;
-  private final aj uG = new aj();
-  private RecyclerView uk;
+  private ab uJ;
+  private RecyclerView wa;
+  private int wr = -1;
+  private boolean ws;
+  private boolean wt;
+  private View wu;
+  private final aj wv = new aj();
   
   protected abstract void a(int paramInt1, int paramInt2, aj paramaj);
   
   final void a(RecyclerView paramRecyclerView, ab paramab)
   {
-    this.uk = paramRecyclerView;
-    this.sT = paramab;
-    if (this.uC == -1) {
+    this.wa = paramRecyclerView;
+    this.uJ = paramab;
+    if (this.wr == -1) {
       throw new IllegalArgumentException("Invalid target position");
     }
-    ak.c(this.uk.tM, this.uC);
-    this.uE = true;
-    this.uD = true;
-    int i = this.uC;
-    this.uF = RecyclerView.e(this.uk).af(i);
-    RecyclerView.q(this.uk).ed();
+    ak.c(this.wa.vC, this.wr);
+    this.wt = true;
+    this.ws = true;
+    int i = this.wr;
+    this.wu = RecyclerView.e(this.wa).ar(i);
+    RecyclerView.q(this.wa).er();
   }
   
   protected abstract void a(View paramView, aj paramaj);
   
-  public final void aw(int paramInt)
+  protected final void aF(View paramView)
   {
-    this.uC = paramInt;
-  }
-  
-  protected final void ay(View paramView)
-  {
-    if (RecyclerView.ak(paramView) == this.uC) {
-      this.uF = paramView;
+    if (RecyclerView.ar(paramView) == this.wr) {
+      this.wu = paramView;
     }
   }
   
-  public final boolean dV()
+  public final void aI(int paramInt)
   {
-    return this.uD;
+    this.wr = paramInt;
   }
   
-  public final int dW()
+  public final ab jdMethod_do()
   {
-    return this.uC;
+    return this.uJ;
   }
   
-  public final ab df()
+  public final boolean ej()
   {
-    return this.sT;
+    return this.ws;
+  }
+  
+  public final int ek()
+  {
+    return this.wr;
   }
   
   public final int getChildCount()
   {
-    return RecyclerView.e(this.uk).getChildCount();
+    return RecyclerView.e(this.wa).getChildCount();
   }
   
   public final boolean isRunning()
   {
-    return this.uE;
+    return this.wt;
   }
   
   protected abstract void onStop();
   
   protected final void stop()
   {
-    if (!this.uE) {
+    if (!this.wt) {
       return;
     }
     onStop();
-    ak.c(this.uk.tM, -1);
-    this.uF = null;
-    this.uC = -1;
-    this.uD = false;
-    this.uE = false;
-    ab.a(this.sT, this);
-    this.sT = null;
-    this.uk = null;
+    ak.c(this.wa.vC, -1);
+    this.wu = null;
+    this.wr = -1;
+    this.ws = false;
+    this.wt = false;
+    ab.a(this.uJ, this);
+    this.uJ = null;
+    this.wa = null;
   }
 }
 

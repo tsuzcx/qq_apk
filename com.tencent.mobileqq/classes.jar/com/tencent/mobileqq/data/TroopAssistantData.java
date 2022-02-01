@@ -1,15 +1,31 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class TroopAssistantData
-  extends awge
+  extends Entity
+  implements TroopAssistantDataStub
 {
   public long lastdrafttime;
   public long lastmsgtime;
-  @awhs
+  @unique
   public String troopUin;
+  
+  public long getLastdrafttime()
+  {
+    return this.lastdrafttime;
+  }
+  
+  public long getLastmsgtime()
+  {
+    return this.lastmsgtime;
+  }
+  
+  public String getTroopUin()
+  {
+    return this.troopUin;
+  }
 }
 
 

@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.activity.UserguideActivity;
 import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
+import enr;
 import ens;
 import ent;
-import enu;
 
 public class UserguideVideoFragment
   extends UserguideFragment
@@ -80,19 +80,19 @@ public class UserguideVideoFragment
       return null;
     }
     paramLayoutInflater = paramLayoutInflater.inflate(2130903651, null);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131233239));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131233238));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView = ((QQVideoView)paramLayoutInflater.findViewById(2131233237));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131233240));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView = ((QQVideoView)paramLayoutInflater.findViewById(2131233236));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131233239));
     paramViewGroup = Uri.parse("android.resource://" + a().getPackageName() + "/" + 2131165211);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setVideoURI(paramViewGroup);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.requestFocus();
     paramViewGroup = a();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setDimension(paramViewGroup[0], paramViewGroup[1]);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnCompletionListener(new ens(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnErrorListener(new ent(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnPreparedListener(new enu(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnCompletionListener(new enr(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnErrorListener(new ens(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQVideoView.setOnPreparedListener(new ent(this));
     return paramLayoutInflater;
   }
   

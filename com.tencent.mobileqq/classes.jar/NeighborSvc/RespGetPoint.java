@@ -9,8 +9,8 @@ public final class RespGetPoint
 {
   static GPS cache_stGps;
   static UserDetailLocalInfo cache_stUDLinfo;
-  public GPS stGps;
-  public UserDetailLocalInfo stUDLinfo;
+  public GPS stGps = null;
+  public UserDetailLocalInfo stUDLinfo = null;
   
   public RespGetPoint() {}
   
@@ -35,14 +35,15 @@ public final class RespGetPoint
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stGps, 0);
-    if (this.stUDLinfo != null) {
-      paramJceOutputStream.write(this.stUDLinfo, 1);
+    UserDetailLocalInfo localUserDetailLocalInfo = this.stUDLinfo;
+    if (localUserDetailLocalInfo != null) {
+      paramJceOutputStream.write(localUserDetailLocalInfo, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespGetPoint
  * JD-Core Version:    0.7.0.1
  */

@@ -1,170 +1,213 @@
 package com.tencent.mm.plugin.account.security.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.x;
-import com.tencent.mm.protocal.protobuf.jt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.plugin.account.friend.model.w;
+import com.tencent.mm.plugin.account.security.a.a;
+import com.tencent.mm.plugin.account.security.a.b;
+import com.tencent.mm.plugin.account.security.a.d;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.mz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import java.util.Map;
 
 public class SecurityAccountIntroUI
   extends MMWizardActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private String czF;
-  private ProgressDialog eeN = null;
-  private String gBP;
-  private String gBQ;
-  private boolean gBR = false;
-  private Button gBS;
-  private String guI;
+  private static final String pYs;
+  private String hRk;
   private String jumpUrl;
+  private ProgressDialog lzP = null;
+  private String pQb;
+  private String pYt;
+  private String pYu;
+  private boolean pYv = false;
+  private Button pYw;
   
-  private void apB()
+  static
   {
-    AppMethodBeat.i(69912);
-    com.tencent.mm.plugin.b.a.xD(this.guI);
+    AppMethodBeat.i(304854);
+    pYs = "https://" + WeChatHosts.domainString(a.d.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/readtemplate?lang=%s&t=w_unprotect&step=1&f=Android";
+    AppMethodBeat.o(304854);
+  }
+  
+  private void bWj()
+  {
+    AppMethodBeat.i(125594);
+    com.tencent.mm.plugin.b.a.TA(this.pQb);
     cancel();
-    Oi(1);
-    AppMethodBeat.o(69912);
+    aAp(1);
+    AppMethodBeat.o(125594);
   }
   
   public int getLayoutId()
   {
-    return 2130970635;
+    return a.b.security_account_intro;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(69911);
-    setMMTitle(2131302864);
-    findViewById(2131827510).setOnClickListener(new SecurityAccountIntroUI.1(this));
-    if (!this.gBR)
+    AppMethodBeat.i(125593);
+    setMMTitle(a.d.safe_device_verify_phone_title);
+    findViewById(a.a.operation_btn).setOnClickListener(new View.OnClickListener()
     {
-      this.gBS = ((Button)findViewById(2131827511));
-      if (!bo.isNullOrNil(this.gBQ)) {
-        this.gBS.setText(this.gBQ);
+      public final void onClick(final View paramAnonymousView)
+      {
+        AppMethodBeat.i(125586);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/security/ui/SecurityAccountIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        if (!SecurityAccountIntroUI.a(SecurityAccountIntroUI.this)) {}
+        for (paramAnonymousView = new com.tencent.mm.modelfriend.a(SecurityAccountIntroUI.b(SecurityAccountIntroUI.this), 10, "", "", SecurityAccountIntroUI.c(SecurityAccountIntroUI.this));; paramAnonymousView = new w(SecurityAccountIntroUI.b(SecurityAccountIntroUI.this), 10, "", 0, "", ""))
+        {
+          com.tencent.mm.kernel.h.aZW().a(paramAnonymousView, 0);
+          localObject = SecurityAccountIntroUI.this;
+          SecurityAccountIntroUI localSecurityAccountIntroUI = SecurityAccountIntroUI.this;
+          SecurityAccountIntroUI.this.getString(a.d.app_tip);
+          SecurityAccountIntroUI.a((SecurityAccountIntroUI)localObject, k.a(localSecurityAccountIntroUI, SecurityAccountIntroUI.this.getString(a.d.safe_device_sending_verify_code), true, new DialogInterface.OnCancelListener()
+          {
+            public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+            {
+              AppMethodBeat.i(125585);
+              com.tencent.mm.kernel.h.aZW().a(paramAnonymousView);
+              AppMethodBeat.o(125585);
+            }
+          }));
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/security/ui/SecurityAccountIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(125586);
+          return;
+        }
       }
-      this.gBS.setVisibility(0);
-      this.gBS.setOnClickListener(new SecurityAccountIntroUI.2(this));
+    });
+    if (!this.pYv)
+    {
+      this.pYw = ((Button)findViewById(a.a.close_account_protect_btn));
+      if (!Util.isNullOrNil(this.pYu)) {
+        this.pYw.setText(this.pYu);
+      }
+      this.pYw.setVisibility(0);
+      this.pYw.setOnClickListener(new SecurityAccountIntroUI.2(this));
     }
     setBackBtn(new SecurityAccountIntroUI.3(this));
-    AppMethodBeat.o(69911);
+    AppMethodBeat.o(125593);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(69907);
+    AppMethodBeat.i(125589);
     super.onCreate(paramBundle);
-    this.gBP = getIntent().getStringExtra("auth_ticket");
-    this.czF = getIntent().getStringExtra("binded_mobile");
-    this.gBR = getIntent().getBooleanExtra("re_open_verify", false);
+    this.pYt = getIntent().getStringExtra("auth_ticket");
+    this.hRk = getIntent().getStringExtra("binded_mobile");
+    this.pYv = getIntent().getBooleanExtra("re_open_verify", false);
     paramBundle = getIntent().getStringExtra("close_safe_device_style");
-    ab.i("MicroMsg.SecurityAccountIntroUI", "summerphone authTicket[%s], showStyle[%s]", new Object[] { bo.aqg(this.gBP), paramBundle });
-    if (!bo.isNullOrNil(paramBundle))
+    Log.i("MicroMsg.SecurityAccountIntroUI", "summerphone authTicket[%s], showStyle[%s]", new Object[] { Util.secPrint(this.pYt), paramBundle });
+    if (!Util.isNullOrNil(paramBundle))
     {
-      paramBundle = br.F(paramBundle, "wording");
+      paramBundle = XmlParser.parseXml(paramBundle, "wording", null);
       if (paramBundle != null)
       {
-        this.gBQ = ((String)paramBundle.get(".wording.title"));
+        this.pYu = ((String)paramBundle.get(".wording.title"));
         this.jumpUrl = ((String)paramBundle.get(".wording.url"));
-        ab.i("MicroMsg.SecurityAccountIntroUI", "summerphone closeBtnText[%s], jumpUrl[%s]", new Object[] { this.gBQ, this.jumpUrl });
+        Log.i("MicroMsg.SecurityAccountIntroUI", "summerphone closeBtnText[%s], jumpUrl[%s]", new Object[] { this.pYu, this.jumpUrl });
       }
     }
-    this.guI = com.tencent.mm.plugin.b.a.awy();
+    this.pQb = com.tencent.mm.plugin.b.a.chY();
     initView();
-    AppMethodBeat.o(69907);
+    AppMethodBeat.o(125589);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(69910);
+    AppMethodBeat.i(125592);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      apB();
-      AppMethodBeat.o(69910);
+      bWj();
+      AppMethodBeat.o(125592);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(69910);
+    AppMethodBeat.o(125592);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(69909);
+    AppMethodBeat.i(125591);
     super.onPause();
-    g.Rc().b(145, this);
-    g.Rc().b(132, this);
-    if (!this.gBR)
+    com.tencent.mm.kernel.h.aZW().b(145, this);
+    com.tencent.mm.kernel.h.aZW().b(132, this);
+    if (!this.pYv)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      g.RJ();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",L600_100,");
-      g.RJ();
-      com.tencent.mm.plugin.b.a.g(false, com.tencent.mm.kernel.a.mx("L600_100") + ",2");
+      com.tencent.mm.kernel.h.baC();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.b.aZR()).append(",").append(getClass().getName()).append(",L600_100,");
+      com.tencent.mm.kernel.h.baC();
+      com.tencent.mm.plugin.b.a.z(false, com.tencent.mm.kernel.b.Fw("L600_100") + ",2");
     }
-    AppMethodBeat.o(69909);
+    AppMethodBeat.o(125591);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(69908);
+    AppMethodBeat.i(125590);
     super.onResume();
-    g.Rc().a(145, this);
-    g.Rc().a(132, this);
-    if (!this.gBR)
+    com.tencent.mm.kernel.h.aZW().a(145, this);
+    com.tencent.mm.kernel.h.aZW().a(132, this);
+    if (!this.pYv)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      g.RJ();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",L600_100,");
-      g.RJ();
-      com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("L600_100") + ",1");
-      com.tencent.mm.plugin.b.a.xC("L600_100");
+      com.tencent.mm.kernel.h.baC();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.b.aZR()).append(",").append(getClass().getName()).append(",L600_100,");
+      com.tencent.mm.kernel.h.baC();
+      com.tencent.mm.plugin.b.a.z(true, com.tencent.mm.kernel.b.Fw("L600_100") + ",1");
+      com.tencent.mm.plugin.b.a.Tz("L600_100");
     }
-    AppMethodBeat.o(69908);
+    AppMethodBeat.o(125590);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(69913);
-    if ((this.eeN != null) && (this.eeN.isShowing()))
+    AppMethodBeat.i(125595);
+    if ((this.lzP != null) && (this.lzP.isShowing()))
     {
-      this.eeN.dismiss();
-      this.eeN = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (!this.gBR) {}
-      for (paramString = ((com.tencent.mm.modelfriend.a)paramm).agy();; paramString = ((jt)((x)paramm).rr.fsW.fta).wrW)
+      if (!this.pYv) {}
+      for (paramString = ((com.tencent.mm.modelfriend.a)paramp).bIR();; paramString = ((mz)c.c.b(((w)paramp).rr.otC)).YJu)
       {
-        ab.d("MicroMsg.SecurityAccountIntroUI", "duanyi test authTicket_login = " + this.gBP + "duanyi test authTicket_check = " + paramString);
-        paramm = new Intent(this, SecurityAccountVerifyUI.class);
-        paramm.putExtra("auth_ticket", paramString);
-        paramm.putExtra("binded_mobile", this.czF);
-        paramm.putExtra("re_open_verify", this.gBR);
-        paramm.putExtra("from_source", getIntent().getIntExtra("from_source", 1));
-        J(this, paramm);
+        Log.d("MicroMsg.SecurityAccountIntroUI", "duanyi test authTicket_login = " + this.pYt + "duanyi test authTicket_check = " + paramString);
+        paramp = new Intent(this, SecurityAccountVerifyUI.class);
+        paramp.putExtra("auth_ticket", paramString);
+        paramp.putExtra("binded_mobile", this.hRk);
+        paramp.putExtra("re_open_verify", this.pYv);
+        paramp.putExtra("from_source", getIntent().getIntExtra("from_source", 1));
+        aQ(this, paramp);
         if (getIntent().getIntExtra("from_source", 1) == 3) {
           finish();
         }
-        AppMethodBeat.o(69913);
+        AppMethodBeat.o(125595);
         return;
       }
     }
@@ -174,24 +217,24 @@ public class SecurityAccountIntroUI
     default: 
       i = 0;
     }
-    while ((i != 0) || (com.tencent.mm.plugin.account.a.a.gmP.a(this, paramInt1, paramInt2, paramString)))
+    while ((i != 0) || (com.tencent.mm.plugin.account.sdk.a.pFo.a(this, paramInt1, paramInt2, paramString)))
     {
-      AppMethodBeat.o(69913);
+      AppMethodBeat.o(125595);
       return;
-      Toast.makeText(this, 2131296926, 0).show();
+      Toast.makeText(this, a.d.app_err_system_busy_tip, 0).show();
       i = 1;
       continue;
-      Toast.makeText(this, 2131297570, 0).show();
+      Toast.makeText(this, a.d.bind_mcontact_err_freq_limit, 0).show();
       i = 1;
       continue;
-      Toast.makeText(this, 2131297569, 0).show();
+      Toast.makeText(this, a.d.bind_mcontact_err_format, 0).show();
       i = 1;
       continue;
-      h.a(this, 2131297566, 2131297087, null);
+      k.a(this, a.d.bind_mcontact_err_BindPhone_NeedAdjust, a.d.app_tip, null);
       i = 1;
     }
-    Toast.makeText(this, getString(2131302858, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-    AppMethodBeat.o(69913);
+    Toast.makeText(this, getString(a.d.safe_device_send_verify_code_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(125595);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -202,7 +245,7 @@ public class SecurityAccountIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.SecurityAccountIntroUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class SvcResponseSetConfMsgRead
   extends JceStruct
 {
-  public byte cReplyCode;
-  public long lConfMsgSeq;
-  public long lConfUin;
-  public long lMemberMsgSeq;
+  public byte cReplyCode = 0;
+  public long lConfMsgSeq = 0L;
+  public long lConfUin = 0L;
+  public long lMemberMsgSeq = 0L;
   public String strResult = "";
   
   public SvcResponseSetConfMsgRead() {}
@@ -44,7 +44,7 @@ public final class SvcResponseSetConfMsgRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponseSetConfMsgRead
  * JD-Core Version:    0.7.0.1
  */

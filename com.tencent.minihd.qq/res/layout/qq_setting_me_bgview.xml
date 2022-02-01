@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/qq_setting_me_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/up" android:layout_width="fill_parent" android:layout_height="155.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/downBottom" android:background="@drawable/qq_setting_me_bg" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignLeft="@id/up" android:layout_alignBottom="@id/up" />
+    <ImageView android:id="@id/down" android:background="@drawable/qq_setting_me_bgmask" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/downBottom" />
+</RelativeLayout>

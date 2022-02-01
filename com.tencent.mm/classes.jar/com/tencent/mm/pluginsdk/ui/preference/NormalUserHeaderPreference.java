@@ -1,295 +1,292 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
 import android.app.Activity;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.cu;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao.a;
-import com.tencent.mm.model.ao.c;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.m.a;
-import com.tencent.mm.plugin.sns.b.k;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.c;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelavatar.AvatarStorage;
+import com.tencent.mm.modelavatar.AvatarStorage.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.n.a;
 import com.tencent.mm.plugin.story.api.e;
+import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.pluginsdk.ui.ProfileDescribeView;
 import com.tencent.mm.pluginsdk.ui.ProfileLabelView;
 import com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.ay;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bt;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cp;
+import com.tencent.mm.storage.cq;
+import com.tencent.mm.storage.cr;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.Preference;
-import junit.framework.Assert;
+import com.tencent.mm.ui.base.u.i;
 
 public class NormalUserHeaderPreference
   extends Preference
-  implements d.a, m.a, n.b
+  implements AvatarStorage.a, n.a, MStorageEx.IOnStorageChange
 {
-  MMActivity cmc;
-  ad contact;
-  private String egF;
-  private boolean lJS;
-  private String mVw;
-  private TextView nIh;
-  private TextView nzx;
-  private ClipboardManager oZF;
-  private boolean pAl;
-  private boolean pAr;
-  private boolean pCc;
-  private ImageView pxZ;
-  private ImageView qPQ;
-  int qQk;
-  private TextView uuy;
-  private String vRr;
-  private String vRs;
-  private TextView waV;
-  private TextView waW;
-  private View waX;
-  private Button waY;
-  private Button waZ;
-  private TextView wba;
-  private ImageView wbb;
-  private CheckBox wbc;
-  private ImageView wbd;
-  private ImageView wbe;
-  private LinearLayout wbf;
-  private Button wbg;
-  private FMessageListView wbh;
-  private RelativeLayout wbi;
-  private ImageView wbj;
-  private int wbk;
-  private boolean wbl;
-  private boolean wbm;
-  private boolean wbn;
-  private boolean wbo;
-  private boolean wbp;
-  private boolean wbq;
-  private boolean wbr;
-  private boolean wbs;
-  private String wbt;
-  private ProfileMobilePhoneView wbu;
-  private ProfileDescribeView wbv;
-  private ProfileLabelView wbw;
-  private TextView wbx;
-  public View.OnClickListener wby;
-  public String wbz;
+  private TextView JBA;
+  private ImageView MVc;
+  public boolean MZb;
+  public boolean MZv;
+  public int PCB;
+  private ImageView PCh;
+  private TextView VTT;
+  private String XZt;
+  private String XZu;
+  private TextView YmC;
+  private TextView YmD;
+  private View YmE;
+  private Button YmF;
+  private Button YmG;
+  private TextView YmH;
+  private ImageView YmI;
+  private CheckBox YmJ;
+  private ImageView YmK;
+  private ImageView YmL;
+  private LinearLayout YmM;
+  private Button YmN;
+  private FMessageListView YmO;
+  private RelativeLayout YmP;
+  private ImageView YmQ;
+  public boolean YmR;
+  private int YmS;
+  private boolean YmT;
+  private boolean YmU;
+  private boolean YmV;
+  private boolean YmW;
+  public boolean YmX;
+  public boolean YmY;
+  public boolean YmZ;
+  public boolean Yna;
+  public String Ynb;
+  private ProfileMobilePhoneView Ync;
+  private ProfileDescribeView Ynd;
+  private ProfileLabelView Yne;
+  private TextView Ynf;
+  public View.OnClickListener Yng;
+  public String Ynh;
+  public au contact;
+  public String lyn;
+  public MMActivity lzt;
+  public String pPi;
+  private TextView yEQ;
+  private boolean yxr;
   
   public NormalUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(28081);
-    this.lJS = false;
-    this.wbk = 0;
-    this.wbl = false;
-    this.wbm = false;
-    this.wbn = false;
-    this.wbo = false;
-    this.wbp = false;
-    this.wbq = false;
-    this.wbr = false;
-    this.pCc = false;
-    this.wbs = false;
-    this.pAr = false;
-    this.egF = "";
-    this.wbz = null;
-    this.cmc = ((MMActivity)paramContext);
-    init();
-    AppMethodBeat.o(28081);
+    AppMethodBeat.i(31868);
+    this.yxr = false;
+    this.YmS = 0;
+    this.YmT = false;
+    this.YmU = false;
+    this.YmV = false;
+    this.YmW = false;
+    this.YmX = false;
+    this.YmY = false;
+    this.YmZ = false;
+    this.MZv = false;
+    this.Yna = false;
+    this.MZb = false;
+    this.lyn = "";
+    this.Ynh = null;
+    this.lzt = ((MMActivity)paramContext);
+    this.yxr = false;
+    AppMethodBeat.o(31868);
   }
   
   public NormalUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(28082);
-    this.lJS = false;
-    this.wbk = 0;
-    this.wbl = false;
-    this.wbm = false;
-    this.wbn = false;
-    this.wbo = false;
-    this.wbp = false;
-    this.wbq = false;
-    this.wbr = false;
-    this.pCc = false;
-    this.wbs = false;
-    this.pAr = false;
-    this.egF = "";
-    this.wbz = null;
-    this.cmc = ((MMActivity)paramContext);
-    init();
-    AppMethodBeat.o(28082);
+    AppMethodBeat.i(31869);
+    this.yxr = false;
+    this.YmS = 0;
+    this.YmT = false;
+    this.YmU = false;
+    this.YmV = false;
+    this.YmW = false;
+    this.YmX = false;
+    this.YmY = false;
+    this.YmZ = false;
+    this.MZv = false;
+    this.Yna = false;
+    this.MZb = false;
+    this.lyn = "";
+    this.Ynh = null;
+    this.lzt = ((MMActivity)paramContext);
+    this.yxr = false;
+    AppMethodBeat.o(31869);
   }
   
-  private static boolean Xh(String paramString)
+  private static boolean aRZ(String paramString)
   {
-    AppMethodBeat.i(28086);
-    if (com.tencent.mm.plugin.sns.b.n.raT != null)
+    AppMethodBeat.i(31873);
+    if (com.tencent.mm.plugin.sns.c.q.Qkl != null)
     {
-      boolean bool = com.tencent.mm.plugin.sns.b.n.raT.Xh(paramString);
-      AppMethodBeat.o(28086);
+      boolean bool = com.tencent.mm.plugin.sns.c.q.Qkl.aRZ(paramString);
+      AppMethodBeat.o(31873);
       return bool;
     }
-    AppMethodBeat.o(28086);
+    AppMethodBeat.o(31873);
     return false;
   }
   
-  private boolean cbQ()
+  private void awS(int paramInt)
   {
-    return (this.lJS) && (this.contact != null);
+    AppMethodBeat.i(245149);
+    if (this.YmM == null)
+    {
+      AppMethodBeat.o(245149);
+      return;
+    }
+    View localView = this.YmM.findViewById(paramInt);
+    if (localView == null)
+    {
+      AppMethodBeat.o(245149);
+      return;
+    }
+    localView.setVisibility(8);
+    AppMethodBeat.o(245149);
   }
   
-  private void chm()
+  private boolean gBh()
   {
-    AppMethodBeat.i(28087);
-    a.b.c(this.pxZ, this.contact.field_username);
+    return (this.yxr) && (this.contact != null);
+  }
+  
+  private void gzL()
+  {
+    AppMethodBeat.i(31874);
+    a.b.g(this.MVc, this.contact.field_username);
     int i;
-    if (this.pxZ != null)
+    if (this.MVc != null)
     {
-      i = com.tencent.mm.cb.a.ao(this.mContext, 2131427497);
-      int j = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 88);
+      i = com.tencent.mm.cd.a.br(this.mContext, R.f.BigAvatarSize);
+      int j = com.tencent.mm.cd.a.fromDPToPix(this.lzt, 88);
       if (i <= j) {
-        break label95;
+        break label97;
       }
       i = j;
     }
-    label95:
+    label97:
     for (;;)
     {
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-      localLayoutParams.setMargins(0, 0, com.tencent.mm.cb.a.ap(this.mContext, 2131427775), 0);
-      this.pxZ.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(28087);
+      localLayoutParams.setMargins(0, 0, com.tencent.mm.cd.a.bs(this.mContext, R.f.LargerPadding), 0);
+      this.MVc.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(31874);
       return;
     }
   }
   
-  private void dpc()
+  private void iNB()
   {
-    AppMethodBeat.i(28088);
-    this.wba.setVisibility(0);
-    this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.Oe()) + " ", this.nzx.getTextSize()));
-    chm();
-    this.wbg.setVisibility(8);
-    this.nIh.setVisibility(8);
-    this.wbh.setVisibility(8);
-    if ((this.wbh.getVisibility() == 8) && (this.wbx.getVisibility() == 8) && (this.wbw.getVisibility() == 8) && (this.wbv.getVisibility() == 8) && (this.uuy.getVisibility() == 8)) {
-      this.waX.setVisibility(8);
-    }
-    this.waY.setVisibility(8);
-    this.waZ.setVisibility(8);
-    this.wbc.setVisibility(8);
-    if (this.wbw != null) {
-      this.wbw.setVisibility(8);
-    }
-    if (this.wbu != null) {
-      this.wbu.setVisibility(8);
-    }
-    if (this.wbv != null) {
-      this.wbv.setVisibility(8);
-    }
-    if (this.wbx != null) {
-      this.wbx.setVisibility(8);
-    }
-    if (this.waW != null) {
-      this.waW.setVisibility(8);
-    }
-    AppMethodBeat.o(28088);
-  }
-  
-  private void dpe()
-  {
-    AppMethodBeat.i(28091);
+    AppMethodBeat.i(31878);
     int i = 0;
-    if (this.wbn) {
-      i = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 17) + 0;
+    if (this.YmV) {
+      i = com.tencent.mm.cd.a.fromDPToPix(this.lzt, 17) + 0;
     }
-    int j = i + this.wbk;
+    int j = i + this.YmS;
     i = j;
-    if (this.wbl) {
-      i = j + com.tencent.mm.cb.a.fromDPToPix(this.cmc, 27);
+    if (this.YmT) {
+      i = j + com.tencent.mm.cd.a.fromDPToPix(this.lzt, 27);
     }
     j = i;
-    if (this.wbm) {
-      j = i + com.tencent.mm.cb.a.fromDPToPix(this.cmc, 27);
+    if (this.YmU) {
+      j = i + com.tencent.mm.cd.a.fromDPToPix(this.lzt, 27);
     }
     i = j;
-    if (this.wbo) {
-      i = j + com.tencent.mm.cb.a.fromDPToPix(this.cmc, 30);
+    if (this.YmW) {
+      i = j + com.tencent.mm.cd.a.fromDPToPix(this.lzt, 30);
     }
-    if (com.tencent.mm.cb.a.gt(this.mContext)) {
-      i += com.tencent.mm.cb.a.fromDPToPix(this.cmc, 88);
+    if (com.tencent.mm.cd.a.mp(this.mContext)) {
+      i += com.tencent.mm.cd.a.fromDPToPix(this.lzt, 88);
     }
     for (;;)
     {
-      j = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 60);
-      DisplayMetrics localDisplayMetrics = this.cmc.getResources().getDisplayMetrics();
-      this.nzx.setMaxWidth(localDisplayMetrics.widthPixels - (i + j));
-      AppMethodBeat.o(28091);
+      j = com.tencent.mm.cd.a.fromDPToPix(this.lzt, 60);
+      DisplayMetrics localDisplayMetrics = this.lzt.getResources().getDisplayMetrics();
+      this.yEQ.setMaxWidth(localDisplayMetrics.widthPixels - (i + j));
+      AppMethodBeat.o(31878);
       return;
-      i += com.tencent.mm.cb.a.fromDPToPix(this.cmc, 64);
+      i += com.tencent.mm.cd.a.fromDPToPix(this.lzt, 64);
     }
   }
   
-  private void dpf()
+  private void iNC()
   {
     int j = 0;
-    AppMethodBeat.i(28097);
+    AppMethodBeat.i(31884);
     ImageView localImageView;
-    if ((this.wbd != null) && (t.nH(this.contact.field_username)))
+    if ((this.YmK != null) && (au.bwH(this.contact.field_username)))
     {
-      this.wbm = this.contact.NZ();
-      localImageView = this.wbd;
-      if (this.wbm)
+      this.YmU = this.contact.aSL();
+      localImageView = this.YmK;
+      if (this.YmU)
       {
         i = 0;
         localImageView.setVisibility(i);
       }
     }
-    else if ((this.wbe != null) && (t.nH(this.contact.field_username)))
+    else if ((this.YmL != null) && (au.bwH(this.contact.field_username)))
     {
-      this.wbl = Xh(this.contact.field_username);
-      localImageView = this.wbe;
-      if (!this.wbl) {
+      this.YmT = aRZ(this.contact.field_username);
+      localImageView = this.YmL;
+      if (!this.YmT) {
         break label124;
       }
     }
@@ -297,608 +294,619 @@ public class NormalUserHeaderPreference
     for (int i = j;; i = 8)
     {
       localImageView.setVisibility(i);
-      AppMethodBeat.o(28097);
+      AppMethodBeat.o(31884);
       return;
       i = 8;
       break;
     }
   }
   
-  private void dpg()
+  private void iND()
   {
-    AppMethodBeat.i(28098);
-    if (bo.isNullOrNil(this.wbt))
+    AppMethodBeat.i(31885);
+    if (Util.isNullOrNil(this.Ynb))
     {
-      this.waV.setVisibility(8);
-      AppMethodBeat.o(28098);
+      this.YmC.setVisibility(8);
+      AppMethodBeat.o(31885);
       return;
     }
-    if ((!r.nB(this.contact.field_username)) && (bo.nullAsNil(this.contact.field_conRemark).length() > 0)) {
-      this.nIh.setVisibility(8);
+    if ((!z.Iy(this.contact.field_username)) && (Util.nullAsNil(this.contact.field_conRemark).length() > 0)) {
+      this.JBA.setVisibility(8);
     }
-    this.waV.setVisibility(0);
-    this.waV.setText(j.b(this.cmc, this.cmc.getString(2131298570) + this.wbt, this.waV.getTextSize()));
-    AppMethodBeat.o(28098);
+    this.YmC.setVisibility(0);
+    this.YmC.setText(p.b(this.lzt, this.lzt.getString(R.l.gBf) + this.Ynb, this.YmC.getTextSize()));
+    AppMethodBeat.o(31885);
   }
   
-  private void dph()
+  private void iNE()
   {
-    AppMethodBeat.i(28099);
-    if ((r.nB(this.contact.field_username)) || (bo.nullAsNil(this.contact.field_conRemark).length() <= 0))
+    AppMethodBeat.i(31886);
+    if ((z.Iy(this.contact.field_username)) || (Util.nullAsNil(this.contact.field_conRemark).length() <= 0))
     {
-      this.waW.setVisibility(8);
-      this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.Oe()) + " ", this.nzx.getTextSize()));
-      if (this.wbr)
+      this.YmD.setVisibility(8);
+      this.yEQ.setText(p.b(this.lzt, Util.nullAsNil(this.contact.aSU()) + " ", this.yEQ.getTextSize()));
+      if (this.YmZ)
       {
-        this.waY.setVisibility(0);
-        this.wbx.setVisibility(8);
-        if (ad.arf(this.contact.field_username))
+        this.YmF.setVisibility(0);
+        this.Ynf.setVisibility(8);
+        if (au.bwO(this.contact.field_username))
         {
-          this.wbx.setText(2131298849);
-          dpi();
+          this.Ynf.setText(R.l.gDi);
+          awS(R.h.fMQ);
         }
-        if ((!this.pCc) || (com.tencent.mm.n.a.je(this.contact.field_type))) {
-          break label557;
+        if ((!this.MZv) || (com.tencent.mm.contact.d.rs(this.contact.field_type))) {
+          break label563;
         }
-        this.waZ.setVisibility(0);
+        this.YmG.setVisibility(0);
       }
     }
     for (;;)
     {
-      if (ad.nM(this.contact.field_username)) {
-        this.nzx.setText("");
+      if (au.bwS(this.contact.field_username)) {
+        this.yEQ.setText("");
       }
-      if ((this.qQk == 76) && (this.contact.field_username != null) && (this.contact.field_username.endsWith("@stranger"))) {
-        this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.field_nickname) + " ", this.nzx.getTextSize()));
+      if ((this.PCB == 76) && (this.contact.field_username != null) && (this.contact.field_username.endsWith("@stranger"))) {
+        this.yEQ.setText(p.b(this.lzt, Util.nullAsNil(this.contact.field_nickname) + " ", this.yEQ.getTextSize()));
       }
-      if ((this.waZ.getVisibility() == 0) && (this.waW.getVisibility() == 0))
+      if ((this.YmG.getVisibility() == 0) && (this.YmD.getVisibility() == 0))
       {
-        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.waW.getLayoutParams();
-        localLayoutParams.topMargin = this.mContext.getResources().getDimensionPixelSize(2131427854);
-        this.waW.setLayoutParams(localLayoutParams);
+        LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.YmD.getLayoutParams();
+        localLayoutParams.topMargin = this.mContext.getResources().getDimensionPixelSize(R.f.SmallPadding);
+        this.YmD.setLayoutParams(localLayoutParams);
       }
-      AppMethodBeat.o(28099);
+      AppMethodBeat.o(31886);
       return;
-      if (this.wbp)
+      if (this.YmX)
       {
-        this.waY.setVisibility(0);
-        this.wbx.setVisibility(8);
+        this.YmF.setVisibility(0);
+        this.Ynf.setVisibility(8);
         break;
       }
-      if (com.tencent.mm.n.a.je(this.contact.field_type)) {
-        this.waY.setVisibility(8);
+      if (com.tencent.mm.contact.d.rs(this.contact.field_type)) {
+        this.YmF.setVisibility(8);
       }
-      boolean bool1 = this.wbv.S(this.contact);
-      boolean bool2 = this.wbw.S(this.contact);
+      boolean bool1 = this.Ynd.av(this.contact);
+      boolean bool2 = this.Yne.av(this.contact);
       if ((!bool1) && (!bool2)) {
         break;
       }
-      this.wbx.setVisibility(8);
+      this.Ynf.setVisibility(8);
       break;
-      this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.field_conRemark) + " ", this.nzx.getTextSize()));
-      this.waW.setVisibility(0);
-      this.waW.setText(j.b(this.cmc, this.mContext.getString(2131298681) + this.contact.Oe(), this.waW.getTextSize()));
-      this.waY.setVisibility(8);
+      this.yEQ.setText(p.b(this.lzt, Util.nullAsNil(this.contact.field_conRemark) + " ", this.yEQ.getTextSize()));
+      this.YmD.setVisibility(0);
+      this.YmD.setText(p.b(this.lzt, this.mContext.getString(R.l.gBH) + this.contact.aSU(), this.YmD.getTextSize()));
+      this.YmF.setVisibility(8);
       break;
-      label557:
-      if (this.wbq)
+      label563:
+      if (this.YmY)
       {
-        this.waZ.setVisibility(0);
-        if (com.tencent.mm.cb.a.gt(this.cmc))
+        this.YmG.setVisibility(0);
+        if (com.tencent.mm.cd.a.mp(this.lzt))
         {
-          this.waZ.setTextSize(0, this.cmc.getResources().getDimensionPixelSize(2131427758));
-          this.waY.setTextSize(0, this.cmc.getResources().getDimensionPixelSize(2131427758));
+          this.YmG.setTextSize(0, this.lzt.getResources().getDimensionPixelSize(R.f.HintTextSize));
+          this.YmF.setTextSize(0, this.lzt.getResources().getDimensionPixelSize(R.f.HintTextSize));
         }
       }
       else
       {
-        this.waZ.setVisibility(8);
+        this.YmG.setVisibility(8);
       }
     }
   }
   
-  private void dpi()
+  private void iNF()
   {
-    AppMethodBeat.i(28100);
-    if (this.wbf == null)
+    AppMethodBeat.i(31888);
+    this.YmJ.setClickable(false);
+    if (((au.bwH(this.contact.field_username)) || (au.bwO(this.contact.field_username))) && (com.tencent.mm.contact.d.rs(this.contact.field_type)) && (!z.Iy(this.contact.field_username)))
     {
-      AppMethodBeat.o(28100);
-      return;
-    }
-    View localView = this.wbf.findViewById(2131823118);
-    if (localView == null)
-    {
-      AppMethodBeat.o(28100);
-      return;
-    }
-    localView.setVisibility(8);
-    AppMethodBeat.o(28100);
-  }
-  
-  private void dpj()
-  {
-    AppMethodBeat.i(28101);
-    this.wbc.setClickable(false);
-    if (((t.nH(this.contact.field_username)) || (ad.arf(this.contact.field_username))) && (com.tencent.mm.n.a.je(this.contact.field_type)) && (!r.nB(this.contact.field_username)))
-    {
-      this.wbc.setVisibility(0);
-      if (this.contact.NY())
+      this.YmJ.setVisibility(0);
+      if (this.contact.aSK())
       {
-        this.wbc.setChecked(true);
-        this.wbo = true;
-        AppMethodBeat.o(28101);
+        this.YmJ.setChecked(true);
+        this.YmW = true;
+        AppMethodBeat.o(31888);
         return;
       }
-      this.wbc.setChecked(false);
-      this.wbc.setVisibility(8);
-      this.wbo = false;
-      AppMethodBeat.o(28101);
+      this.YmJ.setChecked(false);
+      this.YmJ.setVisibility(8);
+      this.YmW = false;
+      AppMethodBeat.o(31888);
       return;
     }
-    this.wbo = false;
-    this.wbc.setVisibility(8);
-    AppMethodBeat.o(28101);
+    this.YmW = false;
+    this.YmJ.setVisibility(8);
+    AppMethodBeat.o(31888);
   }
   
-  private void dpk()
+  private void iNG()
   {
-    AppMethodBeat.i(28105);
-    if (!com.tencent.mm.plugin.story.api.n.isShowStoryCheck())
+    AppMethodBeat.i(31892);
+    if (!o.isShowStoryCheck())
     {
-      this.wbi.setVisibility(8);
-      AppMethodBeat.o(28105);
+      this.YmP.setVisibility(8);
+      AppMethodBeat.o(31892);
       return;
     }
-    e locale = (e)g.G(e.class);
+    e locale = (e)h.az(e.class);
     RelativeLayout.LayoutParams localLayoutParams;
     if (locale.isStoryExist(this.contact.field_username))
     {
-      this.wbi.setVisibility(0);
-      this.wbj.setVisibility(0);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.wbf.getLayoutParams();
-      localLayoutParams.topMargin = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 166);
-      this.wbf.setLayoutParams(localLayoutParams);
+      this.YmP.setVisibility(0);
+      this.YmQ.setVisibility(0);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.YmM.getLayoutParams();
+      localLayoutParams.topMargin = com.tencent.mm.cd.a.fromDPToPix(this.lzt, 166);
+      this.YmM.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
-      locale.loadStory(this.contact.field_username, this.egF);
-      AppMethodBeat.o(28105);
+      locale.loadStory(this.contact.field_username, this.lyn);
+      AppMethodBeat.o(31892);
       return;
-      this.wbi.setVisibility(8);
-      this.wbj.setVisibility(8);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.wbf.getLayoutParams();
+      this.YmP.setVisibility(8);
+      this.YmQ.setVisibility(8);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.YmM.getLayoutParams();
       localLayoutParams.topMargin = 0;
-      this.wbf.setLayoutParams(localLayoutParams);
+      this.YmM.setLayoutParams(localLayoutParams);
     }
   }
   
-  private void init()
+  private void iNz()
   {
-    AppMethodBeat.i(28083);
-    this.lJS = false;
-    this.oZF = ((ClipboardManager)ah.getContext().getSystemService("clipboard"));
-    AppMethodBeat.o(28083);
+    AppMethodBeat.i(31875);
+    this.YmH.setVisibility(0);
+    this.yEQ.setText(p.b(this.lzt, Util.nullAsNil(this.contact.aSU()) + " ", this.yEQ.getTextSize()));
+    gzL();
+    this.YmN.setVisibility(8);
+    this.JBA.setVisibility(8);
+    this.YmO.setVisibility(8);
+    if ((this.YmO.getVisibility() == 8) && (this.Ynf.getVisibility() == 8) && (this.Yne.getVisibility() == 8) && (this.Ynd.getVisibility() == 8) && (this.VTT.getVisibility() == 8)) {
+      this.YmE.setVisibility(8);
+    }
+    this.YmF.setVisibility(8);
+    this.YmG.setVisibility(8);
+    this.YmJ.setVisibility(8);
+    if (this.Yne != null) {
+      this.Yne.setVisibility(8);
+    }
+    if (this.Ync != null) {
+      this.Ync.setVisibility(8);
+    }
+    if (this.Ynd != null) {
+      this.Ynd.setVisibility(8);
+    }
+    if (this.Ynf != null) {
+      this.Ynf.setVisibility(8);
+    }
+    if (this.YmD != null) {
+      this.YmD.setVisibility(8);
+    }
+    AppMethodBeat.o(31875);
   }
   
-  private void initView()
+  public final void LM(String paramString)
   {
-    AppMethodBeat.i(28089);
-    if (!cbQ())
+    AppMethodBeat.i(31889);
+    if (!gBh())
     {
-      ab.w("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(28089);
+      Log.e("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.yxr + "contact = " + this.contact);
+      AppMethodBeat.o(31889);
       return;
     }
-    if (this.pAr)
+    if (Util.nullAsNil(paramString).length() <= 0)
     {
-      dpc();
-      AppMethodBeat.o(28089);
+      Log.e("MicroMsg.ContactInfoHeader", "notifyChanged: user = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(31889);
       return;
     }
-    boolean bool = ad.nM(this.contact.field_username);
+    if (paramString.equals(this.contact.field_username)) {
+      initView();
+    }
+    AppMethodBeat.o(31889);
+  }
+  
+  public final void a(final cr paramcr)
+  {
+    AppMethodBeat.i(31891);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(31867);
+        if ((NormalUserHeaderPreference.a(NormalUserHeaderPreference.this) != null) && (paramcr != null) && (NormalUserHeaderPreference.a(NormalUserHeaderPreference.this).field_username.equals(paramcr.field_encryptUsername)))
+        {
+          NormalUserHeaderPreference.a(NormalUserHeaderPreference.this).AW(paramcr.field_conRemark);
+          if (!NormalUserHeaderPreference.i(NormalUserHeaderPreference.this))
+          {
+            Log.e("MicroMsg.ContactInfoHeader", "initView : bindView = " + NormalUserHeaderPreference.j(NormalUserHeaderPreference.this) + "contact = " + NormalUserHeaderPreference.a(NormalUserHeaderPreference.this).field_username);
+            AppMethodBeat.o(31867);
+            return;
+          }
+          NormalUserHeaderPreference.e(NormalUserHeaderPreference.this);
+        }
+        AppMethodBeat.o(31867);
+      }
+    });
+    AppMethodBeat.o(31891);
+  }
+  
+  public final void iNA()
+  {
+    AppMethodBeat.i(31877);
+    this.JBA.setVisibility(0);
+    if (!Util.isNullOrNil(this.contact.aJs()))
+    {
+      this.JBA.setText(com.tencent.mm.plugin.profile.c.bG(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.la(this.contact.field_username, this.contact.aJs()));
+      AppMethodBeat.o(31877);
+      return;
+    }
+    if ((!au.bxb(this.contact.field_username)) && (!au.bxa(this.contact.field_username)))
+    {
+      String str = Util.nullAsNil(this.contact.aSW());
+      this.JBA.setText(com.tencent.mm.plugin.profile.c.bG(this.mContext, this.contact.field_username) + com.tencent.mm.plugin.profile.c.la(this.contact.field_username, str));
+      AppMethodBeat.o(31877);
+      return;
+    }
+    this.JBA.setVisibility(8);
+    AppMethodBeat.o(31877);
+  }
+  
+  public final void initView()
+  {
+    AppMethodBeat.i(31876);
+    if (!gBh())
+    {
+      Log.w("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.yxr + "contact = " + this.contact);
+      AppMethodBeat.o(31876);
+      return;
+    }
+    if (this.MZb)
+    {
+      iNz();
+      AppMethodBeat.o(31876);
+      return;
+    }
+    boolean bool = au.bwS(this.contact.field_username);
     label187:
     Bitmap localBitmap;
     label231:
     int i;
     if (bool)
     {
-      this.nzx.setText("");
-      if (ad.ark(r.Zn()).equals(this.contact.field_username)) {
-        this.wbg.setVisibility(8);
+      this.yEQ.setText("");
+      if (au.bxd(z.bAM()).equals(this.contact.field_username)) {
+        this.YmN.setVisibility(8);
       }
-      this.qPQ.setVisibility(0);
-      this.wbn = true;
-      if (this.contact.dqC != 1) {
-        break label494;
+      this.PCh.setVisibility(0);
+      this.YmV = true;
+      if (this.contact.sex != 1) {
+        break label495;
       }
-      this.qPQ.setImageDrawable(com.tencent.mm.cb.a.k(this.cmc, 2131231426));
-      this.qPQ.setContentDescription(this.mContext.getString(2131302184));
+      this.PCh.setImageDrawable(com.tencent.mm.cd.a.m(this.lzt, R.k.ic_sex_male));
+      this.PCh.setContentDescription(this.mContext.getString(R.l.profile_sex_male_desc));
       if (this.contact.field_verifyFlag != 0)
       {
-        this.wbb.setVisibility(0);
-        if (ao.a.flK == null) {
-          break label569;
+        this.YmI.setVisibility(0);
+        if (az.a.okR == null) {
+          break label570;
         }
-        localBitmap = BackwardSupportUtil.b.k(ao.a.flK.kx(this.contact.field_verifyFlag), 2.0F);
-        this.wbb.setImageBitmap(localBitmap);
+        localBitmap = BackwardSupportUtil.BitmapFactory.decodeFile(az.a.okR.vd(this.contact.field_verifyFlag), 2.0F);
+        this.YmI.setImageBitmap(localBitmap);
         if (localBitmap != null) {
-          break label574;
+          break label575;
         }
         i = 0;
         label245:
-        this.wbk = i;
+        this.YmS = i;
       }
-      chm();
-      dpk();
-      this.pxZ.setOnClickListener(new NormalUserHeaderPreference.1(this));
-      this.wbj.setOnClickListener(new NormalUserHeaderPreference.2(this));
-      if (!ad.are(this.contact.field_username)) {
-        break label582;
+      gzL();
+      iNG();
+      this.MVc.setOnClickListener(new NormalUserHeaderPreference.1(this));
+      this.YmQ.setOnClickListener(new NormalUserHeaderPreference.2(this));
+      if (!au.bwN(this.contact.field_username)) {
+        break label583;
       }
-      this.nIh.setText(this.mContext.getString(2131296944) + this.contact.Og());
+      this.JBA.setText(this.mContext.getString(R.l.app_field_qquin) + this.contact.aSW());
       label341:
-      if (!t.ow(this.contact.field_username)) {
-        break label894;
+      if (!au.bws(this.contact.field_username)) {
+        break label896;
       }
-      this.uuy.setVisibility(0);
+      this.VTT.setVisibility(0);
     }
     for (;;)
     {
-      dph();
-      dpf();
-      dpj();
-      dpg();
-      this.waY.setOnClickListener(new NormalUserHeaderPreference.3(this));
-      this.waZ.setOnClickListener(new NormalUserHeaderPreference.4(this));
-      dpe();
-      this.nIh.setLongClickable(true);
-      this.nIh.setOnLongClickListener(new NormalUserHeaderPreference.5(this));
-      AppMethodBeat.o(28089);
-      return;
-      this.nzx.setText(j.b(this.cmc, bo.nullAsNil(this.contact.field_nickname) + " ", this.nzx.getTextSize()));
-      break;
-      label494:
-      if (this.contact.dqC == 2)
+      iNE();
+      iNC();
+      iNF();
+      iND();
+      this.YmF.setOnClickListener(new NormalUserHeaderPreference.3(this));
+      this.YmG.setOnClickListener(new NormalUserHeaderPreference.4(this));
+      iNB();
+      this.JBA.setLongClickable(true);
+      this.JBA.setOnLongClickListener(new View.OnLongClickListener()
       {
-        this.qPQ.setImageDrawable(com.tencent.mm.cb.a.k(this.cmc, 2131231425));
-        this.qPQ.setContentDescription(this.mContext.getString(2131302183));
+        public final boolean onLongClick(final View paramAnonymousView)
+        {
+          AppMethodBeat.i(31865);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+          if (NormalUserHeaderPreference.d(NormalUserHeaderPreference.this).getText() != null)
+          {
+            localObject = NormalUserHeaderPreference.d(NormalUserHeaderPreference.this).getText().toString();
+            int i = ((String)localObject).indexOf(':');
+            paramAnonymousView = (View)localObject;
+            if (i >= 0)
+            {
+              paramAnonymousView = (View)localObject;
+              if (i < ((String)localObject).length()) {
+                paramAnonymousView = ((String)localObject).substring(i + 1).trim();
+              }
+            }
+            localObject = new SpannableString(NormalUserHeaderPreference.d(NormalUserHeaderPreference.this).getText());
+            ((SpannableString)localObject).setSpan(new BackgroundColorSpan(NormalUserHeaderPreference.b(NormalUserHeaderPreference.this).getResources().getColor(R.e.light_blue_bg_color)), i + 1, NormalUserHeaderPreference.d(NormalUserHeaderPreference.this).getText().length(), 33);
+            NormalUserHeaderPreference.d(NormalUserHeaderPreference.this).setText((CharSequence)localObject);
+            localObject = new com.tencent.mm.ui.widget.b.a(NormalUserHeaderPreference.b(NormalUserHeaderPreference.this), NormalUserHeaderPreference.d(NormalUserHeaderPreference.this));
+            ((com.tencent.mm.ui.widget.b.a)localObject).agjt = new View.OnCreateContextMenuListener()
+            {
+              public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
+              {
+                AppMethodBeat.i(31862);
+                paramAnonymous2ContextMenu.add(NormalUserHeaderPreference.b(NormalUserHeaderPreference.this).getString(R.l.app_copy));
+                AppMethodBeat.o(31862);
+              }
+            };
+            ((com.tencent.mm.ui.widget.b.a)localObject).GAC = new u.i()
+            {
+              public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(31863);
+                if (paramAnonymous2Int == 0)
+                {
+                  ClipboardHelper.setText(paramAnonymousView);
+                  k.cY(NormalUserHeaderPreference.b(NormalUserHeaderPreference.this), NormalUserHeaderPreference.b(NormalUserHeaderPreference.this).getString(R.l.app_copy_ok));
+                }
+                AppMethodBeat.o(31863);
+              }
+            };
+            ((com.tencent.mm.ui.widget.b.a)localObject).afLp = new PopupWindow.OnDismissListener()
+            {
+              public final void onDismiss()
+              {
+                AppMethodBeat.i(31864);
+                NormalUserHeaderPreference.this.iNA();
+                AppMethodBeat.o(31864);
+              }
+            };
+            ((com.tencent.mm.ui.widget.b.a)localObject).cMz();
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/pluginsdk/ui/preference/NormalUserHeaderPreference$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+          AppMethodBeat.o(31865);
+          return true;
+        }
+      });
+      AppMethodBeat.o(31876);
+      return;
+      this.yEQ.setText(p.b(this.lzt, Util.nullAsNil(this.contact.field_nickname) + " ", this.yEQ.getTextSize()));
+      break;
+      label495:
+      if (this.contact.sex == 2)
+      {
+        this.PCh.setImageDrawable(com.tencent.mm.cd.a.m(this.lzt, R.k.ic_sex_female));
+        this.PCh.setContentDescription(this.mContext.getString(R.l.profile_sex_female_desc));
         break label187;
       }
-      if (this.contact.dqC != 0) {
+      if (this.contact.sex != 0) {
         break label187;
       }
-      this.qPQ.setVisibility(8);
-      this.wbn = false;
+      this.PCh.setVisibility(8);
+      this.YmV = false;
       break label187;
-      label569:
+      label570:
       localBitmap = null;
       break label231;
-      label574:
+      label575:
       i = localBitmap.getWidth();
       break label245;
-      label582:
-      if (ad.arc(this.contact.field_username))
+      label583:
+      if (au.bwL(this.contact.field_username))
       {
-        this.nIh.setText(this.mContext.getString(2131296956) + this.contact.Og());
+        this.JBA.setText(this.mContext.getString(R.l.app_field_weibo) + this.contact.aSW());
         break label341;
       }
-      if (this.pAl)
+      if (this.YmR)
       {
-        if (com.tencent.mm.n.a.je(this.contact.field_type))
+        if (com.tencent.mm.contact.d.rs(this.contact.field_type))
         {
-          dpd();
+          iNA();
           break label341;
         }
-        if ((this.contact.dqM == null) || (this.contact.dqM.equals("")))
+        if ((this.contact.kah == null) || (this.contact.kah.equals("")))
         {
-          this.nIh.setText(2131296919);
+          this.JBA.setText(R.l.app_empty_string);
           break label341;
         }
-        this.nIh.setText(this.contact.dqM);
+        this.JBA.setText(this.contact.kah);
         break label341;
       }
       if (bool)
       {
-        this.nIh.setText((bo.nullAsNil(s.nG(this.contact.getProvince())) + " " + bo.nullAsNil(this.contact.getCity())).trim());
+        this.JBA.setText((Util.nullAsNil(aa.IF(this.contact.getProvince())) + " " + Util.nullAsNil(this.contact.getCity())).trim());
         break label341;
       }
-      if ((!ad.ard(this.contact.field_username)) && (this.cmc.getIntent().getBooleanExtra("Contact_ShowUserName", true)))
+      if ((!au.bwM(this.contact.field_username)) && (this.lzt.getIntent().getBooleanExtra("Contact_ShowUserName", true)))
       {
-        if ((bo.isNullOrNil(this.contact.Hq())) && ((ad.ari(this.contact.field_username)) || (t.nS(this.contact.field_username))))
+        if ((Util.isNullOrNil(this.contact.aJs())) && ((au.bxb(this.contact.field_username)) || (au.bxa(this.contact.field_username))))
         {
-          this.nIh.setVisibility(8);
+          this.JBA.setVisibility(8);
           break label341;
         }
-        if (com.tencent.mm.n.a.je(this.contact.field_type))
+        if (com.tencent.mm.contact.d.rs(this.contact.field_type))
         {
-          dpd();
+          iNA();
           break label341;
         }
       }
-      this.nIh.setVisibility(8);
+      this.JBA.setVisibility(8);
       break label341;
-      label894:
-      this.uuy.setVisibility(8);
+      label896:
+      this.VTT.setVisibility(8);
     }
-  }
-  
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(28103);
-    ab.d("MicroMsg.ContactInfoHeader", "onNotifyChange event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      ab.e("MicroMsg.ContactInfoHeader", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(28103);
-      return;
-    }
-    paramn = (String)paramObject;
-    ab.d("MicroMsg.ContactInfoHeader", "onNotifyChange username = " + paramn + ", contact = " + this.contact);
-    if (!cbQ())
-    {
-      ab.e("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(28103);
-      return;
-    }
-    if (bo.nullAsNil(paramn).length() <= 0)
-    {
-      AppMethodBeat.o(28103);
-      return;
-    }
-    if ((this.contact != null) && (this.contact.field_username.equals(paramn)))
-    {
-      com.tencent.mm.model.aw.aaz();
-      this.contact = c.YA().arw(paramn);
-      al.d(new NormalUserHeaderPreference.6(this));
-    }
-    AppMethodBeat.o(28103);
-  }
-  
-  public final void a(ad paramad, int paramInt, String paramString)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(28095);
-    onDetach();
-    com.tencent.mm.model.aw.aaz();
-    c.YA().a(this);
-    com.tencent.mm.model.aw.aaz();
-    c.YB().a(this);
-    o.acQ().d(this);
-    this.contact = paramad;
-    this.qQk = paramInt;
-    this.mVw = paramString;
-    this.pAl = this.cmc.getIntent().getBooleanExtra("Contact_IsLBSFriend", false);
-    this.wbs = this.cmc.getIntent().getBooleanExtra("Contact_ShowFMessageList", false);
-    this.wbp = this.cmc.getIntent().getBooleanExtra("Contact_NeedShowChangeRemarkButton", false);
-    this.wbq = this.cmc.getIntent().getBooleanExtra("Contact_NeedShowChangeSnsPreButton", false);
-    this.wbr = this.cmc.getIntent().getBooleanExtra("Contact_AlwaysShowRemarkBtn", false);
-    this.pCc = this.cmc.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
-    this.wbt = this.cmc.getIntent().getStringExtra("Contact_RoomNickname");
-    if (paramad.field_deleteFlag == 1)
-    {
-      bool1 = true;
-      this.pAr = bool1;
-      this.egF = this.cmc.getIntent().getStringExtra("room_name");
-      if (bo.nullAsNil(paramad.field_username).length() <= 0) {
-        break label262;
-      }
-    }
-    label262:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue("initView: contact username is null", bool1);
-      initView();
-      AppMethodBeat.o(28095);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public final void a(ad paramad, int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(28094);
-    this.vRr = paramString2;
-    this.vRs = paramString3;
-    a(paramad, paramInt, paramString1);
-    AppMethodBeat.o(28094);
-  }
-  
-  public final void a(bv parambv)
-  {
-    AppMethodBeat.i(28104);
-    al.d(new NormalUserHeaderPreference.7(this, parambv));
-    AppMethodBeat.o(28104);
-  }
-  
-  public final void cd(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(28092);
-    if ((paramString != null) && (paramString.equals(this.contact.field_username))) {
-      this.wbp = paramBoolean;
-    }
-    AppMethodBeat.o(28092);
-  }
-  
-  public final void ce(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(28093);
-    if ((paramString != null) && (paramString.equals(this.contact.field_username))) {
-      this.wbq = paramBoolean;
-    }
-    AppMethodBeat.o(28093);
-  }
-  
-  public final void dpd()
-  {
-    AppMethodBeat.i(28090);
-    this.nIh.setVisibility(0);
-    if (!bo.isNullOrNil(this.contact.Hq()))
-    {
-      this.nIh.setText(this.mContext.getString(2131296950) + this.contact.Hq());
-      AppMethodBeat.o(28090);
-      return;
-    }
-    if ((!ad.ari(this.contact.field_username)) && (!t.nS(this.contact.field_username)))
-    {
-      String str = bo.nullAsNil(this.contact.Og());
-      this.nIh.setText(this.mContext.getString(2131296950) + str);
-      AppMethodBeat.o(28090);
-      return;
-    }
-    this.nIh.setVisibility(8);
-    AppMethodBeat.o(28090);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28085);
-    ab.d("MicroMsg.ContactInfoHeader", "onBindView");
-    this.nzx = ((TextView)paramView.findViewById(2131821498));
-    this.nIh = ((TextView)paramView.findViewById(2131823100));
-    this.wba = ((TextView)paramView.findViewById(2131823119));
-    this.waV = ((TextView)paramView.findViewById(2131823125));
-    this.waW = ((TextView)paramView.findViewById(2131823121));
-    this.waY = ((Button)paramView.findViewById(2131823122));
-    this.waZ = ((Button)paramView.findViewById(2131823123));
-    this.wbu = ((ProfileMobilePhoneView)paramView.findViewById(2131823129));
-    Object localObject = this.wbu;
-    com.tencent.mm.model.aw.aaz();
-    ((ProfileMobilePhoneView)localObject).vRD = ((Boolean)c.Ru().get(ac.a.yAp, Boolean.FALSE)).booleanValue();
-    this.wbv = ((ProfileDescribeView)paramView.findViewById(2131823130));
-    this.wbw = ((ProfileLabelView)paramView.findViewById(2131823131));
-    this.wbx = ((TextView)paramView.findViewById(2131823128));
-    this.wbv.setOnClickListener(this.wby);
-    this.wbw.setOnClickListener(this.wby);
-    this.wbx.setOnClickListener(this.wby);
-    if ((r.nB(this.contact.field_username)) || ((!bo.isNullOrNil(this.contact.field_username)) && (t.ow(this.contact.field_username))))
+    AppMethodBeat.i(31872);
+    Log.d("MicroMsg.ContactInfoHeader", "onBindView");
+    this.yEQ = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.JBA = ((TextView)paramView.findViewById(R.h.fCU));
+    this.YmH = ((TextView)paramView.findViewById(R.h.fBJ));
+    this.YmC = ((TextView)paramView.findViewById(R.h.fCi));
+    this.YmD = ((TextView)paramView.findViewById(R.h.fCB));
+    this.YmF = ((Button)paramView.findViewById(R.h.fCI));
+    this.YmG = ((Button)paramView.findViewById(R.h.fCQ));
+    this.Ync = ((ProfileMobilePhoneView)paramView.findViewById(R.h.fOl));
+    Object localObject = this.Ync;
+    bh.bCz();
+    ((ProfileMobilePhoneView)localObject).XZG = ((Boolean)com.tencent.mm.model.c.ban().get(at.a.acKL, Boolean.FALSE)).booleanValue();
+    this.Ynd = ((ProfileDescribeView)paramView.findViewById(R.h.fEY));
+    this.Yne = ((ProfileLabelView)paramView.findViewById(R.h.fLY));
+    this.Ynf = ((TextView)paramView.findViewById(R.h.fVY));
+    this.Ynd.setOnClickListener(this.Yng);
+    this.Yne.setOnClickListener(this.Yng);
+    this.Ynf.setOnClickListener(this.Yng);
+    if ((z.Iy(this.contact.field_username)) || ((!Util.isNullOrNil(this.contact.field_username)) && (au.bws(this.contact.field_username))))
     {
-      this.wbx.setVisibility(8);
-      this.wbu.setVisibility(8);
-      this.wbv.setVisibility(8);
-      this.wbw.setVisibility(8);
-      this.uuy = ((TextView)paramView.findViewById(2131823134));
-      this.wbg = ((Button)paramView.findViewById(2131823126));
-      this.wbh = ((FMessageListView)paramView.findViewById(2131823132));
+      this.Ynf.setVisibility(8);
+      this.Ync.setVisibility(8);
+      this.Ynd.setVisibility(8);
+      this.Yne.setVisibility(8);
+      this.VTT = ((TextView)paramView.findViewById(R.h.fCo));
+      this.YmN = ((Button)paramView.findViewById(R.h.fCl));
+      this.YmO = ((FMessageListView)paramView.findViewById(R.h.fCm));
+      if (this.lzt != null) {
+        this.YmO.setForceHideReply(this.lzt.getIntent().getBooleanExtra("Contact_Conversation_IsForceHideReplyBtn", false));
+      }
       localObject = new a.a();
       ((a.a)localObject).talker = this.contact.field_username;
-      ((a.a)localObject).scene = this.qQk;
-      ((a.a)localObject).mVw = this.mVw;
-      ((a.a)localObject).waH = this.contact.dra;
+      ((a.a)localObject).scene = this.PCB;
+      ((a.a)localObject).pPi = this.pPi;
+      ((a.a)localObject).Ymm = this.contact.kas;
       ((a.a)localObject).type = 0;
-      if (this.qQk != 18) {
-        break label866;
+      if (this.PCB != 18) {
+        break label905;
       }
       ((a.a)localObject).type = 1;
-      label424:
-      this.wbh.setFMessageArgs((a.a)localObject);
-      this.waX = paramView.findViewById(2131823127);
-      this.wbf = ((LinearLayout)paramView.findViewById(2131823111));
-      this.pxZ = ((ImageView)paramView.findViewById(2131821497));
-      this.qPQ = ((ImageView)paramView.findViewById(2131823113));
-      this.wbb = ((ImageView)paramView.findViewById(2131823114));
-      this.wbc = ((CheckBox)paramView.findViewById(2131823117));
-      this.wbd = ((ImageView)paramView.findViewById(2131823116));
-      this.wbe = ((ImageView)paramView.findViewById(2131823115));
-      this.wbj = ((ImageView)paramView.findViewById(2131823110));
-      this.wbi = ((RelativeLayout)paramView.findViewById(2131823109));
-      this.lJS = true;
+      label452:
+      this.YmO.setFMessageArgs((a.a)localObject);
+      this.YmE = paramView.findViewById(R.h.fXM);
+      this.YmM = ((LinearLayout)paramView.findViewById(R.h.head_root));
+      this.MVc = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+      this.PCh = ((ImageView)paramView.findViewById(R.h.fCN));
+      this.YmI = ((ImageView)paramView.findViewById(R.h.fCZ));
+      this.YmJ = ((CheckBox)paramView.findViewById(R.h.fCR));
+      this.YmK = ((ImageView)paramView.findViewById(R.h.fCP));
+      this.YmL = ((ImageView)paramView.findViewById(R.h.fCO));
+      this.YmQ = ((ImageView)paramView.findViewById(R.h.fCS));
+      this.YmP = ((RelativeLayout)paramView.findViewById(R.h.fCT));
+      this.yxr = true;
       initView();
-      if (!com.tencent.mm.n.a.je(this.contact.field_type)) {
-        break label885;
+      if (!com.tencent.mm.contact.d.rs(this.contact.field_type)) {
+        break label924;
       }
-      ab.d("MicroMsg.ContactInfoHeader", "initAddContent, showFMessageList false");
-      this.wbh.setVisibility(8);
-      if ((this.wbh.getVisibility() == 8) && (this.wbx.getVisibility() == 8) && (this.wbw.getVisibility() == 8) && (this.wbv.getVisibility() == 8) && (this.uuy.getVisibility() == 8)) {
-        this.waX.setVisibility(8);
+      Log.d("MicroMsg.ContactInfoHeader", "initAddContent, showFMessageList false");
+      this.YmO.setVisibility(8);
+      if ((this.YmO.getVisibility() == 8) && (this.Ynf.getVisibility() == 8) && (this.Yne.getVisibility() == 8) && (this.Ynd.getVisibility() == 8) && (this.VTT.getVisibility() == 8)) {
+        this.YmE.setVisibility(8);
       }
     }
     for (;;)
     {
       super.onBindView(paramView);
-      AppMethodBeat.o(28085);
+      AppMethodBeat.o(31872);
       return;
-      this.wbu.hT(this.vRr, this.vRs);
-      if (!com.tencent.mm.n.a.je(this.contact.field_type)) {
-        this.wbu.setVisibility(8);
+      this.Ync.xVS = this.contact;
+      this.Ync.pj(this.XZt, this.XZu);
+      if (!com.tencent.mm.contact.d.rs(this.contact.field_type)) {
+        this.Ync.setVisibility(8);
       }
       for (;;)
       {
-        boolean bool1 = this.wbv.S(this.contact);
-        boolean bool2 = this.wbw.S(this.contact);
+        boolean bool1 = this.Ynd.av(this.contact);
+        boolean bool2 = this.Yne.av(this.contact);
         if ((!bool1) && (!bool2)) {
-          break label787;
+          break label826;
         }
-        this.wbx.setVisibility(8);
+        this.Ynf.setVisibility(8);
         break;
-        this.wbu.setVisibility(0);
+        this.Ync.setVisibility(0);
       }
-      label787:
-      if ((this.wbr) || (this.wbp)) {
-        this.wbx.setVisibility(8);
+      label826:
+      if ((this.YmZ) || (this.YmX)) {
+        this.Ynf.setVisibility(8);
       }
       for (;;)
       {
-        if ((this.wbz == null) || ((!this.wbz.equals("ContactWidgetBottleContact")) && (!this.wbz.equals("ContactWidgetQContact")))) {
-          break label864;
+        if ((this.Ynh == null) || ((!this.Ynh.equals("ContactWidgetBottleContact")) && (!this.Ynh.equals("ContactWidgetQContact")))) {
+          break label903;
         }
-        this.wbx.setVisibility(8);
+        this.Ynf.setVisibility(8);
         break;
-        this.wbx.setVisibility(0);
+        this.Ynf.setVisibility(0);
       }
-      label864:
+      label903:
       break;
-      label866:
-      if (!bf.kD(this.qQk)) {
-        break label424;
+      label905:
+      if (!br.vj(this.PCB)) {
+        break label452;
       }
       ((a.a)localObject).type = 2;
-      break label424;
-      label885:
-      if ((this.mVw != null) && (this.mVw.length() != 0)) {
-        break label1022;
+      break label452;
+      label924:
+      if ((this.pPi != null) && (this.pPi.length() != 0)) {
+        break label1061;
       }
-      ab.d("MicroMsg.ContactInfoHeader", "initAddContent, FMessageListView gone, addScene = " + this.qQk + ", verifyTicket = " + this.mVw);
-      this.wbh.setVisibility(8);
-      if ((this.wbh.getVisibility() == 8) && (this.wbx.getVisibility() == 8) && (this.wbw.getVisibility() == 8) && (this.wbv.getVisibility() == 8) && (this.uuy.getVisibility() == 8)) {
-        this.waX.setVisibility(8);
+      Log.d("MicroMsg.ContactInfoHeader", "initAddContent, FMessageListView gone, addScene = " + this.PCB + ", verifyTicket = " + this.pPi);
+      this.YmO.setVisibility(8);
+      if ((this.YmO.getVisibility() == 8) && (this.Ynf.getVisibility() == 8) && (this.Yne.getVisibility() == 8) && (this.Ynd.getVisibility() == 8) && (this.VTT.getVisibility() == 8)) {
+        this.YmE.setVisibility(8);
       }
     }
-    label1022:
-    ab.d("MicroMsg.ContactInfoHeader", "initAddContent, scene = " + this.qQk);
-    if (this.qQk == 18)
+    label1061:
+    Log.d("MicroMsg.ContactInfoHeader", "initAddContent, scene = " + this.PCB);
+    if (this.PCB == 18)
     {
-      ab.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is lbs");
-      localObject = com.tencent.mm.bi.d.alj().asg(this.contact.field_username);
-      localObject = b.a(this.cmc, (cu[])localObject);
+      Log.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is lbs");
+      localObject = com.tencent.mm.modelverify.d.bNJ().byp(this.contact.field_username);
+      localObject = b.a(this.lzt, (et[])localObject);
     }
     for (;;)
     {
       if ((localObject != null) && (localObject.length != 0)) {
-        break label1279;
+        break label1318;
       }
-      ab.e("MicroMsg.ContactInfoHeader", "initAddContent, providerList is null");
-      this.wbh.setVisibility(8);
-      if ((this.wbh.getVisibility() != 8) || (this.wbx.getVisibility() != 8) || (this.wbw.getVisibility() != 8) || (this.wbv.getVisibility() != 8) || (this.uuy.getVisibility() != 8)) {
+      Log.e("MicroMsg.ContactInfoHeader", "initAddContent, providerList is null");
+      this.YmO.setVisibility(8);
+      if ((this.YmO.getVisibility() != 8) || (this.Ynf.getVisibility() != 8) || (this.Yne.getVisibility() != 8) || (this.Ynd.getVisibility() != 8) || (this.VTT.getVisibility() != 8)) {
         break;
       }
-      this.waX.setVisibility(8);
+      this.YmE.setVisibility(8);
       break;
-      if (bf.kD(this.qQk))
+      if (br.vj(this.PCB))
       {
-        ab.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is shake");
-        localObject = com.tencent.mm.bi.d.alk().asF(this.contact.field_username);
-        localObject = b.a(this.cmc, (bt[])localObject);
+        Log.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is shake");
+        localObject = com.tencent.mm.modelverify.d.bNK().byO(this.contact.field_username);
+        localObject = b.a(this.lzt, (cp[])localObject);
       }
       else
       {
-        ab.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is other");
-        localObject = com.tencent.mm.bi.d.alh().asc(this.contact.field_username);
-        localObject = b.a(this.cmc, (ax[])localObject);
+        Log.d("MicroMsg.ContactInfoHeader", "initAddContent, scene is other");
+        localObject = com.tencent.mm.modelverify.d.bNH().bym(this.contact.field_username);
+        localObject = b.a(this.lzt, (bp[])localObject);
       }
     }
-    label1279:
-    ab.d("MicroMsg.ContactInfoHeader", "initAddContent, providerList size = " + localObject.length);
+    label1318:
+    Log.d("MicroMsg.ContactInfoHeader", "initAddContent, providerList size = " + localObject.length);
     int j = localObject.length;
     int i = 0;
     b localb;
@@ -906,88 +914,123 @@ public class NormalUserHeaderPreference
     {
       localb = localObject[i];
       if (localb != null) {
-        ab.d("MicroMsg.ContactInfoHeader", "initAddContent, username = " + localb.username + ", nickname = " + localb.nickname + ", digest = " + localb.fjL + ", addScene = " + localb.qQk);
+        Log.d("MicroMsg.ContactInfoHeader", "initAddContent, username = " + localb.username + ", nickname = " + localb.nickname + ", digest = " + localb.nUO + ", addScene = " + localb.PCB);
       }
       i += 1;
     }
-    if (ad.arf(this.contact.field_username))
+    if (au.bwO(this.contact.field_username))
     {
-      this.wbh.setVisibility(8);
-      this.wbh.setHide(true);
+      this.YmO.setVisibility(8);
+      this.YmO.setHide(true);
     }
     for (;;)
     {
-      if ((this.wbh.getVisibility() == 0) || (this.wbx.getVisibility() == 0) || (this.wbw.getVisibility() == 0) || (this.wbv.getVisibility() == 0) || (this.uuy.getVisibility() == 0)) {
-        this.waX.setVisibility(0);
+      if ((this.YmO.getVisibility() == 0) || (this.Ynf.getVisibility() == 0) || (this.Yne.getVisibility() == 0) || (this.Ynd.getVisibility() == 0) || (this.VTT.getVisibility() == 0)) {
+        this.YmE.setVisibility(0);
       }
       j = localObject.length;
       i = 0;
       while (i < j)
       {
         localb = localObject[i];
-        this.wbh.a(localb);
+        this.YmO.a(localb);
         i += 1;
       }
       break;
-      this.wbh.setVisibility(0);
-      this.wbh.setHide(false);
+      this.YmO.setVisibility(0);
+      this.YmO.setHide(false);
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28084);
-    if (this.wbh != null) {
-      this.wbh.detach();
+    AppMethodBeat.i(31871);
+    if (this.YmO != null) {
+      this.YmO.detach();
     }
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(28084);
+    AppMethodBeat.o(31871);
     return paramViewGroup;
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(28096);
-    if (this.wbh != null) {
-      this.wbh.detach();
+    AppMethodBeat.i(31883);
+    if (this.YmO != null) {
+      this.YmO.detach();
     }
-    if (this.wbs) {
-      com.tencent.mm.bi.d.ali().asa(this.contact.field_username);
+    if (this.Yna) {
+      com.tencent.mm.modelverify.d.bNI().byk(this.contact.field_username);
     }
-    this.cmc.getIntent().putExtra("Contact_NeedShowChangeRemarkButton", this.wbp);
-    this.cmc.getIntent().putExtra("Contact_NeedShowChangeSnsPreButton", this.wbq);
-    com.tencent.mm.model.aw.aaz();
-    c.YA().b(this);
-    o.acQ().e(this);
-    com.tencent.mm.model.aw.aaz();
-    c.YB().b(this);
-    AppMethodBeat.o(28096);
+    this.lzt.getIntent().putExtra("Contact_NeedShowChangeRemarkButton", this.YmX);
+    this.lzt.getIntent().putExtra("Contact_NeedShowChangeSnsPreButton", this.YmY);
+    bh.bCz();
+    com.tencent.mm.model.c.bzA().remove(this);
+    com.tencent.mm.modelavatar.q.bFp().e(this);
+    bh.bCz();
+    com.tencent.mm.model.c.bzB().b(this);
+    AppMethodBeat.o(31883);
   }
   
-  public final void re(String paramString)
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(28102);
-    if (!cbQ())
+    AppMethodBeat.i(31890);
+    Log.d("MicroMsg.ContactInfoHeader", "onNotifyChange event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ab.e("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.lJS + "contact = " + this.contact);
-      AppMethodBeat.o(28102);
+      Log.e("MicroMsg.ContactInfoHeader", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
+      AppMethodBeat.o(31890);
       return;
     }
-    if (bo.nullAsNil(paramString).length() <= 0)
+    paramMStorageEx = (String)paramObject;
+    Log.d("MicroMsg.ContactInfoHeader", "onNotifyChange username = " + paramMStorageEx + ", contact = " + this.contact);
+    if (!gBh())
     {
-      ab.e("MicroMsg.ContactInfoHeader", "notifyChanged: user = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(28102);
+      Log.e("MicroMsg.ContactInfoHeader", "initView : bindView = " + this.yxr + "contact = " + this.contact);
+      AppMethodBeat.o(31890);
       return;
     }
-    if (paramString.equals(this.contact.field_username)) {
-      initView();
+    if (Util.nullAsNil(paramMStorageEx).length() <= 0)
+    {
+      AppMethodBeat.o(31890);
+      return;
     }
-    AppMethodBeat.o(28102);
+    if ((this.contact != null) && (this.contact.field_username.equals(paramMStorageEx)))
+    {
+      bh.bCz();
+      this.contact = com.tencent.mm.model.c.bzA().JE(paramMStorageEx);
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(31866);
+          NormalUserHeaderPreference.e(NormalUserHeaderPreference.this);
+          NormalUserHeaderPreference.f(NormalUserHeaderPreference.this);
+          NormalUserHeaderPreference.g(NormalUserHeaderPreference.this);
+          FMessageListView localFMessageListView;
+          if (NormalUserHeaderPreference.h(NormalUserHeaderPreference.this) != null)
+          {
+            localFMessageListView = NormalUserHeaderPreference.h(NormalUserHeaderPreference.this);
+            if (com.tencent.mm.contact.d.rs(NormalUserHeaderPreference.a(NormalUserHeaderPreference.this).field_type)) {
+              break label75;
+            }
+          }
+          label75:
+          for (boolean bool = true;; bool = false)
+          {
+            localFMessageListView.setReplyBtnVisible(bool);
+            AppMethodBeat.o(31866);
+            return;
+          }
+        }
+      });
+    }
+    AppMethodBeat.o(31890);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

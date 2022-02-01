@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.medalwall;
 
-import aepi;
-import alsf;
 import android.animation.ArgbEvaluator;
 import android.animation.Keyframe;
 import android.animation.PropertyValuesHolder;
@@ -31,84 +29,77 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import auba;
-import aubb;
-import aubc;
-import aubd;
-import aube;
-import aubf;
-import aubg;
-import aubh;
-import aubj;
-import aubk;
-import aubm;
-import aubn;
-import auwx;
-import bdhb;
-import bhtd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MedalInfo;
+import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import mqq.app.AppRuntime;
 
 public class MedalGuideView
   extends FrameLayout
   implements Handler.Callback, View.OnClickListener, Animation.AnimationListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130845015, 2130845017, 2130845016 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130845006, 2130845007, 2130845008 };
-  private static java.lang.ref.WeakReference<MedalGuideView> jdField_c_of_type_JavaLangRefWeakReference;
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131166318, 2131166322, 2131166320 };
-  private static final int[] jdField_d_of_type_ArrayOfInt = { 2131166324, 2131166326, 2131166325 };
-  private static final int[] jdField_e_of_type_ArrayOfInt = { 2130844997, 2130844999, 2130844998 };
-  private static final int[] f = { 2130845001, 2130845005, 2130845003 };
-  private static final int[] g = { 2130845012, 2130845013, 2130845014 };
-  public int a;
-  public ArgbEvaluator a;
-  ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  public ViewGroup a;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageButton a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  aubh jdField_a_of_type_Aubh = null;
-  aubj jdField_a_of_type_Aubj = null;
-  public aubk a;
-  aubm jdField_a_of_type_Aubm;
-  aubn jdField_a_of_type_Aubn;
-  public bhtd a;
-  public URLImageView a;
-  String jdField_a_of_type_JavaLangString;
-  java.lang.ref.WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference = null;
-  List<mqq.util.WeakReference<ValueAnimator>> jdField_a_of_type_JavaUtilList;
-  public boolean a;
-  int jdField_b_of_type_Int;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  aubm jdField_b_of_type_Aubm;
-  String jdField_b_of_type_JavaLangString;
-  java.lang.ref.WeakReference<BaseActivity> jdField_b_of_type_JavaLangRefWeakReference = null;
-  boolean jdField_b_of_type_Boolean = true;
-  int jdField_c_of_type_Int;
-  aubm jdField_c_of_type_Aubm;
-  String jdField_c_of_type_JavaLangString;
-  public boolean c;
-  int jdField_d_of_type_Int;
-  public boolean d;
-  int jdField_e_of_type_Int;
-  boolean jdField_e_of_type_Boolean;
+  private static final int[] I = { 2130847046, 2130847048, 2130847047 };
+  private static final int[] J = { 2130847037, 2130847038, 2130847039 };
+  private static final int[] K = { 2131167282, 2131167286, 2131167284 };
+  private static final int[] L = { 2131167288, 2131167290, 2131167289 };
+  private static final int[] M = { 2130847028, 2130847030, 2130847029 };
+  private static final int[] N = { 2130847032, 2130847036, 2130847034 };
+  private static final int[] O = { 2130847043, 2130847044, 2130847045 };
+  private static java.lang.ref.WeakReference<MedalGuideView> P = null;
+  ParticleSystem A = null;
+  MedalGuideView.MedalPopupWindow B = null;
+  java.lang.ref.WeakReference<View> C = null;
+  java.lang.ref.WeakReference<QBaseActivity> D = null;
+  MedalWallMng.NeedGuideMedal E = null;
+  int F;
+  ShareHelper G;
+  List<mqq.util.WeakReference<ValueAnimator>> H;
+  WeakReferenceHandler a;
+  ViewGroup b;
+  TextView c;
+  URLImageView d;
+  TextView e;
+  Button f;
+  Button g;
+  ImageButton h;
+  Drawable i;
+  ColorDrawable j;
+  boolean k = false;
+  boolean l = true;
+  ArgbEvaluator m = null;
+  int n;
+  boolean o = false;
+  Rotate3dAnimation p;
+  Rotate3dAnimation q;
+  Rotate3dAnimation r;
+  boolean s = false;
+  int t;
+  int u;
+  int v;
+  boolean w;
+  String x;
+  String y;
+  String z;
   
   public MedalGuideView(Context paramContext)
   {
@@ -123,180 +114,205 @@ public class MedalGuideView
   public MedalGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAnimationArgbEvaluator = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Aubk = null;
     b();
   }
   
   public static void a()
   {
-    if (jdField_c_of_type_JavaLangRefWeakReference != null)
+    Object localObject = P;
+    if (localObject != null)
     {
-      MedalGuideView localMedalGuideView = (MedalGuideView)jdField_c_of_type_JavaLangRefWeakReference.get();
-      if (localMedalGuideView != null) {
-        localMedalGuideView.d();
+      localObject = (MedalGuideView)((java.lang.ref.WeakReference)localObject).get();
+      if (localObject != null) {
+        ((MedalGuideView)localObject).d();
       }
-      jdField_c_of_type_JavaLangRefWeakReference.clear();
-      jdField_c_of_type_JavaLangRefWeakReference = null;
+      P.clear();
+      P = null;
       if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "doCleanMedalGuide guide: %s", new Object[] { localMedalGuideView }));
+        QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "doCleanMedalGuide guide: %s", new Object[] { localObject }));
       }
     }
   }
   
   private void a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(paramFloat);
-    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(paramFloat);
-    this.jdField_a_of_type_AndroidWidgetButton.setAlpha(paramFloat);
-    this.jdField_b_of_type_AndroidWidgetButton.setAlpha(paramFloat);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setAlpha(paramFloat);
+    this.c.setAlpha(paramFloat);
+    this.e.setAlpha(paramFloat);
+    this.f.setAlpha(paramFloat);
+    this.g.setAlpha(paramFloat);
+    this.h.setAlpha(paramFloat);
   }
   
   private void a(View paramView)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject;
-    String str6;
-    int k;
-    String str3;
-    long l2;
-    long l1;
-    String str1;
-    String str4;
-    int j;
-    int i;
-    String str2;
-    if (this.jdField_a_of_type_Aubn == null)
+    if (this.G == null)
     {
-      this.jdField_a_of_type_Aubn = new aubn(paramView.getContext(), localQQAppInterface);
-      localObject = ((MedalWallMng)localQQAppInterface.getManager(250)).a();
-      str6 = aubn.g;
-      k = aepi.a(48.0F, getResources());
-      str3 = "";
-      paramView = "";
-      if ((this.jdField_a_of_type_Aubj == null) || (this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null)) {
-        break label707;
-      }
-      switch (this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)
+      this.G = new ShareHelper(paramView.getContext(), localQQAppInterface);
+      String str2 = ((MedalWallMng)localQQAppInterface.getManager(QQManagerFactory.MEDAL_WALL_MNG)).e();
+      String str1 = ShareHelper.k;
+      int i3 = AIOUtils.b(48.0F, getResources());
+      paramView = this.E;
+      long l1 = 0L;
+      Object localObject2 = "";
+      int i1;
+      long l2;
+      Object localObject1;
+      Object localObject4;
+      int i2;
+      Object localObject5;
+      if ((paramView != null) && (paramView.a != null))
       {
-      default: 
-        l2 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
-        l1 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
-        paramView = String.format("%s %s", new Object[] { this.jdField_c_of_type_JavaLangString, paramView });
-        str1 = this.jdField_a_of_type_Aubj.jdField_c_of_type_JavaLangString;
-        str4 = auwx.a(localQQAppInterface.getCurrentAccountUin());
-        j = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
-        i = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
-        str3 = localQQAppInterface.getCurrentNickname();
-        str2 = aubn.a(new String[] { j + "", i + "", str4, str3 });
+        i1 = this.E.a.iLevel;
+        if (i1 != 1)
+        {
+          if (i1 != 2)
+          {
+            if (i1 != 3)
+            {
+              l1 = this.E.a.lObtainTimeLevel1;
+              l2 = this.E.a.lSeqLevel1;
+              paramView = "";
+            }
+            else
+            {
+              l1 = this.E.a.lObtainTimeLevel3;
+              l2 = this.E.a.lSeqLevel3;
+              paramView = "III";
+            }
+          }
+          else
+          {
+            l1 = this.E.a.lObtainTimeLevel2;
+            l2 = this.E.a.lSeqLevel2;
+            paramView = "II";
+          }
+        }
+        else
+        {
+          l1 = this.E.a.lObtainTimeLevel1;
+          l2 = this.E.a.lSeqLevel1;
+          paramView = "I";
+        }
+        paramView = String.format("%s %s", new Object[] { this.z, paramView });
+        localObject1 = this.E.d;
+        localObject4 = NearbyURLSafeUtil.b(localQQAppInterface.getCurrentAccountUin());
+        i2 = this.E.a.iId;
+        i1 = this.E.a.iLevel;
+        localObject5 = localQQAppInterface.getCurrentNickname();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(i2);
+        ((StringBuilder)localObject2).append("");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append(i1);
+        ((StringBuilder)localObject6).append("");
+        localObject2 = ShareHelper.a(new String[] { localObject2, ((StringBuilder)localObject6).toString(), localObject4, localObject5 });
       }
-    }
-    for (;;)
-    {
-      localObject = new StringBuilder((String)localObject);
-      ((StringBuilder)localObject).append("&uincode=").append(str4);
-      ((StringBuilder)localObject).append("&id=").append(j);
-      ((StringBuilder)localObject).append("&level=").append(i);
-      ((StringBuilder)localObject).append("&nick=").append(URLEncoder.encode(str3));
-      ((StringBuilder)localObject).append("&en=").append(str2);
-      ((StringBuilder)localObject).append("&fromId=").append(1);
-      if ((this.jdField_a_of_type_Aubj != null) && (this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null) && (this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId == 0)) {
-        str3 = "0";
+      else
+      {
+        l2 = 0L;
+        localObject6 = "";
+        paramView = (View)localObject6;
+        localObject1 = paramView;
+        localObject5 = localObject1;
+        i1 = 0;
+        i2 = 0;
+        localObject4 = localObject1;
+        localObject1 = paramView;
+        paramView = (View)localObject6;
       }
-      for (;;)
+      Object localObject6 = new StringBuilder(str2);
+      ((StringBuilder)localObject6).append("&uincode=");
+      ((StringBuilder)localObject6).append((String)localObject4);
+      ((StringBuilder)localObject6).append("&id=");
+      ((StringBuilder)localObject6).append(i2);
+      ((StringBuilder)localObject6).append("&level=");
+      ((StringBuilder)localObject6).append(i1);
+      ((StringBuilder)localObject6).append("&nick=");
+      ((StringBuilder)localObject6).append(URLEncoder.encode((String)localObject5));
+      ((StringBuilder)localObject6).append("&en=");
+      ((StringBuilder)localObject6).append((String)localObject2);
+      ((StringBuilder)localObject6).append("&fromId=");
+      ((StringBuilder)localObject6).append(1);
+      localObject2 = this.E;
+      Object localObject3;
+      if ((localObject2 != null) && (((MedalWallMng.NeedGuideMedal)localObject2).a != null) && (this.E.a.iId == 0))
       {
         try
         {
-          str2 = aubn.a(Long.valueOf(l2 * 1000L)).substring(0, 4);
-          ((StringBuilder)localObject).append("&year=").append(str2);
-          ((StringBuilder)localObject).append("&seq=").append(l1);
-          if (QLog.isColorLevel()) {
-            QLog.i("ShareHelper", 4, "shareUrl:" + ((StringBuilder)localObject).toString());
-          }
-          this.jdField_a_of_type_Aubn.a(paramView, str6, ((StringBuilder)localObject).toString(), str1, "QQ勋章墙", aubn.a(this.jdField_a_of_type_ComTencentImageURLImageView.getDrawable(), k, k));
-          this.jdField_a_of_type_Aubn.a(new auba(this));
-          ThreadManager.post(new MedalGuideView.3(this, localQQAppInterface), 5, null, false);
-          return;
-          l2 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
-          l1 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
-          paramView = "I";
-          break;
-          l2 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel2;
-          l1 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel2;
-          paramView = "II";
-          break;
-          l2 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel3;
-          l1 = this.jdField_a_of_type_Aubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel3;
-          paramView = "III";
+          localObject2 = ShareHelper.a(Long.valueOf(l1 * 1000L)).substring(0, 4);
         }
         catch (Exception localException)
         {
-          str2 = str3;
-          if (!QLog.isColorLevel()) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.i("ShareHelper", 2, localException.getMessage(), localException);
           }
-          QLog.i("ShareHelper", 2, localException.getMessage(), localException);
-          str2 = str3;
-          continue;
+          localObject3 = "0";
         }
-        ((StringBuilder)localObject).append("&time=").append(l2);
+        ((StringBuilder)localObject6).append("&year=");
+        ((StringBuilder)localObject6).append((String)localObject3);
+        ((StringBuilder)localObject6).append("&seq=");
+        ((StringBuilder)localObject6).append(l2);
       }
-      label707:
-      str2 = "";
-      paramView = "";
-      i = 0;
-      str1 = "";
-      l2 = 0L;
-      l1 = 0L;
-      String str5 = "";
-      j = 0;
+      else
+      {
+        ((StringBuilder)localObject6).append("&time=");
+        ((StringBuilder)localObject6).append(l1);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("shareUrl:");
+        ((StringBuilder)localObject3).append(((StringBuilder)localObject6).toString());
+        QLog.i("ShareHelper", 4, ((StringBuilder)localObject3).toString());
+      }
+      this.G.a(paramView, str1, ((StringBuilder)localObject6).toString(), (String)localObject1, "QQ勋章墙", ShareHelper.a(this.d.getDrawable(), i3, i3));
     }
+    this.G.a(new MedalGuideView.2(this));
+    ThreadManager.post(new MedalGuideView.3(this, localQQAppInterface), 5, null, false);
   }
   
-  public static void a(aubj paramaubj, BaseActivity paramBaseActivity, View paramView, int paramInt)
+  public static void a(MedalWallMng.NeedGuideMedal paramNeedGuideMedal, QBaseActivity paramQBaseActivity, View paramView, int paramInt)
   {
     if (paramView == null) {
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "showMedalGuide from: %d, view: %s, activity: %s, medal: %s", new Object[] { Integer.valueOf(paramInt), paramView, paramBaseActivity, paramaubj }));
+      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "showMedalGuide from: %d, view: %s, activity: %s, medal: %s", new Object[] { Integer.valueOf(paramInt), paramView, paramQBaseActivity, paramNeedGuideMedal }));
     }
     a();
-    MedalGuideView localMedalGuideView = new MedalGuideView(paramBaseActivity);
-    aubh localaubh = new aubh(localMedalGuideView, -1, -1, true);
-    localMedalGuideView.a(paramaubj, paramBaseActivity, paramView, paramInt, localaubh);
-    localaubh.setClippingEnabled(false);
-    localaubh.setOutsideTouchable(true);
-    localaubh.setBackgroundDrawable(new ColorDrawable(0));
-    localaubh.showAtLocation(paramView, 0, 0, 0);
+    MedalGuideView localMedalGuideView = new MedalGuideView(paramQBaseActivity);
+    MedalGuideView.MedalPopupWindow localMedalPopupWindow = new MedalGuideView.MedalPopupWindow(localMedalGuideView, -1, -1, true);
+    localMedalGuideView.a(paramNeedGuideMedal, paramQBaseActivity, paramView, paramInt, localMedalPopupWindow);
+    localMedalPopupWindow.setClippingEnabled(false);
+    localMedalPopupWindow.setOutsideTouchable(true);
+    localMedalPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    localMedalPopupWindow.showAtLocation(paramView, 0, 0, 0);
     ThreadManager.post(new MedalGuideView.10(paramInt), 5, null, false);
-    jdField_c_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(localMedalGuideView);
+    P = new java.lang.ref.WeakReference(localMedalGuideView);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Bhtd = new bhtd(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    inflate(getContext(), 2131561038, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364771));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131370130));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370131));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131376558));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365783));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364327));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
+    this.a = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.H = new ArrayList();
+    inflate(getContext(), 2131627522, this);
+    this.b = ((ViewGroup)findViewById(2131431322));
+    this.c = ((TextView)findViewById(2131447463));
+    this.d = ((URLImageView)findViewById(2131438030));
+    this.e = ((TextView)findViewById(2131438031));
+    this.f = ((Button)findViewById(2131445753));
+    this.f.setOnClickListener(this);
+    this.g = ((Button)findViewById(2131432556));
+    this.g.setOnClickListener(this);
+    this.h = ((ImageButton)findViewById(2131430806));
+    this.h.setOnClickListener(this);
+    this.j = new ColorDrawable(0);
     try
     {
       DisplayMetrics localDisplayMetrics1 = getResources().getDisplayMetrics();
-      DisplayMetrics localDisplayMetrics2 = alsf.a;
+      DisplayMetrics localDisplayMetrics2 = FontSettingManager.systemMetrics;
       if (localDisplayMetrics1.density != localDisplayMetrics2.density)
       {
         float f2 = localDisplayMetrics2.density / localDisplayMetrics1.density;
@@ -305,21 +321,22 @@ public class MedalGuideView
           f1 = 1.0F;
         }
         f1 = localDisplayMetrics2.density * f1;
-        Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).width = ((int)(290.0F * f1));
-        ((LinearLayout.LayoutParams)localObject).height = ((int)(290.0F * f1));
+        Object localObject = (LinearLayout.LayoutParams)this.d.getLayoutParams();
+        int i1 = (int)(290.0F * f1);
+        ((LinearLayout.LayoutParams)localObject).width = i1;
+        ((LinearLayout.LayoutParams)localObject).height = i1;
         ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(30.0F * f1));
-        this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+        this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)this.e.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(20.0F * f1));
-        this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout)findViewById(2131361901);
+        this.e.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout)findViewById(2131427526);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
         localLayoutParams.topMargin = ((int)(32.0F * f1));
         ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
-        localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(40.0F * f1));
-        this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)this.h.getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(f1 * 40.0F));
+        this.h.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       if (QLog.isColorLevel()) {
         QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "dm[%f, %d, %f], system[%f, %d, %f]", new Object[] { Float.valueOf(localDisplayMetrics1.density), Integer.valueOf(localDisplayMetrics1.densityDpi), Float.valueOf(localDisplayMetrics1.scaledDensity), Float.valueOf(localDisplayMetrics2.density), Integer.valueOf(localDisplayMetrics2.densityDpi), Float.valueOf(localDisplayMetrics2.scaledDensity) }));
@@ -327,62 +344,57 @@ public class MedalGuideView
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidAnimationArgbEvaluator = new ArgbEvaluator();
-    this.jdField_a_of_type_Int = getResources().getColor(2131166317);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
+    this.m = new ArgbEvaluator();
+    this.n = getResources().getColor(2131167281);
+    this.d.setAlpha(0.0F);
+    this.b.setBackgroundColor(0);
     a(0.0F);
   }
   
   private void c()
   {
     Resources localResources = getResources();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699485);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(jdField_a_of_type_ArrayOfInt[this.jdField_d_of_type_Int], 0, jdField_a_of_type_ArrayOfInt[this.jdField_d_of_type_Int], 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localResources.getColor(jdField_c_of_type_ArrayOfInt[this.jdField_d_of_type_Int]));
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    int i = localResources.getDimensionPixelSize(2131298113);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (bdhb.a(this.jdField_b_of_type_JavaLangString)) {
-      localObject = URLDrawable.getDrawable(new File(this.jdField_b_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
+    this.c.setText(2131897018);
+    Object localObject1 = this.c;
+    Object localObject2 = I;
+    int i1 = this.v;
+    ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(localObject2[i1], 0, localObject2[i1], 0);
+    this.c.setTextColor(localResources.getColor(K[this.v]));
+    localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    i1 = localResources.getDimensionPixelSize(2131299071);
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i1;
+    ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i1;
+    localObject2 = this.i;
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+    if (FileUtils.fileExists(this.y)) {
+      localObject1 = URLDrawable.getDrawable(new File(this.y), (URLDrawable.URLDrawableOptions)localObject1);
+    } else if (!TextUtils.isEmpty(this.x)) {
+      localObject1 = URLDrawable.getDrawable(this.x, (URLDrawable.URLDrawableOptions)localObject1);
+    } else {
+      localObject1 = null;
     }
-    for (;;)
+    this.d.setImageDrawable((Drawable)localObject1);
+    this.e.setText(this.z);
+    if (this.w)
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
-      if (this.jdField_e_of_type_Boolean) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      }
-      for (;;)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localResources.getColor(jdField_c_of_type_ArrayOfInt[this.jdField_d_of_type_Int]));
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(jdField_e_of_type_ArrayOfInt[this.jdField_d_of_type_Int]);
-        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(localResources.getColorStateList(jdField_d_of_type_ArrayOfInt[this.jdField_d_of_type_Int]));
-        this.jdField_b_of_type_AndroidWidgetButton.setBackgroundResource(jdField_e_of_type_ArrayOfInt[this.jdField_d_of_type_Int]);
-        this.jdField_b_of_type_AndroidWidgetButton.setTextColor(localResources.getColorStateList(jdField_d_of_type_ArrayOfInt[this.jdField_d_of_type_Int]));
-        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(f[this.jdField_d_of_type_Int]);
-        return;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label349;
-        }
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-        break;
-        localObject = getResources().getDrawable(jdField_b_of_type_ArrayOfInt[this.jdField_d_of_type_Int]);
-        ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-        this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable.setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-        this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, null, (Drawable)localObject, null);
-      }
-      label349:
-      localObject = null;
+      this.e.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
+    else
+    {
+      localObject1 = getResources().getDrawable(J[this.v]);
+      ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      this.j.setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      this.e.setCompoundDrawables(this.j, null, (Drawable)localObject1, null);
+    }
+    this.e.setTextColor(localResources.getColor(K[this.v]));
+    this.f.setBackgroundResource(M[this.v]);
+    this.f.setTextColor(localResources.getColorStateList(L[this.v]));
+    this.g.setBackgroundResource(M[this.v]);
+    this.g.setTextColor(localResources.getColorStateList(L[this.v]));
+    this.h.setImageResource(N[this.v]);
   }
   
   private void d()
@@ -390,33 +402,37 @@ public class MedalGuideView
     if (QLog.isColorLevel()) {
       QLog.i("MedalWallMng", 2, "close");
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhtd.removeMessages(3);
-    if (this.jdField_a_of_type_Aubk != null)
+    this.k = true;
+    this.a.removeMessages(3);
+    Object localObject = this.A;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Aubk.c();
-      this.jdField_a_of_type_Aubk = null;
+      ((ParticleSystem)localObject).c();
+      this.A = null;
     }
-    if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
+    localObject = this.D;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_b_of_type_JavaLangRefWeakReference = null;
+      ((java.lang.ref.WeakReference)localObject).clear();
+      this.D = null;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    localObject = this.C;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      ((java.lang.ref.WeakReference)localObject).clear();
+      this.C = null;
     }
-    this.jdField_a_of_type_Aubj = null;
-    if (this.jdField_a_of_type_Aubh != null)
+    this.E = null;
+    localObject = this.B;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Aubh.a();
-      this.jdField_a_of_type_Aubh = null;
+      ((MedalGuideView.MedalPopupWindow)localObject).a();
+      this.B = null;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    localObject = this.H.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      mqq.util.WeakReference localWeakReference = (mqq.util.WeakReference)localIterator.next();
+      mqq.util.WeakReference localWeakReference = (mqq.util.WeakReference)((Iterator)localObject).next();
       ValueAnimator localValueAnimator = (ValueAnimator)localWeakReference.get();
       if (localValueAnimator != null)
       {
@@ -427,224 +443,231 @@ public class MedalGuideView
     }
   }
   
-  public void a(aubj paramaubj, BaseActivity paramBaseActivity, View paramView, int paramInt, aubh paramaubh)
+  public void a(MedalWallMng.NeedGuideMedal paramNeedGuideMedal, QBaseActivity paramQBaseActivity, View paramView, int paramInt, MedalGuideView.MedalPopupWindow paramMedalPopupWindow)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(paramView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(paramBaseActivity);
-    this.jdField_e_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aubj = paramaubj;
-    this.jdField_a_of_type_Aubh = paramaubh;
-    this.jdField_a_of_type_Aubn = null;
-    if (this.jdField_a_of_type_Aubh != null) {
-      this.jdField_a_of_type_Aubh.a(new aubg(this));
+    this.C = new java.lang.ref.WeakReference(paramView);
+    this.D = new java.lang.ref.WeakReference(paramQBaseActivity);
+    this.F = paramInt;
+    this.E = paramNeedGuideMedal;
+    this.B = paramMedalPopupWindow;
+    this.G = null;
+    paramQBaseActivity = this.B;
+    if (paramQBaseActivity != null) {
+      paramQBaseActivity.a(new MedalGuideView.9(this));
     }
-    if ((paramaubj != null) && (paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
+    if ((paramNeedGuideMedal != null) && (paramNeedGuideMedal.a != null))
     {
-      this.jdField_b_of_type_Int = paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
-      if ((paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel >= 1) && (paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel <= 3))
+      this.t = paramNeedGuideMedal.a.iId;
+      if ((paramNeedGuideMedal.a.iLevel >= 1) && (paramNeedGuideMedal.a.iLevel <= 3))
       {
-        this.jdField_d_of_type_Int = (paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel - 1);
-        this.jdField_e_of_type_Boolean = false;
-        this.jdField_c_of_type_Int = paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
-        this.jdField_c_of_type_JavaLangString = paramaubj.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strName;
-        this.jdField_b_of_type_JavaLangString = paramaubj.jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_JavaLangString = paramaubj.jdField_a_of_type_JavaLangString;
+        this.v = (paramNeedGuideMedal.a.iLevel - 1);
+        this.w = false;
       }
+      else
+      {
+        this.v = 2;
+        this.w = true;
+      }
+      this.u = paramNeedGuideMedal.a.iLevel;
+      this.z = paramNeedGuideMedal.a.strName;
+      this.y = paramNeedGuideMedal.c;
+      this.x = paramNeedGuideMedal.b;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
-      c();
-      return;
-      this.jdField_d_of_type_Int = 2;
-      this.jdField_e_of_type_Boolean = true;
-      break;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_d_of_type_Int = 2;
-      this.jdField_c_of_type_JavaLangString = "";
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_c_of_type_Int = 1;
+      this.t = 0;
+      this.v = 2;
+      this.z = "";
+      this.y = null;
+      this.x = null;
+      this.w = false;
+      this.u = 1;
     }
+    this.i = new ColorDrawable(0);
+    c();
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.l)
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
-      this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(5, 1600L);
+      this.l = false;
+      this.s = false;
+      this.a.sendEmptyMessage(1);
+      this.a.sendEmptyMessageDelayed(5, 1600L);
     }
-    if (this.jdField_a_of_type_Aubk != null) {
-      this.jdField_a_of_type_Aubk.a(paramCanvas, 1);
+    ParticleSystem localParticleSystem = this.A;
+    if (localParticleSystem != null) {
+      localParticleSystem.a(paramCanvas, 1);
     }
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_Aubk != null) {
-      this.jdField_a_of_type_Aubk.a(paramCanvas, 2);
+    localParticleSystem = this.A;
+    if (localParticleSystem != null) {
+      localParticleSystem.a(paramCanvas, 2);
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    int i1 = paramMessage.what;
+    if (i1 != 1) {
+      if (i1 != 2) {
+        if (i1 != 3) {
+          if (i1 != 4) {
+            if (i1 == 5) {}
+          }
+        }
+      }
     }
     for (;;)
     {
       return true;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("MedalWallMng", 4, "MSG_START_ENTER_ANIM");
-      }
-      this.jdField_c_of_type_Boolean = false;
-      paramMessage = PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.05714286F, 0.0F), Keyframe.ofFloat(0.2F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) });
-      float f1 = this.jdField_a_of_type_ComTencentImageURLImageView.getY();
-      float f2 = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight();
-      float f4 = this.jdField_b_of_type_AndroidWidgetTextView.getY();
-      float f5 = this.jdField_b_of_type_AndroidWidgetTextView.getHeight();
-      float f3 = -this.jdField_a_of_type_ComTencentImageURLImageView.getY();
-      f2 = f4 + f5 - (f1 + f2);
-      f1 = f2;
-      if (f2 < 0.0F) {
-        f1 = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight() * 0.3F;
-      }
-      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, PropertyValuesHolder.ofKeyframe("translate", new Keyframe[] { Keyframe.ofFloat(0.0F, f3), Keyframe.ofFloat(0.7714286F, f1), Keyframe.ofFloat(1.0F, 0.0F) }) });
-      this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aubb(this));
-      paramMessage.setDuration(700L);
-      paramMessage.start();
-      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.08571429F, 0.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
-      this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aubc(this));
-      paramMessage.setDuration(700L);
-      paramMessage.start();
+      this.s = true;
       continue;
-      f5 = 2540.0F - 1940.0F;
-      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F), Keyframe.ofFloat(1.0F, 0.0F) }) });
-      this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aubd(this));
-      paramMessage.setDuration((f5 * 1.0F));
-      paramMessage.start();
-      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("bgColor", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F), Keyframe.ofFloat((2340.0F - 1940.0F) / f5, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
-      this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aube(this));
-      paramMessage.setDuration((f5 * 1.0F));
-      paramMessage.start();
-      label603:
-      int i;
-      Object localObject1;
-      Object localObject2;
-      int j;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
-      {
-        paramMessage = null;
-        i = Math.max(this.jdField_a_of_type_ComTencentImageURLImageView.getWidth(), this.jdField_a_of_type_ComTencentImageURLImageView.getHeight());
-        if (paramMessage == null) {
-          break label1367;
-        }
-        localObject1 = new int[2];
-        localObject2 = new int[2];
-        paramMessage.getLocationOnScreen((int[])localObject1);
-        this.jdField_a_of_type_ComTencentImageURLImageView.getLocationOnScreen((int[])localObject2);
-        j = Math.min(paramMessage.getWidth(), paramMessage.getHeight());
-        if ((j != 0) && (i != 0)) {
-          break label1356;
-        }
-        f1 = 0.2F;
-        label678:
-        localObject1[0] += j / 2;
-        localObject1[1] += j / 2;
-        localObject2[0] += i / 2;
-        localObject2[1] += i / 2;
-        f2 = localObject1[0] - localObject2[0];
-        f4 = localObject1[1] - localObject2[1];
-        if (QLog.isDevelopLevel())
-        {
-          paramMessage = new int[2];
-          this.jdField_a_of_type_ComTencentImageURLImageView.getLocationInWindow(paramMessage);
-          f3 = this.jdField_a_of_type_ComTencentImageURLImageView.getPivotX();
-          float f6 = this.jdField_a_of_type_ComTencentImageURLImageView.getPivotY();
-          QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "icon end anim target[%d, %d], cur[%d, %d], size: %d, curSize: %d curWindowLoc[%d,%d] pivot[%f, %f]", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]), Integer.valueOf(localObject2[0]), Integer.valueOf(localObject2[1]), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramMessage[0]), Integer.valueOf(paramMessage[1]), Float.valueOf(f3), Float.valueOf(f6) }));
-        }
-        f3 = f1;
-        f1 = f4;
-      }
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "icon end anim [scale: %f, transX: %f, transY: %f]  [%f, %f]", new Object[] { Float.valueOf(f3), Float.valueOf(f2), Float.valueOf(f1), Float.valueOf(this.jdField_a_of_type_ComTencentImageURLImageView.getX()), Float.valueOf(this.jdField_a_of_type_ComTencentImageURLImageView.getY()) }));
-        }
-        paramMessage = PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat((2460.0F - 1940.0F) / f5, 1.0F), Keyframe.ofFloat(1.0F, 0.0F) });
-        localObject1 = PropertyValuesHolder.ofKeyframe("scale", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 1.0F), Keyframe.ofFloat((2480.0F - 1940.0F) / f5, f3), Keyframe.ofFloat(1.0F, f3) });
-        localObject2 = Keyframe.ofFloat(0.0F, 0.0F);
-        Keyframe localKeyframe1 = Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F);
-        localKeyframe1.setInterpolator(new AccelerateDecelerateInterpolator());
-        localObject2 = PropertyValuesHolder.ofKeyframe("translationX", new Keyframe[] { localObject2, localKeyframe1, Keyframe.ofFloat((2480.0F - 1940.0F) / f5, f2), Keyframe.ofFloat(1.0F, f2) });
-        localKeyframe1 = Keyframe.ofFloat(0.0F, 0.0F);
-        Keyframe localKeyframe2 = Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F);
-        localKeyframe2.setInterpolator(new AccelerateDecelerateInterpolator());
-        paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, localObject1, localObject2, PropertyValuesHolder.ofKeyframe("translationY", new Keyframe[] { localKeyframe1, localKeyframe2, Keyframe.ofFloat((2480.0F - 1940.0F) / f5, f1), Keyframe.ofFloat(1.0F, f1) }) });
-        this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-        paramMessage.addUpdateListener(new aubf(this));
-        paramMessage.setDuration((f5 * 1.0F));
-        paramMessage.start();
-        this.jdField_a_of_type_Bhtd.sendEmptyMessageDelayed(3, (f5 * 1.0F) + 200L);
-        break;
-        paramMessage = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        break label603;
-        label1356:
-        f1 = j / i;
-        break label678;
-        label1367:
-        f2 = -this.jdField_a_of_type_ComTencentImageURLImageView.getX() - i / 2.0F;
-        f1 = -this.jdField_a_of_type_ComTencentImageURLImageView.getY() - i / 2.0F;
-        f3 = 0.2F;
-      }
       if (QLog.isDevelopLevel()) {
         QLog.i("MedalWallMng", 4, "MSG_START_3D_ROTATE");
       }
-      f1 = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth() / 2;
-      f2 = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight() / 2;
-      this.jdField_a_of_type_Aubm = new aubm(0.0F, -24.0F * 0.65F, f1, f2, 0.0F, true);
-      this.jdField_a_of_type_Aubm.setDuration(260L);
-      this.jdField_a_of_type_Aubm.setFillAfter(true);
-      this.jdField_a_of_type_Aubm.setAnimationListener(this);
-      this.jdField_b_of_type_Aubm = new aubm(-24.0F * 0.65F, 15.0F * 0.65F, f1, f2, 0.0F, false);
-      this.jdField_b_of_type_Aubm.setDuration(260L);
-      this.jdField_b_of_type_Aubm.setFillAfter(true);
-      this.jdField_b_of_type_Aubm.setAnimationListener(this);
-      this.jdField_c_of_type_Aubm = new aubm(15.0F * 0.65F, 0.0F, f1, f2, 0.0F, true);
-      this.jdField_c_of_type_Aubm.setDuration(300L);
-      this.jdField_c_of_type_Aubm.setFillAfter(true);
-      this.jdField_c_of_type_Aubm.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_Aubm);
-      this.jdField_a_of_type_Aubk = new aubk(this, 2, 100, g);
-      this.jdField_a_of_type_Aubk.a(getWidth(), getHeight());
+      float f1 = this.d.getWidth() / 2;
+      float f2 = this.d.getHeight() / 2;
+      this.p = new Rotate3dAnimation(0.0F, -15.599999F, f1, f2, 0.0F, true);
+      this.p.setDuration(260L);
+      this.p.setFillAfter(true);
+      this.p.setAnimationListener(this);
+      this.q = new Rotate3dAnimation(-15.599999F, 9.75F, f1, f2, 0.0F, false);
+      this.q.setDuration(260L);
+      this.q.setFillAfter(true);
+      this.q.setAnimationListener(this);
+      this.r = new Rotate3dAnimation(9.75F, 0.0F, f1, f2, 0.0F, true);
+      this.r.setDuration(300L);
+      this.r.setFillAfter(true);
+      this.r.setAnimationListener(this);
+      this.d.startAnimation(this.p);
+      this.A = new ParticleSystem(this, 2, 100, O);
+      this.A.a(getWidth(), getHeight());
       continue;
       d();
       continue;
-      this.jdField_d_of_type_Boolean = true;
+      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.2666667F, 0.0F), Keyframe.ofFloat(1.0F, 0.0F) }) });
+      this.H.add(new mqq.util.WeakReference(paramMessage));
+      paramMessage.addUpdateListener(new MedalGuideView.6(this));
+      long l1 = 600.0F;
+      paramMessage.setDuration(l1);
+      paramMessage.start();
+      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("bgColor", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.2666667F, 0.0F), Keyframe.ofFloat(0.6666667F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
+      this.H.add(new mqq.util.WeakReference(paramMessage));
+      paramMessage.addUpdateListener(new MedalGuideView.7(this));
+      paramMessage.setDuration(l1);
+      paramMessage.start();
+      paramMessage = this.C;
+      if (paramMessage == null) {
+        paramMessage = null;
+      } else {
+        paramMessage = (View)paramMessage.get();
+      }
+      i1 = Math.max(this.d.getWidth(), this.d.getHeight());
+      if (paramMessage != null)
+      {
+        localObject1 = new int[2];
+        localObject2 = new int[2];
+        paramMessage.getLocationOnScreen((int[])localObject1);
+        this.d.getLocationOnScreen((int[])localObject2);
+        int i2 = Math.min(paramMessage.getWidth(), paramMessage.getHeight());
+        if ((i2 != 0) && (i1 != 0)) {
+          f1 = i2 / i1;
+        } else {
+          f1 = 0.2F;
+        }
+        int i3 = localObject1[0];
+        int i4 = i2 / 2;
+        localObject1[0] = (i3 + i4);
+        localObject1[1] += i4;
+        i3 = localObject2[0];
+        i4 = i1 / 2;
+        localObject2[0] = (i3 + i4);
+        localObject2[1] += i4;
+        f3 = localObject1[0] - localObject2[0];
+        f2 = localObject1[1] - localObject2[1];
+        if (QLog.isDevelopLevel())
+        {
+          paramMessage = new int[2];
+          this.d.getLocationInWindow(paramMessage);
+          f4 = this.d.getPivotX();
+          f5 = this.d.getPivotY();
+          QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "icon end anim target[%d, %d], cur[%d, %d], size: %d, curSize: %d curWindowLoc[%d,%d] pivot[%f, %f]", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]), Integer.valueOf(localObject2[0]), Integer.valueOf(localObject2[1]), Integer.valueOf(i2), Integer.valueOf(i1), Integer.valueOf(paramMessage[0]), Integer.valueOf(paramMessage[1]), Float.valueOf(f4), Float.valueOf(f5) }));
+        }
+      }
+      else
+      {
+        f2 = -this.d.getX();
+        f1 = i1 / 2.0F;
+        f3 = f2 - f1;
+        f2 = -this.d.getY() - f1;
+        f1 = 0.2F;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "icon end anim [scale: %f, transX: %f, transY: %f]  [%f, %f]", new Object[] { Float.valueOf(f1), Float.valueOf(f3), Float.valueOf(f2), Float.valueOf(this.d.getX()), Float.valueOf(this.d.getY()) }));
+      }
+      paramMessage = PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.8666667F, 1.0F), Keyframe.ofFloat(1.0F, 0.0F) });
+      Object localObject1 = PropertyValuesHolder.ofKeyframe("scale", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.2666667F, 1.0F), Keyframe.ofFloat(0.9F, f1), Keyframe.ofFloat(1.0F, f1) });
+      Object localObject2 = Keyframe.ofFloat(0.0F, 0.0F);
+      Keyframe localKeyframe1 = Keyframe.ofFloat(0.2666667F, 0.0F);
+      localKeyframe1.setInterpolator(new AccelerateDecelerateInterpolator());
+      localObject2 = PropertyValuesHolder.ofKeyframe("translationX", new Keyframe[] { localObject2, localKeyframe1, Keyframe.ofFloat(0.9F, f3), Keyframe.ofFloat(1.0F, f3) });
+      localKeyframe1 = Keyframe.ofFloat(0.0F, 0.0F);
+      Keyframe localKeyframe2 = Keyframe.ofFloat(0.2666667F, 0.0F);
+      localKeyframe2.setInterpolator(new AccelerateDecelerateInterpolator());
+      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, localObject1, localObject2, PropertyValuesHolder.ofKeyframe("translationY", new Keyframe[] { localKeyframe1, localKeyframe2, Keyframe.ofFloat(0.9F, f2), Keyframe.ofFloat(1.0F, f2) }) });
+      this.H.add(new mqq.util.WeakReference(paramMessage));
+      paramMessage.addUpdateListener(new MedalGuideView.8(this));
+      paramMessage.setDuration(l1);
+      paramMessage.start();
+      this.a.sendEmptyMessageDelayed(3, l1 + 200L);
+      continue;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("MedalWallMng", 4, "MSG_START_ENTER_ANIM");
+      }
+      this.o = false;
+      paramMessage = PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.05714286F, 0.0F), Keyframe.ofFloat(0.2F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) });
+      f1 = this.d.getY();
+      f2 = this.d.getHeight();
+      float f4 = this.e.getY();
+      float f5 = this.e.getHeight();
+      float f3 = -this.d.getY();
+      f2 = f4 + f5 - (f1 + f2);
+      f1 = f2;
+      if (f2 < 0.0F) {
+        f1 = this.d.getHeight() * 0.3F;
+      }
+      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, PropertyValuesHolder.ofKeyframe("translate", new Keyframe[] { Keyframe.ofFloat(0.0F, f3), Keyframe.ofFloat(0.7714286F, f1), Keyframe.ofFloat(1.0F, 0.0F) }) });
+      this.H.add(new mqq.util.WeakReference(paramMessage));
+      paramMessage.addUpdateListener(new MedalGuideView.4(this));
+      paramMessage.setDuration(700L);
+      paramMessage.start();
+      paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.08571429F, 0.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
+      this.H.add(new mqq.util.WeakReference(paramMessage));
+      paramMessage.addUpdateListener(new MedalGuideView.5(this));
+      paramMessage.setDuration(700L);
+      paramMessage.start();
     }
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_Aubm) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_b_of_type_Aubm);
-    }
-    do
+    if (paramAnimation == this.p)
     {
+      this.d.startAnimation(this.q);
       return;
-      if (paramAnimation == this.jdField_b_of_type_Aubm)
-      {
-        this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_c_of_type_Aubm);
-        return;
-      }
-    } while (paramAnimation != this.jdField_c_of_type_Aubm);
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Bhtd.removeMessages(5);
+    }
+    if (paramAnimation == this.q)
+    {
+      this.d.startAnimation(this.r);
+      return;
+    }
+    if (paramAnimation == this.r)
+    {
+      this.s = true;
+      this.a.removeMessages(5);
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -653,47 +676,53 @@ public class MedalGuideView
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 != 2131430806)
     {
-    }
-    do
-    {
-      do
+      if (i1 != 2131432556)
       {
-        return;
-        a(paramView);
-        return;
-        if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {}
-        for (paramView = null;; paramView = (BaseActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get())
+        if (i1 == 2131445753) {
+          a(paramView);
+        }
+      }
+      else
+      {
+        Object localObject = this.D;
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = (QBaseActivity)((java.lang.ref.WeakReference)localObject).get();
+        }
+        if (localObject != null)
         {
-          if (paramView != null)
-          {
-            String str = ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(250)).a(true, paramView.getCurrentAccountUin(), MedalWallMng.jdField_d_of_type_Int);
-            str = String.format(Locale.getDefault(), "%s&openMedalId=%s&openMedalLevel=%s", new Object[] { str, Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) });
-            Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-            localIntent.putExtra("url", str);
-            paramView.startActivity(localIntent);
-            if (QLog.isColorLevel()) {
-              QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "enter medal url: %s", new Object[] { str }));
-            }
-            ThreadManager.post(new MedalGuideView.1(this), 5, null, false);
+          String str = ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MEDAL_WALL_MNG)).a(true, ((QBaseActivity)localObject).getAppRuntime().getCurrentAccountUin(), MedalWallMng.f);
+          str = String.format(Locale.getDefault(), "%s&openMedalId=%s&openMedalLevel=%s", new Object[] { str, Integer.valueOf(this.t), Integer.valueOf(this.u) });
+          Intent localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
+          localIntent.putExtra("url", str);
+          ((QBaseActivity)localObject).startActivity(localIntent);
+          if (QLog.isColorLevel()) {
+            QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "enter medal url: %s", new Object[] { str }));
           }
-          d();
-          return;
+          ThreadManager.post(new MedalGuideView.1(this), 5, null, false);
         }
-        if (this.jdField_d_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("MedalWallMng", 2, "close when enter animation is not finished yet!");
-      return;
-    } while (this.jdField_a_of_type_Bhtd.hasMessages(2));
-    this.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
+        d();
+      }
+    }
+    else if (!this.s)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "close when enter animation is not finished yet!");
+      }
+    }
+    else if (!this.a.hasMessages(2)) {
+      this.a.sendEmptyMessage(2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView
  * JD-Core Version:    0.7.0.1
  */

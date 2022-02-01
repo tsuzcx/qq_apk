@@ -13,7 +13,8 @@ public final class AdAppDeeplinkLauncher$Result
   
   String getActivityName()
   {
-    if ((this.resolveInfo != null) && (this.resolveInfo.activityInfo != null)) {
+    ResolveInfo localResolveInfo = this.resolveInfo;
+    if ((localResolveInfo != null) && (localResolveInfo.activityInfo != null)) {
       return this.resolveInfo.activityInfo.name;
     }
     return null;
@@ -21,25 +22,27 @@ public final class AdAppDeeplinkLauncher$Result
   
   AdError getError()
   {
-    if (this.error != null) {
-      return this.error;
+    AdError localAdError = this.error;
+    if (localAdError != null) {
+      return localAdError;
     }
     return new AdError(1);
   }
   
-  int getErrorCode()
+  public int getErrorCode()
   {
     return getError().getErrorCode();
   }
   
   public boolean isSuccess()
   {
-    return (this.error != null) && (this.error.isSuccess());
+    AdError localAdError = this.error;
+    return (localAdError != null) && (localAdError.isSuccess());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.util.AdAppDeeplinkLauncher.Result
  * JD-Core Version:    0.7.0.1
  */

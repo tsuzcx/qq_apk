@@ -13,17 +13,16 @@ public final class CategoryOpReq
 {
   static Map<String, ArrayList<String>> cache_category_groupids;
   static Map<String, category_face_confirm_info> cache_groupid_confirm_info;
-  static Map<String, ArrayList<s_picdata>> cache_groupid_photos;
-  static int cache_op = 0;
-  public Map<String, ArrayList<String>> category_groupids;
-  public Map<String, category_face_confirm_info> groupid_confirm_info;
-  public Map<String, ArrayList<s_picdata>> groupid_photos;
+  static Map<String, ArrayList<s_picdata>> cache_groupid_photos = new HashMap();
+  static int cache_op;
+  public Map<String, ArrayList<String>> category_groupids = null;
+  public Map<String, category_face_confirm_info> groupid_confirm_info = null;
+  public Map<String, ArrayList<s_picdata>> groupid_photos = null;
   public int op = 0;
-  public long op_uin;
+  public long op_uin = 0L;
   
   static
   {
-    cache_groupid_photos = new HashMap();
     Object localObject = new ArrayList();
     ((ArrayList)localObject).add(new s_picdata());
     cache_groupid_photos.put("", localObject);
@@ -60,20 +59,23 @@ public final class CategoryOpReq
   {
     paramJceOutputStream.write(this.op_uin, 0);
     paramJceOutputStream.write(this.op, 1);
-    if (this.groupid_photos != null) {
-      paramJceOutputStream.write(this.groupid_photos, 2);
+    Map localMap = this.groupid_photos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
-    if (this.groupid_confirm_info != null) {
-      paramJceOutputStream.write(this.groupid_confirm_info, 3);
+    localMap = this.groupid_confirm_info;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
-    if (this.category_groupids != null) {
-      paramJceOutputStream.write(this.category_groupids, 4);
+    localMap = this.category_groupids;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.CategoryOpReq
  * JD-Core Version:    0.7.0.1
  */

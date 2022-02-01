@@ -1,19 +1,14 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-public abstract class g$a
+import com.tencent.mobileqq.microapp.a.c;
+
+public abstract interface g$a
 {
-  public int c;
-  
-  g$a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public abstract void a(g.d paramd);
+  public abstract void onInitApkgInfo$76ec3a73(int paramInt, c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.Leba;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import fcf;
+import fce;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -199,7 +199,7 @@ public class FrameActivity
   {
     super.onAccountChanged();
     Collection localCollection = this.jdField_a_of_type_JavaUtilMap.values();
-    new Handler().post(new fcf(this, localCollection));
+    new Handler().post(new fce(this, localCollection));
   }
   
   public void onLogout(Constants.LogoutReason paramLogoutReason)

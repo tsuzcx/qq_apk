@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/o01" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitStart" />
+    <LinearLayout android:orientation="vertical" android:id="@id/o0e" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/o0g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/irq" android:scaleType="centerInside" />
+</FrameLayout>

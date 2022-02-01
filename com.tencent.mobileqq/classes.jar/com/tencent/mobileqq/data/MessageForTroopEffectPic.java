@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import bcko;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.IAnimationMessage;
 import localpb.richMsg.RichMsg.PicRec;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 
 public class MessageForTroopEffectPic
   extends MessageForPic
-  implements bcko
+  implements AIOAnimationControlManager.IAnimationMessage
 {
   public int effectId;
   
@@ -29,21 +29,17 @@ public class MessageForTroopEffectPic
         try
         {
           localResvAttr.mergeFrom(localPicRec.bytes_pb_reserved.get().toByteArray());
-          if (localResvAttr.msg_image_show.has())
-          {
-            this.effectId = ((CustomFaceExtPb.AnimationImageShow)localResvAttr.msg_image_show.get()).int32_effect_id.get();
-            return;
-          }
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          for (;;)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+        if (localResvAttr.msg_image_show.has())
+        {
+          this.effectId = ((CustomFaceExtPb.AnimationImageShow)localResvAttr.msg_image_show.get()).int32_effect_id.get();
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -73,7 +69,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return alud.a(2131706967);
+    return HardCodeUtil.a(2131904459);
   }
   
   public boolean isReaded()

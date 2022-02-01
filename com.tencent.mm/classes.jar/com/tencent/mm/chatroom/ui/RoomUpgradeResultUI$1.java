@@ -11,15 +11,15 @@ final class RoomUpgradeResultUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(104220);
-    RoomUpgradeResultUI.a(this.ehU);
-    AppMethodBeat.o(104220);
+    AppMethodBeat.i(12768);
+    RoomUpgradeResultUI.a(this.lLx);
+    AppMethodBeat.o(12768);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomUpgradeResultUI.1
  * JD-Core Version:    0.7.0.1
  */

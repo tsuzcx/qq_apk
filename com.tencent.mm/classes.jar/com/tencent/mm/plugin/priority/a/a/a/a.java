@@ -2,26 +2,28 @@ package com.tencent.mm.plugin.priority.a.a.a;
 
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.modelcontrol.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 
 public final class a
 {
-  public static final boolean WR(String paramString)
+  public static final boolean aRG(String paramString)
   {
-    AppMethodBeat.i(97739);
+    AppMethodBeat.i(40497);
     int i;
-    if ((t.nT(paramString)) && (t.oI(paramString)))
+    if ((ab.IR(paramString)) && (ab.Ja(paramString)))
     {
       i = 1;
-      if ((!t.lA(paramString)) || (t.oH(paramString))) {
+      if ((!au.bwE(paramString)) || (ab.IZ(paramString))) {
         break label57;
       }
     }
@@ -31,103 +33,103 @@ public final class a
       if ((i == 0) && (j == 0)) {
         break label62;
       }
-      AppMethodBeat.o(97739);
+      AppMethodBeat.o(40497);
       return true;
       i = 0;
       break;
     }
     label62:
-    AppMethodBeat.o(97739);
+    AppMethodBeat.o(40497);
     return false;
   }
   
-  public static final boolean caM()
+  public static final boolean gzN()
   {
-    AppMethodBeat.i(97740);
-    if (!caN())
+    AppMethodBeat.i(40498);
+    if (!gzO())
     {
-      AppMethodBeat.o(97740);
+      AppMethodBeat.o(40498);
       return false;
     }
-    if (!caO())
+    if (!gzP())
     {
-      AppMethodBeat.o(97740);
+      AppMethodBeat.o(40498);
       return false;
     }
-    AppMethodBeat.o(97740);
+    AppMethodBeat.o(40498);
     return true;
   }
   
-  public static final boolean caN()
+  public static final boolean gzO()
   {
-    AppMethodBeat.i(97741);
-    if (!b.afQ())
+    AppMethodBeat.i(40499);
+    if (!b.bHZ())
     {
-      AppMethodBeat.o(97741);
+      AppMethodBeat.o(40499);
       return true;
     }
-    AppMethodBeat.o(97741);
+    AppMethodBeat.o(40499);
     return false;
   }
   
-  public static final boolean caO()
+  public static final boolean gzP()
   {
-    AppMethodBeat.i(97742);
-    int i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("ChatImgAutoDownload"), 1);
+    AppMethodBeat.i(40500);
+    int i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("ChatImgAutoDownload"), 1);
     if (i == 3)
     {
-      ab.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
-      AppMethodBeat.o(97742);
+      Log.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "settings is not auto download C2C image. ChatImgAutoDownload : ".concat(String.valueOf(i)));
+      AppMethodBeat.o(40500);
       return false;
     }
-    if ((i == 2) && (!at.isWifi(ah.getContext())))
+    if ((i == 2) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext())))
     {
-      AppMethodBeat.o(97742);
+      AppMethodBeat.o(40500);
       return false;
     }
     if (i == 1)
     {
-      if (!at.isWifi(ah.getContext()))
+      if (!NetworkCache.INSTANCE.isWifiFromCache(MMApplicationContext.getContext()))
       {
-        boolean bool = caP();
-        AppMethodBeat.o(97742);
+        boolean bool = gzQ();
+        AppMethodBeat.o(40500);
         return bool;
       }
-      AppMethodBeat.o(97742);
+      AppMethodBeat.o(40500);
       return true;
     }
-    AppMethodBeat.o(97742);
+    AppMethodBeat.o(40500);
     return false;
   }
   
-  private static boolean caP()
+  private static boolean gzQ()
   {
-    AppMethodBeat.i(97743);
-    long l2 = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("ChatImgAutoDownloadMax"), 0);
-    long l1 = bo.a((Long)g.RL().Ru().get(ac.a.yyI, null), 0L);
-    long l3 = bo.apW((String)DateFormat.format("M", System.currentTimeMillis()));
-    long l4 = bo.a((Long)g.RL().Ru().get(ac.a.yyJ, null), 0L);
-    ab.d("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1);
+    AppMethodBeat.i(40501);
+    long l2 = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("ChatImgAutoDownloadMax"), 0);
+    long l1 = Util.nullAs((Long)h.baE().ban().get(at.a.acJc, null), 0L);
+    long l3 = Util.safeParseLong((String)DateFormat.format("M", System.currentTimeMillis()));
+    long l4 = Util.nullAs((Long)h.baE().ban().get(at.a.acJd, null), 0L);
+    Log.d("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "currentmonth " + l3 + " month " + l4 + " maxcount " + l2 + " current " + l1);
     if (l3 != l4)
     {
-      ab.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "update month %d ", new Object[] { Long.valueOf(l3) });
-      g.RL().Ru().set(ac.a.yyI, Long.valueOf(0L));
-      g.RL().Ru().set(ac.a.yyJ, Long.valueOf(l3));
+      Log.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "update month %d ", new Object[] { Long.valueOf(l3) });
+      h.baE().ban().set(at.a.acJc, Long.valueOf(0L));
+      h.baE().ban().set(at.a.acJd, Long.valueOf(l3));
       l1 = 0L;
     }
     if ((l1 > l2) && (l2 > 0L))
     {
-      ab.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "this month had auto download " + l1 + " C2C image, can not auto download.");
-      AppMethodBeat.o(97743);
+      Log.i("MicroMsg.Priority.C2CMsgImgAutoDownloadControlLogic", "this month had auto download " + l1 + " C2C image, can not auto download.");
+      AppMethodBeat.o(40501);
       return false;
     }
-    AppMethodBeat.o(97743);
+    AppMethodBeat.o(40501);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

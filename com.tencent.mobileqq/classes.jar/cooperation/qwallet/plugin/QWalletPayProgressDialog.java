@@ -1,6 +1,5 @@
 package cooperation.qwallet.plugin;
 
-import alud;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -9,14 +8,16 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.TextView;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QWalletPayProgressDialog
-  extends Dialog
+  extends ReportDialog
 {
-  private String mMessage = alud.a(2131711835);
-  private TextView mTextView;
+  private String mMessage = HardCodeUtil.a(2131904642);
+  private TextView mTextView = null;
   
   public QWalletPayProgressDialog(Context paramContext)
   {
@@ -32,58 +33,57 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2131559288);
+      super.setContentView(2131625332);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131370322));
+      this.mTextView = ((TextView)super.findViewById(2131438263));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);
       return;
     }
-    catch (OutOfMemoryError paramBundle) {}catch (Exception paramBundle) {}
+    catch (OutOfMemoryError|Exception paramBundle) {}
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4) {
+    if (paramInt == 4)
+    {
       try
       {
         super.cancel();
-        return false;
       }
       catch (Exception paramKeyEvent)
       {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            paramKeyEvent.printStackTrace();
-          }
+        if (QLog.isDevelopLevel()) {
+          paramKeyEvent.printStackTrace();
         }
       }
+      return false;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
   public void setMessage(CharSequence paramCharSequence)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {}
-    for (this.mMessage = "";; this.mMessage = paramCharSequence.toString())
-    {
-      if (this.mTextView != null) {
-        this.mTextView.setText(this.mMessage);
-      }
-      return;
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      this.mMessage = "";
+    } else {
+      this.mMessage = paramCharSequence.toString();
+    }
+    paramCharSequence = this.mTextView;
+    if (paramCharSequence != null) {
+      paramCharSequence.setText(this.mMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayProgressDialog
  * JD-Core Version:    0.7.0.1
  */

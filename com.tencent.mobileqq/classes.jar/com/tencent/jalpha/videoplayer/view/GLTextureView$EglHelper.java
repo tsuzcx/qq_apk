@@ -27,12 +27,13 @@ class GLTextureView$EglHelper
   
   private void destroySurfaceImp()
   {
-    if ((this.mEglSurface != null) && (this.mEglSurface != EGL10.EGL_NO_SURFACE))
+    Object localObject = this.mEglSurface;
+    if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
     {
       this.mEgl.eglMakeCurrent(this.mEglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      GLTextureView localGLTextureView = (GLTextureView)this.mGLTextureViewWeakRef.get();
-      if (localGLTextureView != null) {
-        GLTextureView.access$1300(localGLTextureView).destroySurface(this.mEgl, this.mEglDisplay, this.mEglSurface);
+      localObject = (GLTextureView)this.mGLTextureViewWeakRef.get();
+      if (localObject != null) {
+        GLTextureView.access$1300((GLTextureView)localObject).destroySurface(this.mEgl, this.mEglDisplay, this.mEglSurface);
       }
       this.mEglSurface = null;
     }
@@ -40,7 +41,11 @@ class GLTextureView$EglHelper
   
   public static String formatEglError(String paramString, int paramInt)
   {
-    return paramString + " failed: " + getErrorString(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" failed: ");
+    localStringBuilder.append(getErrorString(paramInt));
+    return localStringBuilder.toString();
   }
   
   public static String getErrorString(int paramInt)
@@ -49,41 +54,44 @@ class GLTextureView$EglHelper
     {
     default: 
       return getHex(paramInt);
-    case 12288: 
-      return "EGL_SUCCESS";
-    case 12289: 
-      return "EGL_NOT_INITIALIZED";
-    case 12290: 
-      return "EGL_BAD_ACCESS";
-    case 12291: 
-      return "EGL_BAD_ALLOC";
-    case 12292: 
-      return "EGL_BAD_ATTRIBUTE";
-    case 12293: 
-      return "EGL_BAD_CONFIG";
-    case 12294: 
-      return "EGL_BAD_CONTEXT";
-    case 12295: 
-      return "EGL_BAD_CURRENT_SURFACE";
-    case 12296: 
-      return "EGL_BAD_DISPLAY";
-    case 12297: 
-      return "EGL_BAD_MATCH";
-    case 12298: 
-      return "EGL_BAD_NATIVE_PIXMAP";
-    case 12299: 
-      return "EGL_BAD_NATIVE_WINDOW";
-    case 12300: 
-      return "EGL_BAD_PARAMETER";
+    case 12302: 
+      return "EGL_CONTEXT_LOST";
     case 12301: 
       return "EGL_BAD_SURFACE";
+    case 12300: 
+      return "EGL_BAD_PARAMETER";
+    case 12299: 
+      return "EGL_BAD_NATIVE_WINDOW";
+    case 12298: 
+      return "EGL_BAD_NATIVE_PIXMAP";
+    case 12297: 
+      return "EGL_BAD_MATCH";
+    case 12296: 
+      return "EGL_BAD_DISPLAY";
+    case 12295: 
+      return "EGL_BAD_CURRENT_SURFACE";
+    case 12294: 
+      return "EGL_BAD_CONTEXT";
+    case 12293: 
+      return "EGL_BAD_CONFIG";
+    case 12292: 
+      return "EGL_BAD_ATTRIBUTE";
+    case 12291: 
+      return "EGL_BAD_ALLOC";
+    case 12290: 
+      return "EGL_BAD_ACCESS";
+    case 12289: 
+      return "EGL_NOT_INITIALIZED";
     }
-    return "EGL_CONTEXT_LOST";
+    return "EGL_SUCCESS";
   }
   
   private static String getHex(int paramInt)
   {
-    return "0x" + Integer.toHexString(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("0x");
+    localStringBuilder.append(Integer.toHexString(paramInt));
+    return localStringBuilder.toString();
   }
   
   public static void logEglErrorAsWarning(String paramString1, String paramString2, int paramInt)
@@ -106,66 +114,67 @@ class GLTextureView$EglHelper
     GL localGL2 = this.mEglContext.getGL();
     GLTextureView localGLTextureView = (GLTextureView)this.mGLTextureViewWeakRef.get();
     Object localObject = localGL2;
-    GL localGL1;
-    int i;
     if (localGLTextureView != null)
     {
-      localGL1 = localGL2;
+      GL localGL1 = localGL2;
       if (GLTextureView.access$1400(localGLTextureView) != null) {
         localGL1 = GLTextureView.access$1400(localGLTextureView).wrap(localGL2);
       }
       localObject = localGL1;
       if ((GLTextureView.access$1500(localGLTextureView) & 0x3) != 0)
       {
-        i = 0;
+        int i = 0;
+        localObject = null;
         if ((GLTextureView.access$1500(localGLTextureView) & 0x1) != 0) {
           i = 1;
         }
-        if ((GLTextureView.access$1500(localGLTextureView) & 0x2) == 0) {
-          break label106;
+        if ((GLTextureView.access$1500(localGLTextureView) & 0x2) != 0) {
+          localObject = new GLTextureView.LogWriter();
         }
+        localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
       }
     }
-    label106:
-    for (localObject = new GLTextureView.LogWriter();; localObject = null)
-    {
-      localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
-      return localObject;
-    }
+    return localObject;
   }
   
   public boolean createSurface()
   {
-    if (this.mEgl == null) {
-      throw new RuntimeException("egl not initialized");
-    }
-    if (this.mEglDisplay == null) {
+    if (this.mEgl != null)
+    {
+      if (this.mEglDisplay != null)
+      {
+        if (this.mEglConfig != null)
+        {
+          destroySurfaceImp();
+          Object localObject = (GLTextureView)this.mGLTextureViewWeakRef.get();
+          if (localObject != null) {
+            this.mEglSurface = GLTextureView.access$1300((GLTextureView)localObject).createWindowSurface(this.mEgl, this.mEglDisplay, this.mEglConfig, ((GLTextureView)localObject).getSurfaceTexture());
+          } else {
+            this.mEglSurface = null;
+          }
+          localObject = this.mEglSurface;
+          if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
+          {
+            localObject = this.mEgl;
+            EGLDisplay localEGLDisplay = this.mEglDisplay;
+            EGLSurface localEGLSurface = this.mEglSurface;
+            if (!((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.mEglContext))
+            {
+              logEglErrorAsWarning("EGLHelper", "eglMakeCurrent", this.mEgl.eglGetError());
+              return false;
+            }
+            return true;
+          }
+          if (this.mEgl.eglGetError() == 12299) {
+            Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
+          }
+          return false;
+        }
+        throw new RuntimeException("mEglConfig not initialized");
+      }
       throw new RuntimeException("eglDisplay not initialized");
     }
-    if (this.mEglConfig == null) {
-      throw new RuntimeException("mEglConfig not initialized");
-    }
-    destroySurfaceImp();
-    GLTextureView localGLTextureView = (GLTextureView)this.mGLTextureViewWeakRef.get();
-    if (localGLTextureView != null) {
-      this.mEglSurface = GLTextureView.access$1300(localGLTextureView).createWindowSurface(this.mEgl, this.mEglDisplay, this.mEglConfig, localGLTextureView.getSurfaceTexture());
-    }
-    while ((this.mEglSurface != null) && (this.mEglSurface != EGL10.EGL_NO_SURFACE)) {
-      if (!this.mEgl.eglMakeCurrent(this.mEglDisplay, this.mEglSurface, this.mEglSurface, this.mEglContext))
-      {
-        logEglErrorAsWarning("EGLHelper", "eglMakeCurrent", this.mEgl.eglGetError());
-        return false;
-        this.mEglSurface = null;
-      }
-      else
-      {
-        return true;
-      }
-    }
-    if (this.mEgl.eglGetError() == 12299) {
-      Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
-    }
-    return false;
+    throw new RuntimeException("egl not initialized");
   }
   
   public void destroySurface()
@@ -177,15 +186,16 @@ class GLTextureView$EglHelper
   {
     if (this.mEglContext != null)
     {
-      GLTextureView localGLTextureView = (GLTextureView)this.mGLTextureViewWeakRef.get();
-      if (localGLTextureView != null) {
-        GLTextureView.access$1200(localGLTextureView).destroyContext(this.mEgl, this.mEglDisplay, this.mEglContext);
+      localObject = (GLTextureView)this.mGLTextureViewWeakRef.get();
+      if (localObject != null) {
+        GLTextureView.access$1200((GLTextureView)localObject).destroyContext(this.mEgl, this.mEglDisplay, this.mEglContext);
       }
       this.mEglContext = null;
     }
-    if (this.mEglDisplay != null)
+    Object localObject = this.mEglDisplay;
+    if (localObject != null)
     {
-      this.mEgl.eglTerminate(this.mEglDisplay);
+      this.mEgl.eglTerminate((EGLDisplay)localObject);
       this.mEglDisplay = null;
     }
   }
@@ -194,28 +204,34 @@ class GLTextureView$EglHelper
   {
     this.mEgl = ((EGL10)EGLContext.getEGL());
     this.mEglDisplay = this.mEgl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.mEglDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("eglGetDisplay failed");
-    }
-    Object localObject = new int[2];
-    if (!this.mEgl.eglInitialize(this.mEglDisplay, (int[])localObject)) {
+    if (this.mEglDisplay != EGL10.EGL_NO_DISPLAY)
+    {
+      Object localObject = new int[2];
+      if (this.mEgl.eglInitialize(this.mEglDisplay, (int[])localObject))
+      {
+        localObject = (GLTextureView)this.mGLTextureViewWeakRef.get();
+        if (localObject == null)
+        {
+          this.mEglConfig = null;
+          this.mEglContext = null;
+        }
+        else
+        {
+          this.mEglConfig = GLTextureView.access$1100((GLTextureView)localObject).chooseConfig(this.mEgl, this.mEglDisplay);
+          this.mEglContext = GLTextureView.access$1200((GLTextureView)localObject).createContext(this.mEgl, this.mEglDisplay, this.mEglConfig);
+        }
+        localObject = this.mEglContext;
+        if ((localObject == null) || (localObject == EGL10.EGL_NO_CONTEXT))
+        {
+          this.mEglContext = null;
+          throwEglException("createContext");
+        }
+        this.mEglSurface = null;
+        return;
+      }
       throw new RuntimeException("eglInitialize failed");
     }
-    localObject = (GLTextureView)this.mGLTextureViewWeakRef.get();
-    if (localObject == null) {
-      this.mEglConfig = null;
-    }
-    for (this.mEglContext = null;; this.mEglContext = GLTextureView.access$1200((GLTextureView)localObject).createContext(this.mEgl, this.mEglDisplay, this.mEglConfig))
-    {
-      if ((this.mEglContext == null) || (this.mEglContext == EGL10.EGL_NO_CONTEXT))
-      {
-        this.mEglContext = null;
-        throwEglException("createContext");
-      }
-      this.mEglSurface = null;
-      return;
-      this.mEglConfig = GLTextureView.access$1100((GLTextureView)localObject).chooseConfig(this.mEgl, this.mEglDisplay);
-    }
+    throw new RuntimeException("eglGetDisplay failed");
   }
   
   public int swap()
@@ -228,7 +244,7 @@ class GLTextureView$EglHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.GLTextureView.EglHelper
  * JD-Core Version:    0.7.0.1
  */

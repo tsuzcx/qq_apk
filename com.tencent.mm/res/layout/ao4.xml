@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.radar.ui.RadarTipsView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="150.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/dz9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/dz_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/gqu" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/kkj" android:visibility="visible" android:layout_width="120.0dip" android:layout_height="120.0dip" android:scaleType="fitCenter" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iq3" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" android:src="@raw/finder_feed_retransmission" app:iconColor="@color/az" />
+    <View android:id="@id/ev6" android:background="@drawable/a3p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/d5" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:background="@drawable/a3o" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/f4q" android:paddingTop="@dimen/bv" android:visibility="visible" android:layout_width="120.0dip" android:layout_height="@dimen/df" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/dza" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aod" />
-        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/dky" />
-    </LinearLayout>
-</com.tencent.mm.plugin.radar.ui.RadarTipsView>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

@@ -1,113 +1,68 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.content.PolystarShape;
 import com.tencent.mobileqq.dinifly.model.content.PolystarShape.Type;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class PolystarShapeParser
 {
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "sy", "pt", "p", "r", "or", "os", "ir", "is", "hd" });
+  
   static PolystarShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    Object localObject4 = localObject3;
+    Object localObject5 = localObject4;
+    Object localObject6 = localObject5;
+    Object localObject7 = localObject6;
+    Object localObject8 = localObject7;
     boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue4 = null;
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
-    AnimatableFloatValue localAnimatableFloatValue3 = null;
-    AnimatableFloatValue localAnimatableFloatValue5 = null;
-    AnimatableValue localAnimatableValue = null;
-    AnimatableFloatValue localAnimatableFloatValue6 = null;
-    PolystarShape.Type localType = null;
-    String str1 = null;
-    label29:
-    while (paramJsonReader.hasNext())
-    {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+    while (paramJsonReader.hasNext()) {
+      switch (paramJsonReader.selectName(NAMES))
       {
+      default: 
+        paramJsonReader.skipName();
+        paramJsonReader.skipValue();
+        break;
+      case 9: 
+        bool = paramJsonReader.nextBoolean();
+        break;
+      case 8: 
+        localObject7 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 7: 
+        localObject5 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        break;
+      case 6: 
+        localObject8 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 5: 
+        localObject6 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+        break;
+      case 4: 
+        localObject4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 3: 
+        localObject3 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
+        break;
+      case 2: 
+        localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+        break;
+      case 1: 
+        localObject1 = PolystarShape.Type.forValue(paramJsonReader.nextInt());
+        break;
+      case 0: 
+        str = paramJsonReader.nextString();
       }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label29;
-          if (str2.equals("nm"))
-          {
-            i = 0;
-            continue;
-            if (str2.equals("sy"))
-            {
-              i = 1;
-              continue;
-              if (str2.equals("pt"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("p"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("r"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("or"))
-                    {
-                      i = 5;
-                      continue;
-                      if (str2.equals("os"))
-                      {
-                        i = 6;
-                        continue;
-                        if (str2.equals("ir"))
-                        {
-                          i = 7;
-                          continue;
-                          if (str2.equals("is"))
-                          {
-                            i = 8;
-                            continue;
-                            if (str2.equals("hd")) {
-                              i = 9;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          break;
-        }
-      }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localType = PolystarShape.Type.forValue(paramJsonReader.nextInt());
-      continue;
-      localAnimatableFloatValue6 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue5 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      bool = paramJsonReader.nextBoolean();
     }
-    return new PolystarShape(str1, localType, localAnimatableFloatValue6, localAnimatableValue, localAnimatableFloatValue5, localAnimatableFloatValue4, localAnimatableFloatValue3, localAnimatableFloatValue2, localAnimatableFloatValue1, bool);
+    return new PolystarShape(str, (PolystarShape.Type)localObject1, (AnimatableFloatValue)localObject2, (AnimatableValue)localObject3, (AnimatableFloatValue)localObject4, (AnimatableFloatValue)localObject5, (AnimatableFloatValue)localObject6, (AnimatableFloatValue)localObject7, (AnimatableFloatValue)localObject8, bool);
   }
 }
 

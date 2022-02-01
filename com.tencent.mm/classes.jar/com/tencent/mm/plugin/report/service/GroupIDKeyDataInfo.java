@@ -11,26 +11,26 @@ class GroupIDKeyDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupIDKeyDataInfo> CREATOR;
-  ArrayList<IDKey> qsh;
-  public boolean qsi;
+  ArrayList<IDKey> OzD;
+  public boolean OzE;
   
   static
   {
-    AppMethodBeat.i(72699);
+    AppMethodBeat.i(143815);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(72699);
+    AppMethodBeat.o(143815);
   }
   
   protected GroupIDKeyDataInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(72698);
-    this.qsh = new ArrayList();
-    paramParcel.readTypedList(this.qsh, IDKey.CREATOR);
+    AppMethodBeat.i(143814);
+    this.OzD = new ArrayList();
+    paramParcel.readTypedList(this.OzD, IDKey.CREATOR);
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.qsi = bool;
-      AppMethodBeat.o(72698);
+      this.OzE = bool;
+      AppMethodBeat.o(143814);
       return;
       bool = false;
     }
@@ -38,11 +38,11 @@ class GroupIDKeyDataInfo
   
   GroupIDKeyDataInfo(ArrayList<IDKey> paramArrayList)
   {
-    AppMethodBeat.i(72696);
-    this.qsh = new ArrayList();
-    this.qsh = paramArrayList;
-    this.qsi = false;
-    AppMethodBeat.o(72696);
+    AppMethodBeat.i(143812);
+    this.OzD = new ArrayList();
+    this.OzD = paramArrayList;
+    this.OzE = false;
+    AppMethodBeat.o(143812);
   }
   
   public int describeContents()
@@ -52,20 +52,20 @@ class GroupIDKeyDataInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(72697);
-    paramParcel.writeTypedList(this.qsh);
-    if (this.qsi) {}
+    AppMethodBeat.i(143813);
+    paramParcel.writeTypedList(this.OzD);
+    if (this.OzE) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(72697);
+      AppMethodBeat.o(143813);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.GroupIDKeyDataInfo
  * JD-Core Version:    0.7.0.1
  */

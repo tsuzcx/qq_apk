@@ -7,37 +7,47 @@ import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.f;
-import com.tencent.xweb.i;
-import com.tencent.xweb.j;
+import com.tencent.xweb.JsResult;
+import com.tencent.xweb.internal.f;
+import com.tencent.xweb.q;
 
 public final class d
   implements f
 {
-  WebViewClient BHp;
-  WebChromeClient BHq;
-  WebView BHr;
+  private WebViewClient aimf;
+  private WebView aimg;
+  private WebChromeClient mChromeClient;
   
   public d(WebView paramWebView)
   {
-    AppMethodBeat.i(84660);
-    this.BHr = paramWebView;
-    this.BHp = new WebViewClient();
-    this.BHq = new WebChromeClient();
-    AppMethodBeat.o(84660);
+    AppMethodBeat.i(153668);
+    this.aimg = paramWebView;
+    this.aimf = new WebViewClient();
+    this.mChromeClient = new WebChromeClient();
+    AppMethodBeat.o(153668);
   }
   
-  public final boolean a(String paramString1, String paramString2, j paramj)
+  public final boolean a(String paramString1, String paramString2, JsResult paramJsResult)
   {
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, i parami)
+  public final boolean a(String paramString1, String paramString2, String paramString3, q paramq)
   {
     return false;
   }
   
-  public final boolean b(String paramString1, String paramString2, j paramj)
+  public final boolean b(String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    return false;
+  }
+  
+  public final boolean cxL()
+  {
+    return false;
+  }
+  
+  public final boolean khc()
   {
     return false;
   }
@@ -46,11 +56,11 @@ public final class d
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
   
-  public final void w(String paramString, Bitmap paramBitmap)
+  public final void y(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(84661);
-    this.BHp.onPageStarted(this.BHr, paramString, paramBitmap);
-    AppMethodBeat.o(84661);
+    AppMethodBeat.i(153669);
+    this.aimf.onPageStarted(this.aimg, paramString, paramBitmap);
+    AppMethodBeat.o(153669);
   }
 }
 

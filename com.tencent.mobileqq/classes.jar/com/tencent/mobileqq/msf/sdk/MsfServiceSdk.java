@@ -5,10 +5,14 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.msf.core.auth.m;
+import com.tencent.mobileqq.msf.core.c;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
 import com.tencent.mobileqq.msf.sdk.utils.b;
@@ -20,6 +24,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class MsfServiceSdk
   extends u
@@ -29,16 +34,10 @@ public class MsfServiceSdk
   public static boolean isUseNewProxy = false;
   private static Object netImplRef;
   private static Field sDetailMessageField;
-  private static MsfServiceSdk sdk = null;
+  private static MsfServiceSdk sdk;
   private static final String tag = "MsfServiceSdk";
   private final BroadcastReceiver msfServiceListener = new t(this);
   private IMsfProxy proxy;
-  
-  static
-  {
-    isUseNewProxy = false;
-    netImplRef = null;
-  }
   
   private void beforeSend(ToServiceMsg paramToServiceMsg)
   {
@@ -52,25 +51,26 @@ public class MsfServiceSdk
   
   public static MsfServiceSdk get()
   {
-    if (sdk == null) {}
-    try
-    {
-      if (sdk == null)
+    if (sdk == null) {
+      try
       {
-        testRandomProxy();
-        MsfServiceSdk localMsfServiceSdk = new MsfServiceSdk();
-        if (BaseApplication.getContext().getPackageName().equals(BaseApplication.processName)) {
-          isMainProcess = true;
+        if (sdk == null)
+        {
+          testRandomProxy();
+          MsfServiceSdk localMsfServiceSdk = new MsfServiceSdk();
+          if (BaseApplication.getContext().getPackageName().equals(BaseApplication.processName)) {
+            isMainProcess = true;
+          }
+          localMsfServiceSdk.proxy = h.a("com.tencent.mobileqq.msf.service.MsfService", isUseNewProxy);
+          localMsfServiceSdk.proxy.init(localMsfServiceSdk);
+          localMsfServiceSdk.appid = 88886666;
+          netImplRef = AppNetConnInfo.getImpl();
+          sdk = localMsfServiceSdk;
         }
-        localMsfServiceSdk.proxy = h.a("com.tencent.mobileqq.msf.service.MsfService", isUseNewProxy);
-        localMsfServiceSdk.proxy.init(localMsfServiceSdk);
-        localMsfServiceSdk.appid = 88886666;
-        netImplRef = AppNetConnInfo.getImpl();
-        sdk = localMsfServiceSdk;
       }
-      return sdk;
+      finally {}
     }
-    finally {}
+    return sdk;
   }
   
   private void registerServiceListener()
@@ -87,17 +87,33 @@ public class MsfServiceSdk
   
   public static void reportStartServiceException(Class paramClass, Intent paramIntent, Throwable paramThrowable)
   {
-    if ((paramClass == null) || (paramIntent == null) || (paramThrowable == null)) {
-      return;
-    }
-    paramClass = new StringBuilder("StartServiceException");
-    paramClass.append(" ");
-    String str = paramIntent.getAction();
-    if (!TextUtils.isEmpty(str)) {
-      paramClass.append("Act:").append(str);
-    }
-    for (;;)
+    if ((paramClass != null) && (paramIntent != null))
     {
+      if (paramThrowable == null) {
+        return;
+      }
+      paramClass = new StringBuilder("StartServiceException");
+      paramClass.append(" ");
+      Object localObject = paramIntent.getAction();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramClass.append("Act:");
+        paramClass.append((String)localObject);
+      }
+      else
+      {
+        paramIntent = paramIntent.getComponent();
+        if (paramIntent != null)
+        {
+          paramIntent = paramIntent.getClassName();
+          paramClass.append("Clazz:");
+          paramClass.append(paramIntent);
+        }
+        else
+        {
+          paramClass.append("Intent:valid");
+        }
+      }
       try
       {
         if (sDetailMessageField == null)
@@ -105,155 +121,99 @@ public class MsfServiceSdk
           sDetailMessageField = Throwable.class.getDeclaredField("detailMessage");
           sDetailMessageField.setAccessible(true);
         }
-        sDetailMessageField.set(paramThrowable, "StartServiceException" + " : " + paramThrowable.getMessage());
+        paramIntent = sDetailMessageField;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("StartServiceException");
+        ((StringBuilder)localObject).append(" : ");
+        ((StringBuilder)localObject).append(paramThrowable.getMessage());
+        paramIntent.set(paramThrowable, ((StringBuilder)localObject).toString());
       }
       catch (Exception paramIntent)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("MsfServiceSdk", 2, "StartServiceException failed : ", paramIntent);
         }
-        QLog.e("MsfServiceSdk", 2, "StartServiceException failed : ", paramIntent);
-        continue;
       }
       CrashReport.handleCatchException(Thread.currentThread(), paramThrowable, paramClass.toString(), null);
-      return;
-      paramIntent = paramIntent.getComponent();
-      if (paramIntent != null)
-      {
-        paramIntent = paramIntent.getClassName();
-        paramClass.append("Clazz:").append(paramIntent);
-      }
-      else
-      {
-        paramClass.append("Intent:valid");
-      }
     }
   }
   
-  /* Error */
   private static void testRandomProxy()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: new 148	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   9: getstatic 237	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   12: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: ldc 239
-    //   17: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: getstatic 242	android/os/Build:MODEL	Ljava/lang/String;
-    //   23: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokevirtual 245	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   32: astore 4
-    //   34: ldc 247
-    //   36: invokestatic 89	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   39: invokestatic 253	com/tencent/mobileqq/msf/core/c:c	(Landroid/content/Context;)Ljava/lang/String;
-    //   42: invokevirtual 100	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   45: ifeq +142 -> 187
-    //   48: invokestatic 89	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   51: ldc 255
-    //   53: iconst_4
-    //   54: invokevirtual 259	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   57: astore_3
-    //   58: aload_3
-    //   59: ifnull +128 -> 187
-    //   62: aload_3
-    //   63: ldc_w 261
-    //   66: iconst_m1
-    //   67: invokeinterface 267 3 0
-    //   72: istore_1
-    //   73: iload_1
-    //   74: istore_0
-    //   75: iload_1
-    //   76: iconst_m1
-    //   77: if_icmpne +39 -> 116
-    //   80: new 269	java/util/Random
-    //   83: dup
-    //   84: invokespecial 270	java/util/Random:<init>	()V
-    //   87: bipush 100
-    //   89: invokevirtual 274	java/util/Random:nextInt	(I)I
-    //   92: istore_0
-    //   93: iload_0
-    //   94: istore_1
-    //   95: aload_3
-    //   96: invokeinterface 278 1 0
-    //   101: ldc_w 261
-    //   104: iload_0
-    //   105: invokeinterface 284 3 0
-    //   110: invokeinterface 287 1 0
-    //   115: pop
-    //   116: iload_0
-    //   117: iconst_1
-    //   118: if_icmpge +5 -> 123
-    //   121: iconst_1
-    //   122: istore_2
-    //   123: iload_2
-    //   124: putstatic 31	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
-    //   127: ldc 21
-    //   129: iconst_1
-    //   130: new 148	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   137: aload 4
-    //   139: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: ldc_w 289
-    //   145: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: getstatic 31	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
-    //   151: invokevirtual 292	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   154: ldc_w 294
-    //   157: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: iload_0
-    //   161: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokestatic 300	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   170: return
-    //   171: astore_3
-    //   172: iconst_0
-    //   173: istore_0
-    //   174: aload_3
-    //   175: invokevirtual 303	java/lang/Exception:printStackTrace	()V
-    //   178: goto -62 -> 116
-    //   181: astore_3
-    //   182: iload_1
-    //   183: istore_0
-    //   184: goto -10 -> 174
-    //   187: iconst_0
-    //   188: istore_0
-    //   189: goto -73 -> 116
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   74	115	0	i	int
-    //   72	111	1	j	int
-    //   1	123	2	bool	boolean
-    //   57	39	3	localSharedPreferences	android.content.SharedPreferences
-    //   171	4	3	localException1	Exception
-    //   181	1	3	localException2	Exception
-    //   32	106	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   34	58	171	java/lang/Exception
-    //   62	73	171	java/lang/Exception
-    //   80	93	181	java/lang/Exception
-    //   95	116	181	java/lang/Exception
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    String str = ((StringBuilder)localObject).toString().toLowerCase();
+    boolean bool = false;
+    int i;
+    try
+    {
+      if ("armeabi".equals(c.c(BaseApplication.getContext())))
+      {
+        localObject = BaseApplication.getContext().getSharedPreferences("msf_sdk_proxy_factory", 4);
+        if (localObject != null)
+        {
+          i = ((SharedPreferences)localObject).getInt("useNewProxyRandomInt", -1);
+          if (i == -1) {
+            try
+            {
+              int j = new Random().nextInt(100);
+              try
+              {
+                ((SharedPreferences)localObject).edit().putInt("useNewProxyRandomInt", j).commit();
+                i = j;
+              }
+              catch (Exception localException1)
+              {
+                i = j;
+                break label146;
+              }
+            }
+            catch (Exception localException2)
+            {
+              break label146;
+            }
+          }
+        }
+      }
+      i = 0;
+    }
+    catch (Exception localException3)
+    {
+      i = 0;
+      label146:
+      localException3.printStackTrace();
+    }
+    if (i < 1) {
+      bool = true;
+    }
+    isUseNewProxy = bool;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(" create isUseNewProxy=");
+    localStringBuilder.append(isUseNewProxy);
+    localStringBuilder.append(" randomInt=");
+    localStringBuilder.append(i);
+    QLog.i("MsfServiceSdk", 1, localStringBuilder.toString());
   }
   
   private void unregisterServiceListener()
   {
-    if (isMainProcess) {}
-    try
-    {
-      BaseApplication.getContext().unregisterReceiver(this.msfServiceListener);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsfServiceSdk", 2, "unregister listener for IPC exception");
+    if (isMainProcess) {
+      try
+      {
+        BaseApplication.getContext().unregisterReceiver(this.msfServiceListener);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MsfServiceSdk", 2, "unregister listener for IPC exception");
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
@@ -272,8 +232,10 @@ public class MsfServiceSdk
   {
     paramString = new ToServiceMsg(getMsfServiceName(), paramString, "login.auth");
     paramString.setMsfCommand(MsfCommand.wt_GetA1WithA1);
-    paramString.getAttributes().put("dwSrcAppid", Long.valueOf(16L));
-    paramString.getAttributes().put("dwSubSrcAppid", Long.valueOf(16L));
+    HashMap localHashMap = paramString.getAttributes();
+    Long localLong = Long.valueOf(16L);
+    localHashMap.put("dwSrcAppid", localLong);
+    paramString.getAttributes().put("dwSubSrcAppid", localLong);
     beforeSend(paramString);
     return paramString;
   }
@@ -379,8 +341,10 @@ public class MsfServiceSdk
   {
     paramString = new ToServiceMsg(getMsfServiceName(), paramString, "login.auth");
     paramString.setMsfCommand(MsfCommand.wt_GetStWithoutPasswd);
-    paramString.getAttributes().put("dwSrcAppid", Long.valueOf(16L));
-    paramString.getAttributes().put("dwDstAppid", Long.valueOf(16L));
+    HashMap localHashMap = paramString.getAttributes();
+    Long localLong = Long.valueOf(16L);
+    localHashMap.put("dwSrcAppid", localLong);
+    paramString.getAttributes().put("dwDstAppid", localLong);
     beforeSend(paramString);
     return paramString;
   }
@@ -464,12 +428,12 @@ public class MsfServiceSdk
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramCommandCallbackerInfo.uin, "push.cmdRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.registerCmdCallback);
-    z.a(localToServiceMsg, paramCommandCallbackerInfo);
+    aa.a(localToServiceMsg, paramCommandCallbackerInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
   
-  public ToServiceMsg getRegisterCommitMobileMsg(String paramString1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString2, String paramString3, String paramString4, Long paramLong)
+  public ToServiceMsg getRegisterCommitMobileMsg(String paramString1, byte paramByte1, byte paramByte2, byte paramByte3, String paramString2, String paramString3, String paramString4, Long paramLong, HashMap paramHashMap)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
     localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitMobile);
@@ -481,6 +445,7 @@ public class MsfServiceSdk
     localToServiceMsg.getAttributes().put("to_register_cr_mobile", paramString4);
     localToServiceMsg.getAttributes().put("appid", paramLong);
     localToServiceMsg.getAttributes().put("To_register_captcha_sig", paramString1);
+    localToServiceMsg.getAttributes().put("To_register_map_param", paramHashMap);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -500,6 +465,11 @@ public class MsfServiceSdk
   
   public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6)
   {
+    return getRegisterCommitPassMsg(paramString1, paramString2, paramString3, paramBoolean, paramString4, paramString5, paramString6, null);
+  }
+  
+  public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6, HashMap paramHashMap)
+  {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
     localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitPass);
     localToServiceMsg.getAttributes().put("To_register_smsCode", paramString1);
@@ -508,16 +478,13 @@ public class MsfServiceSdk
     localToServiceMsg.getAttributes().put("To_register_type", Boolean.valueOf(paramBoolean));
     if ((paramString4 != null) && (paramString4.length() > 0)) {
       localToServiceMsg.getAttributes().put("To_register_lh_uin", paramString4);
+    } else if ((paramString5 != null) && (paramString5.length() > 0)) {
+      localToServiceMsg.getAttributes().put("To_register_unbind_lh_uin", paramString5);
     }
-    for (;;)
-    {
-      localToServiceMsg.getAttributes().put("to_register_cr_appVersion", paramString6);
-      beforeSend(localToServiceMsg);
-      return localToServiceMsg;
-      if ((paramString5 != null) && (paramString5.length() > 0)) {
-        localToServiceMsg.getAttributes().put("To_register_unbind_lh_uin", paramString5);
-      }
-    }
+    localToServiceMsg.getAttributes().put("To_register_map_param", paramHashMap);
+    localToServiceMsg.getAttributes().put("to_register_cr_appVersion", paramString6);
+    beforeSend(localToServiceMsg);
+    return localToServiceMsg;
   }
   
   public ToServiceMsg getRegisterCommitSmsCodeMsg(String paramString)
@@ -533,13 +500,13 @@ public class MsfServiceSdk
   {
     paramString1 = new ToServiceMsg(getMsfServiceName(), paramString1, "push.proxyRegister");
     paramString1.setMsfCommand(MsfCommand.proxyRegisterPush);
-    y localy = new y();
-    localy.a = paramInt;
-    localy.b = paramString2;
-    localy.c = paramString3;
-    localy.d = paramNotifyRegisterInfo;
-    localy.e = paramCommandCallbackerInfo;
-    z.a(paramString1, localy);
+    z localz = new z();
+    localz.a = paramInt;
+    localz.b = paramString2;
+    localz.c = paramString3;
+    localz.d = paramNotifyRegisterInfo;
+    localz.e = paramCommandCallbackerInfo;
+    aa.a(paramString1, localz);
     beforeSend(paramString1);
     return paramString1;
   }
@@ -555,7 +522,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.register");
     localToServiceMsg.setMsfCommand(MsfCommand.registerPush);
-    z.a(localToServiceMsg, paramPushRegisterInfo);
+    aa.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -608,7 +575,7 @@ public class MsfServiceSdk
   {
     paramString = new ToServiceMsg(getMsfServiceName(), paramString, "push.resetCmds");
     paramString.setMsfCommand(MsfCommand.resetCmdCallback);
-    z.a(paramString, paramCommandCallbackerInfo);
+    aa.a(paramString, paramCommandCallbackerInfo);
     beforeSend(paramString);
     return paramString;
   }
@@ -701,7 +668,7 @@ public class MsfServiceSdk
     }
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), paramPushRegisterInfo.uin, "push.unRegister");
     localToServiceMsg.setMsfCommand(MsfCommand.unRegisterPush);
-    z.a(localToServiceMsg, paramPushRegisterInfo);
+    aa.a(localToServiceMsg, paramPushRegisterInfo);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
   }
@@ -737,10 +704,26 @@ public class MsfServiceSdk
     super.initSub(paramString3, paramInt, paramString2, paramString1, paramIErrorHandler);
     if (QLog.isColorLevel())
     {
-      QLog.d("MsfServiceSdk", 2, "MsfServiceSdk init proxyNew=" + isUseNewProxy + " appid=" + paramInt + " msfServiceName=" + paramString2 + " bootBroadcastName=" + paramString1 + " processName=" + paramString3);
+      paramContext = new StringBuilder();
+      paramContext.append("MsfServiceSdk init proxyNew=");
+      paramContext.append(isUseNewProxy);
+      paramContext.append(" appid=");
+      paramContext.append(paramInt);
+      paramContext.append(" msfServiceName=");
+      paramContext.append(paramString2);
+      paramContext.append(" bootBroadcastName=");
+      paramContext.append(paramString1);
+      paramContext.append(" processName=");
+      paramContext.append(paramString3);
+      QLog.d("MsfServiceSdk", 2, paramContext.toString());
       return;
     }
-    QLog.d("MsfServiceSdk", 1, "MsfServiceSdk init proxyNew=" + isUseNewProxy + " processName=" + paramString3);
+    paramContext = new StringBuilder();
+    paramContext.append("MsfServiceSdk init proxyNew=");
+    paramContext.append(isUseNewProxy);
+    paramContext.append(" processName=");
+    paramContext.append(paramString3);
+    QLog.d("MsfServiceSdk", 1, paramContext.toString());
   }
   
   public void initMsfService()
@@ -750,6 +733,11 @@ public class MsfServiceSdk
     }
     registerServiceListener();
     this.proxy.initMsfService();
+  }
+  
+  public int onKillProcess()
+  {
+    return this.proxy.onKillProcess();
   }
   
   public int onProcessViewableChanged(boolean paramBoolean, long paramLong)
@@ -784,40 +772,50 @@ public class MsfServiceSdk
   
   public void sendStartUseAccountBroadcast(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("MsfServiceSdk", 2, "sendStartUseAccountBroadcast context null!");
       }
-    }
-    do
-    {
       return;
-      Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("action", "enter");
-      localIntent.setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast(localIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("MsfServiceSdk", 2, "send bootAction user " + paramString + " enter broadcast");
+    }
+    Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
+    localIntent.putExtra("uin", paramString);
+    localIntent.putExtra("action", "enter");
+    localIntent.setPackage(paramContext.getPackageName());
+    paramContext.sendBroadcast(localIntent);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("send bootAction user ");
+      paramContext.append(paramString);
+      paramContext.append(" enter broadcast");
+      QLog.d("MsfServiceSdk", 2, paramContext.toString());
+    }
   }
   
   public void sendstopUseAccountBroadcast(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("MsfServiceSdk", 2, "sendstopUseAccountBroadcast context null!");
       }
-    }
-    do
-    {
       return;
-      Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
-      localIntent.putExtra("uin", paramString);
-      localIntent.putExtra("action", "exit");
-      localIntent.setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast(localIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("MsfServiceSdk", 2, "send bootAction user " + paramString + " exit broadcast");
+    }
+    Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
+    localIntent.putExtra("uin", paramString);
+    localIntent.putExtra("action", "exit");
+    localIntent.setPackage(paramContext.getPackageName());
+    paramContext.sendBroadcast(localIntent);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("send bootAction user ");
+      paramContext.append(paramString);
+      paramContext.append(" exit broadcast");
+      QLog.d("MsfServiceSdk", 2, paramContext.toString());
+    }
   }
   
   public void stopMsfService()
@@ -873,8 +871,12 @@ public class MsfServiceSdk
   
   public void unRegisterMsfService(Boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsfServiceSdk", 4, "unRegisterMsfService " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unRegisterMsfService ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MsfServiceSdk", 4, localStringBuilder.toString());
     }
     this.proxy.unRegisterMsfService(paramBoolean);
   }
@@ -900,7 +902,7 @@ public class MsfServiceSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.MsfServiceSdk
  * JD-Core Version:    0.7.0.1
  */

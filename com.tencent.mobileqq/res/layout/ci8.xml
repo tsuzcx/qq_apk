@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/o13" android:background="@drawable/dqq" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/mm4" android:background="@drawable/e5r" android:layout_width="69.0dip" android:layout_height="41.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dsa" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/ms">
+        <ImageView android:layout_width="@dimen/mv" android:layout_height="@dimen/mv" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/9h" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/aqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xa1" />
+    </LinearLayout>
 </LinearLayout>

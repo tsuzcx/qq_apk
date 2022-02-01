@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:id="@id/j4l" android:scrollX="0.0dip" android:scrollY="0.0dip" android:background="@color/o_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedModuleTitle android:paddingLeft="@dimen/jr" android:paddingTop="@dimen/jr" android:paddingRight="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/jx" android:textStyle="bold" android:textColor="@color/qj" android:id="@id/c92" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.ui.GameFeedModuleTitle>
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/bqz" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/fpo" android:focusable="false" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="1.0px" android:overScrollMode="never" />
+            <include android:id="@id/it" android:visibility="gone" layout="@layout/a4w" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

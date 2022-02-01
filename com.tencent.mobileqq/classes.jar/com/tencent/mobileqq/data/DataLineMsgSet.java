@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import arso;
-import ayzl;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,20 +11,20 @@ public class DataLineMsgSet
   implements Cloneable
 {
   public static String TAG = "dataline.DataLineMsgSet";
-  private int groupId;
-  private int groupType;
-  public boolean isReportPause;
+  private int groupId = 0;
+  private int groupType = 0;
+  public boolean isReportPause = false;
   private ArrayList<DataLineMsgRecord> mComeList = new ArrayList();
-  private long mFirstArriveTime;
-  private DataLineMsgRecord mFirstCome;
-  private boolean mIsNewCome;
-  private boolean mIsPaused;
-  private long mLastArriveTime;
-  private DataLineMsgRecord[] mSet;
-  public long mUpdateMutiViewTick;
-  public long mUpdateProcessTick;
-  private long nFirstId;
-  private long nLastId;
+  private long mFirstArriveTime = 0L;
+  private DataLineMsgRecord mFirstCome = null;
+  private boolean mIsNewCome = false;
+  private boolean mIsPaused = false;
+  private long mLastArriveTime = 0L;
+  private DataLineMsgRecord[] mSet = null;
+  public long mUpdateMutiViewTick = 0L;
+  public long mUpdateProcessTick = 0L;
+  private long nFirstId = 0L;
+  private long nLastId = 0L;
   
   public DataLineMsgSet(int paramInt)
   {
@@ -33,11 +33,14 @@ public class DataLineMsgSet
   
   public static boolean isCanReciveOrResend(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if ((!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L)) {}
-    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!arso.a(paramDataLineMsgRecord.path)))) {
-      return true;
+    if ((paramDataLineMsgRecord.issuc) && (paramDataLineMsgRecord.fileMsgStatus != 1L))
+    {
+      if (paramDataLineMsgRecord.fileMsgStatus == 2L) {
+        return true;
+      }
+      return (paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!FileUtil.d(paramDataLineMsgRecord.path)));
     }
-    return false;
+    return true;
   }
   
   public static boolean isCanceled(DataLineMsgRecord paramDataLineMsgRecord)
@@ -57,7 +60,15 @@ public class DataLineMsgSet
   
   public static boolean isSingle(int paramInt1, int paramInt2)
   {
-    return (paramInt2 == 0) || (paramInt1 != 1);
+    boolean bool = true;
+    if (paramInt2 != 0)
+    {
+      if (paramInt1 != 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean isSingle(DataLineMsgRecord paramDataLineMsgRecord)
@@ -67,29 +78,26 @@ public class DataLineMsgSet
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
-      do
-      {
-        return true;
-        if (this == null) {
-          return false;
-        }
-        if (!(paramObject instanceof DataLineMsgSet)) {
-          return false;
-        }
-        paramObject = (DataLineMsgSet)paramObject;
-        if (paramObject.getTotalCount() != getTotalCount()) {
-          return false;
-        }
-        if (!paramObject.isSingle()) {
-          break;
-        }
-      } while (paramObject.mSet[0].sessionid == this.mSet[0].sessionid);
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof DataLineMsgSet)) {
       return false;
-    } while (paramObject.getGroupId() == getGroupId());
-    return false;
+    }
+    paramObject = (DataLineMsgSet)paramObject;
+    if (paramObject.getTotalCount() != getTotalCount()) {
+      return false;
+    }
+    if (paramObject.isSingle())
+    {
+      if (paramObject.mSet[0].sessionid != this.mSet[0].sessionid) {
+        return false;
+      }
+    }
+    else if (paramObject.getGroupId() != getGroupId()) {
+      return false;
+    }
+    return true;
   }
   
   public DataLineMsgRecord getAt(int paramInt)
@@ -99,32 +107,31 @@ public class DataLineMsgSet
   
   public int getComeCount()
   {
-    int j = 0;
     DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
     int m = arrayOfDataLineMsgRecord.length;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int k = j;
+      k = j;
       if (arrayOfDataLineMsgRecord[i] != null) {
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     return j;
   }
   
   public int getCompletedCount()
   {
-    int j = 0;
     DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
     int m = arrayOfDataLineMsgRecord.length;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-      int k = j;
+      k = j;
       if (localDataLineMsgRecord != null)
       {
         k = j;
@@ -137,7 +144,6 @@ public class DataLineMsgSet
         }
       }
       i += 1;
-      j = k;
     }
     return j;
   }
@@ -146,19 +152,23 @@ public class DataLineMsgSet
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    while (i < this.mSet.length - 1)
+    for (;;)
     {
-      localDataLineMsgRecord = this.mSet[i];
-      if (localDataLineMsgRecord != null)
+      localObject = this.mSet;
+      if (i >= localObject.length - 1) {
+        break;
+      }
+      localObject = localObject[i];
+      if (localObject != null)
       {
-        localStringBuilder.append(localDataLineMsgRecord.filename);
+        localStringBuilder.append(((DataLineMsgRecord)localObject).filename);
         localStringBuilder.append("、");
       }
       i += 1;
     }
-    DataLineMsgRecord localDataLineMsgRecord = this.mSet[(this.mSet.length - 1)];
-    if (localDataLineMsgRecord != null) {
-      localStringBuilder.append(localDataLineMsgRecord.filename);
+    Object localObject = localObject[(localObject.length - 1)];
+    if (localObject != null) {
+      localStringBuilder.append(((DataLineMsgRecord)localObject).filename);
     }
     return localStringBuilder.toString();
   }
@@ -302,70 +312,21 @@ public class DataLineMsgSet
     DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
     int j = arrayOfDataLineMsgRecord.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
       if ((localDataLineMsgRecord == null) && (isTimeOut())) {
         return true;
       }
-      if (localDataLineMsgRecord == null) {}
-      while ((localDataLineMsgRecord.issuc) || (localDataLineMsgRecord.fileMsgStatus == 1L))
-      {
-        i += 1;
-        break;
+      if ((localDataLineMsgRecord != null) && (!localDataLineMsgRecord.issuc) && (localDataLineMsgRecord.fileMsgStatus != 1L)) {
+        return true;
       }
-      return true;
+      i += 1;
     }
     return false;
   }
   
   public boolean hasSendingOrRecving()
-  {
-    boolean bool2 = false;
-    DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
-    int j = arrayOfDataLineMsgRecord.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-        if ((localDataLineMsgRecord != null) && (localDataLineMsgRecord.issuc) && (localDataLineMsgRecord.progress != 1.0F) && (localDataLineMsgRecord.fileMsgStatus != 1L) && (localDataLineMsgRecord.fileMsgStatus != 2L)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public boolean hasWaiting()
-  {
-    boolean bool2 = false;
-    DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
-    int j = arrayOfDataLineMsgRecord.length;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if ((arrayOfDataLineMsgRecord[i] == null) && (!isTimeOut())) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public boolean isAllCompleted()
   {
     DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
     int j = arrayOfDataLineMsgRecord.length;
@@ -373,12 +334,49 @@ public class DataLineMsgSet
     while (i < j)
     {
       DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-      if ((localDataLineMsgRecord == null) || ((localDataLineMsgRecord.issuc) && (localDataLineMsgRecord.progress != 1.0F))) {
+      if ((localDataLineMsgRecord != null) && (localDataLineMsgRecord.issuc) && (localDataLineMsgRecord.progress != 1.0F) && (localDataLineMsgRecord.fileMsgStatus != 1L) && (localDataLineMsgRecord.fileMsgStatus != 2L)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean hasWaiting()
+  {
+    DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
+    int j = arrayOfDataLineMsgRecord.length;
+    int i = 0;
+    while (i < j)
+    {
+      if ((arrayOfDataLineMsgRecord[i] == null) && (!isTimeOut())) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean isAllCompleted()
+  {
+    DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
+    int j = arrayOfDataLineMsgRecord.length;
+    boolean bool2 = false;
+    int i = 0;
+    while (i < j)
+    {
+      DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
+      bool1 = bool2;
+      if (localDataLineMsgRecord == null) {
+        return bool1;
+      }
+      if ((localDataLineMsgRecord.issuc) && (localDataLineMsgRecord.progress != 1.0F)) {
         return false;
       }
       i += 1;
     }
-    return true;
+    boolean bool1 = true;
+    return bool1;
   }
   
   public boolean isCanReciveOrResend()
@@ -397,32 +395,18 @@ public class DataLineMsgSet
   public boolean isCanceled()
   {
     DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
-    int m = arrayOfDataLineMsgRecord.length;
+    int k = arrayOfDataLineMsgRecord.length;
     int i = 0;
     int j = 0;
-    if (i < m)
+    while (i < k)
     {
       DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-      int k;
       if (isCanceled(localDataLineMsgRecord)) {
-        k = j + 1;
+        j += 1;
+      } else if (((localDataLineMsgRecord == null) || (localDataLineMsgRecord.fileMsgStatus != 1L)) && (!isCompleted(localDataLineMsgRecord))) {
+        return false;
       }
-      label65:
-      do
-      {
-        do
-        {
-          i += 1;
-          j = k;
-          break;
-          if (localDataLineMsgRecord == null) {
-            break label65;
-          }
-          k = j;
-        } while (localDataLineMsgRecord.fileMsgStatus == 1L);
-        k = j;
-      } while (isCompleted(localDataLineMsgRecord));
-      return false;
+      i += 1;
     }
     return j > 0;
   }
@@ -435,8 +419,10 @@ public class DataLineMsgSet
     while (i < j)
     {
       DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-      if ((localDataLineMsgRecord == null) && (isTimeOut())) {}
-      while ((localDataLineMsgRecord != null) && (localDataLineMsgRecord.fileMsgStatus != 1L)) {
+      if ((localDataLineMsgRecord == null) && (isTimeOut())) {
+        return false;
+      }
+      if ((localDataLineMsgRecord != null) && (localDataLineMsgRecord.fileMsgStatus != 1L)) {
         return false;
       }
       i += 1;
@@ -446,7 +432,8 @@ public class DataLineMsgSet
   
   public boolean isFileType()
   {
-    return (this.groupType == -2000) || (this.groupType == -2005) || (this.groupType == -2009) || (this.groupType == -2335);
+    int i = this.groupType;
+    return (i == -2000) || (i == -2005) || (i == -2009) || (i == -2335);
   }
   
   public boolean isPaused()
@@ -461,141 +448,165 @@ public class DataLineMsgSet
   
   public boolean isSingle()
   {
-    return (this.groupId == 0) || (this.groupType == -2005) || (this.groupType == -2009);
+    if (this.groupId != 0)
+    {
+      int i = this.groupType;
+      if ((i != -2005) && (i != -2009)) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public boolean isTimeOut()
   {
-    return ayzl.a() - this.mLastArriveTime > 90L;
+    return MessageCache.c() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      int j;
-      try
-      {
-        boolean bool = QLog.isColorLevel();
-        if (!bool) {
-          return;
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("状态汇总: groupId[");
-        localStringBuilder.append(this.groupId);
-        localStringBuilder.append("]; size[");
-        localStringBuilder.append(getTotalCount());
-        localStringBuilder.append("]; isTimeOut[");
-        localStringBuilder.append(isTimeOut());
-        localStringBuilder.append("]; mLastArriveTime[");
-        localStringBuilder.append(this.mLastArriveTime);
-        localStringBuilder.append("]; ");
-        DataLineMsgRecord[] arrayOfDataLineMsgRecord = this.mSet;
-        int k = arrayOfDataLineMsgRecord.length;
-        j = 0;
-        if (i < k)
-        {
-          DataLineMsgRecord localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
-          if (localDataLineMsgRecord == null)
-          {
-            localStringBuilder.append("{index[");
-            localStringBuilder.append(j);
-            localStringBuilder.append("]; 未有session}; ");
-          }
-          else
-          {
-            localStringBuilder.append("{index[");
-            localStringBuilder.append(j);
-            localStringBuilder.append("/");
-            localStringBuilder.append(localDataLineMsgRecord.groupIndex);
-            localStringBuilder.append("]; sessionid[");
-            localStringBuilder.append(localDataLineMsgRecord.sessionid);
-            localStringBuilder.append("]; issuc[");
-            localStringBuilder.append(localDataLineMsgRecord.issuc);
-            localStringBuilder.append("]; progress[");
-            localStringBuilder.append(localDataLineMsgRecord.progress);
-            localStringBuilder.append("]; fileMsgStatus[");
-            localStringBuilder.append(localDataLineMsgRecord.fileMsgStatus);
-            localStringBuilder.append("]; time[");
-            localStringBuilder.append(localDataLineMsgRecord.time);
-            localStringBuilder.append("]}; ");
-          }
-        }
+      boolean bool = QLog.isColorLevel();
+      if (!bool) {
+        return;
       }
-      finally {}
-      if (QLog.isColorLevel())
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("状态汇总: groupId[");
+      localStringBuilder.append(this.groupId);
+      localStringBuilder.append("]; size[");
+      localStringBuilder.append(getTotalCount());
+      localStringBuilder.append("]; isTimeOut[");
+      localStringBuilder.append(isTimeOut());
+      localStringBuilder.append("]; mLastArriveTime[");
+      localStringBuilder.append(this.mLastArriveTime);
+      localStringBuilder.append("]; ");
+      arrayOfDataLineMsgRecord = this.mSet;
+      k = arrayOfDataLineMsgRecord.length;
+      i = 0;
+      j = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        QLog.d(TAG, 2, localObject.toString());
-        continue;
+        StringBuilder localStringBuilder;
+        DataLineMsgRecord[] arrayOfDataLineMsgRecord;
+        int k;
+        int i;
+        int j;
+        DataLineMsgRecord localDataLineMsgRecord;
+        for (;;)
+        {
+          throw localObject;
+        }
         j += 1;
         i += 1;
       }
+    }
+    if (i < k)
+    {
+      localDataLineMsgRecord = arrayOfDataLineMsgRecord[i];
+      if (localDataLineMsgRecord == null)
+      {
+        localStringBuilder.append("{index[");
+        localStringBuilder.append(j);
+        localStringBuilder.append("]; 未有session}; ");
+      }
+      else
+      {
+        localStringBuilder.append("{index[");
+        localStringBuilder.append(j);
+        localStringBuilder.append("/");
+        localStringBuilder.append(localDataLineMsgRecord.groupIndex);
+        localStringBuilder.append("]; sessionid[");
+        localStringBuilder.append(localDataLineMsgRecord.sessionid);
+        localStringBuilder.append("]; issuc[");
+        localStringBuilder.append(localDataLineMsgRecord.issuc);
+        localStringBuilder.append("]; progress[");
+        localStringBuilder.append(localDataLineMsgRecord.progress);
+        localStringBuilder.append("]; fileMsgStatus[");
+        localStringBuilder.append(localDataLineMsgRecord.fileMsgStatus);
+        localStringBuilder.append("]; time[");
+        localStringBuilder.append(localDataLineMsgRecord.time);
+        localStringBuilder.append("]}; ");
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 2, localStringBuilder.toString());
+      }
+      return;
     }
   }
   
   public DataLineMsgRecord put(Integer paramInteger, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if ((this.nLastId == 0L) || (paramDataLineMsgRecord.msgId > this.nLastId)) {
-          this.nLastId = paramDataLineMsgRecord.msgId;
-        }
-        if ((this.nFirstId == 0L) || (paramDataLineMsgRecord.msgId < this.nFirstId)) {
-          this.nFirstId = paramDataLineMsgRecord.msgId;
-        }
-        if ((this.mFirstArriveTime == 0L) || (this.mFirstArriveTime > paramDataLineMsgRecord.time))
-        {
-          this.mFirstArriveTime = paramDataLineMsgRecord.time;
-          this.mFirstCome = paramDataLineMsgRecord;
-        }
-        if ((this.mLastArriveTime == 0L) || (this.mLastArriveTime < paramDataLineMsgRecord.time)) {
-          this.mLastArriveTime = paramDataLineMsgRecord.time;
-        }
-        if (this.groupType == 0)
-        {
-          this.groupType = paramDataLineMsgRecord.msgtype;
-          this.mIsNewCome = true;
-          paramInteger = null;
-          if (isSingle(paramDataLineMsgRecord))
-          {
-            if (this.mSet == null) {
-              this.mSet = new DataLineMsgRecord[1];
-            }
-            paramInteger = this.mSet[0];
-            this.mSet[0] = paramDataLineMsgRecord;
-            return paramInteger;
-          }
-        }
-        else
-        {
-          if ((this.groupType != -2000) || ((paramDataLineMsgRecord.msgtype != -2005) && (paramDataLineMsgRecord.msgtype != -2009))) {
-            continue;
-          }
-          this.groupType = -2005;
-          continue;
-        }
-        if (this.mSet != null) {
-          break label248;
-        }
+      if ((this.nLastId == 0L) || (paramDataLineMsgRecord.msgId > this.nLastId)) {
+        this.nLastId = paramDataLineMsgRecord.msgId;
       }
-      finally {}
-      this.mSet = new DataLineMsgRecord[paramDataLineMsgRecord.groupSize];
-      label248:
-      if (paramDataLineMsgRecord.groupIndex < paramDataLineMsgRecord.groupSize)
+      if ((this.nFirstId == 0L) || (paramDataLineMsgRecord.msgId < this.nFirstId)) {
+        this.nFirstId = paramDataLineMsgRecord.msgId;
+      }
+      if ((this.mFirstArriveTime == 0L) || (this.mFirstArriveTime > paramDataLineMsgRecord.time))
       {
-        DataLineMsgRecord localDataLineMsgRecord = this.mSet[paramDataLineMsgRecord.groupIndex];
-        this.mSet[paramDataLineMsgRecord.groupIndex] = paramDataLineMsgRecord;
-        paramInteger = localDataLineMsgRecord;
-        if (QLog.isColorLevel())
+        this.mFirstArriveTime = paramDataLineMsgRecord.time;
+        this.mFirstCome = paramDataLineMsgRecord;
+      }
+      if ((this.mLastArriveTime == 0L) || (this.mLastArriveTime < paramDataLineMsgRecord.time)) {
+        this.mLastArriveTime = paramDataLineMsgRecord.time;
+      }
+      if (this.groupType == 0) {
+        this.groupType = paramDataLineMsgRecord.msgtype;
+      } else if ((this.groupType == -2000) && ((paramDataLineMsgRecord.msgtype == -2005) || (paramDataLineMsgRecord.msgtype == -2009))) {
+        this.groupType = -2005;
+      }
+      this.mIsNewCome = true;
+      paramInteger = null;
+      if (isSingle(paramDataLineMsgRecord))
+      {
+        if (this.mSet == null) {
+          this.mSet = new DataLineMsgRecord[1];
+        }
+        paramInteger = this.mSet[0];
+        this.mSet[0] = paramDataLineMsgRecord;
+      }
+      else
+      {
+        if (this.mSet == null) {
+          this.mSet = new DataLineMsgRecord[paramDataLineMsgRecord.groupSize];
+        }
+        if (paramDataLineMsgRecord.groupIndex < paramDataLineMsgRecord.groupSize)
         {
-          QLog.d(TAG, 2, "插入Session[" + paramDataLineMsgRecord.sessionid + "], groupIndex[" + paramDataLineMsgRecord.groupIndex + "], fileMsgStatus[" + paramDataLineMsgRecord.fileMsgStatus + "], time[" + paramDataLineMsgRecord.time + "], mLastArriveTime[" + this.mLastArriveTime + "]");
+          DataLineMsgRecord localDataLineMsgRecord = this.mSet[paramDataLineMsgRecord.groupIndex];
+          this.mSet[paramDataLineMsgRecord.groupIndex] = paramDataLineMsgRecord;
           paramInteger = localDataLineMsgRecord;
+          if (QLog.isColorLevel())
+          {
+            paramInteger = TAG;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("插入Session[");
+            localStringBuilder.append(paramDataLineMsgRecord.sessionid);
+            localStringBuilder.append("], groupIndex[");
+            localStringBuilder.append(paramDataLineMsgRecord.groupIndex);
+            localStringBuilder.append("], fileMsgStatus[");
+            localStringBuilder.append(paramDataLineMsgRecord.fileMsgStatus);
+            localStringBuilder.append("], time[");
+            localStringBuilder.append(paramDataLineMsgRecord.time);
+            localStringBuilder.append("], mLastArriveTime[");
+            localStringBuilder.append(this.mLastArriveTime);
+            localStringBuilder.append("]");
+            QLog.d(paramInteger, 2, localStringBuilder.toString());
+            paramInteger = localDataLineMsgRecord;
+          }
         }
       }
+      return paramInteger;
     }
+    finally {}
   }
   
   public void setPaused(boolean paramBoolean)
@@ -614,41 +625,57 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (ayzl.a() - 95L);
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
+    this.mLastArriveTime = (MessageCache.c() - 95L);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("设置timeOut, mLastArriveTime[");
+      localStringBuilder.append(this.mLastArriveTime);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
   public ArrayList<DataLineMsgRecord> values()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
-      {
-        if (this.mIsNewCome)
-        {
-          this.mIsNewCome = false;
-          this.mComeList.clear();
-          localObject1 = this.mSet;
-          int j = localObject1.length;
-          if (i < j)
-          {
-            Object localObject3 = localObject1[i];
-            if (localObject3 == null) {
-              break label73;
-            }
-            this.mComeList.add(localObject3);
-            break label73;
-          }
-        }
-        Object localObject1 = this.mComeList;
-        return localObject1;
+      if (!this.mIsNewCome) {
+        break label59;
       }
-      finally {}
-      label73:
-      i += 1;
+      i = 0;
+      this.mIsNewCome = false;
+      this.mComeList.clear();
+      localObject1 = this.mSet;
+      j = localObject1.length;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        Object localObject1;
+        int j;
+        Object localObject3;
+        for (;;)
+        {
+          label59:
+          throw localObject2;
+        }
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localObject3 = localObject1[i];
+      if (localObject3 != null) {
+        this.mComeList.add(localObject3);
+      }
+    }
+    else
+    {
+      localObject1 = this.mComeList;
+      return localObject1;
     }
   }
 }

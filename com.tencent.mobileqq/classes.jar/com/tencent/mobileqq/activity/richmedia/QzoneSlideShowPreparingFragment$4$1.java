@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajsm;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class QzoneSlideShowPreparingFragment$4$1
+class QzoneSlideShowPreparingFragment$4$1
   implements Runnable
 {
-  public QzoneSlideShowPreparingFragment$4$1(ajsm paramajsm) {}
+  QzoneSlideShowPreparingFragment$4$1(QzoneSlideShowPreparingFragment.4 param4) {}
   
   public void run()
   {
-    QzoneSlideShowPreparingFragment.a(this.a.a).setProgress(99);
-    QzoneSlideShowPreparingFragment.a(this.a.a).setText("99%");
+    QzoneSlideShowPreparingFragment.b(this.a.a).setProgress(99);
+    QzoneSlideShowPreparingFragment.c(this.a.a).setText("99%");
   }
 }
 

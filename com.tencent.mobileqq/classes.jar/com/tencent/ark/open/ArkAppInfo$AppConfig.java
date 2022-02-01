@@ -12,11 +12,10 @@ public class ArkAppInfo$AppConfig
   public int type;
   public ArkAppInfo.AppUrlWhiteList urlWhitelist;
   public long ver;
-  public ArrayList<ArkAppInfo.AppTemplateView> views;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppInfo.AppConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -35,13 +35,13 @@ public class MethodRoadie
       {
         localMethod.invoke(this.test, new Object[0]);
       }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        addFailure(localInvocationTargetException.getTargetException());
-      }
       catch (Throwable localThrowable)
       {
         addFailure(localThrowable);
+      }
+      catch (InvocationTargetException localInvocationTargetException)
+      {
+        addFailure(localInvocationTargetException.getTargetException());
       }
     }
   }
@@ -50,24 +50,31 @@ public class MethodRoadie
   {
     try
     {
-      Iterator localIterator = this.testMethod.getBefores().iterator();
-      while (localIterator.hasNext()) {
-        ((Method)localIterator.next()).invoke(this.test, new Object[0]);
+      try
+      {
+        Iterator localIterator = this.testMethod.getBefores().iterator();
+        while (localIterator.hasNext()) {
+          ((Method)localIterator.next()).invoke(this.test, new Object[0]);
+        }
+        return;
       }
-      return;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      throw localInvocationTargetException.getTargetException();
+      catch (Throwable localThrowable) {}catch (InvocationTargetException localInvocationTargetException)
+      {
+        throw localInvocationTargetException.getTargetException();
+      }
+      addFailure(localInvocationTargetException);
+      throw new FailedBefore();
     }
     catch (AssumptionViolatedException localAssumptionViolatedException)
     {
-      throw new FailedBefore();
+      label70:
+      FailedBefore localFailedBefore;
+      break label70;
     }
-    catch (Throwable localThrowable)
+    localFailedBefore = new FailedBefore();
+    for (;;)
     {
-      addFailure(localThrowable);
-      throw new FailedBefore();
+      throw localFailedBefore;
     }
   }
   
@@ -81,81 +88,59 @@ public class MethodRoadie
     this.notifier.fireTestFailure(new Failure(this.description, paramThrowable));
   }
   
-  /* Error */
   public void run()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 26	org/junit/internal/runners/MethodRoadie:testMethod	Lorg/junit/internal/runners/TestMethod;
-    //   4: invokevirtual 103	org/junit/internal/runners/TestMethod:isIgnored	()Z
-    //   7: ifeq +15 -> 22
-    //   10: aload_0
-    //   11: getfield 22	org/junit/internal/runners/MethodRoadie:notifier	Lorg/junit/runner/notification/RunNotifier;
-    //   14: aload_0
-    //   15: getfield 24	org/junit/internal/runners/MethodRoadie:description	Lorg/junit/runner/Description;
-    //   18: invokevirtual 107	org/junit/runner/notification/RunNotifier:fireTestIgnored	(Lorg/junit/runner/Description;)V
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 22	org/junit/internal/runners/MethodRoadie:notifier	Lorg/junit/runner/notification/RunNotifier;
-    //   26: aload_0
-    //   27: getfield 24	org/junit/internal/runners/MethodRoadie:description	Lorg/junit/runner/Description;
-    //   30: invokevirtual 110	org/junit/runner/notification/RunNotifier:fireTestStarted	(Lorg/junit/runner/Description;)V
-    //   33: aload_0
-    //   34: getfield 26	org/junit/internal/runners/MethodRoadie:testMethod	Lorg/junit/internal/runners/TestMethod;
-    //   37: invokevirtual 114	org/junit/internal/runners/TestMethod:getTimeout	()J
-    //   40: lstore_1
-    //   41: lload_1
-    //   42: lconst_0
-    //   43: lcmp
-    //   44: ifle +20 -> 64
-    //   47: aload_0
-    //   48: lload_1
-    //   49: invokespecial 116	org/junit/internal/runners/MethodRoadie:runWithTimeout	(J)V
-    //   52: aload_0
-    //   53: getfield 22	org/junit/internal/runners/MethodRoadie:notifier	Lorg/junit/runner/notification/RunNotifier;
-    //   56: aload_0
-    //   57: getfield 24	org/junit/internal/runners/MethodRoadie:description	Lorg/junit/runner/Description;
-    //   60: invokevirtual 119	org/junit/runner/notification/RunNotifier:fireTestFinished	(Lorg/junit/runner/Description;)V
-    //   63: return
-    //   64: aload_0
-    //   65: invokevirtual 122	org/junit/internal/runners/MethodRoadie:runTest	()V
-    //   68: goto -16 -> 52
-    //   71: astore_3
-    //   72: aload_0
-    //   73: getfield 22	org/junit/internal/runners/MethodRoadie:notifier	Lorg/junit/runner/notification/RunNotifier;
-    //   76: aload_0
-    //   77: getfield 24	org/junit/internal/runners/MethodRoadie:description	Lorg/junit/runner/Description;
-    //   80: invokevirtual 119	org/junit/runner/notification/RunNotifier:fireTestFinished	(Lorg/junit/runner/Description;)V
-    //   83: aload_3
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	MethodRoadie
-    //   40	9	1	l	long
-    //   71	13	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   33	41	71	finally
-    //   47	52	71	finally
-    //   64	68	71	finally
+    if (this.testMethod.isIgnored())
+    {
+      this.notifier.fireTestIgnored(this.description);
+      return;
+    }
+    this.notifier.fireTestStarted(this.description);
+    try
+    {
+      long l = this.testMethod.getTimeout();
+      if (l > 0L) {
+        runWithTimeout(l);
+      } else {
+        runTest();
+      }
+      return;
+    }
+    finally
+    {
+      this.notifier.fireTestFinished(this.description);
+    }
   }
   
   public void runBeforesThenTestThenAfters(Runnable paramRunnable)
   {
     try
     {
-      runBefores();
-      paramRunnable.run();
-      return;
+      try
+      {
+        runBefores();
+        paramRunnable.run();
+      }
+      finally
+      {
+        break label27;
+      }
     }
-    catch (FailedBefore paramRunnable) {}catch (Exception paramRunnable)
+    catch (FailedBefore paramRunnable)
     {
-      throw new RuntimeException("test should never throw an exception to this level");
+      break label33;
     }
-    finally
+    catch (Exception paramRunnable)
     {
-      runAfters();
+      label17:
+      label27:
+      label33:
+      break label17;
     }
+    throw new RuntimeException("test should never throw an exception to this level");
+    runAfters();
+    throw paramRunnable;
+    runAfters();
   }
   
   public void runTest()
@@ -168,38 +153,47 @@ public class MethodRoadie
     try
     {
       this.testMethod.invoke(this.test);
-      if (this.testMethod.expectsException()) {
-        addFailure(new AssertionError("Expected exception: " + this.testMethod.getExpectedException().getName()));
+      if (this.testMethod.expectsException())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("Expected exception: ");
+        localStringBuilder1.append(this.testMethod.getExpectedException().getName());
+        addFailure(new AssertionError(localStringBuilder1.toString()));
+        return;
       }
+    }
+    catch (Throwable localThrowable1)
+    {
+      addFailure(localThrowable1);
       return;
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
-      Throwable localThrowable1;
-      do
+      Throwable localThrowable2 = localInvocationTargetException.getTargetException();
+      if ((localThrowable2 instanceof AssumptionViolatedException)) {
+        return;
+      }
+      if (!this.testMethod.expectsException())
       {
-        do
-        {
-          localThrowable1 = localInvocationTargetException.getTargetException();
-        } while ((localThrowable1 instanceof AssumptionViolatedException));
-        if (!this.testMethod.expectsException())
-        {
-          addFailure(localThrowable1);
-          return;
-        }
-      } while (!this.testMethod.isUnexpected(localThrowable1));
-      addFailure(new Exception("Unexpected exception, expected<" + this.testMethod.getExpectedException().getName() + "> but was<" + localThrowable1.getClass().getName() + ">", localThrowable1));
-      return;
-    }
-    catch (Throwable localThrowable2)
-    {
-      addFailure(localThrowable2);
+        addFailure(localThrowable2);
+        return;
+      }
+      if (this.testMethod.isUnexpected(localThrowable2))
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("Unexpected exception, expected<");
+        localStringBuilder2.append(this.testMethod.getExpectedException().getName());
+        localStringBuilder2.append("> but was<");
+        localStringBuilder2.append(localThrowable2.getClass().getName());
+        localStringBuilder2.append(">");
+        addFailure(new Exception(localStringBuilder2.toString(), localThrowable2));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.MethodRoadie
  * JD-Core Version:    0.7.0.1
  */

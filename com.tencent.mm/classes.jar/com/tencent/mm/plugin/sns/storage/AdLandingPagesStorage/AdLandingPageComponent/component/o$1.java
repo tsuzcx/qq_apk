@@ -1,36 +1,29 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class o$1
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  o$1(o paramo, o.a parama) {}
+  o$1(o paramo) {}
   
-  public final void onPageScrollStateChanged(int paramInt) {}
-  
-  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public final void onPageSelected(int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(37163);
-    ab.i("MicroMsg.Sns.AdLandingPageGroupListComponent", "onPageSelected %d", new Object[] { Integer.valueOf(paramInt) });
-    this.rwp.rwl.setPage(paramInt);
-    o.a(this.rwp, paramInt);
-    if (this.rwp.rvh)
-    {
-      this.rwo.Ec(paramInt);
-      this.rwo.Ed(paramInt);
-    }
-    AppMethodBeat.o(37163);
+    AppMethodBeat.i(96478);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.QPf.QOZ.cancel();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPageBottomSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(96478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.o.1
  * JD-Core Version:    0.7.0.1
  */

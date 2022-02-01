@@ -9,7 +9,7 @@ import com.google.android.gms.common.api.Result;
 public abstract interface WorkAccountApi
 {
   @Deprecated
-  public abstract PendingResult<WorkAccountApi.AddAccountResult> addWorkAccount(GoogleApiClient paramGoogleApiClient, String paramString);
+  public abstract PendingResult<AddAccountResult> addWorkAccount(GoogleApiClient paramGoogleApiClient, String paramString);
   
   @Deprecated
   public abstract PendingResult<Result> removeWorkAccount(GoogleApiClient paramGoogleApiClient, Account paramAccount);
@@ -19,10 +19,17 @@ public abstract interface WorkAccountApi
   
   @Deprecated
   public abstract PendingResult<Result> setWorkAuthenticatorEnabledWithResult(GoogleApiClient paramGoogleApiClient, boolean paramBoolean);
+  
+  @Deprecated
+  public static abstract interface AddAccountResult
+    extends Result
+  {
+    public abstract Account getAccount();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.account.WorkAccountApi
  * JD-Core Version:    0.7.0.1
  */

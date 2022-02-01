@@ -1,42 +1,25 @@
-import com.tencent.mobileqq.app.NearHornHandler;
-import com.tencent.mobileqq.data.HornDetail;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
 
 public class feg
   implements Runnable
 {
-  public feg(NearHornHandler paramNearHornHandler, String paramString) {}
+  public feg(NewFriendManager paramNewFriendManager) {}
   
   public void run()
   {
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = (List)this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.b);
-      localObject1 = localObject2;
+    QQAppInterface localQQAppInterface = this.a.a;
+    if ((localQQAppInterface == null) || (this.a.a.getManager(10) == null)) {
+      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        localException.printStackTrace();
-      }
-    }
-    if ((localObject1 != null) && (localObject1.size() > 0))
-    {
-      localObject2 = localObject1.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        HornDetail localHornDetail = (HornDetail)((Iterator)localObject2).next();
-        if (localHornDetail.hornKey.equals(this.jdField_a_of_type_JavaLangString)) {
-          localObject1.remove(localHornDetail);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c = localObject1;
-      NearHornHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.c, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.b);
-    }
+    ((PhoneContactManagerImp)localQQAppInterface.getManager(10)).l();
+    localQQAppInterface.a().a().b();
+    FriendSystemMsgController.a().a(this.a.a, 0);
+    FriendSystemMsgController.a().c(this.a.a);
   }
 }
 

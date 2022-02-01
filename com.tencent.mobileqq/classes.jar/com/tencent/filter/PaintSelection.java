@@ -30,9 +30,10 @@ public class PaintSelection
   
   private void checkavailable()
   {
-    if (!this.available) {
-      throw new RuntimeException("use bad addr");
+    if (this.available) {
+      return;
     }
+    throw new RuntimeException("use bad addr");
   }
   
   private native void nativeAddRound(long paramLong, int paramInt1, int paramInt2, double paramDouble);
@@ -183,7 +184,7 @@ public class PaintSelection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.PaintSelection
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<host-apdu-service android:description="@string/sg" android:requireDeviceUnlock="true" android:apduServiceBanner="@drawable/icon"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <aid-group android:description="@string/sg" android:category="payment">
-        <aid-filter android:name="F123456789" />
-    </aid-group>
-</host-apdu-service>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <IconPreference android:key="settings_follow" android:layout="@layout/bdi" android:title="@string/d_k" />
+    <IconPreference android:key="settings_liked" android:layout="@layout/bdi" android:title="@string/eea" />
+    <IconPreference android:key="settings_collected" android:layout="@layout/bdi" android:title="@string/d8a" />
+    <IconPreference android:key="settings_mention" android:layout="@layout/bdi" android:title="@string/eob" />
+    <IconPreference android:key="settings_privacy_msg" android:layout="@layout/bdi" android:title="@string/ec1" />
+</PreferenceScreen>

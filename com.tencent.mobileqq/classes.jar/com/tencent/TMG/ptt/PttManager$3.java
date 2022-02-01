@@ -7,23 +7,20 @@ class PttManager$3
   
   public void onCompleted(int paramInt, String paramString, TokenFetcher.Voice2TextInfo paramVoice2TextInfo)
   {
-    Object localObject = null;
-    paramString = localObject;
-    if (paramInt == 0)
-    {
-      paramString = localObject;
-      if (paramVoice2TextInfo != null) {
-        paramString = paramVoice2TextInfo.text;
-      }
+    if ((paramInt == 0) && (paramVoice2TextInfo != null)) {
+      paramString = paramVoice2TextInfo.text;
+    } else {
+      paramString = null;
     }
-    if (this.val$listener != null) {
-      this.val$listener.onCompleted(paramInt, this.val$voiceUrl, paramString);
+    paramVoice2TextInfo = this.val$listener;
+    if (paramVoice2TextInfo != null) {
+      paramVoice2TextInfo.onCompleted(paramInt, this.val$voiceUrl, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.ptt.PttManager.3
  * JD-Core Version:    0.7.0.1
  */

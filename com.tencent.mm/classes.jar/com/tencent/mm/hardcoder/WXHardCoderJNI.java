@@ -4,19 +4,29 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Process;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class WXHardCoderJNI
-  extends i
+  extends g
 {
   public static final Map<Integer, Integer> APP_SCENE_ID_MAP;
+  public static final int FUNC_GET_PARAMETERS = 1019;
+  public static final int GETPARAMETERS_TYPE_BASE = 0;
+  public static final int GETPARAMETERS_TYPE_CAMERA_VENDOR_TAG = 2;
+  public static final int GETPARAMETERS_TYPE_CODECDESP = 3;
+  public static final int GETPARAMETERS_TYPE_MEDIA_CODEC_B_FRAME = 4;
+  public static final int GETPARAMETERS_TYPE_QP_MEDIACODEC = 1;
   public static final boolean HC_ENABLE_FOR_TEST = false;
   public static final String KEY_HC_BEGIN_TIME_HOUR = "KEY_HC_BEGIN_TIME_HOUR";
   public static final String KEY_HC_BEGIN_TIME_MIN = "KEY_HC_BEGIN_TIME_MIN";
@@ -35,10 +45,19 @@ public class WXHardCoderJNI
   public static final String SETTING_SP_FILE = "hardcoder_setting";
   public static final String SETTING_UI_ACTION = "com.tencent.mm.action.HARDCODER_SETTING";
   public static final boolean SETTING_UI_ENABLE = false;
+  public static final int SYSTEM_EVENT_BASE = 0;
+  public static final int SYSTEM_EVENT_BLUETOOTH_ACCEPTCALL = 3;
+  public static final int SYSTEM_EVENT_BLUETOOTH_HANGUPCALL = 4;
+  public static final String SYSTEM_EVENT_CODE = "system_event_code";
+  public static final int SYSTEM_EVENT_SLIDE_CLOSE = 2;
+  public static final int SYSTEM_EVENT_SLIDE_OPEN = 1;
+  public static final boolean S_HCDEBUG = false;
   private static final String TAG = "MicroMsg.WXHardCoderJNI";
   public static HashMap<Long, String> flagKeyMap;
   public static boolean foreground = false;
-  private static j.a hardCoderReporterInfo;
+  private static c.b funcRet;
+  private static WXHardCoderJNI.GetParametersCallback getParametersCallback;
+  private static h.a hardCoderReporterInfo;
   public static int hcBeginTimeHour = 0;
   public static int hcBeginTimeMin = 0;
   public static boolean hcBgEnable = false;
@@ -64,12 +83,13 @@ public class WXHardCoderJNI
   public static final int sRETRYINTERVAL = 30;
   private static volatile Class<?> sSystemPropertiesClazz;
   public static final int sTIMEOUTMARGIN = 0;
-  private static HardCoderJNI.SceneReportCallback sceneReportCallback;
-  private static c.a wxHardCoderLog;
+  private static c.d sceneReportCallback;
+  private static WXHardCoderJNI.SystemEventCallback systemEventCallback;
+  private static d.a wxHardCoderLog;
   
   static
   {
-    AppMethodBeat.i(93146);
+    AppMethodBeat.i(155976);
     hardCoderReporterInfo = null;
     needMapAPPScene = false;
     SCENE_ID_MAP = new HashMap();
@@ -92,94 +112,97 @@ public class WXHardCoderJNI
     hcEndTimeMin = 0;
     sSystemPropertiesClazz = null;
     sGetStringPropsMethod = null;
-    wxHardCoderLog = new c.a()
-    {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(93119);
-        ab.d(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(93119);
-      }
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(93120);
-        ab.e(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(93120);
-      }
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(93118);
-        ab.i(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(93118);
-      }
-      
-      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(93121);
-        ab.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(93121);
-      }
-    };
-    sceneReportCallback = new HardCoderJNI.SceneReportCallback()
-    {
-      public final void sceneReport(int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(93123);
-        if (WXHardCoderJNI.needMapAPPScene)
-        {
-          AppMethodBeat.o(93123);
-          return;
-        }
-        Integer localInteger = (Integer)WXHardCoderJNI.SCENE_ID_MAP.get(Integer.valueOf(paramAnonymousInt));
-        if (localInteger == null)
-        {
-          AppMethodBeat.o(93123);
-          return;
-        }
-        WXHardCoderJNI.access$100(new l(localInteger.intValue()));
-        AppMethodBeat.o(93123);
-      }
-    };
-    AppMethodBeat.o(93146);
+    wxHardCoderLog = new WXHardCoderJNI.1();
+    sceneReportCallback = new WXHardCoderJNI.3();
+    funcRet = new WXHardCoderJNI.4();
+    AppMethodBeat.o(155976);
   }
   
   private static boolean checkHardCoderEnv()
   {
-    AppMethodBeat.i(93138);
+    AppMethodBeat.i(155965);
     String str1 = Build.MANUFACTURER;
-    String str2 = Build.MODEL;
+    String str2 = q.aPo();
     String str3 = readServerAddr(false);
-    ab.i("MicroMsg.WXHardCoderJNI", "checkHardCoderEnv manufacture[%s], model[%s], remote[%s]", new Object[] { str1, str2, str3 });
-    if (!bo.isNullOrNil(str3))
+    Log.i("MicroMsg.WXHardCoderJNI", "checkHardCoderEnv manufacture[%s], model[%s], remote[%s]", new Object[] { str1, str2, str3 });
+    if (!Util.isNullOrNil(str3))
     {
-      AppMethodBeat.o(93138);
+      AppMethodBeat.o(155965);
       return true;
     }
-    AppMethodBeat.o(93138);
+    AppMethodBeat.o(155965);
     return false;
   }
   
   public static boolean getDebug()
   {
-    AppMethodBeat.i(93125);
+    AppMethodBeat.i(155952);
     boolean bool = HardCoderJNI.isHcDebug();
-    AppMethodBeat.o(93125);
+    AppMethodBeat.o(155952);
     return bool;
   }
   
   public static boolean getEnable()
   {
-    AppMethodBeat.i(93126);
+    AppMethodBeat.i(155953);
     boolean bool = HardCoderJNI.isHcEnable();
-    AppMethodBeat.o(93126);
+    AppMethodBeat.o(155953);
     return bool;
   }
   
-  public static int initHardCoder(e.a parama, j.a parama1)
+  public static long getParameters(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(93137);
+    AppMethodBeat.i(155973);
+    paramJSONObject = paramJSONObject.toString();
+    getParametersCallback = paramGetParametersCallback;
+    long l = HardCoderJNI.getParameters(paramJSONObject.getBytes(), Process.myTid(), SystemClock.elapsedRealtimeNanos());
+    HardCoderJNI.putFuncRetHashMap(l, funcRet);
+    Log.i("MicroMsg.WXHardCoderJNI", "getParameters type:" + paramInt + ", len: " + paramJSONObject.length());
+    try
+    {
+      Thread.sleep(20L);
+      label77:
+      AppMethodBeat.o(155973);
+      return l;
+    }
+    catch (InterruptedException paramGetParametersCallback)
+    {
+      break label77;
+    }
+  }
+  
+  public static long getParameters(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
+  {
+    AppMethodBeat.i(155972);
+    long l1 = -1L;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("getparameterstype", paramInt);
+      JSONArray localJSONArray = new JSONArray();
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
+      {
+        localJSONArray.put(paramVarArgs[i]);
+        i += 1;
+      }
+      localJSONObject.put("getparameterskeys", localJSONArray);
+      long l2 = getParameters(paramInt, paramGetParametersCallback, localJSONObject);
+      l1 = l2;
+    }
+    catch (JSONException paramGetParametersCallback)
+    {
+      label91:
+      break label91;
+    }
+    AppMethodBeat.o(155972);
+    return l1;
+  }
+  
+  public static int initHardCoder(e.a parama, h.a parama1, c.a parama2)
+  {
+    AppMethodBeat.i(155964);
     HardCoderJNI.setHcEnable(isHCEnable());
     String str = readServerAddr(false);
     if ((str == null) || (str.isEmpty()))
@@ -188,9 +211,9 @@ public class WXHardCoderJNI
       if (str == null) {
         parama = "null";
       }
-      ab.w("MicroMsg.WXHardCoderJNI", "initHardCoder serverSock is null or empty, skip init and reguard as disabled, serverSock:%s.", new Object[] { parama });
+      Log.w("MicroMsg.WXHardCoderJNI", "initHardCoder serverSock is null or empty, skip init and reguard as disabled, serverSock:%s.", new Object[] { parama });
       HardCoderJNI.setCheckEnv(false);
-      AppMethodBeat.o(93137);
+      AppMethodBeat.o(155964);
       return -3;
     }
     if ((str != null) && (str.contains("|"))) {
@@ -198,26 +221,17 @@ public class WXHardCoderJNI
     }
     e.a(parama);
     hardCoderReporterInfo = parama1;
-    c.a(wxHardCoderLog);
+    d.a(wxHardCoderLog);
     HardCoderJNI.setSceneReportCallback(sceneReportCallback);
-    ab.i("MicroMsg.WXHardCoderJNI", "initHardCoder hcDebug[%b] hcEnable[%b] checkEnv[%b] TICK_RATE[%d]", new Object[] { Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Integer.valueOf(HardCoderJNI.tickRate) });
-    int i = HardCoderJNI.initHardCoder(str, 0, ah.getPackageName() + ".hardcoder.client.sock", new HardCoderJNI.HCPerfManagerThread()
-    {
-      public final Thread newThread(Runnable paramAnonymousRunnable, String paramAnonymousString, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(93122);
-        paramAnonymousRunnable = d.a(paramAnonymousRunnable, paramAnonymousString, paramAnonymousInt);
-        AppMethodBeat.o(93122);
-        return paramAnonymousRunnable;
-      }
-    }, ah.getContext());
-    AppMethodBeat.o(93137);
+    Log.i("MicroMsg.WXHardCoderJNI", "initHardCoder hcDebug[%b] hcEnable[%b] checkEnv[%b] TICK_RATE[%d]", new Object[] { Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Integer.valueOf(HardCoderJNI.tickRate) });
+    int i = HardCoderJNI.initHardCoder(str, 0, MMApplicationContext.getPackageName() + ".hardcoder.client.sock", new WXHardCoderJNI.2(), parama2);
+    AppMethodBeat.o(155964);
     return i;
   }
   
   private static void initSceneAndFlagMap()
   {
-    AppMethodBeat.i(93144);
+    AppMethodBeat.i(155970);
     SCENE_ID_MAP.clear();
     APP_SCENE_ID_MAP.clear();
     SCENE_ID_MAP.put(Integer.valueOf(101), Integer.valueOf(1));
@@ -282,31 +296,31 @@ public class WXHardCoderJNI
     flagKeyMap.put(Long.valueOf(65536L), "KEY_HC_SNS_USER_SCROLL_ENABLE");
     flagKeyMap.put(Long.valueOf(131072L), "KEY_HC_SNS_MSG_SCROLL_ENABLE");
     flagKeyMap.put(Long.valueOf(262144L), "KEY_HC_MINI_PROGRAM_LAUNCH_ENABLE");
-    AppMethodBeat.o(93144);
+    AppMethodBeat.o(155970);
   }
   
   public static boolean isCheckEnv()
   {
-    AppMethodBeat.i(93124);
+    AppMethodBeat.i(155951);
     boolean bool = HardCoderJNI.isCheckEnv();
-    AppMethodBeat.o(93124);
+    AppMethodBeat.o(155951);
     return bool;
   }
   
   public static boolean isHCEnable()
   {
-    AppMethodBeat.i(93136);
+    AppMethodBeat.i(155963);
     boolean bool1 = isCheckEnv();
     boolean bool2 = getEnable();
-    AppMethodBeat.o(93136);
+    AppMethodBeat.o(155963);
     return bool1 & bool2;
   }
   
   public static int isRunning()
   {
-    AppMethodBeat.i(93131);
+    AppMethodBeat.i(155958);
     int i = HardCoderJNI.isRunning();
-    AppMethodBeat.o(93131);
+    AppMethodBeat.o(155958);
     return i;
   }
   
@@ -316,7 +330,7 @@ public class WXHardCoderJNI
     {
       try
       {
-        AppMethodBeat.i(93135);
+        AppMethodBeat.i(155962);
         try
         {
           if (sSystemPropertiesClazz == null)
@@ -328,81 +342,101 @@ public class WXHardCoderJNI
             ((Method)localObject1).setAccessible(true);
           }
           localObject1 = (String)sGetStringPropsMethod.invoke(null, new Object[] { "persist.sys.hardcoder.name", "" });
-          ab.i("MicroMsg.WXHardCoderJNI", "readServerAddr, serverprop[%s], result[%s], stack[%s]", new Object[] { "persist.sys.hardcoder.name", localObject1, bo.dtY() });
+          Log.i("MicroMsg.WXHardCoderJNI", "readServerAddr, serverprop[%s], result[%s], stack[%s]", new Object[] { "persist.sys.hardcoder.name", localObject1, Util.getStack() });
           if (paramBoolean)
           {
-            if (!bo.isNullOrNil((String)localObject1)) {
+            if (!Util.isNullOrNil((String)localObject1)) {
               continue;
             }
-            reportInfo(new l(true, 1, 1, false));
+            reportInfo(new j(true, 1, 1, false));
           }
-          AppMethodBeat.o(93135);
+          AppMethodBeat.o(155962);
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Object localObject1;
-          ab.printErrStackTrace("MicroMsg.WXHardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.WXHardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
           if (!paramBoolean) {
             continue;
           }
-          reportInfo(new l(true, 3, 1, false));
+          reportInfo(new j(true, 3, 1, false));
           String str = "";
-          AppMethodBeat.o(93135);
+          AppMethodBeat.o(155962);
           continue;
         }
         return localObject1;
       }
       finally {}
-      reportInfo(new l(true, 2, 1, false));
-      reportInfo(new m());
+      reportInfo(new j(true, 2, 1, false));
+      reportInfo(new k());
     }
   }
   
-  public static int registerANRCallback(HardCoderJNI.AnrCallback paramAnrCallback)
+  public static long registerANRCallback(HardCoderJNI.AnrCallback paramAnrCallback)
   {
-    AppMethodBeat.i(93139);
+    AppMethodBeat.i(155966);
     if (!HardCoderJNI.isCheckEnv())
     {
-      AppMethodBeat.o(93139);
-      return -2;
+      AppMethodBeat.o(155966);
+      return -2L;
     }
-    int i = HardCoderJNI.registerANRCallback(paramAnrCallback);
-    AppMethodBeat.o(93139);
-    return i;
+    long l = HardCoderJNI.registerANRCallback(paramAnrCallback);
+    AppMethodBeat.o(155966);
+    return l;
   }
   
-  public static int registerSystemEventCallback(HardCoderJNI.SystemEventCallback paramSystemEventCallback)
+  public static int registerGetParametersCallback(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
   {
-    AppMethodBeat.i(93140);
+    AppMethodBeat.i(155971);
     if (!HardCoderJNI.isCheckEnv())
     {
-      AppMethodBeat.o(93140);
+      AppMethodBeat.o(155971);
       return -2;
     }
-    ab.i("MicroMsg.WXHardCoderJNI", "registerSystemEventCallback, stack[%s]", new Object[] { bo.dtY() });
-    int i = HardCoderJNI.registerSystemEventCallback(paramSystemEventCallback);
-    AppMethodBeat.o(93140);
-    return i;
+    if (paramGetParametersCallback == null) {}
+    for (Object localObject = "null";; localObject = paramGetParametersCallback)
+    {
+      Log.i("MicroMsg.WXHardCoderJNI", "registerGetParametersCallback, type:%d, callback:%s, stack[%s]", new Object[] { Integer.valueOf(paramInt), localObject, Util.getStack() });
+      getParameters(paramInt, paramGetParametersCallback, paramVarArgs);
+      AppMethodBeat.o(155971);
+      return 0;
+    }
+  }
+  
+  public static long registerSystemEventCallback(WXHardCoderJNI.SystemEventCallback paramSystemEventCallback)
+  {
+    AppMethodBeat.i(155974);
+    if (!HardCoderJNI.isCheckEnv())
+    {
+      AppMethodBeat.o(155974);
+      return -2L;
+    }
+    Log.i("MicroMsg.WXHardCoderJNI", "registerSystemEventCallback, stack[%s]", new Object[] { Util.getStack() });
+    systemEventCallback = paramSystemEventCallback;
+    long l = HardCoderJNI.registerSystemEventCallback(Process.myTid(), SystemClock.elapsedRealtime());
+    HardCoderJNI.putFuncRetHashMap(l, funcRet);
+    AppMethodBeat.o(155974);
+    return l;
   }
   
   public static void reloadSPConfig(int paramInt)
   {
-    AppMethodBeat.i(93134);
+    AppMethodBeat.i(155961);
     boolean bool = checkHardCoderEnv();
     HardCoderJNI.setCheckEnv(bool);
     if (!bool)
     {
-      ab.e("MicroMsg.WXHardCoderJNI", "reloadSPConfig hcEnv is false.");
-      AppMethodBeat.o(93134);
+      Log.e("MicroMsg.WXHardCoderJNI", "reloadSPConfig hcEnv is false.");
+      AppMethodBeat.o(155961);
       return;
     }
     setDebug(false);
-    SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("hardcoder_setting", 0);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("hardcoder_setting", 0);
     HardCoderJNI.setHcEnable(localSharedPreferences.getBoolean("KEY_HC_ENABLE", true));
     hcBgEnable = localSharedPreferences.getBoolean("KEY_HC_BG_ENABLE", true);
     hcUinHash = localSharedPreferences.getInt("KEY_HC_UIN_HASH", 0);
     HardCoderJNI.setHcDebug(localSharedPreferences.getBoolean("KEY_HC_DEBUG", false));
-    ab.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig scene:%d, hcDebug:%b, hcEnable:%b, hcUinHash:%d, checkEnv:%b, stack[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Integer.valueOf(hcUinHash), Boolean.valueOf(HardCoderJNI.isCheckEnv()), bo.dtY() });
+    Log.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig scene:%d, hcDebug:%b, hcEnable:%b, hcUinHash:%d, checkEnv:%b, stack[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Integer.valueOf(hcUinHash), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Util.getStack() });
     hcRetryInterval = localSharedPreferences.getInt("KEY_HC_RETRY_INTERVAL", 30);
     if (localSharedPreferences.getInt("KEY_HC_KV_PER", 0) < hcUinHash)
     {
@@ -552,8 +586,8 @@ public class WXHardCoderJNI
       hcMiniProgramLaunchThr = localSharedPreferences.getBoolean("KEY_HC_MINI_PROGRAM_LAUNCH_THR", false);
       hcMiniProgramLaunchTimeout = localSharedPreferences.getInt("KEY_HC_MINI_PROGRAM_LAUNCH_TIMEOUT", 5000);
       hcMiniProgramLaunchAction = localSharedPreferences.getLong("KEY_HC_MINI_PROGRAM_LAUNCH_ACTION", 114688L);
-      ab.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig Boot[%b] EnterChatting[%b] QuitChatting[%b] SendMsg[%b] SendPicMsg[%b] ReceiveMsg[%b] UpdateChatroom[%b] DB[%b] EncodeVideo[%b] DecodePic[%b] Gif[%b] GifFrame[%b] SNS[%b] MediaGallery[%b] Album[%b] SNSUser[%b] SNSMsg[%b] MiniProgramLaunch[%b]", new Object[] { Boolean.valueOf(hcBootEnable), Boolean.valueOf(hcEnterChattingEnable), Boolean.valueOf(hcQuitChattingEnable), Boolean.valueOf(hcSendMsgEnable), Boolean.valueOf(hcSendPicMsgEnable), Boolean.valueOf(hcReceiveMsgEnable), Boolean.valueOf(hcUpdateChatroomEnable), Boolean.valueOf(hcDBEnable), Boolean.valueOf(hcEncodeVideoEnable), Boolean.valueOf(hcDecodePicEnable), Boolean.valueOf(hcGifEnable), Boolean.valueOf(hcGifFrameEnable), Boolean.valueOf(hcSNSScrollEnable), Boolean.valueOf(hcMediaGalleryScrollEnable), Boolean.valueOf(hcAlbumScrollEnable), Boolean.valueOf(hcSNSUserScrollEnable), Boolean.valueOf(hcSNSMsgScrollEnable), Boolean.valueOf(hcMiniProgramLaunchEnable) });
-      AppMethodBeat.o(93134);
+      Log.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig Boot[%b] EnterChatting[%b] QuitChatting[%b] SendMsg[%b] SendPicMsg[%b] ReceiveMsg[%b] UpdateChatroom[%b] DB[%b] EncodeVideo[%b] DecodePic[%b] Gif[%b] GifFrame[%b] SNS[%b] MediaGallery[%b] Album[%b] SNSUser[%b] SNSMsg[%b] MiniProgramLaunch[%b]", new Object[] { Boolean.valueOf(hcBootEnable), Boolean.valueOf(hcEnterChattingEnable), Boolean.valueOf(hcQuitChattingEnable), Boolean.valueOf(hcSendMsgEnable), Boolean.valueOf(hcSendPicMsgEnable), Boolean.valueOf(hcReceiveMsgEnable), Boolean.valueOf(hcUpdateChatroomEnable), Boolean.valueOf(hcDBEnable), Boolean.valueOf(hcEncodeVideoEnable), Boolean.valueOf(hcDecodePicEnable), Boolean.valueOf(hcGifEnable), Boolean.valueOf(hcGifFrameEnable), Boolean.valueOf(hcSNSScrollEnable), Boolean.valueOf(hcMediaGalleryScrollEnable), Boolean.valueOf(hcAlbumScrollEnable), Boolean.valueOf(hcSNSUserScrollEnable), Boolean.valueOf(hcSNSMsgScrollEnable), Boolean.valueOf(hcMiniProgramLaunchEnable) });
+      AppMethodBeat.o(155961);
       return;
       bool = false;
       break;
@@ -562,59 +596,59 @@ public class WXHardCoderJNI
   
   public static void reportFPS(int paramInt1, long paramLong1, int paramInt2, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(93142);
-    reportInfo(new k(paramInt1, paramLong1, paramInt2, paramLong2, paramLong3));
-    AppMethodBeat.o(93142);
+    AppMethodBeat.i(155968);
+    reportInfo(new i(paramInt1, paramLong1, paramInt2, paramLong2, paramLong3));
+    AppMethodBeat.o(155968);
   }
   
   public static void reportIDKey(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
   {
-    AppMethodBeat.i(93141);
-    reportInfo(new l(paramBoolean1, paramInt1, paramInt2, paramBoolean2));
-    AppMethodBeat.o(93141);
+    AppMethodBeat.i(155967);
+    reportInfo(new j(paramBoolean1, paramInt1, paramInt2, paramBoolean2));
+    AppMethodBeat.o(155967);
   }
   
-  private static void reportInfo(j paramj)
+  private static void reportInfo(h paramh)
   {
-    AppMethodBeat.i(93143);
+    AppMethodBeat.i(155969);
     if (hardCoderReporterInfo != null) {
-      hardCoderReporterInfo.reportInfo(paramj);
+      hardCoderReporterInfo.reportInfo(paramh);
     }
-    AppMethodBeat.o(93143);
+    AppMethodBeat.o(155969);
   }
   
   public static void setDebug(boolean paramBoolean)
   {
-    AppMethodBeat.i(93128);
+    AppMethodBeat.i(155955);
     HardCoderJNI.setHcDebug(paramBoolean);
-    AppMethodBeat.o(93128);
+    AppMethodBeat.o(155955);
   }
   
   public static void setHcEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(93127);
+    AppMethodBeat.i(155954);
     HardCoderJNI.setHcEnable(paramBoolean);
-    AppMethodBeat.o(93127);
+    AppMethodBeat.o(155954);
   }
   
   public static void setRetryConnectInterval(int paramInt)
   {
-    AppMethodBeat.i(93130);
+    AppMethodBeat.i(155957);
     HardCoderJNI.setRetryConnectInterval(paramInt);
-    AppMethodBeat.o(93130);
+    AppMethodBeat.o(155957);
   }
   
   public static int startPerformance(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, String paramString)
   {
-    AppMethodBeat.i(93132);
+    AppMethodBeat.i(155959);
     if (!paramBoolean)
     {
-      AppMethodBeat.o(93132);
+      AppMethodBeat.o(155959);
       return -3;
     }
     if ((!hcBgEnable) && (!foreground))
     {
-      AppMethodBeat.o(93132);
+      AppMethodBeat.o(155959);
       return -4;
     }
     if (needMapAPPScene)
@@ -627,35 +661,35 @@ public class WXHardCoderJNI
     for (;;)
     {
       paramInt1 = HardCoderJNI.startPerformance(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5 + hcTimeoutMargin, paramInt6, paramLong, Process.myTid(), paramString);
-      AppMethodBeat.o(93132);
+      AppMethodBeat.o(155959);
       return paramInt1;
     }
   }
   
   public static int stopPerformance(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(93133);
+    AppMethodBeat.i(155960);
     if (!paramBoolean)
     {
-      AppMethodBeat.o(93133);
+      AppMethodBeat.o(155960);
       return -3;
     }
     paramInt = HardCoderJNI.stopPerformance(paramInt);
-    AppMethodBeat.o(93133);
+    AppMethodBeat.o(155960);
     return paramInt;
   }
   
-  public static int terminateApp(int paramInt, long paramLong)
+  public static long terminateApp(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(93129);
-    paramInt = HardCoderJNI.terminateApp(paramInt, paramLong);
-    AppMethodBeat.o(93129);
-    return paramInt;
+    AppMethodBeat.i(155956);
+    paramLong = HardCoderJNI.terminateApp(paramInt, paramLong);
+    AppMethodBeat.o(155956);
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.hardcoder.WXHardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -51,15 +51,24 @@ public class VideoInfo
   
   public static void validate(VideoInfo paramVideoInfo)
   {
-    if (paramVideoInfo == null) {
-      throw new IllegalArgumentException("videoInfo is null");
-    }
-    if ((paramVideoInfo.streamNames == null) || (paramVideoInfo.streamUrls == null) || (paramVideoInfo.streamNames.length == 0) || (paramVideoInfo.streamUrls.length == 0) || (paramVideoInfo.streamNames.length != paramVideoInfo.streamUrls.length)) {
+    if (paramVideoInfo != null)
+    {
+      String[] arrayOfString1 = paramVideoInfo.streamNames;
+      if (arrayOfString1 != null)
+      {
+        String[] arrayOfString2 = paramVideoInfo.streamUrls;
+        if ((arrayOfString2 != null) && (arrayOfString1.length != 0) && (arrayOfString2.length != 0) && (arrayOfString1.length == arrayOfString2.length))
+        {
+          int i = paramVideoInfo.defaultStream;
+          if ((i >= 0) && (i < arrayOfString1.length)) {
+            return;
+          }
+          throw new IllegalArgumentException("default stream index out of bound");
+        }
+      }
       throw new IllegalArgumentException("Illegal streamNames or streamUrls");
     }
-    if ((paramVideoInfo.defaultStream < 0) || (paramVideoInfo.defaultStream >= paramVideoInfo.streamNames.length)) {
-      throw new IllegalArgumentException("default stream index out of bound");
-    }
+    throw new IllegalArgumentException("videoInfo is null");
   }
   
   public int describeContents()
@@ -89,18 +98,30 @@ public class VideoInfo
   
   public String getDefaultStreamName()
   {
-    if ((this.streamNames == null) || (this.streamNames.length < this.defaultStream) || (this.defaultStream < 0)) {
-      return null;
+    String[] arrayOfString = this.streamNames;
+    if (arrayOfString != null)
+    {
+      int i = arrayOfString.length;
+      int j = this.defaultStream;
+      if ((i >= j) && (j >= 0)) {
+        return arrayOfString[j];
+      }
     }
-    return this.streamNames[this.defaultStream];
+    return null;
   }
   
   public String getDefaultStreamUrl()
   {
-    if ((this.streamUrls == null) || (this.streamUrls.length < this.defaultStream) || (this.defaultStream < 0)) {
-      return null;
+    String[] arrayOfString = this.streamUrls;
+    if (arrayOfString != null)
+    {
+      int i = arrayOfString.length;
+      int j = this.defaultStream;
+      if ((i >= j) && (j >= 0)) {
+        return arrayOfString[j];
+      }
     }
-    return this.streamUrls[this.defaultStream];
+    return null;
   }
   
   public int getDurationAllow()
@@ -167,7 +188,7 @@ public class VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

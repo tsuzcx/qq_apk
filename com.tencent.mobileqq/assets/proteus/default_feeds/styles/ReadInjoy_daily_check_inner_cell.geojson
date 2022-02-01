@@ -4,12 +4,12 @@
         "view_id": "id_check_inner_container",
         "default_visible": "YES",
         "layout_type":"layout_relative",
-        "padding_left": "6",
-        "padding_right": "6",
-        "padding_bottom": "31",
+        "padding_left": "12",
+        "padding_right": "12",
+        "padding_bottom": "17",
         "height": {
             "type": "relative",
-            "value": "485"
+            "value": "455"
         },
         "width": {
             "type": "relative",
@@ -96,6 +96,74 @@
                 ]
             },
             {
+                "view_type": "UIImageView",
+                "view_id": "id_top_left_mask",
+                "default_visible": "YES",
+                "height": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "width": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "attributes": {
+                    "loadImageWithPath:": "left_top_round_corner"
+                }
+            },
+            {
+                "view_type": "UIImageView",
+                "view_id": "id_bottom_left_mask",
+                "default_visible": "YES",
+                "align_parent_bottom": "YES",
+                "height": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "width": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "attributes": {
+                    "loadImageWithPath:": "left_bottom_round_corner"
+                }
+            },
+            {
+                "view_type": "UIImageView",
+                "view_id": "id_top_right_mask",
+                "default_visible": "YES",
+                "align_parent_right": "YES",
+                "height": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "width": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "attributes": {
+                    "loadImageWithPath:": "right_top_round_corner"
+                }
+            },
+            {
+                "view_type": "UIImageView",
+                "view_id": "id_bottom_right_mask",
+                "default_visible": "YES",
+                "align_parent_right": "YES",
+                "align_parent_bottom": "YES",
+                "height": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "width": {
+                    "type": "absolutely",
+                    "value": "6"
+                },
+                "attributes": {
+                    "loadImageWithPath:": "right_bottom_round_corner"
+                }
+            },
+            {
                 "view_type": "container",
                 "layout_type":"layout_linear",
                 "align_parent_bottom": "YES",
@@ -122,7 +190,7 @@
                         },
                         "attributes": {
                             "setImageWithURLString:lineup:": [
-                                "http://qqpublic.qpic.cn/qq_public/0/0-2233326793-4A8B7E8B430EDC8FA27DC338BB78BBC6/0",
+                                "https://pub.idqqimg.com/pc/misc/files/20200609/5e42211a1f30454fa4dfbddc806a683b.png",
                                 "0"
                             ],
                             "setAttatchInfo:": "$advantage_text"
@@ -382,7 +450,7 @@
                                     "value": "6"
                                 },
                                 "attributes": {
-                                    "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20190916/ae9cbff3b7c549caa1523038fadfc3ed.png", 0]
+                                    "setImageWithURLString:lineup:": ["https://pub.idqqimg.com/pc/misc/files/20190916/ae9cbff3b7c549caa1523038fadfc3ed.png", 0]
                                 }
                             }
                         ]
@@ -424,8 +492,7 @@
                         "margin_top": "-15",
                         "align_parent_center_horizontal": "YES",
                         "height": {
-                            "type": "absolutely",
-                            "value": "126"
+                            "type": "wrap_content"
                         },
                         "width": {
                             "type": "wrap_content"
@@ -433,8 +500,8 @@
                         "attributes": {
                             "setText:": "$big_date",
                             "setTextColorString:": "#FFFFFF",
-                            "setFontSizeString:": "108",
-                            "setAndroidFontFilePath:iOSFontName:size:" : ["fonts/DIN Alternate.ttf","DINAlternate-Bold","108"]
+                            "setBoldFontSizeString:": "108",
+                            "setAndroidFontFilePath:iOSFontName:size:" : ["fonts/DIN_Alternate_Bold.ttf","DINAlternate-Bold","108"]
                         }
                     },
                     {

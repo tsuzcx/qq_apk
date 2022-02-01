@@ -41,35 +41,43 @@ public final class n
   {
     paramJceOutputStream.write(this.aS, 0);
     paramJceOutputStream.write(this.aW, 1);
-    if (this.aX != null) {
-      paramJceOutputStream.write(this.aX, 2);
+    String str = this.aX;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.aY != null) {
-      paramJceOutputStream.write(this.aY, 3);
+    str = this.aY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.aZ != null) {
-      paramJceOutputStream.write(this.aZ, 4);
+    str = this.aZ;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 5);
+    int i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    if (this.bb != 0) {
-      paramJceOutputStream.write(this.bb, 6);
+    i = this.bb;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 6);
     }
-    if (this.bc != 0L) {
-      paramJceOutputStream.write(this.bc, 7);
+    long l = this.bc;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 7);
     }
-    if (this.bd != 0) {
-      paramJceOutputStream.write(this.bd, 8);
+    i = this.bd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 8);
     }
-    if (this.be != null) {
-      paramJceOutputStream.write(this.be, 9);
+    str = this.be;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.n
  * JD-Core Version:    0.7.0.1
  */

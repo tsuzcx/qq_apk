@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import android.content.Context;
 
 abstract class r
-  extends y
+  extends ac
 {
   public r(Context paramContext)
   {
@@ -11,12 +11,12 @@ abstract class r
     super.setHorizontallyScrolling(true);
   }
   
-  public final boolean aQX()
+  public final boolean cRj()
   {
     return false;
   }
   
-  public boolean aRb()
+  public boolean cRn()
   {
     return false;
   }
@@ -24,6 +24,35 @@ abstract class r
   public boolean canScrollVertically(int paramInt)
   {
     return false;
+  }
+  
+  public final boolean isLaidOut()
+  {
+    boolean bool1 = super.isLaidOut();
+    if ((bool1) && (isFocusable()))
+    {
+      if ((getBottom() > getTop()) && (getRight() > getLeft())) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          return bool1;
+        }
+        try
+        {
+          StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
+          if ((arrayOfStackTraceElement == null) || (arrayOfStackTraceElement.length < 3)) {
+            return bool1;
+          }
+          boolean bool2 = arrayOfStackTraceElement[2].getMethodName().equals("canTakeFocus");
+          if (!bool2) {
+            return bool1;
+          }
+          return false;
+        }
+        finally {}
+      }
+    }
+    return bool1;
   }
   
   public void setGravity(int paramInt)
@@ -40,7 +69,7 @@ abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.r
  * JD-Core Version:    0.7.0.1
  */

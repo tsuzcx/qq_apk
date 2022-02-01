@@ -1,7 +1,7 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
 public class gtj
   implements View.OnClickListener
@@ -10,9 +10,7 @@ public class gtj
   
   public void onClick(View paramView)
   {
-    this.a.a.putExtra("isBack", 1);
-    this.a.setResult(-1, this.a.a);
-    this.a.finish();
+    this.a.a.f();
   }
 }
 

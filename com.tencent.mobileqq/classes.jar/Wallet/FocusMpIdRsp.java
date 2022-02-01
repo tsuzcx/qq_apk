@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class FocusMpIdRsp
   extends JceStruct
 {
-  public int err_code;
+  public int err_code = 0;
   
   public FocusMpIdRsp() {}
   
@@ -28,7 +28,7 @@ public final class FocusMpIdRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.FocusMpIdRsp
  * JD-Core Version:    0.7.0.1
  */

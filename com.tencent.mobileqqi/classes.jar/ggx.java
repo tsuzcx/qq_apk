@@ -1,22 +1,40 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 
-class ggx
-  implements Animation.AnimationListener
+public class ggx
+  implements IIconListener
 {
-  ggx(ggw paramggw) {}
+  public ggx(EditActivity paramEditActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    if ((EditActivity.a(this.a).b == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      EditActivity.a(this.a, false);
+    }
+    for (;;)
+    {
+      return;
+      if ((paramBitmap != null) && (paramInt2 == 201) && (EditActivity.a(this.a)))
+      {
+        int i = EditActivity.a(this.a).getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          View localView = EditActivity.a(this.a).getChildAt(paramInt2);
+          if (paramInt1 == ((Integer)localView.getTag()).intValue()) {
+            ((ImageView)localView.findViewById(2131232968)).setImageDrawable(new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false));
+          }
+          paramInt2 += 1;
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

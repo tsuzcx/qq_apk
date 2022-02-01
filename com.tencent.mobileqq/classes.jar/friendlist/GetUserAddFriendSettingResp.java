@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetUserAddFriendSettingResp
   extends JceStruct
@@ -13,15 +14,15 @@ public final class GetUserAddFriendSettingResp
   static int cache_queryuinsetting;
   static int cache_result;
   static ArrayList<String> cache_vecStrUserQuestion;
-  public boolean contact_bothway_friend;
-  public short errorCode;
-  public byte[] name;
-  public byte[] name1;
-  public long queryuin;
-  public int queryuinsetting;
-  public int result;
-  public long uin;
-  public ArrayList<String> vecStrUserQuestion;
+  public boolean contact_bothway_friend = false;
+  public short errorCode = 0;
+  public byte[] name = null;
+  public byte[] name1 = null;
+  public long queryuin = 0L;
+  public int queryuinsetting = 0;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<String> vecStrUserQuestion = null;
   
   public GetUserAddFriendSettingResp() {}
   
@@ -71,23 +72,26 @@ public final class GetUserAddFriendSettingResp
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.queryuin, 1);
     paramJceOutputStream.write(this.queryuinsetting, 2);
-    if (this.vecStrUserQuestion != null) {
-      paramJceOutputStream.write(this.vecStrUserQuestion, 3);
+    Object localObject = this.vecStrUserQuestion;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.result, 4);
     paramJceOutputStream.write(this.errorCode, 5);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 6);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.contact_bothway_friend, 7);
-    if (this.name1 != null) {
-      paramJceOutputStream.write(this.name1, 8);
+    localObject = this.name1;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetUserAddFriendSettingResp
  * JD-Core Version:    0.7.0.1
  */

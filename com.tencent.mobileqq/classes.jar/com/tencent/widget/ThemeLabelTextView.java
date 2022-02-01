@@ -5,57 +5,52 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bibv;
-import bibw;
 
 public class ThemeLabelTextView
   extends TextView
-  implements bibw
+  implements ThemeImageWrapper.DrawInterface
 {
-  bibv a;
+  ThemeImageWrapper themeImageWrapper;
   
   public ThemeLabelTextView(Context paramContext)
   {
     super(paramContext);
-    a();
+    init();
   }
   
   public ThemeLabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    init();
   }
   
   public ThemeLabelTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
-  }
-  
-  protected void a()
-  {
-    setSupportMaskView(false);
-  }
-  
-  public void a_(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
+    init();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null)
     {
-      this.a.a(paramCanvas, this);
+      localThemeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.draw(paramCanvas);
   }
   
+  protected void init()
+  {
+    setSupportMaskView(false);
+  }
+  
   public void setMaskShape(int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setMaskShape(paramInt);
     }
   }
   
@@ -63,21 +58,27 @@ public class ThemeLabelTextView
   {
     if (paramBoolean)
     {
-      if (this.a == null) {
-        this.a = new bibv();
+      if (this.themeImageWrapper == null) {
+        this.themeImageWrapper = new ThemeImageWrapper();
       }
-      this.a.a(true);
-      setMaskShape(bibv.c);
-    }
-    while (this.a == null) {
+      this.themeImageWrapper.setSupportMaskView(true);
+      setMaskShape(ThemeImageWrapper.MODE_OTHER);
       return;
     }
-    this.a.a(false);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setSupportMaskView(false);
+    }
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ThemeLabelTextView
  * JD-Core Version:    0.7.0.1
  */

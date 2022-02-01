@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic.compress;
 
 import com.tencent.mobileqq.pic.CompressInfo;
-import gec;
+import geb;
 
 public class PicTypeLong
   extends PicType
@@ -19,7 +19,7 @@ public class PicTypeLong
       return null;
     case 0: 
     case 1: 
-      return new gec(this, this);
+      return new geb(this, this);
     }
     return new PicQualityOriginal(this);
   }

@@ -7,12 +7,12 @@ class VRecyclerList$RVUpdateOps$2
   
   public void run()
   {
-    VRecyclerList.RVUpdateOps.access$300(this.this$1, this.val$op);
+    VRecyclerList.RVUpdateOps.access$600(this.this$1, this.val$op);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList.RVUpdateOps.2
  * JD-Core Version:    0.7.0.1
  */

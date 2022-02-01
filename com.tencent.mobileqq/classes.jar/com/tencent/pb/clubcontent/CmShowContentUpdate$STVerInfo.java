@@ -25,15 +25,16 @@ public final class CmShowContentUpdate$STVerInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 56, 66, 72 }, new String[] { "biz_id", "item_id", "name", "ver", "down_file", "md5", "is_patch", "patch_info", "domain_id" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), null, Integer.valueOf(0) }, STVerInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 56, 66, 72 }, new String[] { "biz_id", "item_id", "name", "ver", "down_file", "md5", "is_patch", "patch_info", "domain_id" }, new Object[] { localInteger, Long.valueOf(0L), localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, localInteger, null, localInteger }, STVerInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.clubcontent.CmShowContentUpdate.STVerInfo
  * JD-Core Version:    0.7.0.1
  */

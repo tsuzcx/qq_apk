@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajit;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class RecentAdapter$7
+class RecentAdapter$7
   implements Runnable
 {
-  public RecentAdapter$7(ajit paramajit, String paramString, int paramInt) {}
+  RecentAdapter$7(RecentAdapter paramRecentAdapter, String paramString, int paramInt) {}
   
   public void run()
   {
-    ((MessageHandler)this.this$0.a.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    ((MessageHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(this.a, this.b, false);
   }
 }
 

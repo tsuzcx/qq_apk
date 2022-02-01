@@ -4,18 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_follow_guide
   extends JceStruct
 {
   static ArrayList<s_user> cache_followed_list = new ArrayList();
-  public int action_type;
+  public int action_type = 0;
   public String action_url = "";
   public String attach_info = "";
   public String button_text = "";
-  public long count;
-  public int feed_type;
-  public ArrayList<s_user> followed_list;
+  public long count = 0L;
+  public int feed_type = 0;
+  public ArrayList<s_user> followed_list = null;
   public String icon_url = "";
   public String summary = "";
   public String title = "";
@@ -58,35 +59,42 @@ public final class cell_follow_guide
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.followed_list != null) {
-      paramJceOutputStream.write(this.followed_list, 0);
+    Object localObject = this.followed_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.count, 1);
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 2);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 3);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.icon_url != null) {
-      paramJceOutputStream.write(this.icon_url, 4);
+    localObject = this.icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.action_type, 5);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 6);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.feed_type, 7);
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 8);
+    localObject = this.button_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 9);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_follow_guide
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.mm.vending.a;
 
 public abstract interface o
 {
-  public abstract void lA();
+  public abstract void mf();
   
-  public abstract void ly();
+  public abstract void mg();
   
-  public abstract void lz();
+  public abstract void mh();
 }
 
 

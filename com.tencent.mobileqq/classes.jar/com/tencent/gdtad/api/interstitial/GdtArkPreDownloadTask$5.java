@@ -1,24 +1,22 @@
 package com.tencent.gdtad.api.interstitial;
 
-import aaoi;
-import aaoj;
-import aase;
 import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.gdtad.log.GdtLog;
 
-public class GdtArkPreDownloadTask$5
+class GdtArkPreDownloadTask$5
   implements Runnable
 {
-  public GdtArkPreDownloadTask$5(aaoj paramaaoj) {}
+  GdtArkPreDownloadTask$5(GdtArkPreDownloadTask paramGdtArkPreDownloadTask) {}
   
   public void run()
   {
-    aase.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { aaoj.a(this.this$0).a, aaoj.a(this.this$0).b, aaoj.a(this.this$0).c }));
-    ArkAppMgr.getInstance().getAppPathByName(aaoj.a(this.this$0).a, "", aaoj.a(this.this$0).c, null, aaoj.a(this.this$0));
+    GdtLog.b("GdtArkPreDownloadTask", String.format("preDownload appName:%s view:%s minVersion:%s", new Object[] { GdtArkPreDownloadTask.i(this.this$0).a, GdtArkPreDownloadTask.i(this.this$0).b, GdtArkPreDownloadTask.i(this.this$0).c }));
+    ArkAppMgr.getInstance().getAppPathByName(GdtArkPreDownloadTask.i(this.this$0).a, GdtArkPreDownloadTask.i(this.this$0).c, GdtArkPreDownloadTask.j(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.5
  * JD-Core Version:    0.7.0.1
  */

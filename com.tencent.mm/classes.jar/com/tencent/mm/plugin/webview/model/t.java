@@ -1,99 +1,122 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.a;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.b;
-import com.tencent.mm.protocal.protobuf.axk;
-import com.tencent.mm.protocal.protobuf.axl;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.a;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.b;
+import com.tencent.mm.protocal.protobuf.ddf;
+import com.tencent.mm.protocal.protobuf.ddg;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
-  extends m
-  implements k, c.b
+  extends p
+  implements m, a.b
 {
-  private f eGj;
-  public String iIg;
-  public final b rr;
-  public c.a uVF;
-  private final int uVH;
+  public a.a WKW;
+  public String WKX;
+  private final int WKY;
+  private h mAY;
+  private final c rr;
+  public String url;
   
-  public t(c.a parama, String paramString1, String paramString2, LinkedList<String> paramLinkedList, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, String paramString7, int paramInt2)
+  public t(a.a parama, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, byte[] paramArrayOfByte, int paramInt1, String paramString9, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(6616);
-    ab.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "NetSceneJSAPIPreVerify doScene url[%s], appid[%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6 });
-    this.uVF = parama;
-    this.iIg = paramString1;
-    this.uVH = paramInt2;
-    parama = new b.a();
-    parama.fsX = new axk();
-    parama.fsY = new axl();
-    parama.uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
-    parama.funcId = 1093;
-    parama.reqCmdId = 0;
+    AppMethodBeat.i(298395);
+    Log.i("MicroMsg.webview.NetSceneJSAPIAuth", "NetSceneJSAPIAuth doScene appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s], [%s], [%s]", new Object[] { paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1), paramString9 });
+    this.WKW = parama;
+    this.WKX = paramString4;
+    this.url = paramString1;
+    this.WKY = paramInt2;
+    parama = new c.a();
+    parama.otE = new ddf();
+    parama.otF = new ddg();
+    parama.uri = "/cgi-bin/mmbiz-bin/jsapi-auth";
+    parama.funcId = 1095;
+    parama.otG = 0;
     parama.respCmdId = 0;
-    this.rr = parama.ado();
-    parama = (axk)this.rr.fsV.fta;
+    this.rr = parama.bEF();
+    parama = (ddf)c.b.b(this.rr.otB);
     parama.url = paramString1;
-    parama.cwc = paramString2;
-    parama.xmI = paramLinkedList;
-    parama.cqf = paramString3;
-    parama.xmq = paramString4;
-    parama.signature = paramString5;
-    parama.xmr = paramString6;
-    parama.scene = paramInt1;
-    parama.xmJ = paramString7;
-    AppMethodBeat.o(6616);
+    parama.aaIP = paramString2;
+    parama.muA = paramString3;
+    parama.aaIK = paramString4;
+    parama.hhx = paramString5;
+    parama.aaIL = paramString6;
+    parama.signature = paramString7;
+    parama.aaIM = paramString8;
+    parama.aaIN = b.cX(paramArrayOfByte);
+    parama.aaIO = paramInt1;
+    parama.scope = paramString9;
+    parama.aaIQ = paramInt3;
+    AppMethodBeat.o(298395);
   }
   
-  public final int dbN()
+  public final int doScene(g paramg, h paramh)
   {
-    return this.uVH;
-  }
-  
-  public final axl dbO()
-  {
-    if (this.rr == null) {
-      return null;
-    }
-    return (axl)this.rr.fsW.fta;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(6618);
-    ab.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "doScene");
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6618);
+    AppMethodBeat.i(78899);
+    Log.i("MicroMsg.webview.NetSceneJSAPIAuth", "doScene");
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78899);
     return i;
   }
   
   public final int getType()
   {
-    return 1093;
+    return 1095;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int irL()
   {
-    AppMethodBeat.i(6617);
-    ab.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6617);
+    return this.WKY;
+  }
+  
+  public final ddf ivc()
+  {
+    AppMethodBeat.i(298401);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(298401);
+      return null;
+    }
+    ddf localddf = (ddf)c.b.b(this.rr.otB);
+    AppMethodBeat.o(298401);
+    return localddf;
+  }
+  
+  public final ddg ivd()
+  {
+    AppMethodBeat.i(298405);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(298405);
+      return null;
+    }
+    ddg localddg = (ddg)c.c.b(this.rr.otC);
+    AppMethodBeat.o(298405);
+    return localddg;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(78898);
+    Log.i("MicroMsg.webview.NetSceneJSAPIAuth", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(78898);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.t
  * JD-Core Version:    0.7.0.1
  */

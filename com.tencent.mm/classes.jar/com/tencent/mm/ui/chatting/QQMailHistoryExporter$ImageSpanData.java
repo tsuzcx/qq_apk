@@ -9,16 +9,16 @@ public class QQMailHistoryExporter$ImageSpanData
   implements Parcelable
 {
   public static final Parcelable.Creator<ImageSpanData> CREATOR;
-  int chT;
+  private int aeln = 0;
+  int dIY;
   int endPos;
   String path;
-  private int thumbnail = 0;
   
   static
   {
-    AppMethodBeat.i(30969);
+    AppMethodBeat.i(34850);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(30969);
+    AppMethodBeat.o(34850);
   }
   
   public int describeContents()
@@ -28,17 +28,17 @@ public class QQMailHistoryExporter$ImageSpanData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(30968);
-    paramParcel.writeInt(this.chT);
+    AppMethodBeat.i(34849);
+    paramParcel.writeInt(this.dIY);
     paramParcel.writeInt(this.endPos);
     paramParcel.writeString(this.path);
-    paramParcel.writeInt(this.thumbnail);
-    AppMethodBeat.o(30968);
+    paramParcel.writeInt(this.aeln);
+    AppMethodBeat.o(34849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.QQMailHistoryExporter.ImageSpanData
  * JD-Core Version:    0.7.0.1
  */

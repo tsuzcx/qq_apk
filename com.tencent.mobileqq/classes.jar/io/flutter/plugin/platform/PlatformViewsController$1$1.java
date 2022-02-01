@@ -1,19 +1,23 @@
 package io.flutter.plugin.platform;
 
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel;
+import io.flutter.embedding.engine.systemchannels.PlatformViewsChannel.PlatformViewCreationRequest;
+
 class PlatformViewsController$1$1
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  PlatformViewsController$1$1(PlatformViewsController.1 param1, VirtualDisplayController paramVirtualDisplayController, Runnable paramRunnable) {}
-  
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    PlatformViewsController.access$1100(this.this$1.this$0, this.val$vdController);
-    this.val$onComplete.run();
+    if (paramBoolean) {
+      PlatformViewsController.access$900(this.this$1.this$0).invokeViewFocused(this.val$request.viewId);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController.1.1
  * JD-Core Version:    0.7.0.1
  */

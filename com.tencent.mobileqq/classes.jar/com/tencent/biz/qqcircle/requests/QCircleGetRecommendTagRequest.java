@@ -1,5 +1,6 @@
 package com.tencent.biz.qqcircle.requests;
 
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -18,14 +19,23 @@ public class QCircleGetRecommendTagRequest
   public QCircleGetRecommendTagRequest(FeedCloudMeta.StGPSV2 paramStGPSV2, List<FeedCloudTagcategorysvr.PicRecomEntry> paramList)
   {
     this.mReq.reqType.set(1);
-    this.mReq.gpsInfo = paramStGPSV2;
-    this.mReq.picRecomMap.set(paramList);
+    FeedCloudTagcategorysvr.StTagCategoryRecomReq localStTagCategoryRecomReq = this.mReq;
+    localStTagCategoryRecomReq.gpsInfo = paramStGPSV2;
+    localStTagCategoryRecomReq.picRecomMap.set(paramList);
   }
   
   public MessageMicro decode(byte[] paramArrayOfByte)
   {
     FeedCloudTagcategorysvr.StTagCategoryRecomRsp localStTagCategoryRecomRsp = new FeedCloudTagcategorysvr.StTagCategoryRecomRsp();
-    localStTagCategoryRecomRsp.mergeFrom(paramArrayOfByte);
+    try
+    {
+      localStTagCategoryRecomRsp.mergeFrom(paramArrayOfByte);
+      return localStTagCategoryRecomRsp;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
     return localStTagCategoryRecomRsp;
   }
   
@@ -34,14 +44,14 @@ public class QCircleGetRecommendTagRequest
     return "FeedCloudSvr.trpc.feedcloud.tagcategorysvr.TagCategoryProcess.GetTagCategoryRecom";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.requests.QCircleGetRecommendTagRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import aepi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -8,182 +7,172 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorSet;
-import com.nineoldandroids.animation.AnimatorSet.Builder;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
 
 public class PrepareView
   extends RelativeLayout
 {
-  public int a;
-  public long a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  Animator jdField_a_of_type_ComNineoldandroidsAnimationAnimator;
-  AnimatorSet jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet;
-  private ImageAlphaSwitchView jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView;
-  private ImageShakeAnimView jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView;
-  private ImageSwitchAnimView jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView;
-  public List<PortalManager.LogoConfig> a;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  AnimatorSet jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  AnimatorSet jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private ImageView jdField_e_of_type_AndroidWidgetImageView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private ImageView jdField_f_of_type_AndroidWidgetImageView;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private ImageView jdField_g_of_type_AndroidWidgetImageView;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private ImageView jdField_h_of_type_AndroidWidgetImageView;
-  private TextView jdField_h_of_type_AndroidWidgetTextView;
-  private ImageView jdField_i_of_type_AndroidWidgetImageView;
-  private TextView jdField_i_of_type_AndroidWidgetTextView;
-  private TextView j;
+  public int a = -1;
+  public List<PortalManager.LogoConfig> b;
+  private Context c;
+  private boolean d = false;
+  private RelativeLayout e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private CountDownTimer i;
+  private RelativeLayout j;
+  private TextView k;
+  private TextView l;
+  private TextView m;
+  private TextView n;
+  private TextView o;
+  private TextView p;
+  private TextView q;
+  private ImageSwitchAnimView r;
+  private ImageAlphaSwitchView s;
+  private ImageView t;
+  private ImageView u;
+  private ImageView v;
+  private ImageView w;
+  private ImageView x;
+  private ImageView y;
+  private ImageShakeAnimView z;
   
   public PrepareView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
   }
   
-  private Bitmap a(int paramInt)
+  private Bitmap b(int paramInt)
   {
-    int m = 0;
-    int k;
-    if (this.jdField_a_of_type_Int == 1) {
-      if (paramInt == 0) {
-        k = 2130844904;
+    int i1 = this.a;
+    if (i1 == 1)
+    {
+      if (paramInt == 0)
+      {
+        paramInt = 2130846911;
+        break label64;
+      }
+      if (paramInt == 1)
+      {
+        paramInt = 2130846912;
+        break label64;
       }
     }
-    while (k != 0)
+    else if ((i1 == 2) || (i1 == 3))
     {
-      Drawable localDrawable = getResources().getDrawable(k);
-      if ((localDrawable instanceof SkinnableBitmapDrawable))
+      if (paramInt == 0)
       {
-        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
-        k = m;
-        if (paramInt == 1)
-        {
-          k = 2130844905;
-          continue;
-          if (this.jdField_a_of_type_Int != 2)
-          {
-            k = m;
-            if (this.jdField_a_of_type_Int != 3) {
-              break;
-            }
-          }
-          else if (paramInt == 0)
-          {
-            k = 2130844864;
-          }
-          else
-          {
-            k = m;
-            if (paramInt == 1) {
-              k = 2130844865;
-            }
-          }
-        }
+        paramInt = 2130846733;
+        break label64;
       }
-      else if ((localDrawable instanceof BitmapDrawable))
+      if (paramInt == 1)
       {
+        paramInt = 2130846734;
+        break label64;
+      }
+    }
+    paramInt = 0;
+    label64:
+    if (paramInt != 0)
+    {
+      Drawable localDrawable = getResources().getDrawable(paramInt);
+      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
+      }
+      if ((localDrawable instanceof BitmapDrawable)) {
         return ((BitmapDrawable)localDrawable).getBitmap();
       }
     }
     return null;
   }
   
-  private void d()
-  {
-    if ((this.jdField_f_of_type_AndroidWidgetImageView == null) || (this.jdField_h_of_type_AndroidWidgetImageView == null) || (this.jdField_g_of_type_AndroidWidgetImageView == null)) {}
-    do
-    {
-      return;
-      ObjectAnimator localObjectAnimator1;
-      ObjectAnimator localObjectAnimator2;
-      if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet == null)
-      {
-        ViewHelper.setPivotX(this.jdField_f_of_type_AndroidWidgetImageView, 0.5F);
-        ViewHelper.setPivotY(this.jdField_f_of_type_AndroidWidgetImageView, 0.2F);
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_f_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, -10.0F, 10.0F, -6.0F, 0.0F });
-        localObjectAnimator1.setDuration(720L);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_f_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, 8.0F, -8.0F, 4.0F, 0.0F });
-        localObjectAnimator2.setDuration(720L);
-        this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet = new AnimatorSet();
-        this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
-      }
-      if (this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet == null)
-      {
-        ViewHelper.setPivotX(this.jdField_h_of_type_AndroidWidgetImageView, 0.5F);
-        ViewHelper.setPivotY(this.jdField_h_of_type_AndroidWidgetImageView, 0.2F);
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_h_of_type_AndroidWidgetImageView, "rotation", new float[] { 0.0F, 3.0F, -3.0F, 2.0F, 0.0F });
-        localObjectAnimator1.setDuration(720L);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_h_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, 8.0F, -8.0F, 4.0F, 0.0F });
-        localObjectAnimator2.setDuration(720L);
-        this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet = new AnimatorSet();
-        this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
-      }
-      if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator == null)
-      {
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_g_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, 8.0F, -8.0F, 4.0F, 0.0F });
-        localObjectAnimator1.setDuration(720L);
-        this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator = localObjectAnimator1;
-      }
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet == null) && (this.jdField_a_of_type_Int == 1))
-      {
-        localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "translationY", new float[] { 0.0F, 8.0F, -8.0F, 4.0F, 0.0F });
-        localObjectAnimator1.setDuration(720L);
-        localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.99F, 1.02F, 0.99F, 1.0F });
-        localObjectAnimator2.setDuration(720L);
-        this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet = new AnimatorSet();
-        this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
-      }
-    } while ((this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet == null) || (this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet == null));
-    this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.start();
-    this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-    this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet.start();
-    this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator.cancel();
-    this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator.start();
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
-    {
-      this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-      this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet.start();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView.a();
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Int < 0) {}
-    while (this.jdField_a_of_type_AndroidOsCountDownTimer == null) {
+    if (this.a < 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
-    this.jdField_a_of_type_AndroidOsCountDownTimer = null;
+    CountDownTimer localCountDownTimer = this.i;
+    if (localCountDownTimer != null)
+    {
+      localCountDownTimer.cancel();
+      this.i = null;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startTimeDown time = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",mMode = ");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.d("PrepareView", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.a < 0) {
+      return;
+    }
+    this.j.setVisibility(8);
+    this.e.setVisibility(0);
+    Object localObject = this.i;
+    if (localObject != null) {
+      ((CountDownTimer)localObject).cancel();
+    }
+    this.i = new PrepareView.1(this, paramLong, 1000L);
+    this.i.start();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    int i1 = this.a;
+    if (i1 == 1)
+    {
+      if ((this.t != null) && (this.u != null)) {}
+    }
+    else if ((i1 == 2) || (i1 == 3))
+    {
+      if (this.r == null) {
+        return;
+      }
+      if (this.s == null) {
+        return;
+      }
+    }
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      localBitmap = b(0);
+    }
+    if (localBitmap != null)
+    {
+      paramBitmap = this.r;
+      if (paramBitmap != null)
+      {
+        i1 = this.a;
+        if (i1 == 3) {
+          paramBitmap.a(localBitmap);
+        } else if (i1 == 2) {
+          paramBitmap.setLogo(localBitmap);
+        }
+      }
+      paramBitmap = this.t;
+      if ((paramBitmap != null) && (this.a == 1)) {
+        paramBitmap.setImageBitmap(localBitmap);
+      }
+    }
   }
   
   public boolean a(int paramInt)
@@ -192,283 +181,238 @@ public class PrepareView
     removeAllViews();
     if (paramInt == 1)
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560989, this, true);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369855));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370979));
+      LayoutInflater.from(this.c).inflate(2131627463, this, true);
+      this.t = ((ImageView)findViewById(2131437736));
+      this.u = ((ImageView)findViewById(2131439123));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377862));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377858));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377859));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377861));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365507));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377848));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377849));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377850));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377851));
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368392));
-      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368393));
-      this.j = ((TextView)findViewById(2131369482));
-      Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/DS-DIGIB.TTF");
-      this.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_d_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_f_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_g_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_h_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_i_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.j.setTypeface((Typeface)localObject);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369344));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375785));
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131380277));
-      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363177));
-      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376057));
-      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376056));
-      this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364873));
-      localObject = (RelativeLayout.LayoutParams)this.jdField_i_of_type_AndroidWidgetImageView.getLayoutParams();
-      if (localObject != null)
-      {
-        ((RelativeLayout.LayoutParams)localObject).topMargin = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_i_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      localObject = new RelativeLayout.LayoutParams(aepi.a(475.0F, getResources()), aepi.a(300.0F, getResources()));
-      ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      addView(this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView, 0, (ViewGroup.LayoutParams)localObject);
-      return true;
       if ((paramInt != 2) && (paramInt != 3)) {
-        break;
+        return false;
       }
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560988, this, true);
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131369855));
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131370979));
+      LayoutInflater.from(this.c).inflate(2131627462, this, true);
+      this.r = ((ImageSwitchAnimView)findViewById(2131437736));
+      this.s = ((ImageAlphaSwitchView)findViewById(2131439123));
     }
-    return false;
+    this.e = ((RelativeLayout)findViewById(2131447359));
+    this.f = ((TextView)findViewById(2131447355));
+    this.g = ((TextView)findViewById(2131447356));
+    this.h = ((TextView)findViewById(2131447358));
+    this.j = ((RelativeLayout)findViewById(2131432268));
+    this.k = ((TextView)findViewById(2131447346));
+    this.l = ((TextView)findViewById(2131447347));
+    this.m = ((TextView)findViewById(2131447348));
+    this.n = ((TextView)findViewById(2131447349));
+    this.o = ((TextView)findViewById(2131435866));
+    this.p = ((TextView)findViewById(2131435867));
+    this.q = ((TextView)findViewById(2131437229));
+    Object localObject = Typeface.createFromAsset(this.c.getAssets(), "fonts/DS-DIGIB.TTF");
+    this.f.setTypeface((Typeface)localObject);
+    this.g.setTypeface((Typeface)localObject);
+    this.h.setTypeface((Typeface)localObject);
+    this.k.setTypeface((Typeface)localObject);
+    this.l.setTypeface((Typeface)localObject);
+    this.m.setTypeface((Typeface)localObject);
+    this.n.setTypeface((Typeface)localObject);
+    this.o.setTypeface((Typeface)localObject);
+    this.p.setTypeface((Typeface)localObject);
+    this.q.setTypeface((Typeface)localObject);
+    this.v = ((ImageView)findViewById(2131437070));
+    this.w = ((ImageView)findViewById(2131444788));
+    this.x = ((ImageView)findViewById(2131450230));
+    this.y = ((ImageView)findViewById(2131431439));
+    localObject = (RelativeLayout.LayoutParams)this.y.getLayoutParams();
+    if (localObject != null)
+    {
+      ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(25.0F, getResources());
+      this.y.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    paramInt = AIOUtils.b(475.0F, getResources());
+    int i1 = AIOUtils.b(335.0F, getResources());
+    this.z = new ImageShakeAnimView(this.c, paramInt, i1, (getResources().getDisplayMetrics().widthPixels - paramInt) / 2, 0, Integer.valueOf(2130846861), true);
+    localObject = new RelativeLayout.LayoutParams(paramInt, i1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(14);
+    addView(this.z, 0, (ViewGroup.LayoutParams)localObject);
+    return true;
   }
   
   public void b()
   {
-    d();
+    this.z.a();
   }
   
-  public void c()
+  public void b(Bitmap paramBitmap)
   {
-    try
+    int i1 = this.a;
+    if (i1 == 1)
     {
-      if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet != null)
-      {
-        if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.isRunning()) {
-          this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-        }
-        this.jdField_a_of_type_ComNineoldandroidsAnimationAnimatorSet = null;
-      }
-      if (this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet != null)
-      {
-        if (this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet.isRunning()) {
-          this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-        }
-        this.jdField_b_of_type_ComNineoldandroidsAnimationAnimatorSet = null;
-      }
-      if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator != null)
-      {
-        if (this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator.isRunning()) {
-          this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator.cancel();
-        }
-        this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator = null;
-      }
-      if (this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet != null)
-      {
-        if (this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet.isRunning()) {
-          this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet.cancel();
-        }
-        this.jdField_c_of_type_ComNineoldandroidsAnimationAnimatorSet = null;
-      }
-      return;
+      if ((this.t != null) && (this.u != null)) {}
     }
-    catch (Throwable localThrowable)
+    else if ((i1 == 2) || (i1 == 3))
     {
-      while (!QLog.isColorLevel()) {}
-      localThrowable.printStackTrace();
+      if (this.r == null) {
+        return;
+      }
+      if (this.s == null) {
+        return;
+      }
+    }
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      localBitmap = b(1);
+    }
+    if (localBitmap != null)
+    {
+      paramBitmap = this.s;
+      if (paramBitmap != null)
+      {
+        i1 = this.a;
+        if (i1 == 3)
+        {
+          paramBitmap.setGravity(3);
+          this.s.a(localBitmap);
+        }
+        else if (i1 == 2)
+        {
+          paramBitmap.setGravity(17);
+          this.s.setImage(localBitmap);
+          i1 = localBitmap.getWidth();
+          int i2 = localBitmap.getHeight();
+          paramBitmap = this.s.getLayoutParams();
+          int i3 = paramBitmap.width;
+          paramBitmap.width = ((int)(paramBitmap.height * (i1 * 1.0F / i2)));
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateBusinessNameBitmap,bitmapWidth = ");
+            localStringBuilder.append(i1);
+            localStringBuilder.append(",bitmapHeight = ");
+            localStringBuilder.append(i2);
+            localStringBuilder.append(",lp.width = ");
+            localStringBuilder.append(paramBitmap.width);
+            localStringBuilder.append(",lp.height = ");
+            localStringBuilder.append(paramBitmap.height);
+            localStringBuilder.append(",originWidth = ");
+            localStringBuilder.append(i3);
+            QLog.d("PrepareView", 2, localStringBuilder.toString());
+          }
+          this.s.setLayoutParams(paramBitmap);
+        }
+      }
+      paramBitmap = this.u;
+      if ((paramBitmap != null) && (this.a == 1)) {
+        paramBitmap.setImageBitmap(localBitmap);
+      }
     }
   }
+  
+  public void c() {}
   
   public void setBackground(Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6)
   {
-    if (this.jdField_a_of_type_Int < 0) {
+    if (this.a < 0) {
       return;
     }
     if (paramBitmap1 != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramBitmap2 = getBackground();
-        if ((paramBitmap2 == null) || (!(paramBitmap2 instanceof BitmapDrawable))) {
-          continue;
-        }
-        paramBitmap2 = ((BitmapDrawable)paramBitmap2).getBitmap();
-        if (paramBitmap2 != paramBitmap1) {
-          continue;
-        }
+      paramBitmap2 = getBackground();
+      if ((paramBitmap2 != null) && ((paramBitmap2 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap2).getBitmap() == paramBitmap1)) {
+        break label68;
       }
-      catch (Throwable paramBitmap1)
-      {
-        continue;
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap3);
-        continue;
-      }
-      if (paramBitmap3 != null) {}
-      try
-      {
-        paramBitmap1 = this.jdField_c_of_type_AndroidWidgetImageView.getDrawable();
-        if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable))) {
-          continue;
-        }
-        paramBitmap1 = ((BitmapDrawable)paramBitmap1).getBitmap();
-        if (paramBitmap1 != paramBitmap3) {
-          continue;
-        }
-      }
-      catch (Throwable paramBitmap1)
-      {
-        continue;
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap4);
-        continue;
-      }
-      if (paramBitmap4 != null) {}
-      try
-      {
-        paramBitmap1 = this.jdField_d_of_type_AndroidWidgetImageView.getDrawable();
-        if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable))) {
-          break label199;
-        }
-        paramBitmap1 = ((BitmapDrawable)paramBitmap1).getBitmap();
-        if (paramBitmap1 != paramBitmap4) {
-          break label199;
-        }
-      }
-      catch (Throwable paramBitmap1)
-      {
-        continue;
-        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844883);
-      }
-      if (paramBitmap5 == null) {
-        break label215;
-      }
-      paramBitmap1 = this.jdField_e_of_type_AndroidWidgetImageView.getDrawable();
-      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap5)) {
-        break;
-      }
-      this.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap5);
-      return;
       super.setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap1));
     }
-    label199:
-    label215:
-    return;
+    catch (Throwable paramBitmap1)
+    {
+      label68:
+      break label68;
+    }
+    super.setBackgroundResource(2130846745);
+    if (paramBitmap3 != null) {}
+    label187:
+    try
+    {
+      paramBitmap1 = this.v.getDrawable();
+      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap3)) {
+        break label126;
+      }
+      this.v.setImageBitmap(paramBitmap3);
+    }
+    catch (Throwable paramBitmap1)
+    {
+      label126:
+      break label126;
+    }
+    this.v.setImageResource(2130846741);
+    if (paramBitmap4 != null) {}
+    try
+    {
+      paramBitmap1 = this.w.getDrawable();
+      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap4)) {
+        break label187;
+      }
+      this.w.setImageBitmap(paramBitmap4);
+    }
+    catch (Throwable paramBitmap1)
+    {
+      break label187;
+    }
+    this.w.setImageResource(2130846742);
+    if (paramBitmap5 != null)
+    {
+      paramBitmap1 = this.x.getDrawable();
+      if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable)) || (((BitmapDrawable)paramBitmap1).getBitmap() != paramBitmap5)) {
+        this.x.setImageBitmap(paramBitmap5);
+      }
+    }
+    else
+    {
+      this.x.setImageResource(2130846869);
+    }
   }
   
   public void setLogo(Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {
-        break label53;
-      }
-    }
-    label53:
-    label186:
-    label205:
-    label230:
-    for (;;)
-    {
-      return;
-      if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || ((this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView != null)))
-      {
-        Bitmap localBitmap = paramBitmap1;
-        if (paramBitmap1 == null) {
-          localBitmap = a(0);
-        }
-        if (localBitmap != null)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView != null)
-          {
-            if (this.jdField_a_of_type_Int != 3) {
-              break label186;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView.a(localBitmap);
-          }
-          if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Int == 1)) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-          }
-        }
-        paramBitmap1 = paramBitmap2;
-        if (paramBitmap2 == null) {
-          paramBitmap1 = a(1);
-        }
-        if (paramBitmap1 == null) {
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView != null)
-        {
-          if (this.jdField_a_of_type_Int != 3) {
-            break label205;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setGravity(3);
-          this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.a(paramBitmap1);
-        }
-        for (;;)
-        {
-          if ((this.jdField_b_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_Int != 1)) {
-            break label230;
-          }
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap1);
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView.setLogo(localBitmap);
-          break;
-          if (this.jdField_a_of_type_Int == 2)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setGravity(3);
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setImage(paramBitmap1);
-          }
-        }
-      }
-    }
+    a(paramBitmap1);
+    b(paramBitmap2);
   }
   
   public void setLogoConfigList(List<PortalManager.LogoConfig> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     if ((paramList != null) && (QLog.isColorLevel()))
     {
-      int k = 0;
-      while (k < paramList.size())
+      int i1 = 0;
+      while (i1 < paramList.size())
       {
-        PortalManager.LogoConfig localLogoConfig = (PortalManager.LogoConfig)paramList.get(k);
-        if (localLogoConfig != null) {
-          QLog.d("PortalManager", 2, "prepareview, setLogoConfigList, index=" + k + ", p=" + localLogoConfig.toString());
+        PortalManager.LogoConfig localLogoConfig = (PortalManager.LogoConfig)paramList.get(i1);
+        if (localLogoConfig != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("prepareview, setLogoConfigList, index=");
+          localStringBuilder.append(i1);
+          localStringBuilder.append(", p=");
+          localStringBuilder.append(localLogoConfig.toString());
+          QLog.d("PortalManager", 2, localStringBuilder.toString());
         }
-        k += 1;
+        i1 += 1;
       }
     }
   }
   
   public void setMode(int paramInt)
   {
-    if (((paramInt != 1) && (paramInt != 2) && (paramInt != 3)) || (this.jdField_a_of_type_Int == paramInt)) {}
-    while (!a(paramInt)) {
+    if (((paramInt != 1) && (paramInt != 2) && (paramInt != 3)) || (this.a == paramInt)) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    if (a(paramInt)) {
+      this.a = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PrepareView
  * JD-Core Version:    0.7.0.1
  */

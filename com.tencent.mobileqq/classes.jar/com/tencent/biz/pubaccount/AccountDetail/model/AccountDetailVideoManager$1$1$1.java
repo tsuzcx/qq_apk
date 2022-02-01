@@ -1,9 +1,6 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
 import com.tencent.qphone.base.util.QLog;
-import nic;
-import nid;
-import nii;
 
 class AccountDetailVideoManager$1$1$1
   implements Runnable
@@ -12,18 +9,22 @@ class AccountDetailVideoManager$1$1$1
   
   public void run()
   {
-    if (this.a.a.a.a != null)
+    if (this.a.a.a.k != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailVideoManager", 2, "onPlayStart time=" + System.currentTimeMillis());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onPlayStart time=");
+        localStringBuilder.append(System.currentTimeMillis());
+        QLog.d("AccountDetailVideoManager", 2, localStringBuilder.toString());
       }
-      this.a.a.a.a.f();
+      this.a.a.a.k.m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.1.1.1
  * JD-Core Version:    0.7.0.1
  */

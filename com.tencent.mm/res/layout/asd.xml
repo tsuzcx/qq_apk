@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/a0b" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_height="wrap_content" android:minHeight="@dimen/lf" style="@style/mp"
+<RelativeLayout android:orientation="vertical" android:background="@drawable/p5" android:paddingLeft="@dimen/k" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/j5" style="@style/mk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MaskLayout android:id="@id/ed1" android:layout_width="@dimen/n3" android:layout_height="@dimen/n3">
-        <ImageView android:id="@id/k6" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-    </com.tencent.mm.ui.base.MaskLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/ed2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ne" android:text="{nick}" android:singleLine="true" style="@style/ln" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/yg" android:ellipsize="end" android:gravity="center|left" android:id="@id/ed3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ne" android:singleLine="true" style="@style/ln" />
-    </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="3.0" />
-    <LinearLayout android:id="@id/ed4" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageButton android:layout_gravity="center_vertical" android:id="@id/ax2" android:background="@null" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/checkbox_unselected" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/fas" android:padding="@dimen/m7" android:layout_width="@dimen/i" android:layout_height="@dimen/i" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/fae" android:paddingLeft="@dimen/iq" android:paddingRight="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/fc1" android:layout_toRightOf="@id/fas" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/i1" android:ellipsize="middle" android:id="@id/fc9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="我是很很很很长很长很长很长很长的名字" style="@style/ma" />
+        <TextView android:id="@id/fc3" android:paddingRight="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/fc9" android:layout_alignParentLeft="true" style="@style/m_" />
+        <TextView android:id="@id/fc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/fc3" android:layout_below="@id/fc9" style="@style/m_" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/fc1" android:layout_width="@dimen/j5" android:layout_height="@dimen/j5" android:layout_alignParentRight="true">
+        <View android:layout_gravity="center_vertical" android:layout_width="1.0dip" android:layout_height="32.0dip" style="@style/i7" />
+        <CheckBox android:layout_gravity="center" android:id="@id/fc0" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" style="@style/lq" />
+    </FrameLayout>
+</RelativeLayout>

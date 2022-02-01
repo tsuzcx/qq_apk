@@ -42,7 +42,11 @@ final class OperatorBufferWithSize$BufferOverlap<T>
     {
       if (l > this.requested.get())
       {
-        this.actual.onError(new MissingBackpressureException("More produced than requested? " + l));
+        Subscriber localSubscriber = this.actual;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("More produced than requested? ");
+        localStringBuilder.append(l);
+        localSubscriber.onError(new MissingBackpressureException(localStringBuilder.toString()));
         return;
       }
       this.requested.addAndGet(-l);
@@ -59,20 +63,20 @@ final class OperatorBufferWithSize$BufferOverlap<T>
   public void onNext(T paramT)
   {
     long l = this.index;
-    Object localObject;
     if (l == 0L)
     {
       localObject = new ArrayList(this.count);
       this.queue.offer(localObject);
     }
     l += 1L;
-    if (l == this.skip) {}
-    for (this.index = 0L;; this.index = l)
-    {
-      localObject = this.queue.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((List)((Iterator)localObject).next()).add(paramT);
-      }
+    if (l == this.skip) {
+      this.index = 0L;
+    } else {
+      this.index = l;
+    }
+    Object localObject = this.queue.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((List)((Iterator)localObject).next()).add(paramT);
     }
     paramT = (List)this.queue.peek();
     if ((paramT != null) && (paramT.size() == this.count))
@@ -85,7 +89,7 @@ final class OperatorBufferWithSize$BufferOverlap<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithSize.BufferOverlap
  * JD-Core Version:    0.7.0.1
  */

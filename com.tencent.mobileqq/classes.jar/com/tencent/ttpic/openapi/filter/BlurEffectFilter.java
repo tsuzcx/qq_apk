@@ -15,13 +15,13 @@ public class BlurEffectFilter
   private Frame mBlurFrame2 = new Frame();
   private double mStrength;
   
-  public void ApplyGLSLFilter()
+  public void applyGLSLFilter()
   {
     this.mBlurFilter.apply();
     this.mBlendFilter.apply();
   }
   
-  public void ClearGLSL()
+  public void clearGLSL()
   {
     this.mBlurFilter.clearGLSLSelf();
     this.mBlendFilter.clearGLSLSelf();
@@ -30,7 +30,17 @@ public class BlurEffectFilter
     this.mBlendFrame.clear();
   }
   
-  public Frame RenderProcess(int paramInt1, int paramInt2, int paramInt3)
+  public double getStrength()
+  {
+    return this.mStrength;
+  }
+  
+  public Frame render(Frame paramFrame)
+  {
+    return renderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+  }
+  
+  public Frame renderProcess(int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt3 * 300 / paramInt2;
     this.mBlurFilter.updateTextureSize(1.0F / 300, 0.0F);
@@ -42,16 +52,6 @@ public class BlurEffectFilter
     return this.mBlendFrame;
   }
   
-  public double getStrength()
-  {
-    return this.mStrength;
-  }
-  
-  public Frame render(Frame paramFrame)
-  {
-    return RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-  }
-  
   public void updateFilterBlurStrength(double paramDouble)
   {
     this.mStrength = paramDouble;
@@ -60,7 +60,7 @@ public class BlurEffectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BlurEffectFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public final class GooglePlayServicesUpdatedReceiver
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(60637);
+    AppMethodBeat.i(11129);
     paramIntent = paramIntent.getData();
     paramContext = null;
     if (paramIntent != null) {
@@ -30,19 +30,19 @@ public final class GooglePlayServicesUpdatedReceiver
       this.zzkt.zzv();
       unregister();
     }
-    AppMethodBeat.o(60637);
+    AppMethodBeat.o(11129);
   }
   
   public final void unregister()
   {
     try
     {
-      AppMethodBeat.i(60636);
+      AppMethodBeat.i(11128);
       if (this.mContext != null) {
         this.mContext.unregisterReceiver(this);
       }
       this.mContext = null;
-      AppMethodBeat.o(60636);
+      AppMethodBeat.o(11128);
       return;
     }
     finally {}
@@ -60,7 +60,7 @@ public final class GooglePlayServicesUpdatedReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.GooglePlayServicesUpdatedReceiver
  * JD-Core Version:    0.7.0.1
  */

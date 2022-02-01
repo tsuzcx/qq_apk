@@ -10,20 +10,21 @@ class PttManager$2
   
   public void onCompleted(int paramInt, String paramString, TokenFetcher.DownloadInfo paramDownloadInfo)
   {
-    if ((paramInt == 0) && (paramDownloadInfo != null)) {
-      CosFileTransfer.downloadFile(paramDownloadInfo.file_url, this.val$savePath, paramDownloadInfo.token, null, new PttManager.2.1(this));
-    }
-    do
+    if ((paramInt == 0) && (paramDownloadInfo != null))
     {
+      CosFileTransfer.downloadFile(paramDownloadInfo.file_url, this.val$savePath, paramDownloadInfo.token, null, new PttManager.2.1(this));
       return;
-      Log.e("PTTManager", "downloadFile|get download file token failed");
-    } while (this.val$monitor == null);
-    this.val$monitor.onCompleted(paramInt, this.val$savePath, this.val$downloadUrl);
+    }
+    Log.e("PTTManager", "downloadFile|get download file token failed");
+    paramString = this.val$monitor;
+    if (paramString != null) {
+      paramString.onCompleted(paramInt, this.val$savePath, this.val$downloadUrl);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.ptt.PttManager.2
  * JD-Core Version:    0.7.0.1
  */

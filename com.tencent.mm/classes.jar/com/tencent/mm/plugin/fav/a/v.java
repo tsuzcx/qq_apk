@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.fav.a;
 
-import android.app.Activity;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.ui.widget.snackbar.a.b;
+import com.tencent.mm.protocal.protobuf.dpo;
+import com.tencent.mm.protocal.protobuf.dpr;
+import java.util.LinkedList;
 
 public abstract interface v
-  extends a
 {
-  public abstract void a(int paramInt, Activity paramActivity, a.b paramb);
+  public abstract void a(long paramLong, LinkedList<dpo> paramLinkedList, LinkedList<dpr> paramLinkedList1, int paramInt);
 }
 
 

@@ -5,7 +5,7 @@ import android.view.OrientationEventListener;
 class OrientationDetector$3
   implements Runnable
 {
-  OrientationDetector$3(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
+  OrientationDetector$3(OrientationDetector paramOrientationDetector, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -14,32 +14,36 @@ class OrientationDetector$3
       if (OrientationDetector.access$700(this.this$0) == null) {
         return;
       }
-    }
-    try
-    {
-      if (this.val$enable) {
-        if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
-          OrientationDetector.access$700(this.this$0).enable();
+      try
+      {
+        if (this.val$enable)
+        {
+          if (OrientationDetector.access$700(this.this$0).canDetectOrientation()) {
+            OrientationDetector.access$700(this.this$0).enable();
+          }
+        }
+        else {
+          OrientationDetector.access$700(this.this$0).disable();
         }
       }
-      for (;;)
+      catch (Throwable localThrowable)
       {
-        label53:
-        return;
-        localObject2 = finally;
-        throw localObject2;
-        OrientationDetector.access$700(this.this$0).disable();
+        label66:
+        break label66;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      break label53;
+      if (this.val$isDestory) {
+        synchronized (OrientationDetector.access$600(this.this$0))
+        {
+          OrientationDetector.access$702(this.this$0, null);
+        }
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.3
  * JD-Core Version:    0.7.0.1
  */

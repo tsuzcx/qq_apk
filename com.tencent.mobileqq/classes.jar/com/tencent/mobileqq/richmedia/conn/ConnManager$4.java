@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import axsq;
-import axxr;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 
-public class ConnManager$4
+class ConnManager$4
   implements Runnable
 {
-  public ConnManager$4(axsq paramaxsq, long paramLong) {}
+  ConnManager$4(ConnManager paramConnManager, long paramLong) {}
   
   public void run()
   {
-    ((axxr)axsq.a(this.this$0).getBusinessHandler(0)).b(this.a);
+    ((PeakAudioTransHandler)ConnManager.c(this.this$0).getBusinessHandler(PeakAppInterface.b)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager.4
  * JD-Core Version:    0.7.0.1
  */

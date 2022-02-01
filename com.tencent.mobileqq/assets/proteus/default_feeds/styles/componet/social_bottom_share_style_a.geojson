@@ -1,0 +1,217 @@
+{
+  "view_type": "container",
+  "direction": "vertical",
+  "height": {
+    "type": "wrap_content"
+  },
+  "width": {
+    "type": "relative",
+    "value": "375"
+  },
+  "subviews": [
+    {
+      "view_type": "UIView",
+      "view_id": "id_social_bottom_style_a",
+      "event_type": "cmd_social_bottom_click",
+      "direction": "horizontal",
+      "height": {
+        "type": "absolutely",
+        "value": "44"
+      },
+      "width": {
+        "type": "relative",
+        "value": "375"
+      },
+      "margin_top": "-10",
+      "margin_left": "31.5",
+      "subviews": [
+        {
+          "view_type": "UIButton",
+          "event_type": "cmd_comment_click",
+          "view_id": "id_comment_button_style_a",
+          "align_parent_center_vertical": "YES",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setEnableString:":"$comment_enable",
+            "setTitle:": "$comment_text",
+            "setAlphaString:":"$comment_alpha",
+            "setTitleColors:forStates:":[["#262626"],["0"]],
+            "setImages:forStates:": [
+              [
+                "social_bottom_style_a_comment"
+              ],
+              [
+                "0"
+              ]
+            ],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "12",
+            "setDTElementID:withParams:": [
+              "comment_button",
+              {
+                "rowkey": "$dt_rowkey",
+                "content_type": "$dt_content_type",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id",
+                "backend_info": "$dt_backend_info",
+                "area": "list",
+                "actionid": "click_comment",
+                "click_type": "single"
+              }
+            ]
+          }
+        },
+        {
+          "view_type": "ReadInJoyLikeButton",
+          "view_id": "id_like_button_style_a",
+          "align_parent_center_vertical": "YES",
+          "event_type": "cmd_like_click",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setInnerMargin:": "8",
+            "setTitle:": "$like_text",
+            "setSelectedString:": "$like_selected_state",
+            "setImages:colors:direction:forStates:": [
+              [
+                "social_bottom_style_a_like",
+                "social_bottom_style_a_like_active"
+              ],
+              [
+                "#262626",
+                "#262626"
+              ],
+              [
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "4"
+              ]
+            ],
+            "setFontSizeString:": "12",
+            "setDTElementID:withParams:": [
+              "like_button",
+              {
+                "rowkey": "$dt_rowkey",
+                "content_type": "$dt_content_type",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id",
+                "backend_info": "$dt_backend_info",
+                "area": "list",
+                "actionid": "$dt_like_btn_actionId",
+                "click_type": "single"
+              }
+            ]
+          }
+        },
+
+        {
+          "view_type": "UIButton",
+          "align_parent_center_vertical": "YES",
+          "event_type": "cmd_biu_click",
+          "view_id": "id_biu_button_style_a",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setTitle:": "$biu_count_style_a",
+            "setImages:forStates:": [
+              [
+                "biu_comment_icon"
+              ],
+              [
+                "0"
+              ]
+            ],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "12",
+            "setAlphaString:":"1",
+            "setEnableString:":"1",
+            "setDTElementID:withParams:": [
+              "share_button",
+              {
+                "rowkey": "$dt_rowkey_biu",
+                "content_type": "$dt_content_type_biu",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id_biu",
+                "backend_info": "$dt_backend_info_biu",
+                "area": "list",
+                "actionid": "click_share",
+                "click_type": "single"
+              }
+            ]
+          }
+        },
+        {
+          "view_type": "UIButton",
+          "align_parent_center_vertical": "YES",
+          "event_type": "cmd_share_click",
+          "view_id": "id_share_button_style_a",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setTitle:": "$share_count_style_a",
+            "setImages:forStates:": [
+              [
+                "share_bottom_icon"
+              ],
+              [
+                "0"
+              ]
+            ],
+            "setTitleColors:forStates:":[["#262626"],["0"]],
+            "setInnerMargin:": "8",
+            "setFontSizeString:": "12",
+            "setAlphaString:":"1",
+            "setEnableString:":"1"
+          }
+        },
+        {
+          "view_type": "UIButton",
+          "view_id": "id_bottom_dislike_button_style_a",
+          "default_visible" : "YES",
+          "event_type": "cmd_dislike_click",
+          "align_parent_center_vertical": "YES",
+          "height": {
+            "type": "relative",
+            "value": "40"
+          },
+          "width": {
+            "type": "relative",
+            "value": "27"
+          },
+          "attributes": {
+            "setImage:": "feeds_dislike"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.DoodleActivity;
 import com.tencent.mobileqq.widget.DoodlePicView;
+import com.tencent.mobileqq.widget.DoodleTextView;
 
 public class ciq
   implements View.OnClickListener
@@ -15,18 +16,23 @@ public class ciq
     int i = 0;
     while (i < 6)
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
+      this.a.jdField_b_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(null);
       i += 1;
     }
-    paramView.setBackgroundResource(2130839734);
+    paramView.setBackgroundResource(2130839732);
     int k = paramView.getId();
     i = j;
     for (;;)
     {
       if (i < 6)
       {
-        if (this.a.jdField_a_of_type_ArrayOfInt[i] == k) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintThickness(this.a.c[i]);
+        if (this.a.jdField_b_of_type_ArrayOfInt[i] == k)
+        {
+          if (this.a.jdField_a_of_type_Boolean) {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.d();
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodleTextView.setPaintColor(this.a.d[i]);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetDoodlePicView.setPaintColor(this.a.d[i]);
         }
       }
       else {

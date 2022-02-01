@@ -13,7 +13,11 @@ public class CancellationSignalBeforeJB
       {
         wait();
       }
-      catch (InterruptedException localInterruptedException) {}
+      catch (InterruptedException localInterruptedException)
+      {
+        label14:
+        break label14;
+      }
     }
   }
   
@@ -41,20 +45,18 @@ public class CancellationSignalBeforeJB
     //   27: aload_0
     //   28: monitorexit
     //   29: aload_1
-    //   30: ifnull +9 -> 39
+    //   30: ifnull +33 -> 63
     //   33: aload_1
     //   34: invokeinterface 32 1 0
-    //   39: aload_0
-    //   40: monitorenter
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 19	com/tencent/mm/vfs/CancellationSignalBeforeJB:mCancelInProgress	Z
-    //   46: aload_0
-    //   47: invokevirtual 35	java/lang/Object:notifyAll	()V
+    //   39: goto +24 -> 63
+    //   42: astore_1
+    //   43: aload_0
+    //   44: monitorenter
+    //   45: aload_0
+    //   46: iconst_0
+    //   47: putfield 19	com/tencent/mm/vfs/CancellationSignalBeforeJB:mCancelInProgress	Z
     //   50: aload_0
-    //   51: monitorexit
-    //   52: return
-    //   53: astore_1
+    //   51: invokevirtual 35	java/lang/Object:notifyAll	()V
     //   54: aload_0
     //   55: monitorexit
     //   56: aload_1
@@ -64,41 +66,44 @@ public class CancellationSignalBeforeJB
     //   60: monitorexit
     //   61: aload_1
     //   62: athrow
-    //   63: astore_1
-    //   64: aload_0
-    //   65: monitorenter
-    //   66: aload_0
-    //   67: iconst_0
-    //   68: putfield 19	com/tencent/mm/vfs/CancellationSignalBeforeJB:mCancelInProgress	Z
-    //   71: aload_0
-    //   72: invokevirtual 35	java/lang/Object:notifyAll	()V
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_1
-    //   78: athrow
-    //   79: astore_1
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: aload_1
-    //   83: athrow
+    //   63: aload_0
+    //   64: monitorenter
+    //   65: aload_0
+    //   66: iconst_0
+    //   67: putfield 19	com/tencent/mm/vfs/CancellationSignalBeforeJB:mCancelInProgress	Z
+    //   70: aload_0
+    //   71: invokevirtual 35	java/lang/Object:notifyAll	()V
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: return
+    //   77: astore_1
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: aload_1
+    //   81: athrow
+    //   82: astore_1
+    //   83: aload_0
+    //   84: monitorexit
+    //   85: aload_1
+    //   86: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	this	CancellationSignalBeforeJB
+    //   0	87	0	this	CancellationSignalBeforeJB
     //   26	8	1	localOnCancelListener	CancellationSignalBeforeJB.OnCancelListener
-    //   53	4	1	localObject1	Object
+    //   42	15	1	localObject1	Object
     //   58	4	1	localObject2	Object
-    //   63	15	1	localObject3	Object
-    //   79	4	1	localObject4	Object
+    //   77	4	1	localObject3	Object
+    //   82	4	1	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   41	52	53	finally
-    //   54	56	53	finally
-    //   2	11	58	finally
-    //   12	29	58	finally
+    //   33	39	42	finally
+    //   45	56	58	finally
     //   59	61	58	finally
-    //   33	39	63	finally
-    //   66	77	79	finally
-    //   80	82	79	finally
+    //   65	76	77	finally
+    //   78	80	77	finally
+    //   2	11	82	finally
+    //   12	29	82	finally
+    //   83	85	82	finally
   }
   
   public boolean isCanceled()
@@ -120,24 +125,27 @@ public class CancellationSignalBeforeJB
         return;
       }
       this.mOnCancelListener = paramOnCancelListener;
-      if ((!this.mIsCanceled) || (paramOnCancelListener == null)) {
+      if ((this.mIsCanceled) && (paramOnCancelListener != null))
+      {
+        paramOnCancelListener.onCancel();
         return;
       }
+      return;
     }
     finally {}
-    paramOnCancelListener.onCancel();
   }
   
   public void throwIfCanceled()
   {
-    if (isCanceled()) {
-      throw new OperationCanceledException();
+    if (!isCanceled()) {
+      return;
     }
+    throw new OperationCanceledException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.CancellationSignalBeforeJB
  * JD-Core Version:    0.7.0.1
  */

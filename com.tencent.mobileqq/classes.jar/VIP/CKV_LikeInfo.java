@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CKV_LikeInfo
   extends JceStruct
 {
-  public long iTotal;
+  public long iTotal = 0L;
   
   public CKV_LikeInfo() {}
   
@@ -28,7 +28,7 @@ public final class CKV_LikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.CKV_LikeInfo
  * JD-Core Version:    0.7.0.1
  */

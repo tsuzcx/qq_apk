@@ -1,14 +1,19 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
 import android.media.MediaPlayer;
-import com.tencent.qqmini.sdk.core.model.SongInfo;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.model.SongInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MusicPlayerProxy.MusicPlayerListener;
 import java.io.IOException;
 
+@ProxyService(proxy=MusicPlayerProxy.class)
 public class MusicPlayerProxyDefault
   implements MusicPlayerProxy
 {
-  private MusicPlayerProxy.MusicPlayerListener mListener;
-  private MediaPlayer player;
+  private MusicPlayerProxy.MusicPlayerListener mListener = null;
+  private MediaPlayer player = null;
   
   public SongInfo getCurrentSong()
   {
@@ -17,29 +22,32 @@ public class MusicPlayerProxyDefault
   
   public int getCurrentSongPosition()
   {
-    if (this.player != null) {
-      return this.player.getCurrentPosition();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getCurrentPosition();
     }
     return 0;
   }
   
   public int getDuration()
   {
-    if (this.player != null) {
-      return this.player.getDuration();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.getDuration();
     }
     return 0;
   }
   
-  public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener)
+  public void init(MusicPlayerProxy.MusicPlayerListener paramMusicPlayerListener, String paramString1, String paramString2)
   {
     this.mListener = paramMusicPlayerListener;
-    if (this.player != null)
+    paramMusicPlayerListener = this.player;
+    if (paramMusicPlayerListener != null)
     {
-      this.player.release();
+      paramMusicPlayerListener.release();
       this.player = null;
     }
-    this.player = new MediaPlayer();
+    this.player = new ReportMediaPlayer();
   }
   
   public boolean isInit()
@@ -49,75 +57,84 @@ public class MusicPlayerProxyDefault
   
   public boolean isPlaying()
   {
-    if (this.player != null) {
-      return this.player.isPlaying();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      return localMediaPlayer.isPlaying();
     }
     return false;
   }
   
   public void pause()
   {
-    if (this.player != null) {
-      this.player.pause();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.pause();
     }
   }
   
   public void resume()
   {
-    if (this.player != null) {
-      this.player.start();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.start();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.player != null) {
-      this.player.seekTo(paramInt);
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.seekTo(paramInt);
     }
   }
   
   public void setPlayMode(int paramInt)
   {
-    if ((this.player != null) && (100 == paramInt)) {
-      this.player.setLooping(false);
+    MediaPlayer localMediaPlayer = this.player;
+    if ((localMediaPlayer != null) && (100 == paramInt)) {
+      localMediaPlayer.setLooping(false);
     }
   }
   
   public void startPlay(SongInfo[] paramArrayOfSongInfo, int paramInt)
   {
-    if (this.player != null) {
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null)
+    {
       paramArrayOfSongInfo = paramArrayOfSongInfo[paramInt];
-    }
-    try
-    {
-      this.player.setDataSource(paramArrayOfSongInfo.b);
-      this.player.prepareAsync();
-      this.player.setOnPreparedListener(new MusicPlayerProxyDefault.1(this));
-      return;
-    }
-    catch (IOException paramArrayOfSongInfo)
-    {
-      paramArrayOfSongInfo.printStackTrace();
+      try
+      {
+        localMediaPlayer.setDataSource(paramArrayOfSongInfo.url);
+        this.player.prepareAsync();
+        this.player.setOnPreparedListener(new MusicPlayerProxyDefault.1(this));
+        return;
+      }
+      catch (IOException paramArrayOfSongInfo)
+      {
+        paramArrayOfSongInfo.printStackTrace();
+      }
     }
   }
   
   public void stop()
   {
-    if (this.player != null) {
-      this.player.stop();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.stop();
     }
   }
   
   public void unInit()
   {
-    if (this.player != null) {
-      this.player.release();
+    MediaPlayer localMediaPlayer = this.player;
+    if (localMediaPlayer != null) {
+      localMediaPlayer.release();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxyDefault
  * JD-Core Version:    0.7.0.1
  */

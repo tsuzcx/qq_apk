@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.JsonToken;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.value.ScaleXY;
 
 public class ScaleXYParser
@@ -11,19 +11,19 @@ public class ScaleXYParser
   
   public ScaleXY parse(JsonReader paramJsonReader, float paramFloat)
   {
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {}
-    float f1;
-    float f2;
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramJsonReader.beginArray();
-      }
-      f1 = (float)paramJsonReader.nextDouble();
-      f2 = (float)paramJsonReader.nextDouble();
-      while (paramJsonReader.hasNext()) {
-        paramJsonReader.skipValue();
-      }
+    int i;
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      paramJsonReader.beginArray();
+    }
+    float f1 = (float)paramJsonReader.nextDouble();
+    float f2 = (float)paramJsonReader.nextDouble();
+    while (paramJsonReader.hasNext()) {
+      paramJsonReader.skipValue();
     }
     if (i != 0) {
       paramJsonReader.endArray();

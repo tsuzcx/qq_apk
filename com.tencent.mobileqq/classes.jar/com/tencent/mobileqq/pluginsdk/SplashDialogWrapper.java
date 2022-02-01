@@ -14,7 +14,7 @@ public final class SplashDialogWrapper
   private boolean mOnlyCheckID;
   private String mPluginApk;
   private String mPluginName;
-  private BroadcastReceiver mReceiver;
+  private BroadcastReceiver mReceiver = null;
   private int mTimeOut;
   
   public SplashDialogWrapper(Context paramContext, Dialog paramDialog, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
@@ -29,30 +29,29 @@ public final class SplashDialogWrapper
   
   public void dismiss()
   {
-    if (this.mReceiver != null) {}
-    try
+    BroadcastReceiver localBroadcastReceiver = this.mReceiver;
+    if (localBroadcastReceiver != null)
     {
-      this.mContext.unregisterReceiver(this.mReceiver);
-      if (DebugHelper.sDebug) {
-        DebugHelper.log("plugin_tag", "SplashDialogWrapper.dismiss unregisterReceiver");
-      }
-      this.mReceiver = null;
-      this.mHandler.removeMessages(0);
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          this.mBase.dismiss();
-          return;
+        this.mContext.unregisterReceiver(localBroadcastReceiver);
+        if (DebugHelper.sDebug) {
+          DebugHelper.log("plugin_tag", "SplashDialogWrapper.dismiss unregisterReceiver");
         }
-        catch (Exception localException) {}
-        localIllegalArgumentException = localIllegalArgumentException;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
         localIllegalArgumentException.printStackTrace();
       }
+      this.mReceiver = null;
     }
+    this.mHandler.removeMessages(0);
+    try
+    {
+      this.mBase.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
   }
   
   public void show()
@@ -75,7 +74,7 @@ public final class SplashDialogWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.SplashDialogWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ public class ibc
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    QlinkStandardDialogActivity.a(this.a);
     this.a.finish();
   }
 }

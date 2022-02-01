@@ -13,121 +13,236 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bieg;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter;
+import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
+import com.tencent.biz.pubaccount.weishi_new.data.WSFeedDataManager;
 import com.tencent.biz.pubaccount.weishi_new.event.FollowEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSAddCommentEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSFriendFeedExposureEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSPlayerMuteEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventBus;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleEventReceiver;
 import com.tencent.biz.pubaccount.weishi_new.event.WSVideoPlayEvent;
+import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder;
+import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFriendCollectionHolder;
+import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowPersonHolder;
+import com.tencent.biz.pubaccount.weishi_new.holder.WSFollowSeparateHolder1;
+import com.tencent.biz.pubaccount.weishi_new.holder.WSPlayableHolder;
+import com.tencent.biz.pubaccount.weishi_new.like.WSLikeAnimationManger;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerAudioControl;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerWrapper;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoInfo;
+import com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPresenter;
+import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSFollowView;
+import com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
+import com.tencent.biz.pubaccount.weishi_new.report.WsBeaconReportPresenter;
+import com.tencent.biz.pubaccount.weishi_new.ui.OnTabSelectedListener;
+import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.biz.pubaccount.weishi_new.util.WSMonitorUtil;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.pull2refresh.BaseAdapter;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import tbb;
-import tbc;
-import tbd;
-import tbe;
-import tcq;
-import tdn;
-import tel;
-import tff;
-import tfi;
-import tfk;
-import tfr;
-import tgd;
-import tgg;
-import thl;
-import tho;
-import thp;
-import tih;
-import tit;
-import tjt;
-import tlf;
-import tlo;
-import tlv;
-import tnt;
 
 public class WSFollowFragment
-  extends WSBaseHomeFragment<tit, tih, List<stFeed>>
-  implements tfi, tit
+  extends WSBaseHomeFragment<IWSFollowView, WSFollowPresenter, List<stFeed>>
+  implements WSSimpleEventReceiver, IWSFollowView, OnTabSelectedListener
 {
-  public static boolean b;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private tbb jdField_a_of_type_Tbb;
-  public tdn a;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
+  public static boolean j;
+  private long A = 0L;
+  public WsCommentPresenter k;
+  private WSFollowAdapter l;
+  private LinearLayoutManager m;
+  private WSPlayerManager n;
+  private LinearLayout o;
+  private WSPlayableHolder p;
+  private boolean q = true;
+  private boolean r;
+  private boolean s;
+  private boolean t;
+  private boolean u;
+  private boolean v;
+  private boolean w;
+  private boolean x;
+  private boolean y;
+  private boolean z;
   
-  private tgd a(int paramInt, boolean paramBoolean)
+  private void G()
   {
-    int i;
-    if (this.jdField_a_of_type_Tbb != null)
+    WSSimpleEventBus.a().a(this);
+  }
+  
+  private void H()
+  {
+    this.n = new WSPlayerManager(WeishiUtils.h());
+    this.n.e(true);
+    this.l.a(this.n);
+  }
+  
+  private void I()
+  {
+    if (!this.v)
     {
-      i = paramInt;
-      if (paramInt >= 0) {}
+      com.tencent.biz.pubaccount.weishi_new.report.WSReportEventConstants.e = 2;
+      return;
     }
-    else
+    if ((!this.w) && (!this.x))
     {
-      return null;
+      com.tencent.biz.pubaccount.weishi_new.report.WSReportEventConstants.e = 3;
+      return;
     }
-    tgd localtgd;
-    do
+    com.tencent.biz.pubaccount.weishi_new.report.WSReportEventConstants.e = 1;
+  }
+  
+  private void J()
+  {
+    int i = this.m.findFirstVisibleItemPosition();
+    int i1 = this.m.findLastVisibleItemPosition();
+    if (i >= 0)
     {
-      i += 1;
-      if (i >= this.jdField_a_of_type_Tbb.a().size()) {
-        break;
+      if (i1 >= this.l.getDataList().size()) {
+        return;
       }
-      localtgd = c(i, paramBoolean);
-    } while (localtgd == null);
-    return localtgd;
+      while (i <= i1)
+      {
+        a(i);
+        i += 1;
+      }
+    }
+  }
+  
+  private void K()
+  {
+    int i1 = this.h.getRecyclerView().getChildCount();
+    int i = 0;
+    while (i < i1)
+    {
+      a(i);
+      i += 1;
+    }
+  }
+  
+  private void L()
+  {
+    WSLog.b("WSFollowFragment", "showErrorView");
+    this.o.setVisibility(0);
+    WSReportDc00898.b(false);
+    this.o.setOnClickListener(new WSFollowFragment.4(this));
+  }
+  
+  private WSPlayableHolder a(int paramInt, boolean paramBoolean)
+  {
+    if (this.l != null)
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        return null;
+      }
+      while (i < this.l.getDataList().size())
+      {
+        WSPlayableHolder localWSPlayableHolder = c(i, paramBoolean);
+        if (localWSPlayableHolder != null) {
+          return localWSPlayableHolder;
+        }
+        i += 1;
+      }
+    }
     return null;
   }
   
-  private boolean a(tgd paramtgd)
+  private void a(int paramInt)
   {
-    if (paramtgd == null) {}
-    while (tlf.a(paramtgd.a()) < 50) {
-      return false;
+    RecyclerView.ViewHolder localViewHolder = this.h.getRecyclerView().findViewHolderForAdapterPosition(paramInt);
+    if ((localViewHolder instanceof WSFollowFeedHolder))
+    {
+      ((WSFollowFeedHolder)localViewHolder).l();
+      return;
     }
-    return true;
+    if ((localViewHolder instanceof WSFollowPersonHolder))
+    {
+      ((WSFollowPersonHolder)localViewHolder).b();
+      return;
+    }
+    if ((localViewHolder instanceof WSFollowSeparateHolder1))
+    {
+      ((WSFollowSeparateHolder1)localViewHolder).a();
+      return;
+    }
+    if ((localViewHolder instanceof WSFollowFriendCollectionHolder)) {
+      ((WSFollowFriendCollectionHolder)localViewHolder).c();
+    }
   }
   
-  private tgd b(int paramInt, boolean paramBoolean)
+  private void a(WSPlayerManager paramWSPlayerManager)
+  {
+    if ((paramWSPlayerManager != null) && (paramWSPlayerManager.g()))
+    {
+      WSFollowBeaconReport.a(paramWSPlayerManager.r());
+      this.q = true;
+      this.r = true;
+    }
+  }
+  
+  private WSPlayableHolder b(int paramInt, boolean paramBoolean)
   {
     int i = paramInt;
     if (paramInt < 0) {
       return null;
     }
-    tgd localtgd;
-    do
+    while (i >= 0)
     {
-      i -= 1;
-      if (i < 0) {
-        break;
+      WSPlayableHolder localWSPlayableHolder = c(i, paramBoolean);
+      if (localWSPlayableHolder != null) {
+        return localWSPlayableHolder;
       }
-      localtgd = c(i, paramBoolean);
-    } while (localtgd == null);
-    return localtgd;
+      i -= 1;
+    }
+    return null;
   }
   
-  private tgd c(int paramInt, boolean paramBoolean)
+  private void b(WSPlayableHolder paramWSPlayableHolder)
   {
-    Object localObject = (stFeed)this.jdField_a_of_type_Tbb.a().get(paramInt);
+    this.p = paramWSPlayableHolder;
+    this.l.a(paramWSPlayableHolder);
+    this.s = false;
+  }
+  
+  private void b(WSPlayerManager paramWSPlayerManager)
+  {
+    if ((this.q) && (paramWSPlayerManager != null) && ((paramWSPlayerManager.g()) || (paramWSPlayerManager.f())))
+    {
+      WSFollowBeaconReport.a(paramWSPlayerManager.r(), false);
+      paramWSPlayerManager.t();
+    }
+    this.q = false;
+  }
+  
+  private WSPlayableHolder c(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (stFeed)this.l.getDataList().get(paramInt);
     if ((((stFeed)localObject).feed_type == 2) && (((stFeed)localObject).feed != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForLayoutPosition(paramInt);
-      if ((localObject instanceof tgd))
+      localObject = this.h.getRecyclerView().findViewHolderForLayoutPosition(paramInt);
+      if ((localObject instanceof WSPlayableHolder))
       {
-        localObject = (tgd)localObject;
-        if ((a((tgd)localObject)) || (paramBoolean)) {
+        localObject = (WSPlayableHolder)localObject;
+        if ((c((WSPlayableHolder)localObject)) || (paramBoolean)) {
           return localObject;
         }
       }
@@ -135,95 +250,105 @@ public class WSFollowFragment
     return null;
   }
   
-  private void c(tgd paramtgd)
+  private boolean c(WSPlayableHolder paramWSPlayableHolder)
   {
-    this.jdField_a_of_type_Tbb.a(paramtgd);
-    this.c = false;
-  }
-  
-  private void e()
-  {
-    tff.a().a(this);
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = new WSPlayerManager(tlv.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d(true);
-    this.jdField_a_of_type_Tbb.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager);
-  }
-  
-  private void g()
-  {
-    if (!this.e)
-    {
-      tjx.b = 2;
-      return;
+    boolean bool = false;
+    if (paramWSPlayableHolder == null) {
+      return false;
     }
-    if ((!this.f) && (!this.g))
-    {
-      tjx.b = 3;
-      return;
+    if (WSFeedUtils.a(paramWSPlayableHolder.k()) >= 50) {
+      bool = true;
     }
-    tjx.b = 1;
+    return bool;
   }
   
-  private void h()
+  private void i(boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
-    if ((i < 0) || (j >= this.jdField_a_of_type_Tbb.a().size())) {
-      return;
-    }
-    label37:
-    RecyclerView.ViewHolder localViewHolder;
-    if (i <= j)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSFollowFragment.java][reportVideoPlay] tabSelectedIndex:");
+    ((StringBuilder)localObject).append(WSHomeFragment.f);
+    ((StringBuilder)localObject).append(", isPlay:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    WSLog.e("WS_VIDEO_PLAY_TIME", ((StringBuilder)localObject).toString());
+    if (WSHomeFragment.f == 0)
     {
-      localViewHolder = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForAdapterPosition(i);
-      if (!(localViewHolder instanceof tfk)) {
-        break label75;
+      localObject = this.l;
+      if (localObject == null) {
+        return;
       }
-      ((tfk)localViewHolder).d();
-    }
-    for (;;)
-    {
-      i += 1;
-      break label37;
-      break;
-      label75:
-      if ((localViewHolder instanceof tfr)) {
-        ((tfr)localViewHolder).a();
+      if (paramBoolean)
+      {
+        a(((WSFollowAdapter)localObject).e());
+        return;
       }
+      b(((WSFollowAdapter)localObject).e());
     }
   }
   
-  protected RecyclerView.LayoutManager a()
+  public void A()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new tbe(this.jdField_a_of_type_AndroidContentContext, 1, false);
-    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  }
-  
-  protected bieg a()
-  {
-    this.jdField_a_of_type_Tbb = new tbb(this);
-    return this.jdField_a_of_type_Tbb;
-  }
-  
-  public XRecyclerView a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView;
-  }
-  
-  public tbb a()
-  {
-    return this.jdField_a_of_type_Tbb;
-  }
-  
-  public tgd a(tgd paramtgd, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramtgd != null)
+    WSLog.b("WSFollowFragment", "onTabSelected");
+    WSPlayerManager localWSPlayerManager = this.n;
+    if (localWSPlayerManager == null) {
+      return;
+    }
+    this.s = true;
+    int i = this.m.findFirstVisibleItemPosition();
+    WSPlayableHolder localWSPlayableHolder = this.p;
+    if (localWSPlayableHolder == null) {
+      localWSPlayableHolder = a(i, true);
+    }
+    a(localWSPlayableHolder);
+    WSPlayerAudioControl.a().a(localWSPlayerManager.o() ^ true);
+    if (!this.y)
     {
-      int i = paramtgd.getLayoutPosition();
+      K();
+      this.y = true;
+      return;
+    }
+    J();
+  }
+  
+  public void B()
+  {
+    WSLog.b("WSFollowFragment", "onTabUnSelected");
+    WSPlayerManager localWSPlayerManager = this.n;
+    if (localWSPlayerManager == null) {
+      return;
+    }
+    if (localWSPlayerManager.g()) {
+      localWSPlayerManager.n();
+    }
+    WSPlayerAudioControl.a().a(false);
+    ((WSFollowPresenter)this.b).d();
+  }
+  
+  public boolean C()
+  {
+    return WSExpABTestManager.a().k();
+  }
+  
+  public boolean D()
+  {
+    return (!this.z) && (C());
+  }
+  
+  public void E()
+  {
+    this.z = true;
+    WSFeedUtils.b();
+  }
+  
+  public boolean F()
+  {
+    return this.q;
+  }
+  
+  public WSPlayableHolder a(WSPlayableHolder paramWSPlayableHolder, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramWSPlayableHolder != null)
+    {
+      int i = paramWSPlayableHolder.getLayoutPosition();
       if (paramBoolean1) {
         return a(i + 1, paramBoolean2);
       }
@@ -232,43 +357,11 @@ public class WSFollowFragment
     return null;
   }
   
-  @NonNull
-  public tih a()
-  {
-    return new tih();
-  }
-  
-  protected void a()
-  {
-    this.c = true;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StringBuilder localStringBuilder = new StringBuilder().append("onTabSelected: ");
-    if (paramInt == 0) {}
-    for (String str = "follow";; str = "recommend")
-    {
-      tlo.b("WSFollowFragment", str);
-      if (paramInt == 0) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c()) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d();
-      }
-      return;
-    }
-    this.c = true;
-    b(a(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition(), false));
-    h();
-  }
-  
   public void a(int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().findViewHolderForAdapterPosition(paramInt);
-    if ((localViewHolder instanceof tfk)) {
-      ((tfk)localViewHolder).a(paramstSimpleMetaFeed);
+    RecyclerView.ViewHolder localViewHolder = this.h.getRecyclerView().findViewHolderForAdapterPosition(paramInt);
+    if ((localViewHolder instanceof WSFollowFeedHolder)) {
+      ((WSFollowFeedHolder)localViewHolder).a(paramstSimpleMetaFeed);
     }
   }
   
@@ -276,136 +369,211 @@ public class WSFollowFragment
   
   protected void a(View paramView)
   {
-    tcq.a().b(new tbc(this));
-    f();
-    e();
-    paramView = (FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368492);
-    if (this.jdField_a_of_type_Tdn == null)
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      paramView.setPadding(0, ImmersiveUtils.getStatusBarHeight(getBaseActivity()), 0, 0);
+    }
+    WeiShiCacheManager.a().b(new WSFollowFragment.1(this));
+    H();
+    G();
+    paramView = (FrameLayout)this.g.findViewById(2131436011);
+    this.o = ((LinearLayout)this.g.findViewById(2131437600));
+    if (this.k == null)
     {
-      this.jdField_a_of_type_Tdn = new tdn(this, 0);
-      ViewStub localViewStub = new ViewStub(getActivity());
+      this.k = new WsCommentPresenter(this, 0);
+      ViewStub localViewStub = new ViewStub(getBaseActivity());
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 80;
       localViewStub.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_Tdn.a(localViewStub);
       paramView.addView(localViewStub);
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().addOnScrollListener(new tbd(this));
+    this.h.getRecyclerView().addOnScrollListener(new WSFollowFragment.2(this));
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    ((tih)this.jdField_a_of_type_Taw).a(paramWSSimpleBaseEvent);
+    ((WSFollowPresenter)this.b).a(paramWSSimpleBaseEvent);
+  }
+  
+  public void a(WSPlayableHolder paramWSPlayableHolder)
+  {
+    if ((this.s) && (paramWSPlayableHolder != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSFollowFragment.java][onPlayFirstVideo] playVideo title:");
+      localStringBuilder.append(paramWSPlayableHolder.a.g);
+      localStringBuilder.append(", mPlayingHolder:");
+      localStringBuilder.append(paramWSPlayableHolder);
+      WSLog.c("WSFollowContinuePlayLog", localStringBuilder.toString());
+      b(paramWSPlayableHolder);
+      paramWSPlayableHolder = a(paramWSPlayableHolder, true, true);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSFollowFragment.java][onPlayFirstVideo] setPrePlayingHolder prePlayHolder:");
+      localStringBuilder.append(paramWSPlayableHolder);
+      WSLog.a("WS_VIDEO_PRE_PLAY", localStringBuilder.toString());
+      this.l.b(paramWSPlayableHolder);
+    }
+  }
+  
+  public void a(WSPlayableHolder paramWSPlayableHolder, String paramString1, String paramString2, int paramInt)
+  {
+    WSPlayerParam localWSPlayerParam = WSFeedDataManager.a().b();
+    if (localWSPlayerParam == null) {
+      return;
+    }
+    if (paramWSPlayableHolder == null) {
+      return;
+    }
+    if ((localWSPlayerParam.d != null) && (localWSPlayerParam.b != null) && (paramWSPlayableHolder.b != null) && (this.n != null))
+    {
+      paramWSPlayableHolder.b.d = localWSPlayerParam.d;
+      paramWSPlayableHolder.b.b = localWSPlayerParam.b;
+      paramWSPlayableHolder.b.l = localWSPlayerParam.l;
+      paramWSPlayableHolder.b.d.d(true);
+      this.l.b = paramWSPlayableHolder;
+      WSVerticalBeaconReport.a(paramString1, paramString2, paramWSPlayableHolder.b, false, paramInt, null);
+      if (!this.r) {
+        WSFollowBeaconReport.a(paramWSPlayableHolder.b);
+      }
+      paramString1 = a(paramWSPlayableHolder, true, true);
+      this.l.b(paramString1);
+      this.n.a(paramWSPlayableHolder.b, true);
+      this.n.c(this.l.b());
+      this.q = true;
+      this.r = false;
+      paramString1 = new StringBuilder();
+      paramString1.append("WSFollowFragment handleOnActivityResultFromVertical()2, title: ");
+      paramString1.append(paramWSPlayableHolder.b.c.g);
+      paramString1.append(", playingHolder: ");
+      paramString1.append(paramWSPlayableHolder);
+      WSLog.a("WSFollowContinuePlayLog", paramString1.toString());
+    }
   }
   
   protected void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    ((tih)b()).a(false, false);
+    ((WSFollowPresenter)aO_()).a(false, false);
+    ((WSFollowPresenter)aO_()).b();
   }
   
   protected void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
   {
-    if (!this.f) {
-      this.f = true;
+    if (!this.w) {
+      this.w = true;
     }
-    ((tih)b()).a(false, true);
+    ((WSFollowPresenter)aO_()).a(false, true);
   }
   
   public void a(List<stFeed> paramList)
   {
-    d();
-    if (this.jdField_a_of_type_Tbb != null) {
-      this.jdField_a_of_type_Tbb.a(paramList);
+    u();
+    if (this.o.isShown()) {
+      this.o.setVisibility(8);
     }
-    tel.a().a(paramList);
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(true, true);
+    WSFollowAdapter localWSFollowAdapter = this.l;
+    if (localWSFollowAdapter != null) {
+      localWSFollowAdapter.fillList(paramList);
+    }
+    WSFeedDataManager.a().a(paramList);
+    if (this.h != null) {
+      this.h.loadMoreComplete(true, true);
     }
   }
   
   public void a(List<stFeed> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Tbb.b(paramList);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      a(true, paramBoolean);
-      return;
+    if (this.o.isShown()) {
+      this.o.setVisibility(8);
     }
-  }
-  
-  public void a(tgd paramtgd)
-  {
-    thl localthl = tel.a().a();
-    if (localthl == null) {}
-    while ((paramtgd == null) || (localthl.jdField_a_of_type_Tho == null) || (localthl.jdField_a_of_type_AndroidViewView == null) || (paramtgd.jdField_a_of_type_Thl == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager == null)) {
-      return;
-    }
-    paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_Tho = localthl.jdField_a_of_type_Tho;
-    paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_AndroidViewView = localthl.jdField_a_of_type_AndroidViewView;
-    paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_Thy = localthl.jdField_a_of_type_Thy;
-    paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_Tho.c(true);
-    this.jdField_a_of_type_Tbb.a = paramtgd;
-    tnt.a(paramtgd.jdField_a_of_type_Thl, false);
-    tjt.a(paramtgd.jdField_a_of_type_Thl);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(paramtgd.jdField_a_of_type_Thl, true);
-    tlo.a("WSFollowContinuePlayLog", "WSFollowFragment handleOnActivityResultFromVertical()2, title: " + paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_Thp.d + ", playingHolder: " + paramtgd);
+    this.l.appendList(paramList);
+    c(true, paramBoolean ^ true);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!paramBoolean2) {
-      this.jdField_a_of_type_Tbb.a(View.inflate(getActivity(), 2131560221, null));
+    super.a(paramBoolean1, paramBoolean2);
+    if (paramBoolean2) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(paramBoolean1, paramBoolean2);
+    if (paramBoolean1)
+    {
+      A();
+      WSPublicAccReport.getInstance().reportPageVisitEnter("focus");
+      return;
+    }
+    B();
+    WSPublicAccReport.getInstance().reportPageVisitExit("focus");
   }
   
-  protected void b()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3)
   {
-    super.b();
-    if (this.jdField_a_of_type_Boolean) {
-      tlv.c("focus");
+    if ((paramBoolean1) && (!this.d)) {
+      this.u = true;
     }
   }
   
   public void b(List<stFeed> paramList)
   {
-    this.e = true;
-    this.jdField_a_of_type_Tbb.a(paramList);
-    a(true, true);
+    this.v = true;
+    if (this.o.isShown()) {
+      this.o.setVisibility(8);
+    }
+    this.l.fillList(paramList);
+    c(true, true);
   }
   
-  public void b(tgd paramtgd)
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.c) && (a(paramtgd)))
+    if (paramBoolean1)
     {
-      paramtgd.jdField_a_of_type_Thl.jdField_a_of_type_AndroidViewView = null;
-      tlo.c("WSFollowContinuePlayLog", "[WSFollowFragment.java][onPlayFirstVideo] playVideo title:" + paramtgd.jdField_a_of_type_Thp.d + ", mPlayingHolder:" + paramtgd);
-      c(paramtgd);
-      paramtgd = a(paramtgd, true, true);
-      tlo.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onPlayFirstVideo] setPrePlayingHolder prePlayHolder:" + paramtgd);
-      this.jdField_a_of_type_Tbb.b(paramtgd);
+      WSFollowAdapter localWSFollowAdapter = this.l;
+      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.getDataList().size() == 0)) {
+        L();
+      }
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void c(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a(paramBoolean);
+    if (!paramBoolean2) {
+      this.l.addFooterView(View.inflate(getBaseActivity(), 2131626456, null));
+    }
+    this.h.loadMoreComplete(paramBoolean1, paramBoolean2);
   }
   
-  public void c()
+  public void e(boolean paramBoolean)
   {
-    ((tih)b()).a(true, false);
+    this.h.pullRefreshCompleted(paramBoolean);
   }
   
-  public ArrayList<Class> getEventClass()
+  public void f(boolean paramBoolean)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(LikeRspEvent.class);
-    localArrayList.add(WSVideoPlayEvent.class);
-    localArrayList.add(WSItemExposeEvent.class);
-    localArrayList.add(FollowEvent.class);
-    return localArrayList;
+    this.u = paramBoolean;
+  }
+  
+  public void g(boolean paramBoolean)
+  {
+    if (!this.d) {
+      return;
+    }
+    this.s = paramBoolean;
+  }
+  
+  public void h(boolean paramBoolean)
+  {
+    this.q = paramBoolean;
+  }
+  
+  protected void i()
+  {
+    super.i();
+    if (this.d) {
+      WeishiUtils.m("focus");
+    }
+  }
+  
+  protected void o()
+  {
+    this.s = true;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -413,59 +581,147 @@ public class WSFollowFragment
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 4097) && (paramInt2 == 8193))
     {
-      this.d = true;
+      this.t = true;
       paramInt1 = paramIntent.getIntExtra("key_feed_position", 0);
-      tlo.e("WSFollowContinuePlayLog", "[WSFollowFragment.java][onActivityResult] from vertical position:" + paramInt1);
-      ThreadManager.getUIHandler().postDelayed(new WSFollowFragment.3(this), 100L);
+      String str = paramIntent.getStringExtra("key_from");
+      paramIntent = paramIntent.getStringExtra("key_play_scene");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSFollowFragment.java][onActivityResult] from vertical position:");
+      localStringBuilder.append(paramInt1);
+      WSLog.e("WSFollowContinuePlayLog", localStringBuilder.toString());
+      ThreadManager.getUIHandler().postDelayed(new WSFollowFragment.3(this, str, paramIntent, paramInt1), 100L);
     }
+  }
+  
+  public boolean onBackEvent()
+  {
+    WsCommentPresenter localWsCommentPresenter = this.k;
+    if (localWsCommentPresenter != null) {
+      return localWsCommentPresenter.r();
+    }
+    return super.onBackEvent();
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    this.A = System.currentTimeMillis();
+    this.z = WSFeedUtils.c();
+    paramBundle = new StringBuilder();
+    paramBundle.append("进入瀑布流的时间：");
+    paramBundle.append(this.A);
+    WSLog.a("weishi-beacon", paramBundle.toString());
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    g();
-    tcq.a().a(this.jdField_a_of_type_Tbb.a());
-    tff.a().b(this);
-    tgg.a().a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null)
+    I();
+    WeiShiCacheManager.a().a(this.l.getDataList());
+    WSSimpleEventBus.a().b(this);
+    WSLikeAnimationManger.a().b();
+    WSPlayerManager localWSPlayerManager = this.n;
+    if (localWSPlayerManager != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.c(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = null;
+      localWSPlayerManager.d(true);
+      this.n = null;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a().clearOnScrollListeners();
+    this.h.getRecyclerView().clearOnScrollListeners();
+    WSMonitorUtil.a(getActivity());
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Boolean) {
-      WSPublicAccReport.getInstance().reportPageVisitExit("focus");
+    if (this.d) {
+      WSPlayerAudioControl.a().a(false);
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null) && (!b)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.f();
+    WSPlayerManager localWSPlayerManager = this.n;
+    if ((localWSPlayerManager != null) && (!j)) {
+      localWSPlayerManager.q();
     }
+    i(false);
+    ((WSFollowPresenter)this.b).d();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Boolean) {
-      WSPublicAccReport.getInstance().reportPageVisitEnter("focus");
+    if (this.d) {
+      WSPlayerAudioControl.a().a(this.n.o() ^ true);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.e();
+    Object localObject = this.n;
+    if (localObject != null)
+    {
+      ((WSPlayerManager)localObject).p();
+      i(true);
+    }
+    if (this.A > 0L)
+    {
+      long l1 = System.currentTimeMillis() - this.A;
+      this.A = 0L;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("关注页初始化耗时：");
+      ((StringBuilder)localObject).append(l1);
+      WSLog.a("weishi-beacon", ((StringBuilder)localObject).toString());
+      WsBeaconReportPresenter.a().a(true, l1, "focus", "focus");
     }
   }
   
-  public void setUserVisibleHint(boolean paramBoolean)
+  protected BaseAdapter p()
   {
-    super.setUserVisibleHint(paramBoolean);
-    tlo.b("WSFollowFragment", "setUserVisibleHint entered! visible: " + paramBoolean + ", isResumed: " + isResumed());
+    this.l = new WSFollowAdapter(this);
+    return this.l;
+  }
+  
+  protected RecyclerView.LayoutManager q()
+  {
+    this.m = new WSFollowLinearLayoutManager(this.f, 1, false);
+    return this.m;
+  }
+  
+  public void t()
+  {
+    ((WSFollowPresenter)aO_()).a(true, false);
+  }
+  
+  @NonNull
+  public WSFollowPresenter v()
+  {
+    return new WSFollowPresenter();
+  }
+  
+  public boolean w()
+  {
+    return this.u;
+  }
+  
+  public WSFollowAdapter x()
+  {
+    return this.l;
+  }
+  
+  public XRecyclerView y()
+  {
+    return this.h;
+  }
+  
+  public ArrayList<Class> z()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(LikeRspEvent.class);
+    localArrayList.add(WSVideoPlayEvent.class);
+    localArrayList.add(WSItemExposeEvent.class);
+    localArrayList.add(FollowEvent.class);
+    localArrayList.add(WSAddCommentEvent.class);
+    localArrayList.add(WSFriendFeedExposureEvent.class);
+    localArrayList.add(WSPlayerMuteEvent.class);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowFragment
  * JD-Core Version:    0.7.0.1
  */

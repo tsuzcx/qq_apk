@@ -33,23 +33,21 @@ final class DvbParser$RegionComposition
   
   public void mergeFrom(RegionComposition paramRegionComposition)
   {
-    if (paramRegionComposition == null) {}
-    for (;;)
-    {
+    if (paramRegionComposition == null) {
       return;
-      paramRegionComposition = paramRegionComposition.regionObjects;
-      int i = 0;
-      while (i < paramRegionComposition.size())
-      {
-        this.regionObjects.put(paramRegionComposition.keyAt(i), paramRegionComposition.valueAt(i));
-        i += 1;
-      }
+    }
+    paramRegionComposition = paramRegionComposition.regionObjects;
+    int i = 0;
+    while (i < paramRegionComposition.size())
+    {
+      this.regionObjects.put(paramRegionComposition.keyAt(i), paramRegionComposition.valueAt(i));
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.dvb.DvbParser.RegionComposition
  * JD-Core Version:    0.7.0.1
  */

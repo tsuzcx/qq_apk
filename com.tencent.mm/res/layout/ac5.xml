@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/d58" android:background="@drawable/b8d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ll">
-        <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/d59" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/lb" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/lb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:drawableRight="@drawable/b_g" />
-        <View android:gravity="center" android:id="@id/d5_" android:background="#ffd6d6d6" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/d5a" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/dl" android:paddingRight="3.0dip" android:paddingBottom="@dimen/lb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e4e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i0s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mm.plugin.finder.view.FinderPostProgressView android:id="@id/i0r" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/yf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eka" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i0b" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/yf" android:id="@id/crr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dcy" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i08" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_delete" app:iconColor="@color/yf" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/yf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6l" android:layout_marginStart="4.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i0n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/yf" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/yf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a2j" android:layout_marginStart="4.0dip" />
     </LinearLayout>
 </LinearLayout>

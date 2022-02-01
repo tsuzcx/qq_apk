@@ -61,15 +61,19 @@ public class LatLng
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (LatLng)paramObject;
-    } while ((Double.compare(paramObject.altitude, this.altitude) == 0) && (Double.compare(paramObject.latitude, this.latitude) == 0) && (Double.compare(paramObject.longitude, this.longitude) == 0));
+      if ((Double.compare(paramObject.altitude, this.altitude) == 0) && (Double.compare(paramObject.latitude, this.latitude) == 0) && (Double.compare(paramObject.longitude, this.longitude) == 0)) {
+        return true;
+      }
+    }
     return false;
   }
   
@@ -105,45 +109,56 @@ public class LatLng
   
   public void setLatitude(@FloatRange(from=-90.0D, to=90.0D) double paramDouble)
   {
-    if (Double.isNaN(paramDouble)) {
-      throw new IllegalArgumentException("latitude must not be NaN");
-    }
-    if (Math.abs(paramDouble) > 90.0D) {
+    if (!Double.isNaN(paramDouble))
+    {
+      if (Math.abs(paramDouble) <= 90.0D)
+      {
+        this.latitude = paramDouble;
+        return;
+      }
       throw new IllegalArgumentException("latitude must be between -90 and 90");
     }
-    this.latitude = paramDouble;
+    throw new IllegalArgumentException("latitude must not be NaN");
   }
   
   public void setLongitude(@FloatRange(from=-1.797693134862316E+308D, to=1.7976931348623157E+308D) double paramDouble)
   {
-    if (Double.isNaN(paramDouble)) {
-      throw new IllegalArgumentException("longitude must not be NaN");
-    }
-    if (Double.isInfinite(paramDouble)) {
+    if (!Double.isNaN(paramDouble))
+    {
+      if (!Double.isInfinite(paramDouble))
+      {
+        this.longitude = paramDouble;
+        return;
+      }
       throw new IllegalArgumentException("longitude must not be infinite");
     }
-    this.longitude = paramDouble;
+    throw new IllegalArgumentException("longitude must not be NaN");
   }
   
   @NonNull
   public String toString()
   {
-    return "LatLng [latitude=" + this.latitude + ", longitude=" + this.longitude + ", altitude=" + this.altitude + "]";
+    StringBuilder localStringBuilder = new StringBuilder("LatLng [latitude=");
+    localStringBuilder.append(this.latitude);
+    localStringBuilder.append(", longitude=");
+    localStringBuilder.append(this.longitude);
+    localStringBuilder.append(", altitude=");
+    localStringBuilder.append(this.altitude);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   @NonNull
   public LatLng wrap()
   {
-    double d1 = 180.0D;
     double d2 = this.latitude;
     double d3 = this.longitude;
     double d4 = ((d3 + 180.0D) % 360.0D + 360.0D) % 360.0D;
-    if ((d3 >= 180.0D) && (d4 == 0.0D)) {}
-    for (;;)
-    {
-      return new LatLng(d2, d1);
+    double d1 = 180.0D;
+    if ((d3 < 180.0D) || (d4 != 0.0D)) {
       d1 = d4 - 180.0D;
     }
+    return new LatLng(d2, d1);
   }
   
   public void writeToParcel(@NonNull Parcel paramParcel, int paramInt)
@@ -155,7 +170,7 @@ public class LatLng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLng
  * JD-Core Version:    0.7.0.1
  */

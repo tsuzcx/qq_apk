@@ -9,8 +9,8 @@ public final class RespSvrMsg
 {
   static RespHeader cache_stHeader;
   static Msg cache_stMsg;
-  public RespHeader stHeader;
-  public Msg stMsg;
+  public RespHeader stHeader = null;
+  public Msg stMsg = null;
   
   public RespSvrMsg() {}
   
@@ -40,7 +40,7 @@ public final class RespSvrMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.RespSvrMsg
  * JD-Core Version:    0.7.0.1
  */

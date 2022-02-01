@@ -1,49 +1,37 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
 import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
 public class ejp
-  implements View.OnClickListener
+  implements AbsListView.OnScrollListener
 {
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  
   public ejp(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void onClick(View paramView)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if ((MessageSearchDialog.a(this.a) != null) && (MessageSearchDialog.a(this.a).isShowing())) {
-      MessageSearchDialog.a(this.a).dismiss();
-    }
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null) {
-      return;
-    }
-    switch (i)
+    if (MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog).a() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
+    do
     {
-    default: 
       return;
-    case 2131231190: 
-      paramView = new Bundle();
-      paramView.putInt("forward_type", -1);
-      paramView.putString("forward_text", ((MessageItem)localObject).a.msg);
-      localObject = new Intent(MessageSearchDialog.a(this.a), ForwardRecentActivity.class);
-      ((Intent)localObject).putExtras(paramView);
-      ((Activity)MessageSearchDialog.a(this.a)).startActivityForResult((Intent)localObject, 21);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      }
+    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
+    if (QLog.isColorLevel()) {
+      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
     }
-    ((ClipboardManager)MessageSearchDialog.a(this.a).getSystemService("clipboard")).setText(((MessageItem)localObject).a.msg);
+    MessageSearchDialog.b(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.b = paramInt3;
   }
 }
 

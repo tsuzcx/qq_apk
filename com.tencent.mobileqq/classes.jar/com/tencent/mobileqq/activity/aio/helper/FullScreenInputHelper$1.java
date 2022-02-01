@@ -1,28 +1,23 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afeq;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.graphics.drawable.Drawable;
+import android.text.Html.ImageGetter;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class FullScreenInputHelper$1
-  implements Runnable
+class FullScreenInputHelper$1
+  implements Html.ImageGetter
 {
-  public FullScreenInputHelper$1(afeq paramafeq) {}
+  FullScreenInputHelper$1(FullScreenInputHelper paramFullScreenInputHelper) {}
   
-  public void run()
+  public Drawable getDrawable(String paramString)
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3)
-    {
-      this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      return;
-    }
-    this.this$0.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    FullScreenInputHelper localFullScreenInputHelper = this.a;
+    return localFullScreenInputHelper.a(localFullScreenInputHelper.a.e, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,46 +2,57 @@ package com.tencent.mobileqq.activity.history.tendoc;
 
 import android.os.Bundle;
 import android.os.Message;
-import bhsl;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 
 class TenDocMessageResultAdapter$LoadRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  private String b;
+  private long c;
+  private final Object d = new Object();
   
   TenDocMessageResultAdapter$LoadRunnable(TenDocMessageResultAdapter paramTenDocMessageResultAdapter, int paramInt, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramInt;
+    this.b = paramString;
+    this.c = paramLong;
   }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageResultAdapter", 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
+      ((StringBuilder)???).append(this.b);
+      ((StringBuilder)???).append(", loadType = ");
+      ((StringBuilder)???).append(this.a);
+      QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     Object localObject2 = new ArrayList();
-    Object localObject4 = TenDocMessageResultAdapter.a(this.this$0, TenDocMessageResultAdapter.a(this.this$0), (ArrayList)localObject2);
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageResultAdapter", 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    ??? = this.this$0;
+    Object localObject4 = TenDocMessageResultAdapter.a((TenDocMessageResultAdapter)???, TenDocMessageResultAdapter.a((TenDocMessageResultAdapter)???), (ArrayList)localObject2);
+    if (QLog.isColorLevel())
     {
-      if (TenDocMessageResultAdapter.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("loadMessageResult, get: messageItems[] = ");
+      ((StringBuilder)???).append(localObject2);
+      QLog.i("TenDocMessageResultAdapter", 2, ((StringBuilder)???).toString());
+    }
+    synchronized (this.d)
+    {
+      if (TenDocMessageResultAdapter.b(this.this$0).equals(this.b))
       {
         TenDocMessageResultAdapter.a(this.this$0, true);
         TenDocMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
-        localObject2 = TenDocMessageResultAdapter.a(this.this$0).obtainMessage(2, localObject2);
+        localObject2 = TenDocMessageResultAdapter.c(this.this$0).obtainMessage(2, localObject2);
         localObject4 = new Bundle();
-        ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-        ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject4).putLong("searchSequence", this.c);
+        ((Bundle)localObject4).putString("searchKeyword", this.b);
         ((Message)localObject2).setData((Bundle)localObject4);
         ((Message)localObject2).sendToTarget();
       }

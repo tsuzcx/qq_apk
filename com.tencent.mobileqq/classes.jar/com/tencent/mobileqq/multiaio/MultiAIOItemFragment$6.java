@@ -9,12 +9,14 @@ class MultiAIOItemFragment$6
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelectionFromBottom(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1]);
+    ListView localListView = this.a;
+    int[] arrayOfInt = this.b;
+    localListView.setSelectionFromBottom(arrayOfInt[0], arrayOfInt[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.6
  * JD-Core Version:    0.7.0.1
  */

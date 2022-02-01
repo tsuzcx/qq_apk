@@ -3,7 +3,7 @@ package com.tencent.mobileqq.widget;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.BaseActivity;
-import hhh;
+import hhg;
 
 public class QQProgressNotifier
 {
@@ -23,7 +23,7 @@ public class QQProgressNotifier
   public QQProgressNotifier(BaseActivity paramBaseActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new hhh(this);
+    this.jdField_a_of_type_AndroidOsHandler = new hhg(this);
   }
   
   public void a()

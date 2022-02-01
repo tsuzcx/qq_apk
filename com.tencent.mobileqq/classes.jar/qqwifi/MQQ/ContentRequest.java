@@ -9,8 +9,8 @@ public final class ContentRequest
   extends JceStruct
 {
   static LBSInfo cache_lbsInfo;
-  public long id;
-  public LBSInfo lbsInfo;
+  public long id = 0L;
+  public LBSInfo lbsInfo = null;
   public String version = "";
   
   public ContentRequest() {}
@@ -35,17 +35,19 @@ public final class ContentRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.id, 0);
-    if (this.lbsInfo != null) {
-      paramJceOutputStream.write(this.lbsInfo, 1);
+    Object localObject = this.lbsInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 2);
+    localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     qqwifi.MQQ.ContentRequest
  * JD-Core Version:    0.7.0.1
  */

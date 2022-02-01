@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodLinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/scrollView" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:cacheColorHint="@null" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/viewstub_publish_to_where" android:layout="@layout/qb_group_troop_bar_publish_activity_select_bar_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View style="@style/qb_group_troopBar_publish_divider_style" />
+            <include layout="@layout/qb_group_troop_bar_publish_activity_input_layout" />
+            <include layout="@layout/qb_group_troop_bar_publish_activity_media_layout" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/qb_group_troop_bar_publish_emotion_btn_layout" />
+        <FrameLayout android:id="@id/layout_emotion_pannel" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.InputMethodLinearLayout>

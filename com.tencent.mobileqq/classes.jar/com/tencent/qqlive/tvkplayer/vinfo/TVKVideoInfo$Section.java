@@ -10,6 +10,7 @@ public class TVKVideoInfo$Section
   private int idx;
   private String indexName;
   private int size;
+  private String url;
   private String vbkey;
   private String vbkeyId;
   
@@ -31,6 +32,11 @@ public class TVKVideoInfo$Section
   public int getSize()
   {
     return this.size;
+  }
+  
+  public String getUrl()
+  {
+    return this.url;
   }
   
   public String getVbkey()
@@ -61,12 +67,22 @@ public class TVKVideoInfo$Section
   public void setIndexName(String paramString, int paramInt)
   {
     paramString = paramString.replace(".mp4", "");
-    this.indexName = (paramString + "." + paramInt + ".mp4");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".mp4");
+    this.indexName = localStringBuilder.toString();
   }
   
   public void setSize(int paramInt)
   {
     this.size = paramInt;
+  }
+  
+  public void setUrl(String paramString)
+  {
+    this.url = paramString;
   }
   
   public void setVbkey(String paramString)
@@ -81,7 +97,7 @@ public class TVKVideoInfo$Section
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo.Section
  * JD-Core Version:    0.7.0.1
  */

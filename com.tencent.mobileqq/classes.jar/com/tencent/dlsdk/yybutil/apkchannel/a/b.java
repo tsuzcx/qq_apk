@@ -12,7 +12,8 @@ public final class b
   
   public byte[] a()
   {
-    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
+    long l = this.a;
+    return new byte[] { (byte)(int)(0xFF & l), (byte)(int)((0xFF00 & l) >> 8), (byte)(int)((0xFF0000 & l) >> 16), (byte)(int)((l & 0xFF000000) >> 24) };
   }
   
   public long b()
@@ -22,11 +23,16 @@ public final class b
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof b))) {}
-    while (this.a != ((b)paramObject).b()) {
-      return false;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof b)) {
+        return false;
+      }
+      if (this.a == ((b)paramObject).b()) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public int hashCode()
@@ -36,7 +42,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.dlsdk.yybutil.apkchannel.a.b
  * JD-Core Version:    0.7.0.1
  */

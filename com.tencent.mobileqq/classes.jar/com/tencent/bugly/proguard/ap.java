@@ -5,70 +5,47 @@ import java.util.Map;
 
 public final class ap
   extends k
+  implements Cloneable
 {
-  private static byte[] y;
-  private static Map<String, String> z;
-  public int a = 0;
-  public String b = "";
-  public String c = "";
+  private static ao m;
+  private static Map<String, String> n;
+  public boolean a = true;
+  public boolean b = true;
+  public boolean c = true;
   public String d = "";
   public String e = "";
-  public String f = "";
-  public int g = 0;
-  public byte[] h = null;
-  public String i = "";
-  public String j = "";
-  public Map<String, String> k = null;
-  public String l = "";
-  public long m = 0L;
-  public String n = "";
-  public String o = "";
-  public String p = "";
-  public long q = 0L;
-  public String r = "";
-  public String s = "";
-  public String t = "";
-  public String u = "";
-  public String v = "";
-  public String w = "";
-  private String x = "";
+  public ao f = null;
+  public Map<String, String> g = null;
+  public long h = 0L;
+  public int i = 0;
+  private String j = "";
+  private String k = "";
+  private int l = 0;
   
   static
   {
-    byte[] arrayOfByte = (byte[])new byte[1];
-    y = arrayOfByte;
-    ((byte[])arrayOfByte)[0] = 0;
-    z = new HashMap();
-    z.put("", "");
+    m = new ao();
+    n = new HashMap();
+    n.put("", "");
   }
   
   public final void a(i parami)
   {
-    this.a = parami.a(this.a, 0, true);
-    this.b = parami.b(1, true);
-    this.c = parami.b(2, true);
-    this.d = parami.b(3, true);
+    boolean bool = this.a;
+    this.a = parami.a(0, true);
+    bool = this.b;
+    this.b = parami.a(1, true);
+    bool = this.c;
+    this.c = parami.a(2, true);
+    this.d = parami.b(3, false);
     this.e = parami.b(4, false);
-    this.f = parami.b(5, true);
-    this.g = parami.a(this.g, 6, true);
-    byte[] arrayOfByte = y;
-    this.h = ((byte[])parami.c(7, true));
-    this.i = parami.b(8, false);
-    this.j = parami.b(9, false);
-    this.k = ((Map)parami.a(z, 10, false));
-    this.l = parami.b(11, false);
-    this.m = parami.a(this.m, 12, false);
-    this.n = parami.b(13, false);
-    this.o = parami.b(14, false);
-    this.p = parami.b(15, false);
-    this.q = parami.a(this.q, 16, false);
-    this.r = parami.b(17, false);
-    this.s = parami.b(18, false);
-    this.t = parami.b(19, false);
-    this.u = parami.b(20, false);
-    this.v = parami.b(21, false);
-    this.w = parami.b(22, false);
-    this.x = parami.b(23, false);
+    this.f = ((ao)parami.a(m, 5, false));
+    this.g = ((Map)parami.a(n, 6, false));
+    this.h = parami.a(this.h, 7, false);
+    this.j = parami.b(8, false);
+    this.k = parami.b(9, false);
+    this.l = parami.a(this.l, 10, false);
+    this.i = parami.a(this.i, 11, false);
   }
   
   public final void a(j paramj)
@@ -76,62 +53,95 @@ public final class ap
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
     paramj.a(this.c, 2);
-    paramj.a(this.d, 3);
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
-    paramj.a(this.f, 5);
-    paramj.a(this.g, 6);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((k)localObject, 5);
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 6);
+    }
     paramj.a(this.h, 7);
-    if (this.i != null) {
-      paramj.a(this.i, 8);
+    localObject = this.j;
+    if (localObject != null) {
+      paramj.a((String)localObject, 8);
     }
-    if (this.j != null) {
-      paramj.a(this.j, 9);
+    localObject = this.k;
+    if (localObject != null) {
+      paramj.a((String)localObject, 9);
     }
-    if (this.k != null) {
-      paramj.a(this.k, 10);
+    paramj.a(this.l, 10);
+    paramj.a(this.i, 11);
+  }
+  
+  public final void a(StringBuilder paramStringBuilder, int paramInt)
+  {
+    paramStringBuilder = new h(paramStringBuilder, paramInt);
+    paramStringBuilder.a(this.a, "enable");
+    paramStringBuilder.a(this.b, "enableUserInfo");
+    paramStringBuilder.a(this.c, "enableQuery");
+    paramStringBuilder.a(this.d, "url");
+    paramStringBuilder.a(this.e, "expUrl");
+    paramStringBuilder.a(this.f, "security");
+    paramStringBuilder.a(this.g, "valueMap");
+    paramStringBuilder.a(this.h, "strategylastUpdateTime");
+    paramStringBuilder.a(this.j, "httpsUrl");
+    paramStringBuilder.a(this.k, "httpsExpUrl");
+    paramStringBuilder.a(this.l, "eventRecordCount");
+    paramStringBuilder.a(this.i, "eventTimeInterval");
+  }
+  
+  public final Object clone()
+  {
+    try
+    {
+      Object localObject = super.clone();
+      return localObject;
     }
-    if (this.l != null) {
-      paramj.a(this.l, 11);
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label7:
+      break label7;
     }
-    paramj.a(this.m, 12);
-    if (this.n != null) {
-      paramj.a(this.n, 13);
+    if (o) {
+      return null;
     }
-    if (this.o != null) {
-      paramj.a(this.o, 14);
+    throw new AssertionError();
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {
+      return false;
     }
-    if (this.p != null) {
-      paramj.a(this.p, 15);
+    paramObject = (ap)paramObject;
+    return (l.a(this.a, paramObject.a)) && (l.a(this.b, paramObject.b)) && (l.a(this.c, paramObject.c)) && (l.a(this.d, paramObject.d)) && (l.a(this.e, paramObject.e)) && (l.a(this.f, paramObject.f)) && (l.a(this.g, paramObject.g)) && (l.a(this.h, paramObject.h)) && (l.a(this.j, paramObject.j)) && (l.a(this.k, paramObject.k)) && (l.a(this.l, paramObject.l)) && (l.a(this.i, paramObject.i));
+  }
+  
+  public final int hashCode()
+  {
+    try
+    {
+      throw new Exception("Need define key first!");
     }
-    paramj.a(this.q, 16);
-    if (this.r != null) {
-      paramj.a(this.r, 17);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    if (this.s != null) {
-      paramj.a(this.s, 18);
-    }
-    if (this.t != null) {
-      paramj.a(this.t, 19);
-    }
-    if (this.u != null) {
-      paramj.a(this.u, 20);
-    }
-    if (this.v != null) {
-      paramj.a(this.v, 21);
-    }
-    if (this.w != null) {
-      paramj.a(this.w, 22);
-    }
-    if (this.x != null) {
-      paramj.a(this.x, 23);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.proguard.ap
  * JD-Core Version:    0.7.0.1
  */

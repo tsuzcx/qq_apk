@@ -1,26 +1,24 @@
 package com.tencent.mobileqq.haoliyou;
 
-import alud;
-import asqi;
-import asqj;
-import bdgm;
-import bdjz;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class JefsClass$8
+class JefsClass$8
   implements Runnable
 {
   public void run()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {
-      bdgm.a(localBaseActivity, 0, null, alud.a(2131706260), localBaseActivity.getString(2131690648), localBaseActivity.getString(2131694953), new asqi(this), new asqj(this)).show();
+    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
+    if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing())) {
+      DialogUtil.a(localQBaseActivity, 0, null, HardCodeUtil.a(2131903825), localQBaseActivity.getString(2131887648), localQBaseActivity.getString(2131892267), new JefsClass.8.1(this), new JefsClass.8.2(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.8
  * JD-Core Version:    0.7.0.1
  */

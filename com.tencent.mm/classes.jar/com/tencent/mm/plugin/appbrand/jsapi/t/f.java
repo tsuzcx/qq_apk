@@ -1,34 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.dp;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
 public final class f
-  extends a
+  extends c<g>
 {
-  public static final int CTRL_INDEX = 35;
-  public static final String NAME = "stopVoice";
+  public static final int CTRL_INDEX = 10;
+  public static final String NAME = "hideNavigationBarLoading";
   
-  protected final void a(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, JSONObject paramJSONObject, int paramInt)
+  public final boolean cpE()
   {
-    AppMethodBeat.i(145922);
-    paramc = paramc.aFZ();
-    ab.i("MicroMsg.JsApiStopPlayVoice", "stop:%s", new Object[] { paramc });
-    if (paramc.isSuccess())
-    {
-      paramc1.h(paramInt, "ok");
-      AppMethodBeat.o(145922);
-      return;
-    }
-    ab.e("MicroMsg.JsApiStopPlayVoice", "stop fail %s", new Object[] { paramc });
-    paramc1.h(paramInt, "fail:" + paramc.errMsg);
-    AppMethodBeat.o(145922);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.f
  * JD-Core Version:    0.7.0.1
  */

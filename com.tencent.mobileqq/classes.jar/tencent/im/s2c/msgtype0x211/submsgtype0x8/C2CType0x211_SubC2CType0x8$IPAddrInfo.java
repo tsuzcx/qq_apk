@@ -12,15 +12,21 @@ public final class C2CType0x211_SubC2CType0x8$IPAddrInfo
   public static final int INT32_IP_FIELD_NUMBER = 1;
   public static final int INT32_MASK_FIELD_NUMBER = 2;
   public static final int INT32_PORT_FIELD_NUMBER = 4;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "int32_ip", "int32_mask", "int32_gateway", "int32_port" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, IPAddrInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_gateway = PBField.initInt32(0);
   public final PBInt32Field int32_ip = PBField.initInt32(0);
   public final PBInt32Field int32_mask = PBField.initInt32(0);
   public final PBInt32Field int32_port = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "int32_ip", "int32_mask", "int32_gateway", "int32_port" }, new Object[] { localInteger, localInteger, localInteger, localInteger }, IPAddrInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x8.C2CType0x211_SubC2CType0x8.IPAddrInfo
  * JD-Core Version:    0.7.0.1
  */

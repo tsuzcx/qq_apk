@@ -9,10 +9,10 @@ public final class GetGroupRedPackListRsp
   extends JceStruct
 {
   static ArrayList<RedPackGrapInfo> cache_vecRedPackList = new ArrayList();
-  public int iRedPackNum;
-  public int iRetCode;
-  public long lFailureTime;
-  public ArrayList<RedPackGrapInfo> vecRedPackList;
+  public int iRedPackNum = 0;
+  public int iRetCode = 0;
+  public long lFailureTime = 0L;
+  public ArrayList<RedPackGrapInfo> vecRedPackList = null;
   
   static
   {
@@ -32,15 +32,16 @@ public final class GetGroupRedPackListRsp
   {
     paramJceOutputStream.write(this.iRetCode, 0);
     paramJceOutputStream.write(this.iRedPackNum, 1);
-    if (this.vecRedPackList != null) {
-      paramJceOutputStream.write(this.vecRedPackList, 2);
+    ArrayList localArrayList = this.vecRedPackList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.lFailureTime, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetGroupRedPackListRsp
  * JD-Core Version:    0.7.0.1
  */

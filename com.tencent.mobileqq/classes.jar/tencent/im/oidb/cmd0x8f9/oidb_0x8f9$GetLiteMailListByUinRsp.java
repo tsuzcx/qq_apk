@@ -20,13 +20,14 @@ public final class oidb_0x8f9$GetLiteMailListByUinRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint32_start_time", "uint32_end_time", "rpt_msg_litemail_list", "uint32_result", "bytes_err_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro }, GetLiteMailListByUinRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42 }, new String[] { "uint32_start_time", "uint32_end_time", "rpt_msg_litemail_list", "uint32_result", "bytes_err_msg" }, new Object[] { localInteger, localInteger, null, localInteger, localByteStringMicro }, GetLiteMailListByUinRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GetLiteMailListByUinRsp
  * JD-Core Version:    0.7.0.1
  */

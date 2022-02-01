@@ -28,29 +28,39 @@ public abstract class AbstractIterator<T>
   
   public boolean hasNext()
   {
+    State localState1 = this.state;
+    State localState2 = State.Failed;
     boolean bool = false;
-    if (this.state != State.Failed) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
+    int i;
+    if (localState1 != localState2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    State localState = this.state;
-    switch (AbstractIterator.WhenMappings.$EnumSwitchMapping$0[localState.ordinal()])
+    if (i != 0)
     {
-    default: 
-      bool = tryToComputeNext();
-    case 1: 
+      localState1 = this.state;
+      i = AbstractIterator.WhenMappings.$EnumSwitchMapping$0[localState1.ordinal()];
+      if (i != 1)
+      {
+        if (i != 2) {
+          return tryToComputeNext();
+        }
+        bool = true;
+      }
       return bool;
     }
-    return true;
+    throw ((Throwable)new IllegalArgumentException("Failed requirement.".toString()));
   }
   
   public T next()
   {
-    if (!hasNext()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (hasNext())
+    {
+      this.state = State.NotReady;
+      return this.nextValue;
     }
-    this.state = State.NotReady;
-    return this.nextValue;
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -66,7 +76,7 @@ public abstract class AbstractIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.AbstractIterator
  * JD-Core Version:    0.7.0.1
  */

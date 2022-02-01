@@ -22,16 +22,17 @@ public final class qqstory_710_message$StoryVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58 }, new String[] { "vid", "cover_url", "author_uid", "video_time", "is_bigv", "union_id", "vote_attr" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4 }, StoryVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 58 }, new String[] { "vid", "cover_url", "author_uid", "video_time", "is_bigv", "union_id", "vote_attr" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro3, localByteStringMicro4 }, StoryVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryVideoInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,11 @@ package com.tencent.mobileqq.dinifly.model.layer;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import android.util.LongSparseArray;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LayerInfo;
 import com.tencent.mobileqq.dinifly.LottieComposition;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.ValueCallbackKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
+import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class CompositionLayer
   @Nullable
   private Boolean hasMatte;
   private BaseLayer layer;
+  private Paint layerPaint = new Paint();
   private final List<BaseLayer> layers = new ArrayList();
   private final RectF newClipRect = new RectF();
   private final RectF rect = new RectF();
@@ -39,69 +42,61 @@ public class CompositionLayer
   {
     super(paramLottieDrawable, paramLayer);
     paramLayer = paramLayer.getTimeRemapping();
-    LongSparseArray localLongSparseArray;
-    label103:
-    Layer localLayer;
     if (paramLayer != null)
     {
       this.timeRemapping = paramLayer.createAnimation();
       addAnimation(this.timeRemapping);
       this.timeRemapping.addUpdateListener(this);
-      localLongSparseArray = new LongSparseArray(paramLottieComposition.getLayers().size());
-      i = paramList.size() - 1;
-      paramLayer = null;
-      if (i < 0) {
-        break label275;
-      }
-      localLayer = (Layer)paramList.get(i);
-      this.layer = BaseLayer.forModel(localLayer, paramLottieDrawable, paramLottieComposition);
-      if (this.layer != null) {
-        break label157;
-      }
     }
+    else
+    {
+      this.timeRemapping = null;
+    }
+    LongSparseArray localLongSparseArray = new LongSparseArray(paramLottieComposition.getLayers().size());
+    int i = paramList.size() - 1;
+    paramLayer = null;
+    int j;
     for (;;)
     {
-      i -= 1;
-      break label103;
-      this.timeRemapping = null;
-      break;
-      label157:
-      localLongSparseArray.put(this.layer.getLayerModel().getId(), this.layer);
-      if (paramLayer != null)
-      {
-        paramLayer.setMatteLayer(this.layer);
-        paramLayer = null;
+      j = 0;
+      if (i < 0) {
+        break;
       }
-      else
+      Layer localLayer = (Layer)paramList.get(i);
+      this.layer = BaseLayer.forModel(localLayer, paramLottieDrawable, paramLottieComposition);
+      BaseLayer localBaseLayer = this.layer;
+      if (localBaseLayer != null)
       {
-        this.layer.parentComposition = this;
-        this.layerCount += this.layer.layerCount;
-        this.layers.add(0, this.layer);
-        switch (CompositionLayer.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$layer$Layer$MatteType[localLayer.getMatteType().ordinal()])
+        localLongSparseArray.put(localBaseLayer.getLayerModel().getId(), this.layer);
+        if (paramLayer != null)
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          paramLayer = this.layer;
+          paramLayer.setMatteLayer(this.layer);
+          paramLayer = null;
+        }
+        else
+        {
+          this.layer.parentComposition = this;
+          this.layerCount += this.layer.layerCount;
+          this.layers.add(0, this.layer);
+          j = CompositionLayer.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$layer$Layer$MatteType[localLayer.getMatteType().ordinal()];
+          if ((j == 1) || (j == 2)) {
+            paramLayer = this.layer;
+          }
         }
       }
+      i -= 1;
     }
-    label275:
-    int i = 0;
-    if (i < localLongSparseArray.size())
+    while (j < localLongSparseArray.size())
     {
-      paramLottieDrawable = (BaseLayer)localLongSparseArray.get(localLongSparseArray.keyAt(i));
-      if (paramLottieDrawable == null) {}
-      for (;;)
+      paramLottieDrawable = (BaseLayer)localLongSparseArray.get(localLongSparseArray.keyAt(j));
+      if (paramLottieDrawable != null)
       {
-        i += 1;
-        break;
         paramLayer = (BaseLayer)localLongSparseArray.get(paramLottieDrawable.getLayerModel().getParentId());
         if (paramLayer != null) {
           paramLottieDrawable.setParentLayer(paramLayer);
         }
       }
+      j += 1;
     }
   }
   
@@ -125,17 +120,21 @@ public class CompositionLayer
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     super.addValueCallback(paramT, paramLottieValueCallback);
-    if (paramT == LottieProperty.TIME_REMAP)
-    {
-      if (paramLottieValueCallback == null) {
-        this.timeRemapping = null;
+    if (paramT == LottieProperty.TIME_REMAP) {
+      if (paramLottieValueCallback == null)
+      {
+        paramT = this.timeRemapping;
+        if (paramT != null) {
+          paramT.setValueCallback(null);
+        }
+      }
+      else
+      {
+        this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+        this.timeRemapping.addUpdateListener(this);
+        addAnimation(this.timeRemapping);
       }
     }
-    else {
-      return;
-    }
-    this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    addAnimation(this.timeRemapping);
   }
   
   public void collectLayers(LayerInfo paramLayerInfo)
@@ -159,15 +158,33 @@ public class CompositionLayer
   void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     L.beginSection("CompositionLayer#draw");
-    paramCanvas.save();
     this.newClipRect.set(0.0F, 0.0F, this.layerModel.getPreCompWidth(), this.layerModel.getPreCompHeight());
     paramMatrix.mapRect(this.newClipRect);
+    if ((this.lottieDrawable.isApplyingOpacityToLayersEnabled()) && (this.layers.size() > 1) && (paramInt != 255)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      this.layerPaint.setAlpha(paramInt);
+      Utils.saveLayerCompat(paramCanvas, this.newClipRect, this.layerPaint);
+    }
+    else
+    {
+      paramCanvas.save();
+    }
+    if (i != 0) {
+      paramInt = 255;
+    }
     int i = this.layers.size() - 1;
     while (i >= 0)
     {
-      boolean bool = true;
+      boolean bool;
       if (!this.newClipRect.isEmpty()) {
         bool = paramCanvas.clipRect(this.newClipRect);
+      } else {
+        bool = true;
       }
       if (bool) {
         ((BaseLayer)this.layers.get(i)).draw(paramCanvas, paramMatrix, paramInt);
@@ -258,30 +275,50 @@ public class CompositionLayer
     }
   }
   
+  public void setOutlineMasksAndMattes(boolean paramBoolean)
+  {
+    super.setOutlineMasksAndMattes(paramBoolean);
+    Iterator localIterator = this.layers.iterator();
+    while (localIterator.hasNext()) {
+      ((BaseLayer)localIterator.next()).setOutlineMasksAndMattes(paramBoolean);
+    }
+  }
+  
   public void setProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
     super.setProgress(paramFloat);
+    float f = paramFloat;
     if (this.timeRemapping != null)
     {
-      paramFloat = (float)this.lottieDrawable.getComposition().getDuration();
-      paramFloat = (float)(((Float)this.timeRemapping.getValue()).floatValue() * 1000.0F) / paramFloat;
+      paramFloat = this.lottieDrawable.getComposition().getDurationFrames();
+      f = this.layerModel.getComposition().getStartFrame();
+      f = (((Float)this.timeRemapping.getValue()).floatValue() * this.layerModel.getComposition().getFrameRate() - f) / (paramFloat + 0.01F);
     }
-    float f = paramFloat;
+    paramFloat = f;
+    if (this.timeRemapping == null) {
+      paramFloat = f - this.layerModel.getStartProgress();
+    }
+    f = paramFloat;
     if (this.layerModel.getTimeStretch() != 0.0F) {
       f = paramFloat / this.layerModel.getTimeStretch();
     }
-    paramFloat = this.layerModel.getStartProgress();
     int i = this.layers.size() - 1;
     while (i >= 0)
     {
-      ((BaseLayer)this.layers.get(i)).setProgress(f - paramFloat);
+      ((BaseLayer)this.layers.get(i)).setProgress(f);
       i -= 1;
     }
   }
   
   public String toString()
   {
-    return "CompositionLayer{refId=" + this.layerModel.getRefId() + ", layerCount=" + this.layerCount + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompositionLayer{refId=");
+    localStringBuilder.append(this.layerModel.getRefId());
+    localStringBuilder.append(", layerCount=");
+    localStringBuilder.append(this.layerCount);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

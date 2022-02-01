@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <ImageView android:background="@color/a19" style="@style/i7" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/j47" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="@integer/a5" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="3.0" />
+            <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/aok" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" keybutton:functionCode="@integer/ac" keybutton:icon_color="@color/ag" keybutton:icon_height="16.0dip" keybutton:icon_src="@raw/icons_outlined_delemoji" keybutton:icon_width="23.0dip" style="@style/a5t" />
+        </LinearLayout>
+    </LinearLayout>
+</merge>

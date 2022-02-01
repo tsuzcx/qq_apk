@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/qb_pubaccount_font_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <View android:background="@color/qb_troop_bar_line" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+    <View android:background="@drawable/qb_pubaccount_font_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/relative_group" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip" android:drawablePadding="4.0dip" />
+    <View android:background="@drawable/qb_pubaccount_font_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <View android:background="@color/qb_troop_bar_line" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+    <View android:background="@drawable/qb_pubaccount_font_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

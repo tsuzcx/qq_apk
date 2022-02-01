@@ -52,7 +52,6 @@
                             "value":"60"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "setCornerRadiusString:":"6.0",
                             "loadImageWithPath:": "$family_icon_url"
                         }
@@ -130,7 +129,6 @@
                             "value":"22"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "loadImageWithPath:": "$family_medal_icon_url"
                         }
                     },
@@ -195,7 +193,6 @@
                             "value":"18"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "loadImageWithPath:": "$family_close_icon_url"
                         }
                     }

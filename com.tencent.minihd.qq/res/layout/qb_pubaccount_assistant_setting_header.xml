@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:paddingLeft="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:paddingTop="@dimen/qq_setting_table_item2txt_16px" android:paddingRight="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:paddingBottom="@dimen/qq_setting_table_item2item_40px" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qb_pubaccount_assistant_setting_info1" style="@style/table_shuoming_13sp_808080" />
+    <TextView android:gravity="center_vertical" android:paddingLeft="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:paddingTop="@dimen/qq_setting_table_item2txt_16px" android:paddingRight="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:paddingBottom="@dimen/qq_setting_table_item2item_40px" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qb_pubaccount_assistant_setting_info2" style="@style/table_shuoming_13sp_808080" />
+</LinearLayout>

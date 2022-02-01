@@ -8,17 +8,17 @@ public final class DelMsgInfo
   extends JceStruct
 {
   static byte[] cache_vMsgCookies;
-  public int clientIp;
-  public long lFromUin;
-  public long lSendTime;
-  public short shMsgSeq;
-  public int ssoIp;
-  public int ssoSeq;
-  public long uAppId;
-  public long uMsgTime;
-  public long uMsgType;
-  public byte[] vMsgCookies;
-  public short wCmd;
+  public int clientIp = 0;
+  public long lFromUin = 0L;
+  public long lSendTime = 0L;
+  public short shMsgSeq = 0;
+  public int ssoIp = 0;
+  public int ssoSeq = 0;
+  public long uAppId = 0L;
+  public long uMsgTime = 0L;
+  public long uMsgType = 0L;
+  public byte[] vMsgCookies = null;
+  public short wCmd = 0;
   
   public DelMsgInfo() {}
   
@@ -62,8 +62,9 @@ public final class DelMsgInfo
     paramJceOutputStream.write(this.lFromUin, 0);
     paramJceOutputStream.write(this.uMsgTime, 1);
     paramJceOutputStream.write(this.shMsgSeq, 2);
-    if (this.vMsgCookies != null) {
-      paramJceOutputStream.write(this.vMsgCookies, 3);
+    byte[] arrayOfByte = this.vMsgCookies;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
     paramJceOutputStream.write(this.wCmd, 4);
     paramJceOutputStream.write(this.uMsgType, 5);
@@ -76,7 +77,7 @@ public final class DelMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.DelMsgInfo
  * JD-Core Version:    0.7.0.1
  */

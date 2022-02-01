@@ -1,12 +1,13 @@
 package org.xwalk.core;
 
 import android.graphics.Bitmap;
-import com.tencent.xweb.l;
+import com.tencent.xweb.s;
 import java.io.File;
 
 public abstract class XWalkLongScreenshotCallback
-  implements l
+  implements s
 {
+  private static final String TAG = "XWalkLongScreenshotCallback";
   private Object bridge;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod getCacheFileDirMethod = new ReflectMethod(null, "", new Class[0]);
@@ -18,6 +19,34 @@ public abstract class XWalkLongScreenshotCallback
   public XWalkLongScreenshotCallback()
   {
     reflectionInit();
+  }
+  
+  private void reflectionInit()
+  {
+    if (XWalkCoreWrapper.getInstance() == null) {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+    }
+    do
+    {
+      return;
+      this.coreWrapper = XWalkCoreWrapper.getInstance();
+      localObject = this.coreWrapper.getBridgeClass("XWalkLongScreenshotCallbackBridge");
+    } while (localObject == null);
+    Object localObject = new ReflectConstructor((Class)localObject, new Class[] { Object.class });
+    try
+    {
+      this.bridge = ((ReflectConstructor)localObject).newInstance(new Object[] { this });
+      this.onLongScreenshotFinishedIntStringMethod.init(this.bridge, null, "onLongScreenshotFinishedSuper", new Class[] { Integer.TYPE, String.class });
+      this.getCacheFileDirMethod.init(this.bridge, null, "getCacheFileDirMethodSuper", new Class[0]);
+      this.getResultFileDirMethod.init(this.bridge, null, "getResultFileDirMethodSuper", new Class[0]);
+      this.overrideScreenshotBitmapMethod.init(this.bridge, null, "overrideScreenshotBitmapMethodSuper", new Class[] { Bitmap.class });
+      this.getMaxHeightSupportedMethod.init(this.bridge, null, "getMaxHeightSupported", new Class[0]);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      Log.e("XWalkLongScreenshotCallback", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+    }
   }
   
   protected Object getBridge()
@@ -107,31 +136,6 @@ public abstract class XWalkLongScreenshotCallback
       XWalkCoreWrapper.handleRuntimeError(paramBitmap);
     }
     return null;
-  }
-  
-  void reflectionInit()
-  {
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null) {
-      XWalkCoreWrapper.reserveReflectObject(this);
-    }
-    do
-    {
-      return;
-      localObject = this.coreWrapper.getBridgeClass("XWalkLongScreenshotCallbackBridge");
-    } while (localObject == null);
-    Object localObject = new ReflectConstructor((Class)localObject, new Class[] { Object.class });
-    try
-    {
-      this.bridge = ((ReflectConstructor)localObject).newInstance(new Object[] { this });
-      this.onLongScreenshotFinishedIntStringMethod.init(this.bridge, null, "onLongScreenshotFinishedSuper", new Class[] { Integer.TYPE, String.class });
-      this.getCacheFileDirMethod.init(this.bridge, null, "getCacheFileDirMethodSuper", new Class[0]);
-      this.getResultFileDirMethod.init(this.bridge, null, "getResultFileDirMethodSuper", new Class[0]);
-      this.overrideScreenshotBitmapMethod.init(this.bridge, null, "overrideScreenshotBitmapMethodSuper", new Class[] { Bitmap.class });
-      this.getMaxHeightSupportedMethod.init(this.bridge, null, "getMaxHeightSupported", new Class[0]);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException) {}
   }
 }
 

@@ -10,13 +10,14 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONArray;
 
 public final class q
@@ -24,28 +25,28 @@ public final class q
 {
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103233);
+    AppMethodBeat.i(144916);
     paramDrawActionArg = (SetFillStyleActionArg)paramDrawActionArg;
     if (paramDrawActionArg == null)
     {
-      AppMethodBeat.o(103233);
+      AppMethodBeat.o(144916);
       return false;
     }
     boolean bool = paramDrawActionArg.a(paramd, paramCanvas);
-    AppMethodBeat.o(103233);
+    AppMethodBeat.o(144916);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103232);
+    AppMethodBeat.i(144915);
     if (paramJSONArray.length() < 2)
     {
-      AppMethodBeat.o(103232);
+      AppMethodBeat.o(144915);
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.heC;
+    paramCanvas = paramd.qTj;
     float f1;
     float f2;
     float f3;
@@ -54,23 +55,23 @@ public final class q
     {
       if (paramJSONArray.length() < 3)
       {
-        AppMethodBeat.o(103232);
+        AppMethodBeat.o(144915);
         return false;
       }
       paramd = paramJSONArray.optJSONArray(1);
       if ((paramd == null) || (paramd.length() < 4))
       {
-        AppMethodBeat.o(103232);
+        AppMethodBeat.o(144915);
         return false;
       }
-      f1 = g.d(paramd, 0);
-      f2 = g.d(paramd, 1);
-      f3 = g.d(paramd, 2);
-      float f4 = g.d(paramd, 3);
+      f1 = i.f(paramd, 0);
+      f2 = i.f(paramd, 1);
+      f3 = i.f(paramd, 2);
+      float f4 = i.f(paramd, 3);
       paramd = paramJSONArray.optJSONArray(2);
       if ((paramd == null) || (paramd.length() == 0))
       {
-        AppMethodBeat.o(103232);
+        AppMethodBeat.o(144915);
         return false;
       }
       paramJSONArray = new int[paramd.length()];
@@ -82,7 +83,7 @@ public final class q
         if (localJSONArray.length() >= 2)
         {
           localObject[i] = ((float)localJSONArray.optDouble(0));
-          paramJSONArray[i] = g.o(localJSONArray.optJSONArray(1));
+          paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
         }
         i += 1;
       }
@@ -94,28 +95,28 @@ public final class q
       {
         for (;;)
         {
-          AppMethodBeat.o(103232);
+          AppMethodBeat.o(144915);
           return true;
           if ("radial".equalsIgnoreCase((String)localObject))
           {
             if (paramJSONArray.length() < 3)
             {
-              AppMethodBeat.o(103232);
+              AppMethodBeat.o(144915);
               return false;
             }
             paramd = paramJSONArray.optJSONArray(1);
             if ((paramd == null) || (paramd.length() < 3))
             {
-              AppMethodBeat.o(103232);
+              AppMethodBeat.o(144915);
               return false;
             }
-            f1 = g.d(paramd, 0);
-            f2 = g.d(paramd, 1);
-            f3 = g.d(paramd, 2);
+            f1 = i.f(paramd, 0);
+            f2 = i.f(paramd, 1);
+            f3 = i.f(paramd, 2);
             if (f3 <= 0.0F)
             {
-              com.tencent.luggage.g.d.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
-              AppMethodBeat.o(103232);
+              Log.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
+              AppMethodBeat.o(144915);
               return false;
             }
             paramd = paramJSONArray.optJSONArray(2);
@@ -128,7 +129,7 @@ public final class q
               if (localJSONArray.length() >= 2)
               {
                 localObject[i] = ((float)localJSONArray.optDouble(0));
-                paramJSONArray[i] = g.o(localJSONArray.optJSONArray(1));
+                paramJSONArray[i] = i.u(localJSONArray.optJSONArray(1));
               }
               i += 1;
             }
@@ -142,26 +143,26 @@ public final class q
             paramd = paramJSONArray.optJSONArray(1);
             if ((paramd == null) || (paramd.length() < 4))
             {
-              AppMethodBeat.o(103232);
+              AppMethodBeat.o(144915);
               return false;
             }
             paramCanvas.setShader(null);
-            paramCanvas.setColor(g.o(paramd));
+            paramCanvas.setColor(i.u(paramd));
           }
         }
       } while (!"pattern".equalsIgnoreCase((String)localObject));
       localObject = paramJSONArray.optString(1);
       paramJSONArray = paramJSONArray.optString(2);
-      if (bo.isNullOrNil((String)localObject))
+      if (Util.isNullOrNil((String)localObject))
       {
-        com.tencent.luggage.g.d.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
-        AppMethodBeat.o(103232);
+        Log.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
+        AppMethodBeat.o(144915);
         return false;
       }
-      paramd = paramd.heH.a(paramd, (String)localObject);
+      paramd = paramd.qTo.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = g.pO(paramd.getWidth());
-    int k = g.pO(paramd.getHeight());
+    int j = i.DC(paramd.getWidth());
+    int k = i.DC(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -217,11 +218,11 @@ public final class q
     }
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg cjY()
   {
-    AppMethodBeat.i(103231);
+    AppMethodBeat.i(144914);
     SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();
-    AppMethodBeat.o(103231);
+    AppMethodBeat.o(144914);
     return localSetFillStyleActionArg;
   }
   
@@ -232,7 +233,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.q
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class hmo
   
   public void run()
   {
-    DownloadManager.a().a(this.a);
+    DownloadManager.a().b(this.a);
   }
 }
 

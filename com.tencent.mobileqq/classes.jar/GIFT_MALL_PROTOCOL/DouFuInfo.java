@@ -12,7 +12,7 @@ public final class DouFuInfo
   public String blessing = "";
   public String doufu_link = "";
   public String icon = "";
-  public long uin;
+  public long uin = 0L;
   
   public DouFuInfo() {}
   
@@ -38,27 +38,32 @@ public final class DouFuInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.birthday != null) {
-      paramJceOutputStream.write(this.birthday, 0);
+    String str = this.birthday;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 2);
+    str = this.icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.blessing != null) {
-      paramJceOutputStream.write(this.blessing, 3);
+    str = this.blessing;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.doufu_link != null) {
-      paramJceOutputStream.write(this.doufu_link, 4);
+    str = this.doufu_link;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.background != null) {
-      paramJceOutputStream.write(this.background, 5);
+    str = this.background;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GIFT_MALL_PROTOCOL.DouFuInfo
  * JD-Core Version:    0.7.0.1
  */

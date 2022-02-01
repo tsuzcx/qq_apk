@@ -1,28 +1,26 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import aezy;
-import aezz;
 import mqq.util.WeakReference;
 
-public class DoodleMsgView$1$2
+class DoodleMsgView$1$2
   implements Runnable
 {
-  public DoodleMsgView$1$2(aezy paramaezy, int paramInt) {}
+  DoodleMsgView$1$2(DoodleMsgView.1 param1, int paramInt) {}
   
   public void run()
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_Aezy.a) != null)
+    if (DoodleMsgView.g(this.b.a) != null)
     {
-      aezz localaezz = (aezz)DoodleMsgView.a(this.jdField_a_of_type_Aezy.a).get();
-      if (localaezz != null) {
-        localaezz.a(this.jdField_a_of_type_Int);
+      DoodleMsgViewListener localDoodleMsgViewListener = (DoodleMsgViewListener)DoodleMsgView.g(this.b.a).get();
+      if (localDoodleMsgViewListener != null) {
+        localDoodleMsgViewListener.a(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.2
  * JD-Core Version:    0.7.0.1
  */

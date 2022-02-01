@@ -4,21 +4,22 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetTroopListReqV2
   extends JceStruct
 {
   static byte[] cache_vecCookies = (byte[])new byte[1];
   static ArrayList<stTroopNum> cache_vecGroupInfo;
-  public byte bGetLongGroupName;
-  public byte bGetMSFMsgFlag;
-  public byte bGroupFlagExt;
-  public long dwCompanyId;
-  public int shVersion;
-  public long uin;
-  public byte[] vecCookies;
-  public ArrayList<stTroopNum> vecGroupInfo;
-  public long versionNum;
+  public byte bGetLongGroupName = 0;
+  public byte bGetMSFMsgFlag = 0;
+  public byte bGroupFlagExt = 0;
+  public long dwCompanyId = 0L;
+  public int shVersion = 0;
+  public long uin = 0L;
+  public byte[] vecCookies = null;
+  public ArrayList<stTroopNum> vecGroupInfo = null;
+  public long versionNum = 0L;
   
   static
   {
@@ -60,11 +61,13 @@ public final class GetTroopListReqV2
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.bGetMSFMsgFlag, 1);
-    if (this.vecCookies != null) {
-      paramJceOutputStream.write(this.vecCookies, 2);
+    Object localObject = this.vecCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
-    if (this.vecGroupInfo != null) {
-      paramJceOutputStream.write(this.vecGroupInfo, 3);
+    localObject = this.vecGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.bGroupFlagExt, 4);
     paramJceOutputStream.write(this.shVersion, 5);
@@ -75,7 +78,7 @@ public final class GetTroopListReqV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopListReqV2
  * JD-Core Version:    0.7.0.1
  */

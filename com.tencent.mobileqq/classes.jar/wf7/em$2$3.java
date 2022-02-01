@@ -10,13 +10,17 @@ class em$2$3
   public void run()
   {
     em.d(this.np.nm).removeMessages(3);
-    try
+    for (;;)
     {
-      em.l(this.np.nm).a(new em.2.3.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
+      try
+      {
+        em.l(this.np.nm).a(new em.2.3.1(this));
+        return;
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
       synchronized (em.h(this.np.nm))
       {
         em.c(this.np.nm, false);
@@ -28,7 +32,7 @@ class em$2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.em.2.3
  * JD-Core Version:    0.7.0.1
  */

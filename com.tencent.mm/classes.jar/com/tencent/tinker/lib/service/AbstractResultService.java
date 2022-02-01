@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 
 public abstract class AbstractResultService
   extends IntentService
@@ -27,27 +28,27 @@ public abstract class AbstractResultService
       paramContext.startService(localIntent);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "run result service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
+      ShareTinkerLog.e("Tinker.AbstractResultService", "run result service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
   }
-  
-  public abstract void a(a parama);
   
   protected void onHandleIntent(Intent paramIntent)
   {
     if (paramIntent == null)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "AbstractResultService received a null intent, ignoring.", new Object[0]);
+      ShareTinkerLog.e("Tinker.AbstractResultService", "AbstractResultService received a null intent, ignoring.", new Object[0]);
       return;
     }
-    a((a)ShareIntentUtil.u(paramIntent, "result_extra"));
+    onPatchResult((a)ShareIntentUtil.getSerializableExtra(paramIntent, "result_extra"));
   }
+  
+  public abstract void onPatchResult(a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.lib.service.AbstractResultService
  * JD-Core Version:    0.7.0.1
  */

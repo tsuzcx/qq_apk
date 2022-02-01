@@ -1,59 +1,38 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.emh;
+import com.tencent.mm.protocal.protobuf.emi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class c
-  extends m
+  extends z<emi>
 {
-  public c(String paramString1, String paramString2, String paramString3, int paramInt)
+  public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this(paramString1, paramString2, paramString3, paramInt, (byte)0);
-  }
-  
-  private c(String paramString1, String paramString2, String paramString3, int paramInt, byte paramByte)
-  {
-    AppMethodBeat.i(142471);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("flag", "1");
-    localHashMap.put("passwd", paramString1);
-    localHashMap.put("token", paramString2);
-    localHashMap.put("face_token", paramString3);
-    localHashMap.put("realname_scene", String.valueOf(paramInt));
-    ab.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
-    setRequestData(localHashMap);
-    AppMethodBeat.o(142471);
-  }
-  
-  public final int getFuncId()
-  {
-    return 1648;
-  }
-  
-  public final int getTenpayCgicmd()
-  {
-    return 1648;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/tenpay/realnamereg";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(46640);
-    ab.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
-    AppMethodBeat.o(46640);
+    AppMethodBeat.i(174503);
+    emh localemh = new emh();
+    c.a locala = new c.a();
+    localemh.VxX = paramString2;
+    localemh.VCP = paramString3;
+    localemh.hMy = paramString1;
+    localemh.VJo = paramString4;
+    locala.otE = localemh;
+    locala.otF = new emi();
+    locala.funcId = 2752;
+    locala.uri = "/cgi-bin/mmpay-bin/tenpay/realnameverifysms";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
+    Log.i("MicroMsg.CgiRealnameVerifySms", "verify sms: %s, %s, reqkey: %s", new Object[] { paramString3, paramString2, paramString1 });
+    AppMethodBeat.o(174503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.c
  * JD-Core Version:    0.7.0.1
  */

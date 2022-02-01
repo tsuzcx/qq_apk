@@ -9,21 +9,21 @@ import com.google.android.gms.internal.bb;
 final class u<T>
   extends ci<Status>
 {
-  private T JL;
-  private bb<T> Ph;
-  private v<T> Tp;
+  private T LA;
+  private bb<T> QW;
+  private v<T> Ve;
   
   private u(p paramp, T paramT, bb<T> parambb, v<T> paramv)
   {
     super(paramp);
-    this.JL = d.u(paramT);
-    this.Ph = ((bb)d.u(parambb));
-    this.Tp = ((v)d.u(paramv));
+    this.LA = d.D(paramT);
+    this.QW = ((bb)d.D(parambb));
+    this.Ve = ((v)d.D(paramv));
   }
   
   static <T> t<Status> a(p paramp, v<T> paramv, T paramT)
   {
-    return paramp.a(new u(paramp, paramT, paramp.s(paramT), paramv));
+    return paramp.a(new u(paramp, paramT, paramp.B(paramT), paramv));
   }
 }
 

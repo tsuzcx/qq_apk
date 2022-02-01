@@ -10,10 +10,11 @@ final class TPPlayerMgr$3
   
   public boolean loadLib(String paramString1, String paramString2)
   {
-    if (this.val$loader != null) {
+    ITPModuleLoader localITPModuleLoader = this.val$loader;
+    if (localITPModuleLoader != null) {
       try
       {
-        this.val$loader.loadLibrary(paramString1, paramString2);
+        localITPModuleLoader.loadLibrary(paramString1, paramString2);
         return true;
       }
       catch (Throwable paramString1)
@@ -26,7 +27,7 @@ final class TPPlayerMgr$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr.3
  * JD-Core Version:    0.7.0.1
  */

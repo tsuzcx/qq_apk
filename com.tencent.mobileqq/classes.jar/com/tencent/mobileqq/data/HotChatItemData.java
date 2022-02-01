@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class HotChatItemData
-  extends awge
+  extends Entity
 {
   public String mADsContent;
   public long mDraftSec;
@@ -16,7 +16,7 @@ public class HotChatItemData
   public long mLatestMsgSec;
   public long mMakeTopTime;
   public int mState;
-  @awhs
+  @unique
   public String mTroopUin;
 }
 

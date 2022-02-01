@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emotionintegrate;
 
 import android.text.TextUtils;
-import baqn;
-import bayu;
-import bdhb;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.net.URL;
 
 class SearchEmoticonFragment$2
@@ -14,12 +14,12 @@ class SearchEmoticonFragment$2
   
   public void run()
   {
-    Object localObject = bayu.a(this.a, 1, null);
-    if ((localObject != null) && (baqn.a(((URL)localObject).toString()) == null))
+    Object localObject = URLDrawableHelper.getURL(this.a, 1, null);
+    if ((localObject != null) && (AbsDownloader.getFile(((URL)localObject).toString()) == null))
     {
-      localObject = baqn.d(((URL)localObject).toString());
+      localObject = AbsDownloader.getFilePath(((URL)localObject).toString());
       if ((!TextUtils.isEmpty(this.a.path)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        bdhb.d(this.a.path, (String)localObject);
+        FileUtils.copyFile(this.a.path, (String)localObject);
       }
     }
   }

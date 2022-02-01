@@ -1,299 +1,153 @@
 package com.tencent.mm.network;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public final class v
+public abstract interface v
+  extends IInterface
 {
-  private Map<String, List<String>> aZp;
-  public HttpURLConnection connection;
-  public int gdn;
-  public String gek;
-  public URL url;
+  public abstract boolean check();
   
-  public v(URL paramURL, int paramInt)
+  public static abstract class a
+    extends Binder
+    implements v
   {
-    AppMethodBeat.i(58618);
-    this.aZp = null;
-    this.url = paramURL;
-    this.gdn = paramInt;
-    this.connection = ((HttpURLConnection)this.url.openConnection());
-    if (1 == this.gdn) {
-      this.connection.setInstanceFollowRedirects(false);
-    }
-    AppMethodBeat.o(58618);
-  }
-  
-  public final void anq()
-  {
-    AppMethodBeat.i(58627);
-    this.connection.setDoInput(true);
-    AppMethodBeat.o(58627);
-  }
-  
-  public final void anr()
-  {
-    AppMethodBeat.i(58628);
-    this.connection.setDoOutput(true);
-    AppMethodBeat.o(58628);
-  }
-  
-  public final void connect()
-  {
-    AppMethodBeat.i(58621);
-    if ((1 == this.gdn) && (this.aZp == null)) {
-      this.aZp = this.connection.getRequestProperties();
-    }
-    this.connection.connect();
-    AppMethodBeat.o(58621);
-  }
-  
-  public final void disconnect()
-  {
-    AppMethodBeat.i(155860);
-    if (this.connection != null) {}
-    try
+    public a()
     {
-      this.connection.getInputStream().close();
-      this.connection.disconnect();
-      AppMethodBeat.o(155860);
-      return;
+      attachInterface(this, "com.tencent.mm.network.IWorkerCallback_AIDL");
     }
-    catch (Exception localException)
+    
+    public static v bQY()
     {
-      for (;;)
+      return a.poa;
+    }
+    
+    public IBinder asBinder()
+    {
+      return this;
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      switch (paramInt1)
       {
-        localException.getMessage();
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("com.tencent.mm.network.IWorkerCallback_AIDL");
+        return true;
       }
-    }
-  }
-  
-  public final String getHeaderField(String paramString)
-  {
-    AppMethodBeat.i(58623);
-    if ((1 == this.gdn) && (this.aZp == null)) {
-      this.aZp = this.connection.getRequestProperties();
-    }
-    paramString = this.connection.getHeaderField(paramString);
-    AppMethodBeat.o(58623);
-    return paramString;
-  }
-  
-  public final int getHeaderFieldInt(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(58624);
-    if ((1 == this.gdn) && (this.aZp == null)) {
-      this.aZp = this.connection.getRequestProperties();
-    }
-    paramInt = this.connection.getHeaderFieldInt(paramString, paramInt);
-    AppMethodBeat.o(58624);
-    return paramInt;
-  }
-  
-  public final Map<String, List<String>> getHeaderFields()
-  {
-    AppMethodBeat.i(58622);
-    if ((1 == this.gdn) && (this.aZp == null)) {
-      this.aZp = this.connection.getRequestProperties();
-    }
-    Map localMap = this.connection.getHeaderFields();
-    AppMethodBeat.o(58622);
-    return localMap;
-  }
-  
-  public final InputStream getInputStream()
-  {
-    AppMethodBeat.i(58625);
-    if (1 == this.gdn)
-    {
-      if (this.aZp == null) {
-        this.aZp = this.connection.getRequestProperties();
-      }
-      getResponseCode();
-    }
-    InputStream localInputStream = this.connection.getInputStream();
-    AppMethodBeat.o(58625);
-    return localInputStream;
-  }
-  
-  public final OutputStream getOutputStream()
-  {
-    AppMethodBeat.i(58626);
-    if (1 == this.gdn)
-    {
-      if (this.aZp == null) {
-        this.aZp = this.connection.getRequestProperties();
-      }
-      getResponseCode();
-    }
-    OutputStream localOutputStream = this.connection.getOutputStream();
-    AppMethodBeat.o(58626);
-    return localOutputStream;
-  }
-  
-  public final int getResponseCode()
-  {
-    AppMethodBeat.i(58619);
-    if ((1 == this.gdn) && (this.aZp == null)) {
-      this.aZp = this.connection.getRequestProperties();
-    }
-    int i = -1;
-    int k;
-    try
-    {
-      k = this.connection.getResponseCode();
-      i = k;
-      if ((1 != this.gdn) || (302 != k)) {
-        break label390;
-      }
-      i = k;
-      Object localObject = this.connection.getHeaderField("Location");
-      if (localObject == null)
+      paramParcel1.enforceInterface("com.tencent.mm.network.IWorkerCallback_AIDL");
+      boolean bool = check();
+      paramParcel2.writeNoException();
+      if (bool) {}
+      for (paramInt1 = 1;; paramInt1 = 0)
       {
-        AppMethodBeat.o(58619);
-        return k;
+        paramParcel2.writeInt(paramInt1);
+        return true;
       }
-      i = k;
-      this.url = new URL(this.url, (String)localObject);
-      try
-      {
-        this.connection.getInputStream().close();
-        i = k;
-        this.connection.disconnect();
-        i = k;
-        this.connection = ((HttpURLConnection)this.url.openConnection());
-        i = k;
-        this.connection.setInstanceFollowRedirects(false);
-        i = k;
-        if (this.aZp != null)
-        {
-          i = k;
-          localObject = this.aZp.keySet().iterator();
-          String str;
-          do
-          {
-            do
-            {
-              i = k;
-              if (!((Iterator)localObject).hasNext()) {
-                break;
-              }
-              i = k;
-              str = (String)((Iterator)localObject).next();
-              i = k;
-            } while (str.equals("Host"));
-            i = k;
-          } while (str.equals("X-Online-Host"));
-          i = k;
-          List localList = (List)this.aZp.get(str);
-          j = 0;
-          for (;;)
-          {
-            i = k;
-            if (j >= localList.size()) {
-              break;
-            }
-            i = k;
-            this.connection.setRequestProperty(str, (String)localList.get(j));
-            j += 1;
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          i = k;
-          localException1.getMessage();
-        }
-      }
-      i = k;
     }
-    catch (Exception localException2)
+    
+    static final class a
+      implements v
     {
-      if ((1 == this.gdn) && (200 != i) && (at.isConnected(ah.getContext()))) {
-        b.reportFailIp(this.gek);
+      public static v poa;
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
+      {
+        this.mRemote = paramIBinder;
       }
-      AppMethodBeat.o(58619);
-      throw localException2;
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
+      /* Error */
+      public final boolean check()
+      {
+        // Byte code:
+        //   0: iconst_1
+        //   1: istore_2
+        //   2: ldc 26
+        //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   7: invokestatic 38	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   10: astore_3
+        //   11: invokestatic 38	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   14: astore 4
+        //   16: aload_3
+        //   17: ldc 40
+        //   19: invokevirtual 44	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   22: aload_0
+        //   23: getfield 20	com/tencent/mm/network/v$a$a:mRemote	Landroid/os/IBinder;
+        //   26: iconst_1
+        //   27: aload_3
+        //   28: aload 4
+        //   30: iconst_0
+        //   31: invokeinterface 50 5 0
+        //   36: ifne +34 -> 70
+        //   39: invokestatic 54	com/tencent/mm/network/v$a:bQY	()Lcom/tencent/mm/network/v;
+        //   42: ifnull +28 -> 70
+        //   45: invokestatic 54	com/tencent/mm/network/v$a:bQY	()Lcom/tencent/mm/network/v;
+        //   48: invokeinterface 56 1 0
+        //   53: istore_2
+        //   54: aload 4
+        //   56: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   59: aload_3
+        //   60: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   63: ldc 26
+        //   65: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   68: iload_2
+        //   69: ireturn
+        //   70: aload 4
+        //   72: invokevirtual 65	android/os/Parcel:readException	()V
+        //   75: aload 4
+        //   77: invokevirtual 69	android/os/Parcel:readInt	()I
+        //   80: istore_1
+        //   81: iload_1
+        //   82: ifeq +19 -> 101
+        //   85: aload 4
+        //   87: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   90: aload_3
+        //   91: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   94: ldc 26
+        //   96: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   99: iload_2
+        //   100: ireturn
+        //   101: iconst_0
+        //   102: istore_2
+        //   103: goto -18 -> 85
+        //   106: astore 5
+        //   108: aload 4
+        //   110: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   113: aload_3
+        //   114: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   117: ldc 26
+        //   119: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   122: aload 5
+        //   124: athrow
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	125	0	this	a
+        //   80	2	1	i	int
+        //   1	102	2	bool	boolean
+        //   10	104	3	localParcel1	Parcel
+        //   14	95	4	localParcel2	Parcel
+        //   106	17	5	localObject	Object
+        // Exception table:
+        //   from	to	target	type
+        //   16	54	106	finally
+        //   70	81	106	finally
+      }
     }
-    this.connection.setRequestProperty("Host", this.url.getHost());
-    i = k;
-    this.connection.setRequestProperty("X-Online-Host", this.url.getHost());
-    i = k;
-    int j = getResponseCode();
-    AppMethodBeat.o(58619);
-    return j;
-    label390:
-    if ((1 == this.gdn) && (200 != k) && (at.isConnected(ah.getContext()))) {
-      b.reportFailIp(this.gek);
-    }
-    AppMethodBeat.o(58619);
-    return k;
-  }
-  
-  public final void setConnectTimeout(int paramInt)
-  {
-    AppMethodBeat.i(58631);
-    this.connection.setConnectTimeout(paramInt);
-    AppMethodBeat.o(58631);
-  }
-  
-  public final void setReadTimeout(int paramInt)
-  {
-    AppMethodBeat.i(58632);
-    this.connection.setReadTimeout(paramInt);
-    AppMethodBeat.o(58632);
-  }
-  
-  public final void setRequestMethod(String paramString)
-  {
-    AppMethodBeat.i(58620);
-    this.connection.setRequestMethod(paramString);
-    AppMethodBeat.o(58620);
-  }
-  
-  public final void setRequestProperty(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(58629);
-    this.connection.setRequestProperty(paramString1, paramString2);
-    AppMethodBeat.o(58629);
-  }
-  
-  public final void setUseCaches(boolean paramBoolean)
-  {
-    AppMethodBeat.i(58630);
-    this.connection.setUseCaches(paramBoolean);
-    AppMethodBeat.o(58630);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(58634);
-    String str = this.connection.toString();
-    AppMethodBeat.o(58634);
-    return str;
-  }
-  
-  public final void we(String paramString)
-  {
-    AppMethodBeat.i(58633);
-    this.connection.setRequestProperty("Referer", paramString);
-    AppMethodBeat.o(58633);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.network.v
  * JD-Core Version:    0.7.0.1
  */

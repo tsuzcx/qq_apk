@@ -13,28 +13,28 @@ import java.lang.ref.WeakReference;
 final class a
   extends Handler
 {
-  private final WeakReference<l> go;
-  private WeakReference<Messenger> gp;
+  private final WeakReference<l> il;
+  private WeakReference<Messenger> im;
   
   a(l paraml)
   {
-    this.go = new WeakReference(paraml);
+    this.il = new WeakReference(paraml);
   }
   
   final void a(Messenger paramMessenger)
   {
-    this.gp = new WeakReference(paramMessenger);
+    this.im = new WeakReference(paramMessenger);
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((this.gp == null) || (this.gp.get() == null) || (this.go.get() == null)) {
+    if ((this.im == null) || (this.im.get() == null) || (this.il.get() == null)) {
       return;
     }
     Bundle localBundle = paramMessage.getData();
     localBundle.setClassLoader(MediaSessionCompat.class.getClassLoader());
-    l locall = (l)this.go.get();
-    Messenger localMessenger = (Messenger)this.gp.get();
+    l locall = (l)this.il.get();
+    Messenger localMessenger = (Messenger)this.im.get();
     for (;;)
     {
       try

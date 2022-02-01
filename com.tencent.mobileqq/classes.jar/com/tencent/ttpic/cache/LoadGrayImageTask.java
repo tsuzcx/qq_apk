@@ -4,32 +4,35 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
+import com.tencent.ttpic.util.FaceOffUtil.FeatureType;
 import java.util.Map;
 
 public class LoadGrayImageTask
   extends AsyncTask<Void, Integer, Boolean>
 {
-  private final FaceOffUtil.FEATURE_TYPE featureType;
-  private final Map<FaceOffUtil.FEATURE_TYPE, Bitmap> mGrayCache;
+  private final FaceOffUtil.FeatureType featureType;
+  private final Map<FaceOffUtil.FeatureType, Bitmap> mGrayCache;
   private final int sampleSize;
   
-  public LoadGrayImageTask(Map<FaceOffUtil.FEATURE_TYPE, Bitmap> paramMap, FaceOffUtil.FEATURE_TYPE paramFEATURE_TYPE, int paramInt)
+  public LoadGrayImageTask(Map<FaceOffUtil.FeatureType, Bitmap> paramMap, FaceOffUtil.FeatureType paramFeatureType, int paramInt)
   {
     this.mGrayCache = paramMap;
-    this.featureType = paramFEATURE_TYPE;
+    this.featureType = paramFeatureType;
     this.sampleSize = paramInt;
   }
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (isCancelled()) {
-      return Boolean.valueOf(false);
+    boolean bool = isCancelled();
+    paramVarArgs = Boolean.valueOf(false);
+    if (bool) {
+      return paramVarArgs;
     }
-    if (this.mGrayCache == null) {
-      return Boolean.valueOf(false);
+    Map localMap = this.mGrayCache;
+    if (localMap == null) {
+      return paramVarArgs;
     }
-    if (!this.mGrayCache.containsKey(this.featureType))
+    if (!localMap.containsKey(this.featureType))
     {
       paramVarArgs = FaceOffUtil.getGrayBitmap(this.featureType);
       if (BitmapUtils.isLegal(paramVarArgs)) {
@@ -41,7 +44,7 @@ public class LoadGrayImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadGrayImageTask
  * JD-Core Version:    0.7.0.1
  */

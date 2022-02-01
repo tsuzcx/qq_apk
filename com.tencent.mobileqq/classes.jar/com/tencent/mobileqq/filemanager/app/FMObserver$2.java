@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aqru;
-import arcg;
-
-public class FMObserver$2
-  implements Runnable
+class FMObserver$2
+  implements FMObserver.FileEventOperator
 {
-  public FMObserver$2(aqru paramaqru, arcg paramarcg) {}
+  FMObserver$2(FMObserver paramFMObserver) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.this$0.a(this.a);
+    FMObserver.a(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FMObserver.2
  * JD-Core Version:    0.7.0.1
  */

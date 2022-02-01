@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/m6" android:layout_width="@dimen/yg" android:layout_height="wrap_content" android:minHeight="@dimen/yf" android:paddingStart="@dimen/yd"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/b1f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:indeterminate="true" android:indeterminateOnly="true" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ye">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/gg" android:id="@id/b26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b6t" android:layout_centerVertical="true" android:layout_toStartOf="@id/b27" android:layout_alignParentStart="true" />
+        <Button android:textSize="@dimen/lx" android:textColor="@android:color/white" android:id="@id/b27" android:text="@string/b6s" android:layout_centerVertical="true" android:paddingStart="14.0dip" android:paddingEnd="14.0dip" android:layout_marginEnd="@dimen/yd" android:layout_alignParentEnd="true" style="@style/oi" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/b6u" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b20" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" />
+    <View android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginTop="@dimen/cp" />
+    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/b1x" android:background="@drawable/m3" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b6i" style="@style/zn" />
+    <View android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/b1y" android:background="@drawable/m3" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b6j" android:layout_marginEnd="@dimen/g" style="@style/zn" />
+</LinearLayout>

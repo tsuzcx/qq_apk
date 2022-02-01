@@ -9,174 +9,158 @@ public class ef
   public static String oe;
   
   /* Error */
-  public static String a(ef.a parama)
+  public static String a(a parama)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 12	java/net/URL
+    //   5: new 14	java/net/URL
     //   8: dup
-    //   9: ldc 14
-    //   11: invokespecial 18	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   14: invokevirtual 22	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   17: checkcast 24	java/net/HttpURLConnection
+    //   9: ldc 16
+    //   11: invokespecial 20	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 24	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   17: checkcast 26	java/net/HttpURLConnection
     //   20: astore 4
-    //   22: invokestatic 30	com/tmsdk/base/utils/SDKUtil:getSDKVersion	()I
+    //   22: invokestatic 32	com/tmsdk/base/utils/SDKUtil:getSDKVersion	()I
     //   25: bipush 8
     //   27: if_icmpge +11 -> 38
-    //   30: ldc 32
-    //   32: ldc 34
-    //   34: invokestatic 40	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   30: ldc 34
+    //   32: ldc 36
+    //   34: invokestatic 42	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   37: pop
     //   38: aload 4
     //   40: iconst_0
-    //   41: invokevirtual 44	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   41: invokevirtual 46	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   44: aload 4
-    //   46: ldc 46
-    //   48: ldc 48
-    //   50: invokevirtual 52	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: ldc 48
+    //   48: ldc 50
+    //   50: invokevirtual 54	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: aload 4
-    //   55: ldc 54
-    //   57: ldc 48
-    //   59: invokevirtual 52	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: ldc 56
+    //   57: ldc 50
+    //   59: invokevirtual 54	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aload 4
     //   64: iconst_0
-    //   65: invokevirtual 57	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   65: invokevirtual 59	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   68: aload 4
-    //   70: ldc 59
-    //   72: invokevirtual 62	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   70: ldc 61
+    //   72: invokevirtual 64	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   75: aload 4
     //   77: sipush 5000
-    //   80: invokevirtual 66	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   80: invokevirtual 68	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   83: aload 4
-    //   85: invokevirtual 69	java/net/HttpURLConnection:getResponseCode	()I
+    //   85: invokevirtual 71	java/net/HttpURLConnection:getResponseCode	()I
     //   88: istore_1
     //   89: iload_1
     //   90: sipush 200
-    //   93: if_icmpeq +17 -> 110
+    //   93: if_icmpeq +20 -> 113
     //   96: iload_1
     //   97: sipush 301
-    //   100: if_icmplt +66 -> 166
+    //   100: if_icmplt +142 -> 242
     //   103: iload_1
     //   104: sipush 305
-    //   107: if_icmpgt +59 -> 166
-    //   110: aload 4
-    //   112: ldc 71
-    //   114: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: astore 5
-    //   119: aload 5
-    //   121: ifnull +13 -> 134
-    //   124: aload 5
-    //   126: ldc 71
-    //   128: invokevirtual 81	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   131: ifne +9 -> 140
-    //   134: aload 4
-    //   136: invokestatic 84	btmsdkobf/ef:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
-    //   139: astore_3
-    //   140: iconst_0
-    //   141: istore_2
-    //   142: aload 4
-    //   144: ifnull +8 -> 152
-    //   147: aload 4
-    //   149: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
-    //   152: aload_3
-    //   153: ifnonnull +21 -> 174
-    //   156: aload_0
-    //   157: iconst_0
-    //   158: iload_2
-    //   159: invokeinterface 94 3 0
-    //   164: aload_3
-    //   165: areturn
-    //   166: iconst_1
-    //   167: istore_2
-    //   168: aload 5
-    //   170: astore_3
-    //   171: goto -29 -> 142
-    //   174: aload_3
-    //   175: putstatic 96	btmsdkobf/ef:oe	Ljava/lang/String;
-    //   178: aload_0
-    //   179: iconst_1
-    //   180: iload_2
-    //   181: invokeinterface 94 3 0
-    //   186: aload_3
-    //   187: areturn
-    //   188: astore_3
-    //   189: aconst_null
-    //   190: astore 4
-    //   192: aload 4
-    //   194: ifnull +8 -> 202
-    //   197: aload 4
-    //   199: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
+    //   107: if_icmpgt +135 -> 242
+    //   110: goto +3 -> 113
+    //   113: aload 4
+    //   115: ldc 73
+    //   117: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: astore 5
+    //   122: aload 5
+    //   124: ifnull +13 -> 137
+    //   127: aload 5
+    //   129: ldc 73
+    //   131: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   134: ifne +9 -> 143
+    //   137: aload 4
+    //   139: invokestatic 86	btmsdkobf/ef:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   142: astore_3
+    //   143: iconst_0
+    //   144: istore_2
+    //   145: aload 4
+    //   147: ifnull +8 -> 155
+    //   150: aload 4
+    //   152: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
+    //   155: aload_3
+    //   156: ifnonnull +13 -> 169
+    //   159: aload_0
+    //   160: iconst_0
+    //   161: iload_2
+    //   162: invokeinterface 94 3 0
+    //   167: aload_3
+    //   168: areturn
+    //   169: aload_3
+    //   170: putstatic 96	btmsdkobf/ef:oe	Ljava/lang/String;
+    //   173: aload_0
+    //   174: iconst_1
+    //   175: iconst_0
+    //   176: invokeinterface 94 3 0
+    //   181: aload_3
+    //   182: areturn
+    //   183: astore_3
+    //   184: goto +7 -> 191
+    //   187: astore_3
+    //   188: aconst_null
+    //   189: astore 4
+    //   191: aload 4
+    //   193: ifnull +8 -> 201
+    //   196: aload 4
+    //   198: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
+    //   201: aload_0
     //   202: iconst_0
-    //   203: ifne +13 -> 216
-    //   206: aload_0
-    //   207: iconst_0
-    //   208: iconst_0
-    //   209: invokeinterface 94 3 0
-    //   214: aconst_null
-    //   215: areturn
-    //   216: aconst_null
-    //   217: putstatic 96	btmsdkobf/ef:oe	Ljava/lang/String;
-    //   220: aload_0
-    //   221: iconst_1
-    //   222: iconst_0
-    //   223: invokeinterface 94 3 0
-    //   228: aconst_null
-    //   229: areturn
-    //   230: astore_3
-    //   231: aconst_null
-    //   232: astore 4
-    //   234: aload 4
-    //   236: ifnull +8 -> 244
-    //   239: aload 4
-    //   241: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
-    //   244: iconst_0
-    //   245: ifne +13 -> 258
-    //   248: aload_0
-    //   249: iconst_0
-    //   250: iconst_0
-    //   251: invokeinterface 94 3 0
-    //   256: aload_3
-    //   257: athrow
-    //   258: aconst_null
-    //   259: putstatic 96	btmsdkobf/ef:oe	Ljava/lang/String;
-    //   262: aload_0
-    //   263: iconst_1
-    //   264: iconst_0
-    //   265: invokeinterface 94 3 0
-    //   270: goto -14 -> 256
-    //   273: astore_3
-    //   274: goto -40 -> 234
-    //   277: astore_3
-    //   278: goto -86 -> 192
+    //   203: iconst_0
+    //   204: invokeinterface 94 3 0
+    //   209: aload_3
+    //   210: athrow
+    //   211: aconst_null
+    //   212: astore 4
+    //   214: aload 4
+    //   216: ifnull +8 -> 224
+    //   219: aload 4
+    //   221: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
+    //   224: aload_0
+    //   225: iconst_0
+    //   226: iconst_0
+    //   227: invokeinterface 94 3 0
+    //   232: aconst_null
+    //   233: areturn
+    //   234: astore_3
+    //   235: goto -24 -> 211
+    //   238: astore_3
+    //   239: goto -25 -> 214
+    //   242: iconst_1
+    //   243: istore_2
+    //   244: aload 5
+    //   246: astore_3
+    //   247: goto -102 -> 145
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	281	0	parama	ef.a
+    //   0	250	0	parama	a
     //   88	20	1	i	int
-    //   141	40	2	bool	boolean
-    //   4	183	3	str1	String
-    //   188	1	3	localThrowable1	java.lang.Throwable
-    //   230	27	3	localObject1	Object
-    //   273	1	3	localObject2	Object
-    //   277	1	3	localThrowable2	java.lang.Throwable
-    //   20	220	4	localHttpURLConnection	java.net.HttpURLConnection
-    //   1	168	5	str2	String
+    //   144	100	2	bool	boolean
+    //   4	178	3	str1	String
+    //   183	1	3	localObject1	Object
+    //   187	23	3	localObject2	Object
+    //   234	1	3	localThrowable1	java.lang.Throwable
+    //   238	1	3	localThrowable2	java.lang.Throwable
+    //   246	1	3	str2	String
+    //   20	200	4	localHttpURLConnection	java.net.HttpURLConnection
+    //   1	244	5	str3	String
     // Exception table:
     //   from	to	target	type
-    //   5	22	188	java/lang/Throwable
-    //   5	22	230	finally
-    //   22	38	273	finally
-    //   38	89	273	finally
-    //   110	119	273	finally
-    //   124	134	273	finally
-    //   134	140	273	finally
-    //   22	38	277	java/lang/Throwable
-    //   38	89	277	java/lang/Throwable
-    //   110	119	277	java/lang/Throwable
-    //   124	134	277	java/lang/Throwable
-    //   134	140	277	java/lang/Throwable
+    //   22	38	183	finally
+    //   38	89	183	finally
+    //   113	122	183	finally
+    //   127	137	183	finally
+    //   137	143	183	finally
+    //   5	22	187	finally
+    //   5	22	234	java/lang/Throwable
+    //   22	38	238	java/lang/Throwable
+    //   38	89	238	java/lang/Throwable
+    //   113	122	238	java/lang/Throwable
+    //   127	137	238	java/lang/Throwable
+    //   137	143	238	java/lang/Throwable
   }
   
   /* Error */
@@ -184,222 +168,235 @@ public class ef
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
-    //   2: new 12	java/net/URL
-    //   5: dup
-    //   6: ldc 14
-    //   8: invokespecial 18	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   11: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
-    //   14: aload_0
-    //   15: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
-    //   18: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
-    //   21: invokevirtual 81	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   24: ifne +218 -> 242
-    //   27: aload_0
-    //   28: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
-    //   31: invokevirtual 110	java/net/URL:toExternalForm	()Ljava/lang/String;
-    //   34: astore_1
-    //   35: aload_1
-    //   36: astore_3
-    //   37: aload_1
-    //   38: ifnonnull +25 -> 63
-    //   41: aload_1
-    //   42: astore_3
-    //   43: aload_1
-    //   44: astore_2
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aconst_null
+    //   7: astore 7
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aload 6
+    //   14: astore 5
+    //   16: new 14	java/net/URL
+    //   19: dup
+    //   20: ldc 16
+    //   22: invokespecial 20	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   25: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
+    //   28: aload_0
+    //   29: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   32: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
+    //   35: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   38: ifne +18 -> 56
+    //   41: aload 6
+    //   43: astore 5
     //   45: aload_0
-    //   46: ldc 112
-    //   48: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: ifnull +12 -> 63
-    //   54: aload_1
-    //   55: astore_2
-    //   56: aload_0
-    //   57: ldc 112
-    //   59: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   62: astore_3
-    //   63: aload_3
-    //   64: astore_1
-    //   65: aload_3
-    //   66: ifnonnull +52 -> 118
-    //   69: aload_3
-    //   70: astore_1
-    //   71: aload_3
-    //   72: astore_2
-    //   73: aload_0
-    //   74: ldc 114
-    //   76: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   79: ifnull +39 -> 118
-    //   82: aload_3
-    //   83: astore_2
-    //   84: aload_0
-    //   85: ldc 114
-    //   87: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   90: ldc 116
-    //   92: invokevirtual 120	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   95: astore 4
-    //   97: aload_3
-    //   98: astore_1
-    //   99: aload_3
-    //   100: astore_2
-    //   101: aload 4
-    //   103: arraylength
-    //   104: iconst_2
-    //   105: if_icmpne +13 -> 118
+    //   46: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   49: invokevirtual 110	java/net/URL:toExternalForm	()Ljava/lang/String;
+    //   52: astore_2
+    //   53: goto +5 -> 58
+    //   56: aconst_null
+    //   57: astore_2
+    //   58: aload_2
+    //   59: astore_3
+    //   60: aload_2
+    //   61: ifnonnull +41 -> 102
+    //   64: aload_2
+    //   65: astore_3
+    //   66: aload 6
+    //   68: astore 5
+    //   70: aload 7
+    //   72: astore 4
+    //   74: aload_2
+    //   75: astore_1
+    //   76: aload_0
+    //   77: ldc 112
+    //   79: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   82: ifnull +20 -> 102
+    //   85: aload 6
+    //   87: astore 5
+    //   89: aload 7
+    //   91: astore 4
+    //   93: aload_2
+    //   94: astore_1
+    //   95: aload_0
+    //   96: ldc 112
+    //   98: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   101: astore_3
+    //   102: aload_3
+    //   103: astore_2
+    //   104: aload_3
+    //   105: ifnonnull +84 -> 189
     //   108: aload_3
     //   109: astore_2
-    //   110: aload 4
-    //   112: iconst_1
-    //   113: aaload
-    //   114: invokevirtual 123	java/lang/String:trim	()Ljava/lang/String;
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnonnull +116 -> 235
-    //   122: aload_1
-    //   123: astore_2
-    //   124: aload_0
-    //   125: invokevirtual 127	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   128: astore_0
-    //   129: aload_0
-    //   130: ifnull +96 -> 226
-    //   133: aload_0
-    //   134: invokestatic 130	btmsdkobf/ef:c	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   137: astore_2
-    //   138: aload_2
-    //   139: ifnull +87 -> 226
-    //   142: aload_0
-    //   143: astore_1
-    //   144: aload_2
-    //   145: astore_0
-    //   146: aload_0
-    //   147: astore_2
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokevirtual 135	java/io/InputStream:close	()V
-    //   156: aload_0
-    //   157: astore_2
-    //   158: aload_2
-    //   159: areturn
-    //   160: astore_0
-    //   161: aconst_null
-    //   162: astore_1
-    //   163: aload_2
-    //   164: astore_0
-    //   165: aload_0
-    //   166: astore_2
-    //   167: aload_1
-    //   168: ifnull -10 -> 158
-    //   171: aload_1
-    //   172: invokevirtual 135	java/io/InputStream:close	()V
-    //   175: aload_0
-    //   176: areturn
-    //   177: astore_1
-    //   178: aload_0
-    //   179: areturn
-    //   180: astore_0
-    //   181: aconst_null
-    //   182: astore_1
-    //   183: aload_1
-    //   184: ifnull +7 -> 191
-    //   187: aload_1
-    //   188: invokevirtual 135	java/io/InputStream:close	()V
-    //   191: aload_0
-    //   192: athrow
+    //   110: aload 6
+    //   112: astore 5
+    //   114: aload 7
+    //   116: astore 4
+    //   118: aload_3
+    //   119: astore_1
+    //   120: aload_0
+    //   121: ldc 114
+    //   123: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: ifnull +63 -> 189
+    //   129: aload 6
+    //   131: astore 5
+    //   133: aload 7
+    //   135: astore 4
+    //   137: aload_3
+    //   138: astore_1
+    //   139: aload_0
+    //   140: ldc 114
+    //   142: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: ldc 116
+    //   147: invokevirtual 120	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   150: astore 9
+    //   152: aload_3
+    //   153: astore_2
+    //   154: aload 6
+    //   156: astore 5
+    //   158: aload 7
+    //   160: astore 4
+    //   162: aload_3
+    //   163: astore_1
+    //   164: aload 9
+    //   166: arraylength
+    //   167: iconst_2
+    //   168: if_icmpne +21 -> 189
+    //   171: aload 6
+    //   173: astore 5
+    //   175: aload 7
+    //   177: astore 4
+    //   179: aload_3
+    //   180: astore_1
+    //   181: aload 9
+    //   183: iconst_1
+    //   184: aaload
+    //   185: invokevirtual 123	java/lang/String:trim	()Ljava/lang/String;
+    //   188: astore_2
+    //   189: aload 8
+    //   191: astore_3
+    //   192: aload_2
     //   193: astore_1
-    //   194: aload_0
-    //   195: areturn
-    //   196: astore_1
-    //   197: goto -6 -> 191
-    //   200: astore_2
-    //   201: aload_0
-    //   202: astore_1
-    //   203: aload_2
-    //   204: astore_0
-    //   205: goto -22 -> 183
-    //   208: astore_0
-    //   209: aload_2
-    //   210: astore_0
-    //   211: aconst_null
-    //   212: astore_1
-    //   213: goto -48 -> 165
-    //   216: astore_2
+    //   194: aload_2
+    //   195: ifnonnull +60 -> 255
+    //   198: aload 6
+    //   200: astore 5
+    //   202: aload 7
+    //   204: astore 4
+    //   206: aload_2
+    //   207: astore_1
+    //   208: aload_0
+    //   209: invokevirtual 127	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   212: astore_0
+    //   213: aload_0
+    //   214: astore_3
+    //   215: aload_2
+    //   216: astore_1
     //   217: aload_0
-    //   218: astore_2
-    //   219: aload_1
-    //   220: astore_0
-    //   221: aload_2
-    //   222: astore_1
-    //   223: goto -58 -> 165
-    //   226: aload_0
-    //   227: astore_2
-    //   228: aload_1
-    //   229: astore_0
-    //   230: aload_2
-    //   231: astore_1
-    //   232: goto -86 -> 146
-    //   235: aload_1
-    //   236: astore_0
-    //   237: aconst_null
+    //   218: ifnull +37 -> 255
+    //   221: aload_0
+    //   222: astore 5
+    //   224: aload_0
+    //   225: astore 4
+    //   227: aload_2
+    //   228: astore_1
+    //   229: aload_0
+    //   230: invokestatic 130	btmsdkobf/ef:c	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   233: astore 6
+    //   235: aload_0
+    //   236: astore_3
+    //   237: aload_2
     //   238: astore_1
-    //   239: goto -93 -> 146
-    //   242: aconst_null
-    //   243: astore_1
-    //   244: goto -209 -> 35
+    //   239: aload 6
+    //   241: ifnull +14 -> 255
+    //   244: aload 6
+    //   246: astore_1
+    //   247: aload_0
+    //   248: astore_3
+    //   249: goto +6 -> 255
+    //   252: goto +30 -> 282
+    //   255: aload_1
+    //   256: astore_0
+    //   257: aload_3
+    //   258: ifnull +37 -> 295
+    //   261: aload_3
+    //   262: invokevirtual 135	java/io/InputStream:close	()V
+    //   265: aload_1
+    //   266: areturn
+    //   267: astore_0
+    //   268: aload 5
+    //   270: ifnull +8 -> 278
+    //   273: aload 5
+    //   275: invokevirtual 135	java/io/InputStream:close	()V
+    //   278: aload_0
+    //   279: athrow
+    //   280: aconst_null
+    //   281: astore_1
+    //   282: aload_1
+    //   283: astore_0
+    //   284: aload 4
+    //   286: ifnull +9 -> 295
+    //   289: aload 4
+    //   291: astore_3
+    //   292: goto -31 -> 261
+    //   295: aload_0
+    //   296: areturn
+    //   297: astore_0
+    //   298: goto -18 -> 280
+    //   301: astore_0
+    //   302: goto -50 -> 252
+    //   305: astore_0
+    //   306: aload_1
+    //   307: areturn
+    //   308: astore_1
+    //   309: goto -31 -> 278
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	247	0	paramHttpURLConnection	java.net.HttpURLConnection
-    //   34	138	1	localObject1	Object
-    //   177	1	1	localIOException1	java.io.IOException
-    //   182	6	1	localObject2	Object
-    //   193	1	1	localIOException2	java.io.IOException
-    //   196	1	1	localIOException3	java.io.IOException
-    //   202	42	1	localHttpURLConnection1	java.net.HttpURLConnection
-    //   1	166	2	localObject3	Object
-    //   200	10	2	localObject4	Object
-    //   216	1	2	localThrowable	java.lang.Throwable
-    //   218	13	2	localHttpURLConnection2	java.net.HttpURLConnection
-    //   36	73	3	localObject5	Object
-    //   95	16	4	arrayOfString	String[]
+    //   0	312	0	paramHttpURLConnection	java.net.HttpURLConnection
+    //   75	232	1	localObject1	Object
+    //   308	1	1	localIOException	java.io.IOException
+    //   52	186	2	localObject2	Object
+    //   59	233	3	localObject3	Object
+    //   4	286	4	localObject4	Object
+    //   14	260	5	localObject5	Object
+    //   1	244	6	str	String
+    //   7	196	7	localObject6	Object
+    //   10	180	8	localObject7	Object
+    //   150	32	9	arrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   2	35	160	java/lang/Throwable
-    //   171	175	177	java/io/IOException
-    //   2	35	180	finally
-    //   45	54	180	finally
-    //   56	63	180	finally
-    //   73	82	180	finally
-    //   84	97	180	finally
-    //   101	108	180	finally
-    //   110	118	180	finally
-    //   124	129	180	finally
-    //   152	156	193	java/io/IOException
-    //   187	191	196	java/io/IOException
-    //   133	138	200	finally
-    //   45	54	208	java/lang/Throwable
-    //   56	63	208	java/lang/Throwable
-    //   73	82	208	java/lang/Throwable
-    //   84	97	208	java/lang/Throwable
-    //   101	108	208	java/lang/Throwable
-    //   110	118	208	java/lang/Throwable
-    //   124	129	208	java/lang/Throwable
-    //   133	138	216	java/lang/Throwable
+    //   16	41	267	finally
+    //   45	53	267	finally
+    //   76	85	267	finally
+    //   95	102	267	finally
+    //   120	129	267	finally
+    //   139	152	267	finally
+    //   164	171	267	finally
+    //   181	189	267	finally
+    //   208	213	267	finally
+    //   229	235	267	finally
+    //   16	41	297	java/lang/Throwable
+    //   45	53	297	java/lang/Throwable
+    //   76	85	301	java/lang/Throwable
+    //   95	102	301	java/lang/Throwable
+    //   120	129	301	java/lang/Throwable
+    //   139	152	301	java/lang/Throwable
+    //   164	171	301	java/lang/Throwable
+    //   181	189	301	java/lang/Throwable
+    //   208	213	301	java/lang/Throwable
+    //   229	235	301	java/lang/Throwable
+    //   261	265	305	java/io/IOException
+    //   273	278	308	java/io/IOException
   }
   
   private static String c(InputStream paramInputStream)
   {
     String str2 = d(paramInputStream);
-    String[] arrayOfString = new String[5];
-    arrayOfString[0] = "http-equiv\\s*=\\s*[\"']*refresh[\"']*\\s*content\\s*=\\s*[\"']*[^;]*;\\s*url\\s*=\\s*[\"']*([^\"'\\s>]+)";
-    arrayOfString[1] = "[^\\w](?:location.href\\s*=|location\\s*=|location.replace\\s*\\()\\s*[\"']*([^\"'>]+)";
-    arrayOfString[2] = "<NextURL>([^<]+)";
-    arrayOfString[3] = "\\s+action\\s*=\\s*[\"']*([^\"'>]+)[\"'>\\s]*.*submit";
-    arrayOfString[4] = "<LoginURL>([^<]+)";
-    int j = arrayOfString.length;
     int i = 0;
     paramInputStream = null;
-    while ((i < j) && (paramInputStream == null))
+    while ((i < 5) && (paramInputStream == null))
     {
-      Matcher localMatcher = Pattern.compile(arrayOfString[i], 2).matcher(str2);
+      Matcher localMatcher = Pattern.compile(new String[] { "http-equiv\\s*=\\s*[\"']*refresh[\"']*\\s*content\\s*=\\s*[\"']*[^;]*;\\s*url\\s*=\\s*[\"']*([^\"'\\s>]+)", "[^\\w](?:location.href\\s*=|location\\s*=|location.replace\\s*\\()\\s*[\"']*([^\"'>]+)", "<NextURL>([^<]+)", "\\s+action\\s*=\\s*[\"']*([^\"'>]+)[\"'>\\s]*.*submit", "<LoginURL>([^<]+)" }[i], 2).matcher(str2);
       while ((localMatcher.find()) && (paramInputStream == null))
       {
         String str1 = localMatcher.group(localMatcher.groupCount());
@@ -428,59 +425,58 @@ public class ef
     //   8: aload_0
     //   9: invokespecial 187	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   12: invokespecial 190	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   15: astore_1
+    //   15: astore_0
     //   16: new 192	java/lang/StringBuilder
     //   19: dup
     //   20: invokespecial 194	java/lang/StringBuilder:<init>	()V
-    //   23: astore_0
-    //   24: aload_1
+    //   23: astore_1
+    //   24: aload_0
     //   25: invokevirtual 197	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   28: astore_2
     //   29: aload_2
-    //   30: ifnull +22 -> 52
-    //   33: aload_0
+    //   30: ifnull +12 -> 42
+    //   33: aload_1
     //   34: aload_2
     //   35: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: goto -15 -> 24
-    //   42: astore_2
-    //   43: aload_1
-    //   44: invokevirtual 202	java/io/BufferedReader:close	()V
-    //   47: aload_0
-    //   48: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: areturn
-    //   52: aload_1
-    //   53: invokevirtual 202	java/io/BufferedReader:close	()V
-    //   56: goto -9 -> 47
-    //   59: astore_1
-    //   60: goto -13 -> 47
-    //   63: astore_0
-    //   64: aload_1
-    //   65: invokevirtual 202	java/io/BufferedReader:close	()V
-    //   68: aload_0
-    //   69: athrow
-    //   70: astore_1
-    //   71: goto -24 -> 47
-    //   74: astore_1
-    //   75: goto -7 -> 68
+    //   42: aload_0
+    //   43: invokevirtual 202	java/io/BufferedReader:close	()V
+    //   46: goto +10 -> 56
+    //   49: astore_1
+    //   50: aload_0
+    //   51: invokevirtual 202	java/io/BufferedReader:close	()V
+    //   54: aload_1
+    //   55: athrow
+    //   56: aload_1
+    //   57: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: areturn
+    //   61: astore_2
+    //   62: goto -20 -> 42
+    //   65: astore_0
+    //   66: goto -10 -> 56
+    //   69: astore_0
+    //   70: goto -16 -> 54
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	78	0	paramInputStream	InputStream
-    //   15	38	1	localBufferedReader	java.io.BufferedReader
-    //   59	6	1	localIOException1	java.io.IOException
-    //   70	1	1	localIOException2	java.io.IOException
-    //   74	1	1	localIOException3	java.io.IOException
+    //   0	73	0	paramInputStream	InputStream
+    //   23	11	1	localStringBuilder	java.lang.StringBuilder
+    //   49	8	1	localObject	Object
     //   28	7	2	str	String
-    //   42	1	2	localIOException4	java.io.IOException
+    //   61	1	2	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   24	29	42	java/io/IOException
-    //   33	39	42	java/io/IOException
-    //   52	56	59	java/io/IOException
-    //   24	29	63	finally
-    //   33	39	63	finally
-    //   43	47	70	java/io/IOException
-    //   64	68	74	java/io/IOException
+    //   24	29	49	finally
+    //   33	39	49	finally
+    //   24	29	61	java/io/IOException
+    //   33	39	61	java/io/IOException
+    //   42	46	65	java/io/IOException
+    //   50	54	69	java/io/IOException
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
-import gxi;
+import gxh;
 
 public class RollangleImageView
   extends ImageView
@@ -137,7 +137,7 @@ public class RollangleImageView
       this.jdField_a_of_type_AndroidOsAsyncTask.cancel(true);
       this.jdField_a_of_type_AndroidOsAsyncTask = null;
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new gxi(this).execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_AndroidOsAsyncTask = new gxh(this).execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setParams(String paramString1, String paramString2)

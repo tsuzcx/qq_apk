@@ -6,6 +6,7 @@ import com.tencent.map.sdk.a.k;
 import com.tencent.map.sdk.a.l;
 import com.tencent.map.sdk.a.o;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class Package
   extends MapJceStruct
@@ -24,16 +25,6 @@ public final class Package
   public String strSubCmd = "";
   public String uin = "";
   public ArrayList<Tag> vTag = null;
-  
-  static
-  {
-    if (!Package.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      d = bool;
-      return;
-    }
-  }
   
   public Package() {}
   
@@ -58,18 +49,20 @@ public final class Package
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (d) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (d) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -104,13 +97,11 @@ public final class Package
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (Package)paramObject;
-    } while ((!o.a(this.shVer, paramObject.shVer)) || (!o.a(this.eCmd, paramObject.eCmd)) || (!o.a(this.strSubCmd, paramObject.strSubCmd)) || (!o.a(this.iSeqNo, paramObject.iSeqNo)) || (!o.a(this.cEncodeType, paramObject.cEncodeType)) || (!o.a(this.sAppId, paramObject.sAppId)) || (!o.a(this.uin, paramObject.uin)) || (!o.a(this.head, paramObject.head)) || (!o.a(this.busiBuff, paramObject.busiBuff)) || (!o.a(this.vTag, paramObject.vTag)));
-    return true;
+    }
+    paramObject = (Package)paramObject;
+    return (o.a(this.shVer, paramObject.shVer)) && (o.a(this.eCmd, paramObject.eCmd)) && (o.a(this.strSubCmd, paramObject.strSubCmd)) && (o.a(this.iSeqNo, paramObject.iSeqNo)) && (o.a(this.cEncodeType, paramObject.cEncodeType)) && (o.a(this.sAppId, paramObject.sAppId)) && (o.a(this.uin, paramObject.uin)) && (o.a(this.head, paramObject.head)) && (o.a(this.busiBuff, paramObject.busiBuff)) && (o.a(this.vTag, paramObject.vTag));
   }
   
   public final byte[] getBusiBuff()
@@ -176,26 +167,31 @@ public final class Package
     paraml.a(this.strSubCmd, 2);
     paraml.a(this.iSeqNo, 3);
     paraml.a(this.cEncodeType, 4);
-    if (this.sAppId != null) {
-      paraml.a(this.sAppId, 5);
+    Object localObject = this.sAppId;
+    if (localObject != null) {
+      paraml.a((String)localObject, 5);
     }
-    if (this.uin != null) {
-      paraml.a(this.uin, 6);
+    localObject = this.uin;
+    if (localObject != null) {
+      paraml.a((String)localObject, 6);
     }
-    if (this.head != null) {
-      paraml.a(this.head, 7);
+    localObject = this.head;
+    if (localObject != null) {
+      paraml.a((byte[])localObject, 7);
     }
-    if (this.busiBuff != null) {
-      paraml.a(this.busiBuff, 8);
+    localObject = this.busiBuff;
+    if (localObject != null) {
+      paraml.a((byte[])localObject, 8);
     }
-    if (this.vTag != null) {
-      paraml.a(this.vTag, 9);
+    localObject = this.vTag;
+    if (localObject != null) {
+      paraml.a((Collection)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.sso.Package
  * JD-Core Version:    0.7.0.1
  */

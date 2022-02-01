@@ -1,79 +1,106 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.wallet.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.network.g;
+import com.tencent.mm.plugin.soter.b.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.soter.a.f.b;
+import com.tencent.soter.a.f.e;
+import com.tencent.soter.a.f.e.b;
 
 public final class c
-  implements com.tencent.mm.pluginsdk.k
+  extends d
+  implements e
 {
-  public static int a(d paramd, boolean paramBoolean)
+  private int HgK;
+  private b<e.b> HgL = null;
+  private com.tencent.mm.am.h callback;
+  private int icP;
+  private String qgt = null;
+  public com.tencent.mm.am.c rr;
+  
+  public c(String paramString, int paramInt)
   {
-    AppMethodBeat.i(41430);
-    int i = ((l)g.E(l.class)).a(paramd, paramBoolean);
-    AppMethodBeat.o(41430);
+    this.qgt = paramString;
+    this.HgK = paramInt;
+    this.icP = paramInt;
+  }
+  
+  public final void VE(int paramInt)
+  {
+    AppMethodBeat.i(64466);
+    Log.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(4, -1, "", this);
+    }
+    AppMethodBeat.o(64466);
+  }
+  
+  public final void a(b<e.b> paramb)
+  {
+    this.HgL = paramb;
+  }
+  
+  public final void d(int paramInt1, int paramInt2, String paramString, com.tencent.mm.network.s params)
+  {
+    AppMethodBeat.i(64464);
+    Log.d("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    }
+    com.tencent.mm.plugin.soter.model.j.Sah = paramString;
+    if (this.HgL != null)
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        this.HgL.hf(new e.b(true));
+        AppMethodBeat.o(64464);
+        return;
+      }
+      this.HgL.hf(new e.b(false));
+    }
+    AppMethodBeat.o(64464);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(64463);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(64463);
     return i;
   }
   
-  public static void a(ma paramma, int paramInt, String paramString)
+  public final void execute()
   {
-    AppMethodBeat.i(41435);
-    ((l)g.E(l.class)).a(paramma, paramInt, paramString);
-    AppMethodBeat.o(41435);
+    AppMethodBeat.i(64467);
+    com.tencent.mm.kernel.h.aZW().a(this, 0);
+    AppMethodBeat.o(64467);
   }
   
-  public static void abort()
+  public final void fuc()
   {
-    AppMethodBeat.i(41432);
-    ((l)g.E(l.class)).bzh();
-    AppMethodBeat.o(41432);
+    AppMethodBeat.i(64465);
+    Log.i("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "hy: authkey required");
+    if (this.callback != null) {
+      this.callback.onSceneEnd(4, -1, "", this);
+    }
+    if (this.HgL != null)
+    {
+      Log.e("MicroMsg.NetSceneSoterPayUploadAuthKeyManually", "alvinluo pay auth key expired when upload pay auth key");
+      this.HgL.hf(new e.b(false));
+    }
+    AppMethodBeat.o(64465);
   }
   
-  public static boolean byX()
+  public final int getType()
   {
-    AppMethodBeat.i(41429);
-    boolean bool = ((l)g.E(l.class)).bza();
-    ab.i("MicroMsg.FingerPrintAuthMgr", "isSupportFP is ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(41429);
-    return bool;
-  }
-  
-  public static boolean byY()
-  {
-    AppMethodBeat.i(41434);
-    boolean bool = ((l)g.E(l.class)).bzb();
-    AppMethodBeat.o(41434);
-    return bool;
-  }
-  
-  public static com.tencent.mm.pluginsdk.wallet.k byZ()
-  {
-    AppMethodBeat.i(41436);
-    com.tencent.mm.pluginsdk.wallet.k localk = ((l)g.E(l.class)).byZ();
-    AppMethodBeat.o(41436);
-    return localk;
-  }
-  
-  public static void release()
-  {
-    AppMethodBeat.i(41431);
-    ((l)g.E(l.class)).bzg();
-    AppMethodBeat.o(41431);
-  }
-  
-  public static void userCancel()
-  {
-    AppMethodBeat.i(41433);
-    ((l)g.E(l.class)).userCancel();
-    AppMethodBeat.o(41433);
+    return 1665;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.c
  * JD-Core Version:    0.7.0.1
  */

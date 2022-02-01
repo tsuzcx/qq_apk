@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
     <PreferenceSmallCategory />
-    <IconPreference android:title="@string/eo7" android:key="unlike" />
-    <Preference android:title="@string/f3r" android:key="unlike_desc" android:layout="@layout/ah2" />
     <PreferenceSmallCategory />
-    <IconPreference android:title="@string/eru" android:key="black" />
-    <Preference android:title="@string/f3g" android:key="not_be_seen_desc" android:layout="@layout/ah2" />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_new_voip_msg_notification" android:summary="@string/ivy" android:title="@string/ivo" />
+    <CheckBoxPreference android1:defaultValue="true" android:key="settings_show_detail" android:persistent="false" android:title="@string/ivj" />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_ringtone" android:layout="@layout/bdi" android:title="@string/ixz" />
     <PreferenceSmallCategory />
-    <IconPreference android:title="@string/f3i" android:key="feedback" />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_notification_type" android:layout="@layout/bdi" android:summary="@string/iw5" android:title="@string/iw7" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

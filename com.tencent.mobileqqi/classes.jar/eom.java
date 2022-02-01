@@ -1,8 +1,6 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
 public class eom
   implements View.OnClickListener
@@ -11,13 +9,8 @@ public class eom
   
   public void onClick(View paramView)
   {
+    this.a.a(8, 0);
     this.a.a(null);
-    if (UpgradeController.a().a() == 4)
-    {
-      UpgradeController.a().a(BannerManager.a(this.a));
-      return;
-    }
-    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
   }
 }
 

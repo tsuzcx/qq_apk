@@ -22,26 +22,23 @@ public final class CoroutineContext$Element$DefaultImpls
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
     if (Intrinsics.areEqual(paramElement.getKey(), paramKey))
     {
-      paramKey = paramElement;
-      if (paramElement == null) {
-        throw new TypeCastException("null cannot be cast to non-null type E");
+      if (paramElement != null) {
+        return paramElement;
       }
+      throw new TypeCastException("null cannot be cast to non-null type E");
     }
-    else
-    {
-      paramKey = null;
-    }
-    return paramKey;
+    return null;
   }
   
   @NotNull
   public static CoroutineContext minusKey(CoroutineContext.Element paramElement, @NotNull CoroutineContext.Key<?> paramKey)
   {
     Intrinsics.checkParameterIsNotNull(paramKey, "key");
+    Object localObject = paramElement;
     if (Intrinsics.areEqual(paramElement.getKey(), paramKey)) {
-      return (CoroutineContext)EmptyCoroutineContext.INSTANCE;
+      localObject = EmptyCoroutineContext.INSTANCE;
     }
-    return (CoroutineContext)paramElement;
+    return (CoroutineContext)localObject;
   }
   
   @NotNull
@@ -53,7 +50,7 @@ public final class CoroutineContext$Element$DefaultImpls
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.CoroutineContext.Element.DefaultImpls
  * JD-Core Version:    0.7.0.1
  */

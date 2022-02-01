@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.aj;
 
 final class EmojiStoreV2UI$3
   implements Runnable
@@ -13,25 +13,26 @@ final class EmojiStoreV2UI$3
   
   public final void run()
   {
-    AppMethodBeat.i(53818);
-    Intent localIntent = aa.cZp();
-    if (EmojiStoreV2UI.f(this.lsd) == 17)
+    AppMethodBeat.i(109390);
+    Intent localIntent = aj.ipS();
+    if (EmojiStoreV2UI.f(this.xYY) == 17)
     {
       i = 50;
-      aa.a(localIntent, i);
+      aj.f(localIntent, i);
       localIntent.putExtra("ftsneedkeyboard", true);
       localIntent.putExtra("key_load_js_without_delay", true);
       localIntent.putExtra("ftsInitToSearch", true);
-      d.b(this.lsd.getContext(), "webview", ".ui.tools.fts.FTSSOSHomeWebViewUI", localIntent);
-      if (EmojiStoreV2UI.b(this.lsd) != 0) {
-        break label124;
+      localIntent.putExtra("ftsNeedShowCamera", false);
+      c.b(this.xYY.getContext(), "webview", ".ui.tools.fts.FTSSOSHomeWebViewUI", localIntent);
+      if (EmojiStoreV2UI.b(this.xYY) != 0) {
+        break label132;
       }
     }
-    label124:
+    label132:
     for (int i = 0;; i = 1)
     {
-      h.qsU.e(13054, new Object[] { Integer.valueOf(i), Integer.valueOf(0), "" });
-      AppMethodBeat.o(53818);
+      h.OAn.b(13054, new Object[] { Integer.valueOf(i), Integer.valueOf(0), "" });
+      AppMethodBeat.o(109390);
       return;
       i = 24;
       break;
@@ -40,7 +41,7 @@ final class EmojiStoreV2UI$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2UI.3
  * JD-Core Version:    0.7.0.1
  */

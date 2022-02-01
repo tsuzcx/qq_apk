@@ -9,22 +9,23 @@ public final class $Gson$Preconditions
   
   public static void checkArgument(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException();
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException();
   }
   
   public static <T> T checkNotNull(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.gson.internal..Gson.Preconditions
  * JD-Core Version:    0.7.0.1
  */

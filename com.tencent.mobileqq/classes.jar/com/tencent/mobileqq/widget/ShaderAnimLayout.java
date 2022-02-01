@@ -10,51 +10,42 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bdds;
-import bevf;
-import bevg;
 
 public class ShaderAnimLayout
   extends RelativeLayout
 {
-  public float a;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bevg(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new bevf(this);
-  public boolean a;
-  private boolean b;
+  float a = 0.0F;
+  boolean b = false;
+  private Animation c = new ShaderAnimLayout.1(this);
+  private boolean d = false;
+  private Path e = new Path();
+  private Animation.AnimationListener f = new ShaderAnimLayout.2(this);
   
   public ShaderAnimLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
     h();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
     h();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
     h();
   }
   
   private void h()
   {
-    if (!this.b)
+    if (!this.d)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(200L);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new LinearInterpolator());
-      this.b = true;
+      this.c.setDuration(200L);
+      this.c.setInterpolator(new LinearInterpolator());
+      this.d = true;
     }
   }
   
@@ -62,77 +53,66 @@ public class ShaderAnimLayout
   {
     if (getVisibility() != 0)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
+      this.b = false;
+      this.c.setAnimationListener(null);
       clearAnimation();
       setVisibility(0);
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      startAnimation(this.c);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
+    this.b = false;
+    this.c.setAnimationListener(null);
     clearAnimation();
     setVisibility(0);
-    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    startAnimation(this.c);
   }
   
   public void c()
   {
     clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-    this.jdField_a_of_type_Boolean = false;
+    this.c.setAnimationListener(null);
+    this.b = false;
     setVisibility(0);
-    this.jdField_a_of_type_Float = 1.0F;
+    this.a = 1.0F;
   }
   
   public void d()
   {
     clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-    this.jdField_a_of_type_Boolean = true;
+    this.c.setAnimationListener(null);
+    this.b = true;
     setVisibility(8);
-    this.jdField_a_of_type_Float = 0.0F;
+    this.a = 0.0F;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRect(getWidth() * (1.0F - this.jdField_a_of_type_Float), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
-    try
-    {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
-      super.dispatchDraw(paramCanvas);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        bdds.a(this, 1, null);
-      }
-    }
+    this.e.reset();
+    this.e.addRect(getWidth() * (1.0F - this.a), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
+    paramCanvas.clipPath(this.e, Region.Op.INTERSECT);
+    super.dispatchDraw(paramCanvas);
   }
   
   public void e()
   {
     if (getVisibility() == 0)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       clearAnimation();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      this.c.setAnimationListener(this.f);
+      startAnimation(this.c);
     }
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.c.setAnimationListener(this.f);
+    startAnimation(this.c);
   }
   
   public void g()
@@ -142,7 +122,7 @@ public class ShaderAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout
  * JD-Core Version:    0.7.0.1
  */

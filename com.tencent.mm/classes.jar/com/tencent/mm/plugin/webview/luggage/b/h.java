@@ -2,35 +2,45 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.u;
+import com.tencent.mm.ui.base.s;
 
 public final class h
   extends a
 {
   public h()
   {
-    super(28);
+    super(35);
   }
   
-  public final void a(Context paramContext, e parame)
+  public final void a(Context paramContext, g paramg)
   {
-    AppMethodBeat.i(6439);
-    parame.reload();
-    com.tencent.mm.plugin.report.service.h.qsU.cT(982, 7);
-    AppMethodBeat.o(6439);
+    AppMethodBeat.i(78697);
+    paramContext = paramg.iun();
+    if (paramContext != null)
+    {
+      paramContext.ke(true);
+      com.tencent.mm.plugin.report.service.h.OAn.kJ(982, 4);
+    }
+    AppMethodBeat.o(78697);
   }
   
-  public final void a(Context paramContext, e parame, l paraml)
+  public final void a(Context paramContext, g paramg, s params)
   {
-    AppMethodBeat.i(6438);
-    paraml.a(28, paramContext.getString(2131305843), 2131231032);
-    AppMethodBeat.o(6438);
+    AppMethodBeat.i(78696);
+    u localu = paramg.iun();
+    if ((paramg.iul()) && (localu != null)) {
+      params.a(35, paramContext.getString(c.i.readerapp_minimize), c.h.icons_outlined_multitask);
+    }
+    AppMethodBeat.o(78696);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b.h
  * JD-Core Version:    0.7.0.1
  */

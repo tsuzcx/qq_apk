@@ -1,32 +1,35 @@
 package com.tencent.open.downloadnew;
 
-import bflp;
-import bfok;
-import bfoq;
+import com.tencent.open.base.LogUtility;
 
-public class DownloadManager$5$2
+class DownloadManager$5$2
   implements Runnable
 {
-  public DownloadManager$5$2(bfoq parambfoq, long paramLong1, long paramLong2, String paramString) {}
+  DownloadManager$5$2(DownloadManager.5 param5, long paramLong1, long paramLong2, String paramString) {}
   
   public void run()
   {
-    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bfoq.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
-      bflp.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
-    }
-    for (;;)
+    int i = (int)((float)this.a * 100.0F / (float)this.b);
+    DownloadInfo localDownloadInfo = this.d.a.c(this.c, i);
+    if (localDownloadInfo == null)
     {
-      this.jdField_a_of_type_Bfoq.a.a(2, localDownloadInfo);
-      return;
-      bflp.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      LogUtility.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
     }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadSDKTaskProgressChanged info state=");
+      localStringBuilder.append(localDownloadInfo.a());
+      localStringBuilder.append(" progress=");
+      localStringBuilder.append(localDownloadInfo.t);
+      LogUtility.a("DownloadManager_", localStringBuilder.toString());
+    }
+    this.d.a.a(2, localDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.5.2
  * JD-Core Version:    0.7.0.1
  */

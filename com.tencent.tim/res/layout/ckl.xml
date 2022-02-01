@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/acv"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/mt_" style="@style/acu">
+        <TextView android:id="@id/mt9" android:text="亮度检测" style="@style/acr" />
+    </LinearLayout>
+    <LinearLayout style="@style/ack">
+        <LinearLayout android:orientation="vertical" style="@style/acq">
+            <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:layout_gravity="center_horizontal" android:id="@id/mhq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yi1" />
+        </LinearLayout>
+        <LinearLayout style="@style/acl">
+            <Button android:id="@id/f6w" android:text="@string/cancel" style="@style/aa9" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

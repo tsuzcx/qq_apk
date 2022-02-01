@@ -1,23 +1,45 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.MyX509TrustManager;
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
 public class hls
-  implements Runnable
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public hls(ToastUtil paramToastUtil, int paramInt1, int paramInt2) {}
+  SSLContext a = SSLContext.getInstance("TLS");
   
-  public void run()
+  public hls(KeyStore paramKeyStore)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
+    super(paramKeyStore);
+    try
     {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_Int, this.b);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+      paramKeyStore = new HttpBaseUtil.MyX509TrustManager();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.b);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(HttpBaseUtil.a, 2, paramKeyStore.getMessage());
+        }
+        paramKeyStore = null;
+      }
+    }
+  }
+  
+  public Socket createSocket()
+  {
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
   }
 }
 

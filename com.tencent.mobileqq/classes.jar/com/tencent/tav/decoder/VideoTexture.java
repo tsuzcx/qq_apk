@@ -20,6 +20,8 @@ public class VideoTexture
   private int preferRotation = 0;
   private boolean quitFlag = false;
   private RenderContext renderContext;
+  public float scaleX = 1.0F;
+  public float scaleY = 1.0F;
   private SurfaceTexture surfaceTexture;
   private TextureInfo textureInfo;
   private Matrix textureMatrix;
@@ -39,35 +41,35 @@ public class VideoTexture
   {
     this.textureType = paramInt3;
     this.surfaceTexture = new SurfaceTexture(paramInt5);
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       this.surfaceTexture.setOnFrameAvailableListener(this, new Handler(Looper.getMainLooper()));
     }
-    for (;;)
+    else
     {
-      this.textureInfo = new TextureInfo(paramInt5, paramInt3, paramInt1, paramInt2, null, paramInt4);
-      this.preferRotation = paramInt4;
-      return;
       this.surfaceTexture.setOnFrameAvailableListener(this);
       reflectLooper();
     }
+    this.textureInfo = new TextureInfo(paramInt5, paramInt3, paramInt1, paramInt2, null, paramInt4);
+    this.preferRotation = paramInt4;
   }
   
   public VideoTexture(TextureInfo paramTextureInfo)
   {
     this.textureInfo = paramTextureInfo;
     this.surfaceTexture = new SurfaceTexture(paramTextureInfo.textureID);
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       this.surfaceTexture.setOnFrameAvailableListener(this, new Handler(Looper.getMainLooper()));
     }
-    for (;;)
+    else
     {
-      paramTextureInfo = new float[16];
-      this.surfaceTexture.getTransformMatrix(paramTextureInfo);
-      this.preferRotation = 0;
-      return;
       this.surfaceTexture.setOnFrameAvailableListener(this);
       reflectLooper();
     }
+    paramTextureInfo = new float[16];
+    this.surfaceTexture.getTransformMatrix(paramTextureInfo);
+    this.preferRotation = 0;
   }
   
   private Matrix getTextureMatrix(SurfaceTexture paramSurfaceTexture, int paramInt)
@@ -92,22 +94,23 @@ public class VideoTexture
         paramSurfaceTexture.preConcat((Matrix)localObject);
       }
     }
-    for (;;)
+    else
     {
-      if (paramInt != 0)
-      {
-        Matrix localMatrix = new Matrix();
-        ((Matrix)localObject).invert(localMatrix);
-        paramSurfaceTexture.postConcat(localMatrix);
-      }
-      return paramSurfaceTexture;
       paramSurfaceTexture.setValues(new float[] { f1, f2, f3, f4, f5, f6, 0.0F, 0.0F, 1.0F });
     }
+    if (paramInt != 0)
+    {
+      Matrix localMatrix = new Matrix();
+      ((Matrix)localObject).invert(localMatrix);
+      paramSurfaceTexture.postConcat(localMatrix);
+    }
+    return paramSurfaceTexture;
   }
   
   private boolean isIdentity()
   {
-    return (this.textureMatrix == null) || (this.textureMatrix.isIdentity());
+    Matrix localMatrix = this.textureMatrix;
+    return (localMatrix == null) || (localMatrix.isIdentity());
   }
   
   private boolean isOES()
@@ -117,52 +120,50 @@ public class VideoTexture
   
   private void reflectLooper()
   {
-    Object localObject3 = SurfaceTexture.class.getDeclaredClasses();
-    int j = localObject3.length;
+    Object localObject2 = SurfaceTexture.class.getDeclaredClasses();
+    int j = localObject2.length;
     int i = 0;
-    Object localObject1;
-    if (i < j)
+    while (i < j)
     {
-      localObject1 = localObject3[i];
-      if (!localObject1.getName().toLowerCase().contains("handler")) {}
+      localObject1 = localObject2[i];
+      if (localObject1.getName().toLowerCase().contains("handler")) {
+        break label50;
+      }
+      i += 1;
     }
-    for (;;)
+    Object localObject1 = null;
+    label50:
+    if (localObject1 == null) {
+      return;
+    }
+    try
     {
-      if (localObject1 == null)
-      {
-        return;
-        i += 1;
-        break;
-      }
-      try
-      {
-        localObject1 = localObject1.getConstructor(new Class[] { SurfaceTexture.class, Looper.class }).newInstance(new Object[] { this.surfaceTexture, Looper.getMainLooper() });
-        localObject3 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
-        ((Field)localObject3).setAccessible(true);
-        ((Field)localObject3).set(this.surfaceTexture, localObject1);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      Object localObject2 = null;
+      localObject1 = localObject1.getConstructor(new Class[] { SurfaceTexture.class, Looper.class }).newInstance(new Object[] { this.surfaceTexture, Looper.getMainLooper() });
+      localObject2 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
+      ((Field)localObject2).setAccessible(true);
+      ((Field)localObject2).set(this.surfaceTexture, localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
   private void releaseFilter()
   {
-    if (this.copyFilter != null) {
-      this.copyFilter.release();
+    Filter localFilter = this.copyFilter;
+    if (localFilter != null) {
+      localFilter.release();
     }
   }
   
   private void releaseTextureInfo()
   {
-    if (this.textureInfo != null)
+    TextureInfo localTextureInfo = this.textureInfo;
+    if (localTextureInfo != null)
     {
-      this.textureInfo.release();
+      localTextureInfo.release();
       this.textureInfo = null;
     }
   }
@@ -202,18 +203,29 @@ public class VideoTexture
         this.quitFlag = false;
         return false;
       }
+      RenderContext.checkEglError("before updateTexImage");
+      ??? = this.surfaceTexture;
+      if (??? == null) {
+        return false;
+      }
+      ((SurfaceTexture)???).updateTexImage();
+      ??? = getTextureMatrix(this.surfaceTexture, this.preferRotation);
+      if (VideoDecoder.FIX_DECODE_CROP_SIZE) {
+        ((Matrix)???).postScale(this.scaleX, this.scaleY);
+      }
+      if ((??? != null) && ("HUAWEI_ARE-AL00".equals(Utils.getPhoneName())) && (this.preferRotation == 1))
+      {
+        float[] arrayOfFloat = new float[9];
+        ((Matrix)???).getValues(arrayOfFloat);
+        ((Matrix)???).setValues(new float[] { -arrayOfFloat[4], 0.0F, arrayOfFloat[4], 0.0F, arrayOfFloat[0], arrayOfFloat[2], arrayOfFloat[6], arrayOfFloat[7], arrayOfFloat[8] });
+      }
+      this.textureInfo.setTextureMatrix((Matrix)???);
+      return true;
     }
-    RenderContext.checkEglError("before updateTexImage");
-    this.surfaceTexture.updateTexImage();
-    ??? = getTextureMatrix(this.surfaceTexture, this.preferRotation);
-    if ((??? != null) && ("HUAWEI_ARE-AL00".equals(Utils.getPhoneName())) && (this.preferRotation == 1))
+    for (;;)
     {
-      float[] arrayOfFloat = new float[9];
-      ((Matrix)???).getValues(arrayOfFloat);
-      ((Matrix)???).setValues(new float[] { -arrayOfFloat[4], 0.0F, arrayOfFloat[4], 0.0F, arrayOfFloat[0], arrayOfFloat[2], arrayOfFloat[6], arrayOfFloat[7], arrayOfFloat[8] });
+      throw localObject2;
     }
-    this.textureInfo.setTextureMatrix((Matrix)???);
-    return true;
   }
   
   public TextureInfo copyTexture()
@@ -225,7 +237,9 @@ public class VideoTexture
       this.copyFilter.setRendererHeight(this.renderContext.height());
       this.copyFilter.setRenderForScreen(false);
     }
-    return this.copyFilter.applyFilter(this.textureInfo, null, this.textureInfo.getTextureMatrix());
+    Filter localFilter = this.copyFilter;
+    TextureInfo localTextureInfo = this.textureInfo;
+    return localFilter.applyFilter(localTextureInfo, null, localTextureInfo.getTextureMatrix());
   }
   
   public int getPreferRotation()
@@ -277,9 +291,10 @@ public class VideoTexture
   
   public void releaseSurfaceTexture()
   {
-    if (this.surfaceTexture != null)
+    SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+    if (localSurfaceTexture != null)
     {
-      this.surfaceTexture.release();
+      localSurfaceTexture.release();
       this.surfaceTexture = null;
     }
   }
@@ -304,7 +319,7 @@ public class VideoTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoTexture
  * JD-Core Version:    0.7.0.1
  */

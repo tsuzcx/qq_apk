@@ -7,17 +7,17 @@ class SystemWebViewClient$2
   
   public CharSequence getDescription()
   {
-    return this.val$error.getDescription();
+    return this.a.getDescription();
   }
   
   public int getErrorCode()
   {
-    return this.val$error.getErrorCode();
+    return this.a.getErrorCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient.2
  * JD-Core Version:    0.7.0.1
  */

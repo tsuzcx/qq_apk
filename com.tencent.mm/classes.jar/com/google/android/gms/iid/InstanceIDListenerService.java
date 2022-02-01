@@ -12,21 +12,21 @@ public class InstanceIDListenerService
 {
   static void zzd(Context paramContext, zzak paramzzak)
   {
-    AppMethodBeat.i(57520);
+    AppMethodBeat.i(2474);
     paramzzak.zzx();
     paramzzak = new Intent("com.google.android.gms.iid.InstanceID");
     paramzzak.putExtra("CMD", "RST");
     paramzzak.setClassName(paramContext, "com.google.android.gms.gcm.GcmReceiver");
     paramContext.sendBroadcast(paramzzak);
-    AppMethodBeat.o(57520);
+    AppMethodBeat.o(2474);
   }
   
   public void handleIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(57519);
+    AppMethodBeat.i(2473);
     if (!"com.google.android.gms.iid.InstanceID".equals(paramIntent.getAction()))
     {
-      AppMethodBeat.o(57519);
+      AppMethodBeat.o(2473);
       return;
     }
     Object localObject = null;
@@ -45,7 +45,7 @@ public class InstanceIDListenerService
     {
       ((InstanceID)localObject).zzm();
       onTokenRefresh();
-      AppMethodBeat.o(57519);
+      AppMethodBeat.o(2473);
       return;
     }
     if ("RST_FULL".equals(paramIntent))
@@ -54,7 +54,7 @@ public class InstanceIDListenerService
       {
         InstanceID.zzn().zzx();
         onTokenRefresh();
-        AppMethodBeat.o(57519);
+        AppMethodBeat.o(2473);
       }
     }
     else if ("SYNC".equals(paramIntent))
@@ -62,14 +62,14 @@ public class InstanceIDListenerService
       InstanceID.zzn().zzi(String.valueOf(str).concat("|T|"));
       onTokenRefresh();
     }
-    AppMethodBeat.o(57519);
+    AppMethodBeat.o(2473);
   }
   
   public void onTokenRefresh() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.InstanceIDListenerService
  * JD-Core Version:    0.7.0.1
  */

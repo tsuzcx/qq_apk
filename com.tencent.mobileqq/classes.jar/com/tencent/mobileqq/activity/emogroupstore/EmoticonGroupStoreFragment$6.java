@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ahwo;
-import apod;
+import com.tencent.mobileqq.emosm.favroaming.IEmoticonFromGroupManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +12,12 @@ class EmoticonGroupStoreFragment$6
   
   public void run()
   {
-    if (!EmoticonGroupStoreFragment.c(this.this$0).isEmpty())
+    if (!EmoticonGroupStoreFragment.k(this.this$0).isEmpty())
     {
-      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.this$0));
-      Map localMap = EmoticonGroupStoreFragment.a(this.this$0).a(localArrayList);
+      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.k(this.this$0));
+      Map localMap = EmoticonGroupStoreFragment.j(this.this$0).b(localArrayList);
       if (localMap != null) {
-        EmoticonGroupStoreFragment.a(this.this$0).a(localMap, localArrayList);
+        EmoticonGroupStoreFragment.g(this.this$0).a(localMap, localArrayList);
       }
     }
   }

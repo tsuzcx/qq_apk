@@ -1,25 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.Contacts;
+import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 
 public class ceg
-  extends ContactBindObserver
+  implements Runnable
 {
-  public ceg(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public ceg(Contacts paramContacts) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if (paramBoolean1)
-    {
-      int i = ContactSyncJumpActivity.a(this.a).b();
-      if ((i == 1) || (i == 2))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
-    }
+    this.a.a.setSelection(0);
   }
 }
 

@@ -7,11 +7,11 @@ public final class ReflecterHelper
 {
   public static Object newInstance(String paramString)
   {
-    AppMethodBeat.i(80515);
+    AppMethodBeat.i(106557);
     paramString = Class.forName(paramString).getDeclaredConstructor(null);
     paramString.setAccessible(true);
     paramString = paramString.newInstance(null);
-    AppMethodBeat.o(80515);
+    AppMethodBeat.o(106557);
     return paramString;
   }
 }

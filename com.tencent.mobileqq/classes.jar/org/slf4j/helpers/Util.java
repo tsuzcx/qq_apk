@@ -16,24 +16,28 @@ public final class Util
     localObject = ((Util.ClassContextSecurityManager)localObject).getClassContext();
     String str = Util.class.getName();
     int i = 0;
-    for (;;)
-    {
-      if ((i >= localObject.length) || (str.equals(localObject[i].getName())))
-      {
-        if ((i < localObject.length) && (i + 2 < localObject.length)) {
-          break;
-        }
-        throw new IllegalStateException("Failed to find org.slf4j.helpers.Util or its caller in the stack; this should not happen");
-      }
+    while ((i < localObject.length) && (!str.equals(localObject[i].getName()))) {
       i += 1;
     }
-    return localObject[(i + 2)];
+    if (i < localObject.length)
+    {
+      i += 2;
+      if (i < localObject.length) {
+        return localObject[i];
+      }
+    }
+    localObject = new IllegalStateException("Failed to find org.slf4j.helpers.Util or its caller in the stack; this should not happen");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private static Util.ClassContextSecurityManager getSecurityManager()
   {
-    if (SECURITY_MANAGER != null) {
-      return SECURITY_MANAGER;
+    Util.ClassContextSecurityManager localClassContextSecurityManager = SECURITY_MANAGER;
+    if (localClassContextSecurityManager != null) {
+      return localClassContextSecurityManager;
     }
     if (SECURITY_MANAGER_CREATION_ALREADY_ATTEMPTED) {
       return null;
@@ -45,7 +49,11 @@ public final class Util
   
   public static final void report(String paramString)
   {
-    System.err.println("SLF4J: " + paramString);
+    PrintStream localPrintStream = System.err;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SLF4J: ");
+    localStringBuilder.append(paramString);
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public static final void report(String paramString, Throwable paramThrowable)
@@ -77,21 +85,20 @@ public final class Util
   
   public static String safeGetSystemProperty(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("null input");
-    }
+    if (paramString != null) {}
     try
     {
       paramString = System.getProperty(paramString);
       return paramString;
     }
     catch (SecurityException paramString) {}
+    throw new IllegalArgumentException("null input");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.Util
  * JD-Core Version:    0.7.0.1
  */

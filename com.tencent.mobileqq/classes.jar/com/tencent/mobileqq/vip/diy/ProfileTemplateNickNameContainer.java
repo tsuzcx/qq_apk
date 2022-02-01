@@ -1,41 +1,42 @@
 package com.tencent.mobileqq.vip.diy;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import bayu;
-import bebk;
-import bebl;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.BackGroundUpdateListener;
+import com.tencent.mobileqq.vip.diy.template.ProfileTemplateBase.NinePatchDecoderHandler;
 import com.tencent.mobileqq.widget.ProfileNameView;
-import xsm;
 
 public class ProfileTemplateNickNameContainer
   extends ViewGroup
 {
-  private int jdField_a_of_type_Int;
-  private bebl jdField_a_of_type_Bebl = new bebl();
-  private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private ProfileNameView a;
   private int b;
-  private int c;
+  private String c;
+  private boolean d;
+  private ProfileTemplateBase.NinePatchDecoderHandler e = new ProfileTemplateBase.NinePatchDecoderHandler();
+  private int f;
+  private int g;
   
   public ProfileTemplateNickNameContainer(Context paramContext, ProfileNameView paramProfileNameView)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = paramProfileNameView;
-    addView(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+    this.a = paramProfileNameView;
+    addView(this.a);
   }
   
   protected URLDrawable a(@NonNull String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = bayu.a;
-    localURLDrawableOptions.mFailedDrawable = bayu.a;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
@@ -45,84 +46,89 @@ public class ProfileTemplateNickNameContainer
     return paramString;
   }
   
-  public ETTextViewPlus a()
+  public ETTextViewPlus getTextView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
+    return this.a.getEtNameView();
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int n = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a();
-    int k = this.jdField_a_of_type_Int;
-    int m = this.jdField_a_of_type_Int + n;
-    int j;
-    int i;
-    if (m > paramInt3 - paramInt1)
+    int m = this.a.getLayoutWidth();
+    int i = this.b;
+    int j = i + m;
+    int k = paramInt3 - paramInt1;
+    if (j > k)
     {
-      j = Math.max(0, paramInt3 - n);
-      i = paramInt3 - paramInt1;
+      paramInt1 = Math.max(0, paramInt3 - m);
+      paramInt3 = k;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.layout(j, 0, i, paramInt4 - paramInt2);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      this.jdField_a_of_type_Bebl.a(i - j, paramInt4 - paramInt2);
-      URLDrawable localURLDrawable = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bebl);
-      bebk.a(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(localURLDrawable);
-      return;
-      i = m;
-      j = k;
-      if (this.jdField_a_of_type_Boolean)
+      paramInt1 = i;
+      paramInt3 = j;
+      if (this.d)
       {
-        j = (paramInt3 - paramInt1) / 2 - (m - k) / 2;
-        i = j + n;
+        paramInt1 = k / 2 - (j - i) / 2;
+        paramInt3 = paramInt1 + m;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(null);
+    Object localObject = this.a;
+    paramInt2 = paramInt4 - paramInt2;
+    ((ProfileNameView)localObject).layout(paramInt1, 0, paramInt3, paramInt2);
+    if (!TextUtils.isEmpty(this.c))
+    {
+      this.e.a(paramInt3 - paramInt1, paramInt2);
+      localObject = a(this.c, this.e);
+      ProfileTemplateBase.BackGroundUpdateListener.a((URLDrawable)localObject, this.a);
+      this.a.setBackgroundDrawable((Drawable)localObject);
+      return;
+    }
+    this.a.setBackgroundDrawable(null);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.measure(paramInt2, paramInt2);
-    setMeasuredDimension(getMeasuredWidth(), this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.getMeasuredHeight());
+    this.a.measure(paramInt2, paramInt2);
+    setMeasuredDimension(getMeasuredWidth(), this.a.getMeasuredHeight());
   }
   
   public void setTextBgUrl(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.c = paramString;
+    if (!TextUtils.isEmpty(this.c))
     {
-      int i = xsm.b(getContext());
-      this.b = ((int)(i * 0.005D));
-      this.c = ((int)(i * 0.03D));
+      double d1 = UIUtils.c(getContext());
+      Double.isNaN(d1);
+      this.f = ((int)(0.005D * d1));
+      Double.isNaN(d1);
+      this.g = ((int)(d1 * 0.03D));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.a().setPadding(this.c, this.b, this.c, this.b);
-      return;
-      this.b = 0;
-      this.c = 0;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView.setBackgroundDrawable(null);
+      this.f = 0;
+      this.g = 0;
+      this.a.setBackgroundDrawable(null);
     }
+    paramString = this.a.getEtNameView();
+    int i = this.g;
+    int j = this.f;
+    paramString.setPadding(i, j, i, j);
   }
   
   public void setTextCenter()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void setTextViewX(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer
  * JD-Core Version:    0.7.0.1
  */

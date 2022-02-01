@@ -1,62 +1,106 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import okhttp3.internal.connection.g;
-import okio.f;
-import okio.i;
-import okio.l;
-import okio.y;
-import okio.z;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 
-abstract class hq
-  implements y
+public final class hq
+  extends ContextWrapper
 {
-  protected final l a = new l(this.d.c.a());
-  protected boolean b;
-  protected long c = 0L;
+  public int a;
+  private Resources.Theme b;
+  private LayoutInflater c;
+  private Configuration d;
+  private Resources e;
   
-  private hq(ho paramho) {}
-  
-  public long a(f paramf, long paramLong)
+  public hq()
   {
-    try
-    {
-      paramLong = this.d.c.a(paramf, paramLong);
-      if (paramLong > 0L) {
-        this.c += paramLong;
-      }
-      return paramLong;
-    }
-    catch (IOException paramf)
-    {
-      a(false, paramf);
-      throw paramf;
-    }
+    super(null);
   }
   
-  public z a()
+  public hq(Context paramContext, int paramInt)
   {
-    return this.a;
+    super(paramContext);
+    this.a = paramInt;
   }
   
-  protected final void a(boolean paramBoolean, IOException paramIOException)
+  private void a()
   {
-    if (this.d.e == 6) {}
-    do
+    int i;
+    if (this.b == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      return;
-      if (this.d.e != 5) {
-        throw new IllegalStateException("state: " + this.d.e);
+      this.b = getResources().newTheme();
+      Resources.Theme localTheme = getBaseContext().getTheme();
+      if (localTheme != null) {
+        this.b.setTo(localTheme);
       }
-      this.d.a(this.a);
-      this.d.e = 6;
-    } while (this.d.b == null);
-    g localg = this.d.b;
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    }
+    this.b.applyStyle(this.a, true);
+  }
+  
+  protected final void attachBaseContext(Context paramContext)
+  {
+    super.attachBaseContext(paramContext);
+  }
+  
+  public final AssetManager getAssets()
+  {
+    return getResources().getAssets();
+  }
+  
+  public final Resources getResources()
+  {
+    if (this.e == null) {
+      if (this.d == null) {
+        this.e = super.getResources();
+      } else if (Build.VERSION.SDK_INT >= 17) {
+        this.e = createConfigurationContext(this.d).getResources();
+      }
+    }
+    return this.e;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    if ("layout_inflater".equals(paramString))
     {
-      localg.a(paramBoolean, this.d, this.c, paramIOException);
-      return;
+      if (this.c == null) {
+        this.c = LayoutInflater.from(getBaseContext()).cloneInContext(this);
+      }
+      return this.c;
+    }
+    return getBaseContext().getSystemService(paramString);
+  }
+  
+  public final Resources.Theme getTheme()
+  {
+    Resources.Theme localTheme = this.b;
+    if (localTheme != null) {
+      return localTheme;
+    }
+    if (this.a == 0) {
+      this.a = hg.i.Theme_AppCompat_Light;
+    }
+    a();
+    return this.b;
+  }
+  
+  public final void setTheme(int paramInt)
+  {
+    if (this.a != paramInt)
+    {
+      this.a = paramInt;
+      a();
     }
   }
 }

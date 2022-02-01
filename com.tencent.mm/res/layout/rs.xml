@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/b6z" android:background="@color/vy" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/mn" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center" android:id="@id/a6l" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/cnr" android:layout_centerInParent="true" style="@style/lf" />
+<RelativeLayout style="@style/gq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/b3v" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/b3v" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/b4b" android:background="@drawable/lu" android:maxWidth="@dimen/zb" android:minHeight="@dimen/ad" style="@style/hc" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:id="@id/b3g" android:text="{source}" style="@style/gr" />
+                <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <TextView android:id="@id/b2v" android:layout_marginRight="50.0dip" android:text="@string/b7d" style="@style/gr" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

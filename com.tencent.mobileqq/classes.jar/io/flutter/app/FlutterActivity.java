@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.view.FlutterNativeView;
@@ -18,9 +20,17 @@ public class FlutterActivity
 {
   private static final String TAG = "FlutterActivity";
   private final FlutterActivityDelegate delegate = new FlutterActivityDelegate(this, this);
-  private final FlutterActivityEvents eventDelegate = this.delegate;
-  private final PluginRegistry pluginRegistry = this.delegate;
-  private final FlutterView.Provider viewProvider = this.delegate;
+  private final FlutterActivityEvents eventDelegate;
+  private final PluginRegistry pluginRegistry;
+  private final FlutterView.Provider viewProvider;
+  
+  public FlutterActivity()
+  {
+    FlutterActivityDelegate localFlutterActivityDelegate = this.delegate;
+    this.eventDelegate = localFlutterActivityDelegate;
+    this.viewProvider = localFlutterActivityDelegate;
+    this.pluginRegistry = localFlutterActivityDelegate;
+  }
   
   public FlutterNativeView createFlutterNativeView()
   {
@@ -30,6 +40,15 @@ public class FlutterActivity
   public FlutterView createFlutterView(Context paramContext)
   {
     return null;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public FlutterView getFlutterView()
@@ -60,6 +79,7 @@ public class FlutterActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     this.eventDelegate.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -146,7 +166,7 @@ public class FlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.app.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

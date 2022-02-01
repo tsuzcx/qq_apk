@@ -20,7 +20,7 @@ public final class GroupOpenSysMsg$LightApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.GroupOpenSysMsg.LightApp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="@dimen/ar3" android:paddingRight="@dimen/ar4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.troop.ablum.preview.AsyncMultiTransformImageView android:layout_gravity="center" android:id="@id/f" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.troop.ablum.preview.AsyncMultiTransformImageView android:layout_gravity="center" android:id="@id/e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/g2i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <View android:layout_gravity="center" android:id="@id/g2h" android:background="@drawable/gbk" android:layout_width="38.0dip" android:layout_height="38.0dip" />
+        <TextView android:textSize="10.0sp" android:textStyle="bold" android:gravity="center" android:layout_gravity="center" android:id="@id/g2j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0%" />
+    </FrameLayout>
+</RelativeLayout>

@@ -1,5 +1,5 @@
-import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.mobileqq.activity.NearPeopleActivity;
+import com.tencent.mobileqq.app.NearHornHandler;
 
 public class cxe
   implements Runnable
@@ -8,8 +8,8 @@ public class cxe
   
   public void run()
   {
-    if (HtmlOffline.a(NearPeopleActivity.a(this.a)) == null) {
-      HtmlOffline.a(this.a.a, NearPeopleActivity.b(this.a), this.a.b);
+    if (NearPeopleActivity.a(this.a) != null) {
+      NearPeopleActivity.a(this.a).a("", Long.valueOf(0L), "1", NearPeopleActivity.c(this.a), Boolean.valueOf(false));
     }
   }
 }

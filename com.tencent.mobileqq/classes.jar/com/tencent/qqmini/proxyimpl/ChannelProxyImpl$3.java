@@ -2,8 +2,8 @@ package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
 import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class ChannelProxyImpl$3
@@ -11,30 +11,26 @@ class ChannelProxyImpl$3
 {
   ChannelProxyImpl$3(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public void onReceived(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
+  public void a(boolean paramBoolean, INTERFACE.StReportExecuteRsp paramStReportExecuteRsp)
   {
-    JSONObject localJSONObject;
-    if (this.val$listener != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (this.a != null)
     {
-      localJSONObject.put("response", paramStReportExecuteRsp);
-      this.val$listener.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramStReportExecuteRsp)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        QMLog.e("ChannelProxyImpl", "tianshuRequestAdv", paramStReportExecuteRsp);
+        localJSONObject.put("response", paramStReportExecuteRsp);
       }
+      catch (Throwable paramStReportExecuteRsp)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStReportExecuteRsp);
+      }
+      this.a.onReceiveResult(paramBoolean, localJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

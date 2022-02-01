@@ -24,7 +24,10 @@ public abstract class DelegateFileSystem
   public int batchDelete(List<String> paramList)
   {
     Iterator localIterator = allFileSystems().iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((FileSystem)localIterator.next()).batchDelete(paramList) + i) {}
+    int i = 0;
+    while (localIterator.hasNext()) {
+      i += ((FileSystem)localIterator.next()).batchDelete(paramList);
+    }
     return i;
   }
   
@@ -51,14 +54,20 @@ public abstract class DelegateFileSystem
   public boolean delete(String paramString)
   {
     Iterator localIterator = allFileSystems().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).delete(paramString) | bool) {}
+    boolean bool = false;
+    while (localIterator.hasNext()) {
+      bool |= ((FileSystem)localIterator.next()).delete(paramString);
+    }
     return bool;
   }
   
   public boolean deleteDir(String paramString, boolean paramBoolean)
   {
     Iterator localIterator = allFileSystems().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem)localIterator.next()).deleteDir(paramString, paramBoolean) | bool) {}
+    boolean bool = false;
+    while (localIterator.hasNext()) {
+      bool |= ((FileSystem)localIterator.next()).deleteDir(paramString, paramBoolean);
+    }
     return bool;
   }
   
@@ -70,11 +79,14 @@ public abstract class DelegateFileSystem
   
   public FileSystem.FsStat fileSystemStat(String paramString)
   {
-    FileSystem localFileSystem = delegate(paramString, 0);
-    if (localFileSystem == null) {
-      throw new RuntimeException("Cannot delegate path to filesystem: " + paramString);
+    Object localObject = delegate(paramString, 0);
+    if (localObject != null) {
+      return ((FileSystem)localObject).fileSystemStat(paramString);
     }
-    return localFileSystem.fileSystemStat(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Cannot delegate path to filesystem: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new RuntimeException(((StringBuilder)localObject).toString());
   }
   
   public Iterable<FileSystem.FileEntry> list(String paramString, boolean paramBoolean)
@@ -109,91 +121,103 @@ public abstract class DelegateFileSystem
     int i;
     if (paramString2.contains("rw")) {
       i = 3;
+    } else if (paramString2.contains("w")) {
+      i = 2;
+    } else {
+      i = 1;
     }
-    FileSystem localFileSystem;
-    for (;;)
-    {
-      localFileSystem = delegate(paramString1, i);
-      if (localFileSystem != null) {
-        break;
-      }
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString1);
-      if (paramString2.contains("w")) {
-        i = 2;
-      } else {
-        i = 1;
-      }
+    FileSystem localFileSystem = delegate(paramString1, i);
+    if (localFileSystem != null) {
+      return localFileSystem.openParcelFd(paramString1, paramString2);
     }
-    return localFileSystem.openParcelFd(paramString1, paramString2);
+    paramString2 = new StringBuilder();
+    paramString2.append("Path not found on any filesystems: ");
+    paramString2.append(paramString1);
+    throw new FileNotFoundException(paramString2.toString());
   }
   
   public InputStream openRead(String paramString)
   {
-    FileSystem localFileSystem = delegate(paramString, 1);
-    if (localFileSystem == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString);
+    Object localObject = delegate(paramString, 1);
+    if (localObject != null) {
+      return ((FileSystem)localObject).openRead(paramString);
     }
-    return localFileSystem.openRead(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Path not found on any filesystems: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public ReadableByteChannel openReadChannel(String paramString)
   {
-    FileSystem localFileSystem = delegate(paramString, 1);
-    if (localFileSystem == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString);
+    Object localObject = delegate(paramString, 1);
+    if (localObject != null) {
+      return ((FileSystem)localObject).openReadChannel(paramString);
     }
-    return localFileSystem.openReadChannel(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Path not found on any filesystems: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public ByteChannel openReadWriteChannel(String paramString)
   {
-    FileSystem localFileSystem = delegate(paramString, 3);
-    if (localFileSystem == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString);
+    Object localObject = delegate(paramString, 3);
+    if (localObject != null) {
+      return ((FileSystem)localObject).openReadWriteChannel(paramString);
     }
-    return localFileSystem.openReadWriteChannel(paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Path not found on any filesystems: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public OutputStream openWrite(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    FileSystem localFileSystem;
-    for (int i = 3;; i = 2)
-    {
-      localFileSystem = delegate(paramString, i);
-      if (localFileSystem != null) {
-        break;
-      }
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString);
+    int i;
+    if (paramBoolean) {
+      i = 3;
+    } else {
+      i = 2;
     }
-    return localFileSystem.openWrite(paramString, paramBoolean);
+    Object localObject = delegate(paramString, i);
+    if (localObject != null) {
+      return ((FileSystem)localObject).openWrite(paramString, paramBoolean);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Path not found on any filesystems: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public WritableByteChannel openWriteChannel(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    FileSystem localFileSystem;
-    for (int i = 3;; i = 2)
-    {
-      localFileSystem = delegate(paramString, i);
-      if (localFileSystem != null) {
-        break;
-      }
-      throw new FileNotFoundException("Path not found on any filesystems: " + paramString);
+    int i;
+    if (paramBoolean) {
+      i = 3;
+    } else {
+      i = 2;
     }
-    return localFileSystem.openWriteChannel(paramString, paramBoolean);
+    Object localObject = delegate(paramString, i);
+    if (localObject != null) {
+      return ((FileSystem)localObject).openWriteChannel(paramString, paramBoolean);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Path not found on any filesystems: ");
+    ((StringBuilder)localObject).append(paramString);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public String realPath(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    FileSystem localFileSystem;
-    for (int i = 2;; i = 1)
-    {
-      localFileSystem = delegate(paramString, i);
-      if (localFileSystem != null) {
-        break;
-      }
+    int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    FileSystem localFileSystem = delegate(paramString, i);
+    if (localFileSystem == null) {
       return null;
     }
     return localFileSystem.realPath(paramString, paramBoolean);
@@ -216,7 +240,7 @@ public abstract class DelegateFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.DelegateFileSystem
  * JD-Core Version:    0.7.0.1
  */

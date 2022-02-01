@@ -10,7 +10,7 @@ public abstract class AbstractMediaPlayer
   private IMediaPlayer.OnCompletionListener mOnCompletionListener;
   private IMediaPlayer.OnErrorListener mOnErrorListener;
   private IMediaPlayer.OnInfoListener mOnInfoListener;
-  public IMediaPlayer.OnLoopStartListener mOnLoopStartListener;
+  protected IMediaPlayer.OnLoopStartListener mOnLoopStartListener;
   private IMediaPlayer.OnPreparedListener mOnPreparedListener;
   private IMediaPlayer.OnSeekCompleteListener mOnSeekCompleteListener;
   private IMediaPlayer.OnTimedTextListener mOnTimedTextListener;
@@ -21,55 +21,63 @@ public abstract class AbstractMediaPlayer
     return DeviceUtil.getBaseScore();
   }
   
-  public final void notifyOnBufferingUpdate(int paramInt)
+  protected final void notifyOnBufferingUpdate(int paramInt)
   {
-    if (this.mOnBufferingUpdateListener != null) {
-      this.mOnBufferingUpdateListener.onBufferingUpdate(this, paramInt);
+    IMediaPlayer.OnBufferingUpdateListener localOnBufferingUpdateListener = this.mOnBufferingUpdateListener;
+    if (localOnBufferingUpdateListener != null) {
+      localOnBufferingUpdateListener.onBufferingUpdate(this, paramInt);
     }
   }
   
-  public final void notifyOnCompletion()
+  protected final void notifyOnCompletion()
   {
-    if (this.mOnCompletionListener != null) {
-      this.mOnCompletionListener.onCompletion(this);
+    IMediaPlayer.OnCompletionListener localOnCompletionListener = this.mOnCompletionListener;
+    if (localOnCompletionListener != null) {
+      localOnCompletionListener.onCompletion(this);
     }
   }
   
-  public final boolean notifyOnError(int paramInt1, int paramInt2)
+  protected final boolean notifyOnError(int paramInt1, int paramInt2)
   {
-    return (this.mOnErrorListener != null) && (this.mOnErrorListener.onError(this, paramInt1, paramInt2));
+    IMediaPlayer.OnErrorListener localOnErrorListener = this.mOnErrorListener;
+    return (localOnErrorListener != null) && (localOnErrorListener.onError(this, paramInt1, paramInt2));
   }
   
-  public final boolean notifyOnInfo(int paramInt1, int paramInt2)
+  protected final boolean notifyOnInfo(int paramInt1, int paramInt2)
   {
-    return (this.mOnInfoListener != null) && (this.mOnInfoListener.onInfo(this, paramInt1, paramInt2));
+    IMediaPlayer.OnInfoListener localOnInfoListener = this.mOnInfoListener;
+    return (localOnInfoListener != null) && (localOnInfoListener.onInfo(this, paramInt1, paramInt2));
   }
   
-  public final void notifyOnPrepared()
+  protected final void notifyOnPrepared()
   {
-    if (this.mOnPreparedListener != null) {
-      this.mOnPreparedListener.onPrepared(this);
+    IMediaPlayer.OnPreparedListener localOnPreparedListener = this.mOnPreparedListener;
+    if (localOnPreparedListener != null) {
+      localOnPreparedListener.onPrepared(this);
     }
   }
   
   protected void notifyOnSeekComplete()
   {
-    if (this.mOnSeekCompleteListener != null) {
-      this.mOnSeekCompleteListener.onSeekComplete(this);
+    IMediaPlayer.OnSeekCompleteListener localOnSeekCompleteListener = this.mOnSeekCompleteListener;
+    if (localOnSeekCompleteListener != null) {
+      localOnSeekCompleteListener.onSeekComplete(this);
     }
   }
   
   protected final void notifyOnTimedText(IjkTimedText paramIjkTimedText)
   {
-    if (this.mOnTimedTextListener != null) {
-      this.mOnTimedTextListener.onTimedText(this, paramIjkTimedText);
+    IMediaPlayer.OnTimedTextListener localOnTimedTextListener = this.mOnTimedTextListener;
+    if (localOnTimedTextListener != null) {
+      localOnTimedTextListener.onTimedText(this, paramIjkTimedText);
     }
   }
   
-  public final void notifyOnVideoSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected final void notifyOnVideoSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mOnVideoSizeChangedListener != null) {
-      this.mOnVideoSizeChangedListener.onVideoSizeChanged(this, paramInt1, paramInt2);
+    IMediaPlayer.OnVideoSizeChangedListener localOnVideoSizeChangedListener = this.mOnVideoSizeChangedListener;
+    if (localOnVideoSizeChangedListener != null) {
+      localOnVideoSizeChangedListener.onVideoSizeChanged(this, paramInt1, paramInt2);
     }
   }
   
@@ -137,7 +145,7 @@ public abstract class AbstractMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.AbstractMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

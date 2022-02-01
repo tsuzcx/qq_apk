@@ -6,244 +6,306 @@ import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.SurfaceHolder;
-import aovs;
-import aovt;
-import bdua;
-import bdwf;
-import bdxb;
-import bdxc;
-import bdxe;
-import bdxg;
-import bdxh;
-import bdxj;
-import bdxm;
-import bdxn;
+import com.tencent.android.gldrawable.api.AutoEtcOptions;
+import com.tencent.android.gldrawable.api.GLDrawableApi;
+import com.tencent.android.gldrawable.api.IFactoryStub;
+import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
+import com.tencent.mobileqq.vas.wallpaper.contract.DrawWallpaperContract.Model;
+import com.tencent.mobileqq.vas.wallpaper.contract.DrawWallpaperContract.View;
+import com.tencent.mobileqq.vas.wallpaper.model.DrawDrawableWallpaperModel;
+import com.tencent.mobileqq.vas.wallpaper.presenter.DrawWallpaperPresenter;
+import com.tencent.mobileqq.vas.wallpaper.view.DrawCanvasWallpaperView;
+import com.tencent.mobileqq.vas.wallpaper.view.DrawHardwareWallpaperView;
+import com.tencent.qapmsdk.base.reporter.ab.AbProxy;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.abfactor.AbFactorProfileCardBg;
 import java.io.File;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.Nullable;
 
 public final class WallpaperHelper
 {
-  private bdxb jdField_a_of_type_Bdxb;
-  private bdxg jdField_a_of_type_Bdxg;
-  private bdxj jdField_a_of_type_Bdxj;
-  private WallpaperHelper.ReTryRunnable jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable = new WallpaperHelper.ReTryRunnable(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean a = false;
+  private DrawWallpaperPresenter b = null;
+  private DrawWallpaperContract.View c = null;
+  private VipWallpaperService.WallpaperConfig d = null;
+  private boolean e = false;
+  private String f = "";
+  private WallpaperHelper.ReTryRunnable g = new WallpaperHelper.ReTryRunnable(this);
   
-  private bdxe a(bdxg parambdxg, bdxb parambdxb)
+  @Nullable
+  private Drawable a(DrawWallpaperContract.View paramView, VipWallpaperService.WallpaperConfig paramWallpaperConfig, File paramFile)
   {
-    Object localObject2 = new File(parambdxb.b);
-    QLog.i("VipWallpaper", 1, "use " + parambdxb.toString() + " imgFile exists = " + ((File)localObject2).exists());
-    Object localObject1;
-    bdua localbdua;
-    if (!parambdxb.a.equals("0")) {
-      if ((aovt.c().a()) && (parambdxg.a()))
+    boolean bool = QVipSDKProcessor.e().c();
+    Object localObject = null;
+    if ((bool) && (paramView.a()))
+    {
+      paramView = new AutoEtcOptions();
+      paramView.setFilePath(paramWallpaperConfig.b);
+      IGLDrawable localIGLDrawable = GLDrawableApi.factory().setWorkHandler(new Handler(ThreadManagerV2.getFileThreadLooper())).useCache(false).fromBundle(paramView.toBundle());
+      paramView = localIGLDrawable;
+      if ((localIGLDrawable instanceof IGLDrawable))
       {
-        localObject1 = bdwf.a().a(parambdxb.c);
-        if ((localObject1 == null) && (ChatBackgroundManager.b((File)localObject2))) {
-          if (!this.b)
-          {
-            localbdua = bdua.a();
-            if (localbdua.isLoaded()) {
-              this.b = true;
-            }
-          }
-          else
-          {
-            if (!this.b) {
-              break label365;
-            }
-          }
-        }
+        this.f = "wallpaper-aetc";
+        paramView = localIGLDrawable;
       }
     }
-    for (;;)
+    else
+    {
+      paramView = null;
+    }
+    paramFile = a(paramFile, paramView);
+    paramView = paramFile;
+    if (paramFile == null)
     {
       try
       {
-        localObject2 = new ApngDrawable((File)localObject2, null);
+        paramWallpaperConfig = BitmapFactory.decodeFile(paramWallpaperConfig.b);
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable paramView)
       {
-        for (;;)
+        paramView.printStackTrace();
+        paramWallpaperConfig = localObject;
+      }
+      paramView = paramFile;
+      if (paramWallpaperConfig != null)
+      {
+        paramView = new BitmapDrawable(paramWallpaperConfig);
+        this.f = "wallpaper-static";
+      }
+    }
+    return paramView;
+  }
+  
+  @Nullable
+  private Drawable a(File paramFile, Drawable paramDrawable)
+  {
+    Object localObject = paramDrawable;
+    Drawable localDrawable;
+    if (paramDrawable == null)
+    {
+      localObject = paramDrawable;
+      if (ChatBackgroundManager.b(paramFile))
+      {
+        if (!this.e)
+        {
+          localObject = VasApngIPCModule.a();
+          if (((VasApngIPCModule)localObject).isLoaded()) {
+            this.e = true;
+          } else if (((VasApngIPCModule)localObject).d()) {
+            this.e = ((VasApngIPCModule)localObject).e();
+          }
+        }
+        localObject = paramDrawable;
+        if (this.e)
         {
           try
           {
-            ((ApngDrawable)localObject2).getImage().setSupportGlobalPasued(false);
-            localObject1 = localObject2;
-            localObject2 = localObject1;
-            if (localObject1 == null)
+            paramFile = new ApngDrawable(paramFile, null);
+            try
             {
-              localObject2 = localObject1;
-              if (aovt.c().b())
-              {
-                localObject2 = localObject1;
-                if (parambdxg.a()) {
-                  localObject2 = bdwf.a().a(parambdxb.b, new Handler(ThreadManagerV2.getFileThreadLooper()), false);
-                }
-              }
+              ((ApngDrawable)paramFile).getImage().setSupportGlobalPasued(false);
+              this.f = "wallpaper-apng";
+              return paramFile;
             }
-            if (localObject2 != null) {
-              continue;
-            }
-          }
-          catch (Throwable localThrowable2)
-          {
-            localObject1 = localObject2;
-            continue;
-            continue;
-            parambdxg = (bdxg)localObject2;
-            continue;
-          }
-          try
-          {
-            parambdxg = BitmapFactory.decodeFile(parambdxb.b);
-            if (parambdxg != null)
+            catch (Throwable localThrowable)
             {
-              parambdxg = new BitmapDrawable(parambdxg);
-              if (parambdxg == null)
-              {
-                parambdxg = VipWallpaperService.a();
-                if (parambdxg != null)
-                {
-                  QLog.i("VipWallpaper", 1, "use " + parambdxg.getClass().getName());
-                  return new bdxh(parambdxg);
-                  if (!localbdua.a()) {
-                    break;
-                  }
-                  this.b = localbdua.b();
-                  break;
-                  localThrowable1 = localThrowable1;
-                  localThrowable1.printStackTrace();
-                }
-              }
+              paramDrawable = paramFile;
+              paramFile = localThrowable;
             }
+            paramFile.printStackTrace();
           }
-          catch (Throwable parambdxg)
-          {
-            parambdxg.printStackTrace();
-            parambdxg = null;
-            continue;
-            QLog.i("VipWallpaper", 1, "drawable error");
-            return null;
-          }
+          catch (Throwable paramFile) {}
+          localDrawable = paramDrawable;
         }
       }
-      label365:
-      continue;
-      localObject1 = null;
-      break;
-      parambdxg = null;
     }
+    return localDrawable;
   }
   
-  private bdxg a(SurfaceHolder paramSurfaceHolder)
+  private DrawWallpaperContract.Model a(DrawWallpaperContract.View paramView, VipWallpaperService.WallpaperConfig paramWallpaperConfig)
   {
-    if (Build.VERSION.SDK_INT >= 26) {
-      return new bdxn(paramSurfaceHolder);
-    }
-    return new bdxm(paramSurfaceHolder);
-  }
-  
-  private void a(bdxb parambdxb, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    this.f = null;
+    Object localObject = new File(paramWallpaperConfig.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("use ");
+    localStringBuilder.append(paramWallpaperConfig.toString());
+    localStringBuilder.append(" imgFile exists = ");
+    localStringBuilder.append(((File)localObject).exists());
+    QLog.i("VipWallpaper", 1, localStringBuilder.toString());
+    if (!paramWallpaperConfig.a.equals("0"))
     {
-      do
+      localObject = new WallpaperHelper.1(this, paramView, paramWallpaperConfig, (File)localObject);
+      if ((QVipSDKProcessor.e().a()) && (paramView.a()))
       {
-        return;
-        if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.jdField_a_of_type_Bdxb = null;
+        paramView = new File(paramWallpaperConfig.b.replace("aioImage", "aio_bg.mp4"));
+        if (paramView.exists())
+        {
+          paramWallpaperConfig = GLDrawableApi.asyncFactory((Function0)localObject, new WallpaperHelper.2(this, paramView));
+          this.f = "wallpaper-video";
+          break label166;
         }
-      } while (parambdxb.equals(this.jdField_a_of_type_Bdxb));
-      b();
-      bdxe localbdxe = a(this.jdField_a_of_type_Bdxg, parambdxb);
-      if (localbdxe != null)
-      {
-        this.jdField_a_of_type_Bdxj = new bdxj(localbdxe, this.jdField_a_of_type_Bdxg);
-        this.jdField_a_of_type_Bdxj.a();
-        this.jdField_a_of_type_Bdxb = parambdxb;
-        return;
       }
-      this.jdField_a_of_type_Bdxb = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable.a(parambdxb);
-    } while (!paramBoolean);
-    ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
-    ThreadManagerV2.getUIHandlerV2().postDelayed(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable, 3000L);
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Bdxj != null)
-    {
-      this.jdField_a_of_type_Bdxj.d();
-      this.jdField_a_of_type_Bdxj = null;
+      paramWallpaperConfig = null;
+      label166:
+      paramView = paramWallpaperConfig;
+      if (paramWallpaperConfig == null) {
+        paramView = (Drawable)((Function0)localObject).invoke();
+      }
     }
-  }
-  
-  public WallpaperColors a()
-  {
-    if (Build.VERSION.SDK_INT >= 27)
+    else
     {
-      Color localColor = Color.valueOf(Color.parseColor("#ff000000"));
-      QLog.i("VipWallpaper", 1, "onComputeColors " + localColor.toString());
-      return new WallpaperColors(localColor, localColor, localColor);
+      paramView = null;
     }
+    paramWallpaperConfig = paramView;
+    if (paramView == null) {
+      paramWallpaperConfig = VipWallpaperService.a();
+    }
+    if (paramWallpaperConfig != null)
+    {
+      paramView = new StringBuilder();
+      paramView.append("use ");
+      paramView.append(paramWallpaperConfig.getClass().getName());
+      QLog.i("VipWallpaper", 1, paramView.toString());
+      return new DrawDrawableWallpaperModel(paramWallpaperConfig);
+    }
+    QLog.i("VipWallpaper", 1, "drawable error");
     return null;
   }
   
-  public void a()
+  private DrawWallpaperContract.View a(SurfaceHolder paramSurfaceHolder)
   {
-    b();
-    this.jdField_a_of_type_Boolean = true;
+    if (Build.VERSION.SDK_INT >= 26) {
+      return new DrawHardwareWallpaperView(paramSurfaceHolder);
+    }
+    return new DrawCanvasWallpaperView(paramSurfaceHolder);
   }
   
-  public void a(Context paramContext, SurfaceHolder paramSurfaceHolder)
+  private void a(VipWallpaperService.WallpaperConfig paramWallpaperConfig, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bdxg = a(paramSurfaceHolder);
-    paramContext = VipWallpaperService.a(paramContext);
-    paramContext.registerOnSharedPreferenceChangeListener(new bdxc(this));
-    a(VipWallpaperService.a(paramContext), true);
-  }
-  
-  public void a(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_Bdxj != null) && (!this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Bdxj.a(paramInt2, paramInt3);
+    if (this.a) {
+      return;
+    }
+    if (paramBoolean) {
+      this.g.b = null;
+    }
+    if (!paramWallpaperConfig.equals(this.d))
+    {
+      c();
+      DrawWallpaperContract.Model localModel = a(this.c, paramWallpaperConfig);
+      if (localModel != null)
+      {
+        this.b = new DrawWallpaperPresenter(localModel, this.c);
+        this.b.a();
+        this.d = paramWallpaperConfig;
+        return;
+      }
+      this.d = null;
+      this.g.a(paramWallpaperConfig);
+      if (paramBoolean)
+      {
+        ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.g);
+        ThreadManagerV2.getUIHandlerV2().postDelayed(this.g, 3000L);
+      }
     }
   }
   
-  public void a(boolean paramBoolean)
+  private void c()
   {
-    if (this.jdField_a_of_type_Bdxj == null)
+    DrawWallpaperPresenter localDrawWallpaperPresenter = this.b;
+    if (localDrawWallpaperPresenter != null)
+    {
+      localDrawWallpaperPresenter.d();
+      this.b = null;
+    }
+  }
+  
+  protected void a()
+  {
+    c();
+    this.a = true;
+  }
+  
+  protected void a(Context paramContext, SurfaceHolder paramSurfaceHolder)
+  {
+    this.a = false;
+    this.c = a(paramSurfaceHolder);
+    paramContext = VipWallpaperService.a(paramContext);
+    paramContext.registerOnSharedPreferenceChangeListener(new WallpaperHelper.ConfigChangeListener(this));
+    a(VipWallpaperService.a(paramContext), true);
+  }
+  
+  protected void a(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramSurfaceHolder = this.b;
+    if ((paramSurfaceHolder != null) && (!this.a)) {
+      paramSurfaceHolder.a(paramInt2, paramInt3);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    Object localObject = this.b;
+    if (localObject == null)
     {
       if (paramBoolean)
       {
-        ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
-        ThreadManagerV2.getUIHandlerV2().post(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper$ReTryRunnable);
+        ThreadManagerV2.getUIHandlerV2().removeCallbacks(this.g);
+        ThreadManagerV2.getUIHandlerV2().post(this.g);
       }
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Bdxj.b();
-      return;
+      ((DrawWallpaperPresenter)localObject).b();
+      if ((!TextUtils.isEmpty(this.f)) && (VasStatisticCollector.a()))
+      {
+        AbProxy.setAbFactor("壁纸服务", this.f, AbFactorProfileCardBg.class);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("wallpaperType=");
+          ((StringBuilder)localObject).append(this.f);
+          QLog.d("VipWallpaper", 2, ((StringBuilder)localObject).toString());
+        }
+      }
     }
-    this.jdField_a_of_type_Bdxj.c();
+    else
+    {
+      ((DrawWallpaperPresenter)localObject).c();
+    }
+  }
+  
+  protected WallpaperColors b()
+  {
+    if (Build.VERSION.SDK_INT >= 27)
+    {
+      Color localColor = Color.valueOf(Color.parseColor("#ff000000"));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onComputeColors ");
+      localStringBuilder.append(localColor.toString());
+      QLog.i("VipWallpaper", 1, localStringBuilder.toString());
+      return new WallpaperColors(localColor, localColor, localColor);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.WallpaperHelper
  * JD-Core Version:    0.7.0.1
  */

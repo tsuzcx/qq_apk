@@ -1,56 +1,65 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.b.a;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.hq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kc;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.protocal.protobuf.yf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class l
 {
-  public static hq a(d paramd)
+  public static kc a(d paramd)
   {
-    AppMethodBeat.i(58841);
-    hq localhq = new hq();
-    localhq.wur = paramd.getClientVersion();
-    localhq.Scene = paramd.getSceneStatus();
-    localhq.lGw = paramd.getUin();
-    localhq.wuq = b.bL(paramd.getDeviceID().getBytes());
-    if (localhq.wuq.pW.length >= 16) {
-      localhq.wuq = localhq.wuq.Mz(16);
+    AppMethodBeat.i(133100);
+    kc localkc = new kc();
+    localkc.YMr = paramd.getClientVersion();
+    localkc.IJG = paramd.getSceneStatus();
+    localkc.yth = paramd.getUin();
+    localkc.YMq = b.cX(paramd.getDeviceID().getBytes());
+    if (localkc.YMq.Op.length >= 16) {
+      localkc.YMq = localkc.YMq.axn(16);
     }
-    localhq.wus = b.bL(paramd.getDeviceType().getBytes());
-    if (localhq.wus.pW.length >= 132) {
-      localhq.wus = localhq.wus.Mz(132);
+    localkc.YMs = b.cX(paramd.getDeviceType().getBytes());
+    if (localkc.YMs.Op.length >= 132) {
+      localkc.YMs = localkc.YMs.axn(132);
     }
-    localhq.wup = b.bL(paramd.getSessionKey());
-    if (localhq.wup.pW.length >= 36) {
-      localhq.wup = localhq.wup.Mz(36);
+    try
+    {
+      localkc.YMp = b.pv(new String(""), "UTF-8");
+      AppMethodBeat.o(133100);
+      return localkc;
     }
-    AppMethodBeat.o(58841);
-    return localhq;
+    catch (Exception paramd)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.MMBase", paramd.getLocalizedMessage());
+      }
+    }
   }
   
-  public static void a(e parame, BaseResponse paramBaseResponse)
+  public static void a(e parame, kd paramkd)
   {
-    AppMethodBeat.i(58842);
-    if (paramBaseResponse.ErrMsg != null)
+    AppMethodBeat.i(133101);
+    if (paramkd.akjO != null)
     {
-      parame.setErrMsg(paramBaseResponse.ErrMsg.xJE);
-      AppMethodBeat.o(58842);
+      parame.setErrMsg(paramkd.akjO.abwM);
+      AppMethodBeat.o(133101);
       return;
     }
     parame.setErrMsg("");
-    ab.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
-    AppMethodBeat.o(58842);
+    Log.e("MicroMsg.MMBase", "ErrMsg is Null!!!!!!");
+    AppMethodBeat.o(133101);
   }
   
   public static abstract interface a
   {
-    public abstract boolean a(PByteArray paramPByteArray, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2);
+    public abstract boolean reqToBuf(PByteArray paramPByteArray, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4);
   }
   
   public static abstract interface b
@@ -80,6 +89,7 @@ public final class l
     private static final String TAG = "MicroMsg.MMBase.Req";
     private boolean bShortSupport;
     private long bufferSize;
+    private b.a cgiVerifyKeys;
     private long ecdhEngine;
     private int iClientVersion;
     private int iSceneStatus;
@@ -87,17 +97,19 @@ public final class l
     private l.a mReqPackControl;
     private byte[] passKey;
     private int routeInfo;
-    private aa rsaInfo;
+    private ac rsaInfo;
     private String sDeviceID;
     private String sDeviceType;
     private byte[] sessionKey;
+    private boolean useAxSession;
     private boolean useECDH;
     
     public d()
     {
-      AppMethodBeat.i(58839);
+      AppMethodBeat.i(133097);
       this.bShortSupport = true;
       this.useECDH = false;
+      this.useAxSession = false;
       this.bufferSize = 0L;
       this.iUin = 0;
       this.iClientVersion = 0;
@@ -105,15 +117,33 @@ public final class l
       this.sDeviceType = "";
       this.sDeviceID = "";
       this.iSceneStatus = 0;
-      this.rsaInfo = new aa("", "", 0);
+      this.rsaInfo = ac.iQf();
       this.routeInfo = 0;
       this.ecdhEngine = 0L;
-      AppMethodBeat.o(58839);
+      AppMethodBeat.o(133097);
     }
     
     public long getBufferSize()
     {
       return this.bufferSize;
+    }
+    
+    public String getCgiVerifyPrivateKey()
+    {
+      String str = "";
+      if (this.cgiVerifyKeys != null) {
+        str = this.cgiVerifyKeys.pnz;
+      }
+      return str;
+    }
+    
+    public String getCgiVerifyPublicKey()
+    {
+      String str = "";
+      if (this.cgiVerifyKeys != null) {
+        str = this.cgiVerifyKeys.pnA;
+      }
+      return str;
     }
     
     public int getClientVersion()
@@ -156,7 +186,7 @@ public final class l
       return this.routeInfo;
     }
     
-    public aa getRsaInfo()
+    public ac getRsaInfo()
     {
       return this.rsaInfo;
     }
@@ -201,6 +231,11 @@ public final class l
       this.bufferSize = paramLong;
     }
     
+    public void setCGiVerifyKey(b.a parama)
+    {
+      this.cgiVerifyKeys = parama;
+    }
+    
     public void setClientVersion(int paramInt)
     {
       this.iClientVersion = paramInt;
@@ -236,15 +271,15 @@ public final class l
       this.routeInfo = paramInt;
     }
     
-    public void setRsaInfo(aa paramaa)
+    public void setRsaInfo(ac paramac)
     {
-      AppMethodBeat.i(58840);
-      this.rsaInfo = paramaa;
-      ab.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.whQ), bo.dtY() });
-      if (f.whQ) {
+      AppMethodBeat.i(133098);
+      this.rsaInfo = paramac;
+      Log.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.Yxs), Util.getStack() });
+      if (f.Yxs) {
         setUseECDH(true);
       }
-      AppMethodBeat.o(58840);
+      AppMethodBeat.o(133098);
     }
     
     public void setSceneStatus(int paramInt)
@@ -273,12 +308,22 @@ public final class l
       this.iUin = paramInt;
     }
     
+    public void setUseAxsession(boolean paramBoolean)
+    {
+      this.useAxSession = paramBoolean;
+    }
+    
     public void setUseECDH(boolean paramBoolean)
     {
-      AppMethodBeat.i(154768);
+      AppMethodBeat.i(133099);
       this.useECDH = paramBoolean;
-      ab.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), bo.dtY() });
-      AppMethodBeat.o(154768);
+      Log.i("MicroMsg.MMBase.Req", "summerauths setUseECDH[%s]  cgi[%s], stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(getCmdId()), Util.getStack() });
+      AppMethodBeat.o(133099);
+    }
+    
+    public boolean useAxSession()
+    {
+      return this.useAxSession;
     }
     
     public boolean useECDH()
@@ -292,7 +337,13 @@ public final class l
     private long bufferSize = 0L;
     private int iHeadExtFlags = 255;
     private int iRetCode = -99;
+    private yf profile;
     private String sErrMsg = "";
+    
+    public byte[] getAuthResponse()
+    {
+      return null;
+    }
     
     public long getBufferSize()
     {
@@ -312,6 +363,11 @@ public final class l
     public int getHeadExtFlags()
     {
       return this.iHeadExtFlags;
+    }
+    
+    public yf getProfile()
+    {
+      return this.profile;
     }
     
     public int getRetCode()
@@ -339,6 +395,23 @@ public final class l
       this.iHeadExtFlags = paramInt;
     }
     
+    public void setProfile(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(257299);
+      this.profile = new yf();
+      try
+      {
+        this.profile.parseFrom(paramArrayOfByte);
+        AppMethodBeat.o(257299);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.e("setProfile", paramArrayOfByte.getLocalizedMessage());
+        AppMethodBeat.o(257299);
+      }
+    }
+    
     public void setRetCode(int paramInt)
     {
       this.iRetCode = paramInt;
@@ -347,7 +420,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.l
  * JD-Core Version:    0.7.0.1
  */

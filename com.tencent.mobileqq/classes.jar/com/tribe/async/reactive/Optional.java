@@ -15,10 +15,12 @@ public final class Optional<T>
   
   private Optional(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null)
+    {
+      this.value = paramT;
+      return;
     }
-    this.value = paramT;
+    throw new NullPointerException();
   }
   
   public static <T> Optional<T> empty()
@@ -41,27 +43,27 @@ public final class Optional<T>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof Optional)) {
-        return false;
-      }
-      paramObject = (Optional)paramObject;
-      if (this.value != null) {
-        break;
-      }
-    } while (paramObject.value == null);
-    return false;
-    return this.value.equals(paramObject.value);
+    }
+    if (!(paramObject instanceof Optional)) {
+      return false;
+    }
+    paramObject = (Optional)paramObject;
+    Object localObject = this.value;
+    if (localObject == null) {
+      return paramObject.value == null;
+    }
+    return localObject.equals(paramObject.value);
   }
   
   public Optional<T> filter(Predicate<? super T> paramPredicate)
   {
     AssertUtils.checkNotNull(paramPredicate);
-    if (!isPresent()) {}
-    while (paramPredicate.test(this.value)) {
+    if (!isPresent()) {
+      return this;
+    }
+    if (paramPredicate.test(this.value)) {
       return this;
     }
     return empty();
@@ -80,24 +82,27 @@ public final class Optional<T>
   
   public T get()
   {
-    if (this.value == null) {
-      throw new NoSuchElementException("No value present");
+    Object localObject = this.value;
+    if (localObject != null) {
+      return localObject;
     }
-    return this.value;
+    throw new NoSuchElementException("No value present");
   }
   
   public int hashCode()
   {
-    if (this.value == null) {
+    Object localObject = this.value;
+    if (localObject == null) {
       return 0;
     }
-    return this.value.hashCode();
+    return localObject.hashCode();
   }
   
   public void ifPresent(Consumer<? super T> paramConsumer)
   {
-    if (this.value != null) {
-      paramConsumer.accept(this.value);
+    Object localObject = this.value;
+    if (localObject != null) {
+      paramConsumer.accept(localObject);
     }
   }
   
@@ -117,39 +122,43 @@ public final class Optional<T>
   
   public T orElse(T paramT)
   {
-    if (this.value != null) {
-      paramT = this.value;
+    Object localObject = this.value;
+    if (localObject != null) {
+      paramT = localObject;
     }
     return paramT;
   }
   
   public T orElseGet(Supplier<? extends T> paramSupplier)
   {
-    if (this.value != null) {
-      return this.value;
+    Object localObject = this.value;
+    if (localObject != null) {
+      return localObject;
     }
     return paramSupplier.get();
   }
   
   public <X extends Throwable> T orElseThrow(Supplier<? extends X> paramSupplier)
   {
-    if (this.value != null) {
-      return this.value;
+    Object localObject = this.value;
+    if (localObject != null) {
+      return localObject;
     }
     throw ((Throwable)paramSupplier.get());
   }
   
   public String toString()
   {
-    if (this.value != null) {
-      return String.format("Optional[%s]", new Object[] { this.value });
+    Object localObject = this.value;
+    if (localObject != null) {
+      return String.format("Optional[%s]", new Object[] { localObject });
     }
     return "Optional.empty";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.reactive.Optional
  * JD-Core Version:    0.7.0.1
  */

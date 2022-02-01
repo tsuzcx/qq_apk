@@ -11,15 +11,15 @@ final class WalletLqtSaveFetchFinishProgressUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(45634);
-    this.tRm.finish();
-    AppMethodBeat.o(45634);
+    AppMethodBeat.i(68957);
+    this.Vhv.finish();
+    AppMethodBeat.o(68957);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishProgressUI.1
  * JD-Core Version:    0.7.0.1
  */

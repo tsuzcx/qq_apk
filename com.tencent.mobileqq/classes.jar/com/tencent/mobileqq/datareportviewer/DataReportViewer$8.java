@@ -1,17 +1,26 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import aphn;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 class DataReportViewer$8
-  implements Runnable
+  implements Animation.AnimationListener
 {
   DataReportViewer$8(DataReportViewer paramDataReportViewer) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (aphn.a) {
-      aphn.a().b();
-    }
+    this.a.g.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a.setVisibility(0);
+    this.a.e();
   }
 }
 

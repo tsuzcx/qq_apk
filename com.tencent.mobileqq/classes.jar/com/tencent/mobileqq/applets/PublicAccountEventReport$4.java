@@ -1,33 +1,36 @@
 package com.tencent.mobileqq.applets;
 
-import afwq;
-import akgt;
-import amrz;
 import android.text.TextUtils;
-import azqs;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import cooperation.vip.tianshu.TianShuManager;
 
-public final class PublicAccountEventReport$4
+final class PublicAccountEventReport$4
   implements Runnable
 {
-  public PublicAccountEventReport$4(String paramString1, String paramString2, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  PublicAccountEventReport$4(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3, String paramString4) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_b_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = PublicAccountEventReport.b(this.a);
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      amrz.a(str1, 137, str2, bool);
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
+      int i = (int)(System.currentTimeMillis() / 1000L);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("_");
+      localStringBuilder.append(i);
+      localObject = new TianShuReportData(localStringBuilder.toString(), 1, this.c, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
+      ((TianShuReportData)localObject).s = this.a;
+      ((TianShuReportData)localObject).g = "vab_push";
+      if (this.d) {
+        i = 6;
+      } else {
+        i = -1;
       }
-      if (afwq.a(this.jdField_a_of_type_JavaLangString)) {
-        akgt.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
-      }
-      return;
+      ((TianShuReportData)localObject).r = i;
+      ((TianShuReportData)localObject).t = this.e;
+      ((TianShuReportData)localObject).l = this.f;
+      TianShuManager.getInstance().report((TianShuReportData)localObject);
     }
   }
 }

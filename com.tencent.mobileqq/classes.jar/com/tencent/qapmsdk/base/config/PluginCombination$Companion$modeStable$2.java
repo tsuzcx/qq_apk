@@ -19,17 +19,17 @@ final class PluginCombination$Companion$modeStable$2
   
   public final int invoke()
   {
-    int i = 0;
     Iterator localIterator = ((Iterable)PluginCombination.access$getStablePlugins$cp()).iterator();
+    int i = 0;
     while (localIterator.hasNext()) {
-      i = ((DefaultPluginConfig)localIterator.next()).mode | i;
+      i |= ((DefaultPluginConfig)localIterator.next()).mode;
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination.Companion.modeStable.2
  * JD-Core Version:    0.7.0.1
  */

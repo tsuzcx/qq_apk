@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.dating;
 
-import ajit;
-import aphs;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class BaseMsgBoxActivity$1$1
+class BaseMsgBoxActivity$1$1
   implements Runnable
 {
-  public BaseMsgBoxActivity$1$1(aphs paramaphs, boolean paramBoolean, String paramString) {}
+  BaseMsgBoxActivity$1$1(BaseMsgBoxActivity.1 param1, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aphs.a.jdField_a_of_type_Ajit != null)) {
-      this.jdField_a_of_type_Aphs.a.jdField_a_of_type_Ajit.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aphs.a.jdField_a_of_type_Int);
+    if ((this.a) && (this.c.a.mRecentAdapter != null)) {
+      this.c.a.mRecentAdapter.a(this.b, this.c.a.mBoxMsgType);
     }
   }
 }

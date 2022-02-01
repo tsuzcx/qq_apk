@@ -1,46 +1,47 @@
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class gth
   extends Handler
 {
-  public gth(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public gth(TroopCreateAvatarActivity paramTroopCreateAvatarActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.isFinishing()) {}
+    switch (paramMessage.what)
+    {
+    }
+    int i;
+    int j;
     do
     {
       return;
-      switch (paramMessage.what)
+      paramMessage = paramMessage.getData();
+      Object localObject = paramMessage.getStringArrayList("AVATAR_WALL_LIST");
+      i = paramMessage.getInt("newSeq");
+      j = paramMessage.getInt("CMD_TYPE");
+      paramMessage = new ArrayList();
+      if (localObject != null)
       {
-      case 1002: 
-      default: 
-        return;
-      case 1001: 
-        this.a.a(false);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          AvatarWallAdapter.AvatarInfo localAvatarInfo = new AvatarWallAdapter.AvatarInfo();
+          localAvatarInfo.b = str;
+          localAvatarInfo.c = "AVATAR_URL_STR";
+          paramMessage.add(localAvatarInfo);
         }
-        QQToast.a(this.a, 2131560744, 1).b(this.a.d());
       }
-    } while (!(paramMessage.obj instanceof String));
-    paramMessage = (String)paramMessage.obj;
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.indexOf(paramMessage);
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(i);
-    this.a.i();
-    return;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    this.a.a(false);
-    this.a.b();
+    } while (this.a.a == null);
+    this.a.a.a(paramMessage, i, j);
   }
 }
 

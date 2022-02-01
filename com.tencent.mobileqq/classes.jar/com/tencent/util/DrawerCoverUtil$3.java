@@ -1,41 +1,41 @@
 package com.tencent.util;
 
-import alth;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView.ScaleType;
-import bicb;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.widget.UpSideDownDrawable;
 
-public final class DrawerCoverUtil$3
+final class DrawerCoverUtil$3
   implements Runnable
 {
-  public DrawerCoverUtil$3(BaseActivity paramBaseActivity, Bitmap paramBitmap, RandomCoverView paramRandomCoverView, boolean paramBoolean, alth paramalth, Card paramCard) {}
+  DrawerCoverUtil$3(QBaseActivity paramQBaseActivity, Bitmap paramBitmap, RandomCoverView paramRandomCoverView, boolean paramBoolean, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, Card paramCard) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
     }
-    bicb localbicb = new bicb(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(localbicb);
-    if (this.jdField_a_of_type_Boolean) {
-      localbicb.a();
+    localObject = new UpSideDownDrawable((Context)localObject, this.b, 0, 0);
+    this.c.getCoverView().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.c.getCoverView().setImageDrawable((Drawable)localObject);
+    if (this.d) {
+      ((UpSideDownDrawable)localObject).start();
+    } else {
+      ((UpSideDownDrawable)localObject).stop();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Alth.a(this.jdField_a_of_type_ComTencentMobileqqDataCard.strDrawerCardUrl, localbicb);
-      return;
-      localbicb.b();
-    }
+    this.e.a(this.f.strDrawerCardUrl, (UpSideDownDrawable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil.3
  * JD-Core Version:    0.7.0.1
  */

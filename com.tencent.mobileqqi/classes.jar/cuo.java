@@ -4,7 +4,7 @@ import com.tencent.mobileqq.widget.QQToast;
 class cuo
   implements Runnable
 {
-  cuo(cun paramcun) {}
+  cuo(cum paramcum) {}
   
   public void run()
   {

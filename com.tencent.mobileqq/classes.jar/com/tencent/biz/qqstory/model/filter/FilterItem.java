@@ -36,24 +36,45 @@ public class FilterItem
     {
     case 8: 
     default: 
-      throw new IllegalArgumentException("illegal filter type : " + paramInt + " from id : " + paramLong);
+      paramString1 = new StringBuilder();
+      paramString1.append("illegal filter type : ");
+      paramString1.append(paramInt);
+      paramString1.append(" from id : ");
+      paramString1.append(paramLong);
+      throw new IllegalArgumentException(paramString1.toString());
     case 10: 
-      if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-        throw new IllegalArgumentException("can not find url or md5 : type=" + paramInt + ", url=" + paramString2 + ", md5=" + paramString3 + " from id : " + paramLong);
+      if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("can not find url or md5 : type=");
+        paramString1.append(paramInt);
+        paramString1.append(", url=");
+        paramString1.append(paramString2);
+        paramString1.append(", md5=");
+        paramString1.append(paramString3);
+        paramString1.append(" from id : ");
+        paramString1.append(paramLong);
+        throw new IllegalArgumentException(paramString1.toString());
       }
       break;
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("filter name should not be empty");
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (paramLong >= 0L)
+      {
+        this.filterId = paramLong;
+        this.filterName = paramString1;
+        this.filterType = paramInt;
+        this.filterConfigUrl = paramString2;
+        this.filterConfigMd5 = paramString3;
+        return;
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append("filter id should not less than zero : ");
+      paramString1.append(paramLong);
+      throw new IllegalArgumentException(paramString1.toString());
     }
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("filter id should not less than zero : " + paramLong);
-    }
-    this.filterId = paramLong;
-    this.filterName = paramString1;
-    this.filterType = paramInt;
-    this.filterConfigUrl = paramString2;
-    this.filterConfigMd5 = paramString3;
+    throw new IllegalArgumentException("filter name should not be empty");
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
@@ -79,12 +100,27 @@ public class FilterItem
   
   public String toString()
   {
-    return "FilterItem{id=" + this.filterId + ", name='" + this.filterName + '\'' + ", type=" + this.filterType + ", url='" + this.filterConfigUrl + '\'' + ", md5='" + this.filterConfigMd5 + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FilterItem{id=");
+    localStringBuilder.append(this.filterId);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.filterName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.filterType);
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.filterConfigUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.filterConfigMd5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.FilterItem
  * JD-Core Version:    0.7.0.1
  */

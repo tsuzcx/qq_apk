@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.dating;
 
 import appoint.define.appoint_define.CommonLabel;
-import awge;
-import awhs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import tencent.im.oidb.cmd0x9e4.cmd0x9e4.UdcUinData;
 
 public class FansEntity
-  extends awge
+  extends Entity
 {
   public int age;
   public int career;
@@ -21,14 +21,12 @@ public class FansEntity
   public int constellation;
   public int gender;
   public int single;
-  @awhs
+  @unique
   public long uin;
   public int vip;
   
   public void init(cmd0x9e4.UdcUinData paramUdcUinData)
   {
-    boolean bool = true;
-    int i = 0;
     if (paramUdcUinData.uint64_uin.has()) {
       this.uin = paramUdcUinData.uint64_uin.get();
     }
@@ -50,62 +48,92 @@ public class FansEntity
     if (paramUdcUinData.uint32_vip_flag.has()) {
       this.vip = paramUdcUinData.uint32_vip_flag.get();
     }
-    if (paramUdcUinData.uint32_charm_shown.has())
+    boolean bool = paramUdcUinData.uint32_charm_shown.has();
+    int i = 0;
+    if (bool)
     {
-      if (paramUdcUinData.uint32_charm_shown.get() == 1) {
-        this.charmIcon = bool;
+      int j = paramUdcUinData.uint32_charm_shown.get();
+      bool = true;
+      if (j != 1) {
+        bool = false;
       }
+      this.charmIcon = bool;
     }
-    else
+    if (paramUdcUinData.uint32_charm_level.has()) {
+      this.charmLevel = paramUdcUinData.uint32_charm_level.get();
+    }
+    if (paramUdcUinData.msg_common_label.has())
     {
-      if (paramUdcUinData.uint32_charm_level.has()) {
-        this.charmLevel = paramUdcUinData.uint32_charm_level.get();
+      Object localObject = (appoint_define.CommonLabel)paramUdcUinData.msg_common_label.get();
+      if (((appoint_define.CommonLabel)localObject).uint32_lable_id.has()) {
+        i = ((appoint_define.CommonLabel)localObject).uint32_lable_id.get();
       }
-      if (paramUdcUinData.msg_common_label.has())
-      {
-        localObject = (appoint_define.CommonLabel)paramUdcUinData.msg_common_label.get();
-        if (((appoint_define.CommonLabel)localObject).uint32_lable_id.has()) {
-          i = ((appoint_define.CommonLabel)localObject).uint32_lable_id.get();
-        }
-        this.commonId = i;
-        if (!((appoint_define.CommonLabel)localObject).bytes_lable_msg_pre.has()) {
-          break label335;
-        }
+      this.commonId = i;
+      bool = ((appoint_define.CommonLabel)localObject).bytes_lable_msg_pre.has();
+      String str = "";
+      if (bool) {
         paramUdcUinData = new String(((appoint_define.CommonLabel)localObject).bytes_lable_msg_pre.get().toByteArray());
-        label275:
-        if (!((appoint_define.CommonLabel)localObject).bytes_lable_msg_pre.has()) {
-          break label341;
-        }
+      } else {
+        paramUdcUinData = "";
       }
-    }
-    label335:
-    label341:
-    for (Object localObject = new String(((appoint_define.CommonLabel)localObject).bytes_lable_msg_last.get().toByteArray());; localObject = "")
-    {
-      this.common = (paramUdcUinData + (String)localObject);
-      return;
-      bool = false;
-      break;
-      paramUdcUinData = "";
-      break label275;
+      if (((appoint_define.CommonLabel)localObject).bytes_lable_msg_pre.has()) {
+        str = new String(((appoint_define.CommonLabel)localObject).bytes_lable_msg_last.get().toByteArray());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramUdcUinData);
+      ((StringBuilder)localObject).append(str);
+      this.common = ((StringBuilder)localObject).toString();
     }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("uin:" + this.uin);
-    localStringBuilder.append(",gender:" + this.gender);
-    localStringBuilder.append(",age:" + this.age);
-    localStringBuilder.append(",single:" + this.single);
-    localStringBuilder.append(",career:" + this.career);
-    localStringBuilder.append(",constellation:" + this.constellation);
-    localStringBuilder.append(",charmIcon:" + this.charmIcon);
-    localStringBuilder.append(",vip:" + this.vip);
-    localStringBuilder.append(",charmLevel:" + this.charmLevel);
-    localStringBuilder.append(",commonId:" + this.commonId);
-    localStringBuilder.append(",common:" + this.common);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder("");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("uin:");
+    localStringBuilder2.append(this.uin);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",gender:");
+    localStringBuilder2.append(this.gender);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",age:");
+    localStringBuilder2.append(this.age);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",single:");
+    localStringBuilder2.append(this.single);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",career:");
+    localStringBuilder2.append(this.career);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",constellation:");
+    localStringBuilder2.append(this.constellation);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",charmIcon:");
+    localStringBuilder2.append(this.charmIcon);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",vip:");
+    localStringBuilder2.append(this.vip);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",charmLevel:");
+    localStringBuilder2.append(this.charmLevel);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",commonId:");
+    localStringBuilder2.append(this.commonId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(",common:");
+    localStringBuilder2.append(this.common);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 

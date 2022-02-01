@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.PopupWindow;
-import bdoo;
-import com.tencent.mobileqq.widget.FormMutiItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 class AddContactsView$12
   implements Runnable
@@ -15,32 +14,10 @@ class AddContactsView$12
   
   public void run()
   {
-    try
-    {
-      if (this.this$0.i != null)
-      {
-        if (this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-          return;
-        }
-        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558462, this.this$0.i, false);
-        localView.measure(0, 0);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = bdoo.a(16.0F);
-        int j = -localView.getMeasuredHeight();
-        int k = this.this$0.i.getMeasuredHeight();
-        int m = bdoo.a(24.0F);
-        this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AddContactsView", 1, "face2faceGuideTipsRunnable exception, ", localException);
-    }
+    Object localObject = (MayknowRecommendManager)this.this$0.G.getManager(QQManagerFactory.MAYKNOW_RECOMMEND_MANAGER);
+    int i = ((MayknowRecommendManager)localObject).d();
+    localObject = ((MayknowRecommendManager)localObject).c();
+    ThreadManager.getUIHandler().post(new AddContactsView.12.1(this, i, (ArrayList)localObject));
   }
 }
 

@@ -1,15 +1,31 @@
 package com.tencent.mm.loader.g;
 
-import a.l;
+import com.tencent.mm.loader.g.b.a;
+import java.io.OutputStream;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/WorkStatus;)V", "libimageloader_release"})
-public abstract interface f<T extends c>
+public abstract class f<T>
 {
-  public abstract void a(T paramT, h paramh);
+  public T cpt;
+  
+  f() {}
+  
+  public f(T paramT)
+  {
+    this.cpt = paramT;
+  }
+  
+  public abstract void b(OutputStream paramOutputStream);
+  
+  public abstract a blY();
+  
+  public static abstract interface a<T>
+  {
+    public abstract a blZ();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.f
  * JD-Core Version:    0.7.0.1
  */

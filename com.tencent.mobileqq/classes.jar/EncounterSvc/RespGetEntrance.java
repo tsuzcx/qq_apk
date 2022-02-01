@@ -10,9 +10,9 @@ public final class RespGetEntrance
 {
   static ArrayList<EntranceContent> cache_entrance_list = new ArrayList();
   static ArrayList<String> cache_xml_list;
-  public ArrayList<EntranceContent> entrance_list;
+  public ArrayList<EntranceContent> entrance_list = null;
   public long interval = 300L;
-  public ArrayList<String> xml_list;
+  public ArrayList<String> xml_list = null;
   
   static
   {
@@ -40,18 +40,20 @@ public final class RespGetEntrance
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.entrance_list != null) {
-      paramJceOutputStream.write(this.entrance_list, 0);
+    ArrayList localArrayList = this.entrance_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.interval, 1);
-    if (this.xml_list != null) {
-      paramJceOutputStream.write(this.xml_list, 2);
+    localArrayList = this.xml_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RespGetEntrance
  * JD-Core Version:    0.7.0.1
  */

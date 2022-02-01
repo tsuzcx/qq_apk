@@ -10,15 +10,15 @@ public final class UniBusiSimpleItemDetail
   static UniBusiCommItemAidInfo cache_stAidInfo = new UniBusiCommItemAidInfo();
   static UniBusiSimpleFontItem cache_stFontItem = new UniBusiSimpleFontItem();
   static UniBusiSimpleSigItem cache_stSigItem = new UniBusiSimpleSigItem();
-  public int appId;
-  public int feeType;
+  public int appId = 0;
+  public int feeType = 0;
   public String image = "";
   public String itemBgColor = "";
-  public int itemId;
+  public int itemId = 0;
   public String name = "";
-  public UniBusiCommItemAidInfo stAidInfo;
-  public UniBusiSimpleFontItem stFontItem;
-  public UniBusiSimpleSigItem stSigItem;
+  public UniBusiCommItemAidInfo stAidInfo = null;
+  public UniBusiSimpleFontItem stFontItem = null;
+  public UniBusiSimpleSigItem stSigItem = null;
   
   public UniBusiSimpleItemDetail() {}
   
@@ -52,30 +52,36 @@ public final class UniBusiSimpleItemDetail
   {
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.itemId, 1);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 2);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.feeType, 3);
-    if (this.image != null) {
-      paramJceOutputStream.write(this.image, 4);
+    localObject = this.image;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.itemBgColor != null) {
-      paramJceOutputStream.write(this.itemBgColor, 5);
+    localObject = this.itemBgColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.stAidInfo != null) {
-      paramJceOutputStream.write(this.stAidInfo, 6);
+    localObject = this.stAidInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.stSigItem != null) {
-      paramJceOutputStream.write(this.stSigItem, 7);
+    localObject = this.stSigItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.stFontItem != null) {
-      paramJceOutputStream.write(this.stFontItem, 8);
+    localObject = this.stFontItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiSimpleItemDetail
  * JD-Core Version:    0.7.0.1
  */

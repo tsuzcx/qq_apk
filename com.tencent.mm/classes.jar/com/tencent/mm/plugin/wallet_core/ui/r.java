@@ -1,90 +1,133 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ac;
-import java.util.ArrayList;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.wallet_core.c.ai;
+import com.tencent.mm.plugin.wallet_core.c.y;
+import com.tencent.mm.plugin.wallet_core.model.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.wallet_core.e;
 
-public final class r
-  extends BaseAdapter
+public class r
+  extends e
 {
-  private Context mContext;
-  ArrayList<ac> mData = null;
-  ac utW = null;
+  private String VxY;
+  private String qdg;
+  private int scene;
+  private String token;
   
-  public r(Context paramContext, ArrayList<ac> paramArrayList)
+  public final g a(final MMActivity paramMMActivity, final i parami)
   {
-    this.mContext = paramContext;
-    this.mData = paramArrayList;
+    AppMethodBeat.i(70972);
+    paramMMActivity = new g(paramMMActivity, parami)
+    {
+      public final boolean E(Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(70968);
+        Log.i("MicroMsg.WalletJSApiVerifyCodeProcess", "resend sms");
+        paramAnonymousVarArgs = new y(r.c(r.this), r.a(r.this), '\000');
+        parami.a(paramAnonymousVarArgs, true, 1);
+        AppMethodBeat.o(70968);
+        return true;
+      }
+      
+      public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
+      {
+        AppMethodBeat.i(70969);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          if ((paramAnonymousp instanceof ai))
+          {
+            Log.i("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms succ");
+            paramAnonymousString = (ai)paramAnonymousp;
+            paramAnonymousp = r.this.hPH;
+            paramAnonymousp.putString("key_jsapi_token", paramAnonymousString.Vyh);
+            r.this.b(paramMMActivity, paramAnonymousp);
+            AppMethodBeat.o(70969);
+            return true;
+          }
+          if ((paramAnonymousp instanceof y))
+          {
+            AppMethodBeat.o(70969);
+            return true;
+          }
+          AppMethodBeat.o(70969);
+          return false;
+        }
+        if ((paramAnonymousp instanceof ai)) {
+          Log.e("MicroMsg.WalletJSApiVerifyCodeProcess", "send sms fail,errType=" + paramAnonymousInt1 + ",errCode=" + paramAnonymousInt2 + ",errMsg=" + paramAnonymousString);
+        }
+        AppMethodBeat.o(70969);
+        return false;
+      }
+      
+      public final boolean t(Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(70967);
+        if (paramAnonymousVarArgs.length == 2)
+        {
+          paramAnonymousVarArgs = (w)paramAnonymousVarArgs[1];
+          paramAnonymousVarArgs.token = r.a(r.this);
+          Log.i("MicroMsg.WalletJSApiVerifyCodeProcess", "do NetSceneTenpayVerifySmsByPasswd");
+          paramAnonymousVarArgs = new ai(paramAnonymousVarArgs, r.b(r.this));
+          parami.a(paramAnonymousVarArgs, true, 1);
+          AppMethodBeat.o(70967);
+          return true;
+        }
+        Log.e("MicroMsg.WalletJSApiVerifyCodeProcess", "arguments is error");
+        AppMethodBeat.o(70967);
+        return false;
+      }
+    };
+    AppMethodBeat.o(70972);
+    return paramMMActivity;
   }
   
-  public final ac II(int paramInt)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(47686);
-    if ((this.mData != null) && (getCount() > paramInt))
+    AppMethodBeat.i(70970);
+    Log.i("MicroMsg.WalletJSApiVerifyCodeProcess", "start WalletJSApiVerifyCodeProcess");
+    this.VxY = paramBundle.getString("key_relation_key");
+    this.qdg = paramBundle.getString("key_pwd1");
+    this.token = paramBundle.getString("key_jsapi_token");
+    this.scene = paramBundle.getInt("key_verify_scene");
+    b(paramActivity, WalletVerifyCodeUI.class, paramBundle);
+    AppMethodBeat.o(70970);
+    return this;
+  }
+  
+  public final void a(Activity paramActivity, int paramInt, Bundle paramBundle) {}
+  
+  public final void b(Activity paramActivity, Bundle paramBundle)
+  {
+    AppMethodBeat.i(70971);
+    Log.i("MicroMsg.WalletJSApiVerifyCodeProcess", "end WalletJSApiVerifyCodeProcess");
+    if (this.scene == 8)
     {
-      ac localac = (ac)this.mData.get(paramInt);
-      AppMethodBeat.o(47686);
-      return localac;
+      a(paramActivity, "wallet", ".pay.ui.WalletLoanRepaymentUI", -1, null, false);
+      AppMethodBeat.o(70971);
+      return;
     }
-    AppMethodBeat.o(47686);
+    a(paramActivity, WalletCheckPwdUI.class, -1, null, false);
+    AppMethodBeat.o(70971);
+  }
+  
+  public final boolean c(Activity paramActivity, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public final String fud()
+  {
     return null;
   }
   
-  public final int getCount()
-  {
-    AppMethodBeat.i(47685);
-    if (this.mData != null)
-    {
-      int i = this.mData.size();
-      AppMethodBeat.o(47685);
-      return i;
-    }
-    AppMethodBeat.o(47685);
-    return 0;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(47687);
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.mContext, 2130971260, null);
-      paramViewGroup = new r.a(this, (byte)0);
-      paramViewGroup.gui = ((TextView)paramView.findViewById(2131820680));
-      paramViewGroup.utX = ((ImageView)paramView.findViewById(2131829393));
-      paramView.setTag(paramViewGroup);
-      ac localac = II(paramInt);
-      if (localac != null)
-      {
-        paramViewGroup.gui.setText(localac.field_wallet_name);
-        if (localac.field_wallet_selected != 1) {
-          break label127;
-        }
-        this.utW = localac;
-        paramViewGroup.utX.setImageResource(2131231906);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(47687);
-      return paramView;
-      paramViewGroup = (r.a)paramView.getTag();
-      break;
-      label127:
-      paramViewGroup.utX.setImageResource(2131231905);
-    }
-  }
+  public final void i(Activity paramActivity, int paramInt) {}
 }
 
 

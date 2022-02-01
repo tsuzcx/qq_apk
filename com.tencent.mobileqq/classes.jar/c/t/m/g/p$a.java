@@ -86,45 +86,55 @@ final class p$a
   
   public final void b(n paramn)
   {
-    if (paramn == null) {}
-    for (;;)
-    {
+    if (paramn == null) {
       return;
-      try
+    }
+    try
+    {
+      if (paramn.e == 1)
       {
-        if (paramn.e == 1)
-        {
-          if ((this.d == null) || (this.d.isEmpty()) || (!paramn.a((n)this.d.get(0)))) {
-            continue;
-          }
+        if ((this.d != null) && (!this.d.isEmpty()) && (paramn.a((n)this.d.get(0)))) {
           this.d.remove(0);
-          continue;
         }
       }
-      finally {}
-      if ((paramn.e == 2) && (this.e != null) && (!this.e.isEmpty()) && (paramn.a((n)this.e.get(0)))) {
+      else if ((paramn.e == 2) && (this.e != null) && (!this.e.isEmpty()) && (paramn.a((n)this.e.get(0)))) {
         this.e.remove(0);
       }
+      return;
     }
+    finally {}
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Appid：" + null + " domain：" + this.a + "\r\n");
-    localStringBuilder.append("apn：" + this.c + " ckIP：" + null + "\r\n");
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext())
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject = new StringBuilder("Appid：");
+    ((StringBuilder)localObject).append(null);
+    ((StringBuilder)localObject).append(" domain：");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append("\r\n");
+    localStringBuilder1.append(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder("apn：");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(" ckIP：");
+    ((StringBuilder)localObject).append(null);
+    ((StringBuilder)localObject).append("\r\n");
+    localStringBuilder1.append(((StringBuilder)localObject).toString());
+    localObject = a().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      n localn = (n)localIterator.next();
-      localStringBuilder.append("accessIP：" + localn.toString() + "\r\n");
+      n localn = (n)((Iterator)localObject).next();
+      StringBuilder localStringBuilder2 = new StringBuilder("accessIP：");
+      localStringBuilder2.append(localn.toString());
+      localStringBuilder2.append("\r\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.p.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,8 @@
 package android.support.v7.view.menu;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.appcompat.R.attr;
-import android.support.v7.appcompat.R.id;
-import android.support.v7.appcompat.R.layout;
-import android.support.v7.appcompat.R.styleable;
-import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
@@ -19,135 +13,228 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import com.tencent.token.fo;
+import com.tencent.token.hg.a;
+import com.tencent.token.hg.f;
+import com.tencent.token.hg.g;
+import com.tencent.token.hg.j;
+import com.tencent.token.id;
+import com.tencent.token.if;
+import com.tencent.token.il.a;
+import com.tencent.token.jw;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ListMenuItemView
   extends LinearLayout
-  implements MenuView.ItemView
+  implements il.a
 {
-  private static final String TAG = "ListMenuItemView";
-  private Drawable mBackground;
-  private CheckBox mCheckBox;
-  private boolean mForceShowIcon;
-  private ImageView mIconView;
-  private LayoutInflater mInflater;
-  private MenuItemImpl mItemData;
-  private int mMenuType;
-  private boolean mPreserveIconSpacing;
-  private RadioButton mRadioButton;
-  private TextView mShortcutView;
-  private Drawable mSubMenuArrow;
-  private ImageView mSubMenuArrowView;
-  private int mTextAppearance;
-  private Context mTextAppearanceContext;
-  private TextView mTitleView;
+  private if a;
+  private ImageView b;
+  private RadioButton c;
+  private TextView d;
+  private CheckBox e;
+  private TextView f;
+  private ImageView g;
+  private Drawable h;
+  private int i;
+  private Context j;
+  private boolean k;
+  private Drawable l;
+  private int m;
+  private LayoutInflater n;
+  private boolean o;
   
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.listMenuViewStyle);
+    this(paramContext, paramAttributeSet, hg.a.listMenuViewStyle);
   }
   
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, R.styleable.MenuView, paramInt, 0);
-    this.mBackground = paramAttributeSet.getDrawable(R.styleable.MenuView_android_itemBackground);
-    this.mTextAppearance = paramAttributeSet.getResourceId(R.styleable.MenuView_android_itemTextAppearance, -1);
-    this.mPreserveIconSpacing = paramAttributeSet.getBoolean(R.styleable.MenuView_preserveIconSpacing, false);
-    this.mTextAppearanceContext = paramContext;
-    this.mSubMenuArrow = paramAttributeSet.getDrawable(R.styleable.MenuView_subMenuArrow);
-    paramAttributeSet.recycle();
+    paramAttributeSet = jw.a(getContext(), paramAttributeSet, hg.j.MenuView, paramInt, 0);
+    this.h = paramAttributeSet.a(hg.j.MenuView_android_itemBackground);
+    this.i = paramAttributeSet.g(hg.j.MenuView_android_itemTextAppearance, -1);
+    this.k = paramAttributeSet.a(hg.j.MenuView_preserveIconSpacing, false);
+    this.j = paramContext;
+    this.l = paramAttributeSet.a(hg.j.MenuView_subMenuArrow);
+    paramAttributeSet.a.recycle();
+  }
+  
+  private void b()
+  {
+    this.c = ((RadioButton)getInflater().inflate(hg.g.abc_list_menu_item_radio, this, false));
+    addView(this.c);
+  }
+  
+  private void c()
+  {
+    this.e = ((CheckBox)getInflater().inflate(hg.g.abc_list_menu_item_checkbox, this, false));
+    addView(this.e);
   }
   
   private LayoutInflater getInflater()
   {
-    if (this.mInflater == null) {
-      this.mInflater = LayoutInflater.from(getContext());
+    if (this.n == null) {
+      this.n = LayoutInflater.from(getContext());
     }
-    return this.mInflater;
+    return this.n;
   }
   
-  private void insertCheckBox()
+  private void setShortcut$25d965e(boolean paramBoolean)
   {
-    this.mCheckBox = ((CheckBox)getInflater().inflate(R.layout.abc_list_menu_item_checkbox, this, false));
-    addView(this.mCheckBox);
-  }
-  
-  private void insertIconView()
-  {
-    this.mIconView = ((ImageView)getInflater().inflate(R.layout.abc_list_menu_item_icon, this, false));
-    addView(this.mIconView, 0);
-  }
-  
-  private void insertRadioButton()
-  {
-    this.mRadioButton = ((RadioButton)getInflater().inflate(R.layout.abc_list_menu_item_radio, this, false));
-    addView(this.mRadioButton);
+    int i1;
+    if ((paramBoolean) && (this.a.d())) {
+      i1 = 0;
+    } else {
+      i1 = 8;
+    }
+    if (i1 == 0)
+    {
+      TextView localTextView = this.f;
+      char c1 = this.a.c();
+      Object localObject;
+      if (c1 == 0)
+      {
+        localObject = "";
+      }
+      else
+      {
+        localObject = new StringBuilder(if.e);
+        if (c1 != '\b')
+        {
+          if (c1 != '\n')
+          {
+            if (c1 != ' ') {
+              ((StringBuilder)localObject).append(c1);
+            } else {
+              ((StringBuilder)localObject).append(if.h);
+            }
+          }
+          else {
+            ((StringBuilder)localObject).append(if.f);
+          }
+        }
+        else {
+          ((StringBuilder)localObject).append(if.g);
+        }
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localTextView.setText((CharSequence)localObject);
+    }
+    if (this.f.getVisibility() != i1) {
+      this.f.setVisibility(i1);
+    }
   }
   
   private void setSubMenuArrowVisible(boolean paramBoolean)
   {
-    ImageView localImageView;
-    if (this.mSubMenuArrowView != null)
+    ImageView localImageView = this.g;
+    if (localImageView != null)
     {
-      localImageView = this.mSubMenuArrowView;
-      if (!paramBoolean) {
-        break label24;
+      int i1;
+      if (paramBoolean) {
+        i1 = 0;
+      } else {
+        i1 = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+      localImageView.setVisibility(i1);
     }
   }
   
-  public MenuItemImpl getItemData()
+  public final void a(if paramif)
   {
-    return this.mItemData;
+    this.a = paramif;
+    int i2 = 0;
+    this.m = 0;
+    int i1;
+    if (paramif.isVisible()) {
+      i1 = 0;
+    } else {
+      i1 = 8;
+    }
+    setVisibility(i1);
+    setTitle(paramif.a(this));
+    setCheckable(paramif.isCheckable());
+    if ((paramif.d()) && (this.a.d())) {
+      i1 = i2;
+    } else {
+      i1 = 8;
+    }
+    if (i1 == 0)
+    {
+      TextView localTextView = this.f;
+      char c1 = this.a.c();
+      Object localObject;
+      if (c1 == 0)
+      {
+        localObject = "";
+      }
+      else
+      {
+        localObject = new StringBuilder(if.e);
+        if (c1 != '\b')
+        {
+          if (c1 != '\n')
+          {
+            if (c1 != ' ') {
+              ((StringBuilder)localObject).append(c1);
+            } else {
+              ((StringBuilder)localObject).append(if.h);
+            }
+          }
+          else {
+            ((StringBuilder)localObject).append(if.f);
+          }
+        }
+        else {
+          ((StringBuilder)localObject).append(if.g);
+        }
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      localTextView.setText((CharSequence)localObject);
+    }
+    if (this.f.getVisibility() != i1) {
+      this.f.setVisibility(i1);
+    }
+    setIcon(paramif.getIcon());
+    setEnabled(paramif.isEnabled());
+    setSubMenuArrowVisible(paramif.hasSubMenu());
+    setContentDescription(paramif.getContentDescription());
   }
   
-  public void initialize(MenuItemImpl paramMenuItemImpl, int paramInt)
+  public final boolean a()
   {
-    this.mItemData = paramMenuItemImpl;
-    this.mMenuType = paramInt;
-    if (paramMenuItemImpl.isVisible()) {}
-    for (paramInt = 0;; paramInt = 8)
-    {
-      setVisibility(paramInt);
-      setTitle(paramMenuItemImpl.getTitleForItemView(this));
-      setCheckable(paramMenuItemImpl.isCheckable());
-      setShortcut(paramMenuItemImpl.shouldShowShortcut(), paramMenuItemImpl.getShortcut());
-      setIcon(paramMenuItemImpl.getIcon());
-      setEnabled(paramMenuItemImpl.isEnabled());
-      setSubMenuArrowVisible(paramMenuItemImpl.hasSubMenu());
-      setContentDescription(paramMenuItemImpl.getContentDescription());
-      return;
-    }
+    return false;
+  }
+  
+  public if getItemData()
+  {
+    return this.a;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    ViewCompat.setBackground(this, this.mBackground);
-    this.mTitleView = ((TextView)findViewById(R.id.title));
-    if (this.mTextAppearance != -1) {
-      this.mTitleView.setTextAppearance(this.mTextAppearanceContext, this.mTextAppearance);
+    fo.a(this, this.h);
+    this.d = ((TextView)findViewById(hg.f.title));
+    int i1 = this.i;
+    if (i1 != -1) {
+      this.d.setTextAppearance(this.j, i1);
     }
-    this.mShortcutView = ((TextView)findViewById(R.id.shortcut));
-    this.mSubMenuArrowView = ((ImageView)findViewById(R.id.submenuarrow));
-    if (this.mSubMenuArrowView != null) {
-      this.mSubMenuArrowView.setImageDrawable(this.mSubMenuArrow);
+    this.f = ((TextView)findViewById(hg.f.shortcut));
+    this.g = ((ImageView)findViewById(hg.f.submenuarrow));
+    ImageView localImageView = this.g;
+    if (localImageView != null) {
+      localImageView.setImageDrawable(this.l);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.mIconView != null) && (this.mPreserveIconSpacing))
+    if ((this.b != null) && (this.k))
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)this.mIconView.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
       if ((localLayoutParams.height > 0) && (localLayoutParams1.width <= 0)) {
         localLayoutParams1.width = localLayoutParams.height;
       }
@@ -155,133 +242,113 @@ public class ListMenuItemView
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public boolean prefersCondensedTitle()
-  {
-    return false;
-  }
-  
   public void setCheckable(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.mRadioButton == null) && (this.mCheckBox == null)) {}
-    label51:
-    do
-    {
+    if ((!paramBoolean) && (this.c == null) && (this.e == null)) {
       return;
-      Object localObject1;
-      Object localObject2;
-      if (this.mItemData.isExclusiveCheckable())
-      {
-        if (this.mRadioButton == null) {
-          insertRadioButton();
-        }
-        localObject1 = this.mRadioButton;
-        localObject2 = this.mCheckBox;
-        if (!paramBoolean) {
-          break label139;
-        }
-        ((CompoundButton)localObject1).setChecked(this.mItemData.isChecked());
-        if (!paramBoolean) {
-          break label133;
-        }
+    }
+    Object localObject2;
+    if (this.a.e())
+    {
+      if (this.c == null) {
+        b();
       }
-      for (int i = 0;; i = 8)
-      {
-        if (((CompoundButton)localObject1).getVisibility() != i) {
-          ((CompoundButton)localObject1).setVisibility(i);
-        }
-        if ((localObject2 == null) || (((CompoundButton)localObject2).getVisibility() == 8)) {
-          break;
-        }
+      localObject1 = this.c;
+      localObject2 = this.e;
+    }
+    else
+    {
+      if (this.e == null) {
+        c();
+      }
+      localObject1 = this.e;
+      localObject2 = this.c;
+    }
+    if (paramBoolean)
+    {
+      ((CompoundButton)localObject1).setChecked(this.a.isChecked());
+      int i1;
+      if (paramBoolean) {
+        i1 = 0;
+      } else {
+        i1 = 8;
+      }
+      if (((CompoundButton)localObject1).getVisibility() != i1) {
+        ((CompoundButton)localObject1).setVisibility(i1);
+      }
+      if ((localObject2 != null) && (((CompoundButton)localObject2).getVisibility() != 8)) {
         ((CompoundButton)localObject2).setVisibility(8);
-        return;
-        if (this.mCheckBox == null) {
-          insertCheckBox();
-        }
-        localObject1 = this.mCheckBox;
-        localObject2 = this.mRadioButton;
-        break label51;
       }
-      if (this.mCheckBox != null) {
-        this.mCheckBox.setVisibility(8);
-      }
-    } while (this.mRadioButton == null);
-    label133:
-    label139:
-    this.mRadioButton.setVisibility(8);
+      return;
+    }
+    Object localObject1 = this.e;
+    if (localObject1 != null) {
+      ((CheckBox)localObject1).setVisibility(8);
+    }
+    localObject1 = this.c;
+    if (localObject1 != null) {
+      ((RadioButton)localObject1).setVisibility(8);
+    }
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.mItemData.isExclusiveCheckable()) {
-      if (this.mRadioButton == null) {
-        insertRadioButton();
-      }
-    }
-    for (Object localObject = this.mRadioButton;; localObject = this.mCheckBox)
+    Object localObject;
+    if (this.a.e())
     {
-      ((CompoundButton)localObject).setChecked(paramBoolean);
-      return;
-      if (this.mCheckBox == null) {
-        insertCheckBox();
+      if (this.c == null) {
+        b();
       }
+      localObject = this.c;
     }
+    else
+    {
+      if (this.e == null) {
+        c();
+      }
+      localObject = this.e;
+    }
+    ((CompoundButton)localObject).setChecked(paramBoolean);
   }
   
   public void setForceShowIcon(boolean paramBoolean)
   {
-    this.mForceShowIcon = paramBoolean;
-    this.mPreserveIconSpacing = paramBoolean;
+    this.o = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    int i;
-    if ((this.mItemData.shouldShowIcon()) || (this.mForceShowIcon))
-    {
-      i = 1;
-      if ((i != 0) || (this.mPreserveIconSpacing)) {
-        break label36;
-      }
+    int i1;
+    if ((!this.a.b.i) && (!this.o)) {
+      i1 = 0;
+    } else {
+      i1 = 1;
     }
-    label36:
-    while ((this.mIconView == null) && (paramDrawable == null) && (!this.mPreserveIconSpacing))
-    {
+    if ((i1 == 0) && (!this.k)) {
       return;
-      i = 0;
-      break;
     }
-    if (this.mIconView == null) {
-      insertIconView();
+    if ((this.b == null) && (paramDrawable == null) && (!this.k)) {
+      return;
     }
-    if ((paramDrawable != null) || (this.mPreserveIconSpacing))
+    if (this.b == null)
     {
-      ImageView localImageView = this.mIconView;
-      if (i != 0) {}
-      for (;;)
-      {
-        localImageView.setImageDrawable(paramDrawable);
-        if (this.mIconView.getVisibility() == 0) {
-          break;
-        }
-        this.mIconView.setVisibility(0);
-        return;
-        paramDrawable = null;
-      }
+      this.b = ((ImageView)getInflater().inflate(hg.g.abc_list_menu_item_icon, this, false));
+      addView(this.b, 0);
     }
-    this.mIconView.setVisibility(8);
-  }
-  
-  public void setShortcut(boolean paramBoolean, char paramChar)
-  {
-    if ((paramBoolean) && (this.mItemData.shouldShowShortcut())) {}
-    for (paramChar = '\000';; paramChar = '\b')
+    if ((paramDrawable == null) && (!this.k))
     {
-      if (paramChar == 0) {
-        this.mShortcutView.setText(this.mItemData.getShortcutLabel());
-      }
-      if (this.mShortcutView.getVisibility() != paramChar) {
-        this.mShortcutView.setVisibility(paramChar);
-      }
+      this.b.setVisibility(8);
+      return;
+    }
+    ImageView localImageView = this.b;
+    if (i1 == 0) {
+      paramDrawable = null;
+    }
+    localImageView.setImageDrawable(paramDrawable);
+    if (this.b.getVisibility() != 0)
+    {
+      this.b.setVisibility(0);
       return;
     }
   }
@@ -290,20 +357,15 @@ public class ListMenuItemView
   {
     if (paramCharSequence != null)
     {
-      this.mTitleView.setText(paramCharSequence);
-      if (this.mTitleView.getVisibility() != 0) {
-        this.mTitleView.setVisibility(0);
+      this.d.setText(paramCharSequence);
+      if (this.d.getVisibility() != 0) {
+        this.d.setVisibility(0);
       }
     }
-    while (this.mTitleView.getVisibility() == 8) {
-      return;
+    else if (this.d.getVisibility() != 8)
+    {
+      this.d.setVisibility(8);
     }
-    this.mTitleView.setVisibility(8);
-  }
-  
-  public boolean showsIcon()
-  {
-    return this.mForceShowIcon;
   }
 }
 

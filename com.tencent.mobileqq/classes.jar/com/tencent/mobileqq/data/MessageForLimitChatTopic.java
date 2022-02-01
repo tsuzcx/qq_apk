@@ -18,7 +18,7 @@ public class MessageForLimitChatTopic
     if (QLog.isDevelopLevel()) {
       QLog.i("MessageForLimitChatTopic", 4, String.format(Locale.getDefault(), "doParse: %s", new Object[] { this.msg }));
     }
-    if ((this.istroop == 1037) || (this.istroop == 1044) || (this.istroop == 1045)) {
+    if ((this.istroop == 1044) || (this.istroop == 1045)) {
       this.isread = true;
     }
   }

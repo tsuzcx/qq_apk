@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/agk" android:background="@drawable/qq_profilecard_foot_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentBottom="true">
+        <Button android:textColor="#ffffffff" android:id="@id/ipk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/pro" style="@style/bb" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/agk">
+        <ImageView android:id="@id/jtf" android:layout_width="fill_parent" android:layout_height="480.0dip" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.AccountDetailBounceScrollView android:id="@id/ixx" android:background="#ff59d3ff" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/agk">
+        <RelativeLayout android:orientation="vertical" android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/fvp" android:background="#ff59d3ff" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+                <ImageView android:id="@id/fvo" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_marginTop="52.0dip" android:layout_centerHorizontal="true" />
+                <ImageView android:id="@id/d__" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginTop="47.0dip" android:layout_centerHorizontal="true" />
+                <RelativeLayout android:gravity="center" android:id="@id/f5l" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/fvo" android:layout_centerInParent="true">
+                    <TextView android:textSize="22.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="right" android:id="@id/fvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="220.0dip" android:singleLine="true" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/bpy" android:background="@color/al3" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/fvp">
+                <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/fvl" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.tencent.biz.pubaccount.AccountDetailBounceScrollView>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/e8z" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/gg" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

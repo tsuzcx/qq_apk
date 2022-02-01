@@ -1,99 +1,112 @@
 package com.tencent.mm.plugin.music.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.e;
-import com.tencent.mm.g.c.dg;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.autogen.b.fn;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public final class a
-  extends dg
+public class a
+  extends fn
 {
-  public static c.a info;
-  public String fKH;
+  public static IAutoDBItem.MAutoDBInfo info;
+  public String oOT;
+  public boolean oOX = false;
+  public boolean oOY = true;
+  public boolean oPa;
+  public String oru;
   public String playUrl;
   
   static
   {
-    AppMethodBeat.i(105033);
-    info = dg.Hm();
-    AppMethodBeat.o(105033);
+    AppMethodBeat.i(63171);
+    info = fn.aJm();
+    AppMethodBeat.o(63171);
   }
   
-  public final boolean bVW()
+  public final boolean J(int[] paramArrayOfInt)
   {
-    return (this.field_songBgColor != 0) && (this.field_songLyricColor != 0);
+    return (this.field_songBgColor == paramArrayOfInt[0]) && (this.field_songLyricColor == paramArrayOfInt[1]);
   }
   
-  public final boolean bVX()
-  {
-    AppMethodBeat.i(105030);
-    if (!bo.isNullOrNil(this.field_songHAlbumUrl))
-    {
-      AppMethodBeat.o(105030);
-      return true;
-    }
-    AppMethodBeat.o(105030);
-    return false;
-  }
-  
-  public final e bVY()
-  {
-    AppMethodBeat.i(105032);
-    e locale = new e();
-    locale.fKj = this.field_originMusicId;
-    locale.fKh = this.field_musicType;
-    locale.fKw = this.field_appId;
-    locale.fKn = this.field_songAlbum;
-    locale.fKx = this.field_songAlbumType;
-    locale.fKo = this.field_songAlbumUrl;
-    locale.fKp = this.field_songWifiUrl;
-    locale.fKl = this.field_songName;
-    locale.fKm = this.field_songSinger;
-    locale.fKq = this.field_songWapLinkUrl;
-    locale.fKr = this.field_songWebUrl;
-    locale.fKt = this.field_songAlbumLocalPath;
-    locale.fKz = this.field_songMediaId;
-    locale.fKB = this.field_songSnsAlbumUser;
-    locale.fKD = this.field_songSnsShareUser;
-    locale.fKF = this.field_hideBanner;
-    locale.fKG = this.field_jsWebUrlDomain;
-    locale.startTime = this.field_startTime;
-    locale.fKH = this.fKH;
-    locale.protocol = this.field_protocol;
-    locale.fKI = this.field_barBackToWebView;
-    locale.fKJ = this.field_musicbar_url;
-    locale.playUrl = this.playUrl;
-    AppMethodBeat.o(105032);
-    return locale;
-  }
-  
-  public final boolean g(a parama)
-  {
-    AppMethodBeat.i(105031);
-    if (parama == null)
-    {
-      AppMethodBeat.o(105031);
-      return false;
-    }
-    boolean bool = this.field_musicId.equals(parama.field_musicId);
-    AppMethodBeat.o(105031);
-    return bool;
-  }
-  
-  public final c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
   
-  public final boolean y(int[] paramArrayOfInt)
+  public final boolean goo()
   {
-    return (this.field_songBgColor == paramArrayOfInt[0]) && (this.field_songLyricColor == paramArrayOfInt[1]);
+    return (this.field_songBgColor != 0) && (this.field_songLyricColor != 0);
+  }
+  
+  public final boolean gop()
+  {
+    AppMethodBeat.i(63168);
+    if (!Util.isNullOrNil(this.field_songHAlbumUrl))
+    {
+      AppMethodBeat.o(63168);
+      return true;
+    }
+    AppMethodBeat.o(63168);
+    return false;
+  }
+  
+  public final f goq()
+  {
+    AppMethodBeat.i(63170);
+    f localf = new f();
+    localf.oOv = this.field_originMusicId;
+    localf.oOt = this.field_musicType;
+    localf.oOI = this.field_appId;
+    localf.oOz = this.field_songAlbum;
+    localf.oOJ = this.field_songAlbumType;
+    localf.oOA = this.field_songAlbumUrl;
+    localf.oOM = this.field_songHAlbumUrl;
+    localf.oOE = this.field_songLyric;
+    localf.oOB = this.field_songWifiUrl;
+    localf.oOx = this.field_songName;
+    localf.oOy = this.field_songSinger;
+    localf.oOC = this.field_songWapLinkUrl;
+    localf.oOD = this.field_songWebUrl;
+    localf.oOF = this.field_songAlbumLocalPath;
+    localf.oOL = this.field_songMediaId;
+    localf.oON = this.field_songSnsAlbumUser;
+    localf.oOP = this.field_songSnsShareUser;
+    localf.oOR = this.field_hideBanner;
+    localf.oOS = this.field_jsWebUrlDomain;
+    localf.startTime = this.field_startTime;
+    localf.oOT = this.oOT;
+    localf.protocol = this.field_protocol;
+    localf.oOU = this.field_barBackToWebView;
+    localf.oOV = this.field_musicbar_url;
+    localf.playUrl = this.playUrl;
+    localf.iaa = this.field_srcUsername;
+    localf.orm = this.field_playbackRate;
+    localf.oru = this.oru;
+    localf.oPa = this.oPa;
+    localf.oOX = this.oOX;
+    localf.oOY = this.oOY;
+    localf.oOZ = this.field_mid;
+    AppMethodBeat.o(63170);
+    return localf;
+  }
+  
+  public final boolean i(a parama)
+  {
+    AppMethodBeat.i(63169);
+    if (parama == null)
+    {
+      AppMethodBeat.o(63169);
+      return false;
+    }
+    boolean bool = this.field_musicId.equals(parama.field_musicId);
+    AppMethodBeat.o(63169);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.a
  * JD-Core Version:    0.7.0.1
  */

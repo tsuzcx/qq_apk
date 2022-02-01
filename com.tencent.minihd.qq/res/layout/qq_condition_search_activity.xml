@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" tencent:skintype="contact_list_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/skin_input" android:textColorHint="@color/skin_hint_input" android:id="@id/et_keyword" android:background="@drawable/skin_setting_strip_bg_unpressed" android:paddingLeft="16.0dip" android:paddingRight="12.0dip" android:layout_marginTop="20.0dip" android:hint="@string/cond_search_hint_text" android:drawablePadding="6.0dip" android:contentDescription="昵称/关键字，触摸两次输入" style="@style/common_single_line_input_box_style" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/condition_find_sex" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/condition_find_age" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/condition_find_location" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/condition_find_homeland" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" tencent:showArrow="true" />
+        <Button android:id="@id/contion_find_find_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="20.0dip" android:text="@string/find" style="@style/ButtonBlue" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

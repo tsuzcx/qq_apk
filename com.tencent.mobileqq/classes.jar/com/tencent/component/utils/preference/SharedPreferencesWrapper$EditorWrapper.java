@@ -23,8 +23,9 @@ class SharedPreferencesWrapper$EditorWrapper
   
   private String generateKey(String paramString)
   {
-    if (this.mKeyGenerator != null) {
-      return this.mKeyGenerator.generate(paramString);
+    KeyGenerator localKeyGenerator = this.mKeyGenerator;
+    if (localKeyGenerator != null) {
+      return localKeyGenerator.generate(paramString);
     }
     return null;
   }
@@ -101,7 +102,7 @@ class SharedPreferencesWrapper$EditorWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.utils.preference.SharedPreferencesWrapper.EditorWrapper
  * JD-Core Version:    0.7.0.1
  */

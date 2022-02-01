@@ -1,22 +1,30 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.g;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.backup.bakoldlogic.b.j;
+import com.tencent.mm.plugin.backup.bakoldlogic.d.a.a;
+import com.tencent.mm.plugin.backup.bakoldlogic.d.b.2;
+import com.tencent.mm.plugin.backup.bakoldlogic.d.b.a;
+import com.tencent.mm.plugin.backup.i.ab;
+import com.tencent.mm.plugin.backup.i.ac;
+import com.tencent.mm.plugin.backup.i.r;
 import com.tencent.mm.plugin.backup.i.t;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.protocal.protobuf.gy;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.protocal.protobuf.je;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,43 +33,43 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class f
-  implements g
+  implements com.tencent.mm.am.i
 {
-  boolean cvo;
-  boolean eUJ;
-  boolean jAk;
-  List<t> jHS;
-  List<t> jHT;
-  int jHU;
-  public boolean jHV;
-  long jHW;
-  long jHX;
-  int jHY;
-  HashSet<String> jHr;
-  e.d jHs;
-  private com.tencent.mm.ai.f jHt;
-  boolean jHu;
-  int jHy;
+  boolean hJi;
   Object lock;
+  List<t> nZr;
+  boolean nzW;
+  boolean uXC;
+  HashSet<String> veO;
+  e.d veP;
+  private com.tencent.mm.am.h veQ;
+  boolean veR;
+  int veV;
+  List<t> vfp;
+  int vfq;
+  public boolean vfr;
+  long vfs;
+  long vft;
+  int vfu;
   
   public f()
   {
-    AppMethodBeat.i(17868);
+    AppMethodBeat.i(21925);
     this.lock = new Object();
-    this.cvo = false;
-    this.eUJ = false;
-    this.jHr = new HashSet();
-    this.jHu = false;
-    this.jHU = 0;
-    this.jHV = false;
-    this.jAk = false;
-    this.jHy = 0;
-    AppMethodBeat.o(17868);
+    this.hJi = false;
+    this.nzW = false;
+    this.veO = new HashSet();
+    this.veR = false;
+    this.vfq = 0;
+    this.vfr = false;
+    this.uXC = false;
+    this.veV = 0;
+    AppMethodBeat.o(21925);
   }
   
-  public static int aQ(List<t> paramList)
+  public static int dO(List<t> paramList)
   {
-    AppMethodBeat.i(17873);
+    AppMethodBeat.i(21930);
     paramList = paramList.iterator();
     int i = 0;
     while (paramList.hasNext())
@@ -69,43 +77,43 @@ public final class f
       Object localObject = (t)paramList.next();
       try
       {
-        localObject = com.tencent.mm.a.e.j(com.tencent.mm.plugin.backup.bakoldlogic.a.a.aUR() + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.Gi(((t)localObject).ID) + ((t)localObject).ID, 0, -1);
-        int j = ((gy)new gy().parseFrom((byte[])localObject)).jJv.size();
+        localObject = y.bi(com.tencent.mm.plugin.backup.bakoldlogic.a.a.cWR() + "backupItem/" + com.tencent.mm.plugin.backup.bakoldlogic.a.a.ahL(((t)localObject).vgy) + ((t)localObject).vgy, 0, -1);
+        int j = ((je)new je().parseFrom((byte[])localObject)).vgO.size();
         i = j + i;
       }
       catch (Exception localException)
       {
-        com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.RecoverPCServer", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.RecoverPCServer", localException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(17873);
+    AppMethodBeat.o(21930);
     return i;
   }
   
   final int a(String arg1, HashMap<String, Integer> paramHashMap, com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.c paramc, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(17875);
+    AppMethodBeat.i(21932);
     long l2 = System.currentTimeMillis();
-    byte[] arrayOfByte = com.tencent.mm.a.e.j(???, 0, -1);
-    gy localgy;
-    gx localgx;
+    byte[] arrayOfByte = y.bi(???, 0, -1);
+    je localje;
+    jd localjd;
     int i;
     try
     {
-      localgy = (gy)new gy().parseFrom(arrayOfByte);
-      Iterator localIterator = localgy.jJv.iterator();
+      localje = (je)new je().parseFrom(arrayOfByte);
+      Iterator localIterator = localje.vgO.iterator();
       if (!localIterator.hasNext()) {
         break label978;
       }
-      localgx = (gx)localIterator.next();
-      if ((this.cvo) && (!this.eUJ)) {}
+      localjd = (jd)localIterator.next();
+      if ((this.hJi) && (!this.nzW)) {}
       try
       {
-        str = (String)com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().Ru().get(2, null);
-        localh = com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().YC();
-        localObject1 = localgx.woP.xJE;
-        ??? = localgx.woQ.xJE;
-        if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil(???))) {
+        str = (String)com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().cXs().ban().d(2, null);
+        locali = com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().cXs().bzD();
+        localObject1 = localjd.YFE.abwM;
+        ??? = localjd.YFF.abwM;
+        if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil(???))) {
           break label385;
         }
         localObject2 = localObject1;
@@ -118,12 +126,12 @@ public final class f
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.RecoverPCServer", "readFromSdcard err:" + ???.toString());
-          com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.RecoverPCServer", ???, "", new Object[0]);
+          Log.e("MicroMsg.RecoverPCServer", "readFromSdcard err:" + ???.toString());
+          Log.printErrStackTrace("MicroMsg.RecoverPCServer", ???, "", new Object[0]);
         }
-        localObject2 = ((com.tencent.mm.plugin.backup.bakoldlogic.d.c)localObject2).jGs;
-        localbd = com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs().YA();
-        if (((k)localObject2).has((String)localObject1)) {
+        localObject2 = ((com.tencent.mm.plugin.backup.bakoldlogic.d.c)localObject2).vdN;
+        localbx = com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().cXs().bzA();
+        if (((l)localObject2).has((String)localObject1)) {
           break label1042;
         }
       }
@@ -135,18 +143,18 @@ public final class f
         try
         {
           this.lock.wait();
-          if (this.eUJ)
+          if (this.nzW)
           {
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "backupImp canceled");
-            AppMethodBeat.o(17875);
+            Log.i("MicroMsg.RecoverPCServer", "backupImp canceled");
+            AppMethodBeat.o(21932);
             return -1;
             paramHashMap = paramHashMap;
             if (arrayOfByte == null) {}
             for (i = 0;; i = arrayOfByte.length)
             {
-              com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.RecoverPCServer", "read mmPath errr %s, %s, len:%d", new Object[] { ???, paramHashMap, Integer.valueOf(i) });
-              com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.RecoverPCServer", paramHashMap, "", new Object[0]);
-              AppMethodBeat.o(17875);
+              Log.e("MicroMsg.RecoverPCServer", "read mmPath errr %s, %s, len:%d", new Object[] { ???, paramHashMap, Integer.valueOf(i) });
+              Log.printErrStackTrace("MicroMsg.RecoverPCServer", paramHashMap, "", new Object[0]);
+              AppMethodBeat.o(21932);
               return 0;
             }
           }
@@ -155,117 +163,117 @@ public final class f
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.RecoverPCServer", localInterruptedException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.RecoverPCServer", localInterruptedException, "", new Object[0]);
           }
         }
       }
     }
     String str;
-    h localh;
+    com.tencent.mm.plugin.messenger.foundation.a.a.i locali;
     Object localObject1;
     Object localObject2;
-    com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.BackupPackMsgLogic", "recoverMsg fromUserName or toUserName is null, fromUserName[%s], toUserName[%s]", new Object[] { localObject2, localObject1 });
+    Log.w("MicroMsg.BackupPackMsgLogic", "recoverMsg fromUserName or toUserName is null, fromUserName[%s], toUserName[%s]", new Object[] { localObject2, localObject1 });
     for (;;)
     {
       label317:
-      this.jHy += 1;
-      if (this.jHy % 100 == 0) {
-        aVm();
+      this.veV += 1;
+      if (this.veV % 100 == 0) {
+        cXm();
       }
-      com.tencent.mm.plugin.backup.c.e.ri(localgx.jKs);
-      long l1 = bo.aoy();
-      if (l1 - paramc.ePF <= 10000L) {
+      com.tencent.mm.plugin.backup.c.e.Ff(localjd.vhJ);
+      long l1 = Util.nowMilliSecond();
+      if (l1 - paramc.mJI <= 10000L) {
         break;
       }
       paramc.end();
       paramc.begin();
-      paramc.ePF = l1;
+      paramc.mJI = l1;
       break;
       label385:
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BackupPackMsgLogic", "recoverMsg, type[%d], from[%s], to[%s]", new Object[] { Integer.valueOf(localgx.jKs), localObject1, ??? });
-      localObject2 = com.tencent.mm.plugin.backup.bakoldlogic.d.b.aVr().aVs();
+      Log.i("MicroMsg.BackupPackMsgLogic", "recoverMsg, type[%d], from[%s], to[%s]", new Object[] { Integer.valueOf(localjd.vhJ), localObject1, ??? });
+      localObject2 = com.tencent.mm.plugin.backup.bakoldlogic.d.b.cXr().cXs();
       if (((com.tencent.mm.plugin.backup.bakoldlogic.d.c)localObject2).uin == 0)
       {
         ??? = new com.tencent.mm.model.b();
-        AppMethodBeat.o(17875);
+        AppMethodBeat.o(21932);
         throw ???;
       }
-      bd localbd;
+      bx localbx;
       if (!str.equals(localObject1)) {
         break label1056;
       }
       break label1042;
       label534:
-      if (localgx.wtu != 0L) {}
-      for (l1 = localgx.wtu;; l1 = localgx.wtm * 1000L)
+      if (localjd.YLe != 0L) {}
+      for (l1 = localjd.YLe;; l1 = localjd.YKW * 1000L)
       {
         paramHashSet.add(localObject2);
-        List localList = com.tencent.mm.plugin.backup.bakoldlogic.a.a.aSY();
+        List localList = com.tencent.mm.plugin.backup.bakoldlogic.a.a.cVa();
         if ((!localList.contains(localObject1)) && (!localList.contains(???))) {
           break label639;
         }
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.BackupPackMsgLogic", "recoverMsg hit the blockList: " + (String)localObject1 + " " + ???);
+        Log.w("MicroMsg.BackupPackMsgLogic", "recoverMsg hit the blockList: " + (String)localObject1 + " " + ???);
         break;
       }
       label639:
-      if ((localgx.pIG == 0L) && (localgx.pIE != 0)) {
-        localgx.pIG = localgx.pIE;
+      if ((localjd.Njv == 0L) && (localjd.Njs != 0)) {
+        localjd.Njv = localjd.Njs;
       }
-      if (localgx.pIG != 0L)
+      if (localjd.Njv != 0L)
       {
         if (!str.equals(localObject1)) {
           break label1069;
         }
         label688:
-        ??? = localh.ag(???, localgx.pIG);
+        ??? = locali.aU(???, localjd.Njv);
         if (???.field_msgId != 0L) {
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BackupPackMsgLogic", "recoverMsg msg exist");
+          Log.i("MicroMsg.BackupPackMsgLogic", "recoverMsg msg exist");
         }
       }
       else
       {
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.BackupPackMsgLogic", "recoverMsg drop the item server id < 0");
+        Log.w("MicroMsg.BackupPackMsgLogic", "recoverMsg drop the item server id < 0");
         continue;
       }
-      if (localgx.pIG != 0L) {
-        ???.fP(localgx.pIG);
+      if (localjd.Njv != 0L) {
+        ???.gX(localjd.Njv);
       }
-      ???.fS(localgx.wtt);
-      ???.fQ(l1);
-      ???.hV(localgx.wtv);
-      ???.setType(localgx.jKs);
-      localObject1 = localbd.arw((String)localObject2);
-      if ((localObject1 == null) || (bo.isNullOrNil(((aq)localObject1).field_username)) || (!((ad)localObject1).dwz())) {
+      ???.gZ(localjd.YLd);
+      ???.setCreateTime(l1);
+      ???.setFlag(localjd.YLf);
+      ???.setType(localjd.vhJ);
+      localObject1 = localbx.JE((String)localObject2);
+      if ((localObject1 == null) || (Util.isNullOrNil(((az)localObject1).field_username)) || (!((au)localObject1).iZC())) {
         break label1075;
       }
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.BackupPackMsgLogic", "recoverMsg hit the blockList: ".concat(String.valueOf(localObject2)));
+      Log.w("MicroMsg.BackupPackMsgLogic", "recoverMsg hit the blockList: ".concat(String.valueOf(localObject2)));
     }
     label843:
-    ???.hL(j);
-    ???.kj((String)localObject2);
+    ???.pI(j);
+    ???.BS((String)localObject2);
     if (i != 0) {}
-    for (int j = localgx.wtl;; j = 4)
+    for (int j = localjd.YKV;; j = 4)
     {
       ???.setStatus(j);
       if (paramHashMap.get(localObject2) == null) {
         paramHashMap.put(localObject2, Integer.valueOf(0));
       }
-      if ((i == 0) && (localgx.wtl == 3)) {
-        paramHashMap.put(localObject2, Integer.valueOf(bo.a((Integer)paramHashMap.get(localObject2), 0) + 1));
+      if ((i == 0) && (localjd.YKV == 3)) {
+        paramHashMap.put(localObject2, Integer.valueOf(Util.nullAs((Integer)paramHashMap.get(localObject2), 0) + 1));
       }
-      localObject1 = com.tencent.mm.plugin.backup.bakoldlogic.b.d.aUT().rA(localgx.jKs);
+      localObject1 = com.tencent.mm.plugin.backup.bakoldlogic.b.d.cWT().Fv(localjd.vhJ);
       if (localObject1 == null)
       {
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.BackupPackMsgLogic", "recoverMsg unknown type");
+        Log.i("MicroMsg.BackupPackMsgLogic", "recoverMsg unknown type");
         break label317;
       }
-      ((j)localObject1).a(str, localgx, ???);
+      ((j)localObject1).a(str, localjd, ???);
       break label317;
       label978:
-      com.tencent.mm.plugin.backup.c.e.aTk();
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.RecoverPCServer", "read item time " + (System.currentTimeMillis() - l2));
-      i = localgy.jJv.size();
-      AppMethodBeat.o(17875);
+      com.tencent.mm.plugin.backup.c.e.cVl();
+      Log.d("MicroMsg.RecoverPCServer", "read item time " + (System.currentTimeMillis() - l2));
+      i = localje.vgO.size();
+      AppMethodBeat.o(21932);
       return i;
       label1027:
       localObject1 = ???;
@@ -301,158 +309,158 @@ public final class f
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, m paramm)
+  public final void a(int paramInt1, int paramInt2, p paramp)
   {
-    AppMethodBeat.i(17877);
-    this.jHX += paramInt1;
-    if (this.jHW == 0L) {}
-    for (paramInt1 = 0;; paramInt1 = (int)(this.jHX * 100L / this.jHW))
+    AppMethodBeat.i(21934);
+    this.vft += paramInt1;
+    if (this.vfs == 0L) {}
+    for (paramInt1 = 0;; paramInt1 = (int)(this.vft * 100L / this.vfs))
     {
-      if (paramInt1 > this.jHY)
+      if (paramInt1 > this.vfu)
       {
-        this.jHY = paramInt1;
-        com.tencent.mm.plugin.backup.bakoldlogic.c.d.setProgress(this.jHY);
+        this.vfu = paramInt1;
+        com.tencent.mm.plugin.backup.bakoldlogic.c.d.setProgress(this.vfu);
       }
-      if ((this.cvo) || (this.eUJ) || (this.jHs == null) || (this.jHY < 0) || (this.jHY > 100)) {
+      if ((this.hJi) || (this.nzW) || (this.veP == null) || (this.vfu < 0) || (this.vfu > 100)) {
         break;
       }
-      this.jHs.rF(this.jHY);
-      AppMethodBeat.o(17877);
+      this.veP.FA(this.vfu);
+      AppMethodBeat.o(21934);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.RecoverPCServer", "failed to call operatorCallback.onNetProgress:%d", new Object[] { Integer.valueOf(this.jHY) });
-    AppMethodBeat.o(17877);
+    Log.d("MicroMsg.RecoverPCServer", "failed to call operatorCallback.onNetProgress:%d", new Object[] { Integer.valueOf(this.vfu) });
+    AppMethodBeat.o(21934);
   }
   
-  final void aVl()
+  final void cXl()
   {
-    AppMethodBeat.i(17872);
-    if ((!this.jHu) || (this.eUJ))
+    AppMethodBeat.i(21929);
+    if ((!this.veR) || (this.nzW))
     {
-      AppMethodBeat.o(17872);
+      AppMethodBeat.o(21929);
       return;
     }
     synchronized (this.lock)
     {
-      if (this.jHr.isEmpty())
+      if (this.veO.isEmpty())
       {
-        if (this.eUJ)
+        if (this.nzW)
         {
-          AppMethodBeat.o(17872);
+          AppMethodBeat.o(21929);
           return;
         }
-        this.jHV = true;
-        this.jHY = 0;
-        a.aUU().aUV().jHK = 6;
-        a.aUU().aUV().jHL = 5;
-        if (this.jHs != null)
+        this.vfr = true;
+        this.vfu = 0;
+        a.cWU().cWV().vfh = 6;
+        a.cWU().cWV().vfi = 5;
+        if (this.veP != null)
         {
-          this.jHs.aVi();
-          com.tencent.mm.plugin.backup.g.b.b(7, this.jHt);
-          dG(0, 0);
-          e.aVg();
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "checkRecover publicRestAccUinEven");
+          this.veP.cXi();
+          com.tencent.mm.plugin.backup.g.b.b(7, this.veQ);
+          gl(0, 0);
+          e.cXg();
+          Log.i("MicroMsg.RecoverPCServer", "checkRecover publicRestAccUinEven");
         }
       }
       else
       {
-        AppMethodBeat.o(17872);
+        AppMethodBeat.o(21929);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "operatorCallback is null");
+      Log.i("MicroMsg.RecoverPCServer", "operatorCallback is null");
     }
   }
   
-  public final void aVm()
+  public final void cXm()
   {
-    AppMethodBeat.i(17876);
+    AppMethodBeat.i(21933);
     System.gc();
     long l1 = Runtime.getRuntime().freeMemory() / 1000L;
     long l2 = Runtime.getRuntime().totalMemory() / 1000L;
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "memoryInfo avail/total, dalvik[%dk, %dk, user:%dk], recoverCnt:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1), Integer.valueOf(this.jHy) });
-    AppMethodBeat.o(17876);
+    Log.i("MicroMsg.RecoverPCServer", "memoryInfo avail/total, dalvik[%dk, %dk, user:%dk], recoverCnt:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1), Integer.valueOf(this.veV) });
+    AppMethodBeat.o(21933);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(17871);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "cancel");
-    this.eUJ = true;
+    AppMethodBeat.i(21928);
+    Log.i("MicroMsg.RecoverPCServer", "cancel");
+    this.nzW = true;
     synchronized (this.lock)
     {
       this.lock.notifyAll();
-      com.tencent.mm.plugin.backup.g.b.b(7, this.jHt);
-      this.jHs = null;
-      this.jHV = false;
-      this.jAk = false;
-      this.jHU = 0;
-      this.jHY = 0;
-      AppMethodBeat.o(17871);
+      com.tencent.mm.plugin.backup.g.b.b(7, this.veQ);
+      this.veP = null;
+      this.vfr = false;
+      this.uXC = false;
+      this.vfq = 0;
+      this.vfu = 0;
+      AppMethodBeat.o(21928);
       return;
     }
   }
   
-  final void dG(int paramInt1, int paramInt2)
+  final void gl(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(17874);
+    AppMethodBeat.i(21931);
     if (paramInt1 == 0) {}
     int i;
     for (long l = 0L;; l = paramInt1 * 100L / paramInt2)
     {
       i = (int)l;
-      if (((paramInt1 == 0) && (paramInt2 == 0)) || (i > this.jHU)) {
+      if (((paramInt1 == 0) && (paramInt2 == 0)) || (i > this.vfq)) {
         break;
       }
-      AppMethodBeat.o(17874);
+      AppMethodBeat.o(21931);
       return;
     }
-    this.jHU = i;
-    if ((!this.cvo) && (!this.eUJ) && (this.jHs != null) && (this.jHU >= 0) && (this.jHU <= 100)) {
-      this.jHs.rG(this.jHU);
+    this.vfq = i;
+    if ((!this.hJi) && (!this.nzW) && (this.veP != null) && (this.vfq >= 0) && (this.vfq <= 100)) {
+      this.veP.FB(this.vfq);
     }
-    com.tencent.mm.plugin.backup.i.ab localab = new com.tencent.mm.plugin.backup.i.ab();
-    localab.jJg = 13;
-    localab.jKH = 0;
-    localab.jKI = this.jHU;
+    ab localab = new ab();
+    localab.vgz = 13;
+    localab.vhY = 0;
+    localab.vhZ = this.vfq;
     try
     {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "send progress cmd, progress :%d", new Object[] { Integer.valueOf(i) });
-      com.tencent.mm.plugin.backup.g.b.J(localab.toByteArray(), 3);
-      AppMethodBeat.o(17874);
+      Log.i("MicroMsg.RecoverPCServer", "send progress cmd, progress :%d", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.plugin.backup.g.b.N(localab.toByteArray(), 3);
+      AppMethodBeat.o(21931);
       return;
     }
     catch (IOException localIOException)
     {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.RecoverPCServer", localIOException, "", new Object[0]);
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.RecoverPCServer", "buf to PacketCommandRequest err");
-      AppMethodBeat.o(17874);
+      Log.printErrStackTrace("MicroMsg.RecoverPCServer", localIOException, "", new Object[0]);
+      Log.e("MicroMsg.RecoverPCServer", "buf to PacketCommandRequest err");
+      AppMethodBeat.o(21931);
     }
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(17869);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "pause");
-    this.cvo = true;
-    AppMethodBeat.o(17869);
+    AppMethodBeat.i(21926);
+    Log.i("MicroMsg.RecoverPCServer", "pause");
+    this.hJi = true;
+    AppMethodBeat.o(21926);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(17870);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.RecoverPCServer", "resume");
-    this.cvo = false;
+    AppMethodBeat.i(21927);
+    Log.i("MicroMsg.RecoverPCServer", "resume");
+    this.hJi = false;
     synchronized (this.lock)
     {
       this.lock.notifyAll();
-      AppMethodBeat.o(17870);
+      AppMethodBeat.o(21927);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class eil
-  implements DialogInterface.OnClickListener
+public class eil
+  extends FriendListObserver
 {
-  eil(eij parameij, String paramString) {}
+  public eil(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    try
-    {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Eij.a.a.startActivity(paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.b == null)) {}
   }
 }
 

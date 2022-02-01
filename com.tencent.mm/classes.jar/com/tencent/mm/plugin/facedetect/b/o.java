@@ -1,143 +1,112 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m.a;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bfu;
-import com.tencent.mm.protocal.protobuf.btd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.eov;
+import com.tencent.mm.protocal.protobuf.eow;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
   extends p
-  implements k, e
+  implements m, f
 {
-  private final q ftU;
-  private boolean mhc;
-  private String mhh;
+  private h callback;
+  private c rr;
+  private boolean zSb;
+  private String zSf;
   
   public o(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(88);
-    this.mhc = false;
-    this.mhh = "";
-    this.ftU = new f();
-    j.a locala = (j.a)this.ftU.getReqObj();
-    locala.mgO.wZA = p.mhi;
-    locala.mgO.wZC = paramLong;
-    locala.mgO.xGH = paramString1;
-    locala.mgO.xGI = paramString2;
-    AppMethodBeat.o(88);
+    AppMethodBeat.i(103610);
+    this.zSb = false;
+    this.zSf = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eov();
+    ((c.a)localObject).otF = new eow();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/registerface";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (eov)c.b.b(this.rr.otB);
+    ((eov)localObject).aaoY = paramLong;
+    ((eov)localObject).absZ = paramString1;
+    ((eov)localObject).abta = paramString2;
+    AppMethodBeat.o(103610);
   }
   
-  final void Nm(String paramString)
-  {
-    AppMethodBeat.i(91);
-    ((j.a)this.ftU.getReqObj()).mgO.wZA = paramString;
-    AppMethodBeat.o(91);
-  }
-  
-  public final boolean btY()
+  public final boolean dOD()
   {
     return true;
   }
   
-  public final String btZ()
+  public final String dOE()
   {
-    return this.mhh;
+    return this.zSf;
   }
   
-  public final void c(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final int doScene(g paramg, h paramh)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(90);
-    ab.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
-    paramq = (j.b)paramq.getRespObj();
-    boolean bool1;
-    int i;
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (paramq.mgP.xGK == 0)
-      {
-        bool1 = true;
-        this.mhc = bool1;
-        this.mhh = paramq.mgP.xGJ;
-        i = paramq.mgP.xGK;
-        boolean bool3 = this.mhc;
-        paramInt2 = paramq.mgP.xGK;
-        if (bo.isNullOrNil(this.mhh)) {
-          break label189;
-        }
-        bool1 = bool2;
-        label129:
-        ab.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
-      }
-    }
-    for (;;)
-    {
-      this.callback.onSceneEnd(paramInt1, i, paramString, this);
-      AppMethodBeat.o(90);
-      return;
-      bool1 = false;
-      break;
-      label189:
-      bool1 = false;
-      break label129;
-      i = paramInt2;
-      if (paramq != null)
-      {
-        i = paramInt2;
-        if (paramq.mgP != null)
-        {
-          i = paramInt2;
-          if (paramq.mgP.xGK != 0)
-          {
-            ab.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
-            i = paramq.mgP.xGK;
-          }
-        }
-      }
-    }
-  }
-  
-  final int f(com.tencent.mm.network.e parame)
-  {
-    AppMethodBeat.i(89);
-    this.ftU.getReqObj();
-    int i = dispatch(parame, this.ftU, this);
-    AppMethodBeat.o(89);
+    AppMethodBeat.i(103611);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(103611);
     return i;
-  }
-  
-  protected final bfu f(q paramq)
-  {
-    AppMethodBeat.i(92);
-    paramq = ((j.b)paramq.getRespObj()).mgP.wZE;
-    AppMethodBeat.o(92);
-    return paramq;
   }
   
   public final int getType()
   {
-    return 930;
+    return 918;
   }
   
-  public final int securityLimitCount()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return 3;
+    AppMethodBeat.i(103612);
+    params = (eow)c.c.b(((c)params).otC);
+    boolean bool;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      if (params.abtc == 0)
+      {
+        bool = true;
+        this.zSb = bool;
+        this.zSf = params.abtb;
+        paramInt1 = params.abtc;
+        Log.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.zSb) });
+      }
+    }
+    for (;;)
+    {
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
+      }
+      AppMethodBeat.o(103612);
+      return;
+      bool = false;
+      break;
+      paramInt1 = paramInt3;
+      if (params != null)
+      {
+        paramInt1 = paramInt3;
+        if (params.abtc != 0)
+        {
+          Log.i("MicroMsg.NetSceneFaceRegFace", "hy: has detail ret. use");
+          paramInt1 = params.abtc;
+        }
+      }
+    }
   }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    return m.b.ftu;
-  }
-  
-  public final void setSecurityCheckError(m.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.o
  * JD-Core Version:    0.7.0.1
  */

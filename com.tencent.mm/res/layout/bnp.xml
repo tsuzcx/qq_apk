@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.base.DrawedCallBackFrameLayout android:id="@id/iwl" style="@style/k8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/gqj" android:paddingTop="@dimen/j9" android:paddingBottom="@dimen/j9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/m1" android:layout_marginStart="3.0dip" android:layout_marginEnd="3.0dip" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/aco" android:layout_gravity="center_horizontal" android:id="@id/k17" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="198.0dip" android:text="@string/jax" />
+    <RelativeLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/mk" android:background="@color/ack" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <TextView android:enabled="false" android:textSize="@dimen/j7" android:textColor="@color/az" android:id="@id/gqt" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="64.0dip" android:text="@string/jb0" android:layout_centerVertical="true" />
+        <Button android:enabled="false" android:id="@id/hfm" android:visibility="visible" android:text="@string/a12" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/br" android:layout_alignParentEnd="true" style="@style/ua" />
+    </RelativeLayout>
+</com.tencent.mm.ui.base.DrawedCallBackFrameLayout>

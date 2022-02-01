@@ -9,8 +9,8 @@ public abstract class GridLayoutManager$SpanSizeLookup
   
   int findReferenceIndexFromCache(int paramInt)
   {
-    int i = 0;
     int j = this.mSpanIndexCache.size() - 1;
+    int i = 0;
     while (i <= j)
     {
       int k = i + j >>> 1;
@@ -29,17 +29,13 @@ public abstract class GridLayoutManager$SpanSizeLookup
   
   int getCachedSpanIndex(int paramInt1, int paramInt2)
   {
-    int i;
     if (!this.mCacheSpanIndices) {
-      i = getSpanIndex(paramInt1, paramInt2);
+      return getSpanIndex(paramInt1, paramInt2);
     }
-    int j;
-    do
-    {
+    int i = this.mSpanIndexCache.get(paramInt1, -1);
+    if (i != -1) {
       return i;
-      j = this.mSpanIndexCache.get(paramInt1, -1);
-      i = j;
-    } while (j != -1);
+    }
     paramInt2 = getSpanIndex(paramInt1, paramInt2);
     this.mSpanIndexCache.put(paramInt1, paramInt2);
     return paramInt2;
@@ -47,92 +43,82 @@ public abstract class GridLayoutManager$SpanSizeLookup
   
   public int getSpanGroupIndex(int paramInt1, int paramInt2)
   {
-    int n = getSpanSize(paramInt1);
-    int k = 0;
+    int i2 = getSpanSize(paramInt1);
+    int m = 0;
     int i = 0;
-    int j = 0;
-    int m;
-    if (k < paramInt1)
+    int k;
+    for (int j = 0; m < paramInt1; j = k)
     {
-      m = getSpanSize(k);
-      j += m;
-      if (j == paramInt2)
+      int n = getSpanSize(m);
+      int i1 = i + n;
+      if (i1 == paramInt2)
       {
-        j = i + 1;
+        k = j + 1;
         i = 0;
-      }
-    }
-    for (;;)
-    {
-      m = k + 1;
-      k = i;
-      i = j;
-      j = k;
-      k = m;
-      break;
-      if (j > paramInt2)
-      {
-        j = i + 1;
-        i = m;
-        continue;
-        paramInt1 = i;
-        if (j + n > paramInt2) {
-          paramInt1 = i + 1;
-        }
-        return paramInt1;
       }
       else
       {
-        m = j;
-        j = i;
-        i = m;
+        i = i1;
+        k = j;
+        if (i1 > paramInt2)
+        {
+          k = j + 1;
+          i = n;
+        }
       }
+      m += 1;
     }
+    paramInt1 = j;
+    if (i + i2 > paramInt2) {
+      paramInt1 = j + 1;
+    }
+    return paramInt1;
   }
   
   public int getSpanIndex(int paramInt1, int paramInt2)
   {
-    int n = getSpanSize(paramInt1);
-    if (n == paramInt2) {
+    int i1 = getSpanSize(paramInt1);
+    if (i1 == paramInt2) {
       return 0;
     }
-    int j;
-    int i;
+    int k;
     if ((this.mCacheSpanIndices) && (this.mSpanIndexCache.size() > 0))
     {
-      j = findReferenceIndexFromCache(paramInt1);
-      if (j >= 0)
+      k = findReferenceIndexFromCache(paramInt1);
+      if (k >= 0)
       {
-        i = this.mSpanIndexCache.get(j) + getSpanSize(j);
-        j += 1;
+        i = this.mSpanIndexCache.get(k) + getSpanSize(k);
+        break label124;
       }
     }
-    for (;;)
+    int j = 0;
+    int i = 0;
+    while (j < paramInt1)
     {
-      if (j < paramInt1)
+      int m = getSpanSize(j);
+      int n = i + m;
+      if (n == paramInt2)
       {
-        int k = getSpanSize(j);
-        int m = i + k;
-        if (m == paramInt2) {
-          i = 0;
-        }
-        for (;;)
+        i = 0;
+        k = j;
+      }
+      else
+      {
+        k = j;
+        i = n;
+        if (n > paramInt2)
         {
-          j += 1;
-          break;
-          i = k;
-          if (m <= paramInt2) {
-            i = m;
-          }
+          i = m;
+          k = j;
         }
       }
-      if (i + n > paramInt2) {
-        break;
-      }
-      return i;
-      j = 0;
-      i = 0;
+      label124:
+      j = k + 1;
     }
+    if (i1 + i <= paramInt2) {
+      return i;
+    }
+    return 0;
   }
   
   public abstract int getSpanSize(int paramInt);

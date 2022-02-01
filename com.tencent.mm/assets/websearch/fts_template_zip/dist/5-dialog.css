@@ -1,0 +1,1 @@
+body{--HIGHLIGHT-BACKGROUND:rgba(7,193,96,0.1)}body[data-theme=dark]{--HIGHLIGHT-BACKGROUND:rgba(7,193,96,0.15)}@media (prefers-color-scheme:dark){body:not([data-theme=light]){--HIGHLIGHT-BACKGROUND:rgba(7,193,96,0.15)}}

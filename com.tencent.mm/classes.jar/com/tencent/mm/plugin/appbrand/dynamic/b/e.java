@@ -8,77 +8,77 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e hot;
-  private Map<String, SoftReference<WxaPkgWrappingInfo>> eEE;
+  private static volatile e rll;
+  private Map<String, SoftReference<WxaPkgWrappingInfo>> mMap;
   
   private e()
   {
-    AppMethodBeat.i(10789);
-    this.eEE = new ConcurrentHashMap();
-    AppMethodBeat.o(10789);
+    AppMethodBeat.i(121271);
+    this.mMap = new ConcurrentHashMap();
+    AppMethodBeat.o(121271);
   }
   
-  public static WxaPkgWrappingInfo Bf(String paramString)
+  public static WxaPkgWrappingInfo Ze(String paramString)
   {
-    AppMethodBeat.i(10791);
+    AppMethodBeat.i(121273);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(10791);
+      AppMethodBeat.o(121273);
       return null;
     }
-    paramString = (SoftReference)azO().eEE.get(paramString);
+    paramString = (SoftReference)cnJ().mMap.get(paramString);
     if (paramString != null)
     {
       paramString = (WxaPkgWrappingInfo)paramString.get();
-      AppMethodBeat.o(10791);
+      AppMethodBeat.o(121273);
       return paramString;
     }
-    AppMethodBeat.o(10791);
+    AppMethodBeat.o(121273);
     return null;
   }
   
-  public static boolean a(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+  public static boolean b(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    AppMethodBeat.i(10790);
+    AppMethodBeat.i(121272);
     if ((paramString == null) || (paramString.length() == 0) || (paramWxaPkgWrappingInfo == null))
     {
-      AppMethodBeat.o(10790);
+      AppMethodBeat.o(121272);
       return false;
     }
-    azO().eEE.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
-    AppMethodBeat.o(10790);
+    cnJ().mMap.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    AppMethodBeat.o(121272);
     return true;
   }
   
-  private static e azO()
+  private static e cnJ()
   {
-    AppMethodBeat.i(10788);
-    if (hot == null) {}
+    AppMethodBeat.i(121270);
+    if (rll == null) {}
     try
     {
-      if (hot == null) {
-        hot = new e();
+      if (rll == null) {
+        rll = new e();
       }
-      e locale = hot;
-      AppMethodBeat.o(10788);
+      e locale = rll;
+      AppMethodBeat.o(121270);
       return locale;
     }
     finally
     {
-      AppMethodBeat.o(10788);
+      AppMethodBeat.o(121270);
     }
   }
   
   public static void removeAll()
   {
-    AppMethodBeat.i(10792);
-    azO().eEE.clear();
-    AppMethodBeat.o(10792);
+    AppMethodBeat.i(121274);
+    cnJ().mMap.clear();
+    AppMethodBeat.o(121274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,45 @@
 package com.tencent.richmediabrowser.presenter;
 
 import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.RegionDrawableData;
-import com.tencent.image.URLDrawable;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.view.BaseView;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import com.tencent.richmediabrowser.api.event.IActivityEvent;
 
 public class BasePresenter
+  implements IActivityEvent
 {
-  private static final String TAG = "GalleryBasePresenter";
-  public BrowserBaseModel baseModel;
-  public BaseView baseView;
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public static void updateRotation(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public boolean onBackEvent()
   {
-    boolean bool = true;
-    switch (paramInt)
-    {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      paramInt = 0;
-      if (paramURLDrawable.isAnim()) {
-        break;
-      }
-    }
-    for (;;)
-    {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      if (bool) {
-        paramView.setTag(2131296389, Integer.valueOf(paramInt));
-      }
-      return;
-      paramInt = 1;
-      break;
-      paramInt = 2;
-      break;
-      paramInt = 3;
-      break;
-      bool = false;
-    }
+    return false;
   }
   
-  public void buildComplete() {}
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
   
-  public void buildParams(Intent paramIntent) {}
+  public void onCreate(Bundle paramBundle) {}
   
-  public void buildPresenter() {}
+  public void onDestroy() {}
   
-  public void onCreate(ViewGroup paramViewGroup)
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.baseView != null) {
-      this.baseView.onCreate(paramViewGroup);
-    }
+    return false;
   }
   
-  public void onDestroy()
-  {
-    if (this.baseView != null) {
-      this.baseView.onDestroy();
-    }
-  }
+  public void onPause() {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public void onResume() {}
   
-  public void onPause()
-  {
-    if (this.baseView != null) {
-      this.baseView.onPause();
-    }
-  }
+  public void onStart() {}
   
-  public void onResume()
-  {
-    if (this.baseView != null) {
-      this.baseView.onResume();
-    }
-  }
+  public void onStop() {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    return true;
-  }
-  
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData) {}
-  
-  public void onStart()
-  {
-    if (this.baseView != null) {
-      this.baseView.onStart();
-    }
-  }
-  
-  public void onStop()
-  {
-    if (this.baseView != null) {
-      this.baseView.onStop();
-    }
-  }
-  
-  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
-  
-  public void setGalleryModel(BrowserBaseModel paramBrowserBaseModel)
-  {
-    this.baseModel = paramBrowserBaseModel;
-  }
-  
-  public void setGalleryView(BaseView paramBaseView)
-  {
-    this.baseView = paramBaseView;
-  }
-  
-  public void setRelyPresenter(BasePresenter paramBasePresenter) {}
+  public void onWindowFocusChanged() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.presenter.BasePresenter
  * JD-Core Version:    0.7.0.1
  */

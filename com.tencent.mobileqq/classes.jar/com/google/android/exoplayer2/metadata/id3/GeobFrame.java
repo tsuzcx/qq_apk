@@ -35,39 +35,42 @@ public final class GeobFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (GeobFrame)paramObject;
-    } while ((Util.areEqual(this.mimeType, paramObject.mimeType)) && (Util.areEqual(this.filename, paramObject.filename)) && (Util.areEqual(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)));
+      return (Util.areEqual(this.mimeType, paramObject.mimeType)) && (Util.areEqual(this.filename, paramObject.filename)) && (Util.areEqual(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data));
+    }
     return false;
   }
   
   public int hashCode()
   {
+    String str = this.mimeType;
     int k = 0;
     int i;
-    if (this.mimeType != null)
-    {
-      i = this.mimeType.hashCode();
-      if (this.filename == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (int j = this.filename.hashCode();; j = 0)
-    {
-      if (this.description != null) {
-        k = this.description.hashCode();
-      }
-      return ((j + (i + 527) * 31) * 31 + k) * 31 + Arrays.hashCode(this.data);
+    if (str != null) {
+      i = str.hashCode();
+    } else {
       i = 0;
-      break;
     }
+    str = this.filename;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.description;
+    if (str != null) {
+      k = str.hashCode();
+    }
+    return (((527 + i) * 31 + j) * 31 + k) * 31 + Arrays.hashCode(this.data);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -80,7 +83,7 @@ public final class GeobFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.GeobFrame
  * JD-Core Version:    0.7.0.1
  */

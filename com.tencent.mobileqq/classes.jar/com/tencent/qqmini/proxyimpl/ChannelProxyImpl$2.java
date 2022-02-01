@@ -2,8 +2,8 @@ package com.tencent.qqmini.proxyimpl;
 
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
 import org.json.JSONObject;
 
 class ChannelProxyImpl$2
@@ -11,30 +11,26 @@ class ChannelProxyImpl$2
 {
   ChannelProxyImpl$2(ChannelProxyImpl paramChannelProxyImpl, AsyncResult paramAsyncResult) {}
   
-  public void onReceived(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
+  public void a(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    JSONObject localJSONObject;
-    if (this.val$listener != null) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (this.a != null)
     {
-      localJSONObject.put("response", paramStJudgeTimingRsp);
-      this.val$listener.onReceiveResult(paramBoolean, localJSONObject);
-      return;
-    }
-    catch (Throwable paramStJudgeTimingRsp)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        QMLog.e("ChannelProxyImpl", "tianshuRequestAdv", paramStJudgeTimingRsp);
+        localJSONObject.put("response", paramStJudgeTimingRsp);
       }
+      catch (Throwable paramStJudgeTimingRsp)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStJudgeTimingRsp);
+      }
+      this.a.onReceiveResult(paramBoolean, localJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

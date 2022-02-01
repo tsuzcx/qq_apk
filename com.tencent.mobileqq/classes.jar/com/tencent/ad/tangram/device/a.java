@@ -1,53 +1,33 @@
 package com.tencent.ad.tangram.device;
 
 import android.content.Context;
-import android.text.TextUtils;
 
-public final class a
+final class a
+  extends f
 {
-  private static final String TAG = "AdAndroidIdMD5Digest";
-  private static String androidIdMD5Digest;
-  
-  public static String get(Context paramContext)
+  protected int getEventId()
   {
-    if (!TextUtils.isEmpty(androidIdMD5Digest)) {
-      return androidIdMD5Digest;
-    }
-    paramContext = b.getAndroidId(paramContext);
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (;;)
-    {
-      return androidIdMD5Digest;
-      paramContext = get(paramContext);
-      if (!TextUtils.isEmpty(paramContext)) {
-        androidIdMD5Digest = paramContext;
-      }
-    }
+    return 1042;
   }
   
-  public static String get(String paramString)
+  protected String getId(Context paramContext, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      paramString = null;
-      String str;
-      do
-      {
-        return paramString;
-        paramString = com.tencent.ad.tangram.util.a.md5(paramString, "UTF-8");
-        if (TextUtils.isEmpty(paramString)) {
-          break;
-        }
-        str = paramString.toLowerCase();
-        paramString = str;
-      } while (!TextUtils.isEmpty(str));
-    }
+    return c.getAndroidId(paramContext);
+  }
+  
+  protected String getIdCache(Context paramContext)
+  {
+    return c.getAndroidIdCache(paramContext);
+  }
+  
+  protected String getIdHash(String paramString)
+  {
+    return g.getAndroidIdMD5Digest(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.device.a
  * JD-Core Version:    0.7.0.1
  */

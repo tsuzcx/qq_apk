@@ -2,26 +2,29 @@ package com.tencent.biz.authorize;
 
 import java.io.File;
 import java.nio.ByteBuffer;
-import nbj;
 
-public class FlatBuffersConfig$2
+class FlatBuffersConfig$2
   implements Runnable
 {
-  public FlatBuffersConfig$2(nbj paramnbj, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
+  FlatBuffersConfig$2(FlatBuffersConfig paramFlatBuffersConfig, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
   
   public void run()
   {
     int i = 0;
     for (;;)
     {
-      if ((i >= 3) || (this.this$0.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean))) {
-        return;
+      if (i < 3) {
+        if (this.this$0.a(this.a, this.b, this.c)) {
+          return;
+        }
       }
       try
       {
         Thread.sleep(100L);
         label36:
         i += 1;
+        continue;
+        return;
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -32,7 +35,7 @@ public class FlatBuffersConfig$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.FlatBuffersConfig.2
  * JD-Core Version:    0.7.0.1
  */

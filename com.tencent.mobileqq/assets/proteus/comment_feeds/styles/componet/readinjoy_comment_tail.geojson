@@ -113,7 +113,18 @@
                         "setTitleColors:forStates:": [
                                 ["#262626", "#99262626", "#99262626"],
                                 ["0", "1", "4"]
-                                ]
+                                ],
+                        "setDTElementID:withParams:": [
+                            "reply_comment_button",
+                            {
+                                "rowkey": "$rowkey",
+                                "actionid": "click_reply_comment",
+                                "click_type": "single",
+                                "comment_id": "$comment_id",
+                                "sub_comment_id": "$sub_comment_id",
+                                "comment_type": "$comment_type"
+                            }
+                        ]
                     }
                 },
                 {
@@ -135,7 +146,18 @@
                             ["#262626", "#99262626", "#99262626"],
                             ["0", "1", "4"]
                         ]
-                    }
+                    },
+                    "setDTElementID:withParams:": [
+                        "reply_comment_button",
+                        {
+                            "rowkey": "$rowkey",
+                            "actionid": "click_reply_comment",
+                            "click_type": "single",
+                            "comment_id": "$comment_id",
+                            "sub_comment_id": "$sub_comment_id",
+                            "comment_type": "$comment_type"
+                        }
+                    ]
                 },
                 {
                     "view_type": "UIButton",

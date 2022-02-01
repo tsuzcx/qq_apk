@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/pbd" android:layout_width="fill_parent" android:layout_height="76.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/pbc" android:background="@drawable/f3r" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/pba" android:layout_width="48.0dip" android:layout_height="48.0dip" app:authIconEnable="false" />
+    </FrameLayout>
+    <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="center" android:id="@id/pbb" android:layout_width="80.0dip" android:layout_height="48.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:qcircle_un_follow_res="@drawable/qcircle_skin_btn_small_primary_normal" app:qcircle_un_follow_text_color="@color/qcircle_skin_color_text_ghost" />
+    <LinearLayout android:orientation="vertical" android:id="@id/pbe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="17.0dip" android:layout_toLeftOf="@id/pbb" android:layout_toRightOf="@id/pbc">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pbg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/pbf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="xxxxxxx" android:singleLine="true" android:includeFontPadding="true" />
+            <ImageView android:id="@id/pbh" android:background="@drawable/qcircle_skin_feed_comment_tag_author" android:layout_width="28.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" />
+        </LinearLayout>
+        <com.tencent.biz.qqcircle.polylike.flowlayout.QCircleTagFlowLayout android:id="@id/ped" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+    </LinearLayout>
+</RelativeLayout>

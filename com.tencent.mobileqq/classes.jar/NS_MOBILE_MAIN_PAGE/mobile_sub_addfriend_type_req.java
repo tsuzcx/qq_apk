@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class mobile_sub_addfriend_type_req
   extends JceStruct
 {
-  public long fuin;
+  public long fuin = 0L;
   
   public mobile_sub_addfriend_type_req() {}
   
@@ -28,7 +28,7 @@ public final class mobile_sub_addfriend_type_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_addfriend_type_req
  * JD-Core Version:    0.7.0.1
  */

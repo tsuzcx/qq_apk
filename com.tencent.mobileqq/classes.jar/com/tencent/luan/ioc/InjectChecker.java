@@ -16,39 +16,35 @@ public class InjectChecker
   public static int checkAndGetScope(AnnotatedElement paramAnnotatedElement)
   {
     int i;
-    int j;
-    if (paramAnnotatedElement.getAnnotation(Singleton.class) != null)
-    {
+    if (paramAnnotatedElement.getAnnotation(Singleton.class) != null) {
       i = 1;
-      if (paramAnnotatedElement.getAnnotation(Prototype.class) == null) {
-        break label81;
-      }
-      j = 1;
-      label26:
-      if ((i == 0) || (j == 0)) {
-        break label112;
-      }
-      if (!(paramAnnotatedElement instanceof Class)) {
-        break label86;
-      }
-      paramAnnotatedElement = ((Class)paramAnnotatedElement).getName();
-    }
-    for (;;)
-    {
-      throw new InjectException("one class should be annotated by only one scope annotation: " + paramAnnotatedElement);
+    } else {
       i = 0;
-      break;
-      label81:
-      j = 0;
-      break label26;
-      label86:
-      if ((paramAnnotatedElement instanceof Method)) {
-        paramAnnotatedElement = ((Method)paramAnnotatedElement).getName();
-      } else {
-        paramAnnotatedElement = paramAnnotatedElement.toString();
-      }
     }
-    label112:
+    int j;
+    if (paramAnnotatedElement.getAnnotation(Prototype.class) != null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((i != 0) && (j != 0))
+    {
+      if (!(paramAnnotatedElement instanceof Class))
+      {
+        if ((paramAnnotatedElement instanceof Method)) {
+          paramAnnotatedElement = ((Method)paramAnnotatedElement).getName();
+        } else {
+          paramAnnotatedElement = paramAnnotatedElement.toString();
+        }
+      }
+      else {
+        paramAnnotatedElement = ((Class)paramAnnotatedElement).getName();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("one class should be annotated by only one scope annotation: ");
+      localStringBuilder.append(paramAnnotatedElement);
+      throw new InjectException(localStringBuilder.toString());
+    }
     if (i != 0) {
       return 1;
     }
@@ -76,8 +72,10 @@ public class InjectChecker
   
   public static boolean isValidInjectConstructor(Constructor<?> paramConstructor)
   {
-    if (paramConstructor == null) {}
-    while (isInvalidParamTypes(paramConstructor.getParameterTypes())) {
+    if (paramConstructor == null) {
+      return false;
+    }
+    if (isInvalidParamTypes(paramConstructor.getParameterTypes())) {
       return false;
     }
     return Modifier.isPublic(paramConstructor.getModifiers());
@@ -85,37 +83,49 @@ public class InjectChecker
   
   public static boolean isValidInjectMethod(Method paramMethod)
   {
-    if (paramMethod == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return false;
-      } while ((paramMethod.getParameterTypes().length != 1) || (isInvalidParamType(paramMethod.getParameterTypes()[0])));
-      i = paramMethod.getModifiers();
-    } while (Modifier.isStatic(i));
+    if (paramMethod == null) {
+      return false;
+    }
+    if (paramMethod.getParameterTypes().length != 1) {
+      return false;
+    }
+    if (isInvalidParamType(paramMethod.getParameterTypes()[0])) {
+      return false;
+    }
+    int i = paramMethod.getModifiers();
+    if (Modifier.isStatic(i)) {
+      return false;
+    }
     return Modifier.isPublic(i);
   }
   
   public static boolean isValidProvideMethod(Method paramMethod)
   {
-    if (paramMethod == null) {}
-    int i;
-    do
+    boolean bool2 = false;
+    if (paramMethod == null) {
+      return false;
+    }
+    if (isInvalidParamTypes(paramMethod.getParameterTypes())) {
+      return false;
+    }
+    if (isInvalidParamType(paramMethod.getReturnType())) {
+      return false;
+    }
+    int i = paramMethod.getModifiers();
+    boolean bool1 = bool2;
+    if (Modifier.isStatic(i))
     {
-      do
-      {
-        return false;
-      } while ((isInvalidParamTypes(paramMethod.getParameterTypes())) || (isInvalidParamType(paramMethod.getReturnType())));
-      i = paramMethod.getModifiers();
-    } while ((!Modifier.isStatic(i)) || (!Modifier.isPublic(i)));
-    return true;
+      bool1 = bool2;
+      if (Modifier.isPublic(i)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.InjectChecker
  * JD-Core Version:    0.7.0.1
  */

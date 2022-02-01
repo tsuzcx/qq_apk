@@ -3,23 +3,21 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
-import bdaq;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.List;
-import wfi;
-import wfj;
-import wng;
-import xwe;
 
 public class ShareGroupInnerListView
   extends StoryHomeHorizontalListView
 {
   public String a;
-  public wfj a;
-  protected wng a;
-  protected xwe a;
+  protected MemoriesInnerListAdapter b;
+  protected LoadingMoreHelper.OnLoadMoreListener c;
+  public ShareGroupInnerListView.ILoadMoreDataListener d;
   
   public ShareGroupInnerListView(Context paramContext)
   {
@@ -29,45 +27,47 @@ public class ShareGroupInnerListView
   public ShareGroupInnerListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.c = bdaq.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Wng = new wng(paramContext);
-    setAdapter(this.jdField_a_of_type_Wng);
-    setOnItemClickListener(this.jdField_a_of_type_Wng);
-    this.jdField_a_of_type_Xwe = new wfi(this);
-    setOnLoadMoreListener(this.jdField_a_of_type_Xwe);
+    this.g = DisplayUtil.a(paramContext, 82.0F);
+    this.b = new MemoriesInnerListAdapter(paramContext);
+    setAdapter(this.b);
+    setOnItemClickListener(this.b);
+    this.c = new ShareGroupInnerListView.1(this);
+    setOnLoadMoreListener(this.c);
   }
   
-  public BaseAdapter a()
+  public BaseAdapter getAdapter()
   {
-    return this.jdField_a_of_type_Wng;
+    return this.b;
   }
   
   public void setData(VideoCollectionItem paramVideoCollectionItem)
   {
-    this.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    if (paramVideoCollectionItem.collectionCount > paramVideoCollectionItem.videoVidList.size()) {}
-    for (boolean bool = true;; bool = false)
+    this.a = paramVideoCollectionItem.collectionId;
+    boolean bool;
+    if (paramVideoCollectionItem.collectionCount > paramVideoCollectionItem.videoVidList.size()) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    setLoadMoreComplete(bool);
+    this.b.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    int i = this.f / this.g;
+    if (paramVideoCollectionItem.collectionVideoUIItemList.size() >= i)
     {
-      setLoadMoreComplete(bool);
-      this.jdField_a_of_type_Wng.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-      int i = this.b / this.c;
-      if (paramVideoCollectionItem.collectionVideoUIItemList.size() < i) {
-        break;
-      }
       setOverScrollMode(0);
       return;
     }
     setOverScrollMode(1);
   }
   
-  public void setLoadMoreDataListener(wfj paramwfj)
+  public void setLoadMoreDataListener(ShareGroupInnerListView.ILoadMoreDataListener paramILoadMoreDataListener)
   {
-    this.jdField_a_of_type_Wfj = paramwfj;
+    this.d = paramILoadMoreDataListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView
  * JD-Core Version:    0.7.0.1
  */

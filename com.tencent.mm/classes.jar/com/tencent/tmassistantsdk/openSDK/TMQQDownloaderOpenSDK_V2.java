@@ -31,10 +31,10 @@ public class TMQQDownloaderOpenSDK_V2
   
   protected TMQQDownloaderOpenSDK_V2()
   {
-    AppMethodBeat.i(75896);
+    AppMethodBeat.i(102142);
     this.mTaskList = null;
     this.mTaskList = new CopyOnWriteArrayList();
-    AppMethodBeat.o(75896);
+    AppMethodBeat.o(102142);
   }
   
   public static String about()
@@ -48,7 +48,7 @@ public class TMQQDownloaderOpenSDK_V2
     {
       try
       {
-        AppMethodBeat.i(75909);
+        AppMethodBeat.i(102155);
         TMQQDownloaderOpenSDKParam localTMQQDownloaderOpenSDKParam;
         if ((paramTMQQDownloaderOpenSDKParam != null) && (this.mTaskList != null))
         {
@@ -74,7 +74,7 @@ public class TMQQDownloaderOpenSDK_V2
             this.mTaskList.add(paramTMQQDownloaderOpenSDKParam);
           }
         }
-        AppMethodBeat.o(75909);
+        AppMethodBeat.o(102155);
         return;
         if (localTMQQDownloaderOpenSDKParam.taskPackageName == null) {
           continue;
@@ -128,12 +128,12 @@ public class TMQQDownloaderOpenSDK_V2
   {
     try
     {
-      AppMethodBeat.i(75897);
+      AppMethodBeat.i(102143);
       if (mInstance == null) {
         mInstance = new TMQQDownloaderOpenSDK_V2();
       }
       TMQQDownloaderOpenSDK_V2 localTMQQDownloaderOpenSDK_V2 = mInstance;
-      AppMethodBeat.o(75897);
+      AppMethodBeat.o(102143);
       return localTMQQDownloaderOpenSDK_V2;
     }
     finally {}
@@ -141,7 +141,7 @@ public class TMQQDownloaderOpenSDK_V2
   
   private void onProgressChanged(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75908);
+    AppMethodBeat.i(102154);
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
@@ -152,30 +152,30 @@ public class TMQQDownloaderOpenSDK_V2
         localITMQQDownloaderOpenSDKListener.OnDownloadTaskProgressChanged(paramTMQQDownloaderOpenSDKParam, paramLong1, paramLong2);
       }
     }
-    AppMethodBeat.o(75908);
+    AppMethodBeat.o(102154);
   }
   
   public void OnDownloadTaskProgressChanged(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75911);
+    AppMethodBeat.i(102157);
     if (paramTMQQDownloaderOpenSDKParam != null) {
       onProgressChanged(paramTMQQDownloaderOpenSDKParam, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(75911);
+    AppMethodBeat.o(102157);
   }
   
   public void OnDownloadTaskStateChanged(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(75910);
+    AppMethodBeat.i(102156);
     if (paramTMQQDownloaderOpenSDKParam != null) {
       onStateChanged(paramTMQQDownloaderOpenSDKParam, paramInt1, paramInt2, paramString);
     }
-    AppMethodBeat.o(75910);
+    AppMethodBeat.o(102156);
   }
   
   public void OnQQDownloaderInvalid()
   {
-    AppMethodBeat.i(75912);
+    AppMethodBeat.i(102158);
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
@@ -186,12 +186,12 @@ public class TMQQDownloaderOpenSDK_V2
         localITMQQDownloaderOpenSDKListener.OnQQDownloaderInvalid();
       }
     }
-    AppMethodBeat.o(75912);
+    AppMethodBeat.o(102158);
   }
   
   public void OnServiceFree()
   {
-    AppMethodBeat.i(75914);
+    AppMethodBeat.i(102160);
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
@@ -202,12 +202,12 @@ public class TMQQDownloaderOpenSDK_V2
         localITMQQDownloaderOpenSDKListener.OnServiceFree();
       }
     }
-    AppMethodBeat.o(75914);
+    AppMethodBeat.o(102160);
   }
   
   public long addBatchUpdateOperationToDB(ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75906);
+    AppMethodBeat.i(102152);
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
@@ -232,41 +232,41 @@ public class TMQQDownloaderOpenSDK_V2
     }
     for (long l = buildAddDBData(paramArrayList);; l = -1L)
     {
-      AppMethodBeat.o(75906);
+      AppMethodBeat.o(102152);
       return l;
     }
   }
   
   public long addDownloadTaskFromAppDetail(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(75915);
+    AppMethodBeat.i(102161);
     addToTaskList(paramTMQQDownloaderOpenSDKParam);
     long l = super.buildAddDBData(paramTMQQDownloaderOpenSDKParam, paramBoolean1, paramBoolean2, paramTMQQDownloaderOpenSDKParam.actionFlag, null, 2);
-    AppMethodBeat.o(75915);
+    AppMethodBeat.o(102161);
     return l;
   }
   
   public long addDownloadTaskFromAuthorize(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, String paramString)
   {
-    AppMethodBeat.i(75916);
+    AppMethodBeat.i(102162);
     addToTaskList(paramTMQQDownloaderOpenSDKParam);
     long l = super.buildAddDBData(paramTMQQDownloaderOpenSDKParam, true, true, paramTMQQDownloaderOpenSDKParam.actionFlag, paramString, 3);
-    AppMethodBeat.o(75916);
+    AppMethodBeat.o(102162);
     return l;
   }
   
   public long addDownloadTaskFromTaskList(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(75917);
+    AppMethodBeat.i(102163);
     addToTaskList(paramTMQQDownloaderOpenSDKParam);
     long l = super.buildAddDBData(paramTMQQDownloaderOpenSDKParam, paramBoolean1, paramBoolean2, paramTMQQDownloaderOpenSDKParam.actionFlag, null, 1);
-    AppMethodBeat.o(75917);
+    AppMethodBeat.o(102163);
     return l;
   }
   
   public void destroyQQDownloaderOpenSDK()
   {
-    AppMethodBeat.i(75898);
+    AppMethodBeat.i(102144);
     NetworkMonitorReceiver.getInstance().unregisterReceiver();
     GetSettingEngine.getInstance().cancleRequest();
     LogReportManager.getInstance().cancleReport();
@@ -279,28 +279,28 @@ public class TMQQDownloaderOpenSDK_V2
     }
     GlobalUtil.getInstance().destroy();
     this.mContext = null;
-    AppMethodBeat.o(75898);
+    AppMethodBeat.o(102144);
   }
   
   public ArrayList<TMAssistantDownloadTaskInfo> getBatchTaskState(ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(75905);
+    AppMethodBeat.i(102151);
     if (this.mContext == null)
     {
       paramArrayList = new Exception("mContext shouldn't be null !");
-      AppMethodBeat.o(75905);
+      AppMethodBeat.o(102151);
       throw paramArrayList;
     }
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
       paramArrayList = new Exception("ArrayList<TMQQDownloaderOpenSDKParam> appList cann't be null or empty!");
-      AppMethodBeat.o(75905);
+      AppMethodBeat.o(102151);
       throw paramArrayList;
     }
     int i = getQQDownloadApiLevel(this.mContext);
     if (i <= 1)
     {
-      AppMethodBeat.o(75905);
+      AppMethodBeat.o(102151);
       return null;
     }
     if (i < 4)
@@ -310,40 +310,40 @@ public class TMQQDownloaderOpenSDK_V2
       {
         paramString1 = new ArrayList();
         paramString1.add(paramArrayList);
-        AppMethodBeat.o(75905);
+        AppMethodBeat.o(102151);
         return paramString1;
       }
-      AppMethodBeat.o(75905);
+      AppMethodBeat.o(102151);
       return null;
     }
     paramArrayList = TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).getBatchTaskInfos(paramArrayList, paramString1, paramString2, paramString3);
-    AppMethodBeat.o(75905);
+    AppMethodBeat.o(102151);
     return paramArrayList;
   }
   
   public TMAssistantDownloadTaskInfo getDownloadTaskState(TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam)
   {
-    AppMethodBeat.i(75907);
+    AppMethodBeat.i(102153);
     if (this.mContext == null)
     {
       paramTMQQDownloaderOpenSDKParam = new Exception("Context shouldn't be null !");
-      AppMethodBeat.o(75907);
+      AppMethodBeat.o(102153);
       throw paramTMQQDownloaderOpenSDKParam;
     }
     if (paramTMQQDownloaderOpenSDKParam == null)
     {
       paramTMQQDownloaderOpenSDKParam = new Exception("TMQQDownloaderOpenSDKParam param cann't is null!");
-      AppMethodBeat.o(75907);
+      AppMethodBeat.o(102153);
       throw paramTMQQDownloaderOpenSDKParam;
     }
     paramTMQQDownloaderOpenSDKParam = TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).getDownloadTask(paramTMQQDownloaderOpenSDKParam);
-    AppMethodBeat.o(75907);
+    AppMethodBeat.o(102153);
     return paramTMQQDownloaderOpenSDKParam;
   }
   
   public void initQQDownloaderOpenSDK(Context paramContext)
   {
-    AppMethodBeat.i(75918);
+    AppMethodBeat.i(102164);
     this.mContext = paramContext;
     this.hostPackageName = paramContext.getPackageName();
     this.hostVersionCode = GlobalUtil.getAppVersionCode(this.mContext);
@@ -358,7 +358,7 @@ public class TMQQDownloaderOpenSDK_V2
     NetworkMonitorReceiver.getInstance().registerReceiver();
     GetSettingEngine.getInstance().sendRequest();
     LogReportManager.getInstance().reportLog();
-    AppMethodBeat.o(75918);
+    AppMethodBeat.o(102164);
   }
   
   /* Error */
@@ -409,7 +409,7 @@ public class TMQQDownloaderOpenSDK_V2
     //   81: ldc_w 321
     //   84: iconst_0
     //   85: anewarray 323	java/lang/Object
-    //   88: invokestatic 329	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: invokestatic 329	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   91: goto -31 -> 60
     //   94: ldc_w 312
     //   97: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -435,21 +435,21 @@ public class TMQQDownloaderOpenSDK_V2
   
   public void releaseIPCConnected()
   {
-    AppMethodBeat.i(75919);
+    AppMethodBeat.i(102165);
     if (this.mContext != null) {
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).releaseIPCClient();
     }
-    AppMethodBeat.o(75919);
+    AppMethodBeat.o(102165);
   }
   
   public void startToAppDetail(Context paramContext, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(75900);
+    AppMethodBeat.i(102146);
     if (paramContext == null)
     {
       paramContext = new Exception("you must input an application or activity context!");
-      AppMethodBeat.o(75900);
+      AppMethodBeat.o(102146);
       throw paramContext;
     }
     paramContext = UUID.randomUUID().toString();
@@ -474,24 +474,24 @@ public class TMQQDownloaderOpenSDK_V2
     {
       addToTaskList(paramTMQQDownloaderOpenSDKParam);
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleDownloadTask(paramTMQQDownloaderOpenSDKParam, paramInt, paramContext, paramTMQQDownloaderOpenSDKParam.actionFlag, null);
-      AppMethodBeat.o(75900);
+      AppMethodBeat.o(102146);
       return;
     }
   }
   
   public void startToAuthorized(Context paramContext, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, String paramString)
   {
-    AppMethodBeat.i(75901);
+    AppMethodBeat.i(102147);
     if (paramContext == null)
     {
       paramContext = new Exception("you must input an application or activity context!");
-      AppMethodBeat.o(75901);
+      AppMethodBeat.o(102147);
       throw paramContext;
     }
     if (paramTMQQDownloaderOpenSDKParam == null)
     {
       paramContext = new Exception("QQDownloaderParam param cann't be null!");
-      AppMethodBeat.o(75901);
+      AppMethodBeat.o(102147);
       throw paramContext;
     }
     paramContext = UUID.randomUUID().toString();
@@ -507,38 +507,38 @@ public class TMQQDownloaderOpenSDK_V2
       paramContext = super.formatOplist(true, true);
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleDownloadTask(paramTMQQDownloaderOpenSDKParam, 3, paramContext, paramTMQQDownloaderOpenSDKParam.actionFlag, paramString);
     }
-    AppMethodBeat.o(75901);
+    AppMethodBeat.o(102147);
   }
   
   public void startToAuthorized(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(75902);
+    AppMethodBeat.i(102148);
     paramContext = super.formatEncryptUrl(paramString);
     if ((!TextUtils.isEmpty(paramString)) && (this.mContext != null)) {
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleUriAction(paramContext);
     }
-    AppMethodBeat.o(75902);
+    AppMethodBeat.o(102148);
   }
   
   public int startToBatchUpdateOperation(Context paramContext, ArrayList<TMQQDownloaderOpenSDKParam> paramArrayList, boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     boolean bool = true;
-    AppMethodBeat.i(75904);
+    AppMethodBeat.i(102150);
     if (paramContext == null)
     {
       paramContext = new Exception("you must input an application or activity context!");
-      AppMethodBeat.o(75904);
+      AppMethodBeat.o(102150);
       throw paramContext;
     }
     int i = getQQDownloadApiLevel(paramContext);
     if (i <= 0)
     {
-      AppMethodBeat.o(75904);
+      AppMethodBeat.o(102150);
       return 1;
     }
     if (i < 4)
     {
-      AppMethodBeat.o(75904);
+      AppMethodBeat.o(102150);
       return 2;
     }
     paramBoolean = bool;
@@ -554,23 +554,23 @@ public class TMQQDownloaderOpenSDK_V2
       if (!TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleBatchRequestAction(paramInt, paramArrayList, paramString1, paramString2, paramString3)) {
         TMLog.w("QQDownloaderOpenSDK", "handleBatchRequestAction return false with batchRequestType=".concat(String.valueOf(paramInt)));
       }
-      AppMethodBeat.o(75904);
+      AppMethodBeat.o(102150);
       return 0;
     }
   }
   
   public void startToDownloadTaskList(Context paramContext, TMQQDownloaderOpenSDKParam paramTMQQDownloaderOpenSDKParam, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    AppMethodBeat.i(75899);
+    AppMethodBeat.i(102145);
     if (paramContext == null)
     {
       paramContext = new Exception("you must input an application or activity context!");
-      AppMethodBeat.o(75899);
+      AppMethodBeat.o(102145);
       throw paramContext;
     }
     if (paramTMQQDownloaderOpenSDKParam == null)
     {
-      AppMethodBeat.o(75899);
+      AppMethodBeat.o(102145);
       return;
     }
     paramContext = UUID.randomUUID().toString();
@@ -595,24 +595,24 @@ public class TMQQDownloaderOpenSDK_V2
     {
       addToTaskList(paramTMQQDownloaderOpenSDKParam);
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleDownloadTask(paramTMQQDownloaderOpenSDKParam, paramInt, paramContext, paramTMQQDownloaderOpenSDKParam.actionFlag, null);
-      AppMethodBeat.o(75899);
+      AppMethodBeat.o(102145);
       return;
     }
   }
   
   public void startToWebView(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(75903);
+    AppMethodBeat.i(102149);
     if (paramContext == null)
     {
       paramContext = new Exception("you must input an application or activity context!");
-      AppMethodBeat.o(75903);
+      AppMethodBeat.o(102149);
       throw paramContext;
     }
     if (TextUtils.isEmpty(paramString))
     {
       paramContext = new Exception("param url shouldn't be null!");
-      AppMethodBeat.o(75903);
+      AppMethodBeat.o(102149);
       throw paramContext;
     }
     paramContext = new HashMap();
@@ -622,12 +622,12 @@ public class TMQQDownloaderOpenSDK_V2
     if ((!TextUtils.isEmpty(paramString)) && (this.mContext != null)) {
       TMQQDownloaderOpenSDKDataProcessor.getInstance(this.mContext).handleUriAction(paramContext);
     }
-    AppMethodBeat.o(75903);
+    AppMethodBeat.o(102149);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK_V2
  * JD-Core Version:    0.7.0.1
  */

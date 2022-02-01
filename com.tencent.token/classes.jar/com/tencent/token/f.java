@@ -1,32 +1,42 @@
 package com.tencent.token;
 
-import tmsdk.common.a;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-public class f
+public final class f
+  extends JceStruct
 {
-  static Object a = new Object();
-  static g b = null;
-  private static boolean c = false;
+  public String a = "";
+  public long b = 0L;
+  public long c = 0L;
   
-  public static g a()
+  public final JceStruct newInit()
   {
-    if (b == null) {}
-    synchronized (a)
-    {
-      if (b == null) {
-        b = new g();
-      }
-      return b;
-    }
+    return new f();
   }
   
-  public static void b()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    if (c) {
-      return;
+    this.a = paramJceInputStream.readString(0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    String str = this.a;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    tmsdk.common.c.a.g.a(a.a(), "TccCryptor");
-    c = true;
+    long l = this.b;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
+    }
+    l = this.c;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 2);
+    }
   }
 }
 

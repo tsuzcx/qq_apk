@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/leb" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/nc7" android:background="#ff222222" android:layout_width="200.0dip" android:layout_height="112.0dip" android:layout_margin="8.0dip" />
+    <FrameLayout android:layout_gravity="center" android:id="@id/nc9" android:layout_width="200.0dip" android:layout_height="112.0dip" android:layout_margin="8.0dip" />
+    <ImageView android:layout_gravity="end|center|top" android:id="@id/o84" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="7.5dip" android:src="@drawable/idc" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/nf2" android:background="@drawable/e78" android:layout_width="wrap_content" android:layout_height="16.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/o9z" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:id="@id/qmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="4.0dip" android:text="主播暂时离开" android:includeFontPadding="false" />
+    </LinearLayout>
+</FrameLayout>

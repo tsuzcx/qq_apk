@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/coj" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_centerHorizontal="true">
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/d0" android:textColor="@color/FG_0" android:id="@id/cok" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="¥" wallet:walletTypeFace="k0_" />
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/d0" android:textColor="@color/FG_0" android:id="@id/coi" android:layout_width="wrap_content" android:layout_height="fill_parent" wallet:walletTypeFace="k0_" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/lhh" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_below="@id/coj">
+        <RelativeLayout android:orientation="vertical" android:id="@id/lhj" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:background="@drawable/c9i" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView android:textSize="10.0dip" android:textColor="#33000000" android:gravity="center_horizontal" android:id="@id/lhm" android:layout_width="24.0dip" android:layout_height="14.0dip" android:layout_marginTop="8.0dip" android:text="[万]" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

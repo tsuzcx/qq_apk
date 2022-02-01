@@ -1,32 +1,46 @@
 package com.tencent.mm.modelappbrand;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mm.kernel.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.faq;
+import com.tencent.mm.protocal.protobuf.far;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public abstract interface e
-  extends a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig;", "", "()V", "Companion", "plugin-compat_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class e
 {
-  public abstract String a(String paramString, View paramView, Bundle paramBundle, ab paramab);
+  public static final a opS;
   
-  public abstract void a(String paramString, View paramView);
+  static
+  {
+    AppMethodBeat.i(233809);
+    opS = new a((byte)0);
+    AppMethodBeat.o(233809);
+  }
   
-  public abstract d ack();
-  
-  public abstract l acl();
-  
-  public abstract View bX(Context paramContext);
-  
-  public abstract void cl(View paramView);
-  
-  public abstract n cm(View paramView);
-  
-  public abstract void initialize();
-  
-  public abstract void qi(String paramString);
-  
-  public abstract void shutdown();
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/modelappbrand/CgiSetNotifyConfig$Companion;", "", "()V", "buildInstance", "Lcom/tencent/mm/modelbase/CommReqResp;", "req", "Lcom/tencent/mm/protocal/protobuf/SetWxaMsgConfigRequest;", "plugin-compat_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static c a(faq paramfaq)
+    {
+      AppMethodBeat.i(233821);
+      s.u(paramfaq, "req");
+      c.a locala = new c.a();
+      locala.otF = ((a)new far());
+      locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/setwxamsgconfig";
+      locala.funcId = 3872;
+      locala.otG = 0;
+      locala.respCmdId = 0;
+      locala.otE = ((a)paramfaq);
+      paramfaq = locala.bEF();
+      s.s(paramfaq, "builder.buildInstance()");
+      AppMethodBeat.o(233821);
+      return paramfaq;
+    }
+  }
 }
 
 

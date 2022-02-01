@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/a7r" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a4l">
+        <include layout="@layout/bkz" />
+        <com.tencent.mm.plugin.finder.view.FinderViewPager android:orientation="horizontal" android:id="@id/l8k" android:background="@color/BW_100" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/fa" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/cj_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/h6h" android:includeFontPadding="false" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

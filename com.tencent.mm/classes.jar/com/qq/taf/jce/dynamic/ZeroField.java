@@ -27,8 +27,8 @@ public final class ZeroField
   
   public final Number getNumber()
   {
-    AppMethodBeat.i(117015);
-    AppMethodBeat.o(117015);
+    AppMethodBeat.i(109569);
+    AppMethodBeat.o(109569);
     return Integer.valueOf(0);
   }
   
@@ -49,7 +49,7 @@ public final class ZeroField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.ZeroField
  * JD-Core Version:    0.7.0.1
  */

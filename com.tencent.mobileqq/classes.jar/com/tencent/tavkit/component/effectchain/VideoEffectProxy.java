@@ -14,7 +14,6 @@ public class VideoEffectProxy
   private boolean autoCheckEffectRemove = true;
   @NonNull
   private CopyOnWriteArrayList<TAVVideoEffect> effects = new CopyOnWriteArrayList();
-  @NonNull
   private final List<VideoEffectProxy.FilterProxy> filterProxies = new ArrayList();
   
   public TAVVideoEffect.Filter createFilter()
@@ -27,7 +26,10 @@ public class VideoEffectProxy
   @NonNull
   public String effectId()
   {
-    return "VideoEffectProxy" + Integer.toHexString(hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoEffectProxy");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    return localStringBuilder.toString();
   }
   
   @NonNull
@@ -79,7 +81,7 @@ public class VideoEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoEffectProxy
  * JD-Core Version:    0.7.0.1
  */

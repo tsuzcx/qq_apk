@@ -7,13 +7,13 @@ class VerticalGallery$1
   
   public void run()
   {
-    VerticalGallery.a(this.this$0, false);
+    VerticalGallery.access$002(this.this$0, false);
     this.this$0.selectionChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.VerticalGallery.1
  * JD-Core Version:    0.7.0.1
  */

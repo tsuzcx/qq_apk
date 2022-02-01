@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dhs" android:paddingLeft="@dimen/bfu" android:paddingRight="@dimen/bfu" android:layout_width="fill_parent" android:layout_height="@dimen/bg_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <com.tencent.qqmail.view.QMAvatarView android:id="@id/a2o" android:layout_marginRight="@dimen/bg8" qm:avatar_view_type="evy" style="@style/a_v" />
+    <TextView android:textSize="@dimen/bg9" android:textColor="@color/aon" android:ellipsize="end" android:id="@id/content" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+</LinearLayout>

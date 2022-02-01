@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static e rbI = null;
-  private static String rbJ = "";
-  StringBuffer jDt;
+  private static e Qpn = null;
+  private static String Qpo = "";
   public int level;
+  StringBuffer sb;
   
   public e()
   {
-    AppMethodBeat.i(35881);
+    AppMethodBeat.i(95178);
     this.level = 0;
-    this.jDt = new StringBuffer();
-    AppMethodBeat.o(35881);
+    this.sb = new StringBuffer();
+    AppMethodBeat.o(95178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.e
  * JD-Core Version:    0.7.0.1
  */

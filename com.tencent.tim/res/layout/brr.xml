@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.swipestack.SwipeStack android:id="@id/j8v" android:layout_width="fill_parent" android:layout_height="129.0dip" android:layout_above="@id/amh" app:stack_rotation="5" app:stack_size="2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

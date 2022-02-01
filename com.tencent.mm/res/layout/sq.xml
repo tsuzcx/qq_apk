@@ -1,80 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:textColor="@android:color/black" android:id="@id/af3" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@android:color/black" android:id="@id/b_k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="  " />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <CheckBox android:id="@id/b_l" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textColor="@android:color/black" android:id="@id/b_m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" show version on top" android:layout_weight="1.0" />
-            <Button android:id="@id/b_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X" android:layout_weight="1.0" />
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/h1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b3p" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h3">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="30.0dip" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/j6">
+            <ImageView android:gravity="center_vertical" android:layout_gravity="center|right" android:id="@id/b8x" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/chatting_status_tick" />
+            <ImageView android:id="@id/b8v" android:layout_centerVertical="true" style="@style/ha" />
+            <ProgressBar android:layout_gravity="center|right" android:id="@id/l1e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" style="@style/a85" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/b_o" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <Button android:id="@id/b_p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键XWeb" android:layout_weight="1.0" />
-            <Button android:id="@id/b_q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键X5" />
-            <Button android:id="@id/b_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键系统" />
-            <Button android:id="@id/b_s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="一键还原自动" />
-            <Button android:id="@id/b_t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="显示高级设置" />
-        </LinearLayout>>
-<LinearLayout android:orientation="vertical" android:id="@id/b_u" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:background="@drawable/m4" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textColor="@android:color/black" android:id="@id/b_v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text=" webview core select:" />
-                <Spinner android:textColor="@android:color/black" android:entries="@array/az" android:id="@id/b_w" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <RadioGroup android:textColor="@android:color/black" android:orientation="horizontal" android:id="@id/b_x" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/b_y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="auto" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/b_z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xwalk" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="sys" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X5" />
-                </RadioGroup>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/b47" android:background="@drawable/no" android:layout_width="201.0dip" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b60" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cd">
+                <TextView android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b6m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
             </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:background="@drawable/m4" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="3.0dip">
-                <TextView android:textColor="@android:color/black" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="v8 engine select:" />
-                <RadioGroup android:textColor="@android:color/black" android:id="@id/ba2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="auto" android:layout_weight="1.0" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="nativescript" android:layout_weight="1.0" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="webviewbased" android:layout_weight="1.0" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="x5" android:layout_weight="1.0" />
-                    <RadioButton android:textColor="@android:color/black" android:id="@id/ba7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmv8" android:layout_weight="1.0" />
-                </RadioGroup>
+            <com.tencent.mm.plugin.finder.view.FinderFeedAlbumView android:id="@id/cy7" android:layout_width="180.0dip" android:layout_height="180.0dip" android:layout_marginTop="@dimen/cd" android:layout_marginEnd="3.0dip" app:cornerRadius="@dimen/bv" />
+            <View android:background="@color/jn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="@dimen/bv" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b5z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bv" android:paddingStart="@dimen/cp">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b6c" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
+                <TextView android:textSize="@dimen/m_" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/ese" style="@style/i4" />
             </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:background="@drawable/m4" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="3.0dip">
-                <TextView android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="set grayvalue:" />
-                <EditText android:textColor="@android:color/black" android:id="@id/ba8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            </LinearLayout>
-            <Button android:id="@id/ba9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="kill all process" android:layout_weight="1.0" />
-            <Button android:id="@id/ba_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="打开远程调试模式" />
-            <Button android:id="@id/baa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清理旧版xwalk" />
-            <Button android:id="@id/bab" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="使用测试config" />
-            <Button android:id="@id/bac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="检测更新" />
-            <Button android:id="@id/bad" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载本地XWalk apk" />
-            <Button android:id="@id/bae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="插件设置" />
-            <LinearLayout android:orientation="vertical" android:id="@id/baf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="50.0dip">
-                <Button android:id="@id/bag" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="切换插件config" />
-                <Button android:id="@id/bah" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="清理所有插件并重启" />
-                <Button android:id="@id/bai" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="后台检测所有插件更新" />
-                <Button android:id="@id/baj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="检测全屏JS更新" />
-                <Button android:id="@id/bak" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载本地全屏JS" />
-                <Button android:id="@id/bal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="检测PPT插件更新" />
-                <Button android:id="@id/bam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="加载本地PPT插件" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <CheckBox android:id="@id/ban" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <TextView android:textColor="@android:color/black" android:id="@id/bao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="禁用缓存" android:layout_weight="1.0" />
-                    <CheckBox android:id="@id/bap" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <TextView android:textColor="@android:color/black" android:id="@id/baq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="禁用Crash检测" android:layout_weight="1.0" />
-                </LinearLayout>
-                <TextView android:id="@id/bar" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <EditText android:textSize="12.0dip" android:id="@id/bas" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="填入需要设置的文件后缀，不填则全部设置" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <Button android:id="@id/bat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="强制XWeb" />
-                    <Button android:id="@id/bau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="强制X5" />
-                    <Button android:id="@id/bav" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="自动" />
-                </LinearLayout>
-            </LinearLayout>
-            <Button android:id="@id/baw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="刷新日志" />
-            <Button android:id="@id/bax" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="保存页面" />
-            <Button android:id="@id/bay" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="载入保存页面/长按清空" />
-            <Button android:id="@id/baz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="显示/隐藏fps" />
-            <Button android:id="@id/bb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="页面长截图" />
         </LinearLayout>
-        <TextView android:textColor="@android:color/black" android:id="@id/bb1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="show current version" />
     </LinearLayout>
-</ScrollView>
+    <include layout="@layout/qk" />
+</LinearLayout>

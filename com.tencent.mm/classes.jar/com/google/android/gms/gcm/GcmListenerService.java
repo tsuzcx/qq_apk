@@ -19,7 +19,7 @@ public class GcmListenerService
 {
   static void zzd(Bundle paramBundle)
   {
-    AppMethodBeat.i(69934);
+    AppMethodBeat.i(3610);
     paramBundle = paramBundle.keySet().iterator();
     while (paramBundle.hasNext())
     {
@@ -28,23 +28,23 @@ public class GcmListenerService
         paramBundle.remove();
       }
     }
-    AppMethodBeat.o(69934);
+    AppMethodBeat.o(3610);
   }
   
   public void handleIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(69933);
+    AppMethodBeat.i(3609);
     if (!"com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction()))
     {
       paramIntent = String.valueOf(paramIntent.getAction());
       if (paramIntent.length() != 0)
       {
         "Unknown intent action: ".concat(paramIntent);
-        AppMethodBeat.o(69933);
+        AppMethodBeat.o(3609);
         return;
       }
       new String("Unknown intent action: ");
-      AppMethodBeat.o(69933);
+      AppMethodBeat.o(3609);
       return;
     }
     Object localObject2 = paramIntent.getStringExtra("message_type");
@@ -63,10 +63,10 @@ public class GcmListenerService
       default: 
         paramIntent = String.valueOf(localObject1);
         if (paramIntent.length() == 0) {
-          break label662;
+          break label672;
         }
         "Received message with unknown type: ".concat(paramIntent);
-        AppMethodBeat.o(69933);
+        AppMethodBeat.o(3609);
         return;
         if (((String)localObject1).equals("gcm"))
         {
@@ -91,20 +91,20 @@ public class GcmListenerService
     }
     localObject2 = paramIntent.getExtras();
     ((Bundle)localObject2).remove("message_type");
-    ((Bundle)localObject2).remove("android.support.content.wakelockid");
+    ((Bundle)localObject2).remove("androidx.contentpager.content.wakelockid");
     if (("1".equals(zzd.zzd((Bundle)localObject2, "gcm.n.e"))) || (zzd.zzd((Bundle)localObject2, "gcm.n.icon") != null))
     {
       i = 1;
       if (i == 0) {
-        break label563;
+        break label569;
       }
       if (((KeyguardManager)getSystemService("keyguard")).inKeyguardRestrictedInputMode()) {
-        break label403;
+        break label409;
       }
       i = Process.myPid();
       paramIntent = ((ActivityManager)getSystemService("activity")).getRunningAppProcesses();
       if (paramIntent == null) {
-        break label403;
+        break label409;
       }
       paramIntent = paramIntent.iterator();
       for (;;)
@@ -123,19 +123,19 @@ public class GcmListenerService
     for (;;)
     {
       if (i != 0) {
-        break label408;
+        break label414;
       }
       zzd.zzd(this).zze((Bundle)localObject2);
-      AppMethodBeat.o(69933);
+      AppMethodBeat.o(3609);
       return;
       i = 0;
       break;
       i = 0;
       continue;
-      label403:
+      label409:
       i = 0;
     }
-    label408:
+    label414:
     Bundle localBundle = new Bundle();
     Iterator localIterator = ((Bundle)localObject2).keySet().iterator();
     while (localIterator.hasNext())
@@ -163,18 +163,18 @@ public class GcmListenerService
     if (!localBundle.isEmpty()) {
       ((Bundle)localObject2).putBundle("notification", localBundle);
     }
-    label563:
+    label569:
     paramIntent = ((Bundle)localObject2).getString("from");
     ((Bundle)localObject2).remove("from");
     zzd((Bundle)localObject2);
     onMessageReceived(paramIntent, (Bundle)localObject2);
-    AppMethodBeat.o(69933);
+    AppMethodBeat.o(3609);
     return;
     onDeletedMessages();
-    AppMethodBeat.o(69933);
+    AppMethodBeat.o(3609);
     return;
     onMessageSent(paramIntent.getStringExtra("google.message_id"));
-    AppMethodBeat.o(69933);
+    AppMethodBeat.o(3609);
     return;
     localObject2 = paramIntent.getStringExtra("google.message_id");
     localObject1 = localObject2;
@@ -182,11 +182,11 @@ public class GcmListenerService
       localObject1 = paramIntent.getStringExtra("message_id");
     }
     onSendError((String)localObject1, paramIntent.getStringExtra("error"));
-    AppMethodBeat.o(69933);
+    AppMethodBeat.o(3609);
     return;
-    label662:
+    label672:
     new String("Received message with unknown type: ");
-    AppMethodBeat.o(69933);
+    AppMethodBeat.o(3609);
   }
   
   public void onDeletedMessages() {}
@@ -199,7 +199,7 @@ public class GcmListenerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmListenerService
  * JD-Core Version:    0.7.0.1
  */

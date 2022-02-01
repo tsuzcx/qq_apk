@@ -4,83 +4,46 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import auyz;
-import auza;
-import auzb;
-import auze;
-import auzf;
-import bdjz;
-import bema;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
 
+@RoutePage(desc="显示错误弹窗", path="/nearby/gameroom/trans")
 public class GameRoomTransActivity
   extends BaseActivity
 {
-  public DialogInterface.OnDismissListener a;
-  public bdjz a;
+  QQCustomDialog dialog = null;
+  DialogInterface.OnDismissListener disMissListener = new GameRoomTransActivity.4(this);
   
-  public GameRoomTransActivity()
+  public void doEnterGame()
   {
-    this.jdField_a_of_type_Bdjz = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new auze(this);
-  }
-  
-  public void a()
-  {
-    int i = getIntent().getIntExtra("action", 1);
-    if (i == 1)
-    {
-      b();
-      return;
-    }
-    if (i == 2)
-    {
-      c();
-      return;
-    }
-    if (i == 3)
-    {
-      d();
-      return;
-    }
-    finish();
-  }
-  
-  public void b()
-  {
+    int i = 10;
     try
     {
-      i = getIntent().getIntExtra("roomNum", 10);
-      int j = getIntent().getIntExtra("zoneId", 0);
-      ((bema)this.app.a(107)).b(i, j, new auza(this, i));
-      return;
+      j = getIntent().getIntExtra("roomNum", 10);
+      i = j;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        int i = 10;
-      }
+      int j;
+      label17:
+      break label17;
     }
+    j = getIntent().getIntExtra("zoneId", 0);
+    ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).b(i, j, new GameRoomTransActivity.2(this, i));
   }
   
-  public void c()
+  public void doJoinTeam()
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bema)this.app.a(107)).a(str, true, new auzb(this, str, i));
+    ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(str, true, new GameRoomTransActivity.3(this, str, i));
   }
   
-  protected void d()
-  {
-    int i = getIntent().getIntExtra("roomNum", 10);
-    int j = getIntent().getIntExtra("zoneId", 0);
-    long l = getIntent().getLongExtra("gc", -1L);
-    ((bema)this.app.a(107)).a(new auzf(this, l, i, j));
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
@@ -88,24 +51,53 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new auyz(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new GameRoomTransActivity.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
-      a();
+      doWork();
       return true;
     }
-    a();
+    doWork();
     return true;
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void doStartInvite()
+  {
+    int i = getIntent().getIntExtra("roomNum", 10);
+    int j = getIntent().getIntExtra("zoneId", 0);
+    long l = getIntent().getLongExtra("gc", -1L);
+    ((WerewolvesHandler)this.app.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(new GameRoomTransActivity.5(this, l, i, j));
+  }
+  
+  public void doWork()
+  {
+    int i = getIntent().getIntExtra("action", 1);
+    if (i == 1)
+    {
+      doEnterGame();
+      return;
+    }
+    if (i == 2)
+    {
+      doJoinTeam();
+      return;
+    }
+    if (i == 3)
+    {
+      doStartInvite();
+      return;
+    }
+    finish();
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity
  * JD-Core Version:    0.7.0.1
  */

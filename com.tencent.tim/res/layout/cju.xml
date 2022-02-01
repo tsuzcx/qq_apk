@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.qqmail.activity.compose.QQMailUILabel style="@style/abq"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/mpv" style="@style/abp" />
+    <TextView android:id="@id/mpu" android:focusable="false" style="@style/abm" />
+    <ImageView android:id="@id/mpt" android:visibility="gone" android:contentDescription="@string/pb" style="@style/abl" />
+</com.tencent.qqmail.activity.compose.QQMailUILabel>

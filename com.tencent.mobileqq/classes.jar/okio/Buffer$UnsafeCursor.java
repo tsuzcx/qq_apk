@@ -1,224 +1,347 @@
 package okio;
 
 import java.io.Closeable;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.StringCompanionObject;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/Buffer$UnsafeCursor;", "Ljava/io/Closeable;", "()V", "buffer", "Lokio/Buffer;", "data", "", "end", "", "offset", "", "readWrite", "", "segment", "Lokio/Segment;", "start", "close", "", "expandBuffer", "minByteCount", "next", "resizeBuffer", "newSize", "seek", "okio"}, k=1, mv={1, 1, 16})
 public final class Buffer$UnsafeCursor
   implements Closeable
 {
+  @JvmField
+  @Nullable
   public Buffer buffer;
+  @JvmField
+  @Nullable
   public byte[] data;
+  @JvmField
   public int end = -1;
+  @JvmField
   public long offset = -1L;
+  @JvmField
   public boolean readWrite;
   private Segment segment;
+  @JvmField
   public int start = -1;
   
   public void close()
   {
-    if (this.buffer == null) {
-      throw new IllegalStateException("not attached to a buffer");
+    int i;
+    if (this.buffer != null) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    this.buffer = null;
-    this.segment = null;
-    this.offset = -1L;
-    this.data = null;
-    this.start = -1;
-    this.end = -1;
+    if (i != 0)
+    {
+      this.buffer = ((Buffer)null);
+      this.segment = ((Segment)null);
+      this.offset = -1L;
+      this.data = ((byte[])null);
+      this.start = -1;
+      this.end = -1;
+      return;
+    }
+    throw ((Throwable)new IllegalStateException("not attached to a buffer".toString()));
   }
   
   public final long expandBuffer(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("minByteCount <= 0: " + paramInt);
+    int j = 1;
+    int i;
+    if (paramInt > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (paramInt > 8192) {
-      throw new IllegalArgumentException("minByteCount > Segment.SIZE: " + paramInt);
+    if (i != 0)
+    {
+      if (paramInt <= 8192) {
+        i = j;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        localObject = this.buffer;
+        if (localObject != null)
+        {
+          if (this.readWrite)
+          {
+            long l1 = ((Buffer)localObject).size();
+            Segment localSegment = ((Buffer)localObject).writableSegment$okio(paramInt);
+            paramInt = 8192 - localSegment.limit;
+            localSegment.limit = 8192;
+            long l2 = paramInt;
+            ((Buffer)localObject).setSize$okio(l1 + l2);
+            this.segment = localSegment;
+            this.offset = l1;
+            this.data = localSegment.data;
+            this.start = (8192 - paramInt);
+            this.end = 8192;
+            return l2;
+          }
+          throw ((Throwable)new IllegalStateException("expandBuffer() only permitted for read/write buffers".toString()));
+        }
+        throw ((Throwable)new IllegalStateException("not attached to a buffer".toString()));
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("minByteCount > Segment.SIZE: ");
+      ((StringBuilder)localObject).append(paramInt);
+      throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
     }
-    if (this.buffer == null) {
-      throw new IllegalStateException("not attached to a buffer");
-    }
-    if (!this.readWrite) {
-      throw new IllegalStateException("expandBuffer() only permitted for read/write buffers");
-    }
-    long l = this.buffer.size;
-    Segment localSegment = this.buffer.writableSegment(paramInt);
-    paramInt = 8192 - localSegment.limit;
-    localSegment.limit = 8192;
-    this.buffer.size = (paramInt + l);
-    this.segment = localSegment;
-    this.offset = l;
-    this.data = localSegment.data;
-    this.start = (8192 - paramInt);
-    this.end = 8192;
-    return paramInt;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("minByteCount <= 0: ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
   }
   
   public final int next()
   {
-    if (this.offset == this.buffer.size) {
-      throw new IllegalStateException();
+    long l = this.offset;
+    Buffer localBuffer = this.buffer;
+    if (localBuffer == null) {
+      Intrinsics.throwNpe();
     }
-    if (this.offset == -1L) {
-      return seek(0L);
+    int i;
+    if (l != localBuffer.size()) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return seek(this.offset + (this.end - this.start));
+    if (i != 0)
+    {
+      l = this.offset;
+      if (l == -1L) {
+        l = 0L;
+      } else {
+        l += this.end - this.start;
+      }
+      return seek(l);
+    }
+    throw ((Throwable)new IllegalStateException("no more bytes".toString()));
   }
   
   public final long resizeBuffer(long paramLong)
   {
-    if (this.buffer == null) {
-      throw new IllegalStateException("not attached to a buffer");
-    }
-    if (!this.readWrite) {
-      throw new IllegalStateException("resizeBuffer() only permitted for read/write buffers");
-    }
-    long l3 = this.buffer.size;
-    long l1;
-    Segment localSegment;
-    int i;
-    if (paramLong <= l3)
+    Object localObject = this.buffer;
+    if (localObject != null)
     {
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("newSize < 0: " + paramLong);
-      }
-      l1 = l3 - paramLong;
-      while (l1 > 0L)
+      if (this.readWrite)
       {
-        localSegment = this.buffer.head.prev;
-        i = localSegment.limit - localSegment.pos;
-        if (i <= l1)
+        long l2 = ((Buffer)localObject).size();
+        int i;
+        long l1;
+        Segment localSegment;
+        if (paramLong <= l2)
         {
-          this.buffer.head = localSegment.pop();
-          SegmentPool.recycle(localSegment);
-          l1 -= i;
-        }
-        else
-        {
-          localSegment.limit = ((int)(localSegment.limit - l1));
-        }
-      }
-      this.segment = null;
-      this.offset = paramLong;
-      this.data = null;
-      this.start = -1;
-      this.end = -1;
-    }
-    for (;;)
-    {
-      this.buffer.size = paramLong;
-      return l3;
-      if (paramLong > l3)
-      {
-        l1 = paramLong - l3;
-        i = 1;
-        while (l1 > 0L)
-        {
-          localSegment = this.buffer.writableSegment(1);
-          int j = (int)Math.min(l1, 8192 - localSegment.limit);
-          localSegment.limit += j;
-          long l2 = l1 - j;
-          l1 = l2;
+          if (paramLong >= 0L) {
+            i = 1;
+          } else {
+            i = 0;
+          }
           if (i != 0)
           {
-            this.segment = localSegment;
-            this.offset = l3;
-            this.data = localSegment.data;
-            this.start = (localSegment.limit - j);
-            this.end = localSegment.limit;
-            i = 0;
-            l1 = l2;
+            l1 = l2 - paramLong;
+            while (l1 > 0L)
+            {
+              localSegment = ((Buffer)localObject).head;
+              if (localSegment == null) {
+                Intrinsics.throwNpe();
+              }
+              localSegment = localSegment.prev;
+              if (localSegment == null) {
+                Intrinsics.throwNpe();
+              }
+              long l3 = localSegment.limit - localSegment.pos;
+              if (l3 <= l1)
+              {
+                ((Buffer)localObject).head = localSegment.pop();
+                SegmentPool.INSTANCE.recycle(localSegment);
+                l1 -= l3;
+              }
+              else
+              {
+                localSegment.limit -= (int)l1;
+              }
+            }
+            this.segment = ((Segment)null);
+            this.offset = paramLong;
+            this.data = ((byte[])null);
+            this.start = -1;
+            this.end = -1;
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("newSize < 0: ");
+            ((StringBuilder)localObject).append(paramLong);
+            throw ((Throwable)new IllegalArgumentException(((StringBuilder)localObject).toString().toString()));
           }
         }
+        else if (paramLong > l2)
+        {
+          l1 = paramLong - l2;
+          int j;
+          for (i = 1; l1 > 0L; i = j)
+          {
+            localSegment = ((Buffer)localObject).writableSegment$okio(1);
+            int k = (int)Math.min(l1, 8192 - localSegment.limit);
+            localSegment.limit += k;
+            l1 -= k;
+            j = i;
+            if (i != 0)
+            {
+              this.segment = localSegment;
+              this.offset = l2;
+              this.data = localSegment.data;
+              this.start = (localSegment.limit - k);
+              this.end = localSegment.limit;
+              j = 0;
+            }
+          }
+        }
+        ((Buffer)localObject).setSize$okio(paramLong);
+        return l2;
       }
+      throw ((Throwable)new IllegalStateException("resizeBuffer() only permitted for read/write buffers".toString()));
+    }
+    localObject = (Throwable)new IllegalStateException("not attached to a buffer".toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
   public final int seek(long paramLong)
   {
-    if ((paramLong < -1L) || (paramLong > this.buffer.size)) {
-      throw new ArrayIndexOutOfBoundsException(String.format("offset=%s > size=%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(this.buffer.size) }));
-    }
-    if ((paramLong == -1L) || (paramLong == this.buffer.size))
+    Buffer localBuffer = this.buffer;
+    if (localBuffer != null)
     {
-      this.segment = null;
-      this.offset = paramLong;
-      this.data = null;
-      this.start = -1;
-      this.end = -1;
-      return -1;
-    }
-    long l1 = this.buffer.size;
-    Object localObject1 = this.buffer.head;
-    Object localObject2 = this.buffer.head;
-    long l2;
-    if (this.segment != null)
-    {
-      l2 = this.offset - (this.start - this.segment.pos);
-      if (l2 > paramLong)
+      if ((paramLong >= -1) && (paramLong <= localBuffer.size()))
       {
-        localObject2 = this.segment;
-        l1 = 0L;
+        if ((paramLong != -1L) && (paramLong != localBuffer.size()))
+        {
+          long l3 = 0L;
+          long l4 = localBuffer.size();
+          Segment localSegment1 = localBuffer.head;
+          Segment localSegment2 = localBuffer.head;
+          Segment localSegment3 = this.segment;
+          long l1 = l3;
+          long l2 = l4;
+          localObject1 = localSegment1;
+          Object localObject2 = localSegment2;
+          if (localSegment3 != null)
+          {
+            l1 = this.offset;
+            int i = this.start;
+            if (localSegment3 == null) {
+              Intrinsics.throwNpe();
+            }
+            l1 -= i - localSegment3.pos;
+            if (l1 > paramLong)
+            {
+              localObject2 = this.segment;
+              l2 = l1;
+              l1 = l3;
+              localObject1 = localSegment1;
+            }
+            else
+            {
+              localObject1 = this.segment;
+              localObject2 = localSegment2;
+              l2 = l4;
+            }
+          }
+          if (l2 - paramLong > paramLong - l1) {
+            for (localObject2 = localObject1;; localObject2 = ((Segment)localObject2).next)
+            {
+              if (localObject2 == null) {
+                Intrinsics.throwNpe();
+              }
+              l2 = l1;
+              localObject1 = localObject2;
+              if (paramLong < ((Segment)localObject2).limit - ((Segment)localObject2).pos + l1) {
+                break;
+              }
+              l1 += ((Segment)localObject2).limit - ((Segment)localObject2).pos;
+            }
+          }
+          for (l1 = l2;; l1 -= ((Segment)localObject2).limit - ((Segment)localObject2).pos)
+          {
+            l2 = l1;
+            localObject1 = localObject2;
+            if (l1 <= paramLong) {
+              break;
+            }
+            if (localObject2 == null) {
+              Intrinsics.throwNpe();
+            }
+            localObject2 = ((Segment)localObject2).prev;
+            if (localObject2 == null) {
+              Intrinsics.throwNpe();
+            }
+          }
+          localObject2 = localObject1;
+          if (this.readWrite)
+          {
+            if (localObject1 == null) {
+              Intrinsics.throwNpe();
+            }
+            localObject2 = localObject1;
+            if (((Segment)localObject1).shared)
+            {
+              localObject2 = ((Segment)localObject1).unsharedCopy();
+              if (localBuffer.head == localObject1) {
+                localBuffer.head = ((Segment)localObject2);
+              }
+              localObject2 = ((Segment)localObject1).push((Segment)localObject2);
+              localObject1 = ((Segment)localObject2).prev;
+              if (localObject1 == null) {
+                Intrinsics.throwNpe();
+              }
+              ((Segment)localObject1).pop();
+            }
+          }
+          this.segment = ((Segment)localObject2);
+          this.offset = paramLong;
+          if (localObject2 == null) {
+            Intrinsics.throwNpe();
+          }
+          this.data = ((Segment)localObject2).data;
+          this.start = (((Segment)localObject2).pos + (int)(paramLong - l2));
+          this.end = ((Segment)localObject2).limit;
+          return this.end - this.start;
+        }
+        this.segment = ((Segment)null);
+        this.offset = paramLong;
+        this.data = ((byte[])null);
+        this.start = -1;
+        this.end = -1;
+        return -1;
       }
+      localObject1 = StringCompanionObject.INSTANCE;
+      localObject1 = new Object[2];
+      localObject1[0] = Long.valueOf(paramLong);
+      localObject1[1] = Long.valueOf(localBuffer.size());
+      localObject1 = String.format("offset=%s > size=%s", Arrays.copyOf((Object[])localObject1, localObject1.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+      throw ((Throwable)new ArrayIndexOutOfBoundsException((String)localObject1));
     }
+    Object localObject1 = (Throwable)new IllegalStateException("not attached to a buffer".toString());
     for (;;)
     {
-      if (l2 - paramLong > paramLong - l1)
-      {
-        for (localObject2 = localObject1;; localObject2 = ((Segment)localObject2).next)
-        {
-          l2 = l1;
-          localObject1 = localObject2;
-          if (paramLong < ((Segment)localObject2).limit - ((Segment)localObject2).pos + l1) {
-            break;
-          }
-          l1 += ((Segment)localObject2).limit - ((Segment)localObject2).pos;
-        }
-        localObject1 = this.segment;
-        long l3 = l1;
-        l1 = l2;
-        l2 = l3;
-      }
-      else
-      {
-        for (l1 = l2;; l1 -= ((Segment)localObject2).limit - ((Segment)localObject2).pos)
-        {
-          l2 = l1;
-          localObject1 = localObject2;
-          if (l1 <= paramLong) {
-            break;
-          }
-          localObject2 = ((Segment)localObject2).prev;
-        }
-        localObject2 = localObject1;
-        if (this.readWrite)
-        {
-          localObject2 = localObject1;
-          if (((Segment)localObject1).shared)
-          {
-            localObject2 = ((Segment)localObject1).unsharedCopy();
-            if (this.buffer.head == localObject1) {
-              this.buffer.head = ((Segment)localObject2);
-            }
-            localObject2 = ((Segment)localObject1).push((Segment)localObject2);
-            ((Segment)localObject2).prev.pop();
-          }
-        }
-        this.segment = ((Segment)localObject2);
-        this.offset = paramLong;
-        this.data = ((Segment)localObject2).data;
-        int i = ((Segment)localObject2).pos;
-        this.start = ((int)(paramLong - l2) + i);
-        this.end = ((Segment)localObject2).limit;
-        return this.end - this.start;
-        l2 = l1;
-        l1 = 0L;
-      }
+      throw ((Throwable)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.Buffer.UnsafeCursor
  * JD-Core Version:    0.7.0.1
  */

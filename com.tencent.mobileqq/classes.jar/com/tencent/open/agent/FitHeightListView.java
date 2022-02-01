@@ -26,7 +26,7 @@ public class FitHeightListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
   }
@@ -36,19 +36,15 @@ public class FitHeightListView
     int i = paramMotionEvent.getActionMasked() & 0xFF;
     if (i == 0) {
       this.a = paramMotionEvent.getRawY();
+    } else if (i == 2) {
+      paramMotionEvent.offsetLocation(0.0F, this.a - paramMotionEvent.getRawY());
     }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      if (i == 2) {
-        paramMotionEvent.offsetLocation(0.0F, this.a - paramMotionEvent.getRawY());
-      }
-    }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FitHeightListView
  * JD-Core Version:    0.7.0.1
  */

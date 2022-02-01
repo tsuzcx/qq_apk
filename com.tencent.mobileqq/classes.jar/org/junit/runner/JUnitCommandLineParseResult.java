@@ -57,8 +57,10 @@ class JUnitCommandLineParseResult
   
   public Request createRequest(Computer paramComputer)
   {
-    if (this.parserErrors.isEmpty()) {
-      return applyFilterSpecs(Request.classes(paramComputer, (Class[])this.classes.toArray(new Class[this.classes.size()])));
+    if (this.parserErrors.isEmpty())
+    {
+      List localList = this.classes;
+      return applyFilterSpecs(Request.classes(paramComputer, (Class[])localList.toArray(new Class[localList.size()])));
     }
     return errorReport(new InitializationError(this.parserErrors));
   }
@@ -76,74 +78,86 @@ class JUnitCommandLineParseResult
   String[] parseOptions(String... paramVarArgs)
   {
     int i = 0;
-    String str;
-    if (i != paramVarArgs.length)
+    while (i != paramVarArgs.length)
     {
-      str = paramVarArgs[i];
+      String str = paramVarArgs[i];
       if (str.equals("--")) {
         return copyArray(paramVarArgs, i + 1, paramVarArgs.length);
       }
-      if (!str.startsWith("--")) {
-        break label201;
-      }
-      if ((!str.startsWith("--filter=")) && (!str.equals("--filter"))) {
-        break label157;
-      }
-      if (!str.equals("--filter")) {
-        break label141;
-      }
-      i += 1;
-      if (i < paramVarArgs.length)
+      if (str.startsWith("--"))
       {
-        str = paramVarArgs[i];
-        label82:
-        this.filterSpecs.add(str);
+        Object localObject;
+        if ((!str.startsWith("--filter=")) && (!str.equals("--filter")))
+        {
+          localObject = this.parserErrors;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("JUnit knows nothing about the ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" option");
+          ((List)localObject).add(new JUnitCommandLineParseResult.CommandLineParserError(localStringBuilder.toString()));
+        }
+        else
+        {
+          if (str.equals("--filter"))
+          {
+            i += 1;
+            if (i < paramVarArgs.length)
+            {
+              str = paramVarArgs[i];
+            }
+            else
+            {
+              paramVarArgs = this.parserErrors;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(" value not specified");
+              paramVarArgs.add(new JUnitCommandLineParseResult.CommandLineParserError(((StringBuilder)localObject).toString()));
+              break;
+            }
+          }
+          else
+          {
+            str = str.substring(str.indexOf('=') + 1);
+          }
+          this.filterSpecs.add(str);
+        }
+        i += 1;
+      }
+      else
+      {
+        return copyArray(paramVarArgs, i, paramVarArgs.length);
       }
     }
-    for (;;)
-    {
-      i += 1;
-      break;
-      this.parserErrors.add(new JUnitCommandLineParseResult.CommandLineParserError(str + " value not specified"));
-      return new String[0];
-      label141:
-      str = str.substring(str.indexOf('=') + 1);
-      break label82;
-      label157:
-      this.parserErrors.add(new JUnitCommandLineParseResult.CommandLineParserError("JUnit knows nothing about the " + str + " option"));
-    }
-    label201:
-    return copyArray(paramVarArgs, i, paramVarArgs.length);
+    return new String[0];
   }
   
   void parseParameters(String[] paramArrayOfString)
   {
     int j = paramArrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      String str = paramArrayOfString[i];
+      try
       {
-        String str = paramArrayOfString[i];
-        try
-        {
-          this.classes.add(Classes.getClass(str));
-          i += 1;
-        }
-        catch (ClassNotFoundException localClassNotFoundException)
-        {
-          for (;;)
-          {
-            this.parserErrors.add(new IllegalArgumentException("Could not find class [" + str + "]", localClassNotFoundException));
-          }
-        }
+        this.classes.add(Classes.getClass(str));
       }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        List localList = this.parserErrors;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Could not find class [");
+        localStringBuilder.append(str);
+        localStringBuilder.append("]");
+        localList.add(new IllegalArgumentException(localStringBuilder.toString(), localClassNotFoundException));
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runner.JUnitCommandLineParseResult
  * JD-Core Version:    0.7.0.1
  */

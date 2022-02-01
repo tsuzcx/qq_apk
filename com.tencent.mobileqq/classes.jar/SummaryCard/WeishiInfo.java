@@ -6,26 +6,20 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class WeishiInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList<WeishiFeed> cache_vecWeishiFeeds;
+  static ArrayList<WeishiFeed> cache_vecWeishiFeeds = new ArrayList();
   public String strSchema = "";
-  public ArrayList<WeishiFeed> vecWeishiFeeds;
+  public ArrayList<WeishiFeed> vecWeishiFeeds = null;
   
   static
   {
-    if (!WeishiInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_vecWeishiFeeds = new ArrayList();
-      WeishiFeed localWeishiFeed = new WeishiFeed();
-      cache_vecWeishiFeeds.add(localWeishiFeed);
-      return;
-    }
+    WeishiFeed localWeishiFeed = new WeishiFeed();
+    cache_vecWeishiFeeds.add(localWeishiFeed);
   }
   
   public WeishiInfo() {}
@@ -43,18 +37,17 @@ public final class WeishiInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -73,13 +66,20 @@ public final class WeishiInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (WeishiInfo)paramObject;
-    } while ((!JceUtil.equals(this.vecWeishiFeeds, paramObject.vecWeishiFeeds)) || (!JceUtil.equals(this.strSchema, paramObject.strSchema)));
-    return true;
+    }
+    paramObject = (WeishiInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.vecWeishiFeeds, paramObject.vecWeishiFeeds))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.strSchema, paramObject.strSchema)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -128,17 +128,19 @@ public final class WeishiInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecWeishiFeeds != null) {
-      paramJceOutputStream.write(this.vecWeishiFeeds, 0);
+    Object localObject = this.vecWeishiFeeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.strSchema != null) {
-      paramJceOutputStream.write(this.strSchema, 1);
+    localObject = this.strSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.WeishiInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,58 +22,95 @@ class MsfCmdConfig$d
   
   protected void a(int paramInt, List paramList)
   {
-    Pair localPair = null;
-    boolean bool = false;
-    Object localObject = BaseApplication.getContext().getSharedPreferences("pref_safemode_not_exit", 0);
-    SharedPreferences.Editor localEditor;
-    if (paramInt > ((SharedPreferences)localObject).getInt("key_not_exit_version", 0))
+    Object localObject = BaseApplication.getContext().getSharedPreferences("not_restart_control_file", 4);
+    boolean bool1 = false;
+    if (paramInt > ((SharedPreferences)localObject).getInt("key_not_restart_version", 0))
     {
-      localEditor = ((SharedPreferences)localObject).edit();
-      localEditor.putInt("key_not_exit_version", paramInt);
+      SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
+      localEditor.putInt("key_not_restart_version", paramInt);
       Iterator localIterator = paramList.iterator();
-      localObject = null;
-      paramList = localPair;
-      if (localIterator.hasNext())
+      paramList = null;
+      localObject = paramList;
+      paramInt = 2147483647;
+      int i = 100;
+      List localList = paramList;
+      for (;;)
       {
-        localPair = (Pair)localIterator.next();
-        if ("enable".equals(localPair.first)) {
-          bool = Boolean.parseBoolean((String)localPair.second);
+        if (!localIterator.hasNext()) {
+          break label290;
+        }
+        Pair localPair = (Pair)localIterator.next();
+        if ("enable".equals(localPair.first))
+        {
+          bool1 = Boolean.parseBoolean((String)localPair.second);
+        }
+        else if ("maxCrashNum".equals(localPair.first))
+        {
+          if (localPair.second == null) {
+            paramInt = 2147483647;
+          } else {
+            paramInt = Integer.parseInt((String)localPair.second);
+          }
+        }
+        else
+        {
+          boolean bool2 = "crashType".equals(localPair.first);
+          paramList = "";
+          if (bool2)
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localList = paramList;
+          }
+          else if ("crashStack".equals(localPair.first))
+          {
+            if (localPair.second != null) {
+              paramList = (String)localPair.second;
+            }
+            localObject = paramList;
+          }
+          else if ("delayMill".equals(localPair.first))
+          {
+            if (localPair.second == null)
+            {
+              paramList = localList;
+              break;
+            }
+            i = Integer.parseInt((String)localPair.second);
+          }
         }
       }
-    }
-    for (;;)
-    {
-      break;
-      if ("crashType".equals(localPair.first))
-      {
-        if (localPair.second == null) {}
-        for (localObject = "";; localObject = (String)localPair.second) {
-          break;
-        }
-      }
-      if ("crashStack".equals(localPair.first))
-      {
-        if (localPair.second == null) {}
-        for (paramList = "";; paramList = (String)localPair.second) {
-          break;
-        }
-        localEditor.putBoolean("key_not_exit_enable", bool);
-        localEditor.putString("key_not_exit_crash_type", (String)localObject);
-        localEditor.putString("key_not_exit_crash_stack", paramList);
-        localEditor.commit();
-        return;
-      }
+      label290:
+      paramList = new StringBuilder();
+      paramList.append("enable=");
+      paramList.append(bool1);
+      paramList.append(",maxCrashNum=");
+      paramList.append(paramInt);
+      paramList.append(",crashType=");
+      paramList.append(localList);
+      paramList.append(",crashStack=");
+      paramList.append((String)localObject);
+      paramList.append(",delayMill=");
+      paramList.append(i);
+      QLog.d("MsfCmdConfig", 1, paramList.toString());
+      localEditor.putBoolean("key_not_restart_enable", bool1);
+      localEditor.putInt("key_not_restart_max_crash", paramInt);
+      localEditor.putString("key_not_restart_crash_type", localList);
+      localEditor.putString("key_not_restart_crash_stack", (String)localObject);
+      localEditor.putInt("key_not_restart_delay_mill", i);
+      localEditor.commit();
     }
   }
   
   protected boolean a()
   {
-    return ("not_exit".equals(this.a)) && (this.b != null) && (this.b.size() > 0);
+    return ("not_auto_restart".equals(this.a)) && (this.b != null) && (this.b.size() > 0);
   }
   
   protected boolean a(Pair paramPair)
   {
-    if ((!"enable".equals(paramPair.first)) && (!"crashType".equals(paramPair.first)) && (!"crashStack".equals(paramPair.first))) {
+    if ((!"enable".equals(paramPair.first)) && (!"maxCrashNum".equals(paramPair.first)) && (!"crashType".equals(paramPair.first)) && (!"crashStack".equals(paramPair.first)) && (!"delayMill".equals(paramPair.first))) {
       return false;
     }
     return (!"enable".equals(paramPair.first)) || (!TextUtils.isEmpty((CharSequence)paramPair.second));
@@ -80,7 +118,7 @@ class MsfCmdConfig$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.d
  * JD-Core Version:    0.7.0.1
  */

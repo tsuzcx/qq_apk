@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.LPaint;
@@ -42,14 +42,13 @@ public class SolidLayer
     super.addValueCallback(paramT, paramLottieValueCallback);
     if (paramT == LottieProperty.COLOR_FILTER)
     {
-      if (paramLottieValueCallback == null) {
+      if (paramLottieValueCallback == null)
+      {
         this.colorFilterAnimation = null;
+        return;
       }
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
     }
-    else {
-      return;
-    }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
   }
   
   public void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -58,37 +57,50 @@ public class SolidLayer
     if (j == 0) {
       return;
     }
-    if (this.transform.getOpacity() == null) {}
-    for (int i = 100;; i = ((Integer)this.transform.getOpacity().getValue()).intValue())
+    int i;
+    if (this.transform.getOpacity() == null) {
+      i = 100;
+    } else {
+      i = ((Integer)this.transform.getOpacity().getValue()).intValue();
+    }
+    paramInt = (int)(paramInt / 255.0F * (j / 255.0F * i / 100.0F) * 255.0F);
+    this.paint.setAlpha(paramInt);
+    Object localObject = this.colorFilterAnimation;
+    if (localObject != null) {
+      this.paint.setColorFilter((ColorFilter)((BaseKeyframeAnimation)localObject).getValue());
+    }
+    if (paramInt > 0)
     {
-      float f1 = paramInt / 255.0F;
-      float f2 = j / 255.0F;
-      paramInt = (int)(i * f2 / 100.0F * f1 * 255.0F);
-      this.paint.setAlpha(paramInt);
-      if (this.colorFilterAnimation != null) {
-        this.paint.setColorFilter((ColorFilter)this.colorFilterAnimation.getValue());
-      }
-      if (paramInt <= 0) {
-        break;
-      }
-      this.points[0] = 0.0F;
-      this.points[1] = 0.0F;
-      this.points[2] = this.layerModel.getSolidWidth();
-      this.points[3] = 0.0F;
-      this.points[4] = this.layerModel.getSolidWidth();
+      localObject = this.points;
+      localObject[0] = 0.0F;
+      localObject[1] = 0.0F;
+      localObject[2] = this.layerModel.getSolidWidth();
+      localObject = this.points;
+      localObject[3] = 0.0F;
+      localObject[4] = this.layerModel.getSolidWidth();
       this.points[5] = this.layerModel.getSolidHeight();
-      this.points[6] = 0.0F;
-      this.points[7] = this.layerModel.getSolidHeight();
+      localObject = this.points;
+      localObject[6] = 0.0F;
+      localObject[7] = this.layerModel.getSolidHeight();
       paramMatrix.mapPoints(this.points);
       this.path.reset();
-      this.path.moveTo(this.points[0], this.points[1]);
-      this.path.lineTo(this.points[2], this.points[3]);
-      this.path.lineTo(this.points[4], this.points[5]);
-      this.path.lineTo(this.points[6], this.points[7]);
-      this.path.lineTo(this.points[0], this.points[1]);
+      paramMatrix = this.path;
+      localObject = this.points;
+      paramMatrix.moveTo(localObject[0], localObject[1]);
+      paramMatrix = this.path;
+      localObject = this.points;
+      paramMatrix.lineTo(localObject[2], localObject[3]);
+      paramMatrix = this.path;
+      localObject = this.points;
+      paramMatrix.lineTo(localObject[4], localObject[5]);
+      paramMatrix = this.path;
+      localObject = this.points;
+      paramMatrix.lineTo(localObject[6], localObject[7]);
+      paramMatrix = this.path;
+      localObject = this.points;
+      paramMatrix.lineTo(localObject[0], localObject[1]);
       this.path.close();
       paramCanvas.drawPath(this.path, this.paint);
-      return;
     }
   }
   

@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.mini.entry.search.data;
 
-import NS_COMM.COMM.StCommonExt;
-import NS_STORE_APP_SEARCH.MiniAppSearch.StSearchAppRsp;
+import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StGetGuessYouLikeRsp;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -13,48 +11,41 @@ class MiniAppSearchDataManager$3
 {
   MiniAppSearchDataManager$3(MiniAppSearchDataManager paramMiniAppSearchDataManager) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject arg2)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    Object localObject1;
-    if ((paramBoolean) && (??? != null))
+    Object localObject;
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      long l = ???.optLong("retCode");
-      localObject1 = ???.optString("errMsg");
-      QLog.d("MiniAppSearchDataManager", 1, "loadMoreSearchAppRequest, retCode = " + l + ", errMsg = " + (String)localObject1);
+      long l = paramJSONObject.optLong("retCode");
+      localObject = paramJSONObject.optString("errMsg");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendGuessYouLikeRequest, retCode = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(", errMsg = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MiniAppSearchDataManager", 1, localStringBuilder.toString());
       if (l != 0L) {
         return;
       }
-      localObject1 = (MiniAppSearch.StSearchAppRsp)???.opt("searchAppResponse");
-      if (localObject1 != null) {
-        MiniAppSearchDataManager.access$600(this.this$0, ((MiniAppSearch.StSearchAppRsp)localObject1).appList.get());
+      paramJSONObject = (STORE_APP_CLIENT.StGetGuessYouLikeRsp)paramJSONObject.opt("searchGuessYouLikeResponse");
+      if (paramJSONObject != null) {
+        MiniAppSearchDataManager.access$700(this.this$0, paramJSONObject.appList.get());
       }
     }
-    for (;;)
+    else
     {
-      synchronized (MiniAppSearchDataManager.access$200(this.this$0))
-      {
-        MiniAppSearchDataManager localMiniAppSearchDataManager = this.this$0;
-        if (((MiniAppSearch.StSearchAppRsp)localObject1).isFinished.get() == 1)
-        {
-          paramBoolean = bool;
-          MiniAppSearchDataManager.access$302(localMiniAppSearchDataManager, paramBoolean);
-          MiniAppSearchDataManager.access$402(this.this$0, (COMM.StCommonExt)((MiniAppSearch.StSearchAppRsp)localObject1).extInfo.get());
-          synchronized (MiniAppSearchDataManager.access$200(this.this$0))
-          {
-            MiniAppSearchDataManager.access$502(this.this$0, false);
-            return;
-          }
-        }
-        paramBoolean = false;
-      }
-      QLog.e("MiniAppSearchDataManager", 1, "loadMoreSearchAppRequest, isSuccess = " + paramBoolean + ", ret = " + ???);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendGuessYouLikeRequest, isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ret = ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.e("MiniAppSearchDataManager", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.3
  * JD-Core Version:    0.7.0.1
  */

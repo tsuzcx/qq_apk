@@ -1,0 +1,16 @@
+package com.tencent.mobileqq.data.troop;
+
+import java.io.Serializable;
+
+public class TroopMemberCard$StoryInfo
+  implements Serializable
+{
+  private static final long serialVersionUID = 1L;
+  public String mCoverUrl;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.data.troop.TroopMemberCard.StoryInfo
+ * JD-Core Version:    0.7.0.1
+ */

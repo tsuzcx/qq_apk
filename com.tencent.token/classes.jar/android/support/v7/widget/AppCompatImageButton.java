@@ -6,170 +6,168 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.RestrictTo;
-import android.support.v4.view.TintableBackgroundView;
-import android.support.v4.widget.TintableImageSourceView;
-import android.support.v7.appcompat.R.attr;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
+import com.tencent.token.fn;
+import com.tencent.token.gr;
+import com.tencent.token.hg.a;
+import com.tencent.token.iw;
+import com.tencent.token.ja;
+import com.tencent.token.jt;
 
 public class AppCompatImageButton
   extends ImageButton
-  implements TintableBackgroundView, TintableImageSourceView
+  implements fn, gr
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
-  private final AppCompatImageHelper mImageHelper;
-  
-  public AppCompatImageButton(Context paramContext)
-  {
-    this(paramContext, null);
-  }
+  private final iw a = new iw(this);
+  private final ja b;
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.imageButtonStyle);
+    this(paramContext, paramAttributeSet, hg.a.imageButtonStyle);
   }
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
-    this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
-    this.mImageHelper = new AppCompatImageHelper(this);
-    this.mImageHelper.loadFromAttributes(paramAttributeSet, paramInt);
+    super(jt.a(paramContext), paramAttributeSet, paramInt);
+    this.a.a(paramAttributeSet, paramInt);
+    this.b = new ja(this);
+    this.b.a(paramAttributeSet, paramInt);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.applySupportBackgroundTint();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((iw)localObject).d();
     }
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    localObject = this.b;
+    if (localObject != null) {
+      ((ja)localObject).d();
     }
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintList();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.b();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.mBackgroundTintHelper != null) {
-      return this.mBackgroundTintHelper.getSupportBackgroundTintMode();
+    iw localiw = this.a;
+    if (localiw != null) {
+      return localiw.c();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public ColorStateList getSupportImageTintList()
   {
-    if (this.mImageHelper != null) {
-      return this.mImageHelper.getSupportImageTintList();
+    ja localja = this.b;
+    if (localja != null) {
+      return localja.b();
     }
     return null;
   }
   
-  @Nullable
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    if (this.mImageHelper != null) {
-      return this.mImageHelper.getSupportImageTintMode();
+    ja localja = this.b;
+    if (localja != null) {
+      return localja.c();
     }
     return null;
   }
   
   public boolean hasOverlappingRendering()
   {
-    return (this.mImageHelper.hasOverlappingRendering()) && (super.hasOverlappingRendering());
+    return (this.b.a()) && (super.hasOverlappingRendering());
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundDrawable(paramDrawable);
+    paramDrawable = this.a;
+    if (paramDrawable != null) {
+      paramDrawable.a();
     }
   }
   
-  public void setBackgroundResource(@DrawableRes int paramInt)
+  public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.onSetBackgroundResource(paramInt);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramInt);
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
     super.setImageBitmap(paramBitmap);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramBitmap = this.b;
+    if (paramBitmap != null) {
+      paramBitmap.d();
     }
   }
   
-  public void setImageDrawable(@Nullable Drawable paramDrawable)
+  public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramDrawable = this.b;
+    if (paramDrawable != null) {
+      paramDrawable.d();
     }
   }
   
-  public void setImageResource(@DrawableRes int paramInt)
+  public void setImageResource(int paramInt)
   {
-    this.mImageHelper.setImageResource(paramInt);
+    this.b.a(paramInt);
   }
   
-  public void setImageURI(@Nullable Uri paramUri)
+  public void setImageURI(Uri paramUri)
   {
     super.setImageURI(paramUri);
-    if (this.mImageHelper != null) {
-      this.mImageHelper.applySupportImageTint();
+    paramUri = this.b;
+    if (paramUri != null) {
+      paramUri.d();
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
+    iw localiw = this.a;
+    if (localiw != null) {
+      localiw.a(paramMode);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportImageTintList(@Nullable ColorStateList paramColorStateList)
+  public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    if (this.mImageHelper != null) {
-      this.mImageHelper.setSupportImageTintList(paramColorStateList);
+    ja localja = this.b;
+    if (localja != null) {
+      localja.a(paramColorStateList);
     }
   }
   
-  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSupportImageTintMode(@Nullable PorterDuff.Mode paramMode)
+  public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mImageHelper != null) {
-      this.mImageHelper.setSupportImageTintMode(paramMode);
+    ja localja = this.b;
+    if (localja != null) {
+      localja.a(paramMode);
     }
   }
 }

@@ -1,30 +1,41 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import android.widget.ImageView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.v;
 
 public abstract interface a
 {
-  public abstract boolean O(RecyclerView.v paramv);
+  public abstract View M(RecyclerView.v paramv);
   
-  public abstract boolean P(RecyclerView.v paramv);
+  public abstract boolean N(RecyclerView.v paramv);
   
-  public abstract void a(RecyclerView.v paramv, View paramView, Object paramObject, int paramInt);
+  public abstract void ak(int paramInt, boolean paramBoolean);
   
-  public abstract boolean a(RecyclerView.v paramv, Object paramObject);
+  public abstract boolean cPn();
   
-  public abstract View b(RecyclerView paramRecyclerView, RecyclerView.v paramv);
+  public abstract int[] cPo();
   
-  public abstract void b(int paramInt1, int paramInt2, Object paramObject, boolean paramBoolean);
+  public abstract ImageView cPp();
   
-  public abstract void bn(Object paramObject);
+  public abstract int cPq();
   
-  public abstract void cz(View paramView);
+  public abstract void e(View paramView, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean e(RecyclerView paramRecyclerView, RecyclerView.v paramv);
+  
+  public abstract void eo(Object paramObject);
+  
+  public abstract void f(int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract boolean i(RecyclerView paramRecyclerView);
+  
+  public abstract void m(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,25 +6,21 @@ public abstract class SecondImageProcessor
 {
   public final BitmapReference doProcess(BitmapReference paramBitmapReference, boolean paramBoolean)
   {
-    BitmapReference localBitmapReference1;
     if (paramBitmapReference == null) {
-      localBitmapReference1 = null;
+      return null;
     }
-    BitmapReference localBitmapReference2;
-    do
+    BitmapReference localBitmapReference = process(paramBitmapReference);
+    if (localBitmapReference != null)
     {
-      do
-      {
-        return localBitmapReference1;
-        localBitmapReference2 = process(paramBitmapReference);
-        localBitmapReference1 = paramBitmapReference;
-      } while (localBitmapReference2 == null);
-      localBitmapReference1 = paramBitmapReference;
-    } while (localBitmapReference2 == paramBitmapReference);
-    if ((paramBoolean) && (!paramBitmapReference.isRecycled())) {
-      paramBitmapReference.release();
+      if (localBitmapReference == paramBitmapReference) {
+        return paramBitmapReference;
+      }
+      if ((paramBoolean) && (!paramBitmapReference.isRecycled())) {
+        paramBitmapReference.release();
+      }
+      return localBitmapReference;
     }
-    return localBitmapReference2;
+    return paramBitmapReference;
   }
   
   @Public
@@ -35,7 +31,7 @@ public abstract class SecondImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.SecondImageProcessor
  * JD-Core Version:    0.7.0.1
  */

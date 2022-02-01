@@ -6,226 +6,441 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaFormat;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.view.Surface;
 import com.tencent.tmediacodec.codec.FormatWrapper;
 import com.tencent.tmediacodec.codec.ReuseCodecWrapper;
 import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tmediacodec/util/TUtils;", "", "()V", "CSD_0", "", "CSD_1", "CSD_2", "CSD_INDEX_ARRAY", "", "getCSD_INDEX_ARRAY", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "ceilDivide", "", "numerator", "denominator", "getCodeName", "codec", "Landroid/media/MediaCodec;", "getCodecMaxInputSize", "sampleMimeType", "width", "height", "secure", "", "getCsdBuffers", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "format", "Landroid/media/MediaFormat;", "getMaxInputSize", "codecWrapper", "Lcom/tencent/tmediacodec/codec/ReuseCodecWrapper;", "Lcom/tencent/tmediacodec/codec/FormatWrapper;", "getSurfaceTextureName", "surface", "Landroid/view/Surface;", "isAdaptive", "capabilities", "Landroid/media/MediaCodecInfo$CodecCapabilities;", "isAdaptiveV19", "isSecure", "isSecureV21", "isVideo", "nameOrType", "setCsdBuffers", "", "csdBuffers", "", "tmediacodec_lib_debug"}, k=1, mv={1, 1, 15})
 public final class TUtils
 {
-  @NotNull
+  @NonNull
   public static final String CSD_0 = "csd-0";
-  @NotNull
+  @NonNull
   public static final String CSD_1 = "csd-1";
-  @NotNull
+  @NonNull
   public static final String CSD_2 = "csd-2";
-  @NotNull
-  private static final String[] CSD_INDEX_ARRAY = { "csd-0", "csd-1", "csd-2" };
-  public static final TUtils INSTANCE = new TUtils();
-  @NotNull
+  @NonNull
+  public static final String[] CSD_INDEX_ARRAY = { "csd-0", "csd-1", "csd-2" };
+  @NonNull
   public static final String TAG = "TUtils";
+  private static boolean deviceNeedsSetOutputSurfaceWorkaround;
+  private static boolean evaluatedDeviceNeedsSetOutputSurfaceWorkaround;
+  private static Set<String> sBlackDevices = new HashSet();
   
-  @TargetApi(19)
-  private final boolean isAdaptiveV19(MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+  static
   {
-    return paramCodecCapabilities.isFeatureSupported("adaptive-playback");
+    sBlackDevices.add("1601");
+    sBlackDevices.add("1713");
+    sBlackDevices.add("1714");
+    sBlackDevices.add("A10-70F");
+    sBlackDevices.add("A10-70L");
+    sBlackDevices.add("A1601");
+    sBlackDevices.add("A2016a40");
+    sBlackDevices.add("A7000-a");
+    sBlackDevices.add("A7000plus");
+    sBlackDevices.add("A7010a48");
+    sBlackDevices.add("A7020a48");
+    sBlackDevices.add("AquaPowerM");
+    sBlackDevices.add("ASUS_X00AD_2");
+    sBlackDevices.add("Aura_Note_2");
+    sBlackDevices.add("BLACK-1X");
+    sBlackDevices.add("BRAVIA_ATV2");
+    sBlackDevices.add("BRAVIA_ATV3_4K");
+    sBlackDevices.add("C1");
+    sBlackDevices.add("ComioS1");
+    sBlackDevices.add("CP8676_I02");
+    sBlackDevices.add("CPH1609");
+    sBlackDevices.add("CPY83_I00");
+    sBlackDevices.add("cv1");
+    sBlackDevices.add("cv3");
+    sBlackDevices.add("deb");
+    sBlackDevices.add("E5643");
+    sBlackDevices.add("ELUGA_A3_Pro");
+    sBlackDevices.add("ELUGA_Note");
+    sBlackDevices.add("ELUGA_Prim");
+    sBlackDevices.add("ELUGA_Ray_X");
+    sBlackDevices.add("EverStar_S");
+    sBlackDevices.add("F3111");
+    sBlackDevices.add("F3113");
+    sBlackDevices.add("F3116");
+    sBlackDevices.add("F3211");
+    sBlackDevices.add("F3213");
+    sBlackDevices.add("F3215");
+    sBlackDevices.add("F3311");
+    sBlackDevices.add("flo");
+    sBlackDevices.add("fugu");
+    sBlackDevices.add("GiONEE_CBL7513");
+    sBlackDevices.add("GiONEE_GBL7319");
+    sBlackDevices.add("GIONEE_GBL7360");
+    sBlackDevices.add("GIONEE_SWW1609");
+    sBlackDevices.add("GIONEE_SWW1627");
+    sBlackDevices.add("GIONEE_SWW1631");
+    sBlackDevices.add("GIONEE_WBL5708");
+    sBlackDevices.add("GIONEE_WBL7365");
+    sBlackDevices.add("GIONEE_WBL7519");
+    sBlackDevices.add("griffin");
+    sBlackDevices.add("htc_e56ml_dtul");
+    sBlackDevices.add("hwALE-H");
+    sBlackDevices.add("HWBLN-H");
+    sBlackDevices.add("HWCAM-H");
+    sBlackDevices.add("HWVNS-H");
+    sBlackDevices.add("HWWAS-H");
+    sBlackDevices.add("i9031");
+    sBlackDevices.add("iball8735_9806");
+    sBlackDevices.add("Infinix-X572");
+    sBlackDevices.add("iris60");
+    sBlackDevices.add("itel_S41");
+    sBlackDevices.add("j2xlteins");
+    sBlackDevices.add("JGZ");
+    sBlackDevices.add("K50a40");
+    sBlackDevices.add("kate");
+    sBlackDevices.add("l5460");
+    sBlackDevices.add("le_x6");
+    sBlackDevices.add("LS-5017");
+    sBlackDevices.add("M5c");
+    sBlackDevices.add("manning");
+    sBlackDevices.add("marino_f");
+    sBlackDevices.add("MEIZU_M5");
+    sBlackDevices.add("mh");
+    sBlackDevices.add("mido");
+    sBlackDevices.add("c");
+    sBlackDevices.add("namath");
+    sBlackDevices.add("nicklaus_f");
+    sBlackDevices.add("NX541J");
+    sBlackDevices.add("NX573J");
+    sBlackDevices.add("OnePlus5T");
+    sBlackDevices.add("p212");
+    sBlackDevices.add("P681");
+    sBlackDevices.add("P85");
+    sBlackDevices.add("panell_d");
+    sBlackDevices.add("panell_dl");
+    sBlackDevices.add("panell_ds");
+    sBlackDevices.add("panell_dt");
+    sBlackDevices.add("PB2-670M");
+    sBlackDevices.add("PGN528");
+    sBlackDevices.add("PGN610");
+    sBlackDevices.add("PGN611");
+    sBlackDevices.add("Phantom6");
+    sBlackDevices.add("Pixi4-7_3G");
+    sBlackDevices.add("Pixi5-10_4G");
+    sBlackDevices.add("PLE");
+    sBlackDevices.add("PRO7S");
+    sBlackDevices.add("Q350");
+    sBlackDevices.add("Q4260");
+    sBlackDevices.add("Q427");
+    sBlackDevices.add("Q4310");
+    sBlackDevices.add("Q5");
+    sBlackDevices.add("QM16XE_U");
+    sBlackDevices.add("QX1");
+    sBlackDevices.add("santoni");
+    sBlackDevices.add("Slate_Pro");
+    sBlackDevices.add("SVP-DTV15");
+    sBlackDevices.add("s905x018");
+    sBlackDevices.add("taido_row");
+    sBlackDevices.add("TB3-730F");
+    sBlackDevices.add("TB3-730X");
+    sBlackDevices.add("TB3-850F");
+    sBlackDevices.add("TB3-850M");
+    sBlackDevices.add("tcl_eu");
+    sBlackDevices.add("V1");
+    sBlackDevices.add("V23GB");
+    sBlackDevices.add("V5");
+    sBlackDevices.add("vernee_M5");
+    sBlackDevices.add("watson");
+    sBlackDevices.add("whyred");
+    sBlackDevices.add("woods_f");
+    sBlackDevices.add("woods_fn");
+    sBlackDevices.add("X3_HK");
+    sBlackDevices.add("XE2X");
+    sBlackDevices.add("XT1663");
+    sBlackDevices.add("Z12_PRO");
+    sBlackDevices.add("Z80");
   }
   
-  @TargetApi(21)
-  private final boolean isSecureV21(MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
-  {
-    return paramCodecCapabilities.isFeatureSupported("secure-playback");
-  }
-  
-  public final int ceilDivide(int paramInt1, int paramInt2)
+  public static int ceilDivide(int paramInt1, int paramInt2)
   {
     return (paramInt1 + paramInt2 - 1) / paramInt2;
   }
   
-  @NotNull
-  public final String[] getCSD_INDEX_ARRAY()
+  public static boolean codecNeedsSetOutputSurfaceWorkaround()
   {
-    return CSD_INDEX_ARRAY;
+    for (;;)
+    {
+      try
+      {
+        if (!evaluatedDeviceNeedsSetOutputSurfaceWorkaround)
+        {
+          Object localObject1;
+          if ("dangal".equals(Build.DEVICE))
+          {
+            deviceNeedsSetOutputSurfaceWorkaround = true;
+          }
+          else if ((Build.VERSION.SDK_INT <= 27) && ("HWEML".equals(Build.DEVICE)))
+          {
+            deviceNeedsSetOutputSurfaceWorkaround = true;
+          }
+          else if (Build.VERSION.SDK_INT < 27)
+          {
+            if (sBlackDevices.contains(Build.DEVICE)) {
+              deviceNeedsSetOutputSurfaceWorkaround = true;
+            }
+            localObject1 = Build.MODEL;
+            i = ((String)localObject1).hashCode();
+            if (i != -594534941)
+            {
+              if (i != 2006354)
+              {
+                if ((i != 2006367) || (!((String)localObject1).equals("AFTN"))) {
+                  break label222;
+                }
+                i = 1;
+                break label224;
+              }
+              if (!((String)localObject1).equals("AFTA")) {
+                break label222;
+              }
+              i = 0;
+              break label224;
+            }
+            if (!((String)localObject1).equals("JSN-L21")) {
+              break label222;
+            }
+            i = 2;
+            break label224;
+            deviceNeedsSetOutputSurfaceWorkaround = true;
+          }
+          if (LogUtils.isLogEnable())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("deviceNeedsSetOutputSurfaceWorkaround:");
+            ((StringBuilder)localObject1).append(deviceNeedsSetOutputSurfaceWorkaround);
+            LogUtils.d("TUtils", ((StringBuilder)localObject1).toString());
+          }
+          evaluatedDeviceNeedsSetOutputSurfaceWorkaround = true;
+        }
+        else
+        {
+          return deviceNeedsSetOutputSurfaceWorkaround;
+        }
+      }
+      finally {}
+      label222:
+      int i = -1;
+      label224:
+      if ((i == 0) || (i == 1) || (i == 2)) {}
+    }
   }
   
-  @NotNull
-  public final String getCodeName(@NotNull MediaCodec paramMediaCodec)
+  @NonNull
+  public static String getCodeName(@NonNull MediaCodec paramMediaCodec)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaCodec, "codec");
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      paramMediaCodec = paramMediaCodec.getName();
-      Intrinsics.checkExpressionValueIsNotNull(paramMediaCodec, "codec.name");
-      return paramMediaCodec;
+    if (Build.VERSION.SDK_INT >= 18) {
+      return paramMediaCodec.getName();
     }
     return "unknow-low-api-18";
   }
   
-  public final int getCodecMaxInputSize(@NotNull String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int getCodecMaxInputSize(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    int i = 2;
-    Intrinsics.checkParameterIsNotNull(paramString, "sampleMimeType");
-    if ((paramInt1 == -1) || (paramInt2 == -1)) {
-      return -1;
-    }
-    switch (paramString.hashCode())
-    {
-    default: 
-    case -1664118616: 
-      do
-      {
-        return -1;
-      } while (!paramString.equals("video/3gpp"));
-      label95:
-      paramInt1 *= paramInt2;
-      paramInt2 = i;
-    }
-    for (;;)
-    {
-      label102:
-      return paramInt1 * 3 / (paramInt2 * 2);
-      if (!paramString.equals("video/avc")) {
-        break;
-      }
-      if ((Intrinsics.areEqual("BRAVIA 4K 2015", Build.MODEL)) || ((Intrinsics.areEqual("Amazon", Build.MANUFACTURER)) && ((Intrinsics.areEqual("KFSOWI", Build.MODEL)) || ((Intrinsics.areEqual("AFTS", Build.MODEL)) && (paramBoolean)))))
-      {
-        return -1;
-        if (!paramString.equals("video/x-vnd.on2.vp8")) {
-          break;
-        }
-        paramInt1 *= paramInt2;
-        paramInt2 = i;
-        continue;
-        if (!paramString.equals("video/hevc")) {
-          break;
-        }
-        for (;;)
-        {
-          paramInt1 *= paramInt2;
-          paramInt2 = 4;
-          break label102;
-          if (!paramString.equals("video/x-vnd.on2.vp9")) {
-            break;
-          }
-        }
-        if (!paramString.equals("video/mp4v-es")) {
-          break;
-        }
-        break label95;
-      }
-      paramInt1 = ceilDivide(paramInt1, 16) * ceilDivide(paramInt2, 16) * 16 * 16;
-      paramInt2 = i;
-    }
+    return getCodecMaxInputSize(paramString, paramInt1, paramInt2, false);
   }
   
-  @NotNull
-  public final ArrayList<byte[]> getCsdBuffers(@NotNull MediaFormat paramMediaFormat)
+  public static int getCodecMaxInputSize(@NonNull String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "format");
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = CSD_INDEX_ARRAY;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    if (paramInt1 != -1)
     {
-      ByteBuffer localByteBuffer = paramMediaFormat.getByteBuffer(arrayOfString[i]);
-      if (localByteBuffer != null) {
-        localArrayList.add(localByteBuffer.array());
+      if (paramInt2 == -1) {
+        return -1;
+      }
+      int i = paramString.hashCode();
+      int j = 4;
+      switch (i)
+      {
+      default: 
+        break;
+      case 1599127257: 
+        if (paramString.equals("video/x-vnd.on2.vp9")) {
+          i = 5;
+        }
+        break;
+      case 1599127256: 
+        if (paramString.equals("video/x-vnd.on2.vp8")) {
+          i = 3;
+        }
+        break;
+      case 1331836730: 
+        if (paramString.equals("video/avc")) {
+          i = 2;
+        }
+        break;
+      case 1187890754: 
+        if (paramString.equals("video/mp4v-es")) {
+          i = 1;
+        }
+        break;
+      case -1662541442: 
+        if (paramString.equals("video/hevc")) {
+          i = 4;
+        }
+        break;
+      case -1664118616: 
+        if (paramString.equals("video/3gpp")) {
+          i = 0;
+        }
+        break;
+      }
+      i = -1;
+      if ((i != 0) && (i != 1)) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if ((i != 4) && (i != 5)) {
+              return -1;
+            }
+            paramInt2 = paramInt1 * paramInt2;
+            paramInt1 = j;
+            break label320;
+          }
+        }
+        else
+        {
+          if (!"BRAVIA 4K 2015".equals(Build.MODEL))
+          {
+            if ("Amazon".equals(Build.MANUFACTURER))
+            {
+              if ("KFSOWI".equals(Build.MODEL)) {
+                break label306;
+              }
+              if (("AFTS".equals(Build.MODEL)) && (paramBoolean)) {
+                return -1;
+              }
+            }
+            paramInt1 = ceilDivide(paramInt1, 16) * ceilDivide(paramInt2, 16) * 16 * 16;
+            break label312;
+          }
+          label306:
+          return -1;
+        }
+      }
+      paramInt1 *= paramInt2;
+      label312:
+      i = 2;
+      paramInt2 = paramInt1;
+      paramInt1 = i;
+      label320:
+      return paramInt2 * 3 / (paramInt1 * 2);
+    }
+    return -1;
+  }
+  
+  @NonNull
+  public static ArrayList<byte[]> getCsdBuffers(@NonNull MediaFormat paramMediaFormat)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    for (;;)
+    {
+      Object localObject = CSD_INDEX_ARRAY;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = paramMediaFormat.getByteBuffer(localObject[i]);
+      if (localObject != null) {
+        localArrayList.add(((ByteBuffer)localObject).array());
       }
       i += 1;
     }
     return localArrayList;
   }
   
-  public final int getMaxInputSize(@NotNull ReuseCodecWrapper paramReuseCodecWrapper, @NotNull FormatWrapper paramFormatWrapper)
+  public static int getMaxInputSize(@NonNull ReuseCodecWrapper paramReuseCodecWrapper, @NonNull FormatWrapper paramFormatWrapper)
   {
-    Intrinsics.checkParameterIsNotNull(paramReuseCodecWrapper, "codecWrapper");
-    Intrinsics.checkParameterIsNotNull(paramFormatWrapper, "format");
-    if (paramFormatWrapper.getMaxInputSize() != -1)
+    if (paramFormatWrapper.maxInputSize != -1)
     {
-      int k = paramFormatWrapper.getInitializationData().size();
       int i = 0;
       int j = 0;
-      while (i < k)
+      while (i < paramFormatWrapper.initializationData.size())
       {
-        j += ((byte[])paramFormatWrapper.getInitializationData().get(i)).length;
+        j += ((byte[])paramFormatWrapper.initializationData.get(i)).length;
         i += 1;
       }
-      return paramFormatWrapper.getMaxInputSize() + j;
+      return paramFormatWrapper.maxInputSize + j;
     }
-    return getCodecMaxInputSize(paramFormatWrapper.getSampleMimeType(), paramFormatWrapper.getWidth(), paramFormatWrapper.getHeight(), paramReuseCodecWrapper.getSecure());
+    return getCodecMaxInputSize(paramFormatWrapper.sampleMimeType, paramFormatWrapper.width, paramFormatWrapper.height, paramReuseCodecWrapper.secure);
   }
   
-  @NotNull
-  public final String getSurfaceTextureName(@NotNull Surface paramSurface)
+  @NonNull
+  public static String getSurfaceTextureName(@NonNull Surface paramSurface)
   {
-    Intrinsics.checkParameterIsNotNull(paramSurface, "surface");
     try
     {
       Field localField = ReflectUtils.getField(Surface.class, "mName");
-      Intrinsics.checkExpressionValueIsNotNull(localField, "field");
       localField.setAccessible(true);
       paramSurface = String.valueOf(localField.get(paramSurface));
       return paramSurface;
     }
     catch (Throwable paramSurface)
     {
-      LogUtils.INSTANCE.e("TUtils", "getSurfaceTextureName failed", paramSurface);
+      LogUtils.e("TUtils", "getSurfaceTextureName failed", paramSurface);
     }
     return "";
   }
   
-  public final boolean isAdaptive(@NotNull MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+  public static boolean isAdaptive(@NonNull MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
   {
-    Intrinsics.checkParameterIsNotNull(paramCodecCapabilities, "capabilities");
     return (Build.VERSION.SDK_INT >= 19) && (isAdaptiveV19(paramCodecCapabilities));
   }
   
-  public final boolean isSecure(@NotNull MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+  @TargetApi(19)
+  private static boolean isAdaptiveV19(MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
   {
-    Intrinsics.checkParameterIsNotNull(paramCodecCapabilities, "capabilities");
+    return paramCodecCapabilities.isFeatureSupported("adaptive-playback");
+  }
+  
+  public static boolean isSecure(@NonNull MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+  {
     return (Build.VERSION.SDK_INT >= 21) && (isSecureV21(paramCodecCapabilities));
   }
   
-  public final boolean isVideo(@NotNull MediaFormat paramMediaFormat)
+  @TargetApi(21)
+  private static boolean isSecureV21(MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "format");
-    paramMediaFormat = paramMediaFormat.getString("mime");
-    Intrinsics.checkExpressionValueIsNotNull(paramMediaFormat, "format.getString(MediaFormat.KEY_MIME)");
-    return isVideo(paramMediaFormat);
+    return paramCodecCapabilities.isFeatureSupported("secure-playback");
   }
   
-  public final boolean isVideo(@NotNull String paramString)
+  public static boolean isVideo(@NonNull MediaFormat paramMediaFormat)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "nameOrType");
-    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)"video", false, 2, null);
+    return isVideo(paramMediaFormat.getString("mime"));
   }
   
-  public final void setCsdBuffers(@NotNull MediaFormat paramMediaFormat, @NotNull List<byte[]> paramList)
+  public static boolean isVideo(@NonNull String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramMediaFormat, "format");
-    Intrinsics.checkParameterIsNotNull(paramList, "csdBuffers");
+    return paramString.contains("video");
+  }
+  
+  public static void setCsdBuffers(@NonNull MediaFormat paramMediaFormat, @NonNull List paramList)
+  {
     int i = 0;
-    int j = ((Collection)paramList).size();
-    while (i < j)
+    while (i < paramList.size())
     {
-      paramMediaFormat.setByteBuffer("csd-" + i, ByteBuffer.wrap((byte[])paramList.get(i)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("csd-");
+      localStringBuilder.append(i);
+      paramMediaFormat.setByteBuffer(localStringBuilder.toString(), ByteBuffer.wrap((byte[])paramList.get(i)));
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmediacodec.util.TUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,13 @@ public final class StreamResetException
   
   public StreamResetException(ErrorCode paramErrorCode)
   {
-    super("stream was reset: " + paramErrorCode);
+    super(localStringBuilder.toString());
     this.errorCode = paramErrorCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http2.StreamResetException
  * JD-Core Version:    0.7.0.1
  */

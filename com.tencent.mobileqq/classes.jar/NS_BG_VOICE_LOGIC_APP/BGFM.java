@@ -12,8 +12,8 @@ public final class BGFM
 {
   static ArrayList<BroadcastForQzone> cache_stFmBroadcast;
   static ArrayList<BGMusicForQzone> cache_stFmLists = new ArrayList();
-  public ArrayList<BroadcastForQzone> stFmBroadcast;
-  public ArrayList<BGMusicForQzone> stFmLists;
+  public ArrayList<BroadcastForQzone> stFmBroadcast = null;
+  public ArrayList<BGMusicForQzone> stFmLists = null;
   
   static
   {
@@ -40,17 +40,19 @@ public final class BGFM
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFmLists != null) {
-      paramJceOutputStream.write(this.stFmLists, 1);
+    ArrayList localArrayList = this.stFmLists;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.stFmBroadcast != null) {
-      paramJceOutputStream.write(this.stFmBroadcast, 2);
+    localArrayList = this.stFmBroadcast;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_BG_VOICE_LOGIC_APP.BGFM
  * JD-Core Version:    0.7.0.1
  */

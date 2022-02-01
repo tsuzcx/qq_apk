@@ -1,36 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsData.QzoneGpsInfo;
-import cooperation.qzone.LbsData.QzonePoiInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public final class ibu
-  implements Parcelable.Creator
+  extends AccountObserver
 {
-  public LbsData.QzonePoiInfo a(Parcel paramParcel)
-  {
-    LbsData.QzonePoiInfo localQzonePoiInfo = new LbsData.QzonePoiInfo();
-    localQzonePoiInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localQzonePoiInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localQzonePoiInfo.g = paramParcel.readString();
-    if (paramParcel.readInt() == 1) {
-      localQzonePoiInfo.jdField_a_of_type_CooperationQzoneLbsData$QzoneGpsInfo = ((LbsData.QzoneGpsInfo)paramParcel.readParcelable(LbsData.QzoneGpsInfo.class.getClassLoader()));
-    }
-    return localQzonePoiInfo;
-  }
+  public ibu(String paramString, BusinessObserver paramBusinessObserver) {}
   
-  public LbsData.QzonePoiInfo[] a(int paramInt)
+  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
   {
-    return null;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
+      }
+    }
+    for (;;)
+    {
+      return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
+            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.a(1, true, localOpenID);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMTopBar android:id="@id/nph" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/jow" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/btw" android:fillViewport="true">
+        <LinearLayout style="@style/ah8">
+            <RelativeLayout android:layout_marginBottom="12.0dip" style="@style/ah1">
+                <EditText android:id="@id/ntq" android:hint="@string/y6p" android:maxLength="13" android:inputType="number" style="@style/agu" />
+                <TextView android:id="@id/ntp" android:text="@string/y72" android:layout_alignParentRight="true" style="@style/ah7" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/aec">
+                <CheckBox android:id="@id/kuc" android:layout_alignParentLeft="true" style="@style/ags" />
+                <TextView android:id="@id/nto" style="@style/ah3" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

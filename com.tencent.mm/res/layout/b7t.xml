@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="400.0dip" android:baselineAligned="false"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="250.0dip" android:layout_marginBottom="@dimen/m1">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:id="@id/dmr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/fw8" />
-    </ScrollView>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <CheckBox android:id="@id/fo_" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="20.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:id="@id/bq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fw9" android:layout_toRightOf="@id/fo_" android:layout_alignTop="@id/fo_" />
-    </RelativeLayout>
-</LinearLayout>
+    <com.tencent.mm.live.view.LiveReplayVideoView android:id="@id/fxy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

@@ -36,30 +36,35 @@ public class QQPoseDetectFilter
   
   private void initTexture()
   {
-    if (this.mRenderInFBO != null) {
-      this.mRenderInFBO.destroy();
+    Object localObject = this.mRenderInFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mRenderOutFBO != null) {
-      this.mRenderOutFBO.destroy();
+    localObject = this.mRenderOutFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.textureRender != null) {
-      this.textureRender.release();
+    localObject = this.textureRender;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
     }
-    if (this.mRenderTmp != null) {
-      this.mRenderTmp.destroy();
+    localObject = this.mRenderTmp;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
     int i = this.mProcessor.getInputHeight();
     int j = this.mProcessor.getInputWidth();
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mRenderInFBO = new RenderBuffer(i, j, 33984, bool);
-      this.mRenderOutFBO = new RenderBuffer(this.surfaceWidth, this.surfaceHeight, 33984);
-      this.mRenderTmp = new RenderBuffer(this.surfaceWidth, this.surfaceHeight);
-      this.mHumanFilter.updateFboSize(this.mRenderTmp);
-      this.textureRender = new TextureRender();
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.mRenderInFBO = new RenderBuffer(i, j, 33984, bool);
+    this.mRenderOutFBO = new RenderBuffer(this.surfaceWidth, this.surfaceHeight, 33984);
+    this.mRenderTmp = new RenderBuffer(this.surfaceWidth, this.surfaceHeight);
+    this.mHumanFilter.updateFboSize(this.mRenderTmp);
+    this.textureRender = new TextureRender();
   }
   
   public float[] getKeyPoints()
@@ -111,18 +116,18 @@ public class QQPoseDetectFilter
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    catch (Exception localException)
-    {
-      QmcfManager.getInstance().setQmcfRunSupported(false, false, 2);
-      this.mOutputTextureID = this.mInputTextureID;
-      SLog.e("QQPoseDetectFilter", "process excep!", localException);
-      return;
-    }
     catch (Error localError)
     {
       QmcfManager.getInstance().setQmcfRunSupported(false, false, 2);
       this.mOutputTextureID = this.mInputTextureID;
       SLog.e("QQPoseDetectFilter", "process excep!", localError);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QmcfManager.getInstance().setQmcfRunSupported(false, false, 2);
+      this.mOutputTextureID = this.mInputTextureID;
+      SLog.e("QQPoseDetectFilter", "process excep!", localException);
     }
   }
   
@@ -170,7 +175,7 @@ public class QQPoseDetectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPoseDetectFilter
  * JD-Core Version:    0.7.0.1
  */

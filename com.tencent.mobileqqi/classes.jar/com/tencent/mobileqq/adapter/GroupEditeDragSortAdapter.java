@@ -25,7 +25,7 @@ public class GroupEditeDragSortAdapter
     }
     paramViewGroup.setVisibility(0);
     paramViewGroup.findViewById(2131230987).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131232968);
+    paramView = (TextView)paramViewGroup.findViewById(2131232967);
     Groups localGroups = (Groups)this.mData.get(paramInt);
     paramView.setText(LocaleString.b(this.mContext, localGroups.group_name));
     return paramViewGroup;

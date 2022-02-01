@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingLeft="5.0dip" android:paddingRight="5.0dip" style="@style/boss_unipay_linear"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/boss_unipay_id_channel_normalitemlayout" style="@style/boss_unipay_listbar">
+        <TextView android:id="@id/boss_unipay_id_channelName" android:layout_marginLeft="10.0dip" style="@style/boss_unipay_tx.list" />
+        <TextView android:id="@id/boss_unipay_id_channelNameInfo" android:visibility="invisible" android:layout_weight="100.0" style="@style/boss_unipay_tx.list" />
+        <ImageView android:layout_marginRight="10.0dip" style="@style/boss_unipay_ic_arrowr.list" />
+    </LinearLayout>
+</LinearLayout>

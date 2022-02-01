@@ -34,10 +34,11 @@ public class GLLyricsManager
     paramString = this.mContext.getSurfaceViewSize();
     int i = paramString.width();
     int j = paramString.height();
-    paramString = new RectF(0.0F, 0.0F, i, j);
-    float f1 = (i - this.mLyricsView.getTextWidth() - this.mLyricsView.getShadowPadding()) / 2.0F;
-    float f2 = j - DisplayUtils.pixelToRealPixel(100.0F) - this.mLyricsView.getTextHeight() - this.mLyricsView.getShadowPadding();
-    paramString.set(f1, f2, i - f1, this.mLyricsView.getTextHeight() + f2 + this.mLyricsView.getShadowPadding());
+    float f1 = i;
+    paramString = new RectF(0.0F, 0.0F, f1, j);
+    float f2 = (f1 - this.mLyricsView.getTextWidth() - this.mLyricsView.getShadowPadding()) / 2.0F;
+    float f3 = j - DisplayUtils.pixelToRealPixel(100.0F) - this.mLyricsView.getTextHeight() - this.mLyricsView.getShadowPadding();
+    paramString.set(f2, f3, f1 - f2, this.mLyricsView.getTextHeight() + f3 + this.mLyricsView.getShadowPadding());
     this.mLyricsView.setImageRegion(paramString);
     this.mLyricsView.setImageClipDrawRegion(paramString);
     this.mLyricsView.setVisibility(true);
@@ -64,50 +65,46 @@ public class GLLyricsManager
   public void drawFrame()
   {
     Object localObject = ResourceManager.getInstance().getLyricsList();
-    if ((localObject != null) && (((List)localObject).size() > 0) && (this.mStartRecordMis > 0L)) {
-      localObject = ((List)localObject).iterator();
-    }
-    for (;;)
+    if ((localObject != null) && (((List)localObject).size() > 0) && (this.mStartRecordMis > 0L))
     {
-      ResourceManager.LyricItem localLyricItem;
-      int i;
-      if (((Iterator)localObject).hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localLyricItem = (ResourceManager.LyricItem)((Iterator)localObject).next();
-        if (localLyricItem.status == 2) {
-          continue;
-        }
-        if (localLyricItem.status != 1) {
-          break label108;
-        }
-        i = calculateNewStatus(localLyricItem);
-        if (i == 2)
+        ResourceManager.LyricItem localLyricItem = (ResourceManager.LyricItem)((Iterator)localObject).next();
+        if (localLyricItem.status != 2)
         {
-          ResetLyricsViewLayout(null);
-          localLyricItem.status = i;
-          continue;
-        }
-        if (i != 1) {
-          continue;
+          int i;
+          if (localLyricItem.status == 1)
+          {
+            i = calculateNewStatus(localLyricItem);
+            if (i == 2)
+            {
+              ResetLyricsViewLayout(null);
+              localLyricItem.status = i;
+            }
+            else if (i == 1)
+            {
+              break;
+            }
+          }
+          else
+          {
+            i = calculateNewStatus(localLyricItem);
+            if (i == 1)
+            {
+              ResetLyricsViewLayout(localLyricItem.text);
+              localLyricItem.status = i;
+              break;
+            }
+            if (i == 2)
+            {
+              ResetLyricsViewLayout(null);
+              localLyricItem.status = i;
+            }
+          }
         }
       }
-      for (;;)
-      {
-        this.mLyricsView.draw();
-        return;
-        label108:
-        i = calculateNewStatus(localLyricItem);
-        if (i != 1) {
-          break;
-        }
-        ResetLyricsViewLayout(localLyricItem.text);
-        localLyricItem.status = i;
-      }
-      if (i == 2)
-      {
-        ResetLyricsViewLayout(null);
-        localLyricItem.status = i;
-      }
+      this.mLyricsView.draw();
     }
   }
   
@@ -118,7 +115,7 @@ public class GLLyricsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLLyricsManager
  * JD-Core Version:    0.7.0.1
  */

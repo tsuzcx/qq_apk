@@ -22,7 +22,7 @@ import java.util.List;
 
 public class a
 {
-  private static final String a = a.class.getSimpleName();
+  private static final String a = "a";
   private static Class g;
   private static Class h;
   private static Method i;
@@ -64,44 +64,50 @@ public class a
   
   private void a(int paramInt)
   {
-    this.f.mRecentTotalViewNum = paramInt;
-    this.f.mRecentHookTime = System.currentTimeMillis();
+    ViewRecord localViewRecord = this.f;
+    localViewRecord.mRecentTotalViewNum = paramInt;
+    localViewRecord.mRecentHookTime = System.currentTimeMillis();
   }
   
   private void a(View paramView)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      if (c(paramView)) {
-        l(paramView);
-      }
-      i(paramView);
-      if (f(paramView)) {
-        k(paramView);
-      }
-    } while (!e(paramView));
-    j(paramView);
+    }
+    if (c(paramView)) {
+      l(paramView);
+    }
+    i(paramView);
+    if (f(paramView)) {
+      k(paramView);
+    }
+    if (e(paramView)) {
+      j(paramView);
+    }
   }
   
   private boolean a(List<View> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    View localView = (View)paramList.get(0);
-    if (!i.g(localView)) {
-      h(localView);
-    }
-    for (;;)
+    if (paramList != null)
     {
-      return true;
-      if ((localView.hashCode() == this.f.mRecentDecorViewHashcode) && (paramList.size() == this.f.mRecentTotalViewNum) && (Math.abs(System.currentTimeMillis() - this.f.mRecentHookTime) < 200L)) {
+      if (paramList.size() == 0) {
         return false;
       }
-      this.f.mRecentDecorViewHashcode = localView.hashCode();
+      View localView = (View)paramList.get(0);
+      if (!i.g(localView))
+      {
+        h(localView);
+      }
+      else
+      {
+        if ((localView.hashCode() == this.f.mRecentDecorViewHashcode) && (paramList.size() == this.f.mRecentTotalViewNum) && (Math.abs(System.currentTimeMillis() - this.f.mRecentHookTime) < 200L)) {
+          return false;
+        }
+        this.f.mRecentDecorViewHashcode = localView.hashCode();
+      }
+      return true;
     }
+    return false;
   }
   
   private com.tencent.trackrecordlib.f.c b()
@@ -147,20 +153,19 @@ public class a
     if (!a(localArrayList)) {
       return;
     }
-    Iterator localIterator = localArrayList.iterator();
     int m = 0;
-    if (localIterator.hasNext())
+    Iterator localIterator = localArrayList.iterator();
+    while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
       com.tencent.trackrecordlib.d.a.b().a(localView);
       if ((m == 0) && (g(localView)))
       {
-        com.tencent.trackrecordlib.g.b.a(i.c(localView));
         m = 1;
+        com.tencent.trackrecordlib.g.b.a(i.c(localView));
       }
-      for (;;)
+      else
       {
-        break;
         a(localView);
       }
     }
@@ -189,24 +194,22 @@ public class a
   
   private void h(View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      try
+    }
+    try
+    {
+      paramView = paramView.getViewTreeObserver();
+      if ((paramView != null) && (paramView.isAlive()))
       {
-        paramView = paramView.getViewTreeObserver();
-        if ((paramView != null) && (paramView.isAlive()))
-        {
-          paramView.addOnGlobalLayoutListener(new a.5(this));
-          paramView.addOnWindowFocusChangeListener(new a.6(this));
-          return;
-        }
+        paramView.addOnGlobalLayoutListener(new a.5(this));
+        paramView.addOnWindowFocusChangeListener(new a.6(this));
+        return;
       }
-      catch (Throwable paramView)
-      {
-        paramView.printStackTrace();
-      }
+    }
+    catch (Throwable paramView)
+    {
+      paramView.printStackTrace();
     }
   }
   
@@ -215,7 +218,7 @@ public class a
     try
     {
       paramView = i.invoke(paramView, new Object[0]);
-      localObject = (View.OnTouchListener)k.get(paramView);
+      Object localObject = (View.OnTouchListener)k.get(paramView);
       if ((localObject != null) && ((localObject instanceof e))) {
         return;
       }
@@ -227,14 +230,14 @@ public class a
         k.set(paramView, this.c);
         return;
       }
+      localObject = new e((View.OnTouchListener)localObject, this.b.a);
+      k.set(paramView, localObject);
+      return;
     }
     catch (Throwable paramView)
     {
       paramView.printStackTrace();
-      return;
     }
-    Object localObject = new e((View.OnTouchListener)localObject, this.b.a);
-    k.set(paramView, localObject);
   }
   
   private void j(View paramView)
@@ -242,7 +245,7 @@ public class a
     try
     {
       paramView = i.invoke(paramView, new Object[0]);
-      localObject = (View.OnKeyListener)l.get(paramView);
+      Object localObject = (View.OnKeyListener)l.get(paramView);
       if ((localObject != null) && ((localObject instanceof d))) {
         return;
       }
@@ -254,38 +257,37 @@ public class a
         l.set(paramView, this.d);
         return;
       }
+      localObject = new d((View.OnKeyListener)localObject, this.b.b);
+      l.set(paramView, localObject);
+      return;
     }
     catch (Throwable paramView)
     {
       paramView.printStackTrace();
-      return;
     }
-    Object localObject = new d((View.OnKeyListener)localObject, this.b.b);
-    l.set(paramView, localObject);
   }
   
   private void k(View paramView)
   {
-    if (paramView == null) {}
-    TouchDelegate localTouchDelegate;
-    do
-    {
-      return;
-      localTouchDelegate = paramView.getTouchDelegate();
-      if (localTouchDelegate == null)
-      {
-        paramView.setTouchDelegate(new f(null, null, paramView));
-        return;
-      }
-    } while ((localTouchDelegate instanceof f));
-    try
-    {
-      paramView.setTouchDelegate(new f(localTouchDelegate, null, paramView));
+    if (paramView == null) {
       return;
     }
-    catch (Exception paramView)
+    TouchDelegate localTouchDelegate = paramView.getTouchDelegate();
+    if (localTouchDelegate == null)
     {
-      paramView.printStackTrace();
+      paramView.setTouchDelegate(new f(null, null, paramView));
+      return;
+    }
+    if (!(localTouchDelegate instanceof f)) {
+      try
+      {
+        paramView.setTouchDelegate(new f(localTouchDelegate, null, paramView));
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
     }
   }
   
@@ -320,7 +322,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.a
  * JD-Core Version:    0.7.0.1
  */

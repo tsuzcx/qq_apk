@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import android.content.Context;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 
@@ -35,24 +36,38 @@ public class IPluginAdapterProxy
     return (Looper)localIPluginAdapter.invoke(2, null);
   }
   
+  public void initSkin(Context paramContext)
+  {
+    this.mPluginAdapter.initSkin(paramContext);
+  }
+  
+  public void initSkinEngine(Context paramContext)
+  {
+    this.mPluginAdapter.initSkinEngine(paramContext);
+  }
+  
+  public boolean isBuiltinPluginAndUpToDay(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  {
+    return this.mPluginAdapter.isBuiltinPluginAndUpToDay(paramString, paramPluginBaseInfo);
+  }
+  
   public boolean isDefaultMode()
   {
-    IPluginAdapter localIPluginAdapter = this.mPluginAdapter;
-    boolean bool1;
-    if (localIPluginAdapter == null)
+    Object localObject = this.mPluginAdapter;
+    if (localObject == null)
     {
       QLog.d("plugin_tag", 1, "IPluginAdapter null");
-      bool1 = false;
+      return false;
     }
-    boolean bool2;
-    do
+    boolean bool = ((Boolean)((IPluginAdapter)localObject).invoke(3, null)).booleanValue();
+    if (QLog.isColorLevel())
     {
-      return bool1;
-      bool2 = ((Boolean)localIPluginAdapter.invoke(3, null)).booleanValue();
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("plugin_tag", 1, "isDefaultMode = " + bool2);
-    return bool2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isDefaultMode = ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("plugin_tag", 1, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   public boolean isNightMode()
@@ -96,7 +111,7 @@ public class IPluginAdapterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy
  * JD-Core Version:    0.7.0.1
  */

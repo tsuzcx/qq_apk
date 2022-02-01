@@ -1,20 +1,25 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.RecommendContactMsg;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
 public class efc
+  extends Handler
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  public ImageView a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RecommendContactMsg jdField_a_of_type_ComTencentMobileqqDataRecommendContactMsg;
-  ShaderAnimLayout jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
+  public efc(SystemMsgListView paramSystemMsgListView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (SystemMsgListView.a(this.a) == null);
+    this.a.j();
+    SystemMsgListView.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

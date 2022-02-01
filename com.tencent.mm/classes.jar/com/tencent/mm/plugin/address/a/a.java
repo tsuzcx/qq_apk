@@ -1,108 +1,105 @@
 package com.tencent.mm.plugin.address.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bw;
-import com.tencent.mm.model.c;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.address.model.RcptAddressEventListener;
+import com.tencent.mm.plugin.address.model.RcptGetAddrEventListener;
 import com.tencent.mm.plugin.address.model.j;
-import com.tencent.mm.plugin.address.model.k;
-import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements at
+  implements be
 {
-  private l gKF;
-  private com.tencent.mm.plugin.address.b.a.a gKG;
-  private j gKH;
-  private k gKI;
+  private j qhB;
+  private com.tencent.mm.plugin.address.b.a.a qhC;
+  private RcptAddressEventListener qhD;
+  private RcptGetAddrEventListener qhE;
   
   public a()
   {
-    AppMethodBeat.i(16713);
-    this.gKF = null;
-    this.gKG = null;
-    this.gKH = new j();
-    this.gKI = new k();
-    AppMethodBeat.o(16713);
+    AppMethodBeat.i(20756);
+    this.qhB = null;
+    this.qhC = null;
+    this.qhD = new RcptAddressEventListener();
+    this.qhE = new RcptGetAddrEventListener();
+    AppMethodBeat.o(20756);
   }
   
-  public static a asl()
+  public static a bZe()
   {
-    AppMethodBeat.i(16714);
-    aw.aat();
-    a locala2 = (a)bw.pF("plugin.address");
+    AppMethodBeat.i(20757);
+    bh.bCt();
+    a locala2 = (a)ci.Ka("plugin.address");
     a locala1 = locala2;
     if (locala2 == null)
     {
-      ab.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
+      Log.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
       locala1 = new a();
-      aw.aat().a("plugin.address", locala1);
+      bh.bCt().a("plugin.address", locala1);
     }
-    AppMethodBeat.o(16714);
+    AppMethodBeat.o(20757);
     return locala1;
   }
   
-  public static com.tencent.mm.plugin.address.b.a.a asm()
+  public static com.tencent.mm.plugin.address.b.a.a bZf()
   {
-    AppMethodBeat.i(16715);
-    g.RJ().QQ();
-    if (asl().gKG == null) {
-      asl().gKG = new com.tencent.mm.plugin.address.b.a.a();
+    AppMethodBeat.i(20758);
+    h.baC().aZJ();
+    if (bZe().qhC == null) {
+      bZe().qhC = new com.tencent.mm.plugin.address.b.a.a();
     }
-    com.tencent.mm.plugin.address.b.a.a locala = asl().gKG;
-    AppMethodBeat.o(16715);
+    com.tencent.mm.plugin.address.b.a.a locala = bZe().qhC;
+    AppMethodBeat.o(20758);
     return locala;
   }
   
-  public static l asn()
+  public static j bZg()
   {
-    AppMethodBeat.i(16716);
-    g.RJ().QQ();
-    if (asl().gKF == null) {
-      asl().gKF = new l();
+    AppMethodBeat.i(20759);
+    h.baC().aZJ();
+    if (bZe().qhB == null) {
+      bZe().qhB = new j();
     }
-    l locall = asl().gKF;
-    AppMethodBeat.o(16716);
-    return locall;
+    j localj = bZe().qhB;
+    AppMethodBeat.o(20759);
+    return localj;
   }
   
   public final void clearPluginData(int paramInt) {}
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(16717);
-    com.tencent.mm.sdk.b.a.ymk.c(this.gKH);
-    com.tencent.mm.sdk.b.a.ymk.c(this.gKI);
-    l locall = asn();
-    aw.aaz();
-    String str = c.getAccPath();
-    locall.path = (str + "addrmgr");
-    AppMethodBeat.o(16717);
+    AppMethodBeat.i(20760);
+    this.qhD.alive();
+    this.qhE.alive();
+    bZg();
+    AppMethodBeat.o(20760);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(16718);
-    com.tencent.mm.sdk.b.a.ymk.d(this.gKH);
-    com.tencent.mm.sdk.b.a.ymk.d(this.gKI);
-    AppMethodBeat.o(16718);
+    AppMethodBeat.i(20761);
+    this.qhD.dead();
+    this.qhE.dead();
+    AppMethodBeat.o(20761);
   }
   
   public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.a.a
  * JD-Core Version:    0.7.0.1
  */

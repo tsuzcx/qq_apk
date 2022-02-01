@@ -12,12 +12,12 @@ public final class get_travel_photo_list_req
   static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
   public String attach_info = "";
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String ciphertext = "";
   public String password = "";
-  public int share_flag;
-  public int type;
-  public long uin;
+  public int share_flag = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   static
   {
@@ -54,25 +54,29 @@ public final class get_travel_photo_list_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.albumid, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.password != null) {
-      paramJceOutputStream.write(this.password, 3);
+    localObject = this.password;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 4);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
     paramJceOutputStream.write(this.share_flag, 5);
-    if (this.ciphertext != null) {
-      paramJceOutputStream.write(this.ciphertext, 6);
+    localObject = this.ciphertext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.type, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_travel_photo_list_req
  * JD-Core Version:    0.7.0.1
  */

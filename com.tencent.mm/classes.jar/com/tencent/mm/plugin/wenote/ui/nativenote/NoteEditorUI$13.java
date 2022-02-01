@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.l;
 import com.tencent.mm.ui.widget.snackbar.b;
 
 final class NoteEditorUI$13
@@ -11,10 +12,10 @@ final class NoteEditorUI$13
   
   public final void run()
   {
-    AppMethodBeat.i(27008);
-    this.mwd.dismiss();
-    b.l(this.vCx, this.vCx.getString(2131299979));
-    AppMethodBeat.o(27008);
+    AppMethodBeat.i(275188);
+    this.Afz.dismiss();
+    b.u(this.XCU, this.XCU.getString(R.l.finish_sent));
+    AppMethodBeat.o(275188);
   }
 }
 

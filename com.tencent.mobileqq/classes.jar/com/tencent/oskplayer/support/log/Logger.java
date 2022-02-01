@@ -2,19 +2,20 @@ package com.tencent.oskplayer.support.log;
 
 public class Logger
 {
-  private static ILogger sLogger = null;
+  private static ILogger sLogger;
   
   public static ILogger g()
   {
-    if (sLogger == null) {}
-    try
-    {
-      if (sLogger == null) {
-        sLogger = new DefaultLogger();
+    if (sLogger == null) {
+      try
+      {
+        if (sLogger == null) {
+          sLogger = new DefaultLogger();
+        }
       }
-      return sLogger;
+      finally {}
     }
-    finally {}
+    return sLogger;
   }
   
   public static void setLogger(ILogger paramILogger)
@@ -29,7 +30,7 @@ public class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.support.log.Logger
  * JD-Core Version:    0.7.0.1
  */

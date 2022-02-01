@@ -1,21 +1,18 @@
 package com.tencent.biz.qqstory.base;
 
-import ulw;
-import ulx;
-
-public class QQStoryObserver$1$1
+class QQStoryObserver$1$1
   implements Runnable
 {
-  public QQStoryObserver$1$1(ulx paramulx) {}
+  QQStoryObserver$1$1(QQStoryObserver.1 param1) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Ulw.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+    this.a.e.a(this.a.c, this.a.b.booleanValue(), this.a.d, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryObserver.1.1
  * JD-Core Version:    0.7.0.1
  */

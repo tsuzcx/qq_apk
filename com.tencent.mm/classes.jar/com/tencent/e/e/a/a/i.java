@@ -10,31 +10,31 @@ import java.util.Map;
 
 public final class i
 {
-  final int ATU;
-  private final int Bld;
-  Object[] EX;
-  int Sl;
-  final int mCapacity;
+  Object[] RY;
+  private final int ahut;
+  final int ahuu;
+  final int hmC;
+  int jP;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(114569);
-    this.Bld = paramInt1;
-    this.EX = new Object[(int)Math.ceil(1.0F * paramInt3 / paramInt2)];
-    this.Sl = 0;
-    this.mCapacity = paramInt3;
-    this.ATU = paramInt2;
-    AppMethodBeat.o(114569);
+    AppMethodBeat.i(138410);
+    this.ahut = paramInt1;
+    this.RY = new Object[(int)Math.ceil(1.0F * paramInt3 / paramInt2)];
+    this.jP = 0;
+    this.hmC = paramInt3;
+    this.ahuu = paramInt2;
+    AppMethodBeat.o(138410);
   }
   
-  private ArrayList<f> Si(int paramInt)
+  private ArrayList<f> aGZ(int paramInt)
   {
-    AppMethodBeat.i(114570);
+    AppMethodBeat.i(138411);
     ArrayList localArrayList = new ArrayList();
-    List localList = (List)this.EX[paramInt];
+    List localList = (List)this.RY[paramInt];
     if (localList == null)
     {
-      AppMethodBeat.o(114570);
+      AppMethodBeat.o(138411);
       return localArrayList;
     }
     paramInt = 0;
@@ -42,33 +42,33 @@ public final class i
     {
       j localj = (j)localList.get(paramInt);
       f localf = new f();
-      localf.x = localj.values[0];
-      localf.y = localj.values[1];
-      localf.z = localj.values[2];
-      localf.Blx = localj.timestamp;
+      localf.x = localj.hpa[0];
+      localf.y = localj.hpa[1];
+      localf.z = localj.hpa[2];
+      localf.ahuN = localj.timestamp;
       localArrayList.add(localf);
       paramInt += 1;
     }
-    AppMethodBeat.o(114570);
+    AppMethodBeat.o(138411);
     return localArrayList;
   }
   
-  public final Object[] dUO()
+  public final Object[] jXv()
   {
-    AppMethodBeat.i(114572);
-    Object[] arrayOfObject = (Object[])this.EX.clone();
-    AppMethodBeat.o(114572);
+    AppMethodBeat.i(138413);
+    Object[] arrayOfObject = (Object[])this.RY.clone();
+    AppMethodBeat.o(138413);
     return arrayOfObject;
   }
   
-  public final ArrayList<g> fJ(List<k> paramList)
+  public final ArrayList<g> ou(List<k> paramList)
   {
-    AppMethodBeat.i(114571);
+    AppMethodBeat.i(138412);
     ArrayList localArrayList1 = new ArrayList();
     int j = 0;
-    if (j < this.EX.length)
+    if (j < this.RY.length)
     {
-      Object localObject = (List)this.EX[j];
+      Object localObject = (List)this.RY[j];
       g localg;
       ArrayList localArrayList2;
       HashMap localHashMap;
@@ -76,9 +76,9 @@ public final class i
       if ((localObject != null) && (((List)localObject).size() != 0))
       {
         localg = new g();
-        localArrayList2 = Si(j);
+        localArrayList2 = aGZ(j);
         localHashMap = new HashMap();
-        if (this.Bld != 1) {
+        if (this.ahut != 1) {
           break label217;
         }
         i = 0;
@@ -86,20 +86,20 @@ public final class i
       for (;;)
       {
         localHashMap.put(Integer.valueOf(i), localArrayList2);
-        localg.Blz = localHashMap;
+        localg.ahuP = localHashMap;
         localObject = (j)((List)localObject).get(0);
         if (localObject != null)
         {
-          localg.Bly = ((j)localObject).timestamp;
+          localg.ahuO = ((j)localObject).timestamp;
           if (paramList.size() > j)
           {
             localObject = (k)paramList.get(j);
             if (localObject != null)
             {
-              localg.Blf = ((k)localObject).Blf;
-              localg.Blg = ((k)localObject).Blg;
-              localg.Blh = ((k)localObject).Blh;
-              localg.Bli = ((k)localObject).Bli;
+              localg.ahuw = ((k)localObject).ahuw;
+              localg.ahux = ((k)localObject).ahux;
+              localg.ahuy = ((k)localObject).ahuy;
+              localg.ahuz = ((k)localObject).ahuz;
             }
           }
           localArrayList1.add(localg);
@@ -107,22 +107,22 @@ public final class i
         j += 1;
         break;
         label217:
-        if (this.Bld == 4) {
+        if (this.ahut == 4) {
           i = 2;
-        } else if (this.Bld == 9) {
+        } else if (this.ahut == 9) {
           i = 4;
         } else {
           i = -1;
         }
       }
     }
-    AppMethodBeat.o(114571);
+    AppMethodBeat.o(138412);
     return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.e.a.a.i
  * JD-Core Version:    0.7.0.1
  */

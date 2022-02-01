@@ -4,18 +4,19 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_red_bonus
   extends JceStruct
 {
   static ArrayList<s_redbonus_man> cache_payMans = new ArrayList();
   public String actionUrl = "";
-  public int isPayed;
-  public ArrayList<s_redbonus_man> payMans;
-  public long payMenNum;
-  public long payMoney;
-  public long payNum;
-  public long payTotalAccount;
+  public int isPayed = 0;
+  public ArrayList<s_redbonus_man> payMans = null;
+  public long payMenNum = 0L;
+  public long payMoney = 0L;
+  public long payNum = 0L;
+  public long payTotalAccount = 0L;
   
   static
   {
@@ -53,18 +54,20 @@ public final class cell_red_bonus
     paramJceOutputStream.write(this.payTotalAccount, 1);
     paramJceOutputStream.write(this.isPayed, 2);
     paramJceOutputStream.write(this.payMoney, 3);
-    if (this.payMans != null) {
-      paramJceOutputStream.write(this.payMans, 4);
+    Object localObject = this.payMans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 5);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.payMenNum, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_red_bonus
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="301.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/dle" android:background="@color/kt" android:paddingLeft="@dimen/up" android:paddingRight="@dimen/up" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/v9" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/dka" android:layout_width="fill_parent" android:layout_height="138.0dip" android:layout_above="@id/dle" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
+        <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="5.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/dk4" android:layout_width="89.0dip" android:layout_height="89.0dip" android:layout_marginTop="30.5dip" android:scaleType="fitCenter" />
+            <com.tencent.mobileqq.vas.avatar.AvatarLayout android:layout_gravity="center_horizontal" android:id="@id/dk3" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginTop="32.5dip">
+                <com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView android:id="@id/a6e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+            </com.tencent.mobileqq.vas.avatar.AvatarLayout>
+            <ImageView android:layout_gravity="center" android:id="@id/dfv" android:layout_width="110.0dip" android:layout_height="129.0dip" android:scaleType="fitXY" />
+        </FrameLayout>
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/djz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center_vertical" android:id="@id/dkm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
+                <com.tencent.mobileqq.widget.ProfileNameView android:textSize="@dimen/ait" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/dkj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:textSize="@dimen/aio" android:ellipsize="end" android:id="@id/dkb" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip">
+                <com.tencent.mobileqq.profile.view.ClickPreventableTextView android:textSize="@dimen/aio" android:ellipsize="end" android:id="@id/dld" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="130.0dip" android:maxLines="1" android:singleLine="true" android:lineSpacingExtra="0.0dip" />
+                <LinearLayout android:id="@id/lm2" android:background="@drawable/hgv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:minHeight="24.0dip">
+                    <TextView android:textSize="13.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:id="@id/md5" android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="110.0dip" android:maxLines="1" android:singleLine="true" android:lineSpacingExtra="0.0dip" android:paddingStart="3.0dip" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/dum" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/cj0" android:scaleType="centerInside" android:layout_marginEnd="3.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.VoteView android:id="@id/l0b" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="81.0dip" android:layout_alignTop="@id/dka" android:layout_alignParentRight="true" />
+    <TextView android:textSize="14.5dip" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/dkf" android:background="@drawable/ahd" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="81.0dip" android:layout_marginRight="10.0dip" android:text="@string/d0z" android:singleLine="true" android:drawableLeft="@drawable/gu5" android:drawablePadding="3.0dip" android:layout_alignTop="@id/dka" android:layout_alignParentRight="true" />
+    <com.tencent.mobileqq.hotchat.anim.HeartLayout android:id="@id/d53" android:clickable="false" android:layout_width="fill_parent" android:layout_height="165.0dip" android:layout_marginBottom="37.0dip" android:layout_alignBottom="@id/l0b" />
+</RelativeLayout>

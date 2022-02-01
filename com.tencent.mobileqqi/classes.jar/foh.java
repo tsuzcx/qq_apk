@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.app.ClubContentUpdateHandler.ClubContentUpdateListener;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import java.util.HashMap;
 
-public class foh
-  implements ClubContentUpdateHandler.ClubContentUpdateListener
+class foh
+  implements Runnable
 {
-  public foh(EmoticonMainPanel paramEmoticonMainPanel) {}
+  foh(fog paramfog) {}
   
-  public void a(HashMap paramHashMap)
+  public void run()
   {
-    if ((paramHashMap == null) || (paramHashMap.size() == 0)) {}
-    while ((!EmoticonMainPanel.a(this.a)) || (this.a.getVisibility() != 0) || (EmoticonMainPanel.b() != 2)) {
-      return;
+    if ((this.a.a.getVisibility() == 0) && (EmoticonMainPanel.b() == 2)) {
+      EmoticonMainPanel.a(this.a.a, false);
     }
-    this.a.post(new foi(this));
   }
 }
 

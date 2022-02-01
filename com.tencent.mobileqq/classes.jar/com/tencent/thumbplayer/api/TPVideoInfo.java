@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class TPVideoInfo
 {
   private TPVideoInfo.Builder builder;
-  private ArrayList<TPDownloadParamData> downloadParamList;
+  private String definition;
+  private ArrayList<TPDownloadParamData> downloadParamList = new ArrayList();
   private String fileID;
   private long height;
+  @TPCommonEnum.TP_VIDEO_CODEC_TYPE
   private int videoCodecId;
   private long width;
   
@@ -18,13 +20,19 @@ public class TPVideoInfo
     this.height = TPVideoInfo.Builder.access$100(paramBuilder);
     this.videoCodecId = TPVideoInfo.Builder.access$200(paramBuilder);
     this.fileID = TPVideoInfo.Builder.access$300(paramBuilder);
-    this.downloadParamList = TPVideoInfo.Builder.access$400(paramBuilder);
+    this.definition = TPVideoInfo.Builder.access$400(paramBuilder);
+    this.downloadParamList = TPVideoInfo.Builder.access$500(paramBuilder);
     this.builder = paramBuilder;
   }
   
   public TPVideoInfo.Builder getBuilder()
   {
     return this.builder;
+  }
+  
+  public String getDefinition()
+  {
+    return this.definition;
   }
   
   public ArrayList<TPDownloadParamData> getDownloadPraramList()
@@ -54,7 +62,7 @@ public class TPVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoInfo
  * JD-Core Version:    0.7.0.1
  */

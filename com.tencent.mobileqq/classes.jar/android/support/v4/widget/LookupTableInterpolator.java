@@ -22,10 +22,13 @@ abstract class LookupTableInterpolator
     if (paramFloat <= 0.0F) {
       return 0.0F;
     }
-    int i = Math.min((int)((this.mValues.length - 1) * paramFloat), this.mValues.length - 2);
-    paramFloat = (paramFloat - i * this.mStepSize) / this.mStepSize;
-    float f = this.mValues[i];
-    return (this.mValues[(i + 1)] - this.mValues[i]) * paramFloat + f;
+    float[] arrayOfFloat = this.mValues;
+    int i = Math.min((int)((arrayOfFloat.length - 1) * paramFloat), arrayOfFloat.length - 2);
+    float f1 = i;
+    float f2 = this.mStepSize;
+    paramFloat = (paramFloat - f1 * f2) / f2;
+    arrayOfFloat = this.mValues;
+    return arrayOfFloat[i] + paramFloat * (arrayOfFloat[(i + 1)] - arrayOfFloat[i]);
   }
 }
 

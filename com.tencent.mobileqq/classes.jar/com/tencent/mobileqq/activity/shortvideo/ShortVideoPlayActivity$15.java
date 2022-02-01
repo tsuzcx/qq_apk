@@ -11,8 +11,8 @@ class ShortVideoPlayActivity$15
   
   public void run()
   {
-    this.this$0.a.serial();
-    this.this$0.app.a().a(this.this$0.a.frienduin, this.this$0.a.istroop, this.this$0.a.uniseq, this.this$0.a.msgData);
+    this.this$0.mMsg.serial();
+    this.this$0.app.getMessageFacade().a(this.this$0.mMsg.frienduin, this.this$0.mMsg.istroop, this.this$0.mMsg.uniseq, this.this$0.mMsg.msgData);
   }
 }
 

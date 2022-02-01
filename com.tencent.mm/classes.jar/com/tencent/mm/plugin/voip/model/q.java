@@ -1,132 +1,97 @@
 package com.tencent.mm.plugin.voip.model;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/model/VoipForegroundIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markForegroundServiceCallInAccountUninit", "", "markForegroundServiceDestroyByKilled", "markForegroundServiceOnCreate", "markForegroundServiceOnDestroy", "markForegroundServiceOnStartCommand", "markForegroundServiceReCalled", "markForegroundServiceStopCall", "markUseStartForegroundService", "markUseStartService", "markVoipForegroundServiceStartCalled", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
 {
-  public static q tyI;
-  v2protocal tyA;
-  private boolean tyB;
-  private WeakReference<q.a> tyC;
-  int tyD;
-  boolean tyE;
-  private int tyF;
-  public int tyG;
-  public int tyH;
-  ap tyJ;
+  public static final q UBj;
   
-  private q()
+  static
   {
-    AppMethodBeat.i(4571);
-    this.tyB = false;
-    this.tyD = -1;
-    this.tyE = false;
-    this.tyF = 0;
-    this.tyJ = new ap(Looper.getMainLooper(), new ap.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(4567);
-        if (!q.this.tyE)
-        {
-          AppMethodBeat.o(4567);
-          return false;
-        }
-        q localq = q.this;
-        byte[] arrayOfByte = new byte[4];
-        int[] arrayOfInt = new int[2];
-        int[] tmp39_38 = arrayOfInt;
-        tmp39_38[0] = -1;
-        int[] tmp43_39 = tmp39_38;
-        tmp43_39[1] = -1;
-        tmp43_39;
-        if (localq.tyA.setAppCmd(10, arrayOfByte, 4) < 0)
-        {
-          ab.d("MicroMsg.VoipNetStatusChecker", "get netStatus failed");
-          if (arrayOfInt[0] != -1)
-          {
-            q.this.tyD = arrayOfInt[0];
-            q.this.tyG = (q.this.tyD + q.this.tyG);
-            localq = q.this;
-            localq.tyH += 1;
-            if (arrayOfInt[1] != 0) {
-              break label196;
-            }
-            q.a(q.this, true);
-          }
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(4567);
-          return true;
-          int i = bo.bg(arrayOfByte);
-          arrayOfInt[0] = i;
-          arrayOfInt[1] = localq.tyA.GetNetBottleneckSide();
-          ab.d("MicroMsg.VoipNetStatusChecker", "netStatus: %d net_bottleneck_side %d", new Object[] { Integer.valueOf(i), Integer.valueOf(arrayOfInt[1]) });
-          break;
-          label196:
-          q.a(q.this, false);
-        }
-      }
-    }, true);
-    this.tyA = new v2protocal(new ak(Looper.getMainLooper()));
-    AppMethodBeat.o(4571);
+    AppMethodBeat.i(115937);
+    UBj = new q();
+    AppMethodBeat.o(115937);
   }
   
-  public static q cNr()
+  public static void hXk()
   {
-    AppMethodBeat.i(4570);
-    if (tyI == null) {
-      tyI = new q();
-    }
-    q localq = tyI;
-    AppMethodBeat.o(4570);
-    return localq;
+    AppMethodBeat.i(115927);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markVoipForegroundServiceCalled");
+    h.OAn.p(1081L, 0L, 1L);
+    AppMethodBeat.o(115927);
   }
   
-  public final void a(q.a parama)
+  public static void hXl()
   {
-    AppMethodBeat.i(4572);
-    this.tyC = new WeakReference(parama);
-    AppMethodBeat.o(4572);
+    AppMethodBeat.i(115928);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markUseStartService");
+    h.OAn.p(1081L, 1L, 1L);
+    AppMethodBeat.o(115928);
   }
   
-  public final void cNs()
+  public static void hXm()
   {
-    AppMethodBeat.i(4573);
-    ab.d("MicroMsg.VoipNetStatusChecker", "startNetStatusCheck");
-    this.tyD = -1;
-    this.tyE = true;
-    this.tyH = 0;
-    this.tyG = 0;
-    al.p(new q.2(this), 3000L);
-    AppMethodBeat.o(4573);
+    AppMethodBeat.i(115929);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markUseStartForegroundService");
+    h.OAn.p(1081L, 2L, 1L);
+    AppMethodBeat.o(115929);
   }
   
-  public final void cNt()
+  public static void hXn()
   {
-    AppMethodBeat.i(4574);
-    ab.d("MicroMsg.VoipNetStatusChecker", "stopNetStatusCheck");
-    this.tyD = -1;
-    this.tyB = false;
-    this.tyE = false;
-    this.tyH = 0;
-    this.tyG = 0;
-    al.d(new q.3(this));
-    AppMethodBeat.o(4574);
+    AppMethodBeat.i(115930);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceOnCreate");
+    h.OAn.p(1081L, 3L, 1L);
+    AppMethodBeat.o(115930);
+  }
+  
+  public static void hXo()
+  {
+    AppMethodBeat.i(115931);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceOnStartCommand");
+    h.OAn.p(1081L, 4L, 1L);
+    AppMethodBeat.o(115931);
+  }
+  
+  public static void hXp()
+  {
+    AppMethodBeat.i(115932);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceOnDestroy");
+    h.OAn.p(1081L, 5L, 1L);
+    AppMethodBeat.o(115932);
+  }
+  
+  public static void hXq()
+  {
+    AppMethodBeat.i(115933);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceStopCall");
+    h.OAn.p(1081L, 6L, 1L);
+    AppMethodBeat.o(115933);
+  }
+  
+  public static void hXr()
+  {
+    AppMethodBeat.i(115935);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceReCalled");
+    h.OAn.p(1081L, 8L, 1L);
+    AppMethodBeat.o(115935);
+  }
+  
+  public static void hXs()
+  {
+    AppMethodBeat.i(115936);
+    Log.i("MicroMsg.VoipForegroundIDKeyStat", "markForegroundServiceCallInAccountUninit");
+    h.OAn.p(1081L, 9L, 1L);
+    AppMethodBeat.o(115936);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.q
  * JD-Core Version:    0.7.0.1
  */

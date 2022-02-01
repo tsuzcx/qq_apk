@@ -39,8 +39,8 @@ import com.tencent.pb.near_horn.NearHornPb.SosoWifi;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import fee;
 import fef;
-import feg;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -115,7 +115,7 @@ public class NearHornHandler
     NearHornPb.HornReqHead localHornReqHead = new NearHornPb.HornReqHead();
     localHornReqHead.protocol_ver.set(1);
     localHornReqHead.client_plat_id.set(109);
-    localHornReqHead.client_ver.set("6.0.2.6602");
+    localHornReqHead.client_ver.set("6.0.3.6604");
     localHornReqHead.os_ver.set(Build.VERSION.SDK);
     localHornReqHead.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
     if (paramBoolean.booleanValue() == true)
@@ -602,7 +602,7 @@ public class NearHornHandler
       }
       super.a(4, true, new Object[] { Integer.valueOf(i1), localObject1, this.jdField_c_of_type_JavaUtilList, paramObject });
     } while ((this.jdField_c_of_type_JavaUtilList.isEmpty()) || (!((Boolean)localObject1).booleanValue()));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fef(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fee(this));
   }
   
   public void a(Object paramObject, int paramInt, Boolean paramBoolean)
@@ -796,7 +796,7 @@ public class NearHornHandler
           this.jdField_d_of_type_JavaLangBoolean = Boolean.valueOf(true);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new feg(this, paramString));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fef(this, paramString));
     }
   }
   

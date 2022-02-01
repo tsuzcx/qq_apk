@@ -5,7 +5,7 @@ import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
 public class FurFilter
   extends FurBaseFilter
 {
-  private static final String TAG = FurFilter.class.getSimpleName();
+  private static final String TAG = "FurFilter";
   
   public FurFilter()
   {
@@ -14,7 +14,7 @@ public class FurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filament.FurFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListView.SavedState;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.FastScroller;
 
-public final class hvz
-  implements Parcelable.Creator
+public class hvz
+  implements Runnable
 {
-  public ExpandableListView.SavedState a(Parcel paramParcel)
-  {
-    return new ExpandableListView.SavedState(paramParcel, null);
-  }
+  public hvz(FastScroller paramFastScroller) {}
   
-  public ExpandableListView.SavedState[] a(int paramInt)
+  public void run()
   {
-    return new ExpandableListView.SavedState[paramInt];
+    int k;
+    int j;
+    int i;
+    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView.l)
+    {
+      this.a.f();
+      k = this.a.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
+      j = (int)this.a.jdField_a_of_type_Float - this.a.jdField_a_of_type_Int + 10;
+      if (j >= 0) {
+        break label100;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.c = i;
+      this.a.a(this.a.c / (k - this.a.jdField_a_of_type_Int));
+      this.a.b = false;
+      return;
+      label100:
+      i = j;
+      if (this.a.jdField_a_of_type_Int + j > k) {
+        i = k - this.a.jdField_a_of_type_Int;
+      }
+    }
   }
 }
 

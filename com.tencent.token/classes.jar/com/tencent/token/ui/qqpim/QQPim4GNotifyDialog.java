@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -15,28 +17,48 @@ public class QQPim4GNotifyDialog
   extends Dialog
 {
   private Context a;
-  private d b = null;
+  private a b = null;
   
-  public QQPim4GNotifyDialog(Context paramContext, int paramInt, d paramd)
+  public QQPim4GNotifyDialog(Context paramContext, a parama)
   {
-    super(paramContext, paramInt);
+    super(paramContext, 2131558791);
     this.a = paramContext;
-    this.b = paramd;
+    this.b = parama;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130968719);
+    setContentView(2131296414);
     paramBundle = getWindow();
     if (paramBundle != null)
     {
       WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-      localLayoutParams.width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - 84.0F * IndexActivity.S_DENSITY));
+      localLayoutParams.width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 84.0F));
       paramBundle.setAttributes(localLayoutParams);
-      ((TextView)findViewById(2131559129)).setOnClickListener(new b(this));
-      ((TextView)findViewById(2131559128)).setOnClickListener(new c(this));
+      ((TextView)findViewById(2131166223)).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          if (QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this) != null) {
+            QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this).a();
+          }
+          QQPim4GNotifyDialog.this.dismiss();
+        }
+      });
+      ((TextView)findViewById(2131166222)).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          QQPim4GNotifyDialog.this.dismiss();
+        }
+      });
     }
+  }
+  
+  static abstract interface a
+  {
+    public abstract void a();
   }
 }
 

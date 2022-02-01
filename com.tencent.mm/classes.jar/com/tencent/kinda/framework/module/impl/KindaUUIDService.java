@@ -9,15 +9,15 @@ public class KindaUUIDService
 {
   public String getUuid()
   {
-    AppMethodBeat.i(144541);
+    AppMethodBeat.i(18659);
     String str = UUID.randomUUID().toString();
-    AppMethodBeat.o(144541);
+    AppMethodBeat.o(18659);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaUUIDService
  * JD-Core Version:    0.7.0.1
  */

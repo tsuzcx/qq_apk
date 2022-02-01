@@ -1,27 +1,21 @@
 package com.tencent.mobileqq.business.sougou;
 
-import alof;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import anyi;
-import anyl;
-import anym;
-import anyn;
-import anyq;
-import anyr;
-import bckw;
-import bckx;
-import bdzf;
-import bhpp;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.utils.SoLoadUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,548 +26,579 @@ import mqq.manager.TicketManager;
 public class WordMatchManager
   implements Manager
 {
-  protected static final String a;
-  protected anym a;
-  protected anyn a;
-  protected anyr a;
-  protected bckx a;
-  protected QQAppInterface a;
-  protected ArrayList<anyq> a;
-  boolean a;
-  protected anym b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d;
-  boolean e = false;
+  protected static final String b;
+  boolean a = false;
+  protected QQAppInterface c;
+  protected boolean d = false;
+  protected boolean e = false;
+  protected boolean f = false;
+  protected WordMatchManager.WordMatcher g = new WordMatchManager.HotWordMatcher(this);
+  protected ArrayList<WordMatchManager.MatcherCallback> h = new ArrayList();
+  protected WordMatchManager.Environment i = new WordMatchManager.Environment();
+  protected WordMatchManager.DictLocalMetaInfo j = new WordMatchManager.DictLocalMetaInfo();
+  protected WordMatchManager.DictLocalMetaInfo k = new WordMatchManager.DictLocalMetaInfo();
+  protected HttpWebCgiAsyncTask.Callback l = new WordMatchManager.4(this);
+  boolean m = false;
   
   static
   {
-    jdField_a_of_type_JavaLangString = bdzf.a(alof.aW + "/Tencent/QQ_business");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_ROOT);
+    localStringBuilder.append("/Tencent/QQ_business");
+    b = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public WordMatchManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Anyr = new WordMatchManager.HotWordMatcher(this);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Anyn = new anyn();
-    this.jdField_a_of_type_Anym = new anym();
-    this.jdField_b_of_type_Anym = new anym();
-    this.jdField_a_of_type_Bckx = new anyl(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
     paramQQAppInterface.getApp();
     try
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.a) {
         SoLoadUtil.a(BaseApplicationImpl.getContext(), "stlport_shared", 0, false);
       }
     }
     catch (UnsatisfiedLinkError paramQQAppInterface)
     {
-      for (;;)
-      {
-        try
-        {
-          this.jdField_a_of_type_Boolean = SoLoadUtil.a(BaseApplicationImpl.getContext(), "Matcher", 0, false);
-          return;
-        }
-        catch (UnsatisfiedLinkError paramQQAppInterface)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          paramQQAppInterface.printStackTrace();
-        }
-        paramQQAppInterface = paramQQAppInterface;
-        QLog.e(".business.sougou.DicFileDownloader", 2, "load stl failed!", paramQQAppInterface);
-      }
+      QLog.e(".business.sougou.DicFileDownloader", 2, "load stl failed!", paramQQAppInterface);
+    }
+    try
+    {
+      this.a = SoLoadUtil.a(BaseApplicationImpl.getContext(), "Matcher", 0, false);
+      return;
+    }
+    catch (UnsatisfiedLinkError paramQQAppInterface)
+    {
+      this.a = false;
+      paramQQAppInterface.printStackTrace();
     }
   }
   
   private String a(String paramString)
   {
+    String str = "";
     System.currentTimeMillis();
     try
     {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      paramString = str1;
+      localObject = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+      return localObject;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      paramString.printStackTrace();
+      return "";
+      localObject = new File(paramString);
+      paramString = str;
+      if (!((File)localObject).exists()) {}
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       for (;;)
       {
-        paramString = new File(paramString);
-        if (!paramString.exists()) {
-          break label56;
-        }
         try
         {
-          String str2 = bhpp.a(paramString);
-          paramString = str2;
-          if (str2 != null) {
-            continue;
+          Object localObject;
+          paramString = MD5FileUtil.a((File)localObject);
+          if (paramString == null) {
+            paramString = "";
           }
-          return "";
+          return paramString;
         }
-        catch (IOException paramString)
-        {
-          return "";
-        }
+        catch (IOException paramString) {}
+        localUnsatisfiedLinkError = localUnsatisfiedLinkError;
       }
     }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return paramString;
-    label56:
     return "";
   }
   
-  protected long a(int paramInt)
+  public WordMatchManager.WordMatcher a(WordMatchManager.MatcherCallback paramMatcherCallback)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).getLong("DICT_LAST_MODIFIED_" + paramInt, 0L);
-  }
-  
-  public anyr a(anyq paramanyq)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return null;
     }
-    if (this.c) {
-      return this.jdField_a_of_type_Anyr;
+    if (this.e) {
+      return this.g;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.1(this, paramanyq));
+    this.c.runOnUiThread(new WordMatchManager.1(this, paramMatcherCallback));
     return null;
   }
   
   protected String a(int paramInt)
   {
-    String str = jdField_a_of_type_JavaLangString;
-    switch (paramInt)
+    String str = b;
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return str + File.separator + "small";
-    case 2: 
-      return str + File.separator + "big";
-    case 3: 
-      return str + File.separator + "dict.xdb";
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return "";
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append("rules.ini");
+          return localStringBuilder.toString();
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append("dict.xdb");
+        return localStringBuilder.toString();
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("big");
+      return localStringBuilder.toString();
     }
-    return str + File.separator + "rules.ini";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("small");
+    return localStringBuilder.toString();
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_Anyn.jdField_a_of_type_Boolean = a(2);
-    this.jdField_a_of_type_Anyn.jdField_b_of_type_Boolean = a(1);
-    anyn localanyn = this.jdField_a_of_type_Anyn;
-    if ((a(3)) && (a(4))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localanyn.c = bool;
-      if (this.jdField_a_of_type_Anyn.jdField_a_of_type_Boolean) {
-        b(2);
-      }
-      if (this.jdField_a_of_type_Anyn.jdField_b_of_type_Boolean) {
-        b(1);
-      }
-      return;
+    this.i.a = g(2);
+    this.i.b = g(1);
+    WordMatchManager.Environment localEnvironment = this.i;
+    boolean bool;
+    if ((g(3)) && (g(4))) {
+      bool = true;
+    } else {
+      bool = false;
     }
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.5(this, paramInt));
+    localEnvironment.c = bool;
+    if (this.i.a) {
+      i(2);
+    }
+    if (this.i.b) {
+      i(1);
+    }
   }
   
   protected void a(int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).edit().putLong("DICT_LAST_MODIFIED_" + paramInt, paramLong).commit();
-  }
-  
-  public void a(anym paramanym)
-  {
-    if (paramanym.jdField_b_of_type_Int != 1)
-    {
-      a(paramanym.jdField_a_of_type_Int);
-      return;
-    }
-    if (paramanym.jdField_a_of_type_Int == 2) {
-      this.jdField_b_of_type_Anym = paramanym;
-    }
-    for (;;)
-    {
-      ThreadManager.post(new WordMatchManager.TaskHttpDownload(this, paramanym.jdField_a_of_type_Int), 8, null, true);
-      return;
-      if (paramanym.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Anym = paramanym;
-      }
-    }
-  }
-  
-  public void a(anyq paramanyq)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new WordMatchManager.2(this, paramanyq));
+    SharedPreferences.Editor localEditor = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DICT_LAST_MODIFIED_");
+    localStringBuilder.append(paramInt);
+    localEditor.putLong(localStringBuilder.toString(), paramLong).commit();
   }
   
   protected void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi begin| type:" + paramInt + ",time:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("requestGetDictOrNot cgi begin| type:");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(",time:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d(".business.sougou.DicFileDownloader", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = (TicketManager)paramQQAppInterface.getManager(2);
     Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
     localObject2 = ((TicketManager)localObject2).getSkey(paramQQAppInterface.getCurrentAccountUin());
     paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putString("type", "" + paramInt);
-    paramQQAppInterface.putString("id", c(paramInt));
-    paramQQAppInterface.putString("md5", "" + d(paramInt));
-    paramQQAppInterface.putString("version", "8.3.5");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    paramQQAppInterface.putString("type", localStringBuilder.toString());
+    paramQQAppInterface.putString("id", d(paramInt));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(e(paramInt));
+    paramQQAppInterface.putString("md5", localStringBuilder.toString());
+    paramQQAppInterface.putString("version", "8.8.17");
     paramQQAppInterface.putString("platform", "android");
-    paramQQAppInterface.putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + (String)localObject2);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=o");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append((String)localObject2);
+    paramQQAppInterface.putString("Cookie", localStringBuilder.toString());
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("BUNDLE", paramQQAppInterface);
     ((HashMap)localObject1).put("CONTEXT", BaseApplication.getContext());
-    new bckw("http://cgi.qqweb.qq.com/cgi-bin/frequency/whether_request_cdn", "POST", this.jdField_a_of_type_Bckx, paramInt, null, true).execute(new HashMap[] { localObject1 });
+    new HttpWebCgiAsyncTask("https://cgi.qqweb.qq.com/cgi-bin/frequency/whether_request_cdn", "POST", this.l, paramInt, null, true).execute(new HashMap[] { localObject1 });
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(WordMatchManager.DictLocalMetaInfo paramDictLocalMetaInfo)
+  {
+    if (paramDictLocalMetaInfo.b != 1)
+    {
+      h(paramDictLocalMetaInfo.a);
+      return;
+    }
+    if (paramDictLocalMetaInfo.a == 2) {
+      this.k = paramDictLocalMetaInfo;
+    } else if (paramDictLocalMetaInfo.a == 1) {
+      this.j = paramDictLocalMetaInfo;
+    }
+    ThreadManager.post(new WordMatchManager.TaskHttpDownload(this, paramDictLocalMetaInfo.a), 8, null, true);
+  }
+  
+  protected void a(boolean paramBoolean)
   {
     ThreadManager.post(new WordMatchManager.3(this, paramBoolean), 5, null, true);
-    if (QLog.isDevelopLevel()) {
-      QLog.d(".business.sougou.DicFileDownloader", 4, "handleUpdateCompleted:" + paramBoolean);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleUpdateCompleted:");
+      localStringBuilder.append(paramBoolean);
+      QLog.d(".business.sougou.DicFileDownloader", 4, localStringBuilder.toString());
     }
   }
   
-  protected boolean a(int paramInt)
+  protected String b(int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return "";
+          }
+          return "https://pub.idqqimg.com/pc/qqclient/sfile/srule.gz";
+        }
+        return "https://pub.idqqimg.com/pc/qqclient/sfile/wsdict.gz";
+      }
+      return "https://pub.idqqimg.com/pc/qqclient/sfile/big.gz";
+    }
+    return "https://pub.idqqimg.com/pc/qqclient/sfile/small.gz";
+  }
+  
+  protected void b()
+  {
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    long l1 = localSharedPreferences.getLong("DICT_LAST_REQUEST_TIME", 0L);
+    long l2 = System.currentTimeMillis() / 1000L;
+    if ((this.d) && (l2 - l1 < 86400L))
+    {
+      a(true);
+      return;
+    }
+    this.d = true;
+    localSharedPreferences.edit().putLong("DICT_LAST_REQUEST_TIME", l2).commit();
+    a(this.c, 2);
+  }
+  
+  protected void b(WordMatchManager.DictLocalMetaInfo paramDictLocalMetaInfo)
+  {
+    Object localObject1 = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    Object localObject2 = ((SharedPreferences)localObject1).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("REQUEST_DICT_MD5_");
+    localStringBuilder.append(paramDictLocalMetaInfo.a);
+    ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramDictLocalMetaInfo.d).commit();
+    localObject2 = ((SharedPreferences)localObject1).edit();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DICT_ID_");
+    localStringBuilder.append(paramDictLocalMetaInfo.a);
+    ((SharedPreferences.Editor)localObject2).putString(localStringBuilder.toString(), paramDictLocalMetaInfo.f).commit();
+    localObject1 = ((SharedPreferences)localObject1).edit();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("DICT_MD5_");
+    ((StringBuilder)localObject2).append(paramDictLocalMetaInfo.a);
+    ((SharedPreferences.Editor)localObject1).putString(((StringBuilder)localObject2).toString(), paramDictLocalMetaInfo.e).commit();
+  }
+  
+  public void b(WordMatchManager.MatcherCallback paramMatcherCallback)
+  {
+    this.c.runOnUiThread(new WordMatchManager.2(this, paramMatcherCallback));
+  }
+  
+  protected long c(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DICT_LAST_MODIFIED_");
+    localStringBuilder.append(paramInt);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+  }
+  
+  protected String d(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DICT_ID_");
+    localStringBuilder.append(paramInt);
+    return localSharedPreferences.getString(localStringBuilder.toString(), "0");
+  }
+  
+  protected String e(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("REQUEST_DICT_MD5_");
+    localStringBuilder.append(paramInt);
+    return localSharedPreferences.getString(localStringBuilder.toString(), "0");
+  }
+  
+  protected String f(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.c.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DICT_MD5_");
+    localStringBuilder.append(paramInt);
+    return localSharedPreferences.getString(localStringBuilder.toString(), "0");
+  }
+  
+  protected boolean g(int paramInt)
   {
     String str = a(paramInt);
     if (!new File(str).exists()) {
       return false;
     }
-    return e(paramInt).equalsIgnoreCase(anyi.a(str));
+    return f(paramInt).equalsIgnoreCase(DictFileUtil.a(str));
   }
   
-  protected String b(int paramInt)
+  protected void h(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "http://pub.idqqimg.com/pc/qqclient/sfile/small.gz";
-    case 2: 
-      return "http://pub.idqqimg.com/pc/qqclient/sfile/big.gz";
-    case 3: 
-      return "http://pub.idqqimg.com/pc/qqclient/sfile/wsdict.gz";
-    }
-    return "http://pub.idqqimg.com/pc/qqclient/sfile/srule.gz";
-  }
-  
-  protected void b()
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
-    long l1 = localSharedPreferences.getLong("DICT_LAST_REQUEST_TIME", 0L);
-    long l2 = System.currentTimeMillis() / 1000L;
-    if ((this.jdField_b_of_type_Boolean) && (l2 - l1 < 86400L))
-    {
-      a(true);
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    localSharedPreferences.edit().putLong("DICT_LAST_REQUEST_TIME", l2).commit();
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+    this.c.runOnUiThread(new WordMatchManager.5(this, paramInt));
   }
   
   /* Error */
-  protected void b(int paramInt)
+  protected void i(int paramInt)
   {
     // Byte code:
-    //   0: new 147	java/io/File
+    //   0: new 166	java/io/File
     //   3: dup
     //   4: aload_0
     //   5: iload_1
-    //   6: invokevirtual 354	com/tencent/mobileqq/business/sougou/WordMatchManager:a	(I)Ljava/lang/String;
-    //   9: invokespecial 150	java/io/File:<init>	(Ljava/lang/String;)V
+    //   6: invokevirtual 405	com/tencent/mobileqq/business/sougou/WordMatchManager:a	(I)Ljava/lang/String;
+    //   9: invokespecial 169	java/io/File:<init>	(Ljava/lang/String;)V
     //   12: astore 9
-    //   14: iconst_4
-    //   15: newarray byte
-    //   17: astore 10
-    //   19: new 390	java/io/FileInputStream
-    //   22: dup
-    //   23: aload 9
-    //   25: invokespecial 393	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   28: astore 8
-    //   30: aload 8
-    //   32: astore 7
-    //   34: aload 8
-    //   36: aload 10
-    //   38: invokevirtual 399	java/io/InputStream:read	([B)I
-    //   41: pop
-    //   42: aload 8
-    //   44: astore 7
-    //   46: aload 8
-    //   48: aload 10
-    //   50: invokevirtual 399	java/io/InputStream:read	([B)I
-    //   53: pop
-    //   54: aload 8
-    //   56: astore 7
-    //   58: aload 10
-    //   60: invokestatic 401	anyi:a	([B)I
-    //   63: istore_1
-    //   64: iload_1
-    //   65: iconst_4
-    //   66: iadd
-    //   67: i2l
-    //   68: lstore_3
-    //   69: aload 8
-    //   71: astore 7
-    //   73: aload 9
-    //   75: invokevirtual 404	java/io/File:length	()J
-    //   78: lstore 5
-    //   80: lload_3
-    //   81: lload 5
-    //   83: lcmp
-    //   84: ifle +22 -> 106
-    //   87: aload 8
-    //   89: ifnull +8 -> 97
-    //   92: aload 8
-    //   94: invokevirtual 407	java/io/InputStream:close	()V
-    //   97: return
-    //   98: astore 7
-    //   100: aload 7
-    //   102: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   105: return
-    //   106: aload 8
-    //   108: astore 7
-    //   110: iload_1
-    //   111: newarray byte
-    //   113: astore 9
-    //   115: aload 8
-    //   117: astore 7
-    //   119: aload 8
-    //   121: aload 9
-    //   123: invokevirtual 399	java/io/InputStream:read	([B)I
-    //   126: pop
-    //   127: aload 8
-    //   129: astore 7
-    //   131: new 361	java/lang/String
-    //   134: dup
-    //   135: aload 9
-    //   137: invokespecial 411	java/lang/String:<init>	([B)V
-    //   140: astore 9
-    //   142: aload 9
+    //   14: aconst_null
+    //   15: astore 10
+    //   17: aconst_null
+    //   18: astore 11
+    //   20: aconst_null
+    //   21: astore 8
+    //   23: aload 8
+    //   25: astore 7
+    //   27: iconst_4
+    //   28: newarray byte
+    //   30: astore 12
+    //   32: aload 8
+    //   34: astore 7
+    //   36: new 425	java/io/FileInputStream
+    //   39: dup
+    //   40: aload 9
+    //   42: invokespecial 428	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   45: astore 8
+    //   47: aload 8
+    //   49: aload 12
+    //   51: invokevirtual 434	java/io/InputStream:read	([B)I
+    //   54: pop
+    //   55: aload 8
+    //   57: aload 12
+    //   59: invokevirtual 434	java/io/InputStream:read	([B)I
+    //   62: pop
+    //   63: aload 12
+    //   65: invokestatic 436	com/tencent/mobileqq/business/sougou/DictFileUtil:a	([B)I
+    //   68: istore_1
+    //   69: iload_1
+    //   70: iconst_4
+    //   71: iadd
+    //   72: i2l
+    //   73: lstore_3
+    //   74: aload 9
+    //   76: invokevirtual 439	java/io/File:length	()J
+    //   79: lstore 5
+    //   81: lload_3
+    //   82: lload 5
+    //   84: lcmp
+    //   85: ifle +17 -> 102
+    //   88: aload 8
+    //   90: invokevirtual 442	java/io/InputStream:close	()V
+    //   93: return
+    //   94: astore 7
+    //   96: aload 7
+    //   98: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   101: return
+    //   102: iload_1
+    //   103: newarray byte
+    //   105: astore 7
+    //   107: aload 8
+    //   109: aload 7
+    //   111: invokevirtual 434	java/io/InputStream:read	([B)I
+    //   114: pop
+    //   115: new 412	java/lang/String
+    //   118: dup
+    //   119: aload 7
+    //   121: invokespecial 446	java/lang/String:<init>	([B)V
+    //   124: astore 7
+    //   126: aload 8
+    //   128: invokevirtual 442	java/io/InputStream:close	()V
+    //   131: goto +108 -> 239
+    //   134: astore 8
+    //   136: aload 8
+    //   138: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   141: goto +98 -> 239
     //   144: astore 7
-    //   146: aload 8
-    //   148: ifnull +12 -> 160
-    //   151: aload 8
-    //   153: invokevirtual 407	java/io/InputStream:close	()V
-    //   156: aload 9
-    //   158: astore 7
-    //   160: new 413	org/json/JSONObject
-    //   163: dup
-    //   164: aload 7
-    //   166: invokespecial 414	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   169: ldc_w 416
-    //   172: invokevirtual 420	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   175: astore 7
-    //   177: iconst_0
-    //   178: istore_1
-    //   179: iload_1
-    //   180: aload 7
-    //   182: invokevirtual 425	org/json/JSONArray:length	()I
-    //   185: if_icmpge -88 -> 97
-    //   188: aload 7
-    //   190: iload_1
-    //   191: invokevirtual 429	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   194: astore 8
-    //   196: aload 8
-    //   198: ldc_w 431
-    //   201: invokevirtual 434	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   204: ldc_w 436
-    //   207: invokevirtual 365	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   210: ifeq +29 -> 239
-    //   213: aload 8
-    //   215: ldc_w 438
-    //   218: invokevirtual 442	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   221: istore_2
-    //   222: aload_0
-    //   223: getfield 73	com/tencent/mobileqq/business/sougou/WordMatchManager:jdField_a_of_type_Anyn	Lanyn;
-    //   226: getfield 445	anyn:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   229: iload_2
-    //   230: invokestatic 451	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   233: invokeinterface 457 2 0
-    //   238: pop
-    //   239: iload_1
-    //   240: iconst_1
-    //   241: iadd
-    //   242: istore_1
-    //   243: goto -64 -> 179
-    //   246: astore 7
-    //   248: aload 7
-    //   250: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   253: aload 9
-    //   255: astore 7
-    //   257: goto -97 -> 160
-    //   260: astore 9
-    //   262: aconst_null
-    //   263: astore 8
-    //   265: aload 8
-    //   267: astore 7
-    //   269: aload 9
-    //   271: invokevirtual 458	java/io/FileNotFoundException:printStackTrace	()V
-    //   274: aload 8
-    //   276: ifnull +125 -> 401
-    //   279: aload 8
-    //   281: invokevirtual 407	java/io/InputStream:close	()V
-    //   284: ldc 161
-    //   286: astore 7
-    //   288: goto -128 -> 160
-    //   291: astore 7
-    //   293: aload 7
-    //   295: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   298: ldc 161
-    //   300: astore 7
-    //   302: goto -142 -> 160
-    //   305: astore 9
-    //   307: aconst_null
-    //   308: astore 8
-    //   310: aload 8
-    //   312: astore 7
-    //   314: aload 9
-    //   316: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   319: aload 8
-    //   321: ifnull +80 -> 401
-    //   324: aload 8
-    //   326: invokevirtual 407	java/io/InputStream:close	()V
-    //   329: ldc 161
-    //   331: astore 7
-    //   333: goto -173 -> 160
-    //   336: astore 7
-    //   338: aload 7
-    //   340: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   343: ldc 161
-    //   345: astore 7
-    //   347: goto -187 -> 160
-    //   350: astore 8
-    //   352: aconst_null
-    //   353: astore 7
-    //   355: aload 7
-    //   357: ifnull +8 -> 365
-    //   360: aload 7
-    //   362: invokevirtual 407	java/io/InputStream:close	()V
-    //   365: aload 8
-    //   367: athrow
-    //   368: astore 7
-    //   370: aload 7
-    //   372: invokevirtual 408	java/io/IOException:printStackTrace	()V
-    //   375: goto -10 -> 365
-    //   378: astore 7
-    //   380: aload 7
-    //   382: invokevirtual 459	org/json/JSONException:printStackTrace	()V
-    //   385: return
-    //   386: astore 8
-    //   388: goto -33 -> 355
-    //   391: astore 9
-    //   393: goto -83 -> 310
-    //   396: astore 9
-    //   398: goto -133 -> 265
-    //   401: ldc 161
-    //   403: astore 7
-    //   405: goto -245 -> 160
+    //   146: goto +187 -> 333
+    //   149: astore 9
+    //   151: goto +27 -> 178
+    //   154: astore 9
+    //   156: goto +50 -> 206
+    //   159: astore 9
+    //   161: aload 7
+    //   163: astore 8
+    //   165: aload 9
+    //   167: astore 7
+    //   169: goto +164 -> 333
+    //   172: astore 9
+    //   174: aload 10
+    //   176: astore 8
+    //   178: aload 8
+    //   180: astore 7
+    //   182: aload 9
+    //   184: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   187: aload 8
+    //   189: ifnull +46 -> 235
+    //   192: aload 8
+    //   194: invokevirtual 442	java/io/InputStream:close	()V
+    //   197: goto +38 -> 235
+    //   200: astore 9
+    //   202: aload 11
+    //   204: astore 8
+    //   206: aload 8
+    //   208: astore 7
+    //   210: aload 9
+    //   212: invokevirtual 447	java/io/FileNotFoundException:printStackTrace	()V
+    //   215: aload 8
+    //   217: ifnull +18 -> 235
+    //   220: aload 8
+    //   222: invokevirtual 442	java/io/InputStream:close	()V
+    //   225: goto +10 -> 235
+    //   228: astore 7
+    //   230: aload 7
+    //   232: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   235: ldc 145
+    //   237: astore 7
+    //   239: new 449	org/json/JSONObject
+    //   242: dup
+    //   243: aload 7
+    //   245: invokespecial 450	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   248: ldc_w 452
+    //   251: invokevirtual 456	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   254: astore 7
+    //   256: iconst_0
+    //   257: istore_1
+    //   258: iload_1
+    //   259: aload 7
+    //   261: invokevirtual 461	org/json/JSONArray:length	()I
+    //   264: if_icmpge +68 -> 332
+    //   267: aload 7
+    //   269: iload_1
+    //   270: invokevirtual 465	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   273: astore 8
+    //   275: aload 8
+    //   277: ldc_w 467
+    //   280: invokevirtual 469	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   283: ldc_w 471
+    //   286: invokevirtual 416	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   289: ifeq +29 -> 318
+    //   292: aload 8
+    //   294: ldc_w 473
+    //   297: invokevirtual 477	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   300: istore_2
+    //   301: aload_0
+    //   302: getfield 88	com/tencent/mobileqq/business/sougou/WordMatchManager:i	Lcom/tencent/mobileqq/business/sougou/WordMatchManager$Environment;
+    //   305: getfield 480	com/tencent/mobileqq/business/sougou/WordMatchManager$Environment:d	Ljava/util/Set;
+    //   308: iload_2
+    //   309: invokestatic 486	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   312: invokeinterface 492 2 0
+    //   317: pop
+    //   318: iload_1
+    //   319: iconst_1
+    //   320: iadd
+    //   321: istore_1
+    //   322: goto -64 -> 258
+    //   325: astore 7
+    //   327: aload 7
+    //   329: invokevirtual 493	org/json/JSONException:printStackTrace	()V
+    //   332: return
+    //   333: aload 8
+    //   335: ifnull +18 -> 353
+    //   338: aload 8
+    //   340: invokevirtual 442	java/io/InputStream:close	()V
+    //   343: goto +10 -> 353
+    //   346: astore 8
+    //   348: aload 8
+    //   350: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   353: goto +6 -> 359
+    //   356: aload 7
+    //   358: athrow
+    //   359: goto -3 -> 356
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	408	0	this	WordMatchManager
-    //   0	408	1	paramInt	int
-    //   221	9	2	i	int
-    //   68	13	3	l1	long
-    //   78	4	5	l2	long
-    //   32	40	7	localObject1	Object
-    //   98	3	7	localIOException1	IOException
-    //   108	81	7	localObject2	Object
-    //   246	3	7	localIOException2	IOException
-    //   255	32	7	localObject3	Object
-    //   291	3	7	localIOException3	IOException
-    //   300	32	7	localObject4	Object
-    //   336	3	7	localIOException4	IOException
-    //   345	16	7	str1	String
-    //   368	3	7	localIOException5	IOException
-    //   378	3	7	localJSONException	org.json.JSONException
-    //   403	1	7	str2	String
-    //   28	297	8	localObject5	Object
-    //   350	16	8	localObject6	Object
-    //   386	1	8	localObject7	Object
-    //   12	242	9	localObject8	Object
-    //   260	10	9	localFileNotFoundException1	java.io.FileNotFoundException
-    //   305	10	9	localIOException6	IOException
-    //   391	1	9	localIOException7	IOException
-    //   396	1	9	localFileNotFoundException2	java.io.FileNotFoundException
-    //   17	42	10	arrayOfByte	byte[]
+    //   0	362	0	this	WordMatchManager
+    //   0	362	1	paramInt	int
+    //   300	9	2	n	int
+    //   73	9	3	l1	long
+    //   79	4	5	l2	long
+    //   25	10	7	localFileInputStream1	java.io.FileInputStream
+    //   94	3	7	localIOException1	IOException
+    //   105	20	7	localObject1	Object
+    //   144	18	7	localObject2	Object
+    //   167	42	7	localObject3	Object
+    //   228	3	7	localIOException2	IOException
+    //   237	31	7	localObject4	Object
+    //   325	32	7	localJSONException	org.json.JSONException
+    //   21	106	8	localFileInputStream2	java.io.FileInputStream
+    //   134	3	8	localIOException3	IOException
+    //   163	176	8	localObject5	Object
+    //   346	3	8	localIOException4	IOException
+    //   12	63	9	localFile	File
+    //   149	1	9	localIOException5	IOException
+    //   154	1	9	localFileNotFoundException1	java.io.FileNotFoundException
+    //   159	7	9	localObject6	Object
+    //   172	11	9	localIOException6	IOException
+    //   200	11	9	localFileNotFoundException2	java.io.FileNotFoundException
+    //   15	160	10	localObject7	Object
+    //   18	185	11	localObject8	Object
+    //   30	34	12	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   92	97	98	java/io/IOException
-    //   151	156	246	java/io/IOException
-    //   14	30	260	java/io/FileNotFoundException
-    //   279	284	291	java/io/IOException
-    //   14	30	305	java/io/IOException
-    //   324	329	336	java/io/IOException
-    //   14	30	350	finally
-    //   360	365	368	java/io/IOException
-    //   160	177	378	org/json/JSONException
-    //   179	239	378	org/json/JSONException
-    //   34	42	386	finally
-    //   46	54	386	finally
-    //   58	64	386	finally
-    //   73	80	386	finally
-    //   110	115	386	finally
-    //   119	127	386	finally
-    //   131	142	386	finally
-    //   269	274	386	finally
-    //   314	319	386	finally
-    //   34	42	391	java/io/IOException
-    //   46	54	391	java/io/IOException
-    //   58	64	391	java/io/IOException
-    //   73	80	391	java/io/IOException
-    //   110	115	391	java/io/IOException
-    //   119	127	391	java/io/IOException
-    //   131	142	391	java/io/IOException
-    //   34	42	396	java/io/FileNotFoundException
-    //   46	54	396	java/io/FileNotFoundException
-    //   58	64	396	java/io/FileNotFoundException
-    //   73	80	396	java/io/FileNotFoundException
-    //   110	115	396	java/io/FileNotFoundException
-    //   119	127	396	java/io/FileNotFoundException
-    //   131	142	396	java/io/FileNotFoundException
-  }
-  
-  protected void b(anym paramanym)
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0);
-    localSharedPreferences.edit().putString("REQUEST_DICT_MD5_" + paramanym.jdField_a_of_type_Int, paramanym.jdField_a_of_type_JavaLangString).commit();
-    localSharedPreferences.edit().putString("DICT_ID_" + paramanym.jdField_a_of_type_Int, paramanym.c).commit();
-    localSharedPreferences.edit().putString("DICT_MD5_" + paramanym.jdField_a_of_type_Int, paramanym.jdField_b_of_type_JavaLangString).commit();
-  }
-  
-  protected String c(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).getString("DICT_ID_" + paramInt, "0");
-  }
-  
-  protected String d(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).getString("REQUEST_DICT_MD5_" + paramInt, "0");
-  }
-  
-  protected String e(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("BUSINESS_DICT_FILE_MANAGER", 0).getString("DICT_MD5_" + paramInt, "0");
+    //   88	93	94	java/io/IOException
+    //   126	131	134	java/io/IOException
+    //   47	69	144	finally
+    //   74	81	144	finally
+    //   102	126	144	finally
+    //   47	69	149	java/io/IOException
+    //   74	81	149	java/io/IOException
+    //   102	126	149	java/io/IOException
+    //   47	69	154	java/io/FileNotFoundException
+    //   74	81	154	java/io/FileNotFoundException
+    //   102	126	154	java/io/FileNotFoundException
+    //   27	32	159	finally
+    //   36	47	159	finally
+    //   182	187	159	finally
+    //   210	215	159	finally
+    //   27	32	172	java/io/IOException
+    //   36	47	172	java/io/IOException
+    //   27	32	200	java/io/FileNotFoundException
+    //   36	47	200	java/io/FileNotFoundException
+    //   192	197	228	java/io/IOException
+    //   220	225	228	java/io/IOException
+    //   239	256	325	org/json/JSONException
+    //   258	318	325	org/json/JSONException
+    //   338	343	346	java/io/IOException
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager
  * JD-Core Version:    0.7.0.1
  */

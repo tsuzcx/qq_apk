@@ -1,28 +1,60 @@
-import android.app.Dialog;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewerActivity;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.data.RecentFileAdapter.ItemHolder;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
-class frj
+public class frj
   implements View.OnClickListener
 {
-  frj(fri paramfri, View paramView) {}
+  public frj(FMRecentFileActivity paramFMRecentFileActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a) != null) && (FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a).isShowing())) {
-      FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a).dismiss();
+    paramView = (RecentFileAdapter.ItemHolder)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    this.a.b.a().b();
+    FMRecentFileActivity.a(this.a);
+    if (this.a.g())
+    {
+      if (FMDataCache.a(localFileManagerEntity)) {
+        FMDataCache.b(localFileManagerEntity);
+      }
+      for (;;)
+      {
+        this.a.f();
+        FMRecentFileActivity.a(this.a);
+        return;
+        FMDataCache.a(localFileManagerEntity);
+      }
     }
-    paramView = ((RecentFileAdapter.ItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-    if (this.jdField_a_of_type_Fri.a.b.a().b(paramView.nSessionId)) {
-      this.jdField_a_of_type_Fri.a.a.setVisible();
-    }
-    FMRecentFileActivity.a(this.jdField_a_of_type_Fri.a);
+    Object localObject = new FileManagerReporter.fileAssistantReportData();
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_JavaLangString = "file_viewer_in";
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Int = 73;
+    ((FileManagerReporter.fileAssistantReportData)localObject).b = FileUtil.a(localFileManagerEntity.fileName);
+    ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
+    FileManagerReporter.a(this.a.b.a(), (FileManagerReporter.fileAssistantReportData)localObject);
+    localObject = new ForwardFileInfo();
+    ((ForwardFileInfo)localObject).c(localFileManagerEntity.cloudType);
+    ((ForwardFileInfo)localObject).a(10001);
+    ((ForwardFileInfo)localObject).b(paramView.b);
+    ((ForwardFileInfo)localObject).c(paramView.jdField_a_of_type_Long);
+    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileName);
+    ((ForwardFileInfo)localObject).d(localFileManagerEntity.fileSize);
+    ((ForwardFileInfo)localObject).b(localFileManagerEntity.Uuid);
+    paramView = new Intent(this.a.getApplicationContext(), QfileFileViewerActivity.class);
+    paramView.putExtra("fileinfo", (Parcelable)localObject);
+    this.a.startActivityForResult(paramView, 102);
   }
 }
 

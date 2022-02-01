@@ -1,254 +1,172 @@
 package com.tencent.mobileqq.triton.render;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.pm.ConfigurationInfo;
 import android.view.Surface;
+import androidx.annotation.AnyThread;
 import com.tencent.mobileqq.triton.annotation.JNIModule;
-import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.engine.TTLog;
+import com.tencent.mobileqq.triton.engine.ScreenShotCallback;
+import com.tencent.mobileqq.triton.internal.lifecycle.LifeCycleOwner;
+import com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder;
+import com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder.Companion;
+import com.tencent.mobileqq.triton.internal.render.monitor.BlackScreenMonitor;
+import com.tencent.mobileqq.triton.internal.render.monitor.FPSMonitor;
+import com.tencent.mobileqq.triton.internal.render.monitor.FirstScreenMonitor;
+import com.tencent.mobileqq.triton.internal.render.monitor.ScreenShootMonitor;
+import com.tencent.mobileqq.triton.internal.touch.TouchProviderBridge;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import com.tencent.mobileqq.triton.jni.JNICaller.RenderContext;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.render.monitor.BlackScreenMonitor;
-import com.tencent.mobileqq.triton.render.monitor.FPSMonitor;
-import com.tencent.mobileqq.triton.render.monitor.FirstScreenMonitor;
-import com.tencent.mobileqq.triton.render.monitor.ScreenShootMonitor;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
-import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
-import com.tencent.mobileqq.triton.touch.TouchEventManager;
-import com.tencent.mobileqq.triton.views.GameUserInfoBtnManager;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.triton.lifecycle.LifeCycle;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
+import com.tencent.mobileqq.triton.view.GameView;
+import com.tencent.mobileqq.triton.view.GameView.SurfaceCallback;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Executor;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @JNIModule
-@TTNativeModule(name="RenderContext")
-public class RenderContext
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/render/RenderContext;", "", "onInitEnd", "Lkotlin/Function0;", "", "lifeCycleOwner", "Lcom/tencent/mobileqq/triton/internal/lifecycle/LifeCycleOwner;", "nativeTTAppHandle", "", "currentFPSHolder", "Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;", "", "lastBlackTimeHolder", "firstFameCallbackHolder", "", "accumulatedDrawCallHolder", "screenShotCallbackValueHolder", "Lcom/tencent/mobileqq/triton/engine/ScreenShotCallback;", "context", "Landroid/content/Context;", "worker", "Ljava/util/concurrent/Executor;", "mainThreadExecutor", "touchProviderBridge", "Lcom/tencent/mobileqq/triton/internal/touch/TouchProviderBridge;", "enableOpenglEs3", "(Lkotlin/jvm/functions/Function0;Lcom/tencent/mobileqq/triton/internal/lifecycle/LifeCycleOwner;JLcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Lcom/tencent/mobileqq/triton/internal/lifecycle/ValueHolder;Landroid/content/Context;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Lcom/tencent/mobileqq/triton/internal/touch/TouchProviderBridge;Z)V", "canvasHeightHolder", "", "canvasWidthHolder", "displayDensity", "supportES3", "swapListeners", "", "Lcom/tencent/mobileqq/triton/render/RenderContext$SwapListener;", "touchEventManager", "getTouchEventManager", "()Lcom/tencent/mobileqq/triton/internal/touch/TouchProviderBridge;", "attachGameView", "gameView", "Lcom/tencent/mobileqq/triton/view/GameView;", "attachSurface", "destroyRenderContext", "initRenderContext", "surface", "Landroid/view/Surface;", "nExit", "nInitRenderContext", "width", "height", "scale", "nOnPause", "nOnResume", "nSurfaceChanged", "nSurfaceDestroyed", "nUpdateRenderContext", "onDestroy", "onRenderContextInit", "onSwapBuffer", "setFixedSize", "surfaceChanged", "Companion", "SwapListener", "Triton_release"}, k=1, mv={1, 1, 16})
+@TritonKeep
+public final class RenderContext
 {
+  public static final RenderContext.Companion Companion = new RenderContext.Companion(null);
   private static final String TAG = "RenderContext";
-  private boolean bSupportES3;
-  private int mCanvasHeight;
-  private int mCanvasWidth;
-  private Context mContext;
-  private WeakReference<RenderContext.IFixedSizeListener> mFixedSizeListener;
-  private GameGlobalView mGameGlobalView;
-  private float mScale;
-  private int mScreenHeight;
-  private int mScreenWidth;
-  private ArrayList<RenderContext.ISwapListener> mSwapListeners;
-  private volatile TouchEventManager mTouchEventManager;
-  private TTEngine mTritonEngine;
+  private final ValueHolder<Integer> canvasHeightHolder;
+  private final ValueHolder<Integer> canvasWidthHolder;
+  private float displayDensity;
+  private final LifeCycleOwner lifeCycleOwner;
+  private final long nativeTTAppHandle;
+  private final Function0<Unit> onInitEnd;
+  private final boolean supportES3;
+  private final List<RenderContext.SwapListener> swapListeners;
+  @NotNull
+  private final TouchProviderBridge touchEventManager;
   
-  public RenderContext(TTEngine paramTTEngine, Context paramContext)
+  public RenderContext(@NotNull Function0<Unit> paramFunction0, @NotNull LifeCycleOwner paramLifeCycleOwner, long paramLong, @NotNull ValueHolder<Float> paramValueHolder, @NotNull ValueHolder<Long> paramValueHolder1, @NotNull ValueHolder<Boolean> paramValueHolder2, @NotNull ValueHolder<Long> paramValueHolder3, @NotNull ValueHolder<ScreenShotCallback> paramValueHolder4, @NotNull Context paramContext, @NotNull Executor paramExecutor1, @NotNull Executor paramExecutor2, @NotNull TouchProviderBridge paramTouchProviderBridge, boolean paramBoolean)
   {
-    this.mTritonEngine = paramTTEngine;
-    this.mContext = paramContext.getApplicationContext();
-    this.bSupportES3 = checkOpenGLES30(this.mContext);
-    this.mSwapListeners = new ArrayList();
-    TTLog.e("RenderContext", "initialize:" + this);
-  }
-  
-  private boolean checkOpenGLES30(Context paramContext)
-  {
-    for (;;)
-    {
-      try
-      {
-        i = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo().reqGlEsVersion;
-        if (i < 196608) {
-          continue;
-        }
-        i = 1;
-      }
-      catch (Exception paramContext)
-      {
-        TTLog.e("RenderContext", "get support ES3 error! " + paramContext.getMessage());
-        int i = 0;
-        continue;
-      }
-      if ((!this.mTritonEngine.getQQEnv().enableOpengles3()) || (i == 0)) {
-        break label84;
-      }
-      return true;
-      i = 0;
+    this.onInitEnd = paramFunction0;
+    this.lifeCycleOwner = paramLifeCycleOwner;
+    this.nativeTTAppHandle = paramLong;
+    paramFunction0 = Integer.valueOf(0);
+    if ((paramBoolean) && (RenderContext.Companion.access$checkOpenGLES30(Companion, paramContext))) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
     }
-    label84:
-    return false;
+    this.supportES3 = paramBoolean;
+    this.canvasWidthHolder = ValueHolder.Companion.just(paramFunction0);
+    this.canvasHeightHolder = ValueHolder.Companion.just(paramFunction0);
+    this.touchEventManager = paramTouchProviderBridge;
+    paramFunction0 = new StringBuilder();
+    paramFunction0.append("initialize:");
+    paramFunction0.append(this);
+    Logger.e$default("RenderContext", paramFunction0.toString(), null, 4, null);
+    this.swapListeners = ((List)new CopyOnWriteArrayList((Collection)CollectionsKt.listOf(new RenderContext.SwapListener[] { (RenderContext.SwapListener)new FPSMonitor(paramValueHolder), (RenderContext.SwapListener)new BlackScreenMonitor(paramValueHolder1, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor1), (RenderContext.SwapListener)new FirstScreenMonitor(paramValueHolder2, paramValueHolder3), (RenderContext.SwapListener)new ScreenShootMonitor(paramValueHolder4, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor2, paramExecutor1) })));
   }
   
-  @TTNativeCall
-  private void onRenderContextInit()
+  private final void attachSurface(GameView paramGameView)
   {
-    ITTEngine.IListener localIListener = this.mTritonEngine.getEngineListener();
-    if (localIListener != null) {
-      localIListener.onInitFinish();
+    paramGameView.setSurfaceCallback((GameView.SurfaceCallback)new RenderContext.attachSurface.1(this, paramGameView));
+    this.swapListeners.add(new RenderContext.attachSurface.2(paramGameView));
+  }
+  
+  @TritonKeep
+  private final void onRenderContextInit()
+  {
+    this.onInitEnd.invoke();
+  }
+  
+  @TritonKeep
+  private final void onSwapBuffer()
+  {
+    Iterator localIterator = this.swapListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((RenderContext.SwapListener)localIterator.next()).onSwap();
     }
   }
   
-  @TTNativeCall
-  private void onSwapBuffer()
+  @AnyThread
+  public final void attachGameView(@NotNull GameView paramGameView)
   {
-    if (this.mTritonEngine.getRenderContext() == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.mTritonEngine.getRenderContext().getSwapListeners().iterator();
-      while (localIterator.hasNext()) {
-        ((RenderContext.ISwapListener)localIterator.next()).onSwap();
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramGameView, "gameView");
+    this.displayDensity = paramGameView.getDisplayDensity();
+    this.touchEventManager.attachView(paramGameView, this.displayDensity);
+    attachSurface(paramGameView);
+    this.lifeCycleOwner.observeLifeCycle((LifeCycle)new RenderContext.attachGameView.1(paramGameView));
   }
   
-  private void setFixedInternal(int paramInt1, int paramInt2)
+  public final void destroyRenderContext()
   {
-    this.mCanvasWidth = paramInt1;
-    this.mCanvasHeight = paramInt2;
-    if ((this.mFixedSizeListener != null) && (this.mFixedSizeListener.get() != null)) {
-      ((RenderContext.IFixedSizeListener)this.mFixedSizeListener.get()).onFixedSize(paramInt1, paramInt2);
-    }
-    TTLog.i("RenderContext", "setFixedSize mCanvasWidth=" + paramInt1 + ", mCanvasHeight=" + paramInt2);
+    JNICaller.RenderContext.nSurfaceDestroyed(this, this.nativeTTAppHandle);
   }
   
-  public void addSwapListener(RenderContext.ISwapListener paramISwapListener)
+  @NotNull
+  public final TouchProviderBridge getTouchEventManager()
   {
-    this.mSwapListeners.add(paramISwapListener);
+    return this.touchEventManager;
   }
   
-  public GameGlobalView createGameView(Activity paramActivity, int paramInt1, int paramInt2, float paramFloat)
+  public final void initRenderContext(@NotNull GameView paramGameView, @NotNull Surface paramSurface)
   {
-    initScreenInfo(paramInt1, paramInt2, paramFloat);
-    this.mTouchEventManager = new TouchEventManager(this.mTritonEngine, paramFloat);
-    this.mGameGlobalView = new GameGlobalView(paramActivity, this);
-    this.mTritonEngine.getUserInfoBtnManager().init(paramActivity, this.mGameGlobalView, paramFloat);
-    addSwapListener(new FPSMonitor(this.mTritonEngine, this.mGameGlobalView, this.mContext));
-    addSwapListener(new BlackScreenMonitor(this.mTritonEngine));
-    addSwapListener(new FirstScreenMonitor(this.mTritonEngine));
-    addSwapListener(new ScreenShootMonitor(this.mTritonEngine));
-    return this.mGameGlobalView;
+    Intrinsics.checkParameterIsNotNull(paramGameView, "gameView");
+    Intrinsics.checkParameterIsNotNull(paramSurface, "surface");
+    long l = this.nativeTTAppHandle;
+    boolean bool = this.supportES3;
+    int i = (int)(paramGameView.getWidth() / this.displayDensity);
+    float f1 = paramGameView.getHeight();
+    float f2 = this.displayDensity;
+    JNICaller.RenderContext.nInitRenderContext(this, l, paramSurface, bool, i, (int)(f1 / f2), f2);
   }
   
-  public void destroyRenderContext()
+  public final native void nExit(long paramLong);
+  
+  public final native void nInitRenderContext(long paramLong, @Nullable Surface paramSurface, boolean paramBoolean, int paramInt1, int paramInt2, float paramFloat);
+  
+  public final native void nOnPause(long paramLong);
+  
+  public final native void nOnResume(long paramLong);
+  
+  public final native void nSurfaceChanged(long paramLong, @Nullable Surface paramSurface);
+  
+  public final native void nSurfaceDestroyed(long paramLong);
+  
+  public final native void nUpdateRenderContext(long paramLong);
+  
+  public final void onDestroy()
   {
-    JNICaller.RenderContext.nSurfaceDestroyed(this, this.mTritonEngine.getNativeTTAppHandle());
+    JNICaller.RenderContext.nExit(this, this.nativeTTAppHandle);
+    this.swapListeners.clear();
   }
   
-  public int getCanvasHeight()
+  @TritonKeep
+  public final void setFixedSize(int paramInt1, int paramInt2)
   {
-    return this.mCanvasHeight;
+    this.canvasWidthHolder.setValue(Integer.valueOf(paramInt1));
+    this.canvasHeightHolder.setValue(Integer.valueOf(paramInt2));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setFixedSize mCanvasWidth=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", mCanvasHeight=");
+    localStringBuilder.append(paramInt2);
+    Logger.i$default("RenderContext", localStringBuilder.toString(), null, 4, null);
   }
   
-  public int getCanvasWidth()
+  public final void surfaceChanged(@Nullable Surface paramSurface)
   {
-    return this.mCanvasWidth;
-  }
-  
-  public int getScreenHeight()
-  {
-    return this.mScreenHeight;
-  }
-  
-  public float getScreenScale()
-  {
-    return this.mScale;
-  }
-  
-  public int getScreenWidth()
-  {
-    return this.mScreenWidth;
-  }
-  
-  public <T extends RenderContext.ISwapListener> T getSwapListener(Class<T> paramClass)
-  {
-    if (paramClass != null)
-    {
-      Iterator localIterator = new ArrayList(this.mSwapListeners).iterator();
-      while (localIterator.hasNext())
-      {
-        RenderContext.ISwapListener localISwapListener = (RenderContext.ISwapListener)localIterator.next();
-        if (paramClass.isInstance(localISwapListener)) {
-          return localISwapListener;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public List<RenderContext.ISwapListener> getSwapListeners()
-  {
-    return this.mSwapListeners;
-  }
-  
-  public TouchEventManager getTouchEventManager()
-  {
-    return this.mTouchEventManager;
-  }
-  
-  public void initRenderContext(Surface paramSurface)
-  {
-    JNICaller.RenderContext.nInitRenderContext(this, this.mTritonEngine.getNativeTTAppHandle(), paramSurface, this.bSupportES3, (int)(this.mScreenWidth / this.mScale), (int)(this.mScreenHeight / this.mScale), this.mScale);
-  }
-  
-  public void initScreenInfo(int paramInt1, int paramInt2, float paramFloat)
-  {
-    this.mScreenWidth = paramInt1;
-    this.mScreenHeight = paramInt2;
-    this.mScale = paramFloat;
-  }
-  
-  public native void nExit(long paramLong);
-  
-  public native void nInitRenderContext(long paramLong, Surface paramSurface, boolean paramBoolean, int paramInt1, int paramInt2, float paramFloat);
-  
-  public native void nOnPause(long paramLong);
-  
-  public native void nOnResume(long paramLong);
-  
-  public native void nSurfaceChanged(long paramLong, Surface paramSurface);
-  
-  public native void nSurfaceDestroyed(long paramLong);
-  
-  public native void nUpdateRenderContext(long paramLong);
-  
-  public void onDestroy()
-  {
-    JNICaller.RenderContext.nExit(this, this.mTritonEngine.getNativeTTAppHandle());
-    this.mSwapListeners.clear();
-    this.mGameGlobalView = null;
-    if (this.mTouchEventManager != null)
-    {
-      this.mTouchEventManager.onDestroy();
-      this.mTouchEventManager = null;
-    }
-    this.mContext = null;
-  }
-  
-  public void rmSwapListener(RenderContext.ISwapListener paramISwapListener)
-  {
-    this.mSwapListeners.remove(paramISwapListener);
-  }
-  
-  @TTNativeCall
-  public void setFixedSize(int paramInt1, int paramInt2)
-  {
-    setFixedInternal(paramInt1, paramInt2);
-  }
-  
-  public void setFixedSizeListener(RenderContext.IFixedSizeListener paramIFixedSizeListener)
-  {
-    this.mFixedSizeListener = new WeakReference(paramIFixedSizeListener);
-  }
-  
-  public void surfaceChanged(Surface paramSurface)
-  {
-    JNICaller.RenderContext.nSurfaceChanged(this, this.mTritonEngine.getNativeTTAppHandle(), paramSurface);
+    JNICaller.RenderContext.nSurfaceChanged(this, this.nativeTTAppHandle, paramSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.render.RenderContext
  * JD-Core Version:    0.7.0.1
  */

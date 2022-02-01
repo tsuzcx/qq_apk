@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class PlugInInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new PlugInInfo.1();
+  public static final Parcelable.Creator<PlugInInfo> CREATOR = new Parcelable.Creator() {};
   private static final long serialVersionUID = 1L;
   public final String plugInId;
   public final String plugInUUID;
@@ -35,7 +35,13 @@ public class PlugInInfo
   
   public String toString()
   {
-    return "plid:" + this.plugInId + " plV:" + this.plugInVersion + " plUUID:" + this.plugInUUID;
+    StringBuilder localStringBuilder = new StringBuilder("plid:");
+    localStringBuilder.append(this.plugInId);
+    localStringBuilder.append(" plV:");
+    localStringBuilder.append(this.plugInVersion);
+    localStringBuilder.append(" plUUID:");
+    localStringBuilder.append(this.plugInUUID);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

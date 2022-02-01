@@ -8,16 +8,15 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.biz.subscribe.beans.ShareInfoBean;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import ydo;
-import yns;
 
 public class SubscribeVideoSharedCardView
   extends SubscribeMultiPicSharedCardView
 {
-  private ImageView a;
+  private ImageView p;
   
   public SubscribeVideoSharedCardView(Context paramContext)
   {
@@ -37,25 +36,25 @@ public class SubscribeVideoSharedCardView
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364084));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.p = ((ImageView)this.l.findViewById(2131430459));
+    this.p.setVisibility(0);
   }
   
-  public void a(ydo paramydo, Bitmap paramBitmap, yns paramyns)
+  public void a(ShareInfoBean paramShareInfoBean, Bitmap paramBitmap, AbsSubscribeShareCardView.ShareDataBindListener paramShareDataBindListener)
   {
-    super.a(paramydo, paramBitmap, paramyns);
-    paramydo = paramydo.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramydo.cover.width.get(), paramydo.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramydo.poster.icon.get());
-    this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramydo.cover.url.get());
-    this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramyns);
+    super.a(paramShareInfoBean, paramBitmap, paramShareDataBindListener);
+    paramShareInfoBean = paramShareInfoBean.a();
+    a(this.o, paramShareInfoBean.cover.width.get(), paramShareInfoBean.cover.height.get());
+    this.j.add(paramShareInfoBean.poster.icon.get());
+    this.k.add(this.n);
+    this.j.add(paramShareInfoBean.cover.url.get());
+    this.k.add(this.m);
+    a(this.j, this.k, paramShareDataBindListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeVideoSharedCardView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,17 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.facedetect.a.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class FaceDetectDecorView
   extends View
 {
-  public boolean moE;
-  public boolean moF;
-  public boolean moG;
-  public RectF moH;
-  private Paint moI;
+  public boolean zXT;
+  public boolean zXU;
+  public boolean zXV;
+  public RectF zXW;
+  private Paint zXX;
   
   public FaceDetectDecorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,45 +30,45 @@ public class FaceDetectDecorView
   public FaceDetectDecorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(615);
-    this.moE = false;
-    this.moF = false;
-    this.moG = false;
-    this.moH = null;
-    this.moI = null;
-    this.moI = new Paint();
-    this.moI.setColor(getResources().getColor(2131689763));
-    this.moI.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    AppMethodBeat.i(104134);
+    this.zXT = false;
+    this.zXU = false;
+    this.zXV = false;
+    this.zXW = null;
+    this.zXX = null;
+    this.zXX = new Paint();
+    this.zXX.setColor(getResources().getColor(a.b.black));
+    this.zXX.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     setLayerType(1, null);
-    AppMethodBeat.o(615);
+    AppMethodBeat.o(104134);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(616);
+    AppMethodBeat.i(104135);
     super.onDraw(paramCanvas);
-    ab.i("MicroMsg.FaceDetectDecorView", "mTargetCoverMode: %b, mIsInCoverMode: %b, %s", new Object[] { Boolean.valueOf(this.moF), Boolean.valueOf(this.moE), this.moH });
-    if ((this.moF != this.moE) || (this.moG))
+    Log.i("MicroMsg.FaceDetectDecorView", "mTargetCoverMode: %b, mIsInCoverMode: %b, %s", new Object[] { Boolean.valueOf(this.zXU), Boolean.valueOf(this.zXT), this.zXW });
+    if ((this.zXU != this.zXT) || (this.zXV))
     {
-      if (!this.moF) {
-        break label114;
+      if (!this.zXU) {
+        break label113;
       }
-      paramCanvas.drawColor(getResources().getColor(2131690015));
-      paramCanvas.drawRect(this.moH, this.moI);
+      paramCanvas.drawColor(getResources().getColor(a.b.face_cover));
+      paramCanvas.drawRect(this.zXW, this.zXX);
     }
     for (;;)
     {
-      this.moE = this.moF;
-      AppMethodBeat.o(616);
+      this.zXT = this.zXU;
+      AppMethodBeat.o(104135);
       return;
-      label114:
-      paramCanvas.drawColor(getResources().getColor(2131690605));
+      label113:
+      paramCanvas.drawColor(getResources().getColor(a.b.transparent));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectDecorView
  * JD-Core Version:    0.7.0.1
  */

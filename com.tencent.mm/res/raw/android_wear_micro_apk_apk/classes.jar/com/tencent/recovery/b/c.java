@@ -2,7 +2,7 @@ package com.tencent.recovery.b;
 
 public abstract interface c
 {
-  public abstract a nV();
+  public abstract a oJ();
 }
 
 

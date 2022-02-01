@@ -2,7 +2,6 @@ package com.tencent.biz.subscribe.animation;
 
 import android.graphics.drawable.AnimationDrawable;
 import mqq.util.WeakReference;
-import ydh;
 
 class PopViewAnimationDrawableHelper$LoopingRunnable
   implements Runnable
@@ -17,32 +16,30 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
   public void run()
   {
     Object localObject = (PopViewAnimationDrawableHelper)this.a.get();
-    ydh localydh;
     if (localObject != null)
     {
-      localydh = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
-      if (localydh != null)
+      PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener localOnInnerFrameAnimationListener = PopViewAnimationDrawableHelper.e((PopViewAnimationDrawableHelper)localObject);
+      if (localOnInnerFrameAnimationListener != null)
       {
-        if (PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject) <= 0) {
-          break label38;
+        if (PopViewAnimationDrawableHelper.f((PopViewAnimationDrawableHelper)localObject) > 0)
+        {
+          localOnInnerFrameAnimationListener.a();
+          return;
         }
-        localydh.a();
+        localObject = PopViewAnimationDrawableHelper.g((PopViewAnimationDrawableHelper)localObject);
+        if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
+        {
+          localOnInnerFrameAnimationListener.b();
+          return;
+        }
+        localOnInnerFrameAnimationListener.a();
       }
     }
-    return;
-    label38:
-    localObject = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
-    if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
-    {
-      localydh.b();
-      return;
-    }
-    localydh.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper.LoopingRunnable
  * JD-Core Version:    0.7.0.1
  */

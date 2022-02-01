@@ -11,14 +11,14 @@ public class KindaAppModuleManager
   
   public KindaAppModuleManager()
   {
-    AppMethodBeat.i(141548);
+    AppMethodBeat.i(136073);
     this.moduleList = new ArrayList();
-    AppMethodBeat.o(141548);
+    AppMethodBeat.o(136073);
   }
   
   public void initAllModule()
   {
-    AppMethodBeat.i(141550);
+    AppMethodBeat.i(136075);
     Iterator localIterator = this.moduleList.iterator();
     while (localIterator.hasNext())
     {
@@ -26,31 +26,31 @@ public class KindaAppModuleManager
       localKindaModule.configModule();
       localKindaModule.initModuleInner();
     }
-    AppMethodBeat.o(141550);
+    AppMethodBeat.o(136075);
   }
   
   public void onAppCreate()
   {
-    AppMethodBeat.i(141551);
+    AppMethodBeat.i(136076);
     Iterator localIterator = this.moduleList.iterator();
     while (localIterator.hasNext()) {
       ((KindaModule)localIterator.next()).onAppCreate();
     }
-    AppMethodBeat.o(141551);
+    AppMethodBeat.o(136076);
   }
   
   public void registerModule(KindaModule paramKindaModule)
   {
-    AppMethodBeat.i(141549);
+    AppMethodBeat.i(136074);
     if (paramKindaModule != null) {
       this.moduleList.add(paramKindaModule);
     }
-    AppMethodBeat.o(141549);
+    AppMethodBeat.o(136074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.modularize.KindaAppModuleManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/j_g" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:minHeight="@dimen/bb"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:layout_gravity="center_vertical" android:id="@id/js_" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginStart="@dimen/i6" android:layout_marginEnd="@dimen/i6" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/js7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginRight="@dimen/cp" android:contentDescription="@string/a_q" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/b7q" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/m7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/jsb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ma" />
+                <TextView android:id="@id/jsa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="{tip}" style="@style/ma" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/m_" android:textColor="#ff555555" android:id="@id/js8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/m_" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/js9" android:layout_width="@dimen/as3" android:layout_height="@dimen/as0" android:layout_marginLeft="@dimen/as1" android:layout_marginRight="@dimen/as2" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/jbk" />
+    </LinearLayout>
+</LinearLayout>

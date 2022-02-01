@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/wy" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/s9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/s_" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a01" />
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/wz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/u1" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/cc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d4" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/d4">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cr" android:layout_height="@dimen/d1" android:src="@raw/icons_outlined_search" app:iconColor="@color/dt" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/dt" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/r8" android:background="@android:color/transparent" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/rg" android:layout_marginLeft="@dimen/bv" android:text="@string/n8" android:contentDescription="@string/az" android:textCursorDrawable="@drawable/a8b" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

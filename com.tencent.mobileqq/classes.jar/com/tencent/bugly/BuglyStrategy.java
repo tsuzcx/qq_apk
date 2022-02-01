@@ -1,7 +1,5 @@
 package com.tencent.bugly;
 
-import com.tencent.bugly.proguard.a;
-
 public class BuglyStrategy
 {
   private String a;
@@ -18,80 +16,38 @@ public class BuglyStrategy
   private boolean l = true;
   private boolean m = true;
   private boolean n = false;
-  private a o;
+  private com.tencent.bugly.proguard.a o;
   private int p = 31;
   private boolean q = false;
   
-  /* Error */
   public String getAppChannel()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 57	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
-    //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 64	com/tencent/bugly/crashreport/common/info/a:o	Ljava/lang/String;
-    //   15: astore_1
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: aload_1
-    //   19: areturn
-    //   20: aload_0
-    //   21: getfield 57	com/tencent/bugly/BuglyStrategy:b	Ljava/lang/String;
-    //   24: astore_1
-    //   25: goto -9 -> 16
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	BuglyStrategy
-    //   15	10	1	str	String
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	28	finally
-    //   20	25	28	finally
+    try
+    {
+      if (this.b == null)
+      {
+        str = com.tencent.bugly.crashreport.common.info.a.b().o;
+        return str;
+      }
+      String str = this.b;
+      return str;
+    }
+    finally {}
   }
   
-  /* Error */
   public String getAppPackageName()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 67	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
-    //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 68	com/tencent/bugly/crashreport/common/info/a:c	Ljava/lang/String;
-    //   15: astore_1
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: aload_1
-    //   19: areturn
-    //   20: aload_0
-    //   21: getfield 67	com/tencent/bugly/BuglyStrategy:c	Ljava/lang/String;
-    //   24: astore_1
-    //   25: goto -9 -> 16
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	BuglyStrategy
-    //   15	10	1	str	String
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	28	finally
-    //   20	25	28	finally
+    try
+    {
+      if (this.c == null)
+      {
+        str = com.tencent.bugly.crashreport.common.info.a.b().c;
+        return str;
+      }
+      String str = this.c;
+      return str;
+    }
+    finally {}
   }
   
   public long getAppReportDelay()
@@ -108,40 +64,19 @@ public class BuglyStrategy
     }
   }
   
-  /* Error */
   public String getAppVersion()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 75	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
-    //   6: ifnonnull +14 -> 20
-    //   9: invokestatic 62	com/tencent/bugly/crashreport/common/info/a:b	()Lcom/tencent/bugly/crashreport/common/info/a;
-    //   12: getfield 77	com/tencent/bugly/crashreport/common/info/a:m	Ljava/lang/String;
-    //   15: astore_1
-    //   16: aload_0
-    //   17: monitorexit
-    //   18: aload_1
-    //   19: areturn
-    //   20: aload_0
-    //   21: getfield 75	com/tencent/bugly/BuglyStrategy:a	Ljava/lang/String;
-    //   24: astore_1
-    //   25: goto -9 -> 16
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	BuglyStrategy
-    //   15	10	1	str	String
-    //   28	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	28	finally
-    //   20	25	28	finally
+    try
+    {
+      if (this.a == null)
+      {
+        str = com.tencent.bugly.crashreport.common.info.a.b().m;
+        return str;
+      }
+      String str = this.a;
+      return str;
+    }
+    finally {}
   }
   
   public int getCallBackType()
@@ -172,11 +107,11 @@ public class BuglyStrategy
     }
   }
   
-  public a getCrashHandleCallback$49db9608()
+  public com.tencent.bugly.proguard.a getCrashHandleCallback$49db9608()
   {
     try
     {
-      a locala = this.o;
+      com.tencent.bugly.proguard.a locala = this.o;
       return locala;
     }
     finally
@@ -415,7 +350,7 @@ public class BuglyStrategy
     }
   }
   
-  public BuglyStrategy setCrashHandleCallback$59ec52b1(a parama)
+  public BuglyStrategy setCrashHandleCallback$59ec52b1(com.tencent.bugly.proguard.a parama)
   {
     try
     {
@@ -548,7 +483,7 @@ public class BuglyStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.BuglyStrategy
  * JD-Core Version:    0.7.0.1
  */

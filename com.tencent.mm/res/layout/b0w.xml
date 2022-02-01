@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/j66" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/f1k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/f1l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/icons_filled_close2" android:layout_marginStart="24.0dip" />
-</RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/az" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/j67" android:background="@drawable/a73" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/d_" android:maxLines="1" />
+    <ImageView android:id="@id/amn" android:paddingBottom="1.0dip" android:layout_width="@dimen/yw" android:layout_height="@dimen/yv" android:src="@raw/image_gallery_search_image_bubble_triangle" />
+</LinearLayout>

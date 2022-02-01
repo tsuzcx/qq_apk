@@ -19,6 +19,9 @@ import org.json.JSONObject;
 public class VCell
   extends VDiv
 {
+  public static final int NOFITY_TYPE_ADD = 3;
+  public static final int NOFITY_TYPE_REMOVE = 2;
+  public static final int NOFITY_TYPE_UPDATE = 1;
   public static final String TAG = "VCell";
   private ViewGroup mRealView;
   private boolean needFresh = false;
@@ -33,30 +36,32 @@ public class VCell
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1411068523)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if ((i == -177721437) && (paramString.equals("disappear")))
       {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("appear"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("disappear")) {
-            i = 1;
-          }
-        }
-        break;
+        i = 1;
+        break label50;
       }
     }
-    this.mAppendEvents.add(paramString);
-    return;
+    else if (paramString.equals("appear"))
+    {
+      i = 0;
+      break label50;
+    }
+    i = -1;
+    label50:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        super.addEvent(paramString);
+        return;
+      }
+      this.mAppendEvents.add(paramString);
+      return;
+    }
     this.mAppendEvents.add(paramString);
   }
   
@@ -66,28 +71,28 @@ public class VCell
       return;
     }
     JSONObject localJSONObject = new JSONObject();
+    Object localObject;
     try
     {
       localJSONObject.put("frame", getPositionInfoRelativeToRoot(1));
-      JSONArray localJSONArray = new JSONArray();
-      if (getDomObject() != null)
-      {
-        String str = getDomObject().getRef();
-        if (str != null) {
-          localJSONArray.put(str);
-        }
-      }
-      localJSONArray.put("appear");
-      fireEvent("appear", localJSONArray, localJSONObject);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("VCell", "onDragBegin error :" + localException.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDragBegin error :");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      ViolaLogUtils.e("VCell", ((StringBuilder)localObject).toString());
+    }
+    JSONArray localJSONArray = new JSONArray();
+    if (getDomObject() != null)
+    {
+      localObject = getDomObject().getRef();
+      if (localObject != null) {
+        localJSONArray.put(localObject);
       }
     }
+    localJSONArray.put("appear");
+    fireEvent("appear", localJSONArray, localJSONObject);
   }
   
   protected VFrameLayout initComponentHostView(@NonNull Context paramContext)
@@ -104,7 +109,7 @@ public class VCell
     this.needFresh = paramBoolean;
   }
   
-  public void notifyChange()
+  public void notifyChange(int paramInt)
   {
     Object localObject = ViolaSDKManager.getInstance().getDomManager().getDomContext(getInstance().getInstanceId());
     if (localObject != null)
@@ -115,10 +120,10 @@ public class VCell
       }
       this.needFresh = true;
     }
-    if ((getParent() instanceof VRecyclerList)) {
+    if (((getParent() instanceof VRecyclerList)) && (paramInt != 2)) {
       ((VRecyclerList)getParent()).judgeIfNeedAppearEvent(this);
     }
-    super.notifyChange();
+    super.notifyChange(paramInt);
   }
   
   public void notifyChange(int paramInt, String paramString)
@@ -129,16 +134,17 @@ public class VCell
       localObject = ((DOMActionContext)localObject).getDomByRef(getRef());
       if ((localObject != null) && ((localObject instanceof DomObjectCell)))
       {
+        localObject = (DomObjectCell)localObject;
         ((DomObjectCell)localObject).needRefresh = true;
         ((DomObjectCell)localObject).changeRef = paramString;
         ((DomObjectCell)localObject).changeType = paramInt;
       }
       this.needFresh = true;
     }
-    if ((getParent() instanceof VRecyclerList)) {
+    if (((getParent() instanceof VRecyclerList)) && (((VRecyclerList)getParent()).isUpdateCheckEnable())) {
       ((VRecyclerList)getParent()).judgeIfNeedAppearEvent(this);
     }
-    super.notifyChange();
+    super.notifyChange(paramInt);
   }
   
   public void setHostView(VFrameLayout paramVFrameLayout)
@@ -148,7 +154,7 @@ public class VCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.component.VCell
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ public class LongField
   
   public Number getNumber()
   {
-    AppMethodBeat.i(117014);
+    AppMethodBeat.i(109568);
     long l = this.data;
-    AppMethodBeat.o(117014);
+    AppMethodBeat.o(109568);
     return Long.valueOf(l);
   }
   
@@ -33,7 +33,7 @@ public class LongField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.LongField
  * JD-Core Version:    0.7.0.1
  */

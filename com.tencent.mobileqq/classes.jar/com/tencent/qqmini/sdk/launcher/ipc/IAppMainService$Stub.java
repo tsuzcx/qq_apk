@@ -47,126 +47,115 @@ public abstract class IAppMainService$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      return true;
-    case 1: 
+      Object localObject4 = null;
+      Object localObject2 = null;
+      Object localObject5 = null;
+      Object localObject6 = null;
+      Object localObject3 = null;
+      Object localObject1 = null;
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 8: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        localObject2 = paramParcel1.readString();
+        localObject3 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        paramParcel1 = requestAync((String)localObject2, (String)localObject3, (Bundle)localObject1);
+        paramParcel2.writeNoException();
+        if (paramParcel1 != null)
+        {
+          paramParcel2.writeInt(1);
+          paramParcel1.writeToParcel(paramParcel2, 1);
+          return true;
+        }
+        paramParcel2.writeInt(0);
+        return true;
+      case 7: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        localObject2 = paramParcel1.readString();
+        localObject3 = paramParcel1.readString();
+        localObject1 = localObject4;
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        sendCmd((String)localObject2, (String)localObject3, (Bundle)localObject1, MiniCmdCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
+        paramParcel2.writeNoException();
+        return true;
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        paramInt1 = paramParcel1.readInt();
+        localObject3 = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        }
+        onAppLifecycle(paramInt1, (String)localObject3, (MiniAppInfo)localObject1, (Bundle)localObject2);
+        paramParcel2.writeNoException();
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        localObject1 = localObject5;
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        }
+        preloadDownloadPackage((MiniAppInfo)localObject1);
+        paramParcel2.writeNoException();
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        stopAllMiniApp();
+        paramParcel2.writeNoException();
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        localObject1 = localObject6;
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        }
+        stopMiniApp((MiniAppInfo)localObject1);
+        paramParcel2.writeNoException();
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject2 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject3 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);
+        }
+        startMiniApp((MiniAppInfo)localObject1, (Bundle)localObject2, (ResultReceiver)localObject3);
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
       preloadMiniApp();
       paramParcel2.writeNoException();
       return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label207;
-        }
-        localObject2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label213;
-        }
-      }
-      for (paramParcel1 = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        startMiniApp((MiniAppInfo)localObject1, (Bundle)localObject2, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject1 = null;
-        break;
-        localObject2 = null;
-        break label166;
-      }
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        stopMiniApp(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      stopAllMiniApp();
-      paramParcel2.writeNoException();
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        preloadDownloadPackage(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      paramInt1 = paramParcel1.readInt();
-      localObject2 = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0)
-      {
-        localObject1 = (MiniAppInfo)MiniAppInfo.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label398;
-        }
-      }
-      for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onAppLifecycle(paramInt1, (String)localObject2, (MiniAppInfo)localObject1, paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-        localObject1 = null;
-        break;
-      }
-    case 7: 
-      label166:
-      label207:
-      label213:
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-      label398:
-      localObject2 = paramParcel1.readString();
-      String str = paramParcel1.readString();
-      if (paramParcel1.readInt() != 0) {}
-      for (localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; localObject1 = null)
-      {
-        sendCmd((String)localObject2, str, (Bundle)localObject1, MiniCmdCallback.Stub.asInterface(paramParcel1.readStrongBinder()));
-        paramParcel2.writeNoException();
-        return true;
-      }
     }
-    paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
-    Object localObject1 = paramParcel1.readString();
-    Object localObject2 = paramParcel1.readString();
-    if (paramParcel1.readInt() != 0)
-    {
-      paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      paramParcel1 = requestAync((String)localObject1, (String)localObject2, paramParcel1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 == null) {
-        break label545;
-      }
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-    }
-    for (;;)
-    {
-      return true;
-      paramParcel1 = null;
-      break;
-      label545:
-      paramParcel2.writeInt(0);
-    }
+    paramParcel2.writeString("com.tencent.qqmini.sdk.launcher.ipc.IAppMainService");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.IAppMainService.Stub
  * JD-Core Version:    0.7.0.1
  */

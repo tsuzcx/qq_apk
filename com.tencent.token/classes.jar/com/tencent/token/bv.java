@@ -1,39 +1,98 @@
 package com.tencent.token;
 
-import java.util.concurrent.CountDownLatch;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 
-final class bv
-  implements Runnable
+public final class bv
+  extends Fragment
 {
-  private CountDownLatch a = null;
-  private bw b = null;
-  private bs c = null;
+  a a;
   
-  public bv(CountDownLatch paramCountDownLatch, bw parambw, bs parambs)
+  public static void a(Activity paramActivity)
   {
-    this.a = paramCountDownLatch;
-    this.b = parambw;
-    this.c = parambs;
+    paramActivity = paramActivity.getFragmentManager();
+    if (paramActivity.findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
+    {
+      paramActivity.beginTransaction().add(new bv(), "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag").commit();
+      paramActivity.executePendingTransactions();
+    }
   }
   
-  public final void run()
+  private void a(bj.a parama)
   {
-    try
+    Object localObject = getActivity();
+    if ((localObject instanceof bo))
     {
-      this.c.a();
-      bt.a = this.c.d();
-      bt.b = this.c.e();
-      this.b.a(this.c);
-      label38:
-      if (this.a != null) {
-        this.a.countDown();
-      }
+      ((bo)localObject).a().a(parama);
       return;
     }
-    catch (Throwable localThrowable)
+    if ((localObject instanceof bm))
     {
-      break label38;
+      localObject = ((bm)localObject).getLifecycle();
+      if ((localObject instanceof bn)) {
+        ((bn)localObject).a(parama);
+      }
     }
+  }
+  
+  static bv b(Activity paramActivity)
+  {
+    return (bv)paramActivity.getFragmentManager().findFragmentByTag("android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag");
+  }
+  
+  public final void onActivityCreated(Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+    a(bj.a.ON_CREATE);
+  }
+  
+  public final void onDestroy()
+  {
+    super.onDestroy();
+    a(bj.a.ON_DESTROY);
+    this.a = null;
+  }
+  
+  public final void onPause()
+  {
+    super.onPause();
+    a(bj.a.ON_PAUSE);
+  }
+  
+  public final void onResume()
+  {
+    super.onResume();
+    a locala = this.a;
+    if (locala != null) {
+      locala.b();
+    }
+    a(bj.a.ON_RESUME);
+  }
+  
+  public final void onStart()
+  {
+    super.onStart();
+    a locala = this.a;
+    if (locala != null) {
+      locala.a();
+    }
+    a(bj.a.ON_START);
+  }
+  
+  public final void onStop()
+  {
+    super.onStop();
+    a(bj.a.ON_STOP);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void a();
+    
+    public abstract void b();
   }
 }
 

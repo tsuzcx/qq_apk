@@ -1,32 +1,18 @@
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-class fnj
-  extends SQLiteCursor
+public final class fnj
+  implements Parcelable.Creator
 {
-  fnj(fni paramfni, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    return new QQPhotoInfo(paramParcel, null);
   }
   
-  public byte[] getBlob(int paramInt)
+  public QQPhotoInfo[] a(int paramInt)
   {
-    return SecurityUtile.a(super.getBlob(paramInt));
-  }
-  
-  public String getString(int paramInt)
-  {
-    String str1 = super.getString(paramInt);
-    try
-    {
-      String str2 = SecurityUtile.a(str1);
-      return str2;
-    }
-    catch (Exception localException) {}
-    return str1;
+    return new QQPhotoInfo[paramInt];
   }
 }
 

@@ -19,7 +19,7 @@ public class a
   
   public static int a(int paramInt)
   {
-    return (paramInt & 0xFF) << 24 | (paramInt >> 8 & 0xFF) << 16 | (paramInt >> 16 & 0xFF) << 8 | paramInt >>> 24;
+    return paramInt >>> 24 | (paramInt & 0xFF) << 24 | (paramInt >> 8 & 0xFF) << 16 | (paramInt >> 16 & 0xFF) << 8;
   }
   
   private static JceStruct a(JceStruct paramJceStruct)
@@ -28,36 +28,30 @@ public class a
       return null;
     }
     paramJceStruct = paramJceStruct.getClass().getSimpleName();
-    paramJceStruct = paramJceStruct.substring(0, paramJceStruct.length() - 7) + "Response";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramJceStruct.substring(0, paramJceStruct.length() - 7));
+    localStringBuilder.append("Response");
+    paramJceStruct = localStringBuilder.toString();
     try
     {
-      paramJceStruct = (JceStruct)Class.forName("com.tencent.apkupdate.logic.protocol.jce." + paramJceStruct).newInstance();
+      localStringBuilder = new StringBuilder("com.tencent.apkupdate.logic.protocol.jce.");
+      localStringBuilder.append(paramJceStruct);
+      paramJceStruct = (JceStruct)Class.forName(localStringBuilder.toString()).newInstance();
       return paramJceStruct;
-    }
-    catch (ClassNotFoundException paramJceStruct)
-    {
-      for (;;)
-      {
-        paramJceStruct.printStackTrace();
-        paramJceStruct = null;
-      }
-    }
-    catch (IllegalAccessException paramJceStruct)
-    {
-      for (;;)
-      {
-        paramJceStruct.printStackTrace();
-        paramJceStruct = null;
-      }
     }
     catch (InstantiationException paramJceStruct)
     {
-      for (;;)
-      {
-        paramJceStruct.printStackTrace();
-        paramJceStruct = null;
-      }
+      paramJceStruct.printStackTrace();
     }
+    catch (IllegalAccessException paramJceStruct)
+    {
+      paramJceStruct.printStackTrace();
+    }
+    catch (ClassNotFoundException paramJceStruct)
+    {
+      paramJceStruct.printStackTrace();
+    }
+    return null;
   }
   
   public static JceStruct a(JceStruct paramJceStruct, byte[] paramArrayOfByte)
@@ -76,7 +70,6 @@ public class a
         catch (Exception paramJceStruct)
         {
           paramJceStruct.printStackTrace();
-          return null;
         }
       }
     }
@@ -85,19 +78,17 @@ public class a
   
   public static Response a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 4)) {
-      paramArrayOfByte = null;
-    }
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      return paramArrayOfByte;
+      if (paramArrayOfByte.length < 4) {
+        return null;
+      }
       Response localResponse = new Response();
       try
       {
         paramArrayOfByte = new JceInputStream(paramArrayOfByte);
         paramArrayOfByte.setServerEncoding("utf-8");
         localResponse.readFrom(paramArrayOfByte);
-        paramArrayOfByte = localResponse;
         if (localResponse.head.ret == 0)
         {
           if ((localResponse.head.encryptWithPack & 0x2) == 2)
@@ -110,8 +101,8 @@ public class a
             localResponse.body = c(localResponse.body);
           }
           com.tencent.apkupdate.b.b.a().b(localResponse.head.phoneGuid);
-          return localResponse;
         }
+        return localResponse;
       }
       catch (Exception paramArrayOfByte)
       {
@@ -172,7 +163,7 @@ public class a
     //   38: astore_0
     //   39: aload_2
     //   40: invokevirtual 209	java/util/zip/Deflater:finished	()Z
-    //   43: ifne +32 -> 75
+    //   43: ifne +17 -> 60
     //   46: aload_1
     //   47: aload_0
     //   48: iconst_0
@@ -181,48 +172,49 @@ public class a
     //   51: invokevirtual 212	java/util/zip/Deflater:deflate	([B)I
     //   54: invokevirtual 183	java/io/ByteArrayOutputStream:write	([BII)V
     //   57: goto -18 -> 39
-    //   60: astore_0
-    //   61: aload_2
-    //   62: invokevirtual 215	java/util/zip/Deflater:end	()V
-    //   65: aload_1
-    //   66: ifnull +7 -> 73
-    //   69: aload_1
-    //   70: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   73: aload_0
-    //   74: athrow
-    //   75: aload_2
-    //   76: invokevirtual 215	java/util/zip/Deflater:end	()V
-    //   79: aload_1
-    //   80: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   83: aload_1
-    //   84: invokevirtual 189	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   87: areturn
-    //   88: astore_0
-    //   89: aload_0
-    //   90: invokevirtual 219	java/io/IOException:printStackTrace	()V
-    //   93: goto -10 -> 83
-    //   96: astore_1
-    //   97: aload_1
-    //   98: invokevirtual 219	java/io/IOException:printStackTrace	()V
-    //   101: goto -28 -> 73
-    //   104: astore_0
-    //   105: aconst_null
-    //   106: astore_1
-    //   107: goto -46 -> 61
+    //   60: aload_2
+    //   61: invokevirtual 215	java/util/zip/Deflater:end	()V
+    //   64: aload_1
+    //   65: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
+    //   68: goto +8 -> 76
+    //   71: astore_0
+    //   72: aload_0
+    //   73: invokevirtual 219	java/io/IOException:printStackTrace	()V
+    //   76: aload_1
+    //   77: invokevirtual 189	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   80: areturn
+    //   81: astore_0
+    //   82: goto +6 -> 88
+    //   85: astore_0
+    //   86: aconst_null
+    //   87: astore_1
+    //   88: aload_2
+    //   89: invokevirtual 215	java/util/zip/Deflater:end	()V
+    //   92: aload_1
+    //   93: ifnull +15 -> 108
+    //   96: aload_1
+    //   97: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
+    //   100: goto +8 -> 108
+    //   103: astore_1
+    //   104: aload_1
+    //   105: invokevirtual 219	java/io/IOException:printStackTrace	()V
+    //   108: goto +5 -> 113
+    //   111: aload_0
+    //   112: athrow
+    //   113: goto -2 -> 111
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	110	0	paramArrayOfByte	byte[]
-    //   17	67	1	localByteArrayOutputStream	ByteArrayOutputStream
-    //   96	2	1	localIOException	java.io.IOException
-    //   106	1	1	localObject	Object
-    //   7	69	2	localDeflater	java.util.zip.Deflater
+    //   0	116	0	paramArrayOfByte	byte[]
+    //   17	80	1	localByteArrayOutputStream	ByteArrayOutputStream
+    //   103	2	1	localIOException	java.io.IOException
+    //   7	82	2	localDeflater	java.util.zip.Deflater
     // Exception table:
     //   from	to	target	type
-    //   18	39	60	finally
-    //   39	57	60	finally
-    //   79	83	88	java/io/IOException
-    //   69	73	96	java/io/IOException
-    //   8	18	104	finally
+    //   64	68	71	java/io/IOException
+    //   18	39	81	finally
+    //   39	57	81	finally
+    //   8	18	85	finally
+    //   96	100	103	java/io/IOException
   }
   
   /* Error */
@@ -234,114 +226,113 @@ public class a
     //   4: invokespecial 224	java/util/zip/Inflater:<init>	()V
     //   7: astore 4
     //   9: aconst_null
-    //   10: astore_2
-    //   11: new 172	java/io/ByteArrayOutputStream
-    //   14: dup
-    //   15: aload_0
-    //   16: arraylength
-    //   17: invokespecial 196	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   20: astore_1
-    //   21: aload_1
-    //   22: astore_2
+    //   10: astore_3
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: new 172	java/io/ByteArrayOutputStream
+    //   16: dup
+    //   17: aload_0
+    //   18: arraylength
+    //   19: invokespecial 196	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   22: astore_1
     //   23: sipush 1024
     //   26: newarray byte
-    //   28: astore_3
-    //   29: aload_1
-    //   30: astore_2
-    //   31: aload 4
-    //   33: aload_0
-    //   34: invokevirtual 225	java/util/zip/Inflater:setInput	([B)V
-    //   37: aload_1
-    //   38: astore_2
-    //   39: aload 4
-    //   41: invokevirtual 226	java/util/zip/Inflater:finished	()Z
-    //   44: ifne +51 -> 95
-    //   47: aload_1
-    //   48: astore_2
-    //   49: aload_1
-    //   50: aload_3
-    //   51: iconst_0
-    //   52: aload 4
-    //   54: aload_3
-    //   55: invokevirtual 229	java/util/zip/Inflater:inflate	([B)I
-    //   58: invokevirtual 183	java/io/ByteArrayOutputStream:write	([BII)V
-    //   61: goto -24 -> 37
-    //   64: astore_3
-    //   65: aload_1
-    //   66: astore_0
-    //   67: aload_0
-    //   68: astore_2
-    //   69: aload_3
-    //   70: invokevirtual 230	java/util/zip/DataFormatException:printStackTrace	()V
-    //   73: aload 4
-    //   75: invokevirtual 231	java/util/zip/Inflater:end	()V
-    //   78: aload_0
-    //   79: astore_1
-    //   80: aload_0
-    //   81: ifnull +9 -> 90
-    //   84: aload_0
-    //   85: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   88: aload_0
-    //   89: astore_1
-    //   90: aload_1
-    //   91: invokevirtual 189	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   94: areturn
-    //   95: aload 4
-    //   97: invokevirtual 231	java/util/zip/Inflater:end	()V
-    //   100: aload_1
-    //   101: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   104: goto -14 -> 90
-    //   107: astore_0
-    //   108: goto -18 -> 90
-    //   111: astore_0
-    //   112: aload 4
-    //   114: invokevirtual 231	java/util/zip/Inflater:end	()V
-    //   117: aload_2
-    //   118: ifnull +7 -> 125
-    //   121: aload_2
-    //   122: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
-    //   125: aload_0
-    //   126: athrow
-    //   127: astore_1
-    //   128: aload_0
-    //   129: astore_1
-    //   130: goto -40 -> 90
-    //   133: astore_1
-    //   134: goto -9 -> 125
-    //   137: astore_0
-    //   138: goto -26 -> 112
-    //   141: astore_3
-    //   142: aconst_null
-    //   143: astore_0
-    //   144: goto -77 -> 67
+    //   28: astore_2
+    //   29: aload 4
+    //   31: aload_0
+    //   32: invokevirtual 225	java/util/zip/Inflater:setInput	([B)V
+    //   35: aload 4
+    //   37: invokevirtual 226	java/util/zip/Inflater:finished	()Z
+    //   40: ifne +18 -> 58
+    //   43: aload_1
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: aload 4
+    //   48: aload_2
+    //   49: invokevirtual 229	java/util/zip/Inflater:inflate	([B)I
+    //   52: invokevirtual 183	java/io/ByteArrayOutputStream:write	([BII)V
+    //   55: goto -20 -> 35
+    //   58: aload 4
+    //   60: invokevirtual 230	java/util/zip/Inflater:end	()V
+    //   63: aload_1
+    //   64: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
+    //   67: goto +47 -> 114
+    //   70: astore_0
+    //   71: goto +48 -> 119
+    //   74: astore_2
+    //   75: aload_1
+    //   76: astore_0
+    //   77: aload_2
+    //   78: astore_1
+    //   79: goto +12 -> 91
+    //   82: astore_0
+    //   83: aload_2
+    //   84: astore_1
+    //   85: goto +34 -> 119
+    //   88: astore_1
+    //   89: aload_3
+    //   90: astore_0
+    //   91: aload_0
+    //   92: astore_2
+    //   93: aload_1
+    //   94: invokevirtual 231	java/util/zip/DataFormatException:printStackTrace	()V
+    //   97: aload 4
+    //   99: invokevirtual 230	java/util/zip/Inflater:end	()V
+    //   102: aload_0
+    //   103: astore_1
+    //   104: aload_0
+    //   105: ifnull +9 -> 114
+    //   108: aload_0
+    //   109: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
+    //   112: aload_0
+    //   113: astore_1
+    //   114: aload_1
+    //   115: invokevirtual 189	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   118: areturn
+    //   119: aload 4
+    //   121: invokevirtual 230	java/util/zip/Inflater:end	()V
+    //   124: aload_1
+    //   125: ifnull +7 -> 132
+    //   128: aload_1
+    //   129: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
+    //   132: goto +5 -> 137
+    //   135: aload_0
+    //   136: athrow
+    //   137: goto -2 -> 135
+    //   140: astore_0
+    //   141: goto -74 -> 67
+    //   144: astore_1
+    //   145: aload_0
+    //   146: astore_1
+    //   147: goto -33 -> 114
+    //   150: astore_1
+    //   151: goto -19 -> 132
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	147	0	paramArrayOfByte	byte[]
-    //   20	81	1	localObject1	Object
-    //   127	1	1	localIOException1	java.io.IOException
-    //   129	1	1	arrayOfByte1	byte[]
-    //   133	1	1	localIOException2	java.io.IOException
-    //   10	112	2	localObject2	Object
-    //   28	27	3	arrayOfByte2	byte[]
-    //   64	6	3	localDataFormatException1	java.util.zip.DataFormatException
-    //   141	1	3	localDataFormatException2	java.util.zip.DataFormatException
-    //   7	106	4	localInflater	java.util.zip.Inflater
+    //   0	154	0	paramArrayOfByte	byte[]
+    //   22	63	1	localObject1	Object
+    //   88	6	1	localDataFormatException1	java.util.zip.DataFormatException
+    //   103	26	1	arrayOfByte1	byte[]
+    //   144	1	1	localIOException1	java.io.IOException
+    //   146	1	1	arrayOfByte2	byte[]
+    //   150	1	1	localIOException2	java.io.IOException
+    //   12	37	2	arrayOfByte3	byte[]
+    //   74	10	2	localDataFormatException2	java.util.zip.DataFormatException
+    //   92	1	2	arrayOfByte4	byte[]
+    //   10	80	3	localObject2	Object
+    //   7	113	4	localInflater	java.util.zip.Inflater
     // Exception table:
     //   from	to	target	type
-    //   23	29	64	java/util/zip/DataFormatException
-    //   31	37	64	java/util/zip/DataFormatException
-    //   39	47	64	java/util/zip/DataFormatException
-    //   49	61	64	java/util/zip/DataFormatException
-    //   100	104	107	java/io/IOException
-    //   11	21	111	finally
-    //   84	88	127	java/io/IOException
-    //   121	125	133	java/io/IOException
-    //   23	29	137	finally
-    //   31	37	137	finally
-    //   39	47	137	finally
-    //   49	61	137	finally
-    //   69	73	137	finally
-    //   11	21	141	java/util/zip/DataFormatException
+    //   23	35	70	finally
+    //   35	55	70	finally
+    //   23	35	74	java/util/zip/DataFormatException
+    //   35	55	74	java/util/zip/DataFormatException
+    //   13	23	82	finally
+    //   93	97	82	finally
+    //   13	23	88	java/util/zip/DataFormatException
+    //   63	67	140	java/io/IOException
+    //   108	112	144	java/io/IOException
+    //   128	132	150	java/io/IOException
   }
   
   public final LinkedHashMap a()
@@ -375,7 +366,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.a.a
  * JD-Core Version:    0.7.0.1
  */

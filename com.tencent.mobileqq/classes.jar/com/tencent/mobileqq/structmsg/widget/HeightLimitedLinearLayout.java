@@ -25,9 +25,10 @@ public class HeightLimitedLinearLayout
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = getMeasuredHeight();
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if ((this.a > 0) && (paramInt2 > this.a))
+    int i = this.a;
+    if ((i > 0) && (paramInt2 > i))
     {
-      setMeasuredDimension(paramInt1, this.a);
+      setMeasuredDimension(paramInt1, i);
       return;
     }
     setMeasuredDimension(paramInt1, paramInt2);
@@ -40,7 +41,7 @@ public class HeightLimitedLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.HeightLimitedLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fzu" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/fzp" android:paddingTop="@dimen/cd" android:paddingBottom="@dimen/cd" android:layout_width="@dimen/d9" android:layout_height="@dimen/d_" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/df" />
+            <org.libpag.PAGView android:id="@id/m3u" android:layout_width="@dimen/da" android:layout_height="@dimen/da" />
+        </FrameLayout>
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/fzq" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ivq" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center" android:id="@id/fzr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
+                        <ImageView android:id="@id/fzs" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_centerVertical="true" android:paddingStart="@dimen/bv" android:layout_alignEnd="@id/fzr" />
+                    </RelativeLayout>
+                    <TextView android:textSize="12.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/ivp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:alpha="0.6" />
+                </LinearLayout>
+                <FrameLayout android:id="@id/fu_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/df">
+                    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/fu8" android:background="@drawable/z7" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/cr">
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fu9" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginLeft="-1.0dip" android:layout_marginRight="2.0dip" android:src="@raw/icons_outlined_add" app:iconColor="@color/az" />
+                        <TextView android:textSize="@dimen/a84" android:textColor="@color/az" android:gravity="center" android:id="@id/fu7" android:paddingRight="1.0dip" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="@string/dmt" android:maxLines="1" android:includeFontPadding="false" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <com.tencent.mm.plugin.finder.live.widget.FinderLiveFansClubTagWidget android:layout_gravity="center_vertical" android:id="@id/cs3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" />
+    </LinearLayout>
+</LinearLayout>

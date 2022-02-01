@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k8u" android:background="@drawable/skin_group_list_item_normal_theme_version2" android:paddingLeft="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="24.0dip" android:singleLine="true"
+<TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/k8u" android:background="@drawable/skin_list_item_normal_theme_version2" android:paddingLeft="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="24.0dip" android:singleLine="true"
   xmlns:android="http://schemas.android.com/apk/res/android" />

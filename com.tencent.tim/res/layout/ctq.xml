@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/mt8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/la4" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/mt5" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ag9" />
+    <View android:id="@id/l9u" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+</LinearLayout>

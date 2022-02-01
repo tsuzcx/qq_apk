@@ -9,8 +9,8 @@ public final class SvcRequestGetConfMsgNum
   extends JceStruct
 {
   static ArrayList<Long> cache_vConfUin;
-  public byte cVerifyType;
-  public ArrayList<Long> vConfUin;
+  public byte cVerifyType = 0;
+  public ArrayList<Long> vConfUin = null;
   
   public SvcRequestGetConfMsgNum() {}
   
@@ -39,7 +39,7 @@ public final class SvcRequestGetConfMsgNum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGetConfMsgNum
  * JD-Core Version:    0.7.0.1
  */

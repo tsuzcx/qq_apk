@@ -15,7 +15,7 @@ class ArkEGLApplicationContextManagerBase
     EGLContextHolder localEGLContextHolder = new EGLContextHolder();
     if (!localEGLContextHolder.create(EGL10.EGL_NO_CONTEXT, null, 1, 1))
     {
-      ENV.logE("ArkApp.ContextManager", "createOffscreenContext.create.fail");
+      Logger.logE("ArkApp.ContextManager", "createOffscreenContext.create.fail");
       localEGLContextHolder.release();
       return null;
     }
@@ -24,7 +24,7 @@ class ArkEGLApplicationContextManagerBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkEGLApplicationContextManagerBase
  * JD-Core Version:    0.7.0.1
  */

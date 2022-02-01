@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class query_order_rsp
   extends JceStruct
 {
-  public int iProduct;
-  public int iResult;
-  public int iStatus;
+  public int iProduct = 0;
+  public int iResult = 0;
+  public int iStatus = 0;
   
   public query_order_rsp() {}
   
@@ -36,7 +36,7 @@ public final class query_order_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.query_order_rsp
  * JD-Core Version:    0.7.0.1
  */

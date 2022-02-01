@@ -10,7 +10,8 @@ final class mt$a$1
   
   public final void handleMessage(Message paramMessage)
   {
-    this.a.h += this.a.g;
+    paramMessage = this.a;
+    paramMessage.h += this.a.g;
     mt.a(this.a.l, this.a.a, this.a.b, this.a.c, this.a.h);
     paramMessage = this.a;
     int i = paramMessage.i;
@@ -33,7 +34,7 @@ final class mt$a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mt.a.1
  * JD-Core Version:    0.7.0.1
  */

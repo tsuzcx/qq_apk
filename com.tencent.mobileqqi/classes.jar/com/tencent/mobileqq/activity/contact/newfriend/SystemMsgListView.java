@@ -53,6 +53,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.XListView;
+import efc;
 import efd;
 import efe;
 import eff;
@@ -62,7 +63,6 @@ import efi;
 import efj;
 import efk;
 import efl;
-import efm;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -92,19 +92,19 @@ public class SystemMsgListView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   @SuppressLint({"HandlerLeak"})
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new efg(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new efl(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new eff(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new efk(this);
   private SystemMsgListAdapter jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new efi(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new efk(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new efj(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new efh(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new efj(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new efi(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressDialog a;
-  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new efm(this);
+  private SlideDetectListView.OnScrollToTopListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnScrollToTopListener = new efl(this);
   private SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public final long b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new efh(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new efg(this);
   private boolean jdField_b_of_type_Boolean = true;
   private boolean c = false;
   public View d;
@@ -123,7 +123,7 @@ public class SystemMsgListView
     this.jdField_a_of_type_Long = 1000L;
     this.jdField_b_of_type_Long = 500L;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new efd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new efc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -218,7 +218,7 @@ public class SystemMsgListView
   private static void c(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(new efe(paramQQAppInterface));
+      paramQQAppInterface.a(new efd(paramQQAppInterface));
     }
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "sendReadConfirm is end!");
@@ -249,8 +249,8 @@ public class SystemMsgListView
   private void n()
   {
     a(2130904010);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234582));
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131234583);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131234581));
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131234582);
     p();
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
@@ -774,7 +774,7 @@ public class SystemMsgListView
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new eff(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new efe(this));
   }
 }
 

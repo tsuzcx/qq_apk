@@ -31,15 +31,17 @@ public class FreezeFilter
   
   private boolean inRange(long paramLong)
   {
-    return (paramLong >= this.startTime) && (paramLong <= this.startTime + this.duration);
+    int i = this.startTime;
+    return (paramLong >= i) && (paramLong <= i + this.duration);
   }
   
   public void destroy()
   {
     this.copyFilter.clearGLSLSelf();
-    if (this.copyFrame != null)
+    Frame localFrame = this.copyFrame;
+    if (localFrame != null)
     {
-      this.copyFrame.clear();
+      localFrame.clear();
       this.copyFrame = null;
     }
   }
@@ -87,8 +89,9 @@ public class FreezeFilter
     if (this.triggered) {
       return this.triggeredStartTime;
     }
-    if (this.triggerCtrlItem != null) {
-      this.triggered = this.triggerCtrlItem.isTriggered();
+    TriggerCtrlItem localTriggerCtrlItem = this.triggerCtrlItem;
+    if (localTriggerCtrlItem != null) {
+      this.triggered = localTriggerCtrlItem.isTriggered();
     }
     this.triggeredStartTime = paramPTFaceAttr.getTimeStamp();
     return this.triggeredStartTime;
@@ -96,7 +99,7 @@ public class FreezeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.FreezeFilter
  * JD-Core Version:    0.7.0.1
  */

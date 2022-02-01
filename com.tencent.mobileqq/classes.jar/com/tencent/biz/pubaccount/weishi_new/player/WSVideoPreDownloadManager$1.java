@@ -11,11 +11,12 @@ class WSVideoPreDownloadManager$1
     WSVideoPreDownloadManager.a(this.this$0);
     WSVideoPreDownloadManager.a(this.this$0, null);
     WSVideoPreDownloadManager.a(this.this$0, null);
+    WSVideoPreDownloadManager.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

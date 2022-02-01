@@ -1,14 +1,13 @@
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
 public class hel
   implements Runnable
 {
-  public hel(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, hen paramhen) {}
+  public hel(HttpCommunicator paramHttpCommunicator) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Hen);
+    this.a.c();
   }
 }
 

@@ -1,26 +1,18 @@
 package com.tencent.mm.vending.base;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-
-final class Vending$h<K, V>
-  extends HashMap<K, V>
+public class Vending$h
 {
-  Vending.f AOf = null;
+  private _Index aguk;
   
-  public final void clear()
+  Vending$h(_Index param_Index)
   {
-    AppMethodBeat.i(126170);
-    super.clear();
-    if (this.AOf != null) {
-      this.AOf.a();
-    }
-    AppMethodBeat.o(126170);
+    Object localObject;
+    this.aguk = localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.base.Vending.h
  * JD-Core Version:    0.7.0.1
  */

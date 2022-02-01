@@ -10,10 +10,10 @@ import java.util.Set;
 
 public final class c
 {
-  private final a<ef<?>, ConnectionResult> HT = new a();
-  private final com.google.android.gms.b.c<Void> Mc = new com.google.android.gms.b.c();
-  private int Md;
-  private boolean Me = false;
+  private final a<ef<?>, ConnectionResult> JI = new a();
+  private final com.google.android.gms.b.c<Void> NR = new com.google.android.gms.b.c();
+  private int NS;
+  private boolean NT = false;
   
   public c(Iterable<? extends ad<?>> paramIterable)
   {
@@ -21,45 +21,45 @@ public final class c
     while (paramIterable.hasNext())
     {
       ad localad = (ad)paramIterable.next();
-      this.HT.put(localad.gJ(), null);
+      this.JI.put(localad.gT(), null);
     }
-    this.Md = this.HT.keySet().size();
+    this.NS = this.JI.keySet().size();
   }
   
   public final void a(ef<?> paramef, ConnectionResult paramConnectionResult)
   {
-    this.HT.put(paramef, paramConnectionResult);
-    this.Md -= 1;
-    if (!paramConnectionResult.gm()) {
-      this.Me = true;
+    this.JI.put(paramef, paramConnectionResult);
+    this.NS -= 1;
+    if (!paramConnectionResult.gw()) {
+      this.NT = true;
     }
-    if (this.Md == 0)
+    if (this.NS == 0)
     {
-      if (this.Me)
+      if (this.NT)
       {
-        paramef = new ac(this.HT);
-        this.Mc.a(paramef);
+        paramef = new ac(this.JI);
+        this.NR.a(paramef);
       }
     }
     else {
       return;
     }
-    this.Mc.kn();
+    this.NR.kw();
   }
   
-  public final Set<ef<?>> hZ()
+  public final Set<ef<?>> ih()
   {
-    return this.HT.keySet();
+    return this.JI.keySet();
   }
   
-  public final b<Void> ia()
+  public final b<Void> ii()
   {
-    return this.Mc.ia();
+    return this.NR.ii();
   }
   
-  public final void ib()
+  public final void ij()
   {
-    this.Mc.kn();
+    this.NR.kw();
   }
 }
 

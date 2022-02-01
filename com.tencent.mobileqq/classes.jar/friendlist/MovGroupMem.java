@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class MovGroupMem
   extends JceStruct
 {
-  public byte Ver;
-  public byte cGroupid;
-  public long dwUin;
-  public short wReqLen;
-  public short wReserveLen;
+  public byte Ver = 0;
+  public byte cGroupid = 0;
+  public long dwUin = 0L;
+  public short wReqLen = 0;
+  public short wReserveLen = 0;
   
   public MovGroupMem() {}
   
@@ -44,7 +44,7 @@ public final class MovGroupMem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.MovGroupMem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import android.annotation.SuppressLint;
-import arvk;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class SendBottomBar$10
-  implements Runnable
+class SendBottomBar$10
+  implements DialogInterface.OnClickListener
 {
   SendBottomBar$10(SendBottomBar paramSendBottomBar) {}
   
-  @SuppressLint({"StaticFieldLeak"})
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new arvk(this).execute(new Void[0]);
+    if (paramInt == 1) {
+      this.a.c();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.10
  * JD-Core Version:    0.7.0.1
  */

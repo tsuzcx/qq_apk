@@ -1,38 +1,34 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class bvo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bvo(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public bvo(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool2 = true;
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
-      String str1 = paramView.strDeviceName;
-      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-      int i = this.jdField_a_of_type_Int;
-      if (paramView.iLoginPlatform == 3L) {}
-      for (;;)
-      {
-        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
-        return;
-        bool2 = false;
-      }
+    if (!NetworkUtil.e(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131562452), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.d());
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.b, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
+    if (EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
+      AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
   }
 }
 

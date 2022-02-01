@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.tim.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/c_r" android:background="@color/al3" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:cacheColorHint="@null" android:divider="@null"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

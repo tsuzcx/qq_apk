@@ -1,76 +1,112 @@
 package com.tencent.mm.insane_statistic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.at.e;
-import com.tencent.mm.at.g;
-import com.tencent.mm.at.r.a;
-import com.tencent.mm.g.a.nw;
-import com.tencent.mm.g.a.ny;
-import com.tencent.mm.g.a.ny.a;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.n;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.con;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import java.net.URLEncoder;
-import java.util.Map;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.tm;
+import com.tencent.mm.g.d;
+import com.tencent.mm.modelimage.h;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelimage.v.a;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.ftv;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 
 public final class b
-  implements r.a
+  implements v.a
 {
-  public final void a(long paramLong, bi parambi, com.tencent.mm.ai.b paramb, int paramInt, boolean paramBoolean, com.tencent.mm.i.d paramd)
+  public final void a(long paramLong, cc paramcc, c paramc, int paramInt, boolean paramBoolean, d paramd, String paramString)
   {
-    AppMethodBeat.i(16182);
-    parambi = new b.a(paramLong, parambi, paramb, paramBoolean, paramInt);
-    paramb = com.tencent.mm.model.c.c.abU().me("100131");
-    if (paramb.isValid()) {
-      parambi.eDB = ah.getInt((String)paramb.dvN().get("needUploadData"), 1);
-    }
-    if ((parambi.eDz) || ((!parambi.eDD) && (parambi.eDB == 0)))
+    AppMethodBeat.i(231517);
+    paramc = new a(paramLong, paramcc, paramc, paramBoolean, paramInt, paramString);
+    paramc.mxT = 1;
+    if ((paramc.mxR) || ((!paramc.mxV) && (paramc.mxT == 0)))
     {
-      AppMethodBeat.o(16182);
+      AppMethodBeat.o(231517);
       return;
     }
-    parambi.eDC = paramd;
-    parambi.eDz = true;
-    paramb = ((con)parambi.rr.fsV.fta).woQ.xJE;
-    if ((!bo.isNullOrNil(paramb)) && (t.lA(paramb)))
+    paramc.mxU = paramd;
+    paramc.mxR = true;
+    paramcc = (ftv)c.b.b(paramc.rr.otB);
+    if (paramcc.YFF != null)
     {
+      paramcc = paramcc.YFF.abwM;
+      if ((Util.isNullOrNil(paramcc)) || (!au.bwE(paramcc))) {
+        break label280;
+      }
       paramInt = 1;
-      paramb = new StringBuilder("2,");
+      label120:
+      paramcc = new StringBuilder("2,");
       if (paramInt == 0) {
-        break label302;
+        break label286;
       }
     }
-    label302:
+    label280:
+    label286:
     for (paramInt = 2;; paramInt = 1)
     {
-      parambi.eDy = (paramInt + ",,");
-      if (parambi.eDx == null) {
-        parambi.eDx = com.tencent.mm.at.o.ahC().b(Long.valueOf(parambi.eDv));
+      paramc.mxQ = (paramInt + ",,");
+      if (paramc.mxP == null) {
+        paramc.mxP = r.bKa().b(Long.valueOf(paramc.mxN));
       }
-      paramb = parambi.eDx;
-      if (paramb != null)
+      paramcc = paramc.mxP;
+      if (paramcc != null)
       {
-        paramd = new nw();
-        a.ymk.c(parambi.eDE);
-        a.ymk.c(parambi.eDF);
-        parambi.eDA = com.tencent.mm.at.o.ahC().q(paramb.fDM, "", "");
-        paramd.cEv.filePath = parambi.eDA;
-        a.ymk.l(paramd);
+        paramd = new tm();
+        paramc.mxW.alive();
+        paramc.mxX.alive();
+        paramc.mxS = r.bKa().v(paramcc.oGr, "", "");
+        paramd.hXd.hBk = System.nanoTime();
+        paramd.hXd.filePath = paramc.mxS;
+        paramd.publish();
       }
-      AppMethodBeat.o(16182);
+      AppMethodBeat.o(231517);
       return;
-      paramInt = 0;
+      paramcc = "";
       break;
+      paramInt = 0;
+      break label120;
+    }
+  }
+  
+  static final class a
+  {
+    cc hzO;
+    long mxN;
+    int mxO;
+    h mxP;
+    String mxQ;
+    boolean mxR;
+    String mxS;
+    int mxT;
+    d mxU;
+    boolean mxV;
+    IListener mxW;
+    IListener mxX;
+    final c rr;
+    private String uuid;
+    
+    a(long paramLong, cc paramcc, c paramc, boolean paramBoolean, int paramInt, String paramString)
+    {
+      AppMethodBeat.i(231509);
+      this.hzO = null;
+      this.mxR = false;
+      this.mxT = 0;
+      this.mxV = false;
+      this.mxW = new OnNetSceneUploadMsgImgEnd.ProcessOnNetSceneUploadMsgImgEnd.1(this, f.hfK);
+      this.mxX = new OnNetSceneUploadMsgImgEnd.ProcessOnNetSceneUploadMsgImgEnd.2(this, f.hfK);
+      this.mxN = paramLong;
+      this.hzO = paramcc;
+      this.rr = paramc;
+      this.mxO = paramInt;
+      this.mxV = paramBoolean;
+      this.uuid = paramString;
+      AppMethodBeat.o(231509);
     }
   }
 }

@@ -64,15 +64,16 @@ public final class UploadConfiguration
   public static final int getCurrentOperatorCategory()
   {
     IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
-    if (localIUploadEnv == null) {}
-    do
-    {
+    if (localIUploadEnv == null) {
       return 0;
-      if (localIUploadEnv.isMobile()) {
-        return localIUploadEnv.getMobileOperatorCategory();
-      }
-    } while (!localIUploadEnv.isWifi());
-    return getWifiOperatorCategory();
+    }
+    if (localIUploadEnv.isMobile()) {
+      return localIUploadEnv.getMobileOperatorCategory();
+    }
+    if (localIUploadEnv.isWifi()) {
+      return getWifiOperatorCategory();
+    }
+    return 0;
   }
   
   public static final int getDataTimeout()
@@ -121,10 +122,9 @@ public final class UploadConfiguration
     if (!isWifiSetting()) {
       return -1;
     }
-    Object localObject;
     synchronized (UPLOAD_IP_TIMEOUT_MAP)
     {
-      localObject = (Integer)UPLOAD_IP_TIMEOUT_MAP.get(paramString);
+      Object localObject = (Integer)UPLOAD_IP_TIMEOUT_MAP.get(paramString);
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = Integer.valueOf(0);
@@ -133,42 +133,41 @@ public final class UploadConfiguration
       if (localObject == null) {
         return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
       }
-    }
-    ??? = null;
-    try
-    {
-      String str = ((IUploadConfig)localObject).getMaxSegmentSizeArray();
-      localObject = ???;
-      if (str != null)
+      ??? = null;
+      HashMap localHashMap1;
+      try
       {
+        String str = ((IUploadConfig)localObject).getMaxSegmentSizeArray();
         localObject = ???;
-        if (str.length() > 0) {
-          localObject = str.split("\\|");
+        if (str != null)
+        {
+          localObject = ???;
+          if (str.length() > 0) {
+            localObject = str.split("\\|");
+          }
         }
       }
-    }
-    catch (PatternSyntaxException localPatternSyntaxException)
-    {
-      for (;;)
+      catch (PatternSyntaxException localPatternSyntaxException)
       {
         UploadLog.w("Configuration", localPatternSyntaxException.toString());
         localHashMap1 = ???;
       }
-      HashMap localHashMap1 = localHashMap1[(paramString.intValue() % localHashMap1.length)];
-      try
+      if ((localHashMap1 != null) && (localHashMap1.length != 0))
       {
-        int i = Math.max(Integer.parseInt(localHashMap1), 64);
-        return i;
+        localHashMap1 = localHashMap1[(paramString.intValue() % localHashMap1.length)];
+        try
+        {
+          int i = Math.max(Integer.parseInt(localHashMap1), 64);
+          return i;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          UploadLog.w("Configuration", localNumberFormatException.toString());
+          return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
+        }
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        UploadLog.w("Configuration", localNumberFormatException.toString());
-      }
-    }
-    if ((localObject == null) || (localObject.length == 0)) {
       return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
     }
-    return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
   }
   
   public static final int getMaxSessionPacketSize()
@@ -202,15 +201,16 @@ public final class UploadConfiguration
   public static final String getRecentRouteApnKey()
   {
     IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
-    if (localIUploadEnv == null) {}
-    do
-    {
+    if (localIUploadEnv == null) {
       return null;
-      if (localIUploadEnv.isMobile()) {
-        return localIUploadEnv.getApnName();
-      }
-    } while (!localIUploadEnv.isWifi());
-    return localIUploadEnv.getBSSID();
+    }
+    if (localIUploadEnv.isMobile()) {
+      return localIUploadEnv.getApnName();
+    }
+    if (localIUploadEnv.isWifi()) {
+      return localIUploadEnv.getBSSID();
+    }
+    return null;
   }
   
   public static final long getRecentRouteExpire()
@@ -233,20 +233,24 @@ public final class UploadConfiguration
     if (localIUploadConfig == null) {
       return 0;
     }
-    switch (localIUploadConfig.getWifiOperator())
+    int j = localIUploadConfig.getWifiOperator();
+    int i = 3;
+    if (j != 3)
     {
-    case 6: 
-    case 7: 
-    default: 
-      return 0;
-    case 3: 
-      return 3;
-    case 8: 
-      return 1;
-    case 5: 
-      return 2;
+      i = 4;
+      if (j != 4)
+      {
+        if (j != 5)
+        {
+          if (j != 8) {
+            return 0;
+          }
+          return 1;
+        }
+        return 2;
+      }
     }
-    return 4;
+    return i;
   }
   
   public static final boolean isMobileSetting()
@@ -281,12 +285,17 @@ public final class UploadConfiguration
   public static final void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver)
   {
     IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
-    if ((paramNetworkStateObserver == null) || (localIUploadEnv == null))
+    if ((paramNetworkStateObserver != null) && (localIUploadEnv != null))
     {
-      UploadLog.d("Configuration", "observer:" + paramNetworkStateObserver + " env:" + localIUploadEnv);
+      localIUploadEnv.registerNetworkStateObserver(paramNetworkStateObserver);
       return;
     }
-    localIUploadEnv.registerNetworkStateObserver(paramNetworkStateObserver);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("observer:");
+    localStringBuilder.append(paramNetworkStateObserver);
+    localStringBuilder.append(" env:");
+    localStringBuilder.append(localIUploadEnv);
+    UploadLog.d("Configuration", localStringBuilder.toString());
   }
   
   public static final RecentRouteRecord saveAsRecentIp(ServerRouteTable paramServerRouteTable, String paramString, UploadRoute paramUploadRoute)
@@ -308,7 +317,7 @@ public final class UploadConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.common.UploadConfiguration
  * JD-Core Version:    0.7.0.1
  */

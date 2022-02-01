@@ -1,74 +1,83 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class aws
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String jJA;
-  public int xmj;
+  public FinderContact contact;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28536);
+    AppMethodBeat.i(260170);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.jJA != null) {
-        paramVarArgs.e(1, this.jJA);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.contact != null)
+      {
+        paramVarArgs.qD(1, this.contact.computeSize());
+        this.contact.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.xmj);
-      AppMethodBeat.o(28536);
+      AppMethodBeat.o(260170);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jJA == null) {
-        break label266;
+      if (this.contact == null) {
+        break label284;
       }
     }
-    label266:
-    for (paramInt = e.a.a.b.b.a.f(1, this.jJA) + 0;; paramInt = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.contact.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.xmj);
-      AppMethodBeat.o(28536);
-      return paramInt + i;
+      AppMethodBeat.o(260170);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(28536);
+        AppMethodBeat.o(260170);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         aws localaws = (aws)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28536);
+          AppMethodBeat.o(260170);
           return -1;
-        case 1: 
-          localaws.jJA = locala.CLY.readString();
-          AppMethodBeat.o(28536);
-          return 0;
         }
-        localaws.xmj = locala.CLY.sl();
-        AppMethodBeat.o(28536);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          FinderContact localFinderContact = new FinderContact();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localFinderContact.parseFrom((byte[])localObject);
+          }
+          localaws.contact = localFinderContact;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(260170);
         return 0;
       }
-      AppMethodBeat.o(28536);
+      AppMethodBeat.o(260170);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,32 @@
 import android.view.View;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.PeopleAroundBaseActivity;
-import com.tencent.mobileqq.app.LBSHandler;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class cyx
-  implements Runnable
+  implements OverScrollViewListener
 {
   public cyx(PeopleAroundBaseActivity paramPeopleAroundBaseActivity) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131561836);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    PeopleAroundBaseActivity.a(this.a).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(this.a.jdField_a_of_type_Long);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(this.a.jdField_a_of_type_Long);
+    this.a.a(true, true);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(this.a.jdField_a_of_type_Long);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

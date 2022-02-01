@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.model.b;
 
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
@@ -9,227 +8,205 @@ import android.media.MediaCodecInfo.EncoderCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.mmsight.model.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 
 public final class f
 {
-  private ByteBuffer[] azr;
+  a KYi;
   private int bitrate;
-  private boolean ciU;
-  private MediaCodec.BufferInfo eRL;
-  protected int eRm;
-  int eRu;
-  int eRv;
-  private int eRw;
-  int eRx;
-  private int eRy;
-  protected MediaCodec eUg;
-  int fYp;
-  private int fYq;
-  private int fYr;
-  private boolean fYs;
-  byte[] fYt;
-  int fYu;
+  protected int bufId;
+  private MediaCodec.BufferInfo bufferInfo;
+  private ByteBuffer[] cJm;
+  private ByteBuffer[] cWS;
+  int colorFormat;
   int frameCount;
-  private int gNA;
-  private int gNB;
-  private ByteBuffer[] inputBuffers;
+  private int frameRate;
+  private boolean hvE;
   boolean isStart;
   protected MediaFormat mediaFormat;
-  f.a oKl;
+  int nxO;
+  int nxP;
+  private int nxQ;
+  protected aa nzs;
+  int pcj;
+  private int pck;
+  private int pcl;
+  private boolean pcm;
+  byte[] pcn;
+  int pco;
+  private int qpD;
+  private int qpE;
   
   public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(76715);
-    this.eRm = -1;
-    this.fYq = -1;
-    this.fYr = -1;
+    AppMethodBeat.i(89629);
+    this.bufId = -1;
+    this.pck = -1;
+    this.pcl = -1;
     this.bitrate = 0;
     this.isStart = false;
-    this.ciU = false;
-    this.fYs = false;
-    this.gNA = paramInt1;
-    this.gNB = paramInt2;
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "create MMSightRemuxMediaCodecEncoder, init targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    this.eRu = paramInt3;
-    this.eRv = paramInt4;
-    this.eRw = paramInt6;
-    this.eRy = 1;
-    this.eRL = new MediaCodec.BufferInfo();
+    this.hvE = false;
+    this.pcm = false;
+    this.qpD = paramInt1;
+    this.qpE = paramInt2;
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "create MMSightRemuxMediaCodecEncoder, init targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    this.nxO = paramInt3;
+    this.nxP = paramInt4;
+    this.frameRate = paramInt6;
+    this.nxQ = 1;
+    this.bufferInfo = new MediaCodec.BufferInfo();
     this.bitrate = paramInt5;
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "create MMSightRemuxMediaCodecEncoder, frameWidth: %s, frameHeight: %s, targetWidth: %s, targetHeight: %s, bitrate: %s", new Object[] { Integer.valueOf(this.gNA), Integer.valueOf(this.gNB), Integer.valueOf(this.eRu), Integer.valueOf(this.eRv), Integer.valueOf(paramInt5) });
-    AppMethodBeat.o(76715);
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "create MMSightRemuxMediaCodecEncoder, frameWidth: %s, frameHeight: %s, targetWidth: %s, targetHeight: %s, bitrate: %s", new Object[] { Integer.valueOf(this.qpD), Integer.valueOf(this.qpE), Integer.valueOf(this.nxO), Integer.valueOf(this.nxP), Integer.valueOf(paramInt5) });
+    AppMethodBeat.o(89629);
   }
   
-  private void UR()
+  private int bOO()
   {
-    AppMethodBeat.i(76721);
-    this.fYr = this.eUg.dequeueOutputBuffer(this.eRL, 600L);
-    ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "outputBufferIndex-->" + this.fYr);
-    if (this.fYr == -1)
-    {
-      ab.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "no output from encoder available, break encoderEndStream %s", new Object[] { Boolean.valueOf(this.fYs) });
-      if (!this.fYs) {}
-    }
-    label245:
-    do
-    {
-      for (;;)
-      {
-        this.fYr = this.eUg.dequeueOutputBuffer(this.eRL, 600L);
-        if (this.fYr <= 0) {
-          ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "get outputBufferIndex %d", new Object[] { Integer.valueOf(this.fYr) });
-        }
-        if ((this.fYr >= 0) || (this.fYs)) {
-          break;
-        }
-        AppMethodBeat.o(76721);
-        return;
-        if (this.fYr == -3)
-        {
-          this.azr = this.eUg.getOutputBuffers();
-          ab.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder output buffers changed");
-        }
-        else if (this.fYr == -2)
-        {
-          ab.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder output format changed: ".concat(String.valueOf(this.eUg.getOutputFormat())));
-        }
-        else
-        {
-          if (this.fYr >= 0) {
-            break label245;
-          }
-          ab.w("MicroMsg.MMSightRemuxMediaCodecEncoder", "unexpected result from encoder.dequeueOutputBuffer: " + this.fYr);
-        }
-      }
-      ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "perform encoding");
-      Object localObject = this.azr[this.fYr];
-      if (localObject == null)
-      {
-        localObject = new RuntimeException("encoderOutputBuffer " + this.fYr + " was null");
-        AppMethodBeat.o(76721);
-        throw ((Throwable)localObject);
-      }
-      this.frameCount += 1;
-      if ((this.eRL.flags & 0x2) != 0) {
-        ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "ignoring BUFFER_FLAG_CODEC_CONFIG, size: %s, %s", new Object[] { Integer.valueOf(this.eRL.size), Boolean.FALSE });
-      }
-      if (this.eRL.size != 0)
-      {
-        ((ByteBuffer)localObject).position(this.eRL.offset);
-        ((ByteBuffer)localObject).limit(this.eRL.offset + this.eRL.size);
-        g((ByteBuffer)localObject, this.eRL);
-      }
-      this.eUg.releaseOutputBuffer(this.fYr, false);
-    } while ((this.eRL.flags & 0x4) == 0);
-    if (!this.ciU)
-    {
-      ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "reached end of stream unexpectedly");
-      AppMethodBeat.o(76721);
-      return;
-    }
-    ab.w("MicroMsg.MMSightRemuxMediaCodecEncoder", "do stop encoder, frameCount: %s, writeFrameCount: %s", new Object[] { Integer.valueOf(this.frameCount), Integer.valueOf(this.fYp) });
-    try
-    {
-      this.eUg.stop();
-      this.eUg.release();
-      this.eUg = null;
-      this.isStart = false;
-      AppMethodBeat.o(76721);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "do stop encoder error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(76721);
-    }
-  }
-  
-  private static int a(MediaCodecInfo paramMediaCodecInfo, String paramString)
-  {
-    AppMethodBeat.i(76722);
-    long l = bo.yB();
-    paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bo.av(l)) });
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
-    int j = 0;
-    int m;
-    for (int i = 0; j < paramString.colorFormats.length; i = m)
-    {
-      int k = paramString.colorFormats[j];
-      ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(k) });
-      m = i;
-      if (mo(k))
-      {
-        m = i;
-        if (k > i)
-        {
-          i = k;
-          if (k == 19) {
-            break;
-          }
-          m = k;
-        }
-      }
-      j += 1;
-    }
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(i) });
-    AppMethodBeat.o(76722);
-    return i;
-  }
-  
-  private int ame()
-  {
-    AppMethodBeat.i(76717);
-    long l = bo.yB();
+    AppMethodBeat.i(89631);
+    long l = Util.currentTicks();
     MediaCodecInfo localMediaCodecInfo = selectCodec("video/avc");
     if (localMediaCodecInfo == null)
     {
-      ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "Unable to find an appropriate codec for video/avc");
-      k.VN();
-      AppMethodBeat.o(76717);
+      Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "Unable to find an appropriate codec for video/avc");
+      k.bqV();
+      AppMethodBeat.o(89631);
       return -1;
     }
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "found codec: %s, used %sms", new Object[] { localMediaCodecInfo.getName(), Long.valueOf(bo.av(l)) });
-    l = bo.yB();
-    this.eRx = a(localMediaCodecInfo, "video/avc");
-    l = bo.av(l);
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "found colorFormat: %s, used %sms", new Object[] { Integer.valueOf(this.eRx), Long.valueOf(l) });
-    if (this.eRx == 19) {}
-    for (this.fYu = 2;; this.fYu = 1)
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "found codec: %s, used %sms", new Object[] { localMediaCodecInfo.getName(), Long.valueOf(Util.ticksToNow(l)) });
+    l = Util.currentTicks();
+    this.colorFormat = selectColorFormat(localMediaCodecInfo, "video/avc");
+    l = Util.ticksToNow(l);
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "found colorFormat: %s, used %sms", new Object[] { Integer.valueOf(this.colorFormat), Long.valueOf(l) });
+    if (this.colorFormat == 19) {}
+    for (this.pco = 2;; this.pco = 1)
     {
-      l = bo.yB();
-      this.mediaFormat = MediaFormat.createVideoFormat("video/avc", this.eRu, this.eRv);
-      ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "createVideoFormat used %sms", new Object[] { Long.valueOf(bo.av(l)) });
+      l = Util.currentTicks();
+      this.mediaFormat = MediaFormat.createVideoFormat("video/avc", this.nxO, this.nxP);
+      Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "createVideoFormat used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
       if (localMediaCodecInfo != null)
       {
         trySetProfile(localMediaCodecInfo);
         trySetBitRateMode(localMediaCodecInfo);
       }
       this.mediaFormat.setInteger("bitrate", this.bitrate);
-      this.mediaFormat.setInteger("frame-rate", this.eRw);
-      this.mediaFormat.setInteger("color-format", this.eRx);
-      this.mediaFormat.setInteger("i-frame-interval", this.eRy);
-      ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "mediaFormat: %s", new Object[] { this.mediaFormat });
-      this.eUg = MediaCodec.createByCodecName(localMediaCodecInfo.getName());
-      this.eUg.configure(this.mediaFormat, null, null, 1);
-      this.eUg.start();
-      AppMethodBeat.o(76717);
+      this.mediaFormat.setInteger("frame-rate", this.frameRate);
+      this.mediaFormat.setInteger("color-format", this.colorFormat);
+      this.mediaFormat.setInteger("i-frame-interval", this.nxQ);
+      Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "mediaFormat: %s", new Object[] { this.mediaFormat });
+      this.nzs = aa.Dx(localMediaCodecInfo.getName());
+      this.nzs.a(this.mediaFormat, null, 1);
+      this.nzs.start();
+      AppMethodBeat.o(89631);
       return 0;
     }
   }
   
-  private void g(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  private void bpk()
   {
-    AppMethodBeat.i(76714);
-    if ((paramByteBuffer != null) && (paramBufferInfo != null) && (this.oKl != null)) {
-      this.oKl.a(this.eRm, paramByteBuffer, paramBufferInfo.size);
+    AppMethodBeat.i(89635);
+    this.pcl = this.nzs.dequeueOutputBuffer(this.bufferInfo, 600L);
+    Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "outputBufferIndex-->" + this.pcl);
+    if (this.pcl == -1)
+    {
+      Log.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "no output from encoder available, break encoderEndStream %s", new Object[] { Boolean.valueOf(this.pcm) });
+      if (!this.pcm) {}
     }
-    AppMethodBeat.o(76714);
+    label246:
+    do
+    {
+      for (;;)
+      {
+        this.pcl = this.nzs.dequeueOutputBuffer(this.bufferInfo, 600L);
+        if (this.pcl <= 0) {
+          Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "get outputBufferIndex %d", new Object[] { Integer.valueOf(this.pcl) });
+        }
+        if ((this.pcl >= 0) || (this.pcm)) {
+          break;
+        }
+        AppMethodBeat.o(89635);
+        return;
+        if (this.pcl == -3)
+        {
+          this.cJm = this.nzs.aPE();
+          Log.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder output buffers changed");
+        }
+        else if (this.pcl == -2)
+        {
+          Log.d("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder output format changed: ".concat(String.valueOf(this.nzs.getOutputFormat())));
+        }
+        else
+        {
+          if (this.pcl >= 0) {
+            break label246;
+          }
+          Log.w("MicroMsg.MMSightRemuxMediaCodecEncoder", "unexpected result from encoder.dequeueOutputBuffer: " + this.pcl);
+        }
+      }
+      Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "perform encoding");
+      Object localObject = this.cJm[this.pcl];
+      if (localObject == null)
+      {
+        localObject = new RuntimeException("encoderOutputBuffer " + this.pcl + " was null");
+        AppMethodBeat.o(89635);
+        throw ((Throwable)localObject);
+      }
+      this.frameCount += 1;
+      if ((this.bufferInfo.flags & 0x2) != 0) {
+        Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "ignoring BUFFER_FLAG_CODEC_CONFIG, size: %s, %s", new Object[] { Integer.valueOf(this.bufferInfo.size), Boolean.FALSE });
+      }
+      if (this.bufferInfo.size != 0)
+      {
+        ((ByteBuffer)localObject).position(this.bufferInfo.offset);
+        ((ByteBuffer)localObject).limit(this.bufferInfo.offset + this.bufferInfo.size);
+        i((ByteBuffer)localObject, this.bufferInfo);
+      }
+      this.nzs.releaseOutputBuffer(this.pcl, false);
+    } while ((this.bufferInfo.flags & 0x4) == 0);
+    if (!this.hvE)
+    {
+      Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "reached end of stream unexpectedly");
+      AppMethodBeat.o(89635);
+      return;
+    }
+    Log.w("MicroMsg.MMSightRemuxMediaCodecEncoder", "do stop encoder, frameCount: %s, writeFrameCount: %s", new Object[] { Integer.valueOf(this.frameCount), Integer.valueOf(this.pcj) });
+    try
+    {
+      this.nzs.stop();
+      this.nzs.release();
+      this.nzs = null;
+      this.isStart = false;
+      AppMethodBeat.o(89635);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "do stop encoder error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(89635);
+    }
+  }
+  
+  private void i(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    AppMethodBeat.i(89628);
+    if ((paramByteBuffer != null) && (paramBufferInfo != null) && (this.KYi != null)) {
+      this.KYi.a(this.bufId, paramByteBuffer, paramBufferInfo.size);
+    }
+    AppMethodBeat.o(89628);
+  }
+  
+  private static boolean isRecognizedFormat(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
   
   private static boolean isRecognizedProfile(int paramInt)
@@ -242,19 +219,9 @@ public final class f
     return true;
   }
   
-  private static boolean mo(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
   private static MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(76723);
+    AppMethodBeat.i(89637);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -268,7 +235,7 @@ public final class f
         {
           if (arrayOfString[j].equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(76723);
+            AppMethodBeat.o(89637);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -276,56 +243,89 @@ public final class f
       }
       i += 1;
     }
-    AppMethodBeat.o(76723);
+    AppMethodBeat.o(89637);
     return null;
+  }
+  
+  private static int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
+  {
+    AppMethodBeat.i(89636);
+    long l = Util.currentTicks();
+    paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
+    int j = 0;
+    int m;
+    for (int i = 0; j < paramString.colorFormats.length; i = m)
+    {
+      int k = paramString.colorFormats[j];
+      Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(k) });
+      m = i;
+      if (isRecognizedFormat(k))
+      {
+        m = i;
+        if (k > i)
+        {
+          i = k;
+          if (k == 19) {
+            break;
+          }
+          m = k;
+        }
+      }
+      j += 1;
+    }
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(i) });
+    AppMethodBeat.o(89636);
+    return i;
   }
   
   private void trySetBitRateMode(MediaCodecInfo paramMediaCodecInfo)
   {
-    AppMethodBeat.i(76719);
+    AppMethodBeat.i(89633);
     try
     {
-      if (!d.fv(21)) {
-        break label138;
+      if (!d.rb(21)) {
+        break label137;
       }
       paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType("video/avc");
       if (paramMediaCodecInfo == null) {
-        break label138;
+        break label137;
       }
       paramMediaCodecInfo = paramMediaCodecInfo.getEncoderCapabilities();
       if (paramMediaCodecInfo == null) {
-        break label138;
+        break label137;
       }
       if (paramMediaCodecInfo.isBitrateModeSupported(2))
       {
-        ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "support cbr bitrate mode");
+        Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "support cbr bitrate mode");
         this.mediaFormat.setInteger("bitrate-mode", 2);
-        AppMethodBeat.o(76719);
+        AppMethodBeat.o(89633);
         return;
       }
       if (paramMediaCodecInfo.isBitrateModeSupported(0))
       {
-        ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "support cq bitrate mode");
+        Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "support cq bitrate mode");
         this.mediaFormat.setInteger("bitrate-mode", 0);
-        AppMethodBeat.o(76719);
+        AppMethodBeat.o(89633);
         return;
       }
     }
     catch (Exception paramMediaCodecInfo)
     {
-      ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "trySetBitRateMode error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
-      AppMethodBeat.o(76719);
+      Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "trySetBitRateMode error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
+      AppMethodBeat.o(89633);
       return;
     }
-    ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "both cbr and cq bitrate mode not support!");
-    label138:
-    AppMethodBeat.o(76719);
+    Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "both cbr and cq bitrate mode not support!");
+    label137:
+    AppMethodBeat.o(89633);
   }
   
   private void trySetProfile(MediaCodecInfo paramMediaCodecInfo)
   {
-    AppMethodBeat.i(76718);
-    if (d.fv(23)) {}
+    AppMethodBeat.i(89632);
+    if (d.rb(23)) {}
     for (;;)
     {
       int i;
@@ -347,15 +347,15 @@ public final class f
               Object localObject = paramMediaCodecInfo[i];
               int k = localObject.profile;
               int m = localObject.level;
-              ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "profile: %s, level: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+              Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "profile: %s, level: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
               if ((!isRecognizedProfile(k)) || (k < localCodecProfileLevel.profile) || (m < localCodecProfileLevel.level)) {
-                break label273;
+                break label272;
               }
               localCodecProfileLevel.profile = k;
               localCodecProfileLevel.level = m;
-              break label273;
+              break label272;
             }
-            ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "best profile: %s, level: %s", new Object[] { Integer.valueOf(localCodecProfileLevel.profile), Integer.valueOf(localCodecProfileLevel.level) });
+            Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "best profile: %s, level: %s", new Object[] { Integer.valueOf(localCodecProfileLevel.profile), Integer.valueOf(localCodecProfileLevel.level) });
             if ((localCodecProfileLevel.profile > 0) && (localCodecProfileLevel.level >= 256))
             {
               this.mediaFormat.setInteger("profile", localCodecProfileLevel.profile);
@@ -363,129 +363,134 @@ public final class f
             }
           }
         }
-        AppMethodBeat.o(76718);
+        AppMethodBeat.o(89632);
         return;
       }
       catch (Exception paramMediaCodecInfo)
       {
-        ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "trySetProfile error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
+        Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "trySetProfile error: %s", new Object[] { paramMediaCodecInfo.getMessage() });
       }
-      AppMethodBeat.o(76718);
+      AppMethodBeat.o(89632);
       return;
-      label273:
+      label272:
       i += 1;
     }
   }
   
   public final void b(byte[] paramArrayOfByte, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(76720);
+    AppMethodBeat.i(89634);
     for (;;)
     {
       try
       {
         if (!this.isStart)
         {
-          ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "writeData, not start!");
-          AppMethodBeat.o(76720);
+          Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "writeData, not start!");
+          AppMethodBeat.o(89634);
           return;
         }
-        if (this.eUg == null)
+        if (this.nzs == null)
         {
-          ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder is null");
-          AppMethodBeat.o(76720);
+          Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder is null");
+          AppMethodBeat.o(89634);
           return;
         }
-        long l1 = bo.yB();
-        this.inputBuffers = this.eUg.getInputBuffers();
-        this.azr = this.eUg.getOutputBuffers();
+        long l1 = Util.currentTicks();
+        this.cWS = this.nzs.aPD();
+        this.cJm = this.nzs.aPE();
         int i = 0;
-        if (this.eUg != null)
+        if (this.nzs != null)
         {
-          int j = this.eUg.dequeueInputBuffer(600L);
-          this.fYq = j;
+          int j = this.nzs.dequeueInputBuffer(600L);
+          this.pck = j;
           if ((j < 0) && (i < 10))
           {
-            ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "video no input available, drain first");
-            UR();
+            Log.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "video no input available, drain first");
+            bpk();
             i += 1;
             continue;
           }
         }
-        if (this.eUg == null)
+        if (this.nzs == null)
         {
-          ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder is null");
-          AppMethodBeat.o(76720);
+          Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder is null");
+          AppMethodBeat.o(89634);
           return;
         }
-        ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "inputBufferIndex: %s", new Object[] { Integer.valueOf(this.fYq) });
-        long l2 = bo.yB();
-        if (this.fYq >= 0)
+        Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "inputBufferIndex: %s", new Object[] { Integer.valueOf(this.pck) });
+        long l2 = Util.currentTicks();
+        if (this.pck >= 0)
         {
           if ((this.isStart) && (!paramBoolean) && (paramArrayOfByte != null))
           {
-            ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "presentationTime: ".concat(String.valueOf(paramLong)));
-            ByteBuffer localByteBuffer = this.inputBuffers[this.fYq];
+            Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "presentationTime: ".concat(String.valueOf(paramLong)));
+            ByteBuffer localByteBuffer = this.cWS[this.pck];
             localByteBuffer.clear();
             localByteBuffer.put(paramArrayOfByte);
             localByteBuffer.position(0);
-            this.eUg.queueInputBuffer(this.fYq, 0, paramArrayOfByte.length, paramLong, 0);
-            UR();
-            ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder used %sms %sms", new Object[] { Long.valueOf(bo.av(l1)), Long.valueOf(bo.av(l2)) });
-            AppMethodBeat.o(76720);
+            this.nzs.a(this.pck, paramArrayOfByte.length, paramLong, 0);
+            bpk();
+            Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "encoder used %sms %sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Long.valueOf(Util.ticksToNow(l2)) });
+            AppMethodBeat.o(89634);
             return;
           }
-          ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "end of stream");
-          this.fYs = true;
-          this.eUg.queueInputBuffer(this.fYq, 0, 0, paramLong, 4);
-          this.ciU = true;
+          Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "end of stream");
+          this.pcm = true;
+          this.nzs.a(this.pck, 0, paramLong, 4);
+          this.hvE = true;
           continue;
         }
-        ab.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "input buffer not available");
+        Log.v("MicroMsg.MMSightRemuxMediaCodecEncoder", "input buffer not available");
       }
       catch (Exception paramArrayOfByte)
       {
-        k.VO();
-        ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "writeData error: %s", new Object[] { paramArrayOfByte.getMessage() });
-        ab.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecEncoder", paramArrayOfByte, "", new Object[0]);
-        AppMethodBeat.o(76720);
+        k.bqW();
+        Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "writeData error: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecEncoder", paramArrayOfByte, "", new Object[0]);
+        AppMethodBeat.o(89634);
         return;
       }
     }
   }
   
-  public final int mn(int paramInt)
+  public final int xf(int paramInt)
   {
-    AppMethodBeat.i(76716);
+    AppMethodBeat.i(89630);
     try
     {
-      this.eRm = paramInt;
-      paramInt = ame();
-      AppMethodBeat.o(76716);
+      this.bufId = paramInt;
+      paramInt = bOO();
+      AppMethodBeat.o(89630);
       return paramInt;
     }
     catch (Exception localException1)
     {
-      ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "init error: %s, try to re-init again", new Object[] { localException1.getMessage() });
+      Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "init error: %s, try to re-init again", new Object[] { localException1.getMessage() });
       try
       {
-        paramInt = ame();
-        AppMethodBeat.o(76716);
+        paramInt = bOO();
+        AppMethodBeat.o(89630);
         return paramInt;
       }
       catch (Exception localException2)
       {
-        ab.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "re-init again error: %s", new Object[] { localException2.getMessage() });
-        k.VN();
-        AppMethodBeat.o(76716);
+        Log.e("MicroMsg.MMSightRemuxMediaCodecEncoder", "re-init again error: %s", new Object[] { localException2.getMessage() });
+        k.bqV();
+        AppMethodBeat.o(89630);
       }
     }
     return -1;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, ByteBuffer paramByteBuffer, int paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.b.f
  * JD-Core Version:    0.7.0.1
  */

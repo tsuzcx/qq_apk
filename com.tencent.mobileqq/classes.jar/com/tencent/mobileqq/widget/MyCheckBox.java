@@ -15,9 +15,9 @@ import android.widget.CompoundButton;
 public class MyCheckBox
   extends CompoundButton
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable a;
+  private Paint b = new Paint();
+  private Bitmap c = null;
   
   public MyCheckBox(Context paramContext)
   {
@@ -37,10 +37,10 @@ public class MyCheckBox
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.a != null)
     {
       int[] arrayOfInt = getDrawableState();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+      this.a.setState(arrayOfInt);
       invalidate();
     }
   }
@@ -53,93 +53,90 @@ public class MyCheckBox
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j;
-    int i;
+    Drawable localDrawable = this.a;
     if (localDrawable != null)
     {
-      int k = getGravity();
-      j = localDrawable.getIntrinsicHeight();
-      i = 0;
-      switch (k & 0x70)
+      int k = getGravity() & 0x70;
+      int j = localDrawable.getIntrinsicHeight();
+      int i = 0;
+      if (k != 16)
       {
+        if (k == 80) {
+          i = getHeight() - j;
+        }
       }
-    }
-    for (;;)
-    {
+      else {
+        i = (getHeight() - j) / 2;
+      }
       localDrawable.setBounds(getWidth() - localDrawable.getIntrinsicWidth(), i, getWidth(), i + j);
       localDrawable.draw(paramCanvas);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130849889);
+      if (this.c == null) {
+        this.c = BitmapFactory.decodeResource(getResources(), 2130852715);
       }
-      if (!isChecked()) {
-        break;
+      if (isChecked())
+      {
+        this.b.setColor(-1);
+        f = getResources().getDisplayMetrics().density;
+        this.b.setTextSize(getResources().getDimension(2131297491));
+        this.b.setAntiAlias(true);
+        this.b.setTextAlign(Paint.Align.CENTER);
+        paramCanvas.drawText(getResources().getString(2131916373), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, j / 2 + i + f * 4.0F, this.b);
+        paramCanvas.drawBitmap(this.c, getWidth() - this.c.getWidth(), i, null);
+        return;
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      f = getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      paramCanvas.drawText(getResources().getString(2131719891), getWidth() - localDrawable.getIntrinsicWidth() * 2 / 3 - 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), i, null);
-      return;
-      i = getHeight() - j;
-      continue;
-      i = (getHeight() - j) / 2;
+      this.b.setColor(-8814455);
+      float f = getResources().getDisplayMetrics().density;
+      this.b.setTextSize(getResources().getDimension(2131297491));
+      this.b.setAntiAlias(true);
+      this.b.setTextAlign(Paint.Align.CENTER);
+      paramCanvas.drawText(getResources().getString(2131916333), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, j / 2 + i + f * 4.0F, this.b);
+      paramCanvas.drawBitmap(this.c, getWidth() - localDrawable.getIntrinsicWidth(), i, null);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-8814455);
-    float f = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(getResources().getDimension(2131296986));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    paramCanvas.drawText(getResources().getString(2131719871), getWidth() - localDrawable.getIntrinsicWidth() / 3 + 2.0F * f, f * 4.0F + (j / 2 + i), this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - localDrawable.getIntrinsicWidth(), i, null);
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
     if (paramDrawable != null)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      Drawable localDrawable = this.a;
+      if (localDrawable != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
-        unscheduleDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localDrawable.setCallback(null);
+        unscheduleDrawable(this.a);
       }
       paramDrawable.setCallback(this);
       paramDrawable.setState(getDrawableState());
-      if (getVisibility() != 0) {
-        break label78;
+      boolean bool;
+      if (getVisibility() == 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label78:
-    for (boolean bool = true;; bool = false)
-    {
       paramDrawable.setVisible(bool, false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      setMinHeight(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-      refreshDrawableState();
-      return;
+      this.a = paramDrawable;
+      setMinHeight(this.a.getIntrinsicHeight());
     }
+    refreshDrawableState();
   }
   
   public void setButtonGray(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(255);
+      this.a.setAlpha(255);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(128);
+    this.a.setAlpha(128);
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MyCheckBox
  * JD-Core Version:    0.7.0.1
  */

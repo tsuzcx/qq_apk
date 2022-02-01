@@ -1,38 +1,22 @@
 package com.tencent.mm.ui;
 
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.n.d;
 
 final class HomeUI$13
-  implements n.d
+  implements Runnable
 {
-  HomeUI$13(HomeUI paramHomeUI)
-  {
-    AppMethodBeat.i(29358);
-    AppMethodBeat.o(29358);
-  }
+  HomeUI$13(HomeUI paramHomeUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(153771);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(153771);
-      return;
-      HomeUI.l(this.yYw);
-      AppMethodBeat.o(153771);
-      return;
-      HomeUI.k(this.yYw);
-    }
+    AppMethodBeat.i(163257);
+    HomeUI.r(this.adBf);
+    AppMethodBeat.o(163257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.13
  * JD-Core Version:    0.7.0.1
  */

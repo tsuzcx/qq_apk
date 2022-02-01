@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/gdj" android:background="@drawable/skin_conversation_options_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/alq">
+        <TextView android:textColor="@color/skin_gray2_item" android:id="@id/d8u" android:paddingLeft="@dimen/ajx" android:paddingRight="@dimen/ajx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/alq" android:includeFontPadding="false" />
+        <com.tencent.biz.lebasearch.widget.NeverScrollHorizontalScrollView android:paddingLeft="@dimen/ajx" android:paddingRight="@dimen/ajx" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/alq" android:layout_marginBottom="@dimen/alq" android:fillViewport="false">
+            <LinearLayout android:orientation="horizontal" android:id="@id/d8y" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/d8t" android:background="@drawable/a57" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff000000" android:gravity="center_vertical" android:background="@drawable/a57" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" />
+            </LinearLayout>
+        </com.tencent.biz.lebasearch.widget.NeverScrollHorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>

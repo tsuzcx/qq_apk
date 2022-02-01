@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root_container" android:background="@drawable/qq_nearpeople_turnbrand_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.nearpeople.TurnBrandLoadingView android:id="@id/qq_nearpeople_turnbrand_loading_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/stub_error_view" android:visibility="gone" android:layout="@layout/qq_nearpeople_turnbrand_error" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

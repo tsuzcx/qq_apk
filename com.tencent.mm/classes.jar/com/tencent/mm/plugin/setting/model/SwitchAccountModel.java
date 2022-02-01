@@ -9,26 +9,28 @@ public class SwitchAccountModel
   implements Parcelable
 {
   public static final Parcelable.Creator<SwitchAccountModel> CREATOR;
-  public final String mBI;
-  public final String qEJ;
-  public final String qEK;
-  public final int qEL;
+  public final String AmC;
+  public final String PnR;
+  public final String PnS;
+  public final int PnT;
+  public final String nickName;
   public final String username;
   
   static
   {
-    AppMethodBeat.i(126864);
+    AppMethodBeat.i(73786);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(126864);
+    AppMethodBeat.o(73786);
   }
   
-  public SwitchAccountModel(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public SwitchAccountModel(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
-    this.qEJ = paramString1;
+    this.PnR = paramString1;
     this.username = paramString2;
-    this.mBI = paramString3;
-    this.qEK = paramString4;
-    this.qEL = paramInt;
+    this.AmC = paramString3;
+    this.PnS = paramString4;
+    this.PnT = paramInt;
+    this.nickName = paramString5;
   }
   
   public int describeContents()
@@ -38,18 +40,19 @@ public class SwitchAccountModel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(126863);
-    paramParcel.writeString(this.qEJ);
+    AppMethodBeat.i(73785);
+    paramParcel.writeString(this.PnR);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.mBI);
-    paramParcel.writeString(this.qEK);
-    paramParcel.writeInt(this.qEL);
-    AppMethodBeat.o(126863);
+    paramParcel.writeString(this.AmC);
+    paramParcel.writeString(this.PnS);
+    paramParcel.writeInt(this.PnT);
+    paramParcel.writeString(this.nickName);
+    AppMethodBeat.o(73785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.SwitchAccountModel
  * JD-Core Version:    0.7.0.1
  */

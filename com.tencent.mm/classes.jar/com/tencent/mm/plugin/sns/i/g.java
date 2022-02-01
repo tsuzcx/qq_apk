@@ -1,18 +1,40 @@
 package com.tencent.mm.plugin.sns.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.p;
+import java.util.List;
 
 public final class g
-  extends i
+  implements com.tencent.mm.am.h
 {
-  public static i roZ;
+  h QCr;
   
-  static
+  public final boolean hie()
   {
-    AppMethodBeat.i(36892);
-    roZ = new g();
-    AppMethodBeat.o(36892);
+    AppMethodBeat.i(96138);
+    if ((this.QCr == null) || (this.QCr.QCg.size() == 0))
+    {
+      AppMethodBeat.o(96138);
+      return false;
+    }
+    AppMethodBeat.o(96138);
+    return true;
   }
+  
+  public final h hif()
+  {
+    AppMethodBeat.i(96139);
+    if ((this.QCr == null) || (this.QCr.QCg.size() == 0))
+    {
+      AppMethodBeat.o(96139);
+      return null;
+    }
+    h localh = this.QCr;
+    AppMethodBeat.o(96139);
+    return localh;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp) {}
 }
 
 

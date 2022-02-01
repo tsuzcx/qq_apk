@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/eq7" android:background="@drawable/a2x" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="42.0dip">
-        <com.tencent.mm.plugin.sns.ui.TagImageView android:layout_gravity="center_vertical" android:id="@id/d5g" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-        <ImageView android:layout_gravity="center" android:id="@id/cbz" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="center" android:maxHeight="350.0dip" />
-    </FrameLayout>
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/n_">
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:ellipsize="end" android:id="@id/d5i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{{abccd}}" android:singleLine="false" />
-        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/ko" android:textColor="@color/a1i" android:id="@id/d5j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{{line2}}" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/em7" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="@dimen/gr" android:layout_marginTop="@dimen/gr" android:layout_marginRight="@dimen/vm" android:layout_marginBottom="@dimen/gr" android:src="@raw/icons_outlined_me" android:layout_centerVertical="true" />
+</RelativeLayout>

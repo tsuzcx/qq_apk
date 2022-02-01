@@ -19,13 +19,14 @@ public final class SubMsgType0x27$FriendRemark
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint32_type", "uint64_fuin", "bytes_rmk_name", "uint64_group_code" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L) }, FriendRemark.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "uint32_type", "uint64_fuin", "bytes_rmk_name", "uint64_group_code" }, new Object[] { Integer.valueOf(0), localLong, localByteStringMicro, localLong }, FriendRemark.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.FriendRemark
  * JD-Core Version:    0.7.0.1
  */

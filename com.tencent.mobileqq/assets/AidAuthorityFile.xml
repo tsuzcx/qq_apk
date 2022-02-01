@@ -9,11 +9,15 @@
 	<business id="f55355" path="buluo.qq.com" author="freemanyao" info="兴趣部落商业化"/>
 	<business id="cd22b9" path="EcshopAdHandler.pullAd" author="parsonswang" info="QQ购物公众号"/>
 	<business id="7cf504" path="VipComicADHelper.getDeviceInfo" author="eddyjyliu" info="波洞星球"/>
-	<business id="1018ec" path="cooperation.vip.manager.GdtGeneralManager" author="jemstyli" info="增值研发中心"/>
+	<business id="1018ec" path="com.tencent.mobileqq.vas.adv.common.data.VasAdvConstant" author="jemstyli" info="增值研发中心"/>
 	<business id="a03996" path="com.tencent.weather#get_device_info" author="inkfan,yuqicai" info="社交平台产品部"/>
 	<business id="e1ee76" path="https://bookshelf.html5.qq.com" author="freemanyao" info="增值产品部/商业产品中心"/>
 	<business id="c57534" path="qc.vip.qq.com" author="sluckyliu" info="PCG平台与内容事业群/社交娱乐产品部/波洞星球产品中心"/>
 	<business id="ee632a" path="com.tencent.pcg.qzone.qqcps" author="yinghaowang" info="PCG平台与内容事业群/社交平台产品部/增值研发中心/前台开发组/前台开发二组"/>
 	<business id="cd9fb2" path="h5.qzone.qq.com.biz_src_liwu" author="bookerchen" info="礼物商城"/>
 	<business id="8b5c3a" path="com.tencent.mobileqq.app.soso.SosoInterface#getOaid" author="greekchen" info="社交产品部/手Q 定位模块"/>
+	<business id="94b049" path="ad.qq.com" author="zaleguo" info="AMS平台产品技术部 腾讯广告投放平台广告管理 需要获取用户设备信息，从而让用户在自己的设备上查看到自己所投放广告的真实素材效果"/>
+	<business id="66d372" path="pre.sturnus.qq.com" author="carljiang" info="新闻视频广告合作部,获取用户信息，与绑定广告，预览合约广告。"/>
+	<business id="5cfc38" path="h5.gdt.qq.com" author="linjilin" info="蹊径落地页"/>
+	<business id="807825" path="IQQGameAdService.pullAd" author="parsonswang" info="QQ手游公众号"/>
 </list>

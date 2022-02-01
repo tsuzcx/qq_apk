@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import org.b.g.d;
 
-public final class i
+public class i
   implements Serializable
 {
-  private final String rawResponse;
+  public final String aaTQ;
+  private final String ajYL;
   public final String token;
-  public final String xsy;
   
   public i(String paramString1, String paramString2)
   {
@@ -18,52 +18,52 @@ public final class i
   
   public i(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(77267);
-    d.s(paramString1, "Token can't be null");
-    d.s(paramString2, "Secret can't be null");
+    AppMethodBeat.i(40536);
+    d.x(paramString1, "Token can't be null");
+    d.x(paramString2, "Secret can't be null");
     this.token = paramString1;
-    this.xsy = paramString2;
-    this.rawResponse = paramString3;
-    AppMethodBeat.o(77267);
+    this.aaTQ = paramString2;
+    this.ajYL = paramString3;
+    AppMethodBeat.o(40536);
   }
   
-  public final boolean equals(Object paramObject)
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(77269);
+    AppMethodBeat.i(40538);
     if (this == paramObject)
     {
-      AppMethodBeat.o(77269);
+      AppMethodBeat.o(40538);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(77269);
+      AppMethodBeat.o(40538);
       return false;
     }
     paramObject = (i)paramObject;
-    if ((this.token.equals(paramObject.token)) && (this.xsy.equals(paramObject.xsy)))
+    if ((this.token.equals(paramObject.token)) && (this.aaTQ.equals(paramObject.aaTQ)))
     {
-      AppMethodBeat.o(77269);
+      AppMethodBeat.o(40538);
       return true;
     }
-    AppMethodBeat.o(77269);
+    AppMethodBeat.o(40538);
     return false;
   }
   
-  public final int hashCode()
+  public int hashCode()
   {
-    AppMethodBeat.i(77270);
+    AppMethodBeat.i(40539);
     int i = this.token.hashCode();
-    int j = this.xsy.hashCode();
-    AppMethodBeat.o(77270);
+    int j = this.aaTQ.hashCode();
+    AppMethodBeat.o(40539);
     return i * 31 + j;
   }
   
-  public final String toString()
+  public String toString()
   {
-    AppMethodBeat.i(77268);
-    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.xsy });
-    AppMethodBeat.o(77268);
+    AppMethodBeat.i(40537);
+    String str = String.format("Token[%s , %s]", new Object[] { this.token, this.aaTQ });
+    AppMethodBeat.o(40537);
     return str;
   }
 }

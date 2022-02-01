@@ -1,26 +1,57 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FetchInfoListManager;
-import java.util.LinkedList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.mobileqq.util.ImageCache;
 
 public class ham
-  extends Handler
+  extends CustomLruCache
 {
-  public ham(FetchInfoListManager paramFetchInfoListManager, Looper paramLooper)
+  public ham(ImageCache paramImageCache, int paramInt)
   {
-    super(paramLooper);
+    super(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected int a(String paramString, Drawable paramDrawable)
   {
-    if (paramMessage.what == 1) {
-      FetchInfoListManager.a(this.a);
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
     }
-    while ((paramMessage.what != 2) || (FetchInfoListManager.a(this.a) == null)) {
-      return;
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
     }
-    FetchInfoListManager.a(this.a).remove(paramMessage.obj);
+    for (;;)
+    {
+      k += 1;
+      break;
+    }
   }
 }
 

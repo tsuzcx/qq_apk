@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import czv;
+import czu;
 import java.net.URLDecoder;
 
 public class PrivacyDeclareViewActivity
@@ -31,7 +31,7 @@ public class PrivacyDeclareViewActivity
   private static final int c = 102;
   private int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = false;
-  private Handler jdField_b_of_type_AndroidOsHandler = new czv(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new czu(this, Looper.getMainLooper());
   private QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private String jdField_b_of_type_JavaLangString;
   

@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.nearlife.ui;
 import android.content.Context;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.plugin.nearlife.b.b;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,43 +20,43 @@ import java.util.Map;
 public abstract class a
   extends BaseAdapter
 {
-  View.OnClickListener bTw;
+  boolean HQr = false;
+  protected String MpV = "";
+  private ArrayList<b> Mqa = new ArrayList();
+  private HashSet<String> Mqb = new HashSet();
+  ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> Mqc = null;
+  private Map<BackwardSupportUtil.ExifHelper.LatLongData, gol> Mqd;
+  private Map<BackwardSupportUtil.ExifHelper.LatLongData, Integer> Mqe;
+  private Map<String, BackwardSupportUtil.ExifHelper.LatLongData> Mqf;
+  BackwardSupportUtil.ExifHelper.LatLongData Mqg;
+  boolean Mqh = true;
+  int Mqi = 0;
+  View.OnClickListener fhU;
   Context mContext;
   String mKey = "";
-  protected String pej = "";
-  boolean peo = false;
-  private ArrayList<com.tencent.mm.plugin.nearlife.b.a> pep = new ArrayList();
-  private HashSet<String> peq = new HashSet();
-  ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> per = null;
-  private Map<BackwardSupportUtil.ExifHelper.LatLongData, SKBuiltinBuffer_t> pes;
-  private Map<BackwardSupportUtil.ExifHelper.LatLongData, Integer> pet;
-  private Map<String, BackwardSupportUtil.ExifHelper.LatLongData> peu;
-  BackwardSupportUtil.ExifHelper.LatLongData pev;
-  boolean pew = true;
-  int pex = 0;
   
   public a(Context paramContext, View.OnClickListener paramOnClickListener, String paramString, boolean paramBoolean)
   {
     this.mContext = paramContext;
-    this.bTw = paramOnClickListener;
+    this.fhU = paramOnClickListener;
     this.mKey = paramString;
-    this.peo = paramBoolean;
-    this.per = new ArrayList();
-    this.pes = new HashMap();
-    this.pet = new HashMap();
-    this.peu = new HashMap();
+    this.HQr = paramBoolean;
+    this.Mqc = new ArrayList();
+    this.Mqd = new HashMap();
+    this.Mqe = new HashMap();
+    this.Mqf = new HashMap();
   }
   
-  public static String cq(List<bwc> paramList)
+  public static String ji(List<etl> paramList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
     while (i < paramList.size())
     {
-      bwc localbwc = (bwc)paramList.get(i);
-      if ((localbwc != null) && (localbwc.xJE != null) && (!localbwc.xJE.equals("")) && (!localbwc.xJE.toLowerCase().equals("null")))
+      etl localetl = (etl)paramList.get(i);
+      if ((localetl != null) && (localetl.abwM != null) && (!localetl.abwM.equals("")) && (!localetl.abwM.toLowerCase().equals("null")))
       {
-        localStringBuffer.append(localbwc.xJE);
+        localStringBuffer.append(localetl.abwM);
         if (i < paramList.size() - 1) {
           localStringBuffer.append("·");
         }
@@ -65,174 +66,174 @@ public abstract class a
     return localStringBuffer.toString();
   }
   
-  public final com.tencent.mm.plugin.nearlife.b.a AF(int paramInt)
+  public final gol a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
   {
-    if ((paramInt >= 0) && (paramInt < this.pep.size())) {
-      return (com.tencent.mm.plugin.nearlife.b.a)this.pep.get(paramInt);
-    }
-    return new com.tencent.mm.plugin.nearlife.b.a("", new azs());
-  }
-  
-  public final void K(ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> paramArrayList)
-  {
-    if (paramArrayList != null) {
-      this.per = paramArrayList;
-    }
-  }
-  
-  public final void VO(String paramString)
-  {
-    if (paramString != null) {
-      this.pej = paramString;
-    }
-  }
-  
-  public final BackwardSupportUtil.ExifHelper.LatLongData VP(String paramString)
-  {
-    if (this.peu.containsKey(paramString)) {
-      return (BackwardSupportUtil.ExifHelper.LatLongData)this.peu.get(paramString);
+    if (this.Mqd.containsKey(paramLatLongData)) {
+      return (gol)this.Mqd.get(paramLatLongData);
     }
     return null;
   }
   
-  public final boolean VQ(String paramString)
+  public final void a(b paramb, int paramInt)
+  {
+    if ((!this.Mqb.contains(paramb.MpI)) && (paramInt <= this.Mqa.size()))
+    {
+      this.Mqa.add(paramInt, paramb);
+      this.Mqb.add(paramb.MpI);
+      this.Mqf.put(paramb.MpI, this.Mqg);
+    }
+  }
+  
+  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, int paramInt, gol paramgol)
+  {
+    int i = 0;
+    float f1 = paramLatLongData.latitude;
+    float f2 = paramLatLongData.longtitude;
+    if (paramgol == null) {}
+    for (;;)
+    {
+      Log.d("MicroMsg.BaseLifeAdapter", "set flag & buf, lat:%f long:%f flag:%d len:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt), Integer.valueOf(i) });
+      if ((this.Mqc.contains(paramLatLongData)) || ((this.Mqg != null) && (this.Mqg.equals(paramLatLongData))))
+      {
+        this.Mqe.put(paramLatLongData, Integer.valueOf(paramInt));
+        this.Mqd.put(paramLatLongData, paramgol);
+      }
+      return;
+      i = paramgol.abwJ;
+    }
+  }
+  
+  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, List<b> paramList)
+  {
+    Log.i("MicroMsg.BaseLifeAdapter", "mkey %s addlifes %d", new Object[] { this.mKey, Integer.valueOf(paramList.size()) });
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      b localb = (b)paramList.next();
+      if (!this.Mqb.contains(localb.MpI))
+      {
+        this.Mqa.add(localb);
+        this.Mqb.add(localb.MpI);
+        this.Mqf.put(localb.MpI, paramLatLongData);
+      }
+    }
+    notifyDataSetChanged();
+  }
+  
+  public final void aPN(String paramString)
+  {
+    if (paramString != null) {
+      this.MpV = paramString;
+    }
+  }
+  
+  public final BackwardSupportUtil.ExifHelper.LatLongData aPO(String paramString)
+  {
+    if (this.Mqf.containsKey(paramString)) {
+      return (BackwardSupportUtil.ExifHelper.LatLongData)this.Mqf.get(paramString);
+    }
+    return null;
+  }
+  
+  public final boolean aPP(String paramString)
   {
     paramString = paramString.trim();
-    Iterator localIterator = this.pep.iterator();
+    Iterator localIterator = this.Mqa.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mm.plugin.nearlife.b.a locala = (com.tencent.mm.plugin.nearlife.b.a)localIterator.next();
-      if ((!bo.isNullOrNil(locala.Title)) && (paramString.equals(locala.Title.trim()))) {
+      b localb = (b)localIterator.next();
+      if ((!Util.isNullOrNil(localb.hAP)) && (paramString.equals(localb.hAP.trim()))) {
         return true;
       }
     }
     return false;
   }
   
-  public final int VR(String paramString)
+  public final int aPQ(String paramString)
   {
-    Iterator localIterator = this.pep.iterator();
+    Iterator localIterator = this.Mqa.iterator();
     int i = -1;
     int j;
-    com.tencent.mm.plugin.nearlife.b.a locala;
+    b localb;
     do
     {
       j = i;
       if (!localIterator.hasNext()) {
         break;
       }
-      locala = (com.tencent.mm.plugin.nearlife.b.a)localIterator.next();
+      localb = (b)localIterator.next();
       j = i + 1;
       i = j;
-    } while (!locala.pdW.equals(paramString));
+    } while (!localb.MpI.equals(paramString));
     return j;
   }
   
-  public final SKBuiltinBuffer_t a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
+  public final b aeA(int paramInt)
   {
-    if (this.pes.containsKey(paramLatLongData)) {
-      return (SKBuiltinBuffer_t)this.pes.get(paramLatLongData);
+    if ((paramInt >= 0) && (paramInt < this.Mqa.size())) {
+      return (b)this.Mqa.get(paramInt);
     }
-    return null;
-  }
-  
-  public final void a(com.tencent.mm.plugin.nearlife.b.a parama, int paramInt)
-  {
-    if ((!this.peq.contains(parama.pdW)) && (paramInt <= this.pep.size()))
-    {
-      this.pep.add(paramInt, parama);
-      this.peq.add(parama.pdW);
-      this.peu.put(parama.pdW, this.pev);
-    }
-  }
-  
-  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, int paramInt, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
-  {
-    int i = 0;
-    float f1 = paramLatLongData.cyV;
-    float f2 = paramLatLongData.fFN;
-    if (paramSKBuiltinBuffer_t == null) {}
-    for (;;)
-    {
-      ab.d("MicroMsg.BaseLifeAdapter", "set flag & buf, lat:%f long:%f flag:%d len:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt), Integer.valueOf(i) });
-      if ((this.per.contains(paramLatLongData)) || ((this.pev != null) && (this.pev.equals(paramLatLongData))))
-      {
-        this.pet.put(paramLatLongData, Integer.valueOf(paramInt));
-        this.pes.put(paramLatLongData, paramSKBuiltinBuffer_t);
-      }
-      return;
-      i = paramSKBuiltinBuffer_t.getILen();
-    }
-  }
-  
-  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, List<com.tencent.mm.plugin.nearlife.b.a> paramList)
-  {
-    ab.i("MicroMsg.BaseLifeAdapter", "mkey %s addlifes %d", new Object[] { this.mKey, Integer.valueOf(paramList.size()) });
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      com.tencent.mm.plugin.nearlife.b.a locala = (com.tencent.mm.plugin.nearlife.b.a)paramList.next();
-      if (!this.peq.contains(locala.pdW))
-      {
-        this.pep.add(locala);
-        this.peq.add(locala.pdW);
-        this.peu.put(locala.pdW, paramLatLongData);
-      }
-    }
-    notifyDataSetChanged();
+    return new b("", new dgz());
   }
   
   public final int b(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
   {
-    if (this.pet.containsKey(paramLatLongData)) {
-      return ((Integer)this.pet.get(paramLatLongData)).intValue();
+    if (this.Mqe.containsKey(paramLatLongData)) {
+      return ((Integer)this.Mqe.get(paramLatLongData)).intValue();
     }
     return 1;
   }
   
-  public final void bWI()
+  public final void bj(ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> paramArrayList)
   {
-    this.pep.clear();
-    this.peq.clear();
-    this.pet.clear();
-    this.pes.clear();
-    this.peu.clear();
-    this.pex = 0;
-    notifyDataSetChanged();
-  }
-  
-  public final String bWJ()
-  {
-    return this.pej;
-  }
-  
-  public final boolean bWK()
-  {
-    Iterator localIterator = this.per.iterator();
-    while (localIterator.hasNext()) {
-      if (b((BackwardSupportUtil.ExifHelper.LatLongData)localIterator.next()) > 0) {
-        return true;
-      }
+    if (paramArrayList != null) {
+      this.Mqc = paramArrayList;
     }
-    if (this.pew) {
-      return b(this.pev) > 0;
-    }
-    return false;
   }
   
   public int getCount()
   {
-    return this.pep.size();
+    return this.Mqa.size();
   }
   
   public long getItemId(int paramInt)
   {
     return 0L;
   }
+  
+  public final void gsT()
+  {
+    this.Mqa.clear();
+    this.Mqb.clear();
+    this.Mqe.clear();
+    this.Mqd.clear();
+    this.Mqf.clear();
+    this.Mqi = 0;
+    notifyDataSetChanged();
+  }
+  
+  public final String gsU()
+  {
+    return this.MpV;
+  }
+  
+  public final boolean gsV()
+  {
+    Iterator localIterator = this.Mqc.iterator();
+    while (localIterator.hasNext()) {
+      if (b((BackwardSupportUtil.ExifHelper.LatLongData)localIterator.next()) > 0) {
+        return true;
+      }
+    }
+    if (this.Mqh) {
+      return b(this.Mqg) > 0;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.a
  * JD-Core Version:    0.7.0.1
  */

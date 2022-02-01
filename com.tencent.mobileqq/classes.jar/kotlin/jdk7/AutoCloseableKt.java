@@ -27,10 +27,7 @@ public final class AutoCloseableKt
       paramAutoCloseable.close();
       return;
     }
-    catch (Throwable paramAutoCloseable)
-    {
-      paramThrowable.addSuppressed(paramAutoCloseable);
-    }
+    catch (Throwable paramAutoCloseable) {}
   }
   
   /* Error */
@@ -41,57 +38,54 @@ public final class AutoCloseableKt
     // Byte code:
     //   0: aconst_null
     //   1: checkcast 40	java/lang/Throwable
-    //   4: astore_2
-    //   5: aload_1
-    //   6: aload_0
-    //   7: invokeinterface 60 2 0
-    //   12: astore_1
-    //   13: iconst_1
-    //   14: invokestatic 66	kotlin/jvm/internal/InlineMarker:finallyStart	(I)V
-    //   17: aload_0
-    //   18: aload_2
-    //   19: invokestatic 68	kotlin/jdk7/AutoCloseableKt:closeFinally	(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
-    //   22: iconst_1
-    //   23: invokestatic 71	kotlin/jvm/internal/InlineMarker:finallyEnd	(I)V
-    //   26: aload_1
-    //   27: areturn
-    //   28: astore_1
-    //   29: aload_1
-    //   30: athrow
-    //   31: astore_2
-    //   32: iconst_1
-    //   33: invokestatic 66	kotlin/jvm/internal/InlineMarker:finallyStart	(I)V
-    //   36: aload_0
+    //   4: astore_3
+    //   5: aload_3
+    //   6: astore_2
+    //   7: aload_1
+    //   8: aload_0
+    //   9: invokeinterface 56 2 0
+    //   14: astore_1
+    //   15: iconst_1
+    //   16: invokestatic 62	kotlin/jvm/internal/InlineMarker:finallyStart	(I)V
+    //   19: aload_0
+    //   20: aload_3
+    //   21: invokestatic 64	kotlin/jdk7/AutoCloseableKt:closeFinally	(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
+    //   24: iconst_1
+    //   25: invokestatic 67	kotlin/jvm/internal/InlineMarker:finallyEnd	(I)V
+    //   28: aload_1
+    //   29: areturn
+    //   30: astore_1
+    //   31: goto +8 -> 39
+    //   34: astore_1
+    //   35: aload_1
+    //   36: astore_2
     //   37: aload_1
-    //   38: invokestatic 68	kotlin/jdk7/AutoCloseableKt:closeFinally	(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
-    //   41: iconst_1
-    //   42: invokestatic 71	kotlin/jvm/internal/InlineMarker:finallyEnd	(I)V
-    //   45: aload_2
-    //   46: athrow
-    //   47: astore_3
-    //   48: aload_2
-    //   49: astore_1
-    //   50: aload_3
-    //   51: astore_2
-    //   52: goto -20 -> 32
+    //   38: athrow
+    //   39: iconst_1
+    //   40: invokestatic 62	kotlin/jvm/internal/InlineMarker:finallyStart	(I)V
+    //   43: aload_0
+    //   44: aload_2
+    //   45: invokestatic 64	kotlin/jdk7/AutoCloseableKt:closeFinally	(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
+    //   48: iconst_1
+    //   49: invokestatic 67	kotlin/jvm/internal/InlineMarker:finallyEnd	(I)V
+    //   52: aload_1
+    //   53: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	55	0	paramT	T
-    //   0	55	1	paramFunction1	kotlin.jvm.functions.Function1<? super T, ? extends R>
-    //   4	15	2	localThrowable	Throwable
-    //   31	18	2	localObject1	Object
-    //   51	1	2	localObject2	Object
-    //   47	4	3	localObject3	Object
+    //   0	54	0	paramT	T
+    //   0	54	1	paramFunction1	kotlin.jvm.functions.Function1<? super T, ? extends R>
+    //   6	39	2	localObject	Object
+    //   4	17	3	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   5	13	28	java/lang/Throwable
-    //   29	31	31	finally
-    //   5	13	47	finally
+    //   7	15	30	finally
+    //   37	39	30	finally
+    //   7	15	34	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.jdk7.AutoCloseableKt
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,6 @@ public final class ou
 {
   public static String a(File paramFile)
   {
-    int i = 0;
     Object localObject1 = new FileInputStream(paramFile);
     Object localObject2 = new byte[1024];
     paramFile = new char[16];
@@ -29,84 +28,84 @@ public final class ou
     paramFile[14] = 101;
     paramFile[15] = 102;
     paramFile;
-    MessageDigest localMessageDigest;
-    try
-    {
-      localMessageDigest = MessageDigest.getInstance("MD5");
-      for (;;)
-      {
-        j = ((FileInputStream)localObject1).read((byte[])localObject2, 0, 1024);
-        if (j == -1) {
-          break;
-        }
-        localMessageDigest.update((byte[])localObject2, 0, j);
-      }
-      ((FileInputStream)localObject1).close();
-    }
-    catch (Exception paramFile)
-    {
-      paramFile.printStackTrace();
-      return null;
-    }
-    localObject1 = localMessageDigest.digest();
-    localObject2 = new char[32];
-    int j = 0;
     for (;;)
     {
+      int j;
+      int i;
+      try
+      {
+        MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+        j = 0;
+        i = ((FileInputStream)localObject1).read((byte[])localObject2, 0, 1024);
+        if (i != -1)
+        {
+          localMessageDigest.update((byte[])localObject2, 0, i);
+          continue;
+        }
+        ((FileInputStream)localObject1).close();
+        localObject1 = localMessageDigest.digest();
+        localObject2 = new char[32];
+        i = 0;
+      }
+      catch (Exception paramFile)
+      {
+        paramFile.printStackTrace();
+        return null;
+      }
       paramFile = new String((char[])localObject2);
       return paramFile;
-      while (i < 16)
+      while (j < 16)
       {
-        int k = localObject1[i];
-        int m = j + 1;
-        localObject2[j] = paramFile[(k >>> 4 & 0xF)];
-        j = m + 1;
+        int k = localObject1[j];
+        int m = i + 1;
+        localObject2[i] = paramFile[(k >>> 4 & 0xF)];
+        i = m + 1;
         localObject2[m] = paramFile[(k & 0xF)];
-        i += 1;
+        j += 1;
       }
     }
   }
   
   public static String a(byte[] paramArrayOfByte)
   {
-    int i = 0;
     char[] arrayOfChar = new char[16];
-    char[] tmp10_8 = arrayOfChar;
-    tmp10_8[0] = 48;
-    char[] tmp15_10 = tmp10_8;
-    tmp15_10[1] = 49;
-    char[] tmp20_15 = tmp15_10;
-    tmp20_15[2] = 50;
-    char[] tmp25_20 = tmp20_15;
-    tmp25_20[3] = 51;
-    char[] tmp30_25 = tmp25_20;
-    tmp30_25[4] = 52;
-    char[] tmp35_30 = tmp30_25;
-    tmp35_30[5] = 53;
-    char[] tmp40_35 = tmp35_30;
-    tmp40_35[6] = 54;
-    char[] tmp46_40 = tmp40_35;
-    tmp46_40[7] = 55;
-    char[] tmp52_46 = tmp46_40;
-    tmp52_46[8] = 56;
-    char[] tmp58_52 = tmp52_46;
-    tmp58_52[9] = 57;
-    char[] tmp64_58 = tmp58_52;
-    tmp64_58[10] = 97;
-    char[] tmp70_64 = tmp64_58;
-    tmp70_64[11] = 98;
-    char[] tmp76_70 = tmp70_64;
-    tmp76_70[12] = 99;
-    char[] tmp82_76 = tmp76_70;
-    tmp82_76[13] = 100;
-    char[] tmp88_82 = tmp82_76;
-    tmp88_82[14] = 101;
-    char[] tmp94_88 = tmp88_82;
-    tmp94_88[15] = 102;
-    tmp94_88;
+    char[] tmp8_6 = arrayOfChar;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 97;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 98;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 99;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 100;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 101;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 102;
+    tmp92_86;
     for (;;)
     {
       Object localObject;
+      int i;
       int j;
       try
       {
@@ -114,6 +113,7 @@ public final class ou
         ((MessageDigest)localObject).update(paramArrayOfByte);
         paramArrayOfByte = ((MessageDigest)localObject).digest();
         localObject = new char[32];
+        i = 0;
         j = 0;
       }
       catch (Exception paramArrayOfByte)
@@ -137,7 +137,7 @@ public final class ou
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.ou
  * JD-Core Version:    0.7.0.1
  */

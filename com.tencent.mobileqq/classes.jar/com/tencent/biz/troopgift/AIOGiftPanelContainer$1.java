@@ -1,22 +1,20 @@
 package com.tencent.biz.troopgift;
 
-import yuu;
-
-public class AIOGiftPanelContainer$1
+class AIOGiftPanelContainer$1
   implements Runnable
 {
-  public AIOGiftPanelContainer$1(yuu paramyuu, int paramInt) {}
+  AIOGiftPanelContainer$1(AIOGiftPanelContainer paramAIOGiftPanelContainer, int paramInt) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.b(this.a);
+    if (this.this$0.e != null) {
+      this.this$0.e.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.AIOGiftPanelContainer.1
  * JD-Core Version:    0.7.0.1
  */

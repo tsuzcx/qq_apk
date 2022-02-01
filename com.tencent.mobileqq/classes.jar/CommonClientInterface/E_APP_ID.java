@@ -18,7 +18,7 @@ public final class E_APP_ID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     CommonClientInterface.E_APP_ID
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import cooperation.qzone.model.LocalImageShootInfo;
 
 public final class icl
   implements Parcelable.Creator
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
+  public LocalImageShootInfo a(Parcel paramParcel)
   {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
+    return new LocalImageShootInfo(paramParcel);
   }
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public LocalImageShootInfo[] a(int paramInt)
   {
     return null;
   }

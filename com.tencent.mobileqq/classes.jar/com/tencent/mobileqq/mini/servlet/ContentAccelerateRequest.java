@@ -48,16 +48,20 @@ public class ContentAccelerateRequest
   
   public static INTERFACE.StContentAccelerateRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StContentAccelerateRsp localStContentAccelerateRsp = new INTERFACE.StContentAccelerateRsp();
+    Object localObject = new INTERFACE.StContentAccelerateRsp();
     try
     {
-      localStContentAccelerateRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStContentAccelerateRsp;
+      ((INTERFACE.StContentAccelerateRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ContentAccelerateRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ContentAccelerateRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -70,7 +74,7 @@ public class ContentAccelerateRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ContentAccelerateRequest
  * JD-Core Version:    0.7.0.1
  */

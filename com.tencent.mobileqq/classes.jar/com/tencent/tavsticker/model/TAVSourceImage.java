@@ -1,22 +1,26 @@
 package com.tencent.tavsticker.model;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import com.tencent.tav.coremedia.TextureInfo;
 import org.libpag.PAGImage;
 
 public class TAVSourceImage
 {
-  private static final String TAG = TAVSourceImage.class.getSimpleName();
-  private int mIndex = 0;
-  private PAGImage mPagImage = null;
+  private static final String TAG = "TAVSourceImage";
+  private int index = 0;
+  private Matrix matrix = null;
+  private PAGImage pagImage = null;
   
   public TAVSourceImage(Bitmap paramBitmap, int paramInt)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      throw new IllegalArgumentException("<init> parameter 'bitmap' is illegal!");
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      this.pagImage = PAGImage.FromBitmap(paramBitmap);
+      this.index = paramInt;
+      return;
     }
-    this.mPagImage = PAGImage.FromBitmap(paramBitmap);
-    this.mIndex = paramInt;
+    throw new IllegalArgumentException("<init> parameter 'bitmap' is illegal!");
   }
   
   public TAVSourceImage(TextureInfo paramTextureInfo, int paramInt)
@@ -27,29 +31,43 @@ public class TAVSourceImage
   public TAVSourceImage(TextureInfo paramTextureInfo, boolean paramBoolean, int paramInt)
   {
     if (paramTextureInfo != null) {
-      this.mPagImage = PAGImage.FromTexture(paramTextureInfo.textureID, paramTextureInfo.textureType, paramTextureInfo.width, paramTextureInfo.height, paramBoolean);
+      this.pagImage = PAGImage.FromTexture(paramTextureInfo.textureID, paramTextureInfo.textureType, paramTextureInfo.width, paramTextureInfo.height, paramBoolean);
     }
-    this.mIndex = paramInt;
+    this.index = paramInt;
   }
   
   public int getIndex()
   {
-    return this.mIndex;
+    return this.index;
   }
   
-  PAGImage getPagImage()
+  public Matrix getMatrix()
   {
-    return this.mPagImage;
+    return this.matrix;
+  }
+  
+  public PAGImage getPagImage()
+  {
+    return this.pagImage;
   }
   
   public void setIndex(int paramInt)
   {
-    this.mIndex = paramInt;
+    this.index = paramInt;
+  }
+  
+  public void setMatrix(Matrix paramMatrix)
+  {
+    this.matrix = paramMatrix;
+    PAGImage localPAGImage = this.pagImage;
+    if (localPAGImage != null) {
+      localPAGImage.setMatrix(paramMatrix);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVSourceImage
  * JD-Core Version:    0.7.0.1
  */

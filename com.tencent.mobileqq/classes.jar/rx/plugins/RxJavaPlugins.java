@@ -22,157 +22,185 @@ public class RxJavaPlugins
   
   static Object getPluginImplementationViaProperty(Class<?> paramClass, Properties paramProperties)
   {
-    String str2 = paramClass.getSimpleName();
-    String str1 = paramProperties.getProperty("rxjava.plugin." + str2 + ".implementation");
-    Object localObject = str1;
-    if (str1 == null)
+    String str1 = paramClass.getSimpleName();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("rxjava.plugin.");
+    ((StringBuilder)localObject1).append(str1);
+    ((StringBuilder)localObject1).append(".implementation");
+    localObject1 = paramProperties.getProperty(((StringBuilder)localObject1).toString());
+    if (localObject1 == null)
     {
-      Iterator localIterator = paramProperties.entrySet().iterator();
-      String str3;
-      do
+      Object localObject2 = paramProperties.entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject = str1;
-        if (!localIterator.hasNext()) {
-          break;
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+        String str2 = localEntry.getKey().toString();
+        if ((str2.startsWith("rxjava.plugin.")) && (str2.endsWith(".class")) && (str1.equals(localEntry.getValue().toString())))
+        {
+          localObject1 = str2.substring(0, str2.length() - 6).substring(14);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("rxjava.plugin.");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(".impl");
+          localObject1 = ((StringBuilder)localObject2).toString();
+          paramProperties = paramProperties.getProperty((String)localObject1);
+          if (paramProperties != null) {
+            break label247;
+          }
+          paramClass = new StringBuilder();
+          paramClass.append("Implementing class declaration for ");
+          paramClass.append(str1);
+          paramClass.append(" missing: ");
+          paramClass.append((String)localObject1);
+          throw new RuntimeException(paramClass.toString());
         }
-        localObject = (Map.Entry)localIterator.next();
-        str3 = ((Map.Entry)localObject).getKey().toString();
-      } while ((!str3.startsWith("rxjava.plugin.")) || (!str3.endsWith(".class")) || (!str2.equals(((Map.Entry)localObject).getValue().toString())));
-      localObject = str3.substring(0, str3.length() - ".class".length()).substring("rxjava.plugin.".length());
-      str1 = "rxjava.plugin." + (String)localObject + ".impl";
-      localObject = paramProperties.getProperty(str1);
-      if (localObject == null) {
-        throw new RuntimeException("Implementing class declaration for " + str2 + " missing: " + str1);
       }
     }
-    if (localObject != null) {
-      try
-      {
-        paramClass = Class.forName((String)localObject).asSubclass(paramClass).newInstance();
-        return paramClass;
-      }
-      catch (ClassCastException paramClass)
-      {
-        throw new RuntimeException(str2 + " implementation is not an instance of " + str2 + ": " + (String)localObject);
-      }
-      catch (ClassNotFoundException paramClass)
-      {
-        throw new RuntimeException(str2 + " implementation class not found: " + (String)localObject, paramClass);
-      }
-      catch (InstantiationException paramClass)
-      {
-        throw new RuntimeException(str2 + " implementation not able to be instantiated: " + (String)localObject, paramClass);
-      }
-      catch (IllegalAccessException paramClass)
-      {
-        throw new RuntimeException(str2 + " implementation not able to be accessed: " + (String)localObject, paramClass);
-      }
+    paramProperties = (Properties)localObject1;
+    label247:
+    if (paramProperties != null) {}
+    try
+    {
+      paramClass = Class.forName(paramProperties).asSubclass(paramClass).newInstance();
+      return paramClass;
     }
-    return null;
+    catch (IllegalAccessException paramClass)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(" implementation not able to be accessed: ");
+      ((StringBuilder)localObject1).append(paramProperties);
+      throw new RuntimeException(((StringBuilder)localObject1).toString(), paramClass);
+    }
+    catch (InstantiationException paramClass)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(" implementation not able to be instantiated: ");
+      ((StringBuilder)localObject1).append(paramProperties);
+      throw new RuntimeException(((StringBuilder)localObject1).toString(), paramClass);
+    }
+    catch (ClassNotFoundException paramClass)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append(" implementation class not found: ");
+      ((StringBuilder)localObject1).append(paramProperties);
+      throw new RuntimeException(((StringBuilder)localObject1).toString(), paramClass);
+      paramClass = new StringBuilder();
+      paramClass.append(str1);
+      paramClass.append(" implementation is not an instance of ");
+      paramClass.append(str1);
+      paramClass.append(": ");
+      paramClass.append(paramProperties);
+      throw new RuntimeException(paramClass.toString());
+      return null;
+    }
+    catch (ClassCastException paramClass)
+    {
+      label388:
+      break label388;
+    }
   }
   
   public RxJavaErrorHandler getErrorHandler()
   {
-    Object localObject;
     if (this.errorHandler.get() == null)
     {
-      localObject = getPluginImplementationViaProperty(RxJavaErrorHandler.class, System.getProperties());
-      if (localObject != null) {
-        break label46;
+      Object localObject = getPluginImplementationViaProperty(RxJavaErrorHandler.class, System.getProperties());
+      if (localObject == null) {
+        this.errorHandler.compareAndSet(null, DEFAULT_ERROR_HANDLER);
+      } else {
+        this.errorHandler.compareAndSet(null, (RxJavaErrorHandler)localObject);
       }
-      this.errorHandler.compareAndSet(null, DEFAULT_ERROR_HANDLER);
     }
-    for (;;)
-    {
-      return (RxJavaErrorHandler)this.errorHandler.get();
-      label46:
-      this.errorHandler.compareAndSet(null, (RxJavaErrorHandler)localObject);
-    }
+    return (RxJavaErrorHandler)this.errorHandler.get();
   }
   
   public RxJavaObservableExecutionHook getObservableExecutionHook()
   {
-    Object localObject;
     if (this.observableExecutionHook.get() == null)
     {
-      localObject = getPluginImplementationViaProperty(RxJavaObservableExecutionHook.class, System.getProperties());
-      if (localObject != null) {
-        break label46;
+      Object localObject = getPluginImplementationViaProperty(RxJavaObservableExecutionHook.class, System.getProperties());
+      if (localObject == null) {
+        this.observableExecutionHook.compareAndSet(null, RxJavaObservableExecutionHookDefault.getInstance());
+      } else {
+        this.observableExecutionHook.compareAndSet(null, (RxJavaObservableExecutionHook)localObject);
       }
-      this.observableExecutionHook.compareAndSet(null, RxJavaObservableExecutionHookDefault.getInstance());
     }
-    for (;;)
-    {
-      return (RxJavaObservableExecutionHook)this.observableExecutionHook.get();
-      label46:
-      this.observableExecutionHook.compareAndSet(null, (RxJavaObservableExecutionHook)localObject);
-    }
+    return (RxJavaObservableExecutionHook)this.observableExecutionHook.get();
   }
   
   public RxJavaSchedulersHook getSchedulersHook()
   {
-    Object localObject;
     if (this.schedulersHook.get() == null)
     {
-      localObject = getPluginImplementationViaProperty(RxJavaSchedulersHook.class, System.getProperties());
-      if (localObject != null) {
-        break label46;
+      Object localObject = getPluginImplementationViaProperty(RxJavaSchedulersHook.class, System.getProperties());
+      if (localObject == null) {
+        this.schedulersHook.compareAndSet(null, RxJavaSchedulersHook.getDefaultInstance());
+      } else {
+        this.schedulersHook.compareAndSet(null, (RxJavaSchedulersHook)localObject);
       }
-      this.schedulersHook.compareAndSet(null, RxJavaSchedulersHook.getDefaultInstance());
     }
-    for (;;)
-    {
-      return (RxJavaSchedulersHook)this.schedulersHook.get();
-      label46:
-      this.schedulersHook.compareAndSet(null, (RxJavaSchedulersHook)localObject);
-    }
+    return (RxJavaSchedulersHook)this.schedulersHook.get();
   }
   
   public RxJavaSingleExecutionHook getSingleExecutionHook()
   {
-    Object localObject;
     if (this.singleExecutionHook.get() == null)
     {
-      localObject = getPluginImplementationViaProperty(RxJavaSingleExecutionHook.class, System.getProperties());
-      if (localObject != null) {
-        break label46;
+      Object localObject = getPluginImplementationViaProperty(RxJavaSingleExecutionHook.class, System.getProperties());
+      if (localObject == null) {
+        this.singleExecutionHook.compareAndSet(null, RxJavaSingleExecutionHookDefault.getInstance());
+      } else {
+        this.singleExecutionHook.compareAndSet(null, (RxJavaSingleExecutionHook)localObject);
       }
-      this.singleExecutionHook.compareAndSet(null, RxJavaSingleExecutionHookDefault.getInstance());
     }
-    for (;;)
-    {
-      return (RxJavaSingleExecutionHook)this.singleExecutionHook.get();
-      label46:
-      this.singleExecutionHook.compareAndSet(null, (RxJavaSingleExecutionHook)localObject);
-    }
+    return (RxJavaSingleExecutionHook)this.singleExecutionHook.get();
   }
   
   public void registerErrorHandler(RxJavaErrorHandler paramRxJavaErrorHandler)
   {
-    if (!this.errorHandler.compareAndSet(null, paramRxJavaErrorHandler)) {
-      throw new IllegalStateException("Another strategy was already registered: " + this.errorHandler.get());
+    if (this.errorHandler.compareAndSet(null, paramRxJavaErrorHandler)) {
+      return;
     }
+    paramRxJavaErrorHandler = new StringBuilder();
+    paramRxJavaErrorHandler.append("Another strategy was already registered: ");
+    paramRxJavaErrorHandler.append(this.errorHandler.get());
+    throw new IllegalStateException(paramRxJavaErrorHandler.toString());
   }
   
   public void registerObservableExecutionHook(RxJavaObservableExecutionHook paramRxJavaObservableExecutionHook)
   {
-    if (!this.observableExecutionHook.compareAndSet(null, paramRxJavaObservableExecutionHook)) {
-      throw new IllegalStateException("Another strategy was already registered: " + this.observableExecutionHook.get());
+    if (this.observableExecutionHook.compareAndSet(null, paramRxJavaObservableExecutionHook)) {
+      return;
     }
+    paramRxJavaObservableExecutionHook = new StringBuilder();
+    paramRxJavaObservableExecutionHook.append("Another strategy was already registered: ");
+    paramRxJavaObservableExecutionHook.append(this.observableExecutionHook.get());
+    throw new IllegalStateException(paramRxJavaObservableExecutionHook.toString());
   }
   
   public void registerSchedulersHook(RxJavaSchedulersHook paramRxJavaSchedulersHook)
   {
-    if (!this.schedulersHook.compareAndSet(null, paramRxJavaSchedulersHook)) {
-      throw new IllegalStateException("Another strategy was already registered: " + this.schedulersHook.get());
+    if (this.schedulersHook.compareAndSet(null, paramRxJavaSchedulersHook)) {
+      return;
     }
+    paramRxJavaSchedulersHook = new StringBuilder();
+    paramRxJavaSchedulersHook.append("Another strategy was already registered: ");
+    paramRxJavaSchedulersHook.append(this.schedulersHook.get());
+    throw new IllegalStateException(paramRxJavaSchedulersHook.toString());
   }
   
   public void registerSingleExecutionHook(RxJavaSingleExecutionHook paramRxJavaSingleExecutionHook)
   {
-    if (!this.singleExecutionHook.compareAndSet(null, paramRxJavaSingleExecutionHook)) {
-      throw new IllegalStateException("Another strategy was already registered: " + this.singleExecutionHook.get());
+    if (this.singleExecutionHook.compareAndSet(null, paramRxJavaSingleExecutionHook)) {
+      return;
     }
+    paramRxJavaSingleExecutionHook = new StringBuilder();
+    paramRxJavaSingleExecutionHook.append("Another strategy was already registered: ");
+    paramRxJavaSingleExecutionHook.append(this.singleExecutionHook.get());
+    throw new IllegalStateException(paramRxJavaSingleExecutionHook.toString());
   }
   
   void reset()
@@ -185,7 +213,7 @@ public class RxJavaPlugins
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.plugins.RxJavaPlugins
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,8 @@ final class pv$l
     if (this.a.length() > 0)
     {
       Log.v("GLSurfaceView", this.a.toString());
-      this.a.delete(0, this.a.length());
+      StringBuilder localStringBuilder = this.a;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
   }
   
@@ -30,24 +31,21 @@ final class pv$l
   public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
         a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         this.a.append(c);
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.pv.l
  * JD-Core Version:    0.7.0.1
  */

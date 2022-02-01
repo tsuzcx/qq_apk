@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/is1" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+    <android.support.v7.widget.RecyclerView android:id="@id/is1" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/bw1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
         <ImageView android:id="@id/fq0" android:layout_width="153.0dip" android:layout_height="163.0dip" android:layout_marginBottom="@dimen/n2" android:src="@drawable/dhj" android:layout_centerHorizontal="true" />
         <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="16.0sp" android:textColor="@color/es" android:id="@id/mca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w4y" android:layout_below="@id/fq0" android:layout_centerHorizontal="true" />
     </RelativeLayout>

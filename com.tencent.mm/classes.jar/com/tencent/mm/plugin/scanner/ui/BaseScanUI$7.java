@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseScanUI$7
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   BaseScanUI$7(BaseScanUI paramBaseScanUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(138461);
-    BaseScanUI.b(this.qwI, true);
-    this.qwI.finish();
-    AppMethodBeat.o(138461);
+    AppMethodBeat.i(314943);
+    BaseScanUI.C(this.OYm);
+    AppMethodBeat.o(314943);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.7
  * JD-Core Version:    0.7.0.1
  */

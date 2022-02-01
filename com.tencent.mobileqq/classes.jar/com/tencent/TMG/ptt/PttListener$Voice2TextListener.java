@@ -6,7 +6,7 @@ public abstract interface PttListener$Voice2TextListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.ptt.PttListener.Voice2TextListener
  * JD-Core Version:    0.7.0.1
  */

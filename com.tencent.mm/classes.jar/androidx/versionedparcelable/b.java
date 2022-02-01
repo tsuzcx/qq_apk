@@ -2,176 +2,227 @@ package androidx.versionedparcelable;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import android.text.TextUtils;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Method;
 
 final class b
   extends a
 {
-  private final int Fb;
-  private final int Fe;
-  private final SparseIntArray aqL;
-  private final Parcel aqM;
-  private int aqN;
-  private int aqO;
+  private final int Sc;
+  private final SparseIntArray cjA;
+  private final Parcel cjB;
+  private int cjC;
+  private int cjD;
+  private int cjE;
   private final String mPrefix;
+  private final int uH;
   
   b(Parcel paramParcel)
   {
-    this(paramParcel, paramParcel.dataPosition(), paramParcel.dataSize(), "");
-    AppMethodBeat.i(145818);
-    AppMethodBeat.o(145818);
+    this(paramParcel, paramParcel.dataPosition(), paramParcel.dataSize(), "", new androidx.b.a(), new androidx.b.a(), new androidx.b.a());
+    AppMethodBeat.i(62410);
+    AppMethodBeat.o(62410);
   }
   
-  private b(Parcel paramParcel, int paramInt1, int paramInt2, String paramString)
+  private b(Parcel paramParcel, int paramInt1, int paramInt2, String paramString, androidx.b.a<String, Method> parama1, androidx.b.a<String, Method> parama2, androidx.b.a<String, Class> parama)
   {
-    AppMethodBeat.i(145819);
-    this.aqL = new SparseIntArray();
-    this.aqN = -1;
-    this.aqO = 0;
-    this.aqM = paramParcel;
-    this.Fb = paramInt1;
-    this.Fe = paramInt2;
-    this.aqO = this.Fb;
+    super(parama1, parama2, parama);
+    AppMethodBeat.i(192925);
+    this.cjA = new SparseIntArray();
+    this.cjC = -1;
+    this.cjD = 0;
+    this.cjE = -1;
+    this.cjB = paramParcel;
+    this.Sc = paramInt1;
+    this.uH = paramInt2;
+    this.cjD = this.Sc;
     this.mPrefix = paramString;
-    AppMethodBeat.o(145819);
+    AppMethodBeat.o(192925);
   }
   
-  public final void a(Parcelable paramParcelable)
+  protected final void A(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(145827);
-    this.aqM.writeParcelable(paramParcelable, 0);
-    AppMethodBeat.o(145827);
+    AppMethodBeat.i(193006);
+    TextUtils.writeToParcel(paramCharSequence, this.cjB, 0);
+    AppMethodBeat.o(193006);
   }
   
-  public final boolean cM(int paramInt)
+  public final void Mj()
   {
-    AppMethodBeat.i(145820);
-    int j;
-    do
+    AppMethodBeat.i(62414);
+    if (this.cjC >= 0)
     {
-      if (this.aqO >= this.Fe) {
-        break;
-      }
-      this.aqM.setDataPosition(this.aqO);
-      int i = this.aqM.readInt();
-      j = this.aqM.readInt();
-      this.aqO = (i + this.aqO);
-    } while (j != paramInt);
-    for (paramInt = this.aqM.dataPosition(); paramInt == -1; paramInt = -1)
-    {
-      AppMethodBeat.o(145820);
-      return false;
+      int i = this.cjA.get(this.cjC);
+      int j = this.cjB.dataPosition();
+      this.cjB.setDataPosition(i);
+      this.cjB.writeInt(j - i);
+      this.cjB.setDataPosition(j);
     }
-    this.aqM.setDataPosition(paramInt);
-    AppMethodBeat.o(145820);
-    return true;
+    AppMethodBeat.o(62414);
   }
   
-  public final void cN(int paramInt)
+  protected final a Mk()
   {
-    AppMethodBeat.i(145821);
-    lg();
-    this.aqN = paramInt;
-    this.aqL.put(paramInt, this.aqM.dataPosition());
-    writeInt(0);
-    writeInt(paramInt);
-    AppMethodBeat.o(145821);
-  }
-  
-  public final void lg()
-  {
-    AppMethodBeat.i(145822);
-    if (this.aqN >= 0)
+    AppMethodBeat.i(62415);
+    Object localObject = this.cjB;
+    int j = this.cjB.dataPosition();
+    if (this.cjD == this.Sc) {}
+    for (int i = this.uH;; i = this.cjD)
     {
-      int i = this.aqL.get(this.aqN);
-      int j = this.aqM.dataPosition();
-      this.aqM.setDataPosition(i);
-      this.aqM.writeInt(j - i);
-      this.aqM.setDataPosition(j);
-    }
-    AppMethodBeat.o(145822);
-  }
-  
-  protected final a lh()
-  {
-    AppMethodBeat.i(145823);
-    Object localObject = this.aqM;
-    int j = this.aqM.dataPosition();
-    if (this.aqO == this.Fb) {}
-    for (int i = this.Fe;; i = this.aqO)
-    {
-      localObject = new b((Parcel)localObject, j, i, this.mPrefix + "  ");
-      AppMethodBeat.o(145823);
+      localObject = new b((Parcel)localObject, j, i, this.mPrefix + "  ", this.cjx, this.cjy, this.cjz);
+      AppMethodBeat.o(62415);
       return localObject;
     }
   }
   
-  public final byte[] li()
+  public final byte[] Ml()
   {
-    AppMethodBeat.i(145830);
-    int i = this.aqM.readInt();
+    AppMethodBeat.i(62422);
+    int i = this.cjB.readInt();
     if (i < 0)
     {
-      AppMethodBeat.o(145830);
+      AppMethodBeat.o(62422);
       return null;
     }
     byte[] arrayOfByte = new byte[i];
-    this.aqM.readByteArray(arrayOfByte);
-    AppMethodBeat.o(145830);
+    this.cjB.readByteArray(arrayOfByte);
+    AppMethodBeat.o(62422);
     return arrayOfByte;
   }
   
-  public final <T extends Parcelable> T lj()
+  protected final CharSequence Mm()
   {
-    AppMethodBeat.i(145831);
-    Parcelable localParcelable = this.aqM.readParcelable(getClass().getClassLoader());
-    AppMethodBeat.o(145831);
+    AppMethodBeat.i(193031);
+    CharSequence localCharSequence = (CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(this.cjB);
+    AppMethodBeat.o(193031);
+    return localCharSequence;
+  }
+  
+  public final <T extends Parcelable> T Mn()
+  {
+    AppMethodBeat.i(62423);
+    Parcelable localParcelable = this.cjB.readParcelable(getClass().getClassLoader());
+    AppMethodBeat.o(62423);
     return localParcelable;
+  }
+  
+  public final void aU(String paramString)
+  {
+    AppMethodBeat.i(62418);
+    this.cjB.writeString(paramString);
+    AppMethodBeat.o(62418);
+  }
+  
+  public final void aX(int paramInt)
+  {
+    AppMethodBeat.i(62417);
+    this.cjB.writeInt(paramInt);
+    AppMethodBeat.o(62417);
+  }
+  
+  public final void b(Parcelable paramParcelable)
+  {
+    AppMethodBeat.i(62419);
+    this.cjB.writeParcelable(paramParcelable, 0);
+    AppMethodBeat.o(62419);
+  }
+  
+  public final void bn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(192997);
+    Parcel localParcel = this.cjB;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localParcel.writeInt(i);
+      AppMethodBeat.o(192997);
+      return;
+    }
+  }
+  
+  public final boolean gM(int paramInt)
+  {
+    AppMethodBeat.i(62412);
+    while (this.cjD < this.uH)
+    {
+      if (this.cjE == paramInt)
+      {
+        AppMethodBeat.o(62412);
+        return true;
+      }
+      if (String.valueOf(this.cjE).compareTo(String.valueOf(paramInt)) > 0)
+      {
+        AppMethodBeat.o(62412);
+        return false;
+      }
+      this.cjB.setDataPosition(this.cjD);
+      int i = this.cjB.readInt();
+      this.cjE = this.cjB.readInt();
+      this.cjD = (i + this.cjD);
+    }
+    if (this.cjE == paramInt)
+    {
+      AppMethodBeat.o(62412);
+      return true;
+    }
+    AppMethodBeat.o(62412);
+    return false;
+  }
+  
+  public final void gN(int paramInt)
+  {
+    AppMethodBeat.i(62413);
+    Mj();
+    this.cjC = paramInt;
+    this.cjA.put(paramInt, this.cjB.dataPosition());
+    aX(0);
+    aX(paramInt);
+    AppMethodBeat.o(62413);
+  }
+  
+  public final void o(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(62416);
+    if (paramArrayOfByte != null)
+    {
+      this.cjB.writeInt(paramArrayOfByte.length);
+      this.cjB.writeByteArray(paramArrayOfByte);
+      AppMethodBeat.o(62416);
+      return;
+    }
+    this.cjB.writeInt(-1);
+    AppMethodBeat.o(62416);
+  }
+  
+  public final boolean readBoolean()
+  {
+    AppMethodBeat.i(193056);
+    if (this.cjB.readInt() != 0)
+    {
+      AppMethodBeat.o(193056);
+      return true;
+    }
+    AppMethodBeat.o(193056);
+    return false;
   }
   
   public final int readInt()
   {
-    AppMethodBeat.i(145828);
-    int i = this.aqM.readInt();
-    AppMethodBeat.o(145828);
+    AppMethodBeat.i(62420);
+    int i = this.cjB.readInt();
+    AppMethodBeat.o(62420);
     return i;
   }
   
   public final String readString()
   {
-    AppMethodBeat.i(145829);
-    String str = this.aqM.readString();
-    AppMethodBeat.o(145829);
+    AppMethodBeat.i(62421);
+    String str = this.cjB.readString();
+    AppMethodBeat.o(62421);
     return str;
-  }
-  
-  public final void writeByteArray(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(145824);
-    if (paramArrayOfByte != null)
-    {
-      this.aqM.writeInt(paramArrayOfByte.length);
-      this.aqM.writeByteArray(paramArrayOfByte);
-      AppMethodBeat.o(145824);
-      return;
-    }
-    this.aqM.writeInt(-1);
-    AppMethodBeat.o(145824);
-  }
-  
-  public final void writeInt(int paramInt)
-  {
-    AppMethodBeat.i(145825);
-    this.aqM.writeInt(paramInt);
-    AppMethodBeat.o(145825);
-  }
-  
-  public final void writeString(String paramString)
-  {
-    AppMethodBeat.i(145826);
-    this.aqM.writeString(paramString);
-    AppMethodBeat.o(145826);
   }
 }
 

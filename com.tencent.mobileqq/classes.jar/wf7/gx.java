@@ -11,55 +11,62 @@ public abstract class gx
 {
   public static gn a(IBinder paramIBinder)
   {
-    Object localObject;
     if (paramIBinder == null) {
-      localObject = null;
+      return null;
     }
-    gn localgn;
-    do
-    {
-      return localObject;
-      localgn = (gn)paramIBinder.queryLocalInterface("android.os.IServiceManager");
-      localObject = localgn;
-    } while (localgn != null);
+    gn localgn = (gn)paramIBinder.queryLocalInterface("android.os.IServiceManager");
+    if (localgn != null) {
+      return localgn;
+    }
     return new gy(paramIBinder);
   }
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return false;
+    if (paramInt1 != 1) {
+      if (paramInt1 != 2) {
+        if (paramInt1 != 3) {
+          if (paramInt1 != 4) {
+            return false;
+          }
+        }
+      }
     }
     try
     {
       paramParcel1.enforceInterface("android.os.IServiceManager");
-      paramParcel2.writeStrongBinder(P(paramParcel1.readString()));
+      paramParcel2.writeStringArray(eY());
       return true;
     }
-    catch (RemoteException paramParcel1) {}
-    paramParcel1.enforceInterface("android.os.IServiceManager");
-    paramParcel2.writeStrongBinder(Q(paramParcel1.readString()));
-    return true;
+    catch (RemoteException paramParcel1)
+    {
+      IBinder localIBinder;
+      return false;
+    }
     paramParcel1.enforceInterface("android.os.IServiceManager");
     paramParcel2 = paramParcel1.readString();
-    IBinder localIBinder = paramParcel1.readStrongBinder();
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
+    localIBinder = paramParcel1.readStrongBinder();
+    boolean bool;
+    if (paramParcel1.readInt() != 0) {
+      bool = true;
+    }
+    for (;;)
     {
       a(paramParcel2, localIBinder, bool);
       return true;
       paramParcel1.enforceInterface("android.os.IServiceManager");
-      paramParcel2.writeStringArray(eY());
+      paramParcel2.writeStrongBinder(Q(paramParcel1.readString()));
       return true;
-      break;
+      paramParcel1.enforceInterface("android.os.IServiceManager");
+      paramParcel2.writeStrongBinder(P(paramParcel1.readString()));
+      return true;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gx
  * JD-Core Version:    0.7.0.1
  */

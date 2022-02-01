@@ -1,112 +1,81 @@
 package com.tencent.mm.plugin.i;
 
-import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.vfs.e;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mm.am.e;
+import com.tencent.mm.compatible.util.f.a;
+import com.tencent.mm.model.y;
+import com.tencent.mm.modelcdntran.k;
+import com.tencent.mm.plugin.auth.a.b;
+import com.tencent.mm.protocal.j.h;
+import com.tencent.mm.protocal.j.i;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.uu;
+import com.tencent.mm.protocal.x.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class a
+  extends y
+  implements b
 {
-  public String cqq;
-  public String nLb;
-  public String nLc;
-  public int nLd;
-  public int nLe;
-  public int nLf;
-  public int nLg;
-  public int nLh;
-  public int nLi;
+  private static a wOo;
   
-  public static String QU(String paramString)
+  private a()
   {
-    AppMethodBeat.i(79093);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79093);
-      return "";
-    }
-    paramString = paramString.replace(",", ";");
-    AppMethodBeat.o(79093);
-    return paramString;
+    super(k.class);
   }
   
-  public static String cP(String paramString)
+  public static a dpR()
   {
-    AppMethodBeat.i(79092);
-    paramString = e.i(paramString, 0, 6);
-    if ((paramString == null) || (paramString.length != 6))
-    {
-      AppMethodBeat.o(79092);
-      return "";
-    }
     try
     {
-      paramString = new String(paramString, "UTF-8");
-      AppMethodBeat.o(79092);
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.ImgExtInfoReport", "getFileExt UnsupportedEncodingException:".concat(String.valueOf(paramString)));
-        paramString = "";
+      AppMethodBeat.i(151474);
+      if (wOo == null) {
+        wOo = new a();
       }
+      a locala = wOo;
+      AppMethodBeat.o(151474);
+      return locala;
     }
+    finally {}
   }
   
-  public static int uD(String paramString)
+  public final void onAuthResponse(j.h paramh, j.i parami, boolean paramBoolean) {}
+  
+  public final void onRegResponse(x.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    AppMethodBeat.i(79094);
-    try
-    {
-      paramString = d.aoT(paramString);
-      if (paramString == null)
+    AppMethodBeat.i(151475);
+    if (paramb.YyC.yth != 0) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
-        AppMethodBeat.o(79094);
-        return 0;
-      }
-      paramString = paramString.outMimeType;
-      if (paramString == null)
-      {
-        AppMethodBeat.o(79094);
-        return 0;
-      }
-      paramString = paramString.toLowerCase();
-      int i = paramString.indexOf("png");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(79094);
-        return 1;
-      }
-      i = paramString.indexOf("jpg");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(79094);
-        return 2;
-      }
-      i = paramString.indexOf("jpeg");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(79094);
-        return 2;
-      }
-      AppMethodBeat.o(79094);
-      return 0;
+        public final void run()
+        {
+          AppMethodBeat.i(151473);
+          f.a locala = new f.a();
+          long l2 = -1L;
+          k.bHT();
+          long l1 = l2;
+          if (k.bHV() != null)
+          {
+            l1 = l2;
+            if (a.this != null)
+            {
+              k.bHT();
+              k.bHV().a(a.this, this.wOq, this.wOr);
+              l1 = locala.aPY();
+            }
+          }
+          Log.d("MicroMsg.PinCdnTransport", "dkrsa setautoauthtick [%d %d]", new Object[] { Long.valueOf(locala.aPY()), Long.valueOf(l1) });
+          AppMethodBeat.o(151473);
+        }
+      });
     }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(79094);
-    }
-    return 0;
+    AppMethodBeat.o(151475);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a
  * JD-Core Version:    0.7.0.1
  */

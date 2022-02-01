@@ -11,11 +11,11 @@ public final class s_outshare
   extends JceStruct
 {
   static Map<Integer, s_picurl> cache_photourl = new HashMap();
-  public int album_right;
+  public int album_right = 0;
   public String md5 = "";
-  public Map<Integer, s_picurl> photourl;
+  public Map<Integer, s_picurl> photourl = null;
   public String qq_url = "";
-  public int space_right;
+  public int space_right = 0;
   public String summary = "";
   public String title = "";
   public String weixin_url = "";
@@ -60,37 +60,45 @@ public final class s_outshare
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.weixin_url != null) {
-      paramJceOutputStream.write(this.weixin_url, 0);
+    Object localObject = this.weixin_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.qq_url != null) {
-      paramJceOutputStream.write(this.qq_url, 1);
+    localObject = this.qq_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 2);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 3);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.photourl != null) {
-      paramJceOutputStream.write(this.photourl, 4);
+    localObject = this.photourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
     paramJceOutputStream.write(this.space_right, 5);
     paramJceOutputStream.write(this.album_right, 6);
-    if (this.xcx_share_path != null) {
-      paramJceOutputStream.write(this.xcx_share_path, 7);
+    localObject = this.xcx_share_path;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.xcx_name != null) {
-      paramJceOutputStream.write(this.xcx_name, 8);
+    localObject = this.xcx_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 9);
+    localObject = this.md5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.s_outshare
  * JD-Core Version:    0.7.0.1
  */

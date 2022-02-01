@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/le9" android:background="@color/awr" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout android:id="@id/ifh" android:layout_width="296.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/qrq" android:layout_width="fill_parent" android:layout_height="204.0dip" android:scaleType="fitXY" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/qcircle_skin_color_bg_default" android:padding="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/qrq" android:layout_centerHorizontal="true">
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/qk8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+            <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/ai5" android:background="@drawable/qcircle_skin_btn_small_primary_normal" android:layout_width="248.0dip" android:layout_height="48.0dip" android:layout_marginTop="12.0dip" android:text="@string/xw1" />
+        </LinearLayout>
+    </com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout>
+    <ImageView android:id="@id/dum" android:background="@drawable/f89" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="24.0dip" android:src="@drawable/qcircle_skin_icon_general_close_ghost" android:scaleType="fitXY" android:layout_below="@id/ifh" android:layout_centerHorizontal="true" />
+</RelativeLayout>

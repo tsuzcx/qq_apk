@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/by5" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" style="@style/mn" />
-    <include android:id="@id/by6" android:visibility="gone" layout="@layout/a18" />
-    <include android:id="@id/by7" android:visibility="gone" layout="@layout/a19" />
-</FrameLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/ced" android:visibility="invisible" android:layout_width="@dimen/a42" android:layout_height="@dimen/a42" android:layout_marginTop="@dimen/an7" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer android:id="@id/ce9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:gravity="center" android:orientation="vertical" android:id="@id/cem" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/ced" app:layout_constraintEnd_toEndOf="@id/ced" app:layout_constraintStart_toStartOf="@id/ced" app:layout_constraintTop_toTopOf="@id/ced" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView android:id="@id/cev" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_marginStart="@dimen/a3o" android:layout_marginEnd="@dimen/a3o" app:layout_constraintBottom_toBottomOf="@id/ced" app:layout_constraintEnd_toEndOf="@id/ced" app:layout_constraintStart_toStartOf="@id/ced" />
+</merge>

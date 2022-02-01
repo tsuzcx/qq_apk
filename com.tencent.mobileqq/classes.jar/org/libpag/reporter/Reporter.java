@@ -11,11 +11,20 @@ import java.net.URL;
 
 public class Reporter
 {
-  private static final String TAG = Reporter.class.getSimpleName() + "-" + Integer.toHexString(Reporter.class.hashCode());
+  private static final String TAG;
   private Boolean auto;
   private File dir;
   private Handler ioHandler;
   private Runnable uploadRunnable = new Reporter.1(this);
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Reporter.class.getSimpleName());
+    localStringBuilder.append("-");
+    localStringBuilder.append(Integer.toHexString(Reporter.class.hashCode()));
+    TAG = localStringBuilder.toString();
+  }
   
   public Reporter(File paramFile, Boolean paramBoolean, Looper paramLooper)
   {
@@ -50,31 +59,33 @@ public class Reporter
       localHttpURLConnection.disconnect();
       return;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    catch (Exception paramString) {}
   }
   
   private void schedule()
   {
-    if ((this.auto.booleanValue()) && (this.ioHandler != null)) {
-      this.ioHandler.postDelayed(this.uploadRunnable, 30000L);
+    if (this.auto.booleanValue())
+    {
+      Handler localHandler = this.ioHandler;
+      if (localHandler != null) {
+        localHandler.postDelayed(this.uploadRunnable, 30000L);
+      }
     }
   }
   
   public void flush()
   {
-    if (this.ioHandler != null)
+    Handler localHandler = this.ioHandler;
+    if (localHandler != null)
     {
-      this.ioHandler.removeCallbacks(this.uploadRunnable);
+      localHandler.removeCallbacks(this.uploadRunnable);
       this.ioHandler.post(this.uploadRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.reporter.Reporter
  * JD-Core Version:    0.7.0.1
  */

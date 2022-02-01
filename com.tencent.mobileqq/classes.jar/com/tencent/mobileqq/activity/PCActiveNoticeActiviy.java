@@ -1,61 +1,84 @@
 package com.tencent.mobileqq.activity;
 
-import admg;
-import admh;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azqs;
-import bdgm;
-import bdjz;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PCActiveNoticeActiviy
   extends BaseActivity
 {
-  private bdjz jdField_a_of_type_Bdjz;
-  private String jdField_a_of_type_JavaLangString;
+  private QQCustomDialog a = null;
+  private String b;
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559398);
-    if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
-    for (this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin"); TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_JavaLangString = null)
+    super.setContentView(2131625527);
+    if ((getIntent() != null) && (getIntent().getExtras() != null)) {
+      this.b = getIntent().getExtras().getString("uin");
+    } else {
+      this.b = null;
+    }
+    if (TextUtils.isEmpty(this.b))
     {
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      this.jdField_a_of_type_Bdjz.dismiss();
+    paramBundle = this.a;
+    if ((paramBundle != null) && (paramBundle.isShowing())) {
+      this.a.dismiss();
     }
-    paramBundle = alud.a(2131708303);
-    this.jdField_a_of_type_Bdjz = null;
-    this.jdField_a_of_type_Bdjz = bdgm.a(this, 230);
-    this.jdField_a_of_type_Bdjz.setContentView(2131558919);
-    this.jdField_a_of_type_Bdjz.setTitle(null).setMessage(getString(2131695133)).setPositiveButton(2131695132, new admg(this));
-    this.jdField_a_of_type_Bdjz.setTextContentDescription(paramBundle);
-    this.jdField_a_of_type_Bdjz.setOnKeyListener(new admh(this));
-    this.jdField_a_of_type_Bdjz.show();
-    azqs.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
+    paramBundle = HardCodeUtil.a(2131905732);
+    this.a = null;
+    this.a = DialogUtil.a(this, 230);
+    this.a.setContentView(2131624587);
+    this.a.setTitle(null).setMessage(getString(2131892408)).setPositiveButton(2131892407, new PCActiveNoticeActiviy.1(this));
+    this.a.setTextContentDescription(paramBundle);
+    this.a.setOnKeyListener(new PCActiveNoticeActiviy.2(this));
+    this.a.show();
+    ReportController.b(null, "CliOper", "", "", "0X8004973", "0X8004973", 0, 0, "", "", "", "");
     return false;
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bdjz != null) && (this.jdField_a_of_type_Bdjz.isShowing())) {
-      this.jdField_a_of_type_Bdjz.dismiss();
+    QQCustomDialog localQQCustomDialog = this.a;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_Bdjz = null;
+    this.a = null;
     super.finish();
   }
   
   public void onBackPressed() {}
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PCActiveNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

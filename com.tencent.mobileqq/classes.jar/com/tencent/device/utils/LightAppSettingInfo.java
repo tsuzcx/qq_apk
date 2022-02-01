@@ -1,6 +1,5 @@
 package com.tencent.device.utils;
 
-import aafp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,23 +9,23 @@ import java.util.HashMap;
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new aafp();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new LightAppSettingInfo.1();
   public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public HashMap<Integer, String> a;
   public int b;
-  public String b;
   public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
+  public long d;
+  public ArrayList<Integer> e;
   public String f;
   public String g;
-  public String h;
+  public int h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public int n;
+  public HashMap<Integer, String> o;
+  public String p;
   
   public Object clone()
   {
@@ -40,35 +39,36 @@ public class LightAppSettingInfo
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
+    long l1 = this.d;
+    if (l1 != 0L) {
+      return Long.valueOf(l1).hashCode();
     }
     return 0;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeList(this.e);
     paramParcel.writeString(this.f);
     paramParcel.writeString(this.g);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilHashMap);
-    paramParcel.writeString(this.h);
+    paramParcel.writeInt(this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeString(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeMap(this.o);
+    paramParcel.writeString(this.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.LightAppSettingInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,27 +14,25 @@ class eo$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    eo.c localc;
-    do
-    {
+    if (paramMessage.what != 11) {
       return;
-      paramMessage = (Object[])paramMessage.obj;
-      localc = (eo.c)paramMessage[0];
-      if (localc.ob <= 0) {
-        break;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    eo.c localc = (eo.c)paramMessage[0];
+    if (localc.ob > 0)
+    {
+      if (localc.oO != null) {
+        localc.oO.a(localc.nL, localc.ob, localc.oP, ((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[2]).intValue(), ((Integer)paramMessage[3]).intValue(), localc.oN);
       }
-    } while (localc.oO == null);
-    localc.oO.a(localc.nL, localc.ob, localc.oP, ((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[2]).intValue(), ((Integer)paramMessage[3]).intValue(), localc.oN);
-    return;
-    localc.oi.a(localc.oP, ((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[2]).intValue(), ((Integer)paramMessage[3]).intValue(), localc.og);
+    }
+    else {
+      localc.oi.a(localc.oP, ((Integer)paramMessage[1]).intValue(), ((Integer)paramMessage[2]).intValue(), ((Integer)paramMessage[3]).intValue(), localc.og);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.eo.1
  * JD-Core Version:    0.7.0.1
  */

@@ -42,37 +42,40 @@ public final class Script$LaunchOptions
   
   public LaunchOptions setX(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt2 <= paramInt1)) {
-      throw new RSIllegalArgumentException("Invalid dimensions");
+    if ((paramInt1 >= 0) && (paramInt2 > paramInt1))
+    {
+      this.xstart = paramInt1;
+      this.xend = paramInt2;
+      return this;
     }
-    this.xstart = paramInt1;
-    this.xend = paramInt2;
-    return this;
+    throw new RSIllegalArgumentException("Invalid dimensions");
   }
   
   public LaunchOptions setY(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt2 <= paramInt1)) {
-      throw new RSIllegalArgumentException("Invalid dimensions");
+    if ((paramInt1 >= 0) && (paramInt2 > paramInt1))
+    {
+      this.ystart = paramInt1;
+      this.yend = paramInt2;
+      return this;
     }
-    this.ystart = paramInt1;
-    this.yend = paramInt2;
-    return this;
+    throw new RSIllegalArgumentException("Invalid dimensions");
   }
   
   public LaunchOptions setZ(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt2 <= paramInt1)) {
-      throw new RSIllegalArgumentException("Invalid dimensions");
+    if ((paramInt1 >= 0) && (paramInt2 > paramInt1))
+    {
+      this.zstart = paramInt1;
+      this.zend = paramInt2;
+      return this;
     }
-    this.zstart = paramInt1;
-    this.zend = paramInt2;
-    return this;
+    throw new RSIllegalArgumentException("Invalid dimensions");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Script.LaunchOptions
  * JD-Core Version:    0.7.0.1
  */

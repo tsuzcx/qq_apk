@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agti;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class PublicAccountChatPie$32
-  implements Runnable
+class PublicAccountChatPie$32
+  implements View.OnClickListener
 {
-  public PublicAccountChatPie$32(agti paramagti) {}
+  PublicAccountChatPie$32(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    agti.b(this.this$0);
+    paramView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

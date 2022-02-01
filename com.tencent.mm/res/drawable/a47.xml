@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="12.0dip" />
-            <solid android:color="@color/ab" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="12.0dip" />
-            <solid android:color="@color/ac" />
-        </shape>
-    </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="12.0dip" />
-            <solid android:color="@color/ad" />
+            <corners android:bottomLeftRadius="@dimen/bv" android:bottomRightRadius="@dimen/bv" />
+            <gradient android:startColor="@color/UN_BW_0_Alpha_0_2" android:endColor="#00000000" android:angle="90.0" />
         </shape>
     </item>
 </selector>

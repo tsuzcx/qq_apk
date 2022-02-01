@@ -6,126 +6,116 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.provider.Settings.Global;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
-import com.tencent.token.io;
+import com.tencent.token.avq;
+import com.tencent.token.avr;
+import com.tencent.token.avs;
+import com.tencent.token.avt;
+import com.tencent.token.avt.3;
+import com.tencent.token.avt.4;
+import com.tencent.token.avu;
+import com.tencent.token.avw;
+import com.tencent.token.avx;
+import com.tencent.token.avy;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DoraemonAnimationView
   extends ImageView
 {
-  private static final String a = DoraemonAnimationView.class.getSimpleName();
-  private static final Map b = new HashMap();
-  private static final Map c = new HashMap();
-  private final e d = new e(this);
-  private DoraemonAnimationView.b e;
+  private static final String a = "DoraemonAnimationView";
+  private static final Map<String, avq> b = new HashMap();
+  private static final Map<String, WeakReference<avq>> c = new HashMap();
+  private final avt d = new avt(this);
+  private int e;
   private boolean f = false;
   private boolean g = false;
   private boolean h = false;
-  private a i;
+  private avq i;
   
   public DoraemonAnimationView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramAttributeSet);
+    a();
   }
   
   public DoraemonAnimationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramAttributeSet);
+    a();
   }
   
-  private void a(AttributeSet paramAttributeSet)
+  private void a()
   {
-    this.e = DoraemonAnimationView.b.b;
-    this.d.c(false);
+    this.e = b.b;
+    this.d.b();
     setProgress(0.0F);
-    a(false);
+    this.d.a();
     if ((Build.VERSION.SDK_INT >= 17) && (Settings.Global.getFloat(getContext().getContentResolver(), "animator_duration_scale", 1.0F) == 0.0F)) {
-      this.d.e();
+      this.d.m = true;
     }
-    e();
+    b();
   }
   
   @TargetApi(11)
-  private void e()
+  private void b()
   {
+    boolean bool = this.h;
     int k = 1;
-    if ((this.h) && (this.d.f())) {}
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0) {
-        k = 2;
-      }
-      setLayerType(k, null);
-      return;
+    int j;
+    if ((bool) && (this.d.b.isRunning())) {
+      j = 1;
+    } else {
+      j = 0;
     }
-  }
-  
-  void a()
-  {
-    if (this.d != null) {
-      this.d.c();
+    if (j != 0) {
+      k = 2;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.d.a(paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    return this.d.f();
-  }
-  
-  public void c()
-  {
-    this.d.g();
-    e();
-  }
-  
-  public void d()
-  {
-    this.d.n();
-    e();
+    setLayerType(k, null);
   }
   
   public long getDuration()
   {
-    if (this.i != null) {
-      return this.i.c();
+    avq localavq = this.i;
+    if (localavq != null) {
+      return localavq.a();
     }
     return 0L;
   }
   
   public String getImageAssetsFolder()
   {
-    return this.d.b();
+    return this.d.g;
   }
   
-  public n getPerformanceTracker()
+  public avw getPerformanceTracker()
   {
-    return this.d.d();
+    avt localavt = this.d;
+    if (localavt.a != null) {
+      return localavt.a.f;
+    }
+    return null;
   }
   
   public float getProgress()
   {
-    return this.d.h();
+    return this.d.c;
   }
   
   public float getScale()
   {
-    return this.d.l();
+    return this.d.d;
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
   {
-    if (getDrawable() == this.d)
+    Drawable localDrawable = getDrawable();
+    avt localavt = this.d;
+    if (localDrawable == localavt)
     {
-      super.invalidateDrawable(this.d);
+      super.invalidateDrawable(localavt);
       return;
     }
     super.invalidateDrawable(paramDrawable);
@@ -134,60 +124,78 @@ public class DoraemonAnimationView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.g) && (this.f)) {
-      c();
+    if ((this.g) && (this.f))
+    {
+      this.d.c();
+      b();
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    if (b())
+    if (this.d.b.isRunning())
     {
-      d();
+      avt localavt = this.d;
+      localavt.e.clear();
+      localavt.b.cancel();
+      b();
       this.f = true;
     }
-    a();
     super.onDetachedFromWindow();
   }
   
-  public void setAlign(DoraemonAnimationView.a parama)
+  public void setAlign(a parama)
   {
-    this.d.a(parama);
+    this.d.o = parama;
   }
   
-  public void setComposition(a parama)
+  public void setComposition(avq paramavq)
   {
-    Log.v(a, "Set Composition \n" + parama);
+    new StringBuilder("Set Composition \n").append(paramavq);
     this.d.setCallback(this);
-    boolean bool = this.d.a(parama);
-    e();
+    boolean bool = this.d.a(paramavq);
+    b();
     if (!bool) {
       return;
     }
     setImageDrawable(null);
     setImageDrawable(this.d);
-    this.i = parama;
+    this.i = paramavq;
     requestLayout();
   }
   
-  public void setFontAssetDelegate(l paraml)
+  public void setFontAssetDelegate(avu paramavu)
   {
-    this.d.a(paraml);
+    avt localavt = this.d;
+    localavt.j = paramavu;
+    if (localavt.i != null) {
+      localavt.i.a = paramavu;
+    }
   }
   
-  public void setImageAssetDelegate(c paramc)
+  public void setImageAssetDelegate(avr paramavr)
   {
-    this.d.a(paramc);
+    avt localavt = this.d;
+    localavt.h = paramavr;
+    if (localavt.f != null) {
+      localavt.f.a = paramavr;
+    }
   }
   
   public void setImageAssetsFolder(String paramString)
   {
-    this.d.a(paramString);
+    this.d.g = paramString;
   }
   
   public void setMaxFrame(int paramInt)
   {
-    this.d.b(paramInt);
+    avt localavt = this.d;
+    if (localavt.a == null)
+    {
+      localavt.e.add(new avt.4(localavt, paramInt));
+      return;
+    }
+    localavt.b(paramInt / localavt.a.b());
   }
   
   public void setMaxProgress(float paramFloat)
@@ -197,7 +205,13 @@ public class DoraemonAnimationView
   
   public void setMinFrame(int paramInt)
   {
-    this.d.a(paramInt);
+    avt localavt = this.d;
+    if (localavt.a == null)
+    {
+      localavt.e.add(new avt.3(localavt, paramInt));
+      return;
+    }
+    localavt.a(paramInt / localavt.a.b());
   }
   
   public void setMinProgress(float paramFloat)
@@ -207,7 +221,11 @@ public class DoraemonAnimationView
   
   public void setPerformanceTrackingEnabled(boolean paramBoolean)
   {
-    this.d.b(paramBoolean);
+    avt localavt = this.d;
+    localavt.n = paramBoolean;
+    if (localavt.a != null) {
+      localavt.a.a(paramBoolean);
+    }
   }
   
   public void setProgress(float paramFloat)
@@ -217,7 +235,9 @@ public class DoraemonAnimationView
   
   public void setScale(float paramFloat)
   {
-    this.d.e(paramFloat);
+    avt localavt = this.d;
+    localavt.d = paramFloat;
+    localavt.e();
     if (getDrawable() == this.d)
     {
       setImageDrawable(null);
@@ -225,9 +245,9 @@ public class DoraemonAnimationView
     }
   }
   
-  public void setShapeStrokeDelegate(io paramio)
+  public void setShapeStrokeDelegate(avx paramavx)
   {
-    this.d.a(paramio);
+    this.d.l = paramavx;
   }
   
   public void setSpeed(float paramFloat)
@@ -235,9 +255,21 @@ public class DoraemonAnimationView
     this.d.c(paramFloat);
   }
   
-  public void setTextDelegate(d paramd)
+  public void setTextDelegate(avs paramavs)
   {
-    this.d.a(paramd);
+    this.d.k = paramavs;
+  }
+  
+  public static enum a
+  {
+    private a() {}
+  }
+  
+  public static enum b
+  {
+    public static final int a = 1;
+    public static final int b = 2;
+    public static final int c = 3;
   }
 }
 

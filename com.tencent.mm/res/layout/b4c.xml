@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_height="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/fa1" android:background="@color/a6q" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/nn" android:background="@color/a6q" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/e8" />
-</FrameLayout>
+<RelativeLayout android:orientation="vertical" android:background="@color/b0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ListView android:orientation="vertical" android:id="@id/pa" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <RelativeLayout android:id="@id/kaf" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="54.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/mx" android:textColor="@color/b3" android:id="@id/bdd" android:background="@drawable/l" android:padding="12.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:text="@string/g3j" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/mx" android:textColor="@color/a7b" android:gravity="right" android:id="@id/pb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/g3l" android:layout_toRightOf="@id/bdd" android:layout_alignParentRight="true" android:layout_centerVertical="true" wallet:walletTypeFace="k0_" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/az" android:gravity="center" android:id="@id/of" android:background="@drawable/q" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:text="" android:layout_alignParentTop="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c9a" />
+</RelativeLayout>

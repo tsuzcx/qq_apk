@@ -1,32 +1,39 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import android.graphics.Bitmap;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.c.i;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "entrance", "", "(Z)V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;)V", "getEntrance", "()Z", "setEntrance", "createData", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  implements i
+  extends a<h>
 {
-  public i lhu;
+  private boolean xMm;
+  private h xMy;
   
-  public g(i parami)
+  public g()
   {
-    this.lhu = parami;
+    AppMethodBeat.i(269856);
+    this.xMm = true;
+    this.xMy = dzL();
+    AppMethodBeat.o(269856);
   }
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  private h dzL()
   {
-    AppMethodBeat.i(53053);
-    if (this.lhu != null) {
-      this.lhu.a(paramString, paramView, paramBitmap, paramVarArgs);
-    }
-    AppMethodBeat.o(53053);
+    AppMethodBeat.i(269860);
+    h localh = new h(this.xMm);
+    AppMethodBeat.o(269860);
+    return localh;
+  }
+  
+  public final void dzJ()
+  {
+    this.xMm = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.g
  * JD-Core Version:    0.7.0.1
  */

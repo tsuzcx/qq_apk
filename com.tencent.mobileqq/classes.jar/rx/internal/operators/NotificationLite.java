@@ -85,16 +85,17 @@ public final class NotificationLite<T>
   
   public Notification.Kind kind(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new IllegalArgumentException("The lite notification can not be null");
+    if (paramObject != null)
+    {
+      if (paramObject == ON_COMPLETED_SENTINEL) {
+        return Notification.Kind.OnCompleted;
+      }
+      if ((paramObject instanceof NotificationLite.OnErrorSentinel)) {
+        return Notification.Kind.OnError;
+      }
+      return Notification.Kind.OnNext;
     }
-    if (paramObject == ON_COMPLETED_SENTINEL) {
-      return Notification.Kind.OnCompleted;
-    }
-    if ((paramObject instanceof NotificationLite.OnErrorSentinel)) {
-      return Notification.Kind.OnError;
-    }
-    return Notification.Kind.OnNext;
+    throw new IllegalArgumentException("The lite notification can not be null");
   }
   
   public Object next(T paramT)
@@ -108,7 +109,7 @@ public final class NotificationLite<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.NotificationLite
  * JD-Core Version:    0.7.0.1
  */

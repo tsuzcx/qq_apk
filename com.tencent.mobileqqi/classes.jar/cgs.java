@@ -1,17 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class cgs
+public class cgs
   implements DialogInterface.OnClickListener
 {
-  cgs(cgq paramcgq) {}
+  public cgs(DialogActivity paramDialogActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.d(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130968599);
+    paramDialogInterface.cancel();
   }
 }
 

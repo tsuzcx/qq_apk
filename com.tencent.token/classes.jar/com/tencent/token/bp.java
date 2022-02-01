@@ -1,113 +1,192 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.halley.common.h;
-import com.tencent.halley.scheduler.c.c;
-import com.tencent.halley.scheduler.c.i;
+import android.arch.lifecycle.CompositeGeneratedAdaptersObserver;
+import android.arch.lifecycle.FullLifecycleObserver;
+import android.arch.lifecycle.FullLifecycleObserverAdapter;
+import android.arch.lifecycle.GenericLifecycleObserver;
+import android.arch.lifecycle.ReflectiveGenericLifecycleObserver;
+import android.arch.lifecycle.SingleGeneratedAdapterObserver;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public final class bp
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public i f;
+  private static Map<Class, Integer> a = new HashMap();
+  private static Map<Class, List<Constructor<? extends bi>>> b = new HashMap();
   
-  public bp() {}
-  
-  public bp(c paramc)
+  static GenericLifecycleObserver a(Object paramObject)
   {
-    this.a = paramc.a;
-    this.b = paramc.b;
-    this.c = paramc.c;
-    this.d = paramc.d;
-    this.e = paramc.e;
-    this.f = paramc.f;
-  }
-  
-  private void c()
-  {
-    if ((this.a < 10000) || (this.a > 60000)) {
-      this.a = 20000;
+    if ((paramObject instanceof FullLifecycleObserver)) {
+      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject);
     }
-    if ((this.b < 10000) || (this.b > 60000)) {
-      this.b = 20000;
+    if ((paramObject instanceof GenericLifecycleObserver)) {
+      return (GenericLifecycleObserver)paramObject;
     }
-    if ((this.c < 3) || (this.c > 15)) {
-      this.c = 8;
-    }
-    if ((this.d <= 0) || (this.d > 5)) {
-      this.d = 2;
-    }
-    if ((this.e < 5) || (this.e > 2160)) {
-      this.e = 120;
-    }
-  }
-  
-  public final void a()
-  {
-    i locali = null;
-    Object localObject = h.a().getSharedPreferences("Access_Preferences", 0);
-    this.a = ((SharedPreferences)localObject).getInt("connectTimeout", 15000);
-    this.b = ((SharedPreferences)localObject).getInt("readTimeout", 15000);
-    this.c = ((SharedPreferences)localObject).getInt("apnCachedNum", 8);
-    this.d = ((SharedPreferences)localObject).getInt("parallelNum", 2);
-    this.e = ((SharedPreferences)localObject).getInt("expireTime", 120);
-    localObject = ((SharedPreferences)localObject).getString("samplingInfo", null);
-    if (localObject != null)
+    Object localObject = paramObject.getClass();
+    if (b((Class)localObject) == 2)
     {
-      localObject = ((String)localObject).split(";");
-      locali = new i();
-      HashMap localHashMap = new HashMap();
+      localObject = (List)b.get(localObject);
+      int j = ((List)localObject).size();
       int i = 0;
-      while (i < localObject.length - 1)
+      if (j == 1) {
+        return new SingleGeneratedAdapterObserver(a((Constructor)((List)localObject).get(0), paramObject));
+      }
+      bi[] arrayOfbi = new bi[((List)localObject).size()];
+      while (i < ((List)localObject).size())
       {
-        String[] arrayOfString = localObject[i].split(",");
-        localHashMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), Byte.valueOf(Byte.parseByte(arrayOfString[1])));
+        arrayOfbi[i] = a((Constructor)((List)localObject).get(i), paramObject);
         i += 1;
       }
-      locali.a = localHashMap;
-      locali.b = Byte.parseByte(localObject[(localObject.length - 1)]);
+      return new CompositeGeneratedAdaptersObserver(arrayOfbi);
     }
-    this.f = locali;
-    c();
+    return new ReflectiveGenericLifecycleObserver(paramObject);
   }
   
-  public final void b()
+  private static bi a(Constructor<? extends bi> paramConstructor, Object paramObject)
   {
-    Object localObject = h.a().getSharedPreferences("Access_Preferences", 0);
-    c();
-    ((SharedPreferences)localObject).edit().putInt("connectTimeout", this.a).commit();
-    ((SharedPreferences)localObject).edit().putInt("readTimeout", this.b).commit();
-    ((SharedPreferences)localObject).edit().putInt("apnCachedNum", this.c).commit();
-    ((SharedPreferences)localObject).edit().putInt("parallelNum", this.d).commit();
-    ((SharedPreferences)localObject).edit().putInt("expireTime", this.e).commit();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-    localObject = this.f;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (((i)localObject).a != null)
+    try
     {
-      Iterator localIterator = ((i)localObject).a.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localStringBuilder.append(localEntry.getKey() + "," + localEntry.getValue() + ";");
+      paramConstructor = (bi)paramConstructor.newInstance(new Object[] { paramObject });
+      return paramConstructor;
+    }
+    catch (InvocationTargetException paramConstructor)
+    {
+      throw new RuntimeException(paramConstructor);
+    }
+    catch (InstantiationException paramConstructor)
+    {
+      throw new RuntimeException(paramConstructor);
+    }
+    catch (IllegalAccessException paramConstructor)
+    {
+      throw new RuntimeException(paramConstructor);
+    }
+  }
+  
+  private static Constructor<? extends bi> a(Class<?> paramClass)
+  {
+    try
+    {
+      localObject = paramClass.getPackage();
+      str = paramClass.getCanonicalName();
+      if (localObject == null) {
+        break label166;
       }
-      localStringBuilder.append(((i)localObject).b);
+      localObject = ((Package)localObject).getName();
     }
-    for (localObject = localStringBuilder.toString();; localObject = null)
+    catch (NoSuchMethodException paramClass)
     {
-      localEditor.putString("samplingInfo", (String)localObject).commit();
-      return;
+      String str;
+      StringBuilder localStringBuilder;
+      throw new RuntimeException(paramClass);
+      return null;
     }
+    catch (ClassNotFoundException paramClass)
+    {
+      for (;;)
+      {
+        continue;
+        label166:
+        Object localObject = "";
+      }
+    }
+    if (!((String)localObject).isEmpty()) {
+      str = str.substring(((String)localObject).length() + 1);
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str.replace(".", "_"));
+    localStringBuilder.append("_LifecycleAdapter");
+    str = localStringBuilder.toString();
+    if (((String)localObject).isEmpty())
+    {
+      localObject = str;
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(".");
+      localStringBuilder.append(str);
+      localObject = localStringBuilder.toString();
+    }
+    paramClass = Class.forName((String)localObject).getDeclaredConstructor(new Class[] { paramClass });
+    if (!paramClass.isAccessible()) {
+      paramClass.setAccessible(true);
+    }
+    return paramClass;
+  }
+  
+  private static int b(Class<?> paramClass)
+  {
+    if (a.containsKey(paramClass)) {
+      return ((Integer)a.get(paramClass)).intValue();
+    }
+    int i = c(paramClass);
+    a.put(paramClass, Integer.valueOf(i));
+    return i;
+  }
+  
+  private static int c(Class<?> paramClass)
+  {
+    if (paramClass.getCanonicalName() == null) {
+      return 1;
+    }
+    Object localObject1 = a(paramClass);
+    if (localObject1 != null)
+    {
+      b.put(paramClass, Collections.singletonList(localObject1));
+      return 2;
+    }
+    if (bg.a.a(paramClass)) {
+      return 1;
+    }
+    Object localObject2 = paramClass.getSuperclass();
+    localObject1 = null;
+    if (d((Class)localObject2))
+    {
+      if (b((Class)localObject2) == 1) {
+        return 1;
+      }
+      localObject1 = new ArrayList((Collection)b.get(localObject2));
+    }
+    Class[] arrayOfClass = paramClass.getInterfaces();
+    int j = arrayOfClass.length;
+    int i = 0;
+    while (i < j)
+    {
+      Class localClass = arrayOfClass[i];
+      localObject2 = localObject1;
+      if (d(localClass))
+      {
+        if (b(localClass) == 1) {
+          return 1;
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new ArrayList();
+        }
+        ((List)localObject2).addAll((Collection)b.get(localClass));
+      }
+      i += 1;
+      localObject1 = localObject2;
+    }
+    if (localObject1 != null)
+    {
+      b.put(paramClass, localObject1);
+      return 2;
+    }
+    return 1;
+  }
+  
+  private static boolean d(Class<?> paramClass)
+  {
+    return (paramClass != null) && (bl.class.isAssignableFrom(paramClass));
   }
 }
 

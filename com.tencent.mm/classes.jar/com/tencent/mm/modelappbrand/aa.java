@@ -1,14 +1,14 @@
 package com.tencent.mm.modelappbrand;
 
-public abstract class aa
-  implements m
+import java.util.List;
+
+public abstract interface aa
 {
-  public final String getName()
-  {
-    return "onWxaWidgetJsError";
-  }
+  public abstract <T> T KV(String paramString);
   
-  public abstract void qr(String paramString);
+  public abstract i bEU();
+  
+  public abstract List<o> bEV();
 }
 
 

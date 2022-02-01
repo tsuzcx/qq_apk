@@ -1,14 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.model.FriendManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-class eyp
-  implements DialogInterface.OnClickListener
+public class eyp
+  implements View.OnClickListener
 {
-  eyp(eyn parameyn) {}
+  public eyp(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    int i = 0;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.b();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).c();
+    }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof TroopInfo)) {
+      return;
+    }
+    localObject = (TroopInfo)paramView;
+    boolean bool = ((FriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(8)).h(((TroopInfo)localObject).troopuin);
+    if (bool) {}
+    for (paramView = "Clk_uncommgrp";; paramView = "Clk_setcommgrp")
+    {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_contactlist", paramView, 0, 0, ((TroopInfo)localObject).troopuin, "", "", "");
+      if ((NetworkUtil.a(this.a.jdField_a_of_type_AndroidContentContext) != 0) || (!(this.a.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))) {
+        break;
+      }
+      paramView = (BaseActivity)this.a.jdField_a_of_type_AndroidContentContext;
+      QQToast.a(paramView, 2131560394, 0).b(paramView.d());
+      return;
+    }
+    paramView = (BizTroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(21);
+    if (bool) {
+      i = 1;
+    }
+    paramView.a(((TroopInfo)localObject).troopcode, i);
   }
 }
 

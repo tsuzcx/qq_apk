@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvh;
-import angf;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
 
-public class UniformGLRenderManagerImpl$1
+class UniformGLRenderManagerImpl$1
   implements Runnable
 {
-  public UniformGLRenderManagerImpl$1(angf paramangf, amvh paramamvh) {}
+  UniformGLRenderManagerImpl$1(UniformGLRenderManagerImpl paramUniformGLRenderManagerImpl, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    if ((this.a != null) && (this.a != this.this$0.a)) {
-      this.a.f();
+    ARBaseRender localARBaseRender = this.a;
+    if ((localARBaseRender != null) && (localARBaseRender != this.this$0.e)) {
+      this.a.l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

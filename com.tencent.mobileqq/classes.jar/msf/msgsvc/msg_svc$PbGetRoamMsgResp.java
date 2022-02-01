@@ -25,13 +25,14 @@ public final class msg_svc$PbGetRoamMsgResp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58 }, new String[] { "result", "errmsg", "peer_uin", "last_msgtime", "random", "msg", "sig" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, localByteStringMicro }, PbGetRoamMsgResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58 }, new String[] { "result", "errmsg", "peer_uin", "last_msgtime", "random", "msg", "sig" }, new Object[] { Integer.valueOf(0), "", localLong, localLong, localLong, null, localByteStringMicro }, PbGetRoamMsgResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGetRoamMsgResp
  * JD-Core Version:    0.7.0.1
  */

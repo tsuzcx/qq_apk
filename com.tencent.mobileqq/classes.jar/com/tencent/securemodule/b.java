@@ -14,16 +14,6 @@ public final class b
   public String c = "";
   public String d = "";
   
-  static
-  {
-    if (!b.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      e = bool;
-      return;
-    }
-  }
-  
   public b()
   {
     a(this.a);
@@ -62,31 +52,48 @@ public final class b
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (e) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (e) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (b)paramObject;
-    } while ((!JceUtil.equals(this.a, paramObject.a)) || (!JceUtil.equals(this.b, paramObject.b)) || (!JceUtil.equals(this.c, paramObject.c)) || (!JceUtil.equals(this.d, paramObject.d)));
-    return true;
+    }
+    paramObject = (b)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.a, paramObject.a))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.b, paramObject.b))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.c, paramObject.c))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.d, paramObject.d)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -114,17 +121,19 @@ public final class b
   {
     paramJceOutputStream.write(this.a, 0);
     paramJceOutputStream.write(this.b, 1);
-    if (this.c != null) {
-      paramJceOutputStream.write(this.c, 2);
+    String str = this.c;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.d != null) {
-      paramJceOutputStream.write(this.d, 3);
+    str = this.d;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securemodule.b
  * JD-Core Version:    0.7.0.1
  */

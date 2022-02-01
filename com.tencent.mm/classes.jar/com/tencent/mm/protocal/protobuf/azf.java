@@ -1,74 +1,109 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class azf
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public String xoB;
-  public int xoC;
+  public FinderObject ZIo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28538);
+    AppMethodBeat.i(259087);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xoB != null) {
-        paramVarArgs.e(1, this.xoB);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.xoC);
-      AppMethodBeat.o(28538);
+      if (this.ZIo != null)
+      {
+        paramVarArgs.qD(2, this.ZIo.computeSize());
+        this.ZIo.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(259087);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xoB == null) {
-        break label266;
+      if (this.BaseResponse == null) {
+        break label418;
       }
     }
-    label266:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xoB) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.xoC);
-      AppMethodBeat.o(28538);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.ZIo != null) {
+        i = paramInt + i.a.a.a.qC(2, this.ZIo.computeSize());
+      }
+      AppMethodBeat.o(259087);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(28538);
+        AppMethodBeat.o(259087);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         azf localazf = (azf)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28538);
+          AppMethodBeat.o(259087);
           return -1;
         case 1: 
-          localazf.xoB = locala.CLY.readString();
-          AppMethodBeat.o(28538);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localazf.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259087);
           return 0;
         }
-        localazf.xoC = locala.CLY.sl();
-        AppMethodBeat.o(28538);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new FinderObject();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((FinderObject)localObject2).parseFrom((byte[])localObject1);
+          }
+          localazf.ZIo = ((FinderObject)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(259087);
         return 0;
       }
-      AppMethodBeat.o(28538);
+      AppMethodBeat.o(259087);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.azf
  * JD-Core Version:    0.7.0.1
  */

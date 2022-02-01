@@ -7,9 +7,7 @@ public class hwx
   
   public void run()
   {
-    TipsPopupWindow.a(this.a);
-    TipsPopupWindow.a(this.a, false);
-    TipsPopupWindow.b(this.a, false);
+    TipsPopupWindow.b(this.a);
   }
 }
 

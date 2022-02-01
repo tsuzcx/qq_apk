@@ -32,8 +32,12 @@ class AudioUtil$Complex
   public Complex cc(Complex paramComplex)
   {
     Complex localComplex = new Complex();
-    localComplex.real = (this.real * paramComplex.real - this.image * paramComplex.image);
-    localComplex.image = (this.real * paramComplex.image + this.image * paramComplex.real);
+    double d1 = this.real;
+    double d2 = paramComplex.real;
+    double d3 = this.image;
+    double d4 = paramComplex.image;
+    localComplex.real = (d1 * d2 - d3 * d4);
+    localComplex.image = (this.real * d4 + d3 * paramComplex.real);
     return localComplex;
   }
   
@@ -47,7 +51,9 @@ class AudioUtil$Complex
   
   public int getIntValue()
   {
-    return (int)Math.round(Math.sqrt(this.real * this.real - this.image * this.image));
+    double d1 = this.real;
+    double d2 = this.image;
+    return (int)Math.round(Math.sqrt(d1 * d1 - d2 * d2));
   }
   
   public Complex sum(Complex paramComplex)
@@ -60,7 +66,7 @@ class AudioUtil$Complex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.util.AudioUtil.Complex
  * JD-Core Version:    0.7.0.1
  */

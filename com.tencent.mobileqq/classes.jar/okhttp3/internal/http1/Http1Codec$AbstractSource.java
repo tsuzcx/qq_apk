@@ -19,23 +19,23 @@ abstract class Http1Codec$AbstractSource
   
   protected final void endOfInput(boolean paramBoolean, IOException paramIOException)
   {
-    if (this.this$0.state == 6) {}
-    do
-    {
-      return;
-      if (this.this$0.state != 5) {
-        throw new IllegalStateException("state: " + this.this$0.state);
-      }
-      this.this$0.detachTimeout(this.timeout);
-      this.this$0.state = 6;
-    } while (this.this$0.streamAllocation == null);
-    StreamAllocation localStreamAllocation = this.this$0.streamAllocation;
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localStreamAllocation.streamFinished(paramBoolean, this.this$0, this.bytesRead, paramIOException);
+    if (this.this$0.state == 6) {
       return;
     }
+    if (this.this$0.state == 5)
+    {
+      this.this$0.detachTimeout(this.timeout);
+      Http1Codec localHttp1Codec = this.this$0;
+      localHttp1Codec.state = 6;
+      if (localHttp1Codec.streamAllocation != null) {
+        this.this$0.streamAllocation.streamFinished(paramBoolean ^ true, this.this$0, this.bytesRead, paramIOException);
+      }
+      return;
+    }
+    paramIOException = new StringBuilder();
+    paramIOException.append("state: ");
+    paramIOException.append(this.this$0.state);
+    throw new IllegalStateException(paramIOException.toString());
   }
   
   public long read(Buffer paramBuffer, long paramLong)
@@ -62,7 +62,7 @@ abstract class Http1Codec$AbstractSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.http1.Http1Codec.AbstractSource
  * JD-Core Version:    0.7.0.1
  */

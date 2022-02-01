@@ -26,15 +26,16 @@ public final class qqstory_710_message$StoryGradeInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64, 72, 82, 88 }, new String[] { "grade_uid", "grade_time", "is_bigv", "union_id", "grade_type", "grade_question", "grade_option", "video_del", "is_my_grade", "nick_postfix", "at_video_ts" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, StoryGradeInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 64, 72, 82, 88 }, new String[] { "grade_uid", "grade_time", "is_bigv", "union_id", "grade_type", "grade_question", "grade_option", "video_del", "is_my_grade", "nick_postfix", "at_video_ts" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger, localByteStringMicro3, localInteger }, StoryGradeInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryGradeInfo
  * JD-Core Version:    0.7.0.1
  */

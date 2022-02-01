@@ -1,6 +1,7 @@
 package cooperation.vip.vipcomponent;
 
 import NS_COMM_VIP_GROWTH.IconInfo;
+import com.tencent.component.annotation.NeedParcel;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,8 +14,11 @@ import org.json.JSONObject;
 public class QQUnionIconInfo
   implements Serializable
 {
+  @NeedParcel
   public int mIconHeight;
+  @NeedParcel
   public String mIconUrl;
+  @NeedParcel
   public int mIconWidth;
   
   public static JSONObject convertToJson(QQUnionIconInfo paramQQUnionIconInfo)
@@ -88,7 +92,7 @@ public class QQUnionIconInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.vipcomponent.QQUnionIconInfo
  * JD-Core Version:    0.7.0.1
  */

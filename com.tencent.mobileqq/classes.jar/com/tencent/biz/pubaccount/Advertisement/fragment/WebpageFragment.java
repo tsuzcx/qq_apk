@@ -3,24 +3,19 @@ package com.tencent.biz.pubaccount.Advertisement.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import android.widget.FrameLayout;
-import azqs;
-import bejh;
-import bejk;
-import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import ndq;
-import nlo;
-import nlq;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private nlo a;
+  private AdvertisementItem a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,53 +26,36 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(nlo paramnlo)
+  public void a(AdvertisementItem paramAdvertisementItem)
   {
-    this.jdField_a_of_type_Nlo = paramnlo;
+    this.a = paramAdvertisementItem;
   }
   
-  public boolean a()
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    ndq.a("Web_qqbrowser_ShowPreview");
-    long l = System.nanoTime();
-    this.jdField_a_of_type_Bejh.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Bejk.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bejh.jdField_a_of_type_Bejk.D);
-    this.p = true;
-    this.q = false;
-    G();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    }
-    this.jdField_a_of_type_Bejh.c = true;
-    this.jdField_a_of_type_Bejh.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_Bejh.a(this.g);
-    this.jdField_a_of_type_Bejh.b = false;
-    ndq.b("Web_qqbrowser_ShowPreview");
-    return true;
+    return new WebpageFragment.1(this, this.webViewSurface);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    azqs.a(null, "dc00898", "", this.jdField_a_of_type_Nlo.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+    ReportController.a(null, "dc00898", "", this.a.g.a, "0X8008F6B", "0X8008F6B", 0, 0, this.a.g.c, "", "", this.a.g.b);
   }
   
   public void onResume()
   {
     super.onResume();
-    FragmentActivity localFragmentActivity = super.getActivity();
-    if (localFragmentActivity != null)
+    QBaseActivity localQBaseActivity = super.getQBaseActivity();
+    if (localQBaseActivity != null)
     {
-      int i = localFragmentActivity.getWindow().getDecorView().getSystemUiVisibility();
-      localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
+      int i = localQBaseActivity.getWindow().getDecorView().getSystemUiVisibility();
+      localQBaseActivity.getWindow().getDecorView().setSystemUiVisibility(i & 0xFFFFFFFD);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment
  * JD-Core Version:    0.7.0.1
  */

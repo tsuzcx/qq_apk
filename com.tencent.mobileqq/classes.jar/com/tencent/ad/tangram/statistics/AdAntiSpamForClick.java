@@ -1,18 +1,21 @@
 package com.tencent.ad.tangram.statistics;
 
+import android.graphics.Rect;
 import android.support.annotation.Keep;
 import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 @Keep
-public class AdAntiSpamForClick
+public final class AdAntiSpamForClick
 {
   private long actionDownTime = -2147483648L;
   private long actionUpTime = -2147483648L;
   private int downTouchX = 0;
   private int downTouchY = 0;
+  private boolean hasBeenPaused = false;
   private boolean hasShowCloseButton = false;
   private int upTouchX = 0;
   private int upTouchY = 0;
@@ -23,69 +26,87 @@ public class AdAntiSpamForClick
     if (paramView == null) {
       return null;
     }
-    long l = System.currentTimeMillis();
-    localJSONObject = new JSONObject();
+    Rect localRect = new Rect();
+    JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
       try
       {
-        if ((this.actionUpTime == -2147483648L) || (this.actionDownTime == -2147483648L) || (this.actionUpTime - this.actionDownTime < 0L)) {
-          continue;
+        if ((this.actionUpTime != -2147483648L) && (this.actionDownTime != -2147483648L) && (this.actionUpTime - this.actionDownTime >= 0L)) {
+          localJSONObject.put("g", String.valueOf((int)(this.actionUpTime - this.actionDownTime)));
         }
-        localJSONObject.put("g", String.valueOf((int)(this.actionUpTime - this.actionDownTime)));
-        if (this.actionUpTime == -2147483648L) {
-          continue;
+        int i = AdUIUtils.px2dp(paramView.getContext(), this.downTouchX);
+        if (i != -2147483648) {
+          localJSONObject.put("aa", String.valueOf(i));
         }
-        localJSONObject.put("sc", String.valueOf((int)(l - this.actionUpTime)));
+        i = AdUIUtils.px2dp(paramView.getContext(), this.downTouchY);
+        if (i != -2147483648) {
+          localJSONObject.put("ab", String.valueOf(i));
+        }
+        i = AdUIUtils.px2dp(paramView.getContext(), this.upTouchX);
+        if (i != -2147483648) {
+          localJSONObject.put("ba", String.valueOf(i));
+        }
+        i = AdUIUtils.px2dp(paramView.getContext(), this.upTouchY);
+        if (i != -2147483648) {
+          localJSONObject.put("bb", String.valueOf(i));
+        }
+        if (this.videoPlayedDuration != -2147483648L) {
+          localJSONObject.put("p", String.valueOf(this.videoPlayedDuration));
+        }
+        boolean bool = this.hasBeenPaused;
+        String str2 = "1";
+        if (bool) {
+          str1 = "1";
+        } else {
+          str1 = "0";
+        }
+        localJSONObject.put("f", str1);
+        if (!this.hasShowCloseButton) {
+          break label440;
+        }
+        str1 = str2;
+        localJSONObject.put("x", str1);
+        i = AdUIUtils.px2dp(paramView.getContext(), paramView.getWidth());
+        if (i != -2147483648) {
+          localJSONObject.put("da", String.valueOf(i));
+        }
+        i = AdUIUtils.px2dp(paramView.getContext(), paramView.getHeight());
+        if (i != -2147483648) {
+          localJSONObject.put("db", String.valueOf(i));
+        }
+        if (paramView.getGlobalVisibleRect(localRect))
+        {
+          i = AdUIUtils.px2dp(paramView.getContext(), localRect.left);
+          if (i != -2147483648) {
+            localJSONObject.put("px", String.valueOf(i));
+          }
+          i = AdUIUtils.px2dp(paramView.getContext(), localRect.top);
+          if (i != -2147483648) {
+            localJSONObject.put("py", String.valueOf(i));
+          }
+        }
       }
       catch (JSONException paramView)
       {
         paramView.printStackTrace();
-        continue;
-        localJSONObject.put("sc", "-999");
-        continue;
-        localJSONObject.put("ec", "-999");
-        continue;
-        localJSONObject.put("p", "-999");
-        continue;
-        localJSONObject.put("x", "0");
-        continue;
       }
-      if (this.actionDownTime == -2147483648L) {
-        continue;
-      }
-      localJSONObject.put("ec", String.valueOf((int)(l - this.actionDownTime)));
-      localJSONObject.put("aa", String.valueOf(this.downTouchX));
-      localJSONObject.put("ab", String.valueOf(this.downTouchY));
-      localJSONObject.put("ba", String.valueOf(this.upTouchX));
-      localJSONObject.put("bb", String.valueOf(this.upTouchY));
-      localJSONObject.put("d", "-999");
-      if (this.videoPlayedDuration == -2147483648L) {
-        continue;
-      }
-      localJSONObject.put("p", String.valueOf(this.videoPlayedDuration));
-      localJSONObject.put("f", "-999");
-      if (!this.hasShowCloseButton) {
-        continue;
-      }
-      localJSONObject.put("x", "1");
-      localJSONObject.put("sz", "-999");
-      localJSONObject.put("da", String.valueOf(paramView.getWidth()));
-      localJSONObject.put("db", String.valueOf(paramView.getHeight()));
       if (localJSONObject.length() == 0) {
-        break;
+        return null;
       }
       return localJSONObject.toString();
-      localJSONObject.put("g", "-999");
+      label440:
+      String str1 = "0";
     }
   }
   
   public void onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramView == null) || (paramMotionEvent == null)) {}
-    do
+    if (paramView != null)
     {
-      return;
+      if (paramMotionEvent == null) {
+        return;
+      }
       if (paramMotionEvent.getAction() == 0)
       {
         this.actionDownTime = System.currentTimeMillis();
@@ -93,10 +114,18 @@ public class AdAntiSpamForClick
         this.downTouchY = ((int)paramMotionEvent.getY());
         return;
       }
-    } while (paramMotionEvent.getAction() != 1);
-    this.actionUpTime = System.currentTimeMillis();
-    this.upTouchX = ((int)paramMotionEvent.getX());
-    this.upTouchY = ((int)paramMotionEvent.getY());
+      if (paramMotionEvent.getAction() == 1)
+      {
+        this.actionUpTime = System.currentTimeMillis();
+        this.upTouchX = ((int)paramMotionEvent.getX());
+        this.upTouchY = ((int)paramMotionEvent.getY());
+      }
+    }
+  }
+  
+  public void setHasBeenPaused()
+  {
+    this.hasBeenPaused = true;
   }
   
   public void setHasShowCloseButton(boolean paramBoolean)
@@ -111,7 +140,7 @@ public class AdAntiSpamForClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.AdAntiSpamForClick
  * JD-Core Version:    0.7.0.1
  */

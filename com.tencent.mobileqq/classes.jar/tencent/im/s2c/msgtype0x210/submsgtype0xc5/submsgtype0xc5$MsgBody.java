@@ -26,13 +26,15 @@ public final class submsgtype0xc5$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 82, 90 }, new String[] { "uint32_bid", "uint32_source", "operator_type", "uint64_article_id", "uint32_push_time", "uint64_seq", "str_msgid", "msg_notify_infos", "bytes_diandian_cookie" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), "", null, localByteStringMicro }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58, 82, 90 }, new String[] { "uint32_bid", "uint32_source", "operator_type", "uint64_article_id", "uint32_push_time", "uint64_seq", "str_msgid", "msg_notify_infos", "bytes_diandian_cookie" }, new Object[] { localInteger, localInteger, Integer.valueOf(1), localLong, localInteger, localLong, "", null, localByteStringMicro }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.MsgBody
  * JD-Core Version:    0.7.0.1
  */

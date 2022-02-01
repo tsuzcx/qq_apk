@@ -1,23 +1,20 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import sti;
-import suk;
-
-public class SubscriptFeedsActivity$14$4
+class SubscriptFeedsActivity$14$4
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$4(sti paramsti) {}
+  SubscriptFeedsActivity$14$4(SubscriptFeedsActivity.14 param14) {}
   
   public void run()
   {
     if (this.a.a.a != null) {
-      this.a.a.a.h();
+      this.a.a.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.4
  * JD-Core Version:    0.7.0.1
  */

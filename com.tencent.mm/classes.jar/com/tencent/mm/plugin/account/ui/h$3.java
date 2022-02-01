@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.ui.MMActivity;
 
 final class h$3
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  h$3(h paramh) {}
+  h$3(h paramh, MMActivity paramMMActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(125087);
-    paramDialogInterface = new StringBuilder();
-    g.RJ();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.QX()).append(",").append(getClass().getName()).append(",F200_200,");
-    g.RJ();
-    com.tencent.mm.plugin.b.a.g(true, com.tencent.mm.kernel.a.mx("F200_200") + ",2");
-    AppMethodBeat.o(125087);
+    AppMethodBeat.i(128261);
+    Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this.qck);
+    ((Intent)localObject).addFlags(67108864);
+    MMActivity localMMActivity = this.qck;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localMMActivity, "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.qck.finish();
+    AppMethodBeat.o(128261);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.h.3
  * JD-Core Version:    0.7.0.1
  */

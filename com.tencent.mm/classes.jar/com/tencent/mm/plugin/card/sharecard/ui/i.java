@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.card.b.e;
+import com.tencent.mm.plugin.card.mgr.d;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
@@ -12,63 +12,63 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class i
 {
-  private View iCk;
-  MMActivity jpX;
-  View krR;
-  TextView krS;
-  TextView krT;
-  private boolean krU = false;
+  private View plc;
+  MMActivity wry;
+  View wyn;
+  TextView wyo;
+  TextView wyp;
+  private boolean wyq = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
+    this.wry = paramMMActivity;
+    this.plc = paramView;
   }
   
-  public final void bJ()
+  public final void dlQ()
   {
-    AppMethodBeat.i(88206);
-    Integer localInteger = (Integer)am.bci().getValue("key_share_card_show_type");
+    AppMethodBeat.i(113139);
+    this.wyn.setVisibility(8);
+    AppMethodBeat.o(113139);
+  }
+  
+  public final void updateView()
+  {
+    AppMethodBeat.i(113140);
+    Integer localInteger = (Integer)am.dkO().getValue("key_share_card_show_type");
     Object localObject = localInteger;
     if (localInteger == null) {
       localObject = Integer.valueOf(0);
     }
-    if ((((Integer)localObject).intValue() != 0) && (!b.bcD()))
+    if ((((Integer)localObject).intValue() != 0) && (!b.dls()))
     {
-      this.krR.setVisibility(0);
-      this.krS.setVisibility(0);
+      this.wyn.setVisibility(0);
+      this.wyo.setVisibility(0);
       localObject = new ShareCardInfo();
-      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).sV(10)))
+      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).Ig(10)))
       {
-        this.krS.setVisibility(0);
-        this.krS.setText(((ShareCardInfo)localObject).sV(10));
+        this.wyo.setVisibility(0);
+        this.wyo.setText(((ShareCardInfo)localObject).Ig(10));
       }
       while (!TextUtils.isEmpty(""))
       {
-        this.krT.setVisibility(0);
-        this.krT.setText("");
-        AppMethodBeat.o(88206);
+        this.wyp.setVisibility(0);
+        this.wyp.setText("");
+        AppMethodBeat.o(113140);
         return;
-        this.krS.setVisibility(8);
+        this.wyo.setVisibility(8);
       }
-      this.krT.setVisibility(8);
-      AppMethodBeat.o(88206);
+      this.wyp.setVisibility(8);
+      AppMethodBeat.o(113140);
       return;
     }
-    this.krR.setVisibility(8);
-    AppMethodBeat.o(88206);
-  }
-  
-  public final void bdc()
-  {
-    AppMethodBeat.i(88205);
-    this.krR.setVisibility(8);
-    AppMethodBeat.o(88205);
+    this.wyn.setVisibility(8);
+    AppMethodBeat.o(113140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.i
  * JD-Core Version:    0.7.0.1
  */

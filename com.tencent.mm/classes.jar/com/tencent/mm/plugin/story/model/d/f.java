@@ -1,61 +1,50 @@
 package com.tencent.mm.plugin.story.model.d;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.story.model.b.a;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.story.api.p;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "", "()V", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "getCommentList", "()Ljava/util/LinkedList;", "commentType", "", "getCommentType", "()I", "setCommentType", "(I)V", "commentUser", "", "getCommentUser", "()Ljava/lang/String;", "setCommentUser", "(Ljava/lang/String;)V", "isUnread", "", "()Z", "setUnread", "(Z)V", "storyId", "", "getStoryId", "()J", "setStoryId", "(J)V", "storyOwner", "getStoryOwner", "setStoryOwner", "equals", "other", "toString", "plugin-story_release"})
+@Metadata(d1={""}, d2={"getGalleryFilterList", "", "", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "dataSeed", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "getGalleryType", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "getGalleryUserList", "", "plugin-story_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  public long cJA;
-  public final LinkedList<a> rPQ;
-  int rPd;
-  public String sxC;
-  public boolean sxy;
-  private String syq;
-  
-  public f()
+  public static final List<String> a(p paramp)
   {
-    AppMethodBeat.i(109311);
-    this.sxC = "";
-    this.rPQ = new LinkedList();
-    AppMethodBeat.o(109311);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(109310);
-    if (!(paramObject instanceof f))
+    AppMethodBeat.i(118915);
+    s.u(paramp, "dataSeed");
+    if ((paramp instanceof b))
     {
-      AppMethodBeat.o(109310);
-      return false;
+      AppMethodBeat.o(118915);
+      throw null;
     }
-    if ((f)this == paramObject)
+    if ((paramp instanceof a))
     {
-      AppMethodBeat.o(109310);
-      return true;
+      paramp = ((a)paramp).oxE;
+      AppMethodBeat.o(118915);
+      return paramp;
     }
-    if ((this.cJA == ((f)paramObject).cJA) && (this.rPQ.size() == ((f)paramObject).rPQ.size()))
+    if ((paramp instanceof c))
     {
-      AppMethodBeat.o(109310);
-      return true;
+      paramp = ((c)paramp).Sme;
+      AppMethodBeat.o(118915);
+      return paramp;
     }
-    AppMethodBeat.o(109310);
-    return false;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(109309);
-    String str = "StoryGalleryComment(fromUser='" + this.sxC + "', storyId=" + this.cJA + ", commentType=" + this.rPd + ", commentUser=" + this.syq + ", isUnread=" + this.sxy + ", commentList=" + this.rPQ + ')';
-    AppMethodBeat.o(109309);
-    return str;
+    if ((paramp instanceof d))
+    {
+      paramp = ((d)paramp).oxE;
+      AppMethodBeat.o(118915);
+      return paramp;
+    }
+    paramp = (List)new ArrayList();
+    AppMethodBeat.o(118915);
+    return paramp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.d.f
  * JD-Core Version:    0.7.0.1
  */

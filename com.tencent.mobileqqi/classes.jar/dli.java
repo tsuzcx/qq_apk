@@ -1,57 +1,44 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.subaccount.SubAccountAssistantManager;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.util.HashMap;
 import mqq.observer.SubAccountObserver;
 
-public class dli
-  implements View.OnClickListener
+class dli
+  extends SubAccountObserver
 {
-  public dli(SubAccountBindActivity paramSubAccountBindActivity) {}
+  dli(dlh paramdlh, SimpleAccount paramSimpleAccount, SubAccountAssistantManager paramSubAccountAssistantManager) {}
   
-  public void onClick(View paramView)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = paramView.findViewById(2131231002);
-    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
+    if (TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "SubBind");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Dlh.a.b.a(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack: key is empty? why? shit");
+      }
+      this.jdField_a_of_type_Dlh.a.runOnUiThread(new dlj(this));
+    }
     do
     {
       return;
-      if (SubAccountAssistantManager.a().a(this.a.b))
-      {
-        this.a.a(this.a.getString(2131563287));
-        return;
-      }
-      int i = ((Integer)paramView.getTag()).intValue();
-      paramView = (SimpleAccount)SubAccountBindActivity.a(this.a).get(i);
-      if (!paramView.isLogined())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onSelectAccountClick.onClick:add account");
-        }
-        localObject = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject).putExtra("subuin", paramView.getUin());
-        this.a.startActivity((Intent)localObject);
-        return;
-      }
-    } while (!this.a.f());
-    localObject = SubAccountAssistantManager.a();
-    String str = ((SubAccountAssistantManager)localObject).a();
-    this.a.d();
-    if (TextUtils.isEmpty(str))
-    {
-      localObject = new dlj(this, paramView, (SubAccountAssistantManager)localObject);
-      this.a.getAppRuntime().getSubAccountKey(this.a.b.getAccount(), paramView.getUin(), (SubAccountObserver)localObject);
-      return;
-    }
-    ((SubAccountAssistantManager)localObject).a(this.a.b, paramView.getUin(), str);
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "SubBind");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Dlh.a.b.a(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
+      this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountAssistantManager.a(this.jdField_a_of_type_Dlh.a.b, this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), paramString3);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack:getA2 subAccount = " + paramString2 + ".....subA2 = " + paramString3);
   }
 }
 

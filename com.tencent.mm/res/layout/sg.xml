@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/b9n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ik"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b9o" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="fitCenter" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/b9p">
-        <View android:id="@id/b9q" android:visibility="invisible" android:layout_width="312.0dip" android:layout_height="312.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b9r" android:background="@drawable/akb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_above="@id/b9p" />
-    <com.tencent.mm.ui.base.MMHorList android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/b9s" android:background="@drawable/adh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spacing="0.0dip" android:layout_above="@id/b9p" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/aw5" android:padding="@dimen/m2" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textColor="@color/a7b" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ko8" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="2" android:layout_weight="1.0" style="@style/ma" />
+    </LinearLayout>
+    <ImageView android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

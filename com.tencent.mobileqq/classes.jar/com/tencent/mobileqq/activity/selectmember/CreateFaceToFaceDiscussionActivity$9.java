@@ -1,16 +1,25 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import ajyw;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.os.Handler;
+import android.os.Message;
+import mqq.app.QQPermissionCallback;
 
-public class CreateFaceToFaceDiscussionActivity$9
-  implements Runnable
+class CreateFaceToFaceDiscussionActivity$9
+  implements QQPermissionCallback
 {
   CreateFaceToFaceDiscussionActivity$9(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    SosoInterface.a(new ajyw(this, 0, true, false, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
+    paramArrayOfString = this.b.mHandler.obtainMessage(2);
+    paramArrayOfString.arg1 = 1;
+    paramArrayOfString.arg2 = 2131896965;
+    paramArrayOfString.sendToTarget();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CreateFaceToFaceDiscussionActivity.access$700(this.b, this.a);
   }
 }
 

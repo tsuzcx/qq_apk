@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/nx5" android:background="@color/axi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.view.QMContentLoadingView android:id="@id/n9d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/brp" />
+    <ListView android:id="@id/nxn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/brp" />
+    <com.tencent.qqmail.search.view.SearchToggleView android:id="@id/nx_" android:visibility="gone" style="@style/ahx" />
+</RelativeLayout>

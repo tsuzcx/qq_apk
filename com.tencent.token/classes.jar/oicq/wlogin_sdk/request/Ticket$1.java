@@ -1,19 +1,14 @@
 package oicq.wlogin_sdk.request;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
 final class Ticket$1
-  implements Parcelable.Creator
+  implements Comparator<Map.Entry<String, Long>>
 {
-  public Ticket createFromParcel(Parcel paramParcel)
+  public final int compare(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
   {
-    return new Ticket(paramParcel, null);
-  }
-  
-  public Ticket[] newArray(int paramInt)
-  {
-    return new Ticket[paramInt];
+    return ((Long)paramEntry1.getValue()).longValue() < ((Long)paramEntry2.getValue()).longValue();
   }
 }
 

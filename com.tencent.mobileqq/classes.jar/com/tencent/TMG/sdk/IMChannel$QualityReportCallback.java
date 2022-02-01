@@ -15,11 +15,17 @@ public class IMChannel$QualityReportCallback
   
   public void onError(int paramInt, String paramString)
   {
-    QLog.e(IMChannel.LOGTAG, 0, "QualityReport failed: " + paramInt + " info: " + paramString);
-    IMChannel.QualityReportResult localQualityReportResult = new IMChannel.QualityReportResult(this.this$0);
-    localQualityReportResult.result = paramInt;
-    localQualityReportResult.errorInfo = paramString;
-    this.this$0.nativeQualityReportCallback(this.mNativeCallback, localQualityReportResult);
+    Object localObject = IMChannel.LOGTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QualityReport failed: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" info: ");
+    localStringBuilder.append(paramString);
+    QLog.e((String)localObject, 0, localStringBuilder.toString());
+    localObject = new IMChannel.QualityReportResult(this.this$0);
+    ((IMChannel.QualityReportResult)localObject).result = paramInt;
+    ((IMChannel.QualityReportResult)localObject).errorInfo = paramString;
+    this.this$0.nativeQualityReportCallback(this.mNativeCallback, (IMChannel.QualityReportResult)localObject);
     this.mNativeCallback = 0;
   }
   
@@ -34,7 +40,7 @@ public class IMChannel$QualityReportCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.sdk.IMChannel.QualityReportCallback
  * JD-Core Version:    0.7.0.1
  */

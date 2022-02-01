@@ -15,132 +15,180 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.card.b.c;
-import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.m;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.g;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.plugin.card.c.q;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 
 public final class a
 {
   private final String TAG;
-  Bitmap gMJ;
-  View.OnClickListener gMO;
-  View iCk;
-  MMActivity jpX;
-  b klk;
-  private View kqn;
-  private View kqo;
-  private View kqp;
-  Bitmap kqq;
-  TextView kqr;
-  TextView kqs;
-  CheckBox kqt;
-  String kqu;
-  int kqv;
-  boolean kqw;
-  a.a kqx;
-  float kqy;
-  private View.OnLongClickListener kqz;
+  View plc;
+  Bitmap qjG;
+  View.OnClickListener qjL;
+  com.tencent.mm.plugin.card.base.b wru;
+  MMActivity wry;
+  private View wwL;
+  private View wwM;
+  private View wwN;
+  Bitmap wwO;
+  TextView wwP;
+  TextView wwQ;
+  CheckBox wwR;
+  String wwS;
+  int wwT;
+  boolean wwU;
+  a wwV;
+  float wwW;
+  private View.OnLongClickListener wwX;
   
   public a(MMActivity paramMMActivity, View paramView)
   {
-    AppMethodBeat.i(88091);
+    AppMethodBeat.i(113030);
     this.TAG = "MicroMsg.CardConsumeCodeController";
-    this.kqv = 1;
-    this.kqw = false;
-    this.kqy = 0.0F;
-    this.gMO = new a.1(this);
-    this.kqz = new a.2(this);
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
-    AppMethodBeat.o(88091);
+    this.wwT = 1;
+    this.wwU = false;
+    this.wwW = 0.0F;
+    this.qjL = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113028);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/sharecard/ui/CardConsumeCodeController$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (paramAnonymousView.getId() == a.d.wkI)
+        {
+          if (!a.this.wwR.isChecked()) {
+            break label98;
+          }
+          if (a.this.wwV != null) {
+            a.this.wwV.Io(1);
+          }
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/sharecard/ui/CardConsumeCodeController$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(113028);
+          return;
+          label98:
+          if (a.this.wwV != null) {
+            a.this.wwV.Io(0);
+          }
+        }
+      }
+    };
+    this.wwX = new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113029);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/sharecard/ui/CardConsumeCodeController$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+        if (paramAnonymousView.getId() == a.d.wjG)
+        {
+          q.TF(a.this.wru.djL().code);
+          k.cZ(a.this.wry, a.this.wry.getString(a.g.app_copy_ok));
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/card/sharecard/ui/CardConsumeCodeController$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(113029);
+        return false;
+      }
+    };
+    this.wry = paramMMActivity;
+    this.plc = paramView;
+    AppMethodBeat.o(113030);
   }
   
-  private void b(ImageView paramImageView, Bitmap paramBitmap)
+  private void a(ImageView paramImageView, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(88096);
+    AppMethodBeat.i(113033);
     if ((paramImageView == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(88096);
+      AppMethodBeat.o(113033);
       return;
     }
     paramImageView.setImageBitmap(paramBitmap);
-    if (this.kqv != 1)
+    if (this.wwT != 1)
     {
       paramImageView.setAlpha(10);
-      AppMethodBeat.o(88096);
+      AppMethodBeat.o(113033);
       return;
     }
     paramImageView.setAlpha(255);
-    AppMethodBeat.o(88096);
+    AppMethodBeat.o(113033);
   }
   
-  private void de(View paramView)
+  private void eL(View paramView)
   {
-    AppMethodBeat.i(88097);
-    paramView = (Button)paramView.findViewById(2131822012);
-    if (this.kqv == 1) {
+    AppMethodBeat.i(113034);
+    paramView = (Button)paramView.findViewById(a.d.wjy);
+    if (this.wwT == 1) {
       paramView.setVisibility(8);
     }
     for (;;)
     {
-      if (this.kqv == -1) {
-        paramView.setText(2131297984);
+      if (this.wwT == -1) {
+        paramView.setText(a.g.wps);
       }
-      AppMethodBeat.o(88097);
+      AppMethodBeat.o(113034);
       return;
       paramView.setVisibility(0);
     }
   }
   
-  final void aG(float paramFloat)
+  final void ce(float paramFloat)
   {
-    AppMethodBeat.i(88093);
-    WindowManager.LayoutParams localLayoutParams = this.jpX.getWindow().getAttributes();
+    AppMethodBeat.i(113031);
+    WindowManager.LayoutParams localLayoutParams = this.wry.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.jpX.getWindow().setAttributes(localLayoutParams);
-    AppMethodBeat.o(88093);
+    this.wry.getWindow().setAttributes(localLayoutParams);
+    AppMethodBeat.o(113031);
   }
   
-  public final void bcI()
+  public final void dlx()
   {
-    AppMethodBeat.i(88095);
-    ab.i("MicroMsg.CardConsumeCodeController", "doUpdate()");
-    if (!this.kqw)
+    AppMethodBeat.i(113032);
+    Log.i("MicroMsg.CardConsumeCodeController", "doUpdate()");
+    if (!this.wwU)
     {
-      ab.i("MicroMsg.CardConsumeCodeController", "doUpdate() not ready show!");
-      AppMethodBeat.o(88095);
+      Log.i("MicroMsg.CardConsumeCodeController", "doUpdate() not ready show!");
+      AppMethodBeat.o(113032);
       return;
     }
     Object localObject1;
     Object localObject2;
-    if (!bo.isNullOrNil(this.klk.bbe().wEg))
+    if (!Util.isNullOrNil(this.wru.djL().ZbL))
     {
-      localObject1 = this.klk.bbe().wEg;
-      ab.i("MicroMsg.CardConsumeCodeController", "code:%s from sign_number", new Object[] { localObject1 });
-      switch (this.klk.bbe().wDT)
+      localObject1 = this.wru.djL().ZbL;
+      Log.i("MicroMsg.CardConsumeCodeController", "code:%s from sign_number", new Object[] { localObject1 });
+      switch (this.wru.djL().Zby)
       {
       default: 
-        if (!bo.isNullOrNil(this.klk.bbd().kNG)) {
-          if (this.klk.bbd().wGD != null)
+        if (!Util.isNullOrNil(this.wru.djK().pHt)) {
+          if (this.wru.djK().Zen != null)
           {
-            this.kqs.setText(this.klk.bbd().kNG);
-            this.kqs.setVisibility(0);
-            this.kqr.setVisibility(8);
-            if (this.kqn != null)
+            this.wwQ.setText(this.wru.djK().pHt);
+            this.wwQ.setVisibility(0);
+            this.wwP.setVisibility(8);
+            if (this.wwL != null)
             {
-              localObject1 = (ImageView)this.kqn.findViewById(2131822018);
+              localObject1 = (ImageView)this.wwL.findViewById(a.d.wjz);
               localObject2 = ((ImageView)localObject1).getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject2).height = com.tencent.mm.cb.a.fromDPToPix(this.jpX, 180);
-              ((ViewGroup.LayoutParams)localObject2).width = com.tencent.mm.cb.a.fromDPToPix(this.jpX, 180);
+              ((ViewGroup.LayoutParams)localObject2).height = com.tencent.mm.cd.a.fromDPToPix(this.wry, 180);
+              ((ViewGroup.LayoutParams)localObject2).width = com.tencent.mm.cd.a.fromDPToPix(this.wry, 180);
               ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
             }
           }
@@ -154,138 +202,138 @@ public final class a
       {
         for (;;)
         {
-          if ((!this.klk.baK()) || (TextUtils.isEmpty(this.klk.bbj())) || (this.klk.bbj().equals(r.Zn()))) {
-            break label1203;
+          if ((!this.wru.djp()) || (TextUtils.isEmpty(this.wru.djQ())) || (this.wru.djQ().equals(z.bAM()))) {
+            break label1205;
           }
-          this.kqt.setVisibility(0);
-          localObject1 = " " + this.jpX.getString(2131297884, new Object[] { l.ID(this.klk.bbj()) });
-          this.kqt.setText(j.f(this.jpX, (CharSequence)localObject1, this.jpX.getResources().getDimensionPixelOffset(2131427860)));
-          AppMethodBeat.o(88095);
+          this.wwR.setVisibility(0);
+          localObject1 = " " + this.wry.getString(a.g.wop, new Object[] { l.alx(this.wru.djQ()) });
+          this.wwR.setText(p.h(this.wry, (CharSequence)localObject1, this.wry.getResources().getDimensionPixelOffset(a.b.SmallerTextSize)));
+          AppMethodBeat.o(113032);
           return;
-          if (this.klk.baY())
+          if (this.wru.djD())
           {
-            localObject1 = am.bcq().getCode();
-            ab.i("MicroMsg.CardConsumeCodeController", "code:%s from dynamic code", new Object[] { localObject1 });
+            localObject1 = am.dkW().getCode();
+            Log.i("MicroMsg.CardConsumeCodeController", "code:%s from dynamic code", new Object[] { localObject1 });
             break;
           }
-          localObject1 = this.klk.bbe().code;
-          ab.i("MicroMsg.CardConsumeCodeController", "code:%s from dataInfo", new Object[] { localObject1 });
+          localObject1 = this.wru.djL().code;
+          Log.i("MicroMsg.CardConsumeCodeController", "code:%s from dataInfo", new Object[] { localObject1 });
           break;
-          if (this.kqn == null) {
-            this.kqn = ((ViewStub)this.iCk.findViewById(2131822037)).inflate();
+          if (this.wwL == null) {
+            this.wwL = ((ViewStub)this.plc.findViewById(a.d.wfP)).inflate();
           }
-          localObject3 = this.kqn;
-          localObject2 = (ImageView)((View)localObject3).findViewById(2131822018);
-          localObject3 = (TextView)((View)localObject3).findViewById(2131822013);
-          if (!this.klk.baL()) {
-            ((TextView)localObject3).setTextColor(l.IB(this.klk.bbd().color));
+          localObject3 = this.wwL;
+          localObject2 = (ImageView)((View)localObject3).findViewById(a.d.wjz);
+          localObject3 = (TextView)((View)localObject3).findViewById(a.d.wjG);
+          if (!this.wru.djq()) {
+            ((TextView)localObject3).setTextColor(l.alv(this.wru.djK().nRQ));
           }
           if (((String)localObject1).length() <= 40)
           {
-            ((TextView)localObject3).setText(m.II((String)localObject1));
-            if (this.klk.baU())
+            ((TextView)localObject3).setText(n.alC((String)localObject1));
+            if (this.wru.djz())
             {
               ((TextView)localObject3).setVisibility(0);
-              ((TextView)localObject3).setOnLongClickListener(this.kqz);
-              label572:
-              if (this.kqv != 1) {
+              ((TextView)localObject3).setOnLongClickListener(this.wwX);
+              label574:
+              if (this.wwT != 1) {
                 ((TextView)localObject3).setVisibility(4);
               }
             }
           }
           try
           {
-            l.I(this.gMJ);
+            l.ah(this.qjG);
             if (!TextUtils.isEmpty((CharSequence)localObject1))
             {
-              this.gMJ = com.tencent.mm.by.a.a.b(this.jpX, (String)localObject1, 12, 3);
-              b((ImageView)localObject2, this.gMJ);
+              this.qjG = com.tencent.mm.bz.a.a.d(this.wry, (String)localObject1, 12, 3);
+              a((ImageView)localObject2, this.qjG);
             }
             for (;;)
             {
-              de(this.kqn);
+              eL(this.wwL);
               break;
               ((TextView)localObject3).setVisibility(8);
-              break label572;
+              break label574;
               ((TextView)localObject3).setVisibility(8);
-              break label572;
-              this.gMJ = null;
-              ((ImageView)localObject2).setImageBitmap(this.gMJ);
+              break label574;
+              this.qjG = null;
+              ((ImageView)localObject2).setImageBitmap(this.qjG);
             }
           }
           catch (Exception localException1)
           {
             for (;;)
             {
-              ab.printErrStackTrace("MicroMsg.CardConsumeCodeController", localException1, "", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.CardConsumeCodeController", localException1, "", new Object[0]);
             }
           }
         }
-        if (this.kqo == null) {
-          this.kqo = ((ViewStub)this.iCk.findViewById(2131822039)).inflate();
+        if (this.wwM == null) {
+          this.wwM = ((ViewStub)this.plc.findViewById(a.d.wfL)).inflate();
         }
-        Object localObject3 = this.kqo;
-        localObject2 = (ImageView)((View)localObject3).findViewById(2131822011);
-        localObject3 = (TextView)((View)localObject3).findViewById(2131822013);
-        if (!this.klk.baL()) {
-          ((TextView)localObject3).setTextColor(l.IB(this.klk.bbd().color));
+        Object localObject3 = this.wwM;
+        localObject2 = (ImageView)((View)localObject3).findViewById(a.d.wjq);
+        localObject3 = (TextView)((View)localObject3).findViewById(a.d.wjG);
+        if (!this.wru.djq()) {
+          ((TextView)localObject3).setTextColor(l.alv(this.wru.djK().nRQ));
         }
         if ((!TextUtils.isEmpty(localException1)) && (localException1.length() <= 40))
         {
-          ((TextView)localObject3).setText(m.II(localException1));
-          if (this.klk.baU())
+          ((TextView)localObject3).setText(n.alC(localException1));
+          if (this.wru.djz())
           {
             ((TextView)localObject3).setVisibility(0);
-            ((TextView)localObject3).setOnLongClickListener(this.kqz);
-            label819:
-            if (this.kqv != 1) {
+            ((TextView)localObject3).setOnLongClickListener(this.wwX);
+            label821:
+            if (this.wwT != 1) {
               ((TextView)localObject3).setVisibility(4);
             }
           }
         }
         try
         {
-          l.I(this.kqq);
+          l.ah(this.wwO);
           if (!TextUtils.isEmpty(localException1))
           {
-            this.kqq = com.tencent.mm.by.a.a.b(this.jpX, localException1, 5, 0);
-            b((ImageView)localObject2, this.kqq);
+            this.wwO = com.tencent.mm.bz.a.a.d(this.wry, localException1, 5, 0);
+            a((ImageView)localObject2, this.wwO);
           }
           for (;;)
           {
-            de(this.kqo);
+            eL(this.wwM);
             break;
             ((TextView)localObject3).setVisibility(8);
-            break label819;
+            break label821;
             ((TextView)localObject3).setVisibility(8);
-            break label819;
-            this.kqq = null;
-            ((ImageView)localObject2).setImageBitmap(this.kqq);
+            break label821;
+            this.wwO = null;
+            ((ImageView)localObject2).setImageBitmap(this.wwO);
           }
         }
         catch (Exception localException2)
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.CardConsumeCodeController", localException2, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.CardConsumeCodeController", localException2, "", new Object[0]);
           }
         }
       }
-      if (this.kqp == null) {
-        this.kqp = ((ViewStub)this.iCk.findViewById(2131822041)).inflate();
+      if (this.wwN == null) {
+        this.wwN = ((ViewStub)this.plc.findViewById(a.d.wfR)).inflate();
       }
-      localObject2 = (TextView)this.kqp.findViewById(2131822013);
-      ((TextView)localObject2).setText(m.II(localException2));
-      ((TextView)localObject2).setOnLongClickListener(this.kqz);
-      if (!this.klk.baL()) {
-        ((TextView)localObject2).setTextColor(l.IB(this.klk.bbd().color));
+      localObject2 = (TextView)this.wwN.findViewById(a.d.wjG);
+      ((TextView)localObject2).setText(n.alC(localException2));
+      ((TextView)localObject2).setOnLongClickListener(this.wwX);
+      if (!this.wru.djq()) {
+        ((TextView)localObject2).setTextColor(l.alv(this.wru.djK().nRQ));
       }
       if (localException2.length() <= 12) {
         ((TextView)localObject2).setTextSize(1, 33.0F);
       }
       for (;;)
       {
-        de(this.kqp);
+        eL(this.wwN);
         break;
         if ((localException2.length() > 12) && (localException2.length() <= 16)) {
           ((TextView)localObject2).setTextSize(1, 30.0F);
@@ -297,21 +345,26 @@ public final class a
           ((TextView)localObject2).setVisibility(8);
         }
       }
-      this.kqr.setText(this.klk.bbd().kNG);
-      this.kqr.setVisibility(0);
+      this.wwP.setText(this.wru.djK().pHt);
+      this.wwP.setVisibility(0);
       continue;
-      this.kqr.setVisibility(8);
-      this.kqs.setVisibility(8);
+      this.wwP.setVisibility(8);
+      this.wwQ.setVisibility(8);
     }
-    label1203:
-    this.kqt.setChecked(false);
-    this.kqt.setVisibility(8);
-    AppMethodBeat.o(88095);
+    label1205:
+    this.wwR.setChecked(false);
+    this.wwR.setVisibility(8);
+    AppMethodBeat.o(113032);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Io(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,27 +3,41 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlc;
+import android.text.TextUtils;
 
 public class PictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<PictureUrl> CREATOR = new bjlc();
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public int b;
-  public int c;
-  public int d;
+  public static final Parcelable.Creator<PictureUrl> CREATOR = new PictureUrl.1();
+  public int enlarge_rate;
+  public int height;
+  public int pictureType;
+  public float pivotXRate;
+  public float pivotYRate;
+  public String url;
+  public int width;
   
   public PictureUrl() {}
   
   public PictureUrl(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.url = paramString;
+    this.width = paramInt1;
+    this.height = paramInt2;
+  }
+  
+  public static boolean isEmpty(PictureUrl paramPictureUrl)
+  {
+    return (paramPictureUrl == null) || (TextUtils.isEmpty(paramPictureUrl.url));
+  }
+  
+  public boolean contains(String paramString)
+  {
+    String str = this.url;
+    if (str == null) {
+      return false;
+    }
+    return str.equalsIgnoreCase(paramString);
   }
   
   public int describeContents()
@@ -31,25 +45,40 @@ public class PictureUrl
     return 0;
   }
   
+  public boolean isGif()
+  {
+    return this.pictureType == 2;
+  }
+  
   public String toString()
   {
-    return "PictureUrl [url=" + this.jdField_a_of_type_JavaLangString + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", pictureType=" + this.c + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PictureUrl [url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", pictureType=");
+    localStringBuilder.append(this.pictureType);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.c);
-    paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeFloat(this.jdField_b_of_type_Float);
-    paramParcel.writeInt(this.d);
+    paramParcel.writeString(this.url);
+    paramParcel.writeInt(this.width);
+    paramParcel.writeInt(this.height);
+    paramParcel.writeInt(this.pictureType);
+    paramParcel.writeFloat(this.pivotXRate);
+    paramParcel.writeFloat(this.pivotYRate);
+    paramParcel.writeInt(this.enlarge_rate);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.model.PictureUrl
  * JD-Core Version:    0.7.0.1
  */

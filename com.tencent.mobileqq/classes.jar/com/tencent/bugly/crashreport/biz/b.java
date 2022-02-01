@@ -13,24 +13,25 @@ import java.util.List;
 
 public class b
 {
-  public static boolean a;
+  public static boolean a = false;
   public static a b;
   private static int c = 10;
   private static long d = 300000L;
   private static long e = 30000L;
   private static long f = 0L;
-  private static int g;
-  private static long h;
-  private static long i;
+  private static int g = 0;
+  private static long h = 0L;
+  private static long i = 0L;
   private static long j = 0L;
-  private static Application.ActivityLifecycleCallbacks k = null;
-  private static Class<?> l = null;
+  private static Application.ActivityLifecycleCallbacks k;
+  private static Class<?> l;
   private static boolean m = true;
   
   public static void a()
   {
-    if (b != null) {
-      b.a(2, false, 0L);
+    a locala = b;
+    if (locala != null) {
+      locala.a(2, false, 0L);
     }
   }
   
@@ -42,43 +43,46 @@ public class b
     m = com.tencent.bugly.crashreport.common.info.a.a(paramContext).f;
     b = new a(paramContext, m);
     a = true;
-    if (paramBuglyStrategy != null) {
-      l = paramBuglyStrategy.getUserInfoActivity();
-    }
-    for (long l1 = paramBuglyStrategy.getAppReportDelay();; l1 = 0L)
+    long l1;
+    if (paramBuglyStrategy != null)
     {
-      if (l1 <= 0L)
-      {
-        c(paramContext, paramBuglyStrategy);
-        return;
-      }
-      w.a().a(new b.1(paramContext, paramBuglyStrategy), l1);
+      l = paramBuglyStrategy.getUserInfoActivity();
+      l1 = paramBuglyStrategy.getAppReportDelay();
+    }
+    else
+    {
+      l1 = 0L;
+    }
+    if (l1 <= 0L)
+    {
+      c(paramContext, paramBuglyStrategy);
       return;
     }
+    w.a().a(new b.1(paramContext, paramBuglyStrategy), l1);
   }
   
   public static void a(StrategyBean paramStrategyBean, boolean paramBoolean)
   {
-    if ((b != null) && (!paramBoolean))
+    a locala = b;
+    if ((locala != null) && (!paramBoolean))
     {
-      a locala = b;
       w localw = w.a();
       if (localw != null) {
         localw.a(new a.2(locala));
       }
     }
-    if (paramStrategyBean == null) {}
-    do
-    {
+    if (paramStrategyBean == null) {
       return;
-      if (paramStrategyBean.q > 0L) {
-        e = paramStrategyBean.q;
-      }
-      if (paramStrategyBean.w > 0) {
-        c = paramStrategyBean.w;
-      }
-    } while (paramStrategyBean.x <= 0L);
-    d = paramStrategyBean.x;
+    }
+    if (paramStrategyBean.p > 0L) {
+      e = paramStrategyBean.p;
+    }
+    if (paramStrategyBean.u > 0) {
+      c = paramStrategyBean.u;
+    }
+    if (paramStrategyBean.v > 0L) {
+      d = paramStrategyBean.v;
+    }
   }
   
   private static void c(Context paramContext, BuglyStrategy paramBuglyStrategy)
@@ -90,94 +94,93 @@ public class b
       bool2 = paramBuglyStrategy.recordUserInfoOnceADay();
       bool1 = paramBuglyStrategy.isEnableUserInfo();
     }
-    for (;;)
+    else
     {
-      int n;
-      Object localObject2;
-      if (bool2)
-      {
-        paramBuglyStrategy = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
-        localObject1 = paramBuglyStrategy.d;
-        localObject1 = b.a((String)localObject1);
-        if (localObject1 != null)
-        {
-          n = 0;
-          if (n < ((List)localObject1).size())
-          {
-            localObject2 = (UserInfoBean)((List)localObject1).get(n);
-            if ((((UserInfoBean)localObject2).n.equals(paramBuglyStrategy.m)) && (((UserInfoBean)localObject2).b == 1))
-            {
-              long l1 = z.b();
-              if (l1 <= 0L) {
-                break label172;
-              }
-              if (((UserInfoBean)localObject2).e >= l1) {
-                if (((UserInfoBean)localObject2).f <= 0L)
-                {
-                  paramBuglyStrategy = b;
-                  localObject1 = w.a();
-                  if (localObject1 != null) {
-                    ((w)localObject1).a(new a.2(paramBuglyStrategy));
-                  }
-                }
-              }
-            }
-          }
-        }
-        label172:
-        for (n = 0;; n = 1)
-        {
-          if (n != 0) {
-            break label177;
-          }
-          return;
-          n += 1;
-          break;
-        }
-        label177:
-        bool1 = false;
-      }
-      Object localObject1 = com.tencent.bugly.crashreport.common.info.a.b();
+      bool1 = true;
+      bool2 = false;
+    }
+    int n;
+    if (bool2)
+    {
+      paramBuglyStrategy = com.tencent.bugly.crashreport.common.info.a.a(paramContext);
+      localObject1 = paramBuglyStrategy.d;
+      localObject1 = b.a((String)localObject1);
       if (localObject1 != null)
       {
-        int i1 = 0;
-        localObject2 = Thread.currentThread().getStackTrace();
-        int i2 = localObject2.length;
-        paramBuglyStrategy = null;
         n = 0;
-        while (n < i2)
+        while (n < ((List)localObject1).size())
         {
-          Object localObject3 = localObject2[n];
-          if (localObject3.getMethodName().equals("onCreate")) {
-            paramBuglyStrategy = localObject3.getClassName();
-          }
-          if (localObject3.getClassName().equals("android.app.Activity")) {
-            i1 = 1;
+          localObject2 = (UserInfoBean)((List)localObject1).get(n);
+          if ((((UserInfoBean)localObject2).n.equals(paramBuglyStrategy.m)) && (((UserInfoBean)localObject2).b == 1))
+          {
+            long l1 = z.b();
+            if (l1 <= 0L) {
+              break;
+            }
+            if (((UserInfoBean)localObject2).e >= l1)
+            {
+              if (((UserInfoBean)localObject2).f <= 0L)
+              {
+                paramBuglyStrategy = b;
+                localObject1 = w.a();
+                if (localObject1 != null) {
+                  ((w)localObject1).a(new a.2(paramBuglyStrategy));
+                }
+              }
+              n = 0;
+              break label181;
+            }
           }
           n += 1;
         }
-        if (paramBuglyStrategy == null) {
-          break label412;
-        }
-        if (i1 == 0) {
-          break label405;
-        }
-        ((com.tencent.bugly.crashreport.common.info.a)localObject1).a(true);
       }
-      for (;;)
+      n = 1;
+      label181:
+      if (n == 0) {
+        return;
+      }
+      bool1 = false;
+    }
+    Object localObject2 = com.tencent.bugly.crashreport.common.info.a.b();
+    Object localObject1 = null;
+    if (localObject2 != null)
+    {
+      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+      int i2 = arrayOfStackTraceElement.length;
+      paramBuglyStrategy = null;
+      n = 0;
+      int i1 = 0;
+      while (n < i2)
       {
-        ((com.tencent.bugly.crashreport.common.info.a)localObject1).s = paramBuglyStrategy;
-        if (bool1)
-        {
-          paramBuglyStrategy = null;
-          if (Build.VERSION.SDK_INT >= 14)
-          {
-            if ((paramContext.getApplicationContext() instanceof Application)) {
-              paramBuglyStrategy = (Application)paramContext.getApplicationContext();
-            }
-            if (paramBuglyStrategy == null) {}
-          }
+        StackTraceElement localStackTraceElement = arrayOfStackTraceElement[n];
+        if (localStackTraceElement.getMethodName().equals("onCreate")) {
+          paramBuglyStrategy = localStackTraceElement.getClassName();
         }
+        if (localStackTraceElement.getClassName().equals("android.app.Activity")) {
+          i1 = 1;
+        }
+        n += 1;
+      }
+      if (paramBuglyStrategy != null)
+      {
+        if (i1 != 0) {
+          ((com.tencent.bugly.crashreport.common.info.a)localObject2).a(true);
+        } else {
+          paramBuglyStrategy = "background";
+        }
+      }
+      else {
+        paramBuglyStrategy = "unknown";
+      }
+      ((com.tencent.bugly.crashreport.common.info.a)localObject2).s = paramBuglyStrategy;
+    }
+    if ((bool1) && (Build.VERSION.SDK_INT >= 14))
+    {
+      paramBuglyStrategy = (BuglyStrategy)localObject1;
+      if ((paramContext.getApplicationContext() instanceof Application)) {
+        paramBuglyStrategy = (Application)paramContext.getApplicationContext();
+      }
+      if (paramBuglyStrategy != null) {
         try
         {
           if (k == null) {
@@ -187,37 +190,26 @@ public class b
         }
         catch (Exception paramContext)
         {
-          for (;;)
-          {
-            if (!x.a(paramContext)) {
-              paramContext.printStackTrace();
-            }
+          if (!x.a(paramContext)) {
+            paramContext.printStackTrace();
           }
         }
-        if (!m) {
-          break;
-        }
-        i = System.currentTimeMillis();
-        b.a(1, false, 0L);
-        x.a("[session] launch app, new start", new Object[0]);
-        b.a();
-        paramContext = b;
-        w.a().a(new a.c(paramContext, 21600000L), 21600000L);
-        return;
-        label405:
-        paramBuglyStrategy = "background";
-        continue;
-        label412:
-        paramBuglyStrategy = "unknown";
       }
-      bool1 = true;
-      bool2 = false;
+    }
+    if (m)
+    {
+      i = System.currentTimeMillis();
+      b.a(1, false, 0L);
+      x.a("[session] launch app, new start", new Object[0]);
+      b.a();
+      paramContext = b;
+      w.a().a(new a.c(paramContext, 21600000L), 21600000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.biz.b
  * JD-Core Version:    0.7.0.1
  */

@@ -23,14 +23,15 @@ public final class qqstory_service$RspGetHotTopicVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 58 }, new String[] { "result", "video_list", "is_end", "next_cookie", "totle_time", "video_count", "topic_desc" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro2 }, RspGetHotTopicVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 58 }, new String[] { "result", "video_list", "is_end", "next_cookie", "totle_time", "video_count", "topic_desc" }, new Object[] { null, null, localInteger, localByteStringMicro1, Long.valueOf(0L), localInteger, localByteStringMicro2 }, RspGetHotTopicVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetHotTopicVideoList
  * JD-Core Version:    0.7.0.1
  */

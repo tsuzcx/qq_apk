@@ -4,6 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -34,7 +35,10 @@ public class SubscribeFeedsEvent
     this.mState = paramInt;
     if (paramCertifiedFakeFeed != null)
     {
-      this.mTargetId = ("fakeid_" + paramCertifiedFakeFeed.b());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fakeid_");
+      localStringBuilder.append(paramCertifiedFakeFeed.getClientKey());
+      this.mTargetId = localStringBuilder.toString();
       this.mSingleFakeFeed = a(paramCertifiedFakeFeed, paramInt);
     }
   }
@@ -49,18 +53,16 @@ public class SubscribeFeedsEvent
   
   public SubscribeFeedsEvent(List<CertifiedFakeFeed> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      this.mState = 4;
-      this.mFakeFeedDataList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        CertifiedFakeFeed localCertifiedFakeFeed = (CertifiedFakeFeed)paramList.next();
-        this.mFakeFeedDataList.add(a(localCertifiedFakeFeed, 1));
-      }
+    }
+    this.mState = 4;
+    this.mFakeFeedDataList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      CertifiedFakeFeed localCertifiedFakeFeed = (CertifiedFakeFeed)paramList.next();
+      this.mFakeFeedDataList.add(a(localCertifiedFakeFeed, 1));
     }
   }
   
@@ -68,46 +70,50 @@ public class SubscribeFeedsEvent
   {
     CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
     PBStringField localPBStringField = localStFeed.id;
+    Object localObject;
     if (paramInt == 2)
     {
-      str = paramCertifiedFakeFeed.a();
-      label26:
-      localPBStringField.set(str);
-      localStFeed.title.set(paramCertifiedFakeFeed.c());
-      localStFeed.content.set(paramCertifiedFakeFeed.d());
-      localStFeed.poster.id.set(paramCertifiedFakeFeed.f());
-      localStFeed.type.set(paramCertifiedFakeFeed.a());
-      localStFeed.createTime.set(paramCertifiedFakeFeed.a());
-      localPBStringField = localStFeed.cover.url;
-      if (paramCertifiedFakeFeed.e() != null) {
-        break label215;
-      }
+      localObject = paramCertifiedFakeFeed.getFeedId();
     }
-    label215:
-    for (String str = "";; str = paramCertifiedFakeFeed.e())
+    else
     {
-      localPBStringField.set(str);
-      switch (paramCertifiedFakeFeed.a())
-      {
-      case 1: 
-      case 2: 
-      default: 
-        localStFeed.cover.width.set(paramCertifiedFakeFeed.b());
-        localStFeed.cover.height.set(paramCertifiedFakeFeed.c());
-        return localStFeed;
-        str = "fakeid_" + paramCertifiedFakeFeed.b();
-        break label26;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fakeid_");
+      ((StringBuilder)localObject).append(paramCertifiedFakeFeed.getClientKey());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    localStFeed.video.width.set(paramCertifiedFakeFeed.b());
-    localStFeed.video.height.set(paramCertifiedFakeFeed.c());
-    localStFeed.video.duration.set(paramCertifiedFakeFeed.d());
+    localPBStringField.set((String)localObject);
+    localStFeed.title.set(paramCertifiedFakeFeed.getTitle());
+    localStFeed.content.set(paramCertifiedFakeFeed.getContent());
+    localStFeed.poster.id.set(paramCertifiedFakeFeed.getPuin());
+    localStFeed.poster.setHasFlag(true);
+    localStFeed.type.set(paramCertifiedFakeFeed.getFeedType());
+    localStFeed.createTime.set(paramCertifiedFakeFeed.getCreateTime());
+    localPBStringField = localStFeed.cover.url;
+    if (paramCertifiedFakeFeed.getCoverPath() == null) {
+      localObject = "";
+    } else {
+      localObject = paramCertifiedFakeFeed.getCoverPath();
+    }
+    localPBStringField.set((String)localObject);
+    localStFeed.cover.setHasFlag(true);
+    paramInt = paramCertifiedFakeFeed.getFeedType();
+    if ((paramInt != 0) && (paramInt != 3))
+    {
+      localStFeed.cover.width.set(paramCertifiedFakeFeed.getWidth());
+      localStFeed.cover.height.set(paramCertifiedFakeFeed.getHeight());
+      return localStFeed;
+    }
+    localStFeed.video.width.set(paramCertifiedFakeFeed.getWidth());
+    localStFeed.video.height.set(paramCertifiedFakeFeed.getHeight());
+    localStFeed.video.duration.set(paramCertifiedFakeFeed.getDuration());
+    localStFeed.video.setHasFlag(true);
     return localStFeed;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.SubscribeFeedsEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,17 @@ import okhttp3.Response;
 
 class RangeDownloadManager$RangeDownloadResult
 {
-  private final byte[] contentBytes;
   private final int index;
   private final RangeDownloadReport rangeDownloadReport;
   private final Response response;
+  private final long responseDataLength;
   
-  RangeDownloadManager$RangeDownloadResult(int paramInt, Response paramResponse, byte[] paramArrayOfByte, RangeDownloadReport paramRangeDownloadReport)
+  RangeDownloadManager$RangeDownloadResult(int paramInt, Response paramResponse, long paramLong, RangeDownloadReport paramRangeDownloadReport)
   {
     this.index = paramInt;
     this.response = paramResponse;
-    this.contentBytes = paramArrayOfByte;
+    this.responseDataLength = paramLong;
     this.rangeDownloadReport = paramRangeDownloadReport;
-  }
-  
-  public byte[] getContentBytes()
-  {
-    return this.contentBytes;
   }
   
   public int getIndex()
@@ -36,10 +31,15 @@ class RangeDownloadManager$RangeDownloadResult
   {
     return this.response;
   }
+  
+  public long getResponseDataLength()
+  {
+    return this.responseDataLength;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.downloader.RangeDownloadManager.RangeDownloadResult
  * JD-Core Version:    0.7.0.1
  */

@@ -33,13 +33,14 @@ public final class oidb_0xd4a$FriendData
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 82, 90, 98, 106, 114, 122, 130, 138, 146 }, new String[] { "uint64_from_uin", "uint64_to_uin", "msg_cur_mutual_mark_info", "msg_friend_info", "msg_common_group_chat_info", "rpt_msg_mutual_mark_info", "rpt_msg_dna_info", "rpt_msg_prefetch_mutual_mark_info", "rpt_msg_data_tips", "rpt_msg_mutual_score", "string_reddot_data" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), null, null, null, null, null, null, null, null, localByteStringMicro }, FriendData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 82, 90, 98, 106, 114, 122, 130, 138, 146 }, new String[] { "uint64_from_uin", "uint64_to_uin", "msg_cur_mutual_mark_info", "msg_friend_info", "msg_common_group_chat_info", "rpt_msg_mutual_mark_info", "rpt_msg_dna_info", "rpt_msg_prefetch_mutual_mark_info", "rpt_msg_data_tips", "rpt_msg_mutual_score", "string_reddot_data" }, new Object[] { localLong, localLong, null, null, null, null, null, null, null, null, localByteStringMicro }, FriendData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xd4a.oidb_0xd4a.FriendData
  * JD-Core Version:    0.7.0.1
  */

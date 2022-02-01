@@ -1,11 +1,16 @@
 package com.tencent.mobileqq.activity.history;
 
-import alxa;
-import amrg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimeZone;
 import mqq.app.MobileQQ;
@@ -18,87 +23,112 @@ class ChatHistoryC2CAllFragment$5
   
   public void run()
   {
-    boolean bool1 = false;
-    if (VipUtils.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (VasUtil.b(this.this$0.a).getVipStatus().isSVip())
     {
-      this.this$0.jdField_b_of_type_JavaLangString = "svip";
-      this.this$0.c = "2";
-      VipUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).C = "svip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "2";
+    }
+    else if (VasUtil.b(this.this$0.a).getVipStatus().isVip())
+    {
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).C = "vip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "1";
+    }
+    else
+    {
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).C = "notvip";
+      ((ChatHistoryC2CAllFragment)localObject1).D = "0";
+    }
+    Object localObject1 = this.this$0.a;
+    boolean bool = true;
+    VipUtils.a((AppInterface)localObject1, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.C });
+    try
+    {
+      localObject2 = this.this$0.a.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setting_guide_tips_flag");
+      ((StringBuilder)localObject1).append(this.this$0.a.getCurrentAccountUin());
+      if (1 == ((SharedPreferences)localObject2).getInt(((StringBuilder)localObject1).toString(), -1)) {
+        break label616;
+      }
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setting_guide_tips_show_time");
+      localStringBuilder.append(this.this$0.a.getCurrentAccountUin());
+      j = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 1);
+      if (this.this$0.D.equals("2")) {
+        break label658;
+      }
+      if (this.this$0.D.equals("1")) {
+        if (this.this$0.B < 3) {
+          break label663;
+        }
+      } else {
+        if (!this.a) {
+          break label663;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      int j;
+      label415:
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("settingGuideFlag Exception: ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.d("Q.history.C2CAllFragment", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (i != 0)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("setting_guide_tips_flag");
+      ((StringBuilder)localObject2).append(this.this$0.a.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), 1);
+    }
+    int i = TimeZone.getTimeZone("GMT+8").getRawOffset();
+    i = (int)Math.ceil((System.currentTimeMillis() + i) / 86400000L);
+    if (j != i) {
+      break label415;
     }
     for (;;)
     {
-      try
+      if (QLog.isColorLevel())
       {
-        localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
-        if (1 == ((SharedPreferences)localObject).getInt("setting_guide_tips_flag" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1)) {
-          continue;
-        }
-        localEditor = ((SharedPreferences)localObject).edit();
-        j = ((SharedPreferences)localObject).getInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1);
-        if (!this.this$0.c.equals("2")) {
-          continue;
-        }
-        i = 1;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("settingGuideFlag isShow: ");
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(", showDay: ");
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(", nowDay: ");
+        ((StringBuilder)localObject2).append(i);
+        QLog.d("Q.history.C2CAllFragment", 2, ((StringBuilder)localObject2).toString());
       }
-      catch (Exception localException)
+      if (bool)
       {
-        Object localObject;
-        SharedPreferences.Editor localEditor;
-        int j;
-        boolean bool2;
-        QLog.d("Q.history.C2CAllFragment", 2, "settingGuideFlag Exception: " + localException.getMessage());
-        continue;
-        int i = 0;
-        continue;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setting_guide_tips_show_time");
+        ((StringBuilder)localObject2).append(this.this$0.a.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), i).commit();
+        this.this$0.F.sendMessage(this.this$0.F.obtainMessage(10, this.this$0.O));
       }
-      if (i != 0) {
-        localEditor.putInt("setting_guide_tips_flag" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1);
-      }
-      i = TimeZone.getTimeZone("GMT+8").getRawOffset();
-      i = (int)Math.ceil((System.currentTimeMillis() + i) / 86400000L);
-      if (j != i) {
-        bool1 = true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.history.C2CAllFragment", 2, "settingGuideFlag isShow: " + bool1 + ", showDay: " + j + ", nowDay: " + i);
-      }
-      if (bool1)
+      label616:
+      if (this.this$0.G.z() == 0)
       {
-        localEditor.putInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i).commit();
-        this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
-      }
-      if (this.this$0.jdField_a_of_type_Alxa.b() == 0)
-      {
-        localObject = (amrg)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(59);
-        if (localObject != null) {
-          ((amrg)localObject).a();
+        MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+        if (localMessageRoamHandler != null) {
+          localMessageRoamHandler.a();
         }
       }
       return;
-      if (VipUtils.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        this.this$0.jdField_b_of_type_JavaLangString = "vip";
-        this.this$0.c = "1";
-        break;
-      }
-      this.this$0.jdField_b_of_type_JavaLangString = "notvip";
-      this.this$0.c = "0";
+      label658:
+      i = 1;
       break;
-      if (this.this$0.c.equals("1"))
-      {
-        if (this.this$0.jdField_a_of_type_Int < 3) {
-          continue;
-        }
-        i = 1;
-      }
-      else
-      {
-        bool2 = this.a;
-        if (!bool2) {
-          continue;
-        }
-        i = 1;
-      }
+      label663:
+      i = 0;
+      break;
+      bool = false;
     }
   }
 }

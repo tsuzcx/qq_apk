@@ -1,27 +1,17 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.international.activity.FeedbackActivity;
 
 public class fzf
-  implements TextWatcher
+  implements View.OnClickListener
 {
   public fzf(FeedbackActivity paramFeedbackActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramEditable.toString().trim()))
-    {
-      FeedbackActivity.a(this.a).setEnabled(false);
-      return;
-    }
-    FeedbackActivity.a(this.a).setEnabled(true);
+    FeedbackActivity.a(this.a);
+    this.a.finish();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -32,29 +32,29 @@ public class ShanbaiEffect
       }
       GLES20.glUniform1f(this.brightnessHandle, TAVGLUtils.lerp(this.brightnessNormal, this.brightnessMax, this.progress));
       GLES20.glUniform1f(this.contrastHandle, TAVGLUtils.lerp(this.contrastNormal, this.contrastMax, this.progress));
-    }
-    do
-    {
       return;
-      if (this.flashDown)
+    }
+    if (this.flashDown)
+    {
+      this.progress -= this.deltaTime * 7.0F;
+      if (this.progress <= 0.0F)
       {
-        this.progress -= this.deltaTime * 7.0F;
-        if (this.progress <= 0.0F)
-        {
-          this.flashUp = false;
-          this.flashDown = false;
-          this.progress = 0.0F;
-        }
-        GLES20.glUniform1f(this.brightnessHandle, TAVGLUtils.lerp(this.brightnessNormal, this.brightnessMax, this.progress));
-        GLES20.glUniform1f(this.contrastHandle, TAVGLUtils.lerp(this.contrastNormal, this.contrastMax, this.progress));
-        return;
+        this.flashUp = false;
+        this.flashDown = false;
+        this.progress = 0.0F;
       }
-      this.delayTime += this.deltaTime;
-    } while (this.delayTime <= 0.1F);
-    this.delayTime = 0.0F;
-    this.progress = 0.0F;
-    this.flashUp = true;
-    this.flashDown = false;
+      GLES20.glUniform1f(this.brightnessHandle, TAVGLUtils.lerp(this.brightnessNormal, this.brightnessMax, this.progress));
+      GLES20.glUniform1f(this.contrastHandle, TAVGLUtils.lerp(this.contrastNormal, this.contrastMax, this.progress));
+      return;
+    }
+    this.delayTime += this.deltaTime;
+    if (this.delayTime > 0.1F)
+    {
+      this.delayTime = 0.0F;
+      this.progress = 0.0F;
+      this.flashUp = true;
+      this.flashDown = false;
+    }
   }
   
   protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
@@ -69,10 +69,17 @@ public class ShanbaiEffect
   
   protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (paramTAVTextureInfo.textureType == 36197) {
-      return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES " + FRAGMENT_SHADER_CODE;
+    if (paramTAVTextureInfo.textureType == 36197)
+    {
+      paramTAVTextureInfo = new StringBuilder();
+      paramTAVTextureInfo.append(" #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES ");
+      paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+      return paramTAVTextureInfo.toString();
     }
-    return "uniform sampler2D " + FRAGMENT_SHADER_CODE;
+    paramTAVTextureInfo = new StringBuilder();
+    paramTAVTextureInfo.append("uniform sampler2D ");
+    paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+    return paramTAVTextureInfo.toString();
   }
   
   protected void initShader(TAVTextureInfo paramTAVTextureInfo)
@@ -86,7 +93,7 @@ public class ShanbaiEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.taveffect.effects.ShanbaiEffect
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.startup.step;
 
-import amdq;
 import android.os.Build.VERSION;
-import apfv;
-import bdne;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerInitialler;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 public class OpenThreadCreateHook
   extends Step
@@ -13,18 +13,19 @@ public class OpenThreadCreateHook
   {
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new amdq();
-      apfv.a();
-      if ((Build.VERSION.SDK_INT <= 27) || (System.currentTimeMillis() % 10000L < bdne.A(BaseApplicationImpl.getApplication()))) {
-        apfv.b();
-      }
+      com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new ThreadManagerInitialler();
+      NativeMonitorConfigHelper.startHookThreadCreate();
+      int i = Build.VERSION.SDK_INT;
+    }
+    if (System.currentTimeMillis() % 10000L < SharedPreUtils.U(BaseApplicationImpl.getApplication())) {
+      NativeMonitorConfigHelper.setupSoLoadHook();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.OpenThreadCreateHook
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class MediaInfo
   extends JceStruct
@@ -49,20 +50,23 @@ public final class MediaInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picinfolist != null) {
-      paramJceOutputStream.write(this.picinfolist, 0);
+    Object localObject = this.picinfolist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.vedioinfo != null) {
-      paramJceOutputStream.write(this.vedioinfo, 1);
+    localObject = this.vedioinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.audioinfo != null) {
-      paramJceOutputStream.write(this.audioinfo, 2);
+    localObject = this.audioinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

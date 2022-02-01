@@ -1,25 +1,20 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bdhb;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
-final class PtvTemplateManager$2
+class PtvTemplateManager$2
   implements Runnable
 {
-  PtvTemplateManager$2(String paramString1, String paramString2) {}
+  PtvTemplateManager$2(PtvTemplateManager paramPtvTemplateManager, List paramList) {}
   
   public void run()
   {
-    bdhb.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
-    }
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.2
  * JD-Core Version:    0.7.0.1
  */

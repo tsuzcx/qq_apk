@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apuy;
-import apvi;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
-public class EmoticonPanelMallHelper$1
+class EmoticonPanelMallHelper$1
   implements Runnable
 {
-  public EmoticonPanelMallHelper$1(apvi paramapvi, boolean paramBoolean, apuy paramapuy) {}
+  EmoticonPanelMallHelper$1(EmoticonPanelMallHelper paramEmoticonPanelMallHelper, boolean paramBoolean, EmoticonPanelController.PanelDataCallback paramPanelDataCallback) {}
   
   public void run()
   {
-    this.this$0.a.d(this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Apuy != null) {
+    ((EmoticonPanelController)this.this$0.mPanelController).syncInitPanelDataList(this.val$hasBigEmotion);
+    if (this.val$callback != null) {
       ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.1.1(this));
     }
   }

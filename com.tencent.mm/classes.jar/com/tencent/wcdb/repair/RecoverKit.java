@@ -21,17 +21,17 @@ public class RecoverKit
   
   public RecoverKit(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(12654);
+    AppMethodBeat.i(3340);
     this.mDB = paramSQLiteDatabase;
     this.mLastError = null;
     this.mNativePtr = nativeInit(paramString, paramArrayOfByte);
     if (this.mNativePtr == 0L)
     {
       paramSQLiteDatabase = new SQLiteException("Failed initialize recover context.");
-      AppMethodBeat.o(12654);
+      AppMethodBeat.o(3340);
       throw paramSQLiteDatabase;
     }
-    AppMethodBeat.o(12654);
+    AppMethodBeat.o(3340);
   }
   
   private static native void nativeCancel(long paramLong);
@@ -55,10 +55,10 @@ public class RecoverKit
   
   protected void finalize()
   {
-    AppMethodBeat.i(12659);
+    AppMethodBeat.i(3345);
     release();
     super.finalize();
-    AppMethodBeat.o(12659);
+    AppMethodBeat.o(3345);
   }
   
   public String lastError()
@@ -68,31 +68,31 @@ public class RecoverKit
   
   public void onCancel()
   {
-    AppMethodBeat.i(12657);
+    AppMethodBeat.i(3343);
     if (this.mNativePtr != 0L) {
       nativeCancel(this.mNativePtr);
     }
-    AppMethodBeat.o(12657);
+    AppMethodBeat.o(3343);
   }
   
   public void release()
   {
-    AppMethodBeat.i(12658);
+    AppMethodBeat.i(3344);
     if (this.mNativePtr != 0L)
     {
       nativeFinish(this.mNativePtr);
       this.mNativePtr = 0L;
     }
-    AppMethodBeat.o(12658);
+    AppMethodBeat.o(3344);
   }
   
   public int run(boolean paramBoolean)
   {
-    AppMethodBeat.i(12655);
+    AppMethodBeat.i(3341);
     if (this.mNativePtr == 0L)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("RecoverKit not initialized.");
-      AppMethodBeat.o(12655);
+      AppMethodBeat.o(3341);
       throw localIllegalStateException;
     }
     long l = this.mDB.acquireNativeConnectionHandle("recover", false, false);
@@ -103,22 +103,22 @@ public class RecoverKit
     this.mLastError = nativeLastError(this.mNativePtr);
     nativeFinish(this.mNativePtr);
     this.mNativePtr = 0L;
-    AppMethodBeat.o(12655);
+    AppMethodBeat.o(3341);
     return i;
   }
   
   public int run(boolean paramBoolean, CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12656);
+    AppMethodBeat.i(3342);
     if (paramCancellationSignal.isCanceled())
     {
-      AppMethodBeat.o(12656);
+      AppMethodBeat.o(3342);
       return 1;
     }
     paramCancellationSignal.setOnCancelListener(this);
     int i = run(paramBoolean);
     paramCancellationSignal.setOnCancelListener(null);
-    AppMethodBeat.o(12656);
+    AppMethodBeat.o(3342);
     return i;
   }
   
@@ -129,7 +129,7 @@ public class RecoverKit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.repair.RecoverKit
  * JD-Core Version:    0.7.0.1
  */

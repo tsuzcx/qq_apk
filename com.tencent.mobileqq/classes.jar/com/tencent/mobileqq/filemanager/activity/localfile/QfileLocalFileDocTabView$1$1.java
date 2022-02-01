@@ -13,23 +13,23 @@ class QfileLocalFileDocTabView$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView$1.this$0.c.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    this.b.this$0.l.clear();
+    Iterator localIterator = this.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      List localList = (List)this.a.get(str);
       if (localList.size() != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView$1.this$0.c.put(str, localList);
+        this.b.this$0.l.put(str, localList);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView$1.this$0.i();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileDocTabView$1.this$0.setSelect(0);
+    this.b.this$0.i();
+    this.b.this$0.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView.1.1
  * JD-Core Version:    0.7.0.1
  */

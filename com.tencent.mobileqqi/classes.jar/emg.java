@@ -10,8 +10,11 @@ public class emg
   
   public void onClick(View paramView)
   {
-    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 1, true);
-    paramView.setClickable(false);
+    if (!CameraPreviewActivity.a(this.a))
+    {
+      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
+      paramView.setClickable(false);
+    }
   }
 }
 

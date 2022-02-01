@@ -1,58 +1,78 @@
 package com.dataline.activities;
 
-import aagb;
-import alud;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import com.tencent.device.utils.SmartDeviceReport;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PrinterBindTipActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private long b;
+  private Button c;
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165395);
-    super.setContentView(2131559450);
-    super.setTitle(alud.a(2131708815));
-    super.setLeftViewName(2131691668);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363266));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    super.getWindow().setBackgroundDrawableResource(2131165716);
+    super.setContentView(2131625601);
+    super.setTitle(HardCodeUtil.a(2131906198));
+    super.setLeftViewName(2131888536);
+    this.c = ((Button)super.findViewById(2131429496));
+    this.c.setOnClickListener(this);
     paramBundle = super.getIntent();
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");
-    this.jdField_a_of_type_Long = paramBundle.getIntExtra("din", 0);
+    this.a = paramBundle.getStringExtra("printer_bind_url");
+    this.b = paramBundle.getIntExtra("din", 0);
     return true;
   }
   
   public void onClick(View paramView)
   {
-    aagb.a();
-    aagb.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    SmartDeviceReport.a();
+    SmartDeviceReport.a(this.app, this.b, "printer_hp", 5, 0, 0);
+    if (!TextUtils.isEmpty(this.a))
     {
-      paramView = new Intent(this, QQBrowserActivity.class);
-      paramView.putExtra("key_isReadModeEnabled", true);
-      paramView.putExtra("fromQrcode", true);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      super.startActivity(paramView);
+      Intent localIntent = new Intent(this, QQBrowserActivity.class);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromQrcode", true);
+      localIntent.putExtra("url", this.a);
+      super.startActivity(localIntent);
     }
     super.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterBindTipActivity
  * JD-Core Version:    0.7.0.1
  */

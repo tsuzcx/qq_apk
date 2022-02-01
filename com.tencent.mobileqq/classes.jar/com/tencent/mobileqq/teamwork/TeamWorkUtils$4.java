@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.teamwork;
 
-import baic;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import java.util.ArrayList;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
 
-public final class TeamWorkUtils$4
+final class TeamWorkUtils$4
   implements Runnable
 {
-  public TeamWorkUtils$4(String paramString, QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity) {}
+  TeamWorkUtils$4(QQAppInterface paramQQAppInterface, msg_comm.Msg paramMsg, im_msg_body.NotOnlineFile paramNotOnlineFile, MessageForStructing paramMessageForStructing) {}
   
   public void run()
   {
-    baic.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.getFileTransferHandler().a(this.a.getMsgHandler(), new ArrayList(), this.b, this.c, this.d.frienduin, false, false, this.d.vipBubbleID, this.d.vipBubbleDiyTextId, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkUtils.4
  * JD-Core Version:    0.7.0.1
  */

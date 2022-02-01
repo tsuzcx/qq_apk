@@ -3,66 +3,59 @@ package com.tencent.mm.plugin.card.sharecard.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.base.c;
-import java.util.List;
 
 public final class h
   implements a
 {
-  private g krx;
+  private g wxT;
   
   public h(g paramg)
   {
-    this.krx = paramg;
+    this.wxT = paramg;
   }
   
-  public final void aaK()
+  public final b If(int paramInt)
   {
-    AppMethodBeat.i(88164);
-    if (this.krx != null) {
-      this.krx.notifyDataSetChanged();
+    AppMethodBeat.i(113099);
+    if (this.wxT != null)
+    {
+      AppMethodBeat.o(113099);
+      throw null;
     }
-    AppMethodBeat.o(88164);
+    AppMethodBeat.o(113099);
+    return null;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(88162);
-    this.krx.notifyDataSetChanged();
-    AppMethodBeat.o(88162);
+    AppMethodBeat.i(113096);
+    this.wxT.notifyDataSetChanged();
+    AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(88163);
-    if (this.krx != null)
+    AppMethodBeat.i(113097);
+    if (this.wxT != null)
     {
-      g localg = this.krx;
-      localg.krl.release();
-      localg.krl = null;
-      localg.krw.clear();
-      localg.mContext = null;
-      this.krx = null;
+      AppMethodBeat.o(113097);
+      throw null;
     }
-    AppMethodBeat.o(88163);
+    AppMethodBeat.o(113097);
   }
   
-  public final b sU(int paramInt)
+  public final void onNotify()
   {
-    AppMethodBeat.i(88165);
-    if (this.krx != null)
-    {
-      b localb = this.krx.sU(paramInt);
-      AppMethodBeat.o(88165);
-      return localb;
+    AppMethodBeat.i(113098);
+    if (this.wxT != null) {
+      this.wxT.notifyDataSetChanged();
     }
-    AppMethodBeat.o(88165);
-    return null;
+    AppMethodBeat.o(113098);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.h
  * JD-Core Version:    0.7.0.1
  */

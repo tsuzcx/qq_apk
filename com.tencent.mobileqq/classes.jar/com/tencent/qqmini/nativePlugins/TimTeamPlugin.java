@@ -1,65 +1,78 @@
 package com.tencent.qqmini.nativePlugins;
 
-import alof;
-import android.app.Activity;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import bglv;
-import bgok;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class TimTeamPlugin
   extends BaseJsPlugin
 {
-  public static final String ACTION_SHOW_PROFILE = "showCoopSpaceProfile";
-  public static final String PLUGIN_NAME = "tim_space";
-  public static final String TAG = "TimTeamPlugin";
-  
-  private JSONObject getParam(bgok parambgok)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgok.b);
-      return localJSONObject;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TimTeamPlugin", "Failed to parse jsonParams=" + parambgok.b);
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to parse jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QMLog.e("TimTeamPlugin", ((StringBuilder)localObject).toString());
     return null;
   }
   
-  public void timSpace(bgok parambgok)
+  @JsEvent({"tim_space"})
+  public void timSpace(RequestEvent paramRequestEvent)
   {
     try
     {
-      parambgok = new JSONObject(getParam(parambgok).getString("data")).getString("action");
-      if (QMLog.isColorLevel()) {
-        QMLog.d("TimTeamPlugin", "onInvoke|" + parambgok);
-      }
-      if (TextUtils.equals(parambgok, "showCoopSpaceProfile"))
+      paramRequestEvent = new JSONObject(a(paramRequestEvent).getString("data")).getString("action");
+      if (QMLog.isColorLevel())
       {
-        parambgok = this.mMiniAppContext.a();
-        Intent localIntent = new Intent(parambgok, AccountDetailActivity.class);
-        localIntent.putExtra("uin", alof.aV);
-        parambgok.startActivity(localIntent);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onInvoke|");
+        localStringBuilder.append(paramRequestEvent);
+        QMLog.d("TimTeamPlugin", localStringBuilder.toString());
       }
+      if (!TextUtils.equals(paramRequestEvent, "showCoopSpaceProfile")) {
+        break label118;
+      }
+      paramRequestEvent = new ActivityURIRequest(this.mMiniAppContext.getAttachedActivity(), "/pubaccount/detail");
+      paramRequestEvent.extra().putString("uin", AppConstants.TIM_TEAM_UIN);
+      QRoute.startUri(paramRequestEvent, null);
       return;
     }
-    catch (Exception parambgok)
+    catch (Exception paramRequestEvent)
     {
-      while (!QMLog.isColorLevel()) {}
+      label105:
+      label118:
+      break label105;
+    }
+    if (QMLog.isColorLevel()) {
       QMLog.w("TimTeamPlugin", "decode param error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TimTeamPlugin
  * JD-Core Version:    0.7.0.1
  */

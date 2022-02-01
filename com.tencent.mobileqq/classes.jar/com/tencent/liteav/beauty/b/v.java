@@ -1,0 +1,54 @@
+package com.tencent.liteav.beauty.b;
+
+import android.opengl.GLES20;
+import com.tencent.liteav.basic.opengl.j;
+import java.util.List;
+
+public class v
+  extends u
+{
+  protected float u;
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    t();
+  }
+  
+  public boolean b()
+  {
+    return (super.b()) && (GLES20.glGetError() == 0);
+  }
+  
+  public float r()
+  {
+    return this.u;
+  }
+  
+  public float s()
+  {
+    return this.u;
+  }
+  
+  protected void t()
+  {
+    float f = s();
+    j localj = (j)this.r.get(0);
+    int i = GLES20.glGetUniformLocation(localj.q(), "texelWidthOffset");
+    int j = GLES20.glGetUniformLocation(localj.q(), "texelHeightOffset");
+    localj.a(i, f / this.e);
+    localj.a(j, 0.0F);
+    f = r();
+    localj = (j)this.r.get(1);
+    i = GLES20.glGetUniformLocation(localj.q(), "texelWidthOffset");
+    j = GLES20.glGetUniformLocation(localj.q(), "texelHeightOffset");
+    localj.a(i, 0.0F);
+    localj.a(j, f / this.f);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.liteav.beauty.b.v
+ * JD-Core Version:    0.7.0.1
+ */

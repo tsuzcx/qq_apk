@@ -10,44 +10,44 @@ import java.io.IOException;
 final class h
   extends com.tencent.mm.wear.app.g.a
 {
-  private a acV;
+  private a agw;
   
   public h(b paramb, a parama)
   {
-    this.acV = parama;
+    this.agw = parama;
   }
   
   protected final void execute()
   {
-    Object localObject1 = new e(com.tencent.mm.wear.app.b.h.mb().lS());
+    Object localObject1 = new e(com.tencent.mm.wear.app.b.h.mO().mF());
     Object localObject2 = new com.tencent.mm.wear.app.a.g();
-    ((com.tencent.mm.wear.app.a.g)localObject2).aaO = 11007;
+    ((com.tencent.mm.wear.app.a.g)localObject2).aep = 11007;
     q localq = new q();
-    localq.VO = this.acV.acG;
-    localq.VS = this.acV.acR;
+    localq.XJ = this.agw.agh;
+    localq.XN = this.agw.ags;
     try
     {
       ((com.tencent.mm.wear.app.a.g)localObject2).data = localq.toByteArray();
       label67:
       localObject2 = ((e)localObject1).a((com.tencent.mm.wear.app.a.g)localObject2);
-      if ((((com.tencent.mm.wear.app.a.h)localObject2).aaw == 0) && (((com.tencent.mm.wear.app.a.h)localObject2).data != null)) {
+      if ((((com.tencent.mm.wear.app.a.h)localObject2).adX == 0) && (((com.tencent.mm.wear.app.a.h)localObject2).data != null)) {
         localObject1 = new r();
       }
       try
       {
         ((r)localObject1).h(((com.tencent.mm.wear.app.a.h)localObject2).data);
         label104:
-        if (((r)localObject1).Vn != null)
+        if (((r)localObject1).Xi != null)
         {
-          localObject2 = b.e(this.acV);
-          d.c("MicroMsg.MMImageLoader", "request msg image success %b %s", new Object[] { Long.valueOf(this.acV.acG), localObject2 });
-          localObject2 = new File(com.tencent.mm.wear.app.b.h.mm(), (String)localObject2);
-          ((File)localObject2).setLastModified(((r)localObject1).Vl);
+          localObject2 = b.e(this.agw);
+          d.c("MicroMsg.MMImageLoader", "request msg image success %b %s", new Object[] { Long.valueOf(this.agw.agh), localObject2 });
+          localObject2 = new File(com.tencent.mm.wear.app.b.h.mY(), (String)localObject2);
+          ((File)localObject2).setLastModified(((r)localObject1).Xg);
           if (!((File)localObject2).getParentFile().exists()) {
             ((File)localObject2).getParentFile().mkdirs();
           }
-          if (com.tencent.mm.wear.a.f.c.a((File)localObject2, ((r)localObject1).Vn.toByteArray())) {
-            b.d(this.acW).e(new c(this.acW, this.acV));
+          if (com.tencent.mm.wear.a.f.c.a((File)localObject2, ((r)localObject1).Xi.toByteArray())) {
+            b.d(this.agx).o(new c(this.agx, this.agw));
           }
         }
         return;

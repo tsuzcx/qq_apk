@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="121.0dip" android:layout_marginBottom="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/qb9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="86.0dip" android:text="穿梭机" android:singleLine="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_below="@id/qb9" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/jcz" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff878b99" android:layout_gravity="center_vertical" android:id="@id/qby" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/ob7" android:background="@drawable/dnx" android:layout_width="85.0dip" android:layout_height="105.0dip" android:foreground="@drawable/dos" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.widget.RoundedImageView android:id="@id/nz2" android:layout_width="85.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_above="@id/mqu" android:layout_alignParentTop="true" app:riv_corner_radius_top_left="16.0px" app:riv_corner_radius_top_right="16.0px" />
+        <Button android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mqu" android:background="@drawable/dot" android:layout_width="fill_parent" android:layout_height="31.0dip" android:text="赠送" android:layout_alignParentBottom="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:layout_above="@id/mqu" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/jcy" />
+            <TextView android:textSize="10.0sp" android:textColor="#ff00cafc" android:gravity="center" android:id="@id/qc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="999" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/nz1" android:layout_width="66.0dip" android:layout_height="66.0dip" android:layout_marginTop="12.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cix" android:layout_width="fill_parent" android:layout_height="60.0dip"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cix" android:paddingBottom="10.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#8cffffff" android:gravity="center_vertical" android:id="@id/lii" android:background="@drawable/a29" android:paddingLeft="13.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="30.0dip" android:layout_marginRight="10.0dip" android:maxWidth="150.0dip" android:text="@string/pu3" android:maxLines="1" android:drawableLeft="@drawable/ht3" android:drawablePadding="5.0dip" android:layout_weight="1.0" android:contentDescription="@string/pvk" />
-    <RelativeLayout android:id="@id/lij" android:layout_width="76.0dip" android:layout_height="fill_parent">
-        <ImageView android:id="@id/lig" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ht0" android:scaleType="center" android:layout_centerInParent="true" />
-        <TextView android:textSize="10.0dip" android:textColor="#d9ffffff" android:id="@id/cin" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-7.0dip" android:text="" android:layout_toRightOf="@id/lig" android:layout_alignTop="@id/lig" />
+    <TextView android:textSize="14.0sp" android:textColor="#8cffffff" android:gravity="center_vertical" android:id="@id/lii" android:background="@drawable/a29" android:paddingLeft="13.0dip" android:clickable="true" android:layout_width="130.0dip" android:layout_height="30.0dip" android:layout_marginRight="6.0dip" android:maxWidth="150.0dip" android:text="@string/pu3" android:maxLines="1" android:drawableLeft="@drawable/ht3" android:drawablePadding="5.0dip" android:contentDescription="@string/pvk" />
+    <RelativeLayout android:id="@id/lij" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.2">
+        <ImageView android:id="@id/lig" android:layout_width="wrap_content" android:layout_height="28.0dip" android:src="@drawable/ht0" android:scaleType="center" android:layout_centerInParent="true" />
+        <View android:id="@id/nfh" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_centerInParent="true" />
+        <TextView android:textSize="10.0sp" android:textColor="#d9ffffff" android:gravity="left" android:id="@id/cin" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="-30.0dip" android:singleLine="true" android:layout_toRightOf="@id/nfh" android:layout_alignTop="@id/lig" />
     </RelativeLayout>
-    <ImageView android:id="@id/cir" android:layout_width="76.0dip" android:layout_height="fill_parent" android:src="@drawable/ht2" android:scaleType="center" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bvd" android:layout_width="76.0dip" android:layout_height="fill_parent">
-        <ImageView android:id="@id/cil" android:visibility="visible" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hsy" android:scaleType="center" android:layout_weight="1.0" />
+    <ImageView android:id="@id/cir" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/ht2" android:scaleType="center" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bvd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:id="@id/cil" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="28.0dip" android:src="@drawable/hsy" android:scaleType="center" android:layout_weight="1.0" />
     </LinearLayout>
+    <FrameLayout android:id="@id/nfn" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center" android:id="@id/cj1" android:layout_width="wrap_content" android:layout_height="28.0dip" android:src="@drawable/in4" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center" android:id="@id/nfm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:src="@drawable/ink" android:layout_weight="1.0" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/nfj" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center" android:id="@id/nfi" android:layout_width="fill_parent" android:layout_height="28.0dip" android:src="@drawable/in6" />
+    </FrameLayout>
     <View android:id="@id/a6" android:focusable="true" android:visibility="gone" android:layout_width="1.0px" android:layout_height="1.0px" android:contentDescription="@string/q0w" />
 </LinearLayout>

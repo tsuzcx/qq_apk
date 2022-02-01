@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/iwz" android:background="@color/a84" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/gqx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/gql" android:background="@color/z2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/kzo" android:background="@drawable/a9n" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_alignParentBottom="true" android:layout_alignStart="@id/gqx" android:layout_alignEnd="@id/gqx" />
+    <ImageView android:id="@id/kzq" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:src="@raw/video_icon_in_gird" android:layout_alignParentBottom="true" android:layout_centerVertical="true" android:layout_marginStart="6.0dip" android:layout_alignParentStart="true" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:id="@id/kzs" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="--:--" android:maxLines="1" android:layout_alignTop="@id/kzq" android:layout_marginStart="10.0dip" android:layout_toEndOf="@id/kzq" />
+    <ImageView android:id="@id/c77" android:background="#e6323232" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/cd" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/lyg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.widget.MMNumberCheckbox android:textSize="@dimen/m3" android:textColor="@color/al6" android:gravity="center" android:id="@id/gq5" android:background="@drawable/aag" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginTop="@dimen/ig" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/ig" android:layout_alignParentEnd="true" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

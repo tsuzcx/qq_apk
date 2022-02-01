@@ -13,15 +13,21 @@ public final class device_lock_query_status$RspBody
   public static final int U32_RET_FIELD_NUMBER = 4;
   public static final int U32_SEQ_FIELD_NUMBER = 1;
   public static final int U32_STATUS_FIELD_NUMBER = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "u32_seq", "u32_status", "str_wording", "u32_ret" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_wording = PBField.initString("");
   public final PBUInt32Field u32_ret = PBField.initUInt32(0);
   public final PBUInt32Field u32_seq = PBField.initUInt32(0);
   public final PBUInt32Field u32_status = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "u32_seq", "u32_status", "str_wording", "u32_ret" }, new Object[] { localInteger, localInteger, "", localInteger }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.device_lock_query_status.RspBody
  * JD-Core Version:    0.7.0.1
  */

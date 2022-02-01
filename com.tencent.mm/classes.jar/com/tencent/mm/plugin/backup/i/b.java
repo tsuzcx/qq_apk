@@ -3,70 +3,70 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int jJg;
-  public com.tencent.mm.bv.b jJh;
+  public com.tencent.mm.bx.b vgA;
+  public int vgz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18045);
+    AppMethodBeat.i(22102);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.jJg);
-      if (this.jJh != null) {
-        paramVarArgs.c(2, this.jJh);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.vgz);
+      if (this.vgA != null) {
+        paramVarArgs.d(2, this.vgA);
       }
-      AppMethodBeat.o(18045);
+      AppMethodBeat.o(22102);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.jJg) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.vgz) + 0;
       paramInt = i;
-      if (this.jJh != null) {
-        paramInt = i + e.a.a.b.b.a.b(2, this.jJh);
+      if (this.vgA != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.vgA);
       }
-      AppMethodBeat.o(18045);
+      AppMethodBeat.o(22102);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(18045);
+      AppMethodBeat.o(22102);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       b localb = (b)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(18045);
+        AppMethodBeat.o(22102);
         return -1;
       case 1: 
-        localb.jJg = locala.CLY.sl();
-        AppMethodBeat.o(18045);
+        localb.vgz = locala.ajGk.aar();
+        AppMethodBeat.o(22102);
         return 0;
       }
-      localb.jJh = locala.CLY.eqS();
-      AppMethodBeat.o(18045);
+      localb.vgA = locala.ajGk.kFX();
+      AppMethodBeat.o(22102);
       return 0;
     }
-    AppMethodBeat.o(18045);
+    AppMethodBeat.o(22102);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.b
  * JD-Core Version:    0.7.0.1
  */

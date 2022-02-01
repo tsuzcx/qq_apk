@@ -9,7 +9,11 @@ class PreconditionsKt__AssertionsJVMKt
   @InlineOnly
   private static final void jdMethod_assert(boolean paramBoolean)
   {
-    if ((_Assertions.ENABLED) && (!paramBoolean)) {
+    if (_Assertions.ENABLED)
+    {
+      if (paramBoolean) {
+        return;
+      }
       throw ((Throwable)new AssertionError("Assertion failed"));
     }
   }
@@ -17,14 +21,18 @@ class PreconditionsKt__AssertionsJVMKt
   @InlineOnly
   private static final void jdMethod_assert(boolean paramBoolean, Function0<? extends Object> paramFunction0)
   {
-    if ((_Assertions.ENABLED) && (!paramBoolean)) {
+    if (_Assertions.ENABLED)
+    {
+      if (paramBoolean) {
+        return;
+      }
       throw ((Throwable)new AssertionError(paramFunction0.invoke()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.PreconditionsKt__AssertionsJVMKt
  * JD-Core Version:    0.7.0.1
  */

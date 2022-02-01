@@ -79,12 +79,14 @@ public final class HlsMediaSource
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
   {
-    if (paramMediaPeriodId.periodIndex == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      return new HlsMediaPeriod(this.extractorFactory, this.playlistTracker, this.dataSourceFactory, this.minLoadableRetryCount, this.eventDispatcher, paramAllocator, this.compositeSequenceableLoaderFactory, this.allowChunklessPreparation);
+    boolean bool;
+    if (paramMediaPeriodId.periodIndex == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    return new HlsMediaPeriod(this.extractorFactory, this.playlistTracker, this.dataSourceFactory, this.minLoadableRetryCount, this.eventDispatcher, paramAllocator, this.compositeSequenceableLoaderFactory, this.allowChunklessPreparation);
   }
   
   public void maybeThrowSourceInfoRefreshError()
@@ -95,72 +97,46 @@ public final class HlsMediaSource
   public void onPrimaryPlaylistRefreshed(HlsMediaPlaylist paramHlsMediaPlaylist)
   {
     long l1;
-    long l3;
-    label34:
-    long l2;
-    long l6;
-    long l4;
-    label80:
-    long l5;
-    label112:
-    boolean bool;
-    if (paramHlsMediaPlaylist.hasProgramDateTime)
-    {
+    if (paramHlsMediaPlaylist.hasProgramDateTime) {
       l1 = C.usToMs(paramHlsMediaPlaylist.startTimeUs);
-      if ((paramHlsMediaPlaylist.playlistType != 2) && (paramHlsMediaPlaylist.playlistType != 1)) {
-        break label190;
-      }
-      l3 = l1;
-      l2 = paramHlsMediaPlaylist.startOffsetUs;
-      if (!this.playlistTracker.isLive()) {
-        break label243;
-      }
-      l6 = paramHlsMediaPlaylist.startTimeUs - this.playlistTracker.getInitialStartTimeUs();
-      if (!paramHlsMediaPlaylist.hasEndTag) {
-        break label198;
-      }
-      l4 = l6 + paramHlsMediaPlaylist.durationUs;
-      localObject = paramHlsMediaPlaylist.segments;
-      l5 = l2;
-      if (l2 == -9223372036854775807L)
-      {
-        if (!((List)localObject).isEmpty()) {
-          break label206;
-        }
-        l2 = 0L;
-        l5 = l2;
-      }
-      l2 = paramHlsMediaPlaylist.durationUs;
-      if (paramHlsMediaPlaylist.hasEndTag) {
-        break label237;
-      }
-      bool = true;
-    }
-    label132:
-    for (Object localObject = new SinglePeriodTimeline(l3, l1, l4, l2, l6, l5, true, bool);; localObject = new SinglePeriodTimeline(l3, l1, paramHlsMediaPlaylist.durationUs, paramHlsMediaPlaylist.durationUs, 0L, l4, true, false))
-    {
-      this.sourceListener.onSourceInfoRefreshed(this, (Timeline)localObject, new HlsManifest(this.playlistTracker.getMasterPlaylist(), paramHlsMediaPlaylist));
-      return;
+    } else {
       l1 = -9223372036854775807L;
-      break;
-      label190:
-      l3 = -9223372036854775807L;
-      break label34;
-      label198:
-      l4 = -9223372036854775807L;
-      break label80;
-      label206:
-      l2 = ((HlsMediaPlaylist.Segment)((List)localObject).get(Math.max(0, ((List)localObject).size() - 3))).relativeStartTimeUs;
-      break label112;
-      label237:
-      bool = false;
-      break label132;
-      label243:
-      l4 = l2;
-      if (l2 == -9223372036854775807L) {
-        l4 = 0L;
-      }
     }
+    long l3;
+    if ((paramHlsMediaPlaylist.playlistType != 2) && (paramHlsMediaPlaylist.playlistType != 1)) {
+      l3 = -9223372036854775807L;
+    } else {
+      l3 = l1;
+    }
+    long l2 = paramHlsMediaPlaylist.startOffsetUs;
+    Object localObject;
+    if (this.playlistTracker.isLive())
+    {
+      long l5 = paramHlsMediaPlaylist.startTimeUs - this.playlistTracker.getInitialStartTimeUs();
+      long l4;
+      if (paramHlsMediaPlaylist.hasEndTag) {
+        l4 = l5 + paramHlsMediaPlaylist.durationUs;
+      } else {
+        l4 = -9223372036854775807L;
+      }
+      localObject = paramHlsMediaPlaylist.segments;
+      if (l2 == -9223372036854775807L) {
+        if (((List)localObject).isEmpty()) {
+          l2 = 0L;
+        } else {
+          l2 = ((HlsMediaPlaylist.Segment)((List)localObject).get(Math.max(0, ((List)localObject).size() - 3))).relativeStartTimeUs;
+        }
+      }
+      localObject = new SinglePeriodTimeline(l3, l1, l4, paramHlsMediaPlaylist.durationUs, l5, l2, true, paramHlsMediaPlaylist.hasEndTag ^ true);
+    }
+    else
+    {
+      if (l2 == -9223372036854775807L) {
+        l2 = 0L;
+      }
+      localObject = new SinglePeriodTimeline(l3, l1, paramHlsMediaPlaylist.durationUs, paramHlsMediaPlaylist.durationUs, 0L, l2, true, false);
+    }
+    this.sourceListener.onSourceInfoRefreshed(this, (Timeline)localObject, new HlsManifest(this.playlistTracker.getMasterPlaylist(), paramHlsMediaPlaylist));
   }
   
   public void prepareSource(ExoPlayer paramExoPlayer, boolean paramBoolean, MediaSource.Listener paramListener)
@@ -177,9 +153,10 @@ public final class HlsMediaSource
   
   public void releaseSource()
   {
-    if (this.playlistTracker != null)
+    HlsPlaylistTracker localHlsPlaylistTracker = this.playlistTracker;
+    if (localHlsPlaylistTracker != null)
     {
-      this.playlistTracker.release();
+      localHlsPlaylistTracker.release();
       this.playlistTracker = null;
     }
     this.sourceListener = null;
@@ -187,7 +164,7 @@ public final class HlsMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsMediaSource
  * JD-Core Version:    0.7.0.1
  */

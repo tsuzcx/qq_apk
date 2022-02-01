@@ -4,15 +4,13 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import bdzf;
-import bjcv;
-import bjcw;
-import bjhx;
-import bjtz;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import common.qzone.component.util.SecurityUtil;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.util.FileUtils;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,16 +18,16 @@ public class CrashGuard
 {
   private static final int DEFAULT_CRASH_DURATION_AFTER_LAUNCH = 15;
   private static final int DEFAULT_CRASH_MAX_COUNT = 2;
-  private static long appLaunchTime;
+  private static long appLaunchTime = 0L;
   private static int crashBetweenLaunch = -1;
   private Runnable clearTimestamp;
-  private bjcv crashListener;
+  private CrashGuard.CrashListener crashListener;
   AtomicBoolean isTimeOvered = new AtomicBoolean(false);
   private Handler mHandler;
   
   public static void clearFileCache(Context paramContext)
   {
-    bjhx.a(paramContext);
+    CacheManager.clearFileCache(paramContext);
   }
   
   public static int getCrashDurationAfterLaunch()
@@ -44,7 +42,7 @@ public class CrashGuard
   
   public static CrashGuard getInstance()
   {
-    return bjcw.a;
+    return CrashGuard.H.instance;
   }
   
   public void clearCache(BaseApplication paramBaseApplication, String paramString)
@@ -53,24 +51,48 @@ public class CrashGuard
     if (!TextUtils.isEmpty(paramString)) {
       paramBaseApplication.deleteDatabase(SecurityUtil.a(paramString));
     }
-    paramBaseApplication = paramBaseApplication.getFilesDir().getParent() + File.separator + "shared_prefs";
+    paramString = new StringBuilder();
+    paramString.append(paramBaseApplication.getFilesDir().getParent());
+    paramString.append(File.separator);
+    paramString.append("shared_prefs");
+    paramBaseApplication = paramString.toString();
     if (!TextUtils.isEmpty(paramBaseApplication))
     {
-      bjtz.a(new File(paramBaseApplication + File.separator + "qz_predownload_config.xml"));
-      bjtz.a(new File(paramBaseApplication + File.separator + "QZ_Per_Config.xml"));
-      bjtz.a(new File(paramBaseApplication + File.separator + "QZONE_UNREAD.xml"));
+      paramString = new StringBuilder();
+      paramString.append(paramBaseApplication);
+      paramString.append(File.separator);
+      paramString.append("qz_predownload_config.xml");
+      FileUtils.deleteFile(new File(paramString.toString()));
+      paramString = new StringBuilder();
+      paramString.append(paramBaseApplication);
+      paramString.append(File.separator);
+      paramString.append("QZ_Per_Config.xml");
+      FileUtils.deleteFile(new File(paramString.toString()));
+      paramString = new StringBuilder();
+      paramString.append(paramBaseApplication);
+      paramString.append(File.separator);
+      paramString.append("QZONE_UNREAD.xml");
+      FileUtils.deleteFile(new File(paramString.toString()));
     }
-    paramBaseApplication = bdzf.a(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace");
+    paramBaseApplication = new StringBuilder();
+    paramBaseApplication.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    paramBaseApplication.append(File.separator);
+    paramBaseApplication.append("tencent");
+    paramBaseApplication.append(File.separator);
+    paramBaseApplication.append("MobileQQ");
+    paramBaseApplication.append(File.separator);
+    paramBaseApplication.append("trace");
+    paramBaseApplication = VFSAssistantUtils.getSDKPrivatePath(paramBaseApplication.toString());
     if (paramBaseApplication != null) {
-      bjtz.a(new File(paramBaseApplication));
+      FileUtils.deleteFile(new File(paramBaseApplication));
     }
   }
   
-  public void onAppLaunch(long paramLong, Handler paramHandler, bjcv parambjcv)
+  public void onAppLaunch(long paramLong, Handler paramHandler, CrashGuard.CrashListener paramCrashListener)
   {
     appLaunchTime = System.currentTimeMillis();
     this.mHandler = paramHandler;
-    this.crashListener = parambjcv;
+    this.crashListener = paramCrashListener;
     if (this.clearTimestamp == null) {
       this.clearTimestamp = new CrashGuard.1(this, paramLong);
     }
@@ -82,16 +104,18 @@ public class CrashGuard
   
   public void onException(Throwable paramThrowable, long paramLong)
   {
-    int j = 0;
-    if (this.crashListener != null) {
-      this.crashListener.a(paramThrowable);
+    Object localObject = this.crashListener;
+    if (localObject != null) {
+      ((CrashGuard.CrashListener)localObject).onCrashHandle(paramThrowable);
     }
     if (this.isTimeOvered.get()) {
       return;
     }
-    if (this.clearTimestamp != null) {
-      this.mHandler.removeCallbacks(this.clearTimestamp);
+    paramThrowable = this.clearTimestamp;
+    if (paramThrowable != null) {
+      this.mHandler.removeCallbacks(paramThrowable);
     }
+    int j = 0;
     int i = LocalMultiProcConfig.getInt4Uin("key_crash_count", 0, paramLong);
     if (crashBetweenLaunch < 0) {
       crashBetweenLaunch = getCrashDurationAfterLaunch();
@@ -99,28 +123,28 @@ public class CrashGuard
     if (System.currentTimeMillis() - appLaunchTime <= crashBetweenLaunch)
     {
       i += 1;
-      paramThrowable = String.valueOf(paramLong);
-      if (i < getCrashMaxCount()) {
-        break label164;
-      }
-      QLog.i("QZLog", 1, "crash in a row, clearCache " + paramThrowable);
+    }
+    else
+    {
+      QLog.i("QZLog", 1, "clear crash count with overtime");
+      i = 0;
+    }
+    paramThrowable = String.valueOf(paramLong);
+    if (i >= getCrashMaxCount())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("crash in a row, clearCache ");
+      ((StringBuilder)localObject).append(paramThrowable);
+      QLog.i("QZLog", 1, ((StringBuilder)localObject).toString());
       clearCache(BaseApplication.getContext(), paramThrowable);
       i = j;
     }
-    label164:
-    for (;;)
-    {
-      LocalMultiProcConfig.putInt4Uin("key_crash_count", i, paramLong);
-      return;
-      QLog.i("QZLog", 1, "clear crash count with overtime");
-      i = 0;
-      break;
-    }
+    LocalMultiProcConfig.putInt4Uin("key_crash_count", i, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.CrashGuard
  * JD-Core Version:    0.7.0.1
  */

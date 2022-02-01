@@ -10,251 +10,251 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.ParcelFileDescriptor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.util.f;
+import com.tencent.xweb.util.l;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
+import org.xwalk.core.XWalkFileUtil;
 
 public class XWebCoreContentProvider
   extends ContentProvider
 {
-  private static void a(Context paramContext, XWebCoreContentProvider.c paramc)
+  public static final String[] aifP;
+  private static AtomicBoolean aifQ;
+  private static AtomicLong aifR;
+  
+  static
   {
-    AppMethodBeat.i(3950);
+    AppMethodBeat.i(212393);
+    aifP = new String[] { "com.tencent.mm" };
+    aifQ = new AtomicBoolean(false);
+    aifR = new AtomicLong(0L);
+    AppMethodBeat.o(212393);
+  }
+  
+  private static void a(Context paramContext, c paramc)
+  {
+    AppMethodBeat.i(156928);
     String str1;
     Object localObject;
-    if (paramc.BEx.length() > 100)
+    if (paramc.aifT.length() > 100)
     {
-      str1 = paramc.BEx.substring(0, 99);
-      if (paramc.BEy.BEz.length() <= 100) {
-        break label225;
+      str1 = paramc.aifT.substring(0, 99);
+      if (paramc.aifU.aifV.length() <= 100) {
+        break label223;
       }
-      localObject = paramc.BEy.BEz.substring(0, 99);
-      label58:
-      if (paramc.BEy.BEA.length() <= 100) {
-        break label236;
+      localObject = paramc.aifU.aifV.substring(0, 99);
+      label57:
+      if (paramc.aifU.aifW.length() <= 100) {
+        break label234;
       }
     }
-    label225:
-    label236:
-    for (String str2 = paramc.BEy.BEA.substring(0, 99);; str2 = paramc.BEy.BEA)
+    label223:
+    label234:
+    for (String str2 = paramc.aifU.aifW.substring(0, 99);; str2 = paramc.aifU.aifW)
     {
-      str1 = paramc.errCode + "," + str1 + "," + paramc.BEy.opType + "," + (String)localObject + "," + paramc.BEy.ilI + "," + str2;
-      if ((paramContext == null) || ("com.tencent.mm".equals(paramc.BEx))) {
-        break label304;
+      str1 = paramc.errCode + "," + str1 + "," + paramc.aifU.opType + "," + (String)localObject + "," + paramc.aifU.tQy + "," + str2;
+      if ((paramContext == null) || ("com.tencent.mm".equals(paramc.aifT))) {
+        break label300;
       }
       Log.d("XWebCoreContentProvider", "doReport need post to mm ".concat(String.valueOf(str1)));
       paramContext = paramContext.getContentResolver();
       if (paramContext != null) {
-        break label248;
+        break label246;
       }
       Log.e("XWebCoreContentProvider", "doReport content resolver is null");
-      AppMethodBeat.o(3950);
+      AppMethodBeat.o(156928);
       return;
-      str1 = paramc.BEx;
+      str1 = paramc.aifT;
       break;
-      localObject = paramc.BEy.BEz;
-      break label58;
+      localObject = paramc.aifU.aifV;
+      break label57;
     }
     try
     {
-      label248:
+      label246:
       localObject = new ContentValues();
       ((ContentValues)localObject).put("15625", str1);
-      paramContext.insert(b("com.tencent.mm", paramc.BEx, 3, 0, ""), (ContentValues)localObject);
-      AppMethodBeat.o(3950);
+      paramContext.insert(c("com.tencent.mm", paramc.aifT, 3, 0, ""), (ContentValues)localObject);
+      AppMethodBeat.o(156928);
       return;
     }
-    catch (Exception paramContext)
+    finally
     {
       Log.d("XWebCoreContentProvider", "doReport error post to mm");
-      AppMethodBeat.o(3950);
+      AppMethodBeat.o(156928);
       return;
     }
-    label304:
-    if (f.cbQ())
+    label300:
+    if (l.gBh())
     {
       Log.d("XWebCoreContentProvider", "doReport ".concat(String.valueOf(str1)));
-      f.bW(15625, str1);
-      AppMethodBeat.o(3950);
+      l.ev(15625, str1);
+      AppMethodBeat.o(156928);
       return;
     }
     Log.d("XWebCoreContentProvider", "doReport reporter not init, cache ".concat(String.valueOf(str1)));
     paramContext = new b();
     paramContext.key = 15625;
     paramContext.value = str1;
-    XWebCoreContentProvider.a.a(paramContext);
-    AppMethodBeat.o(3950);
+    a.a(paramContext);
+    AppMethodBeat.o(156928);
   }
   
   /* Error */
-  private static Map<String, String> au(File paramFile)
+  private static Map<String, String> ag(File paramFile)
   {
     // Byte code:
-    //   0: sipush 3951
-    //   3: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 165	java/util/HashMap
-    //   9: dup
-    //   10: invokespecial 166	java/util/HashMap:<init>	()V
-    //   13: astore_3
-    //   14: new 168	java/io/BufferedReader
-    //   17: dup
-    //   18: new 170	java/io/FileReader
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 173	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   26: invokespecial 176	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   29: astore_1
-    //   30: aload_1
-    //   31: astore_0
-    //   32: aload_1
-    //   33: invokevirtual 179	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   36: astore_2
-    //   37: aload_2
-    //   38: ifnull +145 -> 183
-    //   41: aload_1
-    //   42: astore_0
-    //   43: aload_2
-    //   44: invokevirtual 182	java/lang/String:isEmpty	()Z
-    //   47: ifne -17 -> 30
-    //   50: aload_1
-    //   51: astore_0
-    //   52: aload_2
-    //   53: ldc 184
-    //   55: invokevirtual 188	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   58: astore_2
-    //   59: aload_1
-    //   60: astore_0
-    //   61: aload_2
-    //   62: arraylength
-    //   63: iconst_2
-    //   64: if_icmpne -34 -> 30
-    //   67: aload_2
-    //   68: iconst_0
-    //   69: aaload
-    //   70: ifnull -40 -> 30
+    //   0: ldc 188
+    //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 190	java/util/HashMap
+    //   8: dup
+    //   9: invokespecial 191	java/util/HashMap:<init>	()V
+    //   12: astore_2
+    //   13: new 193	java/io/BufferedReader
+    //   16: dup
+    //   17: new 195	java/io/FileReader
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 198	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   25: invokespecial 201	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   28: astore_0
+    //   29: aload_0
+    //   30: invokevirtual 204	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   33: astore_1
+    //   34: aload_1
+    //   35: ifnull +118 -> 153
+    //   38: aload_1
+    //   39: invokevirtual 207	java/lang/String:isEmpty	()Z
+    //   42: ifne -13 -> 29
+    //   45: aload_1
+    //   46: ldc 209
+    //   48: invokevirtual 213	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   51: astore_1
+    //   52: aload_1
+    //   53: arraylength
+    //   54: iconst_2
+    //   55: if_icmpne -26 -> 29
+    //   58: aload_1
+    //   59: iconst_0
+    //   60: aaload
+    //   61: ifnull -32 -> 29
+    //   64: aload_1
+    //   65: iconst_0
+    //   66: aaload
+    //   67: invokevirtual 207	java/lang/String:isEmpty	()Z
+    //   70: ifne -41 -> 29
     //   73: aload_1
-    //   74: astore_0
-    //   75: aload_2
-    //   76: iconst_0
-    //   77: aaload
-    //   78: invokevirtual 182	java/lang/String:isEmpty	()Z
-    //   81: ifne -51 -> 30
-    //   84: aload_2
-    //   85: iconst_1
-    //   86: aaload
-    //   87: ifnull -57 -> 30
-    //   90: aload_1
-    //   91: astore_0
-    //   92: aload_2
+    //   74: iconst_1
+    //   75: aaload
+    //   76: ifnull -47 -> 29
+    //   79: aload_1
+    //   80: iconst_1
+    //   81: aaload
+    //   82: invokevirtual 207	java/lang/String:isEmpty	()Z
+    //   85: ifne -56 -> 29
+    //   88: aload_2
+    //   89: aload_1
+    //   90: iconst_0
+    //   91: aaload
+    //   92: aload_1
     //   93: iconst_1
     //   94: aaload
-    //   95: invokevirtual 182	java/lang/String:isEmpty	()Z
-    //   98: ifne -68 -> 30
-    //   101: aload_1
-    //   102: astore_0
-    //   103: aload_3
-    //   104: aload_2
-    //   105: iconst_0
-    //   106: aaload
-    //   107: aload_2
-    //   108: iconst_1
-    //   109: aaload
-    //   110: invokeinterface 193 3 0
-    //   115: pop
-    //   116: aload_1
-    //   117: astore_0
-    //   118: ldc 86
-    //   120: new 54	java/lang/StringBuilder
-    //   123: dup
-    //   124: ldc 195
-    //   126: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   129: aload_2
-    //   130: iconst_0
-    //   131: aaload
-    //   132: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   138: invokestatic 102	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: goto -111 -> 30
-    //   144: astore_2
-    //   145: aload_1
-    //   146: astore_0
-    //   147: ldc 86
-    //   149: new 54	java/lang/StringBuilder
-    //   152: dup
-    //   153: ldc 200
-    //   155: invokespecial 198	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   158: aload_2
-    //   159: invokevirtual 203	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   162: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: invokestatic 113	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: aload_1
-    //   172: invokestatic 209	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
-    //   175: sipush 3951
-    //   178: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   181: aload_3
-    //   182: areturn
-    //   183: aload_1
-    //   184: invokestatic 209	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
-    //   187: goto -12 -> 175
-    //   190: astore_1
-    //   191: aconst_null
-    //   192: astore_0
-    //   193: aload_0
-    //   194: invokestatic 209	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
-    //   197: sipush 3951
-    //   200: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   203: aload_1
-    //   204: athrow
-    //   205: astore_1
-    //   206: goto -13 -> 193
-    //   209: astore_2
-    //   210: aconst_null
-    //   211: astore_1
-    //   212: goto -67 -> 145
+    //   95: invokeinterface 218 3 0
+    //   100: pop
+    //   101: ldc 114
+    //   103: new 84	java/lang/StringBuilder
+    //   106: dup
+    //   107: ldc 220
+    //   109: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   112: aload_1
+    //   113: iconst_0
+    //   114: aaload
+    //   115: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 129	org/xwalk/core/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   124: goto -95 -> 29
+    //   127: astore_1
+    //   128: ldc 114
+    //   130: ldc 225
+    //   132: aload_1
+    //   133: invokestatic 120	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   136: invokevirtual 124	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: invokestatic 140	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: aload_0
+    //   143: invokestatic 230	com/tencent/xweb/util/g:d	(Ljava/io/Closeable;)V
+    //   146: ldc 188
+    //   148: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: aload_2
+    //   152: areturn
+    //   153: aload_0
+    //   154: invokestatic 230	com/tencent/xweb/util/g:d	(Ljava/io/Closeable;)V
+    //   157: goto -11 -> 146
+    //   160: astore_1
+    //   161: aload_0
+    //   162: invokestatic 230	com/tencent/xweb/util/g:d	(Ljava/io/Closeable;)V
+    //   165: ldc 188
+    //   167: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: aload_1
+    //   171: athrow
+    //   172: astore_1
+    //   173: aconst_null
+    //   174: astore_0
+    //   175: goto -47 -> 128
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	215	0	paramFile	File
-    //   29	155	1	localBufferedReader	java.io.BufferedReader
-    //   190	14	1	localObject1	Object
-    //   205	1	1	localObject2	Object
-    //   211	1	1	localObject3	Object
-    //   36	94	2	localObject4	Object
-    //   144	15	2	localException1	Exception
-    //   209	1	2	localException2	Exception
-    //   13	169	3	localHashMap	java.util.HashMap
+    //   0	178	0	paramFile	File
+    //   33	80	1	localObject1	Object
+    //   127	6	1	localObject2	Object
+    //   160	11	1	localObject3	Object
+    //   172	1	1	localObject4	Object
+    //   12	140	2	localHashMap	java.util.HashMap
     // Exception table:
     //   from	to	target	type
-    //   32	37	144	java/lang/Exception
-    //   43	50	144	java/lang/Exception
-    //   52	59	144	java/lang/Exception
-    //   61	67	144	java/lang/Exception
-    //   75	84	144	java/lang/Exception
-    //   92	101	144	java/lang/Exception
-    //   103	116	144	java/lang/Exception
-    //   118	141	144	java/lang/Exception
-    //   14	30	190	finally
-    //   32	37	205	finally
-    //   43	50	205	finally
-    //   52	59	205	finally
-    //   61	67	205	finally
-    //   75	84	205	finally
-    //   92	101	205	finally
-    //   103	116	205	finally
-    //   118	141	205	finally
-    //   147	171	205	finally
-    //   14	30	209	java/lang/Exception
+    //   29	34	127	finally
+    //   38	58	127	finally
+    //   64	73	127	finally
+    //   79	124	127	finally
+    //   128	142	160	finally
+    //   13	29	172	finally
   }
   
-  public static Uri b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  private static boolean bHL(String paramString)
   {
-    AppMethodBeat.i(3953);
+    AppMethodBeat.i(212372);
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      Log.e("XWebCoreContentProvider", "isProvider, packageName is null or empty");
+      AppMethodBeat.o(212372);
+      return false;
+    }
+    String[] arrayOfString = aifP;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfString[i].equals(paramString))
+      {
+        AppMethodBeat.o(212372);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(212372);
+    return false;
+  }
+  
+  public static Uri c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  {
+    AppMethodBeat.i(156931);
     String str = paramString2;
     if (paramString2.isEmpty()) {
       str = " ";
@@ -263,100 +263,137 @@ public class XWebCoreContentProvider
     {
     default: 
       paramString1 = Uri.parse("content://" + paramString1 + ".sdk.xweb.XWebCoreProvider/" + str + "/" + paramInt1);
-      AppMethodBeat.o(3953);
+      AppMethodBeat.o(156931);
       return paramString1;
     }
     paramString1 = Uri.parse("content://" + paramString1 + ".sdk.xweb.XWebCoreProvider/" + str + "/" + paramInt1 + "/" + paramInt2 + "/" + paramString3);
-    AppMethodBeat.o(3953);
+    AppMethodBeat.o(156931);
     return paramString1;
   }
   
-  public static void dYC()
+  public static boolean isBusy()
   {
-    AppMethodBeat.i(3954);
-    XWebCoreContentProvider.a.dYD();
-    AppMethodBeat.o(3954);
+    AppMethodBeat.i(212375);
+    if (!aifQ.get())
+    {
+      Log.i("XWebCoreContentProvider", "isBusy = true, xweb not init yet");
+      AppMethodBeat.o(212375);
+      return true;
+    }
+    long l = System.currentTimeMillis() - aifR.get();
+    if ((l >= 0L) && (l <= 10000L))
+    {
+      Log.i("XWebCoreContentProvider", "isBusy = true, is operating now");
+      AppMethodBeat.o(212375);
+      return true;
+    }
+    Log.i("XWebCoreContentProvider", "isBusy = false");
+    AppMethodBeat.o(212375);
+    return false;
   }
   
-  private static XWebCoreContentProvider.d r(Uri paramUri)
+  public static boolean kga()
   {
-    AppMethodBeat.i(3952);
-    XWebCoreContentProvider.d locald = new XWebCoreContentProvider.d();
+    AppMethodBeat.i(212371);
+    if (XWalkEnvironment.getApplicationContext() == null)
+    {
+      Log.e("XWebCoreContentProvider", "isSelfProvider, sApplicationContext is null");
+      AppMethodBeat.o(212371);
+      return true;
+    }
+    boolean bool = bHL(XWalkEnvironment.getApplicationContext().getPackageName());
+    AppMethodBeat.o(212371);
+    return bool;
+  }
+  
+  public static void kgb()
+  {
+    AppMethodBeat.i(156932);
+    Log.i("XWebCoreContentProvider", "onXWebInitFinished");
+    a.kgc();
+    aifQ.set(true);
+    AppMethodBeat.o(156932);
+  }
+  
+  private static d x(Uri paramUri)
+  {
+    AppMethodBeat.i(156930);
+    d locald = new d();
     locald.opType = -1;
-    Object localObject = paramUri.toString();
-    if (((String)localObject).length() > 1000)
+    Object localObject1 = paramUri.toString();
+    if (((String)localObject1).length() > 1000)
     {
       Log.d("XWebCoreContentProvider", "parseUri exceed max length");
-      AppMethodBeat.o(3952);
+      AppMethodBeat.o(156930);
       return locald;
     }
-    Log.d("XWebCoreContentProvider", "parseUri ".concat(String.valueOf(localObject)));
-    localObject = paramUri.getPathSegments();
-    if ((localObject == null) || (((List)localObject).size() < 2))
+    Log.d("XWebCoreContentProvider", "parseUri ".concat(String.valueOf(localObject1)));
+    localObject1 = paramUri.getPathSegments();
+    if ((localObject1 == null) || (((List)localObject1).size() < 2))
     {
       Log.d("XWebCoreContentProvider", "parseUri strList invalid");
-      AppMethodBeat.o(3952);
+      AppMethodBeat.o(156930);
       return locald;
     }
-    paramUri = (String)((List)localObject).get(0);
+    paramUri = (String)((List)localObject1).get(0);
     if ((paramUri == null) || (paramUri.isEmpty()))
     {
       Log.d("XWebCoreContentProvider", "parseUri callerName invalid");
-      AppMethodBeat.o(3952);
+      AppMethodBeat.o(156930);
       return locald;
     }
-    locald.BEz = paramUri;
+    locald.aifV = paramUri;
     int j;
     try
     {
-      j = Integer.parseInt((String)((List)localObject).get(1));
+      j = Integer.parseInt((String)((List)localObject1).get(1));
       switch (j)
       {
       default: 
         Log.d("XWebCoreContentProvider", "parseUri invalid opType");
-        AppMethodBeat.o(3952);
+        AppMethodBeat.o(156930);
         return locald;
       }
     }
-    catch (Exception paramUri)
+    finally
     {
-      Log.d("XWebCoreContentProvider", "parseUri error parse opType");
-      AppMethodBeat.o(3952);
+      Log.d("XWebCoreContentProvider", "parseUri error parse opType, error:".concat(String.valueOf(paramUri)));
+      AppMethodBeat.o(156930);
       return locald;
     }
-    if (((List)localObject).size() == 2)
+    if (((List)localObject1).size() == 2)
     {
       locald.opType = j;
       Log.d("XWebCoreContentProvider", "parseUri result: ".concat(String.valueOf(j)));
     }
     for (;;)
     {
-      AppMethodBeat.o(3952);
+      AppMethodBeat.o(156930);
       return locald;
       Log.d("XWebCoreContentProvider", "parseUri wrong params on test or report");
     }
-    paramUri = null;
-    if (((List)localObject).size() == 4) {
-      paramUri = (String)((List)localObject).get(3);
+    paramUri = "";
+    if (((List)localObject1).size() == 4) {
+      paramUri = (String)((List)localObject1).get(3);
     }
     for (;;)
     {
       try
       {
-        i = Integer.parseInt((String)((List)localObject).get(2));
+        i = Integer.parseInt((String)((List)localObject1).get(2));
         if ((i != -1) && (paramUri != null) && (!paramUri.isEmpty()))
         {
           locald.opType = j;
-          locald.ilI = i;
-          locald.BEA = paramUri;
+          locald.tQy = i;
+          locald.aifW = paramUri;
           Log.d("XWebCoreContentProvider", "parseUri result: " + j + " " + i + " " + paramUri);
-          AppMethodBeat.o(3952);
+          AppMethodBeat.o(156930);
           return locald;
         }
       }
-      catch (Exception localException)
+      finally
       {
-        Log.d("XWebCoreContentProvider", "parseUri error parse targetVersion");
+        Log.e("XWebCoreContentProvider", "parseUri error parse targetVersion, error:".concat(String.valueOf(localObject2)));
         i = -1;
         continue;
         Log.d("XWebCoreContentProvider", "parseUri wrong params on get file");
@@ -378,30 +415,31 @@ public class XWebCoreContentProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(3948);
+    AppMethodBeat.i(156926);
+    aifR.set(System.currentTimeMillis());
     if ((paramContentValues == null) || (paramContentValues.size() == 0))
     {
       Log.d("XWebCoreContentProvider", "insert values is null or empty");
-      AppMethodBeat.o(3948);
+      AppMethodBeat.o(156926);
       return null;
     }
-    if (r(paramUri).opType != 3)
+    if (x(paramUri).opType != 3)
     {
       Log.d("XWebCoreContentProvider", "insert wrong opType");
-      AppMethodBeat.o(3948);
+      AppMethodBeat.o(156926);
       return null;
     }
     paramUri = getContext();
     if (paramUri == null)
     {
       Log.e("XWebCoreContentProvider", "insert context is null");
-      AppMethodBeat.o(3948);
+      AppMethodBeat.o(156926);
       return null;
     }
     if (!"com.tencent.mm".equals(paramUri.getPackageName()))
     {
       Log.e("XWebCoreContentProvider", "insert current not mm, return");
-      AppMethodBeat.o(3948);
+      AppMethodBeat.o(156926);
       return null;
     }
     Log.d("XWebCoreContentProvider", "insert start report");
@@ -414,28 +452,29 @@ public class XWebCoreContentProvider
       {
         i = Integer.parseInt((String)paramContentValues.getKey());
         paramContentValues = (String)paramContentValues.getValue();
-        if ((!f.Tz(i)) || (paramContentValues == null) || (paramContentValues.isEmpty())) {
+        if ((!l.aJE(i)) || (paramContentValues == null) || (paramContentValues.isEmpty())) {
           continue;
         }
-        if (!f.cbQ()) {
-          break label248;
+        if (!l.gBh()) {
+          break label264;
         }
         Log.d("XWebCoreContentProvider", "insert report " + i + " " + paramContentValues);
-        f.bW(i, paramContentValues);
+        l.ev(i, paramContentValues);
+        continue;
       }
-      catch (Exception paramContentValues)
+      finally
       {
-        Log.d("XWebCoreContentProvider", "insert parse error");
+        Log.e("XWebCoreContentProvider", "insert parse error:".concat(String.valueOf(paramContentValues)));
       }
       continue;
-      label248:
+      label264:
       Log.d("XWebCoreContentProvider", "insert reporter not init, cache " + i + " " + paramContentValues);
       b localb = new b();
       localb.key = i;
       localb.value = paramContentValues;
-      XWebCoreContentProvider.a.a(localb);
+      a.a(localb);
     }
-    AppMethodBeat.o(3948);
+    AppMethodBeat.o(156926);
     return null;
   }
   
@@ -446,36 +485,37 @@ public class XWebCoreContentProvider
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
-    AppMethodBeat.i(3949);
-    XWebCoreContentProvider.d locald = r(paramUri);
-    XWebCoreContentProvider.c localc = new XWebCoreContentProvider.c();
+    AppMethodBeat.i(156927);
+    aifR.set(System.currentTimeMillis());
+    d locald = x(paramUri);
+    c localc = new c();
     localc.errCode = -1;
-    localc.BEy = locald;
+    localc.aifU = locald;
     Context localContext = getContext();
     if (localContext == null)
     {
       Log.e("XWebCoreContentProvider", "openFile context is null");
       localc.errCode = -2;
       a(null, localc);
-      AppMethodBeat.o(3949);
+      AppMethodBeat.o(156927);
       return null;
     }
     try
     {
       paramUri = localContext.getPackageManager().getPackagesForUid(Binder.getCallingUid());
       if (paramUri != null) {
-        break label154;
+        break label163;
       }
     }
-    catch (Exception paramUri)
+    finally
     {
       for (;;)
       {
-        Log.e("XWebCoreContentProvider", "tryRefillCallerName error " + paramUri.getMessage());
+        Log.e("XWebCoreContentProvider", "tryRefillCallerName error:".concat(String.valueOf(paramUri)));
         continue;
         paramUri = paramString.toString();
         if (!paramUri.isEmpty()) {
-          locald.BEz = paramUri;
+          locald.aifV = paramUri;
         }
       }
       switch (locald.opType)
@@ -484,21 +524,21 @@ public class XWebCoreContentProvider
         Log.d("XWebCoreContentProvider", "openFile invalid uri");
         localc.errCode = -1;
         a(localContext, localc);
-        AppMethodBeat.o(3949);
+        AppMethodBeat.o(156927);
         return null;
       }
     }
     paramUri = localContext.getPackageName();
-    localc.BEx = paramUri;
+    localc.aifT = paramUri;
     Log.d("XWebCoreContentProvider", "openFile current package: ".concat(String.valueOf(paramUri)));
-    label154:
+    label163:
     int i;
-    if (!XWalkEnvironment.isProvider(paramUri))
+    if (!bHL(paramUri))
     {
       Log.e("XWebCoreContentProvider", "openFile current is not provider");
       localc.errCode = -3;
       a(localContext, localc);
-      AppMethodBeat.o(3949);
+      AppMethodBeat.o(156927);
       return null;
       paramString = new StringBuilder();
       i = 0;
@@ -515,84 +555,75 @@ public class XWebCoreContentProvider
       }
       else
       {
-        Log.d("XWebCoreContentProvider", "openFile test msg from " + locald.BEz);
+        Log.d("XWebCoreContentProvider", "openFile test msg from " + locald.aifV);
         localc.errCode = 2;
         a(localContext, localc);
-        AppMethodBeat.o(3949);
+        AppMethodBeat.o(156927);
         return null;
-        Log.d("XWebCoreContentProvider", "openFile request from " + locald.BEz);
-        paramString = new File(XWalkEnvironment.getPatchFileListConfig(localContext, locald.ilI));
+        Log.d("XWebCoreContentProvider", "openFile request from " + locald.aifV);
+        paramString = new File(XWalkFileUtil.getPatchFileListConfig(localContext, locald.tQy));
         paramUri = paramString;
         if (!paramString.exists())
         {
-          paramString = new File(XWalkEnvironment.getDownloadZipFileListConfig(localContext, locald.ilI));
+          paramString = new File(XWalkFileUtil.getDownloadZipFileListConfig(localContext, locald.tQy));
           paramUri = paramString;
           if (!paramString.exists())
           {
-            Log.d("XWebCoreContentProvider", "openFile cannot find listConfigFile of ver " + locald.ilI);
+            Log.d("XWebCoreContentProvider", "openFile cannot find listConfigFile of ver " + locald.tQy);
             localc.errCode = -4;
             a(localContext, localc);
-            AppMethodBeat.o(3949);
+            AppMethodBeat.o(156927);
             return null;
           }
         }
-        if (locald.BEA.equals("filelist.config"))
+        if (locald.aifW.equals("filelist.config"))
         {
-          i = XWalkEnvironment.readAvailableVersionFromSP(localContext);
-          if (i == -1)
+          if (XWalkEnvironment.getInstalledNewstVersion(localContext) == -1)
           {
             Log.d("XWebCoreContentProvider", "openFile can not get current version");
             localc.errCode = -8;
             a(localContext, localc);
-            AppMethodBeat.o(3949);
-            return null;
-          }
-          if (locald.ilI > i)
-          {
-            Log.d("XWebCoreContentProvider", "openFile target version installing");
-            localc.errCode = -9;
-            a(localContext, localc);
-            AppMethodBeat.o(3949);
+            AppMethodBeat.o(156927);
             return null;
           }
           Log.d("XWebCoreContentProvider", "openFile return listConfigFile");
           localc.errCode = 1;
           a(localContext, localc);
           paramUri = ParcelFileDescriptor.open(paramUri, 268435456);
-          AppMethodBeat.o(3949);
+          AppMethodBeat.o(156927);
           return paramUri;
         }
-        paramUri = au(paramUri);
-        if (paramUri.size() == 0)
+        paramUri = ag(paramUri);
+        if ((paramUri == null) || (paramUri.size() == 0))
         {
           Log.e("XWebCoreContentProvider", "openFile fileMap is null or empty");
           localc.errCode = -5;
           a(localContext, localc);
-          AppMethodBeat.o(3949);
+          AppMethodBeat.o(156927);
           return null;
         }
-        if (paramUri.containsKey(locald.BEA))
+        if (paramUri.containsKey(locald.aifW))
         {
-          if (locald.BEA.equals("base.apk")) {}
-          for (paramUri = new File(XWalkEnvironment.getDownloadApkPath(localContext, locald.ilI)); paramUri.exists(); paramUri = new File(XWalkEnvironment.getExtractedCoreFile(localContext, locald.ilI, locald.BEA)))
+          if (locald.aifW.equals("base.apk")) {}
+          for (paramUri = new File(XWalkFileUtil.getDownloadApkPath(localContext, locald.tQy)); paramUri.exists(); paramUri = new File(XWalkFileUtil.getExtractedCoreFile(localContext, locald.tQy, locald.aifW)))
           {
-            Log.d("XWebCoreContentProvider", "openFile return file " + locald.BEA);
+            Log.d("XWebCoreContentProvider", "openFile return file " + locald.aifW);
             localc.errCode = 0;
             a(localContext, localc);
             paramUri = ParcelFileDescriptor.open(paramUri, 268435456);
-            AppMethodBeat.o(3949);
+            AppMethodBeat.o(156927);
             return paramUri;
           }
-          Log.d("XWebCoreContentProvider", "openFile file not exist " + locald.BEA);
+          Log.d("XWebCoreContentProvider", "openFile file not exist " + locald.aifW);
           localc.errCode = -6;
           a(localContext, localc);
-          AppMethodBeat.o(3949);
+          AppMethodBeat.o(156927);
           return null;
         }
-        Log.d("XWebCoreContentProvider", "openFile caller attempt to get file " + locald.BEA);
+        Log.d("XWebCoreContentProvider", "openFile caller attempt to get file " + locald.aifW);
         localc.errCode = -7;
         a(localContext, localc);
-        AppMethodBeat.o(3949);
+        AppMethodBeat.o(156927);
         return null;
       }
       i += 1;
@@ -609,15 +640,81 @@ public class XWebCoreContentProvider
     return 0;
   }
   
+  public static final class a
+  {
+    private static final Object aieq;
+    private static List<XWebCoreContentProvider.b> aifS;
+    
+    static
+    {
+      AppMethodBeat.i(156924);
+      aifS = new ArrayList();
+      aieq = new Object();
+      AppMethodBeat.o(156924);
+    }
+    
+    public static void a(XWebCoreContentProvider.b paramb)
+    {
+      AppMethodBeat.i(156922);
+      synchronized (aieq)
+      {
+        aifS.add(paramb);
+        AppMethodBeat.o(156922);
+        return;
+      }
+    }
+    
+    public static void kgc()
+    {
+      AppMethodBeat.i(156923);
+      Log.i("XWebCoreContentProvider", "CachedInfoMgr process cached info");
+      synchronized (aieq)
+      {
+        Iterator localIterator = aifS.iterator();
+        if (localIterator.hasNext())
+        {
+          XWebCoreContentProvider.b localb = (XWebCoreContentProvider.b)localIterator.next();
+          l.ev(localb.key, localb.value);
+        }
+      }
+      aifS.clear();
+      AppMethodBeat.o(156923);
+    }
+  }
+  
   public static final class b
   {
     public int key = -1;
     public String value = "";
   }
+  
+  public static final class c
+  {
+    public String aifT;
+    public XWebCoreContentProvider.d aifU;
+    public int errCode;
+    
+    public c()
+    {
+      AppMethodBeat.i(156925);
+      this.errCode = -1;
+      this.aifT = "";
+      this.aifU = new XWebCoreContentProvider.d();
+      AppMethodBeat.o(156925);
+    }
+  }
+  
+  public static final class d
+  {
+    public String aifV = "";
+    public String aifW = "";
+    public int opType = -1;
+    public int tQy = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.XWebCoreContentProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,13 @@
 package com.tencent.av.video.call;
 
-import bfvp;
+import com.tencent.avcore.jni.log.GAClientLogReportJni;
+import com.tencent.avcore.jni.log.IClientLogReport;
 
 public class GAClientLogReport
+  implements IClientLogReport
 {
-  private static final String TAG = "GAClientLogReport";
   private static GAClientLogReport instance;
-  
-  static
-  {
-    try
-    {
-      cacheMethodIds();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bfvp.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
-    }
-  }
-  
-  private GAClientLogReport()
-  {
-    try
-    {
-      init();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      bfvp.a("GAClientLogReport", "inti fail.", localThrowable);
-    }
-  }
-  
-  private static native void cacheMethodIds();
-  
-  private int callbackSendLog(long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    return ClientLogReport.instance().callbackSendLog(paramLong, paramInt, paramArrayOfByte);
-  }
-  
-  private native void init();
+  private final GAClientLogReportJni mJni = new GAClientLogReportJni(this);
   
   public static GAClientLogReport instance()
   {
@@ -49,10 +16,15 @@ public class GAClientLogReport
     }
     return instance;
   }
+  
+  public int sendLog(long paramLong, String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    return ClientLogReport.instance().sendLog(paramLong, paramString, paramArrayOfByte, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.call.GAClientLogReport
  * JD-Core Version:    0.7.0.1
  */

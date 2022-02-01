@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.recent.RecentOptionBar android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:layout_gravity="top" android:orientation="vertical" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="@dimen/right_drawer_width" android:layout_height="fill_parent">
+            <include android:id="@id/conversation_options_bar_item_1" layout="@layout/conversation_options_bar_item" />
+            <include android:id="@id/conversation_options_bar_item_2" layout="@layout/conversation_options_bar_item" />
+            <include android:id="@id/conversation_options_bar_item_3" layout="@layout/conversation_options_bar_item" />
+            <include android:id="@id/conversation_options_bar_item_4" layout="@layout/conversation_options_bar_item" />
+            <include android:id="@id/conversation_options_bar_item_5" layout="@layout/conversation_options_bar_item" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+    <ImageView android:layout_gravity="bottom" android:id="@id/mask" android:background="@drawable/qq_setting_me_bgmask" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+</com.tencent.mobileqq.activity.recent.RecentOptionBar>

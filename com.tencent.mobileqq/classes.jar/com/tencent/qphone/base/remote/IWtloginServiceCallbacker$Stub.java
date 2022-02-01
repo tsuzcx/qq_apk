@@ -51,237 +51,206 @@ public abstract class IWtloginServiceCallbacker$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    long l1;
-    long l2;
-    Object localObject3;
-    byte[] arrayOfByte1;
-    label200:
-    label254:
-    long l3;
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      localObject2 = paramParcel1.readString();
-      l1 = paramParcel1.readLong();
-      paramInt1 = paramParcel1.readInt();
-      l2 = paramParcel1.readLong();
-      localObject3 = paramParcel1.readString();
-      arrayOfByte1 = paramParcel1.createByteArray();
-      if (paramParcel1.readInt() != 0)
+      Object localObject1 = null;
+      long l3;
+      switch (paramInt1)
       {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label254;
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 10: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject1 = paramParcel1.readString();
+        localObject2 = paramParcel1.createByteArray();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
         }
-        localObject1 = (DevlockInfo)DevlockInfo.CREATOR.createFromParcel(paramParcel1);
-        paramInt2 = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label260;
-        }
-      }
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnGetStWithPasswd((String)localObject2, l1, paramInt1, l2, (String)localObject3, arrayOfByte1, paramParcel2, (DevlockInfo)localObject1, paramInt2, paramParcel1);
-        return true;
-        paramParcel2 = null;
-        break;
-        localObject1 = null;
-        break label200;
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      localObject1 = paramParcel1.readString();
-      l1 = paramParcel1.readLong();
-      l2 = paramParcel1.readLong();
-      paramInt1 = paramParcel1.readInt();
-      l3 = paramParcel1.readLong();
-      if (paramParcel1.readInt() != 0)
-      {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
-        paramInt2 = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label370;
-        }
-      }
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnGetStWithoutPasswd((String)localObject1, l1, l2, paramInt1, l3, paramParcel2, paramInt2, paramParcel1);
-        return true;
-        paramParcel2 = null;
-        break;
-      }
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      localObject2 = paramParcel1.readString();
-      localObject3 = paramParcel1.createByteArray();
-      arrayOfByte1 = paramParcel1.createByteArray();
-      if (paramParcel1.readInt() != 0)
-      {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label487;
-        }
-        localObject1 = (DevlockInfo)DevlockInfo.CREATOR.createFromParcel(paramParcel1);
         paramInt1 = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label493;
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
         }
-      }
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnCheckPictureAndGetSt((String)localObject2, (byte[])localObject3, arrayOfByte1, paramParcel2, (DevlockInfo)localObject1, paramInt1, paramParcel1);
+        OnCheckSMSAndGetSt((String)localObject1, (byte[])localObject2, paramParcel2, paramInt1, paramParcel1);
         return true;
-        paramParcel2 = null;
-        break;
-        localObject1 = null;
-        break label440;
-      }
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      paramParcel2 = paramParcel1.readString();
-      localObject1 = paramParcel1.createByteArray();
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnRefreshPictureData(paramParcel2, (byte[])localObject1, paramInt1, paramParcel1);
-        return true;
-      }
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      OnException(paramParcel1.readString(), paramParcel1.readInt());
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      paramParcel2 = paramParcel1.readString();
-      localObject1 = paramParcel1.createByteArray();
-      l1 = paramParcel1.readLong();
-      localObject2 = paramParcel1.readArrayList(getClass().getClassLoader());
-      localObject3 = paramParcel1.createByteArray();
-      paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnVerifyCode(paramParcel2, (byte[])localObject1, l1, (List)localObject2, (byte[])localObject3, paramInt1, paramParcel1);
-        return true;
-      }
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      localObject1 = paramParcel1.readString();
-      localObject2 = paramParcel1.createByteArray();
-      l1 = paramParcel1.readLong();
-      if (paramParcel1.readInt() != 0)
-      {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
-        localObject3 = paramParcel1.createByteArray();
-        paramInt1 = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label762;
+      case 9: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject1 = paramParcel1.readString();
+        l1 = paramParcel1.readLong();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
         }
-      }
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        OnCloseCode((String)localObject1, (byte[])localObject2, l1, paramParcel2, (byte[])localObject3, paramInt1, paramParcel1);
-        return true;
-        paramParcel2 = null;
-        break;
-      }
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      localObject2 = paramParcel1.readString();
-      l1 = paramParcel1.readLong();
-      paramInt1 = paramParcel1.readInt();
-      l2 = paramParcel1.readLong();
-      localObject3 = paramParcel1.createByteArray();
-      l3 = paramParcel1.readLong();
-      long l4 = paramParcel1.readLong();
-      long l5 = paramParcel1.readLong();
-      arrayOfByte1 = paramParcel1.createByteArray();
-      byte[] arrayOfByte2 = paramParcel1.createByteArray();
-      if (paramParcel1.readInt() != 0)
-      {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
-        if (paramParcel1.readInt() == 0) {
-          break label935;
-        }
-        localObject1 = (WFastLoginInfo)WFastLoginInfo.CREATOR.createFromParcel(paramParcel1);
-        paramInt2 = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label941;
-        }
-      }
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        onGetA1WithA1((String)localObject2, l1, paramInt1, l2, (byte[])localObject3, l3, l4, l5, arrayOfByte1, arrayOfByte2, paramParcel2, (WFastLoginInfo)localObject1, paramInt2, paramParcel1);
-        return true;
-        paramParcel2 = null;
-        break;
-        localObject1 = null;
-        break label873;
-      }
-    case 9: 
-      label260:
-      label370:
-      label762:
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-      label440:
-      label487:
-      label493:
-      localObject1 = paramParcel1.readString();
-      label873:
-      l1 = paramParcel1.readLong();
-      label935:
-      label941:
-      int i;
-      if (paramParcel1.readInt() != 0)
-      {
-        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
         paramInt1 = paramParcel1.readInt();
         paramInt2 = paramParcel1.readInt();
-        i = paramParcel1.readInt();
-        if (paramParcel1.readInt() == 0) {
-          break label1043;
+        int i = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
         }
-      }
-      label1043:
-      for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
         OnRefreshSMSData((String)localObject1, l1, paramParcel2, paramInt1, paramInt2, i, paramParcel1);
         return true;
-        paramParcel2 = null;
-        break;
+      case 8: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject2 = paramParcel1.readString();
+        l1 = paramParcel1.readLong();
+        paramInt1 = paramParcel1.readInt();
+        l2 = paramParcel1.readLong();
+        localObject3 = paramParcel1.createByteArray();
+        l3 = paramParcel1.readLong();
+        long l4 = paramParcel1.readLong();
+        long l5 = paramParcel1.readLong();
+        arrayOfByte1 = paramParcel1.createByteArray();
+        byte[] arrayOfByte2 = paramParcel1.createByteArray();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (WFastLoginInfo)WFastLoginInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        paramInt2 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
+        onGetA1WithA1((String)localObject2, l1, paramInt1, l2, (byte[])localObject3, l3, l4, l5, arrayOfByte1, arrayOfByte2, paramParcel2, (WFastLoginInfo)localObject1, paramInt2, paramParcel1);
+        return true;
+      case 7: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject1 = paramParcel1.readString();
+        localObject2 = paramParcel1.createByteArray();
+        l1 = paramParcel1.readLong();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
+        }
+        localObject3 = paramParcel1.createByteArray();
+        paramInt1 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
+        OnCloseCode((String)localObject1, (byte[])localObject2, l1, paramParcel2, (byte[])localObject3, paramInt1, paramParcel1);
+        return true;
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        paramParcel2 = paramParcel1.readString();
+        localObject1 = paramParcel1.createByteArray();
+        l1 = paramParcel1.readLong();
+        localObject2 = paramParcel1.readArrayList(getClass().getClassLoader());
+        localObject3 = paramParcel1.createByteArray();
+        paramInt1 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
+        OnVerifyCode(paramParcel2, (byte[])localObject1, l1, (List)localObject2, (byte[])localObject3, paramInt1, paramParcel1);
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        OnException(paramParcel1.readString(), paramParcel1.readInt());
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject2 = paramParcel1.readString();
+        localObject3 = paramParcel1.createByteArray();
+        paramInt1 = paramParcel1.readInt();
+        paramParcel2 = (Parcel)localObject1;
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        OnRefreshPictureData((String)localObject2, (byte[])localObject3, paramInt1, paramParcel2);
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject2 = paramParcel1.readString();
+        localObject3 = paramParcel1.createByteArray();
+        arrayOfByte1 = paramParcel1.createByteArray();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
+        }
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (DevlockInfo)DevlockInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          localObject1 = null;
+        }
+        paramInt1 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
+        OnCheckPictureAndGetSt((String)localObject2, (byte[])localObject3, arrayOfByte1, paramParcel2, (DevlockInfo)localObject1, paramInt1, paramParcel1);
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+        localObject1 = paramParcel1.readString();
+        l1 = paramParcel1.readLong();
+        l2 = paramParcel1.readLong();
+        paramInt1 = paramParcel1.readInt();
+        l3 = paramParcel1.readLong();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel2 = null;
+        }
+        paramInt2 = paramParcel1.readInt();
+        if (paramParcel1.readInt() != 0) {
+          paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+        } else {
+          paramParcel1 = null;
+        }
+        OnGetStWithoutPasswd((String)localObject1, l1, l2, paramInt1, l3, paramParcel2, paramInt2, paramParcel1);
+        return true;
       }
-    }
-    paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
-    Object localObject1 = paramParcel1.readString();
-    Object localObject2 = paramParcel1.createByteArray();
-    if (paramParcel1.readInt() != 0)
-    {
-      paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+      Object localObject2 = paramParcel1.readString();
+      long l1 = paramParcel1.readLong();
       paramInt1 = paramParcel1.readInt();
-      if (paramParcel1.readInt() == 0) {
-        break label1129;
+      long l2 = paramParcel1.readLong();
+      Object localObject3 = paramParcel1.readString();
+      byte[] arrayOfByte1 = paramParcel1.createByteArray();
+      if (paramParcel1.readInt() != 0) {
+        paramParcel2 = (WUserSigInfo)WUserSigInfo.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel2 = null;
       }
-    }
-    label1129:
-    for (paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      OnCheckSMSAndGetSt((String)localObject1, (byte[])localObject2, paramParcel2, paramInt1, paramParcel1);
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (DevlockInfo)DevlockInfo.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        localObject1 = null;
+      }
+      paramInt2 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        paramParcel1 = (ErrMsg)ErrMsg.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel1 = null;
+      }
+      OnGetStWithPasswd((String)localObject2, l1, paramInt1, l2, (String)localObject3, arrayOfByte1, paramParcel2, (DevlockInfo)localObject1, paramInt2, paramParcel1);
       return true;
-      paramParcel2 = null;
-      break;
     }
+    paramParcel2.writeString("com.tencent.qphone.base.remote.IWtloginServiceCallbacker");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IWtloginServiceCallbacker.Stub
  * JD-Core Version:    0.7.0.1
  */

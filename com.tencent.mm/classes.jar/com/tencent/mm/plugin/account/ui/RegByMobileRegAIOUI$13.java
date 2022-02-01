@@ -1,33 +1,26 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.plugin.b.a;
 
 final class RegByMobileRegAIOUI$13
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   RegByMobileRegAIOUI$13(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(152595);
-    Object localObject = com.tencent.mm.plugin.account.a.a.gmO.bm(this.gIh);
-    ((Intent)localObject).addFlags(67108864);
-    this.gIh.startActivity((Intent)localObject);
-    localObject = new StringBuilder();
-    g.RJ();
-    localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.QX()).append(",").append(this.gIh.getClass().getName()).append(",L14,");
-    g.RJ();
-    com.tencent.mm.plugin.b.a.xE(com.tencent.mm.kernel.a.mx("L14") + ",4");
-    this.gIh.finish();
-    AppMethodBeat.o(152595);
+    AppMethodBeat.i(305164);
+    RegByMobileRegAIOUI.w(this.qfw);
+    a.TA("RE200_250");
+    AppMethodBeat.o(305164);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileRegAIOUI.13
  * JD-Core Version:    0.7.0.1
  */

@@ -41,14 +41,15 @@ public final class GetAppUpdateResponse
   {
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.appUpdateInfoList, 1);
-    if (this.appUpdateInfoGroup != null) {
-      paramJceOutputStream.write(this.appUpdateInfoGroup, 2);
+    Map localMap = this.appUpdateInfoGroup;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.GetAppUpdateResponse
  * JD-Core Version:    0.7.0.1
  */

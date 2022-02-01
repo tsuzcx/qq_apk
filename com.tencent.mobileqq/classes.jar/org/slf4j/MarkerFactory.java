@@ -15,14 +15,17 @@ public class MarkerFactory
       MARKER_FACTORY = bwCompatibleGetMarkerFactoryFromBinder();
       return;
     }
-    catch (NoClassDefFoundError localNoClassDefFoundError)
-    {
-      MARKER_FACTORY = new BasicMarkerFactory();
-      return;
-    }
     catch (Exception localException)
     {
       Util.report("Unexpected failure while binding MarkerFactory", localException);
+      return;
+      MARKER_FACTORY = new BasicMarkerFactory();
+      return;
+    }
+    catch (NoClassDefFoundError localNoClassDefFoundError)
+    {
+      label15:
+      break label15;
     }
   }
   
@@ -33,7 +36,11 @@ public class MarkerFactory
       IMarkerFactory localIMarkerFactory = StaticMarkerBinder.getSingleton().getMarkerFactory();
       return localIMarkerFactory;
     }
-    catch (NoSuchMethodError localNoSuchMethodError) {}
+    catch (NoSuchMethodError localNoSuchMethodError)
+    {
+      label9:
+      break label9;
+    }
     return StaticMarkerBinder.SINGLETON.getMarkerFactory();
   }
   
@@ -54,7 +61,7 @@ public class MarkerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.MarkerFactory
  * JD-Core Version:    0.7.0.1
  */

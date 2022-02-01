@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.onlinestatus.OnlineStatusPanel android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/panelLayout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.onlinestatus.OnlineStatusPanel android:gravity="center_horizontal" android:id="@id/panelLayout" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.QQViewPager android:layout_gravity="center_horizontal" android:id="@id/bw9" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
-    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/d_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.widget.QQViewPager android:layout_gravity="center_horizontal" android:id="@id/bw9" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup android:orientation="horizontal" android:id="@id/d_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_alignBottom="@id/bw9" android:layout_centerHorizontal="true" />
 </com.tencent.mobileqq.onlinestatus.OnlineStatusPanel>

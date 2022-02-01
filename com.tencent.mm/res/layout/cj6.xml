@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/db"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b11" android:background="@color/ahb" android:focusable="false" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/b__" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/a_q" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/m4" android:id="@id/b1h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/k8v" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" android:layout_toLeftOf="@id/b1h" android:layout_centerVertical="true" xmlns:app="http://schemas.android.com/apk/res-auto">
+            <TableRow>
+                <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b1b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:includeFontPadding="false" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_vertical" android:id="@id/b1d" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/df" android:includeFontPadding="false" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+</LinearLayout>

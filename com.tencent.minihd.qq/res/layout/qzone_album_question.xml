@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.ExtendLinearLayout android:orientation="vertical" android:id="@id/albumEdit" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/qzone_inputbox_upload_pic" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center_vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:id="@id/nameTextView" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_question_name" />
+                <EditText android:textSize="15.0sp" android:textColor="@color/qzone_color_title" android:textColorHint="@color/qzone_color_hint_text" android:gravity="center_vertical" android:id="@id/questEdit" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:hint="@string/qzone_album_question_hint" android:maxLines="1" android:singleLine="true" android:maxLength="21" android:layout_toRightOf="@id/nameTextView" />
+            </RelativeLayout>
+            <include layout="@layout/qzone_album_divider" />
+            <RelativeLayout android:gravity="center_vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:id="@id/descTextView" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_answer_name" />
+                <EditText android:textSize="15.0sp" android:textColor="@color/qzone_color_title" android:gravity="center_vertical" android:id="@id/answerEdit" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:maxLines="1" android:singleLine="true" android:maxLength="21" android:layout_toRightOf="@id/descTextView" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/qzone_album_question_desc" style="@style/D4_Font" />
+    </com.qzone.widget.ExtendLinearLayout>
+</LinearLayout>

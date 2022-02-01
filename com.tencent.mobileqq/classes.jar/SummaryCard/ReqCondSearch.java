@@ -9,18 +9,18 @@ public final class ReqCondSearch
 {
   static byte[] cache_vCityId = (byte[])new byte[1];
   static byte[] cache_vHomeId;
-  public short cAge;
-  public byte cConstellationId;
-  public byte cGender;
+  public short cAge = 0;
+  public byte cConstellationId = 0;
+  public byte cGender = 0;
   public short cMaxAge = 120;
   public short cMinAge = 18;
-  public long dwFlag;
-  public long dwSessionID;
-  public int iOccupationId;
-  public int iPage;
+  public long dwFlag = 0L;
+  public long dwSessionID = 0L;
+  public int iOccupationId = 0;
+  public int iPage = 0;
   public String strNick = "";
-  public byte[] vCityId;
-  public byte[] vHomeId;
+  public byte[] vCityId = null;
+  public byte[] vHomeId = null;
   
   static
   {
@@ -68,16 +68,19 @@ public final class ReqCondSearch
     paramJceOutputStream.write(this.iPage, 0);
     paramJceOutputStream.write(this.dwSessionID, 1);
     paramJceOutputStream.write(this.dwFlag, 2);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cGender, 4);
-    if (this.vCityId != null) {
-      paramJceOutputStream.write(this.vCityId, 5);
+    localObject = this.vCityId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.cAge, 6);
-    if (this.vHomeId != null) {
-      paramJceOutputStream.write(this.vHomeId, 7);
+    localObject = this.vHomeId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
     paramJceOutputStream.write(this.cConstellationId, 8);
     paramJceOutputStream.write(this.iOccupationId, 9);
@@ -87,7 +90,7 @@ public final class ReqCondSearch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqCondSearch
  * JD-Core Version:    0.7.0.1
  */

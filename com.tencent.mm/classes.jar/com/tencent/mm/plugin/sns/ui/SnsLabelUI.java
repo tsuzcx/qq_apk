@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,82 +8,132 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AbsListView.LayoutParams;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.mmdata.rpt.pv;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.comm.b.e;
+import com.tencent.mm.plugin.comm.b.e.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.label.a.a;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.v;
-import com.tencent.mm.plugin.sns.model.x;
-import com.tencent.mm.plugin.sns.storage.t;
-import com.tencent.mm.plugin.sns.storage.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.label.a.b;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.model.y;
+import com.tencent.mm.plugin.sns.statistics.j;
+import com.tencent.mm.plugin.sns.storage.ac;
+import com.tencent.mm.plugin.sns.storage.ad;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public class SnsLabelUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  public static int[] rRO = { 2131303862, 2131303860, 2131303856, 2131303847 };
-  private AnimatedExpandableListView rRN;
-  private ArrayList<String> rRP;
-  private String rRQ;
-  private String rRR;
-  private String rRS;
-  ap rRT;
-  private int rRU = 0;
-  private boolean rRV;
-  private boolean rRW = false;
-  private boolean rRX = false;
-  private boolean rRY = false;
-  private int rRZ;
-  private com.tencent.mm.ui.base.p rSa;
-  private String rSb;
-  private int rSc;
-  private ArrayList<String> rSd;
-  private ArrayList<String> rSe;
-  private ArrayList<Long> rSf;
-  private ArrayList<String[]> rSg;
+  public static int[] RsD = { b.j.sns_label_public, b.j.sns_label_private, b.j.sns_label_include, b.j.sns_label_exclude };
+  private ArrayList<String> JXW;
+  private com.tencent.mm.ui.base.w PZK;
+  private AnimatedExpandableListView RsC;
+  private String RsE;
+  private String RsF;
+  private String RsG;
+  private String RsH;
+  bg RsI;
+  private int RsJ = 0;
+  private boolean RsK = false;
+  private boolean RsL;
+  private boolean RsM = false;
+  private boolean RsN = false;
+  private boolean RsO = false;
+  private int RsP;
+  private String RsQ;
+  private ArrayList<String> RsR;
+  private int RsS;
+  private ArrayList<String> RsT;
+  private ArrayList<String> RsU;
+  private ArrayList<Long> RsV;
+  private ArrayList<String[]> RsW;
   
-  private boolean cvs()
+  private void goBack()
+  {
+    AppMethodBeat.i(98801);
+    if (hoN())
+    {
+      k.a(this, true, getString(b.j.sns_label_goback_tip), "", getString(b.j.sns_label_goback_save), getString(b.j.sns_label_goback_notsave), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(98794);
+          SnsLabelUI.p(SnsLabelUI.this);
+          AppMethodBeat.o(98794);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(98795);
+          SnsLabelUI.q(SnsLabelUI.this);
+          AppMethodBeat.o(98795);
+        }
+      });
+      AppMethodBeat.o(98801);
+      return;
+    }
+    hoO();
+    AppMethodBeat.o(98801);
+  }
+  
+  private boolean hoN()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(39027);
-    int i = this.rRT.rSq;
+    AppMethodBeat.i(98800);
+    int i = this.RsI.Rtg;
     boolean bool1;
-    if (this.rRT.rSq != this.rRU) {
+    if (this.RsI.Rtg != this.RsJ) {
       if (i == 2)
       {
         bool1 = bool2;
-        if (this.rRT.rSs.size() == 0)
+        if (this.RsI.Rti.size() == 0)
         {
           bool1 = bool2;
-          if (this.rRT.rSu.size() != 0) {}
+          if (this.RsI.Rtk.size() != 0) {}
         }
       }
       else
       {
         if (i != 3) {
-          break label106;
+          break label108;
         }
         bool1 = bool2;
-        if (this.rRT.rSt.size() == 0)
+        if (this.RsI.Rtj.size() == 0)
         {
-          if (this.rRT.rSv.size() == 0) {
-            break label106;
+          if (this.RsI.Rtl.size() == 0) {
+            break label108;
           }
           bool1 = bool2;
         }
@@ -92,9 +141,9 @@ public class SnsLabelUI
     }
     for (;;)
     {
-      AppMethodBeat.o(39027);
+      AppMethodBeat.o(98800);
       return bool1;
-      label106:
+      label108:
       bool1 = bool2;
       if (i != 1)
       {
@@ -107,341 +156,517 @@ public class SnsLabelUI
             {
               bool1 = false;
               break;
-              if ((i == 2) && (this.rRT.rSs.size() != 0))
+              if ((i == 2) && (this.RsI.Rti.size() != 0))
               {
                 bool1 = bool2;
-                if (!bo.d(this.rRT.rSs, ",").equals(this.rRQ)) {
+                if (!Util.listToString(this.RsI.Rti, ",").equals(this.RsE)) {
                   break;
                 }
                 bool1 = bool2;
-                if (!bo.d(this.rRT.rSu, ",").equals(this.rRR)) {
+                if (!Util.listToString(this.RsI.Rtk, ",").equals(this.RsF)) {
                   break;
                 }
                 bool1 = bool2;
-                if (!bo.d(this.rRT.rSw, ",").equals(this.rRS)) {
+                if (!Util.listToString(this.RsI.Rtm, ",").equals(this.RsG)) {
                   break;
                 }
               }
-            } while ((i != 3) || (this.rRT.rSt.size() == 0));
+            } while ((i != 3) || (this.RsI.Rtj.size() == 0));
             bool1 = bool2;
-            if (!bo.d(this.rRT.rSt, ",").equals(this.rRQ)) {
+            if (!Util.listToString(this.RsI.Rtj, ",").equals(this.RsE)) {
               break;
             }
             bool1 = bool2;
-            if (!bo.d(this.rRT.rSv, ",").equals(this.rRR)) {
+            if (!Util.listToString(this.RsI.Rtl, ",").equals(this.RsF)) {
               break;
             }
-          } while (bo.d(this.rRT.rSx, ",").equals(this.rRS));
+          } while (Util.listToString(this.RsI.Rtn, ",").equals(this.RsG));
           bool1 = bool2;
         }
       }
     }
   }
   
-  private void cvt()
+  private void hoO()
   {
-    AppMethodBeat.i(39029);
+    AppMethodBeat.i(98802);
     Intent localIntent = new Intent();
-    localIntent.putExtra("Ktag_range_index", this.rRU);
-    if ((this.rRU == 2) || (this.rRU == 3))
+    localIntent.putExtra("Ktag_range_index", this.RsJ);
+    if ((this.RsJ == 2) || (this.RsJ == 3))
     {
-      cvz();
-      localIntent.putExtra("Klabel_name_list", this.rRQ);
-      localIntent.putExtra("Kother_user_name_list", this.rRR);
-      localIntent.putExtra("Kchat_room_name_list", this.rRS);
+      hoU();
+      localIntent.putExtra("Klabel_name_list", this.RsE);
+      localIntent.putExtra("Kother_user_name_list", this.RsF);
+      localIntent.putExtra("Kchat_room_name_list", this.RsG);
     }
     setResult(-1, localIntent);
     finish();
-    AppMethodBeat.o(39029);
+    AppMethodBeat.o(98802);
   }
   
-  private static int cvv()
+  private static int hoQ()
   {
-    AppMethodBeat.i(39034);
-    g.RM();
-    int i = ((Integer)g.RL().Ru().get(335874, Integer.valueOf(0))).intValue();
-    AppMethodBeat.o(39034);
+    AppMethodBeat.i(98807);
+    com.tencent.mm.kernel.h.baF();
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().d(335874, Integer.valueOf(0))).intValue();
+    AppMethodBeat.o(98807);
     return i;
   }
   
-  private static void cvw()
+  private static void hoR()
   {
-    AppMethodBeat.i(39035);
-    g.RM();
-    int i = ((Integer)g.RL().Ru().get(335874, Integer.valueOf(0))).intValue();
-    g.RM();
-    g.RL().Ru().set(335874, Integer.valueOf(i + 1));
-    AppMethodBeat.o(39035);
+    AppMethodBeat.i(98808);
+    com.tencent.mm.kernel.h.baF();
+    int i = ((Integer)com.tencent.mm.kernel.h.baE().ban().d(335874, Integer.valueOf(0))).intValue();
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baE().ban().B(335874, Integer.valueOf(i + 1));
+    AppMethodBeat.o(98808);
   }
   
-  private void cvx()
+  private void hoS()
   {
-    AppMethodBeat.i(39036);
-    com.tencent.mm.plugin.report.service.h.qsU.e(11455, new Object[] { "", "", Integer.valueOf(this.rSc), Integer.valueOf(0) });
-    cvw();
-    this.rSe = null;
-    this.rRY = false;
-    this.rRX = false;
-    if ((this.rSa != null) && (this.rSa.isShowing())) {
-      this.rSa.dismiss();
+    AppMethodBeat.i(98809);
+    com.tencent.mm.plugin.report.service.h.OAn.b(11455, new Object[] { "", "", Integer.valueOf(this.RsS), Integer.valueOf(0) });
+    hoR();
+    this.RsU = null;
+    this.RsO = false;
+    this.RsN = false;
+    if ((this.PZK != null) && (this.PZK.isShowing())) {
+      this.PZK.dismiss();
     }
-    if (this.rRW)
+    if (this.RsM)
     {
-      this.rRW = false;
-      AppMethodBeat.o(39036);
+      this.RsM = false;
+      AppMethodBeat.o(98809);
       return;
     }
-    int i = 2131303870;
-    if (cvv() > 1) {
-      i = 2131303869;
+    int i = b.j.sns_label_transform_failed_once;
+    if (hoQ() > 1) {
+      i = b.j.sns_label_transform_failed_again;
     }
-    com.tencent.mm.ui.base.h.a(this, i, 2131297018, new DialogInterface.OnClickListener()
+    k.a(this, i, b.j.app_ok, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
-    AppMethodBeat.o(39036);
+    AppMethodBeat.o(98809);
   }
   
-  private void cvy()
+  private void hoT()
   {
-    AppMethodBeat.i(39038);
-    if ((this.rRP == null) || (this.rRP.isEmpty()))
+    AppMethodBeat.i(98811);
+    if ((this.JXW == null) || (this.JXW.isEmpty()))
     {
-      if (this.rRT.rSs != null) {
-        this.rRT.rSs.clear();
+      if (this.RsI.Rti != null) {
+        this.RsI.Rti.clear();
       }
-      if (this.rRT.rSt != null) {
-        this.rRT.rSt.clear();
+      if (this.RsI.Rtj != null) {
+        this.RsI.Rtj.clear();
       }
-      AppMethodBeat.o(39038);
+      AppMethodBeat.o(98811);
       return;
     }
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator;
     String str;
-    if ((this.rRU == 2) && (this.rRT.rSs != null))
+    if ((this.RsJ == 2) && (this.RsI.Rti != null))
     {
-      localIterator = this.rRT.rSs.iterator();
+      localIterator = this.RsI.Rti.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if (!this.rRP.contains(str)) {
+        if (!this.JXW.contains(str)) {
           localArrayList.add(str);
         }
       }
-      this.rRT.rSs.removeAll(localArrayList);
-      AppMethodBeat.o(39038);
+      this.RsI.Rti.removeAll(localArrayList);
+      AppMethodBeat.o(98811);
       return;
     }
-    if (this.rRU == 3)
+    if (this.RsJ == 3)
     {
-      localIterator = this.rRT.rSt.iterator();
+      localIterator = this.RsI.Rtj.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if (!this.rRP.contains(str)) {
+        if (!this.JXW.contains(str)) {
           localArrayList.add(str);
         }
       }
-      this.rRT.rSt.removeAll(localArrayList);
+      this.RsI.Rtj.removeAll(localArrayList);
     }
-    AppMethodBeat.o(39038);
+    AppMethodBeat.o(98811);
   }
   
-  private void cvz()
+  private void hoU()
   {
-    AppMethodBeat.i(39039);
-    if ((this.rRP == null) || (this.rRP.isEmpty()))
+    AppMethodBeat.i(98812);
+    if ((this.JXW == null) || (this.JXW.isEmpty()))
     {
-      this.rRQ = "";
-      AppMethodBeat.o(39039);
+      this.RsE = "";
+      AppMethodBeat.o(98812);
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
-    if (this.rRQ != null)
+    if (this.RsE != null)
     {
-      ArrayList localArrayList2 = bo.P(this.rRQ.split(","));
+      ArrayList localArrayList2 = Util.stringsToList(this.RsE.split(","));
       if (localArrayList2 != null)
       {
         Iterator localIterator = localArrayList2.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          if (!this.rRP.contains(str)) {
+          if (!this.JXW.contains(str)) {
             localArrayList1.add(str);
           }
         }
         localArrayList2.removeAll(localArrayList1);
-        this.rRQ = bo.d(localArrayList2, ",");
+        this.RsE = Util.listToString(localArrayList2, ",");
       }
     }
-    AppMethodBeat.o(39039);
+    AppMethodBeat.o(98812);
   }
   
-  private void dn(List<String[]> paramList)
+  private void kN(List<String[]> paramList)
   {
-    AppMethodBeat.i(39037);
-    if ((this.rSe == null) || (this.rSe.size() == 0))
+    AppMethodBeat.i(98810);
+    if ((this.RsU == null) || (this.RsU.size() == 0))
     {
-      AppMethodBeat.o(39037);
+      AppMethodBeat.o(98810);
       return;
     }
-    Iterator localIterator = this.rSe.iterator();
+    Iterator localIterator = this.RsU.iterator();
     paramList = paramList.iterator();
-    ArrayList localArrayList1 = new ArrayList(this.rSe.size());
-    ArrayList localArrayList2 = new ArrayList(this.rSe.size());
+    ArrayList localArrayList1 = new ArrayList(this.RsU.size());
+    ArrayList localArrayList2 = new ArrayList(this.RsU.size());
     while (localIterator.hasNext())
     {
-      localArrayList1.add(a.bKV().RO((String)localIterator.next()));
-      localArrayList2.add(bo.d(Arrays.asList((Object[])paramList.next()), ","));
-      this.rRX = true;
+      localArrayList1.add(a.fTb().aJH((String)localIterator.next()));
+      localArrayList2.add(Util.listToString(Arrays.asList((String[])paramList.next()), ","));
+      this.RsN = true;
     }
-    a.bKV().j(localArrayList1, localArrayList2);
-    AppMethodBeat.o(39037);
-  }
-  
-  private void goBack()
-  {
-    AppMethodBeat.i(39028);
-    if (cvs())
-    {
-      com.tencent.mm.ui.base.h.a(this, true, getString(2131303853), "", getString(2131303852), getString(2131303851), new SnsLabelUI.11(this), new SnsLabelUI.12(this));
-      AppMethodBeat.o(39028);
-      return;
-    }
-    cvt();
-    AppMethodBeat.o(39028);
-  }
-  
-  final void cvu()
-  {
-    AppMethodBeat.i(39030);
-    Intent localIntent = new Intent();
-    if (this.rRT.rSq == 2)
-    {
-      this.rRQ = bo.d(this.rRT.rSs, ",");
-      this.rRR = bo.d(this.rRT.rSu, ",");
-      this.rRS = bo.d(this.rRT.rSw, ",");
-      cvz();
-      localIntent.putExtra("Klabel_name_list", this.rRQ);
-      localIntent.putExtra("Kother_user_name_list", this.rRR);
-      localIntent.putExtra("Kchat_room_name_list", this.rRS);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("Ktag_range_index", this.rRT.rSq);
-      setResult(-1, localIntent);
-      finish();
-      AppMethodBeat.o(39030);
-      return;
-      if (this.rRT.rSq == 3)
-      {
-        this.rRQ = bo.d(this.rRT.rSt, ",");
-        this.rRR = bo.d(this.rRT.rSv, ",");
-        this.rRS = bo.d(this.rRT.rSx, ",");
-        cvz();
-        localIntent.putExtra("Klabel_name_list", this.rRQ);
-        localIntent.putExtra("Kother_user_name_list", this.rRR);
-        localIntent.putExtra("Kchat_room_name_list", this.rRS);
-      }
-    }
+    a.fTb().G(localArrayList1, localArrayList2);
+    AppMethodBeat.o(98810);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(39023);
+    AppMethodBeat.i(98796);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
       goBack();
-      AppMethodBeat.o(39023);
+      AppMethodBeat.o(98796);
       return true;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(39023);
+    AppMethodBeat.o(98796);
     return bool;
   }
   
   public int getLayoutId()
   {
-    return 2130970831;
+    return b.g.sns_label;
+  }
+  
+  final void hoP()
+  {
+    AppMethodBeat.i(98803);
+    Intent localIntent = new Intent();
+    if (this.RsI.Rtg == 2)
+    {
+      this.RsE = Util.listToString(this.RsI.Rti, ",");
+      this.RsF = Util.listToString(this.RsI.Rtk, ",");
+      this.RsG = Util.listToString(this.RsI.Rtm, ",");
+      this.RsH = Util.listToString(this.RsI.Rto, ",");
+      hoU();
+      localIntent.putExtra("Klabel_name_list", this.RsE);
+      localIntent.putExtra("Kother_user_name_list", this.RsF);
+      localIntent.putExtra("Kchat_room_name_list", this.RsG);
+      localIntent.putExtra("KNew_label_name_list", this.RsH);
+    }
+    for (;;)
+    {
+      localIntent.putExtra("Ktag_range_index", this.RsI.Rtg);
+      setResult(-1, localIntent);
+      finish();
+      AppMethodBeat.o(98803);
+      return;
+      if (this.RsI.Rtg == 3)
+      {
+        this.RsE = Util.listToString(this.RsI.Rtj, ",");
+        this.RsF = Util.listToString(this.RsI.Rtl, ",");
+        this.RsG = Util.listToString(this.RsI.Rtn, ",");
+        this.RsH = Util.listToString(this.RsI.Rtp, ",");
+        hoU();
+        localIntent.putExtra("Klabel_name_list", this.RsE);
+        localIntent.putExtra("Kother_user_name_list", this.RsF);
+        localIntent.putExtra("Kchat_room_name_list", this.RsG);
+        localIntent.putExtra("KNew_label_name_list", this.RsH);
+      }
+    }
   }
   
   public void initView()
   {
-    AppMethodBeat.i(39025);
+    AppMethodBeat.i(98798);
     boolean bool = getIntent().getBooleanExtra("KLabel_is_filter_private", false);
-    this.rRN = ((AnimatedExpandableListView)findViewById(2131828013));
-    this.rRP = ((ArrayList)a.bKV().bKQ());
-    this.rRT.rSr = bool;
-    this.rRT.S(this.rRP);
-    cvy();
+    this.RsC = ((AnimatedExpandableListView)findViewById(b.f.sns_label_exlist));
+    this.JXW = ((ArrayList)a.fTb().fSW());
+    this.RsI.Rth = bool;
+    this.RsI.bF(this.JXW);
+    hoT();
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
-    localLayoutParams.height = getResources().getDimensionPixelSize(2131427775);
+    localLayoutParams.height = getResources().getDimensionPixelSize(b.d.LargerPadding);
     View localView = new View(this);
     localView.setLayoutParams(localLayoutParams);
-    this.rRN.addHeaderView(localView);
-    this.rRN.setAdapter(this.rRT);
-    if (this.rRT.rSq == 2) {
-      this.rRN.expandGroup(2);
+    this.RsC.addHeaderView(localView);
+    this.RsC.setAdapter(this.RsI);
+    if (this.RsI.Rtg == 2) {
+      this.RsC.expandGroup(2);
     }
     for (;;)
     {
-      this.rRN.setOnGroupClickListener(new SnsLabelUI.5(this));
-      this.rRN.setOnChildClickListener(new SnsLabelUI.6(this));
-      setBackBtn(new SnsLabelUI.7(this));
-      addTextOptionMenu(0, getString(2131303849), new SnsLabelUI.8(this), null, q.b.zby);
-      AppMethodBeat.o(39025);
+      this.RsC.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
+      {
+        public final boolean onGroupClick(ExpandableListView paramAnonymousExpandableListView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(98788);
+          if ((aj.hga()) && (SnsLabelUI.this.getIntent().getBooleanExtra("Kis_with_together", false)) && (paramAnonymousInt == 1))
+          {
+            paramAnonymousExpandableListView = new g.a(SnsLabelUI.this);
+            paramAnonymousExpandableListView.bDE(SnsLabelUI.this.getString(b.j.sns_withta_not_set_privacy));
+            paramAnonymousExpandableListView.aEX(b.j.app_i_know).show();
+            AppMethodBeat.o(98788);
+            return false;
+          }
+          int i = SnsLabelUI.a(SnsLabelUI.this).Rtg;
+          j.QFS.akX(paramAnonymousInt);
+          Log.i("MicroMsg.SnsLabelUI", "dz[previousGroup: %d    onGroupClick:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramAnonymousInt) });
+          if (paramAnonymousInt > 1)
+          {
+            if ((SnsLabelUI.b(SnsLabelUI.this) != null) && (SnsLabelUI.b(SnsLabelUI.this).size() != 0) && (SnsLabelUI.hoV() == 0))
+            {
+              SnsLabelUI.a(SnsLabelUI.this, paramAnonymousInt);
+              SnsLabelUI.c(SnsLabelUI.this);
+              Log.i("MicroMsg.SnsLabelUI", "dz[previousGroup: need transform]");
+              AppMethodBeat.o(98788);
+              return true;
+            }
+            if (SnsLabelUI.d(SnsLabelUI.this))
+            {
+              SnsLabelUI.e(SnsLabelUI.this);
+              SnsLabelUI.a(SnsLabelUI.this, paramAnonymousInt);
+              SnsLabelUI.a(SnsLabelUI.this, k.a(SnsLabelUI.this, SnsLabelUI.this.getString(b.j.sns_label_is_transforming), false, null));
+              Log.i("MicroMsg.SnsLabelUI", "dz[previousGroup: isGettingTagInfo]");
+              AppMethodBeat.o(98788);
+              return true;
+            }
+            if (i == paramAnonymousInt)
+            {
+              if (SnsLabelUI.f(SnsLabelUI.this).isGroupExpanded(paramAnonymousInt)) {
+                SnsLabelUI.f(SnsLabelUI.this).aFj(paramAnonymousInt);
+              }
+              for (;;)
+              {
+                SnsLabelUI.a(SnsLabelUI.this).Rtg = paramAnonymousInt;
+                AppMethodBeat.o(98788);
+                return true;
+                SnsLabelUI.f(SnsLabelUI.this).aFi(paramAnonymousInt);
+              }
+            }
+            if (i == 2)
+            {
+              SnsLabelUI.f(SnsLabelUI.this).collapseGroup(2);
+              SnsLabelUI.a(SnsLabelUI.this).Rti.clear();
+              SnsLabelUI.a(SnsLabelUI.this).Rtk.clear();
+            }
+            for (;;)
+            {
+              SnsLabelUI.f(SnsLabelUI.this).post(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(98787);
+                  SnsLabelUI.f(SnsLabelUI.this).aFi(paramAnonymousInt);
+                  AppMethodBeat.o(98787);
+                }
+              });
+              break;
+              if (i == 3)
+              {
+                SnsLabelUI.f(SnsLabelUI.this).collapseGroup(3);
+                SnsLabelUI.a(SnsLabelUI.this).Rtj.clear();
+                SnsLabelUI.a(SnsLabelUI.this).Rtl.clear();
+              }
+            }
+          }
+          if (i > 1) {
+            SnsLabelUI.f(SnsLabelUI.this).aFj(i);
+          }
+          SnsLabelUI.a(SnsLabelUI.this).Rtg = paramAnonymousInt;
+          AppMethodBeat.o(98788);
+          return false;
+        }
+      });
+      this.RsC.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
+      {
+        public final boolean onChildClick(ExpandableListView paramAnonymousExpandableListView, View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(98789);
+          if (paramAnonymousInt2 == bg.Rtc)
+          {
+            SnsLabelUI.a(SnsLabelUI.this, paramAnonymousInt1);
+            SnsLabelUI.g(SnsLabelUI.this);
+            if (paramAnonymousInt2 != bg.Rtc) {
+              break label208;
+            }
+            paramAnonymousExpandableListView = j.QFS;
+            if (paramAnonymousExpandableListView.QGd != null)
+            {
+              if (paramAnonymousExpandableListView.QGd.jpd > 0) {
+                break label189;
+              }
+              paramAnonymousExpandableListView.QGd.jpd = 1;
+            }
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(98789);
+            return true;
+            if (paramAnonymousInt2 == bg.Rtb)
+            {
+              SnsLabelUI.a(SnsLabelUI.this, paramAnonymousInt1);
+              SnsLabelUI.h(SnsLabelUI.this);
+              break;
+            }
+            paramAnonymousExpandableListView = (String)SnsLabelUI.a(SnsLabelUI.this).getChild(paramAnonymousInt1, paramAnonymousInt2 - bg.Rtd);
+            SnsLabelUI.a(SnsLabelUI.this);
+            bg.baH(paramAnonymousExpandableListView);
+            if (paramAnonymousInt1 == 2)
+            {
+              SnsLabelUI.a(SnsLabelUI.this, 1, SnsLabelUI.a(SnsLabelUI.this).Rti, paramAnonymousExpandableListView, paramAnonymousView);
+              break;
+            }
+            if (paramAnonymousInt1 != 3) {
+              break;
+            }
+            SnsLabelUI.a(SnsLabelUI.this, 2, SnsLabelUI.a(SnsLabelUI.this).Rtj, paramAnonymousExpandableListView, paramAnonymousView);
+            break;
+            label189:
+            paramAnonymousExpandableListView.QGd.jpd += 1;
+            continue;
+            label208:
+            if (paramAnonymousInt2 == bg.Rtb)
+            {
+              paramAnonymousExpandableListView = j.QFS;
+              if (paramAnonymousExpandableListView.QGd != null) {
+                if (paramAnonymousExpandableListView.QGd.joY <= 0) {
+                  paramAnonymousExpandableListView.QGd.joY = 1;
+                } else {
+                  paramAnonymousExpandableListView.QGd.joY += 1;
+                }
+              }
+            }
+          }
+        }
+      });
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(98790);
+          SnsLabelUI.i(SnsLabelUI.this);
+          AppMethodBeat.o(98790);
+          return true;
+        }
+      });
+      addTextOptionMenu(0, getString(b.j.sns_label_finish), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(98791);
+          paramAnonymousMenuItem = SnsLabelUI.this;
+          String str1 = Util.listToString(paramAnonymousMenuItem.RsI.Rti, ",");
+          String str2 = Util.listToString(paramAnonymousMenuItem.RsI.Rtk, ",");
+          String str3 = Util.listToString(paramAnonymousMenuItem.RsI.Rtm, ",");
+          String str4 = Util.listToString(paramAnonymousMenuItem.RsI.Rtj, ",");
+          String str5 = Util.listToString(paramAnonymousMenuItem.RsI.Rtl, ",");
+          String str6 = Util.listToString(paramAnonymousMenuItem.RsI.Rtn, ",");
+          if (((paramAnonymousMenuItem.RsI.Rtg == 2) && (paramAnonymousMenuItem.RsI.Rti.size() == 0) && (paramAnonymousMenuItem.RsI.Rtk.size() == 0) && (paramAnonymousMenuItem.RsI.Rtm.size() == 0)) || ((paramAnonymousMenuItem.RsI.Rtg == 3) && (paramAnonymousMenuItem.RsI.Rtj.size() == 0) && (paramAnonymousMenuItem.RsI.Rtl.size() == 0) && (paramAnonymousMenuItem.RsI.Rtn.size() == 0))) {
+            k.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(b.j.sns_label_need_select_one_least), "", paramAnonymousMenuItem.getString(b.j.sns_label_transform_ok), null);
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(98791);
+            return true;
+            if (((paramAnonymousMenuItem.RsI.Rtg == 2) && (Util.isNullOrNil(str1)) && (Util.isNullOrNil(str2)) && (Util.isNullOrNil(str3))) || ((paramAnonymousMenuItem.RsI.Rtg == 3) && (Util.isNullOrNil(str4)) && (Util.isNullOrNil(str5)) && (Util.isNullOrNil(str6)))) {
+              k.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(b.j.sns_label_need_select_one_least), "", paramAnonymousMenuItem.getString(b.j.sns_label_transform_ok), null);
+            } else {
+              paramAnonymousMenuItem.hoP();
+            }
+          }
+        }
+      }, null, y.b.adEJ);
+      AppMethodBeat.o(98798);
       return;
-      if (this.rRT.rSq == 3) {
-        this.rRN.expandGroup(3);
+      if (this.RsI.Rtg == 3) {
+        this.RsC.expandGroup(3);
       }
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(39026);
+    AppMethodBeat.i(98799);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     Object localObject;
     if ((paramInt2 == -1) && (paramInt1 == 4003))
     {
-      ab.i("MicroMsg.SnsLabelUI", "the Activity completed");
+      Log.i("MicroMsg.SnsLabelUI", "the Activity completed");
       localObject = paramIntent.getStringExtra("Select_Contacts_To_Create_New_Label");
-      if (!bo.isNullOrNil((String)localObject))
+      if (!Util.isNullOrNil((String)localObject))
       {
         paramIntent = new Intent();
         paramIntent.putExtra("Select_Contact", (String)localObject);
-        d.b(getContext(), "label", ".ui.ContactLabelEditUI", paramIntent, 4002);
-        AppMethodBeat.o(39026);
+        if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yUm, 1) == 1)
+        {
+          Log.i("MicroMsg.SnsLabelUI", "startActivity ContactEditLabel ");
+          com.tencent.mm.br.c.b(getContext(), "label", ".ui.ContactEditLabel", paramIntent, 4002);
+          AppMethodBeat.o(98799);
+          return;
+        }
+        Log.i("MicroMsg.SnsLabelUI", "startActivity ContactLabelEditUI ");
+        com.tencent.mm.br.c.b(getContext(), "label", ".ui.ContactLabelEditUI", paramIntent, 4002);
+        AppMethodBeat.o(98799);
         return;
       }
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      this.rRR = new String(paramIntent);
-      ab.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
-      if (this.rRZ == 2)
+      this.RsF = new String(paramIntent);
+      Log.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
+      if (this.RsP == 2)
       {
-        this.rRT.rSu.clear();
-        if (!bo.isNullOrNil(paramIntent))
+        this.RsI.Rtk.clear();
+        if (!Util.isNullOrNil(paramIntent))
         {
-          paramIntent = bo.P(paramIntent.split(","));
-          this.rRT.rSu.addAll(paramIntent);
-          this.rRT.rSq = this.rRZ;
+          paramIntent = Util.stringsToList(paramIntent.split(","));
+          this.RsI.Rtk.addAll(paramIntent);
+          this.RsI.Rtg = this.RsP;
         }
       }
       for (;;)
       {
-        this.rRT.notifyDataSetChanged();
-        this.rRN.expandGroup(this.rRZ);
-        AppMethodBeat.o(39026);
+        this.RsI.notifyDataSetChanged();
+        this.RsC.expandGroup(this.RsP);
+        AppMethodBeat.o(98799);
         return;
-        if (this.rRZ == 3)
+        if (this.RsP == 3)
         {
-          this.rRT.rSv.clear();
-          if (!bo.isNullOrNil(paramIntent))
+          this.RsI.Rtl.clear();
+          if (!Util.isNullOrNil(paramIntent))
           {
-            paramIntent = bo.P(paramIntent.split(","));
-            this.rRT.rSv.addAll(paramIntent);
-            this.rRT.rSq = this.rRZ;
+            paramIntent = Util.stringsToList(paramIntent.split(","));
+            this.RsI.Rtl.addAll(paramIntent);
+            this.RsI.Rtg = this.RsP;
           }
         }
       }
@@ -449,56 +674,110 @@ public class SnsLabelUI
     if ((paramInt2 == -1) && (paramInt1 == 4001))
     {
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      ab.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
-      if (!bo.isNullOrNil(paramIntent))
+      Log.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
+      if (!Util.isNullOrNil(paramIntent))
       {
         localObject = new Intent();
         ((Intent)localObject).putExtra("Select_Contact", paramIntent);
-        d.b(this, "label", ".ui.ContactLabelEditUI", (Intent)localObject, 4002);
+        if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yUm, 1) == 1)
+        {
+          Log.i("MicroMsg.SnsLabelUI", "startActivity ContactEditLabel ");
+          com.tencent.mm.br.c.b(getContext(), "label", ".ui.ContactEditLabel", (Intent)localObject, 4002);
+          AppMethodBeat.o(98799);
+          return;
+        }
+        Log.i("MicroMsg.SnsLabelUI", "startActivity ContactLabelEditUI ");
+        com.tencent.mm.br.c.b(getContext(), "label", ".ui.ContactLabelEditUI", (Intent)localObject, 4002);
       }
-      AppMethodBeat.o(39026);
+      AppMethodBeat.o(98799);
       return;
     }
     if ((paramInt2 == 0) && (paramInt1 == 4002) && (paramIntent != null))
     {
       localObject = paramIntent.getStringExtra("k_sns_label_add_label");
-      this.rSb = paramIntent.getStringExtra("k_sns_label_add_label");
-      this.rRN.postDelayed(new SnsLabelUI.10(this, (String)localObject), 600L);
-      AppMethodBeat.o(39026);
+      this.RsQ = paramIntent.getStringExtra("k_sns_label_add_label");
+      this.RsR = paramIntent.getStringArrayListExtra("k_sns_label_add_label_usernames");
+      this.RsC.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(98793);
+          SnsLabelUI.a(SnsLabelUI.this, (ArrayList)a.fTb().fSW());
+          if (SnsLabelUI.k(SnsLabelUI.this) == null) {
+            SnsLabelUI.a(SnsLabelUI.this, new ArrayList());
+          }
+          if (!Util.isNullOrNil(this.Rta)) {
+            if (!SnsLabelUI.k(SnsLabelUI.this).contains(this.Rta)) {
+              SnsLabelUI.k(SnsLabelUI.this).add(this.Rta);
+            }
+          }
+          for (int i = SnsLabelUI.k(SnsLabelUI.this).indexOf(this.Rta);; i = -1)
+          {
+            SnsLabelUI.a(SnsLabelUI.this).bF(SnsLabelUI.k(SnsLabelUI.this));
+            SnsLabelUI.l(SnsLabelUI.this);
+            SnsLabelUI.a(SnsLabelUI.this).Rtg = SnsLabelUI.m(SnsLabelUI.this);
+            if ((!Util.isNullOrNil(this.Rta)) && (i != -1))
+            {
+              if (SnsLabelUI.m(SnsLabelUI.this) != 2) {
+                break label270;
+              }
+              SnsLabelUI.a(SnsLabelUI.this).Rti.add(this.Rta);
+              SnsLabelUI.a(SnsLabelUI.this).Rto = new ArrayList(SnsLabelUI.n(SnsLabelUI.this));
+              SnsLabelUI.a(SnsLabelUI.this).Rtk.clear();
+            }
+            for (;;)
+            {
+              SnsLabelUI.a(SnsLabelUI.this).notifyDataSetChanged();
+              SnsLabelUI.f(SnsLabelUI.this).expandGroup(SnsLabelUI.m(SnsLabelUI.this));
+              SnsLabelUI.o(SnsLabelUI.this);
+              AppMethodBeat.o(98793);
+              return;
+              label270:
+              if (SnsLabelUI.m(SnsLabelUI.this) == 3)
+              {
+                SnsLabelUI.a(SnsLabelUI.this).Rtj.add(this.Rta);
+                SnsLabelUI.a(SnsLabelUI.this).Rtp = new ArrayList(SnsLabelUI.n(SnsLabelUI.this));
+                SnsLabelUI.a(SnsLabelUI.this).Rtl.clear();
+              }
+            }
+          }
+        }
+      }, 600L);
+      AppMethodBeat.o(98799);
       return;
     }
     if ((paramInt2 == -1) && (paramInt1 == 4004))
     {
-      ab.i("MicroMsg.SnsLabelUI", "the Activity completed");
+      Log.i("MicroMsg.SnsLabelUI", "the Activity completed");
       paramIntent = paramIntent.getStringExtra("select_chatrooms");
-      this.rRS = paramIntent;
-      ab.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
-      if (this.rRZ != 2) {
-        break label563;
+      this.RsG = paramIntent;
+      Log.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
+      if (this.RsP != 2) {
+        break label690;
       }
-      this.rRT.rSw.clear();
-      if (!bo.isNullOrNil(paramIntent))
+      this.RsI.Rtm.clear();
+      if (!Util.isNullOrNil(paramIntent))
       {
-        paramIntent = bo.P(paramIntent.split(","));
-        this.rRT.rSw.addAll(paramIntent);
-        this.rRT.rSq = this.rRZ;
+        paramIntent = Util.stringsToList(paramIntent.split(","));
+        this.RsI.Rtm.addAll(paramIntent);
+        this.RsI.Rtg = this.RsP;
       }
     }
     for (;;)
     {
-      this.rRT.notifyDataSetChanged();
-      this.rRN.expandGroup(this.rRZ);
-      AppMethodBeat.o(39026);
+      this.RsI.notifyDataSetChanged();
+      this.RsC.expandGroup(this.RsP);
+      AppMethodBeat.o(98799);
       return;
-      label563:
-      if (this.rRZ == 3)
+      label690:
+      if (this.RsP == 3)
       {
-        this.rRT.rSx.clear();
-        if (!bo.isNullOrNil(paramIntent))
+        this.RsI.Rtn.clear();
+        if (!Util.isNullOrNil(paramIntent))
         {
-          paramIntent = bo.P(paramIntent.split(","));
-          this.rRT.rSx.addAll(paramIntent);
-          this.rRT.rSq = this.rRZ;
+          paramIntent = Util.stringsToList(paramIntent.split(","));
+          this.RsI.Rtn.addAll(paramIntent);
+          this.RsI.Rtg = this.RsP;
         }
       }
     }
@@ -506,92 +785,94 @@ public class SnsLabelUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(39024);
+    AppMethodBeat.i(98797);
     super.onCreate(paramBundle);
-    setMMTitle(2131304001);
-    g.RM();
-    g.RK().eHt.a(292, this);
-    g.RM();
-    g.RK().eHt.a(635, this);
-    g.RM();
-    g.RK().eHt.a(638, this);
-    g.RM();
-    g.RK().eHt.a(290, this);
-    this.rRT = new ap(this);
-    this.rRT.rSy = new ap.b()
+    setMMTitle(b.j.sns_tag_title);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(292, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(635, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(638, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.a(290, this);
+    this.RsI = new bg(this);
+    this.RsI.Rtq = new bg.b()
     {
-      public final void a(ap.c paramAnonymousc)
+      public final void a(bg.c paramAnonymousc)
       {
-        AppMethodBeat.i(39011);
-        int i = paramAnonymousc.rSD;
-        int j = paramAnonymousc.rSE;
+        AppMethodBeat.i(98784);
+        int i = paramAnonymousc.Rtv;
+        int j = paramAnonymousc.Rtw;
         SnsLabelUI.a(SnsLabelUI.this, i, j);
-        AppMethodBeat.o(39011);
+        AppMethodBeat.o(98784);
       }
     };
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      this.rRU = 0;
-      this.rRT.style = 0;
-      this.rRQ = null;
-      this.rRR = null;
-      this.rRS = null;
-      this.rRT.rSq = this.rRU;
-      if (this.rRT.style == 1) {
-        findViewById(2131828012).setBackgroundResource(2131689763);
+      this.RsJ = 0;
+      this.RsI.style = 0;
+      this.RsE = null;
+      this.RsF = null;
+      this.RsG = null;
+      this.RsI.Rtg = this.RsJ;
+      this.RsI.RsK = this.RsK;
+      if (this.RsI.style == 1) {
+        findViewById(b.f.sns_label_layout).setBackgroundResource(b.c.black);
       }
-      if (this.rRU != 2) {
-        break label465;
+      if (this.RsJ != 2) {
+        break label491;
       }
-      if (!TextUtils.isEmpty(this.rRQ)) {
-        this.rRT.rSs = bo.P(this.rRQ.split(","));
+      if (!TextUtils.isEmpty(this.RsE)) {
+        this.RsI.Rti = Util.stringsToList(this.RsE.split(","));
       }
-      if (!TextUtils.isEmpty(this.rRR)) {
-        this.rRT.rSu = bo.P(this.rRR.split(","));
+      if (!TextUtils.isEmpty(this.RsF)) {
+        this.RsI.Rtk = Util.stringsToList(this.RsF.split(","));
       }
-      if ((this.rRS != null) && (!this.rRS.isEmpty())) {
-        this.rRT.rSw = bo.P(this.rRS.split(","));
+      if ((this.RsG != null) && (!this.RsG.isEmpty())) {
+        this.RsI.Rtm = Util.stringsToList(this.RsG.split(","));
       }
     }
     for (;;)
     {
-      g.RM();
-      this.rRV = ((Boolean)g.RL().Ru().get(335873, Boolean.TRUE)).booleanValue();
-      if (this.rRV)
+      com.tencent.mm.kernel.h.baF();
+      this.RsL = ((Boolean)com.tencent.mm.kernel.h.baE().ban().d(335873, Boolean.TRUE)).booleanValue();
+      if (this.RsL)
       {
-        this.rRX = true;
-        this.rRY = true;
-        if (cvv() > 0) {
-          this.rRW = true;
+        this.RsN = true;
+        this.RsO = true;
+        if (hoQ() > 0) {
+          this.RsM = true;
         }
-        g.RM();
-        g.RK().eHt.a(new v(1), 0);
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baD().mCm.a(new com.tencent.mm.plugin.sns.model.w(1), 0);
       }
       initView();
-      AppMethodBeat.o(39024);
+      AppMethodBeat.o(98797);
       return;
-      this.rRU = paramBundle.getIntExtra("KLabel_range_index", 0);
-      this.rRT.style = paramBundle.getIntExtra("k_sns_label_ui_style", 0);
-      this.rRQ = paramBundle.getStringExtra("Klabel_name_list");
-      this.rRR = paramBundle.getStringExtra("Kother_user_name_list");
-      this.rRS = paramBundle.getStringExtra("Kchat_room_name_list");
+      this.RsK = paramBundle.getBooleanExtra("Kis_from_text_status", false);
+      this.RsJ = paramBundle.getIntExtra("KLabel_range_index", 0);
+      this.RsI.style = paramBundle.getIntExtra("k_sns_label_ui_style", 0);
+      this.RsE = paramBundle.getStringExtra("Klabel_name_list");
+      this.RsF = paramBundle.getStringExtra("Kother_user_name_list");
+      this.RsG = paramBundle.getStringExtra("Kchat_room_name_list");
       if (TextUtils.isEmpty(paramBundle.getStringExtra("k_sns_label_ui_title"))) {
         break;
       }
       setMMTitle(paramBundle.getStringExtra("k_sns_label_ui_title"));
       break;
-      label465:
-      if (this.rRU == 3)
+      label491:
+      if (this.RsJ == 3)
       {
-        if (!TextUtils.isEmpty(this.rRQ)) {
-          this.rRT.rSt = bo.P(this.rRQ.split(","));
+        if (!TextUtils.isEmpty(this.RsE)) {
+          this.RsI.Rtj = Util.stringsToList(this.RsE.split(","));
         }
-        if (!TextUtils.isEmpty(this.rRR)) {
-          this.rRT.rSv = bo.P(this.rRR.split(","));
+        if (!TextUtils.isEmpty(this.RsF)) {
+          this.RsI.Rtl = Util.stringsToList(this.RsF.split(","));
         }
-        if ((this.rRS != null) && (!this.rRS.isEmpty())) {
-          this.rRT.rSx = bo.P(this.rRS.split(","));
+        if ((this.RsG != null) && (!this.RsG.isEmpty())) {
+          this.RsI.Rtn = Util.stringsToList(this.RsG.split(","));
         }
       }
     }
@@ -599,187 +880,227 @@ public class SnsLabelUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(39031);
-    g.RM();
-    g.RK().eHt.b(292, this);
-    g.RM();
-    g.RK().eHt.b(635, this);
-    g.RM();
-    g.RK().eHt.b(638, this);
-    g.RM();
-    g.RK().eHt.b(290, this);
+    AppMethodBeat.i(98804);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(292, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(635, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(638, this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(290, this);
     super.onDestroy();
-    AppMethodBeat.o(39031);
+    e.xfd.a("SnsPublishProcess", "privacyPageStaytime_", Long.valueOf(getActivityBrowseTimeMs()), com.tencent.mm.plugin.comm.b.c.xeT);
+    AppMethodBeat.o(98804);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(39032);
-    if ((this.rRT != null) && (this.rSb == null) && (this.rRN != null)) {
-      this.rRN.postDelayed(new Runnable()
+    AppMethodBeat.i(98805);
+    if ((this.RsI != null) && (this.RsQ == null) && (this.RsC != null)) {
+      this.RsC.postDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(39012);
-          a.bKV().ahN();
-          SnsLabelUI.a(SnsLabelUI.this, (ArrayList)a.bKV().bKQ());
-          SnsLabelUI.a(SnsLabelUI.this).S(SnsLabelUI.k(SnsLabelUI.this));
+          AppMethodBeat.i(98785);
+          a.fTb().bja();
+          SnsLabelUI.a(SnsLabelUI.this, (ArrayList)a.fTb().fSW());
+          SnsLabelUI.a(SnsLabelUI.this).bF(SnsLabelUI.k(SnsLabelUI.this));
           SnsLabelUI.l(SnsLabelUI.this);
-          if (((SnsLabelUI.k(SnsLabelUI.this) == null) || (SnsLabelUI.k(SnsLabelUI.this).size() == 0)) && ((SnsLabelUI.q(SnsLabelUI.this) == null) || (SnsLabelUI.q(SnsLabelUI.this).length() == 0)) && (SnsLabelUI.a(SnsLabelUI.this).rSq != 0) && (SnsLabelUI.a(SnsLabelUI.this).rSq != 1) && ((SnsLabelUI.r(SnsLabelUI.this) == null) || (SnsLabelUI.r(SnsLabelUI.this).length() == 0))) {
-            SnsLabelUI.a(SnsLabelUI.this).rSq = 0;
+          if (((SnsLabelUI.k(SnsLabelUI.this) == null) || (SnsLabelUI.k(SnsLabelUI.this).size() == 0)) && ((SnsLabelUI.r(SnsLabelUI.this) == null) || (SnsLabelUI.r(SnsLabelUI.this).length() == 0)) && (SnsLabelUI.a(SnsLabelUI.this).Rtg != 0) && (SnsLabelUI.a(SnsLabelUI.this).Rtg != 1) && ((SnsLabelUI.s(SnsLabelUI.this) == null) || (SnsLabelUI.s(SnsLabelUI.this).length() == 0))) {
+            SnsLabelUI.a(SnsLabelUI.this).Rtg = 0;
           }
           SnsLabelUI.a(SnsLabelUI.this).notifyDataSetChanged();
-          SnsLabelUI.n(SnsLabelUI.this);
-          AppMethodBeat.o(39012);
+          SnsLabelUI.o(SnsLabelUI.this);
+          AppMethodBeat.o(98785);
         }
       }, 600L);
     }
     super.onResume();
-    AppMethodBeat.o(39032);
+    AppMethodBeat.o(98805);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(39033);
-    ab.i("MicroMsg.SnsLabelUI", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!this.rRX)
+    AppMethodBeat.i(98806);
+    Log.i("MicroMsg.SnsLabelUI", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (!this.RsN)
     {
-      AppMethodBeat.o(39033);
+      AppMethodBeat.o(98806);
       return;
     }
-    switch (paramm.getType())
+    switch (paramp.getType())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(39033);
+      AppMethodBeat.o(98806);
       return;
       Object localObject;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        localObject = ag.cpl().getCursor();
-        this.rSc = ((Cursor)localObject).getCount();
-        if (this.rSc > 0)
+        localObject = al.hgI().Fv();
+        this.RsS = ((Cursor)localObject).getCount();
+        if (this.RsS > 0)
         {
           ((Cursor)localObject).moveToFirst();
-          t localt = new t();
+          ac localac = new ac();
           paramInt1 = ((Cursor)localObject).getCount();
-          this.rSe = new ArrayList(paramInt1);
-          this.rSd = new ArrayList(paramInt1);
-          this.rSg = new ArrayList(paramInt1);
-          this.rSf = new ArrayList(paramInt1);
+          this.RsU = new ArrayList(paramInt1);
+          this.RsT = new ArrayList(paramInt1);
+          this.RsW = new ArrayList(paramInt1);
+          this.RsV = new ArrayList(paramInt1);
           if (!((Cursor)localObject).isAfterLast())
           {
-            localt.convertFrom((Cursor)localObject);
-            if ((localt.field_memberList != null) && (localt.field_memberList.length() != 0))
+            localac.convertFrom((Cursor)localObject);
+            if ((localac.field_memberList != null) && (localac.field_memberList.length() != 0))
             {
-              this.rSg.add(localt.field_memberList.split(","));
-              paramm = localt.field_tagName;
-              ArrayList localArrayList = this.rSe;
-              paramString = a.bKV().bKS();
+              this.RsW.add(localac.field_memberList.split(","));
+              paramp = localac.field_tagName;
+              ArrayList localArrayList = this.RsU;
+              paramString = a.fTb().fSY();
               if (paramString == null)
               {
-                paramString = paramm;
-                label297:
+                paramString = paramp;
+                label294:
                 localArrayList.add(paramString);
-                this.rSd.add(paramm);
-                this.rSf.add(Long.valueOf(localt.field_tagId));
+                this.RsT.add(paramp);
+                this.RsV.add(Long.valueOf(localac.field_tagId));
               }
             }
             for (;;)
             {
               ((Cursor)localObject).moveToNext();
               break;
-              if (!paramString.contains(paramm))
+              if (!paramString.contains(paramp))
               {
-                paramString = paramm;
-                break label297;
+                paramString = paramp;
+                break label294;
               }
-              paramString = String.format(getString(2131303850), new Object[] { paramm });
-              break label297;
-              ab.e("MicroMsg.SnsLabelUI", "dz:snstaginfo memberlist is null.");
+              paramString = String.format(getString(b.j.sns_label_from_tag_suffix), new Object[] { paramp });
+              break label294;
+              Log.e("MicroMsg.SnsLabelUI", "dz:snstaginfo memberlist is null.");
             }
           }
           ((Cursor)localObject).close();
-          if (this.rSd.size() != 0) {
-            break label508;
+          if (this.RsT.size() != 0) {
+            break label521;
           }
           paramInt1 = 0;
           if (paramInt1 != 0) {}
         }
-        else if (this.rRY)
+        else if (this.RsO)
         {
-          this.rRT.rSq = this.rRZ;
-          this.rRN.Ro(this.rRZ);
-          g.RM();
-          g.RL().Ru().set(335873, Boolean.FALSE);
+          this.RsI.Rtg = this.RsP;
+          if ((this.RsC != null) && (this.RsC.getChildCount() > 0)) {
+            this.RsC.aFi(this.RsP);
+          }
+          com.tencent.mm.kernel.h.baF();
+          com.tencent.mm.kernel.h.baE().ban().B(335873, Boolean.FALSE);
         }
         ((Cursor)localObject).close();
-        if (this.rRW)
+        if (this.RsM)
         {
-          this.rRX = true;
-          a.bKV().cc(this.rSe);
+          this.RsN = true;
+          a.fTb().iE(this.RsU);
         }
       }
       for (;;)
       {
-        this.rRY = false;
-        AppMethodBeat.o(39033);
+        this.RsO = false;
+        AppMethodBeat.o(98806);
         return;
-        label508:
+        label521:
         paramInt1 = 1;
         break;
-        this.rRX = false;
+        this.RsN = false;
         continue;
-        cvx();
-        ab.i("MicroMsg.SnsLabelUI", "dz: error at get sns tag list!");
+        hoS();
+        Log.i("MicroMsg.SnsLabelUI", "dz: error at get sns tag list!");
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        dn(this.rSg);
-        AppMethodBeat.o(39033);
+        kN(this.RsW);
+        AppMethodBeat.o(98806);
         return;
       }
-      cvx();
-      ab.i("MicroMsg.SnsLabelUI", "dz: error at add contact label!");
-      AppMethodBeat.o(39033);
+      hoS();
+      Log.i("MicroMsg.SnsLabelUI", "dz: error at add contact label!");
+      AppMethodBeat.o(98806);
       return;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.rSd.iterator();
-        paramm = this.rSf.iterator();
+        paramString = this.RsT.iterator();
+        paramp = this.RsV.iterator();
         while (paramString.hasNext())
         {
-          long l = ((Long)paramm.next()).longValue();
+          long l = ((Long)paramp.next()).longValue();
           localObject = (String)paramString.next();
           if (l != 0L)
           {
-            g.RM();
-            g.RK().eHt.a(new x(l, (String)localObject), 0);
+            com.tencent.mm.kernel.h.baF();
+            com.tencent.mm.kernel.h.baD().mCm.a(new y(l, (String)localObject), 0);
           }
         }
-        g.RM();
-        g.RL().Ru().set(335874, Integer.valueOf(0));
-        this.rRP = ((ArrayList)a.bKV().bKQ());
-        paramString = com.tencent.mm.plugin.report.service.h.qsU;
-        paramInt2 = this.rSc;
-        if (this.rSe == null) {}
-        for (paramInt1 = 0;; paramInt1 = this.rSe.size())
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baE().ban().B(335874, Integer.valueOf(0));
+        this.JXW = ((ArrayList)a.fTb().fSW());
+        paramString = com.tencent.mm.plugin.report.service.h.OAn;
+        paramInt2 = this.RsS;
+        if (this.RsU == null) {}
+        for (paramInt1 = 0;; paramInt1 = this.RsU.size())
         {
-          paramString.e(11455, new Object[] { "", "", Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-          this.rRN.postDelayed(new SnsLabelUI.3(this), 600L);
-          g.RM();
-          g.RL().Ru().set(335873, Boolean.FALSE);
-          AppMethodBeat.o(39033);
+          paramString.b(11455, new Object[] { "", "", Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+          this.RsC.postDelayed(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(98786);
+              SnsLabelUI.a(SnsLabelUI.this).Rtg = SnsLabelUI.m(SnsLabelUI.this);
+              if (SnsLabelUI.b(SnsLabelUI.this) != null)
+              {
+                if (SnsLabelUI.k(SnsLabelUI.this) == null) {
+                  SnsLabelUI.a(SnsLabelUI.this, SnsLabelUI.b(SnsLabelUI.this));
+                }
+                for (;;)
+                {
+                  localObject = SnsLabelUI.b(SnsLabelUI.this).iterator();
+                  while (((Iterator)localObject).hasNext())
+                  {
+                    SnsLabelUI.a(SnsLabelUI.this);
+                    bg.baH((String)((Iterator)localObject).next());
+                  }
+                  SnsLabelUI.k(SnsLabelUI.this).addAll(SnsLabelUI.b(SnsLabelUI.this));
+                }
+                Object localObject = new HashSet(SnsLabelUI.k(SnsLabelUI.this));
+                SnsLabelUI.k(SnsLabelUI.this).clear();
+                SnsLabelUI.k(SnsLabelUI.this).addAll((Collection)localObject);
+                SnsLabelUI.b(SnsLabelUI.this).clear();
+                SnsLabelUI.t(SnsLabelUI.this);
+                ((HashSet)localObject).clear();
+              }
+              SnsLabelUI.a(SnsLabelUI.this).bF(SnsLabelUI.k(SnsLabelUI.this));
+              SnsLabelUI.l(SnsLabelUI.this);
+              SnsLabelUI.a(SnsLabelUI.this).notifyDataSetChanged();
+              SnsLabelUI.f(SnsLabelUI.this).aFi(SnsLabelUI.a(SnsLabelUI.this).Rtg);
+              if ((SnsLabelUI.u(SnsLabelUI.this) != null) && (SnsLabelUI.u(SnsLabelUI.this).isShowing())) {
+                SnsLabelUI.u(SnsLabelUI.this).dismiss();
+              }
+              AppMethodBeat.o(98786);
+            }
+          }, 600L);
+          com.tencent.mm.kernel.h.baF();
+          com.tencent.mm.kernel.h.baE().ban().B(335873, Boolean.FALSE);
+          AppMethodBeat.o(98806);
           return;
         }
       }
-      cvx();
-      ab.i("MicroMsg.SnsLabelUI", "dz: error at modify label list!");
-      AppMethodBeat.o(39033);
+      hoS();
+      Log.i("MicroMsg.SnsLabelUI", "dz: error at modify label list!");
+      AppMethodBeat.o(98806);
       return;
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        ab.i("MicroMsg.SnsLabelUI", "dz: error at delete tag list!");
+        Log.i("MicroMsg.SnsLabelUI", "dz: error at delete tag list!");
       }
     }
   }
@@ -792,7 +1113,7 @@ public class SnsLabelUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsLabelUI
  * JD-Core Version:    0.7.0.1
  */

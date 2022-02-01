@@ -8,7 +8,7 @@ public final class ReqGetHotState
   extends JceStruct
 {
   static BusiReqHead cache_oHead;
-  public BusiReqHead oHead;
+  public BusiReqHead oHead = null;
   
   public ReqGetHotState() {}
   
@@ -32,7 +32,7 @@ public final class ReqGetHotState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PersonalState.ReqGetHotState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/owd" android:paddingBottom="9.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/qjw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="5.0dip" android:lines="1" android:drawableLeft="@drawable/evh" android:drawablePadding="2.0dip" android:layout_toLeftOf="@id/o5l" android:layout_alignParentLeft="true" android:layout_marginStart="14.0dip" android:layout_toStartOf="@id/o5l" android:layout_alignParentStart="true" />
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/o5k" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="14.0dip" android:layout_toLeftOf="@id/o5l" />
+    <com.tencent.mobileqq.vas.ui.VasPagView android:id="@id/ox4" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="14.0dip" android:layout_toLeftOf="@id/o5l" />
+    <ImageView android:id="@id/o5l" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/jli" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_marginEnd="14.0dip" android:layout_alignParentEnd="true" />
+</RelativeLayout>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08059e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b8" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip">
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b9" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="14.0dip" android:layout_alignParentBottom="true">
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805ba" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020830" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f08059d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030076" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b7" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b8" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="14.0dip" android:layout_alignParentBottom="true">
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805b9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020830" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </RelativeLayout>
-        <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bb" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0805b9">
-            <com.tencent.open.widget.CursorEditText android:textSize="16.0sp" android:textColor="#ff757575" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bc" android:background="#00000000" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0d067b" android:singleLine="false" />
+        <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805ba" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0805b8">
+            <com.tencent.open.widget.CursorEditText android:textSize="16.0sp" android:textColor="#ff757575" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bb" android:background="#00000000" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0d067b" android:singleLine="false" />
         </ScrollView>
     </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip">
-            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805be" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxHeight="190.0dip" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805be" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0805bf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxHeight="190.0dip" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

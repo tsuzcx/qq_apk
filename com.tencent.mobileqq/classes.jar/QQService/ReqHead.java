@@ -11,22 +11,12 @@ public final class ReqHead
   implements Cloneable
 {
   static byte[] cache_vCookies;
-  public byte bReqType;
-  public byte bTriggered;
-  public int iSeq;
-  public long lUIN;
-  public short shVersion;
-  public byte[] vCookies;
-  
-  static
-  {
-    if (!ReqHead.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public byte bReqType = 0;
+  public byte bTriggered = 0;
+  public int iSeq = 0;
+  public long lUIN = 0L;
+  public short shVersion = 0;
+  public byte[] vCookies = null;
   
   public ReqHead() {}
   
@@ -42,18 +32,17 @@ public final class ReqHead
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -69,13 +58,36 @@ public final class ReqHead
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ReqHead)paramObject;
-    } while ((!JceUtil.equals(this.lUIN, paramObject.lUIN)) || (!JceUtil.equals(this.shVersion, paramObject.shVersion)) || (!JceUtil.equals(this.iSeq, paramObject.iSeq)) || (!JceUtil.equals(this.bReqType, paramObject.bReqType)) || (!JceUtil.equals(this.bTriggered, paramObject.bTriggered)) || (!JceUtil.equals(this.vCookies, paramObject.vCookies)));
-    return true;
+    }
+    paramObject = (ReqHead)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lUIN, paramObject.lUIN))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.shVersion, paramObject.shVersion))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iSeq, paramObject.iSeq))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.bReqType, paramObject.bReqType))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.bTriggered, paramObject.bTriggered))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.vCookies, paramObject.vCookies)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public byte getBReqType()
@@ -173,14 +185,15 @@ public final class ReqHead
     paramJceOutputStream.write(this.iSeq, 2);
     paramJceOutputStream.write(this.bReqType, 3);
     paramJceOutputStream.write(this.bTriggered, 4);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 5);
+    byte[] arrayOfByte = this.vCookies;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqHead
  * JD-Core Version:    0.7.0.1
  */

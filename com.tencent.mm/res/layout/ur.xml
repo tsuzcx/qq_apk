@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/n0" android:paddingRight="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="bottom|center|left" android:id="@android:id/title" style="@style/mo" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cd">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/a27" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginRight="@dimen/df" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/bv" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:id="@id/kpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ma" />
+            <TextView android:id="@id/c2g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="{desc}" android:singleLine="true" style="@style/m_" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/j9r" android:paddingRight="@dimen/m2" android:layout_width="@dimen/db" android:layout_height="fill_parent">
+            <View android:background="#18000000" android:layout_width="1.0dip" android:layout_height="@dimen/d0" android:layout_centerVertical="true" />
+            <CheckBox android:id="@id/j9q" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

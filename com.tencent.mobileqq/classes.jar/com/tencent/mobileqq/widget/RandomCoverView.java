@@ -14,160 +14,136 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView.ScaleType;
-import bdaq;
-import bddf;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class RandomCoverView
   extends FrameLayout
 {
-  protected int a;
-  protected Paint a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected URLDrawable a;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   protected QQAppInterface a;
-  protected String a;
-  protected boolean a;
   protected String b;
-  protected boolean b;
+  protected Paint c = null;
+  protected String d = null;
+  protected boolean e = true;
+  protected URLDrawable f = null;
+  protected boolean g = false;
+  protected int h = 0;
+  private URLImageView i = null;
+  private View j = null;
   
   public RandomCoverView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
     a();
   }
   
   public RandomCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
     a();
   }
   
   public RandomCoverView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    for (;;)
+    this.i = new URLImageView(getContext());
+    this.j = new View(getContext());
+    try
     {
-      try
-      {
-        if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-          continue;
-        }
-        i = -1308622848;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
+      int k;
+      if (ThemeUtil.isInNightMode(this.a)) {
+        k = -1308622848;
+      } else {
+        k = getResources().getColor(2131165800);
       }
-      catch (Throwable localThrowable)
-      {
-        int i;
-        FrameLayout.LayoutParams localLayoutParams;
-        continue;
-      }
-      localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      super.addView(this.jdField_a_of_type_ComTencentImageURLImageView, localLayoutParams);
-      super.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      return;
-      i = getResources().getColor(2131165454);
+      this.j.setBackgroundColor(k);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public URLImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
+    catch (Throwable localThrowable)
+    {
+      label64:
+      FrameLayout.LayoutParams localLayoutParams;
+      break label64;
+    }
+    localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    super.addView(this.i, localLayoutParams);
+    super.addView(this.j, localLayoutParams);
+    this.i.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
   
   public void a(int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {
+    if (paramInt == this.h) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 1)
+    this.h = paramInt;
+    if (this.h == 1)
     {
       localLayoutParams = getLayoutParams();
       if (localLayoutParams != null)
       {
-        paramInt = getResources().getDimensionPixelSize(2131298914);
-        int i = ImmersiveUtils.getStatusBarHeight(getContext());
-        int j = getResources().getDimensionPixelSize(2131297399);
+        paramInt = getResources().getDimensionPixelSize(2131299920);
+        int k = ImmersiveUtils.getStatusBarHeight(getContext());
+        int m = getResources().getDimensionPixelSize(2131298268);
         localLayoutParams.width = -1;
-        localLayoutParams.height = (paramInt + j + i);
+        localLayoutParams.height = (m + paramInt + k);
         setLayoutParams(localLayoutParams);
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131167144));
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      this.j.setBackgroundColor(getResources().getColor(2131168381));
+      this.i.setVisibility(8);
       return;
     }
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     if (localLayoutParams != null)
     {
       localLayoutParams.width = -1;
-      localLayoutParams.height = getResources().getDimensionPixelSize(2131297408);
+      localLayoutParams.height = getResources().getDimensionPixelSize(2131298277);
       setLayoutParams(localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165454));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    this.j.setBackgroundColor(getResources().getColor(2131165800));
+    this.i.setVisibility(0);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramQQAppInterface;
+    this.b = paramString1;
     a(paramInt);
-    if (TextUtils.isEmpty(paramString2))
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       setDefaultCoverBg();
-      if ((!paramQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || ((!TextUtils.isEmpty(paramString2)) && (!paramBoolean1))) {
-        break label149;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        float f = bdaq.a(getContext(), 14.0F);
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#4CFFFFFF"));
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f);
-      }
-      this.jdField_b_of_type_JavaLangString = getResources().getString(2131695530);
-    }
-    label149:
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean2;
-      return;
+    } else {
       a(paramString2, paramBoolean1);
-      break;
     }
+    if ((paramQQAppInterface.getCurrentAccountUin().equals(this.b)) && ((TextUtils.isEmpty(paramString2)) || (paramBoolean1)))
+    {
+      if (this.c == null)
+      {
+        float f1 = DisplayUtil.a(getContext(), 14.0F);
+        this.c = new Paint();
+        this.c.setAntiAlias(true);
+        this.c.setColor(Color.parseColor("#4CFFFFFF"));
+        this.c.setTextSize(f1);
+      }
+      this.d = getResources().getString(2131892749);
+      this.e = true;
+    }
+    else
+    {
+      this.e = false;
+    }
+    this.g = paramBoolean2;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -176,31 +152,35 @@ public class RandomCoverView
       try
       {
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-        }
-        Drawable localDrawable;
-        for (((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();; ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable)
+        if (this.f != null)
         {
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
-          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramInt1;
-          localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-          this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
-          this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165458));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("Q.profilecard.", 2, "updateCover " + paramString);
-          return;
-          localDrawable = getResources().getDrawable(2130845333);
-          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.f.getCurrDrawable();
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.f.getCurrDrawable();
         }
-        return;
+        else
+        {
+          Drawable localDrawable = getResources().getDrawable(2130847393);
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+        }
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramInt2;
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ScreenUtil.getInstantScreenWidth(getContext());
+        localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+        this.f = ((URLDrawable)localObject);
+        this.i.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        this.i.setImageDrawable((Drawable)localObject);
+        this.j.setVisibility(0);
+        this.j.setBackgroundColor(getResources().getColor(2131165804));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("updateCover ");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.i("Q.profilecard.", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
       }
-      catch (Exception paramString)
+      catch (OutOfMemoryError paramString)
       {
         if (QLog.isColorLevel())
         {
@@ -208,7 +188,7 @@ public class RandomCoverView
           return;
         }
       }
-      catch (OutOfMemoryError paramString)
+      catch (Exception paramString)
       {
         if (QLog.isColorLevel()) {
           QLog.i("Q.profilecard.", 2, paramString.toString());
@@ -223,65 +203,87 @@ public class RandomCoverView
       try
       {
         Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-        }
-        Object localObject2;
-        for (((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();; ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2))
+        if (this.f != null)
         {
-          localObject2 = (Activity)getContext();
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = bddf.d((Activity)localObject2);
-          ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = bddf.c((Activity)localObject2);
-          localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
-          this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject1);
-          this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-          this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-          this.jdField_a_of_type_Boolean = paramBoolean;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("Q.profilecard.", 2, "updateCover " + paramString + " isDef:" + paramBoolean);
-          return;
-          localObject2 = getResources().getDrawable(2130845333);
-          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.getCurrDrawable();
+          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.getCurrDrawable();
         }
-        return;
+        else
+        {
+          localObject2 = getResources().getDrawable(2130847393);
+          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+        }
+        Object localObject2 = (Activity)getContext();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = ProfileCardUtil.d((Activity)localObject2);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = ProfileCardUtil.c((Activity)localObject2);
+        localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+        this.f = ((URLDrawable)localObject1);
+        this.i.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        this.i.setImageDrawable((Drawable)localObject1);
+        this.e = paramBoolean;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("updateCover ");
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append(" isDef:");
+          ((StringBuilder)localObject1).append(paramBoolean);
+          QLog.i("Q.profilecard.", 2, ((StringBuilder)localObject1).toString());
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Q.profilecard.", 2, paramString.toString());
+          return;
+        }
       }
       catch (OutOfMemoryError paramString)
       {
         QLog.e("Q.profilecard.", 1, "updateCover OutOfMemoryError happened.", paramString);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.profilecard.", 2, paramString.toString());
-        }
       }
     }
+  }
+  
+  public View getCoverMask()
+  {
+    return this.j;
+  }
+  
+  public int getCoverMode()
+  {
+    return this.h;
+  }
+  
+  public URLImageView getCoverView()
+  {
+    return this.i;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (getHeight() != 0) && (getWidth() != 0) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.c != null) && (!TextUtils.isEmpty(this.d)) && (getHeight() != 0) && (getWidth() != 0) && (this.e) && (this.g))
     {
-      float f = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_b_of_type_JavaLangString);
-      int i = getHeight() / 2;
-      int j = (getWidth() - (int)f) / 2;
-      paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, j, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+      float f1 = this.c.measureText(this.d);
+      int k = getHeight() / 2;
+      int m = (getWidth() - (int)f1) / 2;
+      paramCanvas.drawText(this.d, m, k, this.c);
     }
   }
   
   public void setDefaultCoverBg()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+    this.j.setVisibility(8);
+    this.i.setImageDrawable(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RandomCoverView
  * JD-Core Version:    0.7.0.1
  */

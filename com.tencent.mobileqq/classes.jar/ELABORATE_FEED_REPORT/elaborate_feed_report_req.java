@@ -9,7 +9,7 @@ public final class elaborate_feed_report_req
   extends JceStruct
 {
   static ArrayList<session_report> cache_vecSessionReport = new ArrayList();
-  public ArrayList<session_report> vecSessionReport;
+  public ArrayList<session_report> vecSessionReport = null;
   
   static
   {
@@ -31,14 +31,15 @@ public final class elaborate_feed_report_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecSessionReport != null) {
-      paramJceOutputStream.write(this.vecSessionReport, 0);
+    ArrayList localArrayList = this.vecSessionReport;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.elaborate_feed_report_req
  * JD-Core Version:    0.7.0.1
  */

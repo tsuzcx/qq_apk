@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/ln7" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/com" android:scaleType="fitXY" app:round_radius="24.0dip" />
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="24.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/mbu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mbu">
+                <TextView android:textSize="12.0dip" android:textColor="#ff989eb4" android:id="@id/e7l" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <View android:layout_gravity="center_vertical" android:id="@id/bn3" android:background="#ffe0e0e0" android:layout_width="0.5dip" android:layout_height="8.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff989eb4" android:ellipsize="end" android:id="@id/e80" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
+            </LinearLayout>
+        </RelativeLayout>
+        <com.tencent.biz.subscribe.widget.textview.FollowTextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/mcp" android:background="@drawable/h1" android:layout_width="60.0dip" android:layout_height="28.0dip" android:text="关注" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:id="@id/dnu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" app:ratioH="4" app:ratioW="3">
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/lnn" android:background="#ffeaeaea" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" app:round_radius="4.0dip" />
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:background="@drawable/j1" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentBottom="true" app:round_radius="4.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mcf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.5dip" android:layout_marginBottom="5.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+        <View android:layout_width="6.0dip" android:layout_height="fill_parent" />
+        <com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:id="@id/dny" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" app:ratioH="4" app:ratioW="3">
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/lnn" android:background="#ffeaeaea" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" app:round_radius="4.0dip" />
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:background="@drawable/j1" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentBottom="true" app:round_radius="4.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mcf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.5dip" android:layout_marginBottom="5.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+        <View android:layout_width="6.0dip" android:layout_height="fill_parent" />
+        <com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout android:id="@id/dnz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" app:ratioH="4" app:ratioW="3">
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/lnn" android:background="#ffeaeaea" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" app:round_radius="4.0dip" />
+            <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:background="@drawable/j1" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentBottom="true" app:round_radius="4.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mcf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.5dip" android:layout_marginBottom="5.0dip" android:maxLines="1" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </com.tencent.biz.pubaccount.readinjoy.view.FixWidthRatioRelativeLayout>
+    </LinearLayout>
+</LinearLayout>

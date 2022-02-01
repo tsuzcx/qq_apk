@@ -1,37 +1,32 @@
 package oicq.wlogin_sdk.a;
 
-import java.util.HashMap;
+import oicq.wlogin_sdk.tlv_type.tlv_t544;
+import oicq.wlogin_sdk.tools.util;
 
 public class h
+  extends a
 {
-  public static String a = "e75734d01ad9b57f";
-  public static boolean x = false;
-  public static long y;
-  public static String z = "";
-  public byte[] A = new byte[0];
-  public HashMap B = new HashMap();
-  public String b = "";
-  public String c = "";
-  public int d;
-  public byte[] e = new byte[0];
-  public byte[] f = new byte[0];
-  public long g;
-  public long h;
-  public int i = 95;
-  public byte[] j;
-  public byte[] k = new byte[0];
-  public byte[] l = new byte[0];
-  public int m;
-  public byte[] n = new byte[0];
-  public byte[] o = new byte[0];
-  public byte[] p = new byte[0];
-  public byte[] q = new byte[0];
-  public byte[] r = new byte[0];
-  public int s;
-  public int t;
-  public long u;
-  public byte[] v;
-  public byte[] w;
+  public h()
+  {
+    this.b = 5;
+  }
+  
+  public byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = a(paramArrayOfByte1, paramArrayOfByte2);
+    this.d = (paramArrayOfByte1.length + 1 + 2 + arrayOfByte.length);
+    paramArrayOfByte2 = new byte[this.d];
+    util.int8_to_buf(paramArrayOfByte2, 0, paramArrayOfByte1.length);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 1, paramArrayOfByte1.length);
+    int i = paramArrayOfByte1.length + 1;
+    util.int16_to_buf(paramArrayOfByte2, i, arrayOfByte.length);
+    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, i + 2, arrayOfByte.length);
+    paramArrayOfByte1 = new tlv_t544().get_tlv_544("", "812_5", paramArrayOfByte2);
+    arrayOfByte = new byte[this.d + paramArrayOfByte1.length];
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 0, paramArrayOfByte2.length);
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, paramArrayOfByte2.length, paramArrayOfByte1.length);
+    return a(arrayOfByte);
+  }
 }
 
 

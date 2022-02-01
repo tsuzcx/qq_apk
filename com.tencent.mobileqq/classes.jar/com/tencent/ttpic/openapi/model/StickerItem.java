@@ -1,6 +1,7 @@
 package com.tencent.ttpic.openapi.model;
 
 import android.util.Pair;
+import com.tencent.ttpic.filter.juyoujinggame.UKYOScorePositions;
 import com.tencent.ttpic.model.AgeRange;
 import com.tencent.ttpic.model.CharmRange;
 import com.tencent.ttpic.model.CpRange;
@@ -9,8 +10,6 @@ import com.tencent.ttpic.model.PopularRange;
 import com.tencent.ttpic.model.Transition;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.util.FramePositionsBean;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
-import com.tencent.ttpic.openapi.util.VideoMaterialUtil.STICKER_ORDER_MODE;
 import com.tencent.ttpic.particle.GPUParticleConfig;
 import com.tencent.ttpic.particle.ParticleConfig;
 import com.tencent.ttpic.trigger.TriggerTimeUpdater;
@@ -51,8 +50,13 @@ public class StickerItem
   public String countExternalTriggerWords;
   public int countTriggerType;
   public CpRange cpRange;
+  public String crazyFacePath;
   public int delayedTriggedTime = 0;
   public String dexName;
+  public String[] disableDetectors;
+  public String displacementLutPath;
+  public float displacementX;
+  public float displacementY;
   public int dx = 0;
   public int dy = 0;
   public int extarTypeHeight;
@@ -79,6 +83,7 @@ public class StickerItem
   public int height;
   public double[] hotArea;
   public String id;
+  public int isCanDiyPitcureVideo = 0;
   public boolean isFabbyMvItem = false;
   public boolean isStrokeBlur;
   public int lazyLoad;
@@ -92,16 +97,18 @@ public class StickerItem
   public String name;
   public int needCrop;
   public int needHandRotation;
-  public VideoMaterialUtil.STICKER_ORDER_MODE orderMode = VideoMaterialUtil.STICKER_ORDER_MODE.AFTER_TRANSFORM;
   public boolean orienting;
   public int originalScaleFactor;
   public ParticleConfig particleConfig;
   public int personID = -1;
   public int playBPM;
   public int playCount;
+  public int playFirstSyncMode;
   public int playMode;
+  public String pluginFilterPath;
   public PopularRange popularRange;
   public double[] position;
+  public UKYOScorePositions positionsUKYO;
   public int preTriggerType;
   public int randomGroupNum;
   public int redPacketEndFrame;
@@ -114,15 +121,17 @@ public class StickerItem
   public int scaleFactor;
   public int[] scalePivots;
   public int snapshotTime = 0;
-  public VideoMaterialUtil.ITEM_SOURCE_TYPE sourceType;
+  public VideoMaterial.ITEM_SOURCE_TYPE sourceType;
   public int stickerType;
   public float[] strokeColor;
   public double strokeGap;
   public int strokeStyle;
   public int strokeType;
   public double strokeWidth;
+  public String styleFilter;
   public String subFolder;
   public int support3D;
+  public String textureMaterials;
   public int transformType;
   public Transition transition;
   public int triggedTimes = 0;
@@ -138,9 +147,8 @@ public class StickerItem
   private String triggerType;
   public String triggerWords;
   public int type;
+  public float[] uvValues;
   public int width;
-  public WMGroupConfig wmGroupConfig;
-  public List<WMGroupConfig> wmGroupConfigCopies;
   public int zIndex;
   public float[] zoomFocusPoint;
   public float zoomHeight;
@@ -155,7 +163,11 @@ public class StickerItem
       int i = Integer.parseInt(this.triggerType);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
@@ -166,7 +178,21 @@ public class StickerItem
   
   public boolean isDBTriggered()
   {
-    return (this.audioTriggerType == 1) || (this.audioTriggerType == 2);
+    int i = this.audioTriggerType;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public boolean isDisplacementMaterial()
+  {
+    return (this.displacementX > 0.0F) || (this.displacementY > 0.0F);
   }
   
   public void setTriggerType(String paramString)
@@ -176,12 +202,51 @@ public class StickerItem
   
   public String toString()
   {
-    return "StickerItem{id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", type=" + this.type + ", triggerType=" + this.triggerType + ", alwaysTriggered=" + this.alwaysTriggered + ", playCount=" + this.playCount + ", frameDuration=" + this.frameDuration + ", frames=" + this.frames + ", width=" + this.width + ", height=" + this.height + ", position=" + Arrays.toString(this.position) + ", audio='" + this.audio + '\'' + ", anchorPoint=" + Arrays.toString(this.anchorPoint) + ", alignFacePoints=" + Arrays.toString(this.alignFacePoints) + ", scalePivots=" + Arrays.toString(this.scalePivots) + ", scaleFactor=" + this.scaleFactor + ", support3D=" + this.support3D + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StickerItem{id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", triggerType=");
+    localStringBuilder.append(this.triggerType);
+    localStringBuilder.append(", alwaysTriggered=");
+    localStringBuilder.append(this.alwaysTriggered);
+    localStringBuilder.append(", playCount=");
+    localStringBuilder.append(this.playCount);
+    localStringBuilder.append(", frameDuration=");
+    localStringBuilder.append(this.frameDuration);
+    localStringBuilder.append(", frames=");
+    localStringBuilder.append(this.frames);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", position=");
+    localStringBuilder.append(Arrays.toString(this.position));
+    localStringBuilder.append(", audio='");
+    localStringBuilder.append(this.audio);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", anchorPoint=");
+    localStringBuilder.append(Arrays.toString(this.anchorPoint));
+    localStringBuilder.append(", alignFacePoints=");
+    localStringBuilder.append(Arrays.toString(this.alignFacePoints));
+    localStringBuilder.append(", scalePivots=");
+    localStringBuilder.append(Arrays.toString(this.scalePivots));
+    localStringBuilder.append(", scaleFactor=");
+    localStringBuilder.append(this.scaleFactor);
+    localStringBuilder.append(", support3D=");
+    localStringBuilder.append(this.support3D);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.StickerItem
  * JD-Core Version:    0.7.0.1
  */

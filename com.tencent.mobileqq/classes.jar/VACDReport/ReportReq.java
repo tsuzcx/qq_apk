@@ -10,7 +10,7 @@ public final class ReportReq
   implements Cloneable
 {
   static ArrayList<ReportInfo> cache_reports;
-  public ArrayList<ReportInfo> reports;
+  public ArrayList<ReportInfo> reports = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -30,7 +30,7 @@ public final class ReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportReq
  * JD-Core Version:    0.7.0.1
  */

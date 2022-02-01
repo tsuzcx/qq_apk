@@ -149,87 +149,108 @@ public final class UploadPicInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sPicTitle != null) {
-      paramJceOutputStream.write(this.sPicTitle, 0);
+    Object localObject = this.sPicTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sPicDesc != null) {
-      paramJceOutputStream.write(this.sPicDesc, 1);
+    localObject = this.sPicDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.sAlbumName != null) {
-      paramJceOutputStream.write(this.sAlbumName, 2);
+    localObject = this.sAlbumName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.sAlbumID != null) {
-      paramJceOutputStream.write(this.sAlbumID, 3);
+    localObject = this.sAlbumID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iAlbumTypeID, 4);
     paramJceOutputStream.write(this.iBitmap, 5);
     paramJceOutputStream.write(this.iUploadType, 6);
     paramJceOutputStream.write(this.iUpPicType, 7);
     paramJceOutputStream.write(this.iBatchID, 8);
-    if (this.mutliPicInfo != null) {
-      paramJceOutputStream.write(this.mutliPicInfo, 9);
+    localObject = this.mutliPicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.stExtendInfo != null) {
-      paramJceOutputStream.write(this.stExtendInfo, 10);
+    localObject = this.stExtendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.sPicPath != null) {
-      paramJceOutputStream.write(this.sPicPath, 11);
+    localObject = this.sPicPath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.iPicWidth, 12);
     paramJceOutputStream.write(this.iPicHight, 13);
     paramJceOutputStream.write(this.iWaterType, 14);
-    if (this.sExif_CameraMaker != null) {
-      paramJceOutputStream.write(this.sExif_CameraMaker, 15);
+    localObject = this.sExif_CameraMaker;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.sExif_CameraModel != null) {
-      paramJceOutputStream.write(this.sExif_CameraModel, 16);
+    localObject = this.sExif_CameraModel;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
-    if (this.sExif_Time != null) {
-      paramJceOutputStream.write(this.sExif_Time, 17);
+    localObject = this.sExif_Time;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.sExif_LatitudeRef != null) {
-      paramJceOutputStream.write(this.sExif_LatitudeRef, 18);
+    localObject = this.sExif_LatitudeRef;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.sExif_Latitude != null) {
-      paramJceOutputStream.write(this.sExif_Latitude, 19);
+    localObject = this.sExif_Latitude;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.sExif_LongitudeRef != null) {
-      paramJceOutputStream.write(this.sExif_LongitudeRef, 20);
+    localObject = this.sExif_LongitudeRef;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.sExif_Longitude != null) {
-      paramJceOutputStream.write(this.sExif_Longitude, 21);
+    localObject = this.sExif_Longitude;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.iNeedFeeds, 22);
     paramJceOutputStream.write(this.iUploadTime, 23);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 24);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 24);
     }
     paramJceOutputStream.write(this.iDistinctUse, 25);
-    if (this.uploadPoi != null) {
-      paramJceOutputStream.write(this.uploadPoi, 26);
+    localObject = this.uploadPoi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 26);
     }
-    if (this.waterTemplate != null) {
-      paramJceOutputStream.write(this.waterTemplate, 27);
+    localObject = this.waterTemplate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 27);
     }
-    if (this.otherParams != null) {
-      paramJceOutputStream.write(this.otherParams, 28);
+    localObject = this.otherParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 28);
     }
     paramJceOutputStream.write(this.iBusiNessType, 29);
-    if (this.vBusiNessData != null) {
-      paramJceOutputStream.write(this.vBusiNessData, 30);
+    localObject = this.vBusiNessData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 30);
     }
-    if (this.stExternalMapExt != null) {
-      paramJceOutputStream.write(this.stExternalMapExt, 31);
+    localObject = this.stExternalMapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 31);
     }
-    if (this.ExternalData != null) {
-      paramJceOutputStream.write(this.ExternalData, 32);
+    localObject = this.ExternalData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 32);
     }
     paramJceOutputStream.write(this.resource_type, 33);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadPicInfoReq
  * JD-Core Version:    0.7.0.1
  */

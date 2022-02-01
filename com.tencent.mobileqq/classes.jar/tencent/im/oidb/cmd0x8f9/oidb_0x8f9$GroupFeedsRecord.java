@@ -33,14 +33,15 @@ public final class oidb_0x8f9$GroupFeedsRecord
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 56, 64, 72, 82, 90, 98, 106, 114, 122 }, new String[] { "msg_source_id", "uint64_from_uin", "uint32_feeds_type", "bytes_feeds_id", "uint32_feeds_flag", "uint32_create_time", "uint32_modify_time", "uint32_visit_count", "uint32_comment_num", "bytes_reserve", "msg_face_record", "msg_feeds_content", "rpt_msg_comments", "rpt_concern_uin_info", "msg_feeds_state" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, null, null, null, null, null }, GroupFeedsRecord.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 56, 64, 72, 82, 90, 98, 106, 114, 122 }, new String[] { "msg_source_id", "uint64_from_uin", "uint32_feeds_type", "bytes_feeds_id", "uint32_feeds_flag", "uint32_create_time", "uint32_modify_time", "uint32_visit_count", "uint32_comment_num", "bytes_reserve", "msg_face_record", "msg_feeds_content", "rpt_msg_comments", "rpt_concern_uin_info", "msg_feeds_state" }, new Object[] { null, Long.valueOf(0L), localInteger, localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, null, null, null, null, null }, GroupFeedsRecord.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,21 @@ class QWalletPluginProxyActivity$MyBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    do
-    {
+    if (paramIntent == null) {
       return;
-      paramContext = paramIntent.getAction();
-    } while ((paramContext == null) || (!paramContext.equals("pluginsdk_QWallet_PatternLock_closeAll")));
-    this.this$0.finish();
+    }
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {
+      return;
+    }
+    if (paramContext.equals("pluginsdk_QWallet_PatternLock_closeAll")) {
+      this.this$0.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity.MyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

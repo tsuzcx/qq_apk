@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.model.animatable;
 
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.ModifierContent;

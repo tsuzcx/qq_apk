@@ -1,88 +1,109 @@
 package com.tencent.mm.ba;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.b.g;
+import com.tencent.mm.plugin.ah.a;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class c
-  implements f
 {
-  private static c fMm;
-  private int fMl = 3;
-  private boolean fpN = false;
+  private static c oRM;
+  private QueueWorkerThread oRN = null;
   
-  public static c aiI()
+  public static String OO(String paramString)
   {
-    AppMethodBeat.i(78436);
-    if (fMm == null) {
-      fMm = new c();
+    AppMethodBeat.i(90695);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(90695);
+      return null;
     }
-    c localc = fMm;
-    AppMethodBeat.o(78436);
+    paramString = FilePathGenerator.genPath(a.gLu(), "remark_", g.getMessageDigest((paramString + "ZnVjaw==").getBytes()), ".png", 1);
+    AppMethodBeat.o(90695);
+    return paramString;
+  }
+  
+  public static boolean OP(String paramString)
+  {
+    AppMethodBeat.i(90696);
+    String str = OO(paramString);
+    Log.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
+    boolean bool = new u(str).jKS();
+    AppMethodBeat.o(90696);
+    return bool;
+  }
+  
+  public static boolean OQ(String paramString)
+  {
+    AppMethodBeat.i(90697);
+    String str = OO(paramString);
+    Log.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
+    boolean bool = y.deleteFile(str);
+    AppMethodBeat.o(90697);
+    return bool;
+  }
+  
+  public static Bitmap OR(String paramString)
+  {
+    int j = 0;
+    AppMethodBeat.i(90698);
+    paramString = BitmapUtil.getBitmapNative(OO(paramString), 0, 0);
+    int i = j;
+    if (paramString != null)
+    {
+      i = j;
+      if (!paramString.isRecycled()) {
+        i = 1;
+      }
+    }
+    if (i != 0)
+    {
+      AppMethodBeat.o(90698);
+      return paramString;
+    }
+    AppMethodBeat.o(90698);
+    return null;
+  }
+  
+  public static c bLL()
+  {
+    AppMethodBeat.i(90694);
+    if (oRM == null) {
+      oRM = new c();
+    }
+    c localc = oRM;
+    AppMethodBeat.o(90694);
     return localc;
   }
   
-  private void release()
+  public final void a(String paramString1, String paramString2, a parama)
   {
-    AppMethodBeat.i(78438);
-    this.fpN = false;
-    g.RK().eHt.b(159, this);
-    AppMethodBeat.o(78438);
+    AppMethodBeat.i(90699);
+    if ((!Util.isNullOrNil(paramString2)) && (!OP(paramString1)))
+    {
+      if ((this.oRN == null) || (this.oRN.isDead())) {
+        this.oRN = new QueueWorkerThread(1, "download-remark-img", 1);
+      }
+      this.oRN.add(new c.b(this, paramString1, paramString2, parama));
+    }
+    AppMethodBeat.o(90699);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public static abstract interface a
   {
-    AppMethodBeat.i(78439);
-    if (paramm.getType() == 159)
-    {
-      ab.i("MicroMsg.ConfigListUpdater", "getPackageList sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label76;
-      }
-      g.RL().Ru().set(81938, Long.valueOf(bo.aox()));
-    }
-    for (;;)
-    {
-      release();
-      AppMethodBeat.o(78439);
-      return;
-      label76:
-      paramInt1 = this.fMl - 1;
-      this.fMl = paramInt1;
-      if (paramInt1 < 0)
-      {
-        g.RL().Ru().set(81938, Long.valueOf((bo.aoy() - 86400000L + 3600000L) / 1000L));
-        this.fMl = 3;
-      }
-    }
-  }
-  
-  public final void update()
-  {
-    AppMethodBeat.i(78437);
-    ab.i("MicroMsg.ConfigListUpdater", "isUpdateing : " + this.fpN);
-    ab.i("MicroMsg.ConfigListUpdater", "isSDCardAvailable : " + g.RL().isSDCardAvailable());
-    if ((!this.fpN) && (g.RL().isSDCardAvailable()))
-    {
-      release();
-      this.fpN = true;
-      g.RK().eHt.a(159, this);
-      k localk = new k(7);
-      g.RK().eHt.a(localk, 0);
-    }
-    AppMethodBeat.o(78437);
+    public abstract void hk(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ba.c
  * JD-Core Version:    0.7.0.1
  */

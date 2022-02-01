@@ -1,63 +1,64 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abk;
-import com.tencent.mm.protocal.protobuf.abl;
-import com.tencent.mm.protocal.protobuf.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.aqi;
+import com.tencent.mm.protocal.protobuf.aqj;
+import com.tencent.mm.protocal.protobuf.bi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.j;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class d
-  extends com.tencent.mm.ai.m
-  implements k, i
+  extends w
+  implements j
 {
-  private f callback;
-  public String cnI;
-  private b goo;
-  public String ojA;
-  private abk okO;
-  private abl okP;
-  public String okQ;
+  public String CAf;
+  private aqi KoA;
+  public aqj KoB;
+  public String KoC;
+  private h callback;
+  public String hAT;
+  private c nao;
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(42154);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new abk();
-    ((b.a)localObject).fsY = new abl();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffrequestwxhb";
-    this.goo = ((b.a)localObject).ado();
-    this.okO = ((abk)this.goo.fsV.fta);
-    this.okO.kNn = paramInt1;
-    this.okO.pwn = paramInt2;
-    this.okO.cMP = paramInt3;
-    this.okO.wRN = paramInt4;
-    localObject = com.tencent.mm.plugin.wallet_core.model.m.cTC();
+    AppMethodBeat.i(65044);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aqi();
+    ((c.a)localObject).otF = new aqj();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffrequestwxhb";
+    this.nao = ((c.a)localObject).bEF();
+    this.KoA = ((aqi)c.b.b(this.nao.otB));
+    this.KoA.wYz = paramInt1;
+    this.KoA.MSL = paramInt2;
+    this.KoA.ihy = paramInt3;
+    this.KoA.ZxC = paramInt4;
+    localObject = k.iis();
     if (localObject != null)
     {
-      this.okO.latitude = ((aw)localObject).latitude;
-      this.okO.longitude = ((aw)localObject).longitude;
+      this.KoA.latitude = ((bi)localObject).latitude;
+      this.KoA.longitude = ((bi)localObject).longitude;
     }
-    AppMethodBeat.o(42154);
+    AppMethodBeat.o(65044);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(42156);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(42156);
+    AppMethodBeat.i(65046);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(65046);
     return i;
   }
   
@@ -66,23 +67,23 @@ public final class d
     return 1970;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(42155);
-    ab.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.okP = ((abl)((b)paramq).fsW.fta);
-    this.cnI = this.okP.opy;
-    this.ojA = this.okP.ojA;
-    this.okQ = this.okP.opF;
+    AppMethodBeat.i(283848);
+    Log.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.KoB = ((aqj)c.c.b(((c)params).otC));
+    this.hAT = this.KoB.Hgk;
+    this.CAf = this.KoB.CAf;
+    this.KoC = this.KoB.KuQ;
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(42155);
+    AppMethodBeat.o(283848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a.d
  * JD-Core Version:    0.7.0.1
  */

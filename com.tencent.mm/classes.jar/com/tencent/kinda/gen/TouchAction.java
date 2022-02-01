@@ -6,19 +6,19 @@ public enum TouchAction
 {
   static
   {
-    AppMethodBeat.i(141475);
+    AppMethodBeat.i(135995);
     DOWN = new TouchAction("DOWN", 0);
     UP = new TouchAction("UP", 1);
     MOVE = new TouchAction("MOVE", 2);
     $VALUES = new TouchAction[] { DOWN, UP, MOVE };
-    AppMethodBeat.o(141475);
+    AppMethodBeat.o(135995);
   }
   
   private TouchAction() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.TouchAction
  * JD-Core Version:    0.7.0.1
  */

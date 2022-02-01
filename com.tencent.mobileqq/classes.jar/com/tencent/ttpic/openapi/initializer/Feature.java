@@ -23,7 +23,7 @@ public abstract class Feature
 {
   private static final String TAG = "AEKitFeature";
   private Object initLock = new Object();
-  protected boolean isInited = false;
+  protected volatile boolean isInited = false;
   protected boolean isSoFilesLoaded = false;
   private String pendingErrorMessage = "";
   private String resourceDirOverrideFeatureManager;
@@ -31,102 +31,97 @@ public abstract class Feature
   
   private boolean checkAssetsFileExist(ModelInfo paramModelInfo)
   {
-    if (AEModule.getContext() == null) {}
-    for (;;)
-    {
+    if (AEModule.getContext() == null) {
       return true;
-      Object localObject = trimEnd(paramModelInfo.getAssetsDir());
-      AssetManager localAssetManager = AEModule.getContext().getAssets();
-      try
+    }
+    Object localObject = trimEnd(paramModelInfo.getAssetsDir());
+    AssetManager localAssetManager = AEModule.getContext().getAssets();
+    try
+    {
+      localObject = localAssetManager.list((String)localObject);
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = localAssetManager.list((String)localObject);
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label83;
-          }
-          boolean bool = localObject[i].equals(paramModelInfo.fileName);
-          if (bool) {
-            break;
-          }
-          i += 1;
+        boolean bool = localObject[i].equals(paramModelInfo.fileName);
+        if (bool) {
+          return true;
         }
-        return false;
+        i += 1;
       }
-      catch (IOException paramModelInfo)
-      {
-        paramModelInfo.printStackTrace();
-        setPendingErrorMessage(paramModelInfo);
-        return false;
-      }
+      return false;
+    }
+    catch (IOException paramModelInfo)
+    {
+      paramModelInfo.printStackTrace();
+      setPendingErrorMessage(paramModelInfo);
     }
   }
   
   private boolean containsLib(String[] paramArrayOfString, String paramString)
   {
-    boolean bool2 = false;
     int j = paramArrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfString[i].equals(paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfString[i].equals(paramString)) {
+        return true;
       }
       i += 1;
     }
-  }
-  
-  private boolean copyAssetsModelsToLocalPath(List<ModelInfo> paramList)
-  {
-    return copyModelsToLocalPath(getFinalResourcesDir(), paramList);
+    return false;
   }
   
   private boolean copyModelsToLocalPath(String paramString, List<ModelInfo> paramList)
   {
     paramList = paramList.iterator();
-    boolean bool1 = true;
-    ModelInfo localModelInfo;
-    String str;
-    while (paramList.hasNext())
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localModelInfo = (ModelInfo)paramList.next();
-      if ((!isExternalResources()) && (localModelInfo.isMustUseSDCardPath()))
+      ModelInfo localModelInfo;
+      do
       {
-        if (AEModule.getContext() == null) {
-          return false;
-        }
-        str = paramString + File.separator + localModelInfo.fileName;
-        File localFile = new File(str);
-        if ((!localFile.exists()) || (localFile.isDirectory()) || (!FileUtils.SIMPLE_ASSET_MD5_COMPARATOR.equals(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), localFile))) {
-          break label236;
-        }
-      }
-    }
-    label236:
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0) {
-        LogUtils.i("AEKitFeature", "copy resource: " + str);
-      }
-      for (boolean bool2 = FileUtils.copyAssets(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), str);; bool2 = true)
-      {
-        AEOpenRenderConfig.checkStrictMode(bool2, "copy res file failed: " + localModelInfo.getFullAssetsPathNoPrefix());
-        if ((bool1) && (bool2)) {}
-        for (bool1 = true;; bool1 = false) {
+        if (!paramList.hasNext()) {
           break;
         }
-        return bool1;
+        localModelInfo = (ModelInfo)paramList.next();
+      } while ((isExternalResources()) || (!localModelInfo.isMustUseSDCardPath()));
+      if (AEModule.getContext() == null) {
+        return false;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(localModelInfo.fileName);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      int i;
+      if ((((File)localObject2).exists()) && (!((File)localObject2).isDirectory()) && (FileUtils.SIMPLE_ASSET_MD5_COMPARATOR.equals(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), (File)localObject2))) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      boolean bool2;
+      if (i != 0)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("copy resource: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        LogUtils.i("AEKitFeature", ((StringBuilder)localObject2).toString());
+        bool2 = FileUtils.copyAssets(AEModule.getContext(), localModelInfo.getFullAssetsPathNoPrefix(), (String)localObject1);
+      }
+      else
+      {
+        bool2 = true;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("copy res file failed: ");
+      ((StringBuilder)localObject1).append(localModelInfo.getFullAssetsPathNoPrefix());
+      AEOpenRenderConfig.checkStrictMode(bool2, ((StringBuilder)localObject1).toString());
+      if ((bool1) && (bool2)) {
+        break;
       }
     }
+    return bool1;
   }
   
   private String getDefaultCopyAssetsDir()
@@ -134,7 +129,13 @@ public abstract class Feature
     try
     {
       Object localObject = AEModule.getContext();
-      localObject = ((Context)localObject).getExternalFilesDir(null).getPath() + File.separator + "Tencent" + File.separator + "aekit";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((Context)localObject).getExternalFilesDir(null).getPath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("Tencent");
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("aekit");
+      localObject = localStringBuilder.toString();
       return localObject;
     }
     catch (Exception localException)
@@ -147,7 +148,11 @@ public abstract class Feature
   
   protected static String getFullLibname(String paramString)
   {
-    return "lib" + paramString + ".so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    return localStringBuilder.toString();
   }
   
   private boolean hasSoFiles()
@@ -157,64 +162,23 @@ public abstract class Feature
   
   private boolean isVersionOK(SharedLibraryInfo paramSharedLibraryInfo)
   {
-    if (!FeatureManager.isEnableResourceCheck()) {}
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        return true;
-      } while ((!isExternalSoLoad()) || (TextUtils.isEmpty(paramSharedLibraryInfo.sha1)));
-      str1 = FileUtils.getSHA1(new File(getFinalSoDir(), paramSharedLibraryInfo.getFullLibName()).getPath());
-      str2 = paramSharedLibraryInfo.sha1;
-      AEOpenRenderConfig.checkStrictMode(str1.equals(str2), "so sha1 check failed: " + paramSharedLibraryInfo.getFullLibName());
-    } while (str1.equals(str2));
-    return false;
-  }
-  
-  private boolean systemLoadLibrarySafely(String paramString)
-  {
-    try
-    {
-      System.loadLibrary(paramString);
+    if (!FeatureManager.isEnableResourceCheck()) {
       return true;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      setPendingErrorMessage(paramString);
-      return false;
-    }
-    catch (Error paramString)
-    {
-      label7:
-      break label7;
-    }
-  }
-  
-  private boolean systemLoadSafely(String paramString, SharedLibraryInfo paramSharedLibraryInfo)
-  {
-    try
-    {
-      paramString = new File(paramString, paramSharedLibraryInfo.getFullLibName());
-      if ((FeatureManager.isEnableResourceCheck()) && (!isVersionOK(paramSharedLibraryInfo))) {
-        return false;
-      }
-      System.load(paramString.getPath());
+    if (!isExternalSoLoad()) {
       return true;
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      setPendingErrorMessage(paramString);
-      return false;
+    if (TextUtils.isEmpty(paramSharedLibraryInfo.sha1)) {
+      return true;
     }
-    catch (Error paramString)
-    {
-      label39:
-      break label39;
-    }
+    String str1 = FileUtils.getSHA1(new File(getFinalSoDir(), paramSharedLibraryInfo.getFullLibName()).getPath());
+    String str2 = paramSharedLibraryInfo.sha1;
+    boolean bool = str1.equals(str2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("so sha1 check failed: ");
+    localStringBuilder.append(paramSharedLibraryInfo.getFullLibName());
+    AEOpenRenderConfig.checkStrictMode(bool, localStringBuilder.toString());
+    return str1.equals(str2);
   }
   
   private String trimEnd(String paramString)
@@ -228,114 +192,151 @@ public abstract class Feature
   
   protected boolean checkAllResourcesFilesValid()
   {
-    Object localObject = getModelInfos();
-    boolean bool3;
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    Object localObject1 = getModelInfos();
+    if (localObject1 != null)
     {
-      bool3 = true;
-      return bool3;
-    }
-    localObject = getModelInfos().iterator();
-    boolean bool2 = true;
-    ModelInfo localModelInfo;
-    for (;;)
-    {
-      bool3 = bool2;
-      if (!((Iterator)localObject).hasNext()) {
-        break;
+      if (((List)localObject1).size() == 0) {
+        return true;
       }
-      localModelInfo = (ModelInfo)((Iterator)localObject).next();
-      if (!isModelFileInAssets(localModelInfo)) {
-        break label110;
-      }
-      bool3 = checkAssetsFileExist(localModelInfo);
-      AEOpenRenderConfig.checkStrictMode(bool3, "file not found: " + localModelInfo);
-      bool2 &= bool3;
-    }
-    label110:
-    File localFile = new File(getFinalResourcesDir(), localModelInfo.fileName);
-    AEOpenRenderConfig.checkStrictMode(localFile.exists(), "file " + localModelInfo + " not found in " + getFinalResourcesDir());
-    boolean bool1;
-    if (!localFile.exists()) {
-      bool1 = false;
-    }
-    for (;;)
-    {
-      bool2 = bool1 & bool2;
-      break;
-      if ((localModelInfo.getFileSizeInBytes() > 0) && (localFile.length() != localModelInfo.getFileSizeInBytes()))
+      localObject1 = getModelInfos().iterator();
+      boolean bool2 = true;
+      while (((Iterator)localObject1).hasNext())
       {
-        AEOpenRenderConfig.checkStrictMode(localFile.exists(), "file " + localModelInfo + " size error: " + localFile.length() + " != " + localModelInfo.getFileSizeInBytes() + "(expected)");
-        bool1 = false;
+        ModelInfo localModelInfo = (ModelInfo)((Iterator)localObject1).next();
+        boolean bool3;
+        Object localObject2;
+        if (isModelFileInAssets(localModelInfo))
+        {
+          bool3 = checkAssetsFileExist(localModelInfo);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("file not found: ");
+          ((StringBuilder)localObject2).append(localModelInfo);
+          AEOpenRenderConfig.checkStrictMode(bool3, ((StringBuilder)localObject2).toString());
+          bool2 &= bool3;
+        }
+        else
+        {
+          localObject2 = new File(getFinalResourcesDir(), localModelInfo.fileName);
+          bool3 = ((File)localObject2).exists();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file ");
+          localStringBuilder.append(localModelInfo);
+          localStringBuilder.append(" not found in ");
+          localStringBuilder.append(getFinalResourcesDir());
+          AEOpenRenderConfig.checkStrictMode(bool3, localStringBuilder.toString());
+          bool3 = ((File)localObject2).exists();
+          boolean bool1 = false;
+          if (bool3) {
+            if ((localModelInfo.getFileSizeInBytes() > 0) && (((File)localObject2).length() != localModelInfo.getFileSizeInBytes()))
+            {
+              bool3 = ((File)localObject2).exists();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("file ");
+              localStringBuilder.append(localModelInfo);
+              localStringBuilder.append(" size error: ");
+              localStringBuilder.append(((File)localObject2).length());
+              localStringBuilder.append(" != ");
+              localStringBuilder.append(localModelInfo.getFileSizeInBytes());
+              localStringBuilder.append("(expected)");
+              AEOpenRenderConfig.checkStrictMode(bool3, localStringBuilder.toString());
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+          bool2 &= bool1;
+        }
       }
-      else
-      {
-        bool1 = true;
-      }
+      return bool2;
     }
+    return true;
   }
   
   protected boolean checkAllSoFilesExists()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((getSharedLibraries() == null) || (getSharedLibraries().size() == 0))
+    if (getSharedLibraries() != null)
     {
-      bool1 = true;
-      return bool1;
-    }
-    label110:
-    Object localObject2;
-    if ((TextUtils.isEmpty(FeatureManager.getSoDir())) && (TextUtils.isEmpty(getSoDirOverrideFeatureManager())))
-    {
-      if (AEModule.getContext() != null) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        AEOpenRenderConfig.checkStrictMode(bool1, "AEModule context is null");
-        bool1 = bool2;
-        if (AEModule.getContext() == null) {
-          break;
-        }
-        localObject1 = new File(AEModule.getContext().getApplicationInfo().nativeLibraryDir).list();
-        if ((localObject1 != null) && (localObject1.length != 0)) {
-          break label110;
-        }
-        AEOpenRenderConfig.checkStrictMode(false, "so load failed: no libs in apk");
-        return false;
+      if (getSharedLibraries().size() == 0) {
+        return true;
       }
-      localObject2 = getSharedLibraries().iterator();
-      while (((Iterator)localObject2).hasNext())
+      SharedLibraryInfo localSharedLibraryInfo;
+      if ((TextUtils.isEmpty(FeatureManager.getSoDir())) && (TextUtils.isEmpty(getSoDirOverrideFeatureManager())))
       {
-        SharedLibraryInfo localSharedLibraryInfo = (SharedLibraryInfo)((Iterator)localObject2).next();
-        if (!containsLib((String[])localObject1, getFullLibname(localSharedLibraryInfo.fileName)))
+        boolean bool;
+        if (AEModule.getContext() != null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        AEOpenRenderConfig.checkStrictMode(bool, "AEModule context is null");
+        if (AEModule.getContext() == null)
         {
-          AEOpenRenderConfig.checkStrictMode(false, "so load failed: " + localSharedLibraryInfo + " not found in apk");
+          LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: AEModule context is null");
           return false;
         }
-      }
-      return true;
-    }
-    Object localObject1 = getSharedLibraries().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SharedLibraryInfo)((Iterator)localObject1).next();
-      if (!new File(getFinalSoDir(), getFullLibname(((SharedLibraryInfo)localObject2).fileName)).exists())
-      {
-        AEOpenRenderConfig.checkStrictMode(false, "so load failed: " + localObject2 + " not found in " + getFinalSoDir());
+        localObject = new File(AEModule.getContext().getApplicationInfo().nativeLibraryDir).list();
+        if ((localObject != null) && (localObject.length != 0))
+        {
+          Iterator localIterator = getSharedLibraries().iterator();
+          while (localIterator.hasNext())
+          {
+            localSharedLibraryInfo = (SharedLibraryInfo)localIterator.next();
+            if (!containsLib((String[])localObject, getFullLibname(localSharedLibraryInfo.fileName)))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("so load failed: ");
+              ((StringBuilder)localObject).append(localSharedLibraryInfo);
+              ((StringBuilder)localObject).append(" not found in apk");
+              AEOpenRenderConfig.checkStrictMode(false, ((StringBuilder)localObject).toString());
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("[checkAllSoFilesExists] so load failed: ");
+              ((StringBuilder)localObject).append(localSharedLibraryInfo);
+              ((StringBuilder)localObject).append(" not found in apk");
+              LogUtils.e("AEKitFeature", ((StringBuilder)localObject).toString());
+              return false;
+            }
+          }
+          return true;
+        }
+        AEOpenRenderConfig.checkStrictMode(false, "so load failed: no libs in apk");
+        LogUtils.e("AEKitFeature", "[checkAllSoFilesExists] so load failed: no libs in apk");
         return false;
+      }
+      Object localObject = getSharedLibraries().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localSharedLibraryInfo = (SharedLibraryInfo)((Iterator)localObject).next();
+        if (!new File(getFinalSoDir(), getFullLibname(localSharedLibraryInfo.fileName)).exists())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("so load failed: ");
+          ((StringBuilder)localObject).append(localSharedLibraryInfo);
+          ((StringBuilder)localObject).append(" not found in ");
+          ((StringBuilder)localObject).append(getFinalSoDir());
+          AEOpenRenderConfig.checkStrictMode(false, ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[checkAllSoFilesExists] so load failed: ");
+          ((StringBuilder)localObject).append(localSharedLibraryInfo);
+          ((StringBuilder)localObject).append(" not found in ");
+          ((StringBuilder)localObject).append(getFinalSoDir());
+          LogUtils.e("AEKitFeature", ((StringBuilder)localObject).toString());
+          return false;
+        }
       }
     }
     return true;
   }
   
+  public boolean copyAssetsModelsToLocalPath(List<ModelInfo> paramList)
+  {
+    return copyModelsToLocalPath(getFinalResourcesDir(), paramList);
+  }
+  
   public boolean destroy()
   {
-    if (!destroyImpl()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isInited = bool;
-      return true;
-    }
+    this.isInited = (destroyImpl() ^ true);
+    return true;
   }
   
   protected abstract boolean destroyImpl();
@@ -398,38 +399,43 @@ public abstract class Feature
   
   public boolean hasError()
   {
-    return !TextUtils.isEmpty(this.pendingErrorMessage);
+    return TextUtils.isEmpty(this.pendingErrorMessage) ^ true;
   }
   
   public boolean init()
   {
-    if (!this.isInited) {}
-    synchronized (this.initLock)
-    {
-      boolean bool3 = this.isInited;
-      if (!bool3) {}
-      try
+    if (!this.isInited) {
+      synchronized (this.initLock)
       {
-        setPendingErrorMessage(null);
-        boolean bool2 = true & copyAssetsModelsToLocalPath(getModelInfos());
-        boolean bool1 = bool2;
-        if (FeatureManager.isEnableResourceCheck()) {
-          bool1 = bool2 & checkAllResourcesFilesValid();
-        }
-        this.isInited = (bool1 & initImpl());
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
+        boolean bool3 = this.isInited;
+        if (!bool3)
         {
-          AEOpenRenderConfig.checkStrictMode(false, localUnsatisfiedLinkError.toString());
-          setPendingErrorMessage(localUnsatisfiedLinkError);
-          this.isInited = false;
+          try
+          {
+            setPendingErrorMessage(null);
+            boolean bool2 = copyAssetsModelsToLocalPath(getModelInfos()) & true;
+            boolean bool1 = bool2;
+            if (FeatureManager.isEnableResourceCheck()) {
+              bool1 = bool2 & checkAllResourcesFilesValid();
+            }
+            this.isInited = (bool1 & initImpl());
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+          {
+            AEOpenRenderConfig.checkStrictMode(false, localUnsatisfiedLinkError.toString());
+            setPendingErrorMessage(localUnsatisfiedLinkError);
+            this.isInited = false;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("AEKitFeature:");
+          localStringBuilder.append(getName());
+          localStringBuilder.append(" init result = ");
+          localStringBuilder.append(this.isInited);
+          LogUtils.i("AEKitFeature", localStringBuilder.toString());
         }
       }
-      LogUtils.i("AEKitFeature", "AEKitFeature:" + getName() + " init result = " + this.isInited);
-      return this.isInited;
     }
+    return this.isInited;
   }
   
   protected abstract boolean initImpl();
@@ -470,13 +476,16 @@ public abstract class Feature
   
   public boolean isModelReadyInDirectory(String paramString)
   {
-    if ((getModelInfos() == null) || (getModelInfos().size() == 0)) {
-      return true;
-    }
-    Iterator localIterator = getModelInfos().iterator();
-    while (localIterator.hasNext()) {
-      if (!new File(paramString, ((ModelInfo)localIterator.next()).fileName).exists()) {
-        return false;
+    if (getModelInfos() != null)
+    {
+      if (getModelInfos().size() == 0) {
+        return true;
+      }
+      Iterator localIterator = getModelInfos().iterator();
+      while (localIterator.hasNext()) {
+        if (!new File(paramString, ((ModelInfo)localIterator.next()).fileName).exists()) {
+          return false;
+        }
       }
     }
     return true;
@@ -499,13 +508,16 @@ public abstract class Feature
   
   public boolean isSoReadyInDirectory(String paramString)
   {
-    if ((getSharedLibraries() == null) || (getSharedLibraries().size() == 0)) {
-      return true;
-    }
-    Iterator localIterator = getSharedLibraries().iterator();
-    while (localIterator.hasNext()) {
-      if (!new File(paramString, getFullLibname(((SharedLibraryInfo)localIterator.next()).fileName)).exists()) {
-        return false;
+    if (getSharedLibraries() != null)
+    {
+      if (getSharedLibraries().size() == 0) {
+        return true;
+      }
+      Iterator localIterator = getSharedLibraries().iterator();
+      while (localIterator.hasNext()) {
+        if (!new File(paramString, getFullLibname(((SharedLibraryInfo)localIterator.next()).fileName)).exists()) {
+          return false;
+        }
       }
     }
     return true;
@@ -513,20 +525,44 @@ public abstract class Feature
   
   protected boolean loadAllSoFiles()
   {
-    if (!checkAllSoFilesExists()) {
+    Object localObject1;
+    if ((FeatureManager.isEnableResourceCheck()) && (!checkAllSoFilesExists()))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkAllSoFilesExists : ");
+      ((StringBuilder)localObject1).append(checkAllSoFilesExists());
+      LogUtils.e("AEKitFeature", ((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isEnableResourceCheck : ");
+      ((StringBuilder)localObject1).append(FeatureManager.isEnableResourceCheck());
+      LogUtils.e("AEKitFeature", ((StringBuilder)localObject1).toString());
       return false;
     }
     this.isSoFilesLoaded = true;
-    Iterator localIterator = getSharedLibraries().iterator();
-    while (localIterator.hasNext())
+    Object localObject2 = getSharedLibraries().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      SharedLibraryInfo localSharedLibraryInfo = (SharedLibraryInfo)localIterator.next();
-      boolean bool = loadSoFile(localSharedLibraryInfo);
-      AEOpenRenderConfig.checkStrictMode(bool, "so load failed: " + localSharedLibraryInfo);
-      if (!bool)
+      localObject1 = (SharedLibraryInfo)((Iterator)localObject2).next();
+      boolean bool = loadSoFile((SharedLibraryInfo)localObject1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("so load failed: ");
+      localStringBuilder.append(localObject1);
+      AEOpenRenderConfig.checkStrictMode(bool, localStringBuilder.toString());
+      if ((!bool) && (FeatureManager.isEnableSoLoadCheck()))
       {
-        LogUtils.i("AEKitFeature", "so load failed: " + localSharedLibraryInfo);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("so load failed: ");
+        ((StringBuilder)localObject2).append(localObject1);
+        LogUtils.i("AEKitFeature", ((StringBuilder)localObject2).toString());
         this.isSoFilesLoaded = false;
+        break;
+      }
+      if (bool)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("load so success:");
+        localStringBuilder.append(localObject1);
+        LogUtils.i("AEKitFeature", localStringBuilder.toString());
       }
     }
     return this.isSoFilesLoaded;
@@ -544,20 +580,17 @@ public abstract class Feature
     if (!TextUtils.isEmpty(getSoDirOverrideFeatureManager())) {
       str = FileUtils.genSeperateFileDir(getSoDirOverrideFeatureManager());
     }
-    for (;;)
+    Object localObject = SoDependencyUtil.getDependencies(str, paramSharedLibraryInfo.getFullLibName());
+    if (localObject != null)
     {
-      Object localObject = SoDependencyUtil.getDependencies(str, paramSharedLibraryInfo.getFullLibName());
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if ((new File(str, (String)((Iterator)localObject).next()).exists()) && (!systemLoadSafely(str, new SharedLibraryInfo(paramSharedLibraryInfo.fileName)))) {
-            return false;
-          }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if ((new File(str, (String)((Iterator)localObject).next()).exists()) && (!systemLoadSafely(str, new SharedLibraryInfo(paramSharedLibraryInfo.fileName)))) {
+          return false;
         }
       }
-      return systemLoadSafely(str, paramSharedLibraryInfo);
     }
+    return systemLoadSafely(str, paramSharedLibraryInfo);
   }
   
   public boolean reloadModel()
@@ -585,14 +618,55 @@ public abstract class Feature
     this.soDirOverrideFeatureManager = paramString;
   }
   
+  protected boolean systemLoadLibrarySafely(String paramString)
+  {
+    try
+    {
+      System.loadLibrary(paramString);
+      return true;
+    }
+    catch (Error localError) {}catch (Exception localException) {}
+    localException.printStackTrace();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" systemLoadLibrarySafely failed:");
+    localStringBuilder.append(localException.toString());
+    LogUtils.e("AEKitFeature", localStringBuilder.toString());
+    setPendingErrorMessage(localException);
+    return false;
+  }
+  
+  protected boolean systemLoadSafely(String paramString, SharedLibraryInfo paramSharedLibraryInfo)
+  {
+    try
+    {
+      paramString = new File(paramString, paramSharedLibraryInfo.getFullLibName());
+      if ((FeatureManager.isEnableResourceCheck()) && (!isVersionOK(paramSharedLibraryInfo))) {
+        return false;
+      }
+      System.load(paramString.getPath());
+      return true;
+    }
+    catch (Error paramString) {}catch (Exception paramString) {}
+    paramString.printStackTrace();
+    setPendingErrorMessage(paramString);
+    return false;
+  }
+  
   public String toString()
   {
-    return "Initializer(" + getName() + ", init=" + this.isInited + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Initializer(");
+    localStringBuilder.append(getName());
+    localStringBuilder.append(", init=");
+    localStringBuilder.append(this.isInited);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Feature
  * JD-Core Version:    0.7.0.1
  */

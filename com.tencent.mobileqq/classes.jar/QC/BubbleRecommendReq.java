@@ -8,7 +8,7 @@ public final class BubbleRecommendReq
   extends JceStruct
 {
   static LoginInfo cache_stLogin = new LoginInfo();
-  public LoginInfo stLogin;
+  public LoginInfo stLogin = null;
   
   public BubbleRecommendReq() {}
   
@@ -29,7 +29,7 @@ public final class BubbleRecommendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.BubbleRecommendReq
  * JD-Core Version:    0.7.0.1
  */

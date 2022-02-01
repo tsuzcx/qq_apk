@@ -13,10 +13,10 @@ import com.tencent.mobileqq.troop.data.TroopFileInfo.FileStatus;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import gxo;
 import gxp;
-import gxq;
+import gxr;
 import gxs;
-import gxt;
 import java.lang.ref.WeakReference;
 import mqq.app.MobileQQ;
 
@@ -86,8 +86,8 @@ public class TroopFileError
   
   private static void a(Context paramContext, long paramLong)
   {
-    gxt localgxt = new gxt(paramLong);
-    DialogUtil.a(paramContext, 230, paramContext.getResources().getString(2131560375), paramContext.getResources().getString(2131560376), 2131560315, 2131560316, localgxt, localgxt).show();
+    gxs localgxs = new gxs(paramLong);
+    DialogUtil.a(paramContext, 230, paramContext.getResources().getString(2131560375), paramContext.getResources().getString(2131560376), 2131560315, 2131560316, localgxs, localgxs).show();
   }
   
   public static void a(Context paramContext, String paramString)
@@ -102,12 +102,12 @@ public class TroopFileError
     }
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      new Handler(Looper.getMainLooper()).post(new gxq(paramContext, paramString1, paramString2, paramInt));
+      new Handler(Looper.getMainLooper()).post(new gxp(paramContext, paramString1, paramString2, paramInt));
       return;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.b(paramContext, 230);
     localQQCustomDialog.setTitle(paramString1).setMessage(paramString2);
-    localQQCustomDialog.setPositiveButton(paramContext.getResources().getString(paramInt), new gxs());
+    localQQCustomDialog.setPositiveButton(paramContext.getResources().getString(paramInt), new gxr());
     localQQCustomDialog.show();
   }
   
@@ -122,7 +122,7 @@ public class TroopFileError
       i1 = paramContext.getResources().getDimensionPixelSize(2131427376);
       if (Looper.getMainLooper() != Looper.myLooper())
       {
-        new Handler(Looper.getMainLooper()).post(new gxp(paramBoolean, paramContext, paramString, i1));
+        new Handler(Looper.getMainLooper()).post(new gxo(paramBoolean, paramContext, paramString, i1));
         return;
       }
     }

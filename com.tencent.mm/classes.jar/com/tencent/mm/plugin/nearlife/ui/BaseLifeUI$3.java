@@ -11,16 +11,16 @@ final class BaseLifeUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(22938);
-    this.pfa.a(-1, false, "", this.pfa.peV);
-    this.pfa.finish();
-    AppMethodBeat.o(22938);
+    AppMethodBeat.i(26562);
+    this.MqK.a(-1, false, "", this.MqK.MqF);
+    this.MqK.finish();
+    AppMethodBeat.o(26562);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI.3
  * JD-Core Version:    0.7.0.1
  */

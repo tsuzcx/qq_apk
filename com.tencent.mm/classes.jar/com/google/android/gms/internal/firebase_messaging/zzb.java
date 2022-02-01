@@ -14,23 +14,23 @@ public class zzb
   
   public IBinder asBinder()
   {
-    AppMethodBeat.i(108673);
+    AppMethodBeat.i(4109);
     NoSuchMethodError localNoSuchMethodError = new NoSuchMethodError();
-    AppMethodBeat.o(108673);
+    AppMethodBeat.o(4109);
     throw localNoSuchMethodError;
   }
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(108674);
+    AppMethodBeat.i(4110);
     paramParcel1 = new NoSuchMethodError();
-    AppMethodBeat.o(108674);
+    AppMethodBeat.o(4110);
     throw paramParcel1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zzb
  * JD-Core Version:    0.7.0.1
  */

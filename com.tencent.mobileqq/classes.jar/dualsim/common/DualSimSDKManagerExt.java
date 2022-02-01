@@ -12,39 +12,44 @@ public class DualSimSDKManagerExt
   
   private void checkNeedWait()
   {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) || (KcSdkShellManager.mHasManagerInit)) {
-      return;
+    int i;
+    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
+    {
+      if (KcSdkShellManager.mHasManagerInit) {
+        return;
+      }
+      i = 20;
     }
-    int i = 20;
     for (;;)
     {
-      int j = i - 1;
-      if ((i <= 0) || (KcSdkShellManager.mHasManagerInit)) {
-        break;
-      }
+      if ((i > 0) && (!KcSdkShellManager.mHasManagerInit)) {}
       try
       {
         Thread.sleep(200L);
-        i = j;
+        label45:
+        i -= 1;
+        continue;
+        return;
       }
       catch (Exception localException)
       {
-        i = j;
+        break label45;
       }
     }
   }
   
   public static ISimInterface getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new DualSimSDKManagerExt();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new DualSimSDKManagerExt();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public int checkSpecialPermission(Context paramContext, int paramInt)
@@ -59,7 +64,11 @@ public class DualSimSDKManagerExt
         return paramInt;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label26:
+      break label26;
+    }
     return 2;
   }
   
@@ -75,7 +84,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -96,7 +109,11 @@ public class DualSimSDKManagerExt
         return i;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label25:
+      break label25;
+    }
     return 0;
   }
   
@@ -112,7 +129,11 @@ public class DualSimSDKManagerExt
         return paramContext;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label25:
+      break label25;
+    }
     return null;
   }
   
@@ -128,7 +149,11 @@ public class DualSimSDKManagerExt
         return paramContext;
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label26:
+      break label26;
+    }
     return null;
   }
   
@@ -144,7 +169,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -160,7 +189,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -176,7 +209,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -192,7 +229,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -208,7 +249,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return true;
   }
   
@@ -224,7 +269,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return true;
   }
   
@@ -240,7 +289,11 @@ public class DualSimSDKManagerExt
         return bool;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label24:
+      break label24;
+    }
     return false;
   }
   
@@ -279,7 +332,7 @@ public class DualSimSDKManagerExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dualsim.common.DualSimSDKManagerExt
  * JD-Core Version:    0.7.0.1
  */

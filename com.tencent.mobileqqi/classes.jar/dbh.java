@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class dbh
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  dbh(dbg paramdbg, long paramLong) {}
+  dbh(dbg paramdbg) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_Dbg.a, 230).setTitle(this.jdField_a_of_type_Dbg.a.getString(2131562677)).setItems(2131689484, new dbi(this)).show();
-    return true;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_Dbf.a.b.a().a(this.a.jdField_a_of_type_Dbf.a.b(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Dbf.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Dbf.a.jdField_a_of_type_Dbf.getCount() <= 0);
+    this.a.jdField_a_of_type_Dbf.a.b.a().a(this.a.jdField_a_of_type_Dbf.a.b(), 0);
+    this.a.jdField_a_of_type_Dbf.a.jdField_a_of_type_Dbf.changeCursor(this.a.jdField_a_of_type_Dbf.getCursor());
   }
 }
 

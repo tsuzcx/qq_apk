@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.traceroute.a;
 
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements n
 {
-  public static n gmO;
+  public static m pFn;
   
-  public final void a(m paramm) {}
+  public final void a(l paraml) {}
   
-  public final void a(n paramn)
+  public final void a(m paramm)
   {
-    gmO = paramn;
+    pFn = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.a.a
  * JD-Core Version:    0.7.0.1
  */

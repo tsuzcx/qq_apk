@@ -1,6 +1,6 @@
 package cooperation.qzone.contentbox;
 
-import ajlb;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
 import com.tencent.mobileqq.data.RecentUser;
 
 class QZoneMsgFragment$3
@@ -11,12 +11,12 @@ class QZoneMsgFragment$3
   public void run()
   {
     RecentUser localRecentUser = new RecentUser("2290230341", 1008);
-    ajlb.a(this.this$0.a, localRecentUser, true, true);
+    RecentUtil.a(this.this$0.app, localRecentUser, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgFragment.3
  * JD-Core Version:    0.7.0.1
  */

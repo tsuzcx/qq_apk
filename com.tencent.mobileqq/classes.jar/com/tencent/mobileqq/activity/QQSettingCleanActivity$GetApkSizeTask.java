@@ -19,7 +19,7 @@ class QQSettingCleanActivity$GetApkSizeTask
   {
     try
     {
-      Object localObject = new HttpGet("http://qqwx.qq.com/s?aid=index&p=5&c=102120&vt=2&pf=0");
+      Object localObject = new HttpGet("https://qqwx.qq.com/s?aid=index&p=5&c=102120&vt=2&pf=0");
       localObject = new DefaultHttpClient().execute((HttpUriRequest)localObject);
       if (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200)
       {
@@ -29,27 +29,27 @@ class QQSettingCleanActivity$GetApkSizeTask
           long l = new JSONObject(((String)localObject).substring(6, ((String)localObject).length() - 2)).getLong("size");
           if (l > 0L)
           {
-            this.this$0.a = l;
+            this.this$0.s = l;
             this.this$0.runOnUiThread(new QQSettingCleanActivity.ShowTask(this.this$0, 0));
+            return;
           }
         }
       }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity.GetApkSizeTask
  * JD-Core Version:    0.7.0.1
  */

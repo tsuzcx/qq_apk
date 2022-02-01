@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$hi
+public final class c$hi
   extends c.g
 {
   c$hi()
   {
-    super("recordVideo", "recordVideo", 251, true);
+    super("openWebViewUseFastLoad", "openWebViewUseFastLoad", 336, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.hi
  * JD-Core Version:    0.7.0.1
  */

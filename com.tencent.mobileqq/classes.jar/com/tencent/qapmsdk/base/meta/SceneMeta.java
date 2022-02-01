@@ -68,74 +68,73 @@ public final class SceneMeta
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this != paramObject)
     {
-      bool1 = bool2;
-      if (!(paramObject instanceof SceneMeta)) {
-        break label101;
+      if ((paramObject instanceof SceneMeta))
+      {
+        paramObject = (SceneMeta)paramObject;
+        if ((Intrinsics.areEqual(this.stage, paramObject.stage)) && (Double.compare(this.cpu, paramObject.cpu) == 0))
+        {
+          int i;
+          if (this.memory == paramObject.memory) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if (i != 0)
+          {
+            if (this.duration == paramObject.duration) {
+              i = 1;
+            } else {
+              i = 0;
+            }
+            if (i != 0) {
+              return true;
+            }
+          }
+        }
       }
-      paramObject = (SceneMeta)paramObject;
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.stage, paramObject.stage)) {
-        break label101;
-      }
-      bool1 = bool2;
-      if (Double.compare(this.cpu, paramObject.cpu) != 0) {
-        break label101;
-      }
-      if (this.memory != paramObject.memory) {
-        break label103;
-      }
-      i = 1;
-      bool1 = bool2;
-      if (i == 0) {
-        break label101;
-      }
-      if (this.duration != paramObject.duration) {
-        break label108;
-      }
+      return false;
     }
-    label101:
-    label103:
-    label108:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0) {
-        bool1 = true;
-      }
-      return bool1;
-      i = 0;
-      break;
-    }
+    return true;
   }
   
   public int hashCode()
   {
     String str = this.stage;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      long l = Double.doubleToLongBits(this.cpu);
-      int j = (int)(l ^ l >>> 32);
-      l = this.memory;
-      int k = (int)(l ^ l >>> 32);
-      l = this.duration;
-      return ((i * 31 + j) * 31 + k) * 31 + (int)(l ^ l >>> 32);
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    long l = Double.doubleToLongBits(this.cpu);
+    int j = (int)(l ^ l >>> 32);
+    l = this.memory;
+    int k = (int)(l ^ l >>> 32);
+    l = this.duration;
+    return ((i * 31 + j) * 31 + k) * 31 + (int)(l ^ l >>> 32);
   }
   
   @NotNull
   public String toString()
   {
-    return "SceneMeta(stage=" + this.stage + ", cpu=" + this.cpu + ", memory=" + this.memory + ", duration=" + this.duration + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SceneMeta(stage=");
+    localStringBuilder.append(this.stage);
+    localStringBuilder.append(", cpu=");
+    localStringBuilder.append(this.cpu);
+    localStringBuilder.append(", memory=");
+    localStringBuilder.append(this.memory);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.SceneMeta
  * JD-Core Version:    0.7.0.1
  */

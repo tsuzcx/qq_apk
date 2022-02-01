@@ -9,9 +9,9 @@ public final class stMagicBrand
 {
   static stSchema cache_schema = new stSchema();
   public String icon = "";
-  public stSchema schema;
+  public stSchema schema = null;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   public stMagicBrand() {}
   
@@ -34,20 +34,23 @@ public final class stMagicBrand
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 1);
+    Object localObject = this.icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 2);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 3);
+    localObject = this.schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stMagicBrand
  * JD-Core Version:    0.7.0.1
  */

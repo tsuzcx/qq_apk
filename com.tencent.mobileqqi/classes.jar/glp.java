@@ -1,41 +1,63 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.mobileqq.subaccount.logic.SubAccountGetMessageControll;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Timer;
 
 public class glp
-  extends MessageObserver
+  implements Runnable
 {
-  public glp(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
+  private Timer jdField_a_of_type_JavaUtilTimer = null;
+  byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void b(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
+  private glp(SubAccountGetMessageControll paramSubAccountGetMessageControll) {}
+  
+  private void a(boolean paramBoolean)
   {
-    paramString = SubAccountGetMessageControll.a(this.a);
-    if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {}
-    try
+    paramBoolean = SubAccountGetMessageControll.b(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountGetMessageControll, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "LoopCycleGetMessage.startGetMsg: isOK = " + paramBoolean);
+    }
+    if (!paramBoolean) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      if (!paramSubAccountBackProtocData.a)
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： is get msg last finish = false");
-        }
-        return;
+        this.jdField_a_of_type_JavaUtilTimer.purge();
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
       }
-      SubAccountGetMessageControll.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify pushNum =" + SubAccountGetMessageControll.a(this.a));
-      }
-      if (SubAccountGetMessageControll.a(this.a) > 0)
+      this.jdField_a_of_type_JavaUtilTimer = new Timer();
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new glq(this), SubAccountGetMessageControll.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountGetMessageControll) * 1000L);
+      return;
+    }
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    {
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        SubAccountGetMessageControll.a(this.a, 0);
-        this.a.a(false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountGetMessageControll", 2, "onGetSubAccountMsgNotify： observer = >onGetSubAccountMsgNotify end");
+        this.jdField_a_of_type_JavaUtilTimer.purge();
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
       }
       return;
     }
-    finally {}
+  }
+  
+  public void run()
+  {
+    try
+    {
+      a(false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

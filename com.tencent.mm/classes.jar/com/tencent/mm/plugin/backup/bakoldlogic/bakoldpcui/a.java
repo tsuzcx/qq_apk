@@ -3,128 +3,195 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 import android.content.Context;
 import android.os.Looper;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.app.f;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.d;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.a.b
   implements e.d
 {
   private static String TAG = "MicroMsg.BakChatBanner";
-  private ak handler;
-  private int jHK;
-  private View jIo;
-  private c jIp;
+  private View doN;
+  private MMHandler handler;
   private int percent;
+  private IListener vfK;
+  private int vfh;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(17904);
-    this.jHK = -1;
+    AppMethodBeat.i(21960);
+    this.vfh = -1;
     this.percent = 0;
-    this.jIo = null;
-    this.handler = new ak(Looper.getMainLooper());
+    this.doN = null;
+    this.handler = new MMHandler(Looper.getMainLooper());
     if (this.view != null)
     {
-      this.jIo = this.view.findViewById(2131821668);
-      this.jIo.setOnClickListener(new a.2(this));
+      this.doN = this.view.findViewById(R.h.fto);
+      this.doN.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(21957);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcui/BakChatBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          a.a(a.this, com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh);
+          if ((2 == a.b(a.this)) || (3 == a.b(a.this)) || (5 == a.b(a.this)) || (6 == a.b(a.this)))
+          {
+            Log.d(a.TAG, "OnClickListener goToBakOperatingUI PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh), Integer.valueOf(a.c(a.this)) });
+            a.d(a.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcui/BakChatBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(21957);
+            return;
+          }
+          if (4 == a.b(a.this))
+          {
+            Log.d(a.TAG, "OnClickListener goToBakFinishUI PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh), Integer.valueOf(a.c(a.this)) });
+            a.e(a.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcui/BakChatBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(21957);
+            return;
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcui/BakChatBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(21957);
+        }
+      });
     }
-    aMK();
-    this.jIp = new a.1(this);
-    com.tencent.mm.sdk.b.a.ymk.c(this.jIp);
-    AppMethodBeat.o(17904);
+    cMa();
+    this.vfK = new BakChatBanner.1(this, f.hfK);
+    this.vfK.alive();
+    AppMethodBeat.o(21960);
   }
   
-  private boolean fG(boolean paramBoolean)
+  private boolean mg(boolean paramBoolean)
   {
-    AppMethodBeat.i(17905);
-    this.jHK = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().jHK;
-    ab.d(TAG, "dealwithPCBakBanner PCBannerStatus:%d, setCallBack:%b", new Object[] { Integer.valueOf(this.jHK), Boolean.valueOf(paramBoolean) });
-    if ((this.jHK >= 2) && (this.jHK <= 6))
+    AppMethodBeat.i(21961);
+    this.vfh = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh;
+    Log.d(TAG, "dealwithPCBakBanner PCBannerStatus:%d, setStrategyCaller:%b", new Object[] { Integer.valueOf(this.vfh), Boolean.valueOf(paramBoolean) });
+    if ((this.vfh >= 2) && (this.vfh <= 6))
     {
-      this.jIo.setVisibility(0);
-      if ((paramBoolean) && (!com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().aVc())) {
-        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().a(this);
+      this.doN.setVisibility(0);
+      if ((paramBoolean) && (!com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().cXc())) {
+        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().a(this);
       }
-      if (2 == this.jHK)
+      if (2 == this.vfh)
       {
-        ((ImageView)this.view.findViewById(2131821669)).setImageResource(2131231106);
-        ((TextView)this.view.findViewById(2131821670)).setText(ah.getContext().getString(2131297401, new Object[] { Integer.valueOf(this.percent) }));
+        ((ImageView)this.view.findViewById(R.h.ftp)).setImageResource(R.k.chatting_backup_computer);
+        ((TextView)this.view.findViewById(R.h.ftq)).setText(MMApplicationContext.getContext().getString(R.l.gvd, new Object[] { Integer.valueOf(this.percent) }));
       }
       for (;;)
       {
-        AppMethodBeat.o(17905);
+        AppMethodBeat.o(21961);
         return true;
-        if (3 == this.jHK)
+        if (3 == this.vfh)
         {
-          ((ImageView)this.view.findViewById(2131821669)).setImageResource(2131231106);
-          ((TextView)this.view.findViewById(2131821670)).setText(ah.getContext().getString(2131297404, new Object[] { Integer.valueOf(this.percent) }));
+          ((ImageView)this.view.findViewById(R.h.ftp)).setImageResource(R.k.chatting_backup_computer);
+          ((TextView)this.view.findViewById(R.h.ftq)).setText(MMApplicationContext.getContext().getString(R.l.gvg, new Object[] { Integer.valueOf(this.percent) }));
         }
-        else if (4 == this.jHK)
+        else if (4 == this.vfh)
         {
-          ((TextView)this.view.findViewById(2131821670)).setText(ah.getContext().getString(2131297403));
-          ((ImageView)this.view.findViewById(2131821669)).setImageResource(2131231105);
+          ((TextView)this.view.findViewById(R.h.ftq)).setText(MMApplicationContext.getContext().getString(R.l.gvf));
+          ((ImageView)this.view.findViewById(R.h.ftp)).setImageResource(R.k.chatting_backup_comfirm);
         }
-        else if (5 == this.jHK)
+        else if (5 == this.vfh)
         {
-          ((ImageView)this.view.findViewById(2131821669)).setImageResource(2131231106);
-          ((TextView)this.view.findViewById(2131821670)).setText(ah.getContext().getString(2131297400, new Object[] { Integer.valueOf(this.percent) }));
+          ((ImageView)this.view.findViewById(R.h.ftp)).setImageResource(R.k.chatting_backup_computer);
+          ((TextView)this.view.findViewById(R.h.ftq)).setText(MMApplicationContext.getContext().getString(R.l.gvc, new Object[] { Integer.valueOf(this.percent) }));
         }
-        else if (6 == this.jHK)
+        else if (6 == this.vfh)
         {
-          ((TextView)this.view.findViewById(2131821670)).setText(ah.getContext().getString(2131297402));
-          ((ImageView)this.view.findViewById(2131821669)).setImageResource(2131231105);
+          ((TextView)this.view.findViewById(R.h.ftq)).setText(MMApplicationContext.getContext().getString(R.l.gve));
+          ((ImageView)this.view.findViewById(R.h.ftp)).setImageResource(R.k.chatting_backup_comfirm);
         }
       }
     }
-    this.jIo.setVisibility(8);
-    AppMethodBeat.o(17905);
+    this.doN.setVisibility(8);
+    AppMethodBeat.o(21961);
     return false;
   }
   
-  public final boolean aMK()
+  public final void FA(int paramInt)
   {
-    AppMethodBeat.i(17906);
-    this.percent = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().aVf();
-    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().a(this);
-    boolean bool = fG(true);
-    AppMethodBeat.o(17906);
+    AppMethodBeat.i(21964);
+    Log.d(TAG, "onNetProgress PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh), Integer.valueOf(paramInt) });
+    this.percent = paramInt;
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21958);
+        a.this.cMa();
+        AppMethodBeat.o(21958);
+      }
+    });
+    AppMethodBeat.o(21964);
+  }
+  
+  public final void FB(int paramInt)
+  {
+    AppMethodBeat.i(21965);
+    Log.d(TAG, "onMergeProgress PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(21965);
+  }
+  
+  public final boolean cMa()
+  {
+    AppMethodBeat.i(21962);
+    this.percent = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().cXf();
+    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().a(this);
+    boolean bool = mg(true);
+    AppMethodBeat.o(21962);
     return bool;
   }
   
-  public final void aSK() {}
+  public final void cUI() {}
   
-  public final void aVi()
+  public final void cXi()
   {
-    AppMethodBeat.i(17910);
-    ab.d(TAG, "onNetFinish PCBannerStatus:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().jHK) });
-    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV();
-    e.rC(17);
-    this.handler.post(new a.4(this));
-    AppMethodBeat.o(17910);
+    AppMethodBeat.i(21966);
+    Log.d(TAG, "onNetFinish PCBannerStatus:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().vfh) });
+    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV();
+    e.Fx(17);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21959);
+        a.this.cMa();
+        AppMethodBeat.o(21959);
+      }
+    });
+    AppMethodBeat.o(21966);
   }
   
-  public final void aVj() {}
+  public final void cXj() {}
   
   public final void destroy()
   {
-    AppMethodBeat.i(17911);
-    com.tencent.mm.sdk.b.a.ymk.d(this.jIp);
-    AppMethodBeat.o(17911);
+    AppMethodBeat.i(21967);
+    Log.i(TAG, "destroy");
+    release();
+    this.vfK.dead();
+    AppMethodBeat.o(21967);
   }
   
   public final int getLayoutId()
   {
-    return 2130968816;
+    return R.i.fto;
   }
   
   public final int getOrder()
@@ -132,35 +199,19 @@ public final class a
     return 3;
   }
   
-  public final void onError(int paramInt) {}
-  
-  public final void rF(int paramInt)
-  {
-    AppMethodBeat.i(17908);
-    ab.d(TAG, "onNetProgress PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().jHK), Integer.valueOf(paramInt) });
-    this.percent = paramInt;
-    this.handler.post(new a.3(this));
-    AppMethodBeat.o(17908);
-  }
-  
-  public final void rG(int paramInt)
-  {
-    AppMethodBeat.i(17909);
-    ab.d(TAG, "onMergeProgress PCBannerStatus:%d, percent:%d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().jHK), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(17909);
-  }
+  public final void oc(int paramInt) {}
   
   public final void release()
   {
-    AppMethodBeat.i(17907);
-    this.jHK = -1;
-    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.aUU().aUV().aVd();
-    AppMethodBeat.o(17907);
+    AppMethodBeat.i(21963);
+    this.vfh = -1;
+    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.cWU().cWV().cXd();
+    AppMethodBeat.o(21963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.a
  * JD-Core Version:    0.7.0.1
  */

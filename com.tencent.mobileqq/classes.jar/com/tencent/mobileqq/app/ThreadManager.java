@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amdn;
-import amdo;
+import android.content.SharedPreferences;
 import android.os.Looper;
 import mqq.os.MqqHandler;
 
@@ -14,48 +13,51 @@ public class ThreadManager
   
   public static MqqHandler getFileThreadHandler()
   {
-    if (FILE_Mqq_HANDLER == null) {}
-    try
-    {
-      if (FILE_Mqq_HANDLER == null) {
-        FILE_Mqq_HANDLER = new amdo(getFileThreadLooper());
+    if (FILE_Mqq_HANDLER == null) {
+      try
+      {
+        if (FILE_Mqq_HANDLER == null) {
+          FILE_Mqq_HANDLER = new ThreadManager.2(getFileThreadLooper());
+        }
       }
-      return FILE_Mqq_HANDLER;
+      finally {}
     }
-    finally {}
+    return FILE_Mqq_HANDLER;
   }
   
   public static MqqHandler getSubThreadHandler()
   {
-    if (SUB_Mqq_HANDLER == null) {}
-    try
-    {
-      if (SUB_Mqq_HANDLER == null) {
-        SUB_Mqq_HANDLER = new amdn(getSubThreadLooper());
+    if (SUB_Mqq_HANDLER == null) {
+      try
+      {
+        if (SUB_Mqq_HANDLER == null) {
+          SUB_Mqq_HANDLER = new ThreadManager.1(getSubThreadLooper());
+        }
       }
-      return SUB_Mqq_HANDLER;
+      finally {}
     }
-    finally {}
+    return SUB_Mqq_HANDLER;
   }
   
   public static MqqHandler getUIHandler()
   {
-    if (UI_Mqq_HANDLER == null) {}
-    try
-    {
-      if (UI_Mqq_HANDLER == null) {
-        UI_Mqq_HANDLER = new MqqHandler(Looper.getMainLooper(), null, true);
+    if (UI_Mqq_HANDLER == null) {
+      try
+      {
+        if (UI_Mqq_HANDLER == null) {
+          UI_Mqq_HANDLER = new MqqHandler(Looper.getMainLooper(), null, true);
+        }
       }
-      return UI_Mqq_HANDLER;
+      finally {}
     }
-    finally {}
+    return UI_Mqq_HANDLER;
   }
   
-  public static void initDPC() {}
+  public static void initDPC(SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

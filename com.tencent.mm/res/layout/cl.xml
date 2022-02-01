@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/m1" android:background="@drawable/bp" android:layout_width="150.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:id="@id/r1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="160.0dip" android:minHeight="40.0dip" android:layout_centerInParent="true" style="@style/nx" />
-    <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:gravity="center" android:id="@id/p5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:text="@string/cwy" android:layout_above="@id/r1" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/p4" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginBottom="24.0dip" android:scaleType="fitCenter" android:layout_above="@id/p5" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/lh" android:layout_width="150.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0dip" android:textColor="@color/ad1" android:id="@id/ip" android:paddingLeft="@dimen/iq" android:paddingTop="@dimen/k" android:paddingRight="@dimen/iq" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jah" android:layout_centerHorizontal="true" />
+        <View android:id="@id/io" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/iq" android:layout_marginRight="@dimen/iq" android:layout_below="@id/ip" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/Link" android:id="@id/iq" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/ig" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/ig" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jag" android:layout_below="@id/io" android:layout_centerHorizontal="true" />
+        <ListView android:id="@id/il" android:background="@color/d" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/io" style="@style/na" />
+    </RelativeLayout>
+</LinearLayout>

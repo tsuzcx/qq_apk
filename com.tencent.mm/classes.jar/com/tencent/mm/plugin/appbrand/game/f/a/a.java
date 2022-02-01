@@ -1,168 +1,144 @@
 package com.tencent.mm.plugin.appbrand.game.f.a;
 
-import a.f.a.b;
-import a.y;
-import android.content.Context;
-import android.graphics.SurfaceTexture;
 import android.opengl.EGLContext;
-import android.os.HandlerThread;
-import com.tencent.magicbrush.c.g;
+import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.i.b.b;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mm.media.g.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.ah;
+import kotlin.g.a.b;
 
-public class a
-  extends g
-  implements c
+final class a
+  implements c.a
 {
-  private HandlerThread eVQ;
-  private ak eVR;
-  private com.tencent.mm.media.h.a eWh;
-  private int fbH;
-  private int fbI;
-  private com.tencent.mm.media.widget.camerarecordview.preview.a.a fby;
-  private SurfaceTexture htJ;
-  private b.b htK;
-  private AtomicBoolean htL;
-  private c.a htM;
+  private final c rrT;
   
-  public a(Context paramContext)
+  public a(c paramc)
   {
-    super(paramContext);
-    AppMethodBeat.i(143187);
-    this.htL = new AtomicBoolean(false);
-    this.eVQ = d.ey("GameTextureView_renderThread", -2);
-    this.eVQ.start();
-    this.eVR = new ak(this.eVQ.getLooper());
-    AppMethodBeat.o(143187);
+    this.rrT = paramc;
   }
   
-  private void queueEvent(Runnable paramRunnable)
+  public final boolean Af(int paramInt)
   {
-    AppMethodBeat.i(143188);
-    if (Thread.currentThread().getId() == this.eVQ.getId())
-    {
-      paramRunnable.run();
-      AppMethodBeat.o(143188);
-      return;
-    }
-    this.eVR.post(paramRunnable);
-    AppMethodBeat.o(143188);
+    return paramInt == 0;
   }
   
-  public final void e(a.f.a.a<y> parama)
+  public final void H(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(143189);
-    if (Thread.currentThread().getId() == this.eVQ.getId())
-    {
-      parama.invoke();
-      AppMethodBeat.o(143189);
-      return;
-    }
-    this.eVR.post(new a.1(this, parama));
-    AppMethodBeat.o(143189);
+    AppMethodBeat.i(318510);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy requestRender");
+    AppMethodBeat.o(318510);
   }
   
-  public EGLContext getEGLContext()
+  public final void a(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3, c.b paramb)
   {
-    if (this.htK == null) {
-      return null;
-    }
-    return this.htK.eZz;
+    AppMethodBeat.i(318466);
+    this.rrT.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
+    this.rrT.a(paramb);
+    AppMethodBeat.o(318466);
   }
   
-  public int getPreviewTextureId()
+  public final void a(SurfaceHolder paramSurfaceHolder, c.b paramb)
   {
-    AppMethodBeat.i(143196);
-    if (this.fby == null)
-    {
-      AppMethodBeat.o(143196);
-      return -1;
-    }
-    int i = this.fby.getTextureId();
-    AppMethodBeat.o(143196);
-    return i;
+    AppMethodBeat.i(318463);
+    this.rrT.b(paramSurfaceHolder);
+    this.rrT.a(paramb);
+    AppMethodBeat.o(318463);
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public final void a(SurfaceHolder paramSurfaceHolder, c.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(143190);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    queueEvent(new a.2(this, paramInt1, paramInt2, paramSurfaceTexture));
-    AppMethodBeat.o(143190);
+    AppMethodBeat.i(318469);
+    this.rrT.a(paramSurfaceHolder, paramBoolean);
+    this.rrT.a(paramb);
+    AppMethodBeat.o(318469);
   }
   
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  public final com.tencent.mm.media.j.a getAbsSurfaceRenderer()
   {
-    AppMethodBeat.i(143192);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureDestroyed");
-    queueEvent(new a.4(this));
-    AppMethodBeat.o(143192);
-    return false;
+    AppMethodBeat.i(318481);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy queueEvent");
+    AppMethodBeat.o(318481);
+    return null;
   }
   
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public final EGLContext getEGLContext()
   {
-    AppMethodBeat.i(143191);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureSizeChanged, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    queueEvent(new a.3(this, paramInt1, paramInt2));
-    AppMethodBeat.o(143191);
+    AppMethodBeat.i(318490);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy getEGLContext");
+    AppMethodBeat.o(318490);
+    return null;
   }
   
-  public void requestRender()
+  public final int getPreviewTextureId()
   {
-    AppMethodBeat.i(143195);
-    queueEvent(new a.5(this));
-    AppMethodBeat.o(143195);
+    AppMethodBeat.i(318500);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy getPreviewTextureId");
+    AppMethodBeat.o(318500);
+    return 0;
   }
   
-  public void setOnSurfaceTextureAvailableDelegate(c.a parama)
+  public final int getSurfaceHeight()
   {
-    AppMethodBeat.i(143193);
-    this.htM = parama;
-    this.htL.get();
-    AppMethodBeat.o(143193);
+    return this.rrT.mSurfaceHeight;
   }
   
-  public void setOnTextureDrawFinishDelegate(b<Integer, y> paramb)
+  public final Object getSurfaceTexture()
   {
-    this.fby.fbN = paramb;
+    AppMethodBeat.i(318475);
+    Object localObject = this.rrT.cpd();
+    AppMethodBeat.o(318475);
+    return localObject;
   }
   
-  public void setPreviewRenderer(com.tencent.mm.media.h.a parama)
+  public final int getSurfaceWidth()
   {
-    AppMethodBeat.i(143194);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "setRenderer:${renderer.hashCode()}  ");
-    if (this.fby != null)
-    {
-      this.fby.release();
-      this.fby = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
-    }
-    this.fby = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
-    this.fby.b(parama);
-    this.eWh = parama;
-    AppMethodBeat.o(143194);
+    return this.rrT.mSurfaceWidth;
   }
   
-  public final void yA()
+  public final void init()
   {
-    AppMethodBeat.i(143197);
-    super.yA();
-    this.eVQ.quitSafely();
-    AppMethodBeat.o(143197);
+    AppMethodBeat.i(318458);
+    Log.i("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: init. switch to support node js");
+    AppMethodBeat.o(318458);
   }
   
-  public final boolean yz()
+  public final boolean isAvailable()
   {
-    return true;
+    return this.rrT.rse;
+  }
+  
+  public final void requestRender()
+  {
+    AppMethodBeat.i(318509);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy requestRender");
+    AppMethodBeat.o(318509);
+  }
+  
+  public final void setOnSurfaceTextureAvailableDelegate(e.a parama)
+  {
+    AppMethodBeat.i(318486);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy setOnSurfaceTextureAvailableDelegate");
+    AppMethodBeat.o(318486);
+  }
+  
+  public final void setOnTextureDrawFinishDelegate(b<d, ah> paramb)
+  {
+    AppMethodBeat.i(318493);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy setOnTextureDrawFinishDelegate");
+    AppMethodBeat.o(318493);
+  }
+  
+  public final void setPreviewRenderer(com.tencent.mm.media.j.a parama)
+  {
+    AppMethodBeat.i(318497);
+    Log.w("MicroMsg.GameRecordableSurfaceView.DefaultImp", "hy: dummy setPreviewRenderer");
+    AppMethodBeat.o(318497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@
 <merge android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager android:id="@id/kxy" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:layout_centerHorizontal="true" tencent:rvp_view_height_weight="0.424242" tencent:rvp_view_width_weight="1.0" />
+    <com.tencent.mobileqq.kandian.biz.channel.banner.RollViewPager android:id="@id/kxy" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:layout_centerHorizontal="true" tencent:rvp_view_height_weight="0.424242" tencent:rvp_view_width_weight="1.0" />
     <LinearLayout android:orientation="horizontal" android:id="@id/ecm" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/kxy" android:layout_centerHorizontal="true" />
     <LinearLayout android:orientation="vertical" android:id="@id/eck" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ecm" />
 </merge>

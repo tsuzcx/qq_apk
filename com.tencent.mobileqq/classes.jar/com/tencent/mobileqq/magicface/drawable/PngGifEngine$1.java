@@ -5,58 +5,54 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import atxv;
-import atxw;
 import com.tencent.qphone.base.util.QLog;
 
-public class PngGifEngine$1
+class PngGifEngine$1
   implements Runnable
 {
-  public PngGifEngine$1(atxv paramatxv) {}
+  PngGifEngine$1(PngGifEngine paramPngGifEngine) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func run begins.");
     }
-    Object localObject1 = this.this$0.a();
+    Object localObject1 = this.this$0.c();
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
     long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = atxv.a((String)localObject1);
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
+    Object localObject2 = PngGifEngine.b((String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("func run, bitmap:");
+      ((StringBuilder)localObject1).append(localObject2);
+      QLog.d("PngGifEngine", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = this.this$0;
     if (localObject2 != null) {}
-    for (;;)
+    try
     {
-      long l1;
-      try
+      if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.d != null))
       {
-        if ((!((Bitmap)localObject2).isRecycled()) && (this.this$0.jdField_a_of_type_AndroidOsHandler != null))
-        {
-          l1 = SystemClock.uptimeMillis();
-          l2 += this.this$0.jdField_a_of_type_Atxw.b;
-          localObject2 = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
-          if (l1 > l2) {
-            this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          }
-        }
-        else
-        {
-          return;
+        long l1 = SystemClock.uptimeMillis();
+        l2 += this.this$0.a.b;
+        localObject2 = this.this$0.d.obtainMessage(1, localObject2);
+        if (l1 > l2) {
+          this.this$0.d.sendMessage((Message)localObject2);
+        } else {
+          this.this$0.d.sendMessageDelayed((Message)localObject2, l2 - l1);
         }
       }
-      finally {}
-      this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l2 - l1);
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngGifEngine.1
  * JD-Core Version:    0.7.0.1
  */

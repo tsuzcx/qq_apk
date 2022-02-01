@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
 
 public class SightAtContactWidget
   extends AtContactWidget
@@ -12,7 +13,6 @@ public class SightAtContactWidget
     super(paramContext, paramAttributeSet);
   }
   
-  @TargetApi(11)
   public SightAtContactWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -20,22 +20,22 @@ public class SightAtContactWidget
   
   protected int getLayoutResource()
   {
-    return 2130970740;
+    return b.g.sight_at_layout;
   }
   
   protected int getWithDrawableId()
   {
-    return 2131231992;
+    return b.i.sight_icon_mention;
   }
   
   protected int getWithEmptyDrawableId()
   {
-    return 2131231992;
+    return b.i.sight_icon_mention;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightAtContactWidget
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hdg" android:fitsSystemWindows="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/pa" android:background="#fff5f5f5" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="32.0dip">
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/qs" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/pd" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+        <RadioGroup android:orientation="horizontal" android:id="@id/qz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/r9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pa" android:layout_below="@id/f0h" android:layout_alignParentLeft="true" />
+    <ViewStub android:id="@id/f0h" android:layout="@layout/bii" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ha1" />
+</RelativeLayout>

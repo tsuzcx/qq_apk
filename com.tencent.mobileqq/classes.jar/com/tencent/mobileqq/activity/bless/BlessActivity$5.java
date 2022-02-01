@@ -9,10 +9,10 @@ class BlessActivity$5
   
   public void run()
   {
-    BlessActivity.a(this.this$0).setBackgroundDrawable(this.this$0.a);
-    BlessActivity.a(this.this$0).setVisibility(0);
+    BlessActivity.c(this.this$0).setBackgroundDrawable(this.this$0.a);
+    BlessActivity.c(this.this$0).setVisibility(0);
     this.this$0.a.start();
-    BlessActivity.b(this.this$0);
+    BlessActivity.e(this.this$0);
   }
 }
 

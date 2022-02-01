@@ -9,13 +9,16 @@ class QQMTVFilter$1
   
   public void run()
   {
-    SLog.d("QQMTVFilter", "useFrameTime:" + this.val$bDecodeTime);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("useFrameTime:");
+    localStringBuilder.append(this.val$bDecodeTime);
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
     QQMTVFilter.access$002(this.this$0, this.val$bDecodeTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQMTVFilter.1
  * JD-Core Version:    0.7.0.1
  */

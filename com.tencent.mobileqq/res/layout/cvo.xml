@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/qcircle_skin_color_bg_backplate" android:layout_width="fill_parent" android:layout_height="@dimen/i0" />
+    <Button android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/2h" android:background="@drawable/qcircle_skin_actionsheet_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_btn_style" />
+    <View android:background="@color/qcircle_skin_color_bg_backplate" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <Button android:textColor="@color/qcircle_skin_color_text_primary" android:id="@id/action_sheet_btnCancel" android:background="@drawable/qcircle_skin_actionsheet_bg" android:layout_width="fill_parent" android:layout_height="@dimen/hz" style="@style/action_sheet_btn_style" />
+</LinearLayout>

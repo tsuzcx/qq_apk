@@ -1,91 +1,112 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
 import android.content.Context;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.smiley.o;
+import java.util.List;
 
 public final class b
   extends a
 {
-  private static final int jpM;
-  private static final int jpN;
+  private static final int Xsg;
+  private static final int Xsh;
   
   static
   {
-    AppMethodBeat.i(10103);
-    jpM = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 48);
-    jpN = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 43);
-    AppMethodBeat.o(10103);
+    AppMethodBeat.i(82337);
+    Xsg = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 48);
+    Xsh = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 43);
+    AppMethodBeat.o(82337);
   }
   
-  private int aRI()
+  private int iCM()
   {
-    AppMethodBeat.i(10097);
-    c localc = this.vtC;
-    if (localc.jqf <= 1)
-    {
-      Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
-      localc.jqf = new int[] { localDisplay.getWidth(), localDisplay.getHeight() }[0];
+    AppMethodBeat.i(82331);
+    c localc = this.Xsf;
+    if (localc.Xsw <= 1) {
+      localc.Xsw = c.cSk()[0];
     }
-    int i = localc.jqf;
-    AppMethodBeat.o(10097);
+    int i = localc.Xsw;
+    AppMethodBeat.o(82331);
     return i;
   }
   
-  public final int aRF()
+  public final View avb(int paramInt)
   {
-    AppMethodBeat.i(10098);
-    int i = e.dve().aRA();
-    AppMethodBeat.o(10098);
-    return i;
-  }
-  
-  public final int aRG()
-  {
-    AppMethodBeat.i(10099);
-    int i = aRH();
-    int j = getRowCount();
-    AppMethodBeat.o(10099);
-    return i * j;
-  }
-  
-  public final int aRH()
-  {
-    AppMethodBeat.i(10101);
-    if (this.vtC.jqa)
+    AppMethodBeat.i(82330);
+    Object localObject1 = this.xNl;
+    Object localObject2 = this.Xsf;
+    d locald = new d();
+    locald.mIndex = paramInt;
+    locald.Xsx = this;
+    locald.mContext = ((Context)localObject1);
+    locald.Xsf = ((c)localObject2);
+    if ((locald.mContext == null) || (locald.Xsx == null))
     {
-      AppMethodBeat.o(10101);
-      return 7;
+      AppMethodBeat.o(82330);
+      return null;
     }
-    int i = aRI() / jpN;
-    AppMethodBeat.o(10101);
-    return i;
+    localObject1 = View.inflate(locald.mContext, c.g.webview_smiley_panel_page, null);
+    if ((localObject1 instanceof WebViewSmileyGrid))
+    {
+      ((WebViewSmileyGrid)localObject1).setPanelManager(locald.Xsf);
+      localObject2 = (WebViewSmileyGrid)localObject1;
+      paramInt = locald.mIndex;
+      int i = locald.Xsx.iCJ();
+      int j = locald.Xsx.iCK();
+      int k = locald.Xsx.iCL();
+      int m = locald.Xsx.getRowCount();
+      int n = locald.Xsx.getRowSpacing();
+      ((WebViewSmileyGrid)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      ((WebViewSmileyGrid)localObject2).setBackgroundResource(0);
+      ((WebViewSmileyGrid)localObject2).setStretchMode(2);
+      ((WebViewSmileyGrid)localObject2).setOnItemClickListener(((WebViewSmileyGrid)localObject2).vT);
+      ((WebViewSmileyGrid)localObject2).uQL = paramInt;
+      ((WebViewSmileyGrid)localObject2).Xsj = i;
+      ((WebViewSmileyGrid)localObject2).Xsk = j;
+      ((WebViewSmileyGrid)localObject2).Xsl = n;
+      ((WebViewSmileyGrid)localObject2).Xsm = k;
+      ((WebViewSmileyGrid)localObject2).Xsn = m;
+      ((WebViewSmileyGrid)localObject2).setNumColumns(k);
+      i = ((WebViewSmileyGrid)localObject2).getRowSpacing();
+      j = com.tencent.mm.cd.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
+      k = com.tencent.mm.cd.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
+      paramInt = i;
+      if (i == 0) {
+        paramInt = com.tencent.mm.cd.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
+      }
+      ((WebViewSmileyGrid)localObject2).setPadding(j, paramInt, k, 0);
+      ((WebViewSmileyGrid)localObject2).Xsi = new WebViewSmileyGrid.a((WebViewSmileyGrid)localObject2, (byte)0);
+      ((WebViewSmileyGrid)localObject2).setAdapter(((WebViewSmileyGrid)localObject2).Xsi);
+      ((WebViewSmileyGrid)localObject2).Xsi.notifyDataSetChanged();
+    }
+    AppMethodBeat.o(82330);
+    return localObject1;
   }
   
   public final int getPageCount()
   {
-    AppMethodBeat.i(10100);
-    if (aRG() <= 0)
+    AppMethodBeat.i(82334);
+    if (iCK() <= 0)
     {
-      AppMethodBeat.o(10100);
+      AppMethodBeat.o(82334);
       return 0;
     }
-    int i = e.dve().aRA();
-    int j = aRG();
+    int i = iCJ();
+    int j = iCK();
     i = (int)Math.ceil(i / j);
-    AppMethodBeat.o(10100);
+    AppMethodBeat.o(82334);
     return i;
   }
   
   public final int getRowCount()
   {
     int i = 3;
-    int j = this.vtC.jqe / jpM;
+    int j = this.Xsf.Xsv / Xsg;
     if (j > 3) {}
     for (;;)
     {
@@ -100,68 +121,51 @@ public final class b
   
   public final int getRowSpacing()
   {
-    AppMethodBeat.i(10102);
-    int i = (this.vtC.jqe - jpM * getRowCount()) / (getRowCount() + 1);
-    AppMethodBeat.o(10102);
+    AppMethodBeat.i(82336);
+    int i = (this.Xsf.Xsv - Xsg * getRowCount()) / (getRowCount() + 1);
+    AppMethodBeat.o(82336);
     return i;
   }
   
-  public final View qE(int paramInt)
+  public final int iCJ()
   {
-    AppMethodBeat.i(10096);
-    Object localObject1 = this.jpJ;
-    Object localObject2 = this.vtC;
-    d locald = new d();
-    locald.mIndex = paramInt;
-    locald.vtK = this;
-    locald.mContext = ((Context)localObject1);
-    locald.vtC = ((c)localObject2);
-    if ((locald.mContext == null) || (locald.vtK == null))
+    AppMethodBeat.i(82332);
+    o localo = c.iCQ();
+    if (localo.acyr == null)
     {
-      AppMethodBeat.o(10096);
-      return null;
+      AppMethodBeat.o(82332);
+      return 0;
     }
-    localObject1 = View.inflate(locald.mContext, 2130971309, null);
-    if ((localObject1 instanceof WebViewSmileyGrid))
+    int i = localo.acyr.size();
+    AppMethodBeat.o(82332);
+    return i;
+  }
+  
+  public final int iCK()
+  {
+    AppMethodBeat.i(82333);
+    int i = iCL();
+    int j = getRowCount();
+    AppMethodBeat.o(82333);
+    return i * j;
+  }
+  
+  public final int iCL()
+  {
+    AppMethodBeat.i(82335);
+    if (this.Xsf.Xsr)
     {
-      ((WebViewSmileyGrid)localObject1).setPanelManager(locald.vtC);
-      localObject2 = (WebViewSmileyGrid)localObject1;
-      paramInt = locald.mIndex;
-      int i = locald.vtK.aRF();
-      int j = locald.vtK.aRG();
-      int k = locald.vtK.aRH();
-      int m = locald.vtK.getRowCount();
-      int n = locald.vtK.getRowSpacing();
-      ((WebViewSmileyGrid)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      ((WebViewSmileyGrid)localObject2).setBackgroundResource(0);
-      ((WebViewSmileyGrid)localObject2).setStretchMode(2);
-      ((WebViewSmileyGrid)localObject2).setOnItemClickListener(((WebViewSmileyGrid)localObject2).amh);
-      ((WebViewSmileyGrid)localObject2).jpR = paramInt;
-      ((WebViewSmileyGrid)localObject2).jpP = i;
-      ((WebViewSmileyGrid)localObject2).jpQ = j;
-      ((WebViewSmileyGrid)localObject2).jpS = n;
-      ((WebViewSmileyGrid)localObject2).jpT = k;
-      ((WebViewSmileyGrid)localObject2).jpU = m;
-      ((WebViewSmileyGrid)localObject2).setNumColumns(k);
-      i = ((WebViewSmileyGrid)localObject2).getRowSpacing();
-      j = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
-      k = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
-      paramInt = i;
-      if (i == 0) {
-        paramInt = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
-      }
-      ((WebViewSmileyGrid)localObject2).setPadding(j, paramInt, k, 0);
-      ((WebViewSmileyGrid)localObject2).vtD = new WebViewSmileyGrid.a((WebViewSmileyGrid)localObject2, (byte)0);
-      ((WebViewSmileyGrid)localObject2).setAdapter(((WebViewSmileyGrid)localObject2).vtD);
-      ((WebViewSmileyGrid)localObject2).vtD.notifyDataSetChanged();
+      AppMethodBeat.o(82335);
+      return 7;
     }
-    AppMethodBeat.o(10096);
-    return localObject1;
+    int i = iCM() / Xsh;
+    AppMethodBeat.o(82335);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.b
  * JD-Core Version:    0.7.0.1
  */

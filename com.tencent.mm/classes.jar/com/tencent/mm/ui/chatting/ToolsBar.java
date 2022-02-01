@@ -4,71 +4,76 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.R.d;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.widget.imageview.WeImageButton;
 
 public class ToolsBar
   extends LinearLayout
 {
-  private LinearLayout.LayoutParams nAm;
-  private ImageButton zCM;
-  private ImageButton zyX;
-  private ImageButton zzA;
+  private LinearLayout.LayoutParams IRX;
+  private WeImageButton aeiq;
+  private WeImageButton aeiu;
+  private WeImageButton aemn;
   
   public ToolsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(31072);
+    AppMethodBeat.i(34960);
     setOrientation(0);
     setGravity(16);
-    setBackgroundResource(2130838022);
-    this.nAm = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131427853), 1.0F);
-    this.zyX = new ImageButton(getContext());
-    this.zyX.setImageResource(2130838239);
-    this.zyX.setScaleType(ImageView.ScaleType.CENTER);
-    this.zyX.setBackgroundResource(0);
-    this.zyX.setContentDescription(paramContext.getString(2131298261));
-    this.zzA = new ImageButton(getContext());
-    this.zzA.setImageResource(2130838236);
-    this.zzA.setScaleType(ImageView.ScaleType.CENTER);
-    this.zzA.setBackgroundResource(0);
-    this.zzA.setContentDescription(paramContext.getString(2131298260));
-    this.zCM = new ImageButton(getContext());
-    this.zCM.setImageResource(2130838238);
-    this.zCM.setScaleType(ImageView.ScaleType.CENTER);
-    this.zCM.setBackgroundResource(0);
-    this.zCM.setContentDescription(paramContext.getString(2131298260));
+    setBackground(bd.by(getContext(), R.d.list_top_line_selector));
+    this.IRX = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.SmallListHeight), 1.0F);
+    this.aeiq = new WeImageButton(getContext());
+    this.aeiq.setImageResource(R.g.fmZ);
+    this.aeiq.setScaleType(ImageView.ScaleType.CENTER);
+    this.aeiq.setBackgroundResource(0);
+    this.aeiq.setContentDescription(paramContext.getString(R.l.chatting_more_share));
+    this.aeiu = new WeImageButton(getContext());
+    this.aeiu.setImageResource(R.g.fmX);
+    this.aeiu.setScaleType(ImageView.ScaleType.CENTER);
+    this.aeiu.setBackgroundResource(0);
+    this.aeiu.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
+    this.aemn = new WeImageButton(getContext());
+    this.aemn.setImageResource(R.g.fmY);
+    this.aemn.setScaleType(ImageView.ScaleType.CENTER);
+    this.aemn.setBackgroundResource(0);
+    this.aemn.setContentDescription(paramContext.getString(R.l.chatting_more_remind));
     removeAllViews();
-    addView(this.zyX, this.nAm);
-    addView(this.zzA, this.nAm);
-    addView(this.zCM, this.nAm);
-    AppMethodBeat.o(31072);
+    addView(this.aeiq, this.IRX);
+    addView(this.aeiu, this.IRX);
+    addView(this.aemn, this.IRX);
+    AppMethodBeat.o(34960);
   }
   
-  public final void c(int paramInt, View.OnClickListener paramOnClickListener)
+  public final void b(int paramInt, View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(31073);
+    AppMethodBeat.i(34961);
     switch (paramInt)
     {
     default: 
-      ab.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(31073);
+      Log.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(34961);
       return;
     case 0: 
-      this.zyX.setOnClickListener(paramOnClickListener);
-      AppMethodBeat.o(31073);
+      this.aeiq.setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(34961);
       return;
     case 1: 
-      this.zzA.setOnClickListener(paramOnClickListener);
-      AppMethodBeat.o(31073);
+      this.aeiu.setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(34961);
       return;
     }
-    this.zCM.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(31073);
+    this.aemn.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(34961);
   }
 }
 

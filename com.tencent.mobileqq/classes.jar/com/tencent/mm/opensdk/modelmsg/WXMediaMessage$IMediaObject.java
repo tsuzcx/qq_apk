@@ -16,6 +16,7 @@ public abstract interface WXMediaMessage$IMediaObject
   public static final int TYPE_EMOTICON_SHARED = 15;
   public static final int TYPE_EMOTIONLIST_SHARED = 26;
   public static final int TYPE_FILE = 6;
+  public static final int TYPE_GAME_LIVE = 70;
   public static final int TYPE_GAME_VIDEO_FILE = 39;
   public static final int TYPE_GIFTCARD = 34;
   public static final int TYPE_IMAGE = 2;
@@ -23,10 +24,12 @@ public abstract interface WXMediaMessage$IMediaObject
   public static final int TYPE_LOCATION_SHARE = 17;
   public static final int TYPE_MALL_PRODUCT = 13;
   public static final int TYPE_MUSIC = 3;
+  public static final int TYPE_MUSIC_VIDEO = 76;
   public static final int TYPE_NOTE = 24;
   public static final int TYPE_OLD_TV = 14;
   public static final int TYPE_OPENSDK_APPBRAND = 36;
   public static final int TYPE_OPENSDK_APPBRAND_WEISHIVIDEO = 46;
+  public static final int TYPE_OPENSDK_LITEAPP = 68;
   public static final int TYPE_OPENSDK_WEWORK_OBJECT = 49;
   public static final int TYPE_PRODUCT = 10;
   public static final int TYPE_RECORD = 19;
@@ -47,7 +50,7 @@ public abstract interface WXMediaMessage$IMediaObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject
  * JD-Core Version:    0.7.0.1
  */

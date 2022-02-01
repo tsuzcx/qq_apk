@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_min_w">50.0dip</dimen>
+    <dimen name="tab_min_h">30.0dip</dimen>
+    <dimen name="tab_left_padding_right">7.0dip</dimen>
+    <dimen name="tab_right_padding_left">7.0dip</dimen>
+    <dimen name="net_album_lst_height">423.0dip</dimen>
+    <dimen name="net_album_lst_itmphoto_width">150.0px</dimen>
+    <dimen name="net_album_lst_itmphoto_height">150.0px</dimen>
+    <dimen name="net_album_lst_title_margins">27.0px</dimen>
+    <dimen name="net_album_lst_titleanditem_margins">30.0px</dimen>
+    <dimen name="net_album_lst_item_leftmargins">45.0px</dimen>
+    <dimen name="net_album_lst_itmphotoandword_padding">36.0px</dimen>
+    <dimen name="photo_max_width">400.0px</dimen>
+    <dimen name="photo_max_height">350.0px</dimen>
+    <dimen name="big_feed_photo_width">375.0px</dimen>
+    <dimen name="big_feed_photo_height">236.0px</dimen>
+    <dimen name="font_size_username">17.0dip</dimen>
+    <dimen name="font_size_username_comment">17.0dip</dimen>
+    <dimen name="font_size_time_comment">13.0dip</dimen>
+    <dimen name="font_size_content">20.0px</dimen>
+    <dimen name="font_size_web">17.0px</dimen>
+    <dimen name="portrait_size">74.0px</dimen>
+    <dimen name="font_size_album_name">24.0px</dimen>
+    <dimen name="font_size_album_time">20.0px</dimen>
+    <dimen name="title_height_album_grid">51.0px</dimen>
+    <dimen name="net_album_lst_width">298.0dip</dimen>
+</resources>

@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends d<ap>
+  extends f<ba>
 {
-  private static final int CTRL_INDEX = 461;
-  private static final String NAME = "fs_appendFile";
+  private static final int CTRL_INDEX = 383;
+  private static final String NAME = "accessSync";
   
   public k()
   {
-    super(new ap());
-    AppMethodBeat.i(102778);
-    AppMethodBeat.o(102778);
+    super(new ba());
+    AppMethodBeat.i(128867);
+    AppMethodBeat.o(128867);
   }
 }
 

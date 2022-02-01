@@ -15,7 +15,8 @@ public class PTSegAttr
   
   public long getSegDetectTime()
   {
-    if ((this.detectTimes != null) && (this.detectTimes.get("sdk_background_detect_time") != null)) {
+    Map localMap = this.detectTimes;
+    if ((localMap != null) && (localMap.get("sdk_background_detect_time") != null)) {
       return ((Long)this.detectTimes.get("sdk_background_detect_time")).longValue();
     }
     return 0L;
@@ -34,7 +35,7 @@ public class PTSegAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTSegAttr
  * JD-Core Version:    0.7.0.1
  */

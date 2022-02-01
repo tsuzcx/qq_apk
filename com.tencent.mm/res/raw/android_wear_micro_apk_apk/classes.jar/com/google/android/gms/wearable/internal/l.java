@@ -11,7 +11,7 @@ public final class l
   {
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramDataItemAssetParcelable.getId());
-    c.a(paramParcel, 3, paramDataItemAssetParcelable.kw());
+    c.a(paramParcel, 3, paramDataItemAssetParcelable.kF());
     c.v(paramParcel, i);
   }
 }

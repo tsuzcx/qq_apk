@@ -4,127 +4,131 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.b;
-import com.tencent.mm.plugin.soter.d.j;
-import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.soter.a.f.e;
+import com.tencent.mm.plugin.soter.model.g;
+import com.tencent.mm.plugin.soter.model.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.soter.core.c.i;
 import java.lang.ref.WeakReference;
 
 public abstract class c
 {
+  protected g RZR = null;
+  protected h RZS = null;
+  public com.tencent.soter.a.f.e RZT = null;
+  public com.tencent.soter.a.f.e RZU = null;
+  public a RZV = null;
   protected Handler handler = null;
-  protected WeakReference<Activity> hkv = null;
   public int mScene = -1;
-  protected j sog = null;
-  protected k soh = null;
-  public e soi = null;
-  public e soj = null;
-  public c.a sok = null;
+  protected WeakReference<Activity> tLO = null;
   
-  public c(WeakReference<Activity> paramWeakReference, j paramj, k paramk, Handler paramHandler)
+  public c(WeakReference<Activity> paramWeakReference, g paramg, h paramh, Handler paramHandler)
   {
-    this.sog = paramj;
-    this.soh = paramk;
-    this.hkv = paramWeakReference;
+    this.RZR = paramg;
+    this.RZS = paramh;
+    this.tLO = paramWeakReference;
     this.handler = paramHandler;
   }
   
-  protected final void G(String[] paramArrayOfString)
+  protected final void b(com.tencent.mm.ui.widget.a.e parame)
   {
-    if (this.handler != null)
+    if (parame == null)
     {
-      Message localMessage = this.handler.obtainMessage(3);
-      Bundle localBundle = new Bundle();
-      localBundle.putStringArray("permissions", paramArrayOfString);
-      localBundle.putInt("request_code", 0);
-      localMessage.setData(localBundle);
-      localMessage.sendToTarget();
-      return;
-    }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
-  }
-  
-  protected final void a(b paramb)
-  {
-    if (paramb == null)
-    {
-      ab.e("MicroMsg.SoterMpBaseController", "hy: dialog is null.");
+      Log.e("MicroMsg.SoterMpBaseController", "hy: dialog is null.");
       return;
     }
     if (this.handler != null)
     {
-      cxV();
-      this.handler.obtainMessage(6, paramb).sendToTarget();
+      htr();
+      this.handler.obtainMessage(6, parame).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void cxU()
+  public abstract void bB();
+  
+  protected final void htq()
   {
     if (this.handler != null)
     {
       this.handler.obtainMessage(4).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void cxV()
+  protected final void htr()
   {
     if (this.handler != null)
     {
       this.handler.obtainMessage(5).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void cxW()
+  protected final void hts()
   {
     if (this.handler != null)
     {
-      cxV();
-      this.handler.obtainMessage(0, this.soh).sendToTarget();
+      htr();
+      this.handler.obtainMessage(0, this.RZS).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void cxX()
+  protected final void htt()
   {
     if (this.handler != null)
     {
-      cxV();
-      this.handler.obtainMessage(1, this.soh).sendToTarget();
+      htr();
+      this.handler.obtainMessage(1, this.RZS).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void cxY()
+  protected final void htu()
   {
     if (this.handler != null)
     {
-      cxV();
-      this.handler.obtainMessage(2, this.soh).sendToTarget();
+      htr();
+      this.handler.obtainMessage(2, this.RZS).sendToTarget();
       return;
     }
-    ab.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
-  
-  public abstract void eB();
   
   public abstract void onPause();
   
   public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
   public abstract void onResume();
+  
+  protected final void requestPermissions(String[] paramArrayOfString, int paramInt)
+  {
+    if (this.handler != null)
+    {
+      Message localMessage = this.handler.obtainMessage(3);
+      Bundle localBundle = new Bundle();
+      localBundle.putStringArray("permissions", paramArrayOfString);
+      localBundle.putInt("request_code", paramInt);
+      localMessage.setData(localBundle);
+      localMessage.sendToTarget();
+      return;
+    }
+    Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(i parami);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.c.c
  * JD-Core Version:    0.7.0.1
  */

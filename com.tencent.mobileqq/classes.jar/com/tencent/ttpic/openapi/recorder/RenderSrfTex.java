@@ -18,7 +18,7 @@ import com.tencent.ttpic.util.HandlerUtil;
 @TargetApi(18)
 public class RenderSrfTex
 {
-  private static final String TAG = RenderSrfTex.class.getSimpleName();
+  private static final String TAG = "RenderSrfTex";
   private int[] alterWidths;
   private Handler handler;
   private double mAspectRatio = 0.0D;
@@ -113,39 +113,44 @@ public class RenderSrfTex
   
   public boolean prepare()
   {
-    int k = this.mFboTexH;
-    int j = this.mFboTexW;
-    float f = k / j;
+    int j = this.mFboTexH;
+    int k = this.mFboTexW;
+    float f = j / k;
     int i = 0;
     boolean bool;
     for (;;)
     {
-      bool = this.mRecorder.prepareEncoder(j, k);
-      if ((bool) || (i >= this.alterWidths.length)) {
+      bool = this.mRecorder.prepareEncoder(k, j);
+      if (bool) {
         break;
       }
-      if (j > k)
+      int[] arrayOfInt = this.alterWidths;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      if (k > j)
       {
-        k = this.alterWidths[i];
-        j = (int)(k / f);
+        j = arrayOfInt[i];
+        k = (int)(j / f);
         i += 1;
       }
       else
       {
-        j = this.alterWidths[i];
-        k = (int)(j * f);
+        k = arrayOfInt[i];
+        j = (int)(k * f);
         i += 1;
       }
     }
-    this.mFboTexW = Math.max(j, 1);
-    this.mFboTexH = Math.max(k, 1);
+    this.mFboTexW = Math.max(k, 1);
+    this.mFboTexH = Math.max(j, 1);
     return bool;
   }
   
   public void queue(Runnable paramRunnable)
   {
-    if (this.handler != null) {
-      this.handler.post(paramRunnable);
+    Handler localHandler = this.handler;
+    if (localHandler != null) {
+      localHandler.post(paramRunnable);
     }
     if (this.processMode == RenderSrfTex.ProcessMode.SYNC) {
       HandlerUtil.waitDone(this.handler);
@@ -159,8 +164,9 @@ public class RenderSrfTex
   
   public void setPlayRate(float paramFloat)
   {
-    if (this.mRecorder != null) {
-      this.mRecorder.setPlayRate(paramFloat);
+    MyRecorder localMyRecorder = this.mRecorder;
+    if (localMyRecorder != null) {
+      localMyRecorder.setPlayRate(paramFloat);
     }
   }
   
@@ -181,7 +187,7 @@ public class RenderSrfTex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.recorder.RenderSrfTex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class bxf
-  implements MessageQueue.IdleHandler
+  implements View.OnClickListener
 {
   public bxf(ChatActivity paramChatActivity) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    ChatActivity.b(this.a);
-    return false;
+    this.a.dismissDialog(230);
+    ProfileCardUtil.a(this.a, "", this.a.a.a, this.a.b.getAccount(), true);
   }
 }
 

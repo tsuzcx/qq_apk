@@ -1,31 +1,21 @@
 package com.tencent.mobileqq.troop.data;
 
-import azri;
-import bbqi;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class TroopAndDiscMsgProxy$2
+class TroopAndDiscMsgProxy$2
   implements Runnable
 {
-  public TroopAndDiscMsgProxy$2(bbqi parambbqi, boolean paramBoolean) {}
-  
   public void run()
   {
-    azri localazri = azri.a(BaseApplication.getContext());
-    String str = bbqi.a(this.this$0).getCurrentAccountUin();
-    if (!this.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localazri.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
-      return;
-    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(((QQAppInterface)TroopAndDiscMsgProxy.a(this.this$0)).getCurrentAccountUin(), "aio_break_point", this.a ^ true, 0L, 0L, new HashMap(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy.2
  * JD-Core Version:    0.7.0.1
  */

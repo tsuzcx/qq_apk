@@ -8,7 +8,7 @@ public final class cell_comm_mall
   extends JceStruct
 {
   static byte[] cache_busi_buff = (byte[])new byte[1];
-  public byte[] busi_buff;
+  public byte[] busi_buff = null;
   
   static
   {
@@ -29,14 +29,15 @@ public final class cell_comm_mall
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.busi_buff != null) {
-      paramJceOutputStream.write(this.busi_buff, 0);
+    byte[] arrayOfByte = this.busi_buff;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comm_mall
  * JD-Core Version:    0.7.0.1
  */

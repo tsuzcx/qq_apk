@@ -1,15 +1,14 @@
 package cooperation.qzone.share;
 
-import alud;
 import android.text.TextUtils;
-import bjrz;
-import bkaw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.widget.QzoneEmotionUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
@@ -22,76 +21,81 @@ class QZoneShareActivity$7$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int > this.b)
+    if (this.val$currentCount > this.val$maxWordCnt)
     {
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131718710, 0).a();
+      QQToast.makeText(this.this$1.this$0, 4, 2131915206, 0).show();
       return;
     }
-    this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.g();
-    String str1 = bkaw.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
+    this.this$1.this$0.hideKeyboardAndEmo();
+    String str1 = QzoneEmotionUtils.splash2Emo(this.this$1.this$0.getEditText());
     try
     {
-      l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).f);
-      l2 = l1;
-      if (l1 <= 0L) {
-        l2 = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.app.getLongAccountUin();
-      }
-      if (l2 <= 0L)
-      {
-        l1 = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.app.getLongAccountUin();
-        Object localObject = QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).a;
-        if (localObject != null)
-        {
-          Iterator localIterator = ((ArrayList)localObject).iterator();
-          String str2;
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            str2 = (String)localIterator.next();
-          } while ((TextUtils.isEmpty(str2)) || (str2.startsWith("http://")) || (str2.startsWith("https://")));
-          i = 0;
-          if (i != 0)
-          {
-            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bjrz.class);
-            ((NewIntent)localObject).putExtra("reason", str1);
-            ((NewIntent)localObject).putExtra("uin", l1);
-            ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0));
-            BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-            QLog.e("QZoneShare", 1, "startShare()");
-            if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).b != 1) {
-              break label378;
-            }
-            QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0), true);
-            this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.setResult(-1, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.getIntent());
-            this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.finish();
-          }
-        }
-      }
+      l2 = Long.parseLong(QZoneShareActivity.access$300(this.this$1.this$0).shareUin);
     }
     catch (Exception localException)
     {
-      for (;;)
+      long l2;
+      label76:
+      long l1;
+      Object localObject;
+      Iterator localIterator;
+      int i;
+      break label76;
+    }
+    l2 = 0L;
+    l1 = l2;
+    if (l2 <= 0L) {
+      l1 = this.this$1.this$0.app.getLongAccountUin();
+    }
+    l2 = l1;
+    if (l1 <= 0L) {
+      l2 = this.this$1.this$0.app.getLongAccountUin();
+    }
+    localObject = QZoneShareActivity.access$300(this.this$1.this$0).mImageUrls;
+    if (localObject != null)
+    {
+      localIterator = ((ArrayList)localObject).iterator();
+      while (localIterator.hasNext())
       {
-        long l2;
-        long l1 = 0L;
-        continue;
-        ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, localException, str1), null, false);
-        continue;
-        label378:
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, alud.a(2131712726), 0).a();
-        continue;
-        int i = 1;
-        continue;
-        l1 = l2;
+        String str2 = (String)localIterator.next();
+        if ((!TextUtils.isEmpty(str2)) && (!str2.startsWith("http://")) && (!str2.startsWith("https://")))
+        {
+          i = 0;
+          break label211;
+        }
       }
     }
+    i = 1;
+    label211:
+    if (i != 0)
+    {
+      localObject = new NewIntent(this.this$1.this$0, QzoneShareServlet.class);
+      ((NewIntent)localObject).putExtra("reason", str1);
+      ((NewIntent)localObject).putExtra("uin", l2);
+      ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.access$300(this.this$1.this$0));
+      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+      QLog.e("QZoneShare", 1, "startShare()");
+    }
+    else
+    {
+      ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, (ArrayList)localObject, str1), null, false);
+    }
+    if (QZoneShareActivity.access$300(this.this$1.this$0).from == 1)
+    {
+      QZoneShareActivity.access$800(this.this$1.this$0, this.this$1.this$0, QZoneShareActivity.access$300(this.this$1.this$0), true);
+    }
+    else
+    {
+      QZoneShareActivity.access$900(this.this$1.this$0);
+      QQToast.makeText(this.this$1.this$0, 5, HardCodeUtil.a(2131909883), 0).show();
+    }
+    this.this$1.this$0.setResult(-1, this.this$1.this$0.getIntent());
+    this.this$1.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import java.io.Serializable;
 
+@KeepClassConstructor
 public class TempMsgInfo
-  extends awge
+  extends Entity
   implements Serializable
 {
   public long timeStamp;
-  @awhs
+  @unique
   public String typeWithUin;
   
   public TempMsgInfo() {}

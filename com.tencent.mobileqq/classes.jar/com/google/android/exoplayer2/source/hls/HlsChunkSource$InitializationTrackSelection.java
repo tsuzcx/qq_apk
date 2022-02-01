@@ -45,12 +45,16 @@ final class HlsChunkSource$InitializationTrackSelection
       }
       i -= 1;
     }
-    throw new IllegalStateException();
+    IllegalStateException localIllegalStateException = new IllegalStateException();
+    for (;;)
+    {
+      throw localIllegalStateException;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsChunkSource.InitializationTrackSelection
  * JD-Core Version:    0.7.0.1
  */

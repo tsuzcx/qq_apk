@@ -1,27 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.LinearLayout;
+import SecurityAccountServer.RespondQueryQQBindingStat;
 import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class epd
-  extends Handler
+  extends ContactBindObserver
 {
   public epd(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramMessage.what)
+    this.a.a.unRegistObserver(this);
+    this.a.c = ContactsInnerFrame.a(this.a).b();
+    switch (this.a.c)
     {
+    case 5: 
+    case 6: 
     default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 4: 
+    case 7: 
+      ContactsInnerFrame.a(this.a);
       return;
     case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
     case 2: 
-      this.a.a.setPadding(0, 0, 0, 0);
+      ContactsInnerFrame.b(this.a);
       return;
     }
-    ContactsInnerFrame.a(this.a);
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
+    {
+      ContactsInnerFrame.a(this.a);
+      return;
+    }
+    ContactsInnerFrame.b(this.a);
   }
 }
 

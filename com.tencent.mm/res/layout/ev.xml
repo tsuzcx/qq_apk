@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="200.0dip" android:layout_height="123.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/rc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:maxLines="5" android:singleLine="false" />
-    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/a05" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{text}" android:maxLines="5" android:singleLine="false" />
-    </LinearLayout>
-    <TextView android:id="@id/a06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{from source}" />
-    <EditText android:id="@id/a07" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <View android:id="@id/tn" android:paddingLeft="10.0dip" android:paddingTop="8.0dip" android:paddingRight="10.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/tm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="12.0dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/to" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/tl" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentTop="true" android:layout_alignParentEnd="true">
+            <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/bo1" android:layout_alignParentTop="true" android:layout_marginEnd="4.0dip" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/tr" android:layout_width="14.0dip" android:layout_height="14.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/cx" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/ts" android:background="@drawable/cy" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_alignParentBottom="true">
+            <View android:id="@id/tt" android:background="#b2ffffff" android:layout_width="115.0dip" android:layout_height="1.0dip" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

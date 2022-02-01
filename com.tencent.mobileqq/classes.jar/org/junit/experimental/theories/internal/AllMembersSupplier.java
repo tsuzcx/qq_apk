@@ -31,8 +31,14 @@ public class AllMembersSupplier
     while (i < Array.getLength(paramObject))
     {
       Object localObject = Array.get(paramObject, i);
-      if (paramParameterSignature.canAcceptValue(localObject)) {
-        paramList.add(PotentialAssignment.forValue(paramString + "[" + i + "]", localObject));
+      if (paramParameterSignature.canAcceptValue(localObject))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("[");
+        localStringBuilder.append(i);
+        localStringBuilder.append("]");
+        paramList.add(PotentialAssignment.forValue(localStringBuilder.toString(), localObject));
       }
       i += 1;
     }
@@ -40,13 +46,14 @@ public class AllMembersSupplier
   
   private void addDataPointsValues(Class<?> paramClass, ParameterSignature paramParameterSignature, String paramString, List<PotentialAssignment> paramList, Object paramObject)
   {
-    if (paramClass.isArray()) {
+    if (paramClass.isArray())
+    {
       addArrayValues(paramParameterSignature, paramString, paramList, paramObject);
-    }
-    while (!Iterable.class.isAssignableFrom(paramClass)) {
       return;
     }
-    addIterableValues(paramParameterSignature, paramString, paramList, (Iterable)paramObject);
+    if (Iterable.class.isAssignableFrom(paramClass)) {
+      addIterableValues(paramParameterSignature, paramString, paramList, (Iterable)paramObject);
+    }
   }
   
   private void addIterableValues(ParameterSignature paramParameterSignature, String paramString, List<PotentialAssignment> paramList, Iterable<?> paramIterable)
@@ -56,8 +63,14 @@ public class AllMembersSupplier
     while (paramIterable.hasNext())
     {
       Object localObject = paramIterable.next();
-      if (paramParameterSignature.canAcceptValue(localObject)) {
-        paramList.add(PotentialAssignment.forValue(paramString + "[" + i + "]", localObject));
+      if (paramParameterSignature.canAcceptValue(localObject))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("[");
+        localStringBuilder.append(i);
+        localStringBuilder.append("]");
+        paramList.add(PotentialAssignment.forValue(localStringBuilder.toString(), localObject));
       }
       i += 1;
     }
@@ -76,11 +89,8 @@ public class AllMembersSupplier
   private void addMultiPointMethods(ParameterSignature paramParameterSignature, List<PotentialAssignment> paramList)
   {
     Iterator localIterator = getDataPointsMethods(paramParameterSignature).iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label121;
-      }
       FrameworkMethod localFrameworkMethod = (FrameworkMethod)localIterator.next();
       Class localClass = localFrameworkMethod.getReturnType();
       if (((localClass.isArray()) && (paramParameterSignature.canPotentiallyAcceptType(localClass.getComponentType()))) || (Iterable.class.isAssignableFrom(localClass))) {
@@ -91,18 +101,13 @@ public class AllMembersSupplier
         catch (Throwable paramParameterSignature)
         {
           paramList = (DataPoints)localFrameworkMethod.getAnnotation(DataPoints.class);
-          if (paramList == null) {
-            break label122;
+          if ((paramList != null) && (isAssignableToAnyOf(paramList.ignoredExceptions(), paramParameterSignature))) {
+            return;
           }
+          throw paramParameterSignature;
         }
       }
     }
-    if (isAssignableToAnyOf(paramList.ignoredExceptions(), paramParameterSignature)) {
-      label121:
-      return;
-    }
-    label122:
-    throw paramParameterSignature;
   }
   
   private void addSinglePointFields(ParameterSignature paramParameterSignature, List<PotentialAssignment> paramList)
@@ -139,33 +144,30 @@ public class AllMembersSupplier
     }
     catch (IllegalArgumentException paramField)
     {
-      throw new RuntimeException("unexpected: field from getClass doesn't exist on object");
+      break label18;
     }
     catch (IllegalAccessException paramField)
     {
-      throw new RuntimeException("unexpected: getFields returned an inaccessible field");
+      label8:
+      label18:
+      break label8;
     }
+    throw new RuntimeException("unexpected: getFields returned an inaccessible field");
+    throw new RuntimeException("unexpected: field from getClass doesn't exist on object");
   }
   
   private static boolean isAssignableToAnyOf(Class<?>[] paramArrayOfClass, Object paramObject)
   {
-    boolean bool2 = false;
     int j = paramArrayOfClass.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfClass[i].isAssignableFrom(paramObject.getClass())) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfClass[i].isAssignableFrom(paramObject.getClass())) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   protected Collection<Field> getDataPointsFields(ParameterSignature paramParameterSignature)
@@ -212,7 +214,7 @@ public class AllMembersSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.experimental.theories.internal.AllMembersSupplier
  * JD-Core Version:    0.7.0.1
  */

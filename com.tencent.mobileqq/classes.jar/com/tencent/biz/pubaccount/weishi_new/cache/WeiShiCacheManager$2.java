@@ -1,29 +1,39 @@
 package com.tencent.biz.pubaccount.weishi_new.cache;
 
-import UserGrowth.stFollowFeedsRsp;
-import mqq.util.WeakReference;
-import tcq;
-import tgx;
-import tlo;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiBusinessLooper;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
-public class WeiShiCacheManager$2
+class WeiShiCacheManager$2
   implements Runnable
 {
-  public WeiShiCacheManager$2(tcq paramtcq, WeakReference paramWeakReference) {}
+  WeiShiCacheManager$2(WeiShiCacheManager paramWeiShiCacheManager, IWeiShiCacheCallback paramIWeiShiCacheCallback) {}
   
   public void run()
   {
-    tlo.b("CacheResponseLog", "getCacheDataForFollow startTime = " + System.currentTimeMillis() + ", thread = " + Thread.currentThread());
-    if (!this.this$0.b()) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getPushPreloadCacheData startTime = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(", thread = ");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    WSLog.b("CacheResponseLog", ((StringBuilder)localObject).toString());
+    if (!this.this$0.c())
+    {
+      localObject = this.a;
+      if (localObject == null) {
+        return;
+      }
+      ((IWeiShiCacheCallback)localObject).a(null);
       return;
     }
-    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)tcq.a(this.this$0, new stFollowFeedsRsp(), 3);
-    tgx.a().a(new WeiShiCacheManager.2.1(this, localstFollowFeedsRsp));
+    localObject = WeiShiCacheManager.a(this.this$0, 5);
+    this.this$0.c(13);
+    WeishiBusinessLooper.a().a(new WeiShiCacheManager.2.1(this, (stSimpleGetFeedListRsp)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2
  * JD-Core Version:    0.7.0.1
  */

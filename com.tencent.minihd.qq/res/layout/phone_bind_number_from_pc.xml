@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_gray2" android:layout_gravity="center" android:id="@id/phone_bind_mobile_showfrom_text" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:lineSpacingExtra="5.0dip" />
+    <TextView android:textSize="@dimen/textSizeS2" android:textColor="@color/skin_dark_gray" android:gravity="center" android:layout_gravity="center" android:id="@id/phone_bind_mobile_showmobile_text" android:background="@drawable/skin_setting_strip_bottom_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+    <Button android:id="@id/phone_bind_mobile_confirm_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="验证手机号码" style="@style/ButtonBlue" />
+    <Button android:id="@id/phone_bind_mobile_changemobile_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="更改手机号码" style="@style/ButtonWhite" />
+</LinearLayout>

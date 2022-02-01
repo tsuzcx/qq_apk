@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/aav" android:paddingTop="@dimen/do" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:src="@raw/wifi_logo" android:scaleType="fitCenter" android:contentDescription="@string/a1o" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/do" android:text="@string/ccm" android:singleLine="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:text="@string/cch" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/jcy" android:background="@color/aav" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/f1j" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:src="@drawable/btm" android:scaleType="fitCenter" android:contentDescription="@string/a1o" />
+        <TextView android:textSize="@dimen/dr" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/h__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/do" android:singleLine="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a6w" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/do" android:minHeight="@dimen/m1">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/i6" android:text="@string/cbt" android:singleLine="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@color/a6w" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2">
+                <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/hq" android:id="@id/hrn" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/ce0" android:inputType="textPassword" android:imeOptions="actionDone" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/oc" android:background="@color/a6w" android:visibility="gone" android:duplicateParentState="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6">
+                    <ImageView android:id="@id/oa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bnh" android:contentDescription="@string/a1o" />
+                    <TextView android:textSize="@dimen/hq" android:textColor="@color/ht" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/lkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dq" android:text="@string/cgf" android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:id="@id/bly" android:layout_marginLeft="@dimen/j6" android:layout_marginTop="@dimen/do" android:layout_marginRight="@dimen/j6" android:text="@string/ccw" style="@style/og" />
+    </LinearLayout>
+</FrameLayout>

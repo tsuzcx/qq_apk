@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class RequestPushForceOffline
   extends JceStruct
 {
-  public byte bSameDevice;
-  public long lUin;
+  public byte bSameDevice = 0;
+  public long lUin = 0L;
   public String strTips = "";
   public String strTitle = "";
   
@@ -33,18 +33,20 @@ public final class RequestPushForceOffline
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUin, 0);
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 1);
+    String str = this.strTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strTips != null) {
-      paramJceOutputStream.write(this.strTips, 2);
+    str = this.strTips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.bSameDevice, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.RequestPushForceOffline
  * JD-Core Version:    0.7.0.1
  */

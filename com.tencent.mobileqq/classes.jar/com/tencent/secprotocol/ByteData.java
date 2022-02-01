@@ -1,56 +1,118 @@
 package com.tencent.secprotocol;
 
+import a.a.a.b.a;
+import a.a.a.b.d;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.secprotocol.utils.QPDirUtils;
-import com.tencent.secprotocol.utils.QPMiscUtils;
-import com.tencent.secprotocol.utils.VerifyFileUtil;
-import java.io.File;
+import com.tencent.secprotocol.t.ReportLogHelper;
+import com.tencent.secprotocol.t.s;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ByteData
 {
-  private static final String CRASH_GETBYE_POXY = "getbyte_key";
-  private static final String CRASH_LOADER_POXY = "loader_key";
-  private static final String CRASH_PROTECTOR_SP = "PoxyCrashProtectSp";
-  private static final String CRASH_PUTBYE_POXY = "putbyte_key";
-  private static final int MSG_DATA_UPING = 161;
-  private static final int MSG_DATA_WRITE_SP = 162;
-  private static final long POXY_CRASH_TIME_INTERVAL = 86400000L;
-  private static final Object getBytelock = new Object();
-  private static final Object putBytelock = new Object();
-  private static final Object writeTimelock = new Object();
-  private String SP_MARK_TIME = "mark_time_";
-  private String TIME_STAMP_NAME = "byte_data_time_stamp";
-  private HandlerThread handlerThread = null;
-  private boolean isPrint = false;
-  private Context mContext = null;
-  private Handler mDataHandler = null;
-  private boolean mPoxyInit = false;
-  private boolean mPoxyNativeLoaded = false;
-  private SharedPreferences mSp;
-  private String mThradName = "ByteThread";
-  private long mUin = 0L;
-  private byte[] status = { 0, 0, 0, 0 };
+  public static final String BMP_ARRIVE_TIME = "bmp_arrive_time_stamp";
+  public static final int MSG_DATA_BMP = 164;
+  public static final int MSG_DATA_ORDER = 165;
+  public static final int MSG_DATA_UPING = 163;
+  public static final int MSG_DATA_WRITE_SP = 162;
+  public static final int MSG_INTERNAL_DATA_UPING = 161;
+  public static final String MY_VERSION = "0.4.2";
+  public static final long REQUEST_TIME_BUFF = 43200L;
+  public static final int RH_SCV = 1;
+  public static final String SP_MARK_TIME = "mark_time_";
+  public static final String TIME_STAMP_NAME = "byte_data_time_stamp";
+  public static final String VAL_ARRIVE_TIME = "val_arrive_time";
+  public static boolean isMsf = false;
+  public static final boolean isPrint = false;
+  public static Handler mDataHandler;
+  public static String processName = "";
+  public static String sSessionID = "";
+  public a.a.a.b.b cData = null;
+  public String filterName = "";
+  public boolean filterStatus = false;
+  public HandlerThread handlerThread = null;
+  public a mBmpMgr = null;
+  public Context mContext = null;
+  public boolean mPoxyInit = false;
+  public boolean mPoxyNativeLoaded = false;
+  public final String mThradName = "ByteThread";
+  public final String mUin = null;
+  public final byte[] status = { 0, 0, 0, 0 };
   
-  private ByteData()
+  public ByteData()
   {
     try
     {
-      this.handlerThread = new HandlerThread(this.mThradName);
+      this.handlerThread = new HandlerThread("ByteThread");
       this.handlerThread.start();
-      this.mDataHandler = new ByteData.QdataHandler(this, this.handlerThread.getLooper());
+      mDataHandler = new ByteData.e(this, this.handlerThread.getLooper());
       return;
     }
     catch (Exception localException)
     {
-      this.status[1] = 2;
+      this.status[3] = 11;
       localException.printStackTrace();
     }
+  }
+  
+  private boolean checkObject(long paramLong, Object paramObject)
+  {
+    boolean bool = false;
+    if (paramLong == 0L) {
+      return false;
+    }
+    if ((!(paramObject instanceof byte[])) || (paramObject == null) || (((byte[])paramObject).length <= 0)) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private boolean checkProgressName()
+  {
+    if (!processName.isEmpty())
+    {
+      String[] arrayOfString = processName.split(":");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("temp[temp.length-1]: ");
+      localStringBuilder.append(arrayOfString[(arrayOfString.length - 1)]);
+      logCat("poxy_java", localStringBuilder.toString());
+      if (arrayOfString[(arrayOfString.length - 1)].equalsIgnoreCase("msf"))
+      {
+        isMsf = true;
+        return isMsf;
+      }
+    }
+    return isMsf;
+  }
+  
+  private boolean checkToa()
+  {
+    if (!isMsf)
+    {
+      Object localObject = this.mContext;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bmp_arrive_time_stamp_");
+      localStringBuilder.append(processName);
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - ((SharedPreferences)localObject).getLong("val_arrive_time", 0L);
+      if ((l2 > 43200L) && (l2 > 0L))
+      {
+        localObject = ((SharedPreferences)localObject).edit();
+        ((SharedPreferences.Editor)localObject).putLong("val_arrive_time", l1);
+        ((SharedPreferences.Editor)localObject).commit();
+        return true;
+      }
+      return false;
+    }
+    return true;
   }
   
   private native byte[] getByte(Context paramContext, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
@@ -62,124 +124,50 @@ public class ByteData
   
   public static ByteData getInstance()
   {
-    return ByteData.ByteDataHolder.access$100();
+    return ByteData.d.a;
   }
   
   private void initLoadlibrary()
   {
-    if (this.mPoxyInit) {}
-    while (this.mPoxyNativeLoaded) {
+    if (this.mPoxyInit) {
       return;
     }
-    try
+    if (this.mPoxyNativeLoaded) {
+      return;
+    }
+    if (a.a.a.a.b.b(this.mContext, "poxy"))
     {
-      if (!loadUpgradedLibrary()) {
-        System.loadLibrary("poxy");
-      }
       this.mPoxyNativeLoaded = true;
       this.mPoxyInit = true;
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      this.status[1] = 1;
-      localUnsatisfiedLinkError.printStackTrace();
-    }
+    this.status[3] = 10;
   }
   
-  private boolean loadUpgradedLibrary()
-  {
-    if ((this.mPoxyNativeLoaded) && (this.mPoxyInit)) {
-      return true;
-    }
-    String str = QPDirUtils.getQQProtectQSecLibsDir(getContext()) + File.separator + "libpoxy.so";
-    File localFile = new File(str);
-    if ((localFile.exists()) && (VerifyFileUtil.verifySoFile(localFile, null))) {
-      try
-      {
-        System.load(str);
-        return true;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-      }
-    }
-    return false;
-  }
+  public static void logCat(String paramString1, String paramString2) {}
   
   private native int putByte(Context paramContext, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4);
   
-  /* Error */
-  private void putDwoning(Object paramObject)
+  private void putDwoning(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 84	com/tencent/secprotocol/ByteData:mPoxyNativeLoaded	Z
-    //   6: ifeq +16 -> 22
-    //   9: aload_0
-    //   10: getfield 86	com/tencent/secprotocol/ByteData:mPoxyInit	Z
-    //   13: istore_2
-    //   14: iload_2
-    //   15: ifeq +7 -> 22
-    //   18: aload_1
-    //   19: ifnonnull +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: getstatic 59	com/tencent/secprotocol/ByteData:putBytelock	Ljava/lang/Object;
-    //   28: astore_3
-    //   29: aload_3
-    //   30: monitorenter
-    //   31: new 206	com/tencent/secprotocol/utils/ByteCodeCrashProtector
-    //   34: dup
-    //   35: aload_0
-    //   36: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   39: aload_0
-    //   40: getfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
-    //   43: ldc 17
-    //   45: ldc2_w 25
-    //   48: invokespecial 211	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
-    //   51: new 213	com/tencent/secprotocol/ByteData$1
-    //   54: dup
-    //   55: aload_0
-    //   56: aload_1
-    //   57: invokespecial 215	com/tencent/secprotocol/ByteData$1:<init>	(Lcom/tencent/secprotocol/ByteData;Ljava/lang/Object;)V
-    //   60: invokevirtual 219	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
-    //   63: aload_3
-    //   64: monitorexit
-    //   65: goto -43 -> 22
-    //   68: astore_1
-    //   69: aload_3
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
-    //   73: astore_1
-    //   74: aload_1
-    //   75: invokevirtual 111	java/lang/Exception:printStackTrace	()V
-    //   78: goto -56 -> 22
-    //   81: astore_1
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	86	0	this	ByteData
-    //   0	86	1	paramObject	Object
-    //   13	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   31	65	68	finally
-    //   69	71	68	finally
-    //   25	31	73	java/lang/Exception
-    //   71	73	73	java/lang/Exception
-    //   2	14	81	finally
-    //   25	31	81	finally
-    //   71	73	81	finally
-    //   74	78	81	finally
+    if ((this.mPoxyNativeLoaded) && (this.mPoxyInit))
+    {
+      if (paramObject1 == null) {
+        return;
+      }
+      long l1 = paramInt1;
+      long l2 = paramInt2;
+      long l3 = paramInt3;
+      try
+      {
+        putByte(null, l1, l2, l3, 0L, paramObject1, this.cData.b, null, paramObject2);
+        return;
+      }
+      catch (Exception paramObject1)
+      {
+        paramObject1.printStackTrace();
+      }
+    }
   }
   
   private void setContext(Context paramContext)
@@ -191,269 +179,204 @@ public class ByteData
   
   private void writeSp(long paramLong)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.mPoxyNativeLoaded)
       {
-        if (this.mPoxyNativeLoaded)
-        {
-          boolean bool = this.mPoxyInit;
-          if (bool) {
-            continue;
-          }
+        if (!this.mPoxyInit) {
+          return;
         }
+        Object localObject = s.md5sum(this.cData.e);
+        Context localContext = this.mContext;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mark_time_");
+        localStringBuilder.append(processName);
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject);
+        localObject = localContext.getSharedPreferences(localStringBuilder.toString(), 4).edit();
+        ((SharedPreferences.Editor)localObject).putLong("byte_data_time_stamp", paramLong);
+        ((SharedPreferences.Editor)localObject).commit();
+        sSessionID = String.valueOf(paramLong);
+        this.cData.f = sSessionID;
+        return;
       }
-      catch (Exception localException)
-      {
-        Object localObject1;
-        localException.printStackTrace();
-        continue;
-      }
-      finally {}
       return;
-      localObject1 = QPMiscUtils.md5sum(String.valueOf(this.mUin));
-      localObject1 = this.mContext.getSharedPreferences(this.SP_MARK_TIME + (String)localObject1, 0).edit();
-      ((SharedPreferences.Editor)localObject1).putLong(this.TIME_STAMP_NAME, paramLong);
-      ((SharedPreferences.Editor)localObject1).commit();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  boolean checkObject(Object paramObject)
+  public byte[] getCode(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
-    return (!(paramObject instanceof byte[])) || (paramObject == null) || (((byte[])paramObject).length <= 0);
-  }
-  
-  /* Error */
-  public byte[] getCode(long paramLong1, long paramLong2, long paramLong3, long paramLong4, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 91	com/tencent/secprotocol/ByteData:status	[B
-    //   6: iconst_1
-    //   7: baload
-    //   8: ifne +26 -> 34
-    //   11: aload_0
-    //   12: aload 12
-    //   14: invokevirtual 261	com/tencent/secprotocol/ByteData:checkObject	(Ljava/lang/Object;)Z
-    //   17: ifne +17 -> 34
-    //   20: aload_0
-    //   21: getfield 84	com/tencent/secprotocol/ByteData:mPoxyNativeLoaded	Z
-    //   24: ifeq +10 -> 34
-    //   27: aload_0
-    //   28: getfield 86	com/tencent/secprotocol/ByteData:mPoxyInit	Z
-    //   31: ifne +14 -> 45
-    //   34: aload_0
-    //   35: getfield 91	com/tencent/secprotocol/ByteData:status	[B
-    //   38: astore 9
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload 9
-    //   44: areturn
-    //   45: aload_0
-    //   46: lload_3
-    //   47: putfield 74	com/tencent/secprotocol/ByteData:mUin	J
-    //   50: iconst_1
-    //   51: anewarray 257	[B
-    //   54: astore 13
-    //   56: getstatic 57	com/tencent/secprotocol/ByteData:getBytelock	Ljava/lang/Object;
-    //   59: astore 14
-    //   61: aload 14
-    //   63: monitorenter
-    //   64: new 206	com/tencent/secprotocol/utils/ByteCodeCrashProtector
-    //   67: dup
-    //   68: aload_0
-    //   69: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   72: aload_0
-    //   73: getfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
-    //   76: ldc 8
-    //   78: ldc2_w 25
-    //   81: invokespecial 211	com/tencent/secprotocol/utils/ByteCodeCrashProtector:<init>	(Landroid/content/Context;Landroid/content/SharedPreferences;Ljava/lang/String;J)V
-    //   84: new 263	com/tencent/secprotocol/ByteData$2
-    //   87: dup
-    //   88: aload_0
-    //   89: aload 13
-    //   91: lload_1
-    //   92: lload_3
-    //   93: lload 5
-    //   95: lload 7
-    //   97: aload 9
-    //   99: aload 10
-    //   101: aload 11
-    //   103: aload 12
-    //   105: invokespecial 266	com/tencent/secprotocol/ByteData$2:<init>	(Lcom/tencent/secprotocol/ByteData;[[BJJJJLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-    //   108: invokevirtual 219	com/tencent/secprotocol/utils/ByteCodeCrashProtector:runProtectedMethod	(Lcom/tencent/secprotocol/utils/ByteCodeCrashProtector$IProtectedMethod;)V
-    //   111: aload 13
-    //   113: iconst_0
-    //   114: aaload
-    //   115: astore 9
-    //   117: aload 14
-    //   119: monitorexit
-    //   120: goto -80 -> 40
-    //   123: astore 9
-    //   125: aload 14
-    //   127: monitorexit
-    //   128: aload 9
-    //   130: athrow
-    //   131: astore 9
-    //   133: aload 9
-    //   135: invokevirtual 111	java/lang/Exception:printStackTrace	()V
-    //   138: aload 13
-    //   140: iconst_0
-    //   141: iconst_4
-    //   142: newarray byte
-    //   144: aastore
-    //   145: aload 13
-    //   147: iconst_0
-    //   148: aaload
-    //   149: iconst_3
-    //   150: iconst_1
-    //   151: bastore
-    //   152: aload 13
-    //   154: iconst_0
-    //   155: aaload
-    //   156: astore 9
-    //   158: goto -118 -> 40
-    //   161: astore 9
-    //   163: aload_0
-    //   164: monitorexit
-    //   165: aload 9
-    //   167: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	168	0	this	ByteData
-    //   0	168	1	paramLong1	long
-    //   0	168	3	paramLong2	long
-    //   0	168	5	paramLong3	long
-    //   0	168	7	paramLong4	long
-    //   0	168	9	paramObject1	Object
-    //   0	168	10	paramObject2	Object
-    //   0	168	11	paramObject3	Object
-    //   0	168	12	paramObject4	Object
-    //   54	99	13	arrayOfByte	byte[][]
-    // Exception table:
-    //   from	to	target	type
-    //   64	111	123	finally
-    //   117	120	123	finally
-    //   125	128	123	finally
-    //   56	64	131	java/lang/Exception
-    //   128	131	131	java/lang/Exception
-    //   2	34	161	finally
-    //   34	40	161	finally
-    //   45	56	161	finally
-    //   56	64	161	finally
-    //   128	131	161	finally
-    //   133	145	161	finally
-  }
-  
-  public byte[] getStatus()
-  {
+    if (checkObject(paramLong1, paramObject4))
+    {
+      paramObject1 = this.status;
+      paramObject1[3] = 12;
+      return paramObject1;
+    }
+    if ((this.status[1] == 0) && (this.mPoxyNativeLoaded) && (this.mPoxyInit))
+    {
+      this.cData.e = ((String)paramObject3);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.cData.b);
+      localArrayList.add(String.valueOf(1));
+      localArrayList.add(this.cData.e);
+      localArrayList.add((String)paramObject5);
+      localArrayList.add(this.cData.d);
+      localArrayList.add(this.cData.f);
+      localArrayList.add((String)paramObject1);
+      localArrayList.add(this.cData.g);
+      localArrayList.add(processName);
+      ReportLogHelper.report(5, 0);
+      return getByte(this.mContext, paramLong1, paramLong2, paramLong3, paramLong4, (String[])localArrayList.toArray(new String[localArrayList.size()]), paramObject2, paramObject3, paramObject4);
+    }
+    paramObject1 = this.status;
+    if (paramObject1[3] == 0) {
+      paramObject1[3] = 13;
+    }
     return this.status;
   }
   
-  /* Error */
-  public void init(Context paramContext)
+  public byte[] getSign(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 271	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
-    //   6: invokespecial 170	com/tencent/secprotocol/ByteData:getContext	()Landroid/content/Context;
-    //   9: if_acmpeq +14 -> 23
-    //   12: aload_0
-    //   13: getfield 86	com/tencent/secprotocol/ByteData:mPoxyInit	Z
-    //   16: ifne +7 -> 23
-    //   19: aload_1
-    //   20: ifnonnull +16 -> 36
-    //   23: aload_0
-    //   24: ldc_w 273
-    //   27: ldc_w 275
-    //   30: invokevirtual 279	com/tencent/secprotocol/ByteData:logCat	(Ljava/lang/String;Ljava/lang/String;)V
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: return
-    //   36: invokestatic 271	com/tencent/secprotocol/ByteData:getInstance	()Lcom/tencent/secprotocol/ByteData;
-    //   39: aload_1
-    //   40: invokespecial 281	com/tencent/secprotocol/ByteData:setContext	(Landroid/content/Context;)V
-    //   43: aload_0
-    //   44: aload_0
-    //   45: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   48: new 167	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 168	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 283
-    //   58: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: aload_0
-    //   62: getfield 72	com/tencent/secprotocol/ByteData:mContext	Landroid/content/Context;
-    //   65: invokestatic 286	com/tencent/secprotocol/utils/QPMiscUtils:getProcessName	(Landroid/content/Context;)Ljava/lang/String;
-    //   68: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: iconst_0
-    //   75: invokevirtual 239	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   78: putfield 208	com/tencent/secprotocol/ByteData:mSp	Landroid/content/SharedPreferences;
-    //   81: aload_0
-    //   82: invokespecial 288	com/tencent/secprotocol/ByteData:initLoadlibrary	()V
-    //   85: goto -52 -> 33
-    //   88: astore_1
-    //   89: aload_1
-    //   90: invokevirtual 111	java/lang/Exception:printStackTrace	()V
-    //   93: goto -60 -> 33
-    //   96: astore_1
-    //   97: aload_0
-    //   98: monitorexit
-    //   99: aload_1
-    //   100: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	101	0	this	ByteData
-    //   0	101	1	paramContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   36	85	88	java/lang/Exception
-    //   2	19	96	finally
-    //   23	33	96	finally
-    //   36	85	96	finally
-    //   89	93	96	finally
+    return getCode(1L, 0L, 0L, 0L, "", "", paramString1, paramArrayOfByte, paramString2);
   }
   
-  public void logCat(String paramString1, String paramString2)
+  public void init(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.isPrint) {
-      Log.d(paramString1, paramString2);
+    if ((paramContext != getInstance().getContext()) && (!this.mPoxyInit) && (paramContext != null)) {
+      try
+      {
+        processName = s.getProcessName(paramContext);
+        this.mBmpMgr = new a(paramContext, processName);
+        this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.4.2");
+        setContext(paramContext);
+        initLoadlibrary();
+        checkProgressName();
+        paramContext = new StringBuilder();
+        paramContext.append("isMsf: ");
+        paramContext.append(isMsf);
+        logCat("poxy_java", paramContext.toString());
+        ReportLogHelper.report(4, 0);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
     }
+    logCat("poxy_java", "init fail!");
   }
   
-  public void putUping(int paramInt, Object paramObject)
+  public void processFilterSwitch(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 1) {}
+    if ((paramBoolean) && (TextUtils.isEmpty(paramString)))
+    {
+      Log.d("ByteData", "[warning]: Process name is empty !");
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.filterStatus = paramBoolean;
+      this.filterName = paramString;
+      return;
+    }
+    this.filterStatus = paramBoolean;
+    this.filterName = "";
+  }
+  
+  public void putUping(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
+  {
     try
     {
-      localMessage = this.mDataHandler.obtainMessage(161);
-      localMessage.obj = paramObject;
-      logCat("ByteData", "poxy_java: putUping" + paramInt + " cabk report log " + paramObject);
-      this.mDataHandler.sendMessage(localMessage);
+      Object localObject = new d(paramInt2, paramInt3, paramObject);
+      Message localMessage = mDataHandler.obtainMessage(paramInt1);
+      localMessage.obj = localObject;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("poxy_java --> putType: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" cmd: ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(" reqTyep: ");
+      ((StringBuilder)localObject).append(paramInt3);
+      ((StringBuilder)localObject).append(" cabk report log ");
+      ((StringBuilder)localObject).append(paramObject);
+      logCat("ByteData", ((StringBuilder)localObject).toString());
+      mDataHandler.sendMessage(localMessage);
       return;
     }
     catch (Exception paramObject)
     {
-      Message localMessage;
       paramObject.printStackTrace();
     }
-    if (paramInt == 2)
+  }
+  
+  public void runTime(int paramInt1, String paramString, int paramInt2)
+  {
+    if (this.mPoxyNativeLoaded)
     {
-      localMessage = this.mDataHandler.obtainMessage(162);
-      localMessage.obj = paramObject;
-      logCat("ByteData", "poxy_java: putUping" + paramInt + " Time: " + paramObject);
-      this.mDataHandler.sendMessage(localMessage);
-      return;
+      if (!this.mPoxyInit) {
+        return;
+      }
+      if ((this.filterStatus) && (!processName.equalsIgnoreCase(this.filterName))) {
+        return;
+      }
+      try
+      {
+        mDataHandler.post(new ByteData.c(this, paramInt1, paramInt2, paramString));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void setData(String paramString)
+  {
+    if (this.mPoxyNativeLoaded)
+    {
+      if (!this.mPoxyInit) {
+        return;
+      }
+      try
+      {
+        mDataHandler.post(new ByteData.a(this, paramString));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void setDataEx(String paramString1, String paramString2)
+  {
+    if (this.mPoxyNativeLoaded)
+    {
+      if (!this.mPoxyInit) {
+        return;
+      }
+      try
+      {
+        mDataHandler.post(new ByteData.b(this, paramString1, paramString2));
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData
  * JD-Core Version:    0.7.0.1
  */

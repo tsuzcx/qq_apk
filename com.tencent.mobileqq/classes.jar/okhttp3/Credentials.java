@@ -13,13 +13,20 @@ public final class Credentials
   
   public static String basic(String paramString1, String paramString2, Charset paramCharset)
   {
-    paramString1 = ByteString.encodeString(paramString1 + ":" + paramString2, paramCharset).base64();
-    return "Basic " + paramString1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString2);
+    paramString1 = ByteString.encodeString(localStringBuilder.toString(), paramCharset).base64();
+    paramString2 = new StringBuilder();
+    paramString2.append("Basic ");
+    paramString2.append(paramString1);
+    return paramString2.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.Credentials
  * JD-Core Version:    0.7.0.1
  */

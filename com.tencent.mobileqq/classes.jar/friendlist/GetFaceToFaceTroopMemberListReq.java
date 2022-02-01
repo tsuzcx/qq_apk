@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GetFaceToFaceTroopMemberListReq
   extends JceStruct
 {
-  public long dwReqType;
-  public long dwUin;
+  public long dwReqType = 0L;
+  public long dwUin = 0L;
   public String strMobile = "";
   
   public GetFaceToFaceTroopMemberListReq() {}
@@ -31,14 +31,15 @@ public final class GetFaceToFaceTroopMemberListReq
   {
     paramJceOutputStream.write(this.dwReqType, 0);
     paramJceOutputStream.write(this.dwUin, 1);
-    if (this.strMobile != null) {
-      paramJceOutputStream.write(this.strMobile, 2);
+    String str = this.strMobile;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetFaceToFaceTroopMemberListReq
  * JD-Core Version:    0.7.0.1
  */

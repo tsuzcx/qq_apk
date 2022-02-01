@@ -28,35 +28,31 @@ public final class ey$a<T>
     try
     {
       paramfe.c();
-      for (;;)
+      while (paramfe.e())
       {
-        if (!paramfe.e()) {
-          break label103;
-        }
-        localObject2 = paramfe.h();
+        Object localObject2 = paramfe.h();
         localObject2 = (ey.b)this.c.get(localObject2);
         if ((localObject2 != null) && (((ey.b)localObject2).i)) {
-          break;
+          ((ey.b)localObject2).a(paramfe, localObject1);
+        } else {
+          paramfe.o();
         }
-        paramfe.o();
       }
-    }
-    catch (IllegalStateException paramfe)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        throw new eb(paramfe);
-        ((ey.b)localObject2).a(paramfe, localObject1);
-      }
+      paramfe.d();
+      return localObject1;
     }
     catch (IllegalAccessException paramfe)
     {
       throw new AssertionError(paramfe);
     }
-    label103:
-    paramfe.d();
-    return localObject1;
+    catch (IllegalStateException paramfe)
+    {
+      paramfe = new eb(paramfe);
+    }
+    for (;;)
+    {
+      throw paramfe;
+    }
   }
   
   public final void a(fg paramfg, T paramT)
@@ -80,10 +76,17 @@ public final class ey$a<T>
         }
       }
       paramfg.d();
+      return;
     }
     catch (IllegalAccessException paramfg)
     {
-      throw new AssertionError();
+      label84:
+      break label84;
+    }
+    paramfg = new AssertionError();
+    for (;;)
+    {
+      throw paramfg;
     }
   }
 }

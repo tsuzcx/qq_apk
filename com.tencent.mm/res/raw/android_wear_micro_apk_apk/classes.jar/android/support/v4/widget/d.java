@@ -8,82 +8,82 @@ import android.graphics.RectF;
 
 final class d
 {
-  int gc;
-  final RectF nB = new RectF();
-  final Paint nC = new Paint();
-  final Paint nD = new Paint();
-  final Paint nE = new Paint();
-  float nF = 0.0F;
-  float nG = 0.0F;
-  float nH = 5.0F;
-  int[] nI;
-  int nJ;
-  float nK;
-  float nL;
-  float nM;
-  boolean nN;
-  Path nO;
-  float nP = 1.0F;
-  float nQ;
-  int nR;
-  int nS;
-  int nT = 255;
-  float nv = 0.0F;
+  int hY;
+  float pA;
+  boolean pB;
+  Path pC;
+  float pD = 1.0F;
+  float pE;
+  int pF;
+  int pG;
+  int pH = 255;
+  float pj = 0.0F;
+  final RectF pp = new RectF();
+  final Paint pq = new Paint();
+  final Paint pr = new Paint();
+  final Paint ps = new Paint();
+  float pt = 0.0F;
+  float pu = 0.0F;
+  float pv = 5.0F;
+  int[] pw;
+  int px;
+  float py;
+  float pz;
   
   d()
   {
-    this.nC.setStrokeCap(Paint.Cap.SQUARE);
-    this.nC.setAntiAlias(true);
-    this.nC.setStyle(Paint.Style.STROKE);
-    this.nD.setStyle(Paint.Style.FILL);
-    this.nD.setAntiAlias(true);
-    this.nE.setColor(0);
+    this.pq.setStrokeCap(Paint.Cap.SQUARE);
+    this.pq.setAntiAlias(true);
+    this.pq.setStyle(Paint.Style.STROKE);
+    this.pr.setStyle(Paint.Style.FILL);
+    this.pr.setAntiAlias(true);
+    this.ps.setColor(0);
   }
   
-  final void H(int paramInt)
+  final void S(int paramInt)
   {
-    this.nJ = paramInt;
-    this.gc = this.nI[this.nJ];
+    this.px = paramInt;
+    this.hY = this.pw[this.px];
   }
   
-  final int bX()
+  final int cb()
   {
-    return (this.nJ + 1) % this.nI.length;
+    return (this.px + 1) % this.pw.length;
   }
   
-  final int bY()
+  final int cc()
   {
-    return this.nI[this.nJ];
+    return this.pw[this.px];
   }
   
-  final void bZ()
+  final void cd()
   {
-    this.nK = this.nF;
-    this.nL = this.nG;
-    this.nM = this.nv;
+    this.py = this.pt;
+    this.pz = this.pu;
+    this.pA = this.pj;
   }
   
-  final void ca()
+  final void ce()
   {
-    this.nK = 0.0F;
-    this.nL = 0.0F;
-    this.nM = 0.0F;
-    this.nF = 0.0F;
-    this.nG = 0.0F;
-    this.nv = 0.0F;
+    this.py = 0.0F;
+    this.pz = 0.0F;
+    this.pA = 0.0F;
+    this.pt = 0.0F;
+    this.pu = 0.0F;
+    this.pj = 0.0F;
   }
   
-  final void k(boolean paramBoolean)
+  final void n(boolean paramBoolean)
   {
-    if (this.nN != paramBoolean) {
-      this.nN = paramBoolean;
+    if (this.pB != paramBoolean) {
+      this.pB = paramBoolean;
     }
   }
   
   final void setStrokeWidth(float paramFloat)
   {
-    this.nH = paramFloat;
-    this.nC.setStrokeWidth(paramFloat);
+    this.pv = paramFloat;
+    this.pq.setStrokeWidth(paramFloat);
   }
 }
 

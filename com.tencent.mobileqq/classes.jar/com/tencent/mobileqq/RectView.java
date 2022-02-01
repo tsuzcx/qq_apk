@@ -26,19 +26,25 @@ public class RectView
     this.mPaint.setStrokeWidth(8.0F);
     int i = getWidth() - 1;
     int j = getHeight() - 1;
-    paramCanvas.drawLine(1, 1, 51, 1, this.mPaint);
-    paramCanvas.drawLine(1, 1, 1, 51, this.mPaint);
-    paramCanvas.drawLine(1, j, 1, j - 50, this.mPaint);
-    paramCanvas.drawLine(1, j, 51, j, this.mPaint);
-    paramCanvas.drawLine(i, 1, i - 50, 1, this.mPaint);
-    paramCanvas.drawLine(i, 1, i, 51, this.mPaint);
-    paramCanvas.drawLine(i, j, i, j - 50, this.mPaint);
-    paramCanvas.drawLine(i, j, i - 50, j, this.mPaint);
+    float f1 = 1;
+    float f2 = 51;
+    paramCanvas.drawLine(f1, f1, f2, f1, this.mPaint);
+    paramCanvas.drawLine(f1, f1, f1, f2, this.mPaint);
+    float f3 = j;
+    float f4 = j - 50;
+    paramCanvas.drawLine(f1, f3, f1, f4, this.mPaint);
+    paramCanvas.drawLine(f1, f3, f2, f3, this.mPaint);
+    float f5 = i;
+    float f6 = i - 50;
+    paramCanvas.drawLine(f5, f1, f6, f1, this.mPaint);
+    paramCanvas.drawLine(f5, f1, f5, f2, this.mPaint);
+    paramCanvas.drawLine(f5, f3, f5, f4, this.mPaint);
+    paramCanvas.drawLine(f5, f3, f6, f3, this.mPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.RectView
  * JD-Core Version:    0.7.0.1
  */

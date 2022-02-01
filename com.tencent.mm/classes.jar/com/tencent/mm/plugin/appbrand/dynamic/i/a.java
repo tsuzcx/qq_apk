@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 public abstract interface a
 {
-  public abstract void Bo(String paramString);
+  public abstract void Zn(String paramString);
   
-  public abstract void IE();
+  public abstract void report();
 }
 
 

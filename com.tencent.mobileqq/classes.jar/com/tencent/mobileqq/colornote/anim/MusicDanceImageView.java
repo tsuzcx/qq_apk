@@ -60,18 +60,19 @@ public class MusicDanceImageView
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       setShouldDraw(true);
-    }
-    while ((paramInt != 8) && (paramInt != 4)) {
       return;
     }
-    setShouldDraw(false);
+    if ((paramInt == 8) || (paramInt == 4)) {
+      setShouldDraw(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.MusicDanceImageView
  * JD-Core Version:    0.7.0.1
  */

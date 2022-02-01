@@ -2,18 +2,18 @@ package com.tencent.mm.vending.a;
 
 final class m<_Struct, _Index>
 {
-  private boolean YE = false;
-  private byte[] ZA = new byte[0];
-  private boolean ZB = false;
-  private boolean ZC = false;
-  private boolean ZD = false;
-  private boolean ZE = false;
-  private _Struct Zv;
-  private _Index Zw;
+  private _Struct acV;
+  private _Index acW;
+  private boolean ace = false;
+  private byte[] ada = new byte[0];
+  private boolean adb = false;
+  private boolean adc = false;
+  private boolean add = false;
+  private boolean ade = false;
   
-  public final _Struct lC()
+  public final _Struct mj()
   {
-    return this.Zv;
+    return this.acV;
   }
 }
 

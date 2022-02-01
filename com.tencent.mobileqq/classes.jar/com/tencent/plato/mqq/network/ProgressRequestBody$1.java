@@ -25,17 +25,18 @@ class ProgressRequestBody$1
     paramBuffer = ProgressRequestBody.access$000(this.this$0);
     paramLong = this.bytesWritten;
     long l = this.contentLength;
-    if (this.bytesWritten == this.contentLength) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramBuffer.onProgress(paramLong, l, bool);
-      return;
+    boolean bool;
+    if (paramLong == l) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramBuffer.onProgress(paramLong, l, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressRequestBody.1
  * JD-Core Version:    0.7.0.1
  */

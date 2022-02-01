@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <TextView android:id="@id/a6y" android:text="@string/a7f" style="@style/mm" />
-            <View style="@style/mh" />
-            <LinearLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" style="@style/l0">
-                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/a5z" android:background="@drawable/vt" android:layout_width="wrap_content" android:layout_height="50.0dip">
-                    <TextView android:textSize="15.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/a60" android:layout_width="48.0dip" android:layout_height="wrap_content" android:singleLine="true" />
-                    <TextView android:textSize="8.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/a61" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="@string/b53" android:singleLine="true" />
-                </LinearLayout>
-                <EditText android:id="@id/a62" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:hint="@string/a8r" android:inputType="phone" style="@style/ml" />
-            </LinearLayout>
-            <Button android:id="@id/a68" android:visibility="gone" android:text="@string/a8k" style="@style/ny" />
-        </LinearLayout>
-    </ScrollView>
+    <ImageView android:gravity="center|top" android:layout_gravity="center|top" android:id="@id/ws" android:clickable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center" android:id="@id/wt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
 </LinearLayout>

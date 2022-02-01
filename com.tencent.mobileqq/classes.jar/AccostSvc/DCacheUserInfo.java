@@ -8,11 +8,11 @@ public final class DCacheUserInfo
   extends JceStruct
 {
   static byte[] cache_strBlackList;
-  public byte cPushNbTimes;
-  public int iAtoRTimes;
-  public int iRtoATimes;
-  public int lTime;
-  public byte[] strBlackList;
+  public byte cPushNbTimes = 0;
+  public int iAtoRTimes = 0;
+  public int iRtoATimes = 0;
+  public int lTime = 0;
+  public byte[] strBlackList = null;
   
   public DCacheUserInfo() {}
   
@@ -50,7 +50,7 @@ public final class DCacheUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.DCacheUserInfo
  * JD-Core Version:    0.7.0.1
  */

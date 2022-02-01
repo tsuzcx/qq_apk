@@ -1,50 +1,54 @@
 package com.tencent.biz.subscribe.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.component.base.ComponentPageView;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import com.tencent.biz.subscribe.part.block.BlockContainer;
+import com.tencent.biz.subscribe.part.block.BlockMerger;
+import com.tencent.biz.subscribe.part.block.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.widget.StatusView;
-import yiz;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public abstract class SubscribeBaseBottomPersonalFragment
-  extends Fragment
+  extends BaseFragment
 {
   protected View a;
-  protected ComponentPageView a;
-  protected StatusView a;
-  public yiz a;
-  
-  abstract ExtraTypeInfo a();
+  protected BlockContainer b;
+  protected SubscribeBaseBottomPersonalFragment.BottomData c;
+  protected StatusView d;
   
   protected abstract void a();
   
   public abstract void a(int paramInt);
   
-  public abstract void a(String paramString, yiz paramyiz);
+  public abstract void a(String paramString, SubscribeBaseBottomPersonalFragment.BottomData paramBottomData);
+  
+  abstract ExtraTypeInfo b();
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558714, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView = ((ComponentPageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371731));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377030));
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.a().setNestedScrollingEnabled(true);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableRefresh(false);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setExtraTypeInfo(a());
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeComponentBaseComponentPageView.setLayoutManagerType(3, 2);
+    this.a = paramLayoutInflater.inflate(2131624369, paramViewGroup, false);
+    this.b = ((BlockContainer)this.a.findViewById(2131440000));
+    this.d = ((StatusView)this.a.findViewById(2131446348));
+    this.b.getRecyclerView().setNestedScrollingEnabled(true);
+    this.b.getBlockMerger().b(2);
+    this.b.setEnableRefresh(false);
+    this.b.setEnableLoadMore(true);
+    this.b.setExtraTypeInfo(b());
+    this.b.setParentFragment(this);
+    this.b.setLayoutManagerType(3, 2);
     a();
-    return this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.a;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment
  * JD-Core Version:    0.7.0.1
  */

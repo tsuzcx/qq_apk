@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class OlympicInfo
   extends JceStruct
 {
-  public int iTorch;
+  public int iTorch = 0;
   
   public OlympicInfo() {}
   
@@ -28,7 +28,7 @@ public final class OlympicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.OlympicInfo
  * JD-Core Version:    0.7.0.1
  */

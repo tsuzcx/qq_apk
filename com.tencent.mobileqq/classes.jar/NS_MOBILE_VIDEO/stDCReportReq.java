@@ -9,7 +9,7 @@ public final class stDCReportReq
   extends JceStruct
 {
   static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
-  public ArrayList<stMetaReportDataItem> data;
+  public ArrayList<stMetaReportDataItem> data = null;
   public String dcid = "";
   
   static
@@ -40,7 +40,7 @@ public final class stDCReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.stDCReportReq
  * JD-Core Version:    0.7.0.1
  */

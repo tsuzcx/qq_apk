@@ -30,19 +30,20 @@ class ApngImage$DoAccumulativeRunnable
   
   protected void submit()
   {
-    long l = SystemClock.uptimeMillis();
-    if ((this.lastRefreshTime == 0L) || (l - this.lastRefreshTime > 25L))
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.lastRefreshTime;
+    if ((l2 != 0L) && (l1 - l2 <= 25L))
     {
-      run();
-      this.lastRefreshTime = l;
+      ApngImage.access$100().postDelayed(this, 25L - (l1 - this.lastRefreshTime));
       return;
     }
-    ApngImage.access$100().postDelayed(this, 25L - (l - this.lastRefreshTime));
+    run();
+    this.lastRefreshTime = l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.ApngImage.DoAccumulativeRunnable
  * JD-Core Version:    0.7.0.1
  */

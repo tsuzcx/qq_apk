@@ -22,7 +22,11 @@ public class OnlineResPref
   
   public static String getAnimojiPath()
   {
-    return getLibLoadPath() + File.separator + "animoji";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getLibLoadPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("animoji");
+    return localStringBuilder.toString();
   }
   
   public static String getBodyLibMd5()
@@ -32,17 +36,29 @@ public class OnlineResPref
   
   public static String getBodyLibPath()
   {
-    return getLibLoadPath() + File.separator + "bodydetector";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getLibLoadPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("bodydetector");
+    return localStringBuilder.toString();
   }
   
   public static String getBodyModelPath()
   {
-    return getBodyLibPath() + File.separator + "model";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getBodyLibPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("model");
+    return localStringBuilder.toString();
   }
   
   public static String getDownloadPath()
   {
-    return AEModule.getContext().getFilesDir().getAbsolutePath() + File.separator + "downloadLib";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEModule.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("downloadLib");
+    return localStringBuilder.toString();
   }
   
   public static String getGestureLibMd5()
@@ -52,22 +68,38 @@ public class OnlineResPref
   
   public static String getGestureLibPath()
   {
-    return getLibLoadPath() + File.separator + "gesturedetector";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getLibLoadPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("gesturedetector");
+    return localStringBuilder.toString();
   }
   
   public static String getGestureModelPath()
   {
-    return getGestureLibPath() + File.separator + "model";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getGestureLibPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("model");
+    return localStringBuilder.toString();
   }
   
   public static String getLibLoadPath()
   {
-    return AEModule.getContext().getFilesDir().getAbsolutePath() + File.separator + "ptLib";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEModule.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("ptLib");
+    return localStringBuilder.toString();
   }
   
   public static String getOnlineResConfPath()
   {
-    return AEModule.getContext().getFilesDir().getAbsolutePath() + File.separator + "resConf";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEModule.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("resConf");
+    return localStringBuilder.toString();
   }
   
   public static String getSegmentLibMd5()
@@ -77,12 +109,20 @@ public class OnlineResPref
   
   public static String getSegmentLibPath()
   {
-    return getLibLoadPath() + File.separator + "segment";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getLibLoadPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("segment");
+    return localStringBuilder.toString();
   }
   
   public static String getSegmentModelPath()
   {
-    return getSegmentLibPath() + File.separator + "model";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSegmentLibPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("model");
+    return localStringBuilder.toString();
   }
   
   public static Boolean isBodyLibDownloaded()
@@ -92,13 +132,25 @@ public class OnlineResPref
   
   public static Boolean isBodyLibExist()
   {
-    String str2 = getBodyLibPath() + File.separator;
-    String str1 = str2 + "libxnet.so";
-    str2 = str2 + "libbodydetector.so";
-    if ((FileUtils.exists(str1)) && (FileUtils.exists(str2))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getBodyLibPath());
+    ((StringBuilder)localObject1).append(File.separator);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("libxnet.so");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("libbodydetector.so");
+    localObject1 = localStringBuilder.toString();
+    boolean bool;
+    if ((FileUtils.exists((String)localObject2)) && (FileUtils.exists((String)localObject1))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
   public static Boolean isBodyLibNeedLoad()
@@ -113,13 +165,25 @@ public class OnlineResPref
   
   public static Boolean isGestureLibExist()
   {
-    String str2 = getGestureLibPath() + File.separator;
-    String str1 = str2 + "libYTHandDetector.so";
-    str2 = str2 + "libGestureDetectJni.so";
-    if ((FileUtils.exists(str1)) && (FileUtils.exists(str2))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getGestureLibPath());
+    ((StringBuilder)localObject1).append(File.separator);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("libYTHandDetector.so");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("libGestureDetectJni.so");
+    localObject1 = localStringBuilder.toString();
+    boolean bool;
+    if ((FileUtils.exists((String)localObject2)) && (FileUtils.exists((String)localObject1))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
   public static Boolean isGestureLibNeedLoad()
@@ -134,8 +198,14 @@ public class OnlineResPref
   
   public static Boolean isSegmentLibExist()
   {
-    String str = getSegmentLibPath() + File.separator;
-    return Boolean.valueOf(FileUtils.exists(str + "libsegmentern.so"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getSegmentLibPath());
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("libsegmentern.so");
+    return Boolean.valueOf(FileUtils.exists(localStringBuilder.toString()));
   }
   
   public static Boolean isSegmentLibNeedLoad()
@@ -195,7 +265,7 @@ public class OnlineResPref
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.VideoPref.OnlineResPref
  * JD-Core Version:    0.7.0.1
  */

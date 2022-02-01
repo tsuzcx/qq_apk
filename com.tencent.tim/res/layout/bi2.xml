@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/fyx" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/dr7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textStyle="normal" android:textColor="@color/a_j" android:id="@id/jq9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="27.0dip" android:layout_marginBottom="10.0dip" android:text="@string/rmq" android:drawablePadding="5.0dip" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textStyle="normal" android:textColor="@color/a_j" android:id="@id/jph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="27.0dip" android:layout_marginBottom="10.0dip" android:text="" android:drawableLeft="@drawable/gtp" android:drawablePadding="5.0dip" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="18.0sp" android:textStyle="normal" android:textColor="@color/a_j" android:id="@id/jpb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="27.0dip" android:layout_marginBottom="10.0dip" android:text="@string/roi" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/hk6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/hk5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <View android:id="@id/hk7" android:background="@color/a64" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="5.0dip" />
+            <com.qzone.widget.AsyncImageView android:id="@id/hk8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/hck" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:baselineAligned="false" />
+    </RelativeLayout>
+</LinearLayout>

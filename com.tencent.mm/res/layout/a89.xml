@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="vertical" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:textSize="14.0dip" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="39.0dip" android:text="@string/cf_" />
-                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/cjx" android:background="@color/a3x" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="0.0dip" wallet:walletTypeFace="e2" wallet:layoutRes="@layout/a88" wallet:contentMaxSize="9" style="@style/w7" />
-                    <View android:background="#ffe2e2e2" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="14.0dip" />
-                    <Button android:enabled="false" android:id="@id/cjy" android:background="@drawable/rk" android:layout_marginTop="30.0dip" android:text="@string/ces" style="@style/nq" />
-                </LinearLayout>
-                <TextView android:textSize="15.0dip" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cjz" android:background="@color/y7" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cfe" android:layout_alignParentTop="true" />
-            </RelativeLayout>
-        </FrameLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/ua" android:paddingLeft="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:id="@id/fat" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp">
+        <ImageView android:id="@id/fas" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fae" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/fc1" android:layout_toRightOf="@id/fat">
+        <TextView android:ellipsize="middle" android:id="@id/fc9" android:text="微信年会 " style="@style/ma" />
+        <TextView android:id="@id/fc3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="21.56M" android:layout_below="@id/fc9" android:layout_alignParentLeft="true" style="@style/m_" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/cp">
+            <TableLayout android:id="@id/h_d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0">
+                <TableRow>
+                    <TextView android:id="@id/fao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="来自felix" style="@style/m9" />
+                    <TextView android:ellipsize="none" android:id="@id/fc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="星期三" android:layout_marginStart="@dimen/df" style="@style/m9" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/fc1" android:paddingRight="@dimen/i6" android:layout_width="@dimen/db" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/cv" android:layout_alignParentRight="true">
+        <View android:layout_gravity="center_vertical" android:layout_width="1.0dip" android:layout_height="32.0dip" style="@style/i7" />
+        <CheckBox android:layout_gravity="center|right" android:id="@id/fc0" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" style="@style/lq" />
+    </FrameLayout>
+    <View android:id="@id/fb7" android:layout_height="0.5dip" android:layout_alignParentBottom="true" style="@style/i7" />
+</RelativeLayout>

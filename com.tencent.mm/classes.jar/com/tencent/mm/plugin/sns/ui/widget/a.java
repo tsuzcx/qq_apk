@@ -1,103 +1,138 @@
 package com.tencent.mm.plugin.sns.ui.widget;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.widget.OverScroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.MMOverScrollView.a;
+import com.tencent.mm.ui.base.MMOverScrollView.b;
+import com.tencent.mm.ui.base.MMOverScrollView.b.a;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/sns/ui/widget/OpenScroller;", "Lcom/tencent/mm/ui/base/MMOverScrollView$IScrollConsumer;", "provider", "Lcom/tencent/mm/ui/base/MMOverScrollView$IScrollViewProvider;", "(Lcom/tencent/mm/ui/base/MMOverScrollView$IScrollViewProvider;)V", "TAG", "", "onOpenChanged", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "open", "", "getOnOpenChanged", "()Lkotlin/jvm/functions/Function1;", "setOnOpenChanged", "(Lkotlin/jvm/functions/Function1;)V", "openTarget", "", "getOpenTarget", "()I", "setOpenTarget", "(I)V", "getProvider", "()Lcom/tencent/mm/ui/base/MMOverScrollView$IScrollViewProvider;", "onFling", "velocityY", "", "onScroll", "distanceY", "onScrolled", "dy", "onTouchEnd", "isFlinging", "touchMoved", "onTouchStart", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends Animation
+  implements MMOverScrollView.a
 {
-  private final float bVL;
-  private final float bVM;
-  private Context context;
-  private float scale;
-  private final float smA;
-  private final float smB;
-  private final boolean smC;
-  private Camera smD;
-  private final float smz;
+  public int RVA;
+  b<? super Boolean, ah> RVB;
+  private final MMOverScrollView.b RVz;
+  private final String TAG;
   
-  public a(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
+  public a(MMOverScrollView.b paramb)
   {
-    AppMethodBeat.i(40435);
-    this.scale = 1.0F;
-    this.context = paramContext;
-    this.smz = paramFloat1;
-    this.smA = paramFloat2;
-    this.bVL = paramFloat3;
-    this.bVM = paramFloat4;
-    this.smB = 150.0F;
-    this.smC = paramBoolean;
-    this.scale = paramContext.getResources().getDisplayMetrics().density;
-    AppMethodBeat.o(40435);
+    AppMethodBeat.i(309189);
+    this.RVz = paramb;
+    this.TAG = "MicroMsg.OpenScroller";
+    this.RVA = 800;
+    AppMethodBeat.o(309189);
   }
   
-  protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public final boolean aZ(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(40437);
-    float f1 = this.smz;
-    float f2 = this.smA;
-    float f3 = this.smz;
-    float f4 = this.bVL;
-    float f5 = this.bVM;
-    Object localObject = this.smD;
-    paramTransformation = paramTransformation.getMatrix();
-    ((Camera)localObject).save();
-    if (this.smC) {
-      ((Camera)localObject).translate(0.0F, 0.0F, this.smB * paramFloat);
+    AppMethodBeat.i(309203);
+    if (!paramBoolean2)
+    {
+      AppMethodBeat.o(309203);
+      return false;
+    }
+    if (paramBoolean1)
+    {
+      AppMethodBeat.o(309203);
+      return true;
+    }
+    b localb;
+    if (this.RVz.getScrollY() < -this.RVA / 2)
+    {
+      MMOverScrollView.b.a.a(this.RVz, -this.RVA - this.RVz.getScrollY());
+      localb = this.RVB;
+      if (localb != null) {
+        localb.invoke(Boolean.TRUE);
+      }
     }
     for (;;)
     {
-      ((Camera)localObject).rotateY(f1 + (f2 - f3) * paramFloat);
-      ((Camera)localObject).getMatrix(paramTransformation);
-      ((Camera)localObject).restore();
-      localObject = new float[9];
-      Object tmp103_101 = localObject;
-      tmp103_101[0] = 0.0F;
-      Object tmp107_103 = tmp103_101;
-      tmp107_103[1] = 0.0F;
-      Object tmp111_107 = tmp107_103;
-      tmp111_107[2] = 0.0F;
-      Object tmp115_111 = tmp111_107;
-      tmp115_111[3] = 0.0F;
-      Object tmp119_115 = tmp115_111;
-      tmp119_115[4] = 0.0F;
-      Object tmp123_119 = tmp119_115;
-      tmp123_119[5] = 0.0F;
-      Object tmp127_123 = tmp123_119;
-      tmp127_123[6] = 0.0F;
-      Object tmp132_127 = tmp127_123;
-      tmp132_127[7] = 0.0F;
-      Object tmp137_132 = tmp132_127;
-      tmp137_132[8] = 0.0F;
-      tmp137_132;
-      paramTransformation.getValues((float[])localObject);
-      localObject[6] /= this.scale;
-      paramTransformation.setValues((float[])localObject);
-      paramTransformation.preTranslate(-f4, -f5);
-      paramTransformation.postTranslate(f4, f5);
-      AppMethodBeat.o(40437);
-      return;
-      ((Camera)localObject).translate(0.0F, 0.0F, this.smB * (1.0F - paramFloat));
+      AppMethodBeat.o(309203);
+      return true;
+      MMOverScrollView.b.a.a(this.RVz, -this.RVz.getScrollY());
+      localb = this.RVB;
+      if (localb != null) {
+        localb.invoke(Boolean.FALSE);
+      }
     }
   }
   
-  public final void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void amL(int paramInt) {}
+  
+  public final boolean dt(float paramFloat)
   {
-    AppMethodBeat.i(40436);
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.smD = new Camera();
-    AppMethodBeat.o(40436);
+    AppMethodBeat.i(309194);
+    int i = (int)(paramFloat / 2.0F);
+    int j = this.RVz.getScrollY() + i;
+    new StringBuilder("onScroll: ").append(j).append(", ").append(this.RVz.getScrollY()).append(", ").append(paramFloat);
+    if ((j <= 0) && (j >= -this.RVA))
+    {
+      this.RVz.Yn(i);
+      AppMethodBeat.o(309194);
+      return true;
+    }
+    if (this.RVz.getScrollY() < 0)
+    {
+      if (j < -this.RVA) {
+        this.RVz.aAX(-this.RVA);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(309194);
+        return true;
+        MMOverScrollView.b localb = this.RVz;
+        localb.Yn(Math.min(i, -localb.getScrollY()));
+      }
+    }
+    AppMethodBeat.o(309194);
+    return false;
+  }
+  
+  public final boolean du(float paramFloat)
+  {
+    AppMethodBeat.i(309199);
+    this.RVz.jmx().fling(0, this.RVz.getScrollY(), 0, -(int)paramFloat, 0, 0, -this.RVA, 0);
+    b localb;
+    if (this.RVz.jmx().getFinalY() < -this.RVA / 2)
+    {
+      MMOverScrollView.b.a.a(this.RVz, -this.RVA - this.RVz.getScrollY());
+      localb = this.RVB;
+      if (localb != null) {
+        localb.invoke(Boolean.TRUE);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(309199);
+      return true;
+      MMOverScrollView.b.a.a(this.RVz, -this.RVz.getScrollY());
+      localb = this.RVB;
+      if (localb != null) {
+        localb.invoke(Boolean.FALSE);
+      }
+    }
+  }
+  
+  public final void fYb()
+  {
+    AppMethodBeat.i(309208);
+    s.u(this, "this");
+    AppMethodBeat.o(309208);
+  }
+  
+  public final boolean hsG()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.f.a.b;
-import a.f.b.k;
-import a.l;
-import a.y;
-import com.tencent.mm.plugin.story.h.h;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "storyHistoryInfo", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryAlbumUI$c
-  extends k
-  implements b<h, y>
+  extends u
+  implements a<ah>
 {
   StoryAlbumUI$c(StoryAlbumUI paramStoryAlbumUI)
   {
-    super(1);
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryAlbumUI.c
  * JD-Core Version:    0.7.0.1
  */

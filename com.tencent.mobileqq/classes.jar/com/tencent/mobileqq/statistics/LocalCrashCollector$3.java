@@ -1,66 +1,72 @@
 package com.tencent.mobileqq.statistics;
 
-import alud;
-import android.support.v4.app.FragmentActivity;
-import azqf;
-import azqg;
-import bdgm;
-import bdjz;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class LocalCrashCollector$3
+class LocalCrashCollector$3
   implements Runnable
 {
   LocalCrashCollector$3(LocalCrashCollector paramLocalCrashCollector) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      SessionInfo localSessionInfo = LocalCrashCollector.a(this.this$0).a();
-      FragmentActivity localFragmentActivity = LocalCrashCollector.a(this.this$0).a;
-      Object localObject;
-      String str;
-      if (LocalCrashCollector.a(this.this$0) > 0)
+      try
       {
-        localObject = alud.a(2131706646) + localSessionInfo.d;
-        if (LocalCrashCollector.a(this.this$0) <= 0) {
-          break label183;
+        BaseSessionInfo localBaseSessionInfo = LocalCrashCollector.a(this.this$0).O();
+        BaseActivity localBaseActivity = LocalCrashCollector.a(this.this$0).b();
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
+          break label208;
         }
-        str = "Crash count: " + LocalCrashCollector.a(this.this$0) + "\n" + "CrashInfoSummary.txt";
-        label107:
-        if (LocalCrashCollector.a(this.this$0) <= 0) {
-          break label188;
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904197));
+        ((StringBuilder)localObject1).append(localBaseSessionInfo.e);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
+          break label214;
         }
-      }
-      label183:
-      label188:
-      for (int i = 2131690797;; i = 2131694953)
-      {
-        localObject = bdgm.a(localFragmentActivity, 230, (String)localObject, str, 2131690648, i, new azqf(this, localSessionInfo), new azqg(this));
-        ((bdjz)localObject).adjustTitle();
-        if (LocalCrashCollector.a(this.this$0).a.isFinishing()) {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Crash count: ");
+        ((StringBuilder)localObject2).append(LocalCrashCollector.b(this.this$0));
+        ((StringBuilder)localObject2).append("\n");
+        ((StringBuilder)localObject2).append("CrashInfoSummary.txt");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        if (LocalCrashCollector.b(this.this$0) <= 0) {
+          break label219;
+        }
+        i = 2131887750;
+        localObject1 = DialogUtil.a(localBaseActivity, 230, (String)localObject1, (String)localObject2, 2131887648, i, new LocalCrashCollector.3.1(this, localBaseSessionInfo), new LocalCrashCollector.3.2(this));
+        ((QQCustomDialog)localObject1).adjustTitle();
+        if (!LocalCrashCollector.a(this.this$0).b().isFinishing())
+        {
+          ((QQCustomDialog)localObject1).show();
           return;
         }
-        ((bdjz)localObject).show();
-        return;
-        localObject = "0 Crash";
-        break;
-        str = null;
-        break label107;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      label208:
+      String str = "0 Crash";
+      continue;
+      label214:
+      Object localObject2 = null;
+      continue;
+      label219:
+      int i = 2131892267;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.Context;
 
 public class c
 {
-  private static Context a = null;
-  private static volatile c b = null;
+  private static Context a;
+  private static volatile c b;
   
   private c(Context paramContext)
   {
@@ -14,15 +14,16 @@ public class c
   
   public static c a(Context paramContext)
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new c(paramContext);
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new c(paramContext);
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public String a()
@@ -32,7 +33,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.a.a.c
  * JD-Core Version:    0.7.0.1
  */

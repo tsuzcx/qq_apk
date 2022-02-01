@@ -38,48 +38,47 @@ public final class hr
     a();
   }
   
-  public final int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  protected final int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
+    Object localObject = this.a;
     int i;
-    if ((this.a != null) && (this.a.size() > 0)) {
-      if ((this.a != null) && (this.a.size() > 0))
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = this.a;
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
         i = this.a.size() - 1;
-        hq localhq = (hq)this.a.get(i);
-        if (((localhq instanceof hs)) && (localhq.a().contains((int)paramFloat1, (int)paramFloat2))) {
-          if (i == -1) {
-            break label113;
-          }
-        }
+        localObject = (hq)this.a.get(i);
+        if (((localObject instanceof hs)) && (((hq)localObject).a().contains((int)paramFloat1, (int)paramFloat2))) {}
       }
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == -1) {
-        j = -2147483648;
-      }
-      return j;
-      i = -1;
-      break;
-      label113:
-      i = 0;
-      for (;;)
+      else
       {
-        if (i >= this.a.size()) {
-          break label164;
-        }
-        if (((hq)this.a.get(i)).a().contains((int)paramFloat1, (int)paramFloat2)) {
-          break;
-        }
-        i += 1;
+        i = -1;
       }
-      label164:
+      if (i == -1)
+      {
+        i = 0;
+        while (i < this.a.size())
+        {
+          if (((hq)this.a.get(i)).a().contains((int)paramFloat1, (int)paramFloat2)) {
+            break label158;
+          }
+          i += 1;
+        }
+      }
+    }
+    else
+    {
       i = -1;
     }
+    label158:
+    if (i == -1) {
+      return -2147483648;
+    }
+    return i;
   }
   
-  public final void getVisibleVirtualViews(List<Integer> paramList)
+  protected final void getVisibleVirtualViews(List<Integer> paramList)
   {
     int i = 0;
     while (i < this.a.size())
@@ -89,8 +88,9 @@ public final class hr
     }
   }
   
-  public final boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  protected final boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
+    boolean bool = false;
     if (paramInt2 == 16)
     {
       if (paramInt1 >= this.a.size()) {
@@ -101,14 +101,14 @@ public final class hr
         return false;
       }
       invalidateVirtualView(paramInt1);
+      bool = true;
       sendEventForVirtualView(paramInt1, 1);
       paramBundle.c();
-      return true;
     }
-    return false;
+    return bool;
   }
   
-  public final void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  protected final void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramInt >= this.a.size())
     {
@@ -116,13 +116,15 @@ public final class hr
       return;
     }
     hq localhq = (hq)this.a.get(paramInt);
-    if (localhq == null) {
-      throw new IllegalArgumentException("Invalid virtual view id");
+    if (localhq != null)
+    {
+      paramAccessibilityEvent.getText().add(localhq.b());
+      return;
     }
-    paramAccessibilityEvent.getText().add(localhq.b());
+    throw new IllegalArgumentException("Invalid virtual view id");
   }
   
-  public final void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected final void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     if (paramInt >= this.a.size())
     {
@@ -131,12 +133,14 @@ public final class hr
       return;
     }
     hq localhq = (hq)this.a.get(paramInt);
-    if (localhq == null) {
-      throw new IllegalArgumentException("Invalid virtual view id");
+    if (localhq != null)
+    {
+      paramAccessibilityNodeInfoCompat.setText(localhq.b());
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(localhq.a());
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      return;
     }
-    paramAccessibilityNodeInfoCompat.setText(localhq.b());
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(localhq.a());
-    paramAccessibilityNodeInfoCompat.addAction(16);
+    throw new IllegalArgumentException("Invalid virtual view id");
   }
 }
 

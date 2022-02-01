@@ -1,30 +1,17 @@
+import android.os.Message;
 import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragRelativeLayout;
-import java.util.List;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class dol
-  implements Runnable
+  extends TransProcessorHandler
 {
-  public dol(TroopAssistantActivity paramTroopAssistantActivity, List paramList) {}
+  public dol(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    RecentAdapter localRecentAdapter;
-    if ((TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a() == -1) && (TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity) != null))
-    {
-      localRecentAdapter = TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.b) {
-        break label71;
-      }
-    }
-    label71:
-    for (int i = 3;; i = 4)
-    {
-      localRecentAdapter.a(i);
-      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity).a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.i();
-      return;
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.h();
     }
   }
 }

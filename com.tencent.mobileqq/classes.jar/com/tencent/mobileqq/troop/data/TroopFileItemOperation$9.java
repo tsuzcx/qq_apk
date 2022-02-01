@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.troop.data;
 
-import bbsn;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class TroopFileItemOperation$9
+class TroopFileItemOperation$9
   implements Runnable
 {
-  public TroopFileItemOperation$9(bbsn parambbsn, TroopFileTransferManager paramTroopFileTransferManager) {}
+  TroopFileItemOperation$9(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {
@@ -15,7 +14,7 @@ public class TroopFileItemOperation$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation.9
  * JD-Core Version:    0.7.0.1
  */

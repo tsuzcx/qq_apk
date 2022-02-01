@@ -1,121 +1,74 @@
 package com.tencent.mm.app;
 
-import android.app.Application;
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.HandlerThread;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kiss.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.svg.a.e;
-import com.tencent.mm.svg.b.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vending.h.h;
 
 public final class s
 {
-  private static Class<?> bYU = null;
-  private static Application bYV;
-  private static String mPackageName = null;
-  private static Resources sResources;
+  private static s hgv;
+  MMHandler handler;
+  HandlerThread hgw;
+  com.tencent.mm.vending.h.d mScheduler;
   
-  public static void A(Class<?> paramClass)
+  private s(String paramString)
   {
-    bYU = paramClass;
+    AppMethodBeat.i(19444);
+    this.hgw = new HandlerThread(paramString, 10);
+    this.hgw.start();
+    this.handler = new MMHandler(this.hgw.getLooper());
+    this.mScheduler = new h(com.tencent.mm.cp.d.c(this.handler), paramString);
+    AppMethodBeat.o(19444);
   }
   
-  public static void By()
+  public static s aCt()
   {
-    boolean bool = true;
-    AppMethodBeat.i(15396);
-    ab.i("MicroMsg.SVGInit", "SVG initSVGPreload");
-    e.a(new c.a()
+    AppMethodBeat.i(19443);
+    if (hgv == null) {
+      hgv = new s("initThread");
+    }
+    s locals = hgv;
+    AppMethodBeat.o(19443);
+    return locals;
+  }
+  
+  public final void setHighPriority()
+  {
+    AppMethodBeat.i(19445);
+    if ((this.hgw == null) || (!this.hgw.isAlive()))
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(15394);
-        ab.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(15394);
-      }
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(15393);
-        ab.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(15393);
-      }
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(15392);
-        ab.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(15392);
-      }
-      
-      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(15395);
-        ab.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(15395);
-      }
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(156056);
-        ab.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(156056);
-      }
-    });
-    e.A(bYU);
-    e.a(bYV, sResources, mPackageName);
-    Object localObject1 = bYV;
-    for (;;)
+      Log.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
+      AppMethodBeat.o(19445);
+      return;
+    }
+    int i = this.hgw.getThreadId();
+    try
     {
-      try
+      if (-8 == Process.getThreadPriority(i))
       {
-        localObject1 = ((Application)localObject1).getBaseContext().getResources().getDrawable(2131230734);
-        if (localObject1 != null)
-        {
-          i = 1;
-          localObject1 = b.SH();
-          if (i == 0)
-          {
-            ((b)localObject1).eKV = bool;
-            AppMethodBeat.o(15396);
-            return;
-          }
-          bool = false;
-          continue;
-        }
-        int i = 0;
-      }
-      catch (Throwable localThrowable)
-      {
-        ab.printErrStackTrace("MicroMsg.SVGInit", localThrowable, "not support get svg from application context", new Object[0]);
+        Log.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
+        AppMethodBeat.o(19445);
         return;
       }
-      finally
-      {
-        b.SH().eKV = true;
-        AppMethodBeat.o(15396);
-      }
+      Process.setThreadPriority(i, -8);
+      Log.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(19445);
+      return;
     }
-  }
-  
-  public static void a(Application paramApplication, Resources paramResources)
-  {
-    AppMethodBeat.i(15397);
-    e.d(paramApplication, mPackageName);
-    bYV = paramApplication;
-    sResources = paramResources;
-    AppMethodBeat.o(15397);
-  }
-  
-  public static void dC(String paramString)
-  {
-    mPackageName = paramString;
+    catch (Exception localException)
+    {
+      Log.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
+      Log.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
+      AppMethodBeat.o(19445);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.s
  * JD-Core Version:    0.7.0.1
  */

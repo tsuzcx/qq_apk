@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import axsv;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -15,7 +14,7 @@ class LiteTcpConnection$ReadRunnable
     while (LiteTcpConnection.a(this.this$0).get()) {
       try
       {
-        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.this$0);
+        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.b(this.this$0);
         if (localMsfSocketInputBuffer == null) {
           return;
         }
@@ -25,15 +24,20 @@ class LiteTcpConnection$ReadRunnable
           }
         }
         if (!LiteTcpConnection.a(this.this$0).get()) {
-          break;
+          return;
         }
-        LiteTcpConnection.a(this.this$0).a(localMsfSocketInputBuffer);
+        LiteTcpConnection.c(this.this$0).a(localMsfSocketInputBuffer);
         localMsfSocketInputBuffer.reset();
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("read exception ");
+          localStringBuilder.append(localException.getMessage());
+          localStringBuilder.append(";");
+          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, localStringBuilder.toString());
         }
         LiteTcpConnection.a(this.this$0, 1);
       }
@@ -42,7 +46,7 @@ class LiteTcpConnection$ReadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.LiteTcpConnection.ReadRunnable
  * JD-Core Version:    0.7.0.1
  */

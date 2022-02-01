@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/bx6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/bxs" style="@style/nq" />
-    <Button android:id="@id/bx7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="40.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/bxu" style="@style/nq" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/r4" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="160.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/cce" android:background="@drawable/r9" android:layout_width="@dimen/d6" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cv" android:src="@raw/icons_panel_close" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.view.TextColorSelector android:layout_gravity="center" android:id="@id/bio" android:layout_width="0.0dip" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/d0" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" app:layout_constraintEnd_toStartOf="@id/iff" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/cce" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/iff" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_previous" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/BW_BG_100" app:layout_constraintBottom_toBottomOf="@id/bio" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toEndOf="@id/bio" app:layout_constraintTop_toTopOf="@id/bio" />
+</androidx.constraintlayout.widget.ConstraintLayout>

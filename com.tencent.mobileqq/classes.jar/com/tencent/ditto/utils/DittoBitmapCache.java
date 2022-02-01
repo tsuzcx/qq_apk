@@ -19,15 +19,17 @@ public class DittoBitmapCache
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    if (this.mBitmap != null) {
-      throw new RuntimeException("delicately set bitmap");
+    if (this.mBitmap == null)
+    {
+      this.mBitmap = paramBitmap;
+      return;
     }
-    this.mBitmap = paramBitmap;
+    throw new RuntimeException("delicately set bitmap");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.utils.DittoBitmapCache
  * JD-Core Version:    0.7.0.1
  */

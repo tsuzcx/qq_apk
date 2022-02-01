@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PushSwitchData
   extends JceStruct
 {
-  public long appid;
-  public byte cPushSwitch;
-  public long uin;
+  public long appid = 0L;
+  public byte cPushSwitch = 0;
+  public long uin = 0L;
   
   public PushSwitchData() {}
   
@@ -36,7 +36,7 @@ public final class PushSwitchData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.PushSwitchData
  * JD-Core Version:    0.7.0.1
  */

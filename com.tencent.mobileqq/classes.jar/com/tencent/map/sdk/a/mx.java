@@ -34,113 +34,127 @@ public final class mx
     this.b = paramlq.a;
     this.c = paramMarker;
     l();
-    if ((this.b == null) || (this.b.ay == null)) {}
-    for (;;)
+    paramlq = this.b;
+    if ((paramlq != null) && (paramlq.ay != null))
     {
-      this.g = true;
-      return;
       paramlq = null;
-      if (this.a != null) {
-        paramlq = this.a.e;
+      paramMarker = this.a;
+      if (paramMarker != null) {
+        paramlq = paramMarker.e;
       }
       this.d = mr.a(this.b.ay, this, paramlq, this.c);
-      if (this.c != null) {
-        a(this.c.getPosition());
+      paramlq = this.c;
+      if (paramlq != null) {
+        a(paramlq.getPosition());
       }
     }
+    this.g = true;
   }
   
   private void l()
   {
-    if ((this.b == null) || (this.b.az == null)) {
-      return;
+    pn localpn = this.b;
+    if (localpn != null)
+    {
+      if (localpn.az == null) {
+        return;
+      }
+      this.b.az.a(this);
     }
-    this.b.az.a(this);
   }
   
   private void m()
   {
-    if ((this.b == null) || (this.b.az == null)) {}
-    lw locallw;
-    do
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      return;
-      locallw = this.b.az.b;
-    } while (locallw.F.isEmpty());
-    locallw.F.remove(this);
+      if (((pt)localObject).az == null) {
+        return;
+      }
+      localObject = this.b.az.b;
+      if (!((lw)localObject).F.isEmpty()) {
+        ((lw)localObject).F.remove(this);
+      }
+    }
   }
   
   public final Rect a(fu paramfu)
   {
-    int i2 = 1;
-    int m = 0;
-    if ((paramfu == null) || (this.d == null)) {
-      return null;
-    }
-    if (this.k) {}
-    for (paramfu = this.l; paramfu == null; paramfu = paramfu.a(this.j)) {
-      return null;
-    }
-    int n;
-    if ((this.c != null) && (this.c.getOptions() != null))
+    if (paramfu != null)
     {
-      n = this.c.getOptions().getInfoWindowOffsetX();
-      m = this.c.getOptions().getInfowindowOffsetY();
-    }
-    for (;;)
-    {
-      float f2;
-      int i1;
-      int i4;
-      if ((this.c == null) || (this.b.ay == null))
+      if (this.d == null) {
+        return null;
+      }
+      if (this.k) {
+        paramfu = this.l;
+      } else {
+        paramfu = paramfu.a(this.j);
+      }
+      if (paramfu == null) {
+        return null;
+      }
+      Marker localMarker = this.c;
+      int n = 0;
+      if ((localMarker != null) && (localMarker.getOptions() != null))
       {
-        if ((this.c == null) || (this.b.ay == null))
-        {
-          f1 = this.h;
-          f2 = n * 1.0F / this.e;
-          float f3 = this.i;
-          float f4 = m * 1.0F / this.f;
-          m = (int)(paramfu.x - (f1 - f2) * this.e);
-          n = this.e;
-          i1 = (int)(paramfu.y - (f3 - f4) * this.f);
-          return new Rect(m, i1, n + m, i1 + this.f);
-        }
+        n = this.c.getOptions().getInfoWindowOffsetX();
+        m = this.c.getOptions().getInfowindowOffsetY();
       }
       else
       {
-        i4 = this.c.getWidth(this.b.ay);
-        if (this.c.getOptions() == null) {
-          break label404;
-        }
+        m = 0;
       }
-      label404:
-      for (float f1 = this.c.getOptions().getInfoWindowAnchorU();; f1 = 0.5F)
+      localMarker = this.c;
+      int i2 = 1;
+      int i3;
+      if ((localMarker != null) && (this.b.ay != null))
       {
-        int i3 = this.e;
+        int i4 = this.c.getWidth(this.b.ay);
+        if (this.c.getOptions() != null) {
+          f1 = this.c.getOptions().getInfoWindowAnchorU();
+        } else {
+          f1 = 0.5F;
+        }
+        i3 = this.e;
         i1 = i3;
         if (i3 == 0) {
           i1 = 1;
         }
-        f2 = i4;
-        this.h = (f1 + (this.c.getAnchorU() - 0.5F) * f2 / i1);
-        break;
+        this.h = (f1 + i4 * (this.c.getAnchorU() - 0.5F) / i1);
+      }
+      if ((this.c != null) && (this.b.ay != null))
+      {
         i3 = (int)(this.c.getHeight(this.b.ay) * this.c.getAnchorV());
         i1 = this.f;
-        if (this.c.getOptions() != null) {}
-        for (f1 = this.c.getOptions().getInfoWindowAnchorV();; f1 = 1.0F)
-        {
-          if (i1 == 0) {
-            i1 = i2;
-          }
-          for (;;)
-          {
-            this.i = ((i3 + f1 * i1) / i1);
-            break;
-          }
+        if (this.c.getOptions() != null) {
+          f1 = this.c.getOptions().getInfoWindowAnchorV();
+        } else {
+          f1 = 1.0F;
         }
+        if (i1 == 0) {
+          i1 = i2;
+        }
+        f2 = i3;
+        f3 = i1;
+        this.i = ((f2 + f1 * f3) / f3);
       }
-      n = 0;
+      float f1 = this.h;
+      float f2 = n * 1.0F / this.e;
+      float f3 = this.i;
+      float f4 = m * 1.0F / this.f;
+      double d1 = paramfu.x;
+      int m = this.e;
+      double d2 = m * (f1 - f2);
+      Double.isNaN(d2);
+      n = (int)(d1 - d2);
+      d1 = paramfu.y;
+      int i1 = this.f;
+      d2 = i1 * (f3 - f4);
+      Double.isNaN(d2);
+      i2 = (int)(d1 - d2);
+      return new Rect(n, i2, m + n, i1 + i2);
     }
+    return null;
   }
   
   public final void a(int paramInt1, int paramInt2)
@@ -155,16 +169,17 @@ public final class mx
     if (paramLatLng == null) {
       return;
     }
-    if (this.j == null) {
+    GeoPoint localGeoPoint = this.j;
+    if (localGeoPoint == null)
+    {
       this.j = fz.a(paramLatLng);
     }
-    for (;;)
+    else
     {
-      k();
-      return;
-      this.j.setLatitudeE6((int)(paramLatLng.latitude * 1000000.0D));
+      localGeoPoint.setLatitudeE6((int)(paramLatLng.latitude * 1000000.0D));
       this.j.setLongitudeE6((int)(paramLatLng.longitude * 1000000.0D));
     }
+    k();
   }
   
   public final void a(MarkerOptions paramMarkerOptions) {}
@@ -187,14 +202,25 @@ public final class mx
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.d == null) || (!this.g) || (this.b == null) || (this.b.az == null) || (this.b.az.b.h == null)) {}
-    Rect localRect;
-    do
+    if ((this.d != null) && (this.g))
     {
-      return false;
-      localRect = a(this.b.az.b.h);
-    } while ((localRect == null) || (localRect.isEmpty()));
-    return localRect.contains((int)paramFloat1, (int)paramFloat2);
+      Object localObject = this.b;
+      if ((localObject != null) && (((pt)localObject).az != null))
+      {
+        if (this.b.az.b.h == null) {
+          return false;
+        }
+        localObject = a(this.b.az.b.h);
+        if (localObject != null)
+        {
+          if (((Rect)localObject).isEmpty()) {
+            return false;
+          }
+          return ((Rect)localObject).contains((int)paramFloat1, (int)paramFloat2);
+        }
+      }
+    }
+    return false;
   }
   
   public final void a_()
@@ -205,24 +231,33 @@ public final class mx
   public final Rect b(fu paramfu)
   {
     Rect localRect = a(paramfu);
-    if ((localRect == null) || (paramfu == null)) {}
-    GeoPoint localGeoPoint;
-    do
+    if (localRect != null)
     {
-      return null;
-      localGeoPoint = paramfu.a(new DoublePoint(localRect.left, localRect.top));
+      if (paramfu == null) {
+        return null;
+      }
+      GeoPoint localGeoPoint = paramfu.a(new DoublePoint(localRect.left, localRect.top));
       paramfu = paramfu.a(new DoublePoint(localRect.right, localRect.bottom));
-    } while ((localGeoPoint == null) || (paramfu == null));
-    return new Rect(localGeoPoint.getLongitudeE6(), localGeoPoint.getLatitudeE6(), paramfu.getLongitudeE6(), paramfu.getLatitudeE6());
+      if (localGeoPoint != null)
+      {
+        if (paramfu == null) {
+          return null;
+        }
+        return new Rect(localGeoPoint.getLongitudeE6(), localGeoPoint.getLatitudeE6(), paramfu.getLongitudeE6(), paramfu.getLatitudeE6());
+      }
+    }
+    return null;
   }
   
   public final void b()
   {
-    if (this.d == null) {}
-    while (!(this.d.getParent() instanceof ViewGroup)) {
+    View localView = this.d;
+    if (localView == null) {
       return;
     }
-    ((ViewGroup)this.d.getParent()).post(new mx.3(this));
+    if ((localView.getParent() instanceof ViewGroup)) {
+      ((ViewGroup)this.d.getParent()).post(new mx.3(this));
+    }
   }
   
   public final void b(boolean paramBoolean)
@@ -249,12 +284,20 @@ public final class mx
   
   public final boolean e()
   {
-    return (this.g) && (this.d != null) && (this.d.getVisibility() == 0);
+    if (this.g)
+    {
+      View localView = this.d;
+      if ((localView != null) && (localView.getVisibility() == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final void f()
   {
-    if ((this.a != null) && (this.a.c != null)) {
+    lq locallq = this.a;
+    if ((locallq != null) && (locallq.c != null)) {
       this.a.c.post(new mx.2(this));
     }
   }
@@ -266,30 +309,39 @@ public final class mx
   
   public final void i()
   {
-    if ((this.a == null) || (this.a.c == null)) {
-      return;
+    lq locallq = this.a;
+    if (locallq != null)
+    {
+      if (locallq.c == null) {
+        return;
+      }
+      this.a.c.post(new mx.4(this));
     }
-    this.a.c.post(new mx.4(this));
   }
   
   public final void j()
   {
-    if ((this.a == null) || (this.a.c == null)) {
-      return;
+    lq locallq = this.a;
+    if (locallq != null)
+    {
+      if (locallq.c == null) {
+        return;
+      }
+      this.a.c.post(new mx.5(this));
     }
-    this.a.c.post(new mx.5(this));
   }
   
   final void k()
   {
-    if ((this.a != null) && (this.a.c != null)) {
+    lq locallq = this.a;
+    if ((locallq != null) && (locallq.c != null)) {
       this.a.c.post(new mx.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.mx
  * JD-Core Version:    0.7.0.1
  */

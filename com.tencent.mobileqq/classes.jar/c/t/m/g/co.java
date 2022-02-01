@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.LruCache;
 import android.util.Pair;
 import androidx.annotation.Nullable;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -27,7 +28,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Landroid.net.wifi.ScanResult;>;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.DeflaterOutputStream;
@@ -74,136 +74,152 @@ public final class co
     //   29: lconst_0
     //   30: putfield 49	c/t/m/g/co:k	J
     //   33: aload_1
-    //   34: ifnonnull +27 -> 61
+    //   34: ifnonnull +8 -> 42
     //   37: aconst_null
     //   38: astore_3
-    //   39: aload_0
-    //   40: aload_3
-    //   41: putfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   44: aload_0
-    //   45: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   48: ifnonnull +21 -> 69
-    //   51: new 53	java/lang/IllegalArgumentException
-    //   54: dup
-    //   55: ldc 55
-    //   57: invokespecial 58	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   60: athrow
-    //   61: aload_1
-    //   62: invokevirtual 64	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   65: astore_3
-    //   66: goto -27 -> 39
-    //   69: aload_1
-    //   70: invokestatic 68	c/t/m/g/dp:a	(Landroid/content/Context;)V
-    //   73: aload_0
-    //   74: new 70	android/util/LruCache
-    //   77: dup
-    //   78: bipush 100
-    //   80: invokespecial 73	android/util/LruCache:<init>	(I)V
-    //   83: putfield 75	c/t/m/g/co:n	Landroid/util/LruCache;
-    //   86: getstatic 80	c/t/m/g/cu:a	Z
-    //   89: istore_2
-    //   90: getstatic 82	c/t/m/g/cu:b	Z
-    //   93: istore_2
-    //   94: aload_0
-    //   95: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   98: ldc 84
-    //   100: invokevirtual 88	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
-    //   103: invokevirtual 94	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   106: astore_3
-    //   107: aload_3
-    //   108: astore_1
-    //   109: aload_3
-    //   110: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   113: ifeq +32 -> 145
-    //   116: new 102	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   123: aload_0
-    //   124: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   127: invokevirtual 107	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   130: invokevirtual 94	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   133: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: ldc 113
-    //   138: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: astore_1
-    //   145: aload_1
-    //   146: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   149: ifne +115 -> 264
-    //   152: aload_0
-    //   153: new 118	c/t/m/g/cq
-    //   156: dup
-    //   157: aload_0
-    //   158: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   161: aload_1
-    //   162: invokespecial 121	c/t/m/g/cq:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   165: putfield 123	c/t/m/g/co:b	Lc/t/m/g/cq;
-    //   168: aload_0
-    //   169: invokespecial 125	c/t/m/g/co:f	()V
-    //   172: return
-    //   173: astore_1
-    //   174: ldc 127
-    //   176: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   179: ifeq +79 -> 258
-    //   182: new 102	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   189: aload_0
-    //   190: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   193: invokevirtual 107	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   196: invokevirtual 94	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   199: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: ldc 113
-    //   204: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: astore_1
-    //   211: goto -66 -> 145
-    //   214: astore_1
-    //   215: ldc 127
-    //   217: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   220: ifeq +29 -> 249
-    //   223: new 102	java/lang/StringBuilder
-    //   226: dup
-    //   227: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   230: aload_0
-    //   231: getfield 51	c/t/m/g/co:l	Landroid/content/Context;
-    //   234: invokevirtual 107	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   237: invokevirtual 94	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   240: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc 113
-    //   245: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: pop
-    //   249: aload_1
-    //   250: athrow
-    //   251: astore_1
-    //   252: aload_0
-    //   253: aconst_null
-    //   254: putfield 123	c/t/m/g/co:b	Lc/t/m/g/cq;
-    //   257: return
-    //   258: ldc 127
-    //   260: astore_1
-    //   261: goto -116 -> 145
-    //   264: return
+    //   39: goto +8 -> 47
+    //   42: aload_1
+    //   43: invokevirtual 55	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   46: astore_3
+    //   47: aload_0
+    //   48: aload_3
+    //   49: putfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   52: aload_0
+    //   53: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   56: ifnull +200 -> 256
+    //   59: aload_1
+    //   60: invokestatic 61	c/t/m/g/dp:a	(Landroid/content/Context;)V
+    //   63: aload_0
+    //   64: new 63	android/util/LruCache
+    //   67: dup
+    //   68: bipush 100
+    //   70: invokespecial 66	android/util/LruCache:<init>	(I)V
+    //   73: putfield 68	c/t/m/g/co:n	Landroid/util/LruCache;
+    //   76: ldc 70
+    //   78: astore_1
+    //   79: getstatic 75	c/t/m/g/cu:a	Z
+    //   82: istore_2
+    //   83: getstatic 77	c/t/m/g/cu:b	Z
+    //   86: istore_2
+    //   87: aload_0
+    //   88: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   91: ldc 79
+    //   93: invokevirtual 83	android/content/Context:getExternalFilesDir	(Ljava/lang/String;)Ljava/io/File;
+    //   96: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   99: astore_3
+    //   100: aload_3
+    //   101: astore_1
+    //   102: aload_3
+    //   103: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   106: ifeq +116 -> 222
+    //   109: new 97	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   116: astore_1
+    //   117: aload_1
+    //   118: aload_0
+    //   119: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   122: invokevirtual 102	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   125: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   128: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: aload_1
+    //   133: ldc 108
+    //   135: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload_1
+    //   140: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: astore_1
+    //   144: goto +78 -> 222
+    //   147: astore_1
+    //   148: ldc 70
+    //   150: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   153: ifeq +33 -> 186
+    //   156: new 97	java/lang/StringBuilder
+    //   159: dup
+    //   160: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   163: astore_3
+    //   164: aload_3
+    //   165: aload_0
+    //   166: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   169: invokevirtual 102	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   172: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   175: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload_3
+    //   180: ldc 108
+    //   182: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload_1
+    //   187: athrow
+    //   188: ldc 70
+    //   190: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   193: ifeq +29 -> 222
+    //   196: new 97	java/lang/StringBuilder
+    //   199: dup
+    //   200: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   203: astore_1
+    //   204: aload_1
+    //   205: aload_0
+    //   206: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   209: invokevirtual 102	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   212: invokevirtual 89	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   215: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: goto -87 -> 132
+    //   222: aload_1
+    //   223: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   226: ifne +23 -> 249
+    //   229: aload_0
+    //   230: new 113	c/t/m/g/cq
+    //   233: dup
+    //   234: aload_0
+    //   235: getfield 57	c/t/m/g/co:l	Landroid/content/Context;
+    //   238: aload_1
+    //   239: invokespecial 116	c/t/m/g/cq:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   242: putfield 118	c/t/m/g/co:b	Lc/t/m/g/cq;
+    //   245: aload_0
+    //   246: invokespecial 120	c/t/m/g/co:f	()V
+    //   249: return
+    //   250: aload_0
+    //   251: aconst_null
+    //   252: putfield 118	c/t/m/g/co:b	Lc/t/m/g/cq;
+    //   255: return
+    //   256: new 122	java/lang/IllegalArgumentException
+    //   259: dup
+    //   260: ldc 124
+    //   262: invokespecial 127	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   265: astore_1
+    //   266: goto +5 -> 271
+    //   269: aload_1
+    //   270: athrow
+    //   271: goto -2 -> 269
+    //   274: astore_1
+    //   275: goto -25 -> 250
+    //   278: astore_3
+    //   279: goto -91 -> 188
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	265	0	this	co
-    //   0	265	1	paramContext	Context
-    //   89	5	2	bool	boolean
-    //   38	72	3	localObject	Object
+    //   0	282	0	this	co
+    //   0	282	1	paramContext	Context
+    //   82	5	2	bool	boolean
+    //   38	142	3	localObject	Object
+    //   278	1	3	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   86	107	173	java/lang/Throwable
-    //   86	107	214	finally
-    //   109	145	251	java/lang/Throwable
-    //   145	172	251	java/lang/Throwable
-    //   174	211	251	java/lang/Throwable
-    //   215	249	251	java/lang/Throwable
-    //   249	251	251	java/lang/Throwable
+    //   79	100	147	finally
+    //   102	132	274	java/lang/Throwable
+    //   132	144	274	java/lang/Throwable
+    //   148	186	274	java/lang/Throwable
+    //   186	188	274	java/lang/Throwable
+    //   188	219	274	java/lang/Throwable
+    //   222	249	274	java/lang/Throwable
+    //   79	100	278	java/lang/Throwable
   }
   
   private static double a(double paramDouble)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    return paramDouble * 3.141592653589793D / 180.0D;
   }
   
   public static Location a(Location paramLocation1, Location paramLocation2)
@@ -222,59 +238,59 @@ public final class co
   @SuppressLint({"MissingPermission"})
   public static WifiInfo a(Context paramContext)
   {
-    int i1 = 1;
     Object localObject;
     if (paramContext == null)
     {
       localObject = null;
-      if (paramContext != null) {
-        break label39;
-      }
-      paramContext = null;
-      label14:
-      if ((localObject != null) && (paramContext != null)) {
-        break label52;
-      }
-      paramContext = null;
     }
-    label39:
-    label52:
-    do
+    else
     {
-      for (;;)
+      try
       {
-        return paramContext;
-        try
-        {
-          localObject = (WifiManager)paramContext.getSystemService("wifi");
-        }
-        catch (Throwable paramContext)
-        {
-          boolean bool;
-          return null;
-        }
+        localObject = (WifiManager)paramContext.getSystemService("wifi");
+      }
+      catch (Throwable paramContext)
+      {
+        return null;
       }
       paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      break label14;
-      localObject = ((WifiManager)localObject).getConnectionInfo();
+      break label124;
+    }
+    label124:
+    do
+    {
+      localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
+      int i1 = 1;
       paramContext = paramContext.getNetworkInfo(1);
-      if ((localObject == null) || (paramContext == null) || (!paramContext.isConnected())) {
-        break label132;
-      }
-      paramContext = ((WifiInfo)localObject).getBSSID();
-      if ((paramContext != null) && (!paramContext.equals("000000000000")) && (!paramContext.equals("00-00-00-00-00-00")))
+      if ((localObject != null) && (paramContext != null))
       {
-        bool = paramContext.equals("00:00:00:00:00:00");
-        if (!bool) {}
+        if (!paramContext.isConnected()) {
+          return null;
+        }
+        paramContext = ((WifiInfo)localObject).getBSSID();
+        if ((paramContext != null) && (!paramContext.equals("000000000000")) && (!paramContext.equals("00-00-00-00-00-00")))
+        {
+          boolean bool = paramContext.equals("00:00:00:00:00:00");
+          if (!bool) {}
+        }
+        else
+        {
+          i1 = 0;
+        }
+        if (i1 == 0) {
+          return null;
+        }
+        return localObject;
       }
-      else
+      do
       {
-        i1 = 0;
-      }
-      paramContext = (Context)localObject;
-    } while (i1 != 0);
-    return null;
-    label132:
+        return null;
+        if (paramContext != null) {
+          break;
+        }
+        paramContext = null;
+      } while (localObject == null);
+    } while (paramContext != null);
     return null;
   }
   
@@ -291,7 +307,7 @@ public final class co
   {
     try
     {
-      Object localObject = MessageDigest.getInstance(paramString);
+      localObject = MessageDigest.getInstance(paramString);
       ((MessageDigest)localObject).update(paramArrayOfByte);
       byte[] arrayOfByte = ((MessageDigest)localObject).digest();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -304,7 +320,8 @@ public final class co
         if (((String)localObject).length() != 2) {
           paramArrayOfByte = "0".concat(String.valueOf(localObject));
         }
-        localStringBuilder.append(paramArrayOfByte).append("");
+        localStringBuilder.append(paramArrayOfByte);
+        localStringBuilder.append("");
         i1 += 1;
       }
       paramArrayOfByte = localStringBuilder.toString();
@@ -312,8 +329,13 @@ public final class co
     }
     catch (Throwable paramArrayOfByte)
     {
-      if (e()) {
-        a("getMessageDigest[" + paramString + "] error.", paramArrayOfByte);
+      Object localObject;
+      if (e())
+      {
+        localObject = new StringBuilder("getMessageDigest[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("] error.");
+        a(((StringBuilder)localObject).toString(), paramArrayOfByte);
       }
     }
     return "abcdefgh";
@@ -321,9 +343,10 @@ public final class co
   
   private static void a(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new NullPointerException("object is null.");
+    if (paramObject != null) {
+      return;
     }
+    throw new NullPointerException("object is null.");
   }
   
   public static void a(String paramString)
@@ -336,40 +359,41 @@ public final class co
   
   public static void a(String paramString, Throwable paramThrowable)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        b(paramString, paramThrowable);
-        if (dh.a() != null) {
-          dh.a();
-        }
-        return;
+      b(paramString, paramThrowable);
+      if (dh.a() != null) {
+        dh.a();
       }
-      catch (Throwable paramThrowable)
-      {
-        if ((!(paramThrowable instanceof OutOfMemoryError)) && (e())) {
-          paramString = "";
-        }
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      while ((!(paramThrowable instanceof OutOfMemoryError)) && (e())) {
+        paramString = "";
       }
     }
   }
   
   public static boolean a(Handler paramHandler)
   {
-    if (paramHandler == null) {}
-    for (paramHandler = null; (paramHandler != null) && (paramHandler.getThread().isAlive()); paramHandler = paramHandler.getLooper()) {
-      return true;
+    if (paramHandler == null) {
+      paramHandler = null;
+    } else {
+      paramHandler = paramHandler.getLooper();
     }
-    return false;
+    return (paramHandler != null) && (paramHandler.getThread().isAlive());
   }
   
   public static boolean a(Handler paramHandler, int paramInt, long paramLong)
   {
-    if (paramHandler == null) {}
-    for (Message localMessage = null;; localMessage = paramHandler.obtainMessage(paramInt)) {
-      return a(paramHandler, localMessage, paramLong);
+    Message localMessage;
+    if (paramHandler == null) {
+      localMessage = null;
+    } else {
+      localMessage = paramHandler.obtainMessage(paramInt);
     }
+    return a(paramHandler, localMessage, paramLong);
   }
   
   public static boolean a(Handler paramHandler, Message paramMessage, long paramLong)
@@ -380,11 +404,11 @@ public final class co
     return false;
   }
   
-  public static boolean a(File paramFile, byte[] paramArrayOfByte, boolean paramBoolean)
+  public static boolean a(File paramFile, byte[] paramArrayOfByte)
   {
     try
     {
-      paramFile = new FileOutputStream(paramFile, paramBoolean);
+      paramFile = new FileOutputStream(paramFile, false);
       paramFile.write(paramArrayOfByte);
       dt.a(paramFile);
       return true;
@@ -400,84 +424,105 @@ public final class co
   
   public static boolean a(List<ScanResult> paramList1, List<ScanResult> paramList2)
   {
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return false;
-    }
-    int i5 = paramList1.size();
-    int i6 = paramList2.size();
-    if ((i5 == 0) && (i6 == 0)) {
-      return true;
-    }
-    if ((i5 == 0) || (i6 == 0)) {
-      return false;
-    }
-    int i4;
-    int i2;
-    int i1;
-    label79:
-    Object localObject;
-    label161:
-    int i3;
-    if (paramList1.size() > paramList2.size())
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool1 = bool3;
+    if (paramList1 != null)
     {
-      paramList2 = paramList2.iterator();
-      i4 = 1;
-      i2 = 0;
-      i1 = 0;
-      if (!paramList2.hasNext()) {
-        break label233;
-      }
-      localObject = (ScanResult)paramList2.next();
-      Iterator localIterator = paramList1.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext()) {
-          if (((ScanResult)localIterator.next()).BSSID.equals(((ScanResult)localObject).BSSID)) {
-            if ((i4 == 1) && (((ScanResult)localObject).level > -50))
-            {
-              i1 += 1;
-              i3 = i1;
-              if (i4 == 2)
-              {
-                i3 = i1;
-                if (((ScanResult)localObject).level > -60) {
-                  i3 = i1 + 1;
-                }
-              }
-              if ((i4 == 3) && (((ScanResult)localObject).level > -60))
-              {
-                i1 = i3 + 1;
-                label209:
-                i2 += 1;
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      i4 += 1;
-      break label79;
-      localObject = paramList1;
-      paramList1 = paramList2;
-      paramList2 = (List<ScanResult>)localObject;
-      break;
-      label233:
-      if (i1 == 3) {
+      if (paramList2 == null) {
         return false;
       }
-      i1 = i5 + i6;
-      if ((i2 << 1 < i1 * 0.85D) || (i2 < 13)) {}
-      for (boolean bool = true;; bool = false)
-      {
-        new StringBuilder("isDiffrent:c=").append(i5).append(",k=").append(i2).append(",f=").append(i1).append(",r=0.85,s=").append(bool);
-        return bool;
+      int i6 = paramList1.size();
+      int i7 = paramList2.size();
+      if ((i6 == 0) && (i7 == 0)) {
+        return true;
       }
-      i1 = i3;
-      break label209;
-      break label161;
+      bool1 = bool3;
+      if (i6 != 0)
+      {
+        if (i7 == 0) {
+          return false;
+        }
+        Object localObject = paramList1;
+        List<ScanResult> localList = paramList2;
+        if (paramList1.size() > paramList2.size())
+        {
+          localList = paramList1;
+          localObject = paramList2;
+        }
+        paramList1 = ((List)localObject).iterator();
+        int i1 = 0;
+        int i4 = 0;
+        int i5 = 1;
+        while (paramList1.hasNext())
+        {
+          paramList2 = (ScanResult)paramList1.next();
+          localObject = localList.iterator();
+          do
+          {
+            i3 = i1;
+            i2 = i4;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+          } while (!((ScanResult)((Iterator)localObject).next()).BSSID.equals(paramList2.BSSID));
+          int i2 = i1;
+          if (i5 == 1)
+          {
+            i2 = i1;
+            if (paramList2.level > -50) {
+              i2 = i1 + 1;
+            }
+          }
+          int i3 = i2;
+          if (i5 == 2)
+          {
+            i3 = i2;
+            if (paramList2.level > -60) {
+              i3 = i2 + 1;
+            }
+          }
+          i1 = i3;
+          if (i5 == 3)
+          {
+            i1 = i3;
+            if (paramList2.level > -60) {
+              i1 = i3 + 1;
+            }
+          }
+          i2 = i4 + 1;
+          i3 = i1;
+          i5 += 1;
+          i1 = i3;
+          i4 = i2;
+        }
+        if (i1 == 3) {
+          return false;
+        }
+        i1 = i7 + i6;
+        double d1 = i4 << 1;
+        double d2 = i1;
+        Double.isNaN(d2);
+        if (d1 >= d2 * 0.85D)
+        {
+          bool1 = bool2;
+          if (i4 >= 13) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        paramList1 = new StringBuilder("isDiffrent:c=");
+        paramList1.append(i6);
+        paramList1.append(",k=");
+        paramList1.append(i4);
+        paramList1.append(",f=");
+        paramList1.append(i1);
+        paramList1.append(",r=0.85,s=");
+        paramList1.append(bool1);
+      }
     }
+    return bool1;
   }
   
   private static boolean a(Object... paramVarArgs)
@@ -498,119 +543,121 @@ public final class co
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 361	java/io/File:exists	()Z
-    //   4: ifeq +12 -> 16
+    //   1: invokevirtual 369	java/io/File:exists	()Z
+    //   4: ifeq +163 -> 167
     //   7: aload_0
-    //   8: invokevirtual 364	java/io/File:length	()J
+    //   8: invokevirtual 372	java/io/File:length	()J
     //   11: lconst_0
     //   12: lcmp
-    //   13: ifne +7 -> 20
-    //   16: getstatic 367	c/t/m/g/do:a	[B
-    //   19: areturn
-    //   20: new 369	java/io/ByteArrayOutputStream
-    //   23: dup
-    //   24: invokespecial 370	java/io/ByteArrayOutputStream:<init>	()V
-    //   27: astore 4
-    //   29: invokestatic 375	c/t/m/g/dn:a	()Lc/t/m/g/dn;
-    //   32: sipush 2048
-    //   35: invokevirtual 378	c/t/m/g/dn:a	(I)[B
-    //   38: astore 5
-    //   40: new 380	java/io/BufferedInputStream
-    //   43: dup
-    //   44: new 382	java/io/FileInputStream
-    //   47: dup
-    //   48: aload_0
-    //   49: invokespecial 385	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   52: invokespecial 388	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   55: astore_2
-    //   56: aload_2
-    //   57: astore_0
-    //   58: aload_2
-    //   59: aload 5
-    //   61: invokevirtual 392	java/io/BufferedInputStream:read	([B)I
-    //   64: istore_1
-    //   65: iload_1
-    //   66: iconst_m1
-    //   67: if_icmpeq +43 -> 110
-    //   70: aload_2
-    //   71: astore_0
-    //   72: aload 4
-    //   74: aload 5
-    //   76: iconst_0
-    //   77: iload_1
-    //   78: invokevirtual 395	java/io/ByteArrayOutputStream:write	([BII)V
-    //   81: goto -25 -> 56
-    //   84: astore_0
-    //   85: aload_2
-    //   86: astore_0
-    //   87: getstatic 367	c/t/m/g/do:a	[B
-    //   90: astore_3
-    //   91: invokestatic 375	c/t/m/g/dn:a	()Lc/t/m/g/dn;
-    //   94: aload 5
-    //   96: invokevirtual 397	c/t/m/g/dn:a	([B)V
-    //   99: aload_2
-    //   100: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   13: ifne +6 -> 19
+    //   16: goto +151 -> 167
+    //   19: new 374	java/io/ByteArrayOutputStream
+    //   22: dup
+    //   23: invokespecial 375	java/io/ByteArrayOutputStream:<init>	()V
+    //   26: astore 4
+    //   28: aconst_null
+    //   29: astore_3
+    //   30: aconst_null
+    //   31: astore_2
+    //   32: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   35: sipush 2048
+    //   38: invokevirtual 383	c/t/m/g/dn:a	(I)[B
+    //   41: astore 5
+    //   43: new 385	java/io/BufferedInputStream
+    //   46: dup
+    //   47: new 387	java/io/FileInputStream
+    //   50: dup
+    //   51: aload_0
+    //   52: invokespecial 390	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   55: invokespecial 393	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   58: astore_0
+    //   59: aload_0
+    //   60: aload 5
+    //   62: invokevirtual 397	java/io/BufferedInputStream:read	([B)I
+    //   65: istore_1
+    //   66: iload_1
+    //   67: iconst_m1
+    //   68: if_icmpeq +15 -> 83
+    //   71: aload 4
+    //   73: aload 5
+    //   75: iconst_0
+    //   76: iload_1
+    //   77: invokevirtual 400	java/io/ByteArrayOutputStream:write	([BII)V
+    //   80: goto -21 -> 59
+    //   83: aload 4
+    //   85: invokevirtual 403	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   88: astore_2
+    //   89: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   92: aload 5
+    //   94: invokevirtual 405	c/t/m/g/dn:a	([B)V
+    //   97: aload_0
+    //   98: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   101: aload_2
+    //   102: astore_0
     //   103: aload 4
-    //   105: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
-    //   108: aload_3
+    //   105: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   108: aload_0
     //   109: areturn
-    //   110: aload_2
-    //   111: astore_0
-    //   112: aload 4
-    //   114: invokevirtual 400	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   117: astore_3
-    //   118: invokestatic 375	c/t/m/g/dn:a	()Lc/t/m/g/dn;
-    //   121: aload 5
-    //   123: invokevirtual 397	c/t/m/g/dn:a	([B)V
-    //   126: aload_2
-    //   127: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
-    //   130: aload 4
-    //   132: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
-    //   135: aload_3
-    //   136: areturn
-    //   137: astore_0
-    //   138: aconst_null
-    //   139: astore_3
-    //   140: aload_0
-    //   141: astore_2
-    //   142: invokestatic 375	c/t/m/g/dn:a	()Lc/t/m/g/dn;
-    //   145: aload 5
-    //   147: invokevirtual 397	c/t/m/g/dn:a	([B)V
-    //   150: aload_3
-    //   151: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
-    //   154: aload 4
-    //   156: invokestatic 306	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
-    //   159: aload_2
-    //   160: athrow
-    //   161: astore_2
-    //   162: aload_0
-    //   163: astore_3
-    //   164: goto -22 -> 142
-    //   167: astore_0
-    //   168: aconst_null
-    //   169: astore_2
-    //   170: goto -85 -> 85
+    //   110: astore_3
+    //   111: aload_0
+    //   112: astore_2
+    //   113: aload_3
+    //   114: astore_0
+    //   115: goto +33 -> 148
+    //   118: goto +7 -> 125
+    //   121: astore_0
+    //   122: goto +26 -> 148
+    //   125: aload_0
+    //   126: astore_2
+    //   127: getstatic 408	c/t/m/g/do:a	[B
+    //   130: astore_3
+    //   131: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   134: aload 5
+    //   136: invokevirtual 405	c/t/m/g/dn:a	([B)V
+    //   139: aload_0
+    //   140: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   143: aload_3
+    //   144: astore_0
+    //   145: goto -42 -> 103
+    //   148: invokestatic 380	c/t/m/g/dn:a	()Lc/t/m/g/dn;
+    //   151: aload 5
+    //   153: invokevirtual 405	c/t/m/g/dn:a	([B)V
+    //   156: aload_2
+    //   157: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   160: aload 4
+    //   162: invokestatic 308	c/t/m/g/dt:a	(Ljava/io/Closeable;)V
+    //   165: aload_0
+    //   166: athrow
+    //   167: getstatic 408	c/t/m/g/do:a	[B
+    //   170: areturn
+    //   171: astore_0
+    //   172: aload_3
+    //   173: astore_0
+    //   174: goto -49 -> 125
+    //   177: astore_2
+    //   178: goto -60 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	173	0	paramFile	File
-    //   64	14	1	i1	int
-    //   55	105	2	localObject1	Object
-    //   161	1	2	localObject2	Object
-    //   169	1	2	localObject3	Object
-    //   90	74	3	localObject4	Object
-    //   27	128	4	localByteArrayOutputStream	ByteArrayOutputStream
-    //   38	108	5	arrayOfByte	byte[]
+    //   0	181	0	paramFile	File
+    //   65	12	1	i1	int
+    //   31	126	2	localObject1	Object
+    //   177	1	2	localThrowable	Throwable
+    //   29	1	3	localObject2	Object
+    //   110	4	3	localObject3	Object
+    //   130	43	3	arrayOfByte1	byte[]
+    //   26	135	4	localByteArrayOutputStream	ByteArrayOutputStream
+    //   41	111	5	arrayOfByte2	byte[]
     // Exception table:
     //   from	to	target	type
-    //   58	65	84	java/lang/Throwable
-    //   72	81	84	java/lang/Throwable
-    //   112	118	84	java/lang/Throwable
-    //   40	56	137	finally
-    //   58	65	161	finally
-    //   72	81	161	finally
-    //   87	91	161	finally
-    //   112	118	161	finally
-    //   40	56	167	java/lang/Throwable
+    //   59	66	110	finally
+    //   71	80	110	finally
+    //   83	89	110	finally
+    //   43	59	121	finally
+    //   127	131	121	finally
+    //   43	59	171	java/lang/Throwable
+    //   59	66	177	java/lang/Throwable
+    //   71	80	177	java/lang/Throwable
+    //   83	89	177	java/lang/Throwable
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
@@ -637,19 +684,17 @@ public final class co
   
   public static String b(String paramString1, String paramString2)
   {
-    Object localObject = null;
     try
     {
       paramString1 = paramString1.getBytes("UTF-8");
-      return a(paramString1, paramString2);
     }
     catch (Throwable paramString1)
     {
-      for (;;)
-      {
-        paramString1 = localObject;
-      }
+      label11:
+      break label11;
     }
+    paramString1 = null;
+    return a(paramString1, paramString2);
   }
   
   public static void b(String paramString)
@@ -662,8 +707,12 @@ public final class co
   
   private static void b(String paramString, Throwable paramThrowable)
   {
-    if ((dh.b()) && (paramThrowable != null)) {
-      new StringBuilder().append(paramString).append(". exception: ").append(Log.getStackTraceString(paramThrowable));
+    if ((dh.b()) && (paramThrowable != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(". exception: ");
+      localStringBuilder.append(Log.getStackTraceString(paramThrowable));
     }
   }
   
@@ -708,7 +757,8 @@ public final class co
       int i1 = 0;
       while (i1 < i2)
       {
-        localStringBuilder.append(Integer.toHexString(localObject[i1] & 0xFF)).append("");
+        localStringBuilder.append(Integer.toHexString(localObject[i1] & 0xFF));
+        localStringBuilder.append("");
         i1 += 1;
       }
       localObject = localStringBuilder.toString();
@@ -721,45 +771,39 @@ public final class co
   @Nullable
   public static byte[] d(byte[] paramArrayOfByte)
   {
-    int i1 = 0;
     if (paramArrayOfByte == null) {
       return null;
     }
     ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
     InflaterInputStream localInflaterInputStream = new InflaterInputStream(localByteArrayInputStream);
-    paramArrayOfByte = new byte[0];
     byte[] arrayOfByte2 = new byte[1024];
-    for (;;)
+    paramArrayOfByte = new byte[0];
+    int i1 = 0;
+    try
     {
-      try
+      int i3;
+      byte[] arrayOfByte1;
+      do
       {
-        int i2 = localInflaterInputStream.read(arrayOfByte2);
-        if (i2 > 0)
+        i3 = localInflaterInputStream.read(arrayOfByte2);
+        int i2 = i1;
+        arrayOfByte1 = paramArrayOfByte;
+        if (i3 > 0)
         {
-          i1 += i2;
-          byte[] arrayOfByte1 = new byte[i1];
+          i2 = i1 + i3;
+          arrayOfByte1 = new byte[i2];
           System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, paramArrayOfByte.length);
-          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, paramArrayOfByte.length, i2);
-          paramArrayOfByte = arrayOfByte1;
-          if (i2 <= 0) {
-            try
-            {
-              localByteArrayInputStream.close();
-              localInflaterInputStream.close();
-              return paramArrayOfByte;
-            }
-            catch (IOException paramArrayOfByte)
-            {
-              return null;
-            }
-          }
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, paramArrayOfByte.length, i3);
         }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
+        i1 = i2;
+        paramArrayOfByte = arrayOfByte1;
+      } while (i3 > 0);
+      localByteArrayInputStream.close();
+      localInflaterInputStream.close();
+      return arrayOfByte1;
     }
+    catch (Exception|IOException paramArrayOfByte) {}
+    return null;
   }
   
   public static String e(String paramString)
@@ -806,237 +850,217 @@ public final class co
   
   public final void a(cp paramcp, List<cp> paramList)
   {
-    for (;;)
+    label473:
+    label481:
+    synchronized (this.a)
     {
-      ArrayList localArrayList;
-      String str;
-      Object localObject;
-      int i1;
-      synchronized (this.a)
-      {
-        if (!c()) {
-          return;
-        }
-        a("setCellInfos");
-        localArrayList = new ArrayList();
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break label414;
-        }
-        cp localcp = (cp)paramList.next();
-        if (!ct.a(localcp.f, localcp.a, localcp.b, localcp.c, localcp.d)) {
-          continue;
-        }
-        str = localcp.c + "_" + localcp.d;
-        localObject = this.d;
-        if ((c(str)) || (localObject == null) || (((Location)localObject).getLatitude() == 0.0D)) {
-          break label451;
-        }
-        if (((Location)localObject).getLongitude() == 0.0D)
-        {
-          break label451;
-          if (i1 == 0) {
-            continue;
-          }
-          localArrayList.add(localcp);
-        }
+      if (!c()) {
+        return;
       }
-      Pair localPair = (Pair)this.n.get(str);
-      if (localPair == null)
+      a("setCellInfos");
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      for (;;)
       {
-        localObject = Pair.create(Double.valueOf(((Location)localObject).getLatitude()), Double.valueOf(((Location)localObject).getLongitude()));
-        this.n.put(str, localObject);
-        i1 = 1;
-      }
-      else
-      {
-        double d1 = ((Location)localObject).getLatitude();
-        double d3 = ((Location)localObject).getLongitude();
-        double d2 = ((Double)localPair.first).doubleValue();
-        double d4 = ((Double)localPair.second).doubleValue();
-        d1 = a(d1);
-        d2 = a(d2);
-        d3 = a(d3);
-        d4 = a(d4);
-        double d5 = Math.pow(Math.sin((d1 - d2) / 2.0D), 2.0D);
-        d1 = Math.cos(d1);
-        d2 = Math.cos(d2);
-        if (Math.round(Math.asin(Math.sqrt(Math.pow(Math.sin((d3 - d4) / 2.0D), 2.0D) * (d1 * d2) + d5)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D * 1000.0D < 6000.0D)
-        {
-          i1 = 1;
-          continue;
-          label414:
-          this.f = localArrayList;
-          this.i = System.currentTimeMillis();
-          if (!paramcp.equals(this.m))
+        paramList = this;
+        boolean bool = localIterator.hasNext();
+        if (bool) {
+          try
           {
-            this.m = paramcp;
-            b();
+            cp localcp = (cp)localIterator.next();
+            if (ct.a(localcp.f, localcp.a, localcp.b, localcp.c, localcp.d))
+            {
+              Object localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(localcp.c);
+              ((StringBuilder)localObject1).append("_");
+              ((StringBuilder)localObject1).append(localcp.d);
+              localObject1 = ((StringBuilder)localObject1).toString();
+              Object localObject2 = paramList.d;
+              if ((!c((String)localObject1)) && (localObject2 != null) && (((Location)localObject2).getLatitude() != 0.0D) && (((Location)localObject2).getLongitude() != 0.0D))
+              {
+                Pair localPair = (Pair)paramList.n.get(localObject1);
+                if (localPair == null)
+                {
+                  localObject2 = Pair.create(Double.valueOf(((Location)localObject2).getLatitude()), Double.valueOf(((Location)localObject2).getLongitude()));
+                  paramList.n.put(localObject1, localObject2);
+                }
+                double d1;
+                do
+                {
+                  i1 = 1;
+                  break;
+                  double d2 = ((Location)localObject2).getLatitude();
+                  double d3 = ((Location)localObject2).getLongitude();
+                  double d4 = ((Double)localPair.first).doubleValue();
+                  d1 = ((Double)localPair.second).doubleValue();
+                  d2 = a(d2);
+                  d4 = a(d4);
+                  d3 = a(d3);
+                  d1 = a(d1);
+                  long l1 = Math.round(Math.asin(Math.sqrt(Math.pow(Math.sin((d2 - d4) / 2.0D), 2.0D) + Math.cos(d2) * Math.cos(d4) * Math.pow(Math.sin((d3 - d1) / 2.0D), 2.0D))) * 2.0D * 6378.1369999999997D * 10000.0D);
+                  d1 = l1;
+                  Double.isNaN(d1);
+                } while (d1 / 10000.0D * 1000.0D < 6000.0D);
+              }
+              int i1 = 0;
+              if (i1 != 0) {
+                localArrayList.add(localcp);
+              }
+            }
           }
-          return;
-          label451:
-          i1 = 0;
-        }
-        else
-        {
-          i1 = 0;
+          finally
+          {
+            break label473;
+          }
         }
       }
+      paramList.f = localArrayList;
+      paramList.i = System.currentTimeMillis();
+      if (!paramcp.equals(paramList.m))
+      {
+        paramList.m = paramcp;
+        b();
+      }
+      return;
+      break label481;
+      throw paramcp;
     }
   }
   
   public final void a(String paramString1, String paramString2)
   {
-    synchronized (this.a)
+    for (;;)
     {
-      if ((this.b == null) || (c(paramString2))) {
+      synchronized (this.a)
+      {
+        if (this.b != null)
+        {
+          boolean bool = c(paramString2);
+          if (!bool)
+          {
+            try
+            {
+              Object localObject = new StringBuilder("setSetting(");
+              ((StringBuilder)localObject).append(paramString1);
+              ((StringBuilder)localObject).append(",");
+              ((StringBuilder)localObject).append(paramString2);
+              ((StringBuilder)localObject).append(")");
+              a(((StringBuilder)localObject).toString());
+              if ("D_CH_ID".equals(paramString1))
+              {
+                cv.a(paramString2);
+              }
+              else if ("D_FC_SRC".equals(paramString1))
+              {
+                cv.b(paramString2);
+              }
+              else if ("D_POS_COLL".equals(paramString1))
+              {
+                cu.c = Boolean.parseBoolean(paramString2.toLowerCase());
+              }
+              else if ("D_WRITE_MAC".equals(paramString1))
+              {
+                cu.d = Boolean.parseBoolean(paramString2.toLowerCase());
+              }
+              else if ("D_UP_NET".equals(paramString1))
+              {
+                if ("m".equals(paramString2.toLowerCase()))
+                {
+                  cu.f = true;
+                }
+                else if ("w".equals(paramString2.toLowerCase()))
+                {
+                  cu.f = false;
+                  cu.g = false;
+                }
+                else if ("w_m1".equals(paramString2.toLowerCase()))
+                {
+                  cu.f = false;
+                  cu.g = true;
+                }
+              }
+              else if ("D_EXTRA_SET_SN".equals(paramString1))
+              {
+                if (!c(paramString2)) {
+                  break label677;
+                }
+                localObject = "";
+                cx.a = (String)localObject;
+              }
+              else
+              {
+                localObject = this.b;
+                if ("D_UP_INTERVAL".equals(paramString1)) {
+                  ((cq)localObject).b = Math.max(900000L, Long.parseLong(paramString2));
+                } else if ("D_UP_USE_HTTPS".equals(paramString1)) {
+                  cu.e = Boolean.parseBoolean(paramString2);
+                } else if ("D_MAX_1F_SIZE".equals(paramString1)) {
+                  ((cq)localObject).a = cq.a(Long.parseLong(paramString2), 10240L, 512000L);
+                } else if ("D_NUM_UP".equals(paramString1)) {
+                  ((cq)localObject).c = ((int)cq.a(Long.parseLong(paramString2), 1L, 5L));
+                } else if ("D_MAX_BUF_WF".equals(paramString1)) {
+                  ((cq)localObject).d = ((int)cq.a(Long.parseLong(paramString2), 5120L, 51200L));
+                } else if ("D_MAX_FOLDER_SIZE".equals(paramString1)) {
+                  ((cq)localObject).e = cq.a(Long.parseLong(paramString2), 10485760L, 209715200L);
+                } else if ("D_MAX_SIZE_UP_1DAY".equals(paramString1)) {
+                  ((cq)localObject).f = Math.max(Long.parseLong(paramString2), 0L);
+                } else if ("D_MAX_DAY_RENAME".equals(paramString1)) {
+                  ((cq)localObject).g = (cq.a(Long.parseLong(paramString2), 1L, 5L) * 24L * 60L * 60L * 1000L);
+                } else if ("D_MAX_DAY_DELETE".equals(paramString1)) {
+                  ((cq)localObject).h = (cq.a(Long.parseLong(paramString2), 1L, 30L) * 24L * 60L * 60L * 1000L);
+                } else if ("D_UP_WF_INFO".equals(paramString1)) {
+                  ((cq)localObject).i = Boolean.parseBoolean(paramString2);
+                } else if ("D_UP_U_TRACK_INFO".equals(paramString1)) {
+                  ((cq)localObject).j = Boolean.parseBoolean(paramString2);
+                }
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              StringBuilder localStringBuilder = new StringBuilder("set setting data[");
+              localStringBuilder.append(paramString1);
+              localStringBuilder.append(",");
+              localStringBuilder.append(paramString2);
+              localStringBuilder.append("] error.");
+              a(localStringBuilder.toString(), localThrowable);
+            }
+            return;
+          }
+        }
         return;
       }
-    }
-    try
-    {
-      a("setSetting(" + paramString1 + "," + paramString2 + ")");
-      if ("D_CH_ID".equals(paramString1)) {
-        cv.a(paramString2);
-      }
-      for (;;)
-      {
-        return;
-        paramString1 = finally;
-        throw paramString1;
-        if (!"D_FC_SRC".equals(paramString1)) {
-          break;
-        }
-        cv.b(paramString2);
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        a("set setting data[" + paramString1 + "," + paramString2 + "] error.", localThrowable);
-        continue;
-        if ("D_POS_COLL".equals(paramString1))
-        {
-          cu.c = Boolean.parseBoolean(paramString2.toLowerCase());
-        }
-        else if ("D_WRITE_MAC".equals(paramString1))
-        {
-          cu.d = Boolean.parseBoolean(paramString2.toLowerCase());
-        }
-        else
-        {
-          if (!"D_UP_NET".equals(paramString1)) {
-            break;
-          }
-          if ("m".equals(paramString2.toLowerCase()))
-          {
-            cu.f = true;
-          }
-          else if ("w".equals(paramString2.toLowerCase()))
-          {
-            cu.f = false;
-            cu.g = false;
-          }
-          else if ("w_m1".equals(paramString2.toLowerCase()))
-          {
-            cu.f = false;
-            cu.g = true;
-          }
-        }
-      }
-      if (!"D_EXTRA_SET_SN".equals(paramString1)) {
-        break label295;
-      }
-    }
-    if (c(paramString2)) {}
-    for (Object localObject = "";; localObject = paramString2)
-    {
-      cx.a = (String)localObject;
-      break;
-      label295:
-      localObject = this.b;
-      if ("D_UP_INTERVAL".equals(paramString1))
-      {
-        ((cq)localObject).b = Math.max(900000L, Long.parseLong(paramString2));
-        break;
-      }
-      if ("D_UP_USE_HTTPS".equals(paramString1))
-      {
-        cu.e = Boolean.parseBoolean(paramString2);
-        break;
-      }
-      if ("D_MAX_1F_SIZE".equals(paramString1))
-      {
-        ((cq)localObject).a = cq.a(Long.parseLong(paramString2), 10240L, 512000L);
-        break;
-      }
-      if ("D_NUM_UP".equals(paramString1))
-      {
-        ((cq)localObject).c = ((int)cq.a(Long.parseLong(paramString2), 1L, 5L));
-        break;
-      }
-      if ("D_MAX_BUF_WF".equals(paramString1))
-      {
-        ((cq)localObject).d = ((int)cq.a(Long.parseLong(paramString2), 5120L, 51200L));
-        break;
-      }
-      if ("D_MAX_FOLDER_SIZE".equals(paramString1))
-      {
-        ((cq)localObject).e = cq.a(Long.parseLong(paramString2), 10485760L, 209715200L);
-        break;
-      }
-      if ("D_MAX_SIZE_UP_1DAY".equals(paramString1))
-      {
-        ((cq)localObject).f = Math.max(Long.parseLong(paramString2), 0L);
-        break;
-      }
-      if ("D_MAX_DAY_RENAME".equals(paramString1))
-      {
-        ((cq)localObject).g = (cq.a(Long.parseLong(paramString2), 1L, 5L) * 24L * 60L * 60L * 1000L);
-        break;
-      }
-      if ("D_MAX_DAY_DELETE".equals(paramString1))
-      {
-        ((cq)localObject).h = (cq.a(Long.parseLong(paramString2), 1L, 30L) * 24L * 60L * 60L * 1000L);
-        break;
-      }
-      if ("D_UP_WF_INFO".equals(paramString1))
-      {
-        ((cq)localObject).i = Boolean.parseBoolean(paramString2);
-        break;
-      }
-      if (!"D_UP_U_TRACK_INFO".equals(paramString1)) {
-        break;
-      }
-      ((cq)localObject).j = Boolean.parseBoolean(paramString2);
-      break;
+      label677:
+      String str = paramString2;
     }
   }
   
   public final void b()
   {
-    if ((!a(new Object[] { this.b, this.d })) || (a(this.f))) {}
-    long l1;
-    do
+    if (a(new Object[] { this.b, this.d }))
     {
-      do
-      {
+      if (a(this.f)) {
         return;
-      } while ((cu.f) && (cy.a(this.l) == 3));
-      l1 = System.currentTimeMillis();
-    } while (l1 - this.i >= this.h);
-    this.k = l1;
-    this.e = a(this.e, this.d);
-    this.b.a(this.d, null, this.f);
+      }
+      if ((cu.f) && (cy.a(this.l) == 3)) {
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      if (l1 - this.i < this.h)
+      {
+        this.k = l1;
+        this.e = a(this.e, this.d);
+        this.b.a(this.d, null, this.f);
+      }
+    }
   }
   
   public final boolean c()
   {
-    if (this.b == null) {
+    cq localcq = this.b;
+    if (localcq == null) {
       return false;
     }
-    return this.b.d();
+    return localcq.d();
   }
   
   public final void d()
@@ -1054,7 +1078,7 @@ public final class co
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.co
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,13 @@ package com.tencent.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bibv;
-import bibw;
 import com.tencent.image.URLImageView;
 
 public class URLThemeImageView
   extends URLImageView
-  implements bibw
+  implements ThemeImageWrapper.DrawInterface
 {
-  public bibv a;
+  public ThemeImageWrapper themeImageWrapper;
   
   public URLThemeImageView(Context paramContext)
   {
@@ -26,24 +24,20 @@ public class URLThemeImageView
   public URLThemeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b();
+    init();
   }
   
-  public void a_(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
-  protected void b()
+  protected void init()
   {
     setSupportMaskView(true);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null)
     {
-      this.a.a(paramCanvas, this);
+      localThemeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -53,20 +47,26 @@ public class URLThemeImageView
   {
     if (paramBoolean)
     {
-      if (this.a == null) {
-        this.a = new bibv();
+      if (this.themeImageWrapper == null) {
+        this.themeImageWrapper = new ThemeImageWrapper();
       }
-      this.a.a(true);
-    }
-    while (this.a == null) {
+      this.themeImageWrapper.setSupportMaskView(true);
       return;
     }
-    this.a.a(false);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setSupportMaskView(false);
+    }
+  }
+  
+  public void superOnDraw(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.URLThemeImageView
  * JD-Core Version:    0.7.0.1
  */

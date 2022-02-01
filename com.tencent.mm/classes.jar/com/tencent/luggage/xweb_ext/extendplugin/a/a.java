@@ -1,7 +1,9 @@
 package com.tencent.luggage.xweb_ext.extendplugin.a;
 
+import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.view.MotionEvent;
+import android.view.Surface;
 import com.tencent.luggage.xweb_ext.extendplugin.b.c;
 import com.tencent.luggage.xweb_ext.extendplugin.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,24 +11,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   implements b
 {
-  protected c bFS;
-  protected volatile boolean bIZ;
+  protected volatile boolean eEm;
+  protected c exB;
   protected int id;
-  protected String type;
-  
-  public String a(com.tencent.luggage.xweb_ext.extendplugin.a parama)
-  {
-    return null;
-  }
+  public String type;
   
   public final void a(c paramc)
   {
-    this.bFS = paramc;
+    this.exB = paramc;
   }
   
-  public void d(SurfaceTexture paramSurfaceTexture)
+  public void atW()
   {
-    this.bIZ = true;
+    this.eEm = false;
+  }
+  
+  public final c auT()
+  {
+    return this.exB;
+  }
+  
+  public void e(SurfaceTexture paramSurfaceTexture)
+  {
+    this.eEm = true;
+  }
+  
+  public boolean g(com.tencent.luggage.xweb_ext.extendplugin.a parama)
+  {
+    return false;
   }
   
   public final int getId()
@@ -34,12 +46,25 @@ public class a
     return this.id;
   }
   
-  public final String getType()
+  public String h(com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
-    return this.type;
+    return null;
   }
   
-  public void m(MotionEvent paramMotionEvent) {}
+  public void i(Surface paramSurface)
+  {
+    this.eEm = true;
+  }
+  
+  public final String key()
+  {
+    AppMethodBeat.i(139353);
+    String str = d.G(this.type, this.id);
+    AppMethodBeat.o(139353);
+    return str;
+  }
+  
+  public void o(MotionEvent paramMotionEvent) {}
   
   public final void setId(int paramInt)
   {
@@ -51,32 +76,11 @@ public class a
     this.type = paramString;
   }
   
-  public final String tX()
-  {
-    AppMethodBeat.i(140002);
-    String str = d.m(this.type, this.id);
-    AppMethodBeat.o(140002);
-    return str;
-  }
-  
-  public boolean xp()
-  {
-    return false;
-  }
-  
-  public void xq()
-  {
-    this.bIZ = false;
-  }
-  
-  public final c yh()
-  {
-    return this.bFS;
-  }
+  public void y(Bitmap paramBitmap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.a.a
  * JD-Core Version:    0.7.0.1
  */

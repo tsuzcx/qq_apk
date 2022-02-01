@@ -2,9 +2,9 @@ package android.support.v4.b;
 
 public abstract interface o<T>
 {
-  public abstract T bl();
+  public abstract T bC();
   
-  public abstract boolean m(T paramT);
+  public abstract boolean t(T paramT);
 }
 
 

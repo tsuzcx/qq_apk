@@ -21,9 +21,9 @@ import com.tencent.open.appcommon.js.OpenJsBridge;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.downloadnew.MyAppApi;
 import com.tencent.smtt.sdk.WebView;
+import hke;
 import hkf;
 import hkg;
-import hkh;
 import java.io.File;
 
 public abstract class AppViewBaseActivity
@@ -52,8 +52,8 @@ public abstract class AppViewBaseActivity
   public static final int r = 103;
   public static final int s = 104;
   public OpenJsBridge a;
+  public hkf a;
   public hkg a;
-  public hkh a;
   public long b;
   public Handler b;
   public long c;
@@ -80,8 +80,8 @@ public abstract class AppViewBaseActivity
   {
     this.jdField_g_of_type_Boolean = false;
     this.jdField_c_of_type_AndroidOsHandler = new AppViewBaseActivity.ExtendHandler(this);
-    this.jdField_a_of_type_Hkh = new hkh(this, this);
     this.jdField_a_of_type_Hkg = new hkg(this, this);
+    this.jdField_a_of_type_Hkf = new hkf(this, this);
   }
   
   public static void b(boolean paramBoolean)
@@ -120,7 +120,7 @@ public abstract class AppViewBaseActivity
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
     }
-    ThreadManager.b(new hkf(this, paramObject, paramString2, paramString1));
+    ThreadManager.b(new hke(this, paramObject, paramString2, paramString1));
   }
   
   public boolean a(WebView paramWebView, String paramString)
@@ -135,8 +135,8 @@ public abstract class AppViewBaseActivity
       return;
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232132);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232131);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232130);
     this.jdField_b_of_type_AndroidViewView.setVisibility(4);
     if (paramBundle.getString("visible").equals("1"))
     {
@@ -254,8 +254,8 @@ public abstract class AppViewBaseActivity
       this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge = null;
     }
     super.doOnDestroy();
-    this.jdField_a_of_type_Hkh.a();
     this.jdField_a_of_type_Hkg.a();
+    this.jdField_a_of_type_Hkf.a();
   }
   
   public void doOnPause()
@@ -351,7 +351,7 @@ public abstract class AppViewBaseActivity
   public boolean showPreview()
   {
     f(2130903101);
-    ((TextView)findViewById(2131231196)).setText(2131560530);
+    ((TextView)findViewById(2131231195)).setText(2131560530);
     return true;
   }
 }

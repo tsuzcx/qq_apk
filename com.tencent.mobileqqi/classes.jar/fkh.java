@@ -1,17 +1,20 @@
-import com.dataline.util.WaitEvent;
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class fkh
   implements Runnable
 {
-  public fkh(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
+  public fkh(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString) {}
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("path", this.jdField_a_of_type_JavaLangString);
+    if (localDataLineMsgRecord != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    }
   }
 }
 

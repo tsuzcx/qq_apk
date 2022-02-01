@@ -1,178 +1,172 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class ayu
-  extends buy
+  extends erp
 {
-  public SKBuiltinBuffer_t wvN;
-  public int xos;
-  public SKBuiltinBuffer_t xot;
-  public SKBuiltinBuffer_t xou;
+  public atz ZEc;
+  public String finderUsername;
+  public long hKN;
+  public b lastBuffer;
+  public b likeBuffer;
+  public String objectNonceId;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72859);
+    AppMethodBeat.i(259286);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xot == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: KVBuffer");
-        AppMethodBeat.o(72859);
-        throw paramVarArgs;
-      }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.xos);
-      if (this.xot != null)
+      if (this.ZEc != null)
       {
-        paramVarArgs.iQ(3, this.xot.computeSize());
-        this.xot.writeFields(paramVarArgs);
+        paramVarArgs.qD(2, this.ZEc.computeSize());
+        this.ZEc.writeFields(paramVarArgs);
       }
-      if (this.wvN != null)
-      {
-        paramVarArgs.iQ(4, this.wvN.computeSize());
-        this.wvN.writeFields(paramVarArgs);
+      if (this.finderUsername != null) {
+        paramVarArgs.g(3, this.finderUsername);
       }
-      if (this.xou != null)
-      {
-        paramVarArgs.iQ(5, this.xou.computeSize());
-        this.xou.writeFields(paramVarArgs);
+      paramVarArgs.bS(4, this.scene);
+      if (this.lastBuffer != null) {
+        paramVarArgs.d(5, this.lastBuffer);
       }
-      AppMethodBeat.o(72859);
+      paramVarArgs.bv(6, this.hKN);
+      if (this.objectNonceId != null) {
+        paramVarArgs.g(7, this.objectNonceId);
+      }
+      if (this.likeBuffer != null) {
+        paramVarArgs.d(8, this.likeBuffer);
+      }
+      AppMethodBeat.o(259286);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label866;
+        break label750;
       }
     }
-    label866:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label750:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.xos);
       paramInt = i;
-      if (this.xot != null) {
-        paramInt = i + e.a.a.a.iP(3, this.xot.computeSize());
+      if (this.ZEc != null) {
+        paramInt = i + i.a.a.a.qC(2, this.ZEc.computeSize());
       }
       i = paramInt;
-      if (this.wvN != null) {
-        i = paramInt + e.a.a.a.iP(4, this.wvN.computeSize());
+      if (this.finderUsername != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.finderUsername);
       }
+      i += i.a.a.b.b.a.cJ(4, this.scene);
       paramInt = i;
-      if (this.xou != null) {
-        paramInt = i + e.a.a.a.iP(5, this.xou.computeSize());
+      if (this.lastBuffer != null) {
+        paramInt = i + i.a.a.b.b.a.c(5, this.lastBuffer);
       }
-      AppMethodBeat.o(72859);
-      return paramInt;
+      i = paramInt + i.a.a.b.b.a.q(6, this.hKN);
+      paramInt = i;
+      if (this.objectNonceId != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.objectNonceId);
+      }
+      i = paramInt;
+      if (this.likeBuffer != null) {
+        i = paramInt + i.a.a.b.b.a.c(8, this.likeBuffer);
+      }
+      AppMethodBeat.o(259286);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.xot == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: KVBuffer");
-          AppMethodBeat.o(72859);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(72859);
+        AppMethodBeat.o(259286);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         ayu localayu = (ayu)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72859);
+          AppMethodBeat.o(259286);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localayu.BaseRequest = ((hq)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localayu.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(72859);
+          AppMethodBeat.o(259286);
           return 0;
         case 2: 
-          localayu.xos = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(72859);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new atz();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((atz)localObject2).parseFrom((byte[])localObject1);
+            }
+            localayu.ZEc = ((atz)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259286);
           return 0;
         case 3: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localayu.xot = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72859);
+          localayu.finderUsername = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(259286);
           return 0;
         case 4: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localayu.wvN = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72859);
+          localayu.scene = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(259286);
+          return 0;
+        case 5: 
+          localayu.lastBuffer = ((i.a.a.a.a)localObject1).ajGk.kFX();
+          AppMethodBeat.o(259286);
+          return 0;
+        case 6: 
+          localayu.hKN = ((i.a.a.a.a)localObject1).ajGk.aaw();
+          AppMethodBeat.o(259286);
+          return 0;
+        case 7: 
+          localayu.objectNonceId = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(259286);
           return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localayu.xou = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(72859);
+        localayu.likeBuffer = ((i.a.a.a.a)localObject1).ajGk.kFX();
+        AppMethodBeat.o(259286);
         return 0;
       }
-      AppMethodBeat.o(72859);
+      AppMethodBeat.o(259286);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ayu
  * JD-Core Version:    0.7.0.1
  */

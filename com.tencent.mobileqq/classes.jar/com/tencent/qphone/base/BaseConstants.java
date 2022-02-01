@@ -23,6 +23,17 @@ public class BaseConstants
   public static final String ATTRIBUT_TIMEOUT_ISCONN = "_attr_timeout_isconn";
   public static final String ATTRIBUT_TIMEOUT_NETSTATE = "_attr_timeout_netstate";
   public static final String ATTRIBUT_TIMEOUT_SOCKET_CONN_TIME = "_attr_timeout_socket_conn_time";
+  public static final String ATTR_KET_BUSINESS_SQE = "key_business_seq";
+  public static final String ATTR_KET_BUSINESS_TYPE = "businessType";
+  public static final String ATTR_KET_ERR_MSG = "errMsg";
+  public static final String ATTR_KET_EXTRA_MAP = "extraMap";
+  public static final String ATTR_KET_PHONE_TOKEN = "phoneToken";
+  public static final String ATTR_KET_RET = "ret";
+  public static final String ATTR_KET_SIF_SESSION = "sigSession";
+  public static final String ATTR_KET_SSO_SEQ = "key_sso_seq";
+  public static final String ATTR_KET_TO_SERVICE_MSG = "key_to_service_msg";
+  public static final String ATTR_KET_UIN = "uin";
+  public static final String ATTR_KET_USER_SIG_INFO = "userSigInfo";
   public static final String Attribute_DEVICEGUID = "_attr_deviceGUID";
   public static final String Attribute_RESP_APP_TIMEOUT = "_attr_app_timeout";
   public static final String Attribute_SERVERTIME = "_attr_server";
@@ -155,11 +166,13 @@ public class BaseConstants
   public static final String CMD_UNREGISTERMSFSERVICE = "cmd_UnRegisterMsfService";
   public static final String CMD_UNREGISTER_NOTIFY = "notify.unRegister";
   public static final String CMD_UNREGISTER_PUSH = "push.unRegister";
+  public static final String CMD_UPDATE_MANAGER_CONFIG = "cmd_update_manager_config";
   public static final String CMD_USERENTER = "cmd_userEnter";
   public static final String CMD_USEREXIT = "cmd_userExit";
   public static final String CMD_VERIFY_PASSWD = "login.verifyPasswd";
   public static final String CMD_VERIFY_PASSWD_IMAGE = "login.verifyPasswdImage";
   public static final String CMD_VERIFY_PASSWD_REFRESH_IMAGE = "login.verifyPasswdRefreshImage";
+  public static final String CMD_WAKE_FROM_DS = "cmd_wake_from_deep_sleep";
   public static final String CMD_WIRELESSMEIBAOREQ = "PwdProtect.DataUpload";
   public static final String CMD_WIRELESSPSWREQ = "KsidTrans.Trans";
   public static final String CMD_WT_LOGIN_ADDCONTACTS = "account.RequestVerifyWTLogin_emp";
@@ -230,7 +243,8 @@ public class BaseConstants
   public static final String FLOW_XG_CHAT_KEY = "param_XGChatFlow";
   public static final String FLOW_XG_KEY = "param_XGFlow";
   public static final String FLOW_XG_RDM_KEY = "param_XGRdmFlow";
-  public static int MAXSENDCOUNT_INMINUTE = 0;
+  public static final boolean IS_RELEASE_SUPPORT_SWITCH_TO_TEST_ENV = false;
+  public static int MAXSENDCOUNT_INMINUTE = 150;
   public static final String MINI_SDK = "";
   public static final String NETEXCEPTION_ATTRIBUTE_EXCEPTYPE = "NetExceptionType";
   public static final int NETEXCEPTION_TYPE_MESSAGETIMEOUT = 1;
@@ -239,9 +253,12 @@ public class BaseConstants
   public static final int NETINFO_NONE = 0;
   public static final int NETINFO_WIFI = 2;
   public static final int NETINFO_WIFIANDMOBILE = 3;
-  public static String RDM_NoChangeFailCode;
+  public static final long OPEN_SDK_BUFLAG_B1 = 1600001540L;
+  public static String RDM_NoChangeFailCode = "rdm_NCF";
   public static final int REGUIN_CAPTCHA = 4;
+  public static final int REGUIN_FACE = 59;
   public static final int REGUIN_GUARANTEE = 8;
+  public static final int REGUIN_IFRAME = 9;
   public static final int REGUIN_JUMPURL = 3;
   public static final int REGUIN_QUERYSMS = 4;
   public static final int REGUIN_REJECT = 7;
@@ -249,10 +266,8 @@ public class BaseConstants
   public static final int REGUIN_SUCC = 0;
   public static final int REGUIN_UPSMS = 2;
   public static final int REGUIN_WAITSMS = 1;
-  public static int REPORTLOGMAXPACKAGECOUNT = 0;
-  public static long REPORTLOGONCEMAXSIZE = 20971520L;
-  public static int REPORTLOG_WIFI_MAXPACKAGECOUNT = 0;
   public static final int RET_USER_CANCEL = -20160326;
+  public static final int ROUTING_ID = 62;
   public static final int SERVERPUSH_TYPE_MEDIASERVERLIST = 1;
   public static final int SERVERPUSH_TYPE_USERLOGLEVEL = 2;
   public static final String SIMPLEACCOUNT_TAG_IsShare = "__isShare";
@@ -276,36 +291,22 @@ public class BaseConstants
   public static final int TYPE_BOOT_ACTION_NORMAL = 0;
   public static final byte UINTYPE_QQ = 0;
   public static final String UIN_NOUIN = "0";
-  public static int USEWAKELOCK_MINFAILEDCOUNT = 0;
+  public static int USEWAKELOCK_MINFAILEDCOUNT = 5;
   public static String[] WiFiloginMergeTSAddress;
   public static String[] XGloginMergeTSAddress;
-  public static int checkExpiresLogScreenOffCount = 0;
+  public static int checkExpiresLogScreenOffCount = 2;
   public static final boolean isGrayVersion = false;
   public static final boolean isPublicVersion = true;
   public static final boolean isReleaseVersion = true;
+  public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
-  public static long reSendIntrevTime = 0L;
-  public static final String revision = "fd2cc8f9";
-  public static String testServerAddress;
-  
-  static
-  {
-    REPORTLOGMAXPACKAGECOUNT = 1;
-    REPORTLOG_WIFI_MAXPACKAGECOUNT = 5;
-    checkExpiresLogScreenOffCount = 2;
-    reSendIntrevTime = 5000L;
-    RDM_NoChangeFailCode = "rdm_NCF";
-    isUseDebugSso = false;
-    testServerAddress = "";
-    XGloginMergeTSAddress = null;
-    WiFiloginMergeTSAddress = null;
-    MAXSENDCOUNT_INMINUTE = 150;
-    USEWAKELOCK_MINFAILEDCOUNT = 5;
-  }
+  public static long reSendIntrevTime = 5000L;
+  public static final String revision = "846a9bfd";
+  public static final String testServerAddress = "socket://183.3.233.202:14000";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.BaseConstants
  * JD-Core Version:    0.7.0.1
  */

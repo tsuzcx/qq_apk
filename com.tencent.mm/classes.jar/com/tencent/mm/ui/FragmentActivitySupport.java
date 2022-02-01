@@ -8,20 +8,21 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import com.tencent.mm.sdk.platformtools.ah;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 
 public abstract class FragmentActivitySupport
   extends Fragment
 {
+  private byte _hellAccFlag_;
   public boolean hasDestory = false;
   public boolean isCurrentActivity;
   private FragmentActivity mActivity;
@@ -73,6 +74,28 @@ public abstract class FragmentActivitySupport
       return Boolean.valueOf(thisActivity().getIntent().getBooleanExtra(paramString, paramBoolean));
     }
     return Boolean.valueOf(getArguments().getBoolean(paramString, paramBoolean));
+  }
+  
+  public byte[] getByteArrayExtra(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.isCurrentActivity)
+    {
+      localObject1 = localObject2;
+      if (thisActivity() != null) {
+        localObject1 = thisActivity().getIntent().getByteArrayExtra(paramString);
+      }
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = localObject1;
+      if (getArguments() != null) {
+        localObject2 = super.getArguments().getByteArray(paramString);
+      }
+    }
+    return localObject2;
   }
   
   public ContentResolver getContentResolver()
@@ -285,19 +308,27 @@ public abstract class FragmentActivitySupport
   
   public void startActivity(Intent paramIntent)
   {
-    FragmentActivity localFragmentActivity = thisActivity();
-    if (localFragmentActivity == null)
+    Object localObject = thisActivity();
+    if (localObject == null)
     {
-      ah.getContext().startActivity(paramIntent);
+      localObject = MMApplicationContext.getContext();
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aYi(), "com/tencent/mm/ui/FragmentActivitySupport", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramIntent.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/ui/FragmentActivitySupport", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
-    localFragmentActivity.startActivityFromFragment(this, paramIntent, -1);
+    ((FragmentActivity)localObject).startActivityFromFragment(this, paramIntent, -1);
   }
   
   public void startFragment(Class<?> paramClass, Intent paramIntent)
   {
-    if (this.isCurrentActivity) {
-      startActivity(paramIntent);
+    if (this.isCurrentActivity)
+    {
+      paramClass = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramClass.aYi(), "com/tencent/mm/ui/FragmentActivitySupport", "startFragment", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramClass.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/FragmentActivitySupport", "startFragment", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
@@ -311,7 +342,7 @@ public abstract class FragmentActivitySupport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.FragmentActivitySupport
  * JD-Core Version:    0.7.0.1
  */

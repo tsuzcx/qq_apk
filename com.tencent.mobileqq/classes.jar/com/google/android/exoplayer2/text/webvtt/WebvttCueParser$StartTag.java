@@ -25,24 +25,23 @@ final class WebvttCueParser$StartTag
       return null;
     }
     int i = ((String)localObject).indexOf(" ");
-    String str;
     if (i == -1)
     {
       paramString = "";
-      localObject = ((String)localObject).split("\\.");
-      str = localObject[0];
-      if (localObject.length <= 1) {
-        break label90;
-      }
     }
-    label90:
-    for (localObject = (String[])Arrays.copyOfRange((Object[])localObject, 1, localObject.length);; localObject = NO_CLASSES)
+    else
     {
-      return new StartTag(str, paramInt, paramString, (String[])localObject);
       paramString = ((String)localObject).substring(i).trim();
       localObject = ((String)localObject).substring(0, i);
-      break;
     }
+    localObject = ((String)localObject).split("\\.");
+    String str = localObject[0];
+    if (localObject.length > 1) {
+      localObject = (String[])Arrays.copyOfRange((Object[])localObject, 1, localObject.length);
+    } else {
+      localObject = NO_CLASSES;
+    }
+    return new StartTag(str, paramInt, paramString, (String[])localObject);
   }
   
   public static StartTag buildWholeCueVirtualTag()
@@ -52,7 +51,7 @@ final class WebvttCueParser$StartTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.WebvttCueParser.StartTag
  * JD-Core Version:    0.7.0.1
  */

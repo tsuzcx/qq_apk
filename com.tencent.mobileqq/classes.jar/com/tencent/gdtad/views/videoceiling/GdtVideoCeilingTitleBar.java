@@ -1,26 +1,23 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aase;
-import aauz;
-import aava;
-import aavb;
-import aepi;
-import alud;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class GdtVideoCeilingTitleBar
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int;
-  private aavb jdField_a_of_type_Aavb;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  private TextView a;
   private TextView b;
+  private GdtVideoCeilingTitleBar.OnBtnClickListener c;
+  private String d;
+  private int e;
   
   public GdtVideoCeilingTitleBar(Context paramContext)
   {
@@ -39,61 +36,66 @@ public class GdtVideoCeilingTitleBar
   
   public void a()
   {
-    aase.b("GdtVideoCeilingView", "updateBar Style " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int != 1)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateBar Style ");
+    ((StringBuilder)localObject).append(this.e);
+    GdtLog.b("GdtVideoCeilingView", ((StringBuilder)localObject).toString());
+    if (this.e != 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.setVisibility(8);
       this.b.setVisibility(0);
-      String str = alud.a(2131705620) + this.jdField_a_of_type_JavaLangString;
-      int i = "在APP中打开".length();
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.length() <= i))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131903206));
+      ((StringBuilder)localObject).append(this.d);
+      localObject = ((StringBuilder)localObject).toString();
+      if ((!TextUtils.isEmpty(this.d)) && (((String)localObject).length() <= 7))
       {
-        this.b.setText(str);
+        this.b.setText((CharSequence)localObject);
         return;
       }
       this.b.setText("在APP中打开");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377938));
-    this.b = ((TextView)findViewById(2131371393));
-    this.b.setOnClickListener(new aauz(this));
-    View localView = findViewById(2131363020);
-    int i = aepi.a(5.0F, getResources());
-    aepi.a(localView, i, i, 0, i);
-    localView.setOnClickListener(new aava(this));
+    this.a = ((TextView)findViewById(2131447463));
+    this.b = ((TextView)findViewById(2131439593));
+    this.b.setOnClickListener(new GdtVideoCeilingTitleBar.1(this));
+    View localView = findViewById(2131429208);
+    int i = AIOUtils.b(5.0F, getResources());
+    AIOUtils.a(localView, i, i, 0, i);
+    localView.setOnClickListener(new GdtVideoCeilingTitleBar.2(this));
   }
   
   public void setAppName(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
-  public void setOnBtnClickListener(aavb paramaavb)
+  public void setOnBtnClickListener(GdtVideoCeilingTitleBar.OnBtnClickListener paramOnBtnClickListener)
   {
-    this.jdField_a_of_type_Aavb = paramaavb;
+    this.c = paramOnBtnClickListener;
   }
   
   public void setStyle(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void setWebBarTitle(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if ((this.a != null) && (!TextUtils.isEmpty(paramString))) {
+      this.a.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar
  * JD-Core Version:    0.7.0.1
  */

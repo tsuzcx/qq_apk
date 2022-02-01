@@ -1,26 +1,28 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import com.tencent.mm.kernel.c.a;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
-public abstract interface e
-  extends a
+public final class e
+  extends IEvent
 {
-  public abstract int auy();
+  public a tTx;
   
-  public abstract void av(List<String> paramList);
+  public e()
+  {
+    AppMethodBeat.i(321529);
+    this.tTx = new a();
+    AppMethodBeat.o(321529);
+  }
   
-  public abstract void bt(String paramString1, String paramString2);
-  
-  public abstract void k(String paramString1, String paramString2, int paramInt);
-  
-  public abstract com.tencent.mm.vending.g.e<Integer> yj(String paramString);
-  
-  public abstract void yk(String paramString);
+  public static final class a
+  {
+    public String tTw;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.e
  * JD-Core Version:    0.7.0.1
  */

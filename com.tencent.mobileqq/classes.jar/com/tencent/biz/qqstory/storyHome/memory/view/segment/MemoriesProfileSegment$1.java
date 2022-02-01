@@ -1,23 +1,22 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
-import uwa;
-import uwm;
-import wlu;
-import wnm;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 
-public class MemoriesProfileSegment$1
+class MemoriesProfileSegment$1
   implements Runnable
 {
-  public MemoriesProfileSegment$1(wnm paramwnm) {}
+  MemoriesProfileSegment$1(MemoriesProfileSegment paramMemoriesProfileSegment) {}
   
   public void run()
   {
-    ((uwm)uwa.a(2)).a(wnm.a(this.this$0).a);
+    ((UserManager)SuperManager.a(2)).a(MemoriesProfileSegment.a(this.this$0).b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesProfileSegment.1
  * JD-Core Version:    0.7.0.1
  */

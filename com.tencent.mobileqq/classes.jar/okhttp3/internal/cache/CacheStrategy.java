@@ -20,19 +20,40 @@ public final class CacheStrategy
   
   public static boolean isCacheable(Response paramResponse, Request paramRequest)
   {
-    switch (paramResponse.code())
-    {
+    int i = paramResponse.code();
+    boolean bool2 = false;
+    if ((i != 200) && (i != 410) && (i != 414) && (i != 501) && (i != 203) && (i != 204)) {
+      if (i != 307)
+      {
+        if ((i == 308) || (i == 404) || (i == 405)) {}
+      }
+      else {
+        switch (i)
+        {
+        default: 
+          return false;
+        case 302: 
+          if ((paramResponse.header("Expires") == null) && (paramResponse.cacheControl().maxAgeSeconds() == -1) && (!paramResponse.cacheControl().isPublic()) && (!paramResponse.cacheControl().isPrivate())) {
+            return false;
+          }
+          break;
+        }
+      }
     }
-    do
+    boolean bool1 = bool2;
+    if (!paramResponse.cacheControl().noStore())
     {
-      return false;
-    } while (((paramResponse.header("Expires") == null) && (paramResponse.cacheControl().maxAgeSeconds() == -1) && (!paramResponse.cacheControl().isPublic()) && (!paramResponse.cacheControl().isPrivate())) || (paramResponse.cacheControl().noStore()) || (paramRequest.cacheControl().noStore()));
-    return true;
+      bool1 = bool2;
+      if (!paramRequest.cacheControl().noStore()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.cache.CacheStrategy
  * JD-Core Version:    0.7.0.1
  */

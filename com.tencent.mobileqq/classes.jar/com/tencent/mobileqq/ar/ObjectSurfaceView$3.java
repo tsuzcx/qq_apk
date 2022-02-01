@@ -10,9 +10,9 @@ class ObjectSurfaceView$3
   
   public void run()
   {
-    if (ObjectSurfaceView.a(this.this$0).size() > 0)
+    if (ObjectSurfaceView.e(this.this$0).size() > 0)
     {
-      ObjectSurfaceView.b(this.this$0).add(this.a);
+      ObjectSurfaceView.f(this.this$0).add(this.a);
       ObjectSurfaceView.a(this.this$0, this.b);
       return;
     }
@@ -21,7 +21,7 @@ class ObjectSurfaceView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectSurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

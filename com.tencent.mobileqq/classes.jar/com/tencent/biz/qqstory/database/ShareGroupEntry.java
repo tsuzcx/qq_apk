@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareGroupEntry
-  extends awge
+  extends Entity
 {
   public int allowStrangerVisitAndPost;
   public String backgroundUrl;
@@ -21,7 +21,7 @@ public class ShareGroupEntry
   public String name;
   public int ownerType;
   public String ownerUnionId;
-  @awhs
+  @unique
   public String shareGroupId;
   public int type;
   public int videoCount;
@@ -71,7 +71,7 @@ public class ShareGroupEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.ShareGroupEntry
  * JD-Core Version:    0.7.0.1
  */

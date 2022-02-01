@@ -18,13 +18,17 @@ final class UPCEANExtensionSupport
       Result localResult = this.fiveSupport.decodeRow(paramInt1, paramBitArray, arrayOfInt);
       return localResult;
     }
-    catch (ReaderException localReaderException) {}
+    catch (ReaderException localReaderException)
+    {
+      label27:
+      break label27;
+    }
     return this.twoSupport.decodeRow(paramInt1, paramBitArray, arrayOfInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.UPCEANExtensionSupport
  * JD-Core Version:    0.7.0.1
  */

@@ -22,13 +22,14 @@ public final class HotPicMsg$GetVideoInfoRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48 }, new String[] { "int32_result", "bytes_fail_msg", "uint32_build_ver", "rpt_msg_video_info", "rpt_msg_tag_info", "uint32_tag_id" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null, null, Integer.valueOf(0) }, GetVideoInfoRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48 }, new String[] { "int32_result", "bytes_fail_msg", "uint32_build_ver", "rpt_msg_video_info", "rpt_msg_tag_info", "uint32_tag_id" }, new Object[] { localInteger, localByteStringMicro, localInteger, null, null, localInteger }, GetVideoInfoRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.GetVideoInfoRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class g
 {
   public static int a(int paramInt)
   {
-    return (0xFF00 & paramInt) >> 8 | (paramInt & 0xFF) << 8;
+    return (paramInt & 0xFF) << 8 | (0xFF00 & paramInt) >> 8;
   }
   
   public static String a(String paramString)
@@ -19,18 +19,19 @@ public class g
     if (paramString != null)
     {
       int i = 0;
-      if (i < paramString.length())
+      while (i < paramString.length())
       {
         String str = Integer.toHexString(paramString.charAt(i));
-        if (str.length() % 2 == 0) {
+        if (str.length() % 2 == 0)
+        {
           localStringBuilder.append(str);
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
-          localStringBuilder.append("0").append(str);
+          localStringBuilder.append("0");
+          localStringBuilder.append(str);
         }
+        i += 1;
       }
     }
     return localStringBuilder.toString();
@@ -51,28 +52,32 @@ public class g
       InetAddress localInetAddress = InetAddress.getByAddress(parama.d);
       return localInetAddress;
     }
-    catch (UnknownHostException localUnknownHostException) {}
+    catch (UnknownHostException localUnknownHostException)
+    {
+      label10:
+      break label10;
+    }
     return a(parama.a);
   }
   
   public static final long b(String paramString)
   {
-    Matcher localMatcher = Pattern.compile("((\\d{1,3}\\.){3}\\d{1,3})").matcher(paramString);
-    if (!localMatcher.find())
+    Object localObject = Pattern.compile("((\\d{1,3}\\.){3}\\d{1,3})").matcher(paramString);
+    if (!((Matcher)localObject).find())
     {
-      QLog.d("MSF.C.NetConnTag", 1, "ip not match:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ip not match:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject).toString());
       return -2L;
     }
-    paramString = localMatcher.group(1).split("\\.");
-    long l1 = Long.parseLong(paramString[3]);
-    long l2 = Long.parseLong(paramString[2]);
-    long l3 = Long.parseLong(paramString[1]);
-    return Long.parseLong(paramString[0]) + ((l1 << 24) + (l2 << 16) + (l3 << 8));
+    paramString = ((Matcher)localObject).group(1).split("\\.");
+    return (Long.parseLong(paramString[3]) << 24) + (Long.parseLong(paramString[2]) << 16) + (Long.parseLong(paramString[1]) << 8) + Long.parseLong(paramString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.g
  * JD-Core Version:    0.7.0.1
  */

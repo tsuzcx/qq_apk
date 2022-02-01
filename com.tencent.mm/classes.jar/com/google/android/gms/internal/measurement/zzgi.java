@@ -10,19 +10,19 @@ final class zzgi
   
   public zzgi(zzgg paramzzgg, String paramString)
   {
-    AppMethodBeat.i(69053);
+    AppMethodBeat.i(1576);
     Preconditions.checkNotNull(paramString);
     this.zzaly = paramString;
-    AppMethodBeat.o(69053);
+    AppMethodBeat.o(1576);
   }
   
   public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     try
     {
-      AppMethodBeat.i(69054);
+      AppMethodBeat.i(1577);
       this.zzalz.zzge().zzim().zzg(this.zzaly, paramThrowable);
-      AppMethodBeat.o(69054);
+      AppMethodBeat.o(1577);
       return;
     }
     finally
@@ -34,7 +34,7 @@ final class zzgi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgi
  * JD-Core Version:    0.7.0.1
  */

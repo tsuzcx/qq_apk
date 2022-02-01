@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:fadingEdge="none" android:fillViewport="true" style="@style/afa"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qm="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/a39" android:layout_height="60.0dip" android:minHeight="60.0dip" style="@style/aea">
+        <TextView android:clickable="false" android:text="@string/wac" style="@style/af1" />
+        <com.tencent.qqmail.view.QMAvatarView android:id="@id/a2o" android:layout_alignParentRight="true" android:layout_centerVertical="true" qm:avatar_view_type="evy" style="@style/a_v" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f9c" android:layout_height="60.0dip" android:minHeight="60.0dip" style="@style/ae8">
+        <TextView android:focusable="true" android:focusableInTouchMode="true" android:text="@string/wae" style="@style/af1" />
+        <EditText android:textColor="@color/aw3" android:gravity="center|right" android:id="@id/nickname" android:layout_marginRight="0.0dip" android:inputType="text" style="@style/aez" />
+    </RelativeLayout>
+</LinearLayout>

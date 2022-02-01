@@ -11,7 +11,7 @@ public class ce
   
   public ce(String paramString, long paramLong, int paramInt)
   {
-    this.hz = new ec("freq_ctrl_" + paramString);
+    this.hz = new ec("freq_ctrl_".concat(String.valueOf(paramString)));
     this.hA = paramInt;
     this.hB = paramLong;
     this.hC = this.hz.getInt("times_now", this.hC);
@@ -24,7 +24,7 @@ public class ce
   private void d(long paramLong)
   {
     this.hD = paramLong;
-    this.hE = (this.hB + paramLong);
+    this.hE = (paramLong + this.hB);
     this.hz.putLong("time_span_start", this.hD);
     this.hz.putLong("time_span_end", this.hE);
   }
@@ -37,34 +37,24 @@ public class ce
   
   public boolean aW()
   {
-    if (this.hD == 0L) {}
-    long l;
-    do
-    {
+    if (this.hD == 0L) {
       return true;
-      l = System.currentTimeMillis();
-    } while ((this.hC < this.hA) || (l >= this.hE));
-    return false;
+    }
+    long l = System.currentTimeMillis();
+    return (this.hC < this.hA) || (l >= this.hE);
   }
   
   public void aX()
   {
     long l = System.currentTimeMillis();
-    if (this.hD == 0L)
+    if (this.hD == 0L) {}
+    while (l >= this.hE)
     {
       d(l);
       s(0);
+      break;
     }
-    for (;;)
-    {
-      s(this.hC + 1);
-      return;
-      if (l >= this.hE)
-      {
-        d(l);
-        s(0);
-      }
-    }
+    s(this.hC + 1);
   }
 }
 

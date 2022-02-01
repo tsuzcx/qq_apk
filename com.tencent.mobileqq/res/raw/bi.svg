@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="60px"
+    version="1.1"
+    viewBox="0 0 60 60"
+    width="60px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>Checkbox_unselected_white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Symbols"
+        stroke="none"
+        stroke-width="1">
+        <rect
+            height="60"
+            id="bond"
+            width="60"
+            x="0"
+            y="0"></rect>
+        <g
+            fill="#FFFFFF"
+            id="Checkbox_unselected_white">
+            <path
+                d="M6,12 C6,8.68915086 8.68354127,6 12,6 L48,6 C51.3108491,6 54,8.68354127 54,12 L54,48 C54,51.3108491 51.3164587,54 48,54 L12,54 C8.68915086,54 6,51.3164587 6,48 L6,12 L6,12 Z M9,11 C9,9.93892882 9.93611682,9 11,9 L49,9 C50.0610712,9 51,9.93611682 51,11 L51,49 C51,50.0610712 50.0638832,51 49,51 L11,51 C9.93892882,51 9,50.0638832 9,49 L9,11 L9,11 Z"
+                id="Shape"></path>
+        </g>
+    </g>
+</svg>

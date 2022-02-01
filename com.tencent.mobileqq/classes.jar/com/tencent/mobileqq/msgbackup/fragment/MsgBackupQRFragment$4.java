@@ -9,19 +9,19 @@ class MsgBackupQRFragment$4
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a(null);
+    Bitmap localBitmap = this.this$0.b(null);
     MsgBackupQRFragment.a(this.this$0, localBitmap);
     if (this.a)
     {
-      MsgBackupQRFragment.a(this.this$0);
+      MsgBackupQRFragment.d(this.this$0);
       return;
     }
-    MsgBackupQRFragment.a(this.this$0, this.b);
+    MsgBackupQRFragment.c(this.this$0, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.4
  * JD-Core Version:    0.7.0.1
  */

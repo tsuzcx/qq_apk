@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="vv">13.0dip</dimen>
+    <dimen name="as9">9.0dip</dimen>
+    <dimen name="as_">10.0dip</dimen>
+    <dimen name="asa">12.5dip</dimen>
+    <dimen name="asb">10.0dip</dimen>
+    <dimen name="asc">12.5dip</dimen>
+    <dimen name="ayg">50.0dip</dimen>
+    <dimen name="b35">236.0px</dimen>
+    <dimen name="b36">375.0px</dimen>
+    <dimen name="b37">24.0px</dimen>
+    <dimen name="b38">20.0px</dimen>
+    <dimen name="b39">20.0px</dimen>
+    <dimen name="b3_">13.0dip</dimen>
+    <dimen name="b3a">17.0dip</dimen>
+    <dimen name="b3b">17.0dip</dimen>
+    <dimen name="b3c">17.0px</dimen>
+    <dimen name="b3d">423.0dip</dimen>
+    <dimen name="b3e">45.0px</dimen>
+    <dimen name="b3f">150.0px</dimen>
+    <dimen name="b3g">150.0px</dimen>
+    <dimen name="b3h">36.0px</dimen>
+    <dimen name="b3i">27.0px</dimen>
+    <dimen name="b3j">30.0px</dimen>
+    <dimen name="b3k">298.0dip</dimen>
+    <dimen name="b3l">350.0px</dimen>
+    <dimen name="b3m">400.0px</dimen>
+    <dimen name="b3n">74.0px</dimen>
+    <dimen name="b3o">7.0dip</dimen>
+    <dimen name="b3p">7.0dip</dimen>
+    <dimen name="b3q">51.0px</dimen>
+</resources>

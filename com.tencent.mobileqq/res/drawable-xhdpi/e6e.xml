@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list android:id="@id/ime" android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="1000" android:drawable="@drawable/e6f" />
-    <item android:duration="1000" android:drawable="@drawable/e6h" />
-    <item android:duration="1000" android:drawable="@drawable/e6j" />
-    <item android:duration="1000" android:drawable="@drawable/e6l" />
-    <item android:duration="1000" android:drawable="@drawable/e6n" />
+    <item android:duration="1000" android:drawable="@drawable/qb_troop_upload_arrow0" />
+    <item android:duration="1000" android:drawable="@drawable/qb_troop_upload_arrow1" />
+    <item android:duration="1000" android:drawable="@drawable/qb_troop_upload_arrow2" />
+    <item android:duration="1000" android:drawable="@drawable/qb_troop_upload_arrow3" />
+    <item android:duration="1000" android:drawable="@drawable/qb_troop_upload_arrow4" />
 </animation-list>

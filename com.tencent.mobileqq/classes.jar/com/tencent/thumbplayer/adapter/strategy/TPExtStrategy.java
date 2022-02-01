@@ -1,62 +1,132 @@
 package com.tencent.thumbplayer.adapter.strategy;
 
+import android.text.TextUtils;
 import com.tencent.thumbplayer.adapter.TPPlaybackInfo;
+import com.tencent.thumbplayer.adapter.strategy.model.TPStrategyConfig;
 import com.tencent.thumbplayer.adapter.strategy.model.TPStrategyContext;
 import com.tencent.thumbplayer.utils.TPLogUtil;
-import java.util.ArrayDeque;
-import java.util.NoSuchElementException;
-import java.util.Queue;
 
 public class TPExtStrategy
-  implements ITPStrategy
+  extends TPBaseStrategy
 {
   private static final String TAG = "TPThumbPlayer[TPExtStrategy.java]";
-  private Queue<Integer> mPlayerList;
+  private int mCurId = 0;
+  private int[] mPlayerList;
   
-  public TPExtStrategy(Queue<Integer> paramQueue)
+  public TPExtStrategy(TPStrategyConfig paramTPStrategyConfig)
   {
-    this.mPlayerList = paramQueue;
-    if (this.mPlayerList == null) {
-      this.mPlayerList = new ArrayDeque();
+    super(paramTPStrategyConfig);
+    this.mPlayerList = paramTPStrategyConfig.getPlayerList();
+    paramTPStrategyConfig = this.mPlayerList;
+    if ((paramTPStrategyConfig == null) || (paramTPStrategyConfig.length == 0)) {
+      this.mPlayerList = new int[1];
     }
+  }
+  
+  private boolean isUseSoftDec(String paramString)
+  {
+    return (TextUtils.equals(paramString, "hd")) || (TextUtils.equals(paramString, "sd")) || (TextUtils.equals(paramString, "msd"));
   }
   
   public int[] strategyForDec()
   {
-    return new int[] { 102, 101 };
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = -1;
+    int i = this.mCurId;
+    Object localObject = this.mPlayerList;
+    if (i >= localObject.length)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("strategyForDec error, decType:");
+      ((StringBuilder)localObject).append(arrayOfInt[0]);
+      TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", ((StringBuilder)localObject).toString());
+      return arrayOfInt;
+    }
+    if ((localObject[i] != 1) && (localObject[i] != 2))
+    {
+      if (localObject[i] == 3) {
+        arrayOfInt[0] = 101;
+      }
+    }
+    else {
+      arrayOfInt[0] = 102;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("strategyForDec, decType:");
+    ((StringBuilder)localObject).append(arrayOfInt[0]);
+    TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", ((StringBuilder)localObject).toString());
+    return arrayOfInt;
   }
   
   public int strategyForOpen(TPPlaybackInfo paramTPPlaybackInfo)
   {
-    try
-    {
-      int i = ((Integer)this.mPlayerList.remove()).intValue();
-      return i;
+    int[] arrayOfInt = this.mPlayerList;
+    int i = arrayOfInt.length;
+    int j = this.mCurId;
+    if (i > j) {
+      i = arrayOfInt[j];
+    } else {
+      i = 0;
     }
-    catch (NoSuchElementException paramTPPlaybackInfo)
+    if (i != 2)
     {
-      TPLogUtil.e("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo);
+      j = i;
+      if (i != 3) {}
     }
-    return 0;
+    else
+    {
+      j = i;
+      if (!isThumbPlayerEnable(paramTPPlaybackInfo)) {
+        j = 0;
+      }
+    }
+    paramTPPlaybackInfo = new StringBuilder();
+    paramTPPlaybackInfo.append("strategyForOpen, playerType:");
+    paramTPPlaybackInfo.append(j);
+    TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo.toString());
+    return j;
   }
   
   public int strategyForRetry(TPPlaybackInfo paramTPPlaybackInfo, TPStrategyContext paramTPStrategyContext)
   {
-    try
-    {
-      int i = ((Integer)this.mPlayerList.remove()).intValue();
-      return i;
+    if ((paramTPStrategyContext != null) && (paramTPStrategyContext.getPlayerType() == 0)) {
+      return strategyForOpen(paramTPPlaybackInfo);
     }
-    catch (NoSuchElementException paramTPPlaybackInfo)
+    paramTPStrategyContext = this.mPlayerList;
+    int i = paramTPStrategyContext.length;
+    int j = this.mCurId;
+    if (i - 1 > j)
     {
-      TPLogUtil.e("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo);
+      i = j + 1;
+      this.mCurId = i;
+      i = paramTPStrategyContext[i];
     }
-    return 0;
+    else
+    {
+      i = 0;
+    }
+    if (i != 2)
+    {
+      j = i;
+      if (i != 3) {}
+    }
+    else
+    {
+      j = i;
+      if (!isThumbPlayerEnable(paramTPPlaybackInfo)) {
+        j = 0;
+      }
+    }
+    paramTPPlaybackInfo = new StringBuilder();
+    paramTPPlaybackInfo.append("strategyForRetry, playerType:");
+    paramTPPlaybackInfo.append(j);
+    TPLogUtil.i("TPThumbPlayer[TPExtStrategy.java]", paramTPPlaybackInfo.toString());
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.TPExtStrategy
  * JD-Core Version:    0.7.0.1
  */

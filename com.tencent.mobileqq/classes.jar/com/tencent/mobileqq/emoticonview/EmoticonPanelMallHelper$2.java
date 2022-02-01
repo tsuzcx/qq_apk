@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apvi;
 import com.tencent.qphone.base.util.QLog;
 
-public class EmoticonPanelMallHelper$2
+class EmoticonPanelMallHelper$2
   implements Runnable
 {
-  public EmoticonPanelMallHelper$2(apvi paramapvi) {}
+  EmoticonPanelMallHelper$2(EmoticonPanelMallHelper paramEmoticonPanelMallHelper) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelMallHelper", 2, "func updateLastEmoticonPanel begins.");
     }
-    if (this.this$0.a.a != null) {
-      this.this$0.a.a.notifyDataSetChanged();
+    if (((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter() != null) {
+      ((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter().notifyDataSetChanged();
     }
   }
 }

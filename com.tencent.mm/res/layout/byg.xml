@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <SummaryBelowPreference android:key="register_by_phone" android:summary="@string/ixr" android:title="@string/ixq" />
+    <SummaryBelowPreference android:key="register_by_weixin" android:summary="@string/ixt" android:title="@string/ixs" />
+</PreferenceScreen>

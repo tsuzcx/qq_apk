@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/a57" android:background="@color/gm" android:scrollbars="none" android:overScrollMode="never" style="@style/mn" />
-        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/a58" android:layout_width="@dimen/dj" android:layout_height="fill_parent" />
-        <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:layout_gravity="center_horizontal" android:id="@id/a59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/fgi" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/ehk" android:background="@drawable/ds" android:layout_width="fill_parent" android:layout_height="@dimen/uf" android:layout_alignParentTop="true" android:paddingStart="@dimen/u8" android:paddingEnd="@dimen/u8">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cmv" android:layout_width="@dimen/ui" android:layout_height="@dimen/ui" android:src="@raw/app_brand_video_fullscreen_back" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ko8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:layout_marginStart="@dimen/ud" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center" android:id="@id/ayo" android:visibility="visible" android:layout_width="@dimen/u2" android:layout_height="@dimen/u2" android:src="@raw/app_brand_video_play_btn_play" />
     </FrameLayout>
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iwl" android:background="@drawable/dp" android:layout_width="fill_parent" android:layout_height="@dimen/u7" android:layout_alignParentBottom="true" android:paddingEnd="@dimen/u8">
+        <ImageView android:gravity="center_vertical" android:id="@id/hx5" android:layout_width="@dimen/ui" android:layout_height="@dimen/ui" android:src="@raw/app_brand_video_play_btn_play" android:scaleType="fitCenter" android:layout_marginStart="@dimen/u5" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hxq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/u5">
+            <TextView android:textSize="@dimen/ua" android:textColor="@color/al6" android:id="@id/hx7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+            <FrameLayout android:gravity="center_vertical" android:id="@id/hxw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/hxr" android:background="#33ffffff" style="@style/a0" />
+                <ImageView android:id="@id/hxt" android:background="#80ffffff" style="@style/a0" />
+                <ImageView android:id="@id/hxs" android:background="@color/al2" style="@style/a0" />
+                <ImageView android:id="@id/hxv" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/media_player_control_btn" android:layout_marginStart="@dimen/m2" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/ua" android:textColor="@color/al6" android:id="@id/hxg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        </LinearLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/byq" android:layout_width="@dimen/uc" android:layout_height="@dimen/ui" android:src="@raw/app_brand_video_danmu_off" android:scaleType="fitCenter" android:layout_marginStart="@dimen/u5" />
+        <ImageView android:gravity="center_vertical" android:id="@id/h7p" android:layout_width="@dimen/ui" android:layout_height="@dimen/ui" android:src="@raw/app_brand_video_mute_btn_off" android:scaleType="fitCenter" android:layout_marginStart="@dimen/u5" />
+        <ImageView android:gravity="center_vertical" android:id="@id/egz" android:layout_width="@dimen/ui" android:layout_height="@dimen/ui" android:src="@raw/app_brand_video_fullscreen_btn" android:scaleType="fitCenter" android:layout_marginStart="@dimen/u5" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,36 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.OvalProgress;
-import cooperation.qqfav.QfavUtil;
-import cooperation.qqfav.widget.QfavMicroPhoneDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.CrashGuard;
+import cooperation.qzone.QZoneHelper.LocalConfig;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ibp
-  extends Handler
+  implements Runnable
 {
-  public ibp(QfavMicroPhoneDialog paramQfavMicroPhoneDialog) {}
+  public ibp(CrashGuard paramCrashGuard, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    case 8: 
-    case 10: 
-    default: 
-      return;
-    case 7: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
-      return;
-    case 9: 
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
-      return;
-    case 11: 
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(Integer.toString((int)Math.round(this.a.e * 1.0D / 1000.0D)) + "\"");
-      return;
-    }
-    QfavUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 2131560833, 1);
+    CrashGuard.a(this.jdField_a_of_type_CooperationQzoneCrashGuard).set(true);
+    QLog.i("QZLog", 1, "clear crash count with no crash");
+    QZoneHelper.LocalConfig.a("key_crash_count", 0, this.jdField_a_of_type_Long);
   }
 }
 

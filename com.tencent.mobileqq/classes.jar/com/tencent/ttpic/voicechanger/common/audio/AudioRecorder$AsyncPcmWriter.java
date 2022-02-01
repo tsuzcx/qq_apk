@@ -37,15 +37,19 @@ public class AudioRecorder$AsyncPcmWriter
     }
     synchronized (this.fileBuffers)
     {
+      byte[] arrayOfByte;
       if (this.fileBuffers.size() > 0)
       {
         arrayOfByte = (byte[])this.fileBuffers.peek();
         this.fileBuffers.remove();
-        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
-        this.mHandler.post(new AudioRecorder.AsyncPcmWriter.1(this, paramInt, arrayOfByte));
-        return;
       }
-      byte[] arrayOfByte = new byte[this.perBufSize];
+      else
+      {
+        arrayOfByte = new byte[this.perBufSize];
+      }
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
+      this.mHandler.post(new AudioRecorder.AsyncPcmWriter.1(this, paramInt, arrayOfByte));
+      return;
     }
   }
   
@@ -56,7 +60,7 @@ public class AudioRecorder$AsyncPcmWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorder.AsyncPcmWriter
  * JD-Core Version:    0.7.0.1
  */

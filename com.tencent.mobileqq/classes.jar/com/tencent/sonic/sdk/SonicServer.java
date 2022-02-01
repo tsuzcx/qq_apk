@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -73,10 +74,14 @@ public class SonicServer
   {
     if (TextUtils.isEmpty(this.serverRsp))
     {
-      BufferedInputStream localBufferedInputStream = this.connectionImpl.getResponseStream();
-      if (localBufferedInputStream == null)
+      Object localObject = this.connectionImpl.getResponseStream();
+      if (localObject == null)
       {
-        SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") readServerResponse error: bufferedInputStream is null!");
+        paramAtomicBoolean = new StringBuilder();
+        paramAtomicBoolean.append("session(");
+        paramAtomicBoolean.append(this.session.sId);
+        paramAtomicBoolean.append(") readServerResponse error: bufferedInputStream is null!");
+        SonicUtils.log("SonicSdk_SonicServer", 6, paramAtomicBoolean.toString());
         return false;
       }
       try
@@ -93,25 +98,29 @@ public class SonicServer
               break;
             }
           }
-          i = localBufferedInputStream.read(arrayOfByte);
+          i = ((BufferedInputStream)localObject).read(arrayOfByte);
           j = i;
           if (-1 == i) {
             break;
           }
           this.outputStream.write(arrayOfByte, 0, i);
         }
-        if (j != -1) {
-          break label196;
+        if (j == -1) {
+          this.serverRsp = this.outputStream.toString(this.session.getCharsetFromHeaders());
         }
       }
       catch (Exception paramAtomicBoolean)
       {
-        SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") readServerResponse error:" + paramAtomicBoolean.getMessage() + ".");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("session(");
+        ((StringBuilder)localObject).append(this.session.sId);
+        ((StringBuilder)localObject).append(") readServerResponse error:");
+        ((StringBuilder)localObject).append(paramAtomicBoolean.getMessage());
+        ((StringBuilder)localObject).append(".");
+        SonicUtils.log("SonicSdk_SonicServer", 6, ((StringBuilder)localObject).toString());
         return false;
       }
-      this.serverRsp = this.outputStream.toString(this.session.getCharsetFromHeaders());
     }
-    label196:
     return true;
   }
   
@@ -120,8 +129,15 @@ public class SonicServer
     long l = System.currentTimeMillis();
     int i = this.connectionImpl.connect();
     this.session.statistics.connectionConnectTime = System.currentTimeMillis();
-    if (SonicUtils.shouldLog(3)) {
-      SonicUtils.log("SonicSdk_SonicServer", 3, "session(" + this.session.id + ") server connect cost = " + (System.currentTimeMillis() - l) + " ms.");
+    if (SonicUtils.shouldLog(3))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("session(");
+      ((StringBuilder)localObject).append(this.session.id);
+      ((StringBuilder)localObject).append(") server connect cost = ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject).append(" ms.");
+      SonicUtils.log("SonicSdk_SonicServer", 3, ((StringBuilder)localObject).toString());
     }
     if (i != 0) {
       return i;
@@ -129,92 +145,100 @@ public class SonicServer
     l = System.currentTimeMillis();
     this.responseCode = this.connectionImpl.getResponseCode();
     this.session.statistics.connectionRespondTime = System.currentTimeMillis();
-    if (SonicUtils.shouldLog(3)) {
-      SonicUtils.log("SonicSdk_SonicServer", 3, "session(" + this.session.id + ") server response cost = " + (System.currentTimeMillis() - l) + " ms.");
-    }
-    if (304 == this.responseCode) {
-      return 0;
-    }
-    if (200 != this.responseCode) {
-      return 0;
-    }
-    String str2 = getResponseHeaderField("eTag");
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
+    if (SonicUtils.shouldLog(3))
     {
-      str1 = str2;
-      if (str2.toLowerCase().startsWith("w/"))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("session(");
+      ((StringBuilder)localObject).append(this.session.id);
+      ((StringBuilder)localObject).append(") server response cost = ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject).append(" ms.");
+      SonicUtils.log("SonicSdk_SonicServer", 3, ((StringBuilder)localObject).toString());
+    }
+    i = this.responseCode;
+    if (304 == i) {
+      return 0;
+    }
+    if (200 != i) {
+      return 0;
+    }
+    String str1 = getResponseHeaderField("eTag");
+    Object localObject = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      localObject = str1;
+      if (str1.toLowerCase().startsWith("w/"))
       {
-        str1 = str2.toLowerCase().replace("w/", "").replace("\"", "");
-        addResponseHeaderFields("eTag", new String[] { str1 });
+        localObject = str1.toLowerCase().replace("w/", "").replace("\"", "");
+        addResponseHeaderFields("eTag", new String[] { localObject });
       }
     }
-    str2 = this.requestIntent.getStringExtra("eTag");
-    String str3 = getResponseHeaderField("eTag");
-    if ((!TextUtils.isEmpty(str2)) && (str2.equals(str3)))
+    str1 = this.requestIntent.getStringExtra("eTag");
+    String str2 = getResponseHeaderField("eTag");
+    if ((!TextUtils.isEmpty(str1)) && (str1.equals(str2)))
     {
       this.responseCode = 304;
       return 0;
     }
-    if ((isSonicResponse()) || (!this.session.config.SUPPORT_LOCAL_SERVER)) {
-      return 0;
-    }
-    str3 = getResponseHeaderField("cache-offline");
-    if ("http".equalsIgnoreCase(str3)) {
-      return 0;
-    }
-    if (TextUtils.isEmpty(str3)) {
-      addResponseHeaderFields("cache-offline", new String[] { "true" });
-    }
-    if (isFirstLoadRequest()) {
-      return 0;
-    }
-    if (TextUtils.isEmpty(str1))
+    if (!isSonicResponse())
     {
-      readServerResponse(null);
-      if (!TextUtils.isEmpty(this.serverRsp))
+      if (!this.session.config.SUPPORT_LOCAL_SERVER) {
+        return 0;
+      }
+      str2 = getResponseHeaderField("cache-offline");
+      if ("http".equalsIgnoreCase(str2)) {
+        return 0;
+      }
+      if (TextUtils.isEmpty(str2)) {
+        addResponseHeaderFields("cache-offline", new String[] { "true" });
+      }
+      if (isFirstLoadRequest()) {
+        return 0;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        str1 = SonicUtils.getSHA1(this.serverRsp);
-        addResponseHeaderFields("eTag", new String[] { str1 });
-        addResponseHeaderFields("sonic-html-sha1", new String[] { str1 });
-        if (str2.equals(str1))
+        readServerResponse(null);
+        if (!TextUtils.isEmpty(this.serverRsp))
         {
-          this.responseCode = 304;
-          return 0;
+          localObject = SonicUtils.getSHA1(this.serverRsp);
+          addResponseHeaderFields("eTag", new String[] { localObject });
+          addResponseHeaderFields("sonic-html-sha1", new String[] { localObject });
+          if (str1.equals(localObject))
+          {
+            this.responseCode = 304;
+            return 0;
+          }
+        }
+        else
+        {
+          return -901;
         }
       }
-      else
+      str1 = getResponseHeaderField("template-tag");
+      localObject = str1;
+      if (TextUtils.isEmpty(str1))
       {
-        return -901;
+        if (TextUtils.isEmpty(this.serverRsp)) {
+          readServerResponse(null);
+        }
+        if (!TextUtils.isEmpty(this.serverRsp))
+        {
+          separateTemplateAndData();
+          localObject = getResponseHeaderField("template-tag");
+        }
+        else
+        {
+          return -901;
+        }
       }
-    }
-    str2 = getResponseHeaderField("template-tag");
-    str1 = str2;
-    if (TextUtils.isEmpty(str2))
-    {
-      if (TextUtils.isEmpty(this.serverRsp)) {
-        readServerResponse(null);
-      }
-      if (!TextUtils.isEmpty(this.serverRsp))
+      if (this.requestIntent.getStringExtra("template-tag").equals(localObject))
       {
-        separateTemplateAndData();
-        str1 = getResponseHeaderField("template-tag");
+        addResponseHeaderFields("template-change", new String[] { "false" });
+        return 0;
       }
-    }
-    else
-    {
-      if (!this.requestIntent.getStringExtra("template-tag").equals(str1)) {
-        break label579;
-      }
-      addResponseHeaderFields("template-change", new String[] { "false" });
-    }
-    for (;;)
-    {
-      return 0;
-      return -901;
-      label579:
       addResponseHeaderFields("template-change", new String[] { "true" });
     }
+    return 0;
   }
   
   public void disconnect()
@@ -228,10 +252,13 @@ public class SonicServer
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") server disconnect error:" + localThrowable.getMessage() + ".");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("session(");
+      localStringBuilder.append(this.session.sId);
+      localStringBuilder.append(") server disconnect error:");
+      localStringBuilder.append(localThrowable.getMessage());
+      localStringBuilder.append(".");
+      SonicUtils.log("SonicSdk_SonicServer", 6, localStringBuilder.toString());
     }
     this.connectionImpl.disconnect();
   }
@@ -322,56 +349,23 @@ public class SonicServer
     return this.cachedResponseHeaders;
   }
   
-  /* Error */
-  public java.io.InputStream getResponseStream(AtomicBoolean paramAtomicBoolean)
+  public InputStream getResponseStream(AtomicBoolean paramAtomicBoolean)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: aload_1
-    //   6: invokespecial 287	com/tencent/sonic/sdk/SonicServer:readServerResponse	(Ljava/util/concurrent/atomic/AtomicBoolean;)Z
-    //   9: ifeq +29 -> 38
-    //   12: aload_0
-    //   13: getfield 142	com/tencent/sonic/sdk/SonicServer:serverRsp	Ljava/lang/String;
-    //   16: invokestatic 94	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   19: ifne +23 -> 42
-    //   22: aconst_null
-    //   23: astore_1
-    //   24: new 347	com/tencent/sonic/sdk/SonicSessionStream
-    //   27: dup
-    //   28: aload_0
-    //   29: aload_0
-    //   30: getfield 36	com/tencent/sonic/sdk/SonicServer:outputStream	Ljava/io/ByteArrayOutputStream;
-    //   33: aload_1
-    //   34: invokespecial 350	com/tencent/sonic/sdk/SonicSessionStream:<init>	(Lcom/tencent/sonic/sdk/SonicSessionStream$Callback;Ljava/io/ByteArrayOutputStream;Ljava/io/BufferedInputStream;)V
-    //   37: astore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_2
-    //   41: areturn
-    //   42: aload_0
-    //   43: getfield 48	com/tencent/sonic/sdk/SonicServer:connectionImpl	Lcom/tencent/sonic/sdk/SonicSessionConnection;
-    //   46: invokevirtual 146	com/tencent/sonic/sdk/SonicSessionConnection:getResponseStream	()Ljava/io/BufferedInputStream;
-    //   49: astore_1
-    //   50: goto -26 -> 24
-    //   53: astore_1
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: aload_1
-    //   57: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	58	0	this	SonicServer
-    //   0	58	1	paramAtomicBoolean	AtomicBoolean
-    //   1	40	2	localSonicSessionStream	SonicSessionStream
-    // Exception table:
-    //   from	to	target	type
-    //   4	22	53	finally
-    //   24	38	53	finally
-    //   42	50	53	finally
+    try
+    {
+      boolean bool = readServerResponse(paramAtomicBoolean);
+      paramAtomicBoolean = null;
+      if (bool)
+      {
+        if (TextUtils.isEmpty(this.serverRsp)) {
+          paramAtomicBoolean = this.connectionImpl.getResponseStream();
+        }
+        paramAtomicBoolean = new SonicSessionStream(this, this.outputStream, paramAtomicBoolean);
+        return paramAtomicBoolean;
+      }
+      return null;
+    }
+    finally {}
   }
   
   public String getTemplate()
@@ -402,63 +396,68 @@ public class SonicServer
   
   public void onClose(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    if ((TextUtils.isEmpty(this.serverRsp)) && (paramBoolean) && (paramByteArrayOutputStream != null)) {}
-    try
-    {
-      this.serverRsp = paramByteArrayOutputStream.toString(this.session.getCharsetFromHeaders());
-      paramByteArrayOutputStream.close();
-      this.session.onServerClosed(this, paramBoolean);
-      return;
-    }
-    catch (Throwable paramByteArrayOutputStream)
-    {
-      for (;;)
+    if ((TextUtils.isEmpty(this.serverRsp)) && (paramBoolean) && (paramByteArrayOutputStream != null)) {
+      try
       {
-        SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + "), onClose error:" + paramByteArrayOutputStream.getMessage() + ".");
+        this.serverRsp = paramByteArrayOutputStream.toString(this.session.getCharsetFromHeaders());
+        paramByteArrayOutputStream.close();
+      }
+      catch (Throwable paramByteArrayOutputStream)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("session(");
+        localStringBuilder.append(this.session.sId);
+        localStringBuilder.append("), onClose error:");
+        localStringBuilder.append(paramByteArrayOutputStream.getMessage());
+        localStringBuilder.append(".");
+        SonicUtils.log("SonicSdk_SonicServer", 6, localStringBuilder.toString());
       }
     }
+    this.session.onServerClosed(this, paramBoolean);
   }
   
   protected void separateTemplateAndData()
   {
-    String str1 = null;
-    Object localObject3;
     if (!TextUtils.isEmpty(this.serverRsp))
     {
-      localObject1 = new StringBuilder();
-      localObject3 = new StringBuilder();
-      if (!SonicUtils.separateTemplateAndData(this.session.id, this.serverRsp, (StringBuilder)localObject1, (StringBuilder)localObject3)) {
-        break label337;
-      }
-      this.templateString = ((StringBuilder)localObject1).toString();
-    }
-    label337:
-    Object localObject2;
-    for (Object localObject1 = ((StringBuilder)localObject3).toString();; localObject2 = null)
-    {
-      String str2 = getResponseHeaderField("eTag");
-      String str3 = getResponseHeaderField("template-tag");
-      localObject3 = str2;
-      if (TextUtils.isEmpty(str2))
+      Object localObject1 = new StringBuilder();
+      Object localObject3 = new StringBuilder();
+      boolean bool = SonicUtils.separateTemplateAndData(this.session.id, this.serverRsp, (StringBuilder)localObject1, (StringBuilder)localObject3);
+      Object localObject2 = null;
+      if (bool)
       {
-        str1 = SonicUtils.getSHA1(this.serverRsp);
-        addResponseHeaderFields("eTag", new String[] { str1 });
-        addResponseHeaderFields("sonic-html-sha1", new String[] { str1 });
-        localObject3 = str1;
+        this.templateString = ((StringBuilder)localObject1).toString();
+        localObject1 = ((StringBuilder)localObject3).toString();
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      String str1 = getResponseHeaderField("eTag");
+      String str2 = getResponseHeaderField("template-tag");
+      localObject3 = str1;
+      if (TextUtils.isEmpty(str1))
+      {
+        localObject2 = SonicUtils.getSHA1(this.serverRsp);
+        addResponseHeaderFields("eTag", new String[] { localObject2 });
+        addResponseHeaderFields("sonic-html-sha1", new String[] { localObject2 });
+        localObject3 = localObject2;
       }
       if (TextUtils.isEmpty(this.templateString))
       {
         this.templateString = this.serverRsp;
         addResponseHeaderFields("template-tag", new String[] { localObject3 });
       }
-      for (;;)
+      else if (TextUtils.isEmpty(str2))
       {
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+        addResponseHeaderFields("template-tag", new String[] { SonicUtils.getSHA1(this.templateString) });
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         try
         {
           localObject3 = new JSONObject();
           ((JSONObject)localObject3).put("data", new JSONObject((String)localObject1));
-          if (TextUtils.isEmpty(str1)) {
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
             addResponseHeaderFields("sonic-html-sha1", new String[] { SonicUtils.getSHA1(this.serverRsp) });
           }
           ((JSONObject)localObject3).put("html-sha1", getResponseHeaderField("sonic-html-sha1"));
@@ -468,11 +467,13 @@ public class SonicServer
         }
         catch (Exception localException)
         {
-          SonicUtils.log("SonicSdk_SonicServer", 6, "session(" + this.session.sId + ") parse server response data error:" + localException.getMessage() + ".");
-          return;
-        }
-        if (TextUtils.isEmpty(str3)) {
-          addResponseHeaderFields("template-tag", new String[] { SonicUtils.getSHA1(this.templateString) });
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("session(");
+          ((StringBuilder)localObject2).append(this.session.sId);
+          ((StringBuilder)localObject2).append(") parse server response data error:");
+          ((StringBuilder)localObject2).append(localException.getMessage());
+          ((StringBuilder)localObject2).append(".");
+          SonicUtils.log("SonicSdk_SonicServer", 6, ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -480,7 +481,7 @@ public class SonicServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicServer
  * JD-Core Version:    0.7.0.1
  */

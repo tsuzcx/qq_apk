@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 public class ScreenUtil
 {
-  private static final String TAG = ScreenUtil.class.getSimpleName();
+  private static final String TAG = "ScreenUtil";
   
   public static int getScreenHeight()
   {
@@ -37,7 +37,7 @@ public class ScreenUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.utils.ScreenUtil
  * JD-Core Version:    0.7.0.1
  */

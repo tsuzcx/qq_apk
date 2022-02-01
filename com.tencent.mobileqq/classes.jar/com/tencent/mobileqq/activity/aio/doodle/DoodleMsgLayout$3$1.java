@@ -11,29 +11,35 @@ class DoodleMsgLayout$3$1
   
   public void run()
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.a);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.a != DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDoodleContent start update drawable:");
+    localStringBuilder.append(this.b.a);
+    QLog.d("DoodleMsgLayout", 2, localStringBuilder.toString());
+    if (this.b.a != DoodleMsgLayout.f(this.b.this$0)) {
       return;
     }
-    if (DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0) != null) {
-      DoodleMsgLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0).setImageDrawable(null);
+    if (DoodleMsgLayout.c(this.b.this$0) != null) {
+      DoodleMsgLayout.c(this.b.this$0).setImageDrawable(null);
     }
-    if (DoodleMsgLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0) != null) {
-      DoodleMsgLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0).setImageDrawable(null);
+    if (DoodleMsgLayout.d(this.b.this$0) != null) {
+      DoodleMsgLayout.d(this.b.this$0).setImageDrawable(null);
     }
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0) != null) {
-      DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (DoodleMsgLayout.a(this.b.this$0) != null) {
+      DoodleMsgLayout.a(this.b.this$0).setImageDrawable(this.a);
     }
-    DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0, 0);
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0) != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0.a(DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.this$0).a());
+    DoodleMsgLayout.a(this.b.this$0, 0);
+    if (DoodleMsgLayout.g(this.b.this$0) != null) {
+      this.b.this$0.a(DoodleMsgLayout.g(this.b.this$0).getDataState());
     }
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish update drawable:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout$3.a);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDoodleContent finish update drawable:");
+    localStringBuilder.append(this.b.a);
+    QLog.d("DoodleMsgLayout", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout.3.1
  * JD-Core Version:    0.7.0.1
  */

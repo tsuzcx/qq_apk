@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.Keep;
 
-@Keep
 public abstract class ApplicationLike
   implements ApplicationLifeCycle
 {
@@ -44,31 +42,26 @@ public abstract class ApplicationLike
     return this.applicationStartMillisTime;
   }
   
-  @Keep
   public AssetManager getAssets(AssetManager paramAssetManager)
   {
     return paramAssetManager;
   }
   
-  @Keep
   public Context getBaseContext(Context paramContext)
   {
     return paramContext;
   }
   
-  @Keep
   public ClassLoader getClassLoader(ClassLoader paramClassLoader)
   {
     return paramClassLoader;
   }
   
-  @Keep
   public Resources getResources(Resources paramResources)
   {
     return paramResources;
   }
   
-  @Keep
   public Object getSystemService(String paramString, Object paramObject)
   {
     return paramObject;
@@ -89,6 +82,11 @@ public abstract class ApplicationLike
     return this.tinkerResultIntent;
   }
   
+  public int mzNightModeUseOf()
+  {
+    return 1;
+  }
+  
   public void onBaseContextAttached(Context paramContext) {}
   
   public void onConfigurationChanged(Configuration paramConfiguration) {}
@@ -103,7 +101,7 @@ public abstract class ApplicationLike
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.entry.ApplicationLike
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class CrashGuard$1
   {
     this.this$0.isTimeOvered.set(true);
     QLog.i("QZLog", 1, "clear crash count with no crash");
-    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.a);
+    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.val$uin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.CrashGuard.1
  * JD-Core Version:    0.7.0.1
  */

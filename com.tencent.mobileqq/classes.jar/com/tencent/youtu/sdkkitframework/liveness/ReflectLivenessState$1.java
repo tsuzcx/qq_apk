@@ -5,16 +5,19 @@ import java.util.HashMap;
 class ReflectLivenessState$1
   extends HashMap<String, Object>
 {
-  ReflectLivenessState$1(ReflectLivenessState paramReflectLivenessState, int paramInt)
+  ReflectLivenessState$1(ReflectLivenessState paramReflectLivenessState)
   {
-    put("process_action", "failed");
-    put("error_code", Integer.valueOf(5242883));
-    put("message", "Init YTReflect SDK failed with " + this.val$initR);
+    paramReflectLivenessState = new StringBuilder();
+    paramReflectLivenessState.append("反光库版本异常！目标版本：");
+    paramReflectLivenessState.append(ReflectLivenessState.access$000(this.this$0));
+    paramReflectLivenessState.append(" 当前版本：");
+    paramReflectLivenessState.append("3.6.8");
+    put("version_tips", paramReflectLivenessState.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState.1
  * JD-Core Version:    0.7.0.1
  */

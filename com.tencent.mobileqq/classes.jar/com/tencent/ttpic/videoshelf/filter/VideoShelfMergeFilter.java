@@ -120,23 +120,35 @@ public class VideoShelfMergeFilter
         this.q1 = 1.0F;
       }
       arrayOfFloat[0] = (paramArrayOfNodeRectPoint.x * this.q3);
-      arrayOfFloat[1] = (paramArrayOfNodeRectPoint.y * this.q3);
-      arrayOfFloat[2] = this.q3;
+      float f1 = paramArrayOfNodeRectPoint.y;
+      float f2 = this.q3;
+      arrayOfFloat[1] = (f1 * f2);
+      arrayOfFloat[2] = f2;
       arrayOfFloat[3] = (localNodeRectPoint3.x * this.q2);
-      arrayOfFloat[4] = (localNodeRectPoint3.y * this.q2);
-      arrayOfFloat[5] = this.q2;
+      f1 = localNodeRectPoint3.y;
+      f2 = this.q2;
+      arrayOfFloat[4] = (f1 * f2);
+      arrayOfFloat[5] = f2;
       arrayOfFloat[6] = (localNodeRectPoint1.x * this.q0);
-      arrayOfFloat[7] = (localNodeRectPoint1.y * this.q0);
-      arrayOfFloat[8] = this.q0;
+      f1 = localNodeRectPoint1.y;
+      f2 = this.q0;
+      arrayOfFloat[7] = (f1 * f2);
+      arrayOfFloat[8] = f2;
       arrayOfFloat[9] = (localNodeRectPoint3.x * this.q2);
-      arrayOfFloat[10] = (localNodeRectPoint3.y * this.q2);
-      arrayOfFloat[11] = this.q2;
+      f1 = localNodeRectPoint3.y;
+      f2 = this.q2;
+      arrayOfFloat[10] = (f1 * f2);
+      arrayOfFloat[11] = f2;
       arrayOfFloat[12] = (localNodeRectPoint2.x * this.q1);
-      arrayOfFloat[13] = (localNodeRectPoint2.y * this.q1);
-      arrayOfFloat[14] = this.q1;
+      f1 = localNodeRectPoint2.y;
+      f2 = this.q1;
+      arrayOfFloat[13] = (f1 * f2);
+      arrayOfFloat[14] = f2;
       arrayOfFloat[15] = (localNodeRectPoint1.x * this.q0);
-      arrayOfFloat[16] = (localNodeRectPoint1.y * this.q0);
-      arrayOfFloat[17] = this.q0;
+      f1 = localNodeRectPoint1.y;
+      f2 = this.q0;
+      arrayOfFloat[16] = (f1 * f2);
+      arrayOfFloat[17] = f2;
     }
     return arrayOfFloat;
   }
@@ -192,7 +204,8 @@ public class VideoShelfMergeFilter
   
   private Frame getSpaceFrame(int paramInt)
   {
-    if ((this.mCopyFrame[0] != null) && (paramInt == this.mCopyFrame[0].getTextureId())) {
+    Frame[] arrayOfFrame = this.mCopyFrame;
+    if ((arrayOfFrame[0] != null) && (paramInt == arrayOfFrame[0].getTextureId())) {
       return this.mCopyFrame[1];
     }
     return this.mCopyFrame[0];
@@ -200,48 +213,62 @@ public class VideoShelfMergeFilter
   
   private void sortFrameNodeItem(List<FrameNodeItem> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 1)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 1) {
+        return;
+      }
+      Collections.sort(paramList, new VideoShelfMergeFilter.1FrameNodeItemComparetor(this));
     }
-    Collections.sort(paramList, new VideoShelfMergeFilter.1FrameNodeItemComparetor(this));
   }
   
   private void sortMaskBlocksList(List<MaskBlock> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 1)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 1) {
+        return;
+      }
+      Collections.sort(paramList, new VideoShelfMergeFilter.1MaskBlockComparetor(this));
     }
-    Collections.sort(paramList, new VideoShelfMergeFilter.1MaskBlockComparetor(this));
   }
   
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
     int i = 0;
-    while (i < this.mCopyFrame.length)
+    for (;;)
     {
-      this.mCopyFrame[i] = new Frame();
+      localObject = this.mCopyFrame;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = new Frame();
       i += 1;
     }
-    int[] arrayOfInt = new int[1];
-    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.inBmpTexture = arrayOfInt[0];
+    Object localObject = new int[1];
+    GlUtil.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.inBmpTexture = localObject[0];
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    this.mCopyFilter.ClearGLSL();
+    this.mCopyFilter.clearGLSL();
     this.mRenderFrame.clear();
     int i = 0;
-    while (i < this.mCopyFrame.length)
+    for (;;)
     {
-      this.mCopyFrame[i].clear();
+      localObject = this.mCopyFrame;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i].clear();
       i += 1;
     }
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.inBmpTexture;
-    GLES20.glDeleteBuffers(arrayOfInt.length, arrayOfInt, 0);
+    Object localObject = new int[1];
+    localObject[0] = this.inBmpTexture;
+    GLES20.glDeleteBuffers(localObject.length, (int[])localObject, 0);
   }
   
   public void drawNonAffine(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
@@ -292,36 +319,29 @@ public class VideoShelfMergeFilter
     }
     this.mFrameCount = paramInt;
     paramInt = 0;
-    for (;;)
+    while (paramInt < this.mVideoFrameItemList.size())
     {
-      if (paramInt < this.mVideoFrameItemList.size())
+      if (this.mFrameCount == ((VideoFrameItem)this.mVideoFrameItemList.get(paramInt)).getFrameID())
       {
-        if (this.mFrameCount == ((VideoFrameItem)this.mVideoFrameItemList.get(paramInt)).getFrameID()) {
-          this.mFrameItem = ((VideoFrameItem)this.mVideoFrameItemList.get(paramInt));
-        }
-      }
-      else
-      {
-        this.mFrameNodeItemList = this.mFrameItem.getNodeList();
-        sortFrameNodeItem(this.mFrameNodeItemList);
-        return;
+        this.mFrameItem = ((VideoFrameItem)this.mVideoFrameItemList.get(paramInt));
+        break;
       }
       paramInt += 1;
     }
+    this.mFrameNodeItemList = this.mFrameItem.getNodeList();
+    sortFrameNodeItem(this.mFrameNodeItemList);
   }
   
   public Frame updateAndRender(int paramInt1, int paramInt2, int paramInt3)
   {
     Object localObject1 = null;
-    int j = 0;
-    int i = paramInt1;
-    paramInt1 = j;
-    while (paramInt1 < this.mFrameNodeItemList.size())
+    int i = 0;
+    while (i < this.mFrameNodeItemList.size())
     {
-      j = ((FrameNodeItem)this.mFrameNodeItemList.get(paramInt1)).getNodeID();
-      int k = ((FrameNodeItem)this.mFrameNodeItemList.get(paramInt1)).getZIndex();
-      int m = ((FrameNodeItem)this.mFrameNodeItemList.get(paramInt1)).getBlendMode();
-      List localList = ((FrameNodeItem)this.mFrameNodeItemList.get(paramInt1)).getMaskBlockList();
+      int j = ((FrameNodeItem)this.mFrameNodeItemList.get(i)).getNodeID();
+      int k = ((FrameNodeItem)this.mFrameNodeItemList.get(i)).getZIndex();
+      int m = ((FrameNodeItem)this.mFrameNodeItemList.get(i)).getBlendMode();
+      List localList = ((FrameNodeItem)this.mFrameNodeItemList.get(i)).getMaskBlockList();
       sortMaskBlocksList(localList);
       Object localObject2 = getBitmapFromNodeGroupList(j);
       GlUtil.loadTexture(this.inBmpTexture, (Bitmap)localObject2);
@@ -329,31 +349,29 @@ public class VideoShelfMergeFilter
       addParam(new UniformParam.IntParam("blendMode", m));
       if (k >= 10000) {
         addParam(new UniformParam.IntParam("renderBackgroud", 1));
-      }
-      for (;;)
-      {
-        j = 0;
-        while (j < localList.size())
-        {
-          localObject2 = ((MaskBlock)localList.get(j)).getMaskRect();
-          Object localObject3 = ((MaskBlock)localList.get(j)).getNodeRect();
-          localObject1 = convertVertex((MaskRectPoint[])localObject2);
-          localObject3 = convertTexCoordNoAffi((NodeRectPoint[])localObject3);
-          localObject2 = convertMaskToTexCoord((MaskRectPoint[])localObject2);
-          setPositions((float[])localObject1);
-          setCoordNum(6);
-          setTexCords((float[])localObject2);
-          addAttribParam(new AttributeParam("inputTextureCoordinate2", (float[])localObject3, 3, false));
-          localObject1 = getSpaceFrame(i);
-          this.mCopyFilter.RenderProcess(i, paramInt2 * 2, paramInt3 * 2, -1, 0.0D, (Frame)localObject1);
-          OnDrawFrameGLSL();
-          renderTexture(i, paramInt2, paramInt3);
-          i = ((Frame)localObject1).getTextureId();
-          j += 1;
-        }
+      } else {
         addParam(new UniformParam.IntParam("renderBackgroud", 0));
       }
-      paramInt1 += 1;
+      j = 0;
+      while (j < localList.size())
+      {
+        localObject2 = ((MaskBlock)localList.get(j)).getMaskRect();
+        Object localObject3 = ((MaskBlock)localList.get(j)).getNodeRect();
+        localObject1 = convertVertex((MaskRectPoint[])localObject2);
+        localObject3 = convertTexCoordNoAffi((NodeRectPoint[])localObject3);
+        localObject2 = convertMaskToTexCoord((MaskRectPoint[])localObject2);
+        setPositions((float[])localObject1);
+        setCoordNum(6);
+        setTexCords((float[])localObject2);
+        addAttribParam(new AttributeParam("inputTextureCoordinate2", (float[])localObject3, 3, false));
+        localObject1 = getSpaceFrame(paramInt1);
+        this.mCopyFilter.RenderProcess(paramInt1, paramInt2 * 2, paramInt3 * 2, -1, 0.0D, (Frame)localObject1);
+        OnDrawFrameGLSL();
+        renderTexture(paramInt1, paramInt2, paramInt3);
+        paramInt1 = ((Frame)localObject1).getTextureId();
+        j += 1;
+      }
+      i += 1;
     }
     if (localObject1 != null) {
       this.mCopyFilter.RenderProcess(((Frame)localObject1).getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mRenderFrame);
@@ -363,7 +381,7 @@ public class VideoShelfMergeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.filter.VideoShelfMergeFilter
  * JD-Core Version:    0.7.0.1
  */

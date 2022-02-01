@@ -51,10 +51,12 @@ public class ScriptC_blur
   
   public void forEach_blur_h(Allocation paramAllocation, Script.LaunchOptions paramLaunchOptions)
   {
-    if (!paramAllocation.getType().getElement().isCompatible(this.__U32)) {
-      throw new RSRuntimeException("Type mismatch with U32!");
+    if (paramAllocation.getType().getElement().isCompatible(this.__U32))
+    {
+      forEach(2, paramAllocation, null, null, paramLaunchOptions);
+      return;
     }
-    forEach(2, paramAllocation, null, null, paramLaunchOptions);
+    throw new RSRuntimeException("Type mismatch with U32!");
   }
   
   public void forEach_blur_v(Allocation paramAllocation)
@@ -64,10 +66,12 @@ public class ScriptC_blur
   
   public void forEach_blur_v(Allocation paramAllocation, Script.LaunchOptions paramLaunchOptions)
   {
-    if (!paramAllocation.getType().getElement().isCompatible(this.__U32)) {
-      throw new RSRuntimeException("Type mismatch with U32!");
+    if (paramAllocation.getType().getElement().isCompatible(this.__U32))
+    {
+      forEach(1, paramAllocation, null, null, paramLaunchOptions);
+      return;
     }
-    forEach(1, paramAllocation, null, null, paramLaunchOptions);
+    throw new RSRuntimeException("Type mismatch with U32!");
   }
   
   public Script.FieldID getFieldID_gIn()
@@ -135,162 +139,60 @@ public class ScriptC_blur
     }
   }
   
-  /* Error */
   public void set_height(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   6: ifnull +35 -> 41
-    //   9: aload_0
-    //   10: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   13: invokevirtual 155	android/support/v8/renderscript/FieldPacker:reset	()V
-    //   16: aload_0
-    //   17: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   20: lload_1
-    //   21: invokevirtual 158	android/support/v8/renderscript/FieldPacker:addU32	(J)V
-    //   24: aload_0
-    //   25: iconst_2
-    //   26: aload_0
-    //   27: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   30: invokevirtual 161	com/enrique/stackblur/ScriptC_blur:setVar	(ILandroid/support/v8/renderscript/FieldPacker;)V
-    //   33: aload_0
-    //   34: lload_1
-    //   35: putfield 134	com/enrique/stackblur/ScriptC_blur:mExportVar_height	J
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: return
-    //   41: aload_0
-    //   42: new 151	android/support/v8/renderscript/FieldPacker
-    //   45: dup
-    //   46: iconst_4
-    //   47: invokespecial 164	android/support/v8/renderscript/FieldPacker:<init>	(I)V
-    //   50: putfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   53: goto -37 -> 16
-    //   56: astore_3
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_3
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	ScriptC_blur
-    //   0	61	1	paramLong	long
-    //   56	4	3	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	56	finally
-    //   16	38	56	finally
-    //   41	53	56	finally
+    try
+    {
+      if (this.__rs_fp_U32 != null) {
+        this.__rs_fp_U32.reset();
+      } else {
+        this.__rs_fp_U32 = new FieldPacker(4);
+      }
+      this.__rs_fp_U32.addU32(paramLong);
+      setVar(2, this.__rs_fp_U32);
+      this.mExportVar_height = paramLong;
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void set_radius(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   6: ifnull +35 -> 41
-    //   9: aload_0
-    //   10: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   13: invokevirtual 155	android/support/v8/renderscript/FieldPacker:reset	()V
-    //   16: aload_0
-    //   17: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   20: lload_1
-    //   21: invokevirtual 158	android/support/v8/renderscript/FieldPacker:addU32	(J)V
-    //   24: aload_0
-    //   25: iconst_3
-    //   26: aload_0
-    //   27: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   30: invokevirtual 161	com/enrique/stackblur/ScriptC_blur:setVar	(ILandroid/support/v8/renderscript/FieldPacker;)V
-    //   33: aload_0
-    //   34: lload_1
-    //   35: putfield 137	com/enrique/stackblur/ScriptC_blur:mExportVar_radius	J
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: return
-    //   41: aload_0
-    //   42: new 151	android/support/v8/renderscript/FieldPacker
-    //   45: dup
-    //   46: iconst_4
-    //   47: invokespecial 164	android/support/v8/renderscript/FieldPacker:<init>	(I)V
-    //   50: putfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   53: goto -37 -> 16
-    //   56: astore_3
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_3
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	ScriptC_blur
-    //   0	61	1	paramLong	long
-    //   56	4	3	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	56	finally
-    //   16	38	56	finally
-    //   41	53	56	finally
+    try
+    {
+      if (this.__rs_fp_U32 != null) {
+        this.__rs_fp_U32.reset();
+      } else {
+        this.__rs_fp_U32 = new FieldPacker(4);
+      }
+      this.__rs_fp_U32.addU32(paramLong);
+      setVar(3, this.__rs_fp_U32);
+      this.mExportVar_radius = paramLong;
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void set_width(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   6: ifnull +35 -> 41
-    //   9: aload_0
-    //   10: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   13: invokevirtual 155	android/support/v8/renderscript/FieldPacker:reset	()V
-    //   16: aload_0
-    //   17: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   20: lload_1
-    //   21: invokevirtual 158	android/support/v8/renderscript/FieldPacker:addU32	(J)V
-    //   24: aload_0
-    //   25: iconst_1
-    //   26: aload_0
-    //   27: getfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   30: invokevirtual 161	com/enrique/stackblur/ScriptC_blur:setVar	(ILandroid/support/v8/renderscript/FieldPacker;)V
-    //   33: aload_0
-    //   34: lload_1
-    //   35: putfield 140	com/enrique/stackblur/ScriptC_blur:mExportVar_width	J
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: return
-    //   41: aload_0
-    //   42: new 151	android/support/v8/renderscript/FieldPacker
-    //   45: dup
-    //   46: iconst_4
-    //   47: invokespecial 164	android/support/v8/renderscript/FieldPacker:<init>	(I)V
-    //   50: putfield 149	com/enrique/stackblur/ScriptC_blur:__rs_fp_U32	Landroid/support/v8/renderscript/FieldPacker;
-    //   53: goto -37 -> 16
-    //   56: astore_3
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_3
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	ScriptC_blur
-    //   0	61	1	paramLong	long
-    //   56	4	3	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	16	56	finally
-    //   16	38	56	finally
-    //   41	53	56	finally
+    try
+    {
+      if (this.__rs_fp_U32 != null) {
+        this.__rs_fp_U32.reset();
+      } else {
+        this.__rs_fp_U32 = new FieldPacker(4);
+      }
+      this.__rs_fp_U32.addU32(paramLong);
+      setVar(1, this.__rs_fp_U32);
+      this.mExportVar_width = paramLong;
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.ScriptC_blur
  * JD-Core Version:    0.7.0.1
  */

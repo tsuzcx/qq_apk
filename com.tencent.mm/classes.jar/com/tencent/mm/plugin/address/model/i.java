@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.atr;
-import com.tencent.mm.protocal.protobuf.bwi;
-import com.tencent.mm.protocal.protobuf.bwj;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.o.a.b;
+import com.tencent.mm.protocal.protobuf.cxw;
+import com.tencent.mm.protocal.protobuf.ets;
+import com.tencent.mm.protocal.protobuf.ett;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class i
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public bwj gKP;
-  private com.tencent.mm.ai.b rr;
+  private h callback;
+  public ett qhI;
+  private com.tencent.mm.am.c rr;
   
-  public i(com.tencent.mm.plugin.j.a.b paramb)
+  public i(b paramb)
   {
-    AppMethodBeat.i(16746);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bwi();
-    ((b.a)localObject).fsY = new bwj();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/saveinfo";
-    ((b.a)localObject).funcId = 1180;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bwi)this.rr.fsV.fta;
-    ((bwi)localObject).cpt = 2;
+    AppMethodBeat.i(20789);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ets();
+    ((c.a)localObject).otF = new ett();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/saveinfo";
+    ((c.a)localObject).funcId = 1180;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ets)c.b.b(this.rr.otB);
+    ((ets)localObject).source = 2;
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder("{\"user_uin\":");
-    aw.aaz();
-    localStringBuilder1.append(c.getUin() + " ,\"user_data_list\": [");
+    bh.bCz();
+    localStringBuilder1.append(com.tencent.mm.model.c.getUin() + " ,\"user_data_list\": [");
     if (paramb.type.equals("0")) {
-      localStringBuilder1.append("{\"group_key\": \"invoice_info\",\"group_info\": {\"group_id\": " + paramb.nLm + ",\"field_list\": [{\"key\": \"type\",\"value\": \"" + paramb.type + "\"},{\"key\": \"title\",\"value\": \"" + paramb.title + "\"},{\"key\": \"tax_number\",\"value\": \"" + paramb.nLo + "\"},{\"key\": \"bank_number\",\"value\": \"" + paramb.nLp + "\"},{\"key\": \"phone\",\"value\": \"" + paramb.nLs + "\"},{\"key\": \"company_address_detail\",\"value\": \"" + paramb.nLu + "\"},{\"key\": \"bank_name\",\"value\": \"" + paramb.nLq + "\"}]}}");
+      localStringBuilder1.append("{\"group_key\": \"invoice_info\",\"group_info\": {\"group_id\": " + paramb.JFg + ",\"field_list\": [{\"key\": \"type\",\"value\": \"" + paramb.type + "\"},{\"key\": \"title\",\"value\": \"" + paramb.title + "\"},{\"key\": \"tax_number\",\"value\": \"" + paramb.JFi + "\"},{\"key\": \"bank_number\",\"value\": \"" + paramb.JFj + "\"},{\"key\": \"phone\",\"value\": \"" + paramb.JFm + "\"},{\"key\": \"company_address_detail\",\"value\": \"" + paramb.JFo + "\"},{\"key\": \"bank_name\",\"value\": \"" + paramb.JFk + "\"}]}}");
     }
     for (;;)
     {
       localStringBuilder1.append("]}");
-      ((bwi)localObject).xgu = localStringBuilder1.toString();
-      AppMethodBeat.o(16746);
+      ((ets)localObject).aaAf = localStringBuilder1.toString();
+      AppMethodBeat.o(20789);
       return;
-      localStringBuilder1.append("{\"group_key\": \"invoice_info\",\"group_info\": {\"group_id\": " + paramb.nLm + ",\"field_list\": [{\"key\": \"type\",\"value\": \"" + paramb.type + "\"},{\"key\": \"title\",\"value\": \"" + paramb.nLn + "\"},{\"key\": \"phone\",\"value\": \"" + paramb.nLt + "\"},{\"key\": \"email\",\"value\": \"" + paramb.dqF + "\"}]}}");
+      localStringBuilder1.append("{\"group_key\": \"invoice_info\",\"group_info\": {\"group_id\": " + paramb.JFg + ",\"field_list\": [{\"key\": \"type\",\"value\": \"" + paramb.type + "\"},{\"key\": \"title\",\"value\": \"" + paramb.JFh + "\"},{\"key\": \"phone\",\"value\": \"" + paramb.JFn + "\"},{\"key\": \"email\",\"value\": \"" + paramb.kab + "\"}]}}");
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(16748);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16748);
+    AppMethodBeat.i(20791);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(20791);
     return i;
   }
   
@@ -67,24 +67,24 @@ public final class i
     return 1180;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16747);
-    ab.d("MicroMsg.NetSceneSaveUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(20790);
+    Log.d("MicroMsg.NetSceneSaveUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.gKP = ((bwj)((com.tencent.mm.ai.b)paramq).fsW.fta);
-      if ((this.gKP != null) && (this.gKP.xJO != null) && (this.gKP.xJO.size() > 0) && (this.gKP.xJO.get(0) != null)) {
-        ab.i("MicroMsg.NetSceneSaveUserAutoFillInfo", "resp groupId is.." + ((atr)this.gKP.xJO.get(0)).wPj);
+      this.qhI = ((ett)c.c.b(((com.tencent.mm.am.c)params).otC));
+      if ((this.qhI != null) && (this.qhI.abwX != null) && (this.qhI.abwX.size() > 0) && (this.qhI.abwX.get(0) != null)) {
+        Log.i("MicroMsg.NetSceneSaveUserAutoFillInfo", "resp groupId is.." + ((cxw)this.qhI.abwX.get(0)).group_id);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16747);
+    AppMethodBeat.o(20790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.i
  * JD-Core Version:    0.7.0.1
  */

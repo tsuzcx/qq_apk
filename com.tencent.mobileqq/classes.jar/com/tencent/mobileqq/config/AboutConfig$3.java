@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.config;
 
-import aojv;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
 
-public final class AboutConfig$3
+final class AboutConfig$3
   implements Runnable
 {
-  public AboutConfig$3(aojv paramaojv, ResourcePluginInfo paramResourcePluginInfo) {}
+  AboutConfig$3(AboutConfig paramAboutConfig, ResourcePluginInfo paramResourcePluginInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aojv.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_Aojv.b();
+    this.a.a(this.b);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.AboutConfig.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class WebImageCreator
   
   public WebImage createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61255);
+    AppMethodBeat.i(11747);
     int m = SafeParcelReader.validateObjectHeader(paramParcel);
     Uri localUri = null;
     int k = 0;
@@ -42,7 +42,7 @@ public class WebImageCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, m);
     paramParcel = new WebImage(i, localUri, j, k);
-    AppMethodBeat.o(61255);
+    AppMethodBeat.o(11747);
     return paramParcel;
   }
   
@@ -53,7 +53,7 @@ public class WebImageCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.images.WebImageCreator
  * JD-Core Version:    0.7.0.1
  */

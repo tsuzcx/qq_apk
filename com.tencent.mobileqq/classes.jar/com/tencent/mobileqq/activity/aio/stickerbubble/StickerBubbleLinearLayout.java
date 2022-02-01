@@ -14,11 +14,16 @@ public class StickerBubbleLinearLayout
   
   private boolean a(View paramView, float paramFloat1, float paramFloat2)
   {
-    if ((paramFloat1 < paramView.getLeft()) || (paramFloat1 > paramView.getRight())) {}
-    while ((paramFloat2 < paramView.getTop()) || (paramFloat2 > paramView.getBottom())) {
-      return false;
+    if (paramFloat1 >= paramView.getLeft())
+    {
+      if (paramFloat1 > paramView.getRight()) {
+        return false;
+      }
+      if (paramFloat2 >= paramView.getTop()) {
+        return paramFloat2 <= paramView.getBottom();
+      }
     }
-    return true;
+    return false;
   }
   
   public View a(float paramFloat1, float paramFloat2)

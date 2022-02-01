@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/ejo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.widget.AsyncImageView android:id="@id/ejn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <View android:id="@id/ejy" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ejp" android:layout_width="250.0dip" android:layout_height="fill_parent" android:layout_marginTop="135.0dip" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lwf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="120.0dip">
+            <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="26.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:ellipsize="end" android:gravity="center" android:id="@id/ejr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="皮皮小宝贝皮皮小宝贝皮皮小宝贝皮皮小宝贝皮皮小宝贝" android:maxLines="2" android:maxEms="6" />
+            <include android:gravity="center" android:orientation="horizontal" android:id="@id/ek2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" layout="@layout/bid" />
+            <include android:id="@id/ire" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="20.0dip" layout="@layout/biv" />
+            <include android:gravity="center|right" android:orientation="horizontal" android:id="@id/ek5" android:clickable="true" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="6.5dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/bix" />
+        </LinearLayout>
+        <View android:id="@id/m3i" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="10.0dip" android:layout_below="@id/lwf" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/ejm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="22.5dip" android:layout_below="@id/m3i" android:lineSpacingExtra="1.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ejq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="25.0dip" />
+    </RelativeLayout>
+    <include android:id="@id/eg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" layout="@layout/bib" />
+    <RelativeLayout android:id="@id/ejz" android:background="@drawable/aq7" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/aqu" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/aqu" android:layout_marginBottom="6.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="18.0dip" android:layout_height="16.0dip" android:src="@drawable/car" android:scaleType="fitXY" />
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/gjz" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ejw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+        <Button android:textSize="18.0sp" android:id="@id/ejx" android:layout_width="fill_parent" android:layout_height="55.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:text="@string/gjz" style="@style/uk" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ejt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:weightSum="1.0">
+            <View android:layout_gravity="top" android:id="@id/eju" android:clickable="false" android:duplicateParentState="true" android:layout_width="25.0dip" android:layout_height="25.0dip" />
+            <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textColor="@color/a_j" android:ellipsize="end" android:gravity="left" android:layout_gravity="top" android:id="@id/ejs" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="101" android:layout_weight="1.0" />
+            <View android:layout_gravity="bottom|center|right" android:id="@id/ejv" android:clickable="false" android:duplicateParentState="true" android:layout_width="25.0dip" android:layout_height="25.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/iqw" android:background="@drawable/aq7" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/aqu" android:layout_marginTop="13.0dip" android:layout_marginRight="@dimen/aqu">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iqy" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="18.0dip" android:layout_height="16.0dip" android:src="@drawable/car" android:scaleType="fitXY" />
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/gjy" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/iqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="XXXX邀请你加入相册，一起上传照片/视频" android:layout_below="@id/iqy" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

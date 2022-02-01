@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/a6q" />
-    <item android:drawable="@drawable/abk" android:left="@dimen/cb" />
-</layer-list>
+    <solid android:color="@color/ry" />
+    <size android:height="@dimen/cv" />
+    <corners android:radius="@dimen/cd" />
+</shape>

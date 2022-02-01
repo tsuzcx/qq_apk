@@ -10,8 +10,8 @@ public final class ReqGetVoterList
   static ReqHead cache_stHeader;
   static UserCntlData cache_stUserData;
   public int iPageSize = -1;
-  public ReqHead stHeader;
-  public UserCntlData stUserData;
+  public ReqHead stHeader = null;
+  public UserCntlData stUserData = null;
   
   public ReqGetVoterList() {}
   
@@ -38,15 +38,16 @@ public final class ReqGetVoterList
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stHeader, 0);
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 1);
+    UserCntlData localUserCntlData = this.stUserData;
+    if (localUserCntlData != null) {
+      paramJceOutputStream.write(localUserCntlData, 1);
     }
     paramJceOutputStream.write(this.iPageSize, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqGetVoterList
  * JD-Core Version:    0.7.0.1
  */

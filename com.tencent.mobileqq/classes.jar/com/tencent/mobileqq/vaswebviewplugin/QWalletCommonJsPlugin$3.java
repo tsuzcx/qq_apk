@@ -14,29 +14,36 @@ class QWalletCommonJsPlugin$3
   
   public void run()
   {
-    int j = 0;
     for (;;)
     {
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        if ((this.val$item != null) && (QWalletCommonJsPlugin.access$100(this.this$0) == this.val$item.appid))
+        Object localObject = this.val$item;
+        if ((localObject != null) && (QWalletCommonJsPlugin.access$100(this.this$0) == this.val$item.appid))
         {
-          if (TextUtils.isEmpty(this.val$item.urlDomain)) {
-            break label253;
+          boolean bool = TextUtils.isEmpty(this.val$item.urlDomain);
+          int j = 0;
+          if (bool) {
+            break label289;
           }
-          String[] arrayOfString = (this.val$item.urlDomain + "|#").split("\\|");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.val$item.urlDomain);
+          ((StringBuilder)localObject).append("|#");
+          localObject = ((StringBuilder)localObject).toString().split("\\|");
           String str = Uri.parse(this.val$webView.getUrl()).getHost();
           if (TextUtils.isEmpty(str)) {
-            break label253;
+            break label289;
           }
           str = str.toLowerCase();
           i = 0;
-          if ((i < arrayOfString.length - 1) && (!str.contains(arrayOfString[i]))) {
-            break label258;
+          if (i < localObject.length - 1) {
+            if (!str.contains(localObject[i])) {
+              break label282;
+            }
           }
-          if (i < arrayOfString.length - 1) {
-            break label253;
+          if (i < localObject.length - 1) {
+            break label289;
           }
           i = j;
           if (i != 0)
@@ -57,17 +64,17 @@ class QWalletCommonJsPlugin$3
         localJSONException.printStackTrace();
         return;
       }
-      label253:
-      int i = 1;
-      continue;
-      label258:
+      label282:
       i += 1;
+      continue;
+      label289:
+      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

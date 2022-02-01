@@ -35,8 +35,9 @@ public final class ShuffleOrder$UnshuffledShuffleOrder
   
   public int getLastIndex()
   {
-    if (this.length > 0) {
-      return this.length - 1;
+    int i = this.length;
+    if (i > 0) {
+      return i - 1;
     }
     return -1;
   }
@@ -66,7 +67,7 @@ public final class ShuffleOrder$UnshuffledShuffleOrder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ShuffleOrder.UnshuffledShuffleOrder
  * JD-Core Version:    0.7.0.1
  */

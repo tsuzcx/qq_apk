@@ -1,0 +1,54 @@
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
+
+public class amqs
+  extends amqg
+{
+  public CharSequence av;
+  public CharSequence aw;
+  public String bgColor;
+  public boolean cDX;
+  
+  public amqs(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public amqs(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void PS(String paramString)
+  {
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.av = amxk.a(paramString.optJSONArray("leftText"));
+        this.aw = amxk.a(paramString.optJSONArray("rightText"));
+        this.bgColor = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.cDX = bool;
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(TAG, 0, paramString.toString());
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes3.jar
+ * Qualified Name:     amqs
+ * JD-Core Version:    0.7.0.1
+ */

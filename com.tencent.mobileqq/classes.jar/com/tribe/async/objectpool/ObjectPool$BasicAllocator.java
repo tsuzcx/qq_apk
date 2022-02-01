@@ -19,18 +19,15 @@ public class ObjectPool$BasicAllocator<T>
       Object localObject = this.mClazz.newInstance();
       return localObject;
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      SLog.e("async.ObjectPool", "Couldn't instantiate object", localIllegalAccessException);
+    }
     catch (InstantiationException localInstantiationException)
     {
       SLog.e("async.ObjectPool", "Couldn't instantiate object", localInstantiationException);
-      return null;
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        SLog.e("async.ObjectPool", "Couldn't instantiate object", localIllegalAccessException);
-      }
-    }
+    return null;
   }
   
   public void onAllocate(T paramT) {}
@@ -39,7 +36,7 @@ public class ObjectPool$BasicAllocator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.objectpool.ObjectPool.BasicAllocator
  * JD-Core Version:    0.7.0.1
  */

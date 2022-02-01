@@ -1,21 +1,51 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.service.profile.ProfileUtil;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
-import java.io.File;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class fmv
+public final class fmv
   extends Thread
 {
-  public fmv(ConfigServlet paramConfigServlet, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public fmv(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (HttpDownloadUtil.a((AppInterface)this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime(), this.jdField_a_of_type_JavaLangString, new File(this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime().getApplication().getFilesDir().getAbsolutePath() + "/" + "flashlogo.png"))) {
-      SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqConfigSplashlogoConfigServlet.getAppRuntime().getApplication(), this.jdField_a_of_type_Int, this.b, this.c);
+    Card localCard = ProfileCardUtil.a(this.a, this.a.a());
+    if (localCard != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("SPLASH_ConfigServlet_birth", 2, "card!=null");
+      }
+      j = (int)localCard.lBirthday;
+      i = ProfileUtil.c(j);
+      j = ProfileUtil.d(j);
+      SharedPreUtils.b(this.a.a(), ConfigServlet.a(i, j));
+      i = ConfigServlet.a(new SimpleDateFormat("MM-dd").format(new Date()), ConfigServlet.a(i, j));
+      if ((i >= 0) && (i <= 3))
+      {
+        ConfigServlet.a(this.a, 3);
+        if (QLog.isColorLevel()) {
+          QLog.i("SPLASH_ConfigServlet_birth", 2, "birthday coming soon,date diff is " + i);
+        }
+      }
     }
+    while (!QLog.isColorLevel())
+    {
+      int j;
+      int i;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i("SPLASH_ConfigServlet_birth", 2, "not birthday date diff is " + i);
+      return;
+    }
+    QLog.i("SPLASH_ConfigServlet_birth", 2, "card===null");
   }
 }
 

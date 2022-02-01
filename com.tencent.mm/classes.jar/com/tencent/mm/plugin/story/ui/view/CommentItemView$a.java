@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.b.j;
-import a.l;
 import android.animation.TypeEvaluator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/CommentItemView$ArgbEvaluator;", "Landroid/animation/TypeEvaluator;", "", "()V", "evaluate", "fraction", "", "startValue", "endValue", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class CommentItemView$a
   implements TypeEvaluator<Object>
 {
   public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(110342);
-    j.q(paramObject1, "startValue");
-    j.q(paramObject2, "endValue");
+    AppMethodBeat.i(120022);
+    s.u(paramObject1, "startValue");
+    s.u(paramObject2, "endValue");
     int i = ((Integer)paramObject1).intValue();
     float f1 = (i >> 24 & 0xFF) / 255.0F;
     float f4 = (i >> 16 & 0xFF) / 255.0F;
@@ -37,13 +37,13 @@ public final class CommentItemView$a
     int j = Math.round(f4 * 255.0F);
     int k = Math.round(f5 * 255.0F);
     int m = Math.round(f3 * 255.0F);
-    AppMethodBeat.o(110342);
+    AppMethodBeat.o(120022);
     return Integer.valueOf(m | i << 24 | j << 16 | k << 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.CommentItemView.a
  * JD-Core Version:    0.7.0.1
  */

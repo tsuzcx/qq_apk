@@ -5,7 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.api.ILog;
+import com.tencent.image.api.IReport;
+import com.tencent.image.api.URLDrawableDepWrap;
 
 public class SliceBitmap
 {
@@ -13,7 +15,7 @@ public class SliceBitmap
   public static final int DENSITY_NONE = 0;
   private static final int SLICE_SIZE = 2048;
   public static final String TAG_REPORT_TEXTURE_MAX_SIZE = "texture_max_size";
-  public static int gl_max_texture_size = 0;
+  public static int gl_max_texture_size;
   boolean hasAlpha;
   Bitmap[] mBitmaps;
   int mChangingConfigurations;
@@ -34,415 +36,389 @@ public class SliceBitmap
       this.mRowCount = ((this.mWidth + 2048 - 1) / 2048);
       this.mColumnCount = ((this.mHeight + 2048 - 1) / 2048);
       Bitmap[] arrayOfBitmap = new Bitmap[this.mRowCount * this.mColumnCount];
-      int i = 0;
       int j = 0;
-      while (i < this.mRowCount)
+      int i = 0;
+      while (j < this.mRowCount)
       {
         int k = 0;
-        if (k < this.mColumnCount)
+        while (k < this.mColumnCount)
         {
-          int i1 = i * 2048;
+          int i1 = j * 2048;
           int i2 = k * 2048;
-          int m;
-          if (i1 + 2048 > this.mWidth)
-          {
-            m = this.mWidth - i1;
-            label154:
-            if (i2 + 2048 <= this.mHeight) {
-              break label213;
-            }
-          }
-          label213:
-          for (int n = this.mHeight - i2;; n = 2048)
-          {
-            arrayOfBitmap[j] = Bitmap.createBitmap(paramBitmap, i1, i2, m, n);
-            k += 1;
-            j += 1;
-            break;
+          int m = this.mWidth;
+          if (i1 + 2048 > m) {
+            m -= i1;
+          } else {
             m = 2048;
-            break label154;
           }
+          int n = this.mHeight;
+          if (i2 + 2048 > n) {
+            n -= i2;
+          } else {
+            n = 2048;
+          }
+          arrayOfBitmap[i] = Bitmap.createBitmap(paramBitmap, i1, i2, m, n);
+          i += 1;
+          k += 1;
         }
-        i += 1;
+        j += 1;
       }
       this.mBitmaps = arrayOfBitmap;
       return;
     }
-    throw new IllegalArgumentException("the bitmap no need to Slice");
+    paramBitmap = new IllegalArgumentException("the bitmap no need to Slice");
+    for (;;)
+    {
+      throw paramBitmap;
+    }
   }
   
   /* Error */
   public static int getTextureBitmapMaxSize()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: getstatic 86	android/os/Build$VERSION:SDK_INT	I
+    //   0: getstatic 84	android/os/Build$VERSION:SDK_INT	I
+    //   3: istore_1
+    //   4: sipush 2048
+    //   7: istore_0
+    //   8: iload_1
     //   9: bipush 17
-    //   11: if_icmplt +147 -> 158
+    //   11: if_icmplt +503 -> 514
     //   14: iconst_0
-    //   15: invokestatic 92	android/opengl/EGL14:eglGetDisplay	(I)Landroid/opengl/EGLDisplay;
-    //   18: astore_1
+    //   15: invokestatic 90	android/opengl/EGL14:eglGetDisplay	(I)Landroid/opengl/EGLDisplay;
+    //   18: astore_2
     //   19: iconst_2
     //   20: newarray int
-    //   22: astore_2
-    //   23: aload_1
-    //   24: aload_2
+    //   22: astore_3
+    //   23: aload_2
+    //   24: aload_3
     //   25: iconst_0
-    //   26: aload_2
+    //   26: aload_3
     //   27: iconst_1
-    //   28: invokestatic 96	android/opengl/EGL14:eglInitialize	(Landroid/opengl/EGLDisplay;[II[II)Z
+    //   28: invokestatic 94	android/opengl/EGL14:eglInitialize	(Landroid/opengl/EGLDisplay;[II[II)Z
     //   31: pop
     //   32: iconst_1
-    //   33: anewarray 98	android/opengl/EGLConfig
-    //   36: astore_2
+    //   33: anewarray 96	android/opengl/EGLConfig
+    //   36: astore_3
     //   37: iconst_1
     //   38: newarray int
-    //   40: astore_3
-    //   41: aload_1
-    //   42: bipush 9
-    //   44: newarray int
-    //   46: dup
-    //   47: iconst_0
-    //   48: sipush 12351
-    //   51: iastore
-    //   52: dup
-    //   53: iconst_1
-    //   54: sipush 12430
-    //   57: iastore
-    //   58: dup
-    //   59: iconst_2
-    //   60: sipush 12329
-    //   63: iastore
-    //   64: dup
-    //   65: iconst_3
-    //   66: iconst_0
-    //   67: iastore
-    //   68: dup
-    //   69: iconst_4
-    //   70: sipush 12352
-    //   73: iastore
-    //   74: dup
-    //   75: iconst_5
-    //   76: iconst_4
-    //   77: iastore
-    //   78: dup
-    //   79: bipush 6
-    //   81: sipush 12339
-    //   84: iastore
-    //   85: dup
-    //   86: bipush 7
-    //   88: iconst_1
-    //   89: iastore
-    //   90: dup
-    //   91: bipush 8
-    //   93: sipush 12344
-    //   96: iastore
-    //   97: iconst_0
-    //   98: aload_2
-    //   99: iconst_0
-    //   100: iconst_1
-    //   101: aload_3
-    //   102: iconst_0
-    //   103: invokestatic 102	android/opengl/EGL14:eglChooseConfig	(Landroid/opengl/EGLDisplay;[II[Landroid/opengl/EGLConfig;II[II)Z
-    //   106: pop
-    //   107: aload_3
-    //   108: iconst_0
-    //   109: iaload
-    //   110: istore_0
-    //   111: iload_0
-    //   112: ifne +50 -> 162
-    //   115: aload_1
-    //   116: ifnull +42 -> 158
-    //   119: aload_1
-    //   120: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   123: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   126: getstatic 110	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   129: invokestatic 114	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   132: pop
-    //   133: iconst_0
-    //   134: ifeq +9 -> 143
-    //   137: aload_1
-    //   138: aconst_null
-    //   139: invokestatic 118	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
-    //   142: pop
-    //   143: iconst_0
-    //   144: ifeq +9 -> 153
-    //   147: aload_1
-    //   148: aconst_null
-    //   149: invokestatic 122	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
-    //   152: pop
-    //   153: aload_1
-    //   154: invokestatic 126	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
-    //   157: pop
-    //   158: sipush 2048
-    //   161: ireturn
-    //   162: aload_2
-    //   163: iconst_0
-    //   164: aaload
-    //   165: astore_2
-    //   166: aload_1
-    //   167: aload_2
-    //   168: iconst_5
-    //   169: newarray int
-    //   171: dup
-    //   172: iconst_0
-    //   173: sipush 12375
-    //   176: iastore
-    //   177: dup
-    //   178: iconst_1
-    //   179: bipush 64
-    //   181: iastore
-    //   182: dup
-    //   183: iconst_2
-    //   184: sipush 12374
-    //   187: iastore
-    //   188: dup
-    //   189: iconst_3
-    //   190: bipush 64
-    //   192: iastore
-    //   193: dup
-    //   194: iconst_4
-    //   195: sipush 12344
-    //   198: iastore
+    //   40: astore 4
+    //   42: aload_2
+    //   43: bipush 9
+    //   45: newarray int
+    //   47: dup
+    //   48: iconst_0
+    //   49: sipush 12351
+    //   52: iastore
+    //   53: dup
+    //   54: iconst_1
+    //   55: sipush 12430
+    //   58: iastore
+    //   59: dup
+    //   60: iconst_2
+    //   61: sipush 12329
+    //   64: iastore
+    //   65: dup
+    //   66: iconst_3
+    //   67: iconst_0
+    //   68: iastore
+    //   69: dup
+    //   70: iconst_4
+    //   71: sipush 12352
+    //   74: iastore
+    //   75: dup
+    //   76: iconst_5
+    //   77: iconst_4
+    //   78: iastore
+    //   79: dup
+    //   80: bipush 6
+    //   82: sipush 12339
+    //   85: iastore
+    //   86: dup
+    //   87: bipush 7
+    //   89: iconst_1
+    //   90: iastore
+    //   91: dup
+    //   92: bipush 8
+    //   94: sipush 12344
+    //   97: iastore
+    //   98: iconst_0
+    //   99: aload_3
+    //   100: iconst_0
+    //   101: iconst_1
+    //   102: aload 4
+    //   104: iconst_0
+    //   105: invokestatic 100	android/opengl/EGL14:eglChooseConfig	(Landroid/opengl/EGLDisplay;[II[Landroid/opengl/EGLConfig;II[II)Z
+    //   108: pop
+    //   109: aload 4
+    //   111: iconst_0
+    //   112: iaload
+    //   113: istore_1
+    //   114: iload_1
+    //   115: ifne +30 -> 145
+    //   118: aload_2
+    //   119: ifnull +22 -> 141
+    //   122: aload_2
+    //   123: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   126: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   129: getstatic 108	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   132: invokestatic 112	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   135: pop
+    //   136: aload_2
+    //   137: invokestatic 116	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
+    //   140: pop
+    //   141: sipush 2048
+    //   144: ireturn
+    //   145: aload_3
+    //   146: iconst_0
+    //   147: aaload
+    //   148: astore 4
+    //   150: aload_2
+    //   151: aload 4
+    //   153: iconst_5
+    //   154: newarray int
+    //   156: dup
+    //   157: iconst_0
+    //   158: sipush 12375
+    //   161: iastore
+    //   162: dup
+    //   163: iconst_1
+    //   164: bipush 64
+    //   166: iastore
+    //   167: dup
+    //   168: iconst_2
+    //   169: sipush 12374
+    //   172: iastore
+    //   173: dup
+    //   174: iconst_3
+    //   175: bipush 64
+    //   177: iastore
+    //   178: dup
+    //   179: iconst_4
+    //   180: sipush 12344
+    //   183: iastore
+    //   184: iconst_0
+    //   185: invokestatic 120	android/opengl/EGL14:eglCreatePbufferSurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;[II)Landroid/opengl/EGLSurface;
+    //   188: astore_3
+    //   189: aload_2
+    //   190: aload 4
+    //   192: getstatic 108	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   195: iconst_3
+    //   196: newarray int
+    //   198: dup
     //   199: iconst_0
-    //   200: invokestatic 130	android/opengl/EGL14:eglCreatePbufferSurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;[II)Landroid/opengl/EGLSurface;
-    //   203: astore_3
-    //   204: aload_1
-    //   205: aload_2
-    //   206: getstatic 110	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   209: iconst_3
-    //   210: newarray int
-    //   212: dup
-    //   213: iconst_0
-    //   214: sipush 12440
-    //   217: iastore
-    //   218: dup
-    //   219: iconst_1
-    //   220: iconst_2
-    //   221: iastore
-    //   222: dup
-    //   223: iconst_2
-    //   224: sipush 12344
-    //   227: iastore
-    //   228: iconst_0
-    //   229: invokestatic 134	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
-    //   232: astore_2
-    //   233: aload_1
-    //   234: aload_3
-    //   235: aload_3
-    //   236: aload_2
-    //   237: invokestatic 114	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   240: pop
-    //   241: iconst_1
-    //   242: newarray int
-    //   244: astore 4
-    //   246: sipush 3379
-    //   249: aload 4
-    //   251: iconst_0
-    //   252: invokestatic 140	android/opengl/GLES20:glGetIntegerv	(I[II)V
-    //   255: aload 4
-    //   257: iconst_0
-    //   258: iaload
-    //   259: sipush 2048
-    //   262: if_icmple +53 -> 315
-    //   265: aload 4
-    //   267: iconst_0
-    //   268: iaload
-    //   269: istore_0
-    //   270: aload_1
-    //   271: ifnull +42 -> 313
-    //   274: aload_1
-    //   275: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   278: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   281: getstatic 110	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   284: invokestatic 114	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   287: pop
-    //   288: aload_3
-    //   289: ifnull +9 -> 298
-    //   292: aload_1
-    //   293: aload_3
-    //   294: invokestatic 118	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   200: sipush 12440
+    //   203: iastore
+    //   204: dup
+    //   205: iconst_1
+    //   206: iconst_2
+    //   207: iastore
+    //   208: dup
+    //   209: iconst_2
+    //   210: sipush 12344
+    //   213: iastore
+    //   214: iconst_0
+    //   215: invokestatic 124	android/opengl/EGL14:eglCreateContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLConfig;Landroid/opengl/EGLContext;[II)Landroid/opengl/EGLContext;
+    //   218: astore 5
+    //   220: aload_2
+    //   221: aload_3
+    //   222: aload_3
+    //   223: aload 5
+    //   225: invokestatic 112	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   228: pop
+    //   229: iconst_1
+    //   230: newarray int
+    //   232: astore 4
+    //   234: sipush 3379
+    //   237: aload 4
+    //   239: iconst_0
+    //   240: invokestatic 130	android/opengl/GLES20:glGetIntegerv	(I[II)V
+    //   243: aload 4
+    //   245: iconst_0
+    //   246: iaload
+    //   247: sipush 2048
+    //   250: if_icmple +8 -> 258
+    //   253: aload 4
+    //   255: iconst_0
+    //   256: iaload
+    //   257: istore_0
+    //   258: aload_2
+    //   259: ifnull +44 -> 303
+    //   262: aload_2
+    //   263: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   266: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   269: getstatic 108	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   272: invokestatic 112	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   275: pop
+    //   276: aload_3
+    //   277: ifnull +9 -> 286
+    //   280: aload_2
+    //   281: aload_3
+    //   282: invokestatic 134	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   285: pop
+    //   286: aload 5
+    //   288: ifnull +10 -> 298
+    //   291: aload_2
+    //   292: aload 5
+    //   294: invokestatic 138	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
     //   297: pop
     //   298: aload_2
-    //   299: ifnull +9 -> 308
-    //   302: aload_1
-    //   303: aload_2
-    //   304: invokestatic 122	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
-    //   307: pop
-    //   308: aload_1
-    //   309: invokestatic 126	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
-    //   312: pop
-    //   313: iload_0
-    //   314: ireturn
-    //   315: sipush 2048
-    //   318: istore_0
-    //   319: goto -49 -> 270
-    //   322: astore_3
-    //   323: aconst_null
-    //   324: astore_1
-    //   325: aconst_null
-    //   326: astore_2
-    //   327: aload 5
-    //   329: astore 4
-    //   331: aload_3
-    //   332: invokevirtual 143	java/lang/Throwable:printStackTrace	()V
-    //   335: aload_2
-    //   336: ifnull -178 -> 158
-    //   339: aload_2
-    //   340: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   343: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   346: getstatic 110	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   349: invokestatic 114	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   352: pop
-    //   353: aload 4
-    //   355: ifnull +10 -> 365
+    //   299: invokestatic 116	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
+    //   302: pop
+    //   303: iload_0
+    //   304: ireturn
+    //   305: astore 4
+    //   307: goto +159 -> 466
+    //   310: astore 7
+    //   312: aload 5
+    //   314: astore 6
+    //   316: aload_2
+    //   317: astore 5
+    //   319: aload_3
+    //   320: astore 4
+    //   322: aload 6
+    //   324: astore_2
+    //   325: goto +63 -> 388
+    //   328: astore 4
+    //   330: goto +21 -> 351
+    //   333: astore 5
+    //   335: aload_3
+    //   336: astore 4
+    //   338: aload 5
+    //   340: astore_3
+    //   341: aload_2
+    //   342: astore 5
+    //   344: goto +39 -> 383
+    //   347: astore 4
+    //   349: aconst_null
+    //   350: astore_3
+    //   351: aconst_null
+    //   352: astore 5
+    //   354: goto +112 -> 466
+    //   357: astore_3
     //   358: aload_2
-    //   359: aload 4
-    //   361: invokestatic 118	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
-    //   364: pop
-    //   365: aload_1
-    //   366: ifnull +9 -> 375
-    //   369: aload_2
-    //   370: aload_1
-    //   371: invokestatic 122	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
-    //   374: pop
-    //   375: aload_2
-    //   376: invokestatic 126	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
-    //   379: pop
-    //   380: sipush 2048
-    //   383: ireturn
-    //   384: astore_1
-    //   385: aconst_null
-    //   386: astore_3
-    //   387: aconst_null
-    //   388: astore_2
-    //   389: aload_2
-    //   390: ifnull +44 -> 434
-    //   393: aload_2
-    //   394: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   397: getstatic 106	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
-    //   400: getstatic 110	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
-    //   403: invokestatic 114	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   406: pop
-    //   407: aload_3
-    //   408: ifnull +9 -> 417
-    //   411: aload_2
-    //   412: aload_3
-    //   413: invokestatic 118	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
-    //   416: pop
-    //   417: aload 4
-    //   419: ifnull +10 -> 429
-    //   422: aload_2
-    //   423: aload 4
-    //   425: invokestatic 122	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
-    //   428: pop
-    //   429: aload_2
-    //   430: invokestatic 126	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
-    //   433: pop
-    //   434: aload_1
-    //   435: athrow
-    //   436: astore 5
-    //   438: aconst_null
-    //   439: astore_3
-    //   440: aload_1
-    //   441: astore_2
-    //   442: aload 5
-    //   444: astore_1
-    //   445: goto -56 -> 389
-    //   448: astore 5
-    //   450: aload_1
-    //   451: astore_2
-    //   452: aload 5
-    //   454: astore_1
-    //   455: goto -66 -> 389
-    //   458: astore 5
-    //   460: aload_2
-    //   461: astore 4
-    //   463: aload_1
-    //   464: astore_2
-    //   465: aload 5
-    //   467: astore_1
-    //   468: goto -79 -> 389
-    //   471: astore 5
-    //   473: aload 4
-    //   475: astore_3
-    //   476: aload_1
-    //   477: astore 4
-    //   479: aload 5
-    //   481: astore_1
-    //   482: goto -93 -> 389
-    //   485: astore_3
-    //   486: aload_1
-    //   487: astore_2
-    //   488: aconst_null
-    //   489: astore_1
-    //   490: aload 5
-    //   492: astore 4
-    //   494: goto -163 -> 331
-    //   497: astore 4
-    //   499: aload_1
-    //   500: astore_2
-    //   501: aload 4
-    //   503: astore_1
-    //   504: aconst_null
-    //   505: astore 5
-    //   507: aload_3
-    //   508: astore 4
-    //   510: aload_1
-    //   511: astore_3
-    //   512: aload 5
-    //   514: astore_1
-    //   515: goto -184 -> 331
-    //   518: astore 6
-    //   520: aload_3
-    //   521: astore 4
-    //   523: aload_1
-    //   524: astore 5
-    //   526: aload 6
-    //   528: astore_3
-    //   529: aload_2
-    //   530: astore_1
-    //   531: aload 5
-    //   533: astore_2
-    //   534: goto -203 -> 331
+    //   359: astore 5
+    //   361: goto +19 -> 380
+    //   364: astore 4
+    //   366: aconst_null
+    //   367: astore_3
+    //   368: aconst_null
+    //   369: astore 5
+    //   371: aconst_null
+    //   372: astore_2
+    //   373: goto +93 -> 466
+    //   376: astore_3
+    //   377: aconst_null
+    //   378: astore 5
+    //   380: aconst_null
+    //   381: astore 4
+    //   383: aconst_null
+    //   384: astore_2
+    //   385: aload_3
+    //   386: astore 7
+    //   388: aload 7
+    //   390: invokevirtual 141	java/lang/Throwable:printStackTrace	()V
+    //   393: aload 5
+    //   395: ifnull +119 -> 514
+    //   398: aload 5
+    //   400: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   403: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   406: getstatic 108	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   409: invokestatic 112	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   412: pop
+    //   413: aload 4
+    //   415: ifnull +11 -> 426
+    //   418: aload 5
+    //   420: aload 4
+    //   422: invokestatic 134	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   425: pop
+    //   426: aload_2
+    //   427: ifnull +10 -> 437
+    //   430: aload 5
+    //   432: aload_2
+    //   433: invokestatic 138	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
+    //   436: pop
+    //   437: aload 5
+    //   439: invokestatic 116	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
+    //   442: pop
+    //   443: sipush 2048
+    //   446: ireturn
+    //   447: astore 6
+    //   449: aload 4
+    //   451: astore_3
+    //   452: aload_2
+    //   453: astore 4
+    //   455: aload 5
+    //   457: astore_2
+    //   458: aload 4
+    //   460: astore 5
+    //   462: aload 6
+    //   464: astore 4
+    //   466: aload_2
+    //   467: ifnull +44 -> 511
+    //   470: aload_2
+    //   471: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   474: getstatic 104	android/opengl/EGL14:EGL_NO_SURFACE	Landroid/opengl/EGLSurface;
+    //   477: getstatic 108	android/opengl/EGL14:EGL_NO_CONTEXT	Landroid/opengl/EGLContext;
+    //   480: invokestatic 112	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
+    //   483: pop
+    //   484: aload_3
+    //   485: ifnull +9 -> 494
+    //   488: aload_2
+    //   489: aload_3
+    //   490: invokestatic 134	android/opengl/EGL14:eglDestroySurface	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   493: pop
+    //   494: aload 5
+    //   496: ifnull +10 -> 506
+    //   499: aload_2
+    //   500: aload 5
+    //   502: invokestatic 138	android/opengl/EGL14:eglDestroyContext	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLContext;)Z
+    //   505: pop
+    //   506: aload_2
+    //   507: invokestatic 116	android/opengl/EGL14:eglTerminate	(Landroid/opengl/EGLDisplay;)Z
+    //   510: pop
+    //   511: aload 4
+    //   513: athrow
+    //   514: sipush 2048
+    //   517: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   110	209	0	i	int
-    //   18	353	1	localEGLDisplay	android.opengl.EGLDisplay
-    //   384	57	1	localObject1	Object
-    //   444	87	1	localObject2	Object
-    //   22	512	2	localObject3	Object
-    //   40	254	3	localObject4	Object
-    //   322	10	3	localThrowable1	java.lang.Throwable
-    //   386	90	3	localObject5	Object
-    //   485	23	3	localThrowable2	java.lang.Throwable
-    //   511	18	3	localObject6	Object
-    //   1	492	4	localObject7	Object
-    //   497	5	4	localThrowable3	java.lang.Throwable
-    //   508	14	4	localObject8	Object
-    //   4	324	5	localObject9	Object
-    //   436	7	5	localObject10	Object
-    //   448	5	5	localObject11	Object
-    //   458	8	5	localObject12	Object
-    //   471	20	5	localObject13	Object
-    //   505	27	5	localObject14	Object
-    //   518	9	6	localThrowable4	java.lang.Throwable
+    //   7	297	0	i	int
+    //   3	112	1	j	int
+    //   18	489	2	localObject1	Object
+    //   22	329	3	localObject2	Object
+    //   357	1	3	localThrowable1	java.lang.Throwable
+    //   367	1	3	localObject3	Object
+    //   376	10	3	localThrowable2	java.lang.Throwable
+    //   451	39	3	localObject4	Object
+    //   40	214	4	arrayOfInt	int[]
+    //   305	1	4	localObject5	Object
+    //   320	1	4	localObject6	Object
+    //   328	1	4	localObject7	Object
+    //   336	1	4	localObject8	Object
+    //   347	1	4	localObject9	Object
+    //   364	1	4	localObject10	Object
+    //   381	131	4	localObject11	Object
+    //   218	100	5	localObject12	Object
+    //   333	6	5	localThrowable3	java.lang.Throwable
+    //   342	159	5	localObject13	Object
+    //   314	9	6	localObject14	Object
+    //   447	16	6	localObject15	Object
+    //   310	1	7	localThrowable4	java.lang.Throwable
+    //   386	3	7	localThrowable5	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   14	19	322	java/lang/Throwable
-    //   14	19	384	finally
-    //   19	107	436	finally
-    //   166	204	436	finally
-    //   204	233	448	finally
-    //   233	255	458	finally
-    //   331	335	471	finally
-    //   19	107	485	java/lang/Throwable
-    //   166	204	485	java/lang/Throwable
-    //   204	233	497	java/lang/Throwable
-    //   233	255	518	java/lang/Throwable
+    //   220	243	305	finally
+    //   220	243	310	java/lang/Throwable
+    //   189	220	328	finally
+    //   189	220	333	java/lang/Throwable
+    //   19	109	347	finally
+    //   150	189	347	finally
+    //   19	109	357	java/lang/Throwable
+    //   150	189	357	java/lang/Throwable
+    //   14	19	364	finally
+    //   14	19	376	java/lang/Throwable
+    //   388	393	447	finally
   }
   
   public static boolean needSlice(Bitmap paramBitmap)
@@ -455,14 +431,16 @@ public class SliceBitmap
     if (gl_max_texture_size == 0)
     {
       gl_max_texture_size = getTextureBitmapMaxSize();
-      if (URLDrawable.sDebugCallback != null)
+      Object localObject = new ReportBean("texture_max_size");
+      ((ReportBean)localObject).size = gl_max_texture_size;
+      URLDrawable.depImp.mReport.report((ReportBean)localObject);
+      if (URLDrawable.depImp.mLog.isColorLevel())
       {
-        ReportBean localReportBean = new ReportBean("texture_max_size");
-        localReportBean.size = gl_max_texture_size;
-        URLDrawable.sDebugCallback.onReport(localReportBean);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("URLDrawable_", 2, "init TextureBitmapMaxSize:" + gl_max_texture_size);
+        localObject = URLDrawable.depImp.mLog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init TextureBitmapMaxSize:");
+        localStringBuilder.append(gl_max_texture_size);
+        ((ILog)localObject).i("URLDrawable_", 2, localStringBuilder.toString());
       }
     }
     return (paramBitmap.getWidth() > gl_max_texture_size) || (paramBitmap.getHeight() > gl_max_texture_size);
@@ -470,10 +448,15 @@ public class SliceBitmap
   
   public static int scaleFromDensity(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 0) || (paramInt2 == paramInt3)) {
-      return paramInt1;
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 == paramInt3) {
+        return paramInt1;
+      }
+      i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
     }
-    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+    return i;
   }
   
   void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
@@ -488,21 +471,21 @@ public class SliceBitmap
     if (!bool) {
       paramCanvas.setDensity(this.mDensity);
     }
-    int i = 0;
     int j = 0;
-    while (i < this.mRowCount)
+    int i = 0;
+    while (j < this.mRowCount)
     {
       int k = 0;
       while (k < this.mColumnCount)
       {
-        paramRect = this.mBitmaps[j];
+        paramRect = this.mBitmaps[i];
         if (paramRect != null) {
-          paramCanvas.drawBitmap(paramRect, i * 2048, k * 2048, paramPaint);
+          paramCanvas.drawBitmap(paramRect, j * 2048, k * 2048, paramPaint);
         }
+        i += 1;
         k += 1;
-        j += 1;
       }
-      i += 1;
+      j += 1;
     }
     if (!bool) {
       paramCanvas.setDensity(n);
@@ -512,17 +495,18 @@ public class SliceBitmap
   
   public Bitmap getBitmap(int paramInt)
   {
-    if ((this.mBitmaps != null) && (this.mBitmaps.length > paramInt)) {
-      return this.mBitmaps[paramInt];
+    Bitmap[] arrayOfBitmap = this.mBitmaps;
+    if ((arrayOfBitmap != null) && (arrayOfBitmap.length > paramInt)) {
+      return arrayOfBitmap[paramInt];
     }
     return null;
   }
   
   public final int getByteCount()
   {
-    int i = 0;
     Bitmap[] arrayOfBitmap = this.mBitmaps;
     int k = arrayOfBitmap.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -604,7 +588,7 @@ public class SliceBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.SliceBitmap
  * JD-Core Version:    0.7.0.1
  */

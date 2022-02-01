@@ -1,22 +1,15 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aijq;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 
-public class MiniPie$3
+class MiniPie$3
   implements Runnable
 {
-  public MiniPie$3(aijq paramaijq) {}
+  MiniPie$3(MiniPie paramMiniPie) {}
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean) {
-      aijq.a(this.this$0);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "EmotionPanel already added");
+    BaseAIOUtils.c(this.this$0.t);
   }
 }
 

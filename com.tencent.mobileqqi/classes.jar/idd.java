@@ -1,37 +1,30 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RecvMsg;
 import cooperation.qzone.remote.RemoteServiceProxy;
 import cooperation.qzone.remote.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class idd
-  implements ServiceConnection
+  extends Thread
 {
   public idd(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
-    }
-    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
-    if (RemoteServiceProxy.access$000(this.a) != null)
+    while (!this.a.sendMsgQueue.isEmpty())
     {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
-      this.a.sendMsg(paramComponentName);
+      SendMsg localSendMsg = (SendMsg)this.a.sendMsgQueue.poll();
+      if (localSendMsg != null) {
+        try
+        {
+          this.a.sendMsgToService(localSendMsg);
+        }
+        catch (Exception localException)
+        {
+          RecvMsg localRecvMsg = this.a.createWaiteRespTimeout(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          this.a.sendFailedRespToApp(localSendMsg, localRecvMsg);
+        }
+      }
     }
-    this.a.onBaseServiceConnected();
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
-    }
-    this.a.serviceHandler = null;
   }
 }
 

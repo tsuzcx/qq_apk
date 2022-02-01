@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/pbz" android:background="@drawable/qcircle_skin_bg_card_shadow_heavy_radius24px" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCornerImageView android:id="@id/pby" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/pc2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="10.0dip">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/pc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="255.0dip" android:singleLine="true" />
+        <com.tencent.mobileqq.flashshow.widgets.common.FSAsyncTextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:ellipsize="end" android:id="@id/pc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxWidth="220.0dip" android:maxLines="2" android:layout_below="@id/pc4" />
+        <Button android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/pbx" android:background="@drawable/qcircle_skin_btn_small_primary_normal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8.0dip" android:maxWidth="200.0dip" android:singleLine="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_gravity="center|right|top" android:id="@id/pc0" android:padding="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/qcircle_skin_icon_nav_close" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </FrameLayout>
+</FrameLayout>

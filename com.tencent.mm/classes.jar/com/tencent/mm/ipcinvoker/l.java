@@ -1,100 +1,51 @@
 package com.tencent.mm.ipcinvoker;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.ExecutorService;
+import java.util.HashMap;
+import java.util.Map;
 
 public class l
 {
-  private static volatile l eEr;
-  private Handler eEs;
-  private m eEt;
-  private Handler mHandler;
-  private HandlerThread mHandlerThread;
+  private static volatile l myP;
+  Map<String, BaseIPCService> myQ;
   
   private l()
   {
-    AppMethodBeat.i(114050);
-    this.mHandlerThread = new HandlerThread("ThreadCaller#Worker-" + hashCode());
-    this.mHandlerThread.start();
-    this.mHandler = new Handler(this.mHandlerThread.getLooper());
-    this.eEs = new Handler(Looper.getMainLooper());
-    this.eEt = m.PR();
-    AppMethodBeat.o(114050);
+    AppMethodBeat.i(158752);
+    this.myQ = new HashMap();
+    AppMethodBeat.o(158752);
   }
   
-  private static l PO()
+  public static l aYt()
   {
-    AppMethodBeat.i(114049);
-    if (eEr == null) {}
+    AppMethodBeat.i(158753);
+    if (myP == null) {}
     try
     {
-      if (eEr == null) {
-        eEr = new l();
+      if (myP == null) {
+        myP = new l();
       }
-      l locall = eEr;
-      AppMethodBeat.o(114049);
+      l locall = myP;
+      AppMethodBeat.o(158753);
       return locall;
     }
     finally
     {
-      AppMethodBeat.o(114049);
+      AppMethodBeat.o(158753);
     }
   }
   
-  public static HandlerThread PP()
+  public final BaseIPCService Fa(String paramString)
   {
-    AppMethodBeat.i(143026);
-    HandlerThread localHandlerThread = PO().mHandlerThread;
-    AppMethodBeat.o(143026);
-    return localHandlerThread;
-  }
-  
-  public static boolean h(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(143027);
-    boolean bool = PO().eEs.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(143027);
-    return bool;
-  }
-  
-  public static boolean post(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(114051);
-    boolean bool = PO().mHandler.post(paramRunnable);
-    AppMethodBeat.o(114051);
-    return bool;
-  }
-  
-  public static boolean postDelayed(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(114052);
-    boolean bool = PO().mHandler.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(114052);
-    return bool;
-  }
-  
-  public static boolean q(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(114053);
-    boolean bool = PO().eEs.post(paramRunnable);
-    AppMethodBeat.o(114053);
-    return bool;
-  }
-  
-  public static boolean r(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(114055);
-    PO().eEt.mExecutorService.execute(paramRunnable);
-    AppMethodBeat.o(114055);
-    return true;
+    AppMethodBeat.i(158754);
+    paramString = (BaseIPCService)this.myQ.get(paramString);
+    AppMethodBeat.o(158754);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.l
  * JD-Core Version:    0.7.0.1
  */

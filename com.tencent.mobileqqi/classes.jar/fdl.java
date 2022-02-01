@@ -1,47 +1,17 @@
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.mobileqq.app.MQPIntChkHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
 public class fdl
-  extends BroadcastReceiver
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public fdl(MQPIntChkHandler paramMQPIntChkHandler, DownloadManager paramDownloadManager) {}
+  public fdl(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, BusinessObserver paramBusinessObserver) {}
   
-  @SuppressLint({"NewApi"})
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    long l = paramIntent.getLongExtra("extra_download_id", -1L);
-    if (MQPIntChkHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMQPIntChkHandler) == l)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("IntChk", 4, "download complete.");
-      }
-      paramIntent = "";
-      Object localObject = new DownloadManager.Query();
-      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
-      localObject = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
-      if (((Cursor)localObject).moveToFirst()) {
-        paramIntent = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("local_filename"));
-      }
-      ((Cursor)localObject).close();
-      if ((paramIntent != null) && (paramIntent != ""))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("IntChk", 4, "install downloaded package:" + paramIntent);
-        }
-        localObject = new Intent("android.intent.action.VIEW");
-        ((Intent)localObject).setDataAndType(Uri.parse("file://" + paramIntent), "application/vnd.android.package-archive");
-        ((Intent)localObject).setFlags(268435456);
-        paramContext.startActivity((Intent)localObject);
-      }
-    }
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq, this.e, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

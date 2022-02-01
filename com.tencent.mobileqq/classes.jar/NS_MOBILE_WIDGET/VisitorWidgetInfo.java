@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class VisitorWidgetInfo
   extends JceStruct
@@ -54,18 +55,20 @@ public final class VisitorWidgetInfo
     paramJceOutputStream.write(this.today_delta, 0);
     paramJceOutputStream.write(this.today_visitor, 1);
     paramJceOutputStream.write(this.total_visitor, 2);
-    if (this.yellow_flag != null) {
-      paramJceOutputStream.write(this.yellow_flag, 4);
+    Object localObject = this.yellow_flag;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.blocked_visitor_count, 5);
-    if (this.delta_visitor != null) {
-      paramJceOutputStream.write(this.delta_visitor, 6);
+    localObject = this.delta_visitor;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.VisitorWidgetInfo
  * JD-Core Version:    0.7.0.1
  */

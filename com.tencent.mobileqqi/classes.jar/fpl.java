@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
 public class fpl
-  implements View.OnClickListener
+  extends FMObserver
 {
   public fpl(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    FMDataCache.b();
-    this.a.setResult(5);
-    this.a.finish();
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 

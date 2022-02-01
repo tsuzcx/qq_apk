@@ -2,24 +2,29 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.view.q;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class g
-  extends q
+  extends androidx.viewpager.widget.a
 {
-  Context mContext;
-  private List<String> pvB;
-  private ArrayList<g.b> pvX;
-  private boolean pvY;
-  g.a pvZ;
+  private List<String> MSa;
+  private ArrayList<b> MSv;
+  private boolean MSw;
+  a MSx;
+  private Context mContext;
   
   public g(Context paramContext)
   {
@@ -28,59 +33,59 @@ public final class g
   
   private g(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(44073);
-    this.pvY = false;
-    this.pvZ = null;
+    AppMethodBeat.i(66978);
+    this.MSw = false;
+    this.MSx = null;
     this.mContext = paramContext;
-    this.pvB = null;
-    setData(this.pvB);
-    AppMethodBeat.o(44073);
+    this.MSa = null;
+    setData(this.MSa);
+    AppMethodBeat.o(66978);
   }
   
-  private void cbv()
+  private void gAA()
   {
-    AppMethodBeat.i(44074);
-    if (this.pvX == null) {
-      this.pvX = new ArrayList();
+    AppMethodBeat.i(66979);
+    if (this.MSv == null) {
+      this.MSv = new ArrayList();
     }
     for (;;)
     {
-      Iterator localIterator = this.pvB.iterator();
+      Iterator localIterator = this.MSa.iterator();
       while (localIterator.hasNext())
       {
-        g.b localb = new g.b(this, (String)localIterator.next());
-        this.pvX.add(localb);
+        b localb = new b((String)localIterator.next());
+        this.MSv.add(localb);
       }
-      this.pvX.clear();
+      this.MSv.clear();
     }
-    AppMethodBeat.o(44074);
+    AppMethodBeat.o(66979);
   }
   
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(44077);
-    ab.d("MicroMsg.MallProductImageAdapter", "destroy item");
-    if (this.pvX != null) {
-      paramViewGroup.removeView(((g.b)this.pvX.get(paramInt)).cxy);
+    AppMethodBeat.i(66982);
+    Log.d("MicroMsg.MallProductImageAdapter", "destroy item");
+    if (this.MSv != null) {
+      paramViewGroup.removeView(((b)this.MSv.get(paramInt)).hNV);
     }
-    AppMethodBeat.o(44077);
+    AppMethodBeat.o(66982);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(44076);
-    if (this.pvB == null)
+    AppMethodBeat.i(66981);
+    if (this.MSa == null)
     {
-      AppMethodBeat.o(44076);
+      AppMethodBeat.o(66981);
       return 0;
     }
-    if (this.pvY)
+    if (this.MSw)
     {
-      AppMethodBeat.o(44076);
+      AppMethodBeat.o(66981);
       return 2147483647;
     }
-    int i = this.pvB.size();
-    AppMethodBeat.o(44076);
+    int i = this.MSa.size();
+    AppMethodBeat.o(66981);
     return i;
   }
   
@@ -91,17 +96,17 @@ public final class g
   
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(44078);
-    if (this.pvX != null)
+    AppMethodBeat.i(66983);
+    if (this.MSv != null)
     {
-      ab.d("MicroMsg.MallProductImageAdapter", "data valid");
-      paramViewGroup.addView(((g.b)this.pvX.get(paramInt)).cxy, 0);
-      paramViewGroup = ((g.b)this.pvX.get(paramInt)).cxy;
-      AppMethodBeat.o(44078);
+      Log.d("MicroMsg.MallProductImageAdapter", "data valid");
+      paramViewGroup.addView(((b)this.MSv.get(paramInt)).hNV, 0);
+      paramViewGroup = ((b)this.MSv.get(paramInt)).hNV;
+      AppMethodBeat.o(66983);
       return paramViewGroup;
     }
     paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
-    AppMethodBeat.o(44078);
+    AppMethodBeat.o(66983);
     return paramViewGroup;
   }
   
@@ -112,15 +117,83 @@ public final class g
   
   public final void setData(List<String> paramList)
   {
-    AppMethodBeat.i(44075);
+    AppMethodBeat.i(66980);
     if (paramList != null)
     {
       if (paramList.size() > 0) {
-        this.pvB = paramList;
+        this.MSa = paramList;
       }
-      cbv();
+      gAA();
     }
-    AppMethodBeat.o(44075);
+    AppMethodBeat.o(66980);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void gAw();
+  }
+  
+  final class b
+    implements r.a
+  {
+    public ImageView hNV;
+    public String url;
+    
+    public b(String paramString)
+    {
+      AppMethodBeat.i(66976);
+      this.hNV = null;
+      this.url = paramString;
+      this.hNV = ((ImageView)((LayoutInflater)g.a(g.this).getSystemService("layout_inflater")).inflate(a.g.product_image_item, null));
+      paramString = r.a(new c(paramString));
+      this.hNV.setImageBitmap(paramString);
+      this.hNV.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(66974);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          Log.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
+          if (g.b(g.this) != null) {
+            g.b(g.this).gAw();
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/product/ui/MallProductImageAdapter$ViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(66974);
+        }
+      });
+      r.a(this);
+      AppMethodBeat.o(66976);
+    }
+    
+    public final void k(String paramString, final Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(66977);
+      StringBuilder localStringBuilder = new StringBuilder().append(paramString).append(", bitmap = ");
+      if (paramBitmap == null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        Log.d("MicroMsg.MallProductImageAdapter", bool);
+        if (this.url != null) {
+          break;
+        }
+        AppMethodBeat.o(66977);
+        return;
+      }
+      if (paramString.equals(this.url)) {
+        this.hNV.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(66975);
+            g.b.this.hNV.setImageBitmap(paramBitmap);
+            AppMethodBeat.o(66975);
+          }
+        });
+      }
+      AppMethodBeat.o(66977);
+    }
   }
 }
 

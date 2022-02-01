@@ -88,60 +88,60 @@ public abstract interface IGoogleCertificatesApi
       
       public IObjectWrapper getGoogleCertificates()
       {
-        AppMethodBeat.i(89674);
+        AppMethodBeat.i(4696);
         Parcel localParcel = transactAndReadException(1, obtainAndWriteInterfaceToken());
         IObjectWrapper localIObjectWrapper = IObjectWrapper.Stub.asInterface(localParcel.readStrongBinder());
         localParcel.recycle();
-        AppMethodBeat.o(89674);
+        AppMethodBeat.o(4696);
         return localIObjectWrapper;
       }
       
       public IObjectWrapper getGoogleReleaseCertificates()
       {
-        AppMethodBeat.i(89675);
+        AppMethodBeat.i(4697);
         Parcel localParcel = transactAndReadException(2, obtainAndWriteInterfaceToken());
         IObjectWrapper localIObjectWrapper = IObjectWrapper.Stub.asInterface(localParcel.readStrongBinder());
         localParcel.recycle();
-        AppMethodBeat.o(89675);
+        AppMethodBeat.o(4697);
         return localIObjectWrapper;
       }
       
       public boolean isGoogleOrPlatformSigned(GoogleCertificatesQuery paramGoogleCertificatesQuery, IObjectWrapper paramIObjectWrapper)
       {
-        AppMethodBeat.i(89678);
+        AppMethodBeat.i(4700);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramGoogleCertificatesQuery);
         zzc.zza(localParcel, paramIObjectWrapper);
         paramGoogleCertificatesQuery = transactAndReadException(5, localParcel);
         boolean bool = zzc.zza(paramGoogleCertificatesQuery);
         paramGoogleCertificatesQuery.recycle();
-        AppMethodBeat.o(89678);
+        AppMethodBeat.o(4700);
         return bool;
       }
       
       public boolean isGoogleReleaseSigned(String paramString, IObjectWrapper paramIObjectWrapper)
       {
-        AppMethodBeat.i(89676);
+        AppMethodBeat.i(4698);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeString(paramString);
         zzc.zza(localParcel, paramIObjectWrapper);
         paramString = transactAndReadException(3, localParcel);
         boolean bool = zzc.zza(paramString);
         paramString.recycle();
-        AppMethodBeat.o(89676);
+        AppMethodBeat.o(4698);
         return bool;
       }
       
       public boolean isGoogleSigned(String paramString, IObjectWrapper paramIObjectWrapper)
       {
-        AppMethodBeat.i(89677);
+        AppMethodBeat.i(4699);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeString(paramString);
         zzc.zza(localParcel, paramIObjectWrapper);
         paramString = transactAndReadException(4, localParcel);
         boolean bool = zzc.zza(paramString);
         paramString.recycle();
-        AppMethodBeat.o(89677);
+        AppMethodBeat.o(4699);
         return bool;
       }
     }
@@ -149,7 +149,7 @@ public abstract interface IGoogleCertificatesApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.IGoogleCertificatesApi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,155 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.g;
-import com.tencent.mm.plugin.appbrand.ui.m;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
-import com.tencent.mm.plugin.appbrand.widget.i.a;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.i;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.i.f;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.Iterator;
+import java.util.Set;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC;", "Lcom/tencent/mm/plugin/appbrand/page/PageDecorWidgetFactory$DefaultFactory;", "()V", "mKeepPersistentViews", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBarContainer;", "[Ljava/lang/Class;", "mScreenAdaptiveViews", "Landroid/view/ViewGroup;", "contains", "", "array", "objectToFind", "", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "createKeepPersistentView", "WIDGET", "Landroid/view/View;", "originalContext", "Landroid/content/Context;", "clazz", "(Landroid/content/Context;Ljava/lang/Class;)Landroid/view/View;", "onCreateWidget", "context", "plugin-appbrand-integration_release"})
-public final class e
-  extends be.a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandComponentViewWxa;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore;", "()V", "addOnBackPressedListener", "", "p0", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackPressedListener;", "kotlin.jvm.PlatformType", "addOnBackgroundListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackgroundListener;", "addOnDestroyListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "addOnForegroundListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnForegroundListener;", "addOnInteractiveListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnInteractiveListener;", "addOnNonInteractiveListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnNonInteractiveListener;", "addOnReadyListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnReadyListener;", "addOnWillDisappearListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnWillDisappearListener;", "callInteractiveStateChanged", "", "callOnBackPressed", "callOnViewWillDisappear", "callPageOnBackground", "callPageOnDestroy", "callPageOnForeground", "callPageOnReady", "getContentView", "Landroid/view/View;", "hide", "post", "block", "Lkotlin/Function0;", "runnable", "Ljava/lang/Runnable;", "postDelayed", "delayMillis", "", "removeAllLifecycleListeners", "removeCallbacks", "removeOnBackPressedListener", "removeOnBackgroundListener", "removeOnDestroyListener", "removeOnForegroundListener", "removeOnInteractiveListener", "removeOnNonInteractiveListener", "removeOnReadyListener", "removeOnWillDisappearListener", "runOnUiThread", "show", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class e
+  extends g
+  implements i
 {
-  private final Class<? extends ViewGroup>[] ivq;
-  private final Class<d>[] ivr;
-  
-  public e()
+  public final void a(i.b paramb)
   {
-    AppMethodBeat.i(134758);
-    this.ivq = new Class[] { b.class, a.class };
-    this.ivr = new Class[] { d.class };
-    AppMethodBeat.o(134758);
+    this.ttM.a(paramb);
   }
   
-  private static boolean contains(Object[] paramArrayOfObject, Object paramObject)
+  public final void a(i.c paramc)
   {
-    AppMethodBeat.i(143905);
-    int j = paramArrayOfObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (j.e(paramArrayOfObject[i], paramObject))
-      {
-        AppMethodBeat.o(143905);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(143905);
-    return false;
+    this.ttM.a(paramc);
   }
   
-  public final <WIDGET extends View> WIDGET b(Context paramContext, Class<WIDGET> paramClass)
+  public final void a(i.d paramd)
   {
-    AppMethodBeat.i(134757);
-    j.q(paramContext, "context");
-    j.q(paramClass, "clazz");
-    if (contains(this.ivq, paramClass))
-    {
-      paramContext = super.b((Context)new m(paramContext), paramClass);
-      AppMethodBeat.o(134757);
-      return paramContext;
+    this.ttM.a(paramd);
+  }
+  
+  public final void a(i.f paramf)
+  {
+    this.ttM.a(paramf);
+  }
+  
+  public final void b(i.b paramb)
+  {
+    this.ttM.b(paramb);
+  }
+  
+  public final void b(i.c paramc)
+  {
+    this.ttM.b(paramc);
+  }
+  
+  public final void b(i.d paramd)
+  {
+    this.ttM.b(paramd);
+  }
+  
+  public final void b(i.f paramf)
+  {
+    this.ttM.rwl.remove(paramf);
+  }
+  
+  public final void cDO()
+  {
+    j localj = this.ttM;
+    Iterator localIterator = localj.rwm.iterator();
+    while (localIterator.hasNext()) {
+      ((i.b)localIterator.next()).onBackground();
     }
-    if (contains(this.ivr, paramClass))
-    {
-      if ((paramContext instanceof g)) {}
-      for (paramContext = (g)paramContext;; paramContext = g.dc(paramContext))
-      {
-        paramContext = super.b((Context)paramContext, paramClass);
-        AppMethodBeat.o(134757);
-        return paramContext;
-      }
+    localj.iW(false);
+  }
+  
+  public final void cDP()
+  {
+    j localj = this.ttM;
+    Iterator localIterator = localj.rwn.iterator();
+    while (localIterator.hasNext()) {
+      ((i.d)localIterator.next()).onForeground();
     }
-    paramContext = super.b(paramContext, paramClass);
-    AppMethodBeat.o(134757);
-    return paramContext;
+    localj.iW(true);
+  }
+  
+  public void d(Runnable paramRunnable, long paramLong)
+  {
+    if (paramRunnable == null) {}
+    View localView;
+    do
+    {
+      return;
+      localView = getContentView();
+    } while (localView == null);
+    localView.postDelayed(paramRunnable, paramLong);
+  }
+  
+  public abstract View getContentView();
+  
+  public void hide()
+  {
+    View localView = getContentView();
+    if (localView != null) {
+      localView.setVisibility(4);
+    }
+  }
+  
+  public final void iW(boolean paramBoolean)
+  {
+    this.ttM.iW(paramBoolean);
+  }
+  
+  public void post(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {}
+    View localView;
+    do
+    {
+      return;
+      localView = getContentView();
+    } while (localView == null);
+    localView.post(paramRunnable);
+  }
+  
+  public void removeCallbacks(Runnable paramRunnable)
+  {
+    if (paramRunnable == null) {}
+    View localView;
+    do
+    {
+      return;
+      localView = getContentView();
+    } while (localView == null);
+    localView.removeCallbacks(paramRunnable);
+  }
+  
+  public final void runOnUiThread(Runnable paramRunnable)
+  {
+    if (MMHandlerThread.isMainThread())
+    {
+      paramRunnable.run();
+      return;
+    }
+    post(paramRunnable);
+  }
+  
+  public void show()
+  {
+    View localView = getContentView();
+    if (localView != null) {
+      localView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.e
  * JD-Core Version:    0.7.0.1
  */

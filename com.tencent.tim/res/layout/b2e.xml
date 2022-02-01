@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_qq_setting_bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RandomCoverView android:id="@id/jt4" android:layout_width="fill_parent" android:layout_height="170.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/ac5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jt4" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/kis" android:layout_width="fill_parent" android:layout_height="170.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/a81" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</RelativeLayout>

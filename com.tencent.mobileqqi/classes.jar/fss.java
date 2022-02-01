@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
 
-class fss
-  implements Runnable
+public class fss
+  implements View.OnClickListener
 {
-  fss(fsp paramfsp) {}
+  public fss(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VerifyPwdActivity.c(this.a.a);
+    this.a.a(paramView);
   }
 }
 

@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.commonsdk.soload.SoDexClassLoader;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexClassLoader;
@@ -65,43 +66,43 @@ public abstract class PluginStatic
   
   public static String byteArrayToHex(byte[] paramArrayOfByte)
   {
-    int i = 0;
     char[] arrayOfChar1 = new char[16];
-    char[] tmp10_8 = arrayOfChar1;
-    tmp10_8[0] = 48;
-    char[] tmp15_10 = tmp10_8;
-    tmp15_10[1] = 49;
-    char[] tmp20_15 = tmp15_10;
-    tmp20_15[2] = 50;
-    char[] tmp25_20 = tmp20_15;
-    tmp25_20[3] = 51;
-    char[] tmp30_25 = tmp25_20;
-    tmp30_25[4] = 52;
-    char[] tmp35_30 = tmp30_25;
-    tmp35_30[5] = 53;
-    char[] tmp40_35 = tmp35_30;
-    tmp40_35[6] = 54;
-    char[] tmp46_40 = tmp40_35;
-    tmp46_40[7] = 55;
-    char[] tmp52_46 = tmp46_40;
-    tmp52_46[8] = 56;
-    char[] tmp58_52 = tmp52_46;
-    tmp58_52[9] = 57;
-    char[] tmp64_58 = tmp58_52;
-    tmp64_58[10] = 65;
-    char[] tmp70_64 = tmp64_58;
-    tmp70_64[11] = 66;
-    char[] tmp76_70 = tmp70_64;
-    tmp76_70[12] = 67;
-    char[] tmp82_76 = tmp76_70;
-    tmp82_76[13] = 68;
-    char[] tmp88_82 = tmp82_76;
-    tmp88_82[14] = 69;
-    char[] tmp94_88 = tmp88_82;
-    tmp94_88[15] = 70;
-    tmp94_88;
+    char[] tmp8_6 = arrayOfChar1;
+    tmp8_6[0] = 48;
+    char[] tmp13_8 = tmp8_6;
+    tmp13_8[1] = 49;
+    char[] tmp18_13 = tmp13_8;
+    tmp18_13[2] = 50;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[3] = 51;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[4] = 52;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[5] = 53;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[6] = 54;
+    char[] tmp44_38 = tmp38_33;
+    tmp44_38[7] = 55;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[8] = 56;
+    char[] tmp56_50 = tmp50_44;
+    tmp56_50[9] = 57;
+    char[] tmp62_56 = tmp56_50;
+    tmp62_56[10] = 65;
+    char[] tmp68_62 = tmp62_56;
+    tmp68_62[11] = 66;
+    char[] tmp74_68 = tmp68_62;
+    tmp74_68[12] = 67;
+    char[] tmp80_74 = tmp74_68;
+    tmp80_74[13] = 68;
+    char[] tmp86_80 = tmp80_74;
+    tmp86_80[14] = 69;
+    char[] tmp92_86 = tmp86_80;
+    tmp92_86[15] = 70;
+    tmp92_86;
     char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -126,157 +127,167 @@ public abstract class PluginStatic
     //   8: astore_0
     //   9: aload_0
     //   10: invokevirtual 151	java/io/File:exists	()Z
-    //   13: ifeq +10 -> 23
-    //   16: aload_0
-    //   17: invokevirtual 154	java/io/File:isFile	()Z
-    //   20: ifne +22 -> 42
-    //   23: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   26: ifeq +11 -> 37
-    //   29: ldc 161
-    //   31: iconst_2
-    //   32: ldc 163
-    //   34: invokestatic 167	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   37: ldc 169
-    //   39: astore_3
-    //   40: aload_3
-    //   41: areturn
-    //   42: ldc 171
-    //   44: invokestatic 177	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   47: astore 4
-    //   49: new 179	java/io/FileInputStream
-    //   52: dup
-    //   53: aload_0
-    //   54: invokespecial 182	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: astore_0
-    //   60: sipush 16384
-    //   63: newarray byte
-    //   65: astore_3
-    //   66: aload_2
-    //   67: astore_0
-    //   68: aload_2
-    //   69: aload_3
-    //   70: invokevirtual 186	java/io/FileInputStream:read	([B)I
-    //   73: istore_1
-    //   74: iload_1
-    //   75: iconst_m1
-    //   76: if_icmpeq +78 -> 154
-    //   79: aload_2
-    //   80: astore_0
-    //   81: aload 4
-    //   83: aload_3
-    //   84: iconst_0
-    //   85: iload_1
-    //   86: invokevirtual 190	java/security/MessageDigest:update	([BII)V
-    //   89: goto -23 -> 66
-    //   92: astore_3
-    //   93: aload_2
-    //   94: astore_0
-    //   95: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   98: ifeq +33 -> 131
-    //   101: aload_2
-    //   102: astore_0
-    //   103: ldc 161
-    //   105: iconst_2
-    //   106: new 192	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   113: ldc 195
-    //   115: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: aload_3
-    //   119: invokestatic 203	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   122: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 167	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload_2
-    //   132: ifnull +81 -> 213
-    //   135: aload_2
-    //   136: invokevirtual 210	java/io/FileInputStream:close	()V
-    //   139: ldc 169
-    //   141: areturn
-    //   142: astore_0
-    //   143: aload_2
-    //   144: astore_0
-    //   145: sipush 4096
-    //   148: newarray byte
-    //   150: astore_3
-    //   151: goto -85 -> 66
-    //   154: aload_2
-    //   155: astore_0
-    //   156: aload 4
-    //   158: invokevirtual 214	java/security/MessageDigest:digest	()[B
-    //   161: invokestatic 216	com/tencent/mobileqq/pluginsdk/PluginStatic:byteArrayToHex	([B)Ljava/lang/String;
-    //   164: astore_3
-    //   165: aload_3
-    //   166: astore_0
-    //   167: aload_0
-    //   168: astore_3
-    //   169: aload_2
-    //   170: ifnull -130 -> 40
-    //   173: aload_2
-    //   174: invokevirtual 210	java/io/FileInputStream:close	()V
-    //   177: aload_0
-    //   178: areturn
-    //   179: astore_2
-    //   180: aload_0
-    //   181: areturn
-    //   182: astore_0
-    //   183: ldc 169
-    //   185: areturn
-    //   186: astore_2
-    //   187: aconst_null
-    //   188: astore_0
-    //   189: aload_0
-    //   190: ifnull +7 -> 197
-    //   193: aload_0
-    //   194: invokevirtual 210	java/io/FileInputStream:close	()V
-    //   197: aload_2
-    //   198: athrow
-    //   199: astore_0
-    //   200: goto -3 -> 197
-    //   203: astore_2
-    //   204: goto -15 -> 189
-    //   207: astore_3
-    //   208: aconst_null
-    //   209: astore_2
-    //   210: goto -117 -> 93
-    //   213: ldc 169
-    //   215: areturn
+    //   13: istore_2
+    //   14: ldc 153
+    //   16: astore 5
+    //   18: iload_2
+    //   19: ifeq +193 -> 212
+    //   22: aload_0
+    //   23: invokevirtual 156	java/io/File:isFile	()Z
+    //   26: ifne +6 -> 32
+    //   29: goto +183 -> 212
+    //   32: ldc 158
+    //   34: invokestatic 164	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   37: astore 6
+    //   39: new 166	java/io/FileInputStream
+    //   42: dup
+    //   43: aload_0
+    //   44: invokespecial 169	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   47: astore_0
+    //   48: aload_0
+    //   49: astore_3
+    //   50: sipush 16384
+    //   53: newarray byte
+    //   55: astore 4
+    //   57: goto +17 -> 74
+    //   60: astore 4
+    //   62: goto +71 -> 133
+    //   65: aload_0
+    //   66: astore_3
+    //   67: sipush 4096
+    //   70: newarray byte
+    //   72: astore 4
+    //   74: aload_0
+    //   75: astore_3
+    //   76: aload_0
+    //   77: aload 4
+    //   79: invokevirtual 173	java/io/FileInputStream:read	([B)I
+    //   82: istore_1
+    //   83: iload_1
+    //   84: iconst_m1
+    //   85: if_icmpeq +17 -> 102
+    //   88: aload_0
+    //   89: astore_3
+    //   90: aload 6
+    //   92: aload 4
+    //   94: iconst_0
+    //   95: iload_1
+    //   96: invokevirtual 177	java/security/MessageDigest:update	([BII)V
+    //   99: goto -25 -> 74
+    //   102: aload_0
+    //   103: astore_3
+    //   104: aload 6
+    //   106: invokevirtual 181	java/security/MessageDigest:digest	()[B
+    //   109: invokestatic 183	com/tencent/mobileqq/pluginsdk/PluginStatic:byteArrayToHex	([B)Ljava/lang/String;
+    //   112: astore 4
+    //   114: aload 4
+    //   116: astore_3
+    //   117: aload_0
+    //   118: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   121: aload_3
+    //   122: areturn
+    //   123: astore_0
+    //   124: aconst_null
+    //   125: astore_3
+    //   126: goto +76 -> 202
+    //   129: astore 4
+    //   131: aconst_null
+    //   132: astore_0
+    //   133: aload_0
+    //   134: astore_3
+    //   135: invokestatic 191	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   138: ifeq +50 -> 188
+    //   141: aload_0
+    //   142: astore_3
+    //   143: new 193	java/lang/StringBuilder
+    //   146: dup
+    //   147: invokespecial 194	java/lang/StringBuilder:<init>	()V
+    //   150: astore 6
+    //   152: aload_0
+    //   153: astore_3
+    //   154: aload 6
+    //   156: ldc 196
+    //   158: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: aload_0
+    //   163: astore_3
+    //   164: aload 6
+    //   166: aload 4
+    //   168: invokestatic 204	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   171: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: pop
+    //   175: aload_0
+    //   176: astore_3
+    //   177: ldc 206
+    //   179: iconst_2
+    //   180: aload 6
+    //   182: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokestatic 214	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   188: aload_0
+    //   189: ifnull +9 -> 198
+    //   192: aload 5
+    //   194: astore_3
+    //   195: goto -78 -> 117
+    //   198: ldc 153
+    //   200: areturn
+    //   201: astore_0
+    //   202: aload_3
+    //   203: ifnull +7 -> 210
+    //   206: aload_3
+    //   207: invokevirtual 186	java/io/FileInputStream:close	()V
+    //   210: aload_0
+    //   211: athrow
+    //   212: invokestatic 191	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   215: ifeq +11 -> 226
+    //   218: ldc 206
+    //   220: iconst_2
+    //   221: ldc 216
+    //   223: invokestatic 214	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   226: ldc 153
+    //   228: areturn
+    //   229: astore_3
+    //   230: goto -165 -> 65
+    //   233: astore_0
+    //   234: aload_3
+    //   235: areturn
+    //   236: astore_3
+    //   237: goto -27 -> 210
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	216	0	paramString	String
-    //   73	13	1	i	int
-    //   57	117	2	localFileInputStream	java.io.FileInputStream
-    //   179	1	2	localIOException	java.io.IOException
-    //   186	12	2	localObject1	Object
-    //   203	1	2	localObject2	Object
-    //   209	1	2	localObject3	Object
-    //   39	45	3	localObject4	Object
-    //   92	27	3	localException1	Exception
-    //   150	19	3	localObject5	Object
-    //   207	1	3	localException2	Exception
-    //   47	110	4	localMessageDigest	java.security.MessageDigest
+    //   0	240	0	paramString	String
+    //   82	14	1	i	int
+    //   13	6	2	bool	boolean
+    //   49	158	3	localObject1	Object
+    //   229	6	3	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   236	1	3	localIOException	java.io.IOException
+    //   55	1	4	arrayOfByte	byte[]
+    //   60	1	4	localException1	Exception
+    //   72	43	4	localObject2	Object
+    //   129	38	4	localException2	Exception
+    //   16	177	5	str	String
+    //   37	144	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   60	66	92	java/lang/Exception
-    //   68	74	92	java/lang/Exception
-    //   81	89	92	java/lang/Exception
-    //   145	151	92	java/lang/Exception
-    //   156	165	92	java/lang/Exception
-    //   60	66	142	java/lang/OutOfMemoryError
-    //   173	177	179	java/io/IOException
-    //   135	139	182	java/io/IOException
-    //   42	58	186	finally
-    //   193	197	199	java/io/IOException
-    //   60	66	203	finally
-    //   68	74	203	finally
-    //   81	89	203	finally
-    //   95	101	203	finally
-    //   103	131	203	finally
-    //   145	151	203	finally
-    //   156	165	203	finally
-    //   42	58	207	java/lang/Exception
+    //   50	57	60	java/lang/Exception
+    //   67	74	60	java/lang/Exception
+    //   76	83	60	java/lang/Exception
+    //   90	99	60	java/lang/Exception
+    //   104	114	60	java/lang/Exception
+    //   32	48	123	finally
+    //   32	48	129	java/lang/Exception
+    //   50	57	201	finally
+    //   67	74	201	finally
+    //   76	83	201	finally
+    //   90	99	201	finally
+    //   104	114	201	finally
+    //   135	141	201	finally
+    //   143	152	201	finally
+    //   154	162	201	finally
+    //   164	175	201	finally
+    //   177	188	201	finally
+    //   50	57	229	java/lang/OutOfMemoryError
+    //   117	121	233	java/io/IOException
+    //   206	210	236	java/io/IOException
   }
   
   static List<WeakReference<IPluginActivity>> getActivitys()
@@ -302,388 +313,175 @@ public abstract class PluginStatic
   {
     try
     {
+      paramContext = getOrCreateClassLoaderAsModule(paramContext, paramString, true);
+      return paramContext;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public static ClassLoader getOrCreateClassLoaderAsModule(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    try
+    {
       ClassLoader localClassLoader2 = (ClassLoader)sClassLoaderMap.get(paramString);
       ClassLoader localClassLoader1 = localClassLoader2;
       if (localClassLoader2 == null) {
-        localClassLoader1 = getOrCreateClassLoaderByPath(paramContext, paramString, PluginUtils.getInstalledPluginPath(paramContext, paramString).getCanonicalPath());
+        localClassLoader1 = getOrCreateClassLoaderByPath(paramContext, paramString, PluginUtils.getInstalledPluginPath(paramContext, paramString).getCanonicalPath(), paramBoolean);
       }
       return localClassLoader1;
     }
     finally {}
   }
   
-  /* Error */
-  static ClassLoader getOrCreateClassLoaderByPath(Context paramContext, String paramString1, String paramString2)
+  static ClassLoader getOrCreateClassLoaderByPath(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 87	com/tencent/mobileqq/pluginsdk/PluginStatic:sClassLoaderMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: aload_1
-    //   7: invokevirtual 226	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   10: checkcast 228	dalvik/system/DexClassLoader
-    //   13: astore 8
-    //   15: aload 8
-    //   17: astore 7
-    //   19: aload 8
-    //   21: ifnonnull +272 -> 293
-    //   24: ldc 161
-    //   26: iconst_1
-    //   27: new 192	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   34: ldc 249
-    //   36: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: aload_1
-    //   40: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   49: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   52: lstore_3
-    //   53: aload_0
-    //   54: invokestatic 262	com/tencent/mobileqq/pluginsdk/PluginUtils:getOptimizedDexPath	(Landroid/content/Context;)Ljava/io/File;
-    //   57: invokevirtual 241	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   60: astore 8
-    //   62: aload_0
-    //   63: aload_1
-    //   64: invokestatic 265	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginLibPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   67: invokevirtual 241	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   70: astore 9
-    //   72: aload_2
-    //   73: ldc_w 267
-    //   76: invokevirtual 271	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   79: ifeq +220 -> 299
-    //   82: new 273	com/tencent/commonsdk/soload/SoDexClassLoader
-    //   85: dup
-    //   86: aload_2
-    //   87: aload 8
-    //   89: aload 9
-    //   91: aload_0
-    //   92: invokevirtual 278	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   95: invokespecial 281	com/tencent/commonsdk/soload/SoDexClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   98: astore 7
-    //   100: getstatic 89	com/tencent/mobileqq/pluginsdk/PluginStatic:sPackageInfoMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   103: aload_2
-    //   104: invokevirtual 226	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   107: checkcast 283	android/content/pm/PackageInfo
-    //   110: astore 9
-    //   112: aload 9
-    //   114: astore 8
-    //   116: aload 9
-    //   118: ifnonnull +61 -> 179
-    //   121: aload_0
-    //   122: aload_2
-    //   123: sipush 129
-    //   126: invokestatic 289	com/tencent/mobileqq/pluginsdk/ApkFileParser:getPackageInfoWithException	(Landroid/content/Context;Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
-    //   129: astore_0
-    //   130: aload_0
-    //   131: ifnonnull +36 -> 167
-    //   134: new 192	java/lang/StringBuilder
-    //   137: dup
-    //   138: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   141: ldc_w 291
-    //   144: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: new 144	java/io/File
-    //   150: dup
-    //   151: aload_2
-    //   152: invokespecial 147	java/io/File:<init>	(Ljava/lang/String;)V
-    //   155: invokevirtual 151	java/io/File:exists	()Z
-    //   158: invokevirtual 294	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: invokestatic 299	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;)V
-    //   167: getstatic 89	com/tencent/mobileqq/pluginsdk/PluginStatic:sPackageInfoMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   170: aload_2
-    //   171: aload_0
-    //   172: invokevirtual 303	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   175: pop
-    //   176: aload_0
-    //   177: astore 8
-    //   179: getstatic 91	com/tencent/mobileqq/pluginsdk/PluginStatic:sClassLoaderStartTimeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   182: aload_1
-    //   183: invokevirtual 226	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   186: checkcast 305	java/lang/Long
-    //   189: astore 9
-    //   191: aload 9
-    //   193: astore_0
-    //   194: aload 9
-    //   196: ifnonnull +21 -> 217
-    //   199: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   202: lload_3
-    //   203: lsub
-    //   204: invokestatic 309	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   207: astore_0
-    //   208: getstatic 91	com/tencent/mobileqq/pluginsdk/PluginStatic:sClassLoaderStartTimeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   211: aload_1
-    //   212: aload_0
-    //   213: invokevirtual 303	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   216: pop
-    //   217: getstatic 89	com/tencent/mobileqq/pluginsdk/PluginStatic:sPackageInfoMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   220: aload_2
-    //   221: aload 8
-    //   223: invokevirtual 303	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   226: pop
-    //   227: aload 8
-    //   229: ifnull +11 -> 240
-    //   232: aload 8
-    //   234: aload_1
-    //   235: aload 7
-    //   237: invokestatic 313	com/tencent/mobileqq/pluginsdk/PluginStatic:invokePluginLife	(Landroid/content/pm/PackageInfo;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   240: ldc 161
-    //   242: iconst_1
-    //   243: new 192	java/lang/StringBuilder
-    //   246: dup
-    //   247: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   250: ldc_w 315
-    //   253: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: aload_1
-    //   257: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: ldc_w 317
-    //   263: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: aload_0
-    //   267: invokevirtual 320	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   270: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   273: invokestatic 323	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   276: getstatic 329	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   279: aload_1
-    //   280: invokevirtual 332	mqq/app/MobileQQ:loadModule	(Ljava/lang/String;)V
-    //   283: getstatic 87	com/tencent/mobileqq/pluginsdk/PluginStatic:sClassLoaderMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   286: aload_1
-    //   287: aload 7
-    //   289: invokevirtual 303	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   292: pop
-    //   293: ldc 2
-    //   295: monitorexit
-    //   296: aload 7
-    //   298: areturn
-    //   299: aload_1
-    //   300: ldc_w 334
-    //   303: invokevirtual 337	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   306: ifeq +73 -> 379
-    //   309: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   312: lstore 5
-    //   314: aload_0
-    //   315: ldc_w 339
-    //   318: invokestatic 341	com/tencent/mobileqq/pluginsdk/PluginStatic:getOrCreateClassLoader	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/ClassLoader;
-    //   321: astore 7
-    //   323: ldc 161
-    //   325: iconst_1
-    //   326: new 192	java/lang/StringBuilder
-    //   329: dup
-    //   330: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   333: ldc_w 343
-    //   336: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   342: lload 5
-    //   344: lsub
-    //   345: invokevirtual 346	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   348: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   351: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   354: new 348	com/tencent/mobileqq/pluginsdk/QZoneLiveClassLoader
-    //   357: dup
-    //   358: aload_2
-    //   359: aload 8
-    //   361: aload 9
-    //   363: aload 7
-    //   365: invokespecial 349	com/tencent/mobileqq/pluginsdk/QZoneLiveClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   368: astore 7
-    //   370: goto -270 -> 100
-    //   373: astore_0
-    //   374: ldc 2
-    //   376: monitorexit
-    //   377: aload_0
-    //   378: athrow
-    //   379: aload_1
-    //   380: ldc_w 351
-    //   383: invokevirtual 337	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   386: ifeq +67 -> 453
-    //   389: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   392: lstore 5
-    //   394: aload_0
-    //   395: ldc_w 339
-    //   398: invokestatic 341	com/tencent/mobileqq/pluginsdk/PluginStatic:getOrCreateClassLoader	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/ClassLoader;
-    //   401: astore 7
-    //   403: ldc 161
-    //   405: iconst_1
-    //   406: new 192	java/lang/StringBuilder
-    //   409: dup
-    //   410: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   413: ldc_w 343
-    //   416: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   419: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   422: lload 5
-    //   424: lsub
-    //   425: invokevirtual 346	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   428: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   431: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   434: new 353	com/tencent/mobileqq/pluginsdk/QZoneVerticalVideoClassLoader
-    //   437: dup
-    //   438: aload_2
-    //   439: aload 8
-    //   441: aload 9
-    //   443: aload 7
-    //   445: invokespecial 354	com/tencent/mobileqq/pluginsdk/QZoneVerticalVideoClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   448: astore 7
-    //   450: goto -350 -> 100
-    //   453: aload_1
-    //   454: ldc_w 356
-    //   457: invokevirtual 337	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   460: ifeq +67 -> 527
-    //   463: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   466: lstore 5
-    //   468: aload_0
-    //   469: ldc_w 339
-    //   472: invokestatic 341	com/tencent/mobileqq/pluginsdk/PluginStatic:getOrCreateClassLoader	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/ClassLoader;
-    //   475: astore 7
-    //   477: ldc 161
-    //   479: iconst_1
-    //   480: new 192	java/lang/StringBuilder
-    //   483: dup
-    //   484: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   487: ldc_w 343
-    //   490: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   493: invokestatic 258	java/lang/System:currentTimeMillis	()J
-    //   496: lload 5
-    //   498: lsub
-    //   499: invokevirtual 346	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   502: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   505: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   508: new 358	com/tencent/mobileqq/pluginsdk/QZoneWeishiFeedsClassLoader
-    //   511: dup
-    //   512: aload_2
-    //   513: aload 8
-    //   515: aload 9
-    //   517: aload 7
-    //   519: invokespecial 359	com/tencent/mobileqq/pluginsdk/QZoneWeishiFeedsClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   522: astore 7
-    //   524: goto -424 -> 100
-    //   527: aload_2
-    //   528: ifnull +65 -> 593
-    //   531: new 144	java/io/File
-    //   534: dup
-    //   535: aload_2
-    //   536: invokespecial 147	java/io/File:<init>	(Ljava/lang/String;)V
-    //   539: invokevirtual 151	java/io/File:exists	()Z
-    //   542: ifne +51 -> 593
-    //   545: ldc 161
-    //   547: iconst_1
-    //   548: new 192	java/lang/StringBuilder
-    //   551: dup
-    //   552: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   555: ldc_w 361
-    //   558: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: aload_2
-    //   562: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   565: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   568: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   571: new 228	dalvik/system/DexClassLoader
-    //   574: dup
-    //   575: ldc 169
-    //   577: aload 8
-    //   579: aload 9
-    //   581: aload_0
-    //   582: invokevirtual 278	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   585: invokespecial 362	dalvik/system/DexClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   588: astore 7
-    //   590: goto -297 -> 293
-    //   593: invokestatic 365	com/tencent/mobileqq/pluginsdk/PluginUtils:isOsNeedReleaseDex	()Z
-    //   596: ifeq +150 -> 746
-    //   599: invokestatic 371	com/tencent/mobileqq/pluginsdk/IPluginAdapterProxy:getProxy	()Lcom/tencent/mobileqq/pluginsdk/IPluginAdapterProxy;
-    //   602: aload_1
-    //   603: invokevirtual 374	com/tencent/mobileqq/pluginsdk/IPluginAdapterProxy:isSupportMultiDex	(Ljava/lang/String;)Z
-    //   606: ifeq +140 -> 746
-    //   609: aload_0
-    //   610: aload_1
-    //   611: invokestatic 377	com/tencent/mobileqq/pluginsdk/PluginUtils:getMultiDexSecondDex	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   614: astore 7
-    //   616: aload 7
-    //   618: invokevirtual 151	java/io/File:exists	()Z
-    //   621: ifeq +125 -> 746
-    //   624: new 192	java/lang/StringBuilder
-    //   627: dup
-    //   628: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   631: aload_2
-    //   632: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   635: getstatic 380	java/io/File:pathSeparator	Ljava/lang/String;
-    //   638: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   641: aload 7
-    //   643: invokevirtual 383	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   646: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   649: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   652: astore 7
-    //   654: ldc 161
-    //   656: iconst_1
-    //   657: new 192	java/lang/StringBuilder
-    //   660: dup
-    //   661: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   664: ldc_w 385
-    //   667: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   670: aload 7
-    //   672: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   675: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   678: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   681: ldc 161
-    //   683: iconst_1
-    //   684: new 192	java/lang/StringBuilder
-    //   687: dup
-    //   688: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   691: ldc_w 387
-    //   694: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   697: aload 7
-    //   699: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   702: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   705: invokestatic 252	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   708: new 228	dalvik/system/DexClassLoader
-    //   711: dup
-    //   712: aload 7
-    //   714: aload 8
-    //   716: aload 9
-    //   718: aload_0
-    //   719: invokevirtual 278	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   722: invokespecial 362	dalvik/system/DexClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   725: astore 7
-    //   727: goto -627 -> 100
-    //   730: astore_0
-    //   731: ldc 161
-    //   733: ldc_w 389
-    //   736: aload_0
-    //   737: invokestatic 392	com/tencent/mobileqq/pluginsdk/DebugHelper:log	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   740: aload 9
-    //   742: astore_0
-    //   743: goto -613 -> 130
-    //   746: aload_2
-    //   747: astore 7
-    //   749: goto -68 -> 681
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	752	0	paramContext	Context
-    //   0	752	1	paramString1	String
-    //   0	752	2	paramString2	String
-    //   52	151	3	l1	long
-    //   312	185	5	l2	long
-    //   17	731	7	localObject1	Object
-    //   13	702	8	localObject2	Object
-    //   70	671	9	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	15	373	finally
-    //   24	100	373	finally
-    //   100	112	373	finally
-    //   121	130	373	finally
-    //   134	167	373	finally
-    //   167	176	373	finally
-    //   179	191	373	finally
-    //   199	217	373	finally
-    //   217	227	373	finally
-    //   232	240	373	finally
-    //   240	293	373	finally
-    //   299	370	373	finally
-    //   379	450	373	finally
-    //   453	524	373	finally
-    //   531	590	373	finally
-    //   593	681	373	finally
-    //   681	727	373	finally
-    //   731	740	373	finally
-    //   121	130	730	java/lang/Throwable
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = (DexClassLoader)sClassLoaderMap.get(paramString1);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = PluginBaseInfoHelper.createFromFile(PluginUtils.getPluginCfgFile(PluginUtils.getPluginInstallDir(paramContext), paramString1), PluginBaseInfo.class);
+          IPluginAdapterProxy.getProxy().isBuiltinPluginAndUpToDay(paramString1, (PluginBaseInfo)localObject1);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getOrCreateClassLoader:");
+          ((StringBuilder)localObject1).append(paramString1);
+          QLog.d("plugin_tag", 1, ((StringBuilder)localObject1).toString());
+          long l1 = System.currentTimeMillis();
+          localObject2 = PluginUtils.getOptimizedDexPath(paramContext).getCanonicalPath();
+          Object localObject3 = PluginUtils.getPluginLibPath(paramContext, paramString1).getCanonicalPath();
+          if (paramString2.endsWith(".so"))
+          {
+            localObject1 = new SoDexClassLoader(paramString2, (String)localObject2, (String)localObject3, paramContext.getClassLoader());
+          }
+          else
+          {
+            long l2;
+            StringBuilder localStringBuilder;
+            if (paramString1.startsWith("qzone_live_video_plugin"))
+            {
+              l2 = System.currentTimeMillis();
+              localObject1 = getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("get qzone classloader cost=");
+              localStringBuilder.append(System.currentTimeMillis() - l2);
+              QLog.d("plugin_tag", 1, localStringBuilder.toString());
+              localObject1 = new QZoneLiveClassLoader(paramString2, (String)localObject2, (String)localObject3, (ClassLoader)localObject1);
+            }
+            else if (paramString1.startsWith("qzone_vertical_video_plugin"))
+            {
+              l2 = System.currentTimeMillis();
+              localObject1 = getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("get qzone classloader cost=");
+              localStringBuilder.append(System.currentTimeMillis() - l2);
+              QLog.d("plugin_tag", 1, localStringBuilder.toString());
+              localObject1 = new QZoneVerticalVideoClassLoader(paramString2, (String)localObject2, (String)localObject3, (ClassLoader)localObject1);
+            }
+            else if (paramString1.startsWith("qzone_weishi_feeds_plugin"))
+            {
+              l2 = System.currentTimeMillis();
+              localObject1 = getOrCreateClassLoader(paramContext, "qzone_plugin.apk");
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("get qzone classloader cost=");
+              localStringBuilder.append(System.currentTimeMillis() - l2);
+              QLog.d("plugin_tag", 1, localStringBuilder.toString());
+              localObject1 = new QZoneWeishiFeedsClassLoader(paramString2, (String)localObject2, (String)localObject3, (ClassLoader)localObject1);
+            }
+            else
+            {
+              if ((paramString2 != null) && (!new File(paramString2).exists()))
+              {
+                paramString1 = new StringBuilder();
+                paramString1.append("getOrCreateClassLoader notExist  ");
+                paramString1.append(paramString2);
+                QLog.d("plugin_tag", 1, paramString1.toString());
+                paramContext = new DexClassLoader("", (String)localObject2, (String)localObject3, paramContext.getClassLoader());
+                return paramContext;
+              }
+              if ((!PluginUtils.isOsNeedReleaseDex()) || (!IPluginAdapterProxy.getProxy().isSupportMultiDex(paramString1))) {
+                break label882;
+              }
+              localObject1 = PluginUtils.getMultiDexSecondDex(paramContext, paramString1);
+              if (!((File)localObject1).exists()) {
+                break label882;
+              }
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramString2);
+              localStringBuilder.append(File.pathSeparator);
+              localStringBuilder.append(((File)localObject1).getAbsolutePath());
+              localObject1 = localStringBuilder.toString();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("multiDex dexsPath");
+              localStringBuilder.append((String)localObject1);
+              QLog.d("plugin_tag", 1, localStringBuilder.toString());
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("dexsPath");
+              localStringBuilder.append((String)localObject1);
+              QLog.d("plugin_tag", 1, localStringBuilder.toString());
+              localObject1 = new DexClassLoader((String)localObject1, (String)localObject2, (String)localObject3, paramContext.getClassLoader());
+            }
+          }
+          localObject3 = (PackageInfo)sPackageInfoMap.get(paramString2);
+          localObject2 = localObject3;
+          if (localObject3 == null)
+          {
+            try
+            {
+              paramContext = ApkFileParser.getPackageInfoWithException(paramContext, paramString2, 129);
+            }
+            catch (Throwable paramContext)
+            {
+              DebugHelper.log("plugin_tag", "PluginStatic.getOrCreateClassLoaderByPath Get Package Info Failed!", paramContext);
+              paramContext = (Context)localObject3;
+            }
+            if (paramContext == null)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("PluginStatic.getOrCreateClassLoaderByPath Get Package Info Failed! ");
+              ((StringBuilder)localObject2).append(new File(paramString2).exists());
+              DebugHelper.log(((StringBuilder)localObject2).toString());
+            }
+            sPackageInfoMap.put(paramString2, paramContext);
+            localObject2 = paramContext;
+          }
+          localObject3 = (Long)sClassLoaderStartTimeMap.get(paramString1);
+          paramContext = (Context)localObject3;
+          if (localObject3 == null)
+          {
+            paramContext = Long.valueOf(System.currentTimeMillis() - l1);
+            sClassLoaderStartTimeMap.put(paramString1, paramContext);
+          }
+          sPackageInfoMap.put(paramString2, localObject2);
+          if (localObject2 != null) {
+            invokePluginLife((PackageInfo)localObject2, paramString1, (ClassLoader)localObject1);
+          }
+          paramString2 = new StringBuilder();
+          paramString2.append("getOrCreateClassLoaderCost:");
+          paramString2.append(paramString1);
+          paramString2.append(" c:");
+          paramString2.append(paramContext);
+          QLog.w("plugin_tag", 1, paramString2.toString());
+          if (paramBoolean) {
+            MobileQQ.sMobileQQ.loadModule(paramString1);
+          }
+          sClassLoaderMap.put(paramString1, localObject1);
+        }
+        else
+        {
+          return localObject1;
+        }
+      }
+      finally {}
+      label882:
+      Object localObject1 = paramString2;
+    }
   }
   
   static void invokePluginLife(PackageInfo paramPackageInfo, String paramString, ClassLoader paramClassLoader)
@@ -693,96 +491,118 @@ public abstract class PluginStatic
       if ((PluginStatic.IPluginLife)sLife.get(paramString) != null) {
         return;
       }
-      if ((paramPackageInfo != null) && (paramPackageInfo.applicationInfo != null) && (paramPackageInfo.applicationInfo.metaData != null))
+      if (paramPackageInfo != null)
       {
-        paramPackageInfo = paramPackageInfo.applicationInfo.metaData.getString("PLUGIN_LIFE_CLASS");
-        if (paramPackageInfo != null)
-        {
-          paramPackageInfo = (PluginStatic.IPluginLife)paramClassLoader.loadClass(paramPackageInfo).newInstance();
-          sLife.put(paramString, paramPackageInfo);
-          paramPackageInfo.onLoad();
+        if (paramPackageInfo.applicationInfo == null) {
           return;
         }
+        if (paramPackageInfo.applicationInfo.metaData == null) {
+          return;
+        }
+        paramPackageInfo = paramPackageInfo.applicationInfo.metaData.getString("PLUGIN_LIFE_CLASS");
+        if (paramPackageInfo == null) {
+          return;
+        }
+        paramPackageInfo = (PluginStatic.IPluginLife)paramClassLoader.loadClass(paramPackageInfo).newInstance();
+        sLife.put(paramString, paramPackageInfo);
+        paramPackageInfo.onLoad();
       }
+      return;
     }
     catch (Throwable paramPackageInfo) {}
   }
   
   public static List<Boolean> isProcessesExist(Context paramContext, List<String> paramList)
   {
-    ArrayList localArrayList = null;
     if (paramList != null)
     {
-      localArrayList = new ArrayList();
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (paramContext == null)
-      {
-        int i = 0;
-        while (i < paramList.size())
+      ArrayList localArrayList = new ArrayList();
+      List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      int i = 0;
+      if (localList == null) {
+        for (;;)
         {
+          paramContext = localArrayList;
+          if (i >= paramList.size()) {
+            break;
+          }
           localArrayList.add(Boolean.FALSE);
           i += 1;
         }
       }
-    }
-    else
-    {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    if (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      Iterator localIterator = paramContext.iterator();
-      do
+      paramList = paramList.iterator();
+      for (;;)
       {
-        if (!localIterator.hasNext()) {
+        paramContext = localArrayList;
+        if (!paramList.hasNext()) {
           break;
         }
-      } while (!str.equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)localIterator.next()).processName));
-      for (boolean bool = true;; bool = false)
-      {
+        paramContext = (String)paramList.next();
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext()) {
+          if (paramContext.equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)localIterator.next()).processName))
+          {
+            bool = true;
+            break label141;
+          }
+        }
+        boolean bool = false;
+        label141:
         localArrayList.add(Boolean.valueOf(bool));
-        break;
       }
     }
-    return localArrayList;
+    paramContext = null;
+    return paramContext;
   }
   
   private static boolean isSubFile(String paramString, File paramFile)
   {
     paramFile = paramFile.getCanonicalPath();
     String str = new File(paramString).getParentFile().getCanonicalPath();
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "path:" + paramString + "-> [" + str + ", " + paramFile + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-> [");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramFile);
+      localStringBuilder.append("]");
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
     return str.equals(paramFile);
   }
   
   static boolean isValidPluginIntent(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    for (;;)
-    {
+    boolean bool = false;
+    if (paramBundle == null) {
       return false;
-      try
-      {
-        String str = paramBundle.getString("pluginsdk_pluginLocation");
-        if ((!TextUtils.isEmpty(str)) && (!str.substring(0, str.lastIndexOf(".")).contains(".")) && (!TextUtils.isEmpty(paramBundle.getString("pluginsdk_pluginName"))))
-        {
-          paramBundle = paramBundle.getString("pluginsdk_pluginpath");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            if (TextUtils.isEmpty(paramBundle)) {
-              return true;
-            }
-            boolean bool = isValidPluginPath(paramBundle);
-            return bool;
-          }
-        }
-      }
-      catch (Throwable paramBundle) {}
     }
+    try
+    {
+      String str = paramBundle.getString("pluginsdk_pluginLocation");
+      if (!TextUtils.isEmpty(str))
+      {
+        if (str.substring(0, str.lastIndexOf(".")).contains(".")) {
+          return false;
+        }
+        if (TextUtils.isEmpty(paramBundle.getString("pluginsdk_pluginName"))) {
+          return false;
+        }
+        paramBundle = paramBundle.getString("pluginsdk_pluginpath");
+        if (TextUtils.isEmpty(paramBundle)) {
+          return false;
+        }
+        if (TextUtils.isEmpty(paramBundle)) {
+          return true;
+        }
+        bool = isValidPluginPath(paramBundle);
+      }
+      return bool;
+    }
+    catch (Throwable paramBundle) {}
     return false;
   }
   
@@ -792,31 +612,37 @@ public abstract class PluginStatic
     boolean bool1 = bool2;
     try
     {
-      if (paramString.contains("..")) {
-        return bool1;
-      }
-      if (paramString.endsWith(".so"))
+      if (!paramString.contains(".."))
       {
-        String str = MobileQQ.getContext().getFilesDir().getParent();
-        File localFile = new File(str + "/txlib/");
-        if ((isSubFile(paramString, new File(str + "/lib/"))) || (!isSubFile(paramString, localFile))) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (!paramString.endsWith(".apk")) {
-          return bool1;
+        if (paramString.endsWith(".so"))
+        {
+          String str = MobileQQ.getContext().getFilesDir().getParent();
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append("/txlib/");
+          localObject = new File(((StringBuilder)localObject).toString());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("/lib/");
+          if (isSubFile(paramString, new File(localStringBuilder.toString()))) {
+            break label155;
+          }
+          isSubFile(paramString, (File)localObject);
+          break label155;
         }
-        bool1 = isSubFile(paramString, PluginUtils.getPluginInstallDir(MobileQQ.getContext()));
-        return bool1;
+        bool1 = bool2;
+        if (paramString.endsWith(".apk")) {
+          bool1 = isSubFile(paramString, PluginUtils.getPluginInstallDir(MobileQQ.getContext()));
+        }
       }
+      return bool1;
     }
     catch (Exception paramString)
     {
       return false;
     }
-    bool1 = true;
-    return bool1;
+    label155:
+    return true;
   }
   
   static void remove(IPluginActivity paramIPluginActivity)
@@ -845,8 +671,13 @@ public abstract class PluginStatic
           return false;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw paramIPluginActivity;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -854,7 +685,10 @@ public abstract class PluginStatic
   {
     try
     {
-      QLog.d("plugin_tag", 1, "removeClassLoader:" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeClassLoader:");
+      localStringBuilder.append(paramString);
+      QLog.d("plugin_tag", 1, localStringBuilder.toString());
       paramString = (ClassLoader)sClassLoaderMap.remove(paramString);
       return paramString;
     }
@@ -875,24 +709,32 @@ public abstract class PluginStatic
       {
         if (i < sInstances.size())
         {
+          j = i;
           if (((WeakReference)sInstances.get(i)).get() == null)
           {
             sInstances.remove(i);
-            i -= 1;
+            j = i - 1;
           }
         }
-        else {
+        else
+        {
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        int j;
+        continue;
+        throw localObject;
+        continue;
+        i = j + 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginStatic
  * JD-Core Version:    0.7.0.1
  */

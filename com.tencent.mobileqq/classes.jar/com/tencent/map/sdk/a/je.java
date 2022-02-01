@@ -19,8 +19,9 @@ public final class je
     super(256, 256);
     this.b = paramTileOverlayOptions;
     a = jc.a();
-    if (this.b != null) {
-      this.b.versionInfo(Integer.toString(a));
+    paramTileOverlayOptions = this.b;
+    if (paramTileOverlayOptions != null) {
+      paramTileOverlayOptions.versionInfo(Integer.toString(a));
     }
   }
   
@@ -31,7 +32,10 @@ public final class je
   
   public final URL getTileUrl(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramInt2 = (int)(Math.pow(2.0D, paramInt3) - 1.0D - paramInt2);
+    double d1 = Math.pow(2.0D, paramInt3);
+    double d2 = paramInt2;
+    Double.isNaN(d2);
+    paramInt2 = (int)(d1 - 1.0D - d2);
     Object localObject = ((SketchDataRequest)((nj)MapServiceManager.getService(nj.class)).c()).sketchTileUrl(paramInt1, paramInt2, paramInt3, a);
     try
     {

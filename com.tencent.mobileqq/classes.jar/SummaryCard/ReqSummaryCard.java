@@ -4,12 +4,13 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqSummaryCard
   extends JceStruct
 {
   static int cache_eAddFriendSource;
-  static int cache_eComeFrom = 0;
+  static int cache_eComeFrom;
   static UserLocaleInfo cache_stLocaleInfo;
   static ArrayList<Integer> cache_vReq0x5ebFieldId;
   static byte[] cache_vReqKandianInfo;
@@ -19,31 +20,31 @@ public final class ReqSummaryCard
   static byte[] cache_vSecureSig;
   static byte[] cache_vSeed = (byte[])new byte[1];
   static ArrayList<byte[]> cache_vvReqServices;
-  public byte bIsFriend;
-  public byte bReqCommLabel;
-  public byte bReqExtendCard;
-  public byte bReqMedalWallInfo;
-  public byte bReqNearbyGodInfo;
-  public int eAddFriendSource;
+  public byte bIsFriend = 0;
+  public byte bReqCommLabel = 0;
+  public byte bReqExtendCard = 0;
+  public byte bReqMedalWallInfo = 0;
+  public byte bReqNearbyGodInfo = 0;
+  public int eAddFriendSource = 0;
   public int eComeFrom = 65535;
-  public long lGetControl;
-  public long lGroupCode;
-  public long lGroupUin;
-  public long lTinyId;
-  public long lUIN;
-  public UserLocaleInfo stLocaleInfo;
+  public long lGetControl = 0L;
+  public long lGroupCode = 0L;
+  public long lGroupUin = 0L;
+  public long lTinyId = 0L;
+  public long lUIN = 0L;
+  public UserLocaleInfo stLocaleInfo = null;
   public String strSearchName = "";
-  public long uLikeSource;
-  public long uQzoneFeedTimestamp;
-  public long uRichCardNameVer;
-  public ArrayList<Integer> vReq0x5ebFieldId;
-  public byte[] vReqKandianInfo;
-  public byte[] vReqLastGameInfo;
-  public byte[] vReqStarInfo;
-  public byte[] vReqTemplateInfo;
-  public byte[] vSecureSig;
-  public byte[] vSeed;
-  public ArrayList<byte[]> vvReqServices;
+  public long uLikeSource = 0L;
+  public long uQzoneFeedTimestamp = 0L;
+  public long uRichCardNameVer = 0L;
+  public ArrayList<Integer> vReq0x5ebFieldId = null;
+  public byte[] vReqKandianInfo = null;
+  public byte[] vReqLastGameInfo = null;
+  public byte[] vReqStarInfo = null;
+  public byte[] vReqTemplateInfo = null;
+  public byte[] vSecureSig = null;
+  public byte[] vSeed = null;
+  public ArrayList<byte[]> vvReqServices = null;
   
   static
   {
@@ -136,50 +137,60 @@ public final class ReqSummaryCard
     paramJceOutputStream.write(this.bIsFriend, 3);
     paramJceOutputStream.write(this.lGroupCode, 4);
     paramJceOutputStream.write(this.lGroupUin, 5);
-    if (this.vSeed != null) {
-      paramJceOutputStream.write(this.vSeed, 6);
+    Object localObject = this.vSeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
-    if (this.strSearchName != null) {
-      paramJceOutputStream.write(this.strSearchName, 7);
+    localObject = this.strSearchName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.lGetControl, 8);
     paramJceOutputStream.write(this.eAddFriendSource, 9);
-    if (this.vSecureSig != null) {
-      paramJceOutputStream.write(this.vSecureSig, 10);
+    localObject = this.vSecureSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
-    if (this.vReqLastGameInfo != null) {
-      paramJceOutputStream.write(this.vReqLastGameInfo, 11);
+    localObject = this.vReqLastGameInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
-    if (this.vReqTemplateInfo != null) {
-      paramJceOutputStream.write(this.vReqTemplateInfo, 12);
+    localObject = this.vReqTemplateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
-    if (this.vReqStarInfo != null) {
-      paramJceOutputStream.write(this.vReqStarInfo, 13);
+    localObject = this.vReqStarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
-    if (this.vvReqServices != null) {
-      paramJceOutputStream.write(this.vvReqServices, 14);
+    localObject = this.vvReqServices;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
     paramJceOutputStream.write(this.lTinyId, 15);
     paramJceOutputStream.write(this.uLikeSource, 16);
-    if (this.stLocaleInfo != null) {
-      paramJceOutputStream.write(this.stLocaleInfo, 17);
+    localObject = this.stLocaleInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
     paramJceOutputStream.write(this.bReqMedalWallInfo, 18);
-    if (this.vReq0x5ebFieldId != null) {
-      paramJceOutputStream.write(this.vReq0x5ebFieldId, 19);
+    localObject = this.vReq0x5ebFieldId;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 19);
     }
     paramJceOutputStream.write(this.bReqNearbyGodInfo, 20);
     paramJceOutputStream.write(this.bReqCommLabel, 21);
     paramJceOutputStream.write(this.bReqExtendCard, 22);
-    if (this.vReqKandianInfo != null) {
-      paramJceOutputStream.write(this.vReqKandianInfo, 23);
+    localObject = this.vReqKandianInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 23);
     }
     paramJceOutputStream.write(this.uRichCardNameVer, 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.ReqSummaryCard
  * JD-Core Version:    0.7.0.1
  */

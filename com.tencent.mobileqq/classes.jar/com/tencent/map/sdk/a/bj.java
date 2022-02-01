@@ -30,9 +30,13 @@ public abstract class bj
   public bj()
   {
     bq.a(ac.a());
-    HandlerThread localHandlerThread = new HandlerThread("halley_" + ac.c() + "_" + "ReportAction", 10);
-    localHandlerThread.start();
-    this.e = new Handler(localHandlerThread.getLooper());
+    Object localObject = new StringBuilder("halley_");
+    ((StringBuilder)localObject).append(ac.c());
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append("ReportAction");
+    localObject = new HandlerThread(((StringBuilder)localObject).toString(), 10);
+    ((HandlerThread)localObject).start();
+    this.e = new Handler(((HandlerThread)localObject).getLooper());
     this.f = new bk();
     b(true, false);
     this.c = a();
@@ -41,63 +45,65 @@ public abstract class bj
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (paramBoolean2)) {}
-    for (;;)
+    label25:
+    label123:
+    try
     {
-      try
+      b(false, true);
+      break label25;
+      b(false, false);
+      if (this.i)
       {
-        b(false, true);
-        if (!this.i) {
-          break label49;
-        }
         if (paramBoolean1) {
           this.j = true;
         }
-        return;
-      }
-      finally {}
-      b(false, false);
-      continue;
-      label49:
-      if (!paramBoolean1) {
-        this.g.set(0);
-      }
-      if ((this.l != 0L) && (SystemClock.elapsedRealtime() - this.l < this.k * 60 * 1000))
-      {
-        this.h.clear();
       }
       else
       {
+        if (!paramBoolean1) {
+          this.g.set(0);
+        }
+        if ((this.l != 0L) && (SystemClock.elapsedRealtime() - this.l < this.k * 60 * 1000))
+        {
+          this.h.clear();
+          return;
+        }
         this.i = true;
-        try
-        {
-          new bj.d(this, paramBoolean1, paramBoolean2).a(true);
-        }
-        catch (Throwable localThrowable)
-        {
-          this.i = false;
-        }
       }
     }
+    finally {}
+    try
+    {
+      new bj.d(this, paramBoolean1, paramBoolean2).a(true);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label123;
+    }
+    this.i = false;
   }
   
   private void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean2) {
-      if (this.m.get() > 3) {
-        this.m.set(0);
-      }
-    }
-    do
+    if (paramBoolean2)
     {
-      return;
-      ay.a().a(this.p, false, as.a("report_real_timer_interval", 1, 60, 5) * 1000);
-      return;
-      if (paramBoolean1)
+      if (this.m.get() > 3)
       {
-        ay.a().a(this.q, false, 10000L);
+        this.m.set(0);
         return;
       }
-    } while (this.n);
+      ay.a().a(this.p, false, as.a("report_real_timer_interval", 1, 60, 5) * 1000);
+      return;
+    }
+    if (paramBoolean1)
+    {
+      ay.a().a(this.q, false, 10000L);
+      return;
+    }
+    if (this.n) {
+      return;
+    }
     ay.a().a(this.q, false, as.a("report_timer_interval", 30000, 600000, 300000));
   }
   

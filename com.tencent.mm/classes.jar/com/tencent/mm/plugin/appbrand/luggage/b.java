@@ -5,41 +5,41 @@ import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.luggage.bridge.impl.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.luggage.b.p;
+import com.tencent.mm.plugin.appbrand.jsapi.base.g;
+import com.tencent.mm.plugin.appbrand.luggage.b.o;
 
 public final class b
   extends a
 {
-  private final f iok;
+  private final g tft;
   
   public b()
   {
-    AppMethodBeat.i(11122);
-    this.iok = new p();
-    AppMethodBeat.o(11122);
+    AppMethodBeat.i(121605);
+    this.tft = new o();
+    AppMethodBeat.o(121605);
   }
   
   public final void a(a.a parama)
   {
-    AppMethodBeat.i(11124);
+    AppMethodBeat.i(121607);
     super.a(parama);
-    parama.a(f.class, this.iok);
-    AppMethodBeat.o(11124);
+    parama.a(g.class, this.tft);
+    AppMethodBeat.o(121607);
   }
   
   public final void a(a.c paramc)
   {
-    AppMethodBeat.i(11123);
+    AppMethodBeat.i(121606);
     super.a(paramc);
-    paramc.a(f.class, this.iok);
-    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.azN());
-    AppMethodBeat.o(11123);
+    paramc.a(g.class, this.tft);
+    paramc.a(e.class, com.tencent.mm.plugin.appbrand.dynamic.b.b.cnI());
+    AppMethodBeat.o(121606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b
  * JD-Core Version:    0.7.0.1
  */

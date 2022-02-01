@@ -22,19 +22,21 @@ public final class b
     this.a = paramList;
   }
   
-  public final void onDataReceiveFailed()
+  protected final void onDataReceiveFailed()
   {
     Message localMessage = a.a().obtainMessage();
     localMessage.what = 4;
     localMessage.sendToTarget();
   }
   
-  public final void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2)
+  protected final void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2)
   {
     if ((paramJceStruct2 != null) && ((paramJceStruct2 instanceof ReportApkFileInfoResponse)))
     {
       paramJceStruct2 = (ReportApkFileInfoResponse)paramJceStruct2;
-      i.a("UploadApkHttpRequest", "UploadApkHttpRequest:onFinished; ret=" + paramJceStruct2.ret);
+      StringBuilder localStringBuilder = new StringBuilder("UploadApkHttpRequest:onFinished; ret=");
+      localStringBuilder.append(paramJceStruct2.ret);
+      i.a("UploadApkHttpRequest", localStringBuilder.toString());
       if (paramJceStruct2.ret == 0)
       {
         paramJceStruct2 = a.a().obtainMessage();
@@ -60,25 +62,33 @@ public final class b
     }
   }
   
-  public final void prepareData()
+  protected final void prepareData()
   {
     super.prepareData();
-    Object localObject = new ReportApkFileInfoRequest();
-    ((ReportApkFileInfoRequest)localObject).apkFileInfoList = ((ArrayList)this.a);
-    setData((JceStruct)localObject);
-    localObject = new StringBuffer("UploadApkHttpRequest:prepareData;apkFileInfoList= [");
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = new ReportApkFileInfoRequest();
+    ((ReportApkFileInfoRequest)localObject1).apkFileInfoList = ((ArrayList)this.a);
+    setData((JceStruct)localObject1);
+    localObject1 = new StringBuffer("UploadApkHttpRequest:prepareData;apkFileInfoList= [");
+    Object localObject2 = this.a.iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      ApkFileInfo localApkFileInfo = (ApkFileInfo)localIterator.next();
-      ((StringBuffer)localObject).append("pkgname=" + localApkFileInfo.packageName + ";apkId=" + localApkFileInfo.apkId + "| \n\r");
+      ApkFileInfo localApkFileInfo = (ApkFileInfo)((Iterator)localObject2).next();
+      StringBuilder localStringBuilder = new StringBuilder("pkgname=");
+      localStringBuilder.append(localApkFileInfo.packageName);
+      localStringBuilder.append(";apkId=");
+      localStringBuilder.append(localApkFileInfo.apkId);
+      localStringBuilder.append("| \n\r");
+      ((StringBuffer)localObject1).append(localStringBuilder.toString());
     }
-    i.a("UploadApkHttpRequest", ((StringBuffer)localObject).toString() + "]");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((StringBuffer)localObject1).toString());
+    ((StringBuilder)localObject2).append("]");
+    i.a("UploadApkHttpRequest", ((StringBuilder)localObject2).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.a.b
  * JD-Core Version:    0.7.0.1
  */

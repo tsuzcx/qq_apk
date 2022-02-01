@@ -25,56 +25,68 @@ public class b
   
   public static b a()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new b();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new b();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public <T extends JceStruct> T a(String paramString, Class<T> paramClass)
   {
-    if (this.a.containsKey(paramString)) {
-      try
+    if (this.a.containsKey(paramString)) {}
+    try
+    {
+      paramClass = (JceStruct)this.a.get(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("value of ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" found, return");
+      ab.c("JceCacheManager", ((StringBuilder)localObject).toString());
+      return paramClass;
+    }
+    catch (Exception paramString)
+    {
+      Object localObject;
+      label66:
+      break label66;
+    }
+    ab.e("JceCacheManager", "<get> type cast error!");
+    break label196;
+    localObject = Settings.getInstance().getBlob(paramString);
+    if (localObject != null) {}
+    try
+    {
+      paramClass = ProtocolPackage.bytes2JceObj((byte[])localObject, paramClass);
+      if (paramClass != null)
       {
-        paramClass = (JceStruct)this.a.get(paramString);
-        ab.c("JceCacheManager", "value of " + paramString + " found, return");
+        this.a.put(paramString, paramClass);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<get> Get value of ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" from database and save it to cache");
+        ab.c("JceCacheManager", ((StringBuilder)localObject).toString());
         return paramClass;
       }
-      catch (Exception paramString)
-      {
-        ab.e("JceCacheManager", "<get> type cast error!");
-      }
+      paramClass = new StringBuilder();
+      paramClass.append("<get> value of ");
+      paramClass.append(paramString);
+      paramClass.append(" is null !");
+      ab.c("JceCacheManager", paramClass.toString());
     }
-    for (;;)
+    catch (Exception paramString)
     {
-      return null;
-      byte[] arrayOfByte = Settings.getInstance().getBlob(paramString);
-      if (arrayOfByte != null)
-      {
-        try
-        {
-          paramClass = ProtocolPackage.bytes2JceObj(arrayOfByte, paramClass);
-          if (paramClass == null) {
-            break label144;
-          }
-          this.a.put(paramString, paramClass);
-          ab.c("JceCacheManager", "<get> Get value of " + paramString + " from database and save it to cache");
-          return paramClass;
-        }
-        catch (Exception paramString)
-        {
-          ab.e("JceCacheManager", "<get> type cast error!");
-        }
-        continue;
-        label144:
-        ab.c("JceCacheManager", "<get> value of " + paramString + " is null !");
-      }
+      label189:
+      label196:
+      break label189;
     }
+    ab.e("JceCacheManager", "<get> type cast error!");
+    return null;
   }
   
   public List<String> a(Context paramContext)
@@ -90,31 +102,36 @@ public class b
       return this.c.blackList;
     }
     paramContext = Settings.getInstance().getBlob("key_filter_config");
-    StringBuilder localStringBuilder;
     if (paramContext != null) {
       try
       {
         paramContext = (ShareUrlConfig)ProtocolPackage.bytes2JceObj(paramContext, ShareUrlConfig.class);
         localStringBuilder = new StringBuilder();
-        Iterator localIterator = paramContext.blackList.iterator();
-        while (localIterator.hasNext())
+        Object localObject = paramContext.blackList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localStringBuilder.append((String)localIterator.next());
+          localStringBuilder.append((String)((Iterator)localObject).next());
           localStringBuilder.append("\n");
         }
-        ab.c("JceCacheManager", "<getFilterConfig> data is null");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<getFilterConfig> config content : ");
+        ((StringBuilder)localObject).append(localStringBuilder.toString());
+        ((StringBuilder)localObject).append(", and setting cache");
+        ab.c("JceCacheManager", ((StringBuilder)localObject).toString());
+        this.c = paramContext;
+        paramContext = paramContext.blackList;
+        return paramContext;
       }
       catch (Exception paramContext)
       {
-        ab.e("JceCacheManager", "<getFilterConfig> decode ShareUrlConfig error!!! error = " + paramContext.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<getFilterConfig> decode ShareUrlConfig error!!! error = ");
+        localStringBuilder.append(paramContext.getMessage());
+        ab.e("JceCacheManager", localStringBuilder.toString());
       }
-    } else {
-      return new ArrayList();
     }
-    ab.c("JceCacheManager", "<getFilterConfig> config content : " + localStringBuilder.toString() + ", and setting cache");
-    this.c = paramContext;
-    paramContext = paramContext.blackList;
-    return paramContext;
+    ab.c("JceCacheManager", "<getFilterConfig> data is null");
+    return new ArrayList();
   }
   
   public <T extends JceStruct> void a(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
@@ -140,23 +157,28 @@ public class b
   {
     try
     {
-      ShareUrlConfig localShareUrlConfig = (ShareUrlConfig)ProtocolPackage.bytes2JceObj(paramArrayOfByte, ShareUrlConfig.class);
-      if (localShareUrlConfig != null)
+      localObject = (ShareUrlConfig)ProtocolPackage.bytes2JceObj(paramArrayOfByte, ShareUrlConfig.class);
+      if (localObject != null)
       {
-        ab.c("JceCacheManager", "ShareUrlConfig is ok, config.blackList = " + localShareUrlConfig.blackList);
-        this.c = localShareUrlConfig;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ShareUrlConfig is ok, config.blackList = ");
+        localStringBuilder.append(((ShareUrlConfig)localObject).blackList);
+        ab.c("JceCacheManager", localStringBuilder.toString());
+        this.c = ((ShareUrlConfig)localObject);
       }
-      for (;;)
+      else
       {
-        Settings.getInstance().setBlob("key_filter_config", paramArrayOfByte);
-        return;
         ab.c("JceCacheManager", "ShareUrlConfig is null");
       }
+      Settings.getInstance().setBlob("key_filter_config", paramArrayOfByte);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ab.c("JceCacheManager", "saveFilterConfig error " + paramArrayOfByte.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveFilterConfig error ");
+      ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+      ab.c("JceCacheManager", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -176,7 +198,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,18 @@
-import android.graphics.Bitmap;
+import java.io.File;
 
-public abstract interface ggp
+class ggp
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
+  private String a;
+  
+  public ggp(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public File a(int paramInt, String paramString)
+  {
+    return null;
+  }
 }
 
 

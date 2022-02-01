@@ -27,12 +27,19 @@ public class UniformParam$Int2iParam
   
   public String toString()
   {
-    return this.name + " = [ x = " + this.x + ", y = " + this.y + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = [ x = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y = ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.UniformParam.Int2iParam
  * JD-Core Version:    0.7.0.1
  */

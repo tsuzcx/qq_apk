@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/d0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ban" android:scaleType="fitXY" />
-    <ImageView android:id="@id/d0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bao" android:scaleType="fitXY" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c8l" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/df" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center_vertical" android:id="@id/c2g" android:layout_width="wrap_content" android:layout_height="@dimen/d6" android:layout_marginLeft="16.0dip" android:text="@string/en6" android:layout_weight="1.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/c8l" />
+    <View android:background="@drawable/aou" android:layout_width="fill_parent" android:layout_height="@dimen/df" android:layout_marginTop="@dimen/d6" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

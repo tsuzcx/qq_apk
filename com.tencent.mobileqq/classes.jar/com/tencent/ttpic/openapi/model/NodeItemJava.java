@@ -1,7 +1,5 @@
 package com.tencent.ttpic.openapi.model;
 
-import com.google.android.filament.Engine;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import java.io.File;
@@ -12,14 +10,15 @@ import java.util.Map;
 
 public class NodeItemJava
 {
-  public String EXTENSION_JPG = "jpg";
-  public String EXTENSION_PNG = "png";
+  private static final String EXTENSION_JPG = "jpg";
+  private static final String EXTENSION_PNG = "png";
   public int activateTriggerCount = 0;
   public int activateTriggerTotalCount = 0;
   public int activateTriggerType = 0;
-  public int alwaysTriggered = 1;
+  public boolean alwaysTriggered;
   public String content;
   public int countTriggerType;
+  public boolean enableExpressionConfigRemap;
   public List<AnimojiExpressionJava> expressionConfigList = new ArrayList();
   public Map<String, Integer> expressionOrderList = new HashMap();
   public String externalTriggerWords;
@@ -32,41 +31,48 @@ public class NodeItemJava
   public boolean needShow = true;
   public int playCount = 0;
   public int rotateRequied = 0;
-  private boolean show = true;
   public TriggerCtrlItem triggerCtrlItem;
+  public ArrayList<String> triggerState;
   public String triggerType;
-  
-  public void destroy(Engine paramEngine) {}
   
   public boolean getHide()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.triggerCtrlItem.isTriggered())
-    {
-      bool1 = bool2;
-      if (!this.needShow) {
-        bool1 = true;
-      }
+    if (this.triggerCtrlItem.isTriggered()) {
+      return this.needShow ^ true;
     }
-    return bool1;
+    return false;
   }
   
   public String getTexture(String paramString)
   {
     if (!this.triggerCtrlItem.isTriggered()) {
-      paramString = null;
+      return null;
     }
-    String str2;
-    String str1;
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.modelId);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.content);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.content);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(this.triggerCtrlItem.getFrameIndex());
+    ((StringBuilder)localObject).append(".");
+    String str = ((StringBuilder)localObject).toString();
+    paramString = new StringBuilder();
+    paramString.append(str);
+    paramString.append("png");
+    localObject = paramString.toString();
+    paramString = (String)localObject;
+    if (!new File((String)localObject).exists())
     {
-      return paramString;
-      str2 = paramString + File.separator + this.modelId + File.separator + this.content + File.separator + this.content + "_" + this.triggerCtrlItem.getFrameIndex() + ".";
-      str1 = str2 + this.EXTENSION_PNG;
-      paramString = str1;
-    } while (new File(str1).exists());
-    return str2 + this.EXTENSION_JPG;
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append("jpg");
+      paramString = paramString.toString();
+    }
+    return paramString;
   }
   
   public int getTriggerTypeInt()
@@ -76,17 +82,17 @@ public class NodeItemJava
       int i = Integer.parseInt(this.triggerType);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
-  
-  public void reset() {}
-  
-  public void updateActionTriggered(PTDetectInfo paramPTDetectInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.NodeItemJava
  * JD-Core Version:    0.7.0.1
  */

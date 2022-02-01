@@ -26,12 +26,13 @@ public class CompositionTrack
   
   public CompositionTrackSegment segmentForTrackTime(CMTime paramCMTime)
   {
-    if (this.segments != null)
+    Object localObject = this.segments;
+    if (localObject != null)
     {
-      Iterator localIterator = this.segments.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AssetTrackSegment localAssetTrackSegment = (AssetTrackSegment)localIterator.next();
+        AssetTrackSegment localAssetTrackSegment = (AssetTrackSegment)((Iterator)localObject).next();
         if (localAssetTrackSegment != null)
         {
           CMTimeRange localCMTimeRange = localAssetTrackSegment.getTimeMapping().getTarget();
@@ -46,12 +47,20 @@ public class CompositionTrack
   
   public String toString()
   {
-    return "CompositionTrack{segments=" + this.segments + ", trackID=" + this.trackID + ", mediaType=" + this.mediaType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompositionTrack{segments=");
+    localStringBuilder.append(this.segments);
+    localStringBuilder.append(", trackID=");
+    localStringBuilder.append(this.trackID);
+    localStringBuilder.append(", mediaType=");
+    localStringBuilder.append(this.mediaType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.asset.CompositionTrack
  * JD-Core Version:    0.7.0.1
  */

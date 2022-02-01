@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import cme;
 import cmf;
 import cmg;
 import cmh;
@@ -34,7 +35,6 @@ import cmn;
 import cmo;
 import cmp;
 import cmq;
-import cmr;
 import com.tencent.biz.common.util.OpenIdObserver;
 import com.tencent.biz.common.util.Util;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -105,16 +105,16 @@ public class ForwardRecentActivity
   public Uri a;
   public Bundle a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cmm(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cml(this);
   View jdField_a_of_type_AndroidViewView;
   public LinearLayout a;
   public RelativeLayout a;
   protected OpenIdObserver a;
   private ForwardOperations jdField_a_of_type_ComTencentMobileqqActivityForwardOperations;
   private ForwardRecentListAdapter jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter;
-  private AutomatorObserver jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new cmh(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmr(this);
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cmg(this);
+  private AutomatorObserver jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new cmg(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new cmq(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new cmf(this);
   protected QQCustomDialog a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List jdField_a_of_type_JavaUtilList;
@@ -152,7 +152,7 @@ public class ForwardRecentActivity
     this.jdField_c_of_type_Boolean = false;
     this.n = true;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new cmj(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new cmi(this);
   }
   
   private List a(List paramList)
@@ -293,7 +293,7 @@ public class ForwardRecentActivity
       return;
     }
     Contacts.a += 1;
-    this.jdField_a_of_type_AndroidAppDialog = new cmn(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
+    this.jdField_a_of_type_AndroidAppDialog = new cmm(this, this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     paramInt = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -paramInt);
@@ -301,9 +301,9 @@ public class ForwardRecentActivity
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -paramInt, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new cmo(this));
-    localTranslateAnimation2.setAnimationListener(new cmp(this, paramInt));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cmq(this, paramInt, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new cmn(this));
+    localTranslateAnimation2.setAnimationListener(new cmo(this, paramInt));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new cmp(this, paramInt, localTranslateAnimation2));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation1);
     ReportController.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004049", "0X8004049", 0, 0, "", "", "", "");
   }
@@ -324,36 +324,36 @@ public class ForwardRecentActivity
   private void a(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231116));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231374));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131231373));
+    findViewById(2131231455).setVisibility(8);
     findViewById(2131231456).setVisibility(8);
-    findViewById(2131231457).setVisibility(8);
-    findViewById(2131231461).setVisibility(8);
-    ((TextView)findViewById(2131231376)).setText(getString(2131559074));
+    findViewById(2131231460).setVisibility(8);
+    ((TextView)findViewById(2131231375)).setText(getString(2131559074));
     setTitle(2131559074);
-    paramTextView = (TextView)findViewById(2131231380);
+    paramTextView = (TextView)findViewById(2131231379);
     paramTextView.setVisibility(0);
     paramTextView.setText(2131561746);
     paramTextView.setContentDescription("取消按钮");
     paramTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231199));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131231198));
     paramTextView = LayoutInflater.from(a());
     Object localObject = paramTextView.inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    ((View)localObject).findViewById(2131233086).setVisibility(8);
-    localObject = (EditText)((View)localObject).findViewById(2131233087);
+    ((View)localObject).findViewById(2131233085).setVisibility(8);
+    localObject = (EditText)((View)localObject).findViewById(2131233086);
     ((EditText)localObject).setFocusable(false);
     ((EditText)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     ((EditText)localObject).setCursorVisible(false);
     this.jdField_g_of_type_AndroidViewView = paramTextView.inflate(2130903237, this.jdField_a_of_type_ComTencentWidgetXListView, false);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(this.jdField_g_of_type_AndroidViewView);
     paramTextView = paramTextView.inflate(2130903140, null);
-    ((TextView)paramTextView.findViewById(2131231386)).setText(2131562725);
+    ((TextView)paramTextView.findViewById(2131231385)).setText(2131562725);
     this.jdField_a_of_type_ComTencentWidgetXListView.a(paramTextView);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231714);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231718);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231720);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231712);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231716);
-    this.jdField_f_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231722);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231713);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231717);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231719);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231711);
+    this.jdField_e_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231715);
+    this.jdField_f_of_type_AndroidViewView = this.jdField_g_of_type_AndroidViewView.findViewById(2131231721);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -462,19 +462,19 @@ public class ForwardRecentActivity
     TextView localTextView = (TextView)localView.findViewById(16908308);
     localTextView.setText(getString(2131559075));
     localTextView.setContentDescription("我的电脑");
-    localView.setOnClickListener(new cmk(this));
+    localView.setOnClickListener(new cmj(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.a(localView);
   }
   
   private void f()
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.d())
+    if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.e())
     {
       this.jdField_a_of_type_JavaUtilList = a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a());
       if (this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter == null)
       {
-        cml localcml = new cml(this);
-        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter = new ForwardRecentListAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, null, 2130903929, this.jdField_a_of_type_JavaUtilList, localcml, null);
+        cmk localcmk = new cmk(this);
+        this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter = new ForwardRecentListAdapter(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, null, 2130903929, this.jdField_a_of_type_JavaUtilList, localcmk, null);
         this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter.a(false);
         this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter);
       }
@@ -513,9 +513,9 @@ public class ForwardRecentActivity
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131560539);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131560595);
-    cmi localcmi = new cmi(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131561746, localcmi);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131560540, localcmi);
+    cmh localcmh = new cmh(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131561746, localcmh);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131560540, localcmh);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -615,7 +615,7 @@ public class ForwardRecentActivity
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver);
     f(2130903239);
-    TextView localTextView = (TextView)findViewById(2131231376);
+    TextView localTextView = (TextView)findViewById(2131231375);
     a(localTextView);
     Object localObject1 = getIntent();
     this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations = new ForwardOperations(this, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject1);
@@ -834,7 +834,7 @@ public class ForwardRecentActivity
           {
             this.jdField_a_of_type_ComTencentMobileqqActivityForwardOperations.a(2131560596);
             this.jdField_a_of_type_AndroidOsHandler = new Handler();
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cmf(this), 3000L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new cme(this), 3000L);
             this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
             this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().d(paramBundle);
             break label993;

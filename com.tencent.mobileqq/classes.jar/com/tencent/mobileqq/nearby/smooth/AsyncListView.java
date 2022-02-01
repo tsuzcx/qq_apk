@@ -4,16 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
-import avtb;
-import avtc;
-import bhtv;
-import bhuy;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class AsyncListView
   extends FPSXListView
+  implements AsyncAbsListView
 {
-  final avtb a = new avtb(this);
+  final ItemManaged a = new ItemManaged(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -33,33 +32,33 @@ public class AsyncListView
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.a.a();
+    this.a.f();
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(this.a.a(paramListAdapter));
-    this.a.b();
+    this.a.h();
   }
   
-  public void setItemManager(avtc paramavtc)
+  public void setItemManager(ItemManager paramItemManager)
   {
-    this.a.a(paramavtc);
+    this.a.a(paramItemManager);
   }
   
-  public void setOnItemSelectedListener(bhuy parambhuy)
+  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.a.a(parambhuy);
+    this.a.a(paramOnItemSelectedListener);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(parambhuy);
+      super.setOnItemSelectedListener(paramOnItemSelectedListener);
     }
   }
   
-  public void setOnScrollListener(bhtv parambhtv)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.a.a(parambhtv);
+    this.a.a(paramOnScrollListener);
     if (!this.a.a()) {
-      super.setOnScrollListener(parambhtv);
+      super.setOnScrollListener(paramOnScrollListener);
     }
   }
   
@@ -73,7 +72,7 @@ public class AsyncListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncListView
  * JD-Core Version:    0.7.0.1
  */

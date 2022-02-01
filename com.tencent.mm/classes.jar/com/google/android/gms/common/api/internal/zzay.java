@@ -12,14 +12,14 @@ final class zzay
   
   public final void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60811);
+    AppMethodBeat.i(11303);
     this.zziv.setResult(new Status(8));
-    AppMethodBeat.o(60811);
+    AppMethodBeat.o(11303);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzay
  * JD-Core Version:    0.7.0.1
  */

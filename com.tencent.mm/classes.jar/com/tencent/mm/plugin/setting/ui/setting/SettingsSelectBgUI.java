@@ -1,140 +1,185 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Message;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.o;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.ba.j;
-import com.tencent.mm.ba.k;
-import com.tencent.mm.ba.n;
-import com.tencent.mm.ba.r;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.am.r;
+import com.tencent.mm.modelpackage.o;
+import com.tencent.mm.modelpackage.t;
+import com.tencent.mm.modelpackage.u;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.x;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class SettingsSelectBgUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private boolean qId;
-  private SettingsSelectBgUI.a qKa;
-  private GridView qKb;
-  private j qKc;
-  private List<j> qKd;
-  private ap qKe;
+  private boolean PsF;
+  private a Pwb;
+  private GridView Pwc;
+  private o Pwd;
+  private MTimerHandler Pwe;
+  private List<o> muZ;
   private String username;
   
   public SettingsSelectBgUI()
   {
-    AppMethodBeat.i(127480);
-    this.qKd = new ArrayList();
-    this.qKe = new ap(new SettingsSelectBgUI.1(this), true);
-    AppMethodBeat.o(127480);
+    AppMethodBeat.i(74416);
+    this.muZ = new ArrayList();
+    this.Pwe = new MTimerHandler(new MTimerHandler.CallBack()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(74406);
+        if (SettingsSelectBgUI.this.findViewById(b.f.settings_select_bg_gv).getWidth() <= 0)
+        {
+          AppMethodBeat.o(74406);
+          return true;
+        }
+        SettingsSelectBgUI.a(SettingsSelectBgUI.this);
+        AppMethodBeat.o(74406);
+        return false;
+      }
+    }, true);
+    AppMethodBeat.o(74416);
   }
   
-  private void cV(List<j> paramList)
+  private void kq(List<o> paramList)
   {
-    AppMethodBeat.i(127485);
+    AppMethodBeat.i(74421);
     if (paramList.size() > 0)
     {
-      this.qKc = ((j)paramList.remove(0));
-      g.Rc().a(this.qKc, 0);
-      AppMethodBeat.o(127485);
+      this.Pwd = ((o)paramList.remove(0));
+      com.tencent.mm.kernel.h.aZW().a(this.Pwd, 0);
+      AppMethodBeat.o(74421);
       return;
     }
-    this.qKc = null;
-    AppMethodBeat.o(127485);
+    this.Pwd = null;
+    AppMethodBeat.o(74421);
   }
   
   public int getLayoutId()
   {
-    return 2130970701;
+    return b.g.settings_select_bg;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127483);
-    setMMTitle(2131303230);
-    setBackBtn(new SettingsSelectBgUI.2(this));
-    this.qId = getIntent().getBooleanExtra("isApplyToAll", true);
+    AppMethodBeat.i(74419);
+    setMMTitle(b.i.settings_chatting_bg_select_bg);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(74407);
+        SettingsSelectBgUI.this.finish();
+        AppMethodBeat.o(74407);
+        return true;
+      }
+    });
+    this.PsF = getIntent().getBooleanExtra("isApplyToAll", true);
     this.username = getIntent().getStringExtra("username");
-    this.qKe.ag(20L, 20L);
-    AppMethodBeat.o(127483);
+    this.Pwe.startTimer(20L);
+    AppMethodBeat.o(74419);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127481);
+    AppMethodBeat.i(74417);
     super.onCreate(paramBundle);
     initView();
-    g.Rc().a(159, this);
-    g.Rc().a(160, this);
-    if (g.RL().isSDCardAvailable())
-    {
-      paramBundle = new k(1);
-      g.Rc().a(paramBundle, 0);
+    if (getBounceView() != null) {
+      getBounceView().setBg(getResources().getDrawable(b.e.settings_select_bg_bg));
     }
-    AppMethodBeat.o(127481);
+    com.tencent.mm.kernel.h.aZW().a(159, this);
+    com.tencent.mm.kernel.h.aZW().a(160, this);
+    if (com.tencent.mm.kernel.h.baE().isSDCardAvailable())
+    {
+      paramBundle = new com.tencent.mm.modelpackage.p(1);
+      com.tencent.mm.kernel.h.aZW().a(paramBundle, 0);
+    }
+    AppMethodBeat.o(74417);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(127482);
+    AppMethodBeat.i(74418);
     super.onDestroy();
-    if (this.qKc != null)
+    if (this.Pwd != null)
     {
-      g.Rc().a(this.qKc);
-      r.aiP().cD(this.qKc.fMD, 1);
+      com.tencent.mm.kernel.h.aZW().a(this.Pwd);
+      u.bLH().eM(this.Pwd.oQV, 1);
     }
-    List localList = this.qKd;
+    List localList = this.muZ;
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      j localj = (j)localIterator.next();
-      r.aiP().cD(localj.fMD, 1);
+      o localo = (o)localIterator.next();
+      u.bLH().eM(localo.oQV, 1);
     }
     localList.clear();
-    g.Rc().b(159, this);
-    g.Rc().b(160, this);
-    this.qKa.bKb();
-    r.aiP().remove(this.qKa);
-    AppMethodBeat.o(127482);
+    com.tencent.mm.kernel.h.aZW().b(159, this);
+    com.tencent.mm.kernel.h.aZW().b(160, this);
+    this.Pwb.fSd();
+    u.bLH().remove(this.Pwb);
+    AppMethodBeat.o(74418);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(127484);
-    if ((!(paramm instanceof o)) || (((o)paramm).ads() != 1))
+    AppMethodBeat.i(74420);
+    if ((!(paramp instanceof r)) || (((r)paramp).bFO() != 1))
     {
-      ab.d("MicroMsg.SettingsSelectBgUI", "another scene");
-      AppMethodBeat.o(127484);
+      Log.d("MicroMsg.SettingsSelectBgUI", "another scene");
+      AppMethodBeat.o(74420);
       return;
     }
-    int i = paramm.getType();
+    int i = paramp.getType();
     if ((i != 159) && (i != 160))
     {
-      AppMethodBeat.o(127484);
+      AppMethodBeat.o(74420);
       return;
     }
     if (i == 160) {
-      cV(this.qKd);
+      kq(this.muZ);
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      AppMethodBeat.o(127484);
+      AppMethodBeat.o(74420);
       return;
     }
-    AppMethodBeat.o(127484);
+    AppMethodBeat.o(74420);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -142,10 +187,149 @@ public class SettingsSelectBgUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends x<com.tencent.mm.modelpackage.s>
+  {
+    private Context context;
+    private int wLI;
+    
+    public a(Context paramContext, int paramInt)
+    {
+      super(new com.tencent.mm.modelpackage.s());
+      AppMethodBeat.i(74410);
+      this.context = paramContext;
+      this.wLI = paramInt;
+      AppMethodBeat.o(74410);
+    }
+    
+    public final void aNy()
+    {
+      AppMethodBeat.i(74413);
+      w(u.bLH().bLD());
+      super.notifyDataSetChanged();
+      AppMethodBeat.o(74413);
+    }
+    
+    public final void aNz()
+    {
+      AppMethodBeat.i(74412);
+      aNy();
+      AppMethodBeat.o(74412);
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(74411);
+      int i = Fv().getCount();
+      AppMethodBeat.o(74411);
+      return i + 2;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(74414);
+      int i;
+      com.tencent.mm.modelpackage.a locala;
+      if (paramView == null)
+      {
+        paramView = View.inflate(this.context, b.g.settings_select_bg_view, null);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(this.wLI, this.wLI));
+        paramViewGroup = new f();
+        paramViewGroup.PxP = ((LinearLayout)paramView.findViewById(b.f.select_bg_downloading_ll));
+        paramViewGroup.PxQ = ((LinearLayout)paramView.findViewById(b.f.select_bg_downloaded_ll));
+        paramViewGroup.PxR = ((LinearLayout)paramView.findViewById(b.f.select_bg_undownloaded_ll));
+        paramViewGroup.PxS = ((LinearLayout)paramView.findViewById(b.f.select_bg_using_ll));
+        paramViewGroup.PxT = ((LinearLayout)paramView.findViewById(b.f.select_bg_canceling_ll));
+        paramView.setTag(paramViewGroup);
+        i = Util.nullAs((Integer)com.tencent.mm.kernel.h.baE().ban().d(12311, null), -2);
+        locala = u.bLI().OM(SettingsSelectBgUI.f(SettingsSelectBgUI.this));
+        if (paramInt != 0) {
+          break label286;
+        }
+        if (((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2)) && ((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) || (i != -2) || (locala != null)) && ((locala == null) || (locala.oQj != -2))) {
+          break label277;
+        }
+        paramViewGroup.aVJ("using");
+      }
+      for (;;)
+      {
+        paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), b.e.chatting_bg_purecolor_thumb), true, 10.0F);
+        ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(paramViewGroup);
+        AppMethodBeat.o(74414);
+        return paramView;
+        paramViewGroup = (f)paramView.getTag();
+        break;
+        label277:
+        paramViewGroup.aVJ("downloaded");
+      }
+      label286:
+      if (paramInt == 1)
+      {
+        if (((SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0)) || ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (i == 0) && (locala == null)) || ((locala != null) && (locala.oQj == 0))) {
+          paramViewGroup.aVJ("using");
+        }
+        for (;;)
+        {
+          paramViewGroup = BitmapUtil.getRoundedCornerBitmap(BitmapFactory.decodeResource(this.context.getResources(), b.e.chatting_bg_default_thumb), true, 10.0F);
+          ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(paramViewGroup);
+          AppMethodBeat.o(74414);
+          return paramView;
+          paramViewGroup.aVJ("downloaded");
+        }
+      }
+      com.tencent.mm.modelpackage.s locals = (com.tencent.mm.modelpackage.s)getItem(paramInt - 2);
+      t localt = u.bLH();
+      if (!com.tencent.mm.kernel.h.baE().isSDCardAvailable()) {}
+      for (Bitmap localBitmap = BitmapFactory.decodeResource(SettingsSelectBgUI.this.getResources(), b.e.nosdcard_chatting_bg_thumb); localBitmap == null; localBitmap = BitmapUtil.getBitmapNative(t.bLE() + t.eJ(locals.id, locals.hJK)))
+      {
+        paramInt = locals.id;
+        i = locals.hJK;
+        if (localt.omV.delete("packageinfo2", "id= ? and type =?", new String[] { String.valueOf(paramInt), String.valueOf(i) }) > 0) {
+          localt.doNotify();
+        }
+        AppMethodBeat.o(74414);
+        return paramView;
+      }
+      localBitmap = BitmapUtil.getRoundedCornerBitmap(localBitmap, true, 10.0F);
+      ((ImageView)paramView.findViewById(b.f.select_bg_pkg_iv)).setImageBitmap(localBitmap);
+      switch (locals.status)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(74414);
+        return paramView;
+        paramViewGroup.aVJ("downloading");
+        continue;
+        if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.oQj == locals.id))
+        {
+          paramViewGroup.aVJ("using");
+        }
+        else
+        {
+          paramViewGroup.aVJ("downloaded");
+          continue;
+          paramViewGroup.aVJ("undownloaded");
+          continue;
+          if ((!SettingsSelectBgUI.c(SettingsSelectBgUI.this)) && (locala != null) && (locala.oQj != locals.id))
+          {
+            paramViewGroup.aVJ("downloaded");
+          }
+          else
+          {
+            paramViewGroup.aVJ("using");
+            continue;
+            paramViewGroup.aVJ("canceling");
+          }
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSelectBgUI
  * JD-Core Version:    0.7.0.1
  */

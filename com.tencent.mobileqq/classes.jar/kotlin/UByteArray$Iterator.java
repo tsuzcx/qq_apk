@@ -23,19 +23,19 @@ final class UByteArray$Iterator
   
   public byte nextUByte()
   {
-    if (this.index < this.array.length)
+    int i = this.index;
+    byte[] arrayOfByte = this.array;
+    if (i < arrayOfByte.length)
     {
-      byte[] arrayOfByte = this.array;
-      int i = this.index;
       this.index = (i + 1);
       return UByte.constructor-impl(arrayOfByte[i]);
     }
-    throw ((Throwable)new NoSuchElementException(String.valueOf(this.index)));
+    throw ((Throwable)new NoSuchElementException(String.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.UByteArray.Iterator
  * JD-Core Version:    0.7.0.1
  */

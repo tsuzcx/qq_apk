@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.dinifly.model;
 
-import android.support.annotation.RestrictTo;
+import androidx.annotation.RestrictTo;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
 import java.util.List;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+@RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY})
 public class FontCharacter
 {
   private final char character;
@@ -26,7 +26,7 @@ public class FontCharacter
   
   public static int hashFor(char paramChar, String paramString1, String paramString2)
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    return (('\000' + paramChar) * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
   }
   
   public List<ShapeGroup> getShapes()

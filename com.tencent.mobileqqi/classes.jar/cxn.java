@@ -1,8 +1,8 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class cxn
   implements DialogInterface.OnClickListener
@@ -11,8 +11,9 @@ public class cxn
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a.b.a(), null, "security_scan_key", "qqsetting_security_scan_key", true);
-    this.a.b.B();
+    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.a(this.a);
+    Intent localIntent = new Intent(this.a.a(), QQBrowserActivity.class);
+    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
     this.a.finish();
   }
 }

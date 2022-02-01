@@ -1,25 +1,27 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahcr;
-
-public class BlessManager$5
+class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(ahcr paramahcr) {}
+  BlessManager$5(BlessManager paramBlessManager) {}
   
   public void run()
   {
-    if (ahcr.a(this.this$0) != null)
+    if (BlessManager.d(this.this$0) != null)
     {
-      if (!ahcr.a(this.this$0))
+      if (!BlessManager.f(this.this$0))
       {
-        ahcr.c(this.this$0, ahcr.a(this.this$0, ahcr.a(this.this$0), false));
-        ahcr.a(this.this$0, ahcr.a(this.this$0));
-        ahcr.a(this.this$0, ahcr.a(this.this$0), true);
+        BlessManager localBlessManager = this.this$0;
+        BlessManager.c(localBlessManager, BlessManager.a(localBlessManager, BlessManager.d(localBlessManager), false));
+        localBlessManager = this.this$0;
+        BlessManager.d(localBlessManager, BlessManager.f(localBlessManager));
+        localBlessManager = this.this$0;
+        BlessManager.a(localBlessManager, BlessManager.d(localBlessManager), true);
       }
-      return;
     }
-    ahcr.a(this.this$0, false);
+    else {
+      BlessManager.d(this.this$0, false);
+    }
   }
 }
 

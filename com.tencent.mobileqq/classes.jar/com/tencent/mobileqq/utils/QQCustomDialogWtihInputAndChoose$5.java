@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.utils;
 
-import bdll;
-import bhsj;
+import com.tencent.util.InputMethodUtil;
 
-public class QQCustomDialogWtihInputAndChoose$5
+class QQCustomDialogWtihInputAndChoose$5
   implements Runnable
 {
-  public QQCustomDialogWtihInputAndChoose$5(bdll parambdll) {}
+  QQCustomDialogWtihInputAndChoose$5(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
   public void run()
   {
-    bhsj.a(this.this$0.a);
+    InputMethodUtil.a(this.this$0.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.5
  * JD-Core Version:    0.7.0.1
  */

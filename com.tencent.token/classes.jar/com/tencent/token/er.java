@@ -1,373 +1,181 @@
 package com.tencent.token;
 
-import android.os.Looper;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.ui.LoginMsgActivity;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class er
+public final class er<E>
+  implements Cloneable
 {
-  public gb a = null;
-  public boolean b;
-  long c = 0L;
-  public int d = -1;
-  public long e = 0L;
-  private List f = null;
-  private int g = 0;
-  private boolean h = false;
+  public static final Object a = new Object();
+  public boolean b = false;
+  public long[] c;
+  public Object[] d;
+  public int e;
   
-  public er(String paramString)
+  public er()
   {
-    this.a = new gb(paramString);
+    this((byte)0);
   }
   
-  private void a(List paramList)
+  private er(byte paramByte)
   {
-    l();
-    this.f.clear();
-    if (paramList != null) {
-      this.f.addAll(paramList);
-    }
+    paramByte = eo.b(10);
+    this.c = new long[paramByte];
+    this.d = new Object[paramByte];
+    this.e = 0;
   }
   
-  private void l()
+  private long a(int paramInt)
   {
-    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
-      return;
+    if (this.b) {
+      b();
     }
-    h.c("should run in mainthread");
-    h.d("should run in mainthread");
+    return this.c[paramInt];
   }
   
-  public int a(int paramInt)
+  private er<E> a()
   {
-    this.b = false;
-    int i = paramInt;
-    if (this.d > -1) {
-      i = Math.max(paramInt, this.d);
-    }
-    try
+    for (;;)
     {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject = do.a().e();
-      if ((localObject == null) || (i <= 0))
+      try
       {
-        a(null);
-        return 0;
+        localer = (er)super.clone();
       }
-      long l2 = ((QQUser)localObject).mUin;
-      long l1 = l2;
-      if (!((QQUser)localObject).mIsBinded)
+      catch (CloneNotSupportedException localCloneNotSupportedException1)
       {
-        l1 = l2;
-        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-          l1 = w.f(((QQUser)localObject).mRealUin);
-        }
+        er localer;
+        continue;
+        return localCloneNotSupportedException1;
       }
-      localObject = this.a.a(l1, i + 1);
-      if (localObject != null)
+      try
       {
-        if (((List)localObject).size() > i)
-        {
-          this.b = true;
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localArrayList.add(((List)localObject).get(paramInt));
-            paramInt += 1;
-          }
-        }
-        localArrayList.addAll((Collection)localObject);
+        localer.c = ((long[])this.c.clone());
+        localer.d = ((Object[])this.d.clone());
+        return localer;
       }
-      a(localArrayList);
-      paramInt = g();
-      return paramInt;
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
     }
-    catch (Exception localException)
-    {
-      h.c("Exception:" + localException.toString());
-      a(null);
-    }
-    return 0;
-  }
-  
-  public SafeMsgItem a()
-  {
-    try
-    {
-      Object localObject = do.a().e();
-      if (localObject == null) {
-        return null;
-      }
-      if ((this.e != 0L) && (this.e != ((QQUser)localObject).mRealUin))
-      {
-        k();
-        com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = false;
-      }
-      long l2 = ((QQUser)localObject).mUin;
-      long l1 = l2;
-      if (!((QQUser)localObject).mIsBinded)
-      {
-        l1 = l2;
-        if (((QQUser)localObject).mUin == ((QQUser)localObject).mRealUin) {
-          l1 = w.f(((QQUser)localObject).mRealUin);
-        }
-      }
-      localObject = this.a.a(l1, 1);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = (SafeMsgItem)((List)localObject).get(0);
-        return localObject;
-      }
-      return null;
-    }
-    catch (Exception localException) {}
     return null;
   }
   
-  public f a(JSONObject paramJSONObject, long paramLong, int paramInt)
+  private E b(int paramInt)
   {
-    f localf = new f();
-    long l1 = x.a(paramInt, paramLong);
-    for (;;)
+    if (this.b) {
+      b();
+    }
+    return this.d[paramInt];
+  }
+  
+  private void b()
+  {
+    int m = this.e;
+    long[] arrayOfLong = this.c;
+    Object[] arrayOfObject = this.d;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int i;
-      long l2;
-      try
+      Object localObject = arrayOfObject[i];
+      k = j;
+      if (localObject != a)
       {
-        i = paramJSONObject.getInt("is_have_msg");
-        m = paramJSONObject.getInt("rsp_msg_num");
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("msgs");
-        if ((i <= 0) || (m <= 0)) {
-          break label508;
-        }
-        bool = true;
-        this.h = bool;
-        h.a("is need again=" + i + ", msg cnt=" + m);
-        if ((m > 0) && (localJSONArray != null))
+        if (i != j)
         {
-          c(m);
-          this.a.c(paramLong);
-          j = 0;
-          i = 0;
-          if (i >= localJSONArray.length()) {
-            continue;
-          }
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          if (localJSONObject == null) {
-            break label514;
-          }
-          bool = true;
-          h.a(bool);
-          SafeMsgItem localSafeMsgItem = new SafeMsgItem();
-          localSafeMsgItem.mUin = paramLong;
-          if (!localSafeMsgItem.a(localJSONObject)) {
-            h.c("object item parse failed: " + i);
-          }
-          if ((this.d == -1) && (localSafeMsgItem.q()))
-          {
-            a(LoginMsgActivity.mNewMsgCntSetByAccount + i + 1, do.a().e().mRealUin);
-            if (paramInt == 1) {
-              com.tencent.token.ui.AccountPageActivity.mNeedShowIpcMsg = true;
-            }
-            h.c("setlist got IPC msg,index = " + (LoginMsgActivity.mNewMsgCntSetByAccount + i + 1));
-          }
-          if (this.a.a(localSafeMsgItem))
-          {
-            int k = j + 1;
-            j = k;
-            l2 = l1;
-            if (localSafeMsgItem.mTime + 1L > l1)
-            {
-              l2 = localSafeMsgItem.mTime + 1L;
-              j = k;
-            }
-          }
-          else
-          {
-            h.d("msg store to db is wrong" + localJSONObject);
-            l2 = l1;
-          }
+          arrayOfLong[j] = arrayOfLong[i];
+          arrayOfObject[j] = localObject;
+          arrayOfObject[i] = null;
         }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        int m;
-        int j;
-        localf.a(10020, "JSONException:" + paramJSONObject.toString());
-        localf.c();
-        return localf;
-        if (j != m)
-        {
-          c(j);
-          h.c("msg cnt is wrong");
-          h.d("msg cnt is wrong" + paramJSONObject);
-        }
-        x.a(paramInt, paramLong, l1);
-        localf.c();
-        return localf;
-      }
-      catch (Exception paramJSONObject)
-      {
-        localf.a(10021, "JSONException:" + paramJSONObject.toString());
-        continue;
+        k = j + 1;
       }
       i += 1;
-      l1 = l2;
-      continue;
-      label508:
-      boolean bool = false;
-      continue;
-      label514:
-      bool = false;
     }
+    this.b = false;
+    this.e = j;
   }
   
-  public void a(int paramInt, long paramLong)
+  public final void a(long paramLong, E paramE)
   {
-    this.d = paramInt;
-    this.e = paramLong;
-  }
-  
-  public void a(long paramLong)
-  {
-    l();
-    if (paramLong != 0L)
+    int i = eo.a(this.c, this.e, paramLong);
+    if (i >= 0)
     {
-      this.a.a(paramLong);
-      this.f.clear();
+      this.d[i] = paramE;
+      return;
     }
-  }
-  
-  public void a(SafeMsgItem paramSafeMsgItem)
-  {
-    paramSafeMsgItem.mIsRead = true;
-    this.a.d(paramSafeMsgItem.a());
-  }
-  
-  public SafeMsgItem b(int paramInt)
-  {
-    int i = this.f.size();
-    if ((paramInt < 0) || (paramInt >= i)) {
-      return null;
-    }
-    return (SafeMsgItem)this.f.get(paramInt);
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      ((SafeMsgItem)localIterator.next()).mIsChecked = true;
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.c = paramLong;
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      ((SafeMsgItem)localIterator.next()).mIsChecked = false;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public boolean d()
-  {
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext()) {
-      if (!((SafeMsgItem)localIterator.next()).mIsChecked) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public int e()
-  {
-    Iterator localIterator = this.f.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    int j = i ^ 0xFFFFFFFF;
+    Object localObject1;
+    if (j < this.e)
     {
-      if (((SafeMsgItem)localIterator.next()).mIsChecked) {
-        i += 1;
-      }
-      for (;;)
+      localObject1 = this.d;
+      if (localObject1[j] == a)
       {
-        break;
+        this.c[j] = paramLong;
+        localObject1[j] = paramE;
+        return;
       }
     }
-    return i;
-  }
-  
-  public void f()
-  {
-    l();
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext())
+    i = j;
+    if (this.b)
     {
-      SafeMsgItem localSafeMsgItem = (SafeMsgItem)localIterator.next();
-      if ((localSafeMsgItem != null) && (localSafeMsgItem.mIsChecked))
+      i = j;
+      if (this.e >= this.c.length)
       {
-        this.a.b(localSafeMsgItem.a());
-        localIterator.remove();
+        b();
+        i = eo.a(this.c, this.e, paramLong) ^ 0xFFFFFFFF;
       }
     }
-  }
-  
-  public int g()
-  {
-    return this.f.size();
-  }
-  
-  public int h()
-  {
-    return this.g;
-  }
-  
-  public boolean i()
-  {
-    boolean bool2 = false;
-    QQUser localQQUser = do.a().e();
-    boolean bool1 = bool2;
-    if (localQQUser != null)
+    j = this.e;
+    if (j >= this.c.length)
     {
-      bool1 = bool2;
-      if (localQQUser.mUin == this.c) {
-        bool1 = true;
-      }
+      j = eo.b(j + 1);
+      localObject1 = new long[j];
+      Object[] arrayOfObject = new Object[j];
+      Object localObject2 = this.c;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.d;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.c = ((long[])localObject1);
+      this.d = arrayOfObject;
     }
-    return bool1;
+    j = this.e;
+    if (j - i != 0)
+    {
+      localObject1 = this.c;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.d;
+      System.arraycopy(localObject1, i, localObject1, k, this.e - i);
+    }
+    this.c[i] = paramLong;
+    this.d[i] = paramE;
+    this.e += 1;
   }
   
-  public boolean j()
+  public final String toString()
   {
-    return this.h;
-  }
-  
-  public void k()
-  {
-    this.d = -1;
-    this.e = 0L;
+    if (this.b) {
+      b();
+    }
+    int i = this.e;
+    if (i <= 0) {
+      return "{}";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(i * 28);
+    localStringBuilder.append('{');
+    i = 0;
+    while (i < this.e)
+    {
+      if (i > 0) {
+        localStringBuilder.append(", ");
+      }
+      localStringBuilder.append(a(i));
+      localStringBuilder.append('=');
+      Object localObject = b(i);
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      } else {
+        localStringBuilder.append("(this Map)");
+      }
+      i += 1;
+    }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

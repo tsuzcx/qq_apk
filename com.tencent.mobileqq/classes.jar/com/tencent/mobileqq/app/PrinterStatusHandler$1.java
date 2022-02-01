@@ -1,28 +1,27 @@
 package com.tencent.mobileqq.app;
 
-import alyz;
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PrinterStatusHandler$1
+class PrinterStatusHandler$1
   extends TimerTask
 {
-  public PrinterStatusHandler$1(alyz paramalyz) {}
+  PrinterStatusHandler$1(PrinterStatusHandler paramPrinterStatusHandler) {}
   
   public void run()
   {
-    azqs.b(this.this$0.app, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (alyz.a(this.this$0) != null)
+    ReportController.b(PrinterStatusHandler.a(this.this$0), "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (PrinterStatusHandler.b(this.this$0) != null)
     {
-      alyz.a(this.this$0).cancel();
-      alyz.a(this.this$0, null);
+      PrinterStatusHandler.b(this.this$0).cancel();
+      PrinterStatusHandler.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterStatusHandler.1
  * JD-Core Version:    0.7.0.1
  */

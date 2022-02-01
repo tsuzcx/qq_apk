@@ -8,13 +8,11 @@ import android.os.IInterface;
 import android.os.Looper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.Feature;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressReportCallbacks;
 import com.google.android.gms.common.internal.BaseGmsClient.SignOutCallbacks;
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.IAccountAccessor;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -32,7 +30,7 @@ public final class Api<O extends ApiOptions>
   
   public <C extends Client> Api(String paramString, AbstractClientBuilder<C, O> paramAbstractClientBuilder, ClientKey<C> paramClientKey)
   {
-    AppMethodBeat.i(60478);
+    AppMethodBeat.i(10970);
     Preconditions.checkNotNull(paramAbstractClientBuilder, "Cannot construct an Api with a null ClientBuilder");
     Preconditions.checkNotNull(paramClientKey, "Cannot construct an Api with a null ClientKey");
     this.mName = paramString;
@@ -40,20 +38,20 @@ public final class Api<O extends ApiOptions>
     this.zzbz = null;
     this.zzca = paramClientKey;
     this.zzcb = null;
-    AppMethodBeat.o(60478);
+    AppMethodBeat.o(10970);
   }
   
   public final AnyClientKey<?> getClientKey()
   {
-    AppMethodBeat.i(60480);
+    AppMethodBeat.i(10972);
     if (this.zzca != null)
     {
       localObject = this.zzca;
-      AppMethodBeat.o(60480);
+      AppMethodBeat.o(10972);
       return localObject;
     }
     Object localObject = new IllegalStateException("This API was constructed with null client keys. This should not be possible.");
-    AppMethodBeat.o(60480);
+    AppMethodBeat.o(10972);
     throw ((Throwable)localObject);
   }
   
@@ -69,30 +67,25 @@ public final class Api<O extends ApiOptions>
   
   public final AbstractClientBuilder<?, O> zzk()
   {
-    AppMethodBeat.i(60479);
+    AppMethodBeat.i(10971);
     if (this.zzby != null) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkState(bool, "This API was constructed with a SimpleClientBuilder. Use getSimpleClientBuilder");
       AbstractClientBuilder localAbstractClientBuilder = this.zzby;
-      AppMethodBeat.o(60479);
+      AppMethodBeat.o(10971);
       return localAbstractClientBuilder;
     }
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static abstract class AbstractClientBuilder<T extends Api.Client, O>
     extends Api.BaseClientBuilder<T, O>
   {
-    @KeepForSdk
     public abstract T buildClient(Context paramContext, Looper paramLooper, ClientSettings paramClientSettings, O paramO, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener);
   }
   
-  @KeepForSdk
   public static abstract interface AnyClient {}
   
-  @KeepForSdk
   public static class AnyClientKey<C extends Api.AnyClient> {}
   
   public static abstract interface ApiOptions
@@ -113,10 +106,6 @@ public final class Api<O extends ApiOptions>
       extends Api.ApiOptions
     {}
     
-    public static final class NoOptions
-      implements Api.ApiOptions.NotRequiredOptions
-    {}
-    
     public static abstract interface NotRequiredOptions
       extends Api.ApiOptions
     {}
@@ -126,34 +115,26 @@ public final class Api<O extends ApiOptions>
     {}
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static class BaseClientBuilder<T extends Api.AnyClient, O>
   {
-    @KeepForSdk
     public static final int API_PRIORITY_GAMES = 1;
-    @KeepForSdk
     public static final int API_PRIORITY_OTHER = 2147483647;
-    @KeepForSdk
     public static final int API_PRIORITY_PLUS = 2;
     
-    @KeepForSdk
     public List<Scope> getImpliedScopes(O paramO)
     {
-      AppMethodBeat.i(60477);
+      AppMethodBeat.i(10969);
       paramO = Collections.emptyList();
-      AppMethodBeat.o(60477);
+      AppMethodBeat.o(10969);
       return paramO;
     }
     
-    @KeepForSdk
     public int getPriority()
     {
       return 2147483647;
     }
   }
   
-  @KeepForSdk
   public static abstract interface Client
     extends Api.AnyClient
   {
@@ -188,8 +169,6 @@ public final class Api<O extends ApiOptions>
     public abstract boolean requiresSignIn();
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static final class ClientKey<C extends Api.Client>
     extends Api.AnyClientKey<C>
   {}
@@ -206,19 +185,17 @@ public final class Api<O extends ApiOptions>
     public abstract void setState(int paramInt, T paramT);
   }
   
-  @VisibleForTesting
   public static class zza<T extends Api.SimpleClient, O>
     extends Api.BaseClientBuilder<T, O>
   {}
   
-  @VisibleForTesting
   public static final class zzb<C extends Api.SimpleClient>
     extends Api.AnyClientKey<C>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.Api
  * JD-Core Version:    0.7.0.1
  */

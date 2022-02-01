@@ -40,33 +40,36 @@ public final class InspectUUID
   @NotNull
   public String toString()
   {
-    if (((CharSequence)this.cache).length() == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        Object localObject = new StringBuilder(64);
-        ((StringBuilder)localObject).append(this.className);
-        ((StringBuilder)localObject).append("@");
-        if (this.uuid != null) {
-          ((StringBuilder)localObject).append(this.uuid);
-        }
-        if (!TextUtils.isEmpty((CharSequence)this.digest))
-        {
-          ((StringBuilder)localObject).append("_");
-          ((StringBuilder)localObject).append(this.digest);
-        }
-        localObject = ((StringBuilder)localObject).toString();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder(64).apply …\n            }.toString()");
-        this.cache = ((String)localObject);
-      }
-      return this.cache;
+    int i;
+    if (((CharSequence)this.cache).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0)
+    {
+      Object localObject = new StringBuilder(64);
+      ((StringBuilder)localObject).append(this.className);
+      ((StringBuilder)localObject).append("@");
+      char[] arrayOfChar = this.uuid;
+      if (arrayOfChar != null) {
+        ((StringBuilder)localObject).append(arrayOfChar);
+      }
+      if (!TextUtils.isEmpty((CharSequence)this.digest))
+      {
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(this.digest);
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder(64).apply …\n            }.toString()");
+      this.cache = ((String)localObject);
+    }
+    return this.cache;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.InspectUUID
  * JD-Core Version:    0.7.0.1
  */

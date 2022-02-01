@@ -1,0 +1,32 @@
+package com.tencent.av.gaudio;
+
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+
+class GaInviteLockActivity$10
+  implements QavInOutAnimation.QavOutAnimationListener
+{
+  GaInviteLockActivity$10(GaInviteLockActivity paramGaInviteLockActivity) {}
+  
+  public void a()
+  {
+    if (this.a.L != null)
+    {
+      this.a.L.setViewEnable(2131441183, false);
+      this.a.L.setViewEnable(2131441182, false);
+      this.a.L.setViewEnable(2131428972, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772285);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.10
+ * JD-Core Version:    0.7.0.1
+ */

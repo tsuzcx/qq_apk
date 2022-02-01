@@ -36,22 +36,20 @@ public class TestClass
   
   private boolean isShadowed(Method paramMethod1, Method paramMethod2)
   {
-    if (!paramMethod2.getName().equals(paramMethod1.getName())) {}
-    while (paramMethod2.getParameterTypes().length != paramMethod1.getParameterTypes().length) {
+    if (!paramMethod2.getName().equals(paramMethod1.getName())) {
+      return false;
+    }
+    if (paramMethod2.getParameterTypes().length != paramMethod1.getParameterTypes().length) {
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < paramMethod2.getParameterTypes().length)
     {
-      if (i >= paramMethod2.getParameterTypes().length) {
-        break label65;
-      }
       if (!paramMethod2.getParameterTypes()[i].equals(paramMethod1.getParameterTypes()[i])) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label65:
     return true;
   }
   
@@ -127,7 +125,7 @@ public class TestClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.TestClass
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,9 @@ public final class AddDiscussMemberInfo
   extends JceStruct
 {
   public String RefStr = "";
-  public long RefUin;
-  public int Type;
-  public long Uin;
-  
-  static
-  {
-    if (!AddDiscussMemberInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public long RefUin = 0L;
+  public int Type = 0;
+  public long Uin = 0L;
   
   public AddDiscussMemberInfo() {}
   
@@ -41,18 +31,17 @@ public final class AddDiscussMemberInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -75,13 +64,28 @@ public final class AddDiscussMemberInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (AddDiscussMemberInfo)paramObject;
-    } while ((!JceUtil.equals(this.Uin, paramObject.Uin)) || (!JceUtil.equals(this.Type, paramObject.Type)) || (!JceUtil.equals(this.RefUin, paramObject.RefUin)) || (!JceUtil.equals(this.RefStr, paramObject.RefStr)));
-    return true;
+    }
+    paramObject = (AddDiscussMemberInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.Uin, paramObject.Uin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.Type, paramObject.Type))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.RefUin, paramObject.RefUin))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.RefStr, paramObject.RefStr)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -120,14 +124,15 @@ public final class AddDiscussMemberInfo
     paramJceOutputStream.write(this.Uin, 0);
     paramJceOutputStream.write(this.Type, 1);
     paramJceOutputStream.write(this.RefUin, 2);
-    if (this.RefStr != null) {
-      paramJceOutputStream.write(this.RefStr, 3);
+    String str = this.RefStr;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.AddDiscussMemberInfo
  * JD-Core Version:    0.7.0.1
  */

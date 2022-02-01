@@ -1,47 +1,19 @@
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonViewBinder;
 import com.tencent.mobileqq.emoticonview.MagicFaceViewBinder;
-import java.util.List;
 
-public class fon
+class fon
   implements Runnable
 {
-  public fon(EmoticonMainPanel paramEmoticonMainPanel) {}
+  fon(fom paramfom, int paramInt, MagicFaceViewBinder paramMagicFaceViewBinder) {}
   
   public void run()
   {
-    int i;
-    Object localObject;
-    if (EmoticonMainPanel.a(this.a) != null)
+    if (EmoticonMainPanel.b() == 2)
     {
-      i = 0;
-      int j = EmoticonMainPanel.a(this.a).size();
-      if (i >= j) {
-        break label107;
+      EmoticonMainPanel.a(this.jdField_a_of_type_Fom.a, EmoticonMainPanel.a(this.jdField_a_of_type_Fom.a));
+      if (EmoticonMainPanel.c() == this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewMagicFaceViewBinder.d();
       }
-      localObject = (EmoticonViewBinder)EmoticonMainPanel.a(this.a).get(i);
-      if ((localObject == null) || (!(localObject instanceof MagicFaceViewBinder))) {
-        break label73;
-      }
-      localObject = (MagicFaceViewBinder)localObject;
-    }
-    for (;;)
-    {
-      if ((i == -1) || (localObject == null))
-      {
-        return;
-        label73:
-        i += 1;
-        break;
-      }
-      if (localObject != null) {
-        ((MagicFaceViewBinder)localObject).c();
-      }
-      this.a.post(new fop(this, i, (MagicFaceViewBinder)localObject));
-      return;
-      label107:
-      localObject = null;
-      i = -1;
     }
   }
 }

@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.activity.aio.doodle.control;
 
-import aepi;
-import afbu;
-import afbv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -10,70 +7,81 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.mobileqq.util.Utils;
 
 public class ColorView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private afbv jdField_a_of_type_Afbv;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b = aepi.a(4.0F, getResources());
+  private ColorView.ColorViewListener a;
+  private int b;
+  private Paint c;
+  private Bitmap d;
+  private int e = Utils.a(4.0F, getResources());
   
   public ColorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
+  public int getColor()
+  {
+    return this.b;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, new RectF(0.0F, 0.0F, getWidth(), getHeight()), null);
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      paramCanvas.drawBitmap((Bitmap)localObject, null, new RectF(0.0F, 0.0F, getWidth(), getHeight()), null);
+      return;
     }
-    while (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+    if (this.c == null) {
       return;
     }
     int j = getWidth();
     int k = getHeight();
-    if (j > k) {}
-    for (int i = j;; i = k)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(i);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, j, k), this.b, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+    if (j > k) {
+      i = j;
+    } else {
+      i = k;
     }
+    this.c.setStrokeWidth(i);
+    localObject = new RectF(0.0F, 0.0F, j, k);
+    int i = this.e;
+    paramCanvas.drawRoundRect((RectF)localObject, i, i, this.c);
   }
   
   public void setBtmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.d = paramBitmap;
+    this.c = null;
     invalidate();
   }
   
   public void setColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    this.b = paramInt;
+    if (this.c == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.c = new Paint();
+      this.c.setAntiAlias(true);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.c.setColor(this.b);
+    this.d = null;
     invalidate();
   }
   
-  public void setListener(afbv paramafbv)
+  public void setListener(ColorView.ColorViewListener paramColorViewListener)
   {
-    this.jdField_a_of_type_Afbv = paramafbv;
-    setOnClickListener(new afbu(this));
+    this.a = paramColorViewListener;
+    setOnClickListener(new ColorView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.ColorView
  * JD-Core Version:    0.7.0.1
  */

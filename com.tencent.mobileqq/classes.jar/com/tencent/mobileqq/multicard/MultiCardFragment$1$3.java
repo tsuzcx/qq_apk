@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.multicard;
 
-import aums;
-import aumw;
 import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 import java.util.Map;
 
@@ -12,16 +10,16 @@ class MultiCardFragment$1$3
   
   public void run()
   {
-    if (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null)
+    if (MultiCardFragment.a(this.b.this$0) != null)
     {
-      MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(null, null, this.jdField_a_of_type_JavaUtilMap);
-      if ((this.jdField_a_of_type_JavaUtilMap != null) && (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0) != null) && (MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0)))
+      MultiCardFragment.a(this.b.this$0).a(null, null, this.a);
+      if ((this.a != null) && (MultiCardFragment.g(this.b.this$0) != null) && (MultiCardFragment.f(this.b.this$0)))
       {
-        Object localObject = MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a());
-        if ((localObject != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(((aums)localObject).a())))
+        Object localObject = MultiCardFragment.a(this.b.this$0).b(MultiCardFragment.g(this.b.this$0).getCurrentItem());
+        if ((localObject != null) && (this.a.containsKey(((CardContent)localObject).c())))
         {
-          localObject = MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0).a(((aums)localObject).a());
-          MultiCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$1.this$0, (String)localObject);
+          localObject = MultiCardFragment.a(this.b.this$0).a(((CardContent)localObject).c());
+          MultiCardFragment.a(this.b.this$0, (String)localObject);
         }
       }
     }
@@ -29,7 +27,7 @@ class MultiCardFragment$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.1.3
  * JD-Core Version:    0.7.0.1
  */

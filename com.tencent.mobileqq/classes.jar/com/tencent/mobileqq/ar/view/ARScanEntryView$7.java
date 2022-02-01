@@ -1,70 +1,38 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.os.Handler;
-import anga;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$7
-  implements Runnable
+  implements ScanIconAnimateView.PopUpListener
 {
-  ARScanEntryView$7(ARScanEntryView paramARScanEntryView, long paramLong, anga paramanga) {}
+  ARScanEntryView$7(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, String.format("doWhenGetARConfig start time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - ARScanEntryView.a(this.this$0)) }));
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
     }
-    long l1 = 0L;
-    int i;
-    long l2;
-    if ((this.jdField_a_of_type_Long & 0x4) != 0L)
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel())
     {
-      i = 1;
-      if (!this.jdField_a_of_type_Anga.a(2)) {
-        l1 = 0L | 0x2;
-      }
-      l2 = l1;
-      if (!this.jdField_a_of_type_Anga.a(8)) {
-        l2 = l1 | 0x8;
-      }
-      if ((this.jdField_a_of_type_Anga.a(4)) || (i == 0)) {
-        break label294;
-      }
-      l2 |= 0x4;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PopUp onEnd  needReportRedDot = ");
+      localStringBuilder.append(ARScanEntryView.h(this.a));
+      QLog.d("AREngine_ARScanEntryView", 2, localStringBuilder.toString());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Anga.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
-      boolean bool = this.jdField_a_of_type_Anga.c();
-      if ((this.jdField_a_of_type_Anga.a(4)) || (i == 0)) {
-        ARScanEntryView.b(this.this$0, 100);
-      }
-      if (bool)
-      {
-        ARScanEntryView.a(this.this$0, 100);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARScanEntryView", 2, String.format("doWhenGetARConfig end time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - ARScanEntryView.a(this.this$0)) }));
-        }
-        if (ARScanEntryView.a(this.this$0) != null)
-        {
-          ARScanEntryView.a(this.this$0).removeMessages(324);
-          ARScanEntryView.a(this.this$0).sendEmptyMessage(324);
-        }
-      }
-      if ((bool) && (ARScanEntryView.a(this.this$0) != 100)) {
-        this.this$0.k();
-      }
-      return;
-      i = 0;
-      break;
-      label294:
-      ARScanEntryView.b(this.this$0, 100);
+    if (ARScanEntryView.d(this.a) != null) {
+      ARScanEntryView.d(this.a).post(new ARScanEntryView.7.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.7
  * JD-Core Version:    0.7.0.1
  */

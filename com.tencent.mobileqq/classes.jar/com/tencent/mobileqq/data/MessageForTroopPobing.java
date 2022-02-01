@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alud;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class MessageForTroopPobing
@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return alud.a(2131707006);
+    return HardCodeUtil.a(2131904498);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return alud.a(2131706965);
+      return HardCodeUtil.a(2131904457);
     }
     return this.msg;
   }

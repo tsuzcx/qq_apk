@@ -1,40 +1,72 @@
 package com.tencent.mobileqq.emosm.web;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import apqh;
-import bdmh;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.leba.ILebaHelperService;
+import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
+import com.tencent.mobileqq.leba.entity.LebaViewItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class MessengerService$IncomingHandler$10
+class MessengerService$IncomingHandler$10
   implements Runnable
 {
-  public MessengerService$IncomingHandler$10(apqh paramapqh, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$10(MessengerService.IncomingHandler paramIncomingHandler, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    Bitmap localBitmap = bdmh.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    Bundle localBundle = new Bundle();
-    if (localBitmap != null)
+    ILebaHelperService localILebaHelperService = (ILebaHelperService)this.a.getRuntimeService(ILebaHelperService.class, "");
+    int j = 1;
+    Object localObject2;
+    if (localILebaHelperService != null)
     {
-      Object localObject = new HashMap();
-      ((Map)localObject).put("starHomeUrl", this.c);
-      ((Map)localObject).put("nickname", this.d);
-      ((Map)localObject).put("starId", this.b);
-      localObject = bdmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      bdmh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
-      localBundle.putInt("ret", 0);
+      localObject2 = localILebaHelperService.getLebaMgrList();
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (!((List)localObject2).isEmpty()) {}
+      }
+      else
+      {
+        localILebaHelperService.reloadLebaItems(this.a);
+        localObject1 = localILebaHelperService.getLebaMgrList();
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      localBundle.putInt("ret", -4);
+      QLog.d("IPC_LEBA_ITEM_GET", 1, "lebaHelperService == null");
+      localObject1 = null;
     }
+    if (localObject1 != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (LebaViewItem)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((LebaViewItem)localObject2).b != null) && (((LebaViewItem)localObject2).b.uiResId == this.b))
+        {
+          i = ((LebaViewItem)localObject2).f;
+          break label155;
+        }
+      }
+    }
+    int i = -1;
+    label155:
+    Object localObject1 = new Bundle();
+    if (i == -1) {
+      ((Bundle)localObject1).putInt("ret", 1);
+    } else {
+      ((Bundle)localObject1).putInt("ret", 0);
+    }
+    if (i == 0) {
+      i = j;
+    } else {
+      i = 0;
+    }
+    ((Bundle)localObject1).putInt("type", i);
+    this.c.putBundle("response", (Bundle)localObject1);
+    this.d.a(this.c);
   }
 }
 

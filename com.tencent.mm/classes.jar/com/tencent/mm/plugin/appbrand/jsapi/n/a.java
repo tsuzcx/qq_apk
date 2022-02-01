@@ -1,83 +1,78 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.Calendar;
-import java.util.Date;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.q;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 import org.json.JSONObject;
 
-final class a
-  extends d
+public final class a
+  extends c<y>
 {
-  volatile int hWA = -1;
-  volatile int hWB = -1;
-  volatile a.a hWw;
-  volatile Long hWx = null;
-  volatile Long hWy = null;
-  volatile int hWz = -1;
+  private static final int CTRL_INDEX = 424;
+  private static final String NAME = "openRedPacket";
   
-  final void H(JSONObject paramJSONObject)
+  public final boolean cpE()
   {
-    AppMethodBeat.i(126343);
-    this.hWw = a.a.CL(paramJSONObject.optString("fields"));
-    Object localObject2 = paramJSONObject.optJSONObject("range");
-    if (localObject2 != null)
+    return true;
+  }
+  
+  public static final class a
+    extends q
+  {
+    public a(p paramp, y paramy, ad paramad, JSONObject paramJSONObject, int paramInt)
     {
-      localObject1 = ((JSONObject)localObject2).optString("start", "");
-      localObject1 = this.hWw.parse((String)localObject1);
-      localObject2 = ((JSONObject)localObject2).optString("end", "");
-      localObject2 = this.hWw.parse((String)localObject2);
-      if (localObject1 != null) {
-        this.hWx = Long.valueOf(((Date)localObject1).getTime());
-      }
-      if (localObject2 != null) {
-        this.hWy = Long.valueOf(((Date)localObject2).getTime());
-      }
+      super(paramy, paramad, paramJSONObject, paramInt);
     }
-    if (this.hWx == null)
+    
+    public final void F(Intent paramIntent)
     {
-      localObject1 = Calendar.getInstance(aa.ynv);
-      ((Calendar)localObject1).set(1900, 0, 1);
-      this.hWx = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
+      AppMethodBeat.i(46389);
+      Log.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
+      paramIntent = new HashMap();
+      paramIntent.put("errCode", Integer.valueOf(0));
+      J(paramIntent);
+      AppMethodBeat.o(46389);
     }
-    if (this.hWy == null)
+    
+    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
     {
-      localObject1 = Calendar.getInstance(aa.ynv);
-      ((Calendar)localObject1).set(2100, 11, 31);
-      this.hWy = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
-    }
-    paramJSONObject = paramJSONObject.optString("current", "");
-    Object localObject1 = this.hWw.parse(paramJSONObject);
-    paramJSONObject = (JSONObject)localObject1;
-    if (localObject1 == null)
-    {
-      paramJSONObject = new Date(System.currentTimeMillis());
-      localObject1 = new Date(this.hWy.longValue());
-      localObject2 = new Date(this.hWx.longValue());
-      if (!paramJSONObject.after((Date)localObject1)) {
-        break label287;
+      AppMethodBeat.i(174839);
+      String str = ari().getAppId();
+      paramJSONObject = paramJSONObject.optString("redPacketId", null);
+      if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramJSONObject)))
+      {
+        Log.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
+        AppMethodBeat.o(174839);
+        return false;
       }
-      paramJSONObject = (JSONObject)localObject1;
+      ((com.tencent.mm.plugin.luckymoney.appbrand.a)h.ax(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, paramJSONObject, str, paramInt);
+      AppMethodBeat.o(174839);
+      return true;
     }
-    for (;;)
+    
+    public final void onError(int paramInt, String paramString)
     {
-      this.hWz = (paramJSONObject.getYear() + 1900);
-      this.hWA = (paramJSONObject.getMonth() + 1);
-      this.hWB = paramJSONObject.getDate();
-      al.d(new a.1(this));
-      AppMethodBeat.o(126343);
-      return;
-      label287:
-      if (paramJSONObject.before((Date)localObject2)) {
-        paramJSONObject = (JSONObject)localObject2;
-      }
+      AppMethodBeat.i(46390);
+      Log.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("errCode", Integer.valueOf(paramInt));
+      o(paramString, localHashMap);
+      AppMethodBeat.o(46390);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.a
  * JD-Core Version:    0.7.0.1
  */

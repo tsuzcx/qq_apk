@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/p41" android:background="@drawable/f92" android:layout_width="wrap_content" android:layout_height="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/qcircle_skin_feed_icon_hashtagguide" />
+    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_link" android:ellipsize="end" android:id="@id/per" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.5dip" android:maxWidth="94.0dip" android:singleLine="true" />
+    <View android:id="@id/p7p" android:background="@drawable/qcircle_skin_small_black_dot" android:layout_width="2.0dip" android:layout_height="2.0dip" android:layout_marginLeft="4.0dip" />
+    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_wakanda" android:ellipsize="end" android:id="@id/pep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxWidth="87.5dip" android:singleLine="true" />
+    <ImageView android:id="@id/p_6" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/qcircle_skin_icon_general_arrow_right_primary" />
+</LinearLayout>

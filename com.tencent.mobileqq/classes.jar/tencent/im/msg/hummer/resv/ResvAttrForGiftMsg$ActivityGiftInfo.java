@@ -17,7 +17,7 @@ public final class ResvAttrForGiftMsg$ActivityGiftInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.hummer.resv.ResvAttrForGiftMsg.ActivityGiftInfo
  * JD-Core Version:    0.7.0.1
  */

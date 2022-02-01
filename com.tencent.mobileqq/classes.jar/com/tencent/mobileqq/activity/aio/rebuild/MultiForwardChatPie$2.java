@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agso;
 import android.os.Message;
-import aupg;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class MultiForwardChatPie$2
+class MultiForwardChatPie$2
   implements Runnable
 {
-  public MultiForwardChatPie$2(agso paramagso) {}
+  MultiForwardChatPie$2(MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    List localList = aupg.a().a(this.this$0.a, this.this$0.g);
-    Message localMessage = this.this$0.b.obtainMessage(0);
+    List localList = MultiMsgManager.a().a(this.this$0.d, this.this$0.bk);
+    Message localMessage = this.this$0.bp.obtainMessage(0);
     localMessage.obj = localList;
-    this.this$0.b.sendMessage(localMessage);
+    this.this$0.bp.sendMessage(localMessage);
   }
 }
 

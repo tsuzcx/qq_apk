@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
 
 public class fpb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public fpb(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
+  public fpb(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
-  }
+  public void onClick(View paramView) {}
 }
 
 

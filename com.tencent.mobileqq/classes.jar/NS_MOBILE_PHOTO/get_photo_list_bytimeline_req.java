@@ -25,7 +25,8 @@ public final class get_photo_list_bytimeline_req
   
   static
   {
-    cache_time_range.put(Long.valueOf(0L), Long.valueOf(0L));
+    Long localLong = Long.valueOf(0L);
+    cache_time_range.put(localLong, localLong);
     cache_busi_param = new HashMap();
     cache_busi_param.put(Integer.valueOf(0), "");
   }
@@ -68,24 +69,27 @@ public final class get_photo_list_bytimeline_req
     paramJceOutputStream.write(this.albumid, 1);
     paramJceOutputStream.write(this.time_range, 2);
     paramJceOutputStream.write(this.sort, 3);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 4);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.password != null) {
-      paramJceOutputStream.write(this.password, 5);
+    localObject = this.password;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.start, 6);
     paramJceOutputStream.write(this.num, 7);
     paramJceOutputStream.write(this.albumtype, 8);
     paramJceOutputStream.write(this.gettimeline, 9);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 10);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_bytimeline_req
  * JD-Core Version:    0.7.0.1
  */

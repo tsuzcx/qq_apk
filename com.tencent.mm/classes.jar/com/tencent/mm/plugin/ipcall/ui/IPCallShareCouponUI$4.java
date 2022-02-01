@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class IPCallShareCouponUI$4
   implements DialogInterface.OnCancelListener
@@ -12,23 +12,23 @@ final class IPCallShareCouponUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(22320);
+    AppMethodBeat.i(25939);
     try
     {
-      this.nWj.finish();
-      AppMethodBeat.o(22320);
+      this.JPU.finish();
+      AppMethodBeat.o(25939);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      ab.e("MicroMsg.IPCallShareCouponUI", "IPCallShareCouponUI error: %s", new Object[] { paramDialogInterface.getMessage() });
-      AppMethodBeat.o(22320);
+      Log.e("MicroMsg.IPCallShareCouponUI", "IPCallShareCouponUI error: %s", new Object[] { paramDialogInterface.getMessage() });
+      AppMethodBeat.o(25939);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponUI.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
 import android.content.Context;
-import com.tencent.mm.plugin.wallet_core.ui.s.b;
+import com.tencent.mm.plugin.wallet_core.ui.w.b;
 
 final class SwitchRealnameVerifyModeUI$1
-  implements s.b
+  implements w.b
 {
   SwitchRealnameVerifyModeUI$1(SwitchRealnameVerifyModeUI paramSwitchRealnameVerifyModeUI) {}
   
-  public final int bOO()
-  {
-    return 1;
-  }
-  
   public final Context getContext()
   {
-    return this.ucS;
+    return this.Vzj;
+  }
+  
+  public final int getShowAgreenRequestCode()
+  {
+    return 1;
   }
 }
 

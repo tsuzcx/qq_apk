@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupInfo
   extends JceStruct
 {
-  public byte cGroupId;
+  public byte cGroupId = 0;
   public String strGroupName = "";
   
   public GroupInfo() {}
@@ -32,7 +32,7 @@ public final class GroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,29 +9,30 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.m;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public class MMSingelLinePanel
   extends MMTagPanel
 {
-  private boolean mSingleLine;
-  private int zhv;
-  private int zhw;
-  private LinkedList<Integer> zhx;
-  private TextView zma;
-  private int zmb;
-  private int zmc;
+  private int adOr;
+  private int adOs;
+  private LinkedList<Integer> adOt;
+  private boolean adTq;
+  private TextView adTr;
+  private int adTs;
+  private int adTt;
   
   static
   {
-    AppMethodBeat.i(106769);
+    AppMethodBeat.i(142126);
     if (!MMSingelLinePanel.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(106769);
+      AppMethodBeat.o(142126);
       return;
     }
   }
@@ -44,42 +45,42 @@ public class MMSingelLinePanel
   public MMSingelLinePanel(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106764);
-    this.zhx = new LinkedList();
-    this.zhv = 0;
-    this.zhw = 0;
-    this.mSingleLine = true;
-    this.zmb = 0;
-    this.zmc = 0;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout);
+    AppMethodBeat.i(142121);
+    this.adOt = new LinkedList();
+    this.adOr = 0;
+    this.adOs = 0;
+    this.adTq = true;
+    this.adTs = 0;
+    this.adTt = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.FlowLayout);
     try
     {
-      this.zhv = paramContext.getDimensionPixelSize(0, 0);
-      this.zhw = paramContext.getDimensionPixelSize(1, 0);
+      this.adOr = paramContext.getDimensionPixelSize(a.m.FlowLayout_horizontalSpacing, 0);
+      this.adOs = paramContext.getDimensionPixelSize(a.m.FlowLayout_verticalSpacing, 0);
       return;
     }
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(106764);
+      AppMethodBeat.o(142121);
     }
-  }
-  
-  public final void dEf()
-  {
-    AppMethodBeat.i(106765);
-    super.dEf();
-    this.zma = new TextView(getContext());
-    this.zma.setText("...");
-    this.zma.setTextColor(getResources().getColor(2131690701));
-    this.zma.setLayoutParams(generateDefaultLayoutParams());
-    addView(this.zma);
-    AppMethodBeat.o(106765);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
+  }
+  
+  public final void jmz()
+  {
+    AppMethodBeat.i(142122);
+    super.jmz();
+    this.adTr = new TextView(getContext());
+    this.adTr.setText("...");
+    this.adTr.setTextColor(getResources().getColor(a.d.wechat_green));
+    this.adTr.setLayoutParams(generateDefaultLayoutParams());
+    addView(this.adTr);
+    AppMethodBeat.o(142122);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -89,7 +90,7 @@ public class MMSingelLinePanel
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106768);
+    AppMethodBeat.i(142125);
     int n;
     int i1;
     int i;
@@ -97,10 +98,10 @@ public class MMSingelLinePanel
     int m;
     int j;
     View localView;
-    if (this.mSingleLine)
+    if (this.adTq)
     {
       n = getChildCount();
-      i1 = this.zmb;
+      i1 = this.adTs;
       i = getPaddingLeft();
       paramInt2 = getPaddingTop();
       k = 0;
@@ -110,7 +111,7 @@ public class MMSingelLinePanel
       if (j < n)
       {
         localView = getChildAt(j);
-        if ((localView.getVisibility() == 8) || (localView == this.zma)) {
+        if ((localView.getVisibility() == 8) || (localView == this.adTr)) {
           break label508;
         }
         int i2 = localView.getMeasuredWidth();
@@ -119,14 +120,14 @@ public class MMSingelLinePanel
           break label505;
         }
         i = getPaddingLeft();
-        paramInt2 += ((Integer)this.zhx.get(paramInt4)).intValue() + this.zhw;
+        paramInt2 += ((Integer)this.adOt.get(paramInt4)).intValue() + this.adOs;
         paramInt4 += 1;
         label150:
         if (paramInt4 > 0) {
           break label502;
         }
         localView.layout(i, paramInt2 + 0, i + i2, paramInt2 + 0 + i3);
-        i = this.zhv + i2 + i;
+        i = this.adOr + i2 + i;
         m = paramInt2;
         k = i;
       }
@@ -139,17 +140,17 @@ public class MMSingelLinePanel
     {
       j += 1;
       break;
-      if (this.zma != null)
+      if (this.adTr != null)
       {
         if (paramInt4 > 0)
         {
-          this.zma.layout(k, m, this.zmb + k, this.zmc + m);
-          AppMethodBeat.o(106768);
+          this.adTr.layout(k, m, this.adTs + k, this.adTt + m);
+          AppMethodBeat.o(142125);
           return;
         }
-        this.zma.layout(0, 0, 0, 0);
+        this.adTr.layout(0, 0, 0, 0);
       }
-      AppMethodBeat.o(106768);
+      AppMethodBeat.o(142125);
       return;
       i1 = getChildCount();
       i = getPaddingLeft();
@@ -167,7 +168,7 @@ public class MMSingelLinePanel
           n = i;
           m = paramInt4;
           k = paramInt2;
-          if (localView != this.zma)
+          if (localView != this.adTr)
           {
             k = localView.getMeasuredWidth();
             m = localView.getMeasuredHeight();
@@ -175,16 +176,16 @@ public class MMSingelLinePanel
               break label499;
             }
             i = getPaddingLeft();
-            paramInt2 += ((Integer)this.zhx.get(paramInt4)).intValue() + this.zhw;
+            paramInt2 += ((Integer)this.adOt.get(paramInt4)).intValue() + this.adOs;
             paramInt4 += 1;
           }
         }
       }
       for (;;)
       {
-        n = (((Integer)this.zhx.get(paramInt4)).intValue() - m) / 2;
+        n = (((Integer)this.adOt.get(paramInt4)).intValue() - m) / 2;
         localView.layout(i, paramInt2 + n, i + k, n + paramInt2 + m);
-        n = this.zhv + k + i;
+        n = this.adOr + k + i;
         k = paramInt2;
         m = paramInt4;
         j += 1;
@@ -192,7 +193,7 @@ public class MMSingelLinePanel
         paramInt4 = m;
         paramInt2 = k;
         break;
-        AppMethodBeat.o(106768);
+        AppMethodBeat.o(142125);
         return;
       }
       continue;
@@ -202,34 +203,34 @@ public class MMSingelLinePanel
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106767);
+    AppMethodBeat.i(142124);
     Object localObject;
     if ((!$assertionsDisabled) && (View.MeasureSpec.getMode(paramInt1) == 0))
     {
       localObject = new AssertionError();
-      AppMethodBeat.o(106767);
+      AppMethodBeat.o(142124);
       throw ((Throwable)localObject);
     }
     int m = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int i7 = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     int i8 = getChildCount();
-    this.zhx.clear();
+    this.adOt.clear();
     int k = 0;
     int j = 0;
     int i = 0;
     if (View.MeasureSpec.getMode(paramInt2) == -2147483648) {}
     for (int n = View.MeasureSpec.makeMeasureSpec(i7, -2147483648);; n = View.MeasureSpec.makeMeasureSpec(0, 0))
     {
-      if ((this.mSingleLine) && (this.zma != null))
+      if ((this.adTq) && (this.adTr != null))
       {
-        this.zma.measure(View.MeasureSpec.makeMeasureSpec(m, -2147483648), n);
-        this.zmb = this.zma.getMeasuredWidth();
-        this.zmc = this.zma.getMeasuredHeight();
-        ab.d("MicroMsg.MMTagContactPanel", "mEllipsisWidth %d", new Object[] { Integer.valueOf(this.zmb) });
+        this.adTr.measure(View.MeasureSpec.makeMeasureSpec(m, -2147483648), n);
+        this.adTs = this.adTr.getMeasuredWidth();
+        this.adTt = this.adTr.getMeasuredHeight();
+        Log.d("MicroMsg.MMTagContactPanel", "mEllipsisWidth %d", new Object[] { Integer.valueOf(this.adTs) });
       }
       int i1 = m;
-      if (this.mSingleLine) {
-        i1 = m - this.zmb;
+      if (this.adTq) {
+        i1 = m - this.adTs;
       }
       m = 0;
       int i2 = 0;
@@ -251,12 +252,12 @@ public class MMSingelLinePanel
           if (k + i9 > i1)
           {
             i3 = 0;
-            m = j + (this.zhw + i);
-            this.zhx.add(Integer.valueOf(i));
+            m = j + (this.adOs + i);
+            this.adOt.add(Integer.valueOf(i));
             i4 = 0;
           }
           i6 = Math.max(i4, ((View)localObject).getMeasuredHeight());
-          i3 += this.zhv + i9;
+          i3 += this.adOr + i9;
           i4 = i5;
           i5 = m;
         }
@@ -267,8 +268,8 @@ public class MMSingelLinePanel
         m = i4;
       }
     }
-    this.zhx.add(Integer.valueOf(i));
-    if (this.mSingleLine)
+    this.adOt.add(Integer.valueOf(i));
+    if (this.adTq)
     {
       getPaddingTop();
       getPaddingBottom();
@@ -276,7 +277,7 @@ public class MMSingelLinePanel
     for (;;)
     {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), m);
-      AppMethodBeat.o(106767);
+      AppMethodBeat.o(142124);
       return;
       if (View.MeasureSpec.getMode(paramInt2) == 0)
       {
@@ -293,18 +294,18 @@ public class MMSingelLinePanel
   
   public void setSingleLine(boolean paramBoolean)
   {
-    AppMethodBeat.i(106766);
-    this.mSingleLine = paramBoolean;
-    this.zma = new TextView(getContext());
-    this.zma.setText("...");
-    this.zma.setLayoutParams(generateDefaultLayoutParams());
-    addView(this.zma);
-    AppMethodBeat.o(106766);
+    AppMethodBeat.i(142123);
+    this.adTq = paramBoolean;
+    this.adTr = new TextView(getContext());
+    this.adTr.setText("...");
+    this.adTr.setLayoutParams(generateDefaultLayoutParams());
+    addView(this.adTr);
+    AppMethodBeat.o(142123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMSingelLinePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -38,12 +38,12 @@ public final class o
     paramInt = k;
     while (paramInt != 0)
     {
-      paramb.writeByte((byte)(j & 0x7F | 0x80));
+      paramb.eQ((byte)(j & 0x7F | 0x80));
       i += 1;
       j = paramInt;
       paramInt >>>= 7;
     }
-    paramb.writeByte((byte)(j & 0x7F));
+    paramb.eQ((byte)(j & 0x7F));
     return i + 1;
   }
   
@@ -107,7 +107,7 @@ public final class o
     label101:
     for (int n = 128;; n = 0)
     {
-      paramb.writeByte((byte)(n | m & 0x7F));
+      paramb.eQ((byte)(n | m & 0x7F));
       k += 1;
       m = paramInt;
       paramInt >>= 7;
@@ -123,7 +123,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.o
  * JD-Core Version:    0.7.0.1
  */

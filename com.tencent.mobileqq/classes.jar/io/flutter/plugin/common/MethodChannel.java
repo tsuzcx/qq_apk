@@ -1,10 +1,10 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
-public final class MethodChannel
+public class MethodChannel
 {
   private static final String TAG = "MethodChannel#";
   private final MethodCodec codec;
@@ -30,17 +30,22 @@ public final class MethodChannel
   }
   
   @UiThread
-  public void invokeMethod(String paramString, @Nullable Object paramObject, MethodChannel.Result paramResult)
+  public void invokeMethod(String paramString, @Nullable Object paramObject, @Nullable MethodChannel.Result paramResult)
   {
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
     paramObject = this.codec.encodeMethodCall(new MethodCall(paramString, paramObject));
-    if (paramResult == null) {}
-    for (paramString = null;; paramString = new MethodChannel.IncomingResultHandler(this, paramResult))
-    {
-      localBinaryMessenger.send(str, paramObject, paramString);
-      return;
+    if (paramResult == null) {
+      paramString = null;
+    } else {
+      paramString = new MethodChannel.IncomingResultHandler(this, paramResult);
     }
+    localBinaryMessenger.send(str, paramObject, paramString);
+  }
+  
+  public void resizeChannelBuffer(int paramInt)
+  {
+    BasicMessageChannel.resizeChannelBuffer(this.messenger, this.name, paramInt);
   }
   
   @UiThread
@@ -48,17 +53,17 @@ public final class MethodChannel
   {
     BinaryMessenger localBinaryMessenger = this.messenger;
     String str = this.name;
-    if (paramMethodCallHandler == null) {}
-    for (paramMethodCallHandler = null;; paramMethodCallHandler = new MethodChannel.IncomingMethodCallHandler(this, paramMethodCallHandler))
-    {
-      localBinaryMessenger.setMessageHandler(str, paramMethodCallHandler);
-      return;
+    if (paramMethodCallHandler == null) {
+      paramMethodCallHandler = null;
+    } else {
+      paramMethodCallHandler = new MethodChannel.IncomingMethodCallHandler(this, paramMethodCallHandler);
     }
+    localBinaryMessenger.setMessageHandler(str, paramMethodCallHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.MethodChannel
  * JD-Core Version:    0.7.0.1
  */

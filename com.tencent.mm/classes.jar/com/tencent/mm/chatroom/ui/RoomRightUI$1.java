@@ -11,16 +11,16 @@ final class RoomRightUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(104204);
-    this.ehH.hideVKB();
-    this.ehH.finish();
-    AppMethodBeat.o(104204);
+    AppMethodBeat.i(12752);
+    this.lKZ.hideVKB();
+    this.lKZ.finish();
+    AppMethodBeat.o(12752);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomRightUI.1
  * JD-Core Version:    0.7.0.1
  */

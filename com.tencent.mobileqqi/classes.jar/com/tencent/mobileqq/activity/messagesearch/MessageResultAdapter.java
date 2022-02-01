@@ -15,8 +15,8 @@ import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
+import ejj;
 import ejk;
-import ejl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -134,7 +134,7 @@ public class MessageResultAdapter
     }
     this.b = paramString;
     MessageItem.a(paramString);
-    new Thread(new ejk(this, paramString, paramLOAD_TYPE)).start();
+    new Thread(new ejj(this, paramString, paramLOAD_TYPE)).start();
   }
   
   public int getCount()
@@ -160,11 +160,11 @@ public class MessageResultAdapter
     if (paramView == null)
     {
       localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130903281, null);
-      paramViewGroup = new ejl(null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231395));
-      paramViewGroup.b = ((TextView)localView.findViewById(2131231396));
+      paramViewGroup = new ejk(null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131231394));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131231395));
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131230940));
-      paramViewGroup.c = ((TextView)localView.findViewById(2131231883));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131231882));
       localView.setTag(paramViewGroup);
       localMessageRecord = localMessageItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       paramView = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
@@ -188,7 +188,7 @@ public class MessageResultAdapter
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramView));
       paramViewGroup.c.setText(localMessageItem.a(localMessageRecord.time));
       return localView;
-      paramViewGroup = (ejl)paramView.getTag();
+      paramViewGroup = (ejk)paramView.getTag();
       localView = paramView;
       break;
     }

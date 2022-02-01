@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.report;
 
 import android.os.Handler;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
@@ -8,7 +9,6 @@ import com.tencent.component.network.module.report.ImageDownloadReporter;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import java.util.HashMap;
 import java.util.Map;
-import ndd;
 import okhttp3.Headers;
 import okhttp3.Response;
 import org.apache.http.Header;
@@ -27,10 +27,10 @@ public class MiniProgramLpReportDC05325
   
   public static String getHeader(DownloadResult paramDownloadResult, String paramString)
   {
-    int j = 0;
-    int i = 0;
     HttpResponse localHttpResponse = paramDownloadResult.getReport().response;
     paramDownloadResult = paramDownloadResult.getReport().okResponse;
+    int j = 0;
+    int i = 0;
     if (paramDownloadResult != null)
     {
       paramDownloadResult = paramDownloadResult.headers();
@@ -67,7 +67,7 @@ public class MiniProgramLpReportDC05325
   
   public static String getNetworkType()
   {
-    String str = ndd.a();
+    String str = HttpUtil.getNetWorkTypeByStr();
     if (str == null) {
       return "unknown";
     }
@@ -90,16 +90,17 @@ public class MiniProgramLpReportDC05325
   
   public static int getRetCode(DownloadResult paramDownloadResult)
   {
-    if (paramDownloadResult.getReport() == null) {}
-    do
-    {
+    if (paramDownloadResult.getReport() == null) {
       return -9999;
-      if (downloadReporter == null) {
-        downloadReporter = new ImageDownloadReporter();
-      }
-      paramDownloadResult = downloadReporter.obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-    } while (paramDownloadResult == null);
-    return paramDownloadResult.retCode;
+    }
+    if (downloadReporter == null) {
+      downloadReporter = new ImageDownloadReporter();
+    }
+    paramDownloadResult = downloadReporter.obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
+    if (paramDownloadResult != null) {
+      return paramDownloadResult.retCode;
+    }
+    return -9999;
   }
   
   public static void reportApiReport(DownloadResult paramDownloadResult)
@@ -114,8 +115,10 @@ public class MiniProgramLpReportDC05325
   
   public static void reportApiReport(DownloadResult paramDownloadResult, int paramInt, MiniAppConfig paramMiniAppConfig)
   {
-    if (paramDownloadResult == null) {}
-    while (10 == paramInt) {
+    if (paramDownloadResult == null) {
+      return;
+    }
+    if (10 == paramInt) {
       return;
     }
     MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC05325.1(paramDownloadResult, paramMiniAppConfig, paramInt));
@@ -123,7 +126,7 @@ public class MiniProgramLpReportDC05325
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC05325
  * JD-Core Version:    0.7.0.1
  */

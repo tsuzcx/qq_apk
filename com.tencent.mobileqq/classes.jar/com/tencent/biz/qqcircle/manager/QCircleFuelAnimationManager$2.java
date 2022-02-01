@@ -1,23 +1,32 @@
 package com.tencent.biz.qqcircle.manager;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-import tyz;
+import android.animation.ObjectAnimator;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.PathInterpolator;
 
-public class QCircleFuelAnimationManager$2
+class QCircleFuelAnimationManager$2
   implements Runnable
 {
-  public QCircleFuelAnimationManager$2(tyz paramtyz, TextView paramTextView, ImageView paramImageView) {}
+  QCircleFuelAnimationManager$2(QCircleFuelAnimationManager paramQCircleFuelAnimationManager, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.a, "scaleX", new float[] { 1.0F, 1.2F, 1.0F }).setDuration(300L);
+    if (Build.VERSION.SDK_INT >= 21) {
+      localObjectAnimator.setInterpolator(new PathInterpolator(0.33F, 0.0F, 0.67F, 1.0F));
+    }
+    localObjectAnimator.start();
+    localObjectAnimator = ObjectAnimator.ofFloat(this.a, "scaleY", new float[] { 1.0F, 1.2F, 1.0F }).setDuration(300L);
+    if (Build.VERSION.SDK_INT >= 21) {
+      localObjectAnimator.setInterpolator(new PathInterpolator(0.33F, 0.0F, 0.67F, 1.0F));
+    }
+    localObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.manager.QCircleFuelAnimationManager.2
  * JD-Core Version:    0.7.0.1
  */

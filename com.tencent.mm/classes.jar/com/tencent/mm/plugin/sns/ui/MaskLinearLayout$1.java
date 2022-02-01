@@ -9,16 +9,16 @@ final class MaskLinearLayout$1
   
   public final void run()
   {
-    AppMethodBeat.i(38314);
-    this.rIr.setPressed(false);
-    MaskLinearLayout.a(this.rIr);
-    this.rIr.invalidate();
-    AppMethodBeat.o(38314);
+    AppMethodBeat.i(97966);
+    this.RfB.setPressed(false);
+    MaskLinearLayout.a(this.RfB);
+    this.RfB.invalidate();
+    AppMethodBeat.o(97966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.MaskLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

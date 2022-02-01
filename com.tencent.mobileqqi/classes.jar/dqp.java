@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity;
+import com.tencent.mobileqq.activity.TroopMemberGagActivity.GagItemListener;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagItem;
 
 public class dqp
-  implements View.OnClickListener
+  implements TroopMemberGagActivity.GagItemListener
 {
-  public dqp(TroopMemberCardActivity paramTroopMemberCardActivity) {}
+  public dqp(TroopMemberGagActivity paramTroopMemberGagActivity) {}
   
-  public void onClick(View paramView)
+  public void a(TroopGagMgr.GagItem paramGagItem)
   {
-    ReportController.b(this.a.b, "P_CliOper", "Grp_mber", "", "mber_card", "Clk_set", 0, 0, this.a.c, "", "", "");
-    this.a.j();
+    this.a.a = paramGagItem.a;
   }
 }
 

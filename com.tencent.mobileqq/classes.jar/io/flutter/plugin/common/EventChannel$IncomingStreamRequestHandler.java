@@ -30,47 +30,44 @@ final class EventChannel$IncomingStreamRequestHandler
         localStringBuilder.append("EventChannel#");
         localStringBuilder.append(EventChannel.access$200(this.this$0));
         Log.e(localStringBuilder.toString(), "Failed to close event stream", paramObject);
-        paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", paramObject.getMessage(), null));
-        return;
+        paramObject = EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", paramObject.getMessage(), null);
       }
+    } else {
+      paramObject = EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", "No active stream to cancel", null);
     }
-    paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", "No active stream to cancel", null));
+    paramBinaryReply.reply(paramObject);
   }
   
   private void onListen(Object paramObject, BinaryMessenger.BinaryReply paramBinaryReply)
   {
     Object localObject = new EventChannel.IncomingStreamRequestHandler.EventSinkImplementation(this, null);
-    if ((EventChannel.EventSink)this.activeSink.getAndSet(localObject) != null) {}
-    try
-    {
-      this.handler.onCancel(null);
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
+    if ((EventChannel.EventSink)this.activeSink.getAndSet(localObject) != null) {
+      try
       {
-        try
-        {
-          this.handler.onListen(paramObject, (EventChannel.EventSink)localObject);
-          paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeSuccessEnvelope(null));
-          return;
-        }
-        catch (RuntimeException paramObject)
-        {
-          StringBuilder localStringBuilder;
-          this.activeSink.set(null);
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("EventChannel#");
-          ((StringBuilder)localObject).append(EventChannel.access$200(this.this$0));
-          Log.e(((StringBuilder)localObject).toString(), "Failed to open event stream", paramObject);
-          paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", paramObject.getMessage(), null));
-        }
-        localRuntimeException = localRuntimeException;
-        localStringBuilder = new StringBuilder();
+        this.handler.onCancel(null);
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("EventChannel#");
         localStringBuilder.append(EventChannel.access$200(this.this$0));
         Log.e(localStringBuilder.toString(), "Failed to close existing event stream", localRuntimeException);
       }
+    }
+    try
+    {
+      this.handler.onListen(paramObject, (EventChannel.EventSink)localObject);
+      paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeSuccessEnvelope(null));
+      return;
+    }
+    catch (RuntimeException paramObject)
+    {
+      this.activeSink.set(null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EventChannel#");
+      ((StringBuilder)localObject).append(EventChannel.access$200(this.this$0));
+      Log.e(((StringBuilder)localObject).toString(), "Failed to open event stream", paramObject);
+      paramBinaryReply.reply(EventChannel.access$000(this.this$0).encodeErrorEnvelope("error", paramObject.getMessage(), null));
     }
   }
   
@@ -92,7 +89,7 @@ final class EventChannel$IncomingStreamRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugin.common.EventChannel.IncomingStreamRequestHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ahg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ahl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/db" />
+    <View android:id="@id/ktc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ahc" android:background="@drawable/azr" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="center_horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/aly" android:paddingLeft="@dimen/cv" android:paddingTop="@dimen/d4" android:paddingRight="@dimen/cv" android:paddingBottom="@dimen/db" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/alo" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:minWidth="@dimen/cj" style="@style/oh" />
+            <Button android:id="@id/alk" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/cv" android:minWidth="@dimen/cj" style="@style/op" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/alx" android:paddingTop="@dimen/d4" android:paddingBottom="@dimen/db" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/alm" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" style="@style/or" />
+            <Button android:id="@id/aln" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" style="@style/oi" />
+            <Button android:id="@id/amg" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" style="@style/oh" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ahd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ahf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ch" />
+    </FrameLayout>
+</LinearLayout>

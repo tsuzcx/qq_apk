@@ -29,14 +29,15 @@ public class DirItem
   
   public static DirItem createDir(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      throw new IllegalArgumentException("createDir: the params dirKey, dirName and pDirKey should be valid.");
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      DirItem localDirItem = new DirItem();
+      localDirItem.dirKey = paramString1;
+      localDirItem.dirName = paramString2;
+      localDirItem.pDirKey = paramString3;
+      return localDirItem;
     }
-    DirItem localDirItem = new DirItem();
-    localDirItem.dirKey = paramString1;
-    localDirItem.dirName = paramString2;
-    localDirItem.pDirKey = paramString3;
-    return localDirItem;
+    throw new IllegalArgumentException("createDir: the params dirKey, dirName and pDirKey should be valid.");
   }
   
   public static DirItem newInstance(long paramLong)
@@ -70,7 +71,11 @@ public class DirItem
       DirItem localDirItem = (DirItem)super.clone();
       return localDirItem;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -86,15 +91,19 @@ public class DirItem
   
   public void releaseNative()
   {
-    if ((isNative()) && (this.coverFile != null)) {
-      this.coverFile.releaseNative();
+    if (isNative())
+    {
+      FileItem localFileItem = this.coverFile;
+      if (localFileItem != null) {
+        localFileItem.releaseNative();
+      }
     }
     super.releaseNative();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.data.DirItem
  * JD-Core Version:    0.7.0.1
  */

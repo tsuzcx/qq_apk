@@ -9,40 +9,23 @@ import java.util.HashMap;
 
 public class ShareSecurityCheck
 {
-  private static String Bwj = null;
-  public final HashMap<String, String> Bwk;
-  private final HashMap<String, String> Bwl;
+  private static final String TAG = "Tinker.SecurityCheck";
+  private static String mPublicKeyMd5 = null;
   private final Context mContext;
+  private final HashMap<String, String> metaContentMap;
+  private final HashMap<String, String> packageProperties;
   
   public ShareSecurityCheck(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Bwk = new HashMap();
-    this.Bwl = new HashMap();
-    if (Bwj == null)
-    {
-      paramContext = this.mContext;
-      try
-      {
-        paramContext = SharePatchFileUtil.ct(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray());
-        Bwj = paramContext;
-        if (paramContext == null) {
-          throw new TinkerRuntimeException("get public key md5 is null");
-        }
-      }
-      catch (Exception paramContext)
-      {
-        throw new TinkerRuntimeException("ShareSecurityCheck init public key fail", paramContext);
-      }
-      finally
-      {
-        SharePatchFileUtil.V(null);
-      }
-      SharePatchFileUtil.V(null);
+    this.metaContentMap = new HashMap();
+    this.packageProperties = new HashMap();
+    if (mPublicKeyMd5 == null) {
+      init(this.mContext);
     }
   }
   
-  private static boolean a(File paramFile, Certificate[] paramArrayOfCertificate)
+  private boolean check(File paramFile, Certificate[] paramArrayOfCertificate)
   {
     if (paramArrayOfCertificate.length > 0)
     {
@@ -50,14 +33,14 @@ public class ShareSecurityCheck
       while (i >= 0) {
         try
         {
-          boolean bool = Bwj.equals(SharePatchFileUtil.ct(paramArrayOfCertificate[i].getEncoded()));
+          boolean bool = mPublicKeyMd5.equals(SharePatchFileUtil.getMD5(paramArrayOfCertificate[i].getEncoded()));
           if (bool) {
             return true;
           }
         }
         catch (Exception localException)
         {
-          paramFile.getAbsolutePath();
+          ShareTinkerLog.e("Tinker.SecurityCheck", paramFile.getAbsolutePath(), new Object[] { localException });
           i -= 1;
         }
       }
@@ -65,176 +48,38 @@ public class ShareSecurityCheck
     return false;
   }
   
-  /* Error */
-  public final boolean at(File paramFile)
+  private void init(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 107	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:an	(Ljava/io/File;)Z
-    //   4: ifne +5 -> 9
-    //   7: iconst_0
-    //   8: ireturn
-    //   9: new 109	java/util/jar/JarFile
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 112	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   17: astore 4
-    //   19: aload 4
-    //   21: invokevirtual 116	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   24: astore_3
-    //   25: aload_3
-    //   26: invokeinterface 122 1 0
-    //   31: ifeq +102 -> 133
-    //   34: aload_3
-    //   35: invokeinterface 126 1 0
-    //   40: checkcast 128	java/util/jar/JarEntry
-    //   43: astore 5
-    //   45: aload 5
-    //   47: ifnull -22 -> 25
-    //   50: aload 5
-    //   52: invokevirtual 131	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   55: astore 6
-    //   57: aload 6
-    //   59: ldc 133
-    //   61: invokevirtual 137	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   64: ifne -39 -> 25
-    //   67: aload 6
-    //   69: ldc 139
-    //   71: invokevirtual 142	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   74: ifeq -49 -> 25
-    //   77: aload_0
-    //   78: getfield 30	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:Bwk	Ljava/util/HashMap;
-    //   81: aload 6
-    //   83: aload 4
-    //   85: aload 5
-    //   87: invokestatic 145	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
-    //   90: invokevirtual 149	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   93: pop
-    //   94: aload 5
-    //   96: invokevirtual 153	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
-    //   99: astore 5
-    //   101: aload 5
-    //   103: ifnull +14 -> 117
-    //   106: aload_1
-    //   107: aload 5
-    //   109: invokestatic 155	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:a	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
-    //   112: istore_2
-    //   113: iload_2
-    //   114: ifne -89 -> 25
-    //   117: aload 4
-    //   119: invokevirtual 158	java/util/jar/JarFile:close	()V
-    //   122: iconst_0
-    //   123: ireturn
-    //   124: astore_3
-    //   125: aload_1
-    //   126: invokevirtual 100	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   129: pop
-    //   130: goto -8 -> 122
-    //   133: aload 4
-    //   135: invokevirtual 158	java/util/jar/JarFile:close	()V
-    //   138: iconst_1
-    //   139: ireturn
-    //   140: astore_3
-    //   141: aload_1
-    //   142: invokevirtual 100	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   145: pop
-    //   146: goto -8 -> 138
-    //   149: astore 4
-    //   151: aconst_null
-    //   152: astore_3
-    //   153: new 68	com/tencent/tinker/loader/TinkerRuntimeException
-    //   156: dup
-    //   157: ldc 160
-    //   159: iconst_2
-    //   160: anewarray 4	java/lang/Object
-    //   163: dup
-    //   164: iconst_0
-    //   165: aload_1
-    //   166: invokevirtual 100	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   169: aastore
-    //   170: dup
-    //   171: iconst_1
-    //   172: aload_1
-    //   173: invokevirtual 164	java/io/File:length	()J
-    //   176: invokestatic 170	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   179: aastore
-    //   180: invokestatic 174	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   183: aload 4
-    //   185: invokespecial 78	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   188: athrow
-    //   189: astore 5
-    //   191: aload_3
-    //   192: astore 4
-    //   194: aload 5
-    //   196: astore_3
-    //   197: aload 4
-    //   199: ifnull +8 -> 207
-    //   202: aload 4
-    //   204: invokevirtual 158	java/util/jar/JarFile:close	()V
-    //   207: aload_3
-    //   208: athrow
-    //   209: astore 4
-    //   211: aload_1
-    //   212: invokevirtual 100	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   215: pop
-    //   216: goto -9 -> 207
-    //   219: astore_3
-    //   220: aconst_null
-    //   221: astore 4
-    //   223: goto -26 -> 197
-    //   226: astore_3
-    //   227: goto -30 -> 197
-    //   230: astore 5
-    //   232: aload 4
-    //   234: astore_3
-    //   235: aload 5
-    //   237: astore 4
-    //   239: goto -86 -> 153
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	242	0	this	ShareSecurityCheck
-    //   0	242	1	paramFile	File
-    //   112	2	2	bool	boolean
-    //   24	11	3	localEnumeration	java.util.Enumeration
-    //   124	1	3	localIOException1	java.io.IOException
-    //   140	1	3	localIOException2	java.io.IOException
-    //   152	56	3	localObject1	Object
-    //   219	1	3	localObject2	Object
-    //   226	1	3	localObject3	Object
-    //   234	1	3	localObject4	Object
-    //   17	117	4	localJarFile	java.util.jar.JarFile
-    //   149	35	4	localException1	Exception
-    //   192	11	4	localObject5	Object
-    //   209	1	4	localIOException3	java.io.IOException
-    //   221	17	4	localObject6	Object
-    //   43	65	5	localObject7	Object
-    //   189	6	5	localObject8	Object
-    //   230	6	5	localException2	Exception
-    //   55	27	6	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   117	122	124	java/io/IOException
-    //   133	138	140	java/io/IOException
-    //   9	19	149	java/lang/Exception
-    //   153	189	189	finally
-    //   202	207	209	java/io/IOException
-    //   9	19	219	finally
-    //   19	25	226	finally
-    //   25	45	226	finally
-    //   50	101	226	finally
-    //   106	113	226	finally
-    //   19	25	230	java/lang/Exception
-    //   25	45	230	java/lang/Exception
-    //   50	101	230	java/lang/Exception
-    //   106	113	230	java/lang/Exception
+    try
+    {
+      paramContext = SharePatchFileUtil.getMD5(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray());
+      mPublicKeyMd5 = paramContext;
+      if (paramContext == null) {
+        throw new TinkerRuntimeException("get public key md5 is null");
+      }
+    }
+    catch (Exception paramContext)
+    {
+      throw new TinkerRuntimeException("ShareSecurityCheck init public key fail", paramContext);
+    }
+    finally
+    {
+      SharePatchFileUtil.closeQuietly(null);
+    }
+    SharePatchFileUtil.closeQuietly(null);
   }
   
-  public final HashMap<String, String> dWD()
+  public HashMap<String, String> getMetaContentMap()
   {
-    if (!this.Bwl.isEmpty()) {
-      return this.Bwl;
+    return this.metaContentMap;
+  }
+  
+  public HashMap<String, String> getPackagePropertiesIfPresent()
+  {
+    if (!this.packageProperties.isEmpty()) {
+      return this.packageProperties;
     }
-    Object localObject = (String)this.Bwk.get("assets/package_meta.txt");
+    Object localObject = (String)this.metaContentMap.get("assets/package_meta.txt");
     if (localObject == null) {
       return null;
     }
@@ -248,17 +93,226 @@ public class ShareSecurityCheck
       {
         arrayOfString = arrayOfString.split("=", 2);
         if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-          this.Bwl.put(arrayOfString[0].trim(), arrayOfString[1].trim());
+          this.packageProperties.put(arrayOfString[0].trim(), arrayOfString[1].trim());
         }
       }
       i += 1;
     }
-    return this.Bwl;
+    return this.packageProperties;
+  }
+  
+  /* Error */
+  public boolean verifyPatchMetaSignature(File paramFile)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 162	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:isLegalFile	(Ljava/io/File;)Z
+    //   4: ifne +5 -> 9
+    //   7: iconst_0
+    //   8: ireturn
+    //   9: new 164	java/util/jar/JarFile
+    //   12: dup
+    //   13: aload_1
+    //   14: invokespecial 167	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   17: astore 4
+    //   19: aload 4
+    //   21: astore_3
+    //   22: aload 4
+    //   24: invokevirtual 171	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
+    //   27: astore 5
+    //   29: aload 4
+    //   31: astore_3
+    //   32: aload 5
+    //   34: invokeinterface 176 1 0
+    //   39: ifeq +137 -> 176
+    //   42: aload 4
+    //   44: astore_3
+    //   45: aload 5
+    //   47: invokeinterface 180 1 0
+    //   52: checkcast 182	java/util/jar/JarEntry
+    //   55: astore 6
+    //   57: aload 6
+    //   59: ifnull -30 -> 29
+    //   62: aload 4
+    //   64: astore_3
+    //   65: aload 6
+    //   67: invokevirtual 185	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   70: astore 7
+    //   72: aload 4
+    //   74: astore_3
+    //   75: aload 7
+    //   77: ldc 187
+    //   79: invokevirtual 143	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   82: ifne -53 -> 29
+    //   85: aload 4
+    //   87: astore_3
+    //   88: aload 7
+    //   90: ldc 189
+    //   92: invokevirtual 192	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   95: ifeq -66 -> 29
+    //   98: aload 4
+    //   100: astore_3
+    //   101: aload_0
+    //   102: getfield 31	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:metaContentMap	Ljava/util/HashMap;
+    //   105: aload 7
+    //   107: aload 4
+    //   109: aload 6
+    //   111: invokestatic 196	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:loadDigestes	(Ljava/util/jar/JarFile;Ljava/util/jar/JarEntry;)Ljava/lang/String;
+    //   114: invokevirtual 155	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   117: pop
+    //   118: aload 4
+    //   120: astore_3
+    //   121: aload 6
+    //   123: invokevirtual 200	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
+    //   126: astore 6
+    //   128: aload 6
+    //   130: ifnull +18 -> 148
+    //   133: aload 4
+    //   135: astore_3
+    //   136: aload_0
+    //   137: aload_1
+    //   138: aload 6
+    //   140: invokespecial 202	com/tencent/tinker/loader/shareutil/ShareSecurityCheck:check	(Ljava/io/File;[Ljava/security/cert/Certificate;)Z
+    //   143: istore_2
+    //   144: iload_2
+    //   145: ifne -116 -> 29
+    //   148: aload 4
+    //   150: invokevirtual 205	java/util/jar/JarFile:close	()V
+    //   153: iconst_0
+    //   154: ireturn
+    //   155: astore_3
+    //   156: ldc 8
+    //   158: aload_1
+    //   159: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   162: iconst_1
+    //   163: anewarray 4	java/lang/Object
+    //   166: dup
+    //   167: iconst_0
+    //   168: aload_3
+    //   169: aastore
+    //   170: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   173: goto -20 -> 153
+    //   176: aload 4
+    //   178: invokevirtual 205	java/util/jar/JarFile:close	()V
+    //   181: iconst_1
+    //   182: ireturn
+    //   183: astore_3
+    //   184: ldc 8
+    //   186: aload_1
+    //   187: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   190: iconst_1
+    //   191: anewarray 4	java/lang/Object
+    //   194: dup
+    //   195: iconst_0
+    //   196: aload_3
+    //   197: aastore
+    //   198: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: goto -20 -> 181
+    //   204: astore 5
+    //   206: aconst_null
+    //   207: astore_3
+    //   208: new 98	com/tencent/tinker/loader/TinkerRuntimeException
+    //   211: dup
+    //   212: ldc 207
+    //   214: iconst_2
+    //   215: anewarray 4	java/lang/Object
+    //   218: dup
+    //   219: iconst_0
+    //   220: aload_1
+    //   221: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   224: aastore
+    //   225: dup
+    //   226: iconst_1
+    //   227: aload_1
+    //   228: invokevirtual 210	java/io/File:length	()J
+    //   231: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   234: aastore
+    //   235: invokestatic 220	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   238: aload 5
+    //   240: invokespecial 108	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   243: athrow
+    //   244: astore 5
+    //   246: aload_3
+    //   247: astore 4
+    //   249: aload 5
+    //   251: astore_3
+    //   252: aload 4
+    //   254: ifnull +8 -> 262
+    //   257: aload 4
+    //   259: invokevirtual 205	java/util/jar/JarFile:close	()V
+    //   262: aload_3
+    //   263: athrow
+    //   264: astore 4
+    //   266: ldc 8
+    //   268: aload_1
+    //   269: invokevirtual 64	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   272: iconst_1
+    //   273: anewarray 4	java/lang/Object
+    //   276: dup
+    //   277: iconst_0
+    //   278: aload 4
+    //   280: aastore
+    //   281: invokestatic 70	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: goto -22 -> 262
+    //   287: astore_3
+    //   288: aconst_null
+    //   289: astore 4
+    //   291: goto -39 -> 252
+    //   294: astore 5
+    //   296: aload 4
+    //   298: astore_3
+    //   299: goto -91 -> 208
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	302	0	this	ShareSecurityCheck
+    //   0	302	1	paramFile	File
+    //   143	2	2	bool	boolean
+    //   21	115	3	localObject1	Object
+    //   155	14	3	localIOException1	java.io.IOException
+    //   183	14	3	localIOException2	java.io.IOException
+    //   207	56	3	localObject2	Object
+    //   287	1	3	localObject3	Object
+    //   298	1	3	localObject4	Object
+    //   17	241	4	localObject5	Object
+    //   264	15	4	localIOException3	java.io.IOException
+    //   289	8	4	localObject6	Object
+    //   27	19	5	localEnumeration	java.util.Enumeration
+    //   204	35	5	localException1	Exception
+    //   244	6	5	localObject7	Object
+    //   294	1	5	localException2	Exception
+    //   55	84	6	localObject8	Object
+    //   70	36	7	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   148	153	155	java/io/IOException
+    //   176	181	183	java/io/IOException
+    //   9	19	204	java/lang/Exception
+    //   22	29	244	finally
+    //   32	42	244	finally
+    //   45	57	244	finally
+    //   65	72	244	finally
+    //   75	85	244	finally
+    //   88	98	244	finally
+    //   101	118	244	finally
+    //   121	128	244	finally
+    //   136	144	244	finally
+    //   208	244	244	finally
+    //   257	262	264	java/io/IOException
+    //   9	19	287	finally
+    //   22	29	294	java/lang/Exception
+    //   32	42	294	java/lang/Exception
+    //   45	57	294	java/lang/Exception
+    //   65	72	294	java/lang/Exception
+    //   75	85	294	java/lang/Exception
+    //   88	98	294	java/lang/Exception
+    //   101	118	294	java/lang/Exception
+    //   121	128	294	java/lang/Exception
+    //   136	144	294	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareSecurityCheck
  * JD-Core Version:    0.7.0.1
  */

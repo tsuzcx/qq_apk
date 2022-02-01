@@ -14,8 +14,9 @@ public class AIDataSet
   
   public void clear()
   {
-    if (this.aiDataMap != null) {
-      this.aiDataMap.clear();
+    Map localMap = this.aiDataMap;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -26,7 +27,7 @@ public class AIDataSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.AIDataSet
  * JD-Core Version:    0.7.0.1
  */

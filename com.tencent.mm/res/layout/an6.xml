@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.pluginsdk.ui.MMPhoneNumberEditText android:textColor="@color/w_" android:textColorHint="@color/pj" android:layout_gravity="bottom" android:id="@id/dva" android:background="@drawable/a9h" android:paddingRight="@dimen/g2" android:layout_marginLeft="@dimen/g2" android:minHeight="@dimen/g9" android:hint="@string/d3" android:maxLength="40" android:inputType="phone" style="@style/ml"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="@dimen/bz" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" />
+    <View android:id="@id/e89" android:background="@color/g_" android:visibility="invisible" android:layout_width="0.100000024dip" android:layout_height="fill_parent" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/kd0" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/t7" android:ellipsize="end" android:gravity="center" android:id="@id/kcy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_toEndOf="@id/kd0" />
+</RelativeLayout>

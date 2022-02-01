@@ -1,33 +1,48 @@
 package com.google.android.exoplayer2;
 
 import android.content.Context;
-import com.google.android.exoplayer2.g.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public static v a(Context paramContext, h paramh)
+  public static f a(r[] paramArrayOfr, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
-    AppMethodBeat.i(94775);
-    paramContext = a(new d(paramContext), paramh, new c());
-    AppMethodBeat.o(94775);
+    AppMethodBeat.i(91889);
+    paramArrayOfr = new h(paramArrayOfr, paramh, paramm);
+    AppMethodBeat.o(91889);
+    return paramArrayOfr;
+  }
+  
+  public static v a(Context paramContext, com.google.android.exoplayer2.g.h paramh)
+  {
+    AppMethodBeat.i(91887);
+    paramContext = a(new d(paramContext), paramh);
+    AppMethodBeat.o(91887);
     return paramContext;
   }
   
   @Deprecated
-  public static v a(Context paramContext, h paramh, m paramm)
+  public static v a(Context paramContext, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
-    AppMethodBeat.i(94774);
+    AppMethodBeat.i(91886);
     paramContext = a(new d(paramContext), paramh, paramm);
-    AppMethodBeat.o(94774);
+    AppMethodBeat.o(91886);
     return paramContext;
   }
   
-  private static v a(u paramu, h paramh, m paramm)
+  public static v a(u paramu, com.google.android.exoplayer2.g.h paramh)
   {
-    AppMethodBeat.i(94776);
+    AppMethodBeat.i(210112);
+    paramu = a(paramu, paramh, new c());
+    AppMethodBeat.o(210112);
+    return paramu;
+  }
+  
+  public static v a(u paramu, com.google.android.exoplayer2.g.h paramh, m paramm)
+  {
+    AppMethodBeat.i(91888);
     paramu = new v(paramu, paramh, paramm);
-    AppMethodBeat.o(94776);
+    AppMethodBeat.o(91888);
     return paramu;
   }
 }

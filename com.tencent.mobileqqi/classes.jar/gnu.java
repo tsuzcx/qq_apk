@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import java.util.TimerTask;
-
-public final class gnu
-  extends TimerTask
+public class gnu
 {
-  public gnu(String paramString) {}
+  public int a;
+  public String[] a;
   
-  public void run()
+  public gnu(int paramInt, String[] paramArrayOfString)
   {
-    RichMediaUtil.a(this.a, false, null);
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,82 +1,208 @@
 package com.tencent.mm.plugin.appbrand.h;
 
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.luggage.xweb_ext.extendplugin.a;
+import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.InputStream;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.al.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class b
+  implements a
 {
-  public static void a(InputStream paramInputStream, String paramString)
+  public JSONObject rmi;
+  public int ror;
+  public p ros;
+  public f rot;
+  private i.d rou;
+  private i.b rov;
+  private i.c rox;
+  
+  public b(int paramInt, JSONObject paramJSONObject, f paramf, p paramp)
   {
-    AppMethodBeat.i(65354);
-    if ((paramInputStream == null) || (!cN(paramString)))
-    {
-      AppMethodBeat.o(65354);
-      return;
-    }
-    paramString = new android.support.d.a(paramString);
-    a.a(new android.support.d.a(paramInputStream), paramString);
-    paramString.setAttribute("Orientation", null);
-    paramString.setAttribute("ImageWidth", null);
-    paramString.setAttribute("ThumbnailImageWidth", null);
-    paramString.saveAttributes();
-    AppMethodBeat.o(65354);
+    this.ror = paramInt;
+    this.rmi = paramJSONObject;
+    this.rot = paramf;
+    this.ros = paramp;
   }
   
-  public static void bZ(String paramString1, String paramString2)
+  public final void a(final a.a parama)
   {
-    AppMethodBeat.i(65353);
-    if ((!cN(paramString1)) || (!cN(paramString2)))
+    AppMethodBeat.i(139391);
+    if ((this.rot instanceof h))
     {
-      AppMethodBeat.o(65353);
-      return;
+      Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "addLifecycleListener");
+      h localh = (h)this.rot;
+      this.rou = new i.d()
+      {
+        public final void onForeground()
+        {
+          AppMethodBeat.i(139382);
+          Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onForeground");
+          if (parama != null) {
+            parama.onForeground();
+          }
+          AppMethodBeat.o(139382);
+        }
+      };
+      this.rov = new i.b()
+      {
+        public final void onBackground()
+        {
+          AppMethodBeat.i(139383);
+          Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onBackground");
+          if (parama != null) {
+            parama.my(com.tencent.mm.plugin.appbrand.jsapi.al.b.acG(b.this.rot.getAppId()));
+          }
+          AppMethodBeat.o(139383);
+        }
+      };
+      this.rox = new i.c()
+      {
+        public final void onDestroy()
+        {
+          AppMethodBeat.i(139384);
+          if (parama != null) {
+            parama.onDestroy();
+          }
+          AppMethodBeat.o(139384);
+        }
+      };
+      localh.a(this.rou);
+      localh.a(this.rov);
+      localh.a(this.rox);
     }
-    paramString2 = new android.support.d.a(paramString2);
-    a.a(new android.support.d.a(paramString1), paramString2);
-    paramString2.setAttribute("Orientation", null);
-    paramString2.setAttribute("ImageWidth", null);
-    paramString2.setAttribute("ThumbnailImageWidth", null);
-    paramString2.saveAttributes();
-    AppMethodBeat.o(65353);
+    AppMethodBeat.o(139391);
   }
   
-  private static boolean cN(String paramString)
+  public final f aqX()
   {
-    AppMethodBeat.i(65355);
-    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()))
-    {
-      AppMethodBeat.o(65355);
-      return true;
-    }
-    AppMethodBeat.o(65355);
-    return false;
+    return this.rot;
   }
   
-  public static int f(InputStream paramInputStream)
+  public final boolean atv()
   {
-    AppMethodBeat.i(65352);
-    if (paramInputStream == null)
+    return this.ros instanceof ab;
+  }
+  
+  public final JSONObject atw()
+  {
+    AppMethodBeat.i(139387);
+    if (this.rmi != null)
     {
-      AppMethodBeat.o(65352);
-      return 0;
+      localJSONObject = this.rmi;
+      AppMethodBeat.o(139387);
+      return localJSONObject;
     }
-    try
+    JSONObject localJSONObject = new JSONObject();
+    AppMethodBeat.o(139387);
+    return localJSONObject;
+  }
+  
+  public final String atx()
+  {
+    AppMethodBeat.i(139388);
+    if (this.ros != null)
     {
-      int i = new android.support.d.a(paramInputStream).getAttributeInt("Orientation", 1);
-      AppMethodBeat.o(65352);
-      return i;
+      String str = this.ros.getName();
+      AppMethodBeat.o(139388);
+      return str;
     }
-    catch (Exception paramInputStream)
+    AppMethodBeat.o(139388);
+    return null;
+  }
+  
+  public final void aty()
+  {
+    AppMethodBeat.i(139392);
+    if ((this.rot instanceof h))
     {
-      AppMethodBeat.o(65352);
+      Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "removeLifecycleListener");
+      h localh = (h)this.rot;
+      if (this.rou != null)
+      {
+        localh.b(this.rou);
+        this.rou = null;
+      }
+      if (this.rov != null)
+      {
+        localh.b(this.rov);
+        this.rov = null;
+      }
+      if (this.rox != null)
+      {
+        localh.b(this.rox);
+        this.rox = null;
+      }
     }
-    return 0;
+    AppMethodBeat.o(139392);
+  }
+  
+  public final boolean atz()
+  {
+    return this.ros instanceof d;
+  }
+  
+  public final void b(a.a parama) {}
+  
+  public final String e(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    AppMethodBeat.i(139390);
+    if ((this.rot != null) && (this.ros != null)) {
+      this.rot.callback(this.ror, this.ros.m(paramString, paramMap));
+    }
+    AppMethodBeat.o(139390);
+    return null;
+  }
+  
+  public final String fO(String paramString)
+  {
+    AppMethodBeat.i(139389);
+    if ((this.rot != null) && (this.ros != null)) {
+      this.rot.callback(this.ror, this.ros.ZP(paramString));
+    }
+    AppMethodBeat.o(139389);
+    return null;
+  }
+  
+  public final String getAppId()
+  {
+    AppMethodBeat.i(139385);
+    if (this.rot != null)
+    {
+      String str = this.rot.getAppId();
+      AppMethodBeat.o(139385);
+      return str;
+    }
+    AppMethodBeat.o(139385);
+    return null;
+  }
+  
+  public final Context getContext()
+  {
+    AppMethodBeat.i(139386);
+    if (this.rot != null)
+    {
+      Context localContext = this.rot.getContext();
+      AppMethodBeat.o(139386);
+      return localContext;
+    }
+    AppMethodBeat.o(139386);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.b
  * JD-Core Version:    0.7.0.1
  */

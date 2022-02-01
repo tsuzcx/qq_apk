@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class TianShuAccess$CommInfo
   extends MessageMicro<CommInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 26, 34, 40, 50, 58, 66, 74, 82, 90, 96, 106, 114, 122, 162 }, new String[] { "lUin", "strDeviceInfo", "stGps", "iBid", "strUserIp", "strApp", "strOs", "strVersion", "strOpenId", "strCityCode", "iNetWorkEnv", "strQua", "strQimei", "strUid", "strExpSeq" }, new Object[] { Long.valueOf(0L), "", null, Integer.valueOf(0), "", "", "", "", "", "", Integer.valueOf(0), "", "", "", "" }, CommInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field iBid = PBField.initUInt32(0);
   public final PBInt32Field iNetWorkEnv = PBField.initInt32(0);
   public final PBUInt64Field lUin = PBField.initUInt64(0L);
@@ -27,10 +27,16 @@ public final class TianShuAccess$CommInfo
   public final PBStringField strUid = PBField.initString("");
   public final PBStringField strUserIp = PBField.initString("");
   public final PBStringField strVersion = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 26, 34, 40, 50, 58, 66, 74, 82, 90, 96, 106, 114, 122, 162 }, new String[] { "lUin", "strDeviceInfo", "stGps", "iBid", "strUserIp", "strApp", "strOs", "strVersion", "strOpenId", "strCityCode", "iNetWorkEnv", "strQua", "strQimei", "strUid", "strExpSeq" }, new Object[] { Long.valueOf(0L), "", null, localInteger, "", "", "", "", "", "", localInteger, "", "", "", "" }, CommInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.pb.TianShuAccess.CommInfo
  * JD-Core Version:    0.7.0.1
  */

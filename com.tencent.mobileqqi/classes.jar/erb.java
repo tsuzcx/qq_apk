@@ -4,16 +4,14 @@ import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 class erb
   implements Runnable
 {
-  erb(era paramera) {}
+  erb(eqz parameqz) {}
   
   public void run()
   {
     try
     {
-      if (!this.a.a.isFinishing())
-      {
+      if (!this.a.a.isFinishing()) {
         this.a.a.a.dismiss();
-        this.a.a.finish();
       }
       return;
     }

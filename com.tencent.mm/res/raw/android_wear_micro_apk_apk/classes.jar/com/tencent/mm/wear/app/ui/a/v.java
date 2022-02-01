@@ -6,9 +6,9 @@ import android.widget.TextView;
 public final class v
   extends b
 {
-  public ImageView ahr;
-  public TextView ahs;
-  public ImageView aht;
+  public ImageView akT;
+  public TextView akU;
+  public ImageView akV;
   
   public v(u paramu)
   {

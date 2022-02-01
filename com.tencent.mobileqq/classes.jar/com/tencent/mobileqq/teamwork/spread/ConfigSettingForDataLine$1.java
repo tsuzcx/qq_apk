@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aoxh;
-import bajm;
+import com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigBean;
 
-public class ConfigSettingForDataLine$1
+class ConfigSettingForDataLine$1
   implements Runnable
 {
-  public ConfigSettingForDataLine$1(bajm parambajm, aoxh paramaoxh) {}
+  ConfigSettingForDataLine$1(ConfigSettingForDataLine paramConfigSettingForDataLine, TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean) {}
   
   public void run()
   {
-    bajm.a(this.this$0, this.a);
+    ConfigSettingForDataLine.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/l8" android:paddingLeft="@dimen/dp" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/m0" style="@style/lx"
+<FrameLayout android:id="@id/kv2" android:background="@color/BW_0_Alpha_0_5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bh7" android:padding="@dimen/ne" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/bh8" android:paddingLeft="@dimen/ll" android:paddingRight="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/bxh" android:layout_toRightOf="@id/bh7" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/kx" android:id="@id/bjn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" style="@style/ln" />
-        <TextView android:id="@id/bd1" android:paddingRight="@dimen/m1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bjn" android:layout_alignParentLeft="true" style="@style/lm" />
-        <TextView android:id="@id/bxi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/bd1" android:layout_below="@id/bjn" style="@style/lm" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/bxh" android:layout_width="@dimen/m0" android:layout_height="@dimen/m0" android:layout_alignParentRight="true">
-        <View android:layout_gravity="center_vertical" android:background="#18000000" android:layout_width="1.0dip" android:layout_height="32.0dip" />
-        <CheckBox android:layout_gravity="center" android:id="@id/bxj" android:focusable="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" style="@style/l6" />
-    </FrameLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/kv0" android:background="@drawable/f4" android:layout_width="@dimen/a3w" android:layout_height="@dimen/a3v" android:paddingStart="13.0dip" android:paddingEnd="16.0dip">
+        <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/kv1" android:background="@drawable/ad7" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ka2" android:layout_weight="1.0" android:layout_marginStart="7.0dip" android:layout_marginEnd="7.0dip" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/kuy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/kuz" android:background="@drawable/f4" android:visibility="invisible" android:layout_width="@dimen/a3w" android:layout_height="@dimen/a3v">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka1" />
+    </LinearLayout>
+</FrameLayout>

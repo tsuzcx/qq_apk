@@ -28,7 +28,7 @@
                 <TextView android:textSize="12.0sp" android:textColor="@color/kr" android:ellipsize="end" android:id="@id/ljt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/ql9" android:maxLines="1" android:maxEms="12" />
                 <ImageView android:background="@drawable/hjo" android:layout_width="wrap_content" android:layout_height="10.0dip" android:layout_marginLeft="3.0dip" />
             </LinearLayout>
-            <com.tencent.mobileqq.activity.activateFriend.LetterSpacingTextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kwg" android:background="@drawable/auv" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="230.0dip" android:layout_height="40.0dip" android:layout_marginTop="18.0dip" android:text="@string/ql8" android:lines="1" android:includeFontPadding="false" />
+            <com.tencent.mobileqq.activity.activateFriend.LetterSpacingTextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kwg" android:background="@drawable/auv" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="230.0dip" android:layout_height="40.0dip" android:layout_marginTop="18.0dip" android:text="@string/ql8" android:lines="1" android:includeFontPadding="false" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

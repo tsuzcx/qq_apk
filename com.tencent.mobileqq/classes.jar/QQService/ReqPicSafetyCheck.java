@@ -8,9 +8,9 @@ public final class ReqPicSafetyCheck
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  public int iScene;
-  public long lToUIN;
-  public ReqHead stHeader;
+  public int iScene = 0;
+  public long lToUIN = 0L;
+  public ReqHead stHeader = null;
   
   public ReqPicSafetyCheck() {}
   
@@ -40,7 +40,7 @@ public final class ReqPicSafetyCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqPicSafetyCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import java.io.Externalizable;
 import org.json.JSONObject;
 
 public abstract class TroopBarAbsDataEntity
-  extends awge
+  extends Entity
   implements Externalizable
 {
-  public String id;
+  public String id = null;
   
   public TroopBarAbsDataEntity() {}
   

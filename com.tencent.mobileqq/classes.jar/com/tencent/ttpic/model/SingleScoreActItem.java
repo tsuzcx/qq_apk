@@ -11,7 +11,7 @@ import java.util.List;
 public class SingleScoreActItem
   extends FrameSourceItem
 {
-  private static final String TAG = SingleScoreActItem.class.getSimpleName();
+  private static final String TAG = "SingleScoreActItem";
   private SizeI bitSize = new SizeI(130, 170);
   protected CaptureActItem captureActItem;
   
@@ -39,34 +39,52 @@ public class SingleScoreActItem
   {
     float f = paramCanvasItem.itemRect.height * 1.0F / this.bitSize.height;
     int i = (int)(this.bitSize.width * f);
-    int j = (int)(f * this.bitSize.height);
+    int j = (int)(this.bitSize.height * f);
     int k = (paramCanvasItem.itemRect.width - paramInt2 * i) / 2;
     paramInt2 = paramCanvasItem.itemRect.y + j;
-    paramInt1 = paramCanvasItem.itemRect.x + i * paramInt1 + k;
-    paramBaseFilter.setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, i + paramInt1, paramInt2 - j, paramInt3, paramInt4));
+    paramInt1 = paramCanvasItem.itemRect.x + paramInt1 * i + k;
+    paramBaseFilter.setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, paramInt1 + i, paramInt2 - j, paramInt3, paramInt4));
   }
   
   public void clear() {}
   
   public void draw(Frame paramFrame, CanvasItem paramCanvasItem, long paramLong)
   {
-    BenchUtil.benchStart(getClass().getSimpleName() + "[draw]");
-    List localList = getBitList(getScore(paramCanvasItem));
-    int j = localList.size();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getClass().getSimpleName());
+    ((StringBuilder)localObject).append("[draw]");
+    BenchUtil.benchStart(((StringBuilder)localObject).toString());
+    localObject = getBitList(getScore(paramCanvasItem));
+    int j = ((List)localObject).size();
     int i = 0;
     while (i < j)
     {
-      int k = ((Integer)localList.get(i)).intValue();
-      BenchUtil.benchStart(getClass().getSimpleName() + "[draw] updatePosition");
+      int k = ((Integer)((List)localObject).get(i)).intValue();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append("[draw] updatePosition");
+      BenchUtil.benchStart(localStringBuilder.toString());
       updateNumPosition(this.filter, paramCanvasItem, i, j, paramFrame.width, paramFrame.height);
-      BenchUtil.benchEnd(getClass().getSimpleName() + "[draw] updatePosition");
-      BenchUtil.benchStart(getClass().getSimpleName() + "[draw] renderTexture");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append("[draw] updatePosition");
+      BenchUtil.benchEnd(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append("[draw] renderTexture");
+      BenchUtil.benchStart(localStringBuilder.toString());
       this.filter.OnDrawFrameGLSL();
       this.filter.renderTexture(getScoreTexture(paramCanvasItem)[k], paramFrame.width, paramFrame.height);
-      BenchUtil.benchEnd(getClass().getSimpleName() + "[draw] renderTexture");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append("[draw] renderTexture");
+      BenchUtil.benchEnd(localStringBuilder.toString());
       i += 1;
     }
-    BenchUtil.benchEnd(getClass().getSimpleName() + "[draw]");
+    paramFrame = new StringBuilder();
+    paramFrame.append(getClass().getSimpleName());
+    paramFrame.append("[draw]");
+    BenchUtil.benchEnd(paramFrame.toString());
   }
   
   public int getOrigHeight(int paramInt)
@@ -100,7 +118,7 @@ public class SingleScoreActItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.model.SingleScoreActItem
  * JD-Core Version:    0.7.0.1
  */

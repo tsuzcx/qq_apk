@@ -1,59 +1,54 @@
 package com.tencent.biz.common.offline;
 
-import bbaa;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import ncb;
-import ncc;
-import ncf;
+import mqq.app.AppRuntime;
 
-public final class OfflineExpire$2
+final class OfflineExpire$2
   implements Runnable
 {
-  public OfflineExpire$2(WeakReference paramWeakReference, ArrayList paramArrayList) {}
+  OfflineExpire$2(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null)
+    Object localObject1 = (AppRuntime)this.a.get();
+    if (localObject1 == null)
     {
-      QLog.i(ncc.a, 1, "app == null, download wont start");
+      QLog.i(OfflineExpire.a, 1, "app == null, download wont start");
       return;
     }
-    localObject = (bbaa)((QQAppInterface)localObject).getManager(193);
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+    localObject1 = (IPreDownloadController)((AppRuntime)localObject1).getRuntimeService(IPreDownloadController.class, "");
+    int k = this.b.size();
     int i = 0;
-    label50:
-    ncf localncf;
-    String str1;
-    String str2;
-    String str3;
-    if (i < k)
+    while (i < k)
     {
-      localncf = (ncf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      str1 = localncf.a.a;
-      str2 = localncf.a.c;
-      str3 = localncf.a.b;
-      if (!localncf.a.f) {
-        break label197;
+      OfflineExpire.OfflinePreDownloadTask localOfflinePreDownloadTask = (OfflineExpire.OfflinePreDownloadTask)this.b.get(i);
+      String str1 = localOfflinePreDownloadTask.a.b;
+      Object localObject2 = localOfflinePreDownloadTask.a.m;
+      String str2 = localOfflinePreDownloadTask.a.k;
+      int j;
+      if (localOfflinePreDownloadTask.a.i) {
+        j = 1;
+      } else {
+        j = 2;
       }
-    }
-    label197:
-    for (int j = 1;; j = 2)
-    {
-      boolean bool = ((bbaa)localObject).a(10066, "app", str1, k - i, str2, str3, j, 0, ncb.a(localncf.a.a), localncf);
-      QLog.i(ncc.a, 1, "requestPreDownload bid=" + localncf.a.a + " re=" + bool);
+      boolean bool = ((IPreDownloadController)localObject1).requestPreDownload(10066, "app", str1, k - i, (String)localObject2, str2, j, 0, OfflineEnvHelper.a(localOfflinePreDownloadTask.a.b), localOfflinePreDownloadTask);
+      str1 = OfflineExpire.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("requestPreDownload bid=");
+      ((StringBuilder)localObject2).append(localOfflinePreDownloadTask.a.b);
+      ((StringBuilder)localObject2).append(" re=");
+      ((StringBuilder)localObject2).append(bool);
+      QLog.i(str1, 1, ((StringBuilder)localObject2).toString());
       i += 1;
-      break label50;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.OfflineExpire.2
  * JD-Core Version:    0.7.0.1
  */

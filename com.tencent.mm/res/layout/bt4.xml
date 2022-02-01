@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.refreshLayout.WxRefreshLayout android:id="@id/ijl" android:layout_width="fill_parent" android:layout_height="fill_parent" app:enableFooterFollowWhenNoMoreData="true">
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ListView android:id="@id/fp9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="#00000000" android:overScrollMode="never" />
+        <com.tencent.mm.plugin.repairer.ui.demo.refresh.view.DemoFooter android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.refreshLayout.WxRefreshLayout>
+</LinearLayout>

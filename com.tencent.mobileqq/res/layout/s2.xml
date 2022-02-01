@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@color/dw" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/lmy" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="140.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/TitleBtn" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/dta" android:layout_width="16.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/cf_" android:scaleType="center" />
-    </LinearLayout>
-    <ImageView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="50.0dip" android:src="@drawable/cns" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
-    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/ivTitleBtnRightText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:minWidth="85.0dip" android:text="@string/fv3" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hz" />
-</RelativeLayout>
+<androidx.appcompat.view.menu.ExpandedMenuView android:id="@id/n_h" android:layout_width="?ada" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

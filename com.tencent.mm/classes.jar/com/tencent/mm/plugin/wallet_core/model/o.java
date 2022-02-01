@@ -1,64 +1,50 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.content.Context;
-import android.widget.Toast;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.b.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.security.PublicKey;
 
 public final class o
 {
-  public String hxt;
-  public boolean kOD;
-  public int retCode;
-  public int uiu;
+  private static o VFW;
+  private PublicKey VFX = null;
   
-  public static o a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  public static o iiu()
   {
-    AppMethodBeat.i(46781);
-    o localo = new o();
-    localo.kOD = paramBoolean;
-    localo.retCode = paramInt1;
-    localo.uiu = paramInt2;
-    localo.hxt = paramString;
-    AppMethodBeat.o(46781);
+    AppMethodBeat.i(70303);
+    if (VFW == null) {
+      VFW = new o();
+    }
+    o localo = VFW;
+    AppMethodBeat.o(70303);
     return localo;
   }
   
-  public static o gy(int paramInt1, int paramInt2)
+  public final String cL(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(46782);
-    o localo = a(false, paramInt1, paramInt2, "");
-    AppMethodBeat.o(46782);
-    return localo;
-  }
-  
-  public final void y(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(46783);
-    if (this.kOD)
+    AppMethodBeat.i(70304);
+    try
     {
-      if (!bo.isNullOrNil(this.hxt))
-      {
-        if (paramBoolean)
-        {
-          Toast.makeText(paramContext, this.hxt, 1).show();
-          AppMethodBeat.o(46783);
-          return;
-        }
-        h.b(paramContext, this.hxt, "", false);
-        AppMethodBeat.o(46783);
-      }
+      this.VFX = m.u(MMApplicationContext.getContext(), "lbs_rsa_public_key.pem");
+      Log.i("MicroMsg.LocationEncrypt", "getPemPublickKeyFromAsset23 done2");
+      paramArrayOfByte = new String(Base64.encode(m.a(paramArrayOfByte, this.VFX, "RSA/ECB/PKCS1Padding"), 0));
+      AppMethodBeat.o(70304);
+      return paramArrayOfByte;
     }
-    else {
-      h.b(paramContext, paramContext.getString(2131305218), "", false);
+    catch (Exception paramArrayOfByte)
+    {
+      Log.e("MicroMsg.LocationEncrypt", "encry publicKey error %s", new Object[] { paramArrayOfByte.getMessage() });
+      AppMethodBeat.o(70304);
     }
-    AppMethodBeat.o(46783);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.o
  * JD-Core Version:    0.7.0.1
  */

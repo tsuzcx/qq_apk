@@ -8,29 +8,28 @@ final class InstalledEngine$1
 {
   public InstalledEngine createFromParcel(Parcel paramParcel)
   {
-    boolean bool2 = true;
     InstalledEngine localInstalledEngine = new InstalledEngine();
     localInstalledEngine.engineName = paramParcel.readString();
     localInstalledEngine.engineDir = paramParcel.readString();
     localInstalledEngine.engineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
     localInstalledEngine.engineType = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
+    int i = paramParcel.readByte();
+    boolean bool2 = true;
+    boolean bool1;
+    if (i != 0) {
       bool1 = true;
-      localInstalledEngine.isVerify = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localInstalledEngine.isPersist = bool1;
-      localInstalledEngine.loadStatus = paramParcel.readInt();
-      return localInstalledEngine;
+    } else {
       bool1 = false;
-      break;
     }
+    localInstalledEngine.isVerify = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    localInstalledEngine.isPersist = bool1;
+    localInstalledEngine.loadStatus = paramParcel.readInt();
+    return localInstalledEngine;
   }
   
   public InstalledEngine[] newArray(int paramInt)
@@ -40,7 +39,7 @@ final class InstalledEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.InstalledEngine.1
  * JD-Core Version:    0.7.0.1
  */

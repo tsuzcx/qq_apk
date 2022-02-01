@@ -21,13 +21,13 @@ public class MMApplication
     super.onCreate();
     d.c("MicroMsg.MMApplcation", "Create Application", new Object[0]);
     context = this;
-    h.lY();
+    h.mL();
   }
   
   public void onTerminate()
   {
-    d.e("MicroMsg.MMApplcation", "Terminate Application", new Object[0]);
-    h.lZ();
+    d.d("MicroMsg.MMApplcation", "Terminate Application", new Object[0]);
+    h.mM();
     super.onTerminate();
   }
 }

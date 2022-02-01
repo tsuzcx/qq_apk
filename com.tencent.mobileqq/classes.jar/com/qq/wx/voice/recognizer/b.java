@@ -140,46 +140,46 @@ final class b
   
   protected final int a()
   {
-    if (InfoRecognizer.b.b == null) {}
-    do
-    {
+    if (InfoRecognizer.b.b == null) {
       return -1;
-      if (!this.a)
-      {
-        InfoRecognizer.b.b(-101);
-        return -1;
-      }
-      if ((this.o != null) && (this.o.isAlive()))
-      {
-        InfoRecognizer.b.b(-102);
-        return -1;
-      }
-      InfoRecognizer.b.a();
-    } while (this.n.a(this.m) < 0);
-    if ((this.q != null) && (this.q.isAlive()))
+    }
+    if (!this.a)
+    {
+      InfoRecognizer.b.b(-101);
+      return -1;
+    }
+    Thread localThread = this.o;
+    if ((localThread != null) && (localThread.isAlive()))
+    {
+      InfoRecognizer.b.b(-102);
+      return -1;
+    }
+    InfoRecognizer.b.a();
+    if (this.n.a(this.m) < 0) {
+      return -1;
+    }
+    localThread = this.q;
+    if ((localThread != null) && (localThread.isAlive()))
     {
       this.p.a();
       this.p.b();
-    }
-    try
-    {
-      this.q.join();
-      this.q = null;
-      this.p.a(this.m);
-      this.m.a();
-      this.q = new Thread(this.p);
-      this.q.start();
-      this.o = new Thread(this.n);
-      this.o.start();
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        this.q.join();
+        this.q = null;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    this.p.a(this.m);
+    this.m.a();
+    this.q = new Thread(this.p);
+    this.q.start();
+    this.o = new Thread(this.n);
+    this.o.start();
+    return 0;
   }
   
   protected final int a(Context paramContext, String paramString)
@@ -204,19 +204,23 @@ final class b
         InfoRecognizer.b.b(-304);
         return -1;
       }
+      this.a = true;
+      return 0;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      InfoRecognizer.b.b(-103);
-      return -1;
+      break label116;
     }
     catch (Exception paramContext)
     {
-      InfoRecognizer.b.b(-103);
-      return -1;
+      label106:
+      label116:
+      break label106;
     }
-    this.a = true;
-    return 0;
+    InfoRecognizer.b.b(-103);
+    return -1;
+    InfoRecognizer.b.b(-103);
+    return -1;
   }
   
   protected final int a(Context paramContext, String paramString1, String paramString2)
@@ -241,19 +245,23 @@ final class b
         InfoRecognizer.b.b(-304);
         return -1;
       }
+      this.a = true;
+      return 0;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      InfoRecognizer.b.b(-103);
-      return -1;
+      break label115;
     }
     catch (Exception paramContext)
     {
-      InfoRecognizer.b.b(-103);
-      return -1;
+      label105:
+      label115:
+      break label105;
     }
-    this.a = true;
-    return 0;
+    InfoRecognizer.b.b(-103);
+    return -1;
+    InfoRecognizer.b.b(-103);
+    return -1;
   }
   
   protected final int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -261,231 +269,234 @@ final class b
     if (this.l) {
       return 0;
     }
-    if (paramArrayOfByte != null) {
-      this.b.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    byte[] arrayOfByte;
-    int i1;
-    label307:
-    Object localObject;
-    label771:
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      int i2;
+      this.b.write(paramArrayOfByte, paramInt1, paramInt2);
       try
       {
         this.b.flush();
-        arrayOfByte = this.b.toByteArray();
-        paramInt2 = 0;
-        paramInt1 = 0;
-        if (!InfoRecognizer.j) {
-          break label861;
-        }
-        i2 = InfoRecorder.b;
-        if (arrayOfByte.length - paramInt1 <= i2)
-        {
-          paramInt2 = paramInt1;
-          if (!paramBoolean) {
-            break label861;
-          }
-          paramArrayOfByte = VoiceRecordState.Complete;
-          InfoRecognizer.b.a(paramArrayOfByte);
-          this.l = true;
-          if (this.d) {
-            break label776;
-          }
-          paramArrayOfByte = new a(null, InnerAudioState.cancel);
-          if (this.m.a(paramArrayOfByte)) {
-            break;
-          }
-          InfoRecognizer.b.b(-305);
-          return -1;
-        }
       }
       catch (IOException paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
         return -1;
       }
-      paramArrayOfByte = new byte[InfoRecorder.b];
-      System.arraycopy(arrayOfByte, paramInt1, paramArrayOfByte, 0, i2);
-      paramInt1 += i2;
-      if (this.j == 0)
-      {
-        i1 = 0;
-        paramInt2 = 0;
-      }
+    }
+    byte[] arrayOfByte = this.b.toByteArray();
+    int i1;
+    Object localObject;
+    if (InfoRecognizer.j)
+    {
+      int i2 = InfoRecorder.b;
+      paramInt1 = 0;
+      label699:
+      label854:
+      label893:
       for (;;)
       {
-        if (paramInt2 >= paramArrayOfByte.length) {}
-        while (paramArrayOfByte[paramInt2] != 0)
+        if (arrayOfByte.length - paramInt1 <= i2)
         {
-          if (i1 > paramArrayOfByte.length / 2) {
-            break label771;
+          paramInt2 = paramInt1;
+        }
+        else
+        {
+          paramArrayOfByte = new byte[InfoRecorder.b];
+          System.arraycopy(arrayOfByte, paramInt1, paramArrayOfByte, 0, i2);
+          paramInt1 += i2;
+          if (this.j == 0)
+          {
+            paramInt2 = 0;
+            i1 = 0;
+            while ((paramInt2 < paramArrayOfByte.length) && (paramArrayOfByte[paramInt2] == 0))
+            {
+              i1 += 1;
+              paramInt2 += 1;
+            }
+            if (i1 > paramArrayOfByte.length / 2) {
+              break label893;
+            }
           }
           this.j += i2;
-          if (InfoRecorder.d <= 0) {
-            break label307;
-          }
-          LogTool.d("timeOffset = " + this.j + " timeOut = " + (InfoRecorder.a << 1) * InfoRecorder.d / 1000);
-          if ((!this.g) || (this.j <= (InfoRecorder.a << 1) * InfoRecorder.d / 1000L)) {
-            break label307;
-          }
-          InfoRecognizer.b.b(-307);
-          break;
-        }
-        i1 += 1;
-        paramInt2 += 1;
-      }
-      paramInt2 = Common.calculateVolumn(paramArrayOfByte, i2);
-      InfoRecognizer.b.a(paramInt2);
-      this.e = this.c.AddData(paramArrayOfByte, i2);
-      if ((!this.d) && (this.e == 2) && (this.f == 3))
-      {
-        this.d = true;
-        this.g = false;
-        LogTool.d("speaking start: preAudio size = " + this.h.size());
-        if (this.h.isEmpty()) {
-          break label620;
-        }
-        localObject = new a((byte[])this.h.removeFirst(), InnerAudioState.begin);
-        ((a)localObject).c = this.j;
-        if (this.m.a((a)localObject)) {
-          break label620;
-        }
-        InfoRecognizer.b.b(-305);
-        continue;
-        label459:
-        localObject = new a((byte[])this.h.removeFirst(), InnerAudioState.middle);
-        ((a)localObject).c = this.j;
-        if (this.m.a((a)localObject)) {
-          break label620;
-        }
-        InfoRecognizer.b.b(-305);
-      }
-      for (;;)
-      {
-        if (this.d)
-        {
-          if ((this.e == 3) && (this.f == 2))
+          if (InfoRecorder.d > 0)
           {
-            if (!InfoRecognizer.f)
+            localObject = new StringBuilder("timeOffset = ");
+            ((StringBuilder)localObject).append(this.j);
+            ((StringBuilder)localObject).append(" timeOut = ");
+            ((StringBuilder)localObject).append((InfoRecorder.a << 1) * InfoRecorder.d / 1000);
+            LogTool.d(((StringBuilder)localObject).toString());
+            if ((this.g) && (this.j > (InfoRecorder.a << 1) * InfoRecorder.d / 1000L))
             {
-              localObject = VoiceRecordState.Complete;
-              InfoRecognizer.b.a((VoiceRecordState)localObject);
+              InfoRecognizer.b.b(-307);
+              break label699;
             }
-            this.d = false;
-            LogTool.d("speaking stop");
-            this.h.clear();
-            if (!InfoRecognizer.f)
+          }
+          paramInt2 = Common.calculateVolumn(paramArrayOfByte, i2);
+          InfoRecognizer.b.a(paramInt2);
+          this.e = this.c.AddData(paramArrayOfByte, i2);
+          if ((!this.d) && (this.e == 2) && (this.f == 3))
+          {
+            this.d = true;
+            this.g = false;
+            localObject = new StringBuilder("speaking start: preAudio size = ");
+            ((StringBuilder)localObject).append(this.h.size());
+            LogTool.d(((StringBuilder)localObject).toString());
+            if (!this.h.isEmpty())
             {
-              paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
-              paramArrayOfByte.c = this.j;
-              if (!this.m.a(paramArrayOfByte))
+              localObject = new a((byte[])this.h.removeFirst(), InnerAudioState.begin);
+              ((a)localObject).c = this.j;
+              if (!this.m.a((a)localObject))
               {
                 InfoRecognizer.b.b(-305);
-                break;
-                label620:
-                if (!this.h.isEmpty()) {
-                  break label459;
-                }
-                continue;
+                break label699;
               }
-              this.l = true;
-              return 0;
             }
-            localObject = new a(paramArrayOfByte, InnerAudioState.end);
-            ((a)localObject).c = this.j;
-            if (this.m.a((a)localObject)) {
-              break label732;
+            while (!this.h.isEmpty())
+            {
+              localObject = new a((byte[])this.h.removeFirst(), InnerAudioState.middle);
+              ((a)localObject).c = this.j;
+              if (!this.m.a((a)localObject)) {
+                InfoRecognizer.b.b(-305);
+              }
             }
-            InfoRecognizer.b.b(-305);
-            break;
           }
-          localObject = new a(paramArrayOfByte, InnerAudioState.middle);
-          ((a)localObject).c = this.j;
-          if (!this.m.a((a)localObject))
+          else
           {
-            InfoRecognizer.b.b(-305);
-            break;
+            if (!this.d) {
+              break label854;
+            }
+            if ((this.e == 3) && (this.f == 2))
+            {
+              if (!InfoRecognizer.f)
+              {
+                localObject = VoiceRecordState.Complete;
+                InfoRecognizer.b.a((VoiceRecordState)localObject);
+              }
+              this.d = false;
+              LogTool.d("speaking stop");
+              this.h.clear();
+              if (!InfoRecognizer.f)
+              {
+                paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
+                paramArrayOfByte.c = this.j;
+                if (!this.m.a(paramArrayOfByte))
+                {
+                  InfoRecognizer.b.b(-305);
+                }
+                else
+                {
+                  this.l = true;
+                  return 0;
+                }
+              }
+              else
+              {
+                localObject = new a(paramArrayOfByte, InnerAudioState.end);
+                ((a)localObject).c = this.j;
+                if (this.m.a((a)localObject)) {
+                  break label854;
+                }
+                InfoRecognizer.b.b(-305);
+              }
+            }
+            else
+            {
+              localObject = new a(paramArrayOfByte, InnerAudioState.middle);
+              ((a)localObject).c = this.j;
+              if (this.m.a((a)localObject)) {
+                break label854;
+              }
+              InfoRecognizer.b.b(-305);
+            }
           }
+          paramInt2 = paramInt1;
         }
-      }
-      label732:
-      this.f = this.e;
-      this.h.add(paramArrayOfByte);
-      if (this.h.size() > this.i) {
-        this.h.removeFirst();
-      }
-    }
-    return 0;
-    label776:
-    paramInt2 = paramInt1;
-    if (this.d)
-    {
-      this.d = false;
-      LogTool.d("speaking stop");
-      paramArrayOfByte = new byte[arrayOfByte.length - paramInt1];
-      System.arraycopy(arrayOfByte, paramInt1, paramArrayOfByte, 0, arrayOfByte.length - paramInt1);
-      paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
-      paramArrayOfByte.c = this.j;
-      if (!this.m.a(paramArrayOfByte))
-      {
-        InfoRecognizer.b.b(-305);
-        return -1;
-      }
-      return 0;
-    }
-    label861:
-    paramInt1 = paramInt2;
-    if (!InfoRecognizer.j)
-    {
-      i1 = InfoRecorder.b;
-      if (arrayOfByte.length - paramInt2 <= i1)
-      {
-        label884:
         paramInt1 = paramInt2;
-        if (paramBoolean)
+        if (!paramBoolean) {
+          break;
+        }
+        paramArrayOfByte = VoiceRecordState.Complete;
+        InfoRecognizer.b.a(paramArrayOfByte);
+        this.l = true;
+        boolean bool = this.d;
+        if (!bool)
         {
-          paramArrayOfByte = VoiceRecordState.Complete;
-          InfoRecognizer.b.a(paramArrayOfByte);
-          this.l = true;
-          paramArrayOfByte = new byte[arrayOfByte.length - paramInt2];
-          System.arraycopy(arrayOfByte, paramInt2, paramArrayOfByte, 0, arrayOfByte.length - paramInt2);
-          paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
-          paramInt1 = paramInt2;
+          paramArrayOfByte = new a(null, InnerAudioState.cancel);
           if (!this.m.a(paramArrayOfByte))
           {
             InfoRecognizer.b.b(-305);
             return -1;
           }
+          return 0;
+        }
+        paramInt1 = paramInt2;
+        if (!bool) {
+          break;
+        }
+        this.d = false;
+        LogTool.d("speaking stop");
+        paramArrayOfByte = new byte[arrayOfByte.length - paramInt2];
+        System.arraycopy(arrayOfByte, paramInt2, paramArrayOfByte, 0, arrayOfByte.length - paramInt2);
+        paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
+        paramArrayOfByte.c = this.j;
+        if (!this.m.a(paramArrayOfByte))
+        {
+          InfoRecognizer.b.b(-305);
+          return -1;
+        }
+        return 0;
+        this.f = this.e;
+        this.h.add(paramArrayOfByte);
+        if (this.h.size() > this.i) {
+          this.h.removeFirst();
         }
       }
-      else
+    }
+    paramInt1 = 0;
+    paramInt2 = paramInt1;
+    if (!InfoRecognizer.j)
+    {
+      i1 = InfoRecorder.b;
+      while (arrayOfByte.length - paramInt1 > i1)
       {
         localObject = new byte[InfoRecorder.b];
-        System.arraycopy(arrayOfByte, paramInt2, localObject, 0, i1);
-        paramInt1 = paramInt2 + i1;
+        System.arraycopy(arrayOfByte, paramInt1, localObject, 0, i1);
+        paramInt2 = paramInt1 + i1;
         this.j += i1;
-        paramInt2 = Common.calculateVolumn((byte[])localObject, i1);
-        InfoRecognizer.b.a(paramInt2);
-        if (this.k) {}
-        for (paramArrayOfByte = InnerAudioState.begin;; paramArrayOfByte = InnerAudioState.middle)
+        paramInt1 = Common.calculateVolumn((byte[])localObject, i1);
+        InfoRecognizer.b.a(paramInt1);
+        if (this.k) {
+          paramArrayOfByte = InnerAudioState.begin;
+        } else {
+          paramArrayOfByte = InnerAudioState.middle;
+        }
+        paramArrayOfByte = new a((byte[])localObject, paramArrayOfByte);
+        this.k = false;
+        paramInt1 = paramInt2;
+        if (!this.m.a(paramArrayOfByte))
         {
-          paramArrayOfByte = new a((byte[])localObject, paramArrayOfByte);
-          this.k = false;
-          paramInt2 = paramInt1;
-          if (this.m.a(paramArrayOfByte)) {
-            break;
-          }
           InfoRecognizer.b.b(-305);
-          paramInt2 = paramInt1;
-          break label884;
+          paramInt1 = paramInt2;
+        }
+      }
+      paramInt2 = paramInt1;
+      if (paramBoolean)
+      {
+        paramArrayOfByte = VoiceRecordState.Complete;
+        InfoRecognizer.b.a(paramArrayOfByte);
+        this.l = true;
+        paramArrayOfByte = new byte[arrayOfByte.length - paramInt1];
+        System.arraycopy(arrayOfByte, paramInt1, paramArrayOfByte, 0, arrayOfByte.length - paramInt1);
+        paramArrayOfByte = new a(paramArrayOfByte, InnerAudioState.stop);
+        paramInt2 = paramInt1;
+        if (!this.m.a(paramArrayOfByte))
+        {
+          InfoRecognizer.b.b(-305);
+          return -1;
         }
       }
     }
     this.b.reset();
-    this.b.write(arrayOfByte, paramInt1, arrayOfByte.length - paramInt1);
+    this.b.write(arrayOfByte, paramInt2, arrayOfByte.length - paramInt2);
     return 0;
   }
   
@@ -519,69 +530,71 @@ final class b
   
   protected final void b()
   {
-    if (this.o != null) {
-      if (this.n != null)
+    if (this.o != null)
+    {
+      c localc = this.n;
+      if (localc != null)
       {
-        this.n.a();
+        localc.a();
         this.n.d();
       }
-    }
-    try
-    {
-      this.o.join();
-      this.o = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      try
+      {
+        this.o.join();
+        this.o = null;
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
   protected final void c()
   {
-    VoiceRecordState localVoiceRecordState;
     if ((this.o != null) || (this.q != null))
     {
-      localVoiceRecordState = VoiceRecordState.Canceling;
-      InfoRecognizer.b.a(localVoiceRecordState);
-      if (this.n != null)
+      Object localObject1 = VoiceRecordState.Canceling;
+      InfoRecognizer.b.a((VoiceRecordState)localObject1);
+      localObject1 = this.n;
+      if (localObject1 != null)
       {
-        this.n.b();
+        ((c)localObject1).b();
         this.n.d();
       }
-      if (this.o == null) {}
-    }
-    try
-    {
-      this.o.join();
-      this.o = null;
-      if (this.p != null)
+      localObject1 = this.o;
+      if (localObject1 != null) {
+        try
+        {
+          ((Thread)localObject1).join();
+          this.o = null;
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+        }
+      }
+      Object localObject2 = this.p;
+      if (localObject2 != null)
       {
-        this.p.a();
+        ((InnerSender)localObject2).a();
         this.p.b();
       }
-      if (this.q == null) {}
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        this.q.join();
-        this.q = null;
-        localVoiceRecordState = VoiceRecordState.Canceled;
-        InfoRecognizer.b.a(localVoiceRecordState);
-        return;
-        localException1 = localException1;
-        localException1.printStackTrace();
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
+      localObject2 = this.q;
+      if (localObject2 != null) {
+        try
+        {
+          ((Thread)localObject2).join();
+          this.q = null;
+        }
+        catch (Exception localException2)
         {
           localException2.printStackTrace();
         }
       }
+      VoiceRecordState localVoiceRecordState = VoiceRecordState.Canceled;
+      InfoRecognizer.b.a(localVoiceRecordState);
     }
   }
   
@@ -607,50 +620,50 @@ final class b
       return -1;
     }
     InfoRecognizer.b.a();
-    VoiceRecordState localVoiceRecordState = VoiceRecordState.Start;
-    InfoRecognizer.b.a(localVoiceRecordState);
-    if ((this.q != null) && (this.q.isAlive()))
+    Object localObject1 = VoiceRecordState.Start;
+    InfoRecognizer.b.a((VoiceRecordState)localObject1);
+    localObject1 = this.q;
+    if ((localObject1 != null) && (((Thread)localObject1).isAlive()))
     {
       this.p.a();
       this.p.b();
-    }
-    try
-    {
-      this.q.join();
-      this.q = null;
-      this.m = new InnerAudioList();
-      this.m.a();
-      this.b.reset();
-      this.p.a(this.m);
-      this.c.Reset();
-      this.d = false;
-      this.e = 3;
-      this.f = 3;
-      this.g = true;
-      this.h.clear();
-      this.i = (InfoRecorder.h / InfoRecorder.b);
-      this.j = 0;
-      this.k = true;
-      this.l = false;
-      LogTool.d("preAudioMax = " + this.i);
-      this.q = new Thread(this.p);
-      this.q.start();
-      localVoiceRecordState = VoiceRecordState.Recording;
-      InfoRecognizer.b.a(localVoiceRecordState);
-      return 0;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        this.q.join();
+        this.q = null;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    this.m = new InnerAudioList();
+    this.m.a();
+    this.b.reset();
+    this.p.a(this.m);
+    this.c.Reset();
+    this.d = false;
+    this.e = 3;
+    this.f = 3;
+    this.g = true;
+    this.h.clear();
+    this.i = (InfoRecorder.h / InfoRecorder.b);
+    this.j = 0;
+    this.k = true;
+    this.l = false;
+    Object localObject2 = new StringBuilder("preAudioMax = ");
+    ((StringBuilder)localObject2).append(this.i);
+    LogTool.d(((StringBuilder)localObject2).toString());
+    this.q = new Thread(this.p);
+    this.q.start();
+    localObject2 = VoiceRecordState.Recording;
+    InfoRecognizer.b.a((VoiceRecordState)localObject2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.b
  * JD-Core Version:    0.7.0.1
  */

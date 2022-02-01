@@ -27,18 +27,20 @@ public class AlphaClickableLinearLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (isEnabled()) {
-      switch (paramMotionEvent.getAction())
+    if (isEnabled())
+    {
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
       {
+        if ((i == 1) || (i == 3)) {
+          setAlpha(1.0F);
+        }
+      }
+      else {
+        setAlpha(this.a);
       }
     }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      setAlpha(this.a);
-      continue;
-      setAlpha(1.0F);
-    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void setClickAlpha(float paramFloat)
@@ -48,7 +50,7 @@ public class AlphaClickableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AlphaClickableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

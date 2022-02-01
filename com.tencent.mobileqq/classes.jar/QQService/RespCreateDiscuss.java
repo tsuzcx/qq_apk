@@ -10,8 +10,8 @@ public final class RespCreateDiscuss
   extends JceStruct
 {
   static Map<Long, Integer> cache_AddResult;
-  public Map<Long, Integer> AddResult;
-  public long DiscussUin;
+  public Map<Long, Integer> AddResult = null;
+  public long DiscussUin = 0L;
   
   public RespCreateDiscuss() {}
   
@@ -40,7 +40,7 @@ public final class RespCreateDiscuss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespCreateDiscuss
  * JD-Core Version:    0.7.0.1
  */

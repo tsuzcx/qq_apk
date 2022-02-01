@@ -7,10 +7,10 @@ public class VideoUtil
 {
   public static long getDurationOfVideo(String paramString)
   {
-    if (!FileUtil.checkFileExist(paramString)) {}
-    while (Build.VERSION.SDK_INT < 10) {
+    if (!FileUtil.checkFileExist(paramString)) {
       return 0L;
     }
+    if (Build.VERSION.SDK_INT >= 10) {}
     try
     {
       MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -20,35 +20,37 @@ public class VideoUtil
     }
     catch (Exception paramString) {}
     return 0L;
+    return 0L;
   }
   
   public static float getHeightWidthRatioOfVideo(String paramString)
   {
-    if (!FileUtil.checkFileExist(paramString)) {}
-    while (Build.VERSION.SDK_INT < 10) {
+    if (!FileUtil.checkFileExist(paramString)) {
       return 0.0F;
     }
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(18);
-      String str = localMediaMetadataRetriever.extractMetadata(19);
-      localMediaMetadataRetriever.release();
-      int i = Integer.valueOf(paramString).intValue();
-      int j = Integer.valueOf(str).intValue();
-      return j * 1.0F / i;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if (Build.VERSION.SDK_INT >= 10) {
+      try
+      {
+        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+        localMediaMetadataRetriever.setDataSource(paramString);
+        paramString = localMediaMetadataRetriever.extractMetadata(18);
+        String str = localMediaMetadataRetriever.extractMetadata(19);
+        localMediaMetadataRetriever.release();
+        int i = Integer.valueOf(paramString).intValue();
+        int j = Integer.valueOf(str).intValue();
+        return j * 1.0F / i;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.VideoUtil
  * JD-Core Version:    0.7.0.1
  */

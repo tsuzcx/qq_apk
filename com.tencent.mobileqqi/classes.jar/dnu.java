@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.SubaccountUgActivity;
 class dnu
   implements DialogInterface.OnClickListener
 {
-  dnu(dns paramdns) {}
+  dnu(dnr paramdnr) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

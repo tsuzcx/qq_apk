@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class s_rc_tab_info
   extends JceStruct
@@ -40,20 +41,23 @@ public final class s_rc_tab_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.tab_id, 0);
-    if (this.tab_icon_url != null) {
-      paramJceOutputStream.write(this.tab_icon_url, 1);
+    Object localObject = this.tab_icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.expression_list != null) {
-      paramJceOutputStream.write(this.expression_list, 2);
+    localObject = this.expression_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.zip_md5_value != null) {
-      paramJceOutputStream.write(this.zip_md5_value, 3);
+    localObject = this.zip_md5_value;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_USERLOGO_TIMESTAMP.s_rc_tab_info
  * JD-Core Version:    0.7.0.1
  */

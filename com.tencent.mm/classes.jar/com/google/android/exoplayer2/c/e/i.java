@@ -5,80 +5,80 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private final int aJm;
-  int aJn;
-  int aJo;
+  private final int cTe;
+  int cTf;
+  int cTg;
   private final byte[] data;
   
   public i(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(95051);
+    AppMethodBeat.i(92167);
     this.data = paramArrayOfByte;
-    this.aJm = paramArrayOfByte.length;
-    AppMethodBeat.o(95051);
+    this.cTe = paramArrayOfByte.length;
+    AppMethodBeat.o(92167);
   }
   
-  private void ok()
+  private void Sh()
   {
-    AppMethodBeat.i(95055);
-    if ((this.aJn >= 0) && ((this.aJn < this.aJm) || ((this.aJn == this.aJm) && (this.aJo == 0)))) {}
+    AppMethodBeat.i(92171);
+    if ((this.cTf >= 0) && ((this.cTf < this.cTe) || ((this.cTf == this.cTe) && (this.cTg == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      AppMethodBeat.o(95055);
+      AppMethodBeat.o(92171);
       return;
     }
   }
   
-  public final int dD(int paramInt)
+  public final boolean Sg()
   {
-    AppMethodBeat.i(95053);
-    int k = this.aJn;
-    int j = Math.min(paramInt, 8 - this.aJo);
+    AppMethodBeat.i(92168);
+    if (((this.data[this.cTf] & 0xFF) >> this.cTg & 0x1) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      hR(1);
+      AppMethodBeat.o(92168);
+      return bool;
+    }
+  }
+  
+  public final int hQ(int paramInt)
+  {
+    AppMethodBeat.i(92169);
+    int k = this.cTf;
+    int j = Math.min(paramInt, 8 - this.cTg);
     byte[] arrayOfByte = this.data;
     int i = k + 1;
-    k = (arrayOfByte[k] & 0xFF) >> this.aJo & 255 >> 8 - j;
+    k = (arrayOfByte[k] & 0xFF) >> this.cTg & 255 >> 8 - j;
     while (j < paramInt)
     {
       k |= (this.data[i] & 0xFF) << j;
       j += 8;
       i += 1;
     }
-    dE(paramInt);
-    AppMethodBeat.o(95053);
+    hR(paramInt);
+    AppMethodBeat.o(92169);
     return k & -1 >>> 32 - paramInt;
   }
   
-  public final void dE(int paramInt)
+  public final void hR(int paramInt)
   {
-    AppMethodBeat.i(95054);
+    AppMethodBeat.i(92170);
     int i = paramInt / 8;
-    this.aJn += i;
-    this.aJo = (paramInt - i * 8 + this.aJo);
-    if (this.aJo > 7)
+    this.cTf += i;
+    this.cTg = (paramInt - i * 8 + this.cTg);
+    if (this.cTg > 7)
     {
-      this.aJn += 1;
-      this.aJo -= 8;
+      this.cTf += 1;
+      this.cTg -= 8;
     }
-    ok();
-    AppMethodBeat.o(95054);
-  }
-  
-  public final boolean oj()
-  {
-    AppMethodBeat.i(95052);
-    if (((this.data[this.aJn] & 0xFF) >> this.aJo & 0x1) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      dE(1);
-      AppMethodBeat.o(95052);
-      return bool;
-    }
+    Sh();
+    AppMethodBeat.o(92170);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.i
  * JD-Core Version:    0.7.0.1
  */

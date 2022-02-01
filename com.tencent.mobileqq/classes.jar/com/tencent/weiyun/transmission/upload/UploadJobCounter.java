@@ -16,34 +16,37 @@ public class UploadJobCounter
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 37	java/lang/Object:clone	()Ljava/lang/Object;
-    //   6: checkcast 2	com/tencent/weiyun/transmission/upload/UploadJobCounter
-    //   9: astore_1
-    //   10: aload_0
-    //   11: monitorexit
-    //   12: aload_1
-    //   13: areturn
-    //   14: astore_1
-    //   15: aconst_null
-    //   16: astore_1
-    //   17: goto -7 -> 10
-    //   20: astore_1
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: aload_1
-    //   24: athrow
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: aload_0
+    //   5: invokespecial 37	java/lang/Object:clone	()Ljava/lang/Object;
+    //   8: checkcast 2	com/tencent/weiyun/transmission/upload/UploadJobCounter
+    //   11: astore_2
+    //   12: aload_2
+    //   13: astore_1
+    //   14: goto +8 -> 22
+    //   17: astore_1
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: aload_1
+    //   21: athrow
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: aload_1
+    //   25: areturn
+    //   26: astore_2
+    //   27: goto -5 -> 22
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	25	0	this	UploadJobCounter
-    //   9	4	1	localUploadJobCounter	UploadJobCounter
-    //   14	1	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
-    //   16	1	1	localObject1	Object
-    //   20	4	1	localObject2	Object
+    //   0	30	0	this	UploadJobCounter
+    //   3	11	1	localObject	Object
+    //   17	8	1	localUploadJobCounter1	UploadJobCounter
+    //   11	2	2	localUploadJobCounter2	UploadJobCounter
+    //   26	1	2	localCloneNotSupportedException	java.lang.CloneNotSupportedException
     // Exception table:
     //   from	to	target	type
-    //   2	10	14	java/lang/CloneNotSupportedException
-    //   2	10	20	finally
+    //   4	12	17	finally
+    //   4	12	26	java/lang/CloneNotSupportedException
   }
   
   public void reset()
@@ -72,59 +75,72 @@ public class UploadJobCounter
     {
       try
       {
-        if (paramUploadJobContext.file().autoBackupFlag)
+        if (!paramUploadJobContext.file().autoBackupFlag) {
+          break label203;
+        }
+        if (paramInt2 == 1)
         {
-          if (paramInt2 == 1)
-          {
-            this.autoBackup += 1;
-            paramUploadJobContext = clone();
-            return paramUploadJobContext;
-          }
-          if ((paramInt2 != 6) && (paramInt2 != 5)) {
-            continue;
-          }
+          this.autoBackup += 1;
+          continue;
           this.autoBackup -= 1;
           continue;
-        }
-        switch (paramInt1)
-        {
+          this.failed -= 1;
+          break label229;
+          this.suspend -= 1;
+          break label229;
+          this.running -= 1;
+          break label229;
+          this.compressing -= 1;
+          break label229;
+          this.wait -= 1;
+          break label229;
+          this.failed += 1;
+          continue;
+          this.suspend += 1;
+          continue;
+          this.running += 1;
+          continue;
+          this.compressing += 1;
+          continue;
+          this.wait += 1;
+          paramUploadJobContext = clone();
+          return paramUploadJobContext;
         }
       }
       finally {}
-      for (;;)
-      {
-        switch (paramInt2)
+      if (paramInt2 != 6) {
+        if (paramInt2 == 5)
         {
-        case 5: 
-        default: 
-          break;
-        case 1: 
-          this.wait += 1;
-          break;
-          this.wait -= 1;
           continue;
-          this.compressing -= 1;
-          continue;
-          this.running -= 1;
-          continue;
-          this.suspend -= 1;
-          continue;
-          this.failed -= 1;
+          label203:
+          if (paramInt1 != 1) {
+            if (paramInt1 != 2) {
+              if (paramInt1 != 3) {
+                if (paramInt1 != 4) {
+                  if (paramInt1 != 6) {
+                    label229:
+                    if (paramInt2 != 1) {
+                      if (paramInt2 != 2) {
+                        if (paramInt2 != 3) {
+                          if (paramInt2 != 4) {
+                            if (paramInt2 == 6) {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
-      this.compressing += 1;
-      continue;
-      this.running += 1;
-      continue;
-      this.suspend += 1;
-      continue;
-      this.failed += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadJobCounter
  * JD-Core Version:    0.7.0.1
  */

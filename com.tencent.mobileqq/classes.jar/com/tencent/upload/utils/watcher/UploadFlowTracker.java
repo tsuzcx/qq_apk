@@ -44,8 +44,11 @@ public class UploadFlowTracker
   
   public static void trackFlow(BaseTask paramBaseTask, String paramString)
   {
-    if (((paramBaseTask instanceof AbstractUploadTask)) && (paramString != null)) {
-      ((AbstractUploadTask)paramBaseTask).getFlowRecoder().append(paramString).append("\n");
+    if (((paramBaseTask instanceof AbstractUploadTask)) && (paramString != null))
+    {
+      paramBaseTask = ((AbstractUploadTask)paramBaseTask).getFlowRecoder();
+      paramBaseTask.append(paramString);
+      paramBaseTask.append("\n");
     }
   }
   
@@ -83,7 +86,7 @@ public class UploadFlowTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.utils.watcher.UploadFlowTracker
  * JD-Core Version:    0.7.0.1
  */

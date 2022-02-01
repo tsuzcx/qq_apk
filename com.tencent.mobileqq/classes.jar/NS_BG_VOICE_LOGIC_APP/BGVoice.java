@@ -9,10 +9,10 @@ public final class BGVoice
 {
   static BGFM cache_bgFmLists = new BGFM();
   static BGMusic cache_bgMusicLists = new BGMusic();
-  static int cache_iTypeValue = 0;
-  public BGFM bgFmLists;
-  public BGMusic bgMusicLists;
-  public int iTypeValue;
+  static int cache_iTypeValue;
+  public BGFM bgFmLists = null;
+  public BGMusic bgMusicLists = null;
+  public int iTypeValue = 0;
   
   public BGVoice() {}
   
@@ -33,17 +33,19 @@ public final class BGVoice
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iTypeValue, 0);
-    if (this.bgFmLists != null) {
-      paramJceOutputStream.write(this.bgFmLists, 1);
+    Object localObject = this.bgFmLists;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.bgMusicLists != null) {
-      paramJceOutputStream.write(this.bgMusicLists, 2);
+    localObject = this.bgMusicLists;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_BG_VOICE_LOGIC_APP.BGVoice
  * JD-Core Version:    0.7.0.1
  */

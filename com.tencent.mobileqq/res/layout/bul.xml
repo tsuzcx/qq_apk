@@ -2,5 +2,5 @@
 <RelativeLayout android:orientation="horizontal" android:background="@null" android:paddingTop="15.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.qzone.module.feedcomponent.ui.VisitAndPraiseAvatarsView android:id="@id/cgr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <Button android:textSize="15.0sp" android:textColor="@color/al3" android:id="@id/cgs" android:background="@drawable/g10" android:layout_width="73.0dip" android:layout_height="30.0dip" android:text="@string/sgv" android:layout_alignParentRight="true" />
+    <Button android:textSize="15.0sp" android:textColor="@color/al3" android:id="@id/cgs" android:background="@drawable/g10" android:layout_width="73.0dip" android:layout_height="30.0dip" android:text="@string/ka2" android:layout_alignParentRight="true" />
 </RelativeLayout>

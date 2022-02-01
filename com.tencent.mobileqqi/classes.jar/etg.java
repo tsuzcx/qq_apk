@@ -1,17 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.voip.VoipAddressBookView;
+import com.tencent.mobileqq.activity.voip.VoipPhoneNumber;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.List;
 
 public class etg
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public etg(VoipAddressBookView paramVoipAddressBookView) {}
+  public etg(VoipAddressBookView paramVoipAddressBookView, PhoneContact paramPhoneContact) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VoipAddressBookView.a(this.a).setVisibility(0);
-    VoipAddressBookView.a(this.a, null);
+    VoipAddressBookView.a(this.jdField_a_of_type_ComTencentMobileqqActivityVoipVoipAddressBookView, (VoipPhoneNumber)this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.allPhoneNumber.get(paramInt));
+    paramDialogInterface.dismiss();
   }
 }
 

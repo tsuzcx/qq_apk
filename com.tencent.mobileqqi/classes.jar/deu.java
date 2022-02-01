@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.RegisterActivity;
 
-class deu
-  implements Runnable
+public class deu
+  implements DialogInterface.OnClickListener
 {
-  deu(det paramdet) {}
+  public deu(RegisterActivity paramRegisterActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, this.a.a.getString(2131559105));
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -25,7 +25,7 @@ class SQLiteLintAndroidCore
   
   SQLiteLintAndroidCore(Context paramContext, SQLiteLint.InstallEnv paramInstallEnv, SQLiteLint.Options paramOptions)
   {
-    AppMethodBeat.i(93993);
+    AppMethodBeat.i(52837);
     this.mContext = paramContext;
     SQLiteLintDbHelper.INSTANCE.initialize(paramContext);
     this.mConcernedDbPath = paramInstallEnv.getConcernedDbPath();
@@ -42,21 +42,21 @@ class SQLiteLintAndroidCore
     if (paramOptions.isReportBehaviourEnable()) {
       this.mBehaviors.add(new IssueReportBehaviour(SQLiteLint.sReportDelegate));
     }
-    AppMethodBeat.o(93993);
+    AppMethodBeat.o(52837);
   }
   
   public void addBehavior(BaseBehaviour paramBaseBehaviour)
   {
-    AppMethodBeat.i(93994);
+    AppMethodBeat.i(52838);
     if (!this.mBehaviors.contains(paramBaseBehaviour)) {
       this.mBehaviors.add(paramBaseBehaviour);
     }
-    AppMethodBeat.o(93994);
+    AppMethodBeat.o(52838);
   }
   
   public void enableCheckers(List<String> paramList)
   {
-    AppMethodBeat.i(93999);
+    AppMethodBeat.i(52843);
     String[] arrayOfString = new String[paramList.size()];
     int i = 0;
     while (i < paramList.size())
@@ -65,7 +65,7 @@ class SQLiteLintAndroidCore
       i += 1;
     }
     SQLiteLintNativeBridge.nativeEnableCheckers(this.mConcernedDbPath, arrayOfString);
-    AppMethodBeat.o(93999);
+    AppMethodBeat.o(52843);
   }
   
   public ISQLiteExecutionDelegate getSQLiteExecutionDelegate()
@@ -75,19 +75,19 @@ class SQLiteLintAndroidCore
   
   public void notifySqlExecution(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(93997);
+    AppMethodBeat.i(52841);
     String str = "null";
     if (paramLong >= 8L) {
       str = SQLiteLintUtil.getThrowableStack(new Throwable());
     }
     SQLiteLintNativeBridge.nativeNotifySqlExecute(paramString1, paramString2, paramLong, str);
-    AppMethodBeat.o(93997);
+    AppMethodBeat.o(52841);
   }
   
   public void onPublish(List<SQLiteLintIssue> paramList)
   {
     int j = 0;
-    AppMethodBeat.i(94000);
+    AppMethodBeat.i(52844);
     Iterator localIterator = paramList.iterator();
     int i;
     for (;;)
@@ -108,36 +108,36 @@ class SQLiteLintAndroidCore
       ((BaseBehaviour)this.mBehaviors.get(i)).onPublish(paramList);
       i += 1;
     }
-    AppMethodBeat.o(94000);
+    AppMethodBeat.o(52844);
   }
   
   public void release()
   {
-    AppMethodBeat.i(93996);
+    AppMethodBeat.i(52840);
     if (SQLiteLint.getSqlExecutionCallbackMode() == SQLiteLint.SqlExecutionCallbackMode.HOOK) {
       SQLite3ProfileHooker.unHook();
     }
     SQLiteLintNativeBridge.nativeUninstall(this.mConcernedDbPath);
-    AppMethodBeat.o(93996);
+    AppMethodBeat.o(52840);
   }
   
   public void removeBehavior(BaseBehaviour paramBaseBehaviour)
   {
-    AppMethodBeat.i(93995);
+    AppMethodBeat.i(52839);
     this.mBehaviors.remove(paramBaseBehaviour);
-    AppMethodBeat.o(93995);
+    AppMethodBeat.o(52839);
   }
   
   public void setWhiteList(int paramInt)
   {
-    AppMethodBeat.i(93998);
+    AppMethodBeat.i(52842);
     CheckerWhiteListLogic.setWhiteList(this.mContext, this.mConcernedDbPath, paramInt);
-    AppMethodBeat.o(93998);
+    AppMethodBeat.o(52842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintAndroidCore
  * JD-Core Version:    0.7.0.1
  */

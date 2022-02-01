@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class WeatherReportInfo$GetWeatherMessageReq
   extends MessageMicro<GetWeatherMessageReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng", "ip", "area_id", "source", "fore_flag", "extra", "adcode", "adcode_from_mapsdk" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, GetWeatherMessageReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField adcode = PBField.initString("");
   public final PBUInt32Field adcode_from_mapsdk = PBField.initUInt32(0);
   public final PBUInt32Field area_id = PBField.initUInt32(0);
@@ -22,10 +22,16 @@ public final class WeatherReportInfo$GetWeatherMessageReq
   public WeatherReportInfo.PbReqMsgHead pbReqMsgHead = new WeatherReportInfo.PbReqMsgHead();
   public final PBUInt32Field source = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng", "ip", "area_id", "source", "fore_flag", "extra", "adcode", "adcode_from_mapsdk" }, new Object[] { null, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, "", "", localInteger }, GetWeatherMessageReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jungle.weather.WeatherReportInfo.GetWeatherMessageReq
  * JD-Core Version:    0.7.0.1
  */

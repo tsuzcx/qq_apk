@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/lp" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="#ffffc300" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar android:id="@id/f9b" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/ab_" android:layout_marginBottom="@dimen/aba" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent android:id="@id/eu9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:id="@id/i3e" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:indeterminateDrawable="@drawable/bjm" android:layout_centerInParent="true" />
 </RelativeLayout>

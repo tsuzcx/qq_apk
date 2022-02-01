@@ -10,14 +10,14 @@ final class zzp
   
   public final void run()
   {
-    AppMethodBeat.i(57407);
+    AppMethodBeat.i(13406);
     try
     {
       Task localTask = zzo.zza(this.zzafz).then(this.zzafn.getResult());
       if (localTask == null)
       {
         this.zzafz.onFailure(new NullPointerException("Continuation returned null"));
-        AppMethodBeat.o(57407);
+        AppMethodBeat.o(13406);
         return;
       }
     }
@@ -26,34 +26,34 @@ final class zzp
       if ((localRuntimeExecutionException.getCause() instanceof Exception))
       {
         this.zzafz.onFailure((Exception)localRuntimeExecutionException.getCause());
-        AppMethodBeat.o(57407);
+        AppMethodBeat.o(13406);
         return;
       }
       this.zzafz.onFailure(localRuntimeExecutionException);
-      AppMethodBeat.o(57407);
+      AppMethodBeat.o(13406);
       return;
     }
     catch (CancellationException localCancellationException)
     {
       this.zzafz.onCanceled();
-      AppMethodBeat.o(57407);
+      AppMethodBeat.o(13406);
       return;
     }
     catch (Exception localException)
     {
       this.zzafz.onFailure(localException);
-      AppMethodBeat.o(57407);
+      AppMethodBeat.o(13406);
       return;
     }
     localException.addOnSuccessListener(TaskExecutors.zzagd, this.zzafz);
     localException.addOnFailureListener(TaskExecutors.zzagd, this.zzafz);
     localException.addOnCanceledListener(TaskExecutors.zzagd, this.zzafz);
-    AppMethodBeat.o(57407);
+    AppMethodBeat.o(13406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.zzp
  * JD-Core Version:    0.7.0.1
  */

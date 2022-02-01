@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.plugin.common.BasicMessageChannel;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class SettingsChannel$MessageBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.SettingsChannel.MessageBuilder
  * JD-Core Version:    0.7.0.1
  */

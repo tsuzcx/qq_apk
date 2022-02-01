@@ -39,14 +39,15 @@ public final class RspHead
     paramJceOutputStream.write(this.cmdId, 1);
     paramJceOutputStream.write(this.ret, 2);
     paramJceOutputStream.write(this.encryptWithPack, 3);
-    if (this.phoneGuid != null) {
-      paramJceOutputStream.write(this.phoneGuid, 4);
+    String str = this.phoneGuid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.RspHead
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aeqz;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -9,10 +8,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import aprx;
-import apry;
+import com.tencent.mobileqq.activity.aio.ChatItemBuilder.BaseHolder;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.Sticker;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerDoubleClickListener;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipStickerProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,13 +21,13 @@ import java.util.Iterator;
 public class StickerGrayTipLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public apry a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private ArrayList<aprx> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean autoDismiss = false;
+  private int bubbleLeft = 0;
+  private boolean doubleClicked = false;
+  private MotionEvent lastUpEvent;
+  MessageRecord message;
+  public EmojiStickerManager.StickerDoubleClickListener stickerDoubleClickListener;
+  private ArrayList<EmojiStickerManager.Sticker> stickers;
   
   public StickerGrayTipLayout(Context paramContext)
   {
@@ -43,25 +44,124 @@ public class StickerGrayTipLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  private void doAutomaticDismiss()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if (this.autoDismiss)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = this.stickers;
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        aprx localaprx = (aprx)localIterator.next();
-        int j = localaprx.jdField_a_of_type_Int;
-        int k = this.jdField_a_of_type_Int;
-        int m = (int)((localaprx.jdField_a_of_type_Float - 1.0F) * localaprx.c);
-        int i = (int)((localaprx.jdField_a_of_type_Float - 1.0F) * localaprx.d);
-        j = j + k + localaprx.e - m / 2;
-        i = localaprx.b - i / 2;
-        if ((paramFloat1 > j) && (paramFloat1 < j + localaprx.jdField_a_of_type_Float * localaprx.c) && (paramFloat2 > i))
+        localObject = this.stickers.iterator();
+        boolean bool = false;
+        while (((Iterator)localObject).hasNext())
         {
-          float f1 = i;
-          float f2 = localaprx.jdField_a_of_type_Float;
-          if (paramFloat2 < localaprx.d * f2 + f1) {
+          EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+          if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2)
+          {
+            if (Math.abs(localSticker.g) > 200)
+            {
+              localSticker.g -= EmojiStickerManager.r;
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+            }
+            else
+            {
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
+            }
+            if (localSticker.g <= 0) {
+              break label350;
+            }
+            localSticker.g = 0;
+            localSticker.h = 255;
+            this.autoDismiss = false;
+          }
+          else
+          {
+            if (Math.abs(localSticker.g) < 200)
+            {
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g -= EmojiStickerManager.r;
+            }
+            else
+            {
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
+            }
+            if (localSticker.g >= 0) {
+              break label350;
+            }
+            localSticker.g = 0;
+            localSticker.h = 255;
+            this.autoDismiss = false;
+          }
+          bool = false;
+          label350:
+          if (localSticker.g < -400)
+          {
+            localSticker.g = -400;
+            localSticker.h = 0;
+            this.autoDismiss = false;
+            bool = true;
+          }
+          if (localSticker.g > 400)
+          {
+            localSticker.g = 400;
+            localSticker.h = 0;
+            this.autoDismiss = false;
+            bool = true;
+          }
+        }
+        localObject = this.message;
+        if (localObject != null) {
+          ((MessageRecord)localObject).stickerHidden = bool;
+        }
+        invalidate();
+      }
+    }
+  }
+  
+  private boolean isConsideredDoubleTap(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  {
+    long l1 = paramMotionEvent2.getEventTime();
+    long l2 = paramMotionEvent1.getEventTime();
+    boolean bool = false;
+    if (l1 - l2 > 200L) {
+      return false;
+    }
+    int i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent2.getX();
+    int j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent2.getY();
+    if (i * i + j * j < 10000) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private boolean isTouchedOnStickers(float paramFloat1, float paramFloat2)
+  {
+    Object localObject = this.stickers;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = this.stickers.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+        int i = localSticker.b;
+        int j = this.bubbleLeft;
+        int n = (int)((localSticker.n - 1.0F) * localSticker.d);
+        int m = (int)((localSticker.n - 1.0F) * localSticker.e);
+        int k = localSticker.g;
+        n /= 2;
+        int i1 = localSticker.c;
+        m /= 2;
+        float f = i + j + k - n;
+        if ((paramFloat1 > f) && (paramFloat1 < f + localSticker.n * localSticker.d))
+        {
+          f = i1 - m;
+          if ((paramFloat2 > f) && (paramFloat2 < f + localSticker.n * localSticker.e)) {
             return true;
           }
         }
@@ -70,296 +170,193 @@ public class StickerGrayTipLayout
     return false;
   }
   
-  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  public boolean addSticker(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, String paramString)
   {
-    if (paramMotionEvent2.getEventTime() - paramMotionEvent1.getEventTime() > 200L) {}
-    int i;
-    int j;
-    do
-    {
-      return false;
-      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent2.getX();
-      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent2.getY();
-    } while (i * i + j * j >= 10000);
-    return true;
-  }
-  
-  private void c()
-  {
-    boolean bool;
-    aprx localaprx;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      bool = false;
-      if (localIterator.hasNext())
-      {
-        localaprx = (aprx)localIterator.next();
-        if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 < getMeasuredWidth() / 2) {
-          if (Math.abs(localaprx.e) > 200)
-          {
-            localaprx.e -= EmojiStickerManager.i;
-            localaprx.f -= Math.abs(EmojiStickerManager.i / 2);
-            localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-            label138:
-            if (localaprx.e > 0)
-            {
-              localaprx.e = 0;
-              localaprx.f = 255;
-              this.jdField_a_of_type_Boolean = false;
-              bool = false;
-            }
-            label164:
-            if (localaprx.e < -400)
-            {
-              localaprx.e = -400;
-              localaprx.f = 0;
-              this.jdField_a_of_type_Boolean = false;
-              bool = true;
-            }
-            if (localaprx.e <= 400) {
-              break label434;
-            }
-            localaprx.e = 400;
-            localaprx.f = 0;
-            this.jdField_a_of_type_Boolean = false;
-            bool = true;
-          }
-        }
-      }
+    if (this.stickers == null) {
+      this.stickers = new ArrayList();
     }
-    label412:
-    label434:
-    for (;;)
+    if (this.stickers.size() < QVipStickerProcessor.c)
     {
-      break;
-      localaprx.f += Math.abs(EmojiStickerManager.i / 2);
-      localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-      localaprx.e += EmojiStickerManager.i;
-      break label138;
-      if (Math.abs(localaprx.e) < 200)
-      {
-        localaprx.f += Math.abs(EmojiStickerManager.i / 2);
-        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-      }
-      for (localaprx.e -= EmojiStickerManager.i;; localaprx.e += EmojiStickerManager.i)
-      {
-        if (localaprx.e >= 0) {
-          break label412;
-        }
-        localaprx.e = 0;
-        localaprx.f = 255;
-        this.jdField_a_of_type_Boolean = false;
-        bool = false;
-        break;
-        localaprx.f -= Math.abs(EmojiStickerManager.i / 2);
-        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-      }
-      break label164;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden = bool;
-      }
-      invalidate();
-      return;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aprx localaprx = (aprx)localIterator.next();
-        localaprx.b += paramInt;
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      int i;
-      label45:
-      aprx localaprx;
-      int j;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden))
-      {
-        i = 1;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!localIterator.hasNext()) {
-          break label447;
-        }
-        localaprx = (aprx)localIterator.next();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (i != 0))
-        {
-          if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 >= getMeasuredWidth() / 2) {
-            break label279;
-          }
-          j = -400;
-          label110:
-          localaprx.e = j;
-          localaprx.f = 0;
-        }
-        if ((paramInt2 != EmojiStickerManager.h) || (localaprx.e != 0))
-        {
-          if (paramInt2 != EmojiStickerManager.g) {
-            break label302;
-          }
-          if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 >= getMeasuredWidth() / 2) {
-            break label287;
-          }
-          localaprx.e -= paramInt1;
-          localaprx.f -= Math.abs(paramInt1 / 2);
-          localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-        }
-      }
-      label279:
-      label287:
-      label302:
-      while (paramInt2 != EmojiStickerManager.h) {
-        for (;;)
-        {
-          if (localaprx.e < -400)
-          {
-            localaprx.e = -400;
-            localaprx.f = 0;
-          }
-          if (localaprx.e <= 400) {
-            break label45;
-          }
-          localaprx.e = 400;
-          localaprx.f = 0;
-          break label45;
-          i = 0;
-          break;
-          j = 400;
-          break label110;
-          localaprx.e += paramInt1;
-        }
-      }
-      if (localaprx.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaprx.c / 2 < getMeasuredWidth() / 2)
-      {
-        localaprx.e += paramInt1;
-        if (localaprx.e > 0)
-        {
-          localaprx.e = 0;
-          localaprx.f = 255;
-        }
-      }
-      for (;;)
-      {
-        localaprx.f += Math.abs(paramInt1 / 2);
-        localaprx.f = Math.min(255, Math.max(0, localaprx.f));
-        break;
-        localaprx.e -= paramInt1;
-        if (localaprx.e < 0)
-        {
-          localaprx.e = 0;
-          localaprx.f = 255;
-        }
-      }
-      label447:
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden = false;
-      }
-      invalidate();
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
-  }
-  
-  public boolean a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < EmojiStickerManager.f)
-    {
-      aprx localaprx = new aprx();
+      EmojiStickerManager.Sticker localSticker = new EmojiStickerManager.Sticker();
       if (paramDrawable != null)
       {
-        localaprx.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        localSticker.a = paramDrawable.mutate();
         paramDrawable.setCallback(this);
       }
-      localaprx.jdField_a_of_type_Int = paramInt1;
-      localaprx.b = paramInt2;
-      localaprx.c = paramInt3;
-      localaprx.d = paramInt4;
-      localaprx.jdField_a_of_type_Double = paramDouble;
-      localaprx.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaprx);
+      localSticker.b = paramInt1;
+      localSticker.c = paramInt2;
+      localSticker.d = paramInt3;
+      localSticker.e = paramInt4;
+      localSticker.f = paramDouble;
+      localSticker.i = paramString;
+      this.stickers.add(localSticker);
       return true;
     }
     return false;
   }
   
-  public void b()
+  public void adjustStickersVerticalPosition(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    invalidate();
+    Object localObject = this.stickers;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+        localSticker.c += paramInt;
+      }
+    }
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     Object localObject = getParent();
-    if (((localObject instanceof ViewGroup)) && ((((ViewGroup)localObject).getTag() instanceof aeqz))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aeqz)((ViewGroup)localObject).getTag()).a;
+    if ((localObject instanceof ViewGroup))
+    {
+      localObject = (ViewGroup)localObject;
+      if ((((ViewGroup)localObject).getTag() instanceof ChatItemBuilder.BaseHolder)) {
+        this.message = ((ChatItemBuilder.BaseHolder)((ViewGroup)localObject).getTag()).q;
+      }
     }
     int i = getChildCount() - 1;
     while (i >= 0)
     {
       localObject = getChildAt(i);
-      if (((View)localObject).getId() == 2131367292) {
-        this.jdField_a_of_type_Int = ((View)localObject).getLeft();
+      if (((View)localObject).getId() == 2131434371) {
+        this.bubbleLeft = ((View)localObject).getLeft();
       }
       i -= 1;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.stickers != null)
     {
       i = 0;
-      if (i <= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+      while (i <= this.stickers.size() - 1)
       {
-        localObject = (aprx)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden)) {
-          if (((aprx)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((aprx)localObject).c / 2 >= getMeasuredWidth() / 2) {
-            break label307;
-          }
-        }
-        label307:
-        for (int j = -400;; j = 400)
+        localObject = (EmojiStickerManager.Sticker)this.stickers.get(i);
+        MessageRecord localMessageRecord = this.message;
+        if ((localMessageRecord != null) && (localMessageRecord.stickerHidden))
         {
-          ((aprx)localObject).e = j;
-          ((aprx)localObject).f = 0;
-          j = paramCanvas.getSaveCount();
-          paramCanvas.save();
-          paramCanvas.translate(((aprx)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((aprx)localObject).e, ((aprx)localObject).b);
-          paramCanvas.rotate((float)((aprx)localObject).jdField_a_of_type_Double, ((aprx)localObject).c / 2, ((aprx)localObject).d / 2);
-          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((aprx)localObject).f);
-          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((aprx)localObject).c, ((aprx)localObject).d);
-          ((aprx)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-          paramCanvas.restoreToCount(j);
-          i += 1;
-          break;
+          if (((EmojiStickerManager.Sticker)localObject).b + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).d / 2 < getMeasuredWidth() / 2) {
+            j = -400;
+          } else {
+            j = 400;
+          }
+          ((EmojiStickerManager.Sticker)localObject).g = j;
+          ((EmojiStickerManager.Sticker)localObject).h = 0;
         }
+        int j = paramCanvas.getSaveCount();
+        paramCanvas.save();
+        paramCanvas.translate(((EmojiStickerManager.Sticker)localObject).b + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).g, ((EmojiStickerManager.Sticker)localObject).c);
+        paramCanvas.rotate((float)((EmojiStickerManager.Sticker)localObject).f, ((EmojiStickerManager.Sticker)localObject).d / 2, ((EmojiStickerManager.Sticker)localObject).e / 2);
+        ((EmojiStickerManager.Sticker)localObject).a.setAlpha(((EmojiStickerManager.Sticker)localObject).h);
+        ((EmojiStickerManager.Sticker)localObject).a.setBounds(0, 0, ((EmojiStickerManager.Sticker)localObject).d, ((EmojiStickerManager.Sticker)localObject).e);
+        ((EmojiStickerManager.Sticker)localObject).a.draw(paramCanvas);
+        paramCanvas.restoreToCount(j);
+        i += 1;
       }
     }
-    c();
+    doAutomaticDismiss();
+  }
+  
+  public void doDismiss(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.stickers;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = this.message;
+      int i;
+      if ((localObject != null) && (((MessageRecord)localObject).stickerHidden)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      localObject = this.stickers.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+        if ((this.message != null) && (i != 0))
+        {
+          int j;
+          if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2) {
+            j = -400;
+          } else {
+            j = 400;
+          }
+          localSticker.g = j;
+          localSticker.h = 0;
+        }
+        if ((paramInt2 != EmojiStickerManager.q) || (localSticker.g != 0)) {
+          if (paramInt2 == EmojiStickerManager.p)
+          {
+            if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2) {
+              localSticker.g -= paramInt1;
+            } else {
+              localSticker.g += paramInt1;
+            }
+            localSticker.h -= Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+          }
+          else if (paramInt2 == EmojiStickerManager.q)
+          {
+            if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2)
+            {
+              localSticker.g += paramInt1;
+              if (localSticker.g > 0)
+              {
+                localSticker.g = 0;
+                localSticker.h = 255;
+              }
+            }
+            else
+            {
+              localSticker.g -= paramInt1;
+              if (localSticker.g < 0)
+              {
+                localSticker.g = 0;
+                localSticker.h = 255;
+              }
+            }
+            localSticker.h += Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+          }
+        }
+        if (localSticker.g < -400)
+        {
+          localSticker.g = -400;
+          localSticker.h = 0;
+        }
+        if (localSticker.g > 400)
+        {
+          localSticker.g = 400;
+          localSticker.h = 0;
+        }
+      }
+      if (i != 0)
+      {
+        localObject = this.message;
+        if (localObject != null) {
+          ((MessageRecord)localObject).stickerHidden = false;
+        }
+      }
+      invalidate();
+    }
+  }
+  
+  public int getStickerCount()
+  {
+    ArrayList localArrayList = this.stickers;
+    if (localArrayList == null) {
+      return 0;
+    }
+    return localArrayList.size();
+  }
+  
+  public boolean haveStickers()
+  {
+    ArrayList localArrayList = this.stickers;
+    return (localArrayList != null) && (localArrayList.size() > 0);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -369,7 +366,7 @@ public class StickerGrayTipLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (a(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+    if (isTouchedOnStickers(paramMotionEvent.getX(), paramMotionEvent.getY())) {
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -378,22 +375,23 @@ public class StickerGrayTipLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    Object localObject = this.stickers;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.autoDismiss = false;
       paramInt2 = getMeasuredHeight();
       paramInt1 = 0;
       int j = 0;
-      while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (paramInt1 < this.stickers.size())
       {
-        aprx localaprx = (aprx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-        localaprx.f = 255;
-        localaprx.e = 0;
+        localObject = (EmojiStickerManager.Sticker)this.stickers.get(paramInt1);
+        ((EmojiStickerManager.Sticker)localObject).h = 255;
+        ((EmojiStickerManager.Sticker)localObject).g = 0;
         int i = paramInt2;
-        if (localaprx.b + localaprx.d > paramInt2)
+        if (((EmojiStickerManager.Sticker)localObject).c + ((EmojiStickerManager.Sticker)localObject).e > paramInt2)
         {
+          i = ((EmojiStickerManager.Sticker)localObject).c + ((EmojiStickerManager.Sticker)localObject).e;
           j = 1;
-          i = localaprx.b + localaprx.d;
         }
         paramInt1 += 1;
         paramInt2 = i;
@@ -401,8 +399,12 @@ public class StickerGrayTipLayout
       if (j != 0)
       {
         setMeasuredDimension(getMeasuredWidth(), paramInt2);
-        if (QLog.isColorLevel()) {
-          QLog.d("StickerGrayTipLayout", 2, "onMeasure bubbleBottm = " + paramInt2);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onMeasure bubbleBottm = ");
+          ((StringBuilder)localObject).append(paramInt2);
+          QLog.d("StickerGrayTipLayout", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -410,30 +412,50 @@ public class StickerGrayTipLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
+    if (isTouchedOnStickers(paramMotionEvent.getX(), paramMotionEvent.getY()))
     {
-      if (paramMotionEvent.getAction() == 0) {
-        if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent)))
+      if (paramMotionEvent.getAction() == 0)
+      {
+        MotionEvent localMotionEvent = this.lastUpEvent;
+        if ((localMotionEvent != null) && (isConsideredDoubleTap(localMotionEvent, paramMotionEvent)))
         {
-          this.b = true;
-          if (this.jdField_a_of_type_Apry != null) {
-            this.jdField_a_of_type_Apry.a(this);
+          this.doubleClicked = true;
+          paramMotionEvent = this.stickerDoubleClickListener;
+          if (paramMotionEvent != null)
+          {
+            paramMotionEvent.a(this);
+            return true;
           }
         }
       }
-      do
+      else if (paramMotionEvent.getAction() == 1)
       {
-        do
+        this.lastUpEvent = MotionEvent.obtain(paramMotionEvent);
+        if (this.doubleClicked)
         {
-          return true;
-        } while (paramMotionEvent.getAction() != 1);
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      } while (!this.b);
-      this.b = false;
-      this.jdField_a_of_type_AndroidViewMotionEvent = null;
+          this.doubleClicked = false;
+          this.lastUpEvent = null;
+        }
+      }
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  public void removeAllStickers()
+  {
+    ArrayList localArrayList = this.stickers;
+    if (localArrayList != null)
+    {
+      this.autoDismiss = false;
+      localArrayList.clear();
+    }
+  }
+  
+  public void startAutoDismiss()
+  {
+    this.autoDismiss = true;
+    invalidate();
   }
 }
 

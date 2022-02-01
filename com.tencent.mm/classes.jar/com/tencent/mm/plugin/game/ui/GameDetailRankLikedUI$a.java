@@ -9,41 +9,45 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.dl;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.protobuf.eo;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.LinkedList;
 import java.util.List;
 
 final class GameDetailRankLikedUI$a
   extends BaseAdapter
 {
+  List<eo> ell;
   private Context mContext;
-  List<dl> nxh;
   
   public GameDetailRankLikedUI$a(Context paramContext)
   {
-    AppMethodBeat.i(111825);
-    this.nxh = new LinkedList();
+    AppMethodBeat.i(41995);
+    this.ell = new LinkedList();
     this.mContext = paramContext;
-    AppMethodBeat.o(111825);
+    AppMethodBeat.o(41995);
   }
   
-  private dl xg(int paramInt)
+  private eo XI(int paramInt)
   {
-    AppMethodBeat.i(111827);
-    dl localdl = (dl)this.nxh.get(paramInt);
-    AppMethodBeat.o(111827);
-    return localdl;
+    AppMethodBeat.i(41997);
+    eo localeo = (eo)this.ell.get(paramInt);
+    AppMethodBeat.o(41997);
+    return localeo;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(111826);
-    int i = this.nxh.size();
-    AppMethodBeat.o(111826);
+    AppMethodBeat.i(41996);
+    int i = this.ell.size();
+    AppMethodBeat.o(41996);
     return i;
   }
   
@@ -54,40 +58,47 @@ final class GameDetailRankLikedUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(111828);
-    dl localdl;
+    AppMethodBeat.i(41998);
+    eo localeo;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2130969736, paramViewGroup, false);
-      paramViewGroup = new GameDetailRankLikedUI.a.a((byte)0);
-      paramViewGroup.gxs = ((ImageView)paramView.findViewById(2131824590));
-      paramViewGroup.nwS = ((TextView)paramView.findViewById(2131824591));
-      paramViewGroup.nxi = ((TextView)paramView.findViewById(2131824592));
+      paramView = LayoutInflater.from(this.mContext).inflate(h.f.HZe, paramViewGroup, false);
+      paramViewGroup = new a((byte)0);
+      paramViewGroup.avatar = ((ImageView)paramView.findViewById(h.e.HUZ));
+      paramViewGroup.Eoo = ((TextView)paramView.findViewById(h.e.HVa));
+      paramViewGroup.vLJ = ((TextView)paramView.findViewById(h.e.HVb));
       paramView.setTag(paramViewGroup);
-      localdl = xg(paramInt);
-      a.b.a(paramViewGroup.gxs, localdl.num, 0.5F, false);
-      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(localdl.num);
+      localeo = XI(paramInt);
+      a.b.a(paramViewGroup.avatar, localeo.IMh, 0.5F, false);
+      Object localObject = ((n)h.ax(n.class)).bzA().JE(localeo.IMh);
       if (localObject == null) {
-        break label196;
+        break label200;
       }
-      localObject = new SpannableString(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, ((ad)localObject).Of(), paramViewGroup.nwS.getTextSize()));
-      paramViewGroup.nwS.setText((CharSequence)localObject);
+      localObject = new SpannableString(p.b(this.mContext, ((au)localObject).aSV(), paramViewGroup.Eoo.getTextSize()));
+      paramViewGroup.Eoo.setText((CharSequence)localObject);
     }
     for (;;)
     {
-      paramViewGroup.nxi.setText(localdl.nun);
-      AppMethodBeat.o(111828);
+      paramViewGroup.vLJ.setText(localeo.IMi);
+      AppMethodBeat.o(41998);
       return paramView;
-      paramViewGroup = (GameDetailRankLikedUI.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
-      label196:
-      paramViewGroup.nwS.setText("");
+      label200:
+      paramViewGroup.Eoo.setText("");
     }
+  }
+  
+  static final class a
+  {
+    public TextView Eoo;
+    public ImageView avatar;
+    public TextView vLJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankLikedUI.a
  * JD-Core Version:    0.7.0.1
  */

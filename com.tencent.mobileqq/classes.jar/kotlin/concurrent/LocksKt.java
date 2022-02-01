@@ -53,25 +53,35 @@ public final class LocksKt
   @InlineOnly
   private static final <T> T write(@NotNull ReentrantReadWriteLock paramReentrantReadWriteLock, Function0<? extends T> paramFunction0)
   {
+    ReentrantReadWriteLock.ReadLock localReadLock = paramReentrantReadWriteLock.readLock();
+    int i = paramReentrantReadWriteLock.getWriteHoldCount();
     int m = 0;
     int k = 0;
-    ReentrantReadWriteLock.ReadLock localReadLock = paramReentrantReadWriteLock.readLock();
-    if (paramReentrantReadWriteLock.getWriteHoldCount() == 0) {}
-    int j;
-    for (int i = paramReentrantReadWriteLock.getReadHoldCount();; i = 0)
+    if (i == 0) {
+      i = paramReentrantReadWriteLock.getReadHoldCount();
+    } else {
+      i = 0;
+    }
+    int j = 0;
+    while (j < i)
     {
-      j = 0;
-      while (j < i)
-      {
-        localReadLock.unlock();
-        j += 1;
-      }
+      localReadLock.unlock();
+      j += 1;
     }
     paramReentrantReadWriteLock = paramReentrantReadWriteLock.writeLock();
     paramReentrantReadWriteLock.lock();
     try
     {
       paramFunction0 = paramFunction0.invoke();
+      InlineMarker.finallyStart(1);
+      j = k;
+      while (j < i)
+      {
+        localReadLock.lock();
+        j += 1;
+      }
+      paramReentrantReadWriteLock.unlock();
+      InlineMarker.finallyEnd(1);
       return paramFunction0;
     }
     finally
@@ -86,11 +96,15 @@ public final class LocksKt
       paramReentrantReadWriteLock.unlock();
       InlineMarker.finallyEnd(1);
     }
+    for (;;)
+    {
+      throw paramFunction0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.concurrent.LocksKt
  * JD-Core Version:    0.7.0.1
  */

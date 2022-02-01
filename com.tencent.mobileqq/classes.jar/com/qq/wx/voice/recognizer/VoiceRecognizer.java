@@ -6,7 +6,7 @@ import com.qq.wx.voice.vad.TRSilkEncoder;
 
 public class VoiceRecognizer
 {
-  private static VoiceRecognizer a = null;
+  private static VoiceRecognizer a;
   private b b = new b();
   
   public static VoiceRecognizer shareInstance()
@@ -226,7 +226,7 @@ public class VoiceRecognizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.VoiceRecognizer
  * JD-Core Version:    0.7.0.1
  */

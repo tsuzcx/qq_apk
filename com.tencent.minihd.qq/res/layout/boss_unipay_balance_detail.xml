@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView style="@style/boss_unipay_wrapper">
+        <LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper">
+            <LinearLayout android:layout_marginTop="23.0dip" style="@style/boss_unipay_bar.p">
+                <TextView android:id="@id/boss_unipay_balanceTips" style="@style/boss_unipay_tx.thin.middle" />
+            </LinearLayout>
+            <LinearLayout android:id="@id/boss_unipay_id_saveInfoLayout" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" style="@style/boss_unipay_listbar">
+                <TextView android:id="@id/boss_unipay_balanceName" android:layout_width="0.0dip" android:layout_weight="100.0" style="@style/boss_unipay_tx" />
+                <TextView android:id="@id/boss_unipay_balanceNumber" style="@style/boss_unipay_tx.price" />
+                <TextView android:id="@id/boss_unipay_balanceUnit" style="@style/boss_unipay_tx.price" />
+            </LinearLayout>
+            <Button android:id="@id/boss_unipay_id_BottomBtn" android:text="充值Q币" style="@style/boss_unipay_btn_main" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

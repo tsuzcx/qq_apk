@@ -7,8 +7,8 @@ import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.utils.ChnToSpell;
+import fap;
 import faq;
-import far;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,8 +22,8 @@ public class ContactSorter
   
   static
   {
-    a = new faq();
-    b = new far();
+    a = new fap();
+    b = new faq();
   }
   
   private static int a(char paramChar)

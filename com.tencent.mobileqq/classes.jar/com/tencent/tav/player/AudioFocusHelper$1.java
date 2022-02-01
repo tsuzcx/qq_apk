@@ -12,28 +12,30 @@ class AudioFocusHelper$1
     if (AudioFocusHelper.access$000(this.this$0) == null) {
       return;
     }
-    switch (paramInt)
-    {
-    case -3: 
-    case 0: 
-    default: 
-      return;
+    if (paramInt != -3) {
+      if (paramInt != -2) {
+        if (paramInt != -1) {
+          if (paramInt != 1) {
+            return;
+          }
+        }
+      }
     }
     try
     {
-      AudioFocusHelper.access$200(this.this$0, true);
+      AudioFocusHelper.access$102(this.this$0, true);
       return;
     }
     catch (Exception localException) {}
-    AudioFocusHelper.access$102(this.this$0, true);
-    return;
     AudioFocusHelper.access$200(this.this$0, false);
+    return;
+    AudioFocusHelper.access$200(this.this$0, true);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.player.AudioFocusHelper.1
  * JD-Core Version:    0.7.0.1
  */

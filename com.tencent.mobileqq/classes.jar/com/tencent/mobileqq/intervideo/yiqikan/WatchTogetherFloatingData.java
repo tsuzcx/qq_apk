@@ -8,8 +8,8 @@ public class WatchTogetherFloatingData
   private String mBigUrl;
   private int mCurType;
   private String mCurUin;
-  private String mFrom;
-  private boolean mIsAdm;
+  private String mFrom = null;
+  private boolean mIsAdm = false;
   private int mLoadingStatus;
   private int mOrientation;
   private String mSmallUrl;
@@ -118,7 +118,7 @@ public class WatchTogetherFloatingData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingData
  * JD-Core Version:    0.7.0.1
  */

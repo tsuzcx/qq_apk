@@ -1,9 +1,11 @@
 package com.tencent.smtt.sdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IX5CoreWebStorage;
 import java.util.Map;
 
 public class WebStorage
+  extends z
 {
   private static WebStorage a;
   
@@ -11,12 +13,12 @@ public class WebStorage
   {
     try
     {
-      AppMethodBeat.i(64830);
+      AppMethodBeat.i(54332);
       if (a == null) {
         a = new WebStorage();
       }
       WebStorage localWebStorage = a;
-      AppMethodBeat.o(64830);
+      AppMethodBeat.o(54332);
       return localWebStorage;
     }
     finally {}
@@ -24,95 +26,95 @@ public class WebStorage
   
   public static WebStorage getInstance()
   {
-    AppMethodBeat.i(64829);
+    AppMethodBeat.i(54331);
     WebStorage localWebStorage = a();
-    AppMethodBeat.o(64829);
+    AppMethodBeat.o(54331);
     return localWebStorage;
   }
   
   public void deleteAllData()
   {
-    AppMethodBeat.i(64828);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54330);
+    if (isX5Core())
     {
-      localbz.c().n();
-      AppMethodBeat.o(64828);
+      getWebStorageImpl().deleteAllData();
+      AppMethodBeat.o(54330);
       return;
     }
     android.webkit.WebStorage.getInstance().deleteAllData();
-    AppMethodBeat.o(64828);
+    AppMethodBeat.o(54330);
   }
   
   public void deleteOrigin(String paramString)
   {
-    AppMethodBeat.i(64827);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54329);
+    if (isX5Core())
     {
-      localbz.c().e(paramString);
-      AppMethodBeat.o(64827);
+      getWebStorageImpl().deleteOrigin(paramString);
+      AppMethodBeat.o(54329);
       return;
     }
     android.webkit.WebStorage.getInstance().deleteOrigin(paramString);
-    AppMethodBeat.o(64827);
+    AppMethodBeat.o(54329);
   }
   
   public void getOrigins(ValueCallback<Map> paramValueCallback)
   {
-    AppMethodBeat.i(64823);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54325);
+    if (isX5Core())
     {
-      localbz.c().a(paramValueCallback);
-      AppMethodBeat.o(64823);
+      getWebStorageImpl().getOrigins(paramValueCallback);
+      AppMethodBeat.o(54325);
       return;
     }
     android.webkit.WebStorage.getInstance().getOrigins(paramValueCallback);
-    AppMethodBeat.o(64823);
+    AppMethodBeat.o(54325);
   }
   
   public void getQuotaForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    AppMethodBeat.i(64825);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54327);
+    if (isX5Core())
     {
-      localbz.c().b(paramString, paramValueCallback);
-      AppMethodBeat.o(64825);
+      getWebStorageImpl().getUsageForOrigin(paramString, paramValueCallback);
+      AppMethodBeat.o(54327);
       return;
     }
     android.webkit.WebStorage.getInstance().getQuotaForOrigin(paramString, paramValueCallback);
-    AppMethodBeat.o(64825);
+    AppMethodBeat.o(54327);
   }
   
   public void getUsageForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    AppMethodBeat.i(64824);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54326);
+    if (isX5Core())
     {
-      localbz.c().a(paramString, paramValueCallback);
-      AppMethodBeat.o(64824);
+      getWebStorageImpl().getUsageForOrigin(paramString, paramValueCallback);
+      AppMethodBeat.o(54326);
       return;
     }
     android.webkit.WebStorage.getInstance().getUsageForOrigin(paramString, paramValueCallback);
-    AppMethodBeat.o(64824);
+    AppMethodBeat.o(54326);
   }
   
   @Deprecated
   public void setQuotaForOrigin(String paramString, long paramLong)
   {
-    AppMethodBeat.i(64826);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54328);
+    if (isX5Core())
     {
-      localbz.c().a(paramString, paramLong);
-      AppMethodBeat.o(64826);
+      getWebStorageImpl().setQuotaForOrigin(paramString, paramLong);
+      AppMethodBeat.o(54328);
       return;
     }
     android.webkit.WebStorage.getInstance().setQuotaForOrigin(paramString, paramLong);
-    AppMethodBeat.o(64826);
+    AppMethodBeat.o(54328);
+  }
+  
+  @Deprecated
+  public static abstract interface QuotaUpdater
+  {
+    public abstract void updateQuota(long paramLong);
   }
 }
 

@@ -56,8 +56,9 @@ public final class FileUploadReq
     paramJceOutputStream.write(this.session, 2);
     paramJceOutputStream.write(this.offset, 3);
     paramJceOutputStream.write(this.data, 4);
-    if (this.checksum != null) {
-      paramJceOutputStream.write(this.checksum, 5);
+    String str = this.checksum;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.check_type, 6);
     paramJceOutputStream.write(this.send_time, 7);
@@ -65,7 +66,7 @@ public final class FileUploadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.FileUploadReq
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class ExptDebugUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(73632);
-    this.mdp.finish();
-    AppMethodBeat.o(73632);
+    AppMethodBeat.i(122470);
+    this.zNN.finish();
+    AppMethodBeat.o(122470);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.ui.ExptDebugUI.1
  * JD-Core Version:    0.7.0.1
  */

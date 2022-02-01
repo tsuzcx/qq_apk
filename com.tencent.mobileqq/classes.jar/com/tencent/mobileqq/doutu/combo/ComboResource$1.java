@@ -1,14 +1,17 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import apjy;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.mobileqq.doutu.api.IDoutuUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public final class ComboResource$1
+final class ComboResource$1
   implements Runnable
 {
+  ComboResource$1(Context paramContext) {}
+  
   public void run()
   {
-    apjy.a(BaseApplicationImpl.getApplication().getBaseContext());
+    ((IDoutuUtils)QRoute.api(IDoutuUtils.class)).markResDamaged(this.a);
   }
 }
 

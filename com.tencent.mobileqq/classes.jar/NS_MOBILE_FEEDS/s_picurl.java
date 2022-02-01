@@ -8,13 +8,13 @@ public final class s_picurl
   extends JceStruct
 {
   public int enlarge_rate = 200;
-  public int focus_x;
-  public int focus_y;
-  public int height;
+  public int focus_x = 0;
+  public int focus_y = 0;
+  public int height = 0;
   public String md5 = "";
-  public long size;
+  public long size = 0L;
   public String url = "";
-  public int width;
+  public int width = 0;
   
   public s_picurl() {}
   
@@ -44,8 +44,9 @@ public final class s_picurl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.width, 1);
     paramJceOutputStream.write(this.height, 2);
@@ -53,14 +54,15 @@ public final class s_picurl
     paramJceOutputStream.write(this.focus_y, 4);
     paramJceOutputStream.write(this.enlarge_rate, 5);
     paramJceOutputStream.write(this.size, 6);
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 7);
+    str = this.md5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_picurl
  * JD-Core Version:    0.7.0.1
  */

@@ -28,10 +28,11 @@ public final class mobileqq_dynamic_search$ResponseBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58, 66, 74, 82, 802 }, new String[] { "cmd", "retcode", "key_word", "item_groups", "search_id", "hotwords_cache_timeout", "more_word_info", "tab_groups", "jump_info", "bytes_cookie", "search_ver" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, null, Long.valueOf(0L), Integer.valueOf(0), null, null, null, localByteStringMicro2, localByteStringMicro3 }, ResponseBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58, 66, 74, 82, 802 }, new String[] { "cmd", "retcode", "key_word", "item_groups", "search_id", "hotwords_cache_timeout", "more_word_info", "tab_groups", "jump_info", "bytes_cookie", "search_ver" }, new Object[] { localInteger, localInteger, localByteStringMicro1, null, Long.valueOf(0L), localInteger, null, null, null, localByteStringMicro2, localByteStringMicro3 }, ResponseBody.class);
   }
 }
 

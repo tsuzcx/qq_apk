@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,21 +17,21 @@ public final class MaterialCate
   static byte[] cache_strExtFields;
   static ArrayList<OperBanner> cache_vecBanner;
   static ArrayList<MaterialItem> cache_vecItem = new ArrayList();
-  public int iCateId;
-  public int iQZInitShowCount;
-  public int iSQInitShowCount;
-  public Map<String, String> mapExtInfo;
-  public MaterialFile stBanner;
-  public MaterialFile stThumb;
+  public int iCateId = 0;
+  public int iQZInitShowCount = 0;
+  public int iSQInitShowCount = 0;
+  public Map<String, String> mapExtInfo = null;
+  public MaterialFile stBanner = null;
+  public MaterialFile stThumb = null;
   public String strCateKey = "";
   public String strCateName = "";
   public String strDescription = "";
-  public byte[] strExtFields;
+  public byte[] strExtFields = null;
   public String strTraceInfo = "";
-  public long uiSettleTime;
-  public long uiTotalItems;
-  public ArrayList<OperBanner> vecBanner;
-  public ArrayList<MaterialItem> vecItem;
+  public long uiSettleTime = 0L;
+  public long uiTotalItems = 0L;
+  public ArrayList<OperBanner> vecBanner = null;
+  public ArrayList<MaterialItem> vecItem = null;
   
   static
   {
@@ -90,45 +91,55 @@ public final class MaterialCate
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCateId, 0);
-    if (this.strCateKey != null) {
-      paramJceOutputStream.write(this.strCateKey, 1);
+    Object localObject = this.strCateKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strCateName != null) {
-      paramJceOutputStream.write(this.strCateName, 2);
+    localObject = this.strCateName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vecItem != null) {
-      paramJceOutputStream.write(this.vecItem, 3);
+    localObject = this.vecItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.iSQInitShowCount, 4);
     paramJceOutputStream.write(this.iQZInitShowCount, 5);
     paramJceOutputStream.write(this.uiTotalItems, 6);
-    if (this.vecBanner != null) {
-      paramJceOutputStream.write(this.vecBanner, 7);
+    localObject = this.vecBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 8);
+    localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.stThumb != null) {
-      paramJceOutputStream.write(this.stThumb, 9);
+    localObject = this.stThumb;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.stBanner != null) {
-      paramJceOutputStream.write(this.stBanner, 10);
+    localObject = this.stBanner;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.uiSettleTime, 11);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 12);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strExtFields != null) {
-      paramJceOutputStream.write(this.strExtFields, 13);
+    localObject = this.strExtFields;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 14);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.MaterialCate
  * JD-Core Version:    0.7.0.1
  */

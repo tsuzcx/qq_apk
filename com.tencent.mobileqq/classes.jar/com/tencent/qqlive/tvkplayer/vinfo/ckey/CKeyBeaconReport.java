@@ -59,8 +59,9 @@ public class CKeyBeaconReport
     if (BeaconAdapter.isBeaconEnable()) {
       BeaconAdapter.onUserActionToTunnel(BeaconAppKey, paramString, true, -1L, -1L, propertyToMap(paramProperties), true, false);
     }
-    if (mBeaconInterface != null) {
-      mBeaconInterface.trackCustomKVEvent(paramString, propertyToMap(paramProperties));
+    paramContext = mBeaconInterface;
+    if (paramContext != null) {
+      paramContext.trackCustomKVEvent(paramString, propertyToMap(paramProperties));
     }
   }
   
@@ -76,14 +77,13 @@ public class CKeyBeaconReport
     }
     if (paramString1 != null)
     {
-      if (!TextUtils.isEmpty(paramString2)) {
+      if (!TextUtils.isEmpty(paramString2))
+      {
         this.mProperties.put(paramString1, paramString2);
+        return;
       }
+      this.mProperties.put(paramString1, "");
     }
-    else {
-      return;
-    }
-    this.mProperties.put(paramString1, "");
   }
   
   public void setRequiredReportValue()
@@ -93,7 +93,7 @@ public class CKeyBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyBeaconReport
  * JD-Core Version:    0.7.0.1
  */

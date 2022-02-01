@@ -1,826 +1,748 @@
 package com.tencent.qqmini.sdk.utils;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.text.TextUtils;
-import bgpc;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.core.utils.FileUtils;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AssetsUtil
 {
-  public static final String LOG_TAG = "AssetsUtil";
-  private static final String PRELOAD_JS = "preloadJS";
-  private static final String PRELOAD_JSON = "preload/preload.json";
-  private static final String PRELOAD_JSON_PATH = "mini/preload/preload.json";
-  private static final String PRELOAD_JS_FOR_OPENDATA = "preloadJSForOpendata";
-  private static final String PRELOAD_JS_PATH = "mini/";
+  public static final String TAG = "AssetsUtil";
   
   /* Error */
-  private static boolean copyAssetToFile(AssetManager paramAssetManager, String paramString1, String paramString2)
+  private static boolean copyAssetToFile(android.content.res.AssetManager paramAssetManager, String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 6
     //   3: aconst_null
-    //   4: astore 8
+    //   4: astore 7
     //   6: aconst_null
-    //   7: astore 7
-    //   9: new 34	java/io/FileOutputStream
+    //   7: astore 10
+    //   9: new 19	java/io/FileOutputStream
     //   12: dup
     //   13: aload_2
-    //   14: invokespecial 37	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 22	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   17: astore 4
     //   19: aload 4
-    //   21: astore 6
-    //   23: aload 8
-    //   25: astore 5
-    //   27: new 39	java/io/BufferedInputStream
-    //   30: dup
-    //   31: aload_0
-    //   32: aload_1
-    //   33: invokevirtual 45	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   36: invokespecial 48	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   39: astore_0
-    //   40: sipush 8192
-    //   43: newarray byte
-    //   45: astore 5
-    //   47: aload_0
-    //   48: aload 5
-    //   50: invokevirtual 52	java/io/BufferedInputStream:read	([B)I
-    //   53: istore_3
-    //   54: iload_3
-    //   55: iconst_m1
-    //   56: if_icmpeq +109 -> 165
-    //   59: aload 4
-    //   61: aload 5
-    //   63: iconst_0
-    //   64: iload_3
-    //   65: invokevirtual 58	java/io/OutputStream:write	([BII)V
-    //   68: goto -21 -> 47
-    //   71: astore 5
-    //   73: aload_0
-    //   74: astore 7
-    //   76: aload 5
-    //   78: astore_0
-    //   79: aload 4
-    //   81: astore 6
-    //   83: aload 7
-    //   85: astore 5
-    //   87: ldc 60
-    //   89: new 62	java/lang/StringBuilder
-    //   92: dup
-    //   93: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   96: ldc 65
-    //   98: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: aload_1
-    //   102: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: ldc 71
-    //   107: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: aload_2
-    //   111: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: ldc 73
-    //   116: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: aload_0
-    //   120: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   123: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   132: aload 7
-    //   134: ifnull +8 -> 142
-    //   137: aload 7
-    //   139: invokevirtual 89	java/io/BufferedInputStream:close	()V
-    //   142: aload 4
-    //   144: ifnull +19 -> 163
-    //   147: aload 4
-    //   149: checkcast 34	java/io/FileOutputStream
-    //   152: invokevirtual 93	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   155: invokevirtual 98	java/io/FileDescriptor:sync	()V
-    //   158: aload 4
-    //   160: invokevirtual 99	java/io/OutputStream:close	()V
-    //   163: iconst_0
-    //   164: ireturn
-    //   165: aload_0
-    //   166: ifnull +7 -> 173
-    //   169: aload_0
-    //   170: invokevirtual 89	java/io/BufferedInputStream:close	()V
-    //   173: aload 4
-    //   175: ifnull +19 -> 194
+    //   21: invokevirtual 26	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   24: invokevirtual 32	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
+    //   27: astore 5
+    //   29: aload 6
+    //   31: astore 7
+    //   33: aload 4
+    //   35: astore 8
+    //   37: aload 5
+    //   39: astore 9
+    //   41: new 34	java/io/BufferedInputStream
+    //   44: dup
+    //   45: aload_0
+    //   46: aload_1
+    //   47: invokevirtual 40	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   50: invokespecial 43	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   53: astore_0
+    //   54: sipush 8192
+    //   57: newarray byte
+    //   59: astore 6
+    //   61: aload_0
+    //   62: aload 6
+    //   64: invokevirtual 47	java/io/BufferedInputStream:read	([B)I
+    //   67: istore_3
+    //   68: iload_3
+    //   69: iconst_m1
+    //   70: if_icmpeq +15 -> 85
+    //   73: aload 4
+    //   75: aload 6
+    //   77: iconst_0
+    //   78: iload_3
+    //   79: invokevirtual 51	java/io/FileOutputStream:write	([BII)V
+    //   82: goto -21 -> 61
+    //   85: aload_0
+    //   86: invokevirtual 54	java/io/BufferedInputStream:close	()V
+    //   89: goto +54 -> 143
+    //   92: astore_0
+    //   93: new 56	java/lang/StringBuilder
+    //   96: dup
+    //   97: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   100: astore 6
+    //   102: aload 6
+    //   104: ldc 59
+    //   106: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload 6
+    //   112: aload_1
+    //   113: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: pop
+    //   117: aload 6
+    //   119: ldc 65
+    //   121: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: aload 6
+    //   127: aload_2
+    //   128: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: ldc 8
+    //   134: aload 6
+    //   136: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: aload_0
+    //   140: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   143: aload 4
+    //   145: invokevirtual 79	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
+    //   148: invokevirtual 84	java/io/FileDescriptor:sync	()V
+    //   151: aload 5
+    //   153: ifnull +8 -> 161
+    //   156: aload 5
+    //   158: invokevirtual 89	java/nio/channels/FileLock:release	()V
+    //   161: aload 4
+    //   163: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   166: iconst_1
+    //   167: ireturn
+    //   168: astore_0
+    //   169: new 56	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   176: astore 4
     //   178: aload 4
-    //   180: checkcast 34	java/io/FileOutputStream
-    //   183: invokevirtual 93	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   186: invokevirtual 98	java/io/FileDescriptor:sync	()V
-    //   189: aload 4
-    //   191: invokevirtual 99	java/io/OutputStream:close	()V
-    //   194: iconst_1
-    //   195: ireturn
-    //   196: astore_0
-    //   197: ldc 60
-    //   199: new 62	java/lang/StringBuilder
-    //   202: dup
-    //   203: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   206: ldc 65
-    //   208: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: aload_1
-    //   212: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: ldc 71
-    //   217: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: aload_2
-    //   221: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: ldc 73
-    //   226: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: aload_0
-    //   230: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   233: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   239: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   242: goto -69 -> 173
-    //   245: astore_0
-    //   246: ldc 60
-    //   248: new 62	java/lang/StringBuilder
-    //   251: dup
-    //   252: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   255: ldc 65
-    //   257: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload_1
-    //   261: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: ldc 71
-    //   266: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: aload_2
-    //   270: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: ldc 73
-    //   275: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   278: aload_0
-    //   279: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   282: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   285: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   288: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   291: goto -97 -> 194
-    //   294: astore_0
-    //   295: ldc 60
-    //   297: new 62	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   304: ldc 65
-    //   306: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: aload_1
-    //   310: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: ldc 71
-    //   315: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   318: aload_2
-    //   319: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: ldc 73
-    //   324: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: aload_0
-    //   328: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   331: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   337: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   340: aload 4
-    //   342: invokevirtual 99	java/io/OutputStream:close	()V
-    //   345: goto -151 -> 194
-    //   348: astore_0
-    //   349: ldc 60
-    //   351: new 62	java/lang/StringBuilder
-    //   354: dup
-    //   355: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   358: ldc 65
-    //   360: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   363: aload_1
-    //   364: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   367: ldc 71
-    //   369: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: aload_2
-    //   373: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: ldc 73
-    //   378: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: aload_0
-    //   382: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   385: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   388: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   391: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   394: goto -200 -> 194
-    //   397: astore_0
-    //   398: aload 4
-    //   400: invokevirtual 99	java/io/OutputStream:close	()V
-    //   403: aload_0
-    //   404: athrow
-    //   405: astore 4
-    //   407: ldc 60
-    //   409: new 62	java/lang/StringBuilder
-    //   412: dup
-    //   413: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   416: ldc 65
-    //   418: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   421: aload_1
-    //   422: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   425: ldc 71
-    //   427: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: aload_2
-    //   431: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: ldc 73
-    //   436: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   439: aload 4
-    //   441: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   444: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   447: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   450: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   453: goto -50 -> 403
-    //   456: astore_0
-    //   457: ldc 60
-    //   459: new 62	java/lang/StringBuilder
-    //   462: dup
-    //   463: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   466: ldc 65
-    //   468: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   471: aload_1
-    //   472: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   475: ldc 71
-    //   477: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: aload_2
-    //   481: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: ldc 73
-    //   486: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   489: aload_0
-    //   490: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   493: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   499: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   502: goto -360 -> 142
-    //   505: astore_0
-    //   506: ldc 60
-    //   508: new 62	java/lang/StringBuilder
-    //   511: dup
-    //   512: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   515: ldc 65
-    //   517: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: aload_1
-    //   521: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   524: ldc 71
-    //   526: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   529: aload_2
-    //   530: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   533: ldc 73
-    //   535: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   538: aload_0
-    //   539: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   542: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   548: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   551: goto -388 -> 163
-    //   554: astore_0
-    //   555: ldc 60
-    //   557: new 62	java/lang/StringBuilder
-    //   560: dup
-    //   561: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   564: ldc 65
-    //   566: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   569: aload_1
-    //   570: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   573: ldc 71
-    //   575: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   578: aload_2
-    //   579: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   582: ldc 73
-    //   584: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   587: aload_0
-    //   588: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   591: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   594: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   597: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   600: aload 4
-    //   602: invokevirtual 99	java/io/OutputStream:close	()V
-    //   605: goto -442 -> 163
-    //   608: astore_0
-    //   609: ldc 60
-    //   611: new 62	java/lang/StringBuilder
-    //   614: dup
-    //   615: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   618: ldc 65
-    //   620: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   623: aload_1
-    //   624: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   627: ldc 71
-    //   629: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   632: aload_2
-    //   633: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   636: ldc 73
-    //   638: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   641: aload_0
-    //   642: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   645: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   648: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   651: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   654: goto -491 -> 163
-    //   657: astore_0
-    //   658: aload 4
-    //   660: invokevirtual 99	java/io/OutputStream:close	()V
-    //   663: aload_0
-    //   664: athrow
-    //   665: astore 4
-    //   667: ldc 60
-    //   669: new 62	java/lang/StringBuilder
-    //   672: dup
-    //   673: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   676: ldc 65
-    //   678: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   681: aload_1
-    //   682: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   685: ldc 71
-    //   687: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   690: aload_2
-    //   691: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   694: ldc 73
-    //   696: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   699: aload 4
-    //   701: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   704: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   707: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   710: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   713: goto -50 -> 663
-    //   716: astore_0
-    //   717: aconst_null
-    //   718: astore 4
-    //   720: aload 5
-    //   722: ifnull +8 -> 730
-    //   725: aload 5
-    //   727: invokevirtual 89	java/io/BufferedInputStream:close	()V
-    //   730: aload 4
-    //   732: ifnull +19 -> 751
-    //   735: aload 4
-    //   737: checkcast 34	java/io/FileOutputStream
-    //   740: invokevirtual 93	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   743: invokevirtual 98	java/io/FileDescriptor:sync	()V
-    //   746: aload 4
-    //   748: invokevirtual 99	java/io/OutputStream:close	()V
-    //   751: aload_0
-    //   752: athrow
-    //   753: astore 5
-    //   755: ldc 60
-    //   757: new 62	java/lang/StringBuilder
-    //   760: dup
-    //   761: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   764: ldc 65
-    //   766: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   769: aload_1
-    //   770: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   773: ldc 71
-    //   775: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   778: aload_2
-    //   779: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   782: ldc 73
-    //   784: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   787: aload 5
-    //   789: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   792: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   795: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   798: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   801: goto -71 -> 730
-    //   804: astore 4
-    //   806: ldc 60
-    //   808: new 62	java/lang/StringBuilder
-    //   811: dup
-    //   812: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   815: ldc 65
-    //   817: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   820: aload_1
-    //   821: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   824: ldc 71
-    //   826: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   829: aload_2
-    //   830: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   833: ldc 73
-    //   835: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   838: aload 4
-    //   840: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   843: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   846: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   849: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   852: goto -101 -> 751
-    //   855: astore 5
-    //   857: ldc 60
-    //   859: new 62	java/lang/StringBuilder
-    //   862: dup
-    //   863: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   866: ldc 65
-    //   868: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   871: aload_1
-    //   872: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   875: ldc 71
-    //   877: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   880: aload_2
-    //   881: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   884: ldc 73
-    //   886: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   889: aload 5
-    //   891: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   894: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   897: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   900: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   903: aload 4
-    //   905: invokevirtual 99	java/io/OutputStream:close	()V
-    //   908: goto -157 -> 751
-    //   911: astore 4
-    //   913: ldc 60
-    //   915: new 62	java/lang/StringBuilder
-    //   918: dup
-    //   919: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   922: ldc 65
-    //   924: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   927: aload_1
-    //   928: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   931: ldc 71
-    //   933: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   936: aload_2
-    //   937: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   940: ldc 73
-    //   942: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   945: aload 4
-    //   947: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   950: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   953: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   956: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   959: goto -208 -> 751
-    //   962: astore_0
-    //   963: aload 4
-    //   965: invokevirtual 99	java/io/OutputStream:close	()V
-    //   968: aload_0
-    //   969: athrow
-    //   970: astore 4
-    //   972: ldc 60
-    //   974: new 62	java/lang/StringBuilder
-    //   977: dup
-    //   978: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   981: ldc 65
-    //   983: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   986: aload_1
-    //   987: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   990: ldc 71
-    //   992: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   995: aload_2
-    //   996: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   999: ldc 73
-    //   1001: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1004: aload 4
-    //   1006: invokevirtual 77	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1009: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1012: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1015: invokestatic 86	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1018: goto -50 -> 968
-    //   1021: astore_0
-    //   1022: aload 6
+    //   180: ldc 59
+    //   182: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload 4
+    //   188: aload_1
+    //   189: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload 4
+    //   195: ldc 65
+    //   197: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload 4
+    //   203: aload_2
+    //   204: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: ldc 8
+    //   210: aload 4
+    //   212: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   215: aload_0
+    //   216: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   219: iconst_1
+    //   220: ireturn
+    //   221: astore_0
+    //   222: goto +74 -> 296
+    //   225: astore_0
+    //   226: new 56	java/lang/StringBuilder
+    //   229: dup
+    //   230: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   233: astore 5
+    //   235: aload 5
+    //   237: ldc 59
+    //   239: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload 5
+    //   245: aload_1
+    //   246: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload 5
+    //   252: ldc 65
+    //   254: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: pop
+    //   258: aload 5
+    //   260: aload_2
+    //   261: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: pop
+    //   265: ldc 8
+    //   267: aload 5
+    //   269: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: aload_0
+    //   273: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   276: aload 4
+    //   278: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   281: iconst_1
+    //   282: ireturn
+    //   283: astore_0
+    //   284: new 56	java/lang/StringBuilder
+    //   287: dup
+    //   288: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   291: astore 4
+    //   293: goto -115 -> 178
+    //   296: aload 4
+    //   298: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   301: goto +56 -> 357
+    //   304: astore 4
+    //   306: new 56	java/lang/StringBuilder
+    //   309: dup
+    //   310: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   313: astore 5
+    //   315: aload 5
+    //   317: ldc 59
+    //   319: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: pop
+    //   323: aload 5
+    //   325: aload_1
+    //   326: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: pop
+    //   330: aload 5
+    //   332: ldc 65
+    //   334: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: pop
+    //   338: aload 5
+    //   340: aload_2
+    //   341: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: pop
+    //   345: ldc 8
+    //   347: aload 5
+    //   349: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   352: aload 4
+    //   354: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   357: aload_0
+    //   358: athrow
+    //   359: astore 6
+    //   361: aload_0
+    //   362: astore 7
+    //   364: aload 4
+    //   366: astore 8
+    //   368: aload 5
+    //   370: astore 4
+    //   372: aload 6
+    //   374: astore_0
+    //   375: goto +492 -> 867
+    //   378: astore 7
+    //   380: aload_0
+    //   381: astore 10
+    //   383: aload 4
+    //   385: astore 6
+    //   387: aload 5
+    //   389: astore_0
+    //   390: aload 7
+    //   392: astore 4
+    //   394: goto +68 -> 462
+    //   397: astore 7
+    //   399: aload 4
+    //   401: astore 6
+    //   403: aload 5
+    //   405: astore_0
+    //   406: aload 7
+    //   408: astore 4
+    //   410: goto +52 -> 462
+    //   413: astore_0
+    //   414: aconst_null
+    //   415: astore 5
+    //   417: aload 4
+    //   419: astore 8
+    //   421: aload 5
+    //   423: astore 4
+    //   425: goto +442 -> 867
+    //   428: astore 5
+    //   430: aconst_null
+    //   431: astore_0
+    //   432: aload 4
+    //   434: astore 6
+    //   436: aload 5
+    //   438: astore 4
+    //   440: goto +22 -> 462
+    //   443: astore_0
+    //   444: aconst_null
+    //   445: astore 8
+    //   447: aload 8
+    //   449: astore 4
+    //   451: goto +416 -> 867
+    //   454: astore 4
+    //   456: aconst_null
+    //   457: astore 6
+    //   459: aload 6
+    //   461: astore_0
+    //   462: aload 10
+    //   464: astore 7
+    //   466: aload 6
+    //   468: astore 8
+    //   470: aload_0
+    //   471: astore 9
+    //   473: new 56	java/lang/StringBuilder
+    //   476: dup
+    //   477: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   480: astore 5
+    //   482: aload 10
+    //   484: astore 7
+    //   486: aload 6
+    //   488: astore 8
+    //   490: aload_0
+    //   491: astore 9
+    //   493: aload 5
+    //   495: ldc 59
+    //   497: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: pop
+    //   501: aload 10
+    //   503: astore 7
+    //   505: aload 6
+    //   507: astore 8
+    //   509: aload_0
+    //   510: astore 9
+    //   512: aload 5
+    //   514: aload_1
+    //   515: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   518: pop
+    //   519: aload 10
+    //   521: astore 7
+    //   523: aload 6
+    //   525: astore 8
+    //   527: aload_0
+    //   528: astore 9
+    //   530: aload 5
+    //   532: ldc 65
+    //   534: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   537: pop
+    //   538: aload 10
+    //   540: astore 7
+    //   542: aload 6
+    //   544: astore 8
+    //   546: aload_0
+    //   547: astore 9
+    //   549: aload 5
+    //   551: aload_2
+    //   552: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   555: pop
+    //   556: aload 10
+    //   558: astore 7
+    //   560: aload 6
+    //   562: astore 8
+    //   564: aload_0
+    //   565: astore 9
+    //   567: ldc 8
+    //   569: aload 5
+    //   571: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   574: aload 4
+    //   576: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   579: aload 10
+    //   581: ifnull +64 -> 645
+    //   584: aload 10
+    //   586: invokevirtual 54	java/io/BufferedInputStream:close	()V
+    //   589: goto +56 -> 645
+    //   592: astore 4
+    //   594: new 56	java/lang/StringBuilder
+    //   597: dup
+    //   598: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   601: astore 5
+    //   603: aload 5
+    //   605: ldc 59
+    //   607: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   610: pop
+    //   611: aload 5
+    //   613: aload_1
+    //   614: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   617: pop
+    //   618: aload 5
+    //   620: ldc 65
+    //   622: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   625: pop
+    //   626: aload 5
+    //   628: aload_2
+    //   629: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   632: pop
+    //   633: ldc 8
+    //   635: aload 5
+    //   637: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   640: aload 4
+    //   642: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   645: aload 6
+    //   647: ifnull +213 -> 860
+    //   650: aload 6
+    //   652: invokevirtual 79	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
+    //   655: invokevirtual 84	java/io/FileDescriptor:sync	()V
+    //   658: aload_0
+    //   659: ifnull +7 -> 666
+    //   662: aload_0
+    //   663: invokevirtual 89	java/nio/channels/FileLock:release	()V
+    //   666: aload 6
+    //   668: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   671: iconst_0
+    //   672: ireturn
+    //   673: astore 4
+    //   675: new 56	java/lang/StringBuilder
+    //   678: dup
+    //   679: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   682: astore_0
+    //   683: aload_0
+    //   684: ldc 59
+    //   686: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   689: pop
+    //   690: aload_0
+    //   691: aload_1
+    //   692: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   695: pop
+    //   696: aload_0
+    //   697: ldc 65
+    //   699: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   702: pop
+    //   703: aload_0
+    //   704: aload_2
+    //   705: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   708: pop
+    //   709: ldc 8
+    //   711: aload_0
+    //   712: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   715: aload 4
+    //   717: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   720: iconst_0
+    //   721: ireturn
+    //   722: astore_0
+    //   723: goto +74 -> 797
+    //   726: astore_0
+    //   727: new 56	java/lang/StringBuilder
+    //   730: dup
+    //   731: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   734: astore 4
+    //   736: aload 4
+    //   738: ldc 59
+    //   740: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   743: pop
+    //   744: aload 4
+    //   746: aload_1
+    //   747: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   750: pop
+    //   751: aload 4
+    //   753: ldc 65
+    //   755: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   758: pop
+    //   759: aload 4
+    //   761: aload_2
+    //   762: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   765: pop
+    //   766: ldc 8
+    //   768: aload 4
+    //   770: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   773: aload_0
+    //   774: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   777: aload 6
+    //   779: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   782: iconst_0
+    //   783: ireturn
+    //   784: astore 4
+    //   786: new 56	java/lang/StringBuilder
+    //   789: dup
+    //   790: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   793: astore_0
+    //   794: goto -111 -> 683
+    //   797: aload 6
+    //   799: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   802: goto +56 -> 858
+    //   805: astore 4
+    //   807: new 56	java/lang/StringBuilder
+    //   810: dup
+    //   811: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   814: astore 5
+    //   816: aload 5
+    //   818: ldc 59
+    //   820: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   823: pop
+    //   824: aload 5
+    //   826: aload_1
+    //   827: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   830: pop
+    //   831: aload 5
+    //   833: ldc 65
+    //   835: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   838: pop
+    //   839: aload 5
+    //   841: aload_2
+    //   842: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   845: pop
+    //   846: ldc 8
+    //   848: aload 5
+    //   850: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   853: aload 4
+    //   855: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   858: aload_0
+    //   859: athrow
+    //   860: iconst_0
+    //   861: ireturn
+    //   862: astore_0
+    //   863: aload 9
+    //   865: astore 4
+    //   867: aload 7
+    //   869: ifnull +64 -> 933
+    //   872: aload 7
+    //   874: invokevirtual 54	java/io/BufferedInputStream:close	()V
+    //   877: goto +56 -> 933
+    //   880: astore 5
+    //   882: new 56	java/lang/StringBuilder
+    //   885: dup
+    //   886: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   889: astore 6
+    //   891: aload 6
+    //   893: ldc 59
+    //   895: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   898: pop
+    //   899: aload 6
+    //   901: aload_1
+    //   902: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   905: pop
+    //   906: aload 6
+    //   908: ldc 65
+    //   910: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   913: pop
+    //   914: aload 6
+    //   916: aload_2
+    //   917: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   920: pop
+    //   921: ldc 8
+    //   923: aload 6
+    //   925: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   928: aload 5
+    //   930: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   933: aload 8
+    //   935: ifnull +227 -> 1162
+    //   938: aload 8
+    //   940: invokevirtual 79	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
+    //   943: invokevirtual 84	java/io/FileDescriptor:sync	()V
+    //   946: aload 4
+    //   948: ifnull +8 -> 956
+    //   951: aload 4
+    //   953: invokevirtual 89	java/nio/channels/FileLock:release	()V
+    //   956: aload 8
+    //   958: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   961: goto +201 -> 1162
+    //   964: astore 4
+    //   966: new 56	java/lang/StringBuilder
+    //   969: dup
+    //   970: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   973: astore 5
+    //   975: aload 5
+    //   977: ldc 59
+    //   979: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: pop
+    //   983: aload 5
+    //   985: aload_1
+    //   986: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   989: pop
+    //   990: aload 5
+    //   992: ldc 65
+    //   994: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   997: pop
+    //   998: aload 5
+    //   1000: aload_2
+    //   1001: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1004: pop
+    //   1005: ldc 8
+    //   1007: aload 5
+    //   1009: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1012: aload 4
+    //   1014: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1017: goto +145 -> 1162
+    //   1020: astore_0
+    //   1021: goto +78 -> 1099
     //   1024: astore 4
-    //   1026: goto -306 -> 720
-    //   1029: astore 5
-    //   1031: aload_0
-    //   1032: astore 6
-    //   1034: aload 5
-    //   1036: astore_0
-    //   1037: aload 6
-    //   1039: astore 5
-    //   1041: goto -321 -> 720
-    //   1044: astore_0
-    //   1045: aconst_null
-    //   1046: astore 4
-    //   1048: goto -969 -> 79
-    //   1051: astore_0
-    //   1052: goto -973 -> 79
+    //   1026: new 56	java/lang/StringBuilder
+    //   1029: dup
+    //   1030: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   1033: astore 5
+    //   1035: aload 5
+    //   1037: ldc 59
+    //   1039: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1042: pop
+    //   1043: aload 5
+    //   1045: aload_1
+    //   1046: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1049: pop
+    //   1050: aload 5
+    //   1052: ldc 65
+    //   1054: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1057: pop
+    //   1058: aload 5
+    //   1060: aload_2
+    //   1061: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1064: pop
+    //   1065: ldc 8
+    //   1067: aload 5
+    //   1069: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1072: aload 4
+    //   1074: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1077: aload 8
+    //   1079: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   1082: goto +80 -> 1162
+    //   1085: astore 4
+    //   1087: new 56	java/lang/StringBuilder
+    //   1090: dup
+    //   1091: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   1094: astore 5
+    //   1096: goto -121 -> 975
+    //   1099: aload 8
+    //   1101: invokevirtual 90	java/io/FileOutputStream:close	()V
+    //   1104: goto +56 -> 1160
+    //   1107: astore 4
+    //   1109: new 56	java/lang/StringBuilder
+    //   1112: dup
+    //   1113: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   1116: astore 5
+    //   1118: aload 5
+    //   1120: ldc 59
+    //   1122: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1125: pop
+    //   1126: aload 5
+    //   1128: aload_1
+    //   1129: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1132: pop
+    //   1133: aload 5
+    //   1135: ldc 65
+    //   1137: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1140: pop
+    //   1141: aload 5
+    //   1143: aload_2
+    //   1144: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1147: pop
+    //   1148: ldc 8
+    //   1150: aload 5
+    //   1152: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1155: aload 4
+    //   1157: invokestatic 75	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1160: aload_0
+    //   1161: athrow
+    //   1162: goto +5 -> 1167
+    //   1165: aload_0
+    //   1166: athrow
+    //   1167: goto -2 -> 1165
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1055	0	paramAssetManager	AssetManager
-    //   0	1055	1	paramString1	String
-    //   0	1055	2	paramString2	String
-    //   53	12	3	i	int
-    //   17	382	4	localFileOutputStream	java.io.FileOutputStream
-    //   405	254	4	localIOException1	IOException
-    //   665	35	4	localIOException2	IOException
-    //   718	29	4	localObject1	Object
-    //   804	100	4	localIOException3	IOException
-    //   911	53	4	localIOException4	IOException
-    //   970	35	4	localIOException5	IOException
-    //   1024	23	4	localObject2	Object
-    //   1	61	5	localObject3	Object
-    //   71	6	5	localIOException6	IOException
-    //   85	641	5	localObject4	Object
-    //   753	35	5	localIOException7	IOException
-    //   855	35	5	localIOException8	IOException
-    //   1029	6	5	localObject5	Object
-    //   1039	1	5	localObject6	Object
-    //   21	1017	6	localObject7	Object
-    //   7	131	7	localAssetManager	AssetManager
-    //   4	20	8	localObject8	Object
+    //   0	1170	0	paramAssetManager	android.content.res.AssetManager
+    //   0	1170	1	paramString1	String
+    //   0	1170	2	paramString2	String
+    //   67	12	3	i	int
+    //   17	280	4	localObject1	Object
+    //   304	61	4	localIOException1	java.io.IOException
+    //   370	80	4	localObject2	Object
+    //   454	121	4	localIOException2	java.io.IOException
+    //   592	49	4	localIOException3	java.io.IOException
+    //   673	43	4	localIOException4	java.io.IOException
+    //   734	35	4	localStringBuilder1	StringBuilder
+    //   784	1	4	localIOException5	java.io.IOException
+    //   805	49	4	localIOException6	java.io.IOException
+    //   865	87	4	localObject3	Object
+    //   964	49	4	localIOException7	java.io.IOException
+    //   1024	49	4	localIOException8	java.io.IOException
+    //   1085	1	4	localIOException9	java.io.IOException
+    //   1107	49	4	localIOException10	java.io.IOException
+    //   27	395	5	localObject4	Object
+    //   428	9	5	localIOException11	java.io.IOException
+    //   480	369	5	localStringBuilder2	StringBuilder
+    //   880	49	5	localIOException12	java.io.IOException
+    //   973	178	5	localStringBuilder3	StringBuilder
+    //   1	134	6	localObject5	Object
+    //   359	14	6	localObject6	Object
+    //   385	539	6	localObject7	Object
+    //   4	359	7	localObject8	Object
+    //   378	13	7	localIOException13	java.io.IOException
+    //   397	10	7	localIOException14	java.io.IOException
+    //   464	409	7	localObject9	Object
+    //   35	1065	8	localObject10	Object
+    //   39	825	9	localObject11	Object
+    //   7	578	10	localAssetManager	android.content.res.AssetManager
     // Exception table:
     //   from	to	target	type
-    //   40	47	71	java/io/IOException
-    //   47	54	71	java/io/IOException
-    //   59	68	71	java/io/IOException
-    //   169	173	196	java/io/IOException
-    //   189	194	245	java/io/IOException
-    //   178	189	294	java/io/IOException
-    //   340	345	348	java/io/IOException
-    //   178	189	397	finally
-    //   295	340	397	finally
-    //   398	403	405	java/io/IOException
-    //   137	142	456	java/io/IOException
-    //   158	163	505	java/io/IOException
-    //   147	158	554	java/io/IOException
-    //   600	605	608	java/io/IOException
-    //   147	158	657	finally
-    //   555	600	657	finally
-    //   658	663	665	java/io/IOException
-    //   9	19	716	finally
-    //   725	730	753	java/io/IOException
-    //   746	751	804	java/io/IOException
-    //   735	746	855	java/io/IOException
-    //   903	908	911	java/io/IOException
-    //   735	746	962	finally
-    //   857	903	962	finally
-    //   963	968	970	java/io/IOException
-    //   27	40	1021	finally
-    //   87	132	1021	finally
-    //   40	47	1029	finally
-    //   47	54	1029	finally
-    //   59	68	1029	finally
-    //   9	19	1044	java/io/IOException
-    //   27	40	1051	java/io/IOException
-  }
-  
-  public static void copyFileOrDir(Context paramContext, String paramString1, String paramString2, long[] paramArrayOfLong)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramString1 = paramContext.getAssets();
-        paramArrayOfLong = new File(paramString2);
-        if (!paramArrayOfLong.exists()) {
-          paramArrayOfLong.mkdir();
-        }
-        paramContext = getJSConfigByPath(paramContext);
-        if (paramContext == null)
-        {
-          QMLog.e("minigame", "[Load Asset preload js Json],getJSConfigByPath return NULL!!!");
-          return;
-        }
-        paramArrayOfLong = new File(paramString2, "preload/preload.json");
-        if (!paramArrayOfLong.getParentFile().exists()) {
-          paramArrayOfLong.getParentFile().mkdirs();
-        }
-        if (copyAssetToFile(paramString1, "mini/preload/preload.json", paramArrayOfLong.getAbsolutePath())) {
-          break label314;
-        }
-        QMLog.e("minigame", "[Load Asset preload js Json],copy preload.json error!!! ");
-      }
-      catch (Throwable paramContext)
-      {
-        File localFile;
-        QMLog.e("minigame", "[Load Asset preload js Json],copy fileList[] error!!! ", paramContext);
-      }
-      if (i < paramContext.size())
-      {
-        if (TextUtils.isEmpty((CharSequence)paramContext.get(i)))
-        {
-          QMLog.e("minigame", "[Load Asset preload js Json],fileList[" + i + "/" + paramContext.size() + "] isEmpty ");
-        }
-        else
-        {
-          paramArrayOfLong = "mini/" + (String)paramContext.get(i);
-          localFile = new File(paramString2, (String)paramContext.get(i));
-          if (!localFile.getParentFile().exists()) {
-            localFile.getParentFile().mkdirs();
-          }
-          if (!copyAssetToFile(paramString1, paramArrayOfLong, new File(paramString2, (String)paramContext.get(i)).getAbsolutePath())) {
-            QMLog.e("minigame", "[Load Asset preload js Json],copy fileList[" + i + "/" + paramContext.size() + "] error! ");
-          }
-        }
-      }
-      else
-      {
-        return;
-        label314:
-        i = 0;
-        continue;
-      }
-      i += 1;
-    }
+    //   85	89	92	java/io/IOException
+    //   161	166	168	java/io/IOException
+    //   143	151	221	finally
+    //   156	161	221	finally
+    //   226	276	221	finally
+    //   143	151	225	java/io/IOException
+    //   156	161	225	java/io/IOException
+    //   276	281	283	java/io/IOException
+    //   296	301	304	java/io/IOException
+    //   54	61	359	finally
+    //   61	68	359	finally
+    //   73	82	359	finally
+    //   54	61	378	java/io/IOException
+    //   61	68	378	java/io/IOException
+    //   73	82	378	java/io/IOException
+    //   41	54	397	java/io/IOException
+    //   19	29	413	finally
+    //   19	29	428	java/io/IOException
+    //   9	19	443	finally
+    //   9	19	454	java/io/IOException
+    //   584	589	592	java/io/IOException
+    //   666	671	673	java/io/IOException
+    //   650	658	722	finally
+    //   662	666	722	finally
+    //   727	777	722	finally
+    //   650	658	726	java/io/IOException
+    //   662	666	726	java/io/IOException
+    //   777	782	784	java/io/IOException
+    //   797	802	805	java/io/IOException
+    //   41	54	862	finally
+    //   473	482	862	finally
+    //   493	501	862	finally
+    //   512	519	862	finally
+    //   530	538	862	finally
+    //   549	556	862	finally
+    //   567	579	862	finally
+    //   872	877	880	java/io/IOException
+    //   956	961	964	java/io/IOException
+    //   938	946	1020	finally
+    //   951	956	1020	finally
+    //   1026	1077	1020	finally
+    //   938	946	1024	java/io/IOException
+    //   951	956	1024	java/io/IOException
+    //   1077	1082	1085	java/io/IOException
+    //   1099	1104	1107	java/io/IOException
   }
   
   public static boolean copyFileOrDir(Context paramContext, String paramString1, String paramString2, List<String> paramList)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramList == null) || (paramList.size() <= 0)) {
-      return false;
-    }
-    try
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramList != null))
     {
-      paramContext = paramContext.getAssets();
-      Object localObject = new File(paramString2);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdir();
+      if (paramList.size() <= 0) {
+        return false;
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      try
       {
-        String str = (String)paramList.next();
-        if (!TextUtils.isEmpty(str))
+        paramContext = paramContext.getAssets();
+        Object localObject = new File(paramString2);
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdir();
+        }
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          localObject = new File(paramString2, str);
-          if (!((File)localObject).exists()) {
-            ((File)localObject).getParentFile().mkdirs();
-          }
-          str = paramString1 + File.separator + str;
-          localObject = ((File)localObject).getAbsolutePath();
-          if (!copyAssetToFile(paramContext, str, (String)localObject))
+          String str = (String)paramList.next();
+          if (!TextUtils.isEmpty(str))
           {
-            QMLog.e("[mini] AssetsUtil", String.format("copyAssetToFile from=%s, to=%s fail", new Object[] { str, localObject }));
-            return false;
+            localObject = new File(paramString2, str);
+            if (!((File)localObject).exists()) {
+              ((File)localObject).getParentFile().mkdirs();
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append(File.separator);
+            localStringBuilder.append(str);
+            str = localStringBuilder.toString();
+            localObject = ((File)localObject).getAbsolutePath();
+            if (!copyAssetToFile(paramContext, str, (String)localObject))
+            {
+              QMLog.e("AssetsUtil", String.format("copyAssetToFile from=%s, to=%s fail", new Object[] { str, localObject }));
+              return false;
+            }
           }
         }
+        return true;
       }
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      QMLog.e("[mini] AssetsUtil", String.format("copyFileOrDir assetsPath=%s, destPath=%s, exception", new Object[] { paramString1, paramString2 }), paramContext);
+      catch (Throwable paramContext)
+      {
+        QMLog.e("AssetsUtil", String.format("copyFileOrDir assetsPath=%s, destPath=%s, exception", new Object[] { paramString1, paramString2 }), paramContext);
+      }
     }
     try
     {
       if (new File(paramString2).exists()) {
-        bgpc.a(paramString2, false);
+        FileUtils.delete(paramString2, false);
       }
-      label238:
       return false;
     }
-    catch (Throwable paramContext)
-    {
-      break label238;
-    }
-  }
-  
-  public static void getAssetsSizeTotal(Context paramContext, String paramString, long[] paramArrayOfLong, boolean[] paramArrayOfBoolean)
-  {
-    AssetManager localAssetManager = paramContext.getAssets();
-    String[] arrayOfString;
-    try
-    {
-      arrayOfString = localAssetManager.list(paramString);
-      if (arrayOfString == null) {
-        return;
-      }
-      if (arrayOfString.length == 0)
-      {
-        readAssetSize(localAssetManager, paramString, paramArrayOfLong);
-        return;
-      }
-    }
-    catch (IOException paramContext)
-    {
-      if ((paramArrayOfBoolean != null) && (paramArrayOfBoolean.length > 0)) {
-        paramArrayOfBoolean[0] = false;
-      }
-      QMLog.e("AssetsUtil", "getAssetsSizeTotal error " + DebugUtil.getPrintableStackTrace(paramContext));
-      return;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i < arrayOfString.length)
-      {
-        if (!TextUtils.isEmpty(arrayOfString[i])) {
-          getAssetsSizeTotal(paramContext, paramString + "/" + arrayOfString[i], paramArrayOfLong, paramArrayOfBoolean);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public static ArrayList<String> getJSConfigByPath(Context paramContext)
-  {
-    int j = 0;
-    paramContext = bgpc.a(paramContext, "mini/preload/preload.json");
-    if (TextUtils.isEmpty(paramContext))
-    {
-      QMLog.e("minigame", "[Load Asset preload js Json]getJSConfig error, jsConfig file empty");
-      return null;
-    }
-    try
-    {
-      QMLog.i("minigame", "[Load Asset preload js Json],context:" + paramContext);
-      Object localObject = new JSONObject(paramContext);
-      paramContext = new ArrayList();
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("preloadJS");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        paramContext.add(localJSONArray.getString(i));
-        i += 1;
-      }
-      localObject = ((JSONObject)localObject).getJSONArray("preloadJSForOpendata");
-      i = j;
-      while (i < ((JSONArray)localObject).length())
-      {
-        paramContext.add(((JSONArray)localObject).getString(i));
-        i += 1;
-      }
-      paramContext.add("preload/jssdk/QGameWorkerContext.js");
-      return paramContext;
-    }
-    catch (JSONException paramContext)
-    {
-      QMLog.e("minigame", "[Load Asset preload js Json],getJSConfig error, parse jsConfig file exception: ", paramContext);
-    }
-    return null;
-  }
-  
-  /* Error */
-  private static void readAssetSize(AssetManager paramAssetManager, String paramString, long[] paramArrayOfLong)
-  {
-    // Byte code:
-    //   0: sipush 8192
-    //   3: newarray byte
-    //   5: astore 4
-    //   7: new 39	java/io/BufferedInputStream
-    //   10: dup
-    //   11: aload_0
-    //   12: aload_1
-    //   13: invokevirtual 45	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   16: invokespecial 48	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   19: astore_1
-    //   20: aload_1
-    //   21: aload 4
-    //   23: invokevirtual 52	java/io/BufferedInputStream:read	([B)I
-    //   26: istore_3
-    //   27: iload_3
-    //   28: iconst_m1
-    //   29: if_icmpeq +35 -> 64
-    //   32: aload_2
-    //   33: ifnull -13 -> 20
-    //   36: aload_2
-    //   37: arraylength
-    //   38: ifle -18 -> 20
-    //   41: aload_2
-    //   42: iconst_0
-    //   43: aload_2
-    //   44: iconst_0
-    //   45: laload
-    //   46: iload_3
-    //   47: i2l
-    //   48: ladd
-    //   49: lastore
-    //   50: goto -30 -> 20
-    //   53: astore_0
-    //   54: aload_1
-    //   55: ifnull +7 -> 62
-    //   58: aload_1
-    //   59: invokevirtual 89	java/io/BufferedInputStream:close	()V
-    //   62: aload_0
-    //   63: athrow
-    //   64: aload_1
-    //   65: ifnull +7 -> 72
-    //   68: aload_1
-    //   69: invokevirtual 89	java/io/BufferedInputStream:close	()V
-    //   72: return
-    //   73: astore_0
-    //   74: aload_0
-    //   75: invokevirtual 278	java/io/IOException:printStackTrace	()V
-    //   78: return
-    //   79: astore_1
-    //   80: aload_1
-    //   81: invokevirtual 278	java/io/IOException:printStackTrace	()V
-    //   84: goto -22 -> 62
-    //   87: astore_0
-    //   88: aconst_null
-    //   89: astore_1
-    //   90: goto -36 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	93	0	paramAssetManager	AssetManager
-    //   0	93	1	paramString	String
-    //   0	93	2	paramArrayOfLong	long[]
-    //   26	21	3	i	int
-    //   5	17	4	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   20	27	53	finally
-    //   36	41	53	finally
-    //   68	72	73	java/io/IOException
-    //   58	62	79	java/io/IOException
-    //   7	20	87	finally
+    catch (Throwable paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.AssetsUtil
  * JD-Core Version:    0.7.0.1
  */

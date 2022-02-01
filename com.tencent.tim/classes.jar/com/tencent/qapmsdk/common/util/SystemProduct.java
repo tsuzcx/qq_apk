@@ -1,0 +1,84 @@
+package com.tencent.qapmsdk.common.util;
+
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/SystemProduct;", "", "()V", "Companion", "common_release"}, k=1, mv={1, 1, 15})
+public final class SystemProduct
+{
+  public static final Companion Companion = new Companion(null);
+  private static final String TAG = "QAPM_common_SystemProduct";
+  @NotNull
+  private static final Lazy is64Bit$delegate = LazyKt.lazy((Function0)SystemProduct.Companion.is64Bit.2.INSTANCE);
+  @NotNull
+  private static final Lazy isDalvikVm$delegate = LazyKt.lazy((Function0)SystemProduct.Companion.isDalvikVm.2.INSTANCE);
+  @NotNull
+  private static final Lazy isX86CPU$delegate = LazyKt.lazy((Function0)SystemProduct.Companion.isX86CPU.2.INSTANCE);
+  @NotNull
+  private static final Lazy isYunOS$delegate = LazyKt.lazy((Function0)SystemProduct.Companion.isYunOS.2.INSTANCE);
+  
+  public static final boolean is64Bit()
+  {
+    return Companion.is64Bit();
+  }
+  
+  public static final boolean isDalvikVm()
+  {
+    return Companion.isDalvikVm();
+  }
+  
+  public static final boolean isX86CPU()
+  {
+    return Companion.isX86CPU();
+  }
+  
+  public static final boolean isYunOS()
+  {
+    return Companion.isYunOS();
+  }
+  
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/SystemProduct$Companion;", "", "()V", "TAG", "", "is64Bit", "", "is64Bit$annotations", "()Z", "is64Bit$delegate", "Lkotlin/Lazy;", "isDalvikVm", "isDalvikVm$annotations", "isDalvikVm$delegate", "isX86CPU", "isX86CPU$annotations", "isX86CPU$delegate", "isYunOS", "isYunOS$annotations", "isYunOS$delegate", "common_release"}, k=1, mv={1, 1, 15})
+  public static final class Companion
+  {
+    public final boolean is64Bit()
+    {
+      Lazy localLazy = SystemProduct.access$is64Bit$cp();
+      Object localObject = SystemProduct.Companion;
+      localObject = $$delegatedProperties[3];
+      return ((Boolean)localLazy.getValue()).booleanValue();
+    }
+    
+    public final boolean isDalvikVm()
+    {
+      Lazy localLazy = SystemProduct.access$isDalvikVm$cp();
+      Object localObject = SystemProduct.Companion;
+      localObject = $$delegatedProperties[0];
+      return ((Boolean)localLazy.getValue()).booleanValue();
+    }
+    
+    public final boolean isX86CPU()
+    {
+      Lazy localLazy = SystemProduct.access$isX86CPU$cp();
+      Object localObject = SystemProduct.Companion;
+      localObject = $$delegatedProperties[1];
+      return ((Boolean)localLazy.getValue()).booleanValue();
+    }
+    
+    public final boolean isYunOS()
+    {
+      Lazy localLazy = SystemProduct.access$isYunOS$cp();
+      Object localObject = SystemProduct.Companion;
+      localObject = $$delegatedProperties[2];
+      return ((Boolean)localLazy.getValue()).booleanValue();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes10.jar
+ * Qualified Name:     com.tencent.qapmsdk.common.util.SystemProduct
+ * JD-Core Version:    0.7.0.1
+ */

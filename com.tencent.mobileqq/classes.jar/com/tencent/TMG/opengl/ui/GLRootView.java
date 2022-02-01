@@ -10,12 +10,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import com.tencent.TMG.opengl.glrenderer.GLCanvas;
+import com.tencent.TMG.opengl.glrenderer.GLES11Canvas;
+import com.tencent.TMG.opengl.glrenderer.GLES20Canvas;
 import com.tencent.TMG.opengl.texture.BasicTexture;
 import com.tencent.TMG.opengl.texture.UploadedTexture;
 import com.tencent.TMG.opengl.utils.Utils;
 import com.tencent.TMG.utils.QLog;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
+import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
 
@@ -54,21 +57,19 @@ public class GLRootView
     if (isInEditMode()) {
       return;
     }
-    this.mFlags |= 0x1;
+    this.mFlags = (0x1 | this.mFlags);
     setBackgroundDrawable(null);
     setEGLContextClientVersion(Utils.getGLVersion(paramContext));
     if (Utils.USE_888_PIXEL_FORMAT) {
       setEGLConfigChooser(8, 8, 8, 0, 0, 0);
+    } else {
+      setEGLConfigChooser(5, 6, 5, 0, 0, 0);
     }
-    for (;;)
+    setRenderer(this);
+    if (Utils.USE_888_PIXEL_FORMAT)
     {
-      setRenderer(this);
-      if (!Utils.USE_888_PIXEL_FORMAT) {
-        break;
-      }
       getHolder().setFormat(3);
       return;
-      setEGLConfigChooser(5, 6, 5, 0, 0, 0);
     }
     getHolder().setFormat(4);
   }
@@ -78,30 +79,37 @@ public class GLRootView
     this.mFlags &= 0xFFFFFFFD;
     int i = getWidth();
     int j = getHeight();
-    if ((this.mContentView != null) && (i != 0) && (j != 0)) {
-      this.mContentView.layout(0, 0, i, j);
+    GLView localGLView = this.mContentView;
+    if ((localGLView != null) && (i != 0) && (j != 0)) {
+      localGLView.layout(0, 0, i, j);
     }
   }
   
   private void outputFps()
   {
-    long l = System.nanoTime();
-    if (this.mFrameCountingStart == 0L) {
-      this.mFrameCountingStart = l;
-    }
-    for (;;)
+    long l1 = System.nanoTime();
+    long l2 = this.mFrameCountingStart;
+    if (l2 == 0L)
     {
-      this.mFrameCount += 1;
-      return;
-      if (l - this.mFrameCountingStart > 1000000000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GLRootView", 0, "fps: " + this.mFrameCount * 1000000000.0D / (l - this.mFrameCountingStart));
-        }
-        this.mFrameCountingStart = l;
-        this.mFrameCount = 0;
-      }
+      this.mFrameCountingStart = l1;
     }
+    else if (l1 - l2 > 1000000000L)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("fps: ");
+        double d1 = this.mFrameCount;
+        Double.isNaN(d1);
+        double d2 = l1 - this.mFrameCountingStart;
+        Double.isNaN(d2);
+        localStringBuilder.append(d1 * 1000000000.0D / d2);
+        QLog.d("GLRootView", 0, localStringBuilder.toString());
+      }
+      this.mFrameCountingStart = l1;
+      this.mFrameCount = 0;
+    }
+    this.mFrameCount += 1;
   }
   
   private void superRequestRender()
@@ -111,38 +119,41 @@ public class GLRootView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool1 = isEnabled();
     boolean bool2 = false;
-    if (!isEnabled()) {
+    if (!bool1) {
       return false;
     }
     int i = paramMotionEvent.getAction();
-    if ((i == 3) || (i == 1)) {
+    if ((i != 3) && (i != 1))
+    {
+      if ((!this.mInDownState) && (i != 0)) {
+        return false;
+      }
+    }
+    else {
       this.mInDownState = false;
     }
-    do
+    this.mRenderLock.lock();
+    bool1 = bool2;
+    try
     {
-      this.mRenderLock.lock();
-      boolean bool1 = bool2;
-      try
+      if (this.mContentView != null)
       {
-        if (this.mContentView != null)
-        {
-          bool1 = bool2;
-          if (this.mContentView.dispatchTouchEvent(paramMotionEvent)) {
-            bool1 = true;
-          }
+        bool1 = bool2;
+        if (this.mContentView.dispatchTouchEvent(paramMotionEvent)) {
+          bool1 = true;
         }
-        if ((i == 0) && (bool1)) {
-          this.mInDownState = true;
-        }
-        return bool1;
       }
-      finally
-      {
-        this.mRenderLock.unlock();
+      if ((i == 0) && (bool1)) {
+        this.mInDownState = true;
       }
-    } while ((this.mInDownState) || (i == 0));
-    return false;
+      return bool1;
+    }
+    finally
+    {
+      this.mRenderLock.unlock();
+    }
   }
   
   public void freeze()
@@ -174,10 +185,14 @@ public class GLRootView
     {
       onDrawFrameLocked(paramGL10);
       this.mRenderLock.unlock();
-      if ((this.mFirstDraw) && (this.mContentView != null))
+      if (this.mFirstDraw)
       {
-        this.mFirstDraw = false;
-        this.mContentView.onFirstDraw();
+        paramGL10 = this.mContentView;
+        if (paramGL10 != null)
+        {
+          this.mFirstDraw = false;
+          paramGL10.onFirstDraw();
+        }
       }
       this.mLastRenderTime = SystemClock.elapsedRealtime();
       return;
@@ -185,6 +200,10 @@ public class GLRootView
     finally
     {
       this.mRenderLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramGL10;
     }
   }
   
@@ -196,16 +215,14 @@ public class GLRootView
     if ((this.mFlags & 0x2) != 0) {
       layoutContentPane();
     }
-    if (this.mContentView != null) {
-      this.mContentView.render(this.mCanvas);
-    }
-    for (;;)
-    {
-      if (UploadedTexture.uploadLimitReached()) {
-        requestRender();
-      }
-      return;
+    paramGL10 = this.mContentView;
+    if (paramGL10 != null) {
+      paramGL10.render(this.mCanvas);
+    } else {
       this.mCanvas.clearBuffer();
+    }
+    if (UploadedTexture.uploadLimitReached()) {
+      requestRender();
     }
   }
   
@@ -230,90 +247,52 @@ public class GLRootView
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GLRootView", 0, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSurfaceChanged: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("x");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", gl10: ");
+      localStringBuilder.append(paramGL10.toString());
+      QLog.i("GLRootView", 0, localStringBuilder.toString());
     }
     Process.setThreadPriority(-4);
     this.mCanvas.setSize(paramInt1, paramInt2);
   }
   
-  /* Error */
-  public void onSurfaceCreated(GL10 paramGL10, javax.microedition.khronos.egl.EGLConfig paramEGLConfig)
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: checkcast 297	javax/microedition/khronos/opengles/GL11
-    //   4: astore_1
-    //   5: aload_0
-    //   6: getfield 299	com/tencent/TMG/opengl/ui/GLRootView:mGL	Ljavax/microedition/khronos/opengles/GL11;
-    //   9: ifnull +48 -> 57
-    //   12: invokestatic 153	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   15: ifeq +42 -> 57
-    //   18: ldc 19
-    //   20: iconst_0
-    //   21: new 155	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 156	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 301
-    //   31: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: aload_0
-    //   35: getfield 299	com/tencent/TMG/opengl/ui/GLRootView:mGL	Ljavax/microedition/khronos/opengles/GL11;
-    //   38: invokevirtual 304	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   41: ldc_w 306
-    //   44: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: aload_1
-    //   48: invokevirtual 304	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 175	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: aload_0
-    //   58: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   61: invokevirtual 191	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   64: aload_0
-    //   65: aload_1
-    //   66: putfield 299	com/tencent/TMG/opengl/ui/GLRootView:mGL	Ljavax/microedition/khronos/opengles/GL11;
-    //   69: aload_0
-    //   70: invokevirtual 310	com/tencent/TMG/opengl/ui/GLRootView:getContext	()Landroid/content/Context;
-    //   73: invokevirtual 315	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   76: invokestatic 95	com/tencent/TMG/opengl/utils/Utils:getGLVersion	(Landroid/content/Context;)I
-    //   79: iconst_2
-    //   80: if_icmplt +32 -> 112
-    //   83: new 317	com/tencent/TMG/opengl/glrenderer/GLES20Canvas
-    //   86: dup
-    //   87: invokespecial 318	com/tencent/TMG/opengl/glrenderer/GLES20Canvas:<init>	()V
-    //   90: astore_1
-    //   91: aload_0
-    //   92: aload_1
-    //   93: putfield 231	com/tencent/TMG/opengl/ui/GLRootView:mCanvas	Lcom/tencent/TMG/opengl/glrenderer/GLCanvas;
-    //   96: invokestatic 323	com/tencent/TMG/opengl/texture/BasicTexture:invalidateAllTextures	()V
-    //   99: aload_0
-    //   100: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   103: invokevirtual 196	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   106: aload_0
-    //   107: iconst_0
-    //   108: invokevirtual 326	com/tencent/TMG/opengl/ui/GLRootView:setRenderMode	(I)V
-    //   111: return
-    //   112: new 328	com/tencent/TMG/opengl/glrenderer/GLES11Canvas
-    //   115: dup
-    //   116: aload_1
-    //   117: invokespecial 331	com/tencent/TMG/opengl/glrenderer/GLES11Canvas:<init>	(Ljavax/microedition/khronos/opengles/GL11;)V
-    //   120: astore_1
-    //   121: goto -30 -> 91
-    //   124: astore_1
-    //   125: aload_0
-    //   126: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   129: invokevirtual 196	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   132: aload_1
-    //   133: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	134	0	this	GLRootView
-    //   0	134	1	paramGL10	GL10
-    //   0	134	2	paramEGLConfig	javax.microedition.khronos.egl.EGLConfig
-    // Exception table:
-    //   from	to	target	type
-    //   64	91	124	finally
-    //   91	99	124	finally
-    //   112	121	124	finally
+    paramGL10 = (GL11)paramGL10;
+    if ((this.mGL != null) && (QLog.isColorLevel()))
+    {
+      paramEGLConfig = new StringBuilder();
+      paramEGLConfig.append("GLObject has changed from ");
+      paramEGLConfig.append(this.mGL);
+      paramEGLConfig.append(" to ");
+      paramEGLConfig.append(paramGL10);
+      QLog.d("GLRootView", 0, paramEGLConfig.toString());
+    }
+    this.mRenderLock.lock();
+    try
+    {
+      this.mGL = paramGL10;
+      if (Utils.getGLVersion(getContext().getApplicationContext()) >= 2) {
+        paramGL10 = new GLES20Canvas();
+      } else {
+        paramGL10 = new GLES11Canvas(paramGL10);
+      }
+      this.mCanvas = paramGL10;
+      BasicTexture.invalidateAllTextures();
+      this.mRenderLock.unlock();
+      setRenderMode(0);
+      return;
+    }
+    finally
+    {
+      this.mRenderLock.unlock();
+    }
   }
   
   public void requestLayoutContentPane()
@@ -321,17 +300,13 @@ public class GLRootView
     this.mRenderLock.lock();
     try
     {
-      if (this.mContentView != null)
+      if ((this.mContentView != null) && ((this.mFlags & 0x2) == 0))
       {
-        i = this.mFlags;
-        if ((i & 0x2) == 0) {}
+        int i = this.mFlags;
+        if ((i & 0x1) != 0) {}
       }
       else
       {
-        return;
-      }
-      int i = this.mFlags;
-      if ((i & 0x1) == 0) {
         return;
       }
       this.mFlags |= 0x2;
@@ -374,27 +349,29 @@ public class GLRootView
   
   public void setContentPane(GLView paramGLView)
   {
-    if (this.mContentView == paramGLView) {}
-    do
-    {
+    Object localObject = this.mContentView;
+    if (localObject == paramGLView) {
       return;
-      if (this.mContentView != null)
+    }
+    if (localObject != null)
+    {
+      if (this.mInDownState)
       {
-        if (this.mInDownState)
-        {
-          long l = SystemClock.uptimeMillis();
-          MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-          this.mContentView.dispatchTouchEvent(localMotionEvent);
-          localMotionEvent.recycle();
-          this.mInDownState = false;
-        }
-        this.mContentView.detachFromRoot();
-        BasicTexture.yieldAllTextures();
+        long l = SystemClock.uptimeMillis();
+        localObject = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        this.mContentView.dispatchTouchEvent((MotionEvent)localObject);
+        ((MotionEvent)localObject).recycle();
+        this.mInDownState = false;
       }
-      this.mContentView = paramGLView;
-    } while (paramGLView == null);
-    paramGLView.attachToRoot(this);
-    requestLayoutContentPane();
+      this.mContentView.detachFromRoot();
+      BasicTexture.yieldAllTextures();
+    }
+    this.mContentView = paramGLView;
+    if (paramGLView != null)
+    {
+      paramGLView.attachToRoot(this);
+      requestLayoutContentPane();
+    }
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -430,7 +407,7 @@ public class GLRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLRootView
  * JD-Core Version:    0.7.0.1
  */

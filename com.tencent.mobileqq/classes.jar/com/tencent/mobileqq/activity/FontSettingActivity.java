@@ -1,50 +1,47 @@
 package com.tencent.mobileqq.activity;
 
-import acws;
-import acwt;
-import acwu;
-import acwv;
-import acww;
-import acwx;
-import acwy;
-import acwz;
-import acxa;
-import aeqq;
-import alof;
-import alsf;
-import alud;
-import amca;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import azqs;
-import bdap;
-import bdbb;
-import biai;
-import biam;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.LayoutParams;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.app.FontSettingManager.FontLevel;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.IFaceDecoder;
+import com.tencent.mobileqq.avatar.api.IQQAvatarService;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.CustomDialogFactory;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
+import com.tencent.mobileqq.vas.theme.diy.ThemeBackground;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.CirclePageIndicator;
 import com.tencent.widget.ListView;
 import com.tencent.widget.RangeButtonView;
+import com.tencent.widget.RangeButtonView.OnChangeListener;
+import com.tencent.widget.RangeButtonView.Title;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,71 +49,123 @@ import mqq.os.MqqHandler;
 
 public class FontSettingActivity
   extends BaseActivity
-  implements ViewPager.OnPageChangeListener, biai
+  implements ViewPager.OnPageChangeListener, FontSettingManager.FontLevel, RangeButtonView.OnChangeListener
 {
-  private float jdField_a_of_type_Float = 16.0F;
-  public acww a;
-  acwx jdField_a_of_type_Acwx;
-  public acwy a;
-  acxa jdField_a_of_type_Acxa;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  bdbb jdField_a_of_type_Bdbb;
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  ThemeBackground jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
-  CirclePageIndicator jdField_a_of_type_ComTencentWidgetCirclePageIndicator;
-  ListView jdField_a_of_type_ComTencentWidgetListView;
-  RangeButtonView jdField_a_of_type_ComTencentWidgetRangeButtonView;
-  public ArrayList<View> a;
-  public List<ChatMessage> a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new acwv(this);
-  public boolean a;
-  ViewGroup b;
-  public ListView b;
-  public ArrayList<acwz> b;
-  public boolean b;
-  ViewGroup c;
-  public boolean c;
-  private boolean d;
+  ViewPager a;
+  CirclePageIndicator b;
+  FontSettingActivity.FontPageAdapter c;
+  ArrayList<View> d = new ArrayList();
+  ListView e;
+  ListView f;
+  ViewGroup g;
+  ViewGroup h;
+  RangeButtonView i;
+  ViewGroup j;
+  FontSettingActivity.MyItemBuilder k;
+  IFaceDecoder l;
+  FontSettingActivity.AioListAdapter m;
+  FontSettingActivity.TabListAdapter n;
+  List<ChatMessage> o;
+  SessionInfo p;
+  ArrayList<FontSettingActivity.RecentData> q = new ArrayList();
+  boolean r = false;
+  boolean s = false;
+  ThemeBackground t = null;
+  boolean u = false;
+  private boolean v = false;
+  private float w = 16.0F;
+  private TopGestureLayout x;
+  private Dialog y = null;
+  private MqqHandler z = new FontSettingActivity.4(this);
   
-  public FontSettingActivity()
+  private void a(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    ((TextView)paramView.findViewById(2131436180)).setOnClickListener(new FontSettingActivity.1(this));
+    ((TextView)paramView.findViewById(2131436227)).setText(HardCodeUtil.a(2131902688));
+    ((TextView)paramView.findViewById(2131436180)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
   }
   
-  private int a()
+  private void d()
   {
-    int j = 2;
-    this.jdField_a_of_type_Float = alsf.a();
-    int i;
-    if (this.jdField_a_of_type_Float == 13.92F) {
-      i = 0;
+    f();
+    this.a = ((ViewPager)findViewById(2131433561));
+    this.c = new FontSettingActivity.FontPageAdapter(this);
+    this.a.setAdapter(this.c);
+    this.b = ((CirclePageIndicator)findViewById(2131433551));
+    this.b.setViewPager(this.a);
+    this.b.setCirclePadding((int)TypedValue.applyDimension(1, 10.0F, getResources().getDisplayMetrics()));
+    this.e = h();
+    i();
+    this.d.add(this.e);
+    this.m = new FontSettingActivity.AioListAdapter(this);
+    this.e.setAdapter(this.m);
+    this.k = new FontSettingActivity.MyItemBuilder(this, this.app, this.m, this, this.p, null);
+    this.l = ((IQQAvatarService)this.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.app);
+    this.k.a(this.l);
+    j();
+    this.f = h();
+    b();
+    this.n = new FontSettingActivity.TabListAdapter(this, this, this.app, this.f);
+    this.d.add(this.f);
+    this.f.setAdapter(this.n);
+    this.c.notifyDataSetChanged();
+    this.i = ((RangeButtonView)findViewById(2131433554));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131902696), TypedValue.applyDimension(1, 13.92F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 15.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131902695), TypedValue.applyDimension(1, 16.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 17.0F, FontSettingManager.systemMetrics)));
+    localArrayList.add(new RangeButtonView.Title(HardCodeUtil.a(2131902694), TypedValue.applyDimension(1, 18.0F, FontSettingManager.systemMetrics)));
+    this.i.setTitleData(localArrayList);
+    this.i.setOnChangerListener(this);
+    this.i.setThumbPosition(e());
+    localArrayList = new ArrayList();
+    localArrayList.add(getString(2131888065));
+    localArrayList.add(getString(2131888066));
+    localArrayList.add(getString(2131888067));
+    localArrayList.add(getString(2131888068));
+    localArrayList.add(getString(2131888069));
+    this.i.setContentDescList(localArrayList);
+  }
+  
+  private int e()
+  {
+    this.w = FontSettingManager.getFontLevel();
+    float f1 = this.w;
+    if (f1 == 13.92F) {
+      return 0;
     }
-    do
-    {
-      do
-      {
-        return i;
-        if (this.jdField_a_of_type_Float == 15.0F) {
-          return 1;
-        }
-        i = j;
-      } while (this.jdField_a_of_type_Float == 16.0F);
-      if (this.jdField_a_of_type_Float == 17.0F) {
-        return 3;
-      }
-      i = j;
-    } while (this.jdField_a_of_type_Float != 18.0F);
-    return 4;
+    if (f1 == 15.0F) {
+      return 1;
+    }
+    if (f1 == 16.0F) {
+      return 2;
+    }
+    if (f1 == 17.0F) {
+      return 3;
+    }
+    if (f1 == 18.0F) {
+      return 4;
+    }
+    return 2;
   }
   
-  private ListView a()
+  private void f()
+  {
+    this.h = ((ViewGroup)findViewById(2131447506));
+    this.g = new NavBarCommon(this);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)getResources().getDimension(2131299920));
+    a(this.g);
+    this.h.addView(this.g, 0, localLayoutParams);
+  }
+  
+  private void g()
+  {
+    this.h.removeViewAt(0);
+    f();
+  }
+  
+  private ListView h()
   {
     ListView localListView = new ListView(this);
     ViewPager.LayoutParams localLayoutParams = new ViewPager.LayoutParams();
@@ -127,233 +176,147 @@ public class FontSettingActivity
     return localListView;
   }
   
-  private void a(View paramView)
+  private void i()
   {
-    ((TextView)paramView.findViewById(2131368624)).setOnClickListener(new acws(this));
-    ((TextView)paramView.findViewById(2131368670)).setText(alud.a(2131705079));
-    ((TextView)paramView.findViewById(2131368624)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
-  }
-  
-  private void d()
-  {
-    e();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131366689));
-    this.jdField_a_of_type_Acwx = new acwx(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Acwx);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131366679));
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setCirclePadding((int)TypedValue.applyDimension(1, 10.0F, getResources().getDisplayMetrics()));
-    this.jdField_a_of_type_ComTencentWidgetListView = a();
-    g();
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentWidgetListView);
-    this.jdField_a_of_type_Acww = new acww(this);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acww);
-    this.jdField_a_of_type_Acwy = new acwy(this, this.app, this.jdField_a_of_type_Acww, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
-    this.jdField_a_of_type_Bdbb = new bdbb(this, this.app);
-    this.jdField_a_of_type_Acwy.a(this.jdField_a_of_type_Bdbb);
-    h();
-    this.jdField_b_of_type_ComTencentWidgetListView = a();
-    b();
-    this.jdField_a_of_type_Acxa = new acxa(this, this, this.app, this.jdField_b_of_type_ComTencentWidgetListView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ComTencentWidgetListView);
-    this.jdField_b_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Acxa);
-    this.jdField_a_of_type_Acwx.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView = ((RangeButtonView)findViewById(2131366682));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new biam(alud.a(2131705087), TypedValue.applyDimension(1, 13.92F, alsf.a)));
-    localArrayList.add(new biam("", TypedValue.applyDimension(1, 15.0F, alsf.a)));
-    localArrayList.add(new biam(alud.a(2131705086), TypedValue.applyDimension(1, 16.0F, alsf.a)));
-    localArrayList.add(new biam("", TypedValue.applyDimension(1, 17.0F, alsf.a)));
-    localArrayList.add(new biam(alud.a(2131705085), TypedValue.applyDimension(1, 18.0F, alsf.a)));
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setTitleData(localArrayList);
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setOnChangerListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setThumbPosition(a());
-    localArrayList = new ArrayList();
-    localArrayList.add(getString(2131691163));
-    localArrayList.add(getString(2131691164));
-    localArrayList.add(getString(2131691165));
-    localArrayList.add(getString(2131691166));
-    localArrayList.add(getString(2131691167));
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView.setContentDescList(localArrayList);
-  }
-  
-  private void e()
-  {
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377975));
-    this.jdField_a_of_type_AndroidViewViewGroup = new NavBarCommon(this);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)getResources().getDimension(2131298914));
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_b_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup, 0, localLayoutParams);
-  }
-  
-  private void f()
-  {
-    this.jdField_b_of_type_AndroidViewViewGroup.removeViewAt(0);
-    e();
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.o == null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      MessageForText localMessageForText = new MessageForText();
-      localMessageForText.frienduin = "2720152058";
-      localMessageForText.senderuin = "2720152058";
-      localMessageForText.issend = 1000;
-      Object localObject1 = alud.a(2131705088);
-      localMessageForText.msg = ((String)localObject1);
-      localMessageForText.sb = ((CharSequence)localObject1);
-      localObject1 = new MessageForText();
-      Object localObject2 = this.app.getCurrentAccountUin();
-      ((MessageForText)localObject1).frienduin = ((String)localObject2);
-      ((MessageForText)localObject1).selfuin = ((String)localObject2);
-      ((MessageForText)localObject1).senderuin = ((String)localObject2);
-      ((MessageForText)localObject1).issend = 1;
-      localObject2 = alud.a(2131705078);
+      this.o = new ArrayList();
+      Object localObject1 = new MessageForText();
+      ((MessageForText)localObject1).frienduin = "2720152058";
+      ((MessageForText)localObject1).senderuin = "2720152058";
+      ((MessageForText)localObject1).issend = 1000;
+      Object localObject2 = HardCodeUtil.a(2131902697);
       ((MessageForText)localObject1).msg = ((String)localObject2);
       ((MessageForText)localObject1).sb = ((CharSequence)localObject2);
-      ((MessageForText)localObject1).vipBubbleID = ((amca)this.app.a(13)).b();
       localObject2 = new MessageForText();
-      ((MessageForText)localObject2).frienduin = "2720152058";
-      ((MessageForText)localObject2).senderuin = "2720152058";
-      ((MessageForText)localObject2).issend = 1000;
-      String str = alud.a(2131705081);
-      ((MessageForText)localObject2).msg = str;
-      ((MessageForText)localObject2).sb = str;
-      this.jdField_a_of_type_JavaUtilList.add(localMessageForText);
-      this.jdField_a_of_type_JavaUtilList.add(localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b = ChatTextSizeSettingActivity.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq = new aeqq();
-      if (aeqq.a(this, this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, 7, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq)) {
-        this.jdField_a_of_type_ComTencentWidgetListView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aeqq.a);
+      Object localObject3 = this.app.getCurrentAccountUin();
+      ((MessageForText)localObject2).frienduin = ((String)localObject3);
+      ((MessageForText)localObject2).selfuin = ((String)localObject3);
+      ((MessageForText)localObject2).senderuin = ((String)localObject3);
+      ((MessageForText)localObject2).issend = 1;
+      localObject3 = HardCodeUtil.a(2131902687);
+      ((MessageForText)localObject2).msg = ((String)localObject3);
+      ((MessageForText)localObject2).sb = ((CharSequence)localObject3);
+      ((MessageForText)localObject2).vipBubbleID = ((ISVIPHandler)this.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).d();
+      localObject3 = new MessageForText();
+      ((MessageForText)localObject3).frienduin = "2720152058";
+      ((MessageForText)localObject3).senderuin = "2720152058";
+      ((MessageForText)localObject3).issend = 1000;
+      String str = HardCodeUtil.a(2131902690);
+      ((MessageForText)localObject3).msg = str;
+      ((MessageForText)localObject3).sb = str;
+      this.o.add(localObject1);
+      this.o.add(localObject2);
+      this.o.add(localObject3);
+      this.p = new SessionInfo();
+      localObject1 = this.p;
+      ((SessionInfo)localObject1).a = 0;
+      ((SessionInfo)localObject1).r = ChatTextSizeSettingActivity.a(this);
+      this.p.H = new ChatBackground();
+      if (ChatBackground.a(this, this.app.getCurrentAccountUin(), this.p.b, true, 7, this.p.H)) {
+        this.e.setBackgroundDrawable(this.p.H.c);
       }
     }
   }
   
-  private void h()
+  private void j()
   {
-    acwz localacwz1 = new acwz(this, 0, alud.a(2131699926), alud.a(2131705082), "3:28PM", "2720152058", 0);
-    acwz localacwz2 = new acwz(this, 2130840178, alud.a(2131690606), alud.a(2131705077), "3:28PM", alof.x, 7000);
-    acwz localacwz3 = new acwz(this, 2130840180, alud.a(2131689481), alud.a(2131705083), "3:28PM", alof.C, 5000);
-    acwz localacwz4 = new acwz(this, 2130843834, alud.a(2131694654), alud.a(2131705084), "3:28PM", alof.z, 6000);
-    acwz localacwz5 = new acwz(this, 0, alud.a(2131705089), alud.a(2131705080), "3:28PM", "2632129500", 0);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localacwz1);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localacwz2);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localacwz3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localacwz4);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localacwz5);
+    FontSettingActivity.RecentData localRecentData1 = new FontSettingActivity.RecentData(this, 0, HardCodeUtil.a(2131897419), HardCodeUtil.a(2131902691), "3:28PM", "2720152058", 0);
+    FontSettingActivity.RecentData localRecentData2 = new FontSettingActivity.RecentData(this, 2130841183, HardCodeUtil.a(2131887615), HardCodeUtil.a(2131902686), "3:28PM", AppConstants.SUBACCOUNT_ASSISTANT_UIN, 7000);
+    FontSettingActivity.RecentData localRecentData3 = new FontSettingActivity.RecentData(this, 2130841185, HardCodeUtil.a(2131886080), HardCodeUtil.a(2131902692), "3:28PM", AppConstants.TROOP_ASSISTANT_UIN, 5000);
+    FontSettingActivity.RecentData localRecentData4 = new FontSettingActivity.RecentData(this, 2130845599, HardCodeUtil.a(2131892059), HardCodeUtil.a(2131902693), "3:28PM", AppConstants.DATALINE_PC_UIN, 6000);
+    FontSettingActivity.RecentData localRecentData5 = new FontSettingActivity.RecentData(this, 0, HardCodeUtil.a(2131902698), HardCodeUtil.a(2131902689), "3:28PM", "2632129500", 0);
+    this.q.add(localRecentData1);
+    this.q.add(localRecentData2);
+    this.q.add(localRecentData3);
+    this.q.add(localRecentData4);
+    this.q.add(localRecentData5);
   }
   
-  private void i()
+  private void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
+    if (this.x == null)
     {
-      ViewGroup localViewGroup2 = (ViewGroup)getWindow().getDecorView();
-      View localView = localViewGroup2.getChildAt(0);
-      ViewGroup localViewGroup1 = localViewGroup2;
+      ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
+      View localView = localViewGroup.getChildAt(0);
+      Object localObject = localViewGroup;
       if (localView != null)
       {
-        localViewGroup1 = localViewGroup2;
+        localObject = localViewGroup;
         if ((localView instanceof ViewGroup)) {
-          localViewGroup1 = (ViewGroup)localView;
+          localObject = (ViewGroup)localView;
         }
       }
-      if ((localViewGroup1 instanceof TopGestureLayout)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localViewGroup1);
+      if ((localObject instanceof TopGestureLayout)) {
+        this.x = ((TopGestureLayout)localObject);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(false);
+      localObject = this.x;
+      if (localObject != null) {
+        ((TopGestureLayout)localObject).setInterceptTouchFlag(false);
       }
     }
   }
   
   public void a()
   {
-    if ((this.d) && (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.v) && (this.r) && (this.s))
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
-      this.d = false;
-      alsf.a(this);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    switch (paramInt2)
-    {
-    }
-    for (;;)
-    {
-      azqs.b(this.app, "CliOper", "", "", "0X8004FA2", "0X8004FA2", 0, 0, "" + (int)this.jdField_a_of_type_Float, "", "", "");
-      if (!alsf.a(this, this.jdField_a_of_type_Float, false)) {
-        bool = true;
-      }
-      this.d = bool;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b = ChatTextSizeSettingActivity.a(this);
-      this.jdField_b_of_type_ComTencentWidgetListView.removeAllViewsInLayout();
-      this.jdField_a_of_type_ComTencentWidgetListView.removeAllViewsInLayout();
-      f();
-      return;
-      this.jdField_a_of_type_Float = 13.92F;
-      continue;
-      this.jdField_a_of_type_Float = 15.0F;
-      continue;
-      this.jdField_a_of_type_Float = 16.0F;
-      continue;
-      this.jdField_a_of_type_Float = 17.0F;
-      continue;
-      this.jdField_a_of_type_Float = 18.0F;
+      this.s = false;
+      this.r = false;
+      this.v = false;
+      FontSettingManager.revertToLsatDendisy(this);
     }
   }
   
   void b()
   {
-    if (this.jdField_b_of_type_ComTencentWidgetListView == null) {}
-    do
+    if (this.f == null) {
+      return;
+    }
+    if (!ThemeBackground.a())
     {
-      do
+      this.f.setContentBackground(2130838959);
+      this.t = null;
+      return;
+    }
+    if (this.t == null) {
+      this.t = new ThemeBackground();
+    }
+    if (ThemeBackground.a(this.f.getContext(), "theme_bg_message_path_png", this.app.getCurrentAccountUin(), this.t)) {
+      if ((!"null".equals(this.t.a)) && (this.t.b != null))
       {
-        return;
-        if (!ThemeBackground.getThemeBackgroundEnable())
-        {
-          this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838593);
-          this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
-          return;
+        if (this.t.b != null) {
+          this.f.setContentBackground(this.t.b);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground == null) {
-          this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = new ThemeBackground();
-        }
-      } while (!ThemeBackground.getThemeBackground(this.jdField_b_of_type_ComTencentWidgetListView.getContext(), "theme_bg_message_path_png", this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground));
-      if (("null".equals(this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.path)) || (this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.img == null))
-      {
-        this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838593);
-        this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
-        return;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.img == null);
-    this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.img);
+      else
+      {
+        this.f.setContentBackground(2130838959);
+        this.t = null;
+      }
+    }
   }
   
-  public void c()
+  void c()
   {
-    if (this.jdField_a_of_type_Float == alsf.a()) {
-      finish();
-    }
-    do
+    if (this.w == FontSettingManager.getFontLevel())
     {
+      finish();
       return;
-      this.jdField_a_of_type_AndroidAppDialog = bdap.a(this, 2131692818, 2131692816, 2131692815, 2131692817, new acwt(this), new acwu(this));
-    } while (isFinishing());
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    }
+    this.y = CustomDialogFactory.a(this, 2131889651, 2131889649, 2131889648, 2131889650, new FontSettingActivity.2(this), new FontSettingActivity.3(this));
+    if (!isFinishing()) {
+      this.y.show();
+    }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void doOnBackPressed()
@@ -362,35 +325,89 @@ public class FontSettingActivity
   }
   
   @TargetApi(14)
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560979);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131376034));
+    super.setContentView(2131627453);
+    this.j = ((ViewGroup)findViewById(2131445137));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
-      this.jdField_c_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
-      this.jdField_c_of_type_AndroidViewViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+      this.j.setFitsSystemWindows(true);
+      this.j.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.app.setHandler(FontSettingActivity.class, this.jdField_a_of_type_MqqOsMqqHandler);
+    this.app.setHandler(FontSettingActivity.class, this.z);
     d();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Acxa.a();
+    this.n.a();
     this.app.removeHandler(FontSettingActivity.class);
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    IFaceDecoder localIFaceDecoder = this.l;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    i();
+    k();
+  }
+  
+  public void onChange(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 != 2)
+        {
+          if (paramInt2 != 3)
+          {
+            if (paramInt2 == 4) {
+              this.w = 18.0F;
+            }
+          }
+          else {
+            this.w = 17.0F;
+          }
+        }
+        else {
+          this.w = 16.0F;
+        }
+      }
+      else {
+        this.w = 15.0F;
+      }
+    }
+    else {
+      this.w = 13.92F;
+    }
+    QQAppInterface localQQAppInterface = this.app;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append((int)this.w);
+    ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004FA2", "0X8004FA2", 0, 0, localStringBuilder.toString(), "", "", "");
+    this.v = (true ^ FontSettingManager.setCustomDensity(this, this.w, false));
+    this.p.r = ChatTextSizeSettingActivity.a(this);
+    this.f.removeAllViewsInLayout();
+    this.e.removeAllViewsInLayout();
+    this.m.notifyDataSetChanged();
+    this.n.notifyDataSetChanged();
+    g();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -399,14 +416,14 @@ public class FontSettingActivity
   
   public void onPageSelected(int paramInt) {}
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity
  * JD-Core Version:    0.7.0.1
  */

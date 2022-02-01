@@ -1,20 +1,56 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.halley.common.a;
-import com.tencent.halley.common.c;
+import java.util.concurrent.Executor;
 
-final class bb
-  extends BroadcastReceiver
+public class bb
+  extends bd
 {
-  bb(ax paramax) {}
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  private static volatile bb b;
+  private static final Executor d = new Executor()
   {
-    c.a("AccessSchedulerTrigger", "onAccessSchedulerTriggered by timer, curTime:" + System.currentTimeMillis());
-    a.a().a(new ay(this.a, (byte)0));
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      bb.a().b(paramAnonymousRunnable);
+    }
+  };
+  private static final Executor e = new Executor()
+  {
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      bb.a().a(paramAnonymousRunnable);
+    }
+  };
+  public bd a = this.c;
+  private bd c = new bc();
+  
+  public static bb a()
+  {
+    if (b != null) {
+      return b;
+    }
+    try
+    {
+      if (b == null) {
+        b = new bb();
+      }
+      return b;
+    }
+    finally {}
+  }
+  
+  public final void a(Runnable paramRunnable)
+  {
+    this.a.a(paramRunnable);
+  }
+  
+  public final void b(Runnable paramRunnable)
+  {
+    this.a.b(paramRunnable);
+  }
+  
+  public final boolean b()
+  {
+    return this.a.b();
   }
 }
 

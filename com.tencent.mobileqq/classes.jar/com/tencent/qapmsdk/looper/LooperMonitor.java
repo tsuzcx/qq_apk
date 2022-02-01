@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.Printer;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
 import com.tencent.qapmsdk.base.config.PluginCombination;
+import com.tencent.qapmsdk.base.listener.IBaseListener;
 import com.tencent.qapmsdk.base.monitorplugin.PluginController;
 import com.tencent.qapmsdk.base.monitorplugin.QAPMMonitorPlugin;
 import com.tencent.qapmsdk.common.logger.Logger;
@@ -18,8 +19,6 @@ public class LooperMonitor
   private static final String TAG = "QAPM_looper_LooperMonitor";
   @NonNull
   static HashMap<String, MonitorInfo> monitorMap = new HashMap();
-  @NonNull
-  private static IMonitorCallback sMonitorCallback = new LooperMonitor.1();
   
   private static Printer getMainPrinter()
   {
@@ -28,7 +27,11 @@ public class LooperMonitor
       Object localObject = Looper.class.getDeclaredField("mLogging");
       ((Field)localObject).setAccessible(true);
       localObject = (Printer)((Field)localObject).get(Looper.getMainLooper());
-      Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperMonitor", "getMainPrinter: originalLogging:" + localObject });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMainPrinter: originalLogging:");
+      localStringBuilder.append(localObject);
+      localLogger.i(new String[] { "QAPM_looper_LooperMonitor", localStringBuilder.toString() });
       if (localObject != null) {
         return localObject;
       }
@@ -54,7 +57,11 @@ public class LooperMonitor
         if (localMonitorInfo.stackGetter == null)
         {
           localMonitorInfo.stackGetter = new GetStackRunnable(paramThread);
-          new Thread(localMonitorInfo.stackGetter, "get-stack-" + str).start();
+          paramThread = localMonitorInfo.stackGetter;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get-stack-");
+          localStringBuilder.append(str);
+          new Thread(paramThread, localStringBuilder.toString()).start();
           localMonitorInfo.stackGetterInited = true;
           localMonitorInfo.callback = paramIMonitorCallback;
           return true;
@@ -66,11 +73,17 @@ public class LooperMonitor
       localMonitorInfo.stackGetterInited = true;
       localMonitorInfo.callback = paramIMonitorCallback;
       monitorMap.put(str, localMonitorInfo);
-      new Thread(localMonitorInfo.stackGetter, "get-stack-" + str).start();
+      paramThread = localMonitorInfo.stackGetter;
+      paramIMonitorCallback = new StringBuilder();
+      paramIMonitorCallback.append("get-stack-");
+      paramIMonitorCallback.append(str);
+      new Thread(paramThread, paramIMonitorCallback.toString()).start();
       return true;
     }
     finally {}
   }
+  
+  public void setListener(@NonNull IBaseListener paramIBaseListener) {}
   
   public void start()
   {
@@ -78,21 +91,21 @@ public class LooperMonitor
       return;
     }
     Object localObject = Looper.getMainLooper().getThread();
-    setMonitoredThread((Thread)localObject, sMonitorCallback);
-    localObject = new LooperPrinter(((Thread)localObject).getName());
+    LooperPrinter localLooperPrinter = new LooperPrinter(((Thread)localObject).getName());
+    setMonitoredThread((Thread)localObject, localLooperPrinter.monitorCallback);
     LooperPrinter.looperThreshold = PluginCombination.loopStackPlugin.threshold;
-    Printer localPrinter = getMainPrinter();
-    if (localPrinter != null) {
-      ((LooperPrinter)localObject).setOriginalPrinter(localPrinter);
+    localObject = getMainPrinter();
+    if (localObject != null) {
+      localLooperPrinter.setOriginalPrinter((Printer)localObject);
     }
-    Looper.getMainLooper().setMessageLogging((Printer)localObject);
+    Looper.getMainLooper().setMessageLogging(localLooperPrinter);
   }
   
   public void stop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperMonitor
  * JD-Core Version:    0.7.0.1
  */

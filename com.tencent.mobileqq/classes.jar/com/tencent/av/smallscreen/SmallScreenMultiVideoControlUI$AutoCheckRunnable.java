@@ -7,12 +7,12 @@ class SmallScreenMultiVideoControlUI$AutoCheckRunnable
   
   public void run()
   {
-    this.this$0.n();
+    this.this$0.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.AutoCheckRunnable
  * JD-Core Version:    0.7.0.1
  */

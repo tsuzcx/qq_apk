@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
@@ -71,17 +71,17 @@ public class RepeaterContent
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (this.transform.applyValueCallback(paramT, paramLottieValueCallback)) {}
-    do
-    {
+    if (this.transform.applyValueCallback(paramT, paramLottieValueCallback)) {
       return;
-      if (paramT == LottieProperty.REPEATER_COPIES)
-      {
-        this.copies.setValueCallback(paramLottieValueCallback);
-        return;
-      }
-    } while (paramT != LottieProperty.REPEATER_OFFSET);
-    this.offset.setValueCallback(paramLottieValueCallback);
+    }
+    if (paramT == LottieProperty.REPEATER_COPIES)
+    {
+      this.copies.setValueCallback(paramLottieValueCallback);
+      return;
+    }
+    if (paramT == LottieProperty.REPEATER_OFFSET) {
+      this.offset.setValueCallback(paramLottieValueCallback);
+    }
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -94,9 +94,12 @@ public class RepeaterContent
     while (i >= 0)
     {
       this.matrix.set(paramMatrix);
-      this.matrix.preConcat(this.transform.getMatrixForRepeater(i + f2));
+      Matrix localMatrix = this.matrix;
+      TransformKeyframeAnimation localTransformKeyframeAnimation = this.transform;
+      float f6 = i;
+      localMatrix.preConcat(localTransformKeyframeAnimation.getMatrixForRepeater(f6 + f2));
       float f5 = paramInt;
-      float f6 = MiscUtils.lerp(f3, f4, i / f1);
+      f6 = MiscUtils.lerp(f3, f4, f6 / f1);
       this.contentGroup.draw(paramCanvas, this.matrix, (int)(f5 * f6));
       i -= 1;
     }

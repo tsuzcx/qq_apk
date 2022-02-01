@@ -11,7 +11,8 @@ public class Matrix2f
   
   public Matrix2f(float[] paramArrayOfFloat)
   {
-    System.arraycopy(paramArrayOfFloat, 0, this.mMat, 0, this.mMat.length);
+    float[] arrayOfFloat = this.mMat;
+    System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, arrayOfFloat.length);
   }
   
   public float get(int paramInt1, int paramInt2)
@@ -26,15 +27,18 @@ public class Matrix2f
   
   public void load(Matrix2f paramMatrix2f)
   {
-    System.arraycopy(paramMatrix2f.getArray(), 0, this.mMat, 0, this.mMat.length);
+    paramMatrix2f = paramMatrix2f.getArray();
+    float[] arrayOfFloat = this.mMat;
+    System.arraycopy(paramMatrix2f, 0, arrayOfFloat, 0, arrayOfFloat.length);
   }
   
   public void loadIdentity()
   {
-    this.mMat[0] = 1.0F;
-    this.mMat[1] = 0.0F;
-    this.mMat[2] = 0.0F;
-    this.mMat[3] = 1.0F;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 1.0F;
   }
   
   public void loadMultiply(Matrix2f paramMatrix2f1, Matrix2f paramMatrix2f2)
@@ -43,13 +47,13 @@ public class Matrix2f
     while (i < 2)
     {
       int j = 0;
-      float f1 = 0.0F;
       float f2 = 0.0F;
+      float f1 = 0.0F;
       while (j < 2)
       {
         float f3 = paramMatrix2f2.get(i, j);
         f2 += paramMatrix2f1.get(j, 0) * f3;
-        f1 += f3 * paramMatrix2f1.get(j, 1);
+        f1 += paramMatrix2f1.get(j, 1) * f3;
         j += 1;
       }
       set(i, 0, f2);
@@ -60,20 +64,22 @@ public class Matrix2f
   
   public void loadRotate(float paramFloat)
   {
-    float f = 0.01745329F * paramFloat;
-    paramFloat = (float)Math.cos(f);
-    f = (float)Math.sin(f);
-    this.mMat[0] = paramFloat;
-    this.mMat[1] = (-f);
-    this.mMat[2] = f;
-    this.mMat[3] = paramFloat;
+    double d = paramFloat * 0.01745329F;
+    paramFloat = (float)Math.cos(d);
+    float f = (float)Math.sin(d);
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = paramFloat;
+    arrayOfFloat[1] = (-f);
+    arrayOfFloat[2] = f;
+    arrayOfFloat[3] = paramFloat;
   }
   
   public void loadScale(float paramFloat1, float paramFloat2)
   {
     loadIdentity();
-    this.mMat[0] = paramFloat1;
-    this.mMat[3] = paramFloat2;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[3] = paramFloat2;
   }
   
   public void multiply(Matrix2f paramMatrix2f)
@@ -104,14 +110,15 @@ public class Matrix2f
   
   public void transpose()
   {
-    float f = this.mMat[1];
-    this.mMat[1] = this.mMat[2];
-    this.mMat[2] = f;
+    float[] arrayOfFloat = this.mMat;
+    float f = arrayOfFloat[1];
+    arrayOfFloat[1] = arrayOfFloat[2];
+    arrayOfFloat[2] = f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Matrix2f
  * JD-Core Version:    0.7.0.1
  */

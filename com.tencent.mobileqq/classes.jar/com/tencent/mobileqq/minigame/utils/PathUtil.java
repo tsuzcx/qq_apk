@@ -8,33 +8,37 @@ public class PathUtil
 {
   public static JSONObject getJSONQueryString(String paramString)
   {
-    int i = 0;
     localJSONObject = new JSONObject();
     try
     {
+      Object localObject;
       if (!TextUtils.isEmpty(paramString))
       {
         int j = paramString.indexOf("?");
-        String str = paramString;
+        localObject = paramString;
+        int i;
         if (j > -1)
         {
-          str = paramString;
-          if (paramString.length() > j + 1) {
-            str = paramString.substring(j + 1);
+          i = paramString.length();
+          j += 1;
+          localObject = paramString;
+          if (i > j) {
+            localObject = paramString.substring(j);
           }
         }
-        paramString = str.split("&");
+        paramString = ((String)localObject).split("&");
         if ((paramString != null) && (paramString.length > 0))
         {
           j = paramString.length;
+          i = 0;
           while (i < j)
           {
-            str = paramString[i];
-            if (!TextUtils.isEmpty(str))
+            localObject = paramString[i];
+            if (!TextUtils.isEmpty((CharSequence)localObject))
             {
-              int k = str.indexOf("=");
+              int k = ((String)localObject).indexOf("=");
               if (k >= 0) {
-                localJSONObject.put(str.substring(0, k), str.substring(k + 1));
+                localJSONObject.put(((String)localObject).substring(0, k), ((String)localObject).substring(k + 1));
               }
             }
             i += 1;
@@ -45,18 +49,21 @@ public class PathUtil
     }
     catch (Throwable paramString)
     {
-      QLog.e("PathUtil", 1, "getJSONQueryString exception " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getJSONQueryString exception ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("PathUtil", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public static boolean isNetworkUrl(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https://"));
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("http://")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.PathUtil
  * JD-Core Version:    0.7.0.1
  */

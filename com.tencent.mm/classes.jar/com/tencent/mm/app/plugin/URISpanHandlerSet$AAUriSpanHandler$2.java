@@ -3,8 +3,7 @@ package com.tencent.mm.app.plugin;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bt;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.autogen.a.cq;
 
 final class URISpanHandlerSet$AAUriSpanHandler$2
   implements DialogInterface.OnClickListener
@@ -13,18 +12,18 @@ final class URISpanHandlerSet$AAUriSpanHandler$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(15629);
-    paramDialogInterface = new bt();
-    paramDialogInterface.cph.cpe = this.can;
-    paramDialogInterface.cph.cpf = this.cao;
-    paramDialogInterface.cph.cpg = this.cap;
-    a.ymk.l(paramDialogInterface);
-    AppMethodBeat.o(15629);
+    AppMethodBeat.i(19674);
+    paramDialogInterface = new cq();
+    paramDialogInterface.hCA.hCx = this.hkM;
+    paramDialogInterface.hCA.hCy = this.hkN;
+    paramDialogInterface.hCA.hCz = this.hkO;
+    paramDialogInterface.publish();
+    AppMethodBeat.o(19674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.plugin.URISpanHandlerSet.AAUriSpanHandler.2
  * JD-Core Version:    0.7.0.1
  */

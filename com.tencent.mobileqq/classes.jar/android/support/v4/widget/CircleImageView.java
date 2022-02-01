@@ -36,17 +36,16 @@ class CircleImageView
       paramContext = new ShapeDrawable(new OvalShape());
       ViewCompat.setElevation(this, f * 4.0F);
     }
-    for (;;)
+    else
     {
-      paramContext.getPaint().setColor(paramInt);
-      setBackgroundDrawable(paramContext);
-      return;
       paramContext = new ShapeDrawable(new CircleImageView.OvalShadow(this, this.mShadowRadius, i));
       ViewCompat.setLayerType(this, 1, paramContext.getPaint());
       paramContext.getPaint().setShadowLayer(this.mShadowRadius, k, j, 503316480);
       i = this.mShadowRadius;
       setPadding(i, i, i, i);
     }
+    paramContext.getPaint().setColor(paramInt);
+    setBackgroundDrawable(paramContext);
   }
   
   private boolean elevationSupported()
@@ -57,16 +56,18 @@ class CircleImageView
   public void onAnimationEnd()
   {
     super.onAnimationEnd();
-    if (this.mListener != null) {
-      this.mListener.onAnimationEnd(getAnimation());
+    Animation.AnimationListener localAnimationListener = this.mListener;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationEnd(getAnimation());
     }
   }
   
   public void onAnimationStart()
   {
     super.onAnimationStart();
-    if (this.mListener != null) {
-      this.mListener.onAnimationStart(getAnimation());
+    Animation.AnimationListener localAnimationListener = this.mListener;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationStart(getAnimation());
     }
   }
   

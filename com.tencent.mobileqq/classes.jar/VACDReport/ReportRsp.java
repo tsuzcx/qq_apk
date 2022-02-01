@@ -10,7 +10,7 @@ public final class ReportRsp
   implements Cloneable
 {
   static ArrayList<ReportHeader> cache_headers;
-  public ArrayList<ReportHeader> headers;
+  public ArrayList<ReportHeader> headers = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -30,7 +30,7 @@ public final class ReportRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportRsp
  * JD-Core Version:    0.7.0.1
  */

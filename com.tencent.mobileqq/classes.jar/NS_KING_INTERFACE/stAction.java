@@ -10,25 +10,13 @@ public final class stAction
   extends JceStruct
   implements Cloneable
 {
-  static stScheme cache_scheme;
+  static stScheme cache_scheme = new stScheme();
   static int cache_type;
   public String argb = "";
   public String icon = "";
-  public stScheme scheme;
+  public stScheme scheme = null;
   public String text = "";
-  public int type;
-  
-  static
-  {
-    if (!stAction.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_type = 0;
-      cache_scheme = new stScheme();
-      return;
-    }
-  }
+  public int type = 0;
   
   public stAction() {}
   
@@ -48,18 +36,17 @@ public final class stAction
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -84,13 +71,32 @@ public final class stAction
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stAction)paramObject;
-    } while ((!JceUtil.equals(this.type, paramObject.type)) || (!JceUtil.equals(this.scheme, paramObject.scheme)) || (!JceUtil.equals(this.icon, paramObject.icon)) || (!JceUtil.equals(this.argb, paramObject.argb)) || (!JceUtil.equals(this.text, paramObject.text)));
-    return true;
+    }
+    paramObject = (stAction)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.type, paramObject.type))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.scheme, paramObject.scheme))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.icon, paramObject.icon))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.argb, paramObject.argb))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.text, paramObject.text)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -173,23 +179,27 @@ public final class stAction
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.scheme != null) {
-      paramJceOutputStream.write(this.scheme, 1);
+    Object localObject = this.scheme;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 2);
+    localObject = this.icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.argb != null) {
-      paramJceOutputStream.write(this.argb, 3);
+    localObject = this.argb;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 4);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stAction
  * JD-Core Version:    0.7.0.1
  */

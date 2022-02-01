@@ -5,15 +5,11 @@ import android.view.View;
 
 public abstract class a
 {
-  Context jpJ;
-  int jpL = 0;
-  protected c vtC;
+  protected c Xsf;
+  int uQR = 0;
+  Context xNl;
   
-  public abstract int aRF();
-  
-  public abstract int aRG();
-  
-  public abstract int aRH();
+  public abstract View avb(int paramInt);
   
   public abstract int getPageCount();
   
@@ -21,16 +17,20 @@ public abstract class a
   
   public abstract int getRowSpacing();
   
-  public abstract View qE(int paramInt);
+  public abstract int iCJ();
+  
+  public abstract int iCK();
+  
+  public abstract int iCL();
   
   public final void setPanelManager(c paramc)
   {
-    this.vtC = paramc;
+    this.Xsf = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

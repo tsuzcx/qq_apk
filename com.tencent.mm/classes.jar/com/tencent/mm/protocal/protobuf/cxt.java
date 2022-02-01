@@ -1,159 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cxt
-  extends com.tencent.mm.bv.a
+  extends esc
 {
-  public int Scene;
-  public String wCj;
-  public String wQr;
-  public String wxW;
-  public String xlH;
+  public int aaDb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28758);
+    AppMethodBeat.i(101817);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xlH == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(28758);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(101817);
         throw paramVarArgs;
       }
-      if (this.wxW == null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Text");
-        AppMethodBeat.o(28758);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.wQr == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: MD5");
-        AppMethodBeat.o(28758);
-        throw paramVarArgs;
-      }
-      if (this.wCj == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ProductId");
-        AppMethodBeat.o(28758);
-        throw paramVarArgs;
-      }
-      if (this.xlH != null) {
-        paramVarArgs.e(1, this.xlH);
-      }
-      if (this.wxW != null) {
-        paramVarArgs.e(2, this.wxW);
-      }
-      if (this.wQr != null) {
-        paramVarArgs.e(3, this.wQr);
-      }
-      if (this.wCj != null) {
-        paramVarArgs.e(4, this.wCj);
-      }
-      paramVarArgs.aO(5, this.Scene);
-      AppMethodBeat.o(28758);
+      paramVarArgs.bS(2, this.aaDb);
+      AppMethodBeat.o(101817);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xlH == null) {
-        break label649;
+      if (this.BaseResponse == null) {
+        break label376;
       }
     }
-    label649:
-    for (int i = e.a.a.b.b.a.f(1, this.xlH) + 0;; i = 0)
+    label376:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.wxW != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wxW);
-      }
-      i = paramInt;
-      if (this.wQr != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.wQr);
-      }
-      paramInt = i;
-      if (this.wCj != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.wCj);
-      }
-      i = e.a.a.b.b.a.bl(5, this.Scene);
-      AppMethodBeat.o(28758);
+      int i = i.a.a.b.b.a.cJ(2, this.aaDb);
+      AppMethodBeat.o(101817);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        if (this.xlH == null)
+        if (this.BaseResponse == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(28758);
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(101817);
           throw paramVarArgs;
         }
-        if (this.wxW == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Text");
-          AppMethodBeat.o(28758);
-          throw paramVarArgs;
-        }
-        if (this.wQr == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: MD5");
-          AppMethodBeat.o(28758);
-          throw paramVarArgs;
-        }
-        if (this.wCj == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ProductId");
-          AppMethodBeat.o(28758);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(28758);
+        AppMethodBeat.o(101817);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cxt localcxt = (cxt)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28758);
+          AppMethodBeat.o(101817);
           return -1;
         case 1: 
-          localcxt.xlH = locala.CLY.readString();
-          AppMethodBeat.o(28758);
-          return 0;
-        case 2: 
-          localcxt.wxW = locala.CLY.readString();
-          AppMethodBeat.o(28758);
-          return 0;
-        case 3: 
-          localcxt.wQr = locala.CLY.readString();
-          AppMethodBeat.o(28758);
-          return 0;
-        case 4: 
-          localcxt.wCj = locala.CLY.readString();
-          AppMethodBeat.o(28758);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localcxt.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(101817);
           return 0;
         }
-        localcxt.Scene = locala.CLY.sl();
-        AppMethodBeat.o(28758);
+        localcxt.aaDb = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(101817);
         return 0;
       }
-      AppMethodBeat.o(28758);
+      AppMethodBeat.o(101817);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cxt
  * JD-Core Version:    0.7.0.1
  */

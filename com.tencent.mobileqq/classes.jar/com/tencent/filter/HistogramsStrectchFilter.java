@@ -33,50 +33,56 @@ public class HistogramsStrectchFilter
     QImage localQImage = RendererUtils.saveTexture2QImage(paramInt1, paramInt2, paramInt3);
     int[] arrayOfInt = localQImage.nativeGetArrayHistogram();
     localQImage.Dispose();
+    int j = 0;
     paramInt1 = 0;
     paramInt2 = 0;
-    while (paramInt2 < 256)
+    while (paramInt1 < 256)
     {
-      paramInt1 += arrayOfInt[paramInt2];
-      paramInt2 += 1;
+      paramInt2 += arrayOfInt[paramInt1];
+      paramInt1 += 1;
     }
     float f1 = this.minRatio;
     float f2 = this.maxRatio;
-    paramInt3 = (int)(f1 * paramInt1);
-    int j = (int)(paramInt1 * f2);
-    paramInt2 = 0;
+    float f3 = paramInt2;
+    paramInt3 = (int)(f1 * f3);
+    int k = (int)(f3 * f2);
     paramInt1 = 0;
-    if (paramInt1 < 256)
+    paramInt2 = 0;
+    int i;
+    while (paramInt1 < 256)
     {
       paramInt2 += arrayOfInt[paramInt1];
       if (paramInt2 >= paramInt3)
       {
-        int i = paramInt1 + 1;
+        i = paramInt1 + 1;
         paramInt3 = paramInt1;
         paramInt1 = i;
+        break label124;
       }
+      paramInt1 += 1;
     }
+    paramInt3 = 0;
     for (;;)
     {
-      label105:
-      if (paramInt1 < 256)
-      {
-        paramInt2 += arrayOfInt[paramInt1];
-        if (paramInt2 < j) {}
-      }
-      for (;;)
-      {
-        addParam(new UniformParam.FloatParam("l_threshold", (float)(paramInt3 / 255.0D)));
-        addParam(new UniformParam.FloatParam("h_threshold", (float)(paramInt1 / 255.0D)));
-        return;
-        paramInt1 += 1;
+      label124:
+      i = j;
+      if (paramInt1 >= 256) {
         break;
-        paramInt1 += 1;
-        break label105;
-        paramInt1 = 0;
       }
-      paramInt3 = 0;
+      paramInt2 += arrayOfInt[paramInt1];
+      if (paramInt2 >= k)
+      {
+        i = paramInt1;
+        break;
+      }
+      paramInt1 += 1;
     }
+    double d = paramInt3;
+    Double.isNaN(d);
+    addParam(new UniformParam.FloatParam("l_threshold", (float)(d / 255.0D)));
+    d = i;
+    Double.isNaN(d);
+    addParam(new UniformParam.FloatParam("h_threshold", (float)(d / 255.0D)));
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
@@ -86,7 +92,7 @@ public class HistogramsStrectchFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.HistogramsStrectchFilter
  * JD-Core Version:    0.7.0.1
  */

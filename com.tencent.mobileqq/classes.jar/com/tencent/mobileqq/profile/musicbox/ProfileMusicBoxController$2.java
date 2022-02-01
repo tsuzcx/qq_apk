@@ -1,24 +1,21 @@
 package com.tencent.mobileqq.profile.musicbox;
 
-import awsw;
-import awsy;
-
-public class ProfileMusicBoxController$2
+class ProfileMusicBoxController$2
   implements Runnable
 {
-  public ProfileMusicBoxController$2(awsw paramawsw) {}
+  ProfileMusicBoxController$2(ProfileMusicBoxController paramProfileMusicBoxController) {}
   
   public void run()
   {
-    if (awsw.a(this.this$0) != null) {
-      awsw.a(this.this$0).a(2);
+    if (ProfileMusicBoxController.c(this.this$0) != null) {
+      ProfileMusicBoxController.c(this.this$0).a(2);
     }
-    this.this$0.j();
+    this.this$0.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController.2
  * JD-Core Version:    0.7.0.1
  */

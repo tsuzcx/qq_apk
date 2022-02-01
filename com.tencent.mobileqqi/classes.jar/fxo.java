@@ -1,24 +1,12 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
 public class fxo
-  implements Runnable
 {
-  public fxo(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void run()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public fxo(FileManagerProxy paramFileManagerProxy) {}
 }
 
 

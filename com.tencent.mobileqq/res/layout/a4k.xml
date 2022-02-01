@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/eic" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/alw" android:textStyle="bold" android:textColor="@color/jl" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/v0" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/guo" android:maxLines="1" android:includeFontPadding="false" />
-    <com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView android:layout_gravity="center" android:id="@id/kw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>

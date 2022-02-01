@@ -1,11 +1,11 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bjdm;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_dc03179
   implements LpReportInfo
@@ -34,7 +34,12 @@ public class LpReport_dc03179
   
   public String getSimpleInfo()
   {
-    return "dc03179:, total_photo_count" + this.total_photo_count + ", scan_photo_count=" + this.scan_photo_count;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc03179:, total_photo_count");
+    localStringBuilder.append(this.total_photo_count);
+    localStringBuilder.append(", scan_photo_count=");
+    localStringBuilder.append(this.scan_photo_count);
+    return localStringBuilder.toString();
   }
   
   public void report(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, int paramInt5, int paramInt6, int paramInt7, float paramFloat2, int paramInt8, int paramInt9, int paramInt10, float paramFloat3, int paramInt11, int paramInt12, String paramString)
@@ -62,10 +67,10 @@ public class LpReport_dc03179
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (BaseApplicationImpl.getApplication().getRuntime().getAccount() != null)) {
-      LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    if (!TextUtils.isEmpty(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount())) {
+      LpReportUtils.safePut(localHashMap, "uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     }
-    LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     LpReportUtils.safePut(localHashMap, "total_photo_count", this.total_photo_count);
     LpReportUtils.safePut(localHashMap, "scan_photo_count", this.scan_photo_count);
     LpReportUtils.safePut(localHashMap, "scanned_exif_count", this.scanned_exif_count);
@@ -90,7 +95,7 @@ public class LpReport_dc03179
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_dc03179
  * JD-Core Version:    0.7.0.1
  */

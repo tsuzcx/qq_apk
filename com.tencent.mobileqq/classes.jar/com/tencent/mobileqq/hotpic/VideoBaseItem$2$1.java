@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.hotpic;
 
-import aswm;
-import aswo;
-import asww;
-
-public class VideoBaseItem$2$1
+class VideoBaseItem$2$1
   implements Runnable
 {
-  public VideoBaseItem$2$1(aswo paramaswo) {}
+  VideoBaseItem$2$1(VideoBaseItem.2 param2) {}
   
   public void run()
   {
-    this.a.a.c = 4;
-    if (aswm.a(this.a.a) != null) {
-      aswm.a(this.a.a).d(aswm.a(this.a.a));
+    this.a.a.g = 4;
+    if (VideoBaseItem.a(this.a.a) != null) {
+      VideoBaseItem.a(this.a.a).d(VideoBaseItem.b(this.a.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.2.1
  * JD-Core Version:    0.7.0.1
  */

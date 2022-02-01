@@ -9,7 +9,7 @@ public final class s_tab_list_tmem
   extends JceStruct
 {
   static ArrayList<Integer> cache_user_list = new ArrayList();
-  public ArrayList<Integer> user_list;
+  public ArrayList<Integer> user_list = null;
   
   static
   {
@@ -35,7 +35,7 @@ public final class s_tab_list_tmem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_tab_list_tmem
  * JD-Core Version:    0.7.0.1
  */

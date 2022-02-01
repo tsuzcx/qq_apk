@@ -13,24 +13,24 @@ public class PolylineOptions
   private static String x = "color_texture_flat_style.png";
   @Deprecated
   private static String y;
-  private PolylineOptions.ColorType A = PolylineOptions.ColorType.LINE_COLOR_NONE;
+  private PolylineOptions.ColorType A;
   private IndoorInfo B;
-  private int C = OverlayLevel.OverlayLevelAboveRoads;
+  private int C;
   private PolylineOptions.Text D;
-  private int E = 100;
-  final List<LatLng> a = new ArrayList();
-  boolean b = false;
-  boolean c = true;
-  private float d = -1.0F;
+  private int E;
+  final List<LatLng> a;
+  boolean b;
+  boolean c;
+  private float d;
   private float e;
-  private int f = fz.m;
-  private int g = 0;
-  private boolean h = true;
-  private boolean i = false;
+  private int f;
+  private int g;
+  private boolean h;
+  private boolean i;
   private boolean j;
   private boolean k = false;
-  private float l = 1.0F;
-  private boolean m = false;
+  private float l;
+  private boolean m;
   private Animation n;
   private List<Integer> o;
   private int[] p = null;
@@ -39,10 +39,31 @@ public class PolylineOptions
   private int s = -7829368;
   private int t = 0;
   @Deprecated
-  private String u = x;
-  private BitmapDescriptor v = BitmapDescriptorFactory.fromAsset(x);
-  private BitmapDescriptor w = null;
+  private String u;
+  private BitmapDescriptor v;
+  private BitmapDescriptor w;
   private boolean z;
+  
+  public PolylineOptions()
+  {
+    String str = x;
+    this.u = str;
+    this.v = BitmapDescriptorFactory.fromAsset(str);
+    this.b = false;
+    this.c = true;
+    this.w = null;
+    this.A = PolylineOptions.ColorType.LINE_COLOR_NONE;
+    this.C = OverlayLevel.OverlayLevelAboveRoads;
+    this.E = 100;
+    this.d = -1.0F;
+    this.f = fz.m;
+    this.h = true;
+    this.i = false;
+    this.a = new ArrayList();
+    this.l = 1.0F;
+    this.m = false;
+    this.g = 0;
+  }
   
   @Deprecated
   public static String getDefaultColorTexture()
@@ -244,15 +265,22 @@ public class PolylineOptions
   
   public int[][] getColors()
   {
-    if ((this.p == null) || (this.r == null)) {}
-    while (this.p.length != this.r.length) {
-      return null;
+    Object localObject = this.p;
+    if (localObject != null)
+    {
+      int[] arrayOfInt = this.r;
+      if (arrayOfInt == null) {
+        return null;
+      }
+      if (localObject.length != arrayOfInt.length) {
+        return null;
+      }
+      localObject = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, localObject.length });
+      localObject[0] = this.p;
+      localObject[1] = this.r;
+      return localObject;
     }
-    int i1 = this.p.length;
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, i1 });
-    arrayOfInt[0] = this.p;
-    arrayOfInt[1] = this.r;
-    return arrayOfInt;
+    return null;
   }
   
   public int getEraseColor()
@@ -358,10 +386,13 @@ public class PolylineOptions
   
   public PolylineOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return this;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return this;
+      }
+      this.C = paramInt;
     }
-    this.C = paramInt;
     return this;
   }
   
@@ -452,7 +483,7 @@ public class PolylineOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions
  * JD-Core Version:    0.7.0.1
  */

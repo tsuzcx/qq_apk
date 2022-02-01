@@ -29,13 +29,14 @@ public final class SerializationPB$BannerFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 80, 88, 96, 106 }, new String[] { "commet_like_feed", "share_info_title", "share_info_icon", "share_info_content", "share_info_jump_url", "blurb", "schema", "content", "cover_url", "height", "width", "recommend_id", "title_wording" }, new Object[] { null, "", "", "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro }, BannerFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 80, 88, 96, 106 }, new String[] { "commet_like_feed", "share_info_title", "share_info_icon", "share_info_content", "share_info_jump_url", "blurb", "schema", "content", "cover_url", "height", "width", "recommend_id", "title_wording" }, new Object[] { null, "", "", "", "", "", "", "", "", localInteger, localInteger, Long.valueOf(0L), localByteStringMicro }, BannerFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.BannerFeed
  * JD-Core Version:    0.7.0.1
  */

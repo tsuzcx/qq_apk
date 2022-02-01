@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.data;
 
-import abti;
-import amjc;
 import android.text.TextUtils;
-import awhp;
-import azvd;
+import com.tencent.imcore.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.fms.MessageSearchUtils;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
 public class MessageForStructing
   extends MessageForRichText
 {
-  @awhp
-  public boolean bDynicMsg;
+  @notColumn
+  public boolean bDynicMsg = false;
   public AbsStructMsg structingMsg;
   
   public MessageForStructing() {}
@@ -28,29 +28,27 @@ public class MessageForStructing
   public static String getReplySummary(ChatMessage paramChatMessage)
   {
     StringBuilder localStringBuilder = new StringBuilder(32);
-    MessageForStructing localMessageForStructing;
     if ((paramChatMessage instanceof MessageForStructing))
     {
-      localMessageForStructing = (MessageForStructing)paramChatMessage;
-      if ((localMessageForStructing.structingMsg instanceof StructMsgForGeneralShare))
-      {
-        if (localMessageForStructing.structingMsg.mMsgServiceID != 95) {
-          break label85;
+      MessageForStructing localMessageForStructing = (MessageForStructing)paramChatMessage;
+      AbsStructMsg localAbsStructMsg = localMessageForStructing.structingMsg;
+      if ((localAbsStructMsg instanceof StructMsgForGeneralShare)) {
+        if (localAbsStructMsg.mMsgServiceID == 95)
+        {
+          localStringBuilder.append("[在线文档]");
+          localStringBuilder.append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
         }
-        localStringBuilder.append("[在线文档]").append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
+        else if (localMessageForStructing.structingMsg.mMsgServiceID == 33)
+        {
+          localStringBuilder.append("[链接]");
+          localStringBuilder.append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
+        }
       }
     }
-    for (;;)
-    {
-      if (localStringBuilder.length() == 0) {
-        localStringBuilder.append(paramChatMessage.getSummaryMsg());
-      }
-      return localStringBuilder.toString();
-      label85:
-      if (localMessageForStructing.structingMsg.mMsgServiceID == 33) {
-        localStringBuilder.append("[链接]").append(((StructMsgForGeneralShare)localMessageForStructing.structingMsg).mContentTitle);
-      }
+    if (localStringBuilder.length() == 0) {
+      localStringBuilder.append(paramChatMessage.getSummaryMsg());
     }
+    return localStringBuilder.toString();
   }
   
   public void copyStructingMsg(MessageRecord paramMessageRecord)
@@ -79,13 +77,13 @@ public class MessageForStructing
     this.time = paramMessageRecord.time;
     this.versionCode = paramMessageRecord.versionCode;
     this.vipBubbleID = paramMessageRecord.vipBubbleID;
-    this.structingMsg = azvd.a(this.msgData);
+    this.structingMsg = StructMsgFactory.a(this.msgData);
   }
   
   protected void doParse()
   {
     if (!this.bDynicMsg) {
-      this.structingMsg = azvd.a(this.msgData);
+      this.structingMsg = StructMsgFactory.a(this.msgData);
     }
   }
   
@@ -96,55 +94,63 @@ public class MessageForStructing
   
   public String getContentForSearch()
   {
-    String str2 = null;
-    String str1 = str2;
-    if (this.structingMsg != null)
+    Object localObject = this.structingMsg;
+    if (localObject != null)
     {
-      boolean bool = amjc.a(String.valueOf(this.structingMsg.mMsgServiceID));
-      str1 = str2;
-      if ((this.structingMsg instanceof AbsShareMsg))
+      boolean bool = MessageSearchUtils.a(String.valueOf(((AbsStructMsg)localObject).mMsgServiceID));
+      localObject = this.structingMsg;
+      if (((localObject instanceof AbsShareMsg)) && (bool))
       {
-        str1 = str2;
-        if (bool)
-        {
-          str2 = ((AbsShareMsg)this.structingMsg).mContentTitle;
-          str1 = str2;
-          if (TextUtils.isEmpty(str2))
-          {
-            str1 = str2;
-            if ((this.structingMsg instanceof AbsStructMsg)) {
-              str1 = ((AbsShareMsg)this.structingMsg).mMsgBrief;
-            }
-          }
+        String str = ((AbsShareMsg)localObject).mContentTitle;
+        localObject = str;
+        if (!TextUtils.isEmpty(str)) {
+          return localObject;
         }
+        AbsStructMsg localAbsStructMsg = this.structingMsg;
+        localObject = str;
+        if (!(localAbsStructMsg instanceof AbsStructMsg)) {
+          return localObject;
+        }
+        return ((AbsShareMsg)localAbsStructMsg).mMsgBrief;
+      }
+    }
+    localObject = null;
+    return localObject;
+  }
+  
+  public String getSummaryMsg()
+  {
+    AbsStructMsg localAbsStructMsg = this.structingMsg;
+    String str2 = "";
+    String str1 = str2;
+    if (localAbsStructMsg != null)
+    {
+      str1 = str2;
+      if (localAbsStructMsg.mMsgBrief != null) {
+        str1 = this.structingMsg.mMsgBrief;
       }
     }
     return str1;
   }
   
-  public String getSummaryMsg()
-  {
-    if (this.structingMsg != null)
-    {
-      if (this.structingMsg.mMsgBrief != null) {
-        return this.structingMsg.mMsgBrief;
-      }
-      return "";
-    }
-    return "";
-  }
-  
   public boolean isHotPicsStruct()
   {
-    if (StructMsgForImageShare.class.isInstance(this.structingMsg)) {
-      return ((StructMsgForImageShare)this.structingMsg).mImageBizType == 2;
+    boolean bool3 = StructMsgForImageShare.class.isInstance(this.structingMsg);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (((StructMsgForImageShare)this.structingMsg).mImageBizType == 2) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean isSupportFTS()
   {
-    return abti.x(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -152,24 +158,27 @@ public class MessageForStructing
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.structingMsg != null) {}
-    try
-    {
-      if (!this.bDynicMsg) {
-        this.msgData = this.structingMsg.getBytes();
+    AbsStructMsg localAbsStructMsg = this.structingMsg;
+    if (localAbsStructMsg != null) {
+      try
+      {
+        if (!this.bDynicMsg)
+        {
+          this.msgData = localAbsStructMsg.getBytes();
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }

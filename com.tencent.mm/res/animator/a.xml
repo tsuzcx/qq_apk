@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="2" android:valueType="floatType" android:propertyName="scaleX" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="2" android:valueType="floatType" android:propertyName="scaleY" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="10.0dip" android:valueType="floatType" android:propertyName="translationZ" />
+        </set>
+    </item>
+    <item android:state_selected="true">
+        <set>
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="2" android:valueType="floatType" android:propertyName="scaleX" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="2" android:valueType="floatType" android:propertyName="scaleY" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="10.0dip" android:valueType="floatType" android:propertyName="translationZ" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleX" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleY" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime" android:valueTo="0.0dip" android:valueType="floatType" android:propertyName="translationZ" />
+        </set>
+    </item>
+</selector>

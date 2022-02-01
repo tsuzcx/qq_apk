@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:id="@id/a8b" android:visibility="gone" android:text="@string/e13" style="@style/lf" />
-        <ListView android:id="@id/cti" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:id="@id/jig" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/dc" android:layout_centerInParent="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jih" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/df" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ep2" style="@style/z8" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_filled_arrow" />
+        </LinearLayout>
+        <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</FrameLayout>

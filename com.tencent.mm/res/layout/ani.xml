@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ag"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dvt" style="@style/nd" />
-    <ImageView android:id="@id/dvu" style="@style/nd" />
-    <ImageView android:id="@id/dvv" style="@style/nd" />
-    <ImageView android:id="@id/dvw" style="@style/nd" />
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:layout_gravity="center_vertical" android:id="@id/hpq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d3c" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hpo" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_help" android:layout_marginStart="@dimen/bv" app:iconColor="@color/FG_0" />
+    </LinearLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/hps" android:background="@drawable/aqy" android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ege" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egp" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpr" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/df" android:src="@raw/icons_filled_done" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/Brand" />
+    </RelativeLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/hpg" android:background="@drawable/aqy" android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:id="@id/hgq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ef3" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_70" android:id="@id/hgp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ego" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpp" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/df" android:src="@raw/icons_filled_done" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/Brand" />
+    </RelativeLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="0.5dip" />
 </LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:background="@drawable/jfg" android:paddingLeft="15.0dip" android:paddingTop="24.0dip" android:paddingRight="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="407.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0sp" android:textColor="#ff1a1a1a" android:id="@id/mwq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="取消" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="16.0sp" android:textColor="#ff1a1a1a" android:id="@id/jq_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择你要提醒的人" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff1a1a1a" android:id="@id/mz_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="多选" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/l_i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/jq_" />
+    </RelativeLayout>
+</RelativeLayout>

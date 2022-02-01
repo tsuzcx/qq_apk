@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/ef8" android:key="settings_specail_scene_sound" android:dependency="settings_new_msg_notification" android:defaultValue="true" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eef" android:key="settings_specail_scene_shake" android:dependency="settings_new_msg_notification" android:defaultValue="true" android:layout="@layout/ahl" />
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/ef9" android:key="room_openim_about" android:layout="@layout/ah2" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_care_mode" android:layout="@layout/bdi" android:title="@string/ir1" />
 </PreferenceScreen>

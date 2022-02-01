@@ -5,69 +5,70 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.ws;
 import java.util.LinkedList;
 
 public final class c
   extends a
 {
-  protected TextView kCM;
-  protected TextView kCN;
+  protected TextView wLg;
+  protected TextView wLh;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final void bfH()
+  public final void P(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected final void doX()
   {
-    AppMethodBeat.i(88974);
-    this.kCN = ((TextView)bfG().findViewById(2131822397));
-    this.kCM = ((TextView)bfG().findViewById(2131822396));
-    AppMethodBeat.o(88974);
+    AppMethodBeat.i(113902);
+    this.wLh = ((TextView)doW().findViewById(a.d.wfr));
+    this.wLg = ((TextView)doW().findViewById(a.d.fvw));
+    AppMethodBeat.o(113902);
   }
   
-  protected final void bfI()
+  protected final void doY()
   {
-    AppMethodBeat.i(88975);
-    if ((this.klk.bbd().wFZ != null) && (this.klk.bbd().wFZ.size() > 0))
+    AppMethodBeat.i(113903);
+    if ((this.wru.djK().ZdK != null) && (this.wru.djK().ZdK.size() > 0))
     {
-      uo localuo = (uo)this.klk.bbd().wFZ.get(0);
-      if (this.iVS != null) {
-        this.iVS.setText(localuo.title);
+      aek localaek = (aek)this.wru.djK().ZdK.get(0);
+      if (this.uov != null) {
+        this.uov.setText(localaek.title);
       }
-      if (this.kCM != null)
+      if (this.wLg != null)
       {
-        if (TextUtils.isEmpty(localuo.kmn)) {
+        if (TextUtils.isEmpty(localaek.wsz)) {
           break label138;
         }
-        this.kCM.setText(localuo.kmn);
+        this.wLg.setText(localaek.wsz);
       }
-      while (this.kCN != null) {
-        if (!TextUtils.isEmpty(localuo.kmo))
+      while (this.wLh != null) {
+        if (!TextUtils.isEmpty(localaek.wsA))
         {
-          this.kCN.setText(localuo.kmo);
-          AppMethodBeat.o(88975);
+          this.wLh.setText(localaek.wsA);
+          AppMethodBeat.o(113903);
           return;
           label138:
-          this.kCM.setVisibility(8);
+          this.wLg.setVisibility(8);
         }
         else
         {
-          this.kCN.setVisibility(8);
+          this.wLh.setVisibility(8);
         }
       }
     }
-    AppMethodBeat.o(88975);
+    AppMethodBeat.o(113903);
   }
-  
-  public final void x(boolean paramBoolean1, boolean paramBoolean2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.c
  * JD-Core Version:    0.7.0.1
  */

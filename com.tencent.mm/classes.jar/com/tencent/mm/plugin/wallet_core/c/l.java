@@ -1,84 +1,67 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.amc;
-import com.tencent.mm.protocal.protobuf.amd;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqv;
+import com.tencent.mm.protocal.protobuf.cqw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class l
-  extends m
-  implements k
+  extends w
 {
-  private f callback;
-  private b goo;
-  private amc ubD;
-  public amd ubE;
-  private boolean ubz;
+  public cqw VxF;
+  private h callback;
+  private final c rr;
   
-  public l(String paramString, boolean paramBoolean)
+  public l()
   {
-    AppMethodBeat.i(46512);
-    this.ubz = paramBoolean;
-    b.a locala = new b.a();
-    locala.fsX = new amc();
-    locala.fsY = new amd();
-    if (paramBoolean) {
-      locala.funcId = 2803;
-    }
-    for (locala.uri = "/cgi-bin/mmpay-bin/mktgetf2flottery";; locala.uri = "/cgi-bin/mmpay-bin/mktgetlottery")
-    {
-      locala.reqCmdId = 0;
-      locala.respCmdId = 0;
-      this.goo = locala.ado();
-      this.ubD = ((amc)this.goo.fsV.fta);
-      this.ubD.xcU = paramString;
-      ab.i("MicroMsg.NetSceneMktGetLottery", "NetSceneMktGetLottery, getLotteryParams: %s, isF2f: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(46512);
-      return;
-      locala.funcId = 2508;
-    }
+    AppMethodBeat.i(301120);
+    c.a locala = new c.a();
+    cqv localcqv = new cqv();
+    localcqv.timestamp = cn.bDv();
+    locala.otE = localcqv;
+    locala.otF = new cqw();
+    locala.funcId = 2860;
+    locala.uri = "/cgi-bin/mmpay-bin/getreceiptassisplugin";
+    this.rr = locala.bEF();
+    AppMethodBeat.o(301120);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(46513);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(46513);
+    AppMethodBeat.i(301126);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(301126);
     return i;
   }
   
   public final int getType()
   {
-    if (this.ubz) {
-      return 2803;
-    }
-    return 2508;
+    return 2860;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(46514);
-    ab.i("MicroMsg.NetSceneMktGetLottery", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.ubE = ((amd)((b)paramq).fsW.fta);
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(301127);
+    Log.w("MicroMsg.NetSceneGetReceipAssistPlugin", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.VxF = ((cqw)c.c.b(((c)params).otC));
     }
-    AppMethodBeat.o(46514);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(301127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.l
  * JD-Core Version:    0.7.0.1
  */

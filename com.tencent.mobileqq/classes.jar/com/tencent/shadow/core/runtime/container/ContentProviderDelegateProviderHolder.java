@@ -7,8 +7,9 @@ public class ContentProviderDelegateProviderHolder
   
   private static void notifyDelegateProviderHolderPrepare()
   {
-    if (sPrepareListener != null) {
-      sPrepareListener.onPrepare();
+    ContentProviderDelegateProviderHolder.DelegateProviderHolderPrepareListener localDelegateProviderHolderPrepareListener = sPrepareListener;
+    if (localDelegateProviderHolderPrepareListener != null) {
+      localDelegateProviderHolderPrepareListener.onPrepare();
     }
   }
   
@@ -25,7 +26,7 @@ public class ContentProviderDelegateProviderHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.core.runtime.container.ContentProviderDelegateProviderHolder
  * JD-Core Version:    0.7.0.1
  */

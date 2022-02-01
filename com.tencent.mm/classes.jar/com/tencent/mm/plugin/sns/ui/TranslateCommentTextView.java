@@ -6,52 +6,54 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 
 public class TranslateCommentTextView
   extends LinearLayout
 {
-  public SnsTranslateResultView rPT;
-  public MaskTextView sdc;
+  public MaskTextView RGj;
+  public SnsTranslateResultView Rqk;
   
   public TranslateCommentTextView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(39904);
+    AppMethodBeat.i(99778);
     init();
-    AppMethodBeat.o(39904);
+    AppMethodBeat.o(99778);
   }
   
   public TranslateCommentTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(39905);
+    AppMethodBeat.i(99779);
     init();
-    AppMethodBeat.o(39905);
+    AppMethodBeat.o(99779);
   }
   
   private void init()
   {
-    AppMethodBeat.i(39906);
-    LayoutInflater.from(getContext()).inflate(2130970995, this);
-    this.sdc = ((MaskTextView)findViewById(2131828492));
-    this.rPT = ((SnsTranslateResultView)findViewById(2131827943));
-    this.rPT.setVisibility(8);
-    AppMethodBeat.o(39906);
+    AppMethodBeat.i(99780);
+    LayoutInflater.from(getContext()).inflate(b.g.timeline_comment_translate_item_layout, this);
+    this.RGj = ((MaskTextView)findViewById(b.f.comment_textview));
+    this.Rqk = ((SnsTranslateResultView)findViewById(b.f.sns_translate_result_view));
+    this.Rqk.setVisibility(8);
+    AppMethodBeat.o(99780);
   }
   
   public TextView getOriginCommentTextView()
   {
-    return this.sdc;
+    return this.RGj;
   }
   
   public SnsTranslateResultView getTranslateResultView()
   {
-    return this.rPT;
+    return this.Rqk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TranslateCommentTextView
  * JD-Core Version:    0.7.0.1
  */

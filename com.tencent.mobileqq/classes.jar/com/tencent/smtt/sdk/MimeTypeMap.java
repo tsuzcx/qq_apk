@@ -2,13 +2,13 @@ package com.tencent.smtt.sdk;
 
 public class MimeTypeMap
 {
-  private static MimeTypeMap mInstance;
+  private static MimeTypeMap a;
   
   public static String getFileExtensionFromUrl(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().mimeTypeMapGetFileExtensionFromUrl(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().h(paramString);
     }
     return android.webkit.MimeTypeMap.getFileExtensionFromUrl(paramString);
   }
@@ -17,10 +17,10 @@ public class MimeTypeMap
   {
     try
     {
-      if (mInstance == null) {
-        mInstance = new MimeTypeMap();
+      if (a == null) {
+        a = new MimeTypeMap();
       }
-      MimeTypeMap localMimeTypeMap = mInstance;
+      MimeTypeMap localMimeTypeMap = a;
       return localMimeTypeMap;
     }
     finally {}
@@ -28,43 +28,43 @@ public class MimeTypeMap
   
   public String getExtensionFromMimeType(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().mimeTypeMapGetExtensionFromMimeType(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().l(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString);
   }
   
   public String getMimeTypeFromExtension(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().mimeTypeMapGetMimeTypeFromExtension(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().j(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
   }
   
   public boolean hasExtension(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().mimeTypeMapHasExtension(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().k(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().hasExtension(paramString);
   }
   
   public boolean hasMimeType(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().mimeTypeMapHasMimeType(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().i(paramString);
     }
     return android.webkit.MimeTypeMap.getSingleton().hasMimeType(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.MimeTypeMap
  * JD-Core Version:    0.7.0.1
  */

@@ -51,46 +51,51 @@ class bg
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.b)) {
-      throw new IOException("Halley set empty bizHost");
-    }
-    try
-    {
-      if (Build.VERSION.SDK_INT < 17)
+    if (!TextUtils.isEmpty(this.b)) {
+      try
       {
-        paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(ac.a()))).createSocket(paramSocket, this.b, paramInt, paramBoolean);
+        if (Build.VERSION.SDK_INT < 17)
+        {
+          paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(ac.a()))).createSocket(paramSocket, this.b, paramInt, paramBoolean);
+          paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+          paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
+          paramSocket.startHandshake();
+          return paramSocket;
+        }
+        paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(ac.a()));
+        paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.b, paramInt, paramBoolean);
+        paramString.setUseSessionTickets(paramSocket, true);
         paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
+        paramString.setHostname(paramSocket, this.b);
         paramSocket.startHandshake();
         return paramSocket;
       }
-      paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(ac.a()));
-      paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.b, paramInt, paramBoolean);
-      paramString.setUseSessionTickets(paramSocket, true);
-      paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-      paramString.setHostname(paramSocket, this.b);
-      paramSocket.startHandshake();
-      return paramSocket;
-    }
-    catch (Throwable paramSocket)
-    {
-      this.a = true;
-      if ((paramSocket instanceof IOException)) {
-        throw ((IOException)paramSocket);
+      catch (Throwable paramSocket)
+      {
+        this.a = true;
+        if ((paramSocket instanceof IOException)) {
+          throw ((IOException)paramSocket);
+        }
+        throw new IOException("HalleySNI exception: ".concat(String.valueOf(paramSocket)));
       }
-      throw new IOException("HalleySNI exception: ".concat(String.valueOf(paramSocket)));
     }
+    throw new IOException("Halley set empty bizHost");
   }
   
   public boolean equals(Object paramObject)
   {
-    if ((TextUtils.isEmpty(this.b)) || (!(paramObject instanceof bg))) {}
-    do
+    if (!TextUtils.isEmpty(this.b))
     {
-      return false;
+      if (!(paramObject instanceof bg)) {
+        return false;
+      }
       paramObject = ((bg)paramObject).b;
-    } while (TextUtils.isEmpty(paramObject));
-    return this.b.equals(paramObject);
+      if (TextUtils.isEmpty(paramObject)) {
+        return false;
+      }
+      return this.b.equals(paramObject);
+    }
+    return false;
   }
   
   public String[] getDefaultCipherSuites()

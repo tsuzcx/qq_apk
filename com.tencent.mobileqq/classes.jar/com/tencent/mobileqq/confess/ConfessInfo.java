@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import bdeu;
+import com.tencent.mobileqq.util.Utils;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -54,13 +54,36 @@ public class ConfessInfo
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof ConfessInfo))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      return false;
+      if (!(paramObject instanceof ConfessInfo)) {
+        return false;
+      }
       paramObject = (ConfessInfo)paramObject;
-    } while ((this.topicId != paramObject.topicId) || (this.confessorSex != paramObject.confessorSex) || (this.confessorUin != paramObject.confessorUin) || (!bdeu.a(this.confessorNick, paramObject.confessorNick)) || (!bdeu.a(this.topic, paramObject.topic)));
-    return true;
+      bool1 = bool2;
+      if (this.topicId == paramObject.topicId)
+      {
+        bool1 = bool2;
+        if (this.confessorSex == paramObject.confessorSex)
+        {
+          bool1 = bool2;
+          if (this.confessorUin == paramObject.confessorUin)
+          {
+            bool1 = bool2;
+            if (Utils.a(this.confessorNick, paramObject.confessorNick))
+            {
+              bool1 = bool2;
+              if (Utils.a(this.topic, paramObject.topic)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void parseFromJsonStr(String paramString)
@@ -116,20 +139,41 @@ public class ConfessInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append("topicId").append("=").append(this.topicId);
-    localStringBuilder.append(" ").append("topic").append("=").append(this.topic);
-    localStringBuilder.append(" ").append("confessorUin").append("=").append(this.confessorUin);
-    localStringBuilder.append(" ").append("confessorNick").append("=").append(this.confessorNick);
-    localStringBuilder.append(" ").append("confessorSex").append("=").append(this.confessorSex);
-    localStringBuilder.append(" ").append("confessTime").append("=").append(this.confessTime);
-    localStringBuilder.append(" ").append("isSysMsg").append("=").append(this.isSysMsg);
+    localStringBuilder.append("[");
+    localStringBuilder.append("topicId");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.topicId);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("topic");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.topic);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("confessorUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessorUin);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("confessorNick");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessorNick);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("confessorSex");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessorSex);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("confessTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.confessTime);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("isSysMsg");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.isSysMsg);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessInfo
  * JD-Core Version:    0.7.0.1
  */

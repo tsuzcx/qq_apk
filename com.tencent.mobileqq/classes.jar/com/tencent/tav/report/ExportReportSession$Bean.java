@@ -19,17 +19,29 @@ final class ExportReportSession$Bean
   
   public ExportReportSession$Bean()
   {
-    super("TAVFoundation", "android_avfoundation_export", "1.1.-");
+    super("TAVFoundation", "android_avfoundation_export", "2.2.2.5");
   }
   
   public String toString()
   {
-    return "Bean{composite_time=" + this.composite_time + ", success=" + this.success + ", avg_render_time=" + this.avg_render_time + ", file_duration=" + this.file_duration + ", frame_per_second=" + this.frame_per_second + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Bean{composite_time=");
+    localStringBuilder.append(this.composite_time);
+    localStringBuilder.append(", success=");
+    localStringBuilder.append(this.success);
+    localStringBuilder.append(", avg_render_time=");
+    localStringBuilder.append(this.avg_render_time);
+    localStringBuilder.append(", file_duration=");
+    localStringBuilder.append(this.file_duration);
+    localStringBuilder.append(", frame_per_second=");
+    localStringBuilder.append(this.frame_per_second);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.report.ExportReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

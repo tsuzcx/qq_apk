@@ -1,12 +1,13 @@
+import com.tencent.mobileqq.richstatus.SameStatusActivity;
+
 public class ghl
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public ghl(SameStatusActivity paramSameStatusActivity) {}
   
-  public ghl(int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a.a(true, false);
   }
 }
 

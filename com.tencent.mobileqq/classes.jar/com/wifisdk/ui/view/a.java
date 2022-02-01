@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.wifisdk.ui.api.RProxy.id;
 import com.wifisdk.ui.api.RProxy.layout;
 import com.wifisdk.ui.api.RProxy.string;
@@ -35,7 +36,7 @@ import wf7.hv;
 public class a
   implements AdapterView.OnItemClickListener
 {
-  private static final String TAG = a.class.getSimpleName();
+  private static final String TAG = "a";
   private Context mContext;
   private hc.b sJ;
   private d tY;
@@ -80,22 +81,23 @@ public class a
       if (paramBoolean) {
         hk.az(398630);
       }
-      return;
     }
-    hv.fD().a(this.mContext, 2);
+    else
+    {
+      hv.fD().a(this.mContext, 2);
+    }
   }
   
   private void fI()
   {
     Object localObject = fm.dL().dO();
-    if (localObject != null) {}
-    int i;
-    for (localObject = ((fm.a)localObject).qu;; localObject = null)
-    {
-      i = hl.i("com.tencent.wifimanager", (String)localObject);
-      if (this.uQ != i) {
-        break;
-      }
+    if (localObject != null) {
+      localObject = ((fm.a)localObject).qu;
+    } else {
+      localObject = null;
+    }
+    int i = hl.i("com.tencent.wifimanager", (String)localObject);
+    if (this.uQ == i) {
       return;
     }
     if (i == 3)
@@ -105,10 +107,8 @@ public class a
       this.uG.setVisibility(8);
       this.uG.setOnClickListener(null);
     }
-    for (;;)
+    else
     {
-      this.uQ = i;
-      return;
       if (this.uC == null) {
         this.uC = new a.5(this);
       }
@@ -136,6 +136,7 @@ public class a
         hk.az(398521);
       }
     }
+    this.uQ = i;
   }
   
   private hc.b fJ()
@@ -232,27 +233,30 @@ public class a
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     this.uR = true;
-    paramAdapterView = (hn)this.uH.getAdapter().getItem(paramInt);
-    if ((paramAdapterView == null) || (paramAdapterView.tz != 0)) {}
-    do
+    Object localObject = (hn)this.uH.getAdapter().getItem(paramInt);
+    if ((localObject != null) && (((hn)localObject).tz == 0))
     {
-      return;
-      paramAdapterView = (hr)paramAdapterView;
+      localObject = (hr)localObject;
       hk.az(500623);
-    } while (paramAdapterView == null);
-    if (paramAdapterView.tI == 1)
-    {
-      a(paramAdapterView, true);
-      hk.az(500106);
-      return;
+      if (localObject != null) {
+        if (((hr)localObject).tI == 1)
+        {
+          a((hr)localObject, true);
+          hk.az(500106);
+        }
+        else
+        {
+          a((hr)localObject, false);
+          hk.az(398516);
+        }
+      }
     }
-    a(paramAdapterView, false);
-    hk.az(398516);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.wifisdk.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

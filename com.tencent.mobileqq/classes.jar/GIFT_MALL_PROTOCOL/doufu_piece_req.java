@@ -10,8 +10,8 @@ public final class doufu_piece_req
   extends JceStruct
 {
   static Map<String, String> cache_mapExt = new HashMap();
-  public Map<String, String> mapExt;
-  public long uin;
+  public Map<String, String> mapExt = null;
+  public long uin = 0L;
   
   static
   {
@@ -35,14 +35,15 @@ public final class doufu_piece_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 1);
+    Map localMap = this.mapExt;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GIFT_MALL_PROTOCOL.doufu_piece_req
  * JD-Core Version:    0.7.0.1
  */

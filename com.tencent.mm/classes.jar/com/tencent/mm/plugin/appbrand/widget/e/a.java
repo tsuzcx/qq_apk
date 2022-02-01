@@ -1,119 +1,47 @@
 package com.tencent.mm.plugin.appbrand.widget.e;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
-  extends Drawable
 {
-  private Paint borderPaint;
-  float borderRadius;
-  private int borderWidth;
-  private Path jro;
-  private Path jrp;
-  private int jrq;
-  private int jrr;
-  private Paint paint;
-  private final RectF rect;
+  private int uED;
+  private int uEE;
+  private int uEF;
+  private int uEG;
+  private int uEH;
+  private int uEI;
+  private int uEJ;
+  private int uEK;
   
-  public a()
+  public a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(51244);
-    this.rect = new RectF();
-    this.borderRadius = 0.0F;
-    this.borderWidth = 0;
-    this.jrq = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 3);
-    this.jrr = this.jrq;
-    this.paint = new Paint(1);
-    this.paint.setStyle(Paint.Style.FILL);
-    this.borderPaint = new Paint(1);
-    this.borderPaint.setStyle(Paint.Style.FILL);
-    this.jro = new Path();
-    this.jrp = new Path();
-    AppMethodBeat.o(51244);
+    AppMethodBeat.i(153229);
+    this.uED = Color.red(paramInt1);
+    this.uEE = Color.green(paramInt1);
+    this.uEF = Color.blue(paramInt1);
+    this.uEG = Color.alpha(paramInt1);
+    this.uEH = Color.red(paramInt2);
+    this.uEI = Color.green(paramInt2);
+    this.uEJ = Color.blue(paramInt2);
+    this.uEK = Color.alpha(paramInt2);
+    AppMethodBeat.o(153229);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int ca(float paramFloat)
   {
-    AppMethodBeat.i(51245);
-    float f5 = this.rect.width();
-    float f6 = this.rect.height();
-    float f1 = this.rect.left;
-    float f2 = this.rect.top;
-    float f3 = this.rect.right;
-    float f4 = this.rect.bottom;
-    f5 = Math.min(this.borderRadius, Math.min(f5, f6) * 0.5F);
-    paramCanvas.drawRoundRect(new RectF(this.jrr + f1, this.jrr + f2, f3 - this.jrr, f4 - this.jrr), f5, f5, this.borderPaint);
-    paramCanvas.drawPath(this.jrp, this.borderPaint);
-    paramCanvas.drawRoundRect(new RectF(f1 + this.jrr + this.borderWidth, f2 + this.jrr + this.borderWidth, f3 - this.jrr - this.borderWidth, f4 - this.jrr - this.borderWidth), f5, f5, this.paint);
-    paramCanvas.drawPath(this.jro, this.paint);
-    AppMethodBeat.o(51245);
-  }
-  
-  public final int getOpacity()
-  {
-    return -3;
-  }
-  
-  public final void setAlpha(int paramInt)
-  {
-    AppMethodBeat.i(51247);
-    this.paint.setAlpha(paramInt);
-    this.borderPaint.setAlpha(paramInt);
-    AppMethodBeat.o(51247);
-  }
-  
-  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(51246);
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.rect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f = (paramInt1 + paramInt3) / 2.0F;
-    this.jrp.moveTo(f, paramInt4);
-    this.jrp.lineTo(f - this.jrr, paramInt4 - this.jrr);
-    this.jrp.lineTo(this.jrr + f, paramInt4 - this.jrr);
-    this.jrp.close();
-    this.jro.moveTo(f, paramInt4 - this.borderWidth);
-    this.jro.lineTo(f - this.jrr, paramInt4 - this.jrr - this.borderWidth);
-    this.jro.lineTo(f + this.jrr, paramInt4 - this.jrr - this.borderWidth);
-    this.jro.close();
-    AppMethodBeat.o(51246);
-  }
-  
-  public final void setColor(int paramInt)
-  {
-    AppMethodBeat.i(51249);
-    this.paint.setColor(paramInt);
-    AppMethodBeat.o(51249);
-  }
-  
-  public final void setColorFilter(ColorFilter paramColorFilter)
-  {
-    AppMethodBeat.i(51248);
-    this.paint.setColorFilter(paramColorFilter);
-    this.borderPaint.setColorFilter(paramColorFilter);
-    AppMethodBeat.o(51248);
-  }
-  
-  public final void setStroke(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(51250);
-    this.borderWidth = paramInt1;
-    this.jrr = (paramInt1 / 3 + this.jrq);
-    this.borderPaint.setColor(paramInt2);
-    AppMethodBeat.o(51250);
+    AppMethodBeat.i(153230);
+    int i = (int)(this.uED + ((this.uEH - this.uED) * paramFloat + 0.5D));
+    int j = (int)(this.uEE + ((this.uEI - this.uEE) * paramFloat + 0.5D));
+    int k = (int)(this.uEF + ((this.uEJ - this.uEF) * paramFloat + 0.5D));
+    i = Color.argb((int)(this.uEG + ((this.uEK - this.uEG) * paramFloat + 0.5D)), i, j, k);
+    AppMethodBeat.o(153230);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.a
  * JD-Core Version:    0.7.0.1
  */

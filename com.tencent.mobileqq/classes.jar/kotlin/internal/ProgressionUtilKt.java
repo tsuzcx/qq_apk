@@ -19,36 +19,40 @@ public final class ProgressionUtilKt
   @PublishedApi
   public static final int getProgressionLastElement(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt3 > 0) {
-      if (paramInt1 < paramInt2) {}
-    }
-    do
+    if (paramInt3 > 0)
     {
-      return paramInt2;
-      return paramInt2 - differenceModulo(paramInt2, paramInt1, paramInt3);
-      if (paramInt3 >= 0) {
-        break;
+      if (paramInt1 >= paramInt2) {
+        return paramInt2;
       }
-    } while (paramInt1 <= paramInt2);
-    return paramInt2 + differenceModulo(paramInt1, paramInt2, -paramInt3);
+      return paramInt2 - differenceModulo(paramInt2, paramInt1, paramInt3);
+    }
+    if (paramInt3 < 0)
+    {
+      if (paramInt1 <= paramInt2) {
+        return paramInt2;
+      }
+      return paramInt2 + differenceModulo(paramInt1, paramInt2, -paramInt3);
+    }
     throw ((Throwable)new IllegalArgumentException("Step is zero."));
   }
   
   @PublishedApi
   public static final long getProgressionLastElement(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (paramLong3 > 0L) {
-      if (paramLong1 < paramLong2) {}
-    }
-    do
+    if (paramLong3 > 0L)
     {
-      return paramLong2;
-      return paramLong2 - differenceModulo(paramLong2, paramLong1, paramLong3);
-      if (paramLong3 >= 0L) {
-        break;
+      if (paramLong1 >= paramLong2) {
+        return paramLong2;
       }
-    } while (paramLong1 <= paramLong2);
-    return paramLong2 + differenceModulo(paramLong1, paramLong2, -paramLong3);
+      return paramLong2 - differenceModulo(paramLong2, paramLong1, paramLong3);
+    }
+    if (paramLong3 < 0L)
+    {
+      if (paramLong1 <= paramLong2) {
+        return paramLong2;
+      }
+      return paramLong2 + differenceModulo(paramLong1, paramLong2, -paramLong3);
+    }
     throw ((Throwable)new IllegalArgumentException("Step is zero."));
   }
   
@@ -72,7 +76,7 @@ public final class ProgressionUtilKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.internal.ProgressionUtilKt
  * JD-Core Version:    0.7.0.1
  */

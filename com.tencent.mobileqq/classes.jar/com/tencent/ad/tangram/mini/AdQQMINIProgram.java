@@ -19,8 +19,9 @@ public enum AdQQMINIProgram
   
   private static AdQQMINIProgramAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdQQMINIProgramAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdQQMINIProgramAdapter)localWeakReference.get();
     }
     return null;
   }
@@ -46,7 +47,7 @@ public enum AdQQMINIProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ad.tangram.mini.AdQQMINIProgram
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public final class dbh
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<Integer> xYZ;
-  public dbg yhA;
-  public LinkedList<Integer> yhB;
-  public int yhC;
-  public int yhD;
+  public int aaGP;
+  public int id;
   
-  public dbh()
+  private JSONObject toJSON()
   {
-    AppMethodBeat.i(115016);
-    this.yhB = new LinkedList();
-    this.xYZ = new LinkedList();
-    AppMethodBeat.o(115016);
+    AppMethodBeat.i(259539);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "id", Integer.valueOf(this.id), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "positionFlag", Integer.valueOf(this.aaGP), true);
+      label41:
+      AppMethodBeat.o(259539);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label41;
+    }
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115017);
+    AppMethodBeat.i(259543);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.yhA != null)
-      {
-        paramVarArgs.iQ(1, this.yhA.computeSize());
-        this.yhA.writeFields(paramVarArgs);
-      }
-      paramVarArgs.e(2, 2, this.yhB);
-      paramVarArgs.e(3, 2, this.xYZ);
-      paramVarArgs.aO(4, this.yhC);
-      paramVarArgs.aO(5, this.yhD);
-      AppMethodBeat.o(115017);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.id);
+      paramVarArgs.bS(2, this.aaGP);
+      AppMethodBeat.o(259543);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.yhA == null) {
-        break label528;
-      }
-    }
-    label528:
-    for (paramInt = e.a.a.a.iP(1, this.yhA.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = e.a.a.a.c(2, 2, this.yhB);
-      int j = e.a.a.a.c(3, 2, this.xYZ);
-      int k = e.a.a.b.b.a.bl(4, this.yhC);
-      int m = e.a.a.b.b.a.bl(5, this.yhD);
-      AppMethodBeat.o(115017);
-      return paramInt + i + j + k + m;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.yhB.clear();
-        this.xYZ.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
+      paramInt = i.a.a.b.b.a.cJ(1, this.id);
+      int i = i.a.a.b.b.a.cJ(2, this.aaGP);
+      AppMethodBeat.o(259543);
+      return paramInt + 0 + i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
         }
-        AppMethodBeat.o(115017);
+      }
+      AppMethodBeat.o(259543);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      dbh localdbh = (dbh)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(259543);
+        return -1;
+      case 1: 
+        localdbh.id = locala.ajGk.aar();
+        AppMethodBeat.o(259543);
         return 0;
       }
-      if (paramInt == 3)
+      localdbh.aaGP = locala.ajGk.aar();
+      AppMethodBeat.o(259543);
+      return 0;
+    }
+    AppMethodBeat.o(259543);
+    return -1;
+  }
+  
+  public final com.tencent.mm.bx.a toPb(String paramString)
+  {
+    AppMethodBeat.i(259544);
+    if ((paramString == null) || ("" == paramString))
+    {
+      AppMethodBeat.o(259544);
+      return this;
+    }
+    for (;;)
+    {
+      String str;
+      try
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-        dbh localdbh = (dbh)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        if (localIterator.hasNext())
         {
-        default: 
-          AppMethodBeat.o(115017);
-          return -1;
-        case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dbg();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dbg)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localdbh.yhA = ((dbg)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(115017);
-          return 0;
-        case 2: 
-          localdbh.yhB.add(Integer.valueOf(((e.a.a.a.a)localObject1).CLY.sl()));
-          AppMethodBeat.o(115017);
-          return 0;
-        case 3: 
-          localdbh.xYZ.add(Integer.valueOf(((e.a.a.a.a)localObject1).CLY.sl()));
-          AppMethodBeat.o(115017);
-          return 0;
-        case 4: 
-          localdbh.yhC = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(115017);
-          return 0;
+          str = (String)localIterator.next();
+          i = -1;
         }
-        localdbh.yhD = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(115017);
-        return 0;
+        switch (str.hashCode())
+        {
+        case 3355: 
+          this.id = ((Integer)paramString.opt(str)).intValue();
+          continue;
+          if (!str.equals("id")) {
+            break label176;
+          }
+        }
       }
-      AppMethodBeat.o(115017);
-      return -1;
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("IconConfig", paramString, "", new Object[0]);
+        AppMethodBeat.o(259544);
+        return this;
+      }
+      int i = 0;
+      break label176;
+      if (str.equals("positionFlag"))
+      {
+        i = 1;
+        break label176;
+        this.aaGP = ((Integer)paramString.opt(str)).intValue();
+        continue;
+      }
+      label176:
+      switch (i)
+      {
+      }
     }
   }
 }

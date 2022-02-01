@@ -6,47 +6,53 @@ import com.tencent.smtt.export.external.DexLoader;
 
 public class TbsMediaFactory
 {
-  private Context mAppContext = null;
-  private TbsWizard mAppWizard = null;
-  private DexLoader mDexLoader = null;
+  private Context a = null;
+  private v b = null;
+  private DexLoader c = null;
   
   public TbsMediaFactory(Context paramContext)
   {
-    this.mAppContext = paramContext.getApplicationContext();
-    initPlayerFactory();
+    this.a = paramContext.getApplicationContext();
+    a();
   }
   
-  private void initPlayerFactory()
+  private void a()
   {
-    if (this.mAppContext == null) {
-      Log.e("TbsVideo", "TbsVideo needs context !!");
-    }
-    do
+    if (this.a == null)
     {
+      Log.e("TbsVideo", "TbsVideo needs context !!");
       return;
-      if (this.mAppWizard == null)
-      {
-        SDKEngine.getInstance(true).init(this.mAppContext, false, false, null);
-        this.mAppWizard = SDKEngine.getInstance(true).wizard();
-        if (this.mAppWizard != null) {
-          this.mDexLoader = this.mAppWizard.dexLoader();
-        }
+    }
+    if (this.b == null)
+    {
+      f.a(true).a(this.a, false, false, null);
+      this.b = f.a(true).a();
+      v localv = this.b;
+      if (localv != null) {
+        this.c = localv.b();
       }
-    } while ((this.mAppWizard != null) && (this.mDexLoader != null));
+    }
+    if ((this.b != null) && (this.c != null)) {
+      return;
+    }
     throw new RuntimeException("tbs core dex(s) load failure !!!");
   }
   
   public TbsMediaPlayer createPlayer()
   {
-    if ((this.mAppWizard == null) || (this.mDexLoader == null)) {
-      throw new RuntimeException("tbs core dex(s) did not loaded !!!");
+    if (this.b != null)
+    {
+      DexLoader localDexLoader = this.c;
+      if (localDexLoader != null) {
+        return new TbsMediaPlayer(new q(localDexLoader, this.a));
+      }
     }
-    return new TbsMediaPlayer(new TbsMediaPlayerWizard(this.mDexLoader, this.mAppContext));
+    throw new RuntimeException("tbs core dex(s) did not loaded !!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsMediaFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -59,14 +59,18 @@ public class NativeColorInfo
       if (n != i) {
         localHashMap.put("d", Integer.valueOf(n));
       }
-      localHashMap.put("n", Integer.valueOf(i));
-      return localHashMap;
+      paramContext = Integer.valueOf(i);
     }
-    if (this.color != null)
+    else
     {
-      localHashMap.put("n", this.color);
-      return localHashMap;
+      paramContext = this.color;
+      if (paramContext == null) {
+        break label218;
+      }
     }
+    localHashMap.put("n", paramContext);
+    return localHashMap;
+    label218:
     return null;
   }
   
@@ -77,7 +81,7 @@ public class NativeColorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.resource_loader.NativeColorInfo
  * JD-Core Version:    0.7.0.1
  */

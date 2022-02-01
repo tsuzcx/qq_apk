@@ -21,7 +21,7 @@ public final class get_photo_list_ex_req
   public long left;
   public String password = "";
   public long right;
-  public long sharer;
+  public long sharer = 0L;
   public int sheight;
   public int sort;
   public int swidth;
@@ -93,15 +93,18 @@ public final class get_photo_list_ex_req
     paramJceOutputStream.write(this.swidth, 8);
     paramJceOutputStream.write(this.sheight, 9);
     paramJceOutputStream.write(this.type, 10);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 11);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 12);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
     paramJceOutputStream.write(this.appid, 13);
-    if (this.curid != null) {
-      paramJceOutputStream.write(this.curid, 14);
+    localObject = this.curid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.albumtype, 15);
     paramJceOutputStream.write(this.get_photo_ex_type, 16);
@@ -110,7 +113,7 @@ public final class get_photo_list_ex_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_ex_req
  * JD-Core Version:    0.7.0.1
  */

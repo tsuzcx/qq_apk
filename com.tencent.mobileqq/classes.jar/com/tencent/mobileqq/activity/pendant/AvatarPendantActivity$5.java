@@ -1,18 +1,16 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import axlx;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 class AvatarPendantActivity$5
-  implements Runnable
+  extends GameCenterObserver
 {
   AvatarPendantActivity$5(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    axlx localaxlx = (axlx)this.this$0.app.getManager(36);
-    this.this$0.a = localaxlx.a("100100.100125.100127");
-    this.this$0.runOnUiThread(new AvatarPendantActivity.5.1(this));
+    AvatarPendantActivity.a(this.a);
   }
 }
 

@@ -1,7 +1,9 @@
 package android.support.v4.app;
 
-import android.arch.lifecycle.d;
-import android.arch.lifecycle.f;
+import android.arch.lifecycle.e;
+import android.arch.lifecycle.g;
+import android.arch.lifecycle.j;
+import android.arch.lifecycle.x;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,7 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
-import android.support.v4.b.r;
+import android.support.v4.b.s;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -22,19 +24,12 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class FragmentActivity
-  extends g
-  implements b, c
+  extends h
+  implements b, d
 {
-  final q bX = q.a(new n(this));
-  boolean bY;
-  boolean bZ;
-  boolean bj;
-  boolean ca = true;
-  boolean cb = true;
-  boolean cc;
-  int cd;
-  r<String> ce;
-  final Handler mHandler = new Handler()
+  private x cM;
+  boolean cU;
+  final Handler dG = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -46,66 +41,66 @@ public class FragmentActivity
         do
         {
           return;
-        } while (!FragmentActivity.this.ca);
-        FragmentActivity.this.d(false);
+        } while (!FragmentActivity.this.dL);
+        FragmentActivity.this.g(false);
         return;
       }
-      FragmentActivity.this.bX.dispatchResume();
-      FragmentActivity.this.bX.execPendingActions();
+      FragmentActivity.this.dH.dispatchResume();
+      FragmentActivity.this.dH.execPendingActions();
     }
   };
+  final r dH = r.a(new o(this));
+  al dI;
+  boolean dJ;
+  boolean dK;
+  boolean dL = true;
+  boolean dM = true;
+  boolean dN;
+  int dO;
+  s<String> dP;
   
-  private static void a(s params, d paramd)
+  private static boolean a(t paramt, g paramg)
   {
-    params = params.getFragments().iterator();
-    while (params.hasNext())
+    paramt = paramt.getFragments().iterator();
+    boolean bool = false;
+    while (paramt.hasNext())
     {
-      Fragment localFragment = (Fragment)params.next();
-      if (localFragment != null)
+      Object localObject = (Fragment)paramt.next();
+      if (localObject != null)
       {
-        localFragment.bB.a(paramd);
-        a(localFragment.p(), paramd);
+        if (((Fragment)localObject).h().g().a(g.K))
+        {
+          ((Fragment)localObject).dk.b(paramg);
+          bool = true;
+        }
+        localObject = ((Fragment)localObject).cK;
+        if (localObject == null) {
+          break label83;
+        }
+        bool = a((t)localObject, paramg) | bool;
       }
+    }
+    label83:
+    for (;;)
+    {
+      break;
+      return bool;
     }
   }
   
-  public final s R()
+  private void ai()
   {
-    return this.bX.R();
+    while (a(this.dH.ah(), g.J)) {}
   }
   
   final View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return this.bX.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    return this.dH.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
   }
   
-  public final void a(int paramInt)
+  public final t ah()
   {
-    if (!this.cc) {
-      d(0);
-    }
-  }
-  
-  public final android.arch.lifecycle.b d()
-  {
-    return super.d();
-  }
-  
-  final void d(boolean paramBoolean)
-  {
-    if (!this.cb)
-    {
-      this.cb = true;
-      this.bj = paramBoolean;
-      this.mHandler.removeMessages(1);
-      this.bX.doLoaderStop(this.bj);
-      this.bX.W();
-    }
-    while (!paramBoolean) {
-      return;
-    }
-    this.bX.doLoaderStart();
-    this.bX.doLoaderStop(true);
+    return this.dH.ah();
   }
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
@@ -118,49 +113,78 @@ public class FragmentActivity
     String str = paramString + "  ";
     paramPrintWriter.print(str);
     paramPrintWriter.print("mCreated=");
-    paramPrintWriter.print(this.bY);
+    paramPrintWriter.print(this.dJ);
     paramPrintWriter.print("mResumed=");
-    paramPrintWriter.print(this.bZ);
+    paramPrintWriter.print(this.dK);
     paramPrintWriter.print(" mStopped=");
-    paramPrintWriter.print(this.ca);
+    paramPrintWriter.print(this.dL);
     paramPrintWriter.print(" mReallyStopped=");
-    paramPrintWriter.println(this.cb);
-    this.bX.dumpLoaders(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-    this.bX.R().dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    paramPrintWriter.println(this.dM);
+    if (this.dI != null) {
+      this.dI.dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    }
+    this.dH.ah().dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+  }
+  
+  final void g(boolean paramBoolean)
+  {
+    if (!this.dM)
+    {
+      this.dM = true;
+      this.cU = paramBoolean;
+      this.dG.removeMessages(1);
+      this.dH.an();
+    }
+  }
+  
+  public final e h()
+  {
+    return super.h();
+  }
+  
+  public final void j(int paramInt)
+  {
+    if (!this.dN) {
+      m(0);
+    }
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.bX.noteStateNotSaved();
+    this.dH.noteStateNotSaved();
     int i = paramInt1 >> 16;
+    Object localObject;
     if (i != 0)
     {
       i -= 1;
-      String str = (String)this.ce.get(i);
-      this.ce.remove(i);
-      if (str == null)
-      {
+      localObject = (String)this.dP.get(i);
+      this.dP.remove(i);
+      if (localObject == null) {
         Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
-        return;
       }
-      Fragment localFragment = this.bX.a(str);
+    }
+    do
+    {
+      return;
+      Fragment localFragment = this.dH.a((String)localObject);
       if (localFragment == null)
       {
-        Log.w("FragmentActivity", "Activity result no fragment exists for who: " + str);
+        Log.w("FragmentActivity", "Activity result no fragment exists for who: ".concat(String.valueOf(localObject)));
         return;
       }
       localFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
       return;
-    }
+      localObject = a.z();
+    } while ((localObject != null) && (((c)localObject).B()));
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    s locals = this.bX.R();
-    boolean bool = locals.isStateSaved();
+    t localt = this.dH.ah();
+    boolean bool = localt.isStateSaved();
     if ((bool) && (Build.VERSION.SDK_INT <= 25)) {}
-    while ((!bool) && (locals.popBackStackImmediate())) {
+    while ((!bool) && (localt.popBackStackImmediate())) {
       return;
     }
     super.onBackPressed();
@@ -169,55 +193,56 @@ public class FragmentActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.bX.dispatchConfigurationChanged(paramConfiguration);
+    this.dH.noteStateNotSaved();
+    this.dH.dispatchConfigurationChanged(paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.bX.U();
+    this.dH.al();
     super.onCreate(paramBundle);
-    Object localObject = (o)getLastNonConfigurationInstance();
+    Object localObject = (p)getLastNonConfigurationInstance();
     if (localObject != null) {
-      this.bX.a(((o)localObject).ci);
+      this.cM = ((p)localObject).dS;
     }
     if (paramBundle != null)
     {
       Parcelable localParcelable = paramBundle.getParcelable("android:support:fragments");
-      q localq = this.bX;
+      r localr = this.dH;
       if (localObject == null) {
-        break label163;
+        break label160;
       }
-      localObject = ((o)localObject).ch;
-      localq.a(localParcelable, (ac)localObject);
+      localObject = ((p)localObject).dT;
+      localr.a(localParcelable, (ae)localObject);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
-        this.cd = paramBundle.getInt("android:support:next_request_index");
+        this.dO = paramBundle.getInt("android:support:next_request_index");
         localObject = paramBundle.getIntArray("android:support:request_indicies");
         paramBundle = paramBundle.getStringArray("android:support:request_fragment_who");
         if ((localObject != null) && (paramBundle != null) && (localObject.length == paramBundle.length)) {
-          break label168;
+          break label165;
         }
         Log.w("FragmentActivity", "Invalid requestCode mapping in savedInstanceState.");
       }
     }
     for (;;)
     {
-      if (this.ce == null)
+      if (this.dP == null)
       {
-        this.ce = new r();
-        this.cd = 0;
+        this.dP = new s();
+        this.dO = 0;
       }
-      this.bX.dispatchCreate();
+      this.dH.dispatchCreate();
       return;
-      label163:
+      label160:
       localObject = null;
       break;
-      label168:
-      this.ce = new r(localObject.length);
+      label165:
+      this.dP = new s(localObject.length);
       int i = 0;
       while (i < localObject.length)
       {
-        this.ce.put(localObject[i], paramBundle[i]);
+        this.dP.put(localObject[i], paramBundle[i]);
         i += 1;
       }
     }
@@ -226,7 +251,7 @@ public class FragmentActivity
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
   {
     if (paramInt == 0) {
-      return super.onCreatePanelMenu(paramInt, paramMenu) | this.bX.dispatchCreateOptionsMenu(paramMenu, getMenuInflater());
+      return super.onCreatePanelMenu(paramInt, paramMenu) | this.dH.dispatchCreateOptionsMenu(paramMenu, getMenuInflater());
     }
     return super.onCreatePanelMenu(paramInt, paramMenu);
   }
@@ -234,15 +259,17 @@ public class FragmentActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    d(false);
-    this.bX.dispatchDestroy();
-    this.bX.doLoaderDestroy();
+    g(false);
+    if ((this.cM != null) && (!this.cU)) {
+      this.cM.clear();
+    }
+    this.dH.dispatchDestroy();
   }
   
   public void onLowMemory()
   {
     super.onLowMemory();
-    this.bX.dispatchLowMemory();
+    this.dH.dispatchLowMemory();
   }
   
   public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
@@ -255,20 +282,20 @@ public class FragmentActivity
     default: 
       return false;
     case 0: 
-      return this.bX.dispatchOptionsItemSelected(paramMenuItem);
+      return this.dH.dispatchOptionsItemSelected(paramMenuItem);
     }
-    return this.bX.dispatchContextItemSelected(paramMenuItem);
+    return this.dH.dispatchContextItemSelected(paramMenuItem);
   }
   
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
-    this.bX.dispatchMultiWindowModeChanged(paramBoolean);
+    this.dH.dispatchMultiWindowModeChanged(paramBoolean);
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    this.bX.noteStateNotSaved();
+    this.dH.noteStateNotSaved();
   }
   
   public void onPanelClosed(int paramInt, Menu paramMenu)
@@ -280,110 +307,106 @@ public class FragmentActivity
     {
       super.onPanelClosed(paramInt, paramMenu);
       return;
-      this.bX.dispatchOptionsMenuClosed(paramMenu);
+      this.dH.dispatchOptionsMenuClosed(paramMenu);
     }
   }
   
   protected void onPause()
   {
     super.onPause();
-    this.bZ = false;
-    if (this.mHandler.hasMessages(2))
+    this.dK = false;
+    if (this.dG.hasMessages(2))
     {
-      this.mHandler.removeMessages(2);
-      this.bX.dispatchResume();
+      this.dG.removeMessages(2);
+      this.dH.dispatchResume();
     }
-    this.bX.dispatchPause();
+    this.dH.dispatchPause();
   }
   
   public void onPictureInPictureModeChanged(boolean paramBoolean)
   {
-    this.bX.dispatchPictureInPictureModeChanged(paramBoolean);
+    this.dH.dispatchPictureInPictureModeChanged(paramBoolean);
   }
   
   protected void onPostResume()
   {
     super.onPostResume();
-    this.mHandler.removeMessages(2);
-    this.bX.dispatchResume();
-    this.bX.execPendingActions();
+    this.dG.removeMessages(2);
+    this.dH.dispatchResume();
+    this.dH.execPendingActions();
   }
   
   public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
   {
     if ((paramInt == 0) && (paramMenu != null)) {
-      return super.onPreparePanel(0, paramView, paramMenu) | this.bX.dispatchPrepareOptionsMenu(paramMenu);
+      return super.onPreparePanel(0, paramView, paramMenu) | this.dH.dispatchPrepareOptionsMenu(paramMenu);
     }
     return super.onPreparePanel(paramInt, paramView, paramMenu);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
+    this.dH.noteStateNotSaved();
     paramInt = paramInt >> 16 & 0xFFFF;
     if (paramInt != 0)
     {
       paramInt -= 1;
-      paramArrayOfString = (String)this.ce.get(paramInt);
-      this.ce.remove(paramInt);
-      if (paramArrayOfString == null) {
-        Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
+      paramArrayOfString = (String)this.dP.get(paramInt);
+      this.dP.remove(paramInt);
+      if (paramArrayOfString != null) {
+        break label56;
       }
+      Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
     }
-    else
-    {
+    label56:
+    while (this.dH.a(paramArrayOfString) != null) {
       return;
     }
-    if (this.bX.a(paramArrayOfString) == null)
-    {
-      Log.w("FragmentActivity", "Activity result no fragment exists for who: " + paramArrayOfString);
-      return;
-    }
-    Fragment.r();
+    Log.w("FragmentActivity", "Activity result no fragment exists for who: ".concat(String.valueOf(paramArrayOfString)));
   }
   
   protected void onResume()
   {
     super.onResume();
-    this.mHandler.sendEmptyMessage(2);
-    this.bZ = true;
-    this.bX.execPendingActions();
+    this.dG.sendEmptyMessage(2);
+    this.dK = true;
+    this.dH.execPendingActions();
   }
   
   public final Object onRetainNonConfigurationInstance()
   {
-    if (this.ca) {
-      d(true);
+    if (this.dL) {
+      g(true);
     }
-    ac localac = this.bX.V();
-    android.support.v4.b.q localq = this.bX.X();
-    if ((localac == null) && (localq == null)) {
+    ae localae = this.dH.am();
+    if ((localae == null) && (this.cM == null)) {
       return null;
     }
-    o localo = new o();
-    localo.cg = null;
-    localo.ch = localac;
-    localo.ci = localq;
-    return localo;
+    p localp = new p();
+    localp.dR = null;
+    localp.dS = this.cM;
+    localp.dT = localae;
+    return localp;
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    a(this.bX.R(), d.p);
-    Object localObject = this.bX.saveAllState();
+    ai();
+    Object localObject = this.dH.saveAllState();
     if (localObject != null) {
       paramBundle.putParcelable("android:support:fragments", (Parcelable)localObject);
     }
-    if (this.ce.size() > 0)
+    if (this.dP.size() > 0)
     {
-      paramBundle.putInt("android:support:next_request_index", this.cd);
-      localObject = new int[this.ce.size()];
-      String[] arrayOfString = new String[this.ce.size()];
+      paramBundle.putInt("android:support:next_request_index", this.dO);
+      localObject = new int[this.dP.size()];
+      String[] arrayOfString = new String[this.dP.size()];
       int i = 0;
-      while (i < this.ce.size())
+      while (i < this.dP.size())
       {
-        localObject[i] = this.ce.keyAt(i);
-        arrayOfString[i] = ((String)this.ce.valueAt(i));
+        localObject[i] = this.dP.keyAt(i);
+        arrayOfString[i] = ((String)this.dP.valueAt(i));
         i += 1;
       }
       paramBundle.putIntArray("android:support:request_indicies", (int[])localObject);
@@ -394,39 +417,37 @@ public class FragmentActivity
   protected void onStart()
   {
     super.onStart();
-    this.ca = false;
-    this.cb = false;
-    this.mHandler.removeMessages(1);
-    if (!this.bY)
+    this.dL = false;
+    this.dM = false;
+    this.dG.removeMessages(1);
+    if (!this.dJ)
     {
-      this.bY = true;
-      this.bX.dispatchActivityCreated();
+      this.dJ = true;
+      this.dH.dispatchActivityCreated();
     }
-    this.bX.noteStateNotSaved();
-    this.bX.execPendingActions();
-    this.bX.doLoaderStart();
-    this.bX.dispatchStart();
-    this.bX.reportLoaderStart();
+    this.dH.noteStateNotSaved();
+    this.dH.execPendingActions();
+    this.dH.dispatchStart();
   }
   
   public void onStateNotSaved()
   {
-    this.bX.noteStateNotSaved();
+    this.dH.noteStateNotSaved();
   }
   
   protected void onStop()
   {
     super.onStop();
-    this.ca = true;
-    a(this.bX.R(), d.p);
-    this.mHandler.sendEmptyMessage(1);
-    this.bX.dispatchStop();
+    this.dL = true;
+    ai();
+    this.dG.sendEmptyMessage(1);
+    this.dH.dispatchStop();
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    if ((!this.at) && (paramInt != -1)) {
-      d(paramInt);
+    if ((!this.cc) && (paramInt != -1)) {
+      m(paramInt);
     }
     super.startActivityForResult(paramIntent, paramInt);
   }

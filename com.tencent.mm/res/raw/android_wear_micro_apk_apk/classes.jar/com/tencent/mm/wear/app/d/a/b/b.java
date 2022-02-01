@@ -10,40 +10,40 @@ import java.util.concurrent.BlockingQueue;
 public final class b
   extends Thread
 {
-  private BlockingQueue<g> adP;
-  private boolean adR;
-  private ByteArrayOutputStream adS;
-  private i adT;
-  private String adf;
+  private String agG;
+  private BlockingQueue<g> ahr;
+  private boolean aht;
+  private ByteArrayOutputStream ahu;
+  private i ahv;
   
   public b(BlockingQueue<g> paramBlockingQueue, String paramString, i parami)
   {
-    this.adP = paramBlockingQueue;
-    this.adf = paramString;
-    this.adS = new ByteArrayOutputStream();
-    this.adT = parami;
+    this.ahr = paramBlockingQueue;
+    this.agG = paramString;
+    this.ahu = new ByteArrayOutputStream();
+    this.ahv = parami;
   }
   
-  public final void mN()
+  public final void nA()
   {
-    this.adR = false;
+    this.aht = true;
     g localg = new g();
-    localg.aed = true;
-    this.adP.add(localg);
+    localg.ahF = true;
+    this.ahr.add(localg);
+  }
+  
+  public final void nz()
+  {
+    this.aht = false;
+    g localg = new g();
+    localg.ahF = true;
+    this.ahr.add(localg);
     try
     {
-      this.adS.close();
+      this.ahu.close();
       return;
     }
     catch (IOException localIOException) {}
-  }
-  
-  public final void mO()
-  {
-    this.adR = true;
-    g localg = new g();
-    localg.aed = true;
-    this.adP.add(localg);
   }
   
   public final void run()
@@ -53,16 +53,16 @@ public final class b
     {
       do
       {
-        localg = (g)this.adP.take();
+        localg = (g)this.ahr.take();
       } while (localg == null);
       if (localg.size > 0) {
-        this.adS.write(localg.data, 0, localg.size);
+        this.ahu.write(localg.data, 0, localg.size);
       }
-      if ((this.adS.size() > 10240) || ((localg.aed) && (this.adS.size() > 0)))
+      if ((this.ahu.size() > 10240) || ((localg.ahF) && (this.ahu.size() > 0)))
       {
-        h.mc().a(new c(this, this.adS.toByteArray(), false, false));
-        this.adS.reset();
-        if (!localg.aed) {}
+        h.mP().a(new c(this, this.ahu.toByteArray(), false, false));
+        this.ahu.reset();
+        if (!localg.ahF) {}
       }
     }
     catch (InterruptedException localInterruptedException)
@@ -73,9 +73,9 @@ public final class b
         label125:
         do
         {
-          this.adS.close();
-        } while (!localg.aed);
-        h.mc().a(new c(this, null, true, this.adR));
+          this.ahu.close();
+        } while (!localg.ahF);
+        h.mP().a(new c(this, null, true, this.aht));
         d.c("MicroMsg.AudioDataVoiceToTextSender", "stop to run AudioDataVoiceToTextSender", new Object[0]);
         return;
         localInterruptedException = localInterruptedException;

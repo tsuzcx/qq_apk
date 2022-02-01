@@ -44,7 +44,13 @@ public class ShapePath
   
   public String toString()
   {
-    return "ShapePath{name=" + this.name + ", index=" + this.index + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapePath{name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", index=");
+    localStringBuilder.append(this.index);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

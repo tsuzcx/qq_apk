@@ -6,33 +6,25 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.Feature;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ConnectionInfoCreator")
 public class ConnectionInfo
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<ConnectionInfo> CREATOR;
-  @SafeParcelable.Field(id=1)
   private Bundle zzsf;
-  @SafeParcelable.Field(id=2)
   private Feature[] zzsg;
   
   static
   {
-    AppMethodBeat.i(89586);
+    AppMethodBeat.i(4608);
     CREATOR = new ConnectionInfoCreator();
-    AppMethodBeat.o(89586);
+    AppMethodBeat.o(4608);
   }
   
   public ConnectionInfo() {}
   
-  @SafeParcelable.Constructor
-  ConnectionInfo(@SafeParcelable.Param(id=1) Bundle paramBundle, @SafeParcelable.Param(id=2) Feature[] paramArrayOfFeature)
+  ConnectionInfo(Bundle paramBundle, Feature[] paramArrayOfFeature)
   {
     this.zzsf = paramBundle;
     this.zzsg = paramArrayOfFeature;
@@ -62,17 +54,17 @@ public class ConnectionInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89585);
+    AppMethodBeat.i(4607);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeBundle(paramParcel, 1, this.zzsf, false);
     SafeParcelWriter.writeTypedArray(paramParcel, 2, this.zzsg, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(89585);
+    AppMethodBeat.o(4607);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ConnectionInfo
  * JD-Core Version:    0.7.0.1
  */

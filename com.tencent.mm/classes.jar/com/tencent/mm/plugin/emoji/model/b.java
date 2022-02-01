@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.c;
-import com.tencent.mm.model.q;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.anj;
 
 public final class b
-  extends q
 {
-  public b()
+  public anj xMn;
+  public anh xMo;
+  public boolean xMp = false;
+  
+  public b(anh paramanh, anj paramanj, boolean paramBoolean)
   {
-    super(c.anc("emoji"));
-    AppMethodBeat.i(52997);
-    com.tencent.mm.plugin.emoji.b.b.a.lfk = new b.1(this);
-    AppMethodBeat.o(52997);
+    this.xMo = paramanh;
+    this.xMn = paramanj;
+    this.xMp = paramBoolean;
   }
 }
 

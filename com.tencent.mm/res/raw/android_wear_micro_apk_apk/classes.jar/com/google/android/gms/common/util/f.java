@@ -3,11 +3,11 @@ package com.google.android.gms.common.util;
 public final class f
   implements e
 {
-  private static f Le = new f();
+  private static f MT = new f();
   
-  public static e hU()
+  public static e ic()
   {
-    return Le;
+    return MT;
   }
   
   public final long currentTimeMillis()

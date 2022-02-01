@@ -5,105 +5,109 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gv;
-import com.tencent.mm.g.a.gv.b;
+import com.tencent.mm.autogen.a.kk;
+import com.tencent.mm.autogen.a.kk.b;
+import com.tencent.mm.k.i;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.game.d.dd;
-import com.tencent.mm.plugin.webview.model.am;
-import com.tencent.mm.plugin.webview.model.ar;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.game.commlib.a;
+import com.tencent.mm.plugin.game.protobuf.ea;
+import com.tencent.mm.plugin.webview.model.ao;
+import com.tencent.mm.plugin.webview.model.az;
+import com.tencent.mm.plugin.webview.modeltools.g;
 import com.tencent.mm.plugin.webview.ui.tools.game.GameSettingParams;
-import com.tencent.mm.plugin.webview.ui.tools.game.c;
+import com.tencent.mm.plugin.webview.ui.tools.game.d;
 import com.tencent.mm.pluginsdk.r;
 import com.tencent.mm.pluginsdk.r.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 import java.util.ArrayList;
 
 public class CommonLogicTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<CommonLogicTask> CREATOR;
-  public Bundle mEJ;
-  public Runnable njB;
+  public Runnable Iut;
+  public Bundle hPH;
   public int type;
   
   static
   {
-    AppMethodBeat.i(135863);
-    CREATOR = new CommonLogicTask.1();
-    AppMethodBeat.o(135863);
+    AppMethodBeat.i(83048);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(83048);
   }
   
   public CommonLogicTask()
   {
-    AppMethodBeat.i(135861);
-    this.mEJ = new Bundle();
-    AppMethodBeat.o(135861);
+    AppMethodBeat.i(83046);
+    this.hPH = new Bundle();
+    AppMethodBeat.o(83046);
   }
   
   CommonLogicTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(135862);
-    this.mEJ = new Bundle();
-    f(paramParcel);
-    AppMethodBeat.o(135862);
+    AppMethodBeat.i(83047);
+    this.hPH = new Bundle();
+    h(paramParcel);
+    AppMethodBeat.o(83047);
   }
   
-  private static int wp(String paramString)
+  private static int RW(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(135858);
+    AppMethodBeat.i(83043);
     try
     {
-      int j = bo.getInt(com.tencent.mm.m.g.Nq().getValue(paramString), 1);
+      int j = Util.getInt(i.aRC().getValue(paramString), 1);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.e("MicroMsg.ComonLogicTask", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
+        Log.e("MicroMsg.ComonLogicTask", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
       }
     }
-    AppMethodBeat.o(135858);
+    AppMethodBeat.o(83043);
     return i;
   }
   
-  public final void ata()
+  public final void asn()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     int i = 0;
-    AppMethodBeat.i(135857);
+    boolean bool = true;
+    AppMethodBeat.i(83042);
     switch (this.type)
     {
     }
     for (;;)
     {
-      aBp();
-      AppMethodBeat.o(135857);
+      cpA();
+      AppMethodBeat.o(83042);
       return;
-      if (this.mEJ != null)
+      if (this.hPH != null)
       {
-        bool1 = this.mEJ.getBoolean("permission_allow", false);
-        Object localObject1 = this.mEJ.getString("url");
-        if (bo.isNullOrNil((String)localObject1))
+        bool = this.hPH.getBoolean("permission_allow", false);
+        Object localObject1 = this.hPH.getString("url");
+        if (Util.isNullOrNil((String)localObject1))
         {
-          ab.e("MicroMsg.ComonLogicTask", "ACTIVITY_JUMP_HANDLER, url is null");
-          AppMethodBeat.o(135857);
+          Log.e("MicroMsg.ComonLogicTask", "ACTIVITY_JUMP_HANDLER, url is null");
+          AppMethodBeat.o(83042);
           return;
         }
-        r.a.vJD.a(ah.getContext(), (String)localObject1, bool1);
+        r.a.XNV.b(MMApplicationContext.getContext(), (String)localObject1, bool);
         continue;
-        if (this.mEJ != null)
+        if (this.hPH != null)
         {
-          localObject1 = this.mEJ.getIntArray("getConfigStgKey");
+          localObject1 = this.hPH.getIntArray("getConfigStgKey");
           if ((localObject1 == null) || (localObject1.length == 0))
           {
-            AppMethodBeat.o(135857);
+            AppMethodBeat.o(83042);
             return;
           }
           Object localObject2 = new ArrayList();
@@ -111,61 +115,60 @@ public class CommonLogicTask
           while (i < j)
           {
             int k = localObject1[i];
-            com.tencent.mm.kernel.g.RM();
-            ((ArrayList)localObject2).add(bo.nullAsNil((String)com.tencent.mm.kernel.g.RL().Ru().get(k, null)));
+            h.baF();
+            ((ArrayList)localObject2).add(Util.nullAsNil((String)h.baE().ban().d(k, null)));
             i += 1;
           }
-          this.mEJ.putStringArrayList("getConfigStgValue", (ArrayList)localObject2);
+          this.hPH.putStringArrayList("getConfigStgValue", (ArrayList)localObject2);
           continue;
-          if (this.mEJ != null)
+          if (this.hPH != null)
           {
-            localObject1 = this.mEJ.getString("localId");
-            localObject1 = com.tencent.mm.plugin.webview.modeltools.g.dcE().ahh((String)localObject1);
+            localObject1 = this.hPH.getString("localId");
+            localObject1 = g.ivZ().bks((String)localObject1);
             if (localObject1 != null)
             {
-              this.mEJ.putParcelable("item", (Parcelable)localObject1);
+              this.hPH.putParcelable("item", (Parcelable)localObject1);
               continue;
-              i = wp("WebViewDownLoadFileSwitch");
-              if (this.mEJ == null) {
-                this.mEJ = new Bundle();
+              if (((c)h.ax(c.class)).a(c.a.yNu, 1) == 1) {}
+              for (bool = true;; bool = false)
+              {
+                if (this.hPH == null) {
+                  this.hPH = new Bundle();
+                }
+                this.hPH.putBoolean("allowDownloadFile", bool);
+                break;
               }
-              localObject1 = this.mEJ;
+              i = RW("EnableWebviewScanQRCode");
+              localObject1 = this.hPH;
               if (i == 1) {}
               for (;;)
               {
-                ((Bundle)localObject1).putBoolean("allowDownloadFile", bool1);
+                ((Bundle)localObject1).putBoolean("allow_webview_scan", bool);
                 break;
-                bool1 = false;
+                bool = false;
               }
-              i = wp("EnableWebviewScanQRCode");
-              localObject1 = this.mEJ;
-              if (i == 1) {}
-              for (bool1 = bool2;; bool1 = false)
-              {
-                ((Bundle)localObject1).putBoolean("allow_webview_scan", bool1);
-                break;
-              }
-              this.mEJ.putBoolean("has_set_uin", com.tencent.mm.kernel.g.RG());
+              this.hPH.putBoolean("has_set_uin", h.baz());
               continue;
-              localObject1 = ar.aho(this.mEJ.getString("localId"));
-              this.mEJ.putString("file_path", (String)localObject1);
+              localObject1 = az.bkC(this.hPH.getString("localId"));
+              this.hPH.putString("file_path", (String)localObject1);
               continue;
-              localObject1 = this.mEJ.getString("game_hv_menu_appid");
-              localObject2 = new gv();
-              ((gv)localObject2).cvM.vA = 3;
-              ((gv)localObject2).cvM.cvO = ((String)localObject1);
-              com.tencent.mm.sdk.b.a.ymk.l((b)localObject2);
-              this.mEJ.putString("game_hv_menu_pbcache", ((gv)localObject2).cvN.result);
+              localObject1 = this.hPH.getString("game_hv_menu_appid");
+              localObject2 = new kk();
+              ((kk)localObject2).hMa.bUl = 3;
+              ((kk)localObject2).hMa.param = ((String)localObject1);
+              ((kk)localObject2).publish();
+              this.hPH.putString("game_hv_menu_pbcache", ((kk)localObject2).hMb.result);
               continue;
-              localObject1 = com.tencent.mm.plugin.game.commlib.a.bFc();
+              localObject1 = a.fDS();
               if (localObject1 != null)
               {
                 localObject2 = new GameSettingParams();
-                ((GameSettingParams)localObject2).vmD = ((dd)localObject1).color;
-                ((GameSettingParams)localObject2).vmE = ((dd)localObject1).noW;
-                this.mEJ.putParcelable("game_setting_params", (Parcelable)localObject2);
+                ((GameSettingParams)localObject2).XfU = ((ea)localObject1).nRQ;
+                ((GameSettingParams)localObject2).XfV = ((ea)localObject1).IFK;
+                ((GameSettingParams)localObject2).XfW = ((ea)localObject1).ILO;
+                this.hPH.putParcelable("game_setting_params", (Parcelable)localObject2);
                 continue;
-                c.aw(this.mEJ);
+                d.bO(this.hPH);
               }
             }
           }
@@ -174,13 +177,13 @@ public class CommonLogicTask
     }
   }
   
-  public final void atb()
+  public final void bQr()
   {
-    AppMethodBeat.i(135856);
-    if (this.njB != null) {
-      this.njB.run();
+    AppMethodBeat.i(83041);
+    if (this.Iut != null) {
+      this.Iut.run();
     }
-    AppMethodBeat.o(135856);
+    AppMethodBeat.o(83041);
   }
   
   public int describeContents()
@@ -188,25 +191,25 @@ public class CommonLogicTask
     return 0;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(135860);
+    AppMethodBeat.i(83045);
     this.type = paramParcel.readInt();
-    this.mEJ = paramParcel.readBundle(getClass().getClassLoader());
-    AppMethodBeat.o(135860);
+    this.hPH = paramParcel.readBundle(getClass().getClassLoader());
+    AppMethodBeat.o(83045);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(135859);
+    AppMethodBeat.i(83044);
     paramParcel.writeInt(this.type);
-    paramParcel.writeBundle(this.mEJ);
-    AppMethodBeat.o(135859);
+    paramParcel.writeBundle(this.hPH);
+    AppMethodBeat.o(83044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.ipc.CommonLogicTask
  * JD-Core Version:    0.7.0.1
  */

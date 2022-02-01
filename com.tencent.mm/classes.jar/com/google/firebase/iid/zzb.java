@@ -4,8 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.common.util.concurrent.NamedThreadFactory;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,10 +13,10 @@ import java.util.concurrent.Executors;
 public abstract class zzb
   extends Service
 {
-  final ExecutorService bfP;
-  private Binder bfQ;
-  private int bfR;
-  private int bfS;
+  final ExecutorService dDn;
+  private Binder dDo;
+  private int dDp;
+  private int dDq;
   private final Object lock;
   
   public zzb()
@@ -25,9 +25,9 @@ public abstract class zzb
     if (str.length() != 0) {}
     for (str = "Firebase-".concat(str);; str = new String("Firebase-"))
     {
-      this.bfP = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
+      this.dDn = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
       this.lock = new Object();
-      this.bfS = 0;
+      this.dDq = 0;
       return;
     }
   }
@@ -39,9 +39,9 @@ public abstract class zzb
     }
     synchronized (this.lock)
     {
-      this.bfS -= 1;
-      if (this.bfS == 0) {
-        stopSelfResult(this.bfR);
+      this.dDq -= 1;
+      if (this.dDq == 0) {
+        stopSelfResult(this.dDp);
       }
       return;
     }
@@ -64,10 +64,10 @@ public abstract class zzb
     try
     {
       Log.isLoggable("EnhancedIntentService", 3);
-      if (this.bfQ == null) {
-        this.bfQ = new w(this);
+      if (this.dDo == null) {
+        this.dDo = new w(this);
       }
-      paramIntent = this.bfQ;
+      paramIntent = this.dDo;
       return paramIntent;
     }
     finally {}
@@ -77,8 +77,8 @@ public abstract class zzb
   {
     synchronized (this.lock)
     {
-      this.bfR = paramInt2;
-      this.bfS += 1;
+      this.dDp = paramInt2;
+      this.dDq += 1;
       ??? = f(paramIntent);
       if (??? == null)
       {
@@ -91,13 +91,13 @@ public abstract class zzb
       h(paramIntent);
       return 2;
     }
-    this.bfP.execute(new t(this, (Intent)???, paramIntent));
+    this.dDn.execute(new t(this, (Intent)???, paramIntent));
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.zzb
  * JD-Core Version:    0.7.0.1
  */

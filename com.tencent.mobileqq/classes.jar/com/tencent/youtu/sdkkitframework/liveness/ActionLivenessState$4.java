@@ -1,23 +1,24 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import com.tencent.youtu.sdkkitframework.common.YtLogger;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
+import com.tencent.youtu.sdkkitframework.common.CommonUtils;
+import java.util.HashMap;
 
 class ActionLivenessState$4
-  implements YTPoseDetectInterface.PoseDetectResult
+  extends HashMap<String, Object>
 {
-  ActionLivenessState$4(ActionLivenessState paramActionLivenessState) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2) {}
-  
-  public void onSuccess()
+  ActionLivenessState$4(ActionLivenessState paramActionLivenessState, int paramInt)
   {
-    YtLogger.d(ActionLivenessState.access$200(), "start success");
+    put("process_action", "failed");
+    put("error_code", Integer.valueOf(5242882));
+    paramActionLivenessState = new StringBuilder();
+    paramActionLivenessState.append("Init YtPose SDK failed with ");
+    paramActionLivenessState.append(this.val$initR);
+    put("message", CommonUtils.makeMessageJson(5242882, "msg_param_error", paramActionLivenessState.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState.4
  * JD-Core Version:    0.7.0.1
  */

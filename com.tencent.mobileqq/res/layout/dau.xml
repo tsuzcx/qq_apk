@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/wy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="35.0dip" />
+    <Button android:textColor="@color/ue" android:id="@id/b7m" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/b7r" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="42.0dip" android:layout_alignParentBottom="true" style="@style/t8" />
+    <androidx.core.widget.NestedScrollView android:background="@drawable/hhl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:fillViewport="true" android:layout_above="@id/b7m">
+        <LinearLayout android:orientation="vertical" android:id="@id/obf" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ccg" />
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:id="@id/qm2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yyb" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/o5v" android:paddingLeft="12.0dip" android:paddingRight="19.0dip" android:layout_width="43.5dip" android:layout_height="fill_parent" android:src="@drawable/dy0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/yy_" />
+                <EditText android:textSize="28.0dip" android:textColor="@color/tr" android:textColorHint="#ffb0b3bf" android:ellipsize="end" android:gravity="center" android:id="@id/byx" android:background="@drawable/jch" android:layout_width="44.0dip" android:layout_height="44.0dip" android:hint="犇" android:singleLine="true" android:maxLength="1" android:layout_toLeftOf="@id/o5v" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <HorizontalScrollView android:background="@color/w_" android:paddingLeft="@dimen/b7q" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/ncg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </HorizontalScrollView>
+            <RelativeLayout android:gravity="center_horizontal" android:id="@id/lpf" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

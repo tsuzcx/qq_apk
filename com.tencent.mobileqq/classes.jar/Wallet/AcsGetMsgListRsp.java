@@ -4,15 +4,16 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AcsGetMsgListRsp
   extends JceStruct
 {
   static ArrayList<AcsMsg> cache_data_list = new ArrayList();
-  public ArrayList<AcsMsg> data_list;
+  public ArrayList<AcsMsg> data_list = null;
   public String err_str = "";
-  public int ret_code;
-  public int total;
+  public int ret_code = 0;
+  public int total = 0;
   
   static
   {
@@ -41,18 +42,20 @@ public final class AcsGetMsgListRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.err_str != null) {
-      paramJceOutputStream.write(this.err_str, 1);
+    Object localObject = this.err_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.data_list != null) {
-      paramJceOutputStream.write(this.data_list, 2);
+    localObject = this.data_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.total, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsGetMsgListRsp
  * JD-Core Version:    0.7.0.1
  */

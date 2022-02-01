@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ptf="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/g5m" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfAnimationStyle="cd6" ptf:ptfDrawableStart="@drawable/ci9" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderMarginBottomAdd="-35.0dip" ptf:ptfHeaderMarginTopAdd="35.0dip" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfMode="g5g" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendBottomBarView android:layout_gravity="bottom" android:id="@id/ac1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

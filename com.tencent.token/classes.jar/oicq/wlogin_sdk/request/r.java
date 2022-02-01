@@ -1,119 +1,98 @@
 package oicq.wlogin_sdk.request;
 
 import oicq.wlogin_sdk.tlv_type.tlv_t104;
-import oicq.wlogin_sdk.tlv_type.tlv_t105;
 import oicq.wlogin_sdk.tlv_type.tlv_t116;
-import oicq.wlogin_sdk.tlv_type.tlv_t161;
-import oicq.wlogin_sdk.tlv_type.tlv_t165;
+import oicq.wlogin_sdk.tlv_type.tlv_t401;
+import oicq.wlogin_sdk.tlv_type.tlv_t402;
+import oicq.wlogin_sdk.tlv_type.tlv_t403;
 import oicq.wlogin_sdk.tlv_type.tlv_t8;
-import oicq.wlogin_sdk.tools.ErrMsg;
 import oicq.wlogin_sdk.tools.util;
 
 public class r
   extends oicq_request
 {
-  public r(t paramt)
+  public r(u paramu)
   {
     this.t = 2064;
-    this.u = 3;
+    this.u = 20;
     this.v = "wtlogin.login";
-    this.x = paramt;
+    this.x = paramu;
     this.x.m = 0;
   }
   
   public int a(int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo)
   {
-    int j = t.w;
-    tlv_t104 localtlv_t104 = t.b(this.x.h)._t104;
+    int m = u.x;
+    async_context localasync_context = u.b(this.x.h);
+    tlv_t104 localtlv_t104 = localasync_context._t104;
     if (localtlv_t104 == null) {
       localtlv_t104 = new tlv_t104();
     }
-    for (;;)
-    {
-      int i = 0;
-      for (;;)
-      {
-        byte[] arrayOfByte = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong);
-        a(this.i, this.t, this.j, this.x.f, this.m, this.n, j, this.p, arrayOfByte);
-        int k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
-        if (k != 0) {
-          return k;
-        }
-        k = b();
-        util.LOGI("retry num:" + i + " ret:" + k, "" + this.x.f);
-        if (k != 180) {
-          return k;
-        }
-        if (i >= 1) {
-          return k;
-        }
-        i += 1;
-      }
+    Object localObject2 = localasync_context._t402;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new tlv_t402();
     }
+    tlv_t403 localtlv_t403 = localasync_context._t403;
+    localObject2 = localtlv_t403;
+    if (localtlv_t403 == null) {
+      localObject2 = new tlv_t403();
+    }
+    localasync_context._dpwd = util.get_mpasswd().getBytes();
+    localasync_context._G = c(u.B, localasync_context._dpwd, ((tlv_t402)localObject1).get_data());
+    if ((((tlv_t402)localObject1).get_data_len() > 0) && (((tlv_t403)localObject2).get_data_len() > 0)) {
+      localasync_context._sec_guid_flag = true;
+    }
+    int i = 0;
+    int j;
+    int k;
+    do
+    {
+      j = i;
+      localObject1 = a(localtlv_t104.get_data(), paramInt1, paramInt2, paramArrayOfLong, localasync_context._G);
+      a(this.i, this.t, this.j, this.x.f, this.m, this.n, m, this.p, (byte[])localObject1);
+      k = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
+      i = k;
+      if (k != 0) {
+        break;
+      }
+      k = b();
+      localObject1 = new StringBuilder("retry num:");
+      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(" ret:");
+      ((StringBuilder)localObject1).append(k);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.x.f);
+      util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+      i = k;
+      if (k != 180) {
+        break;
+      }
+      i = j + 1;
+    } while (j <= 0);
+    i = k;
+    return i;
   }
   
-  public byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long[] paramArrayOfLong)
+  public byte[] a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, long[] paramArrayOfLong, byte[] paramArrayOfByte2)
   {
     Object localObject1 = new tlv_t8();
     tlv_t104 localtlv_t104 = new tlv_t104();
-    Object localObject2 = new tlv_t116();
-    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
-    paramArrayOfByte = localtlv_t104.get_tlv_104(paramArrayOfByte);
-    paramArrayOfLong = ((tlv_t116)localObject2).get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
-    localObject2 = new byte[localObject1.length + paramArrayOfByte.length + paramArrayOfLong.length];
+    tlv_t116 localtlv_t116 = new tlv_t116();
+    Object localObject2 = new tlv_t401();
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, u.v, 0);
+    paramArrayOfByte1 = localtlv_t104.get_tlv_104(paramArrayOfByte1);
+    paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
+    paramArrayOfByte2 = ((tlv_t401)localObject2).get_tlv_401(paramArrayOfByte2);
+    localObject2 = new byte[localObject1.length + paramArrayOfByte1.length + paramArrayOfLong.length + paramArrayOfByte2.length];
     System.arraycopy(localObject1, 0, localObject2, 0, localObject1.length);
     paramInt1 = localObject1.length + 0;
-    System.arraycopy(paramArrayOfByte, 0, localObject2, paramInt1, paramArrayOfByte.length);
-    paramInt1 += paramArrayOfByte.length;
+    System.arraycopy(paramArrayOfByte1, 0, localObject2, paramInt1, paramArrayOfByte1.length);
+    paramInt1 += paramArrayOfByte1.length;
     System.arraycopy(paramArrayOfLong, 0, localObject2, paramInt1, paramArrayOfLong.length);
-    paramInt1 = paramArrayOfLong.length;
-    return b((byte[])localObject2, this.u, 3);
-  }
-  
-  public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    tlv_t104 localtlv_t104 = new tlv_t104();
-    tlv_t105 localtlv_t105 = new tlv_t105();
-    tlv_t165 localtlv_t165 = new tlv_t165();
-    tlv_t161 localtlv_t161 = new tlv_t161();
-    async_context localasync_context = t.b(this.x.h);
-    paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
-    util.LOGD(getClass().getName(), "type=" + paramInt2);
-    int j = paramInt1 + 5;
-    switch (paramInt2)
-    {
-    default: 
-      c(paramArrayOfByte, j, this.c - j - 1);
-      paramInt1 = paramInt2;
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramInt1;
-          i = localtlv_t104.get_tlv(paramArrayOfByte, j, this.c - j);
-          paramInt1 = i;
-        } while (i < 0);
-        localasync_context._t104 = localtlv_t104;
-        i = localtlv_t105.get_tlv(paramArrayOfByte, j, this.c - j);
-        paramInt1 = i;
-      } while (i < 0);
-      localasync_context._t105 = localtlv_t105;
-      if (localtlv_t165.get_tlv(paramArrayOfByte, j, this.c - j) >= 0) {}
-      for (localasync_context._t165 = localtlv_t165;; localasync_context._t165 = new tlv_t165())
-      {
-        a((ErrMsg)null);
-        return paramInt2;
-      }
-      i = localtlv_t161.get_tlv(paramArrayOfByte, j, this.c - j - 1);
-      paramInt1 = i;
-    } while (i < 0);
-    a(localtlv_t161);
-    c(paramArrayOfByte, j, this.c - j - 1);
-    return paramInt2;
+    System.arraycopy(paramArrayOfByte2, 0, localObject2, paramInt1 + paramArrayOfLong.length, paramArrayOfByte2.length);
+    return b((byte[])localObject2, this.u, 4);
   }
 }
 

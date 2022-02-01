@@ -1,298 +1,336 @@
 package com.tencent.mm.ui.contact;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ux;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
+import com.tencent.mm.R.l;
+import com.tencent.mm.autogen.a.acn;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.k.i;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.ui.base.k;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VoipAddressUI
   extends MMBaseSelectContactUI
 {
-  private boolean AfM;
-  private boolean AfN;
-  private com.tencent.mm.sdk.b.c AfO;
-  private List<String> ejc;
+  private boolean UvH;
+  private boolean afiW;
+  private IListener afiX;
+  private List<String> lMF;
   private String talker;
   
   public VoipAddressUI()
   {
-    AppMethodBeat.i(33972);
-    this.AfM = false;
-    this.AfN = false;
+    AppMethodBeat.i(38093);
+    this.afiW = false;
+    this.UvH = false;
     this.talker = "";
-    this.AfO = new VoipAddressUI.1(this);
-    AppMethodBeat.o(33972);
+    this.afiX = new IListener(com.tencent.mm.app.f.hfK) {};
+    AppMethodBeat.o(38093);
   }
   
-  private void ccv()
+  private void gBT()
   {
-    AppMethodBeat.i(33975);
-    boolean bool = b.a(this, "android.permission.RECORD_AUDIO", 82, "", "");
-    ab.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this });
+    AppMethodBeat.i(38096);
+    boolean bool = b.a(this, "android.permission.RECORD_AUDIO", 82, "");
+    Log.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this });
     if (!bool)
     {
-      AppMethodBeat.o(33975);
+      AppMethodBeat.o(38096);
       return;
     }
-    ux localux = new ux();
-    localux.cLs.cut = 5;
-    localux.cLs.talker = this.talker;
-    localux.cLs.context = this;
-    if (this.AfM) {}
+    acn localacn = new acn();
+    localacn.ifU.hId = 5;
+    localacn.ifU.talker = this.talker;
+    localacn.ifU.context = this;
+    if (this.afiW) {}
     for (int i = 2;; i = 1)
     {
-      localux.cLs.cLm = 3;
-      com.tencent.mm.plugin.report.service.h.qsU.e(11033, new Object[] { Integer.valueOf(i), Integer.valueOf(2), Integer.valueOf(0) });
-      com.tencent.mm.sdk.b.a.ymk.l(localux);
+      localacn.ifU.ifQ = 3;
+      h.OAn.b(11033, new Object[] { Integer.valueOf(i), Integer.valueOf(2), Integer.valueOf(0) });
+      localacn.publish();
       hideVKB();
-      AppMethodBeat.o(33975);
+      AppMethodBeat.o(38096);
       return;
     }
   }
   
-  private void ccw()
+  private void gBU()
   {
-    AppMethodBeat.i(33976);
-    boolean bool = b.a(this, "android.permission.CAMERA", 19, "", "");
-    ab.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this });
+    AppMethodBeat.i(38097);
+    boolean bool = b.a(this, "android.permission.CAMERA", 19, "");
+    Log.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this });
     if (!bool)
     {
-      AppMethodBeat.o(33976);
+      AppMethodBeat.o(38097);
       return;
     }
-    bool = b.a(this, "android.permission.RECORD_AUDIO", 19, "", "");
-    ab.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this });
+    bool = b.a(this, "android.permission.RECORD_AUDIO", 19, "");
+    Log.i("MicroMsg.VoipAddressUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this });
     if (!bool)
     {
-      AppMethodBeat.o(33976);
+      AppMethodBeat.o(38097);
       return;
     }
-    ux localux = new ux();
-    localux.cLs.cut = 5;
-    localux.cLs.talker = this.talker;
-    localux.cLs.context = this;
-    if (this.AfM) {}
+    acn localacn = new acn();
+    localacn.ifU.hId = 5;
+    localacn.ifU.talker = this.talker;
+    localacn.ifU.context = this;
+    if (this.afiW) {}
     for (int i = 2;; i = 1)
     {
-      localux.cLs.cLm = 2;
-      com.tencent.mm.plugin.report.service.h.qsU.e(11033, new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(0) });
-      com.tencent.mm.sdk.b.a.ymk.l(localux);
+      localacn.ifU.ifQ = 2;
+      h.OAn.b(11033, new Object[] { Integer.valueOf(i), Integer.valueOf(1), Integer.valueOf(0) });
+      localacn.publish();
       hideVKB();
-      AppMethodBeat.o(33976);
+      AppMethodBeat.o(38097);
       return;
     }
   }
   
-  public static void iq(Context paramContext)
+  public static void nr(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(33980);
+    AppMethodBeat.i(38101);
     boolean bool;
-    if (1 == bo.getInt(g.Nq().getValue("VOIPCallType"), 0))
+    if (1 == Util.getInt(i.aRC().getValue("VOIPCallType"), 0))
     {
       bool = true;
-      Intent localIntent = new Intent(paramContext, VoipAddressUI.class);
-      localIntent.putExtra("Add_address_titile", paramContext.getString(2131296502));
-      localIntent.putExtra("voip_video", bool);
-      paramContext.startActivity(localIntent);
-      paramContext = com.tencent.mm.plugin.report.service.h.qsU;
+      Object localObject = new Intent(paramContext, VoipAddressUI.class);
+      ((Intent)localObject).putExtra("Add_address_titile", paramContext.getString(R.l.address_title_select_contact));
+      ((Intent)localObject).putExtra("voip_video", bool);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/contact/VoipAddressUI", "inviteVoip", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/ui/contact/VoipAddressUI", "inviteVoip", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext = h.OAn;
       if (!bool) {
-        break label106;
+        break label162;
       }
     }
     for (;;)
     {
-      paramContext.e(11034, new Object[] { Integer.valueOf(1), Integer.valueOf(i) });
-      AppMethodBeat.o(33980);
+      paramContext.b(11034, new Object[] { Integer.valueOf(1), Integer.valueOf(i) });
+      AppMethodBeat.o(38101);
       return;
       bool = false;
       break;
-      label106:
+      label162:
       i = 1;
     }
   }
   
-  protected final void Kc()
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(33977);
-    super.Kc();
+    AppMethodBeat.i(253008);
+    paramAdapterView = (com.tencent.mm.ui.contact.a.a)getContentLV().getAdapter().getItem(paramInt);
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(253008);
+      return;
+    }
+    if (paramAdapterView.contact == null)
+    {
+      AppMethodBeat.o(253008);
+      return;
+    }
+    this.talker = paramAdapterView.contact.field_username;
+    if (this.UvH)
+    {
+      gBU();
+      AppMethodBeat.o(253008);
+      return;
+    }
+    gBT();
+    AppMethodBeat.o(253008);
+  }
+  
+  protected final void aNi()
+  {
+    AppMethodBeat.i(38098);
+    super.aNi();
     String str = getIntent().getStringExtra("LauncherUI.Shortcut.LaunchType");
-    this.AfN = getIntent().getBooleanExtra("voip_video", true);
+    this.UvH = getIntent().getBooleanExtra("voip_video", true);
     if (str != null)
     {
-      this.AfM = true;
+      this.afiW = true;
       if (!str.equals("launch_type_voip")) {
-        break label99;
+        break label103;
       }
-      this.AfN = true;
+      this.UvH = true;
     }
     for (;;)
     {
-      this.ejc = new ArrayList();
-      this.ejc.addAll(t.dMg());
-      this.ejc.addAll(t.dMh());
-      AppMethodBeat.o(33977);
+      this.lMF = new ArrayList();
+      this.lMF.addAll(w.jyV());
+      this.lMF.addAll(w.jyW());
+      AppMethodBeat.o(38098);
       return;
-      label99:
+      label103:
       if (str.equals("launch_type_voip_audio")) {
-        this.AfN = false;
+        this.UvH = false;
       }
     }
   }
   
-  protected final boolean apa()
+  protected final r bVA()
+  {
+    AppMethodBeat.i(38099);
+    Object localObject = new c.a();
+    ((c.a)localObject).afbY = true;
+    ((c.a)localObject).afbX = true;
+    localObject = new c(this, this.lMF, false, (c.a)localObject, (byte)0);
+    AppMethodBeat.o(38099);
+    return localObject;
+  }
+  
+  protected final p bVB()
+  {
+    AppMethodBeat.i(38100);
+    u localu = new u(this, this.lMF, false, this.scene);
+    AppMethodBeat.o(38100);
+    return localu;
+  }
+  
+  protected final boolean bVx()
   {
     return false;
   }
   
-  protected final boolean apb()
+  protected final boolean bVy()
   {
     return true;
   }
   
-  protected final String apc()
+  protected final String bVz()
   {
-    AppMethodBeat.i(33983);
+    AppMethodBeat.i(38104);
     String str2 = getIntent().getStringExtra("Add_address_titile");
     String str1 = str2;
-    if (!bo.isNullOrNil(str2)) {
-      str1 = getString(2131296502);
+    if (!Util.isNullOrNil(str2)) {
+      str1 = getString(R.l.address_title_select_contact);
     }
-    AppMethodBeat.o(33983);
+    AppMethodBeat.o(38104);
     return str1;
   }
   
-  protected final p apd()
-  {
-    AppMethodBeat.i(33978);
-    Object localObject = new c.a();
-    ((c.a)localObject).Abg = true;
-    ((c.a)localObject).Abf = true;
-    localObject = new c(this, this.ejc, false, (c.a)localObject);
-    AppMethodBeat.o(33978);
-    return localObject;
-  }
-  
-  protected final n ape()
-  {
-    AppMethodBeat.i(33979);
-    r localr = new r(this, this.ejc, false, this.scene);
-    AppMethodBeat.o(33979);
-    return localr;
-  }
-  
-  public final int[] bOp()
+  public final int[] efu()
   {
     return new int[] { 131072 };
   }
   
-  protected final void bOq()
+  protected final void fYZ()
   {
-    AppMethodBeat.i(33982);
-    if (this.AfM)
+    AppMethodBeat.i(38103);
+    if (this.afiW)
     {
-      Intent localIntent = new Intent(this, LauncherUI.class);
-      localIntent.addFlags(67108864);
-      startActivity(localIntent);
+      Object localObject = new Intent(this, LauncherUI.class);
+      ((Intent)localObject).addFlags(67108864);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/contact/VoipAddressUI", "onBackBtnPress", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/contact/VoipAddressUI", "onBackBtnPress", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     hideVKB();
     finish();
-    AppMethodBeat.o(33982);
-  }
-  
-  public final void mL(int paramInt)
-  {
-    AppMethodBeat.i(33974);
-    com.tencent.mm.ui.contact.a.a locala = (com.tencent.mm.ui.contact.a.a)getContentLV().getAdapter().getItem(paramInt);
-    if (locala == null)
-    {
-      AppMethodBeat.o(33974);
-      return;
-    }
-    if (locala.contact == null)
-    {
-      AppMethodBeat.o(33974);
-      return;
-    }
-    this.talker = locala.contact.field_username;
-    if (this.AfN)
-    {
-      ccw();
-      AppMethodBeat.o(33974);
-      return;
-    }
-    ccv();
-    AppMethodBeat.o(33974);
+    AppMethodBeat.o(38103);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(33973);
+    AppMethodBeat.i(38094);
     super.onCreate(paramBundle);
-    com.tencent.mm.sdk.b.a.ymk.c(this.AfO);
-    AppMethodBeat.o(33973);
+    this.afiX.alive();
+    AppMethodBeat.o(38094);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(33981);
-    com.tencent.mm.sdk.b.a.ymk.d(this.AfO);
+    AppMethodBeat.i(38102);
+    this.afiX.dead();
     super.onDestroy();
-    AppMethodBeat.o(33981);
+    AppMethodBeat.o(38102);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(33984);
+    AppMethodBeat.i(38105);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ab.i("MicroMsg.VoipAddressUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
-      AppMethodBeat.o(33984);
+      Log.i("MicroMsg.VoipAddressUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(38105);
       return;
     }
-    ab.i("MicroMsg.VoipAddressUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.VoipAddressUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(33984);
+      AppMethodBeat.o(38105);
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        ccw();
-        AppMethodBeat.o(33984);
+        gBU();
+        AppMethodBeat.o(38105);
         return;
       }
       if ("android.permission.CAMERA".equals(paramArrayOfString[0])) {}
-      for (paramInt = 2131302067;; paramInt = 2131302075)
+      for (paramInt = R.l.permission_camera_request_again_msg;; paramInt = R.l.permission_microphone_request_again_msg)
       {
         if (paramArrayOfInt[0] != 0) {
-          com.tencent.mm.ui.base.h.a(this, getString(paramInt), getString(2131302083), getString(2131300996), getString(2131297837), false, new VoipAddressUI.2(this), new VoipAddressUI.3(this));
+          k.a(this, getString(paramInt), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(38090);
+              paramAnonymousDialogInterface.dismiss();
+              b.lx(VoipAddressUI.this.getContext());
+              AppMethodBeat.o(38090);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(38091);
+              paramAnonymousDialogInterface.dismiss();
+              AppMethodBeat.o(38091);
+            }
+          });
         }
-        AppMethodBeat.o(33984);
+        AppMethodBeat.o(38105);
         return;
       }
       if (paramArrayOfInt[0] == 0)
       {
-        ccv();
-        AppMethodBeat.o(33984);
+        gBT();
+        AppMethodBeat.o(38105);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131302073), getString(2131302083), getString(2131300996), getString(2131297837), false, new VoipAddressUI.4(this), null);
+      k.a(this, getString(R.l.permission_location_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(38092);
+          b.lx(VoipAddressUI.this.getContext());
+          AppMethodBeat.o(38092);
+        }
+      }, null);
     }
   }
   
@@ -304,7 +342,7 @@ public class VoipAddressUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.VoipAddressUI
  * JD-Core Version:    0.7.0.1
  */

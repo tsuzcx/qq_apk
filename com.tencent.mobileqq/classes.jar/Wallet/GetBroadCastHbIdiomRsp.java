@@ -10,7 +10,7 @@ public final class GetBroadCastHbIdiomRsp
   extends JceStruct
 {
   static Map<String, BroadCastInfo> cache_sendlistIdiomInfoDict = new HashMap();
-  public Map<String, BroadCastInfo> sendlistIdiomInfoDict;
+  public Map<String, BroadCastInfo> sendlistIdiomInfoDict = null;
   
   static
   {
@@ -32,14 +32,15 @@ public final class GetBroadCastHbIdiomRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sendlistIdiomInfoDict != null) {
-      paramJceOutputStream.write(this.sendlistIdiomInfoDict, 0);
+    Map localMap = this.sendlistIdiomInfoDict;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetBroadCastHbIdiomRsp
  * JD-Core Version:    0.7.0.1
  */

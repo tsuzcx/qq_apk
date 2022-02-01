@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import bwp;
 import bwq;
-import bwr;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -121,7 +121,7 @@ public class BaseSystemActivity
   {
     setContentView(2130904010);
     j(2130837729);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234582));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131234581));
     this.jdField_a_of_type_JavaLangString = b();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -244,10 +244,10 @@ public class BaseSystemActivity
       if ((this.jdField_a_of_type_JavaLangString.equals(paramObservable.frienduin)) && (paramObservable.istroop == 0))
       {
         this.b.a().c(this.jdField_a_of_type_JavaLangString, 0);
-        runOnUiThread(new bwq(this));
+        runOnUiThread(new bwp(this));
       }
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new bwr(this));
+        runOnUiThread(new bwq(this));
       }
     }
   }

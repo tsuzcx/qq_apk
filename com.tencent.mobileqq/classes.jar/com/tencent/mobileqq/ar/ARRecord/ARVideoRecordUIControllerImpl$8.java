@@ -1,66 +1,67 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import amul;
-import amup;
-import amus;
-
-public class ARVideoRecordUIControllerImpl$8
+class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(amup paramamup, int paramInt) {}
+  ARVideoRecordUIControllerImpl$8(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl, int paramInt) {}
   
   public void run()
   {
-    if (amup.a(this.this$0) != null) {
-      amup.a(this.this$0).a(0);
+    if (ARVideoRecordUIControllerImpl.a(this.this$0) != null) {
+      ARVideoRecordUIControllerImpl.a(this.this$0).a(0);
     }
-    if (this.a == 0) {
-      if (amup.a(this.this$0) != -1) {
-        switch (amup.a(this.this$0))
-        {
-        case 5: 
-        default: 
-          amup.a(this.this$0, -1);
-        }
-      }
-    }
-    for (;;)
+    if (this.a == 0)
     {
-      amup.b(this.this$0, false);
-      if (!amup.c(this.this$0)) {
-        amup.a(this.this$0);
-      }
-      return;
-      amup.a("0X8008A56");
-      amul.a("AR视频已保存", amup.e);
-      break;
-      amul.a(amup.h, true);
-      break;
-      amup.a("0X8008A56");
-      amul.a(amup.h, true);
-      break;
-      if (amup.b(this.this$0) == true)
+      if (ARVideoRecordUIControllerImpl.d(this.this$0) != -1)
       {
-        amup.a(this.this$0, false);
+        switch (ARVideoRecordUIControllerImpl.d(this.this$0))
+        {
+        default: 
+          break;
+        case 7: 
+          ARRecordUtils.a(ARVideoRecordUIControllerImpl.h, true);
+          break;
+        case 2: 
+        case 3: 
+        case 4: 
+        case 6: 
+          ARVideoRecordUIControllerImpl.a("0X8008A56");
+          ARRecordUtils.a(ARVideoRecordUIControllerImpl.h, true);
+          break;
+        case 1: 
+          ARVideoRecordUIControllerImpl.a("0X8008A56");
+          ARRecordUtils.a("AR视频已保存", ARVideoRecordUIControllerImpl.e);
+        }
+        ARVideoRecordUIControllerImpl.a(this.this$0, -1);
+      }
+      else if (ARVideoRecordUIControllerImpl.e(this.this$0) == true)
+      {
+        ARVideoRecordUIControllerImpl.a(this.this$0, false);
       }
       else
       {
-        amup.a("0X8008A56");
-        amul.a(amup.h, true);
-        continue;
-        amup.a("0X8008A56");
-        if (this.a == 1) {
-          amul.a("AR视频已保存", amup.f);
-        } else {
-          amul.a("AR视频已保存", amup.g);
-        }
+        ARVideoRecordUIControllerImpl.a("0X8008A56");
+        ARRecordUtils.a(ARVideoRecordUIControllerImpl.h, true);
       }
+    }
+    else
+    {
+      ARVideoRecordUIControllerImpl.a("0X8008A56");
+      if (this.a == 1) {
+        ARRecordUtils.a("AR视频已保存", ARVideoRecordUIControllerImpl.f);
+      } else {
+        ARRecordUtils.a("AR视频已保存", ARVideoRecordUIControllerImpl.g);
+      }
+    }
+    ARVideoRecordUIControllerImpl.b(this.this$0, false);
+    if (!ARVideoRecordUIControllerImpl.f(this.this$0)) {
+      ARVideoRecordUIControllerImpl.g(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl.8
  * JD-Core Version:    0.7.0.1
  */

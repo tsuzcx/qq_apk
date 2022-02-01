@@ -45,35 +45,44 @@ public final class EventMessage
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (EventMessage)paramObject;
-    } while ((this.presentationTimeUs == paramObject.presentationTimeUs) && (this.durationMs == paramObject.durationMs) && (this.id == paramObject.id) && (Util.areEqual(this.schemeIdUri, paramObject.schemeIdUri)) && (Util.areEqual(this.value, paramObject.value)) && (Arrays.equals(this.messageData, paramObject.messageData)));
+      return (this.presentationTimeUs == paramObject.presentationTimeUs) && (this.durationMs == paramObject.durationMs) && (this.id == paramObject.id) && (Util.areEqual(this.schemeIdUri, paramObject.schemeIdUri)) && (Util.areEqual(this.value, paramObject.value)) && (Arrays.equals(this.messageData, paramObject.messageData));
+    }
     return false;
   }
   
   public int hashCode()
   {
-    int j = 0;
-    if (this.hashCode == 0) {
-      if (this.schemeIdUri == null) {
-        break label120;
-      }
-    }
-    label120:
-    for (int i = this.schemeIdUri.hashCode();; i = 0)
+    if (this.hashCode == 0)
     {
-      if (this.value != null) {
-        j = this.value.hashCode();
+      String str = this.schemeIdUri;
+      int j = 0;
+      int i;
+      if (str != null) {
+        i = str.hashCode();
+      } else {
+        i = 0;
       }
-      this.hashCode = ((((((i + 527) * 31 + j) * 31 + (int)(this.presentationTimeUs ^ this.presentationTimeUs >>> 32)) * 31 + (int)(this.durationMs ^ this.durationMs >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.messageData));
-      return this.hashCode;
+      str = this.value;
+      if (str != null) {
+        j = str.hashCode();
+      }
+      long l = this.presentationTimeUs;
+      int k = (int)(l ^ l >>> 32);
+      l = this.durationMs;
+      int m = (int)(l ^ l >>> 32);
+      l = this.id;
+      this.hashCode = ((((((527 + i) * 31 + j) * 31 + k) * 31 + m) * 31 + (int)(l ^ l >>> 32)) * 31 + Arrays.hashCode(this.messageData));
     }
+    return this.hashCode;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -88,7 +97,7 @@ public final class EventMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.emsg.EventMessage
  * JD-Core Version:    0.7.0.1
  */

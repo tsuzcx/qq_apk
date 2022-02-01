@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="70.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/troop_shader" android:visibility="gone" android:clickable="true" android:layout_width="65.0dip" android:layout_height="34.0dip" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/troop_del_btn" android:background="@drawable/red_del_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/delete_btn" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+    <ImageView android:id="@id/troop_icon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_alignParentLeft="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/troop_content_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="75.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/troop_shader">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textStyle="bold" android:ellipsize="end" android:id="@id/troop_name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/B4_Font" />
+            <ImageView android:id="@id/troop_open_icon" android:background="@drawable/qb_group_troop_open_icon" android:layout_width="32.5dip" android:layout_height="12.5dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="3.0dip" />
+        </LinearLayout>
+        <TextView android:layout_gravity="center|left" android:id="@id/troop_des" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/C10_Font" />
+        <TextView android:ellipsize="end" android:id="@id/troop_finger" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:includeFontPadding="false" style="@style/C10_Font" />
+    </LinearLayout>
+</RelativeLayout>

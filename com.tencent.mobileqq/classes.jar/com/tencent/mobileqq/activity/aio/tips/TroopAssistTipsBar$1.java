@@ -1,39 +1,33 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import ahap;
-import ahau;
-import android.widget.Toast;
-import auam;
-import azqs;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopAssistTipsBar$1
+class TroopAssistTipsBar$1
   implements Runnable
 {
-  public TroopAssistTipsBar$1(ahau paramahau) {}
+  TroopAssistTipsBar$1(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
   public void run()
   {
-    if ((ahau.a(this.this$0).b(ahau.a(this.this$0).a) != 2) && (ahau.a(this.this$0).b(ahau.a(this.this$0).a) != 3)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (auam.a().c(ahau.a(this.this$0), ahau.a(this.this$0).a)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopAssistTipsBar", 2, "getTroopAssistTipInRange false, return ");
+    if ((TroopAssistTipsBar.b(this.this$0).getTroopMask(TroopAssistTipsBar.a(this.this$0).b) != 2) && (TroopAssistTipsBar.b(this.this$0).getTroopMask(TroopAssistTipsBar.a(this.this$0).b) != 3)) {
       return;
-      if (this.this$0.a != null) {
-        this.this$0.a.cancel();
+    }
+    if (!TroopAssistantManager.a().g(TroopAssistTipsBar.b(this.this$0), TroopAssistTipsBar.a(this.this$0).b))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistTipsBar", 2, "getTroopAssistTipInRange false, return ");
       }
-    } while (!ahau.a(this.this$0).a(this.this$0, new Object[0]));
-    auam.a().c(ahau.a(this.this$0), ahau.a(this.this$0).a);
-    azqs.b(ahau.a(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
+      return;
+    }
+    if (TroopAssistTipsBar.c(this.this$0).a(this.this$0, new Object[0]))
+    {
+      TroopAssistantManager.a().f(TroopAssistTipsBar.b(this.this$0), TroopAssistTipsBar.a(this.this$0).b);
+      ReportController.b(TroopAssistTipsBar.b(this.this$0), "CliOper", "", "", "Grp_helper", "Aio_grp_banner", 0, 0, "", "", "", "");
+    }
   }
 }
 

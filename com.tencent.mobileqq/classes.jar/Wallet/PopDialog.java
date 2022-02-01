@@ -38,29 +38,35 @@ public final class PopDialog
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.dialog_tips != null) {
-      paramJceOutputStream.write(this.dialog_tips, 0);
+    String str = this.dialog_tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.left_tips != null) {
-      paramJceOutputStream.write(this.left_tips, 1);
+    str = this.left_tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.left_url != null) {
-      paramJceOutputStream.write(this.left_url, 2);
+    str = this.left_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.right_tips != null) {
-      paramJceOutputStream.write(this.right_tips, 3);
+    str = this.right_tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.right_url != null) {
-      paramJceOutputStream.write(this.right_url, 4);
+    str = this.right_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.dialog_title != null) {
-      paramJceOutputStream.write(this.dialog_title, 5);
+    str = this.dialog_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.PopDialog
  * JD-Core Version:    0.7.0.1
  */

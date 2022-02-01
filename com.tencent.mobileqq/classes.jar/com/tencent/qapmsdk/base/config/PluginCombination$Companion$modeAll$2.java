@@ -21,13 +21,20 @@ final class PluginCombination$Companion$modeAll$2
   
   public final int invoke()
   {
+    Object localObject = PluginCombination.access$getAusterityPlugins$cp();
     int i = 0;
-    Iterator localIterator1 = ((Iterable)CollectionsKt.listOf(new List[] { PluginCombination.access$getAusterityPlugins$cp(), PluginCombination.Companion.getLoosePlugins$qapmbase_release() })).iterator();
-    while (localIterator1.hasNext())
+    localObject = ((Iterable)CollectionsKt.listOf(new List[] { localObject, PluginCombination.Companion.getLoosePlugins$qapmbase_release() })).iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      Iterator localIterator2 = ((Iterable)localIterator1.next()).iterator();
-      while (localIterator2.hasNext()) {
-        i |= ((DefaultPluginConfig)localIterator2.next()).mode;
+      Iterator localIterator = ((Iterable)((Iterator)localObject).next()).iterator();
+      int j = i;
+      for (;;)
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        j |= ((DefaultPluginConfig)localIterator.next()).mode;
       }
     }
     return i;
@@ -35,7 +42,7 @@ final class PluginCombination$Companion$modeAll$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.PluginCombination.Companion.modeAll.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:minWidth="@dimen/lo" style="@style/q9">
-        <ListView android:id="@id/lo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000" android:divider="@null" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulSuitViewV2 android:id="@id/dg8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulDetailsViewV2 android:id="@id/dg0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</RelativeLayout>

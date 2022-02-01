@@ -57,17 +57,19 @@ public class QQScaleFilter
   
   private void setArrayAlpha(float paramFloat)
   {
-    this.ALPHA_BUFFER[3] = paramFloat;
-    this.ALPHA_BUFFER[7] = paramFloat;
-    this.ALPHA_BUFFER[11] = paramFloat;
-    this.ALPHA_BUFFER[15] = paramFloat;
+    float[] arrayOfFloat = this.ALPHA_BUFFER;
+    arrayOfFloat[3] = paramFloat;
+    arrayOfFloat[7] = paramFloat;
+    arrayOfFloat[11] = paramFloat;
+    arrayOfFloat[15] = paramFloat;
   }
   
   private void updateAlphaByteBuffer(float[] paramArrayOfFloat)
   {
-    if (this.rgbaBuffer != null)
+    FloatBuffer localFloatBuffer = this.rgbaBuffer;
+    if (localFloatBuffer != null)
     {
-      this.rgbaBuffer.put(paramArrayOfFloat);
+      localFloatBuffer.put(paramArrayOfFloat);
       this.rgbaBuffer.position(0);
     }
   }
@@ -75,67 +77,96 @@ public class QQScaleFilter
   public void onDrawFrame()
   {
     super.onDrawFrame();
-    if (this.frameIndex % this.picRate == 0)
+    int i = this.frameIndex;
+    int j = this.picRate;
+    if (i % j == 0)
     {
-      this.picIndex = (this.frameIndex / this.picRate);
+      this.picIndex = (i / j);
       if (this.picIndex < this.imgSize)
       {
-        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.frameIndex + "  picRate : " + this.picRate + " imgSize : " + this.imgSize + "  picIndex : " + this.picIndex);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("scale Filter OnDrawFrame frameIndex : ");
+        localStringBuilder.append(this.frameIndex);
+        localStringBuilder.append("  picRate : ");
+        localStringBuilder.append(this.picRate);
+        localStringBuilder.append(" imgSize : ");
+        localStringBuilder.append(this.imgSize);
+        localStringBuilder.append("  picIndex : ");
+        localStringBuilder.append(this.picIndex);
+        Log.d("rejectliu", localStringBuilder.toString());
         this.glImage.loadTextureSync((String)this.pathList.get(this.picIndex));
-        if (this.picIndex + 1 < this.imgSize) {
-          this.nextGlImage.loadTextureSync((String)this.pathList.get(this.picIndex + 1));
+        i = this.picIndex;
+        if (i + 1 < this.imgSize) {
+          this.nextGlImage.loadTextureSync((String)this.pathList.get(i + 1));
         }
       }
     }
-    int i = this.picIndex * this.picRate;
-    float f2;
-    if (this.frameIndex >= i) {
-      f2 = (this.frameIndex - i) / this.picRate;
-    }
-    for (float f1 = f2 * 0.1F + 1.0F;; f1 = 1.0F)
+    j = this.picIndex;
+    i = this.picRate;
+    j *= i;
+    int k = this.frameIndex;
+    float f1;
+    if (k >= j)
     {
-      Log.d("rejectliu", "frameIndex : " + this.frameIndex + " animRatio : " + f1 + " startIndex : " + i + " picRate : " + this.picRate + " animRatio : " + f1);
-      this.mRenderFBO.bind();
-      GLES20.glClearColor(1.0F, 1.0F, 1.0F, 0.0F);
-      GLES20.glClear(16384);
-      this.mRenderFBO.unbind();
-      float f3 = f2 * 0.9F + 0.1F;
-      f2 = (1.0F - f2) * 0.9F + 0.1F;
-      if (this.picIndex + 1 < this.imgSize)
-      {
-        float f4 = this.width / this.nextGlImage.getWidth() * this.nextGlImage.getHeight() / this.height;
-        i = this.nextGlImage.getTexture();
-        setArrayAlpha(f3);
-        updateAlphaByteBuffer(this.ALPHA_BUFFER);
-        this.compose.drawTexture(i);
-        int j = this.compose.getTextureId();
-        this.mRenderFBO.bind();
-        this.alphaRender.drawTexture(j, null, null, this.rgbaBuffer);
-        setArrayAlpha(f3);
-        updateAlphaByteBuffer(this.ALPHA_BUFFER);
-        Matrix.setIdentityM(this.mvpMatrix, 0);
-        Matrix.scaleM(this.mvpMatrix, 0, 1.0F, f4, 1.0F);
-        this.alphaRender.drawTexture(i, null, this.mvpMatrix, this.rgbaBuffer);
-        this.mRenderFBO.unbind();
-      }
-      this.mRenderFBO.bind();
-      setArrayAlpha(f2);
-      updateAlphaByteBuffer(this.ALPHA_BUFFER);
-      this.alphaRender.drawTexture(this.mInputTextureID, null, null, this.rgbaBuffer);
-      f3 = this.width / this.glImage.getWidth() * this.glImage.getHeight() / this.height;
-      i = this.glImage.getTexture();
-      Matrix.setIdentityM(this.mvpMatrix, 0);
-      Matrix.scaleM(this.mvpMatrix, 0, f1, f1, 1.0F);
-      setArrayAlpha(f2);
-      updateAlphaByteBuffer(this.ALPHA_BUFFER);
-      GLES20.glViewport(0, (int)(this.height * (1.0F - f3)) / 2, this.width, (int)(f3 * this.height));
-      this.alphaRender.drawTexture(i, null, this.mvpMatrix, this.rgbaBuffer);
-      GLES20.glViewport(0, 0, this.width, this.height);
-      this.mRenderFBO.unbind();
-      this.mOutputTextureID = this.mRenderFBO.getTexId();
-      return;
-      f2 = 0.0F;
+      f2 = (k - j) / i;
+      f1 = f2 * 0.1F + 1.0F;
     }
+    else
+    {
+      f2 = 0.0F;
+      f1 = 1.0F;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("frameIndex : ");
+    localStringBuilder.append(this.frameIndex);
+    localStringBuilder.append(" animRatio : ");
+    localStringBuilder.append(f1);
+    localStringBuilder.append(" startIndex : ");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" picRate : ");
+    localStringBuilder.append(this.picRate);
+    localStringBuilder.append(" animRatio : ");
+    localStringBuilder.append(f1);
+    Log.d("rejectliu", localStringBuilder.toString());
+    this.mRenderFBO.bind();
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 0.0F);
+    GLES20.glClear(16384);
+    this.mRenderFBO.unbind();
+    float f3 = f2 * 0.9F + 0.1F;
+    float f2 = (1.0F - f2) * 0.9F + 0.1F;
+    if (this.picIndex + 1 < this.imgSize)
+    {
+      float f4 = this.width / this.nextGlImage.getWidth() * this.nextGlImage.getHeight() / this.height;
+      i = this.nextGlImage.getTexture();
+      setArrayAlpha(f3);
+      updateAlphaByteBuffer(this.ALPHA_BUFFER);
+      this.compose.drawTexture(i);
+      j = this.compose.getTextureId();
+      this.mRenderFBO.bind();
+      this.alphaRender.drawTexture(j, null, null, this.rgbaBuffer);
+      setArrayAlpha(f3);
+      updateAlphaByteBuffer(this.ALPHA_BUFFER);
+      Matrix.setIdentityM(this.mvpMatrix, 0);
+      Matrix.scaleM(this.mvpMatrix, 0, 1.0F, f4, 1.0F);
+      this.alphaRender.drawTexture(i, null, this.mvpMatrix, this.rgbaBuffer);
+      this.mRenderFBO.unbind();
+    }
+    this.mRenderFBO.bind();
+    setArrayAlpha(f2);
+    updateAlphaByteBuffer(this.ALPHA_BUFFER);
+    this.alphaRender.drawTexture(this.mInputTextureID, null, null, this.rgbaBuffer);
+    f3 = this.width / this.glImage.getWidth() * this.glImage.getHeight() / this.height;
+    i = this.glImage.getTexture();
+    Matrix.setIdentityM(this.mvpMatrix, 0);
+    Matrix.scaleM(this.mvpMatrix, 0, f1, f1, 1.0F);
+    setArrayAlpha(f2);
+    updateAlphaByteBuffer(this.ALPHA_BUFFER);
+    j = this.height;
+    GLES20.glViewport(0, (int)(j * (1.0F - f3)) / 2, this.width, (int)(j * f3));
+    this.alphaRender.drawTexture(i, null, this.mvpMatrix, this.rgbaBuffer);
+    GLES20.glViewport(0, 0, this.width, this.height);
+    this.mRenderFBO.unbind();
+    this.mOutputTextureID = this.mRenderFBO.getTexId();
   }
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
@@ -186,7 +217,7 @@ public class QQScaleFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQScaleFilter
  * JD-Core Version:    0.7.0.1
  */

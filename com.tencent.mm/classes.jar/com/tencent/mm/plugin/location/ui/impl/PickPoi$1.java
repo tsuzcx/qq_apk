@@ -1,45 +1,29 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.bd;
 
 final class PickPoi$1
-  implements c.a
+  implements Runnable
 {
-  PickPoi$1(PickPoi paramPickPoi) {}
+  PickPoi$1(PickPoi paramPickPoi, View paramView, Context paramContext) {}
   
-  public final void b(Addr paramAddr)
+  public final void run()
   {
-    AppMethodBeat.i(113648);
-    ab.d("MicroMsg.PickPoi", "onGetAddrss  %s", new Object[] { paramAddr.toString() });
-    if (PickPoi.a(this.ogM) == null)
-    {
-      ab.i("MicroMsg.PickPoi", "error, empty poi!");
-      AppMethodBeat.o(113648);
-      return;
-    }
-    f localf = PickPoi.a(this.ogM);
-    localf.ohc = paramAddr;
-    localf.ogS = paramAddr.fBq;
-    localf.bnl = paramAddr.fBB;
-    localf.bnm = paramAddr.fBC;
-    localf.ogW = paramAddr.fBr;
-    localf.ogX = paramAddr.fBs;
-    localf.ogZ = paramAddr.fBw;
-    localf.ohb = paramAddr.fBy;
-    localf.ohe = paramAddr.fBA;
-    ab.d("poidata", "roughAddr %s", new Object[] { paramAddr.toString() });
-    if (PickPoi.b(this.ogM) != null) {
-      PickPoi.b(this.ogM).notifyDataSetChanged();
-    }
-    AppMethodBeat.o(113648);
+    AppMethodBeat.i(56080);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.val$view.getLayoutParams();
+    localLayoutParams.bottomMargin = ((int)(PickPoi.a(this.Kjk).getHeight() / 2.0D + 0.5D) + bd.fromDPToPix(this.val$context, 20));
+    this.val$view.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(56080);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.PickPoi.1
  * JD-Core Version:    0.7.0.1
  */

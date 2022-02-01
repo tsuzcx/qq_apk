@@ -12,7 +12,7 @@ import tencent.im.medal.common.MedalInfo;
 public final class cmd0x7a8$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 64, 72, 80, 90, 96 }, new String[] { "str_nick", "uint32_metal_rank", "uint32_fri_count", "uint32_metal_count", "uint32_metal_total", "rpt_msg_medal", "uint32_total_point", "int32_new_count", "int32_upgrade_count", "str_prompt_params", "uint32_now" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_new_count = PBField.initInt32(0);
   public final PBInt32Field int32_upgrade_count = PBField.initInt32(0);
   public final PBRepeatMessageField<common.MedalInfo> rpt_msg_medal = PBField.initRepeatMessage(common.MedalInfo.class);
@@ -24,10 +24,16 @@ public final class cmd0x7a8$RspBody
   public final PBUInt32Field uint32_metal_total = PBField.initUInt32(0);
   public final PBUInt32Field uint32_now = PBField.initUInt32(0);
   public final PBUInt32Field uint32_total_point = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 64, 72, 80, 90, 96 }, new String[] { "str_nick", "uint32_metal_rank", "uint32_fri_count", "uint32_metal_count", "uint32_metal_total", "rpt_msg_medal", "uint32_total_point", "int32_new_count", "int32_upgrade_count", "str_prompt_params", "uint32_now" }, new Object[] { "", localInteger, localInteger, localInteger, localInteger, null, localInteger, localInteger, localInteger, "", localInteger }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7a8.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,58 @@
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Button;
 import com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
 
 public class eki
   extends ContactBindObserver
 {
   public eki(BindNumberBusinessActivity paramBindNumberBusinessActivity) {}
   
-  protected void c(boolean paramBoolean)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    super.c(paramBoolean);
-    BindNumberBusinessActivity localBindNumberBusinessActivity = this.a;
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.d();
+    int i;
     if (paramBoolean)
     {
-      ((PhoneContactManager)this.a.b.getManager(10)).b();
-      this.a.a.sendEmptyMessage(4);
-      MyBusinessActivity.c(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("BindNumberBusinessActivity", 2, "rebind successed");
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       }
     }
     for (;;)
     {
-      this.a.d();
-      this.a.b.unRegistObserver(BindNumberBusinessActivity.a(this.a));
-      BindNumberBusinessActivity.a(this.a, null);
+      this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(BindNumberBusinessActivity.b(this.a));
+      BindNumberBusinessActivity.b(this.a, null);
       return;
-      QQToast.a(localBindNumberBusinessActivity, this.a.getString(2131558956), 2000).b(localBindNumberBusinessActivity.d());
-      if (QLog.isColorLevel()) {
-        QLog.d("BindNumberBusinessActivity", 2, "rebind failed");
+      if (i == 107)
+      {
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.c);
+        localIntent.putExtra("k_country_code", this.a.jdField_b_of_type_JavaLangString);
+        localIntent.putExtra("kBindType", BindNumberBusinessActivity.a(this.a));
+        if ((localIntent != null) && (!this.a.isFinishing()))
+        {
+          localIntent.addFlags(536870912);
+          this.a.startActivityForResult(localIntent, 2);
+        }
+      }
+      else if (i == 106)
+      {
+        this.a.setResult(-1);
+        this.a.finish();
+      }
+      else
+      {
+        this.a.b(a(i));
+        this.a.finish();
+        continue;
+        this.a.b(2131562782);
       }
     }
   }

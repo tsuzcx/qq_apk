@@ -14,7 +14,11 @@ class StringsKt__StringNumberConversionsKt
   public static final Void numberFormatError(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "input");
-    throw ((Throwable)new NumberFormatException("Invalid number format: '" + paramString + '\''));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid number format: '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append('\'');
+    throw ((Throwable)new NumberFormatException(localStringBuilder.toString()));
   }
   
   @SinceKotlin(version="1.1")
@@ -34,13 +38,15 @@ class StringsKt__StringNumberConversionsKt
     if (paramString != null)
     {
       paramInt = paramString.intValue();
-      if ((paramInt >= -128) && (paramInt <= 127)) {}
+      if (paramInt >= -128)
+      {
+        if (paramInt > 127) {
+          return null;
+        }
+        return Byte.valueOf((byte)paramInt);
+      }
     }
-    else
-    {
-      return null;
-    }
-    return Byte.valueOf((byte)paramInt);
+    return null;
   }
   
   @SinceKotlin(version="1.1")
@@ -55,16 +61,16 @@ class StringsKt__StringNumberConversionsKt
   @Nullable
   public static final Integer toIntOrNull(@NotNull String paramString, int paramInt)
   {
-    int k = -2147483647;
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toIntOrNull");
     CharsKt.checkRadix(paramInt);
     int i2 = paramString.length();
     if (i2 == 0) {
       return null;
     }
+    int n = 0;
     int i = paramString.charAt(0);
-    int n;
+    int k = -2147483647;
+    int j = 1;
     if (i < 48)
     {
       if (i2 == 1) {
@@ -74,29 +80,27 @@ class StringsKt__StringNumberConversionsKt
       {
         k = -2147483648;
         i = 1;
-        n = 0;
       }
-    }
-    int m;
-    for (int i1 = -59652323;; i1 = m)
-    {
-      if (i >= i2) {
-        break label190;
+      else if (i == 43)
+      {
+        i = 0;
       }
-      int i3 = CharsKt.digitOf(paramString.charAt(i), paramInt);
-      if (i3 < 0)
+      else
       {
         return null;
-        if (i == 43)
-        {
-          i = 1;
-          j = 0;
-          break;
-        }
+      }
+    }
+    else
+    {
+      i = 0;
+      j = 0;
+    }
+    int m;
+    for (int i1 = -59652323; j < i2; i1 = m)
+    {
+      int i3 = CharsKt.digitOf(paramString.charAt(j), paramInt);
+      if (i3 < 0) {
         return null;
-        j = 0;
-        i = 0;
-        break;
       }
       m = i1;
       if (n < i1) {
@@ -104,9 +108,7 @@ class StringsKt__StringNumberConversionsKt
         {
           i1 = k / paramInt;
           m = i1;
-          if (n < i1) {
-            return null;
-          }
+          if (n >= i1) {}
         }
         else
         {
@@ -118,10 +120,9 @@ class StringsKt__StringNumberConversionsKt
         return null;
       }
       n -= i3;
-      i += 1;
+      j += 1;
     }
-    label190:
-    if (j != 0) {
+    if (i != 0) {
       return Integer.valueOf(n);
     }
     return Integer.valueOf(-n);
@@ -145,44 +146,36 @@ class StringsKt__StringNumberConversionsKt
     if (k == 0) {
       return null;
     }
-    int i = paramString.charAt(0);
-    int j;
-    long l1;
-    long l3;
-    if (i < 48)
+    int j = 0;
+    int m = paramString.charAt(0);
+    long l1 = -9223372036854775807L;
+    int i = 1;
+    if (m < 48)
     {
       if (k == 1) {
         return null;
       }
-      j = 1;
-      if (i == 45)
+      if (m == 45)
       {
-        i = 1;
         l1 = -9223372036854775808L;
-        l3 = 0L;
+        j = 1;
+      }
+      else if (m != 43)
+      {
+        return null;
       }
     }
-    long l2;
-    for (long l4 = -256204778801521550L;; l4 = l2)
+    else
     {
-      if (j >= k) {
-        break label205;
-      }
-      int m = CharsKt.digitOf(paramString.charAt(j), paramInt);
-      if (m < 0)
-      {
+      i = 0;
+    }
+    long l3 = 0L;
+    long l2;
+    for (long l4 = -256204778801521550L; i < k; l4 = l2)
+    {
+      m = CharsKt.digitOf(paramString.charAt(i), paramInt);
+      if (m < 0) {
         return null;
-        if (i == 43)
-        {
-          i = 0;
-          l1 = -9223372036854775807L;
-          break;
-        }
-        return null;
-        j = 0;
-        i = 0;
-        l1 = -9223372036854775807L;
-        break;
       }
       l2 = l4;
       if (l3 < l4) {
@@ -190,9 +183,7 @@ class StringsKt__StringNumberConversionsKt
         {
           l4 = l1 / paramInt;
           l2 = l4;
-          if (l3 < l4) {
-            return null;
-          }
+          if (l3 >= l4) {}
         }
         else
         {
@@ -200,14 +191,14 @@ class StringsKt__StringNumberConversionsKt
         }
       }
       l3 *= paramInt;
-      if (l3 < m + l1) {
+      l4 = m;
+      if (l3 < l1 + l4) {
         return null;
       }
-      l3 -= m;
-      j += 1;
+      l3 -= l4;
+      i += 1;
     }
-    label205:
-    if (i != 0) {
+    if (j != 0) {
       return Long.valueOf(l3);
     }
     return Long.valueOf(-l3);
@@ -230,18 +221,20 @@ class StringsKt__StringNumberConversionsKt
     if (paramString != null)
     {
       paramInt = paramString.intValue();
-      if ((paramInt >= -32768) && (paramInt <= 32767)) {}
+      if (paramInt >= -32768)
+      {
+        if (paramInt > 32767) {
+          return null;
+        }
+        return Short.valueOf((short)paramInt);
+      }
     }
-    else
-    {
-      return null;
-    }
-    return Short.valueOf((short)paramInt);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.StringsKt__StringNumberConversionsKt
  * JD-Core Version:    0.7.0.1
  */

@@ -53,15 +53,17 @@ public final class ChapterFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ChapterFrame)paramObject;
-    } while ((this.startTimeMs == paramObject.startTimeMs) && (this.endTimeMs == paramObject.endTimeMs) && (this.startOffset == paramObject.startOffset) && (this.endOffset == paramObject.endOffset) && (Util.areEqual(this.chapterId, paramObject.chapterId)) && (Arrays.equals(this.subFrames, paramObject.subFrames)));
+      return (this.startTimeMs == paramObject.startTimeMs) && (this.endTimeMs == paramObject.endTimeMs) && (this.startOffset == paramObject.startOffset) && (this.endOffset == paramObject.endOffset) && (Util.areEqual(this.chapterId, paramObject.chapterId)) && (Arrays.equals(this.subFrames, paramObject.subFrames));
+    }
     return false;
   }
   
@@ -81,10 +83,14 @@ public final class ChapterFrame
     int k = this.endTimeMs;
     int m = (int)this.startOffset;
     int n = (int)this.endOffset;
-    if (this.chapterId != null) {}
-    for (int i = this.chapterId.hashCode();; i = 0) {
-      return i + ((((j + 527) * 31 + k) * 31 + m) * 31 + n) * 31;
+    String str = this.chapterId;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return ((((527 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -107,7 +113,7 @@ public final class ChapterFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.ChapterFrame
  * JD-Core Version:    0.7.0.1
  */

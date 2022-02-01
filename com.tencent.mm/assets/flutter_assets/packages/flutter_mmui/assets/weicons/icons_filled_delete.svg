@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_filled_delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_filled_delete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon39" fill="#000000">
+            <g id="Group-3" transform="translate(9.000000, 6.000000)">
+                <path d="M46.2352937,13.5000065 L43.8322158,54.3523321 C43.6456642,57.5237079 41.0194274,60 37.8425695,60 L16.1574305,60 C12.9805726,60 10.3543358,57.5237079 10.1677842,54.3523321 L7.76470626,13.5000065 L1.5,13.5000065 L1.5,10.5 C1.5,9.67157288 2.17157288,9 3,9 L51,9 C51.8284271,9 52.5,9.67157288 52.5,10.5 L52.5,13.5000065 L46.2352937,13.5000065 Z M21,1.50010232 L33,1.50010232 C33.8284271,1.50010232 34.5,2.17167519 34.5,3.00010232 L34.5,6 L19.5,6 L19.5,3.00010232 C19.5,2.17167519 20.1715729,1.50010232 21,1.50010232 Z M18,20.999944 L19.5,47.9999828 L24,47.9999828 L22.8000011,20.999944 L18,20.999944 Z M31.5,20.999944 L30,47.9999828 L34.5,47.9999828 L36,20.999944 L31.5,20.999944 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

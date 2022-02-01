@@ -47,8 +47,9 @@ public class AttributeParam
   {
     this.vertices = null;
     this.buffer = null;
-    if (this.glBuffer != null) {
-      GLES20.glDeleteBuffers(this.glBuffer.length, this.glBuffer, 0);
+    int[] arrayOfInt = this.glBuffer;
+    if (arrayOfInt != null) {
+      GLES20.glDeleteBuffers(arrayOfInt.length, arrayOfInt, 0);
     }
   }
   
@@ -62,34 +63,45 @@ public class AttributeParam
     if (this.vertices == null) {
       return;
     }
-    if ((this.buffer == null) || (this.buffer.capacity() < this.vertices.length)) {
+    Object localObject = this.buffer;
+    if ((localObject == null) || (((FloatBuffer)localObject).capacity() < this.vertices.length)) {
       this.buffer = ByteBuffer.allocateDirect(this.vertices.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     }
     if ((this.useVBO) && (this.glBuffer == null))
     {
       this.glBuffer = new int[1];
-      GLES20.glGenBuffers(this.glBuffer.length, this.glBuffer, 0);
+      localObject = this.glBuffer;
+      GLES20.glGenBuffers(localObject.length, (int[])localObject, 0);
     }
     if (this.update)
     {
       this.buffer.put(this.vertices).position(0);
-      if (this.glBuffer != null)
+      localObject = this.glBuffer;
+      if (localObject != null)
       {
-        GLES20.glBindBuffer(34962, this.glBuffer[0]);
+        GLES20.glBindBuffer(34962, localObject[0]);
         GLES20.glBufferData(34962, this.buffer.capacity() * 4, this.buffer, 35044);
       }
       this.update = false;
     }
-    if ((this.useVBO) && (this.glBuffer != null))
+    if (this.useVBO)
     {
-      GLES20.glBindBuffer(34962, this.glBuffer[0]);
-      GLES20.glEnableVertexAttribArray(this.handle);
-      GLES20.glVertexAttribPointer(this.handle, this.perVertexFloat, 5126, false, this.perVertexFloat * 4, 0);
-      GLES20.glBindBuffer(34962, 0);
-      return;
+      localObject = this.glBuffer;
+      if (localObject != null)
+      {
+        GLES20.glBindBuffer(34962, localObject[0]);
+        GLES20.glEnableVertexAttribArray(this.handle);
+        paramInt = this.handle;
+        i = this.perVertexFloat;
+        GLES20.glVertexAttribPointer(paramInt, i, 5126, false, i * 4, 0);
+        GLES20.glBindBuffer(34962, 0);
+        return;
+      }
     }
     GLES20.glEnableVertexAttribArray(this.handle);
-    GLES20.glVertexAttribPointer(this.handle, this.perVertexFloat, 5126, false, this.perVertexFloat * 4, this.buffer);
+    paramInt = this.handle;
+    int i = this.perVertexFloat;
+    GLES20.glVertexAttribPointer(paramInt, i, 5126, false, i * 4, this.buffer);
   }
   
   public void setVertices(float[] paramArrayOfFloat)
@@ -101,12 +113,16 @@ public class AttributeParam
   @NonNull
   public String toString()
   {
-    return this.name + " = " + Arrays.toString(this.vertices);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(Arrays.toString(this.vertices));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.AttributeParam
  * JD-Core Version:    0.7.0.1
  */

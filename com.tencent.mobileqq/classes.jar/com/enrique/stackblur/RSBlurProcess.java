@@ -24,25 +24,26 @@ class RSBlurProcess
   
   public Bitmap blur(Bitmap paramBitmap, float paramFloat)
   {
-    int j = 0;
     int k = paramBitmap.getWidth();
     int m = paramBitmap.getHeight();
     paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
     ScriptC_blur localScriptC_blur = new ScriptC_blur(this._rs, this.context.getResources(), this.mBlurResId);
-    Allocation localAllocation1 = Allocation.createFromBitmap(this._rs, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
-    localScriptC_blur.set_gIn(localAllocation1);
+    Allocation localAllocation = Allocation.createFromBitmap(this._rs, paramBitmap, Allocation.MipmapControl.MIPMAP_NONE, 1);
+    localScriptC_blur.set_gIn(localAllocation);
     localScriptC_blur.set_width(k);
     localScriptC_blur.set_height(m);
     localScriptC_blur.set_radius((int)paramFloat);
     int[] arrayOfInt = new int[m];
+    int j = 0;
     int i = 0;
     while (i < m)
     {
       arrayOfInt[i] = i;
       i += 1;
     }
-    Allocation localAllocation2 = Allocation.createSized(this._rs, Element.U32(this._rs), m, 1);
-    localAllocation2.copyFrom(arrayOfInt);
+    Object localObject1 = this._rs;
+    localObject1 = Allocation.createSized((RenderScript)localObject1, Element.U32((RenderScript)localObject1), m, 1);
+    ((Allocation)localObject1).copyFrom(arrayOfInt);
     arrayOfInt = new int[k];
     i = j;
     while (i < k)
@@ -50,11 +51,12 @@ class RSBlurProcess
       arrayOfInt[i] = i;
       i += 1;
     }
-    Allocation localAllocation3 = Allocation.createSized(this._rs, Element.U32(this._rs), k, 1);
-    localAllocation3.copyFrom(arrayOfInt);
-    localScriptC_blur.forEach_blur_h(localAllocation2);
-    localScriptC_blur.forEach_blur_v(localAllocation3);
-    localAllocation1.copyTo(paramBitmap);
+    Object localObject2 = this._rs;
+    localObject2 = Allocation.createSized((RenderScript)localObject2, Element.U32((RenderScript)localObject2), k, 1);
+    ((Allocation)localObject2).copyFrom(arrayOfInt);
+    localScriptC_blur.forEach_blur_h((Allocation)localObject1);
+    localScriptC_blur.forEach_blur_v((Allocation)localObject2);
+    localAllocation.copyTo(paramBitmap);
     return paramBitmap;
   }
   
@@ -65,7 +67,7 @@ class RSBlurProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.RSBlurProcess
  * JD-Core Version:    0.7.0.1
  */

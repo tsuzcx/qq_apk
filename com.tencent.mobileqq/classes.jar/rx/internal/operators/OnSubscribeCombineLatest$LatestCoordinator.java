@@ -78,14 +78,13 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
         if (paramBoolean2)
         {
           paramQueue = (Throwable)this.error.get();
-          if (paramQueue != null) {
-            paramSubscriber.onError(paramQueue);
-          }
-          for (;;)
+          if (paramQueue != null)
           {
+            paramSubscriber.onError(paramQueue);
             return true;
-            paramSubscriber.onCompleted();
           }
+          paramSubscriber.onCompleted();
+          return true;
         }
       }
       else
@@ -109,83 +108,76 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
   
   void combine(Object paramObject, int paramInt)
   {
-    int j = 0;
     OnSubscribeCombineLatest.CombinerSubscriber localCombinerSubscriber = this.subscribers[paramInt];
-    for (;;)
+    int k;
+    Object localObject;
+    int j;
+    int i;
+    try
     {
-      int m;
-      int i;
-      try
+      k = this.latest.length;
+      localObject = this.latest[paramInt];
+      j = this.active;
+      i = j;
+      if (localObject == MISSING)
       {
-        m = this.latest.length;
-        Object localObject = this.latest[paramInt];
-        int k = this.active;
-        i = k;
-        if (localObject == MISSING)
-        {
-          i = k + 1;
-          this.active = i;
-        }
-        k = this.complete;
-        if (paramObject == null)
-        {
-          paramInt = k + 1;
-          this.complete = paramInt;
-          break label227;
-          if (paramInt == m) {
-            break label238;
-          }
-          paramInt = j;
-          if (paramObject == null)
-          {
-            paramInt = j;
-            if (localObject == MISSING) {
-              break label238;
-            }
-          }
-          if (paramInt != 0) {
-            break label214;
-          }
-          if ((paramObject != null) && (i != 0))
-          {
-            this.queue.offer(localCombinerSubscriber, this.latest.clone());
-            if ((i != 0) || (paramObject == null)) {
-              break label222;
-            }
-            localCombinerSubscriber.requestMore(1L);
-          }
-        }
-        else
-        {
-          this.latest[paramInt] = localCombinerSubscriber.nl.getValue(paramObject);
-          paramInt = k;
-          break label227;
-        }
-        if ((paramObject != null) || (this.error.get() == null) || ((localObject != MISSING) && (this.delayError))) {
-          continue;
-        }
-        this.done = true;
-        continue;
-        this.done = true;
+        i = j + 1;
+        this.active = i;
       }
-      finally {}
-      label214:
-      continue;
-      label222:
-      drain();
-      return;
-      label227:
-      if (i == m)
+      j = this.complete;
+      if (paramObject == null)
       {
-        i = 1;
-        continue;
-        label238:
-        paramInt = 1;
+        paramInt = j + 1;
+        this.complete = paramInt;
       }
       else
       {
-        i = 0;
+        this.latest[paramInt] = localCombinerSubscriber.nl.getValue(paramObject);
+        paramInt = j;
       }
+    }
+    finally {}
+    if (paramInt != k)
+    {
+      paramInt = j;
+      if (paramObject == null)
+      {
+        paramInt = j;
+        if (localObject == MISSING) {
+          break label243;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        if ((paramObject != null) && (i != 0)) {
+          this.queue.offer(localCombinerSubscriber, this.latest.clone());
+        } else if ((paramObject == null) && (this.error.get() != null) && ((localObject == MISSING) || (!this.delayError))) {
+          this.done = true;
+        }
+      }
+      else {
+        this.done = true;
+      }
+      if ((i == 0) && (paramObject != null))
+      {
+        localCombinerSubscriber.requestMore(1L);
+        return;
+      }
+      drain();
+      return;
+      j = 0;
+      if (i == k)
+      {
+        i = 1;
+        break;
+      }
+      i = 0;
+      break;
+      label243:
+      paramInt = 1;
     }
   }
   
@@ -199,81 +191,66 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
     boolean bool2 = this.delayError;
     AtomicLong localAtomicLong = this.requested;
     int i = 1;
-    label34:
-    long l2;
     int j;
-    label76:
-    long l1;
-    if (!checkTerminated(this.done, localSpscLinkedArrayQueue.isEmpty(), localSubscriber, localSpscLinkedArrayQueue, bool2))
+    do
     {
-      l2 = localAtomicLong.get();
-      if (l2 != 9223372036854775807L) {
-        break label164;
-      }
-      j = 1;
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      boolean bool3;
-      OnSubscribeCombineLatest.CombinerSubscriber localCombinerSubscriber;
-      if (l2 != 0L)
-      {
-        bool3 = this.done;
-        localCombinerSubscriber = (OnSubscribeCombineLatest.CombinerSubscriber)localSpscLinkedArrayQueue.peek();
-        if (localCombinerSubscriber != null) {
-          break label169;
-        }
-      }
-      label164:
-      label169:
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        if (checkTerminated(bool3, bool1, localSubscriber, localSpscLinkedArrayQueue, bool2)) {
-          break label172;
-        }
-        if (!bool1) {
-          break label174;
-        }
-        if ((l1 != 0L) && (j == 0)) {
-          localAtomicLong.addAndGet(l1);
-        }
-        i = addAndGet(-i);
-        if (i == 0) {
-          break;
-        }
-        break label34;
-        break;
-        j = 0;
-        break label76;
-      }
-      label172:
-      break;
-      label174:
-      localSpscLinkedArrayQueue.poll();
-      Object localObject = (Object[])localSpscLinkedArrayQueue.poll();
-      if (localObject == null)
-      {
-        this.cancelled = true;
-        cancel(localSpscLinkedArrayQueue);
-        localSubscriber.onError(new IllegalStateException("Broken queue?! Sender received but not the array."));
+      if (checkTerminated(this.done, localSpscLinkedArrayQueue.isEmpty(), localSubscriber, localSpscLinkedArrayQueue, bool2)) {
         return;
       }
-      try
-      {
-        localObject = this.combiner.call((Object[])localObject);
-        localSubscriber.onNext(localObject);
-        localCombinerSubscriber.requestMore(1L);
-        l2 -= 1L;
-        l1 -= 1L;
+      long l2 = localAtomicLong.get();
+      if (l2 == 9223372036854775807L) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      catch (Throwable localThrowable)
+      long l1 = 0L;
+      while (l2 != 0L)
       {
-        this.cancelled = true;
-        cancel(localSpscLinkedArrayQueue);
-        localSubscriber.onError(localThrowable);
+        boolean bool3 = this.done;
+        OnSubscribeCombineLatest.CombinerSubscriber localCombinerSubscriber = (OnSubscribeCombineLatest.CombinerSubscriber)localSpscLinkedArrayQueue.peek();
+        boolean bool1;
+        if (localCombinerSubscriber == null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        if (checkTerminated(bool3, bool1, localSubscriber, localSpscLinkedArrayQueue, bool2)) {
+          return;
+        }
+        if (!bool1)
+        {
+          localSpscLinkedArrayQueue.poll();
+          Object localObject = (Object[])localSpscLinkedArrayQueue.poll();
+          if (localObject == null)
+          {
+            this.cancelled = true;
+            cancel(localSpscLinkedArrayQueue);
+            localSubscriber.onError(new IllegalStateException("Broken queue?! Sender received but not the array."));
+            return;
+          }
+          try
+          {
+            localObject = this.combiner.call((Object[])localObject);
+            localSubscriber.onNext(localObject);
+            localCombinerSubscriber.requestMore(1L);
+            l2 -= 1L;
+            l1 -= 1L;
+          }
+          catch (Throwable localThrowable)
+          {
+            this.cancelled = true;
+            cancel(localSpscLinkedArrayQueue);
+            localSubscriber.onError(localThrowable);
+            return;
+          }
+        }
       }
-    }
+      if ((l1 != 0L) && (j == 0)) {
+        localThrowable.addAndGet(l1);
+      }
+      j = addAndGet(-i);
+      i = j;
+    } while (j != 0);
   }
   
   public boolean isUnsubscribed()
@@ -284,45 +261,52 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
   void onError(Throwable paramThrowable)
   {
     AtomicReference localAtomicReference = this.error;
-    for (;;)
+    Throwable localThrowable;
+    Object localObject;
+    do
     {
-      Throwable localThrowable = (Throwable)localAtomicReference.get();
-      Object localObject;
-      if (localThrowable != null) {
+      localThrowable = (Throwable)localAtomicReference.get();
+      if (localThrowable != null)
+      {
         if ((localThrowable instanceof CompositeException))
         {
           localObject = new ArrayList(((CompositeException)localThrowable).getExceptions());
           ((List)localObject).add(paramThrowable);
           localObject = new CompositeException((Collection)localObject);
         }
+        else
+        {
+          localObject = new CompositeException(Arrays.asList(new Throwable[] { localThrowable, paramThrowable }));
+        }
       }
-      while (localAtomicReference.compareAndSet(localThrowable, localObject))
-      {
-        return;
-        localObject = new CompositeException(Arrays.asList(new Throwable[] { localThrowable, paramThrowable }));
-        continue;
+      else {
         localObject = paramThrowable;
       }
-    }
+    } while (!localAtomicReference.compareAndSet(localThrowable, localObject));
   }
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= required but it was " + paramLong);
-    }
-    if (paramLong != 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(this.requested, paramLong);
-      drain();
+      if (paramLong != 0L)
+      {
+        BackpressureUtils.getAndAddRequest(this.requested, paramLong);
+        drain();
+      }
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void subscribe(Observable<? extends T>[] paramArrayOfObservable)
   {
-    int j = 0;
     OnSubscribeCombineLatest.CombinerSubscriber[] arrayOfCombinerSubscriber = this.subscribers;
     int k = arrayOfCombinerSubscriber.length;
+    int j = 0;
     int i = 0;
     while (i < k)
     {
@@ -333,9 +317,9 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
     this.actual.add(this);
     this.actual.setProducer(this);
     i = j;
-    for (;;)
+    while (i < k)
     {
-      if ((i >= k) || (this.cancelled)) {
+      if (this.cancelled) {
         return;
       }
       paramArrayOfObservable[i].subscribe(arrayOfCombinerSubscriber[i]);
@@ -356,7 +340,7 @@ final class OnSubscribeCombineLatest$LatestCoordinator<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeCombineLatest.LatestCoordinator
  * JD-Core Version:    0.7.0.1
  */

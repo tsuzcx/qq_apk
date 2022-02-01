@@ -10,276 +10,180 @@ public final class ax
 {
   private JSONObject a;
   
-  /* Error */
   public final String a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   6: ifnonnull +10 -> 16
-    //   9: ldc 16
-    //   11: astore_1
-    //   12: aload_0
-    //   13: monitorexit
-    //   14: aload_1
-    //   15: areturn
-    //   16: aload_0
-    //   17: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   20: invokevirtual 21	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   23: astore_1
-    //   24: goto -12 -> 12
-    //   27: astore_1
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_1
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	ax
-    //   11	13	1	str	String
-    //   27	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	27	finally
-    //   16	24	27	finally
+    try
+    {
+      if (this.a == null) {
+        return "";
+      }
+      String str = this.a.toString();
+      return str;
+    }
+    finally {}
   }
   
   public final String a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    label189:
-    boolean bool;
-    for (;;)
+    try
     {
-      JSONObject localJSONObject;
-      ArrayList localArrayList;
-      try
+      if ((this.a == null) || (TextUtils.isEmpty(paramString1))) {
+        break label371;
+      }
+      localJSONObject = this.a.optJSONObject("data");
+      if (localJSONObject == null) {
+        return "";
+      }
+      localJSONObject = localJSONObject.optJSONObject(paramString1);
+      if (localJSONObject == null) {
+        return "";
+      }
+      localArrayList = new ArrayList();
+      paramString1 = localJSONObject.keys();
+      while (paramString1.hasNext())
       {
-        if ((this.a == null) || (TextUtils.isEmpty(paramString1)))
+        Object localObject = (String)paramString1.next();
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramString1 = "";
-          return paramString1;
-        }
-        localJSONObject = this.a.optJSONObject("data");
-        if (localJSONObject == null)
-        {
-          paramString1 = "";
-          continue;
-        }
-        localJSONObject = localJSONObject.optJSONObject(paramString1);
-        if (localJSONObject == null)
-        {
-          paramString1 = "";
-          continue;
-        }
-        localArrayList = new ArrayList();
-        paramString1 = localJSONObject.keys();
-        if (paramString1.hasNext())
-        {
-          Object localObject = (String)paramString1.next();
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            continue;
-          }
           if (((String)localObject).equals("deviceid"))
           {
             paramString1 = localJSONObject.optString("deviceid");
-            continue;
+            return paramString1;
           }
           localObject = new ax.a((String)localObject, paramInt, paramString2, paramString3, paramString4, paramString5);
-          if (!((ax.a)localObject).b) {
-            continue;
+          if (((ax.a)localObject).b) {
+            localArrayList.add(localObject);
           }
-          localArrayList.add(localObject);
-          continue;
-        }
-        if (localArrayList.size() != 0) {
-          break label189;
         }
       }
-      finally {}
-      paramString1 = "";
-      continue;
+      if (localArrayList.size() == 0) {
+        return "";
+      }
       if (localArrayList.size() == 1)
       {
         paramString1 = localJSONObject.optString(((ax.a)localArrayList.get(0)).a);
+        return paramString1;
       }
-      else
-      {
-        paramString1 = (ax.a)localArrayList.get(0);
-        paramInt = 1;
-        if (paramInt < localArrayList.size())
-        {
-          paramString2 = (ax.a)localArrayList.get(paramInt);
-          if (!paramString1.b) {
-            break label397;
-          }
-          if (paramString2.c != paramString1.c)
-          {
-            bool = paramString2.c;
-            break;
-          }
-          if (paramString2.d != paramString1.d)
-          {
-            bool = paramString2.d;
-            break;
-          }
-          if (paramString2.e != paramString1.e)
-          {
-            bool = paramString2.e;
-            break;
-          }
-          if (paramString2.f != paramString1.f)
-          {
-            bool = paramString2.f;
-            break;
-          }
-          if (paramString2.g == paramString1.g) {
-            break label397;
-          }
-          bool = paramString2.g;
-          break;
-        }
-        paramString1 = localJSONObject.optString(paramString1.a);
-      }
+      paramString1 = (ax.a)localArrayList.get(0);
+      paramInt = 1;
     }
-    label397:
-    label401:
-    for (;;)
+    finally
     {
       for (;;)
       {
-        if (!bool) {
-          break label401;
+        JSONObject localJSONObject;
+        ArrayList localArrayList;
+        for (;;)
+        {
+          label371:
+          throw paramString1;
         }
-        paramString1 = paramString2;
+        boolean bool = true;
+        label390:
+        if (bool) {
+          paramString1 = paramString2;
+        }
         paramInt += 1;
-        break;
-        bool = true;
       }
+    }
+    if (paramInt < localArrayList.size())
+    {
+      paramString2 = (ax.a)localArrayList.get(paramInt);
+      if (paramString1.b)
+      {
+        if (paramString2.c != paramString1.c)
+        {
+          bool = paramString2.c;
+          break label390;
+        }
+        if (paramString2.d != paramString1.d)
+        {
+          bool = paramString2.d;
+          break label390;
+        }
+        if (paramString2.e != paramString1.e)
+        {
+          bool = paramString2.e;
+          break label390;
+        }
+        if (paramString2.f != paramString1.f)
+        {
+          bool = paramString2.f;
+          break label390;
+        }
+        if (paramString2.g != paramString1.g)
+        {
+          bool = paramString2.g;
+          break label390;
+        }
+      }
+    }
+    else
+    {
+      paramString1 = localJSONObject.optString(paramString1.a);
+      return paramString1;
+      return "";
     }
   }
   
-  /* Error */
   public final void a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: istore_2
-    //   7: iload_2
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: new 18	org/json/JSONObject
-    //   17: dup
-    //   18: aload_1
-    //   19: invokespecial 108	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   22: astore_3
-    //   23: aload_0
-    //   24: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   27: ifnonnull +11 -> 38
-    //   30: aload_0
-    //   31: aload_3
-    //   32: putfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   35: goto -24 -> 11
-    //   38: aload_3
-    //   39: ldc 30
-    //   41: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   44: astore_1
-    //   45: aload_3
-    //   46: ldc 110
-    //   48: invokevirtual 63	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: astore_3
-    //   52: aload_1
-    //   53: ifnull -42 -> 11
-    //   56: aload_3
-    //   57: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   60: ifne -49 -> 11
-    //   63: aload_0
-    //   64: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   67: ldc 30
-    //   69: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   72: astore 4
-    //   74: aload 4
-    //   76: ifnonnull +33 -> 109
-    //   79: aload_0
-    //   80: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   83: ldc 30
-    //   85: aload_1
-    //   86: invokevirtual 114	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   89: pop
-    //   90: aload_0
-    //   91: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   94: ldc 110
-    //   96: aload_3
-    //   97: invokevirtual 114	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   100: pop
-    //   101: goto -90 -> 11
-    //   104: astore_1
-    //   105: aload_0
-    //   106: monitorexit
-    //   107: aload_1
-    //   108: athrow
-    //   109: aload_1
-    //   110: invokevirtual 41	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   113: astore 5
-    //   115: aload 5
-    //   117: invokeinterface 47 1 0
-    //   122: ifeq -32 -> 90
-    //   125: aload 5
-    //   127: invokeinterface 51 1 0
-    //   132: checkcast 53	java/lang/String
-    //   135: astore 6
-    //   137: aload 6
-    //   139: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   142: ifne -27 -> 115
-    //   145: aload_1
-    //   146: aload 6
-    //   148: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   151: astore 7
-    //   153: aload 7
-    //   155: ifnull -40 -> 115
-    //   158: aload 4
-    //   160: aload 6
-    //   162: aload 7
-    //   164: invokevirtual 114	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   167: pop
-    //   168: goto -53 -> 115
-    //   171: astore_1
-    //   172: goto -161 -> 11
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	175	0	this	ax
-    //   0	175	1	paramString	String
-    //   6	2	2	bool	boolean
-    //   22	75	3	localObject	Object
-    //   72	87	4	localJSONObject1	JSONObject
-    //   113	13	5	localIterator	Iterator
-    //   135	26	6	str	String
-    //   151	12	7	localJSONObject2	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	104	finally
-    //   14	35	104	finally
-    //   38	52	104	finally
-    //   56	74	104	finally
-    //   79	90	104	finally
-    //   90	101	104	finally
-    //   109	115	104	finally
-    //   115	153	104	finally
-    //   158	168	104	finally
-    //   14	35	171	java/lang/Throwable
-    //   38	52	171	java/lang/Throwable
-    //   56	74	171	java/lang/Throwable
-    //   79	90	171	java/lang/Throwable
-    //   90	101	171	java/lang/Throwable
-    //   109	115	171	java/lang/Throwable
-    //   115	153	171	java/lang/Throwable
-    //   158	168	171	java/lang/Throwable
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return;
+      }
+    }
+    finally
+    {
+      Object localObject;
+      for (;;)
+      {
+        label169:
+        throw paramString;
+      }
+    }
+    try
+    {
+      localObject = new JSONObject(paramString);
+      if (this.a == null)
+      {
+        this.a = ((JSONObject)localObject);
+        return;
+      }
+      paramString = ((JSONObject)localObject).optJSONObject("data");
+      localObject = ((JSONObject)localObject).optString("version");
+      if ((paramString != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        JSONObject localJSONObject1 = this.a.optJSONObject("data");
+        if (localJSONObject1 == null)
+        {
+          this.a.putOpt("data", paramString);
+        }
+        else
+        {
+          Iterator localIterator = paramString.keys();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if (!TextUtils.isEmpty(str))
+            {
+              JSONObject localJSONObject2 = paramString.optJSONObject(str);
+              if (localJSONObject2 != null) {
+                localJSONObject1.putOpt(str, localJSONObject2);
+              }
+            }
+          }
+        }
+        this.a.putOpt("version", localObject);
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      break label169;
+    }
   }
   
   public final void b()
@@ -296,40 +200,22 @@ public final class ax
     }
   }
   
-  /* Error */
   public final String c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   6: ifnull +17 -> 23
-    //   9: aload_0
-    //   10: getfield 14	com/tencent/map/sdk/a/ax:a	Lorg/json/JSONObject;
-    //   13: ldc 110
-    //   15: invokevirtual 63	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: astore_1
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: aload_1
-    //   22: areturn
-    //   23: ldc 16
-    //   25: astore_1
-    //   26: goto -7 -> 19
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	ax
-    //   18	8	1	str	String
-    //   29	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	29	finally
+    try
+    {
+      if (this.a != null)
+      {
+        String str = this.a.optString("version");
+        return str;
+      }
+      return "";
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

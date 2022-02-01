@@ -2,7 +2,7 @@ import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
 public class fuz
-  extends fvb
+  extends fva
 {
   public fuz(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
@@ -11,7 +11,7 @@ public class fuz
   
   protected String a()
   {
-    return "StateAcceptByPCWhenPause";
+    return "StateAcceptByPCWhenToOffFailed";
   }
   
   protected void a()
@@ -23,8 +23,8 @@ public class fuz
     }
     OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
     OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fvb.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Fvb = new fuy(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.h + "] state change :(" + this.jdField_a_of_type_Fva.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Fva = new fux(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

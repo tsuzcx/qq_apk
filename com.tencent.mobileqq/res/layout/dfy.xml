@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_gravity="center" android:layout_width="296.0dip" android:layout_height="185.0dip">
+        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/jh9" android:scaleType="fitXY" />
+        <RelativeLayout android:id="@id/nje" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/njf" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="16.0dip" android:src="@drawable/jha" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ffffe7af" android:gravity="center" android:id="@id/njg" android:layout_width="wrap_content" android:layout_height="20.0dip" android:includeFontPadding="false" android:layout_alignTop="@id/njf" android:layout_centerHorizontal="true" />
+            <com.tencent.timi.game.ui.widget.CommonButton android:textColor="@color/al3" android:gravity="center" android:id="@id/njd" android:background="@drawable/gyn" android:layout_width="128.0dip" android:layout_height="36.0dip" android:layout_marginBottom="20.0dip" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/njh" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="60.0dip" android:layout_marginTop="18.0dip" android:verticalSpacing="0.0dip" android:layout_below="@id/njf" android:layout_centerHorizontal="true" android:overScrollMode="never" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/nja" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="65.0dip" android:textStyle="bold" android:textColor="#ffffe99f" android:id="@id/njc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/njb" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="15.0dip" android:src="@drawable/jha" android:layout_below="@id/njc" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="即将开始" android:includeFontPadding="false" android:layout_alignTop="@id/njb" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

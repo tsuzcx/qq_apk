@@ -13,8 +13,8 @@ import com.tencent.mobileqq.activity.PortraitImageview;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import emq;
 import emr;
-import ems;
 
 public class PhotoCropActivity
   extends BaseActivity
@@ -68,9 +68,9 @@ public class PhotoCropActivity
   @SuppressLint({"NewApi"})
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131232059));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232056));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232058));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131232058));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131232055));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131232057));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
@@ -105,7 +105,7 @@ public class PhotoCropActivity
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    new ems(this, null).execute(new Void[0]);
+    new emr(this, null).execute(new Void[0]);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -118,7 +118,7 @@ public class PhotoCropActivity
       return false;
     }
     a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.e, this.f);
-    new emr(this, null).execute(new Void[0]);
+    new emq(this, null).execute(new Void[0]);
     return true;
   }
   
@@ -126,10 +126,10 @@ public class PhotoCropActivity
   {
     switch (paramView.getId())
     {
-    case 2131232057: 
+    case 2131232056: 
     default: 
       return;
-    case 2131232056: 
+    case 2131232055: 
       if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction == null)

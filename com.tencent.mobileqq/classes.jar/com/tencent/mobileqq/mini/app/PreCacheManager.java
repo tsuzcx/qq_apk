@@ -5,12 +5,9 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.apkg.PreCacheInfo;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
-import com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -23,7 +20,6 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.json.JSONObject;
 
 public class PreCacheManager
 {
@@ -39,142 +35,208 @@ public class PreCacheManager
   
   private void doFetchPreCacheData(MiniAppConfig paramMiniAppConfig, String paramString, PreCacheManager.OnCacheListener paramOnCacheListener)
   {
-    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {}
-    label11:
-    String str2;
-    int i;
-    PreCacheInfo localPreCacheInfo;
-    Object localObject1;
-    do
+    Object localObject1 = paramMiniAppConfig;
+    String str1 = "UTF-8";
+    if (localObject1 != null)
     {
-      int j;
-      do
+      if (((MiniAppConfig)localObject1).config == null) {
+        return;
+      }
+      if (((MiniAppConfig)localObject1).config.preCacheList != null)
       {
-        do
-        {
-          Iterator localIterator;
-          do
-          {
-            return;
-            break label11;
-            while ((paramMiniAppConfig.config.preCacheList == null) || (paramMiniAppConfig.config.preCacheList.size() <= 0)) {}
-            j = getCacheType(paramString);
-            str2 = "[" + paramString + " Cache]";
-            i = 1;
-            localIterator = paramMiniAppConfig.config.preCacheList.iterator();
-          } while (!localIterator.hasNext());
-          localPreCacheInfo = (PreCacheInfo)localIterator.next();
-        } while (i <= 0);
-      } while ((localPreCacheInfo == null) || (localPreCacheInfo.cacheType != j));
-      localObject1 = getPreFetchAppCacheData(paramMiniAppConfig, paramString);
-      if (localObject1 == null) {
-        break;
-      }
-      QLog.i("miniapp-start_PreCacheManager", 1, str2 + " last PreCache url:" + ((PreCacheManager.PreCacheDescData)localObject1).url + " timestamp:" + ((PreCacheManager.PreCacheDescData)localObject1).timeStamp);
-      if ((!"periodic".equals(paramString)) || (!localPreCacheInfo.getDataUrl.equals(((PreCacheManager.PreCacheDescData)localObject1).url)) || (System.currentTimeMillis() - ((PreCacheManager.PreCacheDescData)localObject1).timeStamp >= this.PRECACHE_PERIOD_MILLIS)) {
-        break;
-      }
-      QLog.i("miniapp-start_PreCacheManager", 1, str2 + " last PreCache is still in validity period.");
-    } while (paramOnCacheListener == null);
-    paramOnCacheListener.onCacheUpdated(true, false);
-    return;
-    String str1;
-    if ("pre".equals(paramString))
-    {
-      str1 = paramMiniAppConfig.launchParam.entryPath;
-      localObject1 = "";
-      localObject2 = str1;
-      if (str1 == null) {
-        localObject2 = "";
-      }
-      if (((String)localObject2).contains("?")) {
-        localObject1 = ((String)localObject2).substring(((String)localObject2).indexOf("?") + 1);
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        str1 = URLEncoder.encode((String)localObject2, "UTF-8");
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          localObject2 = URLEncoder.encode((String)localObject1, "UTF-8");
-          localObject1 = localObject2;
-          localObject2 = str1;
-          localObject1 = "appid=" + paramMiniAppConfig.config.appId + "&timestamp=" + System.currentTimeMillis() + "&path=" + (String)localObject2 + "&query=" + (String)localObject1 + "&scene=" + paramMiniAppConfig.launchParam.scene;
-          localObject2 = getBackgroundFetchToken(paramMiniAppConfig);
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label496;
-          }
-          MiniAppCmdUtil.getInstance().getLoginCode(paramMiniAppConfig.config.appId, new PreCacheManager.2(this, str2, paramMiniAppConfig, localPreCacheInfo, paramString, (String)localObject1, paramOnCacheListener));
-          i -= 1;
-        }
-        catch (Throwable localThrowable2)
-        {
-          for (;;)
-          {
-            localObject2 = localThrowable1;
-            Object localObject3 = localThrowable2;
-          }
-        }
-        localThrowable1 = localThrowable1;
-      }
-      QLog.e("miniapp-start_PreCacheManager", 1, localThrowable1, new Object[0]);
-      continue;
-      label496:
-      doRequestPreCacheData(paramMiniAppConfig, localPreCacheInfo, paramString, (String)localObject1 + "&token=" + (String)localObject2, paramOnCacheListener);
-      continue;
-      if ("periodic".equals(paramString))
-      {
-        localObject1 = getBackgroundFetchToken(paramMiniAppConfig);
-        if (TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          QLog.e("miniapp-start_PreCacheManager", 1, str2 + "token is null!");
+        if (((MiniAppConfig)localObject1).config.preCacheList.size() <= 0) {
           return;
         }
-        doRequestPreCacheData(paramMiniAppConfig, localPreCacheInfo, paramString, "appid=" + paramMiniAppConfig.config.appId + "&token=" + (String)localObject1 + "&timestamp=" + System.currentTimeMillis(), paramOnCacheListener);
+        int i = getCacheType(paramString);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" Cache]");
+        String str3 = ((StringBuilder)localObject2).toString();
+        Iterator localIterator = ((MiniAppConfig)localObject1).config.preCacheList.iterator();
+        int j = 1;
+        for (;;)
+        {
+          localObject2 = paramOnCacheListener;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          PreCacheInfo localPreCacheInfo = (PreCacheInfo)localIterator.next();
+          if (j <= 0) {
+            return;
+          }
+          if ((localPreCacheInfo != null) && (localPreCacheInfo.cacheType == i))
+          {
+            Object localObject3 = getPreFetchAppCacheData(paramMiniAppConfig, paramString);
+            Object localObject4;
+            if (localObject3 != null)
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(str3);
+              ((StringBuilder)localObject4).append(" last PreCache url:");
+              ((StringBuilder)localObject4).append(((PreCacheManager.PreCacheDescData)localObject3).url);
+              ((StringBuilder)localObject4).append(" timestamp:");
+              ((StringBuilder)localObject4).append(((PreCacheManager.PreCacheDescData)localObject3).timeStamp);
+              QLog.i("miniapp-start_PreCacheManager", 1, ((StringBuilder)localObject4).toString());
+              if (("periodic".equals(paramString)) && (localPreCacheInfo.getDataUrl.equals(((PreCacheManager.PreCacheDescData)localObject3).url)) && (System.currentTimeMillis() - ((PreCacheManager.PreCacheDescData)localObject3).timeStamp < this.PRECACHE_PERIOD_MILLIS))
+              {
+                paramMiniAppConfig = new StringBuilder();
+                paramMiniAppConfig.append(str3);
+                paramMiniAppConfig.append(" last PreCache is still in validity period.");
+                QLog.i("miniapp-start_PreCacheManager", 1, paramMiniAppConfig.toString());
+                if (localObject2 != null) {
+                  ((PreCacheManager.OnCacheListener)localObject2).onCacheUpdated(true, false);
+                }
+                return;
+              }
+            }
+            if ("pre".equals(paramString))
+            {
+              localObject4 = ((MiniAppConfig)localObject1).launchParam.entryPath;
+              localObject3 = "";
+              if (localObject4 == null) {
+                localObject4 = "";
+              }
+              if (((String)localObject4).contains("?")) {
+                localObject3 = ((String)localObject4).substring(((String)localObject4).indexOf("?") + 1);
+              }
+              localObject2 = localObject4;
+              Object localObject5;
+              try
+              {
+                localObject4 = URLEncoder.encode((String)localObject4, str1);
+                localObject2 = localObject4;
+                String str2 = URLEncoder.encode((String)localObject3, str1);
+                localObject2 = str2;
+              }
+              catch (Throwable localThrowable)
+              {
+                QLog.e("miniapp-start_PreCacheManager", 1, localThrowable, new Object[0]);
+                localObject5 = localObject2;
+                localObject2 = localObject3;
+              }
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("appid=");
+              ((StringBuilder)localObject3).append(((MiniAppConfig)localObject1).config.appId);
+              ((StringBuilder)localObject3).append("&timestamp=");
+              ((StringBuilder)localObject3).append(System.currentTimeMillis());
+              ((StringBuilder)localObject3).append("&path=");
+              ((StringBuilder)localObject3).append((String)localObject5);
+              ((StringBuilder)localObject3).append("&query=");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              ((StringBuilder)localObject3).append("&scene=");
+              localObject2 = paramMiniAppConfig;
+              ((StringBuilder)localObject3).append(((MiniAppConfig)localObject2).launchParam.scene);
+              localObject1 = ((StringBuilder)localObject3).toString();
+              localObject3 = getBackgroundFetchToken(paramMiniAppConfig);
+              if (TextUtils.isEmpty((CharSequence)localObject3))
+              {
+                MiniAppCmdUtil.getInstance().getLoginCode(((MiniAppConfig)localObject2).config.appId, new PreCacheManager.2(this, str3, paramMiniAppConfig, localPreCacheInfo, paramString, (String)localObject1, paramOnCacheListener));
+              }
+              else
+              {
+                localObject5 = new StringBuilder();
+                ((StringBuilder)localObject5).append((String)localObject1);
+                ((StringBuilder)localObject5).append("&token=");
+                ((StringBuilder)localObject5).append((String)localObject3);
+                doRequestPreCacheData(paramMiniAppConfig, localPreCacheInfo, paramString, ((StringBuilder)localObject5).toString(), paramOnCacheListener);
+              }
+            }
+            else
+            {
+              localObject2 = localObject1;
+              if ("periodic".equals(paramString))
+              {
+                localObject2 = getBackgroundFetchToken(paramMiniAppConfig);
+                if (TextUtils.isEmpty((CharSequence)localObject2))
+                {
+                  paramMiniAppConfig = new StringBuilder();
+                  paramMiniAppConfig.append(str3);
+                  paramMiniAppConfig.append("token is null!");
+                  QLog.e("miniapp-start_PreCacheManager", 1, paramMiniAppConfig.toString());
+                  return;
+                }
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("appid=");
+                ((StringBuilder)localObject3).append(((MiniAppConfig)localObject1).config.appId);
+                ((StringBuilder)localObject3).append("&token=");
+                ((StringBuilder)localObject3).append((String)localObject2);
+                ((StringBuilder)localObject3).append("&timestamp=");
+                ((StringBuilder)localObject3).append(System.currentTimeMillis());
+                doRequestPreCacheData(paramMiniAppConfig, localPreCacheInfo, paramString, ((StringBuilder)localObject3).toString(), paramOnCacheListener);
+                localObject2 = localObject1;
+              }
+            }
+            j -= 1;
+            localObject1 = localObject2;
+          }
+        }
       }
     }
   }
   
   private void doRequestPreCacheData(MiniAppConfig paramMiniAppConfig, PreCacheInfo paramPreCacheInfo, String paramString1, String paramString2, PreCacheManager.OnCacheListener paramOnCacheListener)
   {
-    String str2 = "[" + paramString1 + " Cache]";
-    String str3 = paramPreCacheInfo.getDataUrl;
-    int i = str3.indexOf("?");
-    if (i >= 0) {}
-    for (String str1 = str3.substring(0, i) + paramString2 + str3.substring(i + 1);; str1 = str3 + "?" + paramString2)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" Cache]");
+    String str1 = ((StringBuilder)localObject).toString();
+    String str2 = paramPreCacheInfo.getDataUrl;
+    int i = str2.indexOf("?");
+    if (i >= 0)
     {
-      QLog.i("miniapp-start_PreCacheManager", 1, str2 + "doRequestPreCacheData requestUrl:" + str1 + " useProxy:" + paramPreCacheInfo.useProxy + " query:" + paramString2);
-      if (paramPreCacheInfo.useProxy <= 0) {
-        break;
-      }
-      MiniAppCmdUtil.getInstance().getContentAccelerate(paramMiniAppConfig.config.appId, str1, 1, null, new PreCacheManager.3(this, str2, paramString1, paramMiniAppConfig, str3, paramOnCacheListener));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str2.substring(0, i));
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append(str2.substring(i + 1));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append("doRequestPreCacheData requestUrl:");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" useProxy:");
+    localStringBuilder.append(paramPreCacheInfo.useProxy);
+    localStringBuilder.append(" query:");
+    localStringBuilder.append(paramString2);
+    QLog.i("miniapp-start_PreCacheManager", 1, localStringBuilder.toString());
+    if (paramPreCacheInfo.useProxy > 0)
+    {
+      MiniAppCmdUtil.getInstance().getContentAccelerate(paramMiniAppConfig.config.appId, (String)localObject, 1, null, new PreCacheManager.3(this, str1, paramString1, paramMiniAppConfig, str2, paramOnCacheListener));
       return;
     }
     paramPreCacheInfo = new PreCacheManager.PreCacheDescData();
     paramPreCacheInfo.appid = paramMiniAppConfig.config.appId;
-    paramPreCacheInfo.url = str3;
+    paramPreCacheInfo.url = str2;
     paramPreCacheInfo.scene = paramMiniAppConfig.launchParam.scene;
     paramPreCacheInfo.path = paramMiniAppConfig.launchParam.entryPath;
     MiniAppFileManager.getInstance();
-    paramString2 = MiniAppFileManager.getPreCacheFilePath(paramMiniAppConfig.config.appId, paramString1, paramPreCacheInfo.getCacheKey());
-    MiniappDownloadUtil.getInstance().download(str1, paramString2, false, new PreCacheManager.4(this, str2, paramOnCacheListener, paramPreCacheInfo, paramString2, paramMiniAppConfig, paramString1), Downloader.DownloadMode.StrictMode, null);
+    paramString2 = MiniAppFileManager.getPreCacheFilePath(paramMiniAppConfig.config.appId, paramString1, paramPreCacheInfo.getCacheKey(paramString1));
+    MiniappDownloadUtil.getInstance().download((String)localObject, paramString2, false, new PreCacheManager.4(this, str1, paramOnCacheListener, paramPreCacheInfo, paramString2, paramMiniAppConfig, paramString1), Downloader.DownloadMode.StrictMode, null);
   }
   
   public static PreCacheManager g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new PreCacheManager();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new PreCacheManager();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   public static int getCacheType(String paramString)
@@ -190,36 +252,44 @@ public class PreCacheManager
   
   public void doFetchPreResourceIfNeed(MiniAppConfig paramMiniAppConfig)
   {
-    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-      break label11;
-    }
-    label11:
-    label231:
-    for (;;)
+    if (paramMiniAppConfig != null)
     {
-      return;
-      if ((paramMiniAppConfig.config.resourcePreCacheInfo != null) && (paramMiniAppConfig.config.resourcePreCacheInfo.size() > 0))
+      if (paramMiniAppConfig.config == null) {
+        return;
+      }
+      if (paramMiniAppConfig.config.resourcePreCacheInfo != null)
       {
+        if (paramMiniAppConfig.config.resourcePreCacheInfo.size() <= 0) {
+          return;
+        }
         int i = this.PRECACHE_RESOURCE_MAX_COUNT;
         Iterator localIterator = paramMiniAppConfig.config.resourcePreCacheInfo.iterator();
-        for (;;)
+        while (localIterator.hasNext())
         {
-          if (!localIterator.hasNext()) {
-            break label231;
-          }
-          ResourcePreCacheInfo localResourcePreCacheInfo = (ResourcePreCacheInfo)localIterator.next();
+          Object localObject1 = (ResourcePreCacheInfo)localIterator.next();
           if (i <= 0) {
-            break;
+            return;
           }
-          if ((localResourcePreCacheInfo != null) && (!TextUtils.isEmpty(localResourcePreCacheInfo.getDataUrl)))
+          if ((localObject1 != null) && (!TextUtils.isEmpty(((ResourcePreCacheInfo)localObject1).getDataUrl)))
           {
             i -= 1;
-            QLog.i("miniapp-start_PreCacheManager", 1, "[Resource Cache] fetch PreCache url:" + localResourcePreCacheInfo.getDataUrl + " maxCount:" + this.PRECACHE_RESOURCE_MAX_COUNT);
-            String str = getResourcePreCachePath(paramMiniAppConfig.config.appId, localResourcePreCacheInfo.getDataUrl);
-            if (new File(str).exists()) {
-              QLog.i("miniapp-start_PreCacheManager", 1, "[Resource Cache] PreCache already exist. path=" + str);
-            } else {
-              MiniappDownloadUtil.getInstance().download(localResourcePreCacheInfo.getDataUrl, str, false, new PreCacheManager.6(this, str), Downloader.DownloadMode.StrictMode, null);
+            Object localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("[Resource Cache] fetch PreCache url:");
+            ((StringBuilder)localObject2).append(((ResourcePreCacheInfo)localObject1).getDataUrl);
+            ((StringBuilder)localObject2).append(" maxCount:");
+            ((StringBuilder)localObject2).append(this.PRECACHE_RESOURCE_MAX_COUNT);
+            QLog.i("miniapp-start_PreCacheManager", 1, ((StringBuilder)localObject2).toString());
+            localObject2 = getResourcePreCachePath(paramMiniAppConfig.config.appId, ((ResourcePreCacheInfo)localObject1).getDataUrl);
+            if (new File((String)localObject2).exists())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("[Resource Cache] PreCache already exist. path=");
+              ((StringBuilder)localObject1).append((String)localObject2);
+              QLog.i("miniapp-start_PreCacheManager", 1, ((StringBuilder)localObject1).toString());
+            }
+            else
+            {
+              MiniappDownloadUtil.getInstance().download(((ResourcePreCacheInfo)localObject1).getDataUrl, (String)localObject2, false, new PreCacheManager.6(this, (String)localObject2), Downloader.DownloadMode.StrictMode, null);
             }
           }
         }
@@ -250,221 +320,235 @@ public class PreCacheManager
     if (paramMiniAppConfig == null) {
       return null;
     }
-    return StorageUtil.getPreference().getString(paramMiniAppConfig.config.appId + "_precache_token", null);
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppConfig.config.appId);
+    localStringBuilder.append("_precache_token");
+    return localSharedPreferences.getString(localStringBuilder.toString(), null);
   }
   
   /* Error */
   public PreCacheManager.PreCacheDescData getPreFetchAppCacheData(MiniAppConfig paramMiniAppConfig, String paramString)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +7 -> 8
-    //   4: aconst_null
-    //   5: astore_1
-    //   6: aload_1
-    //   7: areturn
-    //   8: new 144	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
-    //   11: dup
-    //   12: aload_1
-    //   13: aload_2
-    //   14: invokespecial 398	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Ljava/lang/String;)V
-    //   17: astore 5
-    //   19: invokestatic 302	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
-    //   22: pop
-    //   23: ldc 144
-    //   25: aload_1
-    //   26: getfield 86	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   29: getfield 221	com/tencent/mobileqq/mini/apkg/MiniAppInfo:appId	Ljava/lang/String;
-    //   32: aload_2
-    //   33: new 104	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   40: aload 5
-    //   42: invokevirtual 305	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:getCacheKey	()Ljava/lang/String;
-    //   45: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc_w 400
-    //   51: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 309	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getPreCacheFilePath	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   60: invokestatic 406	com/tencent/mobileqq/mini/util/ParcelableUtil:readParcelableFromFile	(Ljava/lang/Class;Ljava/lang/String;)Landroid/os/Parcelable;
-    //   63: checkcast 144	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
-    //   66: astore 5
-    //   68: aload 5
-    //   70: ifnull +154 -> 224
-    //   73: aload 5
-    //   75: getfield 409	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
-    //   78: ifnull +146 -> 224
-    //   81: new 351	java/io/File
-    //   84: dup
-    //   85: aload 5
-    //   87: getfield 409	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
-    //   90: invokespecial 354	java/io/File:<init>	(Ljava/lang/String;)V
-    //   93: astore_1
-    //   94: aload_1
-    //   95: invokevirtual 357	java/io/File:exists	()Z
-    //   98: istore 4
-    //   100: iload 4
-    //   102: ifne +29 -> 131
-    //   105: iconst_0
-    //   106: ifeq +11 -> 117
-    //   109: new 411	java/lang/NullPointerException
-    //   112: dup
-    //   113: invokespecial 412	java/lang/NullPointerException:<init>	()V
-    //   116: athrow
-    //   117: aconst_null
-    //   118: areturn
-    //   119: astore_1
-    //   120: ldc 17
-    //   122: ldc 195
-    //   124: aload_1
-    //   125: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   128: goto -11 -> 117
-    //   131: new 419	java/io/FileInputStream
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aload_1
+    //   4: ifnonnull +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: new 146	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
+    //   12: dup
+    //   13: aload_1
+    //   14: aload_2
+    //   15: invokespecial 401	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:<init>	(Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;Ljava/lang/String;)V
+    //   18: astore 4
+    //   20: invokestatic 304	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   23: pop
+    //   24: aload_1
+    //   25: getfield 88	com/tencent/mobileqq/mini/apkg/MiniAppConfig:config	Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   28: getfield 225	com/tencent/mobileqq/mini/apkg/MiniAppInfo:appId	Ljava/lang/String;
+    //   31: astore_1
+    //   32: new 106	java/lang/StringBuilder
+    //   35: dup
+    //   36: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   39: astore 6
+    //   41: aload 6
+    //   43: aload 4
+    //   45: aload_2
+    //   46: invokevirtual 308	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:getCacheKey	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload 6
+    //   55: ldc_w 403
+    //   58: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: aload_1
+    //   63: aload_2
+    //   64: aload 6
+    //   66: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 312	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getPreCacheFilePath	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   72: astore_1
+    //   73: ldc 146
+    //   75: aload_1
+    //   76: invokestatic 409	com/tencent/mobileqq/mini/util/ParcelableUtil:readParcelableFromFile	(Ljava/lang/Class;Ljava/lang/String;)Landroid/os/Parcelable;
+    //   79: checkcast 146	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData
+    //   82: astore_2
+    //   83: goto +16 -> 99
+    //   86: astore_1
+    //   87: ldc 17
+    //   89: iconst_1
+    //   90: ldc 197
+    //   92: aload_1
+    //   93: invokestatic 412	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   96: aload 4
+    //   98: astore_2
+    //   99: aload_2
+    //   100: ifnull +181 -> 281
+    //   103: aload_2
+    //   104: getfield 415	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
+    //   107: ifnull +174 -> 281
+    //   110: new 354	java/io/File
+    //   113: dup
+    //   114: aload_2
+    //   115: getfield 415	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:filePath	Ljava/lang/String;
+    //   118: invokespecial 357	java/io/File:<init>	(Ljava/lang/String;)V
+    //   121: astore_1
+    //   122: aload_1
+    //   123: invokevirtual 360	java/io/File:exists	()Z
+    //   126: ifne +5 -> 131
+    //   129: aconst_null
+    //   130: areturn
+    //   131: new 417	java/io/FileInputStream
     //   134: dup
     //   135: aload_1
-    //   136: invokespecial 422	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   139: astore_2
-    //   140: aload_2
-    //   141: astore_1
-    //   142: aload_2
-    //   143: invokevirtual 425	java/io/FileInputStream:available	()I
-    //   146: istore_3
-    //   147: aload_2
-    //   148: astore_1
-    //   149: iload_3
-    //   150: newarray byte
-    //   152: astore 6
-    //   154: aload_2
-    //   155: astore_1
-    //   156: aload_2
-    //   157: aload 6
-    //   159: iconst_0
-    //   160: iload_3
-    //   161: invokevirtual 429	java/io/FileInputStream:read	([BII)I
-    //   164: pop
-    //   165: aload_2
-    //   166: astore_1
-    //   167: aload 5
-    //   169: aload 6
-    //   171: putfield 432	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:data	[B
-    //   174: aload 5
-    //   176: astore_1
-    //   177: aload_2
-    //   178: ifnull -172 -> 6
-    //   181: aload_2
-    //   182: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   185: aload 5
-    //   187: areturn
-    //   188: astore_1
-    //   189: ldc 17
-    //   191: ldc 195
-    //   193: aload_1
-    //   194: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   197: aload 5
-    //   199: areturn
-    //   200: astore 5
-    //   202: aconst_null
-    //   203: astore_2
-    //   204: aload_2
-    //   205: astore_1
-    //   206: ldc 17
-    //   208: iconst_1
-    //   209: ldc 195
-    //   211: aload 5
-    //   213: invokestatic 438	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   216: aload_2
-    //   217: ifnull +7 -> 224
-    //   220: aload_2
-    //   221: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   224: aconst_null
-    //   225: areturn
-    //   226: astore_1
-    //   227: ldc 17
-    //   229: ldc 195
-    //   231: aload_1
-    //   232: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   235: goto -11 -> 224
-    //   238: astore_2
+    //   136: invokespecial 420	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   139: astore 4
+    //   141: aload 4
+    //   143: astore_1
+    //   144: aload 4
+    //   146: invokevirtual 423	java/io/FileInputStream:available	()I
+    //   149: istore_3
+    //   150: aload 4
+    //   152: astore_1
+    //   153: iload_3
+    //   154: newarray byte
+    //   156: astore 5
+    //   158: aload 4
+    //   160: astore_1
+    //   161: aload 4
+    //   163: aload 5
+    //   165: iconst_0
+    //   166: iload_3
+    //   167: invokevirtual 427	java/io/FileInputStream:read	([BII)I
+    //   170: pop
+    //   171: aload 4
+    //   173: astore_1
+    //   174: aload_2
+    //   175: aload 5
+    //   177: putfield 430	com/tencent/mobileqq/mini/app/PreCacheManager$PreCacheDescData:data	[B
+    //   180: aload 4
+    //   182: invokevirtual 433	java/io/FileInputStream:close	()V
+    //   185: aload_2
+    //   186: areturn
+    //   187: astore_1
+    //   188: ldc 17
+    //   190: ldc 197
+    //   192: aload_1
+    //   193: invokestatic 438	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   196: aload_2
+    //   197: areturn
+    //   198: astore_1
+    //   199: aload 4
+    //   201: astore_2
+    //   202: aload_1
+    //   203: astore 4
+    //   205: goto +14 -> 219
+    //   208: astore_1
+    //   209: aload 5
+    //   211: astore_2
+    //   212: goto +47 -> 259
+    //   215: astore 4
+    //   217: aconst_null
+    //   218: astore_2
+    //   219: aload_2
+    //   220: astore_1
+    //   221: ldc 17
+    //   223: iconst_1
+    //   224: ldc 197
+    //   226: aload 4
+    //   228: invokestatic 440	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   231: aload_2
+    //   232: ifnull +49 -> 281
+    //   235: aload_2
+    //   236: invokevirtual 433	java/io/FileInputStream:close	()V
     //   239: aconst_null
-    //   240: astore_1
-    //   241: aload_1
-    //   242: ifnull +7 -> 249
-    //   245: aload_1
-    //   246: invokevirtual 435	java/io/FileInputStream:close	()V
-    //   249: aload_2
-    //   250: athrow
-    //   251: astore_1
-    //   252: ldc 17
-    //   254: ldc 195
-    //   256: aload_1
-    //   257: invokestatic 417	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   260: goto -11 -> 249
-    //   263: astore_2
-    //   264: goto -23 -> 241
-    //   267: astore 5
-    //   269: goto -65 -> 204
+    //   240: areturn
+    //   241: astore_1
+    //   242: ldc 17
+    //   244: ldc 197
+    //   246: aload_1
+    //   247: invokestatic 438	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   250: aconst_null
+    //   251: areturn
+    //   252: astore 4
+    //   254: aload_1
+    //   255: astore_2
+    //   256: aload 4
+    //   258: astore_1
+    //   259: aload_2
+    //   260: ifnull +19 -> 279
+    //   263: aload_2
+    //   264: invokevirtual 433	java/io/FileInputStream:close	()V
+    //   267: goto +12 -> 279
+    //   270: astore_2
+    //   271: ldc 17
+    //   273: ldc 197
+    //   275: aload_2
+    //   276: invokestatic 438	com/tencent/component/network/module/base/QDLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   279: aload_1
+    //   280: athrow
+    //   281: aconst_null
+    //   282: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	this	PreCacheManager
-    //   0	272	1	paramMiniAppConfig	MiniAppConfig
-    //   0	272	2	paramString	String
-    //   146	15	3	i	int
-    //   98	3	4	bool	boolean
-    //   17	181	5	localPreCacheDescData	PreCacheManager.PreCacheDescData
-    //   200	12	5	localThrowable1	Throwable
-    //   267	1	5	localThrowable2	Throwable
-    //   152	18	6	arrayOfByte	byte[]
+    //   0	283	0	this	PreCacheManager
+    //   0	283	1	paramMiniAppConfig	MiniAppConfig
+    //   0	283	2	paramString	String
+    //   149	18	3	i	int
+    //   18	186	4	localObject1	Object
+    //   215	12	4	localThrowable	Throwable
+    //   252	5	4	localObject2	Object
+    //   1	209	5	arrayOfByte	byte[]
+    //   39	26	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   109	117	119	java/lang/Throwable
-    //   181	185	188	java/lang/Throwable
-    //   81	100	200	java/lang/Throwable
-    //   131	140	200	java/lang/Throwable
-    //   220	224	226	java/lang/Throwable
-    //   81	100	238	finally
-    //   131	140	238	finally
-    //   245	249	251	java/lang/Throwable
-    //   142	147	263	finally
-    //   149	154	263	finally
-    //   156	165	263	finally
-    //   167	174	263	finally
-    //   206	216	263	finally
-    //   142	147	267	java/lang/Throwable
-    //   149	154	267	java/lang/Throwable
-    //   156	165	267	java/lang/Throwable
-    //   167	174	267	java/lang/Throwable
+    //   73	83	86	java/lang/Throwable
+    //   180	185	187	java/lang/Throwable
+    //   144	150	198	java/lang/Throwable
+    //   153	158	198	java/lang/Throwable
+    //   161	171	198	java/lang/Throwable
+    //   174	180	198	java/lang/Throwable
+    //   110	129	208	finally
+    //   131	141	208	finally
+    //   110	129	215	java/lang/Throwable
+    //   131	141	215	java/lang/Throwable
+    //   235	239	241	java/lang/Throwable
+    //   144	150	252	finally
+    //   153	158	252	finally
+    //   161	171	252	finally
+    //   174	180	252	finally
+    //   221	231	252	finally
+    //   263	267	270	java/lang/Throwable
   }
   
   public String getResourcePreCachePath(String paramString1, String paramString2)
   {
     MiniAppFileManager.getInstance();
-    return MiniAppFileManager.getPreCacheFilePath(paramString1, "static", "" + paramString2.hashCode());
-  }
-  
-  public void notifyPeriodicCacheUpdated(MiniAppConfig paramMiniAppConfig)
-  {
-    if (paramMiniAppConfig == null) {}
-    AppBrandRuntime localAppBrandRuntime;
-    do
-    {
-      return;
-      QLog.i("miniapp-start_PreCacheManager", 1, "[periodic Cache] notify PeriodicCacheUpdated");
-      localAppBrandRuntime = AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime();
-    } while ((localAppBrandRuntime == null) || (localAppBrandRuntime.getApkgInfo() == null) || (localAppBrandRuntime.getApkgInfo().appConfig == null) || (!localAppBrandRuntime.getApkgInfo().appConfig.config.appId.equals(paramMiniAppConfig.config.appId)));
-    localAppBrandRuntime.evaluateServiceSubcribeJS("onBackgroundFetchData", new JSONObject().toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramString2.hashCode());
+    return MiniAppFileManager.getPreCacheFilePath(paramString1, "static", localStringBuilder.toString());
   }
   
   public void setBackgroundFetchToken(MiniAppConfig paramMiniAppConfig, String paramString)
   {
-    if ((paramMiniAppConfig == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramMiniAppConfig != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      SharedPreferences.Editor localEditor = StorageUtil.getPreference().edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppConfig.config.appId);
+      localStringBuilder.append("_precache_token");
+      localEditor.putString(localStringBuilder.toString(), paramString).apply();
     }
-    StorageUtil.getPreference().edit().putString(paramMiniAppConfig.config.appId + "_precache_token", paramString).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.PreCacheManager
  * JD-Core Version:    0.7.0.1
  */

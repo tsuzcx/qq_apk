@@ -12,11 +12,14 @@ public class BasicMarkerFactory
   
   public boolean detachMarker(String paramString)
   {
-    if (paramString == null) {}
-    while (this.markerMap.remove(paramString) == null) {
+    boolean bool = false;
+    if (paramString == null) {
       return false;
     }
-    return true;
+    if (this.markerMap.remove(paramString) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean exists(String paramString)
@@ -34,27 +37,26 @@ public class BasicMarkerFactory
   
   public Marker getMarker(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("Marker name cannot be null");
-    }
-    Object localObject2 = (Marker)this.markerMap.get(paramString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    if (paramString != null)
     {
-      localObject2 = new BasicMarker(paramString);
-      localObject1 = (Marker)this.markerMap.putIfAbsent(paramString, localObject2);
-      if (localObject1 == null) {}
+      Marker localMarker = (Marker)this.markerMap.get(paramString);
+      Object localObject = localMarker;
+      if (localMarker == null)
+      {
+        localObject = new BasicMarker(paramString);
+        paramString = (Marker)this.markerMap.putIfAbsent(paramString, localObject);
+        if (paramString != null) {
+          localObject = paramString;
+        }
+      }
+      return localObject;
     }
-    else
-    {
-      return localObject1;
-    }
-    return localObject2;
+    throw new IllegalArgumentException("Marker name cannot be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     org.slf4j.helpers.BasicMarkerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/BW_95" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/buw" android:background="@drawable/od" android:layout_width="fill_parent" android:layout_height="@dimen/lf" android:singleLine="true" />
-</LinearLayout>
+    <com.tencent.mm.plugin.downloader_app.search.DownloadSearchListView android:id="@id/j73" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/j70" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a74" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/ae2" android:layout_gravity="center_horizontal" android:id="@id/hgw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
+</FrameLayout>

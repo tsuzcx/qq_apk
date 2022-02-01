@@ -1,14 +1,21 @@
+import android.widget.Button;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.util.Utils;
 
-class ekn
+public class ekn
   implements Runnable
 {
-  ekn(ekm paramekm) {}
+  public ekn(BindVerifyActivity paramBindVerifyActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.a.a.a.e();
+    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() > 0) && (BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity) != null))
+    {
+      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setText(str);
+      BindVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBindVerifyActivity).setEnabled(true);
+    }
   }
 }
 

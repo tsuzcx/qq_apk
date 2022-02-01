@@ -1,24 +1,26 @@
 package com.tencent.mm.graphics.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.graphics.Bitmap;
+import com.davemorrissey.labs.subscaleview.decoder.ImageDecodeResult;
 
-public enum c
+public class c
+  implements b
 {
-  static
-  {
-    AppMethodBeat.i(57074);
-    eAD = new c("Normal", 0);
-    eAE = new c("Tile", 1);
-    eAF = new c("Auto", 2);
-    eAG = new c[] { eAD, eAE, eAF };
-    AppMethodBeat.o(57074);
-  }
+  public void onImageLoadError(ImageDecodeResult paramImageDecodeResult) {}
   
-  private c() {}
+  public void onImageLoaded(Bitmap paramBitmap) {}
+  
+  public void onPreviewLoadError(ImageDecodeResult paramImageDecodeResult) {}
+  
+  public final void onPreviewLoaded() {}
+  
+  public final void onPreviewReleased() {}
+  
+  public void onTileLoadError(ImageDecodeResult paramImageDecodeResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.graphics.a.c
  * JD-Core Version:    0.7.0.1
  */

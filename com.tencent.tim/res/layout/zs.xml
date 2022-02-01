@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/kzt" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.av.funchat.AVListImageView android:id="@id/kzs" android:padding="2.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/c4k" android:scaleType="fitXY" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="16.0dip">
+            <TextView android:textSize="13.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/kzw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pra" />
+            <ImageView android:id="@id/kzx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/dem" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

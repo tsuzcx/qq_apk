@@ -20,15 +20,17 @@ public class JobController$CancelCommand
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CancelCommand").append("{");
-    localStringBuilder.append("job=").append(((Worker)this.future).getJob());
+    localStringBuilder.append("CancelCommand");
+    localStringBuilder.append("{");
+    localStringBuilder.append("job=");
+    localStringBuilder.append(((Worker)this.future).getJob());
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.JobController.CancelCommand
  * JD-Core Version:    0.7.0.1
  */

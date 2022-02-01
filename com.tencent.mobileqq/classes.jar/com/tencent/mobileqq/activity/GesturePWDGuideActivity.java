@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import addl;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.widget.Button;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class GesturePWDGuideActivity
   extends IphoneTitleBarActivity
@@ -13,12 +15,21 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131693107);
-    this.a = ((Button)findViewById(2131367146));
-    this.a.setOnClickListener(new addl(this));
+    setTitle(2131890014);
+    this.a = ((Button)findViewById(2131434179));
+    this.a.setOnClickListener(new GesturePWDGuideActivity.1(this));
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 999))
     {
@@ -28,16 +39,23 @@ public class GesturePWDGuideActivity
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public void onCreate(Bundle paramBundle)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559159);
+    super.setContentView(2131624959);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity
  * JD-Core Version:    0.7.0.1
  */

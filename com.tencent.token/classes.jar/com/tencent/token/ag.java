@@ -1,41 +1,52 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public final class ag
 {
-  private List a = new ArrayList();
+  public static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
-  public final String a()
+  public static String a(byte[] paramArrayOfByte)
   {
-    synchronized (this.a)
+    char[] arrayOfChar;
+    int i;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      if (this.a.size() == 0) {
-        return "";
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.a.iterator();
-      if (localIterator.hasNext())
-      {
-        localStringBuilder.append(((ah)localIterator.next()).a());
-        localStringBuilder.append(";");
-      }
+      arrayOfChar = new char[paramArrayOfByte.length * 2];
+      i = 0;
     }
-    String str = localObject.toString();
-    return str;
+    try
+    {
+      while (i < paramArrayOfByte.length)
+      {
+        int k = paramArrayOfByte[i];
+        int j = i * 2;
+        arrayOfChar[(j + 1)] = a[(k & 0xF)];
+        k = (byte)(k >>> 4);
+        arrayOfChar[(j + 0)] = a[(k & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+    return null;
   }
   
-  public final void a(ah paramah)
+  public static String b(byte[] paramArrayOfByte)
   {
-    synchronized (this.a)
+    Object localObject;
+    try
     {
-      if (this.a.size() < 20) {
-        this.a.add(paramah);
-      }
-      return;
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
     }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      localNoSuchAlgorithmException.printStackTrace();
+      localObject = null;
+    }
+    return a(localObject.digest(paramArrayOfByte));
   }
 }
 

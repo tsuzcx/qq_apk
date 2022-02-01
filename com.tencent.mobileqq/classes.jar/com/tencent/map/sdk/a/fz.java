@@ -63,7 +63,7 @@ public final class fz
   
   public static double a(double paramDouble1, double paramDouble2)
   {
-    return 6.698324247899813D * paramDouble1 / Math.cos(0.0174532925199433D * paramDouble2);
+    return paramDouble1 * 6.698324247899813D / Math.cos(paramDouble2 * 0.0174532925199433D);
   }
   
   public static int a(String paramString1, String paramString2)
@@ -124,15 +124,22 @@ public final class fz
     if (paramGeoPoint == null) {
       return null;
     }
-    return new LatLng(paramGeoPoint.getLatitudeE6() / 1000000.0D, paramGeoPoint.getLongitudeE6() / 1000000.0D);
+    double d1 = paramGeoPoint.getLatitudeE6();
+    Double.isNaN(d1);
+    d1 /= 1000000.0D;
+    double d2 = paramGeoPoint.getLongitudeE6();
+    Double.isNaN(d2);
+    return new LatLng(d1, d2 / 1000000.0D);
   }
   
   public static String a()
   {
-    if (A == null) {
-      return "";
+    String str2 = A;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return A;
+    return str1;
   }
   
   public static String a(String paramString)
@@ -164,39 +171,41 @@ public final class fz
     try
     {
       localStringBuilder.append(URLEncoder.encode(e, "UTF-8"));
-      localStringBuilder.append("&api_key=" + pz.a);
-      return localStringBuilder.toString();
     }
     catch (UnsupportedEncodingException paramString)
     {
-      for (;;)
-      {
-        localStringBuilder.append(c(e));
-      }
+      label133:
+      break label133;
     }
+    localStringBuilder.append(c(e));
+    paramString = new StringBuilder("&api_key=");
+    paramString.append(pz.a);
+    localStringBuilder.append(paramString.toString());
+    return localStringBuilder.toString();
   }
   
   public static List<GeoPoint> a(List<LatLng> paramList)
   {
     int i1 = 0;
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return new ArrayList(0);
-    }
-    int i2 = paramList.size();
-    ArrayList localArrayList = new ArrayList(i2);
-    while (i1 < i2)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      Object localObject = (LatLng)paramList.get(i1);
-      if (localObject != null)
+      int i2 = paramList.size();
+      ArrayList localArrayList = new ArrayList(i2);
+      while (i1 < i2)
       {
-        localObject = a((LatLng)localObject);
-        if (localObject != null) {
-          localArrayList.add(localObject);
+        Object localObject = (LatLng)paramList.get(i1);
+        if (localObject != null)
+        {
+          localObject = a((LatLng)localObject);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
         }
+        i1 += 1;
       }
-      i1 += 1;
+      return localArrayList;
     }
-    return localArrayList;
+    return new ArrayList(0);
   }
   
   public static void a(Context paramContext)
@@ -205,144 +214,146 @@ public final class fz
     if (D == null) {}
     try
     {
-      String str = Build.MODEL;
+      str = Build.MODEL;
       D = str;
       str = b(str);
       D = str;
       D = URLEncoder.encode(str, "utf-8");
-      label39:
-      if (C == 0) {
-        C = Build.VERSION.SDK_INT;
-      }
-      if (d == null) {}
-      try
-      {
-        str = paramContext.getPackageName();
-        d = str;
-        str = b(str);
-        d = str;
-        d = URLEncoder.encode(str, "utf-8");
-        label85:
-        if (x == null) {}
-        try
-        {
-          str = pz.g(paramContext);
-          x = str;
-          str = b(str);
-          x = str;
-          x = URLEncoder.encode(str, "utf-8");
-          label119:
-          if (y == null) {}
-          try
-          {
-            str = pz.d(paramContext);
-            y = str;
-            str = b(str);
-            y = str;
-            y = URLEncoder.encode(str, "utf-8");
-            label153:
-            if (z == null) {}
-            try
-            {
-              str = pz.h(paramContext);
-              z = str;
-              str = b(str);
-              z = str;
-              z = URLEncoder.encode(str, "utf-8");
-              label187:
-              if (A == null) {}
-              try
-              {
-                str = pz.f(paramContext);
-                A = str;
-                str = b(str);
-                A = str;
-                A = URLEncoder.encode(str, "utf-8");
-                label221:
-                if (B == null) {}
-                try
-                {
-                  str = NetUtil.getNetTypeStr(paramContext);
-                  B = str;
-                  str = b(str);
-                  B = str;
-                  B = URLEncoder.encode(str, "utf-8");
-                  label255:
-                  if (w == null) {}
-                  try
-                  {
-                    str = pz.e(paramContext);
-                    w = str;
-                    str = c(str);
-                    w = str;
-                    w = URLEncoder.encode(str, "utf-8");
-                    label289:
-                    if (pz.a == null) {}
-                    try
-                    {
-                      str = pz.a(paramContext, "TencentMapSDK");
-                      pz.a = str;
-                      pz.a = URLEncoder.encode(str, "utf-8");
-                      label317:
-                      if (f == 1.0F) {
-                        f = 320.0F / paramContext.getResources().getDisplayMetrics().densityDpi;
-                      }
-                      v = paramContext.getResources().getDisplayMetrics().density;
-                      k = gf.a(paramContext).c("worldMapEnabled");
-                      return;
-                    }
-                    catch (Exception localException1)
-                    {
-                      break label317;
-                    }
-                  }
-                  catch (Exception localException2)
-                  {
-                    break label289;
-                  }
-                }
-                catch (Exception localException3)
-                {
-                  break label255;
-                }
-              }
-              catch (Exception localException4)
-              {
-                break label221;
-              }
-            }
-            catch (Exception localException5)
-            {
-              break label187;
-            }
-          }
-          catch (Exception localException6)
-          {
-            break label153;
-          }
-        }
-        catch (Exception localException7)
-        {
-          break label119;
-        }
-      }
-      catch (Exception localException8)
-      {
-        break label85;
-      }
+    }
+    catch (Exception localException1)
+    {
+      String str;
+      label42:
+      break label42;
+    }
+    if (C == 0) {
+      C = Build.VERSION.SDK_INT;
+    }
+    if (d == null) {}
+    label128:
+    label165:
+    try
+    {
+      str = paramContext.getPackageName();
+      d = str;
+      str = b(str);
+      d = str;
+      d = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException2)
+    {
+      label91:
+      break label91;
+    }
+    if (x == null) {}
+    try
+    {
+      str = pz.g(paramContext);
+      x = str;
+      str = b(str);
+      x = str;
+      x = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException3)
+    {
+      break label128;
+    }
+    if (y == null) {}
+    try
+    {
+      str = pz.d(paramContext);
+      y = str;
+      str = b(str);
+      y = str;
+      y = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException4)
+    {
+      break label165;
+    }
+    if (z == null) {}
+    label202:
+    label344:
+    try
+    {
+      str = pz.h(paramContext);
+      z = str;
+      str = b(str);
+      z = str;
+      z = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException5)
+    {
+      label239:
+      break label202;
+    }
+    if (A == null) {}
+    try
+    {
+      str = pz.f(paramContext);
+      A = str;
+      str = b(str);
+      A = str;
+      A = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException6)
+    {
+      break label239;
+    }
+    if (B == null) {}
+    try
+    {
+      str = NetUtil.getNetTypeStr(paramContext);
+      B = str;
+      str = b(str);
+      B = str;
+      B = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException7)
+    {
+      label276:
+      break label276;
+    }
+    if (w == null) {}
+    try
+    {
+      str = pz.e(paramContext);
+      w = str;
+      str = c(str);
+      w = str;
+      w = URLEncoder.encode(str, "utf-8");
+    }
+    catch (Exception localException8)
+    {
+      label313:
+      break label313;
+    }
+    if (pz.a == null) {}
+    try
+    {
+      str = pz.a(paramContext, "TencentMapSDK");
+      pz.a = str;
+      pz.a = URLEncoder.encode(str, "utf-8");
     }
     catch (Exception localException9)
     {
-      break label39;
+      break label344;
     }
+    if (f == 1.0F) {
+      f = 320.0F / paramContext.getResources().getDisplayMetrics().densityDpi;
+    }
+    v = paramContext.getResources().getDisplayMetrics().density;
+    k = gf.a(paramContext).c("worldMapEnabled");
   }
   
   public static String b()
   {
-    if (B == null) {
-      return "";
+    String str2 = B;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return B;
+    return str1;
   }
   
   private static String b(String paramString)
@@ -368,11 +379,7 @@ public final class fz
       Field localField = localDisplayMetrics.getClass().getField("densityDpi");
       paramContext = localField;
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      break label48;
-    }
-    catch (SecurityException localSecurityException)
+    catch (SecurityException|NoSuchFieldException localSecurityException)
     {
       label48:
       break label48;
@@ -384,12 +391,12 @@ public final class fz
         i();
         return;
       }
-      catch (IllegalArgumentException paramContext)
+      catch (IllegalAccessException paramContext)
       {
         paramContext.printStackTrace();
         return;
       }
-      catch (IllegalAccessException paramContext)
+      catch (IllegalArgumentException paramContext)
       {
         paramContext.printStackTrace();
         return;
@@ -403,10 +410,12 @@ public final class fz
   
   public static String c()
   {
-    if (D == null) {
-      return "";
+    String str2 = D;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return D;
+    return str1;
   }
   
   private static String c(String paramString)
@@ -416,34 +425,42 @@ public final class fz
   
   public static int d()
   {
-    if (C == 0) {
-      return 0;
+    int i2 = C;
+    int i1 = i2;
+    if (i2 == 0) {
+      i1 = 0;
     }
-    return C;
+    return i1;
   }
   
   public static String e()
   {
-    if (y == null) {
-      return "";
+    String str2 = y;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return y;
+    return str1;
   }
   
   public static String f()
   {
-    if (z == null) {
-      return "";
+    String str2 = z;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return z;
+    return str1;
   }
   
   public static String g()
   {
-    if (d == null) {
-      return "";
+    String str2 = d;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return d;
+    return str1;
   }
   
   public static void h()
@@ -456,17 +473,18 @@ public final class fz
   
   private static void i()
   {
-    if (u <= 120)
+    int i1 = u;
+    if (i1 <= 120)
     {
       o = 1;
       return;
     }
-    if (u <= 160)
+    if (i1 <= 160)
     {
       o = 2;
       return;
     }
-    if (u <= 240)
+    if (i1 <= 240)
     {
       o = 3;
       return;
@@ -476,12 +494,13 @@ public final class fz
   
   private static void j()
   {
-    if (t > 153600)
+    int i1 = t;
+    if (i1 > 153600)
     {
       o = 3;
       return;
     }
-    if (t < 153600)
+    if (i1 < 153600)
     {
       o = 1;
       return;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/al3" />
-    <corners android:radius="2.5dip" />
-</shape>
+    <item android:state_checked="true" android:drawable="@drawable/i2m" />
+    <item android:drawable="@drawable/i2l" />
+</selector>

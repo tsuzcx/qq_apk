@@ -13,16 +13,6 @@ public final class UniPayRequest
   public String sPlatform = "";
   public String sUin = "";
   
-  static
-  {
-    if (!UniPayRequest.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public UniPayRequest() {}
   
   public UniPayRequest(String paramString1, String paramString2)
@@ -38,18 +28,17 @@ public final class UniPayRequest
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -68,13 +57,20 @@ public final class UniPayRequest
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (UniPayRequest)paramObject;
-    } while ((!JceUtil.equals(this.sUin, paramObject.sUin)) || (!JceUtil.equals(this.sPlatform, paramObject.sPlatform)));
-    return true;
+    }
+    paramObject = (UniPayRequest)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.sUin, paramObject.sUin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.sPlatform, paramObject.sPlatform)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -129,7 +125,7 @@ public final class UniPayRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PayMQQ.UniPayRequest
  * JD-Core Version:    0.7.0.1
  */

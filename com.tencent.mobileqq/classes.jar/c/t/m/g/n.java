@@ -22,7 +22,11 @@ public final class n
   
   public final String a()
   {
-    return this.a + ":" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
   
   public final boolean a(n paramn)
@@ -32,32 +36,31 @@ public final class n
   
   public final boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      this.g = paramString.split(":");
-      if (this.g.length == 2)
+    }
+    this.g = paramString.split(":");
+    paramString = this.g;
+    if (paramString.length != 2) {
+      return false;
+    }
+    this.a = paramString[0];
+    if (!cn.d(this.a)) {
+      return false;
+    }
+    try
+    {
+      this.b = Integer.parseInt(this.g[1]);
+      if (this.b >= 0)
       {
-        this.a = this.g[0];
-        if (cn.d(this.a)) {
-          try
-          {
-            this.b = Integer.parseInt(this.g[1]);
-            if (this.b >= 0)
-            {
-              int i = this.b;
-              if (i <= 65535) {
-                return true;
-              }
-            }
-          }
-          catch (NumberFormatException paramString)
-          {
-            paramString.printStackTrace();
-          }
-        }
+        int i = this.b;
+        return i <= 65535;
       }
+      return false;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
     }
     return false;
   }
@@ -69,12 +72,20 @@ public final class n
   
   public final String toString()
   {
-    return this.a + ":" + this.b + ",protocalType:" + this.f + ",ipType:" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",protocalType:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",ipType:");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.n
  * JD-Core Version:    0.7.0.1
  */

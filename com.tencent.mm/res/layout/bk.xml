@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/gkt" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/fln" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toLeftOf="@id/flo" />
+    <FrameLayout android:id="@id/fkv" android:background="@color/a76" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toRightOf="@id/fln" app:layout_constraintRight_toRightOf="hr_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:src="@raw/wechat_appicon" app:iconColor="@color/FG_3" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/flo" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toRightOf="@id/fln" app:layout_constraintRight_toRightOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

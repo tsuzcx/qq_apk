@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/az" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hzh" android:background="@color/az" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:importantForAccessibility="noHideDescendants">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/hzk" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center" android:layout_width="250.0dip" android:layout_height="250.0dip">
+                <ImageView android:id="@id/hzj" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" android:importantForAccessibility="no" />
+                <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/wallet_offline_icon" android:scaleType="fitCenter" android:layout_centerInParent="true" android:importantForAccessibility="no" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/hzg" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:visibility="visible" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/hzf" android:layout_width="120.0dip" android:layout_height="506.0dip" android:scaleType="fitXY" android:contentDescription="@string/la_" />
+            <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/l4n" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" app:direction="l1p" app:text="" app:textBold="true" app:textColor="@color/UN_BW_0_Alpha_0_9" app:textSize="30.0dip" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="34.0dip">
+                <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/l4m" android:tag="1" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/he7" app:direction="l1p" app:text="@string/he6" app:textColor="@color/UN_BW_0_Alpha_0_5" app:textSize="@dimen/l" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hzi" android:background="@drawable/c9k" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gow" android:background="@drawable/azd" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="true" android:clickable="true" android:layout_width="40.0dip" android:layout_height="184.0dip" android:contentDescription="@string/kzn" app:direction="l1p" app:text="@string/kzn" app:textColor="@color/ahk" app:textSize="@dimen/i3" style="@style/qg" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gp2" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip">
+            <RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gp4" android:tag="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:contentDescription="@string/he9" app:direction="l1p" app:text="@string/he9" app:textColor="@color/UN_BW_0_Alpha_0_5" app:textSize="17.0dip" />
+                <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gp3" android:tag="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/gp4" android:layout_centerVertical="true" android:contentDescription="@string/he8" app:direction="l1p" app:text="@string/he8" app:textColor="@color/UN_BW_0_Alpha_0_5" app:textSize="17.0dip" />
+            </RelativeLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="16.0dip" android:src="@raw/icons_outlined_pay_safe" android:rotation="90.0" android:importantForAccessibility="no" app:iconColor="@color/ajm" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

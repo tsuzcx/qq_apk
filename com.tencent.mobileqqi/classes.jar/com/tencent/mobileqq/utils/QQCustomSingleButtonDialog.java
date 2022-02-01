@@ -20,10 +20,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.mobileqq.text.QQText;
+import hdc;
 import hdd;
 import hde;
 import hdf;
-import hdg;
 
 public class QQCustomSingleButtonDialog
   extends Dialog
@@ -33,7 +33,7 @@ public class QQCustomSingleButtonDialog
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
   View jdField_a_of_type_AndroidViewView;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new hdd(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new hdc(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -84,7 +84,7 @@ public class QQCustomSingleButtonDialog
     this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(paramInt1);
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getContext().getString(paramInt2));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new hdf(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new hde(this, paramOnClickListener));
     a();
     return this;
   }
@@ -223,7 +223,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(new QQText(paramString, 5, 20));
     this.d.setContentDescription(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hde(this, paramOnClickListener));
+    this.d.setOnClickListener(new hdd(this, paramOnClickListener));
     a();
     return this;
   }
@@ -276,7 +276,7 @@ public class QQCustomSingleButtonDialog
     this.d.setText(paramInt);
     this.d.setContentDescription(getContext().getString(paramInt));
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new hdg(this, paramOnClickListener));
+    this.d.setOnClickListener(new hdf(this, paramOnClickListener));
     a();
     return this;
   }
@@ -355,19 +355,19 @@ public class QQCustomSingleButtonDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231469));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231468));
     this.b = ((TextView)findViewById(2131231029));
-    this.c = ((TextView)findViewById(2131231483));
-    this.f = ((TextView)findViewById(2131231479));
-    this.e = ((TextView)findViewById(2131231480));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231482));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231481);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231472));
-    this.d = ((TextView)findViewById(2131231473));
+    this.c = ((TextView)findViewById(2131231482));
+    this.f = ((TextView)findViewById(2131231478));
+    this.e = ((TextView)findViewById(2131231479));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231481));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231480);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131231471));
+    this.d = ((TextView)findViewById(2131231472));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231361));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231476));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131231360));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231475));
   }
   
   public void setTitle(int paramInt)

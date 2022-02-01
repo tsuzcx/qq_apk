@@ -4,55 +4,55 @@ import android.os.Bundle;
 
 public class ac<T>
 {
-  private int df;
-  private final Object hh;
-  private boolean hi;
-  private boolean hj;
-  private boolean hk;
+  private int eT;
+  private final Object jg;
+  private boolean jh;
+  private boolean ji;
+  private boolean jj;
   
   ac(Object paramObject)
   {
-    this.hh = paramObject;
+    this.jg = paramObject;
   }
   
-  public final void aL()
+  public final void bb()
   {
-    if ((this.hj) || (this.hk)) {
-      throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.hh);
+    if ((this.ji) || (this.jj)) {
+      throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.jg);
     }
-    this.hj = true;
-    b(null);
+    this.ji = true;
+    h(null);
   }
   
-  public final void aM()
+  public final void bc()
   {
-    if ((this.hj) || (this.hk)) {
-      throw new IllegalStateException("sendError() called when either sendResult() or sendError() had already been called for: " + this.hh);
+    if ((this.ji) || (this.jj)) {
+      throw new IllegalStateException("sendError() called when either sendResult() or sendError() had already been called for: " + this.jg);
     }
-    this.hk = true;
+    this.jj = true;
     e(null);
   }
   
-  void b(T paramT) {}
-  
   void e(Bundle paramBundle)
   {
-    throw new UnsupportedOperationException("It is not supported to send an error for " + this.hh);
+    throw new UnsupportedOperationException("It is not supported to send an error for " + this.jg);
   }
   
   final int getFlags()
   {
-    return this.df;
+    return this.eT;
   }
+  
+  void h(T paramT) {}
   
   final boolean isDone()
   {
-    return (this.hi) || (this.hj) || (this.hk);
+    return (this.jh) || (this.ji) || (this.jj);
   }
   
   final void setFlags(int paramInt)
   {
-    this.df = paramInt;
+    this.eT = paramInt;
   }
 }
 

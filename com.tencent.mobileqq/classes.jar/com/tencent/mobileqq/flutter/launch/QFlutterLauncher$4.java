@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import aryd;
-
-public class QFlutterLauncher$4
+class QFlutterLauncher$4
   implements Runnable
 {
-  public QFlutterLauncher$4(aryd paramaryd, int paramInt, boolean paramBoolean) {}
+  QFlutterLauncher$4(QFlutterLauncher paramQFlutterLauncher, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    aryd.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    QFlutterLauncher.b(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QFlutterLauncher.4
  * JD-Core Version:    0.7.0.1
  */

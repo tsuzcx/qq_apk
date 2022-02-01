@@ -71,11 +71,19 @@ public class RenderInfo
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof RenderInfo))) {}
-    while (this.renderMode != ((RenderInfo)paramObject).renderMode) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof RenderInfo)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (this.renderMode == ((RenderInfo)paramObject).renderMode) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -93,7 +101,7 @@ public class RenderInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.RenderInfo
  * JD-Core Version:    0.7.0.1
  */

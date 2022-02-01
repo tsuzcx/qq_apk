@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.wxcredit.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.p;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.c.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tencent.mm.wallet_core.ui.formview.a;
 
 public class WalletCheckIdentityUI
   extends WalletBaseUI
 {
-  private WalletFormView tZx;
-  private WalletFormView unh;
-  private String vHZ;
+  private WalletFormView VLW;
+  private WalletFormView Vre;
+  private String XHW;
   
   public int getForceOrientation()
   {
@@ -25,44 +29,60 @@ public class WalletCheckIdentityUI
   
   public int getLayoutId()
   {
-    return 2130971268;
+    return a.g.wallet_wxcredit_check_indentity_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(48683);
-    setMMTitle(2131305000);
-    this.unh = ((WalletFormView)findViewById(2131829013));
-    a.e(this, this.unh);
-    this.tZx = ((WalletFormView)findViewById(2131829052));
-    a.c(this.tZx);
-    setEditFocusListener(this.tZx, 1, false);
+    AppMethodBeat.i(72327);
+    setMMTitle(a.i.wallet_check_indentity_title);
+    this.VLW = ((WalletFormView)findViewById(a.f.name_et));
+    com.tencent.mm.wallet_core.ui.formview.a.e(this, this.VLW);
+    this.Vre = ((WalletFormView)findViewById(a.f.identity_et));
+    com.tencent.mm.wallet_core.ui.formview.a.c(this.Vre);
+    setEditFocusListener(this.Vre, 1, false);
     String str = getInput().getString("key_pre_name");
-    this.vHZ = getInput().getString("key_pre_indentity");
-    if (!bo.isNullOrNil(str))
+    this.XHW = getInput().getString("key_pre_indentity");
+    if (!Util.isNullOrNil(str))
     {
-      this.unh.getPrefilledTv().setText(str);
-      this.unh.setHint(getString(2131304989));
+      this.VLW.getPrefilledTv().setText(str);
+      this.VLW.setHint(getString(a.i.wallet_card_username_last_hint));
     }
-    if (!bo.isNullOrNil(this.vHZ))
+    if (!Util.isNullOrNil(this.XHW))
     {
-      this.tZx.setMaxInputLength(4);
-      this.tZx.getPrefilledTv().setText(this.vHZ);
-      this.tZx.setHint(getString(2131304943));
+      this.Vre.setMaxInputLength(4);
+      this.Vre.getPrefilledTv().setText(this.XHW);
+      this.Vre.setHint(getString(a.i.wallet_card_identify_last_hint));
     }
-    findViewById(2131822914).setOnClickListener(new WalletCheckIdentityUI.1(this));
-    AppMethodBeat.o(48683);
+    findViewById(a.f.next_btn).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(72325);
+        Object localObject = new b();
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wxcredit/ui/WalletCheckIdentityUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        paramAnonymousView = WalletCheckIdentityUI.a(WalletCheckIdentityUI.this).getText();
+        localObject = WalletCheckIdentityUI.b(WalletCheckIdentityUI.this).getText();
+        if (WalletCheckIdentityUI.a(WalletCheckIdentityUI.this, paramAnonymousView, (String)localObject)) {
+          WalletCheckIdentityUI.this.getNetController().t(new Object[] { paramAnonymousView, localObject });
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletCheckIdentityUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(72325);
+      }
+    });
+    AppMethodBeat.o(72327);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48682);
+    AppMethodBeat.i(72326);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(48682);
+    AppMethodBeat.o(72326);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -75,7 +95,7 @@ public class WalletCheckIdentityUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletCheckIdentityUI
  * JD-Core Version:    0.7.0.1
  */

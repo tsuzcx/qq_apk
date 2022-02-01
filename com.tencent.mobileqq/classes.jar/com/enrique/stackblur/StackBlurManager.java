@@ -41,8 +41,15 @@ public class StackBlurManager
   {
     long l = SystemClock.uptimeMillis();
     this._result = this._blurProcess.blur(this._image, paramInt);
-    if (this.mDbg) {
-      Log.i("StackBlurManager", "process: " + this._blurProcess + "=" + (SystemClock.uptimeMillis() - l) + " ms");
+    if (this.mDbg)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("process: ");
+      localStringBuilder.append(this._blurProcess);
+      localStringBuilder.append("=");
+      localStringBuilder.append(SystemClock.uptimeMillis() - l);
+      localStringBuilder.append(" ms");
+      Log.i("StackBlurManager", localStringBuilder.toString());
     }
     return this._result;
   }
@@ -52,8 +59,15 @@ public class StackBlurManager
     long l = SystemClock.uptimeMillis();
     NativeBlurProcess localNativeBlurProcess = new NativeBlurProcess();
     this._result = localNativeBlurProcess.blur(this._image, paramInt);
-    if (this.mDbg) {
-      Log.i("StackBlurManager", "processNatively: " + localNativeBlurProcess + "=" + (SystemClock.uptimeMillis() - l) + " ms");
+    if (this.mDbg)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processNatively: ");
+      localStringBuilder.append(localNativeBlurProcess);
+      localStringBuilder.append("=");
+      localStringBuilder.append(SystemClock.uptimeMillis() - l);
+      localStringBuilder.append(" ms");
+      Log.i("StackBlurManager", localStringBuilder.toString());
     }
     return this._result;
   }
@@ -62,25 +76,33 @@ public class StackBlurManager
   {
     long l = SystemClock.uptimeMillis();
     if (hasRS) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = new RSBlurProcess(paramContext, paramInt);
-        this._result = paramContext.blur(this._image, paramFloat);
-        if (this.mDbg) {
-          Log.i("StackBlurManager", "processRenderScript: " + paramContext + "=" + (SystemClock.uptimeMillis() - l) + " ms");
-        }
-        return this._result;
-      }
-      catch (RSRuntimeException paramContext)
-      {
-        paramContext = new NativeBlurProcess();
-        hasRS = false;
-        continue;
-      }
-      paramContext = new NativeBlurProcess();
+      paramContext = new RSBlurProcess(paramContext, paramInt);
     }
+    catch (RSRuntimeException paramContext)
+    {
+      label24:
+      StringBuilder localStringBuilder;
+      break label24;
+    }
+    paramContext = new NativeBlurProcess();
+    hasRS = false;
+    break label47;
+    paramContext = new NativeBlurProcess();
+    label47:
+    this._result = paramContext.blur(this._image, paramFloat);
+    if (this.mDbg)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processRenderScript: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("=");
+      localStringBuilder.append(SystemClock.uptimeMillis() - l);
+      localStringBuilder.append(" ms");
+      Log.i("StackBlurManager", localStringBuilder.toString());
+    }
+    return this._result;
   }
   
   public Bitmap processSdkRenderScript(Context paramContext, float paramFloat)
@@ -88,8 +110,15 @@ public class StackBlurManager
     long l = SystemClock.uptimeMillis();
     paramContext = new SdkRSBlurProcess(paramContext);
     this._result = paramContext.blur(this._image, paramFloat);
-    if (this.mDbg) {
-      Log.i("StackBlurManager", "processSdkRenderScript: " + paramContext + "=" + (SystemClock.uptimeMillis() - l) + " ms");
+    if (this.mDbg)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("processSdkRenderScript: ");
+      localStringBuilder.append(paramContext);
+      localStringBuilder.append("=");
+      localStringBuilder.append(SystemClock.uptimeMillis() - l);
+      localStringBuilder.append(" ms");
+      Log.i("StackBlurManager", localStringBuilder.toString());
     }
     return this._result;
   }
@@ -125,7 +154,7 @@ public class StackBlurManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.enrique.stackblur.StackBlurManager
  * JD-Core Version:    0.7.0.1
  */

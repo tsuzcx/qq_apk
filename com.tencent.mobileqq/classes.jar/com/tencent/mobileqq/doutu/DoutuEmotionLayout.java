@@ -24,14 +24,10 @@ public class DoutuEmotionLayout
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i == 0) {
       getParent().requestDisallowInterceptTouchEvent(true);
+    } else if ((i == 1) || (i == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
 }
 

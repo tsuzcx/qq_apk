@@ -1,88 +1,102 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import android.content.Context;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gc;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.c.b.af;
+import com.tencent.mm.emoji.c.b.h;
+import com.tencent.mm.emoji.c.b.u;
+import com.tencent.mm.emoji.c.b.y;
+import com.tencent.mm.emoji.c.l;
+import com.tencent.mm.emoji.sync.g;
+import com.tencent.mm.emoji.sync.g.b;
+import com.tencent.mm.emoji.sync.j;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
-import java.io.File;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "()V", "contentList", "", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "dataCount", "", "getDataCount", "getGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getItemList", "", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
+  implements y
 {
-  Set<String> lhq;
-  c<gc> lhr;
-  private c.a lhs;
+  private final List<ae> oSh;
+  private final int xMx;
   
   public f()
   {
-    AppMethodBeat.i(53052);
-    this.lhr = new c() {};
-    this.lhs = new c.a()
+    AppMethodBeat.i(269858);
+    this.oSh = ((List)new LinkedList());
+    Object localObject1 = l.aUF().fe(false);
+    Object localObject2;
+    label95:
+    List localList;
+    if (localObject1 == null)
     {
-      public final void a(boolean paramAnonymousBoolean, EmojiInfo paramAnonymousEmojiInfo)
-      {
-        AppMethodBeat.i(53051);
-        if ((paramAnonymousEmojiInfo != null) && (paramAnonymousBoolean) && (!bo.isNullOrNil(paramAnonymousEmojiInfo.field_md5)) && (f.this.lhq.remove(paramAnonymousEmojiInfo.Al())))
-        {
-          ab.i("MicroMsg.FTS.FTSEmojiLogic", "emojiServiceCallback onDownload %s", new Object[] { paramAnonymousEmojiInfo.Al() });
-          gc localgc = new gc();
-          localgc.cuC.coO = 2;
-          localgc.cuC.cuE = paramAnonymousEmojiInfo.field_designerID;
-          localgc.cuC.name = paramAnonymousEmojiInfo.field_name;
-          localgc.cuC.aeskey = paramAnonymousEmojiInfo.field_aeskey;
-          localgc.cuC.cuF = paramAnonymousEmojiInfo.field_encrypturl;
-          localgc.cuC.thumbUrl = paramAnonymousEmojiInfo.field_thumbUrl;
-          localgc.cuC.cqq = paramAnonymousEmojiInfo.field_md5;
-          localgc.cuC.cqx = paramAnonymousEmojiInfo.field_groupId;
-          Object localObject = paramAnonymousEmojiInfo.dQB();
-          EmojiInfo localEmojiInfo = i.getEmojiStorageMgr().yNn.asP(paramAnonymousEmojiInfo.Al());
-          if ((localEmojiInfo != null) && ((localEmojiInfo.field_reserved4 & EmojiInfo.APx) == EmojiInfo.APx))
-          {
-            File localFile = ah.getContext().getExternalCacheDir();
-            if (localFile == null)
-            {
-              AppMethodBeat.o(53051);
-              return;
-            }
-            paramAnonymousEmojiInfo = j.p(new b(localFile, com.tencent.mm.a.g.w(paramAnonymousEmojiInfo.Al().getBytes())).dQJ());
-            if ((e.cN((String)localObject)) && (!e.cN(paramAnonymousEmojiInfo)))
-            {
-              localObject = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().l(localEmojiInfo);
-              e.a(paramAnonymousEmojiInfo, (byte[])localObject, localObject.length);
-            }
-          }
-          for (localgc.cuD.path = paramAnonymousEmojiInfo;; localgc.cuD.path = ((String)localObject))
-          {
-            a.ymk.a(localgc, Looper.getMainLooper());
-            AppMethodBeat.o(53051);
-            return;
-          }
-        }
-        ab.i("MicroMsg.FTS.FTSEmojiLogic", "somethings error.");
-        AppMethodBeat.o(53051);
+      localObject1 = (List)ab.aivy;
+      this.xMx = ((List)localObject1).size();
+      localObject2 = g.mmX;
+      int j = g.b.aWo().aWj();
+      localObject2 = g.mmX;
+      int k = g.b.aWo().aWk();
+      localObject1 = ((List)localObject1).iterator();
+      if (!((Iterator)localObject1).hasNext()) {
+        break label209;
       }
-    };
-    this.lhq = Collections.synchronizedSet(new HashSet());
-    i.blo().lhf = this.lhs;
-    this.lhr.alive();
-    AppMethodBeat.o(53052);
+      localObject2 = (EmojiInfo)((Iterator)localObject1).next();
+      if (i >= k) {
+        break label209;
+      }
+      if (i < j) {
+        break label175;
+      }
+      localList = this.oSh;
+      s.s(localObject2, "info");
+      localList.add(new h((EmojiInfo)localObject2, 3));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label95;
+      localObject1 = (List)localObject1;
+      break;
+      label175:
+      localList = this.oSh;
+      s.s(localObject2, "info");
+      localList.add(new h((EmojiInfo)localObject2, 1));
+    }
+    label209:
+    localObject1 = g.mmX;
+    if (g.b.aWo().aWl()) {
+      this.oSh.add(new u(1));
+    }
+    AppMethodBeat.o(269858);
+  }
+  
+  public final EmojiGroupInfo aVe()
+  {
+    AppMethodBeat.i(269861);
+    EmojiGroupInfo localEmojiGroupInfo = af.aVz();
+    AppMethodBeat.o(269861);
+    return localEmojiGroupInfo;
+  }
+  
+  public final List<ae> aVf()
+  {
+    return this.oSh;
+  }
+  
+  public final int getDataCount()
+  {
+    return this.xMx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.f
  * JD-Core Version:    0.7.0.1
  */

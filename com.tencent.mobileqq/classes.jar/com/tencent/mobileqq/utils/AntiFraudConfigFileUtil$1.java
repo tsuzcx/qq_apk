@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import bdfc;
 
-public class AntiFraudConfigFileUtil$1
+class AntiFraudConfigFileUtil$1
   implements Runnable
 {
-  public AntiFraudConfigFileUtil$1(bdfc parambdfc, String paramString) {}
+  AntiFraudConfigFileUtil$1(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
   
   public void run()
   {
-    if (!bdfc.a(this.this$0).containsKey(this.a)) {
-      bdfc.a(this.this$0, this.a);
+    if (!AntiFraudConfigFileUtil.a(this.this$0).containsKey(this.a)) {
+      AntiFraudConfigFileUtil.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AntiFraudConfigFileUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ public final class stOperaData
   extends JceStruct
 {
   static Map<Integer, String> cache_extendinfo = new HashMap();
-  public int actiontype;
-  public Map<Integer, String> extendinfo;
+  public int actiontype = 0;
+  public Map<Integer, String> extendinfo = null;
   public String strData = "";
   
   static
@@ -37,18 +37,20 @@ public final class stOperaData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strData != null) {
-      paramJceOutputStream.write(this.strData, 0);
+    Object localObject = this.strData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.actiontype, 1);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COMM.stOperaData
  * JD-Core Version:    0.7.0.1
  */

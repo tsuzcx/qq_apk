@@ -1,15 +1,38 @@
 package com.tencent.token;
 
-public class g
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
+public final class g
+  extends JceStruct
 {
-  public void a(Runnable paramRunnable, String paramString)
+  static ArrayList<f> b = new ArrayList();
+  public ArrayList<f> a = null;
+  
+  static
   {
-    new Thread(paramRunnable, paramString).start();
+    f localf = new f();
+    b.add(localf);
   }
   
-  public void b(Runnable paramRunnable, String paramString)
+  public final JceStruct newInit()
   {
-    new Thread(paramRunnable, paramString).start();
+    return new g();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = ((ArrayList)paramJceInputStream.read(b, 0, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    ArrayList localArrayList = this.a;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
+    }
   }
 }
 

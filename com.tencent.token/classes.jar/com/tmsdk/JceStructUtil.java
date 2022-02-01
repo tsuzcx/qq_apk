@@ -1,6 +1,5 @@
 package com.tmsdk;
 
-import android.util.Log;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -16,27 +15,29 @@ public class JceStructUtil
     return paramArrayOfByte;
   }
   
-  public static JceStruct getJceStruct(byte[] paramArrayOfByte, JceStruct paramJceStruct, boolean paramBoolean)
+  public static <T extends JceStruct> T getJceStruct(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramJceStruct == null)) {
-      return null;
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
+      if (paramT == null) {
+        return null;
+      }
+      Object localObject = paramT;
+      if (paramBoolean) {}
       try
       {
-        paramJceStruct = paramJceStruct.newInit();
-        paramJceStruct.recyle();
-        paramJceStruct.readFrom(createUTF8InputStream(paramArrayOfByte));
-        return paramJceStruct;
+        localObject = paramT.newInit();
+        ((JceStruct)localObject).recyle();
+        ((JceStruct)localObject).readFrom(createUTF8InputStream(paramArrayOfByte));
+        return localObject;
       }
       catch (Exception paramArrayOfByte)
       {
-        Log.e("JceStructUtil", "getJceStruct exception: " + paramArrayOfByte);
+        new StringBuilder("getJceStruct exception: ").append(paramArrayOfByte);
         return null;
       }
     }
+    return null;
   }
   
   public static byte[] jceStructToUTF8ByteArray(JceStruct paramJceStruct)

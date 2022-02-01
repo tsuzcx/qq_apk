@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/asm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/beq" android:padding="@dimen/cd" android:paddingTop="@dimen/cr" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/zl" android:layout_height="@dimen/zk" android:src="@raw/collapse_arrow" android:contentDescription="@string/c5i" />
+    </LinearLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/j5p" android:background="@drawable/emoji_search_edittext_bg" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_below="@id/beq" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j63" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_light_search" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" app:iconColor="#ff8e8e93" />
+        <com.tencent.mm.emojisearch.ui.EmojiSearchEditTextView android:id="@id/chk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@drawable/a8b" android:layout_marginStart="@dimen/bv" android:layout_toEndOf="@id/j63" />
+    </RelativeLayout>
+    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/cfx" android:background="@color/ahb" android:paddingBottom="0.0dip" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="0.0dip" android:layout_below="@id/j5p" android:requiresFadingEdge="vertical" />
+</RelativeLayout>

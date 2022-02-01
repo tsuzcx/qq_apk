@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ScrollView style="@style/boss_unipay_wrapper">
+            <LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper">
+                <LinearLayout android:layout_marginTop="30.0dip" style="@style/boss_unipay_bar.p">
+                    <TextView android:id="@id/boss_unipay_id_tips" style="@style/boss_unipay_tx.thin.middle" />
+                </LinearLayout>
+                <LinearLayout style="@style/boss_unipay_edit_group">
+                    <com.pay.ui.common.APEditText android:id="@id/boss_unipay_id_NumEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/boss_unipay_id_saveMoneyLayout" android:paddingLeft="20.0dip" android:paddingTop="10.0dip" style="@style/boss_unipay_linear.padding_lr">
+                    <TextView android:id="@id/boss_unipay_id_moneyPr" android:layout_width="105.0dip" android:text="支付金额" android:singleLine="false" style="@style/boss_unipay_tx" />
+                    <TextView android:id="@id/boss_unipay_id_money" android:singleLine="true" style="@style/boss_unipay_tx.price" />
+                </LinearLayout>
+                <Button android:id="@id/boss_unipay_id_BottomBtn" android:layout_marginTop="20.0dip" android:text="立即充值" style="@style/boss_unipay_btn_main" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.android.qqplugin.control.MyKeyboardWindow android:id="@id/boss_unipay_keyboard" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

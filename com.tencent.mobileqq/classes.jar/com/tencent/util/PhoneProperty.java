@@ -7,9 +7,9 @@ public class PhoneProperty
 {
   public static final String DEVICE = Build.DEVICE.toLowerCase();
   public static final String MANUFACTURER = Build.MANUFACTURER.toLowerCase();
-  public static final String MODEL;
+  public static final String MODEL = Build.MODEL.toLowerCase();
   private static final String TAG = "PhoneProperty";
-  private static PhoneProperty phoneProperty = null;
+  private static PhoneProperty phoneProperty;
   private boolean cannotReuseFrameBuffer = false;
   private boolean delayDisplayGSLView = false;
   private int delayFrameCount = 0;
@@ -28,25 +28,50 @@ public class PhoneProperty
   private boolean smallPicture = false;
   private boolean useCPUDecodeYUV = false;
   
-  static
-  {
-    MODEL = Build.MODEL.toLowerCase();
-  }
-  
   private PhoneProperty()
   {
     if (this.showLog)
     {
-      LogUtils.i("PhoneProperty", "******MODEL*****" + Build.MODEL);
-      LogUtils.i("PhoneProperty", "******BRAND*****" + Build.BRAND);
-      LogUtils.i("PhoneProperty", "*******DEVICE****" + Build.DEVICE);
-      LogUtils.i("PhoneProperty", "*****DISPLAY******" + Build.DISPLAY);
-      LogUtils.i("PhoneProperty", "*****HARDWARE******" + Build.HARDWARE);
-      LogUtils.i("PhoneProperty", "******MANUFACTURER*****" + Build.MANUFACTURER);
-      LogUtils.i("PhoneProperty", "*****PRODUCT******" + Build.PRODUCT);
-      LogUtils.i("PhoneProperty", "******TAGS*****" + Build.TAGS);
-      LogUtils.i("PhoneProperty", "*****USER******" + Build.USER);
-      LogUtils.i("PhoneProperty", "****TYPE*******" + Build.TYPE);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("******MODEL*****");
+      localStringBuilder.append(Build.MODEL);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("******BRAND*****");
+      localStringBuilder.append(Build.BRAND);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("*******DEVICE****");
+      localStringBuilder.append(Build.DEVICE);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("*****DISPLAY******");
+      localStringBuilder.append(Build.DISPLAY);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("*****HARDWARE******");
+      localStringBuilder.append(Build.HARDWARE);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("******MANUFACTURER*****");
+      localStringBuilder.append(Build.MANUFACTURER);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("*****PRODUCT******");
+      localStringBuilder.append(Build.PRODUCT);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("******TAGS*****");
+      localStringBuilder.append(Build.TAGS);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("*****USER******");
+      localStringBuilder.append(Build.USER);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("****TYPE*******");
+      localStringBuilder.append(Build.TYPE);
+      LogUtils.i("PhoneProperty", localStringBuilder.toString());
     }
   }
   
@@ -70,7 +95,11 @@ public class PhoneProperty
   
   public String getPhonePropertyMethod(String paramString)
   {
-    return "set" + paramString.substring(0, 1).toUpperCase() + paramString.substring(1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set");
+    localStringBuilder.append(paramString.substring(0, 1).toUpperCase());
+    localStringBuilder.append(paramString.substring(1));
+    return localStringBuilder.toString();
   }
   
   public boolean hasFaceDetection()
@@ -197,7 +226,7 @@ public class PhoneProperty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.PhoneProperty
  * JD-Core Version:    0.7.0.1
  */

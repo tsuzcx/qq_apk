@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.ColorNickTextView android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/dkk" android:background="@drawable/agn" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <com.tencent.mobileqq.widget.ColorNickTextView android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/dkl" android:background="@drawable/agn" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/dkk" />
+    <com.tencent.mobileqq.widget.ColorNickTextView android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/dkk" android:background="@drawable/agn" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.widget.ColorNickTextView android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/dkl" android:background="@drawable/agn" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/dkk" />
     <com.tencent.mobileqq.vip.diy.ETTextViewPlus android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/aww" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a0b" android:layout_toRightOf="@id/dkk">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/a15" android:visibility="gone" android:layout_width="@dimen/a0a" android:layout_height="@dimen/a0a" android:src="@drawable/br7" />
         <RelativeLayout android:id="@id/ar9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <TextView android:textSize="12.0dip" android:textColor="@color/skin_color_white" android:ellipsize="none" android:gravity="center" android:id="@id/ar8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
         </RelativeLayout>
+        <com.tencent.mobileqq.troop.widget.troopmemberlevel.TroopMemberNewLevelView android:layout_gravity="center_vertical" android:id="@id/qho" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" />
         <com.tencent.mobileqq.troop.honor.widget.TroopHonorView android:id="@id/lc_" android:paddingLeft="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
 </merge>

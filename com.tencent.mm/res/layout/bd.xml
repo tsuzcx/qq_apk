@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/p3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<RelativeLayout android:orientation="horizontal" android:id="@id/fw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" layout="@layout/be" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/fz" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g0" android:background="@null" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/icons_outlined_multitask" android:contentDescription="@string/k4" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/by2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/by1" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+</RelativeLayout>

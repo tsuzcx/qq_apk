@@ -1,293 +1,273 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.Util;
+import junit.framework.Assert;
 import org.json.JSONObject;
 
 public final class bx
 {
-  public static bx fnO;
-  private SharedPreferences fnP;
-  private SharedPreferences fny;
+  public int eQp;
+  private String groupId;
+  public String nUM;
+  public String nUO;
+  public String name;
+  public String omJ;
+  public String omK;
+  public String omL;
+  public long omM;
+  public int omN;
+  public int omO;
+  public long omP;
+  public String omQ;
+  public String omR;
+  private boolean omS;
+  private int omT;
+  private int omU;
+  public String sourceIcon;
+  public String sourceName;
+  private int subType;
+  public long time;
+  public String title;
+  public int type;
+  public String url;
   
-  static
+  public bx()
   {
-    AppMethodBeat.i(58129);
-    fnO = new bx();
-    AppMethodBeat.o(58129);
+    AppMethodBeat.i(91028);
+    this.omS = false;
+    this.omT = 0;
+    this.subType = 0;
+    this.omU = 0;
+    this.groupId = "";
+    this.eQp = -1;
+    this.omJ = "";
+    this.time = 0L;
+    this.type = 0;
+    this.name = "";
+    this.title = "";
+    this.url = "";
+    this.omK = "";
+    this.omL = "";
+    this.omM = 0L;
+    this.sourceName = "";
+    this.sourceIcon = "";
+    this.omN = 0;
+    this.nUM = "";
+    this.nUO = "";
+    this.omO = 0;
+    this.omP = 0L;
+    this.omQ = "";
+    this.omR = "";
+    AppMethodBeat.o(91028);
   }
   
-  private bx()
+  private void bDc()
   {
-    AppMethodBeat.i(58118);
-    this.fny = ah.getContext().getSharedPreferences(ah.dsP() + "_account_history", 0);
-    this.fnP = ah.getContext().getSharedPreferences(ah.dsP() + "_account_switch", 0);
-    AppMethodBeat.o(58118);
-  }
-  
-  private void pJ(String paramString)
-  {
-    AppMethodBeat.i(58126);
-    if (this.fny.contains(paramString)) {}
-    try
+    AppMethodBeat.i(91036);
+    if ((this.omS) || (Util.isNullOrNil(this.omR)))
     {
-      e.deleteFile(getString(paramString, "last_avatar_path"));
-      this.fny.edit().remove(paramString).commit();
-      AppMethodBeat.o(58126);
+      AppMethodBeat.o(91036);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.w("MicroMsg.SwitchAccountInfo", "remove avatar file error %s", new Object[] { localException.getMessage() });
-      }
-    }
-  }
-  
-  public final Set<String> abf()
-  {
-    AppMethodBeat.i(58127);
-    HashSet localHashSet = new HashSet();
-    Set localSet = this.fnP.getStringSet("first_switch_group", null);
-    if ((localSet != null) && (!localSet.isEmpty())) {
-      localHashSet.addAll(localSet);
-    }
-    AppMethodBeat.o(58127);
-    return localHashSet;
-  }
-  
-  public final String abg()
-  {
-    AppMethodBeat.i(58128);
-    Object localObject2 = abf();
-    Object localObject1 = new StringBuilder();
-    localObject2 = ((Set)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
-      ((StringBuilder)localObject1).append(';');
-    }
-    if (((StringBuilder)localObject1).length() > 0) {
-      ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-    }
-    ab.i("MicroMsg.SwitchAccountInfo", "switch users %s", new Object[] { ((StringBuilder)localObject1).toString() });
-    localObject1 = ((StringBuilder)localObject1).toString();
-    AppMethodBeat.o(58128);
-    return localObject1;
-  }
-  
-  public final void ar(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(58123);
-    if ((bo.Q(new String[] { paramString1, paramString2 })) || (paramString1.equals(paramString2)))
-    {
-      AppMethodBeat.o(58123);
-      return;
-    }
-    Object localObject = this.fnP.getStringSet("first_switch_group", null);
-    if (localObject == null) {
-      localObject = new HashSet();
-    }
-    for (;;)
-    {
-      if ((((Set)localObject).contains(paramString1)) && (((Set)localObject).size() < 2)) {
-        ((Set)localObject).add(paramString2);
-      }
-      for (;;)
-      {
-        paramString1 = this.fnP.edit();
-        paramString1.remove("first_switch_group").apply();
-        paramString1.putStringSet("first_switch_group", (Set)localObject).commit();
-        AppMethodBeat.o(58123);
-        return;
-        Iterator localIterator = ((Set)localObject).iterator();
-        while (localIterator.hasNext()) {
-          pJ((String)localIterator.next());
-        }
-        ((Set)localObject).clear();
-        ((Set)localObject).add(paramString1);
-        ((Set)localObject).add(paramString2);
-      }
-    }
-  }
-  
-  public final void g(String paramString, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(58120);
-    if (paramMap != null) {}
-    Object localObject;
     for (;;)
     {
       try
       {
-        if (paramMap.isEmpty())
-        {
-          ab.i("MicroMsg.SwitchAccountInfo", "kv map is null or empty!");
-          AppMethodBeat.o(58120);
-          return;
-        }
-        if (!this.fny.contains(paramString)) {
-          break label177;
-        }
-        localObject = this.fny.getString(paramString, "");
-        if (!bo.isNullOrNil((String)localObject))
-        {
-          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
-          Iterator localIterator = paramMap.keySet().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          String str = (String)localIterator.next();
-          ((JSONObject)localObject).put(str, paramMap.get(str));
+        JSONObject localJSONObject = new JSONObject(this.omR);
+        this.omT = localJSONObject.optInt("videoLength", 0);
+        int i = localJSONObject.optInt("subType", 0);
+        if (i != 1) {
           continue;
         }
-        localObject = new JSONObject();
+        this.subType = i;
+        this.groupId = localJSONObject.optString("groupId", "");
+        this.omU = localJSONObject.optInt("tweetType", 0);
       }
-      catch (Exception paramMap)
+      catch (Exception localException)
       {
-        ab.e("MicroMsg.SwitchAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
-        AppMethodBeat.o(58120);
-        return;
+        continue;
       }
-      continue;
-      label177:
-      localObject = new JSONObject();
+      this.omS = true;
+      AppMethodBeat.o(91036);
+      return;
+      this.subType = 0;
     }
-    ab.i("MicroMsg.SwitchAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
-    this.fny.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
-    AppMethodBeat.o(58120);
   }
   
-  public final String getString(String paramString1, String paramString2)
+  public static String vk(int paramInt)
   {
-    AppMethodBeat.i(58121);
-    try
+    AppMethodBeat.i(91030);
+    if (paramInt == 20)
     {
-      ab.i("MicroMsg.SwitchAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
-      if (this.fny.contains(paramString1))
-      {
-        Object localObject = new String(Base64.decode(this.fny.getString(paramString1, ""), 0));
-        if (!bo.isNullOrNil((String)localObject))
-        {
-          ab.i("MicroMsg.SwitchAccountInfo", "get json str %s", new Object[] { localObject });
-          localObject = new JSONObject((String)localObject);
-          if (((JSONObject)localObject).has(paramString2))
-          {
-            localObject = ((JSONObject)localObject).getString(paramString2);
-            AppMethodBeat.o(58121);
-            return localObject;
-          }
-        }
-      }
-      else
-      {
-        ab.w("MicroMsg.SwitchAccountInfo", "account info about %s is not found!", new Object[] { paramString1 });
-      }
+      AppMethodBeat.o(91030);
+      return "newsapp";
     }
-    catch (Exception localException)
+    if (paramInt == 11)
     {
-      for (;;)
-      {
-        ab.e("MicroMsg.SwitchAccountInfo", "get account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
-      }
+      AppMethodBeat.o(91030);
+      return "blogapp";
     }
-    AppMethodBeat.o(58121);
+    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
+    AppMethodBeat.o(91030);
+    return null;
+  }
+  
+  public final String aVp()
+  {
+    AppMethodBeat.i(91034);
+    bDc();
+    String str = this.groupId;
+    AppMethodBeat.o(91034);
+    return str;
+  }
+  
+  public final String bCT()
+  {
+    if (this.omJ == null) {
+      return "";
+    }
+    return this.omJ;
+  }
+  
+  public final String bCU()
+  {
+    if (this.omK == null) {
+      return "";
+    }
+    return this.omK;
+  }
+  
+  public final String bCV()
+  {
+    if (this.sourceName == null) {
+      return "";
+    }
+    return this.sourceName;
+  }
+  
+  public final String bCW()
+  {
+    if (this.sourceIcon == null) {
+      return "";
+    }
+    return this.sourceIcon;
+  }
+  
+  public final String bCX()
+  {
+    AppMethodBeat.i(91031);
+    if (this.nUM != null)
+    {
+      Object localObject = this.nUM.split("\\|");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localObject = localObject[0];
+        AppMethodBeat.o(91031);
+        return localObject;
+      }
+      AppMethodBeat.o(91031);
+      return "";
+    }
+    AppMethodBeat.o(91031);
     return "";
   }
   
-  public final void n(String paramString1, String paramString2, String paramString3)
+  public final String bCY()
   {
-    AppMethodBeat.i(58119);
-    for (;;)
-    {
-      try
-      {
-        if (this.fny.contains(paramString1))
-        {
-          localObject = this.fny.getString(paramString1, "");
-          if (!bo.isNullOrNil((String)localObject))
-          {
-            localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
-            if (!bo.Q(new String[] { paramString2, paramString3 }))
-            {
-              ((JSONObject)localObject).put(paramString2, paramString3);
-              ab.i("MicroMsg.SwitchAccountInfo", "put key %s, jsonStr %s", new Object[] { paramString2, ((JSONObject)localObject).toString() });
-              this.fny.edit().putString(paramString1, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
-            }
-            AppMethodBeat.o(58119);
-            return;
-          }
-          localObject = new JSONObject();
-          continue;
-        }
-        Object localObject = new JSONObject();
-      }
-      catch (Exception paramString3)
-      {
-        ab.e("MicroMsg.SwitchAccountInfo", "save account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, paramString3.getMessage() });
-        AppMethodBeat.o(58119);
-        return;
-      }
+    if (this.omR == null) {
+      return "";
     }
+    return this.omR;
   }
   
-  public final void pG(String paramString)
+  public final int bCZ()
   {
-    AppMethodBeat.i(58122);
-    if (pH(paramString))
-    {
-      Set localSet = this.fnP.getStringSet("first_switch_group", null);
-      if (localSet != null)
-      {
-        localSet.remove(paramString);
-        SharedPreferences.Editor localEditor = this.fnP.edit();
-        localEditor.remove("first_switch_group").apply();
-        localEditor.putStringSet("first_switch_group", localSet).commit();
-      }
-    }
-    if (pI(paramString)) {
-      pJ(paramString);
-    }
-    AppMethodBeat.o(58122);
+    AppMethodBeat.i(91032);
+    bDc();
+    int i = this.subType;
+    AppMethodBeat.o(91032);
+    return i;
   }
   
-  public final boolean pH(String paramString)
+  public final int bDa()
   {
-    AppMethodBeat.i(58124);
-    Set localSet = this.fnP.getStringSet("first_switch_group", null);
-    if (localSet == null)
-    {
-      AppMethodBeat.o(58124);
-      return false;
-    }
-    boolean bool = localSet.contains(paramString);
-    AppMethodBeat.o(58124);
-    return bool;
+    AppMethodBeat.i(91033);
+    bDc();
+    int i = this.omT;
+    AppMethodBeat.o(91033);
+    return i;
   }
   
-  public final boolean pI(String paramString)
+  public final int bDb()
   {
-    AppMethodBeat.i(58125);
-    boolean bool = this.fny.contains(paramString);
-    AppMethodBeat.o(58125);
-    return bool;
+    AppMethodBeat.i(91035);
+    bDc();
+    int i = this.omU;
+    AppMethodBeat.o(91035);
+    return i;
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(91029);
+    this.omJ = paramCursor.getString(0);
+    this.time = paramCursor.getLong(1);
+    this.type = paramCursor.getInt(2);
+    this.name = paramCursor.getString(3);
+    this.title = paramCursor.getString(4);
+    this.url = paramCursor.getString(5);
+    this.omK = paramCursor.getString(6);
+    this.omL = paramCursor.getString(7);
+    this.omM = paramCursor.getLong(8);
+    this.sourceName = paramCursor.getString(9);
+    this.sourceIcon = paramCursor.getString(10);
+    this.omN = paramCursor.getInt(11);
+    this.nUM = paramCursor.getString(12);
+    this.nUO = paramCursor.getString(13);
+    this.omO = paramCursor.getInt(14);
+    this.omP = paramCursor.getLong(15);
+    this.omQ = paramCursor.getString(16);
+    this.omR = paramCursor.getString(17);
+    AppMethodBeat.o(91029);
+  }
+  
+  public final String getDigest()
+  {
+    if (this.nUO == null) {
+      return "";
+    }
+    return this.nUO;
+  }
+  
+  public final String getName()
+  {
+    if (this.name == null) {
+      return "";
+    }
+    return this.name;
+  }
+  
+  public final String getTitle()
+  {
+    if (this.title == null) {
+      return "";
+    }
+    return this.title;
+  }
+  
+  public final String getUrl()
+  {
+    if (this.url == null) {
+      return "";
+    }
+    return this.url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.model.bx
  * JD-Core Version:    0.7.0.1
  */

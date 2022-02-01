@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/evu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex2" />
-    <TextView android:id="@id/evv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex1" android:layout_centerInParent="true" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2" />
-    <android.support.v7.widget.RecyclerView android:id="@id/evw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/evu" android:overScrollMode="never" />
-</merge>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/d_" android:layout_weight="1.0">
+        <TextView android:gravity="center_vertical" android:id="@id/o7" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ig" android:singleLine="true" style="@style/m4" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4t" android:layout_width="@dimen/d6" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4u" android:layout_width="@dimen/d6" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4v" android:layout_width="@dimen/d6" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4w" android:layout_width="@dimen/d6" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_arrow" app:iconColor="@color/a19" />
+</LinearLayout>

@@ -1,165 +1,157 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.b.k;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.autogen.b.hl;
+import com.tencent.mm.protocal.protobuf.arc;
+import com.tencent.mm.protocal.protobuf.can;
+import com.tencent.mm.protocal.protobuf.ffr;
+import com.tencent.mm.protocal.protobuf.ffs;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.util.LinkedList;
 
 public final class u
-  extends j<t>
-  implements k
+  extends hl
 {
-  public static final String[] SQL_CREATE;
-  private e db;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(38016);
-    SQL_CREATE = new String[] { j.getCreateSQLs(t.info, "snsTagInfo2") };
-    AppMethodBeat.o(38016);
+    AppMethodBeat.i(97471);
+    info = hl.aJm();
+    AppMethodBeat.o(97471);
   }
   
-  public u(e parame)
+  public final void a(ffr paramffr)
   {
-    super(parame, t.info, "snsTagInfo2", null);
-    this.db = parame;
-  }
-  
-  public final boolean Xh(String paramString)
-  {
-    AppMethodBeat.i(38013);
-    t localt = mb(5L);
-    if (bo.isNullOrNil(localt.field_memberList))
+    AppMethodBeat.i(97467);
+    if (paramffr == null)
     {
-      AppMethodBeat.o(38013);
-      return false;
+      AppMethodBeat.o(97467);
+      return;
     }
-    boolean bool = bo.P(localt.field_memberList.split(",")).contains(paramString);
-    AppMethodBeat.o(38013);
-    return bool;
-  }
-  
-  public final boolean a(t paramt)
-  {
-    AppMethodBeat.i(38009);
-    if (paramt.field_tagId == 0L)
+    try
     {
-      AppMethodBeat.o(38009);
-      return false;
+      this.field_snsYearMonthInfo = paramffr.toByteArray();
+      AppMethodBeat.o(97467);
+      return;
     }
-    long l = paramt.field_tagId;
-    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(l) }, 2);
-    boolean bool = localCursor.moveToFirst();
-    localCursor.close();
-    if (!bool) {
-      super.insert(paramt);
-    }
-    for (;;)
+    catch (Exception paramffr)
     {
-      doNotify(paramt.field_tagId, 0, paramt);
-      AppMethodBeat.o(38009);
-      return true;
-      super.replace(paramt);
+      AppMethodBeat.o(97467);
     }
   }
   
-  public final boolean cnO()
+  public final void a(ffs paramffs)
   {
-    AppMethodBeat.i(38014);
-    if (cti().size() == 0)
+    AppMethodBeat.i(97468);
+    if (paramffs == null)
     {
-      AppMethodBeat.o(38014);
-      return false;
+      AppMethodBeat.o(97468);
+      return;
     }
-    AppMethodBeat.o(38014);
-    return true;
-  }
-  
-  public final List<Long> cti()
-  {
-    AppMethodBeat.i(38008);
-    Cursor localCursor = this.db.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (localCursor.moveToNext()) {
-      localArrayList.add(Long.valueOf(localCursor.getLong(0)));
-    }
-    localCursor.close();
-    AppMethodBeat.o(38008);
-    return localArrayList;
-  }
-  
-  public final Cursor getCursor()
-  {
-    AppMethodBeat.i(38012);
-    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
-    AppMethodBeat.o(38012);
-    return localCursor;
-  }
-  
-  public final List<String> lo(long paramLong)
-  {
-    AppMethodBeat.i(38006);
-    Object localObject = mb(paramLong);
-    if ((((t)localObject).field_memberList != null) && (!((t)localObject).field_memberList.equals("")))
+    try
     {
-      localObject = bo.P(((t)localObject).field_memberList.split(","));
-      AppMethodBeat.o(38006);
-      return localObject;
+      this.field_snsuser = paramffs.toByteArray();
+      AppMethodBeat.o(97468);
+      return;
     }
-    localObject = new ArrayList();
-    AppMethodBeat.o(38006);
-    return localObject;
-  }
-  
-  public final String lp(long paramLong)
-  {
-    AppMethodBeat.i(38007);
-    String str = mb(paramLong).field_tagName;
-    AppMethodBeat.o(38007);
-    return str;
-  }
-  
-  public final t mb(long paramLong)
-  {
-    AppMethodBeat.i(38005);
-    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
-    t localt = new t();
-    if (localCursor.moveToFirst()) {
-      localt.convertFrom(localCursor);
+    catch (Exception paramffs)
+    {
+      AppMethodBeat.o(97468);
     }
-    localCursor.close();
-    AppMethodBeat.o(38005);
-    return localt;
   }
   
-  public final int mc(long paramLong)
+  public final boolean dqH()
   {
-    AppMethodBeat.i(38010);
-    int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
-    AppMethodBeat.o(38010);
-    return i;
+    return (this.field_local_flag & 0x1) > 0;
   }
   
-  public final boolean v(long paramLong, String paramString)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(38011);
-    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bo.wC(paramString) + "\" AND  tagId != " + paramLong;
-    ab.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
-    paramString = this.db.a(paramString, null, 2);
-    boolean bool = paramString.moveToFirst();
-    paramString.close();
-    AppMethodBeat.o(38011);
-    return bool;
+    return info;
+  }
+  
+  public final void hkN()
+  {
+    this.field_local_flag &= 0xFFFFFFFE;
+  }
+  
+  public final void hkO()
+  {
+    this.field_local_flag &= 0xFFFFFFFD;
+  }
+  
+  public final ffr hkP()
+  {
+    AppMethodBeat.i(97466);
+    ffr localffr = new ffr();
+    if (!Util.isNullOrNil(this.field_snsYearMonthInfo)) {}
+    try
+    {
+      localffr.parseFrom(this.field_snsYearMonthInfo);
+      label32:
+      AppMethodBeat.o(97466);
+      return localffr;
+    }
+    catch (Exception localException)
+    {
+      break label32;
+    }
+  }
+  
+  public final boolean hkQ()
+  {
+    return (this.field_local_flag & 0x2) > 0;
+  }
+  
+  public final ffs hkR()
+  {
+    AppMethodBeat.i(97469);
+    try
+    {
+      ffs localffs = (ffs)new ffs().parseFrom(this.field_snsuser);
+      AppMethodBeat.o(97469);
+      return localffs;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(97469);
+    }
+    return null;
+  }
+  
+  public final arc hkS()
+  {
+    AppMethodBeat.i(97470);
+    new can();
+    localObject1 = new arc();
+    Object localObject2 = localObject1;
+    if (!Util.isNullOrNil(this.field_faultS)) {}
+    try
+    {
+      localObject2 = (can)new can().parseFrom(this.field_faultS);
+      if (((can)localObject2).aajy.size() <= 0) {
+        break label89;
+      }
+      localObject2 = (arc)((can)localObject2).aajy.getFirst();
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject3 = localObject1;
+      }
+    }
+    localObject2 = localObject1;
+    AppMethodBeat.o(97470);
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.u
  * JD-Core Version:    0.7.0.1
  */

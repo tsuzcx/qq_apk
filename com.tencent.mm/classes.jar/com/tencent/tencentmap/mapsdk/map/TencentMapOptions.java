@@ -16,15 +16,17 @@ public class TencentMapOptions
   private int mExtSurfaceHeight;
   private int mExtSurfaceWidth;
   private int mMapType = 0;
+  private Object mProtocolDataDesc;
+  private int mProtocolFrom;
   private String mSubId;
   private String mSubKey;
   
   @Deprecated
   public TencentMapOptions enableHandDrawMap(boolean paramBoolean)
   {
-    AppMethodBeat.i(101328);
+    AppMethodBeat.i(87486);
     setHandDrawMapEnable(paramBoolean);
-    AppMethodBeat.o(101328);
+    AppMethodBeat.o(87486);
     return this;
   }
   
@@ -46,6 +48,16 @@ public class TencentMapOptions
   public int getMapType()
   {
     return this.mMapType;
+  }
+  
+  public final Object getProtocolDataDesc()
+  {
+    return this.mProtocolDataDesc;
+  }
+  
+  public final int getProtocolFrom()
+  {
+    return this.mProtocolFrom;
   }
   
   public final String getSubId()
@@ -70,15 +82,15 @@ public class TencentMapOptions
   
   public void setExtSurface(Object paramObject)
   {
-    AppMethodBeat.i(150425);
+    AppMethodBeat.i(87485);
     if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture)) && (!(paramObject instanceof SurfaceHolder)))
     {
       paramObject = new IllegalArgumentException("Parameter Surface should be Surface,SurfaceTexture or SurfaceHolder");
-      AppMethodBeat.o(150425);
+      AppMethodBeat.o(87485);
       throw paramObject;
     }
     this.mExtSurface = paramObject;
-    AppMethodBeat.o(150425);
+    AppMethodBeat.o(87485);
   }
   
   public final void setExtSurfaceDimension(int paramInt1, int paramInt2)
@@ -105,6 +117,12 @@ public class TencentMapOptions
     this.isMutipleInfowindowEnabled = paramBoolean;
   }
   
+  public final void setServiceProtocol(int paramInt, Object paramObject)
+  {
+    this.mProtocolFrom = paramInt;
+    this.mProtocolDataDesc = paramObject;
+  }
+  
   public final void setSubInfo(String paramString1, String paramString2)
   {
     this.mSubId = paramString2;
@@ -113,7 +131,7 @@ public class TencentMapOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

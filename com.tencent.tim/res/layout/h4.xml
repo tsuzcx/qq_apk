@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/b0m" android:visibility="gone" layout="@layout/h6" />
+    <include android:id="@id/b0q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/h8" />
+    <include android:id="@id/b0p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/h5" />
+    <include android:id="@id/b0r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/h7" />
+</RelativeLayout>

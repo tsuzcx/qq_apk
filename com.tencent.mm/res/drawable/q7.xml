@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@color/qn" />
-    <item android:drawable="@color/qx" />
-</selector>
+    <item android:state_checked="true" android:id="@id/l_6" android:drawable="@drawable/b74" />
+    <item android:id="@id/gp6" android:drawable="@drawable/b75" />
+    <transition android:drawable="@drawable/eb" android:toId="@id/l_6" android:fromId="@id/gp6" />
+    <transition android:drawable="@drawable/ea" android:toId="@id/gp6" android:fromId="@id/l_6" />
+</animated-selector>

@@ -1,57 +1,94 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bk.a;
-import com.tencent.mm.model.r;
-import com.tencent.mm.network.e;
+import com.tencent.mm.model.bw.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.traceroute.b.a;
+import com.tencent.mm.plugin.traceroute.b.a.b;
+import com.tencent.mm.plugin.traceroute.b.a.c;
+import com.tencent.mm.plugin.traceroute.b.a.d;
+import com.tencent.mm.plugin.traceroute.b.a.e;
 import com.tencent.mm.plugin.traceroute.b.a.j;
 import com.tencent.mm.plugin.traceroute.b.c;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.Map;
 
 final class NetworkDiagnoseUI$6
-  implements bk.a
+  implements bw.a
 {
   NetworkDiagnoseUI$6(NetworkDiagnoseUI paramNetworkDiagnoseUI) {}
   
-  public final void a(e parame)
+  public final void b(g paramg)
   {
-    AppMethodBeat.i(26032);
-    if (parame == null)
+    AppMethodBeat.i(29715);
+    if (paramg == null)
     {
-      AppMethodBeat.o(26032);
+      AppMethodBeat.o(29715);
       return;
     }
-    String str = r.Zn();
-    NetworkDiagnoseUI.a(this.tnM, new a(str));
-    NetworkDiagnoseUI.d(this.tnM).c(parame.getIPsString(true), true);
-    NetworkDiagnoseUI.d(this.tnM).c(parame.getIPsString(false), false);
-    NetworkDiagnoseUI.d(this.tnM).tmS = new NetworkDiagnoseUI.6.1(this);
-    NetworkDiagnoseUI.d(this.tnM).tmR = new NetworkDiagnoseUI.6.2(this);
-    NetworkDiagnoseUI.d(this.tnM).tmU = new NetworkDiagnoseUI.6.3(this);
-    NetworkDiagnoseUI.d(this.tnM).tmT = new NetworkDiagnoseUI.6.4(this);
-    parame = NetworkDiagnoseUI.d(this.tnM);
-    if ((parame.tmQ == null) || (parame.tmQ.size() == 0)) {
-      ab.e("MicroMsg.MMTraceRoute", "no iplist");
+    String str = z.bAM();
+    NetworkDiagnoseUI.a(this.TRG, new a(str));
+    NetworkDiagnoseUI.d(this.TRG).c(paramg.getIPsString(true), true);
+    NetworkDiagnoseUI.d(this.TRG).c(paramg.getIPsString(false), false);
+    NetworkDiagnoseUI.d(this.TRG).TQL = new a.d()
+    {
+      public final void onFinished()
+      {
+        AppMethodBeat.i(29711);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.TRG).sendEmptyMessageDelayed(2, 500L);
+        AppMethodBeat.o(29711);
+      }
+    };
+    NetworkDiagnoseUI.d(this.TRG).TQK = new a.e()
+    {
+      public final void hPh()
+      {
+        AppMethodBeat.i(29712);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.TRG).sendEmptyMessageDelayed(1, 500L);
+        AppMethodBeat.o(29712);
+      }
+    };
+    NetworkDiagnoseUI.d(this.TRG).TQN = new a.b()
+    {
+      public final void hPf()
+      {
+        AppMethodBeat.i(29713);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.TRG).sendEmptyMessage(3);
+        AppMethodBeat.o(29713);
+      }
+    };
+    NetworkDiagnoseUI.d(this.TRG).TQM = new a.c()
+    {
+      public final void hPg()
+      {
+        AppMethodBeat.i(29714);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.TRG).sendEmptyMessage(4);
+        AppMethodBeat.o(29714);
+      }
+    };
+    paramg = NetworkDiagnoseUI.d(this.TRG);
+    if ((paramg.TQJ == null) || (paramg.TQJ.size() == 0)) {
+      Log.e("MicroMsg.MMTraceRoute", "no iplist");
     }
     for (;;)
     {
-      NetworkDiagnoseUI.j(this.tnM).ag(1200L, 1200L);
-      AppMethodBeat.o(26032);
+      NetworkDiagnoseUI.j(this.TRG).startTimer(1200L);
+      AppMethodBeat.o(29715);
       return;
-      if (a.tmM == null) {
-        a.tmM = new c();
+      if (a.TQF == null) {
+        a.TQF = new c();
       }
-      d.post(new a.j(parame, (byte)0), "MMTraceRoute_start");
+      ThreadPool.post(new a.j(paramg, (byte)0), "MMTraceRoute_start");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseUI.6
  * JD-Core Version:    0.7.0.1
  */

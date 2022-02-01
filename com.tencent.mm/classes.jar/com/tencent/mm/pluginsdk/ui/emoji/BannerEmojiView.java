@@ -23,7 +23,7 @@ public class BannerEmojiView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(62469);
+    AppMethodBeat.i(104703);
     paramInt1 = getRight() - getLeft() - getPaddingRight() - getPaddingLeft();
     paramInt2 = paramInt1 / 2;
     if ((paramInt1 == 0) || (paramInt2 == 0)) {
@@ -44,12 +44,12 @@ public class BannerEmojiView
       }
     }
     setMeasuredDimension(paramInt1, (int)(f1 * paramInt1));
-    AppMethodBeat.o(62469);
+    AppMethodBeat.o(104703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.BannerEmojiView
  * JD-Core Version:    0.7.0.1
  */

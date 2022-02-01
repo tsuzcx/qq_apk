@@ -65,17 +65,19 @@ public final class MobileQbossAdvReq
     paramJceOutputStream.write(this.iPullAsExposeOper, 2);
     paramJceOutputStream.write(this.iNeedExposeTime, 3);
     paramJceOutputStream.write(this.iReqFlag, 4);
-    if (this.idfa != null) {
-      paramJceOutputStream.write(this.idfa, 5);
+    Object localObject = this.idfa;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.mapSceneExt != null) {
-      paramJceOutputStream.write(this.mapSceneExt, 6);
+    localObject = this.mapSceneExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq
  * JD-Core Version:    0.7.0.1
  */

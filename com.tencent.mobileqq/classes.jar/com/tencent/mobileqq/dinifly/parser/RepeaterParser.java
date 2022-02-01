@@ -1,72 +1,57 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTransform;
 import com.tencent.mobileqq.dinifly.model.content.Repeater;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class RepeaterParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "c", "o", "tr", "hd" });
+  
   static Repeater parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableTransform localAnimatableTransform = null;
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
     boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
-    String str1 = null;
-    label14:
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str2.equals("nm"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("c"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("tr"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("hd")) {
-                    i = 4;
-                  }
-                }
+              if (i != 4) {
+                paramJsonReader.skipValue();
+              } else {
+                bool = paramJsonReader.nextBoolean();
               }
             }
+            else {
+              localObject3 = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
+            }
           }
-          break;
+          else {
+            localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+          }
+        }
+        else {
+          localObject1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableTransform = AnimatableTransformParser.parse(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        str = paramJsonReader.nextString();
+      }
     }
-    return new Repeater(str1, localAnimatableFloatValue2, localAnimatableFloatValue1, localAnimatableTransform, bool);
+    return new Repeater(str, (AnimatableFloatValue)localObject1, (AnimatableFloatValue)localObject2, (AnimatableTransform)localObject3, bool);
   }
 }
 

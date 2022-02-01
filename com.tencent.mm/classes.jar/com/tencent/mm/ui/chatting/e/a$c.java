@@ -6,10 +6,10 @@ public enum a$c
 {
   static
   {
-    AppMethodBeat.i(31950);
-    zJE = new c("TYPE_IMAGE_AND_VIDEO");
-    zJF = new c[] { zJE };
-    AppMethodBeat.o(31950);
+    AppMethodBeat.i(35855);
+    aeAa = new c("TYPE_IMAGE_AND_VIDEO");
+    aeAb = new c[] { aeAa };
+    AppMethodBeat.o(35855);
   }
   
   private a$c() {}

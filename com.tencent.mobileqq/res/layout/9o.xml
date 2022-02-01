@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.onlinestatus.view.OnlineStatusController android:gravity="bottom" android:orientation="vertical" android:id="@id/content" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="bottom" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ebu" android:background="@drawable/87" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/lyp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:id="@id/mb7" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+                    <ImageView android:id="@id/jv2" android:background="@drawable/hzl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:clipChildren="true" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/lyp">
+                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/dlf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="12.0dip">
+                    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/o00" android:layout_width="36.0dip" android:layout_height="36.0dip">
+                        <ImageView android:id="@id/nzz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+                    <TextView android:textSize="17.0sp" android:textColor="#ff878b99" android:gravity="center" android:id="@id/o0f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="用户名" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ovr" android:background="@drawable/89" android:layout_width="fill_parent" android:layout_height="150.0dip">
+                    <TextView android:textSize="17.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/o04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="在线状态" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/nzu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="36.0dip">
+                    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ff333333" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="手机QQ启动专属特权" />
+                    <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/nzx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="8.0dip" android:weightSum="4.0" />
+                </LinearLayout>
+                <RelativeLayout android:orientation="horizontal" android:id="@id/nzt" android:background="@drawable/8a" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="36.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="32.0dip">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                        <ImageView android:layout_gravity="center_vertical" android:id="@id/nzs" android:layout_width="21.0dip" android:layout_height="21.0dip" android:scaleType="fitCenter" />
+                        <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/nzy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:lines="1" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</com.tencent.mobileqq.onlinestatus.view.OnlineStatusController>

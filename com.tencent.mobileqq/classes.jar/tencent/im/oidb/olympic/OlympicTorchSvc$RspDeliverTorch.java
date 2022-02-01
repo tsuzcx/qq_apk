@@ -18,13 +18,14 @@ public final class OlympicTorchSvc$RspDeliverTorch
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 82 }, new String[] { "msg_rsp_head", "uint32_min_update_time", "uint32_expire_time", "bytes_sig" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, RspDeliverTorch.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 82 }, new String[] { "msg_rsp_head", "uint32_min_update_time", "uint32_expire_time", "bytes_sig" }, new Object[] { null, localInteger, localInteger, localByteStringMicro }, RspDeliverTorch.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.olympic.OlympicTorchSvc.RspDeliverTorch
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,8 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ安全中心_6.9.15.apk
+apkFileName: QQ_security_center-6.9.26-116-3075.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
-- META-INF/android.arch.core_runtime.version
-- META-INF/android.arch.lifecycle_livedata-core.version
-- META-INF/android.arch.lifecycle_runtime.version
-- META-INF/android.arch.lifecycle_viewmodel.version
-- META-INF/com.android.support_animated-vector-drawable.version
-- META-INF/com.android.support_appcompat-v7.version
-- META-INF/com.android.support_support-compat.version
-- META-INF/com.android.support_support-core-ui.version
-- META-INF/com.android.support_support-core-utils.version
-- META-INF/com.android.support_support-fragment.version
-- META-INF/com.android.support_support-vector-drawable.version
-- assets/KingkongPatch.apk
 - assets/channel.ini
 - assets/licence.conf
 - png
@@ -31,12 +19,12 @@ sdkInfo:
 sharedLibrary: false
 sparseResources: false
 unknownFiles:
-  okhttp3/internal/publicsuffix/publicsuffixes: '8'
+  okhttp3/internal/publicsuffix/publicsuffixes.gz: '8'
 usesFramework:
   ids:
   - 1
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '99'
-  versionName: 6.9.15
+  versionCode: '116'
+  versionName: 6.9.26

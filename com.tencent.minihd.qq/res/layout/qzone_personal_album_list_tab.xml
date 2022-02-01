@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/list_tab_root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/qzone_scrollbar" android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <ViewStub android:layout_gravity="center" android:id="@id/personal_album_list_empty" android:layout="@layout/qzone_troopalbum_emptyview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/bottomBarStub" android:layout="@layout/qzone_personal_album_list_tab_bottombar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

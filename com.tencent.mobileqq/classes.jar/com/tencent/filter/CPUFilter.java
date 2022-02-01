@@ -22,19 +22,18 @@ public abstract class CPUFilter
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, double paramDouble, Frame paramFrame)
   {
-    if (this.mIsPreviewFilter) {
-      super.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramDouble, paramFrame);
-    }
-    QImage localQImage;
-    do
+    if (this.mIsPreviewFilter)
     {
+      super.RenderProcess(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramDouble, paramFrame);
       return;
-      paramFrame = RendererUtils.saveTexture2QImage(paramInt1, paramInt2, paramInt3);
-      localQImage = ApplyFilter(paramFrame);
-      GLSLRender.nativeTextImage(localQImage, paramInt6);
-      paramFrame.Dispose();
-    } while (paramFrame == localQImage);
-    localQImage.Dispose();
+    }
+    paramFrame = RendererUtils.saveTexture2QImage(paramInt1, paramInt2, paramInt3);
+    QImage localQImage = ApplyFilter(paramFrame);
+    GLSLRender.nativeTextImage(localQImage, paramInt6);
+    paramFrame.Dispose();
+    if (paramFrame != localQImage) {
+      localQImage.Dispose();
+    }
   }
   
   public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
@@ -47,7 +46,7 @@ public abstract class CPUFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.CPUFilter
  * JD-Core Version:    0.7.0.1
  */

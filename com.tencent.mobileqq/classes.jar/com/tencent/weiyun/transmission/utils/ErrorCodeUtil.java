@@ -21,24 +21,23 @@ public class ErrorCodeUtil
 {
   public static int getErrorCode4IOException(IOException paramIOException)
   {
-    if (paramIOException == null) {}
-    String str2;
-    for (String str1 = null;; str1 = paramIOException.getMessage())
-    {
-      str2 = str1;
-      if (str1 != null) {
-        str2 = str1.toLowerCase();
-      }
-      if (!(paramIOException instanceof ConnectException)) {
-        break label57;
-      }
-      if ((str2 == null) || (!Pattern.compile(".*network.*is.*unreachable.*").matcher(str2).matches())) {
-        break;
-      }
-      return 1810003;
+    String str1;
+    if (paramIOException == null) {
+      str1 = null;
+    } else {
+      str1 = paramIOException.getMessage();
     }
-    return 1830010;
-    label57:
+    String str2 = str1;
+    if (str1 != null) {
+      str2 = str1.toLowerCase();
+    }
+    if ((paramIOException instanceof ConnectException))
+    {
+      if ((str2 != null) && (Pattern.compile(".*network.*is.*unreachable.*").matcher(str2).matches())) {
+        return 1810003;
+      }
+      return 1830010;
+    }
     if ((paramIOException instanceof MalformedURLException)) {
       return 1830026;
     }
@@ -147,12 +146,7 @@ public class ErrorCodeUtil
   
   public static boolean isNeedReLogin(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return paramInt == 190050;
   }
   
   public static boolean isNotLogin(int paramInt)
@@ -172,7 +166,7 @@ public class ErrorCodeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.transmission.utils.ErrorCodeUtil
  * JD-Core Version:    0.7.0.1
  */

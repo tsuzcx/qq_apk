@@ -24,12 +24,12 @@ public abstract class Subscriber<T>
   protected Subscriber(Subscriber<?> paramSubscriber, boolean paramBoolean)
   {
     this.subscriber = paramSubscriber;
-    if ((paramBoolean) && (paramSubscriber != null)) {}
-    for (paramSubscriber = paramSubscriber.subscriptions;; paramSubscriber = new SubscriptionList())
-    {
-      this.subscriptions = paramSubscriber;
-      return;
+    if ((paramBoolean) && (paramSubscriber != null)) {
+      paramSubscriber = paramSubscriber.subscriptions;
+    } else {
+      paramSubscriber = new SubscriptionList();
     }
+    this.subscriptions = paramSubscriber;
   }
   
   private void addToRequested(long paramLong)
@@ -60,54 +60,56 @@ public abstract class Subscriber<T>
   
   public void onStart() {}
   
-  public final void request(long paramLong)
+  protected final void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("number requested cannot be negative: " + paramLong);
-    }
-    try
-    {
-      if (this.producer != null)
+    if (paramLong >= 0L) {
+      try
       {
-        Producer localProducer = this.producer;
-        localProducer.request(paramLong);
+        if (this.producer != null)
+        {
+          Producer localProducer = this.producer;
+          localProducer.request(paramLong);
+          return;
+        }
+        addToRequested(paramLong);
         return;
       }
-      addToRequested(paramLong);
-      return;
+      finally {}
     }
-    finally {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("number requested cannot be negative: ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setProducer(Producer paramProducer)
   {
-    int j = 0;
-    long l;
-    try
+    for (;;)
     {
-      l = this.requested;
-      this.producer = paramProducer;
-      int i = j;
-      if (this.subscriber != null)
+      try
       {
-        i = j;
-        if (l == NOT_SET.longValue()) {
+        long l = this.requested;
+        this.producer = paramProducer;
+        if ((this.subscriber != null) && (l == NOT_SET.longValue()))
+        {
           i = 1;
+          if (i != 0)
+          {
+            this.subscriber.setProducer(this.producer);
+            return;
+          }
+          if (l == NOT_SET.longValue())
+          {
+            this.producer.request(9223372036854775807L);
+            return;
+          }
+          this.producer.request(l);
+          return;
         }
       }
-      if (i != 0)
-      {
-        this.subscriber.setProducer(this.producer);
-        return;
-      }
+      finally {}
+      int i = 0;
     }
-    finally {}
-    if (l == NOT_SET.longValue())
-    {
-      this.producer.request(9223372036854775807L);
-      return;
-    }
-    this.producer.request(l);
   }
   
   public final void unsubscribe()
@@ -117,7 +119,7 @@ public abstract class Subscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     rx.Subscriber
  * JD-Core Version:    0.7.0.1
  */

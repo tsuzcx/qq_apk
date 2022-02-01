@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/l2" android:paddingBottom="@dimen/l2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ar0" android:background="@drawable/jj" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2" android:minHeight="75.0dip">
-        <ImageView android:id="@id/aun" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/aew" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/m2" android:ellipsize="end" android:id="@id/auf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" android:singleLine="true" android:layout_toRightOf="@id/aun" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.card.ui.v3.CardRefreshLoadMoreLayout android:orientation="vertical" android:id="@id/bco" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b8d" app:refreshLayout="@layout/ca7">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/bcq" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.plugin.card.ui.v3.CardRefreshLoadMoreLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bcm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="96.0dip" android:src="@raw/icon_vip_empty" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ayi" />
+    </LinearLayout>
+</FrameLayout>

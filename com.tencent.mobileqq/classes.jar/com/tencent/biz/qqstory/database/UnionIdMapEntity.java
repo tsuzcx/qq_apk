@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class UnionIdMapEntity
-  extends awge
+  extends Entity
 {
   public String qq;
-  @awhs
+  @unique
   public String unionId;
   
   public static String selectionQQ()
@@ -22,7 +22,7 @@ public class UnionIdMapEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.UnionIdMapEntity
  * JD-Core Version:    0.7.0.1
  */

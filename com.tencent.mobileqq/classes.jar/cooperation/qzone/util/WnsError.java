@@ -37,36 +37,37 @@ public final class WnsError
         i = 2400;
       }
     }
-    switch (i)
+    if (i != 0)
     {
-    default: 
-      return DEFAULT_ERROR_MESSAGE;
-    case 0: 
-      return DEFAULT_SUCCESS_MESSAGE;
-    case 1901: 
-    case 1902: 
-    case 1903: 
-    case 1904: 
-    case 1905: 
-    case 1906: 
-    case 1907: 
-    case 1908: 
-    case 1909: 
-    case 1910: 
-    case 2400: 
-      return DEFAULT_ERROR_MESSAGE_WAIT;
+      if (i != 1912)
+      {
+        if (i != 2400) {
+          switch (i)
+          {
+          default: 
+            return DEFAULT_ERROR_MESSAGE;
+          }
+        }
+        return DEFAULT_ERROR_MESSAGE_WAIT;
+      }
+      return DEFAULT_ERROR_MESSAGE_ILLIGAL_APPID;
     }
-    return DEFAULT_ERROR_MESSAGE_ILLIGAL_APPID;
+    return DEFAULT_SUCCESS_MESSAGE;
   }
   
   public static String getErrorMessage(int paramInt)
   {
-    return __getErrorMessage(paramInt) + "  (" + String.valueOf(paramInt) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(__getErrorMessage(paramInt));
+    localStringBuilder.append("  (");
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.WnsError
  * JD-Core Version:    0.7.0.1
  */

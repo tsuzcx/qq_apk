@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class w
   extends JceStruct
 {
-  static ArrayList aX = new ArrayList();
-  public ArrayList aW = null;
+  static ArrayList<aa> aX = new ArrayList();
+  public ArrayList<aa> aW = null;
   
   static
   {
@@ -17,20 +17,21 @@ public final class w
     aX.add(localaa);
   }
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new w();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.aW = ((ArrayList)paramJceInputStream.read(aX, 0, false));
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.aW != null) {
-      paramJceOutputStream.write(this.aW, 0);
+    ArrayList localArrayList = this.aW;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

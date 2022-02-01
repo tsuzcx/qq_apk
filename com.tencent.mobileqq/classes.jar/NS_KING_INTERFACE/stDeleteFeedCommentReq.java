@@ -11,20 +11,9 @@ public final class stDeleteFeedCommentReq
   extends JceStruct
   implements Cloneable
 {
-  static stMetaComment cache_comment;
-  public stMetaComment comment;
+  static stMetaComment cache_comment = new stMetaComment();
+  public stMetaComment comment = null;
   public String feed_id = "";
-  
-  static
-  {
-    if (!stDeleteFeedCommentReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_comment = new stMetaComment();
-      return;
-    }
-  }
   
   public stDeleteFeedCommentReq() {}
   
@@ -41,18 +30,17 @@ public final class stDeleteFeedCommentReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -71,13 +59,20 @@ public final class stDeleteFeedCommentReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stDeleteFeedCommentReq)paramObject;
-    } while ((!JceUtil.equals(this.feed_id, paramObject.feed_id)) || (!JceUtil.equals(this.comment, paramObject.comment)));
-    return true;
+    }
+    paramObject = (stDeleteFeedCommentReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.feed_id, paramObject.feed_id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.comment, paramObject.comment)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -132,7 +127,7 @@ public final class stDeleteFeedCommentReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stDeleteFeedCommentReq
  * JD-Core Version:    0.7.0.1
  */

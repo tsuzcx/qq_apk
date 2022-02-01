@@ -44,14 +44,13 @@ final class CompletableOnSubscribeMerge$CompletableMergeSubscriber
   Queue<Throwable> getOrCreateErrors()
   {
     Object localObject = this.errors;
-    if (localObject != null) {}
-    ConcurrentLinkedQueue localConcurrentLinkedQueue;
-    do
-    {
+    if (localObject != null) {
       return localObject;
-      localConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-      localObject = localConcurrentLinkedQueue;
-    } while (ERRORS.compareAndSet(this, null, localConcurrentLinkedQueue));
+    }
+    localObject = new ConcurrentLinkedQueue();
+    if (ERRORS.compareAndSet(this, null, localObject)) {
+      return localObject;
+    }
     return this.errors;
   }
   
@@ -87,18 +86,12 @@ final class CompletableOnSubscribeMerge$CompletableMergeSubscriber
   
   void terminate()
   {
+    Object localObject;
     if (this.wip.decrementAndGet() == 0)
     {
       localObject = this.errors;
-      if ((localObject == null) || (((Queue)localObject).isEmpty())) {
-        this.actual.onCompleted();
-      }
-    }
-    do
-    {
-      do
+      if ((localObject != null) && (!((Queue)localObject).isEmpty()))
       {
-        return;
         localObject = CompletableOnSubscribeMerge.collectErrors((Queue)localObject);
         if (ONCE.compareAndSet(this, 0, 1))
         {
@@ -107,21 +100,29 @@ final class CompletableOnSubscribeMerge$CompletableMergeSubscriber
         }
         RxJavaPlugins.getInstance().getErrorHandler().handleError((Throwable)localObject);
         return;
-      } while (this.delayErrors);
-      localObject = this.errors;
-    } while ((localObject == null) || (((Queue)localObject).isEmpty()));
-    Object localObject = CompletableOnSubscribeMerge.collectErrors((Queue)localObject);
-    if (ONCE.compareAndSet(this, 0, 1))
-    {
-      this.actual.onError((Throwable)localObject);
+      }
+      this.actual.onCompleted();
       return;
     }
-    RxJavaPlugins.getInstance().getErrorHandler().handleError((Throwable)localObject);
+    if (!this.delayErrors)
+    {
+      localObject = this.errors;
+      if ((localObject != null) && (!((Queue)localObject).isEmpty()))
+      {
+        localObject = CompletableOnSubscribeMerge.collectErrors((Queue)localObject);
+        if (ONCE.compareAndSet(this, 0, 1))
+        {
+          this.actual.onError((Throwable)localObject);
+          return;
+        }
+        RxJavaPlugins.getInstance().getErrorHandler().handleError((Throwable)localObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeMerge.CompletableMergeSubscriber
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.jsapi.u;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.page.ad;
 
-public class b
-  extends u<v>
+public final class b
+  extends ab<ad>
 {
-  public static int CTRL_INDEX = 71;
-  public static String NAME = "getCurrentRoute";
+  private static final int CTRL_INDEX = 583;
+  private static final String NAME = "getSelectedTextRange";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.b
  * JD-Core Version:    0.7.0.1
  */

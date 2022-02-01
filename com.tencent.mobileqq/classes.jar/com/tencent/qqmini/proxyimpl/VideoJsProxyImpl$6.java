@@ -1,16 +1,17 @@
 package com.tencent.qqmini.proxyimpl;
 
-import alud;
-import bgnt;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpegExecuteResponseCallback;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import java.io.File;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import xtk;
 
 class VideoJsProxyImpl$6
-  implements xtk
+  implements FFmpegExecuteResponseCallback
 {
   VideoJsProxyImpl$6(VideoJsProxyImpl paramVideoJsProxyImpl, long paramLong1, String paramString1, LocalMediaInfo paramLocalMediaInfo, int paramInt, String paramString2, long paramLong2) {}
   
@@ -22,61 +23,66 @@ class VideoJsProxyImpl$6
     while (i < j)
     {
       String str = paramString[i];
-      QLog.w("VideoJsPlugin", 1, "onFailure: " + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFailure: ");
+      localStringBuilder.append(str);
+      QLog.w("VideoJsPlugin", 1, localStringBuilder.toString());
       i += 1;
     }
-    if (this.val$cmd.contains("-vf"))
+    if (this.b.contains("-vf"))
     {
-      VideoJsProxyImpl.access$700(this.this$0, this.val$info, false);
+      VideoJsProxyImpl.a(this.g, this.c, false);
       return;
     }
-    paramString = bgnt.a().e(this.val$info.path);
-    VideoJsProxyImpl.access$800(this.this$0, paramString, this.val$info.fileSize, this.val$info);
+    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.g).getManager(IMiniAppFileManager.class)).getWxFilePath(this.c.path);
+    VideoJsProxyImpl.a(this.g, paramString, this.c.fileSize, this.c);
   }
   
   public void onFinish(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress finish " + paramBoolean + " " + (System.currentTimeMillis() - this.val$now));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("compress finish ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
+      QLog.d("VideoJsPlugin", 2, localStringBuilder.toString());
     }
   }
   
   public void onProgress(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress progress " + paramString);
-    }
-    if ((paramString.length() < 90) || (paramString.length() > 150)) {}
-    for (;;)
+    if (paramString.length() >= 90)
     {
-      return;
-      String str = new Scanner(paramString).findWithinHorizon(VideoJsProxyImpl.access$1400(), 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoJsPlugin", 2, "onProgress: " + paramString.length());
+      if (paramString.length() > 150) {
+        return;
       }
-      if (str != null)
+      paramString = new Scanner(paramString).findWithinHorizon(VideoJsProxyImpl.b(), 0);
+      if (paramString != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoJsPlugin", 2, "onProgress: valid " + paramString.length());
-        }
-        paramString = str.split(":");
-        if (paramString.length > 2) {
-          try
-          {
-            int i = Integer.parseInt(paramString[0]);
-            int j = Integer.parseInt(paramString[1]);
-            double d = Double.parseDouble(paramString[2]);
-            i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (1000.0D * d)) * 100.0F / (float)this.val$duration);
-            if (i < 100)
-            {
-              VideoJsProxyImpl.access$900(this.this$0, alud.a(2131716694) + i + "%");
-              return;
-            }
-          }
-          catch (NumberFormatException paramString) {}
-        }
+        paramString = paramString.split(":");
+        if (paramString.length <= 2) {}
       }
     }
+    try
+    {
+      int i = Integer.parseInt(paramString[0]);
+      int j = Integer.parseInt(paramString[1]);
+      double d1 = Double.parseDouble(paramString[2]);
+      i = (int)((float)(TimeUnit.HOURS.toMillis(i) + TimeUnit.MINUTES.toMillis(j) + (d1 * 1000.0D)) * 100.0F / (float)this.f);
+      if (i < 100)
+      {
+        paramString = this.g;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131913502));
+        localStringBuilder.append(i);
+        localStringBuilder.append("%");
+        VideoJsProxyImpl.a(paramString, localStringBuilder.toString());
+      }
+      return;
+    }
+    catch (NumberFormatException paramString) {}
   }
   
   public void onStart()
@@ -88,23 +94,29 @@ class VideoJsProxyImpl$6
   
   public void onSuccess(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoJsPlugin", 2, "compress success " + paramString + " " + this.val$cmd);
-    }
-    if (this.val$cmd.contains("-vf"))
+    if (QLog.isColorLevel())
     {
-      paramString = this.val$info;
-      paramString.mediaWidth /= this.val$compressMultiple;
-      paramString = this.val$info;
-      paramString.mediaHeight /= this.val$compressMultiple;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("compress success ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.b);
+      QLog.d("VideoJsPlugin", 2, localStringBuilder.toString());
     }
-    paramString = bgnt.a().e(this.val$outPath);
-    VideoJsProxyImpl.access$800(this.this$0, paramString, new File(this.val$outPath).length(), this.val$info);
+    if (this.b.contains("-vf"))
+    {
+      paramString = this.c;
+      paramString.mediaWidth /= this.d;
+      paramString = this.c;
+      paramString.mediaHeight /= this.d;
+    }
+    paramString = ((IMiniAppFileManager)VideoJsProxyImpl.c(this.g).getManager(IMiniAppFileManager.class)).getWxFilePath(this.e);
+    VideoJsProxyImpl.a(this.g, paramString, new File(this.e).length(), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

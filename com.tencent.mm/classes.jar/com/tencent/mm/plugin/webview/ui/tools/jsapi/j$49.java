@@ -1,0 +1,112 @@
+package com.tencent.mm.plugin.webview.ui.tools.jsapi;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.c;
+import com.tencent.mm.ad.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bjl;
+import com.tencent.mm.protocal.protobuf.bjm;
+import com.tencent.mm.protocal.protobuf.bjn;
+import com.tencent.mm.protocal.protobuf.bqy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
+import java.util.Map;
+import kotlin.ah;
+import kotlin.g.a.r;
+import org.json.JSONArray;
+
+final class j$49
+  implements r<Integer, Integer, String, aub, ah>
+{
+  j$49(j paramj, Map paramMap, String paramString, p paramp) {}
+  
+  private ah a(Integer paramInteger1, Integer paramInteger2, aub paramaub)
+  {
+    AppMethodBeat.i(297272);
+    for (;;)
+    {
+      try
+      {
+        if ((paramInteger1.intValue() != 0) || (paramInteger2.intValue() != 0) || (paramaub == null) || (paramaub.ZEz.isEmpty())) {
+          break label576;
+        }
+        paramInteger1 = new JSONArray();
+        paramInteger2 = (bqy)paramaub.ZEz.get(0);
+        if ((!Util.isNullOrNil(paramInteger2.ZYT.ZGl.ZTd)) || (paramInteger2.ZYT.ZGl.ZTe != null)) {
+          continue;
+        }
+        this.Kav.put("ret", Integer.valueOf(0));
+        this.Kav.put("err_msg", "live mic info is empty!");
+        this.Kav.put("requestId", this.Kaw);
+        this.XjI.callback(this.WEp, "onGetFinderLivePreviewMicCover:ok", this.Kav);
+      }
+      catch (Exception paramInteger1)
+      {
+        label145:
+        Log.e("MicroMsg.MsgHandler", "getFinderLivePreviewMicCover ex:${ex.message}");
+        this.Kav.put("ret", Integer.valueOf(-1));
+        this.Kav.put("err_msg", "Invalid input parameters:${ex.message}");
+        this.Kav.put("requestId", "");
+        this.XjI.callback(this.WEp, "onGetFinderLivePreviewMicCover:ok", this.Kav);
+        continue;
+        i = 0;
+      }
+      AppMethodBeat.o(297272);
+      return null;
+      if (!Util.isNullOrNil(paramInteger2.ZYT.ZGl.ZTd)) {
+        continue;
+      }
+      paramaub = h.aZn();
+      paramaub.l("headurl", paramInteger2.ZYT.ZGl.ZTe.ZOh.contact.headUrl);
+      paramaub.l("nickname", paramInteger2.ZYT.ZGl.ZTe.ZOh.contact.nickname);
+      paramaub.l("mictype", Integer.valueOf(2));
+      paramInteger1.put(paramaub);
+      this.Kav.put("micInfos", paramInteger1);
+      this.Kav.put("ret", Integer.valueOf(0));
+      this.Kav.put("err_msg", "");
+      this.Kav.put("requestId", this.Kaw);
+    }
+    for (;;)
+    {
+      int i;
+      if (i < paramInteger2.ZYT.ZGl.ZTd.size())
+      {
+        paramaub = (bjl)paramInteger2.ZYT.ZGl.ZTd.get(i);
+        if ((paramaub != null) && (paramaub.ZOh != null) && (paramaub.ZOh.contact != null))
+        {
+          c localc = h.aZn();
+          localc.l("headurl", paramaub.ZOh.contact.headUrl);
+          localc.l("nickname", paramaub.ZOh.contact.nickname);
+          localc.l("mictype", Integer.valueOf(paramaub.ZOf));
+          paramInteger1.put(localc);
+        }
+      }
+      else
+      {
+        this.Kav.put("micInfos", paramInteger1);
+        this.Kav.put("ret", Integer.valueOf(0));
+        this.Kav.put("err_msg", "");
+        this.Kav.put("requestId", this.Kaw);
+        break;
+        label576:
+        this.Kav.put("ret", Integer.valueOf(-1));
+        this.Kav.put("err_msg", "Invalid input parameters:$errType, $errCode");
+        this.Kav.put("requestId", this.Kaw);
+        this.XjI.callback(this.WEp, "onGetFinderLivePreviewMicCover:ok", this.Kav);
+        break label145;
+      }
+      i += 1;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.j.49
+ * JD-Core Version:    0.7.0.1
+ */

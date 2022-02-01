@@ -10,10 +10,10 @@ public final class hzt
   public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
     if (paramBoolean) {
-      IPluginManager.c(paramContext, paramPluginParams);
+      IPluginManager.d(paramContext, paramPluginParams);
     }
   }
 }

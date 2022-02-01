@@ -1,89 +1,110 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.MobileQQ;
 
-public class MessageRoamManager$10
+class MessageRoamManager$10
   implements Runnable
 {
-  public MessageRoamManager$10(alxa paramalxa) {}
+  MessageRoamManager$10(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
-    Object localObject = new File(this.this$0.a.getApp().getFilesDir(), "http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "checkBlueBanner local file exists: " + ((File)localObject).exists());
-    }
-    SharedPreferences localSharedPreferences;
-    String str1;
-    if (((File)localObject).exists())
+    Object localObject1 = new File(this.this$0.b.getApp().getFilesDir(), "https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json");
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      localSharedPreferences = this.this$0.a.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
-      str1 = this.this$0.a.getCurrentAccountUin();
-      int i = localSharedPreferences.getInt("message_roam_is_first_show" + str1, 0);
-      bool = this.this$0.h();
-      long l1 = localSharedPreferences.getLong("banner_last_show_timestamp" + str1, 0L);
-      long l2 = localSharedPreferences.getInt("blue_banner_show_internal", 24);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkBlueBanner local file exists: ");
+      ((StringBuilder)localObject2).append(((File)localObject1).exists());
+      QLog.d("Q.roammsg.MessageRoamManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    boolean bool;
+    if (((File)localObject1).exists())
+    {
+      Object localObject3 = this.this$0.b.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
+      localObject2 = this.this$0.b.getCurrentAccountUin();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("message_roam_is_first_show");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      int i = ((SharedPreferences)localObject3).getInt(((StringBuilder)localObject1).toString(), 0);
+      bool = this.this$0.C();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("banner_last_show_timestamp");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      long l1 = ((SharedPreferences)localObject3).getLong(((StringBuilder)localObject1).toString(), 0L);
+      long l2 = ((SharedPreferences)localObject3).getInt("blue_banner_show_internal", 24);
       long l3 = NetConnInfoCenter.getServerTimeMillis();
-      long l4 = localSharedPreferences.getInt("blue_banner_show_time", 0);
+      long l4 = ((SharedPreferences)localObject3).getInt("blue_banner_show_time", 0);
       if (((!bool) && ((l3 - l1 > l2 * 3600000L) || (l3 < l1))) || ((i == 0) && (l4 * 1000L != 0L)))
       {
-        if (!VipUtils.b(this.this$0.a)) {
-          break label446;
+        if (VasUtil.b(this.this$0.b).getVipStatus().isSVip()) {
+          localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_svip_text", null);
+        } else if (VasUtil.b(this.this$0.b).getVipStatus().isVip()) {
+          localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_vip_text", null);
+        } else {
+          localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_notvip_text", null);
         }
-        localObject = localSharedPreferences.getString("blue_banner_svip_text", null);
         if (i == 0) {
-          localObject = this.this$0.a.getApp().getResources().getString(2131694240);
+          localObject1 = this.this$0.b.getApp().getResources().getString(2131891535);
         }
-        String str2 = localSharedPreferences.getString("blue_banner_go_url", null);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2)))
+        String str = ((SharedPreferences)localObject3).getString("blue_banner_go_url", null);
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)))
         {
           Bundle localBundle = new Bundle();
-          localBundle.putString("showText", (String)localObject);
-          localBundle.putString("goUrl", str2);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkBlueBanner showText: " + (String)localObject + ", goUrl: " + str2);
+          localBundle.putString("showText", (String)localObject1);
+          localBundle.putString("goUrl", str);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("checkBlueBanner showText: ");
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append(", goUrl: ");
+            localStringBuilder.append(str);
+            QLog.d("Q.roammsg.MessageRoamManager", 2, localStringBuilder.toString());
           }
           this.this$0.a(14, localBundle);
-          if (i != 0) {
-            break label489;
+          if (i == 0)
+          {
+            localObject1 = ((SharedPreferences)localObject3).edit();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("message_roam_is_first_show");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject3).toString(), 1).commit();
           }
-          localSharedPreferences.edit().putInt("message_roam_is_first_show" + str1, 1).commit();
+          else
+          {
+            localObject1 = ((SharedPreferences)localObject3).edit();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("banner_last_show_timestamp");
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((SharedPreferences.Editor)localObject1).putLong(((StringBuilder)localObject3).toString(), NetConnInfoCenter.getServerTimeMillis()).commit();
+          }
         }
       }
+      bool = false;
     }
-    label435:
-    for (boolean bool = false;; bool = true)
+    else
     {
-      this.this$0.e(bool);
-      return;
-      label446:
-      if (VipUtils.c(this.this$0.a))
-      {
-        localObject = localSharedPreferences.getString("blue_banner_vip_text", null);
-        break;
-      }
-      localObject = localSharedPreferences.getString("blue_banner_notvip_text", null);
-      break;
-      label489:
-      localSharedPreferences.edit().putLong("banner_last_show_timestamp" + str1, NetConnInfoCenter.getServerTimeMillis()).commit();
-      break label435;
+      bool = true;
     }
+    this.this$0.e(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.10
  * JD-Core Version:    0.7.0.1
  */

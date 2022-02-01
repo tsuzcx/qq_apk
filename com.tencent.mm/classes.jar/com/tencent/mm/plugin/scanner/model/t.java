@@ -1,272 +1,140 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.pluginsdk.e.e;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.qz;
+import com.tencent.mm.protocal.protobuf.rc;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
+  extends p
+  implements m
 {
-  private s qvq;
+  public boolean ORN;
+  private h callback;
+  private int hDb;
+  public int hDc;
+  private String hVL;
+  public c rr;
   
-  public t()
+  public t(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(80890);
-    this.qvq = new s();
-    AppMethodBeat.o(80890);
+    AppMethodBeat.i(51626);
+    this.hVL = "";
+    this.ORN = false;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new qy();
+    ((c.a)localObject).otF = new qz();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
+    ((c.a)localObject).funcId = 1061;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (qy)c.b.b(this.rr.otB);
+    this.hDb = paramInt1;
+    ((qy)localObject).vhJ = paramInt1;
+    ((qy)localObject).YVS = paramString;
+    ((qy)localObject).IJG = ahL(0);
+    ((qy)localObject).mode = 2;
+    ((qy)localObject).YVT = null;
+    this.hDc = paramInt2;
+    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, codeVersion: %s, mode: %d, entryScene: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(((qy)localObject).IJG) });
+    AppMethodBeat.o(51626);
   }
   
-  private static s.a g(XmlPullParser paramXmlPullParser)
+  public t(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, rc paramrc)
   {
-    AppMethodBeat.i(80892);
-    paramXmlPullParser = new s.a(paramXmlPullParser.getAttributeValue(null, "postOfficeBox"), paramXmlPullParser.getAttributeValue(null, "extendedAddress"), paramXmlPullParser.getAttributeValue(null, "street"), paramXmlPullParser.getAttributeValue(null, "locality"), paramXmlPullParser.getAttributeValue(null, "region"), paramXmlPullParser.getAttributeValue(null, "postalCode"), paramXmlPullParser.getAttributeValue(null, "country"));
-    AppMethodBeat.o(80892);
-    return paramXmlPullParser;
+    AppMethodBeat.i(314426);
+    this.hVL = "";
+    this.ORN = false;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new qy();
+    ((c.a)localObject).otF = new qz();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
+    ((c.a)localObject).funcId = 1061;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (qy)c.b.b(this.rr.otB);
+    this.hDb = e.e.boP(paramString1);
+    ((qy)localObject).vhJ = this.hDb;
+    ((qy)localObject).YVS = paramString2;
+    ((qy)localObject).IJG = ahL(paramInt3);
+    ((qy)localObject).mode = paramInt2;
+    ((qy)localObject).YVT = paramrc;
+    this.hDc = paramInt1;
+    this.hVL = paramString1;
+    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, codeName: %s, codeVersion: %s, mode: %d, entryScene: %d, scene: %d", new Object[] { Integer.valueOf(this.hDb), paramString2, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(((qy)localObject).IJG) });
+    AppMethodBeat.o(314426);
   }
   
-  private static s.c h(XmlPullParser paramXmlPullParser)
+  private static int ahL(int paramInt)
   {
-    AppMethodBeat.i(80893);
-    paramXmlPullParser = new s.c(paramXmlPullParser.getAttributeValue(null, "type"), paramXmlPullParser.getAttributeValue(null, "buffer"));
-    AppMethodBeat.o(80893);
-    return paramXmlPullParser;
-  }
-  
-  public final void Yy(String paramString)
-  {
-    AppMethodBeat.i(80891);
-    Object localObject = XmlPullParserFactory.newInstance();
-    ((XmlPullParserFactory)localObject).setNamespaceAware(true);
-    XmlPullParser localXmlPullParser = ((XmlPullParserFactory)localObject).newPullParser();
-    localXmlPullParser.setInput(new StringReader(paramString));
-    int i = localXmlPullParser.getEventType();
-    localObject = "";
-    if (i != 1)
+    switch (paramInt)
     {
-      paramString = (String)localObject;
-      switch (i)
-      {
-      default: 
-        paramString = (String)localObject;
-      }
-      for (;;)
-      {
-        i = localXmlPullParser.next();
-        localObject = paramString;
-        break;
-        localObject = localXmlPullParser.getName();
-        if (((String)localObject).equals("name"))
-        {
-          this.qvq.quZ = new s.b(localXmlPullParser.getAttributeValue(null, "firstName"), localXmlPullParser.getAttributeValue(null, "middleName"), localXmlPullParser.getAttributeValue(null, "lastName"));
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("address"))
-        {
-          this.qvq.qve = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("deliveryAddress"))
-        {
-          this.qvq.qvf = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("homeAddress"))
-        {
-          this.qvq.qvg = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("workAddress"))
-        {
-          this.qvq.qvh = g(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("photo"))
-        {
-          this.qvq.qva = h(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else if (((String)localObject).equals("logo"))
-        {
-          this.qvq.qvb = h(localXmlPullParser);
-          paramString = (String)localObject;
-        }
-        else
-        {
-          paramString = (String)localObject;
-          if (((String)localObject).equals("sound"))
-          {
-            this.qvq.qvc = h(localXmlPullParser);
-            paramString = (String)localObject;
-            continue;
-            String str = localXmlPullParser.getText();
-            paramString = (String)localObject;
-            if (str != null)
-            {
-              paramString = (String)localObject;
-              if (str.trim().length() > 0)
-              {
-                str = str.trim();
-                if (((String)localObject).equals("nickName"))
-                {
-                  this.qvq.blZ = str;
-                  paramString = (String)localObject;
-                }
-                else if (((String)localObject).equals("photoUrl"))
-                {
-                  this.qvq.hJS = str;
-                  paramString = (String)localObject;
-                }
-                else if (((String)localObject).equals("birthday"))
-                {
-                  this.qvq.qvd = str;
-                  paramString = (String)localObject;
-                }
-                else
-                {
-                  s locals;
-                  if (((String)localObject).equals("mobilePhoneNumber"))
-                  {
-                    locals = this.qvq;
-                    if (locals.qvi == null) {
-                      locals.qvi = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!locals.qvi.contains(str))
-                      {
-                        locals.qvi.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("homePhoneNumber"))
-                  {
-                    locals = this.qvq;
-                    if (locals.qvj == null) {
-                      locals.qvj = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!locals.qvj.contains(str))
-                      {
-                        locals.qvj.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("workPhoneNumber"))
-                  {
-                    locals = this.qvq;
-                    if (locals.qvk == null) {
-                      locals.qvk = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!locals.qvk.contains(str))
-                      {
-                        locals.qvk.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("telAVPhoneNumber"))
-                  {
-                    locals = this.qvq;
-                    if (locals.qvl == null) {
-                      locals.qvl = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!locals.qvl.contains(str))
-                      {
-                        locals.qvl.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("phoneNumber"))
-                  {
-                    locals = this.qvq;
-                    if (locals.qvm == null) {
-                      locals.qvm = new ArrayList();
-                    }
-                    paramString = (String)localObject;
-                    if (str != null)
-                    {
-                      paramString = (String)localObject;
-                      if (!locals.qvm.contains(str))
-                      {
-                        locals.qvm.add(str);
-                        paramString = (String)localObject;
-                      }
-                    }
-                  }
-                  else if (((String)localObject).equals("email"))
-                  {
-                    this.qvq.dqF = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("title"))
-                  {
-                    this.qvq.title = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("role"))
-                  {
-                    this.qvq.qvn = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("agent"))
-                  {
-                    this.qvq.qvo = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("note"))
-                  {
-                    this.qvq.qvp = str;
-                    paramString = (String)localObject;
-                  }
-                  else if (((String)localObject).equals("url"))
-                  {
-                    this.qvq.url = str;
-                    paramString = (String)localObject;
-                  }
-                  else
-                  {
-                    paramString = (String)localObject;
-                    if (((String)localObject).equals("organization"))
-                    {
-                      this.qvq.hKb = str;
-                      paramString = (String)localObject;
-                      continue;
-                      s.qvq = this.qvq;
-                      paramString = (String)localObject;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    default: 
+      return 0;
+    case 1: 
+    case 2: 
+    case 5: 
+      return 1;
+    case 3: 
+      return 2;
     }
-    s.qvq = this.qvq;
-    AppMethodBeat.o(80891);
+    return 3;
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(51628);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(51628);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1061;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(51630);
+    Log.d("MicroMsg.scanner.NetSceneScanBarcode", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(51630);
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    AppMethodBeat.i(51629);
+    params = (qy)c.b.b(((c)params).otB);
+    if ((params.vhJ < 0) || (params.YVS == null) || (params.YVS.length() <= 0))
+    {
+      Log.e("MicroMsg.scanner.NetSceneScanBarcode", "securityVerificationChecked failed, Type = " + params.vhJ + ", Barcode = %s" + params.YVS);
+      params = p.b.oui;
+      AppMethodBeat.o(51629);
+      return params;
+    }
+    params = p.b.ouh;
+    AppMethodBeat.o(51629);
+    return params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.t
  * JD-Core Version:    0.7.0.1
  */

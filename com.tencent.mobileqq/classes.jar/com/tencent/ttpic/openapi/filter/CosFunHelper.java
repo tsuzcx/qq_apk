@@ -2,7 +2,7 @@ package com.tencent.ttpic.openapi.filter;
 
 public class CosFunHelper
 {
-  public static CosFunHelper.CountDownListener countDownListener = null;
+  public static CosFunHelper.CountDownListener countDownListener;
   public static boolean isRestart = false;
   
   public static void setCountDownListener(CosFunHelper.CountDownListener paramCountDownListener)
@@ -12,7 +12,7 @@ public class CosFunHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CosFunHelper
  * JD-Core Version:    0.7.0.1
  */

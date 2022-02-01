@@ -1,13 +1,9 @@
-import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.biz.ProtoServlet;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import java.util.Queue;
 
 public class fgs
   extends Handler
@@ -21,30 +17,12 @@ public class fgs
   {
     switch (paramMessage.what)
     {
-    case 2: 
     default: 
       return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
-        ((NewIntent)localObject).putExtra("data", ((fgx)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Fgx = null;
-        return;
-        localObject = this.a.a("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((fgx)paramMessage.obj).a.toByteArray());
-        this.a.b((ToServiceMsg)localObject);
-      }
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    paramMessage = (fgv)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

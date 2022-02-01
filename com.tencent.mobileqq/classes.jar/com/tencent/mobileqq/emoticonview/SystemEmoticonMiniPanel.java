@@ -1,28 +1,31 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.view.View;
-import apuc;
-import apzh;
+import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SystemEmoticonMiniPanel
   extends SystemEmoticonPanel
 {
-  protected void a(Context paramContext, apuc paramapuc)
+  public SystemEmoticonMiniPanel(Context paramContext, EmoticonCallback paramEmoticonCallback, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131375192));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379906));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
+    super(paramContext, paramEmoticonCallback, paramBoolean);
+  }
+  
+  protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
+  {
+    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131444153));
+    this.viewPager = ((ViewPager)this.root.findViewById(2131449793));
+    this.pageRadioGroup.setViewPager(this.viewPager);
+    this.pageAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(new apzh(paramContext, paramapuc, 0, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.getCount());
+    localArrayList.add(new SystemEmoticonPanelMiniBinder(paramContext, paramEmoticonCallback, 0, this.mIsHighDifinition));
+    this.pageAdapter.setViewBinderList(localArrayList);
+    this.viewPager.setAdapter(this.pageAdapter);
+    this.viewPager.setCurrentItem(0);
+    this.pageRadioGroup.synButton(this.pageAdapter.getCount());
   }
 }
 

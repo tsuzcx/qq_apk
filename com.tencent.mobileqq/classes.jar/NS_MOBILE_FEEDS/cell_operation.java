@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,45 +21,46 @@ public final class cell_operation
   static Map<Integer, String> cache_recomm_cookie;
   static s_schema cache_schema_info;
   static s_outshare cache_share_info;
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String button_gif_url = "";
-  public Map<String, String> bypass_param;
-  public Map<Integer, Map<String, String>> click_stream_report;
-  public ArrayList<s_op_btn> custom_btn;
-  public Map<Integer, String> droplist_cookie;
-  public Map<Integer, String> feed_report_cookie;
+  public Map<String, String> bypass_param = null;
+  public Map<Integer, Map<String, String>> click_stream_report = null;
+  public ArrayList<s_op_btn> custom_btn = null;
+  public Map<Integer, String> droplist_cookie = null;
+  public Map<Integer, String> feed_report_cookie = null;
   public String generic_url = "";
-  public long offline_resource_bid;
+  public long offline_resource_bid = 0L;
   public String qboss_trace = "";
   public String qq_url = "";
-  public Map<Integer, String> rank_param;
-  public Map<Integer, String> recomm_cookie;
-  public s_schema schema_info;
-  public s_outshare share_info;
+  public Map<Integer, String> rank_param = null;
+  public Map<Integer, String> recomm_cookie = null;
+  public s_schema schema_info = null;
+  public s_outshare share_info = null;
   public String weixin_url = "";
   
   static
   {
-    cache_busi_param.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_busi_param.put(localInteger, "");
     cache_share_info = new s_outshare();
     cache_schema_info = new s_schema();
     cache_recomm_cookie = new HashMap();
-    cache_recomm_cookie.put(Integer.valueOf(0), "");
+    cache_recomm_cookie.put(localInteger, "");
     cache_click_stream_report = new HashMap();
     Object localObject = new HashMap();
     ((Map)localObject).put("", "");
-    cache_click_stream_report.put(Integer.valueOf(0), localObject);
+    cache_click_stream_report.put(localInteger, localObject);
     cache_custom_btn = new ArrayList();
     localObject = new s_op_btn();
     cache_custom_btn.add(localObject);
     cache_feed_report_cookie = new HashMap();
-    cache_feed_report_cookie.put(Integer.valueOf(0), "");
+    cache_feed_report_cookie.put(localInteger, "");
     cache_bypass_param = new HashMap();
     cache_bypass_param.put("", "");
     cache_droplist_cookie = new HashMap();
-    cache_droplist_cookie.put(Integer.valueOf(0), "");
+    cache_droplist_cookie.put(localInteger, "");
     cache_rank_param = new HashMap();
-    cache_rank_param.put(Integer.valueOf(0), "");
+    cache_rank_param.put(localInteger, "");
   }
   
   public cell_operation() {}
@@ -105,57 +107,72 @@ public final class cell_operation
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 0);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.weixin_url != null) {
-      paramJceOutputStream.write(this.weixin_url, 1);
+    localObject = this.weixin_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.qq_url != null) {
-      paramJceOutputStream.write(this.qq_url, 2);
+    localObject = this.qq_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.share_info != null) {
-      paramJceOutputStream.write(this.share_info, 3);
+    localObject = this.share_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.schema_info != null) {
-      paramJceOutputStream.write(this.schema_info, 4);
+    localObject = this.schema_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.recomm_cookie != null) {
-      paramJceOutputStream.write(this.recomm_cookie, 5);
+    localObject = this.recomm_cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.click_stream_report != null) {
-      paramJceOutputStream.write(this.click_stream_report, 6);
+    localObject = this.click_stream_report;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.qboss_trace != null) {
-      paramJceOutputStream.write(this.qboss_trace, 7);
+    localObject = this.qboss_trace;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.custom_btn != null) {
-      paramJceOutputStream.write(this.custom_btn, 8);
+    localObject = this.custom_btn;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.feed_report_cookie != null) {
-      paramJceOutputStream.write(this.feed_report_cookie, 9);
+    localObject = this.feed_report_cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
-    if (this.generic_url != null) {
-      paramJceOutputStream.write(this.generic_url, 10);
+    localObject = this.generic_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.bypass_param != null) {
-      paramJceOutputStream.write(this.bypass_param, 11);
+    localObject = this.bypass_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
-    if (this.droplist_cookie != null) {
-      paramJceOutputStream.write(this.droplist_cookie, 12);
+    localObject = this.droplist_cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.rank_param != null) {
-      paramJceOutputStream.write(this.rank_param, 13);
+    localObject = this.rank_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.button_gif_url != null) {
-      paramJceOutputStream.write(this.button_gif_url, 14);
+    localObject = this.button_gif_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.offline_resource_bid, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_operation
  * JD-Core Version:    0.7.0.1
  */

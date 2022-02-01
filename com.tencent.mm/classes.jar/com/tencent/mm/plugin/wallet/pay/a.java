@@ -11,30 +11,30 @@ public class a
 {
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(45861);
+    AppMethodBeat.i(69202);
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
     a(paramActivity, "wallet", ".pay.ui.WalletPayUI", -1, localIntent, false);
-    AppMethodBeat.o(45861);
+    AppMethodBeat.o(69202);
   }
   
-  public final String bzC()
+  public final String fud()
   {
     return "BindCardForPayProcess";
   }
   
-  public final void e(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(45860);
+    AppMethodBeat.i(69201);
     if (paramActivity != null) {
       paramActivity.finish();
     }
-    AppMethodBeat.o(45860);
+    AppMethodBeat.o(69201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a
  * JD-Core Version:    0.7.0.1
  */

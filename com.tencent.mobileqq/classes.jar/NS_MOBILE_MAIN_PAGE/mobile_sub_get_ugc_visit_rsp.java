@@ -33,18 +33,20 @@ public final class mobile_sub_get_ugc_visit_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.visit != null) {
-      paramJceOutputStream.write(this.visit, 0);
+    Object localObject = this.visit;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.page != null) {
-      paramJceOutputStream.write(this.page, 1);
+    localObject = this.page;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.end, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_get_ugc_visit_rsp
  * JD-Core Version:    0.7.0.1
  */

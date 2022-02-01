@@ -29,7 +29,7 @@ public class FilmNoiseFilter
     this.mListItems = null;
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     super.onInitialized();
     int i = getProgram();
@@ -46,44 +46,50 @@ public class FilmNoiseFilter
   
   public boolean process(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if ((paramInt < 0) || (this.mListItems == null) || (this.mListItems.size() == 0)) {}
-    while (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
-      return false;
-    }
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.mTextureType, paramInt);
-    GLES20.glUniform1i(this.mUniInputTexture, 0);
-    float f1 = ((FilmFilter.NoiseItem)this.mListItems.get(0)).mDstRect.width();
-    float f2 = Math.abs(((FilmFilter.NoiseItem)this.mListItems.get(0)).mDstRect.height());
-    GLES20.glUniform2f(this.mUniNoiseSize, f1, f2);
-    paramInt = 0;
-    if (paramInt < this.mListItems.size())
+    if (paramInt >= 0)
     {
-      paramArrayOfFloat1 = (FilmFilter.NoiseItem)this.mListItems.get(paramInt);
-      if (paramInt == 0) {
-        GLES20.glUniform4f(this.mUniNoise1, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
-      }
-      for (;;)
+      ArrayList localArrayList = this.mListItems;
+      if (localArrayList != null)
       {
-        paramInt += 1;
-        break;
-        if (paramInt == 1) {
-          GLES20.glUniform4f(this.mUniNoise2, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
-        } else if (paramInt == 2) {
-          GLES20.glUniform4f(this.mUniNoise3, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
-        } else if (paramInt == 3) {
-          GLES20.glUniform4f(this.mUniNoise4, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
+        if (localArrayList.size() == 0) {
+          return false;
         }
+        if (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
+          return false;
+        }
+        GLES20.glActiveTexture(33984);
+        GLES20.glBindTexture(this.mTextureType, paramInt);
+        GLES20.glUniform1i(this.mUniInputTexture, 0);
+        float f1 = ((FilmFilter.NoiseItem)this.mListItems.get(0)).mDstRect.width();
+        float f2 = Math.abs(((FilmFilter.NoiseItem)this.mListItems.get(0)).mDstRect.height());
+        GLES20.glUniform2f(this.mUniNoiseSize, f1, f2);
+        paramInt = 0;
+        while (paramInt < this.mListItems.size())
+        {
+          paramArrayOfFloat1 = (FilmFilter.NoiseItem)this.mListItems.get(paramInt);
+          if (paramInt == 0) {
+            GLES20.glUniform4f(this.mUniNoise1, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
+          } else if (paramInt == 1) {
+            GLES20.glUniform4f(this.mUniNoise2, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
+          } else if (paramInt == 2) {
+            GLES20.glUniform4f(this.mUniNoise3, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
+          } else if (paramInt == 3) {
+            GLES20.glUniform4f(this.mUniNoise4, paramArrayOfFloat1.mSrcLength, paramArrayOfFloat1.mSrcX, paramArrayOfFloat1.mDstRect.left, paramArrayOfFloat1.mDstRect.top);
+          }
+          paramInt += 1;
+        }
+        processEnd(true, new int[] { 33984 });
+        return true;
       }
     }
-    processEnd(true, new int[] { 33984 });
-    return true;
+    return false;
   }
   
   public void updateData(ArrayList<FilmFilter.NoiseItem> paramArrayList)
   {
     this.mListItems = paramArrayList;
-    if ((this.mListItems != null) && (this.mListItems.size() < 4))
+    paramArrayList = this.mListItems;
+    if ((paramArrayList != null) && (paramArrayList.size() < 4))
     {
       int j = this.mListItems.size();
       int i = 0;
@@ -97,7 +103,7 @@ public class FilmNoiseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.FilmNoiseFilter
  * JD-Core Version:    0.7.0.1
  */

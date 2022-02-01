@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.List;
-import wxe;
 
 class VideoCoverListBar$3
   implements Runnable
@@ -10,13 +10,14 @@ class VideoCoverListBar$3
   
   public void run()
   {
-    this.this$0.smoothScrollToPositionFromTop(this.a, VideoCoverListBar.a(this.this$0) + VideoCoverListBar.b(this.this$0));
-    wxe.a("Q.qqstory.player:VideoCoverListBar", "notify cover list changed , new index = %d , total size = %d", Integer.valueOf(this.a), Integer.valueOf(VideoCoverListBar.a(this.this$0).size()));
+    VideoCoverListBar localVideoCoverListBar = this.this$0;
+    localVideoCoverListBar.smoothScrollToPositionFromTop(this.a, VideoCoverListBar.b(localVideoCoverListBar) + VideoCoverListBar.c(this.this$0));
+    SLog.a("Q.qqstory.player:VideoCoverListBar", "notify cover list changed , new index = %d , total size = %d", Integer.valueOf(this.a), Integer.valueOf(VideoCoverListBar.d(this.this$0).size()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar.3
  * JD-Core Version:    0.7.0.1
  */

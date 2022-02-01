@@ -5,36 +5,22 @@ import java.util.HashSet;
 
 public final class j
 {
-  private static final HashSet<String> awF;
-  private static String awG;
+  private static final HashSet<String> cGI;
+  private static String cGJ;
   
   static
   {
-    AppMethodBeat.i(94839);
-    awF = new HashSet();
-    awG = "goog.exo.core";
-    AppMethodBeat.o(94839);
+    AppMethodBeat.i(91953);
+    cGI = new HashSet();
+    cGJ = "goog.exo.core";
+    AppMethodBeat.o(91953);
   }
   
-  public static void ak(String paramString)
+  public static String QQ()
   {
     try
     {
-      AppMethodBeat.i(94838);
-      if (awF.add(paramString)) {
-        awG = awG + ", " + paramString;
-      }
-      AppMethodBeat.o(94838);
-      return;
-    }
-    finally {}
-  }
-  
-  public static String mW()
-  {
-    try
-    {
-      String str = awG;
+      String str = cGJ;
       return str;
     }
     finally
@@ -42,6 +28,20 @@ public final class j
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  public static void cE(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(91952);
+      if (cGI.add(paramString)) {
+        cGJ = cGJ + ", " + paramString;
+      }
+      AppMethodBeat.o(91952);
+      return;
+    }
+    finally {}
   }
 }
 

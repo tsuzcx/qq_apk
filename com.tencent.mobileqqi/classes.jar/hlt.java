@@ -1,45 +1,49 @@
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.MyX509TrustManager;
-import com.tencent.qphone.base.util.QLog;
-import java.net.Socket;
-import java.security.KeyStore;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
+import android.database.Cursor;
+import android.os.Parcel;
+import com.tencent.open.base.http.HttpCacheData;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
+import com.tencent.open.component.cache.database.DbCacheData.Structure;
 
-public class hlt
-  extends org.apache.http.conn.ssl.SSLSocketFactory
+public final class hlt
+  implements DbCacheData.DbCreator
 {
-  SSLContext a = SSLContext.getInstance("TLS");
-  
-  public hlt(KeyStore paramKeyStore)
+  public int a()
   {
-    super(paramKeyStore);
+    return 1;
+  }
+  
+  public HttpCacheData a(Cursor paramCursor)
+  {
     try
     {
-      paramKeyStore = new HttpBaseUtil.MyX509TrustManager();
-      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
-      return;
+      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
+      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
+      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
+      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
+      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
+      paramCursor = Parcel.obtain();
+      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
+      paramCursor.setDataPosition(0);
+      localObject = paramCursor.readString();
+      paramCursor.recycle();
+      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
+      return paramCursor;
     }
-    catch (Exception paramKeyStore)
+    catch (Exception paramCursor)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(HttpBaseUtil.a, 2, paramKeyStore.getMessage());
-        }
-        paramKeyStore = null;
-      }
+      paramCursor.printStackTrace();
     }
+    return null;
   }
   
-  public Socket createSocket()
+  public String a()
   {
-    return this.a.getSocketFactory().createSocket();
+    return null;
   }
   
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  public DbCacheData.Structure[] a()
   {
-    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
+    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
   }
 }
 

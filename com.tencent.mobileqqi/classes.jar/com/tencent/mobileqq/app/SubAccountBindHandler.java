@@ -19,7 +19,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import fgz;
+import fgy;
 import java.util.HashMap;
 import tencent.im.oidb.cmd0x7a0.oidb_0x7a0.LoginSig;
 import tencent.im.oidb.cmd0x7a0.oidb_0x7a0.ReqBody;
@@ -864,7 +864,7 @@ public class SubAccountBindHandler
           try
           {
             paramToServiceMsg = localSubAccountBackProtocData.c;
-            this.a.getSubAccountKey(this.a.getAccount(), localSubAccountBackProtocData.c, new fgz(this, localSubAccountBackProtocData, paramToServiceMsg));
+            this.a.getSubAccountKey(this.a.getAccount(), localSubAccountBackProtocData.c, new fgy(this, localSubAccountBackProtocData, paramToServiceMsg));
             bool1 = true;
           }
           catch (Exception paramToServiceMsg)

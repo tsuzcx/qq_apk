@@ -16,6 +16,7 @@ public class AppBrandContant
   public static final String CONFIG_VER_TYPE = "CONFIG_VER_TYPE";
   public static final String ENGINE_CHANNEL = "engineChannel";
   public static final String FROM_SPLASH = "fromSplash";
+  public static final String LAUNCH_SDK_MODE = "sdk_mode";
   public static final String PROCESS_NAME = "processName";
   public static final String RECEIVER = "receiver";
   public static final String SPLASH_DATA = "splashData";
@@ -31,7 +32,7 @@ public class AppBrandContant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppBrandContant
  * JD-Core Version:    0.7.0.1
  */

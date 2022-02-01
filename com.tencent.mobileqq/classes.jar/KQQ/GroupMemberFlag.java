@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupMemberFlag
   extends JceStruct
 {
-  public byte cUinFlag;
-  public long dwUin;
+  public byte cUinFlag = 0;
+  public long dwUin = 0L;
   
   public GroupMemberFlag() {}
   
@@ -32,7 +32,7 @@ public final class GroupMemberFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.GroupMemberFlag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,31 @@
 package cooperation.qzone;
 
 import android.view.View;
-import bjfm;
-import bjfo;
-import bjfp;
-import bjfq;
 import com.tencent.image.URLDrawable;
 import java.util.List;
 
-public class QzoneGiftFullScreenViewController$3$2
+class QzoneGiftFullScreenViewController$3$2
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$2(bjfo parambjfo) {}
+  QzoneGiftFullScreenViewController$3$2(QzoneGiftFullScreenViewController.3 param3) {}
   
   public void run()
   {
     URLDrawable.resume();
-    ((View)this.a.jdField_a_of_type_Bjfm.a).setBackgroundColor(0);
-    bjfm.a(this.a.jdField_a_of_type_Bjfm);
-    this.a.jdField_a_of_type_Bjfp.a();
-    if (bjfm.a(this.a.jdField_a_of_type_Bjfm).size() > 0)
+    ((View)this.this$1.this$0.magicfaceReceivePlay).setBackgroundColor(0);
+    QzoneGiftFullScreenViewController.access$100(this.this$1.this$0);
+    this.this$1.val$playListener.giftFullScreenPlayEnd();
+    if (QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).size() > 0)
     {
-      bjfq localbjfq = (bjfq)bjfm.a(this.a.jdField_a_of_type_Bjfm).get(0);
-      this.a.jdField_a_of_type_Bjfm.a(localbjfq.jdField_a_of_type_JavaLangString, localbjfq.b, localbjfq.jdField_a_of_type_Boolean, localbjfq.jdField_a_of_type_Bjfp);
-      bjfm.a(this.a.jdField_a_of_type_Bjfm).remove(localbjfq);
+      QzoneGiftFullScreenViewController.MagicData localMagicData = (QzoneGiftFullScreenViewController.MagicData)QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).get(0);
+      this.this$1.this$0.playMaigcface(localMagicData.emotionId, localMagicData.maigcPath, localMagicData.isPassivePraise, localMagicData.playListener);
+      QzoneGiftFullScreenViewController.access$200(this.this$1.this$0).remove(localMagicData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController.3.2
  * JD-Core Version:    0.7.0.1
  */

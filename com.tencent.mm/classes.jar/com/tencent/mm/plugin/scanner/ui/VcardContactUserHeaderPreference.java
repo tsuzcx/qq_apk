@@ -6,21 +6,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.i;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class VcardContactUserHeaderPreference
   extends Preference
 {
-  String blZ;
+  String OTZ;
+  private ImageView Pdq;
+  private TextView Pdr;
+  private TextView Pds;
+  private TextView Pdt;
+  private TextView Pdu;
   private final Context context;
-  private ImageView qBN;
-  private TextView qBO;
-  private TextView qBP;
-  private TextView qBQ;
-  private TextView qBR;
-  String qBS;
-  String qvn;
+  String fullName;
+  String nickName;
   String title;
   
   public VcardContactUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -37,38 +39,38 @@ public class VcardContactUserHeaderPreference
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(81360);
+    AppMethodBeat.i(52014);
     super.onBindView(paramView);
-    ab.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
-    this.qBN = ((ImageView)paramView.findViewById(2131828670));
-    this.qBO = ((TextView)paramView.findViewById(2131828671));
-    if (this.qBS != null) {
-      this.qBO.setText(this.qBS);
+    Log.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
+    this.Pdq = ((ImageView)paramView.findViewById(l.f.OJP));
+    this.Pdr = ((TextView)paramView.findViewById(l.f.OJQ));
+    if (this.fullName != null) {
+      this.Pdr.setText(this.fullName);
     }
-    this.qBP = ((TextView)paramView.findViewById(2131828672));
-    if (this.blZ != null)
+    this.Pds = ((TextView)paramView.findViewById(l.f.OJR));
+    if (this.nickName != null)
     {
-      this.qBP.setText(this.context.getString(2131304476, new Object[] { this.blZ }));
-      this.qBP.setVisibility(0);
+      this.Pds.setText(this.context.getString(l.i.OLL, new Object[] { this.nickName }));
+      this.Pds.setVisibility(0);
     }
-    this.qBQ = ((TextView)paramView.findViewById(2131828674));
-    if (this.qvn != null)
+    this.Pdt = ((TextView)paramView.findViewById(l.f.OJS));
+    if (this.OTZ != null)
     {
-      this.qBQ.setText(this.context.getString(2131304481, new Object[] { this.qvn }));
-      this.qBQ.setVisibility(0);
+      this.Pdt.setText(this.context.getString(l.i.OLN, new Object[] { this.OTZ }));
+      this.Pdt.setVisibility(0);
     }
-    this.qBR = ((TextView)paramView.findViewById(2131828673));
+    this.Pdu = ((TextView)paramView.findViewById(l.f.OJT));
     if (this.title != null)
     {
-      this.qBR.setText(this.context.getString(2131304482, new Object[] { this.title }));
-      this.qBR.setVisibility(0);
+      this.Pdu.setText(this.context.getString(l.i.OLO, new Object[] { this.title }));
+      this.Pdu.setVisibility(0);
     }
-    AppMethodBeat.o(81360);
+    AppMethodBeat.o(52014);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.VcardContactUserHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

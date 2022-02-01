@@ -23,14 +23,15 @@ public final class oidb_0x8f9$LiteMailBrief
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 64 }, new String[] { "bytes_feeds_id", "msg_source_id", "uint32_last_modify_time", "uint32_create_time", "uint32_my_read_status", "uint64_author_uin", "bytes_feeds_summary", "uint32_summary_truncate_flag" }, new Object[] { localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0) }, LiteMailBrief.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 64 }, new String[] { "bytes_feeds_id", "msg_source_id", "uint32_last_modify_time", "uint32_create_time", "uint32_my_read_status", "uint64_author_uin", "bytes_feeds_summary", "uint32_summary_truncate_flag" }, new Object[] { localByteStringMicro1, null, localInteger, localInteger, localInteger, Long.valueOf(0L), localByteStringMicro2, localInteger }, LiteMailBrief.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.LiteMailBrief
  * JD-Core Version:    0.7.0.1
  */

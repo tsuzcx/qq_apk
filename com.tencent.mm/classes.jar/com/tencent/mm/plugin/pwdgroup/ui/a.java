@@ -13,87 +13,91 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.plugin.pwdgroup.b.a;
-import com.tencent.mm.protocal.protobuf.abw;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.ara;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class a
   extends BaseAdapter
 {
-  private LinkedList<abw> lqf;
+  private Animation JNq;
+  private Animation Nho;
+  private Animation Nhp;
+  private HashMap<String, Boolean> Nhq;
   private Context mContext;
-  private Animation nTC;
-  private Animation pGP;
-  private Animation pGQ;
-  private HashMap<String, Boolean> pGR;
+  private LinkedList<ara> xWZ;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(24033);
-    this.lqf = new LinkedList();
-    this.pGR = new HashMap();
+    AppMethodBeat.i(27672);
+    this.xWZ = new LinkedList();
+    this.Nhq = new HashMap();
     this.mContext = paramContext;
-    this.nTC = AnimationUtils.loadAnimation(this.mContext, 2131034125);
-    this.pGQ = AnimationUtils.loadAnimation(this.mContext, 2131034125);
-    this.pGP = AnimationUtils.loadAnimation(this.mContext, 2131034126);
-    this.nTC.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.pGQ.setInterpolator(new AccelerateInterpolator());
-    this.pGP.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.nTC.setDuration(300L);
-    this.pGQ.setDuration(1000L);
-    this.pGP.setDuration(1000L);
-    AppMethodBeat.o(24033);
+    this.JNq = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
+    this.Nhp = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
+    this.Nho = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_out);
+    this.JNq.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.Nhp.setInterpolator(new AccelerateInterpolator());
+    this.Nho.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.JNq.setDuration(300L);
+    this.Nhp.setDuration(1000L);
+    this.Nho.setDuration(1000L);
+    AppMethodBeat.o(27672);
   }
   
-  private static String a(abw paramabw)
+  private static String a(ara paramara)
   {
-    AppMethodBeat.i(24038);
-    if (paramabw == null)
+    AppMethodBeat.i(27677);
+    if (paramara == null)
     {
-      AppMethodBeat.o(24038);
+      AppMethodBeat.o(27677);
       return "";
     }
-    if (bo.isNullOrNil(paramabw.jJA))
+    if (Util.isNullOrNil(paramara.UserName))
     {
-      paramabw = paramabw.wSo;
-      AppMethodBeat.o(24038);
-      return paramabw;
+      paramara = paramara.Zyp;
+      AppMethodBeat.o(27677);
+      return paramara;
     }
-    paramabw = paramabw.jJA;
-    AppMethodBeat.o(24038);
-    return paramabw;
+    paramara = paramara.UserName;
+    AppMethodBeat.o(27677);
+    return paramara;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(24035);
-    if (this.lqf == null)
+    AppMethodBeat.i(27674);
+    if (this.xWZ == null)
     {
-      AppMethodBeat.o(24035);
+      AppMethodBeat.o(27674);
       return 1;
     }
-    int i = this.lqf.size();
-    AppMethodBeat.o(24035);
+    int i = this.xWZ.size();
+    AppMethodBeat.o(27674);
     return i + 1;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(24036);
-    if (this.lqf == null)
+    AppMethodBeat.i(27675);
+    if (this.xWZ == null)
     {
-      AppMethodBeat.o(24036);
+      AppMethodBeat.o(27675);
       return null;
     }
-    if (paramInt >= this.lqf.size())
+    if (paramInt >= this.xWZ.size())
     {
-      AppMethodBeat.o(24036);
+      AppMethodBeat.o(27675);
       return null;
     }
-    Object localObject = this.lqf.get(paramInt);
-    AppMethodBeat.o(24036);
+    Object localObject = this.xWZ.get(paramInt);
+    AppMethodBeat.o(27675);
     return localObject;
   }
   
@@ -104,95 +108,121 @@ public final class a
   
   public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(24037);
+    AppMethodBeat.i(27676);
     Object localObject;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2130969523, null);
-      paramViewGroup = new a.a(this, paramView);
+      paramView = LayoutInflater.from(this.mContext).inflate(R.i.gjR, null);
+      paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
-      localObject = (abw)getItem(paramInt);
+      localObject = (ara)getItem(paramInt);
       if (localObject != null)
       {
-        if (!bo.isNullOrNil(((abw)localObject).jKG)) {
-          break label260;
+        if (!Util.isNullOrNil(((ara)localObject).vhX)) {
+          break label262;
         }
-        paramViewGroup.gui.setText(((abw)localObject).jJA);
-        label84:
-        if (bo.isNullOrNil(((abw)localObject).jJA)) {
-          break label275;
+        paramViewGroup.mll.setText(((ara)localObject).UserName);
+        label85:
+        if (Util.isNullOrNil(((ara)localObject).UserName)) {
+          break label277;
         }
-        b.a.c(paramViewGroup.iTH, ((abw)localObject).jJA);
+        b.a.g(paramViewGroup.dpM, ((ara)localObject).UserName);
       }
     }
     for (;;)
     {
-      localObject = a((abw)localObject);
+      localObject = a((ara)localObject);
       paramView.clearAnimation();
-      if ((this.pGR.containsKey(localObject)) && (!((Boolean)this.pGR.get(localObject)).booleanValue()))
+      if ((this.Nhq.containsKey(localObject)) && (!((Boolean)this.Nhq.get(localObject)).booleanValue()))
       {
-        paramView.startAnimation(this.nTC);
-        this.pGR.put(localObject, Boolean.TRUE);
+        paramView.startAnimation(this.JNq);
+        this.Nhq.put(localObject, Boolean.TRUE);
       }
       if (paramInt + 1 == getCount())
       {
-        paramViewGroup.gui.setText("");
-        paramViewGroup.iTH.setImageResource(2130837611);
+        paramViewGroup.mll.setText("");
+        paramViewGroup.dpM.setImageResource(R.g.fmo);
         if (paramView != null)
         {
-          this.pGQ.setAnimationListener(new a.1(this, paramView));
-          this.pGP.setAnimationListener(new Animation.AnimationListener()
+          this.Nhp.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
-              AppMethodBeat.i(24031);
-              paramView.startAnimation(a.b(a.this));
-              AppMethodBeat.o(24031);
+              AppMethodBeat.i(27669);
+              paramView.startAnimation(a.a(a.this));
+              AppMethodBeat.o(27669);
             }
             
             public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          paramView.startAnimation(this.pGQ);
+          this.Nho.setAnimationListener(new Animation.AnimationListener()
+          {
+            public final void onAnimationEnd(Animation paramAnonymousAnimation)
+            {
+              AppMethodBeat.i(27670);
+              paramView.startAnimation(a.b(a.this));
+              AppMethodBeat.o(27670);
+            }
+            
+            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+            
+            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+          });
+          paramView.startAnimation(this.Nhp);
         }
       }
-      AppMethodBeat.o(24037);
+      AppMethodBeat.o(27676);
       return paramView;
-      paramViewGroup = (a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
-      label260:
-      paramViewGroup.gui.setText(((abw)localObject).jKG);
-      break label84;
-      label275:
-      b.a.c(paramViewGroup.iTH, ((abw)localObject).wSo);
+      label262:
+      paramViewGroup.mll.setText(((ara)localObject).vhX);
+      break label85;
+      label277:
+      b.a.g(paramViewGroup.dpM, ((ara)localObject).Zyp);
     }
   }
   
-  public final void setData(LinkedList<abw> paramLinkedList)
+  public final void setData(LinkedList<ara> paramLinkedList)
   {
-    AppMethodBeat.i(24034);
-    this.lqf = paramLinkedList;
-    if ((this.lqf != null) && (this.lqf.size() > 0))
+    AppMethodBeat.i(27673);
+    this.xWZ = paramLinkedList;
+    if ((this.xWZ != null) && (this.xWZ.size() > 0))
     {
-      int j = this.lqf.size();
+      int j = this.xWZ.size();
       int i = 0;
       while (i < j)
       {
-        paramLinkedList = a((abw)this.lqf.get(i));
-        if (!this.pGR.containsKey(paramLinkedList)) {
-          this.pGR.put(paramLinkedList, Boolean.FALSE);
+        paramLinkedList = a((ara)this.xWZ.get(i));
+        if (!this.Nhq.containsKey(paramLinkedList)) {
+          this.Nhq.put(paramLinkedList, Boolean.FALSE);
         }
         i += 1;
       }
     }
     notifyDataSetChanged();
-    AppMethodBeat.o(24034);
+    AppMethodBeat.o(27673);
+  }
+  
+  final class a
+  {
+    ImageView dpM;
+    TextView mll;
+    
+    public a(View paramView)
+    {
+      AppMethodBeat.i(27671);
+      this.dpM = ((ImageView)paramView.findViewById(R.h.fHB));
+      this.mll = ((TextView)paramView.findViewById(R.h.fHK));
+      AppMethodBeat.o(27671);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.a
  * JD-Core Version:    0.7.0.1
  */

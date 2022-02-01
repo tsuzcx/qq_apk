@@ -22,17 +22,20 @@ class c
 {
   public b a = null;
   public int b = 5;
-  private final String c = "http://tcdns.myqcloud.com/queryip";
-  private final String d = "forward_stream";
-  private final String e = "forward_num";
-  private final String f = "request_type";
-  private final String g = "sdk_version";
-  private final String h = "51451748-d8f2-4629-9071-db2983aa7251";
-  private Thread i = null;
+  private final String c = "https://tcdns.myqcloud.com/queryip";
+  private final String d = "https://tcdnsipv6.myqcloud.com/queryip";
+  private final String e = "forward_stream";
+  private final String f = "forward_num";
+  private final String g = "request_type";
+  private final String h = "sdk_version";
+  private final String i = "51451748-d8f2-4629-9071-db2983aa7251";
+  private final int j = 5;
+  private final int k = 2;
+  private Thread l = null;
   
   private a a(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67453);
+    AppMethodBeat.i(15391);
     a locala = new a();
     try
     {
@@ -40,121 +43,154 @@ class c
       locala.b = paramJSONObject.getString("port");
       locala.e = 0;
       locala.c = false;
-      locala.d = b(locala.a);
+      locala.d = c(locala.a);
       if ((paramJSONObject.has("type")) && (paramJSONObject.getInt("type") == 2)) {
         locala.c = true;
       }
-      AppMethodBeat.o(67453);
+      AppMethodBeat.o(15391);
       return locala;
     }
     catch (JSONException paramJSONObject)
     {
-      AppMethodBeat.o(67453);
+      TXCLog.e("TXCIntelligentRoute", "get ip record from json object failed.", paramJSONObject);
+      AppMethodBeat.o(15391);
     }
     return null;
   }
   
+  private String a(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(229599);
+    StringBuffer localStringBuffer = new StringBuffer("");
+    try
+    {
+      paramString1 = b(paramString1, paramInt, paramString2);
+      if (paramString1 == null)
+      {
+        AppMethodBeat.o(229599);
+        return "";
+      }
+      paramString1 = new BufferedReader(new InputStreamReader(paramString1));
+      for (;;)
+      {
+        paramString2 = paramString1.readLine();
+        if (paramString2 == null) {
+          break;
+        }
+        localStringBuffer.append(paramString2);
+      }
+      return paramString1;
+    }
+    catch (IOException paramString1)
+    {
+      TXCLog.e("TXCIntelligentRoute", "get json string from url failed.", paramString1);
+      paramString1 = localStringBuffer.toString();
+      AppMethodBeat.o(229599);
+    }
+  }
+  
   private ArrayList<a> a(String paramString)
   {
-    int m = 0;
-    AppMethodBeat.i(67452);
+    int i1 = 0;
+    AppMethodBeat.i(15390);
     Object localObject = new ArrayList();
     for (;;)
     {
-      int j;
-      int k;
+      int m;
+      int n;
       try
       {
         paramString = new JSONObject(paramString);
-        j = paramString.getInt("state");
-        if (j != 0)
+        m = paramString.getInt("state");
+        if (m != 0)
         {
-          AppMethodBeat.o(67452);
+          AppMethodBeat.o(15390);
           return null;
         }
         paramString = paramString.getJSONObject("content").getJSONArray("list");
         if (paramString == null)
         {
-          AppMethodBeat.o(67452);
+          AppMethodBeat.o(15390);
           return null;
         }
-        j = 0;
-        k = m;
+        m = 0;
+        n = i1;
         a locala;
-        if (j < paramString.length())
+        if (m < paramString.length())
         {
-          locala = a((JSONObject)paramString.opt(j));
+          locala = a((JSONObject)paramString.opt(m));
           if ((locala == null) || (!locala.c)) {
-            break label315;
+            break label331;
           }
           ((ArrayList)localObject).add(locala);
-          break label315;
+          break label331;
         }
-        if (k < paramString.length())
+        if (n < paramString.length())
         {
-          locala = a((JSONObject)paramString.opt(k));
+          locala = a((JSONObject)paramString.opt(n));
           if ((locala == null) || (locala.c)) {
-            break label322;
+            break label338;
           }
           ((ArrayList)localObject).add(locala);
-          break label322;
+          break label338;
         }
-        if ((com.tencent.liteav.basic.e.b.a().a("Network", "EnableRouteOptimize") == 1L) && (i.a().c()))
+        if ((com.tencent.liteav.basic.d.c.a().a("Network", "EnableRouteOptimize") == 1L) && (k.a().c()))
         {
           paramString = a((ArrayList)localObject, true);
           localObject = paramString;
           paramString = (String)localObject;
         }
       }
-      catch (JSONException paramString)
+      catch (JSONException localJSONException1)
       {
         long l1;
         long l2;
         paramString = (String)localObject;
-        AppMethodBeat.o(67452);
+        TXCLog.e("TXCIntelligentRoute", "get records from json string failed.", localJSONException1);
+        AppMethodBeat.o(15390);
         return paramString;
       }
       try
       {
         a((ArrayList)localObject);
-        AppMethodBeat.o(67452);
+        AppMethodBeat.o(15390);
         return localObject;
       }
-      catch (JSONException localJSONException)
+      catch (JSONException localJSONException2)
       {
         continue;
         continue;
       }
-      l1 = com.tencent.liteav.basic.e.b.a().a("Network", "RouteSamplingMaxCount");
+      l1 = com.tencent.liteav.basic.d.c.a().a("Network", "RouteSamplingMaxCount");
       if (l1 >= 1L)
       {
-        l2 = i.a().a("51451748-d8f2-4629-9071-db2983aa7251");
+        l2 = k.a().a("51451748-d8f2-4629-9071-db2983aa7251");
         if (l2 <= l1)
         {
           paramString = a((ArrayList)localObject, false);
           localObject = paramString;
           paramString = (String)localObject;
-          i.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
+          k.a().a("51451748-d8f2-4629-9071-db2983aa7251", l2 + 1L);
           paramString = (String)localObject;
           a((ArrayList)localObject);
-          AppMethodBeat.o(67452);
+          AppMethodBeat.o(15390);
           return localObject;
         }
       }
-      label315:
-      j += 1;
+      label331:
+      m += 1;
       continue;
-      label322:
-      k += 1;
+      label338:
+      n += 1;
     }
   }
   
   private ArrayList<a> a(ArrayList<a> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(67456);
+    AppMethodBeat.i(15394);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      AppMethodBeat.o(67456);
+      AppMethodBeat.o(15394);
       return null;
     }
     Object localObject2 = new ArrayList();
@@ -173,7 +209,7 @@ class c
       }
     }
     Object localObject1 = new ArrayList();
-    label251:
+    label253:
     while ((((ArrayList)localObject2).size() > 0) || (localArrayList.size() > 0))
     {
       if (paramBoolean)
@@ -190,7 +226,7 @@ class c
       for (;;)
       {
         if (localArrayList.size() <= 0) {
-          break label251;
+          break label253;
         }
         ((ArrayList)localObject1).add(localArrayList.get(0));
         localArrayList.remove(0);
@@ -205,21 +241,21 @@ class c
         }
       }
     }
-    int j = ((ArrayList)localObject1).size();
-    if (j > 0)
+    int m = ((ArrayList)localObject1).size();
+    if (m > 0)
     {
-      localObject2 = (a)((ArrayList)localObject1).get(j - 1);
-      if ((localObject2 != null) && (!b(((a)localObject2).a)) && (paramArrayList != null)) {
+      localObject2 = (a)((ArrayList)localObject1).get(m - 1);
+      if ((localObject2 != null) && (!c(((a)localObject2).a)) && (paramArrayList != null)) {
         ((ArrayList)localObject1).add(paramArrayList);
       }
     }
-    AppMethodBeat.o(67456);
+    AppMethodBeat.o(15394);
     return localObject1;
   }
   
   private void a(ArrayList<a> paramArrayList)
   {
-    AppMethodBeat.i(67457);
+    AppMethodBeat.i(15395);
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       Iterator localIterator = paramArrayList.iterator();
@@ -229,123 +265,184 @@ class c
       }
       TXCLog.e("TXCIntelligentRoute", paramArrayList);
     }
-    AppMethodBeat.o(67457);
+    AppMethodBeat.o(15395);
   }
   
-  private String b(String paramString, int paramInt)
+  private InputStream b(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(67450);
-    StringBuffer localStringBuffer = new StringBuffer("");
-    try
+    AppMethodBeat.i(229603);
+    paramString2 = new URL(paramString2).openConnection();
+    for (;;)
     {
-      paramString = c(paramString, paramInt);
-      if (paramString == null)
+      try
       {
-        AppMethodBeat.o(67450);
-        return "";
-      }
-      paramString = new BufferedReader(new InputStreamReader(paramString));
-      for (;;)
-      {
-        String str = paramString.readLine();
-        if (str == null) {
-          break;
+        paramString2 = (HttpURLConnection)paramString2;
+        paramString2.setRequestMethod("GET");
+        paramString2.setRequestProperty("forward_stream", paramString1);
+        paramString2.setRequestProperty("forward_num", "2");
+        paramString2.setRequestProperty("sdk_version", TXCCommonUtil.getSDKVersionStr());
+        if (paramInt != 1) {
+          continue;
         }
-        localStringBuffer.append(str);
+        paramString2.setRequestProperty("request_type", "1");
       }
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      paramString = localStringBuffer.toString();
-      AppMethodBeat.o(67450);
+      catch (Exception paramString1)
+      {
+        TXCLog.e("TXCIntelligentRoute", "http failed.", paramString1);
+        paramString1 = null;
+        continue;
+        paramString2.setRequestProperty("request_type", "3");
+        continue;
+      }
+      if (this.b > 0)
+      {
+        paramString2.setConnectTimeout(this.b * 1000);
+        paramString2.setReadTimeout(this.b * 1000);
+      }
+      paramString2.connect();
+      if (paramString2.getResponseCode() != 200) {
+        continue;
+      }
+      paramString1 = paramString2.getInputStream();
+      AppMethodBeat.o(229603);
+      return paramString1;
+      if (paramInt != 2) {
+        continue;
+      }
+      paramString2.setRequestProperty("request_type", "2");
     }
   }
   
   private boolean b(String paramString)
   {
-    AppMethodBeat.i(67454);
-    if (paramString != null)
+    AppMethodBeat.i(15392);
+    if (paramString.split(":").length > 1)
     {
-      paramString = paramString.split("[.]");
-      int k = paramString.length;
-      int j = 0;
-      while (j < k)
-      {
-        if (!c(paramString[j]))
-        {
-          AppMethodBeat.o(67454);
-          return true;
-        }
-        j += 1;
-      }
+      AppMethodBeat.o(15392);
+      return true;
     }
-    AppMethodBeat.o(67454);
+    AppMethodBeat.o(15392);
     return false;
-  }
-  
-  private InputStream c(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(67451);
-    Object localObject = new URL("http://tcdns.myqcloud.com/queryip").openConnection();
-    for (;;)
-    {
-      try
-      {
-        localObject = (HttpURLConnection)localObject;
-        ((HttpURLConnection)localObject).setRequestMethod("GET");
-        ((HttpURLConnection)localObject).setRequestProperty("forward_stream", paramString);
-        ((HttpURLConnection)localObject).setRequestProperty("forward_num", "2");
-        ((HttpURLConnection)localObject).setRequestProperty("sdk_version", TXCCommonUtil.getSDKVersionStr());
-        if (paramInt != 1) {
-          continue;
-        }
-        ((HttpURLConnection)localObject).setRequestProperty("request_type", "1");
-        if (this.b > 0)
-        {
-          ((HttpURLConnection)localObject).setConnectTimeout(this.b * 1000);
-          ((HttpURLConnection)localObject).setReadTimeout(this.b * 1000);
-        }
-        ((HttpURLConnection)localObject).connect();
-        if (((HttpURLConnection)localObject).getResponseCode() != 200) {
-          continue;
-        }
-        paramString = ((HttpURLConnection)localObject).getInputStream();
-      }
-      catch (Exception paramString)
-      {
-        paramString = null;
-        continue;
-      }
-      AppMethodBeat.o(67451);
-      return paramString;
-      if (paramInt == 2) {
-        ((HttpURLConnection)localObject).setRequestProperty("request_type", "2");
-      } else {
-        ((HttpURLConnection)localObject).setRequestProperty("request_type", "3");
-      }
-    }
   }
   
   private boolean c(String paramString)
   {
-    AppMethodBeat.i(67455);
+    AppMethodBeat.i(15393);
+    if (b(paramString))
+    {
+      AppMethodBeat.o(15393);
+      return false;
+    }
+    if (paramString != null)
+    {
+      paramString = paramString.split("[.]");
+      int n = paramString.length;
+      int m = 0;
+      while (m < n)
+      {
+        if (!d(paramString[m]))
+        {
+          AppMethodBeat.o(15393);
+          return true;
+        }
+        m += 1;
+      }
+    }
+    AppMethodBeat.o(15393);
+    return false;
+  }
+  
+  private boolean d(String paramString)
+  {
+    AppMethodBeat.i(229621);
     boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(67455);
+    AppMethodBeat.o(229621);
     return bool;
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(67449);
-    this.i = new c.1(this, "TXCPushRoute", paramString, paramInt);
-    this.i.start();
-    AppMethodBeat.o(67449);
+    AppMethodBeat.i(15387);
+    this.l = new Thread("TXCPushRoute")
+    {
+      public void run()
+      {
+        AppMethodBeat.i(15469);
+        if (c.this.a == null)
+        {
+          AppMethodBeat.o(15469);
+          return;
+        }
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        for (;;)
+        {
+          Object localObject3 = localArrayList;
+          if (i < 7) {
+            if (i >= 5) {
+              break label131;
+            }
+          }
+          for (localObject3 = "https://tcdns.myqcloud.com/queryip";; localObject3 = "https://tcdnsipv6.myqcloud.com/queryip")
+          {
+            Object localObject2 = localArrayList;
+            try
+            {
+              localObject3 = c.a(c.this, paramString, paramInt, (String)localObject3);
+              try
+              {
+                localObject2 = new JSONObject((String)localObject3);
+                if (!((JSONObject)localObject2).has("use")) {
+                  break;
+                }
+                int j = ((JSONObject)localObject2).getInt("use");
+                if (j != 0) {
+                  break;
+                }
+                localObject3 = localArrayList;
+              }
+              catch (Exception localException2)
+              {
+                do
+                {
+                  localObject2 = localArrayList;
+                  TXCLog.e("TXCIntelligentRoute", "get value from json failed.", localException2);
+                  localObject2 = localArrayList;
+                  localArrayList = c.a(c.this, (String)localObject3);
+                  if (localArrayList == null) {
+                    break;
+                  }
+                  localObject3 = localArrayList;
+                  localObject2 = localArrayList;
+                } while (localArrayList.size() > 0);
+                localObject2 = localArrayList;
+                sleep(1000L, 0);
+              }
+              c.this.a.onFetchDone(0, (ArrayList)localObject3);
+              AppMethodBeat.o(15469);
+              return;
+            }
+            catch (Exception localException1)
+            {
+              for (;;)
+              {
+                label131:
+                TXCLog.e("TXCIntelligentRoute", "get json string failed.", localException1);
+                Object localObject1 = localObject2;
+              }
+            }
+          }
+          i += 1;
+        }
+      }
+    };
+    this.l.start();
+    AppMethodBeat.o(15387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.c
  * JD-Core Version:    0.7.0.1
  */

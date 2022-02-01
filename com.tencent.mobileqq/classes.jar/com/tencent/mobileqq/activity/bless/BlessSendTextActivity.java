@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahcr;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import azqs;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.ArrayList;
 
@@ -24,13 +26,13 @@ public class BlessSendTextActivity
   extends BaseActivity
   implements TextWatcher, View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  private ahcr jdField_a_of_type_Ahcr;
-  View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  protected RelativeLayout a;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  ArrayList<String> a;
+  EditText b;
+  View c;
+  protected RelativeLayout d;
+  int e = 0;
+  private boolean f = false;
+  private BlessManager g;
   
   private void a(IBinder paramIBinder)
   {
@@ -41,38 +43,40 @@ public class BlessSendTextActivity
   
   private void b()
   {
-    ((ImmersiveTitleBar2)findViewById(2131378030)).setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377938);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131165341));
-    findViewById(2131368655).setOnClickListener(this);
-    findViewById(2131364101).setOnClickListener(this);
-    findViewById(2131363705).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365602));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    ((ImmersiveTitleBar2)findViewById(2131447582)).setVisibility(4);
+    this.c = findViewById(2131447463);
+    this.c.setBackgroundColor(getResources().getColor(2131165599));
+    findViewById(2131436211).setOnClickListener(this);
+    findViewById(2131430481).setOnClickListener(this);
+    findViewById(2131430011).setOnClickListener(this);
+    this.b = ((EditText)findViewById(2131432352));
+    this.b.addTextChangedListener(this);
+    Object localObject = this.a;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.b.setText((CharSequence)this.a.get(this.e));
+      localObject = this.b;
+      ((EditText)localObject).setSelection(((EditText)localObject).getText().length());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363017));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.d = ((RelativeLayout)findViewById(2131429205));
+    this.d.setOnClickListener(this);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (this.e < this.a.size())
     {
-      String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      this.jdField_a_of_type_JavaUtilArrayList.set(this.jdField_a_of_type_Int, str);
-      this.jdField_a_of_type_Ahcr.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
+      String str = this.b.getText().toString();
+      this.a.set(this.e, str);
+      this.g.a(this.e, str, this.a.size());
     }
   }
   
   public void a()
   {
-    azqs.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
     finish();
-    overridePendingTransition(2130771997, 2130772001);
+    overridePendingTransition(2130772014, 2130772018);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -82,74 +86,42 @@ public class BlessSendTextActivity
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558681);
-    this.jdField_a_of_type_Ahcr = ((ahcr)this.app.getManager(138));
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Ahcr.b();
+    super.setContentView(2131624334);
+    this.g = ((BlessManager)this.app.getManager(QQManagerFactory.SEND_BLESS_CONFIG_MANAGER));
+    this.a = this.g.t();
     b();
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromoutweb", false);
+    this.f = getIntent().getBooleanExtra("fromoutweb", false);
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131364101: 
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
-      c();
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {}
-      for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int += 1)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
-        return;
-      }
-    case 2131363705: 
-      paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (paramView.equals(""))
-      {
-        QQToast.a(this, 2131690548, 1).a();
-        return;
-      }
-      c();
-      Intent localIntent = new Intent(this, BlessSelectMemberActivity.class);
-      localIntent.putExtra("param_type", 9003);
-      localIntent.putExtra("param_entrance", 15);
-      localIntent.putExtra("param_only_friends", true);
-      localIntent.putExtra("param_donot_need_contacts", true);
-      localIntent.putExtra("param_title", getString(2131690565));
-      localIntent.putExtra("param_done_button_wording", getString(2131691089));
-      localIntent.putExtra("param_exit_animation", 1);
-      localIntent.putExtra("param_blesstype", 1);
-      localIntent.putExtra("param_blessword_content", paramView);
-      startActivity(localIntent);
-      overridePendingTransition(2130771992, 2130771993);
-      paramView = this.app;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        azqs.b(paramView, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
-        return;
-        i = 0;
-      }
-    case 2131363017: 
-      a(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken());
-      return;
-    }
-    a();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)

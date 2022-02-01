@@ -17,18 +17,21 @@ public class tlv_t52d
     if ((paramContext != null) && (paramContext.length > 0))
     {
       set_data(paramContext, paramContext.length);
-      util.LOGI("get_tlv_52d success " + paramContext.length, "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get_tlv_52d success ");
+      localStringBuilder.append(paramContext.length);
+      util.LOGI(localStringBuilder.toString(), "");
     }
-    for (;;)
+    else
     {
-      return get_buf();
       util.LOGI("get_tlv_52d failed", "");
     }
+    return get_buf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t52d
  * JD-Core Version:    0.7.0.1
  */

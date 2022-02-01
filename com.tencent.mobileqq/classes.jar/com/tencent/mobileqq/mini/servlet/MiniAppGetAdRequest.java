@@ -51,16 +51,20 @@ public class MiniAppGetAdRequest
   
   public static MiniAppAd.StGetAdRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppAd.StGetAdRsp localStGetAdRsp = new MiniAppAd.StGetAdRsp();
+    Object localObject = new MiniAppAd.StGetAdRsp();
     try
     {
-      localStGetAdRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetAdRsp;
+      ((MiniAppAd.StGetAdRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniAppGetAdRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("MiniAppGetAdRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -73,7 +77,7 @@ public class MiniAppGetAdRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAdRequest
  * JD-Core Version:    0.7.0.1
  */

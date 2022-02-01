@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.db;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.autogen.b.ff;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/autogen/table/BaseMMStoryHistoryItem;", "()V", "value", "", "date", "getDate", "()Ljava/lang/String;", "setDate", "(Ljava/lang/String;)V", "", "storyCount", "getStoryCount", "()I", "setStoryCount", "(I)V", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toString", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/autogen/table/BaseMMStoryHistoryItem;", "()V", "value", "", "date", "getDate", "()Ljava/lang/String;", "setDate", "(Ljava/lang/String;)V", "", "storyCount", "getStoryCount", "()I", "setStoryCount", "(I)V", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "getStoryInfo", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "setStoryInfo", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;)V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toString", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends db
+  extends ff
 {
-  private static final String TAG = "MicroMsg.StoryHistoryInfo";
-  private static final c.a info;
-  public static final h.a sGI;
-  public j szQ;
+  public static final h.a Stc;
+  private static final String TAG;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  public j SnL;
   
   static
   {
-    AppMethodBeat.i(109906);
-    sGI = new h.a((byte)0);
+    AppMethodBeat.i(119523);
+    Stc = new h.a((byte)0);
     TAG = "MicroMsg.StoryHistoryInfo";
-    info = db.Hm();
-    AppMethodBeat.o(109906);
+    info = ff.aJm();
+    AppMethodBeat.o(119523);
   }
   
   public h()
   {
-    AppMethodBeat.i(109905);
-    this.szQ = new j();
-    AppMethodBeat.o(109905);
+    AppMethodBeat.i(119522);
+    this.SnL = new j();
+    AppMethodBeat.o(119522);
   }
   
-  public final String cEX()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(109902);
+    AppMethodBeat.i(119520);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
+    s.s(localMAutoDBInfo, "info");
+    AppMethodBeat.o(119520);
+    return localMAutoDBInfo;
+  }
+  
+  public final String hzq()
+  {
+    AppMethodBeat.i(119519);
     String str = this.field_date;
-    a.f.b.j.p(str, "field_date");
-    AppMethodBeat.o(109902);
+    s.s(str, "field_date");
+    AppMethodBeat.o(119519);
     return str;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    AppMethodBeat.i(109903);
-    c.a locala = info;
-    a.f.b.j.p(locala, "StoryHistoryInfo.info");
-    AppMethodBeat.o(109903);
-    return locala;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(109904);
+    AppMethodBeat.i(119521);
     StringBuilder localStringBuilder = new StringBuilder("StoryHistoryInfo[localId:");
-    Object localObject = this.szQ;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf((int)((j)localObject).systemRowid);; localObject = null)
+    Object localObject = this.SnL;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = Integer.valueOf((int)((j)localObject).systemRowid))
     {
-      localObject = ((Integer)localObject).intValue() + " date:" + cEX() + " count:" + this.field_count + ']';
-      AppMethodBeat.o(109904);
+      localObject = localObject + " date:" + hzq() + " count:" + this.field_count + ']';
+      AppMethodBeat.o(119521);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.h
  * JD-Core Version:    0.7.0.1
  */

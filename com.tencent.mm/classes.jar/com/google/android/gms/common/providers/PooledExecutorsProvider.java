@@ -1,35 +1,36 @@
 package com.google.android.gms.common.providers;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class PooledExecutorsProvider
 {
-  private static PooledExecutorsProvider.PooledExecutorFactory zzvs;
+  private static PooledExecutorFactory zzvs;
   
-  public static PooledExecutorsProvider.PooledExecutorFactory createDefaultFactory()
+  public static PooledExecutorFactory createDefaultFactory()
   {
-    AppMethodBeat.i(89933);
+    AppMethodBeat.i(4955);
     zza localzza = new zza();
-    AppMethodBeat.o(89933);
+    AppMethodBeat.o(4955);
     return localzza;
   }
   
-  public static PooledExecutorsProvider.PooledExecutorFactory getInstance()
+  public static PooledExecutorFactory getInstance()
   {
     try
     {
-      AppMethodBeat.i(89932);
+      AppMethodBeat.i(4954);
       if (zzvs == null) {
         zzvs = createDefaultFactory();
       }
-      PooledExecutorsProvider.PooledExecutorFactory localPooledExecutorFactory = zzvs;
-      AppMethodBeat.o(89932);
+      PooledExecutorFactory localPooledExecutorFactory = zzvs;
+      AppMethodBeat.o(4954);
       return localPooledExecutorFactory;
     }
     finally {}
   }
   
-  public static void setInstance(PooledExecutorsProvider.PooledExecutorFactory paramPooledExecutorFactory)
+  public static void setInstance(PooledExecutorFactory paramPooledExecutorFactory)
   {
     try
     {
@@ -42,10 +43,15 @@ public class PooledExecutorsProvider
       throw paramPooledExecutorFactory;
     }
   }
+  
+  public static abstract interface PooledExecutorFactory
+  {
+    public abstract ScheduledExecutorService newSingleThreadScheduledExecutor();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.providers.PooledExecutorsProvider
  * JD-Core Version:    0.7.0.1
  */

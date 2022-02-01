@@ -5,24 +5,24 @@ import com.tencent.mm.hardcoder.WXHardCoderJNI;
 
 public final class c
 {
-  private int eey = 0;
-  public int eez;
+  private int lyv = 0;
+  public int lyw;
   
-  public final void mD(int paramInt)
+  public final void xJ(int paramInt)
   {
-    this.eey |= paramInt;
+    this.lyv |= paramInt;
   }
   
-  final void mE(int paramInt)
+  final void xK(int paramInt)
   {
-    AppMethodBeat.i(78980);
-    this.eey &= (paramInt ^ 0xFFFFFFFF);
-    if (this.eey == 0)
+    AppMethodBeat.i(151324);
+    this.lyv &= (paramInt ^ 0xFFFFFFFF);
+    if (this.lyv == 0)
     {
-      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.eez);
-      this.eez = 0;
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.lyw);
+      this.lyw = 0;
     }
-    AppMethodBeat.o(78980);
+    AppMethodBeat.o(151324);
   }
 }
 

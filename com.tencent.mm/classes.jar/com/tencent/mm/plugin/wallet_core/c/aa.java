@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -10,60 +12,54 @@ import org.json.JSONObject;
 public final class aa
   extends m
 {
-  public JSONObject hxd;
-  public String uca;
-  
-  public aa(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
+  public aa(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(46545);
-    this.uca = "";
-    this.uca = paramString1;
+    AppMethodBeat.i(69945);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("activity_id", paramString1);
-    localHashMap.put("award_id", paramString2);
-    localHashMap.put("send_record_id", paramString3);
-    localHashMap.put("user_record_id", paramString4);
-    localHashMap.put("activity_mch_id", String.valueOf(paramLong1));
-    localHashMap.put("activity_type", String.valueOf(paramLong2));
-    localHashMap.put("bank_type", String.valueOf(paramString5));
-    localHashMap.put("bank_serial", String.valueOf(paramString6));
-    localHashMap.put("bindbankscene", String.valueOf(paramInt1));
-    localHashMap.put("realname_scene", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(46545);
+    try
+    {
+      localHashMap.put("appid", URLEncoder.encode(paramString1, "UTF-8"));
+      localHashMap.put("timestamp", URLEncoder.encode(paramString2, "UTF-8"));
+      localHashMap.put("noncestr", URLEncoder.encode(paramString3, "UTF-8"));
+      localHashMap.put("package", URLEncoder.encode(paramString4, "UTF-8"));
+      localHashMap.put("sign", URLEncoder.encode(paramString5, "UTF-8"));
+      setRequestData(localHashMap);
+      Log.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "package: %s, sign: %s", new Object[] { paramString4, paramString5 });
+      AppMethodBeat.o(69945);
+      return;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fJsapiCheck", paramString1, "", new Object[0]);
+      AppMethodBeat.o(69945);
+    }
   }
   
   public final int getFuncId()
   {
-    return 1773;
+    return 1973;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 1773;
+    return 0;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/querybindcardaward";
-  }
-  
-  public final boolean isBlock()
-  {
-    return false;
+    return "/cgi-bin/mmpay-bin/f2frcvdlistjsapicheck";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46546);
-    ab.i("MicroMsg.NetSceneTenpayQueryBindPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
-    this.hxd = paramJSONObject;
-    AppMethodBeat.o(46546);
+    AppMethodBeat.i(69946);
+    Log.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.o(69946);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.aa
  * JD-Core Version:    0.7.0.1
  */

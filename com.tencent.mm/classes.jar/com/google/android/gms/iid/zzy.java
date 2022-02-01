@@ -12,20 +12,20 @@ final class zzy
   
   zzy(IBinder paramIBinder)
   {
-    AppMethodBeat.i(57617);
+    AppMethodBeat.i(2571);
     String str = paramIBinder.getInterfaceDescriptor();
     if ("android.os.IMessenger".equals(str))
     {
       this.zzab = new Messenger(paramIBinder);
       this.zzcj = null;
-      AppMethodBeat.o(57617);
+      AppMethodBeat.o(2571);
       return;
     }
     if ("com.google.android.gms.iid.IMessengerCompat".equals(str))
     {
       this.zzcj = new MessengerCompat(paramIBinder);
       this.zzab = null;
-      AppMethodBeat.o(57617);
+      AppMethodBeat.o(2571);
       return;
     }
     paramIBinder = String.valueOf(str);
@@ -35,7 +35,7 @@ final class zzy
     for (;;)
     {
       paramIBinder = new RemoteException();
-      AppMethodBeat.o(57617);
+      AppMethodBeat.o(2571);
       throw paramIBinder;
       new String("Invalid interface descriptor: ");
     }
@@ -43,7 +43,7 @@ final class zzy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzy
  * JD-Core Version:    0.7.0.1
  */

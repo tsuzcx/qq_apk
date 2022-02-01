@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/abh" />
-    <item android:left="-36.0dip">
-        <bitmap android:gravity="center|left" android:src="@drawable/abj" />
-    </item>
-</layer-list>
+    <corners android:radius="4.0dip" />
+    <solid android:color="@color/b" />
+</shape>

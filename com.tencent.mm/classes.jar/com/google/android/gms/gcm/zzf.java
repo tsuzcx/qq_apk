@@ -18,7 +18,7 @@ final class zzf
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(70029);
+    AppMethodBeat.i(3705);
     if (paramMessage != null) {
       Object localObject = paramMessage.obj;
     }
@@ -26,7 +26,7 @@ final class zzf
     if ("com.google.android.c2dm.intent.REGISTRATION".equals(paramMessage.getAction()))
     {
       GoogleCloudMessaging.zzd(this.zzai).add(paramMessage);
-      AppMethodBeat.o(70029);
+      AppMethodBeat.o(3705);
       return;
     }
     if (!GoogleCloudMessaging.zzd(this.zzai, paramMessage))
@@ -34,12 +34,12 @@ final class zzf
       paramMessage.setPackage(GoogleCloudMessaging.zze(this.zzai).getPackageName());
       GoogleCloudMessaging.zze(this.zzai).sendBroadcast(paramMessage);
     }
-    AppMethodBeat.o(70029);
+    AppMethodBeat.o(3705);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.zzf
  * JD-Core Version:    0.7.0.1
  */

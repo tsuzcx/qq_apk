@@ -9,16 +9,16 @@ public class ErrMsg
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<ErrMsg> CREATOR;
-  public String COd;
+  public String ajIr;
   public String message;
   public String title;
   private int type;
   
   static
   {
-    AppMethodBeat.i(96553);
+    AppMethodBeat.i(88192);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(96553);
+    AppMethodBeat.o(88192);
   }
   
   public ErrMsg()
@@ -26,24 +26,24 @@ public class ErrMsg
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.COd = "";
+    this.ajIr = "";
   }
   
   private ErrMsg(Parcel paramParcel)
   {
-    AppMethodBeat.i(96555);
+    AppMethodBeat.i(88194);
     this.type = paramParcel.readInt();
     this.title = paramParcel.readString();
     this.message = paramParcel.readString();
-    this.COd = paramParcel.readString();
-    AppMethodBeat.o(96555);
+    this.ajIr = paramParcel.readString();
+    AppMethodBeat.o(88194);
   }
   
   public Object clone()
   {
-    AppMethodBeat.i(96554);
+    AppMethodBeat.i(88193);
     Object localObject = super.clone();
-    AppMethodBeat.o(96554);
+    AppMethodBeat.o(88193);
     return localObject;
   }
   
@@ -52,27 +52,27 @@ public class ErrMsg
     return 0;
   }
   
-  public final void eri()
+  public final void kGo()
   {
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.COd = "";
+    this.ajIr = "";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96556);
+    AppMethodBeat.i(88195);
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.message);
-    paramParcel.writeString(this.COd);
-    AppMethodBeat.o(96556);
+    paramParcel.writeString(this.ajIr);
+    AppMethodBeat.o(88195);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.ErrMsg
  * JD-Core Version:    0.7.0.1
  */

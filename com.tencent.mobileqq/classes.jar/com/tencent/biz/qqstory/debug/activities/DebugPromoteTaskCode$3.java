@@ -1,21 +1,20 @@
 package com.tencent.biz.qqstory.debug.activities;
 
-import uur;
-import uvy;
+import com.tencent.biz.qqstory.model.StoryPromoteTaskManager;
 
-public class DebugPromoteTaskCode$3
+class DebugPromoteTaskCode$3
   implements Runnable
 {
-  public DebugPromoteTaskCode$3(uur paramuur) {}
+  DebugPromoteTaskCode$3(DebugPromoteTaskCode paramDebugPromoteTaskCode) {}
   
   public void run()
   {
-    this.this$0.a.c();
+    this.this$0.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3
  * JD-Core Version:    0.7.0.1
  */

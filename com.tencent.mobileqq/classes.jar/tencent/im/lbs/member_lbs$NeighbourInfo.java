@@ -31,13 +31,15 @@ public final class member_lbs$NeighbourInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 33, 40, 48, 58 }, new String[] { "uint64_uin", "int64_latitude", "int64_longitude", "double_distance", "uint32_sex", "uint32_age", "str_nick" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Double.valueOf(0.0D), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, NeighbourInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 33, 40, 48, 58 }, new String[] { "uint64_uin", "int64_latitude", "int64_longitude", "double_distance", "uint32_sex", "uint32_age", "str_nick" }, new Object[] { localLong, localLong, localLong, Double.valueOf(0.0D), localInteger, localInteger, localByteStringMicro }, NeighbourInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.NeighbourInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ class VideoLayerUI$LastMsgRunnable
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.a().removeCallbacks(VideoLayerUI.b(this.this$0));
+    if (this.this$0.Y != null) {
+      this.this$0.Y.a().removeCallbacks(VideoLayerUI.i(this.this$0));
     }
-    VideoLayerUI.a(this.this$0, false);
+    VideoLayerUI.c(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.LastMsgRunnable
  * JD-Core Version:    0.7.0.1
  */

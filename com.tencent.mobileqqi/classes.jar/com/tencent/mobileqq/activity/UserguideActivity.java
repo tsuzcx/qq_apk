@@ -33,14 +33,14 @@ public class UserguideActivity
   public static boolean a(Context paramContext)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("qq_version", null);
-    if (!"6602".equals(paramContext)) {}
+    if (!"6604".equals(paramContext)) {}
     for (e = true;; e = false)
     {
       if (jdField_b_of_type_Boolean) {
         e = false;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6602" + "isNeed " + e);
+        QLog.d("UserGuide", 2, "sIsUserguidShowed: " + e + " old qqversion = " + paramContext + " new qqversion = " + "6604" + "isNeed " + e);
       }
       e = false;
       return e;
@@ -82,7 +82,7 @@ public class UserguideActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment = new UserguideVideoFragment(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment.a(null);
-    paramBundle = (FrameLayout)findViewById(2131233236);
+    paramBundle = (FrameLayout)findViewById(2131233235);
     try
     {
       paramBundle.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQquserguideUserguideFragment.a(getLayoutInflater(), paramBundle, null));

@@ -1,11 +1,10 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import awge;
-import awhs;
-import uyg;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MsgTabHaloEntity
-  extends awge
+  extends Entity
 {
   public String headUrl;
   public String jumpUrl;
@@ -17,9 +16,9 @@ public class MsgTabHaloEntity
   public long recommendId;
   public long reqTimeStamp;
   public String title;
-  @awhs
+  @unique
   public long uid;
-  @awhs
+  @unique
   public String unionId;
   public String videoCover;
   public String videoInfoList;
@@ -29,35 +28,57 @@ public class MsgTabHaloEntity
     return "uid=?";
   }
   
-  public static String[] getSelectionArgs(uyg paramuyg)
+  public static String[] getSelectionArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    return new String[] { String.valueOf(paramuyg.b) };
+    return new String[] { String.valueOf(paramMsgTabNodeInfo.c) };
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MsgTabHaloEntity{");
-    localStringBuilder.append("nodeType=").append(this.nodeType);
-    localStringBuilder.append(", uid=").append(this.uid);
-    localStringBuilder.append(", unionId='").append(this.unionId).append('\'');
-    localStringBuilder.append(", videoInfoList='").append(this.videoInfoList).append('\'');
-    localStringBuilder.append(", reqTimeStamp=").append(this.reqTimeStamp);
-    localStringBuilder.append(", nodeInfoTimeStamp=").append(this.nodeInfoTimeStamp);
-    localStringBuilder.append(", localSuccessVideoList='").append(this.localSuccessVideoList).append('\'');
-    localStringBuilder.append(", title='").append(this.title).append('\'');
-    localStringBuilder.append(", headUrl='").append(this.headUrl).append('\'');
-    localStringBuilder.append(", recommendId=").append(this.recommendId);
-    localStringBuilder.append(", jumpUrl='").append(this.jumpUrl).append('\'');
-    localStringBuilder.append(", nodeVid='").append(this.nodeVid).append('\'');
-    localStringBuilder.append(", videoCover='").append(this.videoCover).append('\'');
-    localStringBuilder.append(", noUpdate=").append(this.noUpdate);
+    localStringBuilder.append("nodeType=");
+    localStringBuilder.append(this.nodeType);
+    localStringBuilder.append(", uid=");
+    localStringBuilder.append(this.uid);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.unionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoInfoList='");
+    localStringBuilder.append(this.videoInfoList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", reqTimeStamp=");
+    localStringBuilder.append(this.reqTimeStamp);
+    localStringBuilder.append(", nodeInfoTimeStamp=");
+    localStringBuilder.append(this.nodeInfoTimeStamp);
+    localStringBuilder.append(", localSuccessVideoList='");
+    localStringBuilder.append(this.localSuccessVideoList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", title='");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", headUrl='");
+    localStringBuilder.append(this.headUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommendId=");
+    localStringBuilder.append(this.recommendId);
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nodeVid='");
+    localStringBuilder.append(this.nodeVid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoCover='");
+    localStringBuilder.append(this.videoCover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noUpdate=");
+    localStringBuilder.append(this.noUpdate);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity
  * JD-Core Version:    0.7.0.1
  */

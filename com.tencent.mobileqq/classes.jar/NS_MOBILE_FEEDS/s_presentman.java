@@ -8,7 +8,7 @@ public final class s_presentman
   extends JceStruct
 {
   static s_user cache_user = new s_user();
-  public s_user user;
+  public s_user user = null;
   
   public s_presentman() {}
   
@@ -24,14 +24,15 @@ public final class s_presentman
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    s_user locals_user = this.user;
+    if (locals_user != null) {
+      paramJceOutputStream.write(locals_user, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_presentman
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ import java.util.zip.ZipFile;
 
 public final class f
 {
-  private static char[] amg = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  private static char[] apG = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static File M(Context paramContext)
+  public static File N(Context paramContext)
   {
     paramContext = paramContext.getApplicationInfo();
     if (paramContext == null) {
@@ -30,7 +30,7 @@ public final class f
     return new File(paramContext.dataDir, "tinker");
   }
   
-  public static File N(Context paramContext)
+  public static File O(Context paramContext)
   {
     paramContext = paramContext.getApplicationInfo();
     if (paramContext == null) {
@@ -39,55 +39,13 @@ public final class f
     return new File(paramContext.dataDir, "tinker_temp");
   }
   
-  public static File O(Context paramContext)
+  public static File P(Context paramContext)
   {
-    paramContext = N(paramContext);
+    paramContext = O(paramContext);
     if (paramContext == null) {
       return null;
     }
     return new File(paramContext, "tinker_last_crash");
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static void R(Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    if ((paramObject instanceof Closeable)) {
-      try
-      {
-        ((Closeable)paramObject).close();
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        return;
-      }
-    }
-    if ((Build.VERSION.SDK_INT >= 19) && ((paramObject instanceof AutoCloseable))) {
-      try
-      {
-        ((AutoCloseable)paramObject).close();
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        return;
-      }
-    }
-    if ((paramObject instanceof ZipFile)) {
-      try
-      {
-        ((ZipFile)paramObject).close();
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        return;
-      }
-    }
-    throw new IllegalArgumentException("obj: " + paramObject + " cannot be closed.");
   }
   
   public static String a(JarFile paramJarFile, JarEntry paramJarEntry)
@@ -108,7 +66,7 @@ public final class f
           }
           localStringBuilder.append(new String(paramJarFile, 0, i));
         }
-        R(paramJarEntry);
+        aa(paramJarEntry);
       }
       finally {}
     }
@@ -120,7 +78,7 @@ public final class f
       }
     }
     throw paramJarFile;
-    R(paramJarEntry);
+    aa(paramJarEntry);
     return localStringBuilder.toString();
   }
   
@@ -161,43 +119,43 @@ public final class f
     //   17: ifnonnull +5 -> 22
     //   20: iconst_0
     //   21: ireturn
-    //   22: ldc 157
+    //   22: ldc 128
     //   24: astore 6
     //   26: aload_0
-    //   27: invokevirtual 160	java/io/File:getName	()Ljava/lang/String;
-    //   30: invokestatic 164	com/tencent/tinker/loader/a/f:ai	(Ljava/lang/String;)Z
+    //   27: invokevirtual 131	java/io/File:getName	()Ljava/lang/String;
+    //   30: invokestatic 135	com/tencent/tinker/loader/a/f:am	(Ljava/lang/String;)Z
     //   33: ifeq +14 -> 47
     //   36: aload_0
-    //   37: invokestatic 168	com/tencent/tinker/loader/a/f:n	(Ljava/io/File;)Ljava/lang/String;
+    //   37: invokestatic 139	com/tencent/tinker/loader/a/f:n	(Ljava/io/File;)Ljava/lang/String;
     //   40: astore_0
     //   41: aload_2
     //   42: aload_0
-    //   43: invokevirtual 172	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   43: invokevirtual 143	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   46: ireturn
-    //   47: new 83	java/util/zip/ZipFile
+    //   47: new 105	java/util/zip/ZipFile
     //   50: dup
     //   51: aload_0
-    //   52: invokespecial 175	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   52: invokespecial 146	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
     //   55: astore 4
     //   57: aload 4
     //   59: aload_1
-    //   60: invokevirtual 179	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   60: invokevirtual 150	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   63: astore 8
     //   65: aload 8
     //   67: ifnonnull +35 -> 102
-    //   70: ldc 141
-    //   72: new 88	java/lang/StringBuilder
+    //   70: ldc 110
+    //   72: new 64	java/lang/StringBuilder
     //   75: dup
-    //   76: ldc 181
-    //   78: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   76: ldc 152
+    //   78: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   81: aload_0
-    //   82: invokevirtual 184	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   85: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 188	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   82: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   85: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokestatic 162	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   94: pop
     //   95: aload 4
-    //   97: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   97: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   100: iconst_0
     //   101: ireturn
     //   102: aload 7
@@ -206,73 +164,73 @@ public final class f
     //   107: astore_3
     //   108: aload 4
     //   110: aload 8
-    //   112: invokevirtual 191	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   112: invokevirtual 165	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   115: astore 5
     //   117: aload 5
     //   119: astore_1
     //   120: aload 5
     //   122: astore_3
     //   123: aload 5
-    //   125: invokestatic 194	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   125: invokestatic 168	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
     //   128: astore 7
     //   130: aload 7
     //   132: astore_1
     //   133: aload 5
-    //   135: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   135: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   138: aload_1
     //   139: astore_0
     //   140: aload 4
-    //   142: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   142: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   145: goto -104 -> 41
     //   148: astore 5
     //   150: aload_1
     //   151: astore_3
-    //   152: ldc 141
-    //   154: new 88	java/lang/StringBuilder
+    //   152: ldc 110
+    //   154: new 64	java/lang/StringBuilder
     //   157: dup
-    //   158: ldc 196
-    //   160: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   158: ldc 170
+    //   160: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   163: aload_0
-    //   164: invokevirtual 184	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   167: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   164: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   167: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   173: aload 5
-    //   175: invokestatic 198	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   175: invokestatic 172	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   178: pop
     //   179: aload_1
-    //   180: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   180: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   183: aload 6
     //   185: astore_0
     //   186: goto -46 -> 140
     //   189: astore_2
     //   190: aload 4
     //   192: astore_1
-    //   193: ldc 141
-    //   195: new 88	java/lang/StringBuilder
+    //   193: ldc 110
+    //   195: new 64	java/lang/StringBuilder
     //   198: dup
-    //   199: ldc 200
-    //   201: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   199: ldc 174
+    //   201: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   204: aload_0
-    //   205: invokevirtual 184	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   208: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   208: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   214: aload_2
-    //   215: invokestatic 198	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   215: invokestatic 172	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   218: pop
     //   219: aload_1
-    //   220: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   220: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   223: iconst_0
     //   224: ireturn
     //   225: astore_1
     //   226: aload_3
-    //   227: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   227: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   230: aload_1
     //   231: athrow
     //   232: astore_0
     //   233: aload 4
     //   235: astore_1
     //   236: aload_1
-    //   237: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   237: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   240: aload_0
     //   241: athrow
     //   242: astore_0
@@ -319,17 +277,59 @@ public final class f
     //   47	57	252	java/lang/Throwable
   }
   
-  public static File ac(String paramString)
+  @SuppressLint({"NewApi"})
+  public static void aa(Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if ((paramObject instanceof Closeable)) {
+      try
+      {
+        ((Closeable)paramObject).close();
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        return;
+      }
+    }
+    if ((Build.VERSION.SDK_INT >= 19) && ((paramObject instanceof AutoCloseable))) {
+      try
+      {
+        ((AutoCloseable)paramObject).close();
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        return;
+      }
+    }
+    if ((paramObject instanceof ZipFile)) {
+      try
+      {
+        ((ZipFile)paramObject).close();
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        return;
+      }
+    }
+    throw new IllegalArgumentException("obj: " + paramObject + " cannot be closed.");
+  }
+  
+  public static File ag(String paramString)
   {
     return new File(paramString + "/patch.info");
   }
   
-  public static File ad(String paramString)
+  public static File ah(String paramString)
   {
     return new File(paramString + "/info.lock");
   }
   
-  public static String ae(String paramString)
+  public static String ai(String paramString)
   {
     if ((paramString == null) || (paramString.length() != 32)) {
       return null;
@@ -337,20 +337,20 @@ public final class f
     return "patch-" + paramString.substring(0, 8);
   }
   
-  public static String af(String paramString)
+  public static String aj(String paramString)
   {
     if ((paramString == null) || (paramString.length() != 32)) {
       return null;
     }
-    return ae(paramString) + ".apk";
+    return ai(paramString) + ".apk";
   }
   
-  public static boolean ag(String paramString)
+  public static boolean ak(String paramString)
   {
     return (paramString != null) && (paramString.length() == 32);
   }
   
-  public static final boolean ah(String paramString)
+  public static final boolean al(String paramString)
   {
     if (paramString == null) {
       return false;
@@ -358,7 +358,7 @@ public final class f
     return m(new File(paramString));
   }
   
-  public static boolean ai(String paramString)
+  public static boolean am(String paramString)
   {
     if (paramString == null) {
       return false;
@@ -377,10 +377,10 @@ public final class f
     //   8: ifnonnull +4 -> 12
     //   11: return
     //   12: aload_0
-    //   13: invokevirtual 184	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   13: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   16: aload_1
-    //   17: invokevirtual 184	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   20: invokevirtual 172	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: invokevirtual 158	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   20: invokevirtual 143	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   23: ifne -12 -> 11
     //   26: aload_1
     //   27: invokevirtual 245	java/io/File:getParentFile	()Ljava/io/File;
@@ -421,15 +421,15 @@ public final class f
     //   89: goto -17 -> 72
     //   92: astore_0
     //   93: aload_3
-    //   94: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   94: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   97: aload_1
-    //   98: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   98: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   101: aload_0
     //   102: athrow
     //   103: aload_3
-    //   104: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   104: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   107: aload_1
-    //   108: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   108: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   111: return
     //   112: astore_0
     //   113: aconst_null
@@ -466,35 +466,35 @@ public final class f
     //   4: astore_3
     //   5: aconst_null
     //   6: astore 5
-    //   8: new 83	java/util/zip/ZipFile
+    //   8: new 105	java/util/zip/ZipFile
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 175	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   13: invokespecial 146	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
     //   16: astore_0
     //   17: aload_0
     //   18: ldc_w 266
-    //   21: invokevirtual 179	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   21: invokevirtual 150	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   24: astore 4
     //   26: aload 4
     //   28: ifnonnull +18 -> 46
-    //   31: ldc 141
+    //   31: ldc 110
     //   33: ldc_w 268
     //   36: invokestatic 271	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   39: pop
     //   40: aload_0
-    //   41: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   41: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   44: iconst_0
     //   45: ireturn
     //   46: aload 5
     //   48: astore_3
     //   49: aload_0
     //   50: aload 4
-    //   52: invokevirtual 191	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   52: invokevirtual 165	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   55: astore 4
     //   57: aload 4
     //   59: astore_3
     //   60: aload 4
-    //   62: invokestatic 194	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   62: invokestatic 168	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
     //   65: astore 5
     //   67: aload 5
     //   69: ifnull +28 -> 97
@@ -502,48 +502,48 @@ public final class f
     //   74: astore_3
     //   75: aload 5
     //   77: aload_1
-    //   78: invokevirtual 172	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   78: invokevirtual 143	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   81: istore_2
     //   82: iload_2
     //   83: ifeq +14 -> 97
     //   86: aload 4
-    //   88: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   88: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   91: aload_0
-    //   92: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   92: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   95: iconst_1
     //   96: ireturn
     //   97: aload 4
-    //   99: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   99: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   102: aload_0
-    //   103: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   103: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   106: iconst_0
     //   107: ireturn
     //   108: astore_1
     //   109: aload_3
-    //   110: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   110: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   113: aload_1
     //   114: athrow
     //   115: astore_1
     //   116: aload_0
     //   117: astore_3
-    //   118: ldc 141
-    //   120: new 88	java/lang/StringBuilder
+    //   118: ldc 110
+    //   120: new 64	java/lang/StringBuilder
     //   123: dup
     //   124: ldc_w 273
-    //   127: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   127: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   130: aload_1
     //   131: invokevirtual 276	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   134: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   140: invokestatic 271	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   143: pop
     //   144: aload_0
-    //   145: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   145: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   148: iconst_0
     //   149: ireturn
     //   150: astore_0
     //   151: aload_3
-    //   152: invokestatic 190	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
+    //   152: invokestatic 164	com/tencent/tinker/loader/a/f:a	(Ljava/util/zip/ZipFile;)V
     //   155: aload_0
     //   156: athrow
     //   157: astore_1
@@ -587,10 +587,10 @@ public final class f
   public static String c(File paramFile1, File paramFile2)
   {
     int i;
-    if (k.oo()) {
+    if (k.pb()) {
       try
       {
-        str = k.op();
+        str = k.pc();
         File localFile = paramFile1.getParentFile();
         paramFile2 = paramFile1.getName();
         i = paramFile2.lastIndexOf('.');
@@ -664,7 +664,44 @@ public final class f
   
   public static final boolean k(File paramFile)
   {
-    return (("vivo".equalsIgnoreCase(Build.MANUFACTURER)) || ("oppo".equalsIgnoreCase(Build.MANUFACTURER))) && ((!paramFile.exists()) || (paramFile.length() == 0L));
+    boolean bool2 = false;
+    int i;
+    int j;
+    if (("vivo".equalsIgnoreCase(Build.MANUFACTURER)) || ("oppo".equalsIgnoreCase(Build.MANUFACTURER)))
+    {
+      i = 1;
+      if ((Build.VERSION.SDK_INT < 29) && ((Build.VERSION.SDK_INT < 28) || (Build.VERSION.PREVIEW_SDK_INT == 0))) {
+        break label102;
+      }
+      j = 1;
+      label53:
+      if ((paramFile.exists()) && (paramFile.length() != 0L)) {
+        break label107;
+      }
+    }
+    label102:
+    label107:
+    for (int k = 1;; k = 0)
+    {
+      boolean bool1;
+      if (i == 0)
+      {
+        bool1 = bool2;
+        if (j == 0) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (k != 0) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+      i = 0;
+      break;
+      j = 0;
+      break label53;
+    }
   }
   
   public static final boolean l(File paramFile)
@@ -733,24 +770,24 @@ public final class f
     //   18: invokespecial 255	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   21: astore_0
     //   22: aload_0
-    //   23: invokestatic 194	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   23: invokestatic 168	com/tencent/tinker/loader/a/f:e	(Ljava/io/InputStream;)Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
-    //   28: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   28: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   31: aload_1
     //   32: areturn
     //   33: astore_0
     //   34: aconst_null
     //   35: astore_0
     //   36: aload_0
-    //   37: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   37: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   40: aconst_null
     //   41: areturn
     //   42: astore_0
     //   43: aconst_null
     //   44: astore_1
     //   45: aload_1
-    //   46: invokestatic 136	com/tencent/tinker/loader/a/f:R	(Ljava/lang/Object;)V
+    //   46: invokestatic 96	com/tencent/tinker/loader/a/f:aa	(Ljava/lang/Object;)V
     //   49: aload_0
     //   50: athrow
     //   51: astore_1
@@ -794,8 +831,8 @@ public final class f
       {
         int n = paramArrayOfByte[i];
         m = j + 1;
-        localObject[j] = amg[(n >>> 4 & 0xF)];
-        localObject[m] = amg[(n & 0xF)];
+        localObject[j] = apG[(n >>> 4 & 0xF)];
+        localObject[m] = apG[(n & 0xF)];
         i += 1;
       }
       paramArrayOfByte = new String((char[])localObject);

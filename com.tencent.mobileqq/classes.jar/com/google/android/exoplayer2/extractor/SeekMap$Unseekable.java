@@ -14,12 +14,13 @@ public final class SeekMap$Unseekable
   public SeekMap$Unseekable(long paramLong1, long paramLong2)
   {
     this.durationUs = paramLong1;
-    if (paramLong2 == 0L) {}
-    for (SeekPoint localSeekPoint = SeekPoint.START;; localSeekPoint = new SeekPoint(0L, paramLong2))
-    {
-      this.startSeekPoints = new SeekMap.SeekPoints(localSeekPoint);
-      return;
+    SeekPoint localSeekPoint;
+    if (paramLong2 == 0L) {
+      localSeekPoint = SeekPoint.START;
+    } else {
+      localSeekPoint = new SeekPoint(0L, paramLong2);
     }
+    this.startSeekPoints = new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public long getDurationUs()
@@ -39,7 +40,7 @@ public final class SeekMap$Unseekable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.SeekMap.Unseekable
  * JD-Core Version:    0.7.0.1
  */

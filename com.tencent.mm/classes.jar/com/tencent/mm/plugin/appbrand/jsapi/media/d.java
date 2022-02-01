@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.luggage.a.b;
-import java.io.InputStream;
+import com.tencent.luggage.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.x.a;
 
-public abstract interface d
-  extends b
+public final class d
 {
-  public static final d hQB = new d.1();
-  
-  public abstract Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions);
-  
-  public abstract Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions);
+  public static void rG(int paramInt)
+  {
+    AppMethodBeat.i(329284);
+    ((a)e.U(a.class)).idkeyStat(1419L, paramInt, 1L, false);
+    AppMethodBeat.o(329284);
+  }
 }
 
 

@@ -1,19 +1,28 @@
 package android.support.v4.app;
 
-import android.app.Notification;
+import android.app.Notification.BigTextStyle;
 import android.os.Build.VERSION;
 
 public final class as
+  extends av
 {
-  public static Notification a(ar paramar, an paraman)
+  private CharSequence gp;
+  
+  public final as a(CharSequence paramCharSequence)
   {
-    paraman = paraman.build();
-    if (paramar.fe != null) {
-      paraman.contentView = paramar.fe;
+    this.gp = at.e(paramCharSequence);
+    return this;
+  }
+  
+  public final void a(ap paramap)
+  {
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramap = new Notification.BigTextStyle(paramap.aJ()).setBigContentTitle(this.hd).bigText(this.gp);
+      if (this.hf) {
+        paramap.setSummaryText(this.he);
+      }
     }
-    int i = Build.VERSION.SDK_INT;
-    i = Build.VERSION.SDK_INT;
-    return paraman;
   }
 }
 

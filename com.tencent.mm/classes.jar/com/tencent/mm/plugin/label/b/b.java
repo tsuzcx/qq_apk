@@ -1,78 +1,82 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ws;
-import com.tencent.mm.protocal.protobuf.wt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.lx;
+import com.tencent.mm.protocal.protobuf.ly;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aw;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class b
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public String nXY;
-  private final com.tencent.mm.ai.b rr;
+  public LinkedList<Integer> JUj;
+  public ArrayList<aw> JUk;
+  private h callback;
+  public final c rr;
   
-  public b(String paramString)
+  public b(List<Integer> paramList)
   {
-    AppMethodBeat.i(22524);
-    this.nXY = null;
-    b.a locala = new b.a();
-    locala.fsX = new ws();
-    locala.fsY = new wt();
-    locala.uri = "/cgi-bin/micromsg-bin/delcontactlabel";
-    locala.funcId = 636;
-    locala.reqCmdId = 0;
+    AppMethodBeat.i(268627);
+    this.JUj = new LinkedList();
+    this.JUk = new ArrayList();
+    c.a locala = new c.a();
+    locala.otE = new lx();
+    locala.otF = new ly();
+    locala.uri = "/cgi-bin/micromsg-bin/batchupdatecontactlabelwithseq";
+    locala.funcId = 5882;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.nXY = paramString;
-    AppMethodBeat.o(22524);
+    this.rr = locala.bEF();
+    this.JUj.addAll(paramList);
+    AppMethodBeat.o(268627);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(22526);
-    this.callback = paramf;
-    ws localws = (ws)this.rr.fsV.fta;
-    localws.wOV = this.nXY;
-    if ((this.nXY != null) && (!bo.isNullOrNil(this.nXY)))
+    AppMethodBeat.i(268633);
+    this.callback = paramh;
+    lx locallx = (lx)c.b.b(this.rr.otB);
+    if ((this.JUj != null) && (this.JUj.size() > 0))
     {
-      localws.wOV = this.nXY;
-      localws.wOV = this.nXY;
-      int i = dispatch(parame, this.rr, this);
-      AppMethodBeat.o(22526);
+      locallx.YNq = this.JUj;
+      int i = dispatch(paramg, this.rr, this);
+      AppMethodBeat.o(268633);
       return i;
     }
-    ab.e("MicroMsg.Label.NetSceneDelContactLabel", "cpan[doScene] label id list is null.");
-    paramf.onSceneEnd(3, -1, "[doScene]empty label is list.", this);
-    AppMethodBeat.o(22526);
+    Log.e("MicroMsg.Label.NetSceneBatchUpdateContactLabelList", "[doScene] label id list is null.");
+    paramh.onSceneEnd(3, -1, "[doScene]empty label is list.", this);
+    AppMethodBeat.o(268633);
     return 0;
   }
   
   public final int getType()
   {
-    return 636;
+    return 5882;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(22525);
-    ab.d("MicroMsg.Label.NetSceneDelContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(268630);
+    Log.d("MicroMsg.Label.NetSceneBatchUpdateContactLabelList", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(22525);
+    AppMethodBeat.o(268630);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b.b
  * JD-Core Version:    0.7.0.1
  */

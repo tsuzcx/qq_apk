@@ -9,10 +9,10 @@ public final class SvrMsg
 {
   static ReqHeader cache_stHeader;
   static Msg cache_stMsg;
-  public byte bNeedAckClientMsg;
-  public byte bResend;
-  public ReqHeader stHeader;
-  public Msg stMsg;
+  public byte bNeedAckClientMsg = 0;
+  public byte bResend = 0;
+  public ReqHeader stHeader = null;
+  public Msg stMsg = null;
   
   public SvrMsg() {}
   
@@ -48,7 +48,7 @@ public final class SvrMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.SvrMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,17 @@ public final class qqstory_struct$DateVideoCollection
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 72, 80, 90, 96 }, new String[] { "collection_id", "collection_type", "collection_time", "collection_video_count", "video_list", "vid_list", "label", "address", "total_view_count", "total_view_times", "feed_id", "share_to_discover" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0) }, DateVideoCollection.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 72, 80, 90, 96 }, new String[] { "collection_id", "collection_type", "collection_time", "collection_video_count", "video_list", "vid_list", "label", "address", "total_view_count", "total_view_times", "feed_id", "share_to_discover" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), localInteger, null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localByteStringMicro4, localInteger }, DateVideoCollection.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection
  * JD-Core Version:    0.7.0.1
  */

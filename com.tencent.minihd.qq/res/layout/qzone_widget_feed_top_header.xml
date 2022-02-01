@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/feed_recomm_header_area" android:background="@drawable/qzone_feed_recomm_header_bg" android:layout_width="wrap_content" android:layout_height="35.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/feed_recomm_header_hot_star" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/qzone_feed_top_header_icon" />
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/qzone_color_hei" android:ellipsize="none" android:gravity="center|left" android:id="@id/feed_recomm_header_left_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="置顶" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:background="@drawable/qzone_feed_recomm_header_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</merge>

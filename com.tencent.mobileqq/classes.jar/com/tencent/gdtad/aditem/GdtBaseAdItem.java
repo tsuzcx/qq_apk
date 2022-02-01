@@ -1,6 +1,5 @@
 package com.tencent.gdtad.aditem;
 
-import aamx;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,46 +11,46 @@ import org.json.JSONObject;
 public class GdtBaseAdItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new aamx();
-  public Bundle a;
-  public Class a;
+  public static final Parcelable.Creator<GdtBaseAdItem> CREATOR = new GdtBaseAdItem.1();
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
   public String c;
   public String d;
   public String e;
-  public String f;
+  public boolean f;
+  public Class g;
+  public boolean h;
+  public String i;
+  public Bundle j;
   
-  private GdtBaseAdItem() {}
-  
-  public GdtBaseAdItem(Parcel paramParcel)
+  private GdtBaseAdItem()
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.h = false;
+  }
+  
+  protected GdtBaseAdItem(Parcel paramParcel)
+  {
+    boolean bool2 = false;
+    this.h = false;
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_JavaLangClass = ((Class)paramParcel.readSerializable());
-      if (paramParcel.readByte() == 0) {
-        break label114;
-      }
-    }
-    label114:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_b_of_type_Boolean = bool1;
-      this.f = paramParcel.readString();
-      this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.f = bool1;
+    this.g = ((Class)paramParcel.readSerializable());
+    boolean bool1 = bool2;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    }
+    this.h = bool1;
+    this.i = paramParcel.readString();
+    this.j = paramParcel.readBundle(getClass().getClassLoader());
   }
   
   public static GdtBaseAdItem a()
@@ -61,49 +60,46 @@ public class GdtBaseAdItem
   
   public static GdtBaseAdItem a(String paramString)
   {
-    localGdtBaseAdItem = new GdtBaseAdItem();
+    GdtBaseAdItem localGdtBaseAdItem = new GdtBaseAdItem();
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
+      paramString = null;
       try
       {
-        paramString = Class.forName(localJSONObject.optString("class"));
-        localGdtBaseAdItem.d(localJSONObject.optString("packageName")).b(localJSONObject.optString("traceId")).f(localJSONObject.optString("invokeUrl")).e(localJSONObject.optString("appDownloadSchema")).c(localJSONObject.optString("productId")).a(paramString).g(localJSONObject.optString("urlForClick")).a("1".equals(localJSONObject.optString("autoDownload")));
-        paramString = localJSONObject.optString("pkg_name");
-        if (!TextUtils.isEmpty(paramString))
-        {
-          localGdtBaseAdItem.d(paramString);
-          return localGdtBaseAdItem;
-        }
+        Class localClass = Class.forName(localJSONObject.optString("class"));
+        paramString = localClass;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        for (;;)
-        {
-          QZLog.w(paramString);
-          paramString = null;
-        }
+        QZLog.w(localException);
+      }
+      localGdtBaseAdItem.d(localJSONObject.optString("packageName")).b(localJSONObject.optString("traceId")).f(localJSONObject.optString("invokeUrl")).e(localJSONObject.optString("appDownloadSchema")).c(localJSONObject.optString("productId")).a(paramString).g(localJSONObject.optString("urlForClick")).a("1".equals(localJSONObject.optString("autoDownload")));
+      paramString = localJSONObject.optString("pkg_name");
+      if (!TextUtils.isEmpty(paramString)) {
+        localGdtBaseAdItem.d(paramString);
       }
       return localGdtBaseAdItem;
     }
     catch (Exception paramString) {}
+    return localGdtBaseAdItem;
   }
   
   public GdtBaseAdItem a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.j = paramBundle;
     return this;
   }
   
   public GdtBaseAdItem a(Class paramClass)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.g = paramClass;
     return this;
   }
   
   public GdtBaseAdItem a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
   
@@ -121,7 +117,7 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem d(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
@@ -132,7 +128,7 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem e(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
@@ -144,47 +140,43 @@ public class GdtBaseAdItem
   
   public GdtBaseAdItem g(String paramString)
   {
-    this.f = paramString;
+    this.i = paramString;
     return this;
   }
   
   public String toString()
   {
-    return "GdtBaseAdItem|" + this.jdField_a_of_type_JavaLangString + "\n" + this.jdField_b_of_type_JavaLangString + "\n" + this.c + "\n" + this.d + "\n" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GdtBaseAdItem|");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeSerializable(this.jdField_a_of_type_JavaLangClass);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label102;
-      }
-    }
-    label102:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.f);
-      paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramInt = 0;
-      break;
-    }
+    paramParcel.writeByte((byte)this.f);
+    paramParcel.writeSerializable(this.g);
+    paramParcel.writeByte((byte)this.h);
+    paramParcel.writeString(this.i);
+    paramParcel.writeBundle(this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtBaseAdItem
  * JD-Core Version:    0.7.0.1
  */

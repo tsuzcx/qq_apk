@@ -16,7 +16,7 @@ public class OfflineSettingUtils
   private static final String CONFIG_NAME = "config.json";
   private static final int REQUEST_CHECK_CODE = 1;
   private static final int REQUEST_DOWNLOAD_ZIP_CODE = 2;
-  private static String REQUEST_URL_PRE = "http://offline.qq.com/offline/check?";
+  private static String REQUEST_URL_PRE = "https://offline.qq.com/offline/check?";
   private static final String TAG = "OfflineSettingUtils";
   private static ArrayList<OfflineSettingUtils.IDownloadedListener> sDownloadedListeners;
   private static IHttpClient sHttpClient;
@@ -40,48 +40,80 @@ public class OfflineSettingUtils
     try
     {
       int i = Integer.parseInt(paramString);
-      paramString = "biz=" + Integer.valueOf(i);
+      paramString = new StringBuilder();
+      paramString.append("biz=");
+      paramString.append(Integer.valueOf(i));
+      paramString = paramString.toString();
       return paramString;
     }
-    catch (NumberFormatException paramString) {}
+    catch (NumberFormatException paramString)
+    {
+      label36:
+      break label36;
+    }
     return null;
   }
   
   private static String getHVerion(String paramString)
   {
     int i = getLocalVersion(paramString);
-    return "hver=" + i;
+    paramString = new StringBuilder();
+    paramString.append("hver=");
+    paramString.append(i);
+    return paramString.toString();
   }
   
   private static int getLocalVersion(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    int i = 0;
+    if (paramString == null) {
       return 0;
-      paramString = FileOfflineUtil.readJsonStringFromFile(FileOfflineUtil.getOfflineDirPath() + File.separator + paramString + File.separator + "config.json");
-    } while (paramString == null);
-    paramString = (ConfigJsonBean)GsonUtils.json2Obj(paramString, new OfflineSettingUtils.2().getType());
-    if (paramString != null) {}
-    for (int i = paramString.version;; i = 0) {
-      return i;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FileOfflineUtil.getOfflineDirPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("config.json");
+    paramString = FileOfflineUtil.readJsonStringFromFile(localStringBuilder.toString());
+    if (paramString == null) {
+      return 0;
+    }
+    paramString = (ConfigJsonBean)GsonUtils.json2Obj(paramString, new OfflineSettingUtils.2().getType());
+    if (paramString != null) {
+      i = paramString.version;
+    }
+    return i;
   }
   
   public static String getOfflineCGIUrl(String paramString)
   {
-    String str1 = null;
-    String str2 = getBid(paramString);
-    if (str2 != null)
+    String str = getBid(paramString);
+    if (str != null)
     {
-      str1 = REQUEST_URL_PRE;
-      paramString = str1 + getHVerion(paramString);
-      paramString = paramString + "&";
-      paramString = paramString + getPlatformId();
-      paramString = paramString + "&";
-      str1 = paramString + str2;
+      Object localObject = REQUEST_URL_PRE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(getHVerion(paramString));
+      paramString = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&");
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(getPlatformId());
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&");
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return null;
   }
   
   private static String getPlatformId()
@@ -91,23 +123,22 @@ public class OfflineSettingUtils
   
   private static boolean isNeedUpdate(JsonObject paramJsonObject)
   {
-    if (paramJsonObject == null) {}
-    for (;;)
-    {
+    if (paramJsonObject == null) {
       return false;
-      try
+    }
+    try
+    {
+      paramJsonObject = Integer.valueOf(GsonUtils.getIntUnsafe(paramJsonObject, "type"));
+      if (paramJsonObject != null)
       {
-        paramJsonObject = Integer.valueOf(GsonUtils.getIntUnsafe(paramJsonObject, "type"));
-        if (paramJsonObject != null)
-        {
-          int i = paramJsonObject.intValue();
-          if (i == 1) {
-            return true;
-          }
+        int i = paramJsonObject.intValue();
+        if (i == 1) {
+          return true;
         }
       }
-      catch (Exception paramJsonObject) {}
+      return false;
     }
+    catch (Exception paramJsonObject) {}
     return false;
   }
   
@@ -121,61 +152,74 @@ public class OfflineSettingUtils
   
   public static void removeDownloadListener(OfflineSettingUtils.IDownloadedListener paramIDownloadedListener)
   {
-    if ((paramIDownloadedListener != null) && (sDownloadedListeners != null)) {
-      sDownloadedListeners.remove(paramIDownloadedListener);
+    if (paramIDownloadedListener != null)
+    {
+      ArrayList localArrayList = sDownloadedListeners;
+      if (localArrayList != null) {
+        localArrayList.remove(paramIDownloadedListener);
+      }
     }
   }
   
   public static void setHttpClient(IHttpClient paramIHttpClient)
   {
     sHttpClient = paramIHttpClient;
-    if (sHttpClient != null) {
-      sHttpClient.setResponseListener(sResponseListener);
+    paramIHttpClient = sHttpClient;
+    if (paramIHttpClient != null) {
+      paramIHttpClient.setResponseListener(sResponseListener);
     }
   }
   
   private static void startDownload(JsonObject paramJsonObject, String paramString)
   {
-    if (paramJsonObject == null) {}
-    for (;;)
-    {
+    if (paramJsonObject == null) {
       return;
-      try
+    }
+    try
+    {
+      paramJsonObject = GsonUtils.getStringUnsafe(paramJsonObject, "url");
+      if (paramJsonObject != null)
       {
-        paramJsonObject = GsonUtils.getStringUnsafe(paramJsonObject, "url");
-        if (paramJsonObject != null)
-        {
-          String str = FileOfflineUtil.getOfflineDirPath();
-          if (sHttpClient != null)
-          {
-            sHttpClient.download(2, paramString, paramJsonObject, str);
-            return;
-          }
+        String str = FileOfflineUtil.getOfflineDirPath();
+        if (sHttpClient != null) {
+          sHttpClient.download(2, paramString, paramJsonObject, str);
         }
+        return;
       }
-      catch (Exception paramJsonObject)
-      {
-        LogUtils.e("OfflineSettingUtils", "startDownload:" + paramJsonObject.getMessage());
-      }
+    }
+    catch (Exception paramJsonObject)
+    {
+      paramString = new StringBuilder();
+      paramString.append("startDownload:");
+      paramString.append(paramJsonObject.getMessage());
+      LogUtils.e("OfflineSettingUtils", paramString.toString());
     }
   }
   
   public static boolean updateOfflinePage(String paramString)
   {
-    if ((paramString == null) || (sHttpClient == null))
+    if ((paramString != null) && (sHttpClient != null))
     {
-      LogUtils.i("OfflineSettingUtils", "bid :" + paramString + " ,sHttpClient:" + sHttpClient);
-      return false;
+      localObject = getOfflineCGIUrl(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUrl:");
+      localStringBuilder.append((String)localObject);
+      LogUtils.i("OfflineSettingUtils", localStringBuilder.toString());
+      sHttpClient.get(1, paramString, (String)localObject);
+      return true;
     }
-    String str = getOfflineCGIUrl(paramString);
-    LogUtils.i("OfflineSettingUtils", "getUrl:" + str);
-    sHttpClient.get(1, paramString, str);
-    return true;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bid :");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" ,sHttpClient:");
+    ((StringBuilder)localObject).append(sHttpClient);
+    LogUtils.i("OfflineSettingUtils", ((StringBuilder)localObject).toString());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.offlineset.utils.OfflineSettingUtils
  * JD-Core Version:    0.7.0.1
  */

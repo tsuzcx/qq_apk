@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:background="@drawable/eff" android:paddingRight="10.0dip" android:clickable="true" android:layout_height="@dimen/bm5" android:minHeight="@dimen/bm5" android:layout_alignParentBottom="true" style="@style/aek"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/nap" android:duplicateParentState="true" android:src="@drawable/gf3" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/wrz" style="@style/adt" />
+    <ImageView android:id="@id/nao" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/gey" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aiy" android:id="@id/nat" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/de" android:layout_toRightOf="@id/nao" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/aiy" android:id="@id/nam" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:singleLine="true" android:layout_toLeftOf="@id/nap" android:layout_below="@id/nat" android:layout_alignLeft="@id/nat" />
+</RelativeLayout>

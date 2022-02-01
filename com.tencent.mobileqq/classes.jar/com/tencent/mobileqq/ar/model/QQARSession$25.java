@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.ar.model;
 
-import amvj;
-import anby;
-import anfx;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public class QQARSession$25
+class QQARSession$25
   implements Runnable
 {
-  public QQARSession$25(anfx paramanfx, ArVideoResourceInfo paramArVideoResourceInfo, amvj paramamvj) {}
+  QQARSession$25(QQARSession paramQQARSession, ArVideoResourceInfo paramArVideoResourceInfo, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback) {}
   
   public void run()
   {
-    if ((anfx.b(this.this$0)) && (this.this$0.a == 2) && (anfx.a(this.this$0) != null)) {
-      anfx.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo, this.jdField_a_of_type_Amvj);
+    if ((QQARSession.b(this.this$0)) && (this.this$0.a == 2) && (QQARSession.h(this.this$0) != null)) {
+      QQARSession.h(this.this$0).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.25
  * JD-Core Version:    0.7.0.1
  */

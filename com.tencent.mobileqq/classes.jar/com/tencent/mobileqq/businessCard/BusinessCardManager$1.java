@@ -1,42 +1,48 @@
 package com.tencent.mobileqq.businessCard;
 
-import anys;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BusinessCardManager$1
+class BusinessCardManager$1
   implements Runnable
 {
-  public BusinessCardManager$1(anys paramanys) {}
+  BusinessCardManager$1(BusinessCardManager paramBusinessCardManager) {}
   
   public void run()
   {
-    Object localObject = this.this$0.a();
-    if (localObject != null) {}
-    for (int i = ((List)localObject).size();; i = 0)
+    Object localObject1 = this.this$0.d();
+    int i;
+    if (localObject1 != null) {
+      i = ((List)localObject1).size();
+    } else {
+      i = 0;
+    }
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessCard_Manager", 2, "Init cache from DB,count=" + i);
-      }
-      this.this$0.a.clear();
-      if (i <= 0) {
-        break;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Init cache from DB,count=");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("BusinessCard_Manager", 2, ((StringBuilder)localObject2).toString());
+    }
+    this.this$0.c.clear();
+    if (i > 0)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        BusinessCard localBusinessCard = (BusinessCard)((Iterator)localObject).next();
-        this.this$0.a.put(localBusinessCard.cardId, localBusinessCard);
+        localObject2 = (BusinessCard)((Iterator)localObject1).next();
+        this.this$0.c.put(((BusinessCard)localObject2).cardId, localObject2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardManager.1
  * JD-Core Version:    0.7.0.1
  */

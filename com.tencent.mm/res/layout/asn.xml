@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/aav" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/edh" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="5.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/djc" android:background="@drawable/l_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g2" android:layout_marginRight="@dimen/g2" android:minHeight="@dimen/fd" android:layout_below="@id/edh">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_marginRight="@dimen/g2" android:src="@raw/mm_select_create_chatroom" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e5c" android:singleLine="true" style="@style/ln" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/nh" android:textColor="#ff555555" android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/lm" />
-        </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="80.0dip" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="20.0dip" android:textColor="@color/xo" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ebq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/exy" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ebp" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/j6" android:paddingBottom="@dimen/jc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/exw" />
+        <ListView android:id="@id/ebo" android:background="@color/ahb" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/na" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

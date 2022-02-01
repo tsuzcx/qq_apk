@@ -2,5 +2,5 @@
 <LinearLayout android:orientation="vertical" android:id="@id/i02" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    <com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView android:id="@id/ec1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListView android:id="@id/ec1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

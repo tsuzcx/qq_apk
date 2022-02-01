@@ -9,10 +9,10 @@ public final class GroupLabel
 {
   static Color cache_edging_color;
   static Color cache_text_color;
-  public Color edging_color;
+  public Color edging_color = null;
   public String strWording = "";
-  public Color text_color;
-  public long type;
+  public Color text_color = null;
+  public long type = 0L;
   
   public GroupLabel() {}
   
@@ -40,21 +40,24 @@ public final class GroupLabel
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strWording != null) {
-      paramJceOutputStream.write(this.strWording, 0);
+    Object localObject = this.strWording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.text_color != null) {
-      paramJceOutputStream.write(this.text_color, 1);
+    localObject = this.text_color;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.type, 2);
-    if (this.edging_color != null) {
-      paramJceOutputStream.write(this.edging_color, 3);
+    localObject = this.edging_color;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.GroupLabel
  * JD-Core Version:    0.7.0.1
  */

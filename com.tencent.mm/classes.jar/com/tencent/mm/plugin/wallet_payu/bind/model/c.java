@@ -5,121 +5,118 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardManageUI;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUCardElementUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.wallet_core.e;
 
 public class c
-  extends com.tencent.mm.wallet_core.c
+  extends e
 {
-  public final com.tencent.mm.wallet_core.c a(Activity paramActivity, Bundle paramBundle)
-  {
-    AppMethodBeat.i(48341);
-    ab.d("MicroMsg.PayUBindProcess", "hy: start process: PayUBindProcess");
-    b(paramActivity, WalletPayUCheckPwdUI.class, paramBundle);
-    AppMethodBeat.o(48341);
-    return this;
-  }
-  
   public final g a(MMActivity paramMMActivity, i parami)
   {
-    AppMethodBeat.i(48345);
+    AppMethodBeat.i(71985);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new c.1(this, paramMMActivity, parami, this.mEJ);
-      AppMethodBeat.o(48345);
+      paramMMActivity = new c.1(this, paramMMActivity, parami, this.hPH);
+      AppMethodBeat.o(71985);
       return paramMMActivity;
     }
     if ((paramMMActivity instanceof WalletPayUCardElementUI))
     {
       paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
-          AppMethodBeat.i(48339);
-          if (((paramAnonymousm instanceof a)) && (paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          AppMethodBeat.i(71979);
+          if (((paramAnonymousp instanceof a)) && (paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             c.a(c.this).putInt("key_errcode_payu", 0);
-            c.this.b(this.hwZ, c.b(c.this));
+            c.this.b(this.activity, c.b(c.this));
           }
-          if ((paramAnonymousm instanceof NetScenePayUElementQuery))
+          if ((paramAnonymousp instanceof NetScenePayUElementQuery))
           {
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-              break label126;
+              break label127;
             }
-            paramAnonymousString = ((NetScenePayUElementQuery)paramAnonymousm).uBO;
-            if (bo.isNullOrNil(paramAnonymousString.uBP)) {
-              paramAnonymousString.uBQ = ah.getContext().getString(2131305496);
+            paramAnonymousString = ((NetScenePayUElementQuery)paramAnonymousp).WcA;
+            if (Util.isNullOrNil(paramAnonymousString.WcB)) {
+              paramAnonymousString.WcC = MMApplicationContext.getContext().getString(a.i.wallet_payu_bind_err_card_number);
             }
-            c.c(c.this).putParcelable("key_card_element", ((NetScenePayUElementQuery)paramAnonymousm).uBO);
+            c.c(c.this).putParcelable("key_card_element", ((NetScenePayUElementQuery)paramAnonymousp).WcA);
           }
           for (;;)
           {
-            AppMethodBeat.o(48339);
+            AppMethodBeat.o(71979);
             return false;
-            label126:
+            label127:
             NetScenePayUElementQuery.PayUBankcardElement localPayUBankcardElement = new NetScenePayUElementQuery.PayUBankcardElement();
-            paramAnonymousm = paramAnonymousString;
-            if (bo.isNullOrNil(paramAnonymousString)) {
-              paramAnonymousm = "err card element";
+            paramAnonymousp = paramAnonymousString;
+            if (Util.isNullOrNil(paramAnonymousString)) {
+              paramAnonymousp = "err card element";
             }
-            localPayUBankcardElement.uBQ = paramAnonymousm;
+            localPayUBankcardElement.WcC = paramAnonymousp;
             c.d(c.this).putParcelable("key_card_element", localPayUBankcardElement);
           }
         }
         
-        public final boolean p(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
-          AppMethodBeat.i(48340);
+          AppMethodBeat.i(71980);
           paramAnonymousVarArgs = (NetScenePayUElementQuery.PayUBankcardElement)c.e(c.this).getParcelable("key_card_element");
-          this.AXB.a(new a(paramAnonymousVarArgs.ppn, paramAnonymousVarArgs.uBQ, c.f(c.this).getString("key_bank_username"), c.g(c.this).getString("key_card_id"), c.h(c.this).getString("key_expire_data"), paramAnonymousVarArgs.cardType, c.i(c.this).getString("key_cvv"), c.j(c.this).getString("key_pwd1")), true);
-          AppMethodBeat.o(48340);
+          this.agTR.b(new a(paramAnonymousVarArgs.MEo, paramAnonymousVarArgs.WcC, c.f(c.this).getString("key_bank_username"), c.g(c.this).getString("key_card_id"), c.h(c.this).getString("key_expire_data"), paramAnonymousVarArgs.cardType, c.i(c.this).getString("key_cvv"), c.j(c.this).getString("key_pwd1")), true);
+          AppMethodBeat.o(71980);
           return false;
         }
       };
-      AppMethodBeat.o(48345);
+      AppMethodBeat.o(71985);
       return paramMMActivity;
     }
     paramMMActivity = super.a(paramMMActivity, parami);
-    AppMethodBeat.o(48345);
+    AppMethodBeat.o(71985);
     return paramMMActivity;
+  }
+  
+  public final e a(Activity paramActivity, Bundle paramBundle)
+  {
+    AppMethodBeat.i(71981);
+    Log.d("MicroMsg.PayUBindProcess", "hy: start process: PayUBindProcess");
+    b(paramActivity, WalletPayUCheckPwdUI.class, paramBundle);
+    AppMethodBeat.o(71981);
+    return this;
   }
   
   public final void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(48342);
+    AppMethodBeat.i(71982);
     if ((paramActivity instanceof WalletPayUCheckPwdUI)) {
       b(paramActivity, WalletPayUCardElementUI.class, paramBundle);
     }
-    AppMethodBeat.o(48342);
+    AppMethodBeat.o(71982);
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(48344);
-    if (this.mEJ.getInt("key_errcode_payu", -1) == 0)
+    AppMethodBeat.i(71984);
+    if (this.hPH.getInt("key_errcode_payu", -1) == 0)
     {
-      t.makeText(paramActivity, 2131305355, 0).show();
+      aa.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
       a(paramActivity, WalletPayUBankcardManageUI.class, -1, false);
-      AppMethodBeat.o(48344);
+      AppMethodBeat.o(71984);
       return;
     }
-    t.makeText(paramActivity, 2131305060, 0).show();
+    aa.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
     a(paramActivity, WalletPayUBankcardManageUI.class, 0, false);
-    AppMethodBeat.o(48344);
-  }
-  
-  public final String bzC()
-  {
-    return "PayUBindProcess";
+    AppMethodBeat.o(71984);
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
@@ -127,16 +124,21 @@ public class c
     return false;
   }
   
-  public final void e(Activity paramActivity, int paramInt)
+  public final String fud()
   {
-    AppMethodBeat.i(48343);
-    B(paramActivity);
-    AppMethodBeat.o(48343);
+    return "PayUBindProcess";
+  }
+  
+  public final void i(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(71983);
+    Z(paramActivity);
+    AppMethodBeat.o(71983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.c
  * JD-Core Version:    0.7.0.1
  */

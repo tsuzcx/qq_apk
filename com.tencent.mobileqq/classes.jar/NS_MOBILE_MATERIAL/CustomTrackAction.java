@@ -11,12 +11,12 @@ public final class CustomTrackAction
 {
   static Map<String, String> cache_ExtendInfo = new HashMap();
   public String Button = "";
-  public Map<String, String> ExtendInfo;
+  public Map<String, String> ExtendInfo = null;
   public String ID = "";
   public String Name = "";
-  public int Type;
+  public int Type = 0;
   public String Url = "";
-  public int is_block;
+  public int is_block = 0;
   
   static
   {
@@ -49,28 +49,33 @@ public final class CustomTrackAction
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ID != null) {
-      paramJceOutputStream.write(this.ID, 0);
+    Object localObject = this.ID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.Type, 1);
-    if (this.Name != null) {
-      paramJceOutputStream.write(this.Name, 2);
+    localObject = this.Name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.is_block, 3);
-    if (this.Url != null) {
-      paramJceOutputStream.write(this.Url, 4);
+    localObject = this.Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.Button != null) {
-      paramJceOutputStream.write(this.Button, 5);
+    localObject = this.Button;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.ExtendInfo != null) {
-      paramJceOutputStream.write(this.ExtendInfo, 6);
+    localObject = this.ExtendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CustomTrackAction
  * JD-Core Version:    0.7.0.1
  */

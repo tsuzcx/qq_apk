@@ -1,20 +1,16 @@
-import com.dataline.util.WaitEvent;
+import android.content.ContentValues;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.persistence.Entity;
 
 public class fke
   implements Runnable
 {
-  public fke(DataLineMsgProxy paramDataLineMsgProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
+  public fke(DataLineMsgProxy paramDataLineMsgProxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = ((DataLineMsgRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, DataLineMsgRecord.tableName(), localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContentValues, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
   }
 }
 

@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 class JefsClass$7
   implements Runnable
@@ -19,57 +19,64 @@ class JefsClass$7
   
   public void run()
   {
-    String str;
-    for (Object localObject2 = null;; localObject2 = str)
+    for (;;)
     {
       try
       {
-        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.jdField_a_of_type_AndroidContentIntent.getType())) {
-          localObject1 = this.jdField_a_of_type_AndroidContentIntent.getData();
+        Object localObject;
+        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.a.getType()))
+        {
+          localObject = this.a.getData();
+          localObject = FileProvider7Helper.getRealPathFromContentURI(MobileQQ.context, (Uri)localObject);
         }
-        for (Object localObject1 = FileProvider7Helper.getRealPathFromContentURI(BaseApplicationImpl.context, (Uri)localObject1); localObject1 == null; localObject1 = Uri.parse(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("yyb_install_url")).getQueryParameter("filepath"))
+        else
+        {
+          localObject = Uri.parse(this.a.getStringExtra("yyb_install_url")).getQueryParameter("filepath");
+        }
+        if (localObject == null)
         {
           QLog.w("TeleScreen|JefsClass", 1, "apk path is null");
-          JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+          JefsClass.a(this.this$0, this.b);
           return;
         }
-        if (new File((String)localObject1).exists())
+        str2 = null;
+        if (new File((String)localObject).exists())
         {
-          localObject1 = BaseApplicationImpl.context.getPackageManager().getPackageArchiveInfo((String)localObject1, 0);
-          if (localObject1 != null)
+          localObject = MobileQQ.context.getPackageManager().getPackageArchiveInfo((String)localObject, 0);
+          if (localObject != null)
           {
-            localObject1 = ((PackageInfo)localObject1).packageName;
-            continue;
+            localObject = ((PackageInfo)localObject).packageName;
+            break label205;
           }
         }
         else
         {
-          localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if ((localObject2 == null) || (localObject1 == null)) {
-            break label188;
+          localObject = (Context)this.c.get();
+          if ((str2 != null) && (localObject != null))
+          {
+            JefsClass.a(this.this$0, (Context)localObject, this.d, this.e, str2, null, this.b);
+            return;
           }
-          JefsClass.a(this.this$0, (Context)localObject1, this.jdField_a_of_type_JavaLangString, this.b, (String)localObject2, null, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+          QLog.i("TeleScreen|JefsClass", 1, "could not resolve apk file's package");
+          JefsClass.a(this.this$0, this.b);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("TeleScreen|JefsClass", 1, localThrowable, new Object[0]);
-        JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+        JefsClass.a(this.this$0, this.b);
         return;
       }
-      str = "";
-      continue;
-      label188:
-      QLog.i("TeleScreen|JefsClass", 1, "could not resolve apk file's package");
-      JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
-      return;
+      String str1 = "";
+      label205:
+      String str2 = str1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.7
  * JD-Core Version:    0.7.0.1
  */

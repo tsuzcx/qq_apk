@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:layout_gravity="center" android:id="@id/p1z" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.luggage.scanner.ui.ViewfinderView android:id="@id/qyy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="end" android:id="@id/q0t" android:focusable="true" android:clickable="true" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="20.0dip" android:src="@android:drawable/ic_menu_gallery" />
+</FrameLayout>

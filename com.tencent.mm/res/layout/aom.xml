@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center" android:layout_gravity="center" android:id="@id/bl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ProgressBar android:id="@id/s_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zs" />
-</LinearLayout>
+<FrameLayout android:id="@id/gkz" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/i5p" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:loadMoreLayout="@layout/a__">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/i6r" android:paddingTop="@dimen/df" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <FrameLayout android:id="@id/i5n" android:background="@color/c" android:paddingTop="132.0dip" android:paddingBottom="@dimen/c2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="52.0dip" android:layout_centerInParent="true">
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/kns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eks" style="@style/zo" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/knw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eaw" style="@style/zo" />
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/knp" android:background="@color/ahb" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:indeterminateDrawable="@drawable/ang" />
+    </FrameLayout>
+</FrameLayout>

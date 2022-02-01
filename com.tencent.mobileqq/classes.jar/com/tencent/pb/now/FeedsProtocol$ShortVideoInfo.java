@@ -50,6 +50,8 @@ public final class FeedsProtocol$ShortVideoInfo
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -58,12 +60,12 @@ public final class FeedsProtocol$ShortVideoInfo
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 66, 74, 80, 90, 96, 104, 112, 122, 128, 136, 144, 154, 160, 170, 176, 186, 192, 202 }, new String[] { "user_info", "pic_url", "video_url", "anchor_info", "create_time", "feed_type", "feed_source", "feeds_id", "file_id", "video_time", "rpt_msg_rich_title", "view_times", "video_width", "video_hight", "doodle_pic_url", "is_listen", "is_like", "like_num", "share_url", "follow_uid", "jump_url", "up_status", "lbs_info", "bg_color", "vid" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, null, Long.valueOf(0L), Integer.valueOf(1), Integer.valueOf(1), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, Long.valueOf(0L), localByteStringMicro7, Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro8 }, ShortVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 66, 74, 80, 90, 96, 104, 112, 122, 128, 136, 144, 154, 160, 170, 176, 186, 192, 202 }, new String[] { "user_info", "pic_url", "video_url", "anchor_info", "create_time", "feed_type", "feed_source", "feeds_id", "file_id", "video_time", "rpt_msg_rich_title", "view_times", "video_width", "video_hight", "doodle_pic_url", "is_listen", "is_like", "like_num", "share_url", "follow_uid", "jump_url", "up_status", "lbs_info", "bg_color", "vid" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, null, Long.valueOf(0L), localInteger2, localInteger2, localByteStringMicro3, localByteStringMicro4, localInteger1, null, localInteger1, localInteger1, localInteger1, localByteStringMicro5, localInteger1, localInteger1, localInteger1, localByteStringMicro6, Long.valueOf(0L), localByteStringMicro7, localInteger1, null, localInteger1, localByteStringMicro8 }, ShortVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.ShortVideoInfo
  * JD-Core Version:    0.7.0.1
  */

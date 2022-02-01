@@ -20,10 +20,10 @@ import android.widget.TextView;
 public class DismissOverlayView
   extends FrameLayout
 {
-  private SharedPreferences BO;
-  private boolean BP = true;
-  private TextView BQ;
-  private View BR;
+  private SharedPreferences DD;
+  private boolean DE = true;
+  private TextView DF;
+  private View DG;
   
   public DismissOverlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,17 +33,17 @@ public class DismissOverlayView
   public DismissOverlayView(final Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(i.wH, this, true);
-    setBackgroundResource(d.we);
+    LayoutInflater.from(paramContext).inflate(i.yw, this, true);
+    setBackgroundResource(d.xT);
     setClickable(true);
     if (!isInEditMode())
     {
-      this.BO = paramContext.getSharedPreferences("android.support.wearable.DismissOverlay", 0);
-      this.BP = this.BO.getBoolean("first_run", true);
+      this.DD = paramContext.getSharedPreferences("android.support.wearable.DismissOverlay", 0);
+      this.DE = this.DD.getBoolean("first_run", true);
     }
-    this.BQ = ((TextView)findViewById(g.wA));
-    this.BR = findViewById(g.wz);
-    this.BR.setOnClickListener(new View.OnClickListener()
+    this.DF = ((TextView)findViewById(g.yp));
+    this.DG = findViewById(g.yo);
+    this.DG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -66,10 +66,10 @@ public class DismissOverlayView
         DismissOverlayView.this.setAlpha(1.0F);
       }
     }).start();
-    if (this.BP)
+    if (this.DE)
     {
-      this.BP = false;
-      this.BO.edit().putBoolean("first_run", false).apply();
+      this.DE = false;
+      this.DD.edit().putBoolean("first_run", false).apply();
     }
     return true;
   }

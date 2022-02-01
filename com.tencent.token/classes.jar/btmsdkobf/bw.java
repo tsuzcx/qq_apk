@@ -15,33 +15,37 @@ import java.util.Set;
 
 public class bw
 {
-  public static String gP = null;
-  private static int gQ;
-  private static volatile bw gR;
+  public static String gP;
+  private static int gQ = 1;
+  private static volatile bw gR = null;
   private ec O = new ec("sk");
   
   static
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (!bc.p()) {
-          continue;
-        }
-        str = "_test";
-        gP = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/.tmfs/" + "sk_v" + str + ".dat";
+      if (!bc.p()) {
+        break label71;
       }
-      catch (Throwable localThrowable)
-      {
-        String str;
-        continue;
-      }
-      gQ = 1;
-      gR = null;
-      return;
-      str = "";
+      str1 = "_test";
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        String str1;
+        StringBuilder localStringBuilder;
+        continue;
+        label71:
+        String str2 = "";
+      }
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    localStringBuilder.append("/DCIM/.tmfs/sk_v");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(".dat");
+    gP = localStringBuilder.toString();
   }
   
   private bw()
@@ -51,18 +55,19 @@ public class bw
   
   public static bw ah()
   {
-    if (gR == null) {}
-    try
-    {
-      if (gR == null) {
-        gR = new bw();
+    if (gR == null) {
+      try
+      {
+        if (gR == null) {
+          gR = new bw();
+        }
       }
-      return gR;
+      finally {}
     }
-    finally {}
+    return gR;
   }
   
-  private LinkedHashMap ap()
+  private LinkedHashMap<String, cg.a> ap()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     Object localObject = dx.F(this.O.getString("key_hips", ""));
@@ -72,41 +77,41 @@ public class bw
       return localLinkedHashMap;
     }
     localObject = ((String)localObject).split("\\|");
-    if ((localObject == null) || (localObject.length == 0))
+    if ((localObject != null) && (localObject.length != 0))
     {
-      eh.g("SharkDao", "[ip_list]getAllHIPListInfos(), item number is 0!");
-      return localLinkedHashMap;
-    }
-    int j = localObject.length;
-    int i = 0;
-    if (i < j)
-    {
-      CharSequence localCharSequence = localObject[i];
-      if (TextUtils.isEmpty(localCharSequence)) {}
-      for (;;)
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        i += 1;
-        break;
-        String[] arrayOfString = localCharSequence.split(",");
-        if ((arrayOfString != null) && (arrayOfString.length > 0))
+        CharSequence localCharSequence = localObject[i];
+        if (!TextUtils.isEmpty(localCharSequence))
         {
-          localCharSequence = arrayOfString[0];
-          try
+          String[] arrayOfString = localCharSequence.split(",");
+          if ((arrayOfString != null) && (arrayOfString.length > 0))
           {
-            long l = Long.parseLong(arrayOfString[1]);
-            arrayOfString = arrayOfString[2].split("#");
-            if (arrayOfString != null) {
-              localLinkedHashMap.put(localCharSequence, new cg.a(l, cg.a(Arrays.asList(arrayOfString), false), false));
+            localCharSequence = arrayOfString[0];
+            try
+            {
+              long l = Long.parseLong(arrayOfString[1]);
+              arrayOfString = arrayOfString[2].split("#");
+              if (arrayOfString != null) {
+                localLinkedHashMap.put(localCharSequence, new cg.a(l, cg.a(Arrays.asList(arrayOfString), false), false));
+              }
+            }
+            catch (Exception localException)
+            {
+              eh.h("SharkDao", "[ip_list]getAllHIPListInfos() exception: ".concat(String.valueOf(localException)));
             }
           }
-          catch (Exception localException)
-          {
-            eh.h("SharkDao", "[ip_list]getAllHIPListInfos() exception: " + localException);
-          }
         }
+        i += 1;
       }
+      localObject = new StringBuilder("[ip_list]getAllHIPListInfos(), size: ");
+      ((StringBuilder)localObject).append(localLinkedHashMap.size());
+      eh.f("SharkDao", ((StringBuilder)localObject).toString());
+      return localLinkedHashMap;
     }
-    eh.f("SharkDao", "[ip_list]getAllHIPListInfos(), size: " + localLinkedHashMap.size());
+    eh.g("SharkDao", "[ip_list]getAllHIPListInfos(), item number is 0!");
     return localLinkedHashMap;
   }
   
@@ -126,7 +131,11 @@ public class bw
   
   public void a(cs.b paramb)
   {
-    paramb = dx.E("" + paramb.is + "|" + paramb.ir);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramb.is);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramb.ir);
+    paramb = dx.E(localStringBuilder.toString());
     if (paramb == null) {
       return;
     }
@@ -135,94 +144,89 @@ public class bw
   
   public void a(v paramv)
   {
-    if (paramv == null) {}
-    do
+    if (paramv == null) {
+      return;
+    }
+    paramv = cp.b(paramv);
+    if (paramv != null)
     {
-      do
+      paramv = ConvertUtil.bytesToHexString(paramv);
+      if (paramv != null)
       {
-        do
+        paramv = dx.E(paramv);
+        if (paramv != null)
         {
-          return;
-          paramv = cp.b(paramv);
-        } while (paramv == null);
-        paramv = ConvertUtil.bytesToHexString(paramv);
-      } while (paramv == null);
-      paramv = dx.E(paramv);
-    } while (paramv == null);
-    this.O.putString("key_s_c", paramv);
-    eh.f("SharkDao", "[shark_conf]setSharkConf() succ");
+          this.O.putString("key_s_c", paramv);
+          eh.f("SharkDao", "[shark_conf]setSharkConf() succ");
+        }
+      }
+    }
   }
   
-  public void a(String paramString, long paramLong, List paramList)
+  public void a(String paramString, long paramLong, List<String> paramList)
   {
     if (paramString == null)
     {
       eh.h("SharkDao", "[ip_list]setHIPListInfo(), bad arg, key == null");
       return;
     }
-    int i;
-    Object localObject2;
-    Object localObject1;
-    if ((paramLong <= 0L) || (paramList == null))
-    {
+    if ((paramLong > 0L) && (paramList != null)) {
+      i = 0;
+    } else {
       i = 1;
-      localObject2 = new StringBuilder().append("[ip_list]setHIPListInfo(), op=");
-      if (i == 0) {
-        break label199;
-      }
-      localObject1 = "[delete] ";
-      label49:
-      eh.e("SharkDao", (String)localObject1 + "|key=" + paramString);
-      localObject2 = ap();
-      localObject1 = new LinkedHashMap();
-      localObject2 = ((LinkedHashMap)localObject2).entrySet().iterator();
     }
+    Object localObject2 = new StringBuilder("[ip_list]setHIPListInfo(), op=");
+    if (i != 0) {
+      localObject1 = "[delete] ";
+    } else {
+      localObject1 = "[set] ";
+    }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|key=");
+    ((StringBuilder)localObject2).append(paramString);
+    eh.e("SharkDao", ((StringBuilder)localObject2).toString());
+    localObject2 = ap();
+    Object localObject1 = new LinkedHashMap();
+    localObject2 = ((LinkedHashMap)localObject2).entrySet().iterator();
     Object localObject4;
     Object localObject3;
-    for (;;)
+    while (((Iterator)localObject2).hasNext())
     {
-      if (!((Iterator)localObject2).hasNext()) {
-        break label220;
-      }
       localObject4 = (Map.Entry)((Iterator)localObject2).next();
       localObject3 = (String)((Map.Entry)localObject4).getKey();
       localObject4 = (cg.a)((Map.Entry)localObject4).getValue();
-      if ((localObject3 != null) && (localObject4 != null))
-      {
-        if (!((cg.a)localObject4).isValid())
-        {
-          eh.h("SharkDao", "[ip_list]setHIPListInfo(), remove expired:　" + (String)localObject3);
-          continue;
-          i = 0;
-          break;
-          label199:
-          localObject1 = "[set] ";
-          break label49;
+      if ((localObject3 != null) && (localObject4 != null)) {
+        if (!((cg.a)localObject4).isValid()) {
+          eh.h("SharkDao", "[ip_list]setHIPListInfo(), remove expired:　".concat(String.valueOf(localObject3)));
+        } else {
+          ((LinkedHashMap)localObject1).put(localObject3, localObject4);
         }
-        ((LinkedHashMap)localObject1).put(localObject3, localObject4);
       }
     }
-    label220:
     if (i != 0)
     {
       ((LinkedHashMap)localObject1).remove(paramString);
-      if (((LinkedHashMap)localObject1).size() > 10)
-      {
-        paramString = new ArrayList(((LinkedHashMap)localObject1).keySet());
-        eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, keyList: " + paramString);
-        paramString = (String)paramString.get(0);
-        ((LinkedHashMap)localObject1).remove(paramString);
-        eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, remove firstKey: " + paramString);
-      }
-      paramString = new StringBuilder();
-      paramList = ((LinkedHashMap)localObject1).entrySet().iterator();
-      i = 0;
     }
-    for (;;)
+    else
     {
-      if (!paramList.hasNext()) {
-        break label595;
+      paramList = new cg.a(paramLong, paramList, false);
+      if (paramList.isValid()) {
+        ((LinkedHashMap)localObject1).put(paramString, paramList);
       }
+    }
+    if (((LinkedHashMap)localObject1).size() > 10)
+    {
+      paramString = new ArrayList(((LinkedHashMap)localObject1).keySet());
+      eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, keyList: ".concat(String.valueOf(paramString)));
+      paramString = (String)paramString.get(0);
+      ((LinkedHashMap)localObject1).remove(paramString);
+      eh.f("SharkDao", "[ip_list]setHIPListInfo(), too manay, remove firstKey: ".concat(String.valueOf(paramString)));
+    }
+    paramString = new StringBuilder();
+    paramList = ((LinkedHashMap)localObject1).entrySet().iterator();
+    int i = 0;
+    while (paramList.hasNext())
+    {
       localObject2 = (Map.Entry)paramList.next();
       localObject1 = (String)((Map.Entry)localObject2).getKey();
       localObject3 = (cg.a)((Map.Entry)localObject2).getValue();
@@ -232,29 +236,23 @@ public class bw
         if (paramLong > System.currentTimeMillis())
         {
           localObject2 = new StringBuilder();
-          int j = 0;
           localObject3 = ((cg.a)localObject3).ia.iterator();
-          for (;;)
+          int j = 0;
+          while (((Iterator)localObject3).hasNext())
           {
-            if (((Iterator)localObject3).hasNext())
-            {
-              localObject4 = (String)((Iterator)localObject3).next();
-              if (j > 0) {
-                ((StringBuilder)localObject2).append("#");
-              }
-              ((StringBuilder)localObject2).append((String)localObject4);
-              j += 1;
-              continue;
-              paramList = new cg.a(paramLong, paramList, false);
-              if (!paramList.isValid()) {
-                break;
-              }
-              ((LinkedHashMap)localObject1).put(paramString, paramList);
-              break;
+            localObject4 = (String)((Iterator)localObject3).next();
+            if (j > 0) {
+              ((StringBuilder)localObject2).append("#");
             }
+            ((StringBuilder)localObject2).append((String)localObject4);
+            j += 1;
           }
           localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append((String)localObject1).append(",").append(paramLong).append(",").append(((StringBuilder)localObject2).toString());
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(",");
+          ((StringBuilder)localObject3).append(paramLong);
+          ((StringBuilder)localObject3).append(",");
+          ((StringBuilder)localObject3).append(((StringBuilder)localObject2).toString());
           if (i > 0) {
             paramString.append("|");
           }
@@ -263,8 +261,11 @@ public class bw
         }
       }
     }
-    label595:
-    eh.f("SharkDao", "[ip_list]setHIPListInfo(), new size: " + i + ", before encode: " + paramString.toString());
+    paramList = new StringBuilder("[ip_list]setHIPListInfo(), new size: ");
+    paramList.append(i);
+    paramList.append(", before encode: ");
+    paramList.append(paramString.toString());
+    eh.f("SharkDao", paramList.toString());
     paramString = dx.E(paramString.toString());
     if (paramString == null)
     {
@@ -276,30 +277,23 @@ public class bw
   
   public cs.b ai()
   {
-    Object localObject2 = null;
     String str = this.O.getString("key_rsa", "");
-    Object localObject1 = localObject2;
     if (!TextUtils.isEmpty(str))
     {
       str = dx.F(str);
-      localObject1 = localObject2;
       if (!TextUtils.isEmpty(str))
       {
         int i = str.indexOf("|");
-        localObject1 = localObject2;
-        if (i > 0)
+        if ((i > 0) && (i < str.length() - 1))
         {
-          localObject1 = localObject2;
-          if (i < str.length() - 1)
-          {
-            localObject1 = new cs.b();
-            ((cs.b)localObject1).is = str.substring(0, i);
-            ((cs.b)localObject1).ir = str.substring(i + 1);
-          }
+          cs.b localb = new cs.b();
+          localb.is = str.substring(0, i);
+          localb.ir = str.substring(i + 1);
+          return localb;
         }
       }
     }
-    return localObject1;
+    return null;
   }
   
   public String aj()
@@ -314,12 +308,11 @@ public class bw
   
   public String al()
   {
-    String str = null;
     byte[] arrayOfByte = dz.G(gP);
     if (arrayOfByte != null) {
-      str = dx.F(new String(arrayOfByte));
+      return dx.F(new String(arrayOfByte));
     }
-    return str;
+    return null;
   }
   
   public long am()
@@ -330,7 +323,11 @@ public class bw
       long l = Long.parseLong(str);
       return l;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label23:
+      break label23;
+    }
     return 0L;
   }
   
@@ -348,9 +345,9 @@ public class bw
           localObject = new JceInputStream((byte[])localObject);
           ((JceInputStream)localObject).setServerEncoding("UTF-8");
           localan.readFrom((JceInputStream)localObject);
+          return localan;
         }
       }
-      return localan;
     }
     catch (Throwable localThrowable)
     {
@@ -366,12 +363,11 @@ public class bw
   
   public v aq()
   {
-    v localv = null;
     String str = dx.F(this.O.getString("key_s_c", ""));
     if (!TextUtils.isEmpty(str)) {
-      localv = (v)cp.a(ConvertUtil.hexStringToByte(str), new v(), false);
+      return (v)cp.a(ConvertUtil.hexStringToByte(str), new v(), false);
     }
-    return localv;
+    return null;
   }
   
   public void b(long paramLong)
@@ -409,11 +405,12 @@ public class bw
   public void p(String paramString)
   {
     paramString = dx.E(paramString);
-    if (paramString == null) {}
-    while (gP == null) {
+    if (paramString == null) {
       return;
     }
-    dz.a(paramString.getBytes(), gP);
+    if (gP != null) {
+      dz.a(paramString.getBytes(), gP);
+    }
   }
   
   public cg.a q(String paramString)

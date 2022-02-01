@@ -16,111 +16,106 @@ public final class ReflecterHelper
   
   public static void fixInputMethodManagerLeak(Context paramContext)
   {
-    if (paramContext == null) {}
-    label184:
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
-      if (localInputMethodManager != null)
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (localInputMethodManager == null) {
+      return;
+    }
+    String[] arrayOfString = new String[3];
+    arrayOfString[0] = "mCurRootView";
+    arrayOfString[1] = "mServedView";
+    arrayOfString[2] = "mNextServedView";
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      Object localObject1 = arrayOfString[i];
+      try
       {
-        String[] arrayOfString = new String[3];
-        arrayOfString[0] = "mCurRootView";
-        arrayOfString[1] = "mServedView";
-        arrayOfString[2] = "mNextServedView";
-        int i = 0;
-        for (;;)
+        Object localObject2 = localInputMethodManager.getClass().getDeclaredField((String)localObject1);
+        if (!((Field)localObject2).isAccessible()) {
+          ((Field)localObject2).setAccessible(true);
+        }
+        localObject1 = ((Field)localObject2).get(localInputMethodManager);
+        if ((localObject1 != null) && ((localObject1 instanceof View)))
         {
-          for (;;)
+          localObject1 = (View)localObject1;
+          if (((View)localObject1).getContext() == paramContext)
           {
-            if (i >= arrayOfString.length) {
-              break label184;
+            ((Field)localObject2).set(localInputMethodManager, null);
+          }
+          else
+          {
+            if (!QLog.isColorLevel()) {
+              break;
             }
-            Object localObject1 = arrayOfString[i];
-            try
-            {
-              localObject1 = localInputMethodManager.getClass().getDeclaredField((String)localObject1);
-              if (!((Field)localObject1).isAccessible()) {
-                ((Field)localObject1).setAccessible(true);
-              }
-              Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
-              if ((localObject2 != null) && ((localObject2 instanceof View)))
-              {
-                localObject2 = (View)localObject2;
-                if (((View)localObject2).getContext() == paramContext)
-                {
-                  ((Field)localObject1).set(localInputMethodManager, null);
-                }
-                else
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d(ReflecterHelper.class.getSimpleName(), 0, "fixInputMethodManagerLeak break, context is not suitable, get_context=" + ((View)localObject2).getContext() + " dest_context=" + paramContext);
-                  return;
-                }
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              localThrowable.printStackTrace();
-              i += 1;
-            }
+            localObject2 = ReflecterHelper.class.getSimpleName();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("fixInputMethodManagerLeak break, context is not suitable, get_context=");
+            localStringBuilder.append(((View)localObject1).getContext());
+            localStringBuilder.append(" dest_context=");
+            localStringBuilder.append(paramContext);
+            QLog.d((String)localObject2, 0, localStringBuilder.toString());
+            return;
           }
         }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        i += 1;
       }
     }
   }
   
   public static void fixMesssageLeak(Dialog paramDialog)
   {
-    if (paramDialog == null) {}
-    for (;;)
-    {
+    if (paramDialog == null) {
       return;
-      String[] arrayOfString = new String[3];
-      arrayOfString[0] = "mDismissMessage";
-      arrayOfString[1] = "mCancelMessage";
-      arrayOfString[2] = "mShowMessage";
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+    }
+    String[] arrayOfString = new String[3];
+    arrayOfString[0] = "mDismissMessage";
+    arrayOfString[1] = "mCancelMessage";
+    arrayOfString[2] = "mShowMessage";
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfString[i];
+      try
       {
-        Object localObject = arrayOfString[i];
-        try
+        localObject = Dialog.class.getDeclaredField((String)localObject);
+        if (localObject != null)
         {
-          localObject = Dialog.class.getDeclaredField((String)localObject);
-          if (localObject != null)
+          if (!((Field)localObject).isAccessible()) {
+            ((Field)localObject).setAccessible(true);
+          }
+          localObject = ((Field)localObject).get(paramDialog);
+          if ((localObject instanceof Message))
           {
-            if (!((Field)localObject).isAccessible()) {
-              ((Field)localObject).setAccessible(true);
-            }
-            localObject = ((Field)localObject).get(paramDialog);
-            if ((localObject instanceof Message))
+            localObject = (Message)localObject;
+            if (((Message)localObject).obj != null)
             {
-              localObject = (Message)localObject;
-              if (((Message)localObject).obj != null)
-              {
-                ((Message)localObject).obj = null;
-                ((Message)localObject).what = 0;
-              }
+              ((Message)localObject).obj = null;
+              ((Message)localObject).what = 0;
             }
           }
         }
-        catch (NoSuchFieldException localNoSuchFieldException)
-        {
-          localNoSuchFieldException.printStackTrace();
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          localIllegalArgumentException.printStackTrace();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
-        i += 1;
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+      }
+      i += 1;
     }
   }
   
@@ -132,99 +127,71 @@ public final class ReflecterHelper
       Class[] arrayOfClass = new Class[paramArrayOfObject.length];
       int i = 0;
       int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
+      for (;;)
       {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
-        }
-        for (;;)
-        {
-          i += 1;
+        localObject = arrayOfClass;
+        if (i >= j) {
           break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
-          }
         }
+        if (paramArrayOfObject[i] != null) {
+          arrayOfClass[i] = paramArrayOfObject[i].getClass();
+        } else {
+          arrayOfClass[i] = String.class;
+        }
+        if (arrayOfClass[i] == Integer.class) {
+          arrayOfClass[i] = Integer.TYPE;
+        } else if (arrayOfClass[i] == Boolean.class) {
+          arrayOfClass[i] = Boolean.TYPE;
+        }
+        i += 1;
       }
     }
     return localObject;
   }
   
-  /* Error */
   private static final Field getField(String paramString)
   {
-    // Byte code:
-    //   0: getstatic 149	com/tencent/kapalaiadapter/ReflecterHelper:mCurrentClass	Ljava/lang/Class;
-    //   3: aload_0
-    //   4: invokevirtual 44	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   7: astore_0
-    //   8: aload_0
-    //   9: iconst_1
-    //   10: invokevirtual 54	java/lang/reflect/Field:setAccessible	(Z)V
-    //   13: aload_0
-    //   14: areturn
-    //   15: astore_1
-    //   16: aconst_null
-    //   17: astore_0
-    //   18: aload_1
-    //   19: invokevirtual 150	java/lang/SecurityException:printStackTrace	()V
-    //   22: aload_0
-    //   23: areturn
-    //   24: astore_1
-    //   25: aconst_null
-    //   26: astore_0
-    //   27: aload_1
-    //   28: invokevirtual 128	java/lang/NoSuchFieldException:printStackTrace	()V
-    //   31: aload_0
-    //   32: areturn
-    //   33: astore_1
-    //   34: goto -7 -> 27
-    //   37: astore_1
-    //   38: goto -20 -> 18
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	paramString	String
-    //   15	4	1	localSecurityException1	java.lang.SecurityException
-    //   24	4	1	localNoSuchFieldException1	NoSuchFieldException
-    //   33	1	1	localNoSuchFieldException2	NoSuchFieldException
-    //   37	1	1	localSecurityException2	java.lang.SecurityException
-    // Exception table:
-    //   from	to	target	type
-    //   0	8	15	java/lang/SecurityException
-    //   0	8	24	java/lang/NoSuchFieldException
-    //   8	13	33	java/lang/NoSuchFieldException
-    //   8	13	37	java/lang/SecurityException
+    String str2 = null;
+    String str1 = null;
+    try
+    {
+      paramString = mCurrentClass.getDeclaredField(paramString);
+      str1 = paramString;
+      str2 = paramString;
+      paramString.setAccessible(true);
+      return paramString;
+    }
+    catch (NoSuchFieldException paramString)
+    {
+      paramString.printStackTrace();
+      return str1;
+    }
+    catch (SecurityException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return str2;
   }
   
   public static final int getIntValue(Object paramObject, String paramString, int paramInt)
   {
     setClass(paramObject.getClass().getName());
     paramString = getField(paramString);
-    int i = paramInt;
-    if (paramString != null) {}
-    try
-    {
-      i = paramString.getInt(paramObject);
-      return i;
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      paramObject.printStackTrace();
-      return paramInt;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      paramObject.printStackTrace();
+    if (paramString != null) {
+      try
+      {
+        int i = paramString.getInt(paramObject);
+        return i;
+      }
+      catch (IllegalAccessException paramObject)
+      {
+        paramObject.printStackTrace();
+        return paramInt;
+      }
+      catch (IllegalArgumentException paramObject)
+      {
+        paramObject.printStackTrace();
+      }
     }
     return paramInt;
   }
@@ -237,45 +204,44 @@ public final class ReflecterHelper
   public static final int getStaticIntValue(String paramString, int paramInt)
   {
     paramString = getField(paramString);
-    int i = paramInt;
-    if (paramString != null) {}
-    try
-    {
-      i = paramString.getInt(null);
-      return i;
-    }
-    catch (IllegalArgumentException paramString)
-    {
-      paramString.printStackTrace();
-      return paramInt;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      paramString.printStackTrace();
+    if (paramString != null) {
+      try
+      {
+        int i = paramString.getInt(null);
+        return i;
+      }
+      catch (IllegalAccessException paramString)
+      {
+        paramString.printStackTrace();
+        return paramInt;
+      }
+      catch (IllegalArgumentException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return paramInt;
   }
   
   public static Object getStaticProperty(String paramString1, String paramString2)
   {
-    Object localObject = null;
     setClass(paramString1);
-    paramString2 = getField(paramString2);
-    paramString1 = localObject;
-    if (paramString2 != null) {}
-    try
-    {
-      paramString1 = paramString2.get(null);
-      return paramString1;
-    }
-    catch (IllegalArgumentException paramString1)
-    {
-      paramString1.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      paramString1.printStackTrace();
+    paramString1 = getField(paramString2);
+    if (paramString1 != null) {
+      try
+      {
+        paramString1 = paramString1.get(null);
+        return paramString1;
+      }
+      catch (IllegalAccessException paramString1)
+      {
+        paramString1.printStackTrace();
+        return null;
+      }
+      catch (IllegalArgumentException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
     return null;
   }
@@ -330,24 +296,17 @@ public final class ReflecterHelper
   
   public static final boolean setClass(String paramString)
   {
-    Object localObject = null;
     try
     {
       paramString = Class.forName(paramString);
-      mCurrentClass = paramString;
-      if (mCurrentClass != null) {
-        return true;
-      }
     }
     catch (ClassNotFoundException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localObject;
-      }
+      paramString.printStackTrace();
+      paramString = null;
     }
-    return false;
+    mCurrentClass = paramString;
+    return mCurrentClass != null;
   }
   
   public static void setProperty(Object paramObject1, String paramString, Object paramObject2)
@@ -361,32 +320,33 @@ public final class ReflecterHelper
   {
     setClass(paramString1);
     paramString1 = getField(paramString2);
-    if (paramString1 != null) {}
-    try
-    {
-      paramString1.setAccessible(true);
-      paramString1.set(null, paramObject);
-      return;
-    }
-    catch (IllegalArgumentException paramString1)
-    {
-      paramString1.printStackTrace();
-      return;
-    }
-    catch (IllegalAccessException paramString1)
-    {
-      paramString1.printStackTrace();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
+    if (paramString1 != null) {
+      try
+      {
+        paramString1.setAccessible(true);
+        paramString1.set(null, paramObject);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      catch (IllegalArgumentException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kapalaiadapter.ReflecterHelper
  * JD-Core Version:    0.7.0.1
  */

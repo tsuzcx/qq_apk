@@ -11,73 +11,73 @@ import java.util.Collections;
 public final class i
   implements h
 {
-  private static final double[] aKs = { 23.976023976023978D, 24.0D, 25.0D, 29.970029970029969D, 30.0D, 50.0D, 59.940059940059939D, 60.0D };
-  private boolean aBO;
-  private com.google.android.exoplayer2.c.m aCe;
-  private boolean aKA;
-  private boolean aKB;
-  private String aKf;
-  private long aKr;
-  private long aKt;
-  private final boolean[] aKu;
-  private final i.a aKv;
-  private long aKw;
-  private boolean aKx;
-  private long aKy;
-  private long aKz;
+  private static final double[] cUk = { 23.976023976023978D, 24.0D, 25.0D, 29.970029970029969D, 30.0D, 50.0D, 59.940059940059939D, 60.0D };
+  private boolean cLK;
+  private com.google.android.exoplayer2.c.m cMa;
+  private String cTX;
+  private long cUj;
+  private final boolean[] cUl;
+  private final a cUm;
+  private long cUn;
+  private boolean cUo;
+  private long cUp;
+  private long cUq;
+  private boolean cUr;
+  private boolean cUs;
+  private long frameDurationUs;
   
   public i()
   {
-    AppMethodBeat.i(95113);
-    this.aKu = new boolean[4];
-    this.aKv = new i.a();
-    AppMethodBeat.o(95113);
+    AppMethodBeat.i(92235);
+    this.cUl = new boolean[4];
+    this.cUm = new a();
+    AppMethodBeat.o(92235);
   }
+  
+  public final void Si()
+  {
+    AppMethodBeat.i(92236);
+    k.c(this.cUl);
+    a locala = this.cUm;
+    locala.cUu = false;
+    locala.length = 0;
+    locala.cUv = 0;
+    this.cUn = 0L;
+    this.cUo = false;
+    AppMethodBeat.o(92236);
+  }
+  
+  public final void Sj() {}
   
   public final void a(g paramg, v.d paramd)
   {
-    AppMethodBeat.i(95115);
-    paramd.ox();
-    this.aKf = paramd.oz();
-    this.aCe = paramg.dm(paramd.oy());
-    AppMethodBeat.o(95115);
+    AppMethodBeat.i(92237);
+    paramd.Sv();
+    this.cTX = paramd.Sw();
+    this.cMa = paramg.hz(paramd.getTrackId());
+    AppMethodBeat.o(92237);
   }
   
-  public final void d(long paramLong, boolean paramBoolean)
+  public final void h(long paramLong, boolean paramBoolean)
   {
-    this.aKy = paramLong;
+    this.cUp = paramLong;
   }
-  
-  public final void ol()
-  {
-    AppMethodBeat.i(95114);
-    k.a(this.aKu);
-    i.a locala = this.aKv;
-    locala.aKD = false;
-    locala.length = 0;
-    locala.aKE = 0;
-    this.aKw = 0L;
-    this.aKx = false;
-    AppMethodBeat.o(95114);
-  }
-  
-  public final void om() {}
   
   public final void t(com.google.android.exoplayer2.i.m paramm)
   {
-    AppMethodBeat.i(95116);
+    AppMethodBeat.i(92238);
     int i = paramm.position;
     int j = paramm.limit;
     byte[] arrayOfByte1 = paramm.data;
-    this.aKw += paramm.qM();
-    this.aCe.a(paramm, paramm.qM());
-    int k = k.a(arrayOfByte1, i, j, this.aKu);
+    this.cUn += paramm.UF();
+    this.cMa.a(paramm, paramm.UF());
+    int k = k.a(arrayOfByte1, i, j, this.cUl);
     if (k == j)
     {
-      if (!this.aBO) {
-        this.aKv.d(arrayOfByte1, i, j);
+      if (!this.cLK) {
+        this.cUm.d(arrayOfByte1, i, j);
       }
-      AppMethodBeat.o(95116);
+      AppMethodBeat.o(92238);
       return;
     }
     int m = paramm.data[(k + 3)] & 0xFF;
@@ -90,32 +90,32 @@ public final class i
     byte[] arrayOfByte2;
     int i1;
     float f;
-    if (!this.aBO)
+    if (!this.cLK)
     {
       n = k - i;
       if (n > 0) {
-        this.aKv.d(arrayOfByte1, i, k);
+        this.cUm.d(arrayOfByte1, i, k);
       }
       if (n >= 0) {
         break label709;
       }
       i = -n;
-      localObject1 = this.aKv;
-      if (!((i.a)localObject1).aKD) {
+      localObject1 = this.cUm;
+      if (!((a)localObject1).cUu) {
         break label727;
       }
-      ((i.a)localObject1).length -= i;
-      if ((((i.a)localObject1).aKE != 0) || (m != 181)) {
+      ((a)localObject1).length -= i;
+      if ((((a)localObject1).cUv != 0) || (m != 181)) {
         break label715;
       }
-      ((i.a)localObject1).aKE = ((i.a)localObject1).length;
-      ((i.a)localObject1).d(i.a.aKC, 0, i.a.aKC.length);
+      ((a)localObject1).cUv = ((a)localObject1).length;
+      ((a)localObject1).d(a.cUt, 0, a.cUt.length);
       i = 0;
       if (i != 0)
       {
-        localObject1 = this.aKv;
-        localObject2 = this.aKf;
-        arrayOfByte2 = Arrays.copyOf(((i.a)localObject1).data, ((i.a)localObject1).length);
+        localObject1 = this.cUm;
+        localObject2 = this.cTX;
+        arrayOfByte2 = Arrays.copyOf(((a)localObject1).data, ((a)localObject1).length);
         i1 = arrayOfByte2[4];
         i = arrayOfByte2[5] & 0xFF;
         n = arrayOfByte2[6];
@@ -138,10 +138,10 @@ public final class i
       if (i >= 0)
       {
         l1 = l2;
-        if (i < aKs.length)
+        if (i < cUk.length)
         {
-          double d2 = aKs[i];
-          n = ((i.a)localObject1).aKE;
+          double d2 = cUk[i];
+          n = ((a)localObject1).cUv;
           i = (arrayOfByte2[(n + 9)] & 0x60) >> 5;
           n = arrayOfByte2[(n + 9)] & 0x1F;
           double d1 = d2;
@@ -152,42 +152,42 @@ public final class i
         }
       }
       localObject1 = Pair.create(localObject2, Long.valueOf(l1));
-      this.aCe.f((Format)((Pair)localObject1).first);
-      this.aKt = ((Long)((Pair)localObject1).second).longValue();
-      this.aBO = true;
+      this.cMa.f((Format)((Pair)localObject1).first);
+      this.frameDurationUs = ((Long)((Pair)localObject1).second).longValue();
+      this.cLK = true;
       if ((m == 0) || (m == 179))
       {
         n = j - k;
-        if ((this.aKx) && (this.aKB) && (this.aBO))
+        if ((this.cUo) && (this.cUs) && (this.cLK))
         {
-          if (this.aKA)
+          if (this.cUr)
           {
             i = 1;
-            i1 = (int)(this.aKw - this.aKz);
-            this.aCe.a(this.aKr, i, i1 - n, n, null);
+            i1 = (int)(this.cUn - this.cUq);
+            this.cMa.a(this.cUj, i, i1 - n, n, null);
           }
         }
         else
         {
-          if ((!this.aKx) || (this.aKB))
+          if ((!this.cUo) || (this.cUs))
           {
-            this.aKz = (this.aKw - n);
-            if (this.aKy == -9223372036854775807L) {
+            this.cUq = (this.cUn - n);
+            if (this.cUp == -9223372036854775807L) {
               break label802;
             }
-            l1 = this.aKy;
+            l1 = this.cUp;
             label663:
-            this.aKr = l1;
-            this.aKA = false;
-            this.aKy = -9223372036854775807L;
-            this.aKx = true;
+            this.cUj = l1;
+            this.cUr = false;
+            this.cUp = -9223372036854775807L;
+            this.cUo = true;
           }
           if (m != 0) {
             break label829;
           }
           bool = true;
           label694:
-          this.aKB = bool;
+          this.cUs = bool;
         }
       }
       break;
@@ -200,14 +200,14 @@ public final class i
       i = 0;
       break label156;
       label715:
-      ((i.a)localObject1).aKD = false;
+      ((a)localObject1).cUu = false;
       i = 1;
       break label225;
       label727:
       if (m != 179) {
         break label209;
       }
-      ((i.a)localObject1).aKD = true;
+      ((a)localObject1).cUu = true;
       break label209;
       f = i * 4 / (i1 * 3);
       break label352;
@@ -218,9 +218,9 @@ public final class i
       i = 0;
       break label585;
       label802:
-      if (this.aKx)
+      if (this.cUo)
       {
-        l1 = this.aKr + this.aKt;
+        l1 = this.cUj + this.frameDurationUs;
         break label663;
       }
       l1 = 0L;
@@ -229,14 +229,47 @@ public final class i
       bool = false;
       break label694;
       if (m == 184) {
-        this.aKA = true;
+        this.cUr = true;
       }
+    }
+  }
+  
+  static final class a
+  {
+    static final byte[] cUt = { 0, 0, 1 };
+    boolean cUu;
+    public int cUv;
+    public byte[] data;
+    public int length;
+    
+    public a()
+    {
+      AppMethodBeat.i(92233);
+      this.data = new byte[''];
+      AppMethodBeat.o(92233);
+    }
+    
+    public final void d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(92234);
+      if (!this.cUu)
+      {
+        AppMethodBeat.o(92234);
+        return;
+      }
+      paramInt2 -= paramInt1;
+      if (this.data.length < this.length + paramInt2) {
+        this.data = Arrays.copyOf(this.data, (this.length + paramInt2) * 2);
+      }
+      System.arraycopy(paramArrayOfByte, paramInt1, this.data, this.length, paramInt2);
+      this.length = (paramInt2 + this.length);
+      AppMethodBeat.o(92234);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.i
  * JD-Core Version:    0.7.0.1
  */

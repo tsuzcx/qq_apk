@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/y_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/dz3" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_back" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        <TextView android:textSize="@dimen/hn" android:textColor="@color/BW_0" android:layout_gravity="center" android:id="@id/dx6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3n" />
+    </FrameLayout>
+    <View android:background="@color/UN_BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <RelativeLayout android:paddingLeft="@dimen/cr" android:paddingTop="@dimen/cp" android:paddingRight="@dimen/cr" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0" android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3m" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/dx7" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:off_color="@color/UN_BW_0_Alpha_0_1" />
+    </RelativeLayout>
+    <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dx5" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/db">
+        <RelativeLayout android:id="@id/dx3" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/dws" android:layout_alignParentStart="true">
+                <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="@dimen/df" android:layout_height="2.0px" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/bv" />
+                <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0" android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3h" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/UN_BW_0_Alpha_0_3" android:layout_gravity="left" android:paddingLeft="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3i" android:layout_toLeftOf="@id/dws" android:layout_below="@id/dwu" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dwr" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
+        </RelativeLayout>
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <RelativeLayout android:id="@id/dx4" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dwv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/dwt" android:layout_alignParentStart="true">
+                <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="@dimen/df" android:layout_height="2.0px" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/bv" />
+                <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0" android:layout_gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3j" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/UN_BW_0_Alpha_0_3" android:layout_gravity="left" android:paddingLeft="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e3k" android:layout_toLeftOf="@id/dwt" android:layout_below="@id/dwv" android:layout_alignParentStart="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dwt" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
+        </RelativeLayout>
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:paddingLeft="@dimen/cr" android:paddingRight="@dimen/cr" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</LinearLayout>

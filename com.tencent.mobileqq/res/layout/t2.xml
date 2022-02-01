@@ -6,7 +6,7 @@
     <Button android:id="@id/c91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ohn" android:layout_below="@id/c6l" android:layout_alignParentRight="true" />
     <Button android:id="@id/cua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ohv" android:layout_alignParentRight="true" />
     <EditText android:id="@id/chh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <Button android:id="@id/cgs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ohs" android:layout_alignParentRight="true" />
+    <Button android:id="@id/cgs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka2" android:layout_alignParentRight="true" />
     <Button android:id="@id/khl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ohq" android:layout_alignParentRight="true" />
     <Button android:id="@id/cub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oht" />
     <Button android:id="@id/j1l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ohw" />

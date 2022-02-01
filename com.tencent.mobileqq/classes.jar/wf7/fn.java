@@ -24,15 +24,16 @@ public class fn
   
   public static fn dT()
   {
-    if (qw == null) {}
-    try
-    {
-      if (qw == null) {
-        qw = new fn();
+    if (qw == null) {
+      try
+      {
+        if (qw == null) {
+          qw = new fn();
+        }
       }
-      return qw;
+      finally {}
     }
-    finally {}
+    return qw;
   }
   
   public void dU()
@@ -51,8 +52,10 @@ public class fn
   
   public void dV()
   {
-    if (!qA.compareAndSet(false, true)) {}
-    while (this.qx.getBoolean("wfk70100", false)) {
+    if (!qA.compareAndSet(false, true)) {
+      return;
+    }
+    if (this.qx.getBoolean("wfk70100", false)) {
       return;
     }
     this.mHandler.sendEmptyMessageDelayed(1, 10000L);
@@ -60,7 +63,7 @@ public class fn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fn
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class ShortVideoPreviewActivity$19
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.this$0.mCover.setImageBitmap(this.this$0.mBitmap);
   }
 }
 

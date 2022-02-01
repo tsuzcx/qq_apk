@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agcz;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class StructingMsgItemBuilder$CacheMap
-  extends HashMap<String, ArrayList<agcz>>
+class StructingMsgItemBuilder$CacheMap
+  extends HashMap<String, ArrayList<StructingMsgItemBuilder.ViewWrapper>>
 {
   private static final long serialVersionUID = -7873031099646660622L;
   
-  public void add(agcz paramagcz)
+  public void add(StructingMsgItemBuilder.ViewWrapper paramViewWrapper)
   {
-    if (paramagcz == null) {
+    if (paramViewWrapper == null) {
       return;
     }
-    get(paramagcz.a).add(paramagcz);
+    get(paramViewWrapper.a).add(paramViewWrapper);
   }
   
-  public ArrayList<agcz> get(String paramString)
+  public ArrayList<StructingMsgItemBuilder.ViewWrapper> get(String paramString)
   {
     ArrayList localArrayList2 = (ArrayList)super.get(paramString);
     ArrayList localArrayList1 = localArrayList2;
@@ -29,22 +28,24 @@ public class StructingMsgItemBuilder$CacheMap
     return localArrayList1;
   }
   
-  public void remove(agcz paramagcz)
+  public void remove(StructingMsgItemBuilder.ViewWrapper paramViewWrapper)
   {
-    if ((paramagcz == null) || (paramagcz.a == null)) {}
-    ArrayList localArrayList;
-    do
+    if (paramViewWrapper != null)
     {
-      return;
-      localArrayList = get(paramagcz.a);
-      localArrayList.remove(paramagcz);
-    } while (!localArrayList.isEmpty());
-    remove(paramagcz.a);
+      if (paramViewWrapper.a == null) {
+        return;
+      }
+      ArrayList localArrayList = get(paramViewWrapper.a);
+      localArrayList.remove(paramViewWrapper);
+      if (localArrayList.isEmpty()) {
+        remove(paramViewWrapper.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap
  * JD-Core Version:    0.7.0.1
  */

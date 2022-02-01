@@ -1,0 +1,17 @@
+package com.google.protobuf;
+
+public abstract interface Internal$IntList
+  extends Internal.ProtobufList<Integer>
+{
+  public abstract IntList a(int paramInt);
+  
+  public abstract int c(int paramInt);
+  
+  public abstract void d(int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.google.protobuf.Internal.IntList
+ * JD-Core Version:    0.7.0.1
+ */

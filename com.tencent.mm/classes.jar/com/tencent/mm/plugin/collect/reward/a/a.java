@@ -1,76 +1,87 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import android.app.Activity;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.ui.base.h;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.ui.base.k;
 import java.lang.ref.WeakReference;
 
 public abstract class a
-  extends m
-  implements k
+  extends p
+  implements m
 {
+  protected WeakReference<Activity> context;
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected WeakReference<Activity> hyV;
-  protected boolean kOC = false;
-  protected boolean kOD = false;
+  protected boolean oaK = false;
+  protected boolean wZR = false;
   
-  public final a a(a.a parama)
+  public final void C(Activity paramActivity)
   {
-    if ((!this.kOC) && (!this.kOD)) {
-      parama.h(this);
+    this.context = new WeakReference(paramActivity);
+  }
+  
+  public final a a(a parama)
+  {
+    if ((!this.oaK) && (!this.wZR)) {
+      parama.g(this);
     }
     return this;
   }
   
-  public final a b(a.a parama)
+  public final a b(a parama)
   {
-    if (this.kOD) {
-      parama.h(this);
+    if (this.wZR) {
+      parama.g(this);
     }
     return this;
   }
   
-  protected abstract void b(int paramInt1, int paramInt2, String paramString, q paramq);
+  protected abstract void b(int paramInt1, int paramInt2, String paramString, s params);
   
-  protected boolean bhR()
+  public final a c(a parama)
+  {
+    if (this.oaK) {
+      parama.g(this);
+    }
+    return this;
+  }
+  
+  protected boolean drU()
   {
     return true;
   }
   
-  public final a c(a.a parama)
-  {
-    if (this.kOC) {
-      parama.h(this);
-    }
-    return this;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.kOC = true;
-      if ((bhR()) && (this.hyV != null))
+      this.oaK = true;
+      if ((drU()) && (this.context != null))
       {
-        paramArrayOfByte = (Activity)this.hyV.get();
+        paramArrayOfByte = (Activity)this.context.get();
         if (paramArrayOfByte != null) {
-          h.a(paramArrayOfByte, paramArrayOfByte.getString(2131305682), null, false, new a.1(this));
+          k.a(paramArrayOfByte, paramArrayOfByte.getString(a.i.wallet_unknown_err), null, false, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+          });
         }
       }
     }
     this.errCode = paramInt3;
     this.errType = paramInt2;
     this.errMsg = paramString;
-    b(paramInt2, paramInt3, paramString, paramq);
+    b(paramInt2, paramInt3, paramString, params);
   }
   
-  public final void z(Activity paramActivity)
+  public static abstract interface a
   {
-    this.hyV = new WeakReference(paramActivity);
+    public abstract void g(p paramp);
   }
 }
 

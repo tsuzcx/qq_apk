@@ -16,6 +16,7 @@ import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fwl;
 import fwm;
 import fwn;
 import fwo;
@@ -26,7 +27,6 @@ import fws;
 import fwt;
 import fwu;
 import fwv;
-import fww;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -61,14 +61,40 @@ public class UniformDownloadMgr
   
   static
   {
-    String[] arrayOfString1 = { ".gif", "image/gif" };
-    String[] arrayOfString2 = { ".m3u", "audio/x-mpegurl" };
-    String[] arrayOfString3 = { ".m4u", "video/vnd.mpegurl" };
-    String[] arrayOfString4 = { ".mpg", "video/mpeg" };
-    String[] arrayOfString5 = { ".pps", "application/vnd.ms-powerpoint" };
-    String[] arrayOfString6 = { ".rmvb", "audio/x-pn-realaudio" };
-    String[] arrayOfString7 = { ".wps", "application/vnd.ms-works" };
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { ".3gp", "video/3gpp" }, { ".apk", "application/vnd.android.package-archive" }, { ".asf", "video/x-ms-asf" }, { ".avi", "video/x-msvideo" }, { ".bin", "application/octet-stream" }, { ".bmp", "image/bmp" }, { ".c", "text/plain" }, { ".class", "application/octet-stream" }, { ".conf", "text/plain" }, { ".cpp", "text/plain" }, { ".doc", "application/msword" }, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, { ".xls", "application/vnd.ms-excel" }, { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, { ".exe", "application/octet-stream" }, arrayOfString1, { ".gtar", "application/x-gtar" }, { ".gz", "application/x-gzip" }, { ".h", "text/plain" }, { ".htm", "text/html" }, { ".html", "text/html" }, { ".jar", "application/java-archive" }, { ".java", "text/plain" }, { ".jpeg", "image/jpeg" }, { ".jpg", "image/jpeg" }, { ".js", "application/x-javascript" }, { ".log", "text/plain" }, arrayOfString2, { ".m4a", "audio/mp4a-latm" }, { ".m4b", "audio/mp4a-latm" }, { ".m4p", "audio/mp4a-latm" }, arrayOfString3, { ".m4v", "video/x-m4v" }, { ".mov", "video/quicktime" }, { ".mp2", "audio/x-mpeg" }, { ".mp3", "audio/x-mpeg" }, { ".mp4", "video/mp4" }, { ".mpc", "application/vnd.mpohun.certificate" }, { ".mpe", "video/mpeg" }, { ".mpeg", "video/mpeg" }, arrayOfString4, { ".mpg4", "video/mp4" }, { ".mpga", "audio/mpeg" }, { ".msg", "application/vnd.ms-outlook" }, { ".ogg", "audio/ogg" }, { ".pdf", "application/pdf" }, { ".png", "image/png" }, arrayOfString5, { ".ppt", "application/vnd.ms-powerpoint" }, { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" }, { ".prop", "text/plain" }, { ".rc", "text/plain" }, arrayOfString6, { ".rtf", "application/rtf" }, { ".sh", "text/plain" }, { ".tar", "application/x-tar" }, { ".tgz", "application/x-compressed" }, { ".txt", "text/plain" }, { ".wav", "audio/x-wav" }, { ".wma", "audio/x-ms-wma" }, { ".wmv", "audio/x-ms-wmv" }, arrayOfString7, { ".xml", "text/plain" }, { ".z", "application/x-compress" }, { ".zip", "application/x-zip-compressed" }, { "", "*/*" } };
+    String[] arrayOfString1 = { ".3gp", "video/3gpp" };
+    String[] arrayOfString2 = { ".apk", "application/vnd.android.package-archive" };
+    String[] arrayOfString3 = { ".asf", "video/x-ms-asf" };
+    String[] arrayOfString4 = { ".bin", "application/octet-stream" };
+    String[] arrayOfString5 = { ".bmp", "image/bmp" };
+    String[] arrayOfString6 = { ".conf", "text/plain" };
+    String[] arrayOfString7 = { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
+    String[] arrayOfString8 = { ".exe", "application/octet-stream" };
+    String[] arrayOfString9 = { ".gif", "image/gif" };
+    String[] arrayOfString10 = { ".gtar", "application/x-gtar" };
+    String[] arrayOfString11 = { ".gz", "application/x-gzip" };
+    String[] arrayOfString12 = { ".h", "text/plain" };
+    String[] arrayOfString13 = { ".htm", "text/html" };
+    String[] arrayOfString14 = { ".html", "text/html" };
+    String[] arrayOfString15 = { ".jpg", "image/jpeg" };
+    String[] arrayOfString16 = { ".js", "application/x-javascript" };
+    String[] arrayOfString17 = { ".log", "text/plain" };
+    String[] arrayOfString18 = { ".m4v", "video/x-m4v" };
+    String[] arrayOfString19 = { ".mp3", "audio/x-mpeg" };
+    String[] arrayOfString20 = { ".msg", "application/vnd.ms-outlook" };
+    String[] arrayOfString21 = { ".pdf", "application/pdf" };
+    String[] arrayOfString22 = { ".png", "image/png" };
+    String[] arrayOfString23 = { ".pps", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString24 = { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" };
+    String[] arrayOfString25 = { ".rc", "text/plain" };
+    String[] arrayOfString26 = { ".rmvb", "audio/x-pn-realaudio" };
+    String[] arrayOfString27 = { ".rtf", "application/rtf" };
+    String[] arrayOfString28 = { ".tar", "application/x-tar" };
+    String[] arrayOfString29 = { ".tgz", "application/x-compressed" };
+    String[] arrayOfString30 = { ".wav", "audio/x-wav" };
+    String[] arrayOfString31 = { ".wps", "application/vnd.ms-works" };
+    String[] arrayOfString32 = { ".xml", "text/plain" };
+    String[] arrayOfString33 = { "", "*/*" };
+    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { ".avi", "video/x-msvideo" }, arrayOfString4, arrayOfString5, { ".c", "text/plain" }, { ".class", "application/octet-stream" }, arrayOfString6, { ".cpp", "text/plain" }, { ".doc", "application/msword" }, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, { ".xls", "application/vnd.ms-excel" }, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, { ".jar", "application/java-archive" }, { ".java", "text/plain" }, { ".jpeg", "image/jpeg" }, arrayOfString15, arrayOfString16, arrayOfString17, { ".m3u", "audio/x-mpegurl" }, { ".m4a", "audio/mp4a-latm" }, { ".m4b", "audio/mp4a-latm" }, { ".m4p", "audio/mp4a-latm" }, { ".m4u", "video/vnd.mpegurl" }, arrayOfString18, { ".mov", "video/quicktime" }, { ".mp2", "audio/x-mpeg" }, arrayOfString19, { ".mp4", "video/mp4" }, { ".mpc", "application/vnd.mpohun.certificate" }, { ".mpe", "video/mpeg" }, { ".mpeg", "video/mpeg" }, { ".mpg", "video/mpeg" }, { ".mpg4", "video/mp4" }, { ".mpga", "audio/mpeg" }, arrayOfString20, { ".ogg", "audio/ogg" }, arrayOfString21, arrayOfString22, arrayOfString23, { ".ppt", "application/vnd.ms-powerpoint" }, arrayOfString24, { ".prop", "text/plain" }, arrayOfString25, arrayOfString26, arrayOfString27, { ".sh", "text/plain" }, arrayOfString28, arrayOfString29, { ".txt", "text/plain" }, arrayOfString30, { ".wma", "audio/x-ms-wma" }, { ".wmv", "audio/x-ms-wmv" }, arrayOfString31, arrayOfString32, { ".z", "application/x-compress" }, { ".zip", "application/x-zip-compressed" }, arrayOfString33 };
   }
   
   private UniformDownloadMgr()
@@ -154,14 +180,14 @@ public class UniformDownloadMgr
       localBundle.putString("_PARAM_FILENAME", paramString2);
       localBundle.putLong("_PARAM_FILESIZE", paramLong);
       localUniformDownloader.a(localBundle);
-      localUniformDownloader.a(new fwm(this), true);
+      localUniformDownloader.a(new fwl(this), true);
       localBundle = new Bundle();
       localBundle.putString("_notify_param_Filename", paramString2);
       localBundle.putString("_notify_param_ContentTitle", paramString2);
       localBundle.putString("_notify_param_Url", paramString1);
       localBundle.putLong("_notify_param_Filesize", paramLong);
       paramInt = UniformDownloadNfn.a().a(localUniformDownloader, localBundle, l, paramInt);
-      a(paramString1, new fwv(this, null, localUniformDownloader.g(), localUniformDownloader, l, paramInt));
+      a(paramString1, new fwu(this, null, localUniformDownloader.g(), localUniformDownloader, l, paramInt));
       if (!paramBoolean) {
         break label387;
       }
@@ -231,16 +257,16 @@ public class UniformDownloadMgr
     finally {}
   }
   
-  private fwv a(String paramString)
+  private fwu a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      paramString = (fwv)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (fwu)this.jdField_a_of_type_JavaUtilMap.get(paramString);
       return paramString;
     }
   }
   
-  private fww a(String paramString)
+  private fwv a(String paramString)
   {
     if (paramString == null)
     {
@@ -253,7 +279,7 @@ public class UniformDownloadMgr
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] rBobjectOfString err,l=" + arrayOfString.length + " str=" + paramString);
       return null;
     }
-    paramString = new fww(this);
+    paramString = new fwv(this);
     paramString.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[0]);
     paramString.jdField_a_of_type_JavaLangString = arrayOfString[1];
     paramString.jdField_a_of_type_Long = Long.parseLong(arrayOfString[2]);
@@ -271,19 +297,19 @@ public class UniformDownloadMgr
     return String.valueOf(paramSucDownloadInfo.jdField_a_of_type_JavaLangString) + "^" + String.valueOf(paramSucDownloadInfo.jdField_a_of_type_Int);
   }
   
-  private String a(fww paramfww)
+  private String a(fwv paramfwv)
   {
-    if (paramfww == null)
+    if (paramfwv == null)
     {
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] stringOfRbObject err, obj=null");
       return null;
     }
-    return String.valueOf(paramfww.jdField_a_of_type_Int) + "^" + paramfww.jdField_a_of_type_JavaLangString + "^" + String.valueOf(paramfww.jdField_a_of_type_Long) + "^" + String.valueOf(paramfww.jdField_a_of_type_Boolean);
+    return String.valueOf(paramfwv.jdField_a_of_type_Int) + "^" + paramfwv.jdField_a_of_type_JavaLangString + "^" + String.valueOf(paramfwv.jdField_a_of_type_Long) + "^" + String.valueOf(paramfwv.jdField_a_of_type_Boolean);
   }
   
-  private boolean a(String paramString, fwv paramfwv)
+  private boolean a(String paramString, fwu paramfwu)
   {
-    if ((paramString == null) || (paramfwv == null))
+    if ((paramString == null) || (paramfwu == null))
     {
       QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. param null");
       return false;
@@ -294,7 +320,7 @@ public class UniformDownloadMgr
         return false;
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramfwv);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramfwu);
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] addDownloadInst.. total[" + this.jdField_a_of_type_JavaUtilMap.size() + "] add it. url[" + paramString + "]");
     return true;
   }
@@ -315,14 +341,14 @@ public class UniformDownloadMgr
         j = 0;
         if (localIterator.hasNext())
         {
-          fwv localfwv = (fwv)localIterator.next();
+          fwu localfwu = (fwu)localIterator.next();
           int n = i;
           k = j;
-          if (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null)
+          if (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null)
           {
             n = i;
             k = j;
-            if (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())
+            if (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())
             {
               j += 1;
               n = i;
@@ -331,7 +357,7 @@ public class UniformDownloadMgr
               {
                 n = i;
                 k = j;
-                if (paramString.equalsIgnoreCase(localfwv.jdField_a_of_type_JavaLangString))
+                if (paramString.equalsIgnoreCase(localfwu.jdField_a_of_type_JavaLangString))
                 {
                   QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is runing. traceUrl:" + paramString);
                   n = 1;
@@ -340,7 +366,7 @@ public class UniformDownloadMgr
               }
             }
           }
-          ((List)localObject2).add(localfwv);
+          ((List)localObject2).add(localfwu);
           i = n;
           j = k;
         }
@@ -351,26 +377,26 @@ public class UniformDownloadMgr
         k = i;
         if (((Iterator)???).hasNext())
         {
-          localObject2 = (fwv)((Iterator)???).next();
+          localObject2 = (fwu)((Iterator)???).next();
           k = j;
-          if (((fwv)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader == null) {
+          if (((fwu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader == null) {
             break label497;
           }
           k = j;
-          if (!((fwv)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a()) {
+          if (!((fwu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a()) {
             break label497;
           }
           if (j < m)
           {
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> Happy. start a download task, url:[" + ((fwv)localObject2).jdField_a_of_type_JavaLangString + "]");
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> Happy. start a download task, url:[" + ((fwu)localObject2).jdField_a_of_type_JavaLangString + "]");
             j += 1;
-            ((fwv)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
+            ((fwu)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
             k = j;
             if (paramString == null) {
               break label497;
             }
             k = j;
-            if (!paramString.equalsIgnoreCase(((fwv)localObject2).jdField_a_of_type_JavaLangString)) {
+            if (!paramString.equalsIgnoreCase(((fwu)localObject2).jdField_a_of_type_JavaLangString)) {
               break label497;
             }
             QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] inPTryStartNextDownload.. download is started. traceUrl:" + paramString);
@@ -424,20 +450,20 @@ public class UniformDownloadMgr
   
   private int c(String paramString)
   {
-    fwv localfwv = a(paramString);
-    if (localfwv != null)
+    fwu localfwu = a(paramString);
+    if (localfwu != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        if (localfwv.jdField_a_of_type_Int != 1) {
+        if (localfwu.jdField_a_of_type_Int != 1) {
           break label71;
         }
         StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), "Stop_download_2-2_3-0");
       }
       for (;;)
       {
-        if (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-          localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b();
+        if (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+          localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b();
         }
         b(null);
         return 0;
@@ -468,11 +494,11 @@ public class UniformDownloadMgr
   
   private int d(String paramString)
   {
-    fwv localfwv = a(paramString);
-    if (localfwv != null)
+    fwu localfwu = a(paramString);
+    if (localfwu != null)
     {
-      if (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-        localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.c();
+      if (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+        localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.c();
       }
       b(null);
       return 0;
@@ -488,11 +514,11 @@ public class UniformDownloadMgr
   
   private int e(String paramString)
   {
-    fwv localfwv = a(paramString);
-    if (localfwv != null)
+    fwu localfwu = a(paramString);
+    if (localfwu != null)
     {
-      if (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
-        localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.d();
+      if (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) {
+        localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.d();
       }
       return 0;
     }
@@ -554,20 +580,20 @@ public class UniformDownloadMgr
   private void i()
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwn(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwm(this));
   }
   
   private void j()
   {
     QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] pauseSlienceRuningGenDownloadOfOldApp ...");
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwt(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fws(this));
   }
   
   private void k()
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwu(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwt(this));
   }
   
   private void l()
@@ -691,7 +717,7 @@ public class UniformDownloadMgr
             if (localObject2 == null) {
               break label227;
             }
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, url:[" + str + "]" + "] nId:[" + ((fww)localObject2).jdField_a_of_type_Int + "] w:[" + ((fww)localObject2).jdField_a_of_type_Boolean + "]");
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] getDownloadingRbResmeInfo, url:[" + str + "]" + "] nId:[" + ((fwv)localObject2).jdField_a_of_type_Int + "] w:[" + ((fwv)localObject2).jdField_a_of_type_Boolean + "]");
             localHashMap.put(str, localObject2);
             continue;
           }
@@ -802,7 +828,7 @@ public class UniformDownloadMgr
   public void a(String paramString, Bundle paramBundle)
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwo(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwn(this, paramString, paramBundle));
   }
   
   public void a(String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean)
@@ -811,12 +837,12 @@ public class UniformDownloadMgr
     {
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] saveDownloadingRbResmeInfo, url:[" + paramString1 + "]" + " nId:[" + paramInt + "] w:[" + paramBoolean + "]");
       SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("downloading_rb_resume_info", 0).edit();
-      fww localfww = new fww(this);
-      localfww.jdField_a_of_type_Int = paramInt;
-      localfww.jdField_a_of_type_JavaLangString = paramString2;
-      localfww.jdField_a_of_type_Long = paramLong;
-      localfww.jdField_a_of_type_Boolean = paramBoolean;
-      localEditor.putString(paramString1, a(localfww));
+      fwv localfwv = new fwv(this);
+      localfwv.jdField_a_of_type_Int = paramInt;
+      localfwv.jdField_a_of_type_JavaLangString = paramString2;
+      localfwv.jdField_a_of_type_Long = paramLong;
+      localfwv.jdField_a_of_type_Boolean = paramBoolean;
+      localEditor.putString(paramString1, a(localfwv));
       localEditor.commit();
       return;
     }
@@ -856,7 +882,7 @@ public class UniformDownloadMgr
   public void b(String paramString, Bundle paramBundle)
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwp(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwo(this, paramString, paramBundle));
   }
   
   public void c()
@@ -868,14 +894,14 @@ public class UniformDownloadMgr
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
       if (localIterator.hasNext())
       {
-        fwv localfwv = (fwv)localIterator.next();
-        if ((localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localfwv.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())) {
-          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. stop download:url:" + localfwv.jdField_a_of_type_JavaLangString);
+        fwu localfwu = (fwu)localIterator.next();
+        if ((localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (localfwu.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.b())) {
+          QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. stop download:url:" + localfwu.jdField_a_of_type_JavaLangString);
         }
         Bundle localBundle = new Bundle();
-        localBundle.putString("_notify_param_Url", localfwv.jdField_a_of_type_JavaLangString);
-        UniformDownloadNfn.a().c(localfwv.b, localBundle);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. cancel notification:" + localfwv.b);
+        localBundle.putString("_notify_param_Url", localfwu.jdField_a_of_type_JavaLangString);
+        UniformDownloadNfn.a().c(localfwu.b, localBundle);
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onQQProcessExit. cancel notification:" + localfwu.b);
       }
     }
     e();
@@ -885,7 +911,7 @@ public class UniformDownloadMgr
   public void c(String paramString, Bundle paramBundle)
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwq(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwp(this, paramString, paramBundle));
   }
   
   public void d()
@@ -907,7 +933,7 @@ public class UniformDownloadMgr
   public void d(String paramString, Bundle paramBundle)
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fwr(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwq(this, paramString, paramBundle));
   }
   
   public void e()
@@ -923,7 +949,7 @@ public class UniformDownloadMgr
   public void e(String paramString, Bundle paramBundle)
   {
     f();
-    this.jdField_a_of_type_AndroidOsHandler.post(new fws(this, paramString, paramBundle));
+    this.jdField_a_of_type_AndroidOsHandler.post(new fwr(this, paramString, paramBundle));
   }
 }
 

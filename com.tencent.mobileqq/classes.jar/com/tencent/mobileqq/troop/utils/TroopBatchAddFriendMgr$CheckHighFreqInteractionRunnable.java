@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import amdu;
-import amqt;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.relationx.batchAdd.BatchAddFriendForTroopConfig;
+import com.tencent.mobileqq.troop.troopfriend.api.ITroopBatchAddFriendService;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,19 +20,19 @@ import mqq.util.WeakReference;
 public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
   implements Runnable
 {
-  WeakReference<TroopChatPie> jdField_a_of_type_MqqUtilWeakReference;
-  volatile boolean jdField_a_of_type_Boolean;
-  WeakReference<QQAppInterface> b;
+  volatile boolean a;
+  WeakReference<TroopChatPie> b;
+  WeakReference<QQAppInterface> c;
   
   public TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable(TroopChatPie paramTroopChatPie, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramTroopChatPie);
-    this.b = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramTroopChatPie);
+    this.c = new WeakReference(paramQQAppInterface);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     if (paramBoolean) {
       ThreadManager.getSubThreadHandler().removeCallbacks(this);
     }
@@ -42,31 +43,34 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
     if (QLog.isColorLevel()) {
       QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask start");
     }
-    Object localObject = (TroopChatPie)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
-    if ((localObject == null) || (localQQAppInterface == null) || (this.jdField_a_of_type_Boolean)) {}
-    long l1;
-    do
+    Object localObject = (TroopChatPie)this.b.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.c.get();
+    if ((localObject != null) && (localQQAppInterface != null))
     {
-      return;
-      String str = ((TroopChatPie)localObject).a.jdField_a_of_type_JavaLangString;
-      int i = ((TroopChatPie)localObject).a.jdField_a_of_type_Int;
-      l1 = ((TroopManager)localQQAppInterface.getManager(52)).a().i * 60;
+      if (this.a) {
+        return;
+      }
+      String str = ((TroopChatPie)localObject).ah.b;
+      int i = ((TroopChatPie)localObject).ah.a;
+      long l1 = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).k().m * 60;
       long l2 = NetConnInfoCenter.getServerTime();
-      localObject = TroopBatchAddFriendMgr.a(localQQAppInterface.a().a(str, i, ((TroopChatPie)localObject).h, 250, String.format("time>=%d", new Object[] { Long.valueOf(l2 - l1) })), localQQAppInterface);
+      localObject = localQQAppInterface.getMessageFacade().a(str, i, ((TroopChatPie)localObject).bP, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
+      ArrayList localArrayList = TroopBatchAddFriendMgr.a((List)localObject, localQQAppInterface);
       if (QLog.isColorLevel()) {
-        QLog.d("CheckHighFreqInteractionRunnable", 2, "checkHighFreqInteractionUinTask uins = " + Arrays.toString(((ArrayList)localObject).toArray()));
+        QLog.d("CheckHighFreqInteractionRunnable", 2, String.format("checkHighFreqInteractionUinTask msgSize=%d uins = ", new Object[] { Integer.valueOf(((List)localObject).size()), Arrays.toString(localArrayList.toArray()) }));
       }
-      if ((((ArrayList)localObject).size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((amdu)localQQAppInterface.a(20)).a().a(str, (List)localObject, 3);
+      if ((localArrayList.size() > 0) && (!this.a)) {
+        ((ITroopBatchAddFriendService)localQQAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr().a(str, localArrayList, 3);
       }
-    } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
-    ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);
+      if ((!this.a) && (this.b.get() != null) && (this.c.get() != null)) {
+        ThreadManager.getSubThreadHandler().postDelayed(this, l1 * 1000L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr.CheckHighFreqInteractionRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,14 @@ public final class PBFixed64Field
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof Long)) {}
-    for (this.value = ((Long)paramObject).longValue();; this.value = 0L)
-    {
-      setHasFlag(false);
-      return;
+    long l;
+    if ((paramObject instanceof Long)) {
+      l = ((Long)paramObject).longValue();
+    } else {
+      l = 0L;
     }
+    this.value = l;
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +83,7 @@ public final class PBFixed64Field
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBFixed64Field
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.persistence.entity;
 
 import android.text.TextUtils;
-import awge;
-import bdin;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PAAdPreloadTask
-  extends awge
+  extends Entity
 {
   public static final int NETWORK_TYPE_4G = 2;
   public static final int NETWORK_TYPE_NONE = 0;
@@ -22,16 +22,16 @@ public class PAAdPreloadTask
   public static final int SOURCE_PRELOAD_CONFIG = 1;
   public static final int SOURCE_PRELOAD_MESSAGE = 2;
   public static final int SOURCE_PRELOAD_PLAY = 3;
-  public static final String TABLE_NAME = PAAdPreloadTask.class.getSimpleName();
-  public long mExpireTime;
-  public String mMsgId;
+  public static final String TABLE_NAME = "PAAdPreloadTask";
+  public long mExpireTime = 0L;
+  public String mMsgId = null;
   public int mNetworkType = 1;
-  public int mPreloadState;
-  public long mReceiveTime;
-  public int mSource;
-  public String mTaskId;
-  public String mUserUin;
-  public String mVideoVid;
+  public int mPreloadState = 0;
+  public long mReceiveTime = 0L;
+  public int mSource = 0;
+  public String mTaskId = null;
+  public String mUserUin = null;
+  public String mVideoVid = null;
   
   public static int checkNetworkType(int paramInt)
   {
@@ -81,30 +81,24 @@ public class PAAdPreloadTask
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramObject == null);
-          bool1 = bool2;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (PAAdPreloadTask)paramObject;
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(this.mUserUin));
-      bool1 = bool2;
-    } while (!this.mUserUin.equals(paramObject.mUserUin));
-    return this.mVideoVid.equals(paramObject.mVideoVid);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (PAAdPreloadTask)paramObject;
+      if (TextUtils.isEmpty(this.mUserUin)) {
+        return false;
+      }
+      if (!this.mUserUin.equals(paramObject.mUserUin)) {
+        return false;
+      }
+      return this.mVideoVid.equals(paramObject.mVideoVid);
+    }
+    return false;
   }
   
   public int hashCode()
@@ -119,16 +113,15 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (bdin.h(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (bdin.a(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (NetworkUtil.isWifiConnected(null))) {
       return true;
     }
-    return false;
+    return ((this.mNetworkType & 0x2) != 0) && (NetworkUtil.getSystemNetwork(BaseApplication.getContext()) == 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask
  * JD-Core Version:    0.7.0.1
  */

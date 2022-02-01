@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ll;
-import com.tencent.mm.sdk.b.c;
 
 final class WalletOfflineCoinPurseUI$37
-  extends c<ll>
+  implements Runnable
 {
   WalletOfflineCoinPurseUI$37(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI)
   {
-    AppMethodBeat.i(43548);
-    this.__eventId = ll.class.getName().hashCode();
-    AppMethodBeat.o(43548);
+    AppMethodBeat.i(174402);
+    AppMethodBeat.o(174402);
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(269262);
+    WalletOfflineCoinPurseUI.t(this.MCi);
+    AppMethodBeat.o(269262);
   }
 }
 

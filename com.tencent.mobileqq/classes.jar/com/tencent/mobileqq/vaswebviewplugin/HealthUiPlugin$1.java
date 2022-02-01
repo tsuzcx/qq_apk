@@ -3,12 +3,12 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import azps;
-import bdhb;
-import bdin;
-import bdrh;
-import bdrl;
-import begz;
+import com.tencent.mobileqq.statistics.DcReportUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.ClubContentJsonTask;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URLEncoder;
@@ -23,136 +23,188 @@ class HealthUiPlugin$1
   
   public void run()
   {
-    if (this.this$0.mRuntime == null) {}
-    for (;;)
-    {
+    if (this.this$0.mRuntime == null) {
       return;
-      int i;
-      Object localObject4;
-      synchronized (this.this$0.mJDUpdateConfig)
-      {
-        boolean bool = this.this$0.mIsJDUpdateConfigInit;
-        if (!bool) {
-          try
-          {
-            Object localObject1 = new File(this.this$0.mRuntime.a().getApplicationContext().getFilesDir(), bdrh.c.a);
-            if ((localObject1 != null) && (((File)localObject1).exists()))
-            {
-              localObject1 = new JSONObject(bdhb.a((File)localObject1)).getJSONObject("data").getJSONArray("jdUploadLog");
-              if (localObject1 != null)
-              {
-                int j = ((JSONArray)localObject1).length();
-                i = 0;
-                while (i < j)
-                {
-                  localObject4 = ((JSONArray)localObject1).getJSONObject(i);
-                  if (((JSONObject)localObject4).has("jdUploadLog"))
-                  {
-                    localObject4 = ((JSONObject)localObject4).getString("jdUploadLog");
-                    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-                      this.this$0.mJDUpdateConfig.add(localObject4);
-                    }
-                  }
-                  i += 1;
-                }
-              }
-            }
-          }
-          catch (Exception localException2)
-          {
-            this.this$0.mIsJDUpdateConfigInit = true;
-          }
-        }
-        if (this.this$0.mJDUpdateConfig.size() == 0) {
-          continue;
-        }
-      }
+    }
+    synchronized (this.this$0.mJDUpdateConfig)
+    {
+      boolean bool = this.this$0.mIsJDUpdateConfigInit;
+      if (!bool) {}
       try
       {
-        i = bdin.a(this.this$0.mRuntime.a().getApplicationContext());
-        if (i == 0) {
-          continue;
-        }
-        switch (i)
+        localObject2 = new File(this.this$0.mRuntime.d().getApplicationContext().getFilesDir(), ClubContentJsonTask.c.a);
+        if (((File)localObject2).exists())
         {
-        default: 
-          ??? = null;
-          if ((TextUtils.isEmpty(???)) || (!this.this$0.mJDUpdateConfig.contains(???))) {
-            continue;
+          localObject2 = new JSONObject(FileUtils.readFileContent((File)localObject2)).getJSONObject("data").getJSONArray("jdUploadLog");
+          if (localObject2 != null)
+          {
+            int j = ((JSONArray)localObject2).length();
+            i = 0;
+            while (i < j)
+            {
+              localObject5 = ((JSONArray)localObject2).getJSONObject(i);
+              if (((JSONObject)localObject5).has("jdUploadLog"))
+              {
+                localObject5 = ((JSONObject)localObject5).getString("jdUploadLog");
+                if (!TextUtils.isEmpty((CharSequence)localObject5)) {
+                  this.this$0.mJDUpdateConfig.add(localObject5);
+                }
+              }
+              i += 1;
+            }
           }
-          if ((this.val$url.contains("jd.com")) || (this.val$url.contains("wanggou.com")) || (this.val$url.contains("paipai.com"))) {
-            localObject2 = new StringBuilder();
-          }
-          break;
         }
       }
-      catch (Exception localException3)
+      catch (Exception localException1)
       {
         try
         {
-          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("8.3.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-          azps.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+          int i = NetworkUtil.getSystemNetwork(this.this$0.mRuntime.d().getApplicationContext());
+          break label218;
+          i = 0;
+          if (i != 0) {
+            break label223;
+          }
+          return;
+          if (i == 1) {
+            break label270;
+          }
+          if (i == 2) {
+            break label263;
+          }
+          if (i == 3) {
+            break label256;
+          }
+          if (i == 4) {
+            break label249;
+          }
+          ??? = null;
+          break label274;
+          ??? = "4G";
+          break label274;
+          ??? = "3G";
+          break label274;
+          ??? = "2G";
+          break label274;
+          ??? = "wifi";
+          if (!TextUtils.isEmpty((CharSequence)???)) {
+            break label283;
+          }
+          return;
+          if (!this.this$0.mJDUpdateConfig.contains(???)) {
+            break label822;
+          }
+          if ((!this.val$url.contains("jd.com")) && (!this.val$url.contains("wanggou.com")) && (!this.val$url.contains("paipai.com"))) {
+            break label500;
+          }
+          Object localObject2 = new StringBuilder();
+          try
+          {
+            ((StringBuilder)localObject2).append("jd");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append(URLEncoder.encode(this.val$url, "UTF-8"));
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append((String)???);
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("android");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("8.8.17");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            ((StringBuilder)localObject2).append("|");
+            DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+          }
+          catch (Exception localException2)
+          {
+            localException2.printStackTrace();
+          }
           if ((!this.val$url.contains("91160.com")) && (!this.val$url.contains("guahao.com"))) {
-            continue;
+            break label822;
           }
           i = this.val$url.indexOf("?");
-          if (i != -1)
-          {
-            localObject2 = this.val$url.substring(0, i);
-            localObject4 = this.val$url.substring(i + 1);
-            localObject5 = localObject2;
-            if (TextUtils.isEmpty((CharSequence)localObject4)) {}
+          if (i == -1) {
+            break label565;
+          }
+          localObject3 = this.val$url.substring(0, i);
+          localObject5 = this.val$url.substring(i + 1);
+          break label574;
+          localObject3 = this.val$url;
+          localObject5 = null;
+          localObject6 = localObject3;
+          if (TextUtils.isEmpty((CharSequence)localObject5)) {
+            break label631;
           }
         }
-        catch (Exception localException3)
+        catch (Exception localException1)
         {
           try
           {
             for (;;)
             {
-              localObject5 = (String)localObject2 + "?" + URLEncoder.encode((String)localObject4, "UTF-8");
-              if (QLog.isColorLevel()) {
-                QLog.d("HealthUiPlugin", 2, "report guahao url \n" + (String)localObject5);
+              Object localObject5;
+              localObject6 = new StringBuilder();
+              ((StringBuilder)localObject6).append((String)localObject3);
+              ((StringBuilder)localObject6).append("?");
+              ((StringBuilder)localObject6).append(URLEncoder.encode((String)localObject5, "UTF-8"));
+              localObject6 = ((StringBuilder)localObject6).toString();
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("report guahao url \n");
+                ((StringBuilder)localObject3).append((String)localObject6);
+                QLog.d("HealthUiPlugin", 2, ((StringBuilder)localObject3).toString());
               }
-              Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("8.3.5").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
-              azps.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
+              Object localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("jiankang");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append((String)localObject6);
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append((String)???);
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("android");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("8.8.17");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              ((StringBuilder)localObject3).append("|");
+              DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject3).toString(), false);
               return;
-              localObject3 = finally;
-              throw localObject3;
-              localException1 = localException1;
-              i = 0;
-              continue;
-              String str1 = "2G";
-              continue;
-              str1 = "3G";
-              continue;
-              str1 = "4G";
-              continue;
-              str1 = "wifi";
-              continue;
+              localObject4 = finally;
+              for (;;)
+              {
+                throw localObject4;
+              }
               localException3 = localException3;
-              localException3.printStackTrace();
             }
-            str2 = this.val$url;
-            localObject4 = null;
+            localException1 = localException1;
           }
           catch (Exception localException4)
           {
             for (;;)
             {
-              String str2;
-              Object localObject5 = str2;
+              Object localObject6 = localException3;
             }
           }
         }
+      }
+      this.this$0.mIsJDUpdateConfigInit = true;
+      if (this.this$0.mJDUpdateConfig.size() == 0) {
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

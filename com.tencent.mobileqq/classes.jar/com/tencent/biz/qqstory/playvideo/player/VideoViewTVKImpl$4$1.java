@@ -1,39 +1,34 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import vwe;
-import vxe;
-import vxi;
-
-public class VideoViewTVKImpl$4$1
+class VideoViewTVKImpl$4$1
   implements Runnable
 {
-  public VideoViewTVKImpl$4$1(vxi paramvxi, int paramInt, Object paramObject) {}
+  VideoViewTVKImpl$4$1(VideoViewTVKImpl.4 param4, int paramInt, Object paramObject) {}
   
   public void run()
   {
-    int i;
-    if (this.jdField_a_of_type_Vxi.a.a != null)
+    if (this.c.a.n != null)
     {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
+      int j = this.a;
+      int i;
+      if (j == 21)
+      {
+        i = 2;
       }
-      i = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Vxi.a.a.a(this.jdField_a_of_type_Vxi.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
+      else
+      {
+        i = j;
+        if (j == 22) {
+          i = 3;
+        }
       }
+      this.c.a.n.a(this.c.a, i, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,33 +16,29 @@ public class Pair<F, S>
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    for (;;)
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof Pair)) {
-        return false;
-      }
-      try
-      {
-        paramObject = (Pair)paramObject;
-        if ((!this.first.equals(paramObject.first)) || (!this.second.equals(paramObject.second))) {
-          return false;
-        }
-      }
-      catch (ClassCastException paramObject) {}
     }
+    if (!(paramObject instanceof Pair)) {
+      return false;
+    }
+    try
+    {
+      paramObject = (Pair)paramObject;
+      return (this.first.equals(paramObject.first)) && (this.second.equals(paramObject.second));
+    }
+    catch (ClassCastException paramObject) {}
     return false;
   }
   
   public int hashCode()
   {
-    return (this.first.hashCode() + 527) * 31 + this.second.hashCode();
+    return (527 + this.first.hashCode()) * 31 + this.second.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.Pair
  * JD-Core Version:    0.7.0.1
  */

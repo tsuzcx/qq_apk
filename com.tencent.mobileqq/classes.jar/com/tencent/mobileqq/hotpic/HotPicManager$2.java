@@ -1,71 +1,77 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.util.SparseArray;
-import asub;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-public class HotPicManager$2
+class HotPicManager$2
   implements Runnable
 {
-  public HotPicManager$2(asub paramasub, int paramInt1, int paramInt2) {}
+  HotPicManager$2(HotPicManager paramHotPicManager, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     this.this$0.a();
+    ArrayList localArrayList;
+    int i;
     switch (this.a)
     {
     default: 
-    case 10001: 
-      do
-      {
-        return;
-        if ((this.this$0.b) || (this.this$0.b())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("HotPicManager", 2, "cancel request");
       return;
-      boolean bool = this.this$0.a(this.b);
-      localObject = this.this$0;
-      int j = this.this$0.b();
-      int k = this.b;
-      if (bool) {}
-      for (i = 10003;; i = 10002)
-      {
-        ((asub)localObject).a(0, 15, j, k, true, i);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("HotPicManager", 2, "request REQ_CHECK_UPDATE getLoaclVersion is " + this.this$0.b());
-        return;
-      }
-    case 10002: 
-      localArrayList = (ArrayList)asub.a(this.this$0).get(this.b);
+    case 10003: 
+      localArrayList = (ArrayList)HotPicManager.b(this.this$0).get(this.b);
       localObject = localArrayList;
       if (localArrayList == null)
       {
         localObject = new ArrayList();
-        asub.a(this.this$0).put(this.b, localObject);
+        HotPicManager.b(this.this$0).put(this.b, localObject);
       }
       i = ((ArrayList)localObject).size();
-      this.this$0.a(i, 16 + i - 1, this.this$0.b(), this.b, false, this.a);
+      localObject = this.this$0;
+      ((HotPicManager)localObject).a(i, i + 8 - 1, ((HotPicManager)localObject).m(), this.b, false, this.a);
+      return;
+    case 10002: 
+      localArrayList = (ArrayList)HotPicManager.b(this.this$0).get(this.b);
+      localObject = localArrayList;
+      if (localArrayList == null)
+      {
+        localObject = new ArrayList();
+        HotPicManager.b(this.this$0).put(this.b, localObject);
+      }
+      i = ((ArrayList)localObject).size();
+      localObject = this.this$0;
+      ((HotPicManager)localObject).a(i, i + 16 - 1, ((HotPicManager)localObject).m(), this.b, false, this.a);
       return;
     }
-    ArrayList localArrayList = (ArrayList)asub.a(this.this$0).get(this.b);
-    Object localObject = localArrayList;
-    if (localArrayList == null)
+    if ((!this.this$0.c) && (!this.this$0.j()))
     {
-      localObject = new ArrayList();
-      asub.a(this.this$0).put(this.b, localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager", 2, "cancel request");
+      }
+      return;
     }
-    int i = ((ArrayList)localObject).size();
-    this.this$0.a(i, 8 + i - 1, this.this$0.b(), this.b, false, this.a);
+    boolean bool = this.this$0.b(this.b);
+    Object localObject = this.this$0;
+    int j = ((HotPicManager)localObject).m();
+    int k = this.b;
+    if (bool) {
+      i = 10003;
+    } else {
+      i = 10002;
+    }
+    ((HotPicManager)localObject).a(0, 15, j, k, true, i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("request REQ_CHECK_UPDATE getLoaclVersion is ");
+      ((StringBuilder)localObject).append(this.this$0.m());
+      QLog.d("HotPicManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicManager.2
  * JD-Core Version:    0.7.0.1
  */

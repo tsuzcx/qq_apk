@@ -1,27 +1,16 @@
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
-import wifiphoto.WifiPhotoDataCenter;
-import wifiphoto.WifiPhotoStatusMgr;
+import java.util.List;
+import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 
 public class fay
-  extends TimerTask
+  implements Runnable
 {
-  public fay(DataLineHandler paramDataLineHandler) {}
+  public fay(DataLineHandler paramDataLineHandler, SubMsgType0x7.MsgBody.MsgHeader paramMsgHeader, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("wifiphoto", 2, "wifiphoto heart beat check");
-    }
-    long l = System.currentTimeMillis();
-    if ((DataLineHandler.a.jdField_a_of_type_WifiphotoWifiPhotoStatusMgr.b()) && (l > DataLineHandler.a.jdField_a_of_type_Long) && (l - DataLineHandler.a.jdField_a_of_type_Long > 45000L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("wifiphoto", 2, "wifiphoto heart beat timer out");
-      }
-      this.a.b(false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.onFileComing0x211_0x1_0x9(this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
   }
 }
 

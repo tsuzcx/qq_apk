@@ -2,18 +2,16 @@ import android.view.View;
 import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerActivity;
 import com.tencent.mobileqq.filemanager.activity.fileviewer.base.BaseFileViewerController;
 import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class fta
-  implements AdapterView.OnItemSelectedListener
+  implements AdapterView.OnItemClickListener
 {
   public fta(BaseFileViewerController paramBaseFileViewerController) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void a_(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a(paramAdapterView, paramView, paramInt, paramLong);
+    this.a.a.b(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

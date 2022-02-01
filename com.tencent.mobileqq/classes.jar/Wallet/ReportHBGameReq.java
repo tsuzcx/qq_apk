@@ -8,11 +8,11 @@ public final class ReportHBGameReq
   extends JceStruct
   implements Cloneable
 {
-  public boolean bStart;
-  public boolean bSucc;
-  public int iAmount;
-  public int iGameId;
-  public long lUin;
+  public boolean bStart = false;
+  public boolean bSucc = false;
+  public int iAmount = 0;
+  public int iGameId = 0;
+  public long lUin = 0L;
   public String sHBId = "";
   public String sPoint = "";
   
@@ -40,7 +40,7 @@ public final class ReportHBGameReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.ReportHBGameReq
  * JD-Core Version:    0.7.0.1
  */

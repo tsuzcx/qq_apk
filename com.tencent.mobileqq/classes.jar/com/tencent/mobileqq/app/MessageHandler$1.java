@@ -1,35 +1,46 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.handler.RegisterProxyHandler.Callback;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 class MessageHandler$1
-  extends SendMessageHandler.SendMessageRunnable
+  implements RegisterProxyHandler.Callback
 {
-  MessageHandler$1(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
+  MessageHandler$1(MessageHandler paramMessageHandler) {}
   
-  public void run()
+  public HashMap<Integer, String[]> a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "sendReceiptMessageRead.prepareRetryRunnable: " + this.c + " / " + this.b);
+    return this.a.n.getTroopListUin(paramInt);
+  }
+  
+  public List<String> a()
+  {
+    Object localObject = ((DiscussionManager)this.a.n.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b();
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((DiscussionInfo)((Iterator)localObject).next()).uin);
     }
-    ToServiceMsg localToServiceMsg = this.this$0.createToServiceMsg("MessageSvc.PbReceiptRead", null);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putInt("msgtype", 1);
-    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putInt("retryIndex", this.b);
-    localToServiceMsg.setTimeout(this.c);
-    this.this$0.sendPbReq(localToServiceMsg);
+    return localArrayList;
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord.msgtype == -1035) && ((paramMessageRecord instanceof MessageForMixedMsg))) {
+      this.a.n.msgFacade.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 32768, paramMessageRecord.sendFailCode);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.1
  * JD-Core Version:    0.7.0.1
  */

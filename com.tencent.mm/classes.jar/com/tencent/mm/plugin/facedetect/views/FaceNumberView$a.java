@@ -6,18 +6,18 @@ public enum FaceNumberView$a
 {
   static
   {
-    AppMethodBeat.i(652);
-    mpx = new a("Normal", 0);
-    mpy = new a("Shine", 1);
-    mpz = new a[] { mpx, mpy };
-    AppMethodBeat.o(652);
+    AppMethodBeat.i(104174);
+    zYM = new a("Normal", 0);
+    zYN = new a("Shine", 1);
+    zYO = new a[] { zYM, zYN };
+    AppMethodBeat.o(104174);
   }
   
   private FaceNumberView$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberView.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,31 @@
 package com.tencent.imcore.message;
 
-import absi;
-import abts;
-import android.os.Handler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import mqq.app.AppRuntime;
 
-public class BaseMessageManager$1
+class BaseMessageManager$1
   implements Runnable
 {
-  public BaseMessageManager$1(absi paramabsi, String paramString1, int paramInt1, int paramInt2, abts paramabts, String paramString2) {}
+  BaseMessageManager$1(BaseMessageManager paramBaseMessageManager, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
-    this.this$0.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_Abts, ", timestamp = " + System.currentTimeMillis());
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Abts);
-    this.this$0.a(this.jdField_a_of_type_Abts);
-    this.this$0.a.a.post(new BaseMessageManager.1.1(this));
+    ((MessageCache)this.this$0.a.getMsgCache()).i(this.a);
+    this.this$0.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    if (!((MessageCache)this.this$0.a.getMsgCache()).d(this.a.frienduin, this.a.istroop, this.a.uniseq)) {
+      BaseMessageManager.e.a(this.this$0.a, this.a, 15000L - (l1 - l2));
+    } else {
+      BaseMessageManager.e.a(this.this$0.a, this.a.frienduin, this.a.istroop, BaseMessageProcessor.b, BaseMessageProcessor.j);
+    }
+    ((MessageCache)this.this$0.a.getMsgCache()).i(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

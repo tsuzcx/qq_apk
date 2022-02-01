@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.fragment;
 
 import android.os.Handler;
-import asha;
-import auam;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 import mqq.os.MqqHandler;
 
-public class QQSettingChatOperationFragment$2$1
+class QQSettingChatOperationFragment$2$1
   implements Runnable
 {
-  public QQSettingChatOperationFragment$2$1(asha paramasha) {}
+  QQSettingChatOperationFragment$2$1(QQSettingChatOperationFragment.2 param2) {}
   
   public void run()
   {
-    QQSettingChatOperationFragment.a(this.a.a).a().d(true);
-    QQSettingChatOperationFragment.a(this.a.a).a().h();
-    auam.a().j(QQSettingChatOperationFragment.a(this.a.a));
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.a).getHandler(Conversation.class);
+    QQSettingChatOperationFragment.a(this.a.b).getMsgHandler().f(true);
+    QQSettingChatOperationFragment.a(this.a.b).getMessageFacade().v();
+    TroopAssistantManager.a().r(QQSettingChatOperationFragment.a(this.a.b));
+    this.a.b.d.sendEmptyMessageDelayed(0, 1000L);
+    MqqHandler localMqqHandler = QQSettingChatOperationFragment.a(this.a.b).getHandler(Conversation.class);
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(1009);
     }
@@ -28,7 +27,7 @@ public class QQSettingChatOperationFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

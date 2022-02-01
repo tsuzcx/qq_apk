@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/drj" android:background="@drawable/jm" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <CheckBox android:id="@id/ead" android:background="@drawable/nj" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="12.0dip" android:checked="true" android:button="@null" />
+    <ImageView android:id="@id/eah" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@color/bm" />
+    <RelativeLayout android:id="@id/bgm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="4.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/jq2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:maxLines="2" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/bdn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/jq2" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/f9q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/bdn" android:layout_below="@id/jq2" />
+    </RelativeLayout>
+</LinearLayout>

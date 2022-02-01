@@ -1,29 +1,28 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apnw;
-import apol;
-import apon;
-import azri;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
+import mqq.app.MobileQQ;
 
-public class EmoAddedAuthCallback$4
+class EmoAddedAuthCallback$4
   implements Runnable
 {
-  public EmoAddedAuthCallback$4(apnw paramapnw) {}
+  EmoAddedAuthCallback$4(EmoAddedAuthCallback paramEmoAddedAuthCallback) {}
   
   public void run()
   {
-    int i = ((apon)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(149)).b().size();
-    if (i != apol.b)
+    Object localObject = (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    int i = ((IFavroamingDBManagerService)this.this$0.a.getRuntimeService(IFavroamingDBManagerService.class)).syncGetCustomEmotionInfoShowedInPanel().size();
+    if (i != FavEmoConstant.b)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("local_size", String.valueOf(i));
-      localHashMap.put("roaming_max_size", String.valueOf(apol.b));
-      azri.a(BaseApplication.getContext()).a(null, "AddFavEmotionError", false, 0L, 0L, localHashMap, "");
+      localObject = new HashMap();
+      ((HashMap)localObject).put("local_size", String.valueOf(i));
+      ((HashMap)localObject).put("roaming_max_size", String.valueOf(FavEmoConstant.b));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AddFavEmotionError", false, 0L, 0L, (HashMap)localObject, "");
     }
   }
 }

@@ -23,7 +23,7 @@ public class ThreadExcutor
   public static final int IS_NOMAL_POOL = 6;
   public static final int IS_OTHER_POOL = 11;
   private static final ThreadExcutor sExcutors = new ThreadExcutor();
-  public static boolean sLooperMonitorSwitch;
+  public static boolean sLooperMonitorSwitch = false;
   public static int sThreshTime = 1000;
   private ThreadSmartPool mAIODownloadThreadPool;
   private ThreadSmartPool mDBPool;
@@ -32,11 +32,6 @@ public class ThreadExcutor
   private ThreadSmartPool mLightThreadPool;
   private ThreadSmartPool mNetPool;
   private ThreadSmartPool mNormalPool;
-  
-  static
-  {
-    sLooperMonitorSwitch = false;
-  }
   
   private ThreadExcutor()
   {
@@ -51,101 +46,117 @@ public class ThreadExcutor
     Object localObject1 = paramRunnable.getClass();
     String str = ((Class)localObject1).getName();
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        localField = ((Class)localObject1).getDeclaredField("this$0");
-        localField.setAccessible(true);
-        localObject1 = localField.get(paramRunnable);
-        Object localObject2;
-        Object localObject3;
-        localObject4 = localField;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException1)
-      {
-        for (;;)
-        {
-          try
-          {
-            localField.set(paramRunnable, null);
-          }
-          catch (IllegalAccessException localIllegalAccessException2)
-          {
-            Field localField;
-            Object localObject5 = localObject4;
-            continue;
-          }
-          catch (IllegalArgumentException localIllegalArgumentException2)
-          {
-            Object localObject6 = localObject4;
-            continue;
-          }
-          catch (NoSuchFieldException localNoSuchFieldException2)
-          {
-            Object localObject4;
-            Object localObject7 = localObject4;
-            continue;
-          }
-          try
-          {
-            paramRunnable = new Job(localObject1, str, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
-            return paramRunnable;
-          }
-          catch (OutOfMemoryError paramRunnable)
-          {
-            ThreadLog.printQLog("ThreadManager", "buildJob IllegalAccessException", paramRunnable);
-            return null;
-          }
-        }
-        localNoSuchFieldException1 = localNoSuchFieldException1;
-        localField = null;
-        localObject2 = localField;
-        if (!ThreadSetting.logcatBgTaskMonitor) {
-          continue;
-        }
-        ThreadLog.printQLog("ThreadManager", "buildJob NoSuchFieldException");
-        localObject2 = localField;
-        continue;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException1)
-      {
-        localField = null;
-        localObject3 = localField;
-        if (!ThreadSetting.logcatBgTaskMonitor) {
-          continue;
-        }
-        ThreadLog.printQLog("ThreadManager", "buildJob IllegalArgumentException");
-        localObject3 = localField;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException1)
-      {
-        localField = null;
-      }
+      localObject2 = ((Class)localObject1).getDeclaredField("this$0");
+      ((Field)localObject2).setAccessible(true);
+      localObject1 = ((Field)localObject2).get(paramRunnable);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException1)
+    {
+      Object localObject2;
+      break label125;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      break label98;
+    }
+    catch (IllegalAccessException localIllegalAccessException1)
+    {
+      label50:
+      label57:
+      break label71;
+    }
+    try
+    {
+      ((Field)localObject2).set(paramRunnable, null);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException2)
+    {
+      break label64;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      break label57;
+    }
+    catch (IllegalAccessException localIllegalAccessException2)
+    {
+      break label50;
+    }
+    localObject2 = localObject1;
+    break label74;
+    localObject2 = localObject1;
+    break label101;
+    label64:
+    localObject2 = localObject1;
+    break label128;
+    label71:
+    localObject2 = null;
+    label74:
+    localObject1 = localObject2;
+    if (ThreadSetting.logcatBgTaskMonitor)
+    {
+      ThreadLog.printQLog("ThreadManager", "buildJob IllegalAccessException");
+      localObject1 = localObject2;
+      break label149;
+      label98:
+      localObject2 = null;
+      label101:
+      localObject1 = localObject2;
       if (ThreadSetting.logcatBgTaskMonitor)
       {
-        ThreadLog.printQLog("ThreadManager", "buildJob IllegalAccessException");
-        localObject4 = localField;
-        continue;
-        localObject4 = null;
+        ThreadLog.printQLog("ThreadManager", "buildJob IllegalArgumentException");
+        localObject1 = localObject2;
+        break label149;
+        label125:
+        localObject2 = null;
+        label128:
+        localObject1 = localObject2;
+        if (ThreadSetting.logcatBgTaskMonitor)
+        {
+          ThreadLog.printQLog("ThreadManager", "buildJob NoSuchFieldException");
+          localObject1 = localObject2;
+        }
       }
+    }
+    label149:
+    break label155;
+    localObject1 = null;
+    try
+    {
+      label155:
+      paramRunnable = new Job(localObject1, str, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+      return paramRunnable;
+    }
+    catch (OutOfMemoryError paramRunnable)
+    {
+      ThreadLog.printQLog("ThreadManager", "buildJob IllegalAccessException", paramRunnable);
+      return null;
     }
   }
   
   public static void doRdmReport(String paramString1, String paramString2)
   {
-    if (!ThreadSetting.isPublicVersion) {
-      throw new TSPInvalidArgsCatchedException(paramString1 + "|" + paramString2);
+    if (ThreadSetting.isPublicVersion)
+    {
+      if (ThreadManagerV2.sThreadWrapContext != null) {
+        ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPInvalidArgsCatchedException(paramString1), paramString1, paramString2);
+      }
+      return;
     }
-    if (ThreadManagerV2.sThreadWrapContext != null) {
-      ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPInvalidArgsCatchedException(paramString1), paramString1, paramString2);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
+    throw new TSPInvalidArgsCatchedException(localStringBuilder.toString());
   }
   
   private StringBuilder getAllPoolRunningJob(String paramString)
   {
-    ThreadLog.printQLog("ThreadManager", "\ngetAllPoolRunningJob from: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\ngetAllPoolRunningJob from: ");
+    localStringBuilder.append(paramString);
+    ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
     paramString = new StringBuilder();
     paramString.append("\nInLight");
     getPoolRunningJob(paramString, Job.runningJmapInLight);
@@ -168,7 +179,7 @@ public class ThreadExcutor
     return paramString;
   }
   
-  static ThreadExcutor getInstance()
+  public static ThreadExcutor getInstance()
   {
     try
     {
@@ -190,7 +201,10 @@ public class ThreadExcutor
       while (paramConcurrentLinkedQueue.hasNext())
       {
         String str = (String)paramConcurrentLinkedQueue.next();
-        paramStringBuilder.append("\nRunning_Job: " + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("\nRunning_Job: ");
+        localStringBuilder.append(str);
+        paramStringBuilder.append(localStringBuilder.toString());
       }
     }
     return paramStringBuilder;
@@ -252,11 +266,13 @@ public class ThreadExcutor
   
   void excute(Runnable paramRunnable, int paramInt, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
   {
-    if (paramRunnable == null) {
-      throw new IllegalArgumentException();
+    if (paramRunnable != null)
+    {
+      paramRunnable = new ThreadExcutor.2(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+      DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+      return;
     }
-    paramRunnable = new ThreadExcutor.2(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
-    DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+    throw new IllegalArgumentException();
   }
   
   HandlerThread newFreeHandlerThread(String paramString, int paramInt)
@@ -283,26 +299,33 @@ public class ThreadExcutor
     if (Build.VERSION.SDK_INT > 8) {
       paramThreadPoolParams.allowCoreThreadTimeOut(true);
     }
-    ThreadLog.printQLog("ThreadManager", "newFreeThreadPool " + localThreadPoolParams.poolThreadName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("newFreeThreadPool ");
+    localStringBuilder.append(localThreadPoolParams.poolThreadName);
+    ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
     return paramThreadPoolParams;
   }
   
   void post(int paramInt, Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
   {
-    if (paramRunnable == null) {
-      throw new IllegalArgumentException("ThreadManager job == null");
+    if (paramRunnable != null)
+    {
+      paramRunnable = new ThreadExcutor.1(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+      DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+      return;
     }
-    paramRunnable = new ThreadExcutor.1(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
-    DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+    throw new IllegalArgumentException("ThreadManager job == null");
   }
   
   void postDownLoadTask(int paramInt, Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
   {
-    if (paramRunnable == null) {
-      throw new IllegalArgumentException();
+    if (paramRunnable != null)
+    {
+      paramRunnable = new ThreadExcutor.3(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
+      DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+      return;
     }
-    paramRunnable = new ThreadExcutor.3(this, paramInt, paramRunnable, paramIThreadListener, paramBoolean);
-    DISPATCHER_HANDLER.postAtFrontOfQueue(paramRunnable);
+    throw new IllegalArgumentException();
   }
   
   void postImmediately(Runnable paramRunnable, ThreadExcutor.IThreadListener paramIThreadListener, boolean paramBoolean)
@@ -313,13 +336,20 @@ public class ThreadExcutor
   String printCurrentState()
   {
     StringBuilder localStringBuilder = getAllPoolRunningJob("CRASH");
-    localStringBuilder.append("\n").append(this.mHeavyThreadPool.toString());
-    localStringBuilder.append("\n").append(this.mLightThreadPool.toString());
-    localStringBuilder.append("\n").append(this.mAIODownloadThreadPool.toString());
-    localStringBuilder.append("\n").append(this.mNormalPool.toString());
-    localStringBuilder.append("\n").append(this.mDBPool.toString());
-    localStringBuilder.append("\n").append(this.mFilePool.toString());
-    localStringBuilder.append("\n").append(this.mNetPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mHeavyThreadPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mLightThreadPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mAIODownloadThreadPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mNormalPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mDBPool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mFilePool.toString());
+    localStringBuilder.append("\n");
+    localStringBuilder.append(this.mNetPool.toString());
     return localStringBuilder.toString();
   }
   
@@ -328,62 +358,82 @@ public class ThreadExcutor
     if (paramRunnable == null) {}
     try
     {
-      doRdmReport("removeJobFromThreadPool_Err", "job_NONE_type" + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("job_NONE_type");
+      ((StringBuilder)localObject).append(paramInt);
+      doRdmReport("removeJobFromThreadPool_Err", ((StringBuilder)localObject).toString());
       return false;
     }
     catch (Exception localException)
     {
-      doRdmReport("removeJobFromThreadPool_Err", "name_" + paramRunnable + "_Type_" + paramInt);
-      return false;
+      Object localObject;
+      Job localJob;
+      break label185;
     }
-    Job localJob = buildJob(paramInt, paramRunnable, null, false);
+    localJob = buildJob(paramInt, paramRunnable, null, false);
     if (localJob == null)
     {
-      doRdmReport("removeJobFromThreadPool_Err", "work_NONE_type" + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("work_NONE_type");
+      ((StringBuilder)localObject).append(paramInt);
+      doRdmReport("removeJobFromThreadPool_Err", ((StringBuilder)localObject).toString());
       return false;
     }
-    ThreadSmartPool localThreadSmartPool;
-    if ((paramInt & 0x80) != 0) {
-      localThreadSmartPool = this.mNetPool;
-    }
-    for (;;)
+    if ((paramInt & 0x80) != 0)
     {
-      return localThreadSmartPool.remove(localJob);
-      if ((paramInt & 0x40) != 0)
-      {
-        localThreadSmartPool = this.mFilePool;
-      }
-      else if ((paramInt & 0x20) != 0)
-      {
-        localThreadSmartPool = this.mDBPool;
-      }
-      else
-      {
-        if ((paramInt & 0x10) == 0) {
-          break;
-        }
-        localThreadSmartPool = this.mNormalPool;
-      }
+      localObject = this.mNetPool;
     }
-    doRdmReport("removeJobFromThreadPool_Err", "type_NONE_" + paramRunnable);
+    else if ((paramInt & 0x40) != 0)
+    {
+      localObject = this.mFilePool;
+    }
+    else if ((paramInt & 0x20) != 0)
+    {
+      localObject = this.mDBPool;
+    }
+    else
+    {
+      if ((paramInt & 0x10) == 0) {
+        break label151;
+      }
+      localObject = this.mNormalPool;
+    }
+    return ((ThreadSmartPool)localObject).remove(localJob);
+    label151:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("type_NONE_");
+    ((StringBuilder)localObject).append(paramRunnable);
+    doRdmReport("removeJobFromThreadPool_Err", ((StringBuilder)localObject).toString());
+    return false;
+    label185:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("name_");
+    ((StringBuilder)localObject).append(paramRunnable);
+    ((StringBuilder)localObject).append("_Type_");
+    ((StringBuilder)localObject).append(paramInt);
+    doRdmReport("removeJobFromThreadPool_Err", ((StringBuilder)localObject).toString());
     return false;
   }
   
-  void shrinkMaxPoolSize(boolean paramBoolean)
+  public void shrinkMaxPoolSize(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.mHeavyThreadPool.setMaximumPoolSize(Math.max(this.mHeavyThreadPool.getActiveCount(), this.mHeavyThreadPool.getCorePoolSize()));
-      this.mAIODownloadThreadPool.setMaximumPoolSize(Math.max(this.mAIODownloadThreadPool.getActiveCount(), this.mAIODownloadThreadPool.getCorePoolSize()));
+      localThreadSmartPool = this.mHeavyThreadPool;
+      localThreadSmartPool.setMaximumPoolSize(Math.max(localThreadSmartPool.getActiveCount(), this.mHeavyThreadPool.getCorePoolSize()));
+      localThreadSmartPool = this.mAIODownloadThreadPool;
+      localThreadSmartPool.setMaximumPoolSize(Math.max(localThreadSmartPool.getActiveCount(), this.mAIODownloadThreadPool.getCorePoolSize()));
       return;
     }
-    this.mHeavyThreadPool.setMaximumPoolSize(this.mHeavyThreadPool.getInitMaxPoolSize());
-    this.mAIODownloadThreadPool.setMaximumPoolSize(this.mAIODownloadThreadPool.getInitMaxPoolSize());
+    ThreadSmartPool localThreadSmartPool = this.mHeavyThreadPool;
+    localThreadSmartPool.setMaximumPoolSize(localThreadSmartPool.getInitMaxPoolSize());
+    localThreadSmartPool = this.mAIODownloadThreadPool;
+    localThreadSmartPool.setMaximumPoolSize(localThreadSmartPool.getInitMaxPoolSize());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadExcutor
  * JD-Core Version:    0.7.0.1
  */

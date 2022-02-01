@@ -7,51 +7,51 @@ public abstract class i
   extends f
   implements d
 {
-  private d aTL;
-  private long awY;
+  private long cGY;
+  private d ddG;
+  
+  public final int TD()
+  {
+    return this.ddG.TD();
+  }
   
   public final void a(long paramLong1, d paramd, long paramLong2)
   {
-    this.aAT = paramLong1;
-    this.aTL = paramd;
+    this.timeUs = paramLong1;
+    this.ddG = paramd;
     paramLong1 = paramLong2;
     if (paramLong2 == 9223372036854775807L) {
-      paramLong1 = this.aAT;
+      paramLong1 = this.timeUs;
     }
-    this.awY = paramLong1;
+    this.cGY = paramLong1;
   }
   
-  public final int ab(long paramLong)
+  public final List<a> cA(long paramLong)
   {
-    return this.aTL.ab(paramLong - this.awY);
-  }
-  
-  public final List<a> ac(long paramLong)
-  {
-    return this.aTL.ac(paramLong - this.awY);
+    return this.ddG.cA(paramLong - this.cGY);
   }
   
   public final void clear()
   {
     super.clear();
-    this.aTL = null;
+    this.ddG = null;
   }
   
-  public final long dT(int paramInt)
+  public final int cz(long paramLong)
   {
-    return this.aTL.dT(paramInt) + this.awY;
+    return this.ddG.cz(paramLong - this.cGY);
   }
   
-  public final int pH()
+  public final long in(int paramInt)
   {
-    return this.aTL.pH();
+    return this.ddG.in(paramInt) + this.cGY;
   }
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.i
  * JD-Core Version:    0.7.0.1
  */

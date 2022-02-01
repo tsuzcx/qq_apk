@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/a8i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="18.0dip" android:text="@string/cbf" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/bsa" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="360.0dip" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="horizontal" android:background="@drawable/hf" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/io" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/abr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/apn" android:singleLine="true" android:layout_centerVertical="true" />
+            <Button android:enabled="false" android:id="@id/hls" android:text="@string/a17" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/oi" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/kei" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/df" android:minHeight="25.0dip" app:labelBackground="@drawable/ab4" app:labelTextColor="@drawable/aba" app:labelTextHeight="lu3" app:labelTextPaddingBottom="@dimen/m2" app:labelTextPaddingLeft="@dimen/r" app:labelTextPaddingRight="@dimen/r" app:labelTextPaddingTop="@dimen/m2" app:labelTextSize="@dimen/hq" app:labelTextWidth="lu3" app:lineMargin="@dimen/cd" app:selectType="l" app:wordMargin="@dimen/cd" />
+    </LinearLayout>
 </LinearLayout>

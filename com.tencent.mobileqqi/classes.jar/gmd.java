@@ -13,7 +13,7 @@ public class gmd
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
     if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+      localSharedPreferences.edit().putBoolean("delete_system_msg_item", this.jdField_a_of_type_Boolean).commit();
     }
   }
 }

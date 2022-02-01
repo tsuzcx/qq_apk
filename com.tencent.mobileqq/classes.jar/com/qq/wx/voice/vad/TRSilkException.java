@@ -11,33 +11,41 @@ public class TRSilkException
   TRSilkException(int paramInt)
   {
     this.a = paramInt;
-    String str;
     switch (paramInt)
     {
     default: 
-      str = "unknown error";
+      localObject = "unknown error";
+      break;
+    case -100: 
+      localObject = "out of memory";
+      break;
+    case -101: 
+      localObject = "silk engine error";
+      break;
+    case -102: 
+      localObject = "should init at first";
+      break;
+    case -103: 
+      localObject = "already init";
+      break;
+    case -104: 
+      localObject = "null param or 0 length";
+      break;
+    case -105: 
+      localObject = "bit rate must between 0 and 48000";
+      break;
+    case -106: 
+      localObject = "sample rate must between 0 and 16000";
+      break;
+    case -107: 
+      localObject = "the input size is too long";
     }
-    for (;;)
-    {
-      this.b = str;
-      Log.e("TRSilkException", "errorCode: " + this.a + "\t msg: " + this.b);
-      return;
-      str = "silk engine error";
-      continue;
-      str = "out of memory";
-      continue;
-      str = "should init at first";
-      continue;
-      str = "already init";
-      continue;
-      str = "null param or 0 length";
-      continue;
-      str = "bit rate must between 0 and 48000";
-      continue;
-      str = "sample rate must between 0 and 16000";
-      continue;
-      str = "the input size is too long";
-    }
+    this.b = ((String)localObject);
+    Object localObject = new StringBuilder("errorCode: ");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append("\t msg: ");
+    ((StringBuilder)localObject).append(this.b);
+    Log.e("TRSilkException", ((StringBuilder)localObject).toString());
   }
   
   public int getErrorCode()
@@ -52,7 +60,7 @@ public class TRSilkException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.vad.TRSilkException
  * JD-Core Version:    0.7.0.1
  */

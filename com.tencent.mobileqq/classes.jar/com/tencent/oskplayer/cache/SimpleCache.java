@@ -1,6 +1,7 @@
 package com.tencent.oskplayer.cache;
 
 import android.os.ConditionVariable;
+import android.text.TextUtils;
 import com.tencent.oskplayer.proxy.FileType;
 import com.tencent.oskplayer.util.Assertions;
 import com.tencent.oskplayer.util.PlayerUtils;
@@ -54,51 +55,47 @@ public class SimpleCache
   
   private void deleteDir(File paramFile)
   {
-    if (!paramFile.exists()) {}
-    for (;;)
-    {
+    if (!paramFile.exists()) {
       return;
-      paramFile = paramFile.listFiles();
-      if (paramFile != null)
-      {
-        int i = 0;
-        while (i < paramFile.length)
-        {
-          File localFile = paramFile[i];
-          if (localFile.isDirectory()) {
-            deleteDir(localFile);
-          }
-          localFile.delete();
-          i += 1;
-        }
+    }
+    paramFile = paramFile.listFiles();
+    if (paramFile == null) {
+      return;
+    }
+    int i = 0;
+    while (i < paramFile.length)
+    {
+      File localFile = paramFile[i];
+      if (localFile.isDirectory()) {
+        deleteDir(localFile);
       }
+      localFile.delete();
+      i += 1;
     }
   }
   
   private CacheSpan getSpan(CacheSpan paramCacheSpan)
   {
-    Object localObject = paramCacheSpan.key;
+    String str = paramCacheSpan.key;
     long l = paramCacheSpan.position;
-    TreeSet localTreeSet = (TreeSet)this.cachedSpans.get(localObject);
-    if (localTreeSet == null) {
-      localObject = CacheSpan.createOpenHole((String)localObject, paramCacheSpan.position);
+    Object localObject = (TreeSet)this.cachedSpans.get(str);
+    if (localObject == null) {
+      return CacheSpan.createOpenHole(str, paramCacheSpan.position);
     }
-    do
+    CacheSpan localCacheSpan = (CacheSpan)((TreeSet)localObject).floor(paramCacheSpan);
+    if ((localCacheSpan != null) && (localCacheSpan.position <= l) && (l < localCacheSpan.position + localCacheSpan.length))
     {
-      return localObject;
-      localCacheSpan = (CacheSpan)localTreeSet.floor(paramCacheSpan);
-      if ((localCacheSpan == null) || (localCacheSpan.position > l) || (l >= localCacheSpan.position + localCacheSpan.length)) {
-        break;
+      if (localCacheSpan.file.exists()) {
+        return localCacheSpan;
       }
-      localObject = localCacheSpan;
-    } while (localCacheSpan.file.exists());
-    removeStaleSpans();
-    return getSpan(paramCacheSpan);
-    CacheSpan localCacheSpan = (CacheSpan)localTreeSet.ceiling(paramCacheSpan);
-    if (localCacheSpan == null) {}
-    for (paramCacheSpan = CacheSpan.createOpenHole((String)localObject, paramCacheSpan.position);; paramCacheSpan = CacheSpan.createClosedHole((String)localObject, paramCacheSpan.position, localCacheSpan.position - paramCacheSpan.position)) {
-      return paramCacheSpan;
+      removeStaleSpans();
+      return getSpan(paramCacheSpan);
     }
+    localObject = (CacheSpan)((TreeSet)localObject).ceiling(paramCacheSpan);
+    if (localObject == null) {
+      return CacheSpan.createOpenHole(str, paramCacheSpan.position);
+    }
+    return CacheSpan.createClosedHole(str, paramCacheSpan.position, ((CacheSpan)localObject).position - paramCacheSpan.position);
   }
   
   private void initialize()
@@ -111,32 +108,30 @@ public class SimpleCache
       return;
     }
     int i = 0;
-    label33:
-    File localFile;
-    if (i < arrayOfFile.length)
+    while (i < arrayOfFile.length)
     {
-      localFile = arrayOfFile[i];
-      if (localFile.length() != 0L) {
-        break label64;
+      Object localObject = arrayOfFile[i];
+      if (((File)localObject).length() == 0L)
+      {
+        ((File)localObject).delete();
       }
-      localFile.delete();
-    }
-    for (;;)
-    {
+      else
+      {
+        CacheSpan localCacheSpan = CacheSpan.createCacheEntry((File)localObject);
+        if (localCacheSpan == null)
+        {
+          ((File)localObject).delete();
+        }
+        else if (!addSpan(localCacheSpan))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("remove duplicated span ");
+          ((StringBuilder)localObject).append(localCacheSpan.file);
+          PlayerUtils.log(3, "SimpleCache", ((StringBuilder)localObject).toString());
+          removeSpan(localCacheSpan);
+        }
+      }
       i += 1;
-      break label33;
-      break;
-      label64:
-      CacheSpan localCacheSpan = CacheSpan.createCacheEntry(localFile);
-      if (localCacheSpan == null)
-      {
-        localFile.delete();
-      }
-      else if (!addSpan(localCacheSpan))
-      {
-        PlayerUtils.log(3, "SimpleCache", "remove duplicated span " + localCacheSpan.file);
-        removeSpan(localCacheSpan);
-      }
     }
   }
   
@@ -192,7 +187,7 @@ public class SimpleCache
     {
       Iterator localIterator2 = ((TreeSet)((Map.Entry)localIterator1.next()).getValue()).iterator();
       int i = 1;
-      if (localIterator2.hasNext())
+      while (localIterator2.hasNext())
       {
         CacheSpan localCacheSpan = (CacheSpan)localIterator2.next();
         if (!localCacheSpan.file.exists())
@@ -203,9 +198,8 @@ public class SimpleCache
           }
           notifySpanRemoved(localCacheSpan);
         }
-        for (;;)
+        else
         {
-          break;
           i = 0;
         }
       }
@@ -217,29 +211,21 @@ public class SimpleCache
   
   private CacheSpan startReadWriteNonBlocking(CacheSpan paramCacheSpan)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        CacheSpan localCacheSpan = getSpan(paramCacheSpan);
-        boolean bool = localCacheSpan.isCached;
-        if (bool)
-        {
-          paramCacheSpan = localCacheSpan;
-          return paramCacheSpan;
-        }
-        if (!this.lockedSpans.containsKey(paramCacheSpan.key))
-        {
-          this.lockedSpans.put(paramCacheSpan.key, localCacheSpan);
-          paramCacheSpan = localCacheSpan;
-        }
-        else
-        {
-          paramCacheSpan = null;
-        }
+      CacheSpan localCacheSpan = getSpan(paramCacheSpan);
+      boolean bool = localCacheSpan.isCached;
+      if (bool) {
+        return localCacheSpan;
       }
-      finally {}
+      if (!this.lockedSpans.containsKey(paramCacheSpan.key))
+      {
+        this.lockedSpans.put(paramCacheSpan.key, localCacheSpan);
+        return localCacheSpan;
+      }
+      return null;
     }
+    finally {}
   }
   
   public NavigableSet<CacheSpan> addListener(String paramString, Cache.Listener paramListener)
@@ -267,29 +253,27 @@ public class SimpleCache
       try
       {
         CacheSpan localCacheSpan = CacheSpan.createCacheEntry(paramFile);
-        boolean bool;
         if (localCacheSpan != null)
         {
           bool = true;
           Assertions.checkState(bool);
           Assertions.checkState(this.lockedSpans.containsKey(localCacheSpan.key));
           bool = paramFile.exists();
-          if (bool) {}
+          if (!bool) {
+            return;
+          }
+          if (paramFile.length() == 0L)
+          {
+            paramFile.delete();
+            return;
+          }
+          addSpan(localCacheSpan);
+          notifyAll();
+          return;
         }
-        else
-        {
-          bool = false;
-          continue;
-        }
-        if (paramFile.length() == 0L)
-        {
-          paramFile.delete();
-          continue;
-        }
-        addSpan(localCacheSpan);
       }
       finally {}
-      notifyAll();
+      boolean bool = false;
     }
   }
   
@@ -325,273 +309,172 @@ public class SimpleCache
   
   public long getCachedBytesFromEnd(String paramString)
   {
-    long l1 = 0L;
     paramString = getCachedSpans(paramString);
+    long l1 = 0L;
     long l2 = l1;
-    CacheSpan localCacheSpan;
     if (paramString != null)
     {
-      localCacheSpan = (CacheSpan)paramString.last();
-      if ((localCacheSpan == null) || (!localCacheSpan.isCached) || (localCacheSpan.totalLength < 0L) || (localCacheSpan.position + localCacheSpan.length >= localCacheSpan.totalLength)) {
-        break label75;
+      CacheSpan localCacheSpan = (CacheSpan)paramString.last();
+      if ((localCacheSpan != null) && (localCacheSpan.isCached) && (localCacheSpan.totalLength >= 0L) && (localCacheSpan.position + localCacheSpan.length < localCacheSpan.totalLength)) {
+        return 0L;
       }
       l2 = l1;
-    }
-    label75:
-    do
-    {
-      do
+      if (localCacheSpan != null)
       {
-        return l2;
         l2 = l1;
-      } while (localCacheSpan == null);
-      l2 = l1;
-    } while (localCacheSpan.totalLength < 0L);
-    paramString = paramString.descendingSet().iterator();
-    for (;;)
-    {
-      l2 = l1;
-      if (!paramString.hasNext()) {
-        break;
+        if (localCacheSpan.totalLength >= 0L)
+        {
+          paramString = paramString.descendingSet().iterator();
+          for (;;)
+          {
+            l2 = l1;
+            if (!paramString.hasNext()) {
+              break;
+            }
+            localCacheSpan = (CacheSpan)paramString.next();
+            if (!localCacheSpan.isCached) {
+              return l1;
+            }
+            l1 += localCacheSpan.length;
+          }
+        }
       }
-      localCacheSpan = (CacheSpan)paramString.next();
-      l2 = l1;
-      if (!localCacheSpan.isCached) {
-        break;
-      }
-      l1 = localCacheSpan.length + l1;
     }
+    return l2;
   }
   
-  /* Error */
   public long getCachedBytesFromStart(String paramString)
   {
-    // Byte code:
-    //   0: lconst_0
-    //   1: lstore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: aload_1
-    //   6: invokevirtual 252	com/tencent/oskplayer/cache/SimpleCache:getCachedSpans	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   9: astore_1
-    //   10: lload_2
-    //   11: lstore 4
-    //   13: aload_1
-    //   14: ifnull +136 -> 150
-    //   17: aload_1
-    //   18: invokeinterface 289 1 0
-    //   23: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   26: astore 6
-    //   28: aload 6
-    //   30: ifnull +43 -> 73
-    //   33: aload 6
-    //   35: getfield 238	com/tencent/oskplayer/cache/CacheSpan:isCached	Z
-    //   38: ifeq +35 -> 73
-    //   41: aload 6
-    //   43: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   46: lconst_0
-    //   47: lcmp
-    //   48: iflt +25 -> 73
-    //   51: aload 6
-    //   53: getfield 117	com/tencent/oskplayer/cache/CacheSpan:position	J
-    //   56: lstore 4
-    //   58: lload 4
-    //   60: lconst_0
-    //   61: lcmp
-    //   62: ifeq +11 -> 73
-    //   65: lload_2
-    //   66: lstore 4
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: lload 4
-    //   72: lreturn
-    //   73: lload_2
-    //   74: lstore 4
-    //   76: aload 6
-    //   78: ifnull +72 -> 150
-    //   81: lload_2
-    //   82: lstore 4
-    //   84: aload 6
-    //   86: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   89: lconst_0
-    //   90: lcmp
-    //   91: iflt +59 -> 150
-    //   94: aload_1
-    //   95: invokeinterface 285 1 0
-    //   100: astore_1
-    //   101: lload_2
-    //   102: lstore 4
-    //   104: aload_1
-    //   105: invokeinterface 221 1 0
-    //   110: ifeq +40 -> 150
-    //   113: aload_1
-    //   114: invokeinterface 225 1 0
-    //   119: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   122: astore 6
-    //   124: lload_2
-    //   125: lstore 4
-    //   127: aload 6
-    //   129: getfield 238	com/tencent/oskplayer/cache/CacheSpan:isCached	Z
-    //   132: ifeq -64 -> 68
-    //   135: aload 6
-    //   137: getfield 88	com/tencent/oskplayer/cache/CacheSpan:length	J
-    //   140: lstore 4
-    //   142: lload_2
-    //   143: lload 4
-    //   145: ladd
-    //   146: lstore_2
-    //   147: goto -46 -> 101
-    //   150: goto -82 -> 68
-    //   153: astore_1
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: aload_1
-    //   157: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	158	0	this	SimpleCache
-    //   0	158	1	paramString	String
-    //   1	146	2	l1	long
-    //   11	133	4	l2	long
-    //   26	110	6	localCacheSpan	CacheSpan
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	153	finally
-    //   17	28	153	finally
-    //   33	58	153	finally
-    //   84	101	153	finally
-    //   104	124	153	finally
-    //   127	142	153	finally
+    try
+    {
+      paramString = getCachedSpans(paramString);
+      long l1 = 0L;
+      long l2 = l1;
+      if (paramString != null)
+      {
+        CacheSpan localCacheSpan = (CacheSpan)paramString.first();
+        if ((localCacheSpan != null) && (localCacheSpan.isCached) && (localCacheSpan.totalLength >= 0L))
+        {
+          l2 = localCacheSpan.position;
+          if (l2 != 0L) {
+            return 0L;
+          }
+        }
+        l2 = l1;
+        if (localCacheSpan != null)
+        {
+          l2 = l1;
+          if (localCacheSpan.totalLength >= 0L)
+          {
+            paramString = paramString.iterator();
+            for (;;)
+            {
+              l2 = l1;
+              if (!paramString.hasNext()) {
+                break;
+              }
+              localCacheSpan = (CacheSpan)paramString.next();
+              boolean bool = localCacheSpan.isCached;
+              if (!bool) {
+                return l1;
+              }
+              l2 = localCacheSpan.length;
+              l1 += l2;
+            }
+          }
+        }
+      }
+      return l2;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public double getCachedSizeRate(String paramString)
   {
-    for (;;)
+    double d2 = 0.0D;
+    try
     {
-      try
+      paramString = getCachedSpans(paramString);
+      double d1 = d2;
+      if (paramString != null)
       {
-        paramString = getCachedSpans(paramString);
-        if (paramString != null)
+        CacheSpan localCacheSpan = (CacheSpan)paramString.first();
+        d1 = d2;
+        if (localCacheSpan != null)
         {
-          CacheSpan localCacheSpan = (CacheSpan)paramString.first();
-          if ((localCacheSpan != null) && (localCacheSpan.totalLength > 0L))
+          long l2 = localCacheSpan.totalLength;
+          long l1 = 0L;
+          d1 = d2;
+          if (l2 > 0L)
           {
-            long l2 = localCacheSpan.totalLength;
+            l2 = localCacheSpan.totalLength;
             paramString = paramString.iterator();
-            long l1 = 0L;
-            if (paramString.hasNext())
+            while (paramString.hasNext())
             {
               localCacheSpan = (CacheSpan)paramString.next();
               boolean bool = localCacheSpan.isCached;
               if (!bool)
               {
-                d = l1;
-                return d;
+                d1 = l1;
+                return d1;
               }
               long l3 = localCacheSpan.length;
-              l1 = l3 + l1;
-              continue;
+              l1 += l3;
             }
-            d = l1 / l2;
-            continue;
+            d1 = l1;
+            d2 = l2;
+            Double.isNaN(d1);
+            Double.isNaN(d2);
+            d1 /= d2;
           }
         }
-        double d = 0.0D;
       }
-      finally {}
+      return d1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
-  /* Error */
   public NavigableSet<CacheSpan> getCachedSpans(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 39	com/tencent/oskplayer/cache/SimpleCache:cachedSpans	Ljava/util/HashMap;
-    //   6: aload_1
-    //   7: invokevirtual 72	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   10: checkcast 74	java/util/TreeSet
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnonnull +9 -> 24
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload_1
-    //   23: areturn
-    //   24: new 74	java/util/TreeSet
-    //   27: dup
-    //   28: aload_1
-    //   29: invokespecial 294	java/util/TreeSet:<init>	(Ljava/util/SortedSet;)V
-    //   32: astore_1
-    //   33: goto -13 -> 20
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	SimpleCache
-    //   0	41	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	36	finally
-    //   24	33	36	finally
+    try
+    {
+      paramString = (TreeSet)this.cachedSpans.get(paramString);
+      if (paramString == null) {
+        paramString = null;
+      } else {
+        paramString = new TreeSet(paramString);
+      }
+      return paramString;
+    }
+    finally {}
   }
   
-  /* Error */
   public FileType getContentType(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 252	com/tencent/oskplayer/cache/SimpleCache:getCachedSpans	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +35 -> 44
-    //   12: aload_1
-    //   13: invokeinterface 289 1 0
-    //   18: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   21: astore_1
-    //   22: aload_1
-    //   23: ifnull +21 -> 44
-    //   26: aload_1
-    //   27: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   30: lconst_0
-    //   31: lcmp
-    //   32: iflt +12 -> 44
-    //   35: aload_1
-    //   36: getfield 301	com/tencent/oskplayer/cache/CacheSpan:fileType	Lcom/tencent/oskplayer/proxy/FileType;
-    //   39: astore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: areturn
-    //   44: getstatic 306	com/tencent/oskplayer/proxy/FileType:UNKNOWN	Lcom/tencent/oskplayer/proxy/FileType;
-    //   47: astore_1
-    //   48: goto -8 -> 40
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	SimpleCache
-    //   0	56	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	51	finally
-    //   12	22	51	finally
-    //   26	40	51	finally
-    //   44	48	51	finally
+    try
+    {
+      paramString = getCachedSpans(paramString);
+      if (paramString != null)
+      {
+        paramString = (CacheSpan)paramString.first();
+        if ((paramString != null) && (paramString.totalLength >= 0L))
+        {
+          paramString = paramString.fileType;
+          return paramString;
+        }
+      }
+      paramString = FileType.UNKNOWN;
+      return paramString;
+    }
+    finally {}
   }
   
   public Set<String> getKeys()
@@ -610,289 +493,177 @@ public class SimpleCache
   
   public long getRemainUnCachedBytes(String paramString)
   {
-    for (;;)
+    long l3 = -1L;
+    try
     {
-      try
+      paramString = getCachedSpans(paramString);
+      long l1 = l3;
+      if (paramString != null)
       {
-        paramString = getCachedSpans(paramString);
-        if (paramString != null)
+        CacheSpan localCacheSpan = (CacheSpan)paramString.first();
+        l1 = l3;
+        if (localCacheSpan != null)
         {
-          CacheSpan localCacheSpan = (CacheSpan)paramString.first();
-          if ((localCacheSpan != null) && (localCacheSpan.totalLength > 0L))
+          long l4 = localCacheSpan.totalLength;
+          long l2 = 0L;
+          l1 = l3;
+          if (l4 > 0L)
           {
-            long l2 = localCacheSpan.totalLength;
+            l3 = localCacheSpan.totalLength;
             paramString = paramString.iterator();
-            l1 = 0L;
-            if (paramString.hasNext())
+            for (l1 = l2; paramString.hasNext(); l1 += l2)
             {
               localCacheSpan = (CacheSpan)paramString.next();
               boolean bool = localCacheSpan.isCached;
               if (!bool) {
                 return l1;
               }
-              long l3 = localCacheSpan.length;
-              l1 += l3;
-              continue;
+              l2 = localCacheSpan.length;
             }
-            l1 = l2 - l1;
-            continue;
+            l1 = l3 - l1;
           }
         }
-        long l1 = -1L;
       }
-      finally {}
+      return l1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
-  /* Error */
   public long getTotalLength(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 252	com/tencent/oskplayer/cache/SimpleCache:getCachedSpans	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +35 -> 44
-    //   12: aload_1
-    //   13: invokeinterface 289 1 0
-    //   18: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   21: astore_1
-    //   22: aload_1
-    //   23: ifnull +21 -> 44
-    //   26: aload_1
-    //   27: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   30: lconst_0
-    //   31: lcmp
-    //   32: iflt +12 -> 44
-    //   35: aload_1
-    //   36: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   39: lstore_2
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: lload_2
-    //   43: lreturn
-    //   44: ldc2_w 318
-    //   47: lstore_2
-    //   48: goto -8 -> 40
-    //   51: astore_1
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	SimpleCache
-    //   0	56	1	paramString	String
-    //   39	9	2	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	51	finally
-    //   12	22	51	finally
-    //   26	40	51	finally
+    try
+    {
+      paramString = getCachedSpans(paramString);
+      if (paramString != null)
+      {
+        paramString = (CacheSpan)paramString.first();
+        if ((paramString != null) && (paramString.totalLength >= 0L))
+        {
+          long l = paramString.totalLength;
+          return l;
+        }
+      }
+      return -1L;
+    }
+    finally {}
   }
   
-  /* Error */
   public boolean isCached(String paramString)
   {
-    // Byte code:
-    //   0: lconst_0
-    //   1: lstore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: aload_1
-    //   6: invokevirtual 252	com/tencent/oskplayer/cache/SimpleCache:getCachedSpans	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   9: astore_1
-    //   10: aload_1
-    //   11: ifnull +111 -> 122
-    //   14: aload_1
-    //   15: invokeinterface 289 1 0
-    //   20: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   23: astore 9
-    //   25: aload 9
-    //   27: ifnull +95 -> 122
-    //   30: aload 9
-    //   32: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   35: lconst_0
-    //   36: lcmp
-    //   37: iflt +85 -> 122
-    //   40: aload 9
-    //   42: getfield 280	com/tencent/oskplayer/cache/CacheSpan:totalLength	J
-    //   45: lstore 4
-    //   47: aload_1
-    //   48: invokeinterface 285 1 0
-    //   53: astore_1
-    //   54: aload_1
-    //   55: invokeinterface 221 1 0
-    //   60: ifeq +49 -> 109
-    //   63: aload_1
-    //   64: invokeinterface 225 1 0
-    //   69: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   72: astore 9
-    //   74: aload 9
-    //   76: getfield 238	com/tencent/oskplayer/cache/CacheSpan:isCached	Z
-    //   79: istore 8
-    //   81: iload 8
-    //   83: ifne +11 -> 94
-    //   86: iconst_0
-    //   87: istore 8
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: iload 8
-    //   93: ireturn
-    //   94: aload 9
-    //   96: getfield 88	com/tencent/oskplayer/cache/CacheSpan:length	J
-    //   99: lstore 6
-    //   101: lload_2
-    //   102: lload 6
-    //   104: ladd
-    //   105: lstore_2
-    //   106: goto -52 -> 54
-    //   109: lload_2
-    //   110: lload 4
-    //   112: lcmp
-    //   113: iflt +9 -> 122
-    //   116: iconst_1
-    //   117: istore 8
-    //   119: goto -30 -> 89
-    //   122: iconst_0
-    //   123: istore 8
-    //   125: goto -36 -> 89
-    //   128: astore_1
-    //   129: aload_0
-    //   130: monitorexit
-    //   131: aload_1
-    //   132: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	133	0	this	SimpleCache
-    //   0	133	1	paramString	String
-    //   1	109	2	l1	long
-    //   45	66	4	l2	long
-    //   99	4	6	l3	long
-    //   79	45	8	bool	boolean
-    //   23	72	9	localCacheSpan	CacheSpan
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	128	finally
-    //   14	25	128	finally
-    //   30	54	128	finally
-    //   54	81	128	finally
-    //   94	101	128	finally
+    try
+    {
+      paramString = getCachedSpans(paramString);
+      if (paramString != null)
+      {
+        CacheSpan localCacheSpan = (CacheSpan)paramString.first();
+        if (localCacheSpan != null)
+        {
+          long l2 = localCacheSpan.totalLength;
+          long l1 = 0L;
+          if (l2 >= 0L)
+          {
+            l2 = localCacheSpan.totalLength;
+            paramString = paramString.iterator();
+            while (paramString.hasNext())
+            {
+              localCacheSpan = (CacheSpan)paramString.next();
+              boolean bool = localCacheSpan.isCached;
+              if (!bool) {
+                return false;
+              }
+              long l3 = localCacheSpan.length;
+              l1 += l3;
+            }
+            if (l1 >= l2) {
+              return true;
+            }
+          }
+        }
+      }
+      return false;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public boolean isCached(String paramString, long paramLong1, long paramLong2)
   {
+    try
+    {
+      Object localObject = (TreeSet)this.cachedSpans.get(paramString);
+      if (localObject == null) {
+        return false;
+      }
+      paramString = (CacheSpan)((TreeSet)localObject).floor(CacheSpan.createLookup(paramString, paramLong1));
+      if ((paramString != null) && (paramString.position + paramString.length > paramLong1))
+      {
+        long l = paramLong1 + paramLong2;
+        paramLong1 = paramString.position;
+        paramLong2 = paramString.length;
+        paramLong1 += paramLong2;
+        if (paramLong1 >= l) {
+          return true;
+        }
+        paramString = ((TreeSet)localObject).tailSet(paramString, false).iterator();
+        while (paramString.hasNext())
+        {
+          localObject = (CacheSpan)paramString.next();
+          paramLong2 = ((CacheSpan)localObject).position;
+          if (paramLong2 > paramLong1) {
+            return false;
+          }
+          paramLong2 = Math.max(paramLong1, ((CacheSpan)localObject).position + ((CacheSpan)localObject).length);
+          paramLong1 = paramLong2;
+          if (paramLong2 >= l) {
+            return true;
+          }
+        }
+        return false;
+      }
+      return false;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public void releaseHoleSpan(CacheSpan paramCacheSpan)
+  {
     for (;;)
     {
       try
       {
-        Object localObject = (TreeSet)this.cachedSpans.get(paramString);
-        boolean bool;
-        if (localObject == null)
+        if (paramCacheSpan == this.lockedSpans.remove(paramCacheSpan.key))
         {
-          bool = false;
-          return bool;
-        }
-        paramString = (CacheSpan)((TreeSet)localObject).floor(CacheSpan.createLookup(paramString, paramLong1));
-        if ((paramString != null) && (paramString.position + paramString.length > paramLong1))
-        {
-          paramLong2 = paramLong1 + paramLong2;
-          paramLong1 = paramString.position + paramString.length;
-          if (paramLong1 >= paramLong2)
-          {
-            bool = true;
-          }
-          else
-          {
-            paramString = ((TreeSet)localObject).tailSet(paramString, false).iterator();
-            if (paramString.hasNext())
-            {
-              localObject = (CacheSpan)paramString.next();
-              if (((CacheSpan)localObject).position > paramLong1)
-              {
-                bool = false;
-              }
-              else
-              {
-                long l = ((CacheSpan)localObject).position;
-                paramLong1 = Math.max(paramLong1, ((CacheSpan)localObject).length + l);
-                if (paramLong1 >= paramLong2) {
-                  bool = true;
-                } else {}
-              }
-            }
-            else
-            {
-              bool = false;
-            }
-          }
-        }
-        else
-        {
-          bool = false;
+          bool = true;
+          Assertions.checkState(bool);
+          notifyAll();
+          return;
         }
       }
       finally {}
+      boolean bool = false;
     }
-  }
-  
-  /* Error */
-  public void releaseHoleSpan(CacheSpan paramCacheSpan)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: aload_0
-    //   4: getfield 37	com/tencent/oskplayer/cache/SimpleCache:lockedSpans	Ljava/util/HashMap;
-    //   7: aload_1
-    //   8: getfield 68	com/tencent/oskplayer/cache/CacheSpan:key	Ljava/lang/String;
-    //   11: invokevirtual 338	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: if_acmpne +16 -> 30
-    //   17: iconst_1
-    //   18: istore_2
-    //   19: iload_2
-    //   20: invokestatic 261	com/tencent/oskplayer/util/Assertions:checkState	(Z)V
-    //   23: aload_0
-    //   24: invokevirtual 264	java/lang/Object:notifyAll	()V
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: return
-    //   30: iconst_0
-    //   31: istore_2
-    //   32: goto -13 -> 19
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	SimpleCache
-    //   0	40	1	paramCacheSpan	CacheSpan
-    //   18	14	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	35	finally
-    //   19	27	35	finally
   }
   
   public void removeAll()
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator1 = this.cachedSpans.entrySet().iterator();
+      while (localIterator1.hasNext())
       {
-        Iterator localIterator1 = this.cachedSpans.entrySet().iterator();
-        if (!localIterator1.hasNext()) {
-          break;
-        }
         Iterator localIterator2 = ((TreeSet)((Map.Entry)localIterator1.next()).getValue()).iterator();
-        if (localIterator2.hasNext())
+        while (localIterator2.hasNext())
         {
           CacheSpan localCacheSpan = (CacheSpan)localIterator2.next();
           localIterator2.remove();
@@ -901,64 +672,41 @@ public class SimpleCache
           }
           notifySpanRemoved(localCacheSpan);
         }
-        else
-        {
-          localObject.remove();
-        }
+        localIterator1.remove();
       }
-      finally {}
+      deleteDir(this.cacheDir);
+      return;
     }
-    deleteDir(this.cacheDir);
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
-  /* Error */
   public void removeByKey(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: istore_2
-    //   7: iload_2
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokevirtual 252	com/tencent/oskplayer/cache/SimpleCache:getCachedSpans	(Ljava/lang/String;)Ljava/util/NavigableSet;
-    //   19: astore_1
-    //   20: aload_1
-    //   21: ifnull -10 -> 11
-    //   24: aload_1
-    //   25: invokeinterface 285 1 0
-    //   30: astore_1
-    //   31: aload_1
-    //   32: invokeinterface 221 1 0
-    //   37: ifeq -26 -> 11
-    //   40: aload_0
-    //   41: aload_1
-    //   42: invokeinterface 225 1 0
-    //   47: checkcast 65	com/tencent/oskplayer/cache/CacheSpan
-    //   50: invokevirtual 176	com/tencent/oskplayer/cache/SimpleCache:removeSpan	(Lcom/tencent/oskplayer/cache/CacheSpan;)V
-    //   53: goto -22 -> 31
-    //   56: astore_1
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload_1
-    //   60: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	61	0	this	SimpleCache
-    //   0	61	1	paramString	String
-    //   6	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	56	finally
-    //   14	20	56	finally
-    //   24	31	56	finally
-    //   31	53	56	finally
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return;
+      }
+      paramString = getCachedSpans(paramString);
+      if (paramString == null) {
+        return;
+      }
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        removeSpan((CacheSpan)paramString.next());
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void removeListener(String paramString, Cache.Listener paramListener)
@@ -1011,45 +759,23 @@ public class SimpleCache
     finally {}
   }
   
-  /* Error */
   public CacheSpan startReadWrite(String paramString, long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: lload_2
-    //   4: invokestatic 325	com/tencent/oskplayer/cache/CacheSpan:createLookup	(Ljava/lang/String;J)Lcom/tencent/oskplayer/cache/CacheSpan;
-    //   7: astore_1
-    //   8: aload_0
-    //   9: aload_1
-    //   10: invokespecial 372	com/tencent/oskplayer/cache/SimpleCache:startReadWriteNonBlocking	(Lcom/tencent/oskplayer/cache/CacheSpan;)Lcom/tencent/oskplayer/cache/CacheSpan;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: ifnull +8 -> 25
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload 4
-    //   24: areturn
-    //   25: aload_0
-    //   26: invokevirtual 375	java/lang/Object:wait	()V
-    //   29: goto -21 -> 8
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	SimpleCache
-    //   0	37	1	paramString	String
-    //   0	37	2	paramLong	long
-    //   13	10	4	localCacheSpan	CacheSpan
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	32	finally
-    //   8	15	32	finally
-    //   25	29	32	finally
+    try
+    {
+      paramString = CacheSpan.createLookup(paramString, paramLong);
+      for (;;)
+      {
+        CacheSpan localCacheSpan = startReadWriteNonBlocking(paramString);
+        if (localCacheSpan != null) {
+          return localCacheSpan;
+        }
+        wait();
+      }
+      throw paramString;
+    }
+    finally {}
+    for (;;) {}
   }
   
   public CacheSpan startReadWriteNonBlocking(String paramString, long paramLong)
@@ -1068,7 +794,7 @@ public class SimpleCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.cache.SimpleCache
  * JD-Core Version:    0.7.0.1
  */

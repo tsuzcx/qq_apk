@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.wink.editor.music.lyric.widget.LyricViewDetail android:id="@id/mox" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="60.0dip" android:layout_marginRight="60.0dip" app:aelvLyricHilightColor="@color/41" app:aelvLyricHilightSize="@dimen/bs4" app:aelvLyricHilightThinColor="@color/41" app:aelvLyricLineHeight="@dimen/bs2" app:aelvLyricLineMargin="@dimen/bs3" app:aelvLyricLiteratim="true" app:aelvLyricScrollable="true" app:aelvLyricTextColor="@color/42" app:aelvLyricTextFakeBold="false" app:aelvLyricTextSize="@dimen/bs5" app:aelvLyricTextThinColor="@color/42" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/osu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/qmu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" />
+        <View android:background="#80d8d8d8" android:layout_width="0.0dip" android:layout_height="0.5dip" android:layout_marginLeft="6.0dip" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/black" android:id="@id/moy" android:background="@drawable/h7c" android:paddingLeft="8.0dip" android:paddingTop="3.0dip" android:paddingRight="8.0dip" android:paddingBottom="3.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="@string/18" />
+    </LinearLayout>
+</FrameLayout>

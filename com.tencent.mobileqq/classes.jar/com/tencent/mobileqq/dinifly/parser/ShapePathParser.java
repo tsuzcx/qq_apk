@@ -1,63 +1,49 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableShapeValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapePath;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class ShapePathParser
 {
+  static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "ind", "ks", "hd" });
+  
   static ShapePath parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
+    int i = 0;
+    String str = null;
     AnimatableShapeValue localAnimatableShapeValue = null;
     boolean bool = false;
-    int j = 0;
-    String str1 = null;
-    label11:
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int j = paramJsonReader.selectName(NAMES);
+      if (j != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label11;
-          if (str2.equals("nm"))
+          if (j != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("ind"))
-            {
-              i = 1;
-              continue;
-              if (str2.equals("ks"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("hd")) {
-                  i = 3;
-                }
-              }
+            if (j != 3) {
+              paramJsonReader.skipValue();
+            } else {
+              bool = paramJsonReader.nextBoolean();
             }
           }
-          break;
+          else {
+            localAnimatableShapeValue = AnimatableValueParser.parseShapeData(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          i = paramJsonReader.nextInt();
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      j = paramJsonReader.nextInt();
-      continue;
-      localAnimatableShapeValue = AnimatableValueParser.parseShapeData(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        str = paramJsonReader.nextString();
+      }
     }
-    return new ShapePath(str1, j, localAnimatableShapeValue, bool);
+    return new ShapePath(str, i, localAnimatableShapeValue, bool);
   }
 }
 

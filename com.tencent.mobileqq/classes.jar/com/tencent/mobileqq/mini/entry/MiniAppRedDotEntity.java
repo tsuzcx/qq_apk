@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MiniAppRedDotEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "MiniAppRedDotEntity";
-  @awhs
+  @unique
   public String appId;
   public int publicAccountRedDotNum;
   public int wnsPushRedDotNum;
@@ -24,13 +24,18 @@ public class MiniAppRedDotEntity
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId:").append(this.appId).append(", publicAccountRedDotNum:").append(this.publicAccountRedDotNum).append(", wnsPushRedDotNum:").append(this.wnsPushRedDotNum);
+    localStringBuilder.append("appId:");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", publicAccountRedDotNum:");
+    localStringBuilder.append(this.publicAccountRedDotNum);
+    localStringBuilder.append(", wnsPushRedDotNum:");
+    localStringBuilder.append(this.wnsPushRedDotNum);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity
  * JD-Core Version:    0.7.0.1
  */

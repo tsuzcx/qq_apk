@@ -24,13 +24,7 @@ public class MonitorSocketImplFactory
   
   public static boolean isNetworkTypeMobile(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 0) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5);
   }
   
   public static boolean isServerSocket(String paramString)
@@ -54,17 +48,25 @@ public class MonitorSocketImplFactory
     {
       this.context = paramContext;
       paramContext = new Socket();
-      Field localField = Socket.class.getDeclaredField("impl");
-      localField.setAccessible(true);
-      this.socketImpl = ((SocketImpl)localField.get(paramContext));
+      localObject = Socket.class.getDeclaredField("impl");
+      ((Field)localObject).setAccessible(true);
+      this.socketImpl = ((SocketImpl)((Field)localObject).get(paramContext));
       this.socketClass = this.socketImpl.getClass();
-      QLog.i("MSF.D.MonitorSocket", 1, "Socket imple class: " + this.socketClass.getName());
+      paramContext = new StringBuilder();
+      paramContext.append("Socket imple class: ");
+      paramContext.append(this.socketClass.getName());
+      QLog.i("MSF.D.MonitorSocket", 1, paramContext.toString());
       return true;
     }
     catch (Exception paramContext)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, "get SocketImpl failed " + paramContext.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get SocketImpl failed ");
+        ((StringBuilder)localObject).append(paramContext.getMessage());
+        QLog.d("MSF.D.MonitorSocket", 2, ((StringBuilder)localObject).toString());
       }
     }
     return false;
@@ -72,7 +74,7 @@ public class MonitorSocketImplFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.MonitorSocketImplFactory
  * JD-Core Version:    0.7.0.1
  */

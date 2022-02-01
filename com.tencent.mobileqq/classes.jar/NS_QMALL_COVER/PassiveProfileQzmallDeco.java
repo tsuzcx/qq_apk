@@ -8,7 +8,7 @@ public final class PassiveProfileQzmallDeco
   extends JceStruct
 {
   static ReturnToPraise cache_stReturnToPraise = new ReturnToPraise();
-  public ReturnToPraise stReturnToPraise;
+  public ReturnToPraise stReturnToPraise = null;
   
   public PassiveProfileQzmallDeco() {}
   
@@ -24,14 +24,15 @@ public final class PassiveProfileQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stReturnToPraise != null) {
-      paramJceOutputStream.write(this.stReturnToPraise, 0);
+    ReturnToPraise localReturnToPraise = this.stReturnToPraise;
+    if (localReturnToPraise != null) {
+      paramJceOutputStream.write(localReturnToPraise, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.PassiveProfileQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

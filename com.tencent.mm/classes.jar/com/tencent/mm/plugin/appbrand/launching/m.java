@@ -1,154 +1,50 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.aw;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker.a;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
 
 public final class m
-  extends j<k>
 {
-  public static final String[] fkl;
-  
-  static
+  public static WxaPkgWrappingInfo acY(String paramString)
   {
-    AppMethodBeat.i(102104);
-    fkl = new String[] { j.getCreateSQLs(k.gUb, "DevPkgLaunchExtInfo") };
-    AppMethodBeat.o(102104);
+    AppMethodBeat.i(370016);
+    paramString = cQ(paramString, 1);
+    AppMethodBeat.o(370016);
+    return paramString;
   }
   
-  public m(e parame)
+  public static WxaPkgWrappingInfo cQ(String paramString, int paramInt)
   {
-    super(parame, k.gUb, "DevPkgLaunchExtInfo", k.INDEX_CREATE);
-  }
-  
-  public final String bm(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(102103);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(102103);
-      return "";
-    }
-    k localk = new k();
-    localk.field_appId = paramString;
-    localk.field_versionType = paramInt;
-    if (super.get(localk, k.gUa))
-    {
-      paramString = localk.field_extJson;
-      AppMethodBeat.o(102103);
-      return paramString;
-    }
-    AppMethodBeat.o(102103);
-    return "";
-  }
-  
-  public final boolean n(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(102102);
-    boolean bool;
-    if (bo.isNullOrNil(paramString1))
-    {
-      bool = false;
-      ab.i("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", "appId:%s,versionType:%s,extInfo:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-      if ((bool) && (TextUtils.isEmpty(paramString2))) {
-        break label357;
-      }
-    }
+    AppMethodBeat.i(47158);
+    int[] arrayOfInt = n.cfm().Vz(paramString);
+    if ((arrayOfInt != null) && (arrayOfInt.length > paramInt)) {}
     for (;;)
     {
-      try
+      int i = paramInt + 1;
+      Pair localPair = WxaPkgIntegrityChecker.H(paramString, 0, arrayOfInt[paramInt]);
+      if ((localPair.first == WxaPkgIntegrityChecker.a.qGY) && (localPair.second != null))
       {
-        paramString2 = new JSONObject(paramString2);
-        if (paramString2 == null) {}
+        paramString = (WxaPkgWrappingInfo)localPair.second;
+        AppMethodBeat.o(47158);
+        return paramString;
       }
-      catch (Exception paramString2)
+      if (i >= arrayOfInt.length)
       {
-        try
-        {
-          localObject = paramString2.optString("module_list");
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            aw.awe();
-            aw.g(paramString1, paramInt, (String)localObject);
-          }
-        }
-        catch (Exception paramString2)
-        {
-          try
-          {
-            localObject = paramString2.optString("wxacode_lib_info_list");
-            if (!TextUtils.isEmpty((CharSequence)localObject))
-            {
-              aw.awe();
-              aw.yB((String)localObject);
-            }
-          }
-          catch (Exception paramString2)
-          {
-            try
-            {
-              paramString2 = paramString2.optString("without_lib_md5");
-            }
-            catch (Exception paramString2)
-            {
-              try
-              {
-                if (!bo.isNullOrNil(paramString2))
-                {
-                  aw.awe();
-                  aw.b(paramString1, "__WITHOUT_CODELIB__", paramInt, paramString2);
-                }
-                AppMethodBeat.o(102102);
-                return bool;
-                Object localObject = new k();
-                ((k)localObject).field_appId = paramString1;
-                ((k)localObject).field_versionType = paramInt;
-                if (super.get((c)localObject, k.gUa))
-                {
-                  ((k)localObject).field_extJson = bo.bf(paramString2, "{}");
-                  bool = super.update((c)localObject, new String[0]);
-                  break;
-                }
-                ((k)localObject).field_extJson = bo.bf(paramString2, "{}");
-                bool = super.insert((c)localObject);
-                break;
-                paramString2 = paramString2;
-                ab.e("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", "setExtInfo parse failed, appId[%s], type[%d], e[%s]", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-                paramString2 = null;
-                continue;
-                localException1 = localException1;
-                ab.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", localException1, "extract module_list with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
-                continue;
-                localException2 = localException2;
-                ab.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", localException2, "extract wxacode_lib_info_list with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
-                continue;
-                paramString2 = paramString2;
-                paramString2 = null;
-                continue;
-              }
-              catch (Exception paramString2)
-              {
-                ab.printErrStackTrace("MicroMsg.AppBrand.DevPkgLaunchExtInfoStorage", paramString2, "extract without_lib_md5 with appId[%s], type[%d]", new Object[] { paramString1, Integer.valueOf(paramInt) });
-                continue;
-              }
-            }
-          }
-        }
+        AppMethodBeat.o(47158);
+        return null;
       }
-      label357:
-      paramString2 = null;
+      paramInt = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.m
  * JD-Core Version:    0.7.0.1
  */

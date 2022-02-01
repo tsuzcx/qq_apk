@@ -7,39 +7,21 @@ import com.qq.taf.jce.JceStruct;
 public final class IdiomRedPackMatchRsp
   extends JceStruct
 {
-  static int cache_subchannel = 0;
+  static int cache_subchannel;
   public String billno = "";
-  public int fromType;
-  public long grabUin;
+  public int fromType = 0;
+  public long grabUin = 0L;
   public String groupid = "";
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
-  public int idiomSeq;
-  public int isFinished;
-  public long makeUin;
-  public int status;
+  public String hbPoemRule = "";
+  public int idiomSeq = 0;
+  public int isFinished = 0;
+  public long makeUin = 0L;
+  public int status = 0;
   public String strErr = "";
-  public int subchannel;
-  public int timeInterval;
-  
-  public IdiomRedPackMatchRsp() {}
-  
-  public IdiomRedPackMatchRsp(long paramLong1, String paramString1, long paramLong2, int paramInt1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4, String paramString4, int paramInt5, String paramString5, int paramInt6)
-  {
-    this.grabUin = paramLong1;
-    this.billno = paramString1;
-    this.makeUin = paramLong2;
-    this.status = paramInt1;
-    this.timeInterval = paramInt2;
-    this.strErr = paramString2;
-    this.hbIdiom = paramString3;
-    this.idiomSeq = paramInt3;
-    this.fromType = paramInt4;
-    this.groupid = paramString4;
-    this.isFinished = paramInt5;
-    this.hbIdiomLastPY = paramString5;
-    this.subchannel = paramInt6;
-  }
+  public int subchannel = 0;
+  public int timeInterval = 0;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -56,38 +38,48 @@ public final class IdiomRedPackMatchRsp
     this.isFinished = paramJceInputStream.read(this.isFinished, 10, false);
     this.hbIdiomLastPY = paramJceInputStream.readString(11, false);
     this.subchannel = paramJceInputStream.read(this.subchannel, 12, false);
+    this.hbPoemRule = paramJceInputStream.readString(13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    String str = this.billno;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.makeUin, 2);
     paramJceOutputStream.write(this.status, 3);
     paramJceOutputStream.write(this.timeInterval, 4);
-    if (this.strErr != null) {
-      paramJceOutputStream.write(this.strErr, 5);
+    str = this.strErr;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.hbIdiom != null) {
-      paramJceOutputStream.write(this.hbIdiom, 6);
+    str = this.hbIdiom;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.idiomSeq, 7);
     paramJceOutputStream.write(this.fromType, 8);
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 9);
+    str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.isFinished, 10);
-    if (this.hbIdiomLastPY != null) {
-      paramJceOutputStream.write(this.hbIdiomLastPY, 11);
+    str = this.hbIdiomLastPY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.subchannel, 12);
+    str = this.hbPoemRule;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.IdiomRedPackMatchRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -15,6 +15,11 @@ class TPDownloadProxyClient$1
     return this.val$playListener.getAdvRemainTime();
   }
   
+  public String getContentType(int paramInt, String paramString)
+  {
+    return this.val$playListener.getContentType(paramInt, paramString);
+  }
+  
   public int getCurrentPlayClipNo()
   {
     return this.val$playListener.getCurrentPlayClipNo();
@@ -23,6 +28,16 @@ class TPDownloadProxyClient$1
   public long getCurrentPosition()
   {
     return this.val$playListener.getCurrentPosition();
+  }
+  
+  public String getDataFilePath(int paramInt, String paramString)
+  {
+    return this.val$playListener.getDataFilePath(paramInt, paramString);
+  }
+  
+  public long getDataTotalSize(int paramInt, String paramString)
+  {
+    return this.val$playListener.getDataTotalSize(paramInt, paramString);
   }
   
   public String getPlayInfo(String paramString)
@@ -85,6 +100,11 @@ class TPDownloadProxyClient$1
     this.val$playListener.onDownloadStatusUpdate(paramInt);
   }
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    this.val$playListener.onPcdnDownloadFailed(paramString);
+  }
+  
   public int onPlayCallback(int paramInt, List paramList)
   {
     Integer localInteger = Integer.valueOf(0);
@@ -92,36 +112,53 @@ class TPDownloadProxyClient$1
     if (paramList != null)
     {
       localObject = localInteger;
-      if (!paramList.isEmpty())
-      {
-        if (paramList.size() != 1) {
-          break label67;
+      if (!paramList.isEmpty()) {
+        if (paramList.size() == 1)
+        {
+          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), null, null, null);
         }
-        localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), null, null, null);
+        else if (paramList.size() == 2)
+        {
+          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), null, null);
+        }
+        else
+        {
+          localObject = localInteger;
+          if (paramList.size() == 3) {
+            localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), paramList.get(2), null);
+          }
+        }
       }
     }
-    while (localObject.getClass() != Integer.class)
-    {
+    if (localObject.getClass() != Integer.class) {
       return -1;
-      label67:
-      if (paramList.size() == 2)
-      {
-        localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), null, null);
-      }
-      else
-      {
-        localObject = localInteger;
-        if (paramList.size() == 3) {
-          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), paramList.get(2), null);
-        }
-      }
     }
     return ((Integer)localObject).intValue();
+  }
+  
+  public void onQuicDownloadStatusUpdate(String paramString)
+  {
+    this.val$playListener.onQuicDownloadStatusUpdate(paramString);
+  }
+  
+  public int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return this.val$playListener.onReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  {
+    return this.val$playListener.onStartReadData(paramInt, paramString, paramLong1, paramLong2);
+  }
+  
+  public int onStopReadData(int paramInt1, String paramString, int paramInt2)
+  {
+    return this.val$playListener.onStopReadData(paramInt1, paramString, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,10 @@ public class a
     GetAppSimpleDetailRequest localGetAppSimpleDetailRequest = new GetAppSimpleDetailRequest();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      ab.c("GetAppSimpleDetailHttpRequest", "appDetailParams size = " + paramArrayList.size());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("appDetailParams size = ");
+      localStringBuilder.append(paramArrayList.size());
+      ab.c("GetAppSimpleDetailHttpRequest", localStringBuilder.toString());
       localGetAppSimpleDetailRequest.appReqList = paramArrayList;
       super.sendRequest(ProtocolPackage.buildPostData(ProtocolPackage.buildRequest(localGetAppSimpleDetailRequest)));
       return true;
@@ -35,63 +38,74 @@ public class a
     return false;
   }
   
-  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    if (paramArrayOfByte2 == null) {
-      ab.e("GetAppSimpleDetailHttpRequest", "response is null");
-    }
-    label189:
-    label208:
-    label247:
-    do
+    if (paramArrayOfByte2 == null)
     {
+      ab.e("GetAppSimpleDetailHttpRequest", "response is null");
       return;
-      StringBuilder localStringBuilder = new StringBuilder().append("request length = ");
-      if (paramArrayOfByte1 == null) {}
-      for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte1.length))
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("request length = ");
+    Object localObject;
+    if (paramArrayOfByte1 == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(paramArrayOfByte1.length);
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(",response length = ");
+    localStringBuilder.append(paramArrayOfByte2.length);
+    localStringBuilder.append(",errorCode = ");
+    localStringBuilder.append(paramInt);
+    ab.c("GetAppSimpleDetailHttpRequest", localStringBuilder.toString());
+    if ((this.a != null) && (paramInt == 0))
+    {
+      if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 4))
       {
-        ab.c("GetAppSimpleDetailHttpRequest", localObject + ",response length = " + paramArrayOfByte2.length + ",errorCode = " + paramInt);
-        if ((this.a == null) || (paramInt != 0)) {
-          break label247;
-        }
-        if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.length <= 4)) {
-          break;
-        }
         paramArrayOfByte2 = ProtocolPackage.unpackPackage(paramArrayOfByte2);
         paramArrayOfByte1 = ProtocolPackage.bytes2JceObj(((Request)ProtocolPackage.bytes2JceObj(paramArrayOfByte1, Request.class)).body, GetAppSimpleDetailRequest.class);
-        if ((paramArrayOfByte2 == null) || (paramArrayOfByte2.body == null)) {
-          break;
+        if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.body != null))
+        {
+          paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte1, paramArrayOfByte2.body);
+          if ((paramArrayOfByte1 instanceof GetAppSimpleDetailResponse))
+          {
+            paramArrayOfByte1 = (GetAppSimpleDetailResponse)paramArrayOfByte1;
+            if (paramArrayOfByte1.ret == 0)
+            {
+              paramArrayOfByte1 = paramArrayOfByte1.appSimpleDetailList;
+              if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.size() > 0))
+              {
+                this.a.onExchangedURLSucceed(paramArrayOfByte1, true);
+                return;
+              }
+              ab.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
+              this.a.onExchangedURLSucceed(null, false);
+              return;
+            }
+            paramArrayOfByte2 = new StringBuilder();
+            paramArrayOfByte2.append(" 后台返回的ret错误，错误值为：");
+            paramArrayOfByte2.append(paramArrayOfByte1.ret);
+            ab.d("GetAppSimpleDetailHttpRequest", paramArrayOfByte2.toString());
+            this.a.onExchangedURLSucceed(null, false);
+          }
         }
-        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte1, paramArrayOfByte2.body);
-        if (!(paramArrayOfByte1 instanceof GetAppSimpleDetailResponse)) {
-          break;
-        }
-        paramArrayOfByte1 = (GetAppSimpleDetailResponse)paramArrayOfByte1;
-        if (paramArrayOfByte1.ret != 0) {
-          break label208;
-        }
-        paramArrayOfByte1 = paramArrayOfByte1.appSimpleDetailList;
-        if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.size() <= 0)) {
-          break label189;
-        }
-        this.a.onExchangedURLSucceed(paramArrayOfByte1, true);
-        return;
       }
-      ab.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
-      this.a.onExchangedURLSucceed(null, false);
-      return;
-      ab.d("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramArrayOfByte1.ret);
-      this.a.onExchangedURLSucceed(null, false);
-      return;
+    }
+    else
+    {
       ab.d("GetAppSimpleDetailHttpRequest", " error happened!!");
-    } while (this.a == null);
-    ab.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
-    this.a.onExchangedURLSucceed(null, false);
+      if (this.a != null)
+      {
+        ab.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
+        this.a.onExchangedURLSucceed(null, false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.a.a
  * JD-Core Version:    0.7.0.1
  */

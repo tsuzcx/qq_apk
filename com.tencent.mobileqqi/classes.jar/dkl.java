@@ -1,43 +1,23 @@
 import android.media.MediaPlayer;
-import android.net.Uri;
+import android.media.MediaPlayer.OnInfoListener;
 import android.os.Handler;
 import com.tencent.mobileqq.activity.SplashActivityCore;
 import com.tencent.qphone.base.util.QLog;
 
-public class dkl
-  implements Runnable
+class dkl
+  implements MediaPlayer.OnInfoListener
 {
-  public dkl(SplashActivityCore paramSplashActivityCore, Uri paramUri) {}
+  dkl(dkk paramdkk) {}
   
-  public void run()
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
+    if ((paramInt1 == 700) || (paramInt1 == 1)) {
+      this.a.a.handler.sendEmptyMessage(5);
+    }
     if (QLog.isDevelopLevel()) {
-      QLog.d("Splash.testCanPlayMp4", 4, "thread start....");
+      QLog.d("Splash.testCanPlayMp4", 1, "onInfo...what = ." + paramInt1 + " extra = " + paramInt2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore.mTestMp == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore.mTestMp = new MediaPlayer();
-    }
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore.mTestMp;
-    try
-    {
-      localMediaPlayer.setOnInfoListener(new dkm(this));
-      localMediaPlayer.setOnCompletionListener(new dkn(this));
-      localMediaPlayer.setOnPreparedListener(new dko(this));
-      localMediaPlayer.setOnErrorListener(new dkp(this));
-      localMediaPlayer.setVolume(0.0F, 0.0F);
-      localMediaPlayer.setDataSource(SplashActivityCore.access$000(this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore), this.jdField_a_of_type_AndroidNetUri);
-      localMediaPlayer.prepare();
-      localMediaPlayer.start();
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Splash.testCanPlayMp4", 4, "Exception " + localException.getMessage());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore.mTestMp = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySplashActivityCore.handler.sendEmptyMessage(5);
-    }
+    return false;
   }
 }
 

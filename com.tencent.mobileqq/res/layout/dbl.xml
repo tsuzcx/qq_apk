@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/gp3" android:layout_width="fill_parent" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center_vertical" android:id="@id/pqd" android:layout_width="34.0dip" android:layout_height="34.0dip" />
+    <TextView android:textSize="13.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/pqc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="摇动手机" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" />
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

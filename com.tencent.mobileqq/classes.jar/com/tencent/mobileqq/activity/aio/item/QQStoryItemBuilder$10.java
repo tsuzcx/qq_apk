@@ -1,37 +1,40 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import afyu;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.qphone.base.util.QLog;
 
 class QQStoryItemBuilder$10
   implements Runnable
 {
-  QQStoryItemBuilder$10(QQStoryItemBuilder paramQQStoryItemBuilder, afyu paramafyu, long paramLong) {}
+  QQStoryItemBuilder$10(QQStoryItemBuilder paramQQStoryItemBuilder, QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.share", 2, "showPlayIcon");
     }
-    if (this.jdField_a_of_type_Afyu == null) {
+    Object localObject = this.a;
+    if (localObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("Q.qqstory.share", 2, "showPlayIcon: holder == null");
       }
-    }
-    Long localLong;
-    do
-    {
       return;
-      localLong = (Long)this.jdField_a_of_type_Afyu.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$StoryChatVideoView.getTag();
-    } while ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Afyu.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_Afyu.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
+    }
+    localObject = (Long)((QQStoryItemBuilder.QQStoryMsgHolder)localObject).c.getTag();
+    if (localObject != null)
+    {
+      if (((Long)localObject).longValue() != this.b) {
+        return;
+      }
+      this.a.x.setDrawStatus(2);
+      this.a.x.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.10
  * JD-Core Version:    0.7.0.1
  */

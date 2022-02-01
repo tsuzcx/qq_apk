@@ -11,19 +11,19 @@ final class ShortVideoUtils$1
     try
     {
       SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
-      ShortVideoUtils.a(true);
+      ShortVideoUtils.access$002(true);
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
       localUnsatisfiedLinkError.printStackTrace();
-      ShortVideoUtils.a(false);
+      ShortVideoUtils.access$002(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:focusable="true" android:focusableInTouchMode="true" style="@style/a0o"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/huy" wallet:titleText="@string/l5k" wallet:titleWidth="@dimen/ax8" style="@style/hj" />
+    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/hvc" wallet:layoutRes="@layout/cgk" wallet:titleWidth="@dimen/ax8" style="@style/a0l" />
+</LinearLayout>

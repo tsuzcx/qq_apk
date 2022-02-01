@@ -25,33 +25,27 @@ public class b
   
   private void h()
   {
-    Object localObject;
     if (this.a.a != null)
     {
-      localObject = StatServiceImpl.getCommonKeyValueForKVEvent(this.a.a);
+      Object localObject = StatServiceImpl.getCommonKeyValueForKVEvent(this.a.a);
       if ((localObject != null) && (((Properties)localObject).size() > 0))
       {
         if ((this.a.c != null) && (this.a.c.length() != 0)) {
-          break label71;
+          localObject = ((Properties)localObject).entrySet().iterator();
         }
-        this.a.c = new JSONObject((Map)localObject);
-      }
-    }
-    for (;;)
-    {
-      return;
-      label71:
-      localObject = ((Properties)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        try
+        while (((Iterator)localObject).hasNext())
         {
-          this.a.c.put(localEntry.getKey().toString(), localEntry.getValue());
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+          try
+          {
+            this.a.c.put(localEntry.getKey().toString(), localEntry.getValue());
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+          continue;
+          this.a.c = new JSONObject((Map)localObject);
         }
       }
     }
@@ -70,19 +64,25 @@ public class b
   public boolean a(JSONObject paramJSONObject)
   {
     paramJSONObject.put("ei", this.a.a);
-    if (this.p > 0L) {
-      paramJSONObject.put("du", this.p);
+    long l = this.p;
+    if (l > 0L) {
+      paramJSONObject.put("du", l);
     }
+    Object localObject;
+    String str;
     if (this.a.b == null)
     {
       h();
-      paramJSONObject.put("kv", this.a.c);
+      localObject = this.a.c;
+      str = "kv";
     }
-    for (;;)
+    else
     {
-      return true;
-      paramJSONObject.put("ar", this.a.b);
+      localObject = this.a.b;
+      str = "ar";
     }
+    paramJSONObject.put(str, localObject);
+    return true;
   }
   
   public c b()
@@ -92,7 +92,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.event.b
  * JD-Core Version:    0.7.0.1
  */

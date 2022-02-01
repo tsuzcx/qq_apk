@@ -24,13 +24,13 @@ final class AtomParsers$ChunkIterator
     this.length = paramParsableByteArray2.readUnsignedIntToInt();
     paramParsableByteArray1.setPosition(12);
     this.remainingSamplesPerChunkChanges = paramParsableByteArray1.readUnsignedIntToInt();
-    if (paramParsableByteArray1.readInt() == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      Assertions.checkState(paramBoolean, "first_chunk must be 1");
-      this.index = -1;
-      return;
+    int i = paramParsableByteArray1.readInt();
+    paramBoolean = true;
+    if (i != 1) {
+      paramBoolean = false;
     }
+    Assertions.checkState(paramBoolean, "first_chunk must be 1");
+    this.index = -1;
   }
   
   public boolean moveNext()
@@ -41,34 +41,31 @@ final class AtomParsers$ChunkIterator
       return false;
     }
     long l;
-    if (this.chunkOffsetsAreLongs)
-    {
+    if (this.chunkOffsetsAreLongs) {
       l = this.chunkOffsets.readUnsignedLongToLong();
-      this.offset = l;
-      if (this.index == this.nextSamplesPerChunkChangeIndex)
-      {
-        this.numSamples = this.stsc.readUnsignedIntToInt();
-        this.stsc.skipBytes(4);
-        i = this.remainingSamplesPerChunkChanges - 1;
-        this.remainingSamplesPerChunkChanges = i;
-        if (i <= 0) {
-          break label116;
-        }
-      }
-    }
-    label116:
-    for (i = this.stsc.readUnsignedIntToInt() - 1;; i = -1)
-    {
-      this.nextSamplesPerChunkChangeIndex = i;
-      return true;
+    } else {
       l = this.chunkOffsets.readUnsignedInt();
-      break;
     }
+    this.offset = l;
+    if (this.index == this.nextSamplesPerChunkChangeIndex)
+    {
+      this.numSamples = this.stsc.readUnsignedIntToInt();
+      this.stsc.skipBytes(4);
+      i = this.remainingSamplesPerChunkChanges - 1;
+      this.remainingSamplesPerChunkChanges = i;
+      if (i > 0) {
+        i = this.stsc.readUnsignedIntToInt() - 1;
+      } else {
+        i = -1;
+      }
+      this.nextSamplesPerChunkChangeIndex = i;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.AtomParsers.ChunkIterator
  * JD-Core Version:    0.7.0.1
  */

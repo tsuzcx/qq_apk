@@ -9,236 +9,244 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import bdaq;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
-import nmk;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class DragFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
   public int a;
-  private View jdField_a_of_type_AndroidViewView;
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
-  private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private nmk jdField_a_of_type_Nmk;
-  protected boolean a;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
   protected boolean b;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int = 0;
+  protected boolean c = true;
+  private View d;
+  private float e = 0.0F;
+  private float f = 0.0F;
+  private float g = 0.0F;
+  private float h = 0.0F;
+  private int i = 0;
+  private int j = 0;
+  private DragFrameLayout.OnDraggingListener k;
+  private int l = 0;
+  private TranslateAnimation m;
+  private ScaleAnimation n;
+  private AnimationSet o;
   
   public DragFrameLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = true;
   }
   
   public DragFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Boolean = true;
   }
   
   private void a(float paramFloat, int paramInt1, int paramInt2)
   {
-    float f = paramFloat;
+    float f1 = paramFloat;
     if (paramFloat > 1.0F) {
-      f = 1.0F;
+      f1 = 1.0F;
     }
-    ViewHelper.setPivotX(this.jdField_a_of_type_AndroidViewView, 0.0F);
-    ViewHelper.setPivotY(this.jdField_a_of_type_AndroidViewView, 0.0F);
-    ViewHelper.setScaleX(this.jdField_a_of_type_AndroidViewView, f);
-    ViewHelper.setScaleY(this.jdField_a_of_type_AndroidViewView, f);
-    ViewHelper.setX(this.jdField_a_of_type_AndroidViewView, paramInt1);
-    ViewHelper.setY(this.jdField_a_of_type_AndroidViewView, paramInt2);
-    if (this.jdField_a_of_type_Nmk != null) {
-      this.jdField_a_of_type_Nmk.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
+    ViewHelper.setPivotX(this.d, 0.0F);
+    ViewHelper.setPivotY(this.d, 0.0F);
+    ViewHelper.setScaleX(this.d, f1);
+    ViewHelper.setScaleY(this.d, f1);
+    ViewHelper.setX(this.d, paramInt1);
+    ViewHelper.setY(this.d, paramInt2);
+    DragFrameLayout.OnDraggingListener localOnDraggingListener = this.k;
+    if (localOnDraggingListener != null)
+    {
+      int i1 = this.i;
+      int i2 = this.j;
+      localOnDraggingListener.a(paramInt1, paramInt2, i1, i2, (int)(i1 * f1), (int)(i2 * f1));
     }
   }
   
   public void a()
   {
-    float f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
-    float f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
+    float f1 = ViewHelper.getScaleX(this.d);
+    float f2 = ViewHelper.getScaleY(this.d);
+    Object localObject = this.m;
+    if (localObject != null) {
+      ((TranslateAnimation)localObject).cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0, ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), 0, 0.0F, 0, ViewHelper.getY(this.jdField_a_of_type_AndroidViewView), 0, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
+    this.m = new TranslateAnimation(0, ViewHelper.getX(this.d), 0, 0.0F, 0, ViewHelper.getY(this.d), 0, 0.0F);
+    this.m.setDuration(200L);
+    this.m.setFillAfter(true);
+    localObject = this.n;
+    if (localObject != null) {
+      ((ScaleAnimation)localObject).cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(f1, 1.0F, f2, 1.0F, 0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(200L);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setFillAfter(true);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null) {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
+    this.n = new ScaleAnimation(f1, 1.0F, f2, 1.0F, 0.0F, 0.0F);
+    this.n.setDuration(200L);
+    this.n.setFillAfter(true);
+    localObject = this.o;
+    if (localObject != null) {
+      ((AnimationSet)localObject).cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-    this.jdField_a_of_type_Boolean = false;
+    this.o = new AnimationSet(true);
+    this.o.addAnimation(this.n);
+    this.o.addAnimation(this.m);
+    this.d.startAnimation(this.o);
+    this.b = false;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Animation.AnimationListener paramAnimationListener)
   {
-    float f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
-    float f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
+    float f1 = ViewHelper.getScaleX(this.d);
+    float f2 = ViewHelper.getScaleY(this.d);
+    TranslateAnimation localTranslateAnimation = this.m;
+    if (localTranslateAnimation != null) {
+      localTranslateAnimation.cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0, ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), 0, paramInt1, 0, ViewHelper.getY(this.jdField_a_of_type_AndroidViewView), 0, paramInt2);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(paramInt5);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(paramAnimationListener);
-    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
+    this.m = new TranslateAnimation(0, ViewHelper.getX(this.d), 0, paramInt1, 0, ViewHelper.getY(this.d), 0, paramInt2);
+    localTranslateAnimation = this.m;
+    long l1 = paramInt5;
+    localTranslateAnimation.setDuration(l1);
+    this.m.setFillAfter(true);
+    this.m.setAnimationListener(paramAnimationListener);
+    paramAnimationListener = this.n;
+    if (paramAnimationListener != null) {
+      paramAnimationListener.cancel();
     }
     float f3 = paramInt3 / super.getWidth();
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(f1, f3, f2, f3, 0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(paramInt5);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setFillAfter(true);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null) {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
+    this.n = new ScaleAnimation(f1, f3, f2, f3, 0.0F, 0.0F);
+    this.n.setDuration(l1);
+    this.n.setFillAfter(true);
+    paramAnimationListener = this.o;
+    if (paramAnimationListener != null) {
+      paramAnimationListener.cancel();
     }
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-    this.jdField_a_of_type_Boolean = true;
+    this.o = new AnimationSet(true);
+    this.o.addAnimation(this.n);
+    this.o.addAnimation(this.m);
+    this.o.setFillAfter(true);
+    this.d.startAnimation(this.o);
+    this.b = true;
   }
   
   public void b()
   {
-    AnimatorProxy.wrap(this.jdField_a_of_type_AndroidViewView).reset();
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null)
+    AnimatorProxy.wrap(this.d).reset();
+    this.d.clearAnimation();
+    Object localObject = this.m;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = null;
+      ((TranslateAnimation)localObject).cancel();
+      this.m = null;
     }
-    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null)
+    localObject = this.n;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = null;
+      ((ScaleAnimation)localObject).cancel();
+      this.n = null;
     }
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null)
+    localObject = this.o;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
+      ((AnimationSet)localObject).cancel();
+      this.o = null;
     }
-    super.removeView(this.jdField_a_of_type_AndroidViewView);
+    super.removeView(this.d);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return true;
     }
-    int i = paramMotionEvent.getAction();
-    this.jdField_c_of_type_Float = paramMotionEvent.getX();
-    this.jdField_d_of_type_Float = paramMotionEvent.getY();
-    if (i == 0)
+    int i1 = paramMotionEvent.getAction();
+    this.g = paramMotionEvent.getX();
+    this.h = paramMotionEvent.getY();
+    if (i1 == 0)
     {
-      this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-      this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-      if (this.jdField_b_of_type_Int == 0)
+      this.e = this.g;
+      this.f = this.h;
+      if (this.i == 0)
       {
-        this.jdField_b_of_type_Int = super.getWidth();
-        this.jdField_c_of_type_Int = super.getHeight();
+        this.i = super.getWidth();
+        this.j = super.getHeight();
       }
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.d.clearAnimation();
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    if (i == 2)
+    if (i1 == 2)
     {
-      float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
-      float f2 = Math.abs(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float);
-      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < bdaq.a(getContext(), 10.0F))) {
+      float f1 = Math.abs(this.g - this.e);
+      float f2 = Math.abs(this.h - this.f);
+      if ((this.l == 0) && (f1 + f2 < DisplayUtil.a(getContext(), 10.0F))) {
         return false;
       }
-      f1 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;
-      f2 = this.jdField_d_of_type_Float - this.jdField_b_of_type_Float;
-      if ((f2 < 0.0F) && (Math.abs(f2) > Math.abs(f1)) && (this.jdField_d_of_type_Int == 0))
+      f1 = this.g - this.e;
+      f2 = this.h - this.f;
+      if ((f2 < 0.0F) && (Math.abs(f2) > Math.abs(f1)) && (this.l == 0))
       {
-        this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-        this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+        this.e = this.g;
+        this.f = this.h;
         return false;
       }
-      if (Math.abs(f2) > 1.2D * Math.abs(f1))
+      double d1 = Math.abs(f2);
+      double d2 = Math.abs(f1);
+      Double.isNaN(d2);
+      if (d1 > d2 * 1.2D)
       {
-        if (this.jdField_d_of_type_Int == 0)
+        if (this.l == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nmk.a()))
+          if ((this.c) && (this.k.a()))
           {
-            this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-            this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
-            this.jdField_d_of_type_Int = 1;
+            this.e = this.g;
+            this.f = this.h;
+            f1 = this.e;
+            f1 = this.f;
+            this.l = 1;
             return true;
           }
-          this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-          this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+          this.e = this.g;
+          this.f = this.h;
           return false;
         }
       }
       else if (f1 < 0.0F)
       {
-        if (this.jdField_d_of_type_Int == 0)
+        if (this.l == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nmk.b()))
+          if ((this.c) && (this.k.b()))
           {
-            this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-            this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
-            this.jdField_d_of_type_Int = 2;
+            this.e = this.g;
+            this.f = this.h;
+            f1 = this.e;
+            f1 = this.f;
+            this.l = 2;
             return true;
           }
-          this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-          this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+          this.e = this.g;
+          this.f = this.h;
           return false;
         }
       }
       else if (f1 > 0.0F)
       {
-        if (this.jdField_d_of_type_Int == 0)
+        if (this.l == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Nmk.c()))
+          if ((this.c) && (this.k.c()))
           {
-            this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-            this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
-            this.jdField_d_of_type_Int = 4;
+            this.e = this.g;
+            this.f = this.h;
+            f1 = this.e;
+            f1 = this.f;
+            this.l = 4;
             return true;
           }
-          this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-          this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+          this.e = this.g;
+          this.f = this.h;
           return false;
         }
       }
       else
       {
-        this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-        this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-        return false;
+        this.e = this.g;
+        this.f = this.h;
       }
     }
     return false;
@@ -246,140 +254,178 @@ public class DragFrameLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return true;
     }
-    int i = paramMotionEvent.getAction();
-    this.jdField_c_of_type_Float = paramMotionEvent.getX();
-    this.jdField_d_of_type_Float = paramMotionEvent.getY();
-    if (i == 0)
+    int i1 = paramMotionEvent.getAction();
+    this.g = paramMotionEvent.getX();
+    this.h = paramMotionEvent.getY();
+    if (i1 == 0)
     {
-      this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-      this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
+      this.e = this.g;
+      this.f = this.h;
       return true;
     }
-    float f3;
-    float f5;
-    float f1;
-    float f4;
     float f2;
-    if (i == 2)
+    float f1;
+    if (i1 == 2)
     {
-      f3 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;
-      f5 = this.jdField_d_of_type_Float - this.jdField_b_of_type_Float;
-      if (this.jdField_d_of_type_Int == 1) {
+      float f3 = this.g - this.e;
+      float f5 = this.h - this.f;
+      i1 = this.l;
+      double d1;
+      double d2;
+      if (i1 == 1)
+      {
         if (f5 > 0.0F)
         {
-          f1 = (int)(this.jdField_c_of_type_Int - f5 * 1.1D);
-          f4 = this.jdField_b_of_type_Int * f1 / this.jdField_c_of_type_Int;
-          f2 = f1;
-          f1 = f4;
+          d1 = this.j;
+          d2 = f5;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          i1 = (int)(d1 - d2 * 1.1D);
         }
-      }
-    }
-    for (;;)
-    {
-      f4 = f1;
-      if (f1 <= this.jdField_a_of_type_Int)
-      {
-        f4 = this.jdField_a_of_type_Int;
-        f2 = this.jdField_c_of_type_Int * f4 / this.jdField_b_of_type_Int;
-      }
-      if (this.jdField_d_of_type_Int == 1)
-      {
-        f2 = f4 / this.jdField_b_of_type_Int;
-        i = (int)(f3 + this.jdField_a_of_type_Float - f4 * this.jdField_a_of_type_Float / this.jdField_b_of_type_Int);
-        if (f5 > 0.0F) {}
-        for (f1 = f5;; f1 = f5 / 2.0F)
+        else
         {
-          a(f2, i, (int)f1);
-          return true;
-          f1 = this.jdField_c_of_type_Int;
-          break;
-          if (this.jdField_d_of_type_Int == 2)
+          i1 = this.j;
+        }
+        f2 = i1;
+        f1 = this.i * f2 / this.j;
+      }
+      else
+      {
+        if (i1 == 2)
+        {
+          if (f3 < 0.0F)
           {
-            if (f3 < 0.0F) {}
-            for (f1 = (int)(this.jdField_b_of_type_Int + f3 * 1.1D);; f1 = this.jdField_b_of_type_Int)
-            {
-              f2 = this.jdField_c_of_type_Int * f1 / this.jdField_b_of_type_Int;
-              break;
-            }
+            d1 = this.i;
+            d2 = f3;
+            Double.isNaN(d2);
+            Double.isNaN(d1);
+            i1 = (int)(d1 + d2 * 1.1D);
           }
-          if (this.jdField_d_of_type_Int != 4) {
-            break label621;
-          }
-          if (f3 > 0.0F) {}
-          for (f1 = (int)(this.jdField_b_of_type_Int - f3 * 1.1D);; f1 = this.jdField_b_of_type_Int)
+          else
           {
-            f2 = this.jdField_c_of_type_Int * f1 / this.jdField_b_of_type_Int;
+            i1 = this.i;
+          }
+          f1 = i1;
+          f2 = this.j * f1;
+        }
+        for (i1 = this.i;; i1 = this.i)
+        {
+          f2 /= i1;
+          break label339;
+          if (i1 != 4) {
             break;
           }
+          if (f3 > 0.0F)
+          {
+            d1 = this.i;
+            d2 = f3;
+            Double.isNaN(d2);
+            Double.isNaN(d1);
+            i1 = (int)(d1 - d2 * 1.1D);
+          }
+          else
+          {
+            i1 = this.i;
+          }
+          f1 = i1;
+          f2 = this.j * f1;
         }
+        f1 = 0.0F;
+        f2 = 0.0F;
       }
-      if (this.jdField_d_of_type_Int == 2)
+      label339:
+      i1 = this.a;
+      float f4 = f1;
+      if (f1 <= i1)
       {
-        f1 = f4 / this.jdField_b_of_type_Int;
-        float f6 = this.jdField_b_of_type_Int;
-        if (f3 < 0.0F) {}
-        for (;;)
-        {
-          a(f1, (int)(f3 + (f6 - f4)), (int)(this.jdField_b_of_type_Float + f5 - f2 * this.jdField_b_of_type_Float / this.jdField_c_of_type_Int));
-          return true;
+        f4 = i1;
+        f2 = this.j * f4 / this.i;
+      }
+      i1 = this.l;
+      if (i1 == 1)
+      {
+        i1 = this.i;
+        f2 = f4 / i1;
+        f1 = this.e;
+        i1 = (int)(f3 + f1 - f4 * f1 / i1);
+        if (f5 > 0.0F) {
+          f1 = f5;
+        } else {
+          f1 = f5 / 2.0F;
+        }
+        a(f2, i1, (int)f1);
+        return true;
+      }
+      if (i1 == 2)
+      {
+        i1 = this.i;
+        f1 = f4 / i1;
+        float f6 = i1;
+        if (f3 >= 0.0F) {
           f3 /= 2.0F;
         }
-      }
-      if (this.jdField_d_of_type_Int != 4) {
-        break;
-      }
-      f1 = f4 / this.jdField_b_of_type_Int;
-      if (f3 > 0.0F) {}
-      for (;;)
-      {
-        a(f1, (int)f3, (int)(f5 + this.jdField_b_of_type_Float - f2 * this.jdField_b_of_type_Float / this.jdField_c_of_type_Int));
+        i1 = (int)(f6 - f4 + f3);
+        f3 = this.f;
+        a(f1, i1, (int)(f5 + f3 - f2 * f3 / this.j));
         return true;
-        f3 /= 2.0F;
       }
-      if ((i != 1) && (i != 3)) {
-        break;
-      }
-      if (this.jdField_d_of_type_Int != 0)
+      if (i1 == 4)
       {
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Nmk != null)
+        f1 = f4 / this.i;
+        if (f3 <= 0.0F) {
+          f3 /= 2.0F;
+        }
+        i1 = (int)f3;
+        f3 = this.f;
+        a(f1, i1, (int)(f5 + f3 - f2 * f3 / this.j));
+      }
+      return true;
+    }
+    if ((i1 == 1) || (i1 == 3))
+    {
+      if (this.l != 0)
+      {
+        this.b = true;
+        if (this.k != null)
         {
-          f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
-          f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
-          if ((f1 > 0.0F) && (f2 > 0.0F)) {
-            this.jdField_a_of_type_Nmk.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
+          f1 = ViewHelper.getScaleX(this.d);
+          f2 = ViewHelper.getScaleY(this.d);
+          if ((f1 > 0.0F) && (f2 > 0.0F))
+          {
+            paramMotionEvent = this.k;
+            View localView = this.d;
+            i1 = this.i;
+            int i2 = this.j;
+            paramMotionEvent.a(localView, i1, i2, (int)(i1 * f1), (int)(i2 * f2), (int)ViewHelper.getX(localView), (int)ViewHelper.getY(this.d));
           }
         }
       }
-      this.jdField_d_of_type_Int = 0;
-      return true;
-      label621:
-      f1 = 0.0F;
-      f2 = 0.0F;
+      this.l = 0;
     }
+    return true;
   }
   
   public void setDraggableView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.d = paramView;
   }
   
   public void setEnabled(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public void setOnDraggingListener(nmk paramnmk)
+  public void setOnDraggingListener(DragFrameLayout.OnDraggingListener paramOnDraggingListener)
   {
-    this.jdField_a_of_type_Nmk = paramnmk;
+    this.k = paramOnDraggingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

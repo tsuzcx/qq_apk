@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/d31" />
+    <ViewStub android:id="@id/pfg" android:layout="@layout/d30" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/ndv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/pfb" android:layout="@layout/d2z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:id="@id/ndi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ndq" android:paddingTop="109.0dip" android:layout_width="fill_parent" android:layout_height="239.0dip" />
+    <FrameLayout android:background="@drawable/fo3" android:layout_width="fill_parent" android:layout_height="160.0dip" />
+    <FrameLayout android:layout_gravity="bottom" android:background="@drawable/fo8" android:layout_width="fill_parent" android:layout_height="240.0dip" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="bottom|center|left" android:layout_width="260.0dip" android:layout_height="wrap_content" layout="@layout/d2w" />
+            <include android:layout_gravity="bottom|center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/d2x" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/ncu" android:paddingTop="20.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="24.0dip">
+            <SeekBar android:layout_gravity="bottom" android:id="@id/neg" android:layout_width="fill_parent" android:layout_height="1.0dip" style="@style/abc" />
+            <FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="1.0dip">
+                <View android:id="@id/nex" android:background="@color/al9" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+            </FrameLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/ne7" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="134.0dip">
+        <TextView android:textSize="30.0dip" android:textColor="@color/al3" android:id="@id/nes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:30 / " />
+        <TextView android:textSize="30.0dip" android:textColor="@color/al3" android:id="@id/net" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:56" />
+    </LinearLayout>
+    <ViewStub android:id="@id/pf9" android:layout="@layout/d2l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/b2b" android:id="@id/ndh" android:background="#4d000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
+    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/pft" android:layout="@layout/d32" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/b2b" android:id="@id/pf2" android:background="#4d000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" />
+</merge>

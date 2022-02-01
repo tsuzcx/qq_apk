@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/bbk" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="开启启动crash" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/bbj" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="在主线程crash" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/j5">
+                <TextView android:textSize="17.0dip" android:gravity="center" android:id="@id/e1q" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/nla" android:layout_weight="2.0" />
+                <EditText android:textSize="17.0dip" android:id="@id/jgj" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="10" android:layout_weight="1.0" />
+                <Button android:textSize="17.0dip" android:id="@id/ip7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/nl_" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

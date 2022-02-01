@@ -27,14 +27,15 @@ public final class r
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bP != null) {
-      paramJceOutputStream.write(this.bP, 0);
+    byte[] arrayOfByte = this.bP;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.r
  * JD-Core Version:    0.7.0.1
  */

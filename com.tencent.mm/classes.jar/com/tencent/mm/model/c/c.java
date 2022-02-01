@@ -1,152 +1,225 @@
 package com.tencent.mm.model.c;
 
-import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.r;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelpackage.o;
+import com.tencent.mm.modelpackage.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.y;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class c
-  implements at
+  implements h
 {
-  @SuppressLint({"UseSparseArrays"})
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private d foR;
-  private com.tencent.mm.storage.b foS;
-  private bz.a foT;
-  private com.tencent.mm.sdk.b.c foU;
-  private k.a foV;
-  private com.tencent.mm.vending.b.b foW;
-  private final com.tencent.mm.plugin.auth.a.a foX;
+  private static c opK;
+  private ArrayList<a> listeners;
+  private volatile boolean mjj;
+  private final int opH;
+  private final String opI;
+  private final long opJ;
+  private SharedPreferences sp;
   
-  static
+  private c()
   {
-    AppMethodBeat.i(118187);
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("NEW_ABTEST_TABLE".hashCode()), new c.5());
-    baseDBFactories.put(Integer.valueOf("NEW_ABTEST_INFO_TABLE".hashCode()), new c.6());
-    AppMethodBeat.o(118187);
+    AppMethodBeat.i(20464);
+    this.opH = 21;
+    this.opI = "trace_config_last_update_time";
+    this.opJ = 86400000L;
+    this.mjj = false;
+    this.sp = MMApplicationContext.getDefaultPreference();
+    this.listeners = new ArrayList();
+    AppMethodBeat.o(20464);
   }
   
-  public c()
+  public static c bEC()
   {
-    AppMethodBeat.i(118180);
-    this.foT = new bz.a()
-    {
-      public final void a(e.a paramAnonymousa)
-      {
-        AppMethodBeat.i(118175);
-        paramAnonymousa = aa.a(paramAnonymousa.eyJ.woR);
-        ab.d("MicroMsg.SubCoreNewABTest", "Message content(abtest): %s".concat(String.valueOf(paramAnonymousa)));
-        paramAnonymousa = a.pX(paramAnonymousa);
-        if (paramAnonymousa == null)
-        {
-          AppMethodBeat.o(118175);
-          return;
-        }
-        c.abU().r(paramAnonymousa.items, 1);
-        c.abV().r(paramAnonymousa.foQ, 2);
-        AppMethodBeat.o(118175);
-      }
-    };
-    this.foU = new c.2(this);
-    this.foV = new c.3(this);
-    this.foW = null;
-    this.foX = new c.4(this);
-    AppMethodBeat.o(118180);
-  }
-  
-  private static c abT()
-  {
+    AppMethodBeat.i(20465);
+    if (opK == null) {}
     try
     {
-      AppMethodBeat.i(118181);
-      c localc = (c)q.S(c.class);
-      AppMethodBeat.o(118181);
+      if (opK == null) {
+        opK = new c();
+      }
+      c localc = opK;
+      AppMethodBeat.o(20465);
       return localc;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(20465);
     }
   }
   
-  public static d abU()
+  private void release()
   {
-    AppMethodBeat.i(118182);
-    g.RJ().QQ();
-    if (abT().foR == null) {
-      abT().foR = new d(g.RL().eHS);
-    }
-    d locald = abT().foR;
-    AppMethodBeat.o(118182);
-    return locald;
+    AppMethodBeat.i(20468);
+    Log.i("MicroMsg.TraceConfigUpdater", "summer release");
+    this.mjj = false;
+    bh.aZW().b(159, this);
+    bh.aZW().b(160, this);
+    AppMethodBeat.o(20468);
   }
   
-  public static com.tencent.mm.storage.b abV()
+  private void vH(int paramInt)
   {
-    AppMethodBeat.i(118183);
-    g.RJ().QQ();
-    if (abT().foS == null) {
-      abT().foS = new com.tencent.mm.storage.b(g.RL().eHS);
-    }
-    com.tencent.mm.storage.b localb = abT().foS;
-    AppMethodBeat.o(118183);
-    return localb;
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
-  {
-    return baseDBFactories;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(118184);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtest", this.foT, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtestinfo", this.foT, true);
-    com.tencent.mm.sdk.b.a.ymk.c(this.foU);
-    abU().add(this.foV);
-    this.foW = ((com.tencent.mm.plugin.auth.a.b)g.G(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.foX);
-    AppMethodBeat.o(118184);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(118185);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtest", this.foT, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtestinfo", this.foT, true);
-    com.tencent.mm.sdk.b.a.ymk.d(this.foU);
-    abU().remove(this.foV);
-    if (this.foW != null)
+    AppMethodBeat.i(20467);
+    com.tencent.mm.modelpackage.u.bLH();
+    Object localObject1 = t.bLE();
+    Object localObject2 = com.tencent.mm.modelpackage.u.bLH().eK(paramInt, 21);
+    label467:
+    for (;;)
     {
-      this.foW.dead();
-      this.foW = null;
+      try
+      {
+        Object localObject3 = XmlParser.parseXml(y.bEn(ah.v(new com.tencent.mm.vfs.u((String)localObject1, (String)localObject2).mUri)), "TraceConfig", null);
+        if (localObject3 == null)
+        {
+          Log.d("MicroMsg.TraceConfigUpdater", "summer kvMap is null and ret");
+          AppMethodBeat.o(20467);
+          return;
+        }
+        localObject2 = new HashMap();
+        i = 0;
+        Object localObject4 = new StringBuilder().append(".TraceConfig.Item");
+        if (i == 0)
+        {
+          localObject1 = "";
+          localObject1 = localObject1;
+          localObject4 = (String)((Map)localObject3).get((String)localObject1 + ".$key");
+          if (localObject4 != null)
+          {
+            i += 1;
+            long l = Util.getLong((String)((Map)localObject3).get(localObject1), -1L);
+            if (l < 0L) {
+              break label467;
+            }
+            Log.i("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig i: " + i + " key: " + (String)localObject4 + "|value: " + l);
+            ((Map)localObject2).put(localObject4, Long.valueOf(l));
+          }
+        }
+        else
+        {
+          localObject1 = Integer.valueOf(i);
+          continue;
+        }
+        localObject1 = this.sp.edit();
+        localObject3 = ((Map)localObject2).entrySet().iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (Map.Entry)((Iterator)localObject3).next();
+          ((SharedPreferences.Editor)localObject1).putLong((String)((Map.Entry)localObject4).getKey(), ((Long)((Map.Entry)localObject4).getValue()).longValue());
+          continue;
+        }
+        com.tencent.mm.modelpackage.s locals;
+        locals.putLong("trace_config_last_update_time", System.currentTimeMillis()).commit();
+      }
+      catch (IOException localIOException)
+      {
+        Log.printErrStackTrace("MicroMsg.TraceConfigUpdater", localIOException, "", new Object[0]);
+        locals = com.tencent.mm.modelpackage.u.bLH().eI(paramInt, 21);
+        locals.status = 2;
+        com.tencent.mm.modelpackage.u.bLH().b(locals);
+        AppMethodBeat.o(20467);
+        return;
+      }
+      Log.d("MicroMsg.TraceConfigUpdater", "summer updateTraceConfig configMap size: " + ((Map)localObject2).size());
+      int j = this.listeners.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((a)this.listeners.get(i)).bEy();
+        i += 1;
+      }
     }
-    AppMethodBeat.o(118185);
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public final boolean a(a parama)
+  {
+    AppMethodBeat.i(20469);
+    if ((parama != null) && (!this.listeners.contains(parama)))
+    {
+      boolean bool = this.listeners.add(parama);
+      AppMethodBeat.o(20469);
+      return bool;
+    }
+    AppMethodBeat.o(20469);
+    return false;
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(20466);
+    int i = paramp.getType();
+    Log.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd: errType:[%d], errCode:[%d], type:[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    if ((!(paramp instanceof r)) || (((r)paramp).bFO() != 21))
+    {
+      Log.i("MicroMsg.TraceConfigUpdater", "summer onSceneEnd another scene and ret");
+      AppMethodBeat.o(20466);
+      return;
+    }
+    if (i == 159)
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = com.tencent.mm.modelpackage.u.bLH().wK(21);
+        if ((paramString == null) || (paramString.length == 0))
+        {
+          Log.i("MicroMsg.TraceConfigUpdater", "summer doDownload error no pkg found.");
+          release();
+          AppMethodBeat.o(20466);
+          return;
+        }
+        paramString = paramString[0];
+        Log.i("MicroMsg.TraceConfigUpdater", "summer doDownload pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.hJK);
+        if (5 == paramString.status)
+        {
+          paramString = new o(paramString.id, 21);
+          bh.aZW().a(paramString, 0);
+          AppMethodBeat.o(20466);
+          return;
+        }
+        Log.i("MicroMsg.TraceConfigUpdater", "summer pkgInfo has downloaded and release");
+        this.sp.edit().putLong("trace_config_last_update_time", System.currentTimeMillis()).commit();
+        release();
+        AppMethodBeat.o(20466);
+        return;
+      }
+      release();
+      AppMethodBeat.o(20466);
+      return;
+    }
+    if (i == 160)
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        vH(((o)paramp).oQV);
+      }
+      release();
+    }
+    AppMethodBeat.o(20466);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bEy();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.c.c
  * JD-Core Version:    0.7.0.1
  */

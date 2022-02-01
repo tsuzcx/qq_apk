@@ -8,33 +8,33 @@ public class JavaClassInfo
   
   public static String getClassName(Object paramObject)
   {
-    AppMethodBeat.i(141141);
+    AppMethodBeat.i(135630);
     if (paramObject == null)
     {
-      AppMethodBeat.o(141141);
+      AppMethodBeat.o(135630);
       return "";
     }
     paramObject = "simple " + paramObject.toString();
-    AppMethodBeat.o(141141);
+    AppMethodBeat.o(135630);
     return paramObject;
   }
   
   public static String getFullClassName(Object paramObject)
   {
-    AppMethodBeat.i(141142);
+    AppMethodBeat.i(135631);
     if (paramObject == null)
     {
-      AppMethodBeat.o(141142);
+      AppMethodBeat.o(135631);
       return "";
     }
     paramObject = paramObject.toString();
-    AppMethodBeat.o(141142);
+    AppMethodBeat.o(135631);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.JavaClassInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,49 +14,69 @@ class b
   
   protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    Object localObject3 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(">>onFinished enter byteRequest=");
+    ((StringBuilder)localObject1).append(paramArrayOfByte1);
+    ((StringBuilder)localObject1).append(" byteResponse=");
+    ((StringBuilder)localObject1).append(paramArrayOfByte2);
+    ((StringBuilder)localObject1).append(" errorCode =");
+    ((StringBuilder)localObject1).append(paramInt);
+    ab.c("BaseNetEngine", ((StringBuilder)localObject1).toString());
     Object localObject2 = null;
-    ab.c("BaseNetEngine", ">>onFinished enter byteRequest=" + paramArrayOfByte1 + " byteResponse=" + paramArrayOfByte2 + " errorCode =" + paramInt);
-    int i;
+    StringBuilder localStringBuilder1 = null;
+    int i = 0;
+    int j = 0;
     if (paramArrayOfByte1 != null)
     {
       localObject1 = (Request)ProtocolPackage.bytes2JceObj(paramArrayOfByte1, Request.class);
-      if ((localObject1 != null) && (((Request)localObject1).head != null))
+      i = j;
+      if (localObject1 != null)
       {
-        i = ((Request)localObject1).head.requestId;
-        if (localObject1 != null)
-        {
-          paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(((Request)localObject1).body, a.a(this.a));
-          label107:
-          ab.c("BaseNetEngine", ">>onFinished request=" + localObject1 + " reqId=" + i + " requestJce=" + paramArrayOfByte1);
+        i = j;
+        if (((Request)localObject1).head != null) {
+          i = ((Request)localObject1).head.requestId;
         }
       }
+      if (localObject1 != null) {
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(((Request)localObject1).body, a.a(this.a));
+      } else {
+        paramArrayOfByte1 = null;
+      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(">>onFinished request=");
+      localStringBuilder2.append(localObject1);
+      localStringBuilder2.append(" reqId=");
+      localStringBuilder2.append(i);
+      localStringBuilder2.append(" requestJce=");
+      localStringBuilder2.append(paramArrayOfByte1);
+      ab.c("BaseNetEngine", localStringBuilder2.toString());
+      localObject1 = paramArrayOfByte1;
     }
-    for (Object localObject1 = paramArrayOfByte1;; localObject1 = null)
+    else
     {
-      paramArrayOfByte1 = localObject3;
-      if (paramArrayOfByte2 != null)
-      {
-        paramArrayOfByte2 = ProtocolPackage.unpackPackage(paramArrayOfByte2);
-        paramArrayOfByte1 = localObject2;
-        if (paramArrayOfByte2 != null) {
-          paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte2.body, a.b(this.a));
-        }
-        ab.c("BaseNetEngine", ">>onFinished response=" + paramArrayOfByte2 + " responseJce=" + paramArrayOfByte1);
-      }
-      this.a.a(i, paramInt, (JceStruct)localObject1, paramArrayOfByte1);
-      return;
-      paramArrayOfByte1 = null;
-      break label107;
-      i = 0;
-      break;
-      i = 0;
+      localObject1 = null;
     }
+    paramArrayOfByte1 = localObject2;
+    if (paramArrayOfByte2 != null)
+    {
+      paramArrayOfByte2 = ProtocolPackage.unpackPackage(paramArrayOfByte2);
+      paramArrayOfByte1 = localStringBuilder1;
+      if (paramArrayOfByte2 != null) {
+        paramArrayOfByte1 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte2.body, a.b(this.a));
+      }
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(">>onFinished response=");
+      localStringBuilder1.append(paramArrayOfByte2);
+      localStringBuilder1.append(" responseJce=");
+      localStringBuilder1.append(paramArrayOfByte1);
+      ab.c("BaseNetEngine", localStringBuilder1.toString());
+    }
+    this.a.a(i, paramInt, (JceStruct)localObject1, paramArrayOfByte1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.b
  * JD-Core Version:    0.7.0.1
  */

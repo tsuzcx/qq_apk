@@ -15,16 +15,18 @@ class MiniAppProfileCardView$HorzionAdapter
   
   public int getCount()
   {
-    if (this.miniAppInfoItems != null) {
-      return this.miniAppInfoItems.size();
+    ArrayList localArrayList = this.miniAppInfoItems;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.miniAppInfoItems != null) {
-      return (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
+    ArrayList localArrayList = this.miniAppInfoItems;
+    if (localArrayList != null) {
+      return localArrayList.get(paramInt);
     }
     return null;
   }
@@ -36,30 +38,33 @@ class MiniAppProfileCardView$HorzionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((this.miniAppInfoItems == null) || (this.miniAppInfoItems.size() < 1))
+    paramViewGroup = this.miniAppInfoItems;
+    Object localObject = paramView;
+    if (paramViewGroup != null)
     {
-      paramViewGroup = paramView;
-      return paramViewGroup;
-    }
-    paramViewGroup = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
-    if (paramView == null) {
-      paramView = new MiniAppProfileCardItemView(MiniAppProfileCardView.access$000(this.this$0), null);
-    }
-    for (;;)
-    {
-      ((MiniAppProfileCardItemView)paramView).setData(paramViewGroup, paramInt);
-      paramViewGroup = paramView;
-      if (!MiniAppProfileCardView.access$100(this.this$0)) {
-        break;
-      }
-      if (MiniAppProfileCardView.access$200(this.this$0) != null)
-      {
-        ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$200(this.this$0));
+      if (paramViewGroup.size() < 1) {
         return paramView;
       }
-      ((MiniAppProfileCardItemView)paramView).setTextColor(MiniAppProfileCardView.access$300(this.this$0));
-      return paramView;
+      localObject = (MiniAppInfo)this.miniAppInfoItems.get(paramInt);
+      paramViewGroup = paramView;
+      if (paramView == null) {
+        paramViewGroup = new MiniAppProfileCardItemView(MiniAppProfileCardView.access$000(this.this$0), null);
+      }
+      paramView = (MiniAppProfileCardItemView)paramViewGroup;
+      paramView.setData((MiniAppInfo)localObject, paramInt);
+      localObject = paramViewGroup;
+      if (MiniAppProfileCardView.access$100(this.this$0))
+      {
+        if (MiniAppProfileCardView.access$200(this.this$0) != null)
+        {
+          paramView.setTextColor(MiniAppProfileCardView.access$200(this.this$0));
+          return paramViewGroup;
+        }
+        paramView.setTextColor(MiniAppProfileCardView.access$300(this.this$0));
+        localObject = paramViewGroup;
+      }
     }
+    return localObject;
   }
   
   public void setData(ArrayList<MiniAppInfo> paramArrayList)
@@ -69,7 +74,7 @@ class MiniAppProfileCardView$HorzionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView.HorzionAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,25 @@
+package com.tencent.mm.plugin.luckymoney.ui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class LuckyMoneyNewYearReceiveUIV2$2
+  implements DialogInterface.OnClickListener
+{
+  LuckyMoneyNewYearReceiveUIV2$2(LuckyMoneyNewYearReceiveUIV2 paramLuckyMoneyNewYearReceiveUIV2) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(284119);
+    paramDialogInterface.dismiss();
+    this.KEw.finish();
+    AppMethodBeat.o(284119);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNewYearReceiveUIV2.2
+ * JD-Core Version:    0.7.0.1
+ */

@@ -10,10 +10,21 @@ public class LikeRankingInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin").append(":").append(this.uin);
-    localStringBuilder.append(",").append("todayVoteCount").append(":").append(this.likeCountOfToday);
-    localStringBuilder.append(",").append("rank").append(":").append(this.rankingNum);
-    localStringBuilder.append(",").append("total").append(":").append(this.totalLikeCount);
+    localStringBuilder.append("uin");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(",");
+    localStringBuilder.append("todayVoteCount");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.likeCountOfToday);
+    localStringBuilder.append(",");
+    localStringBuilder.append("rank");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.rankingNum);
+    localStringBuilder.append(",");
+    localStringBuilder.append("total");
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.totalLikeCount);
     return localStringBuilder.toString();
   }
 }

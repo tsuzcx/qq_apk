@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/qer" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" />
+        <ImageView android:id="@id/qes" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" />
+        <ImageView android:id="@id/qet" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" />
+        <ImageView android:id="@id/qeu" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" />
+        <ImageView android:id="@id/qev" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/qew" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginTop="@dimen/2y" />
+        <ImageView android:id="@id/qex" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" android:layout_marginTop="@dimen/2y" />
+        <ImageView android:id="@id/qey" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" android:layout_marginTop="@dimen/2y" />
+        <ImageView android:id="@id/qez" android:visibility="gone" android:layout_width="@dimen/bgz" android:layout_height="@dimen/bgz" android:layout_marginLeft="@dimen/3q" android:layout_marginTop="@dimen/2y" />
+    </LinearLayout>
+</LinearLayout>

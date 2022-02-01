@@ -11,7 +11,7 @@ public final class SOSO_Cell
   public int iLac = -1;
   public short shMcc = -1;
   public short shMnc = -1;
-  public short shRssi;
+  public short shRssi = 0;
   
   public SOSO_Cell() {}
   
@@ -44,7 +44,7 @@ public final class SOSO_Cell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborComm.SOSO_Cell
  * JD-Core Version:    0.7.0.1
  */

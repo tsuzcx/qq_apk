@@ -1,22 +1,21 @@
 package com.tencent.av.ui;
 
+import com.tencent.av.tips.TipsUtil;
 import java.lang.ref.WeakReference;
-import mdd;
-import mlf;
 
-public class QavVideoRecordUICtrl$8
+class QavVideoRecordUICtrl$8
   implements Runnable
 {
-  public QavVideoRecordUICtrl$8(mlf parammlf) {}
+  QavVideoRecordUICtrl$8(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    mdd.a(((AVActivity)mlf.a(this.this$0).get()).a, 1022, 2131696232);
+    TipsUtil.a(((AVActivity)QavVideoRecordUICtrl.b(this.this$0).get()).H, 1022, 2131893525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.8
  * JD-Core Version:    0.7.0.1
  */

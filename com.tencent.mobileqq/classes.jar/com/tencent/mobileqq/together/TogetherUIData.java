@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.together;
 
-import bapt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.Serializable;
 
 public class TogetherUIData
   implements Serializable
 {
-  private bapt mTogetherSession;
+  private TogetherSession mTogetherSession;
   
   public String getCurUin()
   {
-    return this.mTogetherSession.jdField_e_of_type_JavaLangString;
+    return this.mTogetherSession.n;
   }
   
   public int getSessionType()
   {
-    return this.mTogetherSession.jdField_e_of_type_Int;
+    return this.mTogetherSession.m;
   }
   
   public String getSubTitleText(boolean paramBoolean, QQAppInterface paramQQAppInterface)
@@ -24,7 +23,7 @@ public class TogetherUIData
     return this.mTogetherSession.a(paramBoolean, paramQQAppInterface);
   }
   
-  public bapt getTogetherSession()
+  public TogetherSession getTogetherSession()
   {
     return this.mTogetherSession;
   }
@@ -34,14 +33,14 @@ public class TogetherUIData
     this.mTogetherSession = null;
   }
   
-  public void setTogetherSession(bapt parambapt)
+  public void setTogetherSession(TogetherSession paramTogetherSession)
   {
-    this.mTogetherSession = parambapt;
+    this.mTogetherSession = paramTogetherSession;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherUIData
  * JD-Core Version:    0.7.0.1
  */

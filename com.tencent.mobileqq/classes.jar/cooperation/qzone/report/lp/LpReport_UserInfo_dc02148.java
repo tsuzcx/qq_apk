@@ -1,10 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
 
 public class LpReport_UserInfo_dc02148
   implements LpReportInfo
@@ -38,39 +38,38 @@ public class LpReport_UserInfo_dc02148
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin <= 1000L)
-    {
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localHashMap.put("uin", str);
-      if (!TextUtils.isEmpty(this.client_time)) {
-        break label235;
-      }
+    long l = this.uin;
+    String str;
+    if (l <= 1000L) {
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      str = String.valueOf(l);
     }
-    label235:
-    for (String str = String.valueOf(System.currentTimeMillis());; str = this.client_time)
-    {
-      localHashMap.put("client_time", str);
-      LpReportUtils.safePut(localHashMap, "client_ip", this.client_ip);
-      localHashMap.put("age", String.valueOf(this.age));
-      localHashMap.put("gender", String.valueOf(this.gender));
-      localHashMap.put("constellation", String.valueOf(this.constellation));
-      LpReportUtils.safePut(localHashMap, "latitude", this.latitude);
-      LpReportUtils.safePut(localHashMap, "longitude", this.longitude);
-      LpReportUtils.safePut(localHashMap, "country", this.country);
-      localHashMap.put("country_code", String.valueOf(this.country_code));
-      LpReportUtils.safePut(localHashMap, "province", this.province);
-      localHashMap.put("province_code", String.valueOf(this.province_code));
-      LpReportUtils.safePut(localHashMap, "city", this.city);
-      localHashMap.put("city_code", String.valueOf(this.city_code));
-      return localHashMap;
-      str = String.valueOf(this.uin);
-      break;
+    localHashMap.put("uin", str);
+    if (TextUtils.isEmpty(this.client_time)) {
+      str = String.valueOf(System.currentTimeMillis());
+    } else {
+      str = this.client_time;
     }
+    localHashMap.put("client_time", str);
+    LpReportUtils.safePut(localHashMap, "client_ip", this.client_ip);
+    localHashMap.put("age", String.valueOf(this.age));
+    localHashMap.put("gender", String.valueOf(this.gender));
+    localHashMap.put("constellation", String.valueOf(this.constellation));
+    LpReportUtils.safePut(localHashMap, "latitude", this.latitude);
+    LpReportUtils.safePut(localHashMap, "longitude", this.longitude);
+    LpReportUtils.safePut(localHashMap, "country", this.country);
+    localHashMap.put("country_code", String.valueOf(this.country_code));
+    LpReportUtils.safePut(localHashMap, "province", this.province);
+    localHashMap.put("province_code", String.valueOf(this.province_code));
+    LpReportUtils.safePut(localHashMap, "city", this.city);
+    localHashMap.put("city_code", String.valueOf(this.city_code));
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_UserInfo_dc02148
  * JD-Core Version:    0.7.0.1
  */

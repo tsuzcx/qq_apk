@@ -10,14 +10,12 @@ public class cgl
   {
     try
     {
-      if ((DevlockPushActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      if ((DevlockPushActivity.a(this.a) != null) && (DevlockPushActivity.a(this.a).isShowing()))
       {
-        DevlockPushActivity.a(this.a, new QQProgressDialog(this.a, this.a.d()));
-        DevlockPushActivity.a(this.a).b(2131562645);
+        DevlockPushActivity.a(this.a).dismiss();
+        DevlockPushActivity.a(this.a).cancel();
       }
-      if ((DevlockPushActivity.a(this.a) != null) && (!DevlockPushActivity.a(this.a).isShowing())) {
-        DevlockPushActivity.a(this.a).show();
-      }
+      DevlockPushActivity.a(this.a, null);
       return;
     }
     catch (Throwable localThrowable)

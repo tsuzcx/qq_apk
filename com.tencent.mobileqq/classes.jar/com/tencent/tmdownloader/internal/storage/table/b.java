@@ -12,28 +12,23 @@ public class b
 {
   private static int a(com.tencent.tmdownloader.internal.storage.b.a parama, SQLiteDatabase paramSQLiteDatabase)
   {
-    int i;
     if (parama == null) {
-      i = -1;
+      return -1;
     }
-    for (;;)
+    try
     {
-      return i;
-      try
-      {
-        ContentValues localContentValues = new ContentValues();
-        a(localContentValues, parama);
-        int j = paramSQLiteDatabase.update("clientinfo", localContentValues, "clientId = ? and taskUrl = ?", new String[] { parama.a, parama.c });
-        i = j;
-        if (j <= 0) {
-          return 0;
-        }
+      ContentValues localContentValues = new ContentValues();
+      a(localContentValues, parama);
+      int i = paramSQLiteDatabase.update("clientinfo", localContentValues, "clientId = ? and taskUrl = ?", new String[] { parama.a, parama.c });
+      if (i > 0) {
+        return i;
       }
-      catch (Exception parama)
-      {
-        ab.c("ClientInfoTable", "exception: ", parama);
-        parama.printStackTrace();
-      }
+      return 0;
+    }
+    catch (Exception parama)
+    {
+      ab.c("ClientInfoTable", "exception: ", parama);
+      parama.printStackTrace();
     }
     return -2;
   }
@@ -50,40 +45,43 @@ public class b
   
   public static void a(com.tencent.tmdownloader.internal.storage.b.a parama)
   {
-    if (parama != null) {}
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = com.tencent.tmdownloader.internal.storage.a.a.c().getWritableDatabase();
-      if ((localSQLiteDatabase != null) && (a(parama, localSQLiteDatabase) <= 0))
+    if (parama != null) {
+      try
       {
-        ContentValues localContentValues = new ContentValues();
-        a(localContentValues, parama);
-        localSQLiteDatabase.insert("clientinfo", null, localContentValues);
+        SQLiteDatabase localSQLiteDatabase = com.tencent.tmdownloader.internal.storage.a.a.c().getWritableDatabase();
+        if ((localSQLiteDatabase != null) && (a(parama, localSQLiteDatabase) <= 0))
+        {
+          ContentValues localContentValues = new ContentValues();
+          a(localContentValues, parama);
+          localSQLiteDatabase.insert("clientinfo", null, localContentValues);
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception parama)
-    {
-      ab.c("ClientInfoTable", "exception: ", parama);
-      parama.printStackTrace();
+      catch (Exception parama)
+      {
+        ab.c("ClientInfoTable", "exception: ", parama);
+        parama.printStackTrace();
+      }
     }
   }
   
   public static void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = com.tencent.tmdownloader.internal.storage.a.a.c().getWritableDatabase();
-      if (localSQLiteDatabase != null) {
-        localSQLiteDatabase.delete("clientinfo", "taskUrl = ?", new String[] { paramString });
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        SQLiteDatabase localSQLiteDatabase = com.tencent.tmdownloader.internal.storage.a.a.c().getWritableDatabase();
+        if (localSQLiteDatabase != null)
+        {
+          localSQLiteDatabase.delete("clientinfo", "taskUrl = ?", new String[] { paramString });
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.c("ClientInfoTable", "exception: ", paramString);
-      paramString.printStackTrace();
+      catch (Exception paramString)
+      {
+        ab.c("ClientInfoTable", "exception: ", paramString);
+        paramString.printStackTrace();
+      }
     }
   }
   
@@ -112,7 +110,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.b
  * JD-Core Version:    0.7.0.1
  */

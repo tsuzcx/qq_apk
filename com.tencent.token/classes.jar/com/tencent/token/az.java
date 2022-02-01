@@ -1,22 +1,56 @@
 package com.tencent.token;
 
-import android.content.Intent;
-import android.net.NetworkInfo;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
-final class az
-  implements Runnable
+public final class az
+  extends JceStruct
 {
-  private Intent a;
+  static byte[] g;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public byte[] f = null;
   
-  az(ax paramax, Intent paramIntent)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    this.a = paramIntent;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = paramJceInputStream.read(this.c, 2, false);
+    this.d = paramJceInputStream.read(this.d, 3, false);
+    this.e = paramJceInputStream.read(this.e, 4, false);
+    if (g == null)
+    {
+      byte[] arrayOfByte = (byte[])new byte[1];
+      g = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.f = ((byte[])paramJceInputStream.read(g, 5, false));
   }
   
-  public final void run()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    NetworkInfo localNetworkInfo = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
-    this.b.a(localNetworkInfo);
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
+    }
+    i = this.c;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
+    }
+    paramJceOutputStream.write(this.d, 3);
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
+    }
+    byte[] arrayOfByte = this.f;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 5);
+    }
   }
 }
 

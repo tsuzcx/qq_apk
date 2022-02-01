@@ -1,148 +1,111 @@
 package okio;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.util.logging.Logger;
+import kotlin.Metadata;
+import kotlin.jvm.JvmName;
+import kotlin.jvm.JvmOverloads;
 import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={"okio/Okio__JvmOkioKt", "okio/Okio__OkioKt"}, k=4, mv={1, 1, 16})
 public final class Okio
 {
-  static final Logger logger = Logger.getLogger(Okio.class.getName());
-  
-  public static Sink appendingSink(File paramFile)
+  @NotNull
+  public static final Sink appendingSink(@NotNull File paramFile)
   {
-    if (paramFile == null) {
-      throw new IllegalArgumentException("file == null");
-    }
-    return sink(new FileOutputStream(paramFile, true));
+    return Okio__JvmOkioKt.appendingSink(paramFile);
   }
   
-  public static Sink blackhole()
+  @JvmName(name="blackhole")
+  @NotNull
+  public static final Sink blackhole()
   {
-    return new Okio.3();
+    return Okio__OkioKt.blackhole();
   }
   
-  public static BufferedSink buffer(Sink paramSink)
+  @NotNull
+  public static final BufferedSink buffer(@NotNull Sink paramSink)
   {
-    return new RealBufferedSink(paramSink);
+    return Okio__OkioKt.buffer(paramSink);
   }
   
-  public static BufferedSource buffer(Source paramSource)
+  @NotNull
+  public static final BufferedSource buffer(@NotNull Source paramSource)
   {
-    return new RealBufferedSource(paramSource);
+    return Okio__OkioKt.buffer(paramSource);
   }
   
-  static boolean isAndroidGetsocknameError(AssertionError paramAssertionError)
+  public static final boolean isAndroidGetsocknameError(@NotNull AssertionError paramAssertionError)
   {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
+    return Okio__JvmOkioKt.isAndroidGetsocknameError(paramAssertionError);
   }
   
-  public static Sink sink(File paramFile)
+  @JvmOverloads
+  @NotNull
+  public static final Sink sink(@NotNull File paramFile)
   {
-    if (paramFile == null) {
-      throw new IllegalArgumentException("file == null");
-    }
-    return sink(new FileOutputStream(paramFile));
+    return sink$default(paramFile, false, 1, null);
   }
   
-  public static Sink sink(OutputStream paramOutputStream)
+  @JvmOverloads
+  @NotNull
+  public static final Sink sink(@NotNull File paramFile, boolean paramBoolean)
   {
-    return sink(paramOutputStream, new Timeout());
+    return Okio__JvmOkioKt.sink(paramFile, paramBoolean);
   }
   
-  private static Sink sink(OutputStream paramOutputStream, Timeout paramTimeout)
+  @NotNull
+  public static final Sink sink(@NotNull OutputStream paramOutputStream)
   {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
-    }
-    if (paramTimeout == null) {
-      throw new IllegalArgumentException("timeout == null");
-    }
-    return new Okio.1(paramTimeout, paramOutputStream);
+    return Okio__JvmOkioKt.sink(paramOutputStream);
   }
   
-  public static Sink sink(Socket paramSocket)
+  @NotNull
+  public static final Sink sink(@NotNull Socket paramSocket)
   {
-    if (paramSocket == null) {
-      throw new IllegalArgumentException("socket == null");
-    }
-    if (paramSocket.getOutputStream() == null) {
-      throw new IOException("socket's output stream == null");
-    }
-    AsyncTimeout localAsyncTimeout = timeout(paramSocket);
-    return localAsyncTimeout.sink(sink(paramSocket.getOutputStream(), localAsyncTimeout));
+    return Okio__JvmOkioKt.sink(paramSocket);
   }
   
   @IgnoreJRERequirement
-  public static Sink sink(Path paramPath, OpenOption... paramVarArgs)
+  @NotNull
+  public static final Sink sink(@NotNull Path paramPath, @NotNull OpenOption... paramVarArgs)
   {
-    if (paramPath == null) {
-      throw new IllegalArgumentException("path == null");
-    }
-    return sink(Files.newOutputStream(paramPath, paramVarArgs));
+    return Okio__JvmOkioKt.sink(paramPath, paramVarArgs);
   }
   
-  public static Source source(File paramFile)
+  @NotNull
+  public static final Source source(@NotNull File paramFile)
   {
-    if (paramFile == null) {
-      throw new IllegalArgumentException("file == null");
-    }
-    return source(new FileInputStream(paramFile));
+    return Okio__JvmOkioKt.source(paramFile);
   }
   
-  public static Source source(InputStream paramInputStream)
+  @NotNull
+  public static final Source source(@NotNull InputStream paramInputStream)
   {
-    return source(paramInputStream, new Timeout());
+    return Okio__JvmOkioKt.source(paramInputStream);
   }
   
-  private static Source source(InputStream paramInputStream, Timeout paramTimeout)
+  @NotNull
+  public static final Source source(@NotNull Socket paramSocket)
   {
-    if (paramInputStream == null) {
-      throw new IllegalArgumentException("in == null");
-    }
-    if (paramTimeout == null) {
-      throw new IllegalArgumentException("timeout == null");
-    }
-    return new Okio.2(paramTimeout, paramInputStream);
-  }
-  
-  public static Source source(Socket paramSocket)
-  {
-    if (paramSocket == null) {
-      throw new IllegalArgumentException("socket == null");
-    }
-    if (paramSocket.getInputStream() == null) {
-      throw new IOException("socket's input stream == null");
-    }
-    AsyncTimeout localAsyncTimeout = timeout(paramSocket);
-    return localAsyncTimeout.source(source(paramSocket.getInputStream(), localAsyncTimeout));
+    return Okio__JvmOkioKt.source(paramSocket);
   }
   
   @IgnoreJRERequirement
-  public static Source source(Path paramPath, OpenOption... paramVarArgs)
+  @NotNull
+  public static final Source source(@NotNull Path paramPath, @NotNull OpenOption... paramVarArgs)
   {
-    if (paramPath == null) {
-      throw new IllegalArgumentException("path == null");
-    }
-    return source(Files.newInputStream(paramPath, paramVarArgs));
-  }
-  
-  private static AsyncTimeout timeout(Socket paramSocket)
-  {
-    return new Okio.4(paramSocket);
+    return Okio__JvmOkioKt.source(paramPath, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.Okio
  * JD-Core Version:    0.7.0.1
  */

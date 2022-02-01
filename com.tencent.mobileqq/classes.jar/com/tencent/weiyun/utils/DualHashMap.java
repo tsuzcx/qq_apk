@@ -46,11 +46,13 @@ public class DualHashMap<K, V>
   
   public void put(K paramK, V paramV)
   {
-    if ((paramK == null) || (paramV == null)) {
-      throw new IllegalArgumentException("The param key and value should be no-null.");
+    if ((paramK != null) && (paramV != null))
+    {
+      this.key2Value.put(paramK, paramV);
+      this.value2Key.put(paramV, paramK);
+      return;
     }
-    this.key2Value.put(paramK, paramV);
-    this.value2Key.put(paramV, paramK);
+    throw new IllegalArgumentException("The param key and value should be no-null.");
   }
   
   public V removeByKey(K paramK)
@@ -83,7 +85,7 @@ public class DualHashMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.weiyun.utils.DualHashMap
  * JD-Core Version:    0.7.0.1
  */

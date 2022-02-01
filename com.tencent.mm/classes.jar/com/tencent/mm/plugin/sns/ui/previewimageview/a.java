@@ -9,42 +9,52 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int sks = 0;
-  HashMap<Object, Integer> skt = new HashMap();
-  
-  protected final void cj(Object paramObject)
-  {
-    HashMap localHashMap = this.skt;
-    int i = this.sks;
-    this.sks = (i + 1);
-    localHashMap.put(paramObject, Integer.valueOf(i));
-  }
-  
-  protected final void dt(List<?> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      cj(paramList.next());
-    }
-  }
+  private int RSP = 0;
+  private HashMap<Object, Integer> RSQ = new HashMap();
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.skt.size())) {
+    if ((paramInt < 0) || (paramInt >= this.RSQ.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.skt.get(localObject)).intValue();
+    return ((Integer)this.RSQ.get(localObject)).intValue();
+  }
+  
+  protected final void gu(Object paramObject)
+  {
+    HashMap localHashMap = this.RSQ;
+    int i = this.RSP;
+    this.RSP = (i + 1);
+    localHashMap.put(paramObject, Integer.valueOf(i));
+  }
+  
+  protected final void gv(Object paramObject)
+  {
+    this.RSQ.remove(paramObject);
   }
   
   public final boolean hasStableIds()
   {
     return true;
   }
+  
+  protected final void hrN()
+  {
+    this.RSQ.clear();
+  }
+  
+  protected final void kX(List<?> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      gu(paramList.next());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.a
  * JD-Core Version:    0.7.0.1
  */

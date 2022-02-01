@@ -1,177 +1,142 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import android.view.MotionEvent;
+import android.content.res.Resources;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d.b;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d.c;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d.d;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d.e;
-import com.tencent.mm.plugin.appbrand.jsapi.s.d.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.kiss.widget.textview.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.c.a;
+import java.util.Objects;
 
-public final class a
+final class a
+  implements c.a
 {
-  private static int action = 0;
-  private static long hLh = 0L;
-  private static long hLi = 0L;
-  private static int htj = 0;
+  private static final ThreadLocal<TextPaint> rTk;
+  private final TextPaint bsk;
+  private final Resources mResources;
+  private CharSequence mText;
+  final d rTl;
+  private com.tencent.mm.plugin.appbrand.widget.j.a rTm;
   
-  public static void a(e parame, MotionEvent paramMotionEvent, String paramString, boolean paramBoolean)
+  static
   {
-    AppMethodBeat.i(126288);
-    int i = paramMotionEvent.getActionIndex();
-    int j = paramMotionEvent.getPointerId(i);
-    float f1 = paramMotionEvent.getX(i);
-    float f2 = paramMotionEvent.getY(i);
-    if ((action == paramMotionEvent.getAction()) && (htj == j) && (hLh == paramMotionEvent.getEventTime()) && (hLi == paramMotionEvent.getDownTime()))
-    {
-      ab.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d, don't send Duplicate event", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(paramMotionEvent.getEventTime()), Long.valueOf(paramMotionEvent.getDownTime()) });
-      AppMethodBeat.o(126288);
-      return;
-    }
-    action = paramMotionEvent.getAction();
-    htj = j;
-    hLh = paramMotionEvent.getEventTime();
-    hLi = paramMotionEvent.getDownTime();
-    d.f localf = new d.f();
-    localf.b(j, f1, f2);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("data", paramString);
-      label194:
-      ab.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(hLh), Long.valueOf(hLi) });
-      paramString = null;
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        paramMotionEvent = paramString;
-      }
-      for (;;)
-      {
-        if ((paramMotionEvent != null) && (paramBoolean))
-        {
-          paramMotionEvent.BN(localJSONObject.toString());
-          parame.a(paramMotionEvent);
-          AppMethodBeat.o(126288);
-          return;
-        }
-        try
-        {
-          localJSONObject.put("touch", localf.toJSONObject());
-          label322:
-          paramMotionEvent = new d.c();
-          continue;
-          paramString = new JSONArray();
-          try
-          {
-            localJSONObject.put("touches", paramString);
-            label350:
-            paramMotionEvent = y(paramMotionEvent);
-            if (paramMotionEvent.length > 0)
-            {
-              i = 0;
-              while (i < paramMotionEvent.length)
-              {
-                paramString.put(paramMotionEvent[i].toJSONObject());
-                i += 1;
-              }
-            }
-            paramMotionEvent = new d.d();
-            continue;
-            try
-            {
-              localJSONObject.put("touch", localf.toJSONObject());
-              label415:
-              paramMotionEvent = new d.e();
-              continue;
-              paramString = new JSONArray();
-              try
-              {
-                localJSONObject.put("touches", paramString);
-                label443:
-                paramMotionEvent = y(paramMotionEvent);
-                if (paramMotionEvent.length > 0)
-                {
-                  i = 0;
-                  while (i < paramMotionEvent.length)
-                  {
-                    paramString.put(paramMotionEvent[i].toJSONObject());
-                    i += 1;
-                  }
-                }
-                paramMotionEvent = new d.b();
-                continue;
-                if (paramMotionEvent != null)
-                {
-                  paramMotionEvent.BN(localJSONObject.toString());
-                  parame.b(paramMotionEvent);
-                }
-                AppMethodBeat.o(126288);
-                return;
-              }
-              catch (JSONException localJSONException1)
-              {
-                break label443;
-              }
-            }
-            catch (JSONException paramMotionEvent)
-            {
-              break label415;
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            break label350;
-          }
-        }
-        catch (JSONException paramMotionEvent)
-        {
-          break label322;
-        }
-      }
-    }
-    catch (JSONException paramString)
-    {
-      break label194;
-    }
+    AppMethodBeat.i(327332);
+    rTk = new a.1();
+    AppMethodBeat.o(327332);
   }
   
-  private static d.f[] y(MotionEvent paramMotionEvent)
+  public a(Resources paramResources, int paramInt)
   {
-    int j = 0;
-    AppMethodBeat.i(126289);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramMotionEvent.getPointerCount())
+    AppMethodBeat.i(327322);
+    this.mText = "";
+    this.mResources = paramResources;
+    this.bsk = ((TextPaint)Objects.requireNonNull((TextPaint)rTk.get()));
+    this.mText = "";
+    this.rTl = d.a(this.mText, this.bsk, paramInt);
+    AppMethodBeat.o(327322);
+  }
+  
+  private void crW()
+  {
+    AppMethodBeat.i(327327);
+    if (this.rTm == null)
     {
-      d.f localf = new d.f();
-      localf.id = paramMotionEvent.getPointerId(i);
-      localf.x = paramMotionEvent.getX(i);
-      localf.y = paramMotionEvent.getY(i);
-      localArrayList.add(localf);
-      i += 1;
+      this.rTl.M(this.mText);
+      AppMethodBeat.o(327327);
+      return;
     }
-    paramMotionEvent = new d.f[localArrayList.size()];
-    i = j;
-    while (i < localArrayList.size())
+    SpannableString localSpannableString = new SpannableString(this.mText);
+    localSpannableString.setSpan(this.rTm, 0, localSpannableString.length(), 18);
+    this.rTl.M(localSpannableString);
+    AppMethodBeat.o(327327);
+  }
+  
+  public final float getTextSize()
+  {
+    AppMethodBeat.i(327351);
+    float f = this.bsk.getTextSize();
+    AppMethodBeat.o(327351);
+    return f;
+  }
+  
+  public final void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
+  {
+    AppMethodBeat.i(327343);
+    this.rTl.a(paramTruncateAt);
+    AppMethodBeat.o(327343);
+  }
+  
+  public final void setFakeBoldText(boolean paramBoolean)
+  {
+    AppMethodBeat.i(327341);
+    this.bsk.setFakeBoldText(paramBoolean);
+    AppMethodBeat.o(327341);
+  }
+  
+  public final void setGravity(int paramInt)
+  {
+    this.rTl.fl = paramInt;
+  }
+  
+  public final void setLineHeight(int paramInt)
+  {
+    AppMethodBeat.i(327355);
+    if ((this.rTm == null) || (this.rTm.cb(paramInt)))
     {
-      paramMotionEvent[i] = ((d.f)localArrayList.get(i));
-      i += 1;
+      this.rTm = new com.tencent.mm.plugin.appbrand.widget.j.a(paramInt, 16);
+      crW();
     }
-    AppMethodBeat.o(126289);
-    return paramMotionEvent;
+    AppMethodBeat.o(327355);
+  }
+  
+  public final void setSingleLine(boolean paramBoolean)
+  {
+    AppMethodBeat.i(327344);
+    if (paramBoolean)
+    {
+      this.rTl.sF(1);
+      AppMethodBeat.o(327344);
+      return;
+    }
+    this.rTl.sF(2147483647);
+    AppMethodBeat.o(327344);
+  }
+  
+  public final void setText(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(327346);
+    Object localObject = paramCharSequence;
+    if (paramCharSequence == null) {
+      localObject = "";
+    }
+    if (!localObject.equals(this.mText))
+    {
+      this.mText = ((CharSequence)localObject);
+      crW();
+    }
+    AppMethodBeat.o(327346);
+  }
+  
+  public final void setTextColor(int paramInt)
+  {
+    AppMethodBeat.i(327336);
+    this.bsk.setColor(paramInt);
+    AppMethodBeat.o(327336);
+  }
+  
+  public final void setTextSize(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(327338);
+    this.bsk.setTextSize(TypedValue.applyDimension(paramInt, paramFloat, this.mResources.getDisplayMetrics()));
+    AppMethodBeat.o(327338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.a
  * JD-Core Version:    0.7.0.1
  */

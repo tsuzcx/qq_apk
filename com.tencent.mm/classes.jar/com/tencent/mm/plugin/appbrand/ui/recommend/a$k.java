@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.a.m;
-import a.f.b.k;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.enb;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class a$k
-  extends k
-  implements m<bsi, Integer, y>
+  extends u
+  implements m<enb, Integer, ah>
 {
-  public static final k iWe;
+  public static final k uoH;
   
   static
   {
-    AppMethodBeat.i(135161);
-    iWe = new k();
-    AppMethodBeat.o(135161);
+    AppMethodBeat.i(51327);
+    uoH = new k();
+    AppMethodBeat.o(51327);
   }
   
   a$k()
@@ -28,7 +28,7 @@ final class a$k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a.k
  * JD-Core Version:    0.7.0.1
  */

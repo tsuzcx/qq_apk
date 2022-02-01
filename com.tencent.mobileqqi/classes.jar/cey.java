@@ -1,26 +1,27 @@
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
 
 public class cey
-  extends FMObserver
+  extends DataLineObserver
 {
   public cey(Conversation paramConversation) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferProgress");
-    }
-    this.a.a(8, paramString, -2147483648);
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.P, 6000);
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("silasBug", 4, "OnFileTransferEnd");
-    }
-    this.a.a(8, paramString1, -2147483648);
+    this.a.a(9, AppConstants.P, 6000);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    this.a.a(8, AppConstants.P, 6000);
   }
 }
 

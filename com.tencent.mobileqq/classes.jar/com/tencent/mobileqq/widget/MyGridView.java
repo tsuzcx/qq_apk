@@ -11,7 +11,7 @@ import android.widget.GridView;
 public class MyGridView
   extends GridView
 {
-  private boolean a;
+  private boolean a = false;
   
   public MyGridView(Context paramContext)
   {
@@ -57,7 +57,7 @@ public class MyGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MyGridView
  * JD-Core Version:    0.7.0.1
  */

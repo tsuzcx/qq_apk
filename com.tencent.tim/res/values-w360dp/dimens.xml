@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="no">5.0dip</dimen>
+    <dimen name="qm">15.0dip</dimen>
+    <dimen name="qn">2.5dip</dimen>
+    <dimen name="anx">17.0dip</dimen>
+</resources>

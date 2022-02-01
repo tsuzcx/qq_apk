@@ -1,43 +1,40 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.aam;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.protocal.protobuf.bul;
-import com.tencent.mm.protocal.protobuf.tr;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.enb;
+import kotlin.Metadata;
 
-public class j
-  extends a<bul>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
 {
-  public j(long paramLong, LinkedList<aam> paramLinkedList, LinkedList<tr> paramLinkedList1, int paramInt1, int paramInt2, int paramInt3, ts paramts)
+  enb qRD;
+  
+  public j()
   {
-    AppMethodBeat.i(129758);
-    ab.i("MicroMsg.Recommend.CgiReportRecommendWxa", "sessionId:%d, action_scene:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1) });
-    b.a locala = new b.a();
-    buk localbuk = new buk();
-    localbuk.bqN = paramLong;
-    localbuk.xHC = paramLinkedList;
-    localbuk.xHF = paramLinkedList1;
-    localbuk.xHD = paramInt1;
-    localbuk.xHE = paramInt2;
-    localbuk.xHG = paramInt3;
-    localbuk.xfd = paramts;
-    locala.fsX = localbuk;
-    locala.fsY = new bul();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/reportrecommendwxa";
-    locala.funcId = 2564;
-    this.rr = locala.ado();
-    AppMethodBeat.o(129758);
+    AppMethodBeat.i(50332);
+    this.qRD = new enb();
+    AppMethodBeat.o(50332);
+  }
+  
+  final void a(enb paramenb)
+  {
+    paramenb.met = this.qRD.met;
+    paramenb.tNS = this.qRD.tNS;
+    paramenb.tNU = this.qRD.tNU;
+    paramenb.abrr = this.qRD.abrr;
+    paramenb.recommend_reason = "####客户端mock数据####商品";
+    paramenb.tNV = this.qRD.tNV;
+    paramenb.abru = this.qRD.abru;
+    paramenb.abrs = this.qRD.abrs;
+    paramenb.abrp = this.qRD.abrp;
+    paramenb.abrt = this.qRD.abrt;
+    paramenb.tNW = this.qRD.tNW;
+    paramenb.abrv = this.qRD.abrv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.j
  * JD-Core Version:    0.7.0.1
  */

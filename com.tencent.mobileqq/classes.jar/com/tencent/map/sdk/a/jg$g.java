@@ -40,10 +40,11 @@ public final class jg$g
   
   public final int hashCode()
   {
-    if (this.b == null) {
+    String str = this.b;
+    if (str == null) {
       return super.hashCode();
     }
-    return this.b.hashCode();
+    return str.hashCode();
   }
 }
 

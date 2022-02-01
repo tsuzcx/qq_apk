@@ -62,7 +62,8 @@ public class QEffectVideoView
   
   public boolean isGravityEnable()
   {
-    return (this.mEffectData != null) && (this.mEffectData.gravity);
+    QEffectData localQEffectData = this.mEffectData;
+    return (localQEffectData != null) && (localQEffectData.gravity);
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
@@ -111,9 +112,10 @@ public class QEffectVideoView
   
   public void stop()
   {
-    if (this.mMediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mMediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mMediaPlayer.release();
+      localMediaPlayer.release();
       this.mMediaPlayer = null;
       this.mPlayThread = null;
     }
@@ -126,7 +128,7 @@ public class QEffectVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qq.effect.impls.QEffectVideoView
  * JD-Core Version:    0.7.0.1
  */

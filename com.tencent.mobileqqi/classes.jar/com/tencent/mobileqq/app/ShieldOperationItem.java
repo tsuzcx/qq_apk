@@ -3,12 +3,12 @@ package com.tencent.mobileqq.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import fgr;
+import fgq;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new fgr();
+  public static final Parcelable.Creator CREATOR = new fgq();
   public int a;
   public long[] a;
   public int b;

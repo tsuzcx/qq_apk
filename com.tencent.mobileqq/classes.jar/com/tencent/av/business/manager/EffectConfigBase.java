@@ -1,572 +1,665 @@
 package com.tencent.av.business.manager;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import baub;
-import bavg;
-import bdcs;
-import bdhb;
-import bdin;
+import com.tencent.av.AVLog;
+import com.tencent.av.AVPathUtil;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.business.manager.pendant.ItemBase;
+import com.tencent.av.utils.AudioHelper;
+import com.tencent.av.utils.QAVConfigUtils;
+import com.tencent.av.utils.UITools;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.util.JSONUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lek;
-import len;
-import lew;
-import lex;
-import lid;
-import ljg;
-import ljk;
-import ljm;
-import ljn;
-import ljo;
-import ljp;
-import mww;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class EffectConfigBase<T extends ljo>
-  extends ljg
+public abstract class EffectConfigBase<T extends ItemBase>
+  extends BusinessManager
 {
-  public static String b;
-  public static String c;
-  private static String d;
-  private static String e;
-  public int a;
-  public Handler a;
-  public List<T> a;
-  protected final ljk a;
-  public T a;
-  protected List<T> b;
-  protected List<T> c;
-  protected List<WeakReference<ljn<T>>> d;
-  
-  static
-  {
-    jdField_d_of_type_JavaLangString = "qav_config_";
-    e = "text";
-    jdField_b_of_type_JavaLangString = "ver";
-    jdField_c_of_type_JavaLangString = "0";
-  }
+  protected T d;
+  protected List<T> e;
+  protected List<T> f;
+  protected Handler g = new EffectConfigBase.MyHander(this.a, this);
+  protected List<WeakReference<EffectConfigBase.IEffectConfigCallback<T>>> h = new ArrayList();
+  protected final Checker i = new Checker();
+  int j = 0;
   
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_Ljk = new ljk();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new ljp(this.jdField_a_of_type_JavaLangString, this);
-    this.jdField_d_of_type_JavaUtilList = new ArrayList();
   }
   
-  public static SharedPreferences a(int paramInt, String paramString)
+  private WeakReference<EffectConfigBase.IEffectConfigCallback<T>> a(EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
   {
-    paramString = a(paramInt, paramString);
-    return BaseApplicationImpl.getContext().getSharedPreferences(paramString, 4);
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString))) {
-      throw new IllegalArgumentException("getConfigSPName uin不能为空, configId:" + paramInt);
-    }
-    return jdField_d_of_type_JavaLangString + paramInt + "_" + paramString;
-  }
-  
-  private WeakReference<ljn<T>> a(ljn<T> paramljn)
-  {
-    int j = this.jdField_d_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
+    int m = this.h.size();
+    int k = 0;
+    while (k < m)
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((ljn)localWeakReference.get()).equals(paramljn))) {
+      WeakReference localWeakReference = (WeakReference)this.h.get(k);
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).equals(paramIEffectConfigCallback))) {
         return localWeakReference;
       }
-      i += 1;
+      k += 1;
     }
     return null;
   }
   
-  public static void a(int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a(paramInt1, paramString1).edit();
-    if (paramString2 == null)
-    {
-      localEditor.remove(e);
-      localEditor.putInt(jdField_b_of_type_JavaLangString, paramInt2);
-      localEditor.commit();
-      if (!QLog.isDevelopLevel()) {
-        break label143;
-      }
-    }
-    for (;;)
-    {
-      QLog.w("EffectConfigBase_" + paramInt1, 1, "saveConfig, configId[" + paramInt1 + "], uin[" + paramString1 + "], version[" + paramInt2 + "],\n" + paramString2 + "");
-      return;
-      localEditor.putString(e, paramString2);
-      break;
-      label143:
-      if (paramString2 == null) {
-        paramString2 = "null";
-      } else {
-        paramString2 = paramString2.length() + "";
-      }
-    }
-  }
-  
   private void a(long paramLong, T paramT, boolean paramBoolean)
   {
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "triggleonResourceDownloadFinished, id[" + paramT.getId() + "], isSuccess[" + paramBoolean + "], seq[" + paramLong + "]");
-    }
     Object localObject;
+    if (AudioHelper.e())
+    {
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("triggleonResourceDownloadFinished, id[");
+      localStringBuilder.append(paramT.getId());
+      localStringBuilder.append("], isSuccess[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
+    }
     if (paramBoolean)
     {
-      localObject = a(paramT.getId());
+      localObject = b(paramT.getId());
       if (localObject != null) {
-        ((ljo)localObject).setUsable(true);
+        ((ItemBase)localObject).setUsable(true);
       }
     }
-    int j = this.jdField_d_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
+    int m = this.h.size();
+    int k = 0;
+    while (k < m)
     {
-      localObject = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
+      localObject = (WeakReference)this.h.get(k);
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((ljn)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
+        ((EffectConfigBase.IEffectConfigCallback)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
       }
-      i += 1;
+      k += 1;
     }
   }
   
   private void a(T paramT, int paramInt)
   {
-    int j = this.jdField_d_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
+    int m = this.h.size();
+    int k = 0;
+    while (k < m)
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
+      WeakReference localWeakReference = (WeakReference)this.h.get(k);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((ljn)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
+        ((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
       }
-      i += 1;
+      k += 1;
     }
   }
   
   private boolean a(T paramT1, T paramT2)
   {
-    if (paramT1 == null) {
-      if (paramT2 != null) {}
-    }
-    while ((paramT2 != null) && (paramT1.getId().equals(paramT2.getId())))
+    if (paramT1 == null)
     {
+      if (paramT2 == null) {
+        return true;
+      }
+    }
+    else if ((paramT2 != null) && (paramT1.getId().equals(paramT2.getId()))) {
       return true;
-      return false;
     }
     return false;
   }
   
-  public static String b(int paramInt, String paramString)
+  private void c(long paramLong, T paramT)
   {
-    return a(paramInt, paramString).getString(e, null);
-  }
-  
-  private void b(long paramLong, T paramT)
-  {
-    int j = this.jdField_d_of_type_JavaUtilList.size();
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "triggleonItemSelectedChanged, size[" + j + "], seq[" + paramLong + "]");
-    }
-    int i = 0;
-    while (i < j)
+    int m = this.h.size();
+    Object localObject;
+    if (QLog.isDevelopLevel())
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((ljn)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("triggleonItemSelectedChanged, size[");
+      localStringBuilder.append(m);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
+    }
+    int k = 0;
+    while (k < m)
+    {
+      localObject = (WeakReference)this.h.get(k);
+      if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
+        ((EffectConfigBase.IEffectConfigCallback)((WeakReference)localObject).get()).onItemSelectedChanged(paramLong, paramT);
       }
-      i += 1;
+      k += 1;
     }
   }
-  
-  public static int c(int paramInt, String paramString)
-  {
-    return a(paramInt, paramString).getInt(jdField_b_of_type_JavaLangString, 0);
-  }
-  
-  public abstract int a();
   
   public int a(int paramInt, String paramString)
   {
     return 0;
   }
   
-  protected abstract Class<?> a();
-  
-  protected String a()
-  {
-    String str = null;
-    lew locallew = lex.b(a());
-    if (locallew != null) {
-      str = locallew.jdField_a_of_type_JavaLangString;
-    }
-    return str;
-  }
-  
   public String a(T paramT)
   {
-    return len.a() + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVPathUtil.a());
+    localStringBuilder.append(paramT.cid);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("temp");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramT.getId());
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
-  protected List<T> a(int paramInt, String paramString)
+  protected void a() {}
+  
+  public void a(long paramLong, EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
+  {
+    if (paramIEffectConfigCallback != null)
+    {
+      Object localObject;
+      if (a(paramIEffectConfigCallback) == null)
+      {
+        localObject = new WeakReference(paramIEffectConfigCallback);
+        this.h.add(localObject);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addCallback, callback[");
+        localStringBuilder.append(paramIEffectConfigCallback.getClass().getSimpleName());
+        localStringBuilder.append("], callback[");
+        localStringBuilder.append(paramIEffectConfigCallback);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w((String)localObject, 1, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  protected void a(Message paramMessage) {}
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && ((paramString.equals(this.c.b().k().s)) || (paramString.equals(String.valueOf(this.c.b().k().aN))))) {
+      a(AudioHelper.c(), null);
+    }
+  }
+  
+  protected void a(List<T> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    int k;
-    int i;
-    int j;
-    label68:
-    ljo localljo;
-    int m;
-    boolean bool1;
-    if (!TextUtils.isEmpty(paramString))
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      try
+      ItemBase localItemBase = (ItemBase)localIterator.next();
+      if ((localItemBase != null) && (!TextUtils.isEmpty(localItemBase.getId())))
       {
-        localObject = new JSONObject(paramString);
-        k = mww.b();
-        if (paramInt != 543) {
-          break label432;
-        }
-        i = 1;
-      }
-      catch (Exception paramString)
-      {
-        Object localObject;
-        boolean bool2;
-        String str1;
-        String str2;
-        File localFile;
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "parse, cid[" + paramInt + "], Exception", paramString);
-        a(paramInt, jdField_c_of_type_JavaLangString, 0, null);
-      }
-      if (((JSONObject)localObject).has(paramString))
-      {
-        paramString = ((JSONObject)localObject).getJSONArray(paramString);
-        localObject = a();
-        j = 0;
-        if (j < paramString.length())
+        localItemBase.cid = b();
+        String str1 = localItemBase.getVersion();
+        Object localObject1 = this.a;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("cid = ");
+        ((StringBuilder)localObject2).append(localItemBase.cid);
+        ((StringBuilder)localObject2).append(", item: ");
+        ((StringBuilder)localObject2).append(localItemBase.toString());
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append("8.8.17");
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(str1);
+        AVLog.printColorLog((String)localObject1, ((StringBuilder)localObject2).toString());
+        boolean bool2 = d(localItemBase);
+        boolean bool1 = bool2;
+        if (bool2)
         {
-          localljo = (ljo)bdcs.a((JSONObject)paramString.get(j), (Class)localObject);
-          if ((localljo == null) || (TextUtils.isEmpty(localljo.getId()))) {
-            break label423;
+          localObject2 = a(localItemBase);
+          String str2 = b(localItemBase);
+          localObject1 = new File(str2);
+          if (!((File)localObject1).exists()) {
+            try
+            {
+              FileUtils.uncompressZip((String)localObject2, str2, false);
+            }
+            catch (Throwable localThrowable)
+            {
+              str2 = this.a;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("parse item fail, item[");
+              localStringBuilder.append(localItemBase);
+              localStringBuilder.append("]");
+              QLog.i(str2, 1, localStringBuilder.toString(), localThrowable);
+            }
           }
-          localljo.cid = paramInt;
-          m = localljo.getPlatform();
-          lek.c(this.jdField_a_of_type_JavaLangString, "cid = " + localljo.cid + ", item: " + localljo.toString() + "|" + k + "|" + m);
-          bool2 = a(localljo);
-          bool1 = bool2;
-          if (bool2)
-          {
-            str1 = a(localljo);
-            str2 = b(localljo);
-            localFile = new File(str2);
-            bool1 = localFile.exists();
-            if (bool1) {}
-          }
+          bool1 = ((File)localObject1).exists();
+        }
+        if ((!TextUtils.isEmpty(str1)) && (AppSetting.b(str1) < 0)) {
+          localArrayList.add(localItemBase);
+        } else {
+          localItemBase.setUsable(bool1);
         }
       }
     }
-    label423:
-    label432:
-    label435:
-    for (;;)
+    paramList.removeAll(localArrayList);
+  }
+  
+  public boolean a(long paramLong, T paramT)
+  {
+    boolean bool = a(this.d, paramT);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    Object localObject3;
+    if (!bool)
     {
-      try
+      localObject2 = this.d;
+      this.d = paramT;
+      if (AudioHelper.e())
       {
-        bdhb.a(str1, str2, false);
-        bool1 = localFile.exists();
-        if (i == 0) {
-          break label382;
+        if (QLog.isDevelopLevel()) {
+          localObject1 = new Throwable("打印调用栈");
         }
-        localljo.setUsable(bool1);
-        localArrayList.add(localljo);
-        break label423;
-        paramString = b();
+        localObject3 = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("], count_MSG[");
+        localStringBuilder.append(this.j);
+        localStringBuilder.append("], \nlast[");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append("], \nnew[");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("]");
+        QLog.w((String)localObject3, 1, localStringBuilder.toString(), (Throwable)localObject1);
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + localljo + "]", localThrowable);
-        continue;
-      }
-      return localArrayList;
-      label382:
-      if ((m == 0) || (k >= m))
-      {
-        localljo.setUsable(bool1);
-        localArrayList.add(localljo);
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label435;
-        }
-        paramString = "content";
-        break;
-        j += 1;
-        break label68;
-        i = 0;
-      }
+      this.g.removeMessages(0);
+      this.j = 1;
+      paramT = this.g.obtainMessage(0, paramT);
+      paramT.arg1 = ((int)paramLong);
+      this.g.sendMessage(paramT);
+      return true;
     }
-  }
-  
-  public List<T> a(String paramString)
-  {
-    b();
-    if (TextUtils.equals("voicesticker", paramString)) {
-      return this.jdField_b_of_type_JavaUtilList;
-    }
-    if (TextUtils.equals("creativecop", paramString)) {
-      return this.jdField_c_of_type_JavaUtilList;
-    }
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_Ljo;
-  }
-  
-  public T a(String paramString)
-  {
-    b();
-    Iterator localIterator;
-    ljo localljo;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    if (QLog.isDevelopLevel())
     {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localljo = (ljo)localIterator.next();
-        if (paramString.equals(localljo.getId())) {
-          return localljo;
-        }
+      localObject1 = localObject2;
+      if (QLog.isDevelopLevel()) {
+        localObject1 = new Throwable("打印调用栈");
       }
+      localObject2 = this.a;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("setCurrentItem, 重复, seq[");
+      ((StringBuilder)localObject3).append(paramLong);
+      ((StringBuilder)localObject3).append("], count_MSG_ON_ITEM_SELECT_CHANGED[");
+      ((StringBuilder)localObject3).append(this.j);
+      ((StringBuilder)localObject3).append("], item[");
+      ((StringBuilder)localObject3).append(paramT);
+      ((StringBuilder)localObject3).append("]");
+      QLog.w((String)localObject2, 1, ((StringBuilder)localObject3).toString(), (Throwable)localObject1);
     }
-    if ((this.jdField_b_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localljo = (ljo)localIterator.next();
-        if (paramString.equals(localljo.getId())) {
-          return localljo;
-        }
-      }
-    }
-    if ((this.jdField_c_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localljo = (ljo)localIterator.next();
-        if (paramString.equals(localljo.getId())) {
-          return localljo;
-        }
-      }
-    }
-    return null;
+    return false;
   }
-  
-  public void a() {}
-  
-  public void a(long paramLong, ljn<T> paramljn)
-  {
-    if (paramljn != null)
-    {
-      if (a(paramljn) == null)
-      {
-        WeakReference localWeakReference = new WeakReference(paramljn);
-        this.jdField_d_of_type_JavaUtilList.add(localWeakReference);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramljn.getClass().getSimpleName() + "], callback[" + paramljn + "], seq[" + paramLong + "]");
-      }
-    }
-  }
-  
-  public void a(long paramLong, T paramT)
-  {
-    if ((paramT.isUsable()) || (TextUtils.isEmpty(paramT.getResurl())))
-    {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, 不下载, item[" + paramT + "], seq[" + paramLong + "]");
-      paramT.isDownloading = false;
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 1, (int)paramLong, paramT).sendToTarget();
-      return;
-    }
-    baub localbaub = new baub();
-    localbaub.jdField_a_of_type_Baug = new ljm(this, paramLong, paramT);
-    localbaub.jdField_a_of_type_JavaLangString = paramT.getResurl();
-    localbaub.jdField_a_of_type_Int = 0;
-    localbaub.jdField_c_of_type_JavaLangString = a(paramT);
-    localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
-    localbaub.a(paramT);
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, item[" + paramT + "], seq[" + paramLong + "]");
-    paramT.isDownloading = true;
-    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localbaub), 5, null, true);
-  }
-  
-  public void a(Message paramMessage) {}
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if ((paramBoolean) && ((paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_d_of_type_JavaLangString)) || (paramString.equals(String.valueOf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g))))) {
-      a(AudioHelper.b(), null);
-    }
-  }
-  
-  public void a(T paramT) {}
   
   public boolean a(long paramLong, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItemById, id[" + paramString + "], seq[" + paramLong + "]");
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCurrentItemById, id[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
       a(paramLong, null);
       return true;
     }
-    a(paramLong, a(paramString));
+    a(paramLong, b(paramString));
     return true;
   }
   
-  public boolean a(long paramLong, T paramT)
+  public int a_(int paramInt, String paramString)
   {
-    ljo localljo = null;
-    Object localObject = null;
-    if (!a(this.jdField_a_of_type_Ljo, paramT))
+    String str = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSendMessageToPeer :");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString);
+    AVLog.printColorLog(str, localStringBuilder.toString());
+    return this.c.b().e(paramInt, paramString);
+  }
+  
+  public abstract int b();
+  
+  public T b(String paramString)
+  {
+    g();
+    Iterator localIterator;
+    ItemBase localItemBase;
+    if ((this.e != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localljo = this.jdField_a_of_type_Ljo;
-      this.jdField_a_of_type_Ljo = paramT;
-      if (AudioHelper.e())
+      localIterator = this.e.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isDevelopLevel()) {
-          localObject = new Throwable("打印调用栈");
+        localItemBase = (ItemBase)localIterator.next();
+        if (paramString.equals(localItemBase.getId())) {
+          return localItemBase;
         }
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + localljo + "], \nnew[" + this.jdField_a_of_type_Ljo + "]", (Throwable)localObject);
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_Int = 1;
-      paramT = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramT);
-      paramT.arg1 = ((int)paramLong);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramT);
-      return true;
     }
-    if (QLog.isDevelopLevel())
+    if ((this.f != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localObject = localljo;
-      if (QLog.isDevelopLevel()) {
-        localObject = new Throwable("打印调用栈");
-      }
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, 重复, seq[" + paramLong + "], count_MSG_ON_ITEM_SELECT_CHANGED[" + this.jdField_a_of_type_Int + "], item[" + paramT + "]", (Throwable)localObject);
-    }
-    return false;
-  }
-  
-  protected boolean a(T paramT)
-  {
-    if ((paramT == null) || (paramT.cid <= 0) || (TextUtils.isEmpty(paramT.getId())))
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("isTemplateUsable:");
-      if (paramT != null) {}
-      for (paramT = Integer.valueOf(paramT.cid);; paramT = "item == null")
+      localIterator = this.f.iterator();
+      while (localIterator.hasNext())
       {
-        lek.e(str, paramT + "|");
-        return false;
+        localItemBase = (ItemBase)localIterator.next();
+        if (paramString.equals(localItemBase.getId())) {
+          return localItemBase;
+        }
       }
     }
-    if (TextUtils.isEmpty(paramT.getResurl())) {
-      return true;
-    }
-    if (!new File(a(paramT)).exists()) {
-      return false;
-    }
-    long l1 = System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramT));
-    long l2 = System.currentTimeMillis();
-    paramT = paramT.getMd5();
-    lek.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
-    return paramT.equalsIgnoreCase(str);
-  }
-  
-  public int b(int paramInt, String paramString)
-  {
-    lek.c(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
-    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramInt, paramString);
-  }
-  
-  protected String b()
-  {
-    return "content";
+    return null;
   }
   
   public String b(T paramT)
   {
-    return len.a() + paramT.cid + File.separator + paramT.getId() + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVPathUtil.a());
+    localStringBuilder.append(paramT.cid);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramT.getId());
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
-  public void b()
+  public void b(long paramLong, EffectConfigBase.IEffectConfigCallback<T> paramIEffectConfigCallback)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    if (paramIEffectConfigCallback != null)
     {
-      String str = a();
-      this.jdField_a_of_type_JavaUtilList = a(a(), str);
-    }
-    if (a() == 176)
-    {
-      if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_b_of_type_JavaUtilList = a(370, lex.b(370).jdField_a_of_type_JavaLangString);
+      if (a(paramIEffectConfigCallback) != null) {
+        this.h.remove(paramIEffectConfigCallback);
       }
-      if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() == 0)) {
-        this.jdField_c_of_type_JavaUtilList = a(543, lex.b(543).jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        String str = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeCallback, callback[");
+        localStringBuilder.append(paramIEffectConfigCallback.getClass().getSimpleName());
+        localStringBuilder.append("], callback[");
+        localStringBuilder.append(paramIEffectConfigCallback);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w(str, 1, localStringBuilder.toString());
       }
     }
   }
   
-  public void b(long paramLong, ljn<T> paramljn)
+  public void b(long paramLong, T paramT)
   {
-    if (paramljn != null)
+    if ((!paramT.isUsable()) && (!TextUtils.isEmpty(paramT.getResUrl())))
     {
-      if (a(paramljn) != null) {
-        this.jdField_d_of_type_JavaUtilList.remove(paramljn);
+      localObject1 = new HttpNetReq();
+      ((HttpNetReq)localObject1).mCallback = new EffectConfigBase.1(this, paramLong, paramT);
+      ((HttpNetReq)localObject1).mReqUrl = paramT.getResUrl();
+      ((HttpNetReq)localObject1).mHttpMethod = 0;
+      ((HttpNetReq)localObject1).mOutPath = a(paramT);
+      ((HttpNetReq)localObject1).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
+      ((HttpNetReq)localObject1).setUserData(paramT);
+      localObject2 = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startDownload, item[");
+      localStringBuilder.append(paramT);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject2, 1, localStringBuilder.toString());
+      paramT.isDownloading = true;
+      ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, (HttpNetReq)localObject1), 5, null, true);
+      return;
+    }
+    Object localObject1 = this.a;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("startDownload, 不下载, item[");
+    ((StringBuilder)localObject2).append(paramT);
+    ((StringBuilder)localObject2).append("], seq[");
+    ((StringBuilder)localObject2).append(paramLong);
+    ((StringBuilder)localObject2).append("]");
+    QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    paramT.isDownloading = false;
+    this.g.obtainMessage(1, 1, (int)paramLong, paramT).sendToTarget();
+  }
+  
+  public T c()
+  {
+    return this.d;
+  }
+  
+  protected List<T> c(int paramInt, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      int m;
+      int n;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        m = UITools.getQQVersion();
+        Object localObject1 = h();
+        Object localObject2;
+        if (paramString.has((String)localObject1))
+        {
+          paramString = paramString.getJSONArray((String)localObject1);
+          localObject1 = i();
+          int k = 0;
+          if (k < paramString.length())
+          {
+            localObject2 = (ItemBase)JSONUtils.a((JSONObject)paramString.get(k), (Class)localObject1);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((ItemBase)localObject2).getId())))
+            {
+              ((ItemBase)localObject2).cid = paramInt;
+              n = ((ItemBase)localObject2).getPlatform();
+              Object localObject3 = this.a;
+              Object localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("cid = ");
+              ((StringBuilder)localObject4).append(((ItemBase)localObject2).cid);
+              ((StringBuilder)localObject4).append(", item: ");
+              ((StringBuilder)localObject4).append(localObject2.toString());
+              ((StringBuilder)localObject4).append("|");
+              ((StringBuilder)localObject4).append(m);
+              ((StringBuilder)localObject4).append("|");
+              ((StringBuilder)localObject4).append(n);
+              AVLog.printColorLog((String)localObject3, ((StringBuilder)localObject4).toString());
+              boolean bool2 = d((ItemBase)localObject2);
+              boolean bool1 = bool2;
+              if (!bool2) {
+                break label433;
+              }
+              localObject4 = a((ItemBase)localObject2);
+              String str = b((ItemBase)localObject2);
+              localObject3 = new File(str);
+              bool1 = ((File)localObject3).exists();
+              if (!bool1) {
+                try
+                {
+                  FileUtils.uncompressZip((String)localObject4, str, false);
+                }
+                catch (Throwable localThrowable)
+                {
+                  str = this.a;
+                  StringBuilder localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("parse item fail, item[");
+                  localStringBuilder.append(localObject2);
+                  localStringBuilder.append("]");
+                  QLog.i(str, 1, localStringBuilder.toString(), localThrowable);
+                }
+              }
+              bool1 = ((File)localObject3).exists();
+              break label433;
+              ((ItemBase)localObject2).setUsable(bool1);
+              localArrayList.add(localObject2);
+            }
+            k += 1;
+            continue;
+          }
+        }
+        return localArrayList;
       }
+      catch (Exception paramString)
+      {
+        localObject1 = this.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("parse, cid[");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append("], Exception");
+        QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString(), paramString);
+        QAVConfigUtils.a(paramInt, QAVConfigUtils.b, 0, null);
+      }
+      label433:
+      if (n != 0) {
+        if (m < n) {}
+      }
+    }
+  }
+  
+  public List<T> c(String paramString)
+  {
+    g();
+    if (TextUtils.equals("voicesticker", paramString)) {
+      return this.f;
+    }
+    if ((QLog.isColorLevel()) && (this.e != null))
+    {
+      paramString = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mItemList size : ");
+      localStringBuilder.append(this.e.size());
+      QLog.i(paramString, 2, localStringBuilder.toString());
+    }
+    else if ((QLog.isColorLevel()) && (this.e == null))
+    {
+      QLog.i(this.a, 2, "mItemList is null ");
+    }
+    return this.e;
+  }
+  
+  protected void c(T paramT)
+  {
+    this.c.a(new Object[] { Integer.valueOf(525), Boolean.valueOf(false) });
+  }
+  
+  protected String d()
+  {
+    QAVConfItem localQAVConfItem = QAVConfig.b(b());
+    if (localQAVConfItem != null) {
+      return localQAVConfItem.b;
+    }
+    return null;
+  }
+  
+  protected boolean d(T paramT)
+  {
+    if ((paramT != null) && (paramT.cid > 0) && (!TextUtils.isEmpty(paramT.getId())))
+    {
+      if (TextUtils.isEmpty(paramT.getResUrl())) {
+        return true;
+      }
+      str = a(paramT);
+      if (!new File(str).exists()) {
+        return false;
+      }
+      long l1 = SystemClock.elapsedRealtime();
+      str = SecUtil.getFileMd5(str);
+      long l2 = SystemClock.elapsedRealtime();
+      paramT = paramT.getMd5();
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isTemplateUsable :");
+      localStringBuilder.append(str);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramT);
+      localStringBuilder.append("|");
+      localStringBuilder.append(l2 - l1);
+      AVLog.printColorLog((String)localObject, localStringBuilder.toString());
+      return paramT.equalsIgnoreCase(str);
+    }
+    String str = this.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isTemplateUsable:");
+    if (paramT != null) {
+      paramT = Integer.valueOf(paramT.cid);
+    } else {
+      paramT = "item == null";
+    }
+    ((StringBuilder)localObject).append(paramT);
+    ((StringBuilder)localObject).append("|");
+    AVLog.printErrorLog(str, ((StringBuilder)localObject).toString());
+    return false;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected void f() {}
+  
+  protected void g()
+  {
+    if (e())
+    {
       if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramljn.getClass().getSimpleName() + "], callback[" + paramljn + "], seq[" + paramLong + "]");
+        QLog.i(this.a, 2, "config pull from middle platform");
       }
+      f();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(this.a, 2, "config pull from manager");
+    }
+    Object localObject = this.e;
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      localObject = d();
+      this.e = c(b(), (String)localObject);
     }
   }
   
-  public String c(T paramT)
+  protected String h()
   {
-    return len.a() + paramT.cid + File.separator + paramT.getId();
+    return "content";
   }
+  
+  protected abstract Class<?> i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase
  * JD-Core Version:    0.7.0.1
  */

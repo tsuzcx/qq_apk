@@ -3,22 +3,21 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apfr;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class Setting
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new apfr();
+  public static final Parcelable.Creator<Setting> CREATOR = new Setting.1();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
-  public long headImgTimestamp;
-  public short systemHeadID;
-  @awhs
+  public long headImgTimestamp = 0L;
+  public short systemHeadID = 0;
+  @unique
   public String uin;
   public long updateTimestamp;
   public String url;
@@ -59,15 +58,25 @@ public class Setting
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("[uin:").append(this.uin);
-    localStringBuilder.append(",headImgTimestamp:").append(this.headImgTimestamp);
-    localStringBuilder.append(",systemHeadId:").append(this.systemHeadID);
-    localStringBuilder.append(",bFaceFlags:").append(this.bFaceFlags);
-    localStringBuilder.append(",bUsrType:").append(this.bUsrType);
-    localStringBuilder.append(",bHeadType:").append(this.bHeadType);
-    localStringBuilder.append(",bSourceType:").append(this.bSourceType);
-    localStringBuilder.append(",updateTimestamp:").append(this.updateTimestamp);
-    localStringBuilder.append(",url:").append(this.url).append("]");
+    localStringBuilder.append("[uin:");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(",headImgTimestamp:");
+    localStringBuilder.append(this.headImgTimestamp);
+    localStringBuilder.append(",systemHeadId:");
+    localStringBuilder.append(this.systemHeadID);
+    localStringBuilder.append(",bFaceFlags:");
+    localStringBuilder.append(this.bFaceFlags);
+    localStringBuilder.append(",bUsrType:");
+    localStringBuilder.append(this.bUsrType);
+    localStringBuilder.append(",bHeadType:");
+    localStringBuilder.append(this.bHeadType);
+    localStringBuilder.append(",bSourceType:");
+    localStringBuilder.append(this.bSourceType);
+    localStringBuilder.append(",updateTimestamp:");
+    localStringBuilder.append(this.updateTimestamp);
+    localStringBuilder.append(",url:");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   

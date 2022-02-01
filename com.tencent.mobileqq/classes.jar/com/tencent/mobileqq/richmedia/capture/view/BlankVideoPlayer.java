@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import aesa;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.LinearLayout;
-import axrr;
-import axrs;
-import axrt;
-import bass;
+import com.tencent.mobileqq.activity.aio.Callback;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
@@ -25,13 +22,13 @@ import mqq.os.MqqHandler;
 
 public class BlankVideoPlayer
   extends LinearLayout
-  implements aesa, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
-  private axrr jdField_a_of_type_Axrr;
-  private axrs jdField_a_of_type_Axrs;
-  private axrt jdField_a_of_type_Axrt;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  private TVK_IMediaPlayer b;
+  private GuideVideoView.OnCloseListener c;
+  private GuideVideoView.OnCompleteListener d;
+  private GuideVideoView.OnErrorListener e;
   
   public BlankVideoPlayer(Context paramContext)
   {
@@ -43,12 +40,16 @@ public class BlankVideoPlayer
   
   public void OnDownloadCallback(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlankVideoPlayer", 2, "OnDownloadCallback " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadCallback ");
+      localStringBuilder.append(paramString);
+      QLog.d("BlankVideoPlayer", 2, localStringBuilder.toString());
     }
   }
   
-  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
+  public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BlankVideoPlayer", 2, "handleMessage");
@@ -57,15 +58,23 @@ public class BlankVideoPlayer
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.jdField_a_of_type_Axrs != null) {
-      this.jdField_a_of_type_Axrs.a();
+    paramTVK_IMediaPlayer = this.d;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.a();
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Axrt != null) {
-      this.jdField_a_of_type_Axrt.a("onError sdkError : " + paramInt1 + "  sdkDetailError : " + paramInt2);
+    paramTVK_IMediaPlayer = this.e;
+    if (paramTVK_IMediaPlayer != null)
+    {
+      paramString = new StringBuilder();
+      paramString.append("onError sdkError : ");
+      paramString.append(paramInt1);
+      paramString.append("  sdkDetailError : ");
+      paramString.append(paramInt2);
+      paramTVK_IMediaPlayer.a(paramString.toString());
     }
     return false;
   }
@@ -119,24 +128,24 @@ public class BlankVideoPlayer
     }
   }
   
-  public void setOnCloseListener(axrr paramaxrr)
+  public void setOnCloseListener(GuideVideoView.OnCloseListener paramOnCloseListener)
   {
-    this.jdField_a_of_type_Axrr = paramaxrr;
+    this.c = paramOnCloseListener;
   }
   
-  public void setOnCompleteListener(axrs paramaxrs)
+  public void setOnCompleteListener(GuideVideoView.OnCompleteListener paramOnCompleteListener)
   {
-    this.jdField_a_of_type_Axrs = paramaxrs;
+    this.d = paramOnCompleteListener;
   }
   
-  public void setOnErrorListener(axrt paramaxrt)
+  public void setOnErrorListener(GuideVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_Axrt = paramaxrt;
+    this.e = paramOnErrorListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BlankVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

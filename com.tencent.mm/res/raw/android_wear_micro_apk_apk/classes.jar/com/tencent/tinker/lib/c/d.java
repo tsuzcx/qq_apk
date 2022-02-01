@@ -9,7 +9,7 @@ public abstract interface d
   
   public abstract void a(File paramFile, boolean paramBoolean, long paramLong);
   
-  public abstract void g(Intent paramIntent);
+  public abstract void i(Intent paramIntent);
 }
 
 

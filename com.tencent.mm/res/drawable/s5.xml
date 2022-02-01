@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@raw/checkbox_selected" />
-    <item android:drawable="@raw/checkbox_unselected_white" />
+    <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/s4" />
+    <item android:state_enabled="true" android:state_selected="true" android:drawable="@drawable/s4" />
+    <item android:state_enabled="false" android:drawable="@drawable/s3" />
+    <item android:drawable="@drawable/s3" />
 </selector>

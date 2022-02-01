@@ -34,18 +34,15 @@ class QQBaseAbilityInterfaceImpl$1
     localBundle.putLong("totalSize", paramInt2);
     if (paramInt2 == 0) {
       localBundle.putInt("percent", 0);
-    }
-    for (;;)
-    {
-      this.val$downloadCallback.onProgress(localBundle);
-      return;
+    } else {
       localBundle.putInt("percent", paramInt1 / paramInt2 * 100);
     }
+    this.val$downloadCallback.onProgress(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.QQBaseAbilityInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

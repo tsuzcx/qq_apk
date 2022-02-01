@@ -13,7 +13,7 @@ public abstract interface KButton
   
   public abstract FontStyle getFontStyle();
   
-  public abstract long getNormalColor();
+  public abstract DynamicColor getNormalColor();
   
   public abstract KImage getNormalImage();
   
@@ -23,7 +23,7 @@ public abstract interface KButton
   
   public abstract String getText();
   
-  public abstract long getTextNormalColor();
+  public abstract DynamicColor getTextNormalColor();
   
   public abstract float getTextSize();
   
@@ -37,7 +37,7 @@ public abstract interface KButton
   
   public abstract void setFontStyle(FontStyle paramFontStyle);
   
-  public abstract void setNormalColor(long paramLong);
+  public abstract void setNormalColor(DynamicColor paramDynamicColor);
   
   public abstract void setNormalImage(KImage paramKImage);
   
@@ -47,13 +47,13 @@ public abstract interface KButton
   
   public abstract void setText(String paramString);
   
-  public abstract void setTextNormalColor(long paramLong);
+  public abstract void setTextNormalColor(DynamicColor paramDynamicColor);
   
   public abstract void setTextSize(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KButton
  * JD-Core Version:    0.7.0.1
  */

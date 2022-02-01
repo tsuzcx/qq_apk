@@ -1,32 +1,20 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mm.kernel.c.a;
+import java.util.List;
+
 public abstract interface f
+  extends a
 {
-  public abstract void a(WidgetData paramWidgetData, String paramString);
+  public abstract int a(Activity paramActivity, String paramString1, String paramString2, List<ag> paramList, af paramaf);
   
-  public abstract void a(WidgetData paramWidgetData, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void agn(String paramString);
-  
-  public abstract void ago(String paramString);
-  
-  public abstract void cZe();
-  
-  public abstract void f(int paramInt1, int paramInt2, String paramString1, String paramString2);
-  
-  public abstract void hg(String paramString1, String paramString2);
-  
-  public abstract void n(String paramString1, String paramString2, int paramInt1, int paramInt2);
-  
-  public abstract void onDestroy();
-  
-  public abstract void onPause();
-  
-  public abstract void onResume();
+  public abstract d a(Context paramContext, n paramn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.f
  * JD-Core Version:    0.7.0.1
  */

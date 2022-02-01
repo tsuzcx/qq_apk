@@ -1,11 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class hcv
+  implements View.OnTouchListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public hcv(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  private hcv(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839369);
+    return false;
+  }
 }
 
 

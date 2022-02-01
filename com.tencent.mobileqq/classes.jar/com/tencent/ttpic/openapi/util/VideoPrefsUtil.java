@@ -63,55 +63,54 @@ public class VideoPrefsUtil
   
   public static String getAiBeautyParamsSettingPath()
   {
-    String str = null;
     if (getDefaultPrefs() != null) {
-      str = getDefaultPrefs().getString("AI_BEAUTY_PARAMS_SETTING_PATH", null);
+      return getDefaultPrefs().getString("AI_BEAUTY_PARAMS_SETTING_PATH", null);
     }
-    return str;
+    return null;
   }
   
   public static SharedPreferences getDefaultPrefs()
   {
-    if ((mPrefs == null) && (mContext != null) && (mContext.get() != null)) {
-      mPrefs = PreferenceManager.getDefaultSharedPreferences((Context)mContext.get());
+    if (mPrefs == null)
+    {
+      WeakReference localWeakReference = mContext;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        mPrefs = PreferenceManager.getDefaultSharedPreferences((Context)mContext.get());
+      }
     }
     return mPrefs;
   }
   
   public static String getDeviceConfigJsonPath()
   {
-    String str = null;
     if (getDefaultPrefs() != null) {
-      str = getDefaultPrefs().getString("DEVICE_CONFIG_JSON_PATH", null);
+      return getDefaultPrefs().getString("DEVICE_CONFIG_JSON_PATH", null);
     }
-    return str;
+    return null;
   }
   
   public static int getDowngradeLevel()
   {
-    int i = -1;
     if (getDefaultPrefs() != null) {
-      i = getDefaultPrefs().getInt("prefs_key_downgrade_level", -1);
+      return getDefaultPrefs().getInt("prefs_key_downgrade_level", -1);
     }
-    return i;
+    return -1;
   }
   
   public static boolean getMaterialMute()
   {
-    boolean bool = false;
     if (getDefaultPrefs() != null) {
-      bool = getDefaultPrefs().getBoolean("prefs_key_is_material_mute", false);
+      return getDefaultPrefs().getBoolean("prefs_key_is_material_mute", false);
     }
-    return bool;
+    return false;
   }
   
   public static int getNormalEncodeWidth()
   {
-    int i = 720;
     if (getDefaultPrefs() != null) {
-      i = getDefaultPrefs().getInt("prefs_key_encode_width", 720);
+      return getDefaultPrefs().getInt("prefs_key_encode_width", 720);
     }
-    return i;
+    return 720;
   }
   
   public static SharedPreferences getSoPrefs()
@@ -121,20 +120,18 @@ public class VideoPrefsUtil
   
   public static String getStringParam(String paramString)
   {
-    String str = null;
     if (getDefaultPrefs() != null) {
-      str = getDefaultPrefs().getString(paramString, null);
+      return getDefaultPrefs().getString(paramString, null);
     }
-    return str;
+    return null;
   }
   
   public static boolean getUseHardwareDecoder()
   {
-    boolean bool = true;
     if (getDefaultPrefs() != null) {
-      bool = getDefaultPrefs().getBoolean("prefs_key_use_hardware_decoder", true);
+      return getDefaultPrefs().getBoolean("prefs_key_use_hardware_decoder", true);
     }
-    return bool;
+    return true;
   }
   
   public static void init(Context paramContext)
@@ -150,17 +147,22 @@ public class VideoPrefsUtil
     if (mPrefs == null) {
       mPrefs = PreferenceManager.getDefaultSharedPreferences(paramContext);
     }
-    mSoPrefs = AEModule.getContext().getSharedPreferences("puding_so", 0);
     mContext = new WeakReference(paramContext);
+    if (AEModule.getContext() != null) {
+      paramContext = AEModule.getContext();
+    }
+    if (paramContext == null) {
+      return;
+    }
+    mSoPrefs = paramContext.getSharedPreferences("puding_so", 0);
   }
   
   public static boolean isAgeSDKDownload()
   {
-    boolean bool = false;
     if (getDefaultPrefs() != null) {
-      bool = getDefaultPrefs().getBoolean("AGE_DETECTOR_DOWLOADED", false);
+      return getDefaultPrefs().getBoolean("AGE_DETECTOR_DOWLOADED", false);
     }
-    return bool;
+    return false;
   }
   
   public static boolean isCouldIntelligentBeauty()
@@ -170,20 +172,18 @@ public class VideoPrefsUtil
   
   public static boolean isGenderSDKDownload()
   {
-    boolean bool = false;
     if (getDefaultPrefs() != null) {
-      bool = getDefaultPrefs().getBoolean("GENDER_DETECTOR_DOWLOADED", false);
+      return getDefaultPrefs().getBoolean("GENDER_DETECTOR_DOWLOADED", false);
     }
-    return bool;
+    return false;
   }
   
   public static boolean isIntelligentBeautyEnable()
   {
-    boolean bool = false;
     if (getDefaultPrefs() != null) {
-      bool = getDefaultPrefs().getBoolean("INTELLIGENT_BEAUTY_ENABLE", false);
+      return getDefaultPrefs().getBoolean("INTELLIGENT_BEAUTY_ENABLE", false);
     }
-    return bool;
+    return false;
   }
   
   public static void setAiBeautyParamsSettingPath(String paramString)
@@ -254,7 +254,10 @@ public class VideoPrefsUtil
       getDefaultPrefs().edit().putString(paramString1, paramString2).apply();
       return;
     }
-    LogUtils.e("VideoPrefsUtil", "getDefaultPrefs is null, setStringParam failed:" + paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append("getDefaultPrefs is null, setStringParam failed:");
+    paramString1.append(paramString2);
+    LogUtils.e("VideoPrefsUtil", paramString1.toString());
   }
   
   public static void setUseHardWareDecoder(boolean paramBoolean)
@@ -269,7 +272,7 @@ public class VideoPrefsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoPrefsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/f19" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/a49" />
-    <TextView android:textSize="12.0dip" android:textColor="#7fffffff" android:id="@id/f1_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-</merge>
+<RelativeLayout android:id="@id/l5c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/l6c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/l8b" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@drawable/azw" android:layout_centerInParent="true" android:contentDescription="@string/a1r" />
+    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/l5t" android:visibility="gone" android:layout_width="@dimen/an2" android:layout_height="@dimen/an2" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/l63" android:background="@color/xd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l62" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:src="@raw/icons_outlined_error" android:layout_centerHorizontal="true" app:iconColor="@color/al2" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/al2" android:id="@id/l64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_below="@id/l62" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

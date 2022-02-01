@@ -22,17 +22,22 @@ public class FileStructStat
   
   public boolean isDirectory()
   {
-    return (this.st_mode & 0xF000) == 16384;
+    return (this.st_mode & 0x4000) == 16384;
   }
   
   public boolean isSymLink()
   {
     return (this.st_mode & 0xF000) == 40960;
   }
+  
+  public void makeItIsDir()
+  {
+    this.st_mode |= 0x4000;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.FileStructStat
  * JD-Core Version:    0.7.0.1
  */

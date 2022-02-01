@@ -25,12 +25,21 @@ public class SearchParam$Rectangle
   
   public String toString()
   {
-    return "rectangle(" + this.a.latitude + "," + this.a.longitude + "," + this.b.latitude + "," + this.b.longitude + ")";
+    StringBuilder localStringBuilder = new StringBuilder("rectangle(");
+    localStringBuilder.append(this.a.latitude);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.a.longitude);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b.latitude);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b.longitude);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.SearchParam.Rectangle
  * JD-Core Version:    0.7.0.1
  */

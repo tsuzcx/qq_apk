@@ -1,16 +1,20 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import alud;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.dbfix.DBFix;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class DBFixConfigActivity$7$1
   implements Runnable
 {
-  DBFixConfigActivity$7$1(DBFixConfigActivity.7 param7) {}
+  DBFixConfigActivity$7$1(DBFixConfigActivity.7 param7, File paramFile) {}
   
   public void run()
   {
-    QQToast.a(this.a.this$0.getApplicationContext(), alud.a(2131703253), 1).a();
+    Object localObject = this.a.getAbsolutePath();
+    QLog.d(DBFixConfigActivity.a, 1, new Object[] { "checkCorruptDB path: ", localObject });
+    localObject = DBFix.getInstance().doIntegrityCheck((String)localObject);
+    QLog.d(DBFixConfigActivity.a, 1, new Object[] { "checkCorruptDB result: ", localObject });
   }
 }
 

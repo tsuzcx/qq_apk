@@ -11,18 +11,22 @@ class OrientationDetector$1
   
   public void run()
   {
-    if (this.val$activity != null) {
-      OrientationDetector.access$102(this.this$0, this.val$activity.getRequestedOrientation());
+    Object localObject = this.val$activity;
+    if (localObject != null) {
+      OrientationDetector.access$102(this.this$0, ((Activity)localObject).getRequestedOrientation());
     }
-    OrientationDetector.access$202(this.this$0, new OrientationDetector.RotationObserver(this.this$0, new Handler(Looper.getMainLooper())));
+    localObject = this.this$0;
+    OrientationDetector.access$202((OrientationDetector)localObject, new OrientationDetector.RotationObserver((OrientationDetector)localObject, new Handler(Looper.getMainLooper())));
     OrientationDetector.access$200(this.this$0).registerObserver();
-    OrientationDetector.access$002(this.this$0, ViolaUtils.isSystemAutoRotateOpen(this.this$0.getContext()));
-    this.this$0.enable(OrientationDetector.access$000(this.this$0));
+    localObject = this.this$0;
+    OrientationDetector.access$002((OrientationDetector)localObject, ViolaUtils.isSystemAutoRotateOpen(((OrientationDetector)localObject).getContext()));
+    localObject = this.this$0;
+    ((OrientationDetector)localObject).enable(OrientationDetector.access$000((OrientationDetector)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector.1
  * JD-Core Version:    0.7.0.1
  */

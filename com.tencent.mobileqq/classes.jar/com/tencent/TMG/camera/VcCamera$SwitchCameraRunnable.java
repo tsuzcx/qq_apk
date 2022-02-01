@@ -19,89 +19,92 @@ class VcCamera$SwitchCameraRunnable
   
   public void run()
   {
-    if ((this.this$0.NUM_CAMERA < 2) || (this.this$0.mCamera == null)) {}
-    while (this.mCameraId == this.this$0.CUR_CAMERA) {
-      return;
-    }
-    this.this$0.closeInternal();
-    if (this.mCameraId == 0)
+    if (this.this$0.NUM_CAMERA >= 2)
     {
-      if (!VcCamera.access$500(this.this$0)) {
-        break label397;
+      if (this.this$0.mCamera == null) {
+        return;
       }
-      VcCamera.access$200(this.this$0, this.this$0.VideoChatSettings.width, this.this$0.VideoChatSettings.height);
-    }
-    label397:
-    for (int i = 1;; i = 0) {
-      for (;;)
+      if (this.mCameraId == this.this$0.CUR_CAMERA) {
+        return;
+      }
+      this.this$0.closeInternal();
+      int j = this.mCameraId;
+      int i = 1;
+      Object localObject1;
+      if (j == 0)
       {
-        synchronized (this.this$0.holderLock)
+        if (VcCamera.access$500(this.this$0))
         {
-          if (VcCamera.mHolder == null)
-          {
-            localSurfaceHolder1 = null;
-            if (!VcCamera.access$300(this.this$0)) {
-              break label339;
-            }
-            this.this$0.mSurfaceTextureManager.init();
-            SurfaceTexture localSurfaceTexture = this.this$0.mSurfaceTextureManager.getSurfaceTexture();
-            ??? = localSurfaceTexture;
-            if (localSurfaceTexture == null)
-            {
-              QLog.d("VcCamera", 0, "switchCamera surfaceTexture == null");
-              i = 0;
-              ??? = localSurfaceTexture;
-            }
-            if (i == 0) {
-              break;
-            }
-            try
-            {
-              this.this$0.mCallbackBufferAddStrategy.setCameraCaptureSettings(this.this$0.VideoChatSettings);
-              this.this$0.mCallbackBufferAddStrategy.fistAdd(this.this$0.mCamera);
-              if (!this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer()) {
-                break label358;
-              }
-              this.this$0.mCamera.setPreviewCallbackWithBuffer(VcCamera.access$100(this.this$0));
-              if (!VcCamera.access$300(this.this$0)) {
-                break label378;
-              }
-              this.this$0.mCamera.setPreviewTexture(???);
-              this.this$0.mCamera.startPreview();
-              return;
-            }
-            catch (Exception localException) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("VcCamera", 0, "setPreviewDisplay error", localException);
-            return;
-            if (!VcCamera.access$600(this.this$0)) {
-              break label397;
-            }
-            VcCamera.access$200(this.this$0, this.this$0.VideoChatSettings.width, this.this$0.VideoChatSettings.height);
-            i = 1;
-            continue;
-          }
-          SurfaceHolder localSurfaceHolder1 = (SurfaceHolder)VcCamera.mHolder.get();
+          localObject1 = this.this$0;
+          VcCamera.access$200((VcCamera)localObject1, ((VcCamera)localObject1).VideoChatSettings.width, this.this$0.VideoChatSettings.height);
+          break label135;
         }
-        label339:
-        Object localObject2;
-        if (localSurfaceHolder2 == null)
+      }
+      else if (VcCamera.access$600(this.this$0))
+      {
+        localObject1 = this.this$0;
+        VcCamera.access$200((VcCamera)localObject1, ((VcCamera)localObject1).VideoChatSettings.width, this.this$0.VideoChatSettings.height);
+        break label135;
+      }
+      i = 0;
+      label135:
+      synchronized (this.this$0.holderLock)
+      {
+        Object localObject3 = VcCamera.mHolder;
+        localObject1 = null;
+        SurfaceTexture localSurfaceTexture = null;
+        if (localObject3 == null) {
+          localObject3 = null;
+        } else {
+          localObject3 = (SurfaceHolder)VcCamera.mHolder.get();
+        }
+        if (VcCamera.access$300(this.this$0))
         {
-          QLog.d("VcCamera", 0, "switchCamera holder == null");
-          localObject2 = null;
-          i = 0;
-          continue;
-          label358:
-          this.this$0.mCamera.setPreviewCallback(VcCamera.access$100(this.this$0));
-          continue;
-          label378:
-          this.this$0.mCamera.setPreviewDisplay(localSurfaceHolder2);
+          this.this$0.mSurfaceTextureManager.init();
+          localSurfaceTexture = this.this$0.mSurfaceTextureManager.getSurfaceTexture();
+          localObject1 = localSurfaceTexture;
+          if (localSurfaceTexture != null) {
+            break label254;
+          }
+          QLog.d("VcCamera", 0, "switchCamera surfaceTexture == null");
+          localObject1 = localSurfaceTexture;
         }
         else
         {
-          localObject2 = null;
+          if (localObject3 != null) {
+            break label254;
+          }
+          QLog.d("VcCamera", 0, "switchCamera holder == null");
+          localObject1 = localSurfaceTexture;
+        }
+        i = 0;
+        label254:
+        if (i == 0) {
+          return;
+        }
+        try
+        {
+          this.this$0.mCallbackBufferAddStrategy.setCameraCaptureSettings(this.this$0.VideoChatSettings);
+          this.this$0.mCallbackBufferAddStrategy.fistAdd(this.this$0.mCamera);
+          if (this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer()) {
+            this.this$0.mCamera.setPreviewCallbackWithBuffer(VcCamera.access$100(this.this$0));
+          } else {
+            this.this$0.mCamera.setPreviewCallback(VcCamera.access$100(this.this$0));
+          }
+          if (VcCamera.access$300(this.this$0)) {
+            this.this$0.mCamera.setPreviewTexture((SurfaceTexture)localObject1);
+          } else {
+            this.this$0.mCamera.setPreviewDisplay((SurfaceHolder)localObject3);
+          }
+          this.this$0.mCamera.startPreview();
+          return;
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VcCamera", 0, "setPreviewDisplay error", localException);
+          }
+          return;
         }
       }
     }
@@ -109,7 +112,7 @@ class VcCamera$SwitchCameraRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.camera.VcCamera.SwitchCameraRunnable
  * JD-Core Version:    0.7.0.1
  */

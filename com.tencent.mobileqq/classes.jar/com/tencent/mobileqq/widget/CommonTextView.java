@@ -6,16 +6,13 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import beob;
-import berb;
-import berc;
 
 public class CommonTextView
   extends TextView
-  implements berc
+  implements MosaicEffect.IMosaicEffect
 {
-  private beob jdField_a_of_type_Beob;
-  private berb jdField_a_of_type_Berb;
+  private MosaicEffect a;
+  private CommonTextView.onVisibilityChangedListener b;
   
   public CommonTextView(Context paramContext)
   {
@@ -32,21 +29,12 @@ public class CommonTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(Canvas paramCanvas)
-  {
-    super.draw(paramCanvas);
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Berb != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.jdField_a_of_type_Berb.a(paramCanvas);
+      localMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -54,9 +42,10 @@ public class CommonTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Berb != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.jdField_a_of_type_Berb.b(paramCanvas);
+      localMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -65,32 +54,43 @@ public class CommonTextView
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if (this.jdField_a_of_type_Beob != null) {
-      this.jdField_a_of_type_Beob.a(paramView, paramInt);
+    CommonTextView.onVisibilityChangedListener localonVisibilityChangedListener = this.b;
+    if (localonVisibilityChangedListener != null) {
+      localonVisibilityChangedListener.a(paramView, paramInt);
     }
   }
   
-  public void setMosaicEffect(berb paramberb)
+  public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    berb localberb = this.jdField_a_of_type_Berb;
-    if (localberb != null) {
-      localberb.a(null);
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null) {
+      localMosaicEffect.a(null);
     }
-    this.jdField_a_of_type_Berb = paramberb;
-    if (paramberb != null) {
-      paramberb.a(this);
+    this.a = paramMosaicEffect;
+    if (paramMosaicEffect != null) {
+      paramMosaicEffect.a(this);
     }
     invalidate();
   }
   
-  public void setOnVisibilityChangedListener(beob parambeob)
+  public void setOnVisibilityChangedListener(CommonTextView.onVisibilityChangedListener paramonVisibilityChangedListener)
   {
-    this.jdField_a_of_type_Beob = parambeob;
+    this.b = paramonVisibilityChangedListener;
+  }
+  
+  public void superDrawMosaic(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void superOnDrawMosaic(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CommonTextView
  * JD-Core Version:    0.7.0.1
  */

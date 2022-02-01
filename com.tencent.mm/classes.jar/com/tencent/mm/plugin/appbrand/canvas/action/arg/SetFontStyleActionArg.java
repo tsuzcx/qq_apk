@@ -11,13 +11,13 @@ public class SetFontStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontStyleActionArg> CREATOR;
-  public String hfc;
+  public String fontStyle;
   
   static
   {
-    AppMethodBeat.i(103484);
-    CREATOR = new SetFontStyleActionArg.1();
-    AppMethodBeat.o(103484);
+    AppMethodBeat.i(145167);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145167);
   }
   
   public SetFontStyleActionArg() {}
@@ -34,58 +34,58 @@ public class SetFontStyleActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103482);
+    AppMethodBeat.i(145165);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103482);
+      AppMethodBeat.o(145165);
       return true;
     }
     if (!(paramObject instanceof SetFontStyleActionArg))
     {
-      AppMethodBeat.o(103482);
+      AppMethodBeat.o(145165);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103482);
+      AppMethodBeat.o(145165);
       return false;
     }
     paramObject = (SetFontStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.hfc, paramObject.hfc);
-    AppMethodBeat.o(103482);
+    boolean bool = Objects.equals(this.fontStyle, paramObject.fontStyle);
+    AppMethodBeat.o(145165);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(103479);
-    super.h(paramParcel);
-    this.hfc = paramParcel.readString();
-    AppMethodBeat.o(103479);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103483);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfc });
-    AppMethodBeat.o(103483);
+    AppMethodBeat.i(145166);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fontStyle });
+    AppMethodBeat.o(145166);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void k(Parcel paramParcel)
   {
-    AppMethodBeat.i(103480);
-    super.p(paramJSONObject);
-    this.hfc = paramJSONObject.optJSONArray("data").optString(0);
-    AppMethodBeat.o(103480);
+    AppMethodBeat.i(145162);
+    super.k(paramParcel);
+    this.fontStyle = paramParcel.readString();
+    AppMethodBeat.o(145162);
+  }
+  
+  public final void parse(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(145163);
+    super.parse(paramJSONObject);
+    this.fontStyle = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.o(145163);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103481);
+    AppMethodBeat.i(145164);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.hfc);
-    AppMethodBeat.o(103481);
+    paramParcel.writeString(this.fontStyle);
+    AppMethodBeat.o(145164);
   }
 }
 

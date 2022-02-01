@@ -8,13 +8,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class hummer_resv_21$FileImgInfo
   extends MessageMicro<FileImgInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_file_width", "uint32_file_height" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, FileImgInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field uint32_file_height = PBField.initUInt32(0);
   public final PBUInt32Field uint32_file_width = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_file_width", "uint32_file_height" }, new Object[] { localInteger, localInteger }, FileImgInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.resv21.hummer_resv_21.FileImgInfo
  * JD-Core Version:    0.7.0.1
  */

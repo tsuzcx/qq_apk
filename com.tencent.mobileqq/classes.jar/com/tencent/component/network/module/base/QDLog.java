@@ -3,6 +3,7 @@ package com.tencent.component.network.module.base;
 public class QDLog
 {
   public static final String TAG_DOWNLOAD = "downloader";
+  public static final String TAG_DOWNLOAD_OKHTTP = "downloader_OKHTTP";
   public static final String TAG_DOWNLOAD_RANGE = "downloader_RANGE";
   public static final String TAG_DOWNLOAD_RESULT = "downloader_result";
   private static com.tencent.component.network.module.base.inter.Log sLog;
@@ -14,9 +15,10 @@ public class QDLog
   
   public static void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.d(paramString1, paramString2, paramThrowable);
+      localLog.d(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.d(paramString1, paramString2, paramThrowable);
@@ -29,9 +31,10 @@ public class QDLog
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.e(paramString1, paramString2, paramThrowable);
+      localLog.e(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.e(paramString1, paramString2, paramThrowable);
@@ -44,17 +47,19 @@ public class QDLog
   
   private static int getLogLevel()
   {
-    if (sLog != null) {
-      return sLog.getLogLevel();
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null) {
+      return localLog.getLogLevel();
     }
     return 1;
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    if (sLog != null)
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.i(paramString1, paramString2);
+      localLog.i(paramString1, paramString2);
       return;
     }
     android.util.Log.i(paramString1, paramString2);
@@ -62,9 +67,10 @@ public class QDLog
   
   public static void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.i(paramString1, paramString2, paramThrowable);
+      localLog.i(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.i(paramString1, paramString2, paramThrowable);
@@ -102,9 +108,10 @@ public class QDLog
   
   public static void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (sLog != null)
+    com.tencent.component.network.module.base.inter.Log localLog = sLog;
+    if (localLog != null)
     {
-      sLog.w(paramString1, paramString2, paramThrowable);
+      localLog.w(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.w(paramString1, paramString2, paramThrowable);
@@ -112,7 +119,7 @@ public class QDLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.base.QDLog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,38 @@
 import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.mobileqq.utils.SecUtil;
+import java.io.File;
 
-class hbh
+public class hbh
   implements Runnable
 {
-  hbh(hbg paramhbg, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public hbh(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Hbg.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    String str = SecUtil.a(AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbg.a, this.jdField_a_of_type_JavaLangString));
-    if (!this.b.equalsIgnoreCase(str))
+    String str1 = AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
+    File localFile = new File(str1);
+    Object localObject = localFile.getParent();
+    localObject = new File((String)localObject + "/download" + this.jdField_a_of_type_JavaLangString + ".xml");
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
+    }
+    if (HttpDownloadUtil.a(null, this.b, (File)localObject))
     {
-      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_Hbg.a, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      String str2 = SecUtil.a(((File)localObject).getAbsolutePath());
+      if (this.c.equalsIgnoreCase(str2)) {}
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_Hbg.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+    if (((File)localObject).renameTo(localFile))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, str1);
+      return;
+    }
+    ((File)localObject).delete();
   }
 }
 

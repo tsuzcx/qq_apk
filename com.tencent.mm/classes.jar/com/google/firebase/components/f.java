@@ -1,31 +1,33 @@
 package com.google.firebase.components;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public final class f
 {
-  final Class<?> beA;
-  final int beB;
-  private final int beC;
+  final Class<?> dBZ;
+  final int dCa;
+  private final int dCb;
   
   private f(Class<?> paramClass)
   {
-    AppMethodBeat.i(10610);
-    this.beA = ((Class)r.zza(paramClass, "Null dependency interface."));
-    this.beB = 1;
-    this.beC = 0;
-    AppMethodBeat.o(10610);
+    AppMethodBeat.i(4077);
+    this.dBZ = ((Class)r.zza(paramClass, "Null dependency interface."));
+    this.dCa = 1;
+    this.dCb = 0;
+    AppMethodBeat.o(4077);
   }
   
-  @KeepForSdk
-  public static f p(Class<?> paramClass)
+  public static f y(Class<?> paramClass)
   {
-    AppMethodBeat.i(10611);
+    AppMethodBeat.i(4078);
     paramClass = new f(paramClass);
-    AppMethodBeat.o(10611);
+    AppMethodBeat.o(4078);
     return paramClass;
+  }
+  
+  public final boolean Yf()
+  {
+    return this.dCb == 0;
   }
   
   public final boolean equals(Object paramObject)
@@ -36,13 +38,13 @@ public final class f
     {
       paramObject = (f)paramObject;
       bool1 = bool2;
-      if (this.beA == paramObject.beA)
+      if (this.dBZ == paramObject.dBZ)
       {
         bool1 = bool2;
-        if (this.beB == paramObject.beB)
+        if (this.dCa == paramObject.dCa)
         {
           bool1 = bool2;
-          if (this.beC == paramObject.beC) {
+          if (this.dCb == paramObject.dCb) {
             bool1 = true;
           }
         }
@@ -53,29 +55,24 @@ public final class f
   
   public final int hashCode()
   {
-    AppMethodBeat.i(10612);
-    int i = this.beA.hashCode();
-    int j = this.beB;
-    int k = this.beC;
-    AppMethodBeat.o(10612);
+    AppMethodBeat.i(4079);
+    int i = this.dBZ.hashCode();
+    int j = this.dCa;
+    int k = this.dCb;
+    AppMethodBeat.o(4079);
     return ((i ^ 0xF4243) * 1000003 ^ j) * 1000003 ^ k;
-  }
-  
-  public final boolean rJ()
-  {
-    return this.beC == 0;
   }
   
   public final String toString()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(10613);
-    Object localObject = new StringBuilder("Dependency{interface=").append(this.beA).append(", required=");
-    if (this.beB == 1)
+    AppMethodBeat.i(4080);
+    Object localObject = new StringBuilder("Dependency{interface=").append(this.dBZ).append(", required=");
+    if (this.dCa == 1)
     {
       bool1 = true;
       localObject = ((StringBuilder)localObject).append(bool1).append(", direct=");
-      if (this.beC != 0) {
+      if (this.dCb != 0) {
         break label87;
       }
     }
@@ -83,7 +80,7 @@ public final class f
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localObject = bool1 + "}";
-      AppMethodBeat.o(10613);
+      AppMethodBeat.o(4080);
       return localObject;
       bool1 = false;
       break;
@@ -92,7 +89,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.components.f
  * JD-Core Version:    0.7.0.1
  */

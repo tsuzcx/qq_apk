@@ -1,67 +1,38 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.d.a.a;
-import com.tencent.halley.downloader.d.a.b;
-import com.tencent.halley.downloader.d.a.d;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
-
 public final class ak
-  implements an
 {
-  private static ak e = null;
-  private b a;
-  private b b;
-  private com.tencent.halley.downloader.d.a.h c;
-  private com.tencent.halley.downloader.d.a.h d;
+  public static byte[][] a = { { 7, 73, -121, 101, 17, 31, 86, -55, 4, 79, -111, 127, 13, 20, 81, -44, 2 }, { 39, 70, -74, 82 }, { 39, 88, -78, 83, 38 }, { 106, 65, -70, 67, 33, 53, 57, -1, 40, 96 } };
+  public static byte[][] b;
   
-  private ak()
+  static
   {
-    Object localObject = new a(64);
-    this.a = new b(h.a(), h.a(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-MassTaskPool"));
-    ((a)localObject).a(this.a);
-    localObject = new a(64);
-    this.b = new b(1, h.b(), 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-EaseTaskPool"));
-    ((a)localObject).a(this.b);
-    localObject = new d(16);
-    this.c = new com.tencent.halley.downloader.d.a.h(1, h.a() + h.b() + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-DirectPool"));
-    ((d)localObject).a(this.c);
-    localObject = new d(16);
-    this.d = new com.tencent.halley.downloader.d.a.h(1, (h.a() << 1) + 1, 60L, TimeUnit.MILLISECONDS, (BlockingQueue)localObject, new al("HallyDownload-SchedulePool"));
-    ((d)localObject).a(this.d);
+    byte[] arrayOfByte1 = { 54, 115 };
+    byte[] arrayOfByte2 = { 36, 121 };
+    byte[] arrayOfByte3 = { 33, 121 };
+    byte[] arrayOfByte4 = { 40, 116, -70 };
+    byte[] arrayOfByte5 = { 54, 121 };
+    byte[] arrayOfByte6 = { 39, 102 };
+    byte[] arrayOfByte7 = { 36, 102 };
+    byte[] arrayOfByte8 = { 54, 102 };
+    byte[] arrayOfByte9 = { 49, 121 };
+    byte[] arrayOfByte10 = { 53, 118 };
+    byte[] arrayOfByte11 = { 40, 116 };
+    byte[] arrayOfByte12 = { 48, 116 };
+    byte[] arrayOfByte13 = { 53, 99, -67 };
+    byte[] arrayOfByte14 = { 49, 104, -89 };
+    byte[] arrayOfByte15 = { 33, 100 };
+    byte[] arrayOfByte16 = { 33, 102 };
+    byte[] arrayOfByte17 = { 38, 121 };
+    byte[] arrayOfByte18 = { 51, 117, -95 };
+    byte[] arrayOfByte19 = { 54, 114, -80 };
+    byte[] arrayOfByte20 = { 54, 99, -70 };
+    b = new byte[][] { arrayOfByte1, { 54, 115, -91 }, arrayOfByte2, arrayOfByte3, arrayOfByte4, { 48, 121 }, { 40, 121 }, arrayOfByte5, arrayOfByte6, { 42, 102 }, arrayOfByte7, arrayOfByte8, arrayOfByte9, arrayOfByte10, arrayOfByte11, arrayOfByte12, { 53, 126 }, arrayOfByte13, { 53, 99, -74 }, { 55, 120 }, { 55, 114 }, arrayOfByte14, arrayOfByte15, arrayOfByte16, arrayOfByte17, { 49, 96 }, { 33, 99 }, arrayOfByte18, { 45, 99 }, { 54, 100 }, arrayOfByte19, arrayOfByte20 };
   }
   
-  public static ak a()
+  public static String a(int paramInt)
   {
-    try
-    {
-      if (e == null) {
-        e = new ak();
-      }
-      ak localak = e;
-      return localak;
-    }
-    finally {}
-  }
-  
-  public final am a(Runnable paramRunnable)
-  {
-    return new am(this.a.submit(paramRunnable));
-  }
-  
-  public final am b(Runnable paramRunnable)
-  {
-    return new am(this.b.submit(paramRunnable));
-  }
-  
-  public final am c(Runnable paramRunnable)
-  {
-    return new am(this.c.submit(paramRunnable));
-  }
-  
-  public final am d(Runnable paramRunnable)
-  {
-    return new am(this.d.submit(paramRunnable));
+    return aa.a(b[paramInt]);
   }
 }
 

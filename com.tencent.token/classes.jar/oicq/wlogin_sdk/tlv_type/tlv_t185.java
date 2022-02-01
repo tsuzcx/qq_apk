@@ -16,7 +16,7 @@ public class tlv_t185
     util.int8_to_buf(arrayOfByte, 0, 1);
     util.int8_to_buf(arrayOfByte, 1, paramInt);
     fill_head(this._cmd);
-    fill_body(arrayOfByte, arrayOfByte.length);
+    fill_body(arrayOfByte, 2);
     set_length();
     return get_buf();
   }

@@ -8,11 +8,11 @@ public final class OnlineInfo
   extends JceStruct
 {
   static byte[] cache_subPlatform = (byte[])new byte[1];
-  public int clientType;
-  public int instanceId;
-  public int onlineStatus;
-  public int platformId;
-  public byte[] subPlatform;
+  public int clientType = 0;
+  public int instanceId = 0;
+  public int onlineStatus = 0;
+  public int platformId = 0;
+  public byte[] subPlatform = null;
   
   static
   {
@@ -45,14 +45,15 @@ public final class OnlineInfo
     paramJceOutputStream.write(this.clientType, 1);
     paramJceOutputStream.write(this.onlineStatus, 2);
     paramJceOutputStream.write(this.platformId, 3);
-    if (this.subPlatform != null) {
-      paramJceOutputStream.write(this.subPlatform, 4);
+    byte[] arrayOfByte = this.subPlatform;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.OnlineInfo
  * JD-Core Version:    0.7.0.1
  */

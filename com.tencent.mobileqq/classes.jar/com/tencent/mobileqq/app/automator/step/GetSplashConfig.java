@@ -1,48 +1,48 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import adzl;
-import aozj;
-import aozo;
-import bkgg;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.StructMsgObserver;
+import com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.OlympicServlet;
+import com.tencent.mobileqq.config.Config;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.config.splashlogo.QQStoryConfigServlet;
+import com.tencent.mobileqq.kandian.biz.config.api.IAladdinConfigServletUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.manager.PackageUpdateManager;
+import dov.com.qq.im.ae.download.old.AEOldShortVideoResManager;
 import java.util.Locale;
-import lwp;
 
 public class GetSplashConfig
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    Object localObject = this.a.app.a(this.a.app.getCurrentAccountUin(), true);
+    Config localConfig = this.mAutomator.k.getConfig(this.mAutomator.k.getCurrentAccountUin(), true);
     if (QLog.isColorLevel()) {
-      QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localObject }));
+      QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localConfig }));
     }
-    aozj.a(this.a.app, this.a.app.getCurrentAccountUin());
-    aozo.a(this.a.app, this.a.app.c());
-    ((lwp)this.a.app.getManager(254)).a = true;
-    ShortVideoResourceManager.a(this.a.app, 1);
-    aozj.e(this.a.app, this.a.app.getCurrentAccountUin());
-    aozj.f(this.a.app, this.a.app.getCurrentAccountUin());
-    localObject = (OlympicManager)this.a.app.getManager(167);
-    OlympicServlet.a(this.a.app, ((OlympicManager)localObject).b());
-    AladdinConfigServlet.a(this.a.app, this.a.app.c());
-    bkgg.a().a(this.a.app);
-    this.a.app.a().addObserver(new adzl());
-    this.a.app.a(1);
+    ConfigServlet.a(this.mAutomator.k, this.mAutomator.k.getCurrentAccountUin());
+    QQStoryConfigServlet.a(this.mAutomator.k, this.mAutomator.k.getCurrentUin());
+    AEOldShortVideoResManager.a(this.mAutomator.k, 1);
+    ShortVideoResourceManager.a(this.mAutomator.k, 1);
+    ConfigServlet.d(this.mAutomator.k, this.mAutomator.k.getCurrentAccountUin());
+    ((IAladdinConfigServletUtil)QRoute.api(IAladdinConfigServletUtil.class)).maybeGetAllConfigs();
+    ((SpringFestivalRedpacketConfigManager)this.mAutomator.k.getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).b(this.mAutomator.k, 0);
+    PackageUpdateManager.a().a(this.mAutomator.k);
+    this.mAutomator.k.getMessageFacade().addObserver(new StructMsgObserver());
+    this.mAutomator.k.getSignInInfo(1);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSplashConfig
  * JD-Core Version:    0.7.0.1
  */

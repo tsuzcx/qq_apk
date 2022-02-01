@@ -2,31 +2,31 @@ package android.support.v7.widget;
 
 final class h
 {
-  public an rJ;
-  public an rK;
-  public int rL;
-  public int rM;
-  public int rN;
-  public int rO;
+  public an tA;
+  public int tB;
+  public int tC;
+  public int tD;
+  public int tE;
+  public an tz;
   
   private h(an paraman1, an paraman2)
   {
-    this.rJ = paraman1;
-    this.rK = paraman2;
+    this.tz = paraman1;
+    this.tA = paraman2;
   }
   
   private h(an paraman1, an paraman2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this(paraman1, paraman2);
-    this.rL = paramInt1;
-    this.rM = paramInt2;
-    this.rN = paramInt3;
-    this.rO = paramInt4;
+    this.tB = paramInt1;
+    this.tC = paramInt2;
+    this.tD = paramInt3;
+    this.tE = paramInt4;
   }
   
   public final String toString()
   {
-    return "ChangeInfo{oldHolder=" + this.rJ + ", newHolder=" + this.rK + ", fromX=" + this.rL + ", fromY=" + this.rM + ", toX=" + this.rN + ", toY=" + this.rO + '}';
+    return "ChangeInfo{oldHolder=" + this.tz + ", newHolder=" + this.tA + ", fromX=" + this.tB + ", fromY=" + this.tC + ", toX=" + this.tD + ", toY=" + this.tE + '}';
   }
 }
 

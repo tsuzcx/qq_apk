@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import java.io.Serializable;
 
+@KeepClassConstructor
 public class PushSwitchGrayTipsInfo
-  extends awge
+  extends Entity
   implements Serializable
 {
   public long lastShowTime;

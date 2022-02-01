@@ -33,10 +33,30 @@ public class ExcitingTransferHostInfo
     this(paramString, paramInt);
     this.mIsHttps = paramBoolean;
   }
+  
+  public String toString()
+  {
+    if (this.mstrIp != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mstrIp);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.mport);
+      localStringBuilder.append(" - ");
+      localStringBuilder.append(this.mbInvaild);
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.mport);
+    localStringBuilder.append(" - ");
+    localStringBuilder.append(this.mbInvaild);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo
  * JD-Core Version:    0.7.0.1
  */

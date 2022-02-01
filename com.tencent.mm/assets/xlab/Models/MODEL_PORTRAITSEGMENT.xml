@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Model>
+    <SubType>7</SubType>
+    <Key>MODEL_PORTRAITSEGMENT</Key>
+    <CompatVersion>2</CompatVersion>
+    <Name>SegmentationPortraitV2.0.6.26.xnet</Name>
+    <Sha1>ab3e957cefd04f66db7bce599a2bace21723dce7</Sha1>
+</Model>

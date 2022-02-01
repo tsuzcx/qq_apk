@@ -15,15 +15,15 @@ public class AppMeasurementContentProvider
 {
   public void attachInfo(Context paramContext, ProviderInfo paramProviderInfo)
   {
-    AppMethodBeat.i(77160);
+    AppMethodBeat.i(87665);
     super.attachInfo(paramContext, paramProviderInfo);
     if ("com.google.android.gms.measurement.google_measurement_service".equals(paramProviderInfo.authority))
     {
       paramContext = new IllegalStateException("Incorrect provider authority in manifest. Most likely due to a missing applicationId variable in application's build.gradle.");
-      AppMethodBeat.o(77160);
+      AppMethodBeat.o(87665);
       throw paramContext;
     }
-    AppMethodBeat.o(77160);
+    AppMethodBeat.o(87665);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -43,9 +43,9 @@ public class AppMeasurementContentProvider
   
   public boolean onCreate()
   {
-    AppMethodBeat.i(77159);
+    AppMethodBeat.i(87664);
     zzgl.zzg(getContext());
-    AppMethodBeat.o(77159);
+    AppMethodBeat.o(87664);
     return false;
   }
   
@@ -61,7 +61,7 @@ public class AppMeasurementContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.measurement.AppMeasurementContentProvider
  * JD-Core Version:    0.7.0.1
  */

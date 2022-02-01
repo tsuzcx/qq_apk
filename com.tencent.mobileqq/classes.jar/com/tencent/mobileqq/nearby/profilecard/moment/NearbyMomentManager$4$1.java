@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import avrb;
-import avrf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
 
-public class NearbyMomentManager$4$1
+class NearbyMomentManager$4$1
   implements Runnable
 {
-  public NearbyMomentManager$4$1(avrf paramavrf, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  NearbyMomentManager$4$1(NearbyMomentManager.4 param4, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
   public void run()
   {
-    List localList = avrb.a(this.jdField_a_of_type_Avrf.a, this.jdField_a_of_type_JavaUtilList);
+    List localList = NearbyMomentManager.a(this.e.b, this.a);
     Object localObject;
     if (localList == null)
     {
@@ -24,22 +22,24 @@ public class NearbyMomentManager$4$1
       }
       localObject = new ArrayList();
     }
-    for (;;)
+    else
     {
-      ThreadManager.getUIHandler().post(new NearbyMomentManager.4.1.1(this, (List)localObject));
-      return;
       localObject = localList;
       if (QLog.isColorLevel())
       {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList, size=" + this.jdField_a_of_type_JavaUtilList.size());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("momentFeedInfoList, size=");
+        ((StringBuilder)localObject).append(this.a.size());
+        QLog.i("NearbyMomentManager", 2, ((StringBuilder)localObject).toString());
         localObject = localList;
       }
     }
+    ThreadManager.getUIHandler().post(new NearbyMomentManager.4.1.1(this, (List)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.4.1
  * JD-Core Version:    0.7.0.1
  */

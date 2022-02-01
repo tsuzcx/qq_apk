@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/p53" android:background="#ffe3ebeb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:id="@id/p54" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="@string/y19" android:layout_centerVertical="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/p76" android:layout_width="47.0dip" android:layout_height="26.0dip" android:layout_marginRight="8.5dip" android:text="@string/xwu" />
+        <com.tencent.biz.qqcircle.widgets.QCircleShadowCardView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginRight="12.0dip" app:shadowBlur="5.0dip" app:shadowBottomHeight="5.0dip" app:shadowCardColor="#ffecedf5" app:shadowCardOffsetY="0.0dip" app:shadowHeightColor="#99a6abbd" app:shadowLeftHeight="0.0dip" app:shadowRightHeight="3.0dip" app:shadowRound="1.0dip" app:shadowTopHeight="0.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/p77" android:layout_width="54.0dip" android:layout_height="26.0dip" android:text="@string/xx3" />
+        </com.tencent.biz.qqcircle.widgets.QCircleShadowCardView>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/p78" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/ism" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/e4a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/e4b" android:background="@drawable/a08" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layerType="software" />
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-            <TextView android:textSize="12.0dip" android:textColor="@color/w6" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtr" />
-            <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/boe" android:background="@color/a3x" android:focusable="false" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="5.0dip" android:scaleType="centerCrop" android:contentDescription="@string/xq" />
-                <TextView android:textSize="16.0dip" android:textColor="@color/l5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bof" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{¥100}" android:singleLine="true" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/fo5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/arl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+            <ImageView android:id="@id/dac" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:layout_marginStart="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d8a" android:layout_width="wrap_content" android:layout_height="fill_parent" android:paddingStart="@dimen/cd" android:paddingEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+                <TextView android:textSize="@dimen/hn" android:textColor="@color/Link_100" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6s" />
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="15.0dip">
-            <TextView android:textSize="12.0dip" android:textColor="@color/w6" android:gravity="center_vertical" android:id="@id/e4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtp" />
-            <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/l5" android:gravity="center_vertical" android:id="@id/e4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-        </LinearLayout>
+            <TextView android:ellipsize="end" android:gravity="start" android:id="@id/dah" android:singleLine="true" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="@id/dac" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintLeft_toRightOf="@id/dac" app:layout_constraintTop_toTopOf="@id/dac" style="@style/x_" />
+            <View android:id="@id/hpz" android:background="@drawable/a8f" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginStart="@dimen/da" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
+            <View android:id="@id/fnu" android:background="@color/qf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View android:id="@id/jau" android:background="@color/a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" />
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/luh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/lug" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icon_outlined_awesome" android:layout_marginStart="@dimen/cp" app:iconColor="@color/Link_100" />
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/Link_100" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enz" android:layout_marginStart="@dimen/df" />
+        </LinearLayout>
+        <View android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/df" />
+    </LinearLayout>
+</FrameLayout>

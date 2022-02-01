@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="63px" height="75px" viewBox="0 0 63 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Stop.maximize</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="多媒体控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-366.000000, -536.000000)" fill="#FFFFFF">
+            <g id="Stop.maximize" transform="translate(377.000000, 537.000000)">
+                <rect id="Rectangle-98" x="0" y="0.834644834" width="6.89655172" height="71.35506" rx="2.25"></rect>
+                <path d="M33.1034483,3.08801153 C33.1034483,1.84351147 34.1062661,0.834644834 35.3616372,0.834644834 L37.741811,0.834644834 C38.9889744,0.834644834 40,1.8433424 40,3.08801153 L40,69.9363382 C40,71.1808382 38.9971822,72.1897049 37.741811,72.1897049 L35.3616372,72.1897049 C34.1144739,72.1897049 33.1034483,71.1810073 33.1034483,69.9363382 L33.1034483,3.08801153 Z" id="Rectangle-98-Copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>

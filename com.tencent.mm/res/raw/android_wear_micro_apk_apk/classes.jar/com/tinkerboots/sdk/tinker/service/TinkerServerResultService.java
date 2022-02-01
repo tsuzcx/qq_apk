@@ -8,10 +8,10 @@ import java.io.File;
 public class TinkerServerResultService
   extends DefaultTinkerResultService
 {
-  private static boolean amC = false;
-  private static com.tinkerboots.sdk.tinker.a.a amD = null;
+  private static boolean aqe = false;
+  private static com.tinkerboots.sdk.tinker.a.a aqf = null;
   
-  static void or()
+  static void pe()
   {
     com.tencent.tinker.lib.e.a.c("Tinker.TinkerServerResultService", "app is background now, i can kill quietly", new Object[0]);
     Process.killProcess(Process.myPid());
@@ -26,20 +26,20 @@ public class TinkerServerResultService
     {
       return;
       com.tencent.tinker.lib.e.a.c("Tinker.TinkerServerResultService", "receive result: %s", new Object[] { parama.toString() });
-      com.tencent.tinker.lib.e.c.E(getApplicationContext());
-      if (!parama.ajJ) {
+      com.tencent.tinker.lib.e.c.F(getApplicationContext());
+      if (!parama.anl) {
         break label131;
       }
       com.tencent.tinker.lib.e.a.c("Tinker.TinkerServerResultService", "patch success, please restart process", new Object[0]);
-      c(new File(parama.ajK));
+      c(new File(parama.anm));
       if (!b(parama)) {
         break;
       }
-    } while (!amC);
+    } while (!aqe);
     com.tencent.tinker.lib.e.a.c("Tinker.TinkerServerResultService", "tinker wait screen to restart process", new Object[0]);
     new com.tinkerboots.sdk.a.c(getApplicationContext(), new b()
     {
-      public final void os() {}
+      public final void pf() {}
     });
     return;
     com.tencent.tinker.lib.e.a.c("Tinker.TinkerServerResultService", "I have already install the newly patch version!", new Object[0]);

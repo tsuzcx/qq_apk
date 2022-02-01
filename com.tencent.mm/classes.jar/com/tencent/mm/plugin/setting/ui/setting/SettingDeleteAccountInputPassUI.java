@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingDeleteAccountInputPassUI
@@ -10,24 +14,49 @@ public class SettingDeleteAccountInputPassUI
 {
   public int getLayoutId()
   {
-    return 2130970684;
+    return b.g.setting_delete_account_input_pass;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127069);
-    setBackBtn(new SettingDeleteAccountInputPassUI.1(this));
-    addTextOptionMenu(0, getString(2131296964), new SettingDeleteAccountInputPassUI.2(this));
-    AppMethodBeat.o(127069);
+    AppMethodBeat.i(73999);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(73996);
+        SettingDeleteAccountInputPassUI.this.hideVKB();
+        SettingDeleteAccountInputPassUI.this.finish();
+        AppMethodBeat.o(73996);
+        return true;
+      }
+    });
+    addTextOptionMenu(0, getString(b.i.app_finish), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(73997);
+        SettingDeleteAccountInputPassUI.this.hideVKB();
+        paramAnonymousMenuItem = SettingDeleteAccountInputPassUI.this;
+        Object localObject = new Intent(SettingDeleteAccountInputPassUI.this, SettingDeleteAccountUI.class);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountInputPassUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountInputPassUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(73997);
+        return true;
+      }
+    });
+    AppMethodBeat.o(73999);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127068);
+    AppMethodBeat.i(73998);
     super.onCreate(paramBundle);
-    setMMTitle(2131303144);
+    setMMTitle(b.i.setting_del_account_title);
     initView();
-    AppMethodBeat.o(127068);
+    AppMethodBeat.o(73998);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -38,7 +67,7 @@ public class SettingDeleteAccountInputPassUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingDeleteAccountInputPassUI
  * JD-Core Version:    0.7.0.1
  */

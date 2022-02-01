@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/ajq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <ImageView android:id="@id/ajr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/z1" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/eqq" />
-    </LinearLayout>
-    <ImageView android:id="@id/ew3" android:background="@drawable/amr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/beq" android:background="@drawable/a8n" android:layout_width="@dimen/d6" android:layout_height="@dimen/cv" android:layout_centerInParent="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_filled_arrow" android:rotation="270.0" app:iconColor="@color/FG_0" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/m4" android:id="@id/iue" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/atx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

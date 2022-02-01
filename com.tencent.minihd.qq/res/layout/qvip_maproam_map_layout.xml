@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qvip_maproam_map_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.maproam.widget.RoamingMapView android:id="@id/qvip_maproam_map" android:layout_width="fill_parent" android:layout_height="fill_parent" android:apiKey="73dfcdeff8636c1d3501fa9a2860ebb7" />
+        <com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar android:id="@id/qvip_maproam_map_searchbar" android:background="@drawable/skin_header_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/roam_seach_bar_height" android:layout_alignTop="@id/qvip_maproam_map" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/qvip_maproam_pin_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/qvip_maproam_map">
+            <ImageView android:id="@id/qvip_maproam_pin" android:paddingBottom="28.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qvip_maproam_roam_man" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/qvip_maproam_pin_shadow" android:paddingTop="4.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qvip_maproam_man_shadow" android:layout_centerInParent="true" />
+            <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_tips" android:ellipsize="end" android:id="@id/qvip_maproam_bubble" android:background="@drawable/toolbar_bg_black" android:paddingLeft="23.0dip" android:paddingTop="13.0dip" android:paddingRight="23.0dip" android:paddingBottom="30.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="10.0dip" android:maxWidth="254.0dip" android:text="@string/vip_maproam_bubble_tips" android:maxLines="2" android:drawablePadding="5.0dip" android:layout_above="@id/qvip_maproam_pin" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:id="@id/qvip_maproam_map_mask" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <include android:id="@id/qvip_maproam_filter" layout="@layout/qvip_maproam_roam_filter" />
+</LinearLayout>

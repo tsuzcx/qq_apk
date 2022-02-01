@@ -13,12 +13,12 @@ public final class aa
   public int bi = 0;
   public int cmdId = 0;
   
-  public JceStruct newInit()
+  public final JceStruct newInit()
   {
     return new aa();
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.bg = paramJceInputStream.read(this.bg, 0, false);
     this.bh = paramJceInputStream.read(this.bh, 1, false);
@@ -27,20 +27,24 @@ public final class aa
     this.bi = paramJceInputStream.read(this.bi, 4, false);
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bg != 0L) {
-      paramJceOutputStream.write(this.bg, 0);
+    long l = this.bg;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 0);
     }
-    if (this.bh != 0L) {
-      paramJceOutputStream.write(this.bh, 1);
+    l = this.bh;
+    if (l != 0L) {
+      paramJceOutputStream.write(l, 1);
     }
-    if (this.ba != 0) {
-      paramJceOutputStream.write(this.ba, 2);
+    int i = this.ba;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.cmdId, 3);
-    if (this.bi != 0) {
-      paramJceOutputStream.write(this.bi, 4);
+    i = this.bi;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
   }
 }

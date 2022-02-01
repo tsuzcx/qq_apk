@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="144.0dip" android:layout_height="256.0dip" android:layout_marginRight="@dimen/m1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/amk" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/c_z" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/aig" />
-    </FrameLayout>
-</FrameLayout>
+<merge>
+    <RelativeLayout android:background="@color/p0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a62" android:textColor="@color/al6" android:id="@id/ewi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+        <com.tencent.mm.plugin.facedetect.views.FaceNumberView android:id="@id/cqx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_below="@id/ewi" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</merge>

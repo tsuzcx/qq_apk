@@ -10,9 +10,9 @@ public final class SyncRes
 {
   static SyncReqCookie cache_cookie;
   static ArrayList<InfoItem> cache_vecResPkg;
-  public SyncReqCookie cookie;
-  public byte result;
-  public ArrayList<InfoItem> vecResPkg;
+  public SyncReqCookie cookie = null;
+  public byte result = 0;
+  public ArrayList<InfoItem> vecResPkg = null;
   
   public SyncRes() {}
   
@@ -43,14 +43,15 @@ public final class SyncRes
   {
     paramJceOutputStream.write(this.result, 0);
     paramJceOutputStream.write(this.vecResPkg, 1);
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 2);
+    SyncReqCookie localSyncReqCookie = this.cookie;
+    if (localSyncReqCookie != null) {
+      paramJceOutputStream.write(localSyncReqCookie, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SyncRes
  * JD-Core Version:    0.7.0.1
  */

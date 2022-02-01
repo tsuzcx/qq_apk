@@ -41,17 +41,27 @@ public final class FileUploadRunnable
   
   private final String generateAfterStream()
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("\r\n--").append("27182818284590452353602874713526").append("\r\n");
-    String str = this.buffer.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "buffer.toString()");
-    return str;
+    Object localObject = this.buffer;
+    ((StringBuffer)localObject).delete(0, ((StringBuffer)localObject).length());
+    localObject = this.buffer;
+    ((StringBuffer)localObject).append("\r\n--");
+    ((StringBuffer)localObject).append("27182818284590452353602874713526");
+    ((StringBuffer)localObject).append("\r\n");
+    localObject = this.buffer.toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "buffer.toString()");
+    return localObject;
   }
   
   private final String generateBeforeStream(String paramString)
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("--").append("27182818284590452353602874713526").append("\r\n").append(paramString).append("\r\n\r\n");
+    StringBuffer localStringBuffer = this.buffer;
+    localStringBuffer.delete(0, localStringBuffer.length());
+    localStringBuffer = this.buffer;
+    localStringBuffer.append("--");
+    localStringBuffer.append("27182818284590452353602874713526");
+    localStringBuffer.append("\r\n");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append("\r\n\r\n");
     paramString = this.buffer.toString();
     Intrinsics.checkExpressionValueIsNotNull(paramString, "buffer.toString()");
     return paramString;
@@ -59,8 +69,12 @@ public final class FileUploadRunnable
   
   private final String generateDisposition(String paramString)
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"").append(paramString).append("\"");
+    StringBuffer localStringBuffer = this.buffer;
+    localStringBuffer.delete(0, localStringBuffer.length());
+    localStringBuffer = this.buffer;
+    localStringBuffer.append("Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append("\"");
     paramString = this.buffer.toString();
     Intrinsics.checkExpressionValueIsNotNull(paramString, "buffer.toString()");
     return paramString;
@@ -68,50 +82,57 @@ public final class FileUploadRunnable
   
   private final String generateReqBackup()
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("Content-Disposition: form-data; name=\"_json\"\r\n\r\n").append(this.resultObject.getParams().toString()).append("\r\n--").append("27182818284590452353602874713526").append("--\r\n");
-    String str = this.buffer.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "buffer.toString()");
-    return str;
+    Object localObject = this.buffer;
+    ((StringBuffer)localObject).delete(0, ((StringBuffer)localObject).length());
+    localObject = this.buffer;
+    ((StringBuffer)localObject).append("Content-Disposition: form-data; name=\"_json\"\r\n\r\n");
+    ((StringBuffer)localObject).append(this.resultObject.getParams().toString());
+    ((StringBuffer)localObject).append("\r\n--");
+    ((StringBuffer)localObject).append("27182818284590452353602874713526");
+    ((StringBuffer)localObject).append("--\r\n");
+    localObject = this.buffer.toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "buffer.toString()");
+    return localObject;
   }
   
   private final String getUploadFilePath()
   {
     int i;
-    Object localObject;
-    if (((CharSequence)this.originalPath).length() == 0)
-    {
+    if (((CharSequence)this.originalPath).length() == 0) {
       i = 1;
-      if (i == 0) {
-        break label31;
-      }
-      localObject = "";
-    }
-    label31:
-    String str1;
-    FileUtil.Companion localCompanion;
-    String str2;
-    do
-    {
-      return localObject;
+    } else {
       i = 0;
-      break;
-      localObject = new File(this.originalPath);
-      if ((((File)localObject).isFile()) && (((File)localObject).canRead())) {
-        return this.originalPath;
+    }
+    String str1 = "";
+    if (i != 0) {
+      return "";
+    }
+    Object localObject2 = new File(this.originalPath);
+    if ((((File)localObject2).isFile()) && (((File)localObject2).canRead())) {
+      return this.originalPath;
+    }
+    Object localObject1 = str1;
+    if (((File)localObject2).isDirectory())
+    {
+      localObject1 = str1;
+      if (((File)localObject2).canRead())
+      {
+        localObject1 = ((File)localObject2).getParent();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("out_");
+        ((StringBuilder)localObject2).append(System.currentTimeMillis());
+        ((StringBuilder)localObject2).append(".zip");
+        localObject2 = new File((String)localObject1, ((StringBuilder)localObject2).toString()).getAbsolutePath();
+        FileUtil.Companion localCompanion = FileUtil.Companion;
+        String str2 = this.originalPath;
+        Intrinsics.checkExpressionValueIsNotNull(localObject2, "zipFilePath");
+        localObject1 = str1;
+        if (FileUtil.Companion.zipFiles$default(localCompanion, str2, (String)localObject2, false, 4, null)) {
+          localObject1 = localObject2;
+        }
       }
-      if ((!((File)localObject).isDirectory()) || (!((File)localObject).canRead())) {
-        break label150;
-      }
-      str1 = new File(((File)localObject).getParent(), "out_" + System.currentTimeMillis() + ".zip").getAbsolutePath();
-      localCompanion = FileUtil.Companion;
-      str2 = this.originalPath;
-      Intrinsics.checkExpressionValueIsNotNull(str1, "zipFilePath");
-      localObject = str1;
-    } while (localCompanion.zipFiles(str2, str1));
-    return "";
-    label150:
-    return "";
+    }
+    return localObject1;
   }
   
   private final void reSend()
@@ -138,506 +159,574 @@ public final class FileUploadRunnable
   public void run()
   {
     // Byte code:
-    //   0: getstatic 236	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
-    //   3: checkcast 146	java/lang/CharSequence
-    //   6: invokestatic 242	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +23 -> 32
-    //   12: getstatic 248	com/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy:INSTANCE	Lcom/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy;
-    //   15: invokevirtual 252	com/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy:getAuthorization	()Lcom/tencent/qapmsdk/base/reporter/authorization/Authorization;
-    //   18: getstatic 256	com/tencent/qapmsdk/base/meta/BaseInfo:userMeta	Lcom/tencent/qapmsdk/base/meta/UserMeta;
-    //   21: getfield 261	com/tencent/qapmsdk/base/meta/UserMeta:appKey	Ljava/lang/String;
-    //   24: iconst_1
-    //   25: invokevirtual 267	com/tencent/qapmsdk/base/reporter/authorization/Authorization:getToken	(Ljava/lang/String;Z)Z
-    //   28: ifne +4 -> 32
-    //   31: return
-    //   32: aload_0
-    //   33: invokespecial 269	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:getUploadFilePath	()Ljava/lang/String;
-    //   36: astore_2
-    //   37: aload_2
-    //   38: checkcast 146	java/lang/CharSequence
-    //   41: invokeinterface 147 1 0
-    //   46: ifne +38 -> 84
-    //   49: iconst_1
-    //   50: istore_1
-    //   51: iload_1
-    //   52: ifeq +37 -> 89
-    //   55: aload_0
-    //   56: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   59: astore_2
-    //   60: aload_2
-    //   61: ifnull -30 -> 31
-    //   64: aload_2
-    //   65: sipush 601
-    //   68: ldc_w 271
-    //   71: aload_0
-    //   72: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   75: invokevirtual 274	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   78: invokeinterface 280 4 0
-    //   83: return
-    //   84: iconst_0
-    //   85: istore_1
-    //   86: goto -35 -> 51
-    //   89: new 150	java/io/File
-    //   92: dup
-    //   93: aload_2
-    //   94: invokespecial 153	java/io/File:<init>	(Ljava/lang/String;)V
-    //   97: astore 7
-    //   99: new 282	java/util/HashMap
-    //   102: dup
-    //   103: invokespecial 283	java/util/HashMap:<init>	()V
-    //   106: astore_2
-    //   107: aload_2
-    //   108: checkcast 285	java/util/Map
-    //   111: ldc_w 287
-    //   114: ldc_w 289
-    //   117: invokeinterface 293 3 0
-    //   122: pop
-    //   123: aload_2
-    //   124: checkcast 285	java/util/Map
-    //   127: ldc_w 295
-    //   130: getstatic 236	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
-    //   133: invokeinterface 293 3 0
-    //   138: pop
-    //   139: aload_0
-    //   140: aload_2
-    //   141: invokevirtual 299	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:connectionBuilder	(Ljava/util/HashMap;)Ljava/net/HttpURLConnection;
-    //   144: astore 6
-    //   146: aload 6
-    //   148: ifnull +283 -> 431
-    //   151: new 301	java/io/DataOutputStream
-    //   154: dup
-    //   155: aload 6
-    //   157: invokevirtual 307	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   160: invokespecial 310	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   163: checkcast 312	java/io/Closeable
-    //   166: astore 8
-    //   168: aconst_null
-    //   169: checkcast 231	java/lang/Throwable
-    //   172: astore 5
-    //   174: aload 5
-    //   176: astore_2
-    //   177: aload 8
-    //   179: checkcast 301	java/io/DataOutputStream
-    //   182: astore_3
-    //   183: aload 5
-    //   185: astore_2
-    //   186: aload 7
-    //   188: invokevirtual 315	java/io/File:getName	()Ljava/lang/String;
-    //   191: astore 4
-    //   193: aload 5
-    //   195: astore_2
-    //   196: aload 4
-    //   198: ldc_w 317
-    //   201: invokestatic 122	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   204: aload 5
-    //   206: astore_2
-    //   207: aload_3
-    //   208: aload_0
-    //   209: aload_0
-    //   210: aload 4
-    //   212: invokespecial 319	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateDisposition	(Ljava/lang/String;)Ljava/lang/String;
-    //   215: invokespecial 321	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateBeforeStream	(Ljava/lang/String;)Ljava/lang/String;
-    //   218: invokevirtual 324	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   221: aload 5
-    //   223: astore_2
-    //   224: new 326	java/io/FileInputStream
-    //   227: dup
-    //   228: aload 7
-    //   230: invokespecial 329	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   233: checkcast 312	java/io/Closeable
-    //   236: astore 9
-    //   238: aload 5
-    //   240: astore_2
-    //   241: aconst_null
-    //   242: checkcast 231	java/lang/Throwable
-    //   245: astore 4
-    //   247: aload 9
-    //   249: checkcast 326	java/io/FileInputStream
-    //   252: astore_2
-    //   253: aload_2
-    //   254: checkcast 331	java/io/InputStream
-    //   257: aload_3
-    //   258: checkcast 333	java/io/OutputStream
-    //   261: aload_2
-    //   262: invokevirtual 336	java/io/FileInputStream:available	()I
-    //   265: ldc_w 337
-    //   268: invokestatic 343	java/lang/Math:min	(II)I
-    //   271: invokestatic 349	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
-    //   274: pop2
-    //   275: aload 5
-    //   277: astore_2
-    //   278: aload 9
-    //   280: aload 4
-    //   282: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   285: aload 5
-    //   287: astore_2
-    //   288: aload_3
-    //   289: aload_0
-    //   290: invokespecial 357	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateAfterStream	()Ljava/lang/String;
-    //   293: invokevirtual 324	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   296: aload 5
+    //   0: getstatic 237	com/tencent/qapmsdk/base/config/SDKConfig:PURE_QAPM	Z
+    //   3: ifeq +35 -> 38
+    //   6: getstatic 242	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
+    //   9: checkcast 146	java/lang/CharSequence
+    //   12: invokestatic 248	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   15: ifeq +23 -> 38
+    //   18: getstatic 254	com/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy:INSTANCE	Lcom/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy;
+    //   21: invokevirtual 258	com/tencent/qapmsdk/base/reporter/proxy/AuthorizationProxy:getAuthorization	()Lcom/tencent/qapmsdk/base/reporter/authorization/Authorization;
+    //   24: getstatic 262	com/tencent/qapmsdk/base/meta/BaseInfo:userMeta	Lcom/tencent/qapmsdk/base/meta/UserMeta;
+    //   27: getfield 267	com/tencent/qapmsdk/base/meta/UserMeta:appKey	Ljava/lang/String;
+    //   30: iconst_1
+    //   31: invokevirtual 273	com/tencent/qapmsdk/base/reporter/authorization/Authorization:getToken	(Ljava/lang/String;Z)Z
+    //   34: ifne +4 -> 38
+    //   37: return
+    //   38: aload_0
+    //   39: invokespecial 275	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:getUploadFilePath	()Ljava/lang/String;
+    //   42: astore_2
+    //   43: aload_2
+    //   44: checkcast 146	java/lang/CharSequence
+    //   47: invokeinterface 147 1 0
+    //   52: ifne +8 -> 60
+    //   55: iconst_1
+    //   56: istore_1
+    //   57: goto +5 -> 62
+    //   60: iconst_0
+    //   61: istore_1
+    //   62: iload_1
+    //   63: ifeq +32 -> 95
+    //   66: aload_0
+    //   67: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   70: astore_2
+    //   71: aload_2
+    //   72: ifnull +22 -> 94
+    //   75: aload_2
+    //   76: sipush 601
+    //   79: ldc_w 277
+    //   82: aload_0
+    //   83: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   86: invokevirtual 280	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   89: invokeinterface 286 4 0
+    //   94: return
+    //   95: new 150	java/io/File
+    //   98: dup
+    //   99: aload_2
+    //   100: invokespecial 153	java/io/File:<init>	(Ljava/lang/String;)V
+    //   103: astore 7
+    //   105: new 288	java/util/HashMap
+    //   108: dup
+    //   109: invokespecial 289	java/util/HashMap:<init>	()V
+    //   112: astore_2
+    //   113: aload_2
+    //   114: checkcast 291	java/util/Map
+    //   117: astore_3
+    //   118: aload_3
+    //   119: ldc_w 293
+    //   122: ldc_w 295
+    //   125: invokeinterface 299 3 0
+    //   130: pop
+    //   131: aload_3
+    //   132: ldc_w 301
+    //   135: getstatic 242	com/tencent/qapmsdk/base/meta/BaseInfo:token	Ljava/lang/String;
+    //   138: invokeinterface 299 3 0
+    //   143: pop
+    //   144: aload_0
+    //   145: aload_2
+    //   146: invokevirtual 305	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:connectionBuilder	(Ljava/util/HashMap;)Ljava/net/HttpURLConnection;
+    //   149: astore 6
+    //   151: aload 6
+    //   153: ifnull +705 -> 858
+    //   156: new 307	java/io/DataOutputStream
+    //   159: dup
+    //   160: aload 6
+    //   162: invokevirtual 313	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   165: invokespecial 316	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   168: checkcast 318	java/io/Closeable
+    //   171: astore 8
+    //   173: aconst_null
+    //   174: checkcast 231	java/lang/Throwable
+    //   177: astore 4
+    //   179: aload 4
+    //   181: astore_2
+    //   182: aload 8
+    //   184: checkcast 307	java/io/DataOutputStream
+    //   187: astore 10
+    //   189: aload 4
+    //   191: astore_2
+    //   192: aload 7
+    //   194: invokevirtual 321	java/io/File:getName	()Ljava/lang/String;
+    //   197: astore_3
+    //   198: aload 4
+    //   200: astore_2
+    //   201: aload_3
+    //   202: ldc_w 323
+    //   205: invokestatic 122	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   208: aload 4
+    //   210: astore_2
+    //   211: aload 10
+    //   213: aload_0
+    //   214: aload_0
+    //   215: aload_3
+    //   216: invokespecial 325	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateDisposition	(Ljava/lang/String;)Ljava/lang/String;
+    //   219: invokespecial 327	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateBeforeStream	(Ljava/lang/String;)Ljava/lang/String;
+    //   222: invokevirtual 330	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   225: aload 4
+    //   227: astore_2
+    //   228: new 332	java/io/FileInputStream
+    //   231: dup
+    //   232: aload 7
+    //   234: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   237: checkcast 318	java/io/Closeable
+    //   240: astore 9
+    //   242: aload 4
+    //   244: astore_2
+    //   245: aconst_null
+    //   246: checkcast 231	java/lang/Throwable
+    //   249: astore 5
+    //   251: aload 5
+    //   253: astore_3
+    //   254: aload 9
+    //   256: checkcast 332	java/io/FileInputStream
+    //   259: astore_2
+    //   260: aload 5
+    //   262: astore_3
+    //   263: aload_2
+    //   264: checkcast 337	java/io/InputStream
+    //   267: aload 10
+    //   269: checkcast 339	java/io/OutputStream
+    //   272: aload_2
+    //   273: invokevirtual 342	java/io/FileInputStream:available	()I
+    //   276: ldc_w 343
+    //   279: invokestatic 349	java/lang/Math:min	(II)I
+    //   282: invokestatic 355	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
+    //   285: pop2
+    //   286: aload 4
+    //   288: astore_2
+    //   289: aload 9
+    //   291: aload 5
+    //   293: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   296: aload 4
     //   298: astore_2
-    //   299: aload_3
-    //   300: aload_0
-    //   301: invokespecial 359	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateReqBackup	()Ljava/lang/String;
-    //   304: invokevirtual 324	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   307: aload 5
-    //   309: astore_2
-    //   310: getstatic 364	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   313: astore_3
-    //   314: aload 8
-    //   316: aload 5
-    //   318: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   321: new 366	java/io/BufferedInputStream
-    //   324: dup
-    //   325: aload 6
-    //   327: invokevirtual 370	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   330: invokespecial 373	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   333: checkcast 312	java/io/Closeable
-    //   336: astore 4
-    //   338: aconst_null
-    //   339: checkcast 231	java/lang/Throwable
-    //   342: astore_3
-    //   343: aload_3
-    //   344: astore_2
-    //   345: aload 4
-    //   347: checkcast 366	java/io/BufferedInputStream
-    //   350: astore 5
-    //   352: aload_3
-    //   353: astore_2
-    //   354: getstatic 198	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
-    //   357: aload 5
-    //   359: checkcast 331	java/io/InputStream
-    //   362: sipush 8192
-    //   365: invokevirtual 377	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   368: astore 5
-    //   370: aload_3
-    //   371: astore_2
-    //   372: getstatic 364	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   375: astore 8
-    //   377: aload 4
-    //   379: aload_3
-    //   380: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   383: aload_0
-    //   384: aload 5
-    //   386: invokevirtual 381	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
-    //   389: ifeq +250 -> 639
-    //   392: aload_0
-    //   393: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   396: astore_2
-    //   397: aload_2
-    //   398: ifnull +19 -> 417
-    //   401: aload_2
-    //   402: sipush 200
-    //   405: aload_0
-    //   406: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   409: invokevirtual 274	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   412: invokeinterface 385 3 0
-    //   417: aload 7
-    //   419: invokevirtual 157	java/io/File:isFile	()Z
-    //   422: ifeq +214 -> 636
-    //   425: aload 7
-    //   427: invokevirtual 387	java/io/File:delete	()Z
-    //   430: pop
-    //   431: aload 6
-    //   433: ifnull -402 -> 31
-    //   436: aload 6
-    //   438: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   441: return
-    //   442: astore 4
-    //   444: aload 4
-    //   446: athrow
-    //   447: astore_3
-    //   448: aload 5
-    //   450: astore_2
-    //   451: aload 9
+    //   299: aload 10
+    //   301: aload_0
+    //   302: invokespecial 363	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateAfterStream	()Ljava/lang/String;
+    //   305: invokevirtual 330	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   308: aload 4
+    //   310: astore_2
+    //   311: aload 10
+    //   313: aload_0
+    //   314: invokespecial 365	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:generateReqBackup	()Ljava/lang/String;
+    //   317: invokevirtual 330	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   320: aload 4
+    //   322: astore_2
+    //   323: getstatic 370	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   326: astore_3
+    //   327: aload 8
+    //   329: aload 4
+    //   331: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   334: new 372	java/io/BufferedInputStream
+    //   337: dup
+    //   338: aload 6
+    //   340: invokevirtual 376	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   343: invokespecial 379	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   346: checkcast 318	java/io/Closeable
+    //   349: astore 4
+    //   351: aconst_null
+    //   352: checkcast 231	java/lang/Throwable
+    //   355: astore_3
+    //   356: aload_3
+    //   357: astore_2
+    //   358: aload 4
+    //   360: checkcast 372	java/io/BufferedInputStream
+    //   363: astore 5
+    //   365: aload_3
+    //   366: astore_2
+    //   367: getstatic 198	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
+    //   370: aload 5
+    //   372: checkcast 337	java/io/InputStream
+    //   375: sipush 8192
+    //   378: invokevirtual 383	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   381: astore 5
+    //   383: aload_3
+    //   384: astore_2
+    //   385: getstatic 388	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   388: astore 8
+    //   390: aload_3
+    //   391: astore_2
+    //   392: new 168	java/lang/StringBuilder
+    //   395: dup
+    //   396: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   399: astore 9
+    //   401: aload_3
+    //   402: astore_2
+    //   403: aload 9
+    //   405: ldc_w 390
+    //   408: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   411: pop
+    //   412: aload_3
+    //   413: astore_2
+    //   414: aload 9
+    //   416: aload 5
+    //   418: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload_3
+    //   423: astore_2
+    //   424: aload 8
+    //   426: iconst_2
+    //   427: anewarray 392	java/lang/String
+    //   430: dup
+    //   431: iconst_0
+    //   432: ldc 55
+    //   434: aastore
+    //   435: dup
+    //   436: iconst_1
+    //   437: aload 9
+    //   439: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: aastore
+    //   443: invokevirtual 396	com/tencent/qapmsdk/common/logger/Logger:i	([Ljava/lang/String;)V
+    //   446: aload_3
+    //   447: astore_2
+    //   448: getstatic 370	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   451: astore 8
     //   453: aload 4
-    //   455: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   458: aload 5
-    //   460: astore_2
-    //   461: aload_3
-    //   462: athrow
-    //   463: astore_3
-    //   464: aload_3
-    //   465: astore_2
-    //   466: aload_3
-    //   467: athrow
-    //   468: astore_3
-    //   469: aload 8
-    //   471: aload_2
-    //   472: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   475: aload_3
-    //   476: athrow
-    //   477: astore_2
-    //   478: aload_0
-    //   479: iconst_0
-    //   480: invokevirtual 212	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:setRetry	(I)V
-    //   483: aload_0
-    //   484: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   487: astore_2
-    //   488: aload_2
-    //   489: ifnull +16 -> 505
-    //   492: aload_2
-    //   493: sipush 600
-    //   496: ldc_w 392
-    //   499: iconst_0
-    //   500: invokeinterface 280 4 0
-    //   505: aload 6
-    //   507: ifnull -476 -> 31
-    //   510: aload 6
-    //   512: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   515: return
-    //   516: astore_3
-    //   517: aload_3
-    //   518: astore_2
-    //   519: aload_3
-    //   520: athrow
-    //   521: astore_3
-    //   522: aload 4
-    //   524: aload_2
-    //   525: invokestatic 355	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   528: aload_3
-    //   529: athrow
-    //   530: astore_2
-    //   531: getstatic 397	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   534: iconst_2
-    //   535: anewarray 399	java/lang/String
-    //   538: dup
-    //   539: iconst_0
-    //   540: ldc 55
-    //   542: aastore
-    //   543: dup
-    //   544: iconst_1
-    //   545: new 168	java/lang/StringBuilder
-    //   548: dup
-    //   549: invokespecial 170	java/lang/StringBuilder:<init>	()V
-    //   552: aload_2
-    //   553: invokevirtual 402	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   556: ldc_w 404
-    //   559: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   562: aload 7
-    //   564: invokevirtual 407	java/io/File:getPath	()Ljava/lang/String;
-    //   567: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   570: ldc_w 409
-    //   573: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   576: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   579: aastore
-    //   580: invokevirtual 413	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
-    //   583: aload 7
-    //   585: invokevirtual 157	java/io/File:isFile	()Z
-    //   588: ifeq +9 -> 597
-    //   591: aload 7
-    //   593: invokevirtual 387	java/io/File:delete	()Z
-    //   596: pop
-    //   597: aload_0
-    //   598: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   601: astore_2
-    //   602: aload_2
-    //   603: ifnull +22 -> 625
-    //   606: aload_2
-    //   607: sipush 601
-    //   610: ldc_w 415
-    //   613: aload_0
-    //   614: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   617: invokevirtual 274	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   620: invokeinterface 280 4 0
-    //   625: aload 6
-    //   627: ifnull -596 -> 31
-    //   630: aload 6
-    //   632: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   635: return
-    //   636: goto -205 -> 431
-    //   639: aload_0
-    //   640: invokevirtual 209	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:getRetry	()I
-    //   643: ifle +34 -> 677
-    //   646: aload_0
-    //   647: invokespecial 417	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:reSend	()V
-    //   650: goto -219 -> 431
-    //   653: astore_2
-    //   654: getstatic 397	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   455: aload_3
+    //   456: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   459: aload_0
+    //   460: aload 5
+    //   462: invokevirtual 400	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
+    //   465: ifeq +45 -> 510
+    //   468: aload_0
+    //   469: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   472: astore_2
+    //   473: aload_2
+    //   474: ifnull +19 -> 493
+    //   477: aload_2
+    //   478: sipush 200
+    //   481: aload_0
+    //   482: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   485: invokevirtual 280	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   488: invokeinterface 404 3 0
+    //   493: aload 7
+    //   495: invokevirtual 157	java/io/File:isFile	()Z
+    //   498: ifeq +360 -> 858
+    //   501: aload 7
+    //   503: invokevirtual 406	java/io/File:delete	()Z
+    //   506: pop
+    //   507: goto +351 -> 858
+    //   510: aload_0
+    //   511: invokevirtual 209	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:getRetry	()I
+    //   514: ifle +10 -> 524
+    //   517: aload_0
+    //   518: invokespecial 408	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:reSend	()V
+    //   521: goto +337 -> 858
+    //   524: aload_0
+    //   525: aload_0
+    //   526: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   529: invokevirtual 139	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
+    //   532: ldc_w 410
+    //   535: invokevirtual 414	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   538: aload 6
+    //   540: invokevirtual 417	java/net/HttpURLConnection:getResponseCode	()I
+    //   543: aload 5
+    //   545: aload_0
+    //   546: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   549: invokevirtual 420	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getEventName	()Ljava/lang/String;
+    //   552: invokevirtual 424	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:addLost	(IILjava/lang/String;Ljava/lang/String;)V
+    //   555: aload_0
+    //   556: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   559: astore_2
+    //   560: aload_2
+    //   561: ifnull +297 -> 858
+    //   564: aload_2
+    //   565: sipush 700
+    //   568: aload 5
+    //   570: aload_0
+    //   571: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   574: invokevirtual 280	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   577: invokeinterface 286 4 0
+    //   582: goto +276 -> 858
+    //   585: astore_3
+    //   586: goto +8 -> 594
+    //   589: astore_3
+    //   590: aload_3
+    //   591: astore_2
+    //   592: aload_3
+    //   593: athrow
+    //   594: aload 4
+    //   596: aload_2
+    //   597: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   600: aload_3
+    //   601: athrow
+    //   602: astore 5
+    //   604: goto +8 -> 612
+    //   607: astore_2
+    //   608: aload_2
+    //   609: astore_3
+    //   610: aload_2
+    //   611: athrow
+    //   612: aload 4
+    //   614: astore_2
+    //   615: aload 9
+    //   617: aload_3
+    //   618: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   621: aload 4
+    //   623: astore_2
+    //   624: aload 5
+    //   626: athrow
+    //   627: astore_3
+    //   628: goto +8 -> 636
+    //   631: astore_3
+    //   632: aload_3
+    //   633: astore_2
+    //   634: aload_3
+    //   635: athrow
+    //   636: aload 8
+    //   638: aload_2
+    //   639: invokestatic 361	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   642: aload_3
+    //   643: athrow
+    //   644: astore_2
+    //   645: goto +201 -> 846
+    //   648: astore_2
+    //   649: aload_0
+    //   650: iconst_0
+    //   651: invokevirtual 212	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:setRetry	(I)V
+    //   654: getstatic 388	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
     //   657: ldc 55
     //   659: aload_2
-    //   660: checkcast 231	java/lang/Throwable
-    //   663: invokevirtual 421	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   666: aload 6
-    //   668: ifnull -637 -> 31
-    //   671: aload 6
-    //   673: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   676: return
-    //   677: aload_0
-    //   678: aload_0
-    //   679: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   682: invokevirtual 139	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getParams	()Lorg/json/JSONObject;
-    //   685: ldc_w 423
-    //   688: invokevirtual 427	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   691: aload 6
-    //   693: invokevirtual 430	java/net/HttpURLConnection:getResponseCode	()I
-    //   696: aload 5
-    //   698: aload_0
-    //   699: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   702: invokevirtual 433	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getEventName	()Ljava/lang/String;
-    //   705: invokevirtual 437	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:addLost	(IILjava/lang/String;Ljava/lang/String;)V
-    //   708: aload_0
-    //   709: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   712: astore_2
-    //   713: aload_2
-    //   714: ifnull -283 -> 431
-    //   717: aload_2
-    //   718: sipush 700
-    //   721: aload 5
-    //   723: aload_0
-    //   724: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
-    //   727: invokevirtual 274	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
-    //   730: invokeinterface 280 4 0
-    //   735: goto -304 -> 431
-    //   738: astore_2
-    //   739: aload_0
-    //   740: iconst_0
-    //   741: invokevirtual 212	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:setRetry	(I)V
-    //   744: getstatic 397	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   747: ldc 55
-    //   749: aload_2
-    //   750: invokevirtual 421	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   753: aload 6
-    //   755: ifnull -724 -> 31
-    //   758: aload 6
-    //   760: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   763: return
-    //   764: astore_2
-    //   765: aload 6
-    //   767: ifnull +8 -> 775
-    //   770: aload 6
-    //   772: invokevirtual 390	java/net/HttpURLConnection:disconnect	()V
-    //   775: aload_2
-    //   776: athrow
-    //   777: astore_3
-    //   778: goto -330 -> 448
+    //   660: invokevirtual 428	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   663: aload 6
+    //   665: ifnull +201 -> 866
+    //   668: aload 6
+    //   670: invokevirtual 431	java/net/HttpURLConnection:disconnect	()V
+    //   673: return
+    //   674: astore_2
+    //   675: getstatic 388	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   678: ldc 55
+    //   680: aload_2
+    //   681: checkcast 231	java/lang/Throwable
+    //   684: invokevirtual 428	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   687: aload 6
+    //   689: ifnull +177 -> 866
+    //   692: goto -24 -> 668
+    //   695: astore_2
+    //   696: getstatic 388	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   699: astore_3
+    //   700: new 168	java/lang/StringBuilder
+    //   703: dup
+    //   704: invokespecial 170	java/lang/StringBuilder:<init>	()V
+    //   707: astore 4
+    //   709: aload 4
+    //   711: aload_2
+    //   712: invokevirtual 434	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   715: pop
+    //   716: aload 4
+    //   718: ldc_w 436
+    //   721: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   724: pop
+    //   725: aload 4
+    //   727: aload 7
+    //   729: invokevirtual 439	java/io/File:getPath	()Ljava/lang/String;
+    //   732: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   735: pop
+    //   736: aload 4
+    //   738: ldc_w 441
+    //   741: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   744: pop
+    //   745: aload_3
+    //   746: iconst_2
+    //   747: anewarray 392	java/lang/String
+    //   750: dup
+    //   751: iconst_0
+    //   752: ldc 55
+    //   754: aastore
+    //   755: dup
+    //   756: iconst_1
+    //   757: aload 4
+    //   759: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   762: aastore
+    //   763: invokevirtual 444	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
+    //   766: aload 7
+    //   768: invokevirtual 157	java/io/File:isFile	()Z
+    //   771: ifeq +9 -> 780
+    //   774: aload 7
+    //   776: invokevirtual 406	java/io/File:delete	()Z
+    //   779: pop
+    //   780: aload_0
+    //   781: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   784: astore_2
+    //   785: aload_2
+    //   786: ifnull +85 -> 871
+    //   789: aload_2
+    //   790: sipush 601
+    //   793: ldc_w 446
+    //   796: aload_0
+    //   797: getfield 83	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:resultObject	Lcom/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject;
+    //   800: invokevirtual 280	com/tencent/qapmsdk/base/reporter/uploaddata/data/ResultObject:getDbId	()I
+    //   803: invokeinterface 286 4 0
+    //   808: goto +63 -> 871
+    //   811: aload_0
+    //   812: iconst_0
+    //   813: invokevirtual 212	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:setRetry	(I)V
+    //   816: aload_0
+    //   817: getfield 85	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/FileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   820: astore_2
+    //   821: aload_2
+    //   822: ifnull +16 -> 838
+    //   825: aload_2
+    //   826: sipush 600
+    //   829: ldc_w 448
+    //   832: iconst_0
+    //   833: invokeinterface 286 4 0
+    //   838: aload 6
+    //   840: ifnull +26 -> 866
+    //   843: goto -175 -> 668
+    //   846: aload 6
+    //   848: ifnull +8 -> 856
+    //   851: aload 6
+    //   853: invokevirtual 431	java/net/HttpURLConnection:disconnect	()V
+    //   856: aload_2
+    //   857: athrow
+    //   858: aload 6
+    //   860: ifnull +6 -> 866
+    //   863: goto -195 -> 668
+    //   866: return
+    //   867: astore_2
+    //   868: goto -57 -> 811
+    //   871: aload 6
+    //   873: ifnull -7 -> 866
+    //   876: goto -208 -> 668
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	781	0	this	FileUploadRunnable
-    //   50	36	1	i	int
-    //   36	436	2	localObject1	Object
-    //   477	1	2	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   487	38	2	localObject2	Object
-    //   530	23	2	localFileNotFoundException	java.io.FileNotFoundException
-    //   601	6	2	localReportResultCallback1	IReporter.ReportResultCallback
-    //   653	7	2	localException	java.lang.Exception
-    //   712	6	2	localReportResultCallback2	IReporter.ReportResultCallback
-    //   738	12	2	localThrowable1	java.lang.Throwable
-    //   764	12	2	localObject3	Object
-    //   182	198	3	localObject4	Object
-    //   447	15	3	localObject5	Object
-    //   463	4	3	localThrowable2	java.lang.Throwable
-    //   468	8	3	localObject6	Object
-    //   516	4	3	localThrowable3	java.lang.Throwable
-    //   521	8	3	localObject7	Object
-    //   777	1	3	localObject8	Object
-    //   191	187	4	localObject9	Object
-    //   442	81	4	localThrowable4	java.lang.Throwable
-    //   172	550	5	localObject10	Object
-    //   144	627	6	localHttpURLConnection	java.net.HttpURLConnection
-    //   97	495	7	localFile	File
-    //   166	304	8	localObject11	Object
-    //   236	216	9	localCloseable	java.io.Closeable
+    //   0	879	0	this	FileUploadRunnable
+    //   56	7	1	i	int
+    //   42	555	2	localObject1	Object
+    //   607	4	2	localThrowable1	java.lang.Throwable
+    //   614	25	2	localObject2	Object
+    //   644	1	2	localObject3	Object
+    //   648	12	2	localThrowable2	java.lang.Throwable
+    //   674	7	2	localException	java.lang.Exception
+    //   695	17	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   784	73	2	localReportResultCallback	IReporter.ReportResultCallback
+    //   867	1	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   117	339	3	localObject4	Object
+    //   585	1	3	localObject5	Object
+    //   589	12	3	localThrowable3	java.lang.Throwable
+    //   609	9	3	localThrowable4	java.lang.Throwable
+    //   627	1	3	localObject6	Object
+    //   631	12	3	localThrowable5	java.lang.Throwable
+    //   699	47	3	localLogger	com.tencent.qapmsdk.common.logger.Logger
+    //   177	581	4	localObject7	Object
+    //   249	320	5	localObject8	Object
+    //   602	23	5	localObject9	Object
+    //   149	723	6	localHttpURLConnection	java.net.HttpURLConnection
+    //   103	672	7	localFile	File
+    //   171	466	8	localObject10	Object
+    //   240	376	9	localObject11	Object
+    //   187	125	10	localDataOutputStream	java.io.DataOutputStream
     // Exception table:
     //   from	to	target	type
-    //   247	275	442	java/lang/Throwable
-    //   444	447	447	finally
-    //   177	183	463	java/lang/Throwable
-    //   186	193	463	java/lang/Throwable
-    //   196	204	463	java/lang/Throwable
-    //   207	221	463	java/lang/Throwable
-    //   224	238	463	java/lang/Throwable
-    //   241	247	463	java/lang/Throwable
-    //   278	285	463	java/lang/Throwable
-    //   288	296	463	java/lang/Throwable
-    //   299	307	463	java/lang/Throwable
-    //   310	314	463	java/lang/Throwable
-    //   451	458	463	java/lang/Throwable
-    //   461	463	463	java/lang/Throwable
-    //   177	183	468	finally
-    //   186	193	468	finally
-    //   196	204	468	finally
-    //   207	221	468	finally
-    //   224	238	468	finally
-    //   241	247	468	finally
-    //   278	285	468	finally
-    //   288	296	468	finally
-    //   299	307	468	finally
-    //   310	314	468	finally
-    //   451	458	468	finally
-    //   461	463	468	finally
-    //   466	468	468	finally
-    //   151	174	477	java/lang/OutOfMemoryError
-    //   314	343	477	java/lang/OutOfMemoryError
-    //   377	397	477	java/lang/OutOfMemoryError
-    //   401	417	477	java/lang/OutOfMemoryError
-    //   417	431	477	java/lang/OutOfMemoryError
-    //   469	477	477	java/lang/OutOfMemoryError
-    //   522	530	477	java/lang/OutOfMemoryError
-    //   639	650	477	java/lang/OutOfMemoryError
-    //   677	713	477	java/lang/OutOfMemoryError
-    //   717	735	477	java/lang/OutOfMemoryError
-    //   345	352	516	java/lang/Throwable
-    //   354	370	516	java/lang/Throwable
-    //   372	377	516	java/lang/Throwable
-    //   345	352	521	finally
-    //   354	370	521	finally
-    //   372	377	521	finally
-    //   519	521	521	finally
-    //   151	174	530	java/io/FileNotFoundException
-    //   314	343	530	java/io/FileNotFoundException
-    //   377	397	530	java/io/FileNotFoundException
-    //   401	417	530	java/io/FileNotFoundException
-    //   417	431	530	java/io/FileNotFoundException
-    //   469	477	530	java/io/FileNotFoundException
-    //   522	530	530	java/io/FileNotFoundException
-    //   639	650	530	java/io/FileNotFoundException
-    //   677	713	530	java/io/FileNotFoundException
-    //   717	735	530	java/io/FileNotFoundException
-    //   151	174	653	java/lang/Exception
-    //   314	343	653	java/lang/Exception
-    //   377	397	653	java/lang/Exception
-    //   401	417	653	java/lang/Exception
-    //   417	431	653	java/lang/Exception
-    //   469	477	653	java/lang/Exception
-    //   522	530	653	java/lang/Exception
-    //   639	650	653	java/lang/Exception
-    //   677	713	653	java/lang/Exception
-    //   717	735	653	java/lang/Exception
-    //   151	174	738	java/lang/Throwable
-    //   314	343	738	java/lang/Throwable
-    //   377	397	738	java/lang/Throwable
-    //   401	417	738	java/lang/Throwable
-    //   417	431	738	java/lang/Throwable
-    //   469	477	738	java/lang/Throwable
-    //   522	530	738	java/lang/Throwable
-    //   639	650	738	java/lang/Throwable
-    //   677	713	738	java/lang/Throwable
-    //   717	735	738	java/lang/Throwable
-    //   151	174	764	finally
-    //   314	343	764	finally
-    //   377	397	764	finally
-    //   401	417	764	finally
-    //   417	431	764	finally
-    //   469	477	764	finally
-    //   478	488	764	finally
-    //   492	505	764	finally
-    //   522	530	764	finally
-    //   531	597	764	finally
-    //   597	602	764	finally
-    //   606	625	764	finally
-    //   639	650	764	finally
-    //   654	666	764	finally
-    //   677	713	764	finally
-    //   717	735	764	finally
-    //   739	753	764	finally
-    //   247	275	777	finally
+    //   358	365	585	finally
+    //   367	383	585	finally
+    //   385	390	585	finally
+    //   392	401	585	finally
+    //   403	412	585	finally
+    //   414	422	585	finally
+    //   424	446	585	finally
+    //   448	453	585	finally
+    //   592	594	585	finally
+    //   358	365	589	java/lang/Throwable
+    //   367	383	589	java/lang/Throwable
+    //   385	390	589	java/lang/Throwable
+    //   392	401	589	java/lang/Throwable
+    //   403	412	589	java/lang/Throwable
+    //   414	422	589	java/lang/Throwable
+    //   424	446	589	java/lang/Throwable
+    //   448	453	589	java/lang/Throwable
+    //   254	260	602	finally
+    //   263	286	602	finally
+    //   610	612	602	finally
+    //   254	260	607	java/lang/Throwable
+    //   263	286	607	java/lang/Throwable
+    //   182	189	627	finally
+    //   192	198	627	finally
+    //   201	208	627	finally
+    //   211	225	627	finally
+    //   228	242	627	finally
+    //   245	251	627	finally
+    //   289	296	627	finally
+    //   299	308	627	finally
+    //   311	320	627	finally
+    //   323	327	627	finally
+    //   615	621	627	finally
+    //   624	627	627	finally
+    //   634	636	627	finally
+    //   182	189	631	java/lang/Throwable
+    //   192	198	631	java/lang/Throwable
+    //   201	208	631	java/lang/Throwable
+    //   211	225	631	java/lang/Throwable
+    //   228	242	631	java/lang/Throwable
+    //   245	251	631	java/lang/Throwable
+    //   289	296	631	java/lang/Throwable
+    //   299	308	631	java/lang/Throwable
+    //   311	320	631	java/lang/Throwable
+    //   323	327	631	java/lang/Throwable
+    //   615	621	631	java/lang/Throwable
+    //   624	627	631	java/lang/Throwable
+    //   156	179	644	finally
+    //   327	356	644	finally
+    //   453	473	644	finally
+    //   477	493	644	finally
+    //   493	507	644	finally
+    //   510	521	644	finally
+    //   524	560	644	finally
+    //   564	582	644	finally
+    //   594	602	644	finally
+    //   636	644	644	finally
+    //   649	663	644	finally
+    //   675	687	644	finally
+    //   696	780	644	finally
+    //   780	785	644	finally
+    //   789	808	644	finally
+    //   811	821	644	finally
+    //   825	838	644	finally
+    //   156	179	648	java/lang/Throwable
+    //   327	356	648	java/lang/Throwable
+    //   453	473	648	java/lang/Throwable
+    //   477	493	648	java/lang/Throwable
+    //   493	507	648	java/lang/Throwable
+    //   510	521	648	java/lang/Throwable
+    //   524	560	648	java/lang/Throwable
+    //   564	582	648	java/lang/Throwable
+    //   594	602	648	java/lang/Throwable
+    //   636	644	648	java/lang/Throwable
+    //   156	179	674	java/lang/Exception
+    //   327	356	674	java/lang/Exception
+    //   453	473	674	java/lang/Exception
+    //   477	493	674	java/lang/Exception
+    //   493	507	674	java/lang/Exception
+    //   510	521	674	java/lang/Exception
+    //   524	560	674	java/lang/Exception
+    //   564	582	674	java/lang/Exception
+    //   594	602	674	java/lang/Exception
+    //   636	644	674	java/lang/Exception
+    //   156	179	695	java/io/FileNotFoundException
+    //   327	356	695	java/io/FileNotFoundException
+    //   453	473	695	java/io/FileNotFoundException
+    //   477	493	695	java/io/FileNotFoundException
+    //   493	507	695	java/io/FileNotFoundException
+    //   510	521	695	java/io/FileNotFoundException
+    //   524	560	695	java/io/FileNotFoundException
+    //   564	582	695	java/io/FileNotFoundException
+    //   594	602	695	java/io/FileNotFoundException
+    //   636	644	695	java/io/FileNotFoundException
+    //   156	179	867	java/lang/OutOfMemoryError
+    //   327	356	867	java/lang/OutOfMemoryError
+    //   453	473	867	java/lang/OutOfMemoryError
+    //   477	493	867	java/lang/OutOfMemoryError
+    //   493	507	867	java/lang/OutOfMemoryError
+    //   510	521	867	java/lang/OutOfMemoryError
+    //   524	560	867	java/lang/OutOfMemoryError
+    //   564	582	867	java/lang/OutOfMemoryError
+    //   594	602	867	java/lang/OutOfMemoryError
+    //   636	644	867	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.FileUploadRunnable
  * JD-Core Version:    0.7.0.1
  */

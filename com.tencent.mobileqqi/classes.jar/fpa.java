@@ -3,11 +3,11 @@ import com.tencent.mobileqq.emoticonview.HorizonEmoticonTabs;
 public class fpa
   implements Runnable
 {
-  public fpa(HorizonEmoticonTabs paramHorizonEmoticonTabs) {}
+  public fpa(HorizonEmoticonTabs paramHorizonEmoticonTabs, int paramInt) {}
   
   public void run()
   {
-    HorizonEmoticonTabs.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewHorizonEmoticonTabs.scrollBy(this.jdField_a_of_type_Int, 0);
   }
 }
 

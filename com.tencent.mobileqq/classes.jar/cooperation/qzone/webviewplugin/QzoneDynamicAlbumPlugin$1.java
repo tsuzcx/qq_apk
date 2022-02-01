@@ -1,24 +1,23 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjxu;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneDynamicAlbumPlugin$1
+class QzoneDynamicAlbumPlugin$1
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$1(bjxu parambjxu) {}
+  QzoneDynamicAlbumPlugin$1(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
   public void run()
   {
-    bjxu.a(bjxu.a());
-    bjqu.a().a().a("0");
-    bjqu.a().a().c("0");
+    QzoneDynamicAlbumPlugin.access$002(QzoneDynamicAlbumPlugin.getDynamicAlbumImageSize());
+    RemoteHandleManager.getInstance().getSender().getDynamicPhoto("0");
+    RemoteHandleManager.getInstance().getSender().getCloudPhotoDynamic("0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.1
  * JD-Core Version:    0.7.0.1
  */

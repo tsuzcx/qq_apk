@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 
 public abstract interface MMSightRecordView$g
 {
-  public abstract void D(Bitmap paramBitmap);
+  public abstract void X(Bitmap paramBitmap);
   
-  public abstract void aCO();
+  public abstract void crN();
 }
 
 

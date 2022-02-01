@@ -1,13 +1,24 @@
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog.OnRoamResultObserver;
+import com.tencent.widget.XListView;
 
 public class gcg
   implements Runnable
 {
-  public gcg(RoamSearchDialog paramRoamSearchDialog, String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  public gcg(RoamSearchDialog paramRoamSearchDialog, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamSearchDialog$OnRoamResultObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

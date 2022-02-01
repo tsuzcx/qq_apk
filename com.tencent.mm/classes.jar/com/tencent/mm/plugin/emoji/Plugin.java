@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public n createApplication()
   {
-    AppMethodBeat.i(52712);
-    b localb = new b();
-    AppMethodBeat.o(52712);
-    return localb;
+    AppMethodBeat.i(108288);
+    c localc = new c();
+    AppMethodBeat.o(108288);
+    return localc;
   }
   
-  public at createSubCore()
+  public be createSubCore()
   {
-    AppMethodBeat.i(52713);
-    i locali = new i();
-    AppMethodBeat.o(52713);
-    return locali;
+    AppMethodBeat.i(108289);
+    s locals = new s();
+    AppMethodBeat.o(108289);
+    return locals;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.Plugin
  * JD-Core Version:    0.7.0.1
  */

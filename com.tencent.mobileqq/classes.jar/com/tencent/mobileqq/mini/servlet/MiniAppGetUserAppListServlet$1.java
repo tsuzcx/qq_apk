@@ -19,9 +19,10 @@ class MiniAppGetUserAppListServlet$1
   
   public void run()
   {
-    if ((this.val$result != null) && (this.val$result.userAppList != null))
+    Object localObject1 = this.val$result;
+    if ((localObject1 != null) && (((INTERFACE.StGetUserAppListRsp)localObject1).userAppList != null))
     {
-      Object localObject1 = this.val$result.userAppList.get();
+      localObject1 = this.val$result.userAppList.get();
       if ((localObject1 != null) && (((List)localObject1).size() > 0) && ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))) {
         try
         {
@@ -49,7 +50,7 @@ class MiniAppGetUserAppListServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServlet.1
  * JD-Core Version:    0.7.0.1
  */

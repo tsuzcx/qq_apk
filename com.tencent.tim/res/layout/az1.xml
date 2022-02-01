@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/fp3" android:layout_width="120.0dip" android:layout_height="120.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/fnh" android:duplicateParentState="true" android:layout_width="120.0dip" android:layout_height="120.0dip" android:scaleType="centerCrop" android:contentDescription="@string/qyo" />
+    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/c28" android:background="#80000000" android:visibility="gone" android:duplicateParentState="true" android:layout_width="120.0dip" android:layout_height="120.0dip" android:src="@drawable/f1x" android:scaleType="center" android:contentDescription="@string/qyu" />
+</RelativeLayout>

@@ -68,39 +68,48 @@ public class ParamHelper
         localObject1 = (ParamHelper.ParamInfo)this.mParams.get(((Map.Entry)localObject2).getKey());
         if (localObject1 != null)
         {
-          Object localObject3;
-          int i;
-          switch (ParamHelper.1.$SwitchMap$com$tencent$filter$ParamHelper$ParamType[ParamHelper.ParamInfo.access$000(localObject1).ordinal()])
+          int k = ParamHelper.1.$SwitchMap$com$tencent$filter$ParamHelper$ParamType[ParamHelper.ParamInfo.access$000(localObject1).ordinal()];
+          if (k != 1)
           {
-          default: 
-            break;
-          case 1: 
+            if (k != 2)
+            {
+              int j = 0;
+              int i = 0;
+              Object localObject3;
+              if (k != 3)
+              {
+                if (k == 4)
+                {
+                  localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
+                  localObject3 = new int[localObject2.length];
+                  while (i < localObject2.length)
+                  {
+                    localObject3[i] = Integer.parseInt(localObject2[i]);
+                    i += 1;
+                  }
+                  this.mFilter.addParam(new UniformParam.Int1sParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), (int[])localObject3));
+                }
+              }
+              else
+              {
+                localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
+                localObject3 = new float[localObject2.length];
+                i = j;
+                while (i < localObject2.length)
+                {
+                  localObject3[i] = Float.parseFloat(localObject2[i]);
+                  i += 1;
+                }
+                this.mFilter.addParam(new UniformParam.FloatsParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), (float[])localObject3));
+              }
+            }
+            else
+            {
+              this.mFilter.addParam(new UniformParam.IntParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), Integer.parseInt((String)((Map.Entry)localObject2).getValue())));
+            }
+          }
+          else {
             this.mFilter.addParam(new UniformParam.FloatParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), Float.parseFloat((String)((Map.Entry)localObject2).getValue())));
-            break;
-          case 2: 
-            this.mFilter.addParam(new UniformParam.IntParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), Integer.parseInt((String)((Map.Entry)localObject2).getValue())));
-            break;
-          case 3: 
-            localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
-            localObject3 = new float[localObject2.length];
-            i = 0;
-            while (i < localObject2.length)
-            {
-              localObject3[i] = Float.parseFloat(localObject2[i]);
-              i += 1;
-            }
-            this.mFilter.addParam(new UniformParam.FloatsParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), (float[])localObject3));
-            break;
-          case 4: 
-            localObject2 = ((String)((Map.Entry)localObject2).getValue()).split(",");
-            localObject3 = new int[localObject2.length];
-            i = 0;
-            while (i < localObject2.length)
-            {
-              localObject3[i] = Integer.parseInt(localObject2[i]);
-              i += 1;
-            }
-            this.mFilter.addParam(new UniformParam.Int1sParam(ParamHelper.ParamInfo.access$100((ParamHelper.ParamInfo)localObject1), (int[])localObject3));
           }
         }
       }
@@ -109,7 +118,7 @@ public class ParamHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.filter.ParamHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/evh" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:layout_weight="1.0"
+<LinearLayout android:orientation="vertical" android:background="@color/a0u" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/su" android:gravity="bottom|center" android:id="@id/e2f" android:paddingTop="@dimen/l2" android:paddingBottom="@dimen/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/ib" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:text="@string/fff" android:layout_alignParentRight="true" />
+    <View android:id="@id/es5" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cv" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hvo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cv">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:id="@id/hv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 13456545676" android:layout_marginEnd="@dimen/cv" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/xo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ffm" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="right" android:id="@id/hvk" android:layout_width="25.0dip" android:layout_height="20.0dip" android:src="@raw/phone_number_check_icon" />
+    </LinearLayout>
+    <View android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cv" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/cv" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cw">
+        <Button android:textSize="@dimen/m3" android:id="@id/apy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dip" android:minHeight="@dimen/d4" android:text="@string/fft" style="@style/op" />
+        <Button android:textSize="@dimen/m3" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:minWidth="120.0dip" android:minHeight="@dimen/d4" android:text="@string/ffu" style="@style/oh" />
+    </LinearLayout>
+</LinearLayout>

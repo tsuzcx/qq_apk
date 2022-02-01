@@ -39,7 +39,11 @@ public class ScaleXY
   
   public String toString()
   {
-    return getScaleX() + "x" + getScaleY();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getScaleX());
+    localStringBuilder.append("x");
+    localStringBuilder.append(getScaleY());
+    return localStringBuilder.toString();
   }
 }
 

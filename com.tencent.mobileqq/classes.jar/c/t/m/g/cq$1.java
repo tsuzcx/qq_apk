@@ -11,41 +11,29 @@ final class cq$1
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = 0L;
-    if ((paramIntent == null) || (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        boolean bool = paramIntent.getBooleanExtra("noConnectivity", false);
-        co.a("intent:" + paramIntent + ",");
-        if (bool) {
-          break;
-        }
-        co.a(cq.a(this.a), 107, 2000L);
-        if (cq.b(this.a) == null) {
-          break;
-        }
-        paramContext = cq.b(this.a);
-        if (2000L < 0L)
-        {
-          paramContext.a(1004, l);
-          return;
-        }
-      }
-      catch (Throwable paramContext)
-      {
+    if (paramIntent != null) {
+      if (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
         return;
       }
-      l = 2000L;
     }
+    try
+    {
+      boolean bool = paramIntent.getBooleanExtra("noConnectivity", false);
+      paramContext = new StringBuilder("intent:");
+      paramContext.append(paramIntent);
+      paramContext.append(",");
+      co.a(paramContext.toString());
+      if (!bool) {
+        co.a(cq.a(this.a), 107, 2000L);
+      }
+      return;
+    }
+    catch (Throwable paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cq.1
  * JD-Core Version:    0.7.0.1
  */

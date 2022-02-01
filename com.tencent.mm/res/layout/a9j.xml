@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/cmu" android:background="@color/a2y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/cmv" />
-    <ListView android:id="@id/cmv" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-    <FrameLayout android:id="@id/cmw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginTop="148.0dip" android:layout_marginRight="30.0dip">
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:layout_width="214.0dip" android:layout_height="wrap_content" android:src="@raw/ipcall_welcome" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-            <TextView android:textSize="14.0dip" android:textColor="#ffb2b2b2" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ciq" android:singleLine="false" android:lineSpacingExtra="7.0dip" />
-        </LinearLayout>
-    </FrameLayout>
-    <ImageButton android:id="@id/cmx" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bf" android:layout_marginBottom="@dimen/be" android:src="@drawable/ax" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/amm" android:clickable="false" android:layout_width="@dimen/df" android:layout_height="@dimen/bv" android:src="@raw/finder_bubble_arrow" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <FrameLayout android:id="@id/aml" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/amm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import amnu;
-import atzw;
-import bdgg;
-import bfbj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.fts.api.IFTSDBRuntimeService;
+import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.open.OpenProxy;
 
 class AccountManageActivity$19
   implements Runnable
@@ -14,16 +14,16 @@ class AccountManageActivity$19
   
   public void run()
   {
-    bfbj.a().b(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
+    OpenProxy.a().b(this.a);
+    if (this.b)
     {
-      ProxyManager localProxyManager = this.this$0.app.a();
+      ProxyManager localProxyManager = this.this$0.app.getProxyManager();
       if (localProxyManager != null)
       {
-        localProxyManager.d();
-        amnu.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
-        new atzw().a(this.jdField_a_of_type_JavaLangString);
-        bdgg.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+        localProxyManager.transSaveToDatabase();
+        ((IFTSDBRuntimeService)this.this$0.app.getRuntimeService(IFTSDBRuntimeService.class, "")).clearFTS(this.this$0.app, this.a, true);
+        new MessageRecordManagerImpl().a(this.a);
+        DBUtils.a().a(this.this$0.app.getApp(), this.a, false);
       }
     }
     this.this$0.runOnUiThread(new AccountManageActivity.19.1(this));
@@ -31,7 +31,7 @@ class AccountManageActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.19
  * JD-Core Version:    0.7.0.1
  */

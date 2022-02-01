@@ -47,6 +47,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
+import egh;
 import egi;
 import egj;
 import egk;
@@ -54,7 +55,6 @@ import egl;
 import egm;
 import egn;
 import ego;
-import egp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -80,9 +80,9 @@ public class TroopActivity
   public static final int h = 2;
   public static final int k = 1234;
   private static final int n = 0;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new egn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new egm(this);
   public View a;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new egm(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new egl(this);
   protected Animation a;
   RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -91,7 +91,7 @@ public class TroopActivity
   protected RelativeLayout a;
   private BaseTroopView.ITroopContext jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext;
   private BaseTroopView jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView;
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new egl(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new egk(this);
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -180,12 +180,12 @@ public class TroopActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext = new egi(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext = new egh(this);
   }
   
   private void g()
   {
-    TextView localTextView = (TextView)findViewById(2131231456);
+    TextView localTextView = (TextView)findViewById(2131231455);
     String str = getIntent().getExtras().getString("leftViewText");
     Object localObject = str;
     if (str == null) {
@@ -193,16 +193,16 @@ public class TroopActivity
     }
     localTextView.setText((CharSequence)localObject);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231461));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131231377));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131231460));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131231376));
     if (this.j != 2) {
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         if (getIntent().getBooleanExtra("onlyOneSegement", false))
         {
-          findViewById(2131232307).setVisibility(8);
-          localObject = (TextView)findViewById(2131231376);
+          findViewById(2131232306).setVisibility(8);
+          localObject = (TextView)findViewById(2131231375);
           if (this.i != 0) {
             break label418;
           }
@@ -224,7 +224,7 @@ public class TroopActivity
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232308));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131232307));
       k();
       i();
       j();
@@ -248,7 +248,7 @@ public class TroopActivity
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838011);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new egj(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new egi(this));
       break;
       label418:
       if (1 != this.i) {
@@ -267,7 +267,7 @@ public class TroopActivity
         getSupportActionBar().setTitle(2131562178);
         continue;
         label480:
-        ((TextView)findViewById(2131231376)).setText(2131562195);
+        ((TextView)findViewById(2131231375)).setText(2131562195);
         getSupportActionBar().setTitle(2131562195);
         this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0, getString(2131562248));
         this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1, getString(2131562199));
@@ -281,7 +281,7 @@ public class TroopActivity
     localActionSheet.a(2131560750, 5);
     localActionSheet.a(2131560751, 5);
     localActionSheet.d(2131561746);
-    localActionSheet.a(new egk(this, localActionSheet));
+    localActionSheet.a(new egj(this, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -347,18 +347,18 @@ public class TroopActivity
   
   private void k()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131232629);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131232630);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232631));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131232628);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131232629);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131232630));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968628);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this, 2130968626);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
     this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232632));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232634));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232636));
-    this.d = ((LinearLayout)findViewById(2131232638));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232631));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232633));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131232635));
+    this.d = ((LinearLayout)findViewById(2131232637));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -549,7 +549,7 @@ public class TroopActivity
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1234) {
-      runOnUiThread(new ego(this));
+      runOnUiThread(new egn(this));
     }
     for (;;)
     {
@@ -630,15 +630,15 @@ public class TroopActivity
       if (this.i != 0) {
         break label215;
       }
-      if (paramMenu.findItem(2131232635) == null)
+      if (paramMenu.findItem(2131232634) == null)
       {
-        localMenuItem = paramMenu.add(0, 2131232635, 0, getString(2131562115));
+        localMenuItem = paramMenu.add(0, 2131232634, 0, getString(2131562115));
         localMenuItem.setIcon(2130838387);
         MenuItemCompat.setShowAsAction(localMenuItem, 0);
       }
-      if (paramMenu.findItem(2131232637) == null)
+      if (paramMenu.findItem(2131232636) == null)
       {
-        localMenuItem = paramMenu.add(0, 2131232637, 0, getString(2131560287));
+        localMenuItem = paramMenu.add(0, 2131232636, 0, getString(2131560287));
         localMenuItem.setIcon(2130838386);
         MenuItemCompat.setShowAsAction(localMenuItem, 0);
       }
@@ -675,7 +675,7 @@ public class TroopActivity
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    runOnUiThread(new egp(this));
+    runOnUiThread(new ego(this));
   }
 }
 

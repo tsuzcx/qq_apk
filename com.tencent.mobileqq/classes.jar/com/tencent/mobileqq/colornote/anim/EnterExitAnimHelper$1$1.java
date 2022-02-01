@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.colornote.anim;
 
 import android.animation.Animator;
-import aoch;
-import xxx;
 
-public class EnterExitAnimHelper$1$1
+class EnterExitAnimHelper$1$1
   implements Runnable
 {
-  public EnterExitAnimHelper$1$1(aoch paramaoch, Animator paramAnimator) {}
+  EnterExitAnimHelper$1$1(EnterExitAnimHelper.1 param1, Animator paramAnimator) {}
   
   public void run()
   {
-    ((xxx)this.jdField_a_of_type_AndroidAnimationAnimator).a();
+    ((CircularRevealAnimator)this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.EnterExitAnimHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

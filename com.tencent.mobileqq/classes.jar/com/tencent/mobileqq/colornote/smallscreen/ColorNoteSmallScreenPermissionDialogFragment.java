@@ -1,29 +1,39 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import aoey;
-import aoez;
-import azqs;
-import bdgm;
-import bdjz;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.colornote.ColorNoteRecentView;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class ColorNoteSmallScreenPermissionDialogFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
-  public static boolean a;
+  public static boolean a = false;
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
-    paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.overridePendingTransition(0, 0);
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return true;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -31,15 +41,44 @@ public class ColorNoteSmallScreenPermissionDialogFragment
     if (QLog.isColorLevel()) {
       QLog.i("ColorNoteSmallScreenPermissionDialogFragment", 2, "showPermissionDialog in");
     }
-    bdjz localbdjz = bdgm.a(getActivity(), 230).setMessage(2131690911).setPositiveButton(2131690912, new aoey(this));
-    localbdjz.setTitle(2131690913);
-    localbdjz.setCancelable(true);
-    localbdjz.setOnCancelListener(new aoez(this));
-    localbdjz.setCanceledOnTouchOutside(false);
-    localbdjz.show();
+    Object localObject = getQBaseActivity().getIntent();
+    int i;
+    if (localObject != null) {
+      i = ((Intent)localObject).getIntExtra("key_permission_from", 1);
+    } else {
+      i = 1;
+    }
+    int k = 2131887837;
+    int j;
+    if (i == 2)
+    {
+      j = 2131887838;
+    }
+    else
+    {
+      j = k;
+      if (i == 3)
+      {
+        ColorNoteRecentView.b(getQBaseActivity().getAppRuntime(), true);
+        j = k;
+      }
+    }
+    localObject = DialogUtil.a(getQBaseActivity(), 230).setMessage(j).setPositiveButton(2131887839, new ColorNoteSmallScreenPermissionDialogFragment.1(this));
+    ((QQCustomDialog)localObject).setTitle(2131887840);
+    ((QQCustomDialog)localObject).setCancelable(true);
+    ((QQCustomDialog)localObject).setOnCancelListener(new ColorNoteSmallScreenPermissionDialogFragment.2(this));
+    ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
+    ((QQCustomDialog)localObject).show();
     a = true;
-    azqs.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", 0, 0, "", "", "", "");
-    return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    if (i == 2) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800AB3A", "0X800AB3A", i, 0, "", "", "", "");
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -50,7 +89,7 @@ public class ColorNoteSmallScreenPermissionDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment
  * JD-Core Version:    0.7.0.1
  */

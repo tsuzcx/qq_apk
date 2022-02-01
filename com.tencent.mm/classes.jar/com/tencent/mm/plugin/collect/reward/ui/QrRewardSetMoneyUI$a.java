@@ -14,17 +14,17 @@ final class QrRewardSetMoneyUI$a
   
   public final int getCount()
   {
-    AppMethodBeat.i(41155);
-    int i = QrRewardSetMoneyUI.e(this.kQu).size();
-    AppMethodBeat.o(41155);
+    AppMethodBeat.i(64016);
+    int i = QrRewardSetMoneyUI.e(this.xbJ).size();
+    AppMethodBeat.o(64016);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(41156);
-    Object localObject = QrRewardSetMoneyUI.e(this.kQu).get(paramInt);
-    AppMethodBeat.o(41156);
+    AppMethodBeat.i(64017);
+    Object localObject = QrRewardSetMoneyUI.e(this.xbJ).get(paramInt);
+    AppMethodBeat.o(64017);
     return localObject;
   }
   
@@ -35,20 +35,20 @@ final class QrRewardSetMoneyUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(41157);
+    AppMethodBeat.i(64018);
     if (paramView == null) {
-      paramView = (View)QrRewardSetMoneyUI.f(this.kQu).get(paramInt);
+      paramView = (View)QrRewardSetMoneyUI.f(this.xbJ).get(paramInt);
     }
     for (;;)
     {
-      AppMethodBeat.o(41157);
+      AppMethodBeat.o(64018);
       return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.ui.QrRewardSetMoneyUI.a
  * JD-Core Version:    0.7.0.1
  */

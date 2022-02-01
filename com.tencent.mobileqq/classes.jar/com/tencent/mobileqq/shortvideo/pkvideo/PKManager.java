@@ -20,15 +20,16 @@ public class PKManager
   
   public long getSyncDecodeTimeUs()
   {
-    if (this.rightDecoder == null) {
+    HWVideoDecoder localHWVideoDecoder = this.rightDecoder;
+    if (localHWVideoDecoder == null) {
       return this.leftDecoder.getProgress();
     }
-    return Math.min(this.rightDecoder.getProgress(), this.leftDecoder.getProgress());
+    return Math.min(localHWVideoDecoder.getProgress(), this.leftDecoder.getProgress());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.pkvideo.PKManager
  * JD-Core Version:    0.7.0.1
  */

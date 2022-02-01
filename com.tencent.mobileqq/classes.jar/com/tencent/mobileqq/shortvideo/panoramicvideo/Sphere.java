@@ -20,76 +20,105 @@ public class Sphere
   {
     float f1 = 1.0F / paramInt1;
     float f2 = 1.0F / paramInt2;
-    int i = (paramInt1 + 1) * (paramInt2 + 1);
-    Object localObject3 = new float[i * 3];
-    Object localObject1 = new float[i * 2];
-    short[] arrayOfShort = new short[i * 6];
+    int i3 = paramInt1 + 1;
+    int i1 = paramInt2 + 1;
+    int k = i3 * i1;
+    Object localObject1 = new float[k * 3];
+    Object localObject2 = new float[k * 2];
+    short[] arrayOfShort = new short[k * 6];
     int m = 0;
-    int k = 0;
-    int j;
-    int n;
-    for (i = 0; i < paramInt1 + 1; i = (short)(i + 1)) {
-      for (j = 0; j < paramInt2 + 1; j = (short)(j + 1))
-      {
-        float f3 = (float)(Math.cos(6.283186F * j * f2) * Math.sin(3.141593F * i * f1));
-        float f4 = (float)Math.sin(-1.570796F + 3.141593F * i * f1);
-        float f5 = (float)(Math.sin(6.283186F * j * f2) * Math.sin(3.141593F * i * f1));
-        n = m + 1;
-        localObject1[m] = (j * f2);
-        m = n + 1;
-        localObject1[n] = (i * f1);
-        n = k + 1;
-        localObject3[k] = (f3 * paramFloat);
-        int i1 = n + 1;
-        localObject3[n] = (f4 * paramFloat);
-        k = i1 + 1;
-        localObject3[i1] = (f5 * paramFloat);
-      }
-    }
     k = 0;
-    m = paramInt2 + 1;
-    for (i = 0; i < paramInt1; i = (short)(i + 1)) {
-      for (j = 0; j < paramInt2; j = (short)(j + 1))
+    int i2;
+    int i4;
+    for (int n = 0; m < i3; n = i2)
+    {
+      i2 = k;
+      i4 = 0;
+      k = n;
+      n = i2;
+      i2 = m;
+      m = i3;
+      while (i4 < i1)
       {
-        n = k + 1;
-        arrayOfShort[k] = ((short)(i * m + j));
-        k = n + 1;
-        arrayOfShort[n] = ((short)((i + 1) * m + j));
-        n = k + 1;
-        arrayOfShort[k] = ((short)(i * m + (j + 1)));
-        k = n + 1;
-        arrayOfShort[n] = ((short)(i * m + (j + 1)));
-        n = k + 1;
-        arrayOfShort[k] = ((short)((i + 1) * m + j));
-        k = n + 1;
-        arrayOfShort[n] = ((short)((i + 1) * m + (j + 1)));
+        float f3 = i4;
+        double d1 = 6.283186F * f3 * f2;
+        double d2 = Math.cos(d1);
+        float f4 = i2;
+        float f6 = 3.141593F * f4 * f1;
+        double d3 = f6;
+        float f5 = (float)(d2 * Math.sin(d3));
+        f6 = (float)Math.sin(f6 - 1.570796F);
+        float f7 = (float)(Math.sin(d1) * Math.sin(d3));
+        i3 = n + 1;
+        localObject2[n] = (f3 * f2);
+        n = i3 + 1;
+        localObject2[i3] = (f4 * f1);
+        i3 = k + 1;
+        localObject1[k] = (f5 * paramFloat);
+        int i5 = i3 + 1;
+        localObject1[i3] = (f6 * paramFloat);
+        k = i5 + 1;
+        localObject1[i5] = (f7 * paramFloat);
+        i4 = (short)(i4 + 1);
       }
+      i4 = (short)(i2 + 1);
+      i2 = k;
+      i3 = m;
+      m = i4;
+      k = n;
     }
-    Object localObject2 = ByteBuffer.allocateDirect(localObject3.length * 4);
-    ((ByteBuffer)localObject2).order(ByteOrder.nativeOrder());
-    localObject2 = ((ByteBuffer)localObject2).asFloatBuffer();
-    ((FloatBuffer)localObject2).put((float[])localObject3);
-    ((FloatBuffer)localObject2).position(0);
-    localObject3 = ByteBuffer.allocateDirect(localObject1.length * 4);
+    m = 0;
+    k = 0;
+    while (m < paramInt1)
+    {
+      for (n = 0; n < paramInt2; n = (short)n)
+      {
+        i4 = k + 1;
+        i3 = m * i1;
+        arrayOfShort[k] = ((short)(i3 + n));
+        k = i4 + 1;
+        i2 = (m + 1) * i1;
+        int i = (short)(i2 + n);
+        arrayOfShort[i4] = i;
+        i4 = k + 1;
+        n += 1;
+        int j = (short)(i3 + n);
+        arrayOfShort[k] = j;
+        k = i4 + 1;
+        arrayOfShort[i4] = j;
+        i3 = k + 1;
+        arrayOfShort[k] = i;
+        k = i3 + 1;
+        arrayOfShort[i3] = ((short)(i2 + n));
+      }
+      m = (short)(m + 1);
+    }
+    Object localObject3 = ByteBuffer.allocateDirect(localObject1.length * 4);
     ((ByteBuffer)localObject3).order(ByteOrder.nativeOrder());
     localObject3 = ((ByteBuffer)localObject3).asFloatBuffer();
     ((FloatBuffer)localObject3).put((float[])localObject1);
     ((FloatBuffer)localObject3).position(0);
-    localObject1 = ByteBuffer.allocateDirect(arrayOfShort.length * 2);
+    localObject1 = ByteBuffer.allocateDirect(localObject2.length * 4);
     ((ByteBuffer)localObject1).order(ByteOrder.nativeOrder());
-    this.indexBuffer = ((ByteBuffer)localObject1).asShortBuffer();
+    localObject1 = ((ByteBuffer)localObject1).asFloatBuffer();
+    ((FloatBuffer)localObject1).put((float[])localObject2);
+    ((FloatBuffer)localObject1).position(0);
+    localObject2 = ByteBuffer.allocateDirect(arrayOfShort.length * 2);
+    ((ByteBuffer)localObject2).order(ByteOrder.nativeOrder());
+    this.indexBuffer = ((ByteBuffer)localObject2).asShortBuffer();
     this.indexBuffer.put(arrayOfShort);
     this.indexBuffer.position(0);
-    this.mTexCoordinateBuffer = ((FloatBuffer)localObject3);
-    this.mVerticesBuffer = ((FloatBuffer)localObject2);
+    this.mTexCoordinateBuffer = ((FloatBuffer)localObject1);
+    this.mVerticesBuffer = ((FloatBuffer)localObject3);
     this.mNumIndices = arrayOfShort.length;
   }
   
   public void draw()
   {
-    if (this.indexBuffer != null)
+    ShortBuffer localShortBuffer = this.indexBuffer;
+    if (localShortBuffer != null)
     {
-      this.indexBuffer.position(0);
+      localShortBuffer.position(0);
       GLES20.glDrawElements(4, this.mNumIndices, 5123, this.indexBuffer);
       return;
     }
@@ -134,7 +163,7 @@ public class Sphere
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.Sphere
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import ngw;
-import nhl;
 
-public class AccountDetailBaseAdapter$8
+class AccountDetailBaseAdapter$8
   implements Runnable
 {
-  public AccountDetailBaseAdapter$8(ngw paramngw, nhl paramnhl, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  AccountDetailBaseAdapter$8(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, AccountDetailBaseAdapter.OtherTopHolder paramOtherTopHolder, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nhl.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Nhl.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Nhl.d.setLayoutParams(this.c);
+    this.a.d.setLayoutParams(this.b);
+    this.a.e.setLayoutParams(this.c);
+    this.a.f.setLayoutParams(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.8
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.8
  * JD-Core Version:    0.7.0.1
  */

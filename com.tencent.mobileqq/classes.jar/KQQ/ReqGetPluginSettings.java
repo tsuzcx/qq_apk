@@ -9,7 +9,7 @@ public final class ReqGetPluginSettings
   extends JceStruct
 {
   static ArrayList<Long> cache_PluginList;
-  public ArrayList<Long> PluginList;
+  public ArrayList<Long> PluginList = null;
   
   public ReqGetPluginSettings() {}
   
@@ -35,7 +35,7 @@ public final class ReqGetPluginSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ReqGetPluginSettings
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,20 @@ class SamplerThunker
     {
     default: 
       return null;
-    case 1: 
-      return android.renderscript.Sampler.Value.NEAREST;
-    case 2: 
-      return android.renderscript.Sampler.Value.LINEAR;
-    case 3: 
-      return android.renderscript.Sampler.Value.LINEAR_MIP_LINEAR;
-    case 4: 
-      return android.renderscript.Sampler.Value.LINEAR_MIP_NEAREST;
-    case 5: 
-      return android.renderscript.Sampler.Value.WRAP;
+    case 7: 
+      return android.renderscript.Sampler.Value.MIRRORED_REPEAT;
     case 6: 
       return android.renderscript.Sampler.Value.CLAMP;
+    case 5: 
+      return android.renderscript.Sampler.Value.WRAP;
+    case 4: 
+      return android.renderscript.Sampler.Value.LINEAR_MIP_NEAREST;
+    case 3: 
+      return android.renderscript.Sampler.Value.LINEAR_MIP_LINEAR;
+    case 2: 
+      return android.renderscript.Sampler.Value.LINEAR;
     }
-    return android.renderscript.Sampler.Value.MIRRORED_REPEAT;
+    return android.renderscript.Sampler.Value.NEAREST;
   }
   
   BaseObj getNObj()
@@ -41,7 +41,7 @@ class SamplerThunker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.SamplerThunker
  * JD-Core Version:    0.7.0.1
  */

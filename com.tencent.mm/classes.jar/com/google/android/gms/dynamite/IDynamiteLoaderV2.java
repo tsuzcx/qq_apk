@@ -69,7 +69,7 @@ public abstract interface IDynamiteLoaderV2
       
       public IObjectWrapper loadModule(IObjectWrapper paramIObjectWrapper, String paramString, byte[] paramArrayOfByte)
       {
-        AppMethodBeat.i(90446);
+        AppMethodBeat.i(5467);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIObjectWrapper);
         localParcel.writeString(paramString);
@@ -77,13 +77,13 @@ public abstract interface IDynamiteLoaderV2
         paramIObjectWrapper = transactAndReadException(1, localParcel);
         paramString = IObjectWrapper.Stub.asInterface(paramIObjectWrapper.readStrongBinder());
         paramIObjectWrapper.recycle();
-        AppMethodBeat.o(90446);
+        AppMethodBeat.o(5467);
         return paramString;
       }
       
       public IObjectWrapper loadModule2(IObjectWrapper paramIObjectWrapper1, String paramString, int paramInt, IObjectWrapper paramIObjectWrapper2)
       {
-        AppMethodBeat.i(90447);
+        AppMethodBeat.i(5468);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIObjectWrapper1);
         localParcel.writeString(paramString);
@@ -92,7 +92,7 @@ public abstract interface IDynamiteLoaderV2
         paramIObjectWrapper1 = transactAndReadException(2, localParcel);
         paramString = IObjectWrapper.Stub.asInterface(paramIObjectWrapper1.readStrongBinder());
         paramIObjectWrapper1.recycle();
-        AppMethodBeat.o(90447);
+        AppMethodBeat.o(5468);
         return paramString;
       }
     }
@@ -100,7 +100,7 @@ public abstract interface IDynamiteLoaderV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamite.IDynamiteLoaderV2
  * JD-Core Version:    0.7.0.1
  */

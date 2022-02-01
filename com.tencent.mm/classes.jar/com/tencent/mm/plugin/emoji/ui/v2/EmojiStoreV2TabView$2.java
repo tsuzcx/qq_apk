@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cx;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.ea;
+import com.tencent.mm.sdk.event.IListener;
 
-final class EmojiStoreV2TabView$2
-  extends c<cx>
+class EmojiStoreV2TabView$2
+  extends IListener<ea>
 {
-  EmojiStoreV2TabView$2(EmojiStoreV2TabView paramEmojiStoreV2TabView)
+  EmojiStoreV2TabView$2(EmojiStoreV2TabView paramEmojiStoreV2TabView, q paramq)
   {
-    AppMethodBeat.i(53800);
-    this.__eventId = cx.class.getName().hashCode();
-    AppMethodBeat.o(53800);
+    super(paramq);
+    AppMethodBeat.i(270807);
+    this.__eventId = ea.class.getName().hashCode();
+    AppMethodBeat.o(270807);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView.2
  * JD-Core Version:    0.7.0.1
  */

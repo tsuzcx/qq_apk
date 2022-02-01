@@ -38,7 +38,10 @@ public class PduHeader
   
   public static int byte2int(byte[] paramArrayOfByte)
   {
-    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
+    int i = paramArrayOfByte[3];
+    int j = paramArrayOfByte[2];
+    int k = paramArrayOfByte[1];
+    return (paramArrayOfByte[0] & 0xFF) << 24 | i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16;
   }
   
   public static PduHeader decode(byte[] paramArrayOfByte)
@@ -72,7 +75,7 @@ public class PduHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.utils.PduHeader
  * JD-Core Version:    0.7.0.1
  */

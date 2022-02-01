@@ -28,9 +28,11 @@ public class Particle
       this.a[i] = paramParticle.a[i];
       i += 1;
     }
-    this.touchedPosition[0] = paramParticle.touchedPosition[0];
-    this.touchedPosition[1] = paramParticle.touchedPosition[1];
-    this.touchedPosition[2] = paramParticle.touchedPosition[2];
+    double[] arrayOfDouble = this.touchedPosition;
+    paramParticle = paramParticle.touchedPosition;
+    arrayOfDouble[0] = paramParticle[0];
+    arrayOfDouble[1] = paramParticle[1];
+    arrayOfDouble[2] = paramParticle[2];
   }
   
   public String toString()
@@ -40,7 +42,7 @@ public class Particle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.Particle
  * JD-Core Version:    0.7.0.1
  */

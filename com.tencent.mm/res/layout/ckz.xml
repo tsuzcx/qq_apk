@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/lz1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:visibility="gone" layout="@layout/a2i" />
+    <include android:id="@id/g36" android:visibility="gone" layout="@layout/cky" />
+</FrameLayout>

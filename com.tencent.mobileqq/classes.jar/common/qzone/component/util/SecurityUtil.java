@@ -5,8 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class SecurityUtil
 {
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[256];
+  private static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  private static long[] b = new long[256];
   
   static
   {
@@ -15,29 +15,30 @@ public class SecurityUtil
     {
       long l1 = i;
       int j = 0;
-      if (j < 8)
+      while (j < 8)
       {
-        if (((int)l1 & 0x1) != 0) {}
-        for (long l2 = -7661587058870466123L;; l2 = 0L)
-        {
-          l1 = l1 >> 1 ^ l2;
-          j += 1;
-          break;
+        long l2;
+        if (((int)l1 & 0x1) != 0) {
+          l2 = -7661587058870466123L;
+        } else {
+          l2 = 0L;
         }
+        l1 = l1 >> 1 ^ l2;
+        j += 1;
       }
-      jdField_a_of_type_ArrayOfLong[i] = l1;
+      b[i] = l1;
       i += 1;
     }
   }
   
   public static long a(byte[] paramArrayOfByte)
   {
+    int j = paramArrayOfByte.length;
     long l = -1L;
     int i = 0;
-    int j = paramArrayOfByte.length;
     while (i < j)
     {
-      l = l >> 8 ^ jdField_a_of_type_ArrayOfLong[(((int)l ^ paramArrayOfByte[i]) & 0xFF)];
+      l = l >> 8 ^ b[(((int)l ^ paramArrayOfByte[i]) & 0xFF)];
       i += 1;
     }
     return l;
@@ -57,37 +58,39 @@ public class SecurityUtil
     {
       paramString2 = MessageDigest.getInstance(paramString2);
       paramString2.update(paramString1.getBytes());
-      paramString1 = a(paramString2.digest());
+      paramString1 = b(paramString2.digest());
       return paramString1;
     }
     catch (NoSuchAlgorithmException paramString1) {}
     return null;
   }
   
-  private static String a(byte[] paramArrayOfByte)
+  private static String b(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
-      i += 1;
+      char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        int k = i * 2;
+        char[] arrayOfChar2 = a;
+        arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
+        arrayOfChar1[k] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar1);
     }
-    return new String(arrayOfChar);
+    return null;
   }
   
-  public static byte[] a(String paramString)
+  public static byte[] b(String paramString)
   {
-    int i = 0;
     byte[] arrayOfByte = new byte[paramString.length() * 2];
     paramString = paramString.toCharArray();
     int k = paramString.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -103,7 +106,7 @@ public class SecurityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.util.SecurityUtil
  * JD-Core Version:    0.7.0.1
  */

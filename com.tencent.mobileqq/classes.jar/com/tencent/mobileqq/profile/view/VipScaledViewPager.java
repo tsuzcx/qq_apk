@@ -5,13 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.animation.Transformation;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -20,19 +20,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class VipScaledViewPager
   extends ViewPager
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_c_of_type_Int = -1;
-  private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  private int d = -1;
-  private int e;
+  private int a;
+  private Rect b = new Rect();
+  private Rect c = new Rect();
+  private Rect d = new Rect();
+  private float e;
+  private int f;
+  private ViewGroup g = null;
+  private int h = -1;
+  private int i = -1;
+  private int j;
+  private boolean k;
+  private AtomicBoolean l = new AtomicBoolean(false);
+  private HashMap<Integer, Integer> m = new HashMap();
   
   public VipScaledViewPager(Context paramContext)
   {
@@ -45,20 +45,6 @@ public class VipScaledViewPager
     super(paramContext, paramAttributeSet);
     setStaticTransformationsEnabled(true);
     a(paramContext, paramAttributeSet);
-  }
-  
-  private int a()
-  {
-    return (getWidth() - getPaddingLeft() - getPaddingRight()) / 2 + getPaddingLeft();
-  }
-  
-  private int a(View paramView)
-  {
-    paramView.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    paramView.getLocalVisibleRect(this.jdField_b_of_type_AndroidGraphicsRect);
-    this.jdField_c_of_type_AndroidGraphicsRect.left = ((this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_b_of_type_AndroidGraphicsRect.left) / 2);
-    this.jdField_c_of_type_AndroidGraphicsRect.right = ((this.jdField_a_of_type_AndroidGraphicsRect.right + this.jdField_b_of_type_AndroidGraphicsRect.right) / 2);
-    return Math.abs(this.jdField_c_of_type_AndroidGraphicsRect.right) / 2 - this.jdField_c_of_type_AndroidGraphicsRect.left;
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -84,27 +70,44 @@ public class VipScaledViewPager
   private void a(View paramView, Transformation paramTransformation)
   {
     Matrix localMatrix = paramTransformation.getMatrix();
-    float f = a(paramView);
-    localMatrix.setScale(f, f);
-    int i = paramView.getHeight();
-    int j = paramView.getWidth();
-    localMatrix.preTranslate(-(j / 2), -(i / 2));
-    localMatrix.postTranslate(j / 2, i / 2);
+    float f1 = a(paramView);
+    localMatrix.setScale(f1, f1);
+    int i1 = paramView.getHeight();
+    int n = paramView.getWidth() / 2;
+    f1 = -n;
+    i1 /= 2;
+    localMatrix.preTranslate(f1, -i1);
+    localMatrix.postTranslate(n, i1);
     paramTransformation.setAlpha(b(paramView));
+  }
+  
+  private int c(View paramView)
+  {
+    paramView.getGlobalVisibleRect(this.b);
+    paramView.getLocalVisibleRect(this.c);
+    this.d.left = ((this.b.left + this.c.left) / 2);
+    this.d.right = ((this.b.right + this.c.right) / 2);
+    return Math.abs(this.d.right) / 2 - this.d.left;
+  }
+  
+  private int getCenterOfCoverflow()
+  {
+    return (getWidth() - getPaddingLeft() - getPaddingRight()) / 2 + getPaddingLeft();
   }
   
   public float a(View paramView)
   {
-    int i = a(paramView);
-    int j = this.jdField_a_of_type_Int - i;
-    i = j;
-    if (j <= 0) {
-      i = 0;
+    int n = c(paramView);
+    int i1 = this.a - n;
+    n = i1;
+    if (i1 <= 0) {
+      n = 0;
     }
-    float f2 = (getWidth() - i) / getWidth();
+    float f2 = (getWidth() - n) / getWidth();
+    float f3 = this.e;
     float f1 = f2;
-    if (f2 < this.jdField_a_of_type_Float) {
-      f1 = this.jdField_a_of_type_Float;
+    if (f2 < f3) {
+      f1 = f3;
     }
     return f1;
   }
@@ -114,48 +117,55 @@ public class VipScaledViewPager
     if (QLog.isColorLevel()) {
       QLog.d("VipScaledViewPager", 2, "stopScroll");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.l.set(false);
     c();
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    if (!this.k) {
+      return;
+    }
+    if (this.j == 0)
     {
-      do
-      {
-        return;
-        if (this.e == 0)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-      } while (getChildCount() <= 0);
+      this.k = false;
+      return;
+    }
+    if (getChildCount() > 0)
+    {
       View localView = getChildAt(0);
       localView.measure(paramInt1, paramInt2);
       paramInt1 = localView.getMeasuredWidth();
-      localView = localView.findViewById(this.e);
-      if (localView == null) {
+      localView = localView.findViewById(this.j);
+      if (localView != null)
+      {
+        paramInt2 = localView.getMeasuredWidth();
+        if (paramInt2 > 0)
+        {
+          this.k = false;
+          float f1 = paramInt1 - paramInt2;
+          float f2 = paramInt2;
+          setPageMargin(-(int)(f1 + (1.0F - this.e) * f2 * 0.5F - this.f));
+          setOffscreenPageLimit((int)Math.ceil(paramInt1 / f2) + 1);
+          requestLayout();
+        }
+      }
+      else
+      {
         throw new NullPointerException("MatchWithChildResId did not find that ID in the first fragment of the ViewPager; is that view defined in the child view's layout? Note that MultiViewPager only measures the child for index 0.");
       }
-      paramInt2 = localView.getMeasuredWidth();
-    } while (paramInt2 <= 0);
-    this.jdField_a_of_type_Boolean = false;
-    setPageMargin(-(int)(paramInt1 - paramInt2 + paramInt2 * (1.0F - this.jdField_a_of_type_Float) * 0.5F - this.jdField_b_of_type_Int));
-    setOffscreenPageLimit((int)Math.ceil(paramInt1 / paramInt2) + 1);
-    requestLayout();
+    }
   }
   
   public float b(View paramView)
   {
-    int i = a(paramView);
-    int j = this.jdField_a_of_type_Int - i;
-    i = j;
-    if (j <= 0) {
-      i = 0;
+    int n = c(paramView);
+    int i1 = this.a - n;
+    n = i1;
+    if (i1 <= 0) {
+      n = 0;
     }
-    float f2 = (getWidth() - i * 1.6F) / getWidth();
+    float f2 = (getWidth() - n * 1.6F) / getWidth();
     float f1 = f2;
     if (f2 < 0.3F) {
       f1 = 0.3F;
@@ -168,51 +178,63 @@ public class VipScaledViewPager
     if (QLog.isColorLevel()) {
       QLog.d("VipScaledViewPager", 2, "startScroll");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.l.set(true);
     c();
   }
   
   public void c()
   {
-    int i = 0;
-    while (i < getChildCount())
+    int n = 0;
+    while (n < getChildCount())
     {
-      View localView = getChildAt(i);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localView.hashCode()), Integer.valueOf(0));
+      View localView = getChildAt(n);
+      this.m.put(Integer.valueOf(localView.hashCode()), Integer.valueOf(0));
       localView.invalidate();
-      i += 1;
+      n += 1;
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.g;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipScaledViewPager", 2, "getChildStaticTransformation child = " + paramView.hashCode() + ", mIsScroll = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean + ", mInvalidateMap = " + this.jdField_a_of_type_JavaUtilHashMap);
-    }
-    int i = paramView.hashCode();
-    a(paramView, paramTransformation);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      paramView.invalidate();
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getChildStaticTransformation child = ");
+      localStringBuilder.append(paramView.hashCode());
+      localStringBuilder.append(", mIsScroll = ");
+      localStringBuilder.append(this.l);
+      localStringBuilder.append(", mInvalidateMap = ");
+      localStringBuilder.append(this.m);
+      QLog.d("VipScaledViewPager", 2, localStringBuilder.toString());
+    }
+    int n = paramView.hashCode();
+    a(paramView, paramTransformation);
+    if (this.l.get())
+    {
+      paramView.invalidate();
       return true;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
-        break;
+    }
+    if (this.m.containsKey(Integer.valueOf(n)))
+    {
+      if (((Integer)this.m.get(Integer.valueOf(n))).intValue() < 1)
+      {
+        this.m.put(Integer.valueOf(n), Integer.valueOf(1));
+        paramView.invalidate();
+        return true;
       }
-    } while (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i))).intValue() >= 1);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(1));
-    paramView.invalidate();
-    return true;
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
+    }
+    else {
+      this.m.put(Integer.valueOf(n), Integer.valueOf(0));
+    }
     return true;
   }
   
@@ -221,8 +243,9 @@ public class VipScaledViewPager
     if (QLog.isColorLevel()) {
       QLog.d("VipScaledViewPager", 2, "onInterceptTouchEvent");
     }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.g;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     try
     {
@@ -233,12 +256,12 @@ public class VipScaledViewPager
     return false;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     Point localPoint = new Point(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
-    if ((this.jdField_c_of_type_Int >= 0) || (this.d >= 0))
+    if ((this.h >= 0) || (this.i >= 0))
     {
-      a(localPoint, new Point(this.jdField_c_of_type_Int, this.d));
+      a(localPoint, new Point(this.h, this.i));
       paramInt1 = View.MeasureSpec.makeMeasureSpec(localPoint.x, 1073741824);
       paramInt2 = View.MeasureSpec.makeMeasureSpec(localPoint.y, 1073741824);
     }
@@ -246,11 +269,11 @@ public class VipScaledViewPager
     a(paramInt1, paramInt2);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = a();
+    this.a = getCenterOfCoverflow();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Boolean = true;
+    this.k = true;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -260,47 +283,51 @@ public class VipScaledViewPager
       boolean bool = super.onTouchEvent(paramMotionEvent);
       return bool;
     }
-    catch (Exception paramMotionEvent) {}
+    catch (Exception paramMotionEvent)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
   public void setGap(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setMatchChildWidth(int paramInt)
   {
-    if (this.e != paramInt)
+    if (this.j != paramInt)
     {
-      this.e = paramInt;
-      this.jdField_a_of_type_Boolean = true;
+      this.j = paramInt;
+      this.k = true;
     }
   }
   
   public void setMaxHeight(int paramInt)
   {
-    this.d = paramInt;
+    this.i = paramInt;
   }
   
   public void setMaxWidth(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void setParentView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.g = paramViewGroup;
   }
   
   public void setScale(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.e = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipScaledViewPager
  * JD-Core Version:    0.7.0.1
  */

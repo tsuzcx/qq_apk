@@ -821,9 +821,10 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00d3" parent="@android:style/Theme">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0079</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00d4" parent="@android:style/TextAppearance">
         <item name="android:textSize">14.0sp</item>
@@ -865,19 +866,21 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00dd" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202f9</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleSize">0.0dip</item>
         <item name="android:windowAnimationStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e00df</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="0">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00de" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00df">
         <item name="android:activityOpenEnterAnimation">@null</item>
@@ -955,9 +958,10 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">#00000000</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00ee" parent="@android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
@@ -965,33 +969,39 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00ef" parent="@android:style/Theme.Translucent">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a00a6</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e0149</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00f0">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a009c</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00f1">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00f2">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00f3" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e00f7</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00f4" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0099</item>
@@ -1041,18 +1051,20 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00fb" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0099</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00fc" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e00fd" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e00ed">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0099</item>
@@ -1423,8 +1435,9 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0149">
         <item name="android:activityOpenEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f04006d</item>
@@ -1441,9 +1454,10 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e014c" parent="@android:style/Theme.Dialog">
         <item name="android:backgroundDimAmount">0.6</item>
@@ -1451,9 +1465,10 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e014d">
         <item name="android:windowEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f040069</item>
@@ -1509,35 +1524,40 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0155" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0156" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0154">
         <item name="android:windowBackground">@null</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0157" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0154">
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/pullUpAnimation</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0158" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0154">
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0159" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0154">
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/pullUpAnimation</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015a" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleSize">@dimen/title_bar_height</item>
         <item name="android:windowTitleBackgroundStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e01b5</item>
@@ -1548,6 +1568,7 @@
         <item name="android:radioButtonStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e01b7</item>
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015b" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0268">
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
@@ -1568,16 +1589,18 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015c" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015d" parent="@android:style/Theme.Translucent">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015e" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0099</item>
@@ -1591,7 +1614,8 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e015f">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a00c6</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0160">
         <item name="android:background">@null</item>
@@ -2019,7 +2043,7 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01b8" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a002d</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@color/APKTOOL_DUPLICATE_color_0x7f0a002d</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
@@ -2027,7 +2051,7 @@
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0017</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01ba" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
@@ -2036,7 +2060,7 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
@@ -2085,7 +2109,7 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
@@ -2237,20 +2261,20 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01e6" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01e7" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01e8" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
@@ -2339,13 +2363,13 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01f6" parent="@android:style/Theme">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a002a</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01f7" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0017</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:background">@color/APKTOOL_DUPLICATE_color_0x7f0a0017</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e01f8">
@@ -2393,7 +2417,7 @@
         <item name="android:layout_marginLeft">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c0</item>
         <item name="android:layout_marginRight">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c0</item>
         <item name="android:singleLine">true</item>
-        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070e</item>
+        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070d</item>
         <item name="android:layout_toRightOf">@id/title</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
@@ -2402,7 +2426,7 @@
         <item name="android:layout_height">48.0dip</item>
         <item name="android:layout_marginLeft">8.0dip</item>
         <item name="android:layout_marginRight">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c0</item>
-        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070e</item>
+        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070d</item>
         <item name="android:layout_toRightOf">@id/title</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
@@ -2417,7 +2441,7 @@
         <item name="android:layout_marginLeft">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c0</item>
         <item name="android:layout_marginRight">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b00c0</item>
         <item name="android:maxLines">3</item>
-        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070e</item>
+        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08070d</item>
         <item name="android:layout_toRightOf">@id/title</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:lineSpacingExtra">5.0dip</item>
@@ -2434,14 +2458,14 @@
     <style name="MenuDialogStyle">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0204">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -2449,7 +2473,7 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0205">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -2584,7 +2608,7 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0219">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0014</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e021a">
         <item name="android:textSize">18.0sp</item>
@@ -2659,14 +2683,14 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0228">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e00f7</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0229" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0014</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e022a">
         <item name="android:textSize">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0016</item>
@@ -2677,7 +2701,7 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e022b">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0048</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e022c" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowNoTitle">true</item>
@@ -2687,7 +2711,7 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e022d" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleSize">@dimen/title_bar_height</item>
         <item name="android:windowTitleBackgroundStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e01b5</item>
@@ -2775,7 +2799,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">4.0dip</item>
-        <item name="android:layout_toRightOf">@id/APKTOOL_DUPLICATE_id_0x7f080313</item>
+        <item name="android:layout_toRightOf">@id/APKTOOL_DUPLICATE_id_0x7f080312</item>
         <item name="android:layout_alignParentTop">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0237">
@@ -2787,7 +2811,7 @@
         <item name="android:layout_marginTop">11.5dip</item>
         <item name="android:layout_marginRight">10.0dip</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08076f</item>
+        <item name="android:layout_toLeftOf">@id/APKTOOL_DUPLICATE_id_0x7f08076e</item>
         <item name="android:layout_toRightOf">@id/title</item>
         <item name="android:layout_alignParentTop">true</item>
     </style>
@@ -2803,7 +2827,7 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0239" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0237">
         <item name="android:layout_marginLeft">2.0dip</item>
-        <item name="android:layout_toRightOf">@id/APKTOOL_DUPLICATE_id_0x7f080788</item>
+        <item name="android:layout_toRightOf">@id/APKTOOL_DUPLICATE_id_0x7f080787</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e023a">
         <item name="android:orientation">horizontal</item>
@@ -2887,7 +2911,7 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0243">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0056</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0244">
@@ -3010,7 +3034,7 @@
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0253" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0251">
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/APKTOOL_DUPLICATE_style_0x7f0e0252</item>
         <item name="android:foreground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -3027,10 +3051,11 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0255" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0267">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
-        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="pullUpAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f04000f</item>
@@ -3088,14 +3113,16 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0260" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0261" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@color/APKTOOL_DUPLICATE_color_0x7f0a0014</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/pullUpAnimation</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0262" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:colorBackground">@android:color/black</item>
@@ -3119,8 +3146,9 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0265" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0268">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0266" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -3130,17 +3158,20 @@
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0267" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0268">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0268" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
     <style name="APKTOOL_DUPLICATE_style_0x7f0e0269" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e026a">
         <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowNoDisplay">true</item>

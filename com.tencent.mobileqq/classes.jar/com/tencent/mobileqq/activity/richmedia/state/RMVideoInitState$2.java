@@ -1,31 +1,50 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import ajtn;
-import alud;
-import azhf;
+import com.tencent.aelight.camera.api.ICameraCompatible;
+import com.tencent.aelight.camera.constants.CameraCompatibleConstants;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
-public class RMVideoInitState$2
+class RMVideoInitState$2
   implements Runnable
 {
-  public RMVideoInitState$2(ajtn paramajtn) {}
+  RMVideoInitState$2(RMVideoInitState paramRMVideoInitState) {}
   
   public void run()
   {
-    boolean bool = azhf.a(azhf.y);
+    boolean bool = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.z);
     if (bool)
     {
-      RMVideoStateMgr.a().a(1102, alud.a(2131713845), true);
+      RMVideoStateMgr.a().a(1102, HardCodeUtil.a(2131910929), true);
       return;
     }
     try
     {
-      if ((!this.this$0.d) && (this.this$0.f)) {
-        RMVideoStateMgr.a().a(1102, alud.a(2131713851) + 1102, true);
+      StringBuilder localStringBuilder;
+      if ((!this.this$0.d) && (this.this$0.f))
+      {
+        localRMVideoStateMgr = RMVideoStateMgr.a();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131910935));
+        localStringBuilder.append(1102);
+        localRMVideoStateMgr.a(1102, localStringBuilder.toString(), true);
       }
       RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-      if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.this$0.a + " mIsReadCamera=" + this.this$0.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoFileDir=" + localRMVideoStateMgr.a);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=");
+        localStringBuilder.append(this.this$0.a);
+        localStringBuilder.append(" mIsReadCamera=");
+        localStringBuilder.append(this.this$0.b);
+        localStringBuilder.append(" black=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(" rmStateMgr.mIsAudioReady=");
+        localStringBuilder.append(localRMVideoStateMgr.q);
+        localStringBuilder.append(" rmStateMgr.mVideoFileDir=");
+        localStringBuilder.append(localRMVideoStateMgr.s);
+        QLog.e("RMVideoInitState", 2, localStringBuilder.toString());
       }
       RMVideoStateMgr.b(null);
       return;

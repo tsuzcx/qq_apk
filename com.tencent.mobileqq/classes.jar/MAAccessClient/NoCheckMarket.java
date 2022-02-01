@@ -9,7 +9,7 @@ public final class NoCheckMarket
 {
   public String pkgName = "";
   public String signatureMd5 = "";
-  public int versionCode;
+  public int versionCode = 0;
   
   public NoCheckMarket() {}
   
@@ -29,18 +29,20 @@ public final class NoCheckMarket
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.pkgName != null) {
-      paramJceOutputStream.write(this.pkgName, 0);
+    String str = this.pkgName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.signatureMd5 != null) {
-      paramJceOutputStream.write(this.signatureMd5, 1);
+    str = this.signatureMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.versionCode, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.NoCheckMarket
  * JD-Core Version:    0.7.0.1
  */

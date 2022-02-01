@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/gz" android:paddingLeft="@dimen/if" android:paddingTop="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/ahw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/default_avatar" android:scaleType="center" android:layout_centerInParent="true" />
-    <View android:background="#c0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/zs" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a27" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/b__" android:scaleType="centerCrop" android:importantForAccessibility="no" />
+        <LinearLayout android:orientation="vertical" android:id="@id/acp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6">
+            <TextView android:textSize="15.0dip" android:textColor="@color/gb" android:id="@id/hfx" android:paddingRight="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ow" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kpx" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" style="@style/ow" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kpy" android:paddingRight="@dimen/i6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:maxLines="2" style="@style/ow" />
+            <FrameLayout android:id="@id/abu" android:background="@drawable/hn" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/m2" android:layout_marginEnd="@dimen/if">
+                <TextView android:textColor="@color/a7a" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/anc" android:layout_marginStart="@dimen/i6" style="@style/ow" />
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:paddingEnd="@dimen/ig">
+                    <com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView android:id="@id/abx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/i7l" android:layout_width="@dimen/m4" android:layout_height="@dimen/m6" android:src="@drawable/pp" android:scaleType="fitCenter" android:layout_marginStart="@dimen/ig" android:layout_marginEnd="@dimen/j6" />
+                </LinearLayout>
+            </FrameLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:id="@id/kl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/agz" android:layout_marginTop="@dimen/i6" style="@style/i7" />
+</LinearLayout>

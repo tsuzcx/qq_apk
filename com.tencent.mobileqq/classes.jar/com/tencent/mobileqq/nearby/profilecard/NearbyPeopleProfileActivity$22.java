@@ -1,43 +1,38 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import awgf;
-import awgg;
-import bdnn;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
 
 class NearbyPeopleProfileActivity$22
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  NearbyPeopleProfileActivity$22(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  NearbyPeopleProfileActivity$22(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void onClick(View paramView, int paramInt)
   {
-    if (!bdnn.a(NearbyPeopleProfileActivity.a(this.this$0).uin)) {
-      this.this$0.app.a(NearbyPeopleProfileActivity.a(this.this$0).uin, 200, false);
-    }
-    if (this.this$0.a > 0L) {
-      this.this$0.app.a(String.valueOf(this.this$0.a), 202, false);
-    }
-    awgf localawgf;
-    do
+    if (paramInt != 0)
     {
-      do
+      if (paramInt == 1)
       {
-        return;
-      } while (bdnn.a(NearbyPeopleProfileActivity.a(this.this$0).uin));
-      localawgf = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    } while (localawgf == null);
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localawgf.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.this$0).uin });
-    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
-      this.this$0.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
+        this.b.selectPhotoFromQZone();
+        NearbyPeopleProfileActivity.access$1000(this.b);
+      }
     }
-    localawgf.a();
+    else
+    {
+      if (NearbyPeopleProfileActivity.access$300(this.b) != null) {
+        NearbyPeopleProfileActivity.access$300(this.b).a(this.b.mPicInfo.size());
+      }
+      NearbyPeopleProfileActivity.access$1000(this.b);
+    }
+    this.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.22
  * JD-Core Version:    0.7.0.1
  */

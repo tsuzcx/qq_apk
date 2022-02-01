@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.graphics.Bitmap;
 
-public final class c
+public class c
 {
+  public int QMc = 1;
+  public boolean QMd = true;
+  public boolean QMe = true;
+  private boolean QMf = true;
+  public boolean QMg = true;
+  public int QMh = -1;
+  public int QMi = -16777216;
+  public int QMj = -16777216;
+  public float QMk = 2.0F;
+  public float QMl = -1.0F;
+  public int QMm = -16777216;
+  public float QMn = 12.0F;
+  public float QMo = 16.0F;
+  public int QMp = -1;
+  public float QMq = 17.0F;
+  public float QMr = 4.0F;
+  public Bitmap QMs;
+  public float QMt;
+  public int QMu = -1;
+  public int QMv = 1;
+  public Bitmap QMw;
   public int backgroundColor = 0;
-  public int rtE = 1;
-  public boolean rtF = true;
-  public boolean rtG = true;
-  private boolean rtH = true;
-  public boolean rtI = true;
-  public int rtJ = -1;
-  public int rtK = -16777216;
-  public int rtL = -16777216;
-  public float rtM = 2.0F;
-  public float rtN = -1.0F;
-  public int rtO = -16777216;
-  public float rtP = 12.0F;
-  public float rtQ = 16.0F;
-  public int rtR = -1;
-  public float rtS = 17.0F;
-  public float rtT = 4.0F;
-  public Bitmap rtU;
-  public float rtV;
-  public int rtW = -1;
-  public int rtX = 1;
-  public Bitmap rtY;
 }
 
 

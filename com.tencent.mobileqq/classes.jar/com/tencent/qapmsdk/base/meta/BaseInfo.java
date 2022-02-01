@@ -27,7 +27,7 @@ public final class BaseInfo
   public static AsyncSPEditor editor;
   @JvmField
   @NotNull
-  public static JSONObject pubJson;
+  public static JSONObject pubJson = new JSONObject();
   @JvmField
   @Nullable
   public static SharedPreferences sharePreference;
@@ -46,22 +46,21 @@ public final class BaseInfo
     Object localObject2 = null;
     Info = new BaseInfo.Info(null);
     userMeta = new UserMeta(null, null, null, 0, null, null, null, null, null, null, null, null, null, 8191, null);
-    urlMeta = new UrlMeta(null, null, null, null, null, null, 63, null);
+    urlMeta = new UrlMeta(null, null, null, null, null, null, null, null, 255, null);
     Object localObject1 = app;
-    if (localObject1 != null) {}
-    for (localObject1 = ((Application)localObject1).getSharedPreferences("QAPM_SP", 0);; localObject1 = null)
-    {
-      sharePreference = (SharedPreferences)localObject1;
-      SharedPreferences localSharedPreferences = sharePreference;
-      localObject1 = localObject2;
-      if (localSharedPreferences != null) {
-        localObject1 = localSharedPreferences.edit();
-      }
-      editor = new AsyncSPEditor((SharedPreferences.Editor)localObject1);
-      token = "";
-      pubJson = new JSONObject();
-      return;
+    if (localObject1 != null) {
+      localObject1 = ((Application)localObject1).getSharedPreferences("QAPM_SP", 0);
+    } else {
+      localObject1 = null;
     }
+    sharePreference = (SharedPreferences)localObject1;
+    SharedPreferences localSharedPreferences = sharePreference;
+    localObject1 = localObject2;
+    if (localSharedPreferences != null) {
+      localObject1 = localSharedPreferences.edit();
+    }
+    editor = new AsyncSPEditor((SharedPreferences.Editor)localObject1);
+    token = "";
   }
   
   @JvmStatic
@@ -84,7 +83,7 @@ public final class BaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.BaseInfo
  * JD-Core Version:    0.7.0.1
  */

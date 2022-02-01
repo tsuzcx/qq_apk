@@ -7,37 +7,37 @@ import java.util.concurrent.BlockingQueue;
 public final class d
   extends Thread
 {
-  private int adD;
-  private BlockingQueue<g> adP;
-  private boolean adQ;
-  private boolean adR;
-  private AudioRecord adV;
-  private int adW = 0;
-  private e adX;
-  private long adY;
-  private long adZ;
+  private long ahA;
+  private long ahB;
+  private int ahf;
+  private BlockingQueue<g> ahr;
+  private boolean ahs;
+  private boolean aht;
+  private AudioRecord ahx;
+  private int ahy = 0;
+  private e ahz;
   
   public d(BlockingQueue<g> paramBlockingQueue, int paramInt)
   {
-    this.adP = paramBlockingQueue;
-    this.adD = paramInt;
-    this.adW = AudioRecord.getMinBufferSize(paramInt, 16, 2);
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "recordBufSize=%d", new Object[] { Integer.valueOf(this.adW) });
+    this.ahr = paramBlockingQueue;
+    this.ahf = paramInt;
+    this.ahy = AudioRecord.getMinBufferSize(paramInt, 16, 2);
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "recordBufSize=%d", new Object[] { Integer.valueOf(this.ahy) });
   }
   
-  private boolean mR()
+  private boolean nD()
   {
-    byte[] arrayOfByte = new byte[this.adW];
+    byte[] arrayOfByte = new byte[this.ahy];
     for (;;)
     {
-      int n = this.adV.read(arrayOfByte, 0, arrayOfByte.length);
+      int n = this.ahx.read(arrayOfByte, 0, arrayOfByte.length);
       if (n > 0)
       {
         g localg = new g();
         localg.data = new byte[n];
         localg.size = n;
         System.arraycopy(arrayOfByte, 0, localg.data, 0, n);
-        this.adP.add(localg);
+        this.ahr.add(localg);
       }
       int i = 0;
       int k;
@@ -50,18 +50,18 @@ public final class d
         }
         i += 1;
       }
-      if (this.adR) {
-        com.tencent.mm.wear.a.c.d.e("MicroMsg.MMAudioRecorder", "OnError: cancel", new Object[0]);
+      if (this.aht) {
+        com.tencent.mm.wear.a.c.d.d("MicroMsg.MMAudioRecorder", "OnError: cancel", new Object[0]);
       }
-      while ((this.adQ) || (this.adR))
+      while ((this.ahs) || (this.aht))
       {
         return true;
-        if (this.adX != null) {
-          a.aiT.post(new Runnable()
+        if (this.ahz != null) {
+          a.amv.post(new Runnable()
           {
             public final void run()
             {
-              d.a(d.this).bP(j);
+              d.a(d.this).cl(j);
             }
           });
         }
@@ -71,35 +71,35 @@ public final class d
   
   public final void a(e parame)
   {
-    this.adX = parame;
+    this.ahz = parame;
   }
   
-  public final void mP()
+  public final void nB()
   {
-    this.adZ = System.currentTimeMillis();
-    this.adQ = true;
+    this.ahB = System.currentTimeMillis();
+    this.ahs = true;
   }
   
-  public final long mQ()
+  public final long nC()
   {
-    return this.adZ - this.adY;
+    return this.ahB - this.ahA;
   }
   
   public final void run()
   {
     com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "init audio record", new Object[0]);
-    this.adV = new AudioRecord(0, this.adD, 16, 2, 8192);
-    if (this.adV.getState() != 1)
+    this.ahx = new AudioRecord(0, this.ahf, 16, 2, 8192);
+    if (this.ahx.getState() != 1)
     {
       com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "first init audioRecord is not successful, try to init again", new Object[0]);
-      this.adV.release();
-      this.adV = new AudioRecord(0, this.adD, 16, 2, 8192);
-      if (this.adV.getState() != 1)
+      this.ahx.release();
+      this.ahx = new AudioRecord(0, this.ahf, 16, 2, 8192);
+      if (this.ahx.getState() != 1)
       {
         com.tencent.mm.wear.a.c.d.a("MicroMsg.MMAudioRecorder", "init audio record second time fail", new Object[0]);
-        this.adV.release();
-        if (this.adR) {
-          com.tencent.mm.wear.a.c.d.e("MicroMsg.MMAudioRecorder", "OnError: cancel", new Object[0]);
+        this.ahx.release();
+        if (this.aht) {
+          com.tencent.mm.wear.a.c.d.d("MicroMsg.MMAudioRecorder", "OnError: cancel", new Object[0]);
         }
       }
     }
@@ -109,23 +109,26 @@ public final class d
         break label169;
       }
       return;
-      if (this.adX == null) {
+      if (this.ahz == null) {
         break;
       }
-      a.aiT.post(new Runnable()
+      a.amv.post(new Runnable()
       {
-        public final void run() {}
+        public final void run()
+        {
+          d.a(d.this);
+        }
       });
       break;
     }
     label169:
-    this.adV.startRecording();
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "startRecording RecordStatus %d", new Object[] { Integer.valueOf(this.adV.getState()) });
-    mR();
-    this.adV.stop();
-    this.adV.release();
-    this.adV = null;
-    this.adZ = System.currentTimeMillis();
+    this.ahx.startRecording();
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMAudioRecorder", "startRecording RecordStatus %d", new Object[] { Integer.valueOf(this.ahx.getState()) });
+    nD();
+    this.ahx.stop();
+    this.ahx.release();
+    this.ahx = null;
+    this.ahB = System.currentTimeMillis();
   }
   
   public final void start()
@@ -133,7 +136,7 @@ public final class d
     try
     {
       super.start();
-      this.adY = System.currentTimeMillis();
+      this.ahA = System.currentTimeMillis();
       return;
     }
     finally

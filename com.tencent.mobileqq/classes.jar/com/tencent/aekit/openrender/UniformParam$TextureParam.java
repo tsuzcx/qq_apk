@@ -24,47 +24,59 @@ public class UniformParam$TextureParam
   
   public void setParams(int paramInt)
   {
-    int i = 0;
-    if ((this.handle < 0) || (this.texture[0] == 0)) {
-      return;
-    }
-    GLES20.glActiveTexture(this.textureId);
-    GLES20.glBindTexture(3553, this.texture[0]);
-    paramInt = i;
-    switch (this.textureId)
+    if (this.handle >= 0)
     {
-    default: 
+      int[] arrayOfInt = this.texture;
+      int i = 0;
+      if (arrayOfInt[0] == 0) {
+        return;
+      }
+      GLES20.glActiveTexture(this.textureId);
+      GLES20.glBindTexture(3553, this.texture[0]);
       paramInt = i;
-    }
-    for (;;)
-    {
+      switch (this.textureId)
+      {
+      default: 
+        paramInt = i;
+        break;
+      case 33991: 
+        paramInt = 7;
+        break;
+      case 33990: 
+        paramInt = 6;
+        break;
+      case 33989: 
+        paramInt = 5;
+        break;
+      case 33988: 
+        paramInt = 4;
+        break;
+      case 33987: 
+        paramInt = 3;
+        break;
+      case 33986: 
+        paramInt = 2;
+        break;
+      case 33985: 
+        paramInt = 1;
+      }
       GLES20.glUniform1i(this.handle, paramInt);
       GlUtil.checkGlError("TextureParam setParams");
-      return;
-      paramInt = 1;
-      continue;
-      paramInt = 2;
-      continue;
-      paramInt = 3;
-      continue;
-      paramInt = 4;
-      continue;
-      paramInt = 5;
-      continue;
-      paramInt = 6;
-      continue;
-      paramInt = 7;
     }
   }
   
   public String toString()
   {
-    return this.name + " = " + this.texture[0];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.texture[0]);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.aekit.openrender.UniformParam.TextureParam
  * JD-Core Version:    0.7.0.1
  */

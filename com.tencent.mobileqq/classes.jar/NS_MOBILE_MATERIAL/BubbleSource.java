@@ -38,29 +38,35 @@ public final class BubbleSource
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strTextColor1 != null) {
-      paramJceOutputStream.write(this.strTextColor1, 0);
+    String str = this.strTextColor1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strTextColor2 != null) {
-      paramJceOutputStream.write(this.strTextColor2, 1);
+    str = this.strTextColor2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strAndUrl1 != null) {
-      paramJceOutputStream.write(this.strAndUrl1, 2);
+    str = this.strAndUrl1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strAndUrl2 != null) {
-      paramJceOutputStream.write(this.strAndUrl2, 3);
+    str = this.strAndUrl2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strIosUrl1 != null) {
-      paramJceOutputStream.write(this.strIosUrl1, 4);
+    str = this.strIosUrl1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strIosUrl2 != null) {
-      paramJceOutputStream.write(this.strIosUrl2, 5);
+    str = this.strIosUrl2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.BubbleSource
  * JD-Core Version:    0.7.0.1
  */

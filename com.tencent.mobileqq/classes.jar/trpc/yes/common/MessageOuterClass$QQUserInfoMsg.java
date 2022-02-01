@@ -1,0 +1,23 @@
+package trpc.yes.common;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+
+public final class MessageOuterClass$QQUserInfoMsg
+  extends MessageMicro<QQUserInfoMsg>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34 }, new String[] { "qq_user_info", "show_scene", "user_id", "add_friend_tips_text" }, new Object[] { null, Integer.valueOf(0), null, "" }, QQUserInfoMsg.class);
+  public final PBStringField add_friend_tips_text = PBField.initString("");
+  public UserProxyCmdOuterClass.QQUserInfo qq_user_info = new UserProxyCmdOuterClass.QQUserInfo();
+  public final PBInt32Field show_scene = PBField.initInt32(0);
+  public CommonOuterClass.QQUserId user_id = new CommonOuterClass.QQUserId();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     trpc.yes.common.MessageOuterClass.QQUserInfoMsg
+ * JD-Core Version:    0.7.0.1
+ */

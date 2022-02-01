@@ -2,7 +2,6 @@ package com.google.android.gms.common.server.response;
 
 import android.os.Parcel;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
-import com.google.android.gms.common.util.VisibleForTesting;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -48,7 +47,6 @@ public abstract class FastSafeParcelableJsonResponse
     return true;
   }
   
-  @VisibleForTesting
   public Object getValueObject(String paramString)
   {
     return null;
@@ -74,7 +72,6 @@ public abstract class FastSafeParcelableJsonResponse
     }
   }
   
-  @VisibleForTesting
   public boolean isPrimitiveFieldSet(String paramString)
   {
     return false;
@@ -91,7 +88,7 @@ public abstract class FastSafeParcelableJsonResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FastSafeParcelableJsonResponse
  * JD-Core Version:    0.7.0.1
  */

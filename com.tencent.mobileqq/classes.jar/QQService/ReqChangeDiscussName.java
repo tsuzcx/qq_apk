@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ReqChangeDiscussName
   extends JceStruct
 {
-  public long DiscussUin;
+  public long DiscussUin = 0L;
   public String NewName = "";
   
   public ReqChangeDiscussName() {}
@@ -32,7 +32,7 @@ public final class ReqChangeDiscussName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqChangeDiscussName
  * JD-Core Version:    0.7.0.1
  */

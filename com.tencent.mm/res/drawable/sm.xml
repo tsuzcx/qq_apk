@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="67" android:drawable="@drawable/buf" />
+    <item android:duration="67" android:drawable="@drawable/buj" />
+    <item android:duration="67" android:drawable="@drawable/buk" />
+    <item android:duration="67" android:drawable="@drawable/bul" />
+    <item android:duration="67" android:drawable="@drawable/bum" />
+    <item android:duration="67" android:drawable="@drawable/bun" />
+    <item android:duration="67" android:drawable="@drawable/buo" />
+    <item android:duration="67" android:drawable="@drawable/bup" />
+    <item android:duration="67" android:drawable="@drawable/buq" />
+    <item android:duration="67" android:drawable="@drawable/bug" />
+    <item android:duration="67" android:drawable="@drawable/buh" />
+    <item android:duration="67" android:drawable="@drawable/bui" />
+</animation-list>

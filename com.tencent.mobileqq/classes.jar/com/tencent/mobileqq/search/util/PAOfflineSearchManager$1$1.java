@@ -1,34 +1,42 @@
 package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
-import ayvf;
-import ayvg;
+import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.qphone.base.util.QLog;
-import nbv;
 
-public class PAOfflineSearchManager$1$1
+class PAOfflineSearchManager$1$1
   implements Runnable
 {
-  public PAOfflineSearchManager$1$1(ayvg paramayvg) {}
+  PAOfflineSearchManager$1$1(PAOfflineSearchManager.1 param1) {}
   
   public void run()
   {
-    String str = nbv.a("1011");
-    if ((str == null) || (TextUtils.equals(str, ""))) {}
-    do
+    String str = HtmlOffline.d("1011");
+    if (str != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PAOfflineSearchManager", 2, "callback get current ver:" + str + ", local ver:" + this.a.a.a);
+      if (TextUtils.equals(str, "")) {
+        return;
       }
-    } while ((str.equals(this.a.a.a)) && (!str.equals("0")));
-    this.a.a.c = true;
-    this.a.a.a = str;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("callback get current ver:");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", local ver:");
+        localStringBuilder.append(this.a.a.e);
+        QLog.d("PAOfflineSearchManager", 2, localStringBuilder.toString());
+      }
+      if ((str.equals(this.a.a.e)) && (!str.equals("0"))) {
+        return;
+      }
+      this.a.a.g = true;
+      this.a.a.e = str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1
  * JD-Core Version:    0.7.0.1
  */

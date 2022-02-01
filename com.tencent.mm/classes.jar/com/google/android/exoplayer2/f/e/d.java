@@ -6,150 +6,150 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  int aWA;
-  boolean aWB;
-  boolean aWC;
-  int aWD = -1;
-  int aWE = -1;
-  int aWF = -1;
-  int aWG = -1;
-  int aWH = -1;
-  d aWI;
-  Layout.Alignment aWJ;
-  String aWz;
   int backgroundColor;
+  Layout.Alignment dgA;
+  int dgs;
+  boolean dgt;
+  boolean dgu;
+  int dgv = -1;
+  int dgw = -1;
+  int dgx = -1;
+  int dgy = -1;
+  d dgz;
+  String fontFamily;
   float fontSize;
   String id;
+  int italic = -1;
   
-  public final d aI(boolean paramBoolean)
-  {
-    int i = 1;
-    AppMethodBeat.i(95690);
-    boolean bool;
-    if (this.aWI == null)
-    {
-      bool = true;
-      a.checkState(bool);
-      if (!paramBoolean) {
-        break label41;
-      }
-    }
-    for (;;)
-    {
-      this.aWD = i;
-      AppMethodBeat.o(95690);
-      return this;
-      bool = false;
-      break;
-      label41:
-      i = 0;
-    }
-  }
-  
-  public final d aJ(boolean paramBoolean)
-  {
-    int i = 1;
-    AppMethodBeat.i(95691);
-    boolean bool;
-    if (this.aWI == null)
-    {
-      bool = true;
-      a.checkState(bool);
-      if (!paramBoolean) {
-        break label41;
-      }
-    }
-    for (;;)
-    {
-      this.aWE = i;
-      AppMethodBeat.o(95691);
-      return this;
-      bool = false;
-      break;
-      label41:
-      i = 0;
-    }
-  }
-  
-  final d b(d paramd)
-  {
-    AppMethodBeat.i(95693);
-    if (paramd != null)
-    {
-      if ((!this.aWB) && (paramd.aWB)) {
-        ee(paramd.aWA);
-      }
-      if (this.aWF == -1) {
-        this.aWF = paramd.aWF;
-      }
-      if (this.aWG == -1) {
-        this.aWG = paramd.aWG;
-      }
-      if (this.aWz == null) {
-        this.aWz = paramd.aWz;
-      }
-      if (this.aWD == -1) {
-        this.aWD = paramd.aWD;
-      }
-      if (this.aWE == -1) {
-        this.aWE = paramd.aWE;
-      }
-      if (this.aWJ == null) {
-        this.aWJ = paramd.aWJ;
-      }
-      if (this.aWH == -1)
-      {
-        this.aWH = paramd.aWH;
-        this.fontSize = paramd.fontSize;
-      }
-      if ((!this.aWC) && (paramd.aWC)) {
-        ef(paramd.backgroundColor);
-      }
-    }
-    AppMethodBeat.o(95693);
-    return this;
-  }
-  
-  public final d ee(int paramInt)
-  {
-    AppMethodBeat.i(95692);
-    if (this.aWI == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkState(bool);
-      this.aWA = paramInt;
-      this.aWB = true;
-      AppMethodBeat.o(95692);
-      return this;
-    }
-  }
-  
-  public final d ef(int paramInt)
-  {
-    this.backgroundColor = paramInt;
-    this.aWC = true;
-    return this;
-  }
-  
-  public final int getStyle()
+  public final int TY()
   {
     int j = 0;
-    if ((this.aWF == -1) && (this.aWG == -1)) {
+    if ((this.dgx == -1) && (this.italic == -1)) {
       return -1;
     }
-    if (this.aWF == 1) {}
+    if (this.dgx == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.aWG == 1) {
+      if (this.italic == 1) {
         j = 2;
       }
       return i | j;
     }
   }
+  
+  final d b(d paramd)
+  {
+    AppMethodBeat.i(92861);
+    if (paramd != null)
+    {
+      if ((!this.dgt) && (paramd.dgt)) {
+        iz(paramd.dgs);
+      }
+      if (this.dgx == -1) {
+        this.dgx = paramd.dgx;
+      }
+      if (this.italic == -1) {
+        this.italic = paramd.italic;
+      }
+      if (this.fontFamily == null) {
+        this.fontFamily = paramd.fontFamily;
+      }
+      if (this.dgv == -1) {
+        this.dgv = paramd.dgv;
+      }
+      if (this.dgw == -1) {
+        this.dgw = paramd.dgw;
+      }
+      if (this.dgA == null) {
+        this.dgA = paramd.dgA;
+      }
+      if (this.dgy == -1)
+      {
+        this.dgy = paramd.dgy;
+        this.fontSize = paramd.fontSize;
+      }
+      if ((!this.dgu) && (paramd.dgu)) {
+        iA(paramd.backgroundColor);
+      }
+    }
+    AppMethodBeat.o(92861);
+    return this;
+  }
+  
+  public final d bA(boolean paramBoolean)
+  {
+    int i = 1;
+    AppMethodBeat.i(92858);
+    boolean bool;
+    if (this.dgz == null)
+    {
+      bool = true;
+      a.checkState(bool);
+      if (!paramBoolean) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      this.dgv = i;
+      AppMethodBeat.o(92858);
+      return this;
+      bool = false;
+      break;
+      label41:
+      i = 0;
+    }
+  }
+  
+  public final d bB(boolean paramBoolean)
+  {
+    int i = 1;
+    AppMethodBeat.i(92859);
+    boolean bool;
+    if (this.dgz == null)
+    {
+      bool = true;
+      a.checkState(bool);
+      if (!paramBoolean) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      this.dgw = i;
+      AppMethodBeat.o(92859);
+      return this;
+      bool = false;
+      break;
+      label41:
+      i = 0;
+    }
+  }
+  
+  public final d iA(int paramInt)
+  {
+    this.backgroundColor = paramInt;
+    this.dgu = true;
+    return this;
+  }
+  
+  public final d iz(int paramInt)
+  {
+    AppMethodBeat.i(92860);
+    if (this.dgz == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a.checkState(bool);
+      this.dgs = paramInt;
+      this.dgt = true;
+      AppMethodBeat.o(92860);
+      return this;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.d
  * JD-Core Version:    0.7.0.1
  */

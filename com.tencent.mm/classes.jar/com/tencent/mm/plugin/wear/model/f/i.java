@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.cxi;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ggh;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> uHV;
-  private boolean zd;
+  private ArrayList<Integer> Wjy;
+  private boolean bpA;
   
   public i()
   {
-    this.zd = true;
+    this.bpA = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.uHV = paramArrayList;
-    this.zd = false;
+    this.Wjy = paramArrayList;
+    this.bpA = false;
   }
   
   public final String getName()
@@ -33,29 +33,29 @@ public final class i
   
   protected final void send()
   {
-    AppMethodBeat.i(26447);
-    ab.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.uHV });
-    cxi localcxi = new cxi();
-    if (this.uHV != null) {
-      localcxi.yeQ.addAll(this.uHV);
+    AppMethodBeat.i(30129);
+    Log.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.Wjy });
+    ggh localggh = new ggh();
+    if (this.Wjy != null) {
+      localggh.accW.addAll(this.Wjy);
     }
-    localcxi.yeR = this.zd;
+    localggh.accX = this.bpA;
     try
     {
-      a.cYy();
-      r.a(20004, localcxi.toByteArray(), false);
-      AppMethodBeat.o(26447);
+      a.inM();
+      r.a(20004, localggh.toByteArray(), false);
+      AppMethodBeat.o(30129);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(26447);
+      AppMethodBeat.o(30129);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.i
  * JD-Core Version:    0.7.0.1
  */

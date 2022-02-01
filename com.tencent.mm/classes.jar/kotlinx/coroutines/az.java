@@ -1,41 +1,41 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.d.d;
+import kotlin.d.f;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class az
-  extends g
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DeferredCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlinx/coroutines/Deferred;", "Lkotlinx/coroutines/selects/SelectClause1;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "onAwait", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "registerSelectClause1", "", "R", "select", "Lkotlinx/coroutines/selects/SelectInstance;", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/selects/SelectInstance;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+class az<T>
+  extends a<T>
+  implements ay<T>
 {
-  private final b<Throwable, y> CIh;
-  
-  public az(b<? super Throwable, y> paramb)
+  public az(f paramf, boolean paramBoolean)
   {
-    AppMethodBeat.i(118481);
-    this.CIh = paramb;
-    AppMethodBeat.o(118481);
+    super(paramf, paramBoolean);
+    AppMethodBeat.i(118061);
+    AppMethodBeat.o(118061);
   }
   
-  public final String toString()
+  public final Object e(d<? super T> paramd)
   {
-    AppMethodBeat.i(118480);
-    String str = "InvokeOnCancel[" + af.ea(this.CIh) + '@' + af.dZ(this) + ']';
-    AppMethodBeat.o(118480);
-    return str;
+    AppMethodBeat.i(118059);
+    paramd = az(paramd);
+    AppMethodBeat.o(118059);
+    return paramd;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final T kBS()
   {
-    AppMethodBeat.i(118478);
-    this.CIh.S(paramThrowable);
-    AppMethodBeat.o(118478);
+    AppMethodBeat.i(188867);
+    Object localObject = kCA();
+    AppMethodBeat.o(188867);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.az
  * JD-Core Version:    0.7.0.1
  */

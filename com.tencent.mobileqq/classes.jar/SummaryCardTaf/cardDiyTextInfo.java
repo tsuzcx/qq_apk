@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class cardDiyTextInfo
   extends JceStruct
 {
-  public float fRotationAngle;
-  public float fScaling;
-  public float fTransparency;
-  public int iFontId;
+  public float fRotationAngle = 0.0F;
+  public float fScaling = 0.0F;
+  public float fTransparency = 0.0F;
+  public int iFontId = 0;
   public String strPoint = "";
   public String strText = "";
   
@@ -39,11 +39,13 @@ public final class cardDiyTextInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFontId, 1);
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 2);
+    String str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strPoint != null) {
-      paramJceOutputStream.write(this.strPoint, 3);
+    str = this.strPoint;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.fRotationAngle, 4);
     paramJceOutputStream.write(this.fScaling, 5);
@@ -52,7 +54,7 @@ public final class cardDiyTextInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCardTaf.cardDiyTextInfo
  * JD-Core Version:    0.7.0.1
  */

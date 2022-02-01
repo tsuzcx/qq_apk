@@ -2,7 +2,7 @@
 <RelativeLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:id="@id/ice" android:background="@drawable/cep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/bp" android:gravity="center_horizontal" android:id="@id/k74" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/kp9" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@id/k74" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/kp9" android:layout_centerHorizontal="true" />
         <com.tencent.widget.GridView android:id="@id/d07" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:fadingEdgeLength="0.0px" android:layout_width="339.0dip" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:horizontalSpacing="10.0dip" android:verticalSpacing="10.0dip" android:stretchMode="columnWidth" android:columnWidth="103.0dip" android:numColumns="3" android:layout_below="@id/k74" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </RelativeLayout>

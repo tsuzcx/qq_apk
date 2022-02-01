@@ -11,37 +11,38 @@ import com.tencent.qphone.base.util.QLog;
 public class QzoneFeedItemTimeLocationView
   extends RelativeLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public String a;
-  TextView b;
+  private static final String TAG = "QzoneFeedItemTimeLocationView";
+  TextView feedCreateTimeTv;
+  TextView feedLocationTv;
+  private Context mContext;
+  public String timeStr;
   
   public QzoneFeedItemTimeLocationView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
   public QzoneFeedItemTimeLocationView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
   public QzoneFeedItemTimeLocationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.mContext = paramContext;
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558791, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366182));
-    this.b = ((TextView)findViewById(2131366252));
+    LayoutInflater.from(this.mContext).inflate(2131624450, this);
+    this.feedLocationTv = ((TextView)findViewById(2131432984));
+    this.feedCreateTimeTv = ((TextView)findViewById(2131433054));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -50,14 +51,31 @@ public class QzoneFeedItemTimeLocationView
     if (paramBoolean)
     {
       paramInt1 = 0;
-      if (this.b != null) {
-        paramInt1 = this.b.getWidth();
+      Object localObject = this.feedCreateTimeTv;
+      if (localObject != null) {
+        paramInt1 = ((TextView)localObject).getWidth();
       }
       paramInt2 = getWidth();
-      paramInt3 = paramInt2 - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296312) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296313) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131296311) + 0.5D) - paramInt1 - 1;
-      this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(paramInt3);
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneFeedItemTimeLocationView", 2, "onLayout change:timeWidth:" + paramInt1 + ",feedLocationTvWidth(max):" + paramInt3 + ",feedLocationLayoutWidth:" + paramInt2);
+      double d = this.mContext.getResources().getDimension(2131296630);
+      Double.isNaN(d);
+      paramInt3 = (int)(d + 0.5D);
+      d = this.mContext.getResources().getDimension(2131296631);
+      Double.isNaN(d);
+      paramInt4 = (int)(d + 0.5D);
+      d = this.mContext.getResources().getDimension(2131296629);
+      Double.isNaN(d);
+      paramInt3 = paramInt2 - paramInt3 - paramInt4 - (int)(d + 0.5D) - paramInt1 - 1;
+      this.feedLocationTv.setMaxWidth(paramInt3);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onLayout change:timeWidth:");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(",feedLocationTvWidth(max):");
+        ((StringBuilder)localObject).append(paramInt3);
+        ((StringBuilder)localObject).append(",feedLocationLayoutWidth:");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("QzoneFeedItemTimeLocationView", 2, ((StringBuilder)localObject).toString());
       }
     }
     if (QLog.isColorLevel()) {
@@ -72,12 +90,12 @@ public class QzoneFeedItemTimeLocationView
   
   public void setTime(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.timeStr = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.QzoneFeedItemTimeLocationView
  * JD-Core Version:    0.7.0.1
  */

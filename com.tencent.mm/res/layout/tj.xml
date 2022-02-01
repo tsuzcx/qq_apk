@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_below="@id/b8z" style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bco" android:layout_width="150.0dip" android:layout_height="150.0dip" android:src="@drawable/apj" />
-    <TextView android:textSize="@dimen/lg" android:textColor="@color/h6" android:gravity="center" android:id="@id/bcp" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/ft" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l6" android:text="@string/d8s" android:lineSpacingExtra="4.0dip" />
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/tc" android:id="@id/bcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="@string/cg2" />
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h3">
+        <TextView android:layout_gravity="right" android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/b8v" style="@style/ha" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/l1e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cd" style="@style/a85" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/b8x" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/b4b" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/zb" android:minHeight="@dimen/ad" style="@style/hc" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/qk" />
 </LinearLayout>

@@ -20,13 +20,14 @@ public final class Qworkflow$TodoChangeItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "msg_source_appid", "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, TodoChangeItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "msg_source_appid", "bytes_workflow_id", "uint32_main_type", "uint32_sub_type", "uint64_author_uin" }, new Object[] { null, localByteStringMicro, localInteger, localInteger, Long.valueOf(0L) }, TodoChangeItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.trunk.Qworkflow.Qworkflow.TodoChangeItem
  * JD-Core Version:    0.7.0.1
  */

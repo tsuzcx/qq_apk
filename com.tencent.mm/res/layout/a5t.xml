@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a62" android:textColor="@color/al6" android:id="@id/ewi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a61" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+    </RelativeLayout>
+</merge>

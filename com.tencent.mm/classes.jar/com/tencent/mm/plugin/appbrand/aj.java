@@ -1,61 +1,81 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.service.c;
+import org.json.JSONObject;
 
 public final class aj
-  extends al
+  implements com.tencent.mm.plugin.appbrand.jsapi.base.g
 {
-  protected final int A(Intent paramIntent)
+  public final h c(f paramf, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(129170);
-    int i = paramIntent.getIntExtra("SCENE", -1);
-    if (i == 2)
+    int j = 1;
+    AppMethodBeat.i(43977);
+    int i;
+    if ((paramf instanceof ad))
     {
-      AppMethodBeat.o(129170);
-      return 1114;
-    }
-    if (i == 1)
-    {
-      AppMethodBeat.o(129170);
-      return 1113;
-    }
-    AppMethodBeat.o(129170);
-    return -1;
-  }
-  
-  protected final void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
-  
-  protected final boolean b(Intent paramIntent, boolean paramBoolean)
-  {
-    AppMethodBeat.i(143052);
-    paramBoolean = super.b(paramIntent, paramBoolean);
-    if (A(paramIntent) == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        ab.i("MiroMsg.WxaManufacturerShortcutEntry", "invalid scene ");
+      if (paramJSONObject != null) {
+        if (paramJSONObject.optInt("dest", 0) == 2) {
+          i = 1;
+        }
       }
-      if ((i != 0) || (!paramBoolean)) {
-        break;
+      while (i != 0)
+      {
+        paramf = ((ad)paramf).cEK();
+        AppMethodBeat.o(43977);
+        return paramf;
+        i = 0;
+        continue;
+        i = 0;
       }
-      AppMethodBeat.o(143052);
-      return true;
     }
-    AppMethodBeat.o(143052);
-    return false;
-  }
-  
-  public final int getType()
-  {
-    return 3;
+    if ((paramf instanceof h))
+    {
+      paramf = (h)paramf;
+      AppMethodBeat.o(43977);
+      return paramf;
+    }
+    if ((paramf instanceof y))
+    {
+      if (paramJSONObject != null) {
+        if (paramJSONObject.optInt("dest", 0) == 1) {
+          i = j;
+        }
+      }
+      while (i != 0)
+      {
+        paramf = (c)paramf;
+        if (paramf.tTs != null)
+        {
+          paramf = paramf.tTs;
+          AppMethodBeat.o(43977);
+          return paramf;
+          i = 0;
+          continue;
+          i = 0;
+        }
+        else
+        {
+          paramf.tTs = new com.tencent.mm.plugin.appbrand.ad.g(paramf, paramf.getRuntime().qvK);
+          paramf = paramf.tTs;
+          AppMethodBeat.o(43977);
+          return paramf;
+        }
+      }
+      paramf = ((c)paramf).ccK();
+      AppMethodBeat.o(43977);
+      return paramf;
+    }
+    AppMethodBeat.o(43977);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aj
  * JD-Core Version:    0.7.0.1
  */

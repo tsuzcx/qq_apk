@@ -1,59 +1,108 @@
 package com.tencent.mm.az;
 
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.cqj;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 
 public final class a
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.g
+  extends p
+  implements m
 {
-  SparseArray<LinkedList<g.a>> fLD;
+  private com.tencent.mm.am.h callback;
+  public String oRm;
+  public String oRn;
+  public byte[] oRo;
+  private final c rr;
   
   public a()
   {
-    AppMethodBeat.i(984);
-    this.fLD = new SparseArray();
-    AppMethodBeat.o(984);
+    this(z.bAM(), Util.nullAsNil((Integer)com.tencent.mm.kernel.h.baE().ban().d(66561, null)), 0);
+    AppMethodBeat.i(150870);
+    AppMethodBeat.o(150870);
   }
   
-  public final void a(int paramInt, g.a parama)
+  public a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(986);
-    if (this.fLD.indexOfKey(paramInt) < 0) {
-      this.fLD.put(paramInt, new LinkedList());
-    }
-    ((LinkedList)this.fLD.get(paramInt)).add(parama);
-    AppMethodBeat.o(986);
+    this(paramString, paramInt, 0);
   }
   
-  public final void a(j.b paramb)
+  public a(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(985);
-    if ((com.tencent.mm.kernel.g.RK().eHt == null) || (com.tencent.mm.kernel.g.RK().eHt.ftA == null))
+    AppMethodBeat.i(150871);
+    this.callback = null;
+    this.oRm = null;
+    this.oRn = null;
+    this.oRo = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cqj();
+    ((c.a)localObject).otF = new cqk();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getqrcode";
+    ((c.a)localObject).funcId = 168;
+    ((c.a)localObject).otG = 67;
+    ((c.a)localObject).respCmdId = 1000000067;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cqj)c.b.b(this.rr.otB);
+    ((cqj)localObject).ZqL = w.Sk(paramString);
+    ((cqj)localObject).bcb = paramInt1;
+    ((cqj)localObject).YIq = paramInt2;
+    Log.i("MicroMsg.NetSceneGetQRCode", "username:%s, style:%d, opcode:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(150871);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(150872);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(150872);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 168;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150873);
+    Log.d("MicroMsg.NetSceneGetQRCode", "onGYNetEnd errType:" + paramInt2 + " errCode" + paramInt3);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      AppMethodBeat.o(985);
-      return;
+      paramArrayOfByte = (cqj)c.b.b(this.rr.otB);
+      params = (cqk)c.c.b(this.rr.otC);
+      paramArrayOfByte = w.a(paramArrayOfByte.ZqL);
+      this.oRo = w.a(params.aauw, new byte[0]);
+      this.oRm = params.aawU;
+      Log.i("MicroMsg.NetSceneGetQRCode", "expiredWording:%s, revokeId:%s, revokeWording:%s", new Object[] { this.oRm, params.aawV, params.aawW });
+      if (z.bAM().equals(paramArrayOfByte))
+      {
+        paramArrayOfByte = params.aawV;
+        String str = (String)com.tencent.mm.kernel.h.baE().ban().d(66563, "");
+        if ((paramArrayOfByte != null) && (!str.equals(paramArrayOfByte)))
+        {
+          com.tencent.mm.kernel.h.baE().ban().B(66563, paramArrayOfByte);
+          this.oRn = params.aawW;
+        }
+        com.tencent.mm.kernel.h.baE().ban().B(66561, Integer.valueOf(params.bcb));
+      }
     }
-    Object localObject = new ArrayList(1);
-    ((ArrayList)localObject).add(paramb);
-    localObject = new b((List)localObject);
-    com.tencent.mm.kernel.g.RM();
-    ((b)localObject).doScene(com.tencent.mm.kernel.g.RK().eHt.ftA, new a.1(this, paramb));
-    AppMethodBeat.o(985);
-  }
-  
-  public final void b(int paramInt, g.a parama)
-  {
-    AppMethodBeat.i(987);
-    if (this.fLD.indexOfKey(paramInt) >= 0) {
-      ((LinkedList)this.fLD.get(paramInt)).remove(parama);
-    }
-    AppMethodBeat.o(987);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(150873);
   }
 }
 

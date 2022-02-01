@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bmf" android:background="@color/nf" android:layout_width="fill_parent" android:layout_height="@dimen/gd"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bmg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false" android:weightSum="1.0">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bmh" android:layout_marginLeft="@dimen/h3" style="@style/hr" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/h1" style="@style/i0">
-            <RelativeLayout android:paddingLeft="@dimen/h3" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bmi" android:layout_centerVertical="true">
-                <View android:id="@id/bmj" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
-                <TextView android:id="@id/bmk" android:layout_toLeftOf="@id/bml" android:layout_alignLeft="@id/bmj" android:layout_centerInParent="true" style="@style/i1" />
-                <TextView android:id="@id/bml" android:text="" android:layout_above="@id/bmj" android:layout_alignRight="@id/bmj" style="@style/i5" />
-            </RelativeLayout>
-            <ImageView android:id="@id/bmi" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hs" />
-        </RelativeLayout>
-    </LinearLayout>
-    <View android:id="@id/bmm" android:background="@color/ng" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/bne" android:visibility="gone" style="@style/i7" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/bnc" android:paddingBottom="1.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitXY" android:paddingEnd="1.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/bnb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginStart="16.0dip" android:layout_marginEnd="24.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/bnd" app:layout_constraintStart_toEndOf="@id/bnc" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/bnd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bk_" android:maxLines="1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView android:id="@id/bna" android:visibility="visible" android:importantForAccessibility="no" style="@style/i7" />
+</LinearLayout>

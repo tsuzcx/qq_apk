@@ -13,32 +13,35 @@ final class b
     if (this.a.b == null) {
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 100)
     {
-    default: 
-      return;
-    case 100: 
-      paramMessage = (SpeechSynthesizerState)paramMessage.obj;
-      this.a.b.onGetVoiceRecordState(paramMessage);
-      return;
-    case 300: 
-      if (this.a.a != null) {
-        this.a.a.a = null;
+      if (i != 200)
+      {
+        if (i != 300) {
+          return;
+        }
+        if (this.a.a != null) {
+          this.a.a.a = null;
+        }
+        paramMessage = (SpeechSynthesizerResult)paramMessage.obj;
+        this.a.b.onGetResult(paramMessage);
+        return;
       }
-      paramMessage = (SpeechSynthesizerResult)paramMessage.obj;
-      this.a.b.onGetResult(paramMessage);
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+      paramMessage = (Integer)paramMessage.obj;
+      this.a.b.onGetError(paramMessage.intValue());
       return;
     }
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    paramMessage = (Integer)paramMessage.obj;
-    this.a.b.onGetError(paramMessage.intValue());
+    paramMessage = (SpeechSynthesizerState)paramMessage.obj;
+    this.a.b.onGetVoiceRecordState(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.wx.voice.synthesizer.b
  * JD-Core Version:    0.7.0.1
  */

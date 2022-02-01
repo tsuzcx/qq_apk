@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="105.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/mh7" android:background="@drawable/3k" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" />
+    <com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView android:id="@id/mh9" android:layout_width="160.0dip" android:layout_height="105.0dip" android:scaleType="fitEnd" android:layout_alignRight="@id/mh7" android:layout_alignBottom="@id/mh7" android:layout_alignEnd="@id/mh7" app:useApngImage="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/mh_" android:paddingLeft="21.0dip" android:paddingRight="21.0dip" android:layout_width="fill_parent" android:layout_height="93.0dip" android:layout_alignLeft="@id/mh7" android:layout_alignTop="@id/mh7" android:layout_alignRight="@id/mh7" android:layout_alignBottom="@id/mh7" android:layout_alignStart="@id/mh7" android:layout_alignEnd="@id/mh7">
+        <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/mha" android:layout_width="wrap_content" android:layout_height="20.0dip" android:adjustViewBounds="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/mh8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:singleLine="true" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/mh5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <com.tencent.avgame.gamelobby.view.OverlappingImgLayout android:id="@id/mh4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/mh6" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="center" android:paddingStart="4.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

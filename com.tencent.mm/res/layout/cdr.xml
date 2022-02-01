@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.voip.video.OpenGlView android:id="@id/hlr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MMTextureView android:id="@id/f18" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.voip.video.OpenGlView android:id="@id/hlq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/ld7" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/c8g" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/lda" android:background="@drawable/b1e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/ld9" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/ld_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/khg" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/kl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:textAlignment="center" />
+    <TextView android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/kn3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:textAlignment="center" />
+</RelativeLayout>

@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emoticonview.RecommendEmoticonViewBinder;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 
 public class fpc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public fpc(RecommendEmoticonViewBinder paramRecommendEmoticonViewBinder) {}
+  public fpc(SystemEmoticonPanel paramSystemEmoticonPanel) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+  }
 }
 
 

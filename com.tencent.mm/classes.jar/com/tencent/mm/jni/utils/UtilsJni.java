@@ -49,10 +49,16 @@ public class UtilsJni
   public static native int doEcdsaSHAVerify(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
   
   public static native int doEcdsaVerify(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
+  
+  public static native byte[][] ecdsaGeneralOctKeyPair();
+  
+  public static native byte[] ecdsaSignWithOctKey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
+  public static native int ecdsaVerifyWithOctKey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.jni.utils.UtilsJni
  * JD-Core Version:    0.7.0.1
  */

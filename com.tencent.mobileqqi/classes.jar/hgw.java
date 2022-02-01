@@ -1,65 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.widget.MicroPhoneClipImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.mobileqq.widget.MicroPhoneDialog;
-import com.tencent.mobileqq.widget.OvalProgress;
+import com.tencent.qphone.base.util.QLog;
 
 public class hgw
-  extends Handler
+  implements View.OnTouchListener
 {
   public hgw(MicroPhoneDialog paramMicroPhoneDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (this.a.a)
     {
-    default: 
-      return;
-    case 1: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.MicroPhone", 2, "enableRotate true, refuse onTouch..");
       }
-      AudioUtil.a(this.a.jdField_a_of_type_AndroidContentContext, false);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(paramMessage.arg1);
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMicroPhoneClipImageView.setSoundWave(0);
-      return;
-    case 4: 
-      this.a.a(true);
-      return;
-    case 5: 
-      this.a.a(false);
-      return;
-    case 6: 
-      this.a.a();
-      return;
-    case 7: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetOvalProgress.setProgressParams(0L, 0L);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
-      return;
-    case 9: 
-      MicroPhoneDialog.a(this.a);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839032);
-      return;
-    case 8: 
-      MicroPhoneDialog.b(this.a);
-      return;
-    case 10: 
-      MicroPhoneDialog.a(this.a);
-      MicroPhoneDialog.c(this.a);
-      return;
-    case 11: 
-      this.a.c.setText(Integer.toString((int)Math.round(this.a.g * 1.0D / 1000.0D)) + "\"");
-      return;
+      return true;
     }
-    MicroPhoneDialog.a(this.a, 2131562618, 1);
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      MicroPhoneDialog.d(this.a);
+      return true;
+    }
+    if ((i == 3) || (i == 1))
+    {
+      this.a.g();
+      return true;
+    }
+    return false;
   }
 }
 

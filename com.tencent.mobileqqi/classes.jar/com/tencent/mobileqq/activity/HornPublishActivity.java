@@ -29,13 +29,13 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.widget.XEditText;
+import cqj;
 import cqk;
 import cql;
 import cqm;
-import cqn;
+import cqo;
 import cqp;
 import cqq;
-import cqr;
 
 public class HornPublishActivity
   extends BaseHornListActivity
@@ -43,12 +43,12 @@ public class HornPublishActivity
 {
   protected static int q = 1;
   protected static int r = 2;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new cql(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new cqk(this);
   public Button a;
   protected ImageView a;
   protected RelativeLayout a;
   public BaseHornListActivity a;
-  NearHornObserver jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new cqk(this);
+  NearHornObserver jdField_a_of_type_ComTencentMobileqqAppNearHornObserver = new cqj(this);
   protected SystemEmoticonPanel a;
   public XEditText a;
   protected ImageView b;
@@ -68,8 +68,8 @@ public class HornPublishActivity
   
   private SystemEmoticonPanel a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemEmoticonPanel(this.jdField_a_of_type_AndroidContentContext, new cqq(this));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.a.setOnClickListener(new cqr(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = new SystemEmoticonPanel(this.jdField_a_of_type_AndroidContentContext, new cqp(this));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.a.setOnClickListener(new cqq(this));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)(this.jdField_a_of_type_Float * 150.0F));
     localLayoutParams.addRule(12);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, localLayoutParams);
@@ -129,7 +129,7 @@ public class HornPublishActivity
   
   private void g()
   {
-    Utils.a(this.jdField_a_of_type_AndroidContentContext, 2131562519, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_f_of_type_JavaLangString, new cqm(this), null);
+    Utils.a(this.jdField_a_of_type_AndroidContentContext, 2131562519, this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.jdField_f_of_type_JavaLangString, new cql(this), null);
   }
   
   protected boolean a()
@@ -168,23 +168,23 @@ public class HornPublishActivity
     super.setTitle(2131562224);
     this.jdField_a_of_type_AndroidContentContext = this;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseHornListActivity = this;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233366));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131233365));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditText)findViewById(2131233373));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231169));
+    this.jdField_a_of_type_ComTencentWidgetXEditText = ((XEditText)findViewById(2131233372));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231168));
     this.jdField_a_of_type_ComTencentWidgetXEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_ComTencentWidgetXEditText.setEditableFactory(QQTextBuilder.a);
     this.jdField_a_of_type_ComTencentWidgetXEditText.setOnTouchListener(this);
     this.t = r;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233377));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131233376));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233374));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233373));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131233369));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233368));
-    this.d = ((TextView)findViewById(2131233376));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233370));
-    this.f = ((TextView)findViewById(2131233371));
+    this.c = ((TextView)findViewById(2131233368));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131233367));
+    this.d = ((TextView)findViewById(2131233375));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131233369));
+    this.f = ((TextView)findViewById(2131233370));
     e();
     super.a(this.jdField_a_of_type_ComTencentMobileqqAppNearHornObserver);
     super.b();
@@ -208,13 +208,13 @@ public class HornPublishActivity
   {
     switch (paramView.getId())
     {
+    case 2131233371: 
     case 2131233372: 
-    case 2131233373: 
-    case 2131233375: 
-    case 2131233376: 
-    default: 
-    case 2131233377: 
     case 2131233374: 
+    case 2131233375: 
+    default: 
+    case 2131233376: 
+    case 2131233373: 
       do
       {
         return;
@@ -253,11 +253,11 @@ public class HornPublishActivity
         {
           if (super.a(0, "").booleanValue())
           {
-            Utils.a(this.jdField_a_of_type_AndroidContentContext, 2131562224, getResources().getString(2131561624), new cqn(this, paramView), null);
+            Utils.a(this.jdField_a_of_type_AndroidContentContext, 2131562224, getResources().getString(2131561624), new cqm(this, paramView), null);
             return;
           }
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqp(this, paramView));
+          this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new cqo(this, paramView));
           return;
         }
         super.a(2131562652);
@@ -272,7 +272,7 @@ public class HornPublishActivity
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情面板");
       b(r);
       return;
-    case 2131233371: 
+    case 2131233370: 
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppNearHornHandler.a, "P_CliOper", "Svip", "", "Vip_nearby", "Vip_nearby_applyHorn", 0, 0, "", "", "", "");
       g();
       return;

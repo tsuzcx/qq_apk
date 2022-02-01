@@ -216,9 +216,9 @@ public class AccountDetailActivity
         if (paramConfigInfo.state_id.get() == 5)
         {
           localObject2 = ((LayoutInflater)localObject1).inflate(2130904009, null);
-          localObject1 = ((View)localObject2).findViewById(2131234580);
-          ((TextView)((View)localObject2).findViewById(2131234581)).setVisibility(0);
-          localObject3 = (Switch)((View)localObject1).findViewById(2131231508);
+          localObject1 = ((View)localObject2).findViewById(2131234579);
+          ((TextView)((View)localObject2).findViewById(2131234580)).setVisibility(0);
+          localObject3 = (Switch)((View)localObject1).findViewById(2131231507);
           if (paramConfigInfo.state.get() != 1) {
             break label505;
           }

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/c_u" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-</FrameLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/ijh" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/gb" android:gravity="center" android:id="@id/cq3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dc" />
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginTop="@dimen/d6" android:layout_below="@id/cq3" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/cpz" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cq1" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_centerInParent="true" app:iconColor="@color/al2" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/Link" android:id="@id/cpv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:text="@string/cj3" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <Button android:textStyle="bold" android:id="@id/cpw" android:layout_marginBottom="@dimen/c2" android:text="测试动画" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/op" />
+    <Button android:textStyle="bold" android:id="@id/cpx" android:layout_marginBottom="@dimen/cg" android:text="测试动画" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ol" />
+</RelativeLayout>

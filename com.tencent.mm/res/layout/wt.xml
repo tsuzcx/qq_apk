@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:textColorLink="@color/Link" android:id="@id/acb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:minHeight="116.0dip" android:maxLines="3" android:lineSpacingExtra="8.0dip" android:layout_marginStart="@dimen/j6" android:layout_marginEnd="@dimen/j6" app:collapseButtonPosition="c" app:noCollapseCenter="true" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_2" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/acb" />
+</RelativeLayout>

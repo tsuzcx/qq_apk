@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/idg" android:background="#ffebecf0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/nlj" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/nl9" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/ien" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nla" android:background="@drawable/ic5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="11.0dip" android:layout_marginRight="13.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/nlc" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/ic7" android:scaleType="fitCenter" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/nlq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.5dip" android:text="搜索" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/ms6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="55.5dip" />
+</FrameLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/ogd" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <ImageView android:id="@id/og3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout android:id="@id/ogf" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/og4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <RelativeLayout android:id="@id/ogb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/oga" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
+                <ImageView android:id="@id/og7" android:background="@drawable/dsc" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/oga" />
+            </RelativeLayout>
+            <View android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/ogo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/ogq" android:layout="@layout/cpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
+    <ViewStub android:id="@id/og_" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="bottom|center|left" android:id="@id/ogp" android:layout="@layout/cpj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

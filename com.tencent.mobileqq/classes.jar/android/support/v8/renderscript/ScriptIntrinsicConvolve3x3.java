@@ -18,12 +18,13 @@ public class ScriptIntrinsicConvolve3x3
       RenderScriptThunker localRenderScriptThunker = (RenderScriptThunker)paramRenderScript;
       return ScriptIntrinsicConvolve3x3Thunker.create(paramRenderScript, paramElement);
     }
-    if (!paramElement.isCompatible(Element.U8_4(paramRenderScript))) {
-      throw new RSIllegalArgumentException("Unsuported element type.");
+    if (paramElement.isCompatible(Element.U8_4(paramRenderScript)))
+    {
+      paramRenderScript = new ScriptIntrinsicConvolve3x3(paramRenderScript.nScriptIntrinsicCreate(1, paramElement.getID(paramRenderScript)), paramRenderScript);
+      paramRenderScript.setCoefficients(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F });
+      return paramRenderScript;
     }
-    paramRenderScript = new ScriptIntrinsicConvolve3x3(paramRenderScript.nScriptIntrinsicCreate(1, paramElement.getID(paramRenderScript)), paramRenderScript);
-    paramRenderScript.setCoefficients(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F });
-    return paramRenderScript;
+    throw new RSIllegalArgumentException("Unsuported element type.");
   }
   
   public void forEach(Allocation paramAllocation)
@@ -45,10 +46,14 @@ public class ScriptIntrinsicConvolve3x3
   {
     FieldPacker localFieldPacker = new FieldPacker(36);
     int i = 0;
-    while (i < this.mValues.length)
+    for (;;)
     {
-      this.mValues[i] = paramArrayOfFloat[i];
-      localFieldPacker.addF32(this.mValues[i]);
+      float[] arrayOfFloat = this.mValues;
+      if (i >= arrayOfFloat.length) {
+        break;
+      }
+      arrayOfFloat[i] = paramArrayOfFloat[i];
+      localFieldPacker.addF32(arrayOfFloat[i]);
       i += 1;
     }
     setVar(0, localFieldPacker);
@@ -62,7 +67,7 @@ public class ScriptIntrinsicConvolve3x3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicConvolve3x3
  * JD-Core Version:    0.7.0.1
  */

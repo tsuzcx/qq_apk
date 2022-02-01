@@ -1,43 +1,44 @@
 package com.tencent.mm.plugin.abtest;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.newabtest.d;
+import com.tencent.mm.model.y;
 
 public final class c
-  extends q
+  extends y
 {
-  private static c grR;
+  private static c pNe;
   
   private c()
   {
-    super(com.tencent.mm.model.c.c.class);
+    super(d.class);
   }
   
-  public static c app()
+  public static c bVY()
   {
     try
     {
-      AppMethodBeat.i(118192);
-      if (grR == null) {
-        grR = new c();
+      AppMethodBeat.i(153140);
+      if (pNe == null) {
+        pNe = new c();
       }
-      c localc = grR;
-      AppMethodBeat.o(118192);
+      c localc = pNe;
+      AppMethodBeat.o(153140);
       return localc;
     }
     finally {}
   }
   
-  public final void mE(String paramString)
+  public final void FD(String paramString)
   {
-    AppMethodBeat.i(118193);
-    super.mE(paramString);
-    AppMethodBeat.o(118193);
+    AppMethodBeat.i(153141);
+    super.FD(paramString);
+    AppMethodBeat.o(153141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.abtest.c
  * JD-Core Version:    0.7.0.1
  */

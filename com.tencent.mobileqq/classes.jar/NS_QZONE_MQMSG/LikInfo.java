@@ -7,11 +7,11 @@ import com.qq.taf.jce.JceStruct;
 public final class LikInfo
   extends JceStruct
 {
-  public int appid;
-  public int hasDoLik;
-  public long hostUin;
+  public int appid = 0;
+  public int hasDoLik = 0;
+  public long hostUin = 0L;
   public String likeKey = "";
-  public int totalLik;
+  public int totalLik = 0;
   
   public LikInfo() {}
   
@@ -36,8 +36,9 @@ public final class LikInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.totalLik, 0);
-    if (this.likeKey != null) {
-      paramJceOutputStream.write(this.likeKey, 1);
+    String str = this.likeKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.appid, 2);
     paramJceOutputStream.write(this.hostUin, 3);
@@ -46,7 +47,7 @@ public final class LikInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.LikInfo
  * JD-Core Version:    0.7.0.1
  */

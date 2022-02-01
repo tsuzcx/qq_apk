@@ -39,7 +39,7 @@ public class TMSDKWifiManager
   public static final int UPDATE_ERR_SCAN_FAILED = -4;
   public static final int UPDATE_ERR_UNKNOWN = -999;
   public static final int UPDATE_ERR_WIFI_SWITCH_DISABLED = -2;
-  private static TMSDKWifiManager qj = null;
+  private static TMSDKWifiManager qj;
   private static boolean qk = false;
   private static TMSDKCustomConfig ql;
   private fp qm = fp.dX();
@@ -70,56 +70,53 @@ public class TMSDKWifiManager
   
   public static TMSDKWifiManager getInstance()
   {
-    if (qj == null) {}
-    try
-    {
-      if (qj == null) {
-        qj = new TMSDKWifiManager();
+    if (qj == null) {
+      try
+      {
+        if (qj == null) {
+          qj = new TMSDKWifiManager();
+        }
       }
-      return qj;
+      finally {}
     }
-    finally {}
+    return qj;
   }
   
   public static boolean init(Context paramContext, TMSDKCustomConfig paramTMSDKCustomConfig)
   {
-    boolean bool1 = true;
-    for (;;)
+    TMSDKCustomConfig localTMSDKCustomConfig;
+    label74:
+    try
     {
-      try
-      {
-        boolean bool2 = qk;
-        if (!bool2) {
-          continue;
-        }
+      boolean bool = qk;
+      if (bool) {
+        return true;
       }
-      finally
-      {
-        try
-        {
-          if (dg.bI()) {
-            System.currentTimeMillis();
-          }
-          TMSDKCustomConfig localTMSDKCustomConfig = paramTMSDKCustomConfig;
-          if (paramTMSDKCustomConfig == null) {
-            localTMSDKCustomConfig = new TMSDKCustomConfig();
-          }
-          ql = localTMSDKCustomConfig;
-          ql.apply();
-          fq.p(paramContext);
-          if (dg.bI()) {
-            System.currentTimeMillis();
-          }
-          qk = true;
-        }
-        catch (Throwable paramContext)
-        {
-          bool1 = false;
-        }
-        paramContext = finally;
-      }
-      return bool1;
     }
+    finally {}
+    try
+    {
+      if (dg.bI()) {
+        System.currentTimeMillis();
+      }
+      localTMSDKCustomConfig = paramTMSDKCustomConfig;
+      if (paramTMSDKCustomConfig == null) {
+        localTMSDKCustomConfig = new TMSDKCustomConfig();
+      }
+      ql = localTMSDKCustomConfig;
+      ql.apply();
+      fq.p(paramContext);
+      if (dg.bI()) {
+        System.currentTimeMillis();
+      }
+      qk = true;
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      break label74;
+    }
+    return false;
   }
   
   public static boolean isWiFiManagerExist()
@@ -139,29 +136,39 @@ public class TMSDKWifiManager
   
   public void connectWifi(TMSDKFreeWifiInfo paramTMSDKFreeWifiInfo, String paramString)
   {
-    if ((paramTMSDKFreeWifiInfo == null) || (!ha.Y(paramTMSDKFreeWifiInfo.ssid))) {}
-    do
+    if (paramTMSDKFreeWifiInfo != null)
     {
-      return;
+      if (!ha.Y(paramTMSDKFreeWifiInfo.ssid)) {
+        return;
+      }
       paramTMSDKFreeWifiInfo = hm.fq().a(paramTMSDKFreeWifiInfo.ssid, paramTMSDKFreeWifiInfo.security);
-    } while (paramTMSDKFreeWifiInfo == null);
-    this.qm.a(paramTMSDKFreeWifiInfo, paramString);
+      if (paramTMSDKFreeWifiInfo == null) {
+        return;
+      }
+      this.qm.a(paramTMSDKFreeWifiInfo, paramString);
+    }
   }
   
   public void registerListUpdateListener(TMSDKWifiListUpdateListener paramTMSDKWifiListUpdateListener)
   {
-    if ((paramTMSDKWifiListUpdateListener == null) || (this.qo.contains(paramTMSDKWifiListUpdateListener))) {
-      return;
+    if (paramTMSDKWifiListUpdateListener != null)
+    {
+      if (this.qo.contains(paramTMSDKWifiListUpdateListener)) {
+        return;
+      }
+      this.qo.add(paramTMSDKWifiListUpdateListener);
     }
-    this.qo.add(paramTMSDKWifiListUpdateListener);
   }
   
   public void registerWifiEventListener(TMSDKWifiEventListener paramTMSDKWifiEventListener)
   {
-    if ((paramTMSDKWifiEventListener == null) || (this.qn.contains(paramTMSDKWifiEventListener))) {
-      return;
+    if (paramTMSDKWifiEventListener != null)
+    {
+      if (this.qn.contains(paramTMSDKWifiEventListener)) {
+        return;
+      }
+      this.qn.add(paramTMSDKWifiEventListener);
     }
-    this.qn.add(paramTMSDKWifiEventListener);
   }
   
   public void release()
@@ -238,7 +245,7 @@ public class TMSDKWifiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.wifisdk.TMSDKWifiManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,29 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.net.InetAddress;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class b
 {
-  public volatile al uVg;
-  as uVh;
+  ba Wye;
   
-  public b(as paramas)
+  public b(ba paramba)
   {
-    AppMethodBeat.i(6569);
-    this.uVg = new al("WebviewWorkerThread");
-    this.uVh = paramas;
-    AppMethodBeat.o(6569);
-  }
-  
-  public final al aNS()
-  {
-    AppMethodBeat.i(6570);
-    if (this.uVg == null) {
-      this.uVg = new al("WebviewWorkerThread");
-    }
-    al localal = this.uVg;
-    AppMethodBeat.o(6570);
-    return localal;
+    this.Wye = paramba;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.b
  * JD-Core Version:    0.7.0.1
  */

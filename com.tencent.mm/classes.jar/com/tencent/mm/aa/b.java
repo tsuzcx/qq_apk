@@ -1,536 +1,603 @@
 package com.tencent.mm.aa;
 
-import android.annotation.TargetApi;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import junit.framework.Assert;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Set;
 
 public final class b
-  implements a
 {
-  private JSONArray eGD;
+  SparseArray<a> mxB;
+  HashMap<at.a, a> mxC;
+  SparseArray<b> mxD;
+  HashMap<at.a, b> mxE;
+  private Random mxF;
+  aq mxG;
   
   public b()
   {
-    AppMethodBeat.i(117484);
-    this.eGD = new JSONArray();
-    AppMethodBeat.o(117484);
+    AppMethodBeat.i(150060);
+    this.mxB = new SparseArray();
+    this.mxC = new HashMap();
+    this.mxD = new SparseArray();
+    this.mxE = new HashMap();
+    this.mxF = new Random();
+    this.mxG = null;
+    AppMethodBeat.o(150060);
   }
   
-  public b(String paramString)
+  private static String EQ(String paramString)
   {
-    AppMethodBeat.i(117485);
-    try
-    {
-      this.eGD = new JSONArray(paramString);
-      AppMethodBeat.o(117485);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString = new g(paramString);
-      AppMethodBeat.o(117485);
-      throw paramString;
-    }
-  }
-  
-  b(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(117486);
-    Assert.assertNotNull(paramJSONArray);
-    this.eGD = paramJSONArray;
-    AppMethodBeat.o(117486);
-  }
-  
-  public final a ak(Object paramObject)
-  {
-    AppMethodBeat.i(117492);
-    this.eGD.put(paramObject);
-    AppMethodBeat.o(117492);
-    return this;
-  }
-  
-  public final a cg(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(117495);
-    try
-    {
-      this.eGD.put(paramInt1, paramInt2);
-      AppMethodBeat.o(117495);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117495);
-      throw localg;
-    }
-  }
-  
-  public final a cs(boolean paramBoolean)
-  {
-    AppMethodBeat.i(117488);
-    this.eGD.put(paramBoolean);
-    AppMethodBeat.o(117488);
-    return this;
-  }
-  
-  public final a d(int paramInt, double paramDouble)
-  {
-    AppMethodBeat.i(117494);
-    try
-    {
-      this.eGD.put(paramInt, paramDouble);
-      AppMethodBeat.o(117494);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117494);
-      throw localg;
-    }
-  }
-  
-  public final a e(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(117497);
-    try
-    {
-      this.eGD.put(paramInt, paramObject);
-      AppMethodBeat.o(117497);
-      return this;
-    }
-    catch (JSONException paramObject)
-    {
-      paramObject = new g(paramObject);
-      AppMethodBeat.o(117497);
-      throw paramObject;
-    }
-  }
-  
-  public final Object get(int paramInt)
-  {
-    AppMethodBeat.i(117499);
-    try
-    {
-      Object localObject = this.eGD.get(paramInt);
-      if ((localObject instanceof JSONObject))
-      {
-        localObject = new d((JSONObject)localObject);
-        AppMethodBeat.o(117499);
-        return localObject;
-      }
-      if ((localObject instanceof JSONArray))
-      {
-        localObject = new b((JSONArray)localObject);
-        AppMethodBeat.o(117499);
-        return localObject;
-      }
-      AppMethodBeat.o(117499);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117499);
-      throw localg;
-    }
-  }
-  
-  public final boolean getBoolean(int paramInt)
-  {
-    AppMethodBeat.i(117502);
-    try
-    {
-      boolean bool = this.eGD.getBoolean(paramInt);
-      AppMethodBeat.o(117502);
-      return bool;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117502);
-      throw localg;
-    }
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    AppMethodBeat.i(117505);
-    try
-    {
-      double d = this.eGD.getDouble(paramInt);
-      AppMethodBeat.o(117505);
-      return d;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117505);
-      throw localg;
-    }
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    AppMethodBeat.i(117508);
-    try
-    {
-      paramInt = this.eGD.getInt(paramInt);
-      AppMethodBeat.o(117508);
-      return paramInt;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117508);
-      throw localg;
-    }
-  }
-  
-  public final long getLong(int paramInt)
-  {
-    AppMethodBeat.i(117511);
-    try
-    {
-      long l = this.eGD.getLong(paramInt);
-      AppMethodBeat.o(117511);
-      return l;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117511);
-      throw localg;
-    }
-  }
-  
-  public final String getString(int paramInt)
-  {
-    AppMethodBeat.i(117514);
-    try
-    {
-      String str = this.eGD.getString(paramInt);
-      AppMethodBeat.o(117514);
-      return str;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117514);
-      throw localg;
-    }
-  }
-  
-  public final a gg(long paramLong)
-  {
-    AppMethodBeat.i(117491);
-    this.eGD.put(paramLong);
-    AppMethodBeat.o(117491);
-    return this;
-  }
-  
-  public final boolean isNull(int paramInt)
-  {
-    AppMethodBeat.i(117498);
-    boolean bool = this.eGD.isNull(paramInt);
-    AppMethodBeat.o(117498);
-    return bool;
-  }
-  
-  public final a jA(int paramInt)
-  {
-    AppMethodBeat.i(117517);
-    try
-    {
-      Object localObject = this.eGD.getJSONArray(paramInt);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(117517);
-        return null;
-      }
-      localObject = new b((JSONArray)localObject);
-      AppMethodBeat.o(117517);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117517);
-      throw localg;
-    }
-  }
-  
-  public final a jB(int paramInt)
-  {
-    AppMethodBeat.i(117518);
-    Object localObject = this.eGD.optJSONArray(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(117518);
-      return null;
-    }
-    localObject = new b((JSONArray)localObject);
-    AppMethodBeat.o(117518);
-    return localObject;
-  }
-  
-  public final c jC(int paramInt)
-  {
-    AppMethodBeat.i(117519);
-    try
-    {
-      Object localObject = this.eGD.getJSONObject(paramInt);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(117519);
-        return null;
-      }
-      localObject = new d((JSONObject)localObject);
-      AppMethodBeat.o(117519);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117519);
-      throw localg;
-    }
-  }
-  
-  public final c jD(int paramInt)
-  {
-    AppMethodBeat.i(117520);
-    Object localObject = this.eGD.optJSONObject(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(117520);
-      return null;
-    }
-    localObject = new d((JSONObject)localObject);
-    AppMethodBeat.o(117520);
-    return localObject;
-  }
-  
-  public final a jz(int paramInt)
-  {
-    AppMethodBeat.i(117490);
-    this.eGD.put(paramInt);
-    AppMethodBeat.o(117490);
-    return this;
-  }
-  
-  public final int length()
-  {
-    AppMethodBeat.i(117487);
-    int i = this.eGD.length();
-    AppMethodBeat.o(117487);
-    return i;
-  }
-  
-  public final a n(double paramDouble)
-  {
-    AppMethodBeat.i(117489);
-    try
-    {
-      this.eGD.put(paramDouble);
-      AppMethodBeat.o(117489);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117489);
-      throw localg;
-    }
-  }
-  
-  public final Object opt(int paramInt)
-  {
-    AppMethodBeat.i(117500);
-    Object localObject = this.eGD.opt(paramInt);
-    if ((localObject instanceof JSONObject))
-    {
-      localObject = new d((JSONObject)localObject);
-      AppMethodBeat.o(117500);
-      return localObject;
-    }
-    if ((localObject instanceof JSONArray))
-    {
-      localObject = new b((JSONArray)localObject);
-      AppMethodBeat.o(117500);
-      return localObject;
-    }
-    AppMethodBeat.o(117500);
-    return localObject;
-  }
-  
-  public final boolean optBoolean(int paramInt)
-  {
-    AppMethodBeat.i(117503);
-    boolean bool = this.eGD.optBoolean(paramInt);
-    AppMethodBeat.o(117503);
-    return bool;
-  }
-  
-  public final boolean optBoolean(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(117504);
-    paramBoolean = this.eGD.optBoolean(paramInt, paramBoolean);
-    AppMethodBeat.o(117504);
-    return paramBoolean;
-  }
-  
-  public final double optDouble(int paramInt)
-  {
-    AppMethodBeat.i(117506);
-    double d = this.eGD.optDouble(paramInt);
-    AppMethodBeat.o(117506);
-    return d;
-  }
-  
-  public final double optDouble(int paramInt, double paramDouble)
-  {
-    AppMethodBeat.i(117507);
-    paramDouble = this.eGD.optDouble(paramInt, paramDouble);
-    AppMethodBeat.o(117507);
-    return paramDouble;
-  }
-  
-  public final int optInt(int paramInt)
-  {
-    AppMethodBeat.i(117509);
-    paramInt = this.eGD.optInt(paramInt);
-    AppMethodBeat.o(117509);
-    return paramInt;
-  }
-  
-  public final int optInt(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(117510);
-    paramInt1 = this.eGD.optInt(paramInt1, paramInt2);
-    AppMethodBeat.o(117510);
-    return paramInt1;
-  }
-  
-  public final long optLong(int paramInt)
-  {
-    AppMethodBeat.i(117512);
-    long l = this.eGD.optLong(paramInt);
-    AppMethodBeat.o(117512);
-    return l;
-  }
-  
-  public final long optLong(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(117513);
-    paramLong = this.eGD.optLong(paramInt, paramLong);
-    AppMethodBeat.o(117513);
-    return paramLong;
-  }
-  
-  public final String optString(int paramInt)
-  {
-    AppMethodBeat.i(117515);
-    String str = this.eGD.optString(paramInt);
-    AppMethodBeat.o(117515);
-    return str;
-  }
-  
-  public final String optString(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(117516);
-    paramString = this.eGD.optString(paramInt, paramString);
-    AppMethodBeat.o(117516);
+    AppMethodBeat.i(150061);
+    paramString = paramString.replaceAll("\\|", "%7C");
+    AppMethodBeat.o(150061);
     return paramString;
   }
   
-  @TargetApi(19)
-  public final Object remove(int paramInt)
+  private static boolean ER(String paramString)
   {
-    AppMethodBeat.i(117501);
-    Object localObject = this.eGD.remove(paramInt);
-    if ((localObject instanceof JSONObject))
+    AppMethodBeat.i(150067);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.matches("^[\\d]+$")))
     {
-      localObject = new d((JSONObject)localObject);
-      AppMethodBeat.o(117501);
-      return localObject;
+      AppMethodBeat.o(150067);
+      return true;
     }
-    if ((localObject instanceof JSONArray))
-    {
-      localObject = new b((JSONArray)localObject);
-      AppMethodBeat.o(117501);
-      return localObject;
-    }
-    AppMethodBeat.o(117501);
-    return localObject;
+    AppMethodBeat.o(150067);
+    return false;
   }
   
-  public final a s(int paramInt, long paramLong)
+  private a a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(117496);
+    AppMethodBeat.i(150073);
+    a locala = new a();
+    locala.mxx = paramInt1;
+    locala.type = paramInt2;
+    locala.value = paramString1;
+    locala.hFb = paramString2;
+    AppMethodBeat.o(150073);
+    return locala;
+  }
+  
+  private a a(at.a parama, int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(150074);
+    a locala = new a();
+    locala.mxy = parama;
+    locala.type = paramInt;
+    locala.value = paramString1;
+    locala.hFb = paramString2;
+    AppMethodBeat.o(150074);
+    return locala;
+  }
+  
+  private void a(a parama)
+  {
+    AppMethodBeat.i(150063);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(parama.type);
+    localStringBuffer.append("|");
+    localStringBuffer.append(EQ(parama.value));
+    localStringBuffer.append("|");
+    localStringBuffer.append(EQ(parama.hFb));
+    if (parama.mxy != null)
+    {
+      this.mxG.set(parama.mxy, localStringBuffer.toString());
+      AppMethodBeat.o(150063);
+      return;
+    }
+    this.mxG.B(parama.mxx, localStringBuffer.toString());
+    AppMethodBeat.o(150063);
+  }
+  
+  private a c(at.a parama)
+  {
+    AppMethodBeat.i(150066);
+    String str = (String)this.mxG.get(parama, null);
+    if (str == null)
+    {
+      AppMethodBeat.o(150066);
+      return null;
+    }
+    String[] arrayOfString = str.split("\\|");
+    if (arrayOfString.length != 3)
+    {
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
+      AppMethodBeat.o(150066);
+      return null;
+    }
     try
     {
-      this.eGD.put(paramInt, paramLong);
-      AppMethodBeat.o(117496);
-      return this;
+      parama = a(parama, Integer.valueOf(arrayOfString[0]).intValue(), unescape(arrayOfString[1]), unescape(arrayOfString[2]));
+      AppMethodBeat.o(150066);
+      return parama;
     }
-    catch (JSONException localJSONException)
+    catch (Exception parama)
     {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117496);
-      throw localg;
+      Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
+      AppMethodBeat.o(150066);
+    }
+    return null;
+  }
+  
+  private a c(at.a parama, int paramInt)
+  {
+    AppMethodBeat.i(150076);
+    a locala2 = f(parama);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a(parama, paramInt, "", "");
+      this.mxC.put(parama, locala1);
+      a(locala1);
+    }
+    AppMethodBeat.o(150076);
+    return locala1;
+  }
+  
+  private b d(at.a parama)
+  {
+    AppMethodBeat.i(150069);
+    String str = (String)this.mxG.get(parama, null);
+    if (str == null)
+    {
+      parama = e(parama);
+      AppMethodBeat.o(150069);
+      return parama;
+    }
+    String[] arrayOfString = str.split("\\|");
+    if (arrayOfString.length % 2 != 0)
+    {
+      Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { str });
+      AppMethodBeat.o(150069);
+      return null;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        parama = e(parama);
+        i = 0;
+        if (i < arrayOfString.length) {
+          if (ER(arrayOfString[i])) {
+            parama.mxJ.put(Integer.valueOf(arrayOfString[i]).intValue(), unescape(arrayOfString[(i + 1)]));
+          } else {
+            parama.mxK.put(arrayOfString[i], unescape(arrayOfString[(i + 1)]));
+          }
+        }
+      }
+      catch (Exception parama)
+      {
+        Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+        Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { str });
+        AppMethodBeat.o(150069);
+        return null;
+      }
+      AppMethodBeat.o(150069);
+      return parama;
+      i += 2;
     }
   }
   
-  public final String toString()
+  private a dY(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(117521);
-    String str = this.eGD.toString();
-    AppMethodBeat.o(117521);
+    AppMethodBeat.i(150075);
+    a locala2 = sg(paramInt1);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = a(paramInt1, paramInt2, "", "");
+      this.mxB.put(paramInt1, locala1);
+      a(locala1);
+    }
+    AppMethodBeat.o(150075);
+    return locala1;
+  }
+  
+  private b e(at.a parama)
+  {
+    AppMethodBeat.i(150072);
+    b localb = new b();
+    localb.mxA = parama;
+    AppMethodBeat.o(150072);
+    return localb;
+  }
+  
+  private b g(at.a parama)
+  {
+    AppMethodBeat.i(150080);
+    b localb2 = (b)this.mxE.get(parama);
+    b localb1 = localb2;
+    if (localb2 == null)
+    {
+      localb1 = d(parama);
+      if (localb1 == null)
+      {
+        Log.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
+        AppMethodBeat.o(150080);
+        return null;
+      }
+      this.mxE.put(parama, localb1);
+    }
+    AppMethodBeat.o(150080);
+    return localb1;
+  }
+  
+  private a sd(int paramInt)
+  {
+    AppMethodBeat.i(150065);
+    String str = (String)this.mxG.d(paramInt, null);
+    if (str == null)
+    {
+      AppMethodBeat.o(150065);
+      return null;
+    }
+    Object localObject = str.split("\\|");
+    if (localObject.length != 3)
+    {
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
+      AppMethodBeat.o(150065);
+      return null;
+    }
+    try
+    {
+      localObject = a(paramInt, Integer.valueOf(localObject[0]).intValue(), unescape(localObject[1]), unescape(localObject[2]));
+      AppMethodBeat.o(150065);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
+      AppMethodBeat.o(150065);
+    }
+    return null;
+  }
+  
+  private b se(int paramInt)
+  {
+    AppMethodBeat.i(150068);
+    Object localObject = (String)this.mxG.d(paramInt, null);
+    if (localObject == null)
+    {
+      localObject = sf(paramInt);
+      AppMethodBeat.o(150068);
+      return localObject;
+    }
+    String[] arrayOfString = ((String)localObject).split("\\|");
+    if (arrayOfString.length % 2 != 0)
+    {
+      Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { localObject });
+      AppMethodBeat.o(150068);
+      return null;
+    }
+    for (;;)
+    {
+      b localb;
+      try
+      {
+        localb = sf(paramInt);
+        paramInt = 0;
+        if (paramInt < arrayOfString.length) {
+          if (ER(arrayOfString[paramInt])) {
+            localb.mxJ.put(Integer.valueOf(arrayOfString[paramInt]).intValue(), unescape(arrayOfString[(paramInt + 1)]));
+          } else {
+            localb.mxK.put(arrayOfString[paramInt], unescape(arrayOfString[(paramInt + 1)]));
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+        Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { localObject });
+        AppMethodBeat.o(150068);
+        return null;
+      }
+      AppMethodBeat.o(150068);
+      return localb;
+      paramInt += 2;
+    }
+  }
+  
+  private static String unescape(String paramString)
+  {
+    AppMethodBeat.i(150062);
+    paramString = paramString.replaceAll("%7C", "|");
+    AppMethodBeat.o(150062);
+    return paramString;
+  }
+  
+  public final a a(at.a parama1, at.a parama2, int paramInt)
+  {
+    AppMethodBeat.i(150084);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherKey %s, type %d", new Object[] { parama1, parama2, Integer.valueOf(paramInt) });
+    a locala = f(parama1);
+    if (locala == null)
+    {
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
+      AppMethodBeat.o(150084);
+      return null;
+    }
+    if ((locala.type & paramInt) == 0)
+    {
+      Log.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
+      AppMethodBeat.o(150084);
+      return null;
+    }
+    parama2 = g(parama2);
+    if (parama2 != null)
+    {
+      String str = (String)parama2.mxK.get(parama1.name());
+      if ((str != null) && (str.equals(locala.hFb)))
+      {
+        AppMethodBeat.o(150084);
+        return null;
+      }
+      if (str == null)
+      {
+        str = aYm();
+        parama2.mxK.put(parama1.name(), str);
+        a(parama2);
+      }
+      AppMethodBeat.o(150084);
+      return locala;
+    }
+    Log.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
+    AppMethodBeat.o(150084);
+    return null;
+  }
+  
+  final void a(b paramb)
+  {
+    int m = 0;
+    AppMethodBeat.i(150064);
+    StringBuffer localStringBuffer = new StringBuffer();
+    Object localObject1 = paramb.mxK.entrySet().iterator();
+    int i = 0;
+    int j;
+    int k;
+    for (;;)
+    {
+      j = i;
+      k = m;
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      String str = (String)((Map.Entry)localObject2).getKey();
+      localObject2 = (String)((Map.Entry)localObject2).getValue();
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      localStringBuffer.append(str);
+      localStringBuffer.append("|");
+      localStringBuffer.append(EQ((String)localObject2));
+      i += 1;
+    }
+    while (k < paramb.mxJ.size())
+    {
+      i = paramb.mxJ.keyAt(k);
+      localObject1 = (String)paramb.mxJ.get(i);
+      if (j != 0) {
+        localStringBuffer.append("|");
+      }
+      localStringBuffer.append(i);
+      localStringBuffer.append("|");
+      localStringBuffer.append(EQ((String)localObject1));
+      j += 1;
+      k += 1;
+    }
+    if (paramb.mxA != null)
+    {
+      this.mxG.set(paramb.mxA, localStringBuffer.toString());
+      AppMethodBeat.o(150064);
+      return;
+    }
+    this.mxG.B(paramb.mxI, localStringBuffer.toString());
+    AppMethodBeat.o(150064);
+  }
+  
+  final String aYm()
+  {
+    AppMethodBeat.i(150070);
+    String str = String.format("%d%04d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.mxF.nextInt(Math.abs(this.mxF.nextInt(2147483647))) % 10000) });
+    AppMethodBeat.o(150070);
     return str;
   }
   
-  public final String toString(int paramInt)
+  public final a ac(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(117522);
-    try
+    AppMethodBeat.i(150083);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceId %d, watcherId %d, type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    a locala = sg(paramInt1);
+    if (locala == null)
     {
-      String str = this.eGD.toString(paramInt);
-      AppMethodBeat.o(117522);
-      return str;
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
+      AppMethodBeat.o(150083);
+      return null;
     }
-    catch (JSONException localJSONException)
+    if ((locala.type & paramInt3) == 0)
     {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117522);
-      throw localg;
+      Log.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
+      AppMethodBeat.o(150083);
+      return null;
     }
+    b localb = sh(paramInt2);
+    if (localb != null)
+    {
+      String str = (String)localb.mxJ.get(paramInt1);
+      if ((str != null) && (str.equals(locala.hFb)))
+      {
+        AppMethodBeat.o(150083);
+        return null;
+      }
+      if (str == null)
+      {
+        str = aYm();
+        localb.mxJ.put(paramInt1, str);
+        a(localb);
+      }
+      AppMethodBeat.o(150083);
+      return locala;
+    }
+    Log.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
+    AppMethodBeat.o(150083);
+    return null;
   }
   
-  public final a z(int paramInt, boolean paramBoolean)
+  public final void b(at.a parama, int paramInt, String paramString)
   {
-    AppMethodBeat.i(117493);
-    try
+    AppMethodBeat.i(150082);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceKey %s, type %d, value %s", new Object[] { parama, Integer.valueOf(paramInt), paramString });
+    parama = c(parama, paramInt);
+    parama.value = paramString;
+    parama.type = paramInt;
+    parama.hFb = aYm();
+    a(parama);
+    AppMethodBeat.o(150082);
+  }
+  
+  public final void d(at.a parama1, at.a parama2)
+  {
+    AppMethodBeat.i(150085);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %s, watcherKey %s", new Object[] { parama1, parama2 });
+    a locala = f(parama1);
+    if (locala == null)
     {
-      this.eGD.put(paramInt, paramBoolean);
-      AppMethodBeat.o(117493);
-      return this;
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, dataSource == null");
+      AppMethodBeat.o(150085);
+      return;
     }
-    catch (JSONException localJSONException)
+    b localb2 = g(parama2);
+    b localb1 = localb2;
+    if (localb2 == null)
     {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(117493);
-      throw localg;
+      Log.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
+      localb1 = e(parama2);
+      this.mxE.put(parama2, localb1);
+    }
+    localb1.mxK.put(parama1.name(), locala.hFb);
+    a(localb1);
+    AppMethodBeat.o(150085);
+  }
+  
+  public final a f(at.a parama)
+  {
+    AppMethodBeat.i(150078);
+    a locala2 = (a)this.mxC.get(parama);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala2 = c(parama);
+      locala1 = locala2;
+      if (locala2 != null)
+      {
+        this.mxC.put(parama, locala2);
+        locala1 = locala2;
+      }
+    }
+    AppMethodBeat.o(150078);
+    return locala1;
+  }
+  
+  public final void h(int paramInt1, int paramInt2, String paramString)
+  {
+    AppMethodBeat.i(150081);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceId %d, type %d, value %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    a locala = dY(paramInt1, paramInt2);
+    locala.value = paramString;
+    locala.type = paramInt2;
+    locala.hFb = aYm();
+    a(locala);
+    AppMethodBeat.o(150081);
+  }
+  
+  final b sf(int paramInt)
+  {
+    AppMethodBeat.i(150071);
+    b localb = new b();
+    localb.mxI = paramInt;
+    AppMethodBeat.o(150071);
+    return localb;
+  }
+  
+  public final a sg(int paramInt)
+  {
+    AppMethodBeat.i(150077);
+    a locala2 = (a)this.mxB.get(paramInt);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala2 = sd(paramInt);
+      locala1 = locala2;
+      if (locala2 != null)
+      {
+        this.mxB.put(paramInt, locala2);
+        locala1 = locala2;
+      }
+    }
+    AppMethodBeat.o(150077);
+    return locala1;
+  }
+  
+  final b sh(int paramInt)
+  {
+    AppMethodBeat.i(150079);
+    b localb2 = (b)this.mxD.get(paramInt);
+    b localb1 = localb2;
+    if (localb2 == null)
+    {
+      localb1 = se(paramInt);
+      if (localb1 == null)
+      {
+        Log.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
+        AppMethodBeat.o(150079);
+        return null;
+      }
+      this.mxD.put(paramInt, localb1);
+    }
+    AppMethodBeat.o(150079);
+    return localb1;
+  }
+  
+  public final class a
+  {
+    String hFb;
+    int mxx;
+    at.a mxy;
+    int type;
+    public String value;
+    
+    public a() {}
+  }
+  
+  public final class b
+  {
+    at.a mxA;
+    int mxI;
+    SparseArray<String> mxJ;
+    HashMap<String, String> mxK;
+    
+    public b()
+    {
+      AppMethodBeat.i(150059);
+      this.mxJ = new SparseArray();
+      this.mxK = new HashMap();
+      AppMethodBeat.o(150059);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.aa.b
  * JD-Core Version:    0.7.0.1
  */

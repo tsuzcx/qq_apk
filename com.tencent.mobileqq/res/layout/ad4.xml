@@ -62,13 +62,23 @@
                     <View android:id="@id/a9a" android:layout_marginLeft="12.0dip" style="@style/sr" />
                     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="46.0dip">
                         <TextView android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/e3e" style="@style/tl" />
-                        <com.tenpay.sdk.view.ClearableEditText android:textSize="17.0sp" android:id="@id/a9l" android:layout_width="fill_parent" android:hint="@string/e3d" android:singleLine="true" android:maxLength="18" style="@style/to" />
+                        <com.tenpay.sdk.view.ClearableEditText android:id="@id/a9l" android:layout_width="fill_parent" android:hint="@string/e3d" android:singleLine="true" android:maxLength="18" style="@style/to" />
                         <com.tenpay.sdk.view.ClearableEditText android:id="@id/a9p" android:visibility="gone" android:layout_width="fill_parent" android:hint="@string/e3d" android:singleLine="true" style="@style/to" />
                     </LinearLayout>
-                    <RelativeLayout android:orientation="horizontal" android:id="@id/aq8" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <RelativeLayout android:orientation="horizontal" android:id="@id/mso" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip">
                         <View android:layout_marginLeft="12.0dip" android:layout_alignParentTop="true" style="@style/sr" />
-                        <TextView android:id="@id/aq9" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/e3b" android:layout_centerVertical="true" style="@style/tl" />
+                        <TextView android:id="@id/msp" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/xu5" android:layout_centerVertical="true" style="@style/tl" />
+                        <TextView android:textColor="@color/tr" android:id="@id/msn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/q31" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/msp" android:layout_centerVertical="true" style="@style/to" />
+                    </RelativeLayout>
+                    <RelativeLayout android:orientation="horizontal" android:id="@id/aq8" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip">
+                        <View android:layout_marginLeft="12.0dip" android:layout_alignParentTop="true" style="@style/sr" />
+                        <TextView android:id="@id/aq9" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/xu6" android:layout_centerVertical="true" style="@style/tl" />
                         <TextView android:textColor="@color/tr" android:id="@id/aq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/q31" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/aq9" android:layout_centerVertical="true" style="@style/to" />
+                    </RelativeLayout>
+                    <RelativeLayout android:orientation="horizontal" android:id="@id/msm" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                        <View android:layout_marginLeft="12.0dip" android:layout_alignParentTop="true" style="@style/sr" />
+                        <TextView android:id="@id/oyb" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/xu1" android:layout_centerVertical="true" style="@style/tl" />
+                        <TextView android:textColor="@color/tr" android:id="@id/qnh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/xu3" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/oyb" android:layout_centerVertical="true" style="@style/to" />
                     </RelativeLayout>
                 </LinearLayout>
                 <View android:id="@id/a_3" android:layout_marginLeft="12.0dip" style="@style/sr" />
@@ -78,10 +88,10 @@
                     <Button android:id="@id/a_2" android:background="@drawable/dyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" />
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:id="@id/ggx" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
+            <LinearLayout android:id="@id/ggx" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip">
                 <CheckBox android:id="@id/a9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" android:button="@drawable/cm_blue_check_bg" />
                 <TextView android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e13" style="@style/tk" />
-                <TextView android:textSize="14.0sp" android:id="@id/jdo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ecf" style="@style/tb" />
+                <TextView android:textSize="14.0sp" android:id="@id/jdo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ecf" />
             </LinearLayout>
             <TextView android:id="@id/ghd" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/e1w" android:singleLine="false" style="@style/tk" />
         </LinearLayout>

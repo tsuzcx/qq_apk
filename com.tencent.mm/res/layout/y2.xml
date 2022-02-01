@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a2_" android:textColor="@color/a6q" android:id="@id/bpc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a29" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-    </RelativeLayout>
-</merge>
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:padding="10.0dip" style="@style/lj">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/buc" style="@style/n_" />
+        <EditText android:id="@id/bqe" style="@style/n9" />
+    </LinearLayout>
+</LinearLayout>

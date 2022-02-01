@@ -9,6 +9,7 @@ import com.tencent.mobileqq.highway.netprobe.ProbeChain;
 import com.tencent.mobileqq.highway.netprobe.ProbeItem;
 import com.tencent.mobileqq.highway.netprobe.ProbeItem.ProbeResult;
 import com.tencent.mobileqq.highway.netprobe.ProbeResponse;
+import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.DataHole;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.QueryHoleRsp;
@@ -25,6 +26,7 @@ import com.tencent.mobileqq.highway.utils.TransactionReport;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,11 +53,11 @@ public class Transaction
   private static final int MAX_QUERY_HOLE_RSP_SIZE = 5;
   public static final long waitForSessionkeyTimeout = 30000L;
   public byte[] MD5;
-  public Tracker TRACKER;
+  public Tracker TRACKER = null;
   private AtomicBoolean TimerStarted = new AtomicBoolean(false);
-  public volatile boolean bQueryForFIN;
+  public volatile boolean bQueryForFIN = false;
   public byte[] bitmap;
-  public int cacheIp;
+  public CacheIpInfo cacheIpInfo;
   ITransactionCallback cb;
   public ITransCallbackForReport cbForReport;
   public byte[] extendInfo;
@@ -67,7 +69,7 @@ public class Transaction
   public CSDataHighwayHead.LoginSigHead loginSigHead;
   public byte[] mBuExtendinfo;
   public int mBuzCmdId;
-  public int mCurrentQueryFinishCount;
+  public int mCurrentQueryFinishCount = 0;
   public int mErrorCode = -1;
   private AtomicBoolean mIsPause = new AtomicBoolean(false);
   public String mMD5Str;
@@ -81,123 +83,48 @@ public class Transaction
   public String peerUin;
   public int preSendDots;
   private RandomAccessFile raf;
-  public int reUploadHwSeq;
-  public boolean reUploadTransaction;
+  public int reUploadHwSeq = 0;
+  public boolean reUploadTransaction = false;
   private ConcurrentHashMap<Integer, HwRequest> sentRequestsRetry = new ConcurrentHashMap();
   public long startTime;
   public byte[] ticket;
-  public int totalLength;
+  public int totalLength = 0;
   int transationId = -1;
-  private int transferedSize;
-  public int transferedSizeBDH;
+  private int transferedSize = 0;
+  public int transferedSizeBDH = 0;
   
-  /* Error */
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, ITransactionCallback paramITransactionCallback, byte[] paramArrayOfByte2, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: iload_2
-    //   3: aload_3
-    //   4: iload 4
-    //   6: aconst_null
-    //   7: aload 5
-    //   9: aload 6
-    //   11: invokespecial 86	com/tencent/mobileqq/highway/transaction/Transaction:<init>	(Ljava/lang/String;ILjava/lang/String;I[B[BLcom/tencent/mobileqq/highway/api/ITransactionCallback;)V
-    //   14: aload_0
-    //   15: aload 7
-    //   17: putfield 88	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
-    //   20: aload_0
-    //   21: iload 8
-    //   23: putfield 90	com/tencent/mobileqq/highway/transaction/Transaction:needCryptExtendInfo	Z
-    //   26: ldc 92
-    //   28: monitorenter
-    //   29: aload_1
-    //   30: invokestatic 96	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   33: invokevirtual 100	com/tencent/mobileqq/highway/openup/SessionInfo:getHttpconn_sig_session	()[B
-    //   36: astore_3
-    //   37: aload_3
-    //   38: ifnull +83 -> 121
-    //   41: aload_3
-    //   42: arraylength
-    //   43: ifeq +78 -> 121
-    //   46: aload_3
-    //   47: arraylength
-    //   48: istore_2
-    //   49: aload_0
-    //   50: iload_2
-    //   51: newarray byte
-    //   53: putfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
-    //   56: aload_3
-    //   57: iconst_0
-    //   58: aload_0
-    //   59: getfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
-    //   62: iconst_0
-    //   63: iload_2
-    //   64: invokestatic 108	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   67: iload 8
-    //   69: ifeq +52 -> 121
-    //   72: aload_1
-    //   73: invokestatic 96	com/tencent/mobileqq/highway/openup/SessionInfo:getInstance	(Ljava/lang/String;)Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   76: invokevirtual 111	com/tencent/mobileqq/highway/openup/SessionInfo:getSessionKey	()[B
-    //   79: astore_1
-    //   80: aload_1
-    //   81: ifnull +44 -> 125
-    //   84: aload_1
-    //   85: arraylength
-    //   86: ifeq +39 -> 125
-    //   89: aload_1
-    //   90: arraylength
-    //   91: istore_2
-    //   92: iload_2
-    //   93: newarray byte
-    //   95: astore_3
-    //   96: aload_1
-    //   97: iconst_0
-    //   98: aload_3
-    //   99: iconst_0
-    //   100: iload_2
-    //   101: invokestatic 108	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   104: aload_0
-    //   105: new 113	com/tencent/qphone/base/util/Cryptor
-    //   108: dup
-    //   109: invokespecial 116	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   112: aload 7
-    //   114: aload_3
-    //   115: invokevirtual 120	com/tencent/qphone/base/util/Cryptor:encrypt	([B[B)[B
-    //   118: putfield 88	com/tencent/mobileqq/highway/transaction/Transaction:extendInfo	[B
-    //   121: ldc 92
-    //   123: monitorexit
-    //   124: return
-    //   125: aload_0
-    //   126: aconst_null
-    //   127: putfield 102	com/tencent/mobileqq/highway/transaction/Transaction:ticket	[B
-    //   130: goto -9 -> 121
-    //   133: astore_1
-    //   134: ldc 92
-    //   136: monitorexit
-    //   137: aload_1
-    //   138: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	139	0	this	Transaction
-    //   0	139	1	paramString1	String
-    //   0	139	2	paramInt1	int
-    //   0	139	3	paramString2	String
-    //   0	139	4	paramInt2	int
-    //   0	139	5	paramArrayOfByte1	byte[]
-    //   0	139	6	paramITransactionCallback	ITransactionCallback
-    //   0	139	7	paramArrayOfByte2	byte[]
-    //   0	139	8	paramBoolean	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   29	37	133	finally
-    //   41	67	133	finally
-    //   72	80	133	finally
-    //   84	121	133	finally
-    //   121	124	133	finally
-    //   125	130	133	finally
-    //   134	137	133	finally
+    this(paramString1, paramInt1, paramString2, paramInt2, null, paramArrayOfByte1, paramITransactionCallback);
+    this.extendInfo = paramArrayOfByte2;
+    this.needCryptExtendInfo = paramBoolean;
+    try
+    {
+      paramString2 = SessionInfo.getInstance(paramString1).getHttpconn_sig_session();
+      if ((paramString2 != null) && (paramString2.length != 0))
+      {
+        paramInt1 = paramString2.length;
+        this.ticket = new byte[paramInt1];
+        System.arraycopy(paramString2, 0, this.ticket, 0, paramInt1);
+        if (paramBoolean)
+        {
+          paramString1 = SessionInfo.getInstance(paramString1).getSessionKey();
+          if ((paramString1 != null) && (paramString1.length != 0))
+          {
+            paramInt1 = paramString1.length;
+            paramString2 = new byte[paramInt1];
+            System.arraycopy(paramString1, 0, paramString2, 0, paramInt1);
+            this.extendInfo = new Cryptor().encrypt(paramArrayOfByte2, paramString2);
+          }
+          else
+          {
+            this.ticket = null;
+          }
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public Transaction(String paramString1, int paramInt1, String paramString2, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, ITransactionCallback paramITransactionCallback)
@@ -236,7 +163,13 @@ public class Transaction
     Transaction.TransTimeOutMonitor localTransTimeOutMonitor = this.mTimeOutMonitor;
     if (localTransTimeOutMonitor.needExtendTimeExceedLimit())
     {
-      BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " ExtendTimeExceedLimit.");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("B_ID:");
+      localStringBuilder.append(this.mBuzCmdId);
+      localStringBuilder.append("\tT_ID:");
+      localStringBuilder.append(getTransationId());
+      localStringBuilder.append(" ExtendTimeExceedLimit.");
+      BdhLogUtil.LogEvent("T", localStringBuilder.toString());
       localTransTimeOutMonitor.isKilled = true;
       if (this.mTransWorker != null)
       {
@@ -248,10 +181,18 @@ public class Transaction
   
   private void finishAndDetachFromWorker(boolean paramBoolean)
   {
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "Finish. IsSuccess:" + paramBoolean);
-    if (this.mTransWorker != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("B_ID:");
+    ((StringBuilder)localObject).append(this.mBuzCmdId);
+    ((StringBuilder)localObject).append("\tT_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append("Finish. IsSuccess:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
+    localObject = this.mTransWorker;
+    if (localObject != null)
     {
-      this.mTransWorker.onTransactionFinish(paramBoolean, this);
+      ((TransactionWorker)localObject).onTransactionFinish(paramBoolean, this);
       this.mTransWorker = null;
     }
     try
@@ -260,12 +201,19 @@ public class Transaction
       {
         this.raf.close();
         this.raf = null;
+        return;
       }
-      return;
     }
     catch (IOException localIOException)
     {
-      BdhLogUtil.LogException("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "Finish Error: IsSuccess:" + paramBoolean, localIOException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("B_ID:");
+      localStringBuilder.append(this.mBuzCmdId);
+      localStringBuilder.append("\tT_ID:");
+      localStringBuilder.append(getTransationId());
+      localStringBuilder.append("Finish Error: IsSuccess:");
+      localStringBuilder.append(paramBoolean);
+      BdhLogUtil.LogException("T", localStringBuilder.toString(), localIOException);
     }
   }
   
@@ -276,13 +224,21 @@ public class Transaction
   
   private void stopTimeoutTimer()
   {
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " StopTimeoutTime.");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("B_ID:");
+    ((StringBuilder)localObject).append(this.mBuzCmdId);
+    ((StringBuilder)localObject).append("\tT_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append(" StopTimeoutTime.");
+    BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
     this.TimerStarted.set(false);
-    if (this.mTimeOutMonitor != null) {
-      this.mTimeOutMonitor.isKilled = true;
+    localObject = this.mTimeOutMonitor;
+    if (localObject != null) {
+      ((Transaction.TransTimeOutMonitor)localObject).isKilled = true;
     }
-    if (this.mTransWorker != null) {
-      this.mTransWorker.stopTransRunnable(this.mTimeOutMonitor);
+    localObject = this.mTransWorker;
+    if (localObject != null) {
+      ((TransactionWorker)localObject).stopTransRunnable(this.mTimeOutMonitor);
     }
   }
   
@@ -292,37 +248,47 @@ public class Transaction
     this.mTransReport.dataFlow = this.mTransWorker.getReportDataFlow();
     this.mTransReport.ipAddr = this.mTransWorker.getLastUsedIp();
     this.mTransReport.port = this.mTransWorker.getLastUsedPort();
-    this.mTransReport.mTransferedSize = this.transferedSize;
-    return this.mTransReport.getReportInfo();
+    TransReport localTransReport = this.mTransReport;
+    localTransReport.mTransferedSize = this.transferedSize;
+    return localTransReport.getReportInfo();
   }
   
   public void cancelTransaction()
   {
-    if (!this.isFinish.compareAndSet(false, true)) {}
-    while (this.TRACKER == null) {
+    if (!this.isFinish.compareAndSet(false, true)) {
       return;
     }
-    this.TRACKER.logStep("CANCL", "");
+    Tracker localTracker = this.TRACKER;
+    if (localTracker == null) {
+      return;
+    }
+    localTracker.logStep("CANCL", "");
     stopTimeoutTimer();
     finishAndDetachFromWorker(false);
   }
   
   public void continueTrans()
   {
-    QLog.d("BDH_LOG", 1, "T \tT_ID:" + getTransationId() + "\tcontinueTrans.");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("T \tT_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append("\tcontinueTrans.");
+    QLog.d("BDH_LOG", 1, ((StringBuilder)localObject).toString());
     if (this.isFinish.get()) {
       return;
     }
-    int j = this.totalLength / 8192;
+    int k = this.totalLength;
+    int j = k / 8192;
     int i = j;
-    if (this.totalLength % 8192 != 0) {
+    if (k % 8192 != 0) {
       i = j + 1;
     }
     j = this.preSendDots;
     while (j < i)
     {
-      if (this.bitmap[j] == 4) {
-        this.bitmap[j] = 0;
+      localObject = this.bitmap;
+      if (localObject[j] == 4) {
+        localObject[j] = 0;
       }
       j += 1;
     }
@@ -331,63 +297,66 @@ public class Transaction
   
   public int getBuzType()
   {
-    if (this.mNeedSegmentLikeVideo) {}
-    while ((this.mBuzCmdId == 12) || (this.mBuzCmdId == 25)) {
+    if (this.mNeedSegmentLikeVideo) {
       return 1;
     }
-    if ((this.mBuzCmdId == 1) || (this.mBuzCmdId == 4)) {
+    int i = this.mBuzCmdId;
+    if (i != 12)
+    {
+      if (i == 25) {
+        return 1;
+      }
+      if ((i != 1) && (i == 4)) {}
       return 0;
     }
-    return 0;
+    return 1;
   }
   
   public byte[] getData(DataTransInfo paramDataTransInfo)
   {
-    int j = 0;
-    Object localObject = null;
-    for (;;)
+    try
     {
-      int i;
-      int k;
+      boolean bool = this.isFinish.get();
+      int j = 0;
+      if (bool)
+      {
+        paramDataTransInfo.errno = 0;
+        return null;
+      }
       try
       {
-        if (this.isFinish.get())
+        int i = paramDataTransInfo.length;
+        byte[] arrayOfByte = new byte[paramDataTransInfo.length];
+        this.raf.seek(paramDataTransInfo.offset);
+        while (j < paramDataTransInfo.length)
         {
-          paramDataTransInfo.errno = 0;
-          paramDataTransInfo = localObject;
-          return paramDataTransInfo;
-        }
-        try
-        {
-          i = paramDataTransInfo.length;
-          byte[] arrayOfByte = new byte[paramDataTransInfo.length];
-          this.raf.seek(paramDataTransInfo.offset);
-          if (j >= paramDataTransInfo.length) {
-            break label176;
+          int k = this.raf.read(arrayOfByte, j, i);
+          if (k == -1)
+          {
+            paramDataTransInfo.errno = 9303;
+            return null;
           }
-          k = this.raf.read(arrayOfByte, j, i);
-          if (k != -1) {
-            break label163;
-          }
-          paramDataTransInfo.errno = 9303;
-          paramDataTransInfo = localObject;
+          j += k;
+          i -= k;
         }
-        catch (IOException localIOException)
-        {
-          BdhLogUtil.LogException("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "GetData Error.", localIOException);
-          paramDataTransInfo.errno = BdhUtils.analysisIOProblem(localIOException);
-          paramDataTransInfo = localObject;
-        }
-        continue;
-        j += k;
+        return arrayOfByte;
       }
-      finally {}
-      label163:
-      i -= k;
-      continue;
-      label176:
-      paramDataTransInfo = localIOException;
+      catch (IOException localIOException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("B_ID:");
+        localStringBuilder.append(this.mBuzCmdId);
+        localStringBuilder.append("\tT_ID:");
+        localStringBuilder.append(getTransationId());
+        localStringBuilder.append("GetData Error.");
+        BdhLogUtil.LogException("T", localStringBuilder.toString(), localIOException);
+        paramDataTransInfo.errno = BdhUtils.analysisIOProblem(localIOException);
+        return null;
+      }
+      throw paramDataTransInfo;
     }
+    finally {}
+    for (;;) {}
   }
   
   public ConcurrentHashMap<Integer, HwRequest> getRetryRequests()
@@ -402,142 +371,151 @@ public class Transaction
   
   int initSegmentList(TransactionWorker paramTransactionWorker, boolean paramBoolean)
   {
-    int i = 9042;
-    QLog.d("BDH_LOG", 1, "T T_ID:" + getTransationId() + "\tinitSegmentList : \tisOpenUpEnable : " + this.isOpenUpEnable);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("T T_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append("\tinitSegmentList : \tisOpenUpEnable : ");
+    ((StringBuilder)localObject).append(this.isOpenUpEnable);
+    QLog.d("BDH_LOG", 1, ((StringBuilder)localObject).toString());
     this.mTransReport.mIsPreConnExist = paramBoolean;
-    File localFile = new File(this.filePath);
+    localObject = new File(this.filePath);
     this.mTransWorker = paramTransactionWorker;
-    if (localFile.exists())
+    if (((File)localObject).exists())
     {
-      if (!localFile.canRead()) {
-        i = 9070;
+      if (!((File)localObject).canRead()) {
+        return 9070;
       }
-    }
-    else {
-      return i;
-    }
-    this.totalLength = ((int)localFile.length());
-    if (this.totalLength <= 0) {
-      return 9071;
+      this.totalLength = ((int)((File)localObject).length());
+      if (this.totalLength <= 0) {
+        return 9071;
+      }
     }
     try
     {
-      this.raf = new RandomAccessFile(localFile, "r");
-      int j = this.totalLength / 8192;
-      i = j;
-      if (this.totalLength % 8192 != 0) {
+      this.raf = new RandomAccessFile((File)localObject, "r");
+      int k = this.totalLength;
+      int j = k / 8192;
+      int i = j;
+      if (k % 8192 != 0) {
         i = j + 1;
       }
-      int k = this.offset / 8192;
+      k = this.offset / 8192;
       this.bitmap = new byte[i];
       if (this.isOpenUpEnable)
       {
         j = 0;
-        if (j < i)
+        while (j < i)
         {
           if (j < this.preSendDots) {
             this.bitmap[j] = 0;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
+          } else {
             this.bitmap[j] = 4;
           }
+          j += 1;
         }
       }
-      else
+      j = 0;
+      while (j < i)
       {
-        j = 0;
-        if (j < i)
-        {
-          if (j < k) {
-            this.bitmap[j] = 3;
-          }
-          for (;;)
-          {
-            j += 1;
-            break;
-            this.bitmap[j] = 0;
-          }
+        if (j < k) {
+          this.bitmap[j] = 3;
+        } else {
+          this.bitmap[j] = 0;
         }
+        j += 1;
       }
       this.TRACKER = new Tracker(this.transationId, this.totalLength);
       this.mTimeOutMonitor = new Transaction.TransTimeOutMonitor(this);
-      this.TRACKER.logStep("INITI", "DotsNum:" + i + " StartHole:" + k);
+      paramTransactionWorker = this.TRACKER;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DotsNum:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" StartHole:");
+      ((StringBuilder)localObject).append(k);
+      paramTransactionWorker.logStep("INITI", ((StringBuilder)localObject).toString());
       return 0;
     }
     catch (FileNotFoundException paramTransactionWorker) {}
+    return 9042;
     return 9042;
   }
   
   void needBDHReport(HashMap<String, String> paramHashMap)
   {
-    int j = 0;
-    if (this.mCurrentQueryFinishCount > 0) {
-      TransactionReport.reportQueryFinishQuality(this, this.mCurrentQueryFinishCount);
+    int i = this.mCurrentQueryFinishCount;
+    if (i > 0) {
+      TransactionReport.reportQueryFinishQuality(this, i);
     }
     paramHashMap = BaseConstants.BdhBusinessType.reportBDHExcept;
     int k = paramHashMap.length;
-    int i = 0;
-    if (i < k) {
-      if (paramHashMap[i] != this.mBuzCmdId) {}
-    }
-    for (i = j;; i = 1)
+    int j = 0;
+    i = 0;
+    while (i < k)
     {
-      if (i == 0) {}
-      while ((this.startTime == 0L) || (this.totalLength == 0) || (this.mTransWorker == null))
+      if (paramHashMap[i] == this.mBuzCmdId)
       {
+        i = j;
+        break label56;
+      }
+      i += 1;
+    }
+    i = 1;
+    label56:
+    if (i == 0) {
+      return;
+    }
+    if ((this.startTime != 0L) && (this.totalLength != 0))
+    {
+      if (this.mTransWorker == null) {
         return;
-        i += 1;
-        break;
       }
       TransactionReport.reportFunction("actBDHTask", this, null);
-      return;
     }
   }
   
   public void onProbeFinish(ProbeResponse paramProbeResponse)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder("");
-    Iterator localIterator1 = paramProbeResponse.mProbeItemResults.keySet().iterator();
-    while (localIterator1.hasNext())
+    StringBuilder localStringBuilder = new StringBuilder("");
+    Object localObject = paramProbeResponse.mProbeItemResults.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      paramProbeResponse = (ProbeItem)localIterator1.next();
+      paramProbeResponse = (ProbeItem)((Iterator)localObject).next();
       if ("ProbeChain".equals(paramProbeResponse.getProbeName()))
       {
-        Iterator localIterator2 = ((ProbeChain)paramProbeResponse).chain.iterator();
-        label68:
-        ProbeItem localProbeItem;
-        StringBuilder localStringBuilder2;
-        while (localIterator2.hasNext())
+        Iterator localIterator = ((ProbeChain)paramProbeResponse).chain.iterator();
+        while (localIterator.hasNext())
         {
-          localProbeItem = (ProbeItem)localIterator2.next();
+          ProbeItem localProbeItem = (ProbeItem)localIterator.next();
           if (localProbeItem.mResult != null)
           {
-            localStringBuilder2 = localStringBuilder1.append(localProbeItem.getProbeName()).append("[");
-            if (!localProbeItem.mResult.success) {
-              break label169;
+            localStringBuilder.append(localProbeItem.getProbeName());
+            localStringBuilder.append("[");
+            if (localProbeItem.mResult.success) {
+              paramProbeResponse = "1";
+            } else {
+              paramProbeResponse = "0";
             }
+            localStringBuilder.append(paramProbeResponse);
+            localStringBuilder.append("]");
+            localStringBuilder.append("[");
+            localStringBuilder.append(localProbeItem.mResult.errCode);
+            localStringBuilder.append("];");
           }
-        }
-        label169:
-        for (paramProbeResponse = "1";; paramProbeResponse = "0")
-        {
-          localStringBuilder2.append(paramProbeResponse).append("]").append("[").append(localProbeItem.mResult.errCode).append("];");
-          break label68;
-          break;
         }
       }
     }
     paramProbeResponse = (String)this.mReport.get("rep_bdhTrans");
     if (paramProbeResponse != null)
     {
-      paramProbeResponse = paramProbeResponse + localStringBuilder1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramProbeResponse);
+      ((StringBuilder)localObject).append(localStringBuilder);
+      paramProbeResponse = ((StringBuilder)localObject).toString();
       this.mReport.put("rep_bdhTrans", paramProbeResponse);
     }
-    if (this.cb != null) {
-      this.cb.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
+    paramProbeResponse = this.cb;
+    if (paramProbeResponse != null) {
+      paramProbeResponse.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
     }
   }
   
@@ -548,16 +526,33 @@ public class Transaction
     if (this.isFinish.get()) {
       return;
     }
-    BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " QueryDebug Query OnQuertHoleError : CopyBitmap:" + Arrays.toString(paramArrayOfByte) + " CurrentBitmap:" + Arrays.toString(this.bitmap));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("B_ID:");
+    ((StringBuilder)localObject).append(this.mBuzCmdId);
+    ((StringBuilder)localObject).append("\tT_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append(" QueryDebug Query OnQuertHoleError : CopyBitmap:");
+    ((StringBuilder)localObject).append(Arrays.toString(paramArrayOfByte));
+    ((StringBuilder)localObject).append(" CurrentBitmap:");
+    ((StringBuilder)localObject).append(Arrays.toString(this.bitmap));
+    BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
     int i = 0;
-    while (i < this.bitmap.length)
+    for (;;)
     {
-      if ((this.bitmap[i] != 3) && (paramArrayOfByte[i] == 2)) {
-        this.bitmap[i] = 0;
+      localObject = this.bitmap;
+      if (i >= localObject.length) {
+        break;
+      }
+      if ((localObject[i] != 3) && (paramArrayOfByte[i] == 2)) {
+        localObject[i] = 0;
       }
       i += 1;
     }
-    this.TRACKER.logStep("QUERY", "QueryHoleError Bitmap:" + Arrays.toString(this.bitmap));
+    paramArrayOfByte = this.TRACKER;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QueryHoleError Bitmap:");
+    ((StringBuilder)localObject).append(Arrays.toString(this.bitmap));
+    paramArrayOfByte.logStep("QUERY", ((StringBuilder)localObject).toString());
     this.mTransWorker.notifyToSend();
   }
   
@@ -566,7 +561,13 @@ public class Transaction
     if (this.isFinish.get()) {
       return;
     }
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + " \tT_ID:" + getTransationId() + "\tQueryHoleResp");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("B_ID:");
+    localStringBuilder.append(this.mBuzCmdId);
+    localStringBuilder.append(" \tT_ID:");
+    localStringBuilder.append(getTransationId());
+    localStringBuilder.append("\tQueryHoleResp");
+    BdhLogUtil.LogEvent("T", localStringBuilder.toString());
     int i = paramQueryHoleRsp.uint32_result.get();
     byte[] arrayOfByte = new byte[paramArrayOfByte.length];
     BdhUtils.copyData(arrayOfByte, 0, paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -575,43 +576,50 @@ public class Transaction
       onQuertHoleError(paramArrayOfByte);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder("Holes:");
+    localStringBuilder = new StringBuilder("Holes:");
     paramQueryHoleRsp = paramQueryHoleRsp.rpt_data_hole.get();
-    int m;
-    int n;
-    int j;
-    int k;
     if ((paramQueryHoleRsp != null) && (!paramQueryHoleRsp.isEmpty()))
     {
       paramHwResponse = paramQueryHoleRsp.iterator();
-      i = 0;
-      if (paramHwResponse.hasNext())
+      for (i = 0; paramHwResponse.hasNext(); i = j)
       {
         paramRequestInfoQuery = (CSDataHighwayHead.DataHole)paramHwResponse.next();
-        m = (int)paramRequestInfoQuery.uint64_begin.get();
-        n = (int)paramRequestInfoQuery.uint64_end.get();
-        j = m / 8192;
-        k = (n - 1) / 8192;
-        if (k <= i) {
-          break label732;
+        int n = (int)paramRequestInfoQuery.uint64_begin.get();
+        int i1 = (int)paramRequestInfoQuery.uint64_end.get();
+        int m = n / 8192;
+        int k = (i1 - 1) / 8192;
+        j = i;
+        if (k > i) {
+          j = k;
         }
-        i = k;
-      }
-    }
-    label732:
-    for (;;)
-    {
-      localStringBuilder.append("Holes Start:").append(j).append(" End:").append(k);
-      BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : holes :  HoleStart:" + m + " HoleEnd:" + n + " BitmapS:" + j + " BitmapE:" + k);
-      while (j <= k)
-      {
-        if (paramArrayOfByte[j] == 2) {
-          paramArrayOfByte[j] = 0;
+        localStringBuilder.append("Holes Start:");
+        localStringBuilder.append(m);
+        localStringBuilder.append(" End:");
+        localStringBuilder.append(k);
+        paramRequestInfoQuery = new StringBuilder();
+        paramRequestInfoQuery.append("B_ID:");
+        paramRequestInfoQuery.append(this.mBuzCmdId);
+        paramRequestInfoQuery.append("\tT_ID:");
+        paramRequestInfoQuery.append(getTransationId());
+        paramRequestInfoQuery.append(" OnQueryHoleResp : holes :  HoleStart:");
+        paramRequestInfoQuery.append(n);
+        paramRequestInfoQuery.append(" HoleEnd:");
+        paramRequestInfoQuery.append(i1);
+        paramRequestInfoQuery.append(" BitmapS:");
+        paramRequestInfoQuery.append(m);
+        paramRequestInfoQuery.append(" BitmapE:");
+        paramRequestInfoQuery.append(k);
+        BdhLogUtil.LogEvent("R", paramRequestInfoQuery.toString());
+        i = m;
+        while (i <= k)
+        {
+          if (paramArrayOfByte[i] == 2) {
+            paramArrayOfByte[i] = 0;
+          }
+          i += 1;
         }
-        j += 1;
       }
-      break;
-      j = i;
+      int j = i;
       if (i >= paramArrayOfByte.length) {
         j = paramArrayOfByte.length - 1;
       }
@@ -623,210 +631,292 @@ public class Transaction
         }
       }
       i = 0;
-      if (i < paramArrayOfByte.length)
+      while (i < paramArrayOfByte.length)
       {
         if ((arrayOfByte[i] == 2) && (paramArrayOfByte[i] == 0) && ((this.bQueryForFIN) || (this.bitmap[i] != 3))) {
           this.bitmap[i] = 0;
+        } else if (paramArrayOfByte[i] == 2) {
+          this.bitmap[i] = 3;
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (paramArrayOfByte[i] == 2) {
-            this.bitmap[i] = 3;
-          }
-        }
+        i += 1;
       }
       this.bQueryForFIN = false;
       this.mCurrentQueryFinishCount = 0;
-      for (;;)
-      {
-        this.TRACKER.logStep("QUERY", "QueryHoleResp " + localStringBuilder.toString());
-        BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnQueryHoleResp : Merged : CopyBitmap:" + Arrays.toString(paramArrayOfByte) + " CurrentBitmap:" + Arrays.toString(this.bitmap));
-        this.mTransWorker.notifyToSend();
-        return;
-        localStringBuilder.append("null");
-        BdhLogUtil.LogEvent("R", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " finish flag is null and hole is null mCurrentQueryFinishCount:" + this.mCurrentQueryFinishCount + " bQueryForFIN:" + this.bQueryForFIN);
-        if (this.bQueryForFIN) {
-          if (this.mCurrentQueryFinishCount < RequestFinishQuery.QUERY_HOLE_MAX_COUNT) {
-            queryTransactionFinish();
-          } else {
-            onTransFailed(9306, "QueryFinishFail", paramHwResponse.retCode, paramHwResponse.buzRetCode, paramRequestInfoQuery.retryCount, paramHwResponse.mBuExtendinfo);
-          }
+    }
+    else
+    {
+      localStringBuilder.append("null");
+      paramQueryHoleRsp = new StringBuilder();
+      paramQueryHoleRsp.append("B_ID:");
+      paramQueryHoleRsp.append(this.mBuzCmdId);
+      paramQueryHoleRsp.append("\tT_ID:");
+      paramQueryHoleRsp.append(getTransationId());
+      paramQueryHoleRsp.append(" finish flag is null and hole is null mCurrentQueryFinishCount:");
+      paramQueryHoleRsp.append(this.mCurrentQueryFinishCount);
+      paramQueryHoleRsp.append(" bQueryForFIN:");
+      paramQueryHoleRsp.append(this.bQueryForFIN);
+      BdhLogUtil.LogEvent("R", paramQueryHoleRsp.toString());
+      if (this.bQueryForFIN) {
+        if (this.mCurrentQueryFinishCount < RequestFinishQuery.QUERY_HOLE_MAX_COUNT) {
+          queryTransactionFinish();
+        } else {
+          onTransFailed(9306, "QueryFinishFail", paramHwResponse.retCode, paramHwResponse.buzRetCode, paramRequestInfoQuery.retryCount, paramHwResponse.mBuExtendinfo);
         }
       }
     }
+    paramQueryHoleRsp = this.TRACKER;
+    paramHwResponse = new StringBuilder();
+    paramHwResponse.append("QueryHoleResp ");
+    paramHwResponse.append(localStringBuilder.toString());
+    paramQueryHoleRsp.logStep("QUERY", paramHwResponse.toString());
+    paramQueryHoleRsp = new StringBuilder();
+    paramQueryHoleRsp.append("B_ID:");
+    paramQueryHoleRsp.append(this.mBuzCmdId);
+    paramQueryHoleRsp.append("\tT_ID:");
+    paramQueryHoleRsp.append(getTransationId());
+    paramQueryHoleRsp.append(" OnQueryHoleResp : Merged : CopyBitmap:");
+    paramQueryHoleRsp.append(Arrays.toString(paramArrayOfByte));
+    paramQueryHoleRsp.append(" CurrentBitmap:");
+    paramQueryHoleRsp.append(Arrays.toString(this.bitmap));
+    BdhLogUtil.LogEvent("R", paramQueryHoleRsp.toString());
+    this.mTransWorker.notifyToSend();
   }
   
   public void onRequestFailed(int paramInt)
   {
-    if (this.cbForReport != null) {
-      this.cbForReport.onFailed(paramInt, this.mTransWorker.getLastUsedIp(), this.mTransWorker.getLastUsedPort());
+    ITransCallbackForReport localITransCallbackForReport = this.cbForReport;
+    if (localITransCallbackForReport != null) {
+      localITransCallbackForReport.onFailed(paramInt, this.mTransWorker.getLastUsedIp(), this.mTransWorker.getLastUsedPort());
     }
   }
   
   public void onSwitchToBackupChannel()
   {
     stopTimeoutTimer();
-    if (this.hasSwitch2BackupChannel.get()) {}
-    do
-    {
+    if (this.hasSwitch2BackupChannel.get()) {
       return;
-      this.hasSwitch2BackupChannel.set(true);
-    } while (this.cb == null);
-    this.cb.onSwitch2BackupChannel();
+    }
+    this.hasSwitch2BackupChannel.set(true);
+    ITransactionCallback localITransactionCallback = this.cb;
+    if (localITransactionCallback != null) {
+      localITransactionCallback.onSwitch2BackupChannel();
+    }
   }
   
   public void onTransFailed(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
-    if (!this.isFinish.compareAndSet(false, true)) {}
-    label118:
-    do
-    {
+    if (!this.isFinish.compareAndSet(false, true)) {
       return;
-      BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " OnTransFailed : ERR_C:" + paramInt1 + " ERR_H:" + paramInt2 + " ERR_B:" + paramInt3);
-      stopTimeoutTimer();
-      this.mTransReport.updateRetryInfo(paramInt4);
-      this.mBuExtendinfo = paramArrayOfByte;
-      this.mErrorCode = paramInt1;
-      if (paramInt3 != 0)
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("B_ID:");
+    localStringBuilder.append(this.mBuzCmdId);
+    localStringBuilder.append("\tT_ID:");
+    localStringBuilder.append(getTransationId());
+    localStringBuilder.append(" OnTransFailed : ERR_C:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" ERR_H:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" ERR_B:");
+    localStringBuilder.append(paramInt3);
+    BdhLogUtil.LogEvent("T", localStringBuilder.toString());
+    stopTimeoutTimer();
+    this.mTransReport.updateRetryInfo(paramInt4);
+    this.mBuExtendinfo = paramArrayOfByte;
+    this.mErrorCode = paramInt1;
+    if (paramInt3 != 0) {
+      this.mErrorCode = paramInt3;
+    } else if (paramInt2 != 0) {
+      this.mErrorCode = paramInt2;
+    }
+    paramArrayOfByte = this.mTransWorker;
+    if (paramArrayOfByte != null)
+    {
+      this.mTransReport.bHasNet = paramArrayOfByte.updateAndCheckNet();
+      this.mTransReport.isConnected = this.mTransWorker.isNetworkConnected();
+      this.mTransReport.connErrCode = this.mTransWorker.getConnErroCode();
+      this.mTransReport.setFailReason(this.mErrorCode, paramString);
+      paramInt2 = this.mErrorCode;
+      if ((paramInt2 == -1002) || (paramInt2 == -1005))
       {
-        this.mErrorCode = paramInt3;
-        if (this.mTransWorker != null)
-        {
-          this.mTransReport.bHasNet = this.mTransWorker.updateAndCheckNet();
-          this.mTransReport.isConnected = this.mTransWorker.isNetworkConnected();
-          this.mTransReport.connErrCode = this.mTransWorker.getConnErroCode();
-          this.mTransReport.setFailReason(this.mErrorCode, paramString);
-          if ((this.mErrorCode == -1002) || (this.mErrorCode == -1005))
-          {
-            this.mTransWorker.dumpEngineInfo();
-            paramString = this.TRACKER.dumpTrackerInfo();
-            this.TRACKER.logStep("QUERY", "TransFailed  Bitmap:" + Arrays.toString(this.bitmap));
-            QLog.d("T", 1, "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " TRACEKERINFO:" + paramString);
-            if (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode)) {
-              this.mErrorCode = 9004;
-            }
-          }
-          if ((this.mBuzCmdId != 1) && (this.mBuzCmdId != 2) && (this.mBuzCmdId != 4)) {
-            break label539;
-          }
-          if ((this.mTransReport.bHasNet) && (!BdhUtils.isNetWorkProb(this.mTransReport.connErrCode))) {
-            break label489;
-          }
+        this.mTransWorker.dumpEngineInfo();
+        paramString = this.TRACKER.dumpTrackerInfo();
+        paramArrayOfByte = this.TRACKER;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("TransFailed  Bitmap:");
+        localStringBuilder.append(Arrays.toString(this.bitmap));
+        paramArrayOfByte.logStep("QUERY", localStringBuilder.toString());
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("B_ID:");
+        paramArrayOfByte.append(this.mBuzCmdId);
+        paramArrayOfByte.append("\tT_ID:");
+        paramArrayOfByte.append(getTransationId());
+        paramArrayOfByte.append(" TRACEKERINFO:");
+        paramArrayOfByte.append(paramString);
+        QLog.d("T", 1, paramArrayOfByte.toString());
+        if (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode)) {
           this.mErrorCode = 9004;
         }
       }
-      for (;;)
+      paramInt2 = this.mBuzCmdId;
+      if ((paramInt2 != 1) && (paramInt2 != 2) && (paramInt2 != 4))
       {
-        this.mReport = updateAndGetReporter();
-        needBDHReport(this.mReport);
-        if ((!this.mTransReport.bHasNet) || ((paramInt1 != -1002) && (paramInt1 != -1005) && (paramInt1 != -1003) && (paramInt1 != -1014))) {
-          break label572;
-        }
-        boolean bool = this.mTransWorker.startNetDetection(this);
-        finishAndDetachFromWorker(false);
-        if ((bool) || (this.cb == null)) {
-          break;
-        }
-        this.cb.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
-        return;
-        if (paramInt2 == 0) {
-          break label118;
-        }
-        this.mErrorCode = paramInt2;
-        break label118;
-        if ((this.mErrorCode <= 0) && ((!this.mTransReport.bHasNet) || (!this.mTransReport.isConnected) || (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode))))
-        {
+        if ((!this.mTransReport.bHasNet) || (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode))) {
           this.mErrorCode = 9004;
-          continue;
-          if ((!this.mTransReport.bHasNet) || (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode))) {
-            this.mErrorCode = 9004;
-          }
         }
       }
+      else if ((this.mTransReport.bHasNet) && (!BdhUtils.isNetWorkProb(this.mTransReport.connErrCode)))
+      {
+        if ((this.mErrorCode <= 0) && ((!this.mTransReport.bHasNet) || (!this.mTransReport.isConnected) || (BdhUtils.isNetWorkProb(this.mTransReport.connErrCode)))) {
+          this.mErrorCode = 9004;
+        }
+      }
+      else {
+        this.mErrorCode = 9004;
+      }
+    }
+    this.mReport = updateAndGetReporter();
+    needBDHReport(this.mReport);
+    if ((this.mTransReport.bHasNet) && ((paramInt1 == -1002) || (paramInt1 == -1005) || (paramInt1 == -1003) || (paramInt1 == -1014)))
+    {
+      boolean bool = this.mTransWorker.startNetDetection(this);
       finishAndDetachFromWorker(false);
-    } while (this.cb == null);
-    label489:
-    this.cb.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
-    label539:
-    label572:
-    return;
+      if (!bool)
+      {
+        paramString = this.cb;
+        if (paramString != null) {
+          paramString.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
+        }
+      }
+    }
+    else
+    {
+      finishAndDetachFromWorker(false);
+      paramString = this.cb;
+      if (paramString != null) {
+        paramString.onFailed(this.mErrorCode, this.mBuExtendinfo, this.mReport);
+      }
+    }
   }
   
   public void onTransProgress(RequestDataTrans paramRequestDataTrans, HwResponse paramHwResponse)
   {
-    if (this.isFinish.get()) {}
-    do
+    if (this.isFinish.get()) {
+      return;
+    }
+    paramRequestDataTrans = paramRequestDataTrans.mInfo;
+    extendTimeExceedLimit();
+    this.mTransReport.updateRetryInfo(paramRequestDataTrans.retryTimes);
+    if (paramRequestDataTrans != null)
     {
-      int m;
-      int n;
-      do
-      {
-        return;
-        paramRequestDataTrans = paramRequestDataTrans.mInfo;
-        extendTimeExceedLimit();
-        this.mTransReport.updateRetryInfo(paramRequestDataTrans.retryTimes);
-        if (paramRequestDataTrans != null)
-        {
-          paramHwResponse = this.mTransReport;
-          paramHwResponse.timeCost_Send = ((int)(paramHwResponse.timeCost_Send + (paramRequestDataTrans.timeCost_req - paramRequestDataTrans.timeCost_hw - paramRequestDataTrans.timeCost_cache)));
-          paramHwResponse = this.mTransReport;
-          paramHwResponse.timeCost_Ht = ((int)(paramHwResponse.timeCost_Ht + paramRequestDataTrans.timeCost_hw));
-          paramHwResponse = this.mTransReport;
-          paramHwResponse.timeCost_Cache = ((int)(paramHwResponse.timeCost_Cache + paramRequestDataTrans.timeCost_cache));
-        }
-        m = paramRequestDataTrans.bitmapS;
-        n = paramRequestDataTrans.bitmapE;
-      } while (n >= this.bitmap.length);
-      int i = m;
-      while (i <= n)
+      paramHwResponse = this.mTransReport;
+      paramHwResponse.timeCost_Send = ((int)(paramHwResponse.timeCost_Send + (paramRequestDataTrans.timeCost_req - paramRequestDataTrans.timeCost_hw - paramRequestDataTrans.timeCost_cache)));
+      paramHwResponse = this.mTransReport;
+      paramHwResponse.timeCost_Ht = ((int)(paramHwResponse.timeCost_Ht + paramRequestDataTrans.timeCost_hw));
+      paramHwResponse = this.mTransReport;
+      paramHwResponse.timeCost_Cache = ((int)(paramHwResponse.timeCost_Cache + paramRequestDataTrans.timeCost_cache));
+    }
+    int m = paramRequestDataTrans.bitmapS;
+    int n = paramRequestDataTrans.bitmapE;
+    if (n >= this.bitmap.length) {
+      return;
+    }
+    int i = m;
+    while (i <= n)
+    {
+      this.bitmap[i] = 3;
+      i += 1;
+    }
+    i = 0;
+    int k;
+    for (int j = 0;; j = k)
+    {
+      paramRequestDataTrans = this.bitmap;
+      if (i >= paramRequestDataTrans.length) {
+        break;
+      }
+      k = j;
+      if (paramRequestDataTrans[i] == 3) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    this.transferedSize = (j * 8192);
+    if (paramRequestDataTrans[(paramRequestDataTrans.length - 1)] == 3) {
+      this.transferedSize -= paramRequestDataTrans.length * 8192 - this.totalLength;
+    }
+    i = this.transferedSizeBDH;
+    if (i - this.transferedSize > this.totalLength / 10)
+    {
+      j = i / 8192;
+      i = 0;
+      while (i < j)
       {
         this.bitmap[i] = 3;
         i += 1;
       }
-      i = 0;
-      int k;
-      for (int j = 0; i < this.bitmap.length; j = k)
-      {
-        k = j;
-        if (this.bitmap[i] == 3) {
-          k = j + 1;
-        }
-        i += 1;
-      }
-      this.transferedSize = (j * 8192);
-      if (this.bitmap[(this.bitmap.length - 1)] == 3) {
-        this.transferedSize -= this.bitmap.length * 8192 - this.totalLength;
-      }
-      if (this.transferedSizeBDH - this.transferedSize > this.totalLength / 10)
-      {
-        j = this.transferedSizeBDH / 8192;
-        i = 0;
-        while (i < j)
-        {
-          this.bitmap[i] = 3;
-          i += 1;
-        }
-        this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, j);
-        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "UpdateTransferedSizeToServerRange,local size:" + this.transferedSize + " server size:" + this.transferedSizeBDH);
-      }
-      if (this.transferedSize >= this.totalLength)
-      {
-        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "NotifySegmentProgress Error : Finish flag is lost.");
-        this.mTransReport.bFINLost = true;
-      }
-      if (this.cb != null)
-      {
-        BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " NotifySegmentProgress Total:" + this.totalLength + " TransSize:" + this.transferedSize + " allHoles:" + this.bitmap.length + " [" + m + ":" + n + "]");
-        this.cb.onUpdateProgress(this.transferedSize);
-      }
-      this.TRACKER.logStep("PRGRS", "TransProgress Start:" + m + " End:" + n);
-    } while ((!this.mTransReport.bFINLost) || (this.bQueryForFIN));
-    this.bQueryForFIN = true;
-    this.mTransReport.bFINLost = false;
-    queryTransactionFinish();
-    this.TRACKER.logStep("QUERY", "FinFlagLost  Bitmap:" + Arrays.toString(this.bitmap));
+      this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, j);
+      paramRequestDataTrans = new StringBuilder();
+      paramRequestDataTrans.append("B_ID:");
+      paramRequestDataTrans.append(this.mBuzCmdId);
+      paramRequestDataTrans.append("\tT_ID:");
+      paramRequestDataTrans.append(getTransationId());
+      paramRequestDataTrans.append("UpdateTransferedSizeToServerRange,local size:");
+      paramRequestDataTrans.append(this.transferedSize);
+      paramRequestDataTrans.append(" server size:");
+      paramRequestDataTrans.append(this.transferedSizeBDH);
+      BdhLogUtil.LogEvent("T", paramRequestDataTrans.toString());
+    }
+    if (this.transferedSize >= this.totalLength)
+    {
+      paramRequestDataTrans = new StringBuilder();
+      paramRequestDataTrans.append("B_ID:");
+      paramRequestDataTrans.append(this.mBuzCmdId);
+      paramRequestDataTrans.append("\tT_ID:");
+      paramRequestDataTrans.append(getTransationId());
+      paramRequestDataTrans.append("NotifySegmentProgress Error : Finish flag is lost.");
+      BdhLogUtil.LogEvent("T", paramRequestDataTrans.toString());
+      this.mTransReport.bFINLost = true;
+    }
+    if (this.cb != null)
+    {
+      paramRequestDataTrans = new StringBuilder();
+      paramRequestDataTrans.append("B_ID:");
+      paramRequestDataTrans.append(this.mBuzCmdId);
+      paramRequestDataTrans.append("\tT_ID:");
+      paramRequestDataTrans.append(getTransationId());
+      paramRequestDataTrans.append(" NotifySegmentProgress Total:");
+      paramRequestDataTrans.append(this.totalLength);
+      paramRequestDataTrans.append(" TransSize:");
+      paramRequestDataTrans.append(this.transferedSize);
+      paramRequestDataTrans.append(" allHoles:");
+      paramRequestDataTrans.append(this.bitmap.length);
+      paramRequestDataTrans.append(" [");
+      paramRequestDataTrans.append(m);
+      paramRequestDataTrans.append(":");
+      paramRequestDataTrans.append(n);
+      paramRequestDataTrans.append("]");
+      BdhLogUtil.LogEvent("T", paramRequestDataTrans.toString());
+      this.cb.onUpdateProgress(this.transferedSize);
+    }
+    paramRequestDataTrans = this.TRACKER;
+    paramHwResponse = new StringBuilder();
+    paramHwResponse.append("TransProgress Start:");
+    paramHwResponse.append(m);
+    paramHwResponse.append(" End:");
+    paramHwResponse.append(n);
+    paramRequestDataTrans.logStep("PRGRS", paramHwResponse.toString());
+    if ((this.mTransReport.bFINLost) && (!this.bQueryForFIN))
+    {
+      this.bQueryForFIN = true;
+      this.mTransReport.bFINLost = false;
+      queryTransactionFinish();
+      paramRequestDataTrans = this.TRACKER;
+      paramHwResponse = new StringBuilder();
+      paramHwResponse.append("FinFlagLost  Bitmap:");
+      paramHwResponse.append(Arrays.toString(this.bitmap));
+      paramRequestDataTrans.logStep("QUERY", paramHwResponse.toString());
+    }
   }
   
   public void onTransReUpload(int paramInt)
@@ -835,9 +925,10 @@ public class Transaction
     this.reUploadHwSeq = paramInt;
     this.transferedSizeBDH = 0;
     extendTimeExceedLimit();
-    int i = this.totalLength / 8192;
+    int j = this.totalLength;
+    int i = j / 8192;
     paramInt = i;
-    if (this.totalLength % 8192 != 0) {
+    if (j % 8192 != 0) {
       paramInt = i + 1;
     }
     this.mTransWorker.getHwEngine().mRequestWorker.remove2SENDRequest(this.transationId, paramInt);
@@ -847,137 +938,165 @@ public class Transaction
       this.bitmap[i] = 0;
       i += 1;
     }
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "reUpload long video");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("B_ID:");
+    localStringBuilder.append(this.mBuzCmdId);
+    localStringBuilder.append("\tT_ID:");
+    localStringBuilder.append(getTransationId());
+    localStringBuilder.append("reUpload long video");
+    BdhLogUtil.LogEvent("T", localStringBuilder.toString());
     this.TRACKER.logStep("REUPLOAD", "ReUpload trasaction");
     this.mTransReport.hasReUpload = true;
   }
   
   public void onTransSuccess(DataTransInfo paramDataTransInfo, byte[] paramArrayOfByte)
   {
-    BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + " NotifySegmentSuccess");
-    if (!this.isFinish.compareAndSet(false, true)) {}
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("B_ID:");
+    ((StringBuilder)localObject).append(this.mBuzCmdId);
+    ((StringBuilder)localObject).append("\tT_ID:");
+    ((StringBuilder)localObject).append(getTransationId());
+    ((StringBuilder)localObject).append(" NotifySegmentSuccess");
+    BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
+    if (!this.isFinish.compareAndSet(false, true)) {
       return;
-      this.isSuccess.set(true);
-      stopTimeoutTimer();
-      if (paramDataTransInfo != null) {
-        this.mTransReport.updateRetryInfo(paramDataTransInfo.retryTimes);
-      }
-      if (paramDataTransInfo != null)
-      {
-        TransReport localTransReport = this.mTransReport;
-        localTransReport.timeCost_Send = ((int)(localTransReport.timeCost_Send + (paramDataTransInfo.timeCost_req - paramDataTransInfo.timeCost_hw - paramDataTransInfo.timeCost_cache)));
-        localTransReport = this.mTransReport;
-        localTransReport.timeCost_Ht = ((int)(localTransReport.timeCost_Ht + paramDataTransInfo.timeCost_hw));
-        localTransReport = this.mTransReport;
-        localTransReport.timeCost_Cache = ((int)(localTransReport.timeCost_Cache + paramDataTransInfo.timeCost_cache));
-      }
-      this.mBuExtendinfo = paramArrayOfByte;
-      this.transferedSize = this.totalLength;
-      paramDataTransInfo = updateAndGetReporter();
-      needBDHReport(paramDataTransInfo);
-      finishAndDetachFromWorker(true);
-    } while (this.cb == null);
-    this.cb.onSuccess(this.mBuExtendinfo, paramDataTransInfo);
+    }
+    this.isSuccess.set(true);
+    stopTimeoutTimer();
+    if (paramDataTransInfo != null) {
+      this.mTransReport.updateRetryInfo(paramDataTransInfo.retryTimes);
+    }
+    if (paramDataTransInfo != null)
+    {
+      localObject = this.mTransReport;
+      ((TransReport)localObject).timeCost_Send = ((int)(((TransReport)localObject).timeCost_Send + (paramDataTransInfo.timeCost_req - paramDataTransInfo.timeCost_hw - paramDataTransInfo.timeCost_cache)));
+      localObject = this.mTransReport;
+      ((TransReport)localObject).timeCost_Ht = ((int)(((TransReport)localObject).timeCost_Ht + paramDataTransInfo.timeCost_hw));
+      localObject = this.mTransReport;
+      ((TransReport)localObject).timeCost_Cache = ((int)(((TransReport)localObject).timeCost_Cache + paramDataTransInfo.timeCost_cache));
+    }
+    this.mBuExtendinfo = paramArrayOfByte;
+    this.transferedSize = this.totalLength;
+    paramDataTransInfo = updateAndGetReporter();
+    needBDHReport(paramDataTransInfo);
+    finishAndDetachFromWorker(true);
+    paramArrayOfByte = this.cb;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.onSuccess(this.mBuExtendinfo, paramDataTransInfo);
+    }
   }
   
   DataTransInfo peekNextSegment(HwNetSegConf paramHwNetSegConf)
   {
     int j = (int)paramHwNetSegConf.segSize;
-    if ((this.isFinish.get()) || (isPause())) {
-      return null;
-    }
-    if ((this.mTransReport.confSegSize == 0L) && (paramHwNetSegConf != null))
+    boolean bool = this.isFinish.get();
+    StringBuilder localStringBuilder = null;
+    Object localObject = localStringBuilder;
+    if (!bool)
     {
-      this.mTransReport.confSegSize = ((int)paramHwNetSegConf.segSize);
-      this.mTransReport.confSegNum = ((int)paramHwNetSegConf.segNum);
-      this.mTransReport.confConnNum = ((int)paramHwNetSegConf.curConnNum);
-    }
-    int i = j / 8192;
-    int m = i;
-    if (j % 8192 > 0) {
-      m = i + 1;
-    }
-    i = 0;
-    j = -1;
-    int k;
-    int n;
-    if (i < this.bitmap.length) {
-      if (this.bitmap[i] == 0)
-      {
-        k = j;
-        if (j == -1) {
-          k = i;
-        }
-        if (i != this.bitmap.length - 1)
-        {
-          n = k;
-          if (m != i + 1 - k) {
-            break label334;
-          }
-        }
-        j = k;
-      }
-    }
-    for (;;)
-    {
-      label164:
-      if ((j != -1) && (i != -1))
-      {
-        paramHwNetSegConf = this.mTransReport;
-        paramHwNetSegConf.sliceNum += 1;
-        paramHwNetSegConf = new DataTransInfo(this);
-        paramHwNetSegConf.fileSize = this.totalLength;
-        paramHwNetSegConf.offset = (j * 8192);
-        paramHwNetSegConf.bitmapS = j;
-        paramHwNetSegConf.bitmapE = i;
-        if (i == this.bitmap.length - 1)
-        {
-          paramHwNetSegConf.length = ((i - j) * 8192 + (this.totalLength - (this.bitmap.length - 1) * 8192));
-          k = j;
-          for (;;)
-          {
-            if (k <= i)
-            {
-              this.bitmap[k] = 1;
-              k += 1;
-              continue;
-              if ((this.isOpenUpEnable) && (this.bitmap[i] == 4))
-              {
-                if (j == -1) {
-                  break label421;
-                }
-                i -= 1;
-              }
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        label264:
-        stopTimeoutTimer();
-        break label164;
-        n = j;
-        if (j != -1) {
-          break label164;
-        }
-        label334:
-        i += 1;
-        j = n;
-        break;
-        paramHwNetSegConf.length = ((i - j + 1) * 8192);
-        break label264;
-        this.TRACKER.logStep("SLICE", "Start:" + j + " End:" + i + " Length:" + paramHwNetSegConf.length);
-        startTimeoutTimer();
-        return paramHwNetSegConf;
+      if (isPause()) {
         return null;
-        label421:
-        i = -1;
       }
-      i = -1;
+      if ((this.mTransReport.confSegSize == 0L) && (paramHwNetSegConf != null))
+      {
+        this.mTransReport.confSegSize = ((int)paramHwNetSegConf.segSize);
+        this.mTransReport.confSegNum = ((int)paramHwNetSegConf.segNum);
+        this.mTransReport.confConnNum = ((int)paramHwNetSegConf.curConnNum);
+      }
+      int i = j / 8192;
+      int n = i;
+      if (j % 8192 > 0) {
+        n = i + 1;
+      }
+      j = 0;
+      for (i = -1;; i = m)
+      {
+        paramHwNetSegConf = this.bitmap;
+        if (j >= paramHwNetSegConf.length) {
+          break;
+        }
+        if (paramHwNetSegConf[j] == 0)
+        {
+          int k = i;
+          if (i == -1) {
+            k = j;
+          }
+          m = j;
+          i = k;
+          if (j == this.bitmap.length - 1) {
+            break label250;
+          }
+          m = k;
+          if (n == j + 1 - k)
+          {
+            m = j;
+            i = k;
+            break label250;
+          }
+        }
+        else
+        {
+          if ((this.isOpenUpEnable) && (paramHwNetSegConf[j] == 4))
+          {
+            if (i != -1) {
+              m = j - 1;
+            } else {
+              m = -1;
+            }
+            stopTimeoutTimer();
+            break label250;
+          }
+          m = i;
+          if (i != -1)
+          {
+            m = j;
+            break label250;
+          }
+        }
+        j += 1;
+      }
+      int m = -1;
+      label250:
+      localObject = localStringBuilder;
+      if (i != -1)
+      {
+        localObject = localStringBuilder;
+        if (m != -1)
+        {
+          paramHwNetSegConf = this.mTransReport;
+          paramHwNetSegConf.sliceNum += 1;
+          localObject = new DataTransInfo(this);
+          j = this.totalLength;
+          ((DataTransInfo)localObject).fileSize = j;
+          ((DataTransInfo)localObject).offset = (i * 8192);
+          ((DataTransInfo)localObject).bitmapS = i;
+          ((DataTransInfo)localObject).bitmapE = m;
+          paramHwNetSegConf = this.bitmap;
+          if (m == paramHwNetSegConf.length - 1) {
+            ((DataTransInfo)localObject).length = ((m - i) * 8192 + (j - (paramHwNetSegConf.length - 1) * 8192));
+          } else {
+            ((DataTransInfo)localObject).length = ((m - i + 1) * 8192);
+          }
+          j = i;
+          while (j <= m)
+          {
+            this.bitmap[j] = 1;
+            j += 1;
+          }
+          paramHwNetSegConf = this.TRACKER;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Start:");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" End:");
+          localStringBuilder.append(m);
+          localStringBuilder.append(" Length:");
+          localStringBuilder.append(((DataTransInfo)localObject).length);
+          paramHwNetSegConf.logStep("SLICE", localStringBuilder.toString());
+          startTimeoutTimer();
+        }
+      }
     }
+    return localObject;
   }
   
   public void queryTransactionFinish()
@@ -1009,8 +1128,14 @@ public class Transaction
   {
     if (this.TimerStarted.compareAndSet(false, true))
     {
-      BdhLogUtil.LogEvent("T", "B_ID:" + this.mBuzCmdId + "\tT_ID:" + getTransationId() + "startTimeoutTimer.");
-      Object localObject = this.cb;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("B_ID:");
+      ((StringBuilder)localObject).append(this.mBuzCmdId);
+      ((StringBuilder)localObject).append("\tT_ID:");
+      ((StringBuilder)localObject).append(getTransationId());
+      ((StringBuilder)localObject).append("startTimeoutTimer.");
+      BdhLogUtil.LogEvent("T", ((StringBuilder)localObject).toString());
+      localObject = this.cb;
       if (localObject != null) {
         ((ITransactionCallback)localObject).onTransStart();
       }
@@ -1026,7 +1151,7 @@ public class Transaction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.transaction.Transaction
  * JD-Core Version:    0.7.0.1
  */

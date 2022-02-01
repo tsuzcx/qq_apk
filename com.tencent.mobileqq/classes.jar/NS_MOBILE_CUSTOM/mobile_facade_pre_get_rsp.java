@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,17 +29,19 @@ public final class mobile_facade_pre_get_rsp
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (cache_mapUinFacade == null)
+    Object localObject = cache_mapUinFacade;
+    Long localLong = Long.valueOf(0L);
+    if (localObject == null)
     {
       cache_mapUinFacade = new HashMap();
-      Facade localFacade = new Facade();
-      cache_mapUinFacade.put(Long.valueOf(0L), localFacade);
+      localObject = new Facade();
+      cache_mapUinFacade.put(localLong, localObject);
     }
     this.mapUinFacade = ((Map)paramJceInputStream.read(cache_mapUinFacade, 0, false));
     if (cache_vecUinNoVisitRight == null)
     {
       cache_vecUinNoVisitRight = new ArrayList();
-      cache_vecUinNoVisitRight.add(Long.valueOf(0L));
+      cache_vecUinNoVisitRight.add(localLong);
     }
     this.vecUinNoVisitRight = ((ArrayList)paramJceInputStream.read(cache_vecUinNoVisitRight, 1, false));
     if (cache_mapExtInfo == null)
@@ -51,20 +54,23 @@ public final class mobile_facade_pre_get_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapUinFacade != null) {
-      paramJceOutputStream.write(this.mapUinFacade, 0);
+    Object localObject = this.mapUinFacade;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.vecUinNoVisitRight != null) {
-      paramJceOutputStream.write(this.vecUinNoVisitRight, 1);
+    localObject = this.vecUinNoVisitRight;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 2);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.mobile_facade_pre_get_rsp
  * JD-Core Version:    0.7.0.1
  */

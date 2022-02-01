@@ -18,13 +18,14 @@ public final class CSDataHighwayHead$ImageFilterResponse
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "ret_code", "image_data", "cost_time" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, ImageFilterResponse.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "ret_code", "image_data", "cost_time" }, new Object[] { localInteger, localByteStringMicro, localInteger }, ImageFilterResponse.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wear.model.e;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,27 +13,27 @@ import java.util.List;
 public final class f
   extends a
 {
-  public final List<Integer> cYL()
+  public final List<Integer> iob()
   {
-    AppMethodBeat.i(26397);
+    AppMethodBeat.i(30079);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11016));
     localArrayList.add(Integer.valueOf(11017));
     localArrayList.add(Integer.valueOf(11018));
-    AppMethodBeat.o(26397);
+    AppMethodBeat.o(30079);
     return localArrayList;
   }
   
-  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] u(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26398);
+    AppMethodBeat.i(30080);
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, "utf8");
-      if (bo.isNullOrNil(paramArrayOfByte))
+      if (Util.isNullOrNil(paramArrayOfByte))
       {
-        ab.i("MicroMsg.Wear.HttpFriendServer", "error to get username");
-        AppMethodBeat.o(26398);
+        Log.i("MicroMsg.Wear.HttpFriendServer", "error to get username");
+        AppMethodBeat.o(30080);
         return null;
       }
     }
@@ -43,44 +43,56 @@ public final class f
       {
         paramArrayOfByte = "";
       }
-      ab.i("MicroMsg.Wear.HttpFriendServer", "handle friend request %s", new Object[] { paramArrayOfByte });
+      Log.i("MicroMsg.Wear.HttpFriendServer", "handle friend request %s", new Object[] { paramArrayOfByte });
       if (paramInt != 11016) {
-        break label149;
+        break label206;
       }
     }
-    Intent localIntent = new Intent();
-    localIntent.setClassName(ah.getPackageName(), ah.getPackageName() + ".plugin.subapp.ui.friend.FMessageTransferUI");
-    localIntent.putExtra("friend_message_transfer_username", paramArrayOfByte);
-    localIntent.setAction("friend_message_accept_".concat(String.valueOf(paramArrayOfByte)));
-    localIntent.setFlags(335544320);
-    ah.getContext().startActivity(localIntent);
+    Object localObject = new Intent();
+    ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), MMApplicationContext.getSourcePackageName() + ".plugin.subapp.ui.friend.FMessageTransferUI");
+    ((Intent)localObject).putExtra("friend_message_transfer_username", paramArrayOfByte);
+    ((Intent)localObject).setAction("friend_message_accept_".concat(String.valueOf(paramArrayOfByte)));
+    ((Intent)localObject).setFlags(335544320);
+    paramArrayOfByte = MMApplicationContext.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfByte, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramArrayOfByte.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfByte, "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     for (;;)
     {
-      AppMethodBeat.o(26398);
+      AppMethodBeat.o(30080);
       return null;
-      label149:
+      label206:
       if (paramInt == 11017)
       {
-        localIntent = new Intent();
-        localIntent.setClassName(ah.getPackageName(), ah.getPackageName() + ".plugin.subapp.ui.friend.FMessageTransferUI");
-        localIntent.putExtra("friend_message_transfer_username", paramArrayOfByte);
-        localIntent.setAction("friend_message_ignore_".concat(String.valueOf(paramArrayOfByte)));
-        localIntent.setFlags(335544320);
-        ah.getContext().startActivity(localIntent);
+        localObject = new Intent();
+        ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), MMApplicationContext.getSourcePackageName() + ".plugin.subapp.ui.friend.FMessageTransferUI");
+        ((Intent)localObject).putExtra("friend_message_transfer_username", paramArrayOfByte);
+        ((Intent)localObject).setAction("friend_message_ignore_".concat(String.valueOf(paramArrayOfByte)));
+        ((Intent)localObject).setFlags(335544320);
+        paramArrayOfByte = MMApplicationContext.getContext();
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfByte, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramArrayOfByte.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfByte, "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramInt == 11018)
       {
-        paramArrayOfByte = new Intent();
-        paramArrayOfByte.setClassName(ah.getPackageName(), ah.getPackageName() + ".plugin.subapp.ui.friend.FMessageConversationUI");
-        paramArrayOfByte.setFlags(335544320);
-        ah.getContext().startActivity(paramArrayOfByte);
+        localObject = new Intent();
+        ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), MMApplicationContext.getSourcePackageName() + ".plugin.subapp.ui.friend.FMessageConversationUI");
+        ((Intent)localObject).setFlags(335544320);
+        paramArrayOfByte = MMApplicationContext.getContext();
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramArrayOfByte, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramArrayOfByte.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramArrayOfByte, "com/tencent/mm/plugin/wear/model/server/HttpFriendServer", "handleData", "(I[B)[B", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.f
  * JD-Core Version:    0.7.0.1
  */

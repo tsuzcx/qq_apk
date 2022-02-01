@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.fling;
 
-import ahyb;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,14 +11,21 @@ public class ScreenCapture
 {
   public static final String SNAP_CACHE_FILE = "snap_cache";
   public static final String SNAP_CACHE_FILE_SUCCESS_KEY = "snap_cache_file_success_key";
+  private static final String TAG = "ScreenCapture";
   
   public static void captureViewToFile(String paramString, View paramView)
   {
-    if ((paramString == null) || (paramView == null)) {
-      return;
+    if (paramString != null)
+    {
+      if (paramView == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path is ");
+      localStringBuilder.append(paramString);
+      QLog.i("sethmao", 4, localStringBuilder.toString());
+      new ScreenCapture.AsyncCaptureSnapTask(paramView).execute(new String[] { paramString });
     }
-    QLog.i("sethmao", 4, "path is " + paramString);
-    new ahyb(paramView).execute(new String[] { paramString });
   }
   
   public static boolean clearSnapCacheFile(Context paramContext)
@@ -49,12 +55,21 @@ public class ScreenCapture
   
   public static String getSnapDir(Context paramContext)
   {
-    return paramContext.getFilesDir() + "/" + "snap";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir());
+    localStringBuilder.append("/");
+    localStringBuilder.append("snap");
+    return localStringBuilder.toString();
   }
   
   public static String getSnapPath(Context paramContext, int paramInt)
   {
-    return paramContext.getFilesDir() + "/" + "snap/" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir());
+    localStringBuilder.append("/");
+    localStringBuilder.append("snap/");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static boolean hasSnapFile(Context paramContext)
@@ -65,7 +80,14 @@ public class ScreenCapture
   public static void setSnapFile(Context paramContext, boolean paramBoolean)
   {
     boolean bool = paramContext.getSharedPreferences("snap_cache", 0).edit().putBoolean("snap_cache_file_success_key", paramBoolean).commit();
-    QLog.i("sethmao", 4, "captured is " + paramBoolean + ", success is " + bool + ", has snap file is " + hasSnapFile(paramContext));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("captured is ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", success is ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", has snap file is ");
+    localStringBuilder.append(hasSnapFile(paramContext));
+    QLog.i("sethmao", 4, localStringBuilder.toString());
   }
 }
 

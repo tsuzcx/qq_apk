@@ -3,84 +3,98 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class go
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int csV;
-  public String data;
-  public String username;
+  public String Url;
+  public long YIl;
+  public int nUA;
+  public String nUv;
+  public int nUz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114950);
+    AppMethodBeat.i(124391);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.nUv != null) {
+        paramVarArgs.g(1, this.nUv);
       }
-      if (this.data != null) {
-        paramVarArgs.e(2, this.data);
+      if (this.Url != null) {
+        paramVarArgs.g(2, this.Url);
       }
-      paramVarArgs.aO(3, this.csV);
-      AppMethodBeat.o(114950);
+      paramVarArgs.bS(3, this.nUz);
+      paramVarArgs.bS(4, this.nUA);
+      paramVarArgs.bv(5, this.YIl);
+      AppMethodBeat.o(124391);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label318;
+      if (this.nUv == null) {
+        break label406;
       }
     }
-    label318:
-    for (paramInt = e.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = i.a.a.b.b.a.h(1, this.nUv) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.data != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.data);
+      if (this.Url != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.Url);
       }
-      paramInt = e.a.a.b.b.a.bl(3, this.csV);
-      AppMethodBeat.o(114950);
-      return i + paramInt;
+      paramInt = i.a.a.b.b.a.cJ(3, this.nUz);
+      int j = i.a.a.b.b.a.cJ(4, this.nUA);
+      int k = i.a.a.b.b.a.q(5, this.YIl);
+      AppMethodBeat.o(124391);
+      return i + paramInt + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(114950);
+        AppMethodBeat.o(124391);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         go localgo = (go)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(114950);
+          AppMethodBeat.o(124391);
           return -1;
         case 1: 
-          localgo.username = locala.CLY.readString();
-          AppMethodBeat.o(114950);
+          localgo.nUv = locala.ajGk.readString();
+          AppMethodBeat.o(124391);
           return 0;
         case 2: 
-          localgo.data = locala.CLY.readString();
-          AppMethodBeat.o(114950);
+          localgo.Url = locala.ajGk.readString();
+          AppMethodBeat.o(124391);
+          return 0;
+        case 3: 
+          localgo.nUz = locala.ajGk.aar();
+          AppMethodBeat.o(124391);
+          return 0;
+        case 4: 
+          localgo.nUA = locala.ajGk.aar();
+          AppMethodBeat.o(124391);
           return 0;
         }
-        localgo.csV = locala.CLY.sl();
-        AppMethodBeat.o(114950);
+        localgo.YIl = locala.ajGk.aaw();
+        AppMethodBeat.o(124391);
         return 0;
       }
-      AppMethodBeat.o(114950);
+      AppMethodBeat.o(124391);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.go
  * JD-Core Version:    0.7.0.1
  */

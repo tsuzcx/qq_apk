@@ -1,52 +1,65 @@
 package com.tencent.token;
 
-import java.util.LinkedList;
+import java.nio.ByteOrder;
 
 public final class z
 {
-  private volatile long a = 0L;
-  private volatile LinkedList b = new LinkedList();
-  private Object c = new Object();
+  public final byte[] a;
+  public final int b;
+  public final ByteOrder c;
+  public int d;
   
-  public final long a()
+  public z(byte[] paramArrayOfByte, ByteOrder paramByteOrder)
   {
-    return this.a;
+    this.a = paramArrayOfByte;
+    this.b = 0;
+    this.c = paramByteOrder;
   }
   
-  public final void a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
+  public final int a()
   {
-    synchronized (this.c)
+    byte[] arrayOfByte = this.a;
+    int j = this.b + this.d;
+    int i;
+    int k;
+    if (this.c == ByteOrder.BIG_ENDIAN)
     {
-      LinkedList localLinkedList = this.b;
-      byte[] arrayOfByte = new byte[(int)paramLong2];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, (int)paramLong2);
-      localLinkedList.addLast(new aa(paramInt, paramLong1, arrayOfByte, paramLong2));
-      this.a += paramLong2;
-      return;
+      i = j + 1;
+      j = arrayOfByte[j];
+      k = i + 1;
+      j = (j & 0xFF) << 24 | (arrayOfByte[i] & 0xFF) << 16 | (arrayOfByte[k] & 0xFF) << 8;
+      i = (arrayOfByte[(k + 1)] & 0xFF) << 0;
     }
+    else
+    {
+      i = j + 1;
+      j = arrayOfByte[j];
+      k = i + 1;
+      j = (j & 0xFF) << 0 | (arrayOfByte[i] & 0xFF) << 8 | (arrayOfByte[k] & 0xFF) << 16;
+      i = (arrayOfByte[(k + 1)] & 0xFF) << 24;
+    }
+    this.d += 4;
+    return i | j;
   }
   
-  public final aa b()
+  public final short b()
   {
-    synchronized (this.c)
+    byte[] arrayOfByte = this.a;
+    int i = this.b + this.d;
+    int j;
+    if (this.c == ByteOrder.BIG_ENDIAN)
     {
-      if (this.b.size() > 0)
-      {
-        aa localaa = (aa)this.b.removeFirst();
-        this.a -= localaa.d;
-        return localaa;
-      }
-      return null;
+      j = arrayOfByte[i] << 8;
+      i = arrayOfByte[(i + 1)];
     }
-  }
-  
-  public final void c()
-  {
-    synchronized (this.c)
+    else
     {
-      while (b() != null) {}
-      return;
+      j = arrayOfByte[(i + 1)] << 8;
+      i = arrayOfByte[i];
     }
+    short s = (short)(i & 0xFF | j);
+    this.d += 2;
+    return s;
   }
 }
 

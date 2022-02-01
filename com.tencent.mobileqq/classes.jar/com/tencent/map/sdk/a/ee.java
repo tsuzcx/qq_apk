@@ -7,21 +7,21 @@ public abstract class ee<T>
 {
   public final dt a(T paramT)
   {
-    ev localev;
     try
     {
-      localev = new ev();
+      ev localev = new ev();
       a(localev, paramT);
-      if (!localev.a.isEmpty()) {
-        throw new IllegalStateException("Expected one JSON element but was " + localev.a);
+      if (localev.a.isEmpty()) {
+        return localev.b;
       }
+      paramT = new StringBuilder("Expected one JSON element but was ");
+      paramT.append(localev.a);
+      throw new IllegalStateException(paramT.toString());
     }
     catch (IOException paramT)
     {
       throw new du(paramT);
     }
-    paramT = localev.b;
-    return paramT;
   }
   
   public abstract T a(fe paramfe);

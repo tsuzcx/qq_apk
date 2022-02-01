@@ -19,12 +19,13 @@ public class SpaceFilter
     }
     this.mRatio = paramFloat;
     paramFloat = 1.0F - this.mRatio;
-    setPositions(new float[] { -paramFloat, -paramFloat, -paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, -paramFloat });
+    float f = -paramFloat;
+    setPositions(new float[] { f, f, f, paramFloat, paramFloat, paramFloat, paramFloat, f });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SpaceFilter
  * JD-Core Version:    0.7.0.1
  */

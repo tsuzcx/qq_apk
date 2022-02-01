@@ -14,12 +14,13 @@ final class ReplaySubject$DefaultOnAdd<T>
   
   public void call(SubjectSubscriptionManager.SubjectObserver<T> paramSubjectObserver)
   {
-    paramSubjectObserver.index(this.state.replayObserverFromIndex(this.state.head(), paramSubjectObserver));
+    ReplaySubject.BoundedState localBoundedState = this.state;
+    paramSubjectObserver.index(localBoundedState.replayObserverFromIndex(localBoundedState.head(), paramSubjectObserver));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subjects.ReplaySubject.DefaultOnAdd
  * JD-Core Version:    0.7.0.1
  */

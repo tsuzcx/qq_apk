@@ -31,56 +31,46 @@ public class DrawableCenterTextView
   protected void onDraw(Canvas paramCanvas)
   {
     Object localObject2 = getCompoundDrawables();
-    Object localObject1;
-    float f1;
-    int i;
-    float f2;
     if (localObject2 != null)
     {
-      localObject1 = localObject2[0];
+      Object localObject1 = localObject2[0];
       localObject2 = localObject2[2];
       if ((localObject1 != null) || (localObject2 != null))
       {
-        f1 = getPaint().measureText(getText().toString());
-        i = getCompoundDrawablePadding();
-        f2 = f1 + i;
-        if ((localObject1 == null) || (localObject2 != null)) {
-          break label101;
+        float f1 = getPaint().measureText(getText().toString());
+        int i = getCompoundDrawablePadding();
+        float f2 = f1 + i;
+        if ((localObject1 != null) && (localObject2 == null))
+        {
+          f1 = f2 + localObject1.getIntrinsicWidth();
         }
-        f1 = f2 + localObject1.getIntrinsicWidth();
-      }
-    }
-    for (;;)
-    {
-      paramCanvas.translate((getWidth() - f1) / 2.0F, 0.0F);
-      super.onDraw(paramCanvas);
-      return;
-      label101:
-      if ((localObject2 != null) && (localObject1 == null))
-      {
-        f1 = f2 + ((Drawable)localObject2).getIntrinsicWidth();
-        setPadding(0, 0, (int)(getWidth() - f1), 0);
-      }
-      else
-      {
-        f1 = f2;
-        if (localObject1 != null)
+        else if ((localObject2 != null) && (localObject1 == null))
+        {
+          f1 = f2 + ((Drawable)localObject2).getIntrinsicWidth();
+          setPadding(0, 0, (int)(getWidth() - f1), 0);
+        }
+        else
         {
           f1 = f2;
-          if (localObject2 != null)
+          if (localObject1 != null)
           {
-            int j = ((Drawable)localObject2).getIntrinsicWidth();
-            f1 = f2 + (localObject1.getIntrinsicWidth() + j + i);
-            setPadding(0, 0, (int)(getWidth() - f1), 0);
+            f1 = f2;
+            if (localObject2 != null)
+            {
+              f1 = f2 + (((Drawable)localObject2).getIntrinsicWidth() + localObject1.getIntrinsicWidth() + i);
+              setPadding(0, 0, (int)(getWidth() - f1), 0);
+            }
           }
         }
+        paramCanvas.translate((getWidth() - f1) / 2.0F, 0.0F);
       }
     }
+    super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DrawableCenterTextView
  * JD-Core Version:    0.7.0.1
  */

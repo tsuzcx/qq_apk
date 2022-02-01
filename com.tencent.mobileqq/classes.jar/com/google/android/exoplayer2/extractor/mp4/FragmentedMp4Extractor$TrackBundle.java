@@ -39,17 +39,17 @@ final class FragmentedMp4Extractor$TrackBundle
   public void updateDrmInitData(DrmInitData paramDrmInitData)
   {
     Object localObject = this.track.getSampleDescriptionEncryptionBox(this.fragment.header.sampleDescriptionIndex);
-    if (localObject != null) {}
-    for (localObject = ((TrackEncryptionBox)localObject).schemeType;; localObject = null)
-    {
-      this.output.format(this.track.format.copyWithDrmInitData(paramDrmInitData.copyWithSchemeType((String)localObject)));
-      return;
+    if (localObject != null) {
+      localObject = ((TrackEncryptionBox)localObject).schemeType;
+    } else {
+      localObject = null;
     }
+    this.output.format(this.track.format.copyWithDrmInitData(paramDrmInitData.copyWithSchemeType((String)localObject)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.FragmentedMp4Extractor.TrackBundle
  * JD-Core Version:    0.7.0.1
  */

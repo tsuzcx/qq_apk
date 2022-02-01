@@ -4,53 +4,53 @@ import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class RecyclerThumbSeekBar$a
   implements Runnable
 {
+  private RecyclerThumbSeekBar.b KZT;
   private Bitmap bitmap;
-  private ImageView cuM;
-  private RecyclerThumbSeekBar.b oLr;
+  private ImageView hIz;
   
   RecyclerThumbSeekBar$a(RecyclerThumbSeekBar paramRecyclerThumbSeekBar, Bitmap paramBitmap, ImageView paramImageView, RecyclerThumbSeekBar.b paramb)
   {
     this.bitmap = paramBitmap;
-    this.cuM = paramImageView;
-    this.oLr = paramb;
+    this.hIz = paramImageView;
+    this.KZT = paramb;
   }
   
   public final void run()
   {
     boolean bool = true;
-    AppMethodBeat.i(54985);
+    AppMethodBeat.i(94416);
     if ((this.bitmap == null) || (this.bitmap.isRecycled()))
     {
       if (this.bitmap == null) {}
       for (;;)
       {
-        ab.i("RecyclerThumbSeekBar", "bitmap is null %b in DrawBitmapOnViewTask", new Object[] { Boolean.valueOf(bool) });
-        AppMethodBeat.o(54985);
+        Log.i("RecyclerThumbSeekBar", "bitmap is null %b in DrawBitmapOnViewTask", new Object[] { Boolean.valueOf(bool) });
+        AppMethodBeat.o(94416);
         return;
         bool = false;
       }
     }
-    if ((this.oLr == null) || (this.oLr.fIp) || (this.cuM == null))
+    if ((this.KZT == null) || (this.KZT.oLU) || (this.hIz == null))
     {
-      ab.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
-      AppMethodBeat.o(54985);
+      Log.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
+      AppMethodBeat.o(94416);
       return;
     }
-    ImageView localImageView = this.cuM;
+    ImageView localImageView = this.hIz;
     localImageView.setTag(null);
     ObjectAnimator.ofInt(localImageView, "imageAlpha", new int[] { 50, 255 }).setDuration(200L).start();
     localImageView.setImageBitmap(this.bitmap);
-    AppMethodBeat.o(54985);
+    AppMethodBeat.o(94416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar.a
  * JD-Core Version:    0.7.0.1
  */

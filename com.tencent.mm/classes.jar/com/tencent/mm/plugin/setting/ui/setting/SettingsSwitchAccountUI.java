@@ -1,62 +1,80 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
-import android.app.Activity;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Process;
-import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mars.BaseEvent;
+import android.widget.Toast;
+import com.tencent.mars.Mars;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.gk;
-import com.tencent.mm.g.a.jo;
-import com.tencent.mm.g.a.td;
-import com.tencent.mm.g.a.y;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.modelsimple.ad;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.aah;
+import com.tencent.mm.autogen.a.ah;
+import com.tencent.mm.autogen.a.hv;
+import com.tencent.mm.autogen.a.ny;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.n;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelavatar.d;
+import com.tencent.mm.modelsimple.af;
 import com.tencent.mm.modelsimple.t;
-import com.tencent.mm.platformtools.w;
+import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.modelsimple.v;
+import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.account.ui.LoginPasswordUI;
 import com.tencent.mm.plugin.account.ui.LoginVoiceUI;
 import com.tencent.mm.plugin.account.ui.MobileInputUI;
+import com.tencent.mm.plugin.account.ui.RegByMobileRegAIOUI;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
 import com.tencent.mm.plugin.setting.SwitchAccountReceiver;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.plugin.setting.model.SwitchAccountModel;
 import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView;
-import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.4;
-import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.5;
-import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.6;
-import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.a;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.protocal.protobuf.bat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.b;
+import com.tencent.mm.plugin.setting.ui.widget.SwitchAccountGridView.c;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.djy;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMEntryLock;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -66,637 +84,912 @@ import java.util.Set;
 @com.tencent.mm.ui.base.a(19)
 public class SettingsSwitchAccountUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.am.h
 {
-  private String gEZ;
-  private TextView gta;
-  private SwitchAccountGridView qFN;
-  private Map<String, SwitchAccountModel> qFR;
-  private boolean qIE;
-  private TextView qKk;
-  private View qKl;
-  private View qKm;
-  private TextView qKn;
-  private ValueAnimator qKo;
-  private ap qKp;
-  private boolean qKq;
-  private boolean qKr;
-  private BroadcastReceiver qKs;
+  private View AtJ;
+  private SwitchAccountGridView Ppc;
+  private Map<String, SwitchAccountModel> Ppe;
+  private boolean Pty;
+  private View Pwn;
+  private TextView Pwo;
+  private ValueAnimator Pwp;
+  private MTimerHandler Pwq;
+  private boolean Pwr;
+  private boolean Pws;
+  private BroadcastReceiver Pwt;
+  private SwitchAccountGridView.b Pwu;
+  private String qaF;
   private int scene;
   private TextView titleView;
   
   public SettingsSwitchAccountUI()
   {
-    AppMethodBeat.i(127509);
-    this.qFR = new HashMap();
-    this.qKs = new BroadcastReceiver()
+    AppMethodBeat.i(74445);
+    this.Ppe = new HashMap();
+    this.Pwt = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(127497);
-        ab.i("MicroMsg.SettingsSwitchAccountUI", "onReceive %s", new Object[] { paramAnonymousIntent.getAction() });
+        AppMethodBeat.i(74433);
+        Log.i("MicroMsg.SettingsSwitchAccountUI", "onReceive %s", new Object[] { paramAnonymousIntent.getAction() });
         SettingsSwitchAccountUI.this.unregisterReceiver(SettingsSwitchAccountUI.a(SettingsSwitchAccountUI.this));
-        if (bo.nullAsNil(paramAnonymousIntent.getAction()).equals("action_kill_mm_process"))
+        if (Util.nullAsNil(paramAnonymousIntent.getAction()).equals("action_kill_mm_process"))
         {
-          g.RJ();
-          com.tencent.mm.kernel.a.hold();
-          g.RM().mD("switch account ,delay logout");
-          com.tencent.mrs.a.onDestroy();
-          BaseEvent.onSingalCrash(0);
-          ab.dsI();
+          com.tencent.mm.kernel.h.baC();
+          com.tencent.mm.kernel.b.aZH();
+          com.tencent.mm.kernel.h.baF().FB("switch account ,delay logout");
+          Mars.onSingalCrash(0);
+          Log.appenderFlush();
           SettingsSwitchAccountUI.this.finish();
-          ab.i("MicroMsg.SettingsSwitchAccountUI", "try to kill mm pid %d", new Object[] { Integer.valueOf(Process.myPid()) });
-          paramAnonymousContext = new td();
-          com.tencent.mm.sdk.b.a.ymk.l(paramAnonymousContext);
+          Log.i("MicroMsg.SettingsSwitchAccountUI", "try to kill mm pid %d", new Object[] { Integer.valueOf(Process.myPid()) });
+          new aah().publish();
         }
-        AppMethodBeat.o(127497);
+        AppMethodBeat.o(74433);
       }
     };
-    AppMethodBeat.o(127509);
-  }
-  
-  private void YU(String paramString)
-  {
-    AppMethodBeat.i(127514);
-    Object localObject = (SwitchAccountModel)this.qFR.get(paramString);
-    if ((localObject != null) && (!this.qKq))
+    this.Pwu = new SwitchAccountGridView.b()
     {
-      this.qKq = true;
-      localObject = new s(paramString, ((SwitchAccountModel)localObject).username, ((SwitchAccountModel)localObject).qEK, "");
-      g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
-      this.qFN.setSwitchToWxUsername(paramString);
-      this.qFN.ckO();
-      ckx();
-    }
-    AppMethodBeat.o(127514);
+      public final void aVI(String paramAnonymousString)
+      {
+        AppMethodBeat.i(299093);
+        if (!Util.isNullOrNil(paramAnonymousString))
+        {
+          if (SettingsSwitchAccountUI.f(SettingsSwitchAccountUI.this) == 0)
+          {
+            SettingsSwitchAccountUI.a(SettingsSwitchAccountUI.this, paramAnonymousString);
+            AppMethodBeat.o(299093);
+            return;
+          }
+          SettingsSwitchAccountUI.b(SettingsSwitchAccountUI.this, paramAnonymousString);
+          AppMethodBeat.o(299093);
+          return;
+        }
+        if (SettingsSwitchAccountUI.f(SettingsSwitchAccountUI.this) == 0)
+        {
+          paramAnonymousString = com.tencent.mm.plugin.report.service.h.OAn;
+          if (SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).size() > 1)
+          {
+            i = 1;
+            paramAnonymousString.b(14978, new Object[] { Integer.valueOf(i), Integer.valueOf(11), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+            paramAnonymousString = (String)com.tencent.mm.kernel.h.baE().ban().d(274436, null);
+            i = com.tencent.mm.k.i.aRC().getInt("AffiliatedAcctRegSwitch", 0);
+            com.tencent.mm.kernel.h.baC();
+            if (((!com.tencent.mm.kernel.b.aZM()) || (!"CN".equalsIgnoreCase(paramAnonymousString)) || (i != 1)) && (!BuildInfo.DEBUG)) {
+              break label321;
+            }
+            paramAnonymousString = com.tencent.mm.plugin.report.service.h.OAn;
+            if (SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).size() <= 1) {
+              break label316;
+            }
+          }
+          label316:
+          for (int i = 1;; i = 0)
+          {
+            paramAnonymousString.b(14978, new Object[] { Integer.valueOf(i), Integer.valueOf(12), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+            paramAnonymousString = new com.tencent.mm.ui.widget.a.f(SettingsSwitchAccountUI.this.getContext(), 1, false);
+            paramAnonymousString.Vtg = new u.g()
+            {
+              public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
+              {
+                AppMethodBeat.i(298848);
+                paramAnonymous2s.c(0, SettingsSwitchAccountUI.this.getString(b.i.settings_switch_account_logout));
+                paramAnonymous2s.c(1, SettingsSwitchAccountUI.this.getString(b.i.settings_switch_account_register));
+                AppMethodBeat.o(298848);
+              }
+            };
+            paramAnonymousString.GAC = new u.i()
+            {
+              public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(298850);
+                switch (paramAnonymous2MenuItem.getItemId())
+                {
+                default: 
+                  AppMethodBeat.o(298850);
+                  return;
+                case 0: 
+                  paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.h.OAn;
+                  if (SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).size() > 1) {}
+                  for (paramAnonymous2Int = 1;; paramAnonymous2Int = 0)
+                  {
+                    paramAnonymous2MenuItem.b(14978, new Object[] { Integer.valueOf(paramAnonymous2Int), Integer.valueOf(13), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+                    paramAnonymous2MenuItem = MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0);
+                    paramAnonymous2MenuItem.edit().putString("last_switch_account_to_wx_username", "").commit();
+                    paramAnonymous2MenuItem.edit().putBoolean("last_switch_account_to_regui", false).commit();
+                    SettingsSwitchAccountUI.gWk();
+                    AppMethodBeat.o(298850);
+                    return;
+                  }
+                }
+                paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.h.OAn;
+                if (SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).size() > 1) {}
+                for (paramAnonymous2Int = 1;; paramAnonymous2Int = 0)
+                {
+                  paramAnonymous2MenuItem.b(14978, new Object[] { Integer.valueOf(paramAnonymous2Int), Integer.valueOf(14), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+                  paramAnonymous2MenuItem = new Intent(SettingsSwitchAccountUI.this, SettingsSelectCreateAccount.class);
+                  SettingsSwitchAccountUI.this.startActivityForResult(paramAnonymous2MenuItem, 702);
+                  break;
+                }
+              }
+            };
+            paramAnonymousString.dDn();
+            AppMethodBeat.o(299093);
+            return;
+            i = 0;
+            break;
+          }
+          label321:
+          paramAnonymousString = MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0);
+          paramAnonymousString.edit().putString("last_switch_account_to_wx_username", "").commit();
+          paramAnonymousString.edit().putBoolean("last_switch_account_to_regui", false).commit();
+          SettingsSwitchAccountUI.gWk();
+          AppMethodBeat.o(299093);
+          return;
+        }
+        Object localObject = new Intent(SettingsSwitchAccountUI.this, MobileInputUI.class);
+        ((Intent)localObject).putExtra("mobile_input_purpose", 1);
+        ((Intent)localObject).putExtra("from_switch_account", true);
+        paramAnonymousString = SettingsSwitchAccountUI.this;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$5", "onClickAvatar", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousString, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$5", "onClickAvatar", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.ui.base.b.nd(SettingsSwitchAccountUI.this);
+        AppMethodBeat.o(299093);
+      }
+    };
+    AppMethodBeat.o(74445);
   }
   
-  private void YV(String paramString)
+  private void aVF(String paramString)
   {
-    AppMethodBeat.i(154189);
+    AppMethodBeat.i(74450);
+    Object localObject = (SwitchAccountModel)this.Ppe.get(paramString);
+    if ((localObject != null) && (!this.Pwr))
+    {
+      this.Pwr = true;
+      Log.i("MicroMsg.SettingsSwitchAccountUI", "doLoginScene: wxid: %s username:%s, ticket:%s", new Object[] { paramString, ((SwitchAccountModel)localObject).username, ((SwitchAccountModel)localObject).PnS });
+      localObject = new u(paramString, ((SwitchAccountModel)localObject).username, ((SwitchAccountModel)localObject).PnS, "");
+      com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+      this.Ppc.setSwitchToWxUsername(paramString);
+      this.Ppc.gWD();
+      gWh();
+    }
+    AppMethodBeat.o(74450);
+  }
+  
+  private void aVG(String paramString)
+  {
+    AppMethodBeat.i(74461);
     Object localObject = new IntentFilter("action_kill_mm_process");
-    registerReceiver(this.qKs, (IntentFilter)localObject);
+    registerReceiver(this.Pwt, (IntentFilter)localObject);
     localObject = new Intent(this, FakeSwitchAccountUI.class);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.qFR.values());
+    localArrayList.addAll(this.Ppe.values());
     ((Intent)localObject).putParcelableArrayListExtra("key_switch_account_users", localArrayList);
     ((Intent)localObject).putExtra("key_switch_from_wx_username", paramString);
-    ah.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("transit_to_switch_account", true).commit();
-    paramString = aa.f(getSharedPreferences(ah.dsP(), 0));
-    float f = com.tencent.mm.cb.a.dr(this);
+    MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("transit_to_switch_account", true).commit();
+    paramString = LocaleUtil.loadApplicationLanguage(getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), this);
+    float f = com.tencent.mm.cd.a.getScaleSize(this);
     ((Intent)localObject).putExtra("key_langauage_code", paramString);
     ((Intent)localObject).putExtra("key_font_scale_size", f);
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "mm pid %d", new Object[] { Integer.valueOf(Process.myPid()) });
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "mm pid %d", new Object[] { Integer.valueOf(Process.myPid()) });
     ((Intent)localObject).putExtra("key_mm_process_pid", Process.myPid());
-    startActivity((Intent)localObject);
-    com.tencent.mm.ui.base.b.ih(this);
-    AppMethodBeat.o(154189);
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "transitToSwitchAccount", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramString.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "transitToSwitchAccount", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.ui.base.b.ng(this);
+    AppMethodBeat.o(74461);
   }
   
-  private static void aa(Map<String, SwitchAccountModel> paramMap)
+  private static void dHR()
   {
-    AppMethodBeat.i(127512);
-    if (paramMap.size() == 2)
+    AppMethodBeat.i(74458);
+    if ((com.tencent.mm.kernel.h.aZW() != null) && (com.tencent.mm.kernel.h.aZW().oun != null)) {
+      com.tencent.mm.kernel.h.aZW().oun.hb(false);
+    }
+    new hv().publish();
+    com.tencent.mm.kernel.h.baC();
+    Log.w("MicroMsg.SettingsSwitchAccountUI", "dklogout User LOGOUT Now uin:%d , clear cookie", new Object[] { Integer.valueOf(com.tencent.mm.kernel.b.getUin()) });
+    com.tencent.mm.modelstat.c.bMY().FY();
+    ((com.tencent.mm.plugin.expt.b.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.f.class)).dHR();
+    v localv = new v(2);
+    localv.oST = 1;
+    com.tencent.mm.kernel.h.aZW().a(localv, 0);
+    AppMethodBeat.o(74458);
+  }
+  
+  private void gWh()
+  {
+    AppMethodBeat.i(74451);
+    if (this.Pwr)
     {
-      String[] arrayOfString = new String[2];
-      Object localObject = paramMap.values().iterator();
-      int i = 0;
-      while (((Iterator)localObject).hasNext())
+      showOptionMenu(false);
+      AppMethodBeat.o(74451);
+      return;
+    }
+    if ((this.Ppe.size() <= 1) && (this.scene == 0))
+    {
+      showOptionMenu(false);
+      this.Pty = false;
+      this.Ppc.setDeleteState(false);
+      AppMethodBeat.o(74451);
+      return;
+    }
+    if (!this.Pty)
+    {
+      this.titleView.setText(b.i.settings_switch_account_login_title);
+      this.Pwo.setVisibility(8);
+      addTextOptionMenu(0, getString(b.i.app_manage), new MenuItem.OnMenuItemClickListener()
       {
-        arrayOfString[i] = ((SwitchAccountModel)((Iterator)localObject).next()).username;
-        i += 1;
-      }
-      if ((!bo.Q(new String[] { arrayOfString[0], arrayOfString[1] })) && (arrayOfString[0].equals(arrayOfString[1])))
-      {
-        paramMap = paramMap.keySet().iterator();
-        while (paramMap.hasNext())
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          localObject = (String)paramMap.next();
-          bx.fnO.pG((String)localObject);
+          AppMethodBeat.i(299384);
+          if (!SettingsSwitchAccountUI.g(SettingsSwitchAccountUI.this))
+          {
+            SettingsSwitchAccountUI.b(SettingsSwitchAccountUI.this, true);
+            SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).setDeleteState(SettingsSwitchAccountUI.g(SettingsSwitchAccountUI.this));
+            SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).gWD();
+            SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this);
+            if (cj.ono.bDj().size() <= 1) {
+              break label131;
+            }
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(3), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(299384);
+            return false;
+            label131:
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(3), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+          }
         }
-        paramMap = new NullPointerException(String.format("tow accounts have the same username!!! , %s, %s", new Object[] { arrayOfString[0], arrayOfString[1] }));
-        AppMethodBeat.o(127512);
-        throw paramMap;
+      });
+      AppMethodBeat.o(74451);
+      return;
+    }
+    this.titleView.setText(b.i.settings_switch_account_delete_title);
+    this.Pwo.setVisibility(0);
+    if (this.Pws)
+    {
+      addTextOptionMenu(0, getString(b.i.app_finish), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(299383);
+          SettingsSwitchAccountUI.b(SettingsSwitchAccountUI.this, false);
+          SettingsSwitchAccountUI.a(SettingsSwitchAccountUI.this, false);
+          SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).setDeleteState(false);
+          SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).gWD();
+          SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this);
+          if (SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).getAccountCount() == 0)
+          {
+            if (cj.ono.bDj().size() <= 1) {
+              break label245;
+            }
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(11), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+          }
+          for (;;)
+          {
+            Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(SettingsSwitchAccountUI.this);
+            ((Intent)localObject).addFlags(67108864);
+            paramAnonymousMenuItem = SettingsSwitchAccountUI.this;
+            localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$9", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousMenuItem, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$9", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            SettingsSwitchAccountUI.this.finish();
+            com.tencent.mm.ui.base.b.nf(SettingsSwitchAccountUI.this);
+            SettingsSwitchAccountUI.h(SettingsSwitchAccountUI.this);
+            AppMethodBeat.o(299383);
+            return false;
+            label245:
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(11), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+          }
+        }
+      });
+      AppMethodBeat.o(74451);
+      return;
+    }
+    addTextOptionMenu(0, getString(b.i.app_cancel), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(299143);
+        SettingsSwitchAccountUI.b(SettingsSwitchAccountUI.this, false);
+        SettingsSwitchAccountUI.a(SettingsSwitchAccountUI.this, false);
+        SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).setDeleteState(false);
+        SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).gWD();
+        SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this);
+        AppMethodBeat.o(299143);
+        return false;
       }
-    }
-    AppMethodBeat.o(127512);
+    });
+    AppMethodBeat.o(74451);
   }
   
-  private void ckx()
+  private void gWi()
   {
-    AppMethodBeat.i(127515);
-    if (this.qKq)
+    AppMethodBeat.i(74459);
+    if (com.tencent.mm.kernel.b.sy(com.tencent.mm.kernel.h.baC().mBT))
     {
-      this.qKk.setVisibility(8);
-      AppMethodBeat.o(127515);
-      return;
+      localObject = new af();
+      com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
     }
-    if ((this.qFR.size() <= 1) && (this.scene == 0))
+    Object localObject = new t();
+    com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+    this.Ppc.setLogoutState(true);
+    this.Ppc.gWD();
+    if (this.Pwq == null)
     {
-      this.qKk.setVisibility(8);
-      this.qIE = false;
-      this.qFN.setDeleteState(false);
-      AppMethodBeat.o(127515);
-      return;
+      this.Pwq = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(299156);
+          SettingsSwitchAccountUI.j(SettingsSwitchAccountUI.this);
+          AppMethodBeat.o(299156);
+          return false;
+        }
+      }, false);
+      this.Pwq.startTimer(8000L);
     }
-    if (!this.qIE)
-    {
-      this.titleView.setText(2131303465);
-      this.qKn.setVisibility(8);
-      this.qKk.setText(getString(2131303463));
-      this.qKk.setOnClickListener(new SettingsSwitchAccountUI.9(this));
-      AppMethodBeat.o(127515);
-      return;
-    }
-    this.titleView.setText(2131303463);
-    this.qKn.setVisibility(0);
-    if (this.qKr)
-    {
-      this.qKk.setText(getString(2131296964));
-      this.qKk.setOnClickListener(new SettingsSwitchAccountUI.10(this));
-      AppMethodBeat.o(127515);
-      return;
-    }
-    this.qKk.setText(getString(2131296888));
-    this.qKk.setOnClickListener(new SettingsSwitchAccountUI.11(this));
-    AppMethodBeat.o(127515);
+    AppMethodBeat.o(74459);
   }
   
-  private void cky()
+  private void gWj()
   {
-    AppMethodBeat.i(127523);
-    if (com.tencent.mm.kernel.a.jM(g.RJ().eHa))
+    AppMethodBeat.i(74460);
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "switch account logout");
+    com.tencent.mm.plugin.setting.c.pFo.aDD();
+    setBackBtnVisible(false);
+    showOptionMenu(false);
+    Object localObject = new ny();
+    ((ny)localObject).hQx.status = 0;
+    ((ny)localObject).hQx.reason = 0;
+    ((ny)localObject).publish();
+    localObject = new ah();
+    ((ah)localObject).hAc.hAd = true;
+    ((ah)localObject).publish();
+    MMEntryLock.unlock("show_whatsnew");
+    n.w(this, true);
+    if (com.tencent.mm.kernel.h.baz())
     {
-      localObject = new ad(2);
-      g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
+      localObject = d.Lz(z.bAM());
+      bg.okT.JD((String)localObject);
     }
-    Object localObject = new com.tencent.mm.modelsimple.r();
-    g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
-    this.qFN.setLogoutState(true);
-    this.qFN.ckO();
-    if (this.qKp == null)
-    {
-      this.qKp = new ap(Looper.getMainLooper(), new SettingsSwitchAccountUI.3(this), false);
-      this.qKp.ag(8000L, 8000L);
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "last login username in sp %s", new Object[] { bg.okT.aM("login_user_name", "") });
+    localObject = z.bBM();
+    if (Util.isNullOrNil((String)((Map)localObject).get("login_user_name"))) {
+      ((Map)localObject).put("login_user_name", bg.okT.aM("login_user_name", ""));
     }
-    AppMethodBeat.o(127523);
-  }
-  
-  private void ckz()
-  {
-    AppMethodBeat.i(127524);
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "switch account logout");
-    com.tencent.mm.plugin.setting.b.gmP.BU();
-    this.gta.setVisibility(8);
-    this.qKk.setVisibility(8);
-    Object localObject = new jo();
-    ((jo)localObject).cze.status = 0;
-    ((jo)localObject).cze.aXG = 0;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    localObject = new y();
-    ((y)localObject).cne.cnf = true;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    aj.apl("show_whatsnew");
-    com.tencent.mm.kernel.l.n(this, true);
-    w.I(this, null);
-    if (g.RG())
-    {
-      localObject = com.tencent.mm.ah.b.qS(com.tencent.mm.model.r.Zn());
-      av.flM.po((String)localObject);
-    }
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "last login username in sp %s", new Object[] { av.flM.Y("login_user_name", "") });
-    localObject = com.tencent.mm.model.r.ZV();
-    if (bo.isNullOrNil((String)((Map)localObject).get("login_user_name"))) {
-      ((Map)localObject).put("login_user_name", av.flM.Y("login_user_name", ""));
-    }
-    bx.fnO.g(com.tencent.mm.model.r.Zn(), (Map)localObject);
-    ah.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("last_logout_switch_account", true).commit();
-    YV(com.tencent.mm.model.r.Zn());
-    AppMethodBeat.o(127524);
+    cj.ono.g(z.bAM(), (Map)localObject);
+    MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0).edit().putBoolean("last_logout_switch_account", true).commit();
+    aVG(z.bAM());
+    AppMethodBeat.o(74460);
   }
   
   private void goBack()
   {
-    AppMethodBeat.i(127519);
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "go back");
+    AppMethodBeat.i(74455);
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "go back");
     if ((this.scene == 2) || (this.scene == 1))
     {
-      Intent localIntent = com.tencent.mm.plugin.account.a.a.gmO.bm(this);
-      localIntent.addFlags(67108864);
-      localIntent.putExtra("can_finish", true);
-      startActivity(localIntent);
+      Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this);
+      ((Intent)localObject).addFlags(67108864);
+      ((Intent)localObject).putExtra("can_finish", true);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
-      com.tencent.mm.ui.base.b.ig(this);
-      this.qKq = false;
-      AppMethodBeat.o(127519);
+      com.tencent.mm.ui.base.b.nf(this);
+      this.Pwr = false;
+      AppMethodBeat.o(74455);
       return;
     }
+    com.tencent.mm.plugin.ball.f.f.d(false, true, true);
     finish();
-    AppMethodBeat.o(127519);
-  }
-  
-  private static void logout()
-  {
-    AppMethodBeat.i(127522);
-    if ((g.Rc() != null) && (g.Rc().ftA != null)) {
-      g.Rc().ftA.cR(false);
-    }
-    Object localObject = new gk();
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    g.RJ();
-    ab.w("MicroMsg.SettingsSwitchAccountUI", "dklogout User LOGOUT Now uin:%d , clear cookie", new Object[] { Integer.valueOf(com.tencent.mm.kernel.a.getUin()) });
-    com.tencent.mm.modelstat.c.akw().commitNow();
-    ((com.tencent.mm.plugin.expt.a.c)g.E(com.tencent.mm.plugin.expt.a.c.class)).logout();
-    localObject = new t(2);
-    ((t)localObject).fPH = 1;
-    g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
-    AppMethodBeat.o(127522);
+    AppMethodBeat.o(74455);
   }
   
   public int getLayoutId()
   {
-    return 2130970703;
+    return b.g.settings_switch_account;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(138712);
+    AppMethodBeat.i(74447);
     setMMTitle("");
-    showMMLogo();
-    getSupportActionBar().hide();
-    getController().n(this, -1);
+    hideActionbarLine();
+    setActionbarColor(getResources().getColor(b.c.settings_bg));
+    addTextOptionMenu(0, getString(b.i.app_manage), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        return false;
+      }
+    });
     this.scene = getIntent().getIntExtra("key_scene", 0);
-    this.qKl = findViewById(2131827653);
-    this.qKm = findViewById(2131827652);
-    this.titleView = ((TextView)findViewById(2131827656));
-    this.qKn = ((TextView)findViewById(2131827655));
-    this.qKk = ((TextView)findViewById(2131827658));
-    this.gta = ((TextView)findViewById(2131827651));
-    this.qFN = ((SwitchAccountGridView)findViewById(2131827657));
-    this.qFN.setRowCount(1);
-    this.qFN.setOnClickAvatarListener(new SettingsSwitchAccountUI.4(this));
+    this.AtJ = findViewById(b.f.switch_account_title_container);
+    this.Pwn = findViewById(b.f.switch_account_icon);
+    this.titleView = ((TextView)findViewById(b.f.switch_account_title));
+    this.Pwo = ((TextView)findViewById(b.f.switch_account_del_tip));
+    this.Ppc = ((SwitchAccountGridView)findViewById(b.f.switch_account_grid));
+    this.Ppc.setOnClickAvatarListener(this.Pwu);
     Object localObject1;
-    label249:
-    String str;
+    label224:
+    String str1;
     Object localObject2;
+    String str2;
+    label395:
+    boolean bool;
     if (this.scene == 0)
     {
       localObject1 = new Intent(this, SwitchAccountReceiver.class);
       ((Intent)localObject1).putExtra("switch_process_action_code_key", "action_switch_account");
-      ah.getContext().sendBroadcast((Intent)localObject1);
-      this.gta.setOnClickListener(new SettingsSwitchAccountUI.5(this));
-      localObject1 = bx.fnO.abf();
-      g.RJ();
-      if (!com.tencent.mm.kernel.a.QT()) {
-        break label660;
-      }
-      this.gEZ = ((String)g.RL().Ru().get(2, null));
-      ab.i("MicroMsg.SettingsSwitchAccountUI", "scene %d， lastLoginWxUsername %s", new Object[] { Integer.valueOf(this.scene), this.gEZ });
-      if ((bo.isNullOrNil(this.gEZ)) || (((Set)localObject1).contains(this.gEZ))) {
-        break label678;
-      }
-      if ((this.scene != 2) || (bx.fnO.pI(this.gEZ)))
+      MMApplicationContext.getContext().sendBroadcast((Intent)localObject1);
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
-        localObject1 = av.flM.Y("login_user_name", "");
-        str = av.flM.aar();
-        localObject2 = av.flM.Y("last_login_use_voice", "");
-        localObject1 = new SwitchAccountModel(this.gEZ, (String)localObject1, str, "", bo.apV((String)localObject2));
-        this.qFR.put(this.gEZ, localObject1);
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(299067);
+          SettingsSwitchAccountUI.b(SettingsSwitchAccountUI.this);
+          AppMethodBeat.o(299067);
+          return false;
+        }
+      });
+      localObject1 = cj.ono.bDj();
+      com.tencent.mm.kernel.h.baC();
+      if (!com.tencent.mm.kernel.b.aZM()) {
+        break label733;
       }
-      label388:
-      if (this.qFR.size() == 0)
+      this.qaF = ((String)com.tencent.mm.kernel.h.baE().ban().d(2, null));
+      Log.i("MicroMsg.SettingsSwitchAccountUI", "scene %d， lastLoginWxUsername %s", new Object[] { Integer.valueOf(this.scene), this.qaF });
+      if ((Util.isNullOrNil(this.qaF)) || (((Set)localObject1).contains(this.qaF))) {
+        break label751;
+      }
+      if ((this.scene != 2) || (cj.ono.Ke(this.qaF)))
+      {
+        localObject1 = bg.okT.aM("login_user_name", "");
+        str1 = bg.okT.aM("last_login_nick_name", "");
+        localObject2 = bg.okT.bCr();
+        str2 = bg.okT.aM("last_login_use_voice", "");
+        String str3 = cj.ono.getString(this.qaF, "last_logout_no_pwd_ticket");
+        localObject1 = new SwitchAccountModel(this.qaF, (String)localObject1, (String)localObject2, str3, Util.safeParseInt(str2), str1);
+        this.Ppe.put(this.qaF, localObject1);
+      }
+      if (this.Ppe.size() == 0)
       {
         localObject1 = new Intent(this, MobileInputUI.class);
         ((Intent)localObject1).putExtra("mobile_input_purpose", 1);
         ((Intent)localObject1).putExtra("can_finish", true);
-        startActivity((Intent)localObject1);
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
-        com.tencent.mm.ui.base.b.ih(this);
+        com.tencent.mm.ui.base.b.ng(this);
       }
-      aa(this.qFR);
-      this.qFN.ab(this.qFR);
+      this.Ppc.aQ(this.Ppe);
       if (this.scene != 1) {
-        break label835;
+        break label1018;
       }
-      localObject1 = ah.getContext().getSharedPreferences("switch_account_preferences", 0);
-      str = ((SharedPreferences)localObject1).getString("last_switch_account_to_wx_username", "");
+      localObject1 = MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0);
+      str1 = ((SharedPreferences)localObject1).getString("last_switch_account_to_wx_username", "");
+      bool = ((SharedPreferences)localObject1).getBoolean("last_switch_account_to_regui", false);
       ((SharedPreferences)localObject1).edit().putBoolean("transit_to_switch_account", false).commit();
-      ab.i("MicroMsg.SettingsSwitchAccountUI", "switch to %s", new Object[] { str });
-      if (bo.isNullOrNil(str)) {
-        break label788;
+      Log.i("MicroMsg.SettingsSwitchAccountUI", "switch to %s", new Object[] { str1 });
+      if (Util.isNullOrNil(str1)) {
+        break label881;
       }
-      g.RJ();
-      if (!com.tencent.mm.kernel.a.QT()) {
-        break label780;
+      com.tencent.mm.kernel.h.baC();
+      if (!com.tencent.mm.kernel.b.aZM()) {
+        break label873;
       }
-      ab.w("MicroMsg.SettingsSwitchAccountUI", "already login ,quit");
+      Log.w("MicroMsg.SettingsSwitchAccountUI", "already login ,quit");
       finish();
     }
     for (;;)
     {
-      this.qFN.ckO();
-      ckx();
-      this.qFN.setOnDeleteAvatarListener(new SettingsSwitchAccountUI.6(this));
-      this.qKo = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.qKo.addUpdateListener(new SettingsSwitchAccountUI.7(this));
-      this.qKo.addListener(new SettingsSwitchAccountUI.8(this));
-      this.qKo.setDuration(500L);
-      AppMethodBeat.o(138712);
+      this.Ppc.gWD();
+      gWh();
+      this.Ppc.setOnDeleteAvatarListener(new SwitchAccountGridView.c()
+      {
+        public final void aVH(final String paramAnonymousString)
+        {
+          AppMethodBeat.i(74439);
+          k.b(SettingsSwitchAccountUI.this, SettingsSwitchAccountUI.this.getString(b.i.settings_switch_account_delete_alert, new Object[] { ((SwitchAccountModel)SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).get(paramAnonymousString)).username }), SettingsSwitchAccountUI.this.getString(b.i.app_tip), SettingsSwitchAccountUI.this.getString(b.i.app_yes), SettingsSwitchAccountUI.this.getString(b.i.app_no), new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(74438);
+              Log.i("MicroMsg.SettingsSwitchAccountUI", "delete %s", new Object[] { paramAnonymousString });
+              SettingsSwitchAccountUI.a(SettingsSwitchAccountUI.this, true);
+              cj.ono.Kb(paramAnonymousString);
+              SettingsSwitchAccountUI.c(SettingsSwitchAccountUI.this).remove(paramAnonymousString);
+              paramAnonymous2DialogInterface = SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this);
+              String str = paramAnonymousString;
+              if (paramAnonymous2DialogInterface.PyA.contains(str))
+              {
+                paramAnonymous2Int = paramAnonymous2DialogInterface.PyA.indexOf(str);
+                paramAnonymous2DialogInterface.PyA.remove(str);
+                paramAnonymous2DialogInterface.PyB.remove(paramAnonymous2Int);
+                paramAnonymous2DialogInterface.PyC.remove(paramAnonymous2Int);
+              }
+              SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this);
+              SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).gWD();
+              if (SettingsSwitchAccountUI.f(SettingsSwitchAccountUI.this) == 0)
+              {
+                if (cj.ono.bDj().size() > 0)
+                {
+                  com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(4), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+                  AppMethodBeat.o(74438);
+                  return;
+                }
+                com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(4), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+              }
+              AppMethodBeat.o(74438);
+            }
+          }, null);
+          AppMethodBeat.o(74439);
+        }
+      });
+      this.Pwp = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.Pwp.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(299092);
+          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+          SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).setTranslationY(-f * SettingsSwitchAccountUI.d(SettingsSwitchAccountUI.this).getHeight());
+          AppMethodBeat.o(299092);
+        }
+      });
+      this.Pwp.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(299389);
+          Log.i("MicroMsg.SettingsSwitchAccountUI", "up animation end");
+          Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(SettingsSwitchAccountUI.this);
+          ((Intent)localObject).addFlags(67108864);
+          paramAnonymousAnimator = SettingsSwitchAccountUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousAnimator, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$7", "onAnimationEnd", "(Landroid/animation/Animator;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousAnimator.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousAnimator, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI$7", "onAnimationEnd", "(Landroid/animation/Animator;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          SettingsSwitchAccountUI.this.finish();
+          com.tencent.mm.ui.base.b.nf(SettingsSwitchAccountUI.this);
+          AppMethodBeat.o(299389);
+        }
+      });
+      this.Pwp.setDuration(500L);
+      AppMethodBeat.o(74447);
       return;
-      this.gta.setVisibility(8);
+      setBackBtnVisible(false);
       break;
-      label660:
-      this.gEZ = av.flM.Y("login_weixin_username", "");
-      break label249;
-      label678:
+      label733:
+      this.qaF = bg.okT.aM("login_weixin_username", "");
+      break label224;
+      label751:
       if (((Set)localObject1).isEmpty()) {
-        break label388;
+        break label395;
       }
       localObject1 = ((Set)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        str = (String)((Iterator)localObject1).next();
-        localObject2 = new SwitchAccountModel(str, bx.fnO.getString(str, "login_user_name"), bx.fnO.getString(str, "last_avatar_path"), bx.fnO.getString(str, "last_logout_no_pwd_ticket"), bo.apV(bx.fnO.getString(str, "last_login_use_voice")));
-        this.qFR.put(str, localObject2);
+        str1 = (String)((Iterator)localObject1).next();
+        localObject2 = cj.ono.getString(str1, "login_user_name");
+        str2 = cj.ono.getString(str1, "last_login_nick_name");
+        localObject2 = new SwitchAccountModel(str1, (String)localObject2, cj.ono.getString(str1, "last_avatar_path"), cj.ono.getString(str1, "last_logout_no_pwd_ticket"), Util.safeParseInt(cj.ono.getString(str1, "last_login_use_voice")), str2);
+        this.Ppe.put(str1, localObject2);
       }
-      break label388;
-      label780:
-      YU(str);
+      break label395;
+      label873:
+      aVF(str1);
       continue;
-      label788:
-      this.qKq = false;
-      localObject1 = new Intent(this, MobileInputUI.class);
-      ((Intent)localObject1).putExtra("mobile_input_purpose", 1);
-      ((Intent)localObject1).putExtra("from_switch_account", true);
-      startActivity((Intent)localObject1);
-      com.tencent.mm.ui.base.b.ie(this);
-      continue;
-      label835:
+      label881:
+      this.Pwr = false;
+      if (!bool)
+      {
+        localObject1 = new Intent(this, MobileInputUI.class);
+        ((Intent)localObject1).putExtra("mobile_input_purpose", 1);
+      }
+      for (;;)
+      {
+        ((Intent)localObject1).putExtra("from_switch_account", true);
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "initView", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        com.tencent.mm.ui.base.b.ng(this);
+        cj.onp = true;
+        break;
+        localObject1 = new Intent(this, RegByMobileRegAIOUI.class);
+      }
+      label1018:
       if (this.scene == 0) {
-        this.qFN.setLastLoginWxUsername(this.gEZ);
+        this.Ppc.setLastLoginWxUsername(this.qaF);
       }
     }
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
   {
-    AppMethodBeat.i(127521);
+    AppMethodBeat.i(74457);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 701) && (paramInt2 == -1)) {
-      cky();
+    if (paramInt1 == 701)
+    {
+      if (paramInt2 == -1)
+      {
+        gWi();
+        AppMethodBeat.o(74457);
+      }
     }
-    AppMethodBeat.o(127521);
+    else if (paramInt1 == 702)
+    {
+      if (paramInt2 == 1)
+      {
+        paramIntent = MMApplicationContext.getContext().getSharedPreferences("switch_account_preferences", 0);
+        paramIntent.edit().putString("last_switch_account_to_wx_username", "").commit();
+        paramIntent.edit().putBoolean("last_switch_account_to_regui", true).commit();
+        dHR();
+        AppMethodBeat.o(74457);
+        return;
+      }
+      if (paramInt2 == -1)
+      {
+        Object localObject1 = cj.ono.bDj();
+        this.Ppe.clear();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          String str1 = (String)((Iterator)localObject1).next();
+          Object localObject2 = cj.ono.getString(str1, "login_user_name");
+          String str2 = cj.ono.getString(str1, "last_login_nick_name");
+          localObject2 = new SwitchAccountModel(str1, (String)localObject2, cj.ono.getString(str1, "last_avatar_path"), cj.ono.getString(str1, "last_logout_no_pwd_ticket"), Util.safeParseInt(cj.ono.getString(str1, "last_login_use_voice")), str2);
+          this.Ppe.put(str1, localObject2);
+        }
+        this.Ppc.aQ(this.Ppe);
+        gWh();
+        this.Ppc.gWD();
+        this.Ppc.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(299148);
+            SettingsSwitchAccountUI.i(SettingsSwitchAccountUI.this).aVI(paramIntent.getStringExtra("SWITCH_TO_USERNAME"));
+            aa.makeText(SettingsSwitchAccountUI.this.getContext(), SettingsSwitchAccountUI.this.getString(b.i.settings_register_affiliate_account_complete), 1).show();
+            AppMethodBeat.o(299148);
+          }
+        });
+      }
+    }
+    AppMethodBeat.o(74457);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127510);
+    AppMethodBeat.i(74446);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(127510);
+    AppMethodBeat.o(74446);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(127520);
+    AppMethodBeat.i(74456);
     super.onDestroy();
     try
     {
-      unregisterReceiver(this.qKs);
-      AppMethodBeat.o(127520);
+      unregisterReceiver(this.Pwt);
+      AppMethodBeat.o(74456);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(127520);
+      AppMethodBeat.o(74456);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(127513);
+    AppMethodBeat.i(74449);
     if (paramInt == 4)
     {
       goBack();
-      AppMethodBeat.o(127513);
+      AppMethodBeat.o(74449);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(127513);
+    AppMethodBeat.o(74449);
     return bool;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(127516);
+    AppMethodBeat.i(74452);
     super.onResume();
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "onResume");
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "onResume");
+    com.tencent.mm.plugin.ball.f.f.d(true, true, true);
     if ((this.scene == 1) || (this.scene == 2))
     {
-      g.Rc().a(701, this);
-      g.Rc().a(252, this);
+      com.tencent.mm.kernel.h.aZW().a(701, this);
+      com.tencent.mm.kernel.h.aZW().a(252, this);
     }
     if (this.scene == 0)
     {
-      g.Rc().a(281, this);
-      g.Rc().a(282, this);
-      g.Rc().a(255, this);
+      com.tencent.mm.kernel.h.aZW().a(281, this);
+      com.tencent.mm.kernel.h.aZW().a(282, this);
+      com.tencent.mm.kernel.h.aZW().a(255, this);
     }
-    this.qFN.ckO();
-    ckx();
-    if (((this.scene == 1) || (this.scene == 2)) && (g.RG()) && (g.RJ().eHg))
+    this.Ppc.gWD();
+    gWh();
+    if (((this.scene == 1) || (this.scene == 2)) && (com.tencent.mm.kernel.h.baz()) && (com.tencent.mm.kernel.h.baC().mBZ))
     {
-      ab.i("MicroMsg.SettingsSwitchAccountUI", "account initialized");
-      this.qKq = true;
-      Intent localIntent = com.tencent.mm.plugin.account.a.a.gmO.bm(this);
-      localIntent.addFlags(67108864);
-      startActivity(localIntent);
+      Log.i("MicroMsg.SettingsSwitchAccountUI", "account initialized");
+      this.Pwr = true;
+      Object localObject = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this);
+      ((Intent)localObject).addFlags(67108864);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
-      com.tencent.mm.ui.base.b.ig(this);
+      com.tencent.mm.ui.base.b.nf(this);
     }
-    AppMethodBeat.o(127516);
+    AppMethodBeat.o(74452);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(127518);
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "errCode %d, errMsg %s, scene %s, type  %d, this %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramm, Integer.valueOf(paramm.getType()), this });
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    if ((paramm.getType() == 252) || (paramm.getType() == 701))
+    AppMethodBeat.i(74454);
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "errCode %d, errMsg %s, scene %s, type  %d, this %s", new Object[] { Integer.valueOf(paramInt2), paramString, paramp, Integer.valueOf(paramp.getType()), this });
+    if ((paramp.getType() == 252) || (paramp.getType() == 701))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label456;
+        break label270;
       }
-      this.qKl.setVisibility(4);
-      this.qKm.setVisibility(4);
-      localObject1 = this.qFN;
-      if (!((SwitchAccountGridView)localObject1).qMo)
-      {
-        if ((((SwitchAccountGridView)localObject1).qMp == null) && (!bo.isNullOrNil(((SwitchAccountGridView)localObject1).qMn)))
-        {
-          int i = Math.min(2, ((SwitchAccountGridView)localObject1).qMq.size());
-          localObject2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-          ((ValueAnimator)localObject2).addUpdateListener(new SwitchAccountGridView.4((SwitchAccountGridView)localObject1, i));
-          ((ValueAnimator)localObject2).setDuration(200L);
-          localObject3 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-          ((ValueAnimator)localObject2).addUpdateListener(new SwitchAccountGridView.5((SwitchAccountGridView)localObject1, i));
-          ((ValueAnimator)localObject3).setDuration(300L);
-          ((SwitchAccountGridView)localObject1).qMp = new AnimatorSet();
-          ((SwitchAccountGridView)localObject1).qMp.addListener(new SwitchAccountGridView.6((SwitchAccountGridView)localObject1));
-          ((SwitchAccountGridView)localObject1).qMp.playSequentially(new Animator[] { localObject2, localObject3 });
-        }
-        if (((SwitchAccountGridView)localObject1).qMp != null)
-        {
-          ((SwitchAccountGridView)localObject1).qMo = true;
-          ((SwitchAccountGridView)localObject1).qMp.start();
-        }
+      this.AtJ.setVisibility(4);
+      this.Pwn.setVisibility(4);
+      com.tencent.mm.kernel.b.aZI();
+      com.tencent.mm.plugin.account.friend.model.i.bXa();
+      if (cj.ono.bDj().size() <= 1) {
+        break label216;
       }
-      com.tencent.mm.kernel.a.unhold();
-      com.tencent.mm.plugin.account.friend.a.l.aqv();
-      w.cs(this);
-      if (bx.fnO.abf().size() <= 1) {
-        break label417;
-      }
-      com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(0), bx.fnO.abg() });
-      this.qFN.setOnAnimatorEndListener(new SwitchAccountGridView.a()
-      {
-        public final void ckB()
-        {
-          AppMethodBeat.i(127498);
-          String str = com.tencent.mm.model.r.Zn();
-          SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this).setLastLoginWxUsername(str);
-          SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this).setSwitchToWxUsername("");
-          SettingsSwitchAccountUI.e(SettingsSwitchAccountUI.this).ckO();
-          SettingsSwitchAccountUI.i(SettingsSwitchAccountUI.this).start();
-          AppMethodBeat.o(127498);
-        }
-      });
+      com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(0), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
+      this.Pwp.start();
     }
     for (;;)
     {
-      if (paramm.getType() == 255)
+      if (paramp.getType() == 255)
       {
-        if (((t)paramm).fPI != 2) {
-          break label1030;
+        if (((v)paramp).oSU != 2) {
+          break label983;
         }
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          cky();
-          AppMethodBeat.o(127518);
+          gWi();
+          AppMethodBeat.o(74454);
           return;
-          label417:
-          com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(0), bx.fnO.abg() });
+          label216:
+          com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(0), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
           break;
-          label456:
-          this.qFN.setSwitchToWxUsername("");
-          this.qKq = false;
-          com.tencent.mm.ui.base.h.bO(this, getString(2131303464));
-          localObject1 = ((s)paramm).fPA;
-          if ((!bo.isNullOrNil((String)localObject1)) && (this.qFR.containsKey(localObject1)))
+          label270:
+          this.Ppc.setSwitchToWxUsername("");
+          this.Pwr = false;
+          k.cZ(this, getString(b.i.settings_switch_account_error_tip));
+          Object localObject = ((u)paramp).oSM;
+          Intent localIntent;
+          if ((!Util.isNullOrNil((String)localObject)) && (this.Ppe.containsKey(localObject)))
           {
-            localObject2 = new Intent();
-            localObject3 = (SwitchAccountModel)this.qFR.get(localObject1);
-            ab.i("MicroMsg.SettingsSwitchAccountUI", "wxID %s, plugSwitch: %d", new Object[] { localObject1, Integer.valueOf(((SwitchAccountModel)localObject3).qEL) });
-            if ((((SwitchAccountModel)localObject3).qEL & 0x20000) == 0) {
-              break label664;
+            localIntent = new Intent();
+            SwitchAccountModel localSwitchAccountModel = (SwitchAccountModel)this.Ppe.get(localObject);
+            Log.i("MicroMsg.SettingsSwitchAccountUI", "wxID %s, plugSwitch: %d", new Object[] { localObject, Integer.valueOf(localSwitchAccountModel.PnT) });
+            if ((WeChatBrands.Business.Entries.MeSetSecurityVoicePrint.banned()) || ((localSwitchAccountModel.PnT & 0x20000) == 0)) {
+              break label572;
             }
-            ((Intent)localObject2).setClass(this, LoginVoiceUI.class);
+            localIntent.setClass(this, LoginVoiceUI.class);
           }
           for (;;)
           {
-            ((Intent)localObject2).putExtra("switch_login_wx_id", (String)localObject1);
-            startActivity((Intent)localObject2);
-            com.tencent.mm.ui.base.b.ih(this);
-            if (bx.fnO.abf().size() <= 1) {
-              break label677;
+            localIntent.putExtra("switch_login_wx_id", (String)localObject);
+            localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+            com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsSwitchAccountUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            com.tencent.mm.ui.base.b.ng(this);
+            if (cj.ono.bDj().size() <= 1) {
+              break label585;
             }
-            com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(1), bx.fnO.abg() });
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(1), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
             break;
-            label664:
-            ((Intent)localObject2).setClass(this, LoginPasswordUI.class);
+            label572:
+            localIntent.setClass(this, LoginPasswordUI.class);
           }
-          label677:
-          com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(1), bx.fnO.abg() });
+          label585:
+          com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(1), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
           continue;
         }
         if ((paramInt2 == -3) && (paramInt1 == 4))
         {
-          if (bx.fnO.abf().size() > 1) {
-            com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(7), bx.fnO.abg() });
+          if (cj.ono.bDj().size() > 1) {
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(1), Integer.valueOf(7), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
           }
           for (;;)
           {
             paramString = new Intent(getContext(), RegByMobileSetPwdUI.class);
-            paramString.putExtra("kintent_hint", getString(2131302457));
+            paramString.putExtra("kintent_hint", getString(b.i.regbymobile_reg_setpwd_tip_when_logout));
             startActivityForResult(paramString, 701);
-            AppMethodBeat.o(127518);
+            AppMethodBeat.o(74454);
             return;
-            com.tencent.mm.plugin.report.service.h.qsU.e(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(7), bx.fnO.abg() });
+            com.tencent.mm.plugin.report.service.h.OAn.b(14978, new Object[] { Integer.valueOf(0), Integer.valueOf(7), cj.ono.bDk(), cj.ono.bDl(), q.aPg() });
           }
         }
-        if (!com.tencent.mm.plugin.setting.b.gmP.a(this, paramInt1, paramInt2, paramString)) {
-          break label1030;
+        if (!com.tencent.mm.plugin.setting.c.pFo.a(this, paramInt1, paramInt2, paramString)) {
+          break label983;
         }
-        AppMethodBeat.o(127518);
+        AppMethodBeat.o(74454);
         return;
       }
     }
-    if (paramm.getType() == 282)
+    if (paramp.getType() == 282)
     {
-      g.RJ();
-      if (com.tencent.mm.kernel.a.QT())
+      com.tencent.mm.kernel.h.baC();
+      if (com.tencent.mm.kernel.b.aZM())
       {
-        paramString = ((bat)((com.tencent.mm.modelsimple.r)paramm).rr.fsW.fta).xpX;
+        paramString = ((djy)c.c.b(((t)paramp).rr.otC)).aaPR;
         if (paramString != null) {
-          break label1037;
+          break label990;
         }
       }
     }
-    label1030:
-    label1037:
+    label983:
+    label990:
     for (paramInt1 = -1;; paramInt1 = paramString.length())
     {
-      ab.d("MicroMsg.SettingsSwitchAccountUI", "logout return noPwdTicket[%s]", new Object[] { Integer.valueOf(paramInt1) });
-      if (bo.isNullOrNil(paramString)) {
-        ab.i("MicroMsg.SettingsSwitchAccountUI", "no pwd ticket is null!");
+      Log.d("MicroMsg.SettingsSwitchAccountUI", "logout return noPwdTicket[%s]", new Object[] { Integer.valueOf(paramInt1) });
+      if (Util.isNullOrNil(paramString)) {
+        Log.i("MicroMsg.SettingsSwitchAccountUI", "no pwd ticket is null!");
       }
-      paramm = com.tencent.mm.model.r.Zn();
-      ab.i("MicroMsg.SettingsSwitchAccountUI", "logout return username[%s]", new Object[] { paramm });
-      bx.fnO.n(paramm, "last_logout_no_pwd_ticket", paramString);
-      if ((this.qKp != null) && (!this.qKp.dtj()))
+      paramp = z.bAM();
+      Log.i("MicroMsg.SettingsSwitchAccountUI", "logout return username[%s]", new Object[] { paramp });
+      cj.ono.s(paramp, "last_logout_no_pwd_ticket", paramString);
+      if ((this.Pwq != null) && (!this.Pwq.stopped()))
       {
-        this.qKp.stopTimer();
-        ckz();
+        this.Pwq.stopTimer();
+        gWj();
       }
-      AppMethodBeat.o(127518);
+      AppMethodBeat.o(74454);
       return;
     }
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(127517);
+    AppMethodBeat.i(74453);
     super.onStop();
-    ab.i("MicroMsg.SettingsSwitchAccountUI", "onStop");
+    Log.i("MicroMsg.SettingsSwitchAccountUI", "onStop");
     if (this.scene == 1)
     {
-      SwitchAccountGridView localSwitchAccountGridView = this.qFN;
-      if (localSwitchAccountGridView.qMo)
+      SwitchAccountGridView localSwitchAccountGridView = this.Ppc;
+      if (localSwitchAccountGridView.pIz)
       {
-        localSwitchAccountGridView.qMo = false;
-        if (localSwitchAccountGridView.qMp != null) {
-          localSwitchAccountGridView.qMp.end();
+        localSwitchAccountGridView.pIz = false;
+        if (localSwitchAccountGridView.Pyz != null) {
+          localSwitchAccountGridView.Pyz.end();
         }
       }
     }
-    g.Rc().b(701, this);
-    g.Rc().b(252, this);
-    g.Rc().b(281, this);
-    g.Rc().b(282, this);
-    g.Rc().b(255, this);
-    AppMethodBeat.o(127517);
+    com.tencent.mm.kernel.h.aZW().b(701, this);
+    com.tencent.mm.kernel.h.aZW().b(252, this);
+    com.tencent.mm.kernel.h.aZW().b(281, this);
+    com.tencent.mm.kernel.h.aZW().b(282, this);
+    com.tencent.mm.kernel.h.aZW().b(255, this);
+    AppMethodBeat.o(74453);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -707,7 +1000,7 @@ public class SettingsSwitchAccountUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSwitchAccountUI
  * JD-Core Version:    0.7.0.1
  */

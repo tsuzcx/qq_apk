@@ -3,7 +3,7 @@ package com.tencent.mobileqq.nearby.now.view;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class ShortVideoCommentsView$BottomAreaRunnable
+class ShortVideoCommentsView$BottomAreaRunnable
   implements Runnable
 {
   private int a = 2;
@@ -15,27 +15,29 @@ public class ShortVideoCommentsView$BottomAreaRunnable
   
   public void run()
   {
-    switch (this.a)
+    int i = this.a;
+    if (i != 0)
     {
-    default: 
-      ShortVideoCommentsView.b(this.this$0).setVisibility(8);
-      ShortVideoCommentsView.a(this.this$0).setVisibility(8);
-      return;
-    case 0: 
-      ShortVideoCommentsView.a(this.this$0).setVisibility(8);
-      ShortVideoCommentsView.b(this.this$0).setVisibility(0);
+      if (i != 1)
+      {
+        ShortVideoCommentsView.access$2800(this.this$0).setVisibility(8);
+        ShortVideoCommentsView.access$2700(this.this$0).setVisibility(8);
+        return;
+      }
+      ShortVideoCommentsView.access$2800(this.this$0).setVisibility(8);
+      if ((ShortVideoCommentsView.access$000(this.this$0) != null) && (ShortVideoCommentsView.access$000(this.this$0).b != 4)) {
+        ShortVideoCommentsView.access$2700(this.this$0).setVisibility(0);
+      }
+      ShortVideoCommentsView.access$2900(this.this$0);
       return;
     }
-    ShortVideoCommentsView.b(this.this$0).setVisibility(8);
-    if ((ShortVideoCommentsView.a(this.this$0) != null) && (ShortVideoCommentsView.a(this.this$0).a != 4)) {
-      ShortVideoCommentsView.a(this.this$0).setVisibility(0);
-    }
-    ShortVideoCommentsView.d(this.this$0);
+    ShortVideoCommentsView.access$2700(this.this$0).setVisibility(8);
+    ShortVideoCommentsView.access$2800(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.BottomAreaRunnable
  * JD-Core Version:    0.7.0.1
  */

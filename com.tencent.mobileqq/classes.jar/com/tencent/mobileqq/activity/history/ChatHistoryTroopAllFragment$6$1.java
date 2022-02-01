@@ -1,31 +1,38 @@
 package com.tencent.mobileqq.activity.history;
 
-import aiaz;
-import alaz;
-import awhr;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.model.IMessageForApollo;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
-public class ChatHistoryTroopAllFragment$6$1
+class ChatHistoryTroopAllFragment$6$1
   implements Runnable
 {
-  public ChatHistoryTroopAllFragment$6$1(aiaz paramaiaz) {}
+  ChatHistoryTroopAllFragment$6$1(ChatHistoryTroopAllFragment.6 param6) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("do delete uniseq=");
+      ((StringBuilder)localObject).append(this.a.a.uniseq);
+      ((StringBuilder)localObject).append(",id=");
+      ((StringBuilder)localObject).append(this.a.a.getId());
+      QLog.d("chatHistory.troop.msgList", 2, ((StringBuilder)localObject).toString());
     }
-    awhr localawhr = (awhr)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.getManager(201);
-    if (localawhr != null) {
-      localawhr.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    Object localObject = (QSlowTableManager)this.a.c.v.getManager(QQManagerFactory.SLOW_TABLE_MANAGER);
+    if (localObject != null) {
+      ((QSlowTableManager)localObject).a(this.a.a, false);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
-      alaz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.b, "chat_history_start_del_msg");
+    this.a.c.v.getMessageFacade().a(this.a.a, true);
+    if ((this.a.a instanceof IMessageForApollo)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.c.v, "chat_history_start_del_msg");
     }
   }
 }

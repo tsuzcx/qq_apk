@@ -7,65 +7,102 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.luggage.g.d;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.storage.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class WxaCriticalDataProvider
   extends ContentProvider
 {
-  private static final UriMatcher bFP;
-  private static final SparseArray<String> bFQ;
-  private final Map<Class<?>, Object> bFR = new HashMap();
-  private volatile e db;
+  private static final UriMatcher exy;
+  private static final SparseArray<String> exz;
+  private volatile ISQLiteDatabase db;
+  private final Map<Class<?>, Object> exA = new HashMap();
   
   static
   {
     SparseArray localSparseArray = new SparseArray();
-    bFQ = localSparseArray;
+    exz = localSparseArray;
     localSparseArray.put(1, "WxaAttributesTable");
-    bFQ.put(2, "LaunchWxaAppPBTable");
-    bFQ.put(3, "WxaAppPackageModelTable");
-    bFQ.put(4, "DevPkgLaunchExtInfo");
-    bFQ.put(5, "AppBrandWxaPkgManifestRecord");
-    bFP = new UriMatcher(-1);
+    exz.put(2, "LaunchWxaAppPBTable");
+    exz.put(4, "DevPkgLaunchExtInfo");
+    exz.put(5, "AppBrandWxaPkgManifestRecord");
+    exz.put(7, "PersistentWxaSyncInvalidContactCmd");
+    exy = new UriMatcher(-1);
     int i = 0;
-    while (i < bFQ.size())
+    while (i < exz.size())
     {
-      bFP.addURI(a.AUTHORITY, (String)bFQ.valueAt(i), bFQ.keyAt(i));
+      exy.addURI(a.AUTHORITY, (String)exz.valueAt(i), exz.keyAt(i));
       i += 1;
     }
   }
   
-  protected static int h(Uri paramUri)
+  private <T> T ag(Class<T> paramClass)
   {
-    return bFP.match(paramUri);
+    return this.exA.get(paramClass);
   }
   
-  private <T> T w(Class<T> paramClass)
-  {
-    return this.bFR.get(paramClass);
-  }
-  
-  private boolean xg()
+  private boolean ats()
   {
     if (this.db == null) {
-      this.db = xh();
+      this.db = att();
     }
     return this.db != null;
   }
   
+  protected static int i(Uri paramUri)
+  {
+    return exy.match(paramUri);
+  }
+  
+  protected abstract ISQLiteDatabase att();
+  
+  protected final void atu()
+  {
+    try
+    {
+      if ((this.db instanceof ISQLiteDatabaseEx)) {
+        ((ISQLiteDatabaseEx)this.db).close();
+      }
+      this.db = null;
+      return;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("Luggage.WxaCriticalDataProvider", localThrowable, "uninstallDatabase", new Object[0]);
+      }
+    }
+  }
+  
   protected final void c(Class<?> paramClass, Object paramObject)
   {
-    this.bFR.put(paramClass, paramObject);
+    this.exA.put(paramClass, paramObject);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    if (!xg()) {
-      return -1;
+    if (!ats()) {}
+    do
+    {
+      do
+      {
+        return -1;
+        switch (exy.match(paramUri))
+        {
+        default: 
+          return 0;
+        }
+      } while ((paramArrayOfString == null) || (paramArrayOfString.length <= 0));
+      paramUri = paramArrayOfString[0];
+    } while (TextUtils.isEmpty(paramUri));
+    if (((l)ag(l.class)).VR(paramUri)) {
+      return 1;
     }
     return 0;
   }
@@ -80,449 +117,521 @@ public abstract class WxaCriticalDataProvider
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 108	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:xg	()Z
+    //   1: invokespecial 126	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ats	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: getstatic 44	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:bFP	Landroid/content/UriMatcher;
+    //   9: getstatic 44	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:exy	Landroid/content/UriMatcher;
     //   12: aload_1
-    //   13: invokevirtual 80	android/content/UriMatcher:match	(Landroid/net/Uri;)I
-    //   16: tableswitch	default:+36 -> 52, 1:+38->54, 2:+249->265, 3:+36->52, 4:+316->332, 5:+378->394
+    //   13: invokevirtual 98	android/content/UriMatcher:match	(Landroid/net/Uri;)I
+    //   16: tableswitch	default:+36 -> 52, 1:+38->54, 2:+313->329, 3:+36->52, 4:+379->395, 5:+445->461
     //   53: areturn
     //   54: aload_2
-    //   55: ldc 116
-    //   57: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   60: astore 6
-    //   62: aload_2
-    //   63: ldc 124
-    //   65: invokevirtual 128	android/content/ContentValues:getAsByteArray	(Ljava/lang/String;)[B
-    //   68: astore_1
-    //   69: aload_0
-    //   70: ldc 130
-    //   72: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   75: checkcast 130	com/tencent/mm/plugin/appbrand/config/p
-    //   78: astore 7
-    //   80: new 134	com/tencent/mm/protocal/protobuf/dab
-    //   83: dup
-    //   84: invokespecial 135	com/tencent/mm/protocal/protobuf/dab:<init>	()V
-    //   87: aload_1
-    //   88: invokevirtual 139	com/tencent/mm/protocal/protobuf/dab:parseFrom	([B)Lcom/tencent/mm/bv/a;
-    //   91: checkcast 134	com/tencent/mm/protocal/protobuf/dab
-    //   94: checkcast 134	com/tencent/mm/protocal/protobuf/dab
-    //   97: astore 8
-    //   99: aload 6
-    //   101: invokestatic 145	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   104: ifeq +107 -> 211
-    //   107: aconst_null
-    //   108: astore_1
-    //   109: aload_1
-    //   110: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   113: ifeq +854 -> 967
-    //   116: aload 8
-    //   118: getfield 155	com/tencent/mm/protocal/protobuf/dab:wxO	Ljava/util/LinkedList;
-    //   121: invokevirtual 161	java/util/LinkedList:iterator	()Ljava/util/Iterator;
-    //   124: astore_2
-    //   125: aload_2
-    //   126: invokeinterface 166 1 0
-    //   131: ifeq +833 -> 964
-    //   134: aload_2
-    //   135: invokeinterface 170 1 0
-    //   140: checkcast 172	com/tencent/mm/protocal/protobuf/daa
-    //   143: astore 9
-    //   145: ldc 174
-    //   147: aload 9
-    //   149: getfield 177	com/tencent/mm/protocal/protobuf/daa:wxP	Ljava/lang/String;
-    //   152: invokevirtual 180	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   155: ifeq -30 -> 125
-    //   158: aload 9
-    //   160: getfield 183	com/tencent/mm/protocal/protobuf/daa:qsu	Ljava/lang/String;
-    //   163: astore_1
-    //   164: aload_1
-    //   165: astore_2
-    //   166: aload_1
-    //   167: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   170: ifeq +75 -> 245
-    //   173: ldc 185
-    //   175: ldc 187
-    //   177: iconst_1
-    //   178: anewarray 189	java/lang/Object
-    //   181: dup
-    //   182: iconst_0
-    //   183: aload 6
-    //   185: aastore
-    //   186: invokestatic 195	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   189: goto -137 -> 52
-    //   192: astore_1
-    //   193: ldc 197
-    //   195: ldc 199
-    //   197: iconst_1
-    //   198: anewarray 189	java/lang/Object
-    //   201: dup
-    //   202: iconst_0
-    //   203: aload_1
-    //   204: aastore
-    //   205: invokestatic 202	com/tencent/luggage/g/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   208: goto -156 -> 52
-    //   211: aload 7
-    //   213: aload 6
-    //   215: iconst_1
-    //   216: anewarray 60	java/lang/String
-    //   219: dup
-    //   220: iconst_0
-    //   221: ldc 204
-    //   223: aastore
-    //   224: invokevirtual 207	com/tencent/mm/plugin/appbrand/config/p:e	(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;
-    //   227: astore_1
-    //   228: aload_1
-    //   229: ifnonnull +8 -> 237
-    //   232: aconst_null
+    //   55: ldc 148
+    //   57: invokevirtual 153	android/content/ContentValues:containsKey	(Ljava/lang/String;)Z
+    //   60: ifeq +211 -> 271
+    //   63: aload_2
+    //   64: ldc 155
+    //   66: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   69: astore 6
+    //   71: aload_2
+    //   72: ldc 148
+    //   74: invokevirtual 163	android/content/ContentValues:getAsByteArray	(Ljava/lang/String;)[B
+    //   77: astore_1
+    //   78: aload_0
+    //   79: ldc 165
+    //   81: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   84: checkcast 165	com/tencent/mm/plugin/appbrand/config/ac
+    //   87: astore 7
+    //   89: new 167	com/tencent/mm/protocal/protobuf/gkv
+    //   92: dup
+    //   93: invokespecial 168	com/tencent/mm/protocal/protobuf/gkv:<init>	()V
+    //   96: aload_1
+    //   97: invokevirtual 172	com/tencent/mm/protocal/protobuf/gkv:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   100: checkcast 167	com/tencent/mm/protocal/protobuf/gkv
+    //   103: astore 8
+    //   105: aload 6
+    //   107: invokestatic 177	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   110: ifeq +107 -> 217
+    //   113: aconst_null
+    //   114: astore_1
+    //   115: aload_1
+    //   116: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   119: ifeq +1018 -> 1137
+    //   122: aload 8
+    //   124: getfield 181	com/tencent/mm/protocal/protobuf/gkv:YRu	Ljava/util/LinkedList;
+    //   127: invokevirtual 187	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   130: astore_2
+    //   131: aload_2
+    //   132: invokeinterface 192 1 0
+    //   137: ifeq +997 -> 1134
+    //   140: aload_2
+    //   141: invokeinterface 196 1 0
+    //   146: checkcast 198	com/tencent/mm/protocal/protobuf/gku
+    //   149: astore 9
+    //   151: ldc 200
+    //   153: aload 9
+    //   155: getfield 203	com/tencent/mm/protocal/protobuf/gku:ILw	Ljava/lang/String;
+    //   158: invokevirtual 206	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   161: ifeq -30 -> 131
+    //   164: aload 9
+    //   166: getfield 209	com/tencent/mm/protocal/protobuf/gku:OzQ	Ljava/lang/String;
+    //   169: astore_1
+    //   170: aload_1
+    //   171: astore_2
+    //   172: aload_1
+    //   173: invokestatic 132	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   176: ifeq +75 -> 251
+    //   179: ldc 211
+    //   181: ldc 213
+    //   183: iconst_1
+    //   184: anewarray 110	java/lang/Object
+    //   187: dup
+    //   188: iconst_0
+    //   189: aload 6
+    //   191: aastore
+    //   192: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   195: goto -143 -> 52
+    //   198: astore_1
+    //   199: ldc 106
+    //   201: ldc 219
+    //   203: iconst_1
+    //   204: anewarray 110	java/lang/Object
+    //   207: dup
+    //   208: iconst_0
+    //   209: aload_1
+    //   210: aastore
+    //   211: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: goto -162 -> 52
+    //   217: aload 7
+    //   219: aload 6
+    //   221: iconst_1
+    //   222: anewarray 60	java/lang/String
+    //   225: dup
+    //   226: iconst_0
+    //   227: ldc 221
+    //   229: aastore
+    //   230: invokevirtual 224	com/tencent/mm/plugin/appbrand/config/ac:e	(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;
     //   233: astore_1
-    //   234: goto -125 -> 109
-    //   237: aload_1
-    //   238: getfield 212	com/tencent/mm/plugin/appbrand/config/WxaAttributes:field_username	Ljava/lang/String;
-    //   241: astore_1
-    //   242: goto -133 -> 109
-    //   245: aload 7
-    //   247: aload_2
-    //   248: aload 8
-    //   250: getfield 216	com/tencent/mm/protocal/protobuf/dab:wxN	Lcom/tencent/mm/bv/b;
-    //   253: aload 8
-    //   255: getfield 155	com/tencent/mm/protocal/protobuf/dab:wxO	Ljava/util/LinkedList;
-    //   258: invokevirtual 220	com/tencent/mm/plugin/appbrand/config/p:a	(Ljava/lang/String;Lcom/tencent/mm/bv/b;Ljava/util/List;)Z
-    //   261: pop
-    //   262: goto -210 -> 52
-    //   265: aload_2
-    //   266: ldc 116
-    //   268: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   271: astore_1
-    //   272: aload_2
-    //   273: ldc 124
-    //   275: invokevirtual 128	android/content/ContentValues:getAsByteArray	(Ljava/lang/String;)[B
-    //   278: astore_2
-    //   279: aload_0
-    //   280: ldc 222
-    //   282: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   285: checkcast 222	com/tencent/mm/plugin/appbrand/launching/ad
-    //   288: aload_1
-    //   289: new 224	com/tencent/mm/protocal/protobuf/azn
-    //   292: dup
-    //   293: invokespecial 225	com/tencent/mm/protocal/protobuf/azn:<init>	()V
-    //   296: aload_2
-    //   297: invokevirtual 226	com/tencent/mm/protocal/protobuf/azn:parseFrom	([B)Lcom/tencent/mm/bv/a;
-    //   300: checkcast 224	com/tencent/mm/protocal/protobuf/azn
-    //   303: checkcast 224	com/tencent/mm/protocal/protobuf/azn
-    //   306: invokevirtual 230	com/tencent/mm/plugin/appbrand/launching/ad:b	(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/azn;)Z
-    //   309: pop
-    //   310: goto -258 -> 52
-    //   313: astore_1
-    //   314: ldc 197
-    //   316: ldc 232
-    //   318: iconst_1
-    //   319: anewarray 189	java/lang/Object
-    //   322: dup
-    //   323: iconst_0
-    //   324: aload_1
-    //   325: aastore
-    //   326: invokestatic 202	com/tencent/luggage/g/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   329: goto -277 -> 52
-    //   332: aload_2
-    //   333: ldc 116
-    //   335: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   338: astore_1
-    //   339: aload_2
-    //   340: ldc 234
-    //   342: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   345: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   348: istore_3
-    //   349: aload_2
-    //   350: ldc 245
-    //   352: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   355: astore_2
-    //   356: aload_0
-    //   357: ldc 247
-    //   359: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   362: checkcast 247	com/tencent/mm/plugin/appbrand/launching/m
-    //   365: aload_1
-    //   366: iload_3
-    //   367: aload_2
-    //   368: invokevirtual 251	com/tencent/mm/plugin/appbrand/launching/m:n	(Ljava/lang/String;ILjava/lang/String;)Z
+    //   234: aload_1
+    //   235: ifnonnull +8 -> 243
+    //   238: aconst_null
+    //   239: astore_1
+    //   240: goto -125 -> 115
+    //   243: aload_1
+    //   244: getfield 229	com/tencent/mm/plugin/appbrand/config/WxaAttributes:field_username	Ljava/lang/String;
+    //   247: astore_1
+    //   248: goto -133 -> 115
+    //   251: aload 7
+    //   253: aload_2
+    //   254: aload 8
+    //   256: getfield 233	com/tencent/mm/protocal/protobuf/gkv:YRt	Lcom/tencent/mm/bx/b;
+    //   259: aload 8
+    //   261: getfield 181	com/tencent/mm/protocal/protobuf/gkv:YRu	Ljava/util/LinkedList;
+    //   264: invokevirtual 237	com/tencent/mm/plugin/appbrand/config/ac:a	(Ljava/lang/String;Lcom/tencent/mm/bx/b;Ljava/util/List;)Z
+    //   267: pop
+    //   268: goto -216 -> 52
+    //   271: aload_2
+    //   272: ldc 239
+    //   274: invokevirtual 153	android/content/ContentValues:containsKey	(Ljava/lang/String;)Z
+    //   277: ifeq -225 -> 52
+    //   280: aload_2
+    //   281: ldc 241
+    //   283: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   286: iconst_0
+    //   287: invokestatic 249	com/tencent/mm/sdk/platformtools/Util:nullAs	(Ljava/lang/Integer;I)I
+    //   290: istore_3
+    //   291: aload_2
+    //   292: ldc 239
+    //   294: invokevirtual 163	android/content/ContentValues:getAsByteArray	(Ljava/lang/String;)[B
+    //   297: astore_1
+    //   298: aload_0
+    //   299: ldc 165
+    //   301: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   304: checkcast 165	com/tencent/mm/plugin/appbrand/config/ac
+    //   307: iload_3
+    //   308: new 251	com/tencent/mm/protocal/protobuf/md
+    //   311: dup
+    //   312: invokespecial 252	com/tencent/mm/protocal/protobuf/md:<init>	()V
+    //   315: aload_1
+    //   316: invokevirtual 253	com/tencent/mm/protocal/protobuf/md:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   319: checkcast 251	com/tencent/mm/protocal/protobuf/md
+    //   322: invokevirtual 256	com/tencent/mm/plugin/appbrand/config/ac:a	(ILcom/tencent/mm/protocal/protobuf/md;)Z
+    //   325: pop
+    //   326: goto -274 -> 52
+    //   329: aload_2
+    //   330: ldc 155
+    //   332: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   335: astore_1
+    //   336: aload_2
+    //   337: ldc 148
+    //   339: invokevirtual 163	android/content/ContentValues:getAsByteArray	(Ljava/lang/String;)[B
+    //   342: astore_2
+    //   343: aload_0
+    //   344: ldc_w 258
+    //   347: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   350: checkcast 258	com/tencent/mm/plugin/appbrand/launching/am
+    //   353: aload_1
+    //   354: new 260	com/tencent/mm/protocal/protobuf/dgu
+    //   357: dup
+    //   358: invokespecial 261	com/tencent/mm/protocal/protobuf/dgu:<init>	()V
+    //   361: aload_2
+    //   362: invokevirtual 262	com/tencent/mm/protocal/protobuf/dgu:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   365: checkcast 260	com/tencent/mm/protocal/protobuf/dgu
+    //   368: invokevirtual 266	com/tencent/mm/plugin/appbrand/launching/am:b	(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/dgu;)Z
     //   371: pop
     //   372: goto -320 -> 52
     //   375: astore_1
-    //   376: ldc 197
-    //   378: ldc 253
-    //   380: iconst_1
-    //   381: anewarray 189	java/lang/Object
-    //   384: dup
-    //   385: iconst_0
-    //   386: aload_1
-    //   387: aastore
-    //   388: invokestatic 202	com/tencent/luggage/g/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   391: goto -339 -> 52
-    //   394: aload_2
-    //   395: ldc 255
-    //   397: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   400: astore 6
-    //   402: iconst_m1
-    //   403: istore_3
-    //   404: aload 6
-    //   406: invokevirtual 258	java/lang/String:hashCode	()I
-    //   409: lookupswitch	default:+51->460, -1297425212:+183->592, -1264406702:+231->640, -946499957:+215->624, 922736132:+247->656, 1067970480:+199->608
-    //   461: tableswitch	default:+35 -> 496, 0:+38->499, 1:+217->678, 2:+318->779, 3:+389->850, 4:+417->878
-    //   497: impdep1
-    //   498: fstore_1
-    //   499: aload_2
-    //   500: ldc 116
-    //   502: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   505: astore 6
-    //   507: aload_2
-    //   508: ldc_w 260
-    //   511: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   514: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   517: istore_3
-    //   518: aload_2
-    //   519: ldc_w 262
-    //   522: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   525: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   528: istore 4
-    //   530: aload_2
-    //   531: ldc_w 264
-    //   534: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   537: astore_1
-    //   538: aload_1
-    //   539: invokestatic 270	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionModuleInfo:AE	(Ljava/lang/String;)Ljava/util/List;
-    //   542: astore_1
-    //   543: aload_1
-    //   544: invokestatic 274	com/tencent/mm/sdk/platformtools/bo:es	(Ljava/util/List;)Z
-    //   547: ifne -495 -> 52
-    //   550: aload_0
-    //   551: ldc_w 276
-    //   554: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   557: checkcast 276	com/tencent/mm/plugin/appbrand/appcache/ay
-    //   560: aload 6
-    //   562: iload_3
-    //   563: iload 4
-    //   565: aload_1
-    //   566: invokevirtual 279	com/tencent/mm/plugin/appbrand/appcache/ay:b	(Ljava/lang/String;IILjava/util/List;)Z
-    //   569: pop
-    //   570: goto -518 -> 52
-    //   573: astore_1
-    //   574: ldc 197
-    //   576: ldc 253
-    //   578: iconst_1
-    //   579: anewarray 189	java/lang/Object
-    //   582: dup
-    //   583: iconst_0
-    //   584: aload_1
-    //   585: aastore
-    //   586: invokestatic 202	com/tencent/luggage/g/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   589: goto -537 -> 52
-    //   592: aload 6
-    //   594: ldc_w 281
-    //   597: invokevirtual 285	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   600: ifeq -140 -> 460
-    //   603: iconst_0
-    //   604: istore_3
-    //   605: goto -145 -> 460
-    //   608: aload 6
-    //   610: ldc_w 287
-    //   613: invokevirtual 285	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   616: ifeq -156 -> 460
-    //   619: iconst_1
-    //   620: istore_3
-    //   621: goto -161 -> 460
-    //   624: aload 6
-    //   626: ldc_w 289
-    //   629: invokevirtual 285	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   632: ifeq -172 -> 460
-    //   635: iconst_2
-    //   636: istore_3
-    //   637: goto -177 -> 460
+    //   376: ldc 106
+    //   378: ldc_w 268
+    //   381: iconst_1
+    //   382: anewarray 110	java/lang/Object
+    //   385: dup
+    //   386: iconst_0
+    //   387: aload_1
+    //   388: aastore
+    //   389: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   392: goto -340 -> 52
+    //   395: aload_2
+    //   396: ldc 155
+    //   398: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   401: astore_1
+    //   402: aload_2
+    //   403: ldc_w 270
+    //   406: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   409: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   412: istore_3
+    //   413: aload_2
+    //   414: ldc_w 277
+    //   417: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   420: astore_2
+    //   421: aload_0
+    //   422: ldc_w 279
+    //   425: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   428: checkcast 279	com/tencent/mm/plugin/appbrand/launching/t
+    //   431: aload_1
+    //   432: iload_3
+    //   433: aload_2
+    //   434: invokevirtual 283	com/tencent/mm/plugin/appbrand/launching/t:D	(Ljava/lang/String;ILjava/lang/String;)Z
+    //   437: pop
+    //   438: goto -386 -> 52
+    //   441: astore_1
+    //   442: ldc 106
+    //   444: ldc_w 285
+    //   447: iconst_1
+    //   448: anewarray 110	java/lang/Object
+    //   451: dup
+    //   452: iconst_0
+    //   453: aload_1
+    //   454: aastore
+    //   455: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   458: goto -406 -> 52
+    //   461: aload_2
+    //   462: ldc_w 287
+    //   465: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   468: astore 6
+    //   470: iconst_m1
+    //   471: istore_3
+    //   472: aload 6
+    //   474: invokevirtual 290	java/lang/String:hashCode	()I
+    //   477: lookupswitch	default:+59->536, -1297425212:+196->673, -946499957:+228->705, -214401522:+276->753, 396944:+244->721, 755152062:+260->737, 1067970480:+212->689
+    //   537: tableswitch	default:+39 -> 576, 0:+42->579, 1:+238->775, 2:+339->876, 3:+410->947, 4:+438->975, 5:+524->1061
+    //   577: <illegal opcode>
+    //   578: <illegal opcode>
+    //   579: aload_2
+    //   580: ldc 155
+    //   582: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   585: astore 6
+    //   587: aload_2
+    //   588: ldc_w 292
+    //   591: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   594: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   597: istore_3
+    //   598: aload_2
+    //   599: ldc_w 294
+    //   602: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   605: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   608: istore 4
+    //   610: aload_2
+    //   611: ldc_w 296
+    //   614: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   617: astore_1
+    //   618: aload_1
+    //   619: invokestatic 302	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionModuleInfo:XX	(Ljava/lang/String;)Ljava/util/List;
+    //   622: astore_1
+    //   623: aload_1
+    //   624: invokestatic 305	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/util/List;)Z
+    //   627: ifne -575 -> 52
+    //   630: aload_0
+    //   631: ldc_w 307
+    //   634: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   637: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
     //   640: aload 6
-    //   642: ldc_w 291
-    //   645: invokevirtual 285	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   648: ifeq -188 -> 460
-    //   651: iconst_3
-    //   652: istore_3
-    //   653: goto -193 -> 460
-    //   656: aload 6
-    //   658: ldc_w 293
-    //   661: invokevirtual 285	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   664: ifeq -204 -> 460
-    //   667: iconst_4
-    //   668: istore_3
-    //   669: goto -209 -> 460
-    //   672: astore_1
-    //   673: aconst_null
-    //   674: astore_1
-    //   675: goto -132 -> 543
-    //   678: aload_2
-    //   679: ldc 116
-    //   681: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   684: astore 6
-    //   686: aload_2
-    //   687: ldc_w 260
-    //   690: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   693: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   696: istore_3
-    //   697: aload_2
-    //   698: ldc_w 295
-    //   701: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   704: astore 7
-    //   706: aload_2
-    //   707: ldc_w 297
-    //   710: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   713: astore_2
-    //   714: aload_0
-    //   715: ldc_w 276
-    //   718: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   721: checkcast 276	com/tencent/mm/plugin/appbrand/appcache/ay
-    //   724: aload 6
-    //   726: iload_3
-    //   727: aload_2
-    //   728: aload 7
-    //   730: lconst_0
-    //   731: invokestatic 303	java/lang/System:currentTimeMillis	()J
-    //   734: invokevirtual 306	com/tencent/mm/plugin/appbrand/appcache/ay:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;JJ)Z
-    //   737: ifeq -685 -> 52
-    //   740: aload_1
-    //   741: getstatic 312	java/util/Locale:US	Ljava/util/Locale;
-    //   744: ldc_w 314
-    //   747: iconst_3
-    //   748: anewarray 189	java/lang/Object
-    //   751: dup
-    //   752: iconst_0
+    //   642: iload_3
+    //   643: iload 4
+    //   645: aload_1
+    //   646: invokevirtual 310	com/tencent/mm/plugin/appbrand/appcache/bm:a	(Ljava/lang/String;IILjava/util/List;)Z
+    //   649: pop
+    //   650: goto -598 -> 52
+    //   653: astore_1
+    //   654: ldc 106
+    //   656: ldc_w 285
+    //   659: iconst_1
+    //   660: anewarray 110	java/lang/Object
+    //   663: dup
+    //   664: iconst_0
+    //   665: aload_1
+    //   666: aastore
+    //   667: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   670: goto -618 -> 52
+    //   673: aload 6
+    //   675: ldc_w 312
+    //   678: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   681: ifeq -145 -> 536
+    //   684: iconst_0
+    //   685: istore_3
+    //   686: goto -150 -> 536
+    //   689: aload 6
+    //   691: ldc_w 318
+    //   694: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   697: ifeq -161 -> 536
+    //   700: iconst_1
+    //   701: istore_3
+    //   702: goto -166 -> 536
+    //   705: aload 6
+    //   707: ldc_w 320
+    //   710: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   713: ifeq -177 -> 536
+    //   716: iconst_2
+    //   717: istore_3
+    //   718: goto -182 -> 536
+    //   721: aload 6
+    //   723: ldc_w 322
+    //   726: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   729: ifeq -193 -> 536
+    //   732: iconst_3
+    //   733: istore_3
+    //   734: goto -198 -> 536
+    //   737: aload 6
+    //   739: ldc_w 324
+    //   742: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   745: ifeq -209 -> 536
+    //   748: iconst_4
+    //   749: istore_3
+    //   750: goto -214 -> 536
     //   753: aload 6
-    //   755: aastore
-    //   756: dup
-    //   757: iconst_1
-    //   758: iload_3
-    //   759: invokestatic 318	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   762: aastore
-    //   763: dup
-    //   764: iconst_2
-    //   765: aload 7
-    //   767: aastore
-    //   768: invokestatic 322	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   771: invokevirtual 258	java/lang/String:hashCode	()I
-    //   774: i2l
-    //   775: invokestatic 328	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
-    //   778: areturn
-    //   779: aload_2
-    //   780: ldc 116
-    //   782: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   785: astore_1
-    //   786: aload_2
-    //   787: ldc_w 260
-    //   790: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   793: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   796: istore_3
-    //   797: aload_2
-    //   798: ldc_w 262
-    //   801: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   804: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   807: istore 4
-    //   809: aload_2
-    //   810: ldc_w 295
-    //   813: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   816: astore 6
-    //   818: aload_2
-    //   819: ldc_w 297
-    //   822: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   825: astore_2
-    //   826: aload_0
-    //   827: ldc_w 276
-    //   830: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   833: checkcast 276	com/tencent/mm/plugin/appbrand/appcache/ay
-    //   836: aload_1
-    //   837: iload_3
-    //   838: iload 4
-    //   840: aload 6
-    //   842: aload_2
-    //   843: invokevirtual 331	com/tencent/mm/plugin/appbrand/appcache/ay:a	(Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;)Z
-    //   846: pop
-    //   847: goto -795 -> 52
-    //   850: aload_2
-    //   851: ldc_w 333
-    //   854: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   857: astore_1
-    //   858: aload_0
-    //   859: ldc_w 276
-    //   862: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   865: checkcast 276	com/tencent/mm/plugin/appbrand/appcache/ay
-    //   868: aload_1
-    //   869: invokestatic 338	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaCodeLibInfo:AC	(Ljava/lang/String;)Ljava/util/List;
-    //   872: invokevirtual 342	com/tencent/mm/plugin/appbrand/appcache/ay:ax	(Ljava/util/List;)V
-    //   875: goto -823 -> 52
-    //   878: aload_2
-    //   879: ldc 116
-    //   881: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   884: astore_1
-    //   885: aload_2
-    //   886: ldc_w 344
-    //   889: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   892: astore 6
+    //   755: ldc_w 326
+    //   758: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   761: ifeq -225 -> 536
+    //   764: iconst_5
+    //   765: istore_3
+    //   766: goto -230 -> 536
+    //   769: astore_1
+    //   770: aconst_null
+    //   771: astore_1
+    //   772: goto -149 -> 623
+    //   775: aload_2
+    //   776: ldc 155
+    //   778: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   781: astore 6
+    //   783: aload_2
+    //   784: ldc_w 292
+    //   787: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   790: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   793: istore_3
+    //   794: aload_2
+    //   795: ldc_w 328
+    //   798: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   801: astore 7
+    //   803: aload_2
+    //   804: ldc_w 330
+    //   807: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   810: astore_2
+    //   811: aload_0
+    //   812: ldc_w 307
+    //   815: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   818: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
+    //   821: aload 6
+    //   823: iload_3
+    //   824: aload_2
+    //   825: aload 7
+    //   827: lconst_0
+    //   828: invokestatic 336	java/lang/System:currentTimeMillis	()J
+    //   831: invokevirtual 339	com/tencent/mm/plugin/appbrand/appcache/bm:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;JJ)Z
+    //   834: ifeq -782 -> 52
+    //   837: aload_1
+    //   838: getstatic 345	java/util/Locale:US	Ljava/util/Locale;
+    //   841: ldc_w 347
+    //   844: iconst_3
+    //   845: anewarray 110	java/lang/Object
+    //   848: dup
+    //   849: iconst_0
+    //   850: aload 6
+    //   852: aastore
+    //   853: dup
+    //   854: iconst_1
+    //   855: iload_3
+    //   856: invokestatic 351	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   859: aastore
+    //   860: dup
+    //   861: iconst_2
+    //   862: aload 7
+    //   864: aastore
+    //   865: invokestatic 355	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   868: invokevirtual 290	java/lang/String:hashCode	()I
+    //   871: i2l
+    //   872: invokestatic 361	android/content/ContentUris:withAppendedId	(Landroid/net/Uri;J)Landroid/net/Uri;
+    //   875: areturn
+    //   876: aload_2
+    //   877: ldc 155
+    //   879: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   882: astore_1
+    //   883: aload_2
+    //   884: ldc_w 292
+    //   887: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   890: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   893: istore_3
     //   894: aload_2
-    //   895: ldc_w 262
-    //   898: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   901: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   904: istore_3
-    //   905: aload_2
-    //   906: ldc_w 346
-    //   909: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   912: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   915: istore 4
-    //   917: aload_2
-    //   918: ldc_w 295
-    //   921: invokevirtual 122	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
-    //   924: astore 7
-    //   926: aload_2
-    //   927: ldc_w 260
-    //   930: invokevirtual 238	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   933: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   936: istore 5
-    //   938: aload_0
-    //   939: ldc_w 276
-    //   942: invokespecial 132	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:w	(Ljava/lang/Class;)Ljava/lang/Object;
-    //   945: checkcast 276	com/tencent/mm/plugin/appbrand/appcache/ay
-    //   948: aload_1
-    //   949: aload 6
-    //   951: iload_3
-    //   952: iload 4
-    //   954: aload 7
-    //   956: iload 5
-    //   958: invokevirtual 349	com/tencent/mm/plugin/appbrand/appcache/ay:b	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;I)V
-    //   961: goto -909 -> 52
-    //   964: goto -800 -> 164
-    //   967: aload_1
-    //   968: astore_2
-    //   969: goto -724 -> 245
+    //   895: ldc_w 294
+    //   898: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   901: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   904: istore 4
+    //   906: aload_2
+    //   907: ldc_w 328
+    //   910: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   913: astore 6
+    //   915: aload_2
+    //   916: ldc_w 330
+    //   919: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   922: astore_2
+    //   923: aload_0
+    //   924: ldc_w 307
+    //   927: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   930: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
+    //   933: aload_1
+    //   934: iload_3
+    //   935: iload 4
+    //   937: aload 6
+    //   939: aload_2
+    //   940: invokevirtual 365	com/tencent/mm/plugin/appbrand/appcache/bm:d	(Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;)Z
+    //   943: pop
+    //   944: goto -892 -> 52
+    //   947: aload_2
+    //   948: ldc_w 367
+    //   951: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   954: astore_1
+    //   955: aload_0
+    //   956: ldc_w 307
+    //   959: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   962: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
+    //   965: aload_1
+    //   966: invokestatic 373	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaPluginCodeInfo:dU	(Ljava/lang/Object;)Ljava/util/List;
+    //   969: invokevirtual 377	com/tencent/mm/plugin/appbrand/appcache/bm:cK	(Ljava/util/List;)V
+    //   972: goto -920 -> 52
+    //   975: aload_2
+    //   976: ldc 155
+    //   978: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   981: astore_1
+    //   982: aload_2
+    //   983: ldc_w 379
+    //   986: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   989: astore 6
+    //   991: aload_2
+    //   992: ldc_w 294
+    //   995: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   998: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   1001: istore_3
+    //   1002: aload_2
+    //   1003: ldc_w 381
+    //   1006: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1009: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   1012: istore 4
+    //   1014: aload_2
+    //   1015: ldc_w 328
+    //   1018: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1021: astore 7
+    //   1023: aload_2
+    //   1024: ldc_w 292
+    //   1027: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1030: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   1033: istore 5
+    //   1035: aload_0
+    //   1036: ldc_w 307
+    //   1039: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   1042: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
+    //   1045: aload_1
+    //   1046: aload 6
+    //   1048: iload_3
+    //   1049: iload 4
+    //   1051: aload 7
+    //   1053: iload 5
+    //   1055: invokevirtual 384	com/tencent/mm/plugin/appbrand/appcache/bm:b	(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;I)V
+    //   1058: goto -1006 -> 52
+    //   1061: aload_2
+    //   1062: ldc 155
+    //   1064: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1067: astore_1
+    //   1068: aload_2
+    //   1069: ldc_w 379
+    //   1072: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1075: astore 6
+    //   1077: aload_2
+    //   1078: ldc_w 294
+    //   1081: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1084: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   1087: istore_3
+    //   1088: aload_2
+    //   1089: ldc_w 381
+    //   1092: invokevirtual 245	android/content/ContentValues:getAsInteger	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1095: invokevirtual 275	java/lang/Integer:intValue	()I
+    //   1098: istore 4
+    //   1100: aload_2
+    //   1101: ldc_w 386
+    //   1104: invokevirtual 159	android/content/ContentValues:getAsString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1107: astore_2
+    //   1108: aload_0
+    //   1109: ldc_w 307
+    //   1112: invokespecial 136	com/tencent/luggage/wxa/storage/WxaCriticalDataProvider:ag	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   1115: checkcast 307	com/tencent/mm/plugin/appbrand/appcache/bm
+    //   1118: aload_1
+    //   1119: iload_3
+    //   1120: iload 4
+    //   1122: aload 6
+    //   1124: aload_2
+    //   1125: invokestatic 391	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaWidgetInfo:XY	(Ljava/lang/String;)Ljava/util/List;
+    //   1128: invokevirtual 394	com/tencent/mm/plugin/appbrand/appcache/bm:a	(Ljava/lang/String;IILjava/lang/String;Ljava/util/List;)V
+    //   1131: goto -1079 -> 52
+    //   1134: goto -964 -> 170
+    //   1137: aload_1
+    //   1138: astore_2
+    //   1139: goto -888 -> 251
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	972	0	this	WxaCriticalDataProvider
-    //   0	972	1	paramUri	Uri
-    //   0	972	2	paramContentValues	ContentValues
-    //   348	604	3	i	int
-    //   528	425	4	j	int
-    //   936	21	5	k	int
-    //   60	890	6	str	String
-    //   78	877	7	localObject	Object
-    //   97	157	8	localdab	com.tencent.mm.protocal.protobuf.dab
-    //   143	16	9	localdaa	com.tencent.mm.protocal.protobuf.daa
+    //   0	1142	0	this	WxaCriticalDataProvider
+    //   0	1142	1	paramUri	Uri
+    //   0	1142	2	paramContentValues	ContentValues
+    //   290	830	3	i	int
+    //   608	513	4	j	int
+    //   1033	21	5	k	int
+    //   69	1054	6	str	String
+    //   87	965	7	localObject	Object
+    //   103	157	8	localgkv	com.tencent.mm.protocal.protobuf.gkv
+    //   149	16	9	localgku	com.tencent.mm.protocal.protobuf.gku
     // Exception table:
     //   from	to	target	type
-    //   54	107	192	java/lang/Exception
-    //   109	125	192	java/lang/Exception
-    //   125	164	192	java/lang/Exception
-    //   166	189	192	java/lang/Exception
-    //   211	228	192	java/lang/Exception
-    //   237	242	192	java/lang/Exception
-    //   245	262	192	java/lang/Exception
-    //   265	310	313	java/lang/Exception
-    //   332	372	375	java/lang/Exception
-    //   499	538	573	java/lang/Exception
-    //   543	570	573	java/lang/Exception
-    //   538	543	672	java/lang/Exception
+    //   54	113	198	java/lang/Exception
+    //   115	131	198	java/lang/Exception
+    //   131	170	198	java/lang/Exception
+    //   172	195	198	java/lang/Exception
+    //   217	234	198	java/lang/Exception
+    //   243	248	198	java/lang/Exception
+    //   251	268	198	java/lang/Exception
+    //   271	326	198	java/lang/Exception
+    //   329	372	375	java/lang/Exception
+    //   395	438	441	java/lang/Exception
+    //   579	618	653	java/lang/Exception
+    //   623	650	653	java/lang/Exception
+    //   618	623	769	java/lang/Exception
   }
   
   public boolean onCreate()
@@ -532,47 +641,54 @@ public abstract class WxaCriticalDataProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    if (!xg()) {}
+    if (!ats()) {}
     do
     {
       return null;
-      paramUri = (String)bFQ.get(bFP.match(paramUri));
+      paramUri = (String)exz.get(exy.match(paramUri));
     } while (TextUtils.isEmpty(paramUri));
     return this.db.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, null, null, paramString2);
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    if (!xg()) {
+    int i = -1;
+    if (!ats()) {
       return -1;
     }
-    return 0;
-  }
-  
-  protected abstract e xh();
-  
-  protected final void xi()
-  {
-    try
+    switch (exy.match(paramUri))
     {
-      if ((this.db instanceof f)) {
-        ((f)this.db).close();
-      }
-      this.db = null;
-      return;
+    default: 
+      return 0;
     }
-    catch (Throwable localThrowable)
+    paramUri = paramContentValues.getAsString("CONTENT_KEY_ACTION");
+    switch (paramUri.hashCode())
     {
-      for (;;)
+    }
+    for (;;)
+    {
+      switch (i)
       {
-        d.printErrStackTrace("Luggage.WxaCriticalDataProvider", localThrowable, "uninstallDatabase", new Object[0]);
+      default: 
+        return 0;
+        if (paramUri.equals("ACTION_DELETE_MODULE_LIST")) {
+          i = 0;
+        }
+        break;
       }
     }
+    paramUri = paramContentValues.getAsString("CONTENT_KEY_APPID");
+    i = paramContentValues.getAsInteger("CONTENT_KEY_PKG_TYPE").intValue();
+    int j = paramContentValues.getAsInteger("CONTENT_KEY_PKG_VERSION").intValue();
+    if (((bm)ag(bm.class)).K(paramUri, i, j)) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.wxa.storage.WxaCriticalDataProvider
  * JD-Core Version:    0.7.0.1
  */

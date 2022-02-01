@@ -9,31 +9,51 @@ public class MMKAnimator
 {
   public void startAnimationImpl(float paramFloat, final VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(144305);
+    AppMethodBeat.i(18340);
     KindaGlobalAnimator.startAnimate((1000.0F * paramFloat), new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(144302);
+        AppMethodBeat.i(18337);
         if (paramVoidCallback != null) {
           paramVoidCallback.call();
         }
-        AppMethodBeat.o(144302);
+        AppMethodBeat.o(18337);
       }
     });
-    AppMethodBeat.o(144305);
+    AppMethodBeat.o(18340);
   }
   
-  public void startAnimationImpl(float paramFloat, VoidCallback paramVoidCallback1, VoidCallback paramVoidCallback2)
+  public void startAnimationImpl(float paramFloat, final VoidCallback paramVoidCallback1, final VoidCallback paramVoidCallback2)
   {
-    AppMethodBeat.i(144306);
-    KindaGlobalAnimator.startAnimate((1000.0F * paramFloat), new MMKAnimator.2(this, paramVoidCallback1), new MMKAnimator.3(this, paramVoidCallback2));
-    AppMethodBeat.o(144306);
+    AppMethodBeat.i(18341);
+    KindaGlobalAnimator.startAnimate((1000.0F * paramFloat), new Runnable()new Runnable
+    {
+      public void run()
+      {
+        AppMethodBeat.i(18338);
+        if (paramVoidCallback1 != null) {
+          paramVoidCallback1.call();
+        }
+        AppMethodBeat.o(18338);
+      }
+    }, new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(18339);
+        if (paramVoidCallback2 != null) {
+          paramVoidCallback2.call();
+        }
+        AppMethodBeat.o(18339);
+      }
+    });
+    AppMethodBeat.o(18341);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.MMKAnimator
  * JD-Core Version:    0.7.0.1
  */

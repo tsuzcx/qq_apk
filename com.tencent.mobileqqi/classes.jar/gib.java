@@ -1,44 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.richstatus.IActionListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class gib
-  extends ConfigObserver
+  extends FriendListObserver
 {
   public gib(StatusManager paramStatusManager) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+      QLog.d("Q.richstatus.set", 2, "onSetSelfSignatureResult " + paramBoolean);
     }
-    StatusManager.a(this.a, 0L);
-    if (paramBoolean)
+    StatusManager.a(this.a, null);
+    if (paramBoolean) {}
+    for (int i = 100; StatusManager.b(this.a) != null; i = -1)
     {
-      if (paramInt == 100)
-      {
-        StatusManager.b(this.a, System.currentTimeMillis());
-        StatusManager.a(this.a).edit().putLong("k_update_time", StatusManager.a(this.a)).commit();
-      }
-      this.a.a(true);
-    }
-    if (StatusManager.a(this.a) != null)
-    {
-      Iterator localIterator = StatusManager.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        IActionListener localIActionListener = (IActionListener)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localIActionListener.a(paramInt, i);
-          break;
-        }
+      RichStatus localRichStatus = this.a.a();
+      Iterator localIterator = StatusManager.b(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((IStatusListener)localIterator.next()).a(i, localRichStatus);
       }
     }
   }

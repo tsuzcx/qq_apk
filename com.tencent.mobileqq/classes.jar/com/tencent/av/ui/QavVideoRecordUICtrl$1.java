@@ -1,30 +1,31 @@
 package com.tencent.av.ui;
 
 import android.os.Handler;
-import mlf;
-import mpw;
+import com.tencent.av.ui.funchat.record.FileSwapHelper;
 
-public class QavVideoRecordUICtrl$1
+class QavVideoRecordUICtrl$1
   implements Runnable
 {
-  public QavVideoRecordUICtrl$1(mlf parammlf) {}
+  QavVideoRecordUICtrl$1(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    mlf.a(this.this$0, this.this$0.a());
-    mlf.b(this.this$0, mpw.a());
-    if (mlf.a(this.this$0) < 31457280L) {
-      mlf.a(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
-    }
-    while (!mlf.b) {
+    QavVideoRecordUICtrl localQavVideoRecordUICtrl = this.this$0;
+    QavVideoRecordUICtrl.a(localQavVideoRecordUICtrl, localQavVideoRecordUICtrl.f());
+    QavVideoRecordUICtrl.b(this.this$0, FileSwapHelper.a());
+    if (QavVideoRecordUICtrl.a(this.this$0) < 31457280L)
+    {
+      QavVideoRecordUICtrl.c(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
       return;
     }
-    mlf.a(this.this$0).sendEmptyMessageDelayed(11, 500L);
+    if (QavVideoRecordUICtrl.d) {
+      QavVideoRecordUICtrl.c(this.this$0).sendEmptyMessageDelayed(11, 500L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.1
  * JD-Core Version:    0.7.0.1
  */

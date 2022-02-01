@@ -9,7 +9,14 @@ public abstract class bk
   public bk(String paramString)
   {
     m.b();
-    paramString = "halley_schedule_" + m.c() + "_" + m.i() + "_" + paramString + ".db";
+    StringBuilder localStringBuilder = new StringBuilder("halley_schedule_");
+    localStringBuilder.append(m.c());
+    localStringBuilder.append("_");
+    localStringBuilder.append(m.i());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".db");
+    paramString = localStringBuilder.toString();
     this.a = new bk.a(this, m.a(), paramString);
   }
   
@@ -41,7 +48,7 @@ public abstract class bk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.bk
  * JD-Core Version:    0.7.0.1
  */

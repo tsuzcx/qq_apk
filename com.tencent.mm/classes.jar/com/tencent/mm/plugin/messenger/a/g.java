@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
 {
-  public static d oCX;
+  public static d KPJ;
   
-  public static d bPJ()
+  public static d gaI()
   {
-    AppMethodBeat.i(111118);
-    if (oCX == null) {
-      oCX = new b();
+    AppMethodBeat.i(94806);
+    if (KPJ == null) {
+      KPJ = new b();
     }
-    if ((oCX instanceof b)) {
-      ab.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
+    if ((KPJ instanceof b)) {
+      Log.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
     }
-    d locald = oCX;
-    AppMethodBeat.o(111118);
+    d locald = KPJ;
+    AppMethodBeat.o(94806);
     return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a.g
  * JD-Core Version:    0.7.0.1
  */

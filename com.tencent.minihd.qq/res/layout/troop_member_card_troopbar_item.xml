@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/troop_member_card_item_height_pading">
+        <TextView android:textSize="@dimen/troop_member_card_font_middle" android:textColor="@color/skin_black" android:id="@id/item_title" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/troop_member_card_item_edge_margin" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/item_right_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/troop_member_card_item_edge_margin" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/troop_member_card_font_small" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/count" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/troop_member_card_item_content_pading" android:singleLine="true" android:layout_toLeftOf="@id/item_right_icon" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/troop_bar_icon_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/troop_member_card_item_edge_margin" android:layout_marginTop="@dimen/troop_member_card_item_content_pading" android:layout_marginBottom="@dimen/troop_member_card_item_height_pading" />
+</LinearLayout>

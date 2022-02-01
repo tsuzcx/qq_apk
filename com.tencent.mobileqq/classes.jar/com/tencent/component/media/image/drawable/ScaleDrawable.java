@@ -53,144 +53,166 @@ public class ScaleDrawable
     if (paramMatrix == null) {
       localMatrix = new Matrix();
     }
+    float f2 = 0.0F;
+    float f4 = 0.0F;
+    float f1 = 0.0F;
+    float f5 = 0.0F;
+    float f3 = 0.0F;
     switch (paramInt1)
     {
     default: 
       return;
-    case 0: 
-      paramFloat2 = 0.0F;
-      paramFloat1 = 0.0F;
+    case 10: 
       if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
       {
-        f1 = paramInt5 / paramInt3;
-        paramFloat2 = (paramInt4 - paramInt2 * f1) * 0.5F;
+        f2 = paramInt5;
+        f1 = paramInt3;
       }
-      for (;;)
+      else
       {
-        localMatrix.setScale(f1, f1);
-        localMatrix.postTranslate((int)(paramFloat2 + 0.5F), (int)(paramFloat1 + 0.5F));
-        return;
-        f1 = paramInt4 / paramInt2;
-        paramFloat1 = (paramInt5 - paramInt3 * f1) * 0.5F;
+        f2 = paramInt4;
+        f1 = paramInt2;
       }
-    case 1: 
-      if (paramInt2 * paramInt5 > paramInt4 * paramInt3) {}
-      for (paramFloat1 = paramInt5 / paramInt3;; paramFloat1 = paramInt4 / paramInt2)
+      f1 = f2 / f1;
+      f5 = paramInt4 * 0.5F;
+      f2 = paramInt5 * 0.5F;
+      paramInt1 = (int)(paramInt2 * f1);
+      paramInt2 = (int)(paramInt3 * f1);
+      paramFloat1 *= paramInt1;
+      f4 = paramFloat2 * paramInt2;
+      if ((paramInt1 > paramInt4) && (paramFloat1 > f5)) {
+        paramFloat1 = Math.min(paramInt1 - paramInt4, paramFloat1 - f5);
+      } else {
+        paramFloat1 = 0.0F;
+      }
+      paramFloat2 = f3;
+      if (paramInt2 > paramInt5)
       {
-        localMatrix.setScale(paramFloat1, paramFloat1);
-        localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-        return;
+        paramFloat2 = f3;
+        if (f4 > f2) {
+          paramFloat2 = Math.min(paramInt2 - paramInt5, f4 - f2);
+        }
       }
-    case 2: 
-      paramFloat2 = 0.0F;
-      paramFloat1 = 0.0F;
-      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
-      {
-        f1 = paramInt5 / paramInt3;
-        paramFloat2 = (paramInt4 - paramInt2 * f1) * 1.0F;
-      }
-      for (;;)
-      {
-        localMatrix.setScale(f1, f1);
-        localMatrix.postTranslate((int)(paramFloat2 + 0.5F), (int)(paramFloat1 + 0.5F));
-        return;
-        f1 = paramInt4 / paramInt2;
-        paramFloat1 = (paramInt5 - paramInt3 * f1) * 1.0F;
-      }
-    case 3: 
-      paramFloat2 = 0.0F;
-      paramFloat1 = 0.0F;
-      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
-      {
-        f1 = paramInt4 / paramInt2;
-        paramFloat1 = (paramInt5 - paramInt3 * f1) * 0.5F;
-      }
-      for (;;)
-      {
-        localMatrix.setScale(f1, f1);
-        localMatrix.postTranslate((int)(paramFloat2 + 0.5F), (int)(paramFloat1 + 0.5F));
-        return;
-        f1 = paramInt5 / paramInt3;
-        paramFloat2 = (paramInt4 - paramInt2 * f1) * 0.5F;
-      }
-    case 4: 
-      if (paramInt2 * paramInt5 > paramInt4 * paramInt3) {}
-      for (paramFloat1 = paramInt4 / paramInt2;; paramFloat1 = paramInt5 / paramInt3)
-      {
-        localMatrix.setScale(paramFloat1, paramFloat1);
-        localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-        return;
-      }
-    case 5: 
-      paramFloat2 = 0.0F;
-      paramFloat1 = 0.0F;
-      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
-      {
-        f1 = paramInt4 / paramInt2;
-        paramFloat1 = (paramInt5 - paramInt3 * f1) * 1.0F;
-      }
-    case 6: 
-      for (;;)
-      {
-        localMatrix.setScale(f1, f1);
-        localMatrix.postTranslate((int)(paramFloat2 + 0.5F), (int)(paramFloat1 + 0.5F));
-        paramFloat1 = paramInt4 / paramInt2;
-        localMatrix.setScale(paramFloat1, paramFloat1);
-        localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-        return;
-        f1 = paramInt5 / paramInt3;
-        paramFloat2 = (paramInt4 - paramInt2 * f1) * 1.0F;
-      }
-    case 7: 
-      paramFloat1 = paramInt4 / paramInt2;
-      paramFloat2 = paramInt5;
-      f1 = paramInt3;
-      localMatrix.setScale(paramFloat1, paramFloat1);
-      localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.5F + (paramFloat2 - f1 * paramFloat1) * 1.0F));
+      localMatrix.setScale(f1, f1);
+      localMatrix.postTranslate((int)(paramFloat1 + 0.5F) * -1, (int)(paramFloat2 + 0.5F) * -1);
+      return;
+    case 9: 
+      paramFloat1 = paramInt5 - paramInt3;
+      localMatrix.postTranslate((int)((paramInt4 - paramInt2) * 0.5F + 0.5F), (int)(paramFloat1 * 0.5F + 0.5F));
       return;
     case 8: 
       paramFloat1 = paramInt4 / paramInt2;
       paramFloat2 = paramInt5;
       f1 = paramInt3;
       localMatrix.setScale(paramFloat1, paramFloat1);
-      localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.5F + (paramFloat2 - f1 * paramFloat1) * 0.5F));
+      localMatrix.postTranslate((int)0.5F, (int)((paramFloat2 - f1 * paramFloat1) * 0.5F + 0.5F));
       return;
-    case 9: 
-      paramFloat1 = paramInt5 - paramInt3;
-      localMatrix.postTranslate((int)((paramInt4 - paramInt2) * 0.5F + 0.5F), (int)(paramFloat1 * 0.5F + 0.5F));
+    case 7: 
+      paramFloat1 = paramInt4 / paramInt2;
+      paramFloat2 = paramInt5;
+      f1 = paramInt3;
+      localMatrix.setScale(paramFloat1, paramFloat1);
+      localMatrix.postTranslate((int)0.5F, (int)((paramFloat2 - f1 * paramFloat1) * 1.0F + 0.5F));
+      return;
+    case 5: 
+      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
+      {
+        paramFloat2 = paramInt4 / paramInt2;
+        paramFloat1 = (paramInt5 - paramInt3 * paramFloat2) * 1.0F;
+        f1 = 0.0F;
+      }
+      else
+      {
+        paramFloat2 = paramInt5 / paramInt3;
+        f1 = (paramInt4 - paramInt2 * paramFloat2) * 1.0F;
+        paramFloat1 = f2;
+      }
+      localMatrix.setScale(paramFloat2, paramFloat2);
+      localMatrix.postTranslate((int)(f1 + 0.5F), (int)(paramFloat1 + 0.5F));
+    case 6: 
+      paramFloat1 = paramInt4 / paramInt2;
+      localMatrix.setScale(paramFloat1, paramFloat1);
+      paramFloat1 = (int)0.5F;
+      localMatrix.postTranslate(paramFloat1, paramFloat1);
+      return;
+    case 4: 
+      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
+      {
+        paramFloat1 = paramInt4;
+        paramFloat2 = paramInt2;
+      }
+      else
+      {
+        paramFloat1 = paramInt5;
+        paramFloat2 = paramInt3;
+      }
+      paramFloat1 /= paramFloat2;
+      localMatrix.setScale(paramFloat1, paramFloat1);
+      localMatrix.postTranslate((int)0.5F, (int)0.5F);
+      return;
+    case 3: 
+      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
+      {
+        paramFloat2 = paramInt4 / paramInt2;
+        paramFloat1 = (paramInt5 - paramInt3 * paramFloat2) * 0.5F;
+        f1 = 0.0F;
+      }
+      else
+      {
+        paramFloat2 = paramInt5 / paramInt3;
+        f1 = (paramInt4 - paramInt2 * paramFloat2) * 0.5F;
+        paramFloat1 = f4;
+      }
+      localMatrix.setScale(paramFloat2, paramFloat2);
+      localMatrix.postTranslate((int)(f1 + 0.5F), (int)(paramFloat1 + 0.5F));
+      return;
+    case 2: 
+      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
+      {
+        paramFloat2 = paramInt5 / paramInt3;
+        f2 = (paramInt4 - paramInt2 * paramFloat2) * 1.0F;
+        paramFloat1 = f1;
+        f1 = f2;
+      }
+      else
+      {
+        paramFloat2 = paramInt4 / paramInt2;
+        paramFloat1 = (paramInt5 - paramInt3 * paramFloat2) * 1.0F;
+        f1 = 0.0F;
+      }
+      localMatrix.setScale(paramFloat2, paramFloat2);
+      localMatrix.postTranslate((int)(f1 + 0.5F), (int)(paramFloat1 + 0.5F));
+      return;
+    case 1: 
+      if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
+      {
+        paramFloat1 = paramInt5;
+        paramFloat2 = paramInt3;
+      }
+      else
+      {
+        paramFloat1 = paramInt4;
+        paramFloat2 = paramInt2;
+      }
+      paramFloat1 /= paramFloat2;
+      localMatrix.setScale(paramFloat1, paramFloat1);
+      localMatrix.postTranslate((int)0.5F, (int)0.5F);
       return;
     }
-    if (paramInt2 * paramInt5 > paramInt4 * paramInt3) {}
-    for (float f1 = paramInt5 / paramInt3;; f1 = paramInt4 / paramInt2)
+    if (paramInt2 * paramInt5 > paramInt4 * paramInt3)
     {
-      float f5 = paramInt4 * 0.5F;
-      float f4 = paramInt5 * 0.5F;
-      float f3 = 0.0F;
-      float f2 = 0.0F;
-      paramInt1 = (int)(paramInt2 * f1);
-      paramInt2 = (int)(paramInt3 * f1);
-      float f7 = paramInt1 * paramFloat1;
-      float f6 = paramInt2 * paramFloat2;
-      paramFloat1 = f3;
-      if (paramInt1 > paramInt4)
-      {
-        paramFloat1 = f3;
-        if (f7 > f5) {
-          paramFloat1 = Math.min(paramInt1 - paramInt4, f7 - f5);
-        }
-      }
-      paramFloat2 = f2;
-      if (paramInt2 > paramInt5)
-      {
-        paramFloat2 = f2;
-        if (f6 > f4) {
-          paramFloat2 = Math.min(paramInt2 - paramInt5, f6 - f4);
-        }
-      }
-      localMatrix.setScale(f1, f1);
-      localMatrix.postTranslate((int)(paramFloat1 + 0.5F) * -1, (int)(paramFloat2 + 0.5F) * -1);
-      return;
+      paramFloat2 = paramInt5 / paramInt3;
+      f1 = (paramInt4 - paramInt2 * paramFloat2) * 0.5F;
+      paramFloat1 = f5;
     }
+    else
+    {
+      paramFloat2 = paramInt4 / paramInt2;
+      paramFloat1 = (paramInt5 - paramInt3 * paramFloat2) * 0.5F;
+      f1 = 0.0F;
+    }
+    localMatrix.setScale(paramFloat2, paramFloat2);
+    localMatrix.postTranslate((int)(f1 + 0.5F), (int)(paramFloat1 + 0.5F));
   }
   
   private void updateDrawMatrix()
@@ -204,16 +226,16 @@ public class ScaleDrawable
   public void draw(Canvas paramCanvas)
   {
     Matrix localMatrix = this.mDrawMatrix;
-    if ((localMatrix == null) || (localMatrix.isIdentity()))
+    if ((localMatrix != null) && (!localMatrix.isIdentity()))
     {
+      int i = paramCanvas.getSaveCount();
+      paramCanvas.save();
+      paramCanvas.concat(localMatrix);
       super.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
       return;
     }
-    int i = paramCanvas.getSaveCount();
-    paramCanvas.save();
-    paramCanvas.concat(localMatrix);
     super.draw(paramCanvas);
-    paramCanvas.restoreToCount(i);
   }
   
   public Drawable.ConstantState getConstantState()
@@ -282,7 +304,7 @@ public class ScaleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.ScaleDrawable
  * JD-Core Version:    0.7.0.1
  */

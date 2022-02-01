@@ -1,210 +1,208 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.emoji.c.a;
+import com.tencent.mm.emoji.c.a.a;
+import com.tencent.mm.emoji.f.c;
+import com.tencent.mm.emoji.f.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.br;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil;", "", "()V", "Companion", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private static int ewB = 98304;
-  private static int ewC = 4;
-  private boolean aLC;
-  private final EmojiInfo evH;
-  private boolean ewD;
-  private boolean ewE;
-  private String ewF;
-  private List<String> ewG;
-  private String ewH;
-  public b ewI;
-  private List<c> ewJ;
-  private int ewK;
-  private int ewL;
-  private int ewM;
-  private long ewN;
-  private boolean ewO;
+  private static final String TAG;
+  private static final String hCS;
+  public static final a mfZ;
+  private static final String mga;
+  private static long mgb;
+  private static b mgc;
   
-  public f(EmojiInfo paramEmojiInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString1, List<String> paramList, String paramString2)
+  static
   {
-    AppMethodBeat.i(62244);
-    this.aLC = false;
-    this.ewJ = new ArrayList();
-    this.ewL = 2;
-    ab.i("MicroMsg.EmojiUploadHelper", "EmojiUploadHelper: isCapture %s", new Object[] { Boolean.valueOf(paramBoolean1) });
-    this.evH = paramEmojiInfo;
-    this.ewD = paramBoolean1;
-    this.ewE = paramBoolean2;
-    this.ewF = paramString1;
-    this.ewG = paramList;
-    this.ewH = paramString2;
-    this.ewN = System.currentTimeMillis();
-    int m = paramEmojiInfo.field_size;
-    int n = (int)Math.ceil(m * 1.0D / ewB);
-    this.ewK = (n * 2);
-    this.ewM = 0;
-    int i = 0;
-    while (i < n)
-    {
-      int i1 = i * ewB;
-      int k = ewB;
-      int j = k;
-      if (i1 + k > m) {
-        j = m - i1;
-      }
-      paramString1 = new c((byte)0);
-      paramString1.index = i;
-      paramString1.start = i1;
-      paramString1.bWt = j;
-      this.ewJ.add(paramString1);
-      i += 1;
-    }
-    ab.i("MicroMsg.EmojiUploadHelper", "start upload emoji, md5 %s, totalLen %d, parts %d, file %s", new Object[] { paramEmojiInfo.Al(), Integer.valueOf(m), Integer.valueOf(n), paramEmojiInfo.dQB() });
-    i = 0;
-    while (i < ewC)
-    {
-      OG();
-      i += 1;
-    }
-    AppMethodBeat.o(62244);
+    AppMethodBeat.i(242327);
+    mfZ = new a((byte)0);
+    TAG = "MicroMsg.EmojiEggUtil";
+    c localc = c.moq;
+    mga = s.X(c.aWC(), "panel/");
+    hCS = "emoji-anim.xml";
+    mgc = new b();
+    a.aUr();
+    AppMethodBeat.o(242327);
   }
   
-  private void OG()
+  public static final String s(cc paramcc)
   {
-    Object localObject = null;
-    int i = 1;
-    int j = 0;
-    label39:
-    label308:
-    for (;;)
+    AppMethodBeat.i(242303);
+    paramcc = a.s(paramcc);
+    AppMethodBeat.o(242303);
+    return paramcc;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil$Companion;", "", "()V", "PatMsgJoint", "", "TAG", "animConfig", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "getAnimConfig", "()Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "setAnimConfig", "(Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;)V", "assetDir", "configName", "lastCheckTick", "", "localDir", "versionName", "checkAnimUpdate", "", "getAnimItem", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "key", "getEmojiAnimVersion", "", "getMsgContent", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "getPatMsgContentList", "", "getScreenEffectVersion", "initAnimConfig", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static int El(String paramString)
     {
-      try
+      AppMethodBeat.i(242317);
+      s.u(paramString, "key");
+      Iterator localIterator = ((Iterable)f.aUn().mfy).iterator();
+      Object localObject;
+      do
       {
-        AppMethodBeat.i(62245);
-        if (this.aLC)
-        {
-          AppMethodBeat.o(62245);
-          return;
-        }
-        Iterator localIterator = this.ewJ.iterator();
         if (!localIterator.hasNext()) {
-          break label308;
-        }
-        c localc2 = (c)localIterator.next();
-        if (!localc2.ewR) {
-          if (!localc2.running)
-          {
-            localObject = localc2;
-            i = j;
-            if (localObject == null)
-            {
-              if (i != 0)
-              {
-                ab.w("MicroMsg.EmojiUploadHelper", "all parts finished but not completed");
-                a(4, 4, null, false);
-              }
-              AppMethodBeat.o(62245);
-            }
-          }
-          else
-          {
-            i = 0;
-          }
-        }
-      }
-      finally {}
-      for (;;)
-      {
-        break label39;
-        if (this.ewM >= this.ewK)
-        {
-          ab.w("MicroMsg.EmojiUploadHelper", "req count is %d, max is %d; toRun part is %d", new Object[] { Integer.valueOf(this.ewM), Integer.valueOf(this.ewK), Integer.valueOf(localc1.index) });
-          a(3, -2, null, false);
-          AppMethodBeat.o(62245);
           break;
         }
-        this.ewM += 1;
-        localc1.retryCount += 1;
-        localc1.running = true;
-        ab.i("MicroMsg.EmojiUploadHelper", "start part %d, retry count %d", new Object[] { Integer.valueOf(localc1.index), Integer.valueOf(localc1.retryCount) });
-        new f.a(this, this.evH, localc1, this.ewD, this.ewE, this.ewF, this.ewG, this.ewH).adl().g(new f.1(this, localc1));
-        AppMethodBeat.o(62245);
-        break;
-      }
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(62246);
-    e locale;
-    if ((this.ewI != null) && (!this.ewO))
-    {
-      this.ewO = true;
-      if (paramInt2 == -434)
+        localObject = localIterator.next();
+      } while (!s.p(((b.a)localObject).key, paramString));
+      for (paramString = localObject;; paramString = null)
       {
-        if (!this.ewD) {
-          break label107;
+        paramString = (b.a)paramString;
+        if (paramString != null) {
+          break;
         }
-        locale = e.ewz;
-        e.co(true);
-        g.RL().Ru().set(ac.a.yxV, Boolean.TRUE);
+        AppMethodBeat.o(242317);
+        return 0;
       }
-      this.ewI.b(paramInt1, paramInt2, paramString, paramBoolean);
-      if (paramInt2 == 0)
+      paramString = paramString.mfA;
+      if (paramString == null)
       {
-        if (!this.ewD) {
-          break label134;
-        }
-        d.Oz().cm(true);
+        AppMethodBeat.o(242317);
+        return 0;
       }
+      int i = paramString.version;
+      AppMethodBeat.o(242317);
+      return i;
     }
-    for (;;)
-    {
-      paramString = e.ewz;
-      e.OE();
-      AppMethodBeat.o(62246);
-      return;
-      label107:
-      locale = e.ewz;
-      e.cn(true);
-      g.RL().Ru().set(ac.a.yxU, Boolean.TRUE);
-      break;
-      label134:
-      d.Oz().ck(true);
-      d.Oz().cj(true);
-    }
-  }
-  
-  public final void a(b paramb)
-  {
-    this.ewI = paramb;
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void b(int paramInt1, int paramInt2, String paramString, boolean paramBoolean);
-  }
-  
-  final class c
-  {
-    public int bWt;
-    public boolean ewR;
-    public int index;
-    public int retryCount;
-    public boolean running;
-    public int start;
     
-    private c() {}
+    public static void aUr()
+    {
+      AppMethodBeat.i(242308);
+      int i = d.Ex(s.X(f.aUo(), "config.conf"));
+      int j = d.Ex("assets:///panel/config.conf");
+      Object localObject1 = s.X(f.aUo(), f.aUp());
+      Object localObject2 = s.X("assets:///panel/", f.aUp());
+      if ((i > 0) && (i >= j) && (y.ZC((String)localObject1)))
+      {
+        localObject2 = a.mhz;
+        a.a.a((String)localObject1, (a)f.aUn());
+      }
+      for (;;)
+      {
+        Log.i(f.access$getTAG$cp(), "initAnimConfig: version:" + i + ", " + j + "; content " + f.aUn().mfy.size());
+        AppMethodBeat.o(242308);
+        return;
+        localObject1 = a.mhz;
+        a.a.a((String)localObject2, (a)f.aUn());
+      }
+    }
+    
+    public static void aUs()
+    {
+      AppMethodBeat.i(242315);
+      if (!MMApplicationContext.isMainProcess())
+      {
+        AppMethodBeat.o(242315);
+        return;
+      }
+      if (!h.baz())
+      {
+        AppMethodBeat.o(242315);
+        return;
+      }
+      if (Util.ticksToNow(f.aUq()) > 1800000L)
+      {
+        f.hu(Util.currentTicks());
+        com.tencent.mm.pluginsdk.res.downloader.checkresupdate.b.iJf().f(37, 7, -1, false);
+        com.tencent.mm.pluginsdk.res.downloader.checkresupdate.b.iJf();
+        com.tencent.mm.pluginsdk.res.downloader.checkresupdate.b.avS(37);
+        Log.i(f.access$getTAG$cp(), "checkAnimUpdate: " + f.aUn().mfy.size() + ", " + f.aUq());
+      }
+      AppMethodBeat.o(242315);
+    }
+    
+    public static String s(cc paramcc)
+    {
+      AppMethodBeat.i(242300);
+      s.u(paramcc, "msgInfo");
+      Object localObject2 = paramcc.field_content;
+      Object localObject1 = localObject2;
+      if (au.bwE(paramcc.field_talker)) {
+        localObject1 = br.JH((String)localObject2);
+      }
+      if (!paramcc.jbR())
+      {
+        localObject2 = localObject1;
+        if (!paramcc.jbS()) {}
+      }
+      else
+      {
+        paramcc = k.b.aP((String)localObject1, paramcc.field_reserved);
+        if (paramcc != null) {
+          break label71;
+        }
+      }
+      label71:
+      for (localObject2 = null;; localObject2 = paramcc.title)
+      {
+        AppMethodBeat.o(242300);
+        return localObject2;
+      }
+    }
+    
+    public static List<String> t(cc paramcc)
+    {
+      AppMethodBeat.i(242306);
+      s.u(paramcc, "msgInfo");
+      LinkedList localLinkedList = new LinkedList();
+      Object localObject;
+      if (paramcc.jbQ())
+      {
+        localObject = paramcc.field_content;
+        if (!au.bwE(paramcc.field_talker)) {
+          break label158;
+        }
+      }
+      label158:
+      for (paramcc = br.JH((String)localObject);; paramcc = (cc)localObject)
+      {
+        paramcc = ((com.tencent.mm.plugin.patmsg.a.b)h.ax(com.tencent.mm.plugin.patmsg.a.b.class)).aRl(paramcc).Ksg;
+        s.s(paramcc, "patContent.recordList");
+        localObject = (Iterable)paramcc;
+        paramcc = (Collection)new ArrayList(p.a((Iterable)localObject, 10));
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramcc.add(((ebe)((Iterator)localObject).next()).nVS);
+        }
+        localLinkedList.addAll((Collection)paramcc);
+        paramcc = (List)localLinkedList;
+        AppMethodBeat.o(242306);
+        return paramcc;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.f
  * JD-Core Version:    0.7.0.1
  */

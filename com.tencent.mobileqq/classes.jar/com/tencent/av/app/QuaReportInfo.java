@@ -13,62 +13,62 @@ public class QuaReportInfo
   
   public QuaReportInfo toObject(String paramString)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = paramString.split("_");
-        if (paramString[0].equals("null"))
-        {
-          this.selfUin = null;
-          if (paramString[1].equals("null"))
-          {
-            this.peerUin = null;
-            this.busytype = Integer.valueOf(paramString[2]).intValue();
-            this.uintype = Integer.valueOf(paramString[3]).intValue();
-            return this;
-          }
-        }
-        else
-        {
-          this.selfUin = paramString[0];
-          continue;
-        }
+      paramString = paramString.split("_");
+      if (paramString[0].equals("null")) {
+        this.selfUin = null;
+      } else {
+        this.selfUin = paramString[0];
+      }
+      if (paramString[1].equals("null")) {
+        this.peerUin = null;
+      } else {
         this.peerUin = paramString[1];
       }
-      catch (Exception paramString)
+      this.busytype = Integer.valueOf(paramString[2]).intValue();
+      this.uintype = Integer.valueOf(paramString[3]).intValue();
+      return this;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QuaReportInfo", 2, "deserialization failed! exception = " + paramString);
-        }
-        return null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("deserialization failed! exception = ");
+        localStringBuilder.append(paramString);
+        QLog.e("QuaReportInfo", 2, localStringBuilder.toString());
       }
     }
+    return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.selfUin != null)
-    {
-      str = this.selfUin;
-      localStringBuilder = localStringBuilder.append(str).append("_");
-      if (this.peerUin == null) {
-        break label82;
-      }
+    Object localObject = this.selfUin;
+    String str1 = "null";
+    if (localObject == null) {
+      localObject = "null";
     }
-    label82:
-    for (String str = this.peerUin;; str = "null")
-    {
-      return str + "_" + this.busytype + "_" + this.uintype;
-      str = "null";
-      break;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    String str2 = this.peerUin;
+    localObject = str1;
+    if (str2 != null) {
+      localObject = str2;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.busytype);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.uintype);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.QuaReportInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:id="@id/pve" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="bottom" android:id="@id/pvf" android:background="@drawable/eqr" android:layout_width="fill_parent" android:layout_height="245.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/pvd" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="49.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/pvo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_alignParentLeft="true">
+            <HorizontalScrollView android:id="@id/nwm" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_alignParentLeft="true">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/oeu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="2.399994dip" />
+            </HorizontalScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

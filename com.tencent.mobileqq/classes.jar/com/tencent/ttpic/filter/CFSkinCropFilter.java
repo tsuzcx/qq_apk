@@ -23,43 +23,36 @@ public class CFSkinCropFilter
       setTexCords(new float[] { 0.3F, 0.3F, 0.3F, 0.7F, 0.7F, 0.7F, 0.7F, 0.3F });
       return;
     }
-    if (paramFloat1 < 0.001F)
-    {
+    float f1 = 0.0F;
+    if (paramFloat1 < 0.001F) {
       paramFloat1 = 0.0F;
-      if (paramFloat2 >= 0.001F) {
-        break label557;
-      }
-    }
-    float[] arrayOfFloat;
-    label557:
-    for (paramFloat2 = 0.0F;; paramFloat2 = 1.0F / paramFloat2)
-    {
-      arrayOfFloat = new float[8];
-      float f = ((PointF)this.facePoints.get(99)).x;
-      arrayOfFloat[0] = (((PointF)this.facePoints.get(103)).x * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(99)).y;
-      arrayOfFloat[1] = (((PointF)this.facePoints.get(103)).y * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(101)).x;
-      arrayOfFloat[2] = (((PointF)this.facePoints.get(105)).x * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(101)).y;
-      arrayOfFloat[3] = (((PointF)this.facePoints.get(105)).y * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(103)).x;
-      arrayOfFloat[4] = (((PointF)this.facePoints.get(99)).x * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(103)).y;
-      arrayOfFloat[5] = (((PointF)this.facePoints.get(99)).y * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(105)).x;
-      arrayOfFloat[6] = (((PointF)this.facePoints.get(101)).x * 0.3F + f * 0.7F);
-      f = ((PointF)this.facePoints.get(105)).y;
-      arrayOfFloat[7] = (((PointF)this.facePoints.get(101)).y * 0.3F + f * 0.7F);
-      int i = 0;
-      while (i < 4)
-      {
-        arrayOfFloat[(i * 2)] *= paramFloat1;
-        arrayOfFloat[(i * 2 + 1)] *= paramFloat2;
-        i += 1;
-      }
+    } else {
       paramFloat1 = 1.0F / paramFloat1;
-      break;
+    }
+    if (paramFloat2 < 0.001F) {
+      paramFloat2 = f1;
+    } else {
+      paramFloat2 = 1.0F / paramFloat2;
+    }
+    float[] arrayOfFloat = new float[8];
+    f1 = ((PointF)this.facePoints.get(99)).x;
+    float f2 = ((PointF)this.facePoints.get(103)).x;
+    int i = 0;
+    arrayOfFloat[0] = (f1 * 0.7F + f2 * 0.3F);
+    arrayOfFloat[1] = (((PointF)this.facePoints.get(99)).y * 0.7F + ((PointF)this.facePoints.get(103)).y * 0.3F);
+    arrayOfFloat[2] = (((PointF)this.facePoints.get(101)).x * 0.7F + ((PointF)this.facePoints.get(105)).x * 0.3F);
+    arrayOfFloat[3] = (((PointF)this.facePoints.get(101)).y * 0.7F + ((PointF)this.facePoints.get(105)).y * 0.3F);
+    arrayOfFloat[4] = (((PointF)this.facePoints.get(103)).x * 0.7F + ((PointF)this.facePoints.get(99)).x * 0.3F);
+    arrayOfFloat[5] = (((PointF)this.facePoints.get(103)).y * 0.7F + ((PointF)this.facePoints.get(99)).y * 0.3F);
+    arrayOfFloat[6] = (((PointF)this.facePoints.get(105)).x * 0.7F + ((PointF)this.facePoints.get(101)).x * 0.3F);
+    arrayOfFloat[7] = (((PointF)this.facePoints.get(105)).y * 0.7F + ((PointF)this.facePoints.get(101)).y * 0.3F);
+    while (i < 4)
+    {
+      int j = i * 2;
+      arrayOfFloat[j] *= paramFloat1;
+      j += 1;
+      arrayOfFloat[j] *= paramFloat2;
+      i += 1;
     }
     setTexCords(arrayOfFloat);
   }
@@ -71,7 +64,7 @@ public class CFSkinCropFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.CFSkinCropFilter
  * JD-Core Version:    0.7.0.1
  */

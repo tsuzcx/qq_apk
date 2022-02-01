@@ -8,19 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneRecommandPreference
   extends Preference
 {
-  RegionCodeDecoder.Region Ayr;
-  RegionCodeDecoder.Region Ays;
-  RegionCodeDecoder.Region Ayt;
-  private TextView Ayu;
-  private ImageView Ayv;
-  private TextView gpr;
+  RegionCodeDecoder.Region afLR;
+  RegionCodeDecoder.Region afLS;
+  RegionCodeDecoder.Region afLT;
+  private TextView afLU;
+  private ImageView afLV;
+  private TextView lPf;
   int status;
   
   public ZoneRecommandPreference(Context paramContext)
@@ -36,18 +40,18 @@ public class ZoneRecommandPreference
   public ZoneRecommandPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(35014);
+    AppMethodBeat.i(39211);
     this.status = 0;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(35014);
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(39211);
   }
   
-  final void dOe()
+  final void jDu()
   {
-    AppMethodBeat.i(35017);
-    if ((this.Ayu == null) || (this.gpr == null))
+    AppMethodBeat.i(39214);
+    if ((this.afLU == null) || (this.lPf == null))
     {
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
     }
     switch (this.status)
@@ -55,92 +59,92 @@ public class ZoneRecommandPreference
     }
     for (;;)
     {
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(8);
-      this.gpr.setVisibility(0);
-      this.gpr.setText(2131303181);
-      this.Ayv.setImageResource(2131231403);
+      this.afLU.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.lPf.setText(R.l.setting_zone_getting_location);
+      this.afLV.setImageResource(R.k.get_location_icon);
       setEnabled(false);
-      setSelectable(false);
-      AppMethodBeat.o(35017);
+      LH(false);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(8);
-      this.gpr.setVisibility(0);
-      this.gpr.setText(2131303178);
-      this.Ayv.setImageResource(2131231402);
+      this.afLU.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.lPf.setText(R.l.setting_zone_cannot_get_location);
+      this.afLV.setImageResource(R.k.get_location_failed_icon);
       setEnabled(false);
-      setSelectable(false);
-      AppMethodBeat.o(35017);
+      LH(false);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(0);
-      this.gpr.setVisibility(8);
-      this.Ayv.setImageResource(2131231403);
+      this.afLU.setVisibility(0);
+      this.lPf.setVisibility(8);
+      this.afLV.setImageResource(R.k.get_location_icon);
       Object localObject2 = "";
       Object localObject1 = localObject2;
-      if (this.Ayr != null)
+      if (this.afLR != null)
       {
         localObject1 = localObject2;
-        if (!ah.isNullOrNil(this.Ayr.getName())) {
-          localObject1 = "" + this.Ayr.getName();
+        if (!Util.isNullOrNil(this.afLR.getName())) {
+          localObject1 = "" + this.afLR.getName();
         }
       }
       localObject2 = localObject1;
-      if (this.Ays != null)
+      if (this.afLS != null)
       {
         localObject2 = localObject1;
-        if (!ah.isNullOrNil(this.Ays.getName())) {
-          localObject2 = (String)localObject1 + " " + this.Ays.getName();
+        if (!Util.isNullOrNil(this.afLS.getName())) {
+          localObject2 = (String)localObject1 + " " + this.afLS.getName();
         }
       }
       localObject1 = localObject2;
-      if (this.Ayt != null)
+      if (this.afLT != null)
       {
         localObject1 = localObject2;
-        if (!ah.isNullOrNil(this.Ayt.getName())) {
-          localObject1 = (String)localObject2 + " " + this.Ayt.getName();
+        if (!Util.isNullOrNil(this.afLT.getName())) {
+          localObject1 = (String)localObject2 + " " + this.afLT.getName();
         }
       }
-      this.Ayu.setText((CharSequence)localObject1);
+      this.afLU.setText((CharSequence)localObject1);
       setEnabled(true);
-      setSelectable(true);
+      LH(true);
     }
   }
   
-  public final void dOf()
+  public final void jDv()
   {
-    AppMethodBeat.i(35018);
+    AppMethodBeat.i(39215);
     this.status = 2;
-    dOe();
-    AppMethodBeat.o(35018);
+    jDu();
+    AppMethodBeat.o(39215);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(35016);
+    AppMethodBeat.i(39213);
     super.onBindView(paramView);
-    dOe();
-    AppMethodBeat.o(35016);
+    jDu();
+    AppMethodBeat.o(39213);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(35015);
+    AppMethodBeat.i(39212);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970223, localViewGroup);
-    this.Ayu = ((TextView)paramViewGroup.findViewById(2131826226));
-    this.gpr = ((TextView)paramViewGroup.findViewById(2131826231));
-    this.Ayv = ((ImageView)paramViewGroup.findViewById(2131826230));
-    AppMethodBeat.o(35015);
+    localLayoutInflater.inflate(R.i.gmb, localViewGroup);
+    this.afLU = ((TextView)paramViewGroup.findViewById(R.h.gdT));
+    this.lPf = ((TextView)paramViewGroup.findViewById(R.h.status));
+    this.afLV = ((ImageView)paramViewGroup.findViewById(R.h.fYd));
+    AppMethodBeat.o(39212);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneRecommandPreference
  * JD-Core Version:    0.7.0.1
  */

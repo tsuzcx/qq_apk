@@ -1,0 +1,9 @@
+package com.tencent.luggage.wxa.sk;
+
+abstract interface b$a {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.sk.b.a
+ * JD-Core Version:    0.7.0.1
+ */

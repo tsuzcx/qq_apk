@@ -1,283 +1,127 @@
 package com.tencent.mm.audio.mix.d;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.e.c;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
-public final class a
+public class a
+  implements f
 {
-  public Object ceG;
-  public com.tencent.mm.audio.mix.f.d cfs;
-  public HashMap<String, b> cft;
-  public HashMap<String, com.tencent.mm.ag.b> cfu;
-  public List<String> cfv;
-  public LinkedList<String> cfw;
+  public volatile HashMap<String, c> hrU;
+  Object hri;
+  public volatile LinkedList<String> hsK;
+  volatile ArrayList<String> hsL;
+  public f.a hsM;
   
-  public a(com.tencent.mm.audio.mix.f.d paramd)
+  public a()
   {
-    AppMethodBeat.i(137038);
-    this.cft = new HashMap();
-    this.cfu = new HashMap();
-    this.cfv = new ArrayList();
-    this.cfw = new LinkedList();
-    this.ceG = new Object();
-    this.cfs = paramd;
-    com.tencent.mm.audio.mix.b.d.De().clearCache();
-    AppMethodBeat.o(137038);
+    AppMethodBeat.i(236201);
+    this.hrU = new HashMap();
+    this.hsK = new LinkedList();
+    this.hsL = new ArrayList();
+    this.hri = new Object();
+    AppMethodBeat.o(236201);
   }
   
-  public final void Dm()
+  public final boolean a(com.tencent.mm.al.b paramb)
   {
-    AppMethodBeat.i(137041);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "stopAll");
-    Iterator localIterator = this.cfw.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(236202);
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "startDownload");
+    if (paramb == null)
     {
-      Object localObject = (String)localIterator.next();
-      localObject = (b)this.cft.get(localObject);
-      if ((localObject != null) && (!((b)localObject).cfz) && (!((b)localObject).Dn()))
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "param is null");
+      AppMethodBeat.o(236202);
+      return false;
+    }
+    if (TextUtils.isEmpty(paramb.hsg))
+    {
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl is null");
+      AppMethodBeat.o(236202);
+      return false;
+    }
+    if (this.hsL.contains(paramb.hsg))
+    {
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "srcUrl:%s is download finish", new Object[] { paramb.hsg });
+      AppMethodBeat.o(236202);
+      return false;
+    }
+    if (this.hrU.containsKey(paramb.hsg))
+    {
+      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "task is exit!");
+      AppMethodBeat.o(236202);
+      return true;
+    }
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "download src:%s, audioId:%s", new Object[] { paramb.hsg, paramb.hqQ });
+    c localc = new c(new b(new e()
+    {
+      public final void c(com.tencent.mm.al.b paramAnonymousb)
       {
-        localObject = ((b)localObject).cfA;
-        if (localObject != null) {
-          ((k)localObject).stop();
+        AppMethodBeat.i(236209);
+        String str = "";
+        Object localObject = a.this.hri;
+        if (paramAnonymousb != null) {}
+        try
+        {
+          a.this.hrU.remove(paramAnonymousb.hsg);
+          str = paramAnonymousb.hsg;
+          a.this.hsL.add(paramAnonymousb.hsg);
+          com.tencent.mm.audio.mix.h.b.i("MicroMsg.Audio.AudioDownloadMgr", "download finish, src:%s", new Object[] { str });
+          if (a.this.hsM != null) {
+            a.this.hsM.e(paramAnonymousb);
+          }
+          AppMethodBeat.o(236209);
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(236209);
         }
       }
-    }
-    AppMethodBeat.o(137041);
-  }
-  
-  public final boolean b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(137044);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "doDecodeAudio");
-    if (this.cfs == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "mPlayer is null!");
-      AppMethodBeat.o(137044);
-      return false;
-    }
-    Object localObject2 = (com.tencent.mm.ag.b)this.cfu.get(paramString);
-    if (localObject2 == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "param for id %s is not exist!", new Object[] { paramString });
-      AppMethodBeat.o(137044);
-      return false;
-    }
-    Object localObject1 = (b)this.cft.get(paramString);
-    k localk;
-    if (localObject1 != null)
-    {
-      if ((((b)localObject1).cfz) && (!this.cfs.chs.Dt()) && (!this.cfs.chs.ei(paramString)))
+      
+      public final void d(com.tencent.mm.al.b paramAnonymousb)
       {
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "task is end, but not to play end");
-        AppMethodBeat.o(137044);
-        return true;
+        AppMethodBeat.i(236211);
+        String str = "";
+        Object localObject = a.this.hri;
+        if (paramAnonymousb != null) {}
+        try
+        {
+          a.this.hrU.remove(paramAnonymousb.hsg);
+          str = paramAnonymousb.hsg;
+          com.tencent.mm.audio.mix.h.b.e("MicroMsg.Audio.AudioDownloadMgr", "download fail, src:%s", new Object[] { str });
+          AppMethodBeat.o(236211);
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(236211);
+        }
       }
-      if (((b)localObject1).cfz)
-      {
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "task is end, reset source and decoder to run");
-        ((b)localObject1).cfz = false;
-        paramString = new com.tencent.mm.audio.mix.g.a((com.tencent.mm.ag.b)localObject2);
-        ((b)localObject1).b(f.a(this.cfs, paramString, paramBoolean2));
-        h.a((i)localObject1);
-        AppMethodBeat.o(137044);
-        return true;
-      }
-      localk = ((b)localObject1).cfA;
-      if ((localk == null) || (!paramBoolean1)) {
-        break label305;
-      }
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "force decode to stop and create new task to run");
-      localk.stop();
-    }
-    label305:
-    do
+    }), paramb.hqQ);
+    localc.b(b(paramb));
+    d.a(localc);
+    synchronized (this.hri)
     {
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "task is not exist, create new task to run");
-      localObject1 = new com.tencent.mm.audio.mix.g.a((com.tencent.mm.ag.b)localObject2);
-      localObject1 = f.a(this.cfs, (com.tencent.mm.audio.mix.g.b)localObject1, paramBoolean2);
-      localObject2 = new b(new a.1(this), paramString);
-      ((b)localObject2).b((k)localObject1);
-      h.a((i)localObject2);
-      this.cft.put(paramString, localObject2);
-      AppMethodBeat.o(137044);
-      return true;
-      if ((localk != null) && (localk.Ds()) && (!localk.Dt()))
-      {
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "resume decoder to run");
-        localk.resume();
-        AppMethodBeat.o(137044);
-        return true;
-      }
-      if ((localk != null) && (localk.Dt()))
-      {
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "decoder to stop, reset task run");
-        ((b)localObject1).cfz = false;
-        paramString = new com.tencent.mm.audio.mix.g.a((com.tencent.mm.ag.b)localObject2);
-        ((b)localObject1).b(f.a(this.cfs, paramString, paramBoolean2));
-        h.a((i)localObject1);
-        AppMethodBeat.o(137044);
-        return true;
-      }
-    } while (localk == null);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "task is run and playing audio");
-    AppMethodBeat.o(137044);
-    return true;
-  }
-  
-  public final void clearCache()
-  {
-    AppMethodBeat.i(137039);
-    this.cft.clear();
-    this.cfw.clear();
-    this.cfu.clear();
-    AppMethodBeat.o(137039);
-  }
-  
-  public final boolean dX(String paramString)
-  {
-    AppMethodBeat.i(137040);
-    synchronized (this.ceG)
-    {
-      boolean bool = this.cfv.contains(paramString);
-      AppMethodBeat.o(137040);
-      return bool;
-    }
-  }
-  
-  public final void dY(String paramString)
-  {
-    AppMethodBeat.i(137042);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "startDecode audioId:%s", new Object[] { paramString });
-    b(paramString, false, false);
-    AppMethodBeat.o(137042);
-  }
-  
-  public final void dZ(String paramString)
-  {
-    AppMethodBeat.i(137043);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "stopDecode audioId:%s", new Object[] { paramString });
-    b localb = (b)this.cft.get(paramString);
-    if (localb == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is not exist");
-      AppMethodBeat.o(137043);
-      return;
-    }
-    if (localb.cfz)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is execute end!");
-      AppMethodBeat.o(137043);
-      return;
-    }
-    k localk = localb.cfA;
-    if (localk != null)
-    {
-      localk.stop();
-      localb.cfA = null;
-      this.cft.remove(paramString);
-    }
-    AppMethodBeat.o(137043);
-  }
-  
-  public final boolean ea(String paramString)
-  {
-    AppMethodBeat.i(137047);
-    paramString = (b)this.cft.get(paramString);
-    if (paramString == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is not exist");
-      AppMethodBeat.o(137047);
+      this.hrU.put(paramb.hsg, localc);
+      this.hsK.add(paramb.hsg);
+      AppMethodBeat.o(236202);
       return true;
     }
-    if (paramString.cfz)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is execute end!");
-      AppMethodBeat.o(137047);
-      return true;
-    }
-    if (paramString.Dn())
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is isDetach!");
-      AppMethodBeat.o(137047);
-      return true;
-    }
-    AppMethodBeat.o(137047);
-    return false;
   }
   
-  public final boolean eb(String paramString)
+  protected com.tencent.mm.audio.mix.g.c b(com.tencent.mm.al.b paramb)
   {
-    AppMethodBeat.i(137048);
-    b localb = (b)this.cft.get(paramString);
-    if ((localb != null) && (localb.cfz) && (!this.cfs.chs.Dt()) && (!this.cfs.chs.ei(paramString)))
-    {
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeMgr", "task is end, but not to play end");
-      AppMethodBeat.o(137048);
-      return true;
-    }
-    AppMethodBeat.o(137048);
-    return false;
-  }
-  
-  public final boolean u(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(137045);
-    if (!v(paramString, paramInt))
-    {
-      AppMethodBeat.o(137045);
-      return false;
-    }
-    v(paramString, paramInt);
-    paramString = (b)this.cft.get(paramString);
-    if (paramString == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is not exist");
-      AppMethodBeat.o(137045);
-      return false;
-    }
-    if (paramString.cfz)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is execute end!");
-      AppMethodBeat.o(137045);
-      return false;
-    }
-    if (paramString.Dn())
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "task is isDetach!");
-      AppMethodBeat.o(137045);
-      return false;
-    }
-    paramString = paramString.cfA;
-    if (paramString != null) {
-      paramString.seek(paramInt);
-    }
-    AppMethodBeat.o(137045);
-    return true;
-  }
-  
-  public final boolean v(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(137046);
-    com.tencent.mm.ag.b localb = (com.tencent.mm.ag.b)this.cfu.get(paramString);
-    if (localb == null)
-    {
-      com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioDecodeMgr", "param for id %s is not exist!", new Object[] { paramString });
-      AppMethodBeat.o(137046);
-      return false;
-    }
-    localb.startTime = paramInt;
-    AppMethodBeat.o(137046);
-    return true;
+    AppMethodBeat.i(236206);
+    paramb = new com.tencent.mm.audio.mix.g.b();
+    AppMethodBeat.o(236206);
+    return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.a
  * JD-Core Version:    0.7.0.1
  */

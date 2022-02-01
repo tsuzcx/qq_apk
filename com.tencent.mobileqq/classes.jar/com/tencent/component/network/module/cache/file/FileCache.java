@@ -13,16 +13,18 @@ public class FileCache<K>
   
   private static int getFileSize(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return 0;
+    if ((paramString != null) && (paramString.length() != 0)) {
+      return 1;
     }
-    return 1;
+    return 0;
   }
   
   protected void entryRemoved(boolean paramBoolean, K paramK, String paramString1, String paramString2)
   {
-    if (paramString1 == paramString2) {}
-    while ((paramString1 != null) && (paramString1.equals(paramString2))) {
+    if (paramString1 == paramString2) {
+      return;
+    }
+    if ((paramString1 != null) && (paramString1.equals(paramString2))) {
       return;
     }
     try
@@ -47,7 +49,7 @@ public class FileCache<K>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.cache.file.FileCache
  * JD-Core Version:    0.7.0.1
  */

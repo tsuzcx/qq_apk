@@ -20,20 +20,26 @@ public final class MultipleAssignmentSubscription
   
   public void set(Subscription paramSubscription)
   {
-    if (paramSubscription == null) {
-      throw new IllegalArgumentException("Subscription can not be null");
-    }
-    AtomicReference localAtomicReference = this.state;
-    MultipleAssignmentSubscription.State localState;
-    do
+    if (paramSubscription != null)
     {
-      localState = (MultipleAssignmentSubscription.State)localAtomicReference.get();
-      if (localState.isUnsubscribed)
+      AtomicReference localAtomicReference = this.state;
+      MultipleAssignmentSubscription.State localState;
+      do
       {
-        paramSubscription.unsubscribe();
-        return;
-      }
-    } while (!localAtomicReference.compareAndSet(localState, localState.set(paramSubscription)));
+        localState = (MultipleAssignmentSubscription.State)localAtomicReference.get();
+        if (localState.isUnsubscribed)
+        {
+          paramSubscription.unsubscribe();
+          return;
+        }
+      } while (!localAtomicReference.compareAndSet(localState, localState.set(paramSubscription)));
+      return;
+    }
+    paramSubscription = new IllegalArgumentException("Subscription can not be null");
+    for (;;)
+    {
+      throw paramSubscription;
+    }
   }
   
   public void unsubscribe()
@@ -52,7 +58,7 @@ public final class MultipleAssignmentSubscription
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.subscriptions.MultipleAssignmentSubscription
  * JD-Core Version:    0.7.0.1
  */

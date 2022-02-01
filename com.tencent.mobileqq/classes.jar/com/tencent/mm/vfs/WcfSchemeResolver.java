@@ -18,15 +18,17 @@ public final class WcfSchemeResolver
   {
     FileSystem localFileSystem = (FileSystem)((ResolverState)paramResolverContext).mFileSystems.get(paramUri.getAuthority());
     paramResolverContext = paramUri.getPath();
-    if (paramResolverContext == null) {}
-    for (paramResolverContext = "";; paramResolverContext = VFSUtils.normalizePath(paramResolverContext, true, true)) {
-      return new Pair(localFileSystem, paramResolverContext);
+    if (paramResolverContext == null) {
+      paramResolverContext = "";
+    } else {
+      paramResolverContext = VFSUtils.normalizePath(paramResolverContext, true, true);
     }
+    return new Pair(localFileSystem, paramResolverContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.WcfSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

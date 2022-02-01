@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/knp" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/kns" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="55.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/l2s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/eaa" android:scaleType="fitCenter" />
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/skin_input" android:gravity="center_vertical" android:id="@id/g63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:minHeight="44.0dip" android:hint="@string/cc9" android:maxLength="16" android:layout_weight="0.0" android:inputType="textPassword" android:imeOptions="actionDone" android:contentDescription="@string/qaf" style="@style/mu" />
+        <TextView android:textSize="15.0dip" android:id="@id/ey9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" android:text="@string/cc1" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/knr" android:layout_width="fill_parent" android:layout_height="36.0dip">
+            <Button android:textSize="17.0sp" android:id="@id/knq" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/yqk" android:layout_weight="1.0" style="@style/b9" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

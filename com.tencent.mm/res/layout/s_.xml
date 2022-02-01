@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kiv" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/o1" android:background="@drawable/abl" android:paddingTop="@dimen/l2" android:paddingBottom="@dimen/ne" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/o3" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:id="@id/oa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="111" android:singleLine="true" style="@style/ln" />
-        </LinearLayout>
-        <TextView android:id="@id/o7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/h9" />
+    <TextView android:textSize="26.0dip" android:id="@id/eha" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.CustomScrollView android:id="@id/eh9" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:paddingTop="@dimen/d6" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <TextView android:textSize="26.0dip" android:textColor="@color/FG_0" android:id="@id/eh_" android:paddingLeft="20.0dip" android:paddingTop="@dimen/cp" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/cd" />
+            </LinearLayout>
+        </com.tencent.mm.ui.base.CustomScrollView>
     </LinearLayout>
+    <ViewStub android:id="@id/l9t" android:layout="@layout/cai" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/fgp" android:background="@drawable/b4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/m1"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/hq" android:textColor="?o" android:id="@id/ff7" android:padding="@dimen/m9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a44" android:layout_centerInParent="true" />
+    </RelativeLayout>
 </LinearLayout>

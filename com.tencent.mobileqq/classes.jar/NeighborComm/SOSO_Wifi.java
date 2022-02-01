@@ -8,7 +8,7 @@ public final class SOSO_Wifi
   extends JceStruct
 {
   public long lMac = -1L;
-  public short shRssi;
+  public short shRssi = 0;
   
   public SOSO_Wifi() {}
   
@@ -32,7 +32,7 @@ public final class SOSO_Wifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborComm.SOSO_Wifi
  * JD-Core Version:    0.7.0.1
  */

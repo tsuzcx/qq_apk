@@ -31,25 +31,26 @@ public class AbstractGifImage$DoAccumulativeRunnable
   
   protected void submit()
   {
-    long l = SystemClock.uptimeMillis();
+    long l1 = SystemClock.uptimeMillis();
     if (NativeGifImage.QZONE_DELAY == -1)
     {
-      if ((this.lastRefreshTime == 0L) || (l - this.lastRefreshTime > DELAY))
+      long l2 = this.lastRefreshTime;
+      if ((l2 != 0L) && (l1 - l2 <= DELAY))
       {
-        run();
-        this.lastRefreshTime = l;
+        AbstractGifImage.sUIThreadHandler.postDelayed(this, DELAY - (l1 - this.lastRefreshTime));
         return;
       }
-      AbstractGifImage.sUIThreadHandler.postDelayed(this, DELAY - (l - this.lastRefreshTime));
+      run();
+      this.lastRefreshTime = l1;
       return;
     }
     run();
-    this.lastRefreshTime = l;
+    this.lastRefreshTime = l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -9,63 +9,73 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   implements v
 {
-  private long aAT;
-  private u aGN;
-  private int aJW;
-  private final h aLE;
-  private final l aLF;
-  private boolean aLG;
-  private boolean aLH;
-  private boolean aLI;
-  private int aLJ;
-  private int aLK;
-  private boolean aLL;
+  private u cQF;
+  private int cTO;
+  private int cVA;
+  private int cVB;
+  private boolean cVC;
+  private final h cVv;
+  private final l cVw;
+  private boolean cVx;
+  private boolean cVy;
+  private boolean cVz;
   private int state;
+  private long timeUs;
   
   public o(h paramh)
   {
-    AppMethodBeat.i(95143);
-    this.aLE = paramh;
-    this.aLF = new l(new byte[10]);
+    AppMethodBeat.i(92265);
+    this.cVv = paramh;
+    this.cVw = new l(new byte[10]);
     this.state = 0;
-    AppMethodBeat.o(95143);
+    AppMethodBeat.o(92265);
   }
   
   private boolean a(m paramm, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(95147);
-    int i = Math.min(paramm.qM(), paramInt - this.aJW);
+    AppMethodBeat.i(92269);
+    int i = Math.min(paramm.UF(), paramInt - this.cTO);
     if (i <= 0)
     {
-      AppMethodBeat.o(95147);
+      AppMethodBeat.o(92269);
       return true;
     }
     if (paramArrayOfByte == null) {
-      paramm.en(i);
+      paramm.iH(i);
     }
     for (;;)
     {
-      this.aJW = (i + this.aJW);
-      if (this.aJW != paramInt) {
+      this.cTO = (i + this.cTO);
+      if (this.cTO != paramInt) {
         break;
       }
-      AppMethodBeat.o(95147);
+      AppMethodBeat.o(92269);
       return true;
-      paramm.readBytes(paramArrayOfByte, this.aJW, i);
+      paramm.readBytes(paramArrayOfByte, this.cTO, i);
     }
-    AppMethodBeat.o(95147);
+    AppMethodBeat.o(92269);
     return false;
   }
   
   private void setState(int paramInt)
   {
     this.state = paramInt;
-    this.aJW = 0;
+    this.cTO = 0;
+  }
+  
+  public final void Si()
+  {
+    AppMethodBeat.i(92267);
+    this.state = 0;
+    this.cTO = 0;
+    this.cVz = false;
+    this.cVv.Si();
+    AppMethodBeat.o(92267);
   }
   
   public final void a(m paramm, boolean paramBoolean)
   {
-    AppMethodBeat.i(95146);
+    AppMethodBeat.i(92268);
     if (paramBoolean) {
       switch (this.state)
       {
@@ -78,7 +88,7 @@ public final class o
     }
     for (;;)
     {
-      if (paramm.qM() > 0)
+      if (paramm.UF() > 0)
       {
         int i;
         switch (this.state)
@@ -86,20 +96,20 @@ public final class o
         default: 
           break;
         case 0: 
-          paramm.en(paramm.qM());
+          paramm.iH(paramm.UF());
           continue;
-          if (this.aLK != -1) {
-            new StringBuilder("Unexpected start indicator: expected ").append(this.aLK).append(" more bytes");
+          if (this.cVB != -1) {
+            new StringBuilder("Unexpected start indicator: expected ").append(this.cVB).append(" more bytes");
           }
-          this.aLE.om();
+          this.cVv.Sj();
           break;
         case 1: 
-          if (a(paramm, this.aLF.data, 9))
+          if (a(paramm, this.cVw.data, 9))
           {
-            this.aLF.setPosition(0);
-            if (this.aLF.dD(24) != 1)
+            this.cVw.setPosition(0);
+            if (this.cVw.hQ(24) != 1)
             {
-              this.aLK = -1;
+              this.cVB = -1;
               i = 0;
               if (i == 0) {
                 break label330;
@@ -109,17 +119,17 @@ public final class o
             {
               setState(i);
               break;
-              this.aLF.dE(8);
-              i = this.aLF.dD(16);
-              this.aLF.dE(5);
-              this.aLL = this.aLF.oj();
-              this.aLF.dE(2);
-              this.aLG = this.aLF.oj();
-              this.aLH = this.aLF.oj();
-              this.aLF.dE(6);
-              this.aLJ = this.aLF.dD(8);
+              this.cVw.hR(8);
+              i = this.cVw.hQ(16);
+              this.cVw.hR(5);
+              this.cVC = this.cVw.Sg();
+              this.cVw.hR(2);
+              this.cVx = this.cVw.Sg();
+              this.cVy = this.cVw.Sg();
+              this.cVw.hR(6);
+              this.cVA = this.cVw.hQ(8);
               if (i == 0) {}
-              for (this.aLK = -1;; this.aLK = (i + 6 - 9 - this.aLJ))
+              for (this.cVB = -1;; this.cVB = (i + 6 - 9 - this.cVA))
               {
                 i = 1;
                 break;
@@ -128,89 +138,79 @@ public final class o
           }
           break;
         case 2: 
-          i = Math.min(10, this.aLJ);
-          if ((a(paramm, this.aLF.data, i)) && (a(paramm, null, this.aLJ)))
+          i = Math.min(10, this.cVA);
+          if ((a(paramm, this.cVw.data, i)) && (a(paramm, null, this.cVA)))
           {
-            this.aLF.setPosition(0);
-            this.aAT = -9223372036854775807L;
-            if (this.aLG)
+            this.cVw.setPosition(0);
+            this.timeUs = -9223372036854775807L;
+            if (this.cVx)
             {
-              this.aLF.dE(4);
-              long l1 = this.aLF.dD(3);
-              this.aLF.dE(1);
-              long l2 = this.aLF.dD(15) << 15;
-              this.aLF.dE(1);
-              long l3 = this.aLF.dD(15);
-              this.aLF.dE(1);
-              if ((!this.aLI) && (this.aLH))
+              this.cVw.hR(4);
+              long l1 = this.cVw.hQ(3);
+              this.cVw.hR(1);
+              long l2 = this.cVw.hQ(15) << 15;
+              this.cVw.hR(1);
+              long l3 = this.cVw.hQ(15);
+              this.cVw.hR(1);
+              if ((!this.cVz) && (this.cVy))
               {
-                this.aLF.dE(4);
-                long l4 = this.aLF.dD(3);
-                this.aLF.dE(1);
-                long l5 = this.aLF.dD(15) << 15;
-                this.aLF.dE(1);
-                long l6 = this.aLF.dD(15);
-                this.aLF.dE(1);
-                this.aGN.ah(l4 << 30 | l5 | l6);
-                this.aLI = true;
+                this.cVw.hR(4);
+                long l4 = this.cVw.hQ(3);
+                this.cVw.hR(1);
+                long l5 = this.cVw.hQ(15) << 15;
+                this.cVw.hR(1);
+                long l6 = this.cVw.hQ(15);
+                this.cVw.hR(1);
+                this.cQF.cG(l4 << 30 | l5 | l6);
+                this.cVz = true;
               }
-              this.aAT = this.aGN.ah(l1 << 30 | l2 | l3);
+              this.timeUs = this.cQF.cG(l1 << 30 | l2 | l3);
             }
-            this.aLE.d(this.aAT, this.aLL);
+            this.cVv.h(this.timeUs, this.cVC);
             setState(3);
           }
           break;
         case 3: 
           label330:
-          int k = paramm.qM();
-          if (this.aLK == -1) {}
-          for (i = 0;; i = k - this.aLK)
+          int k = paramm.UF();
+          if (this.cVB == -1) {}
+          for (i = 0;; i = k - this.cVB)
           {
             int j = k;
             if (i > 0)
             {
               j = k - i;
-              paramm.em(paramm.position + j);
+              paramm.iG(paramm.position + j);
             }
-            this.aLE.t(paramm);
-            if (this.aLK == -1) {
+            this.cVv.t(paramm);
+            if (this.cVB == -1) {
               break;
             }
-            this.aLK -= j;
-            if (this.aLK != 0) {
+            this.cVB -= j;
+            if (this.cVB != 0) {
               break;
             }
-            this.aLE.om();
+            this.cVv.Sj();
             setState(1);
             break;
           }
         }
       }
     }
-    AppMethodBeat.o(95146);
+    AppMethodBeat.o(92268);
   }
   
   public final void a(u paramu, g paramg, v.d paramd)
   {
-    AppMethodBeat.i(95144);
-    this.aGN = paramu;
-    this.aLE.a(paramg, paramd);
-    AppMethodBeat.o(95144);
-  }
-  
-  public final void ol()
-  {
-    AppMethodBeat.i(95145);
-    this.state = 0;
-    this.aJW = 0;
-    this.aLI = false;
-    this.aLE.ol();
-    AppMethodBeat.o(95145);
+    AppMethodBeat.i(92266);
+    this.cQF = paramu;
+    this.cVv.a(paramg, paramd);
+    AppMethodBeat.o(92266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.o
  * JD-Core Version:    0.7.0.1
  */

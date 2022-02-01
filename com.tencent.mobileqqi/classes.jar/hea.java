@@ -1,23 +1,12 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ShortcutGuideDialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.qphone.base.util.BaseApplication;
-
-class hea
-  implements Runnable
+public class hea
 {
-  hea(hdz paramhdz, MessageForVideo paramMessageForVideo, String paramString) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public hea()
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.mobileqqi", ShortcutGuideDialogActivity.class.getName()));
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.frienduin);
-    localIntent.putExtra("nick", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Hdz.a.a().startActivity(localIntent);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
   }
 }
 

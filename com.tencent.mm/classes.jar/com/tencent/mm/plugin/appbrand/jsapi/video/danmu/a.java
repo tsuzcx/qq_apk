@@ -13,148 +13,148 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements d
 {
-  private static int iek;
-  private static int iel;
-  private int GF;
-  private int Xj;
-  private int Xr;
-  private StaticLayout eLR;
-  private SpannableString iem;
-  private int ien;
-  private int ieo;
-  private int iep;
-  private int ieq;
-  private int ier;
-  private float ies;
+  private static int sDE;
+  private static int sDF;
+  private int ckf;
   private Context mContext;
+  private StaticLayout mGW;
+  private int oG;
+  private int oy;
+  private SpannableString sDG;
+  private int sDH;
+  private int sDI;
+  private int sDJ;
+  private int sDK;
+  private int sDL;
+  private float sDM;
   
   public a(Context paramContext, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(126593);
-    this.iep = -1;
-    this.GF = -1;
+    AppMethodBeat.i(137851);
+    this.sDJ = -1;
+    this.ckf = -1;
     this.mContext = paramContext;
-    this.iem = paramSpannableString;
-    this.ieq = b.F(this.mContext, b.iet);
-    this.GF = paramInt1;
-    this.ies = 3.0F;
-    this.ier = paramInt2;
+    this.sDG = paramSpannableString;
+    this.sDK = b.W(this.mContext, b.sDN);
+    this.ckf = paramInt1;
+    this.sDM = 3.0F;
+    this.sDL = paramInt2;
     paramContext = new TextPaint();
     paramContext.setAntiAlias(true);
-    paramContext.setColor(this.GF);
-    paramContext.setTextSize(this.ieq);
+    paramContext.setColor(this.ckf);
+    paramContext.setTextSize(this.sDK);
     paramSpannableString = paramContext.getFontMetrics();
-    this.Xr = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
-    this.eLR = new StaticLayout(this.iem, paramContext, (int)Layout.getDesiredWidth(this.iem, 0, this.iem.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-    this.Xj = this.eLR.getWidth();
-    AppMethodBeat.o(126593);
+    this.oG = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
+    this.mGW = new StaticLayout(this.sDG, paramContext, (int)Layout.getDesiredWidth(this.sDG, 0, this.sDG.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
+    this.oy = this.mGW.getWidth();
+    AppMethodBeat.o(137851);
   }
   
-  public final boolean a(d paramd)
+  public final boolean Bo(int paramInt)
   {
-    AppMethodBeat.i(126596);
-    if (paramd.getWidth() + paramd.getCurrX() > iek)
-    {
-      AppMethodBeat.o(126596);
-      return true;
-    }
-    if (this.iep < 0) {
-      this.iep = b.F(this.mContext, 20);
-    }
-    if (paramd.aFI() >= this.ies)
-    {
-      if ((paramd.aFI() == this.ies) && (iek - (paramd.getCurrX() + paramd.getWidth()) < this.iep))
-      {
-        AppMethodBeat.o(126596);
-        return true;
-      }
-      AppMethodBeat.o(126596);
-      return false;
-    }
-    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.aFI() * b.aFL()) * this.ies * b.aFL() > iek - this.iep * 1.5D)
-    {
-      AppMethodBeat.o(126596);
-      return true;
-    }
-    AppMethodBeat.o(126596);
-    return false;
-  }
-  
-  public final float aFI()
-  {
-    return this.ies;
-  }
-  
-  public final boolean aFJ()
-  {
-    AppMethodBeat.i(126595);
-    if ((this.ien < 0) && (Math.abs(this.ien) > this.Xj))
-    {
-      AppMethodBeat.o(126595);
-      return true;
-    }
-    AppMethodBeat.o(126595);
-    return false;
-  }
-  
-  public final int aFK()
-  {
-    return this.ier;
-  }
-  
-  public final void b(Canvas paramCanvas, boolean paramBoolean)
-  {
-    AppMethodBeat.i(126594);
-    int i = paramCanvas.getWidth();
-    int j = paramCanvas.getHeight();
-    if ((i != iek) || (j != iel))
-    {
-      iek = i;
-      iel = j;
-    }
-    paramCanvas.save();
-    paramCanvas.translate(this.ien, this.ieo);
-    this.eLR.draw(paramCanvas);
-    paramCanvas.restore();
-    if (!paramBoolean) {
-      this.ien = ((int)(this.ien - b.aFL() * this.ies));
-    }
-    AppMethodBeat.o(126594);
-  }
-  
-  public final void dl(int paramInt1, int paramInt2)
-  {
-    this.ien = paramInt1;
-    this.ieo = paramInt2;
-  }
-  
-  public final int getCurrX()
-  {
-    return this.ien;
-  }
-  
-  public final int getWidth()
-  {
-    return this.Xj;
-  }
-  
-  public final boolean oo(int paramInt)
-  {
-    if (paramInt < this.ier) {}
-    while (paramInt - this.ier > b.ieu) {
+    if (paramInt < this.sDL) {}
+    while (paramInt - this.sDL > b.sDO) {
       return false;
     }
     return true;
   }
   
-  public final boolean op(int paramInt)
+  public final boolean Bp(int paramInt)
   {
-    return paramInt - this.ier > b.ieu;
+    return paramInt - this.sDL > b.sDO;
+  }
+  
+  public final int Fo()
+  {
+    return this.sDH;
+  }
+  
+  public final boolean a(d paramd)
+  {
+    AppMethodBeat.i(137854);
+    if (paramd.getWidth() + paramd.Fo() > sDE)
+    {
+      AppMethodBeat.o(137854);
+      return true;
+    }
+    if (this.sDJ < 0) {
+      this.sDJ = b.W(this.mContext, 20);
+    }
+    if (paramd.cwf() >= this.sDM)
+    {
+      if ((paramd.cwf() == this.sDM) && (sDE - (paramd.Fo() + paramd.getWidth()) < this.sDJ))
+      {
+        AppMethodBeat.o(137854);
+        return true;
+      }
+      AppMethodBeat.o(137854);
+      return false;
+    }
+    if ((paramd.Fo() + paramd.getWidth()) / (paramd.cwf() * b.cwi()) * this.sDM * b.cwi() > sDE - this.sDJ * 1.5D)
+    {
+      AppMethodBeat.o(137854);
+      return true;
+    }
+    AppMethodBeat.o(137854);
+    return false;
+  }
+  
+  public final void c(Canvas paramCanvas, boolean paramBoolean)
+  {
+    AppMethodBeat.i(137852);
+    int i = paramCanvas.getWidth();
+    int j = paramCanvas.getHeight();
+    if ((i != sDE) || (j != sDF))
+    {
+      sDE = i;
+      sDF = j;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(this.sDH, this.sDI);
+    this.mGW.draw(paramCanvas);
+    paramCanvas.restore();
+    if (!paramBoolean) {
+      this.sDH = ((int)(this.sDH - b.cwi() * this.sDM));
+    }
+    AppMethodBeat.o(137852);
+  }
+  
+  public final float cwf()
+  {
+    return this.sDM;
+  }
+  
+  public final boolean cwg()
+  {
+    AppMethodBeat.i(137853);
+    if ((this.sDH < 0) && (Math.abs(this.sDH) > this.oy))
+    {
+      AppMethodBeat.o(137853);
+      return true;
+    }
+    AppMethodBeat.o(137853);
+    return false;
+  }
+  
+  public final int cwh()
+  {
+    return this.sDL;
+  }
+  
+  public final void fz(int paramInt1, int paramInt2)
+  {
+    this.sDH = paramInt1;
+    this.sDI = paramInt2;
+  }
+  
+  public final int getWidth()
+  {
+    return this.oy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.a
  * JD-Core Version:    0.7.0.1
  */

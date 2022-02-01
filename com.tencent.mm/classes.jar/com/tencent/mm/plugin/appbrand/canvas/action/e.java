@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawArcActionArg;
-import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class e
@@ -14,44 +14,44 @@ public final class e
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    AppMethodBeat.i(103184);
-    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.heB);
-    AppMethodBeat.o(103184);
+    AppMethodBeat.i(144867);
+    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.qTi);
+    AppMethodBeat.o(144867);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103185);
+    AppMethodBeat.i(144868);
     paramDrawActionArg = (DrawArcActionArg)paramDrawActionArg;
     if (paramDrawActionArg == null)
     {
-      AppMethodBeat.o(103185);
+      AppMethodBeat.o(144868);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.radius, paramDrawActionArg.heN, paramDrawActionArg.heO);
-    AppMethodBeat.o(103185);
+    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.radius, paramDrawActionArg.dxm, paramDrawActionArg.dxn);
+    AppMethodBeat.o(144868);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103183);
+    AppMethodBeat.i(144866);
     if (paramJSONArray.length() < 5)
     {
-      AppMethodBeat.o(103183);
+      AppMethodBeat.o(144866);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, g.d(paramJSONArray, 0), g.d(paramJSONArray, 1), g.d(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4));
-    AppMethodBeat.o(103183);
+    boolean bool = a(paramd, paramCanvas, i.f(paramJSONArray, 0), i.f(paramJSONArray, 1), i.f(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4));
+    AppMethodBeat.o(144866);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg cjY()
   {
-    AppMethodBeat.i(103182);
+    AppMethodBeat.i(144865);
     DrawArcActionArg localDrawArcActionArg = new DrawArcActionArg();
-    AppMethodBeat.o(103182);
+    AppMethodBeat.o(144865);
     return localDrawArcActionArg;
   }
   

@@ -1,29 +1,38 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import aepi;
-import aigc;
 import android.app.Activity;
 import android.view.View;
-import bnle;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LiuHaiUtils;
 
-public class BaseMessageSearchDialog$1
+class BaseMessageSearchDialog$1
   implements Runnable
 {
-  public BaseMessageSearchDialog$1(aigc paramaigc, View paramView, Activity paramActivity) {}
+  BaseMessageSearchDialog$1(BaseMessageSearchDialog paramBaseMessageSearchDialog, View paramView, Activity paramActivity) {}
   
   public void run()
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = bnle.b(this.jdField_a_of_type_AndroidAppActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseMessageSearchDialog", 2, "rootView post : x -> " + arrayOfInt[0] + ", y -> " + arrayOfInt[1] + ", notchHeight -> " + i);
+    Object localObject = new int[2];
+    this.a.getLocationOnScreen((int[])localObject);
+    int i = LiuHaiUtils.e(this.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rootView post : x -> ");
+      localStringBuilder.append(localObject[0]);
+      localStringBuilder.append(", y -> ");
+      localStringBuilder.append(localObject[1]);
+      localStringBuilder.append(", notchHeight -> ");
+      localStringBuilder.append(i);
+      QLog.d("BaseMessageSearchDialog", 2, localStringBuilder.toString());
     }
-    if (arrayOfInt[1] < i) {
-      this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), i, this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+    if (localObject[1] < i)
+    {
+      localObject = this.a;
+      ((View)localObject).setPadding(((View)localObject).getPaddingLeft(), i, this.a.getPaddingRight(), this.a.getPaddingBottom());
     }
-    aepi.a(this.this$0.findViewById(2131365851));
+    BaseAIOUtils.c(this.this$0.findViewById(2131432634));
   }
 }
 

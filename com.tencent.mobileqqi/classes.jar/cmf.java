@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.ForwardOperations;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class cmf
-  implements Runnable
+  extends TroopObserver
 {
   public cmf(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    if (this.a.isFinishing()) {}
-    do
-    {
-      return;
-      this.a.c = true;
-      ForwardRecentActivity.a(this.a).e();
-    } while ((!this.a.a) || (this.a.f != 11));
-    ForwardRecentActivity.a(this.a).a("-1010", -1, "", this.a.getString(2131560461));
+    if (paramBoolean1) {
+      ForwardRecentActivity.b(this.a);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.b(this.a);
+    }
   }
 }
 

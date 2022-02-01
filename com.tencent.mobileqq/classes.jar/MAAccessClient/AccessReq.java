@@ -8,8 +8,8 @@ public final class AccessReq
   extends JceStruct
 {
   static byte[] cache_body = (byte[])new byte[1];
-  public byte[] body;
-  public int gray;
+  public byte[] body = null;
+  public int gray = 0;
   public String imei = "";
   public String manufacture = "";
   public String mode = "";
@@ -49,31 +49,37 @@ public final class AccessReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 0);
+    Object localObject = this.imei;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.mode != null) {
-      paramJceOutputStream.write(this.mode, 1);
+    localObject = this.mode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.manufacture != null) {
-      paramJceOutputStream.write(this.manufacture, 2);
+    localObject = this.manufacture;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.rom != null) {
-      paramJceOutputStream.write(this.rom, 3);
+    localObject = this.rom;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.gray, 4);
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 5);
+    localObject = this.body;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.qimei != null) {
-      paramJceOutputStream.write(this.qimei, 6);
+    localObject = this.qimei;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.platform, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MAAccessClient.AccessReq
  * JD-Core Version:    0.7.0.1
  */

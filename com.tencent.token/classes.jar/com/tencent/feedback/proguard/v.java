@@ -21,11 +21,13 @@ public final class v
     {
       Context localContext = this.c;
       int i = this.a;
-      if (this.d == null) {}
-      for (byte[] arrayOfByte = null;; arrayOfByte = this.d.a()) {
-        return a(localContext, i, arrayOfByte);
+      if (this.d == null) {
+        localObject = null;
+      } else {
+        localObject = this.d.a();
       }
-      return null;
+      Object localObject = a(localContext, i, (byte[])localObject);
+      return localObject;
     }
     catch (Exception localException)
     {
@@ -33,6 +35,7 @@ public final class v
         localException.printStackTrace();
       }
     }
+    return null;
   }
   
   public final void done(boolean paramBoolean) {}

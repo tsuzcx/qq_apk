@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
+import NS_COMM.COMM.StCommonExt;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
 
@@ -9,9 +10,11 @@ public class MiniArkShareModel
   private final String appidRich;
   private final String description;
   private final EntryModel entryModel;
+  private final COMM.StCommonExt extInfo;
   private final String iconUrl;
   private final String jumpUrl;
-  private final String picUrl;
+  private final int miniAppShareFrom;
+  private String picUrl;
   private final String rcvOpenId;
   private final int shareBusinessType;
   private final ShareChatModel shareChatModel;
@@ -25,8 +28,9 @@ public class MiniArkShareModel
   private final int versionType;
   private final String vidUrl;
   private final String webURL;
+  private final boolean withShareTicket;
   
-  public MiniArkShareModel(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt5, String paramString13)
+  public MiniArkShareModel(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt5, String paramString13, boolean paramBoolean, int paramInt6, COMM.StCommonExt paramStCommonExt)
   {
     this.appId = paramString1;
     this.title = paramString2;
@@ -48,6 +52,9 @@ public class MiniArkShareModel
     this.templateData = paramString12;
     this.shareTarget = paramInt5;
     this.rcvOpenId = paramString13;
+    this.withShareTicket = paramBoolean;
+    this.miniAppShareFrom = paramInt6;
+    this.extInfo = paramStCommonExt;
   }
   
   public String getAppId()
@@ -70,6 +77,11 @@ public class MiniArkShareModel
     return this.entryModel;
   }
   
+  public COMM.StCommonExt getExtInfo()
+  {
+    return this.extInfo;
+  }
+  
   public String getIconUrl()
   {
     return this.iconUrl;
@@ -78,6 +90,11 @@ public class MiniArkShareModel
   public String getJumpUrl()
   {
     return this.jumpUrl;
+  }
+  
+  public int getMiniAppShareFrom()
+  {
+    return this.miniAppShareFrom;
   }
   
   public String getPicUrl()
@@ -149,10 +166,20 @@ public class MiniArkShareModel
   {
     return this.webURL;
   }
+  
+  public boolean isWithShareTicket()
+  {
+    return this.withShareTicket;
+  }
+  
+  public void setPicUrl(String paramString)
+  {
+    this.picUrl = paramString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareModel
  * JD-Core Version:    0.7.0.1
  */

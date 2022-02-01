@@ -1,27 +1,15 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.mobileqq.activity.contact.SearchResultDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class eos
-  extends SearchResultDialog
+  implements DialogInterface.OnDismissListener
 {
-  public eos(LocalSearchBar paramLocalSearchBar, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    super(paramContext, paramQQAppInterface, paramInt, paramOnItemClickListener);
-  }
+  public eos(LocalSearchBar paramLocalSearchBar) {}
   
-  @SuppressLint({"UseSparseArrays"})
-  protected List a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(a(paramContext, paramQQAppInterface));
-    localArrayList.addAll(super.a(paramContext, paramQQAppInterface, paramInt));
-    return localArrayList;
+    LocalSearchBar.a(this.a, null);
   }
 }
 

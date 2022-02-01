@@ -7,28 +7,28 @@ abstract class ag
 {
   private ag(aa paramaa) {}
   
-  protected abstract void iu();
+  protected abstract void iC();
   
   public void run()
   {
-    aa.c(this.NH).lock();
+    aa.c(this.Pw).lock();
     try
     {
       boolean bool = Thread.interrupted();
       if (bool) {
         return;
       }
-      iu();
+      iC();
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      aa.d(this.NH).b(localRuntimeException);
+      aa.d(this.Pw).b(localRuntimeException);
       return;
     }
     finally
     {
-      aa.c(this.NH).unlock();
+      aa.c(this.Pw).unlock();
     }
   }
 }

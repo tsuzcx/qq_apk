@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.measurement;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.util.Clock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(14)
 final class zzid
   implements Application.ActivityLifecycleCallbacks
 {
@@ -18,7 +16,7 @@ final class zzid
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(69235);
+    AppMethodBeat.i(1758);
     for (;;)
     {
       try
@@ -48,7 +46,7 @@ final class zzid
         boolean bool = TextUtils.isEmpty((CharSequence)localObject);
         if (bool)
         {
-          AppMethodBeat.o(69235);
+          AppMethodBeat.o(1758);
           return;
           localObject = "auto";
           continue;
@@ -75,7 +73,7 @@ final class zzid
         continue;
       }
       this.zzanw.zzge().zzis().log("Activity created with data 'referrer' param without gclid and at least one utm field");
-      AppMethodBeat.o(69235);
+      AppMethodBeat.o(1758);
       return;
       i = 0;
     }
@@ -84,41 +82,41 @@ final class zzid
       this.zzanw.setUserProperty("auto", "_ldl", localObject);
     }
     this.zzanw.zzfy().onActivityCreated(paramActivity, paramBundle);
-    AppMethodBeat.o(69235);
+    AppMethodBeat.o(1758);
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
   {
-    AppMethodBeat.i(69236);
+    AppMethodBeat.i(1759);
     this.zzanw.zzfy().onActivityDestroyed(paramActivity);
-    AppMethodBeat.o(69236);
+    AppMethodBeat.o(1759);
   }
   
   public final void onActivityPaused(Activity paramActivity)
   {
-    AppMethodBeat.i(69237);
+    AppMethodBeat.i(1760);
     this.zzanw.zzfy().onActivityPaused(paramActivity);
     paramActivity = this.zzanw.zzgc();
     long l = paramActivity.zzbt().elapsedRealtime();
     paramActivity.zzgd().zzc(new zzjl(paramActivity, l));
-    AppMethodBeat.o(69237);
+    AppMethodBeat.o(1760);
   }
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    AppMethodBeat.i(69238);
+    AppMethodBeat.i(1761);
     this.zzanw.zzfy().onActivityResumed(paramActivity);
     paramActivity = this.zzanw.zzgc();
     long l = paramActivity.zzbt().elapsedRealtime();
     paramActivity.zzgd().zzc(new zzjk(paramActivity, l));
-    AppMethodBeat.o(69238);
+    AppMethodBeat.o(1761);
   }
   
   public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(69239);
+    AppMethodBeat.i(1762);
     this.zzanw.zzfy().onActivitySaveInstanceState(paramActivity, paramBundle);
-    AppMethodBeat.o(69239);
+    AppMethodBeat.o(1762);
   }
   
   public final void onActivityStarted(Activity paramActivity) {}
@@ -127,7 +125,7 @@ final class zzid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzid
  * JD-Core Version:    0.7.0.1
  */

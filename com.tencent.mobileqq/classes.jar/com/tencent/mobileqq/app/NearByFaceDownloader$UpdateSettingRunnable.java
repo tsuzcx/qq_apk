@@ -1,42 +1,51 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import bdbu;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.avatar.api.IQQAvatarManagerService;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class NearByFaceDownloader$UpdateSettingRunnable
   implements Runnable
 {
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
+  Setting a;
+  FaceInfo b;
   
   public NearByFaceDownloader$UpdateSettingRunnable(NearByFaceDownloader paramNearByFaceDownloader, Setting paramSetting, FaceInfo paramFaceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+    this.a = paramSetting;
+    this.b = paramFaceInfo;
   }
   
   public void run()
   {
-    Object localObject1 = (bdbu)this.this$0.a.getManager(216);
-    ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a;
-    localObject2 = ((bdbu)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    Object localObject1 = (IQQAvatarManagerService)this.this$0.a.getRuntimeService(IQQAvatarManagerService.class, "nearby");
+    ((IQQAvatarManagerService)localObject1).updateFaceSetting(this.a);
+    Object localObject2 = this.b.p;
+    localObject2 = ((IQQAvatarManagerService)localObject1).getFacePath(this.b);
     localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
     localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
     {
-      localObject1 = (String)localObject1 + File.separator + ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")) + "png";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")));
+      localStringBuilder.append("png");
+      localObject1 = localStringBuilder.toString();
       localObject2 = new File((String)localObject1);
       if (((File)localObject2).exists())
       {
         ((File)localObject2).delete();
-        if (QLog.isColorLevel()) {
-          QLog.i("qqhead", 2, "delete old file,oldpath=" + (String)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("delete old file,oldpath=");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.i("qqhead", 2, ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -44,7 +53,7 @@ class NearByFaceDownloader$UpdateSettingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearByFaceDownloader.UpdateSettingRunnable
  * JD-Core Version:    0.7.0.1
  */

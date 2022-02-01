@@ -3,6 +3,8 @@ package com.tencent.service;
 public enum DetectType
 {
   DT_REGISTER,  DT_VALIDATE;
+  
+  private DetectType() {}
 }
 
 

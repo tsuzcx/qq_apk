@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.animation.content;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 

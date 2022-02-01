@@ -1,56 +1,57 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.bro;
-import com.tencent.mm.protocal.protobuf.brq;
-import com.tencent.mm.protocal.protobuf.brr;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.elt;
+import com.tencent.mm.protocal.protobuf.elv;
+import com.tencent.mm.protocal.protobuf.elw;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class e
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public boolean gKN;
+  private h callback;
   public String nickname;
-  private b rr;
+  public boolean qhG;
+  private c rr;
   public String username;
   
   public e(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(16734);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new brq();
-    ((b.a)localObject).fsY = new brr();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoquery";
-    ((b.a)localObject).funcId = 417;
-    ((b.a)localObject).reqCmdId = 202;
-    ((b.a)localObject).respCmdId = 1000000202;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (brq)this.rr.fsV.fta;
-    ((brq)localObject).timestamp = 0;
-    ((brq)localObject).xFs = paramString1;
-    ((brq)localObject).cwc = paramString2;
-    ((brq)localObject).scene = paramInt;
-    AppMethodBeat.o(16734);
+    AppMethodBeat.i(20777);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new elv();
+    ((c.a)localObject).otF = new elw();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoquery";
+    ((c.a)localObject).funcId = 417;
+    ((c.a)localObject).otG = 202;
+    ((c.a)localObject).respCmdId = 1000000202;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (elv)c.b.b(this.rr.otB);
+    ((elv)localObject).fZW = 0;
+    ((elv)localObject).abqw = paramString1;
+    ((elv)localObject).appid = paramString2;
+    ((elv)localObject).scene = paramInt;
+    AppMethodBeat.o(20777);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(16736);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16736);
+    AppMethodBeat.i(20779);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(20779);
     return i;
   }
   
@@ -59,33 +60,33 @@ public final class e
     return 417;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     boolean bool = true;
-    AppMethodBeat.i(16735);
-    ab.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(20778);
+    Log.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (brr)((b)paramq).fsW.fta;
-      this.username = paramq.lOy;
-      this.nickname = paramq.xFv;
-      if (paramq.xFu != 1) {
+      params = (elw)c.c.b(((c)params).otC);
+      this.username = params.appusername;
+      this.nickname = params.abqz;
+      if (params.abqy != 1) {
         break label198;
       }
     }
     for (;;)
     {
-      this.gKN = bool;
-      if (paramq.xFf.xFi != null)
+      this.qhG = bool;
+      if (params.abqi.abql != null)
       {
-        ab.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.xFf.xFi.size());
-        a.asl();
-        a.asn().s(paramq.xFf.xFi);
-        a.asl();
-        a.asn().asp();
+        Log.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + params.abqi.abql.size());
+        a.bZe();
+        a.bZg().x(params.abqi.abql);
+        a.bZe();
+        a.bZg().bZj();
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(16735);
+      AppMethodBeat.o(20778);
       return;
       label198:
       bool = false;

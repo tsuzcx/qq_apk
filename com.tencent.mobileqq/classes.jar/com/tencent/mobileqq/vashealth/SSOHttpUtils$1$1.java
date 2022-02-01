@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.vashealth;
 
-import bdyp;
-import bdyq;
-
-public class SSOHttpUtils$1$1
+class SSOHttpUtils$1$1
   implements Runnable
 {
-  public SSOHttpUtils$1$1(bdyq parambdyq, int paramInt, String paramString) {}
+  SSOHttpUtils$1$1(SSOHttpUtils.1 param1, int paramInt, String paramString) {}
   
   public void run()
   {
-    bdyp.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    SSOHttpUtils.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.SSOHttpUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

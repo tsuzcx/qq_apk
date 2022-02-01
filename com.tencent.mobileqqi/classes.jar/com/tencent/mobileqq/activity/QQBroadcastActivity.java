@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.MsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
+import dbe;
 import dbf;
-import dbg;
 import java.util.Observer;
 
 public class QQBroadcastActivity
@@ -21,11 +21,11 @@ public class QQBroadcastActivity
   static final int jdField_a_of_type_Int = 1010;
   static final long jdField_a_of_type_Long = 1000L;
   public Handler a;
-  public dbg a;
+  public dbf a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new dbf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new dbe(this);
   }
   
   private void d()
@@ -62,10 +62,10 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Dbg == null) {
-      this.jdField_a_of_type_Dbg = new dbg(this, this, this.b.a(0).a(b(), 0));
+    if (this.jdField_a_of_type_Dbf == null) {
+      this.jdField_a_of_type_Dbf = new dbf(this, this, this.b.a(0).a(b(), 0));
     }
-    return this.jdField_a_of_type_Dbg;
+    return this.jdField_a_of_type_Dbf;
   }
   
   protected CharSequence a()
@@ -94,8 +94,8 @@ public class QQBroadcastActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Dbg != null) {
-      this.jdField_a_of_type_Dbg.changeCursor(null);
+    if (this.jdField_a_of_type_Dbf != null) {
+      this.jdField_a_of_type_Dbf.changeCursor(null);
     }
   }
   

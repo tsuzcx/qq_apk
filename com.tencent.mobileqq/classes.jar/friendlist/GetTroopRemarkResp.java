@@ -10,14 +10,14 @@ public final class GetTroopRemarkResp
 {
   static int cache_result;
   static ArrayList<stTroopRemarkInfo> cache_vecTroopRemark;
-  public long GroupCode;
-  public long GroupUin;
-  public long NextUin;
-  public long Seq;
-  public short errorCode;
-  public int result;
-  public long uin;
-  public ArrayList<stTroopRemarkInfo> vecTroopRemark;
+  public long GroupCode = 0L;
+  public long GroupUin = 0L;
+  public long NextUin = 0L;
+  public long Seq = 0L;
+  public short errorCode = 0;
+  public int result = 0;
+  public long uin = 0L;
+  public ArrayList<stTroopRemarkInfo> vecTroopRemark = null;
   
   public GetTroopRemarkResp() {}
   
@@ -65,7 +65,7 @@ public final class GetTroopRemarkResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     friendlist.GetTroopRemarkResp
  * JD-Core Version:    0.7.0.1
  */

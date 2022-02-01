@@ -3,114 +3,111 @@ package com.tencent.mm.booter;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.network.ag;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public final class f
 {
-  NetworkInfo dYZ = null;
-  String dZa = "";
-  String dZb = "";
-  int dZc = -1;
+  NetworkInfo lrD = null;
+  String lrE = "";
+  String lrF = "";
+  int lrG = -1;
   
-  final boolean Ik()
+  final boolean aKw()
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(57779);
-    try
+    AppMethodBeat.i(131895);
+    label312:
+    do
     {
-      Object localObject2 = (ConnectivityManager)com.tencent.mm.network.ab.getContext().getSystemService("connectivity");
-      if (localObject2 == null)
-      {
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetworkChangeMgr", "can't get ConnectivityManager");
-        this.dYZ = null;
-        AppMethodBeat.o(57779);
-        return false;
-      }
       try
       {
-        localObject2 = ((ConnectivityManager)localObject2).getActiveNetworkInfo();
-        localObject1 = localObject2;
+        Object localObject = (ConnectivityManager)ag.getContext().getSystemService("connectivity");
+        if (localObject == null)
+        {
+          Log.w("MicroMsg.NetworkChangeMgr", "can't get ConnectivityManager");
+          this.lrD = null;
+          AppMethodBeat.o(131895);
+          return false;
+        }
+        boolean bool;
+        try
+        {
+          localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+          if (localObject == null)
+          {
+            Log.w("MicroMsg.NetworkChangeMgr", "ActiveNetwork is null, has no network");
+            this.lrD = null;
+            AppMethodBeat.o(131895);
+            return false;
+          }
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.NetworkChangeMgr", "getActiveNetworkInfo failed.");
+            localNetworkInfo = null;
+          }
+          bool = NetStatusUtil.isWifi(localNetworkInfo);
+          if (!bool) {
+            break label312;
+          }
+        }
+        String str1 = ConnectivityCompat.Companion.getWiFiBssid();
+        String str2 = ConnectivityCompat.Companion.getWiFiSsid();
+        int i = ConnectivityCompat.Companion.getNetworkId();
+        Log.d("MicroMsg.NetworkChangeMgr", "New Wifi Info:[%s][%s][%s]", new Object[] { str1, str2, Integer.valueOf(i) });
+        Log.d("MicroMsg.NetworkChangeMgr", "OldWifi Info:[%s][%s][%s]", new Object[] { this.lrF, this.lrE, Integer.valueOf(this.lrG) });
+        if ((this.lrF.equals(str1)) && (this.lrE.equals(str2)) && (this.lrG == i))
+        {
+          Log.w("MicroMsg.NetworkChangeMgr", "Same Wifi, do not NetworkChanged");
+          AppMethodBeat.o(131895);
+          return false;
+        }
+        this.lrF = str1;
+        this.lrE = str2;
+        this.lrG = i;
+        if (!bool)
+        {
+          Log.d("MicroMsg.NetworkChangeMgr", "New NetworkInfo:%s", new Object[] { localNetworkInfo });
+          if (this.lrD != null) {
+            Log.d("MicroMsg.NetworkChangeMgr", "Old NetworkInfo:%s", new Object[] { this.lrD });
+          }
+          this.lrF = "";
+          this.lrE = "";
+          this.lrG = -1;
+        }
+        this.lrD = localNetworkInfo;
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetworkChangeMgr", "getActiveNetworkInfo failed.");
+          NetworkInfo localNetworkInfo;
+          Log.printErrStackTrace("MicroMsg.NetworkChangeMgr", localException2, "", new Object[0]);
         }
       }
-      if (localObject1 == null)
-      {
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetworkChangeMgr", "ActiveNetwork is null, has no network");
-        this.dYZ = null;
-        AppMethodBeat.o(57779);
-        return false;
-      }
-    }
-    catch (Exception localException1)
-    {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.NetworkChangeMgr", localException1, "", new Object[0]);
-      AppMethodBeat.o(57779);
+      AppMethodBeat.o(131895);
       return true;
-    }
-    int i;
-    if (localException1.getType() == 1) {
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i != 0)
+      if ((this.lrD != null) && (this.lrD.getExtraInfo() != null) && (localNetworkInfo.getExtraInfo() != null) && (this.lrD.getExtraInfo().equals(localNetworkInfo.getExtraInfo())) && (this.lrD.getSubtype() == localNetworkInfo.getSubtype()) && (this.lrD.getType() == localNetworkInfo.getType()))
       {
-        WifiInfo localWifiInfo = at.getWifiInfo(ah.getContext());
-        if (localWifiInfo != null)
-        {
-          com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetworkChangeMgr", "New Wifi Info:[%s][%s][%s]", new Object[] { localWifiInfo.getBSSID(), at.gX(ah.getContext()), Integer.valueOf(localWifiInfo.getNetworkId()) });
-          com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetworkChangeMgr", "OldWifi Info:[%s][%s][%s]", new Object[] { this.dZb, this.dZa, Integer.valueOf(this.dZc) });
-          if ((this.dZb.equals(localWifiInfo.getBSSID())) && (this.dZa.equals(at.gX(ah.getContext()))) && (this.dZc == localWifiInfo.getNetworkId()))
-          {
-            com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetworkChangeMgr", "Same Wifi, do not NetworkChanged");
-            AppMethodBeat.o(57779);
-            return false;
-            i = 0;
-            continue;
-          }
-          this.dZb = localWifiInfo.getBSSID();
-          this.dZa = at.gX(ah.getContext());
-          this.dZc = localWifiInfo.getNetworkId();
-        }
-      }
-    }
-    do
-    {
-      if (i == 0)
-      {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetworkChangeMgr", "New NetworkInfo:%s", new Object[] { localException1 });
-        if (this.dYZ != null) {
-          com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetworkChangeMgr", "Old NetworkInfo:%s", new Object[] { this.dYZ });
-        }
-        this.dZb = "";
-        this.dZa = "";
-        this.dZc = -1;
-      }
-      this.dYZ = localException1;
-      break;
-      if ((this.dYZ != null) && (this.dYZ.getExtraInfo() != null) && (localException1.getExtraInfo() != null) && (this.dYZ.getExtraInfo().equals(localException1.getExtraInfo())) && (this.dYZ.getSubtype() == localException1.getSubtype()) && (this.dYZ.getType() == localException1.getType()))
-      {
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
-        AppMethodBeat.o(57779);
+        Log.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
+        AppMethodBeat.o(131895);
         return false;
       }
-    } while ((this.dYZ == null) || (this.dYZ.getExtraInfo() != null) || (localException1.getExtraInfo() != null) || (this.dYZ.getSubtype() != localException1.getSubtype()) || (this.dYZ.getType() != localException1.getType()));
-    com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
-    AppMethodBeat.o(57779);
+    } while ((this.lrD == null) || (this.lrD.getExtraInfo() != null) || (localNetworkInfo.getExtraInfo() != null) || (this.lrD.getSubtype() != localNetworkInfo.getSubtype()) || (this.lrD.getType() != localNetworkInfo.getType()));
+    Log.w("MicroMsg.NetworkChangeMgr", "Same Network, do not NetworkChanged");
+    AppMethodBeat.o(131895);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.booter.f
  * JD-Core Version:    0.7.0.1
  */

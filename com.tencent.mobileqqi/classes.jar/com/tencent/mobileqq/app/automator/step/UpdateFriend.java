@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import fio;
+import fin;
 
 public class UpdateFriend
   extends AsyncStep
@@ -19,7 +19,7 @@ public class UpdateFriend
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fio(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new fin(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(true);

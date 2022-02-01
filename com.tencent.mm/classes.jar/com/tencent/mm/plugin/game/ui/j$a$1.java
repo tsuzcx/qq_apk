@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.plugin.openapi.a;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 
 final class j$a$1
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
   j$a$1(String paramString, float paramFloat, ImageView paramImageView) {}
   
-  public final void a(String paramString, m paramm)
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
-    AppMethodBeat.i(111906);
-    if (this.val$appId.equals(paramString))
+    AppMethodBeat.i(42077);
+    if (this.etl.equals(paramString))
     {
-      paramString = g.b(this.val$appId, 1, this.bBF);
+      paramString = h.c(this.etl, 1, this.enb);
       if (paramString != null)
       {
-        this.lHj.setImageBitmap(paramString);
-        a.cac().remove(this);
+        this.ytT.setImageBitmap(paramString);
+        a.gxn().remove(this);
       }
     }
-    AppMethodBeat.o(111906);
+    AppMethodBeat.o(42077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.j.a.1
  * JD-Core Version:    0.7.0.1
  */

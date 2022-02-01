@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GetSecMsgConfigs
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "get SecMsgBaseInfo start in QQInitHandler...");
@@ -16,7 +16,7 @@ public class GetSecMsgConfigs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSecMsgConfigs
  * JD-Core Version:    0.7.0.1
  */

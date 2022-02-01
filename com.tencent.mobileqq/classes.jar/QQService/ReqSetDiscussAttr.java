@@ -10,8 +10,8 @@ public final class ReqSetDiscussAttr
   extends JceStruct
 {
   static Map<Integer, MemberAttrInfo> cache_Attr;
-  public Map<Integer, MemberAttrInfo> Attr;
-  public long DiscussUin;
+  public Map<Integer, MemberAttrInfo> Attr = null;
+  public long DiscussUin = 0L;
   
   public ReqSetDiscussAttr() {}
   
@@ -41,7 +41,7 @@ public final class ReqSetDiscussAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqSetDiscussAttr
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,21 @@ public class QavVideoEffect
   
   public static QavVideoEffect getInstance(Context paramContext)
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new QavVideoEffect(paramContext);
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new QavVideoEffect(paramContext);
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.QavVideoEffect
  * JD-Core Version:    0.7.0.1
  */

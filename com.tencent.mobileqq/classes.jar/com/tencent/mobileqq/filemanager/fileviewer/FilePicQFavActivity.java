@@ -1,42 +1,61 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import aqwl;
-import biva;
+import android.view.MotionEvent;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqfav.QfavBuilder;
 
 public class FilePicQFavActivity
   extends IphoneTitleBarActivity
 {
-  long jdField_a_of_type_Long;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  long a;
+  ChatMessage b;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Long != -1L)
+    if (this.a != -1L)
     {
-      FileManagerEntity localFileManagerEntity = this.app.a().a(this.jdField_a_of_type_Long);
+      FileManagerEntity localFileManagerEntity = this.app.getFileManagerDataCenter().a(this.a);
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.a().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new biva(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        this.b = ((ChatMessage)this.app.getMessageFacade().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
+        new QfavBuilder(3).a(this.app, this, localFileManagerEntity, this.b, false);
       }
     }
     finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
+  }
+  
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Long = getIntent().getLongExtra("file_pic_favorites", -1L);
+    this.a = getIntent().getLongExtra("file_pic_favorites", -1L);
     a();
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDestroy()
@@ -47,14 +66,14 @@ public class FilePicQFavActivity
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FilePicQFavActivity
  * JD-Core Version:    0.7.0.1
  */

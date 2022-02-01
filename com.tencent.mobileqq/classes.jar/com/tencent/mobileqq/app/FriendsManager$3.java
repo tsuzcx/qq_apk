@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import alto;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.friend.api.callback.GetGroupListCallback;
+import java.util.List;
 
-public class FriendsManager$3
-  implements Runnable
+class FriendsManager$3
+  implements GetGroupListCallback
 {
-  public FriendsManager$3(alto paramalto) {}
+  FriendsManager$3(FriendsManager paramFriendsManager) {}
   
-  public void run()
+  public void a(List<Groups> paramList)
   {
-    alto.a(this.this$0);
-    alto.a(this.this$0, "buildGroupList2");
-    ((FriendListHandler)alto.a(this.this$0).a(1)).notifyUI(103, true, null);
+    ((FriendListHandler)FriendsManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(101, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.3
  * JD-Core Version:    0.7.0.1
  */

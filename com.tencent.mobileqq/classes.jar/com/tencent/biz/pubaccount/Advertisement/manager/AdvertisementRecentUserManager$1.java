@@ -1,28 +1,26 @@
 package com.tencent.biz.pubaccount.Advertisement.manager;
 
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nlo;
-import nlp;
-import nlx;
-import nmb;
 
-public class AdvertisementRecentUserManager$1
+class AdvertisementRecentUserManager$1
   implements Runnable
 {
-  public AdvertisementRecentUserManager$1(nlx paramnlx, nlo paramnlo) {}
+  AdvertisementRecentUserManager$1(AdvertisementRecentUserManager paramAdvertisementRecentUserManager, AdvertisementItem paramAdvertisementItem) {}
   
   public void run()
   {
-    Iterator localIterator = this.a.a.iterator();
+    Iterator localIterator = this.a.c.iterator();
     while (localIterator.hasNext()) {
-      nmb.b(((nlp)localIterator.next()).b);
+      AdvertisementVideoPreloadManager.c(((VideoCoverItem)localIterator.next()).c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager.1
  * JD-Core Version:    0.7.0.1
  */

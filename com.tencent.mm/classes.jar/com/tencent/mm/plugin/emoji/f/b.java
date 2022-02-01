@@ -1,80 +1,127 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.EmotionPrice;
-import com.tencent.mm.protocal.protobuf.fq;
-import com.tencent.mm.protocal.protobuf.fr;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.text.DecimalFormat;
+import com.tencent.mm.protocal.protobuf.amn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public final class b
-  extends m
-  implements k
 {
-  public static int lid = 6;
-  public static int lie = 7;
-  public static int lif = 10;
-  private f eGj;
-  private String lig;
-  private EmotionPrice lih;
-  private final com.tencent.mm.ai.b rr;
-  
-  public b(String paramString, EmotionPrice paramEmotionPrice)
+  public static ArrayList<amn> aoK(String paramString)
   {
-    AppMethodBeat.i(53093);
-    b.a locala = new b.a();
-    locala.fsX = new fq();
-    locala.fsY = new fr();
-    locala.uri = "/cgi-bin/micromsg-bin/mmaskforreward";
-    locala.funcId = 830;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.lig = paramString;
-    this.lih = paramEmotionPrice;
-    AppMethodBeat.o(53093);
+    AppMethodBeat.i(108731);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(108731);
+      return null;
+    }
+    Object localObject1 = DocumentBuilderFactory.newInstance();
+    try
+    {
+      paramString = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
+      paramString.normalize();
+      paramString = paramString.getDocumentElement().getElementsByTagName("EmojiMd5");
+      if ((paramString != null) && (paramString.getLength() > 0))
+      {
+        localObject1 = new ArrayList();
+        int j = paramString.getLength();
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject2 = paramString.item(i);
+          amn localamn = new amn();
+          String str = ((Node)localObject2).getTextContent().toLowerCase();
+          localObject2 = ((Node)localObject2).getAttributes();
+          Node localNode = ((NamedNodeMap)localObject2).getNamedItem("thumburl");
+          if (localNode != null) {
+            localamn.ThumbUrl = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("cdnurl");
+          if (localNode != null) {
+            localamn.Url = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("productid");
+          if (localNode != null) {
+            localamn.ProductID = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("designerid");
+          if (localNode != null) {
+            localamn.DesignerID = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("aeskey");
+          if (localNode != null) {
+            localamn.AesKey = localNode.getNodeValue();
+          }
+          localNode = ((NamedNodeMap)localObject2).getNamedItem("encrypturl");
+          if (localNode != null) {
+            localamn.EncryptUrl = localNode.getNodeValue();
+          }
+          localObject2 = ((NamedNodeMap)localObject2).getNamedItem("activityid");
+          if (localObject2 != null) {
+            localamn.ActivityID = ((Node)localObject2).getNodeValue();
+          }
+          localamn.Md5 = str;
+          ((ArrayList)localObject1).add(localamn);
+          i += 1;
+        }
+        AppMethodBeat.o(108731);
+        return localObject1;
+      }
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(108731);
+    }
+    return null;
   }
   
-  public final fr blz()
+  public static ArrayList<String> aoL(String paramString)
   {
-    return (fr)this.rr.fsW.fta;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(53095);
-    this.eGj = paramf;
-    paramf = (fq)this.rr.fsV.fta;
-    paramf.ProductID = this.lig;
-    EmotionPrice localEmotionPrice = new EmotionPrice();
-    localEmotionPrice.Label = this.lih.Label;
-    localEmotionPrice.Type = this.lih.Type;
-    localEmotionPrice.Number = new DecimalFormat("0.00").format(Float.valueOf(this.lih.Number));
-    paramf.wrG = localEmotionPrice;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(53095);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 830;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(53094);
-    ab.d("MicroMsg.emoji.NetSceneAskForReward", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(53094);
+    AppMethodBeat.i(108732);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.w("MicroMsg.emoji.EmojiBackupXMLParser", "[backup emotion parser] parse xml faild. xml is null.");
+      AppMethodBeat.o(108732);
+      return null;
+    }
+    Object localObject = DocumentBuilderFactory.newInstance();
+    try
+    {
+      paramString = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes())));
+      paramString.normalize();
+      paramString = paramString.getDocumentElement().getElementsByTagName("ProductID");
+      if ((paramString != null) && (paramString.getLength() > 0))
+      {
+        localObject = new ArrayList();
+        int j = paramString.getLength();
+        int i = 0;
+        while (i < j)
+        {
+          ((ArrayList)localObject).add(paramString.item(i).getTextContent());
+          i += 1;
+        }
+        AppMethodBeat.o(108732);
+        return localObject;
+      }
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.emoji.EmojiBackupXMLParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+      AppMethodBeat.o(108732);
+    }
+    return null;
   }
 }
 

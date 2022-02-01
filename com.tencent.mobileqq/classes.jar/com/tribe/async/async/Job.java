@@ -39,14 +39,18 @@ public abstract class Job<Params, Progress, Result>
   public Result call()
   {
     Process.setThreadPriority(10);
-    Object[] arrayOfObject = null;
-    if (this.mParams != null)
+    Object localObject = this.mParams;
+    if (localObject != null)
     {
-      arrayOfObject = (Object[])Array.newInstance(this.mParams.getClass(), 1);
-      arrayOfObject[0] = this.mParams;
+      localObject = (Object[])Array.newInstance(localObject.getClass(), 1);
+      localObject[0] = this.mParams;
+    }
+    else
+    {
+      localObject = null;
     }
     AssertUtils.checkNotNull(this.mJobContext);
-    return doInBackground(this.mJobContext, arrayOfObject);
+    return doInBackground(this.mJobContext, (Object[])localObject);
   }
   
   protected boolean checkParams(@Nullable Params paramParams)
@@ -80,8 +84,9 @@ public abstract class Job<Params, Progress, Result>
   
   public void publishProgress(Progress paramProgress)
   {
-    if (this.mJobContext != null) {
-      this.mJobContext.publishJobProgress(paramProgress);
+    JobContext localJobContext = this.mJobContext;
+    if (localJobContext != null) {
+      localJobContext.publishJobProgress(paramProgress);
     }
   }
   
@@ -98,24 +103,32 @@ public abstract class Job<Params, Progress, Result>
   public void setParams(@Nullable Params paramParams)
   {
     this.mParams = paramParams;
-    if (!checkParams(paramParams)) {
-      throw new IllegalArgumentException("params is incorrect! \n" + toString());
+    if (checkParams(paramParams)) {
+      return;
     }
+    paramParams = new StringBuilder();
+    paramParams.append("params is incorrect! \n");
+    paramParams.append(toString());
+    throw new IllegalArgumentException(paramParams.toString());
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("Job{");
-    localStringBuilder.append("mTAG='").append(this.mTAG).append("', ");
-    localStringBuilder.append("mType= ").append(this.mType);
-    localStringBuilder.append(", mParams=").append(this.mParams);
+    localStringBuilder.append("mTAG='");
+    localStringBuilder.append(this.mTAG);
+    localStringBuilder.append("', ");
+    localStringBuilder.append("mType= ");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mParams=");
+    localStringBuilder.append(this.mParams);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.async.Job
  * JD-Core Version:    0.7.0.1
  */

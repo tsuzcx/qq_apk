@@ -1,19 +1,14 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class gxq
-  implements Runnable
+class gxq
+  implements DialogInterface.OnClickListener
 {
-  public gxq(Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  gxq(gxp paramgxp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString).setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getResources().getString(this.jdField_a_of_type_Int), new gxr(this));
-    localQQCustomDialog.show();
+    paramDialogInterface.dismiss();
   }
 }
 

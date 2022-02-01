@@ -17,7 +17,10 @@ final class BusinessReport$1
   {
     if (isFailed(paramReportObj))
     {
-      QDLog.w("BusinessReport", "download a img fail. need report retCode=" + paramReportObj.retCode);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download a img fail. need report retCode=");
+      localStringBuilder.append(paramReportObj.retCode);
+      QDLog.w("BusinessReport", localStringBuilder.toString());
       return super.add(paramReportObj);
     }
     if ((paramReportObj != null) && ((paramReportObj instanceof ReportHandler.DownloadReportObject)) && (((ReportHandler.DownloadReportObject)paramReportObj).needForceReport())) {
@@ -35,7 +38,7 @@ final class BusinessReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.network.module.report.BusinessReport.1
  * JD-Core Version:    0.7.0.1
  */

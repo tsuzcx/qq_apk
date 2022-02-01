@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/a5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/joq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/bc_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/TitleText" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:id="@id/fd8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/bca" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="3.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_toLeftOf="@id/joq" android:layout_centerInParent="true" />
+</RelativeLayout>

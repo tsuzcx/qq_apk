@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.dbbackup;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class DBRecoveryUI$3
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class DBRecoveryUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(18946);
-    DBRecoveryUI.e(this.kTI);
-    AppMethodBeat.o(18946);
+    AppMethodBeat.i(23055);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/dbbackup/DBRecoveryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    DBRecoveryUI.e(this.xiC);
+    a.a(this, "com/tencent/mm/plugin/dbbackup/DBRecoveryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(23055);
   }
 }
 

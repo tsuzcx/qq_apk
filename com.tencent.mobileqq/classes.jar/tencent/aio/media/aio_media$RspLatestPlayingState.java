@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class aio_media$RspLatestPlayingState
   extends MessageMicro<RspLatestPlayingState>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 56, 64, 74, 80, 160, 168, 176, 184, 402, 410 }, new String[] { "msg_result", "enum_aio_state", "enum_media_type", "msg_music", "uint64_create_uin", "enum_user_state", "uint32_joined_num", "enum_c2c_join_state", "msg_personal_setting", "uint64_aio_identification", "enum_joined_aio_type", "uint64_joined_id", "bool_joined_is_creater", "enum_joined_media_type", "msg_room_info", "msg_ksing_info" }, new Object[] { null, Integer.valueOf(1), Integer.valueOf(1), null, Long.valueOf(0L), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(1), null, Long.valueOf(0L), Integer.valueOf(1), Long.valueOf(0L), Boolean.valueOf(false), Integer.valueOf(1), null, null }, RspLatestPlayingState.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_joined_is_creater = PBField.initBool(false);
   public final PBEnumField enum_aio_state = PBField.initEnum(1);
   public final PBEnumField enum_c2c_join_state = PBField.initEnum(1);
@@ -28,10 +28,17 @@ public final class aio_media$RspLatestPlayingState
   public final PBUInt64Field uint64_aio_identification = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_create_uin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_joined_id = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(1);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 56, 64, 74, 80, 160, 168, 176, 184, 402, 410 }, new String[] { "msg_result", "enum_aio_state", "enum_media_type", "msg_music", "uint64_create_uin", "enum_user_state", "uint32_joined_num", "enum_c2c_join_state", "msg_personal_setting", "uint64_aio_identification", "enum_joined_aio_type", "uint64_joined_id", "bool_joined_is_creater", "enum_joined_media_type", "msg_room_info", "msg_ksing_info" }, new Object[] { null, localInteger, localInteger, null, localLong, localInteger, Integer.valueOf(0), localInteger, null, localLong, localInteger, localLong, Boolean.valueOf(false), localInteger, null, null }, RspLatestPlayingState.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.aio.media.aio_media.RspLatestPlayingState
  * JD-Core Version:    0.7.0.1
  */

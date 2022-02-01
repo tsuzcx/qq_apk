@@ -1,46 +1,29 @@
 package com.tencent.mm.plugin.appbrand.ui.a;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.f;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.protocal.protobuf.hu;
+import com.tencent.mm.sdk.event.IEvent;
+import java.util.List;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/authrize/OnWxaAuthorizeScopeModifyEvent;", "Lcom/tencent/mm/sdk/event/IEvent;", "username", "", "authorizeInfoList", "", "Lcom/tencent/mm/protocal/protobuf/AuthItem;", "(Ljava/lang/String;Ljava/util/List;)V", "getAuthorizeInfoList", "()Ljava/util/List;", "getUsername", "()Ljava/lang/String;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements b.f
+  extends IEvent
 {
-  private final int iSk;
+  public final List<hu> ugF;
+  public final String username;
   
-  public a(int paramInt)
+  public a(String paramString, List<? extends hu> paramList)
   {
-    this.iSk = paramInt;
-  }
-  
-  public final String tX()
-  {
-    return "AppBrandProfileLikeImageTransformation";
-  }
-  
-  public final Bitmap x(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(133324);
-    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
-    {
-      AppMethodBeat.o(133324);
-      return paramBitmap;
-    }
-    Bitmap localBitmap = d.a(paramBitmap, false, this.iSk, false);
-    if (localBitmap != null)
-    {
-      AppMethodBeat.o(133324);
-      return localBitmap;
-    }
-    AppMethodBeat.o(133324);
-    return paramBitmap;
+    AppMethodBeat.i(322189);
+    this.username = paramString;
+    this.ugF = paramList;
+    AppMethodBeat.o(322189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

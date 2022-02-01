@@ -1,21 +1,39 @@
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SSOAccountObserver;
 
 public class cvj
-  implements Runnable
+  extends SSOAccountObserver
 {
-  public cvj(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
+  public cvj(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void run()
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null))
-    {
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setText(str);
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity).setEnabled(true);
+    this.a.g();
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
     }
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("last_account", paramString);
+    paramArrayOfByte.putExtra("wtTicket", str);
+    paramArrayOfByte.putExtra("ssobundle", paramBundle);
+    this.a.setResult(-1, paramArrayOfByte);
+    this.a.finish();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    this.a.g();
   }
 }
 

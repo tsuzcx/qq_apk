@@ -11,15 +11,15 @@ final class SnsStrangerCommentDetailUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(39315);
-    SnsStrangerCommentDetailUI.b(this.rWw);
-    AppMethodBeat.o(39315);
+    AppMethodBeat.i(99143);
+    SnsStrangerCommentDetailUI.b(this.RxU);
+    AppMethodBeat.o(99143);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsStrangerCommentDetailUI.5
  * JD-Core Version:    0.7.0.1
  */

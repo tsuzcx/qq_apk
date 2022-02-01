@@ -37,14 +37,13 @@ public class VsLog
   {
     if ((paramThrowable != null) && ((paramThrowable instanceof Throwable)))
     {
-      if (checkLog()) {
+      if (checkLog())
+      {
         paramThrowable.printStackTrace();
+        return;
       }
+      error(paramThrowable.getMessage(), new Object[0]);
     }
-    else {
-      return;
-    }
-    error(paramThrowable.getMessage(), new Object[0]);
   }
   
   public static void warn(String paramString, Object... paramVarArgs)
@@ -56,7 +55,7 @@ public class VsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsLog
  * JD-Core Version:    0.7.0.1
  */

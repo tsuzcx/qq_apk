@@ -7,41 +7,41 @@ import com.tencent.mm.wear.app.b.h;
 public final class e
   extends com.tencent.mm.wear.app.g.a
 {
-  private int aaO;
-  private int ada;
-  private byte[] aen;
-  private boolean aer;
-  private boolean aes = true;
-  private g aet;
+  private int aep;
+  private int agB;
+  private byte[] ahP;
+  private boolean ahT;
+  private boolean ahU = true;
+  private g ahV;
   
   public e(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    this.ada = paramInt1;
-    this.aaO = paramInt2;
-    this.aen = paramArrayOfByte;
+    this.agB = paramInt1;
+    this.aep = paramInt2;
+    this.ahP = paramArrayOfByte;
   }
   
-  public final void G(boolean paramBoolean)
+  public final void J(boolean paramBoolean)
   {
-    this.aes = paramBoolean;
+    this.ahU = paramBoolean;
   }
   
   public final void a(g paramg)
   {
-    this.aet = paramg;
+    this.ahV = paramg;
   }
   
   protected final void execute()
   {
-    b localb = new b(this.aaO, this.aen);
-    localb.F(this.aer);
-    h.mc().a(localb);
-    d.c("MicroMsg.NotificationTask", "execute notificationId=%d funId=%d", new Object[] { Integer.valueOf(this.ada), Integer.valueOf(this.aaO) });
-    if (this.aes) {
-      nG();
+    b localb = new b(this.aep, this.ahP);
+    localb.I(this.ahT);
+    h.mP().a(localb);
+    d.c("MicroMsg.NotificationTask", "execute notificationId=%d funId=%d", new Object[] { Integer.valueOf(this.agB), Integer.valueOf(this.aep) });
+    if (this.ahU) {
+      ou();
     }
-    com.tencent.mm.wear.app.d.f.i(MMApplication.getContext(), this.ada);
-    com.tencent.mm.wear.a.b.a.aiT.post(new f(this, this.aaO));
+    com.tencent.mm.wear.app.d.g.i(MMApplication.getContext(), this.agB);
+    com.tencent.mm.wear.a.b.a.amv.post(new f(this, this.aep));
   }
   
   protected final String getName()
@@ -49,9 +49,9 @@ public final class e
     return "NotificationTask";
   }
   
-  public final void mU()
+  public final void nG()
   {
-    this.aer = true;
+    this.ahT = true;
   }
 }
 

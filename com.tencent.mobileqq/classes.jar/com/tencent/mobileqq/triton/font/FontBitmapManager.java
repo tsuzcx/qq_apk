@@ -9,19 +9,15 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.mobileqq.triton.engine.TTEngine;
-import com.tencent.mobileqq.triton.engine.TTLog;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.triton.internal.utils.Logger;
 import com.tencent.mobileqq.triton.jni.JNICaller.TTEngine;
-import com.tencent.mobileqq.triton.jni.TTNativeCall;
-import com.tencent.mobileqq.triton.jni.TTNativeModule;
-import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.utils.TritonKeep;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@TTNativeModule(name="FontBitmapManager")
+@TritonKeep
 public class FontBitmapManager
 {
   private static final String FONT_STYLE_ITALIC = "italic";
@@ -31,44 +27,41 @@ public class FontBitmapManager
   private static final String FONT_WEIGHT_NORMAL = "normal";
   static final String NAME = "FontBitmapManager";
   private static final String TAG = "FontBitmapManager";
-  private final Map<String, Typeface> LOADED_TYPEFACE_MAP = new HashMap();
-  private TTEngine mTritonEngine;
-  
-  public FontBitmapManager(TTEngine paramTTEngine)
-  {
-    this.mTritonEngine = paramTTEngine;
-  }
+  private final Map<String, Typeface> loadedTypefaceMap = new HashMap();
   
   private int typeFaceStyleFromW3CFont(int paramInt1, int paramInt2)
   {
-    int j = 1;
-    int i = 0;
-    if (paramInt1 == 1) {
-      i = 2;
-    }
-    while (paramInt2 == 1)
+    int i = 1;
+    if (paramInt1 == 1) {}
+    while (paramInt1 == 2)
     {
-      paramInt1 = j;
-      if (i == 2) {
-        paramInt1 = 3;
-      }
-      return paramInt1;
+      paramInt1 = 2;
+      break;
+    }
+    paramInt1 = 0;
+    if (paramInt2 == 1)
+    {
+      paramInt2 = i;
       if (paramInt1 == 2) {
-        i = 2;
+        return 3;
       }
     }
-    return i;
+    else
+    {
+      paramInt2 = paramInt1;
+    }
+    return paramInt2;
   }
   
   private Typeface typefaceFromW3CFontParameters(int paramInt1, int paramInt2, String paramString)
   {
-    if ((this.LOADED_TYPEFACE_MAP.containsKey(paramString)) && (this.LOADED_TYPEFACE_MAP.get(paramString) != null)) {
-      return (Typeface)this.LOADED_TYPEFACE_MAP.get(paramString);
+    if ((this.loadedTypefaceMap.containsKey(paramString)) && (this.loadedTypefaceMap.get(paramString) != null)) {
+      return (Typeface)this.loadedTypefaceMap.get(paramString);
     }
     return Typeface.create(paramString, typeFaceStyleFromW3CFont(paramInt1, paramInt2));
   }
   
-  @TTNativeCall
+  @TritonKeep
   public FontBitmap createBitmap(int paramInt1, int paramInt2, String paramString1, String paramString2, float paramFloat1, boolean paramBoolean, float paramFloat2)
   {
     if (TextUtils.isEmpty(paramString2)) {
@@ -77,16 +70,24 @@ public class FontBitmapManager
     Paint localPaint = new Paint(1);
     localPaint.setTypeface(typefaceFromW3CFontParameters(paramInt1, paramInt2, paramString1));
     localPaint.setTextSize(paramFloat1);
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       localPaint.setStyle(Paint.Style.FILL);
     }
-    for (;;)
+    else
     {
-      paramFloat1 = -localPaint.ascent();
-      paramInt1 = (int)(localPaint.measureText(paramString2) + 0.5F);
-      paramInt2 = (int)(localPaint.descent() + paramFloat1 + 0.5F);
-      if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-        break;
+      localPaint.setStyle(Paint.Style.STROKE);
+      if (paramFloat2 > 0.0F) {
+        localPaint.setStrokeWidth(paramFloat2);
+      }
+    }
+    paramFloat1 = -localPaint.ascent();
+    paramInt1 = (int)(localPaint.measureText(paramString2) + 0.5F);
+    paramInt2 = (int)(localPaint.descent() + paramFloat1 + 0.5F);
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 <= 0) {
+        return null;
       }
       paramString1 = new FontBitmap();
       Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
@@ -95,137 +96,116 @@ public class FontBitmapManager
       paramString1.ascent = localPaint.ascent();
       paramString1.descent = localPaint.descent();
       return paramString1;
-      localPaint.setStyle(Paint.Style.STROKE);
-      if (paramFloat2 > 0.0F) {
-        localPaint.setStrokeWidth(paramFloat2);
-      }
     }
+    return null;
   }
   
-  public String getTextLineHeight(String paramString)
+  public int getTextLineHeight(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    int j = 0;
-    if (paramString != null) {
-      try
+    if ((!TextUtils.isEmpty(paramString4)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      if ("normal".equals(paramString1)) {}
+      int i;
+      for (;;)
       {
-        Object localObject1 = new JSONObject(paramString);
-        Object localObject2 = ((JSONObject)localObject1).optString("fontStyle");
-        String str = ((JSONObject)localObject1).optString("fontWeight");
-        int k = ((JSONObject)localObject1).optInt("fontSize");
-        paramString = ((JSONObject)localObject1).optString("fontFamily");
-        localObject1 = ((JSONObject)localObject1).optString("text");
-        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(paramString)))
+        i = 0;
+        break;
+        if ("italic".equals(paramString1))
         {
-          TTLog.e("FontBitmapManager", "getTextLineHeight: invalid parameters");
-          return null;
-        }
-        int i;
-        if ("normal".equals(localObject2))
-        {
-          i = 0;
-          if (!"normal".equals(str)) {
-            break label248;
-          }
-        }
-        for (;;)
-        {
-          localObject2 = new Paint(1);
-          ((Paint)localObject2).setTypeface(typefaceFromW3CFontParameters(i, j, paramString));
-          ((Paint)localObject2).setTextSize(k);
-          paramString = new Rect();
-          ((Paint)localObject2).getTextBounds((String)localObject1, 0, ((String)localObject1).length(), paramString);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("lineHeight", paramString.height());
-          return ((JSONObject)localObject1).toString();
-          if ("italic".equals(localObject2))
-          {
-            i = 1;
-            break;
-          }
-          if ("oblique".equals(localObject2))
-          {
-            i = 2;
-            break;
-          }
-          TTLog.w("FontBitmapManager", "getTextLineHeight: invalid font style " + (String)localObject2);
-          i = 0;
+          i = 1;
           break;
-          label248:
-          if ("bold".equals(str)) {
-            j = 1;
-          } else {
-            TTLog.w("FontBitmapManager", "getTextLineHeight: invalid font weight " + str);
-          }
         }
-        return null;
+        if ("oblique".equals(paramString1))
+        {
+          i = 2;
+          break;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTextLineHeight: invalid font style ");
+        localStringBuilder.append(paramString1);
+        Logger.w("FontBitmapManager", localStringBuilder.toString());
       }
-      catch (JSONException paramString)
+      if ("normal".equals(paramString2)) {}
+      int j;
+      for (;;)
       {
-        paramString.printStackTrace();
+        j = 0;
+        break;
+        if ("bold".equals(paramString2))
+        {
+          j = 1;
+          break;
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append("getTextLineHeight: invalid font weight ");
+        paramString1.append(paramString2);
+        Logger.w("FontBitmapManager", paramString1.toString());
       }
+      paramString1 = new Paint(1);
+      paramString1.setTypeface(typefaceFromW3CFontParameters(i, j, paramString3));
+      paramString1.setTextSize(paramInt);
+      paramString2 = new Rect();
+      paramString1.getTextBounds(paramString4, 0, paramString4.length(), paramString2);
+      return paramString2.height();
     }
+    paramString1 = new StringBuilder();
+    paramString1.append("getTextLineHeight: invalid parameters, text:");
+    paramString1.append(paramString4);
+    paramString1.append(", fontFamily:");
+    paramString1.append(paramString3);
+    Logger.e("FontBitmapManager", paramString1.toString());
+    return 0;
   }
   
   @Deprecated
   public void init(Context paramContext)
   {
     paramContext = paramContext.getApplicationContext();
-    String str = "/data/data/" + paramContext.getPackageName() + "/cache";
-    JNICaller.TTEngine.nativeFontManagerInit(paramContext.getAssets(), str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("/data/data/");
+    ((StringBuilder)localObject).append(paramContext.getPackageName());
+    ((StringBuilder)localObject).append("/cache");
+    localObject = ((StringBuilder)localObject).toString();
+    JNICaller.TTEngine.nativeFontManagerInit(paramContext.getAssets(), (String)localObject);
   }
   
-  public String loadFont(String paramString)
+  public String loadFont(@NonNull File paramFile)
   {
-    JSONObject localJSONObject = null;
-    String str = this.mTritonEngine.getQQEnv().getResPath(paramString, null, null);
-    Object localObject = localJSONObject;
-    if (!TextUtils.isEmpty(str))
+    boolean bool = paramFile.exists();
+    String str3 = null;
+    String str1 = str3;
+    String str2;
+    if (bool)
     {
-      localObject = localJSONObject;
-      if (!new File(str).exists()) {}
-    }
-    try
-    {
-      paramString = Typeface.createFromFile(str);
-      localObject = localJSONObject;
-      if (paramString != null)
+      Typeface localTypeface;
+      try
       {
-        localObject = localJSONObject;
-        if (paramString != Typeface.DEFAULT)
+        localTypeface = Typeface.createFromFile(paramFile);
+      }
+      catch (Exception localException)
+      {
+        Logger.e("FontBitmapManager", "loadFont: ", localException);
+        localTypeface = null;
+      }
+      str2 = str3;
+      if (localTypeface != null)
+      {
+        str2 = str3;
+        if (localTypeface != Typeface.DEFAULT)
         {
-          localJSONObject = new JSONObject();
-          localObject = FontFileReader.getFamilyName(str);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            break label173;
+          str3 = FontFileReader.getFamilyName(paramFile.getAbsolutePath());
+          str2 = str3;
+          if (TextUtils.isEmpty(str3)) {
+            str2 = paramFile.getName().replaceFirst("\\..*$", "").replaceAll("\\s", "_");
           }
-          localObject = new File(str).getName().replaceFirst("\\..*$", "").replaceAll("\\s", "_");
+          this.loadedTypefaceMap.put(str2, localTypeface);
         }
       }
     }
-    catch (Exception paramString)
-    {
-      label173:
-      for (;;)
-      {
-        try
-        {
-          localJSONObject.put("familyName", localObject);
-          this.LOADED_TYPEFACE_MAP.put(localObject, paramString);
-          localObject = localJSONObject.toString();
-          return localObject;
-          paramString = paramString;
-          TTLog.e("FontBitmapManager", "loadFont: ", paramString);
-          paramString = null;
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
+    return str2;
   }
   
-  @TTNativeCall
+  @TritonKeep
   public float measureText(int paramInt1, int paramInt2, String paramString1, String paramString2, float paramFloat1, boolean paramBoolean, float paramFloat2)
   {
     if (TextUtils.isEmpty(paramString2)) {
@@ -234,22 +214,23 @@ public class FontBitmapManager
     Paint localPaint = new Paint(1);
     localPaint.setTypeface(typefaceFromW3CFontParameters(paramInt1, paramInt2, paramString1));
     localPaint.setTextSize(paramFloat1);
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       localPaint.setStyle(Paint.Style.FILL);
     }
-    for (;;)
+    else
     {
-      return localPaint.measureText(paramString2);
       localPaint.setStyle(Paint.Style.STROKE);
       if (paramFloat2 > 0.0F) {
         localPaint.setStrokeWidth(paramFloat2);
       }
     }
+    return localPaint.measureText(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.triton.font.FontBitmapManager
  * JD-Core Version:    0.7.0.1
  */

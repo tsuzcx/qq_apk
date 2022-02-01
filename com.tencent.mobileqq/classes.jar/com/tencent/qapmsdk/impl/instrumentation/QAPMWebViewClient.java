@@ -3,14 +3,15 @@ package com.tencent.qapmsdk.impl.instrumentation;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
+import android.os.Build.VERSION;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import com.tencent.qapmsdk.common.util.AndroidVersion;
 import com.tencent.qapmsdk.webview.WebViewX5Proxy;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 
 public class QAPMWebViewClient
   extends WebViewClient
@@ -25,15 +26,16 @@ public class QAPMWebViewClient
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
+    JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (!AndroidVersion.isKitKat()) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 19) {
       return;
-      this.mainPageUrl = paramString;
-      WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
-    } while ((!WebViewX5Proxy.getInstance().getWebViewMonitorState()) || (paramWebView.getTag(33554432) != null));
-    paramWebView.addJavascriptInterface(QAPMJavaScriptBridge.getInstance(), "QAPMAndroidJsBridge");
+    }
+    this.mainPageUrl = paramString;
+    WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
+    if ((WebViewX5Proxy.getInstance().getWebViewMonitorState()) && (paramWebView.getTag(33554432) == null)) {
+      paramWebView.addJavascriptInterface(QAPMJavaScriptBridge.getInstance(), "QAPMAndroidJsBridge");
+    }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -54,12 +56,12 @@ public class QAPMWebViewClient
   
   public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
-    onReceivedSslError(paramWebView, paramSslErrorHandler, paramSslError);
+    super.onReceivedSslError(paramWebView, paramSslErrorHandler, paramSslError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMWebViewClient
  * JD-Core Version:    0.7.0.1
  */

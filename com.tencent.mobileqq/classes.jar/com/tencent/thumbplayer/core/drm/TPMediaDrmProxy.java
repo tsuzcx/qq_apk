@@ -10,7 +10,8 @@ import android.media.MediaDrm.ProvisionRequest;
 import android.media.NotProvisionedException;
 import android.media.UnsupportedSchemeException;
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import com.tencent.thumbplayer.core.common.TPNativeLog;
 import java.util.UUID;
 
 @TargetApi(18)
@@ -20,70 +21,30 @@ public class TPMediaDrmProxy
   private long mNativeContext;
   private UUID mUUID;
   
-  /* Error */
   private TPMediaDrmProxy(byte[] paramArrayOfByte)
   {
-    // Byte code:
-    //   0: lconst_0
-    //   1: lstore 4
-    //   3: aload_0
-    //   4: invokespecial 20	java/lang/Object:<init>	()V
-    //   7: aload_1
-    //   8: iconst_0
-    //   9: iconst_0
-    //   10: invokestatic 24	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy:longFromBytes	([BIZ)J
-    //   13: lstore_2
-    //   14: aload_1
-    //   15: bipush 8
-    //   17: iconst_0
-    //   18: invokestatic 24	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy:longFromBytes	([BIZ)J
-    //   21: lstore 6
-    //   23: lload 6
-    //   25: lstore 4
-    //   27: new 26	java/util/UUID
-    //   30: dup
-    //   31: lload_2
-    //   32: lload 4
-    //   34: invokespecial 29	java/util/UUID:<init>	(JJ)V
-    //   37: astore_1
-    //   38: new 31	android/media/MediaDrm
-    //   41: dup
-    //   42: aload_1
-    //   43: invokespecial 34	android/media/MediaDrm:<init>	(Ljava/util/UUID;)V
-    //   46: astore 8
-    //   48: aload 8
-    //   50: new 36	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy$1
-    //   53: dup
-    //   54: aload_0
-    //   55: invokespecial 39	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy$1:<init>	(Lcom/tencent/thumbplayer/core/drm/TPMediaDrmProxy;)V
-    //   58: invokevirtual 43	android/media/MediaDrm:setOnEventListener	(Landroid/media/MediaDrm$OnEventListener;)V
-    //   61: aload_0
-    //   62: aload 8
-    //   64: putfield 45	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy:mMediaDrm	Landroid/media/MediaDrm;
-    //   67: aload_0
-    //   68: aload_1
-    //   69: putfield 47	com/tencent/thumbplayer/core/drm/TPMediaDrmProxy:mUUID	Ljava/util/UUID;
-    //   72: return
-    //   73: astore_1
-    //   74: lconst_0
-    //   75: lstore_2
-    //   76: aload_1
-    //   77: invokevirtual 50	java/lang/Exception:printStackTrace	()V
-    //   80: goto -53 -> 27
-    //   83: astore_1
-    //   84: goto -8 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	TPMediaDrmProxy
-    //   0	87	1	paramArrayOfByte	byte[]
-    //   13	63	2	l1	long
-    //   1	32	4	l2	long
-    //   21	3	6	l3	long
-    //   46	17	8	localMediaDrm	MediaDrm
-    // Exception table:
-    //   from	to	target	type
-    //   7	14	73	java/lang/Exception
-    //   14	23	83	java/lang/Exception
+    long l2 = 0L;
+    long l1;
+    try
+    {
+      l1 = longFromBytes(paramArrayOfByte, 0, false);
+      try
+      {
+        long l3 = longFromBytes(paramArrayOfByte, 8, false);
+        l2 = l3;
+      }
+      catch (Exception paramArrayOfByte) {}
+      paramArrayOfByte.printStackTrace();
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      l1 = 0L;
+    }
+    paramArrayOfByte = new UUID(l1, l2);
+    MediaDrm localMediaDrm = new MediaDrm(paramArrayOfByte);
+    localMediaDrm.setOnEventListener(new TPMediaDrmProxy.1(this));
+    this.mMediaDrm = localMediaDrm;
+    this.mUUID = paramArrayOfByte;
   }
   
   public static TPMediaDrmProxy createMediaDrmProxyByUUID(byte[] paramArrayOfByte)
@@ -102,44 +63,56 @@ public class TPMediaDrmProxy
   
   private static boolean isCryptoSchemeSupportedWithMimeType(byte[] paramArrayOfByte, String paramString)
   {
-    boolean bool = false;
-    long l1;
-    long l2;
-    do
+    try
     {
+      long l1 = longFromBytes(paramArrayOfByte, 0, false);
+      long l2 = longFromBytes(paramArrayOfByte, 8, false);
+      TPNativeLog.printLog(2, "isCryptoSchemeSupportedWithMimeType, MediaDrm create start.");
       try
       {
-        l1 = longFromBytes(paramArrayOfByte, 0, false);
-        l2 = longFromBytes(paramArrayOfByte, 8, false);
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          bool = MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2), paramString);
-          return bool;
+        paramArrayOfByte = new MediaDrm(new UUID(l1, l2));
+        if (Build.VERSION.SDK_INT >= 28) {
+          paramArrayOfByte.close();
+        } else {
+          paramArrayOfByte.release();
         }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
+        TPNativeLog.printLog(2, "isCryptoSchemeSupportedWithMimeType, MediaDrm release finished.");
+        if (Build.VERSION.SDK_INT >= 19) {
+          return MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2), paramString);
+        }
+        if (Build.VERSION.SDK_INT == 18) {
+          return MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2));
+        }
         return false;
       }
-    } while (Build.VERSION.SDK_INT != 18);
-    return MediaDrm.isCryptoSchemeSupported(new UUID(l1, l2));
+      catch (UnsupportedSchemeException paramArrayOfByte)
+      {
+        TPNativeLog.printLog(3, paramArrayOfByte.getMessage());
+        return false;
+      }
+      return false;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
   
   private static long longFromBytes(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     long l = 0L;
     int i = 0;
-    if (i < 8)
+    while (i < 8)
     {
-      if (paramBoolean) {}
-      for (int j = i;; j = 7 - i)
-      {
-        j <<= 3;
-        l |= 255L << j & paramArrayOfByte[(paramInt + i)] << j;
-        i += 1;
-        break;
+      int j;
+      if (paramBoolean) {
+        j = i;
+      } else {
+        j = 7 - i;
       }
+      j <<= 3;
+      l |= 255L << j & paramArrayOfByte[(paramInt + i)] << j;
+      i += 1;
     }
     return l;
   }
@@ -153,23 +126,22 @@ public class TPMediaDrmProxy
   
   public TPMediaDrmProxy.KeyRequest getKeyRequest(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramArrayOfByte1 = this.mMediaDrm.getKeyRequest(paramArrayOfByte1, paramArrayOfByte2, paramString, paramInt, null);
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          paramInt = paramArrayOfByte1.getRequestType();
-          return new TPMediaDrmProxy.KeyRequest(paramInt, paramArrayOfByte1.getData(), 0);
-        }
+      paramArrayOfByte1 = this.mMediaDrm.getKeyRequest(paramArrayOfByte1, paramArrayOfByte2, paramString, paramInt, null);
+      if (Build.VERSION.SDK_INT >= 23) {
+        paramInt = paramArrayOfByte1.getRequestType();
+      } else {
+        paramInt = 0;
       }
-      catch (NotProvisionedException paramArrayOfByte1)
-      {
-        return new TPMediaDrmProxy.KeyRequest(-1, null, -1);
-      }
-      paramInt = 0;
+      return new TPMediaDrmProxy.KeyRequest(paramInt, paramArrayOfByte1.getData(), 0);
     }
+    catch (NotProvisionedException paramArrayOfByte1)
+    {
+      label49:
+      break label49;
+    }
+    return new TPMediaDrmProxy.KeyRequest(-1, null, -1);
   }
   
   public MediaCrypto getMediaCrypto(byte[] paramArrayOfByte)
@@ -179,7 +151,11 @@ public class TPMediaDrmProxy
       paramArrayOfByte = new MediaCrypto(this.mUUID, paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (MediaCryptoException paramArrayOfByte) {}
+    catch (MediaCryptoException paramArrayOfByte)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -197,26 +173,27 @@ public class TPMediaDrmProxy
   public TPMediaDrmProxy.DrmSessionId openSession()
   {
     Object localObject = null;
-    i = 0;
     try
     {
       byte[] arrayOfByte = this.mMediaDrm.openSession();
+      i = 0;
       localObject = arrayOfByte;
     }
     catch (NotProvisionedException localNotProvisionedException)
     {
-      for (;;)
-      {
-        i = -1;
-      }
+      int i;
+      break label23;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        i = -2;
-      }
+      label17:
+      break label17;
     }
+    i = -2;
+    break label25;
+    label23:
+    i = -1;
+    label25:
     return new TPMediaDrmProxy.DrmSessionId(i, localObject);
   }
   
@@ -229,10 +206,16 @@ public class TPMediaDrmProxy
     }
     catch (NotProvisionedException paramArrayOfByte1)
     {
-      return -1;
+      break label15;
     }
-    catch (DeniedByServerException paramArrayOfByte1) {}
+    catch (DeniedByServerException paramArrayOfByte1)
+    {
+      label12:
+      label15:
+      break label12;
+    }
     return -2;
+    return -1;
   }
   
   public int provideProvisionResponse(byte[] paramArrayOfByte)
@@ -242,7 +225,11 @@ public class TPMediaDrmProxy
       this.mMediaDrm.provideProvisionResponse(paramArrayOfByte);
       return 0;
     }
-    catch (DeniedByServerException paramArrayOfByte) {}
+    catch (DeniedByServerException paramArrayOfByte)
+    {
+      label10:
+      break label10;
+    }
     return -1;
   }
   
@@ -263,7 +250,7 @@ public class TPMediaDrmProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.TPMediaDrmProxy
  * JD-Core Version:    0.7.0.1
  */

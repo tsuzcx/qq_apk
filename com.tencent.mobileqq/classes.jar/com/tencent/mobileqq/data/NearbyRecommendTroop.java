@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.recommend.data.RecommendTroopItem;
 
 public class NearbyRecommendTroop
   extends RecommendTroopItem

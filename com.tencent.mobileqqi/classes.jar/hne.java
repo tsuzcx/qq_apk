@@ -1,10 +1,13 @@
+import android.text.TextUtils;
 import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.AppUtil;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
+import com.tencent.open.downloadnew.common.AppNotificationManager;
+import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class hne
@@ -14,34 +17,29 @@ public class hne
   
   public void run()
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
-    try
+    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
     {
-      DownloadInfo localDownloadInfo = this.a.b("com.tencent.mobileqqi");
-      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_h_of_type_Int == 0))
+      localObject1 = AppNotificationManager.a().a();
+      if (localObject1 != null)
       {
-        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
-        if (localDownloadInfo.f == 0) {
-          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.c);
-        }
-        for (String str = localTMAssistantDownloadTaskInfo.mSavePath; localTMAssistantDownloadTaskInfo == null; str = localDownloadInfo.k)
+        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
+        while (localIterator.hasNext())
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-          DownloadDBHelper.a().a(localDownloadInfo.b);
-          return;
-          localTMAssistantDownloadTaskInfo = this.a.a(localDownloadInfo.jdField_h_of_type_JavaLangString);
-        }
-        if ((localTMAssistantDownloadTaskInfo.mState == 4) && (AppUtil.b(str) <= CommonDataAdapter.a().a()))
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-          DownloadDBHelper.a().a(localDownloadInfo.b);
-          return;
+          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
+          if (localNoticeIdentity != null)
+          {
+            Object localObject2 = this.a.a(localNoticeIdentity.b);
+            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
+            {
+              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
+              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
+                AppNotificationManager.a().a(localNoticeIdentity.a);
+              }
+            }
+          }
         }
       }
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
     }
   }
 }

@@ -12,19 +12,20 @@ public final class PluginCommunicationHandler
   
   public static final PluginCommunicationHandler getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null)
+    if (sInstance == null) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "PluginCommunicationHandler.init");
+        if (sInstance == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("plugin_tag", 2, "PluginCommunicationHandler.init");
+          }
+          sInstance = new PluginCommunicationHandler();
         }
-        sInstance = new PluginCommunicationHandler();
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public boolean containsCmd(String paramString)
@@ -42,8 +43,12 @@ public final class PluginCommunicationHandler
   
   public void register(RemoteCommand paramRemoteCommand)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "register cmd, " + paramRemoteCommand);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("register cmd, ");
+      ((StringBuilder)???).append(paramRemoteCommand);
+      QLog.d("plugin_tag", 2, ((StringBuilder)???).toString());
     }
     if (paramRemoteCommand == null) {
       return;
@@ -62,8 +67,12 @@ public final class PluginCommunicationHandler
   
   public void unregister(RemoteCommand paramRemoteCommand)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "unregister cmd, " + paramRemoteCommand);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unregister cmd, ");
+      localStringBuilder.append(paramRemoteCommand);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
     if (paramRemoteCommand == null) {
       return;
@@ -73,8 +82,12 @@ public final class PluginCommunicationHandler
   
   public void unregister(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "unregister cmd, " + paramString);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("unregister cmd, ");
+      ((StringBuilder)???).append(paramString);
+      QLog.d("plugin_tag", 2, ((StringBuilder)???).toString());
     }
     if (paramString == null) {
       return;
@@ -88,7 +101,7 @@ public final class PluginCommunicationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ofo" android:paddingLeft="@dimen/baw" android:paddingTop="@dimen/bay" android:paddingBottom="@dimen/bav" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/cyu" />
+        <include layout="@layout/cyv" />
+        <ViewStub android:id="@id/pet" android:layout="@layout/cyw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/py4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="62.0dip" android:layout_marginRight="60.0dip" />
+</LinearLayout>

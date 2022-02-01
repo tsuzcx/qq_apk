@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class AIOSendReq
   extends JceStruct
 {
-  public int iSend;
+  public int iSend = 0;
   public String sAid = "";
   public String sFriendUin = "";
   public String sUin = "";
@@ -40,7 +40,7 @@ public final class AIOSendReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.AIOSendReq
  * JD-Core Version:    0.7.0.1
  */

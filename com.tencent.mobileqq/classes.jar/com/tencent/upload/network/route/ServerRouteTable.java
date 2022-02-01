@@ -23,22 +23,18 @@ public class ServerRouteTable
   public ServerRouteTable(int paramInt, IRouteIPProvider paramIRouteIPProvider, String paramString1, String paramString2, Const.FileType paramFileType)
   {
     this.code = paramInt;
-    if (!TextUtils.isEmpty(paramString1))
-    {
+    if (!TextUtils.isEmpty(paramString1)) {
       this.defHostRoute = new UploadRoute(paramString1, 80, IUploadRouteStrategy.RouteCategoryType.HOST);
-      if (TextUtils.isEmpty(paramString1)) {
-        break label78;
-      }
-    }
-    label78:
-    for (this.defBakHostRoute = new UploadRoute(paramString2, 80, IUploadRouteStrategy.RouteCategoryType.BACKUP);; this.defBakHostRoute = null)
-    {
-      this.supportFileType = paramFileType;
-      this.ipProvider = paramIRouteIPProvider;
-      return;
+    } else {
       this.defHostRoute = null;
-      break;
     }
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.defBakHostRoute = new UploadRoute(paramString2, 80, IUploadRouteStrategy.RouteCategoryType.BACKUP);
+    } else {
+      this.defBakHostRoute = null;
+    }
+    this.supportFileType = paramFileType;
+    this.ipProvider = paramIRouteIPProvider;
   }
   
   private final UploadRoute getBackupRoute()
@@ -46,24 +42,57 @@ public class ServerRouteTable
     Object localObject = this.ipProvider.getBakIps();
     if (localObject == null)
     {
-      UploadLog.e("ServerRouteTable", "getBackupRoute:" + this + " return null!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBackupRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.e("ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
     }
     int i = UploadConfiguration.getCurrentOperatorCategory();
-    int j;
     if (i == 4)
     {
-      j = UploadConfiguration.getWifiOperatorCategory();
-      UploadLog.i("[iplist] ServerRouteTable", "getBackupRoute:" + this + " currentOperatorCategory:" + i + " wifiOperatorCategory:" + j + " " + (String)localObject);
+      int j = UploadConfiguration.getWifiOperatorCategory();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBackupRoute:");
+      localStringBuilder.append(this);
+      localStringBuilder.append(" currentOperatorCategory:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" wifiOperatorCategory:");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
+      localObject = jsonToUploadRoute((String)localObject, j, 2);
     }
-    for (localObject = jsonToUploadRoute((String)localObject, j, 2); localObject == null; localObject = jsonToUploadRoute((String)localObject, i, 2))
+    else
     {
-      UploadLog.w("[iplist] ServerRouteTable", "getBackupRoute:" + this + " return null!!");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getBackupRoute:");
+      localStringBuilder.append(this);
+      localStringBuilder.append(" currentOperatorCategory:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
+      localObject = jsonToUploadRoute((String)localObject, i, 2);
+    }
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBackupRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.w("[iplist] ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
-      UploadLog.i("[iplist] ServerRouteTable", "getBackupRoute:" + this + " currentOperatorCategory:" + i + " " + (String)localObject);
     }
     ((UploadRoute)localObject).setRouteCategory(IUploadRouteStrategy.RouteCategoryType.BACKUP);
-    UploadLog.i("[iplist] ServerRouteTable", "getBackupRoute:" + this + " " + ((UploadRoute)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBackupRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(((UploadRoute)localObject).toString());
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
     return localObject;
   }
   
@@ -72,32 +101,59 @@ public class ServerRouteTable
     Object localObject = this.ipProvider.getHostUrl();
     if (localObject == null)
     {
-      UploadLog.w("[iplist] ServerRouteTable", "getHostRoute:" + this + " return null!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getHostRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.w("[iplist] ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
     }
     localObject = new UploadRoute((String)localObject, 80, IUploadRouteStrategy.RouteCategoryType.HOST);
-    UploadLog.i("[iplist] ServerRouteTable", "getHostRoute:" + this + " " + ((UploadRoute)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHostRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(((UploadRoute)localObject).toString());
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
     return localObject;
   }
   
   private final UploadRoute getOptimumRoute()
   {
-    if (this.ipProvider == null) {}
-    do
-    {
+    Object localObject = this.ipProvider;
+    if (localObject == null) {
       return null;
-      localObject = this.ipProvider.getOptIps();
-    } while (localObject == null);
+    }
+    localObject = ((IRouteIPProvider)localObject).getOptIps();
+    if (localObject == null) {
+      return null;
+    }
     int i = UploadConfiguration.getCurrentOperatorCategory();
-    UploadLog.i("[iplist] ServerRouteTable", "getOptimumRoute:" + this + " currentOperatorCategory:" + i + " OptimumJsonString:" + (String)localObject);
-    Object localObject = jsonToUploadRoute((String)localObject, i, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOptimumRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" currentOperatorCategory:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" OptimumJsonString:");
+    localStringBuilder.append((String)localObject);
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
+    localObject = jsonToUploadRoute((String)localObject, i, 0);
     if (localObject == null)
     {
-      UploadLog.w("[iplist] ServerRouteTable", "getOptimumRoute:" + this + " return null!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getOptimumRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.w("[iplist] ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
     }
     ((UploadRoute)localObject).setRouteCategory(IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
-    UploadLog.i("[iplist] ServerRouteTable", "getOptimumRoute:" + this + " " + ((UploadRoute)localObject).toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getOptimumRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(((UploadRoute)localObject).toString());
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
     return localObject;
   }
   
@@ -109,29 +165,33 @@ public class ServerRouteTable
       localArrayList.add(localUploadRoute1);
     }
     UploadRoute localUploadRoute2 = getHostRoute();
-    if (localUploadRoute2 != null) {
+    if (localUploadRoute2 != null)
+    {
       localArrayList.add(localUploadRoute2);
     }
-    for (;;)
+    else
     {
-      localUploadRoute2 = getBackupRoute();
-      if ((localUploadRoute2 != null) && ((localUploadRoute1 == null) || (!localUploadRoute1.getIp().equals(localUploadRoute2.getIp())) || (!StringUtils.isIpv4String(localUploadRoute1.getIp())))) {
+      localUploadRoute2 = this.defHostRoute;
+      if (localUploadRoute2 != null) {
         localArrayList.add(localUploadRoute2);
       }
-      if (localArrayList.size() == 0)
-      {
-        if (this.defHostRoute != null) {
-          localArrayList.add(this.defHostRoute);
-        }
-        if (this.defBakHostRoute != null) {
-          localArrayList.add(this.defBakHostRoute);
-        }
+    }
+    localUploadRoute2 = getBackupRoute();
+    if ((localUploadRoute2 != null) && ((localUploadRoute1 == null) || (!localUploadRoute1.getIp().equals(localUploadRoute2.getIp())) || (!StringUtils.isIpv4String(localUploadRoute1.getIp())))) {
+      localArrayList.add(localUploadRoute2);
+    }
+    if (localArrayList.size() == 0)
+    {
+      localUploadRoute1 = this.defHostRoute;
+      if (localUploadRoute1 != null) {
+        localArrayList.add(localUploadRoute1);
       }
-      return localArrayList;
-      if (this.defHostRoute != null) {
-        localArrayList.add(this.defHostRoute);
+      localUploadRoute1 = this.defBakHostRoute;
+      if (localUploadRoute1 != null) {
+        localArrayList.add(localUploadRoute1);
       }
     }
+    return localArrayList;
   }
   
   private final UploadRoute getV6HostRoute()
@@ -139,32 +199,59 @@ public class ServerRouteTable
     Object localObject = this.ipProvider.getV6HostUrl();
     if (localObject == null)
     {
-      UploadLog.w("[iplist] ServerRouteTable", "getHostRoute:" + this + " return null!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getHostRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.w("[iplist] ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
     }
     localObject = new UploadRoute((String)localObject, 80, IUploadRouteStrategy.RouteCategoryType.HOST);
-    UploadLog.i("[iplist] ServerRouteTable", "getHostRoute:" + this + " " + ((UploadRoute)localObject).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getHostRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(((UploadRoute)localObject).toString());
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
     return localObject;
   }
   
   private final UploadRoute getV6OptimumRoute()
   {
-    if (this.ipProvider == null) {}
-    do
-    {
+    Object localObject = this.ipProvider;
+    if (localObject == null) {
       return null;
-      localObject = this.ipProvider.getV6OptIps();
-    } while (localObject == null);
+    }
+    localObject = ((IRouteIPProvider)localObject).getV6OptIps();
+    if (localObject == null) {
+      return null;
+    }
     int i = UploadConfiguration.getCurrentOperatorCategory();
-    UploadLog.i("[iplist] ServerRouteTable", "getV6OptimumRoute:" + this + " currentOperatorCategory:" + i + " OptimumJsonString:" + (String)localObject);
-    Object localObject = jsonToUploadRoute((String)localObject, i, 1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getV6OptimumRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" currentOperatorCategory:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" OptimumJsonString:");
+    localStringBuilder.append((String)localObject);
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
+    localObject = jsonToUploadRoute((String)localObject, i, 1);
     if (localObject == null)
     {
-      UploadLog.w("[iplist] ServerRouteTable", "getV6OptimumRoute:" + this + " return null!!");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getV6OptimumRoute:");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" return null!!");
+      UploadLog.w("[iplist] ServerRouteTable", ((StringBuilder)localObject).toString());
       return null;
     }
     ((UploadRoute)localObject).setRouteCategory(IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
-    UploadLog.i("[iplist] ServerRouteTable", "getV6OptimumRoute:" + this + " " + ((UploadRoute)localObject).toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getV6OptimumRoute:");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(((UploadRoute)localObject).toString());
+    UploadLog.i("[iplist] ServerRouteTable", localStringBuilder.toString());
     return localObject;
   }
   
@@ -184,84 +271,79 @@ public class ServerRouteTable
   
   private static final UploadRoute jsonToUploadRoute(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject;
-    if ((paramString == null) || (paramString.length() < 1))
+    if (paramString != null)
     {
-      localObject = null;
-      return localObject;
-    }
-    for (;;)
-    {
-      int i;
-      JSONObject localJSONObject;
-      int k;
+      if (paramString.length() < 1) {
+        return null;
+      }
       try
       {
         JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("ips");
         int j = localJSONArray.length();
-        i = 0;
-        paramString = null;
-        localObject = paramString;
-        if (i >= j) {
-          break;
-        }
-        localJSONObject = localJSONArray.getJSONObject(i);
-        k = Integer.parseInt(localJSONObject.getString("apn"));
-        if (paramInt1 == k)
+        int i = 0;
+        Object localObject;
+        for (paramString = null; i < j; paramString = (String)localObject)
         {
-          paramString = new UploadRoute(localJSONObject.getString("ip"), localJSONObject.getInt("port"), IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
-          return paramString;
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          int k = Integer.parseInt(localJSONObject.getString("apn"));
+          if (paramInt1 == k) {
+            return new UploadRoute(localJSONObject.getString("ip"), localJSONObject.getInt("port"), IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
+          }
+          localObject = paramString;
+          if (paramInt2 == k)
+          {
+            localObject = paramString;
+            if (paramString == null) {
+              localObject = new UploadRoute(localJSONObject.getString("ip"), localJSONObject.getInt("port"), IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
+            }
+          }
+          i += 1;
         }
+        return paramString;
       }
       catch (Exception paramString)
       {
         UploadLog.w("ServerRouteTable", paramString.toString());
-        return null;
       }
-      localObject = paramString;
-      if (paramInt2 == k)
-      {
-        localObject = paramString;
-        if (paramString == null) {
-          localObject = new UploadRoute(localJSONObject.getString("ip"), localJSONObject.getInt("port"), IUploadRouteStrategy.RouteCategoryType.OPTIMUM);
-        }
-      }
-      i += 1;
-      paramString = (String)localObject;
     }
+    return null;
   }
   
   List<UploadRoute> getUploadRoutes()
   {
     int i = NetworkState.getNetworkStackTypeInner();
-    UploadLog.d("ServerRouteTable", "getUploadRoutes stackType:" + i);
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getUploadRoutes stackType:");
+    ((StringBuilder)localObject).append(i);
+    UploadLog.d("ServerRouteTable", ((StringBuilder)localObject).toString());
+    localObject = new ArrayList();
     if ((i == 2) || (i == 3)) {
-      localArrayList.addAll(getV6UploadRoutes());
+      ((ArrayList)localObject).addAll(getV6UploadRoutes());
     }
     if (i != 2) {
-      localArrayList.addAll(getV4UploadRoutes());
+      ((ArrayList)localObject).addAll(getV4UploadRoutes());
     }
-    return localArrayList;
+    return localObject;
   }
   
   public final String getV6HostString()
   {
-    if (this.ipProvider == null) {
+    Object localObject = this.ipProvider;
+    if (localObject == null) {
       return null;
     }
-    String str = this.ipProvider.getV6HostUrl();
-    if (str == null)
+    localObject = ((IRouteIPProvider)localObject).getV6HostUrl();
+    if (localObject == null)
     {
       UploadLog.w("ServerRouteTable", "host == null!!!");
       return null;
     }
-    return str;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.network.route.ServerRouteTable
  * JD-Core Version:    0.7.0.1
  */

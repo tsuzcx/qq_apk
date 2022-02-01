@@ -6,7 +6,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.widget.Toast;
 import cooperation.qzone.widget.RadioPreference;
-import ica;
+import ibz;
 
 public class ServerSetting
   extends PreferenceActivity
@@ -119,7 +119,7 @@ public class ServerSetting
   {
     super.onCreate(paramBundle);
     addPreferencesFromResource(2131099656);
-    paramBundle = new ica(this);
+    paramBundle = new ibz(this);
     c();
     a();
     a(paramBundle);

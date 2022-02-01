@@ -5,6 +5,7 @@ import com.b.a.b;
 import com.b.a.b.a;
 import com.b.a.j;
 import com.b.a.u;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.EOFException;
@@ -48,129 +49,135 @@ public class d
   
   static int a(InputStream paramInputStream)
   {
-    return c(paramInputStream) | 0x0 | c(paramInputStream) << 8 | c(paramInputStream) << 16 | c(paramInputStream) << 24;
+    int i = c(paramInputStream);
+    int j = c(paramInputStream);
+    int k = c(paramInputStream);
+    return c(paramInputStream) << 24 | i | 0x0 | j << 8 | k << 16;
   }
   
   public static b.a a(j paramj)
   {
     long l6 = System.currentTimeMillis();
     Map localMap = paramj.b;
-    long l3 = 0L;
-    long l2 = 0L;
-    long l1 = 0L;
     Object localObject1 = (String)localMap.get("Date");
+    long l3;
     if (localObject1 != null) {
       l3 = b((String)localObject1);
+    } else {
+      l3 = 0L;
     }
     localObject1 = (String)localMap.get("Cache-Control");
-    int i;
-    Object localObject2;
+    int i = 0;
+    int j = 0;
     if (localObject1 != null)
     {
       localObject1 = ((String)localObject1).split(",");
-      j = 0;
+      l2 = 0L;
       i = 0;
       l1 = 0L;
-      l2 = 0L;
-      if (j < localObject1.length)
+      for (;;)
       {
-        localObject2 = localObject1[j].trim();
-        if ((((String)localObject2).equals("no-cache")) || (((String)localObject2).equals("no-store"))) {
-          return null;
-        }
-        if (((String)localObject2).startsWith("max-age=")) {}
-        for (;;)
+        label82:
+        if (j < localObject1.length)
         {
-          try
-          {
-            l5 = Long.parseLong(((String)localObject2).substring(8));
-            l4 = l1;
-          }
-          catch (Exception localException2)
-          {
-            long l4 = l1;
-            long l5 = l2;
-            continue;
-            l1 = 0L;
-            l2 = 0L;
-            continue;
-            l4 = 0L;
-            continue;
-            l5 = 0L;
-            continue;
-          }
-          j += 1;
-          l1 = l4;
-          l2 = l5;
-          break;
-          if (((String)localObject2).startsWith("stale-while-revalidate=")) {}
-          try
-          {
-            l4 = Long.parseLong(((String)localObject2).substring(23));
-            l5 = l2;
-          }
-          catch (Exception localException1)
-          {
-            l4 = l1;
-            l5 = l2;
-          }
-          if (!((String)localObject2).equals("must-revalidate"))
-          {
-            l4 = l1;
-            l5 = l2;
-            if (!((String)localObject2).equals("proxy-revalidate")) {}
-          }
-          else
-          {
-            i = 1;
-            l4 = l1;
-            l5 = l2;
+          localObject2 = localObject1[j].trim();
+          if ((!((String)localObject2).equals("no-cache")) && (!((String)localObject2).equals("no-store")) && (!((String)localObject2).startsWith("max-age="))) {
+            break;
           }
         }
       }
     }
-    for (int j = 1;; j = 0)
+    try
     {
-      localObject1 = (String)localMap.get("Expires");
-      if (localObject1 != null)
-      {
-        l5 = b((String)localObject1);
-        localObject1 = (String)localMap.get("Last-Modified");
-        if (localObject1 != null)
-        {
-          l4 = b((String)localObject1);
-          localObject1 = (String)localMap.get("ETag");
-          if (j != 0)
-          {
-            l2 = l6 + 1000L * l2;
-            if (i != 0) {
-              l1 = l2;
-            }
-          }
-          for (;;)
-          {
-            localObject2 = new b.a();
-            ((b.a)localObject2).a = paramj.a;
-            ((b.a)localObject2).b = ((String)localObject1);
-            ((b.a)localObject2).f = l2;
-            ((b.a)localObject2).e = l1;
-            ((b.a)localObject2).c = l3;
-            ((b.a)localObject2).d = l4;
-            ((b.a)localObject2).g = localMap;
-            return localObject2;
-            l1 = 1000L * l1 + l2;
-            continue;
-            if ((l3 <= 0L) || (l5 < l3)) {
-              break;
-            }
-            l1 = l5 - l3 + l6;
-            l2 = l1;
-          }
-          break;
-        }
-      }
-      i = 0;
+      l4 = Long.parseLong(((String)localObject2).substring(8));
+      l5 = l1;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l4 = l2;
+        long l5 = l1;
+      }
+    }
+    if (((String)localObject2).startsWith("stale-while-revalidate="))
+    {
+      l5 = Long.parseLong(((String)localObject2).substring(23));
+      l4 = l2;
+    }
+    else if (!((String)localObject2).equals("must-revalidate"))
+    {
+      l4 = l2;
+      l5 = l1;
+      if (!((String)localObject2).equals("proxy-revalidate")) {}
+    }
+    else
+    {
+      i = 1;
+      l5 = l1;
+      l4 = l2;
+    }
+    j += 1;
+    l2 = l4;
+    l1 = l5;
+    break label82;
+    return null;
+    j = 1;
+    break label242;
+    l2 = 0L;
+    l1 = 0L;
+    j = 0;
+    label242:
+    localObject1 = (String)localMap.get("Expires");
+    if (localObject1 != null) {
+      l5 = b((String)localObject1);
+    } else {
+      l5 = 0L;
+    }
+    localObject1 = (String)localMap.get("Last-Modified");
+    if (localObject1 != null) {
+      l4 = b((String)localObject1);
+    } else {
+      l4 = 0L;
+    }
+    localObject1 = (String)localMap.get("ETag");
+    if (j != 0)
+    {
+      l2 = l6 + l2 * 1000L;
+      if (i != 0)
+      {
+        l1 = l2;
+      }
+      else
+      {
+        Long.signum(l1);
+        l5 = l1 * 1000L + l2;
+        l1 = l2;
+        l2 = l5;
+        break label406;
+      }
+    }
+    else
+    {
+      if ((l3 > 0L) && (l5 >= l3))
+      {
+        l2 = l5 - l3 + l6;
+        l1 = l2;
+        break label406;
+      }
+      l1 = 0L;
+    }
+    l2 = l1;
+    label406:
+    Object localObject2 = new b.a();
+    ((b.a)localObject2).a = paramj.a;
+    ((b.a)localObject2).b = ((String)localObject1);
+    ((b.a)localObject2).f = l1;
+    ((b.a)localObject2).e = l2;
+    ((b.a)localObject2).c = l3;
+    ((b.a)localObject2).d = l4;
+    ((b.a)localObject2).g = localMap;
+    return localObject2;
   }
   
   private static InputStream a(File paramFile)
@@ -236,32 +243,41 @@ public class d
   
   private void a(String paramString, d.a parama)
   {
-    if (!this.a.containsKey(paramString)) {}
-    d.a locala;
-    long l;
-    for (this.b += parama.a;; this.b = (parama.a - locala.a + l))
+    if (!this.a.containsKey(paramString))
     {
-      this.a.put(paramString, parama);
-      return;
-      locala = (d.a)this.a.get(paramString);
-      l = this.b;
+      this.b += parama.a;
     }
+    else
+    {
+      d.a locala = (d.a)this.a.get(paramString);
+      this.b += parama.a - locala.a;
+    }
+    this.a.put(paramString, parama);
   }
   
   private static byte[] a(d.b paramb, long paramLong)
   {
     long l = paramb.a();
-    if ((paramLong < 0L) || (paramLong > l) || ((int)paramLong != paramLong)) {
-      throw new IOException("streamToBytes length=" + paramLong + ", maxLength=" + l);
+    if ((paramLong >= 0L) && (paramLong <= l))
+    {
+      int i = (int)paramLong;
+      if (i == paramLong)
+      {
+        byte[] arrayOfByte = new byte[i];
+        new DataInputStream(paramb).readFully(arrayOfByte);
+        return arrayOfByte;
+      }
     }
-    byte[] arrayOfByte = new byte[(int)paramLong];
-    new DataInputStream(paramb).readFully(arrayOfByte);
-    return arrayOfByte;
+    paramb = new StringBuilder("streamToBytes length=");
+    paramb.append(paramLong);
+    paramb.append(", maxLength=");
+    paramb.append(l);
+    throw new IOException(paramb.toString());
   }
   
   static long b(InputStream paramInputStream)
   {
-    return 0L | c(paramInputStream) & 0xFF | (c(paramInputStream) & 0xFF) << 8 | (c(paramInputStream) & 0xFF) << 16 | (c(paramInputStream) & 0xFF) << 24 | (c(paramInputStream) & 0xFF) << 32 | (c(paramInputStream) & 0xFF) << 40 | (c(paramInputStream) & 0xFF) << 48 | (c(paramInputStream) & 0xFF) << 56;
+    return c(paramInputStream) & 0xFF | 0L | (c(paramInputStream) & 0xFF) << 8 | (c(paramInputStream) & 0xFF) << 16 | (c(paramInputStream) & 0xFF) << 24 | (c(paramInputStream) & 0xFF) << 32 | (c(paramInputStream) & 0xFF) << 40 | (c(paramInputStream) & 0xFF) << 48 | (0xFF & c(paramInputStream)) << 56;
   }
   
   public static long b(String paramString)
@@ -288,15 +304,17 @@ public class d
   static Map<String, String> b(d.b paramb)
   {
     int j = a(paramb);
-    if (j == 0) {}
-    for (Object localObject = Collections.emptyMap();; localObject = new HashMap(j))
+    Object localObject;
+    if (j == 0) {
+      localObject = Collections.emptyMap();
+    } else {
+      localObject = new HashMap(j);
+    }
+    int i = 0;
+    while (i < j)
     {
-      int i = 0;
-      while (i < j)
-      {
-        ((Map)localObject).put(a(paramb).intern(), a(paramb).intern());
-        i += 1;
-      }
+      ((Map)localObject).put(a(paramb).intern(), a(paramb).intern());
+      i += 1;
     }
     return localObject;
   }
@@ -304,10 +322,10 @@ public class d
   private static int c(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
-    if (i == -1) {
-      throw new EOFException();
+    if (i != -1) {
+      return i;
     }
-    return i;
+    throw new EOFException();
   }
   
   private void c(String paramString)
@@ -328,7 +346,10 @@ public class d
   {
     int i = paramString.length() / 2;
     int j = paramString.substring(0, i).hashCode();
-    return String.valueOf(j) + String.valueOf(paramString.substring(i).hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append(String.valueOf(paramString.substring(i).hashCode()));
+    return localStringBuilder.toString();
   }
   
   private File e(String paramString)
@@ -354,361 +375,311 @@ public class d
     //   3: getfield 33	com/b/a/a/d:a	Ljava/util/Map;
     //   6: aload_1
     //   7: invokeinterface 63 2 0
-    //   12: checkcast 209	com/b/a/a/d$a
-    //   15: astore 5
-    //   17: aload 5
-    //   19: ifnonnull +9 -> 28
-    //   22: aconst_null
-    //   23: astore_1
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_1
-    //   27: areturn
-    //   28: aload_0
-    //   29: aload_1
-    //   30: invokespecial 322	com/b/a/a/d:e	(Ljava/lang/String;)Ljava/io/File;
-    //   33: astore_3
-    //   34: new 217	com/b/a/a/d$b
-    //   37: dup
-    //   38: new 360	java/io/BufferedInputStream
-    //   41: dup
-    //   42: aload_3
-    //   43: invokestatic 362	com/b/a/a/d:a	(Ljava/io/File;)Ljava/io/InputStream;
-    //   46: invokespecial 363	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   49: aload_3
-    //   50: invokevirtual 365	java/io/File:length	()J
-    //   53: invokespecial 368	com/b/a/a/d$b:<init>	(Ljava/io/InputStream;J)V
-    //   56: astore 4
-    //   58: aload 4
-    //   60: invokestatic 371	com/b/a/a/d$a:a	(Lcom/b/a/a/d$b;)Lcom/b/a/a/d$a;
-    //   63: astore_2
-    //   64: aload_1
-    //   65: aload_2
-    //   66: getfield 372	com/b/a/a/d$a:b	Ljava/lang/String;
-    //   69: invokestatic 377	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   72: ifne +46 -> 118
-    //   75: ldc_w 379
-    //   78: iconst_3
-    //   79: anewarray 4	java/lang/Object
-    //   82: dup
-    //   83: iconst_0
-    //   84: aload_3
-    //   85: invokevirtual 382	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   88: aastore
-    //   89: dup
-    //   90: iconst_1
-    //   91: aload_1
-    //   92: aastore
-    //   93: dup
-    //   94: iconst_2
-    //   95: aload_2
-    //   96: getfield 372	com/b/a/a/d$a:b	Ljava/lang/String;
-    //   99: aastore
-    //   100: invokestatic 338	com/b/a/u:b	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   103: aload_0
-    //   104: aload_1
-    //   105: invokespecial 330	com/b/a/a/d:f	(Ljava/lang/String;)V
-    //   108: aload 4
-    //   110: invokevirtual 385	com/b/a/a/d$b:close	()V
+    //   12: checkcast 213	com/b/a/a/d$a
+    //   15: astore 4
+    //   17: aload 4
+    //   19: ifnonnull +7 -> 26
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: aconst_null
+    //   25: areturn
+    //   26: aload_0
+    //   27: aload_1
+    //   28: invokespecial 326	com/b/a/a/d:e	(Ljava/lang/String;)Ljava/io/File;
+    //   31: astore_2
+    //   32: new 221	com/b/a/a/d$b
+    //   35: dup
+    //   36: new 364	java/io/BufferedInputStream
+    //   39: dup
+    //   40: aload_2
+    //   41: invokestatic 366	com/b/a/a/d:a	(Ljava/io/File;)Ljava/io/InputStream;
+    //   44: invokespecial 367	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   47: aload_2
+    //   48: invokevirtual 369	java/io/File:length	()J
+    //   51: invokespecial 372	com/b/a/a/d$b:<init>	(Ljava/io/InputStream;J)V
+    //   54: astore_3
+    //   55: aload_3
+    //   56: invokestatic 375	com/b/a/a/d$a:a	(Lcom/b/a/a/d$b;)Lcom/b/a/a/d$a;
+    //   59: astore 5
+    //   61: aload_1
+    //   62: aload 5
+    //   64: getfield 376	com/b/a/a/d$a:b	Ljava/lang/String;
+    //   67: invokestatic 381	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   70: ifne +45 -> 115
+    //   73: ldc_w 383
+    //   76: iconst_3
+    //   77: anewarray 4	java/lang/Object
+    //   80: dup
+    //   81: iconst_0
+    //   82: aload_2
+    //   83: invokevirtual 386	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   86: aastore
+    //   87: dup
+    //   88: iconst_1
+    //   89: aload_1
+    //   90: aastore
+    //   91: dup
+    //   92: iconst_2
+    //   93: aload 5
+    //   95: getfield 376	com/b/a/a/d$a:b	Ljava/lang/String;
+    //   98: aastore
+    //   99: invokestatic 342	com/b/a/u:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   102: aload_0
+    //   103: aload_1
+    //   104: invokespecial 334	com/b/a/a/d:f	(Ljava/lang/String;)V
+    //   107: aload_3
+    //   108: invokevirtual 389	com/b/a/a/d$b:close	()V
+    //   111: aload_0
+    //   112: monitorexit
     //   113: aconst_null
-    //   114: astore_1
-    //   115: goto -91 -> 24
-    //   118: aload 4
-    //   120: aload 4
-    //   122: invokevirtual 219	com/b/a/a/d$b:a	()J
-    //   125: invokestatic 167	com/b/a/a/d:a	(Lcom/b/a/a/d$b;J)[B
-    //   128: astore 6
-    //   130: new 119	com/b/a/b$a
-    //   133: dup
-    //   134: invokespecial 120	com/b/a/b$a:<init>	()V
-    //   137: astore_2
-    //   138: aload_2
-    //   139: aload 6
-    //   141: putfield 124	com/b/a/b$a:a	[B
-    //   144: aload_2
-    //   145: aload 5
-    //   147: getfield 387	com/b/a/a/d$a:c	Ljava/lang/String;
-    //   150: putfield 127	com/b/a/b$a:b	Ljava/lang/String;
-    //   153: aload_2
-    //   154: aload 5
-    //   156: getfield 388	com/b/a/a/d$a:d	J
-    //   159: putfield 135	com/b/a/b$a:c	J
-    //   162: aload_2
-    //   163: aload 5
-    //   165: getfield 389	com/b/a/a/d$a:e	J
-    //   168: putfield 137	com/b/a/b$a:d	J
-    //   171: aload_2
-    //   172: aload 5
-    //   174: getfield 390	com/b/a/a/d$a:f	J
-    //   177: putfield 133	com/b/a/b$a:e	J
-    //   180: aload_2
-    //   181: aload 5
-    //   183: getfield 392	com/b/a/a/d$a:g	J
-    //   186: putfield 130	com/b/a/b$a:f	J
-    //   189: aload_2
-    //   190: aload 5
-    //   192: getfield 395	com/b/a/a/d$a:h	Ljava/util/Map;
-    //   195: putfield 140	com/b/a/b$a:g	Ljava/util/Map;
-    //   198: aload 4
-    //   200: invokevirtual 385	com/b/a/a/d$b:close	()V
-    //   203: aload_2
-    //   204: astore_1
-    //   205: goto -181 -> 24
-    //   208: astore_2
-    //   209: aload 4
-    //   211: invokevirtual 385	com/b/a/a/d$b:close	()V
-    //   214: aload_2
-    //   215: athrow
-    //   216: astore_2
-    //   217: ldc_w 397
-    //   220: iconst_2
-    //   221: anewarray 4	java/lang/Object
-    //   224: dup
-    //   225: iconst_0
-    //   226: aload_3
-    //   227: invokevirtual 382	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   230: aastore
-    //   231: dup
-    //   232: iconst_1
-    //   233: aload_2
-    //   234: invokevirtual 398	java/io/IOException:toString	()Ljava/lang/String;
-    //   237: aastore
-    //   238: invokestatic 338	com/b/a/u:b	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   241: aload_0
-    //   242: aload_1
-    //   243: invokespecial 400	com/b/a/a/d:c	(Ljava/lang/String;)V
-    //   246: aconst_null
-    //   247: astore_1
-    //   248: goto -224 -> 24
-    //   251: astore_1
-    //   252: aload_0
-    //   253: monitorexit
-    //   254: aload_1
-    //   255: athrow
+    //   114: areturn
+    //   115: aload_3
+    //   116: aload_3
+    //   117: invokevirtual 223	com/b/a/a/d$b:a	()J
+    //   120: invokestatic 171	com/b/a/a/d:a	(Lcom/b/a/a/d$b;J)[B
+    //   123: astore 5
+    //   125: new 123	com/b/a/b$a
+    //   128: dup
+    //   129: invokespecial 124	com/b/a/b$a:<init>	()V
+    //   132: astore 6
+    //   134: aload 6
+    //   136: aload 5
+    //   138: putfield 128	com/b/a/b$a:a	[B
+    //   141: aload 6
+    //   143: aload 4
+    //   145: getfield 391	com/b/a/a/d$a:c	Ljava/lang/String;
+    //   148: putfield 131	com/b/a/b$a:b	Ljava/lang/String;
+    //   151: aload 6
+    //   153: aload 4
+    //   155: getfield 392	com/b/a/a/d$a:d	J
+    //   158: putfield 139	com/b/a/b$a:c	J
+    //   161: aload 6
+    //   163: aload 4
+    //   165: getfield 393	com/b/a/a/d$a:e	J
+    //   168: putfield 141	com/b/a/b$a:d	J
+    //   171: aload 6
+    //   173: aload 4
+    //   175: getfield 394	com/b/a/a/d$a:f	J
+    //   178: putfield 137	com/b/a/b$a:e	J
+    //   181: aload 6
+    //   183: aload 4
+    //   185: getfield 396	com/b/a/a/d$a:g	J
+    //   188: putfield 134	com/b/a/b$a:f	J
+    //   191: aload 6
+    //   193: aload 4
+    //   195: getfield 399	com/b/a/a/d$a:h	Ljava/util/Map;
+    //   198: putfield 144	com/b/a/b$a:g	Ljava/util/Map;
+    //   201: aload_3
+    //   202: invokevirtual 389	com/b/a/a/d$b:close	()V
+    //   205: aload_0
+    //   206: monitorexit
+    //   207: aload 6
+    //   209: areturn
+    //   210: astore 4
+    //   212: aload_3
+    //   213: invokevirtual 389	com/b/a/a/d$b:close	()V
+    //   216: aload 4
+    //   218: athrow
+    //   219: astore_3
+    //   220: ldc_w 401
+    //   223: iconst_2
+    //   224: anewarray 4	java/lang/Object
+    //   227: dup
+    //   228: iconst_0
+    //   229: aload_2
+    //   230: invokevirtual 386	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   233: aastore
+    //   234: dup
+    //   235: iconst_1
+    //   236: aload_3
+    //   237: invokevirtual 402	java/io/IOException:toString	()Ljava/lang/String;
+    //   240: aastore
+    //   241: invokestatic 342	com/b/a/u:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   244: aload_0
+    //   245: aload_1
+    //   246: invokespecial 404	com/b/a/a/d:c	(Ljava/lang/String;)V
+    //   249: aload_0
+    //   250: monitorexit
+    //   251: aconst_null
+    //   252: areturn
+    //   253: astore_1
+    //   254: aload_0
+    //   255: monitorexit
+    //   256: aload_1
+    //   257: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	256	0	this	d
-    //   0	256	1	paramString	String
-    //   63	141	2	localObject1	Object
-    //   208	7	2	localObject2	Object
-    //   216	18	2	localIOException	IOException
-    //   33	194	3	localFile	File
-    //   56	154	4	localb	d.b
-    //   15	176	5	locala	d.a
-    //   128	12	6	arrayOfByte	byte[]
+    //   0	258	0	this	d
+    //   0	258	1	paramString	String
+    //   31	199	2	localFile	File
+    //   54	159	3	localb	d.b
+    //   219	18	3	localIOException	IOException
+    //   15	179	4	locala	d.a
+    //   210	7	4	localObject1	Object
+    //   59	78	5	localObject2	Object
+    //   132	76	6	locala1	b.a
     // Exception table:
     //   from	to	target	type
-    //   58	108	208	finally
-    //   118	198	208	finally
-    //   34	58	216	java/io/IOException
-    //   108	113	216	java/io/IOException
-    //   198	203	216	java/io/IOException
-    //   209	216	216	java/io/IOException
-    //   2	17	251	finally
-    //   28	34	251	finally
-    //   34	58	251	finally
-    //   108	113	251	finally
-    //   198	203	251	finally
-    //   209	216	251	finally
-    //   217	246	251	finally
+    //   55	107	210	finally
+    //   115	201	210	finally
+    //   32	55	219	java/io/IOException
+    //   107	111	219	java/io/IOException
+    //   201	205	219	java/io/IOException
+    //   212	219	219	java/io/IOException
+    //   2	17	253	finally
+    //   26	32	253	finally
+    //   32	55	253	finally
+    //   107	111	253	finally
+    //   201	205	253	finally
+    //   212	219	253	finally
+    //   220	249	253	finally
   }
   
-  /* Error */
   public final void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 37	com/b/a/a/d:c	Ljava/io/File;
-    //   6: invokevirtual 403	java/io/File:exists	()Z
-    //   9: ifne +36 -> 45
-    //   12: aload_0
-    //   13: getfield 37	com/b/a/a/d:c	Ljava/io/File;
-    //   16: invokevirtual 406	java/io/File:mkdirs	()Z
-    //   19: ifne +23 -> 42
-    //   22: ldc_w 408
-    //   25: iconst_1
-    //   26: anewarray 4	java/lang/Object
-    //   29: dup
-    //   30: iconst_0
-    //   31: aload_0
-    //   32: getfield 37	com/b/a/a/d:c	Ljava/io/File;
-    //   35: invokevirtual 382	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   38: aastore
-    //   39: invokestatic 410	com/b/a/u:c	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: return
-    //   45: aload_0
-    //   46: getfield 37	com/b/a/a/d:c	Ljava/io/File;
-    //   49: invokevirtual 414	java/io/File:listFiles	()[Ljava/io/File;
-    //   52: astore 5
-    //   54: aload 5
-    //   56: ifnull -14 -> 42
-    //   59: aload 5
-    //   61: arraylength
-    //   62: istore_2
-    //   63: iconst_0
-    //   64: istore_1
-    //   65: iload_1
-    //   66: iload_2
-    //   67: if_icmpge -25 -> 42
-    //   70: aload 5
-    //   72: iload_1
-    //   73: aaload
-    //   74: astore 6
-    //   76: aload 6
-    //   78: invokevirtual 365	java/io/File:length	()J
-    //   81: lstore_3
-    //   82: new 217	com/b/a/a/d$b
-    //   85: dup
-    //   86: new 360	java/io/BufferedInputStream
-    //   89: dup
-    //   90: aload 6
-    //   92: invokestatic 362	com/b/a/a/d:a	(Ljava/io/File;)Ljava/io/InputStream;
-    //   95: invokespecial 363	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   98: lload_3
-    //   99: invokespecial 368	com/b/a/a/d$b:<init>	(Ljava/io/InputStream;J)V
-    //   102: astore 7
-    //   104: aload 7
-    //   106: invokestatic 371	com/b/a/a/d$a:a	(Lcom/b/a/a/d$b;)Lcom/b/a/a/d$a;
-    //   109: astore 8
-    //   111: aload 8
-    //   113: lload_3
-    //   114: putfield 211	com/b/a/a/d$a:a	J
-    //   117: aload_0
-    //   118: aload 8
-    //   120: getfield 372	com/b/a/a/d$a:b	Ljava/lang/String;
-    //   123: aload 8
-    //   125: invokespecial 416	com/b/a/a/d:a	(Ljava/lang/String;Lcom/b/a/a/d$a;)V
-    //   128: aload 7
-    //   130: invokevirtual 385	com/b/a/a/d$b:close	()V
-    //   133: goto +31 -> 164
-    //   136: astore 8
-    //   138: aload 7
-    //   140: invokevirtual 385	com/b/a/a/d$b:close	()V
-    //   143: aload 8
-    //   145: athrow
-    //   146: astore 7
-    //   148: aload 6
-    //   150: invokevirtual 328	java/io/File:delete	()Z
-    //   153: pop
-    //   154: goto +10 -> 164
-    //   157: astore 5
-    //   159: aload_0
-    //   160: monitorexit
-    //   161: aload 5
-    //   163: athrow
-    //   164: iload_1
-    //   165: iconst_1
-    //   166: iadd
-    //   167: istore_1
-    //   168: goto -103 -> 65
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	171	0	this	d
-    //   64	104	1	i	int
-    //   62	6	2	j	int
-    //   81	33	3	l	long
-    //   52	19	5	arrayOfFile	File[]
-    //   157	5	5	localObject1	Object
-    //   74	75	6	localFile	File
-    //   102	37	7	localb	d.b
-    //   146	1	7	localIOException	IOException
-    //   109	15	8	locala	d.a
-    //   136	8	8	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   104	128	136	finally
-    //   76	104	146	java/io/IOException
-    //   128	133	146	java/io/IOException
-    //   138	146	146	java/io/IOException
-    //   2	42	157	finally
-    //   45	54	157	finally
-    //   59	63	157	finally
-    //   76	104	157	finally
-    //   128	133	157	finally
-    //   138	146	157	finally
-    //   148	154	157	finally
+    for (;;)
+    {
+      try
+      {
+        boolean bool = this.c.exists();
+        i = 0;
+        if (!bool)
+        {
+          if (!this.c.mkdirs()) {
+            u.c("Unable to create cache dir %s", new Object[] { this.c.getAbsolutePath() });
+          }
+          return;
+        }
+        File[] arrayOfFile = this.c.listFiles();
+        if (arrayOfFile == null) {
+          return;
+        }
+        int j = arrayOfFile.length;
+        if (i < j) {
+          localFile = arrayOfFile[i];
+        }
+      }
+      finally
+      {
+        int i;
+        File localFile;
+        long l;
+        d.b localb;
+        d.a locala;
+        continue;
+        throw localObject1;
+        continue;
+      }
+      try
+      {
+        l = localFile.length();
+        localb = new d.b(new BufferedInputStream(a(localFile)), l);
+      }
+      catch (IOException localIOException)
+      {
+        continue;
+      }
+      try
+      {
+        locala = d.a.a(localb);
+        locala.a = l;
+        a(locala.b, locala);
+        localb.close();
+      }
+      finally
+      {
+        localb.close();
+      }
+      i += 1;
+    }
   }
   
   public final void a(String paramString, b.a parama)
   {
-    int i = 0;
-    long l1;
-    long l2;
-    Object localObject2;
-    int j;
     try
     {
-      int k = parama.a.length;
-      if (this.b + k < this.d) {
-        break label258;
+      i = parama.a.length;
+      l1 = this.b;
+      long l2 = i;
+      if (l1 + l2 < this.d) {
+        break label255;
       }
       if (u.a) {
         u.a("Pruning old cache entries.", new Object[0]);
       }
       l1 = this.b;
-      l2 = SystemClock.elapsedRealtime();
+      l3 = SystemClock.elapsedRealtime();
       localObject1 = this.a.entrySet().iterator();
-      if (((Iterator)localObject1).hasNext())
+      i = 0;
+      for (;;)
       {
+        if (!((Iterator)localObject1).hasNext()) {
+          break label400;
+        }
         localObject2 = (d.a)((Map.Entry)((Iterator)localObject1).next()).getValue();
         if (e(((d.a)localObject2).b).delete()) {
           this.b -= ((d.a)localObject2).a;
-        }
-        for (;;)
-        {
-          ((Iterator)localObject1).remove();
-          i += 1;
-          j = i;
-          if ((float)(this.b + k) < this.d * 0.9F) {
-            break label209;
-          }
-          break;
+        } else {
           u.b("Could not delete cache entry for key=%s, filename=%s", new Object[] { ((d.a)localObject2).b, d(((d.a)localObject2).b) });
         }
+        ((Iterator)localObject1).remove();
+        i += 1;
+        j = i;
+        if ((float)(this.b + l2) < this.d * 0.9F) {
+          break;
+        }
       }
-      j = i;
     }
-    finally {}
-    label209:
+    finally
+    {
+      for (;;)
+      {
+        int i;
+        long l1;
+        long l3;
+        Object localObject1;
+        Object localObject2;
+        label356:
+        for (;;)
+        {
+          label255:
+          throw paramString;
+        }
+        label400:
+        int j = i;
+      }
+    }
     if (u.a) {
-      u.a("pruned %d files, %d bytes, %d ms", new Object[] { Integer.valueOf(j), Long.valueOf(this.b - l1), Long.valueOf(SystemClock.elapsedRealtime() - l2) });
+      u.a("pruned %d files, %d bytes, %d ms", new Object[] { Integer.valueOf(j), Long.valueOf(this.b - l1), Long.valueOf(SystemClock.elapsedRealtime() - l3) });
     }
-    label258:
-    Object localObject1 = e(paramString);
-    d.a locala;
+    localObject1 = e(paramString);
     try
     {
       localObject2 = new BufferedOutputStream(new FileOutputStream((File)localObject1));
-      locala = new d.a(paramString, parama);
-      if (!locala.a((OutputStream)localObject2))
+      d.a locala = new d.a(paramString, parama);
+      if (locala.a((OutputStream)localObject2))
       {
+        ((BufferedOutputStream)localObject2).write(parama.a);
         ((BufferedOutputStream)localObject2).close();
-        u.b("Failed to write header for %s", new Object[] { ((File)localObject1).getAbsolutePath() });
-        throw new IOException();
+        a(paramString, locala);
+        return;
       }
+      ((BufferedOutputStream)localObject2).close();
+      u.b("Failed to write header for %s", new Object[] { ((File)localObject1).getAbsolutePath() });
+      throw new IOException();
     }
     catch (IOException paramString)
     {
-      if (!((File)localObject1).delete()) {
-        u.b("Could not clean up file %s", new Object[] { ((File)localObject1).getAbsolutePath() });
-      }
+      break label356;
     }
-    for (;;)
-    {
-      return;
-      ((BufferedOutputStream)localObject2).write(parama.a);
-      ((BufferedOutputStream)localObject2).close();
-      a(paramString, locala);
+    if (!((File)localObject1).delete()) {
+      u.b("Could not clean up file %s", new Object[] { ((File)localObject1).getAbsolutePath() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

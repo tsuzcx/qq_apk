@@ -24,14 +24,15 @@ public final class FloatItemView
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFileInfo != null) {
-      paramJceOutputStream.write(this.stFileInfo, 0);
+    CustomFileInfo localCustomFileInfo = this.stFileInfo;
+    if (localCustomFileInfo != null) {
+      paramJceOutputStream.write(localCustomFileInfo, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.FloatItemView
  * JD-Core Version:    0.7.0.1
  */

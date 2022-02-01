@@ -1,14 +1,21 @@
+import android.os.Handler;
 import com.tencent.mobileqq.widget.ImageViewTouchBase;
-import com.tencent.mobileqq.widget.RotateBitmap;
 
 public class hgt
   implements Runnable
 {
-  public hgt(ImageViewTouchBase paramImageViewTouchBase, RotateBitmap paramRotateBitmap, boolean paramBoolean) {}
+  public hgt(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.setImageRotateBitmapResetBase(this.jdField_a_of_type_ComTencentMobileqqWidgetRotateBitmap, this.jdField_a_of_type_Boolean);
+    long l = System.currentTimeMillis();
+    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
+    float f2 = this.b;
+    float f3 = this.c;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
+    if (f1 < this.jdField_a_of_type_Float) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
+    }
   }
 }
 

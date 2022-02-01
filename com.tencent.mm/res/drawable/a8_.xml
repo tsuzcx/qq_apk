@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape>
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/a6m" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/a6i" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="@color/BW_90" />
+    <corners android:radius="@dimen/cp" />
+</shape>

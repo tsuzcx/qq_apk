@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bhq" />
+    <FrameLayout android:id="@id/ccg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_gravity="top" android:background="@drawable/rf" android:layout_width="fill_parent" android:layout_height="@dimen/c4" />
+        <View android:layout_gravity="bottom" android:background="@drawable/r1" android:layout_width="fill_parent" android:layout_height="@dimen/cu" />
+    </FrameLayout>
+    <include android:id="@id/h42" layout="@layout/bhr" />
+    <include android:id="@id/kh4" layout="@layout/bho" />
+    <TextView android:id="@id/f4e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cl" android:text="@string/fn6" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oi" />
+    <RelativeLayout android:id="@id/i2_" android:background="@drawable/b05" android:visibility="gone" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cc6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cc5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView android:id="@id/cc4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cch" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cd2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/a9w" android:id="@id/l5k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</merge>

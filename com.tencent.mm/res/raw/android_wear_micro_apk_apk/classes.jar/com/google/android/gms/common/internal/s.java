@@ -7,20 +7,20 @@ import android.util.Log;
 public final class s
   extends ar
 {
-  private l JN;
-  private final int JO;
+  private l LC;
+  private final int LD;
   
   public s(l paraml, int paramInt)
   {
-    this.JN = paraml;
-    this.JO = paramInt;
+    this.LC = paraml;
+    this.LD = paramInt;
   }
   
   public final void a(int paramInt, IBinder paramIBinder, Bundle paramBundle)
   {
-    d.e(this.JN, "onPostInitComplete can be called only once per call to getRemoteService");
-    this.JN.a(paramInt, paramIBinder, paramBundle, this.JO);
-    this.JN = null;
+    d.g(this.LC, "onPostInitComplete can be called only once per call to getRemoteService");
+    this.LC.a(paramInt, paramIBinder, paramBundle, this.LD);
+    this.LC = null;
   }
   
   public final void b(int paramInt, Bundle paramBundle)

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,50 +19,50 @@ public final class cell_pic
   static int cache_sort_type;
   public int actiontype = 18;
   public String actionurl = "";
-  public int activealbum;
-  public int albshowmask;
+  public int activealbum = 0;
+  public int albshowmask = 0;
   public String albumanswer = "";
   public String albumid = "";
   public String albumname = "";
-  public int albumnum;
+  public int albumnum = 0;
   public String albumquestion = "";
-  public int albumrights;
-  public int albumtype;
-  public int allow_access;
-  public int allow_share;
-  public int animation_type;
-  public int anonymity;
+  public int albumrights = 0;
+  public int albumtype = 0;
+  public int allow_access = 0;
+  public int allow_share = 0;
+  public int animation_type = 0;
+  public int anonymity = 0;
   public boolean balbum = true;
-  public Map<Integer, String> busi_param;
+  public Map<Integer, String> busi_param = null;
   public String desc = "";
-  public int extend_actiontype;
+  public int extend_actiontype = 0;
   public String extend_actionurl = "";
-  public int faceman_num;
-  public ArrayList<s_user> facemans;
-  public s_user friendinfo;
+  public int faceman_num = 0;
+  public ArrayList<s_user> facemans = null;
+  public s_user friendinfo = null;
   public String icon_url = "";
-  public int individualalbum;
+  public int individualalbum = 0;
   public boolean isSubscribe = true;
-  public boolean is_contain_video_and_pic;
-  public boolean is_share;
+  public boolean is_contain_video_and_pic = false;
+  public boolean is_share = false;
   public boolean is_share_owner = true;
-  public boolean is_topped_album;
-  public boolean is_video_pic_mix;
-  public int lastupdatetime;
-  public int like_cnt;
-  public int newestupload;
+  public boolean is_topped_album = false;
+  public boolean is_video_pic_mix = false;
+  public int lastupdatetime = 0;
+  public int like_cnt = 0;
+  public int newestupload = 0;
   public String news = "";
-  public ArrayList<s_picdata> picdata;
+  public ArrayList<s_picdata> picdata = null;
   public String qunid = "";
   public String share_new_reason = "";
-  public int sharer_count;
-  public ArrayList<wx_user_info> sharer_wx_info;
-  public int sort_type;
+  public int sharer_count = 0;
+  public ArrayList<wx_user_info> sharer_wx_info = null;
+  public int sort_type = 0;
   public String store_appid = "";
-  public long uin;
-  public int unread_count;
-  public int uploadnum;
-  public int view_cnt;
+  public long uin = 0L;
+  public int unread_count = 0;
+  public int uploadnum = 0;
+  public int view_cnt = 0;
   
   static
   {
@@ -183,61 +184,75 @@ public final class cell_pic
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 0);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.albumname != null) {
-      paramJceOutputStream.write(this.albumname, 1);
+    localObject = this.albumname;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 2);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.albumnum, 3);
     paramJceOutputStream.write(this.uploadnum, 4);
     paramJceOutputStream.write(this.albumrights, 5);
-    if (this.albumquestion != null) {
-      paramJceOutputStream.write(this.albumquestion, 6);
+    localObject = this.albumquestion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.albumanswer != null) {
-      paramJceOutputStream.write(this.albumanswer, 7);
+    localObject = this.albumanswer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 8);
+    localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.uin, 9);
     paramJceOutputStream.write(this.balbum, 10);
     paramJceOutputStream.write(this.lastupdatetime, 11);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 12);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 12);
     }
-    if (this.qunid != null) {
-      paramJceOutputStream.write(this.qunid, 13);
+    localObject = this.qunid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.allow_access, 14);
     paramJceOutputStream.write(this.anonymity, 15);
     paramJceOutputStream.write(this.albumtype, 16);
     paramJceOutputStream.write(this.actiontype, 17);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 18);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
     paramJceOutputStream.write(this.isSubscribe, 19);
-    if (this.friendinfo != null) {
-      paramJceOutputStream.write(this.friendinfo, 20);
+    localObject = this.friendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 20);
     }
-    if (this.news != null) {
-      paramJceOutputStream.write(this.news, 21);
+    localObject = this.news;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.unread_count, 22);
-    if (this.facemans != null) {
-      paramJceOutputStream.write(this.facemans, 23);
+    localObject = this.facemans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 23);
     }
     paramJceOutputStream.write(this.faceman_num, 24);
-    if (this.store_appid != null) {
-      paramJceOutputStream.write(this.store_appid, 25);
+    localObject = this.store_appid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
     paramJceOutputStream.write(this.extend_actiontype, 26);
-    if (this.extend_actionurl != null) {
-      paramJceOutputStream.write(this.extend_actionurl, 27);
+    localObject = this.extend_actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 27);
     }
     paramJceOutputStream.write(this.albshowmask, 28);
     paramJceOutputStream.write(this.allow_share, 29);
@@ -253,21 +268,24 @@ public final class cell_pic
     paramJceOutputStream.write(this.is_topped_album, 39);
     paramJceOutputStream.write(this.view_cnt, 40);
     paramJceOutputStream.write(this.like_cnt, 41);
-    if (this.icon_url != null) {
-      paramJceOutputStream.write(this.icon_url, 42);
+    localObject = this.icon_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 42);
     }
     paramJceOutputStream.write(this.sharer_count, 43);
-    if (this.sharer_wx_info != null) {
-      paramJceOutputStream.write(this.sharer_wx_info, 44);
+    localObject = this.sharer_wx_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 44);
     }
-    if (this.share_new_reason != null) {
-      paramJceOutputStream.write(this.share_new_reason, 45);
+    localObject = this.share_new_reason;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 45);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_pic
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import com.google.android.gms.common.api.Status;
 public final class ec<A extends g<? extends com.google.android.gms.common.api.w, com.google.android.gms.common.api.g>>
   extends ea
 {
-  protected final A RQ;
+  protected final A TF;
   
   public ec(int paramInt, A paramA)
   {
     super(paramInt);
-    this.RQ = paramA;
+    this.TF = paramA;
   }
   
   public final void a(w paramw, boolean paramBoolean)
   {
-    paramw.a(this.RQ, paramBoolean);
+    paramw.a(this.TF, paramBoolean);
   }
   
   public final void c(ar<?> paramar)
   {
-    this.RQ.a(paramar.io());
+    this.TF.a(paramar.iw());
   }
   
   public final void i(Status paramStatus)
   {
-    this.RQ.a(paramStatus);
+    this.TF.a(paramStatus);
   }
 }
 

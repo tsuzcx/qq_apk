@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class TopStoryFSVideoUI$1
   implements View.OnClickListener
@@ -11,9 +13,13 @@ final class TopStoryFSVideoUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(1951);
-    TopStoryFSVideoUI.a(this.tkZ);
-    AppMethodBeat.o(1951);
+    AppMethodBeat.i(126329);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    TopStoryFSVideoUI.a(this.TOI);
+    a.a(this, "com/tencent/mm/plugin/topstory/ui/video/fs/TopStoryFSVideoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(126329);
   }
 }
 

@@ -27,7 +27,7 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import eov;
+import eou;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,21 +54,21 @@ public class RecentCallHelper
   
   public RecentCallHelper(QQAppInterface paramQQAppInterface, View paramView1, View paramView2, RadioGroup.OnCheckedChangeListener paramOnCheckedChangeListener, ViewStub.OnInflateListener paramOnInflateListener)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView1.findViewById(2131231425));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView1.findViewById(2131231424));
     IphoneTitleBarActivity.b(this.jdField_a_of_type_AndroidWidgetRadioGroup);
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(paramOnCheckedChangeListener);
-    paramView1 = this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131231426);
+    paramView1 = this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131231425);
     paramView1.setContentDescription("点击切换到消息记录页面");
     paramView1.setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131231427));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131231426));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setContentDescription("点击切换到通话记录页面");
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.setFocusable(true);
     paramView1 = BaseApplication.getContext();
     this.jdField_a_of_type_Int = SharedPreUtils.b(paramView1);
     this.d = SharedPreUtils.a(paramView1, paramQQAppInterface.a(), this.jdField_a_of_type_Int);
     a(paramQQAppInterface, true, this.d);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView2.findViewById(2131231430));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView2.findViewById(2131231429));
     this.jdField_a_of_type_AndroidViewViewStub.setOnInflateListener(paramOnInflateListener);
   }
   
@@ -127,13 +127,13 @@ public class RecentCallHelper
     if (this.jdField_a_of_type_AndroidWidgetRadioGroup != null) {
       return this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId();
     }
-    return 2131231427;
+    return 2131231426;
   }
   
   public void a()
   {
     if (this.jdField_a_of_type_AndroidWidgetRadioGroup != null) {
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.check(2131231426);
+      this.jdField_a_of_type_AndroidWidgetRadioGroup.check(2131231425);
     }
   }
   
@@ -208,14 +208,14 @@ public class RecentCallHelper
   public void a(BaseActivity paramBaseActivity)
   {
     paramBaseActivity = View.inflate(paramBaseActivity, 2130903097, null);
-    paramBaseActivity.setOnClickListener(new eov(this));
-    paramBaseActivity.findViewById(2131231163).setVisibility(0);
+    paramBaseActivity.setOnClickListener(new eou(this));
+    paramBaseActivity.findViewById(2131231162).setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.a(paramBaseActivity);
   }
   
   public void a(BaseActivity paramBaseActivity, ViewStub paramViewStub, View paramView1, QQAppInterface paramQQAppInterface, View paramView2, View paramView3, OverScrollViewListener paramOverScrollViewListener, OnRecentUserOpsListener paramOnRecentUserOpsListener, AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if ((paramView1 != null) && (paramView1.getId() == 2131232936))
+    if ((paramView1 != null) && (paramView1.getId() == 2131232935))
     {
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)paramView1);
       this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setActTAG("actFPSRecent");
@@ -444,7 +444,7 @@ public class RecentCallHelper
   public void b()
   {
     if (this.jdField_a_of_type_AndroidWidgetRadioGroup != null) {
-      this.jdField_a_of_type_AndroidWidgetRadioGroup.check(2131231427);
+      this.jdField_a_of_type_AndroidWidgetRadioGroup.check(2131231426);
     }
   }
   

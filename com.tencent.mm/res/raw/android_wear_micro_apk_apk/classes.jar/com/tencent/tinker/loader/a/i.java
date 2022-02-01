@@ -10,53 +10,53 @@ import java.util.regex.Pattern;
 
 public final class i
 {
-  public String aml = null;
-  public String amm = null;
-  public ArrayList<String> amn = new ArrayList();
-  public ArrayList<String> amo = new ArrayList();
-  public ArrayList<String> amp = new ArrayList();
-  public HashMap<String, File> amq = new HashMap();
-  public ArrayList<String> amr = new ArrayList();
-  public HashMap<String, Object> ams = new HashMap();
-  public HashSet<Pattern> amt = new HashSet();
+  public String apN = null;
+  public String apO = null;
+  public ArrayList<String> apP = new ArrayList();
+  public ArrayList<String> apQ = new ArrayList();
+  public ArrayList<String> apR = new ArrayList();
+  public HashMap<String, File> apS = new HashMap();
+  public ArrayList<String> apT = new ArrayList();
+  public HashMap<String, Object> apU = new HashMap();
+  public HashSet<Pattern> apV = new HashSet();
   
   public final String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("resArscMd5:" + this.amm + "\n");
-    localStringBuffer.append("arscBaseCrc:" + this.aml + "\n");
-    Iterator localIterator = this.amt.iterator();
+    localStringBuffer.append("resArscMd5:" + this.apO + "\n");
+    localStringBuffer.append("arscBaseCrc:" + this.apN + "\n");
+    Iterator localIterator = this.apV.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (Pattern)localIterator.next();
       localStringBuffer.append("pattern:" + localObject + "\n");
     }
-    localIterator = this.amn.iterator();
+    localIterator = this.apP.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("addedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.amp.iterator();
+    localIterator = this.apR.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("modifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.amr.iterator();
+    localIterator = this.apT.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("largeModifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.amo.iterator();
+    localIterator = this.apQ.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("deletedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.amq.keySet().iterator();
+    localIterator = this.apS.keySet().iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();

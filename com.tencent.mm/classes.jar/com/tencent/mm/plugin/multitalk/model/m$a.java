@@ -1,21 +1,12 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.graphics.Bitmap;
+import kotlin.Metadata;
 
-public final class m$a
-{
-  public int angle;
-  Bitmap gHT;
-  Bitmap oUD;
-  public Bitmap oUE;
-  public int oUn;
-  String username;
-  
-  private m$a(m paramm) {}
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$Companion;", "", "()V", "TAG", "", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class m$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.m.a
  * JD-Core Version:    0.7.0.1
  */

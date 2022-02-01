@@ -22,7 +22,7 @@ public final class ilive_short_video_label$GetShortVideoVideoLabelReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelReq
  * JD-Core Version:    0.7.0.1
  */

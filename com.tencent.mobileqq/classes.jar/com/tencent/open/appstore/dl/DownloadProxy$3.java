@@ -3,129 +3,139 @@ package com.tencent.open.appstore.dl;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfbm;
-import bfkr;
-import bfkv;
-import bflk;
-import bflp;
-import bfoc;
-import bfoh;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
 
-public class DownloadProxy$3
+class DownloadProxy$3
   implements Runnable
 {
-  public DownloadProxy$3(bfkv parambfkv, Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
+  DownloadProxy$3(DownloadProxy paramDownloadProxy, Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
   
   public void run()
   {
-    boolean bool2 = true;
-    Object localObject = new StringBuilder().append("[doDownloadAction] pParams=").append(this.jdField_a_of_type_AndroidOsBundle).append(" source=").append(this.jdField_a_of_type_JavaLangString).append(" myAppConfig=").append(this.jdField_a_of_type_Int).append(" ac==null is");
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[doDownloadAction] pParams=");
+    ((StringBuilder)localObject1).append(this.a);
+    ((StringBuilder)localObject1).append(" source=");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(" myAppConfig=");
+    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(" ac==null is");
+    Object localObject2 = this.d;
+    boolean bool2 = false;
+    boolean bool1;
+    if (localObject2 == null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject1).append(bool1);
+    LogUtility.b("DownloadResolver", ((StringBuilder)localObject1).toString());
+    if (this.a == null)
     {
-      bflp.b("DownloadResolver", bool1);
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        break;
-      }
-      bflp.b("DownloadResolver", "[doDownloadAction] pParams == null return");
+      LogUtility.b("DownloadResolver", "[doDownloadAction] pParams == null return");
       return;
     }
-    bfkr.a().a();
-    this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.s, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.E, 1);
-    localObject = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.B);
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.B, "");
+    DownloadManagerV2.a().b();
+    this.a.getString(DownloadConstants.b);
+    this.a.putString(DownloadConstants.t, this.b);
+    this.a.putString("big_brother_source_key", this.b);
+    this.a.putInt(DownloadConstants.G, 1);
+    localObject1 = this.a.getString(DownloadConstants.D);
+    String str = this.a.getString(DownloadConstants.i);
+    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).equals("0"))) {
+      this.a.putString(DownloadConstants.D, "");
     }
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j);
-    localObject = str1;
-    if (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null)
+    localObject2 = this.a.getString(DownloadConstants.j);
+    ApkUpdateDetail localApkUpdateDetail = this.e;
+    localObject1 = localObject2;
+    if (localApkUpdateDetail != null)
     {
-      localObject = str1;
-      if (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2)
+      localObject1 = localObject2;
+      if (localApkUpdateDetail.updatemethod == 2)
       {
-        localObject = str1;
-        if (TextUtils.isEmpty(str1))
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject = str1;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(this.e.url))
           {
-            this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
-            localObject = this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url;
+            this.a.putString(DownloadConstants.j, this.e.url);
+            localObject1 = this.e.url;
           }
         }
       }
     }
-    localObject = bfkr.a().b((String)localObject);
-    if ((localObject == null) && ("biz_src_yyb".equals(this.jdField_a_of_type_JavaLangString)) && (bfoc.e()))
+    localObject1 = DownloadManagerV2.a().b((String)localObject1);
+    if ((localObject1 == null) && ("biz_src_yyb".equals(this.b)) && (ControlPolicyUtil.h()))
     {
-      int i = this.jdField_a_of_type_AndroidOsBundle.getInt(bfoh.k);
-      str1 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.f);
-      if ((i == 5) && ("com.tencent.android.qqdownloader".equals(str1))) {
-        bfkv.a(this.jdField_a_of_type_AndroidOsBundle);
+      int i = this.a.getInt(DownloadConstants.k);
+      localObject2 = this.a.getString(DownloadConstants.f);
+      if ((i == 5) && ("com.tencent.android.qqdownloader".equals(localObject2))) {
+        DownloadProxy.a(this.a);
       }
     }
-    else if ((localObject != null) && (!TextUtils.isEmpty(str2)))
+    else if ((localObject1 != null) && (!TextUtils.isEmpty(str)))
     {
-      ((DownloadInfo)localObject).h = str2;
+      ((DownloadInfo)localObject1).h = str;
     }
-    if (bfkv.a(this.jdField_a_of_type_AndroidOsBundle))
+    if (DownloadProxy.a(this.a))
     {
-      bflp.a("DownloadResolver", "[doDownloadAction] installApp");
+      LogUtility.a("DownloadResolver", "[doDownloadAction] installApp");
       return;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt(bfoh.k) == 5) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.k, 2);
+    if (this.a.getInt(DownloadConstants.k) == 5) {
+      this.a.putInt(DownloadConstants.k, 2);
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.c == 0)
     {
-      if ((localObject != null) && (((DownloadInfo)localObject).c == 1))
+      if ((localObject1 != null) && (((DownloadInfo)localObject1).o == 1))
       {
-        bfkv.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+        DownloadProxy.a(this.this$0, this.d, this.a, this.b, this.e, this.c);
         return;
       }
-      boolean bool3 = bflk.d(bfbm.a().a());
-      boolean bool4 = bflk.c(bfbm.a().a());
-      if ((localObject == null) || (((DownloadInfo)localObject).a() == 1))
-      {
-        bool1 = true;
-        if (this.jdField_a_of_type_AndroidAppActivity != null) {
-          break label640;
-        }
-      }
-      for (;;)
-      {
-        bflp.a("DownloadResolver", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
-        if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.r))) {
-          break label645;
-        }
-        bfkr.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
-        return;
+      boolean bool3 = APNUtil.k(CommonDataAdapter.a().b());
+      boolean bool4 = APNUtil.j(CommonDataAdapter.a().b());
+      if ((localObject1 != null) && (((DownloadInfo)localObject1).a() != 1)) {
         bool1 = false;
-        break;
-        label640:
-        bool2 = false;
+      } else {
+        bool1 = true;
       }
-      label645:
-      bfkv.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+      if (this.d == null) {
+        bool2 = true;
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("check wifi dialog isWifiActive=");
+      ((StringBuilder)localObject1).append(bool4);
+      ((StringBuilder)localObject1).append(" isFirstDownload=");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(" acIsNull=");
+      ((StringBuilder)localObject1).append(bool2);
+      LogUtility.a("DownloadResolver", ((StringBuilder)localObject1).toString());
+      if ((bool3) && (!bool2) && (!bool4) && (bool1) && (this.a.getBoolean(DownloadConstants.s)))
+      {
+        DownloadManagerV2.a().a(this.d, this.a, this.b, this.e, this.c);
+        return;
+      }
+      DownloadProxy.a(this.this$0, this.a, this.b, this.e);
       return;
     }
-    if ((localObject == null) || (((DownloadInfo)localObject).c == 1))
+    if ((localObject1 != null) && (((DownloadInfo)localObject1).o != 1))
     {
-      bfkv.a(this.this$0, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+      DownloadProxy.a(this.this$0, this.a, this.b, this.e);
       return;
     }
-    bfkv.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    DownloadProxy.a(this.this$0, this.d, this.a, this.b, this.e, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.3
  * JD-Core Version:    0.7.0.1
  */

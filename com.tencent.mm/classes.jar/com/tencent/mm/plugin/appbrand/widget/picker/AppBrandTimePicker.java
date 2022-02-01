@@ -3,184 +3,196 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.support.annotation.Keep;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.TimePicker;
+import com.tencent.luggage.b.e.a.a;
+import com.tencent.luggage.b.e.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.c;
-import com.tencent.mm.plugin.appbrand.jsapi.n.b;
+import com.tencent.mm.compatible.loader.b;
+import com.tencent.mm.ui.widget.picker.f;
 
 public final class AppBrandTimePicker
   extends TimePicker
-  implements b<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.v.c<String>
 {
-  public int hWY;
-  public int hWZ;
-  public int hXa;
-  public int hXb;
-  public NumberPicker jsD;
-  private NumberPicker jsE;
+  public int mMaxTimeHour;
+  public int mMaxTimeMinute;
+  public int mMinTimeHour;
+  public int mMinTimeMinute;
+  public NumberPicker uNT;
+  private NumberPicker uNU;
   
-  @Keep
   public AppBrandTimePicker(Context paramContext)
   {
-    super(new ContextThemeWrapper(paramContext, 2131493756));
-    AppMethodBeat.i(126742);
-    this.hWY = -1;
-    this.hWZ = -1;
-    this.hXa = -1;
-    this.hXb = -1;
+    super(new ContextThemeWrapper(paramContext, a.b.Widget_AppBrand_Picker));
+    AppMethodBeat.i(138065);
+    this.mMinTimeHour = -1;
+    this.mMinTimeMinute = -1;
+    this.mMaxTimeHour = -1;
+    this.mMaxTimeMinute = -1;
     setIs24HourView(Boolean.TRUE);
-    this.jsD = FS("mHourSpinner");
-    this.jsE = FS("mMinuteSpinner");
-    com.tencent.mm.ui.widget.picker.e.c(this.jsD);
-    com.tencent.mm.ui.widget.picker.e.c(this.jsE);
-    e.a(this.jsD);
-    e.a(this.jsE);
-    paramContext = getResources().getDrawable(2130837801);
-    com.tencent.mm.ui.widget.picker.e.a(this.jsD, paramContext);
-    com.tencent.mm.ui.widget.picker.e.a(this.jsE, paramContext);
-    if (this.jsD != null) {
-      this.jsD.setOnValueChangedListener(new AppBrandTimePicker.1(this));
+    this.uNT = ahe("mHourSpinner");
+    this.uNU = ahe("mMinuteSpinner");
+    com.tencent.mm.ui.widget.picker.e.d(this.uNT);
+    com.tencent.mm.ui.widget.picker.e.d(this.uNU);
+    d.a(this.uNT);
+    d.a(this.uNU);
+    paramContext = getResources().getDrawable(a.a.appbrand_picker_divider);
+    com.tencent.mm.ui.widget.picker.e.a(this.uNT, paramContext);
+    com.tencent.mm.ui.widget.picker.e.a(this.uNU, paramContext);
+    if (this.uNT != null) {
+      this.uNT.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+      {
+        public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          AppMethodBeat.i(138064);
+          AppBrandTimePicker.a(AppBrandTimePicker.this);
+          AppMethodBeat.o(138064);
+        }
+      });
     }
-    if ((this.jsE != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.jsE.setOnValueChangedListener(new AppBrandTimePicker.2(this));
+    if ((this.uNU != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.uNU.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+      {
+        public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2) {}
+      });
     }
-    com.tencent.mm.ui.widget.picker.e.e(this.jsD);
-    com.tencent.mm.ui.widget.picker.e.e(this.jsE);
-    AppMethodBeat.o(126742);
+    com.tencent.mm.ui.widget.picker.e.f(this.uNT);
+    com.tencent.mm.ui.widget.picker.e.f(this.uNU);
+    AppMethodBeat.o(138065);
   }
   
-  private NumberPicker FS(String paramString)
+  private NumberPicker ahe(String paramString)
   {
-    AppMethodBeat.i(126746);
+    AppMethodBeat.i(138069);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = FU(paramString);
-      AppMethodBeat.o(126746);
+      paramString = ahg(paramString);
+      AppMethodBeat.o(138069);
       return paramString;
     }
-    paramString = FT(paramString);
-    AppMethodBeat.o(126746);
+    paramString = ahf(paramString);
+    AppMethodBeat.o(138069);
     return paramString;
   }
   
-  private NumberPicker FT(String paramString)
+  private NumberPicker ahf(String paramString)
   {
-    AppMethodBeat.i(126747);
+    AppMethodBeat.i(138070);
     try
     {
-      paramString = (NumberPicker)new c(this, paramString, null).get();
-      AppMethodBeat.o(126747);
+      paramString = (NumberPicker)new b(this, paramString, null).get();
+      AppMethodBeat.o(138070);
       return paramString;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(126747);
+      AppMethodBeat.o(138070);
     }
     return null;
   }
   
-  private NumberPicker FU(String paramString)
+  private NumberPicker ahg(String paramString)
   {
-    AppMethodBeat.i(126748);
+    AppMethodBeat.i(138071);
     try
     {
-      Object localObject = new c(this, "mDelegate", null).get();
+      Object localObject = new b(this, "mDelegate", null).get();
       if (localObject != null)
       {
-        paramString = (NumberPicker)new c(localObject, paramString, null).get();
-        AppMethodBeat.o(126748);
+        paramString = (NumberPicker)new b(localObject, paramString, null).get();
+        AppMethodBeat.o(138071);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(126748);
+      AppMethodBeat.o(138071);
     }
     return null;
   }
   
-  public final void a(d paramd) {}
-  
-  public final void aEs() {}
-  
-  public final void aEt() {}
-  
-  public final void aRT()
+  public final void eog()
   {
-    AppMethodBeat.i(126743);
-    if ((f.qL(this.hWY)) && (com.tencent.mm.ui.widget.picker.f.qK(this.hWZ)) && (this.jsD != null) && (this.jsE != null))
+    AppMethodBeat.i(138066);
+    if ((e.EE(this.mMinTimeHour)) && (f.ED(this.mMinTimeMinute)) && (this.uNT != null) && (this.uNU != null))
     {
-      if (this.jsD.getValue() != this.hWY) {
+      if (this.uNT.getValue() != this.mMinTimeHour) {
         break label119;
       }
-      this.jsE.setMinValue(this.hWZ);
+      this.uNU.setMinValue(this.mMinTimeMinute);
     }
-    while ((f.qL(this.hXa)) && (this.jsD != null) && (this.jsE != null)) {
-      if (this.jsD.getValue() == this.hXa)
+    while ((e.EE(this.mMaxTimeHour)) && (this.uNT != null) && (this.uNU != null)) {
+      if (this.uNT.getValue() == this.mMaxTimeHour)
       {
-        this.jsE.setMaxValue(this.hXb);
-        AppMethodBeat.o(126743);
+        this.uNU.setMaxValue(this.mMaxTimeMinute);
+        AppMethodBeat.o(138066);
         return;
         label119:
-        this.jsE.setMinValue(0);
+        this.uNU.setMinValue(0);
       }
       else
       {
-        this.jsE.setMaxValue(59);
+        this.uNU.setMaxValue(59);
       }
     }
-    AppMethodBeat.o(126743);
+    AppMethodBeat.o(138066);
   }
-  
-  public final void b(d paramd) {}
   
   public final View getView()
   {
     return this;
   }
   
+  public final void onAttach(c paramc) {}
+  
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(126749);
+    AppMethodBeat.i(138072);
     super.onAttachedToWindow();
-    com.tencent.mm.ui.widget.picker.e.d(this.jsD);
-    com.tencent.mm.ui.widget.picker.e.d(this.jsE);
-    AppMethodBeat.o(126749);
+    com.tencent.mm.ui.widget.picker.e.e(this.uNT);
+    com.tencent.mm.ui.widget.picker.e.e(this.uNU);
+    AppMethodBeat.o(138072);
   }
+  
+  public final void onDetach(c paramc) {}
+  
+  public final void onHide(c paramc) {}
+  
+  public final void onShow(c paramc) {}
   
   public final void setCurrentHour(Integer paramInteger)
   {
-    AppMethodBeat.i(126745);
+    AppMethodBeat.i(138068);
     if (paramInteger == null) {}
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentHour(Integer.valueOf(i));
-      aRT();
-      AppMethodBeat.o(126745);
+      eog();
+      AppMethodBeat.o(138068);
       return;
     }
   }
   
   public final void setCurrentMinute(Integer paramInteger)
   {
-    AppMethodBeat.i(126744);
+    AppMethodBeat.i(138067);
     if (paramInteger == null) {}
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentMinute(Integer.valueOf(i));
-      aRT();
-      AppMethodBeat.o(126744);
+      eog();
+      AppMethodBeat.o(138067);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePicker
  * JD-Core Version:    0.7.0.1
  */

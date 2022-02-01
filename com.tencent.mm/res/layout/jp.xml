@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/hr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="94.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/aid" android:background="@color/a3x" android:layout_width="@dimen/w3" android:layout_height="35.0dip" android:layout_marginLeft="@dimen/vw" />
-    <TextView android:textSize="21.0dip" android:textColor="#ff111111" android:id="@id/aie" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vx" android:text="{invo}" android:layout_weight="1.0" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/aif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{invo}" />
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/b0u" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/hf" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/a_m" android:paddingLeft="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.brandservice.ui.timeline.BizAvatarLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/uz" android:layout_marginTop="@dimen/iq" android:layout_marginBottom="@dimen/iq" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/a27" android:layout_width="@dimen/uz" android:layout_height="@dimen/uz" android:src="@drawable/b__" android:scaleType="centerCrop" />
+            <TextView android:textSize="15.0dip" android:textColor="@drawable/he" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/hfx" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:singleLine="true" />
+        </com.tencent.mm.plugin.brandservice.ui.timeline.BizAvatarLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bes" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/aqe">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="@string/aqn" />
+            <ImageView android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="5.0dip" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ber" android:layout_width="22.0dip" android:layout_height="15.0dip" android:src="@raw/biz_rec_card_close_icon" app:iconColor="@color/FG_2" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ViewStub android:id="@id/l9u" android:layout="@layout/k0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/l_1" android:layout="@layout/k1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/abd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

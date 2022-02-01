@@ -1,32 +1,23 @@
 package com.tencent.gdtad.aditem;
 
-import aams;
-import aamz;
-import aasd;
-import aase;
-import android.content.ContentResolver;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import azqs;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.util.AdClickUtil.Result;
 import com.tencent.ad.tangram.util.AdUriUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req;
-import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram.Req;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.ad.tangram.views.feedback.AdFeedbackDialogFragment.AdFeedbackItemModel;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -34,6 +25,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.AppInfo;
@@ -44,33 +39,49 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpParam;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.NegativeFeedbackItem;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.WeChatAppInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.RewardInfo;
+import tencent.gdt.qq_common.FloatingTip;
 
 public class GdtAd
   implements Parcelable, Ad, Externalizable
 {
-  public static final Parcelable.Creator<GdtAd> CREATOR = new aams();
+  public static final Parcelable.Creator<GdtAd> CREATOR = new GdtAd.1();
+  public static final int EXP_KEY_EXPERIMENT = 100329;
+  public static final int EXP_KEY_MOTIVE_BROWSER_STATISTICS = 109262;
+  public static final int EXP_KEY_MOTIVE_VIDEO_FEEDBACK_DELAY = 110814;
+  public static final int EXP_KEY_MOTIVE_VIDEO_FEEDBACK_STYLE = 109756;
+  public static final int EXP_KEY_MOTIVE_VIDEO_JUMP_TO_END_CARD_DIRECTLY = 109424;
+  public static final int EXP_KEY_PROCESS_IN_TOOL = 107054;
+  public static final String EXP_VALUE_CHANGE_MOTIVE_VIDEO = "2";
+  public static final String EXP_VALUE_MOTIVE_BROWSER_STATISTICS = "1";
+  public static final String EXP_VALUE_MOTIVE_VIDEO_FEEDBACK_STYLE = "1";
+  public static final String EXP_VALUE_MOTIVE_VIDEO_JUMP_TO_END_CARD_DIRECTLY = "1";
+  public static final String EXP_VALUE_PROCESS_IN_TOOL = "1";
   public static final int REPORT_STATE_FINISHED = 2;
   public static final int REPORT_STATE_INIT = -1;
   public static final int REPORT_STATE_PENDING = 1;
   public long actionSetId = -2147483648L;
+  private String canvasForXiJingOffline = "";
   public qq_ad_get.QQAdGetRsp.AdInfo info;
   public int reportState = -1;
   
   public GdtAd() {}
   
-  public GdtAd(Parcel paramParcel)
+  protected GdtAd(Parcel paramParcel)
   {
     try
     {
       this.actionSetId = paramParcel.readLong();
+      this.canvasForXiJingOffline = paramParcel.readString();
       int i = paramParcel.readInt();
       if (i <= 0)
       {
-        aase.d("GdtAd", "GdtAd(Parcel in) error");
+        GdtLog.d("GdtAd", "GdtAd(Parcel in) error");
         return;
       }
       byte[] arrayOfByte = new byte[i];
@@ -82,7 +93,7 @@ public class GdtAd
     }
     catch (Throwable paramParcel)
     {
-      aase.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
+      GdtLog.d("GdtAd", "GdtAd(Parcel in)", paramParcel);
     }
   }
   
@@ -91,46 +102,103 @@ public class GdtAd
     this.info = paramAdInfo;
   }
   
-  private void a(Handler paramHandler, int paramInt)
+  private boolean a()
   {
-    paramHandler.post(new GdtAd.2(this, paramInt));
+    return (!TextUtils.isEmpty(getBusinessIdForXiJingOffline())) && (!TextUtils.isEmpty(getJSONKeyForXiJingOffline())) && (!TextUtils.isEmpty(getJSONUrlForXiJingOffline())) && (!TextUtils.isEmpty(getUrlForXiJingOffline()));
+  }
+  
+  private boolean a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    if (localList == null) {
+      return false;
+    }
+    int j = localList.size();
+    int i = 0;
+    while (i < j)
+    {
+      qq_ad_get.QQAdGetRsp.AdInfo.ExpParam localExpParam = (qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i);
+      if ((localExpParam != null) && (paramInt == localExpParam.key.get()) && (paramString.equals(localExpParam.value.get()))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private byte[] a(ObjectInput paramObjectInput, int paramInt)
+  {
+    if (paramInt <= 0) {
+      return null;
+    }
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      int i = 0;
+      while (i < paramInt)
+      {
+        byte[] arrayOfByte = new byte[paramInt - i];
+        int j = paramObjectInput.read(arrayOfByte);
+        if (j < 0)
+        {
+          GdtLog.d("GdtAd", "readBytes error");
+          break;
+        }
+        i += j;
+        localByteArrayOutputStream.write(arrayOfByte, 0, j);
+      }
+      localByteArrayOutputStream.close();
+      paramObjectInput = localByteArrayOutputStream.toByteArray();
+      if ((i == paramInt) && (paramObjectInput.length == paramInt)) {
+        return paramObjectInput;
+      }
+      GdtLog.d("GdtAd", "readBytes error");
+      return null;
+    }
+    catch (Throwable paramObjectInput)
+    {
+      GdtLog.d("GdtAd", "readBytes", paramObjectInput);
+    }
+    return null;
   }
   
   public boolean canPreloadForQQMINIProgram()
   {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-        if (!isQQMINIProgram()) {
-          break;
-        }
-      } while (this.info.ext.mini_program_preload.get() == 1);
-      if (TextUtils.isEmpty(this.info.ext_json.get())) {
-        continue;
-      }
-      try
-      {
-        Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-        if (localObject == null) {
-          continue;
-        }
-        int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).mini_program_preload.get();
-        if (i == 1) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        aase.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
-      }
+    boolean bool2 = isValid();
+    boolean bool1 = false;
+    if (!bool2) {
+      return false;
     }
+    if (!isQQMINIProgram()) {
+      return false;
+    }
+    if (this.info.ext.mini_program_preload.get() == 1) {
+      return true;
+    }
+    if (TextUtils.isEmpty(this.info.ext_json.get())) {
+      return false;
+    }
+    try
+    {
+      Object localObject = new JSONObject(this.info.ext_json.get());
+      localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+      if (localObject == null) {
+        return false;
+      }
+      int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).mini_program_preload.get();
+      if (i == 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    catch (Throwable localThrowable)
+    {
+      GdtLog.b("GdtAd", "canPreloadForQQMINIProgram", localThrowable);
+    }
+    return false;
   }
   
   public int describeContents()
@@ -140,35 +208,56 @@ public class GdtAd
   
   public boolean disableAutoDownload()
   {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
+    if ((isValid()) && (isAppProductType()))
     {
-      bool = false;
-      do
-      {
-        return bool;
-        if (!isAppProductType()) {
-          break;
-        }
-      } while (this.info.ext.disable_auto_download.get() == true);
+      if (this.info.ext.disable_auto_download.get() == true) {
+        return true;
+      }
       if (!TextUtils.isEmpty(this.info.ext_json.get())) {
         try
         {
           Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
           if (localObject != null)
           {
-            bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_auto_download.get();
+            boolean bool = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_auto_download.get();
             return bool;
           }
         }
         catch (Throwable localThrowable)
         {
-          aase.b("GdtAd", "disableAutoDownload", localThrowable);
+          GdtLog.b("GdtAd", "disableAutoDownload", localThrowable);
         }
       }
     }
+    return false;
+  }
+  
+  public boolean disableLaunchApp()
+  {
+    if (isValid())
+    {
+      if (this.info.ext.disable_jump_app_home.get() == true) {
+        return true;
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            boolean bool = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_jump_app_home.get();
+            return bool;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "disableLaunchApp", localThrowable);
+        }
+      }
+    }
+    return false;
   }
   
   public long getAId()
@@ -242,64 +331,56 @@ public class GdtAd
   
   public String getAppMarketDeeplink()
   {
-    if (!isValid()) {}
-    for (;;)
+    if ((isValid()) && (isAppProductType()))
     {
-      return null;
-      if (isAppProductType())
-      {
-        if (!TextUtils.isEmpty(this.info.ext.market_deep_link.get())) {
-          return this.info.ext.market_deep_link.get();
+      if (!TextUtils.isEmpty(this.info.ext.market_deep_link.get())) {
+        return this.info.ext.market_deep_link.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_deep_link.get();
+            return localObject;
+          }
         }
-        if (!TextUtils.isEmpty(this.info.ext_json.get())) {
-          try
-          {
-            Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-            if (localObject != null)
-            {
-              localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_deep_link.get();
-              return localObject;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            aase.b("GdtAd", "getAppMarketDeeplink", localThrowable);
-          }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getAppMarketDeeplink", localThrowable);
         }
       }
     }
+    return null;
   }
   
   public String getAppMarketPackageName()
   {
-    if (!isValid()) {}
-    for (;;)
+    if ((isValid()) && (isAppProductType()))
     {
-      return null;
-      if (isAppProductType())
-      {
-        if (!TextUtils.isEmpty(this.info.ext.market_package_name.get())) {
-          return this.info.ext.market_package_name.get();
+      if (!TextUtils.isEmpty(this.info.ext.market_package_name.get())) {
+        return this.info.ext.market_package_name.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_package_name.get();
+            return localObject;
+          }
         }
-        if (!TextUtils.isEmpty(this.info.ext_json.get())) {
-          try
-          {
-            Object localObject = new JSONObject(this.info.ext_json.get());
-            localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-            if (localObject != null)
-            {
-              localObject = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).market_package_name.get();
-              return localObject;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            aase.b("GdtAd", "getAppMarketPackageName", localThrowable);
-          }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getAppMarketPackageName", localThrowable);
         }
       }
     }
+    return null;
   }
   
   public String getAppName()
@@ -312,24 +393,35 @@ public class GdtAd
   
   public String getAppPackageName()
   {
-    if (isAppProductType()) {
-      return this.info.app_info.app_package_name.get();
+    if ((!isAppProductType()) && (!isJDProductType())) {
+      return null;
     }
-    return null;
+    return this.info.app_info.app_package_name.get();
   }
   
   public long getAppPackageSize()
   {
-    if (isAppProductType()) {}
-    for (Long localLong = Long.valueOf(this.info.app_info.app_package_size.get());; localLong = null) {
-      return localLong.longValue();
+    Long localLong;
+    if (isAppProductType()) {
+      localLong = Long.valueOf(this.info.app_info.app_package_size.get());
+    } else {
+      localLong = null;
     }
+    return localLong.longValue();
   }
   
   public String getAppPackageUrl()
   {
     if (isAppProductType()) {
       return this.info.app_info.pkg_url.get();
+    }
+    return null;
+  }
+  
+  public String getAppRightInfoUrl()
+  {
+    if (isValid()) {
+      return this.info.app_info.app_standard_info_url.get();
     }
     return null;
   }
@@ -350,10 +442,128 @@ public class GdtAd
     return null;
   }
   
+  public int getBannerInvalidClickXPercent()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 101164) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get());
+        }
+        i += 1;
+      }
+    }
+    return -2147483648;
+  }
+  
+  public int getBannerInvalidClickYPercent()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 101166) {
+          return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get());
+        }
+        i += 1;
+      }
+    }
+    return -2147483648;
+  }
+  
+  public String getBasic_img()
+  {
+    if (isValid()) {
+      return this.info.display_info.basic_info.img.get();
+    }
+    return "";
+  }
+  
+  public int getBottomCardLoadTime()
+  {
+    return 2;
+  }
+  
+  public String getBottomCardUrl()
+  {
+    if (isValid()) {
+      return this.info.display_info.video_info.bottom_card_url.get();
+    }
+    return null;
+  }
+  
+  public String getBusinessIdForXiJingOffline()
+  {
+    if (isValid())
+    {
+      if ((this.info.ext.xj_offline.offline_id.has()) && (this.info.ext.xj_offline.offline_id.get() != 0)) {
+        return String.valueOf(this.info.ext.xj_offline.offline_id.get());
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_id.get();
+            return String.valueOf(i);
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public long getButtonDelayTime()
+  {
+    if (!isValid()) {
+      return 0L;
+    }
+    if (this.info.ext.button_delay_time.has()) {
+      return this.info.ext.button_delay_time.get();
+    }
+    if (TextUtils.isEmpty(this.info.ext_json.get())) {
+      return 0L;
+    }
+    try
+    {
+      Object localObject = new JSONObject(this.info.ext_json.get());
+      localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+      if (localObject == null) {
+        return 0L;
+      }
+      int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).button_delay_time.get();
+      return i;
+    }
+    catch (Throwable localThrowable)
+    {
+      GdtLog.b("GdtAd", "[getButtonDelayTime] ", localThrowable);
+    }
+    return 0L;
+  }
+  
   public String getCanvas()
   {
     if (isCanvas()) {
       return this.info.dest_info.canvas_json.get();
+    }
+    return null;
+  }
+  
+  public String getCanvasForXiJingOffline()
+  {
+    if (!TextUtils.isEmpty(this.canvasForXiJingOffline)) {
+      return this.canvasForXiJingOffline;
     }
     return null;
   }
@@ -382,33 +592,314 @@ public class GdtAd
     return -2147483648;
   }
   
-  public aamz getImageData()
+  public int getEndcardDirection()
+  {
+    if (isValid()) {
+      return this.info.display_info.video_info.endcard_direction.get();
+    }
+    return 0;
+  }
+  
+  public int getEndcardLoadTime()
+  {
+    if (!isValid()) {
+      return 5;
+    }
+    if (this.info.display_info.video_info.endcard_load_time.has()) {
+      return this.info.display_info.video_info.endcard_load_time.get();
+    }
+    return 5;
+  }
+  
+  public String getEndcardUrl()
+  {
+    if (isValid()) {
+      return this.info.display_info.video_info.endcard.get();
+    }
+    return null;
+  }
+  
+  public List getExpMap()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!isValid()) {
+      return localArrayList;
+    }
+    if (this.info.ext.exp_map.get().size() > 0) {
+      return this.info.ext.exp_map.get();
+    }
+    if (TextUtils.isEmpty(this.info.ext_json.get())) {
+      return localArrayList;
+    }
+    try
+    {
+      Object localObject = new JSONObject(this.info.ext_json.get());
+      localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+      if (localObject == null) {
+        return localArrayList;
+      }
+      localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).exp_map.get();
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      GdtLog.d("GdtAd", "getExpMap", localThrowable);
+    }
+    return localArrayList;
+  }
+  
+  public String getExperimentParam(int paramInt)
+  {
+    if (!isValid()) {
+      return "";
+    }
+    List localList = getExpMap();
+    if (localList == null) {
+      return "";
+    }
+    int j = localList.size();
+    int i = 0;
+    while (i < j)
+    {
+      qq_ad_get.QQAdGetRsp.AdInfo.ExpParam localExpParam = (qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i);
+      if ((localExpParam != null) && (paramInt == localExpParam.key.get())) {
+        return localExpParam.value.get();
+      }
+      i += 1;
+    }
+    return "";
+  }
+  
+  public List<?> getFeedbackItems()
   {
     if (!isValid()) {
       return null;
     }
-    aamz localaamz = new aamz();
-    localaamz.jdField_a_of_type_JavaLangString = this.info.display_info.basic_info.img.get();
-    localaamz.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localaamz.b = this.info.display_info.basic_info.pic_height.get();
-    if (localaamz.a()) {}
-    for (;;)
+    ArrayList localArrayList = new ArrayList(this.info.report_info.neg_fb_items.get().size());
+    Iterator localIterator = this.info.report_info.neg_fb_items.get().iterator();
+    while (localIterator.hasNext())
     {
-      return localaamz;
-      localaamz = null;
+      qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.NegativeFeedbackItem localNegativeFeedbackItem = (qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.NegativeFeedbackItem)localIterator.next();
+      AdFeedbackDialogFragment.AdFeedbackItemModel localAdFeedbackItemModel = new AdFeedbackDialogFragment.AdFeedbackItemModel();
+      localAdFeedbackItemModel.mReportType = localNegativeFeedbackItem.report_type.get();
+      localAdFeedbackItemModel.mActionType = localNegativeFeedbackItem.action_type.get();
+      localAdFeedbackItemModel.mIconUrl = localNegativeFeedbackItem.icon_url.get();
+      localAdFeedbackItemModel.mJumpUrl = localNegativeFeedbackItem.jump_url.get();
+      localAdFeedbackItemModel.mText = localNegativeFeedbackItem.text.get();
+      localArrayList.add(localAdFeedbackItemModel);
     }
+    return localArrayList;
   }
   
-  public aamz getImageData(int paramInt)
+  @NonNull
+  public List<qq_common.FloatingTip> getFloatingTips()
   {
-    if ((!isValid()) || (paramInt < 0) || (paramInt >= this.info.display_info.muti_pic_text_info.image.size())) {
+    if (isValid())
+    {
+      Object localObject1;
+      if (this.info.ext.floating_tips.has())
+      {
+        localObject1 = this.info.ext.floating_tips.get();
+        break label125;
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          localObject1 = new JSONObject(this.info.ext_json.get());
+          localObject1 = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject1);
+          if (localObject1 != null) {
+            localObject1 = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject1).floating_tips.get();
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("GdtAd", "[getFloatingTip]", localThrowable);
+        }
+      }
+    }
+    Object localObject2 = null;
+    label125:
+    Object localObject3 = localObject2;
+    if (localObject2 == null) {
+      localObject3 = new LinkedList();
+    }
+    return localObject3;
+  }
+  
+  public qq_common.FloatingTip getFloatingTips(int paramInt)
+  {
+    List localList = getFloatingTips();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((localList.get(i) != null) && (((qq_common.FloatingTip)localList.get(i)).type.get() == paramInt)) {
+        return (qq_common.FloatingTip)localList.get(i);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public GdtImageData getImageData()
+  {
+    if (!isValid()) {
       return null;
     }
-    aamz localaamz = new aamz();
-    localaamz.jdField_a_of_type_JavaLangString = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
-    localaamz.jdField_a_of_type_Int = this.info.display_info.basic_info.pic_width.get();
-    localaamz.b = this.info.display_info.basic_info.pic_height.get();
-    return localaamz;
+    GdtImageData localGdtImageData = new GdtImageData();
+    localGdtImageData.a = this.info.display_info.basic_info.img.get();
+    localGdtImageData.b = this.info.display_info.basic_info.pic_width.get();
+    localGdtImageData.c = this.info.display_info.basic_info.pic_height.get();
+    if (localGdtImageData.a()) {
+      return localGdtImageData;
+    }
+    return null;
+  }
+  
+  public GdtImageData getImageData(int paramInt)
+  {
+    if ((isValid()) && (paramInt >= 0) && (paramInt < this.info.display_info.muti_pic_text_info.image.size()))
+    {
+      GdtImageData localGdtImageData = new GdtImageData();
+      localGdtImageData.a = ((String)this.info.display_info.muti_pic_text_info.image.get(paramInt));
+      localGdtImageData.b = this.info.display_info.basic_info.pic_width.get();
+      localGdtImageData.c = this.info.display_info.basic_info.pic_height.get();
+      return localGdtImageData;
+    }
+    return null;
+  }
+  
+  public int getImageHeight()
+  {
+    if (getImageData() == null) {
+      return 0;
+    }
+    return getImageData().c;
+  }
+  
+  public int getImageWidth()
+  {
+    if (getImageData() == null) {
+      return 0;
+    }
+    return getImageData().b;
+  }
+  
+  public int getInnerShowType()
+  {
+    if (isValid())
+    {
+      if (this.info.ext.inner_adshowtype.has()) {
+        return this.info.ext.inner_adshowtype.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).inner_adshowtype.get();
+            return i;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("GdtAd", "getInnerShowType", localThrowable);
+        }
+      }
+    }
+    return 0;
+  }
+  
+  public String getJSONKeyForXiJingOffline()
+  {
+    if (isValid())
+    {
+      if (!TextUtils.isEmpty(this.info.ext.xj_offline.offline_json_key.get())) {
+        return this.info.ext.xj_offline.offline_json_key.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_json_key.get();
+            return localObject;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getJSONKeyForXiJingOffline", localThrowable);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String getJSONUrlForXiJingOffline()
+  {
+    if (isValid())
+    {
+      if (!TextUtils.isEmpty(this.info.ext.xj_offline.offline_json_url.get())) {
+        return this.info.ext.xj_offline.offline_json_url.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_json_url.get();
+            return localObject;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public long getMinIntervalMillisBetweenExposureAndClick()
+  {
+    if (isValid())
+    {
+      List localList = getExpMap();
+      int i = 0;
+      while (i < localList.size())
+      {
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 101168) {
+          return Long.parseLong(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get());
+        }
+        i += 1;
+      }
+    }
+    return -2147483648L;
+  }
+  
+  public int getMvCircleButtonStyle()
+  {
+    if (!isValid()) {
+      return 0;
+    }
+    List localList = getExpMap();
+    if (localList == null) {
+      return 0;
+    }
+    int i = 0;
+    while (i < localList.size())
+    {
+      if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 100329) {
+        return Integer.parseInt(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get());
+      }
+      i += 1;
+    }
+    return 0;
   }
   
   public String getNetLogId()
@@ -427,6 +918,14 @@ public class GdtAd
     return -2147483648L;
   }
   
+  public String getOriginalExposureUrl()
+  {
+    if (isValid()) {
+      return this.info.report_info.original_exposure_url.get();
+    }
+    return null;
+  }
+  
   public String getPosId()
   {
     Object localObject = getUrlForClick();
@@ -436,21 +935,15 @@ public class GdtAd
       return null;
     }
     localObject = AdUriUtil.parse((String)localObject);
-    if (localObject != null)
-    {
+    if (localObject != null) {
       localObject = AdUriUtil.getQueryParameter((Uri)localObject, "pid");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label53;
-      }
+    } else {
+      localObject = null;
     }
-    for (;;)
-    {
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
       return localObject;
-      localObject = null;
-      break;
-      label53:
-      localObject = null;
     }
+    return null;
   }
   
   public String getProductId()
@@ -465,6 +958,41 @@ public class GdtAd
   {
     if (isValid()) {
       return this.info.product_type.get();
+    }
+    return -2147483648;
+  }
+  
+  public int getRelationTarget()
+  {
+    if (isValid())
+    {
+      if (this.info.ext.relation_target.has()) {
+        return this.info.ext.relation_target.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).relation_target.get();
+            return i;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("GdtAd", "getRelationTarget", localThrowable);
+        }
+      }
+    }
+    return -2147483648;
+  }
+  
+  public int getRewardTime()
+  {
+    if (isValid()) {
+      return this.info.reward_info.reward_time.get();
     }
     return -2147483648;
   }
@@ -525,6 +1053,14 @@ public class GdtAd
     return null;
   }
   
+  public String getUrlForFeedBack()
+  {
+    if (isValid()) {
+      return this.info.report_info.negative_feedback_url.get();
+    }
+    return null;
+  }
+  
   public String getUrlForImpression()
   {
     if (isValid()) {
@@ -541,10 +1077,45 @@ public class GdtAd
     return null;
   }
   
+  public String getUrlForXiJingOffline()
+  {
+    if (isValid())
+    {
+      if (!TextUtils.isEmpty(this.info.ext.xj_offline.offline_landing_page.get())) {
+        return this.info.ext.xj_offline.offline_landing_page.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            localObject = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).xj_offline.offline_landing_page.get();
+            return localObject;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          GdtLog.b("GdtAd", "getJSONUrlForXiJingOffline", localThrowable);
+        }
+      }
+    }
+    return null;
+  }
+  
   public String getVia()
   {
     if (isValid()) {
       return this.info.report_info.trace_info.via.get();
+    }
+    return null;
+  }
+  
+  public String getVideoReportUrl()
+  {
+    if (isValid()) {
+      return this.info.report_info.video_report_url.get();
     }
     return null;
   }
@@ -573,6 +1144,32 @@ public class GdtAd
     return null;
   }
   
+  public boolean isAppPreOrder()
+  {
+    if ((isValid()) && (isAppXiJingFengling()))
+    {
+      if (this.info.ext.is_app_preorder.has()) {
+        return this.info.ext.is_app_preorder.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext localExt = (com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext)com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(new JSONObject(this.info.ext_json.get()));
+          if (localExt != null)
+          {
+            boolean bool = localExt.is_app_preorder;
+            return bool;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("GdtAd", "isAppPreOder", localThrowable);
+        }
+      }
+    }
+    return false;
+  }
+  
   public boolean isAppProductType()
   {
     return getProductType() == 12;
@@ -588,112 +1185,208 @@ public class GdtAd
     return (isAppProductType()) && (getDestType() == 0);
   }
   
-  public boolean isCanvas()
+  public boolean isAppXiJingFengling()
   {
-    return ((!isAppXiJingDefault()) && (!isAppXiJing())) || ((!TextUtils.isEmpty(this.info.dest_info.canvas_json.get())) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get()))));
+    return (isAppProductType()) && (getDestType() == 4);
   }
   
-  public boolean isHitCanvasVideoCeilingExp()
+  public boolean isAppXiJingOffline()
   {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-      } while (this.info.ext.landing_page_style.get() == 1);
-      if (TextUtils.isEmpty(this.info.ext_json.get())) {
-        continue;
-      }
-      try
-      {
-        Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-        if (localObject == null) {
-          continue;
-        }
-        int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).landing_page_style.get();
-        if (i == 1) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        aase.b("GdtAd", "isHitCanvasVideoCeilingExp", localThrowable);
-      }
-    }
+    return (isAppXiJing()) && (a());
   }
   
-  public boolean isHitJumpExperiment()
+  public boolean isBannerWithRectangleNewStyle()
   {
-    if (!isValid()) {}
-    for (;;)
-    {
+    if (!isValid()) {
       return false;
-      if (this.info.ext.no_clkcgi_jump.get()) {
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 94685) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("2"))) {
         return true;
       }
-      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
-        try
-        {
-          Object localObject = new JSONObject(this.info.ext_json.get());
-          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-          if (localObject != null)
-          {
-            boolean bool = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).no_clkcgi_jump.get();
-            return bool;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          aase.b("GdtAd", "isHitJumpExperiment", localThrowable);
-        }
-      }
+      i += 1;
     }
+    return false;
+  }
+  
+  public boolean isBannerWithRectangleStyle()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 94685) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("1"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean isCanvas()
+  {
+    return ((isAppXiJingDefault()) || (isAppXiJing())) && ((!TextUtils.isEmpty(this.info.dest_info.canvas_json.get())) || ((getProductType() == 1000) && (getDestType() == 4) && (!TextUtils.isEmpty(this.info.dest_info.canvas_json.get()))));
+  }
+  
+  public boolean isExperiment(int paramInt, String paramString)
+  {
+    return a(paramInt, paramString, false);
+  }
+  
+  public boolean isHitDownloadLayer()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 108152) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("1"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean isHitFirstLoadImageExp()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 95837) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("1"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean isHitNew585Style()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(getBottomCardUrl())) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(getEndcardUrl())) {
+      return false;
+    }
+    List localList = getExpMap();
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 109176) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("1"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public boolean isInterstitial()
   {
-    boolean bool = true;
-    if (!isValid()) {}
-    for (;;)
-    {
-      bool = false;
-      do
-      {
-        return bool;
-      } while (this.info.ext.render_pos_type.get() == 2);
-      if (TextUtils.isEmpty(this.info.ext_json.get())) {
-        continue;
-      }
-      try
-      {
-        Object localObject = new JSONObject(this.info.ext_json.get());
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.Ext)qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
-        if (localObject == null) {
-          continue;
-        }
-        int i = ((qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).render_pos_type.get();
-        if (i == 2) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        aase.b("GdtAd", "isInterstitial", localThrowable);
-      }
+    boolean bool2 = isValid();
+    boolean bool1 = false;
+    if (!bool2) {
+      return false;
     }
+    if (this.info.ext.render_pos_type.get() == 2) {
+      return true;
+    }
+    if (TextUtils.isEmpty(this.info.ext_json.get())) {
+      return false;
+    }
+    try
+    {
+      Object localObject = new JSONObject(this.info.ext_json.get());
+      localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+      if (localObject == null) {
+        return false;
+      }
+      int i = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).render_pos_type.get();
+      if (i == 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    catch (Throwable localThrowable)
+    {
+      GdtLog.b("GdtAd", "isInterstitial", localThrowable);
+    }
+    return false;
+  }
+  
+  public boolean isJDProductType()
+  {
+    return getProductType() == 25;
+  }
+  
+  public boolean isJumpToEndCardDirectlyExperiment()
+  {
+    return a(109424, "1", true);
+  }
+  
+  public boolean isMotiveBrowserStatisticsExperiment()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    if (localList == null) {
+      return false;
+    }
+    int j = localList.size();
+    int i = 0;
+    while (i < j)
+    {
+      qq_ad_get.QQAdGetRsp.AdInfo.ExpParam localExpParam = (qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i);
+      if ((localExpParam != null) && (109262 == localExpParam.key.get()) && ("1".equals(localExpParam.value.get()))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean isProcessInTool()
+  {
+    if (!isValid()) {
+      return false;
+    }
+    List localList = getExpMap();
+    if (localList == null) {
+      return false;
+    }
+    int i = 0;
+    while (i < localList.size())
+    {
+      if ((((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).key.get() == 107054) && (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localList.get(i)).value.get().equals("1"))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public boolean isQQMINIProgram()
   {
+    boolean bool3 = isValid();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (isValid())
+    if (bool3)
     {
       bool1 = bool2;
       if (this.info.display_info.mini_program_type.get() == 11) {
@@ -708,203 +1401,126 @@ public class GdtAd
     return this.info != null;
   }
   
+  public boolean isVideoOnTopDisabled()
+  {
+    if (isValid())
+    {
+      if (this.info.ext.disable_video_on_top.has()) {
+        return this.info.ext.disable_video_on_top.get();
+      }
+      if (!TextUtils.isEmpty(this.info.ext_json.get())) {
+        try
+        {
+          Object localObject = new JSONObject(this.info.ext_json.get());
+          localObject = (tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext.class.cast(GdtJsonPbUtil.a(new tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext(), localObject));
+          if (localObject != null)
+          {
+            boolean bool = ((tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext)localObject).disable_video_on_top.get();
+            return bool;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          AdLog.e("GdtAd", "isVideoOnTopDisabled", localThrowable);
+        }
+      }
+    }
+    return false;
+  }
+  
   public boolean isVideoSplice()
   {
-    return ((getProductType() == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)) && ((getCreativeSize() == 585) || (getCreativeSize() == 930));
+    int i = getProductType();
+    boolean bool = true;
+    if (((i == 1000) || (getProductType() == 12) || (getProductType() == 25) || (getProductType() == 30)) && ((getDestType() == 0) || (getDestType() == 4) || (getDestType() == 1)))
+    {
+      if (getCreativeSize() == 585) {
+        return bool;
+      }
+      if (getCreativeSize() == 930) {
+        return true;
+      }
+    }
+    bool = false;
+    return bool;
   }
   
   public boolean isWeChatMiniApp()
   {
     boolean bool2 = isValid();
     boolean bool1 = bool2;
-    if (bool2) {
+    if (bool2)
+    {
       if ((this.info.product_type.get() != 46) && ((this.info.display_info == null) || (this.info.display_info.mini_program_type.get() != 3))) {
-        break label61;
+        return false;
       }
+      bool1 = true;
     }
-    label61:
-    for (bool1 = true;; bool1 = false)
-    {
-      if (bool1) {}
-      return bool1;
-    }
+    return bool1;
   }
   
-  public AdClickUtil.Result jumpToWechatMiniApp(Handler paramHandler)
+  public boolean isWebXiJing()
   {
-    localObject2 = "wxf0a80d0ac2e82aa7";
-    localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        if (this.info.wechat_app_info.app_id.has())
-        {
-          localObject1 = localObject2;
-          if (this.info.wechat_app_info.app_id.get().length() > 0) {
-            localObject1 = this.info.wechat_app_info.app_id.get();
-          }
-        }
-        localObject1 = WXAPIFactory.createWXAPI(BaseApplicationImpl.sApplication, (String)localObject1);
-        if (((IWXAPI)localObject1).isWXAppInstalled()) {
-          continue;
-        }
-        a(paramHandler, 2131693075);
-        paramHandler = null;
-      }
-      catch (Exception paramHandler)
-      {
-        try
-        {
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("pathType", 2);
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("ad_trace_data", this.info.wechat_app_info.ad_trace_data.get());
-          localJSONObject.put("token", this.info.wechat_app_info.app_token.get());
-          ((JSONObject)localObject2).put("invokeData", localJSONObject);
-          paramHandler.extData = ((JSONObject)localObject2).toString();
-          AdLog.d("navigateToMiniProgram", "openMiniGame, make extData json success: " + paramHandler.extData);
-          paramHandler.miniprogramType = 0;
-          ((IWXAPI)localObject1).sendReq(paramHandler);
-          paramHandler = new AdClickUtil.Result(0, 9);
-          continue;
-          paramHandler = paramHandler;
-          paramHandler = new AdClickUtil.Result(4, 9);
-        }
-        catch (Exception localException)
-        {
-          AdLog.e("navigateToMiniProgram", "openMiniGame, make extData json failed!");
-          continue;
-        }
-      }
-      azqs.b(null, "dc00898", "", "", "0X800AA79", "0X800AA79", 0, 0, "", "", String.valueOf(this.info.wechat_app_info.pos_id.get()), "");
-      return paramHandler;
-      if (((IWXAPI)localObject1).getWXAppSupportAPI() >= 621086464) {
-        continue;
-      }
-      a(paramHandler, 2131693076);
-      paramHandler = null;
-    }
-    paramHandler = new WXLaunchMiniProgram.Req();
-    paramHandler.userName = this.info.wechat_app_info.app_username.get();
-    paramHandler.path = this.info.wechat_app_info.app_path.get();
+    return (getProductType() == 1000) && (getDestType() == 4);
   }
   
-  public void preloadMiniApp()
+  public boolean isWebXiJingOffline()
   {
-    WXPreloadMiniProgram.Req localReq;
-    if (isWeChatMiniApp())
+    return (isWebXiJing()) && (a());
+  }
+  
+  public boolean isXiJinDestType()
+  {
+    int i = getDestType();
+    boolean bool = true;
+    if (i != 1)
     {
-      localReq = new WXPreloadMiniProgram.Req();
-      localReq.userName = this.info.wechat_app_info.app_username.get();
-      localReq.path = this.info.wechat_app_info.app_path.get();
-    }
-    try
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("pathType", 2);
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("ad_trace_data", this.info.wechat_app_info.ad_trace_data.get());
-      ((JSONObject)localObject2).put("token", this.info.wechat_app_info.app_token.get());
-      ((JSONObject)localObject1).put("invokeData", localObject2);
-      localReq.extData = ((JSONObject)localObject1).toString();
-      AdLog.d("navigateToMiniProgram", "openMiniGame, make extData json success: " + localReq.extData);
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          Object localObject2 = BaseApplicationImpl.sApplication.getContentResolver();
-          Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/preloadWXMiniprogram");
-          if (!this.info.wechat_app_info.app_id.has()) {
-            continue;
-          }
-          Object localObject1 = this.info.wechat_app_info.app_id.get();
-          ((ContentResolver)localObject2).query(localUri, null, null, new String[] { localObject1, localReq.userName, localReq.path, localReq.miniprogramType + "", localReq.extData }, null);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          String str;
-          if (0 == 0) {
-            continue;
-          }
-          try
-          {
-            throw new NullPointerException();
-          }
-          catch (Exception localException2) {}
-        }
-        localException1 = localException1;
-        AdLog.e("navigateToMiniProgram", "openMiniGame, make extData json failed!");
-        continue;
-        str = "wxf0a80d0ac2e82aa7";
+      if (i == 10) {
+        return true;
       }
+      bool = false;
     }
+    return bool;
   }
   
   public void readExternal(ObjectInput paramObjectInput)
   {
-    int i = 0;
     if (paramObjectInput == null)
     {
-      aase.d("GdtAd", "readExternal error");
+      GdtLog.d("GdtAd", "readExternal error");
       return;
     }
-    int j;
     try
     {
       this.actionSetId = paramObjectInput.readLong();
-      j = paramObjectInput.readInt();
-      if (j <= 0)
+      int i = paramObjectInput.readInt();
+      if (i > 0)
       {
-        aase.d("GdtAd", "readExternal error");
+        byte[] arrayOfByte = a(paramObjectInput, i);
+        if ((arrayOfByte != null) && (arrayOfByte.length > 0))
+        {
+          qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = new qq_ad_get.QQAdGetRsp.AdInfo();
+          localAdInfo.mergeFrom(arrayOfByte);
+          this.info = localAdInfo;
+        }
+      }
+      i = paramObjectInput.readInt();
+      if (i <= 0) {
+        return;
+      }
+      paramObjectInput = a(paramObjectInput, i);
+      if (paramObjectInput != null)
+      {
+        if (paramObjectInput.length <= 0) {
+          return;
+        }
+        this.canvasForXiJingOffline = new String(paramObjectInput, "UTF-8");
         return;
       }
     }
     catch (Throwable paramObjectInput)
     {
-      aase.d("GdtAd", "readExternal", paramObjectInput);
-      return;
-    }
-    Object localObject = new ByteArrayOutputStream();
-    for (;;)
-    {
-      byte[] arrayOfByte;
-      int k;
-      if (i < j)
-      {
-        arrayOfByte = new byte[j - i];
-        k = paramObjectInput.read(arrayOfByte);
-        if (k < 0) {
-          aase.d("GdtAd", "readExternal error");
-        }
-      }
-      else
-      {
-        ((ByteArrayOutputStream)localObject).close();
-        paramObjectInput = ((ByteArrayOutputStream)localObject).toByteArray();
-        if ((i == j) && (paramObjectInput.length == j)) {
-          break;
-        }
-        aase.d("GdtAd", "readExternal error");
-        return;
-      }
-      i += k;
-      ((ByteArrayOutputStream)localObject).write(arrayOfByte, 0, k);
-    }
-    localObject = new qq_ad_get.QQAdGetRsp.AdInfo();
-    try
-    {
-      ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).mergeFrom(paramObjectInput);
-      this.info = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramObjectInput)
-    {
-      aase.d("GdtAd", "readExternal", paramObjectInput);
+      GdtLog.d("GdtAd", "readExternal", paramObjectInput);
     }
   }
   
@@ -913,71 +1529,112 @@ public class GdtAd
     this.actionSetId = paramLong;
   }
   
-  public void writeExternal(ObjectOutput paramObjectOutput)
+  public void setCanvasForXiJingOffline(String paramString)
   {
-    if ((paramObjectOutput == null) || (this.info == null))
-    {
-      aase.d("GdtAd", "writeExternal error");
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = "";
     }
-    byte[] arrayOfByte;
-    try
+    this.canvasForXiJingOffline = paramString;
+  }
+  
+  public String toString()
+  {
+    if (isValid())
     {
-      paramObjectOutput.writeLong(this.actionSetId);
-      arrayOfByte = this.info.toByteArray();
-      if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
-      {
-        aase.d("GdtAd", "writeExternal error");
-        return;
+      Object localObject = GdtJsonPbUtil.a(this.info);
+      if ((localObject != null) && (!JSONObject.NULL.equals(localObject))) {
+        return localObject.toString();
       }
     }
-    catch (Throwable paramObjectOutput)
+    return null;
+  }
+  
+  public void writeExternal(ObjectOutput paramObjectOutput)
+  {
+    if ((paramObjectOutput != null) && (this.info != null)) {}
+    for (;;)
     {
-      aase.d("GdtAd", "writeExternal", paramObjectOutput);
+      try
+      {
+        paramObjectOutput.writeLong(this.actionSetId);
+        localObject1 = this.info;
+        Object localObject2 = null;
+        if (localObject1 == null) {
+          break label156;
+        }
+        localObject1 = this.info.toByteArray();
+        if ((localObject1 != null) && (localObject1.length > 0))
+        {
+          paramObjectOutput.writeInt(localObject1.length);
+          paramObjectOutput.write((byte[])localObject1);
+        }
+        else
+        {
+          paramObjectOutput.writeInt(0);
+        }
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(this.canvasForXiJingOffline)) {
+          localObject1 = this.canvasForXiJingOffline.getBytes("UTF-8");
+        }
+        if ((localObject1 != null) && (localObject1.length > 0))
+        {
+          paramObjectOutput.writeInt(localObject1.length);
+          paramObjectOutput.write((byte[])localObject1);
+          return;
+        }
+        paramObjectOutput.writeInt(0);
+        return;
+      }
+      catch (Throwable paramObjectOutput)
+      {
+        GdtLog.d("GdtAd", "writeExternal", paramObjectOutput);
+        return;
+      }
+      GdtLog.d("GdtAd", "writeExternal error");
       return;
+      label156:
+      Object localObject1 = null;
     }
-    paramObjectOutput.writeInt(arrayOfByte.length);
-    paramObjectOutput.write(arrayOfByte);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if ((paramParcel == null) || (this.info == null))
-    {
-      aase.d("GdtAd", "writeToParcel error");
-      return;
-    }
-    byte[] arrayOfByte;
+    if ((paramParcel != null) && (this.info != null)) {}
     for (;;)
     {
       try
       {
         paramParcel.writeLong(this.actionSetId);
-        arrayOfByte = this.info.toByteArray();
-        if (arrayOfByte != null)
+        paramParcel.writeString(this.canvasForXiJingOffline);
+        byte[] arrayOfByte = this.info.toByteArray();
+        if (arrayOfByte == null) {
+          break label92;
+        }
+        paramInt = arrayOfByte.length;
+        paramParcel.writeInt(paramInt);
+        if (paramInt <= 0)
         {
-          paramInt = arrayOfByte.length;
-          paramParcel.writeInt(paramInt);
-          if (paramInt > 0) {
-            break;
-          }
-          aase.d("GdtAd", "writeToParcel error");
+          GdtLog.d("GdtAd", "writeToParcel error");
           return;
         }
+        paramParcel.writeByteArray(arrayOfByte);
+        return;
       }
       catch (Throwable paramParcel)
       {
-        aase.d("GdtAd", "writeToParcel", paramParcel);
+        GdtLog.d("GdtAd", "writeToParcel", paramParcel);
         return;
       }
+      GdtLog.d("GdtAd", "writeToParcel error");
+      return;
+      label92:
       paramInt = 0;
     }
-    paramParcel.writeByteArray(arrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUploadingManager;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
+import android.content.Context;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class gyb
-  extends BizTroopObserver
+  implements Runnable
 {
-  public gyb(TroopFileUploadingManager paramTroopFileUploadingManager) {}
+  public gyb(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    paramObject = (TroopFileStatusInfo)paramObject;
-    if ((paramObject.jdField_a_of_type_Boolean) && (paramObject.b == 1)) {}
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
       return;
-      if (paramObject.b == 12)
-      {
-        long l = paramObject.jdField_a_of_type_Long;
-        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1, false).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (ChatMessage)localIterator.next();
-          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
-          {
-            localObject = (MessageForTroopFile)localObject;
-            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
-              this.a.a.a().a(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.d)) && (((MessageForTroopFile)localObject).url.equals(paramObject.d))) {
-              this.a.a.a().a(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            }
-          }
-        }
-      }
     }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130837961, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 

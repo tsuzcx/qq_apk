@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader;
 
-import arem;
-
-public class ExtfBaseFileDownloader$1
+class ExtfBaseFileDownloader$1
   implements Runnable
 {
-  public ExtfBaseFileDownloader$1(arem paramarem, long paramLong1, long paramLong2) {}
+  ExtfBaseFileDownloader$1(ExtfBaseFileDownloader paramExtfBaseFileDownloader, long paramLong1, long paramLong2) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    this.this$0.a(this.a, this.this$0.b, this.b);
+    ExtfBaseFileDownloader localExtfBaseFileDownloader = this.this$0;
+    localExtfBaseFileDownloader.a(this.a, localExtfBaseFileDownloader.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

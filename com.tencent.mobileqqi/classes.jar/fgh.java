@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.SaveTrafficHandler;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 
 public class fgh
-  implements Runnable
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  public boolean b = false;
+  public fgh(ScreenShot paramScreenShot) {}
   
-  public fgh(SaveTrafficHandler paramSaveTrafficHandler, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = false;
-  }
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppSaveTrafficHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 0);
+    this.a.jdField_a_of_type_Fgl.a(false);
+    if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+      KapalaiAdapterUtil.a().b(this.a.jdField_a_of_type_AndroidViewWindow);
+    }
   }
 }
 

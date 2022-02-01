@@ -1,76 +1,62 @@
 package com.tencent.mm.network;
 
-import com.tencent.mm.network.a.b;
-import com.tencent.mm.protocal.z;
-import java.util.List;
-
 public abstract interface e
 {
-  public abstract int a(r paramr, l paraml);
+  public abstract byte[] LW(String paramString);
   
-  public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
+  public abstract byte[] LX(String paramString);
   
-  public abstract void a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean);
+  public abstract byte[] LY(String paramString);
   
-  public abstract void a(b paramb);
+  public abstract byte[] LZ(String paramString);
   
-  public abstract void a(h paramh);
+  public abstract boolean Ma(String paramString);
   
-  public abstract void a(o paramo);
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract void a(z paramz);
+  public abstract int av(byte[] paramArrayOfByte);
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
+  public abstract int aw(byte[] paramArrayOfByte);
   
-  public abstract c adI();
+  public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract i adJ();
+  public abstract byte[] bFZ();
   
-  public abstract void adK();
+  public abstract boolean bGa();
   
-  public abstract void adL();
+  public abstract byte[] bGb();
   
-  public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  public abstract String bGc();
   
-  public abstract boolean adu();
+  public abstract byte[] bGd();
   
-  public abstract void cQ(boolean paramBoolean);
+  public abstract void bGe();
   
-  public abstract void cR(boolean paramBoolean);
+  public abstract void bGf();
   
-  public abstract void cS(boolean paramBoolean);
+  public abstract int getUin();
   
-  public abstract void cT(boolean paramBoolean);
+  public abstract String getUsername();
   
-  public abstract void cancel(int paramInt);
+  public abstract void i(int paramInt, byte[] paramArrayOfByte);
   
-  public abstract int getHostByName(String paramString, List<String> paramList);
+  public abstract boolean isForeground();
   
-  public abstract String[] getIPsString(boolean paramBoolean);
-  
-  public abstract String getIspId();
-  
-  public abstract String getNetworkServerIp();
-  
-  public abstract void keepSignalling();
-  
-  public abstract void reportFailIp(String paramString);
+  public abstract void k(String paramString, byte[] paramArrayOfByte);
   
   public abstract void reset();
   
-  public abstract void rr(String paramString);
+  public abstract byte[] sA(int paramInt);
   
-  public abstract void rs(String paramString);
+  public abstract void setForeground(boolean paramBoolean);
   
-  public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  public abstract void setUin(int paramInt);
   
-  public abstract void setSignallingStrategy(long paramLong1, long paramLong2);
-  
-  public abstract void stopSignalling();
+  public abstract void setUsername(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.e
  * JD-Core Version:    0.7.0.1
  */

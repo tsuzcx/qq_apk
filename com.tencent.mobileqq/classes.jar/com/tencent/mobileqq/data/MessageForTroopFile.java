@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import amrf;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -17,51 +17,59 @@ public class MessageForTroopFile
   public String fileName;
   public long fileSize;
   public int height;
-  public boolean isPause;
+  public boolean isPause = false;
   public long lastTime;
+  public String md5;
   public String sha1;
   public String url;
   public String uuid;
   public int width;
+  public String yybApkIconUrl;
+  public String yybApkName;
+  public String yybApkPackageName;
   
   public void doParse()
   {
+    Object localObject;
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)amrf.a(this.msgData);
-      if (localTroopFileData != null)
-      {
-        this.url = localTroopFileData.fileUrl;
-        this.sha1 = localTroopFileData.sha1;
-        this.dspFileSize = localTroopFileData.dspFileSize;
-        this.dspFileName = localTroopFileData.dspFileName;
-        this.bisID = localTroopFileData.bisID;
-        this.uuid = localTroopFileData.uuid;
-        this.fileSize = localTroopFileData.lfileSize;
-        this.fileName = localTroopFileData.fileName;
-        this.FromUin = localTroopFileData.FromUin;
-        this.lastTime = localTroopFileData.lastTime;
-        this.entitySessionId = localTroopFileData.entitySessionId;
-        this.width = localTroopFileData.width;
-        this.height = localTroopFileData.height;
-        this.duration = localTroopFileData.duration;
-      }
-      this.msg = alud.a(2131706964);
-      return;
+      TroopFileData localTroopFileData = (TroopFileData)MessagePkgUtils.a(this.msgData);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      localException.printStackTrace();
+      localObject = null;
     }
+    if (localObject != null)
+    {
+      this.url = localObject.fileUrl;
+      this.sha1 = localObject.sha1;
+      this.md5 = localObject.md5;
+      this.dspFileSize = localObject.dspFileSize;
+      this.dspFileName = localObject.dspFileName;
+      this.bisID = localObject.bisID;
+      this.uuid = localObject.uuid;
+      this.fileSize = localObject.lfileSize;
+      this.fileName = localObject.fileName;
+      this.FromUin = localObject.FromUin;
+      this.lastTime = localObject.lastTime;
+      this.entitySessionId = localObject.entitySessionId;
+      this.width = localObject.width;
+      this.height = localObject.height;
+      this.duration = localObject.duration;
+      this.yybApkPackageName = localObject.yybApkPackageName;
+      this.yybApkName = localObject.yybApkName;
+      this.yybApkIconUrl = localObject.yybApkIconUrl;
+    }
+    this.msg = HardCodeUtil.a(2131904456);
   }
   
   public String getSummaryMsg()
   {
-    return alud.a(2131707013) + this.fileName;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131904505));
+    localStringBuilder.append(this.fileName);
+    return localStringBuilder.toString();
   }
   
   public boolean isSupportReply()
@@ -69,12 +77,12 @@ public class MessageForTroopFile
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -84,6 +92,7 @@ public class MessageForTroopFile
     TroopFileData localTroopFileData = new TroopFileData();
     localTroopFileData.fileUrl = this.url;
     localTroopFileData.sha1 = this.sha1;
+    localTroopFileData.md5 = this.md5;
     localTroopFileData.fileName = this.fileName;
     localTroopFileData.dspFileName = this.dspFileName;
     localTroopFileData.dspFileSize = this.dspFileSize;
@@ -96,9 +105,12 @@ public class MessageForTroopFile
     localTroopFileData.width = this.width;
     localTroopFileData.height = this.height;
     localTroopFileData.duration = this.duration;
+    localTroopFileData.yybApkPackageName = this.yybApkPackageName;
+    localTroopFileData.yybApkName = this.yybApkName;
+    localTroopFileData.yybApkIconUrl = this.yybApkIconUrl;
     try
     {
-      this.msgData = amrf.a(localTroopFileData);
+      this.msgData = MessagePkgUtils.a(localTroopFileData);
       return;
     }
     catch (Exception localException)

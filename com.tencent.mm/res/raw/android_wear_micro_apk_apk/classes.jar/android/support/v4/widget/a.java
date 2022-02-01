@@ -14,8 +14,8 @@ import android.widget.ImageView;
 final class a
   extends ImageView
 {
-  private Animation.AnimationListener nm;
-  int nn;
+  private Animation.AnimationListener pa;
+  int pb;
   
   a(Context paramContext)
   {
@@ -23,8 +23,8 @@ final class a
     float f = getContext().getResources().getDisplayMetrics().density;
     int i = (int)(1.75F * f);
     int j = (int)(0.0F * f);
-    this.nn = ((int)(3.5F * f));
-    if (bV())
+    this.pb = ((int)(3.5F * f));
+    if (bZ())
     {
       paramContext = new ShapeDrawable(new OvalShape());
       r.d(this, f * 4.0F);
@@ -34,15 +34,15 @@ final class a
       paramContext.getPaint().setColor(-328966);
       r.a(this, paramContext);
       return;
-      paramContext = new ShapeDrawable(new b(this, this.nn));
+      paramContext = new ShapeDrawable(new b(this, this.pb));
       setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.nn, j, i, 503316480);
-      i = this.nn;
+      paramContext.getPaint().setShadowLayer(this.pb, j, i, 503316480);
+      i = this.pb;
       setPadding(i, i, i, i);
     }
   }
   
-  private static boolean bV()
+  private static boolean bZ()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -50,30 +50,30 @@ final class a
   public final void onAnimationEnd()
   {
     super.onAnimationEnd();
-    if (this.nm != null) {
-      this.nm.onAnimationEnd(getAnimation());
+    if (this.pa != null) {
+      this.pa.onAnimationEnd(getAnimation());
     }
   }
   
   public final void onAnimationStart()
   {
     super.onAnimationStart();
-    if (this.nm != null) {
-      this.nm.onAnimationStart(getAnimation());
+    if (this.pa != null) {
+      this.pa.onAnimationStart(getAnimation());
     }
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!bV()) {
-      setMeasuredDimension(getMeasuredWidth() + this.nn * 2, getMeasuredHeight() + this.nn * 2);
+    if (!bZ()) {
+      setMeasuredDimension(getMeasuredWidth() + this.pb * 2, getMeasuredHeight() + this.pb * 2);
     }
   }
   
   public final void setAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
-    this.nm = paramAnimationListener;
+    this.pa = paramAnimationListener;
   }
   
   public final void setBackgroundColor(int paramInt)

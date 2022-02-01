@@ -1,70 +1,27 @@
 package com.tencent.mm.plugin.story.model.d;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.plugin.story.api.o;
-import com.tencent.mm.plugin.story.api.o.a;
-import com.tencent.mm.plugin.story.api.o.b;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.story.api.p;
 import java.util.List;
-import java.util.Map;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/model/gallery/StoryDataSeedFactory;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed$IFactory;", "()V", "createAllFriendDataSeed", "", "userList", "", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "createFavDataSeed", "dateList", "username", "createMultiSelectFavDataSeed", "checkedList", "genKey", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/model/gallery/NewestStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "queryCondition", "", "(JLjava/util/List;I)V", "getUserList", "()Ljava/util/List;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements o.b
+  extends p
 {
-  public static final d syp;
+  final List<String> oxE;
   
-  static
+  public d(long paramLong, List<String> paramList, int paramInt)
   {
-    AppMethodBeat.i(109307);
-    syp = new d();
-    AppMethodBeat.o(109307);
-  }
-  
-  public final long a(List<String> paramList, String paramString, Map<String, ? extends ArrayList<Long>> paramMap, ArrayList<Long> paramArrayList)
-  {
-    AppMethodBeat.i(151073);
-    j.q(paramList, "dateList");
-    j.q(paramString, "username");
-    j.q(paramMap, "filterList");
-    j.q(paramArrayList, "checkedList");
-    paramList = new c(cb.abq(), paramList, paramString, true, paramMap, paramArrayList);
-    o.a.czC().a(paramList.key, (o)paramList);
-    long l = paramList.key;
-    AppMethodBeat.o(151073);
-    return l;
-  }
-  
-  public final long c(List<String> paramList, Map<String, ? extends ArrayList<Long>> paramMap)
-  {
-    AppMethodBeat.i(138769);
-    j.q(paramList, "userList");
-    j.q(paramMap, "filterList");
-    paramList = new a(cb.abq(), paramList, paramMap);
-    o.a.czC().a(paramList.key, (o)paramList);
-    long l = paramList.key;
-    AppMethodBeat.o(138769);
-    return l;
-  }
-  
-  public final long j(List<String> paramList, String paramString)
-  {
-    AppMethodBeat.i(109306);
-    j.q(paramList, "dateList");
-    j.q(paramString, "username");
-    paramList = new c(cb.abq(), paramList, paramString);
-    o.a.czC().a(paramList.key, (o)paramList);
-    long l = paramList.key;
-    AppMethodBeat.o(109306);
-    return l;
+    super(paramLong, paramInt);
+    AppMethodBeat.i(118909);
+    this.oxE = paramList;
+    AppMethodBeat.o(118909);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.model.d.d
  * JD-Core Version:    0.7.0.1
  */

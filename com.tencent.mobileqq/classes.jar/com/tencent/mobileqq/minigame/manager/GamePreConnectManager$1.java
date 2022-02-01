@@ -1,30 +1,19 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import com.tencent.mobileqq.minigame.utils.GameLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import java.util.Set;
 
 final class GamePreConnectManager$1
-  implements Callback
+  implements Runnable
 {
-  GamePreConnectManager$1(String paramString, long paramLong) {}
-  
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void run()
   {
-    GameLog.getInstance().e("GamePreConnectManager", "pre-connect onFailure: " + this.val$url);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    long l = System.currentTimeMillis();
-    GameLog.getInstance().i("GamePreConnectManager", "onResponse [timecost: " + (l - this.val$begin) + "] [url: " + this.val$url + "] [code: " + paramResponse.code() + "]");
+    GamePreConnectManager.access$002(false);
+    GamePreConnectManager.access$100().clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GamePreConnectManager.1
  * JD-Core Version:    0.7.0.1
  */

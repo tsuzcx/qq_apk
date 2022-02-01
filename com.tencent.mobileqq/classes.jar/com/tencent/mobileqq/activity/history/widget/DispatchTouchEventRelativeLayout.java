@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.history.widget;
 
-import aieo;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +8,7 @@ import android.widget.RelativeLayout;
 public class DispatchTouchEventRelativeLayout
   extends RelativeLayout
 {
-  private aieo a;
+  private DispatchTouchEventRelativeLayout.OnDispatchListener a;
   
   public DispatchTouchEventRelativeLayout(Context paramContext)
   {
@@ -28,15 +27,16 @@ public class DispatchTouchEventRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a(paramMotionEvent);
+    DispatchTouchEventRelativeLayout.OnDispatchListener localOnDispatchListener = this.a;
+    if (localOnDispatchListener != null) {
+      localOnDispatchListener.a(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDispatchListener(aieo paramaieo)
+  public void setOnDispatchListener(DispatchTouchEventRelativeLayout.OnDispatchListener paramOnDispatchListener)
   {
-    this.a = paramaieo;
+    this.a = paramOnDispatchListener;
   }
 }
 

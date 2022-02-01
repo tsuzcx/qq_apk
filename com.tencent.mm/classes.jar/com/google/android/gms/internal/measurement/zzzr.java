@@ -14,7 +14,7 @@ public final class zzzr
   
   static
   {
-    AppMethodBeat.i(3587);
+    AppMethodBeat.i(40377);
     UTF_8 = Charset.forName("UTF-8");
     ISO_8859_1 = Charset.forName("ISO-8859-1");
     byte[] arrayOfByte = new byte[0];
@@ -22,19 +22,19 @@ public final class zzzr
     zzbsr = ByteBuffer.wrap(arrayOfByte);
     arrayOfByte = zzbsq;
     zzbss = zzze.zza(arrayOfByte, 0, arrayOfByte.length, false);
-    AppMethodBeat.o(3587);
+    AppMethodBeat.o(40377);
   }
   
   static <T> T checkNotNull(T paramT)
   {
-    AppMethodBeat.i(3585);
+    AppMethodBeat.i(40375);
     if (paramT == null)
     {
       paramT = new NullPointerException();
-      AppMethodBeat.o(3585);
+      AppMethodBeat.o(40375);
       throw paramT;
     }
-    AppMethodBeat.o(3585);
+    AppMethodBeat.o(40375);
     return paramT;
   }
   
@@ -51,20 +51,20 @@ public final class zzzr
   
   static <T> T zza(T paramT, String paramString)
   {
-    AppMethodBeat.i(3586);
+    AppMethodBeat.i(40376);
     if (paramT == null)
     {
       paramT = new NullPointerException(paramString);
-      AppMethodBeat.o(3586);
+      AppMethodBeat.o(40376);
       throw paramT;
     }
-    AppMethodBeat.o(3586);
+    AppMethodBeat.o(40376);
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzr
  * JD-Core Version:    0.7.0.1
  */

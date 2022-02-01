@@ -4,15 +4,15 @@ import com.google.android.gms.common.api.ad;
 
 public final class bg
 {
-  public final ea Pe;
-  public final int Pf;
-  public final ad<?> Pg;
+  public final ea QT;
+  public final int QU;
+  public final ad<?> QV;
   
   public bg(ea paramea, int paramInt, ad<?> paramad)
   {
-    this.Pe = paramea;
-    this.Pf = paramInt;
-    this.Pg = paramad;
+    this.QT = paramea;
+    this.QU = paramInt;
+    this.QV = paramad;
   }
 }
 

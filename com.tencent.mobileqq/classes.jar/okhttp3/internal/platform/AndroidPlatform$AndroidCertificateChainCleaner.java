@@ -28,15 +28,15 @@ final class AndroidPlatform$AndroidCertificateChainCleaner
       paramList = (List)this.checkServerTrusted.invoke(this.x509TrustManagerExtensions, new Object[] { paramList, "RSA", paramString });
       return paramList;
     }
+    catch (IllegalAccessException paramList)
+    {
+      throw new AssertionError(paramList);
+    }
     catch (InvocationTargetException paramList)
     {
       paramString = new SSLPeerUnverifiedException(paramList.getMessage());
       paramString.initCause(paramList);
       throw paramString;
-    }
-    catch (IllegalAccessException paramList)
-    {
-      throw new AssertionError(paramList);
     }
   }
   
@@ -52,7 +52,7 @@ final class AndroidPlatform$AndroidCertificateChainCleaner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okhttp3.internal.platform.AndroidPlatform.AndroidCertificateChainCleaner
  * JD-Core Version:    0.7.0.1
  */

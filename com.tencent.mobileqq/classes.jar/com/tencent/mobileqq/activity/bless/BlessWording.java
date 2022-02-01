@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.text.TextUtils;
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class BlessWording
-  extends awge
+  extends Entity
 {
   private String editingWording;
-  @awhs
+  @unique
   public String wording;
   
   public BlessWording() {}
@@ -25,7 +25,7 @@ public class BlessWording
   
   public boolean hasEditingWording()
   {
-    return !TextUtils.isEmpty(this.editingWording);
+    return TextUtils.isEmpty(this.editingWording) ^ true;
   }
   
   public void setEditingWording(String paramString)

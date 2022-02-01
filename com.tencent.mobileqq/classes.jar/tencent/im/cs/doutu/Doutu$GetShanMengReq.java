@@ -23,15 +23,16 @@ public final class Doutu$GetShanMengReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64 }, new String[] { "uint64_src_uin", "uint32_src_term", "bytes_uuid", "bytes_md5", "uint32_command_id", "bytes_url", "uin32_gender", "uint32_age" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, GetShanMengReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64 }, new String[] { "uint64_src_uin", "uint32_src_term", "bytes_uuid", "bytes_md5", "uint32_command_id", "bytes_url", "uin32_gender", "uint32_age" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localInteger }, GetShanMengReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.doutu.Doutu.GetShanMengReq
  * JD-Core Version:    0.7.0.1
  */

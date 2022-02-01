@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/eb8" />
-    <CheckBoxPreference android1:contentDescription="@string/eoq" android:title="@string/eoq" android:icon="@raw/icons_outlined_colorful_moment" android:key="settings_sns_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bvr" android:title="@string/bvr" android:icon="@raw/icons_outlined_scan" android:iconColor="@color/be" android:key="settings_scan_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/ejx" android:title="@string/ejx" android:icon="@raw/icons_outlined_shake" android:iconColor="@color/be" android:key="settings_shake_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bvy" android:title="@string/bvy" android:icon="@raw/icons_outlined_news" android:iconColor="@color/d8" android:key="settings_look_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bw2" android:title="@string/bw2" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/cv" android:key="settings_search_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/d8c" android:title="@string/d8c" android:icon="@raw/icons_outlined_nearby" android:iconColor="@color/be" android:key="settings_nearby_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bw3" android:title="@string/bw3" android:icon="@raw/icons_outlined_shop" android:iconColor="@color/cv" android:key="settings_shopping_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/c_4" android:title="@string/c_4" android:icon="@raw/icons_outlined_colorful_game" android:key="settings_game_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/ip" android:title="@string/ip" android:icon="@raw/icons_outlined_miniprogram" android:iconColor="@color/cf" android:key="settings_miniprogram_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/cjg" android:title="@string/cjg" android:icon="@raw/icons_outlined_wechatout" android:iconColor="@color/a6i" android:key="settings_wechatout_switch" android:defaultValue="false" />
-    <Preference android:title="@string/ebb" android:key="settings_switch_bottom_tip" android:layout="@layout/ah2" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="timline_outside_permiss" android:title="@string/jfq" />
+    <Preference android:key="timeline_black_permiss" android:title="@string/jb7" />
+    <Preference android:key="edit_timeline_group" android:title="@string/ix9" />
+    <CheckBoxPreference android:key="timeline_stranger_show" android:layout="@layout/bdi" android:title="@string/bmm" />
+    <IconPreference android:key="timeline_recent_show_select" android:title="@string/bmh" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

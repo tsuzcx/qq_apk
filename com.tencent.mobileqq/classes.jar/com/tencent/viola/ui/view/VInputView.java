@@ -30,15 +30,16 @@ public class VInputView
   
   public VInput getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VInput)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VInput)localWeakReference.get();
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.VInputView
  * JD-Core Version:    0.7.0.1
  */

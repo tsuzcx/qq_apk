@@ -39,96 +39,140 @@ public abstract class a<T extends IInterface>
   
   protected T getServiceInterface()
   {
-    boolean bool2 = true;
-    if ((this.mContext != null) && (this.mContext.getMainLooper().getThread().getId() == Thread.currentThread().getId())) {
+    ??? = this.mContext;
+    if ((??? != null) && (((Context)???).getMainLooper().getThread().getId() == Thread.currentThread().getId())) {
       throw new Exception("TMAssistantDownloadSDKClient must be called in other Thread(no MainThread)");
     }
     if (this.mServiceInterface == null)
     {
-      ab.c("BaseIPCClientTIME_COST", "<getServiceInterface> time before init:" + System.currentTimeMillis() + "ms\ntid = " + Thread.currentThread().getId());
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("<getServiceInterface> time before init:");
+      ((StringBuilder)???).append(System.currentTimeMillis());
+      ((StringBuilder)???).append("ms\ntid = ");
+      ((StringBuilder)???).append(Thread.currentThread().getId());
+      ab.c("BaseIPCClientTIME_COST", ((StringBuilder)???).toString());
       initTMAssistantDownloadSDK();
       this.connectState = "CONNECTING";
     }
-    synchronized (this.mThreadlock)
+    for (;;)
     {
-      if (this.mServiceInterface != null) {}
-      for (boolean bool1 = true; (this.mServiceInterface == null) && ("INIT".equals(this.connectState)); bool1 = false)
+      synchronized (this.mThreadlock)
       {
-        ab.c("BaseIPCClientTIME_COST", "onServiceConnected=" + bool1 + ",onServiceDisconnected=" + bool2);
+        Object localObject2 = this.mServiceInterface;
+        bool2 = true;
+        if (localObject2 == null) {
+          break label324;
+        }
+        bool1 = true;
+        if ((this.mServiceInterface != null) || (!"INIT".equals(this.connectState))) {
+          break label329;
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onServiceConnected=");
+        ((StringBuilder)localObject2).append(bool1);
+        ((StringBuilder)localObject2).append(",onServiceDisconnected=");
+        ((StringBuilder)localObject2).append(bool2);
+        ab.c("BaseIPCClientTIME_COST", ((StringBuilder)localObject2).toString());
         if ((!bool1) && (!bool2)) {
           this.mThreadlock.wait(4999L);
         }
-        ab.c("BaseIPCClientTIME_COST", "<getServiceInterface> time after init:" + System.currentTimeMillis() + "ms\ntid = " + Thread.currentThread().getId() + "\nmServiceInterface = " + this.mServiceInterface);
-        if (this.mServiceInterface != null) {
-          break label274;
-        }
-        throw new Exception("TMAssistantDownloadSDKClient ServiceInterface is null");
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("<getServiceInterface> time after init:");
+        ((StringBuilder)???).append(System.currentTimeMillis());
+        ((StringBuilder)???).append("ms\ntid = ");
+        ((StringBuilder)???).append(Thread.currentThread().getId());
+        ((StringBuilder)???).append("\nmServiceInterface = ");
+        ((StringBuilder)???).append(this.mServiceInterface);
+        ab.c("BaseIPCClientTIME_COST", ((StringBuilder)???).toString());
       }
-      bool2 = false;
+      if (this.mServiceInterface != null) {
+        return this.mServiceInterface;
+      }
+      throw new Exception("TMAssistantDownloadSDKClient ServiceInterface is null");
+      label324:
+      boolean bool1 = false;
+      continue;
+      label329:
+      boolean bool2 = false;
     }
-    label274:
-    return this.mServiceInterface;
   }
   
   public boolean initTMAssistantDownloadSDK()
   {
-    boolean bool1 = true;
     if ("FINISH".equals(this.connectState)) {
-      return bool1;
+      return true;
     }
-    ab.c("BaseIPCClient", "initTMAssistantDownloadSDK,clientKey:" + this.mClientKey + ",mServiceInterface:" + this.mServiceInterface + ",threadId:" + Thread.currentThread().getId());
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("initTMAssistantDownloadSDK,clientKey:");
+    ((StringBuilder)localObject1).append(this.mClientKey);
+    ((StringBuilder)localObject1).append(",mServiceInterface:");
+    ((StringBuilder)localObject1).append(this.mServiceInterface);
+    ((StringBuilder)localObject1).append(",threadId:");
+    ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+    ab.c("BaseIPCClient", ((StringBuilder)localObject1).toString());
+    try
     {
-      boolean bool2;
-      long l;
-      Intent localIntent;
-      try
+      if (this.mServiceInterface != null) {
+        this.connectState = "FINISH";
+      } else {
+        this.connectState = "INIT";
+      }
+      if ("FINISH".equals(this.connectState)) {
+        return true;
+      }
+      boolean bool3 = false;
+      boolean bool2 = false;
+      if (this.mContext == null)
       {
-        if (this.mServiceInterface != null)
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("<initTMAssistantDownloadSDK> context is null, Global context is: ");
+        ((StringBuilder)localObject1).append(GlobalUtil.getInstance().getContext());
+        ab.c("BaseIPCClient", ((StringBuilder)localObject1).toString());
+        this.mContext = GlobalUtil.getInstance().getContext();
+      }
+      boolean bool1 = bool3;
+      if (this.mContext != null)
+      {
+        bool1 = bool3;
+        if (this.mServiceName != null)
         {
-          this.connectState = "FINISH";
-          if ("FINISH".equals(this.connectState)) {
-            break;
-          }
-          bool2 = false;
-          boolean bool3 = false;
-          if (this.mContext == null)
-          {
-            ab.c("BaseIPCClient", "<initTMAssistantDownloadSDK> context is null, Global context is: " + GlobalUtil.getInstance().getContext());
-            this.mContext = GlobalUtil.getInstance().getContext();
-          }
-          bool1 = bool3;
-          if (this.mContext == null) {
-            break;
-          }
-          bool1 = bool3;
-          if (this.mServiceName == null) {
-            break;
-          }
           bool1 = bool2;
+          try
+          {
+            long l = System.currentTimeMillis();
+            bool1 = bool2;
+            localObject1 = getBindServiceIntent();
+            bool1 = bool2;
+            bool2 = this.mContext.bindService((Intent)localObject1, this, 1);
+            bool1 = bool2;
+            localObject1 = new StringBuilder();
+            bool1 = bool2;
+            ((StringBuilder)localObject1).append(this.mServiceName);
+            bool1 = bool2;
+            ((StringBuilder)localObject1).append(",BaseIPCClient initTMAssistantDownloadSDK bindService end,timeCost=");
+            bool1 = bool2;
+            ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+            bool1 = bool2;
+            ((StringBuilder)localObject1).append(",result=");
+            bool1 = bool2;
+            ((StringBuilder)localObject1).append(bool2);
+            bool1 = bool2;
+            aa.a(((StringBuilder)localObject1).toString());
+            bool1 = bool2;
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initTMAssistantDownloadSDK bindResult:");
+          localStringBuilder.append(bool1);
+          ab.c("BaseIPCClient", localStringBuilder.toString());
         }
       }
-      finally {}
-      try
-      {
-        l = System.currentTimeMillis();
-        bool1 = bool2;
-        localIntent = getBindServiceIntent();
-        bool1 = bool2;
-        bool2 = this.mContext.bindService(localIntent, this, 1);
-        bool1 = bool2;
-        aa.a(this.mServiceName + ",BaseIPCClient initTMAssistantDownloadSDK bindService end,timeCost=" + (System.currentTimeMillis() - l) + ",result=" + bool2);
-        bool1 = bool2;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-      }
-      ab.c("BaseIPCClient", "initTMAssistantDownloadSDK bindResult:" + bool1);
       return bool1;
-      this.connectState = "INIT";
     }
+    finally {}
   }
   
   protected abstract void onDownloadSDKServiceInvalid();
@@ -137,22 +181,35 @@ public abstract class a<T extends IInterface>
   {
     stubAsInterface(paramIBinder);
     this.connectState = "FINISH";
-    for (;;)
+    synchronized (this.mThreadlock)
     {
-      synchronized (this.mThreadlock)
-      {
-        this.mThreadlock.notifyAll();
-        aa.a(this.mServiceName + "BaseIPCClient onServiceConnected");
-        ??? = new StringBuilder().append("onServiceConnected,clientKey:").append(this.mClientKey).append(",mServiceInterface:").append(this.mServiceInterface).append(",IBinder:").append(paramIBinder).append("\nthreadId:").append(Thread.currentThread().getId()).append("\ntime:").append(System.currentTimeMillis()).append("ms").append("\nis main thread:");
-        if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
-        {
-          bool = true;
-          ab.c("BaseIPCClientTIME_COST", bool);
-          k.a().post(new c(this));
-          return;
-        }
+      this.mThreadlock.notifyAll();
+      ??? = new StringBuilder();
+      ???.append(this.mServiceName);
+      ???.append("BaseIPCClient onServiceConnected");
+      aa.a(???.toString());
+      ??? = new StringBuilder();
+      ???.append("onServiceConnected,clientKey:");
+      ???.append(this.mClientKey);
+      ???.append(",mServiceInterface:");
+      ???.append(this.mServiceInterface);
+      ???.append(",IBinder:");
+      ???.append(paramIBinder);
+      ???.append("\nthreadId:");
+      ???.append(Thread.currentThread().getId());
+      ???.append("\ntime:");
+      ???.append(System.currentTimeMillis());
+      ???.append("ms\nis main thread:");
+      boolean bool;
+      if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      boolean bool = false;
+      ???.append(bool);
+      ab.c("BaseIPCClientTIME_COST", ???.toString());
+      k.a().post(new c(this));
+      return;
     }
   }
   
@@ -160,94 +217,108 @@ public abstract class a<T extends IInterface>
   public void onServiceDisconnected(ComponentName arg1)
   {
     // Byte code:
-    //   0: new 87	java/lang/StringBuilder
+    //   0: new 85	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   7: ldc 231
-    //   9: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   12: aload_0
-    //   13: getfield 50	com/tencent/tmdownloader/a:mClientKey	Ljava/lang/String;
-    //   16: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc 210
-    //   21: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: astore_1
-    //   25: invokestatic 76	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   28: invokevirtual 73	java/lang/Thread:getId	()J
-    //   31: invokestatic 211	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   34: invokevirtual 67	android/os/Looper:getThread	()Ljava/lang/Thread;
-    //   37: invokevirtual 73	java/lang/Thread:getId	()J
-    //   40: lcmp
-    //   41: ifne +90 -> 131
-    //   44: iconst_1
-    //   45: istore_2
-    //   46: ldc 20
-    //   48: aload_1
-    //   49: iload_2
-    //   50: invokevirtual 129	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 114	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   59: aload_0
-    //   60: monitorenter
-    //   61: aload_0
-    //   62: aconst_null
-    //   63: putfield 42	com/tencent/tmdownloader/a:mServiceInterface	Landroid/os/IInterface;
-    //   66: aload_0
-    //   67: ldc 17
-    //   69: putfield 40	com/tencent/tmdownloader/a:connectState	Ljava/lang/String;
+    //   4: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   7: astore_1
+    //   8: aload_1
+    //   9: ldc 229
+    //   11: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: pop
+    //   15: aload_1
+    //   16: aload_0
+    //   17: getfield 50	com/tencent/tmdownloader/a:mClientKey	Ljava/lang/String;
+    //   20: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: aload_1
+    //   25: ldc 231
+    //   27: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: invokestatic 76	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   34: invokevirtual 73	java/lang/Thread:getId	()J
+    //   37: invokestatic 209	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   40: invokevirtual 67	android/os/Looper:getThread	()Ljava/lang/Thread;
+    //   43: invokevirtual 73	java/lang/Thread:getId	()J
+    //   46: lcmp
+    //   47: ifne +8 -> 55
+    //   50: iconst_1
+    //   51: istore_2
+    //   52: goto +5 -> 57
+    //   55: iconst_0
+    //   56: istore_2
+    //   57: aload_1
+    //   58: iload_2
+    //   59: invokevirtual 129	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: ldc 20
+    //   65: aload_1
+    //   66: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 114	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: aload_0
-    //   73: monitorexit
+    //   73: monitorenter
     //   74: aload_0
-    //   75: getfield 46	com/tencent/tmdownloader/a:mThreadlock	Ljava/lang/Object;
-    //   78: astore_1
-    //   79: aload_1
-    //   80: monitorenter
-    //   81: aload_0
-    //   82: getfield 46	com/tencent/tmdownloader/a:mThreadlock	Ljava/lang/Object;
-    //   85: invokevirtual 196	java/lang/Object:notifyAll	()V
-    //   88: aload_1
-    //   89: monitorexit
-    //   90: new 87	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   97: aload_0
-    //   98: getfield 38	com/tencent/tmdownloader/a:mServiceName	Ljava/lang/String;
-    //   101: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc 233
-    //   106: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 181	com/tencent/tmassistantbase/util/aa:a	(Ljava/lang/String;)V
-    //   115: invokestatic 216	com/tencent/tmassistantbase/util/k:a	()Landroid/os/Handler;
-    //   118: new 235	com/tencent/tmdownloader/b
-    //   121: dup
-    //   122: aload_0
-    //   123: invokespecial 236	com/tencent/tmdownloader/b:<init>	(Lcom/tencent/tmdownloader/a;)V
-    //   126: invokevirtual 227	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   129: pop
-    //   130: return
-    //   131: iconst_0
-    //   132: istore_2
-    //   133: goto -87 -> 46
-    //   136: astore_1
-    //   137: aload_0
-    //   138: monitorexit
-    //   139: aload_1
-    //   140: athrow
-    //   141: astore_3
-    //   142: aload_1
-    //   143: monitorexit
-    //   144: aload_3
-    //   145: athrow
+    //   75: aconst_null
+    //   76: putfield 42	com/tencent/tmdownloader/a:mServiceInterface	Landroid/os/IInterface;
+    //   79: aload_0
+    //   80: ldc 17
+    //   82: putfield 40	com/tencent/tmdownloader/a:connectState	Ljava/lang/String;
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_0
+    //   88: getfield 46	com/tencent/tmdownloader/a:mThreadlock	Ljava/lang/Object;
+    //   91: astore_1
+    //   92: aload_1
+    //   93: monitorenter
+    //   94: aload_0
+    //   95: getfield 46	com/tencent/tmdownloader/a:mThreadlock	Ljava/lang/Object;
+    //   98: invokevirtual 196	java/lang/Object:notifyAll	()V
+    //   101: aload_1
+    //   102: monitorexit
+    //   103: new 85	java/lang/StringBuilder
+    //   106: dup
+    //   107: invokespecial 86	java/lang/StringBuilder:<init>	()V
+    //   110: astore_1
+    //   111: aload_1
+    //   112: aload_0
+    //   113: getfield 38	com/tencent/tmdownloader/a:mServiceName	Ljava/lang/String;
+    //   116: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload_1
+    //   121: ldc 233
+    //   123: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload_1
+    //   128: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   131: invokestatic 181	com/tencent/tmassistantbase/util/aa:a	(Ljava/lang/String;)V
+    //   134: invokestatic 214	com/tencent/tmassistantbase/util/k:a	()Landroid/os/Handler;
+    //   137: new 235	com/tencent/tmdownloader/b
+    //   140: dup
+    //   141: aload_0
+    //   142: invokespecial 236	com/tencent/tmdownloader/b:<init>	(Lcom/tencent/tmdownloader/a;)V
+    //   145: invokevirtual 225	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   148: pop
+    //   149: return
+    //   150: astore_3
+    //   151: aload_1
+    //   152: monitorexit
+    //   153: aload_3
+    //   154: athrow
+    //   155: astore_1
+    //   156: aload_0
+    //   157: monitorexit
+    //   158: aload_1
+    //   159: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	146	0	this	a
-    //   45	88	2	bool	boolean
-    //   141	4	3	localObject	Object
+    //   0	160	0	this	a
+    //   51	8	2	bool	boolean
+    //   150	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   61	74	136	finally
-    //   137	139	136	finally
-    //   81	90	141	finally
-    //   142	144	141	finally
+    //   94	103	150	finally
+    //   151	153	150	finally
+    //   74	87	155	finally
+    //   156	158	155	finally
   }
   
   protected abstract void registerServiceCallback();
@@ -263,7 +334,7 @@ public abstract class a<T extends IInterface>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.a
  * JD-Core Version:    0.7.0.1
  */

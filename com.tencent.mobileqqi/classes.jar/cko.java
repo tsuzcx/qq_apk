@@ -9,7 +9,7 @@ public final class cko
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131561494), 0).b(this.a.getResources().getDimensionPixelSize(2131427376));
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131561900), 0).b(this.a.getResources().getDimensionPixelSize(2131427376));
   }
 }
 

@@ -16,46 +16,36 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import beuw;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
 public class RoundedImageView
   extends ImageView
 {
-  public static final Shader.TileMode a;
-  private static final ImageView.ScaleType[] jdField_a_of_type_ArrayOfAndroidWidgetImageView$ScaleType;
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-16777216);
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType;
-  private final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F };
-  private int jdField_b_of_type_Int;
-  private Shader.TileMode jdField_b_of_type_AndroidGraphicsShader$TileMode = jdField_a_of_type_AndroidGraphicsShader$TileMode;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_b_of_type_Boolean;
-  private Shader.TileMode jdField_c_of_type_AndroidGraphicsShader$TileMode = jdField_a_of_type_AndroidGraphicsShader$TileMode;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
-  
-  static
-  {
-    if (!RoundedImageView.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_AndroidGraphicsShader$TileMode = Shader.TileMode.CLAMP;
-      jdField_a_of_type_ArrayOfAndroidWidgetImageView$ScaleType = new ImageView.ScaleType[] { ImageView.ScaleType.MATRIX, ImageView.ScaleType.FIT_XY, ImageView.ScaleType.FIT_START, ImageView.ScaleType.FIT_CENTER, ImageView.ScaleType.FIT_END, ImageView.ScaleType.CENTER, ImageView.ScaleType.CENTER_CROP, ImageView.ScaleType.CENTER_INSIDE };
-      return;
-    }
-  }
+  public static final Shader.TileMode a = Shader.TileMode.CLAMP;
+  private static final ImageView.ScaleType[] c = { ImageView.ScaleType.MATRIX, ImageView.ScaleType.FIT_XY, ImageView.ScaleType.FIT_START, ImageView.ScaleType.FIT_CENTER, ImageView.ScaleType.FIT_END, ImageView.ScaleType.CENTER, ImageView.ScaleType.CENTER_CROP, ImageView.ScaleType.CENTER_INSIDE };
+  private final float[] d = { 0.0F, 0.0F, 0.0F, 0.0F };
+  private Drawable e;
+  private ColorStateList f = ColorStateList.valueOf(-16777216);
+  private float g = 0.0F;
+  private ColorFilter h = null;
+  private boolean i = false;
+  private Drawable j;
+  private boolean k = false;
+  private boolean l = false;
+  private boolean m = false;
+  private int n;
+  private int o;
+  private ImageView.ScaleType p;
+  private Shader.TileMode q;
+  private Shader.TileMode r;
   
   public RoundedImageView(Context paramContext)
   {
     super(paramContext);
+    paramContext = a;
+    this.q = paramContext;
+    this.r = paramContext;
   }
   
   public RoundedImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -66,207 +56,206 @@ public class RoundedImageView
   public RoundedImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    Shader.TileMode localTileMode = a;
+    this.q = localTileMode;
+    this.r = localTileMode;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundedImageView, paramInt, 0);
     paramInt = paramContext.getInt(0, -1);
-    float f;
-    int i;
-    if (paramInt >= 0)
-    {
-      setScaleType(jdField_a_of_type_ArrayOfAndroidWidgetImageView$ScaleType[paramInt]);
-      f = paramContext.getDimensionPixelSize(3, -1);
-      this.jdField_a_of_type_ArrayOfFloat[0] = paramContext.getDimensionPixelSize(6, -1);
-      this.jdField_a_of_type_ArrayOfFloat[1] = paramContext.getDimensionPixelSize(7, -1);
-      this.jdField_a_of_type_ArrayOfFloat[2] = paramContext.getDimensionPixelSize(5, -1);
-      this.jdField_a_of_type_ArrayOfFloat[3] = paramContext.getDimensionPixelSize(4, -1);
-      int j = this.jdField_a_of_type_ArrayOfFloat.length;
-      paramInt = 0;
-      i = 0;
-      label164:
-      if (paramInt >= j) {
-        break label211;
-      }
-      if (this.jdField_a_of_type_ArrayOfFloat[paramInt] >= 0.0F) {
-        break label205;
-      }
-      this.jdField_a_of_type_ArrayOfFloat[paramInt] = 0.0F;
-    }
-    for (;;)
-    {
-      paramInt += 1;
-      break label164;
+    if (paramInt >= 0) {
+      setScaleType(c[paramInt]);
+    } else {
       setScaleType(ImageView.ScaleType.FIT_CENTER);
-      break;
-      label205:
-      i = 1;
     }
-    label211:
-    if (i == 0)
+    float f2 = paramContext.getDimensionPixelSize(3, -1);
+    this.d[0] = paramContext.getDimensionPixelSize(6, -1);
+    this.d[1] = paramContext.getDimensionPixelSize(7, -1);
+    this.d[2] = paramContext.getDimensionPixelSize(5, -1);
+    this.d[3] = paramContext.getDimensionPixelSize(4, -1);
+    int i2 = this.d.length;
+    paramInt = 0;
+    int i1 = 0;
+    while (paramInt < i2)
     {
-      if (f >= 0.0F) {
-        break label434;
+      paramAttributeSet = this.d;
+      if (paramAttributeSet[paramInt] < 0.0F) {
+        paramAttributeSet[paramInt] = 0.0F;
+      } else {
+        i1 = 1;
       }
-      f = 0.0F;
+      paramInt += 1;
     }
-    label434:
-    for (;;)
+    if (i1 == 0)
     {
-      i = this.jdField_a_of_type_ArrayOfFloat.length;
+      float f1 = f2;
+      if (f2 < 0.0F) {
+        f1 = 0.0F;
+      }
+      i1 = this.d.length;
       paramInt = 0;
-      while (paramInt < i)
+      while (paramInt < i1)
       {
-        this.jdField_a_of_type_ArrayOfFloat[paramInt] = f;
+        this.d[paramInt] = f1;
         paramInt += 1;
       }
-      this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2, -1);
-      if (this.jdField_a_of_type_Float < 0.0F) {
-        this.jdField_a_of_type_Float = 0.0F;
-      }
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getColorStateList(1);
-      if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
-        this.jdField_a_of_type_AndroidContentResColorStateList = ColorStateList.valueOf(-16777216);
-      }
-      this.e = paramContext.getBoolean(8, false);
-      this.d = paramContext.getBoolean(9, false);
-      paramInt = paramContext.getInt(10, -2);
-      if (paramInt != -2)
-      {
-        setTileModeX(a(paramInt));
-        setTileModeY(a(paramInt));
-      }
-      paramInt = paramContext.getInt(11, -2);
-      if (paramInt != -2) {
-        setTileModeX(a(paramInt));
-      }
-      paramInt = paramContext.getInt(12, -2);
-      if (paramInt != -2) {
-        setTileModeY(a(paramInt));
-      }
-      a();
-      a(true);
-      if (this.e) {
-        super.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      }
-      paramContext.recycle();
-      return;
     }
+    this.g = paramContext.getDimensionPixelSize(2, -1);
+    if (this.g < 0.0F) {
+      this.g = 0.0F;
+    }
+    this.f = paramContext.getColorStateList(1);
+    if (this.f == null) {
+      this.f = ColorStateList.valueOf(-16777216);
+    }
+    this.m = paramContext.getBoolean(8, false);
+    this.l = paramContext.getBoolean(9, false);
+    paramInt = paramContext.getInt(10, -2);
+    if (paramInt != -2)
+    {
+      setTileModeX(a(paramInt));
+      setTileModeY(a(paramInt));
+    }
+    paramInt = paramContext.getInt(11, -2);
+    if (paramInt != -2) {
+      setTileModeX(a(paramInt));
+    }
+    paramInt = paramContext.getInt(12, -2);
+    if (paramInt != -2) {
+      setTileModeY(a(paramInt));
+    }
+    c();
+    a(true);
+    if (this.m) {
+      super.setBackgroundDrawable(this.e);
+    }
+    paramContext.recycle();
   }
   
   private static Shader.TileMode a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return Shader.TileMode.CLAMP;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return null;
+        }
+        return Shader.TileMode.MIRROR;
+      }
       return Shader.TileMode.REPEAT;
     }
-    return Shader.TileMode.MIRROR;
+    return Shader.TileMode.CLAMP;
   }
   
   private Drawable a()
   {
+    Object localObject4 = getResources();
     Object localObject3 = null;
-    Resources localResources = getResources();
-    if (localResources == null) {
+    if (localObject4 == null) {
       return null;
     }
+    int i1 = this.n;
     Object localObject1 = localObject3;
-    if (this.jdField_a_of_type_Int != 0) {}
-    try
-    {
-      localObject1 = localResources.getDrawable(this.jdField_a_of_type_Int);
-      return beuw.a((Drawable)localObject1);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    Object localObject2;
+    if (i1 != 0) {
+      try
       {
-        QLog.w("RoundedImageView", 1, "Unable to find resource: " + this.jdField_a_of_type_Int, localException);
-        this.jdField_a_of_type_Int = 0;
-        Object localObject2 = localObject3;
+        localObject1 = ((Resources)localObject4).getDrawable(i1);
+      }
+      catch (Exception localException)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("Unable to find resource: ");
+        ((StringBuilder)localObject4).append(this.n);
+        QLog.w("RoundedImageView", 1, ((StringBuilder)localObject4).toString(), localException);
+        this.n = 0;
+        localObject2 = localObject3;
       }
     }
-  }
-  
-  private void a()
-  {
-    a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
+    return RoundedDrawable.a(localObject2);
   }
   
   private void a(Drawable paramDrawable, ImageView.ScaleType paramScaleType)
   {
-    if (paramDrawable == null) {}
-    for (;;)
-    {
+    if (paramDrawable == null) {
       return;
-      if ((paramDrawable instanceof beuw))
-      {
-        ((beuw)paramDrawable).a(paramScaleType).a(this.jdField_a_of_type_Float).a(this.jdField_a_of_type_AndroidContentResColorStateList).a(this.d).a(this.jdField_b_of_type_AndroidGraphicsShader$TileMode).b(this.jdField_c_of_type_AndroidGraphicsShader$TileMode);
-        if (this.jdField_a_of_type_ArrayOfFloat != null) {
-          ((beuw)paramDrawable).a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2], this.jdField_a_of_type_ArrayOfFloat[3]);
-        }
-        b();
-        return;
+    }
+    boolean bool = paramDrawable instanceof RoundedDrawable;
+    int i1 = 0;
+    if (bool)
+    {
+      paramDrawable = (RoundedDrawable)paramDrawable;
+      paramDrawable.a(paramScaleType).a(this.g).a(this.f).a(this.l).a(this.q).b(this.r);
+      paramScaleType = this.d;
+      if (paramScaleType != null) {
+        paramDrawable.a(paramScaleType[0], paramScaleType[1], paramScaleType[2], paramScaleType[3]);
       }
-      if ((paramDrawable instanceof LayerDrawable))
+      d();
+      return;
+    }
+    if ((paramDrawable instanceof LayerDrawable))
+    {
+      paramDrawable = (LayerDrawable)paramDrawable;
+      int i2 = paramDrawable.getNumberOfLayers();
+      while (i1 < i2)
       {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int j = paramDrawable.getNumberOfLayers();
-        int i = 0;
-        while (i < j)
-        {
-          a(paramDrawable.getDrawable(i), paramScaleType);
-          i += 1;
-        }
+        a(paramDrawable.getDrawable(i1), paramScaleType);
+        i1 += 1;
       }
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.e)
+    if (this.m)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = beuw.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        this.e = RoundedDrawable.a(this.e);
       }
-      a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ImageView.ScaleType.FIT_XY);
+      a(this.e, ImageView.ScaleType.FIT_XY);
     }
   }
   
   private Drawable b()
   {
+    Object localObject4 = getResources();
     Object localObject3 = null;
-    Resources localResources = getResources();
-    if (localResources == null) {
+    if (localObject4 == null) {
       return null;
     }
+    int i1 = this.o;
     Object localObject1 = localObject3;
-    if (this.jdField_b_of_type_Int != 0) {}
-    try
-    {
-      localObject1 = localResources.getDrawable(this.jdField_b_of_type_Int);
-      return beuw.a((Drawable)localObject1);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    Object localObject2;
+    if (i1 != 0) {
+      try
       {
-        QLog.w("RoundedImageView", 1, "Unable to find resource: " + this.jdField_b_of_type_Int, localException);
-        this.jdField_b_of_type_Int = 0;
-        Object localObject2 = localObject3;
+        localObject1 = ((Resources)localObject4).getDrawable(i1);
+      }
+      catch (Exception localException)
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("Unable to find resource: ");
+        ((StringBuilder)localObject4).append(this.o);
+        QLog.w("RoundedImageView", 1, ((StringBuilder)localObject4).toString(), localException);
+        this.o = 0;
+        localObject2 = localObject3;
       }
     }
+    return RoundedDrawable.a(localObject2);
   }
   
-  private void b()
+  private void c()
   {
-    if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_b_of_type_Boolean))
+    a(this.j, this.p);
+  }
+  
+  private void d()
+  {
+    Drawable localDrawable = this.j;
+    if ((localDrawable != null) && (this.i))
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.mutate();
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+      this.j = localDrawable.mutate();
+      if (this.k) {
+        this.j.setColorFilter(this.h);
       }
     }
   }
@@ -277,9 +266,54 @@ public class RoundedImageView
     invalidate();
   }
   
+  @ColorInt
+  public int getBorderColor()
+  {
+    return this.f.getDefaultColor();
+  }
+  
+  public ColorStateList getBorderColors()
+  {
+    return this.f;
+  }
+  
+  public float getBorderWidth()
+  {
+    return this.g;
+  }
+  
+  public float getCornerRadius()
+  {
+    return getMaxCornerRadius();
+  }
+  
+  public float getMaxCornerRadius()
+  {
+    float[] arrayOfFloat = this.d;
+    int i2 = arrayOfFloat.length;
+    float f1 = 0.0F;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      f1 = Math.max(arrayOfFloat[i1], f1);
+      i1 += 1;
+    }
+    return f1;
+  }
+  
   public ImageView.ScaleType getScaleType()
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+    return this.p;
+  }
+  
+  public Shader.TileMode getTileModeX()
+  {
+    return this.q;
+  }
+  
+  public Shader.TileMode getTileModeY()
+  {
+    return this.r;
   }
   
   public void setBackground(Drawable paramDrawable)
@@ -289,25 +323,25 @@ public class RoundedImageView
   
   public void setBackgroundColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramInt);
-    setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.e = new ColorDrawable(paramInt);
+    setBackgroundDrawable(this.e);
   }
   
   @Deprecated
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.e = paramDrawable;
     a(true);
-    super.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    super.setBackgroundDrawable(this.e);
   }
   
   public void setBackgroundResource(@DrawableRes int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.o != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = b();
-      setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.o = paramInt;
+      this.e = b();
+      setBackgroundDrawable(this.e);
     }
   }
   
@@ -318,31 +352,27 @@ public class RoundedImageView
   
   public void setBorderColor(ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList.equals(paramColorStateList)) {
+    if (this.f.equals(paramColorStateList)) {
       return;
     }
-    if (paramColorStateList != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-      a();
-      a(false);
-      if (this.jdField_a_of_type_Float <= 0.0F) {
-        break;
-      }
-      invalidate();
-      return;
+    if (paramColorStateList == null) {
       paramColorStateList = ColorStateList.valueOf(-16777216);
+    }
+    this.f = paramColorStateList;
+    c();
+    a(false);
+    if (this.g > 0.0F) {
+      invalidate();
     }
   }
   
   public void setBorderWidth(float paramFloat)
   {
-    if (this.jdField_a_of_type_Float == paramFloat) {
+    if (this.g == paramFloat) {
       return;
     }
-    this.jdField_a_of_type_Float = paramFloat;
-    a();
+    this.g = paramFloat;
+    c();
     a(false);
     invalidate();
   }
@@ -354,12 +384,12 @@ public class RoundedImageView
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsColorFilter != paramColorFilter)
+    if (this.h != paramColorFilter)
     {
-      this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
-      b();
+      this.h = paramColorFilter;
+      this.k = true;
+      this.i = true;
+      d();
       invalidate();
     }
   }
@@ -371,33 +401,36 @@ public class RoundedImageView
   
   public void setCornerRadius(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((this.jdField_a_of_type_ArrayOfFloat[0] == paramFloat1) && (this.jdField_a_of_type_ArrayOfFloat[1] == paramFloat2) && (this.jdField_a_of_type_ArrayOfFloat[2] == paramFloat4) && (this.jdField_a_of_type_ArrayOfFloat[3] == paramFloat3)) {
+    float[] arrayOfFloat = this.d;
+    if ((arrayOfFloat[0] == paramFloat1) && (arrayOfFloat[1] == paramFloat2) && (arrayOfFloat[2] == paramFloat4) && (arrayOfFloat[3] == paramFloat3)) {
       return;
     }
-    this.jdField_a_of_type_ArrayOfFloat[0] = paramFloat1;
-    this.jdField_a_of_type_ArrayOfFloat[1] = paramFloat2;
-    this.jdField_a_of_type_ArrayOfFloat[3] = paramFloat3;
-    this.jdField_a_of_type_ArrayOfFloat[2] = paramFloat4;
-    a();
+    arrayOfFloat = this.d;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    arrayOfFloat[3] = paramFloat3;
+    arrayOfFloat[2] = paramFloat4;
+    c();
     a(false);
     invalidate();
   }
   
   public void setCornerRadius(int paramInt, float paramFloat)
   {
-    if (this.jdField_a_of_type_ArrayOfFloat[paramInt] == paramFloat) {
+    float[] arrayOfFloat = this.d;
+    if (arrayOfFloat[paramInt] == paramFloat) {
       return;
     }
-    this.jdField_a_of_type_ArrayOfFloat[paramInt] = paramFloat;
-    a();
+    arrayOfFloat[paramInt] = paramFloat;
+    c();
     a(false);
     invalidate();
   }
   
   public void setCornerRadiusDimen(int paramInt)
   {
-    float f = getResources().getDimension(paramInt);
-    setCornerRadius(f, f, f, f);
+    float f1 = getResources().getDimension(paramInt);
+    setCornerRadius(f1, f1, f1, f1);
   }
   
   public void setCornerRadiusDimen(int paramInt1, int paramInt2)
@@ -407,28 +440,28 @@ public class RoundedImageView
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = beuw.a(paramBitmap);
-    a();
-    super.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    this.n = 0;
+    this.j = RoundedDrawable.a(paramBitmap);
+    c();
+    super.setImageDrawable(this.j);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = beuw.a(paramDrawable);
-    a();
-    super.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    this.n = 0;
+    this.j = RoundedDrawable.a(paramDrawable);
+    c();
+    super.setImageDrawable(this.j);
   }
   
   public void setImageResource(@DrawableRes int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.n != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = a();
-      a();
-      super.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      this.n = paramInt;
+      this.j = a();
+      c();
+      super.setImageDrawable(this.j);
     }
   }
   
@@ -440,61 +473,65 @@ public class RoundedImageView
   
   public void setOval(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-    a();
+    this.l = paramBoolean;
+    c();
     a(false);
     invalidate();
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if ((!jdField_a_of_type_Boolean) && (paramScaleType == null)) {
+    if ((!b) && (paramScaleType == null)) {
       throw new AssertionError();
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType != paramScaleType)
+    if (this.p != paramScaleType)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
-      switch (beuy.a[paramScaleType.ordinal()])
+      this.p = paramScaleType;
+      switch (RoundedImageView.1.a[paramScaleType.ordinal()])
       {
       default: 
         super.setScaleType(paramScaleType);
+        break;
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+        super.setScaleType(ImageView.ScaleType.FIT_XY);
       }
-    }
-    for (;;)
-    {
-      a();
+      c();
       a(false);
       invalidate();
-      return;
-      super.setScaleType(ImageView.ScaleType.FIT_XY);
     }
   }
   
   public void setTileModeX(Shader.TileMode paramTileMode)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsShader$TileMode == paramTileMode) {
+    if (this.q == paramTileMode) {
       return;
     }
-    this.jdField_b_of_type_AndroidGraphicsShader$TileMode = paramTileMode;
-    a();
+    this.q = paramTileMode;
+    c();
     a(false);
     invalidate();
   }
   
   public void setTileModeY(Shader.TileMode paramTileMode)
   {
-    if (this.jdField_c_of_type_AndroidGraphicsShader$TileMode == paramTileMode) {
+    if (this.r == paramTileMode) {
       return;
     }
-    this.jdField_c_of_type_AndroidGraphicsShader$TileMode = paramTileMode;
-    a();
+    this.r = paramTileMode;
+    c();
     a(false);
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundedImageView
  * JD-Core Version:    0.7.0.1
  */

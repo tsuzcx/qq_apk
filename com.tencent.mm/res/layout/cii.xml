@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/lmp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:elevation="1.0dip">
+        <com.tencent.mm.ui.widget.pulldown.NestedBounceView android:id="@id/lmt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:layout_gravity="top" android:id="@id/lms" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+            <FrameLayout android:id="@id/lmn" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+                <RelativeLayout android:id="@id/lml" android:background="@drawable/b32" android:layout_width="@dimen/d4" android:layout_height="@dimen/cp">
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lmm" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:layout_centerInParent="true" android:rotation="90.0" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+                </RelativeLayout>
+            </FrameLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lmo" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:src="@raw/icons_filled_more" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        </RelativeLayout>
+        <ProgressBar android:id="@id/lmq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a74" />
+        <FrameLayout android:id="@id/lmr" android:background="@color/al2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/lms">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ijt" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/ln6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i" android:layout_marginBottom="@dimen/i" android:src="@raw/webview_refresh_icon" />
+                <TextView android:textSize="18.0sp" android:textColor="#ffdddddd" android:id="@id/ln7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lgy" style="@style/qc" />
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>

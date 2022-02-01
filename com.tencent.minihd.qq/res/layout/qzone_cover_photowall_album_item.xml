@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:gravity="center" android:id="@id/photowall_imageView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.customviews.MessageProgressTextView android:textSize="@dimen/textSizeS3" android:textColor="#ffffffff" android:gravity="center" android:id="@id/upload_progress" android:background="@color/qzone_cover_photowall_upload_progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:shadowColor="#ff000000" android:shadowDy="1.0" android:shadowRadius="5.0" android:layout_alignLeft="@id/photowall_imageView" android:layout_alignTop="@id/photowall_imageView" android:layout_alignRight="@id/photowall_imageView" android:layout_alignBottom="@id/photowall_imageView" />
+</RelativeLayout>

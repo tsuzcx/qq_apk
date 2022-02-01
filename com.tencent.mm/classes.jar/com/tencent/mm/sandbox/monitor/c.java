@@ -1,140 +1,156 @@
 package com.tencent.mm.sandbox.monitor;
 
-import com.tencent.mm.a.g;
-import com.tencent.mm.c.a;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import com.tencent.mm.d.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sandbox.b;
 import com.tencent.mm.sandbox.updater.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.File;
 
 public abstract class c
-  implements b
+  implements com.tencent.mm.sandbox.b
 {
-  public static final String ykf = com.tencent.mm.compatible.util.e.eQz;
-  protected int ykg;
-  public int ykh;
-  public int yki;
-  public String ykj;
-  private boolean ykk = false;
+  public static final String acmY = ;
+  protected int acmZ;
+  public int acna;
+  public int acnb;
+  public String acnc;
+  private boolean acnd = false;
   
   public c(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    this.ykh = paramInt1;
-    this.ykj = paramString;
-    this.ykg = paramInt2;
-    this.ykk = paramBoolean;
-    this.yki = com.tencent.mm.a.e.cM(amg());
-    paramString = new File(ykf);
+    this.acna = paramInt1;
+    this.acnc = paramString;
+    this.acmZ = paramInt2;
+    this.acnd = paramBoolean;
+    this.acnb = d.btZ(bOS());
+    paramString = new File(acmY);
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
-    ab.d("MM.GetUpdatePack", "NetSceneGetUpdatePack : temp path = " + amg() + " packOffset = " + this.yki);
+    Log.d("MM.GetUpdatePack", "NetSceneGetUpdatePack : temp path = " + bOS() + " packOffset = " + this.acnb);
   }
   
-  public static String Uc(String paramString)
+  public static String aMz(String paramString)
   {
-    return cf(paramString, false);
+    return ea(paramString, false);
   }
   
-  public static boolean aoJ(String paramString)
+  public static boolean btX(String paramString)
   {
-    return com.tencent.mm.a.e.cN(ykf + paramString + ".temp");
+    return d.ZC(acmY + paramString + ".temp");
   }
   
-  public static String aoK(String paramString)
+  public static String btY(String paramString)
   {
-    paramString = ykf + paramString + ".apk";
-    if ((com.tencent.mm.a.e.cN(paramString)) && (a.jdMethod_do(paramString))) {
+    paramString = acmY + paramString + ".apk";
+    if ((d.ZC(paramString)) && (a.hZ(paramString))) {
       return paramString;
     }
     return null;
   }
   
-  public static String cf(String paramString, boolean paramBoolean)
+  public static String ea(String paramString, boolean paramBoolean)
   {
-    Object localObject1 = ykf + paramString + ".temp";
-    String str3 = ykf + paramString + ".apk";
-    if ((com.tencent.mm.a.e.cN((String)localObject1)) && (!paramBoolean) && ((a.jdMethod_do((String)localObject1)) || (paramString.equalsIgnoreCase(g.getMD5((String)localObject1)))))
+    String str1 = acmY + paramString + ".temp";
+    String str2 = acmY + paramString + ".apk";
+    Object localObject1;
+    if ((d.ZC(str1)) && (!paramBoolean) && ((a.hZ(str1)) || (paramString.equalsIgnoreCase(d.bub(str1)))))
     {
-      com.tencent.mm.a.e.h(ykf, paramString + ".temp", paramString + ".apk");
-      return str3;
-    }
-    if (com.tencent.mm.a.e.cN(str3))
-    {
-      if (a.jdMethod_do(str3))
+      str1 = acmY;
+      localObject1 = paramString + ".temp";
+      paramString = paramString + ".apk";
+      if ((str1 == null) || (localObject1 == null) || (paramString == null)) {}
+      for (;;)
       {
-        ab.i("MM.GetUpdatePack", "summertoken getReadyPack checkApkMd5 update pack ok");
-        return str3;
+        return str2;
+        localObject1 = new File(str1 + (String)localObject1);
+        paramString = new File(str1 + paramString);
+        if (((File)localObject1).exists()) {
+          ((File)localObject1).renameTo(paramString);
+        }
       }
-      localObject1 = null;
+    }
+    Object localObject2;
+    if (d.ZC(str2))
+    {
+      if (a.hZ(str2))
+      {
+        Log.i("MM.GetUpdatePack", "summertoken getReadyPack checkApkMd5 update pack ok");
+        return str2;
+      }
+      localObject2 = null;
+      str1 = null;
+      localObject1 = localObject2;
       try
       {
-        String str2 = com.tencent.mm.c.c.u(new File(str3));
-        str1 = str2;
-        localObject1 = str2;
-        if (bo.isNullOrNil(str2))
+        if (MMApplicationContext.getContext().getApplicationInfo().targetSdkVersion <= 29)
         {
-          localObject1 = str2;
-          h.qsU.idkeyStat(322L, 10L, 1L, false);
-          localObject1 = str2;
-          h.qsU.e(11098, new Object[] { Integer.valueOf(4010) });
-          str1 = str2;
+          localObject1 = localObject2;
+          str1 = com.tencent.mm.d.c.z(new File(str2));
+        }
+        localObject2 = str1;
+        localObject1 = str1;
+        if (Util.isNullOrNil(str1))
+        {
+          localObject1 = str1;
+          h.OAn.idkeyStat(322L, 10L, 1L, false);
+          localObject1 = str1;
+          h.OAn.b(11098, new Object[] { Integer.valueOf(4010) });
+          localObject2 = str1;
         }
       }
       catch (Exception localException)
       {
-        Object localObject2;
         for (;;)
         {
-          String str1;
-          ab.w("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode e:" + localException.getMessage());
-          h.qsU.idkeyStat(322L, 9L, 1L, false);
-          h.qsU.e(11098, new Object[] { Integer.valueOf(4009), localException.getMessage() });
+          Log.w("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode e:" + localException.getMessage());
+          h.OAn.idkeyStat(322L, 9L, 1L, false);
+          h.OAn.b(11098, new Object[] { Integer.valueOf(4009), localException.getMessage() });
           localObject2 = localObject1;
         }
-        paramString = i.drI();
-        ab.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig[%s], downloadedSig[%s]", new Object[] { localObject2, paramString });
-        if (!localObject2.equals(paramString)) {
-          break label389;
+        paramString = i.iSq();
+        Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig[%s], downloadedSig[%s]", new Object[] { localObject2, paramString });
+        if (!((String)localObject2).equals(paramString)) {
+          break label491;
         }
-        ab.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check update pack ok");
-        return str3;
-        ab.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check invalid");
-        h.qsU.idkeyStat(322L, 11L, 1L, false);
-        h.qsU.e(11098, new Object[] { Integer.valueOf(4011), String.format("%s,%s", new Object[] { paramString, localObject2 }) });
-        ab.e("MM.GetUpdatePack", "summertoken getReadyPack: update pack MD5 not same");
-        com.tencent.mm.a.e.deleteFile(str3);
+        Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check update pack ok");
+        return str2;
+        Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check invalid");
+        h.OAn.idkeyStat(322L, 11L, 1L, false);
+        h.OAn.b(11098, new Object[] { Integer.valueOf(4011), String.format("%s,%s", new Object[] { paramString, localObject2 }) });
+        Log.e("MM.GetUpdatePack", "summertoken getReadyPack: update pack MD5 not same");
+        d.deleteFile(str2);
       }
-      ab.i("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode pkgsig[%s]", new Object[] { str1 });
-      if (bo.isNullOrNil(str1))
+      Log.i("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode pkgsig[%s]", new Object[] { localObject2 });
+      if (Util.isNullOrNil((String)localObject2))
       {
-        if (!paramString.equalsIgnoreCase(g.getMD5(str3))) {
-          break label452;
+        if (!paramString.equalsIgnoreCase(d.bub(str2))) {
+          break label555;
         }
-        ab.i("MM.GetUpdatePack", "summertoken getReadyPack no pkgsig getMD5 update pack ok");
-        return str3;
+        Log.i("MM.GetUpdatePack", "summertoken getReadyPack no pkgsig getMD5 update pack ok");
+        return str2;
       }
     }
-    label389:
-    label452:
+    label491:
     return null;
   }
   
-  public String amg()
+  public String bOS()
   {
-    return ykf + this.ykj + ".temp";
+    return acmY + this.acnc + ".temp";
   }
   
   public final void deleteTempFile()
   {
     try
     {
-      ab.d("MM.GetUpdatePack", "deleteTempFile");
-      File localFile = new File(amg());
+      Log.d("MM.GetUpdatePack", "deleteTempFile");
+      File localFile = new File(bOS());
       if (localFile.exists()) {
         localFile.delete();
       }
@@ -142,23 +158,23 @@ public abstract class c
     }
     catch (Exception localException)
     {
-      ab.e("MM.GetUpdatePack", "error in deleteTempFile");
+      Log.e("MM.GetUpdatePack", "error in deleteTempFile");
     }
   }
   
-  public String dru()
+  public String iSd()
   {
-    return ykf + this.ykj + ".apk";
+    return acmY + this.acnc + ".apk";
   }
   
-  public final boolean drv()
+  public final boolean iSe()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.ykk)
+    if (this.acnd)
     {
       bool1 = bool2;
-      if (!at.isWifi(ah.getContext())) {
+      if (!NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
         bool1 = true;
       }
     }
@@ -167,7 +183,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.c
  * JD-Core Version:    0.7.0.1
  */

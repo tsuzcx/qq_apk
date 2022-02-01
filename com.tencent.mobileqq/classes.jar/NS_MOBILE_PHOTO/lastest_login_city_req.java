@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class lastest_login_city_req
   extends JceStruct
 {
-  public long uin;
+  public long uin = 0L;
   
   public lastest_login_city_req() {}
   
@@ -28,7 +28,7 @@ public final class lastest_login_city_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.lastest_login_city_req
  * JD-Core Version:    0.7.0.1
  */

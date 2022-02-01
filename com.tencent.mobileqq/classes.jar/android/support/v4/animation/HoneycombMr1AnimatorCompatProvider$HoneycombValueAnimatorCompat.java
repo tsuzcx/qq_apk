@@ -21,8 +21,9 @@ class HoneycombMr1AnimatorCompatProvider$HoneycombValueAnimatorCompat
   
   public void addUpdateListener(AnimatorUpdateListenerCompat paramAnimatorUpdateListenerCompat)
   {
-    if ((this.mWrapped instanceof ValueAnimator)) {
-      ((ValueAnimator)this.mWrapped).addUpdateListener(new HoneycombMr1AnimatorCompatProvider.HoneycombValueAnimatorCompat.1(this, paramAnimatorUpdateListenerCompat));
+    Animator localAnimator = this.mWrapped;
+    if ((localAnimator instanceof ValueAnimator)) {
+      ((ValueAnimator)localAnimator).addUpdateListener(new HoneycombMr1AnimatorCompatProvider.HoneycombValueAnimatorCompat.1(this, paramAnimatorUpdateListenerCompat));
     }
   }
   

@@ -8,22 +8,12 @@ public class Assume
 {
   public static void assumeFalse(String paramString, boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      assumeTrue(paramString, paramBoolean);
-      return;
-    }
+    assumeTrue(paramString, paramBoolean ^ true);
   }
   
   public static void assumeFalse(boolean paramBoolean)
   {
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      assumeTrue(paramBoolean);
-      return;
-    }
+    assumeTrue(paramBoolean ^ true);
   }
   
   public static void assumeNoException(String paramString, Throwable paramThrowable)
@@ -43,23 +33,26 @@ public class Assume
   
   public static <T> void assumeThat(T paramT, Matcher<T> paramMatcher)
   {
-    if (!paramMatcher.matches(paramT)) {
-      throw new AssumptionViolatedException(paramT, paramMatcher);
+    if (paramMatcher.matches(paramT)) {
+      return;
     }
+    throw new AssumptionViolatedException(paramT, paramMatcher);
   }
   
   public static <T> void assumeThat(String paramString, T paramT, Matcher<T> paramMatcher)
   {
-    if (!paramMatcher.matches(paramT)) {
-      throw new AssumptionViolatedException(paramString, paramT, paramMatcher);
+    if (paramMatcher.matches(paramT)) {
+      return;
     }
+    throw new AssumptionViolatedException(paramString, paramT, paramMatcher);
   }
   
   public static void assumeTrue(String paramString, boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new AssumptionViolatedException(paramString);
+    if (paramBoolean) {
+      return;
     }
+    throw new AssumptionViolatedException(paramString);
   }
   
   public static void assumeTrue(boolean paramBoolean)
@@ -69,7 +62,7 @@ public class Assume
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.Assume
  * JD-Core Version:    0.7.0.1
  */

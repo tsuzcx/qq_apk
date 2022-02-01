@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.shortvideo.widget;
 
-import azlz;
-
 class ImageViewVideoPlayer$3
   implements Runnable
 {
@@ -9,14 +7,14 @@ class ImageViewVideoPlayer$3
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.ab_();
+    if (this.this$0.mPlayerEndListener != null) {
+      this.this$0.mPlayerEndListener.onPlayerEnd();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

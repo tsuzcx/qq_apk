@@ -3,7 +3,8 @@ package com.tencent.mobileqq.mini.entry.search.comm;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StUserInfo;
 import NS_STORE_APP_CLIENT.STORE_APP_CLIENT.StoreAppInfo;
-import alud;
+import NS_STORE_APP_SEARCH.MiniAppSearch.SearchExtInfo;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -11,10 +12,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
 
 public class SearchInfo
+  implements ItemInfo
 {
   public String categoryDesc;
   public MiniAppInfo miniAppInfo;
   public String playingFriendsDesc;
+  private int position;
+  private MiniAppSearch.SearchExtInfo searchExtInfo;
   public List<STORE_APP_CLIENT.StUserInfo> userInfoList;
   public int userNum;
   
@@ -37,20 +41,57 @@ public class SearchInfo
     return this.miniAppInfo;
   }
   
+  public int getPosition()
+  {
+    return this.position;
+  }
+  
+  public MiniAppSearch.SearchExtInfo getSearchExtInfo()
+  {
+    return this.searchExtInfo;
+  }
+  
+  public int getType()
+  {
+    return 2;
+  }
+  
   public String getUseNumberDesc()
   {
-    if (this.userNum < 10000) {
-      return this.userNum + alud.a(2131694431);
+    int i = this.userNum;
+    if (i < 10000)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.userNum);
+      localStringBuilder.append(HardCodeUtil.a(2131891801));
+      return localStringBuilder.toString();
     }
-    if (this.userNum >= 100000000) {
-      return this.userNum / 100000000 + alud.a(2131694430);
+    if (i >= 100000000)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.userNum / 100000000);
+      localStringBuilder.append(HardCodeUtil.a(2131891800));
+      return localStringBuilder.toString();
     }
-    return this.userNum / 10000 + alud.a(2131694432);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.userNum / 10000);
+    localStringBuilder.append(HardCodeUtil.a(2131891802));
+    return localStringBuilder.toString();
+  }
+  
+  public void setPosition(int paramInt)
+  {
+    this.position = paramInt;
+  }
+  
+  public void setSearchExtInfo(MiniAppSearch.SearchExtInfo paramSearchExtInfo)
+  {
+    this.searchExtInfo = paramSearchExtInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.comm.SearchInfo
  * JD-Core Version:    0.7.0.1
  */

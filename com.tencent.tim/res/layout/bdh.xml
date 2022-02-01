@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/e3c" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/dhl" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="23.0dip" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/dhr" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="20.0dip" android:layout_alignTop="@id/dhl" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/dgh" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_alignTop="@id/dhl" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#7ffff2b3" android:id="@id/ke8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/dhl" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffdcac" android:id="@id/ker" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/rhl" android:layout_below="@id/ke8" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/dh7" android:layout_width="150.0dip" android:layout_height="150.0dip" android:layout_below="@id/ker" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/aof" android:background="@drawable/fqs" android:visibility="invisible" android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginTop="30.0dip" android:layout_alignTop="@id/dh7" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textSize="18.0dip" android:textColor="@color/uo" android:id="@id/ke4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="102.5dip" android:text="@string/rhm" android:layout_centerHorizontal="true" />
+    <Button android:textSize="14.0dip" android:textColor="@color/ur" android:id="@id/ajl" android:background="@drawable/aon" android:paddingLeft="11.0dip" android:paddingTop="8.0dip" android:paddingRight="11.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/rhp" android:layout_below="@id/ke4" android:layout_centerHorizontal="true" />
+</RelativeLayout>

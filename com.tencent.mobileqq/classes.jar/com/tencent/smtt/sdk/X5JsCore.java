@@ -9,105 +9,36 @@ import java.nio.ByteBuffer;
 
 public class X5JsCore
 {
-  private static final String TAG = "X5JsCore";
-  private static X5JsCore.Availability sCanUseX5JsCore = X5JsCore.Availability.UNINITIALIZED;
-  private static X5JsCore.Availability sCanUseX5JsCoreNewApi = X5JsCore.Availability.UNINITIALIZED;
-  private static X5JsCore.Availability sX5JsCoreCanUseBuffer = X5JsCore.Availability.UNINITIALIZED;
-  private Object mBridge = null;
-  private final Context mContext;
-  private WebView mWebView = null;
+  private static X5JsCore.a a = X5JsCore.a.a;
+  private static X5JsCore.a b = X5JsCore.a.a;
+  private static X5JsCore.a c = X5JsCore.a.a;
+  private final Context d;
+  private Object e = null;
+  private WebView f = null;
   
   @Deprecated
   public X5JsCore(Context paramContext)
   {
-    this.mContext = paramContext;
+    this.d = paramContext;
     if (canUseX5JsCore(paramContext))
     {
-      Object localObject = invokeWebCoreProxyMethod("createX5JavaBridge", new Class[] { Context.class }, new Object[] { paramContext });
+      Object localObject = a("createX5JavaBridge", new Class[] { Context.class }, new Object[] { paramContext });
       if (localObject != null)
       {
-        this.mBridge = localObject;
+        this.e = localObject;
         return;
       }
     }
     Log.e("X5JsCore", "X5JsCore create X5JavaBridge failure, use fallback!");
-    this.mWebView = new WebView(paramContext);
-    this.mWebView.getSettings().setJavaScriptEnabled(true);
+    this.f = new WebView(paramContext);
+    this.f.getSettings().setJavaScriptEnabled(true);
   }
   
-  public static boolean canUseX5JsCore(Context paramContext)
-  {
-    if (sCanUseX5JsCore != X5JsCore.Availability.UNINITIALIZED) {
-      return sCanUseX5JsCore == X5JsCore.Availability.AVAILABLE;
-    }
-    sCanUseX5JsCore = X5JsCore.Availability.UNAVAILABLE;
-    paramContext = invokeWebCoreProxyMethod("canUseX5JsCore", new Class[] { Context.class }, new Object[] { paramContext });
-    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
-    {
-      paramContext = JsValue.factory();
-      invokeWebCoreProxyMethod("setJsValueFactory", new Class[] { Object.class }, new Object[] { paramContext });
-      sCanUseX5JsCore = X5JsCore.Availability.AVAILABLE;
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean canUseX5JsCoreNewAPI(Context paramContext)
-  {
-    if (sCanUseX5JsCoreNewApi != X5JsCore.Availability.UNINITIALIZED) {
-      return sCanUseX5JsCoreNewApi == X5JsCore.Availability.AVAILABLE;
-    }
-    sCanUseX5JsCoreNewApi = X5JsCore.Availability.UNAVAILABLE;
-    paramContext = invokeWebCoreProxyMethod("canUseX5JsCoreNewAPI", new Class[] { Context.class }, new Object[] { paramContext });
-    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
-    {
-      sCanUseX5JsCoreNewApi = X5JsCore.Availability.AVAILABLE;
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean canX5JsCoreUseNativeBuffer(Context paramContext)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if (sX5JsCoreCanUseBuffer != X5JsCore.Availability.UNINITIALIZED) {
-      if (sX5JsCoreCanUseBuffer == X5JsCore.Availability.AVAILABLE) {
-        bool1 = true;
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            for (;;)
-            {
-              return bool1;
-              bool1 = false;
-            }
-            sX5JsCoreCanUseBuffer = X5JsCore.Availability.UNAVAILABLE;
-            bool1 = bool2;
-          } while (!canUseX5JsCore(paramContext));
-          paramContext = invokeWebCoreProxyMethod("canX5JsCoreUseBuffer", new Class[] { Context.class }, new Object[] { paramContext });
-          bool1 = bool2;
-        } while (paramContext == null);
-        bool1 = bool2;
-      } while (!(paramContext instanceof Boolean));
-      bool1 = bool2;
-    } while (!((Boolean)paramContext).booleanValue());
-    sX5JsCoreCanUseBuffer = X5JsCore.Availability.AVAILABLE;
-    return true;
-  }
-  
-  protected static IX5JsVirtualMachine createVirtualMachine(Context paramContext, Looper paramLooper)
+  protected static IX5JsVirtualMachine a(Context paramContext, Looper paramLooper)
   {
     if (canUseX5JsCore(paramContext))
     {
-      paramContext = invokeWebCoreProxyMethod("createX5JsVirtualMachine", new Class[] { Context.class, Looper.class }, new Object[] { paramContext, paramLooper });
+      paramContext = a("createX5JsVirtualMachine", new Class[] { Context.class, Looper.class }, new Object[] { paramContext, paramLooper });
       if (paramContext != null) {
         return (IX5JsVirtualMachine)paramContext;
       }
@@ -116,95 +47,159 @@ public class X5JsCore
     return null;
   }
   
-  protected static Object currentContextData()
+  protected static Object a()
   {
-    return invokeWebCoreProxyMethod("currentContextData", new Class[0], new Object[0]);
+    return a("currentContextData", new Class[0], new Object[0]);
   }
   
-  private static Object invokeWebCoreProxyMethod(String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
+  private static Object a(String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
   {
     try
     {
-      X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-      if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-        return localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", paramString, paramArrayOfClass, paramVarArgs);
+      x localx = x.a();
+      if ((localx != null) && (localx.b())) {
+        return localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", paramString, paramArrayOfClass, paramVarArgs);
       }
-      Log.e("X5JsCore", "X5Jscore#" + paramString + " - x5CoreEngine is null or is not x5core.");
+      paramArrayOfClass = new StringBuilder();
+      paramArrayOfClass.append("X5Jscore#");
+      paramArrayOfClass.append(paramString);
+      paramArrayOfClass.append(" - x5CoreEngine is null or is not x5core.");
+      Log.e("X5JsCore", paramArrayOfClass.toString());
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     return null;
+  }
+  
+  public static boolean canUseX5JsCore(Context paramContext)
+  {
+    X5JsCore.a locala1 = a;
+    X5JsCore.a locala2 = X5JsCore.a.a;
+    boolean bool = false;
+    if (locala1 != locala2)
+    {
+      if (a == X5JsCore.a.c) {
+        bool = true;
+      }
+      return bool;
+    }
+    a = X5JsCore.a.b;
+    paramContext = a("canUseX5JsCore", new Class[] { Context.class }, new Object[] { paramContext });
+    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
+    {
+      paramContext = JsValue.a();
+      a("setJsValueFactory", new Class[] { Object.class }, new Object[] { paramContext });
+      a = X5JsCore.a.c;
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean canUseX5JsCoreNewAPI(Context paramContext)
+  {
+    X5JsCore.a locala1 = c;
+    X5JsCore.a locala2 = X5JsCore.a.a;
+    boolean bool = false;
+    if (locala1 != locala2)
+    {
+      if (c == X5JsCore.a.c) {
+        bool = true;
+      }
+      return bool;
+    }
+    c = X5JsCore.a.b;
+    paramContext = a("canUseX5JsCoreNewAPI", new Class[] { Context.class }, new Object[] { paramContext });
+    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
+    {
+      c = X5JsCore.a.c;
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean canX5JsCoreUseNativeBuffer(Context paramContext)
+  {
+    if (b != X5JsCore.a.a) {
+      return b == X5JsCore.a.c;
+    }
+    b = X5JsCore.a.b;
+    if (!canUseX5JsCore(paramContext)) {
+      return false;
+    }
+    paramContext = a("canX5JsCoreUseBuffer", new Class[] { Context.class }, new Object[] { paramContext });
+    if ((paramContext != null) && ((paramContext instanceof Boolean)) && (((Boolean)paramContext).booleanValue()))
+    {
+      b = X5JsCore.a.c;
+      return true;
+    }
+    return false;
   }
   
   @Deprecated
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    if (this.mBridge != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.mBridge;
-      invokeWebCoreProxyMethod("addJavascriptInterface", new Class[] { Object.class, String.class, Object.class }, new Object[] { paramObject, paramString, localObject });
-    }
-    while (this.mWebView == null)
-    {
-      Object localObject;
+      a("addJavascriptInterface", new Class[] { Object.class, String.class, Object.class }, new Object[] { paramObject, paramString, localObject });
       return;
     }
-    this.mWebView.addJavascriptInterface(paramObject, paramString);
-    this.mWebView.loadUrl("about:blank");
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((WebView)localObject).addJavascriptInterface(paramObject, paramString);
+      this.f.loadUrl("about:blank");
+    }
   }
   
   @Deprecated
   public void destroy()
   {
-    if (this.mBridge != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.mBridge;
-      invokeWebCoreProxyMethod("destroyX5JsCore", new Class[] { Object.class }, new Object[] { localObject });
-      this.mBridge = null;
-    }
-    while (this.mWebView == null)
-    {
-      Object localObject;
+      a("destroyX5JsCore", new Class[] { Object.class }, new Object[] { localObject });
+      this.e = null;
       return;
     }
-    this.mWebView.clearHistory();
-    this.mWebView.clearCache(true);
-    this.mWebView.loadUrl("about:blank");
-    this.mWebView.freeMemory();
-    this.mWebView.pauseTimers();
-    this.mWebView.destroy();
-    this.mWebView = null;
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((WebView)localObject).clearHistory();
+      this.f.clearCache(true);
+      this.f.loadUrl("about:blank");
+      this.f.freeMemory();
+      this.f.pauseTimers();
+      this.f.destroy();
+      this.f = null;
+    }
   }
   
   @Deprecated
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    if (this.mBridge != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.mBridge;
-      invokeWebCoreProxyMethod("evaluateJavascript", new Class[] { String.class, android.webkit.ValueCallback.class, Object.class }, new Object[] { paramString, paramValueCallback, localObject });
-    }
-    while (this.mWebView == null)
-    {
-      Object localObject;
+      a("evaluateJavascript", new Class[] { String.class, android.webkit.ValueCallback.class, Object.class }, new Object[] { paramString, paramValueCallback, localObject });
       return;
     }
-    this.mWebView.evaluateJavascript(paramString, paramValueCallback);
+    localObject = this.f;
+    if (localObject != null) {
+      ((WebView)localObject).evaluateJavascript(paramString, paramValueCallback);
+    }
   }
   
   @Deprecated
   public ByteBuffer getNativeBuffer(int paramInt)
   {
-    if ((this.mBridge != null) && (canX5JsCoreUseNativeBuffer(this.mContext)))
+    if ((this.e != null) && (canX5JsCoreUseNativeBuffer(this.d)))
     {
       Object localObject1 = Integer.TYPE;
-      Object localObject2 = this.mBridge;
-      localObject1 = invokeWebCoreProxyMethod("getNativeBuffer", new Class[] { Object.class, localObject1 }, new Object[] { localObject2, Integer.valueOf(paramInt) });
+      Object localObject2 = this.e;
+      localObject1 = a("getNativeBuffer", new Class[] { Object.class, localObject1 }, new Object[] { localObject2, Integer.valueOf(paramInt) });
       if ((localObject1 != null) && ((localObject1 instanceof ByteBuffer))) {
         return (ByteBuffer)localObject1;
       }
@@ -215,10 +210,10 @@ public class X5JsCore
   @Deprecated
   public int getNativeBufferId()
   {
-    if ((this.mBridge != null) && (canX5JsCoreUseNativeBuffer(this.mContext)))
+    if ((this.e != null) && (canX5JsCoreUseNativeBuffer(this.d)))
     {
-      Object localObject = this.mBridge;
-      localObject = invokeWebCoreProxyMethod("getNativeBufferId", new Class[] { Object.class }, new Object[] { localObject });
+      Object localObject = this.e;
+      localObject = a("getNativeBufferId", new Class[] { Object.class }, new Object[] { localObject });
       if ((localObject != null) && ((localObject instanceof Integer))) {
         return ((Integer)localObject).intValue();
       }
@@ -229,73 +224,68 @@ public class X5JsCore
   @Deprecated
   public void pause()
   {
-    if (this.mBridge != null)
-    {
-      Object localObject = this.mBridge;
-      invokeWebCoreProxyMethod("pause", new Class[] { Object.class }, new Object[] { localObject });
+    Object localObject = this.e;
+    if (localObject != null) {
+      a("pause", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
   
   @Deprecated
   public void pauseTimers()
   {
-    if (this.mBridge != null)
-    {
-      Object localObject = this.mBridge;
-      invokeWebCoreProxyMethod("pauseTimers", new Class[] { Object.class }, new Object[] { localObject });
+    Object localObject = this.e;
+    if (localObject != null) {
+      a("pauseTimers", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
   
   @Deprecated
   public void removeJavascriptInterface(String paramString)
   {
-    if (this.mBridge != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      localObject = this.mBridge;
-      invokeWebCoreProxyMethod("removeJavascriptInterface", new Class[] { String.class, Object.class }, new Object[] { paramString, localObject });
-    }
-    while (this.mWebView == null)
-    {
-      Object localObject;
+      a("removeJavascriptInterface", new Class[] { String.class, Object.class }, new Object[] { paramString, localObject });
       return;
     }
-    this.mWebView.removeJavascriptInterface(paramString);
+    localObject = this.f;
+    if (localObject != null) {
+      ((WebView)localObject).removeJavascriptInterface(paramString);
+    }
   }
   
   @Deprecated
   public void resume()
   {
-    if (this.mBridge != null)
-    {
-      Object localObject = this.mBridge;
-      invokeWebCoreProxyMethod("resume", new Class[] { Object.class }, new Object[] { localObject });
+    Object localObject = this.e;
+    if (localObject != null) {
+      a("resume", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
   
   @Deprecated
   public void resumeTimers()
   {
-    if (this.mBridge != null)
-    {
-      Object localObject = this.mBridge;
-      invokeWebCoreProxyMethod("resumeTimers", new Class[] { Object.class }, new Object[] { localObject });
+    Object localObject = this.e;
+    if (localObject != null) {
+      a("resumeTimers", new Class[] { Object.class }, new Object[] { localObject });
     }
   }
   
   @Deprecated
   public void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer)
   {
-    if ((this.mBridge != null) && (canX5JsCoreUseNativeBuffer(this.mContext)))
+    if ((this.e != null) && (canX5JsCoreUseNativeBuffer(this.d)))
     {
       Class localClass = Integer.TYPE;
-      Object localObject = this.mBridge;
-      invokeWebCoreProxyMethod("setNativeBuffer", new Class[] { Object.class, localClass, ByteBuffer.class }, new Object[] { localObject, Integer.valueOf(paramInt), paramByteBuffer });
+      Object localObject = this.e;
+      a("setNativeBuffer", new Class[] { Object.class, localClass, ByteBuffer.class }, new Object[] { localObject, Integer.valueOf(paramInt), paramByteBuffer });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.X5JsCore
  * JD-Core Version:    0.7.0.1
  */

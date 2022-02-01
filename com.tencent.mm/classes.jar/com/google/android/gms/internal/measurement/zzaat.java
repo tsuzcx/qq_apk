@@ -13,14 +13,14 @@ final class zzaat
   
   static
   {
-    AppMethodBeat.i(3357);
+    AppMethodBeat.i(40147);
     zzbtq = new zzaat();
-    AppMethodBeat.o(3357);
+    AppMethodBeat.o(40147);
   }
   
   private zzaat()
   {
-    AppMethodBeat.i(3355);
+    AppMethodBeat.i(40145);
     this.zzbts = new ConcurrentHashMap();
     Object localObject1 = null;
     int i = 0;
@@ -39,21 +39,20 @@ final class zzaat
       localObject2 = new zzaad();
     }
     this.zzbtr = ((zzaaw)localObject2);
-    AppMethodBeat.o(3355);
+    AppMethodBeat.o(40145);
   }
   
   private static zzaaw zzfl(String paramString)
   {
-    AppMethodBeat.i(3356);
+    AppMethodBeat.i(40146);
     try
     {
       paramString = (zzaaw)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
-      AppMethodBeat.o(3356);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(3356);
+      AppMethodBeat.o(40146);
     }
     return null;
   }
@@ -65,7 +64,7 @@ final class zzaat
   
   public final <T> zzaav<T> zzt(T paramT)
   {
-    AppMethodBeat.i(3354);
+    AppMethodBeat.i(40144);
     Class localClass = paramT.getClass();
     zzzr.zza(localClass, "messageType");
     zzaav localzzaav = (zzaav)this.zzbts.get(localClass);
@@ -77,21 +76,21 @@ final class zzaat
       zzzr.zza(paramT, "schema");
       localzzaav = (zzaav)this.zzbts.putIfAbsent(localClass, paramT);
       if (localzzaav == null) {
-        break label92;
+        break label90;
       }
       paramT = localzzaav;
     }
-    label92:
+    label90:
     for (;;)
     {
-      AppMethodBeat.o(3354);
+      AppMethodBeat.o(40144);
       return paramT;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaat
  * JD-Core Version:    0.7.0.1
  */

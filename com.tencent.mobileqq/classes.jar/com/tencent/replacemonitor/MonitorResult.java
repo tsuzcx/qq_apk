@@ -23,12 +23,32 @@ public class MonitorResult
   
   public String toString()
   {
-    return " step = " + this.step + " resultCode = " + this.resultCode + " resultMsg = " + this.resultMsg + " monitorType = " + this.monitorType + " replacedPkgName = " + this.replacedPkgName + " replacedVersionCode = " + this.replacedVersionCode + " replacedFileSize = " + this.replacedFileSize + " replaceChannelId = " + this.replaceChannelId + " replaceFileMD5 = " + this.replaceFileMD5 + " replaceTime = " + this.replaceTime;
+    StringBuffer localStringBuffer = new StringBuffer(" step = ");
+    localStringBuffer.append(this.step);
+    localStringBuffer.append(" resultCode = ");
+    localStringBuffer.append(this.resultCode);
+    localStringBuffer.append(" resultMsg = ");
+    localStringBuffer.append(this.resultMsg);
+    localStringBuffer.append(" monitorType = ");
+    localStringBuffer.append(this.monitorType);
+    localStringBuffer.append(" replacedPkgName = ");
+    localStringBuffer.append(this.replacedPkgName);
+    localStringBuffer.append(" replacedVersionCode = ");
+    localStringBuffer.append(this.replacedVersionCode);
+    localStringBuffer.append(" replacedFileSize = ");
+    localStringBuffer.append(this.replacedFileSize);
+    localStringBuffer.append(" replaceChannelId = ");
+    localStringBuffer.append(this.replaceChannelId);
+    localStringBuffer.append(" replaceFileMD5 = ");
+    localStringBuffer.append(this.replaceFileMD5);
+    localStringBuffer.append(" replaceTime = ");
+    localStringBuffer.append(this.replaceTime);
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.replacemonitor.MonitorResult
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,7 @@ class DefaultDispatcher$InternalHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 16) {
       return;
     }
     paramMessage = (PendingPost)paramMessage.obj;
@@ -26,7 +24,7 @@ class DefaultDispatcher$InternalHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher.InternalHandler
  * JD-Core Version:    0.7.0.1
  */

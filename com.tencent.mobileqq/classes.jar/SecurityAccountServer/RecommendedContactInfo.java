@@ -1,11 +1,8 @@
 package SecurityAccountServer;
 
-import alud;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class RecommendedContactInfo
   extends JceStruct
@@ -13,25 +10,22 @@ public final class RecommendedContactInfo
   static byte[] cache_MobileNoMask = (byte[])new byte[1];
   static int cache_conType = 0;
   static int cache_eNetworkType = 0;
-  public byte[] MobileNoMask;
-  public int age;
+  public byte[] MobileNoMask = null;
+  public int age = 0;
   public int conType = 0;
   public String contactsInfoEncrypt = "";
-  public byte detalStatusFlag;
+  public byte detalStatusFlag = 0;
   public int eNetworkType = 0;
-  public long faceFlag;
-  public long faceSysId;
-  public long faceTimeStamp;
-  public long faceType;
+  public long faceFlag = 0L;
+  public long faceSysId = 0L;
+  public long faceTimeStamp = 0L;
+  public long faceType = 0L;
   public String faceUrl = "";
-  public int iTermType;
-  public String name;
+  public int iTermType = 0;
   public String personalSign = "";
-  public int sex;
+  public int sex = 0;
   public String strTermDesc = "";
-  public long uAbiFlag;
-  public String unicode;
-  public String url;
+  public long uAbiFlag = 0L;
   
   static
   {
@@ -80,31 +74,6 @@ public final class RecommendedContactInfo
     this.faceSysId = paramJceInputStream.read(this.faceSysId, 16, false);
   }
   
-  public JSONObject toJson()
-  {
-    localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("mobile", this.unicode);
-      localJSONObject.put("name", this.name);
-      localJSONObject.put("age", this.age);
-      localJSONObject.put("sex", this.sex);
-      localJSONObject.put("signature", this.personalSign);
-      if (this.eNetworkType != 0) {}
-      for (String str = alud.a(2131720314);; str = alud.a(2131720313))
-      {
-        localJSONObject.put("online", str);
-        localJSONObject.put("url", this.url);
-        return localJSONObject;
-      }
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.contactsInfoEncrypt, 1);
@@ -113,27 +82,30 @@ public final class RecommendedContactInfo
     paramJceOutputStream.write(this.detalStatusFlag, 4);
     paramJceOutputStream.write(this.iTermType, 5);
     paramJceOutputStream.write(this.eNetworkType, 6);
-    if (this.strTermDesc != null) {
-      paramJceOutputStream.write(this.strTermDesc, 7);
+    String str = this.strTermDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.uAbiFlag, 8);
     paramJceOutputStream.write(this.sex, 9);
     paramJceOutputStream.write(this.age, 10);
-    if (this.personalSign != null) {
-      paramJceOutputStream.write(this.personalSign, 11);
+    str = this.personalSign;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
     paramJceOutputStream.write(this.faceType, 12);
     paramJceOutputStream.write(this.faceTimeStamp, 13);
     paramJceOutputStream.write(this.faceFlag, 14);
-    if (this.faceUrl != null) {
-      paramJceOutputStream.write(this.faceUrl, 15);
+    str = this.faceUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
     paramJceOutputStream.write(this.faceSysId, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RecommendedContactInfo
  * JD-Core Version:    0.7.0.1
  */

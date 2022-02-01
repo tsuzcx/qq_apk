@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/if5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tecent="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/f3l" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9n" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lm3" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/f3l">
+        <TextView android:textSize="18.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/m97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.lyric.widget.LyricViewDetail android:id="@id/lrp" android:layout_width="fill_parent" android:layout_height="74.0dip" android:layout_centerInParent="true" tecent:lyricFoldLineMargin="@dimen/g7" tecent:lyricHiLightLyricBold="false" tecent:lyricHilightColor="@color/ce" tecent:lyricHilightSize="14.0sp" tecent:lyricHilightThinColor="@color/al3" tecent:lyricLineHeight="@dimen/g7" tecent:lyricLineMargin="7.0dip" tecent:lyricLiteratim="false" tecent:lyricScrollable="false" tecent:lyricTextColor="@color/al3" tecent:lyricTextSize="14.0sp" tecent:lyricTextThinColor="@color/al3" />
+        <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mau" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:tag="head0" android:background="@drawable/fr" android:padding="1.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" />
+            <ImageView android:tag="head1" android:background="@drawable/fr" android:padding="1.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-5.0dip" />
+            <ImageView android:tag="head2" android:background="@drawable/fr" android:padding="1.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-5.0dip" />
+            <ImageView android:tag="head3" android:background="@drawable/fr" android:padding="1.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-5.0dip" />
+            <ImageView android:tag="head4" android:background="@drawable/fr" android:padding="1.0dip" android:visibility="gone" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginLeft="-5.0dip" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/mb1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/lqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip">
+            <ImageView android:id="@id/lzn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hnu" />
+            <ImageView android:id="@id/lzk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:src="@drawable/hnq" android:contentDescription="上一首" />
+            <ImageView android:id="@id/lzo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/hnr" android:layout_centerInParent="true" android:contentDescription="@string/aac" />
+            <ImageView android:id="@id/lzj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/hnt" android:contentDescription="下一首" />
+            <ImageView android:id="@id/lzm" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hnv" />
+        </LinearLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/lfu" android:background="@drawable/hc8" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingRight="12.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/qv6" android:drawableRight="@drawable/hnp" android:drawablePadding="3.0dip" />
+        <TextView android:textSize="12.0dip" android:textColor="#80ffffff" android:gravity="center" android:id="@id/iz8" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginBottom="20.0dip" android:text="" android:drawablePadding="5.0dip" />
+    </LinearLayout>
+</RelativeLayout>

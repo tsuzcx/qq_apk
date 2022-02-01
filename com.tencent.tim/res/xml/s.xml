@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launcher_menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <menu android:title="@string/xdo" data="qqmail_3dtouch://com.tencent.androidqqmail.touch/open_inbox" icon="" />
+    <menu android:title="@string/xdr" data="qqmail_3dtouch://com.tencent.androidqqmail.touch/open_search" icon="" />
+    <menu android:title="@string/xdp" data="qqmail_3dtouch://com.tencent.androidqqmail.touch/compose_mail" icon="" />
+    <menu android:title="@string/xdq" data="qqmail_3dtouch://com.tencent.androidqqmail.touch/compose_note" icon="" />
+</launcher_menu>

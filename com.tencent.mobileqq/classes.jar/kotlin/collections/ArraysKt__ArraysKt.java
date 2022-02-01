@@ -41,124 +41,105 @@ class ArraysKt__ArraysKt
     }
     int j = paramArrayOfT1.length;
     int i = 0;
-    label142:
-    label176:
-    label312:
-    label460:
-    if (i < j)
+    while (i < j)
     {
       T ? = paramArrayOfT1[i];
       T ? = paramArrayOfT2[i];
-      if (? == ?) {}
-      label108:
-      label244:
-      label380:
-      do
+      if (? != ?)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  i += 1;
-                                  break;
-                                  if ((? == null) || (? == null)) {
-                                    return false;
-                                  }
-                                  if ((!(? instanceof Object[])) || (!(? instanceof Object[]))) {
-                                    break label108;
-                                  }
-                                } while (ArraysKt.contentDeepEquals((Object[])?, (Object[])?));
-                                return false;
-                                if ((!(? instanceof byte[])) || (!(? instanceof byte[]))) {
-                                  break label142;
-                                }
-                              } while (Arrays.equals((byte[])?, (byte[])?));
-                              return false;
-                              if ((!(? instanceof short[])) || (!(? instanceof short[]))) {
-                                break label176;
-                              }
-                            } while (Arrays.equals((short[])?, (short[])?));
-                            return false;
-                            if ((!(? instanceof int[])) || (!(? instanceof int[]))) {
-                              break label210;
-                            }
-                          } while (Arrays.equals((int[])?, (int[])?));
-                          return false;
-                          if ((!(? instanceof long[])) || (!(? instanceof long[]))) {
-                            break label244;
-                          }
-                        } while (Arrays.equals((long[])?, (long[])?));
-                        return false;
-                        if ((!(? instanceof float[])) || (!(? instanceof float[]))) {
-                          break label278;
-                        }
-                      } while (Arrays.equals((float[])?, (float[])?));
-                      return false;
-                      if ((!(? instanceof double[])) || (!(? instanceof double[]))) {
-                        break label312;
-                      }
-                    } while (Arrays.equals((double[])?, (double[])?));
-                    return false;
-                    if ((!(? instanceof char[])) || (!(? instanceof char[]))) {
-                      break label346;
-                    }
-                  } while (Arrays.equals((char[])?, (char[])?));
-                  return false;
-                  if ((!(? instanceof boolean[])) || (!(? instanceof boolean[]))) {
-                    break label380;
-                  }
-                } while (Arrays.equals((boolean[])?, (boolean[])?));
-                return false;
-                if ((!(? instanceof UByteArray)) || (!(? instanceof UByteArray))) {
-                  break label420;
-                }
-              } while (UArraysKt.contentEquals-kdPth3s(((UByteArray)?).unbox-impl(), ((UByteArray)?).unbox-impl()));
-              return false;
-              if ((!(? instanceof UShortArray)) || (!(? instanceof UShortArray))) {
-                break label460;
-              }
-            } while (UArraysKt.contentEquals-mazbYpA(((UShortArray)?).unbox-impl(), ((UShortArray)?).unbox-impl()));
-            return false;
-            if ((!(? instanceof UIntArray)) || (!(? instanceof UIntArray))) {
-              break label500;
-            }
-          } while (UArraysKt.contentEquals-ctEhBpI(((UIntArray)?).unbox-impl(), ((UIntArray)?).unbox-impl()));
+        if (? == null) {
+          break label557;
+        }
+        if (? == null) {
           return false;
-          if ((!(? instanceof ULongArray)) || (!(? instanceof ULongArray))) {
-            break label540;
+        }
+        if (((? instanceof Object[])) && ((? instanceof Object[])))
+        {
+          if (!ArraysKt.contentDeepEquals((Object[])?, (Object[])?)) {
+            return false;
           }
-        } while (UArraysKt.contentEquals-us8wMrg(((ULongArray)?).unbox-impl(), ((ULongArray)?).unbox-impl()));
-        return false;
-      } while (!(Intrinsics.areEqual(?, ?) ^ true));
-      label210:
-      label346:
-      label500:
+        }
+        else if (((? instanceof byte[])) && ((? instanceof byte[])))
+        {
+          if (!Arrays.equals((byte[])?, (byte[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof short[])) && ((? instanceof short[])))
+        {
+          if (!Arrays.equals((short[])?, (short[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof int[])) && ((? instanceof int[])))
+        {
+          if (!Arrays.equals((int[])?, (int[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof long[])) && ((? instanceof long[])))
+        {
+          if (!Arrays.equals((long[])?, (long[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof float[])) && ((? instanceof float[])))
+        {
+          if (!Arrays.equals((float[])?, (float[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof double[])) && ((? instanceof double[])))
+        {
+          if (!Arrays.equals((double[])?, (double[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof char[])) && ((? instanceof char[])))
+        {
+          if (!Arrays.equals((char[])?, (char[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof boolean[])) && ((? instanceof boolean[])))
+        {
+          if (!Arrays.equals((boolean[])?, (boolean[])?)) {
+            return false;
+          }
+        }
+        else if (((? instanceof UByteArray)) && ((? instanceof UByteArray)))
+        {
+          if (!UArraysKt.contentEquals-kdPth3s(((UByteArray)?).unbox-impl(), ((UByteArray)?).unbox-impl())) {
+            return false;
+          }
+        }
+        else if (((? instanceof UShortArray)) && ((? instanceof UShortArray)))
+        {
+          if (!UArraysKt.contentEquals-mazbYpA(((UShortArray)?).unbox-impl(), ((UShortArray)?).unbox-impl())) {
+            return false;
+          }
+        }
+        else if (((? instanceof UIntArray)) && ((? instanceof UIntArray)))
+        {
+          if (!UArraysKt.contentEquals-ctEhBpI(((UIntArray)?).unbox-impl(), ((UIntArray)?).unbox-impl())) {
+            return false;
+          }
+        }
+        else if (((? instanceof ULongArray)) && ((? instanceof ULongArray)))
+        {
+          if (!UArraysKt.contentEquals-us8wMrg(((ULongArray)?).unbox-impl(), ((ULongArray)?).unbox-impl())) {
+            return false;
+          }
+        }
+        else if ((Intrinsics.areEqual(?, ?) ^ true)) {
+          return false;
+        }
+      }
+      i += 1;
+      continue;
+      label557:
       return false;
     }
-    label278:
-    label420:
     return true;
   }
   
@@ -185,94 +166,91 @@ class ArraysKt__ArraysKt
     }
     paramList.add(paramArrayOfT);
     paramStringBuilder.append('[');
-    int j = paramArrayOfT.length;
     int i = 0;
-    if (i < j)
+    int j = paramArrayOfT.length;
+    while (i < j)
     {
       if (i != 0) {
         paramStringBuilder.append(", ");
       }
       Object localObject = paramArrayOfT[i];
-      if (localObject == null) {
+      if (localObject == null)
+      {
         paramStringBuilder.append("null");
       }
-      for (;;)
+      else if ((localObject instanceof Object[]))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof Object[]))
-        {
-          contentDeepToStringInternal$ArraysKt__ArraysKt((Object[])localObject, paramStringBuilder, paramList);
-        }
-        else if ((localObject instanceof byte[]))
-        {
-          localObject = Arrays.toString((byte[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof short[]))
-        {
-          localObject = Arrays.toString((short[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof int[]))
-        {
-          localObject = Arrays.toString((int[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof long[]))
-        {
-          localObject = Arrays.toString((long[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof float[]))
-        {
-          localObject = Arrays.toString((float[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof double[]))
-        {
-          localObject = Arrays.toString((double[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof char[]))
-        {
-          localObject = Arrays.toString((char[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof boolean[]))
-        {
-          localObject = Arrays.toString((boolean[])localObject);
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
-          paramStringBuilder.append((String)localObject);
-        }
-        else if ((localObject instanceof UByteArray))
-        {
-          paramStringBuilder.append(UArraysKt.contentToString-GBYM_sE(((UByteArray)localObject).unbox-impl()));
-        }
-        else if ((localObject instanceof UShortArray))
-        {
-          paramStringBuilder.append(UArraysKt.contentToString-rL5Bavg(((UShortArray)localObject).unbox-impl()));
-        }
-        else if ((localObject instanceof UIntArray))
-        {
-          paramStringBuilder.append(UArraysKt.contentToString--ajY-9A(((UIntArray)localObject).unbox-impl()));
-        }
-        else if ((localObject instanceof ULongArray))
-        {
-          paramStringBuilder.append(UArraysKt.contentToString-QwZRm1k(((ULongArray)localObject).unbox-impl()));
-        }
-        else
-        {
-          paramStringBuilder.append(localObject.toString());
-        }
+        contentDeepToStringInternal$ArraysKt__ArraysKt((Object[])localObject, paramStringBuilder, paramList);
       }
+      else if ((localObject instanceof byte[]))
+      {
+        localObject = Arrays.toString((byte[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof short[]))
+      {
+        localObject = Arrays.toString((short[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof int[]))
+      {
+        localObject = Arrays.toString((int[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof long[]))
+      {
+        localObject = Arrays.toString((long[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof float[]))
+      {
+        localObject = Arrays.toString((float[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof double[]))
+      {
+        localObject = Arrays.toString((double[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof char[]))
+      {
+        localObject = Arrays.toString((char[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof boolean[]))
+      {
+        localObject = Arrays.toString((boolean[])localObject);
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "java.util.Arrays.toString(this)");
+        paramStringBuilder.append((String)localObject);
+      }
+      else if ((localObject instanceof UByteArray))
+      {
+        paramStringBuilder.append(UArraysKt.contentToString-GBYM_sE(((UByteArray)localObject).unbox-impl()));
+      }
+      else if ((localObject instanceof UShortArray))
+      {
+        paramStringBuilder.append(UArraysKt.contentToString-rL5Bavg(((UShortArray)localObject).unbox-impl()));
+      }
+      else if ((localObject instanceof UIntArray))
+      {
+        paramStringBuilder.append(UArraysKt.contentToString--ajY-9A(((UIntArray)localObject).unbox-impl()));
+      }
+      else if ((localObject instanceof ULongArray))
+      {
+        paramStringBuilder.append(UArraysKt.contentToString-QwZRm1k(((ULongArray)localObject).unbox-impl()));
+      }
+      else
+      {
+        paramStringBuilder.append(localObject.toString());
+      }
+      i += 1;
     }
     paramStringBuilder.append(']');
     paramList.remove(CollectionsKt.getLastIndex(paramList));
@@ -281,10 +259,10 @@ class ArraysKt__ArraysKt
   @NotNull
   public static final <T> List<T> flatten(@NotNull T[][] paramArrayOfT)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "$this$flatten");
     Object localObject = (Object[])paramArrayOfT;
     int m = localObject.length;
+    int k = 0;
     int i = 0;
     int j = 0;
     while (i < m)
@@ -308,14 +286,16 @@ class ArraysKt__ArraysKt
   @InlineOnly
   private static final <C extends Object[],  extends R, R> R ifEmpty(C paramC, Function0<? extends R> paramFunction0)
   {
-    if (paramC.length == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramC = paramFunction0.invoke();
-      }
-      return paramC;
+    int i;
+    if (paramC.length == 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      paramC = paramFunction0.invoke();
+    }
+    return paramC;
   }
   
   @SinceKotlin(version="1.3")
@@ -323,19 +303,21 @@ class ArraysKt__ArraysKt
   private static final boolean isNullOrEmpty(@Nullable Object[] paramArrayOfObject)
   {
     boolean bool = false;
-    if (paramArrayOfObject != null) {
-      if (paramArrayOfObject.length != 0) {
-        break label21;
-      }
-    }
-    label21:
-    for (int i = 1;; i = 0)
+    if (paramArrayOfObject != null)
     {
-      if (i != 0) {
-        bool = true;
+      int i;
+      if (paramArrayOfObject.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      return bool;
+      if (i == 0) {}
     }
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   @NotNull
@@ -358,7 +340,7 @@ class ArraysKt__ArraysKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.collections.ArraysKt__ArraysKt
  * JD-Core Version:    0.7.0.1
  */

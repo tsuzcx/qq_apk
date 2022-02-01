@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/glg" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/bjz" android:background="@drawable/a_5" android:paddingBottom="14.0dip" android:clipChildren="false" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textColor="#ff212226" android:layout_gravity="center_horizontal" android:id="@id/bkg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="来自QIM的新朋友" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="19.0dip">
+            <ImageView android:id="@id/c16" android:layout_width="56.0dip" android:layout_height="56.0dip" android:src="@drawable/a9o" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_toRightOf="@id/c16" android:layout_centerVertical="true">
+                <TextView android:textSize="17.0dip" android:textColor="#ff212226" android:ellipsize="end" android:id="@id/f9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qep" android:maxLines="1" />
+                <TextView android:textSize="11.0dip" android:textColor="#ffa7a7a7" android:ellipsize="end" android:id="@id/i1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="更新x个视频" android:maxLines="1" android:layout_below="@id/f9d" android:layout_alignLeft="@id/f9d" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/j3j" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="9.0dip" />
+        <TextView android:textSize="15.0dip" android:textColor="#ff212226" android:id="@id/b5n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="14.0dip" android:text="@string/qeo" />
+        <Button android:textSize="17.0dip" android:textColor="@drawable/a_f" android:gravity="center" android:id="@id/b7m" android:background="@drawable/a_q" android:clickable="true" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="14.0dip" android:text="OK" />
+    </LinearLayout>
+    <ImageView android:id="@id/glf" android:layout_width="92.0dip" android:layout_height="37.0dip" android:layout_marginTop="-18.0dip" android:layout_alignTop="@id/bjz" android:layout_centerHorizontal="true" />
+</RelativeLayout>

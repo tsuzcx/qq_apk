@@ -1,18 +1,23 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.widget.AntiphingToast;
-import java.util.TimerTask;
+import com.tencent.mobileqq.widget.CameraFrameLayout;
 
 public class hff
-  extends TimerTask
+  extends Handler
 {
-  public hff(AntiphingToast paramAntiphingToast) {}
+  public hff(CameraFrameLayout paramCameraFrameLayout) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.sendMessage(localMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraFrameLayout.a(this.a, paramMessage.arg1);
+      return;
+    }
+    CameraFrameLayout.a(this.a);
   }
 }
 

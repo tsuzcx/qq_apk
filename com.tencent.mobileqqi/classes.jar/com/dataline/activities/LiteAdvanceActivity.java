@@ -63,19 +63,19 @@ public class LiteAdvanceActivity
   {
     setContentView(2130903177);
     setTitle(2131560533);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131231510);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131231509);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131231512);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131231511);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.c = findViewById(2131231513);
+    this.c = findViewById(2131231512);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231511));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131231510));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(AppConstants.as);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231508));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231507));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new ca(this));
-    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231509));
+    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131231508));
     this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
     this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new cb(this));
     String str2 = this.k.getText().toString();
@@ -152,14 +152,14 @@ public class LiteAdvanceActivity
   {
     switch (paramView.getId())
     {
-    case 2131231511: 
+    case 2131231510: 
     default: 
       return;
-    case 2131231510: 
+    case 2131231509: 
       StatisticAssist.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(), "dl_ckviewrecvfile");
       f();
       return;
-    case 2131231512: 
+    case 2131231511: 
       h();
       return;
     }

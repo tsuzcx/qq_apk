@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@android:id/title" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginEnd="@dimen/lb" style="@style/lg" />
-    <RelativeLayout android:id="@id/f1b" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1c" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/f1d" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/f1e" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1f" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/f1g" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/f1h" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1i" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/f1j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/f3g" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.base.WxImageView android:layout_gravity="center" android:id="@id/luf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/l6p" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:contentDescription="@string/f4v" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:id="@id/gqk" android:background="@drawable/azv" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -12,17 +12,17 @@ public class ConnReportInfo
   public boolean killSelf;
   public int netType;
   public int port;
-  public long receiveDataLen;
-  public int recvRespCount;
+  public long receiveDataLen = 0L;
+  public int recvRespCount = 0;
   public boolean result;
-  public long sentDataLen;
-  public int sentRequestCount;
-  public int sentRetryCount;
+  public long sentDataLen = 0L;
+  public int sentRequestCount = 0;
+  public int sentRetryCount = 0;
   public String serverIp;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.conn.ConnReportInfo
  * JD-Core Version:    0.7.0.1
  */

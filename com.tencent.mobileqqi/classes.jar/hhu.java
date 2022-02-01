@@ -1,15 +1,33 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollGroupFloatingListener;
+import com.tencent.mobileqq.widget.SlideDetectListView.OnScrollToTopListener;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class hhu
-  extends GestureDetector.SimpleOnGestureListener
+  implements AbsListView.OnScrollListener
 {
   public hhu(SlideDetectListView paramSlideDetectListView) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    return false;
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    }
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 

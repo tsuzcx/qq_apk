@@ -9,22 +9,22 @@ public final class RepresentationKey
   implements Parcelable, Comparable<RepresentationKey>
 {
   public static final Parcelable.Creator<RepresentationKey> CREATOR;
-  public final int aPX;
-  public final int aQP;
-  public final int aQQ;
+  public final int cZS;
+  public final int daM;
+  public final int daN;
   
   static
   {
-    AppMethodBeat.i(94136);
-    CREATOR = new RepresentationKey.1();
-    AppMethodBeat.o(94136);
+    AppMethodBeat.i(10570);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(10570);
   }
   
   public RepresentationKey(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.aPX = paramInt1;
-    this.aQP = paramInt2;
-    this.aQQ = paramInt3;
+    this.cZS = paramInt1;
+    this.daM = paramInt2;
+    this.daN = paramInt3;
   }
   
   public final int describeContents()
@@ -34,24 +34,24 @@ public final class RepresentationKey
   
   public final String toString()
   {
-    AppMethodBeat.i(94134);
-    String str = this.aPX + "." + this.aQP + "." + this.aQQ;
-    AppMethodBeat.o(94134);
+    AppMethodBeat.i(10568);
+    String str = this.cZS + "." + this.daM + "." + this.daN;
+    AppMethodBeat.o(10568);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(94135);
-    paramParcel.writeInt(this.aPX);
-    paramParcel.writeInt(this.aQP);
-    paramParcel.writeInt(this.aQQ);
-    AppMethodBeat.o(94135);
+    AppMethodBeat.i(10569);
+    paramParcel.writeInt(this.cZS);
+    paramParcel.writeInt(this.daM);
+    paramParcel.writeInt(this.daN);
+    AppMethodBeat.o(10569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.dash.manifest.RepresentationKey
  * JD-Core Version:    0.7.0.1
  */

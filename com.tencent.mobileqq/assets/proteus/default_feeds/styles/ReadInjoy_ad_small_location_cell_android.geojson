@@ -1,5 +1,5 @@
 {
-    "platform" : "android",
+"platform" : "android",
     "ReadInjoy_ad_small_location_cell":
     {
         "view_type":"UIView",
@@ -136,7 +136,7 @@
                                                 "event_type": "ad_Text_click",
                                                 "attributes":{
                                                     "setText:":"-1",
-                                                    "setTextColorString:":"#A6A6A6",
+                                                    "setTextColorString:":"#B0B3BF",
                                                     "setFontSizeString:":"12",
                                                     "setNumberOfLinesString:":"1"
                                                 }
@@ -154,6 +154,7 @@
                                                     "value":"45"
                                                 },
                                                 "attributes":{
+                                                    "setCornerRadiusString:": "8.0",
                                                     "setImageWithURLString:lineup:":["$icon_awesome_url","1"],
                                                     "setWHRate:widthBenchmark:":["$icon_awesome_wh_rate", "NO"]
                                                 },
@@ -173,7 +174,7 @@
                                                 "event_type": "ad_name_click_in_recommend",
                                                 "attributes":{
                                                     "setText:":"-1",
-                                                    "setTextColorString:":"#A6A6A6",
+                                                    "setTextColorString:":"#B0B3BF",
                                                     "setFontSizeString:":"12",
                                                     "setNumberOfLinesString:":"1"
                                                 }
@@ -190,10 +191,9 @@
                                                 "width": {
                                                     "type": "wrap_content"
                                                 },
-                                                "attributes": {
-                                                    "setFrameString:": "-1",
+                                                "attributes":{
                                                     "setText:": "-1",
-                                                    "setTextColorString:": "#A6A6A6",
+                                                    "setTextColorString:": "#B0B3BF",
                                                     "setFontSizeString:": "12",
                                                     "setNumberOfLinesString:": "-1"
                                                 }
@@ -281,7 +281,7 @@
                                 "comment":"不使用setEnableString:0禁止图片获取事件",
 
                                 "attributes":{
-                                    "setFrameString:":"-1",
+                                    "setCornerRadiusString:": "8.0",
                                     "setImageWithURLString:lineup:":["-1","-1"]
 
                                 }
@@ -312,6 +312,7 @@
                                             "value":"120"
                                         },
                                         "attributes":{
+                                            "setCornerRadiusString:": "8.0",
                                             "loadImageWithPath:":"-1"
 
                                         }
@@ -352,6 +353,7 @@
                                             "value":"10"
                                         },
                                         "attributes":{
+                                            "setCornerRadiusString:": "8.0",
                                             "loadImageWithPath:":"-1"
                                         }
                                     }
@@ -363,23 +365,6 @@
                         ]
                     }
                 ]
-            },
-            {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "margin_left":"6",
-                "margin_top":"3",
-                "height":{
-                    "type":"absolutely","value":"0.5"
-                },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
-                },
-                "attributes":{
-                    "setFrameString:":"-1",
-                    "setBackgroundColorString:":"#E5E5E5"
-                }
             }
         ]
     }

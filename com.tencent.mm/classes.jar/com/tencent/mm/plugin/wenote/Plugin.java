@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.wenote;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.d;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.c
+  implements d
 {
-  public final o createApplication()
+  public final n createApplication()
   {
-    AppMethodBeat.i(26583);
+    AppMethodBeat.i(30256);
     a locala = new a();
-    AppMethodBeat.o(26583);
+    AppMethodBeat.o(30256);
     return locala;
   }
   
-  public final at createSubCore()
+  public final be createSubCore()
   {
-    AppMethodBeat.i(26584);
+    AppMethodBeat.i(30257);
     com.tencent.mm.plugin.wenote.model.c localc = new com.tencent.mm.plugin.wenote.model.c();
-    AppMethodBeat.o(26584);
+    AppMethodBeat.o(30257);
     return localc;
   }
   
-  public final b getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.Plugin
  * JD-Core Version:    0.7.0.1
  */

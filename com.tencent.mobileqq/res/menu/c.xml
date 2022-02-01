@@ -2,12 +2,15 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@id/bfa" android:title="@string/a0s" />
+    <item android:id="@id/mui" android:title="@string/wkc" />
+    <item android:id="@id/ms9" android:title="@string/wk5" />
     <item android:id="@id/beb" android:title="调试" />
     <item android:id="@id/ap0" android:title="@string/a0r" />
     <item android:id="@id/aos" android:title="@string/a0q" />
     <item android:icon="@drawable/p5" android:id="@id/i9k" android:title="@string/h2a" />
     <item android:id="@id/bfg" android:title="@string/gzo" />
     <item android:id="@id/bbi" android:title="@string/gzm" />
+    <item android:id="@id/o_a" android:title="@string/xal" />
     <item android:id="@id/ilw" android:title="@string/gzm" />
     <item android:id="@id/j5_" android:title="@string/hqv" />
     <item android:id="@id/i8m" android:title="@string/gzt" />
@@ -29,9 +32,13 @@
     <item android:id="@id/ba_" android:title="@string/aet" />
     <item android:id="@id/kkb" android:title="@string/ibf" />
     <item android:id="@id/f43" android:title="静音播放" />
+    <item android:id="@id/kxt" android:title="应用数据" />
+    <item android:id="@id/l0q" android:title="应用版本" />
     <item android:id="@id/s" android:title="@string/g38" />
     <item android:id="@id/i7f" android:title="@string/etr" />
     <item android:id="@id/m5p" android:title="@string/iwv" />
+    <item android:id="@id/n9r" android:title="@string/zi1" />
+    <item android:id="@id/n9s" android:title="@string/zi2" />
     <item android:id="@id/bf8" android:title="@string/b5u" />
     <item android:id="@id/ig1" android:title="@string/b6v" />
     <item android:id="@id/ck5" android:title="@string/b64" />
@@ -68,5 +75,6 @@
     <item android:id="@id/jc8" android:title="@string/hy8" />
     <item android:id="@id/ini" android:title="StructMsg" />
     <item android:id="@id/b0w" android:title="厘米秀" />
-    <item android:id="@id/j5q" android:title="@string/fos" />
+    <item android:id="@id/qrz" android:title="@string/wkp" />
+    <item android:id="@id/r36" android:title="@string/zq8" />
 </menu>

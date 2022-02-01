@@ -1,21 +1,19 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import vkh;
-import vkj;
-
-public class JobExecutor$3
+class JobExecutor$3
   implements Runnable
 {
-  public JobExecutor$3(vkj paramvkj, vkh paramvkh) {}
+  JobExecutor$3(JobExecutor paramJobExecutor, Job paramJob) {}
   
   public void run()
   {
-    this.a.a(this.a.b());
+    Job localJob = this.a;
+    localJob.a(localJob.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.3
  * JD-Core Version:    0.7.0.1
  */

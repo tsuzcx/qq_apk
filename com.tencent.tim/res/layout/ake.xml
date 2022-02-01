@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/is" />
+    <ScrollView android:id="@id/ii_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/c3s" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/akd" />
+            <TextView android:textSize="@dimen/ayp" android:textColor="#ff03081a" android:layout_gravity="left" android:id="@id/kd2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="8.0dip" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff878b9a" android:layout_gravity="left" android:id="@id/kcu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="15.0dip" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

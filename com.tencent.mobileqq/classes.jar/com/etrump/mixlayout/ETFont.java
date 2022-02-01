@@ -1,9 +1,10 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import fg;
+import com.etrump.mixlayout.api.IETFont;
 
 public class ETFont
+  implements IETFont
 {
   public static final int ET_COLOR_BLACK = -16777216;
   public static final int ET_FONT_STYLE_BOLD = 1;
@@ -11,14 +12,17 @@ public class ETFont
   public static final int ET_FONT_STYLE_SHADOW = 128;
   public long mAnimationId;
   public int mBackgroundId;
+  public int mComboIndex = 0;
   public String mContactId;
   public String mContactName;
   private int mCrochetColor;
   private int mCrochetWidth;
   private String mDIYConfigString;
-  private boolean mDisableBackground;
+  private boolean mDisableBackground = false;
   private boolean mDisableCrochet = true;
   private boolean mDisableShadow = true;
+  public String mDiyFontImageId = "";
+  public long mDiyHandle;
   public int mFontColor;
   public int mFontId;
   public String mFontPath;
@@ -26,15 +30,16 @@ public class ETFont
   public final int mFontSizeMin = 8;
   private int mFontStyle;
   public int mFontType;
+  public int mHeightGap;
   private int mShadowBlurRadius;
   private int mShadowColor;
   private int mShadowOffsetX;
   private int mShadowOffsetY;
   public boolean mShouldDisplayAnimation;
+  public long mSubstitution = 0L;
   public CharSequence mText;
   public Typeface mTypeface;
-  public int m_comboIndex;
-  public long m_diyHandle;
+  public int mWidthGap;
   
   public ETFont()
   {
@@ -50,7 +55,10 @@ public class ETFont
     setSize(paramFloat);
     this.mFontColor = -16777216;
     this.mFontStyle = 0;
-    this.m_diyHandle = 0L;
+    this.mDiyHandle = 0L;
+    this.mWidthGap = 0;
+    this.mHeightGap = 0;
+    this.mSubstitution = 0L;
   }
   
   public ETFont(int paramInt1, String paramString, float paramFloat, int paramInt2, Typeface paramTypeface)
@@ -62,7 +70,10 @@ public class ETFont
     this.mFontStyle = 0;
     this.mFontType = paramInt2;
     this.mTypeface = paramTypeface;
-    this.m_diyHandle = 0L;
+    this.mDiyHandle = 0L;
+    this.mWidthGap = 0;
+    this.mHeightGap = 0;
+    this.mSubstitution = 0L;
   }
   
   public static ETFont createFont(ETFont paramETFont)
@@ -75,32 +86,36 @@ public class ETFont
     return localETFont;
   }
   
-  public void copy(ETFont paramETFont)
+  public void copy(IETFont paramIETFont)
   {
-    if (paramETFont != null)
+    paramIETFont = (ETFont)paramIETFont;
+    if (paramIETFont != null)
     {
-      this.mFontId = paramETFont.mFontId;
-      this.mFontPath = paramETFont.mFontPath;
-      this.mFontSize = paramETFont.mFontSize;
-      this.mFontColor = paramETFont.mFontColor;
-      this.mFontStyle = paramETFont.mFontStyle;
-      this.mShadowColor = paramETFont.mShadowColor;
-      this.mShadowOffsetX = paramETFont.mShadowOffsetX;
-      this.mShadowOffsetY = paramETFont.mShadowOffsetY;
-      this.mShadowBlurRadius = paramETFont.mShadowBlurRadius;
-      this.mCrochetColor = paramETFont.mCrochetColor;
-      this.mCrochetWidth = paramETFont.mCrochetWidth;
-      this.mDisableBackground = paramETFont.mDisableBackground;
-      this.mDisableShadow = paramETFont.mDisableShadow;
-      this.mDisableCrochet = paramETFont.mDisableCrochet;
-      this.mBackgroundId = paramETFont.mBackgroundId;
-      this.mFontType = paramETFont.mFontType;
-      this.mText = paramETFont.mText;
-      this.mAnimationId = paramETFont.mAnimationId;
-      this.mContactId = paramETFont.mContactId;
-      this.mContactName = paramETFont.mContactName;
-      setDIYConfigHandle(paramETFont.getDIYConfigHandle());
-      this.m_comboIndex = paramETFont.m_comboIndex;
+      this.mFontId = paramIETFont.mFontId;
+      this.mFontPath = paramIETFont.mFontPath;
+      this.mFontSize = paramIETFont.mFontSize;
+      this.mFontColor = paramIETFont.mFontColor;
+      this.mFontStyle = paramIETFont.mFontStyle;
+      this.mShadowColor = paramIETFont.mShadowColor;
+      this.mShadowOffsetX = paramIETFont.mShadowOffsetX;
+      this.mShadowOffsetY = paramIETFont.mShadowOffsetY;
+      this.mShadowBlurRadius = paramIETFont.mShadowBlurRadius;
+      this.mCrochetColor = paramIETFont.mCrochetColor;
+      this.mCrochetWidth = paramIETFont.mCrochetWidth;
+      this.mDisableBackground = paramIETFont.mDisableBackground;
+      this.mDisableShadow = paramIETFont.mDisableShadow;
+      this.mDisableCrochet = paramIETFont.mDisableCrochet;
+      this.mBackgroundId = paramIETFont.mBackgroundId;
+      this.mFontType = paramIETFont.mFontType;
+      this.mText = paramIETFont.mText;
+      this.mAnimationId = paramIETFont.mAnimationId;
+      this.mContactId = paramIETFont.mContactId;
+      this.mContactName = paramIETFont.mContactName;
+      setDIYConfigHandle(paramIETFont.getDIYConfigHandle());
+      this.mComboIndex = paramIETFont.mComboIndex;
+      this.mWidthGap = paramIETFont.mWidthGap;
+      this.mHeightGap = paramIETFont.mHeightGap;
+      this.mSubstitution = ETSubstitutionConfig.b(paramIETFont.mSubstitution);
     }
   }
   
@@ -113,13 +128,28 @@ public class ETFont
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ETFont)paramObject;
-    } while ((this.mFontId != paramObject.mFontId) || (this.mFontSize != paramObject.mFontSize) || (this.mFontStyle != paramObject.mFontStyle) || (this.m_diyHandle != paramObject.m_diyHandle));
-    return true;
+    }
+    paramObject = (ETFont)paramObject;
+    boolean bool1 = bool2;
+    if (this.mFontId == paramObject.mFontId)
+    {
+      bool1 = bool2;
+      if (this.mFontSize == paramObject.mFontSize)
+      {
+        bool1 = bool2;
+        if (this.mFontStyle == paramObject.mFontStyle)
+        {
+          bool1 = bool2;
+          if (this.mDiyHandle == paramObject.mDiyHandle) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int getColor()
@@ -129,7 +159,12 @@ public class ETFont
   
   public long getDIYConfigHandle()
   {
-    return this.m_diyHandle;
+    return this.mDiyHandle;
+  }
+  
+  public int getFontType()
+  {
+    return this.mFontType;
   }
   
   public int getId()
@@ -147,6 +182,11 @@ public class ETFont
     return this.mFontSize;
   }
   
+  public long get_substitution()
+  {
+    return this.mSubstitution;
+  }
+  
   public boolean isBold()
   {
     return (this.mFontStyle & 0x1) != 0;
@@ -154,8 +194,15 @@ public class ETFont
   
   public void onDestroy()
   {
-    if (0L != this.m_diyHandle) {
-      fg.a(this.m_diyHandle);
+    long l = this.mDiyHandle;
+    if (0L != l) {
+      ETDIYConfig.a(l);
+    }
+    l = this.mSubstitution;
+    if (l != 0L)
+    {
+      ETSubstitutionConfig.a(l);
+      this.mDiyFontImageId = "";
     }
   }
   
@@ -165,7 +212,7 @@ public class ETFont
       return;
     }
     this.mDIYConfigString = paramString;
-    this.m_diyHandle = fg.a(this, paramString);
+    this.mDiyHandle = ETDIYConfig.a(this, paramString);
   }
   
   public void setBold(boolean paramBoolean)
@@ -197,7 +244,12 @@ public class ETFont
   
   public void setDIYConfigHandle(long paramLong)
   {
-    this.m_diyHandle = paramLong;
+    this.mDiyHandle = paramLong;
+  }
+  
+  public void setFontType(int paramInt)
+  {
+    this.mFontType = paramInt;
   }
   
   public void setId(int paramInt)
@@ -226,25 +278,50 @@ public class ETFont
   
   public void setSize(float paramFloat)
   {
-    int i = 8;
     int j = (int)paramFloat;
-    if (j < 8) {}
-    for (;;)
-    {
-      this.mFontSize = i;
-      return;
-      i = j;
+    int i = j;
+    if (j < 8) {
+      i = 8;
     }
+    this.mFontSize = i;
+  }
+  
+  public void set_substitution(long paramLong)
+  {
+    long l = this.mSubstitution;
+    if (l != 0L)
+    {
+      ETSubstitutionConfig.a(l);
+      this.mSubstitution = 0L;
+    }
+    this.mSubstitution = paramLong;
   }
   
   public String toString()
   {
-    return "ETFont{mFontId=" + this.mFontId + ", mFontPath='" + this.mFontPath + '\'' + ", mText=" + this.mText + ", color = " + this.mFontColor + ", style = " + this.mFontStyle + ", size = " + this.mFontSize + ", diyHandle = " + this.m_diyHandle + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ETFont{mFontId=");
+    localStringBuilder.append(this.mFontId);
+    localStringBuilder.append(", mFontPath='");
+    localStringBuilder.append(this.mFontPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mText=");
+    localStringBuilder.append(this.mText);
+    localStringBuilder.append(", color = ");
+    localStringBuilder.append(this.mFontColor);
+    localStringBuilder.append(", style = ");
+    localStringBuilder.append(this.mFontStyle);
+    localStringBuilder.append(", size = ");
+    localStringBuilder.append(this.mFontSize);
+    localStringBuilder.append(", diyHandle = ");
+    localStringBuilder.append(this.mDiyHandle);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETFont
  * JD-Core Version:    0.7.0.1
  */

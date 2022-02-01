@@ -1,14 +1,16 @@
-import com.tencent.biz.common.util.LoadedBack;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
 import com.tencent.mobileqq.activity.PublicAccountChatActivity;
 
 public class day
-  implements LoadedBack
+  implements PublicAccountManager.InitDoneObserver
 {
   public day(PublicAccountChatActivity paramPublicAccountChatActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt) {}
+  public void a()
+  {
+    PublicAccountChatActivity.a(this.a).sendEmptyMessage(1);
+  }
 }
 
 

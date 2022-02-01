@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBestSellingItemView android:orientation="vertical" android:paddingLeft="@dimen/jr" android:paddingRight="@dimen/jr" android:paddingBottom="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.game.widget.AutoResizeTextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/s4" android:gravity="center|left" android:id="@id/c3r" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jy" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/a0s" android:layout_width="@dimen/jk" android:layout_height="@dimen/jk" android:layout_marginRight="@dimen/jw" android:src="@drawable/ah1" android:scaleType="fitXY" android:layout_centerVertical="true" android:layout_toEndOf="@id/c3r" />
-            <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/c3s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jy" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-            <TextView android:textSize="@dimen/j_" android:textColor="@color/qj" android:ellipsize="end" android:gravity="center|left" android:id="@id/a0u" android:layout_width="wrap_content" android:layout_height="25.0dip" android:singleLine="true" android:layout_toLeftOf="@id/c3s" android:layout_toRightOf="@id/a0s" android:layout_alignTop="@id/a0s" />
-            <com.tencent.mm.plugin.game.widget.GameTagListView android:orientation="horizontal" android:id="@id/c3t" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_toLeftOf="@id/c3s" android:layout_toRightOf="@id/a0s" android:layout_alignBottom="@id/a0s" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/c3u" android:layout="@layout/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="93.0dip" android:layout_marginTop="@dimen/jy" />
-    </com.tencent.mm.plugin.game.ui.GameBestSellingItemView>
-</FrameLayout>
+    <com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView android:id="@id/ce6" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/he4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_l" android:scaleType="centerInside" />
+</RelativeLayout>

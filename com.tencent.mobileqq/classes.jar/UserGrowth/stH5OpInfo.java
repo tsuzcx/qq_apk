@@ -12,14 +12,14 @@ public final class stH5OpInfo
 {
   static Map<String, String> cache_exp;
   static stMetaTag cache_tag = new stMetaTag();
-  public Map<String, String> exp;
+  public Map<String, String> exp = null;
   public String h5Url = "";
-  public int id;
+  public int id = 0;
   public String maskImgUrl = "";
   public String scheme_url = "";
-  public stMetaTag tag;
+  public stMetaTag tag = null;
   public String text = "";
-  public int type;
+  public int type = 0;
   
   static
   {
@@ -56,30 +56,36 @@ public final class stH5OpInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.id, 0);
-    if (this.h5Url != null) {
-      paramJceOutputStream.write(this.h5Url, 1);
+    Object localObject = this.h5Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.tag != null) {
-      paramJceOutputStream.write(this.tag, 2);
+    localObject = this.tag;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 3);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.type, 4);
-    if (this.scheme_url != null) {
-      paramJceOutputStream.write(this.scheme_url, 5);
+    localObject = this.scheme_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.maskImgUrl != null) {
-      paramJceOutputStream.write(this.maskImgUrl, 6);
+    localObject = this.maskImgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.exp != null) {
-      paramJceOutputStream.write(this.exp, 7);
+    localObject = this.exp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stH5OpInfo
  * JD-Core Version:    0.7.0.1
  */

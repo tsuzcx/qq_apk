@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/qd" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-</FrameLayout>
+    <ListView android:id="@id/j76" android:background="@color/qd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/q2" android:dividerHeight="@dimen/ez" style="@style/na" />
+    <include android:id="@id/cvs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a74" />
+    <TextView android:textColor="@color/m4" android:gravity="center_horizontal" android:id="@id/j5u" android:background="@color/al2" android:paddingTop="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cpf" />
+    <include layout="@layout/a6i" />
+</RelativeLayout>

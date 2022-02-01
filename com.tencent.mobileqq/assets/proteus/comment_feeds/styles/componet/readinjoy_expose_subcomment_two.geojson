@@ -1,9 +1,10 @@
 {
     "view_type":"UIView",
-    "margin_top":"-6",
+    "margin_top":"-5",
     "view_id":"id_comment_expose_subcomment_two_bg",
     "visible_depend_on_children":"YES",
     "event_type":"cmd_expose_subcommment_two",
+    "direction": "vertical",
     "height":{
         "type":"wrap_content"
     },
@@ -24,13 +25,13 @@
     },
     "subviews":[
         {
-            "margin_top":"6",
-            "margin_bottom":"12",
-            "margin_left":"9",
-            "margin_right":"9",
-            "view_type":"QQRIJRichTextView",
+            "margin_top":"5",
+            "margin_left":"12",
+            "margin_right":"12",
+            "margin_bottom":"10",
+            "view_type":"RIJCommentRichTextView",
             "view_id":"id_comment_expose_subcomment_two",
-            "align_parent_center_vertical": "YES",
+            "event_type":"cmd_expose_subcommment_two",
             "height":{
                 "type":"wrap_content"
             },
@@ -38,9 +39,87 @@
                 "type":"match_parent"
             },
             "attributes":{
-                "setFontSizeString:":"15",
-                "setCommentModel:":"$subcomment_two"
+                "setCommentModel:":"$subcomment_two",
+                "setRichData:": [
+                    {
+                        "name": "div",
+                        "attrs": {
+                            "class": "div_class",
+                            "style": "line-height: 24px; width:351px;color: #aa0000;-webkit-line-clamp:${subcomment_two_text_line}"
+                        },
+                        "truncationAttrs": {
+                            "text": "更多",
+                            "href": "$subcomment_two_more_url",
+                            "color": "#376099",
+                            "font-size": "16px"
+                        },
+                        "children" : [
+                            {
+                              "name": "a",
+                              "attrs": {
+                                  "href": "$subcomment_two_nick_url",
+                                  "style": "line-height: 24px; color: #376099;width:351px;font-size:15px",
+                                  "ratio": "$subcomment_two_ratio"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "text": "$subcomment_two_nick_name"
+                                }
+                              ]
+                            },
+                            {
+                                "name": "img",
+                                "attrs": {
+                                  "style": "width:${subcomment_two_tag_icon_width}; height:15px",
+                                  "src": "$subcomment_two_tag_icon_path"
+                                }
+                            },
+                            {
+                                "name": "text",
+                                "attrs": {
+                                    "class": "div_class",
+                                    "style": "line-height: 24px; color: #000000;width:351px;font-size:15px;",
+                                    "ratio": "$subcomment_two_ratio"
+                                },
+                                "children": [
+                                    {
+                                        "type": "text",
+                                        "text": "$subcomment_two_reply"
+                                    }
+                                ]
+                            },
+                            {
+                              "name": "a",
+                              "attrs": {
+                                  "href": "$subcomment_two_to_nick_url",
+                                  "style": "line-height: 24px; color: #376099;width:351px;font-size:15px",
+                                  "ratio": "$subcomment_two_ratio"
+                              },
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "text": "$subcomment_two_to_nick_name"
+                                }
+                              ]
+                            },
+                            {
+                                "name": "div",
+                                "attrs": {
+                                    "class": "div_class",
+                                    "style": "line-height: 24px; color: #000000;width:351px;font-size:15px;",
+                                    "ratio": "$subcomment_two_ratio"
+                                },
+                                "children": "$subcomment_two_rpt_data_info"
+                            }
+                        ]
+                    }
+                ]
+
             }
+        },
+        {
+            "$includeComponet": "componet/RIJ_author_like_sub_two.geojson"
         }
     ]
 }

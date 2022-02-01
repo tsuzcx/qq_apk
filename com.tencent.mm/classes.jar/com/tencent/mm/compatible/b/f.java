@@ -1,67 +1,63 @@
 package com.tencent.mm.compatible.b;
 
-import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AcousticEchoCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
   implements h.a
 {
-  private AcousticEchoCanceler elU;
+  private AcousticEchoCanceler lQj;
   
-  @TargetApi(16)
   public f(AudioRecord paramAudioRecord)
   {
-    AppMethodBeat.i(92838);
-    this.elU = null;
+    AppMethodBeat.i(155557);
+    this.lQj = null;
     boolean bool = AcousticEchoCanceler.isAvailable();
-    ab.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
+    Log.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.elU = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
+      this.lQj = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
     }
-    AppMethodBeat.o(92838);
+    AppMethodBeat.o(155557);
   }
   
-  @TargetApi(16)
-  public final boolean KB()
+  public final boolean aOe()
   {
-    AppMethodBeat.i(92840);
-    if (this.elU != null) {}
+    AppMethodBeat.i(155559);
+    if (this.lQj != null) {}
     try
     {
-      int i = this.elU.setEnabled(true);
+      int i = this.lQj.setEnabled(true);
       if (i == 0)
       {
-        AppMethodBeat.o(92840);
+        AppMethodBeat.o(155559);
         return true;
       }
-      ab.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
+      Log.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(92840);
+    AppMethodBeat.o(155559);
     return false;
   }
   
-  @TargetApi(16)
   public final boolean isAvailable()
   {
-    AppMethodBeat.i(92839);
+    AppMethodBeat.i(155558);
     boolean bool = AcousticEchoCanceler.isAvailable();
-    AppMethodBeat.o(92839);
+    AppMethodBeat.o(155558);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class ThreadMessageHandler
   private static final int ASYNC_MESSAGE = 1;
   static final ThreadMessageHandler.MessageWrapperImpl IMPL = new ThreadMessageHandler.LegacyMessageWrapperImpl();
   private static final int SYNC_MESSAGE = 2;
-  private static final String TAG = "ArkApp.ThreadMessageHandler";
+  private static final String TAG = "ArkApp.Thread";
   private final Object mSignalObject = new Object();
   
   static
@@ -31,7 +31,7 @@ public class ThreadMessageHandler
   
   private Message obtainAsyncMessage(int paramInt, long paramLong)
   {
-    Message localMessage = Message.obtain(this, paramInt, (int)(paramLong & 0xFFFFFFFF), (int)(paramLong >> 32 & 0xFFFFFFFF));
+    Message localMessage = Message.obtain(this, paramInt, (int)paramLong, (int)(paramLong >> 32));
     IMPL.setAsynchronous(localMessage, true);
     return localMessage;
   }
@@ -53,28 +53,38 @@ public class ThreadMessageHandler
       if (!sendMessage(obtainAsyncMessage(2, paramLong))) {
         return false;
       }
+      try
+      {
+        this.mSignalObject.wait();
+        return true;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label35:
+        break label35;
+      }
+      return false;
     }
-    return false;
   }
   
   public void handleMessage(Message arg1)
   {
-    if ((???.what != 1) && (???.what != 2)) {}
-    do
-    {
+    if ((???.what != 1) && (???.what != 2)) {
       return;
-      nativeDelegateCallback(???.arg2 << 32 | ???.arg1);
-    } while (???.what != 2);
-    synchronized (this.mSignalObject)
-    {
-      this.mSignalObject.notifyAll();
-      return;
+    }
+    nativeDelegateCallback(???.arg2 << 32 | ???.arg1);
+    if (???.what == 2) {
+      synchronized (this.mSignalObject)
+      {
+        this.mSignalObject.notifyAll();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ThreadMessageHandler
  * JD-Core Version:    0.7.0.1
  */

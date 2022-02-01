@@ -10,74 +10,99 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> eEG;
-  private static Map<String, a> eEH;
+  private static final List<a> mzi;
+  private static final Map<String, a> mzj;
+  private static final Object sLock;
   
   static
   {
-    AppMethodBeat.i(114085);
-    eEG = new LinkedList();
-    eEH = new HashMap();
-    AppMethodBeat.o(114085);
+    AppMethodBeat.i(158796);
+    sLock = new byte[0];
+    mzi = new LinkedList();
+    mzj = new HashMap();
+    AppMethodBeat.o(158796);
+  }
+  
+  private static a Fb(String paramString)
+  {
+    AppMethodBeat.i(235694);
+    synchronized (sLock)
+    {
+      paramString = (a)mzj.get(paramString);
+      AppMethodBeat.o(235694);
+      return paramString;
+    }
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
-    AppMethodBeat.i(114083);
-    paramString = (a)eEH.get(paramString);
+    AppMethodBeat.i(158794);
+    paramString = Fb(paramString);
     if (paramString != null)
     {
-      paramString = paramString.d(paramParcel);
-      AppMethodBeat.o(114083);
+      paramString = paramString.f(paramParcel);
+      AppMethodBeat.o(158794);
       return paramString;
     }
-    AppMethodBeat.o(114083);
+    AppMethodBeat.o(158794);
     return null;
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(114084);
-    if ((parama == null) || (eEG.contains(parama)))
+    AppMethodBeat.i(158795);
+    if (parama == null)
     {
-      AppMethodBeat.o(114084);
+      AppMethodBeat.o(158795);
       return;
     }
-    eEH.put(parama.getClass().getName(), parama);
-    eEG.add(parama);
-    AppMethodBeat.o(114084);
+    synchronized (sLock)
+    {
+      if (mzi.contains(parama))
+      {
+        AppMethodBeat.o(158795);
+        return;
+      }
+      mzj.put(parama.getClass().getName(), parama);
+      mzi.add(parama);
+      AppMethodBeat.o(158795);
+      return;
+    }
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
-    AppMethodBeat.i(114082);
-    a locala = ag(paramObject);
+    AppMethodBeat.i(158793);
+    a locala = cK(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
-    AppMethodBeat.o(114082);
+    AppMethodBeat.o(158793);
   }
   
-  public static a ag(Object paramObject)
+  public static a cK(Object paramObject)
   {
-    AppMethodBeat.i(114081);
-    Iterator localIterator = eEG.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(158792);
+    synchronized (sLock)
     {
-      a locala = (a)localIterator.next();
-      if (locala.af(paramObject))
+      Iterator localIterator = mzi.iterator();
+      while (localIterator.hasNext())
       {
-        AppMethodBeat.o(114081);
-        return locala;
+        a locala = (a)localIterator.next();
+        if (locala.cJ(paramObject))
+        {
+          AppMethodBeat.o(158792);
+          return locala;
+        }
       }
+      AppMethodBeat.o(158792);
+      return null;
     }
-    AppMethodBeat.o(114081);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.c
  * JD-Core Version:    0.7.0.1
  */

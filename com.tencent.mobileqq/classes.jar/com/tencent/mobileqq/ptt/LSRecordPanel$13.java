@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.ptt;
 
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.IAudioPanelUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class LSRecordPanel$13
   implements Runnable
@@ -9,14 +10,14 @@ class LSRecordPanel$13
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.this$0.b(i);
-    LSRecordPanel.a(this.this$0).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    int i = ((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getVolumeLevel(this.a);
+    this.this$0.a(i);
+    LSRecordPanel.a(this.this$0).setText(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getTimeStrByMillis(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.13
  * JD-Core Version:    0.7.0.1
  */

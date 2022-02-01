@@ -1,236 +1,125 @@
 package com.tencent.mm.plugin.appbrand.s;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.u;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.cxd;
+import com.tencent.mm.protocal.protobuf.cxe;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ah;
+import kotlin.d.d;
+import kotlin.g.b.u;
+import kotlinx.coroutines.q;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "resp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "send", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaOrderInfoResp;", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  extends com.tencent.mm.am.p
+  implements m
 {
-  private static LinkedList<e> elu;
-  private static HashSet<c.a> iXj;
-  private static boolean iXk;
-  private static boolean iXl;
+  private final String TAG;
+  private com.tencent.mm.am.h mAY;
+  private final com.tencent.mm.am.c tmR;
   
-  static
+  public c()
   {
-    AppMethodBeat.i(93777);
-    elu = new LinkedList();
-    iXj = new HashSet();
-    iXk = false;
-    iXl = false;
-    AppMethodBeat.o(93777);
+    AppMethodBeat.i(319817);
+    this.TAG = "MicroMsg.webview.NetSceneGetWxaOrderInfo";
+    Object localObject = new com.tencent.mm.am.c.a();
+    ((com.tencent.mm.am.c.a)localObject).otE = ((com.tencent.mm.bx.a)new cxd());
+    ((com.tencent.mm.am.c.a)localObject).otF = ((com.tencent.mm.bx.a)new cxe());
+    ((com.tencent.mm.am.c.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaboss/getwxaorderinfo";
+    ((com.tencent.mm.am.c.a)localObject).funcId = 1893;
+    ((com.tencent.mm.am.c.a)localObject).otG = 0;
+    ((com.tencent.mm.am.c.a)localObject).respCmdId = 0;
+    localObject = ((com.tencent.mm.am.c.a)localObject).bEF();
+    kotlin.g.b.s.s(localObject, "builder.buildInstance()");
+    this.tmR = ((com.tencent.mm.am.c)localObject);
+    AppMethodBeat.o(319817);
   }
   
-  protected static String a(bi parambi, boolean paramBoolean, String paramString)
+  public final Object U(d<? super b.a<cxe>> paramd)
   {
-    AppMethodBeat.i(93775);
-    if (parambi.field_isSend == 1)
-    {
-      parambi = r.Zn();
-      AppMethodBeat.o(93775);
-      return parambi;
+    AppMethodBeat.i(319851);
+    Object localObject = new q(kotlin.d.a.b.au(paramd), 1);
+    ((q)localObject).kBA();
+    final kotlinx.coroutines.p localp = (kotlinx.coroutines.p)localObject;
+    final b localb = new b(this, localp);
+    localp.bg((kotlin.g.a.b)new a(this, localb));
+    com.tencent.mm.kernel.h.baD().mCm.a(getType(), (com.tencent.mm.am.h)localb);
+    com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)this, 0);
+    localObject = ((q)localObject).getResult();
+    if (localObject == kotlin.d.a.a.aiwj) {
+      kotlin.g.b.s.u(paramd, "frame");
     }
-    String str = null;
-    if (paramBoolean) {
-      str = bf.pu(parambi.field_content);
+    AppMethodBeat.o(319851);
+    return localObject;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(50890);
+    this.mAY = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.tmR, (m)this);
+    AppMethodBeat.o(50890);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1893;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(50891);
+    Log.i(this.TAG, "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = this.mAY;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
     }
-    if (bo.isNullOrNil(str)) {}
-    for (;;)
+    AppMethodBeat.o(50891);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.b<Throwable, ah>
+  {
+    a(c paramc, c.b paramb)
     {
-      AppMethodBeat.o(93775);
-      return paramString;
-      paramString = str;
+      super();
     }
   }
   
-  public static void a(String paramString, c.a parama)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$send$2$sceneEndListener$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.am.h
   {
-    for (;;)
+    b(c paramc, kotlinx.coroutines.p<? super b.a<cxe>> paramp) {}
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
     {
-      try
+      AppMethodBeat.i(319841);
+      if (kotlin.g.b.s.p(this.tmS, paramp))
       {
-        AppMethodBeat.i(93773);
-        if (iXk)
+        com.tencent.mm.kernel.h.baD().mCm.b(this.tmS.getType(), (com.tencent.mm.am.h)this);
+        kotlinx.coroutines.p localp = localp;
+        Object localObject = Result.Companion;
+        localObject = c.c.b(c.a(this.tmS).otC);
+        if (localObject == null)
         {
-          iXj.add(parama);
-          AppMethodBeat.o(93773);
-          return;
+          paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetWxaOrderInfoResp");
+          AppMethodBeat.o(319841);
+          throw paramString;
         }
-        if (iXl)
-        {
-          parama.z(elu);
-          AppMethodBeat.o(93773);
-          continue;
-        }
-        iXk = true;
+        localp.resumeWith(Result.constructor-impl(b.a.a(paramInt1, paramInt2, paramString, (esc)localObject, paramp, null)));
       }
-      finally {}
-      iXj.add(parama);
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RO().ac(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(93771);
-          c.aNO().clear();
-          if (t.lA(this.euc)) {}
-          label507:
-          Object localObject2;
-          for (u localu = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.chatroom.a.c.class)).YJ().oU(this.euc);; localObject2 = null)
-          {
-            int i = 100;
-            int j = 0;
-            while (i >= 100)
-            {
-              Cursor localCursor = ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().cF(this.euc, j);
-              if (localCursor != null) {}
-              for (;;)
-              {
-                Object localObject3;
-                try
-                {
-                  i = localCursor.getCount();
-                  if ((localCursor == null) || (!localCursor.moveToNext())) {
-                    break;
-                  }
-                  bi localbi = new bi();
-                  localbi.setMsgId(localCursor.getLong(0));
-                  localbi.fP(localCursor.getLong(1));
-                  localbi.fQ(localCursor.getLong(2));
-                  localbi.setContent(localCursor.getString(3));
-                  localbi.hL(localCursor.getInt(4));
-                  localbi.kk(localCursor.getString(5));
-                  str = localbi.field_content;
-                  if (str == null) {
-                    continue;
-                  }
-                  j.b localb = j.b.mY(str);
-                  if ((localb == null) || (!c.pL(localb.type))) {
-                    continue;
-                  }
-                  Object localObject4 = c.a(localbi, t.lA(this.euc), this.euc);
-                  localObject3 = ((j)com.tencent.mm.kernel.g.E(j.class)).YA().arw((String)localObject4);
-                  str = "";
-                  if (localu != null) {
-                    str = localu.nE((String)localObject4);
-                  }
-                  localObject3 = new e(localbi.field_createTime, localb.type, localb.title, localbi.field_msgId, ((aq)localObject3).field_username, ((ad)localObject3).Oe(), ((aq)localObject3).field_conRemark, str, bo.bf(localb.fiY, localb.appId), localb, localbi.field_msgSvrId);
-                  ((e)localObject3).desc = localb.title;
-                  localObject4 = ((i)com.tencent.mm.kernel.g.E(i.class)).Ae(((e)localObject3).cEn.fiX);
-                  if (localObject4 == null) {
-                    break label507;
-                  }
-                  str = ((WxaAttributes)localObject4).field_nickname;
-                  ((e)localObject3).title = str;
-                  if (localObject4 == null) {
-                    break label520;
-                  }
-                  str = ((WxaAttributes)localObject4).field_brandIconURL;
-                  ((e)localObject3).imagePath = str;
-                  if (localb.fiZ != 1)
-                  {
-                    str = o.ahC().c(localbi.field_imgPath, false, true);
-                    if (!bo.isNullOrNil(str)) {
-                      ((e)localObject3).iXo = "file://".concat(String.valueOf(str));
-                    }
-                  }
-                  c.aNO().add(localObject3);
-                  continue;
-                  i = 0;
-                }
-                finally
-                {
-                  if (localCursor != null) {
-                    localCursor.close();
-                  }
-                  AppMethodBeat.o(93771);
-                }
-                continue;
-                String str = ((e)localObject3).cEn.cGO;
-                continue;
-                label520:
-                str = ((e)localObject3).cEn.fjj;
-              }
-              if (localCursor != null) {
-                localCursor.close();
-              }
-              j += i;
-            }
-            ab.i("MicroMsg.AppBrandHistoryListLogic", "[loadData] data:%s", new Object[] { Integer.valueOf(c.aNO().size()) });
-            al.d(new c.1.1(this));
-            AppMethodBeat.o(93771);
-            return;
-          }
-        }
-      });
-      AppMethodBeat.o(93773);
-    }
-  }
-  
-  private static void done()
-  {
-    try
-    {
-      AppMethodBeat.i(93774);
-      ab.i("MicroMsg.AppBrandHistoryListLogic", "done");
-      iXl = true;
-      iXk = false;
-      Iterator localIterator = iXj.iterator();
-      while (localIterator.hasNext())
-      {
-        c.a locala = (c.a)localIterator.next();
-        if (locala != null) {
-          locala.z(elu);
-        }
-      }
-      iXj.clear();
-    }
-    finally {}
-    AppMethodBeat.o(93774);
-  }
-  
-  public static boolean pL(int paramInt)
-  {
-    return (33 == paramInt) || (36 == paramInt);
-  }
-  
-  public static void reset()
-  {
-    try
-    {
-      AppMethodBeat.i(93772);
-      iXk = false;
-      iXl = false;
-      elu.clear();
-      iXj.clear();
-      AppMethodBeat.o(93772);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(319841);
     }
   }
 }

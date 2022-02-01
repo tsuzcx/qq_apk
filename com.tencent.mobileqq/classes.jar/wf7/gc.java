@@ -46,12 +46,13 @@ public class gc
   
   public void a(int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, boolean paramBoolean, aw paramaw, long paramLong)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 2)
-    {
-      b(paramInt, paramJceStruct1, paramJceStruct2, i, new gc.2(this, paramaw), paramLong);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 2;
     }
+    b(paramInt, paramJceStruct1, paramJceStruct2, i, new gc.2(this, paramaw), paramLong);
   }
   
   public void a(int paramInt, JceStruct paramJceStruct, ay paramay)
@@ -74,7 +75,7 @@ public class gc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.gc
  * JD-Core Version:    0.7.0.1
  */

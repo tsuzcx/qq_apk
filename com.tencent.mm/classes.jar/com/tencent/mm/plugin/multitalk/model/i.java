@@ -1,45 +1,23 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.app.Activity;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bg.e;
+import kotlin.Metadata;
 
-public final class i
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface i
 {
-  private boolean oUb;
-  private boolean oUc;
+  public abstract void aMI(String paramString);
   
-  public final void W(Activity paramActivity)
-  {
-    AppMethodBeat.i(54043);
-    if (!this.oUb)
-    {
-      this.oUb = true;
-      e.a(paramActivity, 2131301692, null);
-    }
-    AppMethodBeat.o(54043);
-  }
+  public abstract void aMJ(String paramString);
   
-  public final void X(Activity paramActivity)
-  {
-    AppMethodBeat.i(54044);
-    if (!this.oUc)
-    {
-      this.oUc = true;
-      e.a(paramActivity, 2131304716, null);
-    }
-    AppMethodBeat.o(54044);
-  }
+  public abstract void aMK(String paramString);
   
-  public final void reset()
-  {
-    this.oUc = false;
-    this.oUb = false;
-  }
+  public abstract void aML(String paramString);
+  
+  public abstract void aMM(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.i
  * JD-Core Version:    0.7.0.1
  */

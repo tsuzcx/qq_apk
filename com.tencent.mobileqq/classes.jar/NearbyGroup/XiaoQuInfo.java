@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class XiaoQuInfo
   extends JceStruct
 {
-  public int iMemberCnt;
+  public int iMemberCnt = 0;
   public String strIntro = "";
   public String strLocation = "";
   public String strName = "";
@@ -44,7 +44,7 @@ public final class XiaoQuInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.XiaoQuInfo
  * JD-Core Version:    0.7.0.1
  */

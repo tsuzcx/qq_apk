@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aepi;
-import aijq;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 
-public class MiniPie$2
+class MiniPie$2
   implements Runnable
 {
-  public MiniPie$2(aijq paramaijq) {}
+  MiniPie$2(MiniPie paramMiniPie, Intent paramIntent) {}
   
   public void run()
   {
-    aepi.a(this.this$0.a);
+    this.this$0.b.startActivity(this.a);
+    this.this$0.E.b(14);
+    ((Activity)this.this$0.b).finish();
   }
 }
 

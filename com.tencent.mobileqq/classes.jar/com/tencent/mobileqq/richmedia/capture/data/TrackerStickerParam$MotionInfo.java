@@ -49,13 +49,17 @@ public class TrackerStickerParam$MotionInfo
       localJSONObject.put("rotate", this.rotate);
       return localJSONObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label80:
+      break label80;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam.MotionInfo
  * JD-Core Version:    0.7.0.1
  */

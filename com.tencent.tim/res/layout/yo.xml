@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/g7c" android:background="#3f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a86" android:layout_alignParentBottom="true" />
+    <View android:id="@id/ful" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/a1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:layout_marginBottom="32.0dip" android:layout_toLeftOf="@id/ful" android:layout_alignParentBottom="true">
+        <Button android:textSize="12.0dip" android:textColor="@color/q4" android:gravity="center_horizontal" android:id="@id/a2i" android:background="@color/ajr" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dm9" android:drawableTop="@drawable/v4" android:drawablePadding="10.0dip" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/dm9" />
+        <Button android:textSize="12.0dip" android:textColor="@color/s4" android:id="@id/ga4" android:background="@drawable/uy" android:clickable="true" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="28.0dip" android:drawablePadding="5.0dip" android:layout_below="@id/a2i" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/bhe" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/a24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="44.0dip" android:layout_marginBottom="32.0dip" android:layout_toRightOf="@id/ful" android:layout_alignParentBottom="true">
+        <Button android:textSize="12.0dip" android:textColor="@color/q4" android:gravity="center_horizontal" android:id="@id/a2j" android:background="@color/ajr" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dmb" android:drawableTop="@drawable/d_5" android:drawablePadding="10.0dip" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/icf" />
+        <Button android:textSize="12.0dip" android:textColor="@color/s4" android:id="@id/a28" android:background="@drawable/ut" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="28.0dip" android:drawablePadding="5.0dip" android:layout_below="@id/a2j" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" android:contentDescription="@string/bh9" />
+    </RelativeLayout>
+</RelativeLayout>

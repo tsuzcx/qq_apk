@@ -12,6 +12,10 @@ public class Request
   implements Comparable<Request>
 {
   private static final int DEFAULT_TIMEOUT_MILLIS = 8000;
+  public static final int PRIORITY_HIGH = 3;
+  public static final int PRIORITY_IMMEDIATE = 4;
+  public static final int PRIORITY_LOW = 1;
+  public static final int PRIORITY_NORMAL = 2;
   @GuardedBy("mLock")
   private boolean mCanceled = false;
   private final int mDefaultTrafficStatsTag;
@@ -42,16 +46,13 @@ public class Request
     this.mHttpMethod = paramInt1;
     this.mUrl = paramString;
     this.mPostBody = paramArrayOfByte;
-    if (paramInt2 > 0) {}
-    for (;;)
-    {
-      this.mTimeoutMs = paramInt2;
-      this.mHttpHeaders = paramMap;
-      this.mRequestCompleteListener = paramNetworkRequestCompleteListener;
-      this.mDefaultTrafficStatsTag = findDefaultTrafficStatsTag(paramString);
-      return;
+    if (paramInt2 <= 0) {
       paramInt2 = 8000;
     }
+    this.mTimeoutMs = paramInt2;
+    this.mHttpHeaders = paramMap;
+    this.mRequestCompleteListener = paramNetworkRequestCompleteListener;
+    this.mDefaultTrafficStatsTag = findDefaultTrafficStatsTag(paramString);
   }
   
   private static int findDefaultTrafficStatsTag(String paramString)
@@ -83,12 +84,12 @@ public class Request
   
   public int compareTo(Request paramRequest)
   {
-    Request.Priority localPriority1 = getPriority();
-    Request.Priority localPriority2 = paramRequest.getPriority();
-    if (localPriority1 == localPriority2) {
+    int i = getPriority();
+    int j = paramRequest.getPriority();
+    if (i == j) {
       return this.mSequence.intValue() - paramRequest.mSequence.intValue();
     }
-    return localPriority2.ordinal() - localPriority1.ordinal();
+    return j - i;
   }
   
   public void deliverError(IOException paramIOException)
@@ -117,8 +118,9 @@ public class Request
   
   void finish()
   {
-    if (this.mRequestQueue != null) {
-      this.mRequestQueue.finish(this);
+    RequestQueue localRequestQueue = this.mRequestQueue;
+    if (localRequestQueue != null) {
+      localRequestQueue.finish(this);
     }
   }
   
@@ -137,17 +139,19 @@ public class Request
     return this.mPostBody;
   }
   
-  public Request.Priority getPriority()
+  @Request.Priority
+  public int getPriority()
   {
-    return Request.Priority.NORMAL;
+    return 2;
   }
   
   public final int getSequence()
   {
-    if (this.mSequence == null) {
-      throw new IllegalStateException("getSequence called before setSequence");
+    Integer localInteger = this.mSequence;
+    if (localInteger != null) {
+      return localInteger.intValue();
     }
-    return this.mSequence.intValue();
+    throw new IllegalStateException("getSequence called before setSequence");
   }
   
   public Object getTag()
@@ -199,17 +203,30 @@ public class Request
   
   public String toString()
   {
-    String str2 = "0x" + Integer.toHexString(getTrafficStatsTag());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("0x");
+    ((StringBuilder)localObject).append(Integer.toHexString(getTrafficStatsTag()));
+    String str = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (isCanceled()) {}
-    for (String str1 = "[X] ";; str1 = "[ ] ") {
-      return str1 + getUrl() + " " + str2 + " " + getPriority() + " " + this.mSequence;
+    if (isCanceled()) {
+      localObject = "[X] ";
+    } else {
+      localObject = "[ ] ";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(getUrl());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(getPriority());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.mSequence);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.Request
  * JD-Core Version:    0.7.0.1
  */

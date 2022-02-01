@@ -8,11 +8,11 @@ public class StrictModeUtils
 {
   public static StrictMode.ThreadPolicy setDynamiteThreadPolicy()
   {
-    AppMethodBeat.i(90268);
+    AppMethodBeat.i(5289);
     StrictMode.noteSlowCall("gcore.dynamite");
     StrictMode.ThreadPolicy localThreadPolicy = StrictMode.getThreadPolicy();
     StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.LAX);
-    AppMethodBeat.o(90268);
+    AppMethodBeat.o(5289);
     return localThreadPolicy;
   }
 }

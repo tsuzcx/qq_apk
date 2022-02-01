@@ -1,13 +1,8 @@
-import android.content.ComponentName;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MusicSharePlayActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
 
 public class enz
   implements View.OnClickListener
@@ -16,28 +11,12 @@ public class enz
   
   public void onClick(View paramView)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
+    if (UpgradeController.a().a() == 4)
     {
-      BannerManager.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicSharePlayActivity.class.getName())) {
-        break label92;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      ReportController.b(BannerManager.a(this.a).b, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      UpgradeController.a().a(BannerManager.a(this.a));
       return;
-      label92:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
     }
+    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
   }
 }
 

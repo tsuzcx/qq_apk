@@ -22,8 +22,20 @@ class GLVideoView$1
   
   public void onRenderInfoNotify(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GLVideoView", 0, "onRenderInfoNotify uin: " + GLVideoView.access$000(this.this$0) + ", mVideoSrcType: " + GLVideoView.access$100(this.this$0) + ", width: " + paramInt1 + ", height: " + paramInt2 + ", angle: " + paramInt3);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRenderInfoNotify uin: ");
+      localStringBuilder.append(GLVideoView.access$000(this.this$0));
+      localStringBuilder.append(", mVideoSrcType: ");
+      localStringBuilder.append(GLVideoView.access$100(this.this$0));
+      localStringBuilder.append(", width: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", height: ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", angle: ");
+      localStringBuilder.append(paramInt3);
+      QLog.d("GLVideoView", 0, localStringBuilder.toString());
     }
     GLVideoView.access$200(this.this$0).setTextureSize(paramInt1, paramInt2);
     this.this$0.invalidate();
@@ -37,7 +49,7 @@ class GLVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLVideoView.1
  * JD-Core Version:    0.7.0.1
  */

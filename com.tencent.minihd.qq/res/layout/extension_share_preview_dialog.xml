@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/dialogRoot" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/dialogBase_width" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/bodyLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:layout_gravity="left" android:id="@id/previewImage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
+        <EditText android:id="@id/shareMessageEditText" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:hint="@string/extension_share_qzone_pre_dialog_edit_hint" android:maxLength="120" />
+    </LinearLayout>
+    <View android:id="@id/dialogDivider" android:background="#ffc2c8cd" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="1.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="1.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:singleLine="true" android:layout_weight="1.0" />
+        <View android:background="@color/dialog_gray" android:layout_width="@dimen/dialogBase_divider_width" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/font_size_middle" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

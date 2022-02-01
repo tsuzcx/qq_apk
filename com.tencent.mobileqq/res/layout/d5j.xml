@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.subscribe.widget.ShadowCardView android:id="@id/msd" android:layout_width="116.5dip" android:layout_height="wrap_content" app:shadowBlur="10.0dip" app:shadowBottomHeight="6.0dip" app:shadowCardColor="#ffffffff" app:shadowHeightColor="#0d000000" app:shadowLeftHeight="0.0dip" app:shadowRightHeight="7.0dip" app:shadowRound="4.0dip" app:shadowTopHeight="0.0dip">
+        <com.tencent.mobileqq.extendfriend.widget.ClickableFrameLayout android:id="@id/msl" android:background="@drawable/g22" android:padding="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.activity.recent.gamemsgbox.RoundCornerImageView android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="114.0dip" android:scaleType="fitXY" app:imageRadius="8.0dip" />
+            <View android:id="@id/mkm" android:background="#04000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="114.0dip" />
+            <LinearLayout android:orientation="vertical" android:id="@id/mvv" android:paddingLeft="7.0dip" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="114.0dip">
+                <ImageView android:id="@id/icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitXY" />
+                <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="兴趣匹配" android:singleLine="true" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:id="@id/j5r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="精准找到喜欢的人" android:singleLine="true" />
+            </LinearLayout>
+        </com.tencent.mobileqq.extendfriend.widget.ClickableFrameLayout>
+    </com.tencent.biz.subscribe.widget.ShadowCardView>
+</FrameLayout>

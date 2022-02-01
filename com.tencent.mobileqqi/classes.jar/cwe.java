@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.mobileqq.activity.ModifyFriendInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.model.FriendManager;
 
-class cwe
-  implements DialogInterface.OnDismissListener
+public class cwe
+  extends Thread
 {
-  cwe(cwc paramcwc) {}
+  public cwe(ModifyFriendInfoActivity paramModifyFriendInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a.a.finish();
+    Object localObject = ((FriendManager)this.a.b.getManager(8)).a(this.a.jdField_a_of_type_JavaLangString);
+    if (localObject != null) {
+      this.a.c = ((Card)localObject).strReMark;
+    }
+    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    ((Message)localObject).what = 1;
+    ((Message)localObject).sendToTarget();
   }
 }
 

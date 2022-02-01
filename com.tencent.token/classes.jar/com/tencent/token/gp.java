@@ -1,17 +1,86 @@
 package com.tencent.token;
 
-import java.util.concurrent.ThreadFactory;
+import android.os.Build.VERSION;
+import android.widget.TextView;
 
-class gp
-  implements ThreadFactory
+public final class gp
 {
-  gp(String paramString, boolean paramBoolean) {}
+  static final g a = new g();
   
-  public Thread newThread(Runnable paramRunnable)
+  static
   {
-    paramRunnable = new Thread(paramRunnable, this.a);
-    paramRunnable.setDaemon(this.b);
-    return paramRunnable;
+    if (eh.a())
+    {
+      a = new f();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      a = new e();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new d();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      a = new a();
+      return;
+    }
+  }
+  
+  public static void a(TextView paramTextView, int paramInt)
+  {
+    a.a(paramTextView, paramInt);
+  }
+  
+  static class a
+    extends gp.g
+  {}
+  
+  static class b
+    extends gp.a
+  {}
+  
+  static class c
+    extends gp.b
+  {}
+  
+  static class d
+    extends gp.c
+  {
+    public final void a(TextView paramTextView, int paramInt)
+    {
+      paramTextView.setTextAppearance(paramInt);
+    }
+  }
+  
+  static class e
+    extends gp.d
+  {}
+  
+  static final class f
+    extends gp.e
+  {}
+  
+  static class g
+  {
+    public void a(TextView paramTextView, int paramInt)
+    {
+      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
+    }
   }
 }
 

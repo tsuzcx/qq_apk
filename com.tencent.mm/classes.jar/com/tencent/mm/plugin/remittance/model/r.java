@@ -1,85 +1,69 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.b.a.a;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.yb;
+import com.tencent.mm.protocal.protobuf.yc;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
-  extends a
+  extends p
+  implements m
 {
-  public long cNd;
-  public String desc;
-  public int kNE;
-  public String kNF;
-  public String kNG;
-  public String kNH;
-  public String kNI;
-  public int kNJ;
-  public String qju;
-  public String qjv;
-  public String qjw;
+  private yb Oje;
+  private h callback;
+  private c nao;
   
-  public r(String paramString)
+  public r(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    AppMethodBeat.i(44762);
-    HashMap localHashMap = new HashMap();
-    try
-    {
-      if (!bo.isNullOrNil(paramString)) {
-        localHashMap.put("qrcode_url", URLEncoder.encode(paramString, "UTF-8"));
-      }
-      setRequestData(localHashMap);
-      ab.i("MicroMsg.NetSceneH5F2fTransferScanQrCode", "qrcode_url: %s", new Object[] { paramString });
-      AppMethodBeat.o(44762);
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferScanQrCode", localUnsupportedEncodingException, "", new Object[0]);
-      }
-    }
+    AppMethodBeat.i(67865);
+    c.a locala = new c.a();
+    locala.otE = new yb();
+    locala.otF = new yc();
+    locala.funcId = 1273;
+    locala.uri = "/cgi-bin/mmpay-bin/f2fpaycheck";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.nao = locala.bEF();
+    this.Oje = ((yb)c.b.b(this.nao.otB));
+    this.Oje.YGt = paramString1;
+    this.Oje.Oln = paramString2;
+    this.Oje.ZgS = paramString3;
+    this.Oje.ZgT = paramString4;
+    this.Oje.amount = paramInt;
+    Log.d("MicroMsg.NetSceneF2fPayCheck", "NetSceneF2fPayCheck, f2fId: %s, transId: %s, extendStr: %s, amount: %s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(67865);
   }
   
-  public final String bhG()
+  public final int doScene(g paramg, h paramh)
   {
-    return "/cgi-bin/mmpay-bin/h5f2ftransferscanqrcode";
-  }
-  
-  public final int bhH()
-  {
-    return 1301;
+    AppMethodBeat.i(67866);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
+    AppMethodBeat.o(67866);
+    return i;
   }
   
   public final int getType()
   {
-    return 1301;
+    return 1273;
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(44763);
-    this.qju = paramJSONObject.optString("recv_username", "");
-    this.kNI = paramJSONObject.optString("recv_realname", "");
-    this.qjv = paramJSONObject.optString("recv_nickname", "");
-    this.desc = paramJSONObject.optString("desc", "");
-    this.cNd = paramJSONObject.optLong("amount", 0L);
-    this.kNJ = paramJSONObject.optInt("set_amount", 0);
-    this.kNE = paramJSONObject.optInt("currency", 0);
-    this.kNF = paramJSONObject.optString("currencyunit", "");
-    this.qjw = paramJSONObject.optString("qrcodeid", "");
-    this.kNG = paramJSONObject.optString("notice", "");
-    this.kNH = paramJSONObject.optString("notice_url", "");
-    ab.i("MicroMsg.NetSceneH5F2fTransferScanQrCode", "recv_username: %s, recv_nickname: %s, desc: %s, amount: %s, setAmount: %s, currencyunit: %s", new Object[] { this.qju, this.qjv, this.desc, Long.valueOf(this.cNd), Integer.valueOf(this.kNJ), this.kNF });
-    ab.d("MicroMsg.NetSceneH5F2fTransferScanQrCode", "recv_realname: %s", new Object[] { this.kNI });
-    AppMethodBeat.o(44763);
+    AppMethodBeat.i(67867);
+    Log.i("MicroMsg.NetSceneF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(67867);
   }
 }
 

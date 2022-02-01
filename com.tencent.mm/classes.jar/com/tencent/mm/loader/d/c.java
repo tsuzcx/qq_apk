@@ -1,11 +1,10 @@
 package com.tencent.mm.loader.d;
 
-import java.io.InputStream;
+import com.tencent.mm.loader.e.b;
 
-public abstract interface c
-{
-  public abstract boolean b(String paramString, InputStream paramInputStream);
-}
+public final class c
+  implements b
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

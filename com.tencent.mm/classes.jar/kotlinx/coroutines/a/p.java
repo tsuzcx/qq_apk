@@ -1,33 +1,19 @@
 package kotlinx.coroutines.a;
 
-import a.f.a.a;
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/ThreadLocalWithInitialValue;", "T", "Ljava/lang/ThreadLocal;", "supplier", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "initialValue", "()Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class p<T>
-  extends ThreadLocal<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ClosedSendChannelException;", "Ljava/lang/IllegalStateException;", "Lkotlin/IllegalStateException;", "message", "", "(Ljava/lang/String;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class p
+  extends IllegalStateException
 {
-  private final a<T> CJE;
-  
-  public p(a<? extends T> parama)
+  public p(String paramString)
   {
-    AppMethodBeat.i(118383);
-    this.CJE = parama;
-    AppMethodBeat.o(118383);
-  }
-  
-  protected final T initialValue()
-  {
-    AppMethodBeat.i(118382);
-    Object localObject = this.CJE.invoke();
-    AppMethodBeat.o(118382);
-    return localObject;
+    super(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.p
  * JD-Core Version:    0.7.0.1
  */

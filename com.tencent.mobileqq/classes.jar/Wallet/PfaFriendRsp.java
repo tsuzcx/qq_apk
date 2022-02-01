@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PfaFriendRsp
   extends JceStruct
@@ -12,11 +13,11 @@ public final class PfaFriendRsp
   static ArrayList<PfaFriend> cache_vecRec = new ArrayList();
   static ArrayList<PfaFriend> cache_vecSpfaRec;
   public String pfa_msg_edition = "";
-  public int ret;
-  public int use_default;
-  public ArrayList<String> vecPfaMsg;
-  public ArrayList<PfaFriend> vecRec;
-  public ArrayList<PfaFriend> vecSpfaRec;
+  public int ret = 0;
+  public int use_default = 0;
+  public ArrayList<String> vecPfaMsg = null;
+  public ArrayList<PfaFriend> vecRec = null;
+  public ArrayList<PfaFriend> vecSpfaRec = null;
   
   static
   {
@@ -43,23 +44,27 @@ public final class PfaFriendRsp
   {
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.use_default, 1);
-    if (this.vecRec != null) {
-      paramJceOutputStream.write(this.vecRec, 2);
+    Object localObject = this.vecRec;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.pfa_msg_edition != null) {
-      paramJceOutputStream.write(this.pfa_msg_edition, 3);
+    localObject = this.pfa_msg_edition;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.vecPfaMsg != null) {
-      paramJceOutputStream.write(this.vecPfaMsg, 4);
+    localObject = this.vecPfaMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vecSpfaRec != null) {
-      paramJceOutputStream.write(this.vecSpfaRec, 5);
+    localObject = this.vecSpfaRec;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.PfaFriendRsp
  * JD-Core Version:    0.7.0.1
  */

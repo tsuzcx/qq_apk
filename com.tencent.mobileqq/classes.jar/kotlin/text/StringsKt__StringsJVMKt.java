@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"CASE_INSENSITIVE_ORDER", "Ljava/util/Comparator;", "", "Lkotlin/Comparator;", "Lkotlin/String$Companion;", "getCASE_INSENSITIVE_ORDER", "(Lkotlin/jvm/internal/StringCompanionObject;)Ljava/util/Comparator;", "String", "stringBuffer", "Ljava/lang/StringBuffer;", "stringBuilder", "Ljava/lang/StringBuilder;", "bytes", "", "charset", "Ljava/nio/charset/Charset;", "offset", "", "length", "chars", "", "codePoints", "", "capitalize", "locale", "Ljava/util/Locale;", "codePointAt", "index", "codePointBefore", "codePointCount", "beginIndex", "endIndex", "compareTo", "other", "ignoreCase", "", "concatToString", "startIndex", "contentEquals", "charSequence", "", "decapitalize", "decodeToString", "throwOnInvalidSequence", "encodeToByteArray", "endsWith", "suffix", "equals", "format", "args", "", "", "(Ljava/lang/String;Ljava/util/Locale;[Ljava/lang/Object;)Ljava/lang/String;", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "(Lkotlin/jvm/internal/StringCompanionObject;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "intern", "isBlank", "nativeIndexOf", "ch", "", "fromIndex", "str", "nativeLastIndexOf", "offsetByCodePoints", "codePointOffset", "regionMatches", "thisOffset", "otherOffset", "repeat", "n", "replace", "oldChar", "newChar", "oldValue", "newValue", "replaceFirst", "split", "", "regex", "Ljava/util/regex/Pattern;", "limit", "startsWith", "prefix", "substring", "toByteArray", "toCharArray", "destination", "destinationOffset", "toLowerCase", "toPattern", "flags", "toUpperCase", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/text/StringsKt")
-public class StringsKt__StringsJVMKt
+class StringsKt__StringsJVMKt
   extends StringsKt__StringNumberConversionsKt
 {
   @InlineOnly
@@ -91,32 +91,30 @@ public class StringsKt__StringsJVMKt
   public static final String capitalize(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$capitalize");
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (((CharSequence)paramString).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (Character.isLowerCase(paramString.charAt(0))))
     {
-      localObject = paramString;
-      if (i == 0) {
-        return localObject;
-      }
-      localObject = paramString;
-      if (!Character.isLowerCase(paramString.charAt(0))) {
-        return localObject;
-      }
-      localObject = new StringBuilder();
-      str = paramString.substring(0, 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      String str = paramString.substring(0, 1);
       Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      if (str != null) {
-        break;
+      if (str != null)
+      {
+        str = str.toUpperCase();
+        Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).toUpperCase()");
+        localStringBuilder.append(str);
+        paramString = paramString.substring(1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
       }
       throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
-    String str = str.toUpperCase();
-    Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).toUpperCase()");
-    Object localObject = ((StringBuilder)localObject).append(str);
-    paramString = paramString.substring(1);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    localObject = paramString;
-    return localObject;
+    return paramString;
   }
   
   @ExperimentalStdlibApi
@@ -128,73 +126,71 @@ public class StringsKt__StringsJVMKt
     Intrinsics.checkParameterIsNotNull(paramString, "$this$capitalize");
     Intrinsics.checkParameterIsNotNull(paramLocale, "locale");
     int i;
-    Object localObject;
-    if (((CharSequence)paramString).length() > 0)
-    {
+    if (((CharSequence)paramString).length() > 0) {
       i = 1;
-      localObject = paramString;
-      if (i != 0)
-      {
-        char c1 = paramString.charAt(0);
-        localObject = paramString;
-        if (Character.isLowerCase(c1))
-        {
-          localObject = new StringBuilder();
-          char c2 = Character.toTitleCase(c1);
-          if (c2 == Character.toUpperCase(c1)) {
-            break label122;
-          }
-          ((StringBuilder)localObject).append(c2);
-        }
-      }
-    }
-    for (;;)
-    {
-      paramString = paramString.substring(1);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-      ((StringBuilder)localObject).append(paramString);
-      localObject = ((StringBuilder)localObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder().apply(builderAction).toString()");
-      return localObject;
+    } else {
       i = 0;
-      break;
-      label122:
-      String str = paramString.substring(0, 1);
-      Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      if (str == null) {
+    }
+    if (i != 0)
+    {
+      char c1 = paramString.charAt(0);
+      if (Character.isLowerCase(c1))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        char c2 = Character.toTitleCase(c1);
+        if (c2 != Character.toUpperCase(c1))
+        {
+          localStringBuilder.append(c2);
+        }
+        else
+        {
+          String str = paramString.substring(0, 1);
+          Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+          if (str == null) {
+            break label156;
+          }
+          paramLocale = str.toUpperCase(paramLocale);
+          Intrinsics.checkExpressionValueIsNotNull(paramLocale, "(this as java.lang.String).toUpperCase(locale)");
+          localStringBuilder.append(paramLocale);
+        }
+        paramString = paramString.substring(1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        localStringBuilder.append(paramString);
+        paramString = localStringBuilder.toString();
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "StringBuilder().apply(builderAction).toString()");
+        return paramString;
+        label156:
         throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
       }
-      paramLocale = str.toUpperCase(paramLocale);
-      Intrinsics.checkExpressionValueIsNotNull(paramLocale, "(this as java.lang.String).toUpperCase(locale)");
-      ((StringBuilder)localObject).append(paramLocale);
     }
+    return paramString;
   }
   
   @InlineOnly
   private static final int codePointAt(@NotNull String paramString, int paramInt)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.codePointAt(paramInt);
     }
-    return paramString.codePointAt(paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int codePointBefore(@NotNull String paramString, int paramInt)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.codePointBefore(paramInt);
     }
-    return paramString.codePointBefore(paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int codePointCount(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.codePointCount(paramInt1, paramInt2);
     }
-    return paramString.codePointCount(paramInt1, paramInt2);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   public static final int compareTo(@NotNull String paramString1, @NotNull String paramString2, boolean paramBoolean)
@@ -229,51 +225,49 @@ public class StringsKt__StringsJVMKt
   @InlineOnly
   private static final boolean contentEquals(@NotNull String paramString, CharSequence paramCharSequence)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.contentEquals(paramCharSequence);
     }
-    return paramString.contentEquals(paramCharSequence);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final boolean contentEquals(@NotNull String paramString, StringBuffer paramStringBuffer)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.contentEquals(paramStringBuffer);
     }
-    return paramString.contentEquals(paramStringBuffer);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @NotNull
   public static final String decapitalize(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$decapitalize");
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (((CharSequence)paramString).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (Character.isUpperCase(paramString.charAt(0))))
     {
-      localObject = paramString;
-      if (i == 0) {
-        return localObject;
-      }
-      localObject = paramString;
-      if (!Character.isUpperCase(paramString.charAt(0))) {
-        return localObject;
-      }
-      localObject = new StringBuilder();
-      str = paramString.substring(0, 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      String str = paramString.substring(0, 1);
       Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      if (str != null) {
-        break;
+      if (str != null)
+      {
+        str = str.toLowerCase();
+        Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).toLowerCase()");
+        localStringBuilder.append(str);
+        paramString = paramString.substring(1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
       }
       throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
-    String str = str.toLowerCase();
-    Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.String).toLowerCase()");
-    Object localObject = ((StringBuilder)localObject).append(str);
-    paramString = paramString.substring(1);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    localObject = paramString;
-    return localObject;
+    return paramString;
   }
   
   @ExperimentalStdlibApi
@@ -284,33 +278,30 @@ public class StringsKt__StringsJVMKt
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$decapitalize");
     Intrinsics.checkParameterIsNotNull(paramLocale, "locale");
-    if (((CharSequence)paramString).length() > 0) {}
-    String str;
-    for (int i = 1;; i = 0)
+    int i;
+    if (((CharSequence)paramString).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (!Character.isLowerCase(paramString.charAt(0))))
     {
-      localObject = paramString;
-      if (i == 0) {
-        return localObject;
-      }
-      localObject = paramString;
-      if (Character.isLowerCase(paramString.charAt(0))) {
-        return localObject;
-      }
-      localObject = new StringBuilder();
-      str = paramString.substring(0, 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      String str = paramString.substring(0, 1);
       Intrinsics.checkExpressionValueIsNotNull(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      if (str != null) {
-        break;
+      if (str != null)
+      {
+        paramLocale = str.toLowerCase(paramLocale);
+        Intrinsics.checkExpressionValueIsNotNull(paramLocale, "(this as java.lang.String).toLowerCase(locale)");
+        localStringBuilder.append(paramLocale);
+        paramString = paramString.substring(1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        localStringBuilder.append(paramString);
+        return localStringBuilder.toString();
       }
       throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
-    paramLocale = str.toLowerCase(paramLocale);
-    Intrinsics.checkExpressionValueIsNotNull(paramLocale, "(this as java.lang.String).toLowerCase(locale)");
-    paramLocale = ((StringBuilder)localObject).append(paramLocale);
-    paramString = paramString.substring(1);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    Object localObject = paramString;
-    return localObject;
+    return paramString;
   }
   
   @ExperimentalStdlibApi
@@ -360,12 +351,13 @@ public class StringsKt__StringsJVMKt
       paramString = paramString.substring(paramInt1, paramInt2);
       Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       localObject = Charsets.UTF_8;
-      if (paramString == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      if (paramString != null)
+      {
+        paramString = paramString.getBytes((Charset)localObject);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
+        return paramString;
       }
-      paramString = paramString.getBytes((Charset)localObject);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
-      return paramString;
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
     paramString = Charsets.UTF_8.newEncoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).encode(CharBuffer.wrap((CharSequence)paramString, paramInt1, paramInt2));
     if ((paramString.hasArray()) && (paramString.arrayOffset() == 0))
@@ -452,90 +444,86 @@ public class StringsKt__StringsJVMKt
   @InlineOnly
   private static final String intern(@NotNull String paramString)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.intern();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).intern()");
+      return paramString;
     }
-    paramString = paramString.intern();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).intern()");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   public static final boolean isBlank(@NotNull CharSequence paramCharSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$isBlank");
-    Object localObject;
-    int i;
-    if (paramCharSequence.length() != 0)
+    int i = paramCharSequence.length();
+    boolean bool = false;
+    if (i != 0)
     {
-      localObject = (Iterable)StringsKt.getIndices(paramCharSequence);
-      if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty())) {
-        break label51;
-      }
-      i = 1;
-    }
-    while (i != 0)
-    {
-      return true;
-      label51:
-      localObject = ((Iterable)localObject).iterator();
-      for (;;)
+      Object localObject = (Iterable)StringsKt.getIndices(paramCharSequence);
+      if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {}
+      do
       {
-        if (((Iterator)localObject).hasNext()) {
-          if (!CharsKt.isWhitespace(paramCharSequence.charAt(((IntIterator)localObject).nextInt())))
-          {
-            i = 0;
-            break;
-          }
+        while (!((Iterator)localObject).hasNext())
+        {
+          i = 1;
+          break;
+          localObject = ((Iterable)localObject).iterator();
         }
-      }
-      i = 1;
+      } while (CharsKt.isWhitespace(paramCharSequence.charAt(((IntIterator)localObject).nextInt())));
+      i = 0;
+      if (i == 0) {}
     }
-    return false;
+    else
+    {
+      bool = true;
+    }
+    return bool;
   }
   
   @InlineOnly
   private static final int nativeIndexOf(@NotNull String paramString, char paramChar, int paramInt)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.indexOf(paramChar, paramInt);
     }
-    return paramString.indexOf(paramChar, paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int nativeIndexOf(@NotNull String paramString1, String paramString2, int paramInt)
   {
-    if (paramString1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString1 != null) {
+      return paramString1.indexOf(paramString2, paramInt);
     }
-    return paramString1.indexOf(paramString2, paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int nativeLastIndexOf(@NotNull String paramString, char paramChar, int paramInt)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.lastIndexOf(paramChar, paramInt);
     }
-    return paramString.lastIndexOf(paramChar, paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int nativeLastIndexOf(@NotNull String paramString1, String paramString2, int paramInt)
   {
-    if (paramString1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString1 != null) {
+      return paramString1.lastIndexOf(paramString2, paramInt);
     }
-    return paramString1.lastIndexOf(paramString2, paramInt);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final int offsetByCodePoints(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null) {
+      return paramString.offsetByCodePoints(paramInt1, paramInt2);
     }
-    return paramString.offsetByCodePoints(paramInt1, paramInt2);
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   public static final boolean regionMatches(@NotNull CharSequence paramCharSequence1, int paramInt1, @NotNull CharSequence paramCharSequence2, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -561,52 +549,72 @@ public class StringsKt__StringsJVMKt
   @NotNull
   public static final String repeat(@NotNull CharSequence paramCharSequence, int paramInt)
   {
-    int k = 1;
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$repeat");
-    if (paramInt >= 0) {}
-    for (int j = 1; j == 0; j = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Count 'n' must be non-negative, but was " + paramInt + '.').toString()));
+    int k = 0;
+    int m = 1;
+    int j;
+    if (paramInt >= 0) {
+      j = 1;
+    } else {
+      j = 0;
     }
-    StringBuilder localStringBuilder;
-    switch (paramInt)
+    if (j != 0)
     {
-    default: 
-      switch (paramCharSequence.length())
-      {
-      default: 
-        localStringBuilder = new StringBuilder(paramCharSequence.length() * paramInt);
-        if (1 <= paramInt)
+      String str = "";
+      Object localObject = str;
+      if (paramInt != 0) {
+        if (paramInt != 1)
         {
-          j = k;
-          for (;;)
+          j = paramCharSequence.length();
+          localObject = str;
+          if (j != 0)
           {
-            localStringBuilder.append(paramCharSequence);
-            if (j == paramInt) {
-              break;
+            if (j != 1)
+            {
+              localObject = new StringBuilder(paramCharSequence.length() * paramInt);
+              if (1 <= paramInt)
+              {
+                j = m;
+                for (;;)
+                {
+                  ((StringBuilder)localObject).append(paramCharSequence);
+                  if (j == paramInt) {
+                    break;
+                  }
+                  j += 1;
+                }
+              }
+              paramCharSequence = ((StringBuilder)localObject).toString();
+              Intrinsics.checkExpressionValueIsNotNull(paramCharSequence, "sb.toString()");
+              return paramCharSequence;
             }
-            j += 1;
+            int i = paramCharSequence.charAt(0);
+            paramCharSequence = new char[paramInt];
+            j = k;
+            while (j < paramInt)
+            {
+              paramCharSequence[j] = i;
+              j += 1;
+            }
+            return new String(paramCharSequence);
           }
         }
-        break;
+        else
+        {
+          localObject = paramCharSequence.toString();
+        }
       }
-    case 0: 
-      return "";
-    case 1: 
-      return paramCharSequence.toString();
-      return "";
-      int i = paramCharSequence.charAt(0);
-      paramCharSequence = new char[paramInt];
-      j = 0;
-      while (j < paramInt)
-      {
-        paramCharSequence[j] = i;
-        j += 1;
-      }
-      return new String(paramCharSequence);
+      return localObject;
     }
-    paramCharSequence = localStringBuilder.toString();
-    Intrinsics.checkExpressionValueIsNotNull(paramCharSequence, "sb.toString()");
-    return paramCharSequence;
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Count 'n' must be non-negative, but was ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append('.');
+    paramCharSequence = (Throwable)new IllegalArgumentException(paramCharSequence.toString().toString());
+    for (;;)
+    {
+      throw paramCharSequence;
+    }
   }
   
   @NotNull
@@ -635,12 +643,12 @@ public class StringsKt__StringsJVMKt
   public static final String replaceFirst(@NotNull String paramString, char paramChar1, char paramChar2, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "$this$replaceFirst");
-    int i = StringsKt.indexOf$default((CharSequence)paramString, paramChar1, 0, paramBoolean, 2, null);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    int i = StringsKt.indexOf$default(localCharSequence, paramChar1, 0, paramBoolean, 2, null);
     if (i < 0) {
       return paramString;
     }
-    CharSequence localCharSequence = (CharSequence)String.valueOf(paramChar2);
-    return StringsKt.replaceRange((CharSequence)paramString, i, i + 1, localCharSequence).toString();
+    return StringsKt.replaceRange(localCharSequence, i, i + 1, (CharSequence)String.valueOf(paramChar2)).toString();
   }
   
   @NotNull
@@ -649,12 +657,12 @@ public class StringsKt__StringsJVMKt
     Intrinsics.checkParameterIsNotNull(paramString1, "$this$replaceFirst");
     Intrinsics.checkParameterIsNotNull(paramString2, "oldValue");
     Intrinsics.checkParameterIsNotNull(paramString3, "newValue");
-    int i = StringsKt.indexOf$default((CharSequence)paramString1, paramString2, 0, paramBoolean, 2, null);
+    CharSequence localCharSequence = (CharSequence)paramString1;
+    int i = StringsKt.indexOf$default(localCharSequence, paramString2, 0, paramBoolean, 2, null);
     if (i < 0) {
       return paramString1;
     }
-    int j = paramString2.length();
-    return StringsKt.replaceRange((CharSequence)paramString1, i, j + i, (CharSequence)paramString3).toString();
+    return StringsKt.replaceRange(localCharSequence, i, paramString2.length() + i, (CharSequence)paramString3).toString();
   }
   
   @NotNull
@@ -662,17 +670,27 @@ public class StringsKt__StringsJVMKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharSequence, "$this$split");
     Intrinsics.checkParameterIsNotNull(paramPattern, "regex");
-    if (paramInt >= 0) {}
-    for (int i = 1; i == 0; i = 0) {
-      throw ((Throwable)new IllegalArgumentException(("Limit must be non-negative, but was " + paramInt + '.').toString()));
+    int i;
+    if (paramInt >= 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    i = paramInt;
-    if (paramInt == 0) {
-      i = -1;
+    if (i != 0)
+    {
+      i = paramInt;
+      if (paramInt == 0) {
+        i = -1;
+      }
+      paramCharSequence = paramPattern.split(paramCharSequence, i);
+      Intrinsics.checkExpressionValueIsNotNull(paramCharSequence, "regex.split(this, if (limit == 0) -1 else limit)");
+      return ArraysKt.asList(paramCharSequence);
     }
-    paramCharSequence = paramPattern.split(paramCharSequence, i);
-    Intrinsics.checkExpressionValueIsNotNull(paramCharSequence, "regex.split(this, if (limit == 0) -1 else limit)");
-    return ArraysKt.asList(paramCharSequence);
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append("Limit must be non-negative, but was ");
+    paramCharSequence.append(paramInt);
+    paramCharSequence.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramCharSequence.toString().toString()));
   }
   
   public static final boolean startsWith(@NotNull String paramString1, @NotNull String paramString2, int paramInt, boolean paramBoolean)
@@ -698,45 +716,49 @@ public class StringsKt__StringsJVMKt
   @InlineOnly
   private static final String substring(@NotNull String paramString, int paramInt)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.substring(paramInt);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+      return paramString;
     }
-    paramString = paramString.substring(paramInt);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final String substring(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.substring(paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      return paramString;
     }
-    paramString = paramString.substring(paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final byte[] toByteArray(@NotNull String paramString, Charset paramCharset)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.getBytes(paramCharset);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
+      return paramString;
     }
-    paramString = paramString.getBytes(paramCharset);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final char[] toCharArray(@NotNull String paramString)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.toCharArray();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toCharArray()");
+      return paramString;
     }
-    paramString = paramString.toCharArray();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toCharArray()");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @ExperimentalStdlibApi
@@ -754,33 +776,36 @@ public class StringsKt__StringsJVMKt
   @InlineOnly
   private static final char[] toCharArray(@NotNull String paramString, char[] paramArrayOfChar, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString.getChars(paramInt2, paramInt3, paramArrayOfChar, paramInt1);
+      return paramArrayOfChar;
     }
-    paramString.getChars(paramInt2, paramInt3, paramArrayOfChar, paramInt1);
-    return paramArrayOfChar;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final String toLowerCase(@NotNull String paramString)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.toLowerCase();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toLowerCase()");
+      return paramString;
     }
-    paramString = paramString.toLowerCase();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toLowerCase()");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final String toLowerCase(@NotNull String paramString, Locale paramLocale)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.toLowerCase(paramLocale);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toLowerCase(locale)");
+      return paramString;
     }
-    paramString = paramString.toLowerCase(paramLocale);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toLowerCase(locale)");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
@@ -794,28 +819,30 @@ public class StringsKt__StringsJVMKt
   @InlineOnly
   private static final String toUpperCase(@NotNull String paramString)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.toUpperCase();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toUpperCase()");
+      return paramString;
     }
-    paramString = paramString.toUpperCase();
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toUpperCase()");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   @InlineOnly
   private static final String toUpperCase(@NotNull String paramString, Locale paramLocale)
   {
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    if (paramString != null)
+    {
+      paramString = paramString.toUpperCase(paramLocale);
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toUpperCase(locale)");
+      return paramString;
     }
-    paramString = paramString.toUpperCase(paramLocale);
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).toUpperCase(locale)");
-    return paramString;
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.text.StringsKt__StringsJVMKt
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,11 @@ public class AverageStatistics
   
   public float calculate()
   {
-    if (this.mCount == 0) {
+    int i = this.mCount;
+    if (i == 0) {
       return 0.0F;
     }
-    return this.mTotal / this.mCount;
+    return this.mTotal / i;
   }
   
   public void reset()
@@ -28,7 +29,7 @@ public class AverageStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.statistics.AverageStatistics
  * JD-Core Version:    0.7.0.1
  */

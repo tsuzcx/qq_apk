@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -22,244 +20,245 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import avvi;
-import avvk;
-import avyb;
-import avye;
-import avyf;
-import avyg;
-import avyh;
-import avyi;
-import azqs;
-import bczz;
-import bdeq;
-import bdgz;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.ocr.OCRObserver;
+import com.tencent.mobileqq.ocr.api.IOCRService;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class OCRTextSearchActivity
-  extends FragmentActivity
+  extends QBaseActivity
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  View jdField_a_of_type_AndroidViewView;
-  public InputMethodManager a;
-  public EditText a;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  avvk jdField_a_of_type_Avvk = new avye(this);
-  public avyb a;
-  public avyh a;
-  private avyi jdField_a_of_type_Avyi = new avyi(this, null);
-  public SearchResultFragment a;
-  String jdField_a_of_type_JavaLangString;
-  View jdField_b_of_type_AndroidViewView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  String jdField_b_of_type_JavaLangString;
-  public String c;
+  OCRTextSearchActivity.MyFlingGestureHandler a;
+  RelativeLayout b;
+  EditText c;
+  ImageButton d;
+  ImageView e;
+  View f;
+  LinearLayout g;
+  RelativeLayout h;
+  View i;
+  FragmentManager j;
+  SearchResultFragment k = null;
+  String l;
+  String m;
+  String n;
+  OCRObserver o = new OCRTextSearchActivity.1(this);
+  InputMethodManager p = null;
+  public BaseOCRTextSearchFragment.SearchActivityInterface q = new OCRTextSearchActivity.3(this);
+  private OCRTextSearchActivity.SearchTextWatcher r = new OCRTextSearchActivity.SearchTextWatcher(this, null);
+  private int s = 0;
   
-  public OCRTextSearchActivity()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = null;
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = null;
-    this.jdField_a_of_type_Avyb = new avyg(this);
-  }
-  
-  public static void a(BaseActivity paramBaseActivity, String paramString)
+  public static void a(QBaseActivity paramQBaseActivity, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Intent localIntent = new Intent(paramBaseActivity, OCRTextSearchActivity.class);
+    Intent localIntent = new Intent(paramQBaseActivity, OCRTextSearchActivity.class);
     localIntent.putExtra("keyWord", paramString);
-    paramBaseActivity.startActivity(localIntent);
-    paramBaseActivity.overridePendingTransition(0, 0);
-    bdeq.a(false);
+    paramQBaseActivity.startActivity(localIntent);
+    paramQBaseActivity.overridePendingTransition(0, 0);
+    ThreadPriorityManager.a(false);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText() != null) {}
-    for (String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();; str1 = "")
-    {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1)) {
-        str2 = this.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-      }
-      str1 = str2.trim();
-      if (!TextUtils.isEmpty(str1)) {
-        break;
-      }
+    if (this.c.getText() != null) {
+      str1 = this.c.getText().toString();
+    } else {
+      str1 = "";
+    }
+    String str2 = str1;
+    if (TextUtils.isEmpty(str1)) {
+      str2 = this.c.getHint().toString();
+    }
+    String str1 = str2.trim();
+    if (TextUtils.isEmpty(str1)) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.l = null;
     c(str1);
     a(true);
-    azqs.b(null, "dc00898", "", "", "0X80082EE", "0X80082EE", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X80082EE", "0X80082EE", 0, 0, "", "", "", "");
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Avyi);
-    this.app.addObserver(this.jdField_a_of_type_Avvk);
+    this.c.addTextChangedListener(this.r);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localAppRuntime instanceof AppInterface)) {
+      ((AppInterface)localAppRuntime).addObserver(this.o);
+    }
   }
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
-    if (isFinishing()) {}
-    do
-    {
+    if (isFinishing()) {
       return;
-      switch (paramInt)
-      {
-      default: 
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
         return;
-      case 0: 
-        d(1);
-        this.jdField_a_of_type_Int = 0;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null);
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a();
-    return;
-    c(1);
-    this.jdField_a_of_type_Int = 1;
+      c(1);
+      this.s = 1;
+      return;
+    }
+    d(1);
+    this.s = 0;
+    SearchResultFragment localSearchResultFragment = this.k;
+    if (localSearchResultFragment != null) {
+      localSearchResultFragment.a();
+    }
   }
   
-  public void a(String paramString)
+  protected void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_Avyi);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Avyi);
+    this.d.setVisibility(0);
+    this.c.removeTextChangedListener(this.r);
+    this.c.setText(paramString);
+    paramString = this.c;
+    paramString.setSelection(paramString.getText().length());
+    this.c.addTextChangedListener(this.r);
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      this.c.clearFocus();
+      this.c.setCursorVisible(false);
       a(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(false);
+      this.g.setVisibility(0);
+      this.d.setEnabled(false);
+      this.c.setEnabled(false);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(true);
+    this.g.setVisibility(8);
+    this.d.setEnabled(true);
+    this.c.setEnabled(true);
   }
   
   @TargetApi(14)
   protected void b()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376053));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.h = ((RelativeLayout)super.findViewById(2131445159));
+    this.h.setOnClickListener(this);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
+      this.h.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131376225));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365851));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHintTextColor(-1431918938);
-    this.jdField_a_of_type_AndroidWidgetEditText.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367817));
-    bczz.a(this.jdField_a_of_type_AndroidWidgetEditText, getString(2131691212));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-    localLayoutParams.width = ((int)bdgz.a(this, 22.0F));
-    localLayoutParams.height = ((int)bdgz.a(this, 22.0F));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
-    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363522)).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368709));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131376279));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131375722);
-    if (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null) {
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)super.getSystemService("input_method"));
+    this.b = ((RelativeLayout)super.findViewById(2131445390));
+    this.c = ((EditText)this.b.findViewById(2131432634));
+    this.c.setHintTextColor(-1431918938);
+    this.c.setEllipsize(TextUtils.TruncateAt.END);
+    this.d = ((ImageButton)this.b.findViewById(2131435215));
+    AccessibilityUtil.a(this.c, getString(2131888115));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
+    localLayoutParams.width = ((int)DisplayUtils.a(this, 22.0F));
+    localLayoutParams.height = ((int)DisplayUtils.a(this, 22.0F));
+    this.d.setLayoutParams(localLayoutParams);
+    ((Button)this.b.findViewById(2131429816)).setVisibility(8);
+    this.e = ((ImageView)this.b.findViewById(2131436275));
+    this.e.setVisibility(0);
+    this.g = ((LinearLayout)super.findViewById(2131445448));
+    this.f = super.findViewById(2131444724);
+    if (this.p == null) {
+      this.p = ((InputMethodManager)super.getSystemService("input_method"));
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new avyf(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370086);
+    this.d.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.c.setImeOptions(3);
+    this.c.setSingleLine(true);
+    this.c.setOnEditorActionListener(new OCRTextSearchActivity.2(this));
+    this.c.setOnClickListener(this);
+    this.i = findViewById(2131437976);
     if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"))) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.i.setVisibility(0);
     }
   }
   
-  public void b(int paramInt)
+  void b(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 1) {
       return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment != null);
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = new SearchResultFragment();
-    FragmentTransaction localFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-    localFragmentTransaction.add(2131375722, this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment, "search_result");
-    localFragmentTransaction.commitAllowingStateLoss();
+    }
+    if (this.k == null)
+    {
+      this.k = new SearchResultFragment();
+      FragmentTransaction localFragmentTransaction = this.j.beginTransaction();
+      localFragmentTransaction.add(2131444724, this.k, "search_result");
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
   }
   
-  public void b(String paramString)
+  protected void b(String paramString)
   {
     if (paramString.equals(""))
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.d.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   void c(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("search_result") == null) {
+    this.f.setVisibility(0);
+    if (this.j.findFragmentByTag("search_result") == null) {
       b(paramInt);
     }
-    FragmentTransaction localFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-    localFragmentTransaction.show(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
+    FragmentTransaction localFragmentTransaction = this.j.beginTransaction();
+    localFragmentTransaction.show(this.k);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
   public void c(String paramString)
   {
-    avvi localavvi = (avvi)this.app.getManager(228);
-    this.c = avvi.a(this.app);
-    localavvi.a(this.c, paramString, SystemClock.elapsedRealtime());
-    this.jdField_b_of_type_JavaLangString = paramString;
+    IOCRService localIOCRService = (IOCRService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOCRService.class, "");
+    this.n = localIOCRService.generateTextSearchSessionID();
+    localIOCRService.doSougouSearch(this.n, paramString, SystemClock.elapsedRealtime());
+    this.m = paramString;
   }
   
   void d(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("search_result") == null) {
+    this.f.setVisibility(8);
+    if (this.j.findFragmentByTag("search_result") == null) {
       b(paramInt);
     }
-    FragmentTransaction localFragmentTransaction = this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction();
-    localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment);
+    FragmentTransaction localFragmentTransaction = this.j.beginTransaction();
+    localFragmentTransaction.hide(this.k);
     localFragmentTransaction.commitAllowingStateLoss();
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
   public void doOnBackPressed()
@@ -270,47 +269,51 @@ public class OCRTextSearchActivity
   public void doOnConfigurationChanged(Configuration paramConfiguration)
   {
     super.doOnConfigurationChanged(paramConfiguration);
-    if (this.jdField_a_of_type_Avyh != null) {
-      this.jdField_a_of_type_Avyh.onConfigurationChanged(paramConfiguration);
+    OCRTextSearchActivity.MyFlingGestureHandler localMyFlingGestureHandler = this.a;
+    if (localMyFlingGestureHandler != null) {
+      localMyFlingGestureHandler.onConfigurationChanged(paramConfiguration);
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = getSupportFragmentManager();
-    setContentView(2131561131);
+    this.j = getSupportFragmentManager();
+    setContentView(2131627616);
     b();
     Object localObject = getIntent();
-    if (localObject == null) {
-      finish();
-    }
-    do
+    if (localObject == null)
     {
+      finish();
       return true;
-      a();
-      a(this.jdField_a_of_type_Int);
-      localObject = ((Intent)localObject).getStringExtra("keyWord");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        a((String)localObject);
-        c((String)localObject);
-        a(true);
-        this.jdField_a_of_type_Int = 1;
-      }
-      this.jdField_a_of_type_Avyh = new avyh(this);
-      this.jdField_a_of_type_Avyh.a(false);
-    } while (paramBundle == null);
-    this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment = ((SearchResultFragment)this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("search_result"));
+    }
+    a();
+    a(this.s);
+    localObject = ((Intent)localObject).getStringExtra("keyWord");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      a((String)localObject);
+      c((String)localObject);
+      a(true);
+      this.s = 1;
+    }
+    this.a = new OCRTextSearchActivity.MyFlingGestureHandler(this);
+    this.a.a(false);
+    if (paramBundle != null) {
+      this.k = ((SearchResultFragment)this.j.findFragmentByTag("search_result"));
+    }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Avvk);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localAppRuntime instanceof AppInterface)) {
+      ((AppInterface)localAppRuntime).removeObserver(this.o);
+    }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     paramIntent = paramIntent.getStringExtra("keyWord");
@@ -319,75 +322,86 @@ public class OCRTextSearchActivity
       a(paramIntent);
       c(paramIntent);
       a(true);
-      this.jdField_a_of_type_Int = 1;
+      this.s = 1;
     }
   }
   
   @TargetApi(9)
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.s == 0)
     {
       super.getWindow().setSoftInputMode(36);
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+      this.c.setCursorVisible(true);
       return;
     }
     super.getWindow().setSoftInputMode(34);
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+    this.c.setCursorVisible(false);
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
-    this.jdField_a_of_type_Avyh.onStart();
+    this.a.onStart();
   }
   
   public void finish()
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
+    EditText localEditText = this.c;
+    if (localEditText != null) {
+      this.p.hideSoftInputFromWindow(localEditText.getWindowToken(), 0);
     }
     setResult(-1);
     super.finish();
-    overridePendingTransition(0, 2130771989);
+    overridePendingTransition(0, 2130772006);
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i1 = paramView.getId();
+    if (i1 == 2131435215)
     {
-    default: 
-      return;
-    case 2131367817: 
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 0);
-      return;
-    case 2131376053: 
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      return;
-    case 2131365851: 
-      this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-      return;
+      this.c.setText("");
+      this.c.setCursorVisible(true);
+      this.p.showSoftInput(this.c, 0);
     }
-    finish();
+    else if (i1 == 2131445159)
+    {
+      this.p.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      this.c.clearFocus();
+      this.c.setCursorVisible(false);
+    }
+    else if (i1 == 2131432634)
+    {
+      this.c.setCursorVisible(true);
+    }
+    else if (i1 == 2131436275)
+    {
+      finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity
  * JD-Core Version:    0.7.0.1
  */

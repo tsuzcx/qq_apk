@@ -19,21 +19,21 @@ public class WeChatSVGRenderC2Java
 {
   public static void addPath(Path paramPath1, Matrix paramMatrix, Path paramPath2, boolean paramBoolean)
   {
-    AppMethodBeat.i(70068);
+    AppMethodBeat.i(148695);
     if (paramBoolean) {
       paramPath1.setFillType(paramPath2.getFillType());
     }
     paramPath1.addPath(paramPath2, paramMatrix);
-    AppMethodBeat.o(70068);
+    AppMethodBeat.o(148695);
   }
   
   public static void addTextPath(Paint paramPaint, Path paramPath, String paramString, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(70071);
+    AppMethodBeat.i(148698);
     Path localPath = new Path();
     paramPaint.getTextPath(paramString, 0, paramString.length(), paramFloat1, paramFloat2, localPath);
     paramPath.addPath(localPath);
-    AppMethodBeat.o(70071);
+    AppMethodBeat.o(148698);
   }
   
   public static Bitmap checkForImageDataURL(String paramString)
@@ -43,7 +43,7 @@ public class WeChatSVGRenderC2Java
   
   public static float[] computePathBound(Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(70072);
+    AppMethodBeat.i(148699);
     if (paramMatrix != null) {
       paramPath.transform(paramMatrix);
     }
@@ -53,13 +53,13 @@ public class WeChatSVGRenderC2Java
     float f2 = paramMatrix.top;
     float f3 = paramMatrix.right;
     float f4 = paramMatrix.bottom;
-    AppMethodBeat.o(70072);
+    AppMethodBeat.o(148699);
     return new float[] { f1, f2, f3, f4 };
   }
   
   public static void doNonScalingStroke(Canvas paramCanvas, Path paramPath, Paint paramPaint)
   {
-    AppMethodBeat.i(70065);
+    AppMethodBeat.i(148692);
     Matrix localMatrix1 = paramCanvas.getMatrix();
     Path localPath = new Path();
     paramPath.transform(localMatrix1, localPath);
@@ -78,23 +78,23 @@ public class WeChatSVGRenderC2Java
     if (paramPath != null) {
       paramPath.setLocalMatrix(localMatrix2);
     }
-    AppMethodBeat.o(70065);
+    AppMethodBeat.o(148692);
   }
   
   public static float getPathMeasureLength(Path paramPath, Matrix paramMatrix)
   {
-    AppMethodBeat.i(70069);
+    AppMethodBeat.i(148696);
     if (paramMatrix != null) {
       paramPath.transform(paramMatrix);
     }
     float f = new PathMeasure(paramPath, false).getLength();
-    AppMethodBeat.o(70069);
+    AppMethodBeat.o(148696);
     return f;
   }
   
   public static float[] getTextBounds(Paint paramPaint, String paramString)
   {
-    AppMethodBeat.i(70073);
+    AppMethodBeat.i(148700);
     Rect localRect = new Rect();
     paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
     paramPaint = new RectF(localRect);
@@ -102,29 +102,29 @@ public class WeChatSVGRenderC2Java
     float f2 = paramPaint.top;
     float f3 = paramPaint.right;
     float f4 = paramPaint.bottom;
-    AppMethodBeat.o(70073);
+    AppMethodBeat.o(148700);
     return new float[] { f1, f2, f3, f4 };
   }
   
   public static void invert(Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    AppMethodBeat.i(70064);
+    AppMethodBeat.i(148691);
     paramMatrix1.invert(paramMatrix2);
-    AppMethodBeat.o(70064);
+    AppMethodBeat.o(148691);
   }
   
   public static void setFillType(Path paramPath, int paramInt)
   {
-    AppMethodBeat.i(70070);
+    AppMethodBeat.i(148697);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(70070);
+      AppMethodBeat.o(148697);
       return;
       paramPath.setFillType(Path.FillType.WINDING);
-      AppMethodBeat.o(70070);
+      AppMethodBeat.o(148697);
       return;
       paramPath.setFillType(Path.FillType.EVEN_ODD);
     }
@@ -132,7 +132,7 @@ public class WeChatSVGRenderC2Java
   
   public static void setLinearGradient(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt, float[] paramArrayOfFloat, Matrix paramMatrix, int paramInt)
   {
-    AppMethodBeat.i(70067);
+    AppMethodBeat.i(148694);
     Shader.TileMode localTileMode2 = Shader.TileMode.CLAMP;
     Shader.TileMode localTileMode1 = localTileMode2;
     if (paramInt != 0)
@@ -147,7 +147,7 @@ public class WeChatSVGRenderC2Java
       paramArrayOfInt = new LinearGradient(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramArrayOfInt, paramArrayOfFloat, localTileMode1);
       paramArrayOfInt.setLocalMatrix(paramMatrix);
       paramPaint.setShader(paramArrayOfInt);
-      AppMethodBeat.o(70067);
+      AppMethodBeat.o(148694);
       return;
       label70:
       localTileMode1 = localTileMode2;
@@ -159,7 +159,7 @@ public class WeChatSVGRenderC2Java
   
   public static void setRadialGradient(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, int[] paramArrayOfInt, float[] paramArrayOfFloat, Matrix paramMatrix, int paramInt)
   {
-    AppMethodBeat.i(70066);
+    AppMethodBeat.i(148693);
     Shader.TileMode localTileMode2 = Shader.TileMode.CLAMP;
     Shader.TileMode localTileMode1 = localTileMode2;
     if (paramInt != 0)
@@ -174,7 +174,7 @@ public class WeChatSVGRenderC2Java
       paramArrayOfInt = new RadialGradient(paramFloat1, paramFloat2, paramFloat3, paramArrayOfInt, paramArrayOfFloat, localTileMode1);
       paramArrayOfInt.setLocalMatrix(paramMatrix);
       paramPaint.setShader(paramArrayOfInt);
-      AppMethodBeat.o(70066);
+      AppMethodBeat.o(148693);
       return;
       label68:
       localTileMode1 = localTileMode2;
@@ -186,7 +186,7 @@ public class WeChatSVGRenderC2Java
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.svg.WeChatSVGRenderC2Java
  * JD-Core Version:    0.7.0.1
  */

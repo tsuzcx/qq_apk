@@ -11,15 +11,15 @@ final class SightDraftUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(25024);
-    this.qVt.finish();
-    AppMethodBeat.o(25024);
+    AppMethodBeat.i(28695);
+    this.PHU.finish();
+    AppMethodBeat.o(28695);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,54 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.plugin.appbrand.report.model.c;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class i
+  extends c
 {
-  public static int j(int paramInt, Bundle paramBundle)
+  private volatile long tNP = 0L;
+  private volatile boolean tNQ = false;
+  public volatile String tNR;
+  
+  public i(int paramInt)
   {
-    AppMethodBeat.i(132563);
-    if ((paramBundle == null) || (!pv(paramInt)))
-    {
-      AppMethodBeat.o(132563);
-      return 0;
-    }
-    paramInt = paramBundle.getInt("stat_scene");
-    AppMethodBeat.o(132563);
-    return paramInt;
+    super(paramInt);
   }
   
-  public static String k(int paramInt, Bundle paramBundle)
+  public final void afL(String paramString)
   {
-    AppMethodBeat.i(132564);
-    if ((paramBundle == null) || (!pv(paramInt)))
+    AppMethodBeat.i(321368);
+    super.onForeground();
+    this.tNP = 0L;
+    if (paramString.startsWith("__wx__"))
     {
-      AppMethodBeat.o(132564);
-      return "";
+      this.tNQ = false;
+      this.tNR = null;
     }
-    switch (paramBundle.getInt("stat_scene"))
-    {
-    case 5: 
-    default: 
-      AppMethodBeat.o(132564);
-      return "";
-    case 1: 
-      paramBundle = paramBundle.getString("stat_send_msg_user");
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 2: 
-      str = paramBundle.getString("stat_chat_talker_username");
-      paramBundle = paramBundle.getString("stat_send_msg_user");
-      paramBundle = str + ":" + paramBundle;
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 3: 
-      str = paramBundle.getString("stat_msg_id");
-      paramBundle = paramBundle.getString("stat_send_msg_user");
-      paramBundle = str + ":" + paramBundle;
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 4: 
-      paramBundle = q.encode(paramBundle.getString("stat_url"));
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 6: 
-      Object localObject = paramBundle.getString("stat_app_id");
-      str = paramBundle.getString("stat_url");
-      localObject = new StringBuilder().append((String)localObject).append(":");
-      paramBundle = str;
-      if (str == null) {
-        paramBundle = "";
-      }
-      paramBundle = q.encode(paramBundle);
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 7: 
-      paramBundle = paramBundle.getString("stat_chat_talker_username");
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    case 8: 
-      paramBundle = "search:" + paramBundle.getString("stat_search_id");
-      AppMethodBeat.o(132564);
-      return paramBundle;
-    }
-    String str = paramBundle.getString("stat_chat_talker_username");
-    paramBundle = paramBundle.getString("stat_send_msg_user");
-    paramBundle = str + ":" + paramBundle;
-    AppMethodBeat.o(132564);
-    return paramBundle;
+    AppMethodBeat.o(321368);
   }
   
-  private static boolean pv(int paramInt)
+  public final void afM(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    AppMethodBeat.i(321375);
+    this.tNP = (Util.nowMilliSecond() - this.tPf.tOH.getStartTime());
+    this.tNR = paramString;
+    this.tNQ = true;
+    AppMethodBeat.o(321375);
+  }
+  
+  public final long cIw()
+  {
+    if (this.tNQ) {
+      return this.tPf.tOL - this.tNP;
     }
-    return true;
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.i
  * JD-Core Version:    0.7.0.1
  */

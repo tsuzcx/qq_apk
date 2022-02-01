@@ -1,85 +1,97 @@
 package com.tencent.qqmini.nativePlugins;
 
 import android.text.TextUtils;
-import bgok;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class WeiyunDownloadFilePlugin
   extends BaseJsPlugin
 {
-  private static final String ACTION_CANCEL_DOWNLOAD_TASK = "cancelDownloadTask";
-  private static final String ACTION_CREATE_DOWNLOAD_TASK = "createDownloadTask";
-  private static final String ACTION_PAUSE_DOWNLOAD_TASK = "pauseDownloadTask";
-  public static final String TAG = "[mini] WeiyunDownloadFilePlugin";
-  private WeiyunNativeBusiness.WeiyunDownloadBussiness mWeiyunDownloadBussiness;
+  private WeiyunNativeBusiness.WeiyunDownloadBussiness a;
   
-  private JSONObject getParam(bgok parambgok)
+  private JSONObject a(RequestEvent paramRequestEvent)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambgok.b);
-      return localJSONObject;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("[mini] WeiyunDownloadFilePlugin", "Failed to parse jsonParams=" + parambgok.b);
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to parse jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QLog.e("[mini] WeiyunDownloadFilePlugin", 1, ((StringBuilder)localObject).toString());
     return null;
   }
   
-  public void weiyunDownload(bgok parambgok)
+  @JsEvent({"weiyunDownload"})
+  public void weiyunDownload(RequestEvent paramRequestEvent)
   {
-    JSONObject localJSONObject;
-    String str;
     try
     {
-      localJSONObject = new JSONObject(getParam(parambgok).optString("data"));
-      str = localJSONObject.getString("action");
-      if ((TextUtils.isEmpty(str)) || ((!str.equals("createDownloadTask")) && (!str.equals("pauseDownloadTask")) && (!str.equals("cancelDownloadTask")))) {
-        return;
-      }
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "create weiyun Download");
-      if (this.mWeiyunDownloadBussiness == null) {
-        this.mWeiyunDownloadBussiness = new WeiyunNativeBusiness.WeiyunDownloadBussiness();
-      }
-      localJSONObject = new JSONObject(localJSONObject.getString("data"));
-      if (str.equals("createDownloadTask"))
+      Object localObject = a(paramRequestEvent);
+      if (localObject != null)
       {
-        if (this.mWeiyunDownloadBussiness.isLegal(localJSONObject))
+        JSONObject localJSONObject = new JSONObject(((JSONObject)localObject).optString("data"));
+        localObject = localJSONObject.getString("action");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          this.mWeiyunDownloadBussiness.doDownloadWeiyun(localJSONObject, localJSONObject.getString("file_id"), parambgok);
-          parambgok.a();
-          return;
+          boolean bool = ((String)localObject).equals("createDownloadTask");
+          if ((bool) || (((String)localObject).equals("pauseDownloadTask")) || (((String)localObject).equals("cancelDownloadTask")))
+          {
+            QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "create weiyun Download");
+            if (this.a == null) {
+              this.a = new WeiyunNativeBusiness.WeiyunDownloadBussiness(this.mMiniAppContext);
+            }
+            localJSONObject = new JSONObject(localJSONObject.getString("data"));
+            bool = ((String)localObject).equals("createDownloadTask");
+            if (bool)
+            {
+              if (this.a.a(localJSONObject))
+              {
+                this.a.a(localJSONObject, localJSONObject.getString("file_id"), paramRequestEvent);
+                paramRequestEvent.ok();
+                return;
+              }
+              paramRequestEvent.fail("download params illegal.");
+              return;
+            }
+            if (((String)localObject).equals("pauseDownloadTask"))
+            {
+              QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
+              this.a.a(localJSONObject.getString("file_id"), paramRequestEvent);
+              return;
+            }
+            if (((String)localObject).equals("cancelDownloadTask"))
+            {
+              QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
+              this.a.b(localJSONObject.getString("file_id"), paramRequestEvent);
+              return;
+            }
+          }
         }
-        parambgok.a("download params illegal.");
-        return;
       }
     }
-    catch (JSONException parambgok)
+    catch (JSONException paramRequestEvent)
     {
-      parambgok.printStackTrace();
-      return;
-    }
-    if (str.equals("pauseDownloadTask"))
-    {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
-      this.mWeiyunDownloadBussiness.pause(localJSONObject.getString("file_id"), parambgok);
-      return;
-    }
-    if (str.equals("cancelDownloadTask"))
-    {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
-      this.mWeiyunDownloadBussiness.cancel(localJSONObject.getString("file_id"), parambgok);
+      paramRequestEvent.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WeiyunDownloadFilePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.views.QFSVideoView android:layout_gravity="center" android:id="@id/pg0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/pfu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/pfq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="81.0dip">
+        <TextView android:textSize="36.0dip" android:textColor="@color/al3" android:id="@id/pfx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:30 / " />
+        <TextView android:textSize="36.0dip" android:textColor="@color/al3" android:id="@id/pfy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:56" />
+    </LinearLayout>
+</merge>

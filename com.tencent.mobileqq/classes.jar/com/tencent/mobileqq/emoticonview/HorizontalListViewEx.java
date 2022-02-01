@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aepi;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
@@ -12,37 +13,41 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import apvu;
-import apvv;
-import apvw;
-import apxl;
-import bdoo;
-import bhzg;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.EmotionUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class HorizontalListViewEx
   extends HorizontalListView
 {
-  private static List<View> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
-  private int e;
+  private static LayoutInflater inflater;
+  private static List<View> tabCacheViews = Collections.synchronizedList(new ArrayList());
+  private int mIndicatorRoundRectX;
+  protected int mIndicatorStartX = 0;
+  private boolean mIsAnimTabIndicatoring = false;
+  private boolean mIsTabAnimateEnable = false;
+  private int mOldSelectedAdapterIndex = -1;
+  private Paint mRectPaint;
+  private RectF mRoundRect;
+  private int mScreenWidth;
+  private int mTabWidth;
   
   public HorizontalListViewEx(Context paramContext)
   {
@@ -52,39 +57,14 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = aepi.a(51.0F, paramContext.getResources());
+    this.mTabWidth = EmotionUtils.a(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
-    this.c = paramAttributeSet.widthPixels;
-    c();
+    this.mScreenWidth = paramAttributeSet.widthPixels;
+    initPaint();
   }
   
-  public static View a()
-  {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0)) {
-      return (View)jdField_a_of_type_JavaUtilList.remove(0);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166425));
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.e = bdoo.a(18.0F);
-  }
-  
-  private void d()
+  private void clearAllSelectedState()
   {
     int j = getChildCount();
     int i = 0;
@@ -93,15 +73,215 @@ public class HorizontalListViewEx
       View localView = getChildAt(i);
       if (localView.getTag() != null)
       {
-        apvw localapvw = (apvw)localView.getTag();
+        EmoticonTabAdapter.ViewHolder localViewHolder = (EmoticonTabAdapter.ViewHolder)localView.getTag();
         localView.setSelected(false);
-        localapvw.a.setSelected(false);
+        localViewHolder.tabImage.setSelected(false);
       }
       i += 1;
     }
   }
   
-  public int a(int paramInt)
+  public static View consumeView()
+  {
+    List localList = tabCacheViews;
+    if ((localList != null) && (localList.size() > 0)) {
+      return (View)tabCacheViews.remove(0);
+    }
+    return null;
+  }
+  
+  public static void destroyCacheView()
+  {
+    List localList = tabCacheViews;
+    if (localList != null) {
+      localList.clear();
+    }
+  }
+  
+  private void initPaint()
+  {
+    this.mRectPaint = new Paint();
+    this.mRectPaint.setAntiAlias(true);
+    this.mRectPaint.setStyle(Paint.Style.FILL);
+    this.mRectPaint.setColor(getResources().getColor(2131167473));
+    this.mRoundRect = new RectF();
+    this.mIndicatorRoundRectX = ViewUtils.dip2px(18.0F);
+  }
+  
+  public static void produceTabView(int paramInt)
+  {
+    if (inflater == null) {
+      inflater = (LayoutInflater)MobileQQ.getContext().getSystemService("layout_inflater");
+    }
+    int i = 0;
+    while (i < paramInt)
+    {
+      localObject3 = null;
+      try
+      {
+        try
+        {
+          localObject1 = inflater.inflate(2131627954, null, false);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("OutOfMemoryError;err info:");
+            ((StringBuilder)localObject1).append(localOutOfMemoryError.getMessage());
+            QLog.e("HorizontalListViewEx", 2, ((StringBuilder)localObject1).toString());
+            localObject1 = localObject3;
+          }
+        }
+        catch (Resources.NotFoundException localNotFoundException)
+        {
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("NotFoundException;err info:");
+            ((StringBuilder)localObject1).append(localNotFoundException.getMessage());
+            QLog.e("HorizontalListViewEx", 2, ((StringBuilder)localObject1).toString());
+            localObject1 = localObject3;
+          }
+        }
+      }
+      catch (InflateException localInflateException)
+      {
+        for (;;)
+        {
+          Object localObject1;
+          Object localObject2 = localObject3;
+        }
+      }
+      if (localObject1 != null) {
+        tabCacheViews.add(localObject1);
+      }
+      i += 1;
+    }
+  }
+  
+  protected void animTabIndicator()
+  {
+    if ((this.mOldSelectedAdapterIndex != this.mCurrentlySelectedAdapterIndex) && (getChildCount() > 0))
+    {
+      View localView = getChild(this.mOldSelectedAdapterIndex);
+      if (localView != null) {
+        this.mIndicatorStartX = localView.getLeft();
+      } else if (this.mOldSelectedAdapterIndex < getFirstVisiblePosition()) {
+        this.mIndicatorStartX = (-this.mTabWidth);
+      } else if (this.mOldSelectedAdapterIndex > getLastVisiblePosition()) {
+        this.mIndicatorStartX = (this.mScreenWidth - this.mTabWidth);
+      }
+      localView = getSelectedView();
+      if (localView != null)
+      {
+        clearAllSelectedState();
+        int i = this.mIndicatorStartX;
+        int j = localView.getLeft();
+        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
+        localValueAnimator.setDuration(200L);
+        this.mIsAnimTabIndicatoring = true;
+        localValueAnimator.addUpdateListener(new HorizontalListViewEx.2(this, localView, j));
+        localValueAnimator.start();
+        return;
+      }
+    }
+    this.mIsAnimTabIndicatoring = false;
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 0) && (getParent() != null))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("HorizontalListView", 4, "dispatch touchEvent down");
+      }
+      getParent().requestDisallowInterceptTouchEvent(true);
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+    Object localObject1;
+    int i;
+    if ((this.mIsTabAnimateEnable) && (this.mIsAnimTabIndicatoring))
+    {
+      localObject1 = getSelectedView();
+      if ((localObject1 instanceof ViewGroup))
+      {
+        localObject1 = ((ViewGroup)localObject1).getChildAt(0);
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
+        if (localObject1 == null) {
+          return;
+        }
+        this.mRoundRect.set(this.mIndicatorStartX, ((ViewGroup.MarginLayoutParams)localObject1).topMargin, this.mIndicatorStartX + this.mTabWidth, getMeasuredHeight() - ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
+        localObject1 = this.mRoundRect;
+        i = this.mIndicatorRoundRectX;
+        paramCanvas.drawRoundRect((RectF)localObject1, i, i, this.mRectPaint);
+      }
+    }
+    else
+    {
+      int j = getChildCount();
+      if (getAdapter() != null)
+      {
+        paramCanvas = (EmoticonTabAdapter)getAdapter();
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = getChildAt(i);
+          Object localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
+          if (((View)localObject1).getTag() != null)
+          {
+            EmoticonTabAdapter.ViewHolder localViewHolder = (EmoticonTabAdapter.ViewHolder)((View)localObject1).getTag();
+            if (localObject1 == getSelectedView())
+            {
+              ((View)localObject1).setSelected(true);
+              localViewHolder.tabImage.setSelected(true);
+              if (localObject2 != null) {
+                ((View)localObject1).setContentDescription(((EmoticonTabAdapter.EmoticonTabItem)localObject2).description);
+              }
+            }
+            else
+            {
+              ((View)localObject1).setSelected(false);
+              localViewHolder.tabImage.setSelected(false);
+              if (localObject2 != null) {
+                ((View)localObject1).setContentDescription(((EmoticonTabAdapter.EmoticonTabItem)localObject2).description);
+              }
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void resetCurrentX(int paramInt)
+  {
+    int k = this.mTabWidth;
+    int j = getMeasuredWidth();
+    int i = j;
+    if (j == 0) {
+      i = ViewUtils.getScreenWidth();
+    }
+    i = paramInt * k - (i - this.mTabWidth);
+    paramInt = i;
+    if (i < 0) {
+      paramInt = 0;
+    }
+    this.mCurrentX = paramInt;
+  }
+  
+  public int scrollBy(int paramInt)
   {
     int i = this.mNextX + paramInt;
     if (i < 0) {
@@ -110,226 +290,200 @@ public class HorizontalListViewEx
     if (i > this.mMaxX) {
       return 1;
     }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    this.mScroller.startScroll(this.mNextX, 0, paramInt, 0, 20);
     setCurrentScrollState(4098);
     requestLayout();
     return 0;
   }
   
-  protected void b()
+  public void setInGuildLiveRoom(boolean paramBoolean)
   {
-    if ((this.d != this.mCurrentlySelectedAdapterIndex) && (getChildCount() > 0))
+    if (paramBoolean)
     {
-      View localView = getChild(this.d);
-      if (localView != null) {
-        this.jdField_a_of_type_Int = localView.getLeft();
-      }
-      for (;;)
-      {
-        localView = getSelectedView();
-        if (localView == null) {
-          break;
-        }
-        d();
-        int i = this.jdField_a_of_type_Int;
-        int j = localView.getLeft();
-        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
-        localValueAnimator.setDuration(200L);
-        this.jdField_b_of_type_Boolean = true;
-        localValueAnimator.addUpdateListener(new apxl(this, localView, j));
-        localValueAnimator.start();
-        return;
-        if (this.d < getFirstVisiblePosition()) {
-          this.jdField_a_of_type_Int = (-this.jdField_b_of_type_Int);
-        } else if (this.d > getLastVisiblePosition()) {
-          this.jdField_a_of_type_Int = (this.c - this.jdField_b_of_type_Int);
-        }
-      }
-    }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void onDraw(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-    Object localObject1;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
-    {
-      localObject1 = getSelectedView();
-      if ((localObject1 instanceof ViewGroup))
-      {
-        localObject1 = ((ViewGroup)localObject1).getChildAt(0);
-        if (localObject1 != null) {
-          break label50;
-        }
-      }
-    }
-    label50:
-    int j;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
-      } while (localObject1 == null);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, ((ViewGroup.MarginLayoutParams)localObject1).topMargin, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, getMeasuredHeight() - ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.e, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.mRectPaint.setColor(Color.parseColor("#2F3033"));
       return;
-      j = getChildCount();
-    } while (getAdapter() == null);
-    paramCanvas = (apvu)getAdapter();
-    int i = 0;
-    label149:
-    Object localObject2;
-    apvw localapvw;
-    if (i < j)
-    {
-      localObject1 = getChildAt(i);
-      localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
-      if (((View)localObject1).getTag() != null)
-      {
-        localapvw = (apvw)((View)localObject1).getTag();
-        if (localObject1 != getSelectedView()) {
-          break label240;
-        }
-        ((View)localObject1).setSelected(true);
-        localapvw.a.setSelected(true);
-        if (localObject2 != null) {
-          ((View)localObject1).setContentDescription(((apvv)localObject2).b);
-        }
-      }
     }
-    for (;;)
-    {
-      i += 1;
-      break label149;
-      break;
-      label240:
-      ((View)localObject1).setSelected(false);
-      localapvw.a.setSelected(false);
-      if (localObject2 != null) {
-        ((View)localObject1).setContentDescription(((apvv)localObject2).b);
-      }
-    }
+    this.mRectPaint.setColor(getResources().getColor(2131167473));
   }
   
-  public void resetCurrentX(int paramInt)
+  public void setNoSkinColor(int paramInt)
   {
-    this.mCurrentX = (this.jdField_b_of_type_Int * paramInt);
+    this.mRectPaint.setColor(paramInt);
   }
   
   public void setSelection(int paramInt)
   {
-    int j = 0;
     super.setSelection(paramInt);
-    if (this.mAdapter == null) {}
-    label671:
-    label703:
-    for (;;)
-    {
+    if (this.mAdapter == null) {
       return;
-      if ((paramInt < this.mAdapter.getCount()) && (paramInt >= 0))
+    }
+    if (paramInt < this.mAdapter.getCount())
+    {
+      if (paramInt < 0) {
+        return;
+      }
+      int k = getFirstVisiblePosition();
+      int m = getLastVisiblePosition();
+      int n;
+      int i;
+      int j;
+      Object localObject1;
+      Object localObject2;
+      if ((paramInt > m) && (m != -1))
       {
-        int k = getFirstVisiblePosition();
-        int m = getLastVisiblePosition();
-        int n;
-        int i;
-        if ((paramInt > m) && (m != -1))
+        n = (paramInt + 1) * this.mTabWidth;
+        i = this.mNextX;
+        j = this.mScreenWidth;
+        int i1 = this.mTabWidth;
+        j = n - i - (j - i1 - i1);
+        i = j;
+        if (DEBUG)
         {
-          n = (paramInt + 1) * this.jdField_b_of_type_Int;
-          j = n - this.mNextX - (this.c - this.jdField_b_of_type_Int - this.jdField_b_of_type_Int);
+          i = j;
+          if (QLog.isDevelopLevel())
+          {
+            localObject1 = HorizontalListView.class.getSimpleName();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("setSelectionEx: view beyond right screen, position:");
+            ((StringBuilder)localObject2).append(paramInt);
+            ((StringBuilder)localObject2).append(",lastPosition:");
+            ((StringBuilder)localObject2).append(m);
+            ((StringBuilder)localObject2).append(",tabPosition:");
+            ((StringBuilder)localObject2).append(n);
+            ((StringBuilder)localObject2).append(",mNextX:");
+            ((StringBuilder)localObject2).append(this.mNextX);
+            ((StringBuilder)localObject2).append(",deltaX:");
+            ((StringBuilder)localObject2).append(j);
+            ((StringBuilder)localObject2).append(",mScreenWidth");
+            ((StringBuilder)localObject2).append(this.mScreenWidth);
+            QLog.i((String)localObject1, 4, ((StringBuilder)localObject2).toString());
+            i = j;
+          }
+        }
+      }
+      else if ((paramInt < k) && (k != -1))
+      {
+        n = this.mTabWidth * paramInt;
+        j = n - this.mNextX;
+        i = j;
+        if (DEBUG)
+        {
+          i = j;
+          if (QLog.isDevelopLevel())
+          {
+            localObject1 = HorizontalListView.class.getSimpleName();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("setSelectionEx: view beyond l eft screen, position:");
+            ((StringBuilder)localObject2).append(paramInt);
+            ((StringBuilder)localObject2).append(",firstPosition:");
+            ((StringBuilder)localObject2).append(k);
+            ((StringBuilder)localObject2).append(",tabPosition:");
+            ((StringBuilder)localObject2).append(n);
+            ((StringBuilder)localObject2).append(",mNextX:");
+            ((StringBuilder)localObject2).append(this.mNextX);
+            ((StringBuilder)localObject2).append(",deltaX:");
+            ((StringBuilder)localObject2).append(j);
+            ((StringBuilder)localObject2).append(",mScreenWidth");
+            ((StringBuilder)localObject2).append(this.mScreenWidth);
+            QLog.i((String)localObject1, 4, ((StringBuilder)localObject2).toString());
+            i = j;
+          }
+        }
+      }
+      else
+      {
+        StringBuilder localStringBuilder;
+        if (paramInt == k)
+        {
+          localObject2 = getChildAt(0);
+          localObject1 = new int[2];
+          ((View)localObject2).getLocationOnScreen((int[])localObject1);
+          j = localObject1[0] - getLeft();
           i = j;
           if (DEBUG)
           {
             i = j;
             if (QLog.isDevelopLevel())
             {
-              QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond right screen, position:" + paramInt + ",lastPosition:" + m + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.c);
+              localObject2 = HorizontalListView.class.getSimpleName();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("setSelectionEx: view on half left screen, position:");
+              localStringBuilder.append(paramInt);
+              localStringBuilder.append(",location:");
+              localStringBuilder.append(localObject1[0]);
+              localStringBuilder.append(",mNextX:");
+              localStringBuilder.append(this.mNextX);
+              localStringBuilder.append(",deltaX:");
+              localStringBuilder.append(j);
+              QLog.i((String)localObject2, 4, localStringBuilder.toString());
               i = j;
             }
           }
-          if (i == 0) {
-            break label671;
-          }
-          a(i);
         }
-        for (;;)
+        else if (paramInt == m)
         {
-          if (!this.jdField_a_of_type_Boolean) {
-            break label703;
-          }
-          b();
-          this.d = this.mCurrentlySelectedAdapterIndex;
-          return;
-          if ((paramInt < k) && (k != -1))
-          {
-            n = this.jdField_b_of_type_Int * paramInt;
-            j = n - this.mNextX;
-            i = j;
-            if (!DEBUG) {
-              break;
-            }
-            i = j;
-            if (!QLog.isDevelopLevel()) {
-              break;
-            }
-            QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond l eft screen, position:" + paramInt + ",firstPosition:" + k + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.c);
-            i = j;
-            break;
-          }
-          View localView;
-          int[] arrayOfInt;
-          if (paramInt == k)
-          {
-            localView = getChildAt(0);
-            arrayOfInt = new int[2];
-            localView.getLocationOnScreen(arrayOfInt);
-            i = arrayOfInt[0] - getLeft();
-            if ((DEBUG) && (QLog.isDevelopLevel())) {
-              QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view on half left screen, position:" + paramInt + ",location:" + arrayOfInt[0] + ",mNextX:" + this.mNextX + ",deltaX:" + i);
-            }
-            break;
-          }
-          if (paramInt == m)
-          {
-            localView = getChildAt(getChildCount() - 1);
-            arrayOfInt = new int[2];
-            localView.getLocationOnScreen(arrayOfInt);
-            j = arrayOfInt[0] + this.jdField_b_of_type_Int - getRight();
-            i = j;
-            if (j < 0) {
-              i = 0;
-            }
-            if ((DEBUG) && (QLog.isDevelopLevel())) {
-              QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view on half right screen, position:" + paramInt + ",location:" + arrayOfInt[0] + ",mNextX:" + this.mNextX + ",deltaX:" + i);
-            }
-            break;
+          localObject2 = getChildAt(getChildCount() - 1);
+          localObject1 = new int[2];
+          ((View)localObject2).getLocationOnScreen((int[])localObject1);
+          i = localObject1[0] + this.mTabWidth - getRight();
+          j = i;
+          if (i < 0) {
+            j = 0;
           }
           i = j;
-          if (!DEBUG) {
-            break;
-          }
-          i = j;
-          if (!QLog.isDevelopLevel()) {
-            break;
-          }
-          QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view inside screen, position:" + paramInt + ",mNextX:" + this.mNextX);
-          i = j;
-          break;
-          if ((k == -1) && (m == -1)) {
-            ViewCompat.postOnAnimation(this, new HorizontalListViewEx.1(this));
-          } else {
-            requestLayout();
+          if (DEBUG)
+          {
+            i = j;
+            if (QLog.isDevelopLevel())
+            {
+              localObject2 = HorizontalListView.class.getSimpleName();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("setSelectionEx: view on half right screen, position:");
+              localStringBuilder.append(paramInt);
+              localStringBuilder.append(",location:");
+              localStringBuilder.append(localObject1[0]);
+              localStringBuilder.append(",mNextX:");
+              localStringBuilder.append(this.mNextX);
+              localStringBuilder.append(",deltaX:");
+              localStringBuilder.append(j);
+              QLog.i((String)localObject2, 4, localStringBuilder.toString());
+              i = j;
+            }
           }
         }
+        else
+        {
+          if ((DEBUG) && (QLog.isDevelopLevel()))
+          {
+            localObject1 = HorizontalListView.class.getSimpleName();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("setSelectionEx: view inside screen, position:");
+            ((StringBuilder)localObject2).append(paramInt);
+            ((StringBuilder)localObject2).append(",mNextX:");
+            ((StringBuilder)localObject2).append(this.mNextX);
+            QLog.i((String)localObject1, 4, ((StringBuilder)localObject2).toString());
+          }
+          i = 0;
+        }
+      }
+      if (i != 0) {
+        scrollBy(i);
+      } else if ((k == -1) && (m == -1)) {
+        ViewCompat.postOnAnimation(this, new HorizontalListViewEx.1(this));
+      } else {
+        requestLayout();
+      }
+      if (this.mIsTabAnimateEnable)
+      {
+        animTabIndicator();
+        this.mOldSelectedAdapterIndex = this.mCurrentlySelectedAdapterIndex;
       }
     }
   }
   
   public void setTabAnimateEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mIsTabAnimateEnable = paramBoolean;
   }
 }
 

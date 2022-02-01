@@ -14,10 +14,10 @@ import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import fmo;
 import fmp;
 import fmq;
 import fmr;
-import fms;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class LebaConfig
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private List jdField_a_of_type_JavaUtilList;
   private Set jdField_a_of_type_JavaUtilSet;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new fmq(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new fmp(this);
   private boolean jdField_a_of_type_Boolean = true;
   private List jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean = false;
@@ -284,7 +284,7 @@ public class LebaConfig
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
-    ThreadManager.b(new fmp(this, localArrayList));
+    ThreadManager.b(new fmo(this, localArrayList));
   }
   
   private void g()
@@ -298,7 +298,7 @@ public class LebaConfig
     if (QLog.isDevelopLevel()) {
       QLog.d("Q.lebatab.config", 4, "clearLocalDBPlugin.local plugin.");
     }
-    ThreadManager.b(new fms(this));
+    ThreadManager.b(new fmr(this));
     Object localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("lebaplugin_clear_local" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), false);
     ((SharedPreferences.Editor)localObject).commit();
@@ -390,7 +390,7 @@ public class LebaConfig
     if (QLog.isColorLevel()) {
       QLog.i("Q.lebatab.config", 2, "Download icon for " + paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fmr(this, paramURL, paramFile, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new fmq(this, paramURL, paramFile, paramString));
   }
   
   public void a(List paramList)

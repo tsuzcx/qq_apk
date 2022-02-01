@@ -14,7 +14,7 @@ public class djb
     int i = 1;
     if (paramBoolean)
     {
-      this.a.b.c(1);
+      this.a.b.d(1);
       paramCompoundButton = this.a.b;
       if (!paramBoolean) {
         break label68;
@@ -22,9 +22,9 @@ public class djb
     }
     for (;;)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
       return;
-      this.a.b.c(0);
+      this.a.b.d(0);
       break;
       label68:
       i = 0;

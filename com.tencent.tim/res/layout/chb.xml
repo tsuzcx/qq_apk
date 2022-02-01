@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@color/ah9" android:layout_width="fill_parent" android:layout_height="@dimen/bdo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.qqmail.utilities.ui.PressableImageView android:id="@id/nue" android:layout_width="@dimen/bdr" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_alignParentRight="true" />
+    <View android:id="@id/bmt" android:background="@color/ah_" android:layout_width="@dimen/buj" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bdn" android:layout_marginBottom="@dimen/bdn" android:layout_toLeftOf="@id/nue" />
+    <com.tencent.qqmail.utilities.ui.BottomHorizontalLineScrollView android:id="@id/nwr" android:paddingLeft="@dimen/bdq" android:paddingRight="@dimen/bdq" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/bmt" android:layout_alignParentLeft="true" />
+</merge>

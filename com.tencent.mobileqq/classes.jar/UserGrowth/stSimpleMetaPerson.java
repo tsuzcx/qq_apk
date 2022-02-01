@@ -1,5 +1,6 @@
 package UserGrowth;
 
+import NS_KING_SOCIALIZE_META.stMetaAddr;
 import NS_KING_SOCIALIZE_META.stMetaNumericSys;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -8,26 +9,40 @@ import com.qq.taf.jce.JceStruct;
 public final class stSimpleMetaPerson
   extends JceStruct
 {
-  static stSchema cache_avatarSchema = new stSchema();
+  static stSchema cache_avatarSchema;
+  static stPersonExt cache_extInfo = new stPersonExt();
+  static stMetaAddr cache_formatAddr = new stMetaAddr();
+  static stLive cache_live;
   static stMetaNumericSys cache_nueric = new stMetaNumericSys();
   public String avatar = "";
-  public stSchema avatarSchema;
-  public int createtime;
-  public int followStatus;
+  public stSchema avatarSchema = null;
+  public String background = "";
+  public int createtime = 0;
+  public stPersonExt extInfo = null;
+  public int followStatus = 0;
+  public stMetaAddr formatAddr = null;
   public String id = "";
-  public int medal;
+  public stLive live = null;
+  public int medal = 0;
   public String nick = "";
-  public stMetaNumericSys nueric;
+  public stMetaNumericSys nueric = null;
   public String recommendReason = "";
-  public int relation_type;
+  public int relation_type = 0;
   public String schema_url = "";
-  public int sex;
-  public int type;
+  public int sex = 0;
+  public String status = "";
+  public int type = 0;
   public String uid = "";
+  
+  static
+  {
+    cache_avatarSchema = new stSchema();
+    cache_live = new stLive();
+  }
   
   public stSimpleMetaPerson() {}
   
-  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema)
+  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema, stLive paramstLive, stPersonExt paramstPersonExt, String paramString7, stMetaAddr paramstMetaAddr, String paramString8)
   {
     this.id = paramString1;
     this.type = paramInt1;
@@ -43,6 +58,11 @@ public final class stSimpleMetaPerson
     this.recommendReason = paramString6;
     this.sex = paramInt6;
     this.avatarSchema = paramstSchema;
+    this.live = paramstLive;
+    this.extInfo = paramstPersonExt;
+    this.status = paramString7;
+    this.formatAddr = paramstMetaAddr;
+    this.background = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,45 +81,78 @@ public final class stSimpleMetaPerson
     this.recommendReason = paramJceInputStream.readString(11, false);
     this.sex = paramJceInputStream.read(this.sex, 12, false);
     this.avatarSchema = ((stSchema)paramJceInputStream.read(cache_avatarSchema, 13, false));
+    this.live = ((stLive)paramJceInputStream.read(cache_live, 14, false));
+    this.extInfo = ((stPersonExt)paramJceInputStream.read(cache_extInfo, 15, false));
+    this.status = paramJceInputStream.readString(16, false);
+    this.formatAddr = ((stMetaAddr)paramJceInputStream.read(cache_formatAddr, 17, false));
+    this.background = paramJceInputStream.readString(18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.type, 1);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 2);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.createtime, 3);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 4);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.avatar != null) {
-      paramJceOutputStream.write(this.avatar, 5);
+    localObject = this.avatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 6);
+    localObject = this.schema_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.relation_type, 7);
     paramJceOutputStream.write(this.followStatus, 8);
     paramJceOutputStream.write(this.medal, 9);
-    if (this.nueric != null) {
-      paramJceOutputStream.write(this.nueric, 10);
+    localObject = this.nueric;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.recommendReason != null) {
-      paramJceOutputStream.write(this.recommendReason, 11);
+    localObject = this.recommendReason;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.sex, 12);
-    if (this.avatarSchema != null) {
-      paramJceOutputStream.write(this.avatarSchema, 13);
+    localObject = this.avatarSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
+    }
+    localObject = this.live;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
+    }
+    localObject = this.extInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
+    }
+    localObject = this.status;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
+    }
+    localObject = this.formatAddr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
+    }
+    localObject = this.background;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleMetaPerson
  * JD-Core Version:    0.7.0.1
  */

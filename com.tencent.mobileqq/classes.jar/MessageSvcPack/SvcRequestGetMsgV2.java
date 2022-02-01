@@ -14,34 +14,34 @@ public final class SvcRequestGetMsgV2
   static byte[] cache_vNotifyCookie;
   static byte[] cache_vPubAccountCookie;
   static byte[] cache_vSyncCookie;
-  public byte cAutoGetMsg;
+  public byte cAutoGetMsg = 0;
   public byte cChannel = 1;
-  public byte cChannelEx;
-  public byte cContextFlag;
-  public byte cInnerFlag;
-  public byte cInst;
-  public byte cMsgStoreType;
+  public byte cChannelEx = 0;
+  public byte cContextFlag = 0;
+  public byte cInnerFlag = 0;
+  public byte cInst = 0;
+  public byte cMsgStoreType = 0;
   public byte cOnlineSyncFlag = 1;
-  public byte cPushService;
-  public byte cRambleFlag;
-  public byte cRecivePic;
+  public byte cPushService = 0;
+  public byte cRambleFlag = 0;
+  public byte cRecivePic = 0;
   public int cSyncFlag = MsgSyncFlag.SYNC_BEGIN.value();
-  public byte cUnFilter;
-  public byte cVerifyType;
+  public byte cUnFilter = 0;
+  public byte cVerifyType = 0;
   public int eBusiType = BusinessType.BusinessType_MQQ.value();
   public int eMqqSysType = MqqSysType.MqqSysType_default.value();
-  public long iOSVersion;
-  public long lGeneralAbi;
-  public long lUin;
+  public long iOSVersion = 0L;
+  public long lGeneralAbi = 0L;
+  public long lUin = 0L;
   public String sA2 = "";
-  public short shAbility;
+  public short shAbility = 0;
   public short shLatestRambleNumber = 20;
   public short shOtherRambleNumber = 3;
-  public int uDateTime;
-  public byte[] vCookies;
-  public byte[] vNotifyCookie;
-  public byte[] vPubAccountCookie;
-  public byte[] vSyncCookie;
+  public int uDateTime = 0;
+  public byte[] vCookies = null;
+  public byte[] vNotifyCookie = null;
+  public byte[] vPubAccountCookie = null;
+  public byte[] vSyncCookie = null;
   
   public SvcRequestGetMsgV2() {}
   
@@ -133,8 +133,9 @@ public final class SvcRequestGetMsgV2
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.uDateTime, 1);
-    if (this.sA2 != null) {
-      paramJceOutputStream.write(this.sA2, 2);
+    Object localObject = this.sA2;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.cVerifyType, 3);
     paramJceOutputStream.write(this.cRecivePic, 4);
@@ -143,20 +144,23 @@ public final class SvcRequestGetMsgV2
     paramJceOutputStream.write(this.cMsgStoreType, 7);
     paramJceOutputStream.write(this.cPushService, 8);
     paramJceOutputStream.write(this.cChannel, 9);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 10);
+    localObject = this.vCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
     paramJceOutputStream.write(this.eBusiType, 11);
     paramJceOutputStream.write(this.eMqqSysType, 12);
-    if (this.vNotifyCookie != null) {
-      paramJceOutputStream.write(this.vNotifyCookie, 13);
+    localObject = this.vNotifyCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
     paramJceOutputStream.write(this.iOSVersion, 14);
     paramJceOutputStream.write(this.cUnFilter, 15);
     paramJceOutputStream.write(this.cInst, 16);
     paramJceOutputStream.write(this.cChannelEx, 17);
-    if (this.vSyncCookie != null) {
-      paramJceOutputStream.write(this.vSyncCookie, 18);
+    localObject = this.vSyncCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 18);
     }
     paramJceOutputStream.write(this.cSyncFlag, 19);
     paramJceOutputStream.write(this.cRambleFlag, 20);
@@ -166,14 +170,15 @@ public final class SvcRequestGetMsgV2
     paramJceOutputStream.write(this.cOnlineSyncFlag, 24);
     paramJceOutputStream.write(this.cContextFlag, 25);
     paramJceOutputStream.write(this.lGeneralAbi, 26);
-    if (this.vPubAccountCookie != null) {
-      paramJceOutputStream.write(this.vPubAccountCookie, 27);
+    localObject = this.vPubAccountCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 27);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcRequestGetMsgV2
  * JD-Core Version:    0.7.0.1
  */

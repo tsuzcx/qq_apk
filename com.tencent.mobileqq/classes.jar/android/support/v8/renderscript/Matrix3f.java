@@ -11,7 +11,8 @@ public class Matrix3f
   
   public Matrix3f(float[] paramArrayOfFloat)
   {
-    System.arraycopy(paramArrayOfFloat, 0, this.mMat, 0, this.mMat.length);
+    float[] arrayOfFloat = this.mMat;
+    System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, arrayOfFloat.length);
   }
   
   public float get(int paramInt1, int paramInt2)
@@ -26,20 +27,23 @@ public class Matrix3f
   
   public void load(Matrix3f paramMatrix3f)
   {
-    System.arraycopy(paramMatrix3f.getArray(), 0, this.mMat, 0, this.mMat.length);
+    paramMatrix3f = paramMatrix3f.getArray();
+    float[] arrayOfFloat = this.mMat;
+    System.arraycopy(paramMatrix3f, 0, arrayOfFloat, 0, arrayOfFloat.length);
   }
   
   public void loadIdentity()
   {
-    this.mMat[0] = 1.0F;
-    this.mMat[1] = 0.0F;
-    this.mMat[2] = 0.0F;
-    this.mMat[3] = 0.0F;
-    this.mMat[4] = 1.0F;
-    this.mMat[5] = 0.0F;
-    this.mMat[6] = 0.0F;
-    this.mMat[7] = 0.0F;
-    this.mMat[8] = 1.0F;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = 1.0F;
+    arrayOfFloat[1] = 0.0F;
+    arrayOfFloat[2] = 0.0F;
+    arrayOfFloat[3] = 0.0F;
+    arrayOfFloat[4] = 1.0F;
+    arrayOfFloat[5] = 0.0F;
+    arrayOfFloat[6] = 0.0F;
+    arrayOfFloat[7] = 0.0F;
+    arrayOfFloat[8] = 1.0F;
   }
   
   public void loadMultiply(Matrix3f paramMatrix3f1, Matrix3f paramMatrix3f2)
@@ -48,15 +52,15 @@ public class Matrix3f
     while (i < 3)
     {
       int j = 0;
-      float f1 = 0.0F;
-      float f2 = 0.0F;
       float f3 = 0.0F;
+      float f2 = 0.0F;
+      float f1 = 0.0F;
       while (j < 3)
       {
         float f4 = paramMatrix3f2.get(i, j);
         f3 += paramMatrix3f1.get(j, 0) * f4;
         f2 += paramMatrix3f1.get(j, 1) * f4;
-        f1 += f4 * paramMatrix3f1.get(j, 2);
+        f1 += paramMatrix3f1.get(j, 2) * f4;
         j += 1;
       }
       set(i, 0, f3);
@@ -69,20 +73,21 @@ public class Matrix3f
   public void loadRotate(float paramFloat)
   {
     loadIdentity();
-    float f = 0.01745329F * paramFloat;
-    paramFloat = (float)Math.cos(f);
-    f = (float)Math.sin(f);
-    this.mMat[0] = paramFloat;
-    this.mMat[1] = (-f);
-    this.mMat[3] = f;
-    this.mMat[4] = paramFloat;
+    double d = paramFloat * 0.01745329F;
+    paramFloat = (float)Math.cos(d);
+    float f = (float)Math.sin(d);
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = paramFloat;
+    arrayOfFloat[1] = (-f);
+    arrayOfFloat[3] = f;
+    arrayOfFloat[4] = paramFloat;
   }
   
   public void loadRotate(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    paramFloat1 = 0.01745329F * paramFloat1;
-    float f3 = (float)Math.cos(paramFloat1);
-    float f4 = (float)Math.sin(paramFloat1);
+    double d = paramFloat1 * 0.01745329F;
+    float f3 = (float)Math.cos(d);
+    float f4 = (float)Math.sin(d);
     float f5 = (float)Math.sqrt(paramFloat2 * paramFloat2 + paramFloat3 * paramFloat3 + paramFloat4 * paramFloat4);
     float f2 = paramFloat2;
     float f1 = paramFloat3;
@@ -95,43 +100,47 @@ public class Matrix3f
       paramFloat1 = paramFloat4 * paramFloat1;
     }
     paramFloat2 = 1.0F - f3;
-    paramFloat3 = f2 * f1;
-    paramFloat4 = f1 * paramFloat1;
-    f5 = paramFloat1 * f2;
-    float f6 = f2 * f4;
-    float f7 = f1 * f4;
+    paramFloat3 = f2 * f4;
+    paramFloat4 = f1 * f4;
     f4 *= paramFloat1;
-    this.mMat[0] = (f2 * f2 * paramFloat2 + f3);
-    this.mMat[3] = (paramFloat3 * paramFloat2 - f4);
-    this.mMat[6] = (f5 * paramFloat2 + f7);
-    this.mMat[1] = (f4 + paramFloat3 * paramFloat2);
-    this.mMat[4] = (f1 * f1 * paramFloat2 + f3);
-    this.mMat[7] = (paramFloat4 * paramFloat2 - f6);
-    this.mMat[2] = (f5 * paramFloat2 - f7);
-    this.mMat[5] = (paramFloat4 * paramFloat2 + f6);
-    this.mMat[8] = (f3 + paramFloat2 * (paramFloat1 * paramFloat1));
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = (f2 * f2 * paramFloat2 + f3);
+    f5 = f2 * f1 * paramFloat2;
+    arrayOfFloat[3] = (f5 - f4);
+    f2 = paramFloat1 * f2 * paramFloat2;
+    arrayOfFloat[6] = (f2 + paramFloat4);
+    arrayOfFloat[1] = (f5 + f4);
+    arrayOfFloat[4] = (f1 * f1 * paramFloat2 + f3);
+    f1 = f1 * paramFloat1 * paramFloat2;
+    arrayOfFloat[7] = (f1 - paramFloat3);
+    arrayOfFloat[2] = (f2 - paramFloat4);
+    arrayOfFloat[5] = (f1 + paramFloat3);
+    arrayOfFloat[8] = (paramFloat1 * paramFloat1 * paramFloat2 + f3);
   }
   
   public void loadScale(float paramFloat1, float paramFloat2)
   {
     loadIdentity();
-    this.mMat[0] = paramFloat1;
-    this.mMat[4] = paramFloat2;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[4] = paramFloat2;
   }
   
   public void loadScale(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     loadIdentity();
-    this.mMat[0] = paramFloat1;
-    this.mMat[4] = paramFloat2;
-    this.mMat[8] = paramFloat3;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[4] = paramFloat2;
+    arrayOfFloat[8] = paramFloat3;
   }
   
   public void loadTranslate(float paramFloat1, float paramFloat2)
   {
     loadIdentity();
-    this.mMat[6] = paramFloat1;
-    this.mMat[7] = paramFloat2;
+    float[] arrayOfFloat = this.mMat;
+    arrayOfFloat[6] = paramFloat1;
+    arrayOfFloat[7] = paramFloat2;
   }
   
   public void multiply(Matrix3f paramMatrix3f)
@@ -183,24 +192,27 @@ public class Matrix3f
   
   public void transpose()
   {
-    int i = 0;
-    while (i < 2)
+    int j;
+    for (int i = 0; i < 2; i = j)
     {
-      int j = i + 1;
-      while (j < 3)
+      j = i + 1;
+      int k = j;
+      while (k < 3)
       {
-        float f = this.mMat[(i * 3 + j)];
-        this.mMat[(i * 3 + j)] = this.mMat[(j * 3 + i)];
-        this.mMat[(j * 3 + i)] = f;
-        j += 1;
+        float[] arrayOfFloat = this.mMat;
+        int m = i * 3 + k;
+        float f = arrayOfFloat[m];
+        int n = k * 3 + i;
+        arrayOfFloat[m] = arrayOfFloat[n];
+        arrayOfFloat[n] = f;
+        k += 1;
       }
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Matrix3f
  * JD-Core Version:    0.7.0.1
  */

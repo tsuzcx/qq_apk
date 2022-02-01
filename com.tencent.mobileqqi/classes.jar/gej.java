@@ -1,88 +1,100 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.profile.ProfileCardBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profile.ProfileCardTemplateInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class gej
-  extends CardObserver
+  implements AdapterView.OnItemClickListener
 {
   public gej(ProfileCardBrowserActivity paramProfileCardBrowserActivity) {}
   
-  public void b(boolean paramBoolean, Object paramObject)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    if ((paramBoolean) && (paramObject != null))
+    paramLong = System.currentTimeMillis();
+    if (paramLong - this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() > 1000L)
     {
-      Object localObject;
-      if ((paramObject instanceof Card))
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(paramLong);
+      if (NetworkUtil.e(this.a)) {
+        break label76;
+      }
+      QQToast.a(this.a, this.a.getString(2131562452), 0).b(this.a.d());
+    }
+    label405:
+    label409:
+    for (;;)
+    {
+      return;
+      label76:
+      int i;
+      if (this.a.jdField_a_of_type_JavaUtilList != null)
       {
-        paramObject = (Card)paramObject;
-        localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-        String str = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramObject.lCurrentTemplateId));
-        if ((!TextUtils.isEmpty(str)) && (TextUtils.isDigitsOnly(str)))
-        {
-          ((Message)localObject).arg1 = Integer.parseInt(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileCard.ProfileCardBrowserActivity", 2, "CardObserver onSetCardTemplateReturn cardId : " + paramObject.lCurrentTemplateId);
+        paramAdapterView = ((ProfileCardTemplateInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
+        if (paramAdapterView != null) {
+          if ((paramAdapterView.c.equals("2")) || (paramAdapterView.c.equals("3")))
+          {
+            if ((this.a.jdField_a_of_type_Boolean) || (this.a.b)) {
+              break label405;
+            }
+            this.a.z = 1;
+            if (this.a.y == 1)
+            {
+              this.a.F = 1;
+              label181:
+              this.a.f();
+              i = 0;
+            }
           }
-          this.a.a((int)paramObject.lCurrentTemplateId);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
         }
       }
       for (;;)
       {
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-        if ((paramObject instanceof Pair))
-        {
-          paramObject = (Pair)paramObject;
-          localObject = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramObject.first));
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isDigitsOnly((CharSequence)localObject))) {}
-          for (int i = Integer.parseInt((String)localObject);; i = 0)
-          {
-            if (((Integer)paramObject.second).intValue() != 101107) {
-              break label317;
-            }
-            this.a.z = 1;
-            this.a.F = 2;
-            paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-            paramObject.arg1 = i;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-            break;
-          }
-          label317:
-          if (((Integer)paramObject.second).intValue() == 101108)
-          {
-            this.a.z = 2;
-            this.a.F = 5;
-            paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-            paramObject.arg1 = i;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-          }
-          else
-          {
-            paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-            paramObject.arg1 = i;
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-          }
+        if (i == 0) {
+          break label409;
         }
+        paramAdapterView = (ProfileCardTemplateInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if ((paramAdapterView.jdField_a_of_type_Int == 0) || (paramAdapterView.jdField_a_of_type_Int == -1))
+        {
+          paramAdapterView.jdField_a_of_type_Int = 1;
+          ProfileCardBrowserActivity.a(this.a, paramAdapterView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.a, paramInt);
+          this.a.a(paramView.getTag(), 2);
+          return;
+          this.a.F = 3;
+          break label181;
+          if (paramAdapterView.c.equals("4"))
+          {
+            if (this.a.b) {
+              break label405;
+            }
+            this.a.z = 2;
+            if (this.a.y == 1) {}
+            for (this.a.F = 4;; this.a.F = 6)
+            {
+              this.a.f();
+              i = 0;
+              break;
+            }
+          }
+          if (!paramAdapterView.c.equals("5")) {
+            break label405;
+          }
+          i = 0;
+          continue;
+        }
+        if (paramAdapterView.jdField_a_of_type_Int != 2) {
+          break;
+        }
+        paramAdapterView.jdField_a_of_type_Int = 3;
+        ProfileCardBrowserActivity.a(this.a, paramAdapterView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.a, paramInt);
+        this.a.a(paramView.getTag(), 1);
+        return;
+        i = 1;
       }
-    }
-    paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-    if ((this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference != null) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null)) {}
-    for (paramObject.arg1 = ((Integer)((Pair)this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).second).intValue();; paramObject.arg1 = -1)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-      break;
     }
   }
 }

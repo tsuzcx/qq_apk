@@ -1,21 +1,17 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.open.agent.OpenSdkFriendService;
+import java.util.ArrayList;
 
 public class hjh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public hjh(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
+  public hjh(OpenSdkFriendService paramOpenSdkFriendService, Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
+    ArrayList localArrayList = this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService.a();
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 888802, localArrayList).sendToTarget();
   }
 }
 

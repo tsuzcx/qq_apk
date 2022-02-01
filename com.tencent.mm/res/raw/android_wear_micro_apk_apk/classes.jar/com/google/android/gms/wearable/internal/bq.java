@@ -16,8 +16,8 @@ final class bq
   public final void a(zzbl paramzzbl)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(paramzzbl.Tv);
-    B(new az(bj.bF(paramzzbl.statusCode), localArrayList));
+    localArrayList.addAll(paramzzbl.Vk);
+    K(new az(bj.ca(paramzzbl.statusCode), localArrayList));
   }
 }
 

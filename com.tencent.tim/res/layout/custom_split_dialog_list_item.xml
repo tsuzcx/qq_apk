@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/j0t" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="14.0dip" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/rh" android:textColor="@color/fl" android:gravity="center_vertical" android:id="@id/dr5" android:background="@drawable/custom_dialog_list_item_bg_selector" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:focusable="true" android:clickable="true" android:layout_width="254.0dip" android:layout_height="54.0dip" android:layout_below="@id/j0t" />
+</RelativeLayout>

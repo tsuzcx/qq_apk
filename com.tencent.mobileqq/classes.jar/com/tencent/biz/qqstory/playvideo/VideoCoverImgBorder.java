@@ -10,21 +10,21 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import xsm;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class VideoCoverImgBorder
   extends ImageView
 {
-  private final int jdField_a_of_type_Int = xsm.a(getContext(), 1.0F);
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int jdField_b_of_type_Int = xsm.a(getContext(), 2.0F);
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private int c = this.jdField_b_of_type_Int;
-  private int d;
-  private int e;
-  private int f = this.jdField_b_of_type_Int;
-  private int g = -1;
+  private final int a = UIUtils.a(getContext(), 1.0F);
+  private final int b = UIUtils.a(getContext(), 2.0F);
+  private Path c;
+  private int d = this.b;
+  private RectF e = new RectF();
+  private RectF f = new RectF();
+  private int g = 0;
+  private int h = 0;
+  private int i = this.b;
+  private int j = -1;
   
   public VideoCoverImgBorder(Context paramContext)
   {
@@ -46,61 +46,79 @@ public class VideoCoverImgBorder
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    if (this.c == null) {
+      this.c = new Path();
     }
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    int i = paramCanvas.getSaveCount();
+    this.c.reset();
+    int k = paramCanvas.getSaveCount();
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.d + this.f);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.e + this.f);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (getWidth() - this.f - this.d);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (getHeight() - this.f - this.e);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    Object localObject = this.e;
+    int m = this.g;
+    int n = this.i;
+    ((RectF)localObject).left = (m + n);
+    ((RectF)localObject).top = (this.h + n);
+    ((RectF)localObject).right = (getWidth() - this.i - this.g);
+    this.e.bottom = (getHeight() - this.i - this.h);
+    localObject = this.c;
+    RectF localRectF = this.e;
+    m = this.d;
+    ((Path)localObject).addRoundRect(localRectF, m, m, Path.Direction.CCW);
+    paramCanvas.clipPath(this.c);
     super.onDraw(paramCanvas);
-    paramCanvas.restoreToCount(i);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsRectF.left = this.d;
-    this.jdField_b_of_type_AndroidGraphicsRectF.top = this.e;
-    this.jdField_b_of_type_AndroidGraphicsRectF.right = (getWidth() - this.d);
-    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (getHeight() - this.e);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.c + this.f, this.c + this.f, Path.Direction.CCW);
-    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-    paramCanvas.drawColor(this.g);
-    paramCanvas.restoreToCount(i);
+    paramCanvas.restoreToCount(k);
+    this.c.reset();
+    localObject = this.f;
+    ((RectF)localObject).left = this.g;
+    ((RectF)localObject).top = this.h;
+    ((RectF)localObject).right = (getWidth() - this.g);
+    this.f.bottom = (getHeight() - this.h);
+    localObject = this.c;
+    localRectF = this.e;
+    m = this.d;
+    ((Path)localObject).addRoundRect(localRectF, m, m, Path.Direction.CCW);
+    localObject = this.c;
+    localRectF = this.f;
+    m = this.d;
+    n = this.i;
+    ((Path)localObject).addRoundRect(localRectF, m + n, m + n, Path.Direction.CCW);
+    this.c.setFillType(Path.FillType.EVEN_ODD);
+    paramCanvas.clipPath(this.c);
+    paramCanvas.drawColor(this.j);
+    paramCanvas.restoreToCount(k);
   }
   
   public void setState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.d = this.jdField_a_of_type_Int;
-      this.e = this.jdField_a_of_type_Int;
-      this.f = this.jdField_a_of_type_Int;
-      this.g = -570319;
-      return;
-    case 1: 
-      this.d = 0;
-      this.e = 0;
-      this.f = this.jdField_b_of_type_Int;
-      this.g = -15550475;
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        paramInt = this.a;
+        this.g = paramInt;
+        this.h = paramInt;
+        this.i = paramInt;
+        this.j = -1;
+        return;
+      }
+      this.g = 0;
+      this.h = 0;
+      this.i = this.b;
+      this.j = -15550475;
       return;
     }
-    this.d = this.jdField_a_of_type_Int;
-    this.e = this.jdField_a_of_type_Int;
-    this.f = this.jdField_a_of_type_Int;
-    this.g = -1;
+    paramInt = this.a;
+    this.g = paramInt;
+    this.h = paramInt;
+    this.i = paramInt;
+    this.j = -570319;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder
  * JD-Core Version:    0.7.0.1
  */

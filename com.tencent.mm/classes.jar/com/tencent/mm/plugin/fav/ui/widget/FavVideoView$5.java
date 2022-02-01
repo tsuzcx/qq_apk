@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.fav.ui.widget;
 
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.MMPinProgressBtn;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class FavVideoView$5
-  implements Runnable
+  implements View.OnClickListener
 {
   FavVideoView$5(FavVideoView paramFavVideoView) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(74718);
-    if ((FavVideoView.d(this.mEC) != null) && (FavVideoView.d(this.mEC).getVisibility() != 0)) {
-      FavVideoView.d(this.mEC).setVisibility(0);
+    AppMethodBeat.i(107566);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/fav/ui/widget/FavVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (FavVideoView.e(this.Aql) != null) {
+      FavVideoView.e(this.Aql).finish();
     }
-    if ((FavVideoView.e(this.mEC) != null) && (FavVideoView.e(this.mEC).getVisibility() != 8)) {
-      FavVideoView.e(this.mEC).setVisibility(8);
-    }
-    AppMethodBeat.o(74718);
+    a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavVideoView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(107566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavVideoView.5
  * JD-Core Version:    0.7.0.1
  */

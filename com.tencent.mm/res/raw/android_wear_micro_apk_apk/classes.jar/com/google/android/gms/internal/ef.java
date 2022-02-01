@@ -4,16 +4,16 @@ import com.google.android.gms.common.api.a;
 
 public final class ef<O extends com.google.android.gms.common.api.b>
 {
-  private final a<O> HU;
-  private final O HV;
-  private final boolean RS = true;
-  private final int RT;
+  private final a<O> JJ;
+  private final O JK;
+  private final boolean TH = true;
+  private final int TI;
   
   private ef(a<O> parama)
   {
-    this.HU = parama;
-    this.HV = null;
-    this.RT = System.identityHashCode(this);
+    this.JJ = parama;
+    this.JK = null;
+    this.TI = System.identityHashCode(this);
   }
   
   public static <O extends com.google.android.gms.common.api.b> ef<O> b(a<O> parama)
@@ -31,18 +31,18 @@ public final class ef<O extends com.google.android.gms.common.api.b>
         return false;
       }
       paramObject = (ef)paramObject;
-    } while ((!this.RS) && (!paramObject.RS) && (com.google.android.gms.common.internal.b.b(this.HU, paramObject.HU)) && (com.google.android.gms.common.internal.b.b(this.HV, paramObject.HV)));
+    } while ((!this.TH) && (!paramObject.TH) && (com.google.android.gms.common.internal.b.c(this.JJ, paramObject.JJ)) && (com.google.android.gms.common.internal.b.c(this.JK, paramObject.JK)));
     return false;
   }
   
   public final int hashCode()
   {
-    return this.RT;
+    return this.TI;
   }
   
-  public final String kk()
+  public final String kt()
   {
-    return this.HU.getName();
+    return this.JJ.getName();
   }
 }
 

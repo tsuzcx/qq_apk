@@ -4,20 +4,21 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import oicq.wlogin_sdk.tools.util;
 
-public final class QuickAuthorityConfBean$1
+final class QuickAuthorityConfBean$1
   implements Runnable
 {
-  public QuickAuthorityConfBean$1(boolean paramBoolean) {}
+  QuickAuthorityConfBean$1(boolean paramBoolean) {}
   
   public void run()
   {
     try
     {
       util.save_pow_test(BaseApplication.getContext(), this.a);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "pow_test ", Boolean.valueOf(this.a) });
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -27,7 +28,7 @@ public final class QuickAuthorityConfBean$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1
  * JD-Core Version:    0.7.0.1
  */

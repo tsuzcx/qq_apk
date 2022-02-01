@@ -19,10 +19,12 @@ public final class UnsignedKt
     if (paramDouble >= uintToDouble(-1)) {
       return -1;
     }
-    if (paramDouble <= 2147483647) {
+    double d = 2147483647;
+    if (paramDouble <= d) {
       return UInt.constructor-impl((int)paramDouble);
     }
-    return UInt.constructor-impl(UInt.constructor-impl((int)(paramDouble - 2147483647)) + UInt.constructor-impl(2147483647));
+    Double.isNaN(d);
+    return UInt.constructor-impl(UInt.constructor-impl((int)(paramDouble - d)) + UInt.constructor-impl(2147483647));
   }
   
   @PublishedApi
@@ -44,7 +46,7 @@ public final class UnsignedKt
   @PublishedApi
   public static final int uintCompare(int paramInt1, int paramInt2)
   {
-    return Intrinsics.compare(paramInt1 ^ 0x80000000, 0x80000000 ^ paramInt2);
+    return Intrinsics.compare(paramInt1 ^ 0x80000000, paramInt2 ^ 0x80000000);
   }
   
   @PublishedApi
@@ -62,19 +64,24 @@ public final class UnsignedKt
   @PublishedApi
   public static final double uintToDouble(int paramInt)
   {
-    return (0x7FFFFFFF & paramInt) + (paramInt >>> 31 << 30) * 2;
+    double d1 = 0x7FFFFFFF & paramInt;
+    double d2 = paramInt >>> 31 << 30;
+    double d3 = 2;
+    Double.isNaN(d2);
+    Double.isNaN(d3);
+    Double.isNaN(d1);
+    return d1 + d2 * d3;
   }
   
   @PublishedApi
   public static final int ulongCompare(long paramLong1, long paramLong2)
   {
-    return (paramLong1 ^ 0x0) < (0x0 ^ paramLong2);
+    return (paramLong1 ^ 0x0) < (paramLong2 ^ 0x0);
   }
   
   @PublishedApi
   public static final long ulongDivide-eb3DHEI(long paramLong1, long paramLong2)
   {
-    int i = 1;
     if (paramLong2 < 0L)
     {
       if (ulongCompare(paramLong1, paramLong2) < 0) {
@@ -85,13 +92,12 @@ public final class UnsignedKt
     if (paramLong1 >= 0L) {
       return ULong.constructor-impl(paramLong1 / paramLong2);
     }
+    int i = 1;
     long l = (paramLong1 >>> 1) / paramLong2 << 1;
-    if (ulongCompare(ULong.constructor-impl(paramLong1 - l * paramLong2), ULong.constructor-impl(paramLong2)) >= 0) {}
-    for (;;)
-    {
-      return ULong.constructor-impl(i + l);
+    if (ulongCompare(ULong.constructor-impl(paramLong1 - l * paramLong2), ULong.constructor-impl(paramLong2)) < 0) {
       i = 0;
     }
+    return ULong.constructor-impl(l + i);
   }
   
   @PublishedApi
@@ -108,18 +114,22 @@ public final class UnsignedKt
       return ULong.constructor-impl(paramLong1 % paramLong2);
     }
     paramLong1 -= ((paramLong1 >>> 1) / paramLong2 << 1) * paramLong2;
-    if (ulongCompare(ULong.constructor-impl(paramLong1), ULong.constructor-impl(paramLong2)) >= 0) {}
-    for (;;)
-    {
-      return ULong.constructor-impl(paramLong1 - paramLong2);
+    if (ulongCompare(ULong.constructor-impl(paramLong1), ULong.constructor-impl(paramLong2)) < 0) {
       paramLong2 = 0L;
     }
+    return ULong.constructor-impl(paramLong1 - paramLong2);
   }
   
   @PublishedApi
   public static final double ulongToDouble(long paramLong)
   {
-    return (paramLong >>> 11) * 2048 + (0x7FF & paramLong);
+    double d1 = paramLong >>> 11;
+    double d2 = 2048;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    double d3 = paramLong & 0x7FF;
+    Double.isNaN(d3);
+    return d1 * d2 + d3;
   }
   
   @NotNull
@@ -137,27 +147,29 @@ public final class UnsignedKt
       Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.Long.toString(this, checkRadix(radix))");
       return localObject;
     }
-    long l2 = (paramLong >>> 1) / paramInt << 1;
-    long l3 = paramLong - paramInt * l2;
-    long l1 = l3;
-    paramLong = l2;
-    if (l3 >= paramInt)
+    long l4 = paramInt;
+    long l2 = (paramLong >>> 1) / l4 << 1;
+    long l3 = paramLong - l2 * l4;
+    long l1 = l2;
+    paramLong = l3;
+    if (l3 >= l4)
     {
-      l1 = l3 - paramInt;
-      paramLong = l2 + 1L;
+      paramLong = l3 - l4;
+      l1 = l2 + 1L;
     }
     Object localObject = new StringBuilder();
-    String str = Long.toString(paramLong, CharsKt.checkRadix(paramInt));
+    String str = Long.toString(l1, CharsKt.checkRadix(paramInt));
     Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.Long.toString(this, checkRadix(radix))");
-    localObject = ((StringBuilder)localObject).append(str);
-    str = Long.toString(l1, CharsKt.checkRadix(paramInt));
+    ((StringBuilder)localObject).append(str);
+    str = Long.toString(paramLong, CharsKt.checkRadix(paramInt));
     Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.Long.toString(this, checkRadix(radix))");
-    return str;
+    ((StringBuilder)localObject).append(str);
+    return ((StringBuilder)localObject).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.UnsignedKt
  * JD-Core Version:    0.7.0.1
  */

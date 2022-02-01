@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.managers;
 
-import atzr;
-
-public class CUOpenCardGuideMng$GuideConfigData$1
+class CUOpenCardGuideMng$GuideConfigData$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$GuideConfigData$1(atzr paramatzr) {}
+  CUOpenCardGuideMng$GuideConfigData$1(CUOpenCardGuideMng.GuideConfigData paramGuideConfigData) {}
   
   public void run()
   {
@@ -14,7 +12,7 @@ public class CUOpenCardGuideMng$GuideConfigData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,23 @@
 package android.support.v4.app;
 
-import android.app.Notification;
-
-class av
-  extends au
+public abstract class av
 {
-  public Notification b(ar paramar)
+  protected at hc;
+  CharSequence hd;
+  CharSequence he;
+  boolean hf = false;
+  
+  public void a(ap paramap) {}
+  
+  public final void b(at paramat)
   {
-    Object localObject = new be(paramar.mContext, paramar.fm, paramar.eC, paramar.eD, paramar.eI, paramar.eG, paramar.eJ, paramar.eE, paramar.eF, paramar.eH, paramar.eQ, paramar.eR, paramar.eS, paramar.eL, paramar.eM, paramar.eK, paramar.eO, paramar.eX, paramar.fn, paramar.ew, paramar.eT, paramar.eU, paramar.eV, paramar.fe, paramar.ff, ar.a(paramar));
-    ao.a((am)localObject, paramar.eW);
-    if (paramar.eN != null) {
-      paramar.eN.a((an)localObject);
+    if (this.hc != paramat)
+    {
+      this.hc = paramat;
+      if (this.hc != null) {
+        this.hc.a(this);
+      }
     }
-    localObject = as.a(paramar, (an)localObject);
-    if (paramar.eN != null) {
-      ao.a((Notification)localObject);
-    }
-    return localObject;
   }
 }
 

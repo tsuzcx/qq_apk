@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/pur" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-2.5dip" android:layout_marginTop="-2.5dip" android:layout_marginRight="-2.5dip" android:layout_marginBottom="-2.5dip" />
+    <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyHeadImageView android:id="@id/a2o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
+    <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:layout_gravity="bottom|center|right" android:id="@id/nx_" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    <com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView android:id="@id/oe1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
+</merge>

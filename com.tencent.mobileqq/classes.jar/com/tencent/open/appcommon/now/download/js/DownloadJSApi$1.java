@@ -3,78 +3,90 @@ package com.tencent.open.appcommon.now.download.js;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bfbm;
-import bfjw;
-import bflk;
-import bflp;
-import bfoh;
-import bfok;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.APNUtil;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public final class DownloadJSApi$1
+final class DownloadJSApi$1
   implements Runnable
 {
-  public DownloadJSApi$1(Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
+  DownloadJSApi$1(Bundle paramBundle, String paramString, int paramInt, Activity paramActivity, ApkUpdateDetail paramApkUpdateDetail) {}
   
   public void run()
   {
-    boolean bool2 = true;
-    Object localObject1 = new StringBuilder().append("doDownloadAction pParams=").append(this.jdField_a_of_type_AndroidOsBundle).append(" source=").append(this.jdField_a_of_type_JavaLangString).append(" myAppConfig=").append(this.jdField_a_of_type_Int).append(" ac==null is");
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("doDownloadAction pParams=");
+    ((StringBuilder)localObject1).append(this.a);
+    ((StringBuilder)localObject1).append(" source=");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(" myAppConfig=");
+    ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append(" ac==null is");
+    Object localObject2 = this.d;
+    boolean bool2 = false;
+    boolean bool1;
+    if (localObject2 == null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject1).append(bool1);
+    LogUtility.a("DownloadJSApi", ((StringBuilder)localObject1).toString());
+    localObject1 = this.a;
+    if (localObject1 == null)
     {
-      bflp.a("DownloadJSApi", bool1);
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        break;
-      }
-      bflp.e("DownloadJSApi", "doDownloadAction pParams == null return");
+      LogUtility.e("DownloadJSApi", "doDownloadAction pParams == null return");
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.s, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(bfoh.E, 1);
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.B);
-    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.i);
+    localObject2 = ((Bundle)localObject1).getString(DownloadConstants.b);
+    this.a.putString(DownloadConstants.t, this.b);
+    this.a.putInt(DownloadConstants.G, 1);
+    String str = this.a.getString(DownloadConstants.D);
+    localObject1 = this.a.getString(DownloadConstants.i);
     if ((TextUtils.isEmpty(str)) || (str.equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.B, "");
+      this.a.putString(DownloadConstants.D, "");
     }
-    localObject2 = bfok.a().a((String)localObject2);
+    localObject2 = DownloadManager.b().d((String)localObject2);
     if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
       ((DownloadInfo)localObject2).h = ((String)localObject1);
     }
-    if ((this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(bfoh.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(bfoh.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
+    localObject1 = this.e;
+    if ((localObject1 != null) && (((ApkUpdateDetail)localObject1).updatemethod == 2) && (TextUtils.isEmpty(this.a.getString(DownloadConstants.j))) && (!TextUtils.isEmpty(this.e.url))) {
+      this.a.putString(DownloadConstants.j, this.e.url);
     }
-    boolean bool3 = bflk.d(bfbm.a().a());
-    boolean bool4 = bflk.c(bfbm.a().a());
-    if ((localObject2 == null) || (((DownloadInfo)localObject2).a() == 1))
-    {
-      bool1 = true;
-      if (this.jdField_a_of_type_AndroidAppActivity != null) {
-        break label426;
-      }
-    }
-    for (;;)
-    {
-      bflp.a("DownloadJSApi", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
-      if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(bfoh.r))) {
-        break label431;
-      }
-      bfjw.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
-      return;
+    boolean bool3 = APNUtil.k(CommonDataAdapter.a().b());
+    boolean bool4 = APNUtil.j(CommonDataAdapter.a().b());
+    if ((localObject2 != null) && (((DownloadInfo)localObject2).a() != 1)) {
       bool1 = false;
-      break;
-      label426:
-      bool2 = false;
+    } else {
+      bool1 = true;
     }
-    label431:
-    bfjw.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    if (this.d == null) {
+      bool2 = true;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("check wifi dialog isWifiActive=");
+    ((StringBuilder)localObject1).append(bool4);
+    ((StringBuilder)localObject1).append(" isFirstDownload=");
+    ((StringBuilder)localObject1).append(bool1);
+    ((StringBuilder)localObject1).append(" acIsNull=");
+    ((StringBuilder)localObject1).append(bool2);
+    LogUtility.a("DownloadJSApi", ((StringBuilder)localObject1).toString());
+    if ((bool3) && (!bool2) && (!bool4) && (bool1) && (this.a.getBoolean(DownloadConstants.s)))
+    {
+      DownloadJSApi.b(this.d, this.a, this.b, this.e, this.c);
+      return;
+    }
+    DownloadJSApi.a(this.a, this.b, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadJSApi.1
  * JD-Core Version:    0.7.0.1
  */

@@ -370,7 +370,7 @@ public class TroopMemberApiPlugin
           localObject1 = ((EntityManager)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { paramString2 }, null, null, null, null);
           ((EntityManager)localObject2).a();
         }
-        localObject2 = "6.0.2";
+        localObject2 = "6.0.3";
         if (localObject1 == null) {
           break;
         }

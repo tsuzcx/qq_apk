@@ -13,7 +13,7 @@ import android.widget.CompoundButton;
 public class ExtendButton
   extends CompoundButton
 {
-  private boolean a = true;
+  private boolean mAncestorHaveOneSelected = true;
   
   public ExtendButton(Context paramContext)
   {
@@ -32,7 +32,7 @@ public class ExtendButton
   
   protected void dispatchSetSelected(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a))
+    if ((paramBoolean) && (this.mAncestorHaveOneSelected))
     {
       Object localObject = getParent();
       if ((localObject != null) && ((localObject instanceof ViewGroup)))
@@ -74,12 +74,12 @@ public class ExtendButton
   
   public void setAncestorHaveOneSelected(boolean paramBoolean)
   {
-    this.a = paramBoolean;
+    this.mAncestorHaveOneSelected = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.widget.ExtendButton
  * JD-Core Version:    0.7.0.1
  */

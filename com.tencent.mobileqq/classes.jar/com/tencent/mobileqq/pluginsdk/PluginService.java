@@ -19,7 +19,7 @@ public abstract class PluginService
   private Context mContext;
   protected ClassLoader mDexClassLoader;
   protected boolean mIsRunInPlugin;
-  public Service mOutService;
+  protected Service mOutService;
   protected PackageInfo mPackageInfo;
   protected String mPluginID;
   protected String mPluginName;
@@ -27,8 +27,14 @@ public abstract class PluginService
   
   public void IInit(String paramString1, String paramString2, String paramString3, Service paramService, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginService.IInit: " + paramString2 + ", " + this.mPluginResourcesType);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginService.IInit: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.mPluginResourcesType);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     this.mIsRunInPlugin = true;
     this.mPluginName = paramString1;
@@ -42,21 +48,27 @@ public abstract class PluginService
     try
     {
       this.mContext = new PluginContext(paramService, 0, this.mApkFilePath, this.mDexClassLoader, paramService.getResources(), this.mPluginResourcesType);
-      label124:
+      label140:
       attachBaseContext(this.mContext);
       return;
     }
     catch (Error paramString1)
     {
-      break label124;
+      break label140;
     }
   }
   
   public IBinder IOnBind(Intent paramIntent)
   {
     IBinder localIBinder = onBind(paramIntent);
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginService.IOnBind: " + localIBinder + ", " + paramIntent);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginService.IOnBind: ");
+      localStringBuilder.append(localIBinder);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramIntent);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     return localIBinder;
   }
@@ -117,15 +129,16 @@ public abstract class PluginService
   
   public Object getSystemService(String paramString)
   {
-    if (("window".equals(paramString)) || ("search".equals(paramString)))
+    if ((!"window".equals(paramString)) && (!"search".equals(paramString)))
     {
-      if (this.mIsRunInPlugin) {
-        return this.mOutService.getSystemService(paramString);
+      Context localContext = this.mContext;
+      if (localContext != null) {
+        return localContext.getSystemService(paramString);
       }
       return super.getSystemService(paramString);
     }
-    if (this.mContext != null) {
-      return this.mContext.getSystemService(paramString);
+    if (this.mIsRunInPlugin) {
+      return this.mOutService.getSystemService(paramString);
     }
     return super.getSystemService(paramString);
   }
@@ -147,7 +160,7 @@ public abstract class PluginService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginService
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class subcmd0x501$SubCmd0x501Rspbody$NetSegConf
   extends MessageMicro<NetSegConf>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_net_type", "uint32_segsize", "uint32_segnum", "uint32_curconnnum" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, NetSegConf.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field uint32_curconnnum = PBField.initUInt32(0);
   public final PBUInt32Field uint32_net_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_segnum = PBField.initUInt32(0);
   public final PBUInt32Field uint32_segsize = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_net_type", "uint32_segsize", "uint32_segnum", "uint32_curconnnum" }, new Object[] { localInteger, localInteger, localInteger, localInteger }, NetSegConf.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.NetSegConf
  * JD-Core Version:    0.7.0.1
  */

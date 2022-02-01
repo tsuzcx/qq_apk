@@ -19,18 +19,18 @@ public final class QueryLoginInfoRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76009);
+    AppMethodBeat.i(102255);
     this.addtion = paramJceInputStream.readString(0, false);
-    AppMethodBeat.o(76009);
+    AppMethodBeat.o(102255);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76008);
+    AppMethodBeat.i(102254);
     if (this.addtion != null) {
       paramJceOutputStream.write(this.addtion, 0);
     }
-    AppMethodBeat.o(76008);
+    AppMethodBeat.o(102254);
   }
 }
 

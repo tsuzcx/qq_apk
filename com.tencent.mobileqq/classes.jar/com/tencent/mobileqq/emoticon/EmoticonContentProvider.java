@@ -8,8 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import apsr;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppContentProvider;
@@ -22,30 +21,30 @@ public class EmoticonContentProvider
   
   private SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppRuntime != null)
+    if ((paramAppRuntime != null) && ((paramAppRuntime instanceof BaseQQAppInterface)))
     {
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (!paramBoolean) {
-          break label41;
-        }
-        localObject1 = paramAppRuntime.b(paramString);
+      paramAppRuntime = (BaseQQAppInterface)paramAppRuntime;
+      if (paramBoolean) {
+        return paramAppRuntime.getReadableDatabase(paramString);
       }
+      return paramAppRuntime.getWritableDatabase(paramString);
     }
-    return localObject1;
-    label41:
-    return paramAppRuntime.a(paramString);
+    return null;
   }
   
   @Nullable
   public Bundle call(@NonNull String paramString1, @Nullable String paramString2, @Nullable Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonContentProvider", 2, "call, method = " + paramString1 + " arg = " + paramString2 + " extras = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("call, method = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" arg = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(" extras = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("EmoticonContentProvider", 2, ((StringBuilder)localObject).toString());
     }
     if (paramString2 == null)
     {
@@ -53,11 +52,11 @@ public class EmoticonContentProvider
       return null;
     }
     Object localObject = getRuntime(paramString2);
-    if ((localObject instanceof QQAppInterface))
+    if ((localObject instanceof BaseQQAppInterface))
     {
-      localObject = (QQAppInterface)localObject;
+      localObject = (BaseQQAppInterface)localObject;
       if ("vip_type".equals(paramString1)) {
-        return apsr.a((QQAppInterface)localObject, paramString1);
+        return SVIPHandlerWrapper.a((BaseQQAppInterface)localObject, paramString1);
       }
     }
     return super.call(paramString1, paramString2, paramBundle);
@@ -93,52 +92,68 @@ public class EmoticonContentProvider
   @Nullable
   public Cursor query(@NonNull Uri paramUri, @Nullable String[] paramArrayOfString1, @Nullable String paramString1, @Nullable String[] paramArrayOfString2, @Nullable String paramString2)
   {
-    Object localObject = null;
-    SQLiteDatabase localSQLiteDatabase = null;
     int i = this.a.match(paramUri);
-    String str = paramUri.getQueryParameter("uin");
-    if (str == null)
+    Object localObject2 = paramUri.getQueryParameter("uin");
+    Object localObject1 = null;
+    if (localObject2 == null)
     {
-      QLog.e("EmoticonContentProvider", 2, "query, uin = null, uri=" + paramUri.getPath());
-      paramString1 = localSQLiteDatabase;
-      return paramString1;
+      paramArrayOfString1 = new StringBuilder();
+      paramArrayOfString1.append("query, uin = null, uri=");
+      paramArrayOfString1.append(paramUri.getPath());
+      QLog.e("EmoticonContentProvider", 2, paramArrayOfString1.toString());
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("EmoticonContentProvider", 2, "query, projection = " + paramArrayOfString1 + " selection = " + paramString1 + " selectionArgs = " + paramArrayOfString2 + " sortOrder = " + paramString2);
-    }
-    localSQLiteDatabase = a(getRuntime(str), str, true);
-    if (localSQLiteDatabase == null)
+    if (QLog.isColorLevel())
     {
-      QLog.e("EmoticonContentProvider", 1, "query, db null, uri=" + paramUri);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("query, projection = ");
+      localStringBuilder.append(paramArrayOfString1);
+      localStringBuilder.append(" selection = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" selectionArgs = ");
+      localStringBuilder.append(paramArrayOfString2);
+      localStringBuilder.append(" sortOrder = ");
+      localStringBuilder.append(paramString2);
+      QLog.i("EmoticonContentProvider", 2, localStringBuilder.toString());
+    }
+    localObject2 = a(getRuntime((String)localObject2), (String)localObject2, true);
+    if (localObject2 == null)
+    {
+      paramArrayOfString1 = new StringBuilder();
+      paramArrayOfString1.append("query, db null, uri=");
+      paramArrayOfString1.append(paramUri);
+      QLog.e("EmoticonContentProvider", 1, paramArrayOfString1.toString());
       return null;
     }
     switch (i)
     {
     default: 
-      paramArrayOfString1 = localObject;
+      paramArrayOfString1 = localObject1;
       if (QLog.isColorLevel())
       {
-        QLog.e("EmoticonContentProvider", 2, "Uri match missing! match: " + paramUri);
-        paramArrayOfString1 = localObject;
+        paramArrayOfString1 = new StringBuilder();
+        paramArrayOfString1.append("Uri match missing! match: ");
+        paramArrayOfString1.append(paramUri);
+        QLog.e("EmoticonContentProvider", 2, paramArrayOfString1.toString());
+        paramArrayOfString1 = localObject1;
       }
       break;
+    case 1003: 
+      paramArrayOfString1 = ((SQLiteDatabase)localObject2).query("Emoticon", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      break;
+    case 1002: 
+      paramArrayOfString1 = ((SQLiteDatabase)localObject2).query("CustomEmotionData", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      break;
+    case 1001: 
+      paramArrayOfString1 = ((SQLiteDatabase)localObject2).query("EmoticonTab", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
+      break;
+    case 1000: 
+      paramArrayOfString1 = ((SQLiteDatabase)localObject2).query("EmoticonPackage", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
     }
-    for (;;)
-    {
-      paramString1 = paramArrayOfString1;
-      if (paramArrayOfString1 == null) {
-        break;
-      }
+    if (paramArrayOfString1 != null) {
       paramArrayOfString1.setNotificationUri(getContext().getContentResolver(), paramUri);
-      return paramArrayOfString1;
-      paramArrayOfString1 = localSQLiteDatabase.a("EmoticonPackage", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
-      continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("EmoticonTab", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
-      continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("CustomEmotionData", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
-      continue;
-      paramArrayOfString1 = localSQLiteDatabase.a("Emoticon", paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, null);
     }
+    return paramArrayOfString1;
   }
   
   public int update(@NonNull Uri paramUri, @Nullable ContentValues paramContentValues, @Nullable String paramString, @Nullable String[] paramArrayOfString)
@@ -148,7 +163,7 @@ public class EmoticonContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmoticonContentProvider
  * JD-Core Version:    0.7.0.1
  */

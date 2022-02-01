@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class TagInfo
   extends JceStruct
 {
-  public int iCode;
-  public int iTagSource;
-  public int iTagType;
+  public int iCode = 0;
+  public int iTagSource = 0;
+  public int iTagType = 0;
   public String strContent1 = "";
   public String strContent2 = "";
   public String strContent3 = "";
@@ -57,40 +57,49 @@ public final class TagInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iTagType, 0);
-    if (this.strContent1 != null) {
-      paramJceOutputStream.write(this.strContent1, 1);
+    String str = this.strContent1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strIcon != null) {
-      paramJceOutputStream.write(this.strIcon, 2);
+    str = this.strIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strShowInfo != null) {
-      paramJceOutputStream.write(this.strShowInfo, 3);
+    str = this.strShowInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 4);
+    str = this.strUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strContent2 != null) {
-      paramJceOutputStream.write(this.strContent2, 5);
+    str = this.strContent2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.strContent3 != null) {
-      paramJceOutputStream.write(this.strContent3, 6);
+    str = this.strContent3;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.iTagSource, 7);
-    if (this.strTagId != null) {
-      paramJceOutputStream.write(this.strTagId, 8);
+    str = this.strTagId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.iCode, 9);
-    if (this.strShowContent != null) {
-      paramJceOutputStream.write(this.strShowContent, 10);
+    str = this.strShowContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.strThumbContent != null) {
-      paramJceOutputStream.write(this.strThumbContent, 11);
+    str = this.strThumbContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_FASHION_FEEDS_TAG_PROTO.TagInfo
  * JD-Core Version:    0.7.0.1
  */

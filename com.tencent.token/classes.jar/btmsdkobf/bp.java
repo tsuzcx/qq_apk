@@ -2,8 +2,8 @@ package btmsdkobf;
 
 import android.content.Context;
 import com.qq.taf.jce.JceStruct;
-import tmsdk.common.roach.nest.ISharkCallBackNest;
-import tmsdk.common.tcc.b;
+import com.tencent.token.avk;
+import com.tencent.token.avm;
 
 public class bp
 {
@@ -18,12 +18,12 @@ public class bp
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.decrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.b(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return b.encrypt(paramArrayOfByte1, paramArrayOfByte2);
+    return avm.a(paramArrayOfByte1, paramArrayOfByte2);
   }
   
   public static Context getAppContext()
@@ -91,17 +91,23 @@ public class bp
     catch (Throwable paramString) {}
   }
   
-  public static boolean sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBackNest paramISharkCallBackNest, long paramLong)
+  public static boolean sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, avk paramavk, long paramLong)
   {
-    if ((paramJceStruct1 == null) || (paramISharkCallBackNest == null)) {
-      return false;
+    if (paramJceStruct1 != null) {
+      if (paramavk == null) {
+        return false;
+      }
     }
     try
     {
-      bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new fg(paramISharkCallBackNest), paramLong);
+      bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
+      {
+        public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct) {}
+      }, paramLong);
       return true;
     }
     catch (Throwable paramJceStruct1) {}
+    return false;
     return false;
   }
 }

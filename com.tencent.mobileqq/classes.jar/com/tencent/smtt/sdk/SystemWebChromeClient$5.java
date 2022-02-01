@@ -9,37 +9,37 @@ class SystemWebChromeClient$5
   
   public Intent createIntent()
   {
-    return this.val$SystemfileChooserParams.createIntent();
+    return this.a.createIntent();
   }
   
   public String[] getAcceptTypes()
   {
-    return this.val$SystemfileChooserParams.getAcceptTypes();
+    return this.a.getAcceptTypes();
   }
   
   public String getFilenameHint()
   {
-    return this.val$SystemfileChooserParams.getFilenameHint();
+    return this.a.getFilenameHint();
   }
   
   public int getMode()
   {
-    return this.val$SystemfileChooserParams.getMode();
+    return this.a.getMode();
   }
   
   public CharSequence getTitle()
   {
-    return this.val$SystemfileChooserParams.getTitle();
+    return this.a.getTitle();
   }
   
   public boolean isCaptureEnabled()
   {
-    return this.val$SystemfileChooserParams.isCaptureEnabled();
+    return this.a.isCaptureEnabled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient.5
  * JD-Core Version:    0.7.0.1
  */

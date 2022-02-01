@@ -2,7 +2,7 @@ package com.google.android.gms.common.api.internal;
 
 import android.content.Context;
 import android.os.Looper;
-import android.support.v4.e.a;
+import androidx.b.a;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.api.Api;
@@ -38,7 +38,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzw
   implements zzbp
@@ -56,20 +55,15 @@ public final class zzw
   private final boolean zzgm;
   private final boolean zzgn;
   private final Queue<BaseImplementation.ApiMethodImpl<?, ?>> zzgo;
-  @GuardedBy("mLock")
   private boolean zzgp;
-  @GuardedBy("mLock")
   private Map<zzh<?>, ConnectionResult> zzgq;
-  @GuardedBy("mLock")
   private Map<zzh<?>, ConnectionResult> zzgr;
-  @GuardedBy("mLock")
   private zzz zzgs;
-  @GuardedBy("mLock")
   private ConnectionResult zzgt;
   
   public zzw(Context paramContext, Lock paramLock, Looper paramLooper, GoogleApiAvailabilityLight paramGoogleApiAvailabilityLight, Map<Api.AnyClientKey<?>, Api.Client> paramMap, ClientSettings paramClientSettings, Map<Api<?>, Boolean> paramMap1, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder, ArrayList<zzp> paramArrayList, zzav paramzzav, boolean paramBoolean)
   {
-    AppMethodBeat.i(60983);
+    AppMethodBeat.i(11475);
     this.zzgg = new HashMap();
     this.zzgh = new HashMap();
     this.zzgo = new LinkedList();
@@ -111,7 +105,7 @@ public final class zzw
       if (paramArrayList.requiresGooglePlayServices())
       {
         if (((Boolean)this.zzgi.get(paramzzav)).booleanValue()) {
-          break label502;
+          break label504;
         }
         i = 1;
         k = 1;
@@ -139,10 +133,10 @@ public final class zzw
       {
         this.zzgn = paramBoolean;
         this.zzcq = GoogleApiManager.zzbf();
-        AppMethodBeat.o(60983);
+        AppMethodBeat.o(11475);
         return;
       }
-      label502:
+      label504:
       m = 1;
       k = i;
       i = m;
@@ -151,7 +145,7 @@ public final class zzw
   
   private final ConnectionResult zza(Api.AnyClientKey<?> paramAnyClientKey)
   {
-    AppMethodBeat.i(60992);
+    AppMethodBeat.i(11484);
     this.zzga.lock();
     try
     {
@@ -166,25 +160,25 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60992);
+      AppMethodBeat.o(11484);
     }
   }
   
   private final boolean zza(zzv<?> paramzzv, ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(61000);
+    AppMethodBeat.i(11492);
     if ((!paramConnectionResult.isSuccess()) && (!paramConnectionResult.hasResolution()) && (((Boolean)this.zzgi.get(paramzzv.getApi())).booleanValue()) && (paramzzv.zzae().requiresGooglePlayServices()) && (this.zzgk.isUserResolvableError(paramConnectionResult.getErrorCode())))
     {
-      AppMethodBeat.o(61000);
+      AppMethodBeat.o(11492);
       return true;
     }
-    AppMethodBeat.o(61000);
+    AppMethodBeat.o(11492);
     return false;
   }
   
   private final boolean zzaf()
   {
-    AppMethodBeat.i(60995);
+    AppMethodBeat.i(11487);
     this.zzga.lock();
     try
     {
@@ -219,18 +213,17 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60995);
+      AppMethodBeat.o(11487);
     }
   }
   
-  @GuardedBy("mLock")
   private final void zzag()
   {
-    AppMethodBeat.i(60998);
+    AppMethodBeat.i(11490);
     if (this.zzgf == null)
     {
       this.zzgj.zzim = Collections.emptySet();
-      AppMethodBeat.o(60998);
+      AppMethodBeat.o(11490);
       return;
     }
     HashSet localHashSet = new HashSet(this.zzgf.getRequiredScopes());
@@ -245,24 +238,22 @@ public final class zzw
       }
     }
     this.zzgj.zzim = localHashSet;
-    AppMethodBeat.o(60998);
+    AppMethodBeat.o(11490);
   }
   
-  @GuardedBy("mLock")
   private final void zzah()
   {
-    AppMethodBeat.i(60999);
+    AppMethodBeat.i(11491);
     while (!this.zzgo.isEmpty()) {
       execute((BaseImplementation.ApiMethodImpl)this.zzgo.remove());
     }
     this.zzgj.zzb(null);
-    AppMethodBeat.o(60999);
+    AppMethodBeat.o(11491);
   }
   
-  @GuardedBy("mLock")
   private final ConnectionResult zzai()
   {
-    AppMethodBeat.i(61001);
+    AppMethodBeat.i(11493);
     Iterator localIterator = this.zzgg.values().iterator();
     int k = 0;
     Object localObject3 = null;
@@ -312,10 +303,10 @@ public final class zzw
       break;
       if ((localObject1 != null) && (localObject3 != null) && (i > k))
       {
-        AppMethodBeat.o(61001);
+        AppMethodBeat.o(11493);
         return localObject3;
       }
-      AppMethodBeat.o(61001);
+      AppMethodBeat.o(11493);
       return localObject1;
       label256:
       localObject2 = localObject1;
@@ -325,23 +316,22 @@ public final class zzw
   
   private final <T extends BaseImplementation.ApiMethodImpl<? extends Result, ? extends Api.AnyClient>> boolean zzb(T paramT)
   {
-    AppMethodBeat.i(60986);
+    AppMethodBeat.i(11478);
     Api.AnyClientKey localAnyClientKey = paramT.getClientKey();
     ConnectionResult localConnectionResult = zza(localAnyClientKey);
     if ((localConnectionResult != null) && (localConnectionResult.getErrorCode() == 4))
     {
       paramT.setFailedResult(new Status(4, null, this.zzcq.zza(((zzv)this.zzgg.get(localAnyClientKey)).zzm(), System.identityHashCode(this.zzgj))));
-      AppMethodBeat.o(60986);
+      AppMethodBeat.o(11478);
       return true;
     }
-    AppMethodBeat.o(60986);
+    AppMethodBeat.o(11478);
     return false;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect()
   {
-    AppMethodBeat.i(60988);
+    AppMethodBeat.i(11480);
     connect();
     while (isConnecting()) {
       try
@@ -352,31 +342,30 @@ public final class zzw
       {
         Thread.currentThread().interrupt();
         localConnectionResult = new ConnectionResult(15, null);
-        AppMethodBeat.o(60988);
+        AppMethodBeat.o(11480);
         return localConnectionResult;
       }
     }
     if (isConnected())
     {
       localConnectionResult = ConnectionResult.RESULT_SUCCESS;
-      AppMethodBeat.o(60988);
+      AppMethodBeat.o(11480);
       return localConnectionResult;
     }
     if (this.zzgt != null)
     {
       localConnectionResult = this.zzgt;
-      AppMethodBeat.o(60988);
+      AppMethodBeat.o(11480);
       return localConnectionResult;
     }
     ConnectionResult localConnectionResult = new ConnectionResult(13, null);
-    AppMethodBeat.o(60988);
+    AppMethodBeat.o(11480);
     return localConnectionResult;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
-    AppMethodBeat.i(60989);
+    AppMethodBeat.i(11481);
     connect();
     for (paramLong = paramTimeUnit.toNanos(paramLong); isConnecting(); paramLong = this.zzgl.awaitNanos(paramLong))
     {
@@ -385,37 +374,37 @@ public final class zzw
       {
         disconnect();
         paramTimeUnit = new ConnectionResult(14, null);
-        AppMethodBeat.o(60989);
+        AppMethodBeat.o(11481);
         return paramTimeUnit;
       }
       catch (InterruptedException paramTimeUnit)
       {
         Thread.currentThread().interrupt();
         paramTimeUnit = new ConnectionResult(15, null);
-        AppMethodBeat.o(60989);
+        AppMethodBeat.o(11481);
         return paramTimeUnit;
       }
     }
     if (isConnected())
     {
       paramTimeUnit = ConnectionResult.RESULT_SUCCESS;
-      AppMethodBeat.o(60989);
+      AppMethodBeat.o(11481);
       return paramTimeUnit;
     }
     if (this.zzgt != null)
     {
       paramTimeUnit = this.zzgt;
-      AppMethodBeat.o(60989);
+      AppMethodBeat.o(11481);
       return paramTimeUnit;
     }
     paramTimeUnit = new ConnectionResult(13, null);
-    AppMethodBeat.o(60989);
+    AppMethodBeat.o(11481);
     return paramTimeUnit;
   }
   
   public final void connect()
   {
-    AppMethodBeat.i(60987);
+    AppMethodBeat.i(11479);
     this.zzga.lock();
     try
     {
@@ -435,13 +424,13 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60987);
+      AppMethodBeat.o(11479);
     }
   }
   
   public final void disconnect()
   {
-    AppMethodBeat.i(60990);
+    AppMethodBeat.i(11482);
     this.zzga.lock();
     try
     {
@@ -465,54 +454,54 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60990);
+      AppMethodBeat.o(11482);
     }
     this.zzga.unlock();
-    AppMethodBeat.o(60990);
+    AppMethodBeat.o(11482);
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60984);
+    AppMethodBeat.i(11476);
     if ((this.zzgm) && (zzb(paramT)))
     {
-      AppMethodBeat.o(60984);
+      AppMethodBeat.o(11476);
       return paramT;
     }
     if (!isConnected())
     {
       this.zzgo.add(paramT);
-      AppMethodBeat.o(60984);
+      AppMethodBeat.o(11476);
       return paramT;
     }
     this.zzgj.zzir.zzb(paramT);
     paramT = ((zzv)this.zzgg.get(paramT.getClientKey())).doRead(paramT);
-    AppMethodBeat.o(60984);
+    AppMethodBeat.o(11476);
     return paramT;
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60985);
+    AppMethodBeat.i(11477);
     Api.AnyClientKey localAnyClientKey = paramT.getClientKey();
     if ((this.zzgm) && (zzb(paramT)))
     {
-      AppMethodBeat.o(60985);
+      AppMethodBeat.o(11477);
       return paramT;
     }
     this.zzgj.zzir.zzb(paramT);
     paramT = ((zzv)this.zzgg.get(localAnyClientKey)).doWrite(paramT);
-    AppMethodBeat.o(60985);
+    AppMethodBeat.o(11477);
     return paramT;
   }
   
   public final ConnectionResult getConnectionResult(Api<?> paramApi)
   {
-    AppMethodBeat.i(60991);
+    AppMethodBeat.i(11483);
     paramApi = zza(paramApi.getClientKey());
-    AppMethodBeat.o(60991);
+    AppMethodBeat.o(11483);
     return paramApi;
   }
   
@@ -520,26 +509,26 @@ public final class zzw
   public final boolean isConnected()
   {
     // Byte code:
-    //   0: ldc_w 497
-    //   3: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 11485
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 193 1 0
+    //   7: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   10: invokeinterface 188 1 0
     //   15: aload_0
-    //   16: getfield 195	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
+    //   16: getfield 190	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
     //   19: ifnull +31 -> 50
     //   22: aload_0
-    //   23: getfield 210	com/google/android/gms/common/api/internal/zzw:zzgt	Lcom/google/android/gms/common/ConnectionResult;
+    //   23: getfield 205	com/google/android/gms/common/api/internal/zzw:zzgt	Lcom/google/android/gms/common/ConnectionResult;
     //   26: astore_2
     //   27: aload_2
     //   28: ifnonnull +22 -> 50
     //   31: iconst_1
     //   32: istore_1
     //   33: aload_0
-    //   34: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   37: invokeinterface 206 1 0
-    //   42: ldc_w 497
-    //   45: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   37: invokeinterface 201 1 0
+    //   42: sipush 11485
+    //   45: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: iload_1
     //   49: ireturn
     //   50: iconst_0
@@ -547,10 +536,10 @@ public final class zzw
     //   52: goto -19 -> 33
     //   55: astore_2
     //   56: aload_0
-    //   57: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   60: invokeinterface 206 1 0
-    //   65: ldc_w 497
-    //   68: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   60: invokeinterface 201 1 0
+    //   65: sipush 11485
+    //   68: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload_2
     //   72: athrow
     // Local variable table:
@@ -568,26 +557,26 @@ public final class zzw
   public final boolean isConnecting()
   {
     // Byte code:
-    //   0: ldc_w 498
-    //   3: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 11486
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   10: invokeinterface 193 1 0
+    //   7: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   10: invokeinterface 188 1 0
     //   15: aload_0
-    //   16: getfield 195	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
+    //   16: getfield 190	com/google/android/gms/common/api/internal/zzw:zzgq	Ljava/util/Map;
     //   19: ifnonnull +31 -> 50
     //   22: aload_0
-    //   23: getfield 245	com/google/android/gms/common/api/internal/zzw:zzgp	Z
+    //   23: getfield 238	com/google/android/gms/common/api/internal/zzw:zzgp	Z
     //   26: istore_1
     //   27: iload_1
     //   28: ifeq +22 -> 50
     //   31: iconst_1
     //   32: istore_1
     //   33: aload_0
-    //   34: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   37: invokeinterface 206 1 0
-    //   42: ldc_w 498
-    //   45: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   37: invokeinterface 201 1 0
+    //   42: sipush 11486
+    //   45: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: iload_1
     //   49: ireturn
     //   50: iconst_0
@@ -595,10 +584,10 @@ public final class zzw
     //   52: goto -19 -> 33
     //   55: astore_2
     //   56: aload_0
-    //   57: getfield 69	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
-    //   60: invokeinterface 206 1 0
-    //   65: ldc_w 498
-    //   68: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: getfield 65	com/google/android/gms/common/api/internal/zzw:zzga	Ljava/util/concurrent/locks/Lock;
+    //   60: invokeinterface 201 1 0
+    //   65: sipush 11486
+    //   68: invokestatic 180	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload_2
     //   72: athrow
     // Local variable table:
@@ -613,7 +602,7 @@ public final class zzw
   
   public final boolean maybeSignIn(SignInConnectionListener paramSignInConnectionListener)
   {
-    AppMethodBeat.i(60996);
+    AppMethodBeat.i(11488);
     this.zzga.lock();
     try
     {
@@ -629,13 +618,13 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60996);
+      AppMethodBeat.o(11488);
     }
   }
   
   public final void maybeSignOut()
   {
-    AppMethodBeat.i(60997);
+    AppMethodBeat.i(11489);
     this.zzga.lock();
     try
     {
@@ -662,19 +651,19 @@ public final class zzw
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60997);
+      AppMethodBeat.o(11489);
     }
     this.zzgq.putAll(this.zzgr);
     label167:
     this.zzga.unlock();
-    AppMethodBeat.o(60997);
+    AppMethodBeat.o(11489);
   }
   
   public final void zzz() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzw
  * JD-Core Version:    0.7.0.1
  */

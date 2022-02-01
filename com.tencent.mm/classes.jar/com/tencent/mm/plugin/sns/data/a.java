@@ -1,23 +1,29 @@
 package com.tencent.mm.plugin.sns.data;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+
 public final class a
 {
-  public String ctV;
-  public boolean raZ = false;
-  public int scene;
-  public String userName;
+  public String adActionExtTailFormattedWording;
+  public String adActionExtTailLink;
+  public int adActionExtTailType;
+  public String adActionExtTailUserDisplayName;
+  public String adActionExtTailWording;
+  public LinkedList<String> adActionExtUserList;
+  public String adExtTailWording;
+  public int adExtTailWordingExchangeValue;
   
-  public a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public a()
   {
-    this.raZ = paramBoolean;
-    this.userName = paramString1;
-    this.ctV = paramString2;
-    this.scene = paramInt;
+    AppMethodBeat.i(306371);
+    this.adActionExtUserList = new LinkedList();
+    AppMethodBeat.o(306371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.a
  * JD-Core Version:    0.7.0.1
  */

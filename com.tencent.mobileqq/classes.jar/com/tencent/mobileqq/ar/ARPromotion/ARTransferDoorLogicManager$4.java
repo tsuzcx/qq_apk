@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.ar.ARPromotion;
 
-import amtj;
 import com.tencent.av.avgesture.AVGestureWrapper;
 import com.tencent.qphone.base.util.QLog;
 
-public class ARTransferDoorLogicManager$4
+class ARTransferDoorLogicManager$4
   implements Runnable
 {
-  public ARTransferDoorLogicManager$4(amtj paramamtj) {}
+  ARTransferDoorLogicManager$4(ARTransferDoorLogicManager paramARTransferDoorLogicManager) {}
   
   public void run()
   {
     try
     {
-      AVGestureWrapper.clearCache();
-      this.this$0.i();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        QLog.i(amtj.a, 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
-      }
+      
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.i(amtj.a, 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
-      }
+      str = ARTransferDoorLogicManager.a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AVGestureWrapper.clearCache failed. err = ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.i(str, 2, localStringBuilder.toString());
     }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      String str = ARTransferDoorLogicManager.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = ");
+      localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
+      QLog.i(str, 2, localStringBuilder.toString());
+    }
+    this.this$0.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4
  * JD-Core Version:    0.7.0.1
  */

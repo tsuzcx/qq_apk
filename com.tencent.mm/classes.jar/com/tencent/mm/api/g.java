@@ -1,11 +1,6 @@
 package com.tencent.mm.api;
 
-public abstract interface g
-{
-  public abstract void onExit();
-  
-  public abstract void onFinish();
-}
+public class g {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

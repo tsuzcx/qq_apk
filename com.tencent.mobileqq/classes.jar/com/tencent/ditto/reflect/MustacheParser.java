@@ -13,62 +13,58 @@ public class MustacheParser
   private static List<String> getTokens(String paramString)
   {
     ArrayList localArrayList = new ArrayList(3);
-    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = new StringBuilder();
     char[] arrayOfChar = paramString.toCharArray();
-    int k = arrayOfChar.length;
-    int j = 0;
+    int m = arrayOfChar.length;
     int i = 0;
-    paramString = localStringBuilder;
-    char c;
-    if (j < k)
+    int j = 0;
+    paramString = (String)localObject;
+    while (i < m)
     {
-      c = arrayOfChar[j];
-      if (c == '\'') {
-        if (i == 0)
+      char c = arrayOfChar[i];
+      int k;
+      if (c == '\'')
+      {
+        k = j ^ 0x1;
+        paramString.append(c);
+        localObject = paramString;
+      }
+      else if ((c == ' ') && (j == 0))
+      {
+        localObject = paramString;
+        k = j;
+        if (paramString.length() != 0)
         {
-          i = 1;
-          label60:
-          paramString.append(c);
+          localArrayList.add(paramString.toString());
+          localObject = new StringBuilder();
+          k = j;
         }
       }
-      for (;;)
+      else if ((c != '?') && (c != ':'))
       {
-        j += 1;
-        break;
-        i = 0;
-        break label60;
-        if ((c != ' ') || (i != 0)) {
-          break label118;
-        }
-        if (paramString.length() == 0) {
-          break label181;
-        }
-        localArrayList.add(paramString.toString());
-        paramString = new StringBuilder();
+        paramString.append(c);
+        localObject = paramString;
+        k = j;
       }
-      label118:
-      if ((c == '?') || (c == ':'))
+      else
       {
-        if (paramString.length() == 0) {
-          break label206;
+        localObject = paramString;
+        if (paramString.length() != 0)
+        {
+          localArrayList.add(paramString.toString());
+          localObject = new StringBuilder();
         }
-        localArrayList.add(paramString.toString());
-        paramString = new StringBuilder();
+        localArrayList.add(Character.valueOf(c).toString());
+        k = j;
       }
+      i += 1;
+      paramString = (String)localObject;
+      j = k;
     }
-    label181:
-    label206:
-    for (;;)
-    {
-      localArrayList.add(Character.valueOf(c).toString());
-      break;
-      paramString.append(c);
-      break;
-      if (paramString.length() != 0) {
-        localArrayList.add(paramString.toString());
-      }
-      return localArrayList;
+    if (paramString.length() != 0) {
+      localArrayList.add(paramString.toString());
     }
+    return localArrayList;
   }
   
   public static DittoValue parse(String paramString)
@@ -79,87 +75,66 @@ public class MustacheParser
     if (((Matcher)localObject2).matches()) {
       return new DittoFormulaField(((Matcher)localObject2).group(1), ((Matcher)localObject2).group(2), ((Matcher)localObject2).group(3), ((Matcher)localObject2).group(4), ((Matcher)localObject2).group(5), paramString);
     }
-    Iterator localIterator = ((List)localObject1).iterator();
+    localObject2 = ((List)localObject1).iterator();
     localObject1 = null;
-    paramString = null;
-    if (localIterator.hasNext())
+    paramString = (String)localObject1;
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject2 = (String)localIterator.next();
-      if ("?".equals(localObject2))
-      {
-        if (localObject1 == null) {
-          throw new RuntimeException("mustache should not be started with ?");
-        }
-        paramString = new DittoConditionOperatorValue();
-        paramString.conditionValue = ((DittoValue)localObject1);
-        localObject1 = paramString;
-        paramString = null;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      localObject1 = paramString;
-      paramString = (String)localObject2;
-      break;
-      if (":".equals(localObject2))
-      {
+      String str = (String)((Iterator)localObject2).next();
+      if ("?".equals(str)) {
         if (paramString != null)
         {
-          if (localObject1 == null)
-          {
-            paramString.trueValue = paramString.conditionValue;
-            localObject2 = paramString;
-            paramString = (String)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          paramString.trueValue = ((DittoValue)localObject1);
-          localObject2 = null;
-          localObject1 = paramString;
-          paramString = (String)localObject2;
+          localObject1 = new DittoConditionOperatorValue();
+          ((DittoConditionOperatorValue)localObject1).conditionValue = paramString;
         }
+      }
+      for (;;)
+      {
+        paramString = null;
+        break;
+        throw new RuntimeException("mustache should not be started with ?");
+        if (!":".equals(str)) {
+          break label170;
+        }
+        if (localObject1 == null) {
+          break;
+        }
+        if (paramString == null)
+        {
+          ((DittoConditionOperatorValue)localObject1).trueValue = ((DittoConditionOperatorValue)localObject1).conditionValue;
+          break;
+        }
+        ((DittoConditionOperatorValue)localObject1).trueValue = paramString;
+      }
+      label170:
+      if (str.startsWith("'"))
+      {
+        paramString = new DittoStringValue();
+        paramString.mString = str.substring(1, str.length() - 1);
       }
       else
       {
-        if (((String)localObject2).startsWith("'"))
-        {
-          localObject1 = new DittoStringValue();
-          ((DittoStringValue)localObject1).mString = ((String)localObject2).substring(1, ((String)localObject2).length() - 1);
-          localObject2 = paramString;
-          paramString = (String)localObject1;
-          localObject1 = localObject2;
-          continue;
-        }
-        localObject1 = new DittoFieldValue();
-        ((DittoFieldValue)localObject1).fieldName = ((String)localObject2);
-        localObject2 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if (paramString != null)
-        {
-          if (localObject1 == null) {
-            throw new RuntimeException("there must be a string | field name after ':'");
-          }
-          paramString.falseValue = ((DittoValue)localObject1);
-        }
-        if (paramString == null) {}
-        for (;;)
-        {
-          return localObject1;
-          localObject1 = paramString;
-        }
+        paramString = new DittoFieldValue();
+        paramString.fieldName = str;
       }
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
     }
+    if (localObject1 != null) {
+      if (paramString != null) {
+        ((DittoConditionOperatorValue)localObject1).falseValue = paramString;
+      } else {
+        throw new RuntimeException("there must be a string | field name after ':'");
+      }
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = paramString;
+    }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.reflect.MustacheParser
  * JD-Core Version:    0.7.0.1
  */

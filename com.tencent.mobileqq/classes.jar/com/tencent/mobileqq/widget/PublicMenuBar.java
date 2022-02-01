@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import betq;
+import com.tencent.biz.common.util.SubString;
 import com.tencent.biz.ui.CustomMenuBar;
-import ndp;
-import yxj;
+import com.tencent.biz.ui.MenuItem;
 
 public class PublicMenuBar
   extends CustomMenuBar
@@ -22,69 +21,58 @@ public class PublicMenuBar
     super(paramContext, paramAttributeSet);
   }
   
-  public View a(yxj paramyxj, int paramInt)
+  public View a(MenuItem paramMenuItem, int paramInt)
   {
-    String str = paramyxj.a();
-    Drawable localDrawable = paramyxj.a();
+    String str = paramMenuItem.d();
+    Drawable localDrawable = paramMenuItem.c();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131370213);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131370203);
-    TextView localTextView = (TextView)localView.findViewById(2131370216);
-    if ((localImageView1 != null) && (paramyxj.a() > 0))
-    {
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131438136);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131438117);
+    TextView localTextView = (TextView)localView.findViewById(2131438139);
+    if ((localImageView1 != null) && (paramMenuItem.a() > 0)) {
       localImageView1.setVisibility(0);
-      if (localDrawable == null) {
-        break label199;
-      }
-      localImageView2.setImageDrawable(localDrawable);
-      label93:
-      if (str == null) {
-        break label219;
-      }
-      if (ndp.a(str) <= 10) {
-        break label209;
-      }
-      localTextView.setText(ndp.a(str, 10, "..."));
-    }
-    for (;;)
-    {
-      localView.setOnClickListener(new betq(this, paramyxj.b(), paramyxj.a()));
-      localView.setFocusable(true);
-      localView.setClickable(true);
-      paramyxj = new LinearLayout.LayoutParams(-1, -1, 1.0F);
-      paramyxj.gravity = 17;
-      localView.setLayoutParams(paramyxj);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-      return localView;
-      if (localImageView1 == null) {
-        break;
-      }
+    } else if (localImageView1 != null) {
       localImageView1.setVisibility(8);
-      break;
-      label199:
+    }
+    if (localDrawable != null) {
+      localImageView2.setImageDrawable(localDrawable);
+    } else {
       localImageView2.setVisibility(8);
-      break label93;
-      label209:
-      localTextView.setText(str);
-      continue;
-      label219:
+    }
+    if (str != null)
+    {
+      if (SubString.a(str) > 10) {
+        localTextView.setText(SubString.a(str, 10, "..."));
+      } else {
+        localTextView.setText(str);
+      }
+    }
+    else {
       localTextView.setVisibility(8);
     }
+    localView.setOnClickListener(new PublicMenuBar.1(this, paramMenuItem.e(), paramMenuItem.a()));
+    localView.setFocusable(true);
+    localView.setClickable(true);
+    paramMenuItem = new LinearLayout.LayoutParams(-1, -1, 1.0F);
+    paramMenuItem.gravity = 17;
+    localView.setLayoutParams(paramMenuItem);
+    this.b.addView(localView);
+    return localView;
   }
   
   public void setSwitchButtonVisibility(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PublicMenuBar
  * JD-Core Version:    0.7.0.1
  */

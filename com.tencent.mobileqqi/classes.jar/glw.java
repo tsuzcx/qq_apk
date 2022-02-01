@@ -1,19 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
 import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
 
 public class glw
-  implements Runnable
+  extends Handler
 {
-  public glw(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void run()
+  public glw(GroupSystemMsgController paramGroupSystemMsgController, Looper paramLooper)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putString("group_display", this.jdField_a_of_type_JavaLangString).commit();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((GroupSystemMsgController.a(this.a)) && (GroupSystemMsgController.a(this.a) != null))
+    {
+      GroupSystemMsgController.a(this.a, false);
+      GroupSystemMsgController.a(this.a).a().a(3);
     }
   }
 }

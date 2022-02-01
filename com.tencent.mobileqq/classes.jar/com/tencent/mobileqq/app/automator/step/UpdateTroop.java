@@ -1,79 +1,94 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amdu;
-import ameq;
-import amix;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UpdateTroop
   extends AsyncStep
 {
-  private ameq a;
+  private TroopObserver a;
   
-  private void b()
+  private void a()
   {
-    if (this.jdField_a_of_type_Ameq == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_Ameq = new amix(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ameq);
+      this.a = new UpdateTroop.MyFriendListObserver(this, null);
+      this.mAutomator.k.addObserver(this.a);
     }
-    ((amdu)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20)).b();
+    ((ITroopListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).b();
   }
   
-  public int a()
+  protected int doStep()
   {
-    if (this.b == 4)
+    long l1 = SystemClock.uptimeMillis();
+    if (this.mStepId == 4)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isTrooplistok", false);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getEntityManagerFactory();
-      if (((localObject instanceof QQEntityManagerFactory)) && (((QQEntityManagerFactory)localObject).isUpdated())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = false;
+      this.mAutomator.e = this.mAutomator.d.getBoolean("isTrooplistok", false);
+      Object localObject = this.mAutomator.k.getEntityManagerFactory();
+      if (((localObject instanceof QQEntityManagerFactoryProxy)) && (((QQEntityManagerFactoryProxy)localObject).a())) {
+        this.mAutomator.e = false;
       }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(52);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean)
+      localObject = (TroopManager)this.mAutomator.k.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (this.mAutomator.e)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCheckTroopList:Done");
         }
-        amdu localamdu = (amdu)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20);
-        ((TroopManager)localObject).b();
-        localamdu.notifyUI(2, true, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(2));
+        long l2 = SystemClock.uptimeMillis();
+        ITroopListHandler localITroopListHandler = (ITroopListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
+        l2 = SystemClock.uptimeMillis() - l2;
+        ((TroopManager)localObject).a();
+        localITroopListHandler.a(TroopObserver.TYPE_GET_TROOP_LIST, true, null);
+        this.mAutomator.notifyUI(3, true, Integer.valueOf(2));
+        l1 = SystemClock.uptimeMillis() - l1 - l2;
+        this.mAutomator.j.put("UpdateTroop_withoutHandlerCost", Long.valueOf(l1));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("troopHandler creation cost: ");
+          ((StringBuilder)localObject).append(l2);
+          ((StringBuilder)localObject).append(", total cost without troopHandler: ");
+          ((StringBuilder)localObject).append(l1);
+          QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
+        }
         return 7;
       }
-      ((TroopManager)localObject).b();
-      b();
-    }
-    for (;;)
-    {
+      ((TroopManager)localObject).a();
+      a();
       return 2;
-      b();
     }
+    a();
+    return 2;
   }
   
-  public void a()
+  public void onCreate()
   {
-    this.c = 2;
+    this.mCountRetry = 2;
   }
   
-  public void d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Ameq != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ameq);
-      this.jdField_a_of_type_Ameq = null;
+      this.mAutomator.k.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateTroop
  * JD-Core Version:    0.7.0.1
  */

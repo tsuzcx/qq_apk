@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.maproam.widget.RoamLocalSearchBar;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.maproam.widget.RoamSearchDialog;
 
 public class gcc
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public gcc(RoamLocalSearchBar paramRoamLocalSearchBar, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public gcc(RoamSearchDialog paramRoamSearchDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqMaproamWidgetRoamLocalSearchBar.a = null;
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

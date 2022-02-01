@@ -1,73 +1,72 @@
 package com.tencent.mm.plugin.location.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bmx;
-import com.tencent.mm.protocal.protobuf.bsy;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.clf;
-import com.tencent.mm.protocal.protobuf.cpm;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.efn;
+import com.tencent.mm.protocal.protobuf.eoq;
+import com.tencent.mm.protocal.protobuf.eor;
+import com.tencent.mm.protocal.protobuf.fot;
+import com.tencent.mm.protocal.protobuf.fvj;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  private Runnable fQa;
-  public String hxt;
-  public int obD;
-  public clf obE;
-  public List<cpm> obF;
-  public bsz obG;
-  public int obH;
-  private String obI;
-  public final b rr;
+  public int KdE;
+  public fot KdF;
+  public List<fvj> KdG;
+  public eor KdH;
+  public int KdI;
+  private String KdJ;
+  private h callback;
+  private Runnable oTq;
+  public final com.tencent.mm.am.c rr;
+  public String wZb;
   
-  public c(String paramString, int paramInt1, cpm paramcpm, int paramInt2, clf paramclf)
+  public c(String paramString, int paramInt1, fvj paramfvj, int paramInt2, fot paramfot)
   {
-    AppMethodBeat.i(113415);
-    this.obE = null;
-    this.obF = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bsy();
-    ((b.a)localObject).fsY = new bsz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/refreshtrackroom";
-    ((b.a)localObject).funcId = 492;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bsy)this.rr.fsV.fta;
-    ((bsy)localObject).wQX = paramString;
-    ((bsy)localObject).jKs = paramInt1;
-    ((bsy)localObject).xGA = paramcpm;
-    ((bsy)localObject).nrR = paramInt2;
-    ((bsy)localObject).xGB = paramclf;
-    this.obI = paramString;
-    this.obH = ((bsy)localObject).jKs;
-    ab.d("MicroMsg.NetSceneRefreshTrackRoom", "userPosiItem " + paramcpm.Username + " " + paramcpm.xYw.wyP + " " + paramcpm.xYw.wyO + " heading:" + paramcpm.xYw.xBh);
-    ab.d("MicroMsg.NetSceneRefreshTrackRoom", "userPoi " + paramclf.wyP + " " + paramclf.wyO + " " + paramclf.Name);
-    ab.d("MicroMsg.NetSceneRefreshTrackRoom", "trackRoomId:" + paramString + " uploadStatus:" + paramInt1);
-    AppMethodBeat.o(113415);
+    AppMethodBeat.i(55791);
+    this.KdF = null;
+    this.KdG = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eoq();
+    ((c.a)localObject).otF = new eor();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/refreshtrackroom";
+    ((c.a)localObject).funcId = 492;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (eoq)c.b.b(this.rr.otB);
+    ((eoq)localObject).ZvR = paramString;
+    ((eoq)localObject).vhJ = paramInt1;
+    ((eoq)localObject).absQ = paramfvj;
+    ((eoq)localObject).muB = paramInt2;
+    ((eoq)localObject).absR = paramfot;
+    this.KdJ = paramString;
+    this.KdI = ((eoq)localObject).vhJ;
+    Log.d("MicroMsg.NetSceneRefreshTrackRoom", "userPosiItem " + paramfvj.Username + " " + paramfvj.abTG.YTd + " " + paramfvj.abTG.YTc + " heading:" + paramfvj.abTG.abkT);
+    Log.d("MicroMsg.NetSceneRefreshTrackRoom", "userPoi " + paramfot.YTd + " " + paramfot.YTc + " " + paramfot.IGU);
+    Log.d("MicroMsg.NetSceneRefreshTrackRoom", "trackRoomId:" + paramString + " uploadStatus:" + paramInt1);
+    AppMethodBeat.o(55791);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(113416);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(113416);
+    AppMethodBeat.i(55792);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(55792);
     return i;
   }
   
@@ -76,59 +75,59 @@ public final class c
     return 492;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(113417);
-    this.obG = ((bsz)((b)paramq).fsW.fta);
-    if (this.obG != null) {
-      this.hxt = this.obG.wuE;
+    AppMethodBeat.i(55793);
+    this.KdH = ((eor)c.c.b(((com.tencent.mm.am.c)params).otC));
+    if (this.KdH != null) {
+      this.wZb = this.KdH.YMF;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.obD = this.obG.xor;
-      this.obE = this.obG.xGD;
-      this.obF = this.obG.xGC;
-      paramq = new StringBuffer();
-      paramq.append(String.format("[ resp count %d ] ", new Object[] { Integer.valueOf(this.obG.jJu) }));
-      if (this.obE != null) {
-        paramq.append(String.format("[ roomPoi  %f %f %s] ", new Object[] { Double.valueOf(this.obE.wyP), Double.valueOf(this.obE.wyO), this.obE.Name }));
+      this.KdE = this.KdH.aaLi;
+      this.KdF = this.KdH.absT;
+      this.KdG = this.KdH.absS;
+      params = new StringBuffer();
+      params.append(String.format("[ resp count %d ] ", new Object[] { Integer.valueOf(this.KdH.vgN) }));
+      if (this.KdF != null) {
+        params.append(String.format("[ roomPoi  %f %f %s] ", new Object[] { Double.valueOf(this.KdF.YTd), Double.valueOf(this.KdF.YTc), this.KdF.IGU }));
       }
-      ab.d("MicroMsg.NetSceneRefreshTrackRoom", "onGynetEnd " + paramq.toString());
-      paramq = new LinkedList();
-      paramArrayOfByte = this.obG.xGC.iterator();
+      Log.d("MicroMsg.NetSceneRefreshTrackRoom", "onGynetEnd " + params.toString());
+      params = new LinkedList();
+      paramArrayOfByte = this.KdH.absS.iterator();
       while (paramArrayOfByte.hasNext())
       {
-        cpm localcpm = (cpm)paramArrayOfByte.next();
-        if (localcpm == null)
+        fvj localfvj = (fvj)paramArrayOfByte.next();
+        if (localfvj == null)
         {
-          paramq.add(localcpm);
+          params.add(localfvj);
         }
         else
         {
-          if (localcpm.xYw == null) {
-            paramq.add(localcpm);
+          if (localfvj.abTG == null) {
+            params.add(localfvj);
           }
-          if ((Math.abs(localcpm.xYw.wyO) > 180.0D) || (Math.abs(localcpm.xYw.wyP) > 90.0D))
+          if ((Math.abs(localfvj.abTG.YTc) > 180.0D) || (Math.abs(localfvj.abTG.YTd) > 90.0D))
           {
-            ab.w("MicroMsg.NetSceneRefreshTrackRoom", "server lat lng invalid %s %f %f %f", new Object[] { localcpm.Username, Double.valueOf(localcpm.xYw.wyP), Double.valueOf(localcpm.xYw.wyO), Double.valueOf(localcpm.xYw.xBh) });
-            paramq.add(localcpm);
+            Log.w("MicroMsg.NetSceneRefreshTrackRoom", "server lat lng invalid %s %f %f %f", new Object[] { localfvj.Username, Double.valueOf(localfvj.abTG.YTd), Double.valueOf(localfvj.abTG.YTc), Double.valueOf(localfvj.abTG.abkT) });
+            params.add(localfvj);
           }
         }
       }
-      this.obG.jJu = this.obG.xGC.size();
+      this.KdH.vgN = this.KdH.absS.size();
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.fQa != null) {
-      this.fQa.run();
+    if (this.oTq != null) {
+      this.oTq.run();
     }
-    AppMethodBeat.o(113417);
+    AppMethodBeat.o(55793);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stNewsRedDot
   extends JceStruct
 {
-  public int newsCount;
+  public int newsCount = 0;
   
   public stNewsRedDot() {}
   
@@ -28,7 +28,7 @@ public final class stNewsRedDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stNewsRedDot
  * JD-Core Version:    0.7.0.1
  */

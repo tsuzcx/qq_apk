@@ -5,9 +5,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 
 public class RecentItemMayKnowFriendData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public String curUin;
+  
+  public RecentItemMayKnowFriendData(RecentUser paramRecentUser)
+  {
+    super(paramRecentUser);
+  }
   
   public RecentItemMayKnowFriendData(RecentUser paramRecentUser, String paramString)
   {

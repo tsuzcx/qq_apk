@@ -8,7 +8,7 @@ public final class ShuoShuoUgcDeco
   extends JceStruct
 {
   static FeedSkin cache_stFeedSkin = new FeedSkin();
-  public FeedSkin stFeedSkin;
+  public FeedSkin stFeedSkin = null;
   
   public ShuoShuoUgcDeco() {}
   
@@ -24,14 +24,15 @@ public final class ShuoShuoUgcDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFeedSkin != null) {
-      paramJceOutputStream.write(this.stFeedSkin, 0);
+    FeedSkin localFeedSkin = this.stFeedSkin;
+    if (localFeedSkin != null) {
+      paramJceOutputStream.write(localFeedSkin, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.ShuoShuoUgcDeco
  * JD-Core Version:    0.7.0.1
  */

@@ -21,28 +21,29 @@ public final class b
   private static AcChapterListResponse a(String paramString)
   {
     AcChapterListResponse localAcChapterListResponse = new AcChapterListResponse();
-    ArrayList localArrayList = new ArrayList();
-    localAcChapterListResponse.setData(localArrayList);
+    Object localObject = new ArrayList();
+    localAcChapterListResponse.setData((List)localObject);
     long l = System.currentTimeMillis();
-    for (;;)
+    int i;
+    try
     {
-      try
+      paramString = new JSONObject(paramString);
+      int j = 0;
+      int k = paramString.optInt("ret", 0);
+      if (k != 2)
       {
-        paramString = new JSONObject(paramString);
-        int j = paramString.optInt("ret", 0);
-        if (j != 2)
+        localAcChapterListResponse.setStatusCode(k);
+        return localAcChapterListResponse;
+      }
+      paramString = paramString.getJSONArray("data");
+      if ((paramString != null) && (paramString.length() > 0)) {
+        for (;;)
         {
-          localAcChapterListResponse.setStatusCode(j);
-          return localAcChapterListResponse;
-        }
-        paramString = paramString.getJSONArray("data");
-        if ((paramString == null) || (paramString.length() <= 0)) {
-          continue;
-        }
-        i = 0;
-        if (i < paramString.length())
-        {
-          JSONObject localJSONObject = (JSONObject)paramString.get(i);
+          i = k;
+          if (j >= paramString.length()) {
+            break;
+          }
+          JSONObject localJSONObject = (JSONObject)paramString.get(j);
           AcChapter localAcChapter = new AcChapter();
           localAcChapter.setChapterId(localJSONObject.getInt("chapter_id"));
           localAcChapter.setTitle(localJSONObject.getString("title"));
@@ -51,42 +52,44 @@ public final class b
           localAcChapter.setCreateTime(localJSONObject.optInt("create_time"));
           localAcChapter.setModifyTime(localJSONObject.optInt("modify_time"));
           localAcChapter.setPicCount(localJSONObject.optInt("pic_count"));
-          localArrayList.add(localAcChapter);
-          i += 1;
-          continue;
+          ((List)localObject).add(localAcChapter);
+          j += 1;
         }
-        i = j;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        int i = -60005;
-        continue;
-      }
-      localAcChapterListResponse.setStatusCode(i);
-      com.qq.ac.sdk.g.b.a(a, "onConver time = " + (System.currentTimeMillis() - Long.valueOf(l).longValue()));
-      return localAcChapterListResponse;
       i = -60004;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      i = -60005;
+    }
+    localAcChapterListResponse.setStatusCode(i);
+    paramString = a;
+    localObject = new StringBuilder("onConver time = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - Long.valueOf(l).longValue());
+    com.qq.ac.sdk.g.b.a(paramString, ((StringBuilder)localObject).toString());
+    return localAcChapterListResponse;
   }
   
   public final void onFailure(int paramInt)
   {
-    if (this.b != null) {
-      this.b.onFailure(paramInt);
+    AcChapterListListener localAcChapterListListener = this.b;
+    if (localAcChapterListListener != null) {
+      localAcChapterListListener.onFailure(paramInt);
     }
   }
   
   public final void onResponse(String paramString)
   {
-    if (this.b != null) {
-      this.b.onResponse(a(paramString));
+    AcChapterListListener localAcChapterListListener = this.b;
+    if (localAcChapterListListener != null) {
+      localAcChapterListListener.onResponse(a(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.ac.sdk.b.b
  * JD-Core Version:    0.7.0.1
  */

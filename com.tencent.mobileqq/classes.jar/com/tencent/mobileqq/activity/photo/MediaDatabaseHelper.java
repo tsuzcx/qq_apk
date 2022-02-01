@@ -1,20 +1,17 @@
 package com.tencent.mobileqq.activity.photo;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MediaDatabaseHelper
   extends SQLiteOpenHelper
 {
-  private static MediaDatabaseHelper sInstance = null;
-  private String TAG = "MediaDatabaseHelper";
+  private static final String TAG = "QQAlbum";
+  private static MediaDatabaseHelper sInstance;
   private SQLiteDatabase mDatabase;
   private AtomicInteger mOpenCounter = new AtomicInteger(0);
   
@@ -33,8 +30,13 @@ public class MediaDatabaseHelper
     }
     catch (Exception paramSQLiteDatabase)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.TAG, 2, "createDatabase error=" + paramSQLiteDatabase.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createDatabase error=");
+        localStringBuilder.append(paramSQLiteDatabase.getMessage());
+        QLog.d("QQAlbum", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -67,49 +69,128 @@ public class MediaDatabaseHelper
     }
   }
   
-  public void deleteMediaScannerInfoByFolderPathSet(HashSet<String> paramHashSet)
+  /* Error */
+  public void deleteMediaScannerInfoByFolderPathSet(java.util.HashSet<String> paramHashSet)
   {
-    if (paramHashSet == null) {}
-    SQLiteDatabase localSQLiteDatabase;
-    for (;;)
-    {
-      return;
-      try
-      {
-        localSQLiteDatabase = getReadableDatabase();
-        localSQLiteDatabase.beginTransaction();
-        paramHashSet = paramHashSet.iterator();
-        while (paramHashSet.hasNext())
-        {
-          String str = (String)paramHashSet.next();
-          String[] arrayOfString = new String[1];
-          arrayOfString[0] = str;
-          localSQLiteDatabase.delete("content_table", "folderpath=?", arrayOfString);
-          localSQLiteDatabase.delete("folder_table", "folderpath=?", arrayOfString);
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramHashSet) {}
-    }
-    QLog.d(this.TAG, 2, "getReadableDatabase ERROR Exception:" + paramHashSet.getMessage());
-    return;
-    try
-    {
-      localSQLiteDatabase.setTransactionSuccessful();
-      return;
-    }
-    catch (Exception paramHashSet)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "deleteMediaScannerInfoByFolderPathSet() ERROR Exception:" + paramHashSet.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      localSQLiteDatabase.endTransaction();
-      closeDatabase();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_0
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   9: astore_2
+    //   10: aload_2
+    //   11: invokevirtual 95	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   14: aload_1
+    //   15: invokevirtual 101	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   18: astore_1
+    //   19: aload_1
+    //   20: invokeinterface 106 1 0
+    //   25: ifeq +49 -> 74
+    //   28: aload_1
+    //   29: invokeinterface 110 1 0
+    //   34: checkcast 112	java/lang/String
+    //   37: astore_3
+    //   38: iconst_1
+    //   39: anewarray 112	java/lang/String
+    //   42: astore 4
+    //   44: aload 4
+    //   46: iconst_0
+    //   47: aload_3
+    //   48: aastore
+    //   49: aload_2
+    //   50: ldc 114
+    //   52: ldc 116
+    //   54: aload 4
+    //   56: invokevirtual 120	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   59: pop
+    //   60: aload_2
+    //   61: ldc 122
+    //   63: ldc 116
+    //   65: aload 4
+    //   67: invokevirtual 120	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   70: pop
+    //   71: goto -52 -> 19
+    //   74: aload_2
+    //   75: invokevirtual 125	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   78: aload_2
+    //   79: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   82: aload_0
+    //   83: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   86: return
+    //   87: astore_1
+    //   88: goto +51 -> 139
+    //   91: astore_1
+    //   92: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   95: ifeq +37 -> 132
+    //   98: new 50	java/lang/StringBuilder
+    //   101: dup
+    //   102: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   105: astore_3
+    //   106: aload_3
+    //   107: ldc 132
+    //   109: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload_3
+    //   114: aload_1
+    //   115: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   118: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: pop
+    //   122: ldc 8
+    //   124: iconst_2
+    //   125: aload_3
+    //   126: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   132: aload_2
+    //   133: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   136: goto -54 -> 82
+    //   139: aload_2
+    //   140: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   143: aload_0
+    //   144: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   147: aload_1
+    //   148: athrow
+    //   149: astore_1
+    //   150: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   153: ifeq +37 -> 190
+    //   156: new 50	java/lang/StringBuilder
+    //   159: dup
+    //   160: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   163: astore_2
+    //   164: aload_2
+    //   165: ldc 134
+    //   167: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: aload_2
+    //   172: aload_1
+    //   173: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   176: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: ldc 8
+    //   182: iconst_2
+    //   183: aload_2
+    //   184: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   190: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	191	0	this	MediaDatabaseHelper
+    //   0	191	1	paramHashSet	java.util.HashSet<String>
+    //   9	175	2	localObject1	Object
+    //   37	89	3	localObject2	Object
+    //   42	24	4	arrayOfString	String[]
+    // Exception table:
+    //   from	to	target	type
+    //   74	78	87	finally
+    //   92	132	87	finally
+    //   74	78	91	java/lang/Exception
+    //   5	19	149	java/lang/Exception
+    //   19	44	149	java/lang/Exception
+    //   49	71	149	java/lang/Exception
+    //   78	82	149	java/lang/Exception
+    //   82	86	149	java/lang/Exception
+    //   132	136	149	java/lang/Exception
+    //   139	149	149	java/lang/Exception
   }
   
   /* Error */
@@ -120,206 +201,228 @@ public class MediaDatabaseHelper
     //   1: ifnonnull +4 -> 5
     //   4: return
     //   5: aload_0
-    //   6: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   9: astore_2
     //   10: aload_2
-    //   11: invokevirtual 97	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   11: invokevirtual 95	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   14: aload_1
-    //   15: invokevirtual 143	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   15: invokevirtual 141	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   18: astore_1
     //   19: aload_1
-    //   20: invokeinterface 108 1 0
-    //   25: ifeq +121 -> 146
+    //   20: invokeinterface 106 1 0
+    //   25: ifeq +37 -> 62
     //   28: aload_2
-    //   29: ldc 116
-    //   31: ldc 145
+    //   29: ldc 114
+    //   31: ldc 143
     //   33: iconst_1
-    //   34: anewarray 114	java/lang/String
+    //   34: anewarray 112	java/lang/String
     //   37: dup
     //   38: iconst_0
     //   39: aload_1
-    //   40: invokeinterface 112 1 0
-    //   45: checkcast 147	com/tencent/mobileqq/activity/photo/MediaScannerInfo
-    //   48: getfield 151	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
-    //   51: invokestatic 155	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   40: invokeinterface 110 1 0
+    //   45: checkcast 145	com/tencent/mobileqq/activity/photo/MediaScannerInfo
+    //   48: getfield 149	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
+    //   51: invokestatic 153	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   54: aastore
-    //   55: invokevirtual 122	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   55: invokevirtual 120	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   58: pop
     //   59: goto -40 -> 19
-    //   62: astore_1
-    //   63: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   66: ifeq +33 -> 99
-    //   69: aload_0
-    //   70: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   73: iconst_2
-    //   74: new 54	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   81: ldc 157
-    //   83: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: aload_1
-    //   87: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   99: aload_2
-    //   100: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   103: aload_0
-    //   104: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   107: return
-    //   108: astore_1
-    //   109: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   112: ifeq -108 -> 4
-    //   115: aload_0
-    //   116: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   119: iconst_2
-    //   120: new 54	java/lang/StringBuilder
-    //   123: dup
-    //   124: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   127: ldc 126
-    //   129: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: aload_1
-    //   133: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   136: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   145: return
-    //   146: aload_2
-    //   147: invokevirtual 129	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   150: aload_2
-    //   151: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   154: aload_0
-    //   155: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   158: return
-    //   159: astore_1
-    //   160: aload_2
-    //   161: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   164: aload_0
-    //   165: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   168: aload_1
-    //   169: athrow
+    //   62: aload_2
+    //   63: invokevirtual 125	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   66: aload_2
+    //   67: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   70: aload_0
+    //   71: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   74: return
+    //   75: astore_1
+    //   76: goto +51 -> 127
+    //   79: astore_1
+    //   80: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   83: ifeq +37 -> 120
+    //   86: new 50	java/lang/StringBuilder
+    //   89: dup
+    //   90: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   93: astore_3
+    //   94: aload_3
+    //   95: ldc 155
+    //   97: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: pop
+    //   101: aload_3
+    //   102: aload_1
+    //   103: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   106: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: ldc 8
+    //   112: iconst_2
+    //   113: aload_3
+    //   114: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: aload_2
+    //   121: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   124: goto -54 -> 70
+    //   127: aload_2
+    //   128: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   131: aload_0
+    //   132: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   135: aload_1
+    //   136: athrow
+    //   137: astore_1
+    //   138: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   141: ifeq +37 -> 178
+    //   144: new 50	java/lang/StringBuilder
+    //   147: dup
+    //   148: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   151: astore_2
+    //   152: aload_2
+    //   153: ldc 134
+    //   155: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: pop
+    //   159: aload_2
+    //   160: aload_1
+    //   161: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   164: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: pop
+    //   168: ldc 8
+    //   170: iconst_2
+    //   171: aload_2
+    //   172: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   178: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	170	0	this	MediaDatabaseHelper
-    //   0	170	1	paramArrayList	java.util.ArrayList<MediaScannerInfo>
-    //   9	152	2	localSQLiteDatabase	SQLiteDatabase
+    //   0	179	0	this	MediaDatabaseHelper
+    //   0	179	1	paramArrayList	java.util.ArrayList<MediaScannerInfo>
+    //   9	163	2	localObject	Object
+    //   93	21	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   14	19	62	java/lang/Exception
-    //   19	59	62	java/lang/Exception
-    //   146	150	62	java/lang/Exception
-    //   5	14	108	java/lang/Exception
-    //   99	107	108	java/lang/Exception
-    //   150	158	108	java/lang/Exception
-    //   160	170	108	java/lang/Exception
-    //   14	19	159	finally
-    //   19	59	159	finally
-    //   63	99	159	finally
-    //   146	150	159	finally
+    //   14	19	75	finally
+    //   19	59	75	finally
+    //   62	66	75	finally
+    //   80	120	75	finally
+    //   14	19	79	java/lang/Exception
+    //   19	59	79	java/lang/Exception
+    //   62	66	79	java/lang/Exception
+    //   5	14	137	java/lang/Exception
+    //   66	70	137	java/lang/Exception
+    //   70	74	137	java/lang/Exception
+    //   120	124	137	java/lang/Exception
+    //   127	137	137	java/lang/Exception
   }
   
   /* Error */
-  public void deleteMediaScannerInfoByPathSet(HashSet<String> paramHashSet)
+  public void deleteMediaScannerInfoByPathSet(java.util.HashSet<String> paramHashSet)
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnonnull +4 -> 5
     //   4: return
     //   5: aload_0
-    //   6: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   9: astore_2
     //   10: aload_2
-    //   11: invokevirtual 97	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   11: invokevirtual 95	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   14: aload_1
-    //   15: invokevirtual 103	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   15: invokevirtual 101	java/util/HashSet:iterator	()Ljava/util/Iterator;
     //   18: astore_1
     //   19: aload_1
-    //   20: invokeinterface 108 1 0
-    //   25: ifeq +115 -> 140
+    //   20: invokeinterface 106 1 0
+    //   25: ifeq +31 -> 56
     //   28: aload_2
-    //   29: ldc 116
-    //   31: ldc 161
+    //   29: ldc 114
+    //   31: ldc 159
     //   33: iconst_1
-    //   34: anewarray 114	java/lang/String
+    //   34: anewarray 112	java/lang/String
     //   37: dup
     //   38: iconst_0
     //   39: aload_1
-    //   40: invokeinterface 112 1 0
-    //   45: checkcast 114	java/lang/String
+    //   40: invokeinterface 110 1 0
+    //   45: checkcast 112	java/lang/String
     //   48: aastore
-    //   49: invokevirtual 122	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   49: invokevirtual 120	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   52: pop
     //   53: goto -34 -> 19
-    //   56: astore_1
-    //   57: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   60: ifeq +33 -> 93
-    //   63: aload_0
-    //   64: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   67: iconst_2
-    //   68: new 54	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   75: ldc 163
-    //   77: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: aload_1
-    //   81: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   84: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   93: aload_2
-    //   94: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   97: aload_0
-    //   98: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   101: return
-    //   102: astore_1
-    //   103: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   106: ifeq -102 -> 4
-    //   109: aload_0
-    //   110: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   113: iconst_2
-    //   114: new 54	java/lang/StringBuilder
-    //   117: dup
-    //   118: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   121: ldc 126
-    //   123: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload_1
-    //   127: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   130: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: return
-    //   140: aload_2
-    //   141: invokevirtual 129	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   144: aload_2
-    //   145: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   148: aload_0
-    //   149: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   152: return
-    //   153: astore_1
-    //   154: aload_2
-    //   155: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   158: aload_0
-    //   159: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   162: aload_1
-    //   163: athrow
+    //   56: aload_2
+    //   57: invokevirtual 125	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   60: aload_2
+    //   61: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   64: aload_0
+    //   65: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   68: return
+    //   69: astore_1
+    //   70: goto +51 -> 121
+    //   73: astore_1
+    //   74: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   77: ifeq +37 -> 114
+    //   80: new 50	java/lang/StringBuilder
+    //   83: dup
+    //   84: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   87: astore_3
+    //   88: aload_3
+    //   89: ldc 161
+    //   91: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: aload_3
+    //   96: aload_1
+    //   97: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   100: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: ldc 8
+    //   106: iconst_2
+    //   107: aload_3
+    //   108: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   114: aload_2
+    //   115: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   118: goto -54 -> 64
+    //   121: aload_2
+    //   122: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   125: aload_0
+    //   126: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   129: aload_1
+    //   130: athrow
+    //   131: astore_1
+    //   132: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   135: ifeq +37 -> 172
+    //   138: new 50	java/lang/StringBuilder
+    //   141: dup
+    //   142: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   145: astore_2
+    //   146: aload_2
+    //   147: ldc 134
+    //   149: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: pop
+    //   153: aload_2
+    //   154: aload_1
+    //   155: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   158: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: pop
+    //   162: ldc 8
+    //   164: iconst_2
+    //   165: aload_2
+    //   166: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   172: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	164	0	this	MediaDatabaseHelper
-    //   0	164	1	paramHashSet	HashSet<String>
-    //   9	146	2	localSQLiteDatabase	SQLiteDatabase
+    //   0	173	0	this	MediaDatabaseHelper
+    //   0	173	1	paramHashSet	java.util.HashSet<String>
+    //   9	157	2	localObject	Object
+    //   87	21	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   14	19	56	java/lang/Exception
-    //   19	53	56	java/lang/Exception
-    //   140	144	56	java/lang/Exception
-    //   5	14	102	java/lang/Exception
-    //   93	101	102	java/lang/Exception
-    //   144	152	102	java/lang/Exception
-    //   154	164	102	java/lang/Exception
-    //   14	19	153	finally
-    //   19	53	153	finally
-    //   57	93	153	finally
-    //   140	144	153	finally
+    //   14	19	69	finally
+    //   19	53	69	finally
+    //   56	60	69	finally
+    //   74	114	69	finally
+    //   14	19	73	java/lang/Exception
+    //   19	53	73	java/lang/Exception
+    //   56	60	73	java/lang/Exception
+    //   5	14	131	java/lang/Exception
+    //   60	64	131	java/lang/Exception
+    //   64	68	131	java/lang/Exception
+    //   114	118	131	java/lang/Exception
+    //   121	131	131	java/lang/Exception
   }
   
   public SQLiteDatabase getReadableDatabase()
@@ -335,37 +438,111 @@ public class MediaDatabaseHelper
     finally {}
   }
   
+  /* Error */
   public void insertMediaScannerInfo(MediaScannerInfo paramMediaScannerInfo)
   {
-    if (paramMediaScannerInfo == null) {
-      return;
-    }
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("name", paramMediaScannerInfo.name);
-      localContentValues.put("path", paramMediaScannerInfo.path);
-      localContentValues.put("filesize", Long.valueOf(paramMediaScannerInfo.fileSize));
-      localContentValues.put("modifieddate", Long.valueOf(paramMediaScannerInfo.modifiedDate));
-      localContentValues.put("duration", Long.valueOf(paramMediaScannerInfo.duration));
-      localContentValues.put("mimetype", paramMediaScannerInfo.mimeType);
-      localContentValues.put("folderpath", paramMediaScannerInfo.folderPath);
-      localContentValues.put("md5", paramMediaScannerInfo.md5);
-      localSQLiteDatabase.insert("content_table", null, localContentValues);
-      return;
-    }
-    catch (Exception paramMediaScannerInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "insertMediaScannerInfoByList() ERROR Exception:" + paramMediaScannerInfo.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      closeDatabase();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_0
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   9: astore_2
+    //   10: new 169	android/content/ContentValues
+    //   13: dup
+    //   14: invokespecial 170	android/content/ContentValues:<init>	()V
+    //   17: astore_3
+    //   18: aload_3
+    //   19: ldc 172
+    //   21: aload_1
+    //   22: getfield 174	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
+    //   25: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_3
+    //   29: ldc 180
+    //   31: aload_1
+    //   32: getfield 182	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
+    //   35: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: aload_3
+    //   39: ldc 184
+    //   41: aload_1
+    //   42: getfield 188	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
+    //   45: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   48: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   51: aload_3
+    //   52: ldc 198
+    //   54: aload_1
+    //   55: getfield 201	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
+    //   58: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   61: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   64: aload_3
+    //   65: ldc 203
+    //   67: aload_1
+    //   68: getfield 205	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
+    //   71: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   74: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   77: aload_3
+    //   78: ldc 207
+    //   80: aload_1
+    //   81: getfield 210	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
+    //   84: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: aload_3
+    //   88: ldc 212
+    //   90: aload_1
+    //   91: getfield 215	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
+    //   94: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   97: aload_3
+    //   98: ldc 217
+    //   100: aload_1
+    //   101: getfield 219	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
+    //   104: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: aload_2
+    //   108: ldc 114
+    //   110: aconst_null
+    //   111: aload_3
+    //   112: invokevirtual 223	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   115: pop2
+    //   116: goto +48 -> 164
+    //   119: astore_1
+    //   120: goto +49 -> 169
+    //   123: astore_1
+    //   124: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   127: ifeq +37 -> 164
+    //   130: new 50	java/lang/StringBuilder
+    //   133: dup
+    //   134: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   137: astore_2
+    //   138: aload_2
+    //   139: ldc 161
+    //   141: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: aload_2
+    //   146: aload_1
+    //   147: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   150: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: pop
+    //   154: ldc 8
+    //   156: iconst_2
+    //   157: aload_2
+    //   158: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   161: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   164: aload_0
+    //   165: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   168: return
+    //   169: aload_0
+    //   170: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   173: aload_1
+    //   174: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	175	0	this	MediaDatabaseHelper
+    //   0	175	1	paramMediaScannerInfo	MediaScannerInfo
+    //   9	149	2	localObject	Object
+    //   17	95	3	localContentValues	android.content.ContentValues
+    // Exception table:
+    //   from	to	target	type
+    //   5	116	119	finally
+    //   124	164	119	finally
+    //   5	116	123	java/lang/Exception
   }
   
   /* Error */
@@ -376,1410 +553,1772 @@ public class MediaDatabaseHelper
     //   1: ifnonnull +4 -> 5
     //   4: return
     //   5: aload_0
-    //   6: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   9: astore_2
     //   10: aload_2
-    //   11: invokevirtual 97	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   11: invokevirtual 95	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
     //   14: aload_1
-    //   15: invokevirtual 143	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   15: invokevirtual 141	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   18: astore_1
     //   19: aload_1
-    //   20: invokeinterface 108 1 0
-    //   25: ifeq +216 -> 241
+    //   20: invokeinterface 106 1 0
+    //   25: ifeq +132 -> 157
     //   28: aload_1
-    //   29: invokeinterface 112 1 0
-    //   34: checkcast 147	com/tencent/mobileqq/activity/photo/MediaScannerInfo
+    //   29: invokeinterface 110 1 0
+    //   34: checkcast 145	com/tencent/mobileqq/activity/photo/MediaScannerInfo
     //   37: astore_3
-    //   38: new 171	android/content/ContentValues
+    //   38: new 169	android/content/ContentValues
     //   41: dup
-    //   42: invokespecial 172	android/content/ContentValues:<init>	()V
+    //   42: invokespecial 170	android/content/ContentValues:<init>	()V
     //   45: astore 4
     //   47: aload 4
-    //   49: ldc 174
+    //   49: ldc 172
     //   51: aload_3
-    //   52: getfield 176	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
-    //   55: invokevirtual 180	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: getfield 174	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
+    //   55: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   58: aload 4
-    //   60: ldc 182
+    //   60: ldc 180
     //   62: aload_3
-    //   63: getfield 184	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
-    //   66: invokevirtual 180	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: getfield 182	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
+    //   66: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   69: aload 4
-    //   71: ldc 186
+    //   71: ldc 184
     //   73: aload_3
-    //   74: getfield 190	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
-    //   77: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   80: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   74: getfield 188	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
+    //   77: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   80: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   83: aload 4
-    //   85: ldc 200
+    //   85: ldc 198
     //   87: aload_3
-    //   88: getfield 203	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
-    //   91: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   94: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   88: getfield 201	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
+    //   91: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   94: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   97: aload 4
-    //   99: ldc 205
+    //   99: ldc 203
     //   101: aload_3
-    //   102: getfield 207	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
-    //   105: invokestatic 195	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   108: invokevirtual 198	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   102: getfield 205	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
+    //   105: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   108: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   111: aload 4
-    //   113: ldc 209
+    //   113: ldc 207
     //   115: aload_3
-    //   116: getfield 212	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
-    //   119: invokevirtual 180	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   116: getfield 210	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
+    //   119: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   122: aload 4
-    //   124: ldc 214
+    //   124: ldc 212
     //   126: aload_3
-    //   127: getfield 217	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
-    //   130: invokevirtual 180	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: getfield 215	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
+    //   130: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: aload 4
-    //   135: ldc 219
+    //   135: ldc 217
     //   137: aload_3
-    //   138: getfield 221	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
-    //   141: invokevirtual 180	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   138: getfield 219	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
+    //   141: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aload_2
-    //   145: ldc 116
+    //   145: ldc 114
     //   147: aconst_null
     //   148: aload 4
-    //   150: invokevirtual 225	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   150: invokevirtual 223	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   153: pop2
     //   154: goto -135 -> 19
-    //   157: astore_1
-    //   158: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   161: ifeq +33 -> 194
-    //   164: aload_0
-    //   165: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   168: iconst_2
-    //   169: new 54	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   176: ldc 163
-    //   178: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: aload_1
-    //   182: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   185: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   194: aload_2
-    //   195: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   198: aload_0
-    //   199: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   202: return
-    //   203: astore_1
-    //   204: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   207: ifeq -203 -> 4
-    //   210: aload_0
-    //   211: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   214: iconst_2
-    //   215: new 54	java/lang/StringBuilder
-    //   218: dup
-    //   219: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   222: ldc 126
-    //   224: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload_1
-    //   228: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   231: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   240: return
-    //   241: aload_2
-    //   242: invokevirtual 129	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   245: aload_2
-    //   246: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   249: aload_0
-    //   250: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   253: return
-    //   254: astore_1
-    //   255: aload_2
-    //   256: invokevirtual 132	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   259: aload_0
-    //   260: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   263: aload_1
-    //   264: athrow
+    //   157: aload_2
+    //   158: invokevirtual 125	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   161: aload_2
+    //   162: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   165: aload_0
+    //   166: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   169: return
+    //   170: astore_1
+    //   171: goto +51 -> 222
+    //   174: astore_1
+    //   175: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   178: ifeq +37 -> 215
+    //   181: new 50	java/lang/StringBuilder
+    //   184: dup
+    //   185: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   188: astore_3
+    //   189: aload_3
+    //   190: ldc 161
+    //   192: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload_3
+    //   197: aload_1
+    //   198: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   201: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: ldc 8
+    //   207: iconst_2
+    //   208: aload_3
+    //   209: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: aload_2
+    //   216: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   219: goto -54 -> 165
+    //   222: aload_2
+    //   223: invokevirtual 128	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   226: aload_0
+    //   227: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   230: aload_1
+    //   231: athrow
+    //   232: astore_1
+    //   233: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   236: ifeq +37 -> 273
+    //   239: new 50	java/lang/StringBuilder
+    //   242: dup
+    //   243: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   246: astore_2
+    //   247: aload_2
+    //   248: ldc 134
+    //   250: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: pop
+    //   254: aload_2
+    //   255: aload_1
+    //   256: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   259: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: pop
+    //   263: ldc 8
+    //   265: iconst_2
+    //   266: aload_2
+    //   267: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   273: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	265	0	this	MediaDatabaseHelper
-    //   0	265	1	paramArrayList	java.util.ArrayList<MediaScannerInfo>
-    //   9	247	2	localSQLiteDatabase	SQLiteDatabase
-    //   37	101	3	localMediaScannerInfo	MediaScannerInfo
-    //   45	104	4	localContentValues	ContentValues
+    //   0	274	0	this	MediaDatabaseHelper
+    //   0	274	1	paramArrayList	java.util.ArrayList<MediaScannerInfo>
+    //   9	258	2	localObject1	Object
+    //   37	172	3	localObject2	Object
+    //   45	104	4	localContentValues	android.content.ContentValues
     // Exception table:
     //   from	to	target	type
-    //   14	19	157	java/lang/Exception
-    //   19	154	157	java/lang/Exception
-    //   241	245	157	java/lang/Exception
-    //   5	14	203	java/lang/Exception
-    //   194	202	203	java/lang/Exception
-    //   245	253	203	java/lang/Exception
-    //   255	265	203	java/lang/Exception
-    //   14	19	254	finally
-    //   19	154	254	finally
-    //   158	194	254	finally
-    //   241	245	254	finally
+    //   14	19	170	finally
+    //   19	154	170	finally
+    //   157	161	170	finally
+    //   175	215	170	finally
+    //   14	19	174	java/lang/Exception
+    //   19	154	174	java/lang/Exception
+    //   157	161	174	java/lang/Exception
+    //   5	14	232	java/lang/Exception
+    //   161	165	232	java/lang/Exception
+    //   165	169	232	java/lang/Exception
+    //   215	219	232	java/lang/Exception
+    //   222	232	232	java/lang/Exception
   }
   
+  /* Error */
   public void insertMediaScnnerFolderInfo(MediaScannerFolderInfo paramMediaScannerFolderInfo)
   {
-    if (paramMediaScannerFolderInfo == null) {
-      return;
-    }
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("folderpath", paramMediaScannerFolderInfo.folderpath);
-      localContentValues.put("modifieddate", Long.valueOf(paramMediaScannerFolderInfo.modifiedDate));
-      localSQLiteDatabase.insert("folder_table", null, localContentValues);
-      return;
-    }
-    catch (Exception paramMediaScannerFolderInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "insertMediaScnnerFolderInfo() ERROR Exception:" + paramMediaScannerFolderInfo.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      closeDatabase();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_0
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   9: astore_2
+    //   10: new 169	android/content/ContentValues
+    //   13: dup
+    //   14: invokespecial 170	android/content/ContentValues:<init>	()V
+    //   17: astore_3
+    //   18: aload_3
+    //   19: ldc 212
+    //   21: aload_1
+    //   22: getfield 230	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:folderpath	Ljava/lang/String;
+    //   25: invokevirtual 178	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_3
+    //   29: ldc 198
+    //   31: aload_1
+    //   32: getfield 231	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:modifiedDate	J
+    //   35: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   38: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   41: aload_2
+    //   42: ldc 122
+    //   44: aconst_null
+    //   45: aload_3
+    //   46: invokevirtual 223	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   49: pop2
+    //   50: goto +48 -> 98
+    //   53: astore_1
+    //   54: goto +49 -> 103
+    //   57: astore_1
+    //   58: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   61: ifeq +37 -> 98
+    //   64: new 50	java/lang/StringBuilder
+    //   67: dup
+    //   68: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   71: astore_2
+    //   72: aload_2
+    //   73: ldc 233
+    //   75: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_2
+    //   80: aload_1
+    //   81: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   84: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: ldc 8
+    //   90: iconst_2
+    //   91: aload_2
+    //   92: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   98: aload_0
+    //   99: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   102: return
+    //   103: aload_0
+    //   104: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   107: aload_1
+    //   108: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	109	0	this	MediaDatabaseHelper
+    //   0	109	1	paramMediaScannerFolderInfo	MediaScannerFolderInfo
+    //   9	83	2	localObject	Object
+    //   17	29	3	localContentValues	android.content.ContentValues
+    // Exception table:
+    //   from	to	target	type
+    //   5	50	53	finally
+    //   58	98	53	finally
+    //   5	50	57	java/lang/Exception
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.TAG, 2, "onCreate");
+      QLog.d("QQAlbum", 2, "onCreate");
     }
     createDatabase(paramSQLiteDatabase);
   }
   
   public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.TAG, 2, "onDowngrade oldVersion=" + paramInt1 + ", newVersion=" + paramInt2);
-    }
-    if (paramInt1 == paramInt2) {}
-    do
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDowngrade oldVersion=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", newVersion=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+    if (paramInt1 == paramInt2) {
       return;
-      try
+    }
+    try
+    {
+      paramSQLiteDatabase.execSQL("drop table if exists folder_table");
+      paramSQLiteDatabase.execSQL("drop table if exists content_table");
+      createDatabase(paramSQLiteDatabase);
+      return;
+    }
+    catch (Exception paramSQLiteDatabase)
+    {
+      if (QLog.isColorLevel())
       {
-        paramSQLiteDatabase.execSQL("drop table if exists folder_table");
-        paramSQLiteDatabase.execSQL("drop table if exists content_table");
-        createDatabase(paramSQLiteDatabase);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDowngrade error=");
+        localStringBuilder.append(paramSQLiteDatabase.getMessage());
+        QLog.d("QQAlbum", 2, localStringBuilder.toString());
       }
-      catch (Exception paramSQLiteDatabase) {}
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "onDowngrade error=" + paramSQLiteDatabase.getMessage());
+    }
   }
   
   public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.TAG, 2, "onUpgrade oldVersion=" + paramInt1 + ", newVersion=" + paramInt2);
-    }
-    if (paramInt1 == paramInt2) {}
-    do
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpgrade oldVersion=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", newVersion=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+    if (paramInt1 == paramInt2) {
       return;
-      try
+    }
+    try
+    {
+      paramSQLiteDatabase.execSQL("drop table if exists folder_table");
+      paramSQLiteDatabase.execSQL("drop table if exists content_table");
+      createDatabase(paramSQLiteDatabase);
+      return;
+    }
+    catch (Exception paramSQLiteDatabase)
+    {
+      if (QLog.isColorLevel())
       {
-        paramSQLiteDatabase.execSQL("drop table if exists folder_table");
-        paramSQLiteDatabase.execSQL("drop table if exists content_table");
-        createDatabase(paramSQLiteDatabase);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onUpgrade error=");
+        localStringBuilder.append(paramSQLiteDatabase.getMessage());
+        QLog.d("QQAlbum", 2, localStringBuilder.toString());
       }
-      catch (Exception paramSQLiteDatabase) {}
-    } while (!QLog.isColorLevel());
-    QLog.d(this.TAG, 2, "onUpgrade error=" + paramSQLiteDatabase.getMessage());
+    }
   }
   
   /* Error */
   public java.util.ArrayList<MediaScannerInfo> queryAllLongVideoMediaScannerInfo(String paramString)
   {
     // Byte code:
-    //   0: new 142	java/util/ArrayList
+    //   0: new 140	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 262	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 260	java/util/ArrayList:<init>	()V
     //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 116
-    //   15: getstatic 268	com/tencent/mobileqq/activity/photo/MediaDBValues:CONTENT_TABLE_COLUMNS	[Ljava/lang/String;
-    //   18: ldc_w 270
-    //   21: iconst_1
-    //   22: anewarray 114	java/lang/String
-    //   25: dup
-    //   26: iconst_0
-    //   27: ldc_w 272
-    //   30: aastore
-    //   31: aconst_null
-    //   32: aconst_null
-    //   33: ldc_w 274
-    //   36: aload_1
-    //   37: invokevirtual 278	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   40: astore_2
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_2
-    //   44: invokeinterface 283 1 0
-    //   49: ifeq +265 -> 314
-    //   52: aload_2
-    //   53: astore_1
-    //   54: new 147	com/tencent/mobileqq/activity/photo/MediaScannerInfo
-    //   57: dup
-    //   58: invokespecial 284	com/tencent/mobileqq/activity/photo/MediaScannerInfo:<init>	()V
-    //   61: astore_3
-    //   62: aload_2
-    //   63: astore_1
-    //   64: aload_3
-    //   65: aload_2
-    //   66: aload_2
-    //   67: ldc_w 285
-    //   70: invokeinterface 289 2 0
-    //   75: invokeinterface 293 2 0
-    //   80: putfield 151	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
-    //   83: aload_2
-    //   84: astore_1
-    //   85: aload_3
-    //   86: aload_2
-    //   87: aload_2
-    //   88: ldc 174
-    //   90: invokeinterface 289 2 0
-    //   95: invokeinterface 296 2 0
-    //   100: putfield 176	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
-    //   103: aload_2
-    //   104: astore_1
-    //   105: aload_3
-    //   106: aload_2
-    //   107: aload_2
-    //   108: ldc 182
-    //   110: invokeinterface 289 2 0
-    //   115: invokeinterface 296 2 0
-    //   120: putfield 184	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
-    //   123: aload_2
-    //   124: astore_1
-    //   125: aload_3
-    //   126: aload_2
-    //   127: aload_2
-    //   128: ldc 186
-    //   130: invokeinterface 289 2 0
-    //   135: invokeinterface 300 2 0
-    //   140: putfield 190	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
-    //   143: aload_2
-    //   144: astore_1
-    //   145: aload_3
-    //   146: aload_2
-    //   147: aload_2
-    //   148: ldc 200
-    //   150: invokeinterface 289 2 0
-    //   155: invokeinterface 300 2 0
-    //   160: putfield 203	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
-    //   163: aload_2
-    //   164: astore_1
-    //   165: aload_3
-    //   166: aload_2
-    //   167: aload_2
-    //   168: ldc 205
-    //   170: invokeinterface 289 2 0
-    //   175: invokeinterface 300 2 0
-    //   180: putfield 207	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
-    //   183: aload_2
-    //   184: astore_1
-    //   185: aload_3
-    //   186: aload_2
-    //   187: aload_2
-    //   188: ldc 209
-    //   190: invokeinterface 289 2 0
-    //   195: invokeinterface 296 2 0
-    //   200: putfield 212	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
-    //   203: aload_2
-    //   204: astore_1
-    //   205: aload_3
-    //   206: aload_2
-    //   207: aload_2
-    //   208: ldc 214
-    //   210: invokeinterface 289 2 0
-    //   215: invokeinterface 296 2 0
-    //   220: putfield 217	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
-    //   223: aload_2
-    //   224: astore_1
-    //   225: aload_3
-    //   226: aload_2
-    //   227: aload_2
-    //   228: ldc 219
-    //   230: invokeinterface 289 2 0
-    //   235: invokeinterface 296 2 0
-    //   240: putfield 221	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
-    //   243: aload_2
-    //   244: astore_1
-    //   245: aload 4
-    //   247: aload_3
-    //   248: invokevirtual 304	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   251: pop
-    //   252: goto -211 -> 41
-    //   255: astore_3
-    //   256: aload_2
-    //   257: astore_1
-    //   258: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   261: ifeq +36 -> 297
-    //   264: aload_2
-    //   265: astore_1
-    //   266: aload_0
-    //   267: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   270: iconst_2
-    //   271: new 54	java/lang/StringBuilder
-    //   274: dup
-    //   275: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   278: ldc_w 306
-    //   281: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: aload_3
-    //   285: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   288: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   294: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   297: aload_2
-    //   298: ifnull +9 -> 307
-    //   301: aload_2
-    //   302: invokeinterface 307 1 0
-    //   307: aload_0
-    //   308: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   311: aload 4
-    //   313: areturn
+    //   9: aconst_null
+    //   10: astore_2
+    //   11: aconst_null
+    //   12: astore_3
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 114
+    //   19: getstatic 266	com/tencent/mobileqq/activity/photo/MediaDBValues:CONTENT_TABLE_COLUMNS	[Ljava/lang/String;
+    //   22: ldc_w 268
+    //   25: iconst_1
+    //   26: anewarray 112	java/lang/String
+    //   29: dup
+    //   30: iconst_0
+    //   31: ldc_w 270
+    //   34: aastore
+    //   35: aconst_null
+    //   36: aconst_null
+    //   37: ldc_w 272
+    //   40: aload_1
+    //   41: invokevirtual 276	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: astore_1
+    //   45: aload_1
+    //   46: astore_3
+    //   47: aload_1
+    //   48: astore_2
+    //   49: aload_1
+    //   50: invokeinterface 281 1 0
+    //   55: ifeq +239 -> 294
+    //   58: aload_1
+    //   59: astore_3
+    //   60: aload_1
+    //   61: astore_2
+    //   62: new 145	com/tencent/mobileqq/activity/photo/MediaScannerInfo
+    //   65: dup
+    //   66: invokespecial 282	com/tencent/mobileqq/activity/photo/MediaScannerInfo:<init>	()V
+    //   69: astore 5
+    //   71: aload_1
+    //   72: astore_3
+    //   73: aload_1
+    //   74: astore_2
+    //   75: aload 5
+    //   77: aload_1
+    //   78: aload_1
+    //   79: ldc_w 283
+    //   82: invokeinterface 287 2 0
+    //   87: invokeinterface 291 2 0
+    //   92: putfield 149	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
+    //   95: aload_1
+    //   96: astore_3
+    //   97: aload_1
+    //   98: astore_2
+    //   99: aload 5
+    //   101: aload_1
+    //   102: aload_1
+    //   103: ldc 172
+    //   105: invokeinterface 287 2 0
+    //   110: invokeinterface 294 2 0
+    //   115: putfield 174	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
+    //   118: aload_1
+    //   119: astore_3
+    //   120: aload_1
+    //   121: astore_2
+    //   122: aload 5
+    //   124: aload_1
+    //   125: aload_1
+    //   126: ldc 180
+    //   128: invokeinterface 287 2 0
+    //   133: invokeinterface 294 2 0
+    //   138: putfield 182	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
+    //   141: aload_1
+    //   142: astore_3
+    //   143: aload_1
+    //   144: astore_2
+    //   145: aload 5
+    //   147: aload_1
+    //   148: aload_1
+    //   149: ldc 184
+    //   151: invokeinterface 287 2 0
+    //   156: invokeinterface 298 2 0
+    //   161: putfield 188	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
+    //   164: aload_1
+    //   165: astore_3
+    //   166: aload_1
+    //   167: astore_2
+    //   168: aload 5
+    //   170: aload_1
+    //   171: aload_1
+    //   172: ldc 198
+    //   174: invokeinterface 287 2 0
+    //   179: invokeinterface 298 2 0
+    //   184: putfield 201	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
+    //   187: aload_1
+    //   188: astore_3
+    //   189: aload_1
+    //   190: astore_2
+    //   191: aload 5
+    //   193: aload_1
+    //   194: aload_1
+    //   195: ldc 203
+    //   197: invokeinterface 287 2 0
+    //   202: invokeinterface 298 2 0
+    //   207: putfield 205	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
+    //   210: aload_1
+    //   211: astore_3
+    //   212: aload_1
+    //   213: astore_2
+    //   214: aload 5
+    //   216: aload_1
+    //   217: aload_1
+    //   218: ldc 207
+    //   220: invokeinterface 287 2 0
+    //   225: invokeinterface 294 2 0
+    //   230: putfield 210	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
+    //   233: aload_1
+    //   234: astore_3
+    //   235: aload_1
+    //   236: astore_2
+    //   237: aload 5
+    //   239: aload_1
+    //   240: aload_1
+    //   241: ldc 212
+    //   243: invokeinterface 287 2 0
+    //   248: invokeinterface 294 2 0
+    //   253: putfield 215	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
+    //   256: aload_1
+    //   257: astore_3
+    //   258: aload_1
+    //   259: astore_2
+    //   260: aload 5
+    //   262: aload_1
+    //   263: aload_1
+    //   264: ldc 217
+    //   266: invokeinterface 287 2 0
+    //   271: invokeinterface 294 2 0
+    //   276: putfield 219	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
+    //   279: aload_1
+    //   280: astore_3
+    //   281: aload_1
+    //   282: astore_2
+    //   283: aload 4
+    //   285: aload 5
+    //   287: invokevirtual 302	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   290: pop
+    //   291: goto -246 -> 45
+    //   294: aload_1
+    //   295: ifnull +78 -> 373
+    //   298: goto +69 -> 367
+    //   301: astore_1
+    //   302: goto +78 -> 380
+    //   305: astore_1
+    //   306: aload_2
+    //   307: astore_3
+    //   308: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   311: ifeq +50 -> 361
     //   314: aload_2
-    //   315: ifnull +9 -> 324
-    //   318: aload_2
-    //   319: invokeinterface 307 1 0
-    //   324: aload_0
-    //   325: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   328: aload 4
-    //   330: areturn
-    //   331: astore_2
-    //   332: aconst_null
-    //   333: astore_1
-    //   334: aload_1
-    //   335: ifnull +9 -> 344
-    //   338: aload_1
-    //   339: invokeinterface 307 1 0
-    //   344: aload_0
-    //   345: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   315: astore_3
+    //   316: new 50	java/lang/StringBuilder
+    //   319: dup
+    //   320: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   323: astore 5
+    //   325: aload_2
+    //   326: astore_3
+    //   327: aload 5
+    //   329: ldc_w 304
+    //   332: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: pop
+    //   336: aload_2
+    //   337: astore_3
+    //   338: aload 5
+    //   340: aload_1
+    //   341: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   344: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: pop
     //   348: aload_2
-    //   349: athrow
-    //   350: astore_2
-    //   351: goto -17 -> 334
-    //   354: astore_3
-    //   355: aconst_null
-    //   356: astore_2
-    //   357: goto -101 -> 256
+    //   349: astore_3
+    //   350: ldc 8
+    //   352: iconst_2
+    //   353: aload 5
+    //   355: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   358: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   361: aload_2
+    //   362: ifnull +11 -> 373
+    //   365: aload_2
+    //   366: astore_1
+    //   367: aload_1
+    //   368: invokeinterface 305 1 0
+    //   373: aload_0
+    //   374: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   377: aload 4
+    //   379: areturn
+    //   380: aload_3
+    //   381: ifnull +9 -> 390
+    //   384: aload_3
+    //   385: invokeinterface 305 1 0
+    //   390: aload_0
+    //   391: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   394: goto +5 -> 399
+    //   397: aload_1
+    //   398: athrow
+    //   399: goto -2 -> 397
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	360	0	this	MediaDatabaseHelper
-    //   0	360	1	paramString	String
-    //   40	279	2	localCursor	android.database.Cursor
-    //   331	18	2	localObject1	Object
-    //   350	1	2	localObject2	Object
-    //   356	1	2	localObject3	Object
-    //   61	187	3	localMediaScannerInfo	MediaScannerInfo
-    //   255	30	3	localException1	Exception
-    //   354	1	3	localException2	Exception
-    //   7	322	4	localArrayList	java.util.ArrayList
+    //   0	402	0	this	MediaDatabaseHelper
+    //   0	402	1	paramString	String
+    //   10	356	2	str1	String
+    //   12	373	3	str2	String
+    //   7	371	4	localArrayList	java.util.ArrayList
+    //   69	285	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   43	52	255	java/lang/Exception
-    //   54	62	255	java/lang/Exception
-    //   64	83	255	java/lang/Exception
-    //   85	103	255	java/lang/Exception
-    //   105	123	255	java/lang/Exception
-    //   125	143	255	java/lang/Exception
-    //   145	163	255	java/lang/Exception
-    //   165	183	255	java/lang/Exception
-    //   185	203	255	java/lang/Exception
-    //   205	223	255	java/lang/Exception
-    //   225	243	255	java/lang/Exception
-    //   245	252	255	java/lang/Exception
-    //   9	41	331	finally
-    //   43	52	350	finally
-    //   54	62	350	finally
-    //   64	83	350	finally
-    //   85	103	350	finally
-    //   105	123	350	finally
-    //   125	143	350	finally
-    //   145	163	350	finally
-    //   165	183	350	finally
-    //   185	203	350	finally
-    //   205	223	350	finally
-    //   225	243	350	finally
-    //   245	252	350	finally
-    //   258	264	350	finally
-    //   266	297	350	finally
-    //   9	41	354	java/lang/Exception
+    //   13	45	301	finally
+    //   49	58	301	finally
+    //   62	71	301	finally
+    //   75	95	301	finally
+    //   99	118	301	finally
+    //   122	141	301	finally
+    //   145	164	301	finally
+    //   168	187	301	finally
+    //   191	210	301	finally
+    //   214	233	301	finally
+    //   237	256	301	finally
+    //   260	279	301	finally
+    //   283	291	301	finally
+    //   308	314	301	finally
+    //   316	325	301	finally
+    //   327	336	301	finally
+    //   338	348	301	finally
+    //   350	361	301	finally
+    //   13	45	305	java/lang/Exception
+    //   49	58	305	java/lang/Exception
+    //   62	71	305	java/lang/Exception
+    //   75	95	305	java/lang/Exception
+    //   99	118	305	java/lang/Exception
+    //   122	141	305	java/lang/Exception
+    //   145	164	305	java/lang/Exception
+    //   168	187	305	java/lang/Exception
+    //   191	210	305	java/lang/Exception
+    //   214	233	305	java/lang/Exception
+    //   237	256	305	java/lang/Exception
+    //   260	279	305	java/lang/Exception
+    //   283	291	305	java/lang/Exception
   }
   
   /* Error */
-  public HashSet<String> queryAllMediaScannerFolderPathSet()
+  public java.util.HashSet<String> queryAllMediaScannerFolderPathSet()
   {
     // Byte code:
-    //   0: new 99	java/util/HashSet
+    //   0: new 97	java/util/HashSet
     //   3: dup
-    //   4: invokespecial 311	java/util/HashSet:<init>	()V
+    //   4: invokespecial 309	java/util/HashSet:<init>	()V
     //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 124
-    //   15: iconst_1
-    //   16: anewarray 114	java/lang/String
-    //   19: dup
-    //   20: iconst_0
-    //   21: ldc 214
-    //   23: aastore
-    //   24: aconst_null
-    //   25: aconst_null
-    //   26: aconst_null
-    //   27: aconst_null
+    //   9: aconst_null
+    //   10: astore_1
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 122
+    //   19: iconst_1
+    //   20: anewarray 112	java/lang/String
+    //   23: dup
+    //   24: iconst_0
+    //   25: ldc 212
+    //   27: aastore
     //   28: aconst_null
-    //   29: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   32: astore_2
-    //   33: aload_2
-    //   34: astore_1
-    //   35: aload_2
-    //   36: invokeinterface 283 1 0
-    //   41: ifeq +87 -> 128
-    //   44: aload_2
-    //   45: astore_1
-    //   46: aload 4
-    //   48: aload_2
-    //   49: aload_2
-    //   50: ldc 214
-    //   52: invokeinterface 289 2 0
-    //   57: invokeinterface 296 2 0
-    //   62: invokevirtual 315	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   65: pop
-    //   66: goto -33 -> 33
-    //   69: astore_3
-    //   70: aload_2
-    //   71: astore_1
-    //   72: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq +36 -> 111
-    //   78: aload_2
-    //   79: astore_1
-    //   80: aload_0
-    //   81: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   84: iconst_2
-    //   85: new 54	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   92: ldc_w 317
-    //   95: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: aload_3
-    //   99: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   102: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   111: aload_2
-    //   112: ifnull +9 -> 121
-    //   115: aload_2
-    //   116: invokeinterface 307 1 0
-    //   121: aload_0
-    //   122: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_2
-    //   129: ifnull +9 -> 138
-    //   132: aload_2
-    //   133: invokeinterface 307 1 0
-    //   138: aload_0
-    //   139: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   142: aload 4
-    //   144: areturn
-    //   145: astore_2
-    //   146: aconst_null
-    //   147: astore_1
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokeinterface 307 1 0
-    //   158: aload_0
-    //   159: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   162: aload_2
-    //   163: athrow
-    //   164: astore_2
-    //   165: goto -17 -> 148
-    //   168: astore_3
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: goto -101 -> 70
+    //   29: aconst_null
+    //   30: aconst_null
+    //   31: aconst_null
+    //   32: aconst_null
+    //   33: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   36: astore_3
+    //   37: aload_3
+    //   38: astore_2
+    //   39: aload_3
+    //   40: astore_1
+    //   41: aload_3
+    //   42: invokeinterface 281 1 0
+    //   47: ifeq +30 -> 77
+    //   50: aload_3
+    //   51: astore_2
+    //   52: aload_3
+    //   53: astore_1
+    //   54: aload 4
+    //   56: aload_3
+    //   57: aload_3
+    //   58: ldc 212
+    //   60: invokeinterface 287 2 0
+    //   65: invokeinterface 294 2 0
+    //   70: invokevirtual 313	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   73: pop
+    //   74: goto -37 -> 37
+    //   77: aload_3
+    //   78: ifnull +78 -> 156
+    //   81: aload_3
+    //   82: astore_1
+    //   83: goto +67 -> 150
+    //   86: astore_1
+    //   87: goto +76 -> 163
+    //   90: astore_3
+    //   91: aload_1
+    //   92: astore_2
+    //   93: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: ifeq +50 -> 146
+    //   99: aload_1
+    //   100: astore_2
+    //   101: new 50	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   108: astore 5
+    //   110: aload_1
+    //   111: astore_2
+    //   112: aload 5
+    //   114: ldc_w 315
+    //   117: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: pop
+    //   121: aload_1
+    //   122: astore_2
+    //   123: aload 5
+    //   125: aload_3
+    //   126: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   129: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload_1
+    //   134: astore_2
+    //   135: ldc 8
+    //   137: iconst_2
+    //   138: aload 5
+    //   140: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: aload_1
+    //   147: ifnull +9 -> 156
+    //   150: aload_1
+    //   151: invokeinterface 305 1 0
+    //   156: aload_0
+    //   157: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   160: aload 4
+    //   162: areturn
+    //   163: aload_2
+    //   164: ifnull +9 -> 173
+    //   167: aload_2
+    //   168: invokeinterface 305 1 0
+    //   173: aload_0
+    //   174: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   177: goto +5 -> 182
+    //   180: aload_1
+    //   181: athrow
+    //   182: goto -2 -> 180
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	174	0	this	MediaDatabaseHelper
-    //   34	119	1	localCursor1	android.database.Cursor
-    //   32	101	2	localCursor2	android.database.Cursor
-    //   145	18	2	localObject1	Object
-    //   164	1	2	localObject2	Object
-    //   170	1	2	localObject3	Object
-    //   69	30	3	localException1	Exception
-    //   168	1	3	localException2	Exception
-    //   7	136	4	localHashSet	HashSet
+    //   0	185	0	this	MediaDatabaseHelper
+    //   10	73	1	localObject1	Object
+    //   86	95	1	localObject2	Object
+    //   12	156	2	localObject3	Object
+    //   36	46	3	localCursor	android.database.Cursor
+    //   90	36	3	localException	Exception
+    //   7	154	4	localHashSet	java.util.HashSet
+    //   108	31	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   35	44	69	java/lang/Exception
-    //   46	66	69	java/lang/Exception
-    //   9	33	145	finally
-    //   35	44	164	finally
-    //   46	66	164	finally
-    //   72	78	164	finally
-    //   80	111	164	finally
-    //   9	33	168	java/lang/Exception
+    //   13	37	86	finally
+    //   41	50	86	finally
+    //   54	74	86	finally
+    //   93	99	86	finally
+    //   101	110	86	finally
+    //   112	121	86	finally
+    //   123	133	86	finally
+    //   135	146	86	finally
+    //   13	37	90	java/lang/Exception
+    //   41	50	90	java/lang/Exception
+    //   54	74	90	java/lang/Exception
   }
   
   /* Error */
   public java.util.ArrayList<MediaScannerInfo> queryAllMediaScannerInfo(String paramString)
   {
     // Byte code:
-    //   0: new 142	java/util/ArrayList
+    //   0: new 140	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 262	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 260	java/util/ArrayList:<init>	()V
     //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 116
-    //   15: getstatic 268	com/tencent/mobileqq/activity/photo/MediaDBValues:CONTENT_TABLE_COLUMNS	[Ljava/lang/String;
-    //   18: aconst_null
-    //   19: aconst_null
-    //   20: aconst_null
-    //   21: aconst_null
-    //   22: ldc_w 274
-    //   25: aload_1
-    //   26: invokevirtual 278	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   29: astore_2
-    //   30: aload_2
-    //   31: astore_1
-    //   32: aload_2
-    //   33: invokeinterface 283 1 0
-    //   38: ifeq +265 -> 303
-    //   41: aload_2
-    //   42: astore_1
-    //   43: new 147	com/tencent/mobileqq/activity/photo/MediaScannerInfo
-    //   46: dup
-    //   47: invokespecial 284	com/tencent/mobileqq/activity/photo/MediaScannerInfo:<init>	()V
-    //   50: astore_3
-    //   51: aload_2
-    //   52: astore_1
-    //   53: aload_3
-    //   54: aload_2
-    //   55: aload_2
-    //   56: ldc_w 285
-    //   59: invokeinterface 289 2 0
-    //   64: invokeinterface 293 2 0
-    //   69: putfield 151	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
-    //   72: aload_2
-    //   73: astore_1
-    //   74: aload_3
-    //   75: aload_2
-    //   76: aload_2
-    //   77: ldc 174
-    //   79: invokeinterface 289 2 0
-    //   84: invokeinterface 296 2 0
-    //   89: putfield 176	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
-    //   92: aload_2
-    //   93: astore_1
-    //   94: aload_3
-    //   95: aload_2
-    //   96: aload_2
-    //   97: ldc 182
-    //   99: invokeinterface 289 2 0
-    //   104: invokeinterface 296 2 0
-    //   109: putfield 184	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
-    //   112: aload_2
-    //   113: astore_1
-    //   114: aload_3
-    //   115: aload_2
-    //   116: aload_2
-    //   117: ldc 186
-    //   119: invokeinterface 289 2 0
-    //   124: invokeinterface 300 2 0
-    //   129: putfield 190	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
-    //   132: aload_2
-    //   133: astore_1
-    //   134: aload_3
-    //   135: aload_2
-    //   136: aload_2
-    //   137: ldc 200
-    //   139: invokeinterface 289 2 0
-    //   144: invokeinterface 300 2 0
-    //   149: putfield 203	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
-    //   152: aload_2
-    //   153: astore_1
-    //   154: aload_3
-    //   155: aload_2
-    //   156: aload_2
-    //   157: ldc 205
-    //   159: invokeinterface 289 2 0
-    //   164: invokeinterface 300 2 0
-    //   169: putfield 207	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
-    //   172: aload_2
-    //   173: astore_1
-    //   174: aload_3
-    //   175: aload_2
-    //   176: aload_2
-    //   177: ldc 209
-    //   179: invokeinterface 289 2 0
-    //   184: invokeinterface 296 2 0
-    //   189: putfield 212	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
-    //   192: aload_2
-    //   193: astore_1
-    //   194: aload_3
-    //   195: aload_2
-    //   196: aload_2
-    //   197: ldc 214
-    //   199: invokeinterface 289 2 0
-    //   204: invokeinterface 296 2 0
-    //   209: putfield 217	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
-    //   212: aload_2
-    //   213: astore_1
-    //   214: aload_3
-    //   215: aload_2
-    //   216: aload_2
-    //   217: ldc 219
-    //   219: invokeinterface 289 2 0
-    //   224: invokeinterface 296 2 0
-    //   229: putfield 221	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
-    //   232: aload_2
-    //   233: astore_1
-    //   234: aload 4
-    //   236: aload_3
-    //   237: invokevirtual 304	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   240: pop
-    //   241: goto -211 -> 30
-    //   244: astore_3
-    //   245: aload_2
-    //   246: astore_1
-    //   247: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   250: ifeq +36 -> 286
-    //   253: aload_2
-    //   254: astore_1
-    //   255: aload_0
-    //   256: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   259: iconst_2
-    //   260: new 54	java/lang/StringBuilder
-    //   263: dup
-    //   264: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   267: ldc_w 321
-    //   270: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: aload_3
-    //   274: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   277: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   283: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   286: aload_2
-    //   287: ifnull +9 -> 296
-    //   290: aload_2
-    //   291: invokeinterface 307 1 0
-    //   296: aload_0
-    //   297: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   300: aload 4
-    //   302: areturn
+    //   9: aconst_null
+    //   10: astore_2
+    //   11: aconst_null
+    //   12: astore_3
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 114
+    //   19: getstatic 266	com/tencent/mobileqq/activity/photo/MediaDBValues:CONTENT_TABLE_COLUMNS	[Ljava/lang/String;
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: aconst_null
+    //   26: ldc_w 272
+    //   29: aload_1
+    //   30: invokevirtual 276	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   33: astore_1
+    //   34: aload_1
+    //   35: astore_3
+    //   36: aload_1
+    //   37: astore_2
+    //   38: aload_1
+    //   39: invokeinterface 281 1 0
+    //   44: ifeq +239 -> 283
+    //   47: aload_1
+    //   48: astore_3
+    //   49: aload_1
+    //   50: astore_2
+    //   51: new 145	com/tencent/mobileqq/activity/photo/MediaScannerInfo
+    //   54: dup
+    //   55: invokespecial 282	com/tencent/mobileqq/activity/photo/MediaScannerInfo:<init>	()V
+    //   58: astore 5
+    //   60: aload_1
+    //   61: astore_3
+    //   62: aload_1
+    //   63: astore_2
+    //   64: aload 5
+    //   66: aload_1
+    //   67: aload_1
+    //   68: ldc_w 283
+    //   71: invokeinterface 287 2 0
+    //   76: invokeinterface 291 2 0
+    //   81: putfield 149	com/tencent/mobileqq/activity/photo/MediaScannerInfo:id	I
+    //   84: aload_1
+    //   85: astore_3
+    //   86: aload_1
+    //   87: astore_2
+    //   88: aload 5
+    //   90: aload_1
+    //   91: aload_1
+    //   92: ldc 172
+    //   94: invokeinterface 287 2 0
+    //   99: invokeinterface 294 2 0
+    //   104: putfield 174	com/tencent/mobileqq/activity/photo/MediaScannerInfo:name	Ljava/lang/String;
+    //   107: aload_1
+    //   108: astore_3
+    //   109: aload_1
+    //   110: astore_2
+    //   111: aload 5
+    //   113: aload_1
+    //   114: aload_1
+    //   115: ldc 180
+    //   117: invokeinterface 287 2 0
+    //   122: invokeinterface 294 2 0
+    //   127: putfield 182	com/tencent/mobileqq/activity/photo/MediaScannerInfo:path	Ljava/lang/String;
+    //   130: aload_1
+    //   131: astore_3
+    //   132: aload_1
+    //   133: astore_2
+    //   134: aload 5
+    //   136: aload_1
+    //   137: aload_1
+    //   138: ldc 184
+    //   140: invokeinterface 287 2 0
+    //   145: invokeinterface 298 2 0
+    //   150: putfield 188	com/tencent/mobileqq/activity/photo/MediaScannerInfo:fileSize	J
+    //   153: aload_1
+    //   154: astore_3
+    //   155: aload_1
+    //   156: astore_2
+    //   157: aload 5
+    //   159: aload_1
+    //   160: aload_1
+    //   161: ldc 198
+    //   163: invokeinterface 287 2 0
+    //   168: invokeinterface 298 2 0
+    //   173: putfield 201	com/tencent/mobileqq/activity/photo/MediaScannerInfo:modifiedDate	J
+    //   176: aload_1
+    //   177: astore_3
+    //   178: aload_1
+    //   179: astore_2
+    //   180: aload 5
+    //   182: aload_1
+    //   183: aload_1
+    //   184: ldc 203
+    //   186: invokeinterface 287 2 0
+    //   191: invokeinterface 298 2 0
+    //   196: putfield 205	com/tencent/mobileqq/activity/photo/MediaScannerInfo:duration	J
+    //   199: aload_1
+    //   200: astore_3
+    //   201: aload_1
+    //   202: astore_2
+    //   203: aload 5
+    //   205: aload_1
+    //   206: aload_1
+    //   207: ldc 207
+    //   209: invokeinterface 287 2 0
+    //   214: invokeinterface 294 2 0
+    //   219: putfield 210	com/tencent/mobileqq/activity/photo/MediaScannerInfo:mimeType	Ljava/lang/String;
+    //   222: aload_1
+    //   223: astore_3
+    //   224: aload_1
+    //   225: astore_2
+    //   226: aload 5
+    //   228: aload_1
+    //   229: aload_1
+    //   230: ldc 212
+    //   232: invokeinterface 287 2 0
+    //   237: invokeinterface 294 2 0
+    //   242: putfield 215	com/tencent/mobileqq/activity/photo/MediaScannerInfo:folderPath	Ljava/lang/String;
+    //   245: aload_1
+    //   246: astore_3
+    //   247: aload_1
+    //   248: astore_2
+    //   249: aload 5
+    //   251: aload_1
+    //   252: aload_1
+    //   253: ldc 217
+    //   255: invokeinterface 287 2 0
+    //   260: invokeinterface 294 2 0
+    //   265: putfield 219	com/tencent/mobileqq/activity/photo/MediaScannerInfo:md5	Ljava/lang/String;
+    //   268: aload_1
+    //   269: astore_3
+    //   270: aload_1
+    //   271: astore_2
+    //   272: aload 4
+    //   274: aload 5
+    //   276: invokevirtual 302	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   279: pop
+    //   280: goto -246 -> 34
+    //   283: aload_1
+    //   284: ifnull +78 -> 362
+    //   287: goto +69 -> 356
+    //   290: astore_1
+    //   291: goto +78 -> 369
+    //   294: astore_1
+    //   295: aload_2
+    //   296: astore_3
+    //   297: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   300: ifeq +50 -> 350
     //   303: aload_2
-    //   304: ifnull +9 -> 313
-    //   307: aload_2
-    //   308: invokeinterface 307 1 0
-    //   313: aload_0
-    //   314: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   317: aload 4
-    //   319: areturn
-    //   320: astore_2
-    //   321: aconst_null
-    //   322: astore_1
-    //   323: aload_1
-    //   324: ifnull +9 -> 333
-    //   327: aload_1
-    //   328: invokeinterface 307 1 0
-    //   333: aload_0
-    //   334: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   304: astore_3
+    //   305: new 50	java/lang/StringBuilder
+    //   308: dup
+    //   309: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   312: astore 5
+    //   314: aload_2
+    //   315: astore_3
+    //   316: aload 5
+    //   318: ldc_w 319
+    //   321: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   324: pop
+    //   325: aload_2
+    //   326: astore_3
+    //   327: aload 5
+    //   329: aload_1
+    //   330: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   333: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: pop
     //   337: aload_2
-    //   338: athrow
-    //   339: astore_2
-    //   340: goto -17 -> 323
-    //   343: astore_3
-    //   344: aconst_null
-    //   345: astore_2
-    //   346: goto -101 -> 245
+    //   338: astore_3
+    //   339: ldc 8
+    //   341: iconst_2
+    //   342: aload 5
+    //   344: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   347: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   350: aload_2
+    //   351: ifnull +11 -> 362
+    //   354: aload_2
+    //   355: astore_1
+    //   356: aload_1
+    //   357: invokeinterface 305 1 0
+    //   362: aload_0
+    //   363: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   366: aload 4
+    //   368: areturn
+    //   369: aload_3
+    //   370: ifnull +9 -> 379
+    //   373: aload_3
+    //   374: invokeinterface 305 1 0
+    //   379: aload_0
+    //   380: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   383: goto +5 -> 388
+    //   386: aload_1
+    //   387: athrow
+    //   388: goto -2 -> 386
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	349	0	this	MediaDatabaseHelper
-    //   0	349	1	paramString	String
-    //   29	279	2	localCursor	android.database.Cursor
-    //   320	18	2	localObject1	Object
-    //   339	1	2	localObject2	Object
-    //   345	1	2	localObject3	Object
-    //   50	187	3	localMediaScannerInfo	MediaScannerInfo
-    //   244	30	3	localException1	Exception
-    //   343	1	3	localException2	Exception
-    //   7	311	4	localArrayList	java.util.ArrayList
+    //   0	391	0	this	MediaDatabaseHelper
+    //   0	391	1	paramString	String
+    //   10	345	2	str1	String
+    //   12	362	3	str2	String
+    //   7	360	4	localArrayList	java.util.ArrayList
+    //   58	285	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   32	41	244	java/lang/Exception
-    //   43	51	244	java/lang/Exception
-    //   53	72	244	java/lang/Exception
-    //   74	92	244	java/lang/Exception
-    //   94	112	244	java/lang/Exception
-    //   114	132	244	java/lang/Exception
-    //   134	152	244	java/lang/Exception
-    //   154	172	244	java/lang/Exception
-    //   174	192	244	java/lang/Exception
-    //   194	212	244	java/lang/Exception
-    //   214	232	244	java/lang/Exception
-    //   234	241	244	java/lang/Exception
-    //   9	30	320	finally
-    //   32	41	339	finally
-    //   43	51	339	finally
-    //   53	72	339	finally
-    //   74	92	339	finally
-    //   94	112	339	finally
-    //   114	132	339	finally
-    //   134	152	339	finally
-    //   154	172	339	finally
-    //   174	192	339	finally
-    //   194	212	339	finally
-    //   214	232	339	finally
-    //   234	241	339	finally
-    //   247	253	339	finally
-    //   255	286	339	finally
-    //   9	30	343	java/lang/Exception
+    //   13	34	290	finally
+    //   38	47	290	finally
+    //   51	60	290	finally
+    //   64	84	290	finally
+    //   88	107	290	finally
+    //   111	130	290	finally
+    //   134	153	290	finally
+    //   157	176	290	finally
+    //   180	199	290	finally
+    //   203	222	290	finally
+    //   226	245	290	finally
+    //   249	268	290	finally
+    //   272	280	290	finally
+    //   297	303	290	finally
+    //   305	314	290	finally
+    //   316	325	290	finally
+    //   327	337	290	finally
+    //   339	350	290	finally
+    //   13	34	294	java/lang/Exception
+    //   38	47	294	java/lang/Exception
+    //   51	60	294	java/lang/Exception
+    //   64	84	294	java/lang/Exception
+    //   88	107	294	java/lang/Exception
+    //   111	130	294	java/lang/Exception
+    //   134	153	294	java/lang/Exception
+    //   157	176	294	java/lang/Exception
+    //   180	199	294	java/lang/Exception
+    //   203	222	294	java/lang/Exception
+    //   226	245	294	java/lang/Exception
+    //   249	268	294	java/lang/Exception
+    //   272	280	294	java/lang/Exception
   }
   
   /* Error */
   public int queryAllMediaScannerInfoCnt()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   4: ldc 116
-    //   6: iconst_1
-    //   7: anewarray 114	java/lang/String
-    //   10: dup
-    //   11: iconst_0
-    //   12: ldc_w 285
-    //   15: aastore
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: aconst_null
-    //   20: aconst_null
-    //   21: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   24: astore_3
-    //   25: aload_3
-    //   26: astore_2
-    //   27: aload_3
-    //   28: invokeinterface 325 1 0
-    //   33: istore_1
-    //   34: aload_3
-    //   35: ifnull +9 -> 44
-    //   38: aload_3
-    //   39: invokeinterface 307 1 0
-    //   44: aload_0
-    //   45: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   48: iload_1
-    //   49: ireturn
-    //   50: astore 4
-    //   52: aconst_null
-    //   53: astore_3
-    //   54: aload_3
-    //   55: astore_2
-    //   56: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   59: ifeq +37 -> 96
-    //   62: aload_3
-    //   63: astore_2
-    //   64: aload_0
-    //   65: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   68: iconst_2
-    //   69: new 54	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   76: ldc_w 327
-    //   79: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: aload 4
-    //   84: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   87: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   96: aload_3
-    //   97: ifnull +9 -> 106
-    //   100: aload_3
-    //   101: invokeinterface 307 1 0
-    //   106: aload_0
-    //   107: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   110: iconst_0
-    //   111: ireturn
-    //   112: astore_3
-    //   113: aconst_null
-    //   114: astore_2
-    //   115: aload_2
-    //   116: ifnull +9 -> 125
-    //   119: aload_2
-    //   120: invokeinterface 307 1 0
-    //   125: aload_0
-    //   126: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   129: aload_3
-    //   130: athrow
-    //   131: astore_3
-    //   132: goto -17 -> 115
-    //   135: astore 4
-    //   137: goto -83 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	this	MediaDatabaseHelper
-    //   33	16	1	i	int
-    //   26	94	2	localCursor1	android.database.Cursor
-    //   24	77	3	localCursor2	android.database.Cursor
-    //   112	18	3	localObject1	Object
-    //   131	1	3	localObject2	Object
-    //   50	33	4	localException1	Exception
-    //   135	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	25	50	java/lang/Exception
-    //   0	25	112	finally
-    //   27	34	131	finally
-    //   56	62	131	finally
-    //   64	96	131	finally
-    //   27	34	135	java/lang/Exception
-  }
-  
-  /* Error */
-  public HashSet<String> queryAllMediaScannerInfoMd5Set()
-  {
-    // Byte code:
-    //   0: new 99	java/util/HashSet
-    //   3: dup
-    //   4: invokespecial 311	java/util/HashSet:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 116
-    //   15: iconst_1
-    //   16: anewarray 114	java/lang/String
-    //   19: dup
-    //   20: iconst_0
-    //   21: ldc 219
-    //   23: aastore
-    //   24: aconst_null
-    //   25: aconst_null
+    //   0: iconst_0
+    //   1: istore_1
+    //   2: iconst_0
+    //   3: istore_3
+    //   4: aconst_null
+    //   5: astore 4
+    //   7: aconst_null
+    //   8: astore 5
+    //   10: aload_0
+    //   11: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   14: ldc 114
+    //   16: iconst_1
+    //   17: anewarray 112	java/lang/String
+    //   20: dup
+    //   21: iconst_0
+    //   22: ldc_w 283
+    //   25: aastore
     //   26: aconst_null
     //   27: aconst_null
     //   28: aconst_null
-    //   29: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   32: astore_2
-    //   33: aload_2
-    //   34: astore_1
-    //   35: aload_2
-    //   36: invokeinterface 283 1 0
-    //   41: ifeq +87 -> 128
-    //   44: aload_2
-    //   45: astore_1
-    //   46: aload 4
-    //   48: aload_2
-    //   49: aload_2
-    //   50: ldc 219
-    //   52: invokeinterface 289 2 0
-    //   57: invokeinterface 296 2 0
-    //   62: invokevirtual 315	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   65: pop
-    //   66: goto -33 -> 33
-    //   69: astore_3
-    //   70: aload_2
-    //   71: astore_1
-    //   72: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq +36 -> 111
-    //   78: aload_2
-    //   79: astore_1
-    //   80: aload_0
-    //   81: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   84: iconst_2
-    //   85: new 54	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   92: ldc_w 317
-    //   95: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: aload_3
-    //   99: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   102: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   111: aload_2
-    //   112: ifnull +9 -> 121
-    //   115: aload_2
-    //   116: invokeinterface 307 1 0
-    //   121: aload_0
-    //   122: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_2
-    //   129: ifnull +9 -> 138
-    //   132: aload_2
-    //   133: invokeinterface 307 1 0
-    //   138: aload_0
-    //   139: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   142: aload 4
-    //   144: areturn
-    //   145: astore_2
-    //   146: aconst_null
-    //   147: astore_1
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokeinterface 307 1 0
-    //   158: aload_0
-    //   159: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   162: aload_2
-    //   163: athrow
-    //   164: astore_2
-    //   165: goto -17 -> 148
-    //   168: astore_3
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: goto -101 -> 70
+    //   29: aconst_null
+    //   30: aconst_null
+    //   31: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   34: astore 6
+    //   36: aload 6
+    //   38: astore 5
+    //   40: aload 6
+    //   42: astore 4
+    //   44: aload 6
+    //   46: invokeinterface 323 1 0
+    //   51: istore_2
+    //   52: iload_2
+    //   53: istore_1
+    //   54: aload 6
+    //   56: ifnull +99 -> 155
+    //   59: iload_2
+    //   60: istore_1
+    //   61: aload 6
+    //   63: astore 4
+    //   65: goto +83 -> 148
+    //   68: astore 4
+    //   70: goto +91 -> 161
+    //   73: astore 6
+    //   75: aload 4
+    //   77: astore 5
+    //   79: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   82: ifeq +59 -> 141
+    //   85: aload 4
+    //   87: astore 5
+    //   89: new 50	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   96: astore 7
+    //   98: aload 4
+    //   100: astore 5
+    //   102: aload 7
+    //   104: ldc_w 325
+    //   107: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
+    //   111: aload 4
+    //   113: astore 5
+    //   115: aload 7
+    //   117: aload 6
+    //   119: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: pop
+    //   126: aload 4
+    //   128: astore 5
+    //   130: ldc 8
+    //   132: iconst_2
+    //   133: aload 7
+    //   135: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   141: aload 4
+    //   143: ifnull +12 -> 155
+    //   146: iload_3
+    //   147: istore_1
+    //   148: aload 4
+    //   150: invokeinterface 305 1 0
+    //   155: aload_0
+    //   156: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   159: iload_1
+    //   160: ireturn
+    //   161: aload 5
+    //   163: ifnull +10 -> 173
+    //   166: aload 5
+    //   168: invokeinterface 305 1 0
+    //   173: aload_0
+    //   174: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   177: aload 4
+    //   179: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	174	0	this	MediaDatabaseHelper
-    //   34	119	1	localCursor1	android.database.Cursor
-    //   32	101	2	localCursor2	android.database.Cursor
-    //   145	18	2	localObject1	Object
-    //   164	1	2	localObject2	Object
-    //   170	1	2	localObject3	Object
-    //   69	30	3	localException1	Exception
-    //   168	1	3	localException2	Exception
-    //   7	136	4	localHashSet	HashSet
+    //   0	180	0	this	MediaDatabaseHelper
+    //   1	159	1	i	int
+    //   51	9	2	j	int
+    //   3	144	3	k	int
+    //   5	59	4	localObject1	Object
+    //   68	110	4	localObject2	Object
+    //   8	159	5	localObject3	Object
+    //   34	28	6	localCursor	android.database.Cursor
+    //   73	45	6	localException	Exception
+    //   96	38	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   35	44	69	java/lang/Exception
-    //   46	66	69	java/lang/Exception
-    //   9	33	145	finally
-    //   35	44	164	finally
-    //   46	66	164	finally
-    //   72	78	164	finally
-    //   80	111	164	finally
-    //   9	33	168	java/lang/Exception
+    //   10	36	68	finally
+    //   44	52	68	finally
+    //   79	85	68	finally
+    //   89	98	68	finally
+    //   102	111	68	finally
+    //   115	126	68	finally
+    //   130	141	68	finally
+    //   10	36	73	java/lang/Exception
+    //   44	52	73	java/lang/Exception
   }
   
   /* Error */
-  public HashSet<String> queryAllMediaScannerInfoPathSet()
+  public java.util.HashSet<String> queryAllMediaScannerInfoMd5Set()
   {
     // Byte code:
-    //   0: new 99	java/util/HashSet
+    //   0: new 97	java/util/HashSet
     //   3: dup
-    //   4: invokespecial 311	java/util/HashSet:<init>	()V
+    //   4: invokespecial 309	java/util/HashSet:<init>	()V
     //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 116
-    //   15: iconst_1
-    //   16: anewarray 114	java/lang/String
-    //   19: dup
-    //   20: iconst_0
-    //   21: ldc 182
-    //   23: aastore
-    //   24: aconst_null
-    //   25: aconst_null
-    //   26: aconst_null
-    //   27: aconst_null
+    //   9: aconst_null
+    //   10: astore_1
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 114
+    //   19: iconst_1
+    //   20: anewarray 112	java/lang/String
+    //   23: dup
+    //   24: iconst_0
+    //   25: ldc 217
+    //   27: aastore
     //   28: aconst_null
-    //   29: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   32: astore_2
-    //   33: aload_2
-    //   34: astore_1
-    //   35: aload_2
-    //   36: invokeinterface 283 1 0
-    //   41: ifeq +87 -> 128
-    //   44: aload_2
-    //   45: astore_1
-    //   46: aload 4
-    //   48: aload_2
-    //   49: aload_2
-    //   50: ldc 182
-    //   52: invokeinterface 289 2 0
-    //   57: invokeinterface 296 2 0
-    //   62: invokevirtual 315	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   65: pop
-    //   66: goto -33 -> 33
-    //   69: astore_3
-    //   70: aload_2
-    //   71: astore_1
-    //   72: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   75: ifeq +36 -> 111
-    //   78: aload_2
-    //   79: astore_1
-    //   80: aload_0
-    //   81: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   84: iconst_2
-    //   85: new 54	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   92: ldc_w 331
-    //   95: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: aload_3
-    //   99: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   102: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   111: aload_2
-    //   112: ifnull +9 -> 121
-    //   115: aload_2
-    //   116: invokeinterface 307 1 0
-    //   121: aload_0
-    //   122: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   125: aload 4
-    //   127: areturn
-    //   128: aload_2
-    //   129: ifnull +9 -> 138
-    //   132: aload_2
-    //   133: invokeinterface 307 1 0
-    //   138: aload_0
-    //   139: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   142: aload 4
-    //   144: areturn
-    //   145: astore_2
-    //   146: aconst_null
-    //   147: astore_1
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokeinterface 307 1 0
-    //   158: aload_0
-    //   159: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   162: aload_2
-    //   163: athrow
-    //   164: astore_2
-    //   165: goto -17 -> 148
-    //   168: astore_3
-    //   169: aconst_null
-    //   170: astore_2
-    //   171: goto -101 -> 70
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	MediaDatabaseHelper
-    //   34	119	1	localCursor1	android.database.Cursor
-    //   32	101	2	localCursor2	android.database.Cursor
-    //   145	18	2	localObject1	Object
-    //   164	1	2	localObject2	Object
-    //   170	1	2	localObject3	Object
-    //   69	30	3	localException1	Exception
-    //   168	1	3	localException2	Exception
-    //   7	136	4	localHashSet	HashSet
-    // Exception table:
-    //   from	to	target	type
-    //   35	44	69	java/lang/Exception
-    //   46	66	69	java/lang/Exception
-    //   9	33	145	finally
-    //   35	44	164	finally
-    //   46	66	164	finally
-    //   72	78	164	finally
-    //   80	111	164	finally
-    //   9	33	168	java/lang/Exception
-  }
-  
-  /* Error */
-  public HashSet<String> queryAllMediaScannerInfoPathSetByFolder(String paramString)
-  {
-    // Byte code:
-    //   0: new 99	java/util/HashSet
-    //   3: dup
-    //   4: invokespecial 311	java/util/HashSet:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 116
-    //   15: iconst_1
-    //   16: anewarray 114	java/lang/String
-    //   19: dup
-    //   20: iconst_0
-    //   21: ldc 182
-    //   23: aastore
-    //   24: ldc 118
-    //   26: iconst_1
-    //   27: anewarray 114	java/lang/String
-    //   30: dup
-    //   31: iconst_0
-    //   32: aload_1
-    //   33: aastore
-    //   34: aconst_null
-    //   35: aconst_null
-    //   36: aconst_null
-    //   37: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   40: astore_2
-    //   41: aload_2
-    //   42: astore_1
-    //   43: aload_2
-    //   44: invokeinterface 283 1 0
-    //   49: ifeq +87 -> 136
-    //   52: aload_2
+    //   29: aconst_null
+    //   30: aconst_null
+    //   31: aconst_null
+    //   32: aconst_null
+    //   33: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   36: astore_3
+    //   37: aload_3
+    //   38: astore_2
+    //   39: aload_3
+    //   40: astore_1
+    //   41: aload_3
+    //   42: invokeinterface 281 1 0
+    //   47: ifeq +30 -> 77
+    //   50: aload_3
+    //   51: astore_2
+    //   52: aload_3
     //   53: astore_1
     //   54: aload 4
-    //   56: aload_2
-    //   57: aload_2
-    //   58: ldc 182
-    //   60: invokeinterface 289 2 0
-    //   65: invokeinterface 296 2 0
-    //   70: invokevirtual 315	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   56: aload_3
+    //   57: aload_3
+    //   58: ldc 217
+    //   60: invokeinterface 287 2 0
+    //   65: invokeinterface 294 2 0
+    //   70: invokevirtual 313	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   73: pop
-    //   74: goto -33 -> 41
-    //   77: astore_3
-    //   78: aload_2
-    //   79: astore_1
-    //   80: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq +36 -> 119
-    //   86: aload_2
-    //   87: astore_1
-    //   88: aload_0
-    //   89: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   92: iconst_2
-    //   93: new 54	java/lang/StringBuilder
-    //   96: dup
-    //   97: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   100: ldc_w 335
-    //   103: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: aload_3
-    //   107: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   110: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   119: aload_2
-    //   120: ifnull +9 -> 129
-    //   123: aload_2
-    //   124: invokeinterface 307 1 0
-    //   129: aload_0
-    //   130: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   133: aload 4
-    //   135: areturn
-    //   136: aload_2
-    //   137: ifnull +9 -> 146
-    //   140: aload_2
-    //   141: invokeinterface 307 1 0
-    //   146: aload_0
-    //   147: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   150: aload 4
-    //   152: areturn
-    //   153: astore_2
-    //   154: aconst_null
-    //   155: astore_1
-    //   156: aload_1
-    //   157: ifnull +9 -> 166
-    //   160: aload_1
-    //   161: invokeinterface 307 1 0
-    //   166: aload_0
-    //   167: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   170: aload_2
-    //   171: athrow
-    //   172: astore_2
-    //   173: goto -17 -> 156
-    //   176: astore_3
-    //   177: aconst_null
-    //   178: astore_2
-    //   179: goto -101 -> 78
+    //   74: goto -37 -> 37
+    //   77: aload_3
+    //   78: ifnull +78 -> 156
+    //   81: aload_3
+    //   82: astore_1
+    //   83: goto +67 -> 150
+    //   86: astore_1
+    //   87: goto +76 -> 163
+    //   90: astore_3
+    //   91: aload_1
+    //   92: astore_2
+    //   93: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: ifeq +50 -> 146
+    //   99: aload_1
+    //   100: astore_2
+    //   101: new 50	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   108: astore 5
+    //   110: aload_1
+    //   111: astore_2
+    //   112: aload 5
+    //   114: ldc_w 315
+    //   117: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: pop
+    //   121: aload_1
+    //   122: astore_2
+    //   123: aload 5
+    //   125: aload_3
+    //   126: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   129: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload_1
+    //   134: astore_2
+    //   135: ldc 8
+    //   137: iconst_2
+    //   138: aload 5
+    //   140: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: aload_1
+    //   147: ifnull +9 -> 156
+    //   150: aload_1
+    //   151: invokeinterface 305 1 0
+    //   156: aload_0
+    //   157: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   160: aload 4
+    //   162: areturn
+    //   163: aload_2
+    //   164: ifnull +9 -> 173
+    //   167: aload_2
+    //   168: invokeinterface 305 1 0
+    //   173: aload_0
+    //   174: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   177: goto +5 -> 182
+    //   180: aload_1
+    //   181: athrow
+    //   182: goto -2 -> 180
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	182	0	this	MediaDatabaseHelper
-    //   0	182	1	paramString	String
-    //   40	101	2	localCursor	android.database.Cursor
-    //   153	18	2	localObject1	Object
-    //   172	1	2	localObject2	Object
-    //   178	1	2	localObject3	Object
-    //   77	30	3	localException1	Exception
-    //   176	1	3	localException2	Exception
-    //   7	144	4	localHashSet	HashSet
+    //   0	185	0	this	MediaDatabaseHelper
+    //   10	73	1	localObject1	Object
+    //   86	95	1	localObject2	Object
+    //   12	156	2	localObject3	Object
+    //   36	46	3	localCursor	android.database.Cursor
+    //   90	36	3	localException	Exception
+    //   7	154	4	localHashSet	java.util.HashSet
+    //   108	31	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   43	52	77	java/lang/Exception
-    //   54	74	77	java/lang/Exception
-    //   9	41	153	finally
-    //   43	52	172	finally
-    //   54	74	172	finally
-    //   80	86	172	finally
-    //   88	119	172	finally
-    //   9	41	176	java/lang/Exception
+    //   13	37	86	finally
+    //   41	50	86	finally
+    //   54	74	86	finally
+    //   93	99	86	finally
+    //   101	110	86	finally
+    //   112	121	86	finally
+    //   123	133	86	finally
+    //   135	146	86	finally
+    //   13	37	90	java/lang/Exception
+    //   41	50	90	java/lang/Exception
+    //   54	74	90	java/lang/Exception
+  }
+  
+  /* Error */
+  public java.util.HashSet<String> queryAllMediaScannerInfoPathSet()
+  {
+    // Byte code:
+    //   0: new 97	java/util/HashSet
+    //   3: dup
+    //   4: invokespecial 309	java/util/HashSet:<init>	()V
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore_1
+    //   11: aconst_null
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 114
+    //   19: iconst_1
+    //   20: anewarray 112	java/lang/String
+    //   23: dup
+    //   24: iconst_0
+    //   25: ldc 180
+    //   27: aastore
+    //   28: aconst_null
+    //   29: aconst_null
+    //   30: aconst_null
+    //   31: aconst_null
+    //   32: aconst_null
+    //   33: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   36: astore_3
+    //   37: aload_3
+    //   38: astore_2
+    //   39: aload_3
+    //   40: astore_1
+    //   41: aload_3
+    //   42: invokeinterface 281 1 0
+    //   47: ifeq +30 -> 77
+    //   50: aload_3
+    //   51: astore_2
+    //   52: aload_3
+    //   53: astore_1
+    //   54: aload 4
+    //   56: aload_3
+    //   57: aload_3
+    //   58: ldc 180
+    //   60: invokeinterface 287 2 0
+    //   65: invokeinterface 294 2 0
+    //   70: invokevirtual 313	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   73: pop
+    //   74: goto -37 -> 37
+    //   77: aload_3
+    //   78: ifnull +78 -> 156
+    //   81: aload_3
+    //   82: astore_1
+    //   83: goto +67 -> 150
+    //   86: astore_1
+    //   87: goto +76 -> 163
+    //   90: astore_3
+    //   91: aload_1
+    //   92: astore_2
+    //   93: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: ifeq +50 -> 146
+    //   99: aload_1
+    //   100: astore_2
+    //   101: new 50	java/lang/StringBuilder
+    //   104: dup
+    //   105: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   108: astore 5
+    //   110: aload_1
+    //   111: astore_2
+    //   112: aload 5
+    //   114: ldc_w 329
+    //   117: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: pop
+    //   121: aload_1
+    //   122: astore_2
+    //   123: aload 5
+    //   125: aload_3
+    //   126: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   129: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: pop
+    //   133: aload_1
+    //   134: astore_2
+    //   135: ldc 8
+    //   137: iconst_2
+    //   138: aload 5
+    //   140: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   146: aload_1
+    //   147: ifnull +9 -> 156
+    //   150: aload_1
+    //   151: invokeinterface 305 1 0
+    //   156: aload_0
+    //   157: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   160: aload 4
+    //   162: areturn
+    //   163: aload_2
+    //   164: ifnull +9 -> 173
+    //   167: aload_2
+    //   168: invokeinterface 305 1 0
+    //   173: aload_0
+    //   174: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   177: goto +5 -> 182
+    //   180: aload_1
+    //   181: athrow
+    //   182: goto -2 -> 180
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	185	0	this	MediaDatabaseHelper
+    //   10	73	1	localObject1	Object
+    //   86	95	1	localObject2	Object
+    //   12	156	2	localObject3	Object
+    //   36	46	3	localCursor	android.database.Cursor
+    //   90	36	3	localException	Exception
+    //   7	154	4	localHashSet	java.util.HashSet
+    //   108	31	5	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   13	37	86	finally
+    //   41	50	86	finally
+    //   54	74	86	finally
+    //   93	99	86	finally
+    //   101	110	86	finally
+    //   112	121	86	finally
+    //   123	133	86	finally
+    //   135	146	86	finally
+    //   13	37	90	java/lang/Exception
+    //   41	50	90	java/lang/Exception
+    //   54	74	90	java/lang/Exception
+  }
+  
+  /* Error */
+  public java.util.HashSet<String> queryAllMediaScannerInfoPathSetByFolder(String paramString)
+  {
+    // Byte code:
+    //   0: new 97	java/util/HashSet
+    //   3: dup
+    //   4: invokespecial 309	java/util/HashSet:<init>	()V
+    //   7: astore 4
+    //   9: aconst_null
+    //   10: astore_2
+    //   11: aconst_null
+    //   12: astore_3
+    //   13: aload_0
+    //   14: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: ldc 114
+    //   19: iconst_1
+    //   20: anewarray 112	java/lang/String
+    //   23: dup
+    //   24: iconst_0
+    //   25: ldc 180
+    //   27: aastore
+    //   28: ldc 116
+    //   30: iconst_1
+    //   31: anewarray 112	java/lang/String
+    //   34: dup
+    //   35: iconst_0
+    //   36: aload_1
+    //   37: aastore
+    //   38: aconst_null
+    //   39: aconst_null
+    //   40: aconst_null
+    //   41: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   44: astore_1
+    //   45: aload_1
+    //   46: astore_3
+    //   47: aload_1
+    //   48: astore_2
+    //   49: aload_1
+    //   50: invokeinterface 281 1 0
+    //   55: ifeq +30 -> 85
+    //   58: aload_1
+    //   59: astore_3
+    //   60: aload_1
+    //   61: astore_2
+    //   62: aload 4
+    //   64: aload_1
+    //   65: aload_1
+    //   66: ldc 180
+    //   68: invokeinterface 287 2 0
+    //   73: invokeinterface 294 2 0
+    //   78: invokevirtual 313	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   81: pop
+    //   82: goto -37 -> 45
+    //   85: aload_1
+    //   86: ifnull +78 -> 164
+    //   89: goto +69 -> 158
+    //   92: astore_1
+    //   93: goto +78 -> 171
+    //   96: astore_1
+    //   97: aload_2
+    //   98: astore_3
+    //   99: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   102: ifeq +50 -> 152
+    //   105: aload_2
+    //   106: astore_3
+    //   107: new 50	java/lang/StringBuilder
+    //   110: dup
+    //   111: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   114: astore 5
+    //   116: aload_2
+    //   117: astore_3
+    //   118: aload 5
+    //   120: ldc_w 333
+    //   123: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload_2
+    //   128: astore_3
+    //   129: aload 5
+    //   131: aload_1
+    //   132: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   135: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: pop
+    //   139: aload_2
+    //   140: astore_3
+    //   141: ldc 8
+    //   143: iconst_2
+    //   144: aload 5
+    //   146: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   152: aload_2
+    //   153: ifnull +11 -> 164
+    //   156: aload_2
+    //   157: astore_1
+    //   158: aload_1
+    //   159: invokeinterface 305 1 0
+    //   164: aload_0
+    //   165: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   168: aload 4
+    //   170: areturn
+    //   171: aload_3
+    //   172: ifnull +9 -> 181
+    //   175: aload_3
+    //   176: invokeinterface 305 1 0
+    //   181: aload_0
+    //   182: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   185: goto +5 -> 190
+    //   188: aload_1
+    //   189: athrow
+    //   190: goto -2 -> 188
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	193	0	this	MediaDatabaseHelper
+    //   0	193	1	paramString	String
+    //   10	147	2	str1	String
+    //   12	164	3	str2	String
+    //   7	162	4	localHashSet	java.util.HashSet
+    //   114	31	5	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   13	45	92	finally
+    //   49	58	92	finally
+    //   62	82	92	finally
+    //   99	105	92	finally
+    //   107	116	92	finally
+    //   118	127	92	finally
+    //   129	139	92	finally
+    //   141	152	92	finally
+    //   13	45	96	java/lang/Exception
+    //   49	58	96	java/lang/Exception
+    //   62	82	96	java/lang/Exception
   }
   
   /* Error */
   public MediaScannerFolderInfo queryMediaScannerFolderInfoByFolderpath(String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 94	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   4: ldc 124
-    //   6: getstatic 341	com/tencent/mobileqq/activity/photo/MediaDBValues:FOLDER_TABLE_COLUMNS	[Ljava/lang/String;
-    //   9: ldc 118
-    //   11: iconst_1
-    //   12: anewarray 114	java/lang/String
-    //   15: dup
-    //   16: iconst_0
-    //   17: aload_1
-    //   18: aastore
-    //   19: aconst_null
-    //   20: aconst_null
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aload_0
+    //   3: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   6: ldc 122
+    //   8: getstatic 339	com/tencent/mobileqq/activity/photo/MediaDBValues:FOLDER_TABLE_COLUMNS	[Ljava/lang/String;
+    //   11: ldc 116
+    //   13: iconst_1
+    //   14: anewarray 112	java/lang/String
+    //   17: dup
+    //   18: iconst_0
+    //   19: aload_1
+    //   20: aastore
     //   21: aconst_null
-    //   22: invokevirtual 314	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   25: astore_1
-    //   26: aload_1
-    //   27: invokeinterface 325 1 0
-    //   32: ifle +184 -> 216
-    //   35: aload_1
-    //   36: invokeinterface 283 1 0
-    //   41: pop
-    //   42: new 230	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo
-    //   45: dup
-    //   46: invokespecial 342	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:<init>	()V
-    //   49: astore_2
-    //   50: aload_2
-    //   51: aload_1
-    //   52: aload_1
-    //   53: ldc_w 285
-    //   56: invokeinterface 289 2 0
-    //   61: invokeinterface 293 2 0
-    //   66: putfield 343	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:id	I
-    //   69: aload_2
-    //   70: aload_1
-    //   71: aload_1
-    //   72: ldc 214
-    //   74: invokeinterface 289 2 0
-    //   79: invokeinterface 296 2 0
-    //   84: putfield 232	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:folderpath	Ljava/lang/String;
-    //   87: aload_2
-    //   88: aload_1
-    //   89: aload_1
-    //   90: ldc 200
-    //   92: invokeinterface 289 2 0
-    //   97: invokeinterface 300 2 0
-    //   102: putfield 233	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:modifiedDate	J
-    //   105: aload_1
-    //   106: ifnull +9 -> 115
-    //   109: aload_1
-    //   110: invokeinterface 307 1 0
-    //   115: aload_0
-    //   116: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   119: aload_2
-    //   120: areturn
-    //   121: astore_3
-    //   122: aconst_null
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_2
-    //   126: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   129: ifeq +34 -> 163
-    //   132: aload_0
-    //   133: getfield 25	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:TAG	Ljava/lang/String;
-    //   136: iconst_2
-    //   137: new 54	java/lang/StringBuilder
-    //   140: dup
-    //   141: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   144: ldc_w 345
-    //   147: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: aload_3
-    //   151: invokevirtual 66	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   154: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   157: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   160: invokestatic 73	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   163: aload_1
-    //   164: ifnull +9 -> 173
-    //   167: aload_1
-    //   168: invokeinterface 307 1 0
-    //   173: aload_0
-    //   174: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   177: aload_2
-    //   178: areturn
-    //   179: astore_2
-    //   180: aconst_null
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: invokevirtual 312	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   27: astore 4
+    //   29: aload 4
+    //   31: astore_1
+    //   32: aload 4
+    //   34: invokeinterface 323 1 0
+    //   39: ifle +104 -> 143
+    //   42: aload 4
+    //   44: astore_1
+    //   45: aload 4
+    //   47: invokeinterface 281 1 0
+    //   52: pop
+    //   53: aload 4
+    //   55: astore_1
+    //   56: new 228	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo
+    //   59: dup
+    //   60: invokespecial 340	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:<init>	()V
+    //   63: astore_3
+    //   64: aload 4
+    //   66: astore_1
+    //   67: aload_3
+    //   68: aload 4
+    //   70: aload 4
+    //   72: ldc_w 283
+    //   75: invokeinterface 287 2 0
+    //   80: invokeinterface 291 2 0
+    //   85: putfield 341	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:id	I
+    //   88: aload 4
+    //   90: astore_1
+    //   91: aload_3
+    //   92: aload 4
+    //   94: aload 4
+    //   96: ldc 212
+    //   98: invokeinterface 287 2 0
+    //   103: invokeinterface 294 2 0
+    //   108: putfield 230	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:folderpath	Ljava/lang/String;
+    //   111: aload 4
+    //   113: astore_1
+    //   114: aload_3
+    //   115: aload 4
+    //   117: aload 4
+    //   119: ldc 198
+    //   121: invokeinterface 287 2 0
+    //   126: invokeinterface 298 2 0
+    //   131: putfield 231	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:modifiedDate	J
+    //   134: aload_3
+    //   135: astore_2
+    //   136: goto +7 -> 143
+    //   139: astore_2
+    //   140: goto +39 -> 179
+    //   143: aload 4
+    //   145: ifnull +10 -> 155
+    //   148: aload 4
+    //   150: invokeinterface 305 1 0
+    //   155: aload_0
+    //   156: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   159: aload_2
+    //   160: areturn
+    //   161: astore_2
+    //   162: aconst_null
+    //   163: astore_3
+    //   164: goto +15 -> 179
+    //   167: astore_1
+    //   168: aconst_null
+    //   169: astore_2
+    //   170: goto +92 -> 262
+    //   173: astore_2
+    //   174: aconst_null
+    //   175: astore_3
+    //   176: aload_3
+    //   177: astore 4
+    //   179: aload 4
     //   181: astore_1
-    //   182: aload_1
-    //   183: ifnull +9 -> 192
-    //   186: aload_1
-    //   187: invokeinterface 307 1 0
-    //   192: aload_0
-    //   193: invokevirtual 134	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
-    //   196: aload_2
-    //   197: athrow
-    //   198: astore_2
-    //   199: goto -17 -> 182
-    //   202: astore_2
-    //   203: goto -21 -> 182
-    //   206: astore_3
-    //   207: aconst_null
-    //   208: astore_2
-    //   209: goto -83 -> 126
-    //   212: astore_3
-    //   213: goto -87 -> 126
-    //   216: aconst_null
-    //   217: astore_2
-    //   218: goto -113 -> 105
+    //   182: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   185: ifeq +54 -> 239
+    //   188: aload 4
+    //   190: astore_1
+    //   191: new 50	java/lang/StringBuilder
+    //   194: dup
+    //   195: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   198: astore 5
+    //   200: aload 4
+    //   202: astore_1
+    //   203: aload 5
+    //   205: ldc_w 343
+    //   208: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: pop
+    //   212: aload 4
+    //   214: astore_1
+    //   215: aload 5
+    //   217: aload_2
+    //   218: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   221: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: pop
+    //   225: aload 4
+    //   227: astore_1
+    //   228: ldc 8
+    //   230: iconst_2
+    //   231: aload 5
+    //   233: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   239: aload 4
+    //   241: ifnull +10 -> 251
+    //   244: aload 4
+    //   246: invokeinterface 305 1 0
+    //   251: aload_0
+    //   252: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   255: aload_3
+    //   256: areturn
+    //   257: astore_3
+    //   258: aload_1
+    //   259: astore_2
+    //   260: aload_3
+    //   261: astore_1
+    //   262: aload_2
+    //   263: ifnull +9 -> 272
+    //   266: aload_2
+    //   267: invokeinterface 305 1 0
+    //   272: aload_0
+    //   273: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   276: aload_1
+    //   277: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	221	0	this	MediaDatabaseHelper
-    //   0	221	1	paramString	String
-    //   49	129	2	localMediaScannerFolderInfo	MediaScannerFolderInfo
-    //   179	18	2	localObject1	Object
-    //   198	1	2	localObject2	Object
-    //   202	1	2	localObject3	Object
-    //   208	10	2	localObject4	Object
-    //   121	30	3	localException1	Exception
-    //   206	1	3	localException2	Exception
-    //   212	1	3	localException3	Exception
+    //   0	278	0	this	MediaDatabaseHelper
+    //   0	278	1	paramString	String
+    //   1	135	2	localObject1	Object
+    //   139	21	2	localException1	Exception
+    //   161	1	2	localException2	Exception
+    //   169	1	2	localObject2	Object
+    //   173	45	2	localException3	Exception
+    //   259	8	2	str	String
+    //   63	193	3	localMediaScannerFolderInfo	MediaScannerFolderInfo
+    //   257	4	3	localObject3	Object
+    //   27	218	4	localObject4	Object
+    //   198	34	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	26	121	java/lang/Exception
-    //   0	26	179	finally
-    //   26	50	198	finally
-    //   50	105	198	finally
-    //   126	163	202	finally
-    //   26	50	206	java/lang/Exception
-    //   50	105	212	java/lang/Exception
+    //   67	88	139	java/lang/Exception
+    //   91	111	139	java/lang/Exception
+    //   114	134	139	java/lang/Exception
+    //   32	42	161	java/lang/Exception
+    //   45	53	161	java/lang/Exception
+    //   56	64	161	java/lang/Exception
+    //   2	29	167	finally
+    //   2	29	173	java/lang/Exception
+    //   32	42	257	finally
+    //   45	53	257	finally
+    //   56	64	257	finally
+    //   67	88	257	finally
+    //   91	111	257	finally
+    //   114	134	257	finally
+    //   182	188	257	finally
+    //   191	200	257	finally
+    //   203	212	257	finally
+    //   215	225	257	finally
+    //   228	239	257	finally
   }
   
+  /* Error */
   public void updateMediaScnnerFolderInfo(MediaScannerFolderInfo paramMediaScannerFolderInfo)
   {
-    if (paramMediaScannerFolderInfo == null) {
-      return;
-    }
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("modifieddate", Long.valueOf(paramMediaScannerFolderInfo.modifiedDate));
-      localSQLiteDatabase.update("folder_table", localContentValues, "folderpath=?", new String[] { paramMediaScannerFolderInfo.folderpath });
-      return;
-    }
-    catch (Exception paramMediaScannerFolderInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "updateMediaScnnerFolderInfo() ERROR Exception:" + paramMediaScannerFolderInfo.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      closeDatabase();
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +4 -> 5
+    //   4: return
+    //   5: aload_0
+    //   6: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   9: astore_2
+    //   10: new 169	android/content/ContentValues
+    //   13: dup
+    //   14: invokespecial 170	android/content/ContentValues:<init>	()V
+    //   17: astore_3
+    //   18: aload_3
+    //   19: ldc 198
+    //   21: aload_1
+    //   22: getfield 231	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:modifiedDate	J
+    //   25: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   28: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   31: aload_2
+    //   32: ldc 122
+    //   34: aload_3
+    //   35: ldc 116
+    //   37: iconst_1
+    //   38: anewarray 112	java/lang/String
+    //   41: dup
+    //   42: iconst_0
+    //   43: aload_1
+    //   44: getfield 230	com/tencent/mobileqq/activity/photo/MediaScannerFolderInfo:folderpath	Ljava/lang/String;
+    //   47: aastore
+    //   48: invokevirtual 348	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   51: pop
+    //   52: goto +49 -> 101
+    //   55: astore_1
+    //   56: goto +50 -> 106
+    //   59: astore_1
+    //   60: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   63: ifeq +38 -> 101
+    //   66: new 50	java/lang/StringBuilder
+    //   69: dup
+    //   70: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   73: astore_2
+    //   74: aload_2
+    //   75: ldc_w 350
+    //   78: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload_2
+    //   83: aload_1
+    //   84: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   87: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: ldc 8
+    //   93: iconst_2
+    //   94: aload_2
+    //   95: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   101: aload_0
+    //   102: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   105: return
+    //   106: aload_0
+    //   107: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   110: aload_1
+    //   111: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	112	0	this	MediaDatabaseHelper
+    //   0	112	1	paramMediaScannerFolderInfo	MediaScannerFolderInfo
+    //   9	86	2	localObject	Object
+    //   17	18	3	localContentValues	android.content.ContentValues
+    // Exception table:
+    //   from	to	target	type
+    //   5	52	55	finally
+    //   60	101	55	finally
+    //   5	52	59	java/lang/Exception
   }
   
+  /* Error */
   public void updateMediaScnnerInfoDuration(String paramString, long paramLong)
   {
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("duration", Long.valueOf(paramLong));
-      localSQLiteDatabase.update("content_table", localContentValues, "path=?", new String[] { paramString });
-      return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.TAG, 2, "updateMediaScnnerFolderInfo() ERROR Exception:" + paramString.getMessage());
-      }
-      return;
-    }
-    finally
-    {
-      closeDatabase();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 92	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   4: astore 4
+    //   6: new 169	android/content/ContentValues
+    //   9: dup
+    //   10: invokespecial 170	android/content/ContentValues:<init>	()V
+    //   13: astore 5
+    //   15: aload 5
+    //   17: ldc 203
+    //   19: lload_2
+    //   20: invokestatic 193	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   23: invokevirtual 196	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   26: aload 4
+    //   28: ldc 114
+    //   30: aload 5
+    //   32: ldc 159
+    //   34: iconst_1
+    //   35: anewarray 112	java/lang/String
+    //   38: dup
+    //   39: iconst_0
+    //   40: aload_1
+    //   41: aastore
+    //   42: invokevirtual 348	android/database/sqlite/SQLiteDatabase:update	(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   45: pop
+    //   46: goto +53 -> 99
+    //   49: astore_1
+    //   50: goto +54 -> 104
+    //   53: astore_1
+    //   54: invokestatic 48	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   57: ifeq +42 -> 99
+    //   60: new 50	java/lang/StringBuilder
+    //   63: dup
+    //   64: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   67: astore 4
+    //   69: aload 4
+    //   71: ldc_w 350
+    //   74: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: pop
+    //   78: aload 4
+    //   80: aload_1
+    //   81: invokevirtual 62	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   84: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: ldc 8
+    //   90: iconst_2
+    //   91: aload 4
+    //   93: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   96: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   99: aload_0
+    //   100: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   103: return
+    //   104: aload_0
+    //   105: invokevirtual 130	com/tencent/mobileqq/activity/photo/MediaDatabaseHelper:closeDatabase	()V
+    //   108: aload_1
+    //   109: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	110	0	this	MediaDatabaseHelper
+    //   0	110	1	paramString	String
+    //   0	110	2	paramLong	long
+    //   4	88	4	localObject	Object
+    //   13	18	5	localContentValues	android.content.ContentValues
+    // Exception table:
+    //   from	to	target	type
+    //   0	46	49	finally
+    //   54	99	49	finally
+    //   0	46	53	java/lang/Exception
   }
 }
 

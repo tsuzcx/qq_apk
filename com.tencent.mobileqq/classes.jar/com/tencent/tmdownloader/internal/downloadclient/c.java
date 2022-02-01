@@ -23,14 +23,22 @@ public class c
   
   public static byte[] a(JceStruct paramJceStruct, String paramString)
   {
-    ab.c(a, "jceStruct = " + paramJceStruct);
+    Object localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("jceStruct = ");
+    localStringBuilder.append(paramJceStruct);
+    ab.c((String)localObject, localStringBuilder.toString());
     paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct, paramString);
     if (paramJceStruct != null)
     {
       paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct);
       if ((paramJceStruct != null) && (paramJceStruct.length > 0))
       {
-        ab.c(a, "return sendData length = " + paramJceStruct.length);
+        paramString = a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("return sendData length = ");
+        ((StringBuilder)localObject).append(paramJceStruct.length);
+        ab.c(paramString, ((StringBuilder)localObject).toString());
         return paramJceStruct;
       }
       ab.c(a, "handleUriAction sendData = null");
@@ -49,7 +57,11 @@ public class c
   {
     this.d = paramContext;
     this.e = paramString;
-    ab.c(a, "initYYBClient yybOpenClient......" + this.b);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initYYBClient yybOpenClient......");
+    localStringBuilder.append(this.b);
+    ab.c(str, localStringBuilder.toString());
     if (this.b == null) {
       try
       {
@@ -100,21 +112,22 @@ public class c
   
   public void b(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.d = paramContext;
-      this.f = paramString;
-    } while (this.c != null);
+    }
+    this.d = paramContext;
     this.f = paramString;
-    this.c = new u(paramContext, paramString);
-    this.c.a(this.h);
+    if (this.c == null)
+    {
+      this.f = paramString;
+      this.c = new u(paramContext, paramString);
+      this.c.a(this.h);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.c
  * JD-Core Version:    0.7.0.1
  */

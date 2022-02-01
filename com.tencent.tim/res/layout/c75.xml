@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/loc" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginRight="3.0dip" android:scaleType="fitXY" app:round_radius="5.0dip" />
+</LinearLayout>

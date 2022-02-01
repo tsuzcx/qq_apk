@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/blv" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bm6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:src="@drawable/ckl" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:gravity="center_horizontal" android:id="@id/bmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_below="@id/bm6" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/az8" android:textColor="@color/skin_gray2" android:id="@id/bbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_below="@id/bmb" android:layout_centerHorizontal="true" />
+            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i7" android:weightSum="6.0" android:layout_below="@id/bbs" android:layout_centerHorizontal="true">
+                <Button android:id="@id/dzc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cdx" android:layout_weight="4.0" style="@style/b9" />
+            </LinearLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#ffaaaaaa" android:id="@id/do_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:shadowColor="#ffffffff" android:shadowDy="2.0" android:shadowRadius="2.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bzp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/kkk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="87.0dip" android:src="@drawable/ckm" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cdy" android:layout_below="@id/kkk" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

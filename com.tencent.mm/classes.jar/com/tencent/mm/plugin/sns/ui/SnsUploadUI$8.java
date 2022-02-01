@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SnsUploadUI$8
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   SnsUploadUI$8(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(145658);
-    this.sbR.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    paramDialogInterface.dismiss();
-    AppMethodBeat.o(145658);
+    AppMethodBeat.i(369952);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    SnsUploadUI.N(this.REd);
+    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(369952);
   }
 }
 

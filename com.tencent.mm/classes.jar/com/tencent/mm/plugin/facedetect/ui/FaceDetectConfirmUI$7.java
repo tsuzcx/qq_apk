@@ -1,42 +1,37 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bnw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class FaceDetectConfirmUI$7
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  FaceDetectConfirmUI$7(FaceDetectConfirmUI paramFaceDetectConfirmUI, bnw parambnw) {}
+  FaceDetectConfirmUI$7(FaceDetectConfirmUI paramFaceDetectConfirmUI) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(368);
-    if (!bo.isNullOrNil(this.mkM.url))
+    AppMethodBeat.i(103884);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = FaceDetectConfirmUI.b(this.zVB);
+    if (!FaceDetectConfirmUI.b(this.zVB).isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      FaceDetectConfirmUI.a(this.mkL, this.mkM.url);
-      AppMethodBeat.o(368);
+      paramView.setChecked(bool);
+      a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(103884);
       return;
     }
-    ab.e("MicroMsg.FaceDetectConfirmUI", "alvinluo promptInfo url is null");
-    AppMethodBeat.o(368);
-  }
-  
-  public final void updateDrawState(TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(369);
-    paramTextPaint.setColor(this.mkL.getResources().getColor(2131690214));
-    AppMethodBeat.o(369);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDetectConfirmUI.7
  * JD-Core Version:    0.7.0.1
  */

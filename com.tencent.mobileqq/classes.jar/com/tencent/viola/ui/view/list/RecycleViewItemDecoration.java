@@ -25,30 +25,35 @@ public class RecycleViewItemDecoration
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     int i = paramRecyclerView.getChildLayoutPosition(paramView);
-    paramRect.left = (this.mTransverseInterval / 2);
+    int j = this.mTransverseInterval;
+    paramRect.left = (j / 2);
     paramRect.top = this.mPortraitInterval;
-    paramRect.right = (this.mTransverseInterval / 2);
+    paramRect.right = (j / 2);
     if ((paramView.getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams))
     {
       paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      if (paramView.getSpanIndex() % this.mColumn != 0) {
-        break label95;
+      if (paramView.getSpanIndex() % this.mColumn == 0)
+      {
+        paramRect.left = 0;
       }
-      paramRect.left = 0;
+      else
+      {
+        j = paramView.getSpanIndex();
+        int k = this.mColumn;
+        if (j % k == k - 1) {
+          paramRect.right = 0;
+        }
+      }
+      if (isFooterCell(i))
+      {
+        if (i == 0) {
+          paramRect.top = 0;
+        }
+        paramView.setFullSpan(true);
+        return;
+      }
+      paramView.setFullSpan(false);
     }
-    while (isFooterCell(i))
-    {
-      if (i == 0) {
-        paramRect.top = 0;
-      }
-      paramView.setFullSpan(true);
-      return;
-      label95:
-      if (paramView.getSpanIndex() % this.mColumn == this.mColumn - 1) {
-        paramRect.right = 0;
-      }
-    }
-    paramView.setFullSpan(false);
   }
   
   public void setAdapter(VRecyclerViewAdapter paramVRecyclerViewAdapter)
@@ -73,7 +78,7 @@ public class RecycleViewItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.RecycleViewItemDecoration
  * JD-Core Version:    0.7.0.1
  */

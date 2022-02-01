@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$d<T>
   implements com.tencent.smtt.sdk.ValueCallback<T>
 {
-  android.webkit.ValueCallback<T> BHQ;
+  android.webkit.ValueCallback<T> aimT;
   
   public a$d(android.webkit.ValueCallback<T> paramValueCallback)
   {
-    this.BHQ = paramValueCallback;
+    this.aimT = paramValueCallback;
   }
   
   public final void onReceiveValue(T paramT)
   {
-    AppMethodBeat.i(84781);
-    if (this.BHQ != null) {
-      this.BHQ.onReceiveValue(paramT);
+    AppMethodBeat.i(153816);
+    if (this.aimT != null) {
+      this.aimT.onReceiveValue(paramT);
     }
-    AppMethodBeat.o(84781);
+    AppMethodBeat.o(153816);
   }
 }
 

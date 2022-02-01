@@ -10,9 +10,12 @@ public final class enum_qzone_weisi_recommend_entrance_type
   public static final int _enum_container_friend_floatview = 7;
   public static final int _enum_detail = 5;
   public static final int _enum_detail_recom = 11;
+  public static final int _enum_feed_related = 23;
+  public static final int _enum_feed_related_videolayer = 24;
   public static final int _enum_floatview_music_icon = 14;
   public static final int _enum_floatview_other = 99;
   public static final int _enum_floatview_topic_icon = 15;
+  public static final int _enum_frd_like_container_videolayer = 25;
   public static final int _enum_friend_floatview_story_video = 18;
   public static final int _enum_friend_unread_stroy_video_from_banner = 21;
   public static final int _enum_mainpage = 4;
@@ -31,7 +34,7 @@ public final class enum_qzone_weisi_recommend_entrance_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.enum_qzone_weisi_recommend_entrance_type
  * JD-Core Version:    0.7.0.1
  */

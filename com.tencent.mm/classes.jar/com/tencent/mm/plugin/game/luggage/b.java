@@ -1,46 +1,65 @@
 package com.tencent.mm.plugin.game.luggage;
 
+import android.os.Parcelable;
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService;
+import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.api.c;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.xweb.ao;
 
 public final class b
 {
-  public static long Dt;
-  public static Map<String, String> mHeaders;
-  public static String nji;
-  public static boolean njj;
-  
-  public static boolean bFl()
+  public static <T extends d<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean b(InputType paramInputType, Class<T> paramClass, f<ResultType> paramf)
   {
-    AppMethodBeat.i(135808);
-    if (bo.isNullOrNil(nji))
+    AppMethodBeat.i(82981);
+    int i;
+    if ((ao.bHC(WeChatHosts.domainString(j.f.host_game_weixin_qq_com))) && (!ToolsProcessIPCService.aYM()))
     {
-      ab.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
-      AppMethodBeat.o(135808);
-      return false;
+      i = 1;
+      if (i == 0) {
+        break label70;
+      }
     }
-    if (a.bFh() <= 0)
+    label70:
+    for (String str = ToolsMpProcessIPCService.PROCESS_NAME;; str = ToolsProcessIPCService.PROCESS_NAME)
     {
-      AppMethodBeat.o(135808);
-      return false;
+      boolean bool = j.a(str, paramInputType, paramClass, paramf);
+      AppMethodBeat.o(82981);
+      return bool;
+      i = 0;
+      break;
     }
-    if (System.currentTimeMillis() / 1000L - Dt > a.bFh())
+  }
+  
+  public static boolean fEl()
+  {
+    AppMethodBeat.i(276945);
+    if ((com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI")) || (com.tencent.mm.plugin.game.commlib.e.b.aFM("com.tencent.mm.plugin.game.ui.chat_tab.ChatRoomTabUI")))
     {
-      ab.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
-      AppMethodBeat.o(135808);
-      return false;
+      AppMethodBeat.o(276945);
+      return true;
     }
-    ab.d("MicroMsg.LuggageGameUinKeyHolder", "hasValidCache");
-    AppMethodBeat.o(135808);
-    return true;
+    AppMethodBeat.o(276945);
+    return false;
+  }
+  
+  public static boolean fEm()
+  {
+    AppMethodBeat.i(276947);
+    boolean bool = ((c)h.ax(c.class)).dbD();
+    AppMethodBeat.o(276947);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b
  * JD-Core Version:    0.7.0.1
  */

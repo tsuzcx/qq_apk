@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class HeadImgPreference
   extends Preference
 {
+  private Bitmap Ymz;
+  private ImageView dpM;
   private int height;
-  private ImageView iTH;
-  private View.OnClickListener qMg;
-  private Bitmap waS;
+  private View.OnClickListener tyA;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,49 +29,49 @@ public final class HeadImgPreference
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(28066);
+    AppMethodBeat.i(31853);
     this.height = -1;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(28066);
+    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.o(31853);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28068);
+    AppMethodBeat.i(31855);
     super.onBindView(paramView);
-    if (this.iTH == null) {
-      this.iTH = ((ImageView)paramView.findViewById(2131826214));
+    if (this.dpM == null) {
+      this.dpM = ((ImageView)paramView.findViewById(R.h.image_headimg));
     }
-    if (this.qMg != null) {
-      this.iTH.setOnClickListener(this.qMg);
+    if (this.tyA != null) {
+      this.dpM.setOnClickListener(this.tyA);
     }
-    if (this.waS != null)
+    if (this.Ymz != null)
     {
-      this.iTH.setImageBitmap(this.waS);
-      this.waS = null;
+      this.dpM.setImageBitmap(this.Ymz);
+      this.Ymz = null;
     }
-    paramView = (LinearLayout)paramView.findViewById(2131822408);
+    paramView = (LinearLayout)paramView.findViewById(R.h.mm_preference_ll_id);
     if (this.height != -1) {
       paramView.setMinimumHeight(this.height);
     }
-    AppMethodBeat.o(28068);
+    AppMethodBeat.o(31855);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28067);
+    AppMethodBeat.i(31854);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970201, localViewGroup);
-    this.iTH = ((ImageView)paramViewGroup.findViewById(2131826214));
-    AppMethodBeat.o(28067);
+    View.inflate(this.mContext, R.i.glR, localViewGroup);
+    this.dpM = ((ImageView)paramViewGroup.findViewById(R.h.image_headimg));
+    AppMethodBeat.o(31854);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.HeadImgPreference
  * JD-Core Version:    0.7.0.1
  */

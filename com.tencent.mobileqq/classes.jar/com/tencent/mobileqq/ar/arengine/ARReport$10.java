@@ -1,33 +1,29 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ando;
-import azri;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public class ARReport$10
+class ARReport$10
   implements Runnable
 {
-  public ARReport$10(ando paramando, long paramLong, boolean paramBoolean) {}
+  ARReport$10(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
+    localHashMap.put("alltime", String.valueOf(this.a));
+    if (this.b) {
       localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      azri.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglinit", true, 0L, 0L, localHashMap, "");
-      return;
+    } else {
       localHashMap.put("result", "1");
     }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "ARLocalMarkerRecoglinit", true, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.10
  * JD-Core Version:    0.7.0.1
  */

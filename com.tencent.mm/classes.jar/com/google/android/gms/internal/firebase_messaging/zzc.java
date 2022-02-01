@@ -10,28 +10,28 @@ public class zzc
   
   static
   {
-    AppMethodBeat.i(108676);
+    AppMethodBeat.i(4112);
     zzd = zzc.class.getClassLoader();
-    AppMethodBeat.o(108676);
+    AppMethodBeat.o(4112);
   }
   
   public static void zza(Parcel paramParcel, Parcelable paramParcelable)
   {
-    AppMethodBeat.i(108675);
+    AppMethodBeat.i(4111);
     if (paramParcelable == null)
     {
       paramParcel.writeInt(0);
-      AppMethodBeat.o(108675);
+      AppMethodBeat.o(4111);
       return;
     }
     paramParcel.writeInt(1);
     paramParcelable.writeToParcel(paramParcel, 0);
-    AppMethodBeat.o(108675);
+    AppMethodBeat.o(4111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zzc
  * JD-Core Version:    0.7.0.1
  */

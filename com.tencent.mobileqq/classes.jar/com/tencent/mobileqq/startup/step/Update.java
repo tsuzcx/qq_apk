@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.startup.step;
 
-import alud;
-import amnk;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -20,10 +18,12 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aznp;
-import azpf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.multilanguage.MultiLanguageEngine;
+import com.tencent.mobileqq.automator.AutomatorHelper;
+import com.tencent.mobileqq.startup.director.StartupDirector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -33,256 +33,328 @@ public class Update
   extends Step
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 36, 22, 23, 24, 33, 34, 35 };
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int b;
-  private int c;
-  
-  private int a()
-  {
-    double d2 = (System.currentTimeMillis() - this.jdField_a_of_type_Long) * 1.0D / this.c * (this.b - this.jdField_a_of_type_Int) + this.jdField_a_of_type_Int;
-    double d1;
-    if (d2 < this.jdField_a_of_type_Int) {
-      d1 = this.jdField_a_of_type_Int;
-    }
-    do
-    {
-      return (int)d1;
-      d1 = d2;
-    } while (d2 <= this.b - 10);
-    if (this.jdField_a_of_type_Double < this.b - 10) {}
-    for (this.jdField_a_of_type_Double = (this.b - 10);; this.jdField_a_of_type_Double += (this.b - this.jdField_a_of_type_Double) / 10.0D)
-    {
-      d1 = this.jdField_a_of_type_Double;
-      break;
-    }
-  }
+  private static final int[] i = { 37, 24, 25, 26, 34, 35, 36 };
+  private RelativeLayout a;
+  private ProgressBar b;
+  private TextView c;
+  private Handler d;
+  private long e;
+  private int f;
+  private int g;
+  private double h;
+  private int j;
+  private ViewGroup k;
   
   private void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)) {}
-    try
+    ViewGroup localViewGroup = this.k;
+    if (localViewGroup != null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidViewViewGroup = null;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-      this.jdField_a_of_type_AndroidWidgetProgressBar = null;
-      this.jdField_a_of_type_AndroidWidgetTextView = null;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.d("AutoMonitor", 1, "", localThrowable);
+      RelativeLayout localRelativeLayout = this.a;
+      if (localRelativeLayout != null) {
+        try
+        {
+          localViewGroup.removeView(localRelativeLayout);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.d("AutoMonitor", 1, "", localThrowable);
+        }
       }
     }
+    this.k = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+  }
+  
+  private int b()
+  {
+    double d1 = System.currentTimeMillis() - this.e;
+    Double.isNaN(d1);
+    double d2 = this.j;
+    Double.isNaN(d2);
+    d1 = d1 * 1.0D / d2;
+    int m = this.g;
+    int n = this.f;
+    d2 = m - n;
+    Double.isNaN(d2);
+    double d3 = n;
+    Double.isNaN(d3);
+    d2 = d1 * d2 + d3;
+    if (d2 < n)
+    {
+      d1 = n;
+    }
+    else
+    {
+      d1 = d2;
+      if (d2 > m - 10)
+      {
+        d1 = this.h;
+        if (d1 < m - 10)
+        {
+          this.h = (m - 10);
+        }
+        else
+        {
+          d2 = m;
+          Double.isNaN(d2);
+          this.h = (d1 + (d2 - d1) / 10.0D);
+        }
+        d1 = this.h;
+      }
+    }
+    return (int)d1;
   }
   
   protected boolean doStep()
   {
-    this.c = 13500;
-    Object localObject1;
+    this.j = 13500;
+    boolean bool1;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult))
     {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.d = new Handler(Looper.getMainLooper(), this);
+      this.d.sendEmptyMessage(1);
       if (Build.VERSION.SDK_INT < 21)
       {
-        localObject1 = System.getProperty("java.vm.version");
-        if ((localObject1 != null) && (!((String)localObject1).startsWith("1"))) {
-          this.c += 30000;
+        String str = System.getProperty("java.vm.version");
+        if ((str != null) && (!str.startsWith("1")))
+        {
+          this.j += 30000;
+          try
+          {
+            Thread.sleep(300L);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
         }
       }
+      bool1 = Step.AmStepFactory.b(4, this.mDirector, null).step();
     }
-    for (;;)
+    else
     {
-      String str1;
-      String str2;
-      try
+      bool1 = true;
+    }
+    if (bool1)
+    {
+      localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ProcFirstLaunch");
+      ((StringBuilder)localObject2).append(BaseApplicationImpl.processName);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      Object localObject3 = ((SharedPreferences)localObject1).getString((String)localObject2, "null");
+      QLog.i("AutoMonitor", 1, String.format("updateVersion %s %s %s", new Object[] { localObject2, localObject3, String.valueOf(AppSetting.i()) }));
+      if (!TextUtils.equals(AppSetting.i(), (CharSequence)localObject3))
       {
-        Thread.sleep(300L);
-        bool1 = azpf.b(4, this.mDirector, null).step();
-        if (!bool1) {
-          break label839;
-        }
-        localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4);
-        str1 = "ProcFirstLaunch" + BaseApplicationImpl.processName;
-        localObject2 = ((SharedPreferences)localObject1).getString(str1, "null");
-        QLog.i("AutoMonitor", 1, String.format("updateVersion %s %s %s", new Object[] { str1, localObject2, String.valueOf(AppSetting.g()) }));
-        if (TextUtils.equals(AppSetting.g(), (CharSequence)localObject2)) {
-          break label839;
-        }
-        BaseApplicationImpl.isCurrentVersionFirstLaunch = true;
+        AutomatorHelper.b = true;
         BaseApplicationImpl.sLaunchTime = 0L;
         BaseApplicationImpl.sShowTime = 0L;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          BaseApplicationImpl.isFirstLaunchNew = true;
-        }
-        azpf.b(27, this.mDirector, null).step();
-        if (BaseApplicationImpl.sProcessId != 1) {
-          break label907;
-        }
-        if (((SharedPreferences)localObject1).getBoolean("HasDelSharppSo", false)) {
-          break label895;
-        }
-        QLog.d("DelSharpp", 1, "start del sharpp");
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        try
+        if ((TextUtils.isEmpty((CharSequence)localObject3)) || ("null".equals(localObject3)))
         {
-          str2 = Environment.getExternalStorageDirectory().getAbsolutePath();
-          Object localObject2 = new String[8];
-          localObject2[0] = (BaseApplicationImpl.getContext().getFilesDir().getParent() + "/txlib/libTcHevcDec.so");
-          localObject2[1] = (BaseApplicationImpl.getContext().getApplicationInfo().nativeLibraryDir + "/libTcHevcDec.so");
-          localObject2[2] = (BaseApplicationImpl.getContext().getFilesDir() + "/pddata/prd/early/qq.android.qav.sov8_826");
-          localObject2[3] = (str2 + "/Tencent/MobileQQ/pddata/prd/early/qq.android.qav.sov8_826");
-          localObject2[4] = (str2 + "/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/pddata/prd/early/qq.android.qav.sov8_826");
-          localObject2[5] = (BaseApplicationImpl.getContext().getFilesDir().getParent() + "/txlib/cmshow/libTcHevcDec.so");
-          localObject2[6] = (str2 + "/Tencent/MobileQQ/pddata/prd/early/android.qq.apollo.jsc800");
-          localObject2[7] = (str2 + "/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/pddata/prd/early/android.qq.apollo.jsc800");
-          int j = localObject2.length;
-          int i = 0;
-          if (i < j)
+          AutomatorHelper.a = true;
+          com.tencent.qqperf.opt.suspendthread.DeviceOptSwitch.r = true;
+        }
+        Step.AmStepFactory.b(28, this.mDirector, null).step();
+        if (BaseApplicationImpl.sProcessId == 1)
+        {
+          boolean bool2;
+          if (!((SharedPreferences)localObject1).getBoolean("HasDelSharppSo", false))
           {
-            str2 = localObject2[i];
-            bool2 = true;
-            File localFile = new File(str2);
-            if (localFile.exists())
+            QLog.d("DelSharpp", 1, "start del sharpp");
+            try
             {
-              bool2 = localFile.delete();
-              QLog.d("DelSharpp", 1, "exist" + str2);
-              if (bool2) {
-                break label865;
+              Object localObject4 = Environment.getExternalStorageDirectory().getAbsolutePath();
+              localObject3 = new String[8];
+              Object localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(BaseApplicationImpl.getContext().getFilesDir().getParent());
+              ((StringBuilder)localObject5).append("/txlib/libTcHevcDec.so");
+              localObject3[0] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(BaseApplicationImpl.getContext().getApplicationInfo().nativeLibraryDir);
+              ((StringBuilder)localObject5).append("/libTcHevcDec.so");
+              localObject3[1] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(BaseApplicationImpl.getContext().getFilesDir());
+              ((StringBuilder)localObject5).append("/pddata/prd/early/qq.android.qav.sov8_826");
+              localObject3[2] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append((String)localObject4);
+              ((StringBuilder)localObject5).append("/Tencent/MobileQQ/pddata/prd/early/qq.android.qav.sov8_826");
+              localObject3[3] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append((String)localObject4);
+              ((StringBuilder)localObject5).append("/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/pddata/prd/early/qq.android.qav.sov8_826");
+              localObject3[4] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append(BaseApplicationImpl.getContext().getFilesDir().getParent());
+              ((StringBuilder)localObject5).append("/txlib/cmshow/libTcHevcDec.so");
+              localObject3[5] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append((String)localObject4);
+              ((StringBuilder)localObject5).append("/Tencent/MobileQQ/pddata/prd/early/android.qq.apollo.jsc800");
+              localObject3[6] = ((StringBuilder)localObject5).toString();
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append((String)localObject4);
+              ((StringBuilder)localObject5).append("/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/pddata/prd/early/android.qq.apollo.jsc800");
+              localObject3[7] = ((StringBuilder)localObject5).toString();
+              int n = localObject3.length;
+              int m = 0;
+              while (m < n)
+              {
+                localObject4 = localObject3[m];
+                localObject5 = new File((String)localObject4);
+                if (((File)localObject5).exists())
+                {
+                  bool2 = ((File)localObject5).delete();
+                  localObject5 = new StringBuilder();
+                  ((StringBuilder)localObject5).append("exist");
+                  ((StringBuilder)localObject5).append((String)localObject4);
+                  QLog.d("DelSharpp", 1, ((StringBuilder)localObject5).toString());
+                }
+                else
+                {
+                  localObject5 = new StringBuilder();
+                  ((StringBuilder)localObject5).append("not exist");
+                  ((StringBuilder)localObject5).append((String)localObject4);
+                  QLog.d("DelSharpp", 1, ((StringBuilder)localObject5).toString());
+                  bool2 = true;
+                }
+                if (!bool2)
+                {
+                  localObject5 = new StringBuilder();
+                  ((StringBuilder)localObject5).append(" del fail");
+                  ((StringBuilder)localObject5).append((String)localObject4);
+                  QLog.d("DelSharpp", 1, ((StringBuilder)localObject5).toString());
+                }
+                else
+                {
+                  localObject5 = new StringBuilder();
+                  ((StringBuilder)localObject5).append(" del succ");
+                  ((StringBuilder)localObject5).append((String)localObject4);
+                  QLog.d("DelSharpp", 1, ((StringBuilder)localObject5).toString());
+                }
+                m += 1;
               }
-              QLog.d("DelSharpp", 1, " del fail" + str2);
-              i += 1;
-              continue;
-              localInterruptedException = localInterruptedException;
-              localInterruptedException.printStackTrace();
-              continue;
+              QLog.d("DelSharpp", 1, "has del sharpp");
             }
-            QLog.d("DelSharpp", 1, "not exist" + str2);
-            continue;
+            catch (Throwable localThrowable)
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("Fail to del files.");
+              ((StringBuilder)localObject4).append(localThrowable);
+              QLog.e("DelSharpp", 1, ((StringBuilder)localObject4).toString());
+              QLog.d("DelSharpp", 1, "end del sharpp");
+              ((SharedPreferences)localObject1).edit().putBoolean("HasDelSharppSo", true).commit();
+            }
           }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            break label839;
+          if (Looper.getMainLooper() != Looper.myLooper())
+          {
+            if (this.d == null)
+            {
+              this.d = new Handler(Looper.getMainLooper(), this);
+              this.d.sendEmptyMessage(1);
+            }
+            bool2 = Step.AmStepFactory.b(0, this.mDirector, i).step();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("UPDATE_STEPS ");
+            localStringBuilder.append(bool2);
+            QLog.e("AutoMonitor", 1, localStringBuilder.toString());
+            ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.i()).commit();
+            if (!AutomatorHelper.a) {
+              MultiLanguageEngine.a().c(BaseApplicationImpl.getContext());
+            }
           }
         }
-        catch (Throwable localThrowable)
+        else
         {
-          QLog.e("DelSharpp", 1, "Fail to del files." + localThrowable);
-          QLog.d("DelSharpp", 1, "end del sharpp");
-          localInterruptedException.edit().putBoolean("HasDelSharppSo", true).commit();
+          ((SharedPreferences)localObject1).edit().putString((String)localObject2, AppSetting.i()).commit();
         }
       }
-      label718:
-      if (this.jdField_a_of_type_AndroidOsHandler == null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      }
-      boolean bool2 = azpf.b(0, this.mDirector, jdField_a_of_type_ArrayOfInt).step();
-      QLog.e("AutoMonitor", 1, "UPDATE_STEPS " + bool2);
-      localInterruptedException.edit().putString(str1, AppSetting.g()).commit();
-      if (!BaseApplicationImpl.isFirstLaunchNew) {
-        amnk.a().c(BaseApplicationImpl.getContext());
-      }
-      for (;;)
-      {
-        label839:
-        if (this.jdField_a_of_type_AndroidOsHandler != null)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-        }
-        return bool1;
-        label865:
-        QLog.d("DelSharpp", 1, " del succ" + str2);
-        break;
-        label895:
-        QLog.d("DelSharpp", 1, "has del sharpp");
-        break label718;
-        label907:
-        localInterruptedException.edit().putString(str1, AppSetting.g()).commit();
-      }
-      boolean bool1 = true;
     }
+    Object localObject1 = this.d;
+    if (localObject1 != null)
+    {
+      ((Handler)localObject1).removeMessages(2);
+      this.d.sendEmptyMessage(3);
+    }
+    return bool1;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    QLog.i("AutoMonitor", 1, "updateMessage " + paramMessage);
-    AppActivity localAppActivity = this.mDirector.a;
-    switch (paramMessage.what)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateMessage ");
+    ((StringBuilder)localObject).append(paramMessage);
+    QLog.i("AutoMonitor", 1, ((StringBuilder)localObject).toString());
+    localObject = this.mDirector.e;
+    int m = paramMessage.what;
+    if (m != 1)
     {
-    default: 
-    case 1: 
-    case 2: 
-      int i;
-      do
+      if (m != 2)
       {
-        do
-        {
-          do
-          {
-            return true;
-          } while (localAppActivity == null);
-          try
-          {
-            this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localAppActivity.getWindow().getDecorView());
-            if (this.jdField_a_of_type_AndroidViewViewGroup != null)
-            {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.mDirector.a.getApplicationContext(), 2131562658, null));
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131367739));
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369792));
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131716301));
-              this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-            }
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.jdField_a_of_type_Int = 0;
-            this.b = 99;
-            return true;
-          }
-          catch (Throwable paramMessage)
-          {
-            for (;;)
-            {
-              QLog.d("AutoMonitor", 1, "", paramMessage);
-              a();
-            }
-          }
-          i = a();
-          if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
-            break;
-          }
-        } while (this.jdField_a_of_type_AndroidWidgetProgressBar.getProgress() > i);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.mDirector.a.getString(2131692685), new Object[] { Integer.valueOf(i) }));
+        if (m != 3) {
+          return true;
         }
-      } while (i >= 99);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 100L);
-      return true;
+        a();
+        this.d.removeMessages(2);
+        return true;
+      }
+      m = b();
+      paramMessage = this.b;
+      if (paramMessage != null)
+      {
+        if (paramMessage.getProgress() > m) {
+          return true;
+        }
+        this.b.setProgress(m);
+      }
+      paramMessage = this.c;
+      if (paramMessage != null) {
+        paramMessage.setText(String.format(this.mDirector.e.getString(2131889477), new Object[] { Integer.valueOf(m) }));
+      }
+      if (m < 99)
+      {
+        this.d.sendEmptyMessageDelayed(2, 100L);
+        return true;
+      }
     }
-    a();
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    else
+    {
+      if (localObject == null) {
+        return true;
+      }
+      try
+      {
+        this.k = ((ViewGroup)((Activity)localObject).getWindow().getDecorView());
+        if (this.k != null)
+        {
+          this.a = ((RelativeLayout)View.inflate(this.mDirector.e.getApplicationContext(), 2131629302, null));
+          this.a.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+          this.b = ((ProgressBar)this.a.findViewById(2131435131));
+          this.c = ((TextView)this.a.findViewById(2131437663));
+          this.c.setText(HardCodeUtil.a(2131913143));
+          this.k.addView(this.a);
+        }
+      }
+      catch (Throwable paramMessage)
+      {
+        QLog.d("AutoMonitor", 1, "", paramMessage);
+        a();
+      }
+      this.d.sendEmptyMessage(2);
+      this.e = System.currentTimeMillis();
+      this.f = 0;
+      this.g = 99;
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Update
  * JD-Core Version:    0.7.0.1
  */

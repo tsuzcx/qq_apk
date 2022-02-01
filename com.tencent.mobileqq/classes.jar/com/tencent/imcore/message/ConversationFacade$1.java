@@ -1,23 +1,19 @@
 package com.tencent.imcore.message;
 
-import abta;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class ConversationFacade$1
+class ConversationFacade$1
   implements Runnable
 {
-  public ConversationFacade$1(abta paramabta) {}
+  ConversationFacade$1(ConversationFacade paramConversationFacade) {}
   
   public void run()
   {
-    abta.a(this.this$0);
-    abta.a(this.this$0).a().notifyUI(8023, true, null);
+    ConversationFacade.a(this.this$0);
+    ConversationFacade.a.a(ConversationFacade.b(this.this$0), true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ConversationFacade.1
  * JD-Core Version:    0.7.0.1
  */

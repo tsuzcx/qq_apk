@@ -18,7 +18,7 @@ final class HlsChunkSource$EncryptionKeyChunk
     this.iv = paramString;
   }
   
-  public void consume(byte[] paramArrayOfByte, int paramInt)
+  protected void consume(byte[] paramArrayOfByte, int paramInt)
   {
     this.result = Arrays.copyOf(paramArrayOfByte, paramInt);
   }
@@ -30,7 +30,7 @@ final class HlsChunkSource$EncryptionKeyChunk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsChunkSource.EncryptionKeyChunk
  * JD-Core Version:    0.7.0.1
  */

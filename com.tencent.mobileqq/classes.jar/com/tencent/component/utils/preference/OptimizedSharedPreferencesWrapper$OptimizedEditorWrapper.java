@@ -18,25 +18,24 @@ class OptimizedSharedPreferencesWrapper$OptimizedEditorWrapper
   
   public SharedPreferences.Editor clear()
   {
-    if (TextUtils.isEmpty(OptimizedSharedPreferencesWrapper.access$100(this.this$0))) {
-      super.clear();
-    }
-    for (;;)
+    if (TextUtils.isEmpty(OptimizedSharedPreferencesWrapper.access$100(this.this$0)))
     {
+      super.clear();
       return this;
-      Object localObject = this.this$0.getWrappedSharedPreferences().getAll();
-      if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    }
+    Object localObject = this.this$0.getWrappedSharedPreferences().getAll();
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      localObject = ((Map)localObject).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((Map)localObject).keySet().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          if (OptimizedSharedPreferencesWrapper.access$400(OptimizedSharedPreferencesWrapper.access$100(this.this$0), str)) {
-            super.remove(str);
-          }
+        String str = (String)((Iterator)localObject).next();
+        if (OptimizedSharedPreferencesWrapper.access$400(OptimizedSharedPreferencesWrapper.access$100(this.this$0), str)) {
+          super.remove(str);
         }
       }
     }
+    return this;
   }
   
   public boolean commit()
@@ -51,7 +50,7 @@ class OptimizedSharedPreferencesWrapper$OptimizedEditorWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.component.utils.preference.OptimizedSharedPreferencesWrapper.OptimizedEditorWrapper
  * JD-Core Version:    0.7.0.1
  */

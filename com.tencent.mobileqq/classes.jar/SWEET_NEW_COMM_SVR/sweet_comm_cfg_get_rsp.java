@@ -12,8 +12,8 @@ public final class sweet_comm_cfg_get_rsp
 {
   static Map<Long, sweet_comm_cfg_item> cache_m_cfg_res;
   static sweet_rsp_comm cache_rsp_comm = new sweet_rsp_comm();
-  public Map<Long, sweet_comm_cfg_item> m_cfg_res;
-  public sweet_rsp_comm rsp_comm;
+  public Map<Long, sweet_comm_cfg_item> m_cfg_res = null;
+  public sweet_rsp_comm rsp_comm = null;
   
   static
   {
@@ -44,7 +44,7 @@ public final class sweet_comm_cfg_get_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp
  * JD-Core Version:    0.7.0.1
  */

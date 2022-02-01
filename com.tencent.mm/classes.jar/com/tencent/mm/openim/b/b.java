@@ -1,69 +1,54 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cq;
-import com.tencent.mm.protocal.protobuf.cr;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
+import java.util.Map;
 
 public final class b
-  extends m
-  implements k
+  implements s
 {
-  private f callback;
-  public String gfL;
-  private final com.tencent.mm.ai.b rr;
-  
-  public b(String paramString1, String paramString2)
+  public final g.b a(String paramString, Map<String, String> paramMap, g.a parama)
   {
-    AppMethodBeat.i(78836);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cq();
-    ((b.a)localObject).fsY = new cr();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/addopenimcontact";
-    ((b.a)localObject).funcId = 667;
-    this.rr = ((b.a)localObject).ado();
-    this.gfL = paramString1;
-    localObject = (cq)this.rr.fsV.fta;
-    ((cq)localObject).gfL = paramString1;
-    ((cq)localObject).wpd = paramString2;
-    ab.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "tp_username: %s, antispam_ticket:%s", new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(78836);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(78838);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(78838);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 667;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(78837);
-    ab.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.gfL });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(235741);
+    Log.d("MicroMsg.openim.OpenIMChatRoomSendMsgFailedNewXmlMsg", "consumeNewXml subType:%s", new Object[] { Util.nullAs(paramString, "") });
+    if ((Util.nullAsNil(paramString).equals("SendMsgFailed")) && (paramMap != null)) {}
+    for (;;)
+    {
+      try
+      {
+        paramString = Util.nullAsNil((String)paramMap.get(".sysmsg.SendMsgFailed.newmsgid")).trim();
+        paramMap = Util.nullAsNil((String)paramMap.get(".sysmsg.SendMsgFailed.tousername")).trim();
+        Log.i("MicroMsg.openim.OpenIMChatRoomSendMsgFailedNewXmlMsg", "msgId:%s toUsername:%s", new Object[] { paramString, paramMap });
+        paramString = ((n)h.ax(n.class)).gaZ().aU(paramMap, Util.safeParseLong(paramString));
+        if (paramString != null) {
+          continue;
+        }
+        Log.e("MicroMsg.openim.OpenIMChatRoomSendMsgFailedNewXmlMsg", "info is null");
+      }
+      catch (Exception paramString)
+      {
+        Log.e("MicroMsg.openim.OpenIMChatRoomSendMsgFailedNewXmlMsg", "consumeNewXml Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        continue;
+      }
+      AppMethodBeat.o(235741);
+      return null;
+      paramString.setStatus(5);
+      ((n)h.ax(n.class)).gaZ().a(paramString.field_msgId, paramString);
     }
-    AppMethodBeat.o(78837);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.openim.b.b
  * JD-Core Version:    0.7.0.1
  */

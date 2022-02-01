@@ -7,9 +7,9 @@ import com.qq.taf.jce.JceStruct;
 public final class PhotoSearchBoxChosenItemElem
   extends JceStruct
 {
-  static int cache_type = 0;
+  static int cache_type;
   public String categoryid = "";
-  public int type;
+  public int type = 0;
   
   public PhotoSearchBoxChosenItemElem() {}
   
@@ -28,14 +28,15 @@ public final class PhotoSearchBoxChosenItemElem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.categoryid != null) {
-      paramJceOutputStream.write(this.categoryid, 1);
+    String str = this.categoryid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.PhotoSearchBoxChosenItemElem
  * JD-Core Version:    0.7.0.1
  */

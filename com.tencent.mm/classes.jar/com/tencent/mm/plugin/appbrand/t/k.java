@@ -1,52 +1,68 @@
 package com.tencent.mm.plugin.appbrand.t;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.websocket.d;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class k
 {
-  private long iXK;
-  private long iXL;
-  private k.a iXM;
+  private static AtomicInteger tns;
+  public HashMap<String, d> tnt;
   
-  public k() {}
-  
-  public k(long paramLong, k.a parama)
+  static
   {
-    this.iXK = paramLong;
-    this.iXM = parama;
+    AppMethodBeat.i(144424);
+    tns = new AtomicInteger(1);
+    AppMethodBeat.o(144424);
   }
   
-  private boolean aOa()
+  private k()
   {
-    AppMethodBeat.i(126636);
-    if (System.currentTimeMillis() - this.iXL < this.iXK)
-    {
-      AppMethodBeat.o(126636);
-      return true;
-    }
-    AppMethodBeat.o(126636);
-    return false;
+    AppMethodBeat.i(144420);
+    this.tnt = new HashMap();
+    AppMethodBeat.o(144420);
   }
   
-  public final boolean l(Object... paramVarArgs)
+  public static int cCg()
   {
-    AppMethodBeat.i(126637);
-    if (aOa())
+    AppMethodBeat.i(144423);
+    int i = tns.incrementAndGet();
+    AppMethodBeat.o(144423);
+    return i;
+  }
+  
+  public static k cCp()
+  {
+    AppMethodBeat.i(144421);
+    k localk = a.cCq();
+    AppMethodBeat.o(144421);
+    return localk;
+  }
+  
+  public final d aeh(String paramString)
+  {
+    AppMethodBeat.i(144422);
+    if (this.tnt.containsKey(paramString))
     {
-      AppMethodBeat.o(126637);
-      return false;
+      paramString = (d)this.tnt.get(paramString);
+      AppMethodBeat.o(144422);
+      return paramString;
     }
-    if (this.iXM == null)
+    AppMethodBeat.o(144422);
+    return null;
+  }
+  
+  static final class a
+  {
+    private static k toq;
+    
+    static
     {
-      AppMethodBeat.o(126637);
-      return false;
+      AppMethodBeat.i(144419);
+      toq = new k((byte)0);
+      AppMethodBeat.o(144419);
     }
-    boolean bool = this.iXM.j(paramVarArgs);
-    if (bool) {
-      this.iXL = System.currentTimeMillis();
-    }
-    AppMethodBeat.o(126637);
-    return bool;
   }
 }
 

@@ -1,19 +1,15 @@
-import android.content.Context;
+import android.text.TextUtils.TruncateAt;
 import android.widget.Button;
-import com.tencent.widget.BubblePopupWindow;
 
 public final class hbo
-  extends Button
+  implements Runnable
 {
-  public hbo(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
-  {
-    super(paramContext);
-  }
+  public hbo(Button paramButton) {}
   
-  public boolean performClick()
+  public void run()
   {
-    this.a.b();
-    return super.performClick();
+    this.a.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+    this.a.setMarqueeRepeatLimit(1);
   }
 }
 

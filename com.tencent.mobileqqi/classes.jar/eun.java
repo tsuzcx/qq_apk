@@ -1,4 +1,3 @@
-import android.media.AudioManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -13,30 +12,48 @@ public class eun
   
   public void onClick(View paramView)
   {
-    ((AudioManager)this.a.getSystemService("audio")).setMicrophoneMute(VoipDialInterfaceActivity.e(this.a));
-    if (!VoipDialInterfaceActivity.e(this.a))
+    paramView = this.a;
+    int i;
+    if (!VoipDialInterfaceActivity.f(this.a))
     {
-      Toast.makeText(this.a, this.a.getString(2131560153), 0).show();
+      bool = true;
+      paramView.a(bool);
+      if (VoipDialInterfaceActivity.f(this.a)) {
+        break label141;
+      }
+      i = 1;
+      label34:
+      if (i != 1) {
+        break label146;
+      }
+      Toast.makeText(this.a, this.a.getString(2131562961), 0).show();
+      label59:
       paramView = this.a;
-      if (VoipDialInterfaceActivity.e(this.a)) {
-        break label152;
+      if (VoipDialInterfaceActivity.f(this.a)) {
+        break label169;
       }
     }
-    label152:
+    label141:
+    label146:
+    label169:
     for (boolean bool = true;; bool = false)
     {
-      VoipDialInterfaceActivity.b(paramView, bool);
-      ReportController.b(this.a.b, "CliOper", "", "", "CallTab_external", "Call_Interface", 0, 1, 0, "", "1", "", "");
-      if (!VoipDialInterfaceActivity.e(this.a)) {
-        break label157;
+      VoipDialInterfaceActivity.c(paramView, bool);
+      ReportController.b(this.a.b, "CliOper", "", "", "CallTab_external", "Call_Interface", 0, 1, 0, "", "", "1", "");
+      if (!VoipDialInterfaceActivity.f(this.a)) {
+        break label174;
       }
-      this.a.c.setBackgroundResource(2130840380);
+      this.a.f.setBackgroundResource(2130840387);
       return;
-      Toast.makeText(this.a, this.a.getString(2131560152), 0).show();
+      bool = false;
       break;
+      i = 0;
+      break label34;
+      Toast.makeText(this.a, this.a.getString(2131561997), 0).show();
+      break label59;
     }
-    label157:
-    this.a.c.setBackgroundResource(2130840384);
+    label174:
+    this.a.f.setBackgroundResource(2130840389);
   }
 }
 

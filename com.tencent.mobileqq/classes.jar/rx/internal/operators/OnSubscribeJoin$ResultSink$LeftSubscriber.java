@@ -21,42 +21,43 @@ final class OnSubscribeJoin$ResultSink$LeftSubscriber
   
   protected void expire(int paramInt, Subscription paramSubscription)
   {
-    int j = 0;
-    Object localObject = this.this$1.guard;
-    int i = j;
-    try
+    for (;;)
     {
-      if (this.this$1.leftMap.remove(Integer.valueOf(paramInt)) != null)
+      synchronized (this.this$1.guard)
       {
-        i = j;
-        if (this.this$1.leftMap.isEmpty())
+        if ((this.this$1.leftMap.remove(Integer.valueOf(paramInt)) != null) && (this.this$1.leftMap.isEmpty()) && (this.this$1.leftDone))
         {
-          i = j;
-          if (this.this$1.leftDone) {
-            i = 1;
+          paramInt = 1;
+          if (paramInt != 0)
+          {
+            this.this$1.subscriber.onCompleted();
+            this.this$1.subscriber.unsubscribe();
+            return;
           }
+          this.this$1.group.remove(paramSubscription);
+          return;
         }
       }
-      if (i != 0)
-      {
-        this.this$1.subscriber.onCompleted();
-        this.this$1.subscriber.unsubscribe();
-        return;
-      }
+      paramInt = 0;
     }
-    finally {}
-    this.this$1.group.remove(paramSubscription);
   }
   
   public void onCompleted()
   {
-    for (int i = 0;; i = 1)
+    for (;;)
     {
       synchronized (this.this$1.guard)
       {
-        this.this$1.leftDone = true;
-        if ((this.this$1.rightDone) || (this.this$1.leftMap.isEmpty())) {
-          continue;
+        OnSubscribeJoin.ResultSink localResultSink = this.this$1;
+        int j = 1;
+        localResultSink.leftDone = true;
+        i = j;
+        if (!this.this$1.rightDone)
+        {
+          if (!this.this$1.leftMap.isEmpty()) {
+            break label102;
+          }
+          i = j;
         }
         if (i != 0)
         {
@@ -64,9 +65,11 @@ final class OnSubscribeJoin$ResultSink$LeftSubscriber
           this.this$1.subscriber.unsubscribe();
           return;
         }
+        this.this$1.group.remove(this);
+        return;
       }
-      this.this$1.group.remove(this);
-      return;
+      label102:
+      int i = 0;
     }
   }
   
@@ -78,10 +81,9 @@ final class OnSubscribeJoin$ResultSink$LeftSubscriber
   
   public void onNext(TLeft paramTLeft)
   {
-    Object localObject2;
     synchronized (this.this$1.guard)
     {
-      localObject2 = this.this$1;
+      Object localObject2 = this.this$1;
       int i = ((OnSubscribeJoin.ResultSink)localObject2).leftId;
       ((OnSubscribeJoin.ResultSink)localObject2).leftId = (i + 1);
       this.this$1.leftMap.put(Integer.valueOf(i), paramTLeft);
@@ -96,15 +98,20 @@ final class OnSubscribeJoin$ResultSink$LeftSubscriber
         synchronized (this.this$1.guard)
         {
           Iterator localIterator = this.this$1.rightMap.entrySet().iterator();
-          Map.Entry localEntry;
-          do
+          while (localIterator.hasNext())
           {
-            if (!localIterator.hasNext()) {
-              break;
+            Map.Entry localEntry = (Map.Entry)localIterator.next();
+            if (((Integer)localEntry.getKey()).intValue() < j) {
+              ((List)localObject2).add(localEntry.getValue());
             }
-            localEntry = (Map.Entry)localIterator.next();
-          } while (((Integer)localEntry.getKey()).intValue() >= j);
-          ((List)localObject2).add(localEntry.getValue());
+          }
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = ((Iterator)???).next();
+            localObject2 = this.this$1.this$0.resultSelector.call(paramTLeft, localObject2);
+            this.this$1.subscriber.onNext(localObject2);
+          }
         }
         return;
       }
@@ -113,18 +120,15 @@ final class OnSubscribeJoin$ResultSink$LeftSubscriber
         Exceptions.throwOrReport(paramTLeft, this);
       }
     }
-    ??? = ((List)localObject2).iterator();
-    while (((Iterator)???).hasNext())
+    for (;;)
     {
-      localObject2 = ((Iterator)???).next();
-      localObject2 = this.this$1.this$0.resultSelector.call(paramTLeft, localObject2);
-      this.this$1.subscriber.onNext(localObject2);
+      throw paramTLeft;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeJoin.ResultSink.LeftSubscriber
  * JD-Core Version:    0.7.0.1
  */

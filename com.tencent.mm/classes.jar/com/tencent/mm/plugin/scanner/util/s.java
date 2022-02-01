@@ -5,17 +5,18 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
-import com.tencent.mm.plugin.scanner.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
+import com.tencent.mm.plugin.scanner.l.e;
+import com.tencent.mm.plugin.scanner.o;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 
 public final class s
-  implements v
+  implements p
 {
   private String mPicUrl = null;
   
@@ -24,76 +25,76 @@ public final class s
     this.mPicUrl = paramString;
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
-  
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
-    AppMethodBeat.i(81491);
-    if (v.a.gjx == parama) {}
+    AppMethodBeat.i(52069);
+    if (p.a.pAS == parama) {}
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aon(), false);
-      AppMethodBeat.o(81491);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bTC(), false);
+      AppMethodBeat.o(52069);
       return paramBitmap;
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.ScannerGetPicStrategy", parama, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ScannerGetPicStrategy", parama, "", new Object[0]);
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(p.a parama) {}
   
-  public final v.b aom()
+  public final p.b bTB()
   {
     return null;
   }
   
-  public final String aon()
+  public final String bTC()
   {
-    AppMethodBeat.i(81490);
-    String str = e.chX().gb(this.mPicUrl, "@S");
-    AppMethodBeat.o(81490);
+    AppMethodBeat.i(52068);
+    String str = o.gPw().lG(this.mPicUrl, "@S");
+    AppMethodBeat.o(52068);
     return str;
   }
   
-  public final String aoo()
+  public final String bTD()
   {
     return this.mPicUrl;
   }
   
-  public final String aop()
+  public final String bTE()
   {
     return this.mPicUrl;
   }
   
-  public final boolean aoq()
+  public final boolean bTF()
   {
     return false;
   }
   
-  public final boolean aor()
+  public final boolean bTG()
   {
     return false;
   }
   
-  public final Bitmap aos()
+  public final Bitmap bTH()
   {
-    AppMethodBeat.i(81492);
-    if (ah.getContext() == null)
+    AppMethodBeat.i(52070);
+    if (MMApplicationContext.getContext() == null)
     {
-      AppMethodBeat.o(81492);
+      AppMethodBeat.o(52070);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130839821);
-    AppMethodBeat.o(81492);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), l.e.nosdcard_chatting_bg);
+    AppMethodBeat.o(52070);
     return localBitmap;
   }
   
-  public final void aot() {}
+  public final void bTI() {}
+  
+  public final void bTJ() {}
   
   public final String getCacheKey()
   {
@@ -102,7 +103,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.s
  * JD-Core Version:    0.7.0.1
  */

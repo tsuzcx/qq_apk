@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.winkpublish.widget.SquareImageView android:id="@id/q3q" android:background="@color/az3" android:layout_width="50.0dip" android:layout_height="50.0dip" app:round_radius="4.0dip" />
+    <ImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ivm" android:layout_centerInParent="true" />
+</RelativeLayout>

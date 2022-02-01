@@ -15,12 +15,20 @@ public class IUploadConfig$UploadImageSize
   
   public String toString()
   {
-    return "[width=" + this.width + ", height=" + this.height + ", quality=" + this.quality + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", quality=");
+    localStringBuilder.append(this.quality);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.IUploadConfig.UploadImageSize
  * JD-Core Version:    0.7.0.1
  */

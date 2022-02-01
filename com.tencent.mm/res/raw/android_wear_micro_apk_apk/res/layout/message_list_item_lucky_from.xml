@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/ChattingItemFrom"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/nickname_tv" android:text="{nickname}" style="@style/MessageHistoryNickName" />
+    <LinearLayout android:background="@drawable/message_lucky_from_bg" android:layout_marginRight="30.0dip" style="@style/MessageHistoryLuckyLayout">
+        <ImageView android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" style="@style/MessageHistoryLuckyImage" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/content_tv" android:layout_marginRight="10.0dip" android:text="恭喜发财，大吉大利" style="@style/MessageHistoryLuckyText" />
+    </LinearLayout>
+</LinearLayout>

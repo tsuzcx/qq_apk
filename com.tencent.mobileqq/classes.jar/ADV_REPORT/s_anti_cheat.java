@@ -11,11 +11,11 @@ public final class s_anti_cheat
   static s_coordinate cache_push_posi = new s_coordinate();
   public int click_interval = -999;
   public int down_delay = -999;
-  public int drag_flag;
+  public int drag_flag = 0;
   public int play_time = -999;
-  public s_coordinate pop_posi;
-  public s_coordinate push_posi;
-  public int switch_flag;
+  public s_coordinate pop_posi = null;
+  public s_coordinate push_posi = null;
+  public int switch_flag = 0;
   public int up_delay = -999;
   
   public s_anti_cheat() {}
@@ -46,11 +46,13 @@ public final class s_anti_cheat
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.push_posi != null) {
-      paramJceOutputStream.write(this.push_posi, 0);
+    s_coordinate locals_coordinate = this.push_posi;
+    if (locals_coordinate != null) {
+      paramJceOutputStream.write(locals_coordinate, 0);
     }
-    if (this.pop_posi != null) {
-      paramJceOutputStream.write(this.pop_posi, 1);
+    locals_coordinate = this.pop_posi;
+    if (locals_coordinate != null) {
+      paramJceOutputStream.write(locals_coordinate, 1);
     }
     paramJceOutputStream.write(this.click_interval, 2);
     paramJceOutputStream.write(this.play_time, 3);
@@ -62,7 +64,7 @@ public final class s_anti_cheat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ADV_REPORT.s_anti_cheat
  * JD-Core Version:    0.7.0.1
  */

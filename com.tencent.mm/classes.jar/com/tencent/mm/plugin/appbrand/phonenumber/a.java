@@ -1,15 +1,12 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.b.j;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.DialogInterface.OnShowListener;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
+import android.os.Looper;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,150 +15,325 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import com.tencent.luggage.m.a.c;
+import com.tencent.luggage.m.a.d;
+import com.tencent.luggage.m.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.b.k;
-import com.tencent.mm.plugin.appbrand.widget.b.m;
-import com.tencent.mm.plugin.appbrand.widget.b.m.a;
+import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.modelappbrand.a.g;
+import com.tencent.mm.plugin.appbrand.jsapi.aj;
+import com.tencent.mm.plugin.appbrand.widget.a.c.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.e;
+import com.tencent.mm.plugin.appbrand.widget.dialog.q;
+import com.tencent.mm.plugin.appbrand.widget.dialog.r;
+import com.tencent.mm.plugin.appbrand.widget.dialog.t;
+import com.tencent.mm.plugin.appbrand.widget.dialog.u;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "value", "", "acceptWording", "getAcceptWording", "()Ljava/lang/String;", "setAcceptWording", "(Ljava/lang/String;)V", "appBrandName", "getAppBrandName", "setAppBrandName", "applyWording", "getApplyWording", "setApplyWording", "cancelWording", "getCancelWording", "setCancelWording", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mButtonGroup", "Landroid/view/View;", "mContentLayout", "Landroid/widget/LinearLayout;", "getMContentLayout", "()Landroid/widget/LinearLayout;", "setMContentLayout", "(Landroid/widget/LinearLayout;)V", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mFuncTv", "getMFuncTv", "()Landroid/widget/TextView;", "setMFuncTv", "(Landroid/widget/TextView;)V", "mIconIv", "Landroid/widget/ImageView;", "mListener", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "getMListener", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "setMListener", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;)V", "mLoadingView", "getMLoadingView", "()Landroid/view/View;", "setMLoadingView", "(Landroid/view/View;)V", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getMRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setMRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "mRequestDescTv", "mRightIconIv", "mRootView", "getMRootView", "setMRootView", "mSimpleDetailDescTv", "requestDesc", "getRequestDesc", "setRequestDesc", "Landroid/graphics/drawable/Drawable;", "rightIcon", "getRightIcon", "()Landroid/graphics/drawable/Drawable;", "setRightIcon", "(Landroid/graphics/drawable/Drawable;)V", "Landroid/view/View$OnClickListener;", "rightIconListener", "getRightIconListener", "()Landroid/view/View$OnClickListener;", "setRightIconListener", "(Landroid/view/View$OnClickListener;)V", "rightIconUrl", "getRightIconUrl", "setRightIconUrl", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "dismiss", "", "getContentView", "getPosition", "", "isCancelable", "", "isCanceledOnTouchOutside", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "Companion", "Listener", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAuthorizeUserAgreementComponent;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "_position", "", "value", "", "acceptWording", "getAcceptWording", "()Ljava/lang/String;", "setAcceptWording", "(Ljava/lang/String;)V", "appBrandName", "getAppBrandName", "setAppBrandName", "applyWording", "getApplyWording", "setApplyWording", "cancelWording", "getCancelWording", "setCancelWording", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mButtonGroup", "Landroid/view/View;", "mContentLayout", "Landroid/widget/LinearLayout;", "getMContentLayout", "()Landroid/widget/LinearLayout;", "setMContentLayout", "(Landroid/widget/LinearLayout;)V", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mFuncTv", "getMFuncTv", "()Landroid/widget/TextView;", "setMFuncTv", "(Landroid/widget/TextView;)V", "mIconIv", "Landroid/widget/ImageView;", "mListener", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog$Listener;", "getMListener", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog$Listener;", "setMListener", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog$Listener;)V", "mLoadingView", "getMLoadingView", "()Landroid/view/View;", "setMLoadingView", "(Landroid/view/View;)V", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getMRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setMRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "mRequestDescTv", "mRightIconIv", "mRootView", "getMRootView", "setMRootView", "mSimpleDetailDescTv", "requestDesc", "getRequestDesc", "setRequestDesc", "Landroid/graphics/drawable/Drawable;", "rightIcon", "getRightIcon", "()Landroid/graphics/drawable/Drawable;", "setRightIcon", "(Landroid/graphics/drawable/Drawable;)V", "rightIconContentDesc", "getRightIconContentDesc", "setRightIconContentDesc", "Landroid/view/View$OnClickListener;", "rightIconListener", "getRightIconListener", "()Landroid/view/View$OnClickListener;", "setRightIconListener", "(Landroid/view/View$OnClickListener;)V", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "userAgreementComponent", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandAuthorizeUserAgreementComponent;", "dismiss", "", "getContentView", "getPosition", "isCancelable", "", "isCanceledOnTouchOutside", "isUserUserAgreementChecked", "onBackPressedEvent", "onCancel", "onCheckAcceptAllow", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "onShown", "setIExternalToolsHelper", "externalToolsHelper", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "setPosition", "position", "setUserAgreementCheckBoxWording", "wording", "setUserAgreementCheckedAlertListener", "listener", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/UserAgreementCheckedAlertListener;", "showRightIcon", "show", "Companion", "Listener", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class a
   extends Dialog
-  implements k
+  implements com.tencent.mm.plugin.appbrand.widget.dialog.n, q
 {
-  public static final a iCB;
-  private DialogInterface.OnDismissListener NX;
-  RecyclerView adt;
-  View ejC;
-  public String iCA;
-  public View iCk;
-  public ImageView iCl;
-  public TextView iCm;
-  private Button iCn;
-  private Button iCo;
-  private TextView iCp;
-  private TextView iCq;
-  ImageView iCr;
-  private TextView iCs;
-  LinearLayout iCt;
-  TextView iCu;
-  private View iCv;
-  private DialogInterface.OnShowListener iCw;
-  private com.tencent.mm.plugin.appbrand.widget.b.l iCx;
-  b iCy;
-  Drawable iCz;
-  public String iconUrl;
+  public static final a.a tFX;
+  private String iconUrl;
+  private View lNf;
+  private DialogInterface.OnDismissListener mOnDismissListener;
+  private RecyclerView mRecyclerView;
+  private TextView pJc;
+  private int plU;
+  private View plc;
+  private ImageView rIe;
+  private View rIr;
+  private Button rIs;
+  private Button rIt;
+  private r rIu;
+  private String rIw;
+  private String rgX;
+  private ImageView tFY;
+  private DialogInterface.OnShowListener tFZ;
+  private b tGa;
+  private Drawable tGb;
+  private String tGc;
+  e tgW;
+  private String tgZ;
+  private TextView tha;
+  private String thb;
+  private TextView thc;
+  private TextView thm;
+  private LinearLayout thn;
+  private TextView tho;
   
   static
   {
-    AppMethodBeat.i(143914);
-    iCB = new a((byte)0);
-    AppMethodBeat.o(143914);
+    AppMethodBeat.i(319049);
+    tFX = new a.a((byte)0);
+    AppMethodBeat.o(319049);
   }
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(143913);
-    paramContext = View.inflate(paramContext, 2130968732, null);
-    j.p(paramContext, "View.inflate(context, R.…and_request_dialog, null)");
-    this.iCk = paramContext;
-    paramContext = this.iCk.findViewById(2131821387);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_icon)");
-    this.iCl = ((ImageView)paramContext);
-    paramContext = this.iCk.findViewById(2131821388);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_name)");
-    this.iCm = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821398);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_cancel)");
-    this.iCo = ((Button)paramContext);
-    paramContext = this.iCk.findViewById(2131821399);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_ok)");
-    this.iCn = ((Button)paramContext);
-    paramContext = this.iCk.findViewById(2131821391);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_desc)");
-    this.iCp = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821392);
-    j.p(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
-    this.iCq = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821393);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_content)");
-    this.iCt = ((LinearLayout)paramContext);
-    paramContext = this.iCk.findViewById(2131821390);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
-    this.iCr = ((ImageView)paramContext);
-    paramContext = this.iCk.findViewById(2131821389);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
-    this.iCs = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821394);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
-    this.adt = ((RecyclerView)paramContext);
-    this.adt.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    paramContext = this.iCk.findViewById(2131821395);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_loading)");
-    this.ejC = paramContext;
-    paramContext = this.iCk.findViewById(2131821397);
-    j.p(paramContext, "mRootView.findViewById(R.id.button_group)");
-    this.iCv = paramContext;
-    paramContext = this.iCk.findViewById(2131821396);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_function)");
-    this.iCu = ((TextView)paramContext);
-    this.iCn.setOnClickListener((View.OnClickListener)new a.1(this));
-    this.iCo.setOnClickListener((View.OnClickListener)new a.2(this));
-    this.adt.setItemAnimator(null);
-    AppMethodBeat.o(143913);
+    AppMethodBeat.i(319013);
+    View localView = View.inflate(t.fw(paramContext), a.e.app_brand_request_dialog, null);
+    s.s(localView, "inflate(context.wrapScre…and_request_dialog, null)");
+    this.plc = localView;
+    localView = this.plc.findViewById(a.d.user_agreement_layout);
+    s.s(localView, "mRootView.findViewById(R.id.user_agreement_layout)");
+    this.tgW = new e(paramContext, localView);
+    paramContext = this.plc.findViewById(a.d.request_icon);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_icon)");
+    this.rIe = ((ImageView)paramContext);
+    paramContext = this.plc.findViewById(a.d.request_name);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_name)");
+    this.pJc = ((TextView)paramContext);
+    paramContext = this.plc.findViewById(a.d.request_cancel);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_cancel)");
+    this.rIt = ((Button)paramContext);
+    this.rIt.setOnClickListener(new a..ExternalSyntheticLambda0(this));
+    paramContext = this.plc.findViewById(a.d.request_ok);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_ok)");
+    this.rIs = ((Button)paramContext);
+    this.rIs.setOnClickListener(new a..ExternalSyntheticLambda1(this));
+    paramContext = this.plc.findViewById(a.d.request_desc);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_desc)");
+    this.thm = ((TextView)paramContext);
+    paramContext = this.plc.findViewById(a.d.simple_detail_desc);
+    s.s(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
+    this.tha = ((TextView)paramContext);
+    paramContext = this.plc.findViewById(a.d.request_content);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_content)");
+    this.thn = ((LinearLayout)paramContext);
+    paramContext = this.plc.findViewById(a.d.request_right_icon);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
+    this.tFY = ((ImageView)paramContext);
+    paramContext = com.tencent.mm.plugin.appbrand.widget.a.c.uyi;
+    c.a.a((View)this.tFY, null, null, false, null, null, Integer.valueOf(com.tencent.luggage.m.a.b.Edge_1_5_A), 4094);
+    paramContext = this.plc.findViewById(a.d.request_apply_wording);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
+    this.thc = ((TextView)paramContext);
+    paramContext = this.plc.findViewById(a.d.request_recyclerview);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
+    this.mRecyclerView = ((RecyclerView)paramContext);
+    paramContext = com.tencent.mm.plugin.appbrand.widget.a.c.uyi;
+    c.a.a((View)this.mRecyclerView, null, null, true, null, null, null, 8182);
+    this.mRecyclerView.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    this.mRecyclerView.setItemAnimator(null);
+    paramContext = this.plc.findViewById(a.d.request_loading);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_loading)");
+    this.lNf = paramContext;
+    paramContext = this.plc.findViewById(a.d.button_group);
+    s.s(paramContext, "mRootView.findViewById(R.id.button_group)");
+    this.rIr = paramContext;
+    paramContext = this.plc.findViewById(a.d.request_function);
+    s.s(paramContext, "mRootView.findViewById(R.id.request_function)");
+    this.tho = ((TextView)paramContext);
+    paramContext = com.tencent.mm.plugin.appbrand.widget.a.c.uyi;
+    c.a.a((View)this.tho, Button.class, null, false, null, null, Integer.valueOf(com.tencent.luggage.m.a.b.Edge_1_5_A), 4092);
+    this.plU = 2;
+    AppMethodBeat.o(319013);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.widget.b.l paraml)
+  private static final void a(a parama)
   {
-    AppMethodBeat.i(143908);
-    Object localObject = this.iCw;
+    AppMethodBeat.i(319033);
+    s.u(parama, "this$0");
+    parama.dismiss();
+    AppMethodBeat.o(319033);
+  }
+  
+  private static final void a(a parama, View paramView)
+  {
+    AppMethodBeat.i(319022);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    paramView = parama.tGa;
+    if (paramView != null) {
+      paramView.CQ(2);
+    }
+    paramView = parama.rIu;
+    if (paramView != null) {
+      paramView.c((com.tencent.mm.plugin.appbrand.widget.dialog.n)parama);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(319022);
+  }
+  
+  private static final void b(a parama)
+  {
+    AppMethodBeat.i(319042);
+    s.u(parama, "this$0");
+    com.tencent.mm.ui.widget.a.c.f((Dialog)parama);
+    AppMethodBeat.o(319042);
+  }
+  
+  private static final void b(a parama, View paramView)
+  {
+    AppMethodBeat.i(319028);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    if (!parama.tgW.cBy())
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(319028);
+      return;
+    }
+    paramView = parama.tGa;
+    if (paramView != null)
+    {
+      parama.tgW.cBy();
+      paramView.CQ(1);
+    }
+    paramView = parama.rIu;
+    if (paramView != null) {
+      paramView.c((com.tencent.mm.plugin.appbrand.widget.dialog.n)parama);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(319028);
+  }
+  
+  public final void N(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(319093);
+    this.tGb = paramDrawable;
+    this.tFY.setVisibility(8);
+    if (paramDrawable != null)
+    {
+      this.tFY.setImageDrawable(this.tGb);
+      this.tFY.setVisibility(0);
+    }
+    AppMethodBeat.o(319093);
+  }
+  
+  public final void a(View.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(319095);
+    this.tFY.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(319095);
+  }
+  
+  protected final void a(b paramb)
+  {
+    this.tGa = paramb;
+  }
+  
+  public final void a(r paramr)
+  {
+    AppMethodBeat.i(319140);
+    Object localObject = this.tFZ;
     if (localObject != null) {
       ((DialogInterface.OnShowListener)localObject).onShow((DialogInterface)this);
     }
-    this.iCx = paraml;
-    localObject = getContext().getSystemService("window");
-    paraml = (com.tencent.mm.plugin.appbrand.widget.b.l)localObject;
-    if (!(localObject instanceof WindowManager)) {
-      paraml = null;
-    }
-    paraml = (WindowManager)paraml;
-    if (paraml != null)
+    this.rIu = paramr;
+    paramr = getContext().getSystemService("window");
+    if ((paramr instanceof WindowManager)) {}
+    for (paramr = (WindowManager)paramr;; paramr = null)
     {
-      localObject = m.jkc;
-      localObject = getContext();
-      j.p(localObject, "context");
-      View localView1 = this.iCk;
-      View localView2 = this.iCv;
-      paraml = paraml.getDefaultDisplay();
-      j.p(paraml, "it.defaultDisplay");
-      m.a.a((Context)localObject, localView1, localView2, paraml.getRotation());
-      AppMethodBeat.o(143908);
+      if (paramr != null)
+      {
+        localObject = t.uFu;
+        localObject = this.plc.getContext();
+        s.s(localObject, "mRootView.context");
+        t.a((Context)localObject, this.plc, this.rIr, paramr.getDefaultDisplay().getRotation(), false, this.tgW.cPR());
+      }
+      AppMethodBeat.o(319140);
       return;
     }
-    AppMethodBeat.o(143908);
   }
   
-  public final boolean aKF()
+  public final void afu(String paramString)
+  {
+    AppMethodBeat.i(319099);
+    this.tGc = paramString;
+    this.tFY.setContentDescription((CharSequence)paramString);
+    AppMethodBeat.o(319099);
+  }
+  
+  public boolean bQg()
   {
     return false;
   }
   
+  public final void bQh()
+  {
+    AppMethodBeat.i(319144);
+    com.tencent.mm.plugin.appbrand.widget.a.a.dQ(this.plc);
+    AppMethodBeat.o(319144);
+  }
+  
+  public final boolean bQi()
+  {
+    return false;
+  }
+  
+  protected final View cHe()
+  {
+    return this.plc;
+  }
+  
+  protected final LinearLayout cHf()
+  {
+    return this.thn;
+  }
+  
+  protected final RecyclerView cHg()
+  {
+    return this.mRecyclerView;
+  }
+  
+  protected final TextView cHh()
+  {
+    return this.tho;
+  }
+  
+  protected final View cHi()
+  {
+    return this.lNf;
+  }
+  
   public void dismiss()
   {
-    AppMethodBeat.i(143911);
-    super.dismiss();
-    onDismiss();
-    AppMethodBeat.o(143911);
+    AppMethodBeat.i(319157);
+    if (!s.p(Looper.getMainLooper(), Looper.myLooper()))
+    {
+      new MMHandler(Looper.getMainLooper()).post(new a..ExternalSyntheticLambda2(this));
+      AppMethodBeat.o(319157);
+      return;
+    }
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    finally
+    {
+      onDismiss();
+      new MMHandler(Looper.getMainLooper()).post(new a..ExternalSyntheticLambda3(this));
+      AppMethodBeat.o(319157);
+    }
   }
   
   public final View getContentView()
   {
-    return this.iCk;
+    return this.plc;
   }
   
-  public int getPosition()
+  public final int getPosition()
   {
-    return 2;
+    return this.plU;
   }
   
   public final boolean isCancelable()
@@ -169,49 +341,160 @@ public class a
     return true;
   }
   
-  public final void onCancel()
+  public final void kC(boolean paramBoolean)
   {
-    AppMethodBeat.i(143912);
-    b localb = this.iCy;
-    if (localb != null)
+    AppMethodBeat.i(319193);
+    ImageView localImageView = this.tFY;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      localb.pr(3);
-      AppMethodBeat.o(143912);
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(319193);
       return;
     }
-    AppMethodBeat.o(143912);
+  }
+  
+  public final void onCancel()
+  {
+    AppMethodBeat.i(319161);
+    b localb = this.tGa;
+    if (localb != null) {
+      localb.CQ(3);
+    }
+    AppMethodBeat.o(319161);
   }
   
   public void onDismiss()
   {
-    AppMethodBeat.i(143909);
-    DialogInterface.OnDismissListener localOnDismissListener = this.NX;
-    if (localOnDismissListener != null)
-    {
+    AppMethodBeat.i(319149);
+    DialogInterface.OnDismissListener localOnDismissListener = this.mOnDismissListener;
+    if (localOnDismissListener != null) {
       localOnDismissListener.onDismiss((DialogInterface)this);
-      AppMethodBeat.o(143909);
+    }
+    AppMethodBeat.o(319149);
+  }
+  
+  public final void setAppBrandName(String paramString)
+  {
+    AppMethodBeat.i(319102);
+    this.rIw = paramString;
+    TextView localTextView = this.pJc;
+    if (paramString == null) {}
+    for (paramString = (CharSequence)"";; paramString = (CharSequence)paramString)
+    {
+      localTextView.setText(paramString);
+      AppMethodBeat.o(319102);
       return;
     }
-    AppMethodBeat.o(143909);
   }
   
-  public final void pq(int paramInt)
+  public final void setApplyWording(String paramString)
   {
-    AppMethodBeat.i(143910);
-    Object localObject = m.jkc;
-    localObject = getContext();
-    j.p(localObject, "context");
-    m.a.a((Context)localObject, this.iCk, this.iCv, paramInt);
-    AppMethodBeat.o(143910);
+    AppMethodBeat.i(319124);
+    this.rgX = paramString;
+    this.thc.setText((CharSequence)paramString);
+    TextView localTextView = this.thc;
+    paramString = (CharSequence)paramString;
+    if ((paramString == null) || (kotlin.n.n.bp(paramString)))
+    {
+      i = 1;
+      if (i != 0) {
+        break label68;
+      }
+    }
+    label68:
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      AppMethodBeat.o(319124);
+      return;
+      i = 0;
+      break;
+    }
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Companion;", "", "()V", "ALERT_RESULT_CODE_ACCEPT", "", "ALERT_RESULT_CODE_CANCEL", "ALERT_RESULT_CODE_REJECT", "plugin-appbrand-integration_release"})
-  public static final class a {}
+  public void setIExternalToolsHelper(aj paramaj)
+  {
+    AppMethodBeat.i(319177);
+    this.tgW.setIExternalToolsHelper(paramaj);
+    AppMethodBeat.o(319177);
+  }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "", "onMsg", "", "resultCode", "", "plugin-appbrand-integration_release"})
+  public final void setIconUrl(String paramString)
+  {
+    AppMethodBeat.i(319090);
+    this.iconUrl = paramString;
+    com.tencent.mm.modelappbrand.a.b.bEY().a(this.rIe, this.iconUrl, a.c.miniprogram_default_avatar, (b.h)g.org);
+    AppMethodBeat.o(319090);
+  }
+  
+  public final void setPosition(int paramInt)
+  {
+    AppMethodBeat.i(319183);
+    this.plU = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(319183);
+      return;
+      this.plc.setBackground(androidx.core.content.a.m(getContext(), a.c.appbrand_user_auth_request_dialog_center_style_bg));
+      AppMethodBeat.o(319183);
+      return;
+      this.plc.setBackground(androidx.core.content.a.m(getContext(), a.c.appbrand_user_auth_request_dialog_bg));
+    }
+  }
+  
+  public final void setRequestDesc(String paramString)
+  {
+    AppMethodBeat.i(319108);
+    this.tgZ = paramString;
+    this.thm.setText((CharSequence)paramString);
+    AppMethodBeat.o(319108);
+  }
+  
+  public final void setSimpleDetailDesc(String paramString)
+  {
+    AppMethodBeat.i(319117);
+    this.thb = paramString;
+    if (paramString != null)
+    {
+      this.tha.setVisibility(0);
+      this.tha.setText((CharSequence)paramString);
+    }
+    AppMethodBeat.o(319117);
+  }
+  
+  public void setUserAgreementCheckBoxWording(String paramString)
+  {
+    AppMethodBeat.i(319173);
+    s.u(paramString, "wording");
+    this.tgW.setUserAgreementCheckBoxWording(paramString);
+    AppMethodBeat.o(319173);
+  }
+  
+  public void setUserAgreementCheckedAlertListener(u paramu)
+  {
+    AppMethodBeat.i(319182);
+    this.tgW.setUserAgreementCheckedAlertListener(paramu);
+    AppMethodBeat.o(319182);
+  }
+  
+  public final void xt(int paramInt)
+  {
+    AppMethodBeat.i(319153);
+    Object localObject = t.uFu;
+    localObject = this.plc.getContext();
+    s.s(localObject, "mRootView.context");
+    t.a((Context)localObject, this.plc, this.rIr, paramInt, false, this.tgW.cPR());
+    AppMethodBeat.o(319153);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BasePhoneNumberManageDialog$Listener;", "", "onMsg", "", "resultCode", "", "userAgreementChecked", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void pr(int paramInt);
+    public abstract void CQ(int paramInt);
   }
 }
 

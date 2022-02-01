@@ -11,14 +11,10 @@ public abstract class XC_MethodHook
   {
     super(paramInt);
   }
-  
-  protected void afterHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam) {}
-  
-  protected void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.android.dexposed.XC_MethodHook
  * JD-Core Version:    0.7.0.1
  */

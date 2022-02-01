@@ -48,51 +48,61 @@ public class a
   
   public static void a(Context paramContext, Map<String, String> paramMap)
   {
-    if (paramMap == null) {}
-    for (;;)
-    {
+    if (paramMap == null) {
       return;
-      paramContext = new HashMap(paramMap).entrySet().iterator();
-      while (paramContext.hasNext())
-      {
-        paramMap = (Map.Entry)paramContext.next();
-        e.put((String)paramMap.getKey(), paramMap.getValue());
-      }
+    }
+    paramContext = new HashMap(paramMap).entrySet().iterator();
+    while (paramContext.hasNext())
+    {
+      paramMap = (Map.Entry)paramContext.next();
+      e.put((String)paramMap.getKey(), paramMap.getValue());
     }
   }
   
   public void a(JSONObject paramJSONObject, Thread paramThread)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    Object localObject = new JSONObject();
+    for (;;)
     {
-      if (a != null) {
-        a.a(localJSONObject, paramThread);
-      }
-      Util.jsonPut(localJSONObject, "cn", this.c);
-      if (this.b != null) {
-        localJSONObject.put("tn", this.b);
-      }
-      if (paramThread == null) {
-        paramJSONObject.put("ev", localJSONObject);
-      }
-      while ((e != null) && (e.length() > 0))
+      try
       {
-        paramJSONObject.put("eva", e);
+        if (a != null) {
+          a.a((JSONObject)localObject, paramThread);
+        }
+        Util.jsonPut((JSONObject)localObject, "cn", this.c);
+        if (this.b == null) {
+          break label113;
+        }
+        ((JSONObject)localObject).put("tn", this.b);
+      }
+      catch (Throwable paramJSONObject)
+      {
+        d.e(paramJSONObject);
         return;
-        paramJSONObject.put("errkv", localJSONObject.toString());
+      }
+      paramJSONObject.put((String)localObject, paramThread);
+      continue;
+      String str = "errkv";
+      paramThread = ((JSONObject)localObject).toString();
+      localObject = str;
+      continue;
+      if ((e != null) && (e.length() > 0)) {
+        paramJSONObject.put("eva", e);
       }
       return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      d.e(paramJSONObject);
+      label113:
+      if (paramThread == null)
+      {
+        str = "ev";
+        paramThread = (Thread)localObject;
+        localObject = str;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.common.a
  * JD-Core Version:    0.7.0.1
  */

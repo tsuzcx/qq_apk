@@ -1,59 +1,72 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.b;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends b
+  extends c
 {
-  private static final int CTRL_INDEX = 625;
-  public static final String NAME = "removeVoIPView";
+  private static final int CTRL_INDEX = 222;
+  private static final String NAME = "stopBeaconDiscovery";
   
-  public final boolean b(e arg1, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143427);
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "onRemoveView," + paramJSONObject.toString());
-    super.b(???, paramInt, paramView, paramJSONObject);
-    if (!(paramView instanceof CoverViewContainer))
+    AppMethodBeat.i(144681);
+    Log.i("MicroMsg.JsApiStopBeaconDiscovery", "stopBeaconDiscovery!");
+    paramJSONObject = a.aaz(paramf.getAppId());
+    if (paramJSONObject == null)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143427);
-      return false;
+      Log.e("MicroMsg.JsApiStopBeaconDiscovery", "beaconWorker is null");
+      paramJSONObject = new HashMap();
+      paramJSONObject.put("errCode", Integer.valueOf(11004));
+      paramf.callback(paramInt, m("fail:not start", paramJSONObject));
+      AppMethodBeat.o(144681);
+      return;
     }
-    ??? = (View)((CoverViewContainer)paramView).aa(View.class);
-    if ((??? == null) || (!(??? instanceof c)))
+    if (paramJSONObject.stop())
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143427);
-      return false;
+      a.remove(paramf.getAppId());
+      new HashMap().put("errCode", Integer.valueOf(0));
+      paramf.callback(paramInt, ZP("ok"));
     }
-    paramView = (c)???;
-    paramJSONObject = o.kKN.kKR;
-    synchronized (paramJSONObject.kMy)
+    for (;;)
     {
-      paramView.uint();
-      paramJSONObject.kMy.remove(paramView.getOpenId());
-      ab.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "del View, viewId:" + paramView.getViewId() + " memberId:" + paramView.getMemberId());
-      AppMethodBeat.o(143427);
-      return true;
+      paramJSONObject = new a((byte)0);
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("available", a.rJW);
+        localJSONObject.put("discovering", false);
+        Log.i("MicroMsg.JsApiStopBeaconDiscovery", "OnBeaconServiceChangedEvent %s", new Object[] { localJSONObject.toString() });
+        paramJSONObject.b(paramf, paramf.getComponentId()).ZR(localJSONObject.toString()).cpV();
+        AppMethodBeat.o(144681);
+        return;
+        paramJSONObject = new HashMap();
+        paramJSONObject.put("errCode", Integer.valueOf(11004));
+        paramf.callback(paramInt, m("fail:not start", paramJSONObject));
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.JsApiStopBeaconDiscovery", "put JSON data error : %s", new Object[] { localJSONException });
+        }
+      }
     }
   }
   
-  public final int w(JSONObject paramJSONObject)
+  static final class a
+    extends bc
   {
-    AppMethodBeat.i(143426);
-    int i = paramJSONObject.optInt("viewId", 0);
-    AppMethodBeat.o(143426);
-    return i;
+    private static final int CTRL_INDEX = 225;
+    private static final String NAME = "onBeaconServiceChanged";
   }
 }
 

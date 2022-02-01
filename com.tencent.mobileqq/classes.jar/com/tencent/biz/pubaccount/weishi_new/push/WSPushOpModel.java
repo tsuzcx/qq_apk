@@ -4,21 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import tiz;
 
 public class WSPushOpModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new tiz();
+  public static final Parcelable.Creator<WSPushOpModel> CREATOR = new WSPushOpModel.1();
   public int a;
-  public String a;
+  public String b;
   
   protected WSPushOpModel() {}
   
-  public WSPushOpModel(Parcel paramParcel)
+  protected WSPushOpModel(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
   }
   
   protected static WSPushOpModel a(JSONObject paramJSONObject)
@@ -26,8 +25,8 @@ public class WSPushOpModel
     if (paramJSONObject != null)
     {
       WSPushOpModel localWSPushOpModel = new WSPushOpModel();
-      localWSPushOpModel.jdField_a_of_type_JavaLangString = paramJSONObject.optString("op_id");
-      localWSPushOpModel.jdField_a_of_type_Int = paramJSONObject.optInt("op_type");
+      localWSPushOpModel.b = paramJSONObject.optString("op_id");
+      localWSPushOpModel.a = paramJSONObject.optInt("op_type");
       return localWSPushOpModel;
     }
     return null;
@@ -40,13 +39,13 @@ public class WSPushOpModel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel
  * JD-Core Version:    0.7.0.1
  */

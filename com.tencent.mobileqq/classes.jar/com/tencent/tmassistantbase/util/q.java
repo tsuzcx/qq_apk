@@ -41,8 +41,8 @@ public class q
   
   public static boolean a(String paramString, int paramInt)
   {
-    boolean bool2 = false;
     paramString = c(paramString);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null)
     {
@@ -58,7 +58,10 @@ public class q
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ab.d("PackageUtils", ">> getPackageInfo filePath is " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(">> getPackageInfo filePath is ");
+      ((StringBuilder)localObject).append(paramString);
+      ab.d("PackageUtils", ((StringBuilder)localObject).toString());
       return null;
     }
     Object localObject = GlobalUtil.getInstance().getContext();
@@ -80,7 +83,10 @@ public class q
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ab.d("PackageUtils", ">> getInstalledPackageInfo packageName is " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(">> getInstalledPackageInfo packageName is ");
+      ((StringBuilder)localObject).append(paramString);
+      ab.d("PackageUtils", ((StringBuilder)localObject).toString());
       return null;
     }
     Object localObject = GlobalUtil.getInstance().getContext();
@@ -109,46 +115,55 @@ public class q
   
   public static List<PackageInfo> d(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      ab.d("PackageUtils", ">> getInstalledPackageInfoByAppName appName is " + paramString);
-    }
-    Object localObject1;
-    do
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = null;
+    if (bool)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(">> getInstalledPackageInfoByAppName appName is ");
+      ((StringBuilder)localObject1).append(paramString);
+      ab.d("PackageUtils", ((StringBuilder)localObject1).toString());
       return null;
-      localObject1 = GlobalUtil.getInstance().getContext();
-      if (localObject1 == null)
-      {
-        ab.d("PackageUtils", ">> getInstalledPackageInfoByAppName context is null");
-        return null;
-      }
-      localObject1 = ((Context)localObject1).getPackageManager();
-      if (localObject1 == null)
-      {
-        ab.d("PackageUtils", ">> getInstalledPackageInfoByAppName packageManager is null");
-        return null;
-      }
-      localObject2 = ((PackageManager)localObject1).getInstalledPackages(0);
-    } while (localObject2 == null);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = ((List)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext())
+    }
+    Object localObject2 = GlobalUtil.getInstance().getContext();
+    if (localObject2 == null)
     {
-      PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject2).next();
-      if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
+      ab.d("PackageUtils", ">> getInstalledPackageInfoByAppName context is null");
+      return null;
+    }
+    PackageManager localPackageManager = ((Context)localObject2).getPackageManager();
+    if (localPackageManager == null)
+    {
+      ab.d("PackageUtils", ">> getInstalledPackageInfoByAppName packageManager is null");
+      return null;
+    }
+    Object localObject3 = localPackageManager.getInstalledPackages(0);
+    if (localObject3 != null)
+    {
+      localObject2 = new ArrayList();
+      localObject3 = ((List)localObject3).iterator();
+      for (;;)
       {
-        localPackageInfo.applicationInfo.publicSourceDir = localPackageInfo.applicationInfo.sourceDir;
-        if (paramString.equals(localPackageInfo.applicationInfo.loadLabel((PackageManager)localObject1).toString())) {
-          localArrayList.add(localPackageInfo);
+        localObject1 = localObject2;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject1 = (PackageInfo)((Iterator)localObject3).next();
+        if ((((PackageInfo)localObject1).applicationInfo.flags & 0x1) == 0)
+        {
+          ((PackageInfo)localObject1).applicationInfo.publicSourceDir = ((PackageInfo)localObject1).applicationInfo.sourceDir;
+          if (paramString.equals(((PackageInfo)localObject1).applicationInfo.loadLabel(localPackageManager).toString())) {
+            ((List)localObject2).add(localObject1);
+          }
         }
       }
     }
-    return localArrayList;
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.q
  * JD-Core Version:    0.7.0.1
  */

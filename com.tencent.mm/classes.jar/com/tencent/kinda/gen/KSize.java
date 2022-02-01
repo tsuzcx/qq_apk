@@ -27,15 +27,15 @@ public final class KSize
   
   public final String toString()
   {
-    AppMethodBeat.i(141387);
+    AppMethodBeat.i(135899);
     String str = "KSize{mWidth=" + this.mWidth + ",mHeight=" + this.mHeight + "}";
-    AppMethodBeat.o(141387);
+    AppMethodBeat.o(135899);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.KSize
  * JD-Core Version:    0.7.0.1
  */

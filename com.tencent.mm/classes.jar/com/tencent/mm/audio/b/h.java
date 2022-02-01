@@ -1,390 +1,193 @@
 package com.tencent.mm.audio.b;
 
 import android.content.Context;
-import android.media.AudioManager;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.j;
-import com.tencent.mm.ai.j.a;
-import com.tencent.mm.ai.j.b;
-import com.tencent.mm.compatible.b.c;
+import com.tencent.mm.am.l;
+import com.tencent.mm.am.l.a;
+import com.tencent.mm.am.l.b;
 import com.tencent.mm.compatible.b.c.a;
-import com.tencent.mm.compatible.b.g.a;
-import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.model.r;
-import com.tencent.mm.modelvoice.m;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelvoice.o;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.modelvoice.v;
 import com.tencent.mm.modelvoice.w;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class h
-  implements j, g.a
+  implements l
 {
-  private static boolean bCp = false;
-  protected j.a ckA;
-  private boolean ckB;
-  private ap ckC;
-  private Runnable ckD;
-  private a ckn;
-  private b cko;
-  private h.a ckp;
-  private String ckq;
-  private boolean ckr;
-  private boolean cks;
-  private long ckt;
-  public int cku;
-  private boolean ckv;
-  private boolean ckw;
-  private int ckx;
-  private c.a cky;
-  protected j.b ckz;
+  private static boolean eoc = false;
+  private com.tencent.mm.compatible.util.b hqw;
+  private Runnable hxA;
+  private a hxk;
+  private a hxl;
+  private String hxm;
+  private boolean hxn;
+  private boolean hxo;
+  private long hxp;
+  private long hxq;
+  public int hxr;
+  private boolean hxs;
+  private boolean hxt;
+  private int hxu;
+  private c.a hxv;
+  protected l.b hxw;
+  protected l.a hxx;
+  private com.tencent.mm.audio.b hxy;
+  private MTimerHandler hxz;
   private String mFileName;
-  private long mRecordStartTime;
   
   public h(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(116502);
-    this.ckn = null;
-    this.ckp = null;
+    AppMethodBeat.i(148336);
+    this.hxk = null;
+    this.hxl = null;
     this.mFileName = "";
-    this.ckr = false;
-    this.cks = false;
-    this.mRecordStartTime = 0L;
-    this.cku = 0;
-    this.ckv = false;
-    this.ckw = false;
-    this.ckx = 0;
-    this.cky = c.a.elS;
-    this.ckA = null;
-    this.ckB = false;
-    this.ckC = new ap(new h.1(this), true);
-    this.cko = new b(paramContext);
-    this.ckw = paramBoolean;
-    ab.i("MicroMsg.SceneVoice.Recorder", "new SceneVoiceRecorder, useSpeex: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(116502);
+    this.hxn = false;
+    this.hxo = false;
+    this.hxq = 0L;
+    this.hxr = 0;
+    this.hxs = false;
+    this.hxt = false;
+    this.hxu = 0;
+    this.hxv = c.a.lQh;
+    this.hxx = null;
+    this.hxz = new MTimerHandler(new h.2(this), true);
+    this.hqw = new com.tencent.mm.compatible.util.b(paramContext);
+    this.hxt = paramBoolean;
+    this.hxy = new com.tencent.mm.audio.b(new h.1(this));
+    Log.i("MicroMsg.SceneVoice.Recorder", "new SceneVoiceRecorder, useSpeex: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(148336);
   }
   
-  private void EM()
+  public final void a(l.a parama)
   {
-    AppMethodBeat.i(116509);
-    h.3 local3 = new h.3(this);
-    if (this.ckn != null) {
-      this.ckn.a(local3);
-    }
-    AppMethodBeat.o(116509);
+    this.hxx = parama;
   }
   
-  private void EO()
+  public final void a(l.b paramb)
   {
-    AppMethodBeat.i(116512);
-    if (this.ckv)
-    {
-      ab.i("MicroMsg.SceneVoice.Recorder", "[startRecordInternal] return mHasBeginRec is true!");
-      AppMethodBeat.o(116512);
-      return;
-    }
-    this.ckv = true;
-    if (this.ckw) {
-      this.cky = c.a.elR;
-    }
-    for (this.ckn = new m();; this.ckn = new v(this.cky))
-    {
-      EM();
-      EP();
-      this.ckp = new h.a(this);
-      ab.i("MicroMsg.SceneVoice.Recorder", "[startRecordInternal] mRecordStartRunnable has post! threadPool:%s", new Object[] { d.ysm.dut() });
-      d.post(this.ckp, "SceneVoiceRecorder_record");
-      this.ckx = 1;
-      this.ckC.ag(3000L, 3000L);
-      ab.d("MicroMsg.SceneVoice.Recorder", "start end time:" + bo.av(this.ckt));
-      AppMethodBeat.o(116512);
-      return;
-      ER();
-    }
+    this.hxw = paramb;
   }
   
-  private void EP()
+  public final int aGI()
   {
-    AppMethodBeat.i(116513);
-    h.4 local4 = new h.4(this);
-    this.ckD = local4;
-    al.p(local4, 600L);
-    AppMethodBeat.o(116513);
+    AppMethodBeat.i(148339);
+    if (this.hxk == null)
+    {
+      AppMethodBeat.o(148339);
+      return 0;
+    }
+    int i = this.hxk.aGI();
+    AppMethodBeat.o(148339);
+    return i;
   }
   
-  private void ER()
+  public final int aHa()
   {
-    AppMethodBeat.i(116514);
-    this.cky = c.KA();
-    String str1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("VoiceFormat");
-    String str2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("VoiceFormatToQQ");
-    if (this.cky == c.a.elO)
-    {
-      if ((4 == bo.getInt(str1, 4)) && (g.b.EJ())) {
-        this.cky = c.a.elQ;
-      }
-      if ((this.ckq != null) && (this.ckq.endsWith("@qqim"))) {
-        this.cky = c.a.elP;
-      }
-    }
-    if (this.cky == c.a.elO)
-    {
-      ab.i("MicroMsg.SceneVoice.Recorder", "refreshRecordMode, still in pcm mode, force to amr mode");
-      this.cky = c.a.elP;
-    }
-    ab.i("MicroMsg.SceneVoice.Recorder", "refreshRecordMode dynamicFormat:%s dynamicFormatQQ:%s recdMode:%s isSilkSoLoadSuccess:%b", new Object[] { str1, str2, this.cky, Boolean.valueOf(g.b.EJ()) });
-    AppMethodBeat.o(116514);
+    return this.hxr;
   }
   
-  public final int EK()
+  public final boolean aHb()
   {
-    return this.cku;
+    AppMethodBeat.i(236245);
+    boolean bool = jM("_USER_FOR_THROWBOTTLE_");
+    AppMethodBeat.o(236245);
+    return bool;
   }
   
-  public final void EL()
+  public final void aHc()
   {
-    AppMethodBeat.i(155547);
-    ab.d("MicroMsg.SceneVoice.Recorder", "stop2 Record: %s.", new Object[] { this.mFileName });
-    if (this.ckC != null)
+    AppMethodBeat.i(148343);
+    Log.d("MicroMsg.SceneVoice.Recorder", "stop2 Record: %s.", new Object[] { this.mFileName });
+    if (this.hxz != null)
     {
-      this.ckC.stopTimer();
-      this.ckC.removeCallbacksAndMessages(null);
+      this.hxz.stopTimer();
+      this.hxz.removeCallbacksAndMessages(null);
     }
-    com.tencent.mm.compatible.b.g.KC().b(this);
-    if (this.ckB)
-    {
-      com.tencent.mm.compatible.b.g.KC().KF();
-      this.ckB = false;
-    }
+    this.hxy.aEV();
     try
     {
-      ab.i("MicroMsg.SceneVoice.Recorder", "lock[%s] of stop2[%s]! stop synchronized Record:" + this.mFileName, new Object[] { Long.valueOf(Thread.currentThread().getId()), this });
-      if (this.ckn != null)
+      Log.i("MicroMsg.SceneVoice.Recorder", "lock[%s] of stop2[%s]! stop synchronized Record:" + this.mFileName, new Object[] { Long.valueOf(Thread.currentThread().getId()), this });
+      if (this.hxk != null)
       {
-        this.ckn.Et();
-        this.cko.Mh();
+        this.hxk.aGH();
+        this.hqw.aPS();
       }
-      this.ckx = -1;
-      AppMethodBeat.o(155547);
+      this.hxu = -1;
+      AppMethodBeat.o(148343);
       return;
     }
     finally
     {
-      AppMethodBeat.o(155547);
+      AppMethodBeat.o(148343);
     }
   }
   
-  public final long EN()
+  public final long aHd()
   {
-    AppMethodBeat.i(116510);
-    if (this.mRecordStartTime == 0L)
+    AppMethodBeat.i(148345);
+    if (this.hxq == 0L)
     {
-      AppMethodBeat.o(116510);
+      AppMethodBeat.o(148345);
       return 0L;
     }
-    long l = bo.av(this.mRecordStartTime);
-    AppMethodBeat.o(116510);
+    long l = Util.ticksToNow(this.hxq);
+    AppMethodBeat.o(148345);
     return l;
   }
   
-  public final int EQ()
+  public final int aHe()
   {
-    if (this.ckw) {
+    if (this.hxt) {
       return 1;
     }
-    if ((this.cky == c.a.elO) || (this.cky == c.a.elP)) {
+    if ((this.hxv == c.a.lQd) || (this.hxv == c.a.lQe)) {
       return 0;
     }
-    if (this.cky == c.a.elQ) {
+    if (this.hxv == c.a.lQf) {
       return 2;
     }
     return -1;
   }
   
-  public boolean Ez()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    AppMethodBeat.i(116508);
-    if (this.ckC != null)
-    {
-      this.ckC.stopTimer();
-      this.ckC.removeCallbacksAndMessages(null);
-    }
-    com.tencent.mm.compatible.b.g.KC().b(this);
-    if (this.ckB)
-    {
-      com.tencent.mm.compatible.b.g.KC().KF();
-      this.ckB = false;
-    }
-    this.cku = ((int)EN());
-    ab.i("MicroMsg.SceneVoice.Recorder", "stop Record : %s, len: %s", new Object[] { this.mFileName, Integer.valueOf(this.cku) });
-    if ((this.ckn != null) && (!bo.isNullOrNil(this.mFileName)) && (!this.ckw))
-    {
-      com.tencent.mm.compatible.h.a locala = new com.tencent.mm.compatible.h.a();
-      locala.ese = this.mFileName;
-      locala.esf = this.cku;
-      locala.esg = 2;
-      locala.cpX = this.ckn.Eu();
-      com.tencent.mm.plugin.report.service.h.qsU.kvStat(10513, locala.Mf());
-    }
-    try
-    {
-      ab.i("MicroMsg.SceneVoice.Recorder", "stop synchronized Record:%s, recorder:%s, lock[%s] of stop[%s]!", new Object[] { this.mFileName, this.ckn, Long.valueOf(Thread.currentThread().getId()), this });
-      if (this.ckn != null)
-      {
-        this.ckn.Et();
-        this.cko.Mh();
-      }
-      if (this.ckx != 2)
-      {
-        s.vP(this.mFileName);
-        this.mFileName = null;
-        ab.i("MicroMsg.SceneVoice.Recorder", "Stop " + this.mFileName + " by not onPart: " + bo.av(this.ckt));
-        bool1 = bool2;
-        this.ckx = -1;
-        AppMethodBeat.o(116508);
-        return bool1;
-      }
-    }
-    finally
-    {
-      AppMethodBeat.o(116508);
-    }
-    if ((this.cku < 800L) || ((this.ckr) && (this.cku < 1000L)))
-    {
-      ab.i("MicroMsg.SceneVoice.Recorder", "Stop " + this.mFileName + " by voiceLen: " + this.cku);
-      s.vP(this.mFileName);
-      this.mFileName = "";
-      bool1 = false;
-    }
-    for (;;)
-    {
-      this.mFileName = "";
-      break;
-      s.ah(this.mFileName, this.cku);
-      o.amu().run();
-      ab.i("MicroMsg.SceneVoice.Recorder", "Stop file success: " + this.mFileName);
-    }
-  }
-  
-  public final void a(j.a parama)
-  {
-    this.ckA = parama;
-  }
-  
-  public final void a(j.b paramb)
-  {
-    this.ckz = paramb;
-  }
-  
   public final boolean cancel()
   {
-    AppMethodBeat.i(116507);
-    ab.d("MicroMsg.SceneVoice.Recorder", "cancel Record :" + this.mFileName);
+    AppMethodBeat.i(148341);
+    Log.d("MicroMsg.SceneVoice.Recorder", "cancel Record :" + this.mFileName);
     try
     {
-      ab.i("MicroMsg.SceneVoice.Recorder", "lock[%s] of cancel[%s]! stop synchronized Record:" + this.mFileName, new Object[] { Long.valueOf(Thread.currentThread().getId()), this });
-      if (this.ckn != null)
+      Object localObject1 = this.hxk;
+      if (localObject1 != null)
       {
-        this.ckn.Et();
-        this.cko.Mh();
+        Log.i("MicroMsg.SceneVoice.Recorder", "lock[%s] of cancel[%s]! stop synchronized Record:" + this.mFileName, new Object[] { Long.valueOf(Thread.currentThread().getId()), this });
+        ((a)localObject1).aGH();
+        this.hqw.aPS();
       }
-      com.tencent.mm.compatible.b.g.KC().b(this);
-      if (this.ckB)
+      this.hxy.aEV();
+      s.QK(this.mFileName);
+      o.bPh().run();
+      if ((this.hxk != null) && (!Util.isNullOrNil(this.mFileName)) && (!this.hxt))
       {
-        com.tencent.mm.compatible.b.g.KC().KF();
-        this.ckB = false;
-      }
-      s.vN(this.mFileName);
-      o.amu().run();
-      if ((this.ckn != null) && (!bo.isNullOrNil(this.mFileName)) && (!this.ckw))
-      {
-        com.tencent.mm.compatible.h.a locala = new com.tencent.mm.compatible.h.a();
-        locala.ese = this.mFileName;
-        locala.esf = EN();
-        locala.esg = 1;
-        locala.cpX = this.ckn.Eu();
-        com.tencent.mm.plugin.report.service.h.qsU.kvStat(10513, locala.Mf());
+        localObject1 = new com.tencent.mm.compatible.g.a();
+        ((com.tencent.mm.compatible.g.a)localObject1).lYI = this.mFileName;
+        ((com.tencent.mm.compatible.g.a)localObject1).lYJ = aHd();
+        ((com.tencent.mm.compatible.g.a)localObject1).lYK = 1;
+        ((com.tencent.mm.compatible.g.a)localObject1).hDx = this.hxk.aGJ();
+        com.tencent.mm.plugin.report.service.h.OAn.kvStat(10513, ((com.tencent.mm.compatible.g.a)localObject1).aPQ());
       }
       this.mFileName = "";
-      AppMethodBeat.o(116507);
+      AppMethodBeat.o(148341);
       return true;
     }
     finally
     {
-      AppMethodBeat.o(116507);
-    }
-  }
-  
-  public final boolean eI(String paramString)
-  {
-    AppMethodBeat.i(116506);
-    ab.i("MicroMsg.SceneVoice.Recorder", "Start Record to  ".concat(String.valueOf(paramString)));
-    reset();
-    this.ckq = paramString;
-    this.ckt = bo.yB();
-    if (paramString == null)
-    {
-      ab.e("MicroMsg.SceneVoice.Recorder", "Start Record toUser null");
-      AppMethodBeat.o(116506);
-      return false;
-    }
-    this.ckr = paramString.equals("_USER_FOR_THROWBOTTLE_");
-    if (paramString.equals("medianote"))
-    {
-      if ((r.Zr() & 0x4000) == 0) {
-        this.cks = true;
-      }
-    }
-    else
-    {
-      if (this.ckw) {
-        break label189;
-      }
-      if (!this.ckr) {
-        break label169;
-      }
-      this.mFileName = w.vV(r.Zn());
-    }
-    for (;;)
-    {
-      if ((this.mFileName != null) && (this.mFileName.length() > 0)) {
-        break label200;
-      }
-      ab.e("MicroMsg.SceneVoice.Recorder", "Start Record DBError fileName:%s", new Object[] { this.mFileName });
-      AppMethodBeat.o(116506);
-      return false;
-      this.cks = false;
-      break;
-      label169:
-      if (this.cks) {
-        this.mFileName = w.vV("medianote");
-      } else {
-        label189:
-        this.mFileName = s.vM(paramString);
-      }
-    }
-    label200:
-    com.tencent.mm.compatible.b.g.KC().a(this);
-    this.ckv = false;
-    this.ckB = false;
-    if ((com.tencent.mm.compatible.b.g.KK()) && (!com.tencent.mm.compatible.b.g.KC().elW.isBluetoothScoOn()))
-    {
-      this.ckB = true;
-      com.tencent.mm.compatible.b.g.KC().KE();
-      al.p(new h.2(this), 1000L);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(116506);
-      return true;
-      EO();
+      AppMethodBeat.o(148341);
     }
   }
   
@@ -393,67 +196,265 @@ public class h
     return this.mFileName;
   }
   
-  public final int getMaxAmplitude()
-  {
-    AppMethodBeat.i(116505);
-    if (this.ckn == null)
-    {
-      AppMethodBeat.o(116505);
-      return 0;
-    }
-    int i = this.ckn.getMaxAmplitude();
-    AppMethodBeat.o(116505);
-    return i;
-  }
-  
-  public final void gy(int paramInt)
-  {
-    AppMethodBeat.i(116511);
-    ab.d("MicroMsg.SceneVoice.Recorder", "dkbt Recorder onBluetoothHeadsetStateChange :".concat(String.valueOf(paramInt)));
-    if (paramInt == 1) {
-      EO();
-    }
-    AppMethodBeat.o(116511);
-  }
-  
   public final boolean isRecording()
   {
-    AppMethodBeat.i(116504);
-    if (this.ckn == null)
+    AppMethodBeat.i(148338);
+    if (this.hxk == null)
     {
-      AppMethodBeat.o(116504);
+      AppMethodBeat.o(148338);
       return false;
     }
-    if (this.ckn.getStatus() == 1)
+    if (this.hxk.getStatus() == 1)
     {
-      AppMethodBeat.o(116504);
+      AppMethodBeat.o(148338);
       return true;
     }
-    AppMethodBeat.o(116504);
+    AppMethodBeat.o(148338);
     return false;
+  }
+  
+  public final boolean jM(String paramString)
+  {
+    AppMethodBeat.i(148340);
+    Log.i("MicroMsg.SceneVoice.Recorder", "Start Record to  ".concat(String.valueOf(paramString)));
+    reset();
+    this.hxm = paramString;
+    this.hxp = Util.currentTicks();
+    if (paramString == null)
+    {
+      Log.e("MicroMsg.SceneVoice.Recorder", "Start Record toUser null");
+      AppMethodBeat.o(148340);
+      return false;
+    }
+    this.hxn = paramString.equals("_USER_FOR_THROWBOTTLE_");
+    boolean bool;
+    if (paramString.equals("medianote"))
+    {
+      if ((z.bAQ() & 0x4000) == 0)
+      {
+        bool = true;
+        this.hxo = bool;
+      }
+    }
+    else
+    {
+      if (this.hxt) {
+        break label188;
+      }
+      if (!this.hxn) {
+        break label168;
+      }
+      this.mFileName = w.QS(z.bAM());
+    }
+    for (;;)
+    {
+      if ((this.mFileName != null) && (this.mFileName.length() > 0)) {
+        break label199;
+      }
+      Log.e("MicroMsg.SceneVoice.Recorder", "Start Record DBError fileName:%s", new Object[] { this.mFileName });
+      AppMethodBeat.o(148340);
+      return false;
+      bool = false;
+      break;
+      label168:
+      if (this.hxo) {
+        this.mFileName = w.QS("medianote");
+      } else {
+        label188:
+        this.mFileName = s.QJ(paramString);
+      }
+    }
+    label199:
+    this.hxs = false;
+    this.hxy.aEU();
+    AppMethodBeat.o(148340);
+    return true;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(116503);
-    if (this.ckn != null)
+    AppMethodBeat.i(148337);
+    if (this.hxk != null)
     {
-      this.ckn.Et();
-      this.cko.Mh();
-      ab.e("MicroMsg.SceneVoice.Recorder", "Reset recorder.stopReocrd");
+      this.hxk.aGH();
+      this.hqw.aPS();
+      Log.e("MicroMsg.SceneVoice.Recorder", "Reset recorder.stopReocrd");
     }
     this.mFileName = "";
-    this.ckt = 0L;
-    this.ckp = null;
-    this.cky = c.a.elS;
-    this.ckx = 0;
-    this.mRecordStartTime = 0L;
-    AppMethodBeat.o(116503);
+    this.hxp = 0L;
+    this.hxl = null;
+    this.hxv = c.a.lQh;
+    this.hxu = 0;
+    this.hxq = 0L;
+    AppMethodBeat.o(148337);
+  }
+  
+  public boolean stop()
+  {
+    boolean bool1 = true;
+    boolean bool2 = false;
+    AppMethodBeat.i(148342);
+    if (this.hxz != null)
+    {
+      this.hxz.stopTimer();
+      this.hxz.removeCallbacksAndMessages(null);
+    }
+    this.hxy.aEV();
+    this.hxr = ((int)aHd());
+    Log.i("MicroMsg.SceneVoice.Recorder", "stop Record : %s, len: %s", new Object[] { this.mFileName, Integer.valueOf(this.hxr) });
+    Object localObject1;
+    if ((this.hxk != null) && (!Util.isNullOrNil(this.mFileName)) && (!this.hxt))
+    {
+      localObject1 = new com.tencent.mm.compatible.g.a();
+      ((com.tencent.mm.compatible.g.a)localObject1).lYI = this.mFileName;
+      ((com.tencent.mm.compatible.g.a)localObject1).lYJ = this.hxr;
+      ((com.tencent.mm.compatible.g.a)localObject1).lYK = 2;
+      ((com.tencent.mm.compatible.g.a)localObject1).hDx = this.hxk.aGJ();
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(10513, ((com.tencent.mm.compatible.g.a)localObject1).aPQ());
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.hxk == null) {
+          break label459;
+        }
+        localObject1 = this.hxk;
+        Log.i("MicroMsg.SceneVoice.Recorder", "stop synchronized Record:%s, recorder:%s, lock[%s] of stop[%s]!", new Object[] { this.mFileName, localObject1, Long.valueOf(Thread.currentThread().getId()), this });
+        if (localObject1 != null)
+        {
+          ((a)localObject1).aGH();
+          this.hqw.aPS();
+        }
+        if (this.hxu != 2)
+        {
+          s.QM(this.mFileName);
+          this.mFileName = null;
+          Log.i("MicroMsg.SceneVoice.Recorder", "Stop " + this.mFileName + " by not onPart: " + Util.ticksToNow(this.hxp));
+          bool1 = bool2;
+          this.hxu = -1;
+          AppMethodBeat.o(148342);
+          return bool1;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(148342);
+      }
+      if ((this.hxr < 800L) || ((this.hxn) && (this.hxr < 1000L)))
+      {
+        Log.i("MicroMsg.SceneVoice.Recorder", "Stop " + this.mFileName + " by voiceLen: " + this.hxr);
+        s.QM(this.mFileName);
+        this.mFileName = "";
+        bool1 = false;
+      }
+      for (;;)
+      {
+        this.mFileName = "";
+        break;
+        s.bi(this.mFileName, this.hxr);
+        o.bPh().run();
+        Log.i("MicroMsg.SceneVoice.Recorder", "Stop file success: " + this.mFileName);
+      }
+      label459:
+      Object localObject3 = null;
+    }
+  }
+  
+  final class a
+    implements com.tencent.threadpool.i.h
+  {
+    MMHandler handler;
+    
+    public a()
+    {
+      AppMethodBeat.i(148334);
+      this.handler = new MMHandler()
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(148333);
+          if (h.d(h.this) <= 0)
+          {
+            AppMethodBeat.o(148333);
+            return;
+          }
+          paramAnonymousMessage = new StringBuilder("On Part :");
+          if (h.this.hxw == null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            Log.d("MicroMsg.SceneVoice.Recorder", bool);
+            h.e(h.this);
+            if (h.this.hxw != null) {
+              h.this.hxw.bFK();
+            }
+            AppMethodBeat.o(148333);
+            return;
+          }
+        }
+      };
+      AppMethodBeat.o(148334);
+    }
+    
+    public final String getKey()
+    {
+      return "SceneVoiceRecorder_record";
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(148335);
+      MMHandlerThread.removeRunnable(h.f(h.this));
+      Log.i("MicroMsg.SceneVoice.Recorder", "RecordStartRunnable begin run %s", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+      for (;;)
+      {
+        synchronized (h.this)
+        {
+          Log.i("MicroMsg.SceneVoice.Recorder", "lock[%s] of runnable[%s]!", new Object[] { Long.valueOf(Thread.currentThread().getId()), h.this });
+          if (h.g(h.this) == null)
+          {
+            Log.e("MicroMsg.SceneVoice.Recorder", "Stop Record Failed recorder == null");
+            AppMethodBeat.o(148335);
+            return;
+          }
+          a locala = h.g(h.this);
+          if (locala != null)
+          {
+            ??? = h.c(h.this);
+            if (!h.h(h.this))
+            {
+              bool = true;
+              ??? = s.af((String)???, bool);
+              Log.i("MicroMsg.SceneVoice.Recorder", "Thread Started Record, fullPath: %s, useSpeex: %s", new Object[] { ???, Boolean.valueOf(h.h(h.this)) });
+              if (locala.jL((String)???)) {
+                break label324;
+              }
+              s.QM(h.c(h.this));
+              h.i(h.this);
+              h.j(h.this);
+              Log.e("MicroMsg.SceneVoice.Recorder", "Thread Start Record  Error fileName[" + h.c(h.this) + "]");
+              h.a(h.this, Util.currentTicks());
+              Log.i("MicroMsg.SceneVoice.Recorder", "Thread Started Record fileName[" + h.c(h.this) + "] time:" + Util.ticksToNow(h.l(h.this)));
+            }
+          }
+          else
+          {
+            this.handler.sendEmptyMessageDelayed(0, 1L);
+            AppMethodBeat.o(148335);
+            return;
+          }
+        }
+        boolean bool = false;
+        continue;
+        label324:
+        h.k(h.this).requestFocus();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.audio.b.h
  * JD-Core Version:    0.7.0.1
  */

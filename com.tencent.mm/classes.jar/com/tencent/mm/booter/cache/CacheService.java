@@ -10,28 +10,28 @@ public class CacheService
 {
   public IBinder onBind(Intent paramIntent)
   {
-    return a.eao;
+    return a.ltB;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(15882);
+    AppMethodBeat.i(19916);
     super.onCreate();
     a.prepare();
-    AppMethodBeat.o(15882);
+    AppMethodBeat.o(19916);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(15883);
+    AppMethodBeat.i(19917);
     super.onDestroy();
     a.destroy();
-    AppMethodBeat.o(15883);
+    AppMethodBeat.o(19917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.cache.CacheService
  * JD-Core Version:    0.7.0.1
  */

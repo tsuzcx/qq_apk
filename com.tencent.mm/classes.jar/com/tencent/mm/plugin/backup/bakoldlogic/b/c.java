@@ -2,23 +2,22 @@ package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.b;
-import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.jd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.z;
-import java.io.File;
+import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -31,234 +30,219 @@ import org.xmlpull.v1.XmlSerializer;
 public final class c
   implements j
 {
-  private static boolean Gk(String paramString)
+  private static boolean ahC(String paramString)
   {
-    AppMethodBeat.i(17783);
+    AppMethodBeat.i(21840);
     int i = paramString.indexOf('<');
     String str = paramString;
     if (i > 0) {
       str = paramString.substring(i);
     }
-    if (br.F(str, "msg") != null)
+    if (XmlParser.parseXml(str, "msg", null) != null)
     {
-      AppMethodBeat.o(17783);
+      AppMethodBeat.o(21840);
       return true;
     }
-    AppMethodBeat.o(17783);
+    AppMethodBeat.o(21840);
     return false;
   }
   
-  public final int a(gx paramgx, bi parambi, LinkedList<u> paramLinkedList)
+  public final int a(jd paramjd, cc paramcc, String paramString, LinkedList<com.tencent.mm.plugin.backup.i.u> paramLinkedList)
   {
-    AppMethodBeat.i(17784);
-    if (bo.isNullOrNil(parambi.field_content)) {}
-    Object localObject1;
-    for (int i = 0;; i = parambi.field_content.getBytes().length)
+    AppMethodBeat.i(300725);
+    if (Util.isNullOrNil(paramcc.field_content)) {}
+    for (int i = 0;; i = paramcc.field_content.getBytes().length)
     {
-      localObject2 = ap.arZ(parambi.field_content).yML.trim();
-      localObject1 = localObject2;
-      if (!Gk((String)localObject2))
+      localObject = bg.byj(paramcc.field_content).adiN.trim();
+      paramString = (String)localObject;
+      if (!ahC((String)localObject))
       {
-        localObject2 = parambi.field_content;
-        localObject1 = localObject2;
-        if (!Gk((String)localObject2))
+        localObject = paramcc.field_content;
+        paramString = (String)localObject;
+        if (!ahC((String)localObject))
         {
-          localObject2 = a.a(parambi, paramgx);
-          localObject1 = localObject2;
-          if (parambi.field_isSend != 1)
+          localObject = a.a(paramcc, paramjd);
+          paramString = (String)localObject;
+          if (paramcc.field_isSend != 1)
           {
-            localObject1 = localObject2;
-            if (com.tencent.mm.plugin.backup.bakoldlogic.d.d.lA(parambi.field_talker)) {
-              localObject1 = parambi.field_talker + " :\n " + (String)localObject2;
+            paramString = (String)localObject;
+            if (com.tencent.mm.plugin.backup.bakoldlogic.d.d.DQ(paramcc.field_talker)) {
+              paramString = paramcc.field_talker + " :\n " + (String)localObject;
             }
           }
         }
       }
-      if ((localObject1 != null) && (Gk((String)localObject1))) {
+      if ((paramString != null) && (ahC(paramString))) {
         break;
       }
-      ab.d("MicroMsg.BakOldItemEmoji", "emoji error".concat(String.valueOf(localObject1)));
-      AppMethodBeat.o(17784);
+      Log.d("MicroMsg.BakOldItemEmoji", "emoji error" + Util.secPrint(paramString));
+      AppMethodBeat.o(300725);
       return -1;
     }
-    Object localObject2 = new bwc();
-    ((bwc)localObject2).aoF(bo.bf((String)localObject1, ""));
-    paramgx.woR = ((bwc)localObject2);
-    parambi = b.aVr().aVs().aUI().asP(parambi.field_imgPath);
-    if ((parambi != null) && (parambi.dzq()))
+    Object localObject = new etl();
+    ((etl)localObject).btH(Util.nullAs(paramString, ""));
+    paramjd.YFG = ((etl)localObject);
+    paramcc = b.cXr().cXs().cWI().bza(paramcc.field_imgPath);
+    if ((paramcc != null) && (paramcc.kMe()))
     {
-      AppMethodBeat.o(17784);
+      AppMethodBeat.o(300725);
       return i;
     }
     int j;
-    if (parambi != null) {
-      if (TextUtils.isEmpty(parambi.field_groupId))
+    if (paramcc != null) {
+      if (TextUtils.isEmpty(paramcc.field_groupId))
       {
-        localObject1 = b.aVr().aVs().YP();
-        localObject1 = (String)localObject1 + parambi.Al() + "_thumb";
-        if (e.cM((String)localObject1) < 0)
+        paramString = b.cXr().cXs().bzQ();
+        paramString = paramString + paramcc.getMd5() + "_thumb";
+        if (y.bEl(paramString) < 0L)
         {
-          ab.e("MicroMsg.BakOldItemEmoji", "thumbPath error");
-          AppMethodBeat.o(17784);
+          Log.e("MicroMsg.BakOldItemEmoji", "thumbPath error");
+          AppMethodBeat.o(300725);
           return -1;
         }
-        j = i.a(new i.a((String)localObject1, paramgx, paramLinkedList, 4, "_thumb")) + i;
-        if ((!TextUtils.isEmpty(parambi.field_groupId)) || (!parambi.dzn())) {
-          break label547;
+        j = i.a(new i.a(paramString, paramjd, paramLinkedList, 4, false, "_thumb", false)) + i;
+        if ((!TextUtils.isEmpty(paramcc.field_groupId)) || (!paramcc.kLZ())) {
+          break label540;
         }
-        localObject1 = b.aVr().aVs().YP();
-        parambi = (String)localObject1 + parambi.Al();
-        localObject1 = ap.arZ(aa.a(paramgx.woR));
-        i = j + i.a(new i.a(parambi, paramgx, paramLinkedList, b.aVr().aVs().aUI().asP(((ap)localObject1).cqq)));
+        paramString = b.cXr().cXs().bzQ();
+        paramcc = paramString + paramcc.getMd5();
+        paramString = bg.byj(w.a(paramjd.YFG));
+        i = j + i.a(new i.a(paramcc, paramjd, paramLinkedList, false, false, b.cXr().cXs().cWI().bza(paramString.md5)));
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(17784);
+      AppMethodBeat.o(300725);
       return i;
-      localObject1 = b.aVr().aVs().YP();
-      localObject1 = (String)localObject1 + parambi.field_groupId + File.separator + parambi.Al() + "_cover";
-      if (e.cM((String)localObject1) < 0)
+      paramString = b.cXr().cXs().bzQ();
+      paramString = paramString + paramcc.field_groupId + "/" + paramcc.getMd5() + "_cover";
+      if (y.bEl(paramString) < 0L)
       {
-        ab.e("MicroMsg.BakOldItemEmoji", "thumbPath error");
-        AppMethodBeat.o(17784);
+        Log.e("MicroMsg.BakOldItemEmoji", "thumbPath error");
+        AppMethodBeat.o(300725);
         return -1;
       }
-      j = i.a(new i.a((String)localObject1, paramgx, paramLinkedList, 4, "_thumb")) + i;
+      j = i.a(new i.a(paramString, paramjd, paramLinkedList, 4, false, "_thumb", false)) + i;
       break;
-      label547:
+      label540:
       i = j;
-      if (parambi.dzp())
+      if (paramcc.kMb())
       {
-        localObject1 = b.aVr().aVs().YP();
-        parambi = (String)localObject1 + parambi.field_groupId + File.separator + parambi.Al();
-        localObject1 = ap.arZ(aa.a(paramgx.woR));
-        i = j + i.a(new i.a(parambi, paramgx, paramLinkedList, b.aVr().aVs().aUI().asP(((ap)localObject1).cqq)));
+        paramString = b.cXr().cXs().bzQ();
+        paramcc = paramString + paramcc.field_groupId + "/" + paramcc.getMd5();
+        paramString = bg.byj(w.a(paramjd.YFG));
+        i = j + i.a(new i.a(paramcc, paramjd, paramLinkedList, false, false, b.cXr().cXs().cWI().bza(paramString.md5)));
       }
     }
   }
   
-  public final int a(String paramString, gx paramgx, bi parambi)
+  public final int a(String paramString, jd paramjd, cc paramcc)
   {
     boolean bool = true;
-    AppMethodBeat.i(17785);
-    parambi.setContent(paramgx.woR.xJE);
-    paramString = paramgx.woP.xJE;
-    Object localObject1 = paramgx.woQ.xJE;
-    if (((String)b.aVr().aVs().Ru().get(2, null)).equals(paramString)) {
+    AppMethodBeat.i(21842);
+    paramcc.setContent(paramjd.YFG.abwM);
+    paramString = paramjd.YFE.abwM;
+    Object localObject1 = paramjd.YFF.abwM;
+    if (((String)b.cXr().cXs().ban().d(2, null)).equals(paramString)) {
       paramString = (String)localObject1;
     }
     for (;;)
     {
-      localObject2 = paramgx.woR.xJE;
-      localObject1 = br.F((String)localObject2, "msg");
-      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().dN((String)localObject2, paramString);
+      localObject2 = paramjd.YFG.abwM;
+      localObject1 = XmlParser.parseXml((String)localObject2, "msg", null);
+      paramString = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().gM((String)localObject2, paramString);
       if (paramString != null) {
         break;
       }
-      ab.w("MicroMsg.BakOldItemEmoji", "EmojiMsgInfo is null");
-      AppMethodBeat.o(17785);
+      Log.w("MicroMsg.BakOldItemEmoji", "EmojiMsgInfo is null");
+      AppMethodBeat.o(21842);
       return -1;
     }
-    Object localObject2 = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt(paramString.cqq);
+    Object localObject2 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe(paramString.md5);
     if (localObject2 == null)
     {
-      ab.w("MicroMsg.BakOldItemEmoji", "EmojiInfo is null");
-      AppMethodBeat.o(17785);
+      Log.w("MicroMsg.BakOldItemEmoji", "EmojiInfo is null");
+      AppMethodBeat.o(21842);
       return -1;
     }
     if (((Map)localObject1).get(".msg.emoji.$androidmd5") == null)
     {
-      localObject3 = a.Gn(paramString.cqq);
-      if (!bo.isNullOrNil((String)localObject3))
+      localObject3 = a.ahF(paramString.md5);
+      if (!Util.isNullOrNil((String)localObject3))
       {
-        paramString.cqq = ((String)localObject3);
-        ab.d("MicroMsg.BakOldItemEmoji", "convert ip to android md5 %s", new Object[] { localObject3 });
+        paramString.md5 = ((String)localObject3);
+        Log.d("MicroMsg.BakOldItemEmoji", "convert ip to android md5 %s", new Object[] { localObject3 });
       }
     }
     localObject1 = (String)((Map)localObject1).get(".msg.emoji.$productid");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramString.cqx = ((String)localObject1);
+      paramString.productId = ((String)localObject1);
     }
-    parambi.setType(47);
-    parambi.kk(paramString.cqq);
-    Object localObject3 = paramString.fXq;
-    if ((!((EmojiInfo)localObject2).vY()) && (!((EmojiInfo)localObject2).isGif()))
+    paramcc.setType(47);
+    paramcc.BT(paramString.md5);
+    Object localObject3 = paramString.paV;
+    if ((!((EmojiInfo)localObject2).aqJ()) && (!((EmojiInfo)localObject2).isGif()))
     {
-      parambi.setContent(ap.a((String)localObject3, 0L, bool, paramString.cqq, false, ""));
-      if (!((EmojiInfo)localObject2).dzn())
+      paramcc.setContent(bg.a((String)localObject3, 0L, bool, paramString.md5, false, ""));
+      if (!((EmojiInfo)localObject2).kLZ())
       {
-        localObject2 = b.aVr().aVs().YP();
+        localObject2 = b.cXr().cXs().bzQ();
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label533;
+          break label534;
         }
-        com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramgx, 4, (String)localObject2 + paramString.cqq + "_thumb");
-        com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramgx, 5, (String)localObject2 + paramString.cqq);
+        com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramjd, 4, (String)localObject2 + paramString.md5 + "_thumb");
+        com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramjd, 5, (String)localObject2 + paramString.md5);
       }
     }
     for (;;)
     {
-      paramgx = new EmojiInfo((String)localObject2);
-      paramgx.field_md5 = paramString.cqq;
-      paramgx.field_svrid = paramString.id;
-      paramgx.field_catalog = EmojiInfo.yPg;
-      paramgx.field_type = paramString.yNc;
-      paramgx.field_size = paramString.yNd;
-      paramgx.field_state = EmojiInfo.yPs;
+      paramjd = new EmojiInfo((String)localObject2);
+      paramjd.field_md5 = paramString.md5;
+      paramjd.field_svrid = paramString.id;
+      paramjd.field_catalog = EmojiInfo.aklG;
+      paramjd.field_type = paramString.adji;
+      paramjd.field_size = paramString.adjj;
+      paramjd.field_state = EmojiInfo.aklS;
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramgx.field_groupId = ((String)localObject1);
+        paramjd.field_groupId = ((String)localObject1);
       }
-      if (!bo.isNullOrNil(paramString.yNl)) {
-        paramgx.field_activityid = paramString.yNl;
+      if (!Util.isNullOrNil(paramString.adjr)) {
+        paramjd.field_activityid = paramString.adjr;
       }
-      b.aVr().aVs().aUI().replace(paramgx);
-      ab.d("MicroMsg.BakOldItemEmoji", "id ".concat(String.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.d.d.l(parambi))));
-      AppMethodBeat.o(17785);
+      b.cXr().cXs().cWI().replace(paramjd);
+      Log.d("MicroMsg.BakOldItemEmoji", "id ".concat(String.valueOf(com.tencent.mm.plugin.backup.bakoldlogic.d.d.B(paramcc))));
+      AppMethodBeat.o(21842);
       return 0;
       bool = false;
       break;
-      label533:
-      localObject3 = new File((String)localObject2 + (String)localObject1);
-      if (!((File)localObject3).exists()) {
-        ((File)localObject3).mkdirs();
+      label534:
+      localObject3 = new com.tencent.mm.vfs.u((String)localObject2 + (String)localObject1);
+      if (!((com.tencent.mm.vfs.u)localObject3).jKS()) {
+        ((com.tencent.mm.vfs.u)localObject3).jKY();
       }
-      com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramgx, 4, (String)localObject2 + (String)localObject1 + File.separator + paramString.cqq + "_cover");
-      com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramgx, 5, (String)localObject2 + (String)localObject1 + File.separator + paramString.cqq);
+      com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramjd, 4, (String)localObject2 + (String)localObject1 + "/" + paramString.md5 + "_cover");
+      com.tencent.mm.plugin.backup.bakoldlogic.a.a.b(paramjd, 5, (String)localObject2 + (String)localObject1 + "/" + paramString.md5);
     }
   }
   
   static final class a
   {
-    public static String jzf = "<msg>";
-    public static String jzg = "</msg>";
+    public static String uWA = "<msg>";
+    public static String uWB = "</msg>";
     
-    public static String Gn(String paramString)
+    public static String a(cc paramcc, jd paramjd)
     {
-      AppMethodBeat.i(17781);
-      paramString = a.Gx(paramString);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(17781);
-        return null;
-      }
-      paramString = paramString.jDN;
-      AppMethodBeat.o(17781);
-      return paramString;
-    }
-    
-    public static String a(bi parambi, gx paramgx)
-    {
-      AppMethodBeat.i(17782);
-      EmojiInfo localEmojiInfo = b.aVr().aVs().aUI().asP(parambi.field_imgPath);
+      AppMethodBeat.i(21839);
+      EmojiInfo localEmojiInfo = b.cXr().cXs().cWI().bza(paramcc.field_imgPath);
       if (localEmojiInfo == null)
       {
-        AppMethodBeat.o(17782);
+        AppMethodBeat.o(21839);
         return null;
       }
-      Object localObject = a.Gy(localEmojiInfo.Al());
-      parambi = (bi)localObject;
+      Object localObject = a.ahP(localEmojiInfo.getMd5());
+      paramcc = (cc)localObject;
       if (localObject == null) {
-        parambi = new a.a(localEmojiInfo.Al(), localEmojiInfo.Al(), localEmojiInfo.Al(), localEmojiInfo.Al());
+        paramcc = new a.a(localEmojiInfo.getMd5(), localEmojiInfo.getMd5(), localEmojiInfo.getMd5(), localEmojiInfo.getMd5());
       }
       localObject = new StringWriter();
       try
@@ -268,81 +252,95 @@ public final class c
         localXmlSerializer.startDocument("UTF-8", Boolean.TRUE);
         localXmlSerializer.startTag(null, "msg");
         localXmlSerializer.startTag(null, "emoji");
-        localXmlSerializer.attribute(null, "fromusername", paramgx.woP.xJE);
-        localXmlSerializer.attribute(null, "tousername", paramgx.woQ.xJE);
+        localXmlSerializer.attribute(null, "fromusername", paramjd.YFE.abwM);
+        localXmlSerializer.attribute(null, "tousername", paramjd.YFF.abwM);
         localXmlSerializer.attribute(null, "type", localEmojiInfo.field_type);
-        localXmlSerializer.attribute(null, "idbuffer", localEmojiInfo.dzu());
-        localXmlSerializer.attribute(null, "md5", parambi.jDO);
+        localXmlSerializer.attribute(null, "idbuffer", localEmojiInfo.kMh());
+        localXmlSerializer.attribute(null, "md5", paramcc.vbk);
         localXmlSerializer.attribute(null, "len", "1024");
-        localXmlSerializer.attribute(null, "androidmd5", parambi.jDN);
+        localXmlSerializer.attribute(null, "androidmd5", paramcc.vbj);
         localXmlSerializer.attribute(null, "androidlen", "1024");
         localXmlSerializer.attribute(null, "productid", localEmojiInfo.field_groupId);
         localXmlSerializer.endTag(null, "emoji");
-        if (localEmojiInfo.vY())
+        if (localEmojiInfo.aqJ())
         {
           localXmlSerializer.startTag(null, "gameext");
-          paramgx = br.F(localEmojiInfo.getContent(), "gameext");
-          parambi = bo.bf((String)paramgx.get(".gameext.$type"), "");
-          paramgx = bo.bf((String)paramgx.get(".gameext.$content"), "");
-          if ((parambi.equals("")) || (paramgx.equals("")))
+          paramjd = XmlParser.parseXml(localEmojiInfo.getContent(), "gameext", null);
+          paramcc = Util.nullAs((String)paramjd.get(".gameext.$type"), "");
+          paramjd = Util.nullAs((String)paramjd.get(".gameext.$content"), "");
+          if ((paramcc.equals("")) || (paramjd.equals("")))
           {
             ((StringWriter)localObject).close();
-            AppMethodBeat.o(17782);
+            AppMethodBeat.o(21839);
             return "";
           }
-          localXmlSerializer.attribute(null, "type", String.valueOf(parambi));
-          localXmlSerializer.attribute(null, "content", String.valueOf(paramgx));
+          localXmlSerializer.attribute(null, "type", String.valueOf(paramcc));
+          localXmlSerializer.attribute(null, "content", String.valueOf(paramjd));
           localXmlSerializer.endTag(null, "gameext");
         }
         localXmlSerializer.endTag(null, "msg");
         localXmlSerializer.endDocument();
         ((StringWriter)localObject).flush();
         ((StringWriter)localObject).close();
-        parambi = ((StringWriter)localObject).getBuffer().toString();
+        paramcc = ((StringWriter)localObject).getBuffer().toString();
         return "";
       }
-      catch (XmlPullParserException parambi)
+      catch (XmlPullParserException paramcc)
       {
         try
         {
-          parambi = parambi.substring(parambi.indexOf(jzf), parambi.indexOf(jzg) + jzg.length());
-          ab.d("MicroMsg.EmojiConvert", "xml ".concat(String.valueOf(parambi)));
-          AppMethodBeat.o(17782);
-          return parambi;
+          paramcc = paramcc.substring(paramcc.indexOf(uWA), paramcc.indexOf(uWB) + uWB.length());
+          Log.d("MicroMsg.EmojiConvert", "xml ".concat(String.valueOf(paramcc)));
+          AppMethodBeat.o(21839);
+          return paramcc;
         }
-        catch (Exception parambi)
+        catch (Exception paramcc)
         {
-          AppMethodBeat.o(17782);
+          AppMethodBeat.o(21839);
         }
-        parambi = parambi;
-        ab.printErrStackTrace("MicroMsg.EmojiConvert", parambi, "", new Object[0]);
-        AppMethodBeat.o(17782);
+        paramcc = paramcc;
+        Log.printErrStackTrace("MicroMsg.EmojiConvert", paramcc, "", new Object[0]);
+        AppMethodBeat.o(21839);
         return "";
       }
-      catch (IllegalArgumentException parambi)
+      catch (IllegalArgumentException paramcc)
       {
-        ab.printErrStackTrace("MicroMsg.EmojiConvert", parambi, "", new Object[0]);
-        AppMethodBeat.o(17782);
+        Log.printErrStackTrace("MicroMsg.EmojiConvert", paramcc, "", new Object[0]);
+        AppMethodBeat.o(21839);
         return "";
       }
-      catch (IllegalStateException parambi)
+      catch (IllegalStateException paramcc)
       {
-        ab.printErrStackTrace("MicroMsg.EmojiConvert", parambi, "", new Object[0]);
-        AppMethodBeat.o(17782);
+        Log.printErrStackTrace("MicroMsg.EmojiConvert", paramcc, "", new Object[0]);
+        AppMethodBeat.o(21839);
         return "";
       }
-      catch (IOException parambi)
+      catch (IOException paramcc)
       {
-        ab.printErrStackTrace("MicroMsg.EmojiConvert", parambi, "", new Object[0]);
-        AppMethodBeat.o(17782);
+        Log.printErrStackTrace("MicroMsg.EmojiConvert", paramcc, "", new Object[0]);
+        AppMethodBeat.o(21839);
         return "";
       }
+    }
+    
+    public static String ahF(String paramString)
+    {
+      AppMethodBeat.i(21838);
+      paramString = a.ahO(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(21838);
+        return null;
+      }
+      paramString = paramString.vbj;
+      AppMethodBeat.o(21838);
+      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.c
  * JD-Core Version:    0.7.0.1
  */

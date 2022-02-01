@@ -13,28 +13,18 @@ public final class MultiVideoMsg
 {
   static ArrayList<Long> cache_to_uin;
   static byte[] cache_video_buff;
-  public short csCmd;
-  public long from_uin;
-  public long msg_dataflag;
-  public long msg_seq;
-  public long msg_time;
-  public long msg_type;
-  public long msg_uid;
-  public short subCmd;
-  public ArrayList<Long> to_uin;
-  public byte type;
-  public byte ver;
-  public byte[] video_buff;
-  
-  static
-  {
-    if (!MultiVideoMsg.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
+  public short csCmd = 0;
+  public long from_uin = 0L;
+  public long msg_dataflag = 0L;
+  public long msg_seq = 0L;
+  public long msg_time = 0L;
+  public long msg_type = 0L;
+  public long msg_uid = 0L;
+  public short subCmd = 0;
+  public ArrayList<Long> to_uin = null;
+  public byte type = 0;
+  public byte ver = 0;
+  public byte[] video_buff = null;
   
   public MultiVideoMsg() {}
   
@@ -61,18 +51,17 @@ public final class MultiVideoMsg
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -111,13 +100,60 @@ public final class MultiVideoMsg
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (MultiVideoMsg)paramObject;
-    } while ((!JceUtil.equals(this.ver, paramObject.ver)) || (!JceUtil.equals(this.type, paramObject.type)) || (!JceUtil.equals(this.csCmd, paramObject.csCmd)) || (!JceUtil.equals(this.from_uin, paramObject.from_uin)) || (!JceUtil.equals(this.to_uin, paramObject.to_uin)) || (!JceUtil.equals(this.video_buff, paramObject.video_buff)) || (!JceUtil.equals(this.subCmd, paramObject.subCmd)) || (!JceUtil.equals(this.msg_uid, paramObject.msg_uid)) || (!JceUtil.equals(this.msg_seq, paramObject.msg_seq)) || (!JceUtil.equals(this.msg_type, paramObject.msg_type)) || (!JceUtil.equals(this.msg_time, paramObject.msg_time)) || (!JceUtil.equals(this.msg_dataflag, paramObject.msg_dataflag)));
-    return true;
+    }
+    paramObject = (MultiVideoMsg)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.ver, paramObject.ver))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.type, paramObject.type))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.csCmd, paramObject.csCmd))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.from_uin, paramObject.from_uin))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.to_uin, paramObject.to_uin))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.video_buff, paramObject.video_buff))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.subCmd, paramObject.subCmd))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.msg_uid, paramObject.msg_uid))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.msg_seq, paramObject.msg_seq))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.msg_type, paramObject.msg_type))
+                      {
+                        bool1 = bool2;
+                        if (JceUtil.equals(this.msg_time, paramObject.msg_time))
+                        {
+                          bool1 = bool2;
+                          if (JceUtil.equals(this.msg_dataflag, paramObject.msg_dataflag)) {
+                            bool1 = true;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -302,7 +338,7 @@ public final class MultiVideoMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SharpSvrPack.MultiVideoMsg
  * JD-Core Version:    0.7.0.1
  */

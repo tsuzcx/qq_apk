@@ -58,25 +58,27 @@ class ej$1
         this.mx.a(this.lY, 152, -21000400);
         return;
       }
+      paramArrayList = (s)paramArrayList;
+      if (TextUtils.isEmpty(paramArrayList.aZ))
+      {
+        this.mx.a(this.lY, 152, -21280000);
+        return;
+      }
+      ej.a(this.my, this.mz, paramArrayList.aZ);
+      this.mx.a(this.lY, 152, 0);
+      return;
     }
     catch (Exception paramArrayList)
     {
-      this.mx.a(this.lY, 152, -21000400);
-      return;
+      label322:
+      break label322;
     }
-    paramArrayList = (s)paramArrayList;
-    if (TextUtils.isEmpty(paramArrayList.aZ))
-    {
-      this.mx.a(this.lY, 152, -21280000);
-      return;
-    }
-    ej.a(this.my, this.mz, paramArrayList.aZ);
-    this.mx.a(this.lY, 152, 0);
+    this.mx.a(this.lY, 152, -21000400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.ej.1
  * JD-Core Version:    0.7.0.1
  */

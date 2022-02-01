@@ -25,20 +25,32 @@ public class ProbeResponse
   
   public String getResult()
   {
-    String str = "---ProbeTask Strat " + new Timestamp(this.startTime).toString() + " from " + this.triggePoint + "---\n";
-    Iterator localIterator = this.mProbeItemResults.keySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("---ProbeTask Strat ");
+    ((StringBuilder)localObject1).append(new Timestamp(this.startTime).toString());
+    ((StringBuilder)localObject1).append(" from ");
+    ((StringBuilder)localObject1).append(this.triggePoint);
+    ((StringBuilder)localObject1).append("---\n");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = this.mProbeItemResults.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      Object localObject = (ProbeItem)localIterator.next();
-      localObject = (ProbeItem.ProbeResult)this.mProbeItemResults.get(localObject);
-      str = str + ((ProbeItem.ProbeResult)localObject).getRdmReportMsg();
+      Object localObject3 = (ProbeItem)((Iterator)localObject2).next();
+      localObject3 = (ProbeItem.ProbeResult)this.mProbeItemResults.get(localObject3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(((ProbeItem.ProbeResult)localObject3).getRdmReportMsg());
+      localObject1 = localStringBuilder.toString();
     }
-    return str + "----ProbeTask End----\n";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("----ProbeTask End----\n");
+    return ((StringBuilder)localObject2).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeResponse
  * JD-Core Version:    0.7.0.1
  */

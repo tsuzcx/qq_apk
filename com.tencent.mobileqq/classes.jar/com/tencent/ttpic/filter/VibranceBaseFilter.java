@@ -50,7 +50,8 @@ public class VibranceBaseFilter
   
   public void apply()
   {
-    GlUtil.glGenTextures(this.lutTex.length, this.lutTex, 0);
+    int[] arrayOfInt = this.lutTex;
+    GlUtil.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     GlUtil.loadTexture(this.lutTex[0], this.brightnessLutBitmap);
     GlUtil.loadTexture(this.lutTex[1], this.vibranceLeftLutBitmap);
     GlUtil.loadTexture(this.lutTex[2], this.vibranceRightLutBitmap);
@@ -62,7 +63,8 @@ public class VibranceBaseFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.lutTex.length, this.lutTex, 0);
+    int[] arrayOfInt = this.lutTex;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     BitmapUtils.recycle(this.brightnessLutBitmap);
     BitmapUtils.recycle(this.vibranceLeftLutBitmap);
     BitmapUtils.recycle(this.vibranceRightLutBitmap);
@@ -78,20 +80,22 @@ public class VibranceBaseFilter
   
   public void setBrightness(float paramFloat)
   {
-    addParam(new UniformParam.FloatParam("brightness", (paramFloat + 1.0F) / 2.0F));
-    this.mBrightness = ((paramFloat + 1.0F) / 2.0F);
+    paramFloat = (paramFloat + 1.0F) / 2.0F;
+    addParam(new UniformParam.FloatParam("brightness", paramFloat));
+    this.mBrightness = paramFloat;
   }
   
   public void setContrast(float paramFloat)
   {
-    addParam(new UniformParam.FloatParam("contrast", paramFloat / 2.0F + 1.0F));
-    this.mContrast = (paramFloat / 2.0F + 1.0F);
+    paramFloat = paramFloat / 2.0F + 1.0F;
+    addParam(new UniformParam.FloatParam("contrast", paramFloat));
+    this.mContrast = paramFloat;
   }
   
   public void setParameters(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     addParam(new UniformParam.FloatParam("brightness", paramFloat1));
-    addParam(new UniformParam.FloatParam("contrast", 0.5F + paramFloat2));
+    addParam(new UniformParam.FloatParam("contrast", paramFloat2 + 0.5F));
     addParam(new UniformParam.FloatParam("saturation", paramFloat3));
     this.mSaturation = paramFloat3;
     updateSatTex(this.mSaturation);
@@ -99,14 +103,15 @@ public class VibranceBaseFilter
   
   public void setSaturation(float paramFloat)
   {
-    addParam(new UniformParam.FloatParam("saturation", (paramFloat + 1.0F) / 2.0F));
-    this.mSaturation = ((paramFloat + 1.0F) / 2.0F);
+    paramFloat = (paramFloat + 1.0F) / 2.0F;
+    addParam(new UniformParam.FloatParam("saturation", paramFloat));
+    this.mSaturation = paramFloat;
     updateSatTex(this.mSaturation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.VibranceBaseFilter
  * JD-Core Version:    0.7.0.1
  */

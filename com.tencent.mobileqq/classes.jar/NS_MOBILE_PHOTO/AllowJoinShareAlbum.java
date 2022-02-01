@@ -8,7 +8,7 @@ public class AllowJoinShareAlbum
   extends JceStruct
 {
   static byte[] cache_data = (byte[])new byte[1];
-  public byte[] data;
+  public byte[] data = null;
   public int source = 0;
   
   static
@@ -33,14 +33,15 @@ public class AllowJoinShareAlbum
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.source, 0);
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 1);
+    byte[] arrayOfByte = this.data;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.AllowJoinShareAlbum
  * JD-Core Version:    0.7.0.1
  */

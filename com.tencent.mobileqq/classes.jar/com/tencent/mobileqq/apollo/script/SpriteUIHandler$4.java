@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import alba;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 
@@ -16,43 +14,31 @@ class SpriteUIHandler$4
   {
     try
     {
-      if (SpriteUIHandler.a(this.this$0).a() == null) {
+      if (SpriteUIHandler.c(this.this$0).l() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376034);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.c(this.this$0).m().aW().findViewById(2131445137);
       if (1 == this.a)
       {
-        if (localXPanelContainer.a() != 21) {
-          return;
+        if (localXPanelContainer.getCurrentPanel() == 21) {
+          SpriteUIHandler.c(this.this$0).m().aw();
         }
-        SpriteUIHandler.a(this.this$0).a().ar();
+      }
+      else if (2 == this.a)
+      {
+        localXPanelContainer.a(21);
         return;
       }
     }
     catch (Exception localException)
     {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
-      return;
-    }
-    if (2 == this.a)
-    {
-      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.this$0).a();
-      if (localBaseChatPie != null)
-      {
-        ApolloPanel localApolloPanel = localBaseChatPie.a;
-        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
-        {
-          localBaseChatPie.s(0);
-          return;
-        }
-      }
-      localException.a(21);
+      QLog.e("[cmshow][scripted]SpriteUIHandler", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.4
  * JD-Core Version:    0.7.0.1
  */

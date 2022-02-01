@@ -20,15 +20,16 @@ public class WalletHomeResp
   public void toBundle(Bundle paramBundle)
   {
     super.toBundle(paramBundle);
-    if (this.resp != null) {
-      paramBundle.putSerializable("_qwallet_ipc_WalletHome_resp", this.resp);
+    ArrayList localArrayList = this.resp;
+    if (localArrayList != null) {
+      paramBundle.putSerializable("_qwallet_ipc_WalletHome_resp", localArrayList);
     }
     paramBundle.putBoolean("_qwallet_ipc_WalletHome_isAppLoadFinished", this.isAppLoadFinished);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeResp
  * JD-Core Version:    0.7.0.1
  */

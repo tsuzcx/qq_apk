@@ -17,11 +17,12 @@ public class ConfigProtocol$ConnForbidTypeTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < 2)) {
-      return false;
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() >= 2))
+    {
+      this.m_ConnType = paramByteBuffer.ReadUInt16();
+      return true;
     }
-    this.m_ConnType = paramByteBuffer.ReadUInt16();
-    return true;
+    return false;
   }
   
   public short getConnForbidType()
@@ -31,7 +32,7 @@ public class ConfigProtocol$ConnForbidTypeTLV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.TMG.config.ConfigProtocol.ConnForbidTypeTLV
  * JD-Core Version:    0.7.0.1
  */

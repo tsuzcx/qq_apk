@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +13,8 @@ public final class CLIENT_NBP_REPORT_REQ
 {
   static Map<String, String> cache_extra_info;
   static ArrayList<String> cache_report_info = new ArrayList();
-  public Map<String, String> extra_info;
-  public ArrayList<String> report_info;
+  public Map<String, String> extra_info = null;
+  public ArrayList<String> report_info = null;
   public String strABTestId = "";
   
   static
@@ -41,20 +42,23 @@ public final class CLIENT_NBP_REPORT_REQ
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strABTestId != null) {
-      paramJceOutputStream.write(this.strABTestId, 0);
+    Object localObject = this.strABTestId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.report_info != null) {
-      paramJceOutputStream.write(this.report_info, 1);
+    localObject = this.report_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.extra_info != null) {
-      paramJceOutputStream.write(this.extra_info, 2);
+    localObject = this.extra_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ
  * JD-Core Version:    0.7.0.1
  */

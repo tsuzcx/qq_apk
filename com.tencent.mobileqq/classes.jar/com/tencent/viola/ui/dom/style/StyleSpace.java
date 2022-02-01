@@ -36,42 +36,61 @@ public class StyleSpace
   
   public boolean equal(StyleSpace paramStyleSpace)
   {
-    return (FloatUtils.floatsEqual(get(0), paramStyleSpace.get(0))) && (FloatUtils.floatsEqual(get(1), paramStyleSpace.get(1))) && (FloatUtils.floatsEqual(get(2), paramStyleSpace.get(2))) && (FloatUtils.floatsEqual(get(3), paramStyleSpace.get(3)));
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (FloatUtils.floatsEqual(get(0), paramStyleSpace.get(0)))
+    {
+      bool1 = bool2;
+      if (FloatUtils.floatsEqual(get(1), paramStyleSpace.get(1)))
+      {
+        bool1 = bool2;
+        if (FloatUtils.floatsEqual(get(2), paramStyleSpace.get(2)))
+        {
+          bool1 = bool2;
+          if (FloatUtils.floatsEqual(get(3), paramStyleSpace.get(3))) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public float get(int paramInt)
   {
+    Object localObject = this.mDefaultSpacing;
     float f;
-    if (this.mDefaultSpacing != null)
-    {
-      f = this.mDefaultSpacing[paramInt];
-      if (this.mValueFlags != 0) {
-        break label46;
-      }
+    if (localObject != null) {
+      f = localObject[paramInt];
+    } else if ((paramInt != 6) && (paramInt != 7)) {
+      f = 0.0F;
+    } else {
+      f = (0.0F / 0.0F);
     }
-    label46:
-    do
+    int i = this.mValueFlags;
+    if (i == 0) {
+      return f;
+    }
+    if ((i & sFlagsMap[paramInt]) != 0) {
+      return this.mSpacing[paramInt];
+    }
+    if (this.mHasAliasesSet)
     {
-      do
-      {
-        return f;
-        if ((paramInt == 6) || (paramInt == 7))
-        {
-          f = (0.0F / 0.0F);
-          break;
-        }
-        f = 0.0F;
-        break;
-        if ((this.mValueFlags & sFlagsMap[paramInt]) != 0) {
-          return this.mSpacing[paramInt];
-        }
-      } while (!this.mHasAliasesSet);
-      if ((paramInt == 1) || (paramInt == 3)) {}
-      for (paramInt = 4; (this.mValueFlags & sFlagsMap[paramInt]) != 0; paramInt = 5) {
+      if ((paramInt != 1) && (paramInt != 3)) {
+        paramInt = 5;
+      } else {
+        paramInt = 4;
+      }
+      i = this.mValueFlags;
+      localObject = sFlagsMap;
+      if ((localObject[paramInt] & i) != 0) {
         return this.mSpacing[paramInt];
       }
-    } while ((this.mValueFlags & sFlagsMap[8]) == 0);
-    return this.mSpacing[8];
+      if ((i & localObject[8]) != 0) {
+        return this.mSpacing[8];
+      }
+    }
+    return f;
   }
   
   public float getRaw(int paramInt)
@@ -97,19 +116,29 @@ public class StyleSpace
   
   public boolean set(int paramInt, float paramFloat)
   {
-    boolean bool = false;
-    if (!FloatUtils.floatsEqual(this.mSpacing[paramInt], paramFloat))
+    boolean bool2 = FloatUtils.floatsEqual(this.mSpacing[paramInt], paramFloat);
+    boolean bool1 = false;
+    if (!bool2)
     {
       this.mSpacing[paramInt] = paramFloat;
-      if (FlexConstants.isUndefined(paramFloat)) {}
-      for (this.mValueFlags &= (sFlagsMap[paramInt] ^ 0xFFFFFFFF);; this.mValueFlags |= sFlagsMap[paramInt])
+      int i;
+      if (FlexConstants.isUndefined(paramFloat))
       {
-        if (((this.mValueFlags & sFlagsMap[8]) != 0) || ((this.mValueFlags & sFlagsMap[4]) != 0) || ((this.mValueFlags & sFlagsMap[5]) != 0)) {
-          bool = true;
-        }
-        this.mHasAliasesSet = bool;
-        return true;
+        i = this.mValueFlags;
+        this.mValueFlags = ((sFlagsMap[paramInt] ^ 0xFFFFFFFF) & i);
       }
+      else
+      {
+        i = this.mValueFlags;
+        this.mValueFlags = (sFlagsMap[paramInt] | i);
+      }
+      paramInt = this.mValueFlags;
+      int[] arrayOfInt = sFlagsMap;
+      if (((arrayOfInt[8] & paramInt) != 0) || ((arrayOfInt[4] & paramInt) != 0) || ((paramInt & arrayOfInt[5]) != 0)) {
+        bool1 = true;
+      }
+      this.mHasAliasesSet = bool1;
+      return true;
     }
     return false;
   }
@@ -129,7 +158,7 @@ public class StyleSpace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.StyleSpace
  * JD-Core Version:    0.7.0.1
  */

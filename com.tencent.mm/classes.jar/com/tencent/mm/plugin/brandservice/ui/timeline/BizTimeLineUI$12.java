@@ -1,33 +1,25 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.app.ProgressDialog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
 
 final class BizTimeLineUI$12
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  BizTimeLineUI$12(BizTimeLineUI paramBizTimeLineUI, ProgressDialog paramProgressDialog) {}
+  BizTimeLineUI$12(BizTimeLineUI paramBizTimeLineUI) {}
   
-  public final void run()
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(14195);
-    if ((this.efE != null) && (this.efE.isShowing())) {
-      this.efE.dismiss();
-    }
-    if (this.jXh.isFinishing())
-    {
-      ab.w("MicroMsg.BizTimeLineUI", "checkInitListView isFinishing, just return");
-      AppMethodBeat.o(14195);
-      return;
-    }
-    BizTimeLineUI.a(this.jXh);
-    AppMethodBeat.o(14195);
+    AppMethodBeat.i(301805);
+    this.vIB.finish();
+    AppMethodBeat.o(301805);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI.12
  * JD-Core Version:    0.7.0.1
  */

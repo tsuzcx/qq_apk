@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="time,msgid,uSessionID")
@@ -27,16 +27,16 @@ public class RouterMsgRecord
   public static final int status_transfer_pause = 5;
   public static final int status_transfer_suc = 3;
   public static final int status_transfering = 2;
-  @awhp
+  @notColumn
   public long entityID;
   public long fileSize;
   public String filename;
   public int oppositestatus = 1;
   public long peerDin;
-  public double progress;
-  public String sTableName;
+  public double progress = 0.0D;
+  public String sTableName = null;
   public int status = 1;
-  public long uSessionID;
+  public long uSessionID = 0L;
   
   public RouterMsgRecord()
   {
@@ -68,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  public Class<? extends awge> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return RouterMsgRecord.class;
   }
@@ -78,11 +78,14 @@ public class RouterMsgRecord
     return this.sTableName;
   }
   
-  public void postRead() {}
+  protected void postRead() {}
   
   public void setTableName(String paramString)
   {
-    this.sTableName = (sBasicTableName + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(sBasicTableName);
+    localStringBuilder.append(paramString);
+    this.sTableName = localStringBuilder.toString();
     this.peerDin = Long.parseLong(paramString);
   }
 }

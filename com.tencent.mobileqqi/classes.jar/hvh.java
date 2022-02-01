@@ -1,21 +1,4 @@
-import com.tencent.widget.AbsListView;
-
-public class hvh
-{
-  private int a;
-  
-  private hvh(AbsListView paramAbsListView) {}
-  
-  public void a()
-  {
-    this.a = AbsListView.a(this.b);
-  }
-  
-  public boolean a()
-  {
-    return (this.b.hasWindowFocus()) && (AbsListView.b(this.b) == this.a);
-  }
-}
+public class hvh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar

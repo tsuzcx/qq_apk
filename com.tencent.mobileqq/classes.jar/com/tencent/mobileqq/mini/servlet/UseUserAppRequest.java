@@ -25,6 +25,7 @@ public class UseUserAppRequest
     paramString1.refer.set(paramString2);
     paramString1.via.set(paramString3);
     this.req.channelInfo.set(paramString1);
+    this.req.needRecommend.set(1);
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
     }
@@ -32,16 +33,20 @@ public class UseUserAppRequest
   
   public static INTERFACE.StUseUserAppRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
+    Object localObject = new INTERFACE.StUseUserAppRsp();
     try
     {
-      localStUseUserAppRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStUseUserAppRsp;
+      ((INTERFACE.StUseUserAppRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("UseUserAppRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("UseUserAppRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -54,7 +59,7 @@ public class UseUserAppRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.UseUserAppRequest
  * JD-Core Version:    0.7.0.1
  */

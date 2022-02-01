@@ -34,24 +34,28 @@ public class SearchParam
     if (!TextUtils.isEmpty(this.a)) {
       localfn.b("keyword", this.a);
     }
-    if (this.b != null) {
-      localfn.b("boundary", this.b.toString());
+    Object localObject = this.b;
+    if (localObject != null) {
+      localfn.b("boundary", ((SearchParam.Boundary)localObject).toString());
     }
     if (!TextUtils.isEmpty(this.c)) {
       localfn.b("filter", this.c);
     }
-    if (this.d) {}
-    for (String str = "_distance";; str = "_distance desc")
-    {
-      localfn.b("orderby", str);
-      if (this.e > 0) {
-        localfn.b("page_size", String.valueOf(this.e));
-      }
-      if (this.f > 0) {
-        localfn.b("page_index", String.valueOf(this.f));
-      }
-      return localfn;
+    if (this.d) {
+      localObject = "_distance";
+    } else {
+      localObject = "_distance desc";
     }
+    localfn.b("orderby", (String)localObject);
+    int i = this.e;
+    if (i > 0) {
+      localfn.b("page_size", String.valueOf(i));
+    }
+    i = this.f;
+    if (i > 0) {
+      localfn.b("page_index", String.valueOf(i));
+    }
+    return localfn;
   }
   
   public boolean checkParams()
@@ -108,7 +112,7 @@ public class SearchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.SearchParam
  * JD-Core Version:    0.7.0.1
  */

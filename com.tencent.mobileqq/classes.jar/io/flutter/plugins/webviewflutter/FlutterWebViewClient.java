@@ -84,7 +84,7 @@ class FlutterWebViewClient
   WebViewClient createWebViewClient(boolean paramBoolean)
   {
     this.hasNavigationDelegate = paramBoolean;
-    if ((!paramBoolean) || (Build.VERSION.SDK_INT >= 24)) {
+    if ((paramBoolean) && (Build.VERSION.SDK_INT < 24)) {
       return internalCreateWebViewClient();
     }
     return internalCreateWebViewClient();
@@ -92,7 +92,7 @@ class FlutterWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterWebViewClient
  * JD-Core Version:    0.7.0.1
  */

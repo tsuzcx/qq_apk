@@ -3,272 +3,301 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.text.TextUtils;
+import com.tencent.luggage.sdk.b.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.api.e;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.threadpool.i;
+import java.io.InputStream;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import junit.framework.Assert;
 
+@Deprecated
 public final class WxaCommLibRuntimeReader
 {
-  private static n gVn;
-  private static Future<Object> gVo;
-  private static final ThreadPoolExecutor gVp;
+  private static volatile ICommLibReader qFT;
+  private static Future<Object> qFU;
   
   static
   {
-    AppMethodBeat.i(59474);
-    gVp = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-    AppMethodBeat.o(59474);
+    AppMethodBeat.i(90587);
+    a.b localb = a.b.eqT;
+    a.b.a(new WxaCommLibRuntimeReader.1());
+    AppMethodBeat.o(90587);
   }
   
-  /* Error */
-  public static void avF()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 53
-    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 56	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:ph	()V
-    //   11: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   14: ifnonnull +80 -> 94
-    //   17: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
-    //   20: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   23: ldc 53
-    //   25: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: return
-    //   32: astore_0
-    //   33: ldc 66
-    //   35: ldc 68
-    //   37: iconst_1
-    //   38: anewarray 4	java/lang/Object
-    //   41: dup
-    //   42: iconst_0
-    //   43: aload_0
-    //   44: aastore
-    //   45: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   48: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   51: ifnonnull +43 -> 94
-    //   54: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
-    //   57: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   60: ldc 53
-    //   62: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   65: goto -37 -> 28
-    //   68: astore_0
-    //   69: ldc 2
-    //   71: monitorexit
-    //   72: aload_0
-    //   73: athrow
-    //   74: astore_0
-    //   75: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   78: ifnonnull +9 -> 87
-    //   81: getstatic 64	com/tencent/mm/plugin/appbrand/appcache/c:gTP	Lcom/tencent/mm/plugin/appbrand/appcache/c;
-    //   84: putstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   87: ldc 53
-    //   89: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: aload_0
-    //   93: athrow
-    //   94: ldc 53
-    //   96: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   99: goto -71 -> 28
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   32	12	0	localThrowable	Throwable
-    //   68	5	0	localObject1	Object
-    //   74	19	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	11	32	java/lang/Throwable
-    //   3	8	68	finally
-    //   11	28	68	finally
-    //   48	65	68	finally
-    //   75	87	68	finally
-    //   87	94	68	finally
-    //   94	99	68	finally
-    //   8	11	74	finally
-    //   33	48	74	finally
-  }
-  
-  /* Error */
-  public static boolean avG()
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_0
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: ldc 77
-    //   7: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 58	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:gVn	Lcom/tencent/mm/plugin/appbrand/appstorage/n;
-    //   13: astore_1
-    //   14: ldc 66
-    //   16: ldc 79
-    //   18: iconst_1
-    //   19: anewarray 4	java/lang/Object
-    //   22: dup
-    //   23: iconst_0
-    //   24: aload_1
-    //   25: aastore
-    //   26: invokestatic 81	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   29: aload_1
-    //   30: ifnull +13 -> 43
-    //   33: ldc 77
-    //   35: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   38: ldc 2
-    //   40: monitorexit
-    //   41: iload_0
-    //   42: ireturn
-    //   43: ldc 77
-    //   45: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: iconst_0
-    //   49: istore_0
-    //   50: goto -12 -> 38
-    //   53: astore_1
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   1	49	0	bool	boolean
-    //   13	17	1	localn	n
-    //   53	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	29	53	finally
-    //   33	38	53	finally
-    //   43	48	53	finally
-  }
-  
-  public static n avH()
+  public static ICommLibReader cgA()
   {
     try
     {
-      AppMethodBeat.i(59467);
-      if (gVn == null) {
-        avF();
+      AppMethodBeat.i(90585);
+      if (qFT == null) {
+        cgy();
       }
-      n localn = gVn;
-      AppMethodBeat.o(59467);
-      return localn;
+      ICommLibReader localICommLibReader = qFT;
+      AppMethodBeat.o(90585);
+      return localICommLibReader;
     }
     finally {}
   }
   
-  public static WxaPkgWrappingInfo avI()
+  public static WxaPkgWrappingInfo cgB()
   {
-    AppMethodBeat.i(59473);
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = avH().ave();
-    AppMethodBeat.o(59473);
+    AppMethodBeat.i(90586);
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = (WxaPkgWrappingInfo)cgA().cfI();
+    AppMethodBeat.o(90586);
     return localWxaPkgWrappingInfo;
   }
   
-  public static String getVersionName()
+  public static void cgC()
   {
-    AppMethodBeat.i(59468);
-    String str = avH().avc();
-    AppMethodBeat.o(59468);
-    return str;
+    AppMethodBeat.i(184411);
+    Assert.assertTrue(MMApplicationContext.isMainProcess());
+    Log.i("MicroMsg.WxaCommLibRuntimeReader", "ensureLibReaderInMainProcess()");
+    a locala = new a();
+    IPCVoid localIPCVoid = IPCVoid.mzv;
+    locala.cgD();
+    AppMethodBeat.o(184411);
   }
   
-  public static void ph()
+  public static void cgy()
   {
-    try
-    {
-      AppMethodBeat.i(59465);
-      if (gVn != null)
-      {
-        ab.i("MicroMsg.WxaCommLibRuntimeReader", "load(), sReader %s loaded", new Object[] { gVn });
-        AppMethodBeat.o(59465);
-      }
-      for (;;)
-      {
-        return;
-        if (!an.avM()) {
-          break;
-        }
-        gVn = c.gTP;
-        ab.i("MicroMsg.WxaCommLibRuntimeReader", "load(), forceLocal, use AssetReader");
-        AppMethodBeat.o(59465);
-      }
-      if (ah.dsZ()) {
-        break label101;
-      }
-    }
-    finally {}
-    ab.e("MicroMsg.WxaCommLibRuntimeReader", "load(), mm process not exists");
-    Object localObject2 = new AccountNotReadyError();
-    AppMethodBeat.o(59465);
-    throw ((Throwable)localObject2);
-    label212:
     for (;;)
     {
       try
       {
-        label101:
-        if (gVo != null)
-        {
-          ab.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), wait for existing retriever");
-          localObject2 = gVo.get(5L, TimeUnit.SECONDS);
-          if (!(localObject2 instanceof WxaPkgWrappingInfo)) {
-            break label225;
-          }
-          localObject2 = (WxaPkgWrappingInfo)localObject2;
-          if (!((WxaPkgWrappingInfo)localObject2).gXh) {
-            break label212;
-          }
-          localObject2 = c.gTP;
-          gVn = (n)localObject2;
-          AppMethodBeat.o(59465);
-          break;
-        }
-        ab.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(), new retriever");
-        gVo = gVp.submit(new WxaCommLibRuntimeReader.1());
-        continue;
-        localObject3 = new WxaCommLibRuntimeReader.b(localThrowable, (byte)0);
+        AppMethodBeat.i(90583);
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        gVo.cancel(false);
-        gVo = null;
-        AppMethodBeat.o(59465);
-        throw localThrowable;
+        try
+        {
+          Log.e("MicroMsg.WxaCommLibRuntimeReader", "loadOrFallback throw %s", new Object[] { localObject1 });
+          if (qFT != null) {
+            break label95;
+          }
+          qFT = AssetReader.qDV;
+          AppMethodBeat.o(90583);
+          continue;
+        }
+        finally
+        {
+          if (qFT != null) {
+            break label88;
+          }
+          qFT = AssetReader.qDV;
+          AppMethodBeat.o(90583);
+        }
+        localObject2 = finally;
       }
-    }
-    label225:
-    if ((localObject3 instanceof AccountNotReadyError))
-    {
-      localObject3 = (AccountNotReadyError)localObject3;
-      AppMethodBeat.o(59465);
-      throw ((Throwable)localObject3);
-    }
-    if ((localObject3 instanceof Exception))
-    {
-      localObject3 = (Exception)localObject3;
-      AppMethodBeat.o(59465);
-      throw ((Throwable)localObject3);
-    }
-    if ("Unknown result " + null == localObject3) {}
-    for (Object localObject3 = "null";; localObject3 = localObject3.getClass().getName())
-    {
-      localObject3 = new IllegalArgumentException((String)localObject3);
-      AppMethodBeat.o(59465);
-      throw ((Throwable)localObject3);
+      try
+      {
+        fn(false);
+        if (qFT == null)
+        {
+          qFT = AssetReader.qDV;
+          AppMethodBeat.o(90583);
+          return;
+        }
+      }
+      finally
+      {
+        localObject1 = finally;
+      }
+      label88:
+      label95:
+      AppMethodBeat.o(90583);
     }
   }
   
-  public static String yt(String paramString)
+  public static ICommLibReader cgz()
   {
-    AppMethodBeat.i(59470);
-    paramString = avH().yl(paramString);
-    AppMethodBeat.o(59470);
-    return paramString;
+    return qFT;
+  }
+  
+  /* Error */
+  public static boolean f(ICommLibReader paramICommLibReader)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 129
+    //   5: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 59	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:qFT	Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+    //   11: ifnull +15 -> 26
+    //   14: aload_0
+    //   15: getstatic 59	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:qFT	Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+    //   18: invokeinterface 133 2 0
+    //   23: ifeq +19 -> 42
+    //   26: aload_0
+    //   27: putstatic 59	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader:qFT	Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+    //   30: iconst_1
+    //   31: istore_1
+    //   32: ldc 129
+    //   34: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: iload_1
+    //   41: ireturn
+    //   42: iconst_0
+    //   43: istore_1
+    //   44: ldc 129
+    //   46: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: goto -12 -> 37
+    //   52: astore_0
+    //   53: ldc 2
+    //   55: monitorexit
+    //   56: aload_0
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	paramICommLibReader	ICommLibReader
+    //   31	13	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	26	52	finally
+    //   26	30	52	finally
+    //   32	37	52	finally
+    //   44	49	52	finally
+  }
+  
+  public static void fn(boolean paramBoolean)
+  {
+    try
+    {
+      AppMethodBeat.i(320360);
+      if (qFT != null)
+      {
+        Log.i("MicroMsg.WxaCommLibRuntimeReader", "load(), sReader %s loaded", new Object[] { qFT });
+        AppMethodBeat.o(320360);
+      }
+      for (;;)
+      {
+        return;
+        if (!bc.cgI()) {
+          break;
+        }
+        qFT = AssetReader.qDV;
+        Log.i("MicroMsg.WxaCommLibRuntimeReader", "load(), forceLocal, use AssetReader");
+        AppMethodBeat.o(320360);
+      }
+      if (!MMApplicationContext.isMainProcess()) {
+        break label100;
+      }
+    }
+    finally {}
+    Object localObject2;
+    if (!com.tencent.mm.kernel.h.baz())
+    {
+      localObject2 = new AccountNotReadyError();
+      AppMethodBeat.o(320360);
+      throw ((Throwable)localObject2);
+      label100:
+      if (!MMApplicationContext.isMMProcessExist())
+      {
+        Log.e("MicroMsg.WxaCommLibRuntimeReader", "load(), mm process not exists");
+        localObject2 = new AccountNotReadyError();
+        AppMethodBeat.o(320360);
+        throw ((Throwable)localObject2);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        if (qFU != null)
+        {
+          Log.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(isForPreload:%b), wait for existing retriever", new Object[] { Boolean.valueOf(paramBoolean) });
+          localObject2 = qFU;
+          if (!paramBoolean) {
+            break label260;
+          }
+          l = 30L;
+          localObject2 = ((Future)localObject2).get(l, TimeUnit.SECONDS);
+          if (!(localObject2 instanceof ICommLibReader)) {
+            break label267;
+          }
+          localObject2 = (ICommLibReader)localObject2;
+          qFT = (ICommLibReader)localObject2;
+          AppMethodBeat.o(320360);
+          break;
+        }
+        Log.i("MicroMsg.WxaCommLibRuntimeReader", "loadAwaitingRetriever(isForPreload:%b), new retriever", new Object[] { Boolean.valueOf(paramBoolean) });
+        qFU = com.tencent.threadpool.h.ahAA.f(new Callable()
+        {
+          public final Object call()
+          {
+            AppMethodBeat.i(320366);
+            try
+            {
+              if (MMApplicationContext.isMainProcess())
+              {
+                localObject = new WxaCommLibRuntimeReader.a();
+                IPCVoid localIPCVoid = IPCVoid.mzv;
+                localObject = ((WxaCommLibRuntimeReader.a)localObject).cgD();
+                AppMethodBeat.o(320366);
+                return localObject;
+              }
+              Object localObject = XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, WxaCommLibRuntimeReader.a.class);
+              AppMethodBeat.o(320366);
+              return localObject;
+            }
+            catch (Exception localException)
+            {
+              Log.printErrStackTrace("MicroMsg.WxaCommLibRuntimeReader", localException, "load() ipc read lib", new Object[0]);
+              AppMethodBeat.o(320366);
+              return localException;
+            }
+          }
+        });
+        continue;
+        long l = 5L;
+      }
+      finally
+      {
+        qFU.cancel(false);
+        qFU = null;
+        AppMethodBeat.o(320360);
+      }
+      label260:
+      continue;
+      label267:
+      if (!(localObject3 instanceof WxaPkgWrappingInfo)) {
+        break label285;
+      }
+      localObject4 = aw.a((WxaPkgWrappingInfo)localObject3);
+    }
+    label285:
+    if ((localObject4 instanceof AccountNotReadyError))
+    {
+      localObject4 = (AccountNotReadyError)localObject4;
+      AppMethodBeat.o(320360);
+      throw ((Throwable)localObject4);
+    }
+    if ((localObject4 instanceof Exception))
+    {
+      localObject4 = (Exception)localObject4;
+      AppMethodBeat.o(320360);
+      throw ((Throwable)localObject4);
+    }
+    if ("Unknown result " + null == localObject4) {}
+    for (Object localObject4 = "null";; localObject4 = localObject4.getClass().getName())
+    {
+      localObject4 = new IllegalArgumentException((String)localObject4);
+      AppMethodBeat.o(320360);
+      throw ((Throwable)localObject4);
+    }
   }
   
   static final class AccountNotReadyError
@@ -279,9 +308,9 @@ public final class WxaCommLibRuntimeReader
     
     static
     {
-      AppMethodBeat.i(59456);
-      CREATOR = new WxaCommLibRuntimeReader.AccountNotReadyError.1();
-      AppMethodBeat.o(59456);
+      AppMethodBeat.i(90571);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(90571);
     }
     
     AccountNotReadyError() {}
@@ -294,6 +323,299 @@ public final class WxaCommLibRuntimeReader
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt) {}
+  }
+  
+  public static final class PkgReader
+    extends AbsReader
+  {
+    public static final Parcelable.Creator<PkgReader> CREATOR;
+    private final WxaPkgWrappingInfo qDU;
+    private volatile WxaPkg qFW;
+    
+    static
+    {
+      AppMethodBeat.i(184410);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(184410);
+    }
+    
+    public PkgReader(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+    {
+      AppMethodBeat.i(90577);
+      this.qDU = paramWxaPkgWrappingInfo;
+      AppMethodBeat.o(90577);
+    }
+    
+    private WxaPkg cgE()
+    {
+      AppMethodBeat.i(320391);
+      WxaPkg localWxaPkg;
+      if (this.qFW != null)
+      {
+        localWxaPkg = this.qFW;
+        AppMethodBeat.o(320391);
+        return localWxaPkg;
+      }
+      try
+      {
+        if (this.qFW == null) {
+          this.qFW = new WxaPkg(this.qDU.pkgPath());
+        }
+        localWxaPkg = this.qFW;
+        AppMethodBeat.o(320391);
+        return localWxaPkg;
+      }
+      finally
+      {
+        AppMethodBeat.o(320391);
+      }
+    }
+    
+    public final InputStream Lh(String paramString)
+    {
+      AppMethodBeat.i(90578);
+      WxaPkg localWxaPkg = cgE();
+      localWxaPkg.cfK();
+      paramString = localWxaPkg.Va(paramString);
+      AppMethodBeat.o(90578);
+      return paramString;
+    }
+    
+    /* Error */
+    public final void close()
+    {
+      // Byte code:
+      //   0: ldc 71
+      //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_0
+      //   6: getfield 44	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$PkgReader:qFW	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;
+      //   9: astore_2
+      //   10: aload_2
+      //   11: ifnull +7 -> 18
+      //   14: aload_2
+      //   15: invokevirtual 73	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+      //   18: aload_0
+      //   19: aconst_null
+      //   20: putfield 44	com/tencent/mm/plugin/appbrand/appcache/WxaCommLibRuntimeReader$PkgReader:qFW	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkg;
+      //   23: aload_2
+      //   24: ifnull +45 -> 69
+      //   27: aload_2
+      //   28: invokevirtual 73	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+      //   31: ldc 71
+      //   33: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   36: return
+      //   37: astore_1
+      //   38: aload_2
+      //   39: ifnull +7 -> 46
+      //   42: aload_2
+      //   43: invokevirtual 73	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
+      //   46: ldc 71
+      //   48: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   51: aload_1
+      //   52: athrow
+      //   53: astore_1
+      //   54: ldc 71
+      //   56: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   59: return
+      //   60: astore_2
+      //   61: aload_1
+      //   62: aload_2
+      //   63: invokevirtual 79	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+      //   66: goto -20 -> 46
+      //   69: ldc 71
+      //   71: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   74: return
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	75	0	this	PkgReader
+      //   37	15	1	localObject1	Object
+      //   53	9	1	localObject2	Object
+      //   9	34	2	localWxaPkg	WxaPkg
+      //   60	3	2	localThrowable	Throwable
+      // Exception table:
+      //   from	to	target	type
+      //   14	18	37	finally
+      //   18	23	37	finally
+      //   5	10	53	finally
+      //   27	36	53	finally
+      //   46	53	53	finally
+      //   61	66	53	finally
+      //   42	46	60	finally
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    protected final void finalize()
+    {
+      AppMethodBeat.i(90580);
+      super.finalize();
+      close();
+      AppMethodBeat.o(90580);
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(90579);
+      String str = String.format(Locale.US, "PkgReader[%d] [%s]", new Object[] { Integer.valueOf(this.qDU.pkgVersion), cfD() });
+      AppMethodBeat.o(90579);
+      return str;
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(184409);
+      paramParcel.writeParcelable(this.qDU, paramInt);
+      AppMethodBeat.o(184409);
+    }
+  }
+  
+  static final class a
+    implements m<IPCVoid, Object>
+  {
+    private WxaPkgWrappingInfo ii(boolean paramBoolean)
+    {
+      AppMethodBeat.i(90575);
+      try
+      {
+        bm localbm = ((e)com.tencent.mm.kernel.h.ax(e.class)).ceo();
+        if (localbm == null)
+        {
+          Log.e("MicroMsg.WxaCommLibRuntimeReader", "getLib(release:%b), NULL == WxaPkgStorage", new Object[] { Boolean.valueOf(paramBoolean) });
+          AppMethodBeat.o(90575);
+          return null;
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        for (;;)
+        {
+          localObject = null;
+        }
+        bh localbh1;
+        if (paramBoolean)
+        {
+          bh localbh2 = ay.a((bm)localObject, 0);
+          if (localbh2 != null)
+          {
+            localbh1 = localbh2;
+            if (localbh2.field_version == ((bm)localObject).bG("@LibraryAppId", 0)) {}
+          }
+          else
+          {
+            com.tencent.threadpool.h.ahAA.g(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(90572);
+                if (!com.tencent.mm.kernel.h.baC().mBZ)
+                {
+                  AppMethodBeat.o(90572);
+                  return;
+                }
+                try
+                {
+                  ((com.tencent.mm.plugin.appbrand.api.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.api.b.class)).id(false);
+                  AppMethodBeat.o(90572);
+                  return;
+                }
+                catch (Exception localException)
+                {
+                  Log.printErrStackTrace("MicroMsg.WxaCommLibRuntimeReader", localException, "[NOT CRASH]", new Object[0]);
+                  AppMethodBeat.o(90572);
+                }
+              }
+            }, "AppBrand$checkLibUnbrokenOrDownload_releaseLib(false)");
+            localbh1 = localbh2;
+          }
+        }
+        while (localbh1 != null)
+        {
+          Log.i("MicroMsg.WxaCommLibRuntimeReader", "getLib(%b), record.version:%d, record.md5:%s, embed.version:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(localbh1.field_version), localbh1.field_versionMd5, Integer.valueOf(AssetReader.qDV.cfG()) });
+          if ((paramBoolean) && (localbh1.field_version < AssetReader.qDV.cfG()))
+          {
+            AppMethodBeat.o(90575);
+            return null;
+            localbh1 = ay.a((bm)localObject, 999);
+          }
+          else
+          {
+            localObject = ay.b(localbh1);
+            AppMethodBeat.o(90575);
+            return localObject;
+          }
+        }
+      }
+      AppMethodBeat.o(90575);
+      return null;
+    }
+    
+    public final Object cgD()
+    {
+      localObject5 = null;
+      AppMethodBeat.i(90573);
+      Object localObject1;
+      if (!com.tencent.mm.kernel.h.baC().mBZ)
+      {
+        localObject1 = new WxaCommLibRuntimeReader.AccountNotReadyError();
+        AppMethodBeat.o(90573);
+        return localObject1;
+      }
+      for (;;)
+      {
+        try
+        {
+          if (!com.tencent.mm.kernel.h.baC().mBZ)
+          {
+            localObject3 = null;
+            if ((localObject3 == null) || (!((WxaPkgWrappingInfo)localObject3).qHQ)) {
+              continue;
+            }
+            localObject3 = AssetReader.qDV;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            Log.i("MicroMsg.WxaCommLibRuntimeReader", "IPC_ReadLib use local pkg");
+            localObject1 = localObject3;
+            Objects.requireNonNull(localObject1);
+            av.e((ICommLibReader)localObject1);
+            AppMethodBeat.o(90573);
+            return localObject1;
+          }
+          finally
+          {
+            AssetReader localAssetReader;
+            localObject3 = localObject1;
+            localObject1 = localObject4;
+          }
+          localObject3 = ii(false);
+          if (localObject3 != null) {
+            continue;
+          }
+          localObject3 = ii(true);
+          continue;
+          if ((localObject3 != null) && (!TextUtils.isEmpty(((WxaPkgWrappingInfo)localObject3).pkgPath))) {
+            continue;
+          }
+          localAssetReader = AssetReader.qDV;
+          localObject1 = localAssetReader;
+          Log.e("MicroMsg.WxaCommLibRuntimeReader", "IPC_ReadLib invalid PkgInfo=%s", new Object[] { localObject3 });
+        }
+        finally
+        {
+          Object localObject3 = localObject5;
+          continue;
+        }
+        Objects.requireNonNull(localObject3);
+        AppMethodBeat.o(90573);
+        throw ((Throwable)localObject1);
+        localObject1 = new WxaCommLibRuntimeReader.PkgReader((WxaPkgWrappingInfo)localObject3);
+      }
+    }
   }
 }
 

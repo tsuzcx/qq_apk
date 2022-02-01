@@ -1,15 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.StrangerManageActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
 public class dla
-  implements View.OnClickListener
+  extends Handler
 {
-  public dla(StrangerManageActivity paramStrangerManageActivity) {}
+  public dla(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b(false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    case 1990: 
+      this.a.f();
+      return;
+    }
+    SubAccountBindActivity.a(this.a);
   }
 }
 

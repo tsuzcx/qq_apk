@@ -21,19 +21,20 @@ public class ColorKeyframeAnimation
   
   public int getIntValue(Keyframe<Integer> paramKeyframe, float paramFloat)
   {
-    if ((paramKeyframe.startValue == null) || (paramKeyframe.endValue == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    int i = ((Integer)paramKeyframe.startValue).intValue();
-    int j = ((Integer)paramKeyframe.endValue).intValue();
-    if (this.valueCallback != null)
+    if ((paramKeyframe.startValue != null) && (paramKeyframe.endValue != null))
     {
-      paramKeyframe = (Integer)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), Integer.valueOf(i), Integer.valueOf(j), paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
-      if (paramKeyframe != null) {
-        return paramKeyframe.intValue();
+      int i = ((Integer)paramKeyframe.startValue).intValue();
+      int j = ((Integer)paramKeyframe.endValue).intValue();
+      if (this.valueCallback != null)
+      {
+        paramKeyframe = (Integer)this.valueCallback.getValueInternal(paramKeyframe.startFrame, paramKeyframe.endFrame.floatValue(), Integer.valueOf(i), Integer.valueOf(j), paramFloat, getLinearCurrentKeyframeProgress(), getProgress());
+        if (paramKeyframe != null) {
+          return paramKeyframe.intValue();
+        }
       }
+      return GammaEvaluator.evaluate(MiscUtils.clamp(paramFloat, 0.0F, 1.0F), i, j);
     }
-    return GammaEvaluator.evaluate(MiscUtils.clamp(paramFloat, 0.0F, 1.0F), i, j);
+    throw new IllegalStateException("Missing values for keyframe.");
   }
   
   Integer getValue(Keyframe<Integer> paramKeyframe, float paramFloat)

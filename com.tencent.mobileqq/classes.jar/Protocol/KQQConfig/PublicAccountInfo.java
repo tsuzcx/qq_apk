@@ -35,26 +35,31 @@ public final class PublicAccountInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strPicURL != null) {
-      paramJceOutputStream.write(this.strPicURL, 1);
+    String str = this.strPicURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strLinkURL != null) {
-      paramJceOutputStream.write(this.strLinkURL, 2);
+    str = this.strLinkURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 3);
+    str = this.strTitle;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strContent != null) {
-      paramJceOutputStream.write(this.strContent, 4);
+    str = this.strContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strNeighborContent != null) {
-      paramJceOutputStream.write(this.strNeighborContent, 5);
+    str = this.strNeighborContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     protocol.KQQConfig.PublicAccountInfo
  * JD-Core Version:    0.7.0.1
  */

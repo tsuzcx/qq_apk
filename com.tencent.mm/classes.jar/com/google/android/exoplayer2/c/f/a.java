@@ -13,19 +13,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements e
 {
-  public static final h aBP;
-  private static final int aJO;
-  private final long aJP;
-  private final b aJQ;
-  private final m aJR;
-  private boolean aJS;
+  public static final h cLL;
+  private static final int cTG;
+  private final long cTH;
+  private final b cTI;
+  private final m cTJ;
+  private boolean cTK;
   
   static
   {
-    AppMethodBeat.i(95074);
-    aBP = new a.1();
-    aJO = x.aS("ID3");
-    AppMethodBeat.o(95074);
+    AppMethodBeat.i(92196);
+    cLL = new h()
+    {
+      public final e[] RV()
+      {
+        AppMethodBeat.i(92190);
+        a locala = new a();
+        AppMethodBeat.o(92190);
+        return new e[] { locala };
+      }
+    };
+    cTG = x.du("ID3");
+    AppMethodBeat.o(92196);
   }
   
   public a()
@@ -35,62 +44,70 @@ public final class a
   
   public a(long paramLong)
   {
-    AppMethodBeat.i(95069);
-    this.aJP = paramLong;
-    this.aJQ = new b();
-    this.aJR = new m(2786);
-    AppMethodBeat.o(95069);
+    AppMethodBeat.i(92191);
+    this.cTH = paramLong;
+    this.cTI = new b();
+    this.cTJ = new m(2786);
+    AppMethodBeat.o(92191);
+  }
+  
+  public final void C(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(92194);
+    this.cTK = false;
+    this.cTI.Si();
+    AppMethodBeat.o(92194);
   }
   
   public final int a(f paramf, k paramk)
   {
-    AppMethodBeat.i(95073);
-    int i = paramf.read(this.aJR.data, 0, 2786);
+    AppMethodBeat.i(92195);
+    int i = paramf.read(this.cTJ.data, 0, 2786);
     if (i == -1)
     {
-      AppMethodBeat.o(95073);
+      AppMethodBeat.o(92195);
       return -1;
     }
-    this.aJR.setPosition(0);
-    this.aJR.em(i);
-    if (!this.aJS)
+    this.cTJ.setPosition(0);
+    this.cTJ.iG(i);
+    if (!this.cTK)
     {
-      this.aJQ.aAT = this.aJP;
-      this.aJS = true;
+      this.cTI.timeUs = this.cTH;
+      this.cTK = true;
     }
-    this.aJQ.t(this.aJR);
-    AppMethodBeat.o(95073);
+    this.cTI.t(this.cTJ);
+    AppMethodBeat.o(92195);
     return 0;
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(95071);
-    this.aJQ.a(paramg, new v.d(0, 1));
-    paramg.nZ();
+    AppMethodBeat.i(92193);
+    this.cTI.a(paramg, new v.d(0, 1));
+    paramg.RW();
     paramg.a(new l.a(-9223372036854775807L));
-    AppMethodBeat.o(95071);
+    AppMethodBeat.o(92193);
   }
   
   public final boolean a(f paramf)
   {
-    AppMethodBeat.i(95070);
+    AppMethodBeat.i(92192);
     m localm = new m(10);
     int i = 0;
     for (;;)
     {
       paramf.b(localm.data, 0, 10);
       localm.setPosition(0);
-      if (localm.qO() != aJO) {
+      if (localm.UI() != cTG) {
         break;
       }
-      localm.en(3);
-      j = localm.qS();
+      localm.iH(3);
+      j = localm.UM();
       i += j + 10;
-      paramf.dh(j);
+      paramf.hu(j);
     }
-    paramf.nW();
-    paramf.dh(i);
+    paramf.RS();
+    paramf.hu(i);
     int j = 0;
     int k = i;
     for (;;)
@@ -99,14 +116,14 @@ public final class a
       localm.setPosition(0);
       if (localm.readUnsignedShort() != 2935)
       {
-        paramf.nW();
+        paramf.RS();
         k += 1;
         if (k - i >= 8192)
         {
-          AppMethodBeat.o(95070);
+          AppMethodBeat.o(92192);
           return false;
         }
-        paramf.dh(k);
+        paramf.hu(k);
         j = 0;
       }
       else
@@ -114,31 +131,23 @@ public final class a
         j += 1;
         if (j >= 4)
         {
-          AppMethodBeat.o(95070);
+          AppMethodBeat.o(92192);
           return true;
         }
-        int m = com.google.android.exoplayer2.a.a.i(localm.data);
+        int m = com.google.android.exoplayer2.a.a.r(localm.data);
         if (m == -1)
         {
-          AppMethodBeat.o(95070);
+          AppMethodBeat.o(92192);
           return false;
         }
-        paramf.dh(m - 5);
+        paramf.hu(m - 5);
       }
     }
-  }
-  
-  public final void g(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(95072);
-    this.aJS = false;
-    this.aJQ.ol();
-    AppMethodBeat.o(95072);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.a
  * JD-Core Version:    0.7.0.1
  */

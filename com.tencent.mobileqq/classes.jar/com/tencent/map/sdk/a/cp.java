@@ -13,16 +13,17 @@ final class cp
   public final void run()
   {
     String str = ac.a().getSharedPreferences(co.d(), 0).getString("halley_cloud_param_content", "");
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      this.a.a.a(str);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      ac.a().getSharedPreferences(co.d(), 0).edit().putString("halley_cloud_param_content", "").commit();
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        this.a.a.a(str);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        ac.a().getSharedPreferences(co.d(), 0).edit().putString("halley_cloud_param_content", "").commit();
+      }
     }
   }
 }

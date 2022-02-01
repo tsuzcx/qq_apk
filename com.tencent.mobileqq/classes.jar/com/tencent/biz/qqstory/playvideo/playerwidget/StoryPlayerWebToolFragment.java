@@ -3,26 +3,26 @@ package com.tencent.biz.qqstory.playvideo.playerwidget;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import wca;
-import wxe;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public class StoryPlayerWebToolFragment
   extends PublicBaseFragment
-  implements wca
+  implements StoryPlayerWebFragment.StoryPlayerWebFragmentEventListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private StoryPlayerWebFragment jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment;
+  private StoryPlayerWebFragment a;
+  private View b;
   
   public void a()
   {
-    getActivity().finish();
+    getBaseActivity().finish();
   }
   
   public void b() {}
@@ -51,23 +51,25 @@ public class StoryPlayerWebToolFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561542, null);
+    this.b = paramLayoutInflater.inflate(2131628125, null);
     paramViewGroup = getChildFragmentManager();
     paramLayoutInflater = getArguments().getString("url");
     paramViewGroup = paramViewGroup.beginTransaction();
     paramBundle = new Intent();
     paramBundle.putExtra("url", paramLayoutInflater);
     paramBundle.putExtra("isFullScreen", true);
-    wxe.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment = StoryPlayerWebFragment.a(paramBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment.a(this);
-    paramViewGroup.replace(2131380158, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
-    return this.jdField_a_of_type_AndroidViewView;
+    SLog.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
+    this.a = StoryPlayerWebFragment.a(paramBundle);
+    this.a.a(this);
+    paramViewGroup.replace(2131450065, this.a).commit();
+    paramLayoutInflater = this.b;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebToolFragment
  * JD-Core Version:    0.7.0.1
  */

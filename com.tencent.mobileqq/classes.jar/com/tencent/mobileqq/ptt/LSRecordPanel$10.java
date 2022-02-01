@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import alud;
+import com.tencent.mobileqq.app.HardCodeUtil;
 
 class LSRecordPanel$10
   implements Runnable
@@ -9,13 +9,13 @@ class LSRecordPanel$10
   
   public void run()
   {
-    LSRecordPanel.a(this.this$0, alud.a(2131706796));
-    LSRecordPanel.b(this.this$0, false);
+    LSRecordPanel.a(this.this$0, HardCodeUtil.a(2131904325));
+    LSRecordPanel.c(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.10
  * JD-Core Version:    0.7.0.1
  */

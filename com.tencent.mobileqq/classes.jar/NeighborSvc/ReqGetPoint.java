@@ -8,9 +8,9 @@ public final class ReqGetPoint
   extends JceStruct
 {
   static ReqUserInfo cache_stUserInfo;
-  public byte bGetCityId;
-  public byte bJiejingSOSO;
-  public ReqUserInfo stUserInfo;
+  public byte bGetCityId = 0;
+  public byte bJiejingSOSO = 0;
+  public ReqUserInfo stUserInfo = null;
   
   public ReqGetPoint() {}
   
@@ -40,7 +40,7 @@ public final class ReqGetPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqGetPoint
  * JD-Core Version:    0.7.0.1
  */

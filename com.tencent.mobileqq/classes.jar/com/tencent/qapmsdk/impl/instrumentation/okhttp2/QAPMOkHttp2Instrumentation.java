@@ -10,9 +10,9 @@ import com.squareup.okhttp.Response.Builder;
 import com.squareup.okhttp.ResponseBody;
 import com.squareup.okhttp.internal.Version;
 import com.tencent.qapmsdk.common.logger.Logger;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMHttpURLConnectionExtension;
-import com.tencent.qapmsdk.impl.instrumentation.QAPMHttpsURLConnectionExtension;
 import com.tencent.qapmsdk.impl.instrumentation.QAPMReplaceCallSite;
+import com.tencent.qapmsdk.impl.instrumentation.d;
+import com.tencent.qapmsdk.impl.instrumentation.e;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -27,32 +27,34 @@ public class QAPMOkHttp2Instrumentation
     if (isSpecificOkhttp()) {
       return paramBuilder.body(paramResponseBody);
     }
-    return new ResponseBuilderExtension(paramBuilder).body(paramResponseBody);
+    return new g(paramBuilder).body(paramResponseBody);
   }
   
   @QAPMReplaceCallSite
   public static Request build(Request.Builder paramBuilder)
   {
-    return new QAPMRequestBuilderExtension(paramBuilder).build();
+    return new f(paramBuilder).build();
   }
   
   public static boolean isSpecificOkhttp()
   {
+    boolean bool2 = true;
     try
     {
       Object localObject = Version.userAgent();
+      boolean bool1 = bool2;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = ((String)localObject).split("/");
-        if (localObject != null) {
-          break label24;
+        if (localObject == null) {
+          return true;
+        }
+        bool1 = bool2;
+        if (!localObject[1].startsWith("2.4.")) {
+          bool1 = false;
         }
       }
-      label24:
-      while (localObject[1].startsWith("2.4.")) {
-        return true;
-      }
-      return false;
+      return bool1;
     }
     catch (Throwable localThrowable) {}
     return true;
@@ -64,7 +66,7 @@ public class QAPMOkHttp2Instrumentation
     if (isSpecificOkhttp()) {
       return paramBuilder;
     }
-    return new ResponseBuilderExtension(paramBuilder);
+    return new g(paramBuilder);
   }
   
   @QAPMReplaceCallSite
@@ -74,7 +76,7 @@ public class QAPMOkHttp2Instrumentation
     if (isSpecificOkhttp()) {
       return paramOkHttpClient.newCall(paramRequest);
     }
-    return new QAPMCallExtension(paramOkHttpClient, paramRequest);
+    return new a(paramOkHttpClient, paramRequest);
   }
   
   @QAPMReplaceCallSite
@@ -82,19 +84,18 @@ public class QAPMOkHttp2Instrumentation
   {
     paramURL = paramOkUrlFactory.open(paramURL);
     if ((paramURL instanceof HttpsURLConnection)) {
-      paramOkUrlFactory = new QAPMHttpsURLConnectionExtension((HttpsURLConnection)paramURL);
+      return new e((HttpsURLConnection)paramURL);
     }
-    do
-    {
-      return paramOkUrlFactory;
-      paramOkUrlFactory = paramURL;
-    } while (!(paramURL instanceof HttpURLConnection));
-    return new QAPMHttpURLConnectionExtension(paramURL);
+    paramOkUrlFactory = paramURL;
+    if ((paramURL instanceof HttpURLConnection)) {
+      paramOkUrlFactory = new d(paramURL);
+    }
+    return paramOkUrlFactory;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.QAPMOkHttp2Instrumentation
  * JD-Core Version:    0.7.0.1
  */

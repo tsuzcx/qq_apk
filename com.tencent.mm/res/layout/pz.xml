@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="#fff8f8f8" android:layout_width="74.0dip" android:layout_height="60.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="14.0dip" android:layout_alignBottom="@id/f5k">
+        <ImageView android:id="@id/f4s" android:layout_width="74.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
+        <ProgressBar android:id="@id/f5a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a74" />
+        <ImageView android:id="@id/cku" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/error_image_sub" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/f5k" android:background="@drawable/lk" android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip">
+        <TextView android:textSize="11.0sp" android:textColor="@color/m4" android:orientation="vertical" android:id="@id/f5i" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/u9" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/m4" android:gravity="center_vertical" android:orientation="vertical" android:id="@id/f5j" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/u_" android:drawableLeft="@raw/app_brand_service_bubble_logo" />
+    </LinearLayout>
+</RelativeLayout>

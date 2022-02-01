@@ -11,9 +11,9 @@ public final class WalletSkinReq
   public static final int TYPE_CLOSE = 2;
   public static final int TYPE_GET = 0;
   public static final int TYPE_OPEN = 1;
-  public int skinID;
-  public int type;
-  public long uin;
+  public int skinID = 0;
+  public int type = 0;
+  public long uin = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -31,7 +31,7 @@ public final class WalletSkinReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.WalletSkinReq
  * JD-Core Version:    0.7.0.1
  */

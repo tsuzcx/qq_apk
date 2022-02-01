@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import aepi;
-import ajyl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.ContainerView;
 
-public class TranslateSelectableMenu$1
+class TranslateSelectableMenu$1
   implements Runnable
 {
-  public TranslateSelectableMenu$1(ajyl paramajyl, ContainerView paramContainerView) {}
+  TranslateSelectableMenu$1(TranslateSelectableMenu paramTranslateSelectableMenu, ContainerView paramContainerView) {}
   
   public void run()
   {
-    this.a.a.setLineSpacing(aepi.a(6.0F, this.a.getResources()), 1.0F);
-    this.a.a.setTextSize(1, 24.0F);
-    this.a.a.setGravity(8388611);
-    int i = aepi.a(16.0F, this.a.getResources());
-    int j = aepi.a(12.0F, this.a.getResources());
-    this.a.a.setPadding(j, i, j, i);
+    this.a.c.setLineSpacing(AIOUtils.b(6.0F, this.a.getResources()), 1.0F);
+    this.a.c.setTextSize(1, 24.0F);
+    this.a.c.setGravity(8388611);
+    int i = AIOUtils.b(16.0F, this.a.getResources());
+    int j = AIOUtils.b(12.0F, this.a.getResources());
+    this.a.c.setPadding(j, i, j, i);
   }
 }
 

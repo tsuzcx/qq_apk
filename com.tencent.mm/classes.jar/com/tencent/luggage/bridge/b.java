@@ -6,23 +6,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(90714);
-    bxL = new b("NONE", 0);
-    bxM = new b("READY", 1);
-    bxN = new b("INVOKE", 2);
-    bxO = new b("CALLBACK", 3);
-    bxP = new b("EVENT", 4);
-    bxQ = new b("SUBSCRIBE", 5);
-    bxR = new b("UNSUBSCRIBE", 6);
-    bxS = new b[] { bxL, bxM, bxN, bxO, bxP, bxQ, bxR };
-    AppMethodBeat.o(90714);
+    AppMethodBeat.i(140314);
+    eig = new b("NONE", 0);
+    eih = new b("READY", 1);
+    eii = new b("INVOKE", 2);
+    eij = new b("CALLBACK", 3);
+    eik = new b("EVENT", 4);
+    eil = new b("SUBSCRIBE", 5);
+    eim = new b("UNSUBSCRIBE", 6);
+    ein = new b[] { eig, eih, eii, eij, eik, eil, eim };
+    AppMethodBeat.o(140314);
   }
   
   private b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.b
  * JD-Core Version:    0.7.0.1
  */

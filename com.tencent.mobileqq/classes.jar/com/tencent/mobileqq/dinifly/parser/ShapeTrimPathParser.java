@@ -1,80 +1,64 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.content.ShapeTrimPath;
 import com.tencent.mobileqq.dinifly.model.content.ShapeTrimPath.Type;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class ShapeTrimPathParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "s", "e", "o", "nm", "m", "hd" });
+  
   static ShapeTrimPath parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue1 = null;
+    String str = null;
+    Object localObject1 = str;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    Object localObject4 = localObject3;
     boolean bool = false;
-    AnimatableFloatValue localAnimatableFloatValue2 = null;
-    AnimatableFloatValue localAnimatableFloatValue3 = null;
-    ShapeTrimPath.Type localType = null;
-    String str1 = null;
-    label17:
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str2.hashCode())
+      int i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label17;
-          if (str2.equals("s"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str2.equals("e"))
+            if (i != 3)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
+              if (i != 4)
               {
-                i = 2;
-                continue;
-                if (str2.equals("nm"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("m"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("hd")) {
-                      i = 5;
-                    }
-                  }
+                if (i != 5) {
+                  paramJsonReader.skipValue();
+                } else {
+                  bool = paramJsonReader.nextBoolean();
                 }
               }
+              else {
+                localObject1 = ShapeTrimPath.Type.forId(paramJsonReader.nextInt());
+              }
+            }
+            else {
+              str = paramJsonReader.nextString();
             }
           }
-          break;
+          else {
+            localObject4 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+          }
+        }
+        else {
+          localObject3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
         }
       }
-      localAnimatableFloatValue3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      localAnimatableFloatValue1 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
-      continue;
-      str1 = paramJsonReader.nextString();
-      continue;
-      localType = ShapeTrimPath.Type.forId(paramJsonReader.nextInt());
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else {
+        localObject2 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition, false);
+      }
     }
-    return new ShapeTrimPath(str1, localType, localAnimatableFloatValue3, localAnimatableFloatValue2, localAnimatableFloatValue1, bool);
+    return new ShapeTrimPath(str, (ShapeTrimPath.Type)localObject1, (AnimatableFloatValue)localObject2, (AnimatableFloatValue)localObject3, (AnimatableFloatValue)localObject4, bool);
   }
 }
 

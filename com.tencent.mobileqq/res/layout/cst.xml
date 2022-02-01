@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="bottom" android:id="@id/qy1" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar android:id="@id/qxs" android:visibility="visible" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="5.5dip" android:layout_marginBottom="6.0dip" />
+</FrameLayout>

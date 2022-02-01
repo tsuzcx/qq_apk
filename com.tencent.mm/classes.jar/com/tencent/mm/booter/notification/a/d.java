@@ -9,11 +9,11 @@ public final class d
 {
   public Intent mIntent;
   
-  public static PendingIntent b(Context paramContext, int paramInt, Intent paramIntent)
+  public static PendingIntent c(Context paramContext, int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(16011);
+    AppMethodBeat.i(20043);
     paramContext = PendingIntent.getActivity(paramContext, paramInt, paramIntent, 134217728);
-    AppMethodBeat.o(16011);
+    AppMethodBeat.o(20043);
     return paramContext;
   }
 }

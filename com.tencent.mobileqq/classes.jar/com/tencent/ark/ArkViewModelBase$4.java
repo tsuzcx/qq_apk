@@ -11,14 +11,14 @@ class ArkViewModelBase$4
     if (this.this$0.mContainer != null)
     {
       this.this$0.mContainer.SetContainerCallback(null);
-      ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("detachViewArkThread.this.%h", new Object[] { this.this$0 }));
+      Logger.logI("ArkApp.ViewModel", String.format("detachViewArkThread.this.%h", new Object[] { this.this$0 }));
     }
     this.this$0.destroyDrawTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,38 @@
 package com.tencent.mobileqq.activity.photo;
 
-import ainx;
-import aiqo;
-import arrr;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
-public class FileVideoMediaPlayHelper$1
+class FileVideoMediaPlayHelper$1
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$1(ainx paramainx, int paramInt) {}
+  FileVideoMediaPlayHelper$1(FileVideoMediaPlayHelper paramFileVideoMediaPlayHelper, int paramInt) {}
   
   public void run()
   {
-    if (ainx.a(this.this$0) == null) {}
-    do
-    {
+    if (FileVideoMediaPlayHelper.a(this.this$0) == null) {
       return;
-      if (ainx.a(this.this$0) > 0)
-      {
-        ainx.a(this.this$0).setRemainTime(20160714, ainx.b(this.this$0), 2147483647);
-        ainx.a(this.this$0).stopPreLoad(ainx.a(this.this$0));
-      }
-      int i = ainx.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.a.jdField_a_of_type_ArrayOfJavaLangString[0], arrr.a(this.this$0.a.jdField_a_of_type_JavaLangString), 0L, 0, this.this$0.a.jdField_a_of_type_JavaLangString, 0);
-      ainx.a(this.this$0, i);
-      ainx.a(this.this$0).setPlayerState(20160714, i, 6);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.this$0.a.jdField_a_of_type_Long + "],playid +[" + this.a + "] download Block, new blockId:" + ainx.a(this.this$0));
+    }
+    if (FileVideoMediaPlayHelper.b(this.this$0) > 0)
+    {
+      FileVideoMediaPlayHelper.a(this.this$0).setRemainTime(20160714, FileVideoMediaPlayHelper.c(this.this$0), 2147483647);
+      FileVideoMediaPlayHelper.a(this.this$0).stopPreLoad(FileVideoMediaPlayHelper.b(this.this$0));
+    }
+    int i = FileVideoMediaPlayHelper.a(this.this$0).startPreLoadWithSavePath(20160714, this.this$0.g.c[0], FileManagerUtil.a(this.this$0.g.b), 0L, 0, this.this$0.g.b, 0);
+    FileVideoMediaPlayHelper.a(this.this$0, i);
+    FileVideoMediaPlayHelper.a(this.this$0).setPlayerState(20160714, i, 6);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.this$0.g.k);
+      localStringBuilder.append("],playid +[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("] download Block, new blockId:");
+      localStringBuilder.append(FileVideoMediaPlayHelper.b(this.this$0));
+      QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, localStringBuilder.toString());
+    }
   }
 }
 

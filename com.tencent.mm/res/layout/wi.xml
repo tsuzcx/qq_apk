@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/g9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/sg" android:visibility="visible" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="@dimen/n_" android:src="@raw/enterprise_wework_entry_icon" />
-        <TextView android:id="@id/rc" android:layout_width="wrap_content" android:text="@string/bg6" style="@style/mw" />
-    </LinearLayout>
+<FrameLayout android:id="@id/iix" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" app:layout_behavior="@string/a4l"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/lx" android:textColor="@color/xa" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/aam" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/r" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="5" android:paddingStart="@dimen/jc" android:paddingEnd="@dimen/jc" />
 </FrameLayout>

@@ -4,7 +4,7 @@
       "layout_type": "layout_relative",
       "height": {
         "type": "absolutely",
-        "value": "36"
+        "value": "26"
       },
       "width": {
         "type": "relative",
@@ -17,9 +17,10 @@
                 "layout_type": "layout_relative",
                 "margin_left": "12",
                 "direction": "horizontal",
+                "align_parent_bottom": "YES",
                 "height": {
-                    "type": "absolutely",
-                    "value": "36"
+                    "type": "relative",
+                    "value": "17"
                 },
                 "width": {
                     "type": "relative",
@@ -38,7 +39,6 @@
                                            "value": "15"
                                          },
                                "attributes": {
-                                                "setFrameString:": "-1",
                                                 "setImageWithURLString:lineup:": [
                                                 "-1",
                                                 "-1"
@@ -59,32 +59,14 @@
                                               "value": "275"
                                          },
                                "attributes": {
-                                                "setFrameString:": "-1",
                                                 "setText:": "-1",
                                                 "setTextColorString:": "#737373",
                                                 "setFontSizeString:": "14",
                                                 "setNumberOfLinesString:": "1"
                                               }
                  }]
-               },
-               {
-                  "view_type": "UIView",
-                  "view_id": "id_label_separator_line",
-                  "margin_left": "12",
-                  "align_parent_bottom": "YES",
-                  "height": {
-                                    "type": "absolutely",
-                                    "value": "0.5"
-                            },
-                  "width": {
-                                    "type": "relative",
-                                    "value": "351"
-                            },
-                  "attributes": {
-                                     "setFrameString:": "-1",
-                                     "setBackgroundColorString:": "#E6E6E6"
-                             }
-                }]
+               }
+      ]
 }
 
 

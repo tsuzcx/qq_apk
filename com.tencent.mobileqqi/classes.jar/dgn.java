@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class dgn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public dgn(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public dgn(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
-      }
-      RegisterQQNumberActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    RegisterSendUpSms.a(this.a, this.a.getString(2131562642));
+    RegisterSendUpSms.a(this.a);
   }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
+<com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.SkinPullRefreshHeader android:id="@id/content" android:layout_width="fill_parent" android:layout_height="@dimen/auf"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:layout_gravity="center_horizontal" android:id="@id/i5o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:contentDescription="@string/image" />
@@ -10,4 +10,4 @@
         </FrameLayout>
         <TextView android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="bottom" android:id="@id/i5m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/auf" android:text="@string/hqh" />
     </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader>
+</com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.SkinPullRefreshHeader>

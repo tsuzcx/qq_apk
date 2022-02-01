@@ -7,15 +7,15 @@ import org.json.JSONObject;
 public class fzn
   implements Runnable
 {
-  public fzn(WebBridge.JsBridgeListener paramJsBridgeListener, WebView paramWebView) {}
+  public fzn(WebBridge.JsBridgeListener paramJsBridgeListener, String paramString, WebView paramWebView) {}
   
   public void run()
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.a);
-      localJSONObject.put("responseData", new JSONObject("{'result':-1,'message':'not find method'}"));
+      localJSONObject.put("responseId", this.jdField_a_of_type_ComTencentMobileqqJsbridgeWebBridge$JsBridgeListener.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("responseData", new JSONObject("{'result':-1,'message':'" + this.jdField_a_of_type_JavaLangString + "'}"));
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:qqJSBridge.setMessage('" + localJSONObject.toString() + "');");
       return;
     }

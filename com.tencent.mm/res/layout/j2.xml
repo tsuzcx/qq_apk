@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:id="@id/aev" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/aew" android:background="@color/j8" android:layout_width="1.0dip" android:layout_height="15.0dip" android:layout_centerInParent="true" android:layerType="software" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff576b95" android:gravity="center" android:id="@id/aex" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/aey" android:layout_centerInParent="true" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff576b95" android:gravity="center" android:id="@id/aey" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/aew" android:layout_alignParentTop="true" android:layout_centerInParent="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/j6c" style="@style/j4">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f2i" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ep" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/kn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ek" android:text="{tip}" style="@style/ma" />
+    </LinearLayout>
 </RelativeLayout>

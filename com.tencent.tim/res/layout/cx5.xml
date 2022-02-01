@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.GridListView android:id="@id/lebasv" android:background="@drawable/trans" android:paddingBottom="25.0dip" android:scrollbars="none" android:fadingEdge="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

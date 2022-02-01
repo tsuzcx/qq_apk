@@ -1,22 +1,28 @@
-import OnlinePushPack.MsgInfo;
-import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import java.util.ArrayList;
-import java.util.TimerTask;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantImpl;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
 public class fjl
-  extends TimerTask
+  extends SubAccountObserver
 {
-  public fjl(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, long paramLong1, long paramLong2, Pair paramPair1, MsgInfo paramMsgInfo, long paramLong3, long paramLong4, byte paramByte, long paramLong5, Pair paramPair2, ArrayList paramArrayList) {}
+  public fjl(OnLinePushMessageProcessor paramOnLinePushMessageProcessor) {}
   
-  public void run()
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Long != this.jdField_b_of_type_Long)
-    {
-      OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_b_of_type_Long, this.c, this.d, this.jdField_a_of_type_Byte, this.e, this.jdField_b_of_type_AndroidUtilPair);
+    if ((paramString3 == null) || (this.a.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.a.a.getAccount())) {
       return;
     }
-    OnLinePushMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Long, String.valueOf(this.c), this.jdField_a_of_type_Byte, this.e);
+    SubAccountAssistantImpl.a().a(this.a.a, paramString2, paramString3);
+    long l = SubAccountAssistantImpl.a().a(this.a.a, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "decodeC2CMsgPkgSubAccountPush status = " + l);
+    }
+    SubAccountAssistantImpl.a().a(this.a.a, (byte)1, Long.parseLong(paramString2), HexUtil.a(paramString3), (int)l);
+    this.a.a.e(false);
   }
 }
 

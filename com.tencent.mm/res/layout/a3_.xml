@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:gravity="center" android:id="@id/c3o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-    <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/c3p" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>
+    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView android:id="@id/ci3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2ViewPager android:id="@id/ci2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

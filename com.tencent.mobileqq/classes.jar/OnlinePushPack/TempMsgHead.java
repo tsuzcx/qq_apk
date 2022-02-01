@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class TempMsgHead
   extends JceStruct
 {
-  public int c2c_type;
-  public int service_type;
+  public int c2c_type = 0;
+  public int service_type = 0;
   
   public TempMsgHead() {}
   
@@ -32,7 +32,7 @@ public final class TempMsgHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.TempMsgHead
  * JD-Core Version:    0.7.0.1
  */

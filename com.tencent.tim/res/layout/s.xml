@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bj" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.widget.SwipListView android:id="@id/bm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/egb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:text="@string/xwi" android:contentDescription="@string/xwi" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/jox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" formItem:bgType="iwf" formItem:showArrow="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="@dimen/al0" android:text="@string/xwh" android:contentDescription="@string/xwh" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n57" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/al0">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/jq1" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/xwj" formItem:showArrow="false" />
+                <ImageView android:id="@id/nz4" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+            <com.tencent.mobileqq.widget.FormItemRelativeLayout android:id="@id/n58" android:background="@drawable/common_strip_setting_bottom" android:paddingTop="19.5dip" android:paddingBottom="19.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/nz9" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:id="@id/jq7" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/xwk" style="@style/w2" />
+                    <ImageView android:id="@id/nz7" android:visibility="gone" android:duplicateParentState="true" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/qq_account_select_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@id/nz8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/nz9">
+                    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/jpo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/jpl" android:paddingLeft="@dimen/is" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/jpo" />
+                </RelativeLayout>
+            </com.tencent.mobileqq.widget.FormItemRelativeLayout>
+            <View android:layout_width="fill_parent" android:layout_height="40.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -27,7 +27,7 @@ public final class zzdf
   
   public final Map<String, DataItemAsset> getAssets()
   {
-    AppMethodBeat.i(71201);
+    AppMethodBeat.i(101184);
     HashMap localHashMap = new HashMap(this.zzdl);
     int i = 0;
     while (i < this.zzdl)
@@ -38,37 +38,37 @@ public final class zzdf
       }
       i += 1;
     }
-    AppMethodBeat.o(71201);
+    AppMethodBeat.o(101184);
     return localHashMap;
   }
   
   public final byte[] getData()
   {
-    AppMethodBeat.i(71200);
+    AppMethodBeat.i(101183);
     byte[] arrayOfByte = getByteArray("data");
-    AppMethodBeat.o(71200);
+    AppMethodBeat.o(101183);
     return arrayOfByte;
   }
   
   public final Uri getUri()
   {
-    AppMethodBeat.i(71199);
+    AppMethodBeat.i(101182);
     Uri localUri = Uri.parse(getString("path"));
-    AppMethodBeat.o(71199);
+    AppMethodBeat.o(101182);
     return localUri;
   }
   
   public final DataItem setData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71202);
+    AppMethodBeat.i(101185);
     paramArrayOfByte = new UnsupportedOperationException();
-    AppMethodBeat.o(71202);
+    AppMethodBeat.o(101185);
     throw paramArrayOfByte;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(71203);
+    AppMethodBeat.i(101186);
     boolean bool = Log.isLoggable("DataItem", 3);
     Object localObject1 = getData();
     Object localObject2 = getAssets();
@@ -99,7 +99,7 @@ public final class zzdf
     label336:
     localStringBuilder.append(" }");
     localObject1 = localStringBuilder.toString();
-    AppMethodBeat.o(71203);
+    AppMethodBeat.o(101186);
     return localObject1;
   }
 }

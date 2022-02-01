@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.data.qzone;
 
-import awge;
-import awhp;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="ownerUin")
 public class FeedInfo
-  extends awge
+  extends Entity
 {
   public int appid;
   public String content;
   public long feedTime;
   public int hasPic;
-  @awhp
+  @notColumn
   public boolean isExpose;
   public long ownerUin;
   public boolean showInTab = true;
@@ -23,7 +23,23 @@ public class FeedInfo
   
   public String toString()
   {
-    return "ownerUin:" + this.ownerUin + "  appid:" + this.appid + "  typeid:" + this.typeId + "  feedTime:" + this.feedTime + "  strKey:" + this.strkey + "  hasPic:" + this.hasPic + "  content:" + this.content + "  strImgUrl:" + this.strImgUrl;
+    StringBuilder localStringBuilder = new StringBuilder("ownerUin:");
+    localStringBuilder.append(this.ownerUin);
+    localStringBuilder.append("  appid:");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append("  typeid:");
+    localStringBuilder.append(this.typeId);
+    localStringBuilder.append("  feedTime:");
+    localStringBuilder.append(this.feedTime);
+    localStringBuilder.append("  strKey:");
+    localStringBuilder.append(this.strkey);
+    localStringBuilder.append("  hasPic:");
+    localStringBuilder.append(this.hasPic);
+    localStringBuilder.append("  content:");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append("  strImgUrl:");
+    localStringBuilder.append(this.strImgUrl);
+    return localStringBuilder.toString();
   }
 }
 

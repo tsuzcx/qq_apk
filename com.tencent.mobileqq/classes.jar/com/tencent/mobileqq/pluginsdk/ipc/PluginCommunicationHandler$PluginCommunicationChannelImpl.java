@@ -20,19 +20,28 @@ public class PluginCommunicationHandler$PluginCommunicationChannelImpl
       if (paramBundle != null) {
         paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
       }
+      ??? = null;
       if (paramString != null)
       {
-        paramString = paramString.invoke(paramBundle, null);
-        if (paramString != null) {
-          paramString.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+        paramBundle = paramString.invoke(paramBundle, null);
+        paramString = paramBundle;
+        if (paramBundle != null)
+        {
+          paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+          return paramBundle;
         }
-        return paramString;
       }
+      else
+      {
+        paramString = ???;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("plugin_tag", 2, "no cmd found to invoke, have you already register?");
+          paramString = ???;
+        }
+      }
+      return paramString;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "no cmd found to invoke, have you already register?");
-    }
-    return null;
   }
   
   public String getNickName()
@@ -79,7 +88,7 @@ public class PluginCommunicationHandler$PluginCommunicationChannelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler.PluginCommunicationChannelImpl
  * JD-Core Version:    0.7.0.1
  */

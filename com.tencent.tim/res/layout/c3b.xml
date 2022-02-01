@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingRight="5.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/ci9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mobileqq.activity.aio.RightLinearLayout android:layout_width="wrap_content" android:layout_height="14.0dip" android:layout_marginTop="5.0dip">
+        <ImageView android:id="@id/kg2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/foh" />
+        <com.tencent.mobileqq.widget.EllipsisTextView android:textSize="11.0dip" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="fill_parent" android:includeFontPadding="false" />
+    </com.tencent.mobileqq.activity.aio.RightLinearLayout>
+</LinearLayout>

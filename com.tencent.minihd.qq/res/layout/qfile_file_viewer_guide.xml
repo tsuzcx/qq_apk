@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/guide_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/color_hei_trans_8" />
+    <ImageView android:id="@id/qfile_file_viewer_guide_recfile" android:visibility="visible" android:layout_width="49.0dip" android:layout_height="49.0dip" android:src="@drawable/qfile_file_viewer_guide_recfile" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/qfile_file_viewer_guide_note" android:visibility="visible" android:layout_width="254.0dip" android:layout_height="121.0dip" android:layout_marginTop="28.0dip" android:src="@drawable/qfile_file_viewer_guide_note" android:layout_toLeftOf="@id/qfile_file_viewer_guide_recfile" />
+</RelativeLayout>

@@ -9,15 +9,14 @@ import java.util.Map;
 public final class GetAlbumCommShareKeyReq
   extends JceStruct
 {
-  static Map<String, String> cache_ins;
-  static int cache_scene = 0;
-  public Map<String, String> ins;
+  static Map<String, String> cache_ins = new HashMap();
+  static int cache_scene;
+  public Map<String, String> ins = null;
   public int scene = 0;
-  public long uin;
+  public long uin = 0L;
   
   static
   {
-    cache_ins = new HashMap();
     cache_ins.put("", "");
   }
   
@@ -41,14 +40,15 @@ public final class GetAlbumCommShareKeyReq
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.scene, 1);
-    if (this.ins != null) {
-      paramJceOutputStream.write(this.ins, 2);
+    Map localMap = this.ins;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetAlbumCommShareKeyReq
  * JD-Core Version:    0.7.0.1
  */

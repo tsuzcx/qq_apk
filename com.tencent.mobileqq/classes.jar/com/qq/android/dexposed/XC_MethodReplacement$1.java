@@ -7,15 +7,10 @@ class XC_MethodReplacement$1
   {
     super(paramInt);
   }
-  
-  protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-  {
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.android.dexposed.XC_MethodReplacement.1
  * JD-Core Version:    0.7.0.1
  */

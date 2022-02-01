@@ -1,13 +1,14 @@
+import android.view.View;
 import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
-class egb
+public class egb
   implements Runnable
 {
-  egb(ega paramega) {}
+  public egb(RecommendTroopView paramRecommendTroopView, View paramView) {}
   
   public void run()
   {
-    RecommendTroopView.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopRecommendTroopView, this.a.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

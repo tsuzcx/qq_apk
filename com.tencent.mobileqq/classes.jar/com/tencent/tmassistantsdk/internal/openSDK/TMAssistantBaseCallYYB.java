@@ -54,7 +54,10 @@ public abstract class TMAssistantBaseCallYYB
       if ((paramContext != null) && (paramContext.metaData != null))
       {
         int i = paramContext.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-        ab.c("TMAssistantBaseCallYYB", "apiLevel = " + i);
+        paramContext = new StringBuilder();
+        paramContext.append("apiLevel = ");
+        paramContext.append(i);
+        ab.c("TMAssistantBaseCallYYB", paramContext.toString());
         return i;
       }
       ab.c("TMAssistantBaseCallYYB", "appInfo is null,return 0");
@@ -62,8 +65,10 @@ public abstract class TMAssistantBaseCallYYB
     }
     catch (Exception paramContext)
     {
-      ab.c("TMAssistantBaseCallYYB", "packagename not found！");
+      label88:
+      break label88;
     }
+    ab.c("TMAssistantBaseCallYYB", "packagename not found！");
     return 0;
   }
   
@@ -74,8 +79,11 @@ public abstract class TMAssistantBaseCallYYB
       ab.c("TMAssistantBaseCallYYB", "actionId < 0,return false");
       return false;
     }
-    ab.c("TMAssistantBaseCallYYB", "actionId = " + paramLong);
-    Object localObject = new b().a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("actionId = ");
+    ((StringBuilder)localObject).append(paramLong);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
+    localObject = new b().a();
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -101,90 +109,156 @@ public abstract class TMAssistantBaseCallYYB
   
   public long addDownloadTaskFromTmast(Bundle paramBundle)
   {
-    String str1 = paramBundle.getString("url");
-    ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTmast url = " + str1);
-    if (TextUtils.isEmpty(str1))
+    String str = paramBundle.getString("url");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addDownloadTaskFromTmast url = ");
+    localStringBuilder.append(str);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
+    if (TextUtils.isEmpty(str))
     {
       ab.c("TMAssistantBaseCallYYB", "url is null !! result = -1");
       return -1L;
     }
-    String str2 = formatEncryptUrl(str1);
-    long l5 = System.currentTimeMillis();
-    long l6 = l5 + 300000L;
+    str = formatEncryptUrl(str);
+    long l2 = System.currentTimeMillis();
     long l3 = paramBundle.getLong("startTime");
     long l4 = paramBundle.getLong("endTime");
-    long l2 = l5;
-    long l1 = l6;
-    if (l3 != 0L)
+    if ((l3 != 0L) && (l4 != 0L))
     {
-      l2 = l5;
-      l1 = l6;
-      if (l4 != 0L)
-      {
-        l1 = l4;
-        l2 = l3;
-      }
+      l2 = l3;
+      l1 = l4;
     }
-    ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTmast " + l2 + "|" + l1 + ",from bundle:" + l3 + "|" + l4);
-    ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTmast,hostPackageName=" + this.hostPackageName + "; hostVersionCode=" + this.hostVersionCode + "; hostUserIdentity=" + "" + "; dataItemType=" + 0 + ";dataItemAction=" + str2);
-    l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str2, l2, l1, 0, null);
-    ab.c("TMAssistantBaseCallYYB", "result = " + l3);
-    GlobalUtil.setClipboardCMD(this.mContext, str1, l2, l1);
-    return l3;
+    else
+    {
+      l1 = 300000L + l2;
+    }
+    paramBundle = new StringBuilder();
+    paramBundle.append("addDownloadTaskFromTmast ");
+    paramBundle.append(l2);
+    paramBundle.append("|");
+    paramBundle.append(l1);
+    paramBundle.append(",from bundle:");
+    paramBundle.append(l3);
+    paramBundle.append("|");
+    paramBundle.append(l4);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    paramBundle = new StringBuilder();
+    paramBundle.append("addDownloadTaskFromTmast,hostPackageName=");
+    paramBundle.append(this.hostPackageName);
+    paramBundle.append("; hostVersionCode=");
+    paramBundle.append(this.hostVersionCode);
+    paramBundle.append("; hostUserIdentity=");
+    paramBundle.append("");
+    paramBundle.append("; dataItemType=");
+    paramBundle.append(0);
+    paramBundle.append(";dataItemAction=");
+    paramBundle.append(str);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    long l1 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
+    paramBundle = new StringBuilder();
+    paramBundle.append("result = ");
+    paramBundle.append(l1);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    return l1;
   }
   
   public long addDownloadTaskFromWebview(Bundle paramBundle)
   {
     String str = paramBundle.getString("url");
-    ab.c("TMAssistantBaseCallYYB", "url = " + str);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("url", str);
-    str = formatIntentUriPath(5, localHashMap);
-    long l5 = System.currentTimeMillis();
-    long l6 = l5 + 300000L;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("url = ");
+    ((StringBuilder)localObject).append(str);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("url", str);
+    str = formatIntentUriPath(5, (Map)localObject);
+    long l2 = System.currentTimeMillis();
     long l3 = paramBundle.getLong("startTime");
     long l4 = paramBundle.getLong("endTime");
-    long l2 = l5;
-    long l1 = l6;
-    if (l3 != 0L)
+    if ((l3 != 0L) && (l4 != 0L))
     {
-      l2 = l5;
-      l1 = l6;
-      if (l4 != 0L)
-      {
-        l1 = l4;
-        l2 = l3;
-      }
+      l2 = l3;
+      l1 = l4;
     }
-    ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTmast " + l2 + "|" + l1 + ",from bundle:" + l3 + "|" + l4);
-    ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTaskList,hostPackageName=" + this.hostPackageName + "; hostVersionCode=" + this.hostVersionCode + "; hostUserIdentity=" + "" + "; dataItemType=" + 0 + ";dataItemAction=" + str);
-    l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
-    ab.c("TMAssistantBaseCallYYB", "result = " + l3);
-    paramBundle = formatIntentUriPath(5, localHashMap, false);
-    GlobalUtil.setClipboardCMD(this.mContext, paramBundle, l2, l1);
-    return l3;
+    else
+    {
+      l1 = 300000L + l2;
+    }
+    paramBundle = new StringBuilder();
+    paramBundle.append("addDownloadTaskFromTmast ");
+    paramBundle.append(l2);
+    paramBundle.append("|");
+    paramBundle.append(l1);
+    paramBundle.append(",from bundle:");
+    paramBundle.append(l3);
+    paramBundle.append("|");
+    paramBundle.append(l4);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    paramBundle = new StringBuilder();
+    paramBundle.append("addDownloadTaskFromTaskList,hostPackageName=");
+    paramBundle.append(this.hostPackageName);
+    paramBundle.append("; hostVersionCode=");
+    paramBundle.append(this.hostVersionCode);
+    paramBundle.append("; hostUserIdentity=");
+    paramBundle.append("");
+    paramBundle.append("; dataItemType=");
+    paramBundle.append(0);
+    paramBundle.append(";dataItemAction=");
+    paramBundle.append(str);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    long l1 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, str, l2, l1, 0, null);
+    paramBundle = new StringBuilder();
+    paramBundle.append("result = ");
+    paramBundle.append(l1);
+    ab.c("TMAssistantBaseCallYYB", paramBundle.toString());
+    return l1;
   }
   
   public long buildAddDBData(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    ab.c("TMAssistantBaseCallYYB", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2 + ",actionFlag = " + paramString1 + ",verifyType = " + paramString2 + ",actionType = " + paramInt);
-    if (TextUtils.isEmpty(paramString2)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("param = ");
+    localStringBuilder.append(paramTMAssistantCallYYBParamStruct);
+    localStringBuilder.append(",isAutoDownload = ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(",isAutoInstall = ");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(",actionFlag = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",verifyType = ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",actionType = ");
+    localStringBuilder.append(paramInt);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
+    if (TextUtils.isEmpty(paramString2))
+    {
       paramTMAssistantCallYYBParamStruct = formatMapParams(paramTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, paramString3);
     }
-    for (;;)
+    else
     {
-      paramString1 = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct);
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 + 300000L;
-      ab.c("TMAssistantBaseCallYYB", "addDownloadTaskFromTaskList,hostPackageName=" + this.hostPackageName + "; hostVersionCode=" + this.hostVersionCode + "; hostUserIdentity=" + "" + "; dataItemType=" + 0 + ";dataItemAction=" + paramString1);
-      long l3 = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, paramString1, l1, l2, 0, null);
-      ab.c("TMAssistantBaseCallYYB", "result = " + l3);
-      paramTMAssistantCallYYBParamStruct = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct, false);
-      GlobalUtil.setClipboardCMD(this.mContext, paramTMAssistantCallYYBParamStruct, l1, l2);
-      return l3;
       paramTMAssistantCallYYBParamStruct = formatMapParams(paramTMAssistantCallYYBParamStruct, true, true, paramString3);
       paramTMAssistantCallYYBParamStruct.put("verifytype", paramString2);
     }
+    paramTMAssistantCallYYBParamStruct = formatIntentUriPath(paramInt, paramTMAssistantCallYYBParamStruct);
+    long l = System.currentTimeMillis();
+    paramString1 = new StringBuilder();
+    paramString1.append("addDownloadTaskFromTaskList,hostPackageName=");
+    paramString1.append(this.hostPackageName);
+    paramString1.append("; hostVersionCode=");
+    paramString1.append(this.hostVersionCode);
+    paramString1.append("; hostUserIdentity=");
+    paramString1.append("");
+    paramString1.append("; dataItemType=");
+    paramString1.append(0);
+    paramString1.append(";dataItemAction=");
+    paramString1.append(paramTMAssistantCallYYBParamStruct);
+    ab.c("TMAssistantBaseCallYYB", paramString1.toString());
+    l = this.sdkChannel.a(this.hostPackageName, this.hostVersionCode, "", 0, paramTMAssistantCallYYBParamStruct, l, l + 300000L, 0, null);
+    paramTMAssistantCallYYBParamStruct = new StringBuilder();
+    paramTMAssistantCallYYBParamStruct.append("result = ");
+    paramTMAssistantCallYYBParamStruct.append(l);
+    ab.c("TMAssistantBaseCallYYB", paramTMAssistantCallYYBParamStruct.toString());
+    return l;
   }
   
   protected long buildAddDBData(byte[] paramArrayOfByte)
@@ -194,106 +268,126 @@ public abstract class TMAssistantBaseCallYYB
       ab.c("TMAssistantBaseCallYYB", "IPCData is null,return -1");
       return -1L;
     }
-    ab.c("TMAssistantBaseCallYYB", "IPCData length = " + paramArrayOfByte.length);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IPCData length = ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
     long l = System.currentTimeMillis();
     l = this.sdkChannel.a(null, 0, null, 0, null, l, l + 300000L, 1, paramArrayOfByte);
-    ab.c("TMAssistantBaseCallYYB", "result = " + l);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("result = ");
+    paramArrayOfByte.append(l);
+    ab.c("TMAssistantBaseCallYYB", paramArrayOfByte.toString());
     return l;
   }
   
   public int checkQQDownloaderInstalled()
   {
-    j = 1;
-    int k = 0;
-    if (this.mContext == null)
+    int j;
+    int k;
+    if (this.mContext != null)
     {
-      ab.e("TMAssistantBaseCallYYB", "mContext is null");
-      throw new Exception("you must initial openSDK,by calling initQQDownloaderOpenSDK method!");
-    }
-    ab.c("TMAssistantBaseCallYYB", "checkQQDownloaderInstalled start");
-    PackageManager localPackageManager = this.mContext.getPackageManager();
-    i = j;
-    if (localPackageManager != null) {}
-    for (;;)
-    {
-      try
+      ab.c("TMAssistantBaseCallYYB", "checkQQDownloaderInstalled start");
+      localObject = this.mContext.getPackageManager();
+      j = 1;
+      i = j;
+      if (localObject != null)
       {
-        if (localPackageManager.getPackageInfo("com.tencent.android.qqdownloader", 0) == null) {
-          continue;
-        }
-        int m = GlobalUtil.getInstance().getQQDownloaderAPILevel();
-        int n = this.sdkAPILevel;
-        i = k;
-        if (n > m) {
-          i = 2;
-        }
-      }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
-      {
-        ab.c("TMAssistantBaseCallYYB", "packagename not found！");
+        k = 0;
         i = j;
-        continue;
       }
-      ab.c("TMAssistantBaseCallYYB", "result = " + i);
-      return i;
-      i = 1;
     }
+    try
+    {
+      if (((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0) == null) {
+        break label85;
+      }
+      int m = GlobalUtil.getInstance().getQQDownloaderAPILevel();
+      int n = this.sdkAPILevel;
+      i = k;
+      if (n > m) {
+        i = 2;
+      }
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      label76:
+      break label76;
+    }
+    ab.c("TMAssistantBaseCallYYB", "packagename not found！");
+    int i = j;
+    label85:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("result = ");
+    ((StringBuilder)localObject).append(i);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
+    return i;
+    ab.e("TMAssistantBaseCallYYB", "mContext is null");
+    throw new Exception("you must initial openSDK,by calling initQQDownloaderOpenSDK method!");
   }
   
   public int checkQQDownloaderInstalled(int paramInt)
   {
-    int j = 2;
-    k = 1;
-    if (this.mContext == null)
+    Object localObject = this.mContext;
+    if (localObject != null)
     {
-      ab.e("TMAssistantBaseCallYYB", "mContext is null");
-      throw new Exception("you must initial openSDK,by calling initQQDownloaderOpenSDK method!");
-    }
-    PackageManager localPackageManager = this.mContext.getPackageManager();
-    i = k;
-    if (localPackageManager != null) {}
-    for (;;)
-    {
-      try
+      localObject = ((Context)localObject).getPackageManager();
+      int j = 1;
+      int i = j;
+      if (localObject != null)
       {
-        if (localPackageManager.getPackageInfo("com.tencent.android.qqdownloader", 0) == null) {
-          continue;
-        }
-        m = GlobalUtil.getInstance().getQQDownloaderVersionCode();
-        i = GlobalUtil.getInstance().getQQDownloaderAPILevel();
-        int n = this.sdkAPILevel;
-        if (n <= i) {
-          continue;
-        }
         i = j;
+        try
+        {
+          if (((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0) != null)
+          {
+            int k = GlobalUtil.getInstance().getQQDownloaderVersionCode();
+            int m = GlobalUtil.getInstance().getQQDownloaderAPILevel();
+            int n = this.sdkAPILevel;
+            i = 2;
+            if (n > m) {
+              paramInt = i;
+            } else if (paramInt > k) {
+              paramInt = i;
+            } else {
+              paramInt = 0;
+            }
+            i = paramInt;
+          }
+        }
+        catch (PackageManager.NameNotFoundException localNameNotFoundException)
+        {
+          localNameNotFoundException.printStackTrace();
+          i = j;
+        }
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException)
-      {
-        int m;
-        localNameNotFoundException.printStackTrace();
-        i = k;
-        continue;
-      }
-      ab.c("TMAssistantBaseCallYYB", "result = " + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("result = ");
+      localStringBuilder.append(i);
+      ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
       return i;
-      i = j;
-      if (paramInt <= m)
-      {
-        i = 0;
-        continue;
-        i = 1;
-      }
     }
+    ab.e("TMAssistantBaseCallYYB", "mContext is null");
+    throw new Exception("you must initial openSDK,by calling initQQDownloaderOpenSDK method!");
   }
   
   public abstract void destroyQQDownloaderOpenSDK();
   
   protected String formatEncryptUrl(String paramString)
   {
-    ab.c("TMAssistantBaseCallYYB", "url = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url = ");
+    localStringBuilder.append(paramString);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
     paramString = URLEncoder.encode(c.a(paramString));
-    paramString = "tmast://encrypt?encryptdata=" + paramString;
-    ab.c("TMAssistantBaseCallYYB", "finalPath = " + paramString);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tmast://encrypt?encryptdata=");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("finalPath = ");
+    localStringBuilder.append(paramString);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
     return paramString;
   }
   
@@ -304,99 +398,122 @@ public abstract class TMAssistantBaseCallYYB
   
   protected String formatIntentUriPath(int paramInt, Map<String, String> paramMap, boolean paramBoolean)
   {
-    ab.c("TMAssistantBaseCallYYB", "actionType = " + paramInt + ",params = " + paramMap);
-    Object localObject;
-    String str2;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("actionType = ");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(",params = ");
+    ((StringBuilder)localObject1).append(paramMap);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject1).toString());
+    Object localObject2 = "appdetails";
+    localObject1 = localObject2;
     switch (paramInt)
     {
     default: 
-      localObject = "appdetails";
-      str2 = "tpmast://" + (String)localObject + "?";
-      String str1 = "";
-      localObject = str1;
-      if (paramMap != null)
+      localObject1 = localObject2;
+      break;
+    case 6: 
+      localObject1 = "downloadmanager";
+      break;
+    case 5: 
+      localObject1 = "webview";
+      break;
+    case 4: 
+      localObject1 = "updatedownload";
+      break;
+    case 1: 
+      localObject1 = "download";
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("tpmast://");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("?");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if ((paramMap != null) && (paramMap.size() > 0))
+    {
+      Iterator localIterator = paramMap.entrySet().iterator();
+      paramMap = "";
+      paramInt = 0;
+      for (;;)
       {
-        localObject = str1;
-        if (paramMap.size() > 0)
+        localObject1 = paramMap;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (Map.Entry)localIterator.next();
+        String str1 = (String)((Map.Entry)localObject1).getKey();
+        String str2 = (String)((Map.Entry)localObject1).getValue();
+        localObject1 = paramMap;
+        if (!TextUtils.isEmpty(str1))
         {
-          Iterator localIterator = paramMap.entrySet().iterator();
-          paramInt = 0;
-          paramMap = str1;
-          label153:
-          localObject = paramMap;
-          if (localIterator.hasNext())
+          localObject1 = paramMap;
+          if (!TextUtils.isEmpty(str2))
           {
-            localObject = (Map.Entry)localIterator.next();
-            str1 = (String)((Map.Entry)localObject).getKey();
-            String str3 = (String)((Map.Entry)localObject).getValue();
-            if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str3))) {
-              break label392;
+            if (paramInt <= 0) {
+              localObject1 = "";
+            } else {
+              localObject1 = "&";
             }
-            if (paramInt <= 0)
-            {
-              localObject = "";
-              label226:
-              paramMap = paramMap + (String)localObject + str1 + "=" + URLEncoder.encode(str3);
-            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramMap);
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append(str1);
+            localStringBuilder.append("=");
+            localStringBuilder.append(URLEncoder.encode(str2));
+            localObject1 = localStringBuilder.toString();
           }
         }
+        paramInt += 1;
+        paramMap = (Map<String, String>)localObject1;
       }
-      break;
     }
-    label392:
-    for (;;)
-    {
-      paramInt += 1;
-      break label153;
-      localObject = "appdetails";
-      break;
-      localObject = "download";
-      break;
-      localObject = "appdetails";
-      break;
-      localObject = "updatedownload";
-      break;
-      localObject = "webview";
-      break;
-      localObject = "downloadmanager";
-      break;
-      localObject = "&";
-      break label226;
-      localObject = str2 + (String)localObject;
-      ab.c("TMAssistantBaseCallYYB", ">formatIntentUriPath " + (String)localObject);
-      paramMap = (Map<String, String>)localObject;
-      if (paramBoolean) {
-        paramMap = formatEncryptUrl((String)localObject);
-      }
-      return paramMap;
+    localObject1 = "";
+    paramMap = new StringBuilder();
+    paramMap.append((String)localObject2);
+    paramMap.append((String)localObject1);
+    localObject1 = paramMap.toString();
+    paramMap = new StringBuilder();
+    paramMap.append(">formatIntentUriPath ");
+    paramMap.append((String)localObject1);
+    ab.c("TMAssistantBaseCallYYB", paramMap.toString());
+    paramMap = (Map<String, String>)localObject1;
+    if (paramBoolean) {
+      paramMap = formatEncryptUrl((String)localObject1);
     }
+    return paramMap;
   }
   
   protected Map<String, String> formatMapParams(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    ab.c("TMAssistantBaseCallYYB", "param = " + paramTMAssistantCallYYBParamStruct + ",isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
-    Object localObject = formatOplist(paramBoolean1, paramBoolean2);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("hostpname", this.hostPackageName);
-    localHashMap.put("hostversioncode", String.valueOf(this.hostVersionCode));
-    localHashMap.put("sngappid", paramTMAssistantCallYYBParamStruct.SNGAppId);
-    localHashMap.put("appid", paramTMAssistantCallYYBParamStruct.taskAppId);
-    localHashMap.put("apkid", paramTMAssistantCallYYBParamStruct.taskApkId);
-    localHashMap.put("pname", paramTMAssistantCallYYBParamStruct.taskPackageName);
-    localHashMap.put("via", paramTMAssistantCallYYBParamStruct.via);
-    localHashMap.put("uin", paramTMAssistantCallYYBParamStruct.uin);
-    localHashMap.put("uintype", paramTMAssistantCallYYBParamStruct.uinType);
-    localHashMap.put("versioncode", String.valueOf(paramTMAssistantCallYYBParamStruct.taskVersion));
-    localHashMap.put("oplist", localObject);
-    localHashMap.put("channelid", paramTMAssistantCallYYBParamStruct.channelId);
-    localHashMap.put("actionflag", paramTMAssistantCallYYBParamStruct.actionFlag);
-    localHashMap.put("traceid", paramString);
-    localHashMap.put("recommendId", paramTMAssistantCallYYBParamStruct.recommendId);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("param = ");
+    ((StringBuilder)localObject1).append(paramTMAssistantCallYYBParamStruct);
+    ((StringBuilder)localObject1).append(",isAutoDownload = ");
+    ((StringBuilder)localObject1).append(paramBoolean1);
+    ((StringBuilder)localObject1).append(",isAutoInstall = ");
+    ((StringBuilder)localObject1).append(paramBoolean2);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject1).toString());
+    Object localObject2 = formatOplist(paramBoolean1, paramBoolean2);
+    localObject1 = new HashMap();
+    ((Map)localObject1).put("hostpname", this.hostPackageName);
+    ((Map)localObject1).put("hostversioncode", String.valueOf(this.hostVersionCode));
+    ((Map)localObject1).put("sngappid", paramTMAssistantCallYYBParamStruct.SNGAppId);
+    ((Map)localObject1).put("appid", paramTMAssistantCallYYBParamStruct.taskAppId);
+    ((Map)localObject1).put("apkid", paramTMAssistantCallYYBParamStruct.taskApkId);
+    ((Map)localObject1).put("pname", paramTMAssistantCallYYBParamStruct.taskPackageName);
+    ((Map)localObject1).put("via", paramTMAssistantCallYYBParamStruct.via);
+    ((Map)localObject1).put("uin", paramTMAssistantCallYYBParamStruct.uin);
+    ((Map)localObject1).put("uintype", paramTMAssistantCallYYBParamStruct.uinType);
+    ((Map)localObject1).put("versioncode", String.valueOf(paramTMAssistantCallYYBParamStruct.taskVersion));
+    ((Map)localObject1).put("oplist", localObject2);
+    ((Map)localObject1).put("channelid", paramTMAssistantCallYYBParamStruct.channelId);
+    ((Map)localObject1).put("actionflag", paramTMAssistantCallYYBParamStruct.actionFlag);
+    ((Map)localObject1).put("traceid", paramString);
+    ((Map)localObject1).put("recommendId", paramTMAssistantCallYYBParamStruct.recommendId);
     paramString = new JSONObject();
-    localObject = paramTMAssistantCallYYBParamStruct.timePointMap.keySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    localObject2 = paramTMAssistantCallYYBParamStruct.timePointMap.keySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      String str = (String)((Iterator)localObject).next();
+      String str = (String)((Iterator)localObject2).next();
       try
       {
         paramString.put(str, paramTMAssistantCallYYBParamStruct.timePointMap.get(str));
@@ -406,28 +523,36 @@ public abstract class TMAssistantBaseCallYYB
         localException.printStackTrace();
       }
     }
-    localHashMap.put("timePoints", paramString.toString());
-    ab.c("TMAssistantBaseCallYYB", "mapParams = " + localHashMap);
-    return localHashMap;
+    ((Map)localObject1).put("timePoints", paramString.toString());
+    paramTMAssistantCallYYBParamStruct = new StringBuilder();
+    paramTMAssistantCallYYBParamStruct.append("mapParams = ");
+    paramTMAssistantCallYYBParamStruct.append(localObject1);
+    ab.c("TMAssistantBaseCallYYB", paramTMAssistantCallYYBParamStruct.toString());
+    return localObject1;
   }
   
   protected String formatOplist(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ab.c("TMAssistantBaseCallYYB", "isAutoDownload = " + paramBoolean1 + ",isAutoInstall = " + paramBoolean2);
-    String str = "";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isAutoDownload = ");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(",isAutoInstall = ");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
     if ((paramBoolean1) && (paramBoolean2)) {
-      str = "1;2";
+      localObject = "1;2";
+    } else if (paramBoolean2) {
+      localObject = "2";
+    } else if (paramBoolean1) {
+      localObject = "1";
+    } else {
+      localObject = "";
     }
-    for (;;)
-    {
-      ab.c("TMAssistantBaseCallYYB", "oplist = " + str);
-      return str;
-      if (paramBoolean2) {
-        str = "2";
-      } else if (paramBoolean1) {
-        str = "1";
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("oplist = ");
+    localStringBuilder.append((String)localObject);
+    ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
+    return localObject;
   }
   
   public abstract TMAssistantCallYYBTaskInfo getDownloadTaskState(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct);
@@ -436,11 +561,20 @@ public abstract class TMAssistantBaseCallYYB
   
   protected void onStateChanged(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString)
   {
-    ab.c("TMAssistantBaseCallYYB", "param = " + paramTMAssistantCallYYBParamStruct + ",state = " + paramInt1 + ",errorCode = " + paramInt2 + ",errorMsg = " + paramString);
-    Iterator localIterator = this.mWeakListenerArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("param = ");
+    ((StringBuilder)localObject).append(paramTMAssistantCallYYBParamStruct);
+    ((StringBuilder)localObject).append(",state = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",errorCode = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",errorMsg = ");
+    ((StringBuilder)localObject).append(paramString);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
+    localObject = this.mWeakListenerArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ITMAssistantCallBackListener localITMAssistantCallBackListener = (ITMAssistantCallBackListener)((WeakReference)localIterator.next()).get();
+      ITMAssistantCallBackListener localITMAssistantCallBackListener = (ITMAssistantCallBackListener)((WeakReference)((Iterator)localObject).next()).get();
       if (localITMAssistantCallBackListener == null) {
         ab.c("TMAssistantBaseCallYYB", "onDownloadStateChanged listener = null");
       } else {
@@ -456,7 +590,10 @@ public abstract class TMAssistantBaseCallYYB
       ab.e("TMAssistantBaseCallYYB", "listener is null,return false");
       return false;
     }
-    ab.c("TMAssistantBaseCallYYB", "listener = " + paramITMAssistantCallBackListener);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("listener = ");
+    ((StringBuilder)localObject).append(paramITMAssistantCallBackListener);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
     for (;;)
     {
       localObject = this.mListenerQueue.poll();
@@ -465,7 +602,7 @@ public abstract class TMAssistantBaseCallYYB
       }
       this.mWeakListenerArrayList.remove(localObject);
     }
-    Object localObject = this.mWeakListenerArrayList.iterator();
+    localObject = this.mWeakListenerArrayList.iterator();
     while (((Iterator)localObject).hasNext()) {
       if ((ITMAssistantCallBackListener)((WeakReference)((Iterator)localObject).next()).get() == paramITMAssistantCallBackListener)
       {
@@ -489,20 +626,26 @@ public abstract class TMAssistantBaseCallYYB
   
   public void setQQGameClientKey(String paramString)
   {
-    ab.c("jimluo", "setQQGameClientKey clientKey = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setQQGameClientKey clientKey = ");
+    localStringBuilder.append(paramString);
+    ab.c("jimluo", localStringBuilder.toString());
     this.mClientKey = paramString;
   }
   
   public void startQQDownloader(Context paramContext)
   {
-    ab.c("TMAssistantBaseCallYYB", "context = " + paramContext);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("context = ");
+    ((StringBuilder)localObject).append(paramContext);
+    ab.c("TMAssistantBaseCallYYB", ((StringBuilder)localObject).toString());
     if (paramContext != null)
     {
-      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.android.qqdownloader");
+      localObject = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.android.qqdownloader");
       if ((paramContext instanceof Application)) {
-        localIntent.addFlags(268435456);
+        ((Intent)localObject).addFlags(268435456);
       }
-      paramContext.startActivity(localIntent);
+      paramContext.startActivity((Intent)localObject);
     }
   }
   
@@ -510,44 +653,69 @@ public abstract class TMAssistantBaseCallYYB
   
   public void startToDownloadTaskList(Context paramContext)
   {
-    if (paramContext == null)
+    if (paramContext != null)
     {
-      ab.e("TMAssistantBaseCallYYB", "context is null,return 0");
-      throw new Exception("you must input an application or activity context!");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tmast://download?hostpname=");
+      ((StringBuilder)localObject).append(this.hostPackageName);
+      ((StringBuilder)localObject).append("&hostversion=");
+      ((StringBuilder)localObject).append(this.hostVersionCode);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path = ");
+      localStringBuilder.append((String)localObject);
+      ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
+      localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
+      if ((paramContext instanceof Application)) {
+        ((Intent)localObject).addFlags(268435456);
+      }
+      paramContext.startActivity((Intent)localObject);
+      return;
     }
-    Object localObject = "tmast://download?hostpname=" + this.hostPackageName + "&hostversion=" + this.hostVersionCode;
-    ab.c("TMAssistantBaseCallYYB", "path = " + (String)localObject);
-    localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
-    if ((paramContext instanceof Application)) {
-      ((Intent)localObject).addFlags(268435456);
-    }
-    paramContext.startActivity((Intent)localObject);
+    ab.e("TMAssistantBaseCallYYB", "context is null,return 0");
+    throw new Exception("you must input an application or activity context!");
   }
   
   public void startToDownloadTaskListWithParams(Context paramContext, Bundle paramBundle)
   {
-    if (paramContext == null)
+    if (paramContext != null)
     {
-      ab.e("TMAssistantBaseCallYYB", "context is null,return 0");
-      throw new Exception("you must input an application or activity context!");
-    }
-    StringBuilder localStringBuilder = new StringBuilder("tmast://download?hostpname=" + this.hostPackageName + "&hostversion=" + this.hostVersionCode);
-    if (paramBundle != null)
-    {
-      Iterator localIterator = paramBundle.keySet().iterator();
-      while (localIterator.hasNext())
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("tmast://download?hostpname=");
+      localStringBuilder.append(this.hostPackageName);
+      localStringBuilder.append("&hostversion=");
+      localStringBuilder.append(this.hostVersionCode);
+      localStringBuilder = new StringBuilder(localStringBuilder.toString());
+      if (paramBundle != null)
       {
-        String str = (String)localIterator.next();
-        localStringBuilder.append("&").append(str).append("=").append(paramBundle.getString(str));
+        Iterator localIterator = paramBundle.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localStringBuilder.append("&");
+          localStringBuilder.append(str);
+          localStringBuilder.append("=");
+          localStringBuilder.append(paramBundle.getString(str));
+        }
       }
+      paramBundle = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startToDownloadTaskListWithParams path = ");
+      localStringBuilder.append(paramBundle);
+      ab.c("TMAssistantBaseCallYYB", localStringBuilder.toString());
+      paramBundle = new Intent("android.intent.action.VIEW", Uri.parse(paramBundle));
+      if ((paramContext instanceof Application)) {
+        paramBundle.addFlags(268435456);
+      }
+      paramContext.startActivity(paramBundle);
+      return;
     }
-    paramBundle = localStringBuilder.toString();
-    ab.c("TMAssistantBaseCallYYB", "startToDownloadTaskListWithParams path = " + paramBundle);
-    paramBundle = new Intent("android.intent.action.VIEW", Uri.parse(paramBundle));
-    if ((paramContext instanceof Application)) {
-      paramBundle.addFlags(268435456);
+    ab.e("TMAssistantBaseCallYYB", "context is null,return 0");
+    paramContext = new Exception("you must input an application or activity context!");
+    for (;;)
+    {
+      throw paramContext;
     }
-    paramContext.startActivity(paramBundle);
   }
   
   public abstract void startToWebView(Context paramContext, String paramString);
@@ -574,7 +742,7 @@ public abstract class TMAssistantBaseCallYYB
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,54 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.Intent;
 import android.view.View;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.s.e;
-import com.tencent.mm.ui.widget.MMTextView;
+import com.tencent.mm.R.h;
+import com.tencent.mm.ui.widget.MMNeat7extView;
 
 final class am$e
-  extends s.e
+  extends am.b
 {
-  public am$e(com.tencent.mm.ui.chatting.d.a parama)
-  {
-    super(parama);
-  }
+  TextView aeSd;
+  MMNeat7extView aeSk;
+  View aeSl;
+  ImageView dpM;
+  ImageView vIK;
+  ImageView vIX;
+  View vJg;
   
-  public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, bi parambi)
+  public final void eF(View paramView)
   {
-    AppMethodBeat.i(33320);
-    parama = (az)paramView.getTag();
-    if (parambi.dxM())
+    AppMethodBeat.i(37136);
+    if (this.vJU != null)
     {
-      if (this.zzP != null)
-      {
-        h.qsU.kvStat(10221, "1");
-        paramView = new Intent();
-        paramView.addFlags(67108864);
-        d.b(this.zzP.zJz.getContext(), "shake", ".ui.ShakeReportUI", paramView);
-      }
-      AppMethodBeat.o(33320);
+      AppMethodBeat.o(37136);
       return;
     }
-    if ((parambi.isText()) && ((paramView instanceof MMTextView)))
+    ViewStub localViewStub = (ViewStub)paramView.findViewById(R.h.viewstub_top_pic_slot);
+    if (localViewStub == null)
     {
-      paramView = (MMTextView)paramView;
-      com.tencent.mm.ui.chatting.k.a.a.dLf();
-      com.tencent.mm.ui.chatting.k.a.a.a(paramView.getText(), parama.cEE);
+      AppMethodBeat.o(37136);
+      return;
     }
-    AppMethodBeat.o(33320);
+    localViewStub.inflate();
+    this.vJU = paramView.findViewById(R.h.fyw);
+    this.vIK = ((ImageView)this.vJU.findViewById(R.h.cover));
+    this.vIM = ((ImageView)this.vJU.findViewById(R.h.cover_mask_iv));
+    this.vIX = ((ImageView)this.vJU.findViewById(R.h.press_mask_iv));
+    this.dpM = ((ImageView)this.vJU.findViewById(R.h.pic_icon));
+    this.vJg = this.vJU.findViewById(R.h.chatting_pic_cover_ll);
+    this.aeSd = ((TextView)this.vJU.findViewById(R.h.pic_num));
+    this.aeSk = ((MMNeat7extView)this.vJU.findViewById(R.h.single_digest_tv));
+    this.aeSl = this.vJU.findViewById(R.h.single_top_pic_slot_digest_layout);
+    AppMethodBeat.o(37136);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.am.e
  * JD-Core Version:    0.7.0.1
  */

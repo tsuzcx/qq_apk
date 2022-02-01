@@ -22,6 +22,7 @@ abstract class CeaDecoder
   
   public CeaDecoder()
   {
+    int j = 0;
     int i = 0;
     while (i < 10)
     {
@@ -50,13 +51,14 @@ abstract class CeaDecoder
   
   public SubtitleInputBuffer dequeueInputBuffer()
   {
-    if (this.dequeuedInputBuffer == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      if (!this.availableInputBuffers.isEmpty()) {
-        break;
-      }
+    boolean bool;
+    if (this.dequeuedInputBuffer == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkState(bool);
+    if (this.availableInputBuffers.isEmpty()) {
       return null;
     }
     this.dequeuedInputBuffer = ((CeaDecoder.CeaInputBuffer)this.availableInputBuffers.pollFirst());
@@ -68,32 +70,31 @@ abstract class CeaDecoder
     if (this.availableOutputBuffers.isEmpty()) {
       return null;
     }
-    CeaDecoder.CeaInputBuffer localCeaInputBuffer;
-    Object localObject;
-    do
+    while ((!this.queuedInputBuffers.isEmpty()) && (((CeaDecoder.CeaInputBuffer)this.queuedInputBuffers.peek()).timeUs <= this.playbackPositionUs))
     {
-      do
+      CeaDecoder.CeaInputBuffer localCeaInputBuffer = (CeaDecoder.CeaInputBuffer)this.queuedInputBuffers.poll();
+      Object localObject;
+      if (localCeaInputBuffer.isEndOfStream())
       {
+        localObject = (SubtitleOutputBuffer)this.availableOutputBuffers.pollFirst();
+        ((SubtitleOutputBuffer)localObject).addFlag(4);
         releaseInputBuffer(localCeaInputBuffer);
-        if ((this.queuedInputBuffers.isEmpty()) || (((CeaDecoder.CeaInputBuffer)this.queuedInputBuffers.peek()).timeUs > this.playbackPositionUs)) {
-          break;
-        }
-        localCeaInputBuffer = (CeaDecoder.CeaInputBuffer)this.queuedInputBuffers.poll();
-        if (localCeaInputBuffer.isEndOfStream())
+        return localObject;
+      }
+      decode(localCeaInputBuffer);
+      if (isNewSubtitleDataAvailable())
+      {
+        localObject = createSubtitle();
+        if (!localCeaInputBuffer.isDecodeOnly())
         {
-          localObject = (SubtitleOutputBuffer)this.availableOutputBuffers.pollFirst();
-          ((SubtitleOutputBuffer)localObject).addFlag(4);
+          SubtitleOutputBuffer localSubtitleOutputBuffer = (SubtitleOutputBuffer)this.availableOutputBuffers.pollFirst();
+          localSubtitleOutputBuffer.setContent(localCeaInputBuffer.timeUs, (Subtitle)localObject, 9223372036854775807L);
           releaseInputBuffer(localCeaInputBuffer);
-          return localObject;
+          return localSubtitleOutputBuffer;
         }
-        decode(localCeaInputBuffer);
-      } while (!isNewSubtitleDataAvailable());
-      localObject = createSubtitle();
-    } while (localCeaInputBuffer.isDecodeOnly());
-    SubtitleOutputBuffer localSubtitleOutputBuffer = (SubtitleOutputBuffer)this.availableOutputBuffers.pollFirst();
-    localSubtitleOutputBuffer.setContent(localCeaInputBuffer.timeUs, (Subtitle)localObject, 9223372036854775807L);
-    releaseInputBuffer(localCeaInputBuffer);
-    return localSubtitleOutputBuffer;
+      }
+      releaseInputBuffer(localCeaInputBuffer);
+    }
     return null;
   }
   
@@ -104,9 +105,10 @@ abstract class CeaDecoder
     while (!this.queuedInputBuffers.isEmpty()) {
       releaseInputBuffer((CeaDecoder.CeaInputBuffer)this.queuedInputBuffers.poll());
     }
-    if (this.dequeuedInputBuffer != null)
+    CeaDecoder.CeaInputBuffer localCeaInputBuffer = this.dequeuedInputBuffer;
+    if (localCeaInputBuffer != null)
     {
-      releaseInputBuffer(this.dequeuedInputBuffer);
+      releaseInputBuffer(localCeaInputBuffer);
       this.dequeuedInputBuffer = null;
     }
   }
@@ -118,28 +120,25 @@ abstract class CeaDecoder
   public void queueInputBuffer(SubtitleInputBuffer paramSubtitleInputBuffer)
   {
     boolean bool;
-    if (paramSubtitleInputBuffer == this.dequeuedInputBuffer)
-    {
+    if (paramSubtitleInputBuffer == this.dequeuedInputBuffer) {
       bool = true;
-      Assertions.checkArgument(bool);
-      if (!paramSubtitleInputBuffer.isDecodeOnly()) {
-        break label40;
-      }
+    } else {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    if (paramSubtitleInputBuffer.isDecodeOnly())
+    {
       releaseInputBuffer(this.dequeuedInputBuffer);
     }
-    for (;;)
+    else
     {
-      this.dequeuedInputBuffer = null;
-      return;
-      bool = false;
-      break;
-      label40:
       paramSubtitleInputBuffer = this.dequeuedInputBuffer;
       long l = this.queuedInputBufferCount;
       this.queuedInputBufferCount = (1L + l);
       CeaDecoder.CeaInputBuffer.access$202(paramSubtitleInputBuffer, l);
       this.queuedInputBuffers.add(this.dequeuedInputBuffer);
     }
+    this.dequeuedInputBuffer = null;
   }
   
   public void release() {}
@@ -157,7 +156,7 @@ abstract class CeaDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.CeaDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
 import com.tencent.mobileqq.service.profile.ProfileUtil;
-import com.tencent.widget.TimePickerView;
+import com.tencent.widget.TimePickerView.TimePickerListener;
 
-public class ejg
-  implements View.OnClickListener
+class ejg
+  implements TimePickerView.TimePickerListener
 {
-  public ejg(MainAssistObserver paramMainAssistObserver, TextView paramTextView, Button paramButton) {}
+  ejg(ejf paramejf) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = ProfileUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    int j = ProfileUtil.c(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    int k = ProfileUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b);
-    new TimePickerView(this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a, i, j, k, new ejh(this)).b();
+    paramInt1 = ProfileUtil.a(paramInt1, paramInt2, paramInt3);
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ProfileUtil.a(paramInt1));
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.b = paramInt1;
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
   }
 }
 

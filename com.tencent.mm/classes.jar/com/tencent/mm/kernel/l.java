@@ -1,73 +1,116 @@
 package com.tencent.mm.kernel;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
 {
-  public static boolean bQ(Context paramContext)
+  private static long mDN;
+  private static long mDO;
+  private static volatile a mDP = null;
+  
+  public static long FC(String paramString)
   {
-    AppMethodBeat.i(58021);
-    if (paramContext == null)
-    {
-      ab.e("MicroMsg.WeChatAppStatus", "getFullExitStatus context == null");
-      AppMethodBeat.o(58021);
-      return false;
-    }
-    boolean bool = paramContext.getSharedPreferences("system_config_prefs", h.Mp()).getBoolean("settings_fully_exit", true);
-    AppMethodBeat.o(58021);
-    return bool;
+    AppMethodBeat.i(235237);
+    long l = SystemClock.elapsedRealtime() - mDO;
+    Log.i("Blink-LOG", "since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    String.format("since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    AppMethodBeat.o(235237);
+    return l;
   }
   
-  public static boolean bR(Context paramContext)
+  public static void O(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(58023);
-    if (paramContext == null)
-    {
-      ab.e("MicroMsg.WeChatAppStatus", "getShutDownWxStatus context == null");
-      AppMethodBeat.o(58023);
-      return false;
-    }
-    boolean bool = paramContext.getSharedPreferences("system_config_prefs_showdown", h.Mp()).getBoolean("shut_down_weixin", false);
-    AppMethodBeat.o(58023);
-    return bool;
+    mDN = paramLong1;
+    mDO = paramLong2;
   }
   
-  public static void n(Context paramContext, boolean paramBoolean)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(58020);
-    if (paramContext == null)
-    {
-      ab.e("MicroMsg.WeChatAppStatus", "editFullExitStatus context == null");
-      AppMethodBeat.o(58020);
-      return;
-    }
-    paramContext.getSharedPreferences("system_config_prefs", h.Mp()).edit().putBoolean("settings_fully_exit", paramBoolean).commit();
-    ab.i("MicroMsg.WeChatAppStatus", "editFullExitStatus to ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(58020);
+    mDP = parama;
   }
   
-  public static void o(Context paramContext, boolean paramBoolean)
+  public static void baJ() {}
+  
+  public static long baK()
   {
-    AppMethodBeat.i(58022);
-    if (paramContext == null)
-    {
-      ab.e("MicroMsg.WeChatAppStatus", "editShutDownWxStatus context == null");
-      AppMethodBeat.o(58022);
-      return;
+    return mDO;
+  }
+  
+  public static long baL()
+  {
+    return mDN;
+  }
+  
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158324);
+    if (mDP != null) {
+      mDP.d(paramString1, paramString2, paramVarArgs);
     }
-    paramContext.getSharedPreferences("system_config_prefs_showdown", h.Mp()).edit().putBoolean("shut_down_weixin", paramBoolean).commit();
-    ab.i("MicroMsg.WeChatAppStatus", "editShutDownWxStatus to ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(58022);
+    AppMethodBeat.o(158324);
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158321);
+    if (mDP != null) {
+      mDP.e(paramString1, paramString2, paramVarArgs);
+    }
+    AppMethodBeat.o(158321);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158323);
+    if (mDP != null) {
+      mDP.i(paramString1, paramString2, paramVarArgs);
+    }
+    AppMethodBeat.o(158323);
+  }
+  
+  public static void o(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(158319);
+    Log.i("Blink-LOG", "since the %s : %s", new Object[] { paramString, Long.valueOf(System.nanoTime() - paramLong) });
+    AppMethodBeat.o(158319);
+  }
+  
+  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158325);
+    if (mDP != null) {
+      mDP.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    }
+    AppMethodBeat.o(158325);
+  }
+  
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158322);
+    if (mDP != null) {
+      mDP.w(paramString1, paramString2, paramVarArgs);
+    }
+    AppMethodBeat.o(158322);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void d(String paramString1, String paramString2, Object... paramVarArgs);
+    
+    public abstract void e(String paramString1, String paramString2, Object... paramVarArgs);
+    
+    public abstract void i(String paramString1, String paramString2, Object... paramVarArgs);
+    
+    public abstract void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs);
+    
+    public abstract void w(String paramString1, String paramString2, Object... paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kernel.l
  * JD-Core Version:    0.7.0.1
  */

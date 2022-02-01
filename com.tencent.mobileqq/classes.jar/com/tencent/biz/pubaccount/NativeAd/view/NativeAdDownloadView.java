@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import aepi;
-import alud;
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
@@ -14,22 +12,26 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress;
-import npd;
-import odp;
+import com.tencent.biz.pubaccount.NativeAd.util.ParseUtil;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonProgressStyle;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.ReadInJoyCommonSoftAdUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.base.image.PublicDrawableUtil;
 import org.json.JSONObject;
-import syo;
 
 public class NativeAdDownloadView
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = 1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInjoyHeaderAdDownloadView.SimpleRoundProgress jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private Context a;
+  private RelativeLayout b;
+  private ProgressBar c;
+  private ReadInjoyHeaderAdDownloadView.SimpleRoundProgress d;
+  private TextView e;
+  private int f = 1;
+  private JSONObject g;
+  private CommonProgressStyle h;
   
   public NativeAdDownloadView(Context paramContext)
   {
@@ -51,217 +53,192 @@ public class NativeAdDownloadView
   
   private void a()
   {
-    float f2 = 2.0F;
-    if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
+    JSONObject localJSONObject = this.g;
+    if (localJSONObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar == null)
-    {
-      inflate(getContext(), 2131559891, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371661));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378932));
+    if (this.h == null) {
+      this.h = CommonProgressStyle.a(1, localJSONObject);
     }
-    int j = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("width"), 82);
-    int i = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("minWidth"), 82);
-    int k;
-    int m;
-    label145:
-    float f1;
-    if (j < i)
-    {
-      k = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("height"), 20);
-      m = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("maxHeight"), 22);
-      if (k >= 18) {
-        break label757;
-      }
-      j = 18;
-      f1 = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("corner"), 2.0F);
-      if (f1 >= 2.0F) {
-        break label775;
-      }
-      f1 = 2.0F;
-    }
-    label167:
-    label553:
-    label811:
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetProgressBar.getLayoutParams();
-      localLayoutParams.width = aepi.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.height = aepi.a(j, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.addRule(13);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
-      Object localObject1 = new GradientDrawable();
-      ((GradientDrawable)localObject1).setCornerRadius(aepi.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((GradientDrawable)localObject1).setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressBg"), "#F2F2F2"));
-      localObject1 = new ClipDrawable((Drawable)localObject1, 3, 1);
-      ((ClipDrawable)localObject1).setLevel(10000);
-      Object localObject2 = new GradientDrawable();
-      ((GradientDrawable)localObject2).setCornerRadius(aepi.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((GradientDrawable)localObject2).setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("secondaryProgressBg"), "#F2F2F2"));
-      localObject2 = new ClipDrawable((Drawable)localObject2, 3, 1);
-      GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(aepi.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localGradientDrawable.setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressColor"), "#12B7F5"));
-      localObject1 = new LayerDrawable(new Drawable[] { localObject1, localObject2, new ClipDrawable(localGradientDrawable, 3, 1) });
-      ((LayerDrawable)localObject1).setId(0, 16908288);
-      ((LayerDrawable)localObject1).setId(1, 16908303);
-      ((LayerDrawable)localObject1).setId(2, 16908301);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable((Drawable)localObject1);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textColor"), "#ffffff"));
-      j = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textSize"), 12);
-      float f3;
-      if (j < 10)
-      {
-        i = 10;
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, i);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
-        localObject1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("buttonBorderColor");
-        localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("buttonBorderSize");
-        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-          break;
-        }
-        f3 = npd.a((String)localObject2, 0.0F);
-        if (f3 <= 2.0F) {
-          break label806;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject2).width = (localLayoutParams.width + aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
-        ((RelativeLayout.LayoutParams)localObject2).height = (localLayoutParams.height + aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        syo.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, aepi.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()), npd.a((String)localObject1, "#12B7F5"), aepi.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        return;
-        i = j;
-        if (j <= 100) {
-          break;
-        }
-        i = 100;
-        break;
-        label757:
-        j = k;
-        if (k <= m) {
-          break label145;
-        }
-        j = m;
-        break label145;
-        if (f1 <= 20.0F) {
-          break label811;
-        }
-        f1 = 20.0F;
-        break label167;
-        i = j;
-        if (j <= 16) {
-          break label553;
-        }
-        i = 16;
-        break label553;
-        f2 = f3;
-      }
-    }
+    setStyle(this.h);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(getContext(), 2131559882, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371659));
+    this.a = paramContext;
+    inflate(getContext(), 2131626104, this);
+    this.b = ((RelativeLayout)findViewById(2131439909));
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress == null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(getContext());
-      odp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aepi.a(25.0F, getContext().getResources()), aepi.a(25.0F, getContext().getResources()));
-      localLayoutParams.rightMargin = aepi.a(10.0F, getContext().getResources());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, localLayoutParams);
+    if (this.d == null) {
+      this.d = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(getContext());
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 4)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt2);
-      }
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707458));
-      }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPaused(true);
-      }
-      return;
-    }
-    setProgress(paramInt2);
+    ReadInJoyCommonSoftAdUtils.a(this.d);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.b(25.0F, getContext().getResources()), AIOUtils.b(25.0F, getContext().getResources()));
+    localLayoutParams.rightMargin = AIOUtils.b(10.0F, getContext().getResources());
+    this.b.addView(this.d, localLayoutParams);
   }
   
   public void setBtnText(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.e;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
   public void setProgress(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((ProgressBar)localObject).setProgress(paramInt);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress != null)
+    localObject = this.d;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPauseWithoutInvalidate(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setProgress(paramInt);
+      ((ReadInjoyHeaderAdDownloadView.SimpleRoundProgress)localObject).setPauseWithoutInvalidate(false);
+      this.d.setProgress(paramInt);
     }
     setText(paramInt);
   }
   
   public void setProgressStyle(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.g = paramJSONObject;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = npd.a(paramJSONObject.optString("style"), 1);
-      setStyle(this.jdField_a_of_type_Int);
+      this.f = ParseUtil.a(paramJSONObject.optString("style"), 1);
+      setStyle(this.f);
     }
   }
   
   public void setStyle(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a();
+      if (paramInt != 2) {
+        return;
+      }
+      b();
       return;
     }
-    b();
+    a();
+  }
+  
+  public void setStyle(CommonProgressStyle paramCommonProgressStyle)
+  {
+    if (paramCommonProgressStyle == null) {
+      return;
+    }
+    if (paramCommonProgressStyle.a == 1)
+    {
+      if (this.c == null)
+      {
+        inflate(getContext(), 2131626115, this.b);
+        this.c = ((ProgressBar)this.b.findViewById(2131439913));
+        this.e = ((TextView)this.b.findViewById(2131448661));
+      }
+      this.h = paramCommonProgressStyle;
+      this.c.setVisibility(0);
+      paramCommonProgressStyle = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+      paramCommonProgressStyle.width = AIOUtils.b(this.h.d, this.a.getResources());
+      paramCommonProgressStyle.height = AIOUtils.b(this.h.f, this.a.getResources());
+      paramCommonProgressStyle.addRule(13);
+      this.c.setLayoutParams(paramCommonProgressStyle);
+      this.c.setMax(100);
+      Object localObject1 = new GradientDrawable();
+      ((GradientDrawable)localObject1).setCornerRadius(AIOUtils.b(this.h.h, this.a.getResources()));
+      ((GradientDrawable)localObject1).setColor(ParseUtil.a(this.h.i, "#F2F2F2"));
+      localObject1 = new ClipDrawable((Drawable)localObject1, 3, 1);
+      ((ClipDrawable)localObject1).setLevel(10000);
+      Object localObject2 = new GradientDrawable();
+      ((GradientDrawable)localObject2).setCornerRadius(AIOUtils.b(this.h.h, this.a.getResources()));
+      ((GradientDrawable)localObject2).setColor(ParseUtil.a(this.h.j, "#F2F2F2"));
+      localObject2 = new ClipDrawable((Drawable)localObject2, 3, 1);
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setCornerRadius(AIOUtils.b(this.h.h, this.a.getResources()));
+      localGradientDrawable.setColor(ParseUtil.a(this.h.b, "#12B7F5"));
+      localObject1 = new LayerDrawable(new Drawable[] { localObject1, localObject2, new ClipDrawable(localGradientDrawable, 3, 1) });
+      ((LayerDrawable)localObject1).setId(0, 16908288);
+      ((LayerDrawable)localObject1).setId(1, 16908303);
+      ((LayerDrawable)localObject1).setId(2, 16908301);
+      this.c.setProgressDrawable((Drawable)localObject1);
+      this.c.setProgress(0);
+      this.e.setGravity(17);
+      this.e.setTextColor(ParseUtil.a(this.h.k, "#ffffff"));
+      int j = this.h.l;
+      int i;
+      if (j < this.h.m)
+      {
+        i = this.h.m;
+      }
+      else
+      {
+        i = j;
+        if (j > this.h.n) {
+          i = this.h.n;
+        }
+      }
+      this.e.setTextSize(2, i);
+      this.e.setVisibility(0);
+      this.e.setClickable(false);
+      localObject1 = this.h.o;
+      localObject2 = String.valueOf(this.h.p);
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        float f2 = ParseUtil.a((String)localObject2, 0.0F);
+        float f1 = f2;
+        if (f2 > 2.0F) {
+          f1 = 2.0F;
+        }
+        localObject2 = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject2).width = (paramCommonProgressStyle.width + AIOUtils.b(f1, this.a.getResources()) * 2);
+        ((RelativeLayout.LayoutParams)localObject2).height = (paramCommonProgressStyle.height + AIOUtils.b(f1, this.a.getResources()) * 2);
+        this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        PublicDrawableUtil.a(this.b, AIOUtils.b(this.h.h, this.a.getResources()), ParseUtil.a((String)localObject1, "#12B7F5"), AIOUtils.b(f1, this.a.getResources()));
+      }
+    }
+    else if ((paramCommonProgressStyle.a == 2) && (this.d == null))
+    {
+      this.d = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(getContext());
+      ReadInJoyCommonSoftAdUtils.a(this.d);
+      paramCommonProgressStyle = new RelativeLayout.LayoutParams(AIOUtils.b(25.0F, getContext().getResources()), AIOUtils.b(25.0F, getContext().getResources()));
+      paramCommonProgressStyle.rightMargin = AIOUtils.b(10.0F, getContext().getResources());
+      this.b.addView(this.d, paramCommonProgressStyle);
+    }
   }
   
   public void setText(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {}
-    switch (this.jdField_a_of_type_Int)
+    if (this.e != null)
     {
-    default: 
-      return;
+      if (this.f != 1) {
+        return;
+      }
+      Object localObject = this.h;
+      if ((localObject != null) && (!((CommonProgressStyle)localObject).r))
+      {
+        localObject = this.e;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("%");
+        ((TextView)localObject).setText(localStringBuilder.toString());
+        return;
+      }
+      localObject = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131904937));
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("%");
+      ((TextView)localObject).setText(localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(alud.a(2131707456) + paramInt + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView
  * JD-Core Version:    0.7.0.1
  */

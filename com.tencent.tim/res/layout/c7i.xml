@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#4c000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/lhy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_above="@id/kzp" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lno" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginBottom="9.0dip" android:src="@drawable/com" android:scaleType="fitXY" app:round_radius="32.0dip" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:id="@id/mcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/lqg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.biz.subscribe.widget.textview.FollowTextView android:textSize="15.0dip" android:textStyle="bold" android:id="@id/lj4" android:layout_width="100.0dip" android:layout_height="32.0dip" android:layout_marginBottom="16.0dip" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/mdq" android:background="@drawable/hbb" android:layout_width="100.0dip" android:layout_height="32.0dip" android:text="重播" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.biz.subscribe.widget.VideoNextFeedsView android:id="@id/kzp" android:visibility="gone" android:layout_width="331.0dip" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/lr0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="2.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="bottom" android:id="@id/dyv" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/cc6" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="2.5dip" android:text="重播" />
+    </LinearLayout>
+</RelativeLayout>

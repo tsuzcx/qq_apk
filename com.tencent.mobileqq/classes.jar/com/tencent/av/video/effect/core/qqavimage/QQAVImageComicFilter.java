@@ -27,10 +27,12 @@ public class QQAVImageComicFilter
   
   public void onDestroy()
   {
-    if (this.mFrameBuffers != null)
+    int[] arrayOfInt = this.mFrameBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+      GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+      arrayOfInt = this.mFrameBufferTextures;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
     this.mEdgeFilter.onDestroy();
     this.mCrossFilter.onDestroy();
@@ -41,13 +43,22 @@ public class QQAVImageComicFilter
   public void onDraw2(int paramInt1, int paramInt2)
   {
     runPendingOnDrawTasks();
-    if ((!isInitialized()) || (this.mFrameBuffers == null) || (this.mFrameBufferTextures == null)) {
-      return;
+    if (isInitialized())
+    {
+      Object localObject = this.mFrameBuffers;
+      if (localObject != null)
+      {
+        if (this.mFrameBufferTextures == null) {
+          return;
+        }
+        this.mEdgeFilter.onDraw2(paramInt1, localObject[0]);
+        this.mCrossFilter.onDraw2(paramInt1, this.mFrameBuffers[1]);
+        localObject = this.mTwoFilter;
+        int[] arrayOfInt = this.mFrameBufferTextures;
+        ((QQAVImageComicBlendFilter)localObject).mFilterSourceTexture2 = arrayOfInt[1];
+        ((QQAVImageComicBlendFilter)localObject).onDraw2(arrayOfInt[0], paramInt2);
+      }
     }
-    this.mEdgeFilter.onDraw2(paramInt1, this.mFrameBuffers[0]);
-    this.mCrossFilter.onDraw2(paramInt1, this.mFrameBuffers[1]);
-    this.mTwoFilter.mFilterSourceTexture2 = this.mFrameBufferTextures[1];
-    this.mTwoFilter.onDraw2(this.mFrameBufferTextures[0], paramInt2);
   }
   
   public void onInit()
@@ -71,10 +82,12 @@ public class QQAVImageComicFilter
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
     super.onOutputSizeChanged(paramInt1, paramInt2);
-    if (this.mFrameBuffers != null)
+    int[] arrayOfInt = this.mFrameBuffers;
+    if (arrayOfInt != null)
     {
-      GLES20.glDeleteFramebuffers(this.mFrameBuffers.length, this.mFrameBuffers, 0);
-      GLES20.glDeleteTextures(this.mFrameBufferTextures.length, this.mFrameBufferTextures, 0);
+      GLES20.glDeleteFramebuffers(arrayOfInt.length, arrayOfInt, 0);
+      arrayOfInt = this.mFrameBufferTextures;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
     this.mEdgeFilter.onOutputSizeChanged(paramInt1, paramInt2);
     this.mCrossFilter.onOutputSizeChanged(paramInt1, paramInt2);
@@ -100,7 +113,7 @@ public class QQAVImageComicFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageComicFilter
  * JD-Core Version:    0.7.0.1
  */

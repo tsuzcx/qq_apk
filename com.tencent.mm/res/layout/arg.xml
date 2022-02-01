@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:orientation="vertical" android:id="@id/ktd" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="38.0dip" android:layout_marginRight="@dimen/l5">
-            <ImageView android:id="@id/ebc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/login_app_default_avatar" />
-            <TextView android:textSize="15.0dip" android:textColor="@color/fq" android:layout_gravity="center" android:id="@id/ebd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="2" />
-            <TextView android:textSize="15.0dip" android:textColor="@color/fq" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9h" />
-        </LinearLayout>
-        <TextView android:textSize="22.0dip" android:textColor="@color/h6" android:layout_gravity="start" android:id="@id/ebe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/l5" android:text="" android:lineSpacingMultiplier="1.25" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="60.0dip" android:layout_marginRight="@dimen/l5" android:layout_marginBottom="@dimen/m1">
-            <Button android:id="@id/ebf" android:text="同意" style="@style/nr" />
-            <Button android:id="@id/ebg" android:layout_marginTop="@dimen/g2" android:text="拒绝" style="@style/nx" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/i6r" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <FrameLayout android:id="@id/cjf" android:background="@drawable/aou" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/ca" android:indeterminateDrawable="@drawable/ang" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/isi" android:paddingTop="@dimen/ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d8n" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/cj6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ca" android:text="@string/ef0" />
+    </FrameLayout>
+</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>

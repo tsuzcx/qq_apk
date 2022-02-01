@@ -1,25 +1,27 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import amil;
+import com.tencent.comic.api.IQQComicService;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.hippy.qq.api.IPatchBundleDataHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class QQComicStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    this.a.mApp.addObserver(new amil(this), true);
-    ThreadManager.getUIHandler().postDelayed(new QQComicStep.2(this), 3000L);
+    this.mAutomator.l.addObserver(new QQComicStep.1(this), true);
+    ((IQQComicService)this.mAutomator.k.getRuntimeService(IQQComicService.class)).startUp();
+    ((IPatchBundleDataHandler)QRoute.api(IPatchBundleDataHandler.class)).onAppAsyncStepStart();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.QQComicStep
  * JD-Core Version:    0.7.0.1
  */

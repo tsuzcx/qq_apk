@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/cra" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/crb" android:background="@drawable/a08" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layerType="software" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.tabs.TabLayout android:id="@id/cdl" android:background="@color/ahb" android:layout_width="0.0dip" android:layout_height="@dimen/d_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:tabGravity="ayg" app:tabIndicator="@drawable/w6" app:tabIndicatorColor="@color/az" app:tabIndicatorFullWidth="@dimen/cv" app:tabIndicatorHeight="2.0dip" app:tabPadding="@dimen/cp" app:tabSelectedTextColor="@color/az" app:tabTextColor="@color/BW_100_Alpha_0_3" />
+    <androidx.viewpager.widget.ViewPager android:id="@id/cdm" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/cdl" />
+</merge>

@@ -1,62 +1,63 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.ax.a;
+import com.tencent.mm.ax.a.a;
+import com.tencent.mm.storage.cc;
+import java.util.LinkedList;
 import java.util.Map;
 
 public final class ca
-  implements e
+  extends a
 {
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
+  public ca(Map<String, String> paramMap, cc paramcc)
   {
-    AppMethodBeat.i(16351);
-    parama = parama.eyJ;
-    if (parama == null)
+    super(paramMap, paramcc);
+  }
+  
+  public static void bAp()
+  {
+    AppMethodBeat.i(123974);
+    a.a.a("reportbizlocation", new a.a()
     {
-      ab.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
-      AppMethodBeat.o(16351);
-      return null;
-    }
-    try
-    {
-      parama = br.F("<root>" + parama.woR + "</root>", "root");
-      int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
-      int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
-      aw.aaz();
-      parama = c.Ru();
-      if (j == bo.g((Integer)parama.get(12305, null)))
+      public final a a(Map<String, String> paramAnonymousMap, cc paramAnonymouscc)
       {
-        ab.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
-        AppMethodBeat.o(16351);
-        return null;
+        AppMethodBeat.i(123972);
+        paramAnonymousMap = new ca(paramAnonymousMap, paramAnonymouscc);
+        AppMethodBeat.o(123972);
+        return paramAnonymousMap;
       }
-      parama.set(12304, Integer.valueOf(i));
-      parama.set(12305, Integer.valueOf(j));
-    }
-    catch (Exception parama)
+    });
+    AppMethodBeat.o(123974);
+  }
+  
+  public final boolean bAo()
+  {
+    AppMethodBeat.i(123973);
+    if (this.values == null)
     {
-      for (;;)
-      {
-        ab.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { bo.l(parama) });
-      }
+      AppMethodBeat.o(123973);
+      return false;
     }
-    AppMethodBeat.o(16351);
-    return null;
+    if (!this.TYPE.equals("reportbizlocation"))
+    {
+      AppMethodBeat.o(123973);
+      return false;
+    }
+    String str2 = (String)this.values.get(".sysmsg.reportbizlocation.text");
+    String str1 = (String)this.values.get(".sysmsg.reportbizlocation.link.text");
+    str2 = str2 + str1;
+    this.oPl.add(str1);
+    this.oPm.addFirst(Integer.valueOf(str2.length() - str1.length()));
+    this.oPn.add(Integer.valueOf(str2.length()));
+    this.oPj = str2;
+    AppMethodBeat.o(123973);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.ca
  * JD-Core Version:    0.7.0.1
  */

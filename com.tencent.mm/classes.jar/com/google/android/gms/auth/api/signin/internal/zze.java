@@ -21,39 +21,39 @@ public final class zze
   
   static
   {
-    AppMethodBeat.i(50420);
+    AppMethodBeat.i(88315);
     zzer = new Logger("RevokeAccessOperation", new String[0]);
-    AppMethodBeat.o(50420);
+    AppMethodBeat.o(88315);
   }
   
   private zze(String paramString)
   {
-    AppMethodBeat.i(50417);
+    AppMethodBeat.i(88312);
     Preconditions.checkNotEmpty(paramString);
     this.zzz = paramString;
     this.zzes = new StatusPendingResult(null);
-    AppMethodBeat.o(50417);
+    AppMethodBeat.o(88312);
   }
   
   public static PendingResult<Status> zzg(String paramString)
   {
-    AppMethodBeat.i(50419);
+    AppMethodBeat.i(88314);
     if (paramString == null)
     {
       paramString = PendingResults.immediateFailedResult(new Status(4), null);
-      AppMethodBeat.o(50419);
+      AppMethodBeat.o(88314);
       return paramString;
     }
     paramString = new zze(paramString);
     new Thread(paramString).start();
     paramString = paramString.zzes;
-    AppMethodBeat.o(50419);
+    AppMethodBeat.o(88314);
     return paramString;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(50418);
+    AppMethodBeat.i(88313);
     Object localObject1 = Status.RESULT_INTERNAL_ERROR;
     for (;;)
     {
@@ -108,7 +108,7 @@ public final class zze
       {
         zzer.d(26 + "Response Code: " + i, new Object[0]);
         this.zzes.setResult((Result)localObject1);
-        AppMethodBeat.o(50418);
+        AppMethodBeat.o(88313);
         return;
       }
       catch (Exception localException2)
@@ -125,7 +125,7 @@ public final class zze
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zze
  * JD-Core Version:    0.7.0.1
  */

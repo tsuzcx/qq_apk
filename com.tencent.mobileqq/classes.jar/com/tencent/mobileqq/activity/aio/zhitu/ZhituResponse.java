@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import ahbz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdcu;
+import com.tencent.mobileqq.util.JSONUtils.GenericType;
 import java.util.List;
 
 public class ZhituResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator<ZhituResponse> CREATOR = new ahbz();
+  public static final Parcelable.Creator<ZhituResponse> CREATOR = new ZhituResponse.1();
   public String cat;
   public String cookie;
   public int hasMore;
-  @bdcu(a=ZhituImgResponse.class)
+  @JSONUtils.GenericType(a=ZhituImgResponse.class)
   public List<ZhituImgResponse> list;
-  @bdcu(a=String.class)
+  @JSONUtils.GenericType(a=String.class)
   public List<String> tokens;
   
   public ZhituResponse() {}
   
-  public ZhituResponse(Parcel paramParcel)
+  protected ZhituResponse(Parcel paramParcel)
   {
     this.cat = paramParcel.readString();
     this.list = paramParcel.createTypedArrayList(ZhituImgResponse.CREATOR);
@@ -37,7 +36,19 @@ public class ZhituResponse
   
   public String toString()
   {
-    return "ZhituResponse{cat='" + this.cat + '\'' + ", list=" + this.list + ", cookie='" + this.cookie + '\'' + ", hasMore=" + this.hasMore + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituResponse{cat='");
+    localStringBuilder.append(this.cat);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", list=");
+    localStringBuilder.append(this.list);
+    localStringBuilder.append(", cookie='");
+    localStringBuilder.append(this.cookie);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasMore=");
+    localStringBuilder.append(this.hasMore);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

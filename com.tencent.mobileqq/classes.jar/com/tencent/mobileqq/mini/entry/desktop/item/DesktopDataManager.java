@@ -2,32 +2,31 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StFriendRanking;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
+import NS_MINI_INTERFACE.INTERFACE.StOperationApp;
 import NS_MINI_INTERFACE.INTERFACE.StSearchModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import aasd;
-import ajfv;
-import alpg;
-import alud;
-import amru;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import aoom;
-import awge;
-import awgf;
-import awgg;
-import bfbm;
-import bkgp;
-import bkgq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.json.GdtJsonPbUtil;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager;
+import com.tencent.mobileqq.activity.springfestival.HBEntryBannerData;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.applets.AppletsHandler;
+import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
@@ -36,18 +35,27 @@ import com.tencent.mobileqq.mini.entry.MiniAppRedDotEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.DesktopAdData;
+import com.tencent.mobileqq.mini.entry.desktop.GetAppListV2Scene;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.tianshu.data.TianShuReportData;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.vip.tianshu.TianShuManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +63,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
@@ -76,37 +85,33 @@ public class DesktopDataManager
   private static byte[] mLock = new byte[0];
   private List<DesktopItemInfo> adapterItemInfos;
   private boolean canLoadMoreRecent = true;
-  private Runnable deleteErrorSpFile = new DesktopDataManager.32(this);
+  private Runnable deleteErrorSpFile = new DesktopDataManager.35(this);
   private List<DesktopItemInfo> desktopItemInfos = new ArrayList();
-  private volatile boolean hasInitData;
-  private volatile boolean hasPullSearchData;
-  private Runnable initLocalDataRunnable = new DesktopDataManager.16(this);
-  private boolean isLoadingMoreRecent;
+  private volatile boolean hasInitData = false;
+  private volatile boolean hasPullSearchData = false;
+  private Runnable initLocalDataRunnable = new DesktopDataManager.18(this);
+  private boolean isLoadingMoreRecent = false;
   private ConcurrentHashMap<String, DesktopAdData> mAdReportMap = new ConcurrentHashMap();
   private DesktopDataManager.DataChangeListener mDataChangeListener;
+  private DesktopOperationAppEntryInfo mDesktopOperationAppEntryInfo;
   private volatile COMM.StCommonExt mExtInfo;
+  private volatile HBEntryBannerData mHBEntryBannerData;
+  private final AtomicBoolean mHBEntryDataAddedState = new AtomicBoolean(false);
   private volatile DesktopDataManager.HongBaoResBuilder mHongBaoResBuilder;
   private volatile COMM.StCommonExt mMoreRencentExtInfo;
   private ConcurrentHashMap<String, Integer> mPublicAccountRedDotMap = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Integer> mPushRedDotMap = new ConcurrentHashMap();
   private ArrayList<RecommendAppInfo> mRecommendExposureList = new ArrayList();
+  private Set<String> mRecommendListFixAppidSet = new HashSet();
   private volatile int mRedDataState = -1;
   private volatile long mRefreshInternal = 3600L;
-  private volatile int mRequestCount;
-  private alpg redDotObserver = new DesktopDataManager.28(this);
+  private volatile int mRequestCount = 0;
+  private BusinessObserver redDotObserver = new DesktopDataManager.31(this);
   
   public DesktopDataManager(QQAppInterface paramQQAppInterface)
   {
     QLog.d("DesktopDataManager", 1, "DesktopDataManager init.");
     registerObserver();
-  }
-  
-  private void addAppToMyApp(MiniAppInfo paramMiniAppInfo)
-  {
-    if (this.desktopItemInfos == null) {
-      return;
-    }
-    runOnMainThread(new DesktopDataManager.26(this, paramMiniAppInfo));
   }
   
   private void appendMyAppData(List<INTERFACE.StModuleInfo> paramList)
@@ -122,14 +127,28 @@ public class DesktopDataManager
   private static String buildDeskTopAppInfoString(String paramString, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("appid:").append(paramString);
+    localStringBuilder.append("position:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append("moduletype:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append("appid:");
+    localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
   private static String buildDeskTopModuleInfoString(String paramString, int paramInt1, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("position:").append(paramInt1).append("_").append("moduletype:").append(paramInt2).append("_").append("title:").append(paramString);
+    localStringBuilder.append("position:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append("moduletype:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append("title:");
+    localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
@@ -138,7 +157,59 @@ public class DesktopDataManager
     if (this.desktopItemInfos == null) {
       return;
     }
-    runOnMainThread(new DesktopDataManager.27(this, paramInt1, paramInt2));
+    runOnMainThread(new DesktopDataManager.30(this, paramInt1, paramInt2));
+  }
+  
+  private void checkAddHBMiniBanner(List<DesktopItemInfo> paramList, HBEntryBannerData paramHBEntryBannerData)
+  {
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      Object localObject = paramList.iterator();
+      DesktopItemInfo localDesktopItemInfo;
+      while (((Iterator)localObject).hasNext())
+      {
+        localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
+        if ((localDesktopItemInfo instanceof DesktopSearchInfo)) {
+          ((DesktopSearchInfo)localDesktopItemInfo).isSpringFestivalMode = false;
+        }
+        if ((localDesktopItemInfo instanceof HBEntryBannerData))
+        {
+          i = paramList.indexOf(localDesktopItemInfo);
+          break label83;
+        }
+      }
+      int i = -1;
+      label83:
+      if (i != -1) {
+        paramList.remove(i);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("DesktopDataManager", 2, "HBEntryBannerData: checkAddHBMiniBanner, removed item");
+      }
+      if ((this.mHBEntryDataAddedState.get()) && (paramHBEntryBannerData != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DesktopDataManager", 2, "HBEntryBannerData: checkAddHBMiniBanner, add item");
+        }
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
+          if ((localDesktopItemInfo instanceof DesktopSearchInfo))
+          {
+            localObject = (DesktopSearchInfo)localDesktopItemInfo;
+            ((DesktopSearchInfo)localObject).isSpringFestivalMode = true;
+            paramList.add(paramList.indexOf(localObject) + 1, paramHBEntryBannerData);
+          }
+        }
+        if (!paramList.contains(paramHBEntryBannerData)) {
+          paramList.add(0, paramHBEntryBannerData);
+        }
+      }
+    }
   }
   
   private void checkData(boolean paramBoolean)
@@ -146,137 +217,148 @@ public class DesktopDataManager
     if (this.desktopItemInfos == null) {
       return;
     }
-    label25:
-    int j;
-    if (this.adapterItemInfos != null)
-    {
-      i = this.adapterItemInfos.size();
-      processUIData();
-      if (this.adapterItemInfos == null) {
-        break label133;
-      }
-      j = this.adapterItemInfos.size();
-      label46:
-      if (j == i) {
-        break label138;
-      }
-    }
-    int i1;
-    label133:
-    label138:
-    for (int m = 1;; m = 0)
-    {
-      i1 = getTopModuleInfoIndex();
-      if (i1 >= 0) {
-        break label144;
-      }
-      this.adapterItemInfos.add(new DesktopAppModuleInfo(3, alud.a(2131703522)));
-      this.adapterItemInfos.add(new DesktopEmptyGuideInfo(3));
-      if ((!paramBoolean) || (this.mDataChangeListener == null)) {
-        break;
-      }
-      this.mDataChangeListener.onDataChanged();
-      return;
+    Object localObject = this.adapterItemInfos;
+    if (localObject != null) {
+      i = ((List)localObject).size();
+    } else {
       i = 0;
-      break label25;
-      j = 0;
-      break label46;
     }
-    label144:
-    int n = -1;
-    int k = 0;
-    int i = i1;
-    if (i < this.adapterItemInfos.size())
+    processUIData();
+    localObject = this.adapterItemInfos;
+    int j;
+    if (localObject != null) {
+      j = ((List)localObject).size();
+    } else {
+      j = 0;
+    }
+    int m;
+    if (j != i) {
+      m = 1;
+    } else {
+      m = 0;
+    }
+    int i1 = getTopModuleInfoIndex();
+    if (i1 < 0)
     {
-      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)this.adapterItemInfos.get(i);
+      this.adapterItemInfos.add(new DesktopAppModuleInfo(3, HardCodeUtil.a(2131901253)));
+      this.adapterItemInfos.add(new DesktopEmptyGuideInfo(3));
+      if (paramBoolean)
+      {
+        localObject = this.mDataChangeListener;
+        if (localObject != null) {
+          ((DesktopDataManager.DataChangeListener)localObject).onDataChanged();
+        }
+      }
+      return;
+    }
+    int i = i1;
+    int k = 0;
+    int n = -1;
+    while (i < this.adapterItemInfos.size())
+    {
+      localObject = (DesktopItemInfo)this.adapterItemInfos.get(i);
       j = k;
-      if ((localDesktopItemInfo instanceof DesktopAppInfo))
+      if ((localObject instanceof DesktopAppInfo))
       {
         j = k;
-        if (localDesktopItemInfo.mModuleType == 3) {
+        if (((DesktopItemInfo)localObject).mModuleType == 3) {
           j = k + 1;
         }
       }
-      if (((localDesktopItemInfo instanceof DesktopAppGroupInfo)) && (localDesktopItemInfo.mModuleType == 3)) {
+      if (((localObject instanceof DesktopAppGroupInfo)) && (((DesktopItemInfo)localObject).mModuleType == 3))
+      {
         k = j + 1;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         k = j;
-        if ((localDesktopItemInfo instanceof DesktopEmptyGuideInfo))
+        if ((localObject instanceof DesktopEmptyGuideInfo))
         {
           n = i;
           k = j;
         }
       }
+      i += 1;
     }
     if ((k == 0) && (n < 0))
     {
       this.adapterItemInfos.add(i1 + 1, new DesktopEmptyGuideInfo(3));
-      if ((paramBoolean) && (this.mDataChangeListener != null)) {
-        this.mDataChangeListener.onDataChanged();
-      }
-    }
-    for (;;)
-    {
-      setDesktopAppPositionInfoToSp(this.desktopItemInfos);
-      return;
-      if ((k > 0) && (n > 0))
+      if (paramBoolean)
       {
-        this.adapterItemInfos.remove(n);
-        if ((paramBoolean) && (this.mDataChangeListener != null)) {
-          this.mDataChangeListener.onDataChanged();
+        localObject = this.mDataChangeListener;
+        if (localObject != null) {
+          ((DesktopDataManager.DataChangeListener)localObject).onDataChanged();
         }
       }
-      else if ((m != 0) && (paramBoolean) && (this.mDataChangeListener != null))
+    }
+    else if ((k > 0) && (n > 0))
+    {
+      this.adapterItemInfos.remove(n);
+      if (paramBoolean)
       {
-        this.mDataChangeListener.onDataChanged();
+        localObject = this.mDataChangeListener;
+        if (localObject != null) {
+          ((DesktopDataManager.DataChangeListener)localObject).onDataChanged();
+        }
       }
     }
+    else if ((m != 0) && (paramBoolean))
+    {
+      localObject = this.mDataChangeListener;
+      if (localObject != null) {
+        ((DesktopDataManager.DataChangeListener)localObject).onDataChanged();
+      }
+    }
+    if (this.mHBEntryDataAddedState.get()) {
+      checkAddHBMiniBanner(this.adapterItemInfos, this.mHBEntryBannerData);
+    }
+    setDesktopAppPositionInfoToSp(this.desktopItemInfos);
   }
   
   private void checkRedDotSwitch()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
-    }
-    label17:
-    do
+    if (localObject == null)
     {
-      do
+      QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, app is null.");
+      return;
+    }
+    if (MiniAppConfProcessor.n())
+    {
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      if (localObject != null)
       {
-        do
+        localObject = ((EntityManager)localObject).query(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, "key = ?", new String[] { "redDot" }, null, null, null, null);
+        if ((localObject != null) && (((List)localObject).size() > 0))
         {
-          break label17;
-          do
+          localObject = (MiniAppSettingSwitchInfoEntity)((List)localObject).get(0);
+          if ((localObject != null) && ("redDot".equals(((MiniAppSettingSwitchInfoEntity)localObject).key)))
           {
-            return;
-          } while (!aoom.m());
-          localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-        } while (localObject == null);
-        localObject = ((awgf)localObject).a(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, "key = ?", new String[] { "redDot" }, null, null, null, null);
-      } while ((localObject == null) || (((List)localObject).size() <= 0));
-      localObject = (MiniAppSettingSwitchInfoEntity)((List)localObject).get(0);
-    } while ((localObject == null) || (!"redDot".equals(((MiniAppSettingSwitchInfoEntity)localObject).key)));
-    this.mRedDataState = ((MiniAppSettingSwitchInfoEntity)localObject).value;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(((MiniAppSettingSwitchInfoEntity)localObject).key, ((MiniAppSettingSwitchInfoEntity)localObject).value);
-    localBundle.putBoolean("refreshUI", false);
-    BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, 102, true, localBundle);
-    QLog.e("DesktopDataManager", 1, "initLocalDataRunnable, redDot switch: " + this.mRedDataState);
+            this.mRedDataState = ((MiniAppSettingSwitchInfoEntity)localObject).value;
+            Bundle localBundle = new Bundle();
+            localBundle.putInt(((MiniAppSettingSwitchInfoEntity)localObject).key, ((MiniAppSettingSwitchInfoEntity)localObject).value);
+            localBundle.putBoolean("refreshUI", false);
+            BaseApplicationImpl.getApplication().getRuntime().notifyObservers(MiniAppDesktop.class, 102, true, localBundle);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("initLocalDataRunnable, redDot switch: ");
+            ((StringBuilder)localObject).append(this.mRedDataState);
+            QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
   }
   
   private void clearNoticeRedDotData()
   {
     this.mPublicAccountRedDotMap.clear();
-    if ((this.desktopItemInfos == null) || (this.desktopItemInfos.size() == 0)) {}
-    for (;;)
+    Object localObject1 = this.desktopItemInfos;
+    if (localObject1 != null)
     {
-      return;
-      Object localObject1 = new ArrayList();
+      if (((List)localObject1).size() == 0) {
+        return;
+      }
+      localObject1 = new ArrayList();
       Object localObject2 = this.desktopItemInfos.iterator();
       Object localObject3;
       while (((Iterator)localObject2).hasNext())
@@ -307,17 +389,17 @@ public class DesktopDataManager
     }
   }
   
-  private void convertData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo)
+  private void convertData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo, INTERFACE.StOperationApp paramStOperationApp)
   {
     QLog.d("DesktopDataManager", 1, "convertData start!");
-    if ((paramList1 == null) || (paramList1.size() <= 0))
+    if (((paramList1 == null) || (paramList1.size() <= 0)) && ((paramList == null) || (paramList.isEmpty())) && (paramStSearchModuleInfo == null))
     {
-      QLog.e("DesktopDataManager", 1, "convertData, moduleInfos is null.");
+      handleEmptyModuleInStudyMode();
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
     this.hasPullSearchData = false;
     if ((paramStSearchModuleInfo != null) && (paramStSearchModuleInfo.searchApp.get() != null))
     {
@@ -328,123 +410,167 @@ public class DesktopDataManager
         this.hasPullSearchData = true;
       }
     }
-    paramStSearchModuleInfo = new ArrayList();
+    ArrayList localArrayList4 = new ArrayList();
+    Object localObject1 = new HashSet();
+    int i = 2;
+    Object localObject2;
     if ((paramList != null) && (paramList.size() != 0))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        localObject1 = (INTERFACE.StUserAppInfo)paramList.next();
-        if (localObject1 != null)
+        paramStSearchModuleInfo = (INTERFACE.StUserAppInfo)paramList.next();
+        if (paramStSearchModuleInfo != null)
         {
-          localObject1 = new DesktopAppInfo(2, MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject1));
-          ((DesktopAppInfo)localObject1).setIsFixApp(true);
-          ((DesktopAppInfo)localObject1).deleteEnable = false;
-          ((DesktopAppInfo)localObject1).dragEnable = false;
-          ((DesktopAppInfo)localObject1).dropEnable = false;
-          paramStSearchModuleInfo.add(localObject1);
+          localObject2 = new DesktopAppInfo(2, MiniAppInfo.from(paramStSearchModuleInfo));
+          ((DesktopAppInfo)localObject2).setIsFixApp(true);
+          ((DesktopAppInfo)localObject2).deleteEnable = false;
+          ((DesktopAppInfo)localObject2).dragEnable = false;
+          ((DesktopAppInfo)localObject2).dropEnable = false;
+          localArrayList4.add(localObject2);
+          ((Set)localObject1).add(paramStSearchModuleInfo.appInfo.appId.get());
         }
       }
     }
-    Object localObject1 = paramList1.iterator();
-    INTERFACE.StModuleInfo localStModuleInfo;
-    for (;;)
+    paramList = paramList1.iterator();
+    while (paramList.hasNext())
     {
-      if (((Iterator)localObject1).hasNext())
+      localObject2 = (INTERFACE.StModuleInfo)paramList.next();
+      if (localObject2 != null)
       {
-        localStModuleInfo = (INTERFACE.StModuleInfo)((Iterator)localObject1).next();
-        if (localStModuleInfo != null) {
-          if (localStModuleInfo.moduleType.get() == 6)
+        int j = ((INTERFACE.StModuleInfo)localObject2).moduleType.get();
+        if (6 == j)
+        {
+          paramList1 = new DesktopPopularModuleInfo(6);
+          paramList1.mergePbData((INTERFACE.StModuleInfo)localObject2);
+          localArrayList1.add(paramList1);
+          localArrayList3.add(localObject2);
+        }
+        else if (4 == j)
+        {
+          localArrayList1.add(new DesktopRecommendModuleInfo(4, (INTERFACE.StModuleInfo)localObject2));
+          localArrayList3.add(localObject2);
+        }
+        else if (5 == j)
+        {
+          paramList1 = ((INTERFACE.StModuleInfo)localObject2).ranks.get();
+          if ((paramList1 != null) && (!paramList1.isEmpty()))
           {
-            paramList = new DesktopPopularModuleInfo(6);
-            paramList.mergePbData(localStModuleInfo);
-            localArrayList1.add(paramList);
-            localArrayList2.add(localStModuleInfo);
+            paramList1 = paramList1.iterator();
+            while (paramList1.hasNext()) {
+              localArrayList1.add(new DesktopFriendsPkModuleInfo(5, (INTERFACE.StModuleInfo)localObject2, (INTERFACE.StFriendRanking)paramList1.next()));
+            }
           }
-          else if (localStModuleInfo.moduleType.get() == 4)
-          {
-            localArrayList1.add(new DesktopRecommendModuleInfo(4, localStModuleInfo));
-            localArrayList2.add(localStModuleInfo);
+          localArrayList3.add(localObject2);
+        }
+        else if (8 == j)
+        {
+          paramList1 = ((INTERFACE.StModuleInfo)localObject2).userAppList.get();
+          if ((paramList1 != null) && (!paramList1.isEmpty())) {
+            localArrayList1.add(new DesktopMostCommonlyUsedInfo(8, (INTERFACE.StModuleInfo)localObject2));
           }
-          else if (localStModuleInfo.moduleType.get() == 5)
+        }
+        else if (7 == j)
+        {
+          paramList1 = new DesktopDittoInfo(7);
+          paramList1.mergePbData((INTERFACE.StModuleInfo)localObject2);
+          localArrayList1.add(paramList1);
+          localArrayList3.add(localObject2);
+        }
+        else if (10 == j)
+        {
+          paramList1 = new DesktopChessRoomModuleInfo(10);
+          paramList1.mergePbData((INTERFACE.StModuleInfo)localObject2);
+          localArrayList1.add(paramList1);
+          localArrayList3.add(localObject2);
+        }
+        else if (9 == j)
+        {
+          paramList1 = new DesktopChessRoomCardModuleInfo(9);
+          paramList1.mergePbData((INTERFACE.StModuleInfo)localObject2);
+          localArrayList1.add(paramList1);
+          localArrayList3.add(localObject2);
+        }
+        else
+        {
+          if ((((INTERFACE.StModuleInfo)localObject2).moduleType.get() >= 0) && (!TextUtils.isEmpty(((INTERFACE.StModuleInfo)localObject2).title.get())))
           {
-            paramList = localStModuleInfo.ranks.get();
-            if ((paramList != null) && (!paramList.isEmpty()))
+            paramStSearchModuleInfo = new DesktopAppModuleInfo(((INTERFACE.StModuleInfo)localObject2).moduleType.get(), ((INTERFACE.StModuleInfo)localObject2).title.get(), (INTERFACE.StUserAppInfo)((INTERFACE.StModuleInfo)localObject2).jumpMoreApp.get());
+            localArrayList1.add(paramStSearchModuleInfo);
+            paramList1 = paramStSearchModuleInfo;
+            if (paramStSearchModuleInfo.getModuleType() == i)
             {
-              paramList = paramList.iterator();
-              while (paramList.hasNext()) {
-                localArrayList1.add(new DesktopFriendsPkModuleInfo(5, localStModuleInfo, (INTERFACE.StFriendRanking)paramList.next()));
+              paramList1 = paramStSearchModuleInfo;
+              if (localArrayList4.size() > 0)
+              {
+                localArrayList1.addAll(localArrayList4);
+                paramList1 = paramStSearchModuleInfo;
               }
             }
-            localArrayList2.add(localStModuleInfo);
-          }
-          else if (localStModuleInfo.moduleType.get() == 7)
-          {
-            paramList = new DesktopDittoInfo(7);
-            paramList.mergePbData(localStModuleInfo);
-            localArrayList1.add(paramList);
-            localArrayList2.add(localStModuleInfo);
           }
           else
           {
-            if ((localStModuleInfo.moduleType.get() < 0) || (TextUtils.isEmpty(localStModuleInfo.title.get()))) {
-              break label944;
-            }
-            paramList1 = new DesktopAppModuleInfo(localStModuleInfo.moduleType.get(), localStModuleInfo.title.get(), (INTERFACE.StUserAppInfo)localStModuleInfo.jumpMoreApp.get());
-            localArrayList1.add(paramList1);
-            paramList = paramList1;
-            if (paramList1.getModuleType() == 2)
+            paramList1 = null;
+          }
+          if ((paramList1 != null) && (((INTERFACE.StModuleInfo)localObject2).userAppList.get() != null) && (((INTERFACE.StModuleInfo)localObject2).userAppList.get().size() > 0))
+          {
+            paramStSearchModuleInfo = ((INTERFACE.StModuleInfo)localObject2).userAppList.get().iterator();
+            while (paramStSearchModuleInfo.hasNext())
             {
+              Object localObject3 = (INTERFACE.StUserAppInfo)paramStSearchModuleInfo.next();
+              localObject3 = new DesktopAppInfo(((INTERFACE.StModuleInfo)localObject2).moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject3));
+              if ((paramList1.getModuleType() == i) && (((DesktopAppInfo)localObject3).mMiniAppInfo != null))
+              {
+                RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject3).mMiniAppInfo.appId, 0, System.currentTimeMillis());
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("convertData add ");
+                localStringBuilder.append(localRecommendAppInfo.toString());
+                QLog.d("DesktopDataManager-Recommend", 2, localStringBuilder.toString());
+                localArrayList2.add(localRecommendAppInfo);
+              }
+              if ((((DesktopAppInfo)localObject3).mMiniAppInfo != null) && (((DesktopAppInfo)localObject3).mMiniAppInfo.isLimitedAccessApp())) {
+                ((DesktopAppInfo)localObject3).dragEnable = false;
+              }
+              if (((DesktopAppInfo)localObject3).mMiniAppInfo != null) {
+                ((DesktopAppInfo)localObject3).mMiniAppInfo.debugInfo = null;
+              }
+              localArrayList1.add(localObject3);
+              i = 2;
+            }
+          }
+          else
+          {
+            paramList1 = paramList;
+            int k = ((INTERFACE.StModuleInfo)localObject2).moduleType.get();
+            j = 2;
+            i = j;
+            paramList = paramList1;
+            if (k == 2)
+            {
+              i = j;
               paramList = paramList1;
-              if (paramStSearchModuleInfo.size() > 0) {
-                localArrayList1.addAll(paramStSearchModuleInfo);
+              if (((INTERFACE.StModuleInfo)localObject2).useOld.get() == 0)
+              {
+                localArrayList2.clear();
+                paramList = paramList1;
+                i = j;
               }
             }
           }
         }
       }
     }
-    label944:
-    for (paramList = paramList1;; paramList = null)
-    {
-      if ((paramList != null) && (localStModuleInfo.userAppList.get() != null) && (localStModuleInfo.userAppList.get().size() > 0))
-      {
-        paramList1 = localStModuleInfo.userAppList.get().iterator();
-        while (paramList1.hasNext())
-        {
-          Object localObject2 = (INTERFACE.StUserAppInfo)paramList1.next();
-          localObject2 = new DesktopAppInfo(localStModuleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2));
-          if ((paramList.getModuleType() == 2) && (((DesktopAppInfo)localObject2).mMiniAppInfo != null))
-          {
-            RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject2).mMiniAppInfo.appId, 0, System.currentTimeMillis());
-            QLog.d("DesktopDataManager-Recommend", 2, "convertData add " + localRecommendAppInfo.toString());
-            localArrayList3.add(localRecommendAppInfo);
-          }
-          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (((DesktopAppInfo)localObject2).mMiniAppInfo.isLimitedAccessApp())) {
-            ((DesktopAppInfo)localObject2).dragEnable = false;
-          }
-          if (((DesktopAppInfo)localObject2).mMiniAppInfo != null) {
-            ((DesktopAppInfo)localObject2).mMiniAppInfo.debugInfo = null;
-          }
-          localArrayList1.add(localObject2);
-        }
-        break;
-      }
-      if ((localStModuleInfo.moduleType.get() != 2) || (localStModuleInfo.useOld.get() != 0)) {
-        break;
-      }
-      localArrayList3.clear();
-      break;
-      setDesktopAppPositionInfoToSp(localArrayList1);
-      paramList = new ArrayList();
-      paramList.addAll(localArrayList1);
-      insertEntityWithBatch(paramList);
-      saveCardModuleData(localArrayList2);
-      updateRecommendExposureSp();
-      QLog.d("DesktopDataManager", 1, "convertData end. size = " + localArrayList1.size());
-      runOnMainThread(new DesktopDataManager.11(this, localArrayList3, localArrayList1));
-      return;
-    }
+    setDesktopAppPositionInfoToSp(localArrayList1);
+    paramList = new ArrayList();
+    paramList.addAll(localArrayList1);
+    insertEntityWithBatch(paramList);
+    saveCardModuleData(localArrayList3);
+    updateRecommendExposureSp();
+    paramList = new StringBuilder();
+    paramList.append("convertData end. size = ");
+    paramList.append(localArrayList1.size());
+    QLog.d("DesktopDataManager", 1, paramList.toString());
+    runOnMainThread(new DesktopDataManager.12(this, localArrayList2, localArrayList1, handleOperationAppEntryData(paramStOperationApp), (Set)localObject1));
   }
   
   private void convertMyAppData(List<INTERFACE.StModuleInfo> paramList)
@@ -471,17 +597,22 @@ public class DesktopDataManager
   
   private void deleteApp(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.desktopItemInfos == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    QLog.e("DesktopDataManager", 2, "test1: size: " + this.desktopItemInfos.size());
-    runOnMainThread(new DesktopDataManager.25(this, paramString));
+    if (this.desktopItemInfos == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("test1: size: ");
+    localStringBuilder.append(this.desktopItemInfos.size());
+    QLog.e("DesktopDataManager", 2, localStringBuilder.toString());
+    runOnMainThread(new DesktopDataManager.28(this, paramString));
   }
   
   private void deleteEntity(MiniAppInfo paramMiniAppInfo)
   {
-    ThreadManager.excute(new DesktopDataManager.17(this, paramMiniAppInfo), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.19(this, paramMiniAppInfo), 32, null, true);
   }
   
   private void deleteEntity(List<DesktopItemInfo> paramList)
@@ -505,101 +636,121 @@ public class DesktopDataManager
   
   private void deleteMiniAppCache(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {}
-    label146:
-    for (;;)
+    if (paramMiniAppInfo != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("DesktopDataManager", 2, "deleteMiniApp, delete miniAppInfo: " + paramMiniAppInfo.toString());
+      if (TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+        return;
       }
-      int i = this.desktopItemInfos.size() - 1;
-      if (i >= 0)
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        Object localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteMiniApp, delete miniAppInfo: ");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.toString());
+        QLog.i("DesktopDataManager", 2, ((StringBuilder)localObject).toString());
+      }
+      int i = this.desktopItemInfos.size();
+      int k = 1;
+      i -= 1;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i < 0) {
+          break;
+        }
+        localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
         if ((localObject instanceof DesktopAppInfo))
         {
           localObject = (DesktopAppInfo)localObject;
-          if ((((DesktopAppInfo)localObject).mMiniAppInfo == null) || (!paramMiniAppInfo.appId.equals(((DesktopAppInfo)localObject).mMiniAppInfo.appId))) {}
+          if ((((DesktopAppInfo)localObject).mMiniAppInfo != null) && (((DesktopAppInfo)localObject).mMiniAppInfo != paramMiniAppInfo) && (paramMiniAppInfo.appId.equals(((DesktopAppInfo)localObject).mMiniAppInfo.appId)))
+          {
+            j = 0;
+            break;
+          }
         }
-      }
-      for (i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label146;
-        }
-        MiniCacheFreeManager.freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramMiniAppInfo);
-        return;
         i -= 1;
-        break;
       }
+      if (j == 0) {
+        return;
+      }
+      MiniCacheFreeManager.freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramMiniAppInfo);
     }
   }
   
   private void deleteOldEntity(List<DeskTopAppEntity> paramList)
   {
     Object localObject;
+    EntityManager localEntityManager;
     if ((paramList != null) && (paramList.size() > 0))
     {
       localObject = MiniAppUtils.getAppInterface();
-      if (localObject != null) {
-        break label31;
+      if (localObject == null)
+      {
+        QLog.e("DesktopDataManager", 1, "deleteOldEntity, app is null.");
+        return;
       }
-      QLog.e("DesktopDataManager", 1, "deleteOldEntity, app is null.");
+      localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      if (localEntityManager == null) {}
     }
-    label31:
-    do
-    {
-      return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
     for (;;)
     {
-      StringBuilder localStringBuilder;
       int i;
       try
       {
-        localStringBuilder = new StringBuilder();
+        localObject = new StringBuilder();
         i = 0;
         if (i < paramList.size())
         {
           DeskTopAppEntity localDeskTopAppEntity = (DeskTopAppEntity)paramList.get(i);
           localDeskTopAppEntity.setStatus(1001);
-          if (((awgf)localObject).a(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId })) {
-            localStringBuilder.append(localDeskTopAppEntity.name).append("_0, ");
-          } else {
-            localStringBuilder.append(localDeskTopAppEntity.name).append("_1, ");
+          if (localEntityManager.remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
+          {
+            ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+            ((StringBuilder)localObject).append("_0, ");
+            break label225;
           }
+          ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+          ((StringBuilder)localObject).append("_1, ");
+          break label225;
         }
+        paramList = new StringBuilder();
+        paramList.append("deleteOldEntity, ");
+        paramList.append(((StringBuilder)localObject).toString());
+        QLog.e("DesktopDataManager", 2, paramList.toString());
+        return;
       }
       catch (Throwable paramList)
       {
-        QLog.e("DesktopDataManager", 1, "deleteOldEntity, Exception: " + Log.getStackTraceString(paramList));
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteOldEntity, Exception: ");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramList));
+        QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
       }
-      QLog.e("DesktopDataManager", 2, "deleteOldEntity, " + localStringBuilder.toString());
       return;
+      label225:
       i += 1;
     }
   }
   
   private void deleteRedDotDataFromDB(String paramString)
   {
-    ThreadManager.excute(new DesktopDataManager.30(this, paramString), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.33(this, paramString), 32, null, true);
   }
   
   private boolean findMiniApp(MiniAppInfo paramMiniAppInfo)
   {
-    if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() > 0))
+    Object localObject1 = this.desktopItemInfos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      Iterator localIterator = this.desktopItemInfos.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.desktopItemInfos.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (DesktopItemInfo)localIterator.next();
-        if ((localObject instanceof DesktopAppInfo))
+        Object localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
+        if ((localObject2 instanceof DesktopAppInfo))
         {
-          localObject = (DesktopAppInfo)localObject;
-          if ((((DesktopAppInfo)localObject).mMiniAppInfo != null) && (((DesktopAppInfo)localObject).mMiniAppInfo.verType == paramMiniAppInfo.verType) && (paramMiniAppInfo.appId.equals(((DesktopAppInfo)localObject).mMiniAppInfo.appId))) {
+          localObject2 = (DesktopAppInfo)localObject2;
+          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (((DesktopAppInfo)localObject2).mMiniAppInfo.verType == paramMiniAppInfo.verType) && (paramMiniAppInfo.appId.equals(((DesktopAppInfo)localObject2).mMiniAppInfo.appId))) {
             return true;
           }
         }
@@ -615,209 +766,224 @@ public class DesktopDataManager
     if (localObject1 != null)
     {
       localObject1 = ((AppInterface)localObject1).getCurrentAccountUin();
-      localObject1 = BaseApplication.getContext().getSharedPreferences((String)localObject1 + "_" + "mini_app_desktop", 0).getStringSet("key_mini_app_desktop_position_info", null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DesktopDataManager", 2, "getDesktopAppPositionInfo, start--info: " + localObject1);
-      }
-      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
+      Object localObject2 = BaseApplication.getContext();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject1 = "_";
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append("mini_app_desktop");
+      localObject2 = ((BaseApplication)localObject2).getSharedPreferences(((StringBuilder)localObject3).toString(), 0);
+      int i2 = 0;
+      localObject2 = ((SharedPreferences)localObject2).getStringSet("key_mini_app_desktop_position_info", null);
+      if (QLog.isColorLevel())
       {
-        Iterator localIterator = ((Set)localObject1).iterator();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("getDesktopAppPositionInfo, start--info: ");
+        ((StringBuilder)localObject3).append(localObject2);
+        QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject3).toString());
+      }
+      if ((localObject2 != null) && (((Set)localObject2).size() > 0))
+      {
+        Iterator localIterator = ((Set)localObject2).iterator();
+        label744:
         while (localIterator.hasNext())
         {
-          localObject1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          Object localObject4 = (String)localIterator.next();
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
-            String[] arrayOfString1 = ((String)localObject1).split("_");
+            String[] arrayOfString = ((String)localObject4).split((String)localObject1);
+            boolean bool = ((String)localObject4).contains("appid");
+            localObject3 = "";
             int i1;
-            int i;
             int k;
+            int i;
             int j;
-            String[] arrayOfString2;
             int m;
-            Object localObject2;
             int n;
-            if (((String)localObject1).contains("appid"))
+            if (bool)
             {
-              if (arrayOfString1.length > 0)
+              if (arrayOfString.length <= 0) {
+                break label744;
+              }
+              i1 = arrayOfString.length;
+              k = -1;
+              i = 0;
+              for (j = -1; i < i1; j = n)
               {
-                localObject1 = "";
-                i1 = arrayOfString1.length;
-                i = 0;
-                k = -1;
-                j = -1;
-                if (i < i1)
+                localObject4 = arrayOfString[i].split(":");
+                if (localObject4 != null)
                 {
-                  arrayOfString2 = arrayOfString1[i].split(":");
                   m = k;
-                  localObject2 = localObject1;
+                  localObject2 = localObject3;
                   n = j;
-                  if (arrayOfString2 != null)
-                  {
-                    m = k;
-                    localObject2 = localObject1;
-                    n = j;
-                    if (arrayOfString2.length > 1)
+                  if (localObject4.length > 1) {
+                    if ("appid".equals(localObject4[0]))
                     {
-                      if (!"appid".equals(arrayOfString2[0])) {
-                        break label288;
-                      }
-                      localObject2 = arrayOfString2[1];
+                      localObject2 = localObject4[1];
+                      m = k;
                       n = j;
-                      m = k;
                     }
-                  }
-                  for (;;)
-                  {
-                    i += 1;
-                    k = m;
-                    localObject1 = localObject2;
-                    j = n;
-                    break;
-                    label288:
-                    if ("moduletype".equals(arrayOfString2[0]))
+                    else if ("moduletype".equals(localObject4[0]))
                     {
-                      n = Integer.valueOf(arrayOfString2[1]).intValue();
-                      m = k;
-                      localObject2 = localObject1;
+                      m = Integer.valueOf(localObject4[1]).intValue();
+                      localObject2 = localObject3;
+                      n = j;
                     }
                     else
                     {
                       m = k;
-                      localObject2 = localObject1;
+                      localObject2 = localObject3;
                       n = j;
-                      if ("position".equals(arrayOfString2[0]))
+                      if ("position".equals(localObject4[0]))
                       {
-                        m = Integer.valueOf(arrayOfString2[1]).intValue();
-                        localObject2 = localObject1;
-                        n = j;
+                        n = Integer.valueOf(localObject4[1]).intValue();
+                        m = k;
+                        localObject2 = localObject3;
                       }
                     }
                   }
                 }
-                if (!TextUtils.isEmpty((CharSequence)localObject1))
+                else
                 {
-                  localObject2 = new DesktopDataManager.PositionItemInfo(null);
-                  ((DesktopDataManager.PositionItemInfo)localObject2).moduleType = j;
-                  ((DesktopDataManager.PositionItemInfo)localObject2).appId = ((String)localObject1);
-                  ((DesktopDataManager.PositionItemInfo)localObject2).position = k;
-                  localArrayList.add(localObject2);
-                }
-              }
-            }
-            else if ((((String)localObject1).contains("title")) && (arrayOfString1.length > 0))
-            {
-              localObject1 = "";
-              i1 = arrayOfString1.length;
-              i = 0;
-              k = -1;
-              j = -1;
-              if (i < i1)
-              {
-                arrayOfString2 = arrayOfString1[i].split(":");
-                m = k;
-                localObject2 = localObject1;
-                n = j;
-                if (arrayOfString2 != null)
-                {
-                  m = k;
-                  localObject2 = localObject1;
                   n = j;
-                  if (arrayOfString2.length > 1)
-                  {
-                    if (!"title".equals(arrayOfString2[0])) {
-                      break label536;
-                    }
-                    localObject2 = arrayOfString2[1];
-                    n = j;
-                    m = k;
-                  }
+                  localObject2 = localObject3;
+                  m = k;
                 }
-                for (;;)
-                {
-                  i += 1;
-                  k = m;
-                  localObject1 = localObject2;
-                  j = n;
-                  break;
-                  label536:
-                  if ("moduletype".equals(arrayOfString2[0]))
-                  {
-                    n = Integer.valueOf(arrayOfString2[1]).intValue();
-                    m = k;
-                    localObject2 = localObject1;
-                  }
-                  else
-                  {
-                    m = k;
-                    localObject2 = localObject1;
-                    n = j;
-                    if ("position".equals(arrayOfString2[0]))
-                    {
-                      m = Integer.valueOf(arrayOfString2[1]).intValue();
-                      localObject2 = localObject1;
-                      n = j;
-                    }
-                  }
-                }
+                i += 1;
+                k = m;
+                localObject3 = localObject2;
               }
-              if (!TextUtils.isEmpty((CharSequence)localObject1))
+              localObject2 = localObject1;
+              if (!TextUtils.isEmpty((CharSequence)localObject3))
               {
                 localObject2 = new DesktopDataManager.PositionItemInfo(null);
-                ((DesktopDataManager.PositionItemInfo)localObject2).moduleType = j;
-                ((DesktopDataManager.PositionItemInfo)localObject2).moduleTitle = ((String)localObject1);
-                ((DesktopDataManager.PositionItemInfo)localObject2).position = k;
+                ((DesktopDataManager.PositionItemInfo)localObject2).moduleType = k;
+                ((DesktopDataManager.PositionItemInfo)localObject2).appId = ((String)localObject3);
+                ((DesktopDataManager.PositionItemInfo)localObject2).position = j;
                 localArrayList.add(localObject2);
+                localObject2 = localObject1;
               }
             }
+            else
+            {
+              localObject2 = localObject1;
+              if (((String)localObject4).contains("title"))
+              {
+                localObject2 = localObject1;
+                if (arrayOfString.length > 0)
+                {
+                  j = arrayOfString.length;
+                  k = 0;
+                  m = -1;
+                  i = -1;
+                  while (k < j)
+                  {
+                    localObject4 = arrayOfString[k].split(":");
+                    if (localObject4 != null)
+                    {
+                      n = m;
+                      i1 = i;
+                      localObject2 = localObject3;
+                      if (localObject4.length > 1) {
+                        if ("title".equals(localObject4[0]))
+                        {
+                          localObject2 = localObject4[1];
+                          n = m;
+                          i1 = i;
+                        }
+                        else if ("moduletype".equals(localObject4[0]))
+                        {
+                          n = Integer.valueOf(localObject4[1]).intValue();
+                          i1 = i;
+                          localObject2 = localObject3;
+                        }
+                        else
+                        {
+                          n = m;
+                          i1 = i;
+                          localObject2 = localObject3;
+                          if ("position".equals(localObject4[0]))
+                          {
+                            i1 = Integer.valueOf(localObject4[1]).intValue();
+                            n = m;
+                            localObject2 = localObject3;
+                          }
+                        }
+                      }
+                    }
+                    else
+                    {
+                      localObject2 = localObject3;
+                      i1 = i;
+                      n = m;
+                    }
+                    k += 1;
+                    m = n;
+                    i = i1;
+                    localObject3 = localObject2;
+                  }
+                  localObject2 = localObject1;
+                  if (!TextUtils.isEmpty((CharSequence)localObject3))
+                  {
+                    i2 = 0;
+                    localObject2 = new DesktopDataManager.PositionItemInfo(null);
+                    ((DesktopDataManager.PositionItemInfo)localObject2).moduleType = m;
+                    ((DesktopDataManager.PositionItemInfo)localObject2).moduleTitle = ((String)localObject3);
+                    ((DesktopDataManager.PositionItemInfo)localObject2).position = i;
+                    localArrayList.add(localObject2);
+                    break label744;
+                  }
+                }
+              }
+            }
+            i2 = 0;
+            localObject1 = localObject2;
           }
         }
       }
     }
     Collections.sort(localArrayList);
-    QLog.d("DesktopDataManager", 2, "getDesktopAppPositionInfo, end--info: " + localArrayList);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getDesktopAppPositionInfo, end--info: ");
+    ((StringBuilder)localObject1).append(localArrayList);
+    QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject1).toString());
     return localArrayList;
   }
   
   private int getLastFixAppIndex(List<DesktopItemInfo> paramList)
   {
-    int k = 0;
-    if (paramList.size() == 0) {
+    int i = paramList.size();
+    int j = 0;
+    if (i == 0) {
       return 0;
     }
-    if (((DesktopItemInfo)paramList.get(0) instanceof DesktopSearchInfo)) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = i;
-      i = k;
-      for (;;)
-      {
-        k = j;
-        if (i < paramList.size())
-        {
-          DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)paramList.get(i);
-          k = j;
-          if (localDesktopItemInfo != null)
-          {
-            k = j;
-            if (localDesktopItemInfo.isFixApp()) {
-              k = i;
-            }
-          }
-          if ((k <= 1) || (localDesktopItemInfo == null) || (localDesktopItemInfo.isFixApp())) {}
-        }
-        else
-        {
-          return k;
-        }
-        i += 1;
-        j = k;
-      }
+    if (((DesktopItemInfo)paramList.get(0) instanceof DesktopSearchInfo)) {
+      i = 1;
     }
+    int k;
+    for (i = 0; j < paramList.size(); i = k)
+    {
+      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)paramList.get(j);
+      k = i;
+      if (localDesktopItemInfo != null)
+      {
+        k = i;
+        if (localDesktopItemInfo.isFixApp()) {
+          k = j;
+        }
+      }
+      if ((k > 1) && (localDesktopItemInfo != null) && (!localDesktopItemInfo.isFixApp())) {
+        return k;
+      }
+      j += 1;
+    }
+    return i;
   }
   
   private int getMyAppFirstPos()
   {
-    if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() > 0))
+    List localList = this.desktopItemInfos;
+    if ((localList != null) && (localList.size() > 0))
     {
       int j = this.desktopItemInfos.size();
       int i = 0;
@@ -834,22 +1000,49 @@ public class DesktopDataManager
   
   public static SharedPreferences getSharedPreferences(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    AppInterface localAppInterface;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      localAppInterface = MiniAppUtils.getAppInterface();
-    } while (localAppInterface == null);
-    return BaseApplication.getContext().getSharedPreferences(localAppInterface.getAccount() + "_" + paramString, 0);
+    }
+    AppInterface localAppInterface = MiniAppUtils.getAppInterface();
+    if (localAppInterface != null)
+    {
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localAppInterface.getAccount());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+      return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 4);
+    }
+    return null;
+  }
+  
+  private void handleEmptyModuleInStudyMode()
+  {
+    if (StudyModeManager.h()) {
+      runOnMainThread(new DesktopDataManager.13(this));
+    }
+  }
+  
+  private DesktopOperationAppEntryInfo handleOperationAppEntryData(INTERFACE.StOperationApp paramStOperationApp)
+  {
+    saveOperationAppEntryData(paramStOperationApp);
+    if (paramStOperationApp == null)
+    {
+      QLog.d("DesktopDataManager", 2, "[handleOperationAppEntryData] empty data.");
+      return null;
+    }
+    DesktopOperationAppEntryInfo localDesktopOperationAppEntryInfo = new DesktopOperationAppEntryInfo();
+    localDesktopOperationAppEntryInfo.mergePbData(paramStOperationApp);
+    return localDesktopOperationAppEntryInfo;
   }
   
   private boolean hasGdtCookie(COMM.StCommonExt paramStCommonExt)
   {
-    if ((paramStCommonExt == null) || (paramStCommonExt.mapInfo == null)) {}
-    for (;;)
+    if (paramStCommonExt != null)
     {
-      return false;
+      if (paramStCommonExt.mapInfo == null) {
+        return false;
+      }
       int i = 0;
       while (i < paramStCommonExt.mapInfo.size())
       {
@@ -859,16 +1052,33 @@ public class DesktopDataManager
         i += 1;
       }
     }
+    return false;
   }
   
   private void insertEntity(DesktopItemInfo paramDesktopItemInfo)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.19(this, paramDesktopItemInfo), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.21(this, paramDesktopItemInfo), 32, null, true);
   }
   
   private void insertEntityWithBatch(List<DesktopItemInfo> paramList)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.20(this, paramList), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.22(this, paramList), 32, null, true);
+  }
+  
+  private boolean isFixApp(MiniAppInfo paramMiniAppInfo)
+  {
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)))
+    {
+      if (paramMiniAppInfo.isSpecialMiniApp()) {
+        return true;
+      }
+      DesktopOperationAppEntryInfo localDesktopOperationAppEntryInfo = this.mDesktopOperationAppEntryInfo;
+      if ((localDesktopOperationAppEntryInfo != null) && (localDesktopOperationAppEntryInfo.getMiniAppInfo() != null) && (TextUtils.equals(paramMiniAppInfo.appId, this.mDesktopOperationAppEntryInfo.getMiniAppInfo().appId))) {
+        return true;
+      }
+      return this.mRecommendListFixAppidSet.contains(paramMiniAppInfo.appId);
+    }
+    return false;
   }
   
   private int mappingPosition(int paramInt)
@@ -876,104 +1086,65 @@ public class DesktopDataManager
     if (this.adapterItemInfos == null) {
       return paramInt;
     }
-    int j = 0;
     int i = -1;
-    if ((j < this.adapterItemInfos.size()) && (j <= paramInt))
+    int j = 0;
+    while ((j < this.adapterItemInfos.size()) && (j <= paramInt))
     {
-      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)this.adapterItemInfos.get(j);
-      if (((localDesktopItemInfo instanceof DesktopAppGroupInfo)) && (((DesktopAppGroupInfo)localDesktopItemInfo).datas != null)) {
-        i += ((DesktopAppGroupInfo)localDesktopItemInfo).datas.size();
-      }
-      for (;;)
+      Object localObject = (DesktopItemInfo)this.adapterItemInfos.get(j);
+      if ((localObject instanceof DesktopAppGroupInfo))
       {
-        j += 1;
-        break;
-        i += 1;
+        localObject = (DesktopAppGroupInfo)localObject;
+        if (((DesktopAppGroupInfo)localObject).datas != null)
+        {
+          i += ((DesktopAppGroupInfo)localObject).datas.size();
+          break label89;
+        }
       }
+      i += 1;
+      label89:
+      j += 1;
     }
     return i;
-  }
-  
-  private ArrayList<RecommendAppInfo> parseRecommendExposureFromSp()
-  {
-    int i = 0;
-    SharedPreferences localSharedPreferences = getSharedPreferences("app_recommend_exposure");
-    if (localSharedPreferences != null) {
-      try
-      {
-        Object localObject1 = localSharedPreferences.getString("app_recommend_exposure", null);
-        if (localObject1 != null)
-        {
-          localObject1 = ((String)localObject1).split(";");
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            while (i < localObject1.length)
-            {
-              Object localObject2 = localObject1[i];
-              if (!TextUtils.isEmpty((CharSequence)localObject2))
-              {
-                localObject2 = ((String)localObject2).split("_");
-                if ((localObject2 != null) && (localObject2.length == 3))
-                {
-                  localObject2 = new RecommendAppInfo(localObject2[0], Integer.parseInt(localObject2[1]), Long.parseLong(localObject2[2]));
-                  this.mRecommendExposureList.add(localObject2);
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-        return this.mRecommendExposureList;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("DesktopDataManager-Recommend", 1, "parseRecommendExposureFromSp error.", localThrowable);
-        localSharedPreferences.edit().clear().commit();
-      }
-    }
   }
   
   private void processScrollModeData(List<DesktopItemInfo> paramList, int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    int i = -1;
-    int j = paramList.size() - 1;
+    int i = paramList.size() - 1;
     Object localObject;
+    int k;
+    for (int j = -1; i >= 0; j = k)
+    {
+      localObject = (DesktopItemInfo)paramList.get(i);
+      k = j;
+      if (((DesktopItemInfo)localObject).getModuleType() == paramInt) {
+        if ((localObject instanceof DesktopAppInfo))
+        {
+          localArrayList.add(0, (DesktopAppInfo)localObject);
+          paramList.remove(i);
+          k = j;
+        }
+        else
+        {
+          k = j;
+          if ((localObject instanceof DesktopAppModuleInfo)) {
+            k = i;
+          }
+        }
+      }
+      i -= 1;
+    }
     if (j >= 0)
     {
-      localObject = (DesktopItemInfo)paramList.get(j);
-      if (((DesktopItemInfo)localObject).getModuleType() != paramInt) {
-        break label158;
-      }
-      if ((localObject instanceof DesktopAppInfo))
+      if (localArrayList.size() > 0)
       {
-        localArrayList.add(0, (DesktopAppInfo)localObject);
-        paramList.remove(j);
-      }
-    }
-    label144:
-    label158:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      if ((localObject instanceof DesktopAppModuleInfo))
-      {
-        i = j;
-        continue;
-        if (i >= 0)
-        {
-          if (localArrayList.size() <= 0) {
-            break label144;
-          }
-          localObject = new DesktopAppGroupInfo(paramInt);
-          ((DesktopAppGroupInfo)localObject).setData(localArrayList);
-          paramList.add(i + 1, localObject);
-        }
-        while (paramInt == 3) {
-          return;
-        }
-        paramList.remove(i);
+        localObject = new DesktopAppGroupInfo(paramInt);
+        ((DesktopAppGroupInfo)localObject).setData(localArrayList);
+        paramList.add(j + 1, localObject);
         return;
+      }
+      if (paramInt != 3) {
+        paramList.remove(j);
       }
     }
   }
@@ -984,8 +1155,9 @@ public class DesktopDataManager
       this.adapterItemInfos = new ArrayList();
     }
     this.adapterItemInfos.clear();
-    if (this.desktopItemInfos != null) {
-      this.adapterItemInfos.addAll(this.desktopItemInfos);
+    List localList = this.desktopItemInfos;
+    if (localList != null) {
+      this.adapterItemInfos.addAll(localList);
     }
     processScrollModeData(this.adapterItemInfos, 1);
     processScrollModeData(this.adapterItemInfos, 2);
@@ -998,206 +1170,301 @@ public class DesktopDataManager
     ArrayList localArrayList = new ArrayList();
     if (localObject1 != null)
     {
-      List localList1 = ((awgf)localObject1).a(DeskTopAppEntity.class, DeskTopAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      List localList1 = ((EntityManager)localObject1).query(DeskTopAppEntity.class, DeskTopAppEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       List localList2 = queryCardModuleData(paramAppInterface);
-      paramAppInterface = getDesktopAppPositionInfoFromSp();
+      localObject1 = getDesktopAppPositionInfoFromSp();
       StringBuilder localStringBuilder = new StringBuilder();
-      if (localList1 == null) {
-        break label1135;
-      }
-      int i = localList1.size();
-      HashMap localHashMap = new HashMap();
-      localObject1 = localList1.iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      if (localList1 != null)
       {
-        localObject2 = (DeskTopAppEntity)((Iterator)localObject1).next();
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((DeskTopAppEntity)localObject2).appId))) {
-          localHashMap.put(((DeskTopAppEntity)localObject2).appId, localObject2);
-        }
-      }
-      if ((paramAppInterface != null) && (paramAppInterface.size() > 0))
-      {
-        localObject2 = paramAppInterface.iterator();
-        break label571;
-        for (;;)
+        int i = localList1.size();
+        paramAppInterface = new HashMap();
+        Object localObject2 = localList1.iterator();
+        Object localObject3;
+        while (((Iterator)localObject2).hasNext())
         {
-          label168:
-          if (!((Iterator)localObject2).hasNext()) {
-            break label1053;
+          localObject3 = (DeskTopAppEntity)((Iterator)localObject2).next();
+          if ((localObject3 != null) && (!TextUtils.isEmpty(((DeskTopAppEntity)localObject3).appId))) {
+            paramAppInterface.put(((DeskTopAppEntity)localObject3).appId, localObject3);
           }
-          DesktopDataManager.PositionItemInfo localPositionItemInfo = (DesktopDataManager.PositionItemInfo)((Iterator)localObject2).next();
-          Object localObject3;
-          if (!TextUtils.isEmpty(localPositionItemInfo.appId))
+        }
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject3 = (DeskTopAppEntity)localHashMap.get(localPositionItemInfo.appId);
-            localObject1 = null;
-            paramAppInterface = (AppInterface)localObject1;
-            if (localObject3 != null)
+            DesktopDataManager.PositionItemInfo localPositionItemInfo = (DesktopDataManager.PositionItemInfo)((Iterator)localObject1).next();
+            if (!TextUtils.isEmpty(localPositionItemInfo.appId))
             {
-              paramAppInterface = (AppInterface)localObject1;
-              if (((DeskTopAppEntity)localObject3).appInfo != null) {
-                paramAppInterface = ((DeskTopAppEntity)localObject3).createAppInfoFromBuffer(((DeskTopAppEntity)localObject3).appInfo);
-              }
-            }
-            if (paramAppInterface != null)
-            {
-              localList1.remove(localObject3);
-              if (localPositionItemInfo.moduleType == 0)
+              localObject4 = (DeskTopAppEntity)paramAppInterface.get(localPositionItemInfo.appId);
+              localObject2 = null;
+              localObject3 = localObject2;
+              if (localObject4 != null)
               {
-                localObject1 = new DesktopSearchInfo(paramAppInterface, new ArrayList(), 0);
-                ((DesktopItemInfo)localObject1).deleteEnable = false;
-                ((DesktopItemInfo)localObject1).dragEnable = false;
-                ((DesktopItemInfo)localObject1).dropEnable = false;
-                this.hasPullSearchData = true;
-              }
-              for (;;)
-              {
-                localArrayList.add(localObject1);
-                localStringBuilder.append(paramAppInterface.name).append(":").append(paramAppInterface.appId).append(", ");
-                break;
-                localObject1 = new DesktopAppInfo(localPositionItemInfo.moduleType, paramAppInterface);
-                if (paramAppInterface.isSpecialMiniApp())
-                {
-                  ((DesktopItemInfo)localObject1).setIsFixApp(true);
-                  ((DesktopItemInfo)localObject1).deleteEnable = false;
-                  ((DesktopItemInfo)localObject1).dragEnable = false;
-                  ((DesktopItemInfo)localObject1).dropEnable = false;
+                localObject3 = localObject2;
+                if (((DeskTopAppEntity)localObject4).appInfo != null) {
+                  localObject3 = ((DeskTopAppEntity)localObject4).createAppInfoFromBuffer(((DeskTopAppEntity)localObject4).appInfo);
                 }
-                ((DesktopAppInfo)localObject1).setFromCache(true);
               }
-            }
-          }
-          else if (!TextUtils.isEmpty(localPositionItemInfo.moduleTitle))
-          {
-            if (localPositionItemInfo.moduleType == 4)
-            {
-              if ((localList2 != null) && (localList2.size() > 0))
+              localObject2 = localObject1;
+              if (localObject3 != null)
               {
-                paramAppInterface = localList2.iterator();
-                while (paramAppInterface.hasNext())
+                localList1.remove(localObject4);
+                if (localPositionItemInfo.moduleType == 0)
                 {
-                  localObject1 = (DesktopCardEntity)paramAppInterface.next();
-                  if ((localObject1 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject1).moduleType))
+                  localObject2 = new DesktopSearchInfo((MiniAppInfo)localObject3, new ArrayList(), 0);
+                  ((DesktopItemInfo)localObject2).deleteEnable = false;
+                  ((DesktopItemInfo)localObject2).dragEnable = false;
+                  ((DesktopItemInfo)localObject2).dropEnable = false;
+                  this.hasPullSearchData = true;
+                }
+                else
+                {
+                  localObject2 = new DesktopAppInfo(localPositionItemInfo.moduleType, (MiniAppInfo)localObject3);
+                  if (isFixApp((MiniAppInfo)localObject3))
                   {
-                    localObject3 = ((DesktopCardEntity)localObject1).createStModuleInfo();
-                    if (localObject3 != null)
-                    {
-                      localArrayList.add(new DesktopRecommendModuleInfo(4, (INTERFACE.StModuleInfo)localObject3));
-                      localStringBuilder.append(((DesktopCardEntity)localObject1).moduleType).append(":").append(((DesktopCardEntity)localObject1).title).append(", ");
-                    }
+                    ((DesktopItemInfo)localObject2).setIsFixApp(true);
+                    ((DesktopItemInfo)localObject2).deleteEnable = false;
+                    ((DesktopItemInfo)localObject2).dragEnable = false;
+                    ((DesktopItemInfo)localObject2).dropEnable = false;
                   }
+                  ((DesktopAppInfo)localObject2).setFromCache(true);
                 }
+                localArrayList.add(localObject2);
+                localStringBuilder.append(((MiniAppInfo)localObject3).name);
+                localStringBuilder.append(":");
+                localStringBuilder.append(((MiniAppInfo)localObject3).appId);
+                localStringBuilder.append(", ");
+                localObject2 = localObject1;
               }
             }
             else
             {
-              label571:
-              Object localObject4;
-              if (localPositionItemInfo.moduleType == 5)
-              {
-                if ((localList2 != null) && (localList2.size() > 0))
+              localObject2 = localObject1;
+              if (!TextUtils.isEmpty(localPositionItemInfo.moduleTitle)) {
+                if (localPositionItemInfo.moduleType == 4)
                 {
-                  paramAppInterface = localList2.iterator();
-                  for (;;)
+                  localObject2 = localObject1;
+                  if (localList2 != null)
                   {
-                    if (!paramAppInterface.hasNext()) {
-                      break label168;
-                    }
-                    localObject1 = (DesktopCardEntity)paramAppInterface.next();
-                    if ((localObject1 == null) || (localPositionItemInfo.moduleType != ((DesktopCardEntity)localObject1).moduleType)) {
-                      break;
-                    }
-                    localObject3 = ((DesktopCardEntity)localObject1).createStModuleInfo();
-                    if (localObject3 == null) {
-                      break;
-                    }
-                    localObject4 = ((INTERFACE.StModuleInfo)localObject3).ranks.get();
-                    if ((localObject4 == null) || (((List)localObject4).isEmpty())) {
-                      break;
-                    }
-                    localObject4 = ((List)localObject4).iterator();
-                    while (((Iterator)localObject4).hasNext())
+                    localObject2 = localObject1;
+                    if (localList2.size() > 0)
                     {
-                      localArrayList.add(new DesktopFriendsPkModuleInfo(5, (INTERFACE.StModuleInfo)localObject3, (INTERFACE.StFriendRanking)((Iterator)localObject4).next()));
-                      localStringBuilder.append(((DesktopCardEntity)localObject1).moduleType).append(":").append(((DesktopCardEntity)localObject1).title).append(", ");
-                    }
-                  }
-                }
-              }
-              else if (localPositionItemInfo.moduleType == 6)
-              {
-                if ((localList2 != null) && (localList2.size() > 0))
-                {
-                  paramAppInterface = localList2.iterator();
-                  while (paramAppInterface.hasNext())
-                  {
-                    localObject1 = (DesktopCardEntity)paramAppInterface.next();
-                    if ((localObject1 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject1).moduleType))
-                    {
-                      localObject3 = ((DesktopCardEntity)localObject1).createStModuleInfo();
-                      if (localObject3 != null)
+                      localObject3 = localList2.iterator();
+                      for (;;)
                       {
-                        localObject4 = new DesktopPopularModuleInfo(6);
-                        ((DesktopPopularModuleInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
-                        localArrayList.add(localObject4);
-                        localStringBuilder.append(((DesktopCardEntity)localObject1).moduleType).append(":").append(((DesktopCardEntity)localObject1).title).append(", ");
+                        localObject2 = localObject1;
+                        if (!((Iterator)localObject3).hasNext()) {
+                          break;
+                        }
+                        localObject2 = (DesktopCardEntity)((Iterator)localObject3).next();
+                        if ((localObject2 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject2).moduleType))
+                        {
+                          localObject4 = ((DesktopCardEntity)localObject2).createStModuleInfo();
+                          if (localObject4 != null)
+                          {
+                            localArrayList.add(new DesktopRecommendModuleInfo(4, (INTERFACE.StModuleInfo)localObject4));
+                            localStringBuilder.append(((DesktopCardEntity)localObject2).moduleType);
+                            localStringBuilder.append(":");
+                            localStringBuilder.append(((DesktopCardEntity)localObject2).title);
+                            localStringBuilder.append(", ");
+                          }
+                        }
                       }
                     }
                   }
                 }
-              }
-              else if (localPositionItemInfo.moduleType == 7)
-              {
-                if ((localList2 != null) && (localList2.size() > 0))
+                else
                 {
-                  paramAppInterface = localList2.iterator();
-                  while (paramAppInterface.hasNext())
+                  localObject2 = localObject1;
+                  Object localObject5;
+                  if (localPositionItemInfo.moduleType == 5)
                   {
-                    localObject1 = (DesktopCardEntity)paramAppInterface.next();
-                    if ((localObject1 != null) && (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject1).moduleType) && (!TextUtils.isEmpty(localPositionItemInfo.moduleTitle)) && (localPositionItemInfo.moduleTitle.equals(((DesktopCardEntity)localObject1).title)))
+                    localObject4 = paramAppInterface;
+                    localObject3 = localObject2;
+                    if (localList2 == null) {
+                      break label1276;
+                    }
+                    localObject4 = paramAppInterface;
+                    localObject3 = localObject2;
+                    if (localList2.size() <= 0) {
+                      break label1276;
+                    }
+                    for (localObject1 = localList2.iterator();; localObject1 = localObject3)
                     {
-                      localObject3 = ((DesktopCardEntity)localObject1).createStModuleInfo();
-                      if (localObject3 != null)
+                      localObject4 = paramAppInterface;
+                      localObject3 = localObject2;
+                      if (!((Iterator)localObject1).hasNext()) {
+                        break;
+                      }
+                      localObject5 = (DesktopCardEntity)((Iterator)localObject1).next();
+                      localObject3 = localObject1;
+                      localObject4 = paramAppInterface;
+                      if (localObject5 != null)
                       {
-                        localObject4 = new DesktopDittoInfo(7);
-                        ((DesktopDittoInfo)localObject4).mergePbData((INTERFACE.StModuleInfo)localObject3);
-                        localArrayList.add(localObject4);
-                        localStringBuilder.append(((DesktopCardEntity)localObject1).moduleType).append(":").append(((DesktopCardEntity)localObject1).title).append(", ");
+                        localObject3 = localObject1;
+                        localObject4 = paramAppInterface;
+                        if (localPositionItemInfo.moduleType == ((DesktopCardEntity)localObject5).moduleType)
+                        {
+                          INTERFACE.StModuleInfo localStModuleInfo = ((DesktopCardEntity)localObject5).createStModuleInfo();
+                          localObject3 = localObject1;
+                          localObject4 = paramAppInterface;
+                          if (localStModuleInfo != null)
+                          {
+                            Object localObject6 = localStModuleInfo.ranks.get();
+                            localObject3 = localObject1;
+                            localObject4 = paramAppInterface;
+                            if (localObject6 != null)
+                            {
+                              localObject3 = localObject1;
+                              localObject4 = paramAppInterface;
+                              if (!((List)localObject6).isEmpty())
+                              {
+                                localObject6 = ((List)localObject6).iterator();
+                                for (;;)
+                                {
+                                  localObject3 = localObject1;
+                                  localObject4 = paramAppInterface;
+                                  if (!((Iterator)localObject6).hasNext()) {
+                                    break;
+                                  }
+                                  localArrayList.add(new DesktopFriendsPkModuleInfo(5, localStModuleInfo, (INTERFACE.StFriendRanking)((Iterator)localObject6).next()));
+                                  localStringBuilder.append(((DesktopCardEntity)localObject5).moduleType);
+                                  localStringBuilder.append(":");
+                                  localStringBuilder.append(((DesktopCardEntity)localObject5).title);
+                                  localStringBuilder.append(", ");
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      paramAppInterface = (AppInterface)localObject4;
+                    }
+                  }
+                  localObject3 = paramAppInterface;
+                  if (localPositionItemInfo.moduleType == 6)
+                  {
+                    localObject1 = localObject3;
+                    paramAppInterface = (AppInterface)localObject2;
+                    if (localList2 == null) {
+                      break label1282;
+                    }
+                    localObject1 = localObject3;
+                    paramAppInterface = (AppInterface)localObject2;
+                    if (localList2.size() <= 0) {
+                      break label1282;
+                    }
+                    localObject4 = localList2.iterator();
+                    for (;;)
+                    {
+                      localObject1 = localObject3;
+                      paramAppInterface = (AppInterface)localObject2;
+                      if (!((Iterator)localObject4).hasNext()) {
+                        break;
+                      }
+                      paramAppInterface = (DesktopCardEntity)((Iterator)localObject4).next();
+                      if ((paramAppInterface != null) && (localPositionItemInfo.moduleType == paramAppInterface.moduleType))
+                      {
+                        localObject1 = paramAppInterface.createStModuleInfo();
+                        if (localObject1 != null)
+                        {
+                          localObject5 = new DesktopPopularModuleInfo(6);
+                          ((DesktopPopularModuleInfo)localObject5).mergePbData((INTERFACE.StModuleInfo)localObject1);
+                          localArrayList.add(localObject5);
+                          localStringBuilder.append(paramAppInterface.moduleType);
+                          localStringBuilder.append(":");
+                          localStringBuilder.append(paramAppInterface.title);
+                          localStringBuilder.append(", ");
+                        }
                       }
                     }
                   }
+                  if (localPositionItemInfo.moduleType == 7)
+                  {
+                    localObject1 = localObject3;
+                    paramAppInterface = (AppInterface)localObject2;
+                    if (localList2 == null) {
+                      break label1282;
+                    }
+                    localObject1 = localObject3;
+                    paramAppInterface = (AppInterface)localObject2;
+                    if (localList2.size() <= 0) {
+                      break label1282;
+                    }
+                    localObject4 = localList2.iterator();
+                    for (;;)
+                    {
+                      localObject1 = localObject3;
+                      paramAppInterface = (AppInterface)localObject2;
+                      if (!((Iterator)localObject4).hasNext()) {
+                        break;
+                      }
+                      paramAppInterface = (DesktopCardEntity)((Iterator)localObject4).next();
+                      if ((paramAppInterface != null) && (localPositionItemInfo.moduleType == paramAppInterface.moduleType) && (!TextUtils.isEmpty(localPositionItemInfo.moduleTitle)) && (localPositionItemInfo.moduleTitle.equals(paramAppInterface.title)))
+                      {
+                        localObject1 = paramAppInterface.createStModuleInfo();
+                        if (localObject1 != null)
+                        {
+                          localObject5 = new DesktopDittoInfo(7);
+                          ((DesktopDittoInfo)localObject5).mergePbData((INTERFACE.StModuleInfo)localObject1);
+                          localArrayList.add(localObject5);
+                          localStringBuilder.append(paramAppInterface.moduleType);
+                          localStringBuilder.append(":");
+                          localStringBuilder.append(paramAppInterface.title);
+                          localStringBuilder.append(", ");
+                        }
+                      }
+                    }
+                  }
+                  localArrayList.add(new DesktopAppModuleInfo(localPositionItemInfo.moduleType, localPositionItemInfo.moduleTitle));
+                  localObject1 = localObject3;
+                  paramAppInterface = (AppInterface)localObject2;
+                  break label1282;
                 }
-              }
-              else {
-                localArrayList.add(new DesktopAppModuleInfo(localPositionItemInfo.moduleType, localPositionItemInfo.moduleTitle));
               }
             }
+            localObject3 = localObject2;
+            Object localObject4 = paramAppInterface;
+            label1276:
+            localObject1 = localObject4;
+            paramAppInterface = (AppInterface)localObject3;
+            label1282:
+            localObject2 = localObject1;
+            localObject1 = paramAppInterface;
+            paramAppInterface = (AppInterface)localObject2;
           }
         }
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("query, before size=");
+        paramAppInterface.append(i);
+        paramAppInterface.append(", after size = ");
+        paramAppInterface.append(localList1.size());
+        paramAppInterface.append(", DB cache app List = [");
+        paramAppInterface.append(localStringBuilder.toString());
+        paramAppInterface.append("]");
+        QLog.e("DesktopDataManager", 1, paramAppInterface.toString());
+        if (localList1.size() < i)
+        {
+          deleteOldEntity(localList1);
+          return localArrayList;
+        }
       }
-      label1053:
-      QLog.e("DesktopDataManager", 1, "query, before size=" + i + ", after size = " + localList1.size() + ", DB cache app List = [" + localStringBuilder.toString() + "]");
-      if (localList1.size() < i) {
-        deleteOldEntity(localList1);
+      else
+      {
+        QLog.e("DesktopDataManager", 1, "query, tempList is null.");
       }
     }
-    return localArrayList;
-    label1135:
-    QLog.e("DesktopDataManager", 1, "query, tempList is null.");
     return localArrayList;
   }
   
   private List<DesktopCardEntity> queryCardModuleData(AppInterface paramAppInterface)
   {
-    Object localObject = null;
-    awgf localawgf = paramAppInterface.getEntityManagerFactory().createEntityManager();
+    paramAppInterface = paramAppInterface.getEntityManagerFactory().createEntityManager();
     new ArrayList();
-    paramAppInterface = localObject;
-    if (localawgf != null) {
-      paramAppInterface = localawgf.a(DesktopCardEntity.class, DesktopCardEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+    if (paramAppInterface != null) {
+      return paramAppInterface.query(DesktopCardEntity.class, DesktopCardEntity.class.getSimpleName(), false, null, null, null, null, null, null);
     }
-    return paramAppInterface;
+    return null;
   }
   
   public static void recordMiniAppStart(MiniAppInfo paramMiniAppInfo)
@@ -1205,7 +1472,7 @@ public class DesktopDataManager
     if (paramMiniAppInfo == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new DesktopDataManager.13(paramMiniAppInfo));
+    ThreadManager.getUIHandler().post(new DesktopDataManager.15(paramMiniAppInfo));
   }
   
   private void registerObserver()
@@ -1218,87 +1485,126 @@ public class DesktopDataManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    QLog.d("DesktopDataManager", 2, "test: size: " + this.desktopItemInfos.size());
-    runOnMainThread(new DesktopDataManager.24(this, paramString));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("test: size: ");
+    localStringBuilder.append(this.desktopItemInfos.size());
+    QLog.d("DesktopDataManager", 2, localStringBuilder.toString());
+    runOnMainThread(new DesktopDataManager.26(this, paramString));
   }
   
   private void reportToGdt(DesktopAdData paramDesktopAdData)
   {
     try
     {
-      Object localObject = new JSONObject(paramDesktopAdData.miniAppInfo.amsAdInfo);
-      localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
-      localObject = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.exposure_url.get() + "&slot=" + paramDesktopAdData.position;
+      localObject = new JSONObject(paramDesktopAdData.miniAppInfo.amsAdInfo);
+      localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((qq_ad_get.QQAdGetRsp.AdInfo)localObject).report_info.exposure_url.get());
+      localStringBuilder.append("&slot=");
+      localStringBuilder.append(paramDesktopAdData.position);
+      localObject = localStringBuilder.toString();
       MiniAppUtils.reportMiniAppAd((String)localObject);
-      QLog.d("DesktopDataManager", 1, "gdtAdReport, exposure_url: " + (String)localObject + ", name: " + paramDesktopAdData.miniAppInfo.name);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gdtAdReport, exposure_url: ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", name: ");
+      localStringBuilder.append(paramDesktopAdData.miniAppInfo.name);
+      QLog.d("DesktopDataManager", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception paramDesktopAdData)
     {
-      QLog.e("DesktopDataManager", 1, "gdtAdReport exception: " + Log.getStackTraceString(paramDesktopAdData));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("gdtAdReport exception: ");
+      ((StringBuilder)localObject).append(Log.getStackTraceString(paramDesktopAdData));
+      QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   private void reportToTianshu(DesktopAdData paramDesktopAdData)
   {
-    if ((paramDesktopAdData.miniAppInfo != null) && (paramDesktopAdData.miniAppInfo.tianshuAdId != 0)) {}
-    try
-    {
-      bkgq localbkgq = new bkgq();
-      int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-      localbkgq.b = (bfbm.a().a() + "_" + i);
-      localbkgq.jdField_a_of_type_Int = 1;
-      localbkgq.d = 101;
-      localbkgq.jdField_e_of_type_Int = 1;
-      localbkgq.jdField_a_of_type_Long = i;
-      localbkgq.g = String.valueOf(paramDesktopAdData.miniAppInfo.tianshuAdId);
-      localbkgq.f = "tianshu.78";
-      localbkgq.jdField_e_of_type_JavaLangString = "tianshu.81";
-      bkgp.a().a(localbkgq);
-      QLog.d("DesktopDataManager", 1, "reportToTianshu() called with: data = [" + paramDesktopAdData + "]");
-      return;
-    }
-    catch (Throwable paramDesktopAdData)
-    {
-      QLog.d("DesktopDataManager", 1, paramDesktopAdData, new Object[0]);
+    if ((paramDesktopAdData.miniAppInfo != null) && (paramDesktopAdData.miniAppInfo.tianshuAdId != 0)) {
+      try
+      {
+        Object localObject = new TianShuReportData();
+        int i = (int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(CommonDataAdapter.a().c());
+        localStringBuilder.append("_");
+        localStringBuilder.append(i);
+        ((TianShuReportData)localObject).b = localStringBuilder.toString();
+        ((TianShuReportData)localObject).c = 1;
+        ((TianShuReportData)localObject).p = 101;
+        ((TianShuReportData)localObject).q = 1;
+        ((TianShuReportData)localObject).o = i;
+        ((TianShuReportData)localObject).h = String.valueOf(paramDesktopAdData.miniAppInfo.tianshuAdId);
+        ((TianShuReportData)localObject).g = "tianshu.78";
+        ((TianShuReportData)localObject).f = "tianshu.81";
+        TianShuManager.getInstance().report((TianShuReportData)localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportToTianshu() called with: data = [");
+        ((StringBuilder)localObject).append(paramDesktopAdData);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      catch (Throwable paramDesktopAdData)
+      {
+        QLog.d("DesktopDataManager", 1, paramDesktopAdData, new Object[0]);
+      }
     }
   }
   
   private void saveCardModuleData(List<INTERFACE.StModuleInfo> paramList)
   {
-    ThreadManagerV2.excute(new DesktopDataManager.21(this, paramList), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.23(this, paramList), 32, null, true);
   }
   
-  private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList)
+  private void saveOperationAppEntryData(INTERFACE.StOperationApp paramStOperationApp)
   {
-    ThreadManager.excute(new DesktopDataManager.2(this, paramStCommonExt, paramArrayList), 128, null, false);
+    ThreadManagerV2.excute(new DesktopDataManager.11(this, paramStOperationApp), 32, null, true);
   }
   
-  private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList, ArrayList<Integer> paramArrayList1)
+  private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList, GetAppListV2Scene paramGetAppListV2Scene)
   {
-    if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() > 0)) {}
-    for (int i = 1;; i = 0)
+    ThreadManager.excute(new DesktopDataManager.2(this, paramStCommonExt, paramArrayList, paramGetAppListV2Scene), 128, null, false);
+  }
+  
+  private void sendUserAppListRequestV2(COMM.StCommonExt paramStCommonExt, ArrayList<RecommendAppInfo> paramArrayList, ArrayList<Integer> paramArrayList1, GetAppListV2Scene paramGetAppListV2Scene)
+  {
+    Object localObject = this.desktopItemInfos;
+    int i;
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendUserAppListRequestV2, cacheValue: ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", recommendAppList size: ");
+    ((StringBuilder)localObject).append(paramArrayList.size());
+    QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+    MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, paramGetAppListV2Scene, paramArrayList, paramArrayList1, new ArrayList(), new ArrayList(), i, new DesktopDataManager.3(this));
+    paramArrayList = MiniAppUtils.getAppInterface();
+    if (paramArrayList != null)
     {
-      QLog.d("DesktopDataManager", 1, "sendUserAppListRequestV2, cacheValue: " + i);
-      MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, paramArrayList, paramArrayList1, new ArrayList(), new ArrayList(), i, new DesktopDataManager.3(this));
-      paramArrayList1 = MiniAppUtils.getAppInterface();
-      if (paramArrayList1 != null)
+      paramStCommonExt = paramArrayList.getPreferences();
+      paramArrayList1 = new StringBuilder();
+      paramArrayList1.append(paramArrayList.getCurrentAccountUin());
+      paramArrayList1.append("key_update_applets_notification_setting_time");
+      paramArrayList1 = paramArrayList1.toString();
+      long l1 = paramStCommonExt.getLong(paramArrayList1, 0L);
+      long l2 = System.currentTimeMillis();
+      if (l2 - l1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
       {
-        paramStCommonExt = paramArrayList1.getPreferences();
-        paramArrayList = paramArrayList1.getCurrentAccountUin() + "key_update_applets_notification_setting_time";
-        long l1 = paramStCommonExt.getLong(paramArrayList, 0L);
-        long l2 = System.currentTimeMillis();
-        if (l2 - l1 > QzoneConfig.getInstance().getConfig("qqminiapp", "getappletsnotificationsettinginterval", 1L) * 1000L)
+        paramArrayList = (AppletsHandler)paramArrayList.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+        if (paramArrayList != null)
         {
-          paramArrayList1 = (amru)paramArrayList1.getBusinessHandler(148);
-          if (paramArrayList1 != null)
-          {
-            paramArrayList1.a();
-            paramStCommonExt.edit().putLong(paramArrayList, l2).commit();
-          }
+          paramArrayList.a();
+          paramStCommonExt.edit().putLong(paramArrayList1, l2).commit();
         }
       }
-      return;
     }
   }
   
@@ -1311,7 +1617,10 @@ public class DesktopDataManager
   
   private static void setGetRecommendIntervalTime(long paramLong)
   {
-    QLog.d("DesktopDataManager-Recommend", 2, "setGetRecommendIntervalTime : " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setGetRecommendIntervalTime : ");
+    localStringBuilder.append(paramLong);
+    QLog.d("DesktopDataManager-Recommend", 2, localStringBuilder.toString());
     if (paramLong > 0L) {
       StorageUtil.getPreference().edit().putLong("key_mini_app_recommend_time", paramLong).apply();
     }
@@ -1322,115 +1631,122 @@ public class DesktopDataManager
     runOnMainThread(new DesktopDataManager.9(this, paramList));
   }
   
-  private boolean updateEntity(awgf paramawgf, awge paramawge)
+  private boolean updateEntity(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramawgf.a()) {
-      if (paramawge.getStatus() == 1000)
+    if (bool2)
+    {
+      if (paramEntity.getStatus() == 1000)
       {
-        paramawgf.b(paramawge);
-        if (paramawge.getStatus() == 1001) {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawgf.a();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramawgf.a(paramawge);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("DesktopDataManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
   private void updateMiniAppStartRecord(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId)) || (this.desktopItemInfos == null))
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)) && (this.desktopItemInfos != null))
     {
-      QLog.e("DesktopDataManager", 1, "insertAppInfo error app info is invalid, appInfo = " + paramMiniAppInfo);
-      break label47;
-    }
-    label47:
-    while (paramMiniAppInfo.isSpecialMiniApp()) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    Object localObject;
-    int k;
-    for (int j = -1; i < this.desktopItemInfos.size(); j = k)
-    {
-      localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
-      k = j;
-      if ((localObject instanceof DesktopAppInfo))
+      if (isFixApp(paramMiniAppInfo)) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      int k;
+      for (int j = -1; i < this.desktopItemInfos.size(); j = k)
       {
+        localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
         k = j;
-        if (((DesktopItemInfo)localObject).getModuleType() == 1)
+        if ((localObject instanceof DesktopAppInfo))
         {
-          localArrayList.add(localObject);
           k = j;
-          if (j == -1) {
-            k = i;
+          if (((DesktopItemInfo)localObject).getModuleType() == 1)
+          {
+            localArrayList.add(localObject);
+            k = j;
+            if (j == -1) {
+              k = i;
+            }
+          }
+        }
+        i += 1;
+      }
+      if (localArrayList.size() > 0)
+      {
+        localObject = null;
+        i = 0;
+        while (i < localArrayList.size())
+        {
+          DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localArrayList.get(i);
+          DesktopAppInfo localDesktopAppInfo = (DesktopAppInfo)localDesktopItemInfo;
+          if ((paramMiniAppInfo.appId.equals(localDesktopAppInfo.mMiniAppInfo.appId)) && (paramMiniAppInfo.verType == localDesktopAppInfo.mMiniAppInfo.verType))
+          {
+            this.desktopItemInfos.remove(localDesktopItemInfo);
+            localObject = localDesktopItemInfo;
+            i = 1;
+            break label237;
+          }
+          i += 1;
+        }
+        i = 0;
+        label237:
+        if (i != 0)
+        {
+          if ((j != -1) && (localObject != null))
+          {
+            ((DesktopAppInfo)localObject).mMiniAppInfo = paramMiniAppInfo;
+            this.desktopItemInfos.add(j, localObject);
+          }
+        }
+        else
+        {
+          localObject = new DesktopAppInfo(1, paramMiniAppInfo);
+          if (j != -1)
+          {
+            if (paramMiniAppInfo.isLimitedAccessApp()) {
+              ((DesktopItemInfo)localObject).dragEnable = false;
+            }
+            this.desktopItemInfos.add(j, localObject);
+            insertEntity((DesktopItemInfo)localObject);
           }
         }
       }
-      i += 1;
-    }
-    if (localArrayList.size() > 0)
-    {
-      i = 0;
-      label162:
-      if (i >= localArrayList.size()) {
-        break label349;
-      }
-      localObject = (DesktopItemInfo)localArrayList.get(i);
-      DesktopAppInfo localDesktopAppInfo = (DesktopAppInfo)localObject;
-      if ((paramMiniAppInfo.appId.equals(localDesktopAppInfo.mMiniAppInfo.appId)) && (paramMiniAppInfo.verType == localDesktopAppInfo.mMiniAppInfo.verType)) {
-        this.desktopItemInfos.remove(localObject);
-      }
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
+      else
       {
-        if ((j == -1) || (localObject == null)) {
-          break;
-        }
-        this.desktopItemInfos.add(j, localObject);
-        return;
-        i += 1;
-        break label162;
+        paramMiniAppInfo = new DesktopAppInfo(1, paramMiniAppInfo);
+        this.desktopItemInfos.add(paramMiniAppInfo);
+        insertEntity(paramMiniAppInfo);
       }
-      localObject = new DesktopAppInfo(1, paramMiniAppInfo);
-      if (j == -1) {
-        break;
-      }
-      if (paramMiniAppInfo.isLimitedAccessApp()) {
-        ((DesktopItemInfo)localObject).dragEnable = false;
-      }
-      this.desktopItemInfos.add(j, localObject);
-      insertEntity((DesktopItemInfo)localObject);
       return;
-      paramMiniAppInfo = new DesktopAppInfo(1, paramMiniAppInfo);
-      this.desktopItemInfos.add(paramMiniAppInfo);
-      insertEntity(paramMiniAppInfo);
-      return;
-      label349:
-      localObject = null;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("insertAppInfo error app info is invalid, appInfo = ");
+    ((StringBuilder)localObject).append(paramMiniAppInfo);
+    QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
   }
   
   private void updateRecommendExposureSp()
   {
     ArrayList localArrayList = new ArrayList(this.mRecommendExposureList);
-    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.23(this, localArrayList));
+    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.25(this, localArrayList));
   }
   
   private void updateRedDotData(MiniAppRedDotEntity paramMiniAppRedDotEntity)
@@ -1438,97 +1754,126 @@ public class DesktopDataManager
     if (paramMiniAppRedDotEntity == null) {
       return;
     }
-    ThreadManagerV2.excute(new DesktopDataManager.29(this, paramMiniAppRedDotEntity), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.32(this, paramMiniAppRedDotEntity), 32, null, true);
   }
   
-  private boolean updateRedDotData(awgf paramawgf, awge paramawge)
+  private boolean updateRedDotData(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramawgf.a()) {
-      if (paramawge.getStatus() == 1000)
+    if (bool2)
+    {
+      if (paramEntity.getStatus() == 1000)
       {
-        paramawgf.b(paramawge);
-        if (paramawge.getStatus() == 1001) {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramawgf.a();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramawge.getStatus() != 1001) && (paramawge.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramawgf.a(paramawge);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("DesktopDataManager", 2, "updateEntity em closed e=" + paramawge.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("DesktopDataManager", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
   private void useDefaultRecommendApps()
   {
-    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.15(this));
+    ThreadManager.getSubThreadHandler().post(new DesktopDataManager.17(this));
+  }
+  
+  public void addAppToMyApp(MiniAppInfo paramMiniAppInfo)
+  {
+    if (this.desktopItemInfos == null) {
+      return;
+    }
+    runOnMainThread(new DesktopDataManager.29(this, paramMiniAppInfo));
   }
   
   public void asyncQueryMiniAppPushRedDotData()
   {
-    ThreadManagerV2.excute(new DesktopDataManager.31(this), 32, null, true);
+    ThreadManagerV2.excute(new DesktopDataManager.34(this), 32, null, true);
   }
   
   public void checkMiniAppAdReport(MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    DesktopAdData localDesktopAdData = (DesktopAdData)this.mAdReportMap.get(paramMiniAppInfo.appId);
-    if ((localDesktopAdData != null) && (localDesktopAdData.position != paramInt) && (localDesktopAdData.hasReport())) {
+    Object localObject = (DesktopAdData)this.mAdReportMap.get(paramMiniAppInfo.appId);
+    if ((localObject != null) && (((DesktopAdData)localObject).position != paramInt) && (((DesktopAdData)localObject).hasReport())) {
       this.mAdReportMap.remove(paramMiniAppInfo.appId);
     }
     if (this.mAdReportMap.get(paramMiniAppInfo.appId) == null)
     {
-      localDesktopAdData = new DesktopAdData(paramInt, false, paramMiniAppInfo);
-      this.mAdReportMap.put(paramMiniAppInfo.appId, localDesktopAdData);
-      QLog.d("DesktopDataManager", 1, "collectAdReport, name: " + paramMiniAppInfo.name);
+      localObject = new DesktopAdData(paramInt, false, paramMiniAppInfo);
+      this.mAdReportMap.put(paramMiniAppInfo.appId, localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("collectAdReport, name: ");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.name);
+      QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void clearRecommendExposureList()
   {
-    ThreadManager.getUIHandler().post(new DesktopDataManager.22(this));
+    ThreadManager.getUIHandler().post(new DesktopDataManager.24(this));
   }
   
   public MiniAppInfo findMiniApp(String paramString, int paramInt)
   {
-    if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() > 0))
+    Object localObject1 = this.desktopItemInfos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      Iterator localIterator = this.desktopItemInfos.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.desktopItemInfos.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-        if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo != null) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(paramString)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.verType == paramInt)) {
-          return ((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo;
+        Object localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
+        if ((localObject2 instanceof DesktopAppInfo))
+        {
+          localObject2 = (DesktopAppInfo)localObject2;
+          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (((DesktopAppInfo)localObject2).mMiniAppInfo.appId.equals(paramString)) && (((DesktopAppInfo)localObject2).mMiniAppInfo.verType == paramInt)) {
+            return ((DesktopAppInfo)localObject2).mMiniAppInfo;
+          }
         }
       }
     }
-    QLog.d("DesktopDataManager", 1, "findMiniApp, failed to find Miniapp, appId = " + paramString);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("findMiniApp, failed to find Miniapp, appId = ");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject1).toString());
     return null;
   }
   
   public MiniAppInfo findTopMiniApp(String paramString, int paramInt)
   {
-    if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() > 0))
+    Object localObject1 = this.desktopItemInfos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      Iterator localIterator = this.desktopItemInfos.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.desktopItemInfos.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-        if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (localDesktopItemInfo.getModuleType() == 3) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo != null) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(paramString)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.verType == paramInt)) {
-          return ((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo;
+        Object localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
+        if (((localObject2 instanceof DesktopAppInfo)) && (((DesktopItemInfo)localObject2).getModuleType() == 3))
+        {
+          localObject2 = (DesktopAppInfo)localObject2;
+          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (((DesktopAppInfo)localObject2).mMiniAppInfo.appId.equals(paramString)) && (((DesktopAppInfo)localObject2).mMiniAppInfo.verType == paramInt)) {
+            return ((DesktopAppInfo)localObject2).mMiniAppInfo;
+          }
         }
       }
     }
-    QLog.d("DesktopDataManager", 1, "findMiniApp, failed to find Miniapp, appId = " + paramString);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("findMiniApp, failed to find Miniapp, appId = ");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject1).toString());
     return null;
   }
   
@@ -1536,6 +1881,11 @@ public class DesktopDataManager
   {
     checkData(false);
     return this.adapterItemInfos;
+  }
+  
+  public DesktopOperationAppEntryInfo getDeskTopOperationAppEntryInfo()
+  {
+    return this.mDesktopOperationAppEntryInfo;
   }
   
   public DesktopDataManager.HongBaoResBuilder getHongBaoResBuilder()
@@ -1554,8 +1904,12 @@ public class DesktopDataManager
     while (localIterator.hasNext())
     {
       RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)localIterator.next();
-      if (localRecommendAppInfo != null) {
-        QLog.d("DesktopDataManager-Recommend", 2, "getRecommendExposureList : " + localRecommendAppInfo.toString());
+      if (localRecommendAppInfo != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getRecommendExposureList : ");
+        localStringBuilder.append(localRecommendAppInfo.toString());
+        QLog.d("DesktopDataManager-Recommend", 2, localStringBuilder.toString());
       }
     }
     return this.mRecommendExposureList;
@@ -1566,70 +1920,78 @@ public class DesktopDataManager
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while ((this.desktopItemInfos != null) && (i < this.desktopItemInfos.size()))
+    for (;;)
     {
-      localObject = (DesktopItemInfo)this.desktopItemInfos.get(i);
-      if (((localObject instanceof DesktopAppInfo)) && ((((DesktopItemInfo)localObject).getModuleType() == 1) || (((DesktopItemInfo)localObject).getModuleType() == 3) || (((DesktopItemInfo)localObject).getModuleType() == 2)))
+      localObject1 = this.desktopItemInfos;
+      if ((localObject1 == null) || (i >= ((List)localObject1).size())) {
+        break;
+      }
+      localObject1 = (DesktopItemInfo)this.desktopItemInfos.get(i);
+      if (((localObject1 instanceof DesktopAppInfo)) && ((((DesktopItemInfo)localObject1).getModuleType() == 1) || (((DesktopItemInfo)localObject1).getModuleType() == 3) || (((DesktopItemInfo)localObject1).getModuleType() == 2)))
       {
-        localObject = (DesktopAppInfo)localObject;
-        if (((DesktopAppInfo)localObject).mMiniAppInfo != null) {
-          localArrayList.add(((DesktopAppInfo)localObject).mMiniAppInfo);
+        localObject1 = (DesktopAppInfo)localObject1;
+        if (((DesktopAppInfo)localObject1).mMiniAppInfo != null) {
+          localArrayList.add(((DesktopAppInfo)localObject1).mMiniAppInfo);
         }
       }
       i += 1;
     }
-    if ((localArrayList == null) || (localArrayList.size() <= 0)) {
+    if (localArrayList.size() <= 0) {
       return localHashMap;
     }
-    boolean bool = aoom.i();
-    if (QLog.isColorLevel()) {
-      QLog.d("DesktopDataManager", 2, "getRedDotData, showPublicAccountRedDot: " + bool);
-    }
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null) {}
-    for (localObject = ((ajfv)((AppInterface)localObject).getManager(315)).a();; localObject = null)
+    boolean bool = MiniAppConfProcessor.h();
+    if (QLog.isColorLevel())
     {
-      int j = 0;
-      MiniAppInfo localMiniAppInfo;
-      label312:
-      Integer localInteger1;
-      Integer localInteger2;
-      while (j < localArrayList.size())
-      {
-        localMiniAppInfo = (MiniAppInfo)localArrayList.get(j);
-        if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
-        {
-          if ((localObject == null) || (!((Set)localObject).contains(localMiniAppInfo.appId))) {
-            break label312;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("DesktopDataManager", 2, "getRedDotData, unReceiveMsgAppids ignore appid: " + localMiniAppInfo.appId);
-          }
-        }
-        j += 1;
-        continue;
-        localInteger1 = (Integer)this.mPublicAccountRedDotMap.get(localMiniAppInfo.appId);
-        localInteger2 = (Integer)this.mPushRedDotMap.get(localMiniAppInfo.appId);
-        if ((localInteger1 == null) || (localInteger1.intValue() <= 0) || (!bool)) {
-          break label420;
-        }
-      }
-      label420:
-      for (i = localInteger1.intValue() + 0;; i = 0)
-      {
-        int k = i;
-        if (localInteger2 != null)
-        {
-          k = i;
-          if (localInteger2.intValue() > 0) {
-            k = i + localInteger2.intValue();
-          }
-        }
-        localHashMap.put(localMiniAppInfo.appId, Integer.valueOf(k));
-        break;
-        return localHashMap;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRedDotData, showPublicAccountRedDot: ");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject1).toString());
     }
+    Object localObject1 = null;
+    Object localObject2 = MiniAppUtils.getAppInterface();
+    if (localObject2 != null) {
+      localObject1 = ((AppletsFolderManager)((AppInterface)localObject2).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).g();
+    }
+    int j = 0;
+    while (j < localArrayList.size())
+    {
+      localObject2 = (MiniAppInfo)localArrayList.get(j);
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject2).appId)))
+      {
+        Object localObject3;
+        if ((localObject1 != null) && (((Set)localObject1).contains(((MiniAppInfo)localObject2).appId)))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("getRedDotData, unReceiveMsgAppids ignore appid: ");
+            ((StringBuilder)localObject3).append(((MiniAppInfo)localObject2).appId);
+            QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject3).toString());
+          }
+        }
+        else
+        {
+          localObject3 = (Integer)this.mPublicAccountRedDotMap.get(((MiniAppInfo)localObject2).appId);
+          Integer localInteger = (Integer)this.mPushRedDotMap.get(((MiniAppInfo)localObject2).appId);
+          if ((localObject3 != null) && (((Integer)localObject3).intValue() > 0) && (bool)) {
+            i = ((Integer)localObject3).intValue() + 0;
+          } else {
+            i = 0;
+          }
+          int k = i;
+          if (localInteger != null)
+          {
+            k = i;
+            if (localInteger.intValue() > 0) {
+              k = i + localInteger.intValue();
+            }
+          }
+          localHashMap.put(((MiniAppInfo)localObject2).appId, Integer.valueOf(k));
+        }
+      }
+      j += 1;
+    }
+    return localHashMap;
   }
   
   public long getRefreshInterval()
@@ -1639,57 +2001,58 @@ public class DesktopDataManager
   
   public int getTopMiniAppNumber()
   {
-    int j = 0;
-    int i = j;
-    if (this.desktopItemInfos != null)
+    Object localObject = this.desktopItemInfos;
+    int k = 0;
+    int i = 0;
+    int j = k;
+    if (localObject != null)
     {
-      i = j;
-      if (this.desktopItemInfos.size() > 0)
+      j = k;
+      if (((List)localObject).size() > 0)
       {
-        Iterator localIterator = this.desktopItemInfos.iterator();
-        i = 0;
-        if (localIterator.hasNext())
+        localObject = this.desktopItemInfos.iterator();
+        for (;;)
         {
-          DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-          if ((!(localDesktopItemInfo instanceof DesktopAppInfo)) || (localDesktopItemInfo.getModuleType() != 3)) {
-            break label109;
+          j = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-          i += 1;
+          DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
+          if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (localDesktopItemInfo.getModuleType() == 3)) {
+            i += 1;
+          }
         }
       }
     }
-    label109:
-    for (;;)
-    {
-      break;
-      QLog.d("DesktopDataManager", 1, "getTopMiniAppNumber : " + i);
-      return i;
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getTopMiniAppNumber : ");
+    ((StringBuilder)localObject).append(j);
+    QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+    return j;
   }
   
   public int getTopModuleInfoIndex()
   {
-    if (this.adapterItemInfos == null) {}
-    DesktopItemInfo localDesktopItemInfo;
-    int j;
-    do
+    Object localObject = this.adapterItemInfos;
+    if (localObject == null) {
+      return -1;
+    }
+    localObject = ((List)localObject).iterator();
+    int i = -1;
+    while (((Iterator)localObject).hasNext())
     {
-      do
+      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
+      int j = i + 1;
+      i = j;
+      if ((localDesktopItemInfo instanceof DesktopAppModuleInfo))
       {
-        Iterator localIterator;
-        while (!localIterator.hasNext())
-        {
-          return -1;
-          localIterator = this.adapterItemInfos.iterator();
-          i = -1;
-        }
-        localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-        j = i + 1;
         i = j;
-      } while (!(localDesktopItemInfo instanceof DesktopAppModuleInfo));
-      int i = j;
-    } while (((DesktopAppModuleInfo)localDesktopItemInfo).getModuleType() != 3);
-    return j;
+        if (((DesktopAppModuleInfo)localDesktopItemInfo).getModuleType() == 3) {
+          return j;
+        }
+      }
+    }
+    return -1;
   }
   
   public boolean hasPullSearchData()
@@ -1699,7 +2062,10 @@ public class DesktopDataManager
   
   public void initLocalCacheData()
   {
-    QLog.d("DesktopDataManager", 2, "initLocalCacheData, hasInitData: " + this.hasInitData);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initLocalCacheData, hasInitData: ");
+    localStringBuilder.append(this.hasInitData);
+    QLog.d("DesktopDataManager", 2, localStringBuilder.toString());
     if (!this.hasInitData)
     {
       ThreadManager.excute(this.initLocalDataRunnable, 32, null, false);
@@ -1711,56 +2077,56 @@ public class DesktopDataManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
-    MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, null, localArrayList, new ArrayList(), new ArrayList(), 0, new DesktopDataManager.5(this));
+    MiniAppCmdUtil.getInstance().getUserAppListV2(paramStCommonExt, GetAppListV2Scene.UN_KNOWN, null, localArrayList, new ArrayList(), new ArrayList(), 0, new DesktopDataManager.5(this));
   }
   
   public void loadMoreRecentIfNeed()
   {
-    int j = this.desktopItemInfos.size() - 1;
-    int i = 0;
-    if (j >= 0)
+    int i = this.desktopItemInfos.size() - 1;
+    int k;
+    for (int j = 0; i >= 0; j = k)
     {
-      if ((this.desktopItemInfos.get(j) == null) || (((DesktopItemInfo)this.desktopItemInfos.get(j)).getModuleType() != 1) || (!(this.desktopItemInfos.get(j) instanceof DesktopAppInfo))) {
-        break label168;
-      }
-      i += 1;
-    }
-    label168:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      if ((i > 0) && (i < 4) && (this.canLoadMoreRecent) && (!this.isLoadingMoreRecent))
+      k = j;
+      if (this.desktopItemInfos.get(i) != null)
       {
-        this.isLoadingMoreRecent = true;
-        QLog.i("DesktopDataManager", 1, "loadMoreRencentApp start");
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(Integer.valueOf(1));
-        MiniAppCmdUtil.getInstance().getUserAppListV2(this.mMoreRencentExtInfo, null, localArrayList, new ArrayList(), new ArrayList(), 0, new DesktopDataManager.12(this));
+        k = j;
+        if (((DesktopItemInfo)this.desktopItemInfos.get(i)).getModuleType() == 1)
+        {
+          k = j;
+          if ((this.desktopItemInfos.get(i) instanceof DesktopAppInfo)) {
+            k = j + 1;
+          }
+        }
       }
-      return;
+      i -= 1;
+    }
+    if ((j > 0) && (j < 4) && (this.canLoadMoreRecent) && (!this.isLoadingMoreRecent))
+    {
+      this.isLoadingMoreRecent = true;
+      QLog.i("DesktopDataManager", 1, "loadMoreRencentApp start");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Integer.valueOf(1));
+      MiniAppCmdUtil.getInstance().getUserAppListV2(this.mMoreRencentExtInfo, GetAppListV2Scene.RECENT, null, localArrayList, new ArrayList(), new ArrayList(), 0, new DesktopDataManager.14(this));
     }
   }
   
   public void miniAppAdReport()
   {
-    if (this.mAdReportMap.size() <= 0) {}
-    for (;;)
-    {
+    if (this.mAdReportMap.size() <= 0) {
       return;
-      Iterator localIterator = this.mAdReportMap.entrySet().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = this.mAdReportMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      DesktopAdData localDesktopAdData = (DesktopAdData)((Map.Entry)localIterator.next()).getValue();
+      if ((localDesktopAdData != null) && (!localDesktopAdData.hasReport))
       {
-        DesktopAdData localDesktopAdData = (DesktopAdData)((Map.Entry)localIterator.next()).getValue();
-        if ((localDesktopAdData != null) && (!localDesktopAdData.hasReport))
-        {
-          localDesktopAdData.hasReport = true;
-          if (localDesktopAdData.miniAppInfo != null) {
-            if (localDesktopAdData.miniAppInfo.tianshuAdId != 0) {
-              reportToTianshu(localDesktopAdData);
-            } else {
-              reportToGdt(localDesktopAdData);
-            }
+        localDesktopAdData.hasReport = true;
+        if (localDesktopAdData.miniAppInfo != null) {
+          if (localDesktopAdData.miniAppInfo.tianshuAdId != 0) {
+            reportToTianshu(localDesktopAdData);
+          } else {
+            reportToGdt(localDesktopAdData);
           }
         }
       }
@@ -1773,36 +2139,29 @@ public class DesktopDataManager
       return;
     }
     paramList = new ArrayList(paramList);
-    int k = -1;
     int i = 0;
-    int j;
-    for (;;)
+    while (i < this.desktopItemInfos.size())
     {
-      j = k;
-      if (i < this.desktopItemInfos.size())
-      {
-        if (((this.desktopItemInfos.get(i) instanceof DesktopAppModuleInfo)) && (((DesktopItemInfo)this.desktopItemInfos.get(i)).mModuleType == paramInt)) {
-          j = i;
-        }
-      }
-      else
-      {
-        if (j < 0) {
-          break;
-        }
-        i = this.desktopItemInfos.size() - 1;
-        while (i > j)
-        {
-          if ((this.desktopItemInfos.get(i) != null) && (((DesktopItemInfo)this.desktopItemInfos.get(i)).mModuleType == paramInt)) {
-            this.desktopItemInfos.remove(i);
-          }
-          i -= 1;
-        }
+      if (((this.desktopItemInfos.get(i) instanceof DesktopAppModuleInfo)) && (((DesktopItemInfo)this.desktopItemInfos.get(i)).mModuleType == paramInt)) {
+        break label77;
       }
       i += 1;
     }
-    this.desktopItemInfos.addAll(j + 1, paramList);
-    setDesktopAppPositionInfoToSp(this.desktopItemInfos);
+    i = -1;
+    label77:
+    if (i >= 0)
+    {
+      int j = this.desktopItemInfos.size() - 1;
+      while (j > i)
+      {
+        if ((this.desktopItemInfos.get(j) != null) && (((DesktopItemInfo)this.desktopItemInfos.get(j)).mModuleType == paramInt)) {
+          this.desktopItemInfos.remove(j);
+        }
+        j -= 1;
+      }
+      this.desktopItemInfos.addAll(i + 1, paramList);
+      setDesktopAppPositionInfoToSp(this.desktopItemInfos);
+    }
   }
   
   public void onDestroy()
@@ -1814,18 +2173,23 @@ public class DesktopDataManager
   
   public void onItemChanged(int paramInt, DesktopItemInfo paramDesktopItemInfo)
   {
-    if ((this.adapterItemInfos != null) && (paramInt >= 0) && (paramInt < this.adapterItemInfos.size()) && (((DesktopItemInfo)this.adapterItemInfos.get(paramInt) instanceof DesktopEmptyGuideInfo)))
+    List localList = this.adapterItemInfos;
+    if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size()) && (((DesktopItemInfo)this.adapterItemInfos.get(paramInt) instanceof DesktopEmptyGuideInfo)))
     {
       this.desktopItemInfos.add(paramDesktopItemInfo);
       setDesktopAppPositionInfoToSp(this.desktopItemInfos);
-    }
-    do
-    {
       return;
-      paramInt = mappingPosition(paramInt);
-    } while ((this.desktopItemInfos == null) || (paramInt < 0) || (paramInt >= this.desktopItemInfos.size()));
-    this.desktopItemInfos.set(paramInt, paramDesktopItemInfo);
-    setDesktopAppPositionInfoToSp(this.desktopItemInfos);
+    }
+    paramInt = mappingPosition(paramInt);
+    localList = this.desktopItemInfos;
+    if ((localList != null) && (paramInt >= 0))
+    {
+      if (paramInt >= localList.size()) {
+        return;
+      }
+      this.desktopItemInfos.set(paramInt, paramDesktopItemInfo);
+      setDesktopAppPositionInfoToSp(this.desktopItemInfos);
+    }
   }
   
   @Deprecated
@@ -1836,17 +2200,14 @@ public class DesktopDataManager
     }
     int i = mappingPosition(paramInt1);
     ArrayList localArrayList = new ArrayList();
-    if (paramInt2 == 1) {
+    if (paramInt2 == 1)
+    {
       localArrayList.add((DesktopItemInfo)this.desktopItemInfos.remove(i));
     }
-    for (;;)
+    else if ((paramInt2 > 1) && (i >= 0))
     {
-      checkData(true);
-      deleteEntity(localArrayList);
-      return;
-      if ((paramInt2 > 1) && (i >= 0) && (i + paramInt2 < this.desktopItemInfos.size()))
-      {
-        paramInt1 = i + paramInt2;
+      paramInt1 = paramInt2 + i;
+      if (paramInt1 < this.desktopItemInfos.size()) {
         while (paramInt1 >= i)
         {
           localArrayList.add((DesktopItemInfo)this.desktopItemInfos.remove(paramInt1));
@@ -1854,31 +2215,31 @@ public class DesktopDataManager
         }
       }
     }
+    checkData(true);
+    deleteEntity(localArrayList);
   }
   
   public void onItemDeleted(DesktopAppInfo paramDesktopAppInfo)
   {
-    if ((this.desktopItemInfos == null) || (paramDesktopAppInfo == null) || (paramDesktopAppInfo.mMiniAppInfo == null)) {
-      return;
-    }
-    int i = this.desktopItemInfos.size() - 1;
-    for (;;)
+    if ((this.desktopItemInfos != null) && (paramDesktopAppInfo != null))
     {
-      if (i >= 0)
-      {
-        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)this.desktopItemInfos.get(i);
-        if ((localDesktopItemInfo.getModuleType() == paramDesktopAppInfo.getModuleType()) && ((localDesktopItemInfo instanceof DesktopAppInfo)) && (paramDesktopAppInfo.mMiniAppInfo.equals(((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo))) {
-          this.desktopItemInfos.remove(i);
-        }
-      }
-      else
-      {
-        checkData(true);
-        deleteEntity(paramDesktopAppInfo.mMiniAppInfo);
-        deleteMiniAppCache(paramDesktopAppInfo.mMiniAppInfo);
+      if (paramDesktopAppInfo.mMiniAppInfo == null) {
         return;
       }
-      i -= 1;
+      int i = this.desktopItemInfos.size() - 1;
+      while (i >= 0)
+      {
+        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)this.desktopItemInfos.get(i);
+        if ((localDesktopItemInfo.getModuleType() == paramDesktopAppInfo.getModuleType()) && ((localDesktopItemInfo instanceof DesktopAppInfo)) && (paramDesktopAppInfo.mMiniAppInfo.equals(((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo)))
+        {
+          this.desktopItemInfos.remove(i);
+          break;
+        }
+        i -= 1;
+      }
+      checkData(true);
+      deleteEntity(paramDesktopAppInfo.mMiniAppInfo);
+      deleteMiniAppCache(paramDesktopAppInfo.mMiniAppInfo);
     }
   }
   
@@ -1905,8 +2266,10 @@ public class DesktopDataManager
     if (paramInt1 < paramInt3) {
       while (paramInt1 < paramInt3)
       {
-        Collections.swap(this.desktopItemInfos, paramInt1, paramInt1 + 1);
-        paramInt1 += 1;
+        List localList = this.desktopItemInfos;
+        paramInt2 = paramInt1 + 1;
+        Collections.swap(localList, paramInt1, paramInt2);
+        paramInt1 = paramInt2;
       }
     }
     while (paramInt2 > paramInt3)
@@ -1915,6 +2278,58 @@ public class DesktopDataManager
       paramInt2 -= 1;
     }
     setDesktopAppPositionInfoToSp(this.desktopItemInfos);
+  }
+  
+  public ArrayList<RecommendAppInfo> parseRecommendExposureFromSp()
+  {
+    SharedPreferences localSharedPreferences = getSharedPreferences("app_recommend_exposure");
+    localArrayList = new ArrayList();
+    if (localSharedPreferences != null) {
+      try
+      {
+        Object localObject1 = localSharedPreferences.getString("app_recommend_exposure", null);
+        if (localObject1 != null)
+        {
+          localObject1 = ((String)localObject1).split(";");
+          if ((localObject1 != null) && (localObject1.length > 0))
+          {
+            int i = 0;
+            while (i < localObject1.length)
+            {
+              Object localObject2 = localObject1[i];
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
+              {
+                localObject2 = ((String)localObject2).split("_");
+                if ((localObject2 != null) && (localObject2.length == 3)) {
+                  localArrayList.add(new RecommendAppInfo(localObject2[0], Integer.parseInt(localObject2[1]), Long.parseLong(localObject2[2])));
+                }
+              }
+              i += 1;
+            }
+          }
+        }
+        return localArrayList;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("DesktopDataManager-Recommend", 1, "parseRecommendExposureFromSp error.", localThrowable);
+        localSharedPreferences.edit().clear().apply();
+      }
+    }
+  }
+  
+  public void removeAppByModuleType(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeAppByModuleType appId: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", moduleType: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("DesktopDataManager", 2, localStringBuilder.toString());
+    runOnMainThread(new DesktopDataManager.27(this, paramInt));
   }
   
   public void removeRedDotData(String paramString)
@@ -1929,7 +2344,7 @@ public class DesktopDataManager
     ThreadManager.getUIHandler().post(paramRunnable);
   }
   
-  public void sendDropDownAppListRequestAsync()
+  public void sendDropDownAppListRequestAsync(GetAppListV2Scene paramGetAppListV2Scene)
   {
     Object localObject2 = this.mExtInfo;
     Object localObject1 = localObject2;
@@ -1940,12 +2355,12 @@ public class DesktopDataManager
     if (this.mRecommendExposureList.size() > 0) {
       ((ArrayList)localObject2).addAll(this.mRecommendExposureList);
     }
-    sendUserAppListRequestV2((COMM.StCommonExt)localObject1, (ArrayList)localObject2);
+    sendUserAppListRequestV2((COMM.StCommonExt)localObject1, (ArrayList)localObject2, paramGetAppListV2Scene);
   }
   
-  public void sendModuleRequest(ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2, ArrayList<String> paramArrayList)
+  public void sendModuleRequest(ArrayList<Integer> paramArrayList1, ArrayList<Integer> paramArrayList2, ArrayList<String> paramArrayList, GetAppListV2Scene paramGetAppListV2Scene)
   {
-    MiniAppCmdUtil.getInstance().getUserAppListV2(null, null, paramArrayList1, paramArrayList2, paramArrayList, 0, new DesktopDataManager.4(this));
+    MiniAppCmdUtil.getInstance().getUserAppListV2(null, paramGetAppListV2Scene, null, paramArrayList1, paramArrayList2, paramArrayList, 0, new DesktopDataManager.4(this));
   }
   
   public void setDataChangeListener(DesktopDataManager.DataChangeListener paramDataChangeListener)
@@ -1956,91 +2371,103 @@ public class DesktopDataManager
   public void setHongBaoResBuilder(DesktopDataManager.HongBaoResBuilder paramHongBaoResBuilder)
   {
     this.mHongBaoResBuilder = paramHongBaoResBuilder;
-    QLog.i("DesktopDataManager", 2, "setHongBaoResBuilder : " + paramHongBaoResBuilder);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setHongBaoResBuilder : ");
+    localStringBuilder.append(paramHongBaoResBuilder);
+    QLog.i("DesktopDataManager", 2, localStringBuilder.toString());
     MiniAppUtils.notifyUpdateHongBaoRes();
   }
   
   public void setMiniAppNoticeRedDotData(Map<String, Integer> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() <= 0))
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      QLog.d("DesktopDataManager", 1, "setMiniAppNoticeRedDotData, data is null or data size = 0");
-      clearNoticeRedDotData();
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        paramMap = (Map.Entry)localIterator.next();
+        String str = (String)paramMap.getKey();
+        Integer localInteger2 = (Integer)paramMap.getValue();
+        if ((!TextUtils.isEmpty(str)) && (localInteger2 != null) && (localInteger2.intValue() > 0))
+        {
+          this.mPublicAccountRedDotMap.put(str, localInteger2);
+          Integer localInteger1 = (Integer)this.mPushRedDotMap.get(str);
+          paramMap = localInteger1;
+          if (localInteger1 == null) {
+            paramMap = Integer.valueOf(0);
+          }
+          updateRedDotData(new MiniAppRedDotEntity(str, localInteger2.intValue(), paramMap.intValue()));
+        }
+      }
       MiniAppUtils.updateMiniAppList(101);
       return;
     }
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      paramMap = (Map.Entry)localIterator.next();
-      String str = (String)paramMap.getKey();
-      Integer localInteger2 = (Integer)paramMap.getValue();
-      if ((!TextUtils.isEmpty(str)) && (localInteger2 != null) && (localInteger2.intValue() > 0))
-      {
-        this.mPublicAccountRedDotMap.put(str, localInteger2);
-        Integer localInteger1 = (Integer)this.mPushRedDotMap.get(str);
-        paramMap = localInteger1;
-        if (localInteger1 == null) {
-          paramMap = Integer.valueOf(0);
-        }
-        updateRedDotData(new MiniAppRedDotEntity(str, localInteger2.intValue(), paramMap.intValue()));
-      }
-    }
+    QLog.d("DesktopDataManager", 1, "setMiniAppNoticeRedDotData, data is null or data size = 0");
+    clearNoticeRedDotData();
     MiniAppUtils.updateMiniAppList(101);
   }
   
   public void setMiniAppPushRedDotData(MiniAppRedDotEntity paramMiniAppRedDotEntity)
   {
-    QLog.d("DesktopDataManager", 1, "setMiniAppPushRedDotData, data: " + paramMiniAppRedDotEntity);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("setMiniAppPushRedDotData, data: ");
+    ((StringBuilder)localObject1).append(paramMiniAppRedDotEntity);
+    QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject1).toString());
     if ((paramMiniAppRedDotEntity != null) && (!TextUtils.isEmpty(paramMiniAppRedDotEntity.appId)))
     {
-      if ((this.desktopItemInfos != null) && (this.desktopItemInfos.size() != 0)) {
-        break label75;
+      localObject1 = this.desktopItemInfos;
+      if ((localObject1 != null) && (((List)localObject1).size() != 0))
+      {
+        localObject1 = this.desktopItemInfos.iterator();
+        int j;
+        Object localObject2;
+        do
+        {
+          do
+          {
+            boolean bool = ((Iterator)localObject1).hasNext();
+            j = 0;
+            if (!bool) {
+              break;
+            }
+            localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
+          } while ((!(localObject2 instanceof DesktopAppInfo)) || ((((DesktopItemInfo)localObject2).getModuleType() != 1) && (((DesktopItemInfo)localObject2).getModuleType() != 3) && (((DesktopItemInfo)localObject2).getModuleType() != 2)));
+          localObject2 = (DesktopAppInfo)localObject2;
+        } while ((((DesktopAppInfo)localObject2).mMiniAppInfo == null) || (!paramMiniAppRedDotEntity.appId.equals(((DesktopAppInfo)localObject2).mMiniAppInfo.appId)));
+        int i = 1;
+        break label188;
+        i = 0;
+        label188:
+        if (i == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("DesktopDataManager", 1, "setMiniAppPushRedDotData, current app is not opened");
+          }
+          return;
+        }
+        this.mPushRedDotMap.put(paramMiniAppRedDotEntity.appId, Integer.valueOf(paramMiniAppRedDotEntity.wnsPushRedDotNum));
+        localObject1 = (Integer)this.mPublicAccountRedDotMap.get(paramMiniAppRedDotEntity.appId);
+        i = j;
+        if (localObject1 != null)
+        {
+          i = j;
+          if (((Integer)localObject1).intValue() > 0) {
+            i = ((Integer)localObject1).intValue();
+          }
+        }
+        updateRedDotData(new MiniAppRedDotEntity(paramMiniAppRedDotEntity.appId, i, paramMiniAppRedDotEntity.wnsPushRedDotNum));
+        MiniAppUtils.updateMiniAppList(101);
+        return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("DesktopDataManager", 1, "setMiniAppPushRedDotData, current app is not opened");
       }
     }
-    return;
-    label75:
-    Object localObject1 = this.desktopItemInfos.iterator();
-    Object localObject2;
-    do
-    {
-      do
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
-      } while ((!(localObject2 instanceof DesktopAppInfo)) || ((((DesktopItemInfo)localObject2).getModuleType() != 1) && (((DesktopItemInfo)localObject2).getModuleType() != 3) && (((DesktopItemInfo)localObject2).getModuleType() != 2)));
-      localObject2 = (DesktopAppInfo)localObject2;
-    } while ((((DesktopAppInfo)localObject2).mMiniAppInfo == null) || (!paramMiniAppRedDotEntity.appId.equals(((DesktopAppInfo)localObject2).mMiniAppInfo.appId)));
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("DesktopDataManager", 1, "setMiniAppPushRedDotData, current app is not opened");
-        return;
-      }
-      this.mPushRedDotMap.put(paramMiniAppRedDotEntity.appId, Integer.valueOf(paramMiniAppRedDotEntity.wnsPushRedDotNum));
-      localObject1 = (Integer)this.mPublicAccountRedDotMap.get(paramMiniAppRedDotEntity.appId);
-      if ((localObject1 != null) && (((Integer)localObject1).intValue() > 0)) {}
-      for (i = ((Integer)localObject1).intValue();; i = 0)
-      {
-        updateRedDotData(new MiniAppRedDotEntity(paramMiniAppRedDotEntity.appId, i, paramMiniAppRedDotEntity.wnsPushRedDotNum));
-        MiniAppUtils.updateMiniAppList(101);
-        return;
-      }
-    }
   }
   
-  public void updateData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo)
+  public void updateData(List<INTERFACE.StUserAppInfo> paramList, List<INTERFACE.StModuleInfo> paramList1, INTERFACE.StSearchModuleInfo paramStSearchModuleInfo, INTERFACE.StOperationApp paramStOperationApp)
   {
-    convertData(paramList, paramList1, paramStSearchModuleInfo);
+    convertData(paramList, paramList1, paramStSearchModuleInfo, paramStOperationApp);
   }
   
   public void updateDesktopData(List<DesktopItemInfo> paramList, boolean paramBoolean)
@@ -2048,8 +2475,12 @@ public class DesktopDataManager
     if (paramList != null)
     {
       this.desktopItemInfos = new ArrayList(paramList);
-      if ((paramBoolean) && (this.mDataChangeListener != null)) {
-        this.mDataChangeListener.onDataChanged();
+      if (paramBoolean)
+      {
+        paramList = this.mDataChangeListener;
+        if (paramList != null) {
+          paramList.onDataChanged();
+        }
       }
     }
   }
@@ -2061,24 +2492,37 @@ public class DesktopDataManager
     {
       paramJSONObject.optString("appId");
       addAppToMyApp(MiniAppInfo.createMiniAppInfo(paramJSONObject));
-    }
-    do
-    {
       return;
-      if ("deleteApp".equals(str))
-      {
-        deleteApp(paramJSONObject.optString("appId"));
-        return;
-      }
-      if ("exchangeAppOrder".equals(str))
-      {
-        str = paramJSONObject.optString("appId");
-        int i = paramJSONObject.optInt("new_order");
-        changeMyAppOrder(str, paramJSONObject.optInt("old_order"), i);
-        return;
-      }
-    } while (!"removeAppFromMine".equals(str));
-    removeAppFromMine(paramJSONObject.optString("appId"));
+    }
+    if ("deleteApp".equals(str))
+    {
+      deleteApp(paramJSONObject.optString("appId"));
+      return;
+    }
+    if ("exchangeAppOrder".equals(str))
+    {
+      str = paramJSONObject.optString("appId");
+      int i = paramJSONObject.optInt("new_order");
+      changeMyAppOrder(str, paramJSONObject.optInt("old_order"), i);
+      return;
+    }
+    if ("removeAppFromMine".equals(str)) {
+      removeAppFromMine(paramJSONObject.optString("appId"));
+    }
+  }
+  
+  public void updateMiniHBBanner(HBEntryBannerData paramHBEntryBannerData)
+  {
+    this.mHBEntryBannerData = paramHBEntryBannerData;
+    paramHBEntryBannerData = this.mHBEntryDataAddedState;
+    boolean bool;
+    if (this.mHBEntryBannerData != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramHBEntryBannerData.set(bool);
+    runOnMainThread(new DesktopDataManager.36(this));
   }
   
   public void updateModuleInfo(INTERFACE.StModuleInfo paramStModuleInfo)
@@ -2088,17 +2532,18 @@ public class DesktopDataManager
   
   public void updateModuleMyApp(MiniAppInfo paramMiniAppInfo)
   {
-    runOnMainThread(new DesktopDataManager.18(this, paramMiniAppInfo));
+    runOnMainThread(new DesktopDataManager.20(this, paramMiniAppInfo));
   }
   
   public void updateRecommendExposureNumber(String paramString)
   {
-    if ((this.mRecommendExposureList != null) && (this.mRecommendExposureList.size() > 0))
+    Object localObject = this.mRecommendExposureList;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.mRecommendExposureList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mRecommendExposureList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)localIterator.next();
+        RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)((Iterator)localObject).next();
         if ((localRecommendAppInfo != null) && (localRecommendAppInfo.appId != null) && (localRecommendAppInfo.appId.equals(paramString))) {
           localRecommendAppInfo.exposuredNum += 1;
         }
@@ -2109,12 +2554,12 @@ public class DesktopDataManager
   
   public void useLocalDataIfRequestFailed()
   {
-    ThreadManager.excute(new DesktopDataManager.14(this), 32, null, true);
+    ThreadManager.excute(new DesktopDataManager.16(this), 32, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
 package com.tencent.mobileqq.app;
 
-import azqs;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class NearbyFlowerManager$1
+final class NearbyFlowerManager$1
   implements Runnable
 {
-  public NearbyFlowerManager$1(QQAppInterface paramQQAppInterface, String paramString) {}
+  NearbyFlowerManager$1(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface == null) {
       return;
     }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 1, 0, "", "", "", "");
+    String str = this.b;
+    ReportController.b(localQQAppInterface, "CliOper", "", "", str, str, 0, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyFlowerManager.1
  * JD-Core Version:    0.7.0.1
  */

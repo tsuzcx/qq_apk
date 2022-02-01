@@ -1,16 +1,15 @@
 package com.google.android.gms.dynamic;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"NewApi"})
 public final class FragmentWrapper
   extends IFragmentWrapper.Stub
 {
+  private byte _hellAccFlag_;
   private Fragment zzabm;
   
   private FragmentWrapper(Fragment paramFragment)
@@ -20,222 +19,226 @@ public final class FragmentWrapper
   
   public static FragmentWrapper wrap(Fragment paramFragment)
   {
-    AppMethodBeat.i(90342);
+    AppMethodBeat.i(5363);
     if (paramFragment != null)
     {
       paramFragment = new FragmentWrapper(paramFragment);
-      AppMethodBeat.o(90342);
+      AppMethodBeat.o(5363);
       return paramFragment;
     }
-    AppMethodBeat.o(90342);
+    AppMethodBeat.o(5363);
     return null;
   }
   
   public final IObjectWrapper getActivity()
   {
-    AppMethodBeat.i(90343);
+    AppMethodBeat.i(5364);
     IObjectWrapper localIObjectWrapper = ObjectWrapper.wrap(this.zzabm.getActivity());
-    AppMethodBeat.o(90343);
+    AppMethodBeat.o(5364);
     return localIObjectWrapper;
   }
   
   public final Bundle getArguments()
   {
-    AppMethodBeat.i(90344);
+    AppMethodBeat.i(5365);
     Bundle localBundle = this.zzabm.getArguments();
-    AppMethodBeat.o(90344);
+    AppMethodBeat.o(5365);
     return localBundle;
   }
   
   public final int getId()
   {
-    AppMethodBeat.i(90345);
+    AppMethodBeat.i(5366);
     int i = this.zzabm.getId();
-    AppMethodBeat.o(90345);
+    AppMethodBeat.o(5366);
     return i;
   }
   
   public final IFragmentWrapper getParentFragment()
   {
-    AppMethodBeat.i(90346);
+    AppMethodBeat.i(5367);
     FragmentWrapper localFragmentWrapper = wrap(this.zzabm.getParentFragment());
-    AppMethodBeat.o(90346);
+    AppMethodBeat.o(5367);
     return localFragmentWrapper;
   }
   
   public final IObjectWrapper getResources()
   {
-    AppMethodBeat.i(90347);
+    AppMethodBeat.i(5368);
     IObjectWrapper localIObjectWrapper = ObjectWrapper.wrap(this.zzabm.getResources());
-    AppMethodBeat.o(90347);
+    AppMethodBeat.o(5368);
     return localIObjectWrapper;
   }
   
   public final boolean getRetainInstance()
   {
-    AppMethodBeat.i(90348);
+    AppMethodBeat.i(5369);
     boolean bool = this.zzabm.getRetainInstance();
-    AppMethodBeat.o(90348);
+    AppMethodBeat.o(5369);
     return bool;
   }
   
   public final String getTag()
   {
-    AppMethodBeat.i(90349);
+    AppMethodBeat.i(5370);
     String str = this.zzabm.getTag();
-    AppMethodBeat.o(90349);
+    AppMethodBeat.o(5370);
     return str;
   }
   
   public final IFragmentWrapper getTargetFragment()
   {
-    AppMethodBeat.i(90350);
+    AppMethodBeat.i(5371);
     FragmentWrapper localFragmentWrapper = wrap(this.zzabm.getTargetFragment());
-    AppMethodBeat.o(90350);
+    AppMethodBeat.o(5371);
     return localFragmentWrapper;
   }
   
   public final int getTargetRequestCode()
   {
-    AppMethodBeat.i(90351);
+    AppMethodBeat.i(5372);
     int i = this.zzabm.getTargetRequestCode();
-    AppMethodBeat.o(90351);
+    AppMethodBeat.o(5372);
     return i;
   }
   
   public final boolean getUserVisibleHint()
   {
-    AppMethodBeat.i(90352);
+    AppMethodBeat.i(5373);
     boolean bool = this.zzabm.getUserVisibleHint();
-    AppMethodBeat.o(90352);
+    AppMethodBeat.o(5373);
     return bool;
   }
   
   public final IObjectWrapper getView()
   {
-    AppMethodBeat.i(90353);
+    AppMethodBeat.i(5374);
     IObjectWrapper localIObjectWrapper = ObjectWrapper.wrap(this.zzabm.getView());
-    AppMethodBeat.o(90353);
+    AppMethodBeat.o(5374);
     return localIObjectWrapper;
   }
   
   public final boolean isAdded()
   {
-    AppMethodBeat.i(90354);
+    AppMethodBeat.i(5375);
     boolean bool = this.zzabm.isAdded();
-    AppMethodBeat.o(90354);
+    AppMethodBeat.o(5375);
     return bool;
   }
   
   public final boolean isDetached()
   {
-    AppMethodBeat.i(90355);
+    AppMethodBeat.i(5376);
     boolean bool = this.zzabm.isDetached();
-    AppMethodBeat.o(90355);
+    AppMethodBeat.o(5376);
     return bool;
   }
   
   public final boolean isHidden()
   {
-    AppMethodBeat.i(90356);
+    AppMethodBeat.i(5377);
     boolean bool = this.zzabm.isHidden();
-    AppMethodBeat.o(90356);
+    AppMethodBeat.o(5377);
     return bool;
   }
   
   public final boolean isInLayout()
   {
-    AppMethodBeat.i(90357);
+    AppMethodBeat.i(5378);
     boolean bool = this.zzabm.isInLayout();
-    AppMethodBeat.o(90357);
+    AppMethodBeat.o(5378);
     return bool;
   }
   
   public final boolean isRemoving()
   {
-    AppMethodBeat.i(90358);
+    AppMethodBeat.i(5379);
     boolean bool = this.zzabm.isRemoving();
-    AppMethodBeat.o(90358);
+    AppMethodBeat.o(5379);
     return bool;
   }
   
   public final boolean isResumed()
   {
-    AppMethodBeat.i(90359);
+    AppMethodBeat.i(5380);
     boolean bool = this.zzabm.isResumed();
-    AppMethodBeat.o(90359);
+    AppMethodBeat.o(5380);
     return bool;
   }
   
   public final boolean isVisible()
   {
-    AppMethodBeat.i(90360);
+    AppMethodBeat.i(5381);
     boolean bool = this.zzabm.isVisible();
-    AppMethodBeat.o(90360);
+    AppMethodBeat.o(5381);
     return bool;
   }
   
   public final void registerForContextMenu(IObjectWrapper paramIObjectWrapper)
   {
-    AppMethodBeat.i(90361);
+    AppMethodBeat.i(5382);
     paramIObjectWrapper = (View)ObjectWrapper.unwrap(paramIObjectWrapper);
     this.zzabm.registerForContextMenu(paramIObjectWrapper);
-    AppMethodBeat.o(90361);
+    AppMethodBeat.o(5382);
   }
   
   public final void setHasOptionsMenu(boolean paramBoolean)
   {
-    AppMethodBeat.i(90362);
+    AppMethodBeat.i(5383);
     this.zzabm.setHasOptionsMenu(paramBoolean);
-    AppMethodBeat.o(90362);
+    AppMethodBeat.o(5383);
   }
   
   public final void setMenuVisibility(boolean paramBoolean)
   {
-    AppMethodBeat.i(90363);
+    AppMethodBeat.i(5384);
     this.zzabm.setMenuVisibility(paramBoolean);
-    AppMethodBeat.o(90363);
+    AppMethodBeat.o(5384);
   }
   
   public final void setRetainInstance(boolean paramBoolean)
   {
-    AppMethodBeat.i(90364);
+    AppMethodBeat.i(5385);
     this.zzabm.setRetainInstance(paramBoolean);
-    AppMethodBeat.o(90364);
+    AppMethodBeat.o(5385);
   }
   
   public final void setUserVisibleHint(boolean paramBoolean)
   {
-    AppMethodBeat.i(90365);
+    AppMethodBeat.i(5386);
     this.zzabm.setUserVisibleHint(paramBoolean);
-    AppMethodBeat.o(90365);
+    AppMethodBeat.o(5386);
   }
   
   public final void startActivity(Intent paramIntent)
   {
-    AppMethodBeat.i(90366);
-    this.zzabm.startActivity(paramIntent);
-    AppMethodBeat.o(90366);
+    AppMethodBeat.i(5387);
+    Fragment localFragment = this.zzabm;
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localFragment, paramIntent.aYi(), "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localFragment, "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(5387);
   }
   
   public final void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(90367);
+    AppMethodBeat.i(5388);
     this.zzabm.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(90367);
+    AppMethodBeat.o(5388);
   }
   
   public final void unregisterForContextMenu(IObjectWrapper paramIObjectWrapper)
   {
-    AppMethodBeat.i(90368);
+    AppMethodBeat.i(5389);
     paramIObjectWrapper = (View)ObjectWrapper.unwrap(paramIObjectWrapper);
     this.zzabm.unregisterForContextMenu(paramIObjectWrapper);
-    AppMethodBeat.o(90368);
+    AppMethodBeat.o(5389);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.FragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

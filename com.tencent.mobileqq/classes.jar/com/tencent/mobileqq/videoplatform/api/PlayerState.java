@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.videoplatform.api;
 
+import java.util.HashMap;
+
 public class PlayerState
 {
+  public static final HashMap<Integer, String> PLAYER_SATE_MAP = new HashMap();
   public static final int STATE_BUFFERING = 5;
   public static final int STATE_COMPLETE = 8;
   public static final int STATE_ERROR = 7;
@@ -13,37 +16,33 @@ public class PlayerState
   public static final int STATE_SDK_INITED = 2;
   public static final int STATE_SDK_INITING = 1;
   
+  static
+  {
+    PLAYER_SATE_MAP.put(Integer.valueOf(0), "STATE_IDLE");
+    PLAYER_SATE_MAP.put(Integer.valueOf(1), "STATE_SDK_INITING");
+    PLAYER_SATE_MAP.put(Integer.valueOf(2), "STATE_SDK_INITED");
+    PLAYER_SATE_MAP.put(Integer.valueOf(3), "STATE_PREPARING");
+    PLAYER_SATE_MAP.put(Integer.valueOf(4), "STATE_PLAYING");
+    PLAYER_SATE_MAP.put(Integer.valueOf(5), "STATE_BUFFERING");
+    PLAYER_SATE_MAP.put(Integer.valueOf(6), "STATE_PAUSE");
+    PLAYER_SATE_MAP.put(Integer.valueOf(7), "STATE_ERROR");
+    PLAYER_SATE_MAP.put(Integer.valueOf(8), "STATE_COMPLETE");
+    PLAYER_SATE_MAP.put(Integer.valueOf(9), "STATE_RELEASED");
+  }
+  
   public static String getStateStr(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "STATE_UNKNOW";
-    case 0: 
-      return "STATE_IDLE";
-    case 1: 
-      return "STATE_SDK_INITING";
-    case 2: 
-      return "STATE_SDK_INITED";
-    case 3: 
-      return "STATE_PREPARING";
-    case 4: 
-      return "STATE_PLAYING";
-    case 5: 
-      return "STATE_BUFFERING";
-    case 6: 
-      return "STATE_PAUSE";
-    case 7: 
-      return "STATE_ERROR";
-    case 8: 
-      return "STATE_COMPLETE";
+    String str2 = (String)PLAYER_SATE_MAP.get(Integer.valueOf(paramInt));
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return "STATE_RELEASED";
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.api.PlayerState
  * JD-Core Version:    0.7.0.1
  */

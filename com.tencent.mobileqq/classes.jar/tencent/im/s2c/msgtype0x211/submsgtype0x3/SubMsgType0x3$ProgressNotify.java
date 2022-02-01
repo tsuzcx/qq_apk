@@ -22,13 +22,14 @@ public final class SubMsgType0x3$ProgressNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_sessionid", "bytes_uuid", "uint32_progress", "uint32_average_speed" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ProgressNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_sessionid", "bytes_uuid", "uint32_progress", "uint32_average_speed" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger }, ProgressNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.ProgressNotify
  * JD-Core Version:    0.7.0.1
  */

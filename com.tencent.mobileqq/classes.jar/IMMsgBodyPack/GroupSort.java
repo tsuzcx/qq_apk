@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class GroupSort
   extends JceStruct
 {
-  public long dwGroupID;
-  public long dwSortID;
+  public long dwGroupID = 0L;
+  public long dwSortID = 0L;
   
   public GroupSort() {}
   
@@ -32,7 +32,7 @@ public final class GroupSort
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.GroupSort
  * JD-Core Version:    0.7.0.1
  */

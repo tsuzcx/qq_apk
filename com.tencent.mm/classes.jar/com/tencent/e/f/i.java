@@ -8,21 +8,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public static a cc(Context paramContext, String paramString)
+  public static a jdMethod_do(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(114621);
+    AppMethodBeat.i(138484);
     a locala = new a();
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
-      locala.bYA = paramString;
+      locala.pkgName = paramString;
       locala.versionName = paramContext.versionName;
       locala.versionCode = paramContext.versionCode;
       label45:
-      AppMethodBeat.o(114621);
+      AppMethodBeat.o(138484);
       return locala;
     }
-    catch (Throwable paramContext)
+    finally
     {
       break label45;
     }
@@ -30,7 +30,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.e.f.i
  * JD-Core Version:    0.7.0.1
  */

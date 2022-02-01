@@ -19,7 +19,7 @@ public class tlv_t192
   {
     this._url = new byte[this._body_len];
     System.arraycopy(this._buf, this._head_len, this._url, 0, this._body_len);
-    return Boolean.valueOf(true);
+    return Boolean.TRUE;
   }
 }
 

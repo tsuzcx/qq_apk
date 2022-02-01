@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/cck" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/kq_" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:scaleType="centerCrop" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:layout_gravity="center" android:id="@id/ksh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/duf" />
+</FrameLayout>

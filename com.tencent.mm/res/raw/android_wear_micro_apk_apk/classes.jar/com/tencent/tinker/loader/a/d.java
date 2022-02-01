@@ -11,12 +11,12 @@ import java.nio.channels.FileLock;
 public final class d
   implements Closeable
 {
-  private final FileOutputStream ame;
-  private final FileLock amf;
+  private final FileOutputStream apE;
+  private final FileLock apF;
   
   private d(File paramFile)
   {
-    this.ame = new FileOutputStream(paramFile);
+    this.apE = new FileOutputStream(paramFile);
     Throwable localThrowable = null;
     Object localObject1 = null;
     int i = 0;
@@ -32,7 +32,7 @@ public final class d
       }
       try
       {
-        localObject1 = this.ame.getChannel().lock();
+        localObject1 = this.apE.getChannel().lock();
         if (localObject1 != null) {}
         for (i = 1; i != 0; i = 0)
         {
@@ -54,7 +54,7 @@ public final class d
       }
     }
     label141:
-    this.amf = localObject2;
+    this.apF = localObject2;
   }
   
   public static d i(File paramFile)
@@ -66,15 +66,15 @@ public final class d
   {
     try
     {
-      if (this.amf != null) {
-        this.amf.release();
+      if (this.apF != null) {
+        this.apF.release();
       }
       return;
     }
     finally
     {
-      if (this.ame != null) {
-        this.ame.close();
+      if (this.apE != null) {
+        this.apE.close();
       }
     }
   }

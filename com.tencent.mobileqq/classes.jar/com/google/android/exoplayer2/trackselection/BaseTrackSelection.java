@@ -20,29 +20,37 @@ public abstract class BaseTrackSelection
   
   public BaseTrackSelection(TrackGroup paramTrackGroup, int... paramVarArgs)
   {
-    if (paramVarArgs.length > 0) {}
-    for (boolean bool = true;; bool = false)
+    int i = paramVarArgs.length;
+    int j = 0;
+    boolean bool;
+    if (i > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkState(bool);
+    this.group = ((TrackGroup)Assertions.checkNotNull(paramTrackGroup));
+    this.length = paramVarArgs.length;
+    this.formats = new Format[this.length];
+    i = 0;
+    while (i < paramVarArgs.length)
     {
-      Assertions.checkState(bool);
-      this.group = ((TrackGroup)Assertions.checkNotNull(paramTrackGroup));
-      this.length = paramVarArgs.length;
-      this.formats = new Format[this.length];
-      i = 0;
-      while (i < paramVarArgs.length)
-      {
-        this.formats[i] = paramTrackGroup.getFormat(paramVarArgs[i]);
-        i += 1;
-      }
+      this.formats[i] = paramTrackGroup.getFormat(paramVarArgs[i]);
+      i += 1;
     }
     Arrays.sort(this.formats, new BaseTrackSelection.DecreasingBandwidthComparator(null));
     this.tracks = new int[this.length];
-    int i = j;
-    while (i < this.length)
+    i = j;
+    for (;;)
     {
+      j = this.length;
+      if (i >= j) {
+        break;
+      }
       this.tracks[i] = paramTrackGroup.indexOf(this.formats[i]);
       i += 1;
     }
-    this.blacklistUntilTimes = new long[this.length];
+    this.blacklistUntilTimes = new long[j];
   }
   
   public final boolean blacklist(int paramInt, long paramLong)
@@ -50,19 +58,20 @@ public abstract class BaseTrackSelection
     long l = SystemClock.elapsedRealtime();
     boolean bool = isBlacklisted(paramInt, l);
     int i = 0;
-    if ((i < this.length) && (!bool))
+    while ((i < this.length) && (!bool))
     {
-      if ((i != paramInt) && (!isBlacklisted(i, l))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
+      if ((i != paramInt) && (!isBlacklisted(i, l))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      i += 1;
     }
     if (!bool) {
       return false;
     }
-    this.blacklistUntilTimes[paramInt] = Math.max(this.blacklistUntilTimes[paramInt], l + paramLong);
+    long[] arrayOfLong = this.blacklistUntilTimes;
+    arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], l + paramLong);
     return true;
   }
   
@@ -72,15 +81,17 @@ public abstract class BaseTrackSelection
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (BaseTrackSelection)paramObject;
-    } while ((this.group == paramObject.group) && (Arrays.equals(this.tracks, paramObject.tracks)));
+      return (this.group == paramObject.group) && (Arrays.equals(this.tracks, paramObject.tracks));
+    }
     return false;
   }
   
@@ -162,7 +173,7 @@ public abstract class BaseTrackSelection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.BaseTrackSelection
  * JD-Core Version:    0.7.0.1
  */

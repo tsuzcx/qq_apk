@@ -33,12 +33,20 @@ public class BitmapError
   
   public String toString()
   {
-    return "BimapError { reason = " + this.reason + ", source = " + this.source + ", detail = " + (String)this.detail.orElse("(no detail)") + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BimapError { reason = ");
+    localStringBuilder.append(this.reason);
+    localStringBuilder.append(", source = ");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(", detail = ");
+    localStringBuilder.append((String)this.detail.orElse("(no detail)"));
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.BitmapError
  * JD-Core Version:    0.7.0.1
  */

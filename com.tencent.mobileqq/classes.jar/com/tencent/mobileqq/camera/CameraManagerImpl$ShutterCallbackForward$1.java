@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.camera;
 
-import aoar;
-import aoba;
-
-public class CameraManagerImpl$ShutterCallbackForward$1
+class CameraManagerImpl$ShutterCallbackForward$1
   implements Runnable
 {
-  public CameraManagerImpl$ShutterCallbackForward$1(aoba paramaoba) {}
+  CameraManagerImpl$ShutterCallbackForward$1(CameraManagerImpl.ShutterCallbackForward paramShutterCallbackForward) {}
   
   public void run()
   {
-    aoba.a(this.this$0).a(aoba.a(this.this$0));
+    CameraManagerImpl.ShutterCallbackForward.b(this.this$0).a(CameraManagerImpl.ShutterCallbackForward.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1
  * JD-Core Version:    0.7.0.1
  */

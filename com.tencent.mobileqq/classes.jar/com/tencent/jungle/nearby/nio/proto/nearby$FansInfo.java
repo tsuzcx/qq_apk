@@ -18,14 +18,15 @@ public final class nearby$FansInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_fans_num", "bytes_fans_url", "uint32_follows_num", "bytes_follows_url" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, FansInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_fans_num", "bytes_fans_url", "uint32_follows_num", "bytes_follows_url" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, FansInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jungle.nearby.nio.proto.nearby.FansInfo
  * JD-Core Version:    0.7.0.1
  */

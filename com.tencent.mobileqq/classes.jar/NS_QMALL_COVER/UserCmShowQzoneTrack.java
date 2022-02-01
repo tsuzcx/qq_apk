@@ -10,8 +10,8 @@ public final class UserCmShowQzoneTrack
 {
   static ArrayList<CmShowQzoneTrack> cache_vecQzoneTrack = new ArrayList();
   static ArrayList<CmShowQzoneTrack> cache_vecQzoneTrack3D;
-  public ArrayList<CmShowQzoneTrack> vecQzoneTrack;
-  public ArrayList<CmShowQzoneTrack> vecQzoneTrack3D;
+  public ArrayList<CmShowQzoneTrack> vecQzoneTrack = null;
+  public ArrayList<CmShowQzoneTrack> vecQzoneTrack3D = null;
   
   static
   {
@@ -38,17 +38,19 @@ public final class UserCmShowQzoneTrack
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecQzoneTrack != null) {
-      paramJceOutputStream.write(this.vecQzoneTrack, 0);
+    ArrayList localArrayList = this.vecQzoneTrack;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
-    if (this.vecQzoneTrack3D != null) {
-      paramJceOutputStream.write(this.vecQzoneTrack3D, 1);
+    localArrayList = this.vecQzoneTrack3D;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.UserCmShowQzoneTrack
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,14 @@ public final class ew
     }
     Type[] arrayOfType = eh.b((Type)localObject, eh.b((Type)localObject));
     localObject = arrayOfType[0];
-    if ((localObject == Boolean.TYPE) || (localObject == Boolean.class)) {}
-    for (localObject = fc.f;; localObject = paramdn.a(fd.a((Type)localObject)))
-    {
-      ee localee = paramdn.a(fd.a(arrayOfType[1]));
-      paramfd = this.b.a(paramfd);
-      return new ew.a(this, paramdn, arrayOfType[0], (ee)localObject, arrayOfType[1], localee, paramfd);
+    if ((localObject != Boolean.TYPE) && (localObject != Boolean.class)) {
+      localObject = paramdn.a(fd.a((Type)localObject));
+    } else {
+      localObject = fc.f;
     }
+    ee localee = paramdn.a(fd.a(arrayOfType[1]));
+    paramfd = this.b.a(paramfd);
+    return new ew.a(this, paramdn, arrayOfType[0], (ee)localObject, arrayOfType[1], localee, paramfd);
   }
 }
 

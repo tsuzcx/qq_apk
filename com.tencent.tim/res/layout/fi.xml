@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/fgu" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:text="@null" android:maxLines="2" android:layout_weight="1.0" />
+    <com.tencent.image.URLImageView android:id="@id/fgt" android:layout_width="58.0dip" android:layout_height="58.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="16.0dip" android:scaleType="fitXY" />
+</LinearLayout>

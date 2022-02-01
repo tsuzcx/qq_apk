@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class qq_ad$QQAdReport
   extends MessageMicro<QQAdReport>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 80, 88, 96, 106, 112, 122, 130, 138, 146, 152, 160, 168, 176, 184, 192, 202, 210, 218, 224, 232, 240 }, new String[] { "type", "view_id", "trace_id", "act_time", "sns_uid", "resolution", "referer", "user_agent", "q_user_agent", "feeds_index", "is_impression", "is_installed", "feeds_video_attachment", "platform_id", "imei", "click_source", "antispam_info", "hardware_addr", "stay_time", "net_type", "client_id", "action_id", "msg_floor", "puin", "version", "ad_id", "msgid", "get_back", "ad_puin", "source" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), "", "", "", "", "", Integer.valueOf(0), Boolean.valueOf(true), Boolean.valueOf(false), "", Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", "", Boolean.valueOf(false), Long.valueOf(0L), Integer.valueOf(0) }, QQAdReport.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field act_time = PBField.initUInt32(0);
   public final PBUInt32Field action_id = PBField.initUInt32(0);
   public final PBStringField ad_id = PBField.initString("");
@@ -43,10 +43,17 @@ public final class qq_ad$QQAdReport
   public final PBStringField user_agent = PBField.initString("");
   public final PBStringField version = PBField.initString("");
   public final PBStringField view_id = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 80, 88, 96, 106, 112, 122, 130, 138, 146, 152, 160, 168, 176, 184, 192, 202, 210, 218, 224, 232, 240 }, new String[] { "type", "view_id", "trace_id", "act_time", "sns_uid", "resolution", "referer", "user_agent", "q_user_agent", "feeds_index", "is_impression", "is_installed", "feeds_video_attachment", "platform_id", "imei", "click_source", "antispam_info", "hardware_addr", "stay_time", "net_type", "client_id", "action_id", "msg_floor", "puin", "version", "ad_id", "msgid", "get_back", "ad_puin", "source" }, new Object[] { localInteger, "", "", localInteger, "", "", "", "", "", localInteger, Boolean.valueOf(true), localBoolean, "", localInteger, "", "", "", "", localInteger, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L), "", "", "", localBoolean, Long.valueOf(0L), localInteger }, QQAdReport.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qq_ad.QQAdReport
  * JD-Core Version:    0.7.0.1
  */

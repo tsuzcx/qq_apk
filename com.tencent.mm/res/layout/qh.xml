@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/o3" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/f1">
-        <TextView android:id="@id/oa" android:paddingLeft="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eq" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ln" />
-    </RelativeLayout>
-    <ImageView android:id="@id/o9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/w1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ProgressBar android:id="@id/b3b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a0t" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l4s" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:src="@raw/chatting_fast_entrance_video" android:contentDescription="@string/a0t" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m9" android:text="@string/yr" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/zy" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m9">
+        <ImageView android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:src="@raw/chatting_fast_entrance_voice" android:contentDescription="@string/a0t" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m9" android:text="@string/yt" />
+    </LinearLayout>
+</LinearLayout>

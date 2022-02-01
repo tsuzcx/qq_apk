@@ -6,13 +6,13 @@ import android.widget.TextView;
 
 final class d$b
 {
-  TextView pvK;
-  CheckBox pvL;
-  RadioButton pvM;
+  TextView ElR;
+  CheckBox MSj;
+  RadioButton MSk;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.b
  * JD-Core Version:    0.7.0.1
  */

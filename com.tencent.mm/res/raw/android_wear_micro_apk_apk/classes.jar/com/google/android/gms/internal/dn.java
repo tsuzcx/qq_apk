@@ -2,23 +2,23 @@ package com.google.android.gms.internal;
 
 public final class dn
 {
-  private int Rh;
-  private int Ri;
-  private int Rj;
-  private int Rk;
-  private int Rl;
-  private int Rm = 2147483647;
-  private int Rn;
-  private int Ro = 64;
-  private int Rp = 67108864;
+  private int SW;
+  private int SX;
+  private int SY;
+  private int SZ;
+  private int Ta;
+  private int Tb = 2147483647;
+  private int Tc;
+  private int Td = 64;
+  private int Te = 67108864;
   private final byte[] buffer;
   
   private dn(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this.buffer = paramArrayOfByte;
-    this.Rh = paramInt1;
-    this.Ri = (paramInt1 + paramInt2);
-    this.Rk = paramInt1;
+    this.SW = paramInt1;
+    this.SX = (paramInt1 + paramInt2);
+    this.SZ = paramInt1;
   }
   
   public static dn a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -26,205 +26,189 @@ public final class dn
     return new dn(paramArrayOfByte, 0, paramInt2);
   }
   
-  private void bu(int paramInt)
+  private void bO(int paramInt)
   {
     if (paramInt < 0) {
-      throw dv.kc();
+      throw dv.kl();
     }
-    if (this.Rk + paramInt > this.Rm)
+    if (this.SZ + paramInt > this.Tb)
     {
-      bu(this.Rm - this.Rk);
-      throw dv.kb();
+      bO(this.Tb - this.SZ);
+      throw dv.kk();
     }
-    if (paramInt <= this.Ri - this.Rk)
+    if (paramInt <= this.SX - this.SZ)
     {
-      this.Rk += paramInt;
+      this.SZ += paramInt;
       return;
     }
-    throw dv.kb();
+    throw dv.kk();
   }
   
-  private void jV()
+  private void ke()
   {
-    this.Ri += this.Rj;
-    int i = this.Ri;
-    if (i > this.Rm)
+    this.SX += this.SY;
+    int i = this.SX;
+    if (i > this.Tb)
     {
-      this.Rj = (i - this.Rm);
-      this.Ri -= this.Rj;
+      this.SY = (i - this.Tb);
+      this.SX -= this.SY;
       return;
     }
-    this.Rj = 0;
+    this.SY = 0;
   }
   
-  private byte jX()
+  private byte kg()
   {
-    if (this.Rk == this.Ri) {
-      throw dv.kb();
+    if (this.SZ == this.SX) {
+      throw dv.kk();
     }
     byte[] arrayOfByte = this.buffer;
-    int i = this.Rk;
-    this.Rk = (i + 1);
+    int i = this.SZ;
+    this.SZ = (i + 1);
     return arrayOfByte[i];
-  }
-  
-  public final byte[] Z(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return dz.RO;
-    }
-    byte[] arrayOfByte = new byte[paramInt2];
-    int i = this.Rh;
-    System.arraycopy(this.buffer, i + paramInt1, arrayOfByte, 0, paramInt2);
-    return arrayOfByte;
   }
   
   public final void a(dw paramdw)
   {
-    int i = jS();
-    if (this.Rn >= this.Ro) {
-      throw dv.kh();
+    int i = ka();
+    if (this.Tc >= this.Td) {
+      throw dv.kq();
     }
-    i = br(i);
-    this.Rn += 1;
+    i = bL(i);
+    this.Tc += 1;
     paramdw.a(this);
-    bp(0);
-    this.Rn -= 1;
-    bs(i);
+    bJ(0);
+    this.Tc -= 1;
+    bM(i);
   }
   
-  public final void bp(int paramInt)
+  public final byte[] ab(int paramInt1, int paramInt2)
   {
-    if (this.Rl != paramInt) {
-      throw dv.kf();
+    if (paramInt2 == 0) {
+      return dz.TD;
+    }
+    byte[] arrayOfByte = new byte[paramInt2];
+    int i = this.SW;
+    System.arraycopy(this.buffer, i + paramInt1, arrayOfByte, 0, paramInt2);
+    return arrayOfByte;
+  }
+  
+  public final void bJ(int paramInt)
+  {
+    if (this.Ta != paramInt) {
+      throw dv.ko();
     }
   }
   
-  public final boolean bq(int paramInt)
+  public final boolean bK(int paramInt)
   {
-    switch (dz.bD(paramInt))
+    switch (dz.bY(paramInt))
     {
     default: 
-      throw dv.kg();
+      throw dv.kp();
     case 0: 
-      jS();
+      ka();
       return true;
     case 1: 
-      jU();
+      kd();
       return true;
     case 2: 
-      bu(jS());
+      bO(ka());
       return true;
     case 3: 
       int i;
       do
       {
-        i = jQ();
-      } while ((i != 0) && (bq(i)));
-      bp(dz.ad(dz.bE(paramInt), 4));
+        i = jZ();
+      } while ((i != 0) && (bK(i)));
+      bJ(dz.af(dz.bZ(paramInt), 4));
       return true;
     case 4: 
       return false;
     }
-    jT();
+    kc();
     return true;
   }
   
-  public final int br(int paramInt)
+  public final int bL(int paramInt)
   {
     if (paramInt < 0) {
-      throw dv.kc();
+      throw dv.kl();
     }
-    paramInt = this.Rk + paramInt;
-    int i = this.Rm;
+    paramInt = this.SZ + paramInt;
+    int i = this.Tb;
     if (paramInt > i) {
-      throw dv.kb();
+      throw dv.kk();
     }
-    this.Rm = paramInt;
-    jV();
+    this.Tb = paramInt;
+    ke();
     return i;
   }
   
-  public final void bs(int paramInt)
+  public final void bM(int paramInt)
   {
-    this.Rm = paramInt;
-    jV();
+    this.Tb = paramInt;
+    ke();
   }
   
-  public final void bt(int paramInt)
+  public final void bN(int paramInt)
   {
-    if (paramInt > this.Rk - this.Rh)
+    if (paramInt > this.SZ - this.SW)
     {
-      int i = this.Rk;
-      int j = this.Rh;
+      int i = this.SZ;
+      int j = this.SW;
       throw new IllegalArgumentException(50 + "Position " + paramInt + " is beyond current " + (i - j));
     }
     if (paramInt < 0) {
       throw new IllegalArgumentException(24 + "Bad position " + paramInt);
     }
-    this.Rk = (this.Rh + paramInt);
+    this.SZ = (this.SW + paramInt);
   }
   
   public final int getPosition()
   {
-    return this.Rk - this.Rh;
+    return this.SZ - this.SW;
   }
   
-  public final int jQ()
+  public final int jZ()
   {
-    if (this.Rk == this.Ri) {}
+    if (this.SZ == this.SX) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.Rl = 0;
+      this.Ta = 0;
       return 0;
     }
-    this.Rl = jS();
-    if (this.Rl == 0) {
-      throw dv.ke();
+    this.Ta = ka();
+    if (this.Ta == 0) {
+      throw dv.kn();
     }
-    return this.Rl;
+    return this.Ta;
   }
   
-  public final long jR()
+  public final int ka()
   {
-    int i = 0;
-    long l = 0L;
-    while (i < 64)
-    {
-      int j = jX();
-      l |= (j & 0x7F) << i;
-      if ((j & 0x80) == 0) {
-        return l;
-      }
-      i += 7;
-    }
-    throw dv.kd();
-  }
-  
-  public final int jS()
-  {
-    int i = jX();
+    int i = kg();
     if (i >= 0) {}
     int k;
     do
     {
       return i;
       i &= 0x7F;
-      j = jX();
+      j = kg();
       if (j >= 0) {
         return i | j << 7;
       }
       i |= (j & 0x7F) << 7;
-      j = jX();
+      j = kg();
       if (j >= 0) {
         return i | j << 14;
       }
       i |= (j & 0x7F) << 14;
-      k = jX();
+      k = kg();
       if (k >= 0) {
         return i | k << 21;
       }
-      j = jX();
+      j = kg();
       k = i | (k & 0x7F) << 21 | j << 28;
       i = k;
     } while (j >= 0);
@@ -235,72 +219,88 @@ public final class dn
         break label133;
       }
       i = k;
-      if (jX() >= 0) {
+      if (kg() >= 0) {
         break;
       }
       j += 1;
     }
     label133:
-    throw dv.kd();
+    throw dv.km();
   }
   
-  public final int jT()
+  public final long kb()
   {
-    return jX() & 0xFF | (jX() & 0xFF) << 8 | (jX() & 0xFF) << 16 | (jX() & 0xFF) << 24;
+    int i = 0;
+    long l = 0L;
+    while (i < 64)
+    {
+      int j = kg();
+      l |= (j & 0x7F) << i;
+      if ((j & 0x80) == 0) {
+        return l;
+      }
+      i += 7;
+    }
+    throw dv.km();
   }
   
-  public final long jU()
+  public final int kc()
   {
-    int i = jX();
-    int j = jX();
-    int k = jX();
-    int m = jX();
-    int n = jX();
-    int i1 = jX();
-    int i2 = jX();
-    int i3 = jX();
+    return kg() & 0xFF | (kg() & 0xFF) << 8 | (kg() & 0xFF) << 16 | (kg() & 0xFF) << 24;
+  }
+  
+  public final long kd()
+  {
+    int i = kg();
+    int j = kg();
+    int k = kg();
+    int m = kg();
+    int n = kg();
+    int i1 = kg();
+    int i2 = kg();
+    int i3 = kg();
     long l = i;
     return (j & 0xFF) << 8 | l & 0xFF | (k & 0xFF) << 16 | (m & 0xFF) << 24 | (n & 0xFF) << 32 | (i1 & 0xFF) << 40 | (i2 & 0xFF) << 48 | (i3 & 0xFF) << 56;
   }
   
-  public final int jW()
+  public final int kf()
   {
-    if (this.Rm == 2147483647) {
+    if (this.Tb == 2147483647) {
       return -1;
     }
-    int i = this.Rk;
-    return this.Rm - i;
+    int i = this.SZ;
+    return this.Tb - i;
   }
   
   public final byte[] readBytes()
   {
-    int i = jS();
+    int i = ka();
     if (i < 0) {
-      throw dv.kc();
+      throw dv.kl();
     }
     if (i == 0) {
-      return dz.RO;
+      return dz.TD;
     }
-    if (i > this.Ri - this.Rk) {
-      throw dv.kb();
+    if (i > this.SX - this.SZ) {
+      throw dv.kk();
     }
     byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.buffer, this.Rk, arrayOfByte, 0, i);
-    this.Rk = (i + this.Rk);
+    System.arraycopy(this.buffer, this.SZ, arrayOfByte, 0, i);
+    this.SZ = (i + this.SZ);
     return arrayOfByte;
   }
   
   public final String readString()
   {
-    int i = jS();
+    int i = ka();
     if (i < 0) {
-      throw dv.kc();
+      throw dv.kl();
     }
-    if (i > this.Ri - this.Rk) {
-      throw dv.kb();
+    if (i > this.SX - this.SZ) {
+      throw dv.kk();
     }
-    String str = new String(this.buffer, this.Rk, i, du.UTF_8);
-    this.Rk = (i + this.Rk);
+    String str = new String(this.buffer, this.SZ, i, du.UTF_8);
+    this.SZ = (i + this.SZ);
     return str;
   }
 }

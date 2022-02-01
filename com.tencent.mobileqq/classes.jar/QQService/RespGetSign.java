@@ -9,10 +9,10 @@ public final class RespGetSign
 {
   static byte[] cache_vKey;
   static byte[] cache_vSign;
-  public int iReplyCode;
-  public long lUIN;
-  public byte[] vKey;
-  public byte[] vSign;
+  public int iReplyCode = 0;
+  public long lUIN = 0L;
+  public byte[] vKey = null;
+  public byte[] vSign = null;
   
   public RespGetSign() {}
   
@@ -52,7 +52,7 @@ public final class RespGetSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetSign
  * JD-Core Version:    0.7.0.1
  */

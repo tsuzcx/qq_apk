@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.hld.keyboard.S8ExceptionSettingKeyboard android:orientation="vertical" android:id="@id/iwl" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:setting="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center_horizontal" android:id="@id/kpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/fpg" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/bat" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_below="@id/c2g">
+        <RelativeLayout android:id="@id/kco" android:background="@drawable/a9w" android:layout_width="142.0dip" android:layout_height="131.0dip">
+            <ImageView android:id="@id/kc4" android:layout_width="118.0dip" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/cd" android:src="@drawable/a_p" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/zb" android:gravity="center_horizontal" android:id="@id/kcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="@string/fnh" android:layout_below="@id/kc4" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/kby" android:background="@drawable/a9w" android:layout_width="142.0dip" android:layout_height="131.0dip" android:layout_marginStart="@dimen/df">
+            <ImageView android:id="@id/kbx" android:layout_width="118.0dip" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/cd" android:src="@drawable/a_o" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/zb" android:gravity="center_horizontal" android:id="@id/kc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="@string/fng" android:layout_below="@id/kbx" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S8ExceptionSettingKeyboard>

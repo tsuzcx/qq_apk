@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Actionbar_icon_light_back</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="WeChat-UI-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.900000036">
+        <g id="Actionbar_icon_light_back" fill="#FFFFFF">
+            <g id="Actionbar_icon_dark_back">
+                <g id="Arrow">
+                    <path d="M48,58.3125 L44.8635969,61.5 L21.8427534,38.1041115 L21.8427534,38.1041115 C20.693941,36.9365832 20.693941,35.0634168 21.8427534,33.8958885 L44.8635969,10.5 L48,13.6875 L26.045178,36 L48,58.3125 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

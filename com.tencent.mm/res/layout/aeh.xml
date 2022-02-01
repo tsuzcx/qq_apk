@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/dd3" android:layout_width="fill_parent" android:layout_height="@dimen/dc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:id="@id/dc6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <CheckBox android:id="@id/dc7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:id="@id/dc8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ps" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="@dimen/dc">
+        <ProgressBar android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a74" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/ayq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eau" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

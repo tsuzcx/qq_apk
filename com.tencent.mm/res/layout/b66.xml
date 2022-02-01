@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="26.0dip" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/fi_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/g1g" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/fia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/g1d" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:minHeight="56.0dip">
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/fib" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/g1e" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fic" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
-    </LinearLayout>
-    <View android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="1.0px" android:alpha="0.1" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff8c8c8c" android:id="@id/fid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="16.0dip" android:text="@string/g1f" />
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/a8w" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/a8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:shadowColor="#28000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="2.0" android:layout_below="@id/a8w" android:layout_centerInParent="true" />
+</RelativeLayout>

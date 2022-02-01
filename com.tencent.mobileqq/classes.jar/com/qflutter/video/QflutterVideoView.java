@@ -71,18 +71,15 @@ public class QflutterVideoView
       if (((paramMap instanceof Boolean)) && (((Boolean)paramMap).booleanValue() == true)) {
         return "requestFullScreen";
       }
-      break;
-    case 15: 
-      return "";
+      return "exitFullScreen";
     case 14: 
+    case 15: 
       return "";
     case 13: 
       return "bindloadedmetadata";
-    case 12: 
-      return "";
-    case 11: 
-      return "";
     case 10: 
+    case 11: 
+    case 12: 
       return "";
     case 9: 
       return "binderror";
@@ -100,10 +97,8 @@ public class QflutterVideoView
       return "bindpause";
     case 2: 
       return "bindplay";
-    case 1: 
-      return "bindwaiting";
     }
-    return "exitFullScreen";
+    return "bindwaiting";
   }
   
   public void dispose() {}
@@ -139,7 +134,7 @@ public class QflutterVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.video.QflutterVideoView
  * JD-Core Version:    0.7.0.1
  */

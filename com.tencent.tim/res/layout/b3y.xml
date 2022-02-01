@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" style="@style/k6" />
+    <ImageView android:id="@id/yw" style="@style/jp" />
+    <LinearLayout android:id="@id/content" style="@style/js">
+        <View style="@style/k4" />
+        <TextView android:id="@id/info" style="@style/jx" />
+    </LinearLayout>
+    <ImageView android:id="@id/i4q" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

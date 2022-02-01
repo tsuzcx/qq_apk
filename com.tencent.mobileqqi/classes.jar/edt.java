@@ -1,20 +1,19 @@
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.activity.contact.SearchResultDialog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.List;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class edt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public edt(SearchResultDialog paramSearchResultDialog) {}
+  public edt(SearchResultDialog paramSearchResultDialog, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    List localList = this.a.a(this.a.getContext(), SearchResultDialog.a(this.a), SearchResultDialog.a(this.a));
-    Message localMessage = SearchResultDialog.a(this.a).obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = localList;
-    SearchResultDialog.a(this.a).sendMessage(localMessage);
+    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setText(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog));
+    SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).setSelection(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog).length());
+    ReportController.b(SearchResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog), "CliOper", "", "", "Search", "Last_search", this.jdField_a_of_type_ComTencentMobileqqActivityContactSearchResultDialog.b(this.jdField_a_of_type_Int), 0, "", "", "", "");
   }
 }
 

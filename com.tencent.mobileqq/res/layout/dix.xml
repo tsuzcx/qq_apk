@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.wink.pick.RoundCorneredRelativeLayout android:id="@id/pr9" android:layout_width="64.0dip" android:layout_height="64.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.image.URLImageView android:id="@id/dwp" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="centerCrop" app:round_radius="4.0dip" />
+    <ImageView android:id="@id/o64" android:background="@drawable/h7s" android:padding="2.0dip" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/jv8" android:layout_alignTop="@id/dwp" android:layout_alignRight="@id/dwp" />
+    <View android:background="@drawable/h95" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/qkt" android:layout_width="wrap_content" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</com.tencent.mobileqq.wink.pick.RoundCorneredRelativeLayout>

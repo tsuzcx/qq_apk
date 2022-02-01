@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/fk8" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@android:style/Widget.ProgressBar.Horizontal" />
+    <TextView android:textSize="@dimen/aym" android:ellipsize="end" android:gravity="center" android:id="@id/k_d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_centerInParent="true" />
+</RelativeLayout>

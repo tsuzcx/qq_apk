@@ -23,25 +23,25 @@ public class PutDataRequest
   extends zza
 {
   public static final Parcelable.Creator<PutDataRequest> CREATOR = new ak();
-  private static final long Su = TimeUnit.MINUTES.toMillis(30L);
-  private static final Random Sv = new SecureRandom();
-  private final Uri IG;
-  private byte[] Sh;
-  private final Bundle Sw;
-  private long Sx;
+  private static final long Uj = TimeUnit.MINUTES.toMillis(30L);
+  private static final Random Uk = new SecureRandom();
+  private final Uri Kv;
+  private byte[] TW;
+  private final Bundle Ul;
+  private long Um;
   
   private PutDataRequest(Uri paramUri)
   {
-    this(paramUri, new Bundle(), null, Su);
+    this(paramUri, new Bundle(), null, Uj);
   }
   
   PutDataRequest(Uri paramUri, Bundle paramBundle, byte[] paramArrayOfByte, long paramLong)
   {
-    this.IG = paramUri;
-    this.Sw = paramBundle;
-    this.Sw.setClassLoader(DataItemAssetParcelable.class.getClassLoader());
-    this.Sh = paramArrayOfByte;
-    this.Sx = paramLong;
+    this.Kv = paramUri;
+    this.Ul = paramBundle;
+    this.Ul.setClassLoader(DataItemAssetParcelable.class.getClassLoader());
+    this.TW = paramArrayOfByte;
+    this.Um = paramLong;
   }
   
   public static PutDataRequest d(Uri paramUri)
@@ -65,75 +65,75 @@ public class PutDataRequest
   
   public final PutDataRequest b(String paramString, Asset paramAsset)
   {
-    d.u(paramString);
-    d.u(paramAsset);
-    this.Sw.putParcelable(paramString, paramAsset);
+    d.D(paramString);
+    d.D(paramAsset);
+    this.Ul.putParcelable(paramString, paramAsset);
     return this;
   }
   
   public final PutDataRequest f(byte[] paramArrayOfByte)
   {
-    this.Sh = paramArrayOfByte;
+    this.TW = paramArrayOfByte;
     return this;
   }
   
   public final byte[] getData()
   {
-    return this.Sh;
+    return this.TW;
   }
   
   public final Uri getUri()
   {
-    return this.IG;
+    return this.Kv;
   }
   
-  public final Bundle kD()
-  {
-    return this.Sw;
-  }
-  
-  public final long kE()
-  {
-    return this.Sx;
-  }
-  
-  public final boolean kF()
-  {
-    return this.Sx == 0L;
-  }
-  
-  public final PutDataRequest kG()
-  {
-    this.Sx = 0L;
-    return this;
-  }
-  
-  public final Map<String, Asset> kv()
+  public final Map<String, Asset> kE()
   {
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.Sw.keySet().iterator();
+    Iterator localIterator = this.Ul.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localHashMap.put(str, (Asset)this.Sw.getParcelable(str));
+      localHashMap.put(str, (Asset)this.Ul.getParcelable(str));
     }
     return Collections.unmodifiableMap(localHashMap);
+  }
+  
+  public final Bundle kM()
+  {
+    return this.Ul;
+  }
+  
+  public final long kN()
+  {
+    return this.Um;
+  }
+  
+  public final boolean kO()
+  {
+    return this.Um == 0L;
+  }
+  
+  public final PutDataRequest kP()
+  {
+    this.Um = 0L;
+    return this;
   }
   
   public String toString()
   {
     boolean bool = Log.isLoggable("DataMap", 3);
     StringBuilder localStringBuilder = new StringBuilder("PutDataRequest[");
-    if (this.Sh == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.Sh.length))
+    if (this.TW == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.TW.length))
     {
       localObject = String.valueOf(localObject);
       localStringBuilder.append(String.valueOf(localObject).length() + 7 + "dataSz=" + (String)localObject);
-      int i = this.Sw.size();
+      int i = this.Ul.size();
       localStringBuilder.append(23 + ", numAssets=" + i);
-      localObject = String.valueOf(this.IG);
+      localObject = String.valueOf(this.Kv);
       localStringBuilder.append(String.valueOf(localObject).length() + 6 + ", uri=" + (String)localObject);
-      long l = this.Sx;
+      long l = this.Um;
       localStringBuilder.append(35 + ", syncDeadline=" + l);
       if (bool) {
         break;
@@ -142,11 +142,11 @@ public class PutDataRequest
       return localStringBuilder.toString();
     }
     localStringBuilder.append("]\n  assets: ");
-    localObject = this.Sw.keySet().iterator();
+    localObject = this.Ul.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str1 = (String)((Iterator)localObject).next();
-      String str2 = String.valueOf(this.Sw.getParcelable(str1));
+      String str2 = String.valueOf(this.Ul.getParcelable(str1));
       localStringBuilder.append(String.valueOf(str1).length() + 7 + String.valueOf(str2).length() + "\n    " + str1 + ": " + str2);
     }
     localStringBuilder.append("\n  ]");

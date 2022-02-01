@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.l;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "count", "", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "(ILcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;)V", "getCount", "()I", "getOrder", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "describeContents", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "count", "", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "versionType", "(ILcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;I)V", "getCount", "()I", "getOrder", "()Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "getVersionType", "describeContents", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class QueryParams
   implements Parcelable
 {
-  public static final QueryParams.a CREATOR;
+  public static final a CREATOR;
   final int count;
-  final af.a hcQ;
+  final int euz;
+  final af.a qQm;
   
   static
   {
-    AppMethodBeat.i(134566);
-    CREATOR = new QueryParams.a((byte)0);
-    AppMethodBeat.o(134566);
+    AppMethodBeat.i(50303);
+    CREATOR = new a((byte)0);
+    AppMethodBeat.o(50303);
   }
   
-  public QueryParams(int paramInt, af.a parama)
+  public QueryParams(int paramInt1, af.a parama, int paramInt2)
   {
-    this.count = paramInt;
-    this.hcQ = parama;
+    this.count = paramInt1;
+    this.qQm = parama;
+    this.euz = paramInt2;
   }
   
   public QueryParams(Parcel paramParcel) {}
@@ -35,23 +38,34 @@ final class QueryParams
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(134564);
+    AppMethodBeat.i(50301);
     if (paramParcel != null) {
       paramParcel.writeInt(this.count);
     }
+    af.a locala;
     if (paramParcel != null)
     {
-      af.a locala = this.hcQ;
-      if (locala != null) {}
-      for (paramInt = locala.ordinal();; paramInt = -1)
-      {
-        paramParcel.writeInt(paramInt);
-        AppMethodBeat.o(134564);
-        return;
+      locala = this.qQm;
+      if (locala != null) {
+        break label55;
       }
     }
-    AppMethodBeat.o(134564);
+    label55:
+    for (paramInt = -1;; paramInt = locala.ordinal())
+    {
+      paramParcel.writeInt(paramInt);
+      if (paramParcel != null) {
+        paramParcel.writeInt(this.euz);
+      }
+      AppMethodBeat.o(50301);
+      return;
+    }
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/appusage/QueryParams;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements Parcelable.Creator<QueryParams>
+  {}
 }
 
 

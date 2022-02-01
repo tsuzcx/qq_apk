@@ -3,49 +3,266 @@ package com.tencent.mm.plugin.gallery.model;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
-import android.provider.MediaStore.Video.Media;
+import android.provider.MediaStore.Images.Media;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.gallery.b.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 public final class n
   extends b
 {
-  protected ContentResolver aYt;
-  private volatile boolean eUJ;
+  protected ContentResolver dif;
   
   public n()
   {
-    AppMethodBeat.i(21333);
-    this.eUJ = false;
-    this.aYt = ah.getContext().getContentResolver();
-    AppMethodBeat.o(21333);
+    AppMethodBeat.i(111331);
+    this.dif = MMApplicationContext.getContext().getContentResolver();
+    AppMethodBeat.o(111331);
   }
   
-  private boolean a(i.d paramd, LinkedList paramLinkedList, long paramLong)
+  public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, l.c paramc, long paramLong)
   {
-    AppMethodBeat.i(21340);
-    if ((paramd != null) && (paramLinkedList.size() + 1 % this.ncv == 0)) {
-      paramd.c(paramLinkedList, paramLong);
+    AppMethodBeat.i(111337);
+    this.nzW = false;
+    LinkedList localLinkedList = new LinkedList();
+    for (;;)
+    {
+      try
+      {
+        if (Util.isNullOrNil(paramString))
+        {
+          localCursor1 = this.dif.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, fzV(), b(this.HGr, false), null, vQ(false));
+          localObject1 = localCursor1;
+        }
+      }
+      finally
+      {
+        Cursor localCursor1;
+        Cursor localCursor2;
+        Object localObject3;
+        Object localObject4;
+        label270:
+        label278:
+        paramc = null;
+        localObject1 = null;
+        continue;
+      }
+      try
+      {
+        localCursor2 = this.dif.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, fzV(), b(this.HGr, true), null, vQ(true));
+        if (localCursor1 == null) {}
+      }
+      finally
+      {
+        paramc = null;
+        continue;
+        bool2 = bool1;
+        continue;
+        do
+        {
+          break label278;
+          if ((localObject2 == null) || (localObject2 == localObject1)) {
+            break;
+          }
+          if (localObject2 == null) {
+            break label270;
+          }
+        } while (localObject2 != localMediaItem);
+        continue;
+      }
+      try
+      {
+        Log.i("MicroMsg.ImageMediaQuery", "cursorValid count:%s", new Object[] { Integer.valueOf(localCursor1.getCount()) });
+        localCursor1.moveToFirst();
+        if (localCursor2 != null)
+        {
+          Log.i("MicroMsg.ImageMediaQuery", "cursorInvalid count:%s", new Object[] { Integer.valueOf(localCursor2.getCount()) });
+          localCursor2.moveToFirst();
+        }
+        localMediaItem = c(localCursor1, 1);
+        localObject1 = c(localCursor2, 1);
+        localObject2 = null;
+        bool2 = true;
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        bool1 = bool2;
+        if (localObject1 == null) {
+          continue;
+        }
+        localObject3 = localObject2;
+        localObject4 = localObject1;
+        bool1 = bool2;
+        if (localMediaItem == null) {
+          continue;
+        }
+        if (((GalleryItem.MediaItem)localObject1).HHK > localMediaItem.HHK)
+        {
+          localLinkedList.add(localObject1);
+          localCursor2.moveToNext();
+          localObject2 = localMediaItem;
+          break label955;
+          localMediaItem = c(localCursor1, 1);
+          break label970;
+          localObject1 = c(localCursor2, 1);
+          bool1 = bool2;
+          if (a(paramc, localLinkedList, paramLong, bool2))
+          {
+            bool1 = bool2;
+            if (bool2) {
+              bool1 = false;
+            }
+          }
+          bool2 = this.nzW;
+          if (!bool2) {
+            break label945;
+          }
+          if (localCursor1 != null) {
+            localCursor1.close();
+          }
+          if (localCursor2 != null) {
+            localCursor2.close();
+          }
+          AppMethodBeat.o(111337);
+          return localLinkedList;
+          localCursor1 = this.dif.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, fzV(), ce(paramString, false), null, vQ(false));
+          localObject1 = localCursor1;
+          localCursor2 = this.dif.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, fzV(), ce(paramString, true), null, vQ(true));
+        }
+        else if (((GalleryItem.MediaItem)localObject1).HHK < localMediaItem.HHK)
+        {
+          localLinkedList.add(localMediaItem);
+          localCursor1.moveToNext();
+          localObject2 = localObject1;
+        }
+        else
+        {
+          localLinkedList.add(localMediaItem);
+          localLinkedList.add(localObject1);
+          localObject2 = null;
+          localCursor2.moveToNext();
+          localCursor1.moveToNext();
+        }
+      }
+      finally
+      {
+        paramc = localCursor2;
+        localObject1 = localCursor1;
+        if (localObject1 != null) {
+          ((Cursor)localObject1).close();
+        }
+        if (paramc != null) {
+          paramc.close();
+        }
+        AppMethodBeat.o(111337);
+      }
     }
-    boolean bool = this.eUJ;
-    AppMethodBeat.o(21340);
-    return bool;
+    bool1 = bool2;
+    localObject1 = localObject3;
+    bool2 = bool1;
+    localObject2 = localMediaItem;
+    if (localObject4 != null)
+    {
+      if ((localObject3 != null) && (localObject3.HHK > ((GalleryItem.MediaItem)localObject4).HHK))
+      {
+        localLinkedList.add(localObject3);
+        localLinkedList.add(localObject4);
+        localObject3 = null;
+      }
+      for (;;)
+      {
+        localCursor2.moveToNext();
+        localObject4 = c(localCursor2, 1);
+        bool2 = bool1;
+        if (a(paramc, localLinkedList, paramLong, bool1))
+        {
+          bool2 = bool1;
+          if (bool1) {
+            bool2 = false;
+          }
+        }
+        bool1 = this.nzW;
+        if (!bool1) {
+          break;
+        }
+        if (localCursor1 != null) {
+          localCursor1.close();
+        }
+        if (localCursor2 != null) {
+          localCursor2.close();
+        }
+        AppMethodBeat.o(111337);
+        return localLinkedList;
+        localLinkedList.add(localObject4);
+      }
+    }
+    if (localObject2 != null)
+    {
+      if ((localObject1 != null) && (((GalleryItem.MediaItem)localObject1).HHK > ((GalleryItem.MediaItem)localObject2).HHK))
+      {
+        localLinkedList.add(localObject1);
+        localLinkedList.add(localObject2);
+        localObject1 = null;
+      }
+      for (;;)
+      {
+        localCursor1.moveToNext();
+        localObject2 = c(localCursor1, 1);
+        bool1 = bool2;
+        if (a(paramc, localLinkedList, paramLong, bool2))
+        {
+          bool1 = bool2;
+          if (bool2) {
+            bool1 = false;
+          }
+        }
+        boolean bool3 = this.nzW;
+        bool2 = bool1;
+        if (!bool3) {
+          break;
+        }
+        if (localCursor1 != null) {
+          localCursor1.close();
+        }
+        if (localCursor2 != null) {
+          localCursor2.close();
+        }
+        AppMethodBeat.o(111337);
+        return localLinkedList;
+        localLinkedList.add(localObject2);
+      }
+    }
+    if (localObject1 != null) {
+      localLinkedList.add(localObject1);
+    }
+    paramc.b(localLinkedList, paramLong, bool2);
+    Log.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
+    if (localCursor1 != null) {
+      localCursor1.close();
+    }
+    if (localCursor2 != null) {
+      localCursor2.close();
+    }
+    AppMethodBeat.o(111337);
+    return localLinkedList;
   }
   
-  public final String a(String[] paramArrayOfString, boolean paramBoolean)
+  public final String b(String[] paramArrayOfString, boolean paramBoolean)
   {
-    AppMethodBeat.i(21335);
+    AppMethodBeat.i(111333);
     String str1;
     int j;
     int i;
     String str2;
     if (paramBoolean)
     {
-      str1 = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 ) AND (_size>10240";
+      str1 = "(" + b.HGs + ">2147483647 OR " + b.HGs + "<=0 ) AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -57,10 +274,10 @@ public final class n
     }
     for (paramArrayOfString = str1 + ")";; paramArrayOfString = str1 + ")")
     {
-      ab.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
-      AppMethodBeat.o(21335);
+      Log.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
+      AppMethodBeat.o(111333);
       return paramArrayOfString;
-      str1 = b.ncx + "<=2147483647 AND " + b.ncx + ">0 AND (_size>10240";
+      str1 = b.HGs + "<=2147483647 AND " + b.HGs + ">0 AND (_size>10240";
       j = paramArrayOfString.length;
       i = 0;
       while (i < j)
@@ -72,307 +289,170 @@ public final class n
     }
   }
   
-  public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.d paramd, long paramLong)
+  public final String ce(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(21339);
-    this.eUJ = false;
-    LinkedList localLinkedList = new LinkedList();
-    try
-    {
-      if (bo.isNullOrNil(paramString))
-      {
-        localObject2 = this.aYt.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), a(new String[] { this.ncw[0] }, false), null, hS(false));
-        localObject1 = localObject2;
-      }
-    }
-    finally
-    {
-      for (;;)
-      {
-        Object localObject2;
-        Object localObject5;
-        label160:
-        Object localObject3;
-        Object localObject6;
-        boolean bool;
-        label446:
-        label458:
-        localCursor = null;
-        localObject4 = null;
-      }
-    }
-    try
-    {
-      localCursor = this.aYt.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), a(new String[] { this.ncw[0] }, true), null, hS(true));
-      localObject4 = localObject2;
-      for (;;)
-      {
-        if (localObject4 != null) {}
-        try
-        {
-          localObject4.moveToFirst();
-          if (localCursor != null) {
-            localCursor.moveToFirst();
-          }
-          localObject1 = b(localObject4, 2);
-          localObject2 = b(localCursor, 2);
-          localObject5 = null;
-          localObject3 = localObject5;
-          localObject6 = localObject2;
-          if (localObject2 == null) {
-            break label478;
-          }
-          localObject3 = localObject5;
-          localObject6 = localObject2;
-          if (localObject1 == null) {
-            break label478;
-          }
-          if (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject1).ndq)
-          {
-            localLinkedList.add(localObject2);
-            localCursor.moveToNext();
-            localObject3 = localObject1;
-          }
-          for (;;)
-          {
-            if (localObject3 == localObject2) {
-              localObject1 = b(localObject4, 2);
-            }
-            if (localObject3 == localObject1) {
-              localObject2 = b(localCursor, 2);
-            }
-            bool = a(paramd, localLinkedList, paramLong);
-            localObject5 = localObject3;
-            if (!bool) {
-              break label160;
-            }
-            if (localObject4 != null) {
-              localObject4.close();
-            }
-            if (localCursor != null) {
-              localCursor.close();
-            }
-            AppMethodBeat.o(21339);
-            return localLinkedList;
-            localObject2 = this.aYt.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, false), null, hS(false));
-            localObject1 = localObject2;
-            localCursor = this.aYt.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, true), null, hS(true));
-            localObject4 = localObject2;
-            break;
-            if (((GalleryItem.MediaItem)localObject2).ndq < ((GalleryItem.MediaItem)localObject1).ndq)
-            {
-              localLinkedList.add(localObject1);
-              localObject4.moveToNext();
-              localObject3 = localObject2;
-            }
-            else
-            {
-              localLinkedList.add(localObject1);
-              localLinkedList.add(localObject2);
-              localObject3 = null;
-              localCursor.moveToNext();
-              localObject4.moveToNext();
-            }
-          }
-          if (localObject4 == null) {
-            break label458;
-          }
-        }
-        finally {}
-      }
-    }
-    finally
-    {
-      localCursor = null;
-      localObject4 = localObject1;
-      break label446;
-    }
-    localObject4.close();
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(21339);
-    throw paramString;
-    label478:
-    localObject2 = localObject3;
-    localObject5 = localObject1;
-    if (localObject6 != null)
-    {
-      if ((localObject3 != null) && (localObject3.ndq > ((GalleryItem.MediaItem)localObject6).ndq))
-      {
-        localLinkedList.add(localObject3);
-        localLinkedList.add(localObject6);
-        localObject3 = null;
-      }
-      for (;;)
-      {
-        localCursor.moveToNext();
-        localObject6 = b(localCursor, 2);
-        bool = a(paramd, localLinkedList, paramLong);
-        if (!bool) {
-          break;
-        }
-        if (localObject4 != null) {
-          localObject4.close();
-        }
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        AppMethodBeat.o(21339);
-        return localLinkedList;
-        localLinkedList.add(localObject6);
-      }
-    }
-    if (localObject5 != null)
-    {
-      if ((localObject2 != null) && (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject5).ndq))
-      {
-        localLinkedList.add(localObject2);
-        localLinkedList.add(localObject5);
-        localObject2 = null;
-      }
-      for (;;)
-      {
-        localObject4.moveToNext();
-        localObject5 = b(localObject4, 2);
-        bool = a(paramd, localLinkedList, paramLong);
-        if (!bool) {
-          break;
-        }
-        if (localObject4 != null) {
-          localObject4.close();
-        }
-        if (localCursor != null) {
-          localCursor.close();
-        }
-        AppMethodBeat.o(21339);
-        return localLinkedList;
-        localLinkedList.add(localObject5);
-      }
-    }
-    if (localObject2 != null) {
-      localLinkedList.add(localObject2);
-    }
-    paramd.c(localLinkedList, paramLong);
-    ab.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
-    if (localObject4 != null) {
-      localObject4.close();
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(21339);
-    return localLinkedList;
-  }
-  
-  public final String aV(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(21334);
-    StringBuilder localStringBuilder = new StringBuilder("bucket_display_name=\"").append(paramString).append("\" AND ");
+    AppMethodBeat.i(111332);
+    StringBuilder localStringBuilder = new StringBuilder("bucket_display_name='").append(paramString).append("' AND ");
     if (paramBoolean) {}
-    for (paramString = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 )";; paramString = b.ncx + "<=2147483647 AND " + b.ncx + ">0")
+    for (paramString = "(" + b.HGs + ">2147483647 OR " + b.HGs + "<=0 )";; paramString = b.HGs + "<=2147483647 AND " + b.HGs + ">0")
     {
       paramString = paramString;
-      AppMethodBeat.o(21334);
+      AppMethodBeat.o(111332);
       return paramString;
     }
   }
   
-  public final LinkedList<GalleryItem.AlbumItem> bDJ()
+  public final LinkedList<GalleryItem.AlbumItem> fzT()
   {
-    AppMethodBeat.i(21338);
+    AppMethodBeat.i(111336);
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1;
+    ArrayList localArrayList = new ArrayList();
+    HashMap localHashMap = new HashMap();
     try
     {
-      Cursor localCursor = this.aYt.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, bDL(), "0==0) GROUP BY (bucket_display_name", null, "max_time desc, _id desc");
-      if (localCursor == null)
+      Cursor localCursor1 = this.dif.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, fzW(), fzX(), null, fzY());
+      if (localCursor1 == null)
       {
-        ab.d("MicroMsg.ImageMediaQuery", "no media folder now");
-        AppMethodBeat.o(21338);
+        Log.d("MicroMsg.ImageMediaQuery", "no image folder now");
+        if (!localHashMap.isEmpty())
+        {
+          localLinkedList.addAll(localHashMap.values());
+          Collections.sort(localLinkedList);
+        }
+        bl(localLinkedList);
+        AppMethodBeat.o(111336);
         return localLinkedList;
       }
     }
-    catch (Exception localException)
+    catch (Exception localException1)
     {
       for (;;)
       {
-        ab.e("MicroMsg.ImageMediaQuery", "query album list failed : [%s]", new Object[] { localException.getMessage() });
-        localObject1 = null;
-      }
-    }
-    if (localObject1.moveToFirst()) {}
-    for (;;)
-    {
-      long l = bo.apW(localObject1.getString(localObject1.getColumnIndexOrThrow("_id")));
-      Object localObject3 = localObject1.getString(localObject1.getColumnIndexOrThrow("_data"));
-      Object localObject2 = localObject1.getString(localObject1.getColumnIndexOrThrow("bucket_display_name"));
-      if (bo.isNullOrNil((String)localObject2)) {
-        ab.e("MicroMsg.ImageMediaQuery", "null or nill album name, ignore this folder");
-      }
-      while (!localObject1.moveToNext())
-      {
-        localObject1.close();
-        AppMethodBeat.o(21338);
-        return localLinkedList;
-        if ((!bo.isNullOrNil((String)localObject3)) && (e.cN((String)localObject3)))
+        Log.e("MicroMsg.ImageMediaQuery", "query image album list failed : [%s]", new Object[] { localException1.getMessage() });
+        Cursor localCursor2 = null;
+        continue;
+        try
         {
-          int i = localObject1.getInt(3);
-          if (i == 0)
+          if (localCursor2.moveToFirst())
           {
-            ab.e("MicroMsg.ImageMediaQuery", "query album failed, " + i + ", " + (String)localObject3);
+            label132:
+            localAlbumItem = a(localCursor2, 1, "bucket_display_name");
+            if (localAlbumItem != null)
+            {
+              if (localArrayList.contains(localAlbumItem.albumName)) {
+                break label212;
+              }
+              localHashMap.put(localAlbumItem.akit, localAlbumItem);
+              localArrayList.add(localAlbumItem.albumName);
+            }
           }
-          else
+          for (;;)
           {
-            ab.i("MicroMsg.ImageMediaQuery", "%s(%s) path:%s", new Object[] { localObject2, Integer.valueOf(i), localObject3 });
-            String str = localObject1.getString(localObject1.getColumnIndexOrThrow("mime_type"));
-            localObject3 = GalleryItem.MediaItem.a(2, Long.valueOf(l).longValue(), (String)localObject3, null, str);
-            localObject2 = new GalleryItem.AlbumItem((String)localObject2, i);
-            ((GalleryItem.AlbumItem)localObject2).ndm = ((GalleryItem.MediaItem)localObject3);
-            localLinkedList.add(localObject2);
+            boolean bool = localCursor2.moveToNext();
+            if (bool) {
+              break label132;
+            }
+            if (localCursor2 == null) {
+              break;
+            }
+            localCursor2.close();
+            break;
+            label212:
+            if ((!localHashMap.containsKey(localAlbumItem.akit)) || (localAlbumItem.HHB == null) || (((GalleryItem.AlbumItem)localHashMap.get(localAlbumItem.akit)).HHB == null) || (localAlbumItem.HHB.c(((GalleryItem.AlbumItem)localHashMap.get(localAlbumItem.akit)).HHB) <= 0)) {
+              break label329;
+            }
+            localHashMap.put(localAlbumItem.akit, localAlbumItem);
           }
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            GalleryItem.AlbumItem localAlbumItem;
+            Log.e("MicroMsg.ImageMediaQuery", "query image album list failed : [%s]", new Object[] { localException2.getMessage() });
+            if (localCursor2 == null) {
+              break;
+            }
+            localCursor2.close();
+            break;
+            label329:
+            Log.w("MicroMsg.ImageMediaQuery", "queryAlbumListWalkAround, videoAlbumMap no containsKey = " + localAlbumItem.akit + ", albumName= " + localAlbumItem.albumName);
+          }
+        }
+        finally
+        {
+          if (localCursor2 != null) {
+            localCursor2.close();
+          }
+          AppMethodBeat.o(111336);
         }
       }
     }
   }
   
-  public final void bDK()
+  public final String[] fzV()
   {
-    this.eUJ = true;
+    return new String[] { "_id", "_data", b.HGt, b.HGs, "mime_type", "latitude", "longitude" };
   }
   
-  public final String[] bDL()
+  public final String[] fzW()
   {
-    AppMethodBeat.i(21337);
-    String str1 = b.ncy;
-    String str2 = b.ncx;
-    String str3 = "max(" + b.ncx + ") as max_time";
-    AppMethodBeat.o(21337);
-    return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3 };
+    AppMethodBeat.i(111335);
+    if (h.fBW())
+    {
+      str1 = b.HGt;
+      str2 = b.HGs;
+      AppMethodBeat.o(111335);
+      return new String[] { "_id", "_data", "bucket_display_name", str1, str2, "mime_type", "bucket_id" };
+    }
+    String str1 = b.HGt;
+    String str2 = b.HGs;
+    String str3 = "max(" + b.HGs + ") as max_time";
+    AppMethodBeat.o(111335);
+    return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3, "bucket_id" };
   }
   
-  public final String[] getProjection()
+  public final String fzX()
   {
-    return new String[] { "_id", "_data", b.ncy, b.ncx, "mime_type", "latitude", "longitude" };
+    AppMethodBeat.i(289601);
+    if (h.fBW())
+    {
+      AppMethodBeat.o(289601);
+      return null;
+    }
+    AppMethodBeat.o(289601);
+    return "0==0) GROUP BY (bucket_display_name";
   }
   
-  public final String hS(boolean paramBoolean)
+  public final String fzY()
   {
-    AppMethodBeat.i(21336);
+    AppMethodBeat.i(289604);
+    if (h.fBW())
+    {
+      AppMethodBeat.o(289604);
+      return "_id desc";
+    }
+    AppMethodBeat.o(289604);
+    return "max_time desc, _id desc";
+  }
+  
+  public final String vQ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(111334);
     if (paramBoolean)
     {
-      str = b.ncy + " desc, bucket_display_name desc, _id desc";
-      AppMethodBeat.o(21336);
+      str = b.HGt + " desc, bucket_display_name desc, _id desc";
+      AppMethodBeat.o(111334);
       return str;
     }
-    String str = b.ncx + " desc, bucket_display_name desc, _id desc";
-    AppMethodBeat.o(21336);
+    String str = b.HGs + " desc, bucket_display_name desc, _id desc";
+    AppMethodBeat.o(111334);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.n
  * JD-Core Version:    0.7.0.1
  */

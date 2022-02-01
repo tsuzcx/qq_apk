@@ -12,27 +12,27 @@ final class e$8
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(40330);
-    this.skN.skG.setVisibility(4);
-    this.skN.skG.setTranslationY(0.0F);
-    AppMethodBeat.o(40330);
+    AppMethodBeat.i(100292);
+    this.RTk.RTe.setVisibility(4);
+    this.RTk.RTe.setTranslationY(0.0F);
+    AppMethodBeat.o(100292);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(40329);
-    this.skN.skG.setVisibility(4);
-    this.skN.skG.setTranslationY(0.0F);
-    AppMethodBeat.o(40329);
+    AppMethodBeat.i(100291);
+    this.RTk.RTe.setVisibility(4);
+    this.RTk.RTe.setTranslationY(0.0F);
+    AppMethodBeat.o(100291);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    AppMethodBeat.i(40328);
-    e.b(this.skN);
-    AppMethodBeat.o(40328);
+    AppMethodBeat.i(100290);
+    e.b(this.RTk);
+    AppMethodBeat.o(100290);
   }
 }
 

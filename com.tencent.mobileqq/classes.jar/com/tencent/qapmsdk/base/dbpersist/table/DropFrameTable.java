@@ -41,7 +41,7 @@ public final class DropFrameTable
   private static final String TABLE_DROP_FRAME = "drop_frame";
   private static final String TAG = "QAPM_table_DropFrameTable";
   private long curTime;
-  private DropFrameResultMeta dropFrameResult = new DropFrameResultMeta(0, 0.0F, null, null, 15, null);
+  private DropFrameResultMeta dropFrameResult = new DropFrameResultMeta(0, 0.0F, null, null, 0.0F, 31, null);
   private long lastTime;
   private int pId;
   private String processName = "";
@@ -152,500 +152,697 @@ public final class DropFrameTable
     //   12: new 196	java/util/HashMap
     //   15: dup
     //   16: invokespecial 291	java/util/HashMap:<init>	()V
-    //   19: astore 16
+    //   19: astore 23
     //   21: aload_2
     //   22: invokeinterface 296 1 0
-    //   27: astore 14
-    //   29: aload 14
+    //   27: astore 17
+    //   29: aload 17
     //   31: iconst_3
     //   32: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   35: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   38: ifeq +541 -> 579
+    //   38: ifeq +11 -> 49
     //   41: ldc_w 302
-    //   44: astore 14
-    //   46: aload_2
-    //   47: invokeinterface 296 1 0
-    //   52: astore 15
-    //   54: aload 15
-    //   56: iconst_3
-    //   57: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   60: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   63: ifeq +556 -> 619
-    //   66: iconst_3
-    //   67: anewarray 188	java/lang/String
-    //   70: astore 15
-    //   72: aload 15
-    //   74: iconst_0
-    //   75: aload_0
-    //   76: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
-    //   79: aastore
-    //   80: aload 15
-    //   82: iconst_1
-    //   83: aload_0
-    //   84: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
-    //   87: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   90: aastore
-    //   91: aload 15
-    //   93: iconst_2
-    //   94: aload_0
-    //   95: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
-    //   98: aastore
-    //   99: aload_1
-    //   100: ldc 99
-    //   102: aconst_null
-    //   103: aload 14
-    //   105: aload 15
-    //   107: aconst_null
-    //   108: aconst_null
-    //   109: aconst_null
-    //   110: invokevirtual 306	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   113: astore 14
-    //   115: aload 14
-    //   117: ifnull +459 -> 576
-    //   120: aload 14
-    //   122: checkcast 308	java/io/Closeable
-    //   125: astore 15
-    //   127: aconst_null
-    //   128: checkcast 290	java/lang/Throwable
-    //   131: astore 14
-    //   133: aload 15
-    //   135: checkcast 310	android/database/Cursor
-    //   138: astore 17
-    //   140: aload 17
-    //   142: invokeinterface 313 1 0
-    //   147: pop
-    //   148: aload 17
-    //   150: invokeinterface 316 1 0
-    //   155: ifne +693 -> 848
-    //   158: aload 17
-    //   160: aload 17
-    //   162: ldc 82
-    //   164: invokeinterface 320 2 0
-    //   169: invokeinterface 323 2 0
-    //   174: astore 18
-    //   176: aload 17
-    //   178: aload 17
-    //   180: ldc 85
-    //   182: invokeinterface 320 2 0
-    //   187: invokeinterface 327 2 0
-    //   192: istore 4
-    //   194: aload 17
-    //   196: aload 17
-    //   198: ldc 50
-    //   200: invokeinterface 320 2 0
-    //   205: invokeinterface 331 2 0
-    //   210: fstore_3
-    //   211: aload 17
-    //   213: aload 17
-    //   215: ldc 47
-    //   217: invokeinterface 320 2 0
-    //   222: invokeinterface 335 2 0
-    //   227: istore 5
-    //   229: aload 17
-    //   231: aload 17
-    //   233: ldc 65
-    //   235: invokeinterface 320 2 0
-    //   240: invokeinterface 335 2 0
-    //   245: istore 6
-    //   247: aload 17
-    //   249: aload 17
-    //   251: ldc 68
-    //   253: invokeinterface 320 2 0
-    //   258: invokeinterface 335 2 0
-    //   263: istore 7
-    //   265: aload 17
-    //   267: aload 17
-    //   269: ldc 71
-    //   271: invokeinterface 320 2 0
-    //   276: invokeinterface 335 2 0
-    //   281: istore 8
-    //   283: aload 17
-    //   285: aload 17
-    //   287: ldc 74
-    //   289: invokeinterface 320 2 0
-    //   294: invokeinterface 335 2 0
-    //   299: istore 9
-    //   301: aload 17
-    //   303: aload 17
-    //   305: ldc 77
-    //   307: invokeinterface 320 2 0
-    //   312: invokeinterface 335 2 0
-    //   317: istore 10
-    //   319: aload 17
-    //   321: aload 17
-    //   323: ldc 80
-    //   325: invokeinterface 320 2 0
-    //   330: invokeinterface 335 2 0
-    //   335: istore 11
-    //   337: aload 16
-    //   339: aload 18
-    //   341: invokevirtual 339	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   344: ifeq +412 -> 756
-    //   347: aload 16
-    //   349: aload 18
-    //   351: invokevirtual 220	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   354: checkcast 130	com/tencent/qapmsdk/base/meta/DropFrameResultMeta
-    //   357: astore 19
-    //   359: aload 19
-    //   361: ifnull +179 -> 540
-    //   364: aload 19
-    //   366: iload 5
-    //   368: aload 19
-    //   370: getfield 252	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropCount	I
-    //   373: iadd
-    //   374: putfield 252	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropCount	I
-    //   377: aload 19
-    //   379: aload 19
-    //   381: getfield 164	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:duration	F
-    //   384: fload_3
-    //   385: fadd
-    //   386: putfield 164	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:duration	F
-    //   389: aload 19
-    //   391: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   394: astore 20
-    //   396: aload 20
-    //   398: iconst_0
-    //   399: aload 20
-    //   401: iconst_0
-    //   402: laload
-    //   403: iload 6
-    //   405: i2l
-    //   406: ladd
-    //   407: lastore
-    //   408: aload 19
-    //   410: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   413: astore 20
-    //   415: aload 20
-    //   417: iconst_1
-    //   418: laload
-    //   419: lstore 12
-    //   421: aload 20
-    //   423: iconst_1
-    //   424: iload 7
-    //   426: i2l
-    //   427: lload 12
-    //   429: ladd
-    //   430: lastore
-    //   431: aload 19
-    //   433: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   436: astore 20
-    //   438: aload 20
-    //   440: iconst_2
-    //   441: aload 20
-    //   443: iconst_2
-    //   444: laload
-    //   445: iload 8
-    //   447: i2l
-    //   448: ladd
-    //   449: lastore
-    //   450: aload 19
-    //   452: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   455: astore 20
-    //   457: aload 20
-    //   459: iconst_3
-    //   460: aload 20
-    //   462: iconst_3
-    //   463: laload
-    //   464: iload 9
-    //   466: i2l
-    //   467: ladd
-    //   468: lastore
-    //   469: aload 19
-    //   471: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   474: astore 20
-    //   476: aload 20
-    //   478: iconst_4
-    //   479: aload 20
-    //   481: iconst_4
-    //   482: laload
-    //   483: iload 10
-    //   485: i2l
-    //   486: ladd
-    //   487: lastore
-    //   488: aload 19
-    //   490: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
-    //   493: astore 20
-    //   495: aload 20
-    //   497: iconst_5
-    //   498: aload 20
-    //   500: iconst_5
-    //   501: laload
-    //   502: iload 11
-    //   504: i2l
-    //   505: ladd
-    //   506: lastore
-    //   507: aload 16
-    //   509: checkcast 341	java/util/Map
-    //   512: astore 20
-    //   514: aload 18
-    //   516: ldc 82
-    //   518: invokestatic 344	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   521: aload 19
-    //   523: ldc 154
-    //   525: invokestatic 344	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   528: aload 20
-    //   530: aload 18
-    //   532: aload 19
-    //   534: invokeinterface 347 3 0
-    //   539: pop
-    //   540: aload 17
-    //   542: invokeinterface 350 1 0
-    //   547: pop
-    //   548: goto -400 -> 148
-    //   551: astore_1
-    //   552: aload_1
-    //   553: athrow
-    //   554: astore_2
-    //   555: aload 15
-    //   557: aload_1
-    //   558: invokestatic 356	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   561: aload_2
-    //   562: athrow
-    //   563: astore_1
-    //   564: getstatic 362	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   567: ldc 102
-    //   569: aload_1
-    //   570: checkcast 290	java/lang/Throwable
-    //   573: invokevirtual 366	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   576: aload 16
-    //   578: areturn
-    //   579: aload 14
-    //   581: iconst_4
-    //   582: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   585: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   588: ifeq +11 -> 599
-    //   591: ldc_w 368
-    //   594: astore 14
-    //   596: goto -550 -> 46
-    //   599: aload 14
-    //   601: iconst_5
-    //   602: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   605: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   608: ifeq +281 -> 889
-    //   611: ldc_w 370
-    //   614: astore 14
-    //   616: goto -570 -> 46
-    //   619: aload 15
-    //   621: iconst_4
-    //   622: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   625: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   628: ifeq +52 -> 680
-    //   631: iconst_4
-    //   632: anewarray 188	java/lang/String
-    //   635: astore 15
-    //   637: aload 15
-    //   639: iconst_0
-    //   640: getstatic 266	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:TO_SEND	Lcom/tencent/qapmsdk/base/dbpersist/DBDataStatus;
-    //   643: invokevirtual 270	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:getValue	()I
-    //   646: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   649: aastore
-    //   650: aload 15
-    //   652: iconst_1
-    //   653: aload_0
-    //   654: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
-    //   657: aastore
-    //   658: aload 15
-    //   660: iconst_2
-    //   661: aload_0
-    //   662: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
-    //   665: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   668: aastore
-    //   669: aload 15
-    //   671: iconst_3
-    //   672: aload_0
-    //   673: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
-    //   676: aastore
-    //   677: goto -578 -> 99
-    //   680: aload 15
-    //   682: iconst_5
-    //   683: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   686: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   689: ifeq +61 -> 750
-    //   692: iconst_5
-    //   693: anewarray 188	java/lang/String
-    //   696: astore 15
-    //   698: aload 15
-    //   700: iconst_0
-    //   701: aload_0
-    //   702: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
-    //   705: aastore
-    //   706: aload 15
-    //   708: iconst_1
-    //   709: aload_0
-    //   710: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
-    //   713: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   716: aastore
-    //   717: aload 15
-    //   719: iconst_2
-    //   720: aload_0
-    //   721: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
-    //   724: aastore
-    //   725: aload 15
-    //   727: iconst_3
-    //   728: aload_0
-    //   729: getfield 147	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:lastTime	J
-    //   732: invokestatic 373	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   735: aastore
-    //   736: aload 15
-    //   738: iconst_4
-    //   739: aload_0
-    //   740: getfield 149	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:curTime	J
-    //   743: invokestatic 373	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   746: aastore
-    //   747: goto -648 -> 99
-    //   750: aconst_null
-    //   751: astore 15
-    //   753: goto -654 -> 99
-    //   756: new 130	com/tencent/qapmsdk/base/meta/DropFrameResultMeta
-    //   759: dup
-    //   760: iload 5
-    //   762: fload_3
-    //   763: bipush 6
-    //   765: newarray long
-    //   767: dup
-    //   768: iconst_0
-    //   769: iload 6
-    //   771: i2l
-    //   772: lastore
-    //   773: dup
-    //   774: iconst_1
-    //   775: iload 7
-    //   777: i2l
-    //   778: lastore
-    //   779: dup
-    //   780: iconst_2
-    //   781: iload 8
-    //   783: i2l
-    //   784: lastore
-    //   785: dup
-    //   786: iconst_3
-    //   787: iload 9
-    //   789: i2l
-    //   790: lastore
-    //   791: dup
-    //   792: iconst_4
-    //   793: iload 10
-    //   795: i2l
-    //   796: lastore
-    //   797: dup
-    //   798: iconst_5
-    //   799: iload 11
-    //   801: i2l
-    //   802: lastore
-    //   803: aconst_null
-    //   804: bipush 8
-    //   806: aconst_null
-    //   807: invokespecial 133	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:<init>	(IF[JLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-    //   810: astore 19
-    //   812: aload 19
-    //   814: iload 4
-    //   816: putfield 186	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:state	I
-    //   819: aload 16
-    //   821: checkcast 341	java/util/Map
+    //   44: astore 17
+    //   46: goto +1142 -> 1188
+    //   49: aload 17
+    //   51: iconst_4
+    //   52: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   55: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   58: ifeq +11 -> 69
+    //   61: ldc_w 304
+    //   64: astore 17
+    //   66: goto +1122 -> 1188
+    //   69: aload 17
+    //   71: iconst_5
+    //   72: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   75: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   78: ifeq +1113 -> 1191
+    //   81: ldc_w 306
+    //   84: astore 17
+    //   86: goto +1102 -> 1188
+    //   89: aload_2
+    //   90: invokeinterface 296 1 0
+    //   95: astore 18
+    //   97: aload 18
+    //   99: iconst_3
+    //   100: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   103: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   106: ifeq +39 -> 145
+    //   109: iconst_3
+    //   110: anewarray 188	java/lang/String
+    //   113: astore 18
+    //   115: aload 18
+    //   117: iconst_0
+    //   118: aload_0
+    //   119: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
+    //   122: aastore
+    //   123: aload 18
+    //   125: iconst_1
+    //   126: aload_0
+    //   127: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
+    //   130: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   133: aastore
+    //   134: aload 18
+    //   136: iconst_2
+    //   137: aload_0
+    //   138: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
+    //   141: aastore
+    //   142: goto +1056 -> 1198
+    //   145: aload 18
+    //   147: iconst_4
+    //   148: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   151: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   154: ifeq +52 -> 206
+    //   157: iconst_4
+    //   158: anewarray 188	java/lang/String
+    //   161: astore 18
+    //   163: aload 18
+    //   165: iconst_0
+    //   166: getstatic 266	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:TO_SEND	Lcom/tencent/qapmsdk/base/dbpersist/DBDataStatus;
+    //   169: invokevirtual 270	com/tencent/qapmsdk/base/dbpersist/DBDataStatus:getValue	()I
+    //   172: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   175: aastore
+    //   176: aload 18
+    //   178: iconst_1
+    //   179: aload_0
+    //   180: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
+    //   183: aastore
+    //   184: aload 18
+    //   186: iconst_2
+    //   187: aload_0
+    //   188: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
+    //   191: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   194: aastore
+    //   195: aload 18
+    //   197: iconst_3
+    //   198: aload_0
+    //   199: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
+    //   202: aastore
+    //   203: goto +995 -> 1198
+    //   206: aload 18
+    //   208: iconst_5
+    //   209: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   212: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   215: ifeq +986 -> 1201
+    //   218: iconst_5
+    //   219: anewarray 188	java/lang/String
+    //   222: astore 18
+    //   224: aload 18
+    //   226: iconst_0
+    //   227: aload_0
+    //   228: getfield 122	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:processName	Ljava/lang/String;
+    //   231: aastore
+    //   232: aload 18
+    //   234: iconst_1
+    //   235: aload_0
+    //   236: getfield 145	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:pId	I
+    //   239: invokestatic 192	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   242: aastore
+    //   243: aload 18
+    //   245: iconst_2
+    //   246: aload_0
+    //   247: getfield 124	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:version	Ljava/lang/String;
+    //   250: aastore
+    //   251: aload 18
+    //   253: iconst_3
+    //   254: aload_0
+    //   255: getfield 147	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:lastTime	J
+    //   258: invokestatic 309	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   261: aastore
+    //   262: aload 18
+    //   264: iconst_4
+    //   265: aload_0
+    //   266: getfield 149	com/tencent/qapmsdk/base/dbpersist/table/DropFrameTable:curTime	J
+    //   269: invokestatic 309	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   272: aastore
+    //   273: goto +925 -> 1198
+    //   276: aload_1
+    //   277: ldc 99
+    //   279: aconst_null
+    //   280: aload 17
+    //   282: aload 18
+    //   284: aconst_null
+    //   285: aconst_null
+    //   286: aconst_null
+    //   287: invokevirtual 313	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   290: astore 17
+    //   292: aload 17
+    //   294: ifnull +891 -> 1185
+    //   297: aload 17
+    //   299: checkcast 315	java/io/Closeable
+    //   302: astore 17
+    //   304: aconst_null
+    //   305: checkcast 290	java/lang/Throwable
+    //   308: astore 18
+    //   310: aload 17
+    //   312: astore 20
+    //   314: aload 18
+    //   316: astore 19
+    //   318: aload 17
+    //   320: astore 22
+    //   322: aload 17
+    //   324: checkcast 317	android/database/Cursor
+    //   327: astore 21
+    //   329: aload 17
+    //   331: astore 20
+    //   333: aload 18
+    //   335: astore 19
+    //   337: aload 17
+    //   339: astore 22
+    //   341: aload 21
+    //   343: invokeinterface 320 1 0
+    //   348: pop
+    //   349: aload 17
+    //   351: astore 20
+    //   353: aload 18
+    //   355: astore 19
+    //   357: aload 17
+    //   359: astore 22
+    //   361: aload 21
+    //   363: invokeinterface 323 1 0
+    //   368: ifne +685 -> 1053
+    //   371: aload 17
+    //   373: astore 20
+    //   375: aload 18
+    //   377: astore 19
+    //   379: aload 17
+    //   381: astore 22
+    //   383: aload 21
+    //   385: aload 21
+    //   387: ldc 82
+    //   389: invokeinterface 327 2 0
+    //   394: invokeinterface 330 2 0
+    //   399: astore 24
+    //   401: aload 17
+    //   403: astore 20
+    //   405: aload 18
+    //   407: astore 19
+    //   409: aload 17
+    //   411: astore 22
+    //   413: aload 21
+    //   415: aload 21
+    //   417: ldc 85
+    //   419: invokeinterface 327 2 0
+    //   424: invokeinterface 334 2 0
+    //   429: istore 4
+    //   431: aload 17
+    //   433: astore 20
+    //   435: aload 18
+    //   437: astore 19
+    //   439: aload 17
+    //   441: astore 22
+    //   443: aload 21
+    //   445: aload 21
+    //   447: ldc 50
+    //   449: invokeinterface 327 2 0
+    //   454: invokeinterface 338 2 0
+    //   459: fstore_3
+    //   460: aload 17
+    //   462: astore 20
+    //   464: aload 18
+    //   466: astore 19
+    //   468: aload 17
+    //   470: astore 22
+    //   472: aload 21
+    //   474: aload 21
+    //   476: ldc 47
+    //   478: invokeinterface 327 2 0
+    //   483: invokeinterface 342 2 0
+    //   488: istore 5
+    //   490: aload 17
+    //   492: astore 20
+    //   494: aload 18
+    //   496: astore 19
+    //   498: aload 17
+    //   500: astore 22
+    //   502: aload 21
+    //   504: aload 21
+    //   506: ldc 65
+    //   508: invokeinterface 327 2 0
+    //   513: invokeinterface 342 2 0
+    //   518: istore 6
+    //   520: aload 17
+    //   522: astore 20
+    //   524: aload 18
+    //   526: astore 19
+    //   528: aload 17
+    //   530: astore 22
+    //   532: aload 21
+    //   534: aload 21
+    //   536: ldc 68
+    //   538: invokeinterface 327 2 0
+    //   543: invokeinterface 342 2 0
+    //   548: istore 7
+    //   550: aload 17
+    //   552: astore 20
+    //   554: aload 18
+    //   556: astore 19
+    //   558: aload 17
+    //   560: astore 22
+    //   562: aload 21
+    //   564: aload 21
+    //   566: ldc 71
+    //   568: invokeinterface 327 2 0
+    //   573: invokeinterface 342 2 0
+    //   578: istore 8
+    //   580: aload 17
+    //   582: astore 20
+    //   584: aload 18
+    //   586: astore 19
+    //   588: aload 17
+    //   590: astore 22
+    //   592: aload 21
+    //   594: aload 21
+    //   596: ldc 74
+    //   598: invokeinterface 327 2 0
+    //   603: invokeinterface 342 2 0
+    //   608: istore 9
+    //   610: aload 17
+    //   612: astore 20
+    //   614: aload 18
+    //   616: astore 19
+    //   618: aload 17
+    //   620: astore 22
+    //   622: aload 21
+    //   624: aload 21
+    //   626: ldc 77
+    //   628: invokeinterface 327 2 0
+    //   633: invokeinterface 342 2 0
+    //   638: istore 10
+    //   640: aload 17
+    //   642: astore 20
+    //   644: aload 18
+    //   646: astore 19
+    //   648: aload 17
+    //   650: astore 22
+    //   652: aload 21
+    //   654: aload 21
+    //   656: ldc 80
+    //   658: invokeinterface 327 2 0
+    //   663: invokeinterface 342 2 0
+    //   668: istore 11
+    //   670: aload 17
+    //   672: astore 20
+    //   674: aload 18
+    //   676: astore 19
+    //   678: aload 17
+    //   680: astore 22
+    //   682: aload 23
+    //   684: aload 24
+    //   686: invokevirtual 346	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   689: istore 12
+    //   691: iload 12
+    //   693: ifeq +227 -> 920
+    //   696: aload 17
+    //   698: astore 22
+    //   700: aload 23
+    //   702: aload 24
+    //   704: invokevirtual 220	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   707: checkcast 130	com/tencent/qapmsdk/base/meta/DropFrameResultMeta
+    //   710: astore 19
+    //   712: aload 19
+    //   714: ifnull +497 -> 1211
+    //   717: aload 17
+    //   719: astore 22
+    //   721: aload 19
+    //   723: aload 19
+    //   725: getfield 252	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropCount	I
+    //   728: iload 5
+    //   730: iadd
+    //   731: putfield 252	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropCount	I
+    //   734: aload 17
+    //   736: astore 22
+    //   738: aload 19
+    //   740: aload 19
+    //   742: getfield 164	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:duration	F
+    //   745: fload_3
+    //   746: fadd
+    //   747: putfield 164	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:duration	F
+    //   750: aload 17
+    //   752: astore 22
+    //   754: aload 19
+    //   756: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
+    //   759: astore 20
+    //   761: aload 20
+    //   763: iconst_0
+    //   764: laload
+    //   765: lstore 13
+    //   767: iload 6
+    //   769: i2l
+    //   770: lstore 15
+    //   772: aload 20
+    //   774: iconst_0
+    //   775: lload 13
+    //   777: lload 15
+    //   779: ladd
+    //   780: lastore
+    //   781: aload 19
+    //   783: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
+    //   786: astore 20
+    //   788: aload 20
+    //   790: iconst_1
+    //   791: aload 20
+    //   793: iconst_1
+    //   794: laload
+    //   795: iload 7
+    //   797: i2l
+    //   798: ladd
+    //   799: lastore
+    //   800: aload 19
+    //   802: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
+    //   805: astore 20
+    //   807: aload 20
+    //   809: iconst_2
+    //   810: aload 20
+    //   812: iconst_2
+    //   813: laload
+    //   814: iload 8
+    //   816: i2l
+    //   817: ladd
+    //   818: lastore
+    //   819: aload 19
+    //   821: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
     //   824: astore 20
-    //   826: aload 18
-    //   828: ldc 82
-    //   830: invokestatic 344	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   833: aload 20
-    //   835: aload 18
-    //   837: aload 19
-    //   839: invokeinterface 347 3 0
-    //   844: pop
-    //   845: goto -305 -> 540
-    //   848: aload_2
-    //   849: invokeinterface 296 1 0
-    //   854: iconst_5
-    //   855: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   858: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   861: iconst_1
-    //   862: ixor
-    //   863: ifeq +12 -> 875
-    //   866: aload_1
-    //   867: ldc 99
-    //   869: aconst_null
-    //   870: aconst_null
-    //   871: invokevirtual 377	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   874: pop
-    //   875: getstatic 382	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   878: astore_1
-    //   879: aload 15
-    //   881: aload 14
-    //   883: invokestatic 356	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   886: aload 16
-    //   888: areturn
-    //   889: ldc 120
-    //   891: astore 14
-    //   893: goto -847 -> 46
-    //   896: astore_2
-    //   897: aload 14
-    //   899: astore_1
-    //   900: goto -345 -> 555
+    //   826: aload 20
+    //   828: iconst_3
+    //   829: laload
+    //   830: lstore 13
+    //   832: iload 9
+    //   834: i2l
+    //   835: lstore 15
+    //   837: aload 20
+    //   839: iconst_3
+    //   840: lload 13
+    //   842: lload 15
+    //   844: ladd
+    //   845: lastore
+    //   846: aload 19
+    //   848: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
+    //   851: astore 20
+    //   853: aload 20
+    //   855: iconst_4
+    //   856: aload 20
+    //   858: iconst_4
+    //   859: laload
+    //   860: iload 10
+    //   862: i2l
+    //   863: ladd
+    //   864: lastore
+    //   865: aload 19
+    //   867: getfield 176	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:dropIntervals	[J
+    //   870: astore 20
+    //   872: aload 20
+    //   874: iconst_5
+    //   875: aload 20
+    //   877: iconst_5
+    //   878: laload
+    //   879: iload 11
+    //   881: i2l
+    //   882: ladd
+    //   883: lastore
+    //   884: aload 23
+    //   886: checkcast 348	java/util/Map
+    //   889: astore 20
+    //   891: aload 24
+    //   893: ldc 82
+    //   895: invokestatic 351	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   898: aload 19
+    //   900: ldc 154
+    //   902: invokestatic 351	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   905: aload 20
+    //   907: aload 24
+    //   909: aload 19
+    //   911: invokeinterface 354 3 0
+    //   916: pop
+    //   917: goto +294 -> 1211
+    //   920: iload 6
+    //   922: i2l
+    //   923: lstore 13
+    //   925: aload 18
+    //   927: astore 19
+    //   929: new 130	com/tencent/qapmsdk/base/meta/DropFrameResultMeta
+    //   932: dup
+    //   933: iload 5
+    //   935: fload_3
+    //   936: bipush 6
+    //   938: newarray long
+    //   940: dup
+    //   941: iconst_0
+    //   942: lload 13
+    //   944: lastore
+    //   945: dup
+    //   946: iconst_1
+    //   947: iload 7
+    //   949: i2l
+    //   950: lastore
+    //   951: dup
+    //   952: iconst_2
+    //   953: iload 8
+    //   955: i2l
+    //   956: lastore
+    //   957: dup
+    //   958: iconst_3
+    //   959: iload 9
+    //   961: i2l
+    //   962: lastore
+    //   963: dup
+    //   964: iconst_4
+    //   965: iload 10
+    //   967: i2l
+    //   968: lastore
+    //   969: dup
+    //   970: iconst_5
+    //   971: iload 11
+    //   973: i2l
+    //   974: lastore
+    //   975: aconst_null
+    //   976: fconst_0
+    //   977: bipush 24
+    //   979: aconst_null
+    //   980: invokespecial 133	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:<init>	(IF[JLjava/lang/String;FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    //   983: astore 20
+    //   985: aload 18
+    //   987: astore 19
+    //   989: aload 20
+    //   991: iload 4
+    //   993: putfield 186	com/tencent/qapmsdk/base/meta/DropFrameResultMeta:state	I
+    //   996: aload 18
+    //   998: astore 19
+    //   1000: aload 23
+    //   1002: checkcast 348	java/util/Map
+    //   1005: astore 22
+    //   1007: aload 18
+    //   1009: astore 19
+    //   1011: aload 24
+    //   1013: ldc 82
+    //   1015: invokestatic 351	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1018: aload 18
+    //   1020: astore 19
+    //   1022: aload 22
+    //   1024: aload 24
+    //   1026: aload 20
+    //   1028: invokeinterface 354 3 0
+    //   1033: pop
+    //   1034: aload 18
+    //   1036: astore 19
+    //   1038: aload 21
+    //   1040: invokeinterface 357 1 0
+    //   1045: pop
+    //   1046: goto -697 -> 349
+    //   1049: astore_1
+    //   1050: goto +80 -> 1130
+    //   1053: aload 17
+    //   1055: astore 20
+    //   1057: aload 18
+    //   1059: astore 19
+    //   1061: aload_2
+    //   1062: invokeinterface 296 1 0
+    //   1067: iconst_5
+    //   1068: invokestatic 238	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1071: invokestatic 300	kotlin/jvm/internal/Intrinsics:areEqual	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   1074: istore 12
+    //   1076: iload 12
+    //   1078: iconst_1
+    //   1079: ixor
+    //   1080: ifeq +27 -> 1107
+    //   1083: aload 18
+    //   1085: astore 19
+    //   1087: aload_1
+    //   1088: ldc 99
+    //   1090: aconst_null
+    //   1091: aconst_null
+    //   1092: invokevirtual 361	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   1095: pop
+    //   1096: goto +11 -> 1107
+    //   1099: astore_1
+    //   1100: aload 17
+    //   1102: astore 20
+    //   1104: goto +54 -> 1158
+    //   1107: aload 18
+    //   1109: astore 19
+    //   1111: getstatic 367	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   1114: astore_1
+    //   1115: aload 20
+    //   1117: aload 18
+    //   1119: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   1122: aload 23
+    //   1124: areturn
+    //   1125: astore_1
+    //   1126: aload 19
+    //   1128: astore 18
+    //   1130: goto +33 -> 1163
+    //   1133: astore_1
+    //   1134: aload 20
+    //   1136: astore 22
+    //   1138: goto +16 -> 1154
+    //   1141: astore_1
+    //   1142: aload 20
+    //   1144: astore 17
+    //   1146: aload 19
+    //   1148: astore 18
+    //   1150: goto +13 -> 1163
+    //   1153: astore_1
+    //   1154: aload 22
+    //   1156: astore 20
+    //   1158: aload_1
+    //   1159: astore 19
+    //   1161: aload_1
+    //   1162: athrow
+    //   1163: aload 17
+    //   1165: aload 18
+    //   1167: invokestatic 373	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   1170: aload_1
+    //   1171: athrow
+    //   1172: astore_1
+    //   1173: getstatic 378	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   1176: ldc 102
+    //   1178: aload_1
+    //   1179: checkcast 290	java/lang/Throwable
+    //   1182: invokevirtual 382	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1185: aload 23
+    //   1187: areturn
+    //   1188: goto -1099 -> 89
+    //   1191: ldc 120
+    //   1193: astore 17
+    //   1195: goto -7 -> 1188
+    //   1198: goto -922 -> 276
+    //   1201: aconst_null
+    //   1202: astore 18
+    //   1204: goto -928 -> 276
+    //   1207: astore_1
+    //   1208: goto -78 -> 1130
+    //   1211: goto -177 -> 1034
+    //   1214: astore_1
+    //   1215: goto -52 -> 1163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	903	0	this	DropFrameTable
-    //   0	903	1	paramSQLiteDatabase	SQLiteDatabase
-    //   0	903	2	paramFunction0	Function0<? extends java.lang.Object>
-    //   210	553	3	f	float
-    //   192	623	4	i	int
-    //   227	534	5	j	int
-    //   245	525	6	k	int
-    //   263	513	7	m	int
-    //   281	501	8	n	int
-    //   299	489	9	i1	int
-    //   317	477	10	i2	int
-    //   335	465	11	i3	int
-    //   419	9	12	l	long
-    //   27	871	14	localObject1	java.lang.Object
-    //   52	828	15	localObject2	java.lang.Object
-    //   19	868	16	localHashMap	HashMap
-    //   138	403	17	localCursor	android.database.Cursor
-    //   174	662	18	str	String
-    //   357	481	19	localDropFrameResultMeta	DropFrameResultMeta
-    //   394	440	20	localObject3	java.lang.Object
+    //   0	1218	0	this	DropFrameTable
+    //   0	1218	1	paramSQLiteDatabase	SQLiteDatabase
+    //   0	1218	2	paramFunction0	Function0<? extends java.lang.Object>
+    //   459	477	3	f	float
+    //   429	563	4	i	int
+    //   488	446	5	j	int
+    //   518	403	6	k	int
+    //   548	400	7	m	int
+    //   578	376	8	n	int
+    //   608	352	9	i1	int
+    //   638	328	10	i2	int
+    //   668	304	11	i3	int
+    //   689	391	12	bool	boolean
+    //   765	178	13	l1	long
+    //   770	73	15	l2	long
+    //   27	1167	17	localObject1	java.lang.Object
+    //   95	1108	18	localObject2	java.lang.Object
+    //   316	844	19	localObject3	java.lang.Object
+    //   312	845	20	localObject4	java.lang.Object
+    //   327	712	21	localCursor	android.database.Cursor
+    //   320	835	22	localObject5	java.lang.Object
+    //   19	1167	23	localHashMap	HashMap
+    //   399	626	24	str	String
     // Exception table:
     //   from	to	target	type
-    //   133	148	551	java/lang/Throwable
-    //   148	359	551	java/lang/Throwable
-    //   364	396	551	java/lang/Throwable
-    //   408	415	551	java/lang/Throwable
-    //   431	438	551	java/lang/Throwable
-    //   450	457	551	java/lang/Throwable
-    //   469	476	551	java/lang/Throwable
-    //   488	495	551	java/lang/Throwable
-    //   507	540	551	java/lang/Throwable
-    //   540	548	551	java/lang/Throwable
-    //   756	845	551	java/lang/Throwable
-    //   848	875	551	java/lang/Throwable
-    //   875	879	551	java/lang/Throwable
-    //   552	554	554	finally
-    //   21	41	563	java/lang/Exception
-    //   46	99	563	java/lang/Exception
-    //   99	115	563	java/lang/Exception
-    //   120	133	563	java/lang/Exception
-    //   555	563	563	java/lang/Exception
-    //   579	591	563	java/lang/Exception
-    //   599	611	563	java/lang/Exception
-    //   619	677	563	java/lang/Exception
-    //   680	747	563	java/lang/Exception
-    //   879	886	563	java/lang/Exception
-    //   133	148	896	finally
-    //   148	359	896	finally
-    //   364	396	896	finally
-    //   408	415	896	finally
-    //   431	438	896	finally
-    //   450	457	896	finally
-    //   469	476	896	finally
-    //   488	495	896	finally
-    //   507	540	896	finally
-    //   540	548	896	finally
-    //   756	845	896	finally
-    //   848	875	896	finally
-    //   875	879	896	finally
+    //   846	853	1049	finally
+    //   865	872	1049	finally
+    //   884	917	1049	finally
+    //   781	788	1099	java/lang/Throwable
+    //   800	807	1099	java/lang/Throwable
+    //   819	826	1099	java/lang/Throwable
+    //   846	853	1099	java/lang/Throwable
+    //   865	872	1099	java/lang/Throwable
+    //   884	917	1099	java/lang/Throwable
+    //   929	985	1099	java/lang/Throwable
+    //   989	996	1099	java/lang/Throwable
+    //   1000	1007	1099	java/lang/Throwable
+    //   1011	1018	1099	java/lang/Throwable
+    //   1022	1034	1099	java/lang/Throwable
+    //   1038	1046	1099	java/lang/Throwable
+    //   1087	1096	1099	java/lang/Throwable
+    //   929	985	1125	finally
+    //   989	996	1125	finally
+    //   1000	1007	1125	finally
+    //   1011	1018	1125	finally
+    //   1022	1034	1125	finally
+    //   1038	1046	1125	finally
+    //   1061	1076	1125	finally
+    //   1087	1096	1125	finally
+    //   1111	1115	1125	finally
+    //   1061	1076	1133	java/lang/Throwable
+    //   1111	1115	1133	java/lang/Throwable
+    //   322	329	1141	finally
+    //   341	349	1141	finally
+    //   361	371	1141	finally
+    //   383	401	1141	finally
+    //   413	431	1141	finally
+    //   443	460	1141	finally
+    //   472	490	1141	finally
+    //   502	520	1141	finally
+    //   532	550	1141	finally
+    //   562	580	1141	finally
+    //   592	610	1141	finally
+    //   622	640	1141	finally
+    //   652	670	1141	finally
+    //   682	691	1141	finally
+    //   1161	1163	1141	finally
+    //   322	329	1153	java/lang/Throwable
+    //   341	349	1153	java/lang/Throwable
+    //   361	371	1153	java/lang/Throwable
+    //   383	401	1153	java/lang/Throwable
+    //   413	431	1153	java/lang/Throwable
+    //   443	460	1153	java/lang/Throwable
+    //   472	490	1153	java/lang/Throwable
+    //   502	520	1153	java/lang/Throwable
+    //   532	550	1153	java/lang/Throwable
+    //   562	580	1153	java/lang/Throwable
+    //   592	610	1153	java/lang/Throwable
+    //   622	640	1153	java/lang/Throwable
+    //   652	670	1153	java/lang/Throwable
+    //   682	691	1153	java/lang/Throwable
+    //   700	712	1153	java/lang/Throwable
+    //   721	734	1153	java/lang/Throwable
+    //   738	750	1153	java/lang/Throwable
+    //   754	761	1153	java/lang/Throwable
+    //   21	41	1172	java/lang/Exception
+    //   49	61	1172	java/lang/Exception
+    //   69	81	1172	java/lang/Exception
+    //   89	142	1172	java/lang/Exception
+    //   145	203	1172	java/lang/Exception
+    //   206	273	1172	java/lang/Exception
+    //   276	292	1172	java/lang/Exception
+    //   297	310	1172	java/lang/Exception
+    //   1115	1122	1172	java/lang/Exception
+    //   1163	1172	1172	java/lang/Exception
+    //   781	788	1207	finally
+    //   800	807	1207	finally
+    //   819	826	1207	finally
+    //   700	712	1214	finally
+    //   721	734	1214	finally
+    //   738	750	1214	finally
+    //   754	761	1214	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.table.DropFrameTable
  * JD-Core Version:    0.7.0.1
  */

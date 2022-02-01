@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/nmh" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" app:authIconHeight="14.0dip" app:authIconWidth="14.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/nmo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_toLeftOf="@id/n9u" android:layout_toRightOf="@id/nmh" android:layout_centerVertical="true">
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/nmq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="230.0dip" android:text="水族馆双鱼" android:maxLines="1" android:includeFontPadding="false" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/nmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:id="@id/nmy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="今天10：49" android:includeFontPadding="false" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/nmp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxWidth="132.0dip" android:text="深圳市福田区" android:maxLines="1" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/n9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="19.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nmk" android:background="@drawable/ib5" android:layout_width="69.0dip" android:layout_height="41.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/nmv" android:layout_width="21.0dip" android:layout_height="21.0dip" android:src="@drawable/ibo" android:scaleType="fitCenter" />
+    </LinearLayout>
+</RelativeLayout>

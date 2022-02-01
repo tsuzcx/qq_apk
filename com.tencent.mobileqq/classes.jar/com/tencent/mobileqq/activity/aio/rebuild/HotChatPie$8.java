@@ -1,20 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import agrn;
-import aluv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class HotChatPie$8
+class HotChatPie$8
   implements Runnable
 {
-  public HotChatPie$8(agrn paramagrn) {}
+  HotChatPie$8(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.state;
-    aluv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, i);
-    aluv.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((IHotChatHandler)this.this$0.d.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).getGlobalAdmin(this.this$0.d.getLongAccountUin(), this.this$0.ah.b);
   }
 }
 

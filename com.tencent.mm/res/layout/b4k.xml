@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/bld" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fb0" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb2" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb3" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-</LinearLayout>
+    <View android:id="@id/c6e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/c6i" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:orientation="vertical" android:id="@id/brl" android:background="@drawable/ql" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

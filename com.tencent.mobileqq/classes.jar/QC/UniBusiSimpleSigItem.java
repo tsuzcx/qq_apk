@@ -9,7 +9,7 @@ public final class UniBusiSimpleSigItem
 {
   public String desc = "";
   public String fontColor = "";
-  public int materialVersion;
+  public int materialVersion = 0;
   public String timeAndLocation = "";
   
   public UniBusiSimpleSigItem() {}
@@ -33,20 +33,23 @@ public final class UniBusiSimpleSigItem
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.materialVersion, 0);
-    if (this.fontColor != null) {
-      paramJceOutputStream.write(this.fontColor, 1);
+    String str = this.fontColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 2);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.timeAndLocation != null) {
-      paramJceOutputStream.write(this.timeAndLocation, 3);
+    str = this.timeAndLocation;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiSimpleSigItem
  * JD-Core Version:    0.7.0.1
  */

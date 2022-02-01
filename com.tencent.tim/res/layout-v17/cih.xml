@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:background="@drawable/ks" android:layout_width="fill_parent" android:layout_height="86.0dip" android:minHeight="86.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/im5" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
+        <CheckBox android:id="@id/dpo" android:background="@drawable/f3t" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="15.0dip" android:button="@null" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/mmx" android:focusable="false" android:clickable="false" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.5dip" android:layout_marginRight="12.0dip" android:scaleType="fitXY" android:layout_toRightOf="@id/im5" android:contentDescription="@null" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/mmy" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_toRightOf="@id/mmx">
+        <TextView android:textSize="18.0dip" android:textColor="@color/fl" android:ellipsize="middle" android:id="@id/mmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:singleLine="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/fl" android:id="@id/mn1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/mmv" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/gm" android:id="@id/mn0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxWidth="200.0dip" android:singleLine="true" android:layout_below="@id/mmv" android:layout_alignStart="@id/mmv" />
+        <ImageView android:id="@id/yw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.richstatus.NoScrollGridView android:gravity="center" android:id="@id/n0t" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="8.0dip" android:listSelector="@color/ajr" android:numColumns="4" android:layout_below="@id/mmy" android:layout_alignLeft="@id/mmy" />
+    <View android:background="@color/e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/n0t" android:layout_alignLeft="@id/mmy" />
+</RelativeLayout>

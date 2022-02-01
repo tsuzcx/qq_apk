@@ -10,5 +10,5 @@
         </RelativeLayout>
     </LinearLayout>
     <include android:id="@id/lpl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" layout="@layout/c7g" />
-    <com.tencent.biz.subscribe.component.base.ComponentPageView android:id="@id/lex" android:background="@color/al3" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.subscribe.part.block.BlockContainer android:id="@id/lex" android:background="@color/al3" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

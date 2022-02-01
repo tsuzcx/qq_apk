@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <EditText android:gravity="center|left|top" android:id="@id/np2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:inputType="text" android:imeOptions="flagNoExtractUi" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/oex" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="30.0dip">
+            <TextView android:textColor="#ff000000" android:layout_gravity="bottom" android:id="@id/nhz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:text="test : " />
+            <Button android:textSize="10.0dip" android:id="@id/mtv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="编辑原邮件" android:layout_toRightOf="@id/nhz" />
+            <Button android:textSize="10.0dip" android:id="@id/m1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="memory" android:layout_toRightOf="@id/mtv" />
+            <Button android:textSize="10.0dip" android:id="@id/m1h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="disk" android:layout_toRightOf="@id/m1g" />
+            <Button android:textSize="10.0dip" android:id="@id/m1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="web" android:layout_toRightOf="@id/m1h" />
+        </RelativeLayout>
+        <WebView android:id="@id/ni0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

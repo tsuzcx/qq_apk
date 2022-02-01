@@ -1,131 +1,26 @@
 package android.support.v4.widget;
 
 import android.view.View;
+import java.util.ArrayList;
 
 final class o
-  extends ad
+  implements Runnable
 {
-  o(SlidingPaneLayout paramSlidingPaneLayout) {}
+  final View ry;
   
-  public final boolean J(View paramView)
+  o(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
   {
-    if (this.pH.lu) {
-      return false;
-    }
-    return ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).pJ;
+    this.ry = paramView;
   }
   
-  public final void K(int paramInt)
+  public final void run()
   {
-    if (this.pH.pD.cu() == 0)
+    if (this.ry.getParent() == this.rx)
     {
-      if (this.pH.pz == 0.0F)
-      {
-        this.pH.P(this.pH.py);
-        localSlidingPaneLayout = this.pH;
-        localView = this.pH.py;
-        localSlidingPaneLayout.sendAccessibilityEvent(32);
-        this.pH.pE = false;
-      }
+      this.ry.setLayerType(0, null);
+      this.rx.W(this.ry);
     }
-    else {
-      return;
-    }
-    SlidingPaneLayout localSlidingPaneLayout = this.pH;
-    View localView = this.pH.py;
-    localSlidingPaneLayout.sendAccessibilityEvent(32);
-    this.pH.pE = true;
-  }
-  
-  public final void K(View paramView)
-  {
-    this.pH.co();
-  }
-  
-  public final int L(View paramView)
-  {
-    return this.pH.pB;
-  }
-  
-  public final int M(View paramView)
-  {
-    return paramView.getTop();
-  }
-  
-  public final void e(int paramInt1, int paramInt2)
-  {
-    this.pH.pD.i(this.pH.py, paramInt2);
-  }
-  
-  public final void f(View paramView, float paramFloat)
-  {
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
-    int i;
-    int j;
-    if (this.pH.cq())
-    {
-      i = this.pH.getPaddingRight();
-      j = localLayoutParams.rightMargin + i;
-      if (paramFloat >= 0.0F)
-      {
-        i = j;
-        if (paramFloat == 0.0F)
-        {
-          i = j;
-          if (this.pH.pz <= 0.5F) {}
-        }
-      }
-      else
-      {
-        i = j + this.pH.pB;
-      }
-      j = this.pH.py.getWidth();
-      i = this.pH.getWidth() - i - j;
-    }
-    for (;;)
-    {
-      this.pH.pD.i(i, paramView.getTop());
-      this.pH.invalidate();
-      return;
-      i = this.pH.getPaddingLeft();
-      j = localLayoutParams.leftMargin + i;
-      if (paramFloat <= 0.0F)
-      {
-        i = j;
-        if (paramFloat == 0.0F)
-        {
-          i = j;
-          if (this.pH.pz <= 0.5F) {}
-        }
-      }
-      else
-      {
-        i = j + this.pH.pB;
-      }
-    }
-  }
-  
-  public final void g(View paramView, int paramInt)
-  {
-    this.pH.Q(paramInt);
-    this.pH.invalidate();
-  }
-  
-  public final int h(View paramView, int paramInt)
-  {
-    paramView = (SlidingPaneLayout.LayoutParams)this.pH.py.getLayoutParams();
-    if (this.pH.cq())
-    {
-      i = this.pH.getWidth();
-      j = this.pH.getPaddingRight();
-      i -= paramView.rightMargin + j + this.pH.py.getWidth();
-      j = this.pH.pB;
-      return Math.max(Math.min(paramInt, i), i - j);
-    }
-    int i = this.pH.getPaddingLeft();
-    i = paramView.leftMargin + i;
-    int j = this.pH.pB;
-    return Math.min(Math.max(paramInt, i), j + i);
+    this.rx.rv.remove(this);
   }
 }
 

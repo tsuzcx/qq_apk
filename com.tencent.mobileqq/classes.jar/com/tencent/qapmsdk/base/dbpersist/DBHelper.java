@@ -11,7 +11,7 @@ public final class DBHelper
   extends SqliteHelper
 {
   public static final DBHelper.Companion Companion = new DBHelper.Companion(null);
-  private static final String DATABASE_NAME = "sdk_db";
+  private static final String DATABASE_NAME = "qapmsdk_db";
   private static final int DB_VERSION = 6;
   private static volatile DBHelper helper;
   @NotNull
@@ -19,7 +19,7 @@ public final class DBHelper
   
   public DBHelper(@NotNull Context paramContext)
   {
-    super(paramContext, "sdk_db", null, 6);
+    super(paramContext, "qapmsdk_db", null, 6);
   }
   
   @JvmStatic
@@ -43,7 +43,7 @@ public final class DBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.base.dbpersist.DBHelper
  * JD-Core Version:    0.7.0.1
  */

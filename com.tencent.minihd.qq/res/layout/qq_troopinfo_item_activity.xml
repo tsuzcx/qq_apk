@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:ellipsize="end" android:id="@id/tabName" android:layout_marginRight="5.0dip" android:text="@string/qb_group_troop_setting_activity_item_name" android:singleLine="true" android:layout_toLeftOf="@id/arrow" android:layout_centerVertical="true" style="@style/TroopInfoExItemTitle" />
+        <LinearLayout android:id="@id/contentBox" android:paddingBottom="0.0dip" android:layout_marginLeft="4.0dip" style="@style/TroopInfoExItemContent">
+            <View style="@style/TroopInfoExItemSpace" />
+            <TextView android:id="@id/newmsgtip" style="@style/TroopInfoExItemReddot2" />
+            <TextView android:id="@id/info_num" style="@style/TroopInfoExItemInfo" />
+        </LinearLayout>
+        <ImageView android:id="@id/arrow" android:paddingBottom="0.0dip" style="@style/TroopInfoExItemArrow" />
+    </RelativeLayout>
+    <TextView android:ellipsize="end" android:id="@id/title" android:paddingTop="@dimen/troop_info_item_margin_line" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_marginLeft="32.0dip" android:layout_marginRight="25.0dip" android:singleLine="true" style="@style/TroopInfoExItemInfo" />
+    <TextView android:id="@id/info" android:paddingTop="@dimen/troop_info_item_margin_line" android:visibility="gone" android:layout_marginLeft="32.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="10.5dip" android:maxLines="2" style="@style/TroopInfoExItemInfo" />
+</LinearLayout>

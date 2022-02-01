@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/a6s" />
+    <LinearLayout android:id="@id/hws" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="7.5dip" android:layout_marginBottom="7.5dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <com.tencent.widget.FixSizeImageView android:layout_gravity="center_vertical" android:id="@id/hwf" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/f_h" android:scaleType="fitXY" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@drawable/zv" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hwv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" android:text="@string/pwk" android:lines="1" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#ff67c914" android:id="@id/j7p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/pvz" android:drawableLeft="@drawable/dre" android:drawablePadding="6.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <View android:background="#ffe2e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/asx" android:layout_below="@id/hws" />
+</RelativeLayout>

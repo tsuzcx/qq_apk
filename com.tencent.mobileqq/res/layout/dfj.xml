@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/mz1" android:background="@drawable/gzl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:id="@id/qdy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="你正在使用移动网络" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/mz3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="13.0dip">
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/j5r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="继续观看会耗费通用流量" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff8a8aff" android:id="@id/q7h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="不再提醒" />
+        </LinearLayout>
+        <com.tencent.timi.game.ui.widget.CommonButton android:textColor="@color/al3" android:gravity="center" android:id="@id/qdx" android:background="@drawable/gyh" android:layout_width="82.0dip" android:layout_height="29.0dip" android:layout_marginTop="10.0dip" android:text="继续观看" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+</merge>

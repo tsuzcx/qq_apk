@@ -1,88 +1,136 @@
-import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build.VERSION;
+import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appcommon.AppViewBaseActivity;
+import com.tencent.open.appcommon.Common;
 import com.tencent.open.appcommon.js.OpenJsBridge;
 import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.export.external.interfaces.QuotaUpdater;
-import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.business.base.MobileInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import com.tencent.smtt.sdk.WebViewClient;
 
-@SuppressLint({"NewApi"})
 public class hkg
-  extends WebChromeClient
+  extends WebViewClient
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
+  AppViewBaseActivity a = null;
   
   public hkg(AppViewBaseActivity paramAppViewBaseActivity1, AppViewBaseActivity paramAppViewBaseActivity2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppViewBaseActivity2);
+    this.a = paramAppViewBaseActivity2;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.a = null;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    LogUtility.c("WebConsole", paramString1 + " --From line " + paramInt + " of " + paramString2);
-    if (Build.VERSION.SDK_INT == 7) {}
     try
     {
-      paramString2 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((paramString2 != null) && (!paramString2.isFinishing())) {
-        paramString2.b(paramString1);
+      this.a.d = System.currentTimeMillis();
+      LogUtility.b("LaunchTime", "APP_" + this.a.l + "_onPageFinished：" + this.a.d);
+      LogUtility.b("LaunchTime", "App_" + this.a.l + "_interval_(onPageFinished-onPageStarted):" + (this.a.d - this.b.c));
+      if (paramWebView != null)
+      {
+        super.onPageFinished(paramWebView, paramString);
+        if ((this.a != null) && (!this.a.isFinishing())) {
+          this.a.b(paramWebView, paramString);
+        }
       }
       return;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramWebView) {}
   }
   
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (LogUtility.a()) {
-      LogUtility.c("WebConsole", paramConsoleMessage.message() + " -- From line " + paramConsoleMessage.lineNumber() + " of " + paramConsoleMessage.sourceId());
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (this.a != null)
+    {
+      this.a.c = System.currentTimeMillis();
+      LogUtility.b("LaunchTime", "APP_" + this.a.l + "_onPageStarted：" + this.a.c);
+      LogUtility.b("LaunchTime", "App_" + this.a.l + "_interval_(onPageStarted-onCreate):" + (this.a.c - this.a.b));
+      paramBitmap = "javascript:window.agentData = {};agentData.currentVersion='" + CommonDataAdapter.a().b() + "';" + "agentData.platform='" + CommonDataAdapter.a().g() + "';" + "agentData.uin='" + CommonDataAdapter.a().a() + "';" + "agentData.agentVersion='" + CommonDataAdapter.a().d() + "';" + "agentData.display='" + MobileInfoUtil.e() + "';" + "agentData.mobileInfo='" + MobileInfoUtil.i() + "';" + "agentData.pageParams='" + this.a.d() + "';" + "agentData.imgRoot='" + Common.b() + ImageCache.b + "';" + "agentData.isFirstEnter='" + this.b.h + "';" + "void(0);";
+      LogUtility.b("opensdk", "agentData_js=" + paramBitmap);
+      paramWebView.loadUrl(paramBitmap);
     }
-    if (Build.VERSION.SDK_INT > 7) {
-      try
-      {
-        AppViewBaseActivity localAppViewBaseActivity = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localAppViewBaseActivity != null) && (!localAppViewBaseActivity.isFinishing()))
-        {
-          if (paramConsoleMessage == null) {}
-          for (paramConsoleMessage = "";; paramConsoleMessage = paramConsoleMessage.message())
-          {
-            localAppViewBaseActivity.b(paramConsoleMessage);
-            break;
-          }
-        }
-        return true;
-      }
-      catch (Exception paramConsoleMessage) {}
-    }
-  }
-  
-  public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
-  {
-    paramQuotaUpdater.updateQuota(2L * paramLong2);
-  }
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
     try
     {
-      paramString1 = (AppViewBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((paramString1 != null) && (!paramString1.isFinishing()) && (paramString1.a.a(paramWebView, paramString2)))
-      {
-        paramJsResult.cancel();
-        return true;
+      if ((this.a != null) && (!this.a.isFinishing())) {
+        this.a.a(paramWebView, paramString);
       }
+      return;
     }
     catch (Exception paramWebView) {}
-    return false;
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+    try
+    {
+      if ((this.a != null) && (!this.a.isFinishing())) {
+        this.a.a(paramWebView, paramInt, paramString1, paramString2);
+      }
+      return;
+    }
+    catch (Exception paramWebView) {}
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    LogUtility.b("opensdk", ">>should url:" + paramString);
+    try
+    {
+      if ((this.a == null) || (this.a.isFinishing())) {
+        break label62;
+      }
+      boolean bool = this.a.a.a(paramWebView, paramString);
+      if (!bool) {
+        break label62;
+      }
+    }
+    catch (Exception localException)
+    {
+      label62:
+      do
+      {
+        do
+        {
+          while ((paramString.equals("about:blank;")) || (paramString.equals("about:blank")))
+          {
+            if (QLog.isColorLevel()) {
+              LogUtility.b("AppViewBaseActivity", "shouldOverrideUrlLoading about:blank; " + paramString);
+            }
+            if (Build.VERSION.SDK_INT >= 11) {
+              return false;
+            }
+          }
+          if (!paramString.startsWith("tmast")) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            LogUtility.b("AppViewBaseActivity", "shouldOverrideUrlLoading tmast; " + paramString);
+          }
+          try
+          {
+            paramWebView = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+            this.b.startActivity(paramWebView);
+            return true;
+          }
+          catch (Exception paramWebView) {}
+        } while (!QLog.isColorLevel());
+        LogUtility.b("AppViewBaseActivity", "shouldOverrideUrlLoading tmast;error: " + paramWebView.getMessage());
+        return true;
+      } while (this.a.a(paramWebView, paramString));
+    }
+    return true;
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

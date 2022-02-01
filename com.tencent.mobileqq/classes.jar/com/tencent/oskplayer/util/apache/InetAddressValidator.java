@@ -23,35 +23,40 @@ public class InetAddressValidator
   public boolean isValidInet4Address(String paramString)
   {
     paramString = this.ipv4Validator.match(paramString);
-    if (paramString == null) {}
+    if (paramString == null) {
+      return false;
+    }
+    int i = 0;
     for (;;)
     {
-      return false;
-      int i = 0;
-      String str;
-      if (i <= 3)
-      {
-        str = paramString[i];
-        if ((str == null) || (str.length() <= 0)) {
-          continue;
+      if (i > 3) {
+        break label66;
+      }
+      String str = paramString[i];
+      if (str != null) {
+        if (str.length() <= 0) {
+          return false;
         }
       }
+      label66:
       try
       {
         int j = Integer.parseInt(str);
-        if (j <= 255) {
-          i += 1;
+        if (j > 255) {
+          return false;
         }
+        i += 1;
       }
       catch (NumberFormatException paramString) {}
     }
+    return false;
     return true;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.oskplayer.util.apache.InetAddressValidator
  * JD-Core Version:    0.7.0.1
  */

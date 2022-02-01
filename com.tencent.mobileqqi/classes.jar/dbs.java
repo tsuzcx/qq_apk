@@ -1,23 +1,22 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.smtt.sdk.WebView;
 
-public class dbs
+public final class dbs
   implements Runnable
 {
-  public dbs(QQBrowserActivity paramQQBrowserActivity, int paramInt1, int paramInt2) {}
+  public dbs(WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(true);
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.getWidth() < this.b)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(true);
+      ((CustomWebView)this.jdField_a_of_type_ComTencentSmttSdkWebView).a("javascript:" + this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a.setMove(false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.b.setMove(false);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

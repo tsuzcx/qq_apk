@@ -1,103 +1,68 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.webview.f.a;
-import com.tencent.mm.protocal.protobuf.bwx;
-import com.tencent.mm.protocal.protobuf.bwy;
-import java.util.LinkedList;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.fow;
+import com.tencent.mm.protocal.protobuf.fox;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ad
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f eGj;
-  private final b rr;
-  private long startTime;
+  private h mAY;
+  public final c rr;
   
-  public ad(int paramInt, String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList)
+  public ad(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(6646);
-    this.startTime = 0L;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bwx();
-    ((b.a)localObject).fsY = new bwy();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
-    ((b.a)localObject).funcId = 1346;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bwx)this.rr.fsV.fta;
-    ((bwx)localObject).xvR = paramInt;
-    ((bwx)localObject).cwc = paramString1;
-    ((bwx)localObject).xvS = paramLinkedList;
-    ((bwx)localObject).state = paramString2;
-    ((bwx)localObject).xKa = paramString3;
-    AppMethodBeat.o(6646);
+    AppMethodBeat.i(78934);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fow();
+    ((c.a)localObject).otF = new fox();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/transid";
+    ((c.a)localObject).funcId = 1142;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fow)c.b.b(this.rr.otB);
+    ((fow)localObject).appid = paramString1;
+    ((fow)localObject).openid = paramString2;
+    AppMethodBeat.o(78934);
   }
   
-  public ad(String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList, int paramInt)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(6647);
-    this.startTime = 0L;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bwx();
-    ((b.a)localObject).fsY = new bwy();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
-    ((b.a)localObject).funcId = 1346;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bwx)this.rr.fsV.fta;
-    ((bwx)localObject).xvR = 1;
-    ((bwx)localObject).cwc = paramString1;
-    ((bwx)localObject).xvS = paramLinkedList;
-    ((bwx)localObject).state = paramString2;
-    ((bwx)localObject).xKa = paramString3;
-    ((bwx)localObject).wOS = paramInt;
-    this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(6647);
-  }
-  
-  public final bwy dbQ()
-  {
-    return (bwy)this.rr.fsW.fta;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(6649);
-    this.startTime = System.currentTimeMillis();
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6649);
+    AppMethodBeat.i(78936);
+    Log.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "doScene");
+    this.mAY = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(78936);
     return i;
   }
   
   public final int getType()
   {
-    return 1346;
+    return 1142;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(6648);
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    a.vtM.ap(4, (int)(System.currentTimeMillis() - this.startTime), paramInt3);
-    AppMethodBeat.o(6648);
+    AppMethodBeat.i(78935);
+    Log.i("MicroMsg.NetSceneSendAppMsgToSpecifiedContact", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(78935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.ad
  * JD-Core Version:    0.7.0.1
  */

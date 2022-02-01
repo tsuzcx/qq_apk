@@ -8,15 +8,15 @@ public final class Album
   extends JceStruct
 {
   public String albumid = "";
-  public long createUin;
-  public int createtime;
+  public long createUin = 0L;
+  public int createtime = 0;
   public String desc = "";
-  public int lastuploadtime;
-  public int moditytime;
+  public int lastuploadtime = 0;
+  public int moditytime = 0;
   public String name = "";
-  public int priv;
+  public int priv = 0;
   public String qunid = "";
-  public int total;
+  public int total = 0;
   
   public Album() {}
   
@@ -64,7 +64,7 @@ public final class Album
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.Album
  * JD-Core Version:    0.7.0.1
  */

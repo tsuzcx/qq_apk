@@ -32,31 +32,51 @@ class ComparisonFailure$ComparisonCompactor
   
   private String sharedSuffix(String paramString)
   {
-    int i = 0;
     int j = Math.min(this.expected.length() - paramString.length(), this.actual.length() - paramString.length());
-    for (;;)
+    int i = 0;
+    while (i <= j - 1)
     {
-      if ((i > j - 1) || (this.expected.charAt(this.expected.length() - 1 - i) != this.actual.charAt(this.actual.length() - 1 - i))) {
-        return this.expected.substring(this.expected.length() - i);
+      paramString = this.expected;
+      int k = paramString.charAt(paramString.length() - 1 - i);
+      paramString = this.actual;
+      if (k != paramString.charAt(paramString.length() - 1 - i)) {
+        break;
       }
       i += 1;
     }
+    paramString = this.expected;
+    return paramString.substring(paramString.length() - i);
   }
   
   public String compact(String paramString)
   {
-    if ((this.expected == null) || (this.actual == null) || (this.expected.equals(this.actual))) {
-      return Assert.format(paramString, this.expected, this.actual);
+    Object localObject1 = this.expected;
+    if (localObject1 != null)
+    {
+      String str1 = this.actual;
+      if ((str1 != null) && (!((String)localObject1).equals(str1)))
+      {
+        localObject1 = new ComparisonFailure.ComparisonCompactor.DiffExtractor(this, null);
+        str1 = ((ComparisonFailure.ComparisonCompactor.DiffExtractor)localObject1).compactPrefix();
+        String str2 = ((ComparisonFailure.ComparisonCompactor.DiffExtractor)localObject1).compactSuffix();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(str1);
+        ((StringBuilder)localObject2).append(((ComparisonFailure.ComparisonCompactor.DiffExtractor)localObject1).expectedDiff());
+        ((StringBuilder)localObject2).append(str2);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(((ComparisonFailure.ComparisonCompactor.DiffExtractor)localObject1).actualDiff());
+        localStringBuilder.append(str2);
+        return Assert.format(paramString, localObject2, localStringBuilder.toString());
+      }
     }
-    ComparisonFailure.ComparisonCompactor.DiffExtractor localDiffExtractor = new ComparisonFailure.ComparisonCompactor.DiffExtractor(this, null);
-    String str1 = localDiffExtractor.compactPrefix();
-    String str2 = localDiffExtractor.compactSuffix();
-    return Assert.format(paramString, str1 + localDiffExtractor.expectedDiff() + str2, str1 + localDiffExtractor.actualDiff() + str2);
+    return Assert.format(paramString, this.expected, this.actual);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.ComparisonFailure.ComparisonCompactor
  * JD-Core Version:    0.7.0.1
  */

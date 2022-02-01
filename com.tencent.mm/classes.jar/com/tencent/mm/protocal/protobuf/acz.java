@@ -3,137 +3,79 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class acz
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String desc;
-  public String info;
-  public String thumbUrl;
-  public String title;
-  public boolean wSv = false;
-  public boolean wSw = false;
-  public boolean wUX = false;
-  public boolean wUY = false;
-  
-  public final acz aow(String paramString)
-  {
-    this.title = paramString;
-    this.wSv = true;
-    return this;
-  }
-  
-  public final acz aox(String paramString)
-  {
-    this.desc = paramString;
-    this.wSw = true;
-    return this;
-  }
-  
-  public final acz aoy(String paramString)
-  {
-    this.thumbUrl = paramString;
-    this.wUX = true;
-    return this;
-  }
-  
-  public final acz aoz(String paramString)
-  {
-    this.info = paramString;
-    this.wUY = true;
-    return this;
-  }
+  public String ZlB;
+  public double latitude;
+  public double longitude;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51415);
+    AppMethodBeat.i(50084);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.e(1, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZlB != null) {
+        paramVarArgs.g(1, this.ZlB);
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
-      }
-      if (this.thumbUrl != null) {
-        paramVarArgs.e(3, this.thumbUrl);
-      }
-      if (this.info != null) {
-        paramVarArgs.e(4, this.info);
-      }
-      AppMethodBeat.o(51415);
+      paramVarArgs.d(2, this.longitude);
+      paramVarArgs.d(3, this.latitude);
+      AppMethodBeat.o(50084);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label418;
+      if (this.ZlB == null) {
+        break label304;
       }
     }
-    label418:
-    for (int i = e.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
+    label304:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ZlB) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.desc);
-      }
-      i = paramInt;
-      if (this.thumbUrl != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.thumbUrl);
-      }
-      paramInt = i;
-      if (this.info != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.info);
-      }
-      AppMethodBeat.o(51415);
-      return paramInt;
+      int i = i.a.a.b.b.a.ko(2);
+      int j = i.a.a.b.b.a.ko(3);
+      AppMethodBeat.o(50084);
+      return paramInt + (i + 8) + (j + 8);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(51415);
+        AppMethodBeat.o(50084);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         acz localacz = (acz)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(51415);
+          AppMethodBeat.o(50084);
           return -1;
         case 1: 
-          localacz.title = locala.CLY.readString();
-          localacz.wSv = true;
-          AppMethodBeat.o(51415);
+          localacz.ZlB = locala.ajGk.readString();
+          AppMethodBeat.o(50084);
           return 0;
         case 2: 
-          localacz.desc = locala.CLY.readString();
-          localacz.wSw = true;
-          AppMethodBeat.o(51415);
-          return 0;
-        case 3: 
-          localacz.thumbUrl = locala.CLY.readString();
-          localacz.wUX = true;
-          AppMethodBeat.o(51415);
+          localacz.longitude = Double.longBitsToDouble(locala.ajGk.aay());
+          AppMethodBeat.o(50084);
           return 0;
         }
-        localacz.info = locala.CLY.readString();
-        localacz.wUY = true;
-        AppMethodBeat.o(51415);
+        localacz.latitude = Double.longBitsToDouble(locala.ajGk.aay());
+        AppMethodBeat.o(50084);
         return 0;
       }
-      AppMethodBeat.o(51415);
+      AppMethodBeat.o(50084);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.acz
  * JD-Core Version:    0.7.0.1
  */

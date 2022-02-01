@@ -22,15 +22,16 @@ public final class cmd0x383$ApplyFileSearchRspBody$Item
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48, 58 }, new String[] { "uint64_group_code", "bytes_group_name", "uint64_upload_uin", "bytes_uploader_nick_name", "bytes_match_word", "uint64_match_uin", "file_info" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), null }, Item.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 48, 58 }, new String[] { "uint64_group_code", "bytes_group_name", "uint64_upload_uin", "bytes_uploader_nick_name", "bytes_match_word", "uint64_match_uin", "file_info" }, new Object[] { localLong, localByteStringMicro1, localLong, localByteStringMicro2, localByteStringMicro3, localLong, null }, Item.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item
  * JD-Core Version:    0.7.0.1
  */

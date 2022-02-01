@@ -1,86 +1,72 @@
 package com.tencent.mm.plugin.appbrand.t;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
-  implements Application.ActivityLifecycleCallbacks
 {
-  public Application app;
-  public final Queue<f.a> iXC;
-  private int iXD;
-  public boolean iXE;
+  private static AtomicInteger tns;
+  public HashMap<String, d> tnt;
   
-  public f()
+  static
   {
-    AppMethodBeat.i(126633);
-    this.iXC = new LinkedList();
-    this.iXD = 0;
-    this.iXE = false;
-    AppMethodBeat.o(126633);
+    AppMethodBeat.i(144343);
+    tns = new AtomicInteger(1);
+    AppMethodBeat.o(144343);
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  private f()
   {
-    AppMethodBeat.i(126634);
-    this.iXD += 1;
-    if (this.iXD == 1)
+    AppMethodBeat.i(144339);
+    this.tnt = new HashMap();
+    AppMethodBeat.o(144339);
+  }
+  
+  public static int cCg()
+  {
+    AppMethodBeat.i(144340);
+    int i = tns.incrementAndGet();
+    AppMethodBeat.o(144340);
+    return i;
+  }
+  
+  public static f cCk()
+  {
+    AppMethodBeat.i(144341);
+    f localf = a.cCl();
+    AppMethodBeat.o(144341);
+    return localf;
+  }
+  
+  public final d aea(String paramString)
+  {
+    AppMethodBeat.i(144342);
+    if (this.tnt.containsKey(paramString))
     {
-      ab.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.iXC.iterator();
-      while (paramBundle.hasNext()) {
-        ((f.a)paramBundle.next()).dg(paramActivity);
-      }
+      paramString = (d)this.tnt.get(paramString);
+      AppMethodBeat.o(144342);
+      return paramString;
     }
-    AppMethodBeat.o(126634);
+    AppMethodBeat.o(144342);
+    return null;
   }
   
-  public final void onActivityDestroyed(Activity paramActivity)
+  static final class a
   {
-    AppMethodBeat.i(126635);
-    this.iXD -= 1;
-    if (this.iXD == 0)
+    private static f toe;
+    
+    static
     {
-      ab.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.iXC.iterator();
-      while (paramActivity.hasNext()) {
-        ((f.a)paramActivity.next()).aNZ();
-      }
-      if ((this.iXE) && (this.app != null))
-      {
-        paramActivity = this.app;
-        ab.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
-        paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.iXC.clear();
-        this.app = null;
-        this.iXE = false;
-        this.iXE = false;
-        this.app = null;
-      }
+      AppMethodBeat.i(144338);
+      toe = new f((byte)0);
+      AppMethodBeat.o(144338);
     }
-    AppMethodBeat.o(126635);
   }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t.f
  * JD-Core Version:    0.7.0.1
  */

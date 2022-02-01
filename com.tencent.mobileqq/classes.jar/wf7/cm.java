@@ -9,7 +9,11 @@ public class cm
 {
   public static int R(int paramInt)
   {
-    Object localObject = ch.aP().getString("work_state_" + paramInt, "");
+    Object localObject = ch.aP();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("work_state_");
+    localStringBuilder.append(paramInt);
+    localObject = ((ch)localObject).getString(localStringBuilder.toString(), "");
     try
     {
       localObject = ((String)localObject).split(",");
@@ -34,13 +38,21 @@ public class cm
   
   public static void q(int paramInt1, int paramInt2)
   {
-    String str = aT() + "," + paramInt2;
-    ch.aP().putString("work_state_" + paramInt1, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(aT());
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    ch localch = ch.aP();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("work_state_");
+    localStringBuilder.append(paramInt1);
+    localch.putString(localStringBuilder.toString(), (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.cm
  * JD-Core Version:    0.7.0.1
  */

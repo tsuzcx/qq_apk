@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.expt;
 
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.plugin.expt.e.d;
+import com.tencent.mm.plugin.expt.f.d;
+import com.tencent.mm.storagebase.h.b;
 
 final class PluginExpt$1
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {

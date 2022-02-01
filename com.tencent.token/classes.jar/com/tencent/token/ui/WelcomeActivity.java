@@ -1,5 +1,6 @@
 package com.tencent.token.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -10,66 +11,176 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
-import com.tencent.token.global.c;
-import com.tencent.token.global.h;
+import com.tencent.token.aaz;
+import com.tencent.token.ajr;
+import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.rt;
+import com.tencent.token.sp;
+import com.tencent.token.sp.a;
+import com.tencent.token.su;
+import com.tencent.token.sv;
+import com.tencent.token.tt;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
-import com.tencent.token.ui.base.by;
-import com.tencent.token.ui.base.bz;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.utils.x;
+import com.tencent.token.xr;
+import com.tencent.token.xt;
+import com.tencent.token.xv;
+import com.tencent.token.zp;
+import com.tencent.token.zp.a;
 
 public class WelcomeActivity
   extends Activity
-  implements bz
+  implements zp.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
   private static final int FLING_MIN_DISTANCE = 0;
-  private static final int IMAGE_LEVEL_COUNT = mBitmapIds.length;
-  private static final int[] mBitmapIds = { 2130837706, 2130837707 };
+  private static final int IMAGE_LEVEL_COUNT = 2;
+  private static final int[] mBitmapIds = { 2131099853, 2131099854 };
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private UserTask mActiveTask = null;
-  private GestureDetector mDetector = new GestureDetector(new afp(this));
+  private UserTask<String, String, xt> mActiveTask = null;
+  private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
+  {
+    public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    {
+      return false;
+    }
+    
+    public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      try
+      {
+        if (paramAnonymousMotionEvent1.getX() - paramAnonymousMotionEvent2.getX() > 0.0F)
+        {
+          if (WelcomeActivity.this.mLevel < WelcomeActivity.IMAGE_LEVEL_COUNT - 1)
+          {
+            paramAnonymousMotionEvent1 = aaz.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+            if (paramAnonymousMotionEvent1 == null)
+            {
+              WelcomeActivity.this.doOutOfMemory();
+              return true;
+            }
+            WelcomeActivity.this.mPageCurlView.a(paramAnonymousMotionEvent1);
+            if ((WelcomeActivity.this.mLevel == WelcomeActivity.IMAGE_LEVEL_COUNT - 1) && (WelcomeActivity.this.mEndBtn != null))
+            {
+              WelcomeActivity.this.mEndBtn.setVisibility(0);
+              return true;
+            }
+          }
+        }
+        else if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() > 0.0F) && (WelcomeActivity.this.mLevel > 0))
+        {
+          paramAnonymousMotionEvent1 = aaz.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+          if (paramAnonymousMotionEvent1 == null)
+          {
+            WelcomeActivity.this.doOutOfMemory();
+            return true;
+          }
+          WelcomeActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
+          WelcomeActivity.this.mEndBtn.setVisibility(8);
+          return true;
+        }
+      }
+      catch (Exception paramAnonymousMotionEvent1)
+      {
+        paramAnonymousMotionEvent1.printStackTrace();
+        WelcomeActivity.this.doOutOfMemory();
+        return true;
+      }
+      catch (OutOfMemoryError paramAnonymousMotionEvent1)
+      {
+        paramAnonymousMotionEvent1.printStackTrace();
+        WelcomeActivity.this.doOutOfMemory();
+      }
+      return true;
+    }
+    
+    public final void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+    
+    public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      return false;
+    }
+    
+    public final void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
+    
+    public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+    {
+      return false;
+    }
+  });
   private Dialog mDialog;
   private Bitmap mDotEmpty;
   private Bitmap mDotFull;
   private Button mEndBtn;
   private boolean mFirstInstall = false;
-  private Handler mHandler = new afo(this);
+  @SuppressLint({"HandlerLeak"})
+  private Handler mHandler = new Handler()
+  {
+    public final void handleMessage(Message paramAnonymousMessage)
+    {
+      WelcomeActivity localWelcomeActivity = WelcomeActivity.this;
+      if (localWelcomeActivity != null)
+      {
+        if ((localWelcomeActivity != null) && (localWelcomeActivity.isFinishing())) {
+          return;
+        }
+        int i = paramAnonymousMessage.what;
+        if (i != 3025)
+        {
+          if (i != 3071) {
+            return;
+          }
+          if (paramAnonymousMessage.arg1 == 0) {
+            if (!((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha) {
+              WelcomeActivity.this.sendActiveClient();
+            }
+          }
+        }
+        else
+        {
+          i = paramAnonymousMessage.arg1;
+        }
+        return;
+      }
+    }
+  };
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private by mPageCurlView;
+  private zp mPageCurlView;
   private ProDialogWithShutDown mProDialog;
-  private UserTask mSyncInitTask = null;
+  private UserTask<String, String, xt> mSyncInitTask = null;
   private int mWidth;
   
   private void doOutOfMemory()
   {
-    if (this.mDotEmpty != null) {
-      this.mDotEmpty.recycle();
+    Object localObject = this.mDotEmpty;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotEmpty = null;
-    if (this.mDotFull != null) {
-      this.mDotFull.recycle();
+    localObject = this.mDotFull;
+    if (localObject != null) {
+      ((Bitmap)localObject).recycle();
     }
     this.mDotFull = null;
-    if (this.mPageCurlView != null) {
-      this.mPageCurlView.c();
+    localObject = this.mPageCurlView;
+    if (localObject != null) {
+      ((zp)localObject).b();
     }
     this.mPageCurlView = null;
     nextActivity();
@@ -79,59 +190,63 @@ public class WelcomeActivity
   {
     int j = this.DOT_OFFSET_X;
     int i = 0;
-    if (i < IMAGE_LEVEL_COUNT)
+    while (i < IMAGE_LEVEL_COUNT)
     {
       if (i == paramInt) {
         paramCanvas.drawBitmap(this.mDotEmpty, j, this.DOT_OFFSET_Y, null);
-      }
-      for (;;)
-      {
-        j += this.DOT_SIZE * 2;
-        i += 1;
-        break;
+      } else {
         paramCanvas.drawBitmap(this.mDotFull, j, this.DOT_OFFSET_Y, null);
       }
+      j += this.DOT_SIZE * 2;
+      i += 1;
     }
   }
   
   private void getSharedKey()
   {
-    this.mSyncInitTask = new afq(this);
-    this.mSyncInitTask.c(new String[] { "" });
+    this.mSyncInitTask = new UserTask() {};
+    this.mSyncInitTask.a(new String[] { "" });
   }
   
+  @SuppressLint({"ClickableViewAccessibility"})
   private void init()
   {
-    cx.b(c.h());
+    sv.b(xr.h());
     try
     {
-      h.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
-      if (x.b()) {}
+      StringBuilder localStringBuilder = new StringBuilder("totalMemory:");
+      localStringBuilder.append(Runtime.getRuntime().totalMemory());
+      localStringBuilder.append(" freeMemory:");
+      localStringBuilder.append(Runtime.getRuntime().freeMemory());
+      localStringBuilder.append(" maxMemory:");
+      localStringBuilder.append(Runtime.getRuntime().maxMemory());
+      xv.b(localStringBuilder.toString());
+      aaz.b();
       nextActivity();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      doOutOfMemory();
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       doOutOfMemory();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+      doOutOfMemory();
     }
   }
   
   private void nextActivity()
   {
-    Object localObject = cx.c();
-    if ((this.mActiveTask != null) && (this.mActiveTask.b() != UserTask.Status.FINISHED)) {
-      this.mActiveTask.a(true);
+    Object localObject = this.mActiveTask;
+    if ((localObject != null) && (((UserTask)localObject).e != UserTask.Status.FINISHED)) {
+      this.mActiveTask.c();
     }
-    if (!((cx)localObject).g())
+    if (!rt.a().d())
     {
-      if (do.a().d() == 0)
+      if (tt.a().k.a() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -140,21 +255,16 @@ public class WelcomeActivity
         return;
       }
       localObject = new Intent(this, IndexActivity.class);
-      if (this.mFirstInstall)
-      {
-        if (do.a().e() == null) {
-          break label125;
+      if (this.mFirstInstall) {
+        if (tt.a().k.b() != null) {
+          ((Intent)localObject).putExtra("index_from", 17);
+        } else {
+          ((Intent)localObject).putExtra("index_from", 16);
         }
-        ((Intent)localObject).putExtra("index_from", 17);
       }
-      for (;;)
-      {
-        startActivity((Intent)localObject);
-        finish();
-        return;
-        label125:
-        ((Intent)localObject).putExtra("index_from", 16);
-      }
+      startActivity((Intent)localObject);
+      finish();
+      return;
     }
     localObject = new Intent(this, IndexActivity.class);
     ((Intent)localObject).putExtra("index_from", 16);
@@ -164,82 +274,94 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    cw.a().d(this.mHandler);
+    sp.a.a().a(this.mHandler);
   }
   
   public void dismissDialog()
   {
-    if (isFinishing()) {}
-    for (;;)
-    {
+    if (isFinishing()) {
       return;
-      try
+    }
+    try
+    {
+      if (this.mDialog != null)
       {
-        if (this.mDialog != null)
-        {
-          this.mDialog.cancel();
-          this.mDialog = null;
-        }
-        if (this.mProDialog != null)
-        {
-          this.mProDialog.dismiss();
-          this.mProDialog = null;
-          return;
-        }
+        this.mDialog.cancel();
+        this.mDialog = null;
       }
-      catch (Exception localException)
+      if (this.mProDialog != null)
       {
-        h.b(localException.toString());
+        this.mProDialog.dismiss();
+        this.mProDialog = null;
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      xv.b(localException.toString());
     }
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    for (;;)
+    try
     {
-      try
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
       {
-        if (paramKeyEvent.getAction() == 0) {}
-        switch (paramKeyEvent.getKeyCode())
-        {
-        case 4: 
-          return super.dispatchKeyEvent(paramKeyEvent);
-        }
-      }
-      catch (Exception paramKeyEvent)
-      {
-        paramKeyEvent.printStackTrace();
-        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        finish();
         return true;
       }
-      finish();
-      return true;
+      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+      return bool;
     }
+    catch (Exception paramKeyEvent)
+    {
+      paramKeyEvent.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
+      localStringBuilder.append(this);
+      localStringBuilder.append(paramKeyEvent.toString());
+      xv.c(localStringBuilder.toString());
+    }
+    return true;
+  }
+  
+  public void finish()
+  {
+    super.finish();
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    h.b(this + ",task" + getTaskId());
-    h.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
+    paramBundle = new StringBuilder();
+    paramBundle.append(this);
+    paramBundle.append(",task");
+    paramBundle.append(getTaskId());
+    xv.b(paramBundle.toString());
+    paramBundle = new StringBuilder("width = ");
+    paramBundle.append(getWindowManager().getDefaultDisplay().getWidth());
+    paramBundle.append(", height = ");
+    paramBundle.append(getWindowManager().getDefaultDisplay().getHeight());
+    xv.a(paramBundle.toString());
     init();
   }
   
   protected void onDestroy()
   {
-    if (this.mPageCurlView != null) {
-      this.mPageCurlView.c();
+    zp localzp = this.mPageCurlView;
+    if (localzp != null) {
+      localzp.b();
     }
     this.mPageCurlView = null;
-    cw.a().a(getClass().getName());
+    su.a().a(getClass().getName());
     super.onDestroy();
   }
   
   public void onDrawDots(Canvas paramCanvas, boolean paramBoolean)
   {
-    if (this.mLevel != IMAGE_LEVEL_COUNT - 1) {
-      drawDots(this.mLevel, paramCanvas);
+    int i = this.mLevel;
+    if (i != IMAGE_LEVEL_COUNT - 1) {
+      drawDots(i, paramCanvas);
     }
   }
   
@@ -258,17 +380,19 @@ public class WelcomeActivity
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (!paramBoolean) {}
-    while (this.mPageCurlView == null) {
+    if (!paramBoolean) {
       return;
     }
-    Rect localRect = new Rect();
-    getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    localRect.bottom -= localRect.top;
-    localRect.top = 0;
-    this.mWidth = localRect.width();
-    this.mHeight = localRect.height();
-    this.mPageCurlView.setViewRect(localRect);
+    if (this.mPageCurlView != null)
+    {
+      Rect localRect = new Rect();
+      getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+      localRect.bottom -= localRect.top;
+      localRect.top = 0;
+      this.mWidth = localRect.width();
+      this.mHeight = localRect.height();
+      this.mPageCurlView.setViewRect(localRect);
+    }
   }
   
   public void showUserDialog(int paramInt1, String paramString, int paramInt2, DialogInterface.OnClickListener paramOnClickListener)

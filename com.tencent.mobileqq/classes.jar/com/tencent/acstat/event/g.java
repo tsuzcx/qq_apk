@@ -30,8 +30,9 @@ public class g
     if (this.e != null) {
       paramJSONObject.put("ut", this.e.getUserType());
     }
-    if (this.p != null) {
-      paramJSONObject.put("cfg", this.p);
+    JSONObject localJSONObject = this.p;
+    if (localJSONObject != null) {
+      paramJSONObject.put("cfg", localJSONObject);
     }
     if (StatCommonHelper.needCheckTime(this.n)) {
       paramJSONObject.put("ncts", 1);
@@ -42,7 +43,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.acstat.event.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,29 @@
 package com.qq.android.dexposed.callbacks;
 
-import com.qq.android.dexposed.DexposedBridge;
-
 public abstract class XCallback
   implements Comparable<XCallback>
 {
-  public static final int PRIORITY_DEFAULT = 50;
-  public static final int PRIORITY_HIGHEST = 10000;
-  public static final int PRIORITY_LOWEST = -10000;
-  public final int priority;
+  public final int b;
   
   public XCallback()
   {
-    this.priority = 50;
+    this.b = 50;
   }
   
   public XCallback(int paramInt)
   {
-    this.priority = paramInt;
+    this.b = paramInt;
   }
   
-  public static final void callAll(XCallback.Param paramParam)
-  {
-    if (paramParam.callbacks == null) {
-      throw new IllegalStateException("This object was not created for use with callAll");
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramParam.callbacks.length) {
-        return;
-      }
-      try
-      {
-        ((XCallback)paramParam.callbacks[i]).call(paramParam);
-        i += 1;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          DexposedBridge.log(localThrowable);
-        }
-      }
-    }
-  }
-  
-  protected void call(XCallback.Param paramParam) {}
-  
-  public int compareTo(XCallback paramXCallback)
+  public int a(XCallback paramXCallback)
   {
     if (this == paramXCallback) {
       return 0;
     }
-    if (paramXCallback.priority != this.priority) {
-      return paramXCallback.priority - this.priority;
+    int i = paramXCallback.b;
+    int j = this.b;
+    if (i != j) {
+      return i - j;
     }
     if (System.identityHashCode(this) < System.identityHashCode(paramXCallback)) {
       return -1;
@@ -64,7 +33,7 @@ public abstract class XCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qq.android.dexposed.callbacks.XCallback
  * JD-Core Version:    0.7.0.1
  */

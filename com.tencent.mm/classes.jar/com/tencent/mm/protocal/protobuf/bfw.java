@@ -3,98 +3,91 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bfw
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int nqW;
-  public String nul;
-  public String num;
-  public int pIE;
-  public long pIG;
+  public boolean ZPG;
+  public String image;
+  public long seq;
+  public String text;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(60052);
+    AppMethodBeat.i(258255);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.num != null) {
-        paramVarArgs.e(1, this.num);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.text != null) {
+        paramVarArgs.g(1, this.text);
       }
-      if (this.nul != null) {
-        paramVarArgs.e(2, this.nul);
+      if (this.image != null) {
+        paramVarArgs.g(2, this.image);
       }
-      paramVarArgs.aO(3, this.pIE);
-      paramVarArgs.aO(4, this.nqW);
-      paramVarArgs.am(5, this.pIG);
-      AppMethodBeat.o(60052);
+      paramVarArgs.di(3, this.ZPG);
+      paramVarArgs.bv(4, this.seq);
+      AppMethodBeat.o(258255);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.num == null) {
-        break label410;
+      if (this.text == null) {
+        break label358;
       }
     }
-    label410:
-    for (paramInt = e.a.a.b.b.a.f(1, this.num) + 0;; paramInt = 0)
+    label358:
+    for (paramInt = i.a.a.b.b.a.h(1, this.text) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.nul != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.nul);
+      if (this.image != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.image);
       }
-      paramInt = e.a.a.b.b.a.bl(3, this.pIE);
-      int j = e.a.a.b.b.a.bl(4, this.nqW);
-      int k = e.a.a.b.b.a.p(5, this.pIG);
-      AppMethodBeat.o(60052);
-      return i + paramInt + j + k;
+      paramInt = i.a.a.b.b.a.ko(3);
+      int j = i.a.a.b.b.a.q(4, this.seq);
+      AppMethodBeat.o(258255);
+      return i + (paramInt + 1) + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(60052);
+        AppMethodBeat.o(258255);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bfw localbfw = (bfw)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(60052);
+          AppMethodBeat.o(258255);
           return -1;
         case 1: 
-          localbfw.num = locala.CLY.readString();
-          AppMethodBeat.o(60052);
+          localbfw.text = locala.ajGk.readString();
+          AppMethodBeat.o(258255);
           return 0;
         case 2: 
-          localbfw.nul = locala.CLY.readString();
-          AppMethodBeat.o(60052);
+          localbfw.image = locala.ajGk.readString();
+          AppMethodBeat.o(258255);
           return 0;
         case 3: 
-          localbfw.pIE = locala.CLY.sl();
-          AppMethodBeat.o(60052);
-          return 0;
-        case 4: 
-          localbfw.nqW = locala.CLY.sl();
-          AppMethodBeat.o(60052);
+          localbfw.ZPG = locala.ajGk.aai();
+          AppMethodBeat.o(258255);
           return 0;
         }
-        localbfw.pIG = locala.CLY.sm();
-        AppMethodBeat.o(60052);
+        localbfw.seq = locala.ajGk.aaw();
+        AppMethodBeat.o(258255);
         return 0;
       }
-      AppMethodBeat.o(60052);
+      AppMethodBeat.o(258255);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bfw
  * JD-Core Version:    0.7.0.1
  */

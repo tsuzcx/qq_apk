@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a$a
 {
   private String city;
   private String country;
-  private String hKf;
-  String hKg;
+  private String rSh;
+  String rSi;
   private String state;
   
   public a$a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(126257);
-    this.country = bo.nullAsNil(paramString1);
-    this.state = bo.nullAsNil(paramString2);
-    this.city = bo.nullAsNil(paramString3);
-    this.hKf = bo.nullAsNil(paramString4);
-    this.hKg = bo.nullAsNil(paramString5);
-    AppMethodBeat.o(126257);
+    AppMethodBeat.i(137485);
+    this.country = Util.nullAsNil(paramString1);
+    this.state = Util.nullAsNil(paramString2);
+    this.city = Util.nullAsNil(paramString3);
+    this.rSh = Util.nullAsNil(paramString4);
+    this.rSi = Util.nullAsNil(paramString5);
+    AppMethodBeat.o(137485);
   }
   
-  public final String aCR()
+  public final String crV()
   {
-    AppMethodBeat.i(126258);
-    if ((bo.apE(this.country)) || (bo.apE(this.state)) || (bo.apE(this.city)) || (bo.apE(this.hKf)) || (bo.apE(this.hKg)))
+    AppMethodBeat.i(137486);
+    if ((Util.isChinese(this.country)) || (Util.isChinese(this.state)) || (Util.isChinese(this.city)) || (Util.isChinese(this.rSh)) || (Util.isChinese(this.rSi)))
     {
       localObject = new StringBuilder();
       if (this.country.length() > 0) {
@@ -37,22 +37,22 @@ public final class a$a
       if (this.city.length() > 0) {
         ((StringBuilder)localObject).append(this.city);
       }
-      if (this.hKf.length() > 0) {
-        ((StringBuilder)localObject).append(this.hKf);
+      if (this.rSh.length() > 0) {
+        ((StringBuilder)localObject).append(this.rSh);
       }
-      if (this.hKg.length() > 0)
+      if (this.rSi.length() > 0)
       {
         ((StringBuilder)localObject).append(" ");
-        ((StringBuilder)localObject).append(this.hKg);
+        ((StringBuilder)localObject).append(this.rSi);
       }
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(126258);
+      AppMethodBeat.o(137486);
       return localObject;
     }
     Object localObject = new StringBuilder();
-    if (this.hKf.length() > 0)
+    if (this.rSh.length() > 0)
     {
-      ((StringBuilder)localObject).append(this.hKf);
+      ((StringBuilder)localObject).append(this.rSh);
       ((StringBuilder)localObject).append(" ");
     }
     if (this.city.length() > 0) {
@@ -64,13 +64,13 @@ public final class a$a
     if (this.country.length() > 0) {
       ((StringBuilder)localObject).append(this.country);
     }
-    if (this.hKg.length() > 0)
+    if (this.rSi.length() > 0)
     {
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(this.hKg);
+      ((StringBuilder)localObject).append(this.rSi);
     }
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(126258);
+    AppMethodBeat.o(137486);
     return localObject;
   }
 }

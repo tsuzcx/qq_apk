@@ -17,164 +17,185 @@ public final class lk
   public lk(IMapRenderView paramIMapRenderView)
   {
     this.a = ((pn)paramIMapRenderView.getVectorMapDelegate());
-    if (this.a == null) {}
-    while (this.a.a(mq.class) != null) {
+    paramIMapRenderView = this.a;
+    if (paramIMapRenderView == null) {
       return;
     }
-    this.a.a(mq.class, this);
+    if (paramIMapRenderView.a(mq.class) == null) {
+      this.a.a(mq.class, this);
+    }
   }
   
   public final Circle a(CircleOptions paramCircleOptions, kh paramkh)
   {
-    if (this.a == null) {}
-    mq localmq;
-    do
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return null;
-      localmq = new mq(this.a);
-      localmq.a(paramCircleOptions);
-      localmq.d();
-    } while (!this.a.a(localmq));
+    }
+    localObject = new mq((pn)localObject);
+    ((mq)localObject).a(paramCircleOptions);
+    ((mq)localObject).d();
+    if (!this.a.a((mu)localObject)) {
+      return null;
+    }
     this.a.az.b.k();
-    return new Circle(paramCircleOptions, paramkh, localmq.L);
+    return new Circle(paramCircleOptions, paramkh, ((mu)localObject).L);
   }
   
   public final void a()
   {
-    if (this.a != null) {
-      this.a.c(mq.class);
+    pn localpn = this.a;
+    if (localpn != null) {
+      localpn.c(mq.class);
     }
   }
   
   public final void a(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.a(paramString, false);
-      if ((paramString == null) || (!(paramString instanceof mq))) {
+      if ((paramString != null) && ((paramString instanceof mq)))
+      {
+        paramString.h();
+        this.a.az.b.k();
         return;
       }
+      return;
     }
-    paramString.h();
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, double paramDouble)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).a(paramDouble);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).a(paramDouble);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, float paramFloat)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).a(paramFloat);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).a(paramFloat);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).c(paramInt);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).c(paramInt);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, CircleOptions paramCircleOptions)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).a(paramCircleOptions);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).a(paramCircleOptions);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, LatLng paramLatLng)
   {
-    if (this.a == null) {}
-    while (paramLatLng == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    if (paramLatLng == null) {
+      return;
+    }
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).a(fz.a(paramLatLng));
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).a(fz.a(paramLatLng));
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).c(paramBoolean);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).c(paramBoolean);
-    this.a.az.b.k();
   }
   
   public final boolean a(mu parammu, GeoPoint paramGeoPoint)
@@ -184,142 +205,137 @@ public final class lk
   
   public final List<gg> b(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return null;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
-      if ((paramString == null) || (!(paramString instanceof mq))) {
-        return null;
+      if ((paramString != null) && ((paramString instanceof mq)))
+      {
+        paramString = (mq)paramString;
+        ??? = new ArrayList(1);
+        ((List)???).add(paramString);
+        return ???;
       }
-      paramString = (mq)paramString;
-      ??? = new ArrayList(1);
-      ((List)???).add(paramString);
-      return ???;
+      return null;
     }
   }
   
   public final void b(String paramString, float paramFloat)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    ??? = this.a.c(paramString);
+    ??? = ((pn)???).c(paramString);
     if (??? != null) {
       ((mu)???).b(paramFloat);
     }
     pn localpn = this.a;
-    if ((paramString == null) || (paramString.equals("")))
-    {
-      this.a.az.b.k();
-      return;
-    }
+    if ((paramString != null) && (!paramString.equals(""))) {}
     for (;;)
     {
-      int j;
-      int k;
       int i;
-      label93:
       int m;
-      label170:
+      int n;
       synchronized (localpn.a)
       {
-        int n = localpn.h.size();
-        j = 0;
+        int i1 = localpn.h.size();
+        i = 0;
+        j = i1;
         k = -1;
-        i = n;
-        if (j < n)
-        {
-          mu localmu = (mu)localpn.h.get(j);
-          m = i;
-          if (localmu != null)
-          {
-            if (localmu.i() > paramFloat) {
-              i = j;
-            }
-            m = i;
-            if (TextUtils.equals(localmu.L, paramString))
-            {
-              k = j;
-              m = i;
-              i = k;
-              k = m;
-              break label248;
-            }
-          }
+        if (i >= i1) {
+          break label247;
+        }
+        mu localmu = (mu)localpn.h.get(i);
+        m = k;
+        n = j;
+        if (localmu == null) {
+          break label232;
+        }
+        if (localmu.i() > paramFloat) {
+          j = i;
+        }
+        m = k;
+        n = j;
+        if (!TextUtils.equals(localmu.L, paramString)) {
+          break label232;
+        }
+        m = i;
+        n = j;
+        break label232;
+        paramString = (mu)localpn.h.remove(k);
+        if (paramString != null) {
+          localpn.h.add(i, paramString);
         }
       }
-      label248:
-      do
+      this.a.az.b.k();
+      return;
+      label232:
+      i += 1;
+      int k = m;
+      int j = n;
+      continue;
+      label247:
+      if ((k != -1) && (k != j))
       {
-        j = i;
-        if (i >= k) {
-          j = i - 1;
+        i = j;
+        if (j >= k) {
+          i = j - 1;
         }
-        paramString = (mu)localpn.h.remove(k);
-        if (paramString == null) {
-          break;
-        }
-        localpn.h.add(j, paramString);
-        break;
-        i = k;
-        k = m;
-        j += 1;
-        m = k;
-        k = i;
-        i = m;
-        break label93;
-        if (k == -1) {
-          break label170;
-        }
-      } while (k != i);
+      }
     }
   }
   
   public final void b(String paramString, int paramInt)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      ((mq)paramString).b(paramInt);
+      this.a.az.b.k();
       return;
     }
-    ((mq)paramString).b(paramInt);
-    this.a.az.b.k();
   }
   
   public final void c(String paramString, int paramInt)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof mq)) {
+      if (!(paramString instanceof mq)) {
+        return;
+      }
+      if (paramString != null) {
+        paramString.d(paramInt);
+      }
+      this.a.az.b.k();
       return;
     }
-    if (paramString != null) {
-      paramString.d(paramInt);
-    }
-    this.a.az.b.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.sdk.a.lk
  * JD-Core Version:    0.7.0.1
  */

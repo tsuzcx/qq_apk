@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.app;
 
-import alod;
-import alto;
+import com.tencent.mobileqq.relationx.addFrd.AddFrdStateMng;
 
-public class FriendsManager$6
+class FriendsManager$6
   implements Runnable
 {
-  public FriendsManager$6(alto paramalto) {}
+  FriendsManager$6(FriendsManager paramFriendsManager) {}
   
   public void run()
   {
-    if (!alto.a(this.this$0).a) {
-      alto.a(this.this$0).a(alto.a(this.this$0));
+    if (!FriendsManager.b(this.this$0).c) {
+      FriendsManager.b(this.this$0).a(FriendsManager.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.6
  * JD-Core Version:    0.7.0.1
  */

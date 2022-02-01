@@ -15,7 +15,7 @@ public class DisplayUtils
     if (DENSITY == 0.0F) {
       DENSITY = SdkContext.getInstance().getApplication().getResources().getDisplayMetrics().density;
     }
-    return DENSITY * paramFloat + 0.5F;
+    return paramFloat * DENSITY + 0.5F;
   }
   
   public static int pixelToRealPixel(float paramFloat)
@@ -35,7 +35,7 @@ public class DisplayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

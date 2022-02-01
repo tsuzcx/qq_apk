@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import atzz;
-import bhtk;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.service.MobileQQServiceExtend;
+import mqq.manager.Manager;
 
 class QQAppInterface$10
   implements Runnable
@@ -12,38 +10,23 @@ class QQAppInterface$10
   
   public void run()
   {
-    try
-    {
-      QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 265);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 267);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 274);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 236);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 268);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 272);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 271);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 273);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 239);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 266);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 524);
-      localQQNotificationManager.cancel("QQAppInterface_removeNotification", 527);
-      ((bhtk)this.this$0.getManager(313)).a();
-      ((atzz)this.this$0.getManager(284)).a(localQQNotificationManager, -1);
-      if (QLog.isColorLevel()) {
-        QLog.d("notification", 2, "removeNotification");
-      }
-      return;
+    if (this.this$0.mqqService != null) {
+      this.this$0.mqqService.destroy();
     }
-    catch (Exception localException)
+    int i = 0;
+    while (i < QQAppInterface.access$2100(this.this$0).length)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("notification", 2, "removeNotification", localException);
+      Manager localManager = QQAppInterface.access$2100(this.this$0)[i];
+      if (localManager != null) {
+        localManager.onDestroy();
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.10
  * JD-Core Version:    0.7.0.1
  */

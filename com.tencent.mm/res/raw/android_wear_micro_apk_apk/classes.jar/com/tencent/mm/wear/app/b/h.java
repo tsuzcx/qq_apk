@@ -6,292 +6,259 @@ import com.tencent.mm.wear.app.MMApplication;
 import com.tencent.mm.wear.app.service.StepCountService;
 import com.tencent.mm.wear.app.ui.MMActivity;
 import java.io.File;
-import junit.framework.Assert;
 
 public final class h
 {
-  public static h abb;
-  private static Intent abj;
-  private static boolean abk = false;
-  private static boolean abl = false;
-  private static boolean abm = false;
-  private static boolean abn;
-  private g abc = new g();
-  private com.tencent.mm.wear.app.g.b abd = new com.tencent.mm.wear.app.g.b();
-  private com.tencent.mm.wear.app.emoji.gif.a abe = new com.tencent.mm.wear.app.emoji.gif.a();
-  private j abf = new j();
-  private com.tencent.mm.wear.app.c.b abg = new com.tencent.mm.wear.app.c.b(MMApplication.getContext());
-  private com.tencent.mm.wear.a.d.a abh = new com.tencent.mm.wear.a.d.a();
-  private String abi;
+  public static h aeC;
+  private static Intent aeK;
+  private static boolean aeL = false;
+  private static boolean aeM = false;
+  private static boolean aeN = false;
+  private static boolean aeO;
+  private g aeD = new g();
+  private com.tencent.mm.wear.app.g.b aeE = new com.tencent.mm.wear.app.g.b();
+  private com.tencent.mm.wear.app.emoji.gif.a aeF = new com.tencent.mm.wear.app.emoji.gif.a();
+  private j aeG = new j();
+  private com.tencent.mm.wear.app.c.b aeH = new com.tencent.mm.wear.app.c.b(MMApplication.getContext());
+  private com.tencent.mm.wear.a.d.a aeI = new com.tencent.mm.wear.a.d.a();
+  private String aeJ;
   
   public h()
   {
     System.loadLibrary("gif");
   }
   
-  public static void B(boolean paramBoolean)
+  public static void E(boolean paramBoolean)
   {
     if (paramBoolean) {
-      abk = false;
+      aeL = false;
     }
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "startLogin isLogin=%b force=%b", new Object[] { Boolean.valueOf(abk), Boolean.valueOf(paramBoolean) });
-    if (abl)
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "startLogin isLogin=%b force=%b", new Object[] { Boolean.valueOf(aeL), Boolean.valueOf(paramBoolean) });
+    if (aeM)
     {
       com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "already running login", new Object[0]);
       return;
     }
-    abl = true;
+    aeM = true;
     a locala = new a();
     locala.a(new c()
     {
-      public final void bH(int paramAnonymousInt)
+      public final void cd(int paramAnonymousInt)
       {
         if (paramAnonymousInt == 0) {
-          h.C(true);
+          h.F(true);
         }
         for (;;)
         {
-          h.mt();
-          com.tencent.mm.sdk.a.a.WJ.a(new com.tencent.mm.b.a.c());
+          h.nf();
+          com.tencent.mm.sdk.a.a.YM.a(new com.tencent.mm.b.a.c());
           return;
-          h.C(false);
+          h.F(false);
         }
       }
     });
-    lX().abd.a(locala);
-  }
-  
-  public static String lN()
-  {
-    return lX().abi;
-  }
-  
-  public static h lX()
-  {
-    Assert.assertNotNull("MMCore not initialized by MMApplication", abb);
-    return abb;
-  }
-  
-  public static void lY()
-  {
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init crash handler", new Object[0]);
-    Thread.setDefaultUncaughtExceptionHandler(com.tencent.mm.wear.a.e.a.nM());
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init MMCore", new Object[0]);
-    abb = new h();
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "%s", new Object[] { com.tencent.mm.wear.a.a.nH() });
-    File localFile = new File(com.tencent.mm.wear.a.c.aiQ, "so");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiQ, "emoji");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiR, "crash");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiR, "voice");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiR, "log");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiR, "emoji");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(com.tencent.mm.wear.a.c.aiR, "avatar");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    com.tencent.mm.wear.a.c.d.b(new com.tencent.mm.wear.a.c.c());
-    MMActivity.z(MMApplication.getContext());
-    MMApplication.getContext();
-    MMActivity.mZ();
-    lX().abf.a(new com.tencent.mm.wear.app.d.b.c());
-    lX().abf.a(new com.tencent.mm.wear.app.d.b.b());
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "cpuId %s", new Object[] { com.tencent.mm.wear.a.a.a.nJ() });
-    lX().abd.a(new i((byte)0));
-    B(false);
-    mr();
-    abj = new Intent(MMApplication.getContext(), StepCountService.class);
-    MMApplication.getContext().startService(abj);
-  }
-  
-  public static void lZ()
-  {
-    lX();
-    lX().abd.finish();
-    lX().abf.finish();
-    lX();
-    lX().abe.stop();
-    lX().abh.finish();
-    MMApplication.getContext().stopService(abj);
+    aeC.aeE.a(locala);
   }
   
   public static void logout()
   {
-    abk = false;
+    aeL = false;
   }
   
-  public static com.tencent.mm.wear.a.d.a ma()
+  public static String mA()
   {
-    return lX().abh;
+    return aeC.aeJ;
   }
   
-  public static g mb()
+  public static h mK()
   {
-    return lX().abc;
+    return aeC;
   }
   
-  public static com.tencent.mm.wear.app.g.b mc()
+  public static void mL()
   {
-    return lX().abd;
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init crash handler", new Object[0]);
+    Thread.setDefaultUncaughtExceptionHandler(com.tencent.mm.wear.a.e.a.oA());
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init MMCore", new Object[0]);
+    aeC = new h();
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "%s", new Object[] { com.tencent.mm.wear.a.a.ov() });
+    File localFile = new File(com.tencent.mm.wear.a.c.ams, "so");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.ams, "emoji");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.amt, "crash");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.amt, "voice");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.amt, "log");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.amt, "emoji");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    localFile = new File(com.tencent.mm.wear.a.c.amt, "avatar");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    com.tencent.mm.wear.a.c.d.b(new com.tencent.mm.wear.a.c.c());
+    MMActivity.A(MMApplication.getContext());
+    MMApplication.getContext();
+    MMActivity.nM();
+    aeC.aeG.a(new com.tencent.mm.wear.app.d.b.c());
+    aeC.aeG.a(new com.tencent.mm.wear.app.d.b.b());
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "cpuId %s", new Object[] { com.tencent.mm.wear.a.a.a.ox() });
+    aeC.aeE.a(new i((byte)0));
+    E(false);
+    nd();
+    aeK = new Intent(MMApplication.getContext(), StepCountService.class);
+    MMApplication.getContext().startService(aeK);
   }
   
-  public static j md()
+  public static void mM()
   {
-    return lX().abf;
+    aeC.aeE.finish();
+    aeC.aeG.finish();
+    aeC.aeF.stop();
+    aeC.aeI.finish();
+    MMApplication.getContext().stopService(aeK);
   }
   
-  public static com.tencent.mm.wear.app.c.b me()
+  public static com.tencent.mm.wear.a.d.a mN()
   {
-    return lX().abg;
+    return aeC.aeI;
   }
   
-  public static com.tencent.mm.wear.app.emoji.gif.a mf()
+  public static g mO()
   {
-    return lX().abe;
+    return aeC.aeD;
   }
   
-  public static final File mg()
+  public static com.tencent.mm.wear.app.g.b mP()
   {
-    return new File(com.tencent.mm.wear.a.c.aiQ, "so");
+    return aeC.aeE;
   }
   
-  public static final File mh()
+  public static j mQ()
   {
-    return new File(com.tencent.mm.wear.a.c.aiQ, "emoji");
+    return aeC.aeG;
   }
   
-  public static final File mi()
+  public static com.tencent.mm.wear.app.c.b mR()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "voice");
+    return aeC.aeH;
   }
   
-  public static final File mj()
+  public static com.tencent.mm.wear.app.emoji.gif.a mS()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "crash");
+    return aeC.aeF;
   }
   
-  public static final File mk()
+  public static final File mT()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "log");
+    return new File(com.tencent.mm.wear.a.c.ams, "emoji");
   }
   
-  public static final File ml()
+  public static final File mU()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "emoji");
+    return new File(com.tencent.mm.wear.a.c.amt, "voice");
   }
   
-  public static final File mm()
+  public static final File mV()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "image");
+    return new File(com.tencent.mm.wear.a.c.amt, "crash");
   }
   
-  public static final File mn()
+  public static final File mW()
   {
-    return new File(com.tencent.mm.wear.a.c.aiR, "avatar");
+    return new File(com.tencent.mm.wear.a.c.amt, "log");
   }
   
-  public static boolean mo()
+  public static final File mX()
   {
-    return abk;
+    return new File(com.tencent.mm.wear.a.c.amt, "emoji");
   }
   
-  public static boolean mp()
+  public static final File mY()
   {
-    return abl;
+    return new File(com.tencent.mm.wear.a.c.amt, "image");
   }
   
-  public static boolean mq()
+  public static final File mZ()
   {
-    return abm;
+    return new File(com.tencent.mm.wear.a.c.amt, "avatar");
   }
   
-  public static void mr()
+  public static boolean na()
   {
-    if (abn)
+    return aeL;
+  }
+  
+  public static boolean nb()
+  {
+    return aeM;
+  }
+  
+  public static boolean nc()
+  {
+    return aeN;
+  }
+  
+  public static void nd()
+  {
+    if (aeO)
     {
       com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "already running resource", new Object[0]);
       return;
     }
-    abn = true;
-    int i;
-    if (MMActivity.ne()) {
-      if ((!com.tencent.mm.wear.a.f.d.T("stlport_shared")) || (!com.tencent.mm.wear.a.f.d.T("wechatvoicesilk")) || (!com.tencent.mm.wear.app.emoji.a.mx())) {
-        i = 1;
-      }
+    aeO = true;
+    if (MMActivity.nR())
+    {
+      System.loadLibrary("stlport_shared");
+      System.loadLibrary("wechatvoicesilk");
     }
-    while (i != 0)
+    if (!com.tencent.mm.wear.app.emoji.a.nj()) {}
+    for (int i = 1; i != 0; i = 0)
     {
       d locald = new d();
       locald.a(new f()
       {
-        public final void af(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void ai(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           if (paramAnonymousInt2 == 0) {
-            switch (paramAnonymousInt1)
+            if (paramAnonymousInt1 == 11001)
             {
-            default: 
-              if (paramAnonymousInt1 == 11001)
-              {
-                com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init resource success", new Object[0]);
-                h.mu();
-                h.D(true);
-                com.tencent.mm.sdk.a.a.WJ.a(new com.tencent.mm.b.a.a());
-              }
-              break;
+              com.tencent.mm.wear.app.emoji.a.nj();
+              com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init resource success", new Object[0]);
+              h.ng();
+              h.G(true);
+              com.tencent.mm.sdk.a.a.YM.a(new com.tencent.mm.b.a.a());
             }
           }
           while (paramAnonymousInt1 != 11001) {
-            for (;;)
-            {
-              return;
-              com.tencent.mm.wear.a.f.d.U("stlport_shared");
-              continue;
-              com.tencent.mm.wear.a.f.d.U("wechatvoicesilk");
-              continue;
-              com.tencent.mm.wear.app.emoji.a.mx();
-            }
+            return;
           }
           com.tencent.mm.wear.a.c.d.c("MicroMsg.MMCore", "init resource fail", new Object[0]);
-          h.mu();
-          h.D(false);
-          com.tencent.mm.sdk.a.a.WJ.a(new com.tencent.mm.b.a.a());
+          h.ng();
+          h.G(false);
+          com.tencent.mm.sdk.a.a.YM.a(new com.tencent.mm.b.a.a());
         }
       });
-      lX().abd.a(locald);
+      aeC.aeE.a(locald);
       return;
-      i = 0;
-      continue;
-      if (!com.tencent.mm.wear.app.emoji.a.mx()) {
-        i = 1;
-      } else {
-        i = 0;
-      }
     }
-    if (MMActivity.ne())
-    {
-      com.tencent.mm.wear.a.f.d.U("stlport_shared");
-      com.tencent.mm.wear.a.f.d.U("wechatvoicesilk");
-    }
-    abm = true;
-    abn = false;
-    com.tencent.mm.sdk.a.a.WJ.a(new com.tencent.mm.b.a.a());
+    aeN = true;
+    aeO = false;
+    com.tencent.mm.sdk.a.a.YM.a(new com.tencent.mm.b.a.a());
   }
 }
 

@@ -1,22 +1,18 @@
 package com.tencent.mobileqq.vip.lianghao;
 
-import bebv;
-import bebx;
-import bebz;
-
-public class RegisterLHAssistant$2
+class RegisterLHAssistant$2
   implements Runnable
 {
-  public RegisterLHAssistant$2(bebv parambebv) {}
+  RegisterLHAssistant$2(RegisterLHAssistant paramRegisterLHAssistant) {}
   
   public void run()
   {
-    bebv.a(this.this$0).a(bebv.a(this.this$0), new bebx(this));
+    RegisterLHAssistant.f(this.this$0).a(RegisterLHAssistant.b(this.this$0), new RegisterLHAssistant.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2
  * JD-Core Version:    0.7.0.1
  */

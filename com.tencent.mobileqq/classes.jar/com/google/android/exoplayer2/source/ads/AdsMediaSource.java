@@ -75,18 +75,16 @@ public final class AdsMediaSource
   
   private void maybeUpdateSourceInfo()
   {
-    if ((this.adPlaybackState != null) && (this.contentTimeline != null))
+    Object localObject = this.adPlaybackState;
+    if ((localObject != null) && (this.contentTimeline != null))
     {
-      this.adPlaybackState = this.adPlaybackState.withAdDurationsUs(this.adDurationsUs);
-      if (this.adPlaybackState.adGroupCount != 0) {
-        break label60;
+      this.adPlaybackState = ((AdPlaybackState)localObject).withAdDurationsUs(this.adDurationsUs);
+      if (this.adPlaybackState.adGroupCount == 0) {
+        localObject = this.contentTimeline;
+      } else {
+        localObject = new SinglePeriodAdTimeline(this.contentTimeline, this.adPlaybackState);
       }
-    }
-    label60:
-    for (Object localObject = this.contentTimeline;; localObject = new SinglePeriodAdTimeline(this.contentTimeline, this.adPlaybackState))
-    {
       this.listener.onSourceInfoRefreshed(this, (Timeline)localObject, this.contentManifest);
-      return;
     }
   }
   
@@ -105,26 +103,25 @@ public final class AdsMediaSource
   
   private void onAdSourceInfoRefreshed(MediaSource paramMediaSource, int paramInt1, int paramInt2, Timeline paramTimeline)
   {
+    int j = paramTimeline.getPeriodCount();
+    int i = 0;
     boolean bool = true;
-    if (paramTimeline.getPeriodCount() == 1) {}
-    for (;;)
+    if (j != 1) {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    this.adDurationsUs[paramInt1][paramInt2] = paramTimeline.getPeriod(0, this.period).getDurationUs();
+    if (this.deferredMediaPeriodByAdMediaSource.containsKey(paramMediaSource))
     {
-      Assertions.checkArgument(bool);
-      this.adDurationsUs[paramInt1][paramInt2] = paramTimeline.getPeriod(0, this.period).getDurationUs();
-      if (!this.deferredMediaPeriodByAdMediaSource.containsKey(paramMediaSource)) {
-        break label117;
-      }
       paramTimeline = (List)this.deferredMediaPeriodByAdMediaSource.get(paramMediaSource);
-      paramInt1 = 0;
+      paramInt1 = i;
       while (paramInt1 < paramTimeline.size())
       {
         ((DeferredMediaPeriod)paramTimeline.get(paramInt1)).createPeriod();
         paramInt1 += 1;
       }
-      bool = false;
+      this.deferredMediaPeriodByAdMediaSource.remove(paramMediaSource);
     }
-    this.deferredMediaPeriodByAdMediaSource.remove(paramMediaSource);
-    label117:
     maybeUpdateSourceInfo();
   }
   
@@ -143,32 +140,33 @@ public final class AdsMediaSource
       int j = paramMediaPeriodId.adIndexInAdGroup;
       if (this.adGroupMediaSources[i].length <= j)
       {
-        localObject = this.adPlaybackState.adGroups[paramMediaPeriodId.adGroupIndex].uris[paramMediaPeriodId.adIndexInAdGroup];
-        localObject = this.adMediaSourceFactory.createMediaSource((Uri)localObject, this.eventHandler, this.eventListener);
+        localObject1 = this.adPlaybackState.adGroups[paramMediaPeriodId.adGroupIndex].uris[paramMediaPeriodId.adIndexInAdGroup];
+        localObject1 = this.adMediaSourceFactory.createMediaSource((Uri)localObject1, this.eventHandler, this.eventListener);
         int k = this.adGroupMediaSources[paramMediaPeriodId.adGroupIndex].length;
         if (j >= k)
         {
           int m = j + 1;
-          this.adGroupMediaSources[i] = ((MediaSource[])Arrays.copyOf(this.adGroupMediaSources[i], m));
-          this.adDurationsUs[i] = Arrays.copyOf(this.adDurationsUs[i], m);
+          Object localObject2 = this.adGroupMediaSources;
+          localObject2[i] = ((MediaSource[])Arrays.copyOf(localObject2[i], m));
+          localObject2 = this.adDurationsUs;
+          localObject2[i] = Arrays.copyOf(localObject2[i], m);
           Arrays.fill(this.adDurationsUs[i], k, m, -9223372036854775807L);
         }
-        this.adGroupMediaSources[i][j] = localObject;
-        this.deferredMediaPeriodByAdMediaSource.put(localObject, new ArrayList());
-        prepareChildSource(paramMediaPeriodId, (MediaSource)localObject);
+        this.adGroupMediaSources[i][j] = localObject1;
+        this.deferredMediaPeriodByAdMediaSource.put(localObject1, new ArrayList());
+        prepareChildSource(paramMediaPeriodId, (MediaSource)localObject1);
       }
-      Object localObject = this.adGroupMediaSources[i][j];
-      paramMediaPeriodId = new DeferredMediaPeriod((MediaSource)localObject, new MediaSource.MediaPeriodId(0, paramMediaPeriodId.windowSequenceNumber), paramAllocator);
+      Object localObject1 = this.adGroupMediaSources[i][j];
+      paramMediaPeriodId = new DeferredMediaPeriod((MediaSource)localObject1, new MediaSource.MediaPeriodId(0, paramMediaPeriodId.windowSequenceNumber), paramAllocator);
       paramMediaPeriodId.setPrepareErrorListener(new AdsMediaSource.AdPrepareErrorListener(this, i, j));
-      paramAllocator = (List)this.deferredMediaPeriodByAdMediaSource.get(localObject);
-      if (paramAllocator == null) {
-        paramMediaPeriodId.createPeriod();
-      }
-      for (;;)
+      paramAllocator = (List)this.deferredMediaPeriodByAdMediaSource.get(localObject1);
+      if (paramAllocator == null)
       {
+        paramMediaPeriodId.createPeriod();
         return paramMediaPeriodId;
-        paramAllocator.add(paramMediaPeriodId);
       }
+      paramAllocator.add(paramMediaPeriodId);
+      return paramMediaPeriodId;
     }
     paramMediaPeriodId = new DeferredMediaPeriod(this.contentMediaSource, paramMediaPeriodId, paramAllocator);
     paramMediaPeriodId.createPeriod();
@@ -223,7 +221,7 @@ public final class AdsMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ads.AdsMediaSource
  * JD-Core Version:    0.7.0.1
  */

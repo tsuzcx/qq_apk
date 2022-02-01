@@ -15,40 +15,41 @@ final class MediaCodecUtil$CodecKey
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (paramObject.getClass() != CodecKey.class)) {
+    }
+    if (paramObject != null)
+    {
+      if (paramObject.getClass() != CodecKey.class) {
         return false;
       }
       paramObject = (CodecKey)paramObject;
-    } while ((TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.secure == paramObject.secure));
+      return (TextUtils.equals(this.mimeType, paramObject.mimeType)) && (this.secure == paramObject.secure);
+    }
     return false;
   }
   
   public int hashCode()
   {
+    String str = this.mimeType;
     int i;
-    if (this.mimeType == null)
-    {
+    if (str == null) {
       i = 0;
-      if (!this.secure) {
-        break label41;
-      }
+    } else {
+      i = str.hashCode();
     }
-    label41:
-    for (int j = 1231;; j = 1237)
-    {
-      return j + (i + 31) * 31;
-      i = this.mimeType.hashCode();
-      break;
+    int j;
+    if (this.secure) {
+      j = 1231;
+    } else {
+      j = 1237;
     }
+    return (i + 31) * 31 + j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.mediacodec.MediaCodecUtil.CodecKey
  * JD-Core Version:    0.7.0.1
  */

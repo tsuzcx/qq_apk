@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.ocr;
 
-import avwv;
-import avxa;
-import avxe;
+import com.tencent.mobileqq.ocr.api.IOCR;
+import com.tencent.mobileqq.qroute.QRoute;
 
-public class OcrCamera$8
+class OcrCamera$8
   implements Runnable
 {
-  public OcrCamera$8(avwv paramavwv, boolean paramBoolean, byte[] paramArrayOfByte) {}
+  OcrCamera$8(OcrCamera paramOcrCamera, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Boolean = false;
-    this.this$0.jdField_b_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Avxa != null) {
-      this.this$0.jdField_a_of_type_Avxa.a();
+    Object localObject = this.this$0;
+    ((OcrCamera)localObject).h = false;
+    ((OcrCamera)localObject).i = true;
+    if (((OcrCamera)localObject).c != null) {
+      this.this$0.c.a();
     }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = avxe.a(this.jdField_a_of_type_ArrayOfByte, avwv.a(this.this$0), avwv.b(this.this$0), avwv.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int, this.this$0.jdField_a_of_type_AndroidGraphicsRectF, true);; str = avxe.a(this.jdField_a_of_type_ArrayOfByte, avwv.d(this.this$0), avwv.e(this.this$0), avwv.c(this.this$0), this.this$0.jdField_a_of_type_Int, this.this$0.jdField_b_of_type_Int))
-    {
-      if (this.this$0.jdField_a_of_type_Avxa != null) {
-        this.this$0.jdField_a_of_type_Avxa.a(str);
-      }
-      avwv.a(this.this$0, false);
-      return;
+    if (this.a) {
+      localObject = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(this.b, OcrCamera.d(this.this$0), OcrCamera.e(this.this$0), OcrCamera.f(this.this$0), this.this$0.e, this.this$0.f, this.this$0.r, true);
+    } else {
+      localObject = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(this.b, OcrCamera.g(this.this$0), OcrCamera.h(this.this$0), OcrCamera.f(this.this$0), this.this$0.e, this.this$0.f);
     }
+    if (this.this$0.c != null) {
+      this.this$0.c.a((String)localObject);
+    }
+    OcrCamera.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrCamera.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:summary="@string/fz" android:title="@string/fy" android:key="allow_by_identity" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dyv" android:key="room_transfer_room_ower" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference android:title="@string/dwx" android:key="room_manager" android:layout="@layout/aql" />
-</PreferenceScreen>
+<host-apdu-service android:description="@string/a0t" android:requireDeviceUnlock="true" android:apduServiceBanner="@drawable/icon"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <aid-group android:description="@string/a0t" android:category="payment">
+        <aid-filter android:name="F123456789" />
+    </aid-group>
+</host-apdu-service>

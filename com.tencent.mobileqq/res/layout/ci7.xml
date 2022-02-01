@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ktt" android:layout_width="60.0dip" android:layout_height="60.0dip"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lnn" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center" android:id="@id/met" android:background="@drawable/e87" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="centerCrop" />
-</FrameLayout>
+    <ImageView android:layout_width="176.0dip" android:layout_height="132.0dip" android:layout_marginTop="60.0dip" android:src="@drawable/ibx" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/x55" />
+</LinearLayout>

@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.emoji.ui.widget;
 
 import android.content.Context;
-import android.text.ClipboardManager;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.view.View;
@@ -9,42 +8,44 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class MMCopiableTextView
   extends EditText
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int jpL;
-  private int lsx;
+  private int baL;
+  private int uQR;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(53855);
+    AppMethodBeat.i(109429);
     this.TAG = "MicroMsg.MMCopiableTextView";
     init();
-    AppMethodBeat.o(53855);
+    AppMethodBeat.o(109429);
   }
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(53856);
+    AppMethodBeat.i(109430);
     this.TAG = "MicroMsg.MMCopiableTextView";
     init();
-    AppMethodBeat.o(53856);
+    AppMethodBeat.o(109430);
   }
   
   private void init()
   {
-    AppMethodBeat.i(53857);
+    AppMethodBeat.i(109431);
     setOnLongClickListener(this);
     setLongClickable(true);
-    AppMethodBeat.o(53857);
+    AppMethodBeat.o(109431);
   }
   
   protected boolean getDefaultEditable()
@@ -56,35 +57,34 @@ public class MMCopiableTextView
   
   public boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(53858);
+    AppMethodBeat.i(109432);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
     paramView = getEditableText().toString();
-    if ((!bo.isNullOrNil(paramView)) && (this.jpL > 0) && (this.lsx > 0) && (this.lsx > this.jpL))
+    if ((!Util.isNullOrNil(paramView)) && (this.uQR > 0) && (this.baL > 0) && (this.baL > this.uQR))
     {
-      ClipboardManager localClipboardManager = (ClipboardManager)ah.getContext().getSystemService("clipboard");
-      if (localClipboardManager != null)
-      {
-        localClipboardManager.setText(paramView.substring(this.jpL, this.lsx).trim());
-        ab.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
-      }
-      Toast.makeText(getContext(), 2131296896, 0).show();
+      ClipboardHelper.setText(paramView.substring(this.uQR, this.baL).trim());
+      Toast.makeText(getContext(), h.h.app_copy_ok, 0).show();
     }
-    AppMethodBeat.o(53858);
+    a.a(false, this, "com/tencent/mm/plugin/emoji/ui/widget/MMCopiableTextView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(109432);
     return false;
   }
   
   public void setEndIndex(int paramInt)
   {
-    this.lsx = paramInt;
+    this.baL = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.jpL = paramInt;
+    this.uQR = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.widget.MMCopiableTextView
  * JD-Core Version:    0.7.0.1
  */

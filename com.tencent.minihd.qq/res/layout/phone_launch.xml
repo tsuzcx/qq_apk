@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <ImageView android:id="@id/phone_launch_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_contact_guide" />
+    <TextView android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/phone_launch_txt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/phone_contact_launch_tip" />
+    <Button android:id="@id/phone_enable_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="启用" android:contentDescription="立即启用通讯录绑定" style="@style/ButtonBlue" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
+</LinearLayout>

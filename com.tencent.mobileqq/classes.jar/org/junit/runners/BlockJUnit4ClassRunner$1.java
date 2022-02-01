@@ -7,14 +7,14 @@ class BlockJUnit4ClassRunner$1
 {
   BlockJUnit4ClassRunner$1(BlockJUnit4ClassRunner paramBlockJUnit4ClassRunner) {}
   
-  public Object runReflectiveCall()
+  protected Object runReflectiveCall()
   {
     return this.this$0.createTest();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.runners.BlockJUnit4ClassRunner.1
  * JD-Core Version:    0.7.0.1
  */

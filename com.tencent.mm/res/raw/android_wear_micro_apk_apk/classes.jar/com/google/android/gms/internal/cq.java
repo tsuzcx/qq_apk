@@ -6,11 +6,11 @@ import com.google.android.gms.common.api.c;
 public final class cq
   implements c
 {
-  private final Bundle Qy;
+  private final Bundle Sn;
   
-  public final Bundle jD()
+  public final Bundle jM()
   {
-    return this.Qy;
+    return this.Sn;
   }
 }
 

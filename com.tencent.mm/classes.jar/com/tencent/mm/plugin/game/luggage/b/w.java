@@ -1,77 +1,74 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.g.i;
+import android.content.Intent;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.b.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.downloader_app.api.a.c;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class w
-  extends bi<f>
+  extends bv<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, final bv.a parama)
   {
-    AppMethodBeat.i(135888);
-    ab.i("MicroMsg.JsApiSetGameData", "invokeInMM");
-    paramContext = i.ci(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(83076);
+    try
     {
-      ab.e("MicroMsg.JsApiSetGameData", "data is null");
-      parama.c("null_data", null);
-      AppMethodBeat.o(135888);
-      return;
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
+      {
+        paramString = paramString.optString("appId");
+        Intent localIntent = new Intent();
+        localIntent.putExtra("appId", paramString);
+        localIntent.putExtra("view_task", true);
+        localIntent.addFlags(268435456);
+        ((c)h.ax(c.class)).a(paramContext, localIntent, new a.c()
+        {
+          public final void cqd()
+          {
+            AppMethodBeat.i(83075);
+            parama.j(null, null);
+            AppMethodBeat.o(83075);
+          }
+        });
+        AppMethodBeat.o(83076);
+        return;
+      }
     }
-    paramString = paramContext.optString("preVerifyAppId");
-    if (bo.isNullOrNil(paramString))
+    catch (Exception paramString)
     {
-      ab.i("MicroMsg.JsApiSetGameData", "appId is null");
-      parama.c("appid_null", null);
-      AppMethodBeat.o(135888);
-      return;
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
+        paramString = "";
+      }
     }
-    String str1 = paramContext.optString("key");
-    String str2 = paramContext.optString("value");
-    String str3 = paramContext.optString("weight", "1");
-    String str4 = paramContext.optString("expireTime");
-    boolean bool = paramContext.optBoolean("autoClean", true);
-    if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)))
-    {
-      ab.i("MicroMsg.JsApiSetGameData", "key or value is null");
-      parama.c("null_key", null);
-      AppMethodBeat.o(135888);
-      return;
-    }
-    if (b.dav().a(paramString, str1, str2, str3, str4, bool))
-    {
-      parama.c(null, null);
-      AppMethodBeat.o(135888);
-      return;
-    }
-    parama.c("exceed_size", null);
-    AppMethodBeat.o(135888);
   }
   
-  public final void b(a<f>.a parama) {}
+  public final void b(b<GameWebPage>.a paramb) {}
   
-  public final int bjL()
+  public final int dgI()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "setGameData";
+    return "jumpDownloaderWidget";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.w
  * JD-Core Version:    0.7.0.1
  */

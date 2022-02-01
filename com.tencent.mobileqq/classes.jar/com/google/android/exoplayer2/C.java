@@ -72,7 +72,7 @@ public final class C
   public static final int MSG_SET_SURFACE = 1;
   public static final int MSG_SET_VOLUME = 2;
   public static final long NANOS_PER_SECOND = 1000000000L;
-  public static final UUID PLAYREADY_UUID;
+  public static final UUID PLAYREADY_UUID = new UUID(-7348484286925749626L, -6083546864340672619L);
   public static final int POSITION_UNSET = -1;
   public static final int PRIORITY_DOWNLOAD = -1000;
   public static final int PRIORITY_PLAYBACK = 0;
@@ -144,17 +144,17 @@ public final class C
   
   static
   {
-    if (Util.SDK_INT < 23) {}
-    for (int i = 1020;; i = 6396)
-    {
-      CHANNEL_OUT_7POINT1_SURROUND = i;
-      UUID_NIL = new UUID(0L, 0L);
-      COMMON_PSSH_UUID = new UUID(1186680826959645954L, -5988876978535335093L);
-      CLEARKEY_UUID = new UUID(-2129748144642739255L, 8654423357094679310L);
-      WIDEVINE_UUID = new UUID(-1301668207276963122L, -6645017420763422227L);
-      PLAYREADY_UUID = new UUID(-7348484286925749626L, -6083546864340672619L);
-      return;
+    int i;
+    if (Util.SDK_INT < 23) {
+      i = 1020;
+    } else {
+      i = 6396;
     }
+    CHANNEL_OUT_7POINT1_SURROUND = i;
+    UUID_NIL = new UUID(0L, 0L);
+    COMMON_PSSH_UUID = new UUID(1186680826959645954L, -5988876978535335093L);
+    CLEARKEY_UUID = new UUID(-2129748144642739255L, 8654423357094679310L);
+    WIDEVINE_UUID = new UUID(-1301668207276963122L, -6645017420763422227L);
   }
   
   @TargetApi(21)
@@ -165,23 +165,33 @@ public final class C
   
   public static long msToUs(long paramLong)
   {
-    if ((paramLong == -9223372036854775807L) || (paramLong == -9223372036854775808L)) {
-      return paramLong;
+    long l = paramLong;
+    if (paramLong != -9223372036854775807L)
+    {
+      if (paramLong == -9223372036854775808L) {
+        return paramLong;
+      }
+      l = paramLong * 1000L;
     }
-    return paramLong * 1000L;
+    return l;
   }
   
   public static long usToMs(long paramLong)
   {
-    if ((paramLong == -9223372036854775807L) || (paramLong == -9223372036854775808L)) {
-      return paramLong;
+    long l = paramLong;
+    if (paramLong != -9223372036854775807L)
+    {
+      if (paramLong == -9223372036854775808L) {
+        return paramLong;
+      }
+      l = paramLong / 1000L;
     }
-    return paramLong / 1000L;
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.C
  * JD-Core Version:    0.7.0.1
  */

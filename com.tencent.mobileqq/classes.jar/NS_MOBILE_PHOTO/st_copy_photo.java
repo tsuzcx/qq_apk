@@ -8,7 +8,7 @@ public final class st_copy_photo
   extends JceStruct
 {
   public String albumid = "";
-  public long owneruin;
+  public long owneruin = 0L;
   public String photoid = "";
   
   public st_copy_photo() {}
@@ -36,7 +36,7 @@ public final class st_copy_photo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.st_copy_photo
  * JD-Core Version:    0.7.0.1
  */

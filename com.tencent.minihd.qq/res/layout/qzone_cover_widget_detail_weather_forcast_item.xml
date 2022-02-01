@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/qzone_widget_detail" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="75.0dip">
+        <RelativeLayout android:layout_gravity="top" android:layout_width="fill_parent" android:layout_height="45.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/qzone_color_bai" android:gravity="center" android:id="@id/weather_forcast_week" android:layout_width="wrap_content" android:layout_height="31.0dip" android:text="今天" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/QzoneWidgetText" />
+            <ImageView android:id="@id/weather_forcast_icon" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/widget_weather_sun" android:scaleType="fitXY" android:layout_centerInParent="true" />
+            <RelativeLayout android:layout_width="95.0dip" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:id="@id/to" android:layout_width="17.0dip" android:layout_height="23.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/qzone_cover_weather_to" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+                <ImageView android:id="@id/from_degree" android:layout_width="4.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_degreescelsius" android:scaleType="centerCrop" android:layout_toLeftOf="@id/to" />
+                <ImageView android:id="@id/weather_from_num_second" android:layout_width="12.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_2" android:scaleType="centerCrop" android:layout_toLeftOf="@id/from_degree" />
+                <ImageView android:id="@id/weather_from_num_first" android:layout_width="7.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_1" android:scaleType="centerCrop" android:layout_toLeftOf="@id/weather_from_num_second" />
+                <ImageView android:id="@id/weather_from_belowzero" android:layout_width="7.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_belowzero" android:scaleType="centerCrop" android:layout_toLeftOf="@id/weather_from_num_first" />
+                <ImageView android:id="@id/weather_to_belowzero" android:layout_width="7.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_belowzero" android:scaleType="centerCrop" android:layout_toRightOf="@id/to" />
+                <ImageView android:id="@id/weather_to_num_first" android:layout_width="7.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_1" android:scaleType="centerCrop" android:layout_toRightOf="@id/weather_to_belowzero" />
+                <ImageView android:id="@id/weather_to_num_second" android:layout_width="12.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_2" android:scaleType="centerCrop" android:layout_toRightOf="@id/weather_to_num_first" />
+                <ImageView android:layout_width="4.0dip" android:layout_height="23.0dip" android:src="@drawable/qzone_cover_weather_degreescelsius" android:scaleType="centerCrop" android:layout_toRightOf="@id/weather_to_num_second" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <Button android:layout_width="0.0dip" android:layout_height="0.0dip" />
+    </LinearLayout>
+</LinearLayout>

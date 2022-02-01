@@ -19,7 +19,7 @@ public class ImageMaskFactory
   implements BlurMaskFilter.IBlurMaskFactory
 {
   private static final int HEIGHT_IMAGE = 480;
-  public static final String TAG = ImageMaskFactory.class.getSimpleName();
+  public static final String TAG = "ImageMaskFactory";
   private static final int WIDTH_IMAGE = 360;
   private String mDataPath;
   private int mDuration = 0;
@@ -34,26 +34,35 @@ public class ImageMaskFactory
   
   public ImageMaskFactory(ImageMaskItem paramImageMaskItem)
   {
-    if (paramImageMaskItem == null) {}
-    int i;
-    label97:
-    do
-    {
+    if (paramImageMaskItem == null) {
       return;
-      this.mDuration = paramImageMaskItem.getFrameDurationn();
-      this.mPlayCount = paramImageMaskItem.getPlayCount();
-      this.mFramesCount = paramImageMaskItem.getFrames();
-      this.mDataPath = paramImageMaskItem.getDataPath();
-      this.mMaskId = paramImageMaskItem.getMaskId();
-      i = 0;
-      if (i >= 1) {
-        break;
-      }
-      localObject = paramImageMaskItem.getDataPath() + File.separator + this.mMaskId + File.separator + this.mMaskId + "_" + i + ".png";
-    } while (!FileUtils.exists((String)localObject));
-    if (((String)localObject).startsWith("assets://")) {}
-    for (Object localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);; localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, 360, 480))
+    }
+    this.mDuration = paramImageMaskItem.getFrameDurationn();
+    this.mPlayCount = paramImageMaskItem.getPlayCount();
+    this.mFramesCount = paramImageMaskItem.getFrames();
+    this.mDataPath = paramImageMaskItem.getDataPath();
+    this.mMaskId = paramImageMaskItem.getMaskId();
+    int i = 0;
+    while (i < 1)
     {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramImageMaskItem.getDataPath());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.mMaskId);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.mMaskId);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
+      if (!FileUtils.exists((String)localObject)) {
+        return;
+      }
+      if (((String)localObject).startsWith("assets://")) {
+        localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+      } else {
+        localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, 360, 480);
+      }
       if (BitmapUtils.isLegal((Bitmap)localObject))
       {
         Frame localFrame = new Frame(0, RendererUtils.createTexture((Bitmap)localObject), ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
@@ -64,8 +73,6 @@ public class ImageMaskFactory
         ((Bitmap)localObject).recycle();
       }
       i += 1;
-      break label97;
-      break;
     }
   }
   
@@ -85,26 +92,31 @@ public class ImageMaskFactory
   
   public Frame getNextFrame(long paramLong)
   {
+    long l = this.mLastTimestamp;
     int i = 0;
-    if (this.mLastTimestamp == 0L) {
-      this.mLastTimestamp = paramLong;
-    }
-    for (this.mFrameIndex = 0;; this.mFrameIndex += 1)
+    if (l == 0L)
     {
-      do
-      {
-        if (this.mFramesCount != 0) {
-          i = this.mFrameIndex % this.mFramesCount;
-        }
-        if (((this.mFrameIndex == 0) || (i != 0)) && (i <= this.mFrameMap.size())) {
-          break;
-        }
-        return loadImage(this.mLastFrameIndex);
-        if ((this.mPlayCount != 0) && (this.mPlayCount * this.mFramesCount <= this.mFrameIndex)) {
-          return loadImage(this.mLastFrameIndex);
-        }
-      } while ((paramLong - this.mLastTimestamp < this.mDuration) || (this.mIsPaused));
       this.mLastTimestamp = paramLong;
+      this.mFrameIndex = 0;
+    }
+    else
+    {
+      j = this.mPlayCount;
+      if ((j != 0) && (j * this.mFramesCount <= this.mFrameIndex)) {
+        return loadImage(this.mLastFrameIndex);
+      }
+      if ((paramLong - this.mLastTimestamp >= this.mDuration) && (!this.mIsPaused))
+      {
+        this.mLastTimestamp = paramLong;
+        this.mFrameIndex += 1;
+      }
+    }
+    int j = this.mFramesCount;
+    if (j != 0) {
+      i = this.mFrameIndex % j;
+    }
+    if (((this.mFrameIndex != 0) && (i == 0)) || (i > this.mFrameMap.size())) {
+      return loadImage(this.mLastFrameIndex);
     }
     return loadImage(i);
   }
@@ -117,12 +129,27 @@ public class ImageMaskFactory
     if (this.mFrameMap.containsKey(Integer.valueOf(paramInt))) {
       return (Frame)this.mFrameMap.get(Integer.valueOf(paramInt));
     }
-    Object localObject = this.mDataPath + File.separator + this.mMaskId + File.separator + this.mMaskId + "_" + paramInt + ".png";
-    if (!FileUtils.exists((String)localObject)) {
-      return (Frame)this.mFrameMap.get(Integer.valueOf(this.mFrameMap.size() - 1));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mDataPath);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.mMaskId);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.mMaskId);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    if (!FileUtils.exists((String)localObject))
+    {
+      localObject = this.mFrameMap;
+      return (Frame)((HashMap)localObject).get(Integer.valueOf(((HashMap)localObject).size() - 1));
     }
-    if (((String)localObject).startsWith("assets://")) {}
-    for (localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT); BitmapUtils.isLegal((Bitmap)localObject); localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT))
+    if (((String)localObject).startsWith("assets://")) {
+      localObject = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath((String)localObject), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+    } else {
+      localObject = BitmapUtils.decodeSampledBitmapFromFile((String)localObject, MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
+    }
+    if (BitmapUtils.isLegal((Bitmap)localObject))
     {
       Frame localFrame = new Frame(0, RendererUtils.createTexture((Bitmap)localObject), ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       this.mFrameMap.put(Integer.valueOf(paramInt), localFrame);
@@ -153,6 +180,11 @@ public class ImageMaskFactory
     return null;
   }
   
+  public void reset()
+  {
+    this.mLastTimestamp = 0L;
+  }
+  
   public void resume()
   {
     if (this.mIsPaused) {
@@ -164,7 +196,7 @@ public class ImageMaskFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.ImageMaskFactory
  * JD-Core Version:    0.7.0.1
  */

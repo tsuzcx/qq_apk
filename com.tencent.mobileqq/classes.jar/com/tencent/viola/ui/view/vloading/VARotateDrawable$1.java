@@ -7,7 +7,8 @@ class VARotateDrawable$1
   
   public void run()
   {
-    VARotateDrawable.access$002(this.this$0, VARotateDrawable.access$000(this.this$0) + this.this$0.frameRotateDeg);
+    VARotateDrawable localVARotateDrawable = this.this$0;
+    VARotateDrawable.access$016(localVARotateDrawable, localVARotateDrawable.frameRotateDeg);
     if (VARotateDrawable.access$000(this.this$0) > 360.0F - this.this$0.frameRotateDeg) {
       VARotateDrawable.access$002(this.this$0, 0.0F);
     }
@@ -17,7 +18,7 @@ class VARotateDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.vloading.VARotateDrawable.1
  * JD-Core Version:    0.7.0.1
  */

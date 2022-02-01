@@ -1,20 +1,16 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.c.e.b;
-import a.l;
+import kotlin.Metadata;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CoroutineExceptionHandler;", "Lkotlin/coroutines/CoroutineContext$Element;", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "Key", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ChildJob;", "Lkotlinx/coroutines/Job;", "parentCancelled", "", "parentJob", "Lkotlinx/coroutines/ParentJob;", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface x
-  extends e.b
+  extends cb
 {
-  public static final x.a CHx = x.a.CHy;
-  
-  public abstract void handleException(e parame, Throwable paramThrowable);
+  public abstract void a(cq paramcq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.x
  * JD-Core Version:    0.7.0.1
  */

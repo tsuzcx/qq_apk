@@ -11,9 +11,9 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(55066);
+    AppMethodBeat.i(94501);
     sInstance = new ArgbEvaluator();
-    AppMethodBeat.o(55066);
+    AppMethodBeat.o(94501);
   }
   
   public static ArgbEvaluator getInstance()
@@ -23,7 +23,7 @@ public final class a
   
   public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(55065);
+    AppMethodBeat.i(94500);
     int i = ((Integer)paramObject1).intValue();
     float f1 = (i >> 24 & 0xFF) / 255.0F;
     float f4 = (i >> 16 & 0xFF) / 255.0F;
@@ -47,13 +47,13 @@ public final class a
     int j = Math.round(f4 * 255.0F);
     int k = Math.round(f5 * 255.0F);
     int m = Math.round(f3 * 255.0F);
-    AppMethodBeat.o(55065);
+    AppMethodBeat.o(94500);
     return Integer.valueOf(m | i << 24 | j << 16 | k << 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.a
  * JD-Core Version:    0.7.0.1
  */

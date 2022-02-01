@@ -1,10 +1,13 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 
 public class ebl
-  extends AbstractChatItemBuilder.ViewHolder
+  implements View.OnClickListener
 {
-  public ebl(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
+  public ebl(VideoItemBuilder paramVideoItemBuilder) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

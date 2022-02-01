@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cz" android:visibility="gone" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/lg" />
-    <TextView android:id="@id/dei" android:visibility="gone" android:drawableLeft="@raw/card_photoicon" android:drawablePadding="@dimen/ne" android:layout_toRightOf="@id/cz" style="@style/lj" />
-    <TextView android:textColor="@color/tc" android:gravity="center|left" android:id="@id/dej" android:visibility="gone" android:layout_marginTop="@dimen/n_" android:layout_toRightOf="@id/cz" android:layout_below="@id/dei" style="@style/lj" />
-</RelativeLayout>
+<FrameLayout android:background="@drawable/z3" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:layout_marginLeft="@dimen/cv" android:layout_marginRight="@dimen/cv" android:layout_marginBottom="@dimen/cd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="center_vertical" android:id="@id/f71" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/uy" android:textColor="@color/az" android:id="@id/kg_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kg6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/bv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/kg_" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/kg7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginRight="@dimen/cp" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

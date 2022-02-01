@@ -12,34 +12,35 @@ public final class mobile_adv_report_req
   static s_anti_cheat cache_anti_cheat;
   static Map<Integer, String> cache_busi_param;
   static Map<Integer, String> cache_cookie = new HashMap();
-  public int action_expectation;
-  public int action_type;
-  public s_anti_cheat anti_cheat;
+  public int action_expectation = 0;
+  public int action_type = 0;
+  public s_anti_cheat anti_cheat = null;
   public String antispam_info = "";
-  public Map<Integer, String> busi_param;
-  public long client_time;
-  public Map<Integer, String> cookie;
-  public long cost_time;
-  public long error_code;
-  public long feed_index;
+  public Map<Integer, String> busi_param = null;
+  public long client_time = 0L;
+  public Map<Integer, String> cookie = null;
+  public long cost_time = 0L;
+  public long error_code = 0L;
+  public long feed_index = 0L;
   public String feeds_click_attachinfo = "";
-  public boolean is_filter;
+  public boolean is_filter = false;
   public boolean is_impression = true;
-  public boolean is_installed;
-  public boolean is_repeated;
+  public boolean is_installed = false;
+  public boolean is_repeated = false;
   public boolean is_report_gdt = true;
-  public boolean is_trace;
-  public int report_posi;
-  public long stay_time;
+  public boolean is_trace = false;
+  public int report_posi = 0;
+  public long stay_time = 0L;
   public String video_playinfo = "";
-  public int write_return_code;
+  public int write_return_code = 0;
   
   static
   {
-    cache_cookie.put(Integer.valueOf(0), "");
+    Integer localInteger = Integer.valueOf(0);
+    cache_cookie.put(localInteger, "");
     cache_anti_cheat = new s_anti_cheat();
     cache_busi_param = new HashMap();
-    cache_busi_param.put(Integer.valueOf(0), "");
+    cache_busi_param.put(localInteger, "");
   }
   
   public mobile_adv_report_req() {}
@@ -96,36 +97,42 @@ public final class mobile_adv_report_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 0);
+    Object localObject = this.cookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
     paramJceOutputStream.write(this.report_posi, 1);
     paramJceOutputStream.write(this.write_return_code, 2);
     paramJceOutputStream.write(this.client_time, 3);
     paramJceOutputStream.write(this.feed_index, 4);
-    if (this.anti_cheat != null) {
-      paramJceOutputStream.write(this.anti_cheat, 5);
+    localObject = this.anti_cheat;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.action_type, 6);
     paramJceOutputStream.write(this.action_expectation, 7);
     paramJceOutputStream.write(this.is_impression, 8);
     paramJceOutputStream.write(this.is_installed, 9);
-    if (this.antispam_info != null) {
-      paramJceOutputStream.write(this.antispam_info, 10);
+    localObject = this.antispam_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.video_playinfo != null) {
-      paramJceOutputStream.write(this.video_playinfo, 11);
+    localObject = this.video_playinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.stay_time, 12);
     paramJceOutputStream.write(this.is_repeated, 13);
     paramJceOutputStream.write(this.is_trace, 14);
     paramJceOutputStream.write(this.cost_time, 15);
     paramJceOutputStream.write(this.is_filter, 16);
-    if (this.feeds_click_attachinfo != null) {
-      paramJceOutputStream.write(this.feeds_click_attachinfo, 17);
+    localObject = this.feeds_click_attachinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 17);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 18);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 18);
     }
     paramJceOutputStream.write(this.error_code, 19);
     paramJceOutputStream.write(this.is_report_gdt, 20);
@@ -133,7 +140,7 @@ public final class mobile_adv_report_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ADV_REPORT.mobile_adv_report_req
  * JD-Core Version:    0.7.0.1
  */

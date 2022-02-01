@@ -7,8 +7,8 @@ class ShortVideoPreviewActivity$13
   
   public void run()
   {
-    ShortVideoPreviewActivity.b(this.this$0);
-    azdd.b = System.currentTimeMillis();
+    ShortVideoPreviewActivity.access$200(this.this$0);
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.c = System.currentTimeMillis();
     this.this$0.setResult(-1);
   }
 }

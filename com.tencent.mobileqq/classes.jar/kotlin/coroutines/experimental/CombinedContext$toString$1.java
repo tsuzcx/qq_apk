@@ -23,16 +23,25 @@ final class CombinedContext$toString$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "acc");
     Intrinsics.checkParameterIsNotNull(paramElement, "element");
-    if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)paramString).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return paramElement.toString();
     }
-    return paramString + ", " + paramElement;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramElement);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     kotlin.coroutines.experimental.CombinedContext.toString.1
  * JD-Core Version:    0.7.0.1
  */

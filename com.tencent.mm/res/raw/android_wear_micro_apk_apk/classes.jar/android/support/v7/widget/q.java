@@ -2,11 +2,11 @@ package android.support.v7.widget;
 
 final class q
 {
-  final r sS;
+  final r uI;
   
   public q(r paramr)
   {
-    this.sS = paramr;
+    this.uI = paramr;
   }
 }
 

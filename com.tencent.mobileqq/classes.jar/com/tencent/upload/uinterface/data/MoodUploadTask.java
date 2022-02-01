@@ -50,19 +50,18 @@ public class MoodUploadTask
   
   private static Map<String, String> clearInValidValue(Map<String, String> paramMap)
   {
-    if (paramMap == null) {}
-    for (;;)
-    {
+    if (paramMap == null) {
       return paramMap;
-      Iterator localIterator = paramMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (localEntry.getValue() == null) {
-          paramMap.put(localEntry.getKey(), "");
-        }
+    }
+    Iterator localIterator = paramMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() == null) {
+        paramMap.put(localEntry.getKey(), "");
       }
     }
+    return paramMap;
   }
   
   private ShuoshuoInfoReq createReq()
@@ -72,12 +71,13 @@ public class MoodUploadTask
     localShuoshuoInfoReq.iBatchID = this.iBatchID;
     localShuoshuoInfoReq.sAlbumID = this.sAlbumID;
     localShuoshuoInfoReq.pic_list = new ArrayList();
-    if (this.pictureInfoList != null)
+    Object localObject = this.pictureInfoList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.pictureInfoList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        MoodUploadTask.PictureInfo localPictureInfo = (MoodUploadTask.PictureInfo)localIterator.next();
+        MoodUploadTask.PictureInfo localPictureInfo = (MoodUploadTask.PictureInfo)((Iterator)localObject).next();
         localShuoshuoInfoReq.pic_list.add(toShuoshuoPicInfo(localPictureInfo));
       }
     }
@@ -115,43 +115,43 @@ public class MoodUploadTask
   
   public byte[] buildExtra()
   {
-    Object localObject1 = null;
-    Object localObject2 = createReq();
-    String str = localObject2.getClass().getSimpleName();
+    Object localObject1 = createReq();
+    Object localObject3 = localObject1.getClass().getSimpleName();
+    Object localObject2;
     try
     {
-      localObject2 = ProtocolUtil.pack(str, localObject2);
-      localObject1 = localObject2;
+      localObject1 = ProtocolUtil.pack((String)localObject3, localObject1);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        UploadLog.e("MoodUploadTask", localException.toString());
-      }
+      UploadLog.e("MoodUploadTask", localException.toString());
+      localObject2 = null;
     }
-    localObject2 = localObject1;
-    if (localObject1 == null)
+    localObject3 = localObject2;
+    if (localObject2 == null)
     {
-      localObject2 = super.buildExtra();
+      localObject3 = super.buildExtra();
       UploadLog.e("MoodUploadTask", "package ShuoshuoInfoReq error!!!");
     }
-    return localObject2;
+    return localObject3;
   }
   
-  public UploadRequest getControlRequest()
+  protected UploadRequest getControlRequest()
   {
-    Object localObject = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
+    Object localObject1 = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
     this.mCheckType = CheckType.TYPE_SHA1;
     this.mChecksum = "";
     buildEnv();
     this.mModel = UploadModel.MODEL_NORMAL;
     this.mStEnv = UploadGlobalConfig.getEnv();
-    localObject = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null);
-    ((FileControlRequest)localObject).setExtraParam(buildExtra());
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("1", (FileControlReq)((FileControlRequest)localObject).createJceRequest());
-    return new BatchControlRequest(localHashMap);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.iUin);
+    ((StringBuilder)localObject2).append("");
+    localObject1 = new FileControlRequest(((StringBuilder)localObject2).toString(), this.mAppid, (AuthToken)localObject1, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null, this.mExtend_info);
+    ((FileControlRequest)localObject1).setExtraParam(buildExtra());
+    localObject2 = new HashMap();
+    ((Map)localObject2).put("1", (FileControlReq)((FileControlRequest)localObject1).createJceRequest());
+    return new BatchControlRequest((Map)localObject2);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -159,7 +159,7 @@ public class MoodUploadTask
     return TaskTypeConfig.ImageUploadTaskType;
   }
   
-  public void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
+  protected void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
   {
     processUploadMoodRsp(((FileControlRsp)((FileBatchControlRsp)paramJceStruct).control_rsp.get("1")).biz_rsp);
   }
@@ -195,29 +195,35 @@ public class MoodUploadTask
     try
     {
       paramArrayOfByte = (ShuoshuoInfoRsp)ProtocolUtil.unpack(ShuoshuoInfoRsp.class.getSimpleName(), paramArrayOfByte);
-      if (paramArrayOfByte == null)
-      {
-        onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), "processMoodRsp() unpack ShuoshuoInfoRsp == null !");
-        return;
-      }
     }
     catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        UploadLog.e("MoodUploadTask", paramArrayOfByte.toString());
-        paramArrayOfByte = null;
-      }
-      UploadLog.d("MoodUploadTask", "onUploadSucceed flowid = " + this.flowId);
-      onUploadSucceed(new MoodUploadResult(paramArrayOfByte.vBusiNessDataRsp));
-      setTaskStatus(TaskState.SUCCEED);
-      onTaskFinished(Const.UploadRetCode.SUCCEED.getCode(), Const.UploadRetCode.SUCCEED.getDesc());
+      UploadLog.e("MoodUploadTask", paramArrayOfByte.toString());
+      paramArrayOfByte = null;
     }
+    if (paramArrayOfByte == null)
+    {
+      int i = Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode();
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("(");
+      paramArrayOfByte.append(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode());
+      paramArrayOfByte.append(")");
+      paramArrayOfByte.append(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getDesc());
+      onError(i, paramArrayOfByte.toString());
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUploadSucceed flowid = ");
+    localStringBuilder.append(this.flowId);
+    UploadLog.d("MoodUploadTask", localStringBuilder.toString());
+    onUploadSucceed(new MoodUploadResult(paramArrayOfByte.vBusiNessDataRsp));
+    setTaskStatus(TaskState.SUCCEED);
+    onTaskFinished(Const.UploadRetCode.SUCCEED.getCode(), Const.UploadRetCode.SUCCEED.getDesc());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.MoodUploadTask
  * JD-Core Version:    0.7.0.1
  */

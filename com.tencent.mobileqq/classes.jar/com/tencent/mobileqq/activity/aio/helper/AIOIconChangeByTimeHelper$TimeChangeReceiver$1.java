@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import afdf;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import java.lang.ref.WeakReference;
 
-public class AIOIconChangeByTimeHelper$TimeChangeReceiver$1
+class AIOIconChangeByTimeHelper$TimeChangeReceiver$1
   implements Runnable
 {
-  public AIOIconChangeByTimeHelper$TimeChangeReceiver$1(afdf paramafdf, BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  AIOIconChangeByTimeHelper$TimeChangeReceiver$1(AIOIconChangeByTimeHelper.TimeChangeReceiver paramTimeChangeReceiver, BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.b(this.jdField_a_of_type_Boolean);
+    this.a.W.b(this.b, (BaseChatPie)AIOIconChangeByTimeHelper.TimeChangeReceiver.a(this.this$0).get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

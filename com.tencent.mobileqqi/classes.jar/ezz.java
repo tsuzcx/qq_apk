@@ -1,46 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.CircleManager;
-import com.tencent.mobileqq.app.CircleServlet;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
 public class ezz
-  implements INetEngine.INetEngineListener
+  implements Comparator
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public ezz(ConditionSearchManager paramConditionSearchManager) {}
   
-  public ezz(CircleServlet paramCircleServlet, Intent paramIntent, byte[] paramArrayOfByte)
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public void a(NetReq paramNetReq, int paramInt1, int paramInt2) {}
-  
-  public void a(NetResp paramNetResp)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("CircleManager", 2, "CircleHttpCommnunicatorListener$onResp");
+    int j = paramBaseAddress1.d.compareTo(paramBaseAddress2.d);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.c.compareTo(paramBaseAddress2.c);
     }
-    if ((paramNetResp == null) || (paramNetResp.d != 0))
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("CircleHttpCommnunicatorListener$onResp | resp = ").append(paramNetResp).append(" | mResult=");
-        if (paramNetResp != null) {
-          i = paramNetResp.d;
-        }
-        QLog.d("CircleManager", 2, i);
-      }
-      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
-      CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet).a();
-      return;
-    }
-    CircleServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppCircleServlet, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
+    return i;
   }
 }
 

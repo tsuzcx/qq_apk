@@ -1,28 +1,22 @@
 package com.tencent.biz.common.offline;
 
-import nbu;
-
-public class BidDownloader$1$1
+class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(nbu paramnbu) {}
+  BidDownloader$1$1(BidDownloader.1 param1) {}
   
   public void run()
   {
-    if (this.a.a.b == 1) {}
-    for (;;)
-    {
+    if (this.a.b.j == 1) {
       try
       {
         Thread.sleep(5000L);
-        this.a.a.b();
-        return;
       }
       catch (InterruptedException localInterruptedException1)
       {
         localInterruptedException1.printStackTrace();
-        continue;
       }
+    } else {
       try
       {
         Thread.sleep(10000L);
@@ -32,11 +26,12 @@ public class BidDownloader$1$1
         localInterruptedException2.printStackTrace();
       }
     }
+    this.a.b.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1.1
  * JD-Core Version:    0.7.0.1
  */

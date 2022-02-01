@@ -1,6 +1,5 @@
 package com.tencent.matrix.resource;
 
-import android.annotation.TargetApi;
 import android.app.Service;
 import android.app.job.JobInfo;
 import android.app.job.JobInfo.Builder;
@@ -17,36 +16,35 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Process;
-import com.tencent.matrix.g.c;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class MatrixJobIntentService
   extends Service
 {
+  static final HashMap<ComponentName, h> boa = new HashMap();
   static final Object sLock = new Object();
-  static final HashMap<ComponentName, h> xt = new HashMap();
-  b bOB;
-  h bOC;
-  a bOD;
+  boolean bnY = false;
+  final ArrayList<d> bnZ;
+  b eYY;
+  h eYZ;
+  a eZa;
   boolean mDestroyed = false;
   boolean mStopped = false;
-  boolean xr = false;
-  final ArrayList<d> xs;
   
   public MatrixJobIntentService()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.xs = null;
+      this.bnZ = null;
       return;
     }
-    this.xs = new ArrayList();
+    this.bnZ = new ArrayList();
   }
   
   private static h a(Context paramContext, ComponentName paramComponentName, boolean paramBoolean, int paramInt)
   {
-    h localh = (h)xt.get(paramComponentName);
+    h localh = (h)boa.get(paramComponentName);
     Object localObject = localh;
     if (localh == null)
     {
@@ -60,50 +58,79 @@ public abstract class MatrixJobIntentService
     label69:
     for (paramContext = new g(paramContext, paramComponentName, paramInt);; paramContext = new c(paramContext, paramComponentName))
     {
-      xt.put(paramComponentName, paramContext);
+      boa.put(paramComponentName, paramContext);
       localObject = paramContext;
       return localObject;
     }
   }
   
-  private static void a(Context paramContext, ComponentName paramComponentName, int paramInt, Intent paramIntent)
+  public static void a(Context paramContext, Class arg1, int paramInt, Intent paramIntent)
   {
-    if (paramIntent == null) {
-      throw new IllegalArgumentException("work must not be null");
-    }
+    ComponentName localComponentName = new ComponentName(paramContext, ???);
     synchronized (sLock)
     {
-      paramContext = a(paramContext, paramComponentName, true, paramInt);
-      paramContext.fO(paramInt);
-      paramContext.m(paramIntent);
+      paramContext = a(paramContext, localComponentName, true, paramInt);
+      paramContext.nt(paramInt);
+      paramContext.p(paramIntent);
       return;
     }
   }
   
-  public static void a(Context paramContext, Class paramClass, int paramInt, Intent paramIntent)
+  final void aza()
   {
-    a(paramContext, new ComponentName(paramContext, paramClass), paramInt, paramIntent);
-  }
-  
-  @TargetApi(11)
-  final void bi(boolean paramBoolean)
-  {
-    if (this.bOD == null)
-    {
-      this.bOD = new a();
-      if ((this.bOC != null) && (paramBoolean)) {
-        this.bOC.zg();
+    if (this.bnZ != null) {
+      synchronized (this.bnZ)
+      {
+        this.eZa = null;
+        if ((this.bnZ != null) && (!this.bnZ.isEmpty())) {
+          dJ(false);
+        }
+        while (this.mDestroyed) {
+          return;
+        }
+        this.eYZ.azf();
       }
-      this.bOD.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
     }
   }
   
-  protected abstract void l(Intent paramIntent);
+  final e azb()
+  {
+    ??? = null;
+    if (this.eYY != null) {
+      ??? = this.eYY.azb();
+    }
+    while (this.bnZ == null) {
+      return ???;
+    }
+    synchronized (this.bnZ)
+    {
+      if ((this.bnZ != null) && (!this.bnZ.isEmpty()))
+      {
+        e locale = (e)this.bnZ.remove(0);
+        return locale;
+      }
+    }
+    return null;
+  }
+  
+  final void dJ(boolean paramBoolean)
+  {
+    if (this.eZa == null)
+    {
+      this.eZa = new a();
+      if ((this.eYZ != null) && (paramBoolean)) {
+        this.eYZ.aze();
+      }
+      this.eZa.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+    }
+  }
+  
+  protected abstract void o(Intent paramIntent);
   
   public IBinder onBind(Intent paramIntent)
   {
-    if (this.bOB != null) {
-      return this.bOB.ze();
+    if (this.eYY != null) {
+      return this.eYY.azc();
     }
     return null;
   }
@@ -113,82 +140,44 @@ public abstract class MatrixJobIntentService
     super.onCreate();
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.bOB = new f(this);
-      this.bOC = null;
+      this.eYY = new f(this);
+      this.eYZ = null;
       return;
     }
-    this.bOB = null;
-    this.bOC = a(this, new ComponentName(this, getClass()), false, 0);
+    this.eYY = null;
+    this.eYZ = a(this, new ComponentName(this, getClass()), false, 0);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.xs != null) {
-      synchronized (this.xs)
-      {
-        this.mDestroyed = true;
-        this.bOC.zh();
-        return;
-      }
+    if (this.bnZ != null) {}
+    synchronized (this.bnZ)
+    {
+      this.mDestroyed = true;
+      this.eYZ.azf();
+      return;
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if (this.xs != null)
+    if (this.bnZ != null)
     {
-      this.bOC.zf();
-      synchronized (this.xs)
+      this.eYZ.azd();
+      synchronized (this.bnZ)
       {
-        ArrayList localArrayList2 = this.xs;
+        ArrayList localArrayList2 = this.bnZ;
         if (paramIntent != null)
         {
           localArrayList2.add(new d(paramIntent, paramInt2));
-          bi(true);
+          dJ(true);
           return 3;
         }
         paramIntent = new Intent();
       }
     }
     return 2;
-  }
-  
-  final void zc()
-  {
-    if (this.xs != null) {
-      synchronized (this.xs)
-      {
-        this.bOD = null;
-        if ((this.xs != null) && (!this.xs.isEmpty())) {
-          bi(false);
-        }
-        while (this.mDestroyed) {
-          return;
-        }
-        this.bOC.zh();
-      }
-    }
-  }
-  
-  final e zd()
-  {
-    ??? = null;
-    if (this.bOB != null) {
-      ??? = this.bOB.zd();
-    }
-    while (this.xs == null) {
-      return ???;
-    }
-    synchronized (this.xs)
-    {
-      if ((this.xs != null) && (!this.xs.isEmpty()))
-      {
-        e locale = (e)this.xs.remove(0);
-        return locale;
-      }
-    }
-    return null;
   }
   
   final class a
@@ -199,18 +188,18 @@ public abstract class MatrixJobIntentService
   
   static abstract interface b
   {
-    public abstract MatrixJobIntentService.e zd();
+    public abstract MatrixJobIntentService.e azb();
     
-    public abstract IBinder ze();
+    public abstract IBinder azc();
   }
   
   static final class c
     extends MatrixJobIntentService.h
   {
-    private final PowerManager.WakeLock bOF;
-    private final PowerManager.WakeLock bOG;
-    boolean bOH;
-    boolean bOI;
+    private final PowerManager.WakeLock eZc;
+    private final PowerManager.WakeLock eZd;
+    boolean eZe;
+    boolean eZf;
     private final Context mContext;
     
     c(Context paramContext, ComponentName paramComponentName)
@@ -220,109 +209,143 @@ public abstract class MatrixJobIntentService
       if (this.mContext.checkPermission("android.permission.WAKE_LOCK", Process.myPid(), Process.myUid()) == 0)
       {
         paramContext = (PowerManager)paramContext.getSystemService("power");
-        this.bOF = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
-        this.bOF.setReferenceCounted(false);
-        this.bOG = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
-        this.bOG.setReferenceCounted(false);
+        this.eZc = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
+        this.eZc.setReferenceCounted(false);
+        this.eZd = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
+        this.eZd.setReferenceCounted(false);
         return;
       }
-      c.w("Matrix.JobIntentService", "it would be better to grant WAKE_LOCK permission to your app so that tinker can use WakeLock to keep system awake.", new Object[0]);
-      this.bOG = null;
-      this.bOF = null;
+      com.tencent.matrix.e.c.w("Matrix.JobIntentService", "it would be better to grant WAKE_LOCK permission to your app so that tinker can use WakeLock to keep system awake.", new Object[0]);
+      this.eZd = null;
+      this.eZc = null;
     }
     
-    final void m(Intent paramIntent)
+    public final void azd()
+    {
+      try
+      {
+        this.eZe = false;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+    
+    public final void aze()
+    {
+      try
+      {
+        if (!this.eZf)
+        {
+          this.eZf = true;
+          PowerManager.WakeLock localWakeLock;
+          if (this.eZd != null)
+          {
+            localWakeLock = this.eZd;
+            com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(600000L, new com.tencent.mm.hellhoundlib.b.a());
+            com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aYi(), "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingStarted", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+            long l = ((Long)com.tencent.mm.hellhoundlib.b.c.a(locala).sb(0)).longValue();
+            com.tencent.mm.hellhoundlib.b.c.aYk();
+            localWakeLock.acquire(l);
+            com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingStarted", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+          }
+          if (this.eZc != null)
+          {
+            localWakeLock = this.eZc;
+            com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingStarted", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+            localWakeLock.release();
+            com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingStarted", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+          }
+        }
+        return;
+      }
+      finally {}
+    }
+    
+    public final void azf()
+    {
+      try
+      {
+        if (this.eZf)
+        {
+          PowerManager.WakeLock localWakeLock;
+          if ((this.eZe) && (this.eZc != null))
+          {
+            localWakeLock = this.eZc;
+            com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(60000L, new com.tencent.mm.hellhoundlib.b.a());
+            com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aYi(), "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingFinished", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+            long l = ((Long)com.tencent.mm.hellhoundlib.b.c.a(locala).sb(0)).longValue();
+            com.tencent.mm.hellhoundlib.b.c.aYk();
+            localWakeLock.acquire(l);
+            com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingFinished", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+          }
+          this.eZf = false;
+          if (this.eZd != null)
+          {
+            localWakeLock = this.eZd;
+            com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingFinished", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+            localWakeLock.release();
+            com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "serviceProcessingFinished", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+          }
+        }
+        return;
+      }
+      finally {}
+    }
+    
+    final void p(Intent paramIntent)
     {
       paramIntent = new Intent(paramIntent);
       paramIntent.setComponent(this.mComponentName);
       try
       {
-        if (this.mContext.startService(paramIntent) != null) {
-          try
+        if (this.mContext.startService(paramIntent) != null) {}
+        try
+        {
+          if (!this.eZe)
           {
-            if (!this.bOH)
+            this.eZe = true;
+            if ((!this.eZf) && (this.eZc != null))
             {
-              this.bOH = true;
-              if ((!this.bOI) && (this.bOF != null)) {
-                this.bOF.acquire(60000L);
-              }
+              paramIntent = this.eZc;
+              com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(60000L, new com.tencent.mm.hellhoundlib.b.a());
+              com.tencent.mm.hellhoundlib.a.a.b(paramIntent, locala.aYi(), "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "enqueueWork", "(Landroid/content/Intent;)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+              long l = ((Long)com.tencent.mm.hellhoundlib.b.c.a(locala).sb(0)).longValue();
+              com.tencent.mm.hellhoundlib.b.c.aYk();
+              paramIntent.acquire(l);
+              com.tencent.mm.hellhoundlib.a.a.c(paramIntent, "com/tencent/matrix/resource/MatrixJobIntentService$CompatWorkEnqueuer", "enqueueWork", "(Landroid/content/Intent;)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
             }
-            return;
           }
-          finally {}
+          return;
         }
+        finally {}
         return;
       }
-      catch (Throwable paramIntent)
+      finally
       {
-        c.printErrStackTrace("Matrix.JobIntentService", paramIntent, "Exception occurred.", new Object[0]);
+        com.tencent.matrix.e.c.printErrStackTrace("Matrix.JobIntentService", paramIntent, "Exception occurred.", new Object[0]);
       }
-    }
-    
-    public final void zf()
-    {
-      try
-      {
-        this.bOH = false;
-        return;
-      }
-      finally {}
-    }
-    
-    public final void zg()
-    {
-      try
-      {
-        if (!this.bOI)
-        {
-          this.bOI = true;
-          if (this.bOG != null) {
-            this.bOG.acquire(600000L);
-          }
-          if (this.bOF != null) {
-            this.bOF.release();
-          }
-        }
-        return;
-      }
-      finally {}
-    }
-    
-    public final void zh()
-    {
-      try
-      {
-        if (this.bOI)
-        {
-          if ((this.bOH) && (this.bOF != null)) {
-            this.bOF.acquire(60000L);
-          }
-          this.bOI = false;
-          if (this.bOG != null) {
-            this.bOG.release();
-          }
-        }
-        return;
-      }
-      finally {}
     }
   }
   
   final class d
     implements MatrixJobIntentService.e
   {
-    final int bOJ;
+    final int eZg;
     final Intent mIntent;
     
     d(Intent paramIntent, int paramInt)
     {
       this.mIntent = paramIntent;
-      this.bOJ = paramInt;
+      this.eZg = paramInt;
     }
     
-    public final void complete()
+    public final void GK()
     {
-      MatrixJobIntentService.this.stopSelf(this.bOJ);
+      MatrixJobIntentService.this.stopSelf(this.eZg);
     }
     
     public final Intent getIntent()
@@ -333,7 +356,7 @@ public abstract class MatrixJobIntentService
   
   static abstract interface e
   {
-    public abstract void complete();
+    public abstract void GK();
     
     public abstract Intent getIntent();
   }
@@ -342,87 +365,87 @@ public abstract class MatrixJobIntentService
     extends JobServiceEngine
     implements MatrixJobIntentService.b
   {
-    final MatrixJobIntentService bOK;
-    JobParameters bOL;
+    final MatrixJobIntentService eZh;
+    JobParameters eZi;
     final Object mLock = new Object();
     
     f(MatrixJobIntentService paramMatrixJobIntentService)
     {
       super();
-      this.bOK = paramMatrixJobIntentService;
+      this.eZh = paramMatrixJobIntentService;
     }
     
-    public final boolean onStartJob(JobParameters paramJobParameters)
+    public final MatrixJobIntentService.e azb()
     {
       synchronized (this.mLock)
       {
-        this.bOL = paramJobParameters;
-        this.bOK.bi(false);
-        return true;
-      }
-    }
-    
-    public final boolean onStopJob(JobParameters arg1)
-    {
-      ??? = this.bOK;
-      if (???.bOD != null) {
-        ???.bOD.cancel(???.xr);
-      }
-      ???.mStopped = true;
-      synchronized (this.mLock)
-      {
-        this.bOL = null;
-        return true;
-      }
-    }
-    
-    public final MatrixJobIntentService.e zd()
-    {
-      synchronized (this.mLock)
-      {
-        if (this.bOL == null) {}
+        if (this.eZi == null) {}
         for (;;)
         {
           return null;
           try
           {
-            JobWorkItem localJobWorkItem = this.bOL.dequeueWork();
+            JobWorkItem localJobWorkItem = this.eZi.dequeueWork();
             if ((localJobWorkItem == null) || (localJobWorkItem.getIntent() == null)) {
               continue;
             }
-            localJobWorkItem.getIntent().setExtrasClassLoader(this.bOK.getClassLoader());
+            localJobWorkItem.getIntent().setExtrasClassLoader(this.eZh.getClassLoader());
             return new a(localJobWorkItem);
           }
-          catch (Throwable localThrowable)
+          finally
           {
-            c.printErrStackTrace("JobServiceEngineImpl", localThrowable, "exception occurred.", new Object[0]);
+            com.tencent.matrix.e.c.printErrStackTrace("JobServiceEngineImpl", localThrowable, "exception occurred.", new Object[0]);
             return null;
           }
         }
       }
     }
     
-    public final IBinder ze()
+    public final IBinder azc()
     {
       return getBinder();
+    }
+    
+    public final boolean onStartJob(JobParameters paramJobParameters)
+    {
+      synchronized (this.mLock)
+      {
+        this.eZi = paramJobParameters;
+        this.eZh.dJ(false);
+        return true;
+      }
+    }
+    
+    public final boolean onStopJob(JobParameters arg1)
+    {
+      ??? = this.eZh;
+      if (???.eZa != null) {
+        ???.eZa.cancel(???.bnY);
+      }
+      ???.mStopped = true;
+      synchronized (this.mLock)
+      {
+        this.eZi = null;
+        return true;
+      }
     }
     
     final class a
       implements MatrixJobIntentService.e
     {
-      final JobWorkItem bOM;
+      final JobWorkItem eZj;
       
       a(JobWorkItem paramJobWorkItem)
       {
-        this.bOM = paramJobWorkItem;
+        this.eZj = paramJobWorkItem;
       }
       
-      public final void complete()
+      public final void GK()
       {
         synchronized (MatrixJobIntentService.f.this.mLock)
         {
-          if (MatrixJobIntentService.f.this.bOL != null) {
-            MatrixJobIntentService.f.this.bOL.completeWork(this.bOM);
+          if (MatrixJobIntentService.f.this.eZi != null) {
+            MatrixJobIntentService.f.this.eZi.completeWork(this.eZj);
           }
           return;
         }
@@ -430,7 +453,7 @@ public abstract class MatrixJobIntentService
       
       public final Intent getIntent()
       {
-        return this.bOM.getIntent();
+        return this.eZj.getIntent();
       }
     }
   }
@@ -438,27 +461,27 @@ public abstract class MatrixJobIntentService
   static final class g
     extends MatrixJobIntentService.h
   {
-    private final JobInfo bOO;
-    private final JobScheduler bOP;
+    private final JobInfo eZl;
+    private final JobScheduler eZm;
     
     g(Context paramContext, ComponentName paramComponentName, int paramInt)
     {
       super();
-      fO(paramInt);
-      this.bOO = new JobInfo.Builder(paramInt, this.mComponentName).setOverrideDeadline(0L).build();
-      this.bOP = ((JobScheduler)paramContext.getApplicationContext().getSystemService("jobscheduler"));
+      nt(paramInt);
+      this.eZl = new JobInfo.Builder(paramInt, this.mComponentName).setOverrideDeadline(0L).build();
+      this.eZm = ((JobScheduler)paramContext.getApplicationContext().getSystemService("jobscheduler"));
     }
     
-    final void m(Intent paramIntent)
+    final void p(Intent paramIntent)
     {
-      this.bOP.enqueue(this.bOO, new JobWorkItem(paramIntent));
+      this.eZm.enqueue(this.eZl, new JobWorkItem(paramIntent));
     }
   }
   
   static abstract class h
   {
-    boolean bOQ;
-    int bOR;
+    boolean eZn;
+    int eZo;
     final ComponentName mComponentName;
     
     h(ComponentName paramComponentName)
@@ -466,31 +489,31 @@ public abstract class MatrixJobIntentService
       this.mComponentName = paramComponentName;
     }
     
-    final void fO(int paramInt)
+    public void azd() {}
+    
+    public void aze() {}
+    
+    public void azf() {}
+    
+    final void nt(int paramInt)
     {
-      if (!this.bOQ)
+      if (!this.eZn)
       {
-        this.bOQ = true;
-        this.bOR = paramInt;
+        this.eZn = true;
+        this.eZo = paramInt;
       }
-      while (this.bOR == paramInt) {
+      while (this.eZo == paramInt) {
         return;
       }
-      throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.bOR);
+      throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.eZo);
     }
     
-    abstract void m(Intent paramIntent);
-    
-    public void zf() {}
-    
-    public void zg() {}
-    
-    public void zh() {}
+    abstract void p(Intent paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.MatrixJobIntentService
  * JD-Core Version:    0.7.0.1
  */

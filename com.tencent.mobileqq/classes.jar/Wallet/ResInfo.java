@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class ResInfo
   extends JceStruct
 {
-  public boolean bDownload;
-  public int iResId;
-  public int iSize;
-  public int iVersion;
+  public boolean bDownload = false;
+  public int iResId = 0;
+  public int iSize = 0;
+  public int iVersion = 0;
   public String sResId = "";
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -24,7 +24,16 @@ public final class ResInfo
   
   public String toString()
   {
-    return "ResInfo{iResId=" + this.iResId + ", iSize='" + this.iSize + ", sResId='" + this.sResId + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ResInfo{iResId=");
+    localStringBuilder.append(this.iResId);
+    localStringBuilder.append(", iSize='");
+    localStringBuilder.append(this.iSize);
+    localStringBuilder.append(", sResId='");
+    localStringBuilder.append(this.sResId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -33,14 +42,15 @@ public final class ResInfo
     paramJceOutputStream.write(this.iSize, 1);
     paramJceOutputStream.write(this.iVersion, 2);
     paramJceOutputStream.write(this.bDownload, 3);
-    if (this.sResId != null) {
-      paramJceOutputStream.write(this.sResId, 4);
+    String str = this.sResId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.ResInfo
  * JD-Core Version:    0.7.0.1
  */

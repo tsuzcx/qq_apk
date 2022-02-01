@@ -3,7 +3,7 @@ package com.google.android.gms.wearable;
 public abstract interface w
   extends com.google.android.gms.common.api.w
 {
-  public abstract t kz();
+  public abstract t kI();
 }
 
 

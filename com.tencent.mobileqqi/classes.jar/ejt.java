@@ -1,39 +1,35 @@
-import android.content.Context;
+import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.widget.XListView;
 
 public class ejt
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public ejt(MessageSearchDialog paramMessageSearchDialog) {}
+  private ejt(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
-    }
-    paramAdapterView = MessageSearchDialog.a(this.a).a();
-    if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    if (paramInt == 3)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
-      paramAdapterView = new QQCustomMenu();
-      paramAdapterView.a(2131234879, MessageSearchDialog.a(this.a).getString(17039361));
-      paramAdapterView.a(2131231190, MessageSearchDialog.a(this.a).getString(2131562129));
-      MessageSearchDialog.a(this.a, BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a(this.a), null));
-    }
-    for (;;)
-    {
+      MessageSearchDialog.a(this.a);
       return true;
-      if (paramAdapterView != this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
     }
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        MessageSearchDialog.a(this.a);
+      }
+      return true;
+    }
+    return false;
   }
 }
 

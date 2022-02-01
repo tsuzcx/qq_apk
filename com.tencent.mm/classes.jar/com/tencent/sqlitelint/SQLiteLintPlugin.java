@@ -2,8 +2,10 @@ package com.tencent.sqlitelint;
 
 import android.app.Application;
 import android.content.Context;
+import com.tencent.matrix.d.b;
 import com.tencent.matrix.d.c;
-import com.tencent.matrix.g.a;
+import com.tencent.matrix.e.a;
+import com.tencent.matrix.report.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.sqlitelint.behaviour.report.IssueReportBehaviour.IReportDelegate;
 import com.tencent.sqlitelint.config.SQLiteLintConfig;
@@ -14,7 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SQLiteLintPlugin
-  extends com.tencent.matrix.d.b
+  extends b
 {
   private static final String TAG = "Matrix.SQLiteLintPlugin";
   private final SQLiteLintConfig mConfig;
@@ -27,20 +29,20 @@ public class SQLiteLintPlugin
   
   private void reportMatrixIssue(SQLiteLintIssue paramSQLiteLintIssue)
   {
-    AppMethodBeat.i(94030);
+    AppMethodBeat.i(52874);
     SLog.i("Matrix.SQLiteLintPlugin", "reportMatrixIssue type:%d, isNew %b", new Object[] { Integer.valueOf(paramSQLiteLintIssue.type), Boolean.valueOf(paramSQLiteLintIssue.isNew) });
     if (!paramSQLiteLintIssue.isNew)
     {
-      AppMethodBeat.o(94030);
+      AppMethodBeat.o(52874);
       return;
     }
-    com.tencent.matrix.e.b localb = new com.tencent.matrix.e.b(paramSQLiteLintIssue.type);
-    localb.key = paramSQLiteLintIssue.id;
+    g localg = new g(paramSQLiteLintIssue.type);
+    localg.key = paramSQLiteLintIssue.id;
     JSONObject localJSONObject = new JSONObject();
-    localb.bOx = localJSONObject;
+    localg.eYz = localJSONObject;
     try
     {
-      localJSONObject.put("machine", a.aC(getApplication()));
+      localJSONObject.put("machine", a.ck(getApplication()));
       localJSONObject.put("id", paramSQLiteLintIssue.id);
       localJSONObject.put("dbPath", paramSQLiteLintIssue.dbPath);
       localJSONObject.put("level", paramSQLiteLintIssue.level);
@@ -53,8 +55,8 @@ public class SQLiteLintPlugin
       localJSONObject.put("stack", paramSQLiteLintIssue.extInfo);
       localJSONObject.put("sqlTimeCost", paramSQLiteLintIssue.sqlTimeCost);
       localJSONObject.put("isInMainThread", paramSQLiteLintIssue.isInMainThread);
-      onDetectIssue(localb);
-      AppMethodBeat.o(94030);
+      onDetectIssue(localg);
+      AppMethodBeat.o(52874);
       return;
     }
     catch (JSONException paramSQLiteLintIssue)
@@ -68,16 +70,16 @@ public class SQLiteLintPlugin
   
   public void addConcernedDB(SQLiteLintConfig.ConcernDb paramConcernDb)
   {
-    AppMethodBeat.i(94029);
+    AppMethodBeat.i(52873);
     if (!isPluginStarted())
     {
       SLog.i("Matrix.SQLiteLintPlugin", "addConcernedDB isPluginStarted not", new Object[0]);
-      AppMethodBeat.o(94029);
+      AppMethodBeat.o(52873);
       return;
     }
     if (paramConcernDb == null)
     {
-      AppMethodBeat.o(94029);
+      AppMethodBeat.o(52873);
       return;
     }
     this.mConfig.addConcernDB(paramConcernDb);
@@ -85,14 +87,14 @@ public class SQLiteLintPlugin
     SQLiteLint.install(this.mContext, paramConcernDb.getInstallEnv(), paramConcernDb.getOptions());
     SQLiteLint.setWhiteList(str, paramConcernDb.getWhiteListXmlResId());
     SQLiteLint.enableCheckers(str, paramConcernDb.getEnableCheckerList());
-    AppMethodBeat.o(94029);
+    AppMethodBeat.o(52873);
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(94027);
+    AppMethodBeat.i(52871);
     super.destroy();
-    AppMethodBeat.o(94027);
+    AppMethodBeat.o(52871);
   }
   
   public String getTag()
@@ -102,47 +104,48 @@ public class SQLiteLintPlugin
   
   public void init(Application paramApplication, c paramc)
   {
-    AppMethodBeat.i(94024);
+    AppMethodBeat.i(52868);
     super.init(paramApplication, paramc);
+    SQLiteLint.init();
     SQLiteLint.setPackageName(paramApplication);
     this.mContext = paramApplication.getApplicationContext();
-    AppMethodBeat.o(94024);
+    AppMethodBeat.o(52868);
   }
   
   public void notifySqlExecution(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(94028);
+    AppMethodBeat.i(52872);
     if (!isPluginStarted())
     {
       SLog.i("Matrix.SQLiteLintPlugin", "notifySqlExecution isPluginStarted not", new Object[0]);
-      AppMethodBeat.o(94028);
+      AppMethodBeat.o(52872);
       return;
     }
     SQLiteLint.notifySqlExecution(paramString1, paramString2, paramInt);
-    AppMethodBeat.o(94028);
+    AppMethodBeat.o(52872);
   }
   
   public void start()
   {
-    AppMethodBeat.i(94025);
+    AppMethodBeat.i(52869);
     super.start();
     if (!isSupported())
     {
-      AppMethodBeat.o(94025);
+      AppMethodBeat.o(52869);
       return;
     }
     SQLiteLint.setReportDelegate(new IssueReportBehaviour.IReportDelegate()
     {
       public void report(SQLiteLintIssue paramAnonymousSQLiteLintIssue)
       {
-        AppMethodBeat.i(94023);
+        AppMethodBeat.i(52867);
         if (paramAnonymousSQLiteLintIssue == null)
         {
-          AppMethodBeat.o(94023);
+          AppMethodBeat.o(52867);
           return;
         }
         SQLiteLintPlugin.access$000(SQLiteLintPlugin.this, paramAnonymousSQLiteLintIssue);
-        AppMethodBeat.o(94023);
+        AppMethodBeat.o(52867);
       }
     });
     List localList = this.mConfig.getConcernDbList();
@@ -156,16 +159,16 @@ public class SQLiteLintPlugin
       SQLiteLint.enableCheckers(str, localConcernDb.getEnableCheckerList());
       i += 1;
     }
-    AppMethodBeat.o(94025);
+    AppMethodBeat.o(52869);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(94026);
+    AppMethodBeat.i(52870);
     super.stop();
     if (!isSupported())
     {
-      AppMethodBeat.o(94026);
+      AppMethodBeat.o(52870);
       return;
     }
     List localList = this.mConfig.getConcernDbList();
@@ -176,12 +179,12 @@ public class SQLiteLintPlugin
       i += 1;
     }
     SQLiteLint.setReportDelegate(null);
-    AppMethodBeat.o(94026);
+    AppMethodBeat.o(52870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintPlugin
  * JD-Core Version:    0.7.0.1
  */

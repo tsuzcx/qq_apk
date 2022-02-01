@@ -4,77 +4,29 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.em;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.autogen.b.hg;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public class SmileyInfo
-  extends em
+  extends hg
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(62883);
-    c.a locala = new c.a();
-    locala.yrK = new Field[10];
-    locala.columns = new String[11];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.yrM.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "key";
-    locala.columns[1] = "cnValue";
-    locala.yrM.put("cnValue", "TEXT");
-    localStringBuilder.append(" cnValue TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "qqValue";
-    locala.yrM.put("qqValue", "TEXT");
-    localStringBuilder.append(" qqValue TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "twValue";
-    locala.yrM.put("twValue", "TEXT");
-    localStringBuilder.append(" twValue TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "enValue";
-    locala.yrM.put("enValue", "TEXT");
-    localStringBuilder.append(" enValue TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "thValue";
-    locala.yrM.put("thValue", "TEXT");
-    localStringBuilder.append(" thValue TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "fileName";
-    locala.yrM.put("fileName", "TEXT");
-    localStringBuilder.append(" fileName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "eggIndex";
-    locala.yrM.put("eggIndex", "INTEGER default '-1' ");
-    localStringBuilder.append(" eggIndex INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "position";
-    locala.yrM.put("position", "INTEGER default '-1' ");
-    localStringBuilder.append(" position INTEGER default '-1' ");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "flag";
-    locala.yrM.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    locala.columns[10] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    CREATOR = new SmileyInfo.1();
-    AppMethodBeat.o(62883);
+    AppMethodBeat.i(105142);
+    info = aJm();
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(105142);
   }
   
   public SmileyInfo() {}
   
   protected SmileyInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(62880);
+    AppMethodBeat.i(105139);
     this.field_key = paramParcel.readString();
     this.field_cnValue = paramParcel.readString();
     this.field_qqValue = paramParcel.readString();
@@ -85,7 +37,7 @@ public class SmileyInfo
     this.field_position = paramParcel.readInt();
     this.field_eggIndex = paramParcel.readInt();
     this.field_flag = paramParcel.readInt();
-    AppMethodBeat.o(62880);
+    AppMethodBeat.o(105139);
   }
   
   public SmileyInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
@@ -116,14 +68,14 @@ public class SmileyInfo
     return 0;
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(62881);
+    AppMethodBeat.i(105140);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("key:").append(this.field_key).append("/n");
     ((StringBuilder)localObject).append("cn:").append(this.field_cnValue).append("/n");
@@ -135,13 +87,13 @@ public class SmileyInfo
     ((StringBuilder)localObject).append("file Name:").append(this.field_fileName).append("/n");
     ((StringBuilder)localObject).append("egg index:").append(this.field_eggIndex).append("/n");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(62881);
+    AppMethodBeat.o(105140);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(62882);
+    AppMethodBeat.i(105141);
     paramParcel.writeString(this.field_key);
     paramParcel.writeString(this.field_cnValue);
     paramParcel.writeString(this.field_qqValue);
@@ -152,12 +104,12 @@ public class SmileyInfo
     paramParcel.writeInt(this.field_position);
     paramParcel.writeInt(this.field_eggIndex);
     paramParcel.writeInt(this.field_flag);
-    AppMethodBeat.o(62882);
+    AppMethodBeat.o(105141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView android:id="@id/epf" android:paddingBottom="15.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:divider="@null" />
     <FrameLayout android:layout_gravity="bottom|center" android:id="@id/e3m" android:background="@drawable/qq_profilecard_foot_bg" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <TextView android:textSize="18.0dip" android:textColor="@color/skin_color_button_common_white" android:gravity="center" android:layout_gravity="center" android:id="@id/jh0" android:background="@drawable/common_btn_white" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/r8e" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_color_button_common_white" android:gravity="center" android:layout_gravity="center" android:id="@id/jh0" android:background="@drawable/common_btn_white" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/ka2" />
     </FrameLayout>
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bww" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="225.0dip">
         <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fea" />

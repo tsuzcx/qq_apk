@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/al2" android:paddingLeft="@dimen/if" android:paddingTop="@dimen/j6" android:paddingRight="@dimen/if" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/j7" android:id="@id/grq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/m9" android:text="@string/k6l" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/xn" android:id="@id/jev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/isq" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/xn" android:id="@id/jex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ist" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/xn" android:id="@id/jew" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/isr" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/kmw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ir">
+        <ProgressBar android:id="@id/i7t" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a74" />
+        <TextView android:textColor="@color/xn" android:gravity="center" android:id="@id/kn3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gav" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/fpg" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/l05" android:background="@color/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/na" />
+        <com.tencent.mm.ui.base.RealAlphabetScrollBar android:id="@id/l06" android:layout_width="@dimen/q8" android:layout_height="fill_parent" android:layout_marginTop="@dimen/j6" android:layout_marginBottom="@dimen/j6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ag_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/a6w" android:paddingLeft="@dimen/if" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="@dimen/ik">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/l04" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <CheckBox android:gravity="center" android:id="@id/bab" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" />
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/m2" android:text="@string/k6o" />
+                </LinearLayout>
+                <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <TextView android:enabled="false" android:gravity="center" android:id="@id/l03" android:text="@string/k6m" style="@style/qi" />
+                <TextView android:enabled="false" android:gravity="center" android:id="@id/l02" android:layout_marginLeft="@dimen/m2" android:text="@string/k6j" style="@style/om" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

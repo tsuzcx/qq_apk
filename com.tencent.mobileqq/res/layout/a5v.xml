@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bwd" android:layout_alignParentRight="true" />
     <LinearLayout android:orientation="horizontal" android:id="@id/i25" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="12.0dip">
-        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/i28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gwm" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/black" android:id="@id/i28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gwm" />
         <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:id="@id/i26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/gr9" />
     </LinearLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView android:id="@id/i27" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.5dip" android:layout_marginTop="4.5dip" android:layout_marginRight="7.5dip" android:layout_below="@id/i25" />
+    <com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyStaticGridView android:id="@id/i27" android:scrollbars="none" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.5dip" android:layout_marginTop="4.5dip" android:layout_marginRight="7.5dip" android:layout_below="@id/i25" />
 </RelativeLayout>

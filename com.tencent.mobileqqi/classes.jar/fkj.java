@@ -1,21 +1,13 @@
-import android.content.ContentValues;
 import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class fkj
   implements Runnable
 {
-  public fkj(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString, byte[] paramArrayOfByte) {}
+  public fkj(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("serverPath", this.jdField_a_of_type_JavaLangString);
-    localContentValues.put("md5", this.jdField_a_of_type_ArrayOfByte);
-    if (localDataLineMsgRecord != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(DataLineMsgRecord.tableName(), localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
-    }
+    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
   }
 }
 

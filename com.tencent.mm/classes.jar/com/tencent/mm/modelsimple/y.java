@@ -1,81 +1,176 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.btj;
-import com.tencent.mm.protocal.protobuf.caw;
-import com.tencent.mm.protocal.protobuf.cax;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.a;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.efm;
+import com.tencent.mm.protocal.protobuf.euc;
+import com.tencent.mm.protocal.protobuf.eud;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
 
 public final class y
-  extends m
-  implements k
+  extends p
+  implements m
 {
-  private f callback;
-  public final b fBd;
+  private h callback;
+  public int errCode;
+  public int errType;
+  public long msgId;
+  private final long oTp;
+  private Runnable oTq;
+  public c rr;
   
-  public y(int paramInt, btj parambtj)
+  public y(float paramFloat1, float paramFloat2, long paramLong)
   {
-    AppMethodBeat.i(16603);
-    ab.i("MicroMsg.NetSceneSetMsgRemind", "[NetSceneSetMsgRemind] opType:%s RemindId:%s time:%s Type:%s SubType:%s", new Object[] { Integer.valueOf(paramInt), parambtj.xGT, Integer.valueOf(parambtj.lGW), Integer.valueOf(parambtj.jKs), Integer.valueOf(parambtj.xCa) });
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new caw();
-    ((b.a)localObject).fsY = new cax();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/setmsgremind";
-    ((b.a)localObject).funcId = 525;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.fBd = ((b.a)localObject).ado();
-    localObject = (caw)this.fBd.fsV.fta;
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = 1;
-    }
-    ((caw)localObject).nrS = i;
-    ((caw)localObject).xLU = parambtj;
-    AppMethodBeat.o(16603);
+    AppMethodBeat.i(150940);
+    this.oTp = 60000L;
+    this.msgId = -1L;
+    efm localefm = new efm();
+    localefm.ZaG = paramFloat1;
+    localefm.ZaH = paramFloat2;
+    localefm.Zyo = 1;
+    localefm.Zyl = 0;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new euc();
+    ((c.a)localObject).otF = new eud();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/scanstreetview";
+    ((c.a)localObject).funcId = 424;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (euc)c.b.b(this.rr.otB);
+    ((euc)localObject).abxd = localefm;
+    ((euc)localObject).IJG = 1;
+    ((euc)localObject).abxe = -10000.0F;
+    ((euc)localObject).abxf = -10000.0F;
+    this.msgId = paramLong;
+    AppMethodBeat.o(150940);
   }
   
-  public final int doScene(e parame, f paramf)
+  public y(euc parameuc)
   {
-    AppMethodBeat.i(16604);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(16604);
+    AppMethodBeat.i(150941);
+    this.oTp = 60000L;
+    this.msgId = -1L;
+    c.a locala = new c.a();
+    locala.otE = parameuc;
+    locala.otF = new eud();
+    locala.uri = "/cgi-bin/micromsg-bin/scanstreetview";
+    locala.funcId = 424;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    AppMethodBeat.o(150941);
+  }
+  
+  public static String Pc(String paramString)
+  {
+    AppMethodBeat.i(150945);
+    paramString = XmlParser.parseXml(paramString, "streetview", null);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(150945);
+      return null;
+    }
+    paramString = (String)paramString.get(".streetview.link");
+    AppMethodBeat.o(150945);
+    return paramString;
+  }
+  
+  public static int aLV()
+  {
+    return 424;
+  }
+  
+  public final eud bMy()
+  {
+    AppMethodBeat.i(236754);
+    if ((this.rr != null) && (c.c.b(this.rr.otC) != null))
+    {
+      eud localeud = (eud)c.c.b(this.rr.otC);
+      AppMethodBeat.o(236754);
+      return localeud;
+    }
+    AppMethodBeat.o(236754);
+    return null;
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(150942);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(150942);
     return i;
+  }
+  
+  public final long getReturnTimeout()
+  {
+    return 60000L;
   }
   
   public final int getType()
   {
-    return 525;
+    return 424;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16605);
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ab.i("MicroMsg.NetSceneSetMsgRemind", "[onGYNetEnd] RemindId:%s", new Object[] { ((cax)this.fBd.fsW.fta).xGT });
+    AppMethodBeat.i(150944);
+    Log.d("MicroMsg.NetSceneScanStreetView", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    this.errType = paramInt2;
+    this.errCode = paramInt3;
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     for (;;)
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(16605);
+      Log.d("MicroMsg.NetSceneScanStreetView", "xml is %s", new Object[] { bMy().aazh });
+      if (this.oTq != null) {
+        this.oTq.run();
+      }
+      AppMethodBeat.o(150944);
       return;
-      ab.e("MicroMsg.NetSceneSetMsgRemind", "[onGYNetEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+      Log.e("MicroMsg.NetSceneScanStreetView", "callback null");
     }
   }
+  
+  public final int securityLimitCount()
+  {
+    return 10;
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    AppMethodBeat.i(150943);
+    if (((euc)c.b.b(((c)params).otB)).abxd == null)
+    {
+      Log.e("MicroMsg.NetSceneScanStreetView", "req.rImpl.UserPos == null");
+      params = p.b.oui;
+      AppMethodBeat.o(150943);
+      return params;
+    }
+    params = p.b.ouh;
+    AppMethodBeat.o(150943);
+    return params;
+  }
+  
+  public final void setSecurityCheckError(p.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.y
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/zm" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/ne" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nh" android:textColor="@color/rf" android:id="@id/axy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/j7e" android:background="@drawable/b47" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:layout_marginLeft="@dimen/cd" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cd" android:layout_marginBottom="@dimen/df">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_margin="@dimen/bv" android:src="@raw/icons_outlined_search" android:contentDescription="@string/k3k" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/xo" android:layout_gravity="center" android:id="@id/ebr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/buc" />
+    </LinearLayout>
+    <TextView android:background="@color/aav" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/j6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/exr" style="@style/nb" />
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

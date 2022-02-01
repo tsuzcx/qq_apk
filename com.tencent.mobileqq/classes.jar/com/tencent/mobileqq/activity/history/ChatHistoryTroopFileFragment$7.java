@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import ytu;
+import com.tencent.biz.troop.file.TroopFileProtocol;
 
 class ChatHistoryTroopFileFragment$7
   implements Runnable
@@ -9,8 +9,8 @@ class ChatHistoryTroopFileFragment$7
   
   public void run()
   {
-    ytu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Ytz);
-    ytu.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Yuc);
+    TroopFileProtocol.a(this.this$0.a, ChatHistoryTroopFileFragment.b(this.this$0), this.this$0.t);
+    TroopFileProtocol.a(this.this$0.a, ChatHistoryTroopFileFragment.b(this.this$0), this.this$0.u);
   }
 }
 

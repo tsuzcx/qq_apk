@@ -65,8 +65,9 @@ public class DittoButtonArea
   
   private Drawable getPressedStateDrawable()
   {
-    if (this.pressedStateDrawable != null) {
-      return this.pressedStateDrawable;
+    Drawable localDrawable = this.pressedStateDrawable;
+    if (localDrawable != null) {
+      return localDrawable;
     }
     if (this.pressedDrawable == null)
     {
@@ -78,50 +79,57 @@ public class DittoButtonArea
   
   private void setAttr(LayoutAttrSet paramLayoutAttrSet)
   {
-    String str;
-    if (paramLayoutAttrSet != null) {
-      if (paramLayoutAttrSet.getAttr("press_bg_color", null) != null) {
-        str = paramLayoutAttrSet.getAttr("press_bg_color", null);
-      }
-    }
-    try
+    if (paramLayoutAttrSet != null)
     {
-      setPressBgColor(DittoResourcesUtil.parseColor(str));
-      this.showClickState = true;
+      String str;
+      StringBuilder localStringBuilder;
+      if (paramLayoutAttrSet.getAttr("press_bg_color", null) != null)
+      {
+        str = paramLayoutAttrSet.getAttr("press_bg_color", null);
+        try
+        {
+          setPressBgColor(DittoResourcesUtil.parseColor(str));
+          this.showClickState = true;
+        }
+        catch (Throwable localThrowable1)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("the text ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(" can't be parsed as color string");
+          DittoLog.e("DITTO_UI", localStringBuilder.toString(), localThrowable1);
+        }
+      }
       if (paramLayoutAttrSet.getAttr("text_color", null) != null)
       {
         str = paramLayoutAttrSet.getAttr("text_color", null);
-        if (TextUtils.isEmpty(str)) {}
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
-      {
-        this.mTextColor = DittoResourcesUtil.parseColor(str);
-        this.mTextPaint.setColor(this.mTextColor);
-        if (paramLayoutAttrSet.hasAttr("text_size"))
-        {
-          int i = paramLayoutAttrSet.getAttr("text_size", 15);
-          this.mTextSize = i;
-          setTextSize(i);
-        }
-        if (paramLayoutAttrSet.getAttr("text", null) != null)
-        {
-          paramLayoutAttrSet = paramLayoutAttrSet.getAttr("text", null);
-          if (!TextUtils.isEmpty(paramLayoutAttrSet)) {
-            this.mText = paramLayoutAttrSet;
+        if (!TextUtils.isEmpty(str)) {
+          try
+          {
+            this.mTextColor = DittoResourcesUtil.parseColor(str);
+            this.mTextPaint.setColor(this.mTextColor);
+          }
+          catch (Throwable localThrowable2)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("the text ");
+            localStringBuilder.append(str);
+            localStringBuilder.append(" can't be parsed as color string");
+            DittoLog.e("DITTO_UI", localStringBuilder.toString(), localThrowable2);
           }
         }
-        return;
-        localThrowable1 = localThrowable1;
-        DittoLog.e("DITTO_UI", "the text " + str + " can't be parsed as color string", localThrowable1);
       }
-      catch (Throwable localThrowable2)
+      if (paramLayoutAttrSet.hasAttr("text_size"))
       {
-        for (;;)
-        {
-          DittoLog.e("DITTO_UI", "the text " + str + " can't be parsed as color string", localThrowable2);
+        int i = paramLayoutAttrSet.getAttr("text_size", 15);
+        this.mTextSize = i;
+        setTextSize(i);
+      }
+      if (paramLayoutAttrSet.getAttr("text", null) != null)
+      {
+        paramLayoutAttrSet = paramLayoutAttrSet.getAttr("text", null);
+        if (!TextUtils.isEmpty(paramLayoutAttrSet)) {
+          this.mText = paramLayoutAttrSet;
         }
       }
     }
@@ -130,18 +138,17 @@ public class DittoButtonArea
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (this.showClickState) {
-      if (!this.isPressed) {
-        break label36;
-      }
-    }
-    label36:
-    for (paramMotionEvent = getPressedStateDrawable();; paramMotionEvent = getNormalBackgroundDrawable())
+    if (this.showClickState)
     {
+      if (this.isPressed) {
+        paramMotionEvent = getPressedStateDrawable();
+      } else {
+        paramMotionEvent = getNormalBackgroundDrawable();
+      }
       setBackgroundDrawable(paramMotionEvent);
       invalidate();
-      return bool;
     }
+    return bool;
   }
   
   public Drawable getNormalBackgroundDrawable()
@@ -156,8 +163,9 @@ public class DittoButtonArea
   
   public String getText()
   {
-    if (this.mText != null) {
-      return this.mText.toString();
+    CharSequence localCharSequence = this.mText;
+    if (localCharSequence != null) {
+      return localCharSequence.toString();
     }
     return "";
   }
@@ -169,17 +177,19 @@ public class DittoButtonArea
   
   public void onDraw(Canvas paramCanvas)
   {
-    int i = this.height - getPaddingTop() - getPaddingBottom();
-    int j = this.width;
-    int k = getPaddingLeft();
-    int m = getPaddingRight();
+    int i = this.height;
+    int j = getPaddingTop();
+    int k = getPaddingBottom();
+    int m = this.width;
+    int n = getPaddingLeft();
+    int i1 = getPaddingRight();
     Paint.FontMetrics localFontMetrics = this.mTextPaint.getFontMetrics();
     float f2 = localFontMetrics.bottom;
     float f3 = localFontMetrics.top;
-    float f1 = i;
-    f2 = (i - (f2 - f3)) / 2.0F;
+    float f1 = i - j - k;
+    f2 = (f1 - (f2 - f3)) / 2.0F;
     f3 = localFontMetrics.bottom;
-    paramCanvas.drawText(this.mText.toString(), (j - k - m) / 2, f1 - f2 - f3, this.mTextPaint);
+    paramCanvas.drawText(this.mText.toString(), (m - n - i1) / 2, f1 - f2 - f3, this.mTextPaint);
     super.onDraw(paramCanvas);
   }
   
@@ -193,39 +203,33 @@ public class DittoButtonArea
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    int m = View.MeasureSpec.getMode(paramInt1);
-    int k = View.MeasureSpec.getMode(paramInt2);
-    int i = View.MeasureSpec.getSize(paramInt1);
+    int k = View.MeasureSpec.getMode(paramInt1);
+    int j = View.MeasureSpec.getMode(paramInt2);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
     getPaddingLeft();
     getPaddingRight();
-    if (m == 1073741824)
+    int i;
+    if (k != 1073741824)
     {
-      paramInt1 = i;
-      if (k != 1073741824) {
-        break label92;
+      i = (int)Layout.getDesiredWidth(this.mText, this.mTextPaint);
+      if (k == -2147483648) {
+        paramInt1 = Math.min(paramInt1, i);
+      } else {
+        paramInt1 = i;
       }
     }
-    for (;;)
+    if (j != 1073741824)
     {
-      setMeasuredDimension(paramInt1, paramInt2);
-      return;
-      int j = (int)Layout.getDesiredWidth(this.mText, this.mTextPaint);
-      paramInt1 = j;
-      if (m != -2147483648) {
-        break;
-      }
-      paramInt1 = Math.min(i, j);
-      break;
-      label92:
       Paint.FontMetricsInt localFontMetricsInt = this.mTextPaint.getFontMetricsInt();
       i = localFontMetricsInt.bottom - localFontMetricsInt.top;
-      if (k == -2147483648) {
+      if (j == -2147483648) {
         paramInt2 = Math.min(paramInt2, i);
       } else {
         paramInt2 = i;
       }
     }
+    setMeasuredDimension(paramInt1, paramInt2);
   }
   
   public void setBorderColor(int paramInt)
@@ -273,12 +277,13 @@ public class DittoButtonArea
   public void setPressedDrawable(Drawable paramDrawable)
   {
     this.pressedStateDrawable = paramDrawable;
-    if (paramDrawable != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.showClickState = bool;
-      return;
+    boolean bool;
+    if (paramDrawable != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.showClickState = bool;
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -319,7 +324,7 @@ public class DittoButtonArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ditto.widget.DittoButtonArea
  * JD-Core Version:    0.7.0.1
  */

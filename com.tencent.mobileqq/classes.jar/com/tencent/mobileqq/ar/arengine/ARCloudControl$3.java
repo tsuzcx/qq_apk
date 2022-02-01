@@ -1,32 +1,32 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anam;
-import anbz;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class ARCloudControl$3
+class ARCloudControl$3
   implements Runnable
 {
-  public ARCloudControl$3(anam paramanam, byte[] paramArrayOfByte) {}
+  ARCloudControl$3(ARCloudControl paramARCloudControl, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     if (this.a == null)
     {
-      anam.a(this.this$0, true);
-      anam.b(this.this$0, true);
-    }
-    while (this.this$0.a.recognitions == null) {
+      ARCloudControl.a(this.this$0, true);
+      ARCloudControl.b(this.this$0, true);
       return;
     }
-    anbz.a().a();
-    anbz.a().a = System.currentTimeMillis();
-    anam.a(this.this$0, this.a, this.this$0.a.recognitions);
+    if (this.this$0.n.recognitions == null) {
+      return;
+    }
+    ARFaceDataCollector.b().a();
+    ARFaceDataCollector.b().b = System.currentTimeMillis();
+    ARCloudControl localARCloudControl = this.this$0;
+    ARCloudControl.a(localARCloudControl, this.a, localARCloudControl.n.recognitions);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.3
  * JD-Core Version:    0.7.0.1
  */

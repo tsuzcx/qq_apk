@@ -1,30 +1,17 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-public final class ag
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/IChattingFooterLifecycle;", "", "onBottomPanelVisible", "", "visible", "", "onPanelShow", "panelType", "isVoiceInputPanelShow", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface ag
 {
-  private static ag zBV;
-  Object zBU;
+  public abstract void aBR(int paramInt);
   
-  public static ag dGT()
-  {
-    try
-    {
-      AppMethodBeat.i(30961);
-      if (zBV == null) {
-        zBV = new ag();
-      }
-      ag localag = zBV;
-      AppMethodBeat.o(30961);
-      return localag;
-    }
-    finally {}
-  }
+  public abstract void cG(int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ag
  * JD-Core Version:    0.7.0.1
  */

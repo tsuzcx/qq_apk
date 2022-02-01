@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class HeartInfo
   extends JceStruct
 {
-  public int iHeartCount;
+  public int iHeartCount = 0;
   
   public HeartInfo() {}
   
@@ -28,7 +28,7 @@ public final class HeartInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SummaryCard.HeartInfo
  * JD-Core Version:    0.7.0.1
  */

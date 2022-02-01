@@ -11,35 +11,42 @@ final class MetadataDecoderFactory$1
   public MetadataDecoder createDecoder(Format paramFormat)
   {
     paramFormat = paramFormat.sampleMimeType;
-    int i = -1;
-    switch (paramFormat.hashCode())
+    int i = paramFormat.hashCode();
+    if (i != -1248341703)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 1154383568)
       {
-      default: 
-        throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
-        if (paramFormat.equals("application/id3"))
+        if ((i == 1652648887) && (paramFormat.equals("application/x-scte35")))
         {
-          i = 0;
-          continue;
-          if (paramFormat.equals("application/x-emsg"))
-          {
-            i = 1;
-            continue;
-            if (paramFormat.equals("application/x-scte35")) {
-              i = 2;
-            }
-          }
+          i = 2;
+          break label75;
         }
-        break;
+      }
+      else if (paramFormat.equals("application/x-emsg"))
+      {
+        i = 1;
+        break label75;
       }
     }
+    else if (paramFormat.equals("application/id3"))
+    {
+      i = 0;
+      break label75;
+    }
+    i = -1;
+    label75:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i == 2) {
+          return new SpliceInfoDecoder();
+        }
+        throw new IllegalArgumentException("Attempted to create decoder for unsupported format");
+      }
+      return new EventMessageDecoder();
+    }
     return new Id3Decoder();
-    return new EventMessageDecoder();
-    return new SpliceInfoDecoder();
   }
   
   public boolean supportsFormat(Format paramFormat)
@@ -50,7 +57,7 @@ final class MetadataDecoderFactory$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.MetadataDecoderFactory.1
  * JD-Core Version:    0.7.0.1
  */

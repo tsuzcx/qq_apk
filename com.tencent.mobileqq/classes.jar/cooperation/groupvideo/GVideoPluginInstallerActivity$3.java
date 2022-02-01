@@ -1,6 +1,6 @@
 package cooperation.groupvideo;
 
-import biqn;
+import cooperation.plugin.IPluginManager;
 
 class GVideoPluginInstallerActivity$3
   implements Runnable
@@ -9,15 +9,15 @@ class GVideoPluginInstallerActivity$3
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.mPluginManager == null) {
       return;
     }
-    this.this$0.a.a("group_video_plugin.apk", false, GVideoPluginInstallerActivity.a(this.this$0));
+    this.this$0.mPluginManager.installPlugin("group_video_plugin.apk", GVideoPluginInstallerActivity.access$200(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.GVideoPluginInstallerActivity.3
  * JD-Core Version:    0.7.0.1
  */

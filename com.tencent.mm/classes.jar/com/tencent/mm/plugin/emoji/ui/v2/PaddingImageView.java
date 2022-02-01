@@ -5,62 +5,63 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.emoji.h.c;
 
 public class PaddingImageView
   extends FrameLayout
 {
-  ImageView ioq;
-  ImageView lsg;
-  private int lsh;
+  ImageView ewg;
+  ImageView xZa;
+  private int xZb;
   
   public PaddingImageView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(53836);
+    AppMethodBeat.i(109408);
     init(paramContext);
-    AppMethodBeat.o(53836);
+    AppMethodBeat.o(109408);
   }
   
   public PaddingImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(53837);
+    AppMethodBeat.i(109409);
     init(paramContext);
-    AppMethodBeat.o(53837);
+    AppMethodBeat.o(109409);
   }
   
   public PaddingImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(53838);
+    AppMethodBeat.i(109410);
     init(paramContext);
-    AppMethodBeat.o(53838);
+    AppMethodBeat.o(109410);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(53839);
-    this.lsh = a.ao(getContext(), 2131427808);
-    this.ioq = new ImageView(paramContext);
-    this.ioq.setPadding(this.lsh, this.lsh, this.lsh, this.lsh);
-    this.lsg = new ImageView(paramContext);
-    AppMethodBeat.o(53839);
+    AppMethodBeat.i(109411);
+    this.xZb = a.br(getContext(), h.c.NormalPadding);
+    this.ewg = new ImageView(paramContext);
+    this.ewg.setPadding(this.xZb, this.xZb, this.xZb, this.xZb);
+    this.xZa = new ImageView(paramContext);
+    AppMethodBeat.o(109411);
   }
   
   public ImageView getImageView()
   {
-    return this.ioq;
+    return this.ewg;
   }
   
   public ImageView getImageViewFG()
   {
-    return this.lsg;
+    return this.xZa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.PaddingImageView
  * JD-Core Version:    0.7.0.1
  */

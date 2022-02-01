@@ -24,7 +24,7 @@ public class WeJson
   
   private <T> T fromArr(JSONArray paramJSONArray, Class<T> paramClass)
   {
-    AppMethodBeat.i(118135);
+    AppMethodBeat.i(73425);
     paramClass = paramClass.getComponentType();
     Object localObject = Array.newInstance(paramClass, paramJSONArray.length());
     int i = 0;
@@ -33,70 +33,70 @@ public class WeJson
       Array.set(localObject, i, fromJsonData(getObject(paramJSONArray, i), paramClass, paramClass));
       i += 1;
     }
-    AppMethodBeat.o(118135);
+    AppMethodBeat.o(73425);
     return localObject;
   }
   
   private <T> T fromJsonArr(JSONArray paramJSONArray, Class<T> paramClass, Class<?> paramClass1)
   {
-    AppMethodBeat.i(118128);
+    AppMethodBeat.i(73418);
     if (paramClass.equals(List.class))
     {
       paramJSONArray = fromList(paramJSONArray, paramClass, paramClass1);
-      AppMethodBeat.o(118128);
+      AppMethodBeat.o(73418);
       return paramJSONArray;
     }
     if (paramClass.isArray())
     {
       paramJSONArray = fromArr(paramJSONArray, paramClass);
-      AppMethodBeat.o(118128);
+      AppMethodBeat.o(73418);
       return paramJSONArray;
     }
     paramJSONArray = new WeJsonException("json 解析错误:不支持的类型:" + paramClass.getName());
-    AppMethodBeat.o(118128);
+    AppMethodBeat.o(73418);
     throw paramJSONArray;
   }
   
   private Object fromJsonData(Object paramObject, Class<?> paramClass1, Class<?> paramClass2)
   {
-    AppMethodBeat.i(118134);
+    AppMethodBeat.i(73424);
     if ((paramObject instanceof JSONArray))
     {
       paramObject = fromJsonArr((JSONArray)paramObject, paramClass1, paramClass2);
-      AppMethodBeat.o(118134);
+      AppMethodBeat.o(73424);
       return paramObject;
     }
     if ((paramObject instanceof JSONObject))
     {
       paramObject = fromJsonObj((JSONObject)paramObject, paramClass1, paramClass2);
-      AppMethodBeat.o(118134);
+      AppMethodBeat.o(73424);
       return paramObject;
     }
-    AppMethodBeat.o(118134);
+    AppMethodBeat.o(73424);
     return paramObject;
   }
   
   private <T> T fromJsonObj(JSONObject paramJSONObject, Class<T> paramClass, Class<?> paramClass1)
   {
-    AppMethodBeat.i(118129);
+    AppMethodBeat.i(73419);
     if (paramClass.equals(Map.class))
     {
       paramJSONObject = fromMap(paramJSONObject, paramClass, paramClass1);
-      AppMethodBeat.o(118129);
+      AppMethodBeat.o(73419);
       return paramJSONObject;
     }
     paramJSONObject = fromPojo(paramJSONObject, paramClass);
-    AppMethodBeat.o(118129);
+    AppMethodBeat.o(73419);
     return paramJSONObject;
   }
   
   private List fromList(JSONArray paramJSONArray, Class<List> paramClass, Class<?> paramClass1)
   {
-    AppMethodBeat.i(118130);
+    AppMethodBeat.i(73420);
     if (paramClass1 == null)
     {
       paramJSONArray = new WeJsonException("无法确定列表项的类型");
-      AppMethodBeat.o(118130);
+      AppMethodBeat.o(73420);
       throw paramJSONArray;
     }
     Object localObject1;
@@ -128,7 +128,7 @@ public class WeJson
         catch (Exception paramJSONArray)
         {
           paramJSONArray = new WeJsonException("创建List类型失败,该列表不支持无参实例化", paramJSONArray);
-          AppMethodBeat.o(118130);
+          AppMethodBeat.o(73420);
           throw paramJSONArray;
         }
       }
@@ -140,17 +140,17 @@ public class WeJson
       }
     }
     label178:
-    AppMethodBeat.o(118130);
+    AppMethodBeat.o(73420);
     return localObject1;
   }
   
   private Map fromMap(JSONObject paramJSONObject, Class<Map> paramClass, Class<?> paramClass1)
   {
-    AppMethodBeat.i(118131);
+    AppMethodBeat.i(73421);
     if (paramClass1 == null)
     {
       paramJSONObject = new WeJsonException("无法确定列表项的类型");
-      AppMethodBeat.o(118131);
+      AppMethodBeat.o(73421);
       throw paramJSONObject;
     }
     Object localObject1;
@@ -181,7 +181,7 @@ public class WeJson
           catch (Exception paramJSONObject)
           {
             paramJSONObject = new WeJsonException("创建Map类型失败,该Map不支持无参实例化", paramJSONObject);
-            AppMethodBeat.o(118131);
+            AppMethodBeat.o(73421);
             throw paramJSONObject;
           }
         }
@@ -189,13 +189,13 @@ public class WeJson
       ((Map)localObject1).put(str, null);
     }
     label155:
-    AppMethodBeat.o(118131);
+    AppMethodBeat.o(73421);
     return localObject1;
   }
   
   private <T> T fromPojo(JSONObject paramJSONObject, Class<T> paramClass)
   {
-    AppMethodBeat.i(118136);
+    AppMethodBeat.i(73426);
     Object localObject2 = paramClass.getDeclaredFields();
     Object localObject3 = paramClass.getSuperclass();
     Object localObject1 = new Field[0];
@@ -217,7 +217,7 @@ public class WeJson
     }
     if (localObject3.length == 0)
     {
-      AppMethodBeat.o(118136);
+      AppMethodBeat.o(73426);
       return null;
     }
     Object localObject4;
@@ -238,12 +238,12 @@ public class WeJson
       catch (IllegalAccessException paramJSONObject)
       {
         paramJSONObject = new WeJsonException("设置成员变量值失败.", paramJSONObject);
-        AppMethodBeat.o(118136);
+        AppMethodBeat.o(73426);
         throw paramJSONObject;
       }
       paramJSONObject = paramJSONObject;
       paramJSONObject = new WeJsonException("必须为该类型提供一个无参构造方法:" + paramClass.getName(), paramJSONObject);
-      AppMethodBeat.o(118136);
+      AppMethodBeat.o(73426);
       throw paramJSONObject;
     }
     if (i < localObject3.length)
@@ -287,13 +287,13 @@ public class WeJson
           catch (Exception paramJSONObject)
           {
             paramJSONObject = new WeJsonException("调用set方法失败.", paramJSONObject);
-            AppMethodBeat.o(118136);
+            AppMethodBeat.o(73426);
             throw paramJSONObject;
           }
           localObject2 = ((String)localObject2).substring(1);
         }
         catch (NoSuchMethodException localNoSuchMethodException) {}
-        AppMethodBeat.o(118136);
+        AppMethodBeat.o(73426);
         return localObject4;
       }
     }
@@ -301,7 +301,7 @@ public class WeJson
   
   private <T> Class<?> getMemberType(Class<T> paramClass, Field paramField)
   {
-    AppMethodBeat.i(118137);
+    AppMethodBeat.i(73427);
     if ((paramField.getGenericType() instanceof TypeVariable))
     {
       paramClass.getTypeParameters();
@@ -312,59 +312,59 @@ public class WeJson
         if ((paramClass instanceof Class))
         {
           paramClass = (Class)paramClass;
-          AppMethodBeat.o(118137);
+          AppMethodBeat.o(73427);
           return paramClass;
         }
         paramClass = new WeJsonException("不支持嵌套泛型");
-        AppMethodBeat.o(118137);
+        AppMethodBeat.o(73427);
         throw paramClass;
       }
       paramClass = new WeJsonException("缺少泛型信息:".concat(String.valueOf(paramClass)));
-      AppMethodBeat.o(118137);
+      AppMethodBeat.o(73427);
       throw paramClass;
     }
     paramClass = paramField.getType();
-    AppMethodBeat.o(118137);
+    AppMethodBeat.o(73427);
     return paramClass;
   }
   
   private Object getObject(JSONArray paramJSONArray, int paramInt)
   {
-    AppMethodBeat.i(118132);
+    AppMethodBeat.i(73422);
     try
     {
       paramJSONArray = paramJSONArray.get(paramInt);
-      AppMethodBeat.o(118132);
+      AppMethodBeat.o(73422);
       return paramJSONArray;
     }
     catch (JSONException paramJSONArray)
     {
       paramJSONArray = new WeJsonException("JSONArray.get() cause JSONException", paramJSONArray);
-      AppMethodBeat.o(118132);
+      AppMethodBeat.o(73422);
       throw paramJSONArray;
     }
   }
   
   private Object getObject(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(118133);
+    AppMethodBeat.i(73423);
     try
     {
       paramJSONObject = paramJSONObject.get(paramString);
-      AppMethodBeat.o(118133);
+      AppMethodBeat.o(73423);
       return paramJSONObject;
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject = new WeJsonException("JSONObject.get() cause JSONException", paramJSONObject);
-      AppMethodBeat.o(118133);
+      AppMethodBeat.o(73423);
       throw paramJSONObject;
     }
   }
   
   private <T> Class<?> getSubType(Class<T> paramClass, Field paramField, Object paramObject)
   {
-    AppMethodBeat.i(118138);
+    AppMethodBeat.i(73428);
     if ((paramField.getGenericType() instanceof TypeVariable))
     {
       paramClass.getTypeParameters();
@@ -375,15 +375,15 @@ public class WeJson
         if ((paramClass instanceof Class))
         {
           paramClass = (Class)paramClass;
-          AppMethodBeat.o(118138);
+          AppMethodBeat.o(73428);
           return paramClass;
         }
         paramClass = new WeJsonException("不支持嵌套泛型");
-        AppMethodBeat.o(118138);
+        AppMethodBeat.o(73428);
         throw paramClass;
       }
       paramClass = new WeJsonException("缺少泛型信息:".concat(String.valueOf(paramClass)));
-      AppMethodBeat.o(118138);
+      AppMethodBeat.o(73428);
       throw paramClass;
     }
     if (paramField.getType().equals(List.class))
@@ -395,15 +395,15 @@ public class WeJson
         if ((paramClass instanceof Class))
         {
           paramClass = (Class)paramClass;
-          AppMethodBeat.o(118138);
+          AppMethodBeat.o(73428);
           return paramClass;
         }
         paramClass = new WeJsonException("不支持嵌套泛型:" + paramField.getName());
-        AppMethodBeat.o(118138);
+        AppMethodBeat.o(73428);
         throw paramClass;
       }
       paramClass = new WeJsonException("缺少泛型类型声明:" + paramField.getName());
-      AppMethodBeat.o(118138);
+      AppMethodBeat.o(73428);
       throw paramClass;
     }
     if (paramField.getType().equals(Map.class))
@@ -415,27 +415,27 @@ public class WeJson
         if ((paramClass instanceof Class))
         {
           paramClass = (Class)paramClass;
-          AppMethodBeat.o(118138);
+          AppMethodBeat.o(73428);
           return paramClass;
         }
         paramClass = new WeJsonException("不支持嵌套泛型:" + paramField.getName());
-        AppMethodBeat.o(118138);
+        AppMethodBeat.o(73428);
         throw paramClass;
       }
       paramClass = new WeJsonException("缺少泛型类型声明:" + paramField.getName());
-      AppMethodBeat.o(118138);
+      AppMethodBeat.o(73428);
       throw paramClass;
     }
     paramClass = paramField.getType();
-    AppMethodBeat.o(118138);
+    AppMethodBeat.o(73428);
     return paramClass;
   }
   
   private String getValidStr(String paramString)
   {
-    AppMethodBeat.i(118122);
+    AppMethodBeat.i(73412);
     paramString = paramString.replace("\"", "\\\"").replace("\\", "\\\\").replace("\b", "\\b").replace("\n", "\\n").replace("\r", "\\r").replace("\f", "\\f").replace("\t", "\\t");
-    AppMethodBeat.o(118122);
+    AppMethodBeat.o(73412);
     return paramString;
   }
   
@@ -446,54 +446,54 @@ public class WeJson
   
   private <T> void process(StringBuilder paramStringBuilder, T paramT)
   {
-    AppMethodBeat.i(118121);
+    AppMethodBeat.i(73411);
     if (paramT.getClass().isPrimitive())
     {
       paramStringBuilder.append(paramT);
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     if ((paramT instanceof String))
     {
       paramStringBuilder.append('"').append(getValidStr((String)paramT)).append('"');
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     if (isPrimitivePackageType(paramT))
     {
       paramStringBuilder.append(paramT);
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     if (paramT.getClass().isArray())
     {
       processArr(paramStringBuilder, (Object[])paramT);
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     if ((paramT instanceof Iterable))
     {
       processIterable(paramStringBuilder, (Iterable)paramT);
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     if ((paramT instanceof Map))
     {
       processMap(paramStringBuilder, (Map)paramT);
-      AppMethodBeat.o(118121);
+      AppMethodBeat.o(73411);
       return;
     }
     processObj(paramStringBuilder, paramT);
-    AppMethodBeat.o(118121);
+    AppMethodBeat.o(73411);
   }
   
   private <T> void processArr(StringBuilder paramStringBuilder, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(118126);
+    AppMethodBeat.i(73416);
     if (paramArrayOfObject.length == 0)
     {
       paramStringBuilder.append("[]");
-      AppMethodBeat.o(118126);
+      AppMethodBeat.o(73416);
       return;
     }
     paramStringBuilder.append('[');
@@ -507,12 +507,12 @@ public class WeJson
       i += 1;
     }
     paramStringBuilder.append(']');
-    AppMethodBeat.o(118126);
+    AppMethodBeat.o(73416);
   }
   
   private void processIterable(StringBuilder paramStringBuilder, Iterable paramIterable)
   {
-    AppMethodBeat.i(118125);
+    AppMethodBeat.i(73415);
     paramIterable = paramIterable.iterator();
     paramStringBuilder.append('[');
     int i = 0;
@@ -526,16 +526,16 @@ public class WeJson
       paramStringBuilder.deleteCharAt(paramStringBuilder.length() - 1);
     }
     paramStringBuilder.append(']');
-    AppMethodBeat.o(118125);
+    AppMethodBeat.o(73415);
   }
   
   private void processMap(StringBuilder paramStringBuilder, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(118123);
+    AppMethodBeat.i(73413);
     if (paramMap.size() == 0)
     {
       paramStringBuilder.append("{}");
-      AppMethodBeat.o(118123);
+      AppMethodBeat.o(73413);
       return;
     }
     paramStringBuilder.append('{');
@@ -559,13 +559,13 @@ public class WeJson
       }
     }
     paramStringBuilder.append('}');
-    AppMethodBeat.o(118123);
+    AppMethodBeat.o(73413);
   }
   
   private <T> void processObj(StringBuilder paramStringBuilder, T paramT)
   {
     int j = 0;
-    AppMethodBeat.i(118124);
+    AppMethodBeat.i(73414);
     Object localObject1 = paramT.getClass().getDeclaredFields();
     Object localObject3 = paramT.getClass().getSuperclass().getDeclaredFields();
     Object localObject2 = new Field[localObject1.length + localObject3.length];
@@ -584,104 +584,101 @@ public class WeJson
     if (localObject2.length == 0)
     {
       paramStringBuilder.append("{}");
-      AppMethodBeat.o(118124);
+      AppMethodBeat.o(73414);
       return;
     }
     localObject3 = new HashMap();
     i = 0;
     for (;;)
     {
-      int k;
-      String str;
+      if (i < localObject2.length) {
+        localObject1 = localObject2[i];
+      }
       try
       {
-        if (i < localObject2.length)
+        int k = ((Field)localObject1).getModifiers();
+        if ((k & 0x8) == 0)
         {
-          localObject1 = localObject2[i];
-          k = ((Field)localObject1).getModifiers();
-          if ((k & 0x8) != 0) {
-            break label478;
-          }
-          str = ((Field)localObject1).getName();
-          if (str.contains("$")) {
-            break label478;
-          }
-          if ((k & 0x1) != 0)
-          {
-            localObject1 = ((Field)localObject1).get(paramT);
-            if (localObject1 != null) {
-              ((Map)localObject3).put(str, localObject1);
-            }
-          }
-          else
-          {
-            Class localClass = paramT.getClass();
-            StringBuilder localStringBuilder = new StringBuilder("get").append(str.substring(0, 1).toUpperCase());
-            if (str.length() == 1)
+          String str = ((Field)localObject1).getName();
+          if (!str.contains("$")) {
+            if ((k & 0x1) != 0)
             {
-              localObject1 = "";
-              localObject1 = localClass.getMethod((String)localObject1, new Class[0]);
-              if (localObject1 == null) {
-                break label478;
+              localObject1 = ((Field)localObject1).get(paramT);
+              if (localObject1 != null) {
+                ((Map)localObject3).put(str, localObject1);
               }
-              localObject1 = ((Method)localObject1).invoke(paramT, new Object[0]);
-              if (localObject1 == null) {
-                break label478;
+            }
+            else
+            {
+              Class localClass = paramT.getClass();
+              StringBuilder localStringBuilder = new StringBuilder("get").append(str.substring(0, 1).toUpperCase());
+              if (str.length() == 1) {}
+              for (localObject1 = "";; localObject1 = str.substring(1))
+              {
+                localObject1 = localClass.getMethod((String)localObject1, new Class[0]);
+                if (localObject1 == null) {
+                  break;
+                }
+                localObject1 = ((Method)localObject1).invoke(paramT, new Object[0]);
+                if (localObject1 == null) {
+                  break;
+                }
+                ((Map)localObject3).put(str, localObject1);
+                break;
               }
-              ((Map)localObject3).put(str, localObject1);
+              paramStringBuilder.append('{');
+              k = ((Map)localObject3).size();
+              paramT = ((Map)localObject3).entrySet().iterator();
+              i = j;
+              for (;;)
+              {
+                if (paramT.hasNext())
+                {
+                  localObject2 = (Map.Entry)paramT.next();
+                  i += 1;
+                  localObject1 = (String)((Map.Entry)localObject2).getKey();
+                  localObject2 = ((Map.Entry)localObject2).getValue();
+                  if ((!(localObject2 instanceof String)) || (!localObject2.equals("")))
+                  {
+                    paramStringBuilder.append('"').append((String)localObject1).append('"').append(':');
+                    process(paramStringBuilder, localObject2);
+                    if (i < k) {
+                      paramStringBuilder.append(',');
+                    }
+                  }
+                }
+                else
+                {
+                  paramStringBuilder.append('}');
+                  AppMethodBeat.o(73414);
+                  return;
+                }
+              }
             }
           }
         }
       }
-      catch (Exception paramT)
+      catch (Exception localException)
       {
-        paramStringBuilder.append('{');
-        k = ((Map)localObject3).size();
-        paramT = ((Map)localObject3).entrySet().iterator();
-        i = j;
+        label480:
+        break label480;
       }
-      label475:
-      for (;;)
-      {
-        if (paramT.hasNext())
-        {
-          localObject2 = (Map.Entry)paramT.next();
-          i += 1;
-          localObject1 = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = ((Map.Entry)localObject2).getValue();
-          if (((localObject2 instanceof String)) && (localObject2.equals(""))) {
-            break label475;
-          }
-          paramStringBuilder.append('"').append((String)localObject1).append('"').append(':');
-          process(paramStringBuilder, localObject2);
-          if (i < k) {
-            paramStringBuilder.append(',');
-          }
-          continue;
-          localObject1 = str.substring(1);
-          break;
-        }
-        paramStringBuilder.append('}');
-        AppMethodBeat.o(118124);
-        return;
-      }
-      label478:
       i += 1;
     }
   }
   
   public <T> T fromJson(String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(118127);
+    AppMethodBeat.i(73417);
     if (paramString == null)
     {
-      AppMethodBeat.o(118127);
+      AppMethodBeat.o(73417);
       return null;
     }
     if (paramClass == null)
     {
       paramString = new WeJsonException("必须指定classOfT");
-      AppMethodBeat.o(118127);
+      AppMethodBeat.o(73417);
       throw paramString;
     }
     paramString = paramString.trim();
@@ -692,61 +689,61 @@ public class WeJson
         if (paramString == null) {
           break label192;
         }
-        AppMethodBeat.o(118127);
+        AppMethodBeat.o(73417);
         return paramString;
       }
       catch (Exception paramString)
       {
         paramString = new WeJsonException("json 解析错误" + paramString.getMessage(), paramString);
-        AppMethodBeat.o(118127);
+        AppMethodBeat.o(73417);
         throw paramString;
       }
     } else if (paramString.startsWith("{")) {
       try
       {
         paramString = fromJsonObj(new JSONObject(paramString), paramClass, null);
-        AppMethodBeat.o(118127);
+        AppMethodBeat.o(73417);
         return paramString;
       }
       catch (Exception paramString)
       {
         paramString = new WeJsonException("json 解析错误:" + paramString.getMessage(), paramString);
-        AppMethodBeat.o(118127);
+        AppMethodBeat.o(73417);
         throw paramString;
       }
     }
     label192:
     paramString = new WeJsonException("classOfT 指定错误");
-    AppMethodBeat.o(118127);
+    AppMethodBeat.o(73417);
     throw paramString;
   }
   
   public <T> String toJson(T paramT)
   {
-    AppMethodBeat.i(118119);
+    AppMethodBeat.i(73409);
     paramT = toJson(paramT, 0);
-    AppMethodBeat.o(118119);
+    AppMethodBeat.o(73409);
     return paramT;
   }
   
   public <T> String toJson(T paramT, int paramInt)
   {
-    AppMethodBeat.i(118120);
+    AppMethodBeat.i(73410);
     if (paramT == null)
     {
-      AppMethodBeat.o(118120);
+      AppMethodBeat.o(73410);
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     process(localStringBuilder, paramT);
     paramT = localStringBuilder.toString();
-    AppMethodBeat.o(118120);
+    AppMethodBeat.o(73410);
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.tools.wejson.WeJson
  * JD-Core Version:    0.7.0.1
  */

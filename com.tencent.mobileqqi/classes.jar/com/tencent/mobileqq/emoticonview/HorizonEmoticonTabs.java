@@ -21,11 +21,11 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import fow;
 import fox;
 import foy;
 import foz;
 import fpa;
-import fpb;
 
 public class HorizonEmoticonTabs
   extends HorizontalScrollView
@@ -57,15 +57,15 @@ public class HorizonEmoticonTabs
   
   private void a(boolean paramBoolean, View paramView, int paramInt)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131231655);
-    View localView = paramView.findViewById(2131231652);
-    paramView.findViewById(2131231653).setSelected(paramBoolean);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131231654);
+    View localView = paramView.findViewById(2131231651);
+    paramView.findViewById(2131231652).setSelected(paramBoolean);
     localImageView.setSelected(paramBoolean);
     if (!paramBoolean)
     {
       localView.setBackgroundResource(2130839116);
       if (paramInt > 0) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131231652).setBackgroundResource(2130839116);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131231651).setBackgroundResource(2130839116);
       }
     }
     do
@@ -73,7 +73,7 @@ public class HorizonEmoticonTabs
       return;
       localView.setBackgroundResource(2130837641);
     } while (paramInt <= 0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131231652).setBackgroundResource(2130837641);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt - 1).findViewById(2131231651).setBackgroundResource(2130837641);
   }
   
   private void d()
@@ -98,7 +98,7 @@ public class HorizonEmoticonTabs
         }
         while (i != 0)
         {
-          post(new fpb(this, i));
+          post(new fpa(this, i));
           return;
           if (k < j) {
             i = k - j;
@@ -124,12 +124,12 @@ public class HorizonEmoticonTabs
     if (localView == null) {
       return;
     }
-    ((ImageView)localView.findViewById(2131231654)).setVisibility(0);
+    ((ImageView)localView.findViewById(2131231653)).setVisibility(0);
   }
   
   public void a(Drawable paramDrawable, int paramInt)
   {
-    post(new foz(this, paramInt, paramDrawable));
+    post(new foy(this, paramInt, paramDrawable));
   }
   
   public void a(EmoticonViewBinder paramEmoticonViewBinder, int paramInt, boolean paramBoolean)
@@ -146,8 +146,8 @@ public class HorizonEmoticonTabs
       try
       {
         View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903664, null);
-        ImageView localImageView = (ImageView)localView.findViewById(2131231655);
-        Object localObject = localView.findViewById(2131231652);
+        ImageView localImageView = (ImageView)localView.findViewById(2131231654);
+        Object localObject = localView.findViewById(2131231651);
         if (paramBoolean)
         {
           i = 0;
@@ -168,7 +168,7 @@ public class HorizonEmoticonTabs
               paramEmoticonViewBinder = (BigEmoticonViewBinder)paramEmoticonViewBinder;
               localObject = BigEmoticonViewBinder.b(this.jdField_a_of_type_AndroidContentContext);
               paramEmoticonViewBinder.a.status = 0;
-              ThreadManager.b(new fox(this, localQQAppInterface, paramEmoticonViewBinder));
+              ThreadManager.b(new fow(this, localQQAppInterface, paramEmoticonViewBinder));
             }
           }
           if (localObject != null)
@@ -211,9 +211,9 @@ public class HorizonEmoticonTabs
       try
       {
         View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130903215, null);
-        ImageView localImageView2 = (ImageView)localView.findViewById(2131231655);
-        ImageView localImageView1 = (ImageView)localView.findViewById(2131231654);
-        Object localObject1 = localView.findViewById(2131231652);
+        ImageView localImageView2 = (ImageView)localView.findViewById(2131231654);
+        ImageView localImageView1 = (ImageView)localView.findViewById(2131231653);
+        Object localObject1 = localView.findViewById(2131231651);
         if (paramBoolean)
         {
           i = 0;
@@ -234,7 +234,7 @@ public class HorizonEmoticonTabs
               localObject2 = (BigEmoticonViewBinder)paramEmoticonViewBinder;
               localObject1 = BigEmoticonViewBinder.b(this.jdField_a_of_type_AndroidContentContext);
               ((BigEmoticonViewBinder)localObject2).a.status = 0;
-              ThreadManager.b(new foy(this, localQQAppInterface, (BigEmoticonViewBinder)localObject2));
+              ThreadManager.b(new fox(this, localQQAppInterface, (BigEmoticonViewBinder)localObject2));
             }
           }
           if (localObject1 != null)
@@ -274,7 +274,7 @@ public class HorizonEmoticonTabs
   
   public boolean a(int paramInt)
   {
-    return ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).findViewById(2131231654)).getVisibility() == 0;
+    return ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).findViewById(2131231653)).getVisibility() == 0;
   }
   
   public void b()
@@ -326,7 +326,7 @@ public class HorizonEmoticonTabs
           }
           if (paramView != null)
           {
-            localObject = (ImageView)paramView.findViewById(2131231654);
+            localObject = (ImageView)paramView.findViewById(2131231653);
             if (localObject != null) {
               ((ImageView)localObject).setVisibility(8);
             }
@@ -366,7 +366,7 @@ public class HorizonEmoticonTabs
     }
     onClick(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt));
     this.jdField_a_of_type_Int = paramInt;
-    super.postDelayed(new fpa(this), 200L);
+    super.postDelayed(new foz(this), 200L);
   }
   
   public void setSelectedIndex(int paramInt, boolean paramBoolean)

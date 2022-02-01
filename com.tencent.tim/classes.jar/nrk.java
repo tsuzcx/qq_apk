@@ -1,0 +1,94 @@
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.e;
+
+public class nrk
+  implements AbsListView.e
+{
+  private int ajD = -1;
+  private int ajE = -1;
+  private int ajF;
+  private int ajG;
+  private int mCurrentScrollState;
+  
+  public nrk(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  
+  private void akx()
+  {
+    if ((this.ajG > 0) && (this.mCurrentScrollState == 0))
+    {
+      if ((!ReadInJoyDynamicGridView.a(this.b)) || (!ReadInJoyDynamicGridView.b(this.b))) {
+        break label42;
+      }
+      ReadInJoyDynamicGridView.b(this.b);
+    }
+    label42:
+    while (!ReadInJoyDynamicGridView.c(this.b)) {
+      return;
+    }
+    ReadInJoyDynamicGridView.c(this.b);
+  }
+  
+  public void aky()
+  {
+    if ((this.ajF != this.ajD) && (ReadInJoyDynamicGridView.a(this.b)) && (ReadInJoyDynamicGridView.a(this.b) != -1L))
+    {
+      ReadInJoyDynamicGridView.a(this.b, ReadInJoyDynamicGridView.a(this.b));
+      ReadInJoyDynamicGridView.d(this.b);
+    }
+  }
+  
+  public void akz()
+  {
+    if ((this.ajF + this.ajG != this.ajD + this.ajE) && (ReadInJoyDynamicGridView.a(this.b)) && (ReadInJoyDynamicGridView.a(this.b) != -1L))
+    {
+      ReadInJoyDynamicGridView.a(this.b, ReadInJoyDynamicGridView.a(this.b));
+      ReadInJoyDynamicGridView.d(this.b);
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.ajF = paramInt1;
+    this.ajG = paramInt2;
+    if (this.ajD == -1)
+    {
+      i = this.ajF;
+      this.ajD = i;
+      if (this.ajE != -1) {
+        break label111;
+      }
+    }
+    label111:
+    for (int i = this.ajG;; i = this.ajE)
+    {
+      this.ajE = i;
+      aky();
+      akz();
+      this.ajD = this.ajF;
+      this.ajE = this.ajG;
+      if (ReadInJoyDynamicGridView.a(this.b) != null) {
+        ReadInJoyDynamicGridView.a(this.b).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      }
+      return;
+      i = this.ajD;
+      break;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.mCurrentScrollState = paramInt;
+    ReadInJoyDynamicGridView.c(this.b, paramInt);
+    akx();
+    if (ReadInJoyDynamicGridView.a(this.b) != null) {
+      ReadInJoyDynamicGridView.a(this.b).onScrollStateChanged(paramAbsListView, paramInt);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.tim\classes14.jar
+ * Qualified Name:     nrk
+ * JD-Core Version:    0.7.0.1
+ */

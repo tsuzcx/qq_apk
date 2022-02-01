@@ -17,8 +17,8 @@ import com.tencent.mobileqq.service.circle.IGroupObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.XListView;
+import eqm;
 import eqn;
-import eqo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +29,9 @@ public class RenMaiQuanTeamListInnerFrame
   EditText jdField_a_of_type_AndroidWidgetEditText;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public CircleManager a;
-  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new eqn(this);
+  IGroupObserver jdField_a_of_type_ComTencentMobileqqServiceCircleIGroupObserver = new eqm(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private eqo jdField_a_of_type_Eqo;
+  private eqn jdField_a_of_type_Eqn;
   public ArrayList a;
   
   public RenMaiQuanTeamListInnerFrame(Context paramContext)
@@ -69,13 +69,13 @@ public class RenMaiQuanTeamListInnerFrame
   {
     super.a(paramBundle);
     setContentView(2130903975);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232612));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131232611));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131361815);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130903944, this.jdField_a_of_type_ComTencentWidgetXListView, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233087));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233086));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131234398)).setText(2131562831);
-    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233086)).setVisibility(8);
+    ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131234397)).setText(2131562831);
+    ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131233085)).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqAppCircleManager = ((CircleManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33));
     int i;
     if (this.jdField_a_of_type_ComTencentMobileqqAppCircleManager != null)
@@ -93,8 +93,8 @@ public class RenMaiQuanTeamListInnerFrame
     }
     for (;;)
     {
-      this.jdField_a_of_type_Eqo = new eqo(this, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eqo);
+      this.jdField_a_of_type_Eqn = new eqn(this, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Eqn);
       return;
       label210:
       if (i == -2) {
@@ -117,7 +117,7 @@ public class RenMaiQuanTeamListInnerFrame
   
   public void f()
   {
-    this.jdField_a_of_type_Eqo.notifyDataSetChanged();
+    this.jdField_a_of_type_Eqn.notifyDataSetChanged();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)

@@ -6,37 +6,48 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.os.SystemClock;
-import android.support.annotation.Keep;
+import com.github.henryye.nativeiv.a.b;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
 import com.github.henryye.nativeiv.bitmap.c;
-import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 
-class LegacyBitmap
+public class LegacyBitmap
   implements IBitmap<Bitmap>
 {
-  private Bitmap auC = null;
+  private Bitmap cEc = null;
   private long lastDecodeUsing = -1L;
   
-  public void decodeInputStream(InputStream paramInputStream, Bitmap.Config paramConfig, c paramc)
+  protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(115750);
-    long l = SystemClock.elapsedRealtime();
+    AppMethodBeat.i(208235);
     paramc = new BitmapFactory.Options();
-    paramc.inPreferredConfig = paramConfig;
-    this.auC = BitmapFactory.decodeStream(paramInputStream, null, paramc);
-    if ((this.auC != null) && (this.auC.getConfig() != Bitmap.Config.ARGB_8888))
+    paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
+    paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
+    paramInputStream = BitmapFactory.decodeStream(paramInputStream, null, paramc);
+    if ((paramInputStream != null) && (paramInputStream.getConfig() != Bitmap.Config.ARGB_8888))
     {
-      c.c.w("Ni.LegacyBitmap", "hy: config not argb-8888", new Object[0]);
-      paramInputStream = Bitmap.createBitmap(this.auC.getWidth(), this.auC.getHeight(), Bitmap.Config.ARGB_8888);
-      new Canvas(paramInputStream).drawBitmap(this.auC, 0.0F, 0.0F, null);
-      this.auC.recycle();
-      this.auC = paramInputStream;
+      b.w("Ni.LegacyBitmap", "hy: config not argb-8888", new Object[0]);
+      paramImageDecodeConfig = Bitmap.createBitmap(paramInputStream.getWidth(), paramInputStream.getHeight(), Bitmap.Config.ARGB_8888);
+      new Canvas(paramImageDecodeConfig).drawBitmap(paramInputStream, 0.0F, 0.0F, null);
+      paramInputStream.recycle();
+      paramInputStream = paramImageDecodeConfig;
     }
+    for (;;)
+    {
+      AppMethodBeat.o(208235);
+      return paramInputStream;
+    }
+  }
+  
+  public void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
+  {
+    AppMethodBeat.i(127349);
+    long l = SystemClock.elapsedRealtime();
+    this.cEc = a(paramInputStream, paramImageDecodeConfig, paramc);
     this.lastDecodeUsing = (SystemClock.elapsedRealtime() - l);
-    AppMethodBeat.o(115750);
+    AppMethodBeat.o(127349);
   }
   
   public long getDecodeTime()
@@ -44,31 +55,28 @@ class LegacyBitmap
     return this.lastDecodeUsing;
   }
   
-  @Keep
   public BitmapType getType()
   {
     return BitmapType.Legacy;
   }
   
-  @Keep
   public Bitmap provide()
   {
-    return this.auC;
+    return this.cEc;
   }
   
-  @Keep
   public void recycle()
   {
-    AppMethodBeat.i(115751);
-    if (this.auC != null) {
-      this.auC.recycle();
+    AppMethodBeat.i(127350);
+    if (this.cEc != null) {
+      this.cEc.recycle();
     }
-    AppMethodBeat.o(115751);
+    AppMethodBeat.o(127350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.LegacyBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/vi" android:layout_width="fill_parent" android:layout_height="140.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c0o" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:src="@drawable/com" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/jm6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="00:00" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/c0o" android:layout_centerVertical="true">
+        <TextView android:textSize="18.0dip" android:textColor="@android:color/black" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/black" android:id="@id/eqq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/d8n" android:layout_below="@id/f5e" />
+    </RelativeLayout>
+    <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/i6k" android:background="@drawable/vk" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/idq" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <Button android:textColor="#ffffffff" android:id="@id/w" android:background="@drawable/vj" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="10.0dip" android:text="@string/ic8" android:layout_toLeftOf="@id/i6k" android:layout_alignParentTop="true" />
+</RelativeLayout>

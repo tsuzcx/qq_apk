@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.MD5;
 import java.io.Serializable;
 
 public class RockDownloadInfo
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int CHECK_LEVEL_DELETE = 3;
@@ -68,10 +68,21 @@ public class RockDownloadInfo
   
   public String getDownloadFileNameMD5()
   {
-    if (this.realVersionCode == 0) {
-      return MD5.toMD5(this.businessName + this.businessScene + this.packageName + this.versionCode);
+    if (this.realVersionCode == 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.businessName);
+      localStringBuilder.append(this.businessScene);
+      localStringBuilder.append(this.packageName);
+      localStringBuilder.append(this.versionCode);
+      return MD5.toMD5(localStringBuilder.toString());
     }
-    return MD5.toMD5(this.businessName + this.businessScene + this.packageName + this.realVersionCode);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.businessName);
+    localStringBuilder.append(this.businessScene);
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append(this.realVersionCode);
+    return MD5.toMD5(localStringBuilder.toString());
   }
   
   public String getDownloadURL()
@@ -151,32 +162,70 @@ public class RockDownloadInfo
   
   public String toString()
   {
-    return "RockDownloadInfo{businessName='" + this.businessName + '\'' + ", businessScene='" + this.businessScene + '\'' + ", packageName='" + this.packageName + '\'' + ", downloadURL='" + this.downloadURL + '\'' + ", versionCode=" + this.versionCode + ", startTime=" + this.startTime + ", endTime=" + this.endTime + ", applicationName='" + this.applicationName + '\'' + ", md5='" + this.md5 + '\'' + ", realVersionCode=" + this.realVersionCode + ", localPath='" + this.localPath + '\'' + ", ticket='" + this.ticket + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RockDownloadInfo{businessName='");
+    localStringBuilder.append(this.businessName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", businessScene='");
+    localStringBuilder.append(this.businessScene);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", packageName='");
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadURL='");
+    localStringBuilder.append(this.downloadURL);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", versionCode=");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append(", applicationName='");
+    localStringBuilder.append(this.applicationName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", realVersionCode=");
+    localStringBuilder.append(this.realVersionCode);
+    localStringBuilder.append(", localPath='");
+    localStringBuilder.append(this.localPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ticket='");
+    localStringBuilder.append(this.ticket);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public boolean verifyDate(int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        bool = false;
-        do
+        if (paramInt != 3)
         {
-          return bool;
-          if ((TextUtils.isEmpty(this.businessName)) || (TextUtils.isEmpty(this.businessScene)) || (TextUtils.isEmpty(this.packageName)) || (TextUtils.isEmpty(this.downloadURL)) || (this.versionCode <= 0)) {
-            break;
+          if ((paramInt != 4) || (TextUtils.isEmpty(this.businessName)) || (TextUtils.isEmpty(this.localPath))) {
+            break label138;
           }
           return true;
-        } while ((!TextUtils.isEmpty(this.businessName)) && (!TextUtils.isEmpty(this.packageName)));
-      } while ((TextUtils.isEmpty(this.businessName)) || (TextUtils.isEmpty(this.localPath)));
+        }
+      }
+      else if ((!TextUtils.isEmpty(this.businessName)) && (!TextUtils.isEmpty(this.packageName))) {
+        return true;
+      }
+      if ((!TextUtils.isEmpty(this.businessName)) && (!TextUtils.isEmpty(this.localPath))) {
+        return true;
+      }
+    }
+    else if ((!TextUtils.isEmpty(this.businessName)) && (!TextUtils.isEmpty(this.businessScene)) && (!TextUtils.isEmpty(this.packageName)) && (!TextUtils.isEmpty(this.downloadURL)) && (this.versionCode > 0))
+    {
       return true;
-    } while ((TextUtils.isEmpty(this.businessName)) || (TextUtils.isEmpty(this.localPath)));
-    return true;
+    }
+    label138:
+    return false;
   }
 }
 

@@ -2,123 +2,83 @@ package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.os.Handler;
-import arhz;
-import arkn;
-import arko;
-import arkz;
-import arrr;
-import bbtn;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public class TroopFileModel$7
+class TroopFileModel$7
   implements Runnable
 {
-  public TroopFileModel$7(arkz paramarkz, bbtn parambbtn) {}
+  TroopFileModel$7(TroopFileModel paramTroopFileModel, TroopFileStatusInfo paramTroopFileStatusInfo) {}
   
   public void run()
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("TroopFileModel<FileAssistant>", 4, String.format("update file info: status:%d fileName:%s errorCode:%d", new Object[] { Integer.valueOf(this.a.b), this.a.g, Integer.valueOf(this.a.jdField_c_of_type_Int) }));
+      QLog.d("TroopFileModel<FileAssistant>", 4, String.format("update file info: status:%d fileName:%s errorCode:%d", new Object[] { Integer.valueOf(this.a.e), this.a.t, Integer.valueOf(this.a.g) }));
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_Arhz.a();
-    if ((((FileManagerEntity)localObject1).isFromProcessingForward2c2cOrDiscItem()) || (((FileManagerEntity)localObject1).isFromProcessingForward2DatalineItem())) {
-      return;
-    }
-    if (this.this$0.jdField_a_of_type_Arkn != null) {
-      this.this$0.jdField_a_of_type_Arkn.a(this.a.e, this.a.jdField_c_of_type_JavaLangString);
-    }
-    switch (this.a.b)
+    Object localObject = this.this$0.c.r();
+    if (!((FileManagerEntity)localObject).isFromProcessingForward2c2cOrDiscItem())
     {
-    }
-    for (;;)
-    {
-      arkz.a(this.this$0, this.a.b);
-      return;
-      if ((this.this$0.jdField_a_of_type_Arko != null) && (arkz.a(this.this$0) != 8)) {
-        this.this$0.jdField_a_of_type_Arko.d();
+      if (((FileManagerEntity)localObject).isFromProcessingForward2DatalineItem()) {
+        return;
       }
-      if (this.this$0.jdField_a_of_type_Arko != null)
+      if (this.this$0.s != null) {
+        this.this$0.s.a(this.a.r, this.a.m);
+      }
+      if (this.this$0.q == null)
       {
-        this.this$0.jdField_a_of_type_Arko.a((float)this.a.d * 1.0F / ((float)this.a.jdField_c_of_type_Long * 1.0F));
-        continue;
-        if (this.this$0.jdField_a_of_type_Arko != null)
-        {
-          this.this$0.jdField_a_of_type_Arko.e();
-          continue;
-          long l = ((FileManagerEntity)localObject1).lastTime;
-          Object localObject2 = ((FileManagerEntity)localObject1).selfUin;
-          boolean bool1 = ((FileManagerEntity)localObject1).bSend;
-          boolean bool2 = ((FileManagerEntity)localObject1).isZipInnerFile;
-          FileManagerEntity localFileManagerEntity = arrr.a(this.a);
-          ((FileManagerEntity)localObject1).copyFrom(localFileManagerEntity);
-          ((FileManagerEntity)localObject1).lastTime = l;
-          ((FileManagerEntity)localObject1).selfUin = ((String)localObject2);
-          ((FileManagerEntity)localObject1).bSend = bool1;
-          ((FileManagerEntity)localObject1).isZipInnerFile = bool2;
-          if ((this.this$0.b == 3) && (this.this$0.e() == 2))
-          {
-            localObject2 = new SessionInfo();
-            ((SessionInfo)localObject2).a = 1;
-            l = this.this$0.jdField_a_of_type_AndroidOsBundle.getLong("troopfile_shmsgseq");
-            MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(String.valueOf(((FileManagerEntity)localObject1).TroopUin), 1, l, -2017);
-            Rect localRect = (Rect)this.this$0.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
-            if (this.this$0.jdField_a_of_type_Arhw != null)
-            {
-              ThreadManagerV2.getUIHandlerV2().postDelayed(new TroopFileModel.7.1(this, localMessageRecord, (SessionInfo)localObject2, (FileManagerEntity)localObject1, localFileManagerEntity, localRect), 100L);
-              ThreadManagerV2.getUIHandlerV2().postDelayed(new TroopFileModel.7.2(this, localMessageRecord), 300L);
-            }
-          }
-          if (this.this$0.d() == 3)
-          {
-            if (this.this$0.jdField_a_of_type_Arko != null) {
-              this.this$0.jdField_a_of_type_Arko.f();
-            }
-          }
-          else if (QLog.isColorLevel())
-          {
-            QLog.w("TroopFileModel<FileAssistant>", 2, "file download finished, but file not exist.");
-            continue;
-            if (this.this$0.jdField_a_of_type_Arko != null)
-            {
-              this.this$0.jdField_a_of_type_Arko.e();
-              continue;
-              if (this.this$0.jdField_a_of_type_Arko != null)
-              {
-                this.this$0.jdField_a_of_type_Arko.f();
-                continue;
-                if (this.this$0.jdField_a_of_type_Arko != null) {
-                  this.this$0.jdField_a_of_type_Arko.d();
-                }
-                if (this.this$0.jdField_a_of_type_Arko != null)
-                {
-                  this.this$0.jdField_a_of_type_Arko.a((float)this.a.d * 1.0F / ((float)this.a.jdField_c_of_type_Long * 1.0F));
-                  continue;
-                  localObject1 = new Intent();
-                  ((Intent)localObject1).putExtra("TroopFile_DeleteFile", true);
-                  ((Intent)localObject1).putExtra("TroopFile_FileName", this.a.g);
-                  this.this$0.jdField_a_of_type_AndroidAppActivity.setResult(-1, (Intent)localObject1);
-                  this.this$0.jdField_a_of_type_AndroidAppActivity.finish();
-                }
-              }
-            }
-          }
+        QLog.d("TroopFileModel<FileAssistant>", 1, "updateTroopFileInfo: error, transListener is null!");
+        if (QLog.isDevelopLevel()) {
+          QQToast.makeText(this.this$0.i, 1, 2131889368, 0);
         }
+        return;
       }
+      switch (this.a.e)
+      {
+      case 4: 
+      case 5: 
+      default: 
+        break;
+      case 12: 
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("TroopFile_DeleteFile", true);
+        ((Intent)localObject).putExtra("TroopFile_FileName", this.a.t);
+        this.this$0.i.setResult(-1, (Intent)localObject);
+        this.this$0.i.finish();
+        break;
+      case 11: 
+        TroopFileModel.a(this.this$0, (FileManagerEntity)localObject, this.a);
+        break;
+      case 9: 
+      case 10: 
+        this.this$0.q.e();
+        break;
+      case 8: 
+        if (TroopFileModel.b(this.this$0) != 8) {
+          this.this$0.q.d();
+        }
+        this.this$0.q.a((float)this.a.j * 1.0F / ((float)this.a.i * 1.0F));
+        break;
+      case 6: 
+        this.this$0.q.f();
+        break;
+      case 2: 
+      case 3: 
+        this.this$0.q.e();
+        break;
+      case 1: 
+        this.this$0.q.d();
+        this.this$0.q.a((float)this.a.j * 1.0F / ((float)this.a.i * 1.0F));
+      }
+      TroopFileModel.a(this.this$0, this.a.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.7
  * JD-Core Version:    0.7.0.1
  */

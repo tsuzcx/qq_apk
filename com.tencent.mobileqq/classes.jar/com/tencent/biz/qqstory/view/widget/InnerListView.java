@@ -5,25 +5,20 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
 import java.util.List;
-import wtq;
-import wxe;
-import xvu;
-import xvv;
-import xvw;
-import xvx;
-import xvy;
 
 public class InnerListView
   extends LinearLayout
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<wtq> jdField_a_of_type_JavaUtilList;
-  private xvw jdField_a_of_type_Xvw;
-  private xvx jdField_a_of_type_Xvx;
-  private xvy jdField_a_of_type_Xvy;
-  private List<View> b;
+  private LayoutInflater a;
+  private List<BaseViewHolder> b;
+  private InnerListView.OnItemClickListener c;
+  private InnerListView.OnItemLongClickListener d;
+  private InnerListViewAdapter e;
+  private List<View> f;
   
   public InnerListView(Context paramContext)
   {
@@ -43,58 +38,47 @@ public class InnerListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
+    this.a = LayoutInflater.from(paramContext);
+    this.b = new ArrayList();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Xvy != null)
+    Object localObject = this.e;
+    if (localObject != null)
     {
-      if ((this.jdField_a_of_type_Xvy.a() != null) && (!this.jdField_a_of_type_Xvy.a().isEmpty()))
+      if ((((InnerListViewAdapter)localObject).b() != null) && (!this.e.b().isEmpty()))
       {
-        int j = this.jdField_a_of_type_Xvy.a().size();
-        if (j < getChildCount() - a()) {
-          removeViews(j, getChildCount() - j - a());
+        int j = this.e.b().size();
+        if (j < getChildCount() - getFooterCount()) {
+          removeViews(j, getChildCount() - j - getFooterCount());
         }
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
-          Object localObject;
-          if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
-            localObject = (wtq)this.jdField_a_of_type_JavaUtilList.get(i);
-          }
-          for (;;)
+          if (this.b.size() - 1 >= i)
           {
-            this.jdField_a_of_type_Xvy.a(i, (wtq)localObject);
-            localObject = ((wtq)localObject).a();
-            if (((View)localObject).getParent() == null) {
-              addView((View)localObject, getChildCount() - a());
-            }
-            ((View)localObject).setOnClickListener(new xvu(this, i));
-            ((View)localObject).setOnLongClickListener(new xvv(this, i));
-            i += 1;
-            break;
-            localObject = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Xvy.a(), this, false));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            localObject = (BaseViewHolder)this.b.get(i);
           }
+          else
+          {
+            localObject = new BaseViewHolder(this.a.inflate(this.e.a(), this, false));
+            this.b.add(localObject);
+          }
+          this.e.a(i, (BaseViewHolder)localObject);
+          localObject = ((BaseViewHolder)localObject).a();
+          if (((View)localObject).getParent() == null) {
+            addView((View)localObject, getChildCount() - getFooterCount());
+          }
+          ((View)localObject).setOnClickListener(new InnerListView.1(this, i));
+          ((View)localObject).setOnLongClickListener(new InnerListView.2(this, i));
+          i += 1;
         }
       }
-      else
-      {
-        removeViews(0, getChildCount() - a());
-      }
+      removeViews(0, getChildCount() - getFooterCount());
       return;
     }
-    removeViews(0, getChildCount() - a());
+    removeViews(0, getChildCount() - getFooterCount());
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -103,54 +87,64 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      wtq localwtq = new wtq(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localwtq);
+      BaseViewHolder localBaseViewHolder = new BaseViewHolder(this.a.inflate(paramInt1, this, false));
+      this.b.add(localBaseViewHolder);
       i += 1;
     }
-    wxe.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    SLog.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void a(View paramView)
   {
-    if (this.b == null) {
-      this.b = new ArrayList();
+    if (this.f == null) {
+      this.f = new ArrayList();
     }
-    this.b.add(paramView);
+    this.f.add(paramView);
     addView(paramView);
   }
   
-  public void setAdapter(xvy paramxvy)
+  public int getFooterCount()
   {
-    this.jdField_a_of_type_Xvy = paramxvy;
+    List localList = this.f;
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public void setAdapter(InnerListViewAdapter paramInnerListViewAdapter)
+  {
+    this.e = paramInnerListViewAdapter;
     a();
   }
   
   public void setFooterView(int paramInt, View paramView)
   {
-    if ((this.b == null) || (this.b.size() <= paramInt))
+    List localList = this.f;
+    if ((localList != null) && (localList.size() > paramInt))
     {
-      a(paramView);
+      this.f.set(paramInt, paramView);
+      paramInt = getChildCount() - getFooterCount() + paramInt;
+      removeViewAt(paramInt);
+      addView(paramView, paramInt);
       return;
     }
-    this.b.set(paramInt, paramView);
-    paramInt = getChildCount() - a() + paramInt;
-    removeViewAt(paramInt);
-    addView(paramView, paramInt);
+    a(paramView);
   }
   
-  public void setOnItemClickListener(xvw paramxvw)
+  public void setOnItemClickListener(InnerListView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_Xvw = paramxvw;
+    this.c = paramOnItemClickListener;
   }
   
-  public void setOnItemLongClickListener(xvx paramxvx)
+  public void setOnItemLongClickListener(InnerListView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.jdField_a_of_type_Xvx = paramxvx;
+    this.d = paramOnItemLongClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.InnerListView
  * JD-Core Version:    0.7.0.1
  */

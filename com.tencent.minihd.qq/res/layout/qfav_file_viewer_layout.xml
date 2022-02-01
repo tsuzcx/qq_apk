@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/qfav_file_viewer_layout" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qfav_file_viewer_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_alignParentTop="true" layout="@layout/custom_commen_title" />
+    <RelativeLayout android:id="@id/qfav_file_viewer_bottom_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

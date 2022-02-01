@@ -1,34 +1,63 @@
-import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
 
 public class eib
-  extends QZoneObserver
+  extends GameCenterObserver
 {
   public eib(MainAssistObserver paramMainAssistObserver) {}
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    int i;
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
       }
-      if ((this.a.a != null) && (this.a.a.b != null)) {}
+      i = this.a.a() + this.a.b();
+      this.a.a(34, 16, Integer.valueOf(i));
     }
-    else
+    switch (paramInt)
     {
+    case 2: 
+    case 3: 
+    default: 
+    case 0: 
+    case 1: 
+    case 4: 
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (i <= 0);
+              this.a.a(34, 17, Boolean.valueOf(false));
+              this.a.a(34, 18, Boolean.valueOf(false));
+              return;
+            } while (i != 0);
+            paramBoolean1 = MainAssistObserver.a(this.a);
+            this.a.a(34, 17, Boolean.valueOf(paramBoolean1));
+          } while (!paramBoolean1);
+          this.a.a(34, 18, Boolean.valueOf(false));
+          this.a.a(34, 16, Integer.valueOf(0));
+          return;
+        } while (i != 0);
+        paramBoolean1 = MainAssistObserver.b(this.a);
+        this.a.a(34, 18, Boolean.valueOf(paramBoolean1));
+      } while (!paramBoolean1);
+      this.a.a(34, 17, Boolean.valueOf(false));
+      this.a.a(34, 16, Integer.valueOf(0));
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.b;
-    if (!GuardManager.a.a()) {
-      QzonePluginProxyActivity.a(localQQAppInterface);
-    }
     this.a.h();
+    this.a.g();
   }
 }
 

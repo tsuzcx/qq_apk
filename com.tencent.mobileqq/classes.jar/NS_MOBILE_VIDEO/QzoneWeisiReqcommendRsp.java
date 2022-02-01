@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QzoneWeisiReqcommendRsp
   extends JceStruct
 {
-  public int index;
+  public int index = 0;
   
   public QzoneWeisiReqcommendRsp() {}
   
@@ -28,7 +28,7 @@ public final class QzoneWeisiReqcommendRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.QzoneWeisiReqcommendRsp
  * JD-Core Version:    0.7.0.1
  */

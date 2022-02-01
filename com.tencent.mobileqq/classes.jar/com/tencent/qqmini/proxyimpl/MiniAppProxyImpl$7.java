@@ -1,95 +1,30 @@
 package com.tencent.qqmini.proxyimpl;
 
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import bgnk;
-import bgnl;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import org.json.JSONObject;
 
 class MiniAppProxyImpl$7
-  implements bgnl
+  implements MiniAppCmdInterface
 {
-  MiniAppProxyImpl$7(MiniAppProxyImpl paramMiniAppProxyImpl) {}
+  MiniAppProxyImpl$7(MiniAppProxyImpl paramMiniAppProxyImpl, MiniAppInfo paramMiniAppInfo) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramInt1 != 9527) {
-      return false;
-    }
-    bgnk.a().b(this);
-    QMLog.d("MiniAppProxyImpl", "set isMiniMsgTabShow false");
-    MiniAppProxyImpl.access$802(this.this$0, false);
-    if (paramInt2 != -1)
+    if (paramBoolean)
     {
-      QMLog.w("MiniAppProxyImpl", "onShareActivityResult, resultCode not Activity.RESULT_OK, but " + paramInt2);
-      return true;
+      AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.7.1(this));
+      QLog.d("MiniAppProxyImpl", 2, "sendSetUserAppTopRequest, success to set top");
+      return;
     }
-    paramInt1 = paramIntent.getIntExtra("clickID", -1);
-    String str = "";
-    switch (paramInt1)
-    {
-    default: 
-      paramIntent = str;
-    }
-    for (;;)
-    {
-      MiniAppProxyImpl.access$300(this.this$0, paramIntent);
-      return true;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(2);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(6);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(7);
-      paramIntent = "share_WX";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(8);
-      paramIntent = "share_Moments";
-      continue;
-      Message localMessage = new Message();
-      localMessage.what = 13;
-      localMessage.setData(paramIntent.getExtras());
-      MiniAppProxyImpl.access$600(this.this$0).sendMessage(localMessage);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(3);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(4);
-      paramIntent = "about";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(5);
-      paramIntent = str;
-      continue;
-      paramIntent = "cancel";
-      continue;
-      paramIntent = "cancel_system";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(9);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(11);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(10);
-      paramIntent = "back_home";
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(12);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(14);
-      paramIntent = str;
-      continue;
-      MiniAppProxyImpl.access$600(this.this$0).sendEmptyMessage(15);
-      paramIntent = str;
-    }
+    QLog.e("MiniAppProxyImpl", 1, "sendSetUserAppTopRequest, fail to set top");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,280 +1,378 @@
 package com.tencent.mm.plugin.emojicapture.ui.capture;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
+import android.graphics.Matrix;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.WindowInsets;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.view.BaseEmojiView;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.plugin.emojicapture.model.c;
-import com.tencent.mm.plugin.emojicapture.model.c.a;
-import com.tencent.mm.plugin.emojicapture.ui.a;
-import com.tencent.mm.plugin.emojicapture.ui.editor.TextEditorItemView;
-import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.emojicapture.a.d;
+import com.tencent.mm.plugin.emojicapture.a.f;
+import com.tencent.mm.plugin.emojicapture.a.g;
+import com.tencent.mm.plugin.emojicapture.model.d.a;
+import com.tencent.mm.plugin.emojicapture.ui.b;
+import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
+import com.tencent.mm.plugin.emojicapture.ui.editor.EmojiEditorItemView;
+import com.tencent.mm.plugin.emojicapture.ui.editor.a;
+import com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView;
+import com.tencent.mm.pluginsdk.b.e;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sticker.f;
+import com.tencent.mm.sticker.ui.view.CaptureStickerHint;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.LinkedList;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clipPath", "Landroid/graphics/Path;", "clipRadius", "", "clipRect", "Landroid/graphics/RectF;", "emojiHint", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "firstSelect", "", "hideStickerHintRunnable", "Ljava/lang/Runnable;", "imitateEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "showStickerHintRunnable", "stickerHint", "Landroid/view/View;", "stickerHintIcon", "Landroid/widget/ImageView;", "stickerHintText", "Landroid/widget/TextView;", "stickerInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/TextEditorItemView;", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "getText", "", "getTextColor", "hideStickerHint", "onRecordStart", "onRecordStop", "pause", "resume", "setImitateEmoji", "emojiInfo", "setStickerInfo", "showImitateEmoji", "showStickerHint", "showTextHint", "text", "colorString", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/CaptureDecoration;", "Landroidx/constraintlayout/widget/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "actionHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "editorRoot", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "emojiItemView", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EmojiEditorItemView;", "imitateEmoji", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "stickerInfo", "Lcom/tencent/mm/sticker/StickerPack;", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "validAreaView", "Landroid/view/View;", "getAttachEmoji", "getAttachEmojiMatrix", "Landroid/graphics/Matrix;", "getText", "", "getTextColor", "onApplyWindowInsets", "Landroid/view/WindowInsets;", "insets", "onRecordStart", "", "onRecordStop", "pause", "resume", "setImitateEmoji", "emojiInfo", "setStickerInfo", "showImitateEmoji", "showTextHint", "text", "colorString", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class CaptureDecoration
-  extends FrameLayout
+  extends ConstraintLayout
 {
-  com.tencent.mm.plugin.emojicapture.model.a.b ltF;
-  private final Path lwd;
-  private EmojiInfo lyA;
-  private boolean lyB;
-  private final Runnable lyC;
-  final Runnable lyD;
-  private final RectF lyt;
-  private final float lyu;
-  public final BaseEmojiView lyv;
-  public final TextEditorItemView lyw;
-  final View lyx;
-  final ImageView lyy;
-  final TextView lyz;
+  private f yhc;
+  public final EditorItemContainer ykW;
+  public final FontAnimTextView ykX;
+  private final CaptureStickerHint ykY;
+  private final View ykZ;
+  private EmojiEditorItemView yla;
+  private EmojiInfo ylb;
   
   public CaptureDecoration(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(3000);
-    AppMethodBeat.o(3000);
+    AppMethodBeat.i(620);
+    AppMethodBeat.o(620);
   }
   
   public CaptureDecoration(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(2999);
-    this.lwd = new Path();
-    this.lyt = new RectF();
-    this.lyu = paramContext.getResources().getDimension(2131427333);
-    this.lyB = true;
-    this.lyC = ((Runnable)new CaptureDecoration.c(this));
-    this.lyD = ((Runnable)new CaptureDecoration.b(this));
-    View.inflate(paramContext, 2130969360, (ViewGroup)this);
-    paramAttributeSet = findViewById(2131823551);
-    j.p(paramAttributeSet, "findViewById(R.id.emoji_capture_emoji_hint)");
-    this.lyv = ((BaseEmojiView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131823555);
-    j.p(paramAttributeSet, "findViewById(R.id.emoji_capture_text_hint)");
-    this.lyw = ((TextEditorItemView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131823552);
-    j.p(paramAttributeSet, "findViewById(R.id.emoji_capture_sticker_hint)");
-    this.lyx = paramAttributeSet;
-    paramAttributeSet = findViewById(2131823553);
-    j.p(paramAttributeSet, "findViewById(R.id.emoji_capture_sticker_hint_icon)");
-    this.lyy = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131823554);
-    j.p(paramAttributeSet, "findViewById(R.id.emoji_capture_sticker_hint_text)");
-    this.lyz = ((TextView)paramAttributeSet);
-    float f = paramContext.getResources().getDimension(2131427334);
-    paramContext = new RectF(0.0F, 0.0F, f, f);
-    this.lyw.a(paramContext, this.lyu);
-    AppMethodBeat.o(2999);
+    AppMethodBeat.i(619);
+    View.inflate(paramContext, a.g.emoji_capture_sticker_hint, (ViewGroup)this);
+    paramContext = findViewById(a.f.yey);
+    s.s(paramContext, "findViewById(R.id.emoji_…re_editor_item_container)");
+    this.ykW = ((EditorItemContainer)paramContext);
+    paramContext = findViewById(a.f.yeP);
+    s.s(paramContext, "findViewById(R.id.emoji_capture_text_hint)");
+    this.ykX = ((FontAnimTextView)paramContext);
+    paramContext = findViewById(a.f.emoji_capture_sticker_hint);
+    s.s(paramContext, "findViewById(R.id.emoji_capture_sticker_hint)");
+    this.ykY = ((CaptureStickerHint)paramContext);
+    paramContext = findViewById(a.f.yeD);
+    s.s(paramContext, "findViewById(R.id.emoji_capture_editor_valid_area)");
+    this.ykZ = paramContext;
+    this.ykW.setDeleteEnalbe(false);
+    AppMethodBeat.o(619);
   }
   
-  private void bpc()
+  private static final void a(CaptureDecoration paramCaptureDecoration, EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(2994);
-    EmojiInfo localEmojiInfo = this.lyA;
-    if (localEmojiInfo != null)
+    AppMethodBeat.i(269580);
+    s.u(paramCaptureDecoration, "this$0");
+    s.u(paramEmojiInfo, "$it");
+    if (paramCaptureDecoration.yla != null)
     {
-      this.lyv.setVisibility(0);
-      this.lyv.setEmojiInfo(localEmojiInfo);
-      if (com.tencent.mm.plugin.emoji.h.b.x(localEmojiInfo))
-      {
-        localObject = g.G(d.class);
-        j.p(localObject, "plugin(IPluginEmoji::class.java)");
-      }
-      for (Object localObject = ((d)localObject).getProvider().Kx(localEmojiInfo.Al());; localObject = localEmojiInfo.field_attachedText)
-      {
-        dR((String)localObject, localEmojiInfo.field_attachTextColor);
-        AppMethodBeat.o(2994);
-        return;
-      }
-    }
-    AppMethodBeat.o(2994);
-  }
-  
-  private void dR(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(2995);
-    if (!bo.isNullOrNil(paramString1))
-    {
-      Object localObject = (CharSequence)paramString2;
-      if ((localObject != null) && (!m.ap((CharSequence)localObject))) {
-        break label79;
-      }
-      i = 1;
-      if (i != 0) {
-        break label84;
-      }
-      localObject = c.ltu;
-    }
-    label79:
-    label84:
-    for (int i = a.uM(c.a.Ln(paramString2));; i = -1)
-    {
-      this.lyw.a((CharSequence)paramString1, i, true);
-      this.lyw.setVisibility(0);
-      AppMethodBeat.o(2995);
+      AppMethodBeat.o(269580);
       return;
-      i = 0;
-      break;
+    }
+    RectF localRectF = paramCaptureDecoration.ykW.getValidRect();
+    EmojiEditorItemView localEmojiEditorItemView = new EmojiEditorItemView(paramCaptureDecoration.getContext());
+    localEmojiEditorItemView.setEmojiInfo(paramEmojiInfo);
+    localEmojiEditorItemView.resume();
+    paramCaptureDecoration.yla = localEmojiEditorItemView;
+    EditorItemContainer.a(paramCaptureDecoration.ykW, (a)localEmojiEditorItemView);
+    paramEmojiInfo = localEmojiEditorItemView.getDrawable();
+    int i;
+    int j;
+    float f1;
+    float f2;
+    if (paramEmojiInfo != null)
+    {
+      i = paramEmojiInfo.getIntrinsicWidth();
+      j = paramEmojiInfo.getIntrinsicHeight();
+      f1 = localRectF.width();
+      f2 = localRectF.height();
+      if (i <= j) {
+        break label274;
+      }
+      f1 /= 3.0F;
+      f2 = j * f1 / i;
+    }
+    for (;;)
+    {
+      paramEmojiInfo = localEmojiEditorItemView.getTouchMatrix();
+      float f3 = i;
+      float f4 = j;
+      float f5 = localRectF.right;
+      float f6 = localRectF.bottom;
+      float f7 = localRectF.right;
+      float f8 = localRectF.bottom;
+      paramEmojiInfo.setPolyToPoly(new float[] { 0.0F, 0.0F, f3, f4 }, 0, new float[] { f5 - f1, f6 - f2, f7, f8 }, 0, 2);
+      f1 = paramCaptureDecoration.getContext().getResources().getDimension(a.d.yea);
+      localEmojiEditorItemView.getTouchMatrix().postTranslate(-f1 / 2.0F, -f1 / 2.0F);
+      AppMethodBeat.o(269580);
+      return;
+      label274:
+      f2 /= 3.0F;
+      f1 = i * f2 / j;
     }
   }
   
-  protected final void dispatchDraw(Canvas paramCanvas)
+  public final EmojiInfo getAttachEmoji()
   {
-    AppMethodBeat.i(2991);
-    j.q(paramCanvas, "canvas");
-    this.lyt.set(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight());
-    this.lwd.addRoundRect(this.lyt, this.lyu, this.lyu, Path.Direction.CW);
-    paramCanvas.clipPath(this.lwd);
-    super.dispatchDraw(paramCanvas);
-    AppMethodBeat.o(2991);
+    return this.ylb;
+  }
+  
+  public final Matrix getAttachEmojiMatrix()
+  {
+    AppMethodBeat.i(617);
+    Iterator localIterator = ((Iterable)this.ykW.getAllItemViews()).iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = localIterator.next();
+      if (((a)localObject instanceof EmojiEditorItemView))
+      {
+        if (!(localObject instanceof EmojiEditorItemView)) {
+          break label91;
+        }
+        localObject = (EmojiEditorItemView)localObject;
+        label60:
+        if (localObject != null) {
+          break label96;
+        }
+      }
+    }
+    label91:
+    label96:
+    for (Object localObject = null;; localObject = ((EmojiEditorItemView)localObject).getTouchMatrix())
+    {
+      if (localObject != null) {
+        break label104;
+      }
+      localObject = new Matrix();
+      AppMethodBeat.o(617);
+      return localObject;
+      localObject = null;
+      break;
+      localObject = null;
+      break label60;
+    }
+    label104:
+    AppMethodBeat.o(617);
+    return localObject;
   }
   
   public final String getText()
   {
-    AppMethodBeat.i(2996);
-    Object localObject = this.lyw.getText();
-    if (localObject != null)
+    AppMethodBeat.i(615);
+    Object localObject = this.ykX.getText();
+    if (localObject == null)
     {
-      localObject = localObject.toString();
-      AppMethodBeat.o(2996);
-      return localObject;
+      AppMethodBeat.o(615);
+      return null;
     }
-    AppMethodBeat.o(2996);
-    return null;
+    localObject = localObject.toString();
+    AppMethodBeat.o(615);
+    return localObject;
   }
   
   public final int getTextColor()
   {
-    AppMethodBeat.i(2997);
-    int i = this.lyw.getTextColor();
+    AppMethodBeat.i(616);
+    int i = this.ykX.getTextColor();
     if (i != 0) {}
-    for (i = a.uM(i);; i = -1)
+    for (i = b.KT(i);; i = -1)
     {
-      AppMethodBeat.o(2997);
+      AppMethodBeat.o(616);
       return i;
+    }
+  }
+  
+  public final WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
+  {
+    AppMethodBeat.i(269603);
+    if (paramWindowInsets == null)
+    {
+      paramWindowInsets = super.onApplyWindowInsets(paramWindowInsets);
+      s.s(paramWindowInsets, "super.onApplyWindowInsets(insets)");
+      AppMethodBeat.o(269603);
+      return paramWindowInsets;
+    }
+    Object localObject = this.ykZ.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams)) {}
+    for (localObject = (ViewGroup.MarginLayoutParams)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        ((ViewGroup.MarginLayoutParams)localObject).topMargin = (getResources().getDimensionPixelSize(a.d.yee) + paramWindowInsets.getSystemWindowInsetTop());
+        this.ykZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      paramWindowInsets = super.onApplyWindowInsets(paramWindowInsets);
+      s.s(paramWindowInsets, "super.onApplyWindowInsets(insets)");
+      AppMethodBeat.o(269603);
+      return paramWindowInsets;
     }
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(2998);
-    this.lyv.resume();
-    this.lyw.bpf();
-    AppMethodBeat.o(2998);
+    AppMethodBeat.i(618);
+    this.ykW.resume();
+    this.ykX.bDL();
+    AppMethodBeat.o(618);
   }
   
   public final void setImitateEmoji(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(2992);
-    this.lyA = paramEmojiInfo;
-    bpc();
-    AppMethodBeat.o(2992);
+    this.ylb = paramEmojiInfo;
   }
   
-  public final void setStickerInfo(com.tencent.mm.plugin.emojicapture.model.a.b paramb)
+  public final void setStickerInfo(f paramf)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(2993);
-    String str;
-    if ((j.e(this.ltF, paramb) ^ true))
+    Object localObject3 = null;
+    AppMethodBeat.i(614);
+    Object localObject1;
+    Object localObject2;
+    label37:
+    int i;
+    if (this.yhc != null)
     {
-      this.ltF = paramb;
-      this.lyx.setVisibility(8);
-      this.lyv.setVisibility(8);
-      this.lyw.setVisibility(8);
-      this.lyw.a(null, -1, true);
-      removeCallbacks(this.lyD);
-      removeCallbacks(this.lyC);
-      if (paramb != null)
-      {
-        str = paramb.title;
-        if (this.lyA == null) {
-          break label295;
-        }
-        Object localObject3 = paramb.lsW;
-        localObject1 = this.lyA;
-        if (localObject1 != null)
-        {
-          localObject1 = ((EmojiInfo)localObject1).field_lensId;
-          if ((!j.e(localObject3, localObject1)) || (!this.lyB)) {
-            break label295;
-          }
-          this.lyB = false;
-          localObject3 = this.lyA;
-          localObject1 = localObject2;
-          if (localObject3 != null) {
-            localObject1 = ((EmojiInfo)localObject3).field_attachedText;
-          }
-          if (bo.isNullOrNil((String)localObject1)) {
-            break label295;
-          }
-          localObject1 = this.lyA;
-          if (localObject1 != null)
-          {
-            str = ((EmojiInfo)localObject1).field_attachedText;
-            localObject1 = str;
-            if (str != null) {
-              break label194;
-            }
-          }
-        }
+      localObject1 = this.yhc;
+      if (localObject1 != null) {
+        break label329;
       }
+      localObject1 = null;
+      if (paramf != null) {
+        break label339;
+      }
+      localObject2 = null;
+      if (s.p(localObject1, localObject2)) {}
     }
-    label295:
-    for (Object localObject1 = "";; localObject1 = str)
+    else
     {
-      label194:
-      dR((String)localObject1, paramb.fhT);
-      int i;
-      if ((!m.ap((CharSequence)paramb.kqb)) || (!paramb.ltK.isEmpty())) {
+      this.yhc = paramf;
+      this.ykY.setVisibility(8);
+      this.ykW.setVisibility(8);
+      this.ykX.setVisibility(8);
+      this.ykX.pause();
+      if (paramf != null)
+      {
+        if (((CharSequence)paramf.title).length() != 0) {
+          break label348;
+        }
         i = 1;
+        label107:
+        if (i == 0) {
+          break label353;
+        }
+        this.ykX.c(null, -16777216, b.KU(-16777216));
+        this.ykY.setStickerPack(paramf);
       }
-      for (;;)
+    }
+    if (this.ylb != null)
+    {
+      paramf = this.ylb;
+      if (paramf != null)
       {
-        if (i != 0)
-        {
-          postDelayed(this.lyC, 500L);
-          AppMethodBeat.o(2993);
-          return;
-          localObject1 = null;
-          break;
-          i = 0;
-          continue;
-          if (this.lyA != null)
-          {
-            bpc();
-            AppMethodBeat.o(2993);
-            return;
-          }
-          this.lyv.setVisibility(8);
+        this.ykW.setVisibility(0);
+        if (this.yla == null) {
+          this.ykW.ay(new CaptureDecoration..ExternalSyntheticLambda0(this, paramf));
         }
       }
-      AppMethodBeat.o(2993);
-      return;
     }
+    if (this.yhc == null)
+    {
+      label387:
+      label441:
+      if (this.ylb != null)
+      {
+        if (com.tencent.mm.plugin.emoji.g.d.x(this.ylb))
+        {
+          localObject1 = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getProvider();
+          paramf = this.ylb;
+          if (paramf == null)
+          {
+            paramf = localObject3;
+            label235:
+            paramf = ((e)localObject1).aoi(paramf);
+            label244:
+            localObject1 = this.ylb;
+            s.checkNotNull(localObject1);
+            localObject1 = ((EmojiInfo)localObject1).field_attachTextColor;
+            if ((localObject1 == null) || (n.bp((CharSequence)localObject1))) {
+              break label479;
+            }
+            localObject2 = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+          }
+        }
+        label329:
+        label339:
+        label348:
+        label479:
+        for (i = d.a.apj((String)localObject1);; i = -1)
+        {
+          int j = b.KU(i);
+          this.ykX.c((CharSequence)paramf, i, j);
+          if (!Util.isNullOrNil(paramf)) {
+            this.ykX.setVisibility(0);
+          }
+          AppMethodBeat.o(614);
+          return;
+          localObject1 = ((f)localObject1).ygo;
+          break;
+          localObject2 = paramf.ygo;
+          break label37;
+          i = 0;
+          break label107;
+          label353:
+          localObject2 = paramf.nSx;
+          localObject1 = paramf.acCv;
+          if (!n.bp((CharSequence)localObject2))
+          {
+            d.a locala = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+            i = d.a.apj((String)localObject2);
+            if (n.bp((CharSequence)localObject1)) {
+              break label441;
+            }
+            localObject2 = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+          }
+          for (j = d.a.apj((String)localObject1);; j = b.KU(i))
+          {
+            this.ykX.setVisibility(0);
+            this.ykX.c((CharSequence)paramf.title, i, j);
+            break;
+            i = -1;
+            break label387;
+          }
+          paramf = paramf.getMd5();
+          break label235;
+          paramf = this.ylb;
+          if (paramf == null)
+          {
+            paramf = null;
+            break label244;
+          }
+          paramf = paramf.field_attachedText;
+          break label244;
+        }
+      }
+      this.ykX.c(null, -16777216, b.KU(-16777216));
+      this.ykW.setVisibility(8);
+    }
+    AppMethodBeat.o(614);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration
  * JD-Core Version:    0.7.0.1
  */

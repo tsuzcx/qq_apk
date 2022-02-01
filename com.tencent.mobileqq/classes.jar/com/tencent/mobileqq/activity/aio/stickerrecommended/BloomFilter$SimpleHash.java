@@ -16,12 +16,13 @@ public class BloomFilter$SimpleHash
   
   public int hash(String paramString)
   {
-    int i = 0;
     int k = paramString.length();
+    int i = 0;
     int j = 0;
     while (i < k)
     {
-      j = j * this.seed + paramString.charAt(i);
+      int m = this.seed;
+      j = paramString.charAt(i) + m * j;
       i += 1;
     }
     return this.cap - 1 & j;

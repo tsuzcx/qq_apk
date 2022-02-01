@@ -37,23 +37,22 @@ public final class fn
         Collections.sort(paramObject);
       }
       Iterator localIterator = paramObject.iterator();
-      Object localObject2;
-      do
+      while (localIterator.hasNext())
       {
-        do
+        paramObject = localIterator.next();
+        if ((paramObject instanceof String))
         {
-          if (!localIterator.hasNext()) {
-            break;
+          Object localObject2 = ((Map)localObject1).get(paramObject);
+          if (localObject2 != null)
+          {
+            if (paramString == null) {
+              paramObject = (String)paramObject;
+            } else {
+              paramObject = String.format("%s[%s]", new Object[] { paramString, paramObject });
+            }
+            localLinkedList.addAll(a(paramObject, localObject2));
           }
-          paramObject = localIterator.next();
-        } while (!(paramObject instanceof String));
-        localObject2 = ((Map)localObject1).get(paramObject);
-      } while (localObject2 == null);
-      if (paramString == null) {}
-      for (paramObject = (String)paramObject;; paramObject = String.format("%s[%s]", new Object[] { paramString, paramObject }))
-      {
-        localLinkedList.addAll(a(paramObject, localObject2));
-        break;
+        }
       }
     }
     int j;
@@ -112,26 +111,24 @@ public final class fn
   
   public final void b(String paramString1, String paramString2)
   {
-    Object localObject1;
     if (paramString2 != null)
     {
       Object localObject2 = this.b.get(paramString1);
-      localObject1 = localObject2;
+      Object localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new HashSet();
         this.b.put(paramString1, localObject1);
       }
-      if (!(localObject1 instanceof List)) {
-        break label59;
+      if ((localObject1 instanceof List))
+      {
+        ((List)localObject1).add(paramString2);
+        return;
       }
-      ((List)localObject1).add(paramString2);
+      if ((localObject1 instanceof Set)) {
+        ((Set)localObject1).add(paramString2);
+      }
     }
-    label59:
-    while (!(localObject1 instanceof Set)) {
-      return;
-    }
-    ((Set)localObject1).add(paramString2);
   }
   
   public final String toString()

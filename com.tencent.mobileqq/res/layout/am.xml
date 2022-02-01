@@ -6,4 +6,5 @@
         <RadioButton android:textColor="@color/aii" android:id="@id/l2z" android:padding="@dimen/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2o" />
         <RadioButton android:textColor="@color/aii" android:id="@id/cwl" android:padding="@dimen/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2u" />
     </RadioGroup>
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/q8p" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="动态显示空间消息流" />
 </LinearLayout>

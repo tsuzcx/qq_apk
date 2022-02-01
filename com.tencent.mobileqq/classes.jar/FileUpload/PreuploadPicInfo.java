@@ -61,8 +61,9 @@ public final class PreuploadPicInfo
     paramJceOutputStream.write(this.iDescLen, 4);
     paramJceOutputStream.write(this.md5type, 5);
     paramJceOutputStream.write(this.seq, 6);
-    if (this.sAlbumID != null) {
-      paramJceOutputStream.write(this.sAlbumID, 7);
+    String str = this.sAlbumID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.iAlbumTypeID, 8);
     paramJceOutputStream.write(this.iNeedCheckAlbum, 9);
@@ -71,7 +72,7 @@ public final class PreuploadPicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.PreuploadPicInfo
  * JD-Core Version:    0.7.0.1
  */

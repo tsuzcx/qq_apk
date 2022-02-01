@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import bdbk;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 
 class UserListItemView$1
   implements Runnable
@@ -12,17 +12,20 @@ class UserListItemView$1
   
   public void run()
   {
-    if ((UserListItemView.a(this.this$0) == null) || (UserListItemView.a(this.this$0) == null)) {
-      return;
+    if (UserListItemView.access$000(this.this$0) != null)
+    {
+      if (UserListItemView.access$100(this.this$0) == null) {
+        return;
+      }
+      Object localObject = FaceDrawable.getDefaultDrawable(1, 3);
+      localObject = FaceDrawable.getFaceDrawable(((BaseActivity)UserListItemView.access$000(this.this$0)).app, 1, this.val$uin, 3, (Drawable)localObject, (Drawable)localObject, null);
+      UserListItemView.access$100(this.this$0).post(new UserListItemView.1.1(this, (FaceDrawable)localObject));
     }
-    Object localObject = bdbk.a(1, 3);
-    localObject = bdbk.a(((BaseActivity)UserListItemView.a(this.this$0)).app, 1, this.a, 3, (Drawable)localObject, (Drawable)localObject, null);
-    UserListItemView.a(this.this$0).post(new UserListItemView.1.1(this, (bdbk)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.UserListItemView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.dinifly.parser;
 
 import android.graphics.PointF;
-import android.util.JsonReader;
-import android.util.JsonToken;
 import com.tencent.mobileqq.dinifly.model.CubicCurveData;
 import com.tencent.mobileqq.dinifly.model.content.ShapeData;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Token;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,112 +15,90 @@ public class ShapeDataParser
   implements ValueParser<ShapeData>
 {
   public static final ShapeDataParser INSTANCE = new ShapeDataParser();
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "c", "v", "i", "o" });
   
   public ShapeData parse(JsonReader paramJsonReader, float paramFloat)
   {
-    Object localObject1 = null;
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {
+    if (paramJsonReader.peek() == JsonReader.Token.BEGIN_ARRAY) {
       paramJsonReader.beginArray();
     }
     paramJsonReader.beginObject();
     Object localObject3 = null;
-    Object localObject2 = null;
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
     boolean bool = false;
-    if (paramJsonReader.hasNext())
+    int i;
+    while (paramJsonReader.hasNext())
     {
-      localObject4 = paramJsonReader.nextName();
-      i = -1;
-      switch (((String)localObject4).hashCode())
+      i = paramJsonReader.selectName(NAMES);
+      if (i != 0)
       {
-      default: 
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          label92:
-          localObject4 = localObject3;
-          localObject3 = localObject2;
-          localObject2 = localObject4;
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              paramJsonReader.skipName();
+              paramJsonReader.skipValue();
+            }
+            else
+            {
+              localObject2 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
+            }
+          }
+          else {
+            localObject1 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
+          }
         }
-        break;
+        else {
+          localObject3 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
+        }
       }
-      for (;;)
-      {
-        localObject4 = localObject3;
-        localObject3 = localObject2;
-        localObject2 = localObject4;
-        break;
-        if (!((String)localObject4).equals("c")) {
-          break label92;
-        }
-        i = 0;
-        break label92;
-        if (!((String)localObject4).equals("v")) {
-          break label92;
-        }
-        i = 1;
-        break label92;
-        if (!((String)localObject4).equals("i")) {
-          break label92;
-        }
-        i = 2;
-        break label92;
-        if (!((String)localObject4).equals("o")) {
-          break label92;
-        }
-        i = 3;
-        break label92;
+      else {
         bool = paramJsonReader.nextBoolean();
-        localObject4 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        localObject4 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        localObject4 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
-        localObject3 = localObject2;
-        localObject2 = localObject4;
-        continue;
-        localObject1 = JsonUtils.jsonToPoints(paramJsonReader, paramFloat);
-        localObject4 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
       }
     }
     paramJsonReader.endObject();
-    if (paramJsonReader.peek() == JsonToken.END_ARRAY) {
+    if (paramJsonReader.peek() == JsonReader.Token.END_ARRAY) {
       paramJsonReader.endArray();
     }
-    if ((localObject2 == null) || (localObject3 == null) || (localObject1 == null)) {
-      throw new IllegalArgumentException("Shape data was missing information.");
-    }
-    if (((List)localObject2).isEmpty()) {
-      return new ShapeData(new PointF(), false, Collections.emptyList());
-    }
-    int j = ((List)localObject2).size();
-    paramJsonReader = (PointF)((List)localObject2).get(0);
-    Object localObject4 = new ArrayList(j);
-    int i = 1;
-    PointF localPointF1;
-    while (i < j)
+    if ((localObject3 != null) && (localObject1 != null) && (localObject2 != null))
     {
-      localPointF1 = (PointF)((List)localObject2).get(i);
-      PointF localPointF2 = (PointF)((List)localObject2).get(i - 1);
-      PointF localPointF3 = (PointF)((List)localObject1).get(i - 1);
-      PointF localPointF4 = (PointF)((List)localObject3).get(i);
-      ((List)localObject4).add(new CubicCurveData(MiscUtils.addPoints(localPointF2, localPointF3), MiscUtils.addPoints(localPointF1, localPointF4), localPointF1));
-      i += 1;
+      if (((List)localObject3).isEmpty()) {
+        return new ShapeData(new PointF(), false, Collections.emptyList());
+      }
+      int j = ((List)localObject3).size();
+      paramJsonReader = (PointF)((List)localObject3).get(0);
+      ArrayList localArrayList = new ArrayList(j);
+      i = 1;
+      PointF localPointF1;
+      while (i < j)
+      {
+        localPointF1 = (PointF)((List)localObject3).get(i);
+        int k = i - 1;
+        PointF localPointF2 = (PointF)((List)localObject3).get(k);
+        PointF localPointF3 = (PointF)((List)localObject2).get(k);
+        PointF localPointF4 = (PointF)((List)localObject1).get(i);
+        localArrayList.add(new CubicCurveData(MiscUtils.addPoints(localPointF2, localPointF3), MiscUtils.addPoints(localPointF1, localPointF4), localPointF1));
+        i += 1;
+      }
+      if (bool)
+      {
+        localPointF1 = (PointF)((List)localObject3).get(0);
+        i = j - 1;
+        localObject3 = (PointF)((List)localObject3).get(i);
+        localObject2 = (PointF)((List)localObject2).get(i);
+        localObject1 = (PointF)((List)localObject1).get(0);
+        localArrayList.add(new CubicCurveData(MiscUtils.addPoints((PointF)localObject3, (PointF)localObject2), MiscUtils.addPoints(localPointF1, (PointF)localObject1), localPointF1));
+      }
+      return new ShapeData(paramJsonReader, bool, localArrayList);
     }
-    if (bool)
+    paramJsonReader = new IllegalArgumentException("Shape data was missing information.");
+    for (;;)
     {
-      localPointF1 = (PointF)((List)localObject2).get(0);
-      localObject2 = (PointF)((List)localObject2).get(j - 1);
-      localObject1 = (PointF)((List)localObject1).get(j - 1);
-      localObject3 = (PointF)((List)localObject3).get(0);
-      ((List)localObject4).add(new CubicCurveData(MiscUtils.addPoints((PointF)localObject2, (PointF)localObject1), MiscUtils.addPoints(localPointF1, (PointF)localObject3), localPointF1));
+      throw paramJsonReader;
     }
-    return new ShapeData(paramJsonReader, bool, (List)localObject4);
   }
 }
 

@@ -7,67 +7,65 @@ import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bcqt;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.filecommon.api.R.styleable;
 import com.tencent.theme.ISkinIgnoreTypeface;
 
 public class EllipsizingTextView
   extends TextView
   implements ISkinIgnoreTypeface
 {
-  private int jdField_a_of_type_Int = 1;
-  private bcqt jdField_a_of_type_Bcqt;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private EllipsizingTextView.EllipsizingHelper a;
+  private int b = 1;
+  private int c;
+  private boolean d;
+  private boolean e;
+  private boolean f;
   
   public EllipsizingTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    int i = 0;
+    this.c = 0;
+    this.d = false;
+    this.e = false;
+    this.f = false;
     if (paramAttributeSet != null)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.EllipsizingTextView);
-      int i = 0;
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ac);
       int j = paramContext.getIndexCount();
-      if (i < j)
+      while (i < j)
       {
         int k = paramContext.getIndex(i);
-        switch (k)
-        {
+        if (k == R.styleable.ae) {
+          this.c = paramContext.getDimensionPixelOffset(k, this.c);
+        } else if (k == R.styleable.af) {
+          this.b = paramContext.getInt(k, this.b);
+        } else if (k == R.styleable.ad) {
+          this.d = paramContext.getBoolean(k, this.d);
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          this.jdField_b_of_type_Int = paramContext.getDimensionPixelOffset(k, this.jdField_b_of_type_Int);
-          continue;
-          this.jdField_a_of_type_Int = paramContext.getInt(k, this.jdField_a_of_type_Int);
-          continue;
-          this.jdField_a_of_type_Boolean = paramContext.getBoolean(k, this.jdField_a_of_type_Boolean);
-        }
+        i += 1;
       }
       paramContext.recycle();
     }
     setTypeface(null);
   }
   
-  private bcqt a()
+  private EllipsizingTextView.EllipsizingHelper getHelper()
   {
-    if (this.jdField_a_of_type_Bcqt == null) {
-      this.jdField_a_of_type_Bcqt = new bcqt(this);
+    if (this.a == null) {
+      this.a = new EllipsizingTextView.EllipsizingHelper(this);
     }
-    return this.jdField_a_of_type_Bcqt;
+    return this.a;
   }
   
   public void a()
   {
-    this.c = true;
+    this.f = true;
   }
   
   public int getLineCount()
   {
-    return a().a();
+    return getHelper().a();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -75,16 +73,16 @@ public class EllipsizingTextView
     Object localObject = getPaint();
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = a();
-    ((bcqt)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    localObject = getHelper();
+    ((EllipsizingTextView.EllipsizingHelper)localObject).a(getText(), this, this.b, this.c, this.d);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((EllipsizingTextView.EllipsizingHelper)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((bcqt)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((EllipsizingTextView.EllipsizingHelper)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);
@@ -92,18 +90,18 @@ public class EllipsizingTextView
   
   public void setEndStrWidth(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void setMaxLines(int paramInt)
   {
     super.setMaxLines(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.EllipsizingTextView
  * JD-Core Version:    0.7.0.1
  */

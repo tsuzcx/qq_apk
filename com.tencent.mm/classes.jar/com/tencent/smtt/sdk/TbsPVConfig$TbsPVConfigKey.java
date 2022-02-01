@@ -3,6 +3,7 @@ package com.tencent.smtt.sdk;
 public abstract interface TbsPVConfig$TbsPVConfigKey
 {
   public static final String KEY_DISABLED_CORE_VERSION = "disabled_core_version";
+  public static final String KEY_DISABLE_TBS_ONE_GREY = "disable_tbs_one_grey";
   public static final String KEY_EMERGENT_CORE_VERSION = "emergent_core_version";
   public static final String KEY_ENABLE_NO_SHARE_GRAY = "enable_no_share_gray";
   public static final String KEY_GET_LOCALCOREVERSION_MORETIMES = "get_localcoreversion_moretimes";
@@ -12,7 +13,7 @@ public abstract interface TbsPVConfig$TbsPVConfigKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsPVConfig.TbsPVConfigKey
  * JD-Core Version:    0.7.0.1
  */

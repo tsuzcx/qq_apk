@@ -20,16 +20,26 @@ public class DecoderInputBuffer
   
   private ByteBuffer createReplacementByteBuffer(int paramInt)
   {
-    if (this.bufferReplacementMode == 1) {
+    int i = this.bufferReplacementMode;
+    if (i == 1) {
       return ByteBuffer.allocate(paramInt);
     }
-    if (this.bufferReplacementMode == 2) {
+    if (i == 2) {
       return ByteBuffer.allocateDirect(paramInt);
     }
-    if (this.data == null) {}
-    for (int i = 0;; i = this.data.capacity()) {
-      throw new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
+    Object localObject = this.data;
+    if (localObject == null) {
+      i = 0;
+    } else {
+      i = ((ByteBuffer)localObject).capacity();
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Buffer too small (");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" < ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(")");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public static DecoderInputBuffer newFlagsOnlyInstance()
@@ -40,26 +50,27 @@ public class DecoderInputBuffer
   public void clear()
   {
     super.clear();
-    if (this.data != null) {
-      this.data.clear();
+    ByteBuffer localByteBuffer = this.data;
+    if (localByteBuffer != null) {
+      localByteBuffer.clear();
     }
   }
   
   public void ensureSpaceForWrite(int paramInt)
   {
-    if (this.data == null) {
-      this.data = createReplacementByteBuffer(paramInt);
-    }
-    int i;
-    int j;
-    do
+    ByteBuffer localByteBuffer = this.data;
+    if (localByteBuffer == null)
     {
+      this.data = createReplacementByteBuffer(paramInt);
       return;
-      i = this.data.capacity();
-      j = this.data.position();
-      paramInt = j + paramInt;
-    } while (i >= paramInt);
-    ByteBuffer localByteBuffer = createReplacementByteBuffer(paramInt);
+    }
+    int i = localByteBuffer.capacity();
+    int j = this.data.position();
+    paramInt += j;
+    if (i >= paramInt) {
+      return;
+    }
+    localByteBuffer = createReplacementByteBuffer(paramInt);
     if (j > 0)
     {
       this.data.position(0);
@@ -86,7 +97,7 @@ public class DecoderInputBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.decoder.DecoderInputBuffer
  * JD-Core Version:    0.7.0.1
  */

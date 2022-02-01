@@ -3,9 +3,12 @@ package com.google.android.gms.wearable;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.ParcelFileDescriptor;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApi.Settings;
+import com.google.android.gms.common.api.Releasable;
 import com.google.android.gms.tasks.Task;
+import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -27,9 +30,9 @@ public abstract class DataClient
     super(paramContext, Wearable.API, null, paramSettings);
   }
   
-  public abstract Task<Void> addListener(DataClient.OnDataChangedListener paramOnDataChangedListener);
+  public abstract Task<Void> addListener(OnDataChangedListener paramOnDataChangedListener);
   
-  public abstract Task<Void> addListener(DataClient.OnDataChangedListener paramOnDataChangedListener, Uri paramUri, int paramInt);
+  public abstract Task<Void> addListener(OnDataChangedListener paramOnDataChangedListener, Uri paramUri, int paramInt);
   
   public abstract Task<Integer> deleteDataItems(Uri paramUri);
   
@@ -43,20 +46,34 @@ public abstract class DataClient
   
   public abstract Task<DataItemBuffer> getDataItems(Uri paramUri, int paramInt);
   
-  public abstract Task<DataClient.GetFdForAssetResponse> getFdForAsset(Asset paramAsset);
+  public abstract Task<GetFdForAssetResponse> getFdForAsset(Asset paramAsset);
   
-  public abstract Task<DataClient.GetFdForAssetResponse> getFdForAsset(DataItemAsset paramDataItemAsset);
+  public abstract Task<GetFdForAssetResponse> getFdForAsset(DataItemAsset paramDataItemAsset);
   
   public abstract Task<DataItem> putDataItem(PutDataRequest paramPutDataRequest);
   
-  public abstract Task<Boolean> removeListener(DataClient.OnDataChangedListener paramOnDataChangedListener);
+  public abstract Task<Boolean> removeListener(OnDataChangedListener paramOnDataChangedListener);
   
   @Retention(RetentionPolicy.SOURCE)
   public static @interface FilterType {}
+  
+  public static abstract class GetFdForAssetResponse
+    implements Releasable
+  {
+    public abstract ParcelFileDescriptor getFdForAsset();
+    
+    public abstract InputStream getInputStream();
+  }
+  
+  public static abstract interface OnDataChangedListener
+    extends DataApi.DataListener
+  {
+    public abstract void onDataChanged(DataEventBuffer paramDataEventBuffer);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataClient
  * JD-Core Version:    0.7.0.1
  */

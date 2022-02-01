@@ -1,61 +1,42 @@
 package oicq.wlogin_sdk.request;
 
-import android.text.TextPaint;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Timer;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
 
-class f
-  implements Runnable
+public class f
+  extends Thread
 {
-  f(e parame) {}
+  Runnable a = new g(this);
+  private Context b;
+  private ErrMsg c;
   
-  private void a(Toast paramToast, int paramInt)
+  public f(Context paramContext, ErrMsg paramErrMsg)
   {
-    if (paramInt > 5) {
-      return;
-    }
-    paramToast.show();
-    b(paramToast, paramInt);
+    this.b = paramContext;
+    a(paramErrMsg);
   }
   
-  private void b(Toast paramToast, int paramInt)
+  public void a(ErrMsg paramErrMsg)
   {
-    new Timer().schedule(new g(this, paramToast, paramInt), 30L);
+    if (paramErrMsg != null) {
+      try
+      {
+        this.c = ((ErrMsg)paramErrMsg.clone());
+        return;
+      }
+      catch (CloneNotSupportedException paramErrMsg)
+      {
+        paramErrMsg.printStackTrace();
+      }
+    }
+    this.c = null;
   }
   
   public void run()
   {
-    if ((e.a(this.a) != null) && (e.b(this.a) != null)) {}
-    try
-    {
-      LinearLayout localLinearLayout = new LinearLayout(e.a(this.a));
-      localLinearLayout.setOrientation(1);
-      localLinearLayout.setBackgroundColor(-7829368);
-      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-      Object localObject = new TextView(e.a(this.a));
-      ((TextView)localObject).getPaint().setFakeBoldText(true);
-      ((TextView)localObject).setText(e.b(this.a).getTitle());
-      localLinearLayout.addView((View)localObject, 0, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new TextView(e.a(this.a));
-      ((TextView)localObject).setText(e.b(this.a).getMessage());
-      localLinearLayout.addView((View)localObject, 1, new LinearLayout.LayoutParams(-1, -2));
-      localObject = new Toast(e.a(this.a));
-      ((Toast)localObject).setGravity(17, 0, 0);
-      ((Toast)localObject).setDuration(1);
-      ((Toast)localObject).setView(localLinearLayout);
-      a((Toast)localObject, 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      util.printException(localException);
-    }
+    new Handler(Looper.getMainLooper()).post(this.a);
   }
 }
 

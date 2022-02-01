@@ -1,31 +1,33 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bfvj;
-import bfvp;
+import com.tencent.qav.channel.VideoChannelSupportCallback;
+import com.tencent.qav.log.AVLog;
 
 class VoIPProxyImpl$1
-  implements bfvj
+  implements VideoChannelSupportCallback
 {
   VoIPProxyImpl$1(VoIPProxyImpl paramVoIPProxyImpl) {}
   
-  public boolean isMultiVideoMsgSupport(int paramInt)
-  {
-    if (paramInt - 32 == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bfvp.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
-      return bool;
-    }
-  }
-  
-  public boolean isSharpVideoMsgSupport(int paramInt)
+  public boolean a(int paramInt)
   {
     return false;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    boolean bool;
+    if (paramInt - 32 == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    AVLog.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.VoIPProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,16 +3,20 @@ package com.tencent.mm.plugin.gallery.model;
 import android.database.Cursor;
 import com.tencent.mm.modelgeo.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public abstract class b
-  implements i
+  implements l
 {
-  public static String ncx = "date_modified";
-  public static String ncy = "datetaken";
-  protected int ncv = 100;
-  protected String[] ncw = { "camera", "screenshot", "download" };
+  public static String HGs = "date_modified";
+  public static String HGt = "datetaken";
+  protected int HGq = 100;
+  protected String[] HGr = { "camera", "screenshots", "download" };
+  private boolean HGu = false;
+  volatile boolean nzW = false;
   
   /* Error */
   private static long a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -23,22 +27,22 @@ public abstract class b
     //   3: lload 11
     //   5: lstore 9
     //   7: aload_0
-    //   8: invokestatic 49	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   8: invokestatic 56	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   11: ifne +148 -> 159
     //   14: aload_0
     //   15: lconst_0
-    //   16: invokestatic 53	com/tencent/mm/sdk/platformtools/bo:getLong	(Ljava/lang/String;J)J
+    //   16: invokestatic 60	com/tencent/mm/sdk/platformtools/Util:getLong	(Ljava/lang/String;J)J
     //   19: lstore 5
     //   21: lload 5
-    //   23: ldc2_w 54
+    //   23: ldc2_w 61
     //   26: lcmp
     //   27: ifle +135 -> 162
     //   30: lload 5
     //   32: lstore 7
-    //   34: getstatic 61	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   34: getstatic 68	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
     //   37: lload 5
-    //   39: getstatic 61	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   42: invokevirtual 65	java/util/concurrent/TimeUnit:convert	(JLjava/util/concurrent/TimeUnit;)J
+    //   39: getstatic 68	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   42: invokevirtual 72	java/util/concurrent/TimeUnit:convert	(JLjava/util/concurrent/TimeUnit;)J
     //   45: lstore 9
     //   47: lload 9
     //   49: lstore 7
@@ -48,109 +52,109 @@ public abstract class b
     //   55: ifle +30 -> 85
     //   58: iload 4
     //   60: ifeq +133 -> 193
-    //   63: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   63: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   66: astore_0
     //   67: iload_3
     //   68: ifeq +118 -> 186
-    //   71: ldc2_w 72
+    //   71: ldc2_w 79
     //   74: lstore_1
     //   75: aload_0
-    //   76: ldc2_w 74
+    //   76: ldc2_w 81
     //   79: lload_1
     //   80: lconst_1
     //   81: iconst_0
-    //   82: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   82: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   85: lload 5
-    //   87: ldc2_w 54
+    //   87: ldc2_w 61
     //   90: lcmp
     //   91: ifle +141 -> 232
     //   94: iload 4
     //   96: ifeq +25 -> 121
-    //   99: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   99: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   102: astore_0
     //   103: iload_3
     //   104: ifeq +121 -> 225
-    //   107: ldc2_w 80
+    //   107: ldc2_w 87
     //   110: lstore_1
     //   111: aload_0
-    //   112: ldc2_w 74
+    //   112: ldc2_w 81
     //   115: lload_1
     //   116: lconst_1
     //   117: iconst_0
-    //   118: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   118: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   121: lload 7
     //   123: lstore 9
     //   125: lload 5
     //   127: lconst_0
     //   128: lcmp
     //   129: ifgt +30 -> 159
-    //   132: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   132: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   135: astore_0
     //   136: iload 4
     //   138: ifeq +131 -> 269
-    //   141: ldc2_w 82
+    //   141: ldc2_w 89
     //   144: lstore_1
     //   145: aload_0
-    //   146: ldc2_w 74
+    //   146: ldc2_w 81
     //   149: lload_1
     //   150: lconst_1
     //   151: iconst_0
-    //   152: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   152: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   155: lload 7
     //   157: lstore 9
     //   159: lload 9
     //   161: lreturn
     //   162: lload 5
     //   164: lstore 7
-    //   166: getstatic 61	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   166: getstatic 68	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
     //   169: lload 5
-    //   171: getstatic 86	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
-    //   174: invokevirtual 65	java/util/concurrent/TimeUnit:convert	(JLjava/util/concurrent/TimeUnit;)J
+    //   171: getstatic 93	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
+    //   174: invokevirtual 72	java/util/concurrent/TimeUnit:convert	(JLjava/util/concurrent/TimeUnit;)J
     //   177: lstore 9
     //   179: lload 9
     //   181: lstore 7
     //   183: goto -132 -> 51
-    //   186: ldc2_w 87
+    //   186: ldc2_w 94
     //   189: lstore_1
     //   190: goto -115 -> 75
-    //   193: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   193: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   196: astore_0
     //   197: iload_3
     //   198: ifeq +20 -> 218
-    //   201: ldc2_w 89
+    //   201: ldc2_w 96
     //   204: lstore_1
     //   205: aload_0
-    //   206: ldc2_w 74
+    //   206: ldc2_w 81
     //   209: lload_1
     //   210: lconst_1
     //   211: iconst_0
-    //   212: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   212: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   215: goto -130 -> 85
-    //   218: ldc2_w 91
+    //   218: ldc2_w 98
     //   221: lstore_1
     //   222: goto -17 -> 205
-    //   225: ldc2_w 93
+    //   225: ldc2_w 100
     //   228: lstore_1
     //   229: goto -118 -> 111
     //   232: iload 4
     //   234: ifne -113 -> 121
-    //   237: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   237: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   240: astore_0
     //   241: iload_3
     //   242: ifeq +20 -> 262
-    //   245: ldc2_w 95
+    //   245: ldc2_w 102
     //   248: lstore_1
     //   249: aload_0
-    //   250: ldc2_w 74
+    //   250: ldc2_w 81
     //   253: lload_1
     //   254: lconst_1
     //   255: iconst_0
-    //   256: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   256: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   259: goto -138 -> 121
-    //   262: ldc2_w 97
+    //   262: ldc2_w 104
     //   265: lstore_1
     //   266: goto -17 -> 249
-    //   269: ldc2_w 99
+    //   269: ldc2_w 106
     //   272: lstore_1
     //   273: goto -128 -> 145
     //   276: astore_0
@@ -158,109 +162,109 @@ public abstract class b
     //   278: lstore 5
     //   280: lload 5
     //   282: lstore 7
-    //   284: ldc 102
+    //   284: ldc 109
     //   286: aload_0
-    //   287: ldc 104
+    //   287: ldc 111
     //   289: iconst_0
     //   290: anewarray 4	java/lang/Object
-    //   293: invokestatic 110	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   293: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   296: lconst_0
     //   297: lload_1
     //   298: lcmp
     //   299: ifle +30 -> 329
     //   302: iload 4
     //   304: ifeq +104 -> 408
-    //   307: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   307: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   310: astore_0
     //   311: iload_3
     //   312: ifeq +89 -> 401
-    //   315: ldc2_w 72
+    //   315: ldc2_w 79
     //   318: lstore_1
     //   319: aload_0
-    //   320: ldc2_w 74
+    //   320: ldc2_w 81
     //   323: lload_1
     //   324: lconst_1
     //   325: iconst_0
-    //   326: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   326: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   329: lload 5
-    //   331: ldc2_w 54
+    //   331: ldc2_w 61
     //   334: lcmp
     //   335: ifle +112 -> 447
     //   338: iload 4
     //   340: ifeq +25 -> 365
-    //   343: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   343: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   346: astore_0
     //   347: iload_3
     //   348: ifeq +92 -> 440
-    //   351: ldc2_w 80
+    //   351: ldc2_w 87
     //   354: lstore_1
     //   355: aload_0
-    //   356: ldc2_w 74
+    //   356: ldc2_w 81
     //   359: lload_1
     //   360: lconst_1
     //   361: iconst_0
-    //   362: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   362: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   365: lload 11
     //   367: lstore 9
     //   369: lload 5
     //   371: lconst_0
     //   372: lcmp
     //   373: ifgt -214 -> 159
-    //   376: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   376: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   379: astore_0
     //   380: iload 4
     //   382: ifeq +102 -> 484
-    //   385: ldc2_w 82
+    //   385: ldc2_w 89
     //   388: lstore_1
     //   389: aload_0
-    //   390: ldc2_w 74
+    //   390: ldc2_w 81
     //   393: lload_1
     //   394: lconst_1
     //   395: iconst_0
-    //   396: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   396: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   399: lconst_0
     //   400: lreturn
-    //   401: ldc2_w 87
+    //   401: ldc2_w 94
     //   404: lstore_1
     //   405: goto -86 -> 319
-    //   408: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   408: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   411: astore_0
     //   412: iload_3
     //   413: ifeq +20 -> 433
-    //   416: ldc2_w 89
+    //   416: ldc2_w 96
     //   419: lstore_1
     //   420: aload_0
-    //   421: ldc2_w 74
+    //   421: ldc2_w 81
     //   424: lload_1
     //   425: lconst_1
     //   426: iconst_0
-    //   427: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   427: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   430: goto -101 -> 329
-    //   433: ldc2_w 91
+    //   433: ldc2_w 98
     //   436: lstore_1
     //   437: goto -17 -> 420
-    //   440: ldc2_w 93
+    //   440: ldc2_w 100
     //   443: lstore_1
     //   444: goto -89 -> 355
     //   447: iload 4
     //   449: ifne -84 -> 365
-    //   452: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   452: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   455: astore_0
     //   456: iload_3
     //   457: ifeq +20 -> 477
-    //   460: ldc2_w 95
+    //   460: ldc2_w 102
     //   463: lstore_1
     //   464: aload_0
-    //   465: ldc2_w 74
+    //   465: ldc2_w 81
     //   468: lload_1
     //   469: lconst_1
     //   470: iconst_0
-    //   471: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   471: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   474: goto -109 -> 365
-    //   477: ldc2_w 97
+    //   477: ldc2_w 104
     //   480: lstore_1
     //   481: goto -17 -> 464
-    //   484: ldc2_w 99
+    //   484: ldc2_w 106
     //   487: lstore_1
     //   488: goto -99 -> 389
     //   491: astore_0
@@ -272,95 +276,95 @@ public abstract class b
     //   498: ifle +32 -> 530
     //   501: iload 4
     //   503: ifeq +106 -> 609
-    //   506: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   506: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   509: astore 13
     //   511: iload_3
     //   512: ifeq +90 -> 602
-    //   515: ldc2_w 72
+    //   515: ldc2_w 79
     //   518: lstore_1
     //   519: aload 13
-    //   521: ldc2_w 74
+    //   521: ldc2_w 81
     //   524: lload_1
     //   525: lconst_1
     //   526: iconst_0
-    //   527: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   527: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   530: lload 7
-    //   532: ldc2_w 54
+    //   532: ldc2_w 61
     //   535: lcmp
     //   536: ifle +114 -> 650
     //   539: iload 4
     //   541: ifeq +27 -> 568
-    //   544: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   544: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   547: astore 13
     //   549: iload_3
     //   550: ifeq +93 -> 643
-    //   553: ldc2_w 80
+    //   553: ldc2_w 87
     //   556: lstore_1
     //   557: aload 13
-    //   559: ldc2_w 74
+    //   559: ldc2_w 81
     //   562: lload_1
     //   563: lconst_1
     //   564: iconst_0
-    //   565: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   565: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   568: lload 7
     //   570: lconst_0
     //   571: lcmp
     //   572: ifgt +28 -> 600
-    //   575: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   575: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   578: astore 13
     //   580: iload 4
     //   582: ifeq +107 -> 689
-    //   585: ldc2_w 82
+    //   585: ldc2_w 89
     //   588: lstore_1
     //   589: aload 13
-    //   591: ldc2_w 74
+    //   591: ldc2_w 81
     //   594: lload_1
     //   595: lconst_1
     //   596: iconst_0
-    //   597: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   597: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   600: aload_0
     //   601: athrow
-    //   602: ldc2_w 87
+    //   602: ldc2_w 94
     //   605: lstore_1
     //   606: goto -87 -> 519
-    //   609: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   609: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   612: astore 13
     //   614: iload_3
     //   615: ifeq +21 -> 636
-    //   618: ldc2_w 89
+    //   618: ldc2_w 96
     //   621: lstore_1
     //   622: aload 13
-    //   624: ldc2_w 74
+    //   624: ldc2_w 81
     //   627: lload_1
     //   628: lconst_1
     //   629: iconst_0
-    //   630: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   630: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   633: goto -103 -> 530
-    //   636: ldc2_w 91
+    //   636: ldc2_w 98
     //   639: lstore_1
     //   640: goto -18 -> 622
-    //   643: ldc2_w 93
+    //   643: ldc2_w 100
     //   646: lstore_1
     //   647: goto -90 -> 557
     //   650: iload 4
     //   652: ifne -84 -> 568
-    //   655: getstatic 71	com/tencent/mm/plugin/report/service/h:qsU	Lcom/tencent/mm/plugin/report/service/h;
+    //   655: getstatic 78	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
     //   658: astore 13
     //   660: iload_3
     //   661: ifeq +21 -> 682
-    //   664: ldc2_w 95
+    //   664: ldc2_w 102
     //   667: lstore_1
     //   668: aload 13
-    //   670: ldc2_w 74
+    //   670: ldc2_w 81
     //   673: lload_1
     //   674: lconst_1
     //   675: iconst_0
-    //   676: invokevirtual 79	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   676: invokevirtual 86	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   679: goto -111 -> 568
-    //   682: ldc2_w 97
+    //   682: ldc2_w 104
     //   685: lstore_1
     //   686: goto -18 -> 668
-    //   689: ldc2_w 99
+    //   689: ldc2_w 106
     //   692: lstore_1
     //   693: goto -104 -> 589
     //   696: astore_0
@@ -391,33 +395,59 @@ public abstract class b
   
   protected static GalleryItem.AlbumItem a(Cursor paramCursor, int paramInt, String paramString)
   {
-    long l = bo.apW(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id")));
-    String str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
-    String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(paramString));
-    String str3 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(ncx));
-    String str4 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(ncy));
-    if (bo.isNullOrNil(str2))
+    for (;;)
     {
-      ab.e("MicroMsg.BaseMediaQuery", "null or nill album name, ignore this folder");
-      return null;
+      Object localObject;
+      try
+      {
+        long l = Util.safeParseLong(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id")));
+        localObject = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
+        String str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(paramString));
+        String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGs));
+        String str3 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGt));
+        if (Util.isNullOrNil(str1))
+        {
+          Log.e("MicroMsg.BaseMediaQuery", "null or nil album name, ignore this folder");
+          return null;
+        }
+        if (com.tencent.mm.plugin.gallery.b.h.fBW())
+        {
+          i = 0;
+          Log.d("MicroMsg.BaseMediaQuery", "%s(%s) path:%s", new Object[] { str1, Integer.valueOf(i), localObject });
+          paramString = (String)localObject;
+          if (Util.isNullOrNil((String)localObject)) {
+            paramString = null;
+          }
+          paramString = GalleryItem.MediaItem.a(paramInt, l, paramString, null, paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime_type")));
+          a(str2, str3, paramInt, paramString);
+          localObject = new GalleryItem.AlbumItem(str1, i);
+          ((GalleryItem.AlbumItem)localObject).HHB = paramString;
+          ((GalleryItem.AlbumItem)localObject).akit = paramCursor.getString(paramCursor.getColumnIndexOrThrow("bucket_id"));
+          if (!Util.isNullOrNil(((GalleryItem.AlbumItem)localObject).akit))
+          {
+            paramCursor = h.HHz;
+            paramCursor = h.ID(((GalleryItem.AlbumItem)localObject).akit);
+            if (!Util.isNullOrNil(paramCursor)) {
+              ((GalleryItem.AlbumItem)localObject).nickName = paramCursor;
+            }
+          }
+          ((GalleryItem.AlbumItem)localObject).AXs = 0;
+          ((GalleryItem.AlbumItem)localObject).akiw = com.tencent.mm.plugin.gallery.b.h.fBW();
+          return localObject;
+        }
+      }
+      finally
+      {
+        Log.printErrStackTrace("MicroMsg.BaseMediaQuery", paramCursor, "#albumConvertFrom failed", new Object[0]);
+        return null;
+      }
+      int i = paramCursor.getInt(3);
+      if ((i == 0) || (Util.isNullOrNil((String)localObject)))
+      {
+        Log.e("MicroMsg.BaseMediaQuery", "query album failed, " + i + ", " + (String)localObject);
+        return null;
+      }
     }
-    int i = paramCursor.getInt(3);
-    ab.i("MicroMsg.BaseMediaQuery", "%s(%s) path:%s", new Object[] { str2, Integer.valueOf(i), str1 });
-    if ((i == 0) || (bo.isNullOrNil(str1)))
-    {
-      ab.e("MicroMsg.BaseMediaQuery", "query album failed, " + i + ", " + str1);
-      return null;
-    }
-    paramString = str1;
-    if (bo.isNullOrNil(str1)) {
-      paramString = null;
-    }
-    paramCursor = paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime_type"));
-    paramCursor = GalleryItem.MediaItem.a(paramInt, Long.valueOf(l).longValue(), paramString, null, paramCursor);
-    a(str3, str4, paramInt, paramCursor);
-    paramString = new GalleryItem.AlbumItem(str2, i);
-    paramString.ndm = paramCursor;
-    return paramString;
   }
   
   private static void a(String paramString1, String paramString2, int paramInt, GalleryItem.MediaItem paramMediaItem)
@@ -442,8 +472,8 @@ public abstract class b
     }
     for (;;)
     {
-      paramMediaItem.ndq = l1;
-      paramMediaItem.ndr = l2;
+      paramMediaItem.HHK = l1;
+      paramMediaItem.HHM = l2;
       return;
       bool1 = false;
       break;
@@ -455,103 +485,187 @@ public abstract class b
     }
   }
   
-  protected static GalleryItem.MediaItem b(Cursor paramCursor, int paramInt)
+  static void bl(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
   {
-    if ((paramCursor == null) || (paramCursor.isAfterLast()) || (paramCursor.isClosed())) {
-      return null;
-    }
-    label24:
-    String str2;
-    String str3;
-    GalleryItem.MediaItem localMediaItem;
-    while (!paramCursor.isAfterLast()) {
-      if (paramCursor.getColumnIndexOrThrow("_id") >= 0)
-      {
-        localObject = Long.valueOf(bo.apW(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id"))));
-        str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
-        str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(ncx));
-        str3 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(ncy));
-        localMediaItem = GalleryItem.MediaItem.S(paramInt, ((Long)localObject).longValue());
-        localMediaItem.fQn = str1;
-        a(str2, str3, paramInt, localMediaItem);
-        if (!d.whI) {
-          break label253;
-        }
-        ab.v("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + localObject + " " + str2 + " " + str3 + "] | " + localMediaItem.ndq + " " + paramInt);
+    GalleryItem.MediaItem localMediaItem = null;
+    Object localObject = paramLinkedList.iterator();
+    int i = 0;
+    int j;
+    if (((Iterator)localObject).hasNext())
+    {
+      GalleryItem.AlbumItem localAlbumItem = (GalleryItem.AlbumItem)((Iterator)localObject).next();
+      j = i;
+      if (!localAlbumItem.akiw) {
+        j = i + localAlbumItem.hGP;
       }
+      if (localMediaItem != null) {
+        break label116;
+      }
+      localMediaItem = localAlbumItem.HHB;
     }
+    label116:
     for (;;)
     {
-      if ((!bo.isNullOrNil(localMediaItem.fQn)) || (!bo.isNullOrNil(localMediaItem.mnt))) {
-        break label320;
-      }
-      ab.w("MicroMsg.BaseMediaQuery", "thumb file and orignal file both not exist");
-      paramCursor.moveToNext();
-      break label24;
+      i = j;
       break;
-      label253:
-      ab.d("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + localObject + " " + str2 + " " + str3 + "] | " + localMediaItem.ndq + " " + paramInt);
+      localObject = new GalleryItem.AlbumItem("", i);
+      ((GalleryItem.AlbumItem)localObject).akiu = true;
+      if (localMediaItem != null) {}
+      for (((GalleryItem.AlbumItem)localObject).HHB = localMediaItem;; ((GalleryItem.AlbumItem)localObject).HHB = new GalleryItem.ImageMediaItem())
+      {
+        paramLinkedList.add(0, localObject);
+        return;
+      }
     }
-    label320:
-    String str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime_type"));
-    Object localObject = str1;
-    if (bo.isNullOrNil(str1)) {
-      localObject = "";
+  }
+  
+  protected static GalleryItem.MediaItem c(Cursor paramCursor, int paramInt)
+  {
+    Object localObject;
+    if ((paramCursor == null) || (paramCursor.isAfterLast()) || (paramCursor.isClosed())) {
+      localObject = null;
     }
-    localMediaItem.mMimeType = ((String)localObject);
-    paramInt = paramCursor.getColumnIndexOrThrow("latitude");
+    GalleryItem.MediaItem localMediaItem;
     double d;
-    if (paramCursor.getType(paramInt) != 0)
+    do
     {
+      do
+      {
+        return localObject;
+        for (;;)
+        {
+          try
+          {
+            if (paramCursor.isAfterLast()) {
+              break label476;
+            }
+            if (paramCursor.getColumnIndexOrThrow("_id") >= 0)
+            {
+              long l = Util.safeParseLong(paramCursor.getString(paramCursor.getColumnIndexOrThrow("_id")));
+              localObject = paramCursor.getString(paramCursor.getColumnIndexOrThrow("_data"));
+              str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGs));
+              String str2 = paramCursor.getString(paramCursor.getColumnIndexOrThrow(HGt));
+              localMediaItem = GalleryItem.MediaItem.aD(paramInt, l);
+              localMediaItem.Gcc = ((String)localObject);
+              a(str1, str2, paramInt, localMediaItem);
+              if (d.Yxi)
+              {
+                Log.v("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.HHK + " " + paramInt);
+                if ((!Util.isNullOrNil(localMediaItem.Gcc)) || (!Util.isNullOrNil(localMediaItem.zWJ))) {
+                  break;
+                }
+                Log.w("MicroMsg.BaseMediaQuery", "thumb file and original file both not exist");
+                paramCursor.moveToNext();
+              }
+              else
+              {
+                Log.d("MicroMsg.BaseMediaQuery", "[mediaConvertFrom] [" + l + " " + str1 + " " + str2 + "] | " + localMediaItem.HHK + " " + paramInt);
+              }
+            }
+          }
+          finally
+          {
+            Log.printErrStackTrace("MicroMsg.BaseMediaQuery", paramCursor, "", new Object[0]);
+            return null;
+          }
+        }
+        String str1 = paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime_type"));
+        localObject = str1;
+        if (Util.isNullOrNil(str1)) {
+          localObject = "";
+        }
+        localMediaItem.mMimeType = ((String)localObject);
+        paramInt = paramCursor.getColumnIndexOrThrow("latitude");
+        if (paramCursor.getType(paramInt) != 0)
+        {
+          d = paramCursor.getDouble(paramInt);
+          if (a.D(d)) {
+            localMediaItem.HHO = d;
+          }
+        }
+        paramInt = paramCursor.getColumnIndexOrThrow("longitude");
+        localObject = localMediaItem;
+      } while (paramCursor.getType(paramInt) == 0);
       d = paramCursor.getDouble(paramInt);
-      if (a.q(d)) {
-        localMediaItem.bnl = d;
-      }
-    }
-    paramInt = paramCursor.getColumnIndexOrThrow("longitude");
-    if (paramCursor.getType(paramInt) != 0)
-    {
-      d = paramCursor.getDouble(paramInt);
-      if (a.p(d)) {
-        localMediaItem.bnm = d;
-      }
-    }
+      localObject = localMediaItem;
+    } while (!a.C(d));
+    localMediaItem.HHN = d;
     return localMediaItem;
+    label476:
+    return null;
   }
   
-  public String a(String[] paramArrayOfString, boolean paramBoolean)
+  final boolean a(l.c paramc, LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean)
+  {
+    if (!this.HGu) {
+      if (!paramBoolean) {
+        break label69;
+      }
+    }
+    label69:
+    for (this.HGq = 200; (paramc != null) && (paramLinkedList.size() % this.HGq == 0); this.HGq = 5000)
+    {
+      Log.d("MicroMsg.BaseMediaQuery", "page notify, notifyCount: %d.", new Object[] { Integer.valueOf(this.HGq) });
+      paramc.b(paramLinkedList, paramLong, paramBoolean);
+      return true;
+    }
+    return false;
+  }
+  
+  public String b(String[] paramArrayOfString, boolean paramBoolean)
   {
     return null;
   }
   
-  public String aV(String paramString, boolean paramBoolean)
+  public String ce(String paramString, boolean paramBoolean)
   {
     return null;
   }
   
-  public String[] bDL()
+  public final void fAa()
+  {
+    this.nzW = true;
+  }
+  
+  public String[] fzV()
   {
     return new String[0];
   }
   
-  public final void bDM()
-  {
-    this.ncv = 1000;
-  }
-  
-  public String[] getProjection()
+  public String[] fzW()
   {
     return new String[0];
   }
   
-  public String hS(boolean paramBoolean)
+  public String fzX()
+  {
+    return null;
+  }
+  
+  public String fzY()
+  {
+    return null;
+  }
+  
+  public final void fzZ()
+  {
+    this.HGu = true;
+    this.HGq = 1000;
+  }
+  
+  public final boolean isCancelled()
+  {
+    return this.nzW;
+  }
+  
+  public String vQ(boolean paramBoolean)
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.b
  * JD-Core Version:    0.7.0.1
  */

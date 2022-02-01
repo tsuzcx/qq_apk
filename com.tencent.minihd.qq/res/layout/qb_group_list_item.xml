@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/select_member_little_title_color" android:gravity="center|left" android:id="@id/troop_seperator_name" android:paddingLeft="32.0dip" android:paddingTop="16.0dip" android:paddingRight="32.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" />
+    <include android:id="@id/troop_list_info" layout="@layout/troop_list_item" />
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/troop_common_used_shader" android:visibility="gone" android:clickable="true" android:layout_width="100.0dip" android:layout_height="52.0dip" android:layout_alignParentRight="true">
+        <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/troop_common_used_btn" android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="设为常用群" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</RelativeLayout>

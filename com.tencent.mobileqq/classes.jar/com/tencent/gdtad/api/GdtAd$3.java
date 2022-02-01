@@ -1,7 +1,6 @@
 package com.tencent.gdtad.api;
 
-import aane;
-import aase;
+import com.tencent.gdtad.log.GdtLog;
 import java.lang.ref.WeakReference;
 
 class GdtAd$3
@@ -11,18 +10,19 @@ class GdtAd$3
   
   public void run()
   {
-    if ((this.a == null) || (this.a.get() == null) || (GdtAd.access$000((GdtAd)this.a.get()) == null) || (GdtAd.access$000((GdtAd)this.a.get()).get() == null))
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (GdtAd.access$000((GdtAd)this.a.get()) != null) && (GdtAd.access$000((GdtAd)this.a.get()).get() != null))
     {
-      aase.d("GdtAd", "notifyImpression error");
+      GdtLog.b("GdtAd", "notifyImpression");
+      ((GdtAdListener)GdtAd.access$000((GdtAd)this.a.get()).get()).b((GdtAd)this.a.get());
       return;
     }
-    aase.b("GdtAd", "notifyImpression");
-    ((aane)GdtAd.access$000((GdtAd)this.a.get()).get()).b((GdtAd)this.a.get());
+    GdtLog.d("GdtAd", "notifyImpression error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd.3
  * JD-Core Version:    0.7.0.1
  */

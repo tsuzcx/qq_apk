@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h70" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <include android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/bct" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/adr" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <RelativeLayout android:id="@id/oaw" android:background="@drawable/ew6" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="10.0dip" android:text="手势密码解锁" android:layout_alignParentLeft="true" />
+                <ImageView android:id="@id/n7n" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+            <RelativeLayout android:id="@id/mkw" android:background="@drawable/ew6" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="10.0dip" android:text="关闭" android:layout_alignParentLeft="true" />
+                <ImageView android:id="@id/n6n" android:background="@drawable/h62" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/h56" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/avd" formItem:bgType="iwf" formItem:leftText="@string/bi9" formItem:showArrow="true" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

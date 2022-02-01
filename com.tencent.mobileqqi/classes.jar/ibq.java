@@ -1,18 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.CrashGuard;
-import cooperation.qzone.QZoneHelper.LocalConfig;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.CrashNotificationActivity;
 
 public class ibq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ibq(CrashGuard paramCrashGuard, long paramLong) {}
+  public ibq(CrashNotificationActivity paramCrashNotificationActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    CrashGuard.a(this.jdField_a_of_type_CooperationQzoneCrashGuard).set(true);
-    QLog.i("QZLog", 1, "clear crash count with no crash");
-    QZoneHelper.LocalConfig.a("key_crash_count", 0, this.jdField_a_of_type_Long);
+    this.a.a();
   }
 }
 

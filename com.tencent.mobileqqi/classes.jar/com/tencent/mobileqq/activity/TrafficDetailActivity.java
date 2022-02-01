@@ -94,11 +94,11 @@ public class TrafficDetailActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130903197);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231552));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131231551));
     setTitle(2131563098);
     d();
     this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, this.jdField_a_of_type_JavaUtilList, 2130904014, new String[] { "name", "dayTraffic", "monthTraffic" }, new int[] { 2131234586, 2131234587, 2131234588 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, this.jdField_a_of_type_JavaUtilList, 2130904014, new String[] { "name", "dayTraffic", "monthTraffic" }, new int[] { 2131234585, 2131234586, 2131234587 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
   }
   

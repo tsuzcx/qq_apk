@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/fpo" android:background="@color/fl" android:scrollbars="none" android:overScrollMode="never" style="@style/na" />
+        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/jl7" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/m4" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/a76" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="32.0dip" android:text="@string/kn_" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhl;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.unique;
 
 public class StoryVideoEntry
-  extends awge
+  extends Entity
 {
   public long addTime;
   public String address;
@@ -75,7 +75,7 @@ public class StoryVideoEntry
   public String sourceVid;
   public int storyType;
   public int strangerViewCount;
-  @awhl(a=2147483647)
+  @defaultValue(defaultInteger=2147483647)
   public long timeZoneOffsetMillis;
   public int totalLikeNum;
   public int totalRateCount = -1;
@@ -83,7 +83,7 @@ public class StoryVideoEntry
   public int uncheckLikeNum;
   public String unionId;
   public int uploadStatus = -1;
-  @awhs
+  @unique
   public String vid;
   public long videoBytes;
   public long videoDuration;
@@ -109,7 +109,7 @@ public class StoryVideoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryVideoEntry
  * JD-Core Version:    0.7.0.1
  */

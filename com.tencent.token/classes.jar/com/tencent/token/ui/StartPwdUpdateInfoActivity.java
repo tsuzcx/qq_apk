@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cy;
+import com.tencent.token.sw;
 
 public class StartPwdUpdateInfoActivity
   extends BaseActivity
@@ -21,19 +22,32 @@ public class StartPwdUpdateInfoActivity
   
   private void initUI()
   {
-    this.mButtonCreate.setOnClickListener(new aaq(this));
+    this.mButtonCreate.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        paramAnonymousView = new Intent(StartPwdUpdateInfoActivity.this, StartPwdGestureModifyActivity.class);
+        if (StartPwdUpdateInfoActivity.this.source == StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER) {
+          paramAnonymousView.putExtra(StartPwdUpdateInfoActivity.SOURCE_TO_START_PSW, StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER);
+        }
+        StartPwdUpdateInfoActivity.this.startActivityForResult(paramAnonymousView, 258);
+        if (StartPwdUpdateInfoActivity.this.source == StartPwdUpdateInfoActivity.SOURCE_FROM_PSW_MANAGER) {
+          StartPwdUpdateInfoActivity.this.finish();
+        }
+      }
+    });
     this.mButtonSkip.setVisibility(4);
-    this.mTitleBar.setBackgroundColor(getResources().getColor(2131493039));
-    this.mTitleDivider.setBackgroundColor(getResources().getColor(2131493053));
-    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2130837617));
-    this.mTitleText.setTextColor(getResources().getColor(2131493027));
+    this.mTitleBar.setBackgroundColor(getResources().getColor(2130968774));
+    this.mTitleDivider.setBackgroundColor(getResources().getColor(2130968790));
+    this.mBackArrowImg.setImageDrawable(getResources().getDrawable(2131099762));
+    this.mTitleText.setTextColor(getResources().getColor(2130968762));
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((paramInt1 == 258) && ((paramInt2 == 259) || (cy.a().d())))
+    if ((paramInt1 == 258) && ((paramInt2 == 259) || (sw.a().d())))
     {
-      showOrangeToast(2131231093, 2130838018);
+      showOrangeToast(2131493238, 2131100176);
       setResult(259);
       startActivity(new Intent(this, StartPwdGestureSelActivity.class));
       finish();
@@ -44,10 +58,10 @@ public class StartPwdUpdateInfoActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    setContentView(2130968771);
+    setContentView(2131296466);
     this.source = getIntent().getIntExtra(SOURCE_TO_START_PSW, -1);
-    this.mButtonCreate = ((Button)findViewById(2131559295));
-    this.mButtonSkip = ((Button)findViewById(2131559296));
+    this.mButtonCreate = ((Button)findViewById(2131166249));
+    this.mButtonSkip = ((Button)findViewById(2131166253));
     initUI();
   }
 }

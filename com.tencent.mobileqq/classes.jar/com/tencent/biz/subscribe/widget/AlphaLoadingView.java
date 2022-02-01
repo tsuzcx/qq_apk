@@ -10,22 +10,21 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import ynt;
 
 public class AlphaLoadingView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String jdField_a_of_type_JavaLangString = "#00CAFC";
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
   private int b;
   private int c = -1;
   private int d = 5;
   private int e = this.f;
   private int f = 100;
-  private int g = 16;
+  private Paint g = new Paint();
+  private String h = "#00CAFC";
+  private Handler i;
+  private int j = 16;
+  private boolean k;
   
   public AlphaLoadingView(Context paramContext)
   {
@@ -40,54 +39,60 @@ public class AlphaLoadingView
   public AlphaLoadingView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidOsHandler = new ynt(this);
+    this.g.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.g.setAntiAlias(true);
+    this.i = new AlphaLoadingView.1(this);
   }
   
   private int a(int paramInt, boolean paramBoolean)
   {
-    int j = View.MeasureSpec.getMode(paramInt);
-    int i = View.MeasureSpec.getSize(paramInt);
-    switch (j)
+    int n = View.MeasureSpec.getMode(paramInt);
+    int m = View.MeasureSpec.getSize(paramInt);
+    if (n != -2147483648)
     {
-    default: 
-      if (paramBoolean) {
-        return this.c;
+      if (n != 0)
+      {
+        paramInt = m;
+        if (n != 1073741824)
+        {
+          if (paramBoolean) {
+            return this.c;
+          }
+          paramInt = this.d;
+        }
+        return paramInt;
       }
-      break;
-    case 1073741824: 
-      return i;
-    case -2147483648: 
-      if (paramBoolean) {}
-      for (paramInt = this.c;; paramInt = this.d) {
-        return Math.min(paramInt, i);
-      }
-    case 0: 
       if (paramBoolean) {
         return this.c;
       }
       return this.d;
     }
-    return this.d;
+    if (paramBoolean) {
+      paramInt = this.c;
+    } else {
+      paramInt = this.d;
+    }
+    return Math.min(paramInt, m);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.i;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.k = false;
+      localHandler.sendEmptyMessage(1);
       setVisibility(0);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.i;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_Boolean = true;
+      localHandler.removeCallbacksAndMessages(null);
+      this.k = true;
       setVisibility(8);
     }
   }
@@ -102,43 +107,44 @@ public class AlphaLoadingView
   {
     super.onDetachedFromWindow();
     b();
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.i;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int i = 255;
-    int j = 30;
     super.onDraw(paramCanvas);
-    int k;
-    if (this.e < this.jdField_a_of_type_Int)
-    {
-      this.e += 30;
-      k = 255 - this.e * 255 / this.jdField_a_of_type_Int;
-      if (k <= 255) {
-        break label190;
-      }
+    int m = this.e;
+    if (m < this.a) {
+      this.e = (m + 30);
+    } else {
+      this.e = this.f;
     }
-    for (;;)
-    {
-      if (i < 30) {
-        i = j;
-      }
-      for (;;)
-      {
-        String str = Integer.toHexString(i);
-        i = Color.parseColor("#" + str + this.jdField_a_of_type_JavaLangString.substring(1, this.jdField_a_of_type_JavaLangString.length()));
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
-        paramCanvas.drawLine(this.jdField_a_of_type_Int / 2 - this.e / 2, this.d / 2, this.jdField_a_of_type_Int / 2 + this.e / 2, this.d / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        this.e = this.f;
-        break;
-      }
-      label190:
-      i = k;
+    int n = 255 - this.e * 255 / this.a;
+    m = n;
+    if (n > 255) {
+      m = 255;
     }
+    n = m;
+    if (m < 30) {
+      n = 30;
+    }
+    String str = Integer.toHexString(n);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#");
+    localStringBuilder.append(str);
+    str = this.h;
+    localStringBuilder.append(str.substring(1, str.length()));
+    m = Color.parseColor(localStringBuilder.toString());
+    this.g.setColor(m);
+    m = this.a;
+    int i1 = m / 2;
+    n = this.e;
+    float f1 = i1 - n / 2;
+    i1 = this.d;
+    paramCanvas.drawLine(f1, i1 / 2, m / 2 + n / 2, i1 / 2, this.g);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -150,24 +156,26 @@ public class AlphaLoadingView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Int < this.e) {
-      this.jdField_a_of_type_Int = this.e;
+    paramInt1 = this.a;
+    paramInt2 = this.e;
+    if (paramInt1 < paramInt2) {
+      this.a = paramInt2;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b);
+    this.g.setStrokeWidth(this.b);
   }
   
   public void setTimePeriod(int paramInt)
   {
-    if (this.g > 0) {
-      this.g = paramInt;
+    if (this.j > 0) {
+      this.j = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AlphaLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:id="@android:id/title" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
-        <TextView android:gravity="center_vertical" android:id="@id/ddk" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:singleLine="true" style="@style/lg" />
-        <RelativeLayout android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/ddu" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:scaleType="fitXY" />
-            <ImageView android:id="@id/ddv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="@dimen/dl" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/ddw" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:scaleType="fitXY" />
-            <ImageView android:id="@id/ddx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="@dimen/dl" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/ddy" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:scaleType="fitXY" />
-            <ImageView android:id="@id/ddz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="@dimen/dl" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/de0" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:scaleType="fitXY" />
-            <ImageView android:id="@id/de1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginBottom="@dimen/dl" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/dk5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/bkk" android:background="@drawable/a2h" android:layout_width="wrap_content" android:layout_height="@dimen/d6" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp">
+        <TextView android:textSize="14.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/bkm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bkj" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_close" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cp" android:layout_toEndOf="@id/bkm" app:iconColor="@color/UN_BW_0_Alpha_0_5" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bkl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a1m" android:layout_below="@id/bkk" android:layout_marginEnd="@dimen/cv" android:layout_alignEnd="@id/bkk" />
+</RelativeLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/public_account_cover" android:layout_width="fill_parent" android:layout_height="@dimen/public_account_header_whole_height"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

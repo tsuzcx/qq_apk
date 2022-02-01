@@ -1,58 +1,62 @@
 package com.tencent.av.screenshare;
 
-import com.tencent.av.VideoConstants.EmShareOps;
 import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
-import lid;
 import mqq.util.WeakReference;
 
 class ScreenShareCtrl$ShareOpsTimeOutTask
   implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final VideoConstants.EmShareOps jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps;
-  private final lid jdField_a_of_type_Lid;
-  private final WeakReference<VideoController> jdField_a_of_type_MqqUtilWeakReference;
+  private final WeakReference<VideoController> a;
+  private final SessionInfo b;
+  private final int c;
+  private final int d;
   
-  public ScreenShareCtrl$ShareOpsTimeOutTask(VideoController paramVideoController, lid paramlid, VideoConstants.EmShareOps paramEmShareOps, int paramInt)
+  public ScreenShareCtrl$ShareOpsTimeOutTask(VideoController paramVideoController, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramVideoController);
-    this.jdField_a_of_type_Lid = paramlid;
-    this.jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps = paramEmShareOps;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramVideoController);
+    this.b = paramSessionInfo;
+    this.c = paramInt1;
+    this.d = paramInt2;
   }
   
   public void run()
   {
-    VideoController localVideoController = (VideoController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    int i;
-    if ((localVideoController != null) && (this.jdField_a_of_type_Lid != null))
+    VideoController localVideoController = (VideoController)this.a.get();
+    if ((localVideoController != null) && (this.b != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvVideoConstants$EmShareOps != VideoConstants.EmShareOps.START) {
-        break label136;
+      int i;
+      if (this.c == 1) {
+        i = 86;
+      } else {
+        i = 89;
       }
-      i = 86;
-      if (!this.jdField_a_of_type_Lid.j) {
-        break label142;
+      int j;
+      if (this.b.H) {
+        j = 2;
+      } else {
+        j = 1;
       }
-    }
-    label136:
-    label142:
-    for (int j = 2;; j = 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVShare", 2, "ShareOpsTimeOutTask, actionResult[" + i + "], session[" + this.jdField_a_of_type_Lid + "], multiAVSubType[" + j + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ShareOpsTimeOutTask, actionResult[");
+        localStringBuilder.append(i);
+        localStringBuilder.append("], session[");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("], multiAVSubType[");
+        localStringBuilder.append(j);
+        localStringBuilder.append("]");
+        QLog.i("AVShare", 2, localStringBuilder.toString());
       }
-      localVideoController.a(i, this.jdField_a_of_type_Int, this.jdField_a_of_type_Lid.E, this.jdField_a_of_type_Lid.g, this.jdField_a_of_type_Lid.C, j);
-      return;
-      i = 89;
-      break;
+      localVideoController.onShareOpsCallback(i, this.d, this.b.aQ, this.b.aN, this.b.o, j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareCtrl.ShareOpsTimeOutTask
  * JD-Core Version:    0.7.0.1
  */

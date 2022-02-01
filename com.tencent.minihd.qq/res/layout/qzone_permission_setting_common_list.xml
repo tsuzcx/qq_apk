@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/setting_list" android:background="@color/transparent" android:padding="10.0dip" android:scrollbars="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/empty_view" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="70.0dip" android:layout_marginRight="10.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/empty_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_icon_logo_normal" />
+        <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/empty_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qzone_empty_tip_margin_top" android:layout_marginBottom="42.0dip" style="@style/empty_tip_font" />
+        <include android:id="@id/add_item" layout="@layout/qzone_permission_setting_add_item" />
+    </LinearLayout>
+</RelativeLayout>

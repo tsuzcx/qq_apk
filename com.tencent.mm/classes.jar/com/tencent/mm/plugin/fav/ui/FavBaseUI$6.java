@@ -12,15 +12,15 @@ final class FavBaseUI$6
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(73931);
-    this.mvK.hideVKB();
-    AppMethodBeat.o(73931);
+    AppMethodBeat.i(106616);
+    this.AfU.hideVKB();
+    AppMethodBeat.o(106616);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavBaseUI.6
  * JD-Core Version:    0.7.0.1
  */

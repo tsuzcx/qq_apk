@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.chathistory;
 
 import android.os.SystemClock;
-import bcpr;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 import com.tencent.mobileqq.widget.datepicker.CalendarDay;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -17,39 +17,40 @@ class ChatHistoryByDateFragment$1
   public void run()
   {
     long l = SystemClock.elapsedRealtime();
-    int i = 0;
-    int m = CalendarDay.getDaysInMonth(this.a, this.b);
+    int n = CalendarDay.getDaysInMonth(this.a, this.b);
     ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int k = 1;
-    MessageRecord localMessageRecord;
-    if (k <= m)
+    int j = 1;
+    int m = 0;
+    int k;
+    for (int i = 0; j <= n; i = k)
     {
-      localMessageRecord = ChatHistoryByDateFragment.a(this.this$0, this.a, this.b, k);
-      if (localMessageRecord == null) {
-        break label244;
+      MessageRecord localMessageRecord = ChatHistoryByDateFragment.a(this.this$0, this.a, this.b, j);
+      m += 1;
+      k = i;
+      if (localMessageRecord != null)
+      {
+        k = i + 1;
+        localArrayList.add(localMessageRecord);
       }
-      i += 1;
-      localArrayList.add(localMessageRecord);
-    }
-    label244:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ChatHistoryByDateFragment.a(), 2, "getFirstMessageByDate: " + ChatHistoryByDateFragment.a(this.this$0, this.a, this.b + 1, k) + " | result: " + localMessageRecord);
+      if (QLog.isColorLevel())
+      {
+        String str = ChatHistoryByDateFragment.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFirstMessageByDate: ");
+        localStringBuilder.append(ChatHistoryByDateFragment.b(this.this$0, this.a, this.b + 1, j));
+        localStringBuilder.append(" | result: ");
+        localStringBuilder.append(localMessageRecord);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
-      k += 1;
       j += 1;
-      break;
-      if (localArrayList.size() > 0) {
-        ThreadManager.getUIHandler().post(new ChatHistoryByDateFragment.1.1(this, localArrayList));
-      }
-      l = SystemClock.elapsedRealtime() - l;
-      bcpr.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
-      if (QLog.isColorLevel()) {
-        QLog.i(ChatHistoryByDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l) }));
-      }
-      return;
+    }
+    if (localArrayList.size() > 0) {
+      ThreadManager.getUIHandler().post(new ChatHistoryByDateFragment.1.1(this, localArrayList));
+    }
+    l = SystemClock.elapsedRealtime() - l;
+    TroopTechReportUtils.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(m), String.valueOf(i), "");
+    if (QLog.isColorLevel()) {
+      QLog.i(ChatHistoryByDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Long.valueOf(l) }));
     }
   }
 }

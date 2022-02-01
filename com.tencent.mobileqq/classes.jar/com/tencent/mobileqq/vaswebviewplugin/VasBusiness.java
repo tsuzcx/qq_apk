@@ -10,7 +10,7 @@ public class VasBusiness
   public static final long CHAT_FONT_HOME = 4096L;
   public static final long CHAT_FONT_SWITCH = 8388608L;
   public static final long CHAT_MYFONT_ENTRANCE = 67108864L;
-  public static final long Color_Ring = 4194304L;
+  public static final long COLOR_RING = 4194304L;
   public static final long DEVLOCK = 16384L;
   public static final long EMOJI_HOME = 2L;
   public static final long EMOJI_SUBHOME = 4L;
@@ -37,7 +37,7 @@ public class VasBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBusiness
  * JD-Core Version:    0.7.0.1
  */

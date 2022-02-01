@@ -10,8 +10,8 @@ class EmoticonGroupStoreFragment$8
   
   public void run()
   {
-    EmoticonGroupStoreFragment.a(this.this$0).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.this$0).setVisibility(0);
+    EmoticonGroupStoreFragment.p(this.this$0).setVisibility(8);
+    EmoticonGroupStoreFragment.q(this.this$0).setVisibility(0);
   }
 }
 

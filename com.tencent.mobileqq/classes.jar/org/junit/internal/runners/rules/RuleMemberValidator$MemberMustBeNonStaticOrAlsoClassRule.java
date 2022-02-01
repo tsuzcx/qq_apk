@@ -12,28 +12,26 @@ final class RuleMemberValidator$MemberMustBeNonStaticOrAlsoClassRule
   {
     boolean bool = RuleMemberValidator.access$1200(paramFrameworkMember);
     int i;
-    if (paramFrameworkMember.getAnnotation(ClassRule.class) != null)
-    {
+    if (paramFrameworkMember.getAnnotation(ClassRule.class) != null) {
       i = 1;
-      if ((paramFrameworkMember.isStatic()) && ((bool) || (i == 0))) {
-        if (!RuleMemberValidator.access$1200(paramFrameworkMember)) {
-          break label71;
-        }
-      }
-    }
-    label71:
-    for (String str = "must not be static.";; str = "must not be static or it must be annotated with @ClassRule.")
-    {
-      paramList.add(new ValidationError(paramFrameworkMember, paramClass, str));
-      return;
+    } else {
       i = 0;
-      break;
+    }
+    if ((paramFrameworkMember.isStatic()) && ((bool) || (i == 0)))
+    {
+      String str;
+      if (RuleMemberValidator.access$1200(paramFrameworkMember)) {
+        str = "must not be static.";
+      } else {
+        str = "must not be static or it must be annotated with @ClassRule.";
+      }
+      paramList.add(new ValidationError(paramFrameworkMember, paramClass, str));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.junit.internal.runners.rules.RuleMemberValidator.MemberMustBeNonStaticOrAlsoClassRule
  * JD-Core Version:    0.7.0.1
  */

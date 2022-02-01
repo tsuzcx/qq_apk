@@ -11,15 +11,15 @@ final class CardAcceptCardListUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(88220);
+    AppMethodBeat.i(113154);
     paramDialogInterface.dismiss();
-    CardAcceptCardListUI.a(this.ksL, 2);
-    AppMethodBeat.o(88220);
+    CardAcceptCardListUI.a(this.wzh, 2);
+    AppMethodBeat.o(113154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardAcceptCardListUI.6
  * JD-Core Version:    0.7.0.1
  */

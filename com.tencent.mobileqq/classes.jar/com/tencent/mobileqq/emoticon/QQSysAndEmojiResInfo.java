@@ -4,13 +4,10 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import apsj;
-import apsm;
-import bdhb;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,39 +19,53 @@ import org.json.JSONObject;
 
 public abstract class QQSysAndEmojiResInfo
 {
-  private static JSONObject a;
-  protected Drawable a;
-  protected apsm a;
-  protected ArrayList<Integer> a;
-  protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> a;
-  protected HashMap<Integer, Integer> b;
+  private static final String CONFIG_FILE_NAME = "face_config.json";
+  public static final String EMO_ID = "emoId";
+  public static final String TAG = "QQSysAndEmojiBaseInfo";
+  private static JSONObject mFaceJsonObject;
+  protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> mConfigItemMap;
+  protected Drawable mDefault;
+  protected HashMap<String, String> mDesToEMCodeMap;
+  protected HashMap<String, Integer> mEMCodeToLocalMap;
+  protected ArrayList<Integer> mOrderList;
+  protected QQSysAndEmojiResReloader mResReloader;
+  protected HashMap<Integer, Integer> mServerToLocalMap;
   
   public QQSysAndEmojiResInfo()
   {
-    a();
+    parseConfigData();
   }
   
-  public static void a(String paramString)
+  protected static void parseFaceConfigJson(String paramString)
   {
-    Object localObject = null;
-    jdField_a_of_type_OrgJsonJSONObject = null;
+    mFaceJsonObject = null;
     try
     {
       long l = System.currentTimeMillis();
-      paramString = new File(paramString + "face_config.json");
-      if (paramString.exists()) {}
-      for (paramString = bdhb.a(paramString); (paramString != null) && (paramString.length() > 0); paramString = localObject)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("face_config.json");
+      paramString = new File(localStringBuilder.toString());
+      boolean bool = paramString.exists();
+      if (bool)
       {
-        jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(jdField_a_of_type_OrgJsonJSONObject.length()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        return;
+        paramString = FileUtils.readFileContent(paramString);
+      }
+      else
+      {
+        paramString = FileUtils.readStringFromAsset("face_config.json");
         QLog.d("QQSysAndEmojiBaseInfo", 1, "getFaceConfigJson not exist!");
         ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResInfo.1());
       }
-      return;
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        mFaceJsonObject = new JSONObject(paramString);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(mFaceJsonObject.length()), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]， content:", paramString });
+          return;
+        }
+      }
     }
     catch (Exception paramString)
     {
@@ -62,139 +73,173 @@ public abstract class QQSysAndEmojiResInfo
     }
   }
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract Drawable a(int paramInt);
-  
-  protected Drawable a(URL paramURL, Drawable paramDrawable, boolean paramBoolean, String paramString)
+  public void addReloadDrawable(int paramInt)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramDrawable == null) {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {}
+    if (this.mResReloader == null) {
+      setReloadController();
     }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837915);
-        localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localURLDrawableOptions.mPlayGifImage = paramBoolean;
-        paramURL = a(paramURL, localURLDrawableOptions);
-        if ((paramURL != null) && (!TextUtils.isEmpty(paramString))) {
-          paramURL.addHeader("emoId", paramString);
-        }
-        return paramURL;
-      }
-      catch (Exception paramDrawable)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
-        QLog.e("QQSysAndEmojiBaseInfo", 1, "getDrawable exception e: = " + paramDrawable.getMessage());
-        continue;
-      }
-      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
-      localURLDrawableOptions.mFailedDrawable = paramDrawable;
-    }
+    this.mResReloader.addReloadList(paramInt);
   }
   
-  protected URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  public boolean checkEmoticonShouldHide(int paramInt)
   {
-    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-  }
-  
-  public abstract String a(int paramInt);
-  
-  public ArrayList<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public JSONObject a()
-  {
-    if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      a(apsj.b());
-    }
-    return jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  protected void a(Drawable paramDrawable, int paramInt)
-  {
-    if ((paramDrawable instanceof URLDrawable))
-    {
-      paramDrawable = (URLDrawable)paramDrawable;
-      if ((paramDrawable.getStatus() == 1) || (paramDrawable.getStatus() == 0)) {
-        break label70;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable restartDownload:", Integer.valueOf(paramInt) });
-      }
-      paramDrawable.addHeader("emoId", Integer.toString(paramInt));
-      paramDrawable.restartDownload();
-    }
-    label70:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable do nothing:", Integer.valueOf(paramInt) });
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+    HashMap localHashMap = this.mConfigItemMap;
+    if (localHashMap == null) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      return a((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt)));
+    if (localHashMap.containsKey(Integer.valueOf(paramInt))) {
+      return isEmoticonHide((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt)));
     }
     return true;
   }
   
-  public boolean a(QQSysAndEmojiResInfo.QQEmoConfigItem paramQQEmoConfigItem)
+  public int getConfigEmoCount()
   {
-    return "1".equals(paramQQEmoConfigItem.QHide);
-  }
-  
-  public int b()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      i = this.jdField_a_of_type_JavaUtilHashMap.size();
+    HashMap localHashMap = this.mConfigItemMap;
+    if (localHashMap != null) {
+      return localHashMap.size();
     }
-    return i;
+    return 0;
   }
   
-  public int b(int paramInt)
+  public abstract String getDescription(int paramInt);
+  
+  public abstract Drawable getDrawable(int paramInt);
+  
+  public String getEMCode(String paramString)
   {
-    if ((this.b != null) && (this.b.containsKey(Integer.valueOf(paramInt)))) {
-      return ((Integer)this.b.get(Integer.valueOf(paramInt))).intValue();
+    HashMap localHashMap = this.mDesToEMCodeMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
+      return (String)this.mDesToEMCodeMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public JSONObject getFaceConfigJson()
+  {
+    if (mFaceJsonObject == null) {
+      parseFaceConfigJson(QQSysAndEmojiResMgr.getResSavePath());
+    }
+    return mFaceJsonObject;
+  }
+  
+  public int getLocalId(int paramInt)
+  {
+    HashMap localHashMap = this.mServerToLocalMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(Integer.valueOf(paramInt)))) {
+      return ((Integer)this.mServerToLocalMap.get(Integer.valueOf(paramInt))).intValue();
     }
     return -1;
   }
   
-  public abstract void b();
-  
-  public void b(int paramInt)
+  public int getLocalIdFromEMCode(String paramString)
   {
-    if (this.jdField_a_of_type_Apsm == null) {
-      b();
+    HashMap localHashMap = this.mEMCodeToLocalMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
+      return ((Integer)this.mEMCodeToLocalMap.get(paramString)).intValue();
     }
-    this.jdField_a_of_type_Apsm.a(paramInt);
+    return -1;
   }
   
-  public abstract void c();
+  public abstract int getMaxLocalId();
   
-  public void d()
+  public ArrayList<Integer> getOrderList()
   {
-    if (this.jdField_a_of_type_Apsm != null) {
-      this.jdField_a_of_type_Apsm.a();
+    if (this.mOrderList != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(this.mOrderList);
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public abstract int getServerId(int paramInt);
+  
+  protected Drawable getUrlDrawable(URL paramURL, Drawable paramDrawable, boolean paramBoolean, String paramString)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if (paramDrawable == null)
+    {
+      if (this.mDefault == null) {
+        try
+        {
+          this.mDefault = BaseApplication.getContext().getResources().getDrawable(2130838002);
+        }
+        catch (Exception paramDrawable)
+        {
+          this.mDefault = new ColorDrawable();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getDrawable exception e: = ");
+          localStringBuilder.append(paramDrawable.getMessage());
+          QLog.e("QQSysAndEmojiBaseInfo", 1, localStringBuilder.toString());
+        }
+      }
+      paramDrawable = this.mDefault;
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+    }
+    else
+    {
+      localURLDrawableOptions.mLoadingDrawable = paramDrawable;
+      localURLDrawableOptions.mFailedDrawable = paramDrawable;
+    }
+    localURLDrawableOptions.mUseApngImage = paramBoolean;
+    localURLDrawableOptions.mPlayGifImage = paramBoolean;
+    paramURL = realGetURLDrawable(paramURL, localURLDrawableOptions);
+    if ((paramURL != null) && (!TextUtils.isEmpty(paramString))) {
+      paramURL.addHeader("emoId", paramString);
+    }
+    return paramURL;
+  }
+  
+  public boolean isEmoticonHide(QQSysAndEmojiResInfo.QQEmoConfigItem paramQQEmoConfigItem)
+  {
+    return "1".equals(paramQQEmoConfigItem.QHide);
+  }
+  
+  public abstract boolean isResReady(int paramInt);
+  
+  public abstract void parseConfigData();
+  
+  public abstract void preLoadURLDrawable();
+  
+  protected URLDrawable realGetURLDrawable(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+  }
+  
+  protected void reloadDrawable(Drawable paramDrawable, int paramInt)
+  {
+    if ((paramDrawable instanceof URLDrawable))
+    {
+      paramDrawable = (URLDrawable)paramDrawable;
+      if ((paramDrawable.getStatus() != 1) && (paramDrawable.getStatus() != 0))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable restartDownload:", Integer.valueOf(paramInt) });
+        }
+        paramDrawable.addHeader("emoId", Integer.toString(paramInt));
+        paramDrawable.restartDownload();
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "reloadDrawable do nothing:", Integer.valueOf(paramInt) });
+      }
     }
   }
+  
+  public abstract void reportEmoClick(int paramInt1, int paramInt2);
+  
+  public void resDownloadFinish()
+  {
+    QQSysAndEmojiResReloader localQQSysAndEmojiResReloader = this.mResReloader;
+    if (localQQSysAndEmojiResReloader != null) {
+      localQQSysAndEmojiResReloader.nofityReloadList();
+    }
+  }
+  
+  public abstract void setReloadController();
 }
 
 

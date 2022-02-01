@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import azri;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -19,67 +19,88 @@ class ShortVideoPlayActivity$5
   public void run()
   {
     Object localObject;
-    if (this.this$0.b())
+    if (this.this$0.isPlaying())
     {
-      if (this.this$0.jdField_b_of_type_Long <= 0L) {
-        this.this$0.h();
+      if (this.this$0.mDuration <= 0L) {
+        this.this$0.initDuration();
       }
-      if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ShortVideoPlayActivity.a(this.this$0, ((TVK_IMediaPlayer)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentPostion());
-      }
-      if (ShortVideoPlayActivity.a(this.this$0) != 0L)
+      if ((this.this$0.mMediaPlayer != null) && (this.this$0.mMediaPlayer.get() != null))
       {
-        ShortVideoPlayActivity.a(this.this$0, (int)(ShortVideoPlayActivity.a(this.this$0) * 10000L / this.this$0.jdField_b_of_type_Long + 0.5D));
-        if (!ShortVideoPlayActivity.a(this.this$0)) {
-          ShortVideoPlayActivity.b(this.this$0, ShortVideoPlayActivity.a(this.this$0));
-        }
-        if (!ShortVideoPlayActivity.b(this.this$0))
+        localObject = this.this$0;
+        ShortVideoPlayActivity.access$202((ShortVideoPlayActivity)localObject, ((TVK_IMediaPlayer)((ShortVideoPlayActivity)localObject).mMediaPlayer.get()).getCurrentPostion());
+      }
+      if (ShortVideoPlayActivity.access$200(this.this$0) != 0L)
+      {
+        localObject = this.this$0;
+        double d = ShortVideoPlayActivity.access$200((ShortVideoPlayActivity)localObject) * 10000L / this.this$0.mDuration;
+        Double.isNaN(d);
+        ShortVideoPlayActivity.access$302((ShortVideoPlayActivity)localObject, (int)(d + 0.5D));
+        if (!ShortVideoPlayActivity.access$400(this.this$0))
         {
-          this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(ShortVideoPlayActivity.a(this.this$0));
-          this.this$0.b(ShortVideoPlayActivity.a(this.this$0));
+          localObject = this.this$0;
+          ShortVideoPlayActivity.access$502((ShortVideoPlayActivity)localObject, ShortVideoPlayActivity.access$200((ShortVideoPlayActivity)localObject));
         }
-        if ((ShortVideoPlayActivity.b(this.this$0) == 0L) && (((TVK_IMediaPlayer)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).getFirsFrameCost() > 0L))
+        if (!ShortVideoPlayActivity.access$600(this.this$0))
         {
-          ShortVideoPlayActivity.c(this.this$0, ((TVK_IMediaPlayer)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get()).getFirsFrameCost());
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "mProgressChecker run , mTCOfMCFirstFrame = " + ShortVideoPlayActivity.b(this.this$0) + ", mPlayProgress = " + ShortVideoPlayActivity.a(this.this$0));
+          this.this$0.mSeekBar.setProgress(ShortVideoPlayActivity.access$300(this.this$0));
+          localObject = this.this$0;
+          ((ShortVideoPlayActivity)localObject).setProgressTime(ShortVideoPlayActivity.access$200((ShortVideoPlayActivity)localObject));
+        }
+        if ((ShortVideoPlayActivity.access$700(this.this$0) == 0L) && (((TVK_IMediaPlayer)this.this$0.mMediaPlayer.get()).getFirsFrameCost() > 0L))
+        {
+          localObject = this.this$0;
+          ShortVideoPlayActivity.access$702((ShortVideoPlayActivity)localObject, ((TVK_IMediaPlayer)((ShortVideoPlayActivity)localObject).mMediaPlayer.get()).getFirsFrameCost());
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("mProgressChecker run , mTCOfMCFirstFrame = ");
+            ((StringBuilder)localObject).append(ShortVideoPlayActivity.access$700(this.this$0));
+            ((StringBuilder)localObject).append(", mPlayProgress = ");
+            ((StringBuilder)localObject).append(ShortVideoPlayActivity.access$300(this.this$0));
+            QLog.d("ShortVideoPlayActivity", 2, ((StringBuilder)localObject).toString());
           }
           localObject = new HashMap();
-          ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.b(this.this$0)));
-          azri.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
+          ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.access$700(this.this$0)));
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.access$700(this.this$0), 0L, (HashMap)localObject, "");
         }
       }
     }
-    if ((this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.this$0.g == 0L) || (this.this$0.i)) {}
+    if ((this.this$0.mMediaPlayer == null) || (this.this$0.mFileSize == 0L) || (this.this$0.mNeedDownload)) {}
     try
     {
-      ShortVideoPlayActivity.b(this.this$0, (int)(this.this$0.f * 10000L / this.this$0.g));
-      label411:
-      if (this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.b(this.this$0)) {
-        this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.setSecondaryProgress(ShortVideoPlayActivity.b(this.this$0));
-      }
-      if ((this.this$0.c()) && (ShortVideoPlayActivity.c(this.this$0) > 0) && (ShortVideoPlayActivity.a(this.this$0) != null) && (ShortVideoPlayActivity.a(this.this$0).getVisibility() == 0))
-      {
-        localObject = ShortVideoUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.this$0) * 1024);
-        ShortVideoPlayActivity.a(this.this$0).setText((String)localObject + "/s");
-      }
-      if (this.this$0.isFinishing()) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
-        }
-      }
-      while (this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get() == null)
-      {
-        return;
-        ShortVideoPlayActivity.b(this.this$0, 10000);
-        break;
-      }
-      ((MqqHandler)this.this$0.jdField_b_of_type_JavaLangRefWeakReference.get()).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 50L);
-      return;
+      ShortVideoPlayActivity.access$802(this.this$0, (int)(this.this$0.mTransferredSize * 10000L / this.this$0.mFileSize));
     }
     catch (Throwable localThrowable)
     {
-      break label411;
+      label426:
+      TextView localTextView;
+      StringBuilder localStringBuilder;
+      break label426;
+    }
+    break label440;
+    ShortVideoPlayActivity.access$802(this.this$0, 10000);
+    label440:
+    if (this.this$0.mSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.access$800(this.this$0)) {
+      this.this$0.mSeekBar.setSecondaryProgress(ShortVideoPlayActivity.access$800(this.this$0));
+    }
+    if ((this.this$0.isBuffering()) && (ShortVideoPlayActivity.access$900(this.this$0) > 0) && (ShortVideoPlayActivity.access$1000(this.this$0) != null) && (ShortVideoPlayActivity.access$1000(this.this$0).getVisibility() == 0))
+    {
+      localObject = ShortVideoUtils.stringForFileSize(this.this$0.mContext, ShortVideoPlayActivity.access$900(this.this$0) * 1024);
+      localTextView = ShortVideoPlayActivity.access$1000(this.this$0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("/s");
+      localTextView.setText(localStringBuilder.toString());
+    }
+    if (this.this$0.isFinishing())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
+      }
+      return;
+    }
+    if (this.this$0.mHandler.get() != null) {
+      ((MqqHandler)this.this$0.mHandler.get()).postDelayed(this.this$0.mProgressChecker, 50L);
     }
   }
 }

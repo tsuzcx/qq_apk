@@ -22,13 +22,14 @@ public final class group_file_common$FeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50 }, new String[] { "uint32_bus_id", "str_file_id", "uint32_msg_random", "bytes_ext", "uint32_feed_flag", "msg_ctrl" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 50 }, new String[] { "uint32_bus_id", "str_file_id", "uint32_msg_random", "bytes_ext", "uint32_feed_flag", "msg_ctrl" }, new Object[] { localInteger, "", localInteger, localByteStringMicro, localInteger, null }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.group_file_common.group_file_common.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

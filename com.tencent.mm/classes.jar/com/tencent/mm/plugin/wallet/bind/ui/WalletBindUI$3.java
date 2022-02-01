@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vb;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.autogen.a.acv;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WalletBindUI$3
-  extends c<vb>
+class WalletBindUI$3
+  extends IListener<acv>
 {
-  WalletBindUI$3(WalletBindUI paramWalletBindUI)
+  WalletBindUI$3(WalletBindUI paramWalletBindUI, q paramq)
   {
-    AppMethodBeat.i(45797);
-    this.__eventId = vb.class.getName().hashCode();
-    AppMethodBeat.o(45797);
+    super(paramq);
+    AppMethodBeat.i(315569);
+    this.__eventId = acv.class.getName().hashCode();
+    AppMethodBeat.o(315569);
   }
 }
 
